@@ -11,7 +11,7 @@ import EurofurenceAppCore
 import Foundation.NSIndexPath
 
 class CapturingKnowledgeGroupsInteractor: KnowledgeGroupsInteractor {
-    
+
     var prepareViewModelInvokedHandler: (() -> Void)?
     private(set) var toldToPrepareViewModel = false
     fileprivate var completionHandler: ((KnowledgeGroupsListViewModel) -> Void)?
@@ -20,13 +20,13 @@ class CapturingKnowledgeGroupsInteractor: KnowledgeGroupsInteractor {
         self.completionHandler = completionHandler
         prepareViewModelInvokedHandler?()
     }
-    
+
 }
 
 extension CapturingKnowledgeGroupsInteractor {
-    
+
     func simulateViewModelPrepared(_ viewModel: KnowledgeGroupsListViewModel) {
         completionHandler?(viewModel)
     }
-    
+
 }

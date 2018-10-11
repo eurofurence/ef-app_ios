@@ -19,13 +19,13 @@ class StubScheduleModuleFactory: ScheduleModuleProviding {
         self.delegate = delegate
         return stubInterface
     }
-    
+
 }
 
 extension StubScheduleModuleFactory {
-    
+
     func simulateDidSelectEvent(_ identifier: Event.Identifier) {
         delegate?.scheduleModuleDidSelectEvent(identifier: identifier)
     }
-    
+
 }

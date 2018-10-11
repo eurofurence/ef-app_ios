@@ -12,9 +12,9 @@ import Foundation
 import RandomDataGeneration
 
 extension DealerDetailAboutTheArtistViewModel: RandomValueProviding {
-    
+
     public static var random: DealerDetailAboutTheArtistViewModel {
         return DealerDetailAboutTheArtistViewModel(title: .random, artistDescription: .random)
     }
-    
+
 }

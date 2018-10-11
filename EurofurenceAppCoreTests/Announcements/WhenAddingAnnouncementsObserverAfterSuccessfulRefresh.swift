@@ -10,17 +10,17 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenAddingAnnouncementsObserverAfterSuccessfulRefresh: XCTestCase {
-    
+
     func testTheObserverIsProvidedWithAllAnnouncements() {
         let context = ApplicationTestBuilder().build()
         let syncResponse = APISyncResponse.randomWithoutDeletions
         let expected = context.expectedAnnouncements(from: syncResponse)
-        
+
         context.performSuccessfulSync(response: syncResponse)
         let observer = CapturingAnnouncementsServiceObserver()
         context.application.add(observer)
-        
+
         XCTAssertEqual(expected, observer.allAnnouncements)
     }
-    
+
 }

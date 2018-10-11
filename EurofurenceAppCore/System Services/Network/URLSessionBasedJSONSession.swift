@@ -13,7 +13,7 @@ public struct URLSessionBasedJSONSession: JSONSession {
     public static let shared = URLSessionBasedJSONSession()
 
     private let session: URLSession
-    
+
     public init(session: URLSession = .shared) {
         self.session = session
     }

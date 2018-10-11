@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenRequestingImageForAnnouncementThatHasNoImage_ApplicationShould: XCTestCase {
-    
+
     func testInvokeTheHandlerWithNilData() {
         var syncResponse = APISyncResponse.randomWithoutDeletions
         let randomAnnouncement = syncResponse.announcements.changed.randomElement()
@@ -22,8 +22,8 @@ class WhenRequestingImageForAnnouncementThatHasNoImage_ApplicationShould: XCTest
         let identifier = Announcement.Identifier(announcement.identifier)
         var invokedHandlerWithNilData = false
         context.application.fetchAnnouncementImage(identifier: identifier) { invokedHandlerWithNilData = $0 == nil }
-        
+
         XCTAssertTrue(invokedHandlerWithNilData)
     }
-    
+
 }

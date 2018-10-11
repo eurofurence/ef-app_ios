@@ -11,23 +11,23 @@ import EurofurenceAppCore
 import XCTest
 
 class SchedulePresenterMainStageIconBindingTests: XCTestCase {
-    
+
     func testShowTheMainStageIndicator() {
         var eventViewModel = ScheduleEventViewModel.random
         eventViewModel.isMainStageEvent = true
         let component = SchedulePresenterTestBuilder.buildForTestingBindingOfEvent(eventViewModel)
-        
+
         XCTAssertTrue(component.didShowMainStageEventIndicator)
         XCTAssertFalse(component.didHideMainStageEventIndicator)
     }
-    
+
     func testHideTheMainStageIndicator() {
         var eventViewModel = ScheduleEventViewModel.random
         eventViewModel.isMainStageEvent = false
         let component = SchedulePresenterTestBuilder.buildForTestingBindingOfEvent(eventViewModel)
-        
+
         XCTAssertFalse(component.didShowMainStageEventIndicator)
         XCTAssertTrue(component.didHideMainStageEventIndicator)
     }
-    
+
 }

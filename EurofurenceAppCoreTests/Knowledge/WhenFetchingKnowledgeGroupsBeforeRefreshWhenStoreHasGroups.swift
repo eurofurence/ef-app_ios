@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenFetchingKnowledgeGroupsBeforeRefreshWhenStoreHasGroups: XCTestCase {
-    
+
     func testTheGroupsFromTheStoreAreAdaptedInOrder() {
         let dataStore = CapturingEurofurenceDataStore()
         let syncResponse = APISyncResponse.randomWithoutDeletions
@@ -19,8 +19,8 @@ class WhenFetchingKnowledgeGroupsBeforeRefreshWhenStoreHasGroups: XCTestCase {
         let expected = context.expectedKnowledgeGroups(from: syncResponse)
         let observer = CapturingKnowledgeServiceObserver()
         context.application.add(observer)
-        
+
         XCTAssertEqual(expected, observer.capturedGroups)
     }
-    
+
 }

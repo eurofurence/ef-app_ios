@@ -11,12 +11,12 @@ import EurofurenceAppCore
 import UIKit
 
 struct StubTutorialSceneFactory: TutorialSceneFactory {
-    
+
     let tutorialScene = CapturingTutorialScene()
     func makeTutorialScene() -> UIViewController & TutorialScene {
         return tutorialScene
     }
-    
+
 }
 
 class CapturingTutorialScene: UIViewController, TutorialScene {

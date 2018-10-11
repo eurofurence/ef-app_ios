@@ -10,15 +10,15 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenPerformingFullStoreRefresh_ApplicationShould: XCTestCase {
-    
+
     func testRequestSyncWithoutDeltas() {
         let dataStore = CapturingEurofurenceDataStore()
         dataStore.save(.randomWithoutDeletions)
         let context = ApplicationTestBuilder().with(dataStore).build()
         context.performSuccessfulSync(response: .randomWithoutDeletions)
         _ = context.application.performFullStoreRefresh { (_) in }
-        
+
         XCTAssertNil(context.syncAPI.capturedLastSyncTime)
     }
-    
+
 }

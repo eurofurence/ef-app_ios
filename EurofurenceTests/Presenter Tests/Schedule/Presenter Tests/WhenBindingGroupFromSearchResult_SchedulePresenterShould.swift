@@ -11,7 +11,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenBindingGroupFromSearchResult_SchedulePresenterShould: XCTestCase {
-    
+
     func testBindTheGroupTitleOntoTheHeader() {
         let searchViewModel = CapturingScheduleSearchViewModel()
         let interactor = FakeScheduleInteractor(searchViewModel: searchViewModel)
@@ -25,5 +25,5 @@ class WhenBindingGroupFromSearchResult_SchedulePresenterShould: XCTestCase {
 
         XCTAssertEqual(randomGroup.element.title, header.capturedTitle)
     }
-    
+
 }

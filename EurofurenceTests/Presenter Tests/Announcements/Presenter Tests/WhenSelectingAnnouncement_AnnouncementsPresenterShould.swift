@@ -11,7 +11,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenSelectingAnnouncement_AnnouncementsPresenterShould: XCTestCase {
-    
+
     func testTellTheModuleDelegateWhichAnnouncementWasSelected() {
         let viewModel = FakeAnnouncementsListViewModel()
         let interactor = FakeAnnouncementsInteractor(viewModel: viewModel)
@@ -20,10 +20,10 @@ class WhenSelectingAnnouncement_AnnouncementsPresenterShould: XCTestCase {
         let randomAnnouncement = viewModel.announcements.randomElement()
         context.simulateSceneDidSelectAnnouncement(at: randomAnnouncement.index)
         let expected = viewModel.identifierForAnnouncement(at: randomAnnouncement.index)
-        
+
         XCTAssertEqual(expected, context.delegate.capturedSelectedAnnouncement)
     }
-    
+
     func testTellTheSceneToDeselectTheSelectedAnnouncement() {
         let viewModel = FakeAnnouncementsListViewModel()
         let interactor = FakeAnnouncementsInteractor(viewModel: viewModel)
@@ -31,8 +31,8 @@ class WhenSelectingAnnouncement_AnnouncementsPresenterShould: XCTestCase {
         context.simulateSceneDidLoad()
         let randomAnnouncement = viewModel.announcements.randomElement()
         context.simulateSceneDidSelectAnnouncement(at: randomAnnouncement.index)
-        
+
         XCTAssertEqual(randomAnnouncement.index, context.scene.capturedAnnouncementIndexToDeselect)
     }
-    
+
 }

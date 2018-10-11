@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenSyncCompletesWithEvents_ApplicationShould: XCTestCase {
-    
+
     func testTellObserversAboutAvailableEvents() {
         let context = ApplicationTestBuilder().build()
         let syncResponse = APISyncResponse.randomWithoutDeletions
@@ -21,5 +21,5 @@ class WhenSyncCompletesWithEvents_ApplicationShould: XCTestCase {
 
         XCTAssertEqual(expected, observer.allEvents)
     }
-    
+
 }

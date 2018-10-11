@@ -11,9 +11,9 @@ import EurofurenceAppCore
 import RandomDataGeneration
 
 extension ConventionCountdownComponentViewModel: RandomValueProviding {
-    
+
     public static var random: ConventionCountdownComponentViewModel {
         return ConventionCountdownComponentViewModel(timeUntilConvention: .random)
     }
-    
+
 }

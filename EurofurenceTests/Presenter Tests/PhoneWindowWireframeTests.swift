@@ -11,14 +11,14 @@ import EurofurenceAppCore
 import XCTest
 
 class PhoneWindowWireframeTests: XCTestCase {
-    
+
     func testSettingTheRootViewControllerSetsItAsTheRootControllerOnTheWindow() {
         let window = UIWindow()
         let wireframe = PhoneWindowWireframe(window: window)
         let vc = UIViewController()
         wireframe.setRoot(vc)
-        
+
         XCTAssertEqual(vc, window.rootViewController)
     }
-    
+
 }

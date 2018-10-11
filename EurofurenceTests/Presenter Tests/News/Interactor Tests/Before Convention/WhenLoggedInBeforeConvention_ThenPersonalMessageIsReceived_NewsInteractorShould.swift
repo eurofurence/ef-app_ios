@@ -11,7 +11,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenLoggedInBeforeConvention_ThenPersonalMessageIsReceived_NewsInteractorShould: XCTestCase {
-    
+
     func testProduceViewModelWithMessagesPrompt_DaysUntilConvention_AndAnnouncements() {
         let privateMessagesService = CapturingPrivateMessagesService()
         let context = DefaultNewsInteractorTestBuilder()
@@ -22,7 +22,7 @@ class WhenLoggedInBeforeConvention_ThenPersonalMessageIsReceived_NewsInteractorS
         context.subscribeViewModelUpdates()
         let unreadCount = Int.random
         privateMessagesService.notifyUnreadCountDidChange(to: unreadCount)
-        
+
         context.assert()
             .thatViewModel()
             .hasYourEurofurence()
@@ -30,5 +30,5 @@ class WhenLoggedInBeforeConvention_ThenPersonalMessageIsReceived_NewsInteractorS
             .hasAnnouncements()
             .verify()
     }
-    
+
 }

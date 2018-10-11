@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import RandomDataGeneration
 
 extension ExtendedDealerData: RandomValueProviding {
-    
+
     public static var random: ExtendedDealerData {
         return ExtendedDealerData(artistImagePNGData: .random,
                                   dealersDenMapLocationGraphicPNGData: .random,
@@ -30,5 +30,5 @@ extension ExtendedDealerData: RandomValueProviding {
                                   artPreviewImagePNGData: .random,
                                   artPreviewCaption: .random)
     }
-    
+
 }

@@ -10,16 +10,16 @@ import EurofurenceAppCore
 import Foundation
 
 class CapturingPrivateMessagesObserver: PrivateMessagesObserver {
-    
+
     // MARK: New
-    
+
     private(set) var observedMessages: [Message] = []
     func eurofurenceApplicationDidLoad(messages: [Message]) {
         observedMessages = messages
     }
-    
+
     // MARK: Old
-    
+
     private(set) var wasToldSuccessfullyLoadedPrivateMessages = false
     private(set) var capturedMessages: [Message]?
     private(set) var wasToldFailedToLoadPrivateMessages = false
@@ -29,13 +29,13 @@ class CapturingPrivateMessagesObserver: PrivateMessagesObserver {
         case .success(let messages):
             self.wasToldSuccessfullyLoadedPrivateMessages = true
             self.capturedMessages = messages
-            
+
         case .userNotAuthenticated:
             self.wasToldUserNotAuthenticated = true
-            
+
         case .failedToLoad:
             self.wasToldFailedToLoadPrivateMessages = true
         }
     }
-    
+
 }

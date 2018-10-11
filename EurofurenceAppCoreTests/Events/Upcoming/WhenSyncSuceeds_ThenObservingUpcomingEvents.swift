@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenSyncSuceeds_ThenObservingUpcomingEvents: XCTestCase {
-    
+
     func testTheObserverIsProvidedWithTheUpcomingEvents() {
         let syncResponse = APISyncResponse.randomWithoutDeletions
         let randomEvent = syncResponse.events.changed.randomElement().element
@@ -20,8 +20,8 @@ class WhenSyncSuceeds_ThenObservingUpcomingEvents: XCTestCase {
         let observer = CapturingEventsServiceObserver()
         context.application.add(observer)
         let expected = context.makeExpectedEvent(from: randomEvent, response: syncResponse)
-        
+
         XCTAssertTrue(observer.upcomingEvents.contains(expected))
     }
-    
+
 }

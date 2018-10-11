@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenPreparingDealerMapGraphic_ApplicationShould: XCTestCase {
-    
+
     func testProvideRenderedMapDataInExtendedData() {
         var syncResponse = APISyncResponse.randomWithoutDeletions
         let randomDealer = syncResponse.dealers.changed.randomElement()
@@ -26,8 +26,8 @@ class WhenPreparingDealerMapGraphic_ApplicationShould: XCTestCase {
         context.mapCoordinateRender.stub(renderedData, forGraphic: mapGraphic, atX: dealerMapEntry.x, y: dealerMapEntry.y, radius: dealerMapEntry.tapRadius)
         var extendedData: ExtendedDealerData?
         context.application.fetchExtendedDealerData(for: Dealer.Identifier(rawValue: randomDealer.element.identifier)!) { extendedData = $0 }
-        
+
         XCTAssertEqual(renderedData, extendedData?.dealersDenMapLocationGraphicPNGData)
     }
-    
+
 }

@@ -12,14 +12,14 @@ import EurofurenceAppCoreTestDoubles
 import XCTest
 
 class WhenPreparingAnnouncementViewModel_ForReadAnnouncement_NewsInteractorShould: XCTestCase {
-    
+
     func testPrepareViewModelWithReadStatus() {
         let announcement = Announcement.random
         let announcementsService = StubAnnouncementsService(announcements: [announcement],
                                                             stubbedReadAnnouncements: [announcement.identifier])
         let context = DefaultNewsInteractorTestBuilder().with(announcementsService).build()
         context.subscribeViewModelUpdates()
-        
+
         context
             .assert()
             .thatViewModel()
@@ -28,5 +28,5 @@ class WhenPreparingAnnouncementViewModel_ForReadAnnouncement_NewsInteractorShoul
             .hasAnnouncements()
             .verify()
     }
-    
+
 }

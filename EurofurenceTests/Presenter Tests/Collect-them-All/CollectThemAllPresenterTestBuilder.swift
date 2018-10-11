@@ -11,13 +11,13 @@ import EurofurenceAppCore
 import UIKit
 
 class CollectThemAllPresenterTestBuilder {
-    
+
     struct Context {
         var producedViewController: UIViewController
         var scene: CapturingCollectThemAllScene
         var service: FakeCollectThemAllService
     }
-    
+
     func build() -> Context {
         let sceneFactory = StubCollectThemAllSceneFactory()
         let service = FakeCollectThemAllService()
@@ -26,18 +26,18 @@ class CollectThemAllPresenterTestBuilder {
             .with(service)
             .build()
             .makeCollectThemAllModule()
-        
+
         return Context(producedViewController: module,
                        scene: sceneFactory.interface,
                        service: service)
     }
-    
+
 }
 
 extension CollectThemAllPresenterTestBuilder.Context {
-    
+
     func simulateSceneDidLoad() {
         scene.delegate?.collectThemAllSceneDidLoad()
     }
-    
+
 }

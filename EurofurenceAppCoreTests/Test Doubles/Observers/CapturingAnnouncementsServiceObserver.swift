@@ -10,26 +10,26 @@ import EurofurenceAppCore
 import Foundation
 
 class CapturingAnnouncementsServiceObserver: AnnouncementsServiceObserver {
-    
+
     private(set) var allAnnouncements: [Announcement] = []
     private(set) var didReceieveEmptyAllAnnouncements = false
     func eurofurenceApplicationDidChangeAnnouncements(_ announcements: [Announcement]) {
         allAnnouncements = announcements
         didReceieveEmptyAllAnnouncements = didReceieveEmptyAllAnnouncements || announcements.isEmpty
     }
-    
+
     private(set) var unreadAnnouncements: [Announcement] = []
     private(set) var didReceieveEmptyUnreadAnnouncements = false
     func eurofurenceApplicationDidChangeUnreadAnnouncements(to announcements: [Announcement]) {
         unreadAnnouncements = announcements
         didReceieveEmptyUnreadAnnouncements = didReceieveEmptyUnreadAnnouncements || announcements.isEmpty
     }
-    
+
     private(set) var didReceieveEmptyReadAnnouncements = false
     private(set) var readAnnouncementIdentifiers = [Announcement.Identifier]()
     func announcementsServiceDidUpdateReadAnnouncements(_ readAnnouncements: [Announcement.Identifier]) {
         didReceieveEmptyReadAnnouncements = didReceieveEmptyReadAnnouncements || readAnnouncements.isEmpty
         readAnnouncementIdentifiers = readAnnouncements
     }
-    
+
 }

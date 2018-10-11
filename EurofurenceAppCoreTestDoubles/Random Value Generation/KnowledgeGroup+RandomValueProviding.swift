@@ -11,7 +11,7 @@ import Foundation
 import RandomDataGeneration
 
 extension KnowledgeGroup: RandomValueProviding {
-    
+
     public static var random: KnowledgeGroup {
         return KnowledgeGroup(identifier: .random,
                               title: .random,
@@ -20,13 +20,13 @@ extension KnowledgeGroup: RandomValueProviding {
                               order: .random,
                               entries: .random)
     }
-    
+
 }
 
 extension KnowledgeGroup.Identifier: RandomValueProviding {
-    
+
     public static var random: KnowledgeGroup.Identifier {
         return KnowledgeGroup.Identifier(.random)
     }
-    
+
 }

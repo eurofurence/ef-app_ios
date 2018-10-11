@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class ImagesRemoveAllBeforeInsertTests: XCTestCase {
-    
+
     func testTellTheDataStoreToDeleteTheImages() {
         let originalResponse = APISyncResponse.randomWithoutDeletions
         var subsequentResponse = originalResponse
@@ -18,12 +18,12 @@ class ImagesRemoveAllBeforeInsertTests: XCTestCase {
         let context = ApplicationTestBuilder().build()
         context.performSuccessfulSync(response: originalResponse)
         context.performSuccessfulSync(response: subsequentResponse)
-        
+
         XCTAssertEqual(originalResponse.images.changed.map({ $0.identifier }),
                        context.dataStore.transaction.deletedImages,
                        "Should have removed original images between sync events")
     }
-    
+
     func testNotDeleteOriginalImagesWhenPurgeNotRequired() {
         let originalResponse = APISyncResponse.randomWithoutDeletions
         var subsequentResponse = originalResponse
@@ -31,11 +31,11 @@ class ImagesRemoveAllBeforeInsertTests: XCTestCase {
         let context = ApplicationTestBuilder().build()
         context.performSuccessfulSync(response: originalResponse)
         context.performSuccessfulSync(response: subsequentResponse)
-        
+
         XCTAssertTrue(context.dataStore.transaction.deletedImages.isEmpty,
                       "Should not have removed original images between sync events")
     }
-    
+
     func testRemoveImagesFromTheCache() {
         let originalResponse = APISyncResponse.randomWithoutDeletions
         var subsequentResponse = originalResponse
@@ -43,12 +43,12 @@ class ImagesRemoveAllBeforeInsertTests: XCTestCase {
         let context = ApplicationTestBuilder().build()
         context.performSuccessfulSync(response: originalResponse)
         context.performSuccessfulSync(response: subsequentResponse)
-        
+
         XCTAssertEqual(originalResponse.images.changed.map({ $0.identifier }),
                        context.imageRepository.deletedImages,
                        "Should have removed original images between sync events")
     }
-    
+
     func testNotRemoveImagesFromTheCacheWhenPurgeNotRequired() {
         let originalResponse = APISyncResponse.randomWithoutDeletions
         var subsequentResponse = originalResponse
@@ -56,11 +56,11 @@ class ImagesRemoveAllBeforeInsertTests: XCTestCase {
         let context = ApplicationTestBuilder().build()
         context.performSuccessfulSync(response: originalResponse)
         context.performSuccessfulSync(response: subsequentResponse)
-        
+
         XCTAssertTrue(context.imageRepository.deletedImages.isEmpty,
                       "Should have not removed original images between sync events")
     }
-    
+
     func testProduceExpectedImageDataForDealerUsingNewResponse() {
         let originalResponse = APISyncResponse.randomWithoutDeletions
         var subsequentResponse = originalResponse
@@ -71,8 +71,8 @@ class ImagesRemoveAllBeforeInsertTests: XCTestCase {
         let randomDealer = subsequentResponse.dealers.changed.randomElement().element
         var data: ExtendedDealerData?
         context.application.fetchExtendedDealerData(for: Dealer.Identifier(randomDealer.identifier)) { data = $0 }
-        
+
         XCTAssertEqual(data?.artistImagePNGData, context.imageAPI.stubbedImage(for: randomDealer.artistImageId))
     }
-    
+
 }

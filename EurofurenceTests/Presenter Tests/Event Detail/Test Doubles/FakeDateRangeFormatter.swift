@@ -11,35 +11,34 @@ import EurofurenceAppCore
 import Foundation
 
 class FakeDateRangeFormatter: DateRangeFormatter {
-    
+
     private struct Input: Hashable {
-        
+
         var hashValue: Int {
             return start.hashValue ^ end.hashValue
         }
-        
+
         static func ==(lhs: FakeDateRangeFormatter.Input, rhs: FakeDateRangeFormatter.Input) -> Bool {
             return lhs.hashValue == rhs.hashValue
         }
-        
+
         var start: Date
         var end: Date
     }
-    
-    private var strings = [Input : String]()
+
+    private var strings = [Input: String]()
     func string(from startDate: Date, to endDate: Date) -> String {
         let input = Input(start: startDate, end: endDate)
         var string: String
         if let str = strings[input] {
             string = str
-        }
-        else {
+        } else {
             string = .random
         }
-        
+
         strings[input] = string
-        
+
         return string
     }
-    
+
 }

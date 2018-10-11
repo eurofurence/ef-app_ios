@@ -12,9 +12,9 @@ import Foundation
 import RandomDataGeneration
 
 extension StubDealerViewModel: RandomValueProviding {
-    
+
     public static var random: StubDealerViewModel {
         return StubDealerViewModel()
     }
-    
+
 }

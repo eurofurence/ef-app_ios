@@ -12,7 +12,7 @@ import RandomDataGeneration
 import XCTest
 
 class V2ImageAPITests: XCTestCase {
-    
+
     func testSubmitsExpectedURL() {
         let identifier = String.random
         let apiUrl = StubV2ApiUrlProviding()
@@ -20,10 +20,10 @@ class V2ImageAPITests: XCTestCase {
         let jsonSession = CapturingJSONSession()
         let api = V2ImageAPI(jsonSession: jsonSession, apiUrl: apiUrl)
         api.fetchImage(identifier: identifier) { (_) in }
-        
+
         XCTAssertEqual(expected, jsonSession.getRequestURL)
     }
-    
+
     func testProvidesDataFromRequest() {
         let jsonSession = CapturingJSONSession()
         let apiUrl = StubV2ApiUrlProviding()
@@ -32,8 +32,8 @@ class V2ImageAPITests: XCTestCase {
         var actual: Data?
         api.fetchImage(identifier: .random) { actual = $0 }
         jsonSession.invokeLastGETCompletionHandler(responseData: expected)
-        
+
         XCTAssertEqual(expected, actual)
     }
-    
+
 }

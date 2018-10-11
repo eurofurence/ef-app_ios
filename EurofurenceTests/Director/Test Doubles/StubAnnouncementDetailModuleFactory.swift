@@ -12,12 +12,12 @@ import EurofurenceAppCoreTestDoubles
 import UIKit.UIViewController
 
 class StubAnnouncementDetailModuleFactory: AnnouncementDetailModuleProviding {
-    
+
     let stubInterface = UIViewController()
     private(set) var capturedModel: Announcement.Identifier?
     func makeAnnouncementDetailModule(for announcement: Announcement.Identifier) -> UIViewController {
         capturedModel = announcement
         return stubInterface
     }
-    
+
 }

@@ -12,7 +12,7 @@ import EurofurenceAppCoreTestDoubles
 import XCTest
 
 class FirebaseRemoteNotificationsTokenRegistrationTests: XCTestCase {
-    
+
     private struct Context {
         var tokenRegistration: FirebaseRemoteNotificationsTokenRegistration
         var capturingFirebaseAdapter: CapturingFirebaseAdapter
@@ -175,88 +175,88 @@ class FirebaseRemoteNotificationsTokenRegistrationTests: XCTestCase {
 
         XCTAssertFalse(context.capturingFCMDeviceRegister.registeredDebugTopic)
     }
-    
+
     func testRegisterTheVersionTopicForReleaseBuildsUsingTheVersionFromTheProvider() {
         let version = "2.0.0"
         let context = assembleApp(configuration: .release, version: version)
         context.registerDeviceToken()
-        
+
         XCTAssertTrue(context.capturingFCMDeviceRegister.registeredVersionTopic(with: version))
     }
-    
+
     func testRegisterTheVersionTopicForDebugBuildsUsingTheVersionFromTheProvider() {
         let version = "2.0.0"
         let context = assembleApp(configuration: .debug, version: version)
         context.registerDeviceToken()
-        
+
         XCTAssertTrue(context.capturingFCMDeviceRegister.registeredVersionTopic(with: version))
     }
-    
+
     func testRegisteringDeviceTokenShouldProvideTheUserAuthenticationToken() {
         let authenticationToken = "Token"
         let context = assembleApp(configuration: .debug)
         context.registerDeviceToken(userAuthenticationToken: authenticationToken)
-        
+
         XCTAssertEqual(authenticationToken, context.capturingFCMDeviceRegister.capturedAuthenticationToken)
     }
-    
+
     func testForDebugConfigurationLiveiOSNotificationsShouldBeSubscribed() {
         let context = assembleApp(configuration: .debug)
         context.registerDeviceToken()
-        
+
         XCTAssertTrue(context.capturingFirebaseAdapter.subscribedToLiveiOSNotifications)
     }
-    
+
     func testForReleaseConfigurationLiveiOSNotificationsShouldBeSubscribed() {
         let context = assembleApp(configuration: .release)
         context.registerDeviceToken()
-        
+
         XCTAssertTrue(context.capturingFirebaseAdapter.subscribedToLiveiOSNotifications)
     }
 
     func testForDebugConfigurationTestiOSNotificationsShouldBeSubscribed() {
         let context = assembleApp(configuration: .debug)
         context.registerDeviceToken()
-        
+
         XCTAssertTrue(context.capturingFirebaseAdapter.subscribedToTestiOSNotifications)
     }
-    
+
     func testForReleaseConfigurationTestiOSNotificationsShouldNotBeSubscribed() {
         let context = assembleApp(configuration: .release)
         context.registerDeviceToken()
-        
+
         XCTAssertFalse(context.capturingFirebaseAdapter.subscribedToTestiOSNotifications)
     }
-    
+
     func testForReleaseConfigurationTestiOSNotificationsShouldBeUnsubscribed() {
         let context = assembleApp(configuration: .release)
         context.registerDeviceToken()
-        
+
         XCTAssertTrue(context.capturingFirebaseAdapter.unsubscribedFromTestiOSNotifications)
     }
-    
+
     func testForDebugConfigurationTestiOSNotificationsShouldNotBeUnsubscribed() {
         let context = assembleApp(configuration: .debug)
         context.registerDeviceToken()
-        
+
         XCTAssertFalse(context.capturingFirebaseAdapter.unsubscribedFromTestiOSNotifications)
     }
-    
+
     func testForDebugConfigurationLiveAllNotificationsShouldBeSubscribed() {
         let context = assembleApp(configuration: .debug)
         context.registerDeviceToken()
-        
+
         XCTAssertTrue(context.capturingFirebaseAdapter.subscribedToLiveAllNotifications)
     }
-    
+
     func testErrorsDuringFCMRegistrationArePropogatedBackThroughTheCompletionHandler() {
         let context = assembleApp(configuration: .debug)
         var observedError: NSError?
-        context.registerDeviceToken() { observedError = $0! as NSError }
+        context.registerDeviceToken { observedError = $0! as NSError }
         let expectedError = NSError(domain: "Test", code: 0, userInfo: nil)
         context.capturingFCMDeviceRegister.completionHandler?(expectedError)
-        
+
         XCTAssertEqual(expectedError, observedError)
     }
-    
+
 }

@@ -11,16 +11,16 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenToldToHandleNotification_ThatConcludesWithAnnouncementThatIsInvalid_DirectorShould: XCTestCase {
-    
+
     func testReturnNoDataResultToCompletionHandler() {
         let context = ApplicationDirectorTestBuilder().build()
         context.navigateToTabController()
-        let payload = [String.random : String.random]
+        let payload = [String.random: String.random]
         context.notificationHandling.stub(.invalidatedAnnouncement, for: payload)
         var result: UIBackgroundFetchResult?
         context.director.handleRemoteNotification(payload) { result = $0 }
-        
+
         XCTAssertEqual(UIBackgroundFetchResult.noData, result)
     }
-    
+
 }

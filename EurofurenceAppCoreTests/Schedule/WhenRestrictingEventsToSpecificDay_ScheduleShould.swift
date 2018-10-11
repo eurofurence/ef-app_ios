@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenRestrictingEventsToSpecificDay_ScheduleShould: XCTestCase {
-    
+
     func testOnlyIncludeEventsRunningOnThatDay() {
         let response = APISyncResponse.randomWithoutDeletions
         let dataStore = CapturingEurofurenceDataStore()
@@ -25,10 +25,10 @@ class WhenRestrictingEventsToSpecificDay_ScheduleShould: XCTestCase {
         let expectedEvents = response.events.changed.filter({ $0.dayIdentifier == randomDay.element.identifier })
         let expected = context.makeExpectedEvents(from: expectedEvents, response: response)
         schedule.restrictEvents(to: Day(date: randomDay.element.date))
-        
+
         XCTAssertEqual(expected, delegate.events)
     }
-    
+
     func testUpdateRestrictedScheduleWhenLaterSyncCompletes() {
         let response = APISyncResponse.randomWithoutDeletions
         let dataStore = CapturingEurofurenceDataStore()
@@ -45,10 +45,10 @@ class WhenRestrictingEventsToSpecificDay_ScheduleShould: XCTestCase {
         context.refreshLocalStore()
         context.syncAPI.simulateSuccessfulSync(response)
         schedule.setDelegate(delegate)
-        
+
         XCTAssertEqual(expected, delegate.events)
     }
-    
+
     func testRestrictEventsOnlyToTheLastSpecifiedRestrictedDay() {
         let response = APISyncResponse.randomWithoutDeletions
         let dataStore = CapturingEurofurenceDataStore()
@@ -65,8 +65,8 @@ class WhenRestrictingEventsToSpecificDay_ScheduleShould: XCTestCase {
         let expected = context.makeExpectedEvents(from: expectedEvents, response: response)
         schedule.restrictEvents(to: Day(date: anotherRandomDay.element.date))
         schedule.restrictEvents(to: Day(date: randomDay.element.date))
-        
+
         XCTAssertEqual(expected, delegate.events)
     }
-    
+
 }

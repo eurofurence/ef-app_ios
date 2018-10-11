@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenFetchingMapContents_ThatRevealsRoom_ContentsSavedInDataStore_ApplicationShould: XCTestCase {
-    
+
     func testProvideTheRoomAsTheMapContent() {
         var syncResponse = APISyncResponse.randomWithoutDeletions
         let room = APIRoom(roomIdentifier: .random, name: .random)
@@ -28,8 +28,8 @@ class WhenFetchingMapContents_ThatRevealsRoom_ContentsSavedInDataStore_Applicati
         var content: Map.Content?
         context.application.fetchContent(for: Map.Identifier(map.identifier), atX: x, y: y) { content = $0 }
         let expected = Map.Content.room(Room(name: room.name))
-        
+
         XCTAssertEqual(expected, content)
     }
-    
+
 }

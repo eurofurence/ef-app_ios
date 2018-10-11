@@ -12,18 +12,18 @@ import EurofurenceAppCoreTestDoubles
 import Foundation
 
 struct StubAnnouncementDetailInteractor: AnnouncementDetailInteractor {
-    
+
     let viewModel: AnnouncementViewModel
     private var identifier: Announcement.Identifier
-    
+
     init(viewModel: AnnouncementViewModel = .random, for identifier: Announcement.Identifier = .random) {
         self.viewModel = viewModel
         self.identifier = identifier
     }
-    
+
     func makeViewModel(for announcement: Announcement.Identifier, completionHandler: @escaping (AnnouncementViewModel) -> Void) {
         guard identifier == announcement else { return }
         completionHandler(viewModel)
     }
-    
+
 }

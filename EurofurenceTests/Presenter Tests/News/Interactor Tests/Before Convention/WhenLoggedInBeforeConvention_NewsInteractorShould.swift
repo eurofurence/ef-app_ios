@@ -11,14 +11,14 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenLoggedInBeforeConvention_NewsInteractorShould: XCTestCase {
-    
+
     func testProduceViewModelWithMessagesPrompt_DaysUntilConvention_AndAnnouncements() {
         let context = DefaultNewsInteractorTestBuilder()
             .with(FakeAuthenticationService.loggedInService())
             .with(StubAnnouncementsService(announcements: .random))
             .build()
         context.subscribeViewModelUpdates()
-        
+
         context.assert()
             .thatViewModel()
             .hasYourEurofurence()
@@ -26,5 +26,5 @@ class WhenLoggedInBeforeConvention_NewsInteractorShould: XCTestCase {
             .hasAnnouncements()
             .verify()
     }
-    
+
 }

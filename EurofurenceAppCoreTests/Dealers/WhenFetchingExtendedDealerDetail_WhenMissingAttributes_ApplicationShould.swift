@@ -10,15 +10,15 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould: XCTestCase {
-    
+
     var context: ApplicationTestBuilder.Context!
     var response: APISyncResponse!
     var dealer: APIDealer!
     var dealerData: ExtendedDealerData!
-    
+
     override func setUp() {
         super.setUp()
-        
+
         response = APISyncResponse.randomWithoutDeletions
         dealer = APIDealer.random
         dealer.links = nil
@@ -34,25 +34,25 @@ class WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould: 
         let identifier = Dealer.Identifier(dealer.identifier)
         context.application.fetchExtendedDealerData(for: identifier) { self.dealerData = $0 }
     }
-    
+
     func testProvideNilTwitterUsernameWhenEmptyHandleProvided() {
         XCTAssertNil(dealerData.twitterUsername)
     }
-    
+
     func testProvideNilTelegramUsernameWhenEmptyHandleProvided() {
         XCTAssertNil(dealerData.telegramUsername)
     }
-    
+
     func testProvideNilAboutTheArtistTextWhenEmptyDescriptionProvided() {
         XCTAssertNil(dealerData.aboutTheArtist)
     }
-    
+
     func testProvideNilAboutTheArtDescriptionWhenEmptyDescriptionProvided() {
         XCTAssertNil(dealerData.aboutTheArt)
     }
-    
+
     func testProvideNilAboutTheArtCaptionWhenEmptyCaptionProvided() {
         XCTAssertNil(dealerData.artPreviewCaption)
     }
-    
+
 }

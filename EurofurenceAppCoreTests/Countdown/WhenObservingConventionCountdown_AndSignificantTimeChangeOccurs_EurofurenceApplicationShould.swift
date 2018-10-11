@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenObservingConventionCountdown_AndSignificantTimeChangeOccurs_EurofurenceApplicationShould: XCTestCase {
-    
+
     func testUpdateTheObserversWithTheNewCountdownInterval() {
         let observer = CapturingConventionCountdownServiceObserver()
         let clockTime = Date.random
@@ -21,8 +21,8 @@ class WhenObservingConventionCountdown_AndSignificantTimeChangeOccurs_Eurofurenc
         expected = .random
         context.dateDistanceCalculator.stubDistance(between: clockTime, and: context.conventionStartDateRepository.conventionStartDate, with: expected)
         context.significantTimeChangeAdapter.simulateSignificantTimeChange()
-        
+
         XCTAssertEqual(expected, observer.capturedDaysRemaining)
     }
-    
+
 }

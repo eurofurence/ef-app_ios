@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenDeletingTrack_AfterSuccessfulSync_ApplicationShould: XCTestCase {
-    
+
     func testTellTheStoreToDeleteTheTrack() {
         let dataStore = CapturingEurofurenceDataStore()
         var response = APISyncResponse.randomWithoutDeletions
@@ -21,8 +21,8 @@ class WhenDeletingTrack_AfterSuccessfulSync_ApplicationShould: XCTestCase {
         response.tracks.deleted = [trackToDelete]
         context.refreshLocalStore()
         context.syncAPI.simulateSuccessfulSync(response)
-        
+
         XCTAssertEqual([trackToDelete], dataStore.transaction.deletedTracks)
     }
-    
+
 }

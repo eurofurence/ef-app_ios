@@ -11,10 +11,10 @@ import EurofurenceAppCore
 import Foundation
 
 class CapturingScheduleDayComponent: ScheduleDayComponent {
-    
+
     private(set) var capturedTitle: String?
     func setDayTitle(_ title: String) {
         capturedTitle = title
     }
-    
+
 }

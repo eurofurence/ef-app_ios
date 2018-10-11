@@ -11,9 +11,9 @@ import EurofurenceAppCore
 import RandomDataGeneration
 
 extension EventDescriptionViewModel: RandomValueProviding {
-    
+
     public static var random: EventDescriptionViewModel {
         return EventDescriptionViewModel(contents: .random)
     }
-    
+
 }

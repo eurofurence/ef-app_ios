@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class InOrderToSupportSponsorTag_ApplicationShould: XCTestCase {
-    
+
     func testIndicateItIsSponsorEventWhenTagPresent() {
         var syncResponse = APISyncResponse.randomWithoutDeletions
         let randomEvent = syncResponse.events.changed.randomElement()
@@ -22,10 +22,10 @@ class InOrderToSupportSponsorTag_ApplicationShould: XCTestCase {
         let eventsObserver = CapturingEventsServiceObserver()
         context.application.add(eventsObserver)
         let observedEvent = eventsObserver.allEvents.first
-        
+
         XCTAssertEqual(true, observedEvent?.isSponsorOnly)
     }
-    
+
     func testNotIndicateItIsSponsorEventWhenTagNotPresent() {
         var syncResponse = APISyncResponse.randomWithoutDeletions
         let randomEvent = syncResponse.events.changed.randomElement()
@@ -37,8 +37,8 @@ class InOrderToSupportSponsorTag_ApplicationShould: XCTestCase {
         let eventsObserver = CapturingEventsServiceObserver()
         context.application.add(eventsObserver)
         let observedEvent = eventsObserver.allEvents.first
-        
+
         XCTAssertEqual(false, observedEvent?.isSponsorOnly)
     }
-    
+
 }

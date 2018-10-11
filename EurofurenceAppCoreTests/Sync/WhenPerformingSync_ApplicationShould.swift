@@ -10,35 +10,35 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenPerformingSync_ApplicationShould: XCTestCase {
-    
+
     var context: ApplicationTestBuilder.Context!
     var refreshObserver: CapturingRefreshServiceObserver!
-    
+
     override func setUp() {
         super.setUp()
-        
+
         context = ApplicationTestBuilder().build()
         refreshObserver = CapturingRefreshServiceObserver()
         context.application.add(refreshObserver)
     }
-    
+
     func testTellRefreshServiceObserversRefreshStarted() {
         context.refreshLocalStore()
         XCTAssertTrue(refreshObserver.toldDidBeginRefreshing)
     }
-    
+
     func testTellRefreshServiceObserversWhenSyncFinishesSuccessfully() {
         context.refreshLocalStore()
         context.syncAPI.simulateSuccessfulSync(.randomWithoutDeletions)
-        
+
         XCTAssertTrue(refreshObserver.toldDidFinishRefreshing)
     }
-    
+
     func testTellRefreshServiceObserversWhenSyncFails() {
         context.refreshLocalStore()
         context.syncAPI.simulateUnsuccessfulSync()
-        
+
         XCTAssertTrue(refreshObserver.toldDidFinishRefreshing)
     }
-    
+
 }

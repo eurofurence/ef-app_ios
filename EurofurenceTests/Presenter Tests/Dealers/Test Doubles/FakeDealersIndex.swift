@@ -10,22 +10,22 @@ import EurofurenceAppCore
 import Foundation
 
 class FakeDealersIndex: DealersIndex {
-    
+
     let alphabetisedDealers: [AlphabetisedDealersGroup]
-    
+
     init(alphabetisedDealers: [AlphabetisedDealersGroup] = .random) {
         self.alphabetisedDealers = alphabetisedDealers
     }
-    
+
     let alphabetisedDealersSearchResult: [AlphabetisedDealersGroup] = .random
     private(set) var capturedSearchTerm: String?
     func performSearch(term: String) {
         capturedSearchTerm = term
     }
-    
+
     func setDelegate(_ delegate: DealersIndexDelegate) {
         delegate.alphabetisedDealersDidChange(to: alphabetisedDealers)
         delegate.indexDidProduceSearchResults(alphabetisedDealersSearchResult)
     }
-    
+
 }

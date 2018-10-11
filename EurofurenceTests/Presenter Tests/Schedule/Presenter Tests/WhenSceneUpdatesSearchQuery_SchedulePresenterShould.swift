@@ -11,7 +11,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenSceneUpdatesSearchQuery_SchedulePresenterShould: XCTestCase {
-    
+
     func testTellTheSearchableViewModelToUpdateItsResults() {
         let searchViewModel = CapturingScheduleSearchViewModel()
         let interactor = FakeScheduleInteractor(searchViewModel: searchViewModel)
@@ -19,8 +19,8 @@ class WhenSceneUpdatesSearchQuery_SchedulePresenterShould: XCTestCase {
         context.simulateSceneDidLoad()
         let expected = String.random
         context.simulateSceneDidUpdateSearchQuery(expected)
-        
+
         XCTAssertEqual(expected, searchViewModel.capturedSearchInput)
     }
-    
+
 }

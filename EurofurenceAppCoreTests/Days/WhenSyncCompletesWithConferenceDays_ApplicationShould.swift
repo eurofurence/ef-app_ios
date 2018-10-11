@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenSyncCompletesWithConferenceDays_ApplicationShould: XCTestCase {
-    
+
     func testProvideTheAdaptedDaysToObserversInDateOrder() {
         let context = ApplicationTestBuilder().build()
         let syncResponse = APISyncResponse.randomWithoutDeletions
@@ -19,10 +19,10 @@ class WhenSyncCompletesWithConferenceDays_ApplicationShould: XCTestCase {
         schedule.setDelegate(delegate)
         context.performSuccessfulSync(response: syncResponse)
         let expected = context.makeExpectedDays(from: syncResponse)
-        
+
         XCTAssertEqual(expected, delegate.allDays)
     }
-    
+
     func testNotUpdateTheDelegateIfTheDaysHaveNotChangedBetweenSyncs() {
         let context = ApplicationTestBuilder().build()
         let syncResponse = APISyncResponse.randomWithoutDeletions
@@ -32,10 +32,10 @@ class WhenSyncCompletesWithConferenceDays_ApplicationShould: XCTestCase {
         context.performSuccessfulSync(response: syncResponse)
         delegate.allDays.removeAll()
         context.performSuccessfulSync(response: syncResponse)
-        
+
         XCTAssertEqual([], delegate.allDays)
     }
-    
+
     func testNotUpdateTheDelegateIfTheDaysHaveNotChangedBetweenDataStoreAndSync() {
         let syncResponse = APISyncResponse.randomWithoutDeletions
         let dataStore = CapturingEurofurenceDataStore()
@@ -46,10 +46,10 @@ class WhenSyncCompletesWithConferenceDays_ApplicationShould: XCTestCase {
         schedule.setDelegate(delegate)
         delegate.allDays.removeAll()
         context.performSuccessfulSync(response: syncResponse)
-        
+
         XCTAssertEqual([], delegate.allDays)
     }
-    
+
     func testProvideLateAddedObserversWithAdaptedDays() {
         let context = ApplicationTestBuilder().build()
         let syncResponse = APISyncResponse.randomWithoutDeletions
@@ -58,16 +58,16 @@ class WhenSyncCompletesWithConferenceDays_ApplicationShould: XCTestCase {
         let schedule = context.application.makeEventsSchedule()
         schedule.setDelegate(delegate)
         let expected = context.makeExpectedDays(from: syncResponse)
-        
+
         XCTAssertEqual(expected, delegate.allDays)
     }
-    
+
     func testSaveTheConferenceDaysToTheDataStore() {
         let context = ApplicationTestBuilder().build()
         let syncResponse = APISyncResponse.randomWithoutDeletions
         context.performSuccessfulSync(response: syncResponse)
-        
+
         XCTAssertTrue(context.dataStore.didSave(syncResponse.conferenceDays.changed))
     }
-    
+
 }

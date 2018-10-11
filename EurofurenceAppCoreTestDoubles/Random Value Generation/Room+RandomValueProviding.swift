@@ -11,9 +11,9 @@ import Foundation
 import RandomDataGeneration
 
 extension Room: RandomValueProviding {
-    
+
     public static var random: Room {
         return Room(name: .random)
     }
-    
+
 }

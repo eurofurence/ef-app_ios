@@ -11,9 +11,9 @@ import Foundation
 import RandomDataGeneration
 
 extension Link: RandomValueProviding {
-    
+
     public static var random: Link {
         return Link(name: .random, type: .webExternal, contents: Int.random)
     }
-    
+
 }

@@ -13,25 +13,25 @@ import Foundation
 import UIKit.UIViewController
 
 class EventDetailPresenterTestBuilder {
-    
+
     struct Context {
         var producedViewController: UIViewController
         var scene: CapturingEventDetailScene
         var hapticEngine: CapturingHapticEngine
     }
-    
+
     private var interactor: EventDetailInteractor
-    
+
     init() {
         interactor = DummyEventDetailInteractor()
     }
-    
+
     @discardableResult
     func with(_ interactor: EventDetailInteractor) -> EventDetailPresenterTestBuilder {
         self.interactor = interactor
         return self
     }
-    
+
     func build(for event: Event = .random) -> Context {
         let sceneFactory = StubEventDetailSceneFactory()
         let hapticEngine = CapturingHapticEngine()
@@ -41,18 +41,18 @@ class EventDetailPresenterTestBuilder {
             .with(hapticEngine)
             .build()
             .makeEventDetailModule(for: event.identifier)
-        
+
         return Context(producedViewController: module,
                        scene: sceneFactory.interface,
                        hapticEngine: hapticEngine)
     }
-    
+
 }
 
 extension EventDetailPresenterTestBuilder.Context {
-    
+
     func simulateSceneDidLoad() {
         scene.simulateSceneDidLoad()
     }
-    
+
 }

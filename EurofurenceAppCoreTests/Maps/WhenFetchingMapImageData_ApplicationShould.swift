@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenFetchingMapImageData_ApplicationShould: XCTestCase {
-    
+
     func testReturnTheDataForTheMapsImageIdentifier() {
         let context = ApplicationTestBuilder().build()
         let syncResponse = APISyncResponse.randomWithoutDeletions
@@ -19,8 +19,8 @@ class WhenFetchingMapImageData_ApplicationShould: XCTestCase {
         var mapImageData: Data?
         context.application.fetchImagePNGDataForMap(identifier: Map.Identifier(randomMap.element.identifier)) { mapImageData = $0 }
         let imageEntity = context.imageRepository.loadImage(identifier: randomMap.element.imageIdentifier)
-        
+
         XCTAssertEqual(imageEntity?.pngImageData, mapImageData)
     }
-    
+
 }

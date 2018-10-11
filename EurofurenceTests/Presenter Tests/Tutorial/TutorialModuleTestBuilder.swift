@@ -12,7 +12,7 @@ import EurofurenceAppCoreTestDoubles
 import UIKit.UIViewController
 
 class TutorialModuleTestBuilder {
-    
+
     struct Context {
         var tutorialViewController: UIViewController
         var tutorialSceneFactory: StubTutorialSceneFactory
@@ -24,7 +24,7 @@ class TutorialModuleTestBuilder {
         var tutorialStateProviding: StubFirstTimeLaunchStateProvider
         var pushRequesting: CapturingPushPermissionsRequester
     }
-    
+
     let alertRouter = CapturingAlertRouter()
     let stateProviding = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: false)
     let pushRequesting = CapturingPushPermissionsRequester()
@@ -33,19 +33,19 @@ class TutorialModuleTestBuilder {
     let delegate = CapturingTutorialModuleDelegate()
     var networkReachability: NetworkReachability = ReachableWiFiNetwork()
     var pushPermissionsRequestStateProviding: WitnessedTutorialPushPermissionsRequest = UserNotAcknowledgedPushPermissions()
-    
+
     @discardableResult
     func with(_ networkReachability: NetworkReachability) -> TutorialModuleTestBuilder {
         self.networkReachability = networkReachability
         return self
     }
-    
+
     @discardableResult
     func with(_ pushPermissionsRequestStateProviding: WitnessedTutorialPushPermissionsRequest) -> TutorialModuleTestBuilder {
         self.pushPermissionsRequestStateProviding = pushPermissionsRequestStateProviding
         return self
     }
-    
+
     func build() -> TutorialModuleTestBuilder.Context {
         let vc = TutorialModuleBuilder()
             .with(tutorialSceneFactory)
@@ -57,7 +57,7 @@ class TutorialModuleTestBuilder {
             .with(pushPermissionsRequestStateProviding)
             .build()
             .makeTutorialModule(delegate)
-        
+
         return Context(tutorialViewController: vc,
                        tutorialSceneFactory: tutorialSceneFactory,
                        delegate: delegate,
@@ -68,17 +68,17 @@ class TutorialModuleTestBuilder {
                        tutorialStateProviding: stateProviding,
                        pushRequesting: pushRequesting)
     }
-    
+
 }
 
 extension TutorialModuleTestBuilder.Context {
-    
+
     func tapPrimaryButton() {
         tutorial.tutorialPage.simulateTappingPrimaryActionButton()
     }
-    
+
     func tapSecondaryButton() {
         tutorial.tutorialPage.simulateTappingSecondaryActionButton()
     }
-    
+
 }

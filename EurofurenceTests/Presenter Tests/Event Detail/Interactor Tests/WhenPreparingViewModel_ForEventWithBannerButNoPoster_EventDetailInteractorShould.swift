@@ -12,7 +12,7 @@ import EurofurenceAppCoreTestDoubles
 import XCTest
 
 class WhenPreparingViewModel_ForEventWithBannerButNoPoster_EventDetailInteractorShould: XCTestCase {
-    
+
     func testProduceGraphicComponentUsingBannerData() {
         var event = Event.random
         let bannerGraphicData = Data.random
@@ -21,8 +21,8 @@ class WhenPreparingViewModel_ForEventWithBannerButNoPoster_EventDetailInteractor
         let context = EventDetailInteractorTestBuilder().build(for: event)
         let visitor = CapturingEventDetailViewModelVisitor()
         context.viewModel?.describe(componentAt: 0, to: visitor)
-        
+
         XCTAssertEqual([context.makeExpectedEventGraphicViewModel()], visitor.visitedViewModels)
     }
-    
+
 }

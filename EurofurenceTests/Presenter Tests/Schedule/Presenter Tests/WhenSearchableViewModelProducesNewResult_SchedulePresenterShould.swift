@@ -11,7 +11,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenSearchableViewModelProducesNewResult_SchedulePresenterShould: XCTestCase {
-    
+
     func testTellTheSceneToBindExpectedNumberOfResultsPerSection() {
         let searchViewModel = CapturingScheduleSearchViewModel()
         let interactor = FakeScheduleInteractor(searchViewModel: searchViewModel)
@@ -20,8 +20,8 @@ class WhenSearchableViewModelProducesNewResult_SchedulePresenterShould: XCTestCa
         let results = [ScheduleEventGroupViewModel].random
         let expected = results.map({ $0.events.count })
         searchViewModel.simulateSearchResultsUpdated(results)
-        
+
         XCTAssertEqual(expected, context.scene.boundSearchItemsPerSection)
     }
-    
+
 }

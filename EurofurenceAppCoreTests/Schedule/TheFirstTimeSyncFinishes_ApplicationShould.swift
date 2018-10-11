@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class TheFirstTimeSyncFinishes_ApplicationShould: XCTestCase {
-    
+
     func testRestrictEventsToTheFirstConDayWhenRunningBeforeConStarts() {
         let response = APISyncResponse.randomWithoutDeletions
         let firstDay = response.conferenceDays.changed.sorted(by: { $0.date < $1.date }).first!
@@ -21,8 +21,8 @@ class TheFirstTimeSyncFinishes_ApplicationShould: XCTestCase {
         context.performSuccessfulSync(response: response)
         let expectedEvents = response.events.changed.filter({ $0.dayIdentifier == firstDay.identifier })
         let expected = context.makeExpectedEvents(from: expectedEvents, response: response)
-        
+
         XCTAssertEqual(expected, delegate.events)
     }
-    
+
 }

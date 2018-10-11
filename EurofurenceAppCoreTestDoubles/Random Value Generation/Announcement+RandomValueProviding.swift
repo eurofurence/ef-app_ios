@@ -10,20 +10,20 @@ import EurofurenceAppCore
 import RandomDataGeneration
 
 extension Announcement: RandomValueProviding {
-    
+
     public static var random: Announcement {
         return Announcement(identifier: .random,
                              title: .random,
                              content: .random,
                              date: .random)
     }
-    
+
 }
 
 extension Announcement.Identifier: RandomValueProviding {
-    
+
     public static var random: Announcement.Identifier {
         return Announcement.Identifier(.random)
     }
-    
+
 }

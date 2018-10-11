@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import Foundation
 
 public struct AppDataBuilder {
-    
+
     public static func makeMessage(identifier: String = "Identifier",
                                    authorName: String = "Author",
                                    receivedDateTime: Date = Date(),
@@ -24,7 +24,7 @@ public struct AppDataBuilder {
                        contents: contents,
                        isRead: read)
     }
-    
+
     public static func makeRandomNumberOfMessages() -> [Message] {
         return (0...Int.random(upperLimit: 10)).map { (number) in
             return makeMessage(identifier: String(describing: number),
@@ -35,5 +35,5 @@ public struct AppDataBuilder {
                 read: number % 2 == 0)
         }
     }
-    
+
 }

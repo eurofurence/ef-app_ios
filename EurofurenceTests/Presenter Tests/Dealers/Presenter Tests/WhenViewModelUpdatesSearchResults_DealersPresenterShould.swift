@@ -11,7 +11,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenViewModelUpdatesSearchResults_DealersPresenterShould: XCTestCase {
-    
+
     func testBindTheCountOfDealersPerGroupFromTheViewModelOntoTheScene() {
         let dealerGroups = [DealersGroupViewModel].random
         let searchViewModel = CapturingDealersSearchViewModel(dealerGroups: dealerGroups)
@@ -19,10 +19,10 @@ class WhenViewModelUpdatesSearchResults_DealersPresenterShould: XCTestCase {
         let context = DealersPresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
         let expected = dealerGroups.map { $0.dealers.count }
-        
+
         XCTAssertEqual(expected, context.scene.capturedDealersPerSectionToBindToSearchResults)
     }
-    
+
     func testBindTheSectionIndexTitlesFromTheViewModelOntoTheScene() {
         let searchViewModel = CapturingDealersSearchViewModel()
         let interactor = FakeDealersInteractor(searchViewModel: searchViewModel)
@@ -31,5 +31,5 @@ class WhenViewModelUpdatesSearchResults_DealersPresenterShould: XCTestCase {
 
         XCTAssertEqual(searchViewModel.sectionIndexTitles, context.scene.capturedSectionIndexTitlesToBindToSearchResults)
     }
-    
+
 }

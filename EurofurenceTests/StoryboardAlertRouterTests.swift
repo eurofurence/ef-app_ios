@@ -23,7 +23,7 @@ class CapturingViewController: UIViewController {
         animatedTransition = flag
         capturedPresentationCompletionHandler = completion
     }
-    
+
     private(set) var didDismissPresentedController = false
     private(set) var didDismissUsingAnimations = false
     private(set) var capturedDismissalCompletionHandler: (() -> Void)?
@@ -32,7 +32,7 @@ class CapturingViewController: UIViewController {
         didDismissUsingAnimations = flag
         capturedDismissalCompletionHandler = completion
     }
-    
+
     var _presentedViewController: UIViewController?
     override var presentedViewController: UIViewController? { return _presentedViewController }
 
@@ -51,7 +51,7 @@ class StoryboardAlertRouterTests: XCTestCase {
         window.rootViewController = capturingViewController
         alertRouter = StoryboardRouters(window: window).alertRouter
     }
-    
+
     func testPresentingAlertShouldShowAlertControllerWithAlertStyleOntoRootViewController() {
         alertRouter.show(Alert(title: "", message: ""))
         XCTAssertEqual(capturingViewController.capturedPresentedAlertViewController?.preferredStyle, .alert)
@@ -97,26 +97,26 @@ class StoryboardAlertRouterTests: XCTestCase {
         XCTAssertEqual(firstActionTitle, actions?.first?.title)
         XCTAssertEqual(secondActionTitle, actions?.last?.title)
     }
-    
+
     func testWhenPresentationCompletesTheHandlerIsInvoked() {
         var alert = Alert(title: "", message: "")
         var invoked = false
         alert.onCompletedPresentation = { _ in invoked = true }
         alertRouter.show(alert)
         capturingViewController.capturedPresentationCompletionHandler?()
-        
+
         XCTAssertTrue(invoked)
     }
-    
+
     func testPresentationCompletedHandleNotInvokedUntilCompletionHandlerRan() {
         var alert = Alert(title: "", message: "")
         var invoked = false
         alert.onCompletedPresentation = { _ in invoked = true }
         alertRouter.show(alert)
-        
+
         XCTAssertFalse(invoked)
     }
-    
+
     func testDismissingDismissableTellsRootControllerToDismissPresentedController() {
         var alert = Alert(title: "", message: "")
         var dismissable: AlertDismissable?
@@ -124,19 +124,19 @@ class StoryboardAlertRouterTests: XCTestCase {
         alertRouter.show(alert)
         capturingViewController.capturedPresentationCompletionHandler?()
         dismissable?.dismiss()
-        
+
         XCTAssertTrue(capturingViewController.didDismissPresentedController)
     }
-    
+
     func testRootControllerDoesNotInvokeDismissalUntilToldTo() {
         var alert = Alert(title: "", message: "")
         alert.onCompletedPresentation = { _ in }
         alertRouter.show(alert)
         capturingViewController.capturedPresentationCompletionHandler?()
-        
+
         XCTAssertFalse(capturingViewController.didDismissPresentedController)
     }
-    
+
     func testDismissingAlertsUseAnimations() {
         var alert = Alert(title: "", message: "")
         var dismissable: AlertDismissable?
@@ -144,10 +144,10 @@ class StoryboardAlertRouterTests: XCTestCase {
         alertRouter.show(alert)
         capturingViewController.capturedPresentationCompletionHandler?()
         dismissable?.dismiss()
-        
+
         XCTAssertTrue(capturingViewController.didDismissUsingAnimations)
     }
-    
+
     func testDismissingAlertsInvokesHandlerOnCompletion() {
         var alert = Alert(title: "", message: "")
         var dismissable: AlertDismissable?
@@ -155,12 +155,12 @@ class StoryboardAlertRouterTests: XCTestCase {
         alertRouter.show(alert)
         capturingViewController.capturedPresentationCompletionHandler?()
         var invoked = false
-        dismissable?.dismiss() { invoked = true }
+        dismissable?.dismiss { invoked = true }
         capturingViewController.capturedDismissalCompletionHandler?()
-        
+
         XCTAssertTrue(invoked)
     }
-    
+
     func testDismissingAlertDoesNotInvokeHandlerUntilDismissalFinishes() {
         var alert = Alert(title: "", message: "")
         var dismissable: AlertDismissable?
@@ -168,19 +168,19 @@ class StoryboardAlertRouterTests: XCTestCase {
         alertRouter.show(alert)
         capturingViewController.capturedPresentationCompletionHandler?()
         var invoked = false
-        dismissable?.dismiss() { invoked = true }
-        
+        dismissable?.dismiss { invoked = true }
+
         XCTAssertFalse(invoked)
     }
-    
+
     func testWhenRootControllerHasPresentedSomethingThePresentedControllerIsToldToPresentAlert() {
         let presented = CapturingViewController()
         capturingViewController._presentedViewController = presented
         alertRouter.show(Alert(title: "", message: ""))
-        
+
         XCTAssertNotNil(presented.capturedPresentedAlertViewController)
     }
-    
+
     func testWhenRootControllerHasPresentedSomethingDismissingTheAlertShouldDismissItOnThePresentedController() {
         let presented = CapturingViewController()
         capturingViewController._presentedViewController = presented
@@ -190,8 +190,8 @@ class StoryboardAlertRouterTests: XCTestCase {
         alertRouter.show(alert)
         presented.capturedPresentationCompletionHandler?()
         dismissable?.dismiss()
-        
+
         XCTAssertTrue(presented.didDismissPresentedController)
     }
-    
+
 }

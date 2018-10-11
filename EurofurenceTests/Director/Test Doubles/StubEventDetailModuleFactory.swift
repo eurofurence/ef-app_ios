@@ -12,12 +12,12 @@ import EurofurenceAppCoreTestDoubles
 import UIKit
 
 class StubEventDetailModuleFactory: EventDetailModuleProviding {
-    
+
     let stubInterface = UIViewController()
     private(set) var capturedModel: Event.Identifier?
     func makeEventDetailModule(for event: Event.Identifier) -> UIViewController {
         capturedModel = event
         return stubInterface
     }
-    
+
 }

@@ -12,7 +12,7 @@ import EurofurenceAppCoreTestDoubles
 import XCTest
 
 class WhenSceneTapsMapPosition_ThatHasMultipleOptions_MapsPresenterShould: XCTestCase {
-    
+
     func testTellTheSceneToShowTheOptions() {
         let identifier = Map.Identifier.random
         let interactor = FakeMapDetailInteractor(expectedMapIdentifier: identifier)
@@ -24,13 +24,13 @@ class WhenSceneTapsMapPosition_ThatHasMultipleOptions_MapsPresenterShould: XCTes
         context.simulateSceneDidDidTapMap(at: randomLocation)
         let contentOptions = StubMapContentOptionsViewModel.random
         interactor.viewModel.resolvePositionalContent(with: contentOptions)
-        
+
         XCTAssertEqual(contentOptions.optionsHeading, context.scene.capturedOptionsHeading)
         XCTAssertEqual(contentOptions.options, context.scene.capturedOptionsToShow)
         XCTAssertEqual(x, context.scene.capturedOptionsPresentationX.or(.random), accuracy: .ulpOfOne)
         XCTAssertEqual(y, context.scene.capturedOptionsPresentationY.or(.random), accuracy: .ulpOfOne)
     }
-    
+
     func testTellTheViewModelWhichOptionIsSelected() {
         let identifier = Map.Identifier.random
         let interactor = FakeMapDetailInteractor(expectedMapIdentifier: identifier)
@@ -42,8 +42,8 @@ class WhenSceneTapsMapPosition_ThatHasMultipleOptions_MapsPresenterShould: XCTes
         interactor.viewModel.resolvePositionalContent(with: contentOptions)
         let selectedOptionIndex = contentOptions.options.randomElement().index
         context.simulateSceneTappedMapOption(at: selectedOptionIndex)
-        
+
         XCTAssertEqual(selectedOptionIndex, contentOptions.selectedOptionIndex)
     }
-    
+
 }

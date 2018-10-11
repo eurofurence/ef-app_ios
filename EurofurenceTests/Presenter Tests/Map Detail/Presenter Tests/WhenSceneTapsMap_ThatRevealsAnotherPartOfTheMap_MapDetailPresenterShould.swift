@@ -12,7 +12,7 @@ import EurofurenceAppCoreTestDoubles
 import XCTest
 
 class WhenSceneTapsMap_ThatRevealsAnotherPartOfTheMap_MapDetailPresenterShould: XCTestCase {
-    
+
     func testTellTheMapToFocusOnSpecificPoint() {
         let identifier = Map.Identifier.random
         let interactor = FakeMapDetailInteractor(expectedMapIdentifier: identifier)
@@ -22,8 +22,8 @@ class WhenSceneTapsMap_ThatRevealsAnotherPartOfTheMap_MapDetailPresenterShould: 
         context.simulateSceneDidDidTapMap(at: randomLocation)
         let expected = MapCoordinate(x: .random, y: .random)
         interactor.viewModel.resolvePositionalContent(with: expected)
-        
+
         XCTAssertEqual(expected, context.scene.capturedMapPositionToFocus)
     }
-    
+
 }

@@ -13,7 +13,7 @@ import Foundation
 class StubFirstTimeLaunchStateProvider: UserCompletedTutorialStateProviding {
 
     var userHasCompletedTutorial: Bool
-    
+
     init(userHasCompletedTutorial: Bool) {
         self.userHasCompletedTutorial = userHasCompletedTutorial
     }
@@ -22,5 +22,5 @@ class StubFirstTimeLaunchStateProvider: UserCompletedTutorialStateProviding {
     func markTutorialAsComplete() {
         didMarkTutorialAsComplete = true
     }
-    
+
 }

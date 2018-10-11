@@ -40,7 +40,7 @@ class CapturingFirebaseAdapter: FirebaseAdapter {
     var subscribedToTestNotifications: Bool {
         return didSubscribeToTopic(.test)
     }
-    
+
     var subscribedToTestAllNotifications: Bool {
         return didSubscribeToTopic(.testAll)
     }
@@ -48,15 +48,15 @@ class CapturingFirebaseAdapter: FirebaseAdapter {
     var subscribedToLiveNotifications: Bool {
         return didSubscribeToTopic(.live)
     }
-    
+
     var subscribedToLiveAllNotifications: Bool {
         return didSubscribeToTopic(.liveAll)
     }
-    
+
     var subscribedToLiveiOSNotifications: Bool {
         return didSubscribeToTopic(.liveiOS)
     }
-    
+
     var subscribedToTestiOSNotifications: Bool {
         return didSubscribeToTopic(.testiOS)
     }
@@ -64,7 +64,7 @@ class CapturingFirebaseAdapter: FirebaseAdapter {
     var unsubscribedFromTestNotifications: Bool {
         return didUnsubscribeFromTopic(.test)
     }
-    
+
     var unsubscribedFromTestAllNotifications: Bool {
         return didUnsubscribeFromTopic(.testAll)
     }
@@ -72,13 +72,13 @@ class CapturingFirebaseAdapter: FirebaseAdapter {
     var unsubscribedFromLiveNotifications: Bool {
         return didUnsubscribeFromTopic(.live)
     }
-    
+
     var unsubscribedFromLiveAllNotifications: Bool {
         return didUnsubscribeFromTopic(.liveAll)
     }
-    
+
     var unsubscribedFromTestiOSNotifications: Bool {
         return didUnsubscribeFromTopic(.testiOS)
     }
-    
+
 }

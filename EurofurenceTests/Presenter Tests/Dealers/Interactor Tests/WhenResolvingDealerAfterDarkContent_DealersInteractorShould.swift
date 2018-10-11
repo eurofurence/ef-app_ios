@@ -12,7 +12,7 @@ import EurofurenceAppCoreTestDoubles
 import XCTest
 
 class WhenResolvingDealerAfterDarkContent_DealersInteractorShould: XCTestCase {
-    
+
     func testIdentifyWhetherDealerContainsAfterDarkContentFromModel() {
         let dealer = Dealer.random
         let group = AlphabetisedDealersGroup(indexingString: .random, dealers: [dealer])
@@ -24,8 +24,8 @@ class WhenResolvingDealerAfterDarkContent_DealersInteractorShould: XCTestCase {
         let delegate = CapturingDealersViewModelDelegate()
         viewModel?.setDelegate(delegate)
         let dealerViewModel = delegate.capturedDealerViewModel(at: IndexPath(item: 0, section: 0))
-        
+
         XCTAssertEqual(dealer.isAfterDark, dealerViewModel?.isAfterDarkContentPresent)
     }
-    
+
 }

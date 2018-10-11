@@ -19,11 +19,11 @@ class TutorialViewControllerTests: XCTestCase {
 
         tutorialController = PhoneTutorialSceneFactory().makeTutorialScene() as? TutorialViewController
     }
-    
+
     func testTheViewControllerShouldPreferTheLightStatusBarStyle() {
         XCTAssertEqual(tutorialController.preferredStatusBarStyle, .lightContent)
     }
-    
+
     func testTheViewControllerShouldUseTheScrollingPagingStyle() {
         XCTAssertEqual(tutorialController.transitionStyle, .scroll)
     }
@@ -46,5 +46,5 @@ class TutorialViewControllerTests: XCTestCase {
 
         XCTAssertEqual(true, tutorialController.viewControllers?.contains(viewController))
     }
-    
+
 }

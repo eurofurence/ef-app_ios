@@ -12,7 +12,7 @@ import EurofurenceAppCoreTestDoubles
 import XCTest
 
 class WhenSceneSelectsEventFromSearchViewModel_SchedulePresenterShould: XCTestCase {
-    
+
     func testTellModuleEventWithResolvedIdentifierSelected() {
         let searchViewModel = CapturingScheduleSearchViewModel()
         let interactor = FakeScheduleInteractor(searchViewModel: searchViewModel)
@@ -26,17 +26,17 @@ class WhenSceneSelectsEventFromSearchViewModel_SchedulePresenterShould: XCTestCa
         let selectedIdentifier = Event.Identifier.random
         searchViewModel.stub(selectedIdentifier, at: indexPath)
         context.simulateSceneDidSelectSearchResult(at: indexPath)
-        
+
         XCTAssertEqual(selectedIdentifier, context.delegate.capturedEventIdentifier)
     }
-    
+
     func testTellTheSceneToDeselectTheSelectedSearchResult() {
         let context = SchedulePresenterTestBuilder().build()
         context.simulateSceneDidLoad()
         let indexPath = IndexPath.random
         context.simulateSceneDidSelectSearchResult(at: indexPath)
-        
+
         XCTAssertEqual(indexPath, context.scene.deselectedSearchResultIndexPath)
     }
-    
+
 }

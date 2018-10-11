@@ -10,24 +10,24 @@ import EurofurenceAppCore
 import Foundation
 
 class FakeApplicationNotificationHandling: ApplicationNotificationHandling {
-    
+
     private struct RegisteredAction {
-        var payload: [String : String]
+        var payload: [String: String]
         var result: ApplicationPushActionResult
     }
-    
+
     private var actions = [RegisteredAction]()
-    func handleRemoteNotification(payload: [String : String], completionHandler: @escaping (ApplicationPushActionResult) -> Void) {
+    func handleRemoteNotification(payload: [String: String], completionHandler: @escaping (ApplicationPushActionResult) -> Void) {
         guard let action = actions.first(where: { $0.payload == payload }) else { return }
         completionHandler(action.result)
     }
-    
+
 }
 
 extension FakeApplicationNotificationHandling {
-    
-    func stub(_ result: ApplicationPushActionResult, for payload: [String : String]) {
+
+    func stub(_ result: ApplicationPushActionResult, for payload: [String: String]) {
         actions.append(RegisteredAction(payload: payload, result: result))
     }
-    
+
 }

@@ -11,17 +11,17 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenInstigatingPullToRefreshAction_SchedulePresenterShould: XCTestCase {
-    
+
     func testTellTheViewModelToRefresh() {
         let viewModel = CapturingScheduleViewModel.random
         let interactor = FakeScheduleInteractor(viewModel: viewModel)
         let context = SchedulePresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
         context.simulateSceneDidPerformRefreshAction()
-        
+
         XCTAssertTrue(viewModel.didPerformRefresh)
     }
-    
+
     func testShowTheRefreshIndicatorWhenRefreshBegins() {
         let viewModel = CapturingScheduleViewModel.random
         let interactor = FakeScheduleInteractor(viewModel: viewModel)
@@ -29,10 +29,10 @@ class WhenInstigatingPullToRefreshAction_SchedulePresenterShould: XCTestCase {
         context.simulateSceneDidLoad()
         context.simulateSceneDidPerformRefreshAction()
         viewModel.simulateScheduleRefreshDidBegin()
-        
+
         XCTAssertTrue(context.scene.didShowRefreshIndicator)
     }
-    
+
     func testHideTheRefreshIndicatorWhenRefreshFinishes() {
         let viewModel = CapturingScheduleViewModel.random
         let interactor = FakeScheduleInteractor(viewModel: viewModel)
@@ -41,8 +41,8 @@ class WhenInstigatingPullToRefreshAction_SchedulePresenterShould: XCTestCase {
         context.simulateSceneDidPerformRefreshAction()
         viewModel.simulateScheduleRefreshDidBegin()
         viewModel.simulateScheduleRefreshDidFinish()
-        
+
         XCTAssertTrue(context.scene.didHideRefreshIndicator)
     }
-    
+
 }

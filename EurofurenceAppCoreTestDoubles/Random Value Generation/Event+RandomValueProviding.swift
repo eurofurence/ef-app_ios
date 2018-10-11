@@ -11,7 +11,7 @@ import Foundation
 import RandomDataGeneration
 
 extension Event: RandomValueProviding {
-    
+
     public static var random: Event {
         let startDate = Date.random
         return Event(identifier: .random,
@@ -34,7 +34,7 @@ extension Event: RandomValueProviding {
                      isMainStage: .random,
                      isPhotoshoot: .random)
     }
-    
+
     public static var randomStandardEvent: Event {
         var event = Event.random
         event.isSponsorOnly = false
@@ -44,16 +44,16 @@ extension Event: RandomValueProviding {
         event.isMainStage = false
         event.isPhotoshoot = false
         event.isDealersDen = false
-        
+
         return event
     }
-    
+
 }
 
 extension Event.Identifier: RandomValueProviding {
-    
+
     public static var random: Event.Identifier {
         return Event.Identifier(.random)
     }
-    
+
 }

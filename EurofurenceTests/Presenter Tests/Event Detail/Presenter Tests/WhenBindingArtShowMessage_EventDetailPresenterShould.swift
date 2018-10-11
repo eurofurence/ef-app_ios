@@ -12,20 +12,20 @@ import EurofurenceAppCoreTestDoubles
 import XCTest
 
 struct StubArtShowEventViewModel: EventDetailViewModel {
-    
+
     var artShowMessageViewModel: EventArtShowMessageViewModel
-    
+
     var numberOfComponents: Int { return 1 }
     func setDelegate(_ delegate: EventDetailViewModelDelegate) { }
     func describe(componentAt index: Int, to visitor: EventDetailViewModelVisitor) { visitor.visit(artShowMessageViewModel
         ) }
     func favourite() { }
     func unfavourite() { }
-    
+
 }
 
 class WhenBindingArtShowMessage_EventDetailPresenterShould: XCTestCase {
-    
+
     func testBindTheMessageOntoTheComponent() {
         let event = Event.random
         let message = String.random
@@ -35,8 +35,8 @@ class WhenBindingArtShowMessage_EventDetailPresenterShould: XCTestCase {
         let context = EventDetailPresenterTestBuilder().with(interactor).build(for: event)
         context.simulateSceneDidLoad()
         context.scene.bindComponent(at: IndexPath(item: 0, section: 0))
-        
+
         XCTAssertEqual(message, context.scene.stubbedArtShowMessageComponent.capturedMessage)
     }
-    
+
 }

@@ -10,13 +10,13 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenObservingUpcomingEventsBeforeLoadingAnything: XCTestCase {
-    
+
     func testTheObserverIsProvidedWithEmptyUpcomingEvents() {
         let context = ApplicationTestBuilder().build()
         let observer = CapturingEventsServiceObserver()
         context.application.add(observer)
-        
+
         XCTAssertTrue(observer.wasProvidedWithEmptyUpcomingEvents)
     }
-    
+
 }

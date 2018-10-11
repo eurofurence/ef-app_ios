@@ -11,7 +11,7 @@ import Foundation
 import RandomDataGeneration
 
 extension APISyncResponse {
-    
+
     static var randomWithoutDeletions: APISyncResponse {
         let knowledge = APIKnowledgeGroup.makeRandomGroupsAndEntries()
         let rooms = [APIRoom].random
@@ -34,25 +34,25 @@ extension APISyncResponse {
                             bannerImageId: .random,
                             tags: .random)
         }
-        
+
         let dealers: APISyncDelta<APIDealer> = APISyncDelta(changed: .random)
         let maps: APISyncDelta<APIMap> = APISyncDelta(changed: .random)
-        
+
         var allImages: [APIImage] = events.compactMap({ $0.bannerImageId }).map({ APIImage(identifier: $0, internalReference: "") })
         allImages.append(contentsOf: events.compactMap({ $0.posterImageId }).map({ APIImage(identifier: $0, internalReference: "") }))
         allImages.append(contentsOf: dealers.changed.compactMap({ $0.artistImageId }).map({ APIImage(identifier: $0, internalReference: "") }))
         allImages.append(contentsOf: dealers.changed.compactMap({ $0.artistThumbnailImageId }).map({ APIImage(identifier: $0, internalReference: "") }))
         allImages.append(contentsOf: dealers.changed.compactMap({ $0.artPreviewImageId }).map({ APIImage(identifier: $0, internalReference: "") }))
         allImages.append(contentsOf: maps.changed.map({ APIImage(identifier: $0.imageIdentifier, internalReference: "") }))
-        
+
         let knowledgeEntryImages = knowledge.entries.reduce([String](), { $0 + $1.imageIdentifiers })
         let knowledgeEntryAPIImages = knowledgeEntryImages.map({ APIImage(identifier: $0, internalReference: "") })
         allImages.append(contentsOf: knowledgeEntryAPIImages)
-        
+
         let announcements = [APIAnnouncement].random
         let announcementImages = announcements.compactMap({ $0.imageIdentifier }).map({ APIImage(identifier: $0, internalReference: "") })
         allImages.append(contentsOf: announcementImages)
-        
+
         return APISyncResponse(knowledgeGroups: APISyncDelta(changed: knowledge.groups),
                                knowledgeEntries: APISyncDelta(changed: knowledge.entries),
                                announcements: APISyncDelta(changed: announcements),
@@ -64,11 +64,11 @@ extension APISyncResponse {
                                maps: maps,
                                images: APISyncDelta(changed: allImages))
     }
-    
+
 }
 
 extension APIKnowledgeGroup: RandomValueProviding {
-    
+
     public static var random: APIKnowledgeGroup {
         return APIKnowledgeGroup(identifier: .random,
                                  order: .random,
@@ -76,7 +76,7 @@ extension APIKnowledgeGroup: RandomValueProviding {
                                  groupDescription: .random,
                                  fontAwesomeCharacterAddress: "\(Int.random(upperLimit: 100))")
     }
-    
+
     static func makeRandomGroupsAndEntries() -> (groups: [APIKnowledgeGroup], entries: [APIKnowledgeEntry]) {
         let knowledgeGroups = [APIKnowledgeGroup].random
         var knowledgeEntries = [APIKnowledgeEntry]()
@@ -88,17 +88,17 @@ extension APIKnowledgeGroup: RandomValueProviding {
                 entry.groupIdentifier = group.identifier
                 return entry
             })
-            
+
             knowledgeEntries.append(contentsOf: entries)
         }
-        
+
         return (groups: knowledgeGroups, entries: knowledgeEntries)
     }
-    
+
 }
 
 extension APIKnowledgeEntry: RandomValueProviding {
-    
+
     public static var random: APIKnowledgeEntry {
         let links = [APILink].random.sorted()
         return APIKnowledgeEntry(identifier: .random,
@@ -109,27 +109,27 @@ extension APIKnowledgeEntry: RandomValueProviding {
                                  links: links,
                                  imageIdentifiers: .random)
     }
-    
+
 }
 
 extension APILink: RandomValueProviding {
-    
+
     public static var random: APILink {
         return APILink(name: .random, fragmentType: .random, target: .random)
     }
-    
+
 }
 
 extension APILink.FragmentType: RandomValueProviding {
-    
+
     public static var random: APILink.FragmentType {
         return .WebExternal
     }
-    
+
 }
 
 extension APIAnnouncement: RandomValueProviding {
-    
+
     public static var random: APIAnnouncement {
         return APIAnnouncement(identifier: .random,
                                title: .random,
@@ -137,27 +137,27 @@ extension APIAnnouncement: RandomValueProviding {
                                lastChangedDateTime: .random,
                                imageIdentifier: .random)
     }
-    
+
 }
 
 extension APIRoom: RandomValueProviding {
-    
+
     public static var random: APIRoom {
         return APIRoom(roomIdentifier: .random, name: .random)
     }
-    
+
 }
 
 extension APITrack: RandomValueProviding {
-    
+
     public static var random: APITrack {
         return APITrack(trackIdentifier: .random, name: .random)
     }
-    
+
 }
 
 extension APIEvent: RandomValueProviding {
-    
+
     public static var random: APIEvent {
         return APIEvent(identifier: .random,
                         roomIdentifier: .random,
@@ -174,19 +174,19 @@ extension APIEvent: RandomValueProviding {
                         bannerImageId: .random,
                         tags: .random)
     }
-    
+
 }
 
 extension APIConferenceDay: RandomValueProviding {
-    
+
     public static var random: APIConferenceDay {
         return APIConferenceDay(identifier: .random, date: .random)
     }
-    
+
 }
 
 extension APIDealer: RandomValueProviding {
-    
+
     public static var random: APIDealer {
         return APIDealer(identifier: .random,
                          displayName: .random,
@@ -207,46 +207,46 @@ extension APIDealer: RandomValueProviding {
                          aboutTheArtText: .random,
                          artPreviewCaption: .random)
     }
-    
+
 }
 
 extension APIMap: RandomValueProviding {
-    
+
     public static var random: APIMap {
         return APIMap(identifier: .random, imageIdentifier: .random, mapDescription: .random, entries: .random)
     }
-    
+
 }
 
 extension APIMap.Entry: RandomValueProviding {
-    
+
     public static var random: APIMap.Entry {
         return APIMap.Entry(identifier: .random, x: .random, y: .random, tapRadius: .random, links: .random)
     }
-    
+
 }
 
 extension APIMap.Entry.Link: RandomValueProviding {
-    
+
     public static var random: APIMap.Entry.Link {
         return APIMap.Entry.Link(type: .random, name: .random, target: .random)
     }
-    
+
 }
 
 extension APIMap.Entry.Link.FragmentType: RandomValueProviding {
-    
+
     public static var random: APIMap.Entry.Link.FragmentType {
         let cases: [APIMap.Entry.Link.FragmentType] = [.conferenceRoom, .mapEntry, .dealerDetail]
         return cases.randomElement().element
     }
-    
+
 }
 
 extension APIImage: RandomValueProviding {
-    
+
     public static var random: APIImage {
         return APIImage(identifier: .random, internalReference: .random)
     }
-    
+
 }

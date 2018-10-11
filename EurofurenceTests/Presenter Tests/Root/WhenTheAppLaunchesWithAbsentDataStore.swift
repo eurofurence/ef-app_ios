@@ -11,25 +11,25 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenTheAppLaunchesWithAbsentDataStore: XCTestCase {
-    
+
     var context: RootModuleTestBuilder.Context!
-    
+
     override func setUp() {
         super.setUp()
-        
+
         context = RootModuleTestBuilder().with(storeState: .absent).build()
     }
-    
+
     func testTheDelegateIsToldToShowTutorial() {
         XCTAssertTrue(context.delegate.toldTutorialShouldBePresented)
     }
-    
+
     func testTheDelegateIsNotToldToPreloadStore() {
         XCTAssertFalse(context.delegate.toldStoreShouldRefresh)
     }
-    
+
     func testTheDelegateIsNotToldToShowPrincipleModule() {
         XCTAssertFalse(context.delegate.toldPrincipleModuleShouldBePresented)
     }
-    
+
 }

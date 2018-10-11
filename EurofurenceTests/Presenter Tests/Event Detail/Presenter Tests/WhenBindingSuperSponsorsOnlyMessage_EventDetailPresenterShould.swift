@@ -12,20 +12,20 @@ import EurofurenceAppCoreTestDoubles
 import XCTest
 
 struct StubSuperSponsorsOnlyEventViewModel: EventDetailViewModel {
-    
+
     var superSponsorsOnlyWarningViewModel: EventSuperSponsorsOnlyWarningViewModel
-    
+
     var numberOfComponents: Int { return 1 }
     func setDelegate(_ delegate: EventDetailViewModelDelegate) { }
     func describe(componentAt index: Int, to visitor: EventDetailViewModelVisitor) { visitor.visit(superSponsorsOnlyWarningViewModel
         ) }
     func favourite() { }
     func unfavourite() { }
-    
+
 }
 
 class WhenBindingSuperSponsorsOnlyMessage_EventDetailPresenterShould: XCTestCase {
-    
+
     func testBindTheMessageOntoTheComponent() {
         let event = Event.random
         let message = String.random
@@ -35,8 +35,8 @@ class WhenBindingSuperSponsorsOnlyMessage_EventDetailPresenterShould: XCTestCase
         let context = EventDetailPresenterTestBuilder().with(interactor).build(for: event)
         context.simulateSceneDidLoad()
         context.scene.bindComponent(at: IndexPath(item: 0, section: 0))
-        
+
         XCTAssertEqual(message, context.scene.stubbedSuperSponsorsOnlyComponent.capturedMessage)
     }
-    
+
 }

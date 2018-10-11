@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenRemovingFavouritesRestrictionForEvents_ScheduleShould: XCTestCase {
-    
+
     func testUpdateTheDelegateWithEmptyResults() {
         let response = APISyncResponse.randomWithoutDeletions
         let dataStore = CapturingEurofurenceDataStore()
@@ -18,17 +18,17 @@ class WhenRemovingFavouritesRestrictionForEvents_ScheduleShould: XCTestCase {
         dataStore.save(response) { (transaction) in
             favourites.forEach(transaction.saveFavouriteEventIdentifier)
         }
-        
+
         let context = ApplicationTestBuilder().with(dataStore).build()
         let schedule = context.application.makeEventsSearchController()
         let delegate = CapturingEventsSearchControllerDelegate()
         schedule.setResultsDelegate(delegate)
         schedule.restrictResultsToFavourites()
         schedule.removeFavouritesEventsRestriction()
-        
+
         XCTAssertEqual([], delegate.capturedSearchResults)
     }
-    
+
     func testIncludeNonFavouritesInSearchResultsWhenQueryChanges() {
         let response = APISyncResponse.randomWithoutDeletions
         let dataStore = CapturingEurofurenceDataStore()
@@ -39,17 +39,17 @@ class WhenRemovingFavouritesRestrictionForEvents_ScheduleShould: XCTestCase {
         dataStore.save(response) { (transaction) in
             favourites.forEach(transaction.saveFavouriteEventIdentifier)
         }
-        
+
         let context = ApplicationTestBuilder().with(dataStore).build()
         let schedule = context.application.makeEventsSearchController()
         let delegate = CapturingEventsSearchControllerDelegate()
         schedule.setResultsDelegate(delegate)
         schedule.restrictResultsToFavourites()
         schedule.removeFavouritesEventsRestriction()
-        
+
         schedule.changeSearchTerm(nonFavouriteEvent.title)
-        
+
         XCTAssertTrue(delegate.capturedSearchResults.contains(where: { $0.identifier == notAFavourite.element }))
     }
-    
+
 }

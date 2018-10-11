@@ -12,20 +12,20 @@ import EurofurenceAppCoreTestDoubles
 import XCTest
 
 struct StubPhotoshootEventViewModel: EventDetailViewModel {
-    
+
     var photoshootMessageViewModel: EventPhotoshootMessageViewModel
-    
+
     var numberOfComponents: Int { return 1 }
     func setDelegate(_ delegate: EventDetailViewModelDelegate) { }
     func describe(componentAt index: Int, to visitor: EventDetailViewModelVisitor) { visitor.visit(photoshootMessageViewModel
         ) }
     func favourite() { }
     func unfavourite() { }
-    
+
 }
 
 class WhenBindingPhotoshootBanner_EventDetailPresenterShould: XCTestCase {
-    
+
     func testBindTheMessageOntoTheComponent() {
         let event = Event.random
         let message = String.random
@@ -35,8 +35,8 @@ class WhenBindingPhotoshootBanner_EventDetailPresenterShould: XCTestCase {
         let context = EventDetailPresenterTestBuilder().with(interactor).build(for: event)
         context.simulateSceneDidLoad()
         context.scene.bindComponent(at: IndexPath(item: 0, section: 0))
-        
+
         XCTAssertEqual(message, context.scene.stubbedPhotoshootMessageComponent.capturedMessage)
     }
-    
+
 }

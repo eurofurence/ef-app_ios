@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenTimePasses_AndAnEventIsNoLongerUpcoming_ApplicationShould: XCTestCase {
-    
+
     func testTellTheObserverTheEventIsNoLongerAnUpcomingEvent() {
         let syncResponse = APISyncResponse.randomWithoutDeletions
         let randomEvent = syncResponse.events.changed.randomElement().element
@@ -21,8 +21,8 @@ class WhenTimePasses_AndAnEventIsNoLongerUpcoming_ApplicationShould: XCTestCase 
         context.application.add(observer)
         simulatedTime = randomEvent.startDateTime.addingTimeInterval(1)
         context.tickTime(to: simulatedTime)
-        
+
         XCTAssertFalse(observer.upcomingEvents.contains(where: { $0.identifier.rawValue == randomEvent.identifier }))
     }
-    
+
 }

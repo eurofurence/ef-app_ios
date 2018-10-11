@@ -10,21 +10,21 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenAddingAnnouncementsObserverBeforeLoadingAnything: XCTestCase {
-    
+
     func testEmptyAnnouncementsAreReturned() {
         let context = ApplicationTestBuilder().build()
         let observer = CapturingAnnouncementsServiceObserver()
         context.application.add(observer)
-        
+
         XCTAssertTrue(observer.didReceieveEmptyAllAnnouncements)
     }
-    
+
     func testEmptyReadAnnouncementsAreReturned() {
         let context = ApplicationTestBuilder().build()
         let observer = CapturingAnnouncementsServiceObserver()
         context.application.add(observer)
-        
+
         XCTAssertTrue(observer.didReceieveEmptyReadAnnouncements)
     }
-    
+
 }

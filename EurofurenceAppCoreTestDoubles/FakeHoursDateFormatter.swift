@@ -10,23 +10,22 @@ import EurofurenceAppCore
 import RandomDataGeneration
 
 public class FakeHoursDateFormatter: HoursDateFormatter {
-    
+
     public init() {
-        
+
     }
-    
-    private var strings = [Date : String]()
-    
+
+    private var strings = [Date: String]()
+
     public func hoursString(from date: Date) -> String {
         var output = String.random
         if let previous = strings[date] {
             output = previous
-        }
-        else {
+        } else {
             strings[date] = output
         }
-        
+
         return output
     }
-    
+
 }

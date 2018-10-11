@@ -11,32 +11,32 @@ import EurofurenceAppCore
 import UIKit
 
 class CapturingMapDetailScene: UIViewController, MapDetailScene {
-    
+
     private(set) var delegate: MapDetailSceneDelegate?
     func setDelegate(_ delegate: MapDetailSceneDelegate) {
         self.delegate = delegate
     }
-    
+
     private(set) var capturedMapImagePNGData: Data?
     func setMapImagePNGData(_ data: Data) {
         capturedMapImagePNGData = data
     }
-    
+
     private(set) var capturedTitle: String?
     func setMapTitle(_ title: String) {
         capturedTitle = title
     }
-    
+
     private(set) var capturedMapPositionToFocus: MapCoordinate?
     func focusMapPosition(_ position: MapCoordinate) {
         capturedMapPositionToFocus = position
     }
-    
+
     private(set) var presentedContextualContext: MapInformationContextualContent?
     func show(contextualContent: MapInformationContextualContent) {
         presentedContextualContext = contextualContent
     }
-    
+
     private(set) var capturedOptionsHeading: String?
     private(set) var capturedOptionsPresentationX: Float?
     private(set) var capturedOptionsPresentationY: Float?
@@ -53,5 +53,5 @@ class CapturingMapDetailScene: UIViewController, MapDetailScene {
         capturedOptionsPresentationY = y
         mapOptionSelectionHandler = selectionHandler
     }
-    
+
 }

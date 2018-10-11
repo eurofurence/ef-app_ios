@@ -11,23 +11,23 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenBindingNonFavouriteEvent_SchedulePresenterShould: XCTestCase {
-    
+
     func testNotTellTheSceneToShowTheFavouriteEventIndicator() {
         var eventViewModel = ScheduleEventViewModel.random
         eventViewModel.isFavourite = false
         let component = SchedulePresenterTestBuilder.buildForTestingBindingOfEvent(eventViewModel)
-        
+
         XCTAssertFalse(component.didShowFavouriteEventIndicator)
     }
-    
+
     func testTellTheSceneToHideTheFavouriteEventIndicator() {
         var eventViewModel = ScheduleEventViewModel.random
         eventViewModel.isFavourite = false
         let component = SchedulePresenterTestBuilder.buildForTestingBindingOfEvent(eventViewModel)
-        
+
         XCTAssertTrue(component.didHideFavouriteEventIndicator)
     }
-    
+
     func testSupplyFavouriteActionInformation() {
         var eventViewModel = ScheduleEventViewModel.random
         eventViewModel.isFavourite = false
@@ -40,10 +40,10 @@ class WhenBindingNonFavouriteEvent_SchedulePresenterShould: XCTestCase {
         searchResult.isFavourite = false
         let indexPath = IndexPath(item: 0, section: 0)
         let action = context.scene.binder?.eventActionForComponent(at: indexPath)
-        
+
         XCTAssertEqual(.favourite, action?.title)
     }
-    
+
     func testTellViewModelToFavouriteEventAtIndexPathWhenInvokingAction() {
         var eventViewModel = ScheduleEventViewModel.random
         eventViewModel.isFavourite = false
@@ -57,8 +57,8 @@ class WhenBindingNonFavouriteEvent_SchedulePresenterShould: XCTestCase {
         let indexPath = IndexPath(item: 0, section: 0)
         let action = context.scene.binder?.eventActionForComponent(at: indexPath)
         action?.run()
-        
+
         XCTAssertEqual(indexPath, viewModel.indexPathForFavouritedEvent)
     }
-    
+
 }

@@ -11,7 +11,7 @@ import EurofurenceAppCore
 import RandomDataGeneration
 
 extension EventComponentViewModel: RandomValueProviding {
-    
+
     public static var random: EventComponentViewModel {
         return EventComponentViewModel(startTime: .random,
                                        endTime: .random,
@@ -26,5 +26,5 @@ extension EventComponentViewModel: RandomValueProviding {
                                        isMainStageEvent: .random,
                                        isPhotoshootEvent: .random)
     }
-    
+
 }

@@ -11,10 +11,10 @@ import EurofurenceAppCore
 import EurofurenceAppCoreTestDoubles
 
 class CapturingKnowledgeDetailModuleDelegate: KnowledgeDetailModuleDelegate {
-    
+
     private(set) var capturedLinkToOpen: Link?
     func knowledgeDetailModuleDidSelectLink(_ link: Link) {
         capturedLinkToOpen = link
     }
-    
+
 }

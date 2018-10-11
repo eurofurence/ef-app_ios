@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenDeletingRoom_AfterSuccessfulSync_ApplicationShould: XCTestCase {
-    
+
     func testTellTheStoreToDeleteTheRoom() {
         let dataStore = CapturingEurofurenceDataStore()
         var response = APISyncResponse.randomWithoutDeletions
@@ -21,8 +21,8 @@ class WhenDeletingRoom_AfterSuccessfulSync_ApplicationShould: XCTestCase {
         response.rooms.deleted = [roomToDelete]
         context.refreshLocalStore()
         context.syncAPI.simulateSuccessfulSync(response)
-        
+
         XCTAssertEqual([roomToDelete], dataStore.transaction.deletedRooms)
     }
-    
+
 }

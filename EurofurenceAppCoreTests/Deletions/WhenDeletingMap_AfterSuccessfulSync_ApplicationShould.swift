@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenDeletingMap_AfterSuccessfulSync_ApplicationShould: XCTestCase {
-    
+
     func testUpdateDelegateWithoutDeletedMap() {
         var response = APISyncResponse.randomWithoutDeletions
         let context = ApplicationTestBuilder().build()
@@ -26,9 +26,9 @@ class WhenDeletingMap_AfterSuccessfulSync_ApplicationShould: XCTestCase {
         context.refreshLocalStore()
         context.syncAPI.simulateSuccessfulSync(response)
         let actual = Set(delegate.capturedMaps.map({ $0.identifier.rawValue }))
-        
+
         XCTAssertEqual(expected, actual,
                        "Should have removed map \(mapToDelete.element.identifier)")
     }
-    
+
 }

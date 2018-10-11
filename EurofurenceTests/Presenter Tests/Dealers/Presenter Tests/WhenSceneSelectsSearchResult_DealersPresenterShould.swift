@@ -12,7 +12,7 @@ import EurofurenceAppCoreTestDoubles
 import XCTest
 
 class WhenSceneSelectsSearchResult_DealersPresenterShould: XCTestCase {
-    
+
     func testTellTheModuleDelegateTheDealerIdentifierForTheSearchResultIndexPathWasSelected() {
         let searchViewModel = CapturingDealersSearchViewModel()
         let identifier = Dealer.Identifier.random
@@ -22,8 +22,8 @@ class WhenSceneSelectsSearchResult_DealersPresenterShould: XCTestCase {
         let context = DealersPresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
         context.simulateSceneDidSelectSearchResult(at: indexPath)
-        
+
         XCTAssertEqual(identifier, context.delegate.capturedSelectedDealerIdentifier)
     }
-    
+
 }

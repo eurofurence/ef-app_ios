@@ -10,14 +10,14 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenSyncSucceedsWithChangedImages_ApplicationShould: XCTestCase {
-    
+
     func testSaveTheImagesIntoTheStore() {
         let dataStore = CapturingEurofurenceDataStore()
         let context = ApplicationTestBuilder().with(dataStore).build()
         let syncResponse = APISyncResponse.randomWithoutDeletions
         context.performSuccessfulSync(response: syncResponse)
-        
+
         XCTAssertTrue(dataStore.didSave(syncResponse.images.changed))
     }
-    
+
 }

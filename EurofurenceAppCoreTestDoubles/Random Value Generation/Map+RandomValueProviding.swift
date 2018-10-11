@@ -11,17 +11,17 @@ import Foundation
 import RandomDataGeneration
 
 extension Map: RandomValueProviding {
-    
+
     public static var random: Map {
         return Map(identifier: .random, location: .random)
     }
-    
+
 }
 
 extension Map.Identifier: RandomValueProviding {
-    
+
     public static var random: Map.Identifier {
         return Map.Identifier(.random)
     }
-    
+
 }

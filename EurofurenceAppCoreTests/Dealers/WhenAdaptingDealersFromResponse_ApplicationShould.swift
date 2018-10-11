@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenAdaptingDealersFromResponse_ApplicationShould: XCTestCase {
-    
+
     func testUseAttendeeNameAsAlternateNameWhenNotTheSameAsDisplayName() {
         var syncResponse = APISyncResponse.randomWithoutDeletions
         var dealer = APIDealer.random
@@ -25,10 +25,10 @@ class WhenAdaptingDealersFromResponse_ApplicationShould: XCTestCase {
         let delegate = CapturingDealersIndexDelegate()
         dealersIndex.setDelegate(delegate)
         let model = delegate.capturedAlphabetisedDealerGroups.first?.dealers.first
-        
+
         XCTAssertEqual(nickname, model?.alternateName)
     }
-    
+
     func testUseNilAlternateNameWhenDisplayAndAttendeeNameAreTheSame() {
         var syncResponse = APISyncResponse.randomWithoutDeletions
         var dealer = APIDealer.random
@@ -42,10 +42,10 @@ class WhenAdaptingDealersFromResponse_ApplicationShould: XCTestCase {
         let delegate = CapturingDealersIndexDelegate()
         dealersIndex.setDelegate(delegate)
         let model = delegate.capturedAlphabetisedDealerGroups.first?.dealers.first
-        
+
         XCTAssertNil(model?.alternateName)
     }
-    
+
     func testUseAttendeeNameAsPreferredNameIfDisplayNameNotSpecified() {
         var syncResponse = APISyncResponse.randomWithoutDeletions
         var dealer = APIDealer.random
@@ -60,10 +60,10 @@ class WhenAdaptingDealersFromResponse_ApplicationShould: XCTestCase {
         let delegate = CapturingDealersIndexDelegate()
         dealersIndex.setDelegate(delegate)
         let model = delegate.capturedAlphabetisedDealerGroups.first?.dealers.first
-        
+
         XCTAssertEqual(nickname, model?.preferredName)
     }
-    
+
     func testUseQuestionMarkAsPreferredNameIfAttendeeNicknameAndDisplayNameNotSpecified_toAvoidCrashing() {
         var syncResponse = APISyncResponse.randomWithoutDeletions
         var dealer = APIDealer.random
@@ -77,8 +77,8 @@ class WhenAdaptingDealersFromResponse_ApplicationShould: XCTestCase {
         let delegate = CapturingDealersIndexDelegate()
         dealersIndex.setDelegate(delegate)
         let model = delegate.capturedAlphabetisedDealerGroups.first?.dealers.first
-        
+
         XCTAssertEqual("?", model?.preferredName)
     }
-    
+
 }

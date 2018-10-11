@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenFetchingMapContents_TappingWithinRadiusOfMultipleEntries_ApplicationShould: XCTestCase {
-    
+
     func testReturnTheClosestMatch() {
         let context = ApplicationTestBuilder().build()
         var syncResponse = APISyncResponse.randomWithoutDeletions
@@ -24,12 +24,12 @@ class WhenFetchingMapContents_TappingWithinRadiusOfMultipleEntries_ApplicationSh
         syncResponse.maps.changed = [map]
         syncResponse.rooms.changed = [room]
         context.performSuccessfulSync(response: syncResponse)
-        
+
         var content: Map.Content?
         context.application.fetchContent(for: Map.Identifier(map.identifier), atX: x, y: y) { content = $0 }
         let expected = Map.Content.room(Room(name: room.name))
-        
+
         XCTAssertEqual(expected, content)
     }
-    
+
 }

@@ -12,22 +12,22 @@ import EurofurenceAppCoreTestDoubles
 import Foundation
 
 class FakeDealerDetailInteractor: DealerDetailInteractor {
-    
+
     private let viewModel: FakeDealerDetailViewModel
-    
+
     convenience init() {
         let viewModel = FakeDealerDetailViewModel(numberOfComponents: .random)
         self.init(viewModel: viewModel)
     }
-    
+
     init(viewModel: FakeDealerDetailViewModel) {
         self.viewModel = viewModel
     }
-    
+
     private(set) var capturedIdentifierForProducingViewModel: Dealer.Identifier?
     func makeDealerDetailViewModel(for identifier: Dealer.Identifier, completionHandler: @escaping (DealerDetailViewModel) -> Void) {
         capturedIdentifierForProducingViewModel = identifier
         completionHandler(viewModel)
     }
-    
+
 }

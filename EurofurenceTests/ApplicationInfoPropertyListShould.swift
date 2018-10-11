@@ -11,7 +11,7 @@ import EurofurenceAppCore
 import XCTest
 
 class ApplicationInfoPropertyListShould: XCTestCase {
-    
+
     func testContainTheCalendarUsageKey() {
         let bundle = Bundle(for: AppDelegate.self)
         let calendarUsageDescription = bundle.object(forInfoDictionaryKey: "NSCalendarsUsageDescription")
@@ -26,5 +26,5 @@ class ApplicationInfoPropertyListShould: XCTestCase {
 
         XCTAssertEqual(expectedDescription, calendarUsageDescription)
     }
-    
+
 }

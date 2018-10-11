@@ -12,7 +12,7 @@ import EurofurenceAppCoreTestDoubles
 import XCTest
 
 class WhenViewModelIndicatesEventIsNotFavourite_EventDetailPresenterShould: XCTestCase {
-    
+
     func testShowTheFavouriteEventButton() {
         let event = Event.random
         let viewModel = CapturingEventDetailViewModel()
@@ -20,8 +20,8 @@ class WhenViewModelIndicatesEventIsNotFavourite_EventDetailPresenterShould: XCTe
         let context = EventDetailPresenterTestBuilder().with(interactor).build(for: event)
         context.simulateSceneDidLoad()
         viewModel.simulateUnfavourited()
-        
+
         XCTAssertTrue(context.scene.didShowFavouriteEventButton)
     }
-    
+
 }

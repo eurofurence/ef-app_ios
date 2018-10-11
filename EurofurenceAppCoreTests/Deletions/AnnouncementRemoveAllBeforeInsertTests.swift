@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class AnnouncementRemoveAllBeforeInsertTests: XCTestCase {
-    
+
     func testShouldRemoveAllAnnouncementsWhenToldTo() {
         let originalResponse = APISyncResponse.randomWithoutDeletions
         var subsequentResponse = originalResponse
@@ -21,11 +21,11 @@ class AnnouncementRemoveAllBeforeInsertTests: XCTestCase {
         let expected = context.expectedAnnouncements(from: subsequentResponse)
         let observer = CapturingAnnouncementsServiceObserver()
         context.application.add(observer)
-        
+
         XCTAssertEqual(expected, observer.allAnnouncements,
                        "Should have removed original announcements between sync events")
     }
-    
+
     func testShouldNotRemoveAllAnnouncementsWhenNotToldToRemoveThem() {
         let originalResponse = APISyncResponse.randomWithoutDeletions
         var subsequentResponse = APISyncResponse.randomWithoutDeletions
@@ -38,9 +38,9 @@ class AnnouncementRemoveAllBeforeInsertTests: XCTestCase {
         let expected = first + second
         let observer = CapturingAnnouncementsServiceObserver()
         context.application.add(observer)
-        
+
         XCTAssertTrue(expected.equalsIgnoringOrder(observer.allAnnouncements),
                       "Should have not removed original announcements between sync events")
     }
-    
+
 }

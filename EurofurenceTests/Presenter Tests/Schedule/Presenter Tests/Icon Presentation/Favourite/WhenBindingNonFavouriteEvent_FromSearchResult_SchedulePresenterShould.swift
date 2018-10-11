@@ -11,7 +11,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenBindingNonFavouriteEvent_FromSearchResult_SchedulePresenterShould: XCTestCase {
-    
+
     func testNotTellTheSceneToShowTheFavouriteEventIndicator() {
         let searchViewModel = CapturingScheduleSearchViewModel()
         let interactor = FakeScheduleInteractor(searchViewModel: searchViewModel)
@@ -24,10 +24,10 @@ class WhenBindingNonFavouriteEvent_FromSearchResult_SchedulePresenterShould: XCT
         let indexPath = IndexPath(item: 0, section: 0)
         let component = CapturingScheduleEventComponent()
         context.bindSearchResultComponent(component, forSearchResultAt: indexPath)
-        
+
         XCTAssertFalse(component.didShowFavouriteEventIndicator)
     }
-    
+
     func testTellTheSceneToHideTheFavouriteEventIndicator() {
         let searchViewModel = CapturingScheduleSearchViewModel()
         let interactor = FakeScheduleInteractor(searchViewModel: searchViewModel)
@@ -40,10 +40,10 @@ class WhenBindingNonFavouriteEvent_FromSearchResult_SchedulePresenterShould: XCT
         let indexPath = IndexPath(item: 0, section: 0)
         let component = CapturingScheduleEventComponent()
         context.bindSearchResultComponent(component, forSearchResultAt: indexPath)
-        
+
         XCTAssertTrue(component.didHideFavouriteEventIndicator)
     }
-    
+
     func testSupplyFavouriteActionInformation() {
         let searchViewModel = CapturingScheduleSearchViewModel()
         let interactor = FakeScheduleInteractor(searchViewModel: searchViewModel)
@@ -55,10 +55,10 @@ class WhenBindingNonFavouriteEvent_FromSearchResult_SchedulePresenterShould: XCT
         searchViewModel.simulateSearchResultsUpdated(results)
         let indexPath = IndexPath(item: 0, section: 0)
         let action = context.scene.searchResultsBinder?.eventActionForComponent(at: indexPath)
-        
+
         XCTAssertEqual(.favourite, action?.title)
     }
-    
+
     func testTellViewModelToFavouriteEventAtIndexPathWhenInvokingAction() {
         let searchViewModel = CapturingScheduleSearchViewModel()
         let interactor = FakeScheduleInteractor(searchViewModel: searchViewModel)
@@ -71,8 +71,8 @@ class WhenBindingNonFavouriteEvent_FromSearchResult_SchedulePresenterShould: XCT
         let indexPath = IndexPath(item: 0, section: 0)
         let action = context.scene.searchResultsBinder?.eventActionForComponent(at: indexPath)
         action?.run()
-        
+
         XCTAssertEqual(indexPath, searchViewModel.indexPathForFavouritedEvent)
     }
-    
+
 }

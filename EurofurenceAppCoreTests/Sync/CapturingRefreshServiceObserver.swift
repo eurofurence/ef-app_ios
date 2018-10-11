@@ -10,15 +10,15 @@ import EurofurenceAppCore
 import Foundation
 
 class CapturingRefreshServiceObserver: RefreshServiceObserver {
-    
+
     private(set) var toldDidBeginRefreshing = false
     func refreshServiceDidBeginRefreshing() {
         toldDidBeginRefreshing = true
     }
-    
+
     private(set) var toldDidFinishRefreshing = false
     func refreshServiceDidFinishRefreshing() {
         toldDidFinishRefreshing = true
     }
-    
+
 }

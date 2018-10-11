@@ -12,7 +12,7 @@ import Foundation
 import RandomDataGeneration
 
 extension EventSummaryViewModel: RandomValueProviding {
-    
+
     public static var random: EventSummaryViewModel {
         return EventSummaryViewModel(title: .random,
                                      subtitle: .random,
@@ -22,5 +22,5 @@ extension EventSummaryViewModel: RandomValueProviding {
                                      trackName: .random,
                                      eventHosts: .random)
     }
-    
+
 }

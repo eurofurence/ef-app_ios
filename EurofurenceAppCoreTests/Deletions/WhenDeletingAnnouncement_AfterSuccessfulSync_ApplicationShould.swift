@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenDeletingAnnouncement_AfterSuccessfulSync_ApplicationShould: XCTestCase {
-    
+
     func testUpdateDelegateWithoutDeletedAnnouncement() {
         var response = APISyncResponse.randomWithoutDeletions
         let context = ApplicationTestBuilder().build()
@@ -25,9 +25,9 @@ class WhenDeletingAnnouncement_AfterSuccessfulSync_ApplicationShould: XCTestCase
         context.refreshLocalStore()
         context.syncAPI.simulateSuccessfulSync(response)
         let actual = delegate.allAnnouncements.map({ $0.identifier.rawValue })
-        
+
         XCTAssertFalse(actual.contains(announcementToDelete.element.identifier),
                        "Should have removed announcement \(announcementToDelete.element.identifier)")
     }
-    
+
 }

@@ -11,7 +11,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenBindingMap_MapsPresenterShould: XCTestCase {
-    
+
     func testBindTheNameOfTheMapOntoTheComponent() {
         let viewModel = FakeMapsViewModel()
         let interactor = FakeMapsInteractor(viewModel: viewModel)
@@ -19,10 +19,10 @@ class WhenBindingMap_MapsPresenterShould: XCTestCase {
         context.simulateSceneDidLoad()
         let mapViewModel = viewModel.maps.randomElement()
         let boundComponent = context.bindMap(at: mapViewModel.index)
-        
+
         XCTAssertEqual(mapViewModel.element.mapName, boundComponent.boundMapName)
     }
-    
+
     func testBindTheMapPreviewOntoTheComponent() {
         let viewModel = FakeMapsViewModel()
         let interactor = FakeMapsInteractor(viewModel: viewModel)
@@ -30,8 +30,8 @@ class WhenBindingMap_MapsPresenterShould: XCTestCase {
         context.simulateSceneDidLoad()
         let mapViewModel = viewModel.maps.randomElement()
         let boundComponent = context.bindMap(at: mapViewModel.index)
-        
+
         XCTAssertEqual(mapViewModel.element.mapPreviewImagePNGData, boundComponent.boundMapPreviewData)
     }
-    
+
 }

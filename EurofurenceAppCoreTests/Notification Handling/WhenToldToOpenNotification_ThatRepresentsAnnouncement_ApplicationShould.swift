@@ -10,18 +10,18 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenToldToOpenNotification_ThatRepresentsAnnouncement_ApplicationShould: XCTestCase {
-    
+
     func testProvideTheAnnouncementToTheCompletionHandler() {
         let syncResponse = APISyncResponse.randomWithoutDeletions
         let randomAnnouncement = syncResponse.announcements.changed.randomElement().element
         let context = ApplicationTestBuilder().build()
-        let payload: [String : String] = ["event" : "announcement", "announcement_id" : randomAnnouncement.identifier]
+        let payload: [String: String] = ["event": "announcement", "announcement_id": randomAnnouncement.identifier]
         var result: ApplicationPushActionResult?
         context.application.handleRemoteNotification(payload: payload) { result = $0 }
         context.syncAPI.simulateSuccessfulSync(syncResponse)
-        
+
         let expected = ApplicationPushActionResult.announcement(Announcement.Identifier(randomAnnouncement.identifier))
         XCTAssertEqual(expected, result)
     }
-    
+
 }

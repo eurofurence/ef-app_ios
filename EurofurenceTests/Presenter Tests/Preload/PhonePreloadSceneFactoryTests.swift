@@ -11,12 +11,12 @@ import EurofurenceAppCore
 import XCTest
 
 class PhonePreloadSceneFactoryTests: XCTestCase {
-    
+
     func testThePreloadSceneViewControllerIsMade() {
         let factory = PhonePreloadSceneFactory()
         let scene = factory.makePreloadScene()
-        
+
         XCTAssertNotNil(scene.storyboard)
     }
-    
+
 }

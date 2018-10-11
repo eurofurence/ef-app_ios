@@ -12,7 +12,7 @@ import EurofurenceAppCoreTestDoubles
 import XCTest
 
 class WhenLoggedOutDuringConvention_NewsInteractorShould: XCTestCase {
-    
+
     func testProduceViewModelWithMessagesPrompt_Announcements_RunningEvents_UpcomingEvents_AndFavouriteEvents() {
         let eventsService = FakeEventsService()
         let runningEvents = [Event].random(minimum: 3)
@@ -27,7 +27,7 @@ class WhenLoggedOutDuringConvention_NewsInteractorShould: XCTestCase {
             .with(eventsService)
             .build()
         context.subscribeViewModelUpdates()
-        
+
         context.assert()
             .thatViewModel()
             .hasYourEurofurence()
@@ -37,7 +37,7 @@ class WhenLoggedOutDuringConvention_NewsInteractorShould: XCTestCase {
             .hasFavouriteEvents()
             .verify()
     }
-    
+
     func testFetchTheUpcomingEventAtTheSpecifiedIndexPath() {
         let eventsService = FakeEventsService()
         let upcomingEvents = [Event].random
@@ -49,10 +49,10 @@ class WhenLoggedOutDuringConvention_NewsInteractorShould: XCTestCase {
             .with(eventsService)
             .build()
         context.subscribeViewModelUpdates()
-        
+
         let randomEvent = upcomingEvents.randomElement()
         let indexPath = IndexPath(item: randomEvent.index, section: 2)
         context.assert().thatModel().at(indexPath: indexPath, is: .event(randomEvent.element))
     }
-    
+
 }

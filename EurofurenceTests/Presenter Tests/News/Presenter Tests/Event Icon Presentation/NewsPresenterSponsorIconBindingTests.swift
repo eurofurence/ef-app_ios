@@ -11,23 +11,23 @@ import EurofurenceAppCore
 import XCTest
 
 class NewsPresenterSponsorIconBindingTests: XCTestCase {
-    
+
     func testShowTheSponsorOnlyIndicator() {
         var eventViewModel: EventComponentViewModel = .random
         eventViewModel.isSponsorEvent = true
         let component = NewsPresenterTestBuilder.buildForAssertingAgainstEventComponent(eventViewModel: eventViewModel)
-        
+
         XCTAssertTrue(component.didShowSponsorEventIndicator)
         XCTAssertFalse(component.didHideSponsorEventIndicator)
     }
-    
+
     func testHideTheSponsorOnlyIndicator() {
         var eventViewModel: EventComponentViewModel = .random
         eventViewModel.isSponsorEvent = false
         let component = NewsPresenterTestBuilder.buildForAssertingAgainstEventComponent(eventViewModel: eventViewModel)
-        
+
         XCTAssertFalse(component.didShowSponsorEventIndicator)
         XCTAssertTrue(component.didHideSponsorEventIndicator)
     }
-    
+
 }

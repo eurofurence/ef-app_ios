@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class InOrderToSupportEssentialSubtitleTag_ApplicationShould: XCTestCase {
-    
+
     func testCombineSubtitleWithTitle() {
         var syncResponse = APISyncResponse.randomWithoutDeletions
         let randomEvent = syncResponse.events.changed.randomElement()
@@ -23,8 +23,8 @@ class InOrderToSupportEssentialSubtitleTag_ApplicationShould: XCTestCase {
         context.application.add(eventsObserver)
         let observedEvent = eventsObserver.allEvents.first
         let expected = "\(event.title) - \(event.subtitle)"
-        
+
         XCTAssertEqual(expected, observedEvent?.title)
     }
-    
+
 }

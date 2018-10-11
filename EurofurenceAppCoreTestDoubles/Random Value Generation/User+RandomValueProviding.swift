@@ -10,9 +10,9 @@ import EurofurenceAppCore
 import RandomDataGeneration
 
 extension User: RandomValueProviding {
-    
+
     public static var random: User {
         return User(registrationNumber: .random, username: .random)
     }
-    
+
 }

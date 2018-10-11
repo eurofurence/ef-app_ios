@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenDealersHaveCaseVaryingNames_ApplicationShould: XCTestCase {
-    
+
     func testGroupThemTogetherUsingTheCapitalForm() {
         var syncResponse = APISyncResponse.randomWithoutDeletions
         var firstDealer = APIDealer.random
@@ -25,9 +25,9 @@ class WhenDealersHaveCaseVaryingNames_ApplicationShould: XCTestCase {
         let delegate = CapturingDealersIndexDelegate()
         dealersIndex.setDelegate(delegate)
         let group = delegate.capturedAlphabetisedDealerGroups.first
-        
+
         XCTAssertEqual("B", group?.indexingString)
         XCTAssertEqual(2, group?.dealers.count)
     }
-    
+
 }

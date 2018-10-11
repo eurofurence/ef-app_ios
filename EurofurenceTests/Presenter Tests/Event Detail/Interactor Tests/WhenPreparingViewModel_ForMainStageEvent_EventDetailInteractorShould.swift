@@ -12,7 +12,7 @@ import EurofurenceAppCoreTestDoubles
 import XCTest
 
 class WhenPreparingViewModel_ForMainStageEvent_EventDetailInteractorShould: XCTestCase {
-    
+
     func testProduceMainStageComponentHeadingAfterDescriptionComponent() {
         var event = Event.randomStandardEvent
         event.isMainStage = true
@@ -20,8 +20,8 @@ class WhenPreparingViewModel_ForMainStageEvent_EventDetailInteractorShould: XCTe
         let visitor = CapturingEventDetailViewModelVisitor()
         context.viewModel?.describe(componentAt: 2, to: visitor)
         let expected = EventMainStageMessageViewModel(message: .mainStageEvent)
-        
+
         XCTAssertEqual([expected], visitor.visitedViewModels)
     }
-    
+
 }

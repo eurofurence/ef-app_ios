@@ -11,7 +11,7 @@ import EurofurenceAppCoreTestDoubles
 import XCTest
 
 class WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould: XCTestCase {
-    
+
     func testTellTheApplicationToOpenTheURL() {
         var dealer = APIDealer.random
         dealer.links = [APILink(name: .random, fragmentType: .WebExternal, target: "https://www.eurofurence.org")]
@@ -23,10 +23,10 @@ class WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould
         context.performSuccessfulSync(response: syncResponse)
         let dealerIdentifier = Dealer.Identifier(dealer.identifier)
         context.application.openWebsite(for: dealerIdentifier)
-        
+
         XCTAssertEqual(expected, urlOpener.capturedURLToOpen)
     }
-    
+
     func testNotTellExternalContentHandlerToOpenTheURL() {
         var dealer = APIDealer.random
         dealer.links = [APILink(name: .random, fragmentType: .WebExternal, target: "https://www.eurofurence.org")]
@@ -39,8 +39,8 @@ class WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould
         context.performSuccessfulSync(response: syncResponse)
         let dealerIdentifier = Dealer.Identifier(dealer.identifier)
         context.application.openWebsite(for: dealerIdentifier)
-        
+
         XCTAssertNil(externalContentHandler.capturedExternalContentURL)
     }
-    
+
 }

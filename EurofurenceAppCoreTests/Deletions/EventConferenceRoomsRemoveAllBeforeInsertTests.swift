@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class EventConferenceRoomsRemoveAllBeforeInsertTests: XCTestCase {
-    
+
     func testTellTheDataStoreToDeleteTheConferenceRooms() {
         let originalResponse = APISyncResponse.randomWithoutDeletions
         var subsequentResponse = originalResponse
@@ -18,10 +18,10 @@ class EventConferenceRoomsRemoveAllBeforeInsertTests: XCTestCase {
         let context = ApplicationTestBuilder().build()
         context.performSuccessfulSync(response: originalResponse)
         context.performSuccessfulSync(response: subsequentResponse)
-        
+
         XCTAssertEqual(originalResponse.rooms.changed.map({ $0.roomIdentifier }),
                        context.dataStore.transaction.deletedRooms,
                        "Should have removed original days between sync events")
     }
-    
+
 }

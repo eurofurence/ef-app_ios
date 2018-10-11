@@ -11,17 +11,17 @@ import EurofurenceAppCoreTestDoubles
 import XCTest
 
 class V2SyncAPITests: XCTestCase {
-    
+
     func testTheSyncEndpointShouldReceieveRequest() {
         let jsonSession = CapturingJSONSession()
         let apiUrl = StubV2ApiUrlProviding()
         let syncApi = V2SyncAPI(jsonSession: jsonSession, apiUrl: apiUrl)
         let url = apiUrl.url + "Sync"
         syncApi.fetchLatestData(lastSyncTime: nil) { (_) in }
-        
+
         XCTAssertEqual(url, jsonSession.getRequestURL)
     }
-    
+
     func testInvalidResponseEmitsNilResult() {
         let jsonSession = CapturingJSONSession()
         let apiUrl = StubV2ApiUrlProviding()
@@ -30,10 +30,10 @@ class V2SyncAPITests: XCTestCase {
         var providedWithNilResponse = false
         syncApi.fetchLatestData(lastSyncTime: nil) { providedWithNilResponse = $0 == nil }
         jsonSession.invokeLastGETCompletionHandler(responseData: invalidResponseData)
-        
+
         XCTAssertTrue(providedWithNilResponse)
     }
-    
+
     func testSuccessfulResponseDoesNotEmitNilResponse() {
         let jsonSession = CapturingJSONSession()
         let apiUrl = StubV2ApiUrlProviding()
@@ -44,10 +44,10 @@ class V2SyncAPITests: XCTestCase {
         providedWithNilResponseExpectation.isInverted = true
         syncApi.fetchLatestData(lastSyncTime: nil) { if $0 == nil { providedWithNilResponseExpectation.fulfill() } }
         jsonSession.invokeLastGETCompletionHandler(responseData: responseData)
-        
+
         waitForExpectations(timeout: 0.1)
     }
-    
+
     func testFailedNetworkResponseEmitsNilResult() {
         let jsonSession = CapturingJSONSession()
         let apiUrl = StubV2ApiUrlProviding()
@@ -55,10 +55,10 @@ class V2SyncAPITests: XCTestCase {
         var providedWithNilResponse = false
         syncApi.fetchLatestData(lastSyncTime: nil) { providedWithNilResponse = $0 == nil }
         jsonSession.invokeLastGETCompletionHandler(responseData: nil)
-        
+
         XCTAssertTrue(providedWithNilResponse)
     }
-    
+
     func testSupplyingLastSyncTimeSuppliesSinceParameter() {
         let jsonSession = CapturingJSONSession()
         let apiUrl = StubV2ApiUrlProviding()
@@ -68,8 +68,8 @@ class V2SyncAPITests: XCTestCase {
         let expectedSinceTime = Iso8601DateFormatter.instance.string(from: lastSyncTime)
         let expected = apiUrl.url.appending("Sync?since=\(expectedSinceTime)")
         let actual = jsonSession.getRequestURL
-        
+
         XCTAssertEqual(expected, actual)
     }
-    
+
 }

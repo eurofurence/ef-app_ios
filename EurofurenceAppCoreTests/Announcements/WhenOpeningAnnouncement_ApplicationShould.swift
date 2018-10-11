@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenOpeningAnnouncement_ApplicationShould: XCTestCase {
-    
+
     func testProvideTheAnnouncementToTheCompletionHandler() {
         let syncResponse = APISyncResponse.randomWithoutDeletions
         let announcements = syncResponse.announcements.changed
@@ -21,10 +21,10 @@ class WhenOpeningAnnouncement_ApplicationShould: XCTestCase {
         context.performSuccessfulSync(response: syncResponse)
         var model: Announcement?
         context.application.openAnnouncement(identifier: Announcement.Identifier(identifier)) { model = $0 }
-        
+
         XCTAssertEqual(expected, model)
     }
-    
+
     func testSaveTheAnnouncementIdentifierAsReadAnnouncementToStore() {
         let syncResponse = APISyncResponse.randomWithoutDeletions
         let announcements = syncResponse.announcements.changed
@@ -33,10 +33,10 @@ class WhenOpeningAnnouncement_ApplicationShould: XCTestCase {
         let context = ApplicationTestBuilder().build()
         context.performSuccessfulSync(response: syncResponse)
         context.application.openAnnouncement(identifier: Announcement.Identifier(identifier)) { (_) in }
-        
+
         XCTAssertTrue(context.dataStore.didSaveReadAnnouncement(Announcement.Identifier(identifier)))
     }
-    
+
     func testSaveAllPreviouslyReadAnnouncementIdentifierAsRead() {
         let syncResponse = APISyncResponse.randomWithoutDeletions
         let announcements = syncResponse.announcements.changed
@@ -49,10 +49,10 @@ class WhenOpeningAnnouncement_ApplicationShould: XCTestCase {
         context.application.openAnnouncement(identifier: Announcement.Identifier(firstIdentifier)) { (_) in }
         context.application.openAnnouncement(identifier: Announcement.Identifier(secondIdentifier)) { (_) in }
         let expected = [firstIdentifier, secondIdentifier].map({ Announcement.Identifier($0) })
-        
+
         XCTAssertTrue(context.dataStore.didSaveReadAnnouncements(expected))
     }
-    
+
     func testTellServiceObserversWhenMarkingAnnouncementAsRead() {
         let syncResponse = APISyncResponse.randomWithoutDeletions
         let announcements = syncResponse.announcements.changed
@@ -67,10 +67,10 @@ class WhenOpeningAnnouncement_ApplicationShould: XCTestCase {
         context.application.openAnnouncement(identifier: Announcement.Identifier(firstIdentifier)) { (_) in }
         context.application.openAnnouncement(identifier: Announcement.Identifier(secondIdentifier)) { (_) in }
         let expected = [firstIdentifier, secondIdentifier].map({ Announcement.Identifier($0) })
-        
+
         XCTAssertTrue(observer.readAnnouncementIdentifiers.contains(elementsFrom: expected))
     }
-    
+
     func testTellLaterAddedObserversAboutMarkedReadAnnouncements() {
         let syncResponse = APISyncResponse.randomWithoutDeletions
         let announcements = syncResponse.announcements.changed
@@ -85,10 +85,10 @@ class WhenOpeningAnnouncement_ApplicationShould: XCTestCase {
         let expected = [firstIdentifier, secondIdentifier].map({ Announcement.Identifier($0) })
         let observer = CapturingAnnouncementsServiceObserver()
         context.application.add(observer)
-        
+
         XCTAssertTrue(observer.readAnnouncementIdentifiers.contains(elementsFrom: expected))
     }
-    
+
     func testTellObserversAboutReadAnnouncementsWhenLoadingFromStore() {
         let syncResponse = APISyncResponse.randomWithoutDeletions
         let announcements = syncResponse.announcements.changed
@@ -102,12 +102,12 @@ class WhenOpeningAnnouncement_ApplicationShould: XCTestCase {
         dataStore.performTransaction { (transaction) in
             transaction.saveReadAnnouncements(identifiers)
         }
-        
+
         let context = ApplicationTestBuilder().with(dataStore).build()
         let observer = CapturingAnnouncementsServiceObserver()
         context.application.add(observer)
-        
+
         XCTAssertTrue(observer.readAnnouncementIdentifiers.contains(elementsFrom: identifiers))
     }
-    
+
 }

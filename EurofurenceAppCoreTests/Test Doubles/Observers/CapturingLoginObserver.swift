@@ -9,7 +9,7 @@
 import EurofurenceAppCore
 
 class CapturingLoginObserver {
-    
+
     private(set) var notifiedLoginSucceeded = false
     private(set) var notifiedLoginFailed = false
     private(set) var loggedInUser: User?
@@ -22,5 +22,5 @@ class CapturingLoginObserver {
             self.notifiedLoginFailed = true
         }
     }
-    
+
 }

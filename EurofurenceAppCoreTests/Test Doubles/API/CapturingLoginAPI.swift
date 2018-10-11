@@ -10,20 +10,20 @@ import EurofurenceAppCore
 import Foundation
 
 class CapturingLoginAPI: LoginAPI {
-    
+
     private(set) var capturedLoginRequest: LoginRequest?
     private var handler: ((LoginResponse?) -> Void)?
     func performLogin(request: LoginRequest, completionHandler: @escaping (LoginResponse?) -> Void) {
         capturedLoginRequest = request
         handler = completionHandler
     }
-    
+
     func simulateResponse(_ response: LoginResponse) {
         handler?(response)
     }
-    
+
     func simulateFailure() {
         handler?(nil)
     }
-    
+
 }

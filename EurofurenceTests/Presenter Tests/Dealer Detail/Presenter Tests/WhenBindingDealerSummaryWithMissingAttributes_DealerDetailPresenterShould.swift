@@ -11,12 +11,12 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenBindingDealerSummaryWithMissingAttributes_DealerDetailPresenterShould: XCTestCase {
-    
+
     var context: DealerDetailPresenterTestBuilder.Context!
-    
+
     override func setUp() {
         super.setUp()
-        
+
         var summaryViewModel = DealerDetailSummaryViewModel.random
         summaryViewModel.artistImagePNGData = nil
         summaryViewModel.shortDescription = nil
@@ -30,29 +30,29 @@ class WhenBindingDealerSummaryWithMissingAttributes_DealerDetailPresenterShould:
         context.simulateSceneDidLoad()
         context.bindComponent(at: 0)
     }
-    
+
     func testTellTheArtistArtworkToHideWhenArtworkDataNotAvailable() {
         XCTAssertEqual(true, context.boundDealerSummaryComponent?.didHideArtistArtwork)
     }
-    
+
     func testTellTheSubtitleToHideWhenNoSubtitleNotAvailable() {
         XCTAssertEqual(true, context.boundDealerSummaryComponent?.didHideSubtitle)
     }
-    
+
     func testTellTheShortDescriptionToHideWhenNoShortDescriptionNotAvailable() {
         XCTAssertEqual(true, context.boundDealerSummaryComponent?.didHideShortDescription)
     }
-    
+
     func testTellTheTelegramHandleToHideWhenTelegramHandleNotAvailable() {
         XCTAssertEqual(true, context.boundDealerSummaryComponent?.didHideTelegramHandle)
     }
-    
+
     func testTellTheTwitterHandleToHideWhenTwitterHandleNotAvailable() {
         XCTAssertEqual(true, context.boundDealerSummaryComponent?.didHideTwitterHandle)
     }
-    
+
     func testTellTheWebsiteToHideWhenWebsiteNotAvailable() {
         XCTAssertEqual(true, context.boundDealerSummaryComponent?.didHideWebsite)
     }
-    
+
 }

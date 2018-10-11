@@ -12,7 +12,7 @@ import EurofurenceAppCoreTestDoubles
 import XCTest
 
 class WhenPreparingViewModel_ForArtShowEvent_EventDetailInteractorShould: XCTestCase {
-    
+
     func testProduceArtShowComponentHeadingAfterDescriptionComponent() {
         var event = Event.randomStandardEvent
         event.isArtShow = true
@@ -20,8 +20,8 @@ class WhenPreparingViewModel_ForArtShowEvent_EventDetailInteractorShould: XCTest
         let visitor = CapturingEventDetailViewModelVisitor()
         context.viewModel?.describe(componentAt: 2, to: visitor)
         let expected = EventArtShowMessageViewModel(message: .artShow)
-        
+
         XCTAssertEqual([expected], visitor.visitedViewModels)
     }
-    
+
 }

@@ -10,13 +10,13 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenResolvingEventByIdentifier_ForEventThatDoesNotExist_ApplicationShould: XCTestCase {
-    
+
     func testInvokeTheHandlerWithNilEvent() {
         let context = ApplicationTestBuilder().build()
         var invokedWithNilEvent = false
         context.application.fetchEvent(for: Event.Identifier(.random)) { invokedWithNilEvent = $0 == nil }
-        
+
         XCTAssertTrue(invokedWithNilEvent)
     }
-    
+
 }

@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenFetchingDaysBeforeRefreshWhenStoreHasConferenceDays: XCTestCase {
-    
+
     func testTheEventsFromTheStoreAreAdapted() {
         let dataStore = CapturingEurofurenceDataStore()
         let response = APISyncResponse.randomWithoutDeletions
@@ -18,14 +18,14 @@ class WhenFetchingDaysBeforeRefreshWhenStoreHasConferenceDays: XCTestCase {
         dataStore.performTransaction { (transaction) in
             transaction.saveConferenceDays(conferenceDays)
         }
-        
+
         let context = ApplicationTestBuilder().with(dataStore).build()
         let delegate = CapturingEventsScheduleDelegate()
         let schedule = context.application.makeEventsSchedule()
         schedule.setDelegate(delegate)
         let expected = context.makeExpectedDays(from: response)
-        
+
         XCTAssertEqual(expected, delegate.allDays)
     }
-    
+
 }

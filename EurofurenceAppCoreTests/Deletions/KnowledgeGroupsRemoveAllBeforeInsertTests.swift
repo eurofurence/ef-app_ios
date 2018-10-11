@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class KnowledgeGroupsRemoveAllBeforeInsertTests: XCTestCase {
-    
+
     func testTellTheDataStoreToDeleteTheKnowledgeGroups() {
         let originalResponse = APISyncResponse.randomWithoutDeletions
         var subsequentResponse = originalResponse
@@ -20,9 +20,9 @@ class KnowledgeGroupsRemoveAllBeforeInsertTests: XCTestCase {
         context.performSuccessfulSync(response: subsequentResponse)
         let originalGroupIdentifiers = originalResponse.knowledgeGroups.changed.map({ $0.identifier })
         let deletedKnowledgeGroups = context.dataStore.transaction.deletedKnowledgeGroups
-        
+
         XCTAssertTrue(originalGroupIdentifiers.equalsIgnoringOrder(deletedKnowledgeGroups),
                       "Should have removed original groups between sync events")
     }
-    
+
 }

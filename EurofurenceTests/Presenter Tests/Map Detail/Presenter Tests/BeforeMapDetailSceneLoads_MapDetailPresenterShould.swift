@@ -12,13 +12,13 @@ import EurofurenceAppCoreTestDoubles
 import XCTest
 
 class BeforeMapDetailSceneLoads_MapDetailPresenterShould: XCTestCase {
-    
+
     func testNotBindAnySceneComponents() {
         let identifier = Map.Identifier.random
         let interactor = FakeMapDetailInteractor(expectedMapIdentifier: identifier)
         let context = MapDetailPresenterTestBuilder().with(interactor).build(for: identifier)
-        
+
         XCTAssertNil(context.scene.capturedTitle)
     }
-    
+
 }

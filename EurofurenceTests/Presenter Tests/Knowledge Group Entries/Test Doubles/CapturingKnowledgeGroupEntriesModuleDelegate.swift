@@ -12,10 +12,10 @@ import EurofurenceAppCoreTestDoubles
 import Foundation
 
 class CapturingKnowledgeGroupEntriesModuleDelegate: KnowledgeGroupEntriesModuleDelegate {
-    
+
     private(set) var selectedKnowledgeEntryIdentifier: KnowledgeEntry.Identifier?
     func knowledgeGroupEntriesModuleDidSelectKnowledgeEntry(identifier: KnowledgeEntry.Identifier) {
         selectedKnowledgeEntryIdentifier = identifier
     }
-    
+
 }

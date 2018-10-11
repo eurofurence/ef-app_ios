@@ -11,14 +11,14 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenBindingEventFromSearchResult_SchedulePresenterShould: XCTestCase {
-    
+
     var context: SchedulePresenterTestBuilder.Context!
     var component: CapturingScheduleEventComponent!
     var eventViewModel: ScheduleEventViewModel!
-    
+
     override func setUp() {
         super.setUp()
-        
+
         let searchViewModel = CapturingScheduleSearchViewModel()
         let interactor = FakeScheduleInteractor(searchViewModel: searchViewModel)
         context = SchedulePresenterTestBuilder().with(interactor).build()
@@ -32,21 +32,21 @@ class WhenBindingEventFromSearchResult_SchedulePresenterShould: XCTestCase {
         component = CapturingScheduleEventComponent()
         context.bindSearchResultComponent(component, forSearchResultAt: indexPath)
     }
-    
+
     func testBindTheEventNameOntoTheComponent() {
         XCTAssertEqual(eventViewModel.title, component.capturedEventTitle)
     }
-    
+
     func testBindTheStartTimeFromTheEventOntoTheEventScene() {
         XCTAssertEqual(eventViewModel.startTime, component.capturedStartTime)
     }
-    
+
     func testBindTheEndTimeFromTheEventOntoTheEventScene() {
         XCTAssertEqual(eventViewModel.endTime, component.capturedEndTime)
     }
-    
+
     func testBindTheEventLocationFromTheEventOntoTheEventScene() {
         XCTAssertEqual(eventViewModel.location, component.capturedLocation)
     }
-    
+
 }

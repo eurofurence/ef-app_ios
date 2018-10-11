@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenAppLaunchesWhenClockReadsConferenceDay_ScheduleShould: XCTestCase {
-    
+
     func testChangeToExpectedConDay() {
         let syncResponse = APISyncResponse.randomWithoutDeletions
         let randomDay = syncResponse.conferenceDays.changed.randomElement().element
@@ -21,10 +21,10 @@ class WhenAppLaunchesWhenClockReadsConferenceDay_ScheduleShould: XCTestCase {
         let delegate = CapturingEventsScheduleDelegate()
         schedule.setDelegate(delegate)
         let expected = context.makeExpectedDay(from: randomDay)
-        
+
         XCTAssertEqual(expected, delegate.capturedCurrentDay)
     }
-    
+
     func testPermitFuzzyMatchingAgainstHoursMinutesAndSecondsWithinDay() {
         let syncResponse = APISyncResponse.randomWithoutDeletions
         let randomDay = syncResponse.conferenceDays.changed.randomElement().element
@@ -40,10 +40,10 @@ class WhenAppLaunchesWhenClockReadsConferenceDay_ScheduleShould: XCTestCase {
         let delegate = CapturingEventsScheduleDelegate()
         schedule.setDelegate(delegate)
         let expected = context.makeExpectedDay(from: randomDay)
-        
+
         XCTAssertEqual(expected, delegate.capturedCurrentDay)
     }
-    
+
     func testProvideEventsForThatDay() {
         let response = APISyncResponse.randomWithoutDeletions
         let randomDay = response.conferenceDays.changed.randomElement().element
@@ -57,8 +57,8 @@ class WhenAppLaunchesWhenClockReadsConferenceDay_ScheduleShould: XCTestCase {
         schedule.setDelegate(delegate)
         let expectedEvents = response.events.changed.filter({ $0.dayIdentifier == randomDay.identifier })
         let expected = context.makeExpectedEvents(from: expectedEvents, response: response)
-        
+
         XCTAssertEqual(expected, delegate.events)
     }
-    
+
 }

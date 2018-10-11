@@ -18,9 +18,9 @@ public protocol BuildConfigurationProviding {
 }
 
 public struct PreprocessorBuildConfigurationProviding: BuildConfigurationProviding {
-    
+
     public init() {
-        
+
     }
 
     public var configuration: BuildConfiguration {

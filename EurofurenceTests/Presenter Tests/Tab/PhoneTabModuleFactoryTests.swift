@@ -11,14 +11,14 @@ import EurofurenceAppCore
 import XCTest
 
 class PhoneTabModuleFactoryTests: XCTestCase {
-    
+
     func testSetsChildModulesAsChildViewControllers() {
         let childModules = [UIViewController(), UIViewController()]
         let factory = PhoneTabModuleFactory()
         let vc = factory.makeTabModule(childModules)
         let actual: [UIViewController] = vc.viewControllers ?? []
-        
+
         XCTAssertEqual(childModules, actual)
     }
-    
+
 }

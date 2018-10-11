@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenRetrievingLocalPrivateMessages: XCTestCase {
-    
+
     func testLoadingMessagesThenRequestingLocalVersionShouldReturnMessage() {
         let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         let receivedDate = Date()
@@ -22,8 +22,8 @@ class WhenRetrievingLocalPrivateMessages: XCTestCase {
                                isRead: false)
         context.application.fetchPrivateMessages { (_) in }
         context.privateMessagesAPI.simulateSuccessfulResponse(response: [expected])
-        
+
         XCTAssertEqual([expected], context.application.localPrivateMessages)
     }
-    
+
 }

@@ -11,19 +11,18 @@ import EurofurenceAppCore
 import Foundation
 
 class FakeRelativeTimeIntervalCountdownFormatter: RelativeTimeIntervalCountdownFormatter {
-    
-    private var strings = [TimeInterval : String]()
-    
+
+    private var strings = [TimeInterval: String]()
+
     func relativeString(from timeInterval: TimeInterval) -> String {
         var output = String.random
         if let previous = strings[timeInterval] {
             output = previous
-        }
-        else {
+        } else {
             strings[timeInterval] = output
         }
-        
+
         return output
     }
-    
+
 }

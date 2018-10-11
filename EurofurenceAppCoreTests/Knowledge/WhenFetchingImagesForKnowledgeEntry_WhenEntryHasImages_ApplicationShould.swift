@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenFetchingImagesForKnowledgeEntry_WhenEntryHasImages_ApplicationShould: XCTestCase {
-    
+
     func testProvideTheImageDataFromTheRepository() {
         let syncResponse = APISyncResponse.randomWithoutDeletions
         let context = ApplicationTestBuilder().build()
@@ -20,8 +20,8 @@ class WhenFetchingImagesForKnowledgeEntry_WhenEntryHasImages_ApplicationShould: 
         let expected = images.compactMap(context.imageRepository.loadImage).map({ $0.pngImageData })
         var actual: [Data]?
         context.application.fetchImagesForKnowledgeEntry(identifier: KnowledgeEntry.Identifier(randomEntry.identifier)) { actual = $0 }
-        
+
         XCTAssertEqual(expected, actual)
     }
-    
+
 }

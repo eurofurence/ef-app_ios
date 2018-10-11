@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import Foundation
 
 struct StubForceRefreshRequired: ForceRefreshRequired {
-    
+
     var isForceRefreshRequired: Bool
-    
+
 }

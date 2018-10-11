@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenRemovingFavouritesRestrictionForEvents_WhileQueryActive_ScheduleShould: XCTestCase {
-    
+
     func testUpdateTheDelegateWithMatchesForQuery() {
         let response = APISyncResponse.randomWithoutDeletions
         let dataStore = CapturingEurofurenceDataStore()
@@ -21,7 +21,7 @@ class WhenRemovingFavouritesRestrictionForEvents_WhileQueryActive_ScheduleShould
         dataStore.save(response) { (transaction) in
             favourites.forEach(transaction.saveFavouriteEventIdentifier)
         }
-        
+
         let context = ApplicationTestBuilder().with(dataStore).build()
         let schedule = context.application.makeEventsSearchController()
         let delegate = CapturingEventsSearchControllerDelegate()
@@ -29,8 +29,8 @@ class WhenRemovingFavouritesRestrictionForEvents_WhileQueryActive_ScheduleShould
         schedule.restrictResultsToFavourites()
         schedule.changeSearchTerm(nonFavouriteEvent.title)
         schedule.removeFavouritesEventsRestriction()
-        
+
         XCTAssertTrue(delegate.capturedSearchResults.contains(where: { $0.identifier == notAFavourite.element }))
     }
-    
+
 }

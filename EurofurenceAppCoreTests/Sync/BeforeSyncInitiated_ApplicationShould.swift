@@ -10,10 +10,10 @@ import EurofurenceAppCore
 import XCTest
 
 class BeforeSyncInitiated_ApplicationShould: XCTestCase {
-    
+
     func testNotRequestLongRunningTaskToBegin() {
         let context = ApplicationTestBuilder().build()
         XCTAssertFalse(context.longRunningTaskManager.didBeginTask)
     }
-    
+
 }

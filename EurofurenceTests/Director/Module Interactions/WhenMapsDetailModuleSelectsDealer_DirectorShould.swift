@@ -12,7 +12,7 @@ import EurofurenceAppCoreTestDoubles
 import XCTest
 
 class WhenMapsDetailModuleSelectsDealer_DirectorShould: XCTestCase {
-    
+
     func testPresentTheDealerDetailModuleOntoTheMapsNavigationController() {
         let context = ApplicationDirectorTestBuilder().build()
         context.navigateToTabController()
@@ -21,9 +21,9 @@ class WhenMapsDetailModuleSelectsDealer_DirectorShould: XCTestCase {
         let mapsNavigationController = context.navigationController(for: context.mapsModule.stubInterface)
         let dealer = Dealer.Identifier.random
         context.mapDetailModule.simulateDidSelectDealer(dealer)
-        
+
         XCTAssertEqual(context.dealerDetailModule.stubInterface, mapsNavigationController?.topViewController)
         XCTAssertEqual(dealer, context.dealerDetailModule.capturedModel)
     }
-    
+
 }

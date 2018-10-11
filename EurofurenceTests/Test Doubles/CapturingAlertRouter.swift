@@ -10,7 +10,7 @@
 import EurofurenceAppCore
 
 class CapturingAlertRouter: AlertRouter {
-    
+
     var automaticallyPresentAlerts = false
 
     private(set) var didShowAlert = false
@@ -25,34 +25,34 @@ class CapturingAlertRouter: AlertRouter {
         presentedAlertMessage = alert.message
         presentedActions = alert.actions
         capturedPresentationCompletedHandler = alert.onCompletedPresentation
-        
+
         let dismissable = CapturingAlertDismissable()
         lastAlert = dismissable
-        
+
         if automaticallyPresentAlerts { completePendingPresentation() }
     }
-    
+
     func capturedAction(title: String) -> AlertAction? {
         return presentedActions.first(where: { $0.title == title })
     }
-    
+
     func completePendingPresentation() {
         capturedPresentationCompletedHandler?(lastAlert!)
     }
-    
+
 }
 
 class CapturingAlertDismissable: AlertDismissable {
-    
+
     private(set) var dismissed = false
     private var capturedDismissalCompletionHandler: (() -> Void)?
     func dismiss(_ completionHandler: (() -> Void)?) {
         dismissed = true
         capturedDismissalCompletionHandler = completionHandler
     }
-    
+
     func completeDismissal() {
         capturedDismissalCompletionHandler?()
     }
-    
+
 }

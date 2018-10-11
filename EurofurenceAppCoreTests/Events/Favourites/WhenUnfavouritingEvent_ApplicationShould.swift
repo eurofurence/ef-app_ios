@@ -10,16 +10,16 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenUnfavouritingEvent_ApplicationShould: XCTestCase {
-    
+
     func testTellTheDataStoreToDeleteTheEventIdentifier() {
         let context = ApplicationTestBuilder().build()
         let identifier = Event.Identifier.random
         context.application.favouriteEvent(identifier: identifier)
         context.application.unfavouriteEvent(identifier: identifier)
-        
+
         XCTAssertTrue(context.dataStore.didDeleteFavouriteEvent(identifier))
     }
-    
+
     func testTellObserversTheEventHasBeenUnfavourited() {
         let context = ApplicationTestBuilder().build()
         let identifier = Event.Identifier.random
@@ -27,17 +27,17 @@ class WhenUnfavouritingEvent_ApplicationShould: XCTestCase {
         context.application.add(observer)
         context.application.favouriteEvent(identifier: identifier)
         context.application.unfavouriteEvent(identifier: identifier)
-        
+
         XCTAssertFalse(observer.capturedFavouriteEventIdentifiers.contains(identifier))
     }
-    
+
     func testTellTheNotificationServiceToRemoveTheScheduledNotification() {
         let context = ApplicationTestBuilder().build()
         let identifier = Event.Identifier.random
         context.application.favouriteEvent(identifier: identifier)
         context.application.unfavouriteEvent(identifier: identifier)
-        
+
         XCTAssertEqual(identifier, context.notificationsService.capturedEventIdentifierToRemoveNotification)
     }
-    
+
 }

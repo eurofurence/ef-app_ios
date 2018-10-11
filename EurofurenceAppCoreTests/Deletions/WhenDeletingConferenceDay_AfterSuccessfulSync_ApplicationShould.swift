@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenDeletingConferenceDay_AfterSuccessfulSync_ApplicationShould: XCTestCase {
-    
+
     func testTellTheStoreToDeleteTheDay() {
         let dataStore = CapturingEurofurenceDataStore()
         var response = APISyncResponse.randomWithoutDeletions
@@ -21,8 +21,8 @@ class WhenDeletingConferenceDay_AfterSuccessfulSync_ApplicationShould: XCTestCas
         response.conferenceDays.deleted = [dayToDelete]
         context.refreshLocalStore()
         context.syncAPI.simulateSuccessfulSync(response)
-        
+
         XCTAssertEqual([dayToDelete], dataStore.transaction.deletedConferenceDays)
     }
-    
+
 }

@@ -49,5 +49,5 @@ class CapturingUserAcknowledgedPushPermissions: WitnessedTutorialPushPermissions
     func markWitnessedTutorialPushPermissionsRequest() {
         didMarkUserAsAcknowledgingPushPermissionsRequest = true
     }
-    
+
 }

@@ -12,35 +12,35 @@ import EurofurenceAppCoreTestDoubles
 import UIKit.UIViewController
 
 class StubCollectThemAllModuleProviding: CollectThemAllModuleProviding {
-    
+
     let stubInterface = FakeViewController()
     func makeCollectThemAllModule() -> UIViewController {
         return stubInterface
     }
-    
+
 }
 
 class StubMapsModuleProviding: MapsModuleProviding {
-    
+
     let stubInterface = FakeViewController()
     private(set) var delegate: MapsModuleDelegate?
     func makeMapsModule(_ delegate: MapsModuleDelegate) -> UIViewController {
         self.delegate = delegate
         return stubInterface
     }
-    
+
 }
 
 extension StubMapsModuleProviding {
-    
+
     func simulateDidSelectMap(_ map: Map.Identifier) {
         delegate?.mapsModuleDidSelectMap(identifier: map)
     }
-    
+
 }
 
 class StubMapDetailModuleProviding: MapDetailModuleProviding {
-    
+
     let stubInterface = UIViewController()
     private(set) var capturedModel: Map.Identifier?
     private(set) var delegate: MapDetailModuleDelegate?
@@ -49,38 +49,38 @@ class StubMapDetailModuleProviding: MapDetailModuleProviding {
         self.delegate = delegate
         return stubInterface
     }
-    
+
 }
 
 extension StubMapDetailModuleProviding {
-    
+
     func simulateDidSelectDealer(_ dealer: Dealer.Identifier) {
         delegate?.mapDetailModuleDidSelectDealer(dealer)
     }
-    
+
 }
 
 class StubAnnouncementsModuleProviding: AnnouncementsModuleProviding {
-    
+
     let stubInterface = UIViewController()
     private(set) var delegate: AnnouncementsModuleDelegate?
     func makeAnnouncementsModule(_ delegate: AnnouncementsModuleDelegate) -> UIViewController {
         self.delegate = delegate
         return stubInterface
     }
-    
+
 }
 
 extension StubAnnouncementsModuleProviding {
-    
+
     func simulateDidSelectAnnouncement(_ announcement: Announcement.Identifier) {
         delegate?.announcementsModuleDidSelectAnnouncement(announcement)
     }
-    
+
 }
 
 class StubKnowledgeGroupEntriesModuleProviding: KnowledgeGroupEntriesModuleProviding {
-    
+
     let stubInterface = UIViewController()
     private(set) var delegate: KnowledgeGroupEntriesModuleDelegate?
     private(set) var capturedModel: KnowledgeGroup.Identifier?
@@ -89,21 +89,21 @@ class StubKnowledgeGroupEntriesModuleProviding: KnowledgeGroupEntriesModuleProvi
         self.delegate = delegate
         return stubInterface
     }
-    
+
 }
 
 extension StubKnowledgeGroupEntriesModuleProviding {
-    
+
     func simulateKnowledgeEntrySelected(_ entry: KnowledgeEntry.Identifier) {
         delegate?.knowledgeGroupEntriesModuleDidSelectKnowledgeEntry(identifier: entry)
     }
-    
+
 }
 
 class ApplicationDirectorTestBuilder {
-    
+
     struct Context {
-        
+
         var director: ApplicationDirector
         var moduleOrderingPolicy: FakeModuleOrderingPolicy
         var rootModule: StubRootModuleFactory
@@ -131,9 +131,9 @@ class ApplicationDirectorTestBuilder {
         var webModuleProviding: StubWebMobuleProviding
         var urlOpener: CapturingURLOpener
         var notificationHandling: FakeApplicationNotificationHandling
-        
+
     }
-    
+
     private let moduleOrderingPolicy: FakeModuleOrderingPolicy
     private let rootModule: StubRootModuleFactory
     private let tutorialModule: StubTutorialModuleFactory
@@ -159,7 +159,7 @@ class ApplicationDirectorTestBuilder {
     private let linkRouter: StubLinkRouter
     private let webModuleProviding: StubWebMobuleProviding
     private let urlOpener: CapturingURLOpener
-    
+
     init() {
         moduleOrderingPolicy = FakeModuleOrderingPolicy()
         rootModule = StubRootModuleFactory()
@@ -187,10 +187,10 @@ class ApplicationDirectorTestBuilder {
         webModuleProviding = StubWebMobuleProviding()
         urlOpener = CapturingURLOpener()
     }
-    
+
     func build() -> Context {
         let notificationHandling = FakeApplicationNotificationHandling()
-        
+
         let builder = DirectorBuilder()
         builder.withAnimations(false)
         builder.with(moduleOrderingPolicy)
@@ -220,9 +220,9 @@ class ApplicationDirectorTestBuilder {
         builder.with(webModuleProviding)
         builder.with(urlOpener)
         builder.with(notificationHandling)
-        
+
         let director = builder.build()
-        
+
         return Context(director: director,
                        moduleOrderingPolicy: moduleOrderingPolicy,
                        rootModule: rootModule,
@@ -251,22 +251,22 @@ class ApplicationDirectorTestBuilder {
                        urlOpener: urlOpener,
                        notificationHandling: notificationHandling)
     }
-    
+
 }
 
 extension ApplicationDirectorTestBuilder.Context {
-    
+
     func navigateToTabController() {
         rootModule.simulateStoreShouldBeRefreshed()
         preloadModule.simulatePreloadFinished()
     }
-    
+
     var rootNavigationController: UINavigationController {
         return windowWireframe.capturedRootInterface as! UINavigationController
     }
-    
+
     func navigationController(for viewController: UIViewController) -> CapturingNavigationController? {
         return tabModule.navigationController(for: viewController)
     }
-    
+
 }

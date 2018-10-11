@@ -11,10 +11,10 @@ import EurofurenceAppCore
 import XCTest
 
 class ApplicationPresentationAssetsTests: XCTestCase {
-    
+
     func testTheInitialLoadInformationAssetShouldProvideTheInformationIconAsset() {
         XCTAssertEqual(#imageLiteral(resourceName: "tuto02_informationIcon"),
                        ApplicationPresentationAssets().initialLoadInformationAsset)
     }
-    
+
 }

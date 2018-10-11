@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class DealersRemoveAllBeforeInsertTests: XCTestCase {
-    
+
     func testShouldRemoveAllDealersWhenToldTo() {
         let originalResponse = APISyncResponse.randomWithoutDeletions
         var subsequentResponse = originalResponse
@@ -22,9 +22,9 @@ class DealersRemoveAllBeforeInsertTests: XCTestCase {
         let index = context.application.makeDealersIndex()
         let delegate = CapturingDealersIndexDelegate()
         index.setDelegate(delegate)
-        
+
         XCTAssertEqual(expected, delegate.capturedAlphabetisedDealerGroups,
                        "Should have removed original dealers between sync events")
     }
-    
+
 }

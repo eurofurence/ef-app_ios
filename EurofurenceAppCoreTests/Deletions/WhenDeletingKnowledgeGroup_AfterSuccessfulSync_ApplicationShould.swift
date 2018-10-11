@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenDeletingKnowledgeGroup_AfterSuccessfulSync_ApplicationShould: XCTestCase {
-    
+
     func testTellTheStoreToDeleteTheGroup() {
         let dataStore = CapturingEurofurenceDataStore()
         var response = APISyncResponse.randomWithoutDeletions
@@ -21,8 +21,8 @@ class WhenDeletingKnowledgeGroup_AfterSuccessfulSync_ApplicationShould: XCTestCa
         response.knowledgeGroups.deleted = [groupToDelete]
         context.refreshLocalStore()
         context.syncAPI.simulateSuccessfulSync(response)
-        
+
         XCTAssertEqual([groupToDelete], dataStore.transaction.deletedKnowledgeGroups)
     }
-    
+
 }

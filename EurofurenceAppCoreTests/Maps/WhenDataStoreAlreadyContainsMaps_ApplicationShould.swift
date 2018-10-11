@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenDataStoreAlreadyContainsMaps_ApplicationShould: XCTestCase {
-    
+
     func testProvideTheMapsToTheObserverInAlphabeticalOrder() {
         let syncResponse = APISyncResponse.randomWithoutDeletions
         let dataStore = CapturingEurofurenceDataStore()
@@ -19,8 +19,8 @@ class WhenDataStoreAlreadyContainsMaps_ApplicationShould: XCTestCase {
         let expected = context.makeExpectedMaps(from: syncResponse)
         let observer = CapturingMapsObserver()
         context.application.add(observer)
-        
+
         XCTAssertEqual(expected, observer.capturedMaps)
     }
-    
+
 }

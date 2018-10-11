@@ -15,5 +15,5 @@ public struct StubBuildConfigurationProviding: BuildConfigurationProviding {
     public init(configuration: BuildConfiguration) {
         self.configuration = configuration
     }
-    
+
 }

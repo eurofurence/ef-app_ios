@@ -12,15 +12,15 @@ import EurofurenceAppCoreTestDoubles
 import XCTest
 
 class ApplicationDirectorTests: XCTestCase {
-    
+
     var context: ApplicationDirectorTestBuilder.Context!
-    
+
     override func setUp() {
         super.setUp()
-        
+
         context = ApplicationDirectorTestBuilder().build()
     }
-    
+
     func testWhenKnowledgeEntrySelectsWebLinkTheWebModuleIsPresentedOntoTheTabInterface() {
         context.navigateToTabController()
         let entry = KnowledgeEntry.random
@@ -31,11 +31,11 @@ class ApplicationDirectorTests: XCTestCase {
         context.linkRouter.stubbedLinkActions[link] = .web(url)
         context.knowledgeDetailModule.simulateLinkSelected(link)
         let webModuleForURL = context.webModuleProviding.producedWebModules[url]
-        
+
         XCTAssertNotNil(webModuleForURL)
         XCTAssertEqual(webModuleForURL, context.tabModule.stubInterface.capturedPresentedViewController)
     }
-    
+
     func testWhenKnowledgeEntrySelectsExternalAppLinkTheURLLauncherIsToldToHandleTheURL() {
         context.navigateToTabController()
         let entry = KnowledgeEntry.random
@@ -45,8 +45,8 @@ class ApplicationDirectorTests: XCTestCase {
         let url = URL.random
         context.linkRouter.stubbedLinkActions[link] = .externalURL(url)
         context.knowledgeDetailModule.simulateLinkSelected(link)
-        
+
         XCTAssertEqual(url, context.urlOpener.capturedURLToOpen)
     }
-    
+
 }

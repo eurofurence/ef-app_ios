@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenRequestingImageForAnnouncementThatHasImage_ApplicationShould: XCTestCase {
-    
+
     func testProvideTheImageData() {
         let syncResponse = APISyncResponse.randomWithoutDeletions
         let announcement = syncResponse.announcements.changed.randomElement().element
@@ -20,8 +20,8 @@ class WhenRequestingImageForAnnouncementThatHasImage_ApplicationShould: XCTestCa
         let identifier = Announcement.Identifier(announcement.identifier)
         var actual: Data?
         context.application.fetchAnnouncementImage(identifier: identifier) { actual = $0 }
-        
+
         XCTAssertEqual(expected, actual)
     }
-    
+
 }

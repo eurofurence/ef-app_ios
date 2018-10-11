@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenObservingConventionCountdownAfterConventionStarts_EurofurenceApplicationShould: XCTestCase {
-    
+
     func testTellObserverTheCountdownElapsed() {
         let observer = CapturingConventionCountdownServiceObserver()
         let clockTime = Date.random
@@ -20,8 +20,8 @@ class WhenObservingConventionCountdownAfterConventionStarts_EurofurenceApplicati
                                                     and: context.conventionStartDateRepository.conventionStartDate,
                                                     with: distanceToImplyConventionHasStarted)
         context.application.add(observer)
-        
+
         XCTAssertTrue(observer.toldCountdownDidElapse)
     }
-    
+
 }

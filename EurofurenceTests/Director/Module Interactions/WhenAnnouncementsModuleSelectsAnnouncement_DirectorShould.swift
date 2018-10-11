@@ -12,7 +12,7 @@ import EurofurenceAppCoreTestDoubles
 import XCTest
 
 class WhenAnnouncementsModuleSelectsAnnouncement_DirectorShould: XCTestCase {
-    
+
     func testPushAnnouncementDetailModuleOntoNewsNavigationController() {
         let context = ApplicationDirectorTestBuilder().build()
         context.navigateToTabController()
@@ -20,9 +20,9 @@ class WhenAnnouncementsModuleSelectsAnnouncement_DirectorShould: XCTestCase {
         let announcement = Announcement.Identifier.random
         context.newsModule.simulateAllAnnouncementsDisplayRequested()
         context.announcementsModule.simulateDidSelectAnnouncement(announcement)
-        
+
         XCTAssertEqual(context.announcementDetailModule.stubInterface, newsNavigationController?.topViewController)
         XCTAssertEqual(announcement, context.announcementDetailModule.capturedModel)
     }
-    
+
 }

@@ -11,7 +11,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenSearching_DealersInteractorShould: XCTestCase {
-    
+
     func testChangeSearchTermToUsedInput() {
         let index = FakeDealersIndex()
         let dealersService = FakeDealersService(index: index)
@@ -20,8 +20,8 @@ class WhenSearching_DealersInteractorShould: XCTestCase {
         context.interactor.makeDealersSearchViewModel { searchViewModel = $0 }
         let searchTerm = String.random
         searchViewModel?.updateSearchResults(with: searchTerm)
-        
+
         XCTAssertEqual(searchTerm, index.capturedSearchTerm)
     }
-    
+
 }

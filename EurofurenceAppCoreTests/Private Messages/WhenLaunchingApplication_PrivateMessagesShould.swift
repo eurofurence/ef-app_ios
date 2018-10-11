@@ -10,15 +10,15 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenLaunchingApplication_PrivateMessagesShould: XCTestCase {
-    
+
     func testBeRefreshed() {
         let messages = [Message].random
         let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         context.privateMessagesAPI.simulateSuccessfulResponse(response: messages)
         let observer = CapturingPrivateMessagesObserver()
         context.application.add(observer)
-        
+
         XCTAssertTrue(observer.observedMessages.contains(elementsFrom: messages))
     }
-    
+
 }

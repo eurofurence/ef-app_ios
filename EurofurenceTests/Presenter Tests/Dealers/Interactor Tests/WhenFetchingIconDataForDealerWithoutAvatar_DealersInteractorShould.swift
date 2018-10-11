@@ -12,7 +12,7 @@ import EurofurenceAppCoreTestDoubles
 import XCTest
 
 class WhenFetchingIconDataForDealerWithoutAvatar_DealersInteractorShould: XCTestCase {
-    
+
     func testSupplyTheStockIconData() {
         let dealer = Dealer.random
         let group = AlphabetisedDealersGroup(indexingString: .random, dealers: [dealer])
@@ -27,8 +27,8 @@ class WhenFetchingIconDataForDealerWithoutAvatar_DealersInteractorShould: XCTest
         let dealerViewModel = delegate.capturedDealerViewModel(at: IndexPath(item: 0, section: 0))
         var actual: Data?
         dealerViewModel?.fetchIconPNGData { actual = $0 }
-        
+
         XCTAssertEqual(defaultIconData, actual)
     }
-    
+
 }

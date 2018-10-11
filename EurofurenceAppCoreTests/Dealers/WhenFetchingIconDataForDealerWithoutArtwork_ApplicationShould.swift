@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenFetchingIconDataForDealerWithoutArtwork_ApplicationShould: XCTestCase {
-    
+
     func testInvokeTheFetchHandlerWithNilData() {
         var syncResponse = APISyncResponse.randomWithoutDeletions
         var dealer = APIDealer.random
@@ -23,8 +23,8 @@ class WhenFetchingIconDataForDealerWithoutArtwork_ApplicationShould: XCTestCase 
         dealersIndex.setDelegate(delegate)
         var invokedFetchHandlerWithNilData = false
         context.application.fetchIconPNGData(for: Dealer.Identifier(dealer.identifier)) { invokedFetchHandlerWithNilData = $0 == nil }
-        
+
         XCTAssertTrue(invokedFetchHandlerWithNilData)
     }
-    
+
 }

@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenFetchingMapContent_ThatRevealMultipleOptions_ApplicationShould: XCTestCase {
-    
+
     func testAdaptTheContentTypesIntoTheMultipleOption() {
         let context = ApplicationTestBuilder().build()
         var syncResponse = APISyncResponse.randomWithoutDeletions
@@ -28,8 +28,8 @@ class WhenFetchingMapContent_ThatRevealMultipleOptions_ApplicationShould: XCTest
         var content: Map.Content?
         context.application.fetchContent(for: Map.Identifier(map.identifier), atX: x, y: y) { content = $0 }
         let expected = Map.Content.multiple([.room(Room(name: room.name)), .dealer(context.makeExpectedDealer(from: dealer))])
-        
+
         XCTAssertEqual(expected, content)
     }
-    
+
 }

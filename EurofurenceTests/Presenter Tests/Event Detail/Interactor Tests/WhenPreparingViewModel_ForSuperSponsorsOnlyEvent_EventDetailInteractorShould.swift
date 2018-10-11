@@ -12,7 +12,7 @@ import EurofurenceAppCoreTestDoubles
 import XCTest
 
 class WhenPreparingViewModel_ForSuperSponsorsOnlyEvent_EventDetailInteractorShould: XCTestCase {
-    
+
     func testProduceSuperSponsorsOnlyComponentHeadingAfterDescriptionComponent() {
         var event = Event.randomStandardEvent
         event.isSuperSponsorOnly = true
@@ -20,8 +20,8 @@ class WhenPreparingViewModel_ForSuperSponsorsOnlyEvent_EventDetailInteractorShou
         let visitor = CapturingEventDetailViewModelVisitor()
         context.viewModel?.describe(componentAt: 2, to: visitor)
         let expected = EventSuperSponsorsOnlyWarningViewModel(message: .thisEventIsForSuperSponsorsOnly)
-        
+
         XCTAssertEqual([expected], visitor.visitedViewModels)
     }
-    
+
 }

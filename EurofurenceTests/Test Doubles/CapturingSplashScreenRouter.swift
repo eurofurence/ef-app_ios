@@ -19,5 +19,5 @@ class CapturingSplashScreenRouter: SplashScreenRouter {
         wasToldToShowSplashScreen = true
         return splashScene
     }
-    
+
 }

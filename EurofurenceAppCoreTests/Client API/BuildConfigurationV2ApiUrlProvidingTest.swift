@@ -13,21 +13,21 @@ import XCTest
 class BuildConfigurationV2ApiUrlProvidingTest: XCTestCase {
     let debugUrl = "https://debug.api.example.com/v2/"
     let releaseUrl = "https://api.example.com/v2/"
-    
+
     func testTheProviderShouldReturnTheDebugUrlForBuildConfigurationDebug() {
         let expectedUrl = debugUrl
         let buildConfiguration = StubBuildConfigurationProviding(configuration: .debug)
-        
+
         let provider = BuildConfigurationV2ApiUrlProviding(buildConfiguration,
                                                            debugUrl: debugUrl,
                                                            releaseUrl: releaseUrl)
         XCTAssertEqual(expectedUrl, provider.url)
     }
-    
+
     func testTheProviderShouldReturnTheReleaseUrlForBuildConfigurationRelease() {
         let expectedUrl = releaseUrl
         let buildConfiguration = StubBuildConfigurationProviding(configuration: .release)
-        
+
         let provider = BuildConfigurationV2ApiUrlProviding(buildConfiguration,
                                                            debugUrl: debugUrl,
                                                            releaseUrl: releaseUrl)

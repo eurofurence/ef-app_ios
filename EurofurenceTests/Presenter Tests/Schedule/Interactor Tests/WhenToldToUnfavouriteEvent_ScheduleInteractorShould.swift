@@ -12,7 +12,7 @@ import EurofurenceAppCoreTestDoubles
 import XCTest
 
 class WhenToldToUnfavouriteEvent_ScheduleInteractorShould: XCTestCase {
-    
+
     func testTellTheEventsServiceToUnfavouriteTheEvent() {
         let eventsService = FakeEventsService()
         let events = [Event].random
@@ -24,8 +24,8 @@ class WhenToldToUnfavouriteEvent_ScheduleInteractorShould: XCTestCase {
         let originalEvent = events.first(where: { $0.title == randomEvent.element.title })
         let indexPath = IndexPath(item: randomEvent.index, section: randomGroup.index)
         viewModel?.unfavouriteEvent(at: indexPath)
-        
+
         XCTAssertEqual(originalEvent?.identifier, eventsService.unfavouritedEventIdentifier)
     }
-    
+
 }

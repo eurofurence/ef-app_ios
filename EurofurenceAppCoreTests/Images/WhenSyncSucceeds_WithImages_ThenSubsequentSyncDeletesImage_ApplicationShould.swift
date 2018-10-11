@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenSyncSucceeds_WithImages_ThenSubsequentSyncDeletesImage_ApplicationShould: XCTestCase {
-    
+
     func testDeleteTheImageFromTheStore() {
         let dataStore = CapturingEurofurenceDataStore()
         let context = ApplicationTestBuilder().with(dataStore).build()
@@ -20,9 +20,9 @@ class WhenSyncSucceeds_WithImages_ThenSubsequentSyncDeletesImage_ApplicationShou
         syncResponse.images.changed.removeAll()
         syncResponse.images.deleted = [imageToDelegate.identifier]
         context.performSuccessfulSync(response: syncResponse)
-        
+
         XCTAssertTrue(dataStore.transaction.deletedImages.contains(imageToDelegate.identifier))
         XCTAssertTrue(context.imageRepository.deletedImages.contains(imageToDelegate.identifier))
     }
-    
+
 }

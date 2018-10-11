@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class InOrderToSupportPhotoshootTag_ApplicationShould: XCTestCase {
-    
+
     func testIndicateItIsPhotoshootEventWhenTagPresent() {
         var syncResponse = APISyncResponse.randomWithoutDeletions
         let randomEvent = syncResponse.events.changed.randomElement()
@@ -22,10 +22,10 @@ class InOrderToSupportPhotoshootTag_ApplicationShould: XCTestCase {
         let eventsObserver = CapturingEventsServiceObserver()
         context.application.add(eventsObserver)
         let observedEvent = eventsObserver.allEvents.first
-        
+
         XCTAssertEqual(true, observedEvent?.isPhotoshoot)
     }
-    
+
     func testNotIndicateItIsPhotoshootEventWhenTagNotPresent() {
         var syncResponse = APISyncResponse.randomWithoutDeletions
         let randomEvent = syncResponse.events.changed.randomElement()
@@ -37,8 +37,8 @@ class InOrderToSupportPhotoshootTag_ApplicationShould: XCTestCase {
         let eventsObserver = CapturingEventsServiceObserver()
         context.application.add(eventsObserver)
         let observedEvent = eventsObserver.allEvents.first
-        
+
         XCTAssertEqual(false, observedEvent?.isPhotoshoot)
     }
-    
+
 }

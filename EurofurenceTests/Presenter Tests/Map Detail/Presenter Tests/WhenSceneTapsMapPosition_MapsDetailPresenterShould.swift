@@ -12,7 +12,7 @@ import EurofurenceAppCoreTestDoubles
 import XCTest
 
 class WhenSceneTapsMapPosition_MapsDetailPresenterShould: XCTestCase {
-    
+
     func testTellTheViewModelToShowTheMapContentsAtTheTappedLocation() {
         let identifier = Map.Identifier.random
         let interactor = FakeMapDetailInteractor(expectedMapIdentifier: identifier)
@@ -20,9 +20,9 @@ class WhenSceneTapsMapPosition_MapsDetailPresenterShould: XCTestCase {
         context.simulateSceneDidLoad()
         let randomLocation = MapCoordinate(x: Float.random, y: Float.random)
         context.simulateSceneDidDidTapMap(at: randomLocation)
-        
+
         XCTAssertEqual(randomLocation.x, interactor.viewModel.positionToldToShowMapContentsFor?.x)
         XCTAssertEqual(randomLocation.y, interactor.viewModel.positionToldToShowMapContentsFor?.y)
     }
-    
+
 }

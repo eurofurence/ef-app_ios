@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenRestrictingSearchResultsToFavourites_ScheduleShould: XCTestCase {
-    
+
     func testUpdateTheDelegateWithAllTheFavourites() {
         let response = APISyncResponse.randomWithoutDeletions
         let dataStore = CapturingEurofurenceDataStore()
@@ -18,17 +18,17 @@ class WhenRestrictingSearchResultsToFavourites_ScheduleShould: XCTestCase {
         dataStore.save(response) { (transaction) in
             expected.forEach(transaction.saveFavouriteEventIdentifier)
         }
-        
+
         let context = ApplicationTestBuilder().with(dataStore).build()
         let schedule = context.application.makeEventsSearchController()
         let delegate = CapturingEventsSearchControllerDelegate()
         schedule.setResultsDelegate(delegate)
         schedule.restrictResultsToFavourites()
         let searchResultIdentifiers = delegate.capturedSearchResults.map({ $0.identifier })
-        
+
         XCTAssertEqual(Set(expected), Set(searchResultIdentifiers))
     }
-    
+
     func testNotIncludeQueryResultsThatAreNotFavourites() {
         let response = APISyncResponse.randomWithoutDeletions
         let dataStore = CapturingEurofurenceDataStore()
@@ -39,17 +39,17 @@ class WhenRestrictingSearchResultsToFavourites_ScheduleShould: XCTestCase {
         dataStore.save(response) { (transaction) in
             favouriteEventIdentifiers.forEach(transaction.saveFavouriteEventIdentifier)
         }
-        
+
         let context = ApplicationTestBuilder().with(dataStore).build()
         let schedule = context.application.makeEventsSearchController()
         let delegate = CapturingEventsSearchControllerDelegate()
         schedule.setResultsDelegate(delegate)
         schedule.restrictResultsToFavourites()
         schedule.changeSearchTerm(nonFavouriteEvent.title)
-        
+
         XCTAssertFalse(delegate.capturedSearchResults.contains(where: { $0.identifier == notAFavourite.element }))
     }
-    
+
     func testUpdateDelegateWhenUnfavouritingEvent() {
         let response = APISyncResponse.randomWithoutDeletions
         let dataStore = CapturingEurofurenceDataStore()
@@ -58,7 +58,7 @@ class WhenRestrictingSearchResultsToFavourites_ScheduleShould: XCTestCase {
         dataStore.save(response) { (transaction) in
             favourites.forEach(transaction.saveFavouriteEventIdentifier)
         }
-        
+
         let context = ApplicationTestBuilder().with(dataStore).build()
         let schedule = context.application.makeEventsSearchController()
         let delegate = CapturingEventsSearchControllerDelegate()
@@ -68,8 +68,8 @@ class WhenRestrictingSearchResultsToFavourites_ScheduleShould: XCTestCase {
         var expected = favourites
         expected.remove(at: randomFavourite.index)
         let searchResultIdentifiers = delegate.capturedSearchResults.map({ $0.identifier })
-        
+
         XCTAssertEqual(Set(expected), Set(searchResultIdentifiers))
     }
-    
+
 }

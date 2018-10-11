@@ -11,7 +11,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenBindingEvent_WithNoPoster_SchedulePresenterShould: XCTestCase {
-    
+
     func testNotShowTheBanner() {
         let viewModel = CapturingScheduleViewModel.random
         let randomGroup = viewModel.events.randomElement()
@@ -27,10 +27,10 @@ class WhenBindingEvent_WithNoPoster_SchedulePresenterShould: XCTestCase {
         let indexPath = IndexPath(item: randomEvent.index, section: randomGroup.index)
         let component = CapturingScheduleEventComponent()
         context.bind(component, forEventAt: indexPath)
-        
+
         XCTAssertFalse(component.didShowBanner)
     }
-    
+
     func testHideTheBanner() {
         let viewModel = CapturingScheduleViewModel.random
         let randomGroup = viewModel.events.randomElement()
@@ -46,8 +46,8 @@ class WhenBindingEvent_WithNoPoster_SchedulePresenterShould: XCTestCase {
         let indexPath = IndexPath(item: randomEvent.index, section: randomGroup.index)
         let component = CapturingScheduleEventComponent()
         context.bind(component, forEventAt: indexPath)
-        
+
         XCTAssertTrue(component.didHideBanner)
     }
-    
+
 }

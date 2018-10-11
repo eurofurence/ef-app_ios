@@ -10,59 +10,59 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenToldToOpenNotification_ThatRepresentsEventReminder_ApplicationShould: XCTestCase {
-    
+
     func testNotRefreshTheLocalStore() {
         let context = ApplicationTestBuilder().build()
-        let payload: [String : String] = [
-            ApplicationNotificationKey.notificationContentKind.rawValue : ApplicationNotificationContentKind.event.rawValue,
-            ApplicationNotificationKey.notificationContentIdentifier.rawValue : String.random
+        let payload: [String: String] = [
+            ApplicationNotificationKey.notificationContentKind.rawValue: ApplicationNotificationContentKind.event.rawValue,
+            ApplicationNotificationKey.notificationContentIdentifier.rawValue: String.random
         ]
-        
+
         context.application.handleRemoteNotification(payload: payload) { (_) in }
-        
+
         XCTAssertFalse(context.syncAPI.didBeginSync)
     }
-    
+
     func testProvideEventIdentifierInCompletionHandler() {
         let syncResponse = APISyncResponse.randomWithoutDeletions
         let event = syncResponse.events.changed.randomElement().element
         let dataStore = CapturingEurofurenceDataStore()
         dataStore.save(syncResponse)
         let context = ApplicationTestBuilder().with(dataStore).build()
-        let payload: [String : String] = [
-            ApplicationNotificationKey.notificationContentKind.rawValue : ApplicationNotificationContentKind.event.rawValue,
-            ApplicationNotificationKey.notificationContentIdentifier.rawValue : event.identifier
+        let payload: [String: String] = [
+            ApplicationNotificationKey.notificationContentKind.rawValue: ApplicationNotificationContentKind.event.rawValue,
+            ApplicationNotificationKey.notificationContentIdentifier.rawValue: event.identifier
         ]
-        
+
         var result: ApplicationPushActionResult?
         context.application.handleRemoteNotification(payload: payload) { result = $0 }
-        
+
         XCTAssertEqual(ApplicationPushActionResult.event(Event.Identifier(event.identifier)), result)
     }
-    
+
     func testProvideUnknownActionWhenMissingContentIdentifierKey() {
         let context = ApplicationTestBuilder().build()
-        let payload: [String : String] = [
-            ApplicationNotificationKey.notificationContentKind.rawValue : ApplicationNotificationContentKind.event.rawValue
+        let payload: [String: String] = [
+            ApplicationNotificationKey.notificationContentKind.rawValue: ApplicationNotificationContentKind.event.rawValue
         ]
-        
+
         var result: ApplicationPushActionResult?
         context.application.handleRemoteNotification(payload: payload) { result = $0 }
-        
+
         XCTAssertEqual(ApplicationPushActionResult.unknown, result)
     }
-    
+
     func testProvideUnknownActionWhenEventWithIdentifierDoesNotExistWithinStore() {
         let context = ApplicationTestBuilder().build()
-        let payload: [String : String] = [
-            ApplicationNotificationKey.notificationContentKind.rawValue : ApplicationNotificationContentKind.event.rawValue,
-            ApplicationNotificationKey.notificationContentIdentifier.rawValue : String.random
+        let payload: [String: String] = [
+            ApplicationNotificationKey.notificationContentKind.rawValue: ApplicationNotificationContentKind.event.rawValue,
+            ApplicationNotificationKey.notificationContentIdentifier.rawValue: String.random
         ]
-        
+
         var result: ApplicationPushActionResult?
         context.application.handleRemoteNotification(payload: payload) { result = $0 }
-        
+
         XCTAssertEqual(ApplicationPushActionResult.unknown, result)
     }
-    
+
 }

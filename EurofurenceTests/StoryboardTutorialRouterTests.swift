@@ -12,7 +12,7 @@ import XCTest
 import UIKit
 
 class StoryboardTutorialRouterTests: XCTestCase {
-    
+
     func testShowingTheTutorialShouldSetTheTutorialViewControllerAsTheWindowsRootViewController() {
         let window = UIWindow(frame: .zero)
         let tutorialRouter = StoryboardRouters(window: window).tutorialRouter
@@ -36,5 +36,5 @@ class StoryboardTutorialRouterTests: XCTestCase {
 
         XCTAssertTrue((tutorialScene as? UIViewController) === window.rootViewController)
     }
-    
+
 }

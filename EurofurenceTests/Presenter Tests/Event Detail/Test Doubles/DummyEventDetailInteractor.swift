@@ -12,9 +12,9 @@ import EurofurenceAppCoreTestDoubles
 import Foundation
 
 struct DummyEventDetailInteractor: EventDetailInteractor {
-    
+
     func makeViewModel(for event: Event.Identifier, completionHandler: @escaping (EventDetailViewModel) -> Void) {
-        
+
     }
-    
+
 }

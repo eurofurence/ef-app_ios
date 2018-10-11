@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenDeletingDealer_AfterSuccessfulSync_ApplicationShould: XCTestCase {
-    
+
     func testUpdateDelegateWithoutDeletedDealer() {
         var response = APISyncResponse.randomWithoutDeletions
         let context = ApplicationTestBuilder().build()
@@ -28,9 +28,9 @@ class WhenDeletingDealer_AfterSuccessfulSync_ApplicationShould: XCTestCase {
         context.syncAPI.simulateSuccessfulSync(response)
         let allDealers = delegate.capturedAlphabetisedDealerGroups.map({ $0.dealers }).reduce([], +)
         let actual = Set(allDealers.map({ $0.identifier.rawValue }))
-        
+
         XCTAssertEqual(expected, actual,
                        "Should have removed dealer \(dealerToDelete.element.identifier)")
     }
-    
+
 }

@@ -3,6 +3,10 @@ platform :ios, '10.0'
 inhibit_all_warnings!
 use_frameworks!
 
+target :RandomDataGeneration do
+    pod 'SwiftLint'
+end
+
 target 'Eurofurence' do
 	plugin 'cocoapods-acknowledgements', :settings_bundle => true
 	

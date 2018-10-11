@@ -12,7 +12,7 @@ import EurofurenceAppCoreTestDoubles
 import XCTest
 
 class WhenSceneTapsMapDetail_ThatRepresentsDealer_MapsPresenterShould: XCTestCase {
-    
+
     func testTellTheModuleDelegateToShowDealer() {
         let identifier = Map.Identifier.random
         let interactor = FakeMapDetailInteractor(expectedMapIdentifier: identifier)
@@ -22,8 +22,8 @@ class WhenSceneTapsMapDetail_ThatRepresentsDealer_MapsPresenterShould: XCTestCas
         context.simulateSceneDidDidTapMap(at: randomLocation)
         let dealerIdentifier = Dealer.Identifier.random
         interactor.viewModel.resolvePositionalContent(with: dealerIdentifier)
-        
+
         XCTAssertEqual(dealerIdentifier, context.delegate.capturedDealerToShow)
     }
-    
+
 }

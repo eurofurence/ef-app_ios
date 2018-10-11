@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenSyncFinishesForEventWithPoster_WhenImageAPIIsSlow_ApplicationShould: XCTestCase {
-    
+
     func testStillAdaptTheFetchedDataIntoTheEvent() {
         let imageAPI = SlowFakeImageAPI()
         let syncResponse = APISyncResponse.randomWithoutDeletions
@@ -22,8 +22,8 @@ class WhenSyncFinishesForEventWithPoster_WhenImageAPIIsSlow_ApplicationShould: X
         context.performSuccessfulSync(response: syncResponse)
         imageAPI.resolvePendingFetches()
         let expected = context.makeExpectedEvent(from: randomEvent, response: syncResponse)
-        
+
         XCTAssertTrue(observer.runningEvents.contains(expected))
     }
-    
+
 }

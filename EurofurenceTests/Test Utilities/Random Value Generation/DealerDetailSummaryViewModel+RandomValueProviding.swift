@@ -12,7 +12,7 @@ import Foundation
 import RandomDataGeneration
 
 extension DealerDetailSummaryViewModel: RandomValueProviding {
-    
+
     public static var random: DealerDetailSummaryViewModel {
         return DealerDetailSummaryViewModel(artistImagePNGData: .random,
                                             title: .random,
@@ -23,5 +23,5 @@ extension DealerDetailSummaryViewModel: RandomValueProviding {
                                             twitterHandle: .random,
                                             telegramHandle: .random)
     }
-    
+
 }

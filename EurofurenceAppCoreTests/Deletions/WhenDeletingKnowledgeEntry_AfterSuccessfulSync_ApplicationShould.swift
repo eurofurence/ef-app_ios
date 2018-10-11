@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenDeletingKnowledgeEntry_AfterSuccessfulSync_ApplicationShould: XCTestCase {
-    
+
     func testTellTheStoreToDeleteTheEntry() {
         let dataStore = CapturingEurofurenceDataStore()
         var response = APISyncResponse.randomWithoutDeletions
@@ -21,8 +21,8 @@ class WhenDeletingKnowledgeEntry_AfterSuccessfulSync_ApplicationShould: XCTestCa
         response.knowledgeEntries.deleted = [entryToDelete]
         context.refreshLocalStore()
         context.syncAPI.simulateSuccessfulSync(response)
-        
+
         XCTAssertEqual([entryToDelete], dataStore.transaction.deletedKnowledgeEntries)
     }
-    
+
 }

@@ -12,30 +12,30 @@ import EurofurenceAppCoreTestDoubles
 import Foundation
 
 class FakeMapsViewModel: MapsViewModel {
-    
+
     var numberOfMaps: Int {
         return maps.count
     }
-    
+
     var maps = [FakeMapViewModel(), FakeMapViewModel(), FakeMapViewModel()]
-    
+
     func mapViewModel(at index: Int) -> MapViewModel2 {
         return maps[index]
     }
-    
+
     func identifierForMap(at index: Int) -> Map.Identifier? {
         return Map.Identifier("\(index)")
     }
-    
+
 }
 
 class FakeMapViewModel: MapViewModel2 {
-    
+
     var mapName: String = .random
     var mapPreviewImagePNGData: Data = .random
-    
+
     func fetchMapPreviewPNGData(completionHandler: @escaping (Data) -> Void) {
         completionHandler(mapPreviewImagePNGData)
     }
-    
+
 }

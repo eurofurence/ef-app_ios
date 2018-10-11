@@ -25,7 +25,7 @@ class ConventionCountdownController: EventConsumer {
 
         eventBus.subscribe(consumer: self)
     }
-    
+
     func consume(event: DomainEvent.SignificantTimePassedEvent) {
         let state = resolveCountdownState()
         daysUntilConventionObservers.forEach({ $0.conventionCountdownStateDidChange(to: state) })

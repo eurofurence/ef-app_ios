@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenTellingDealersIndexToSearch_ApplicationShould: XCTestCase {
-    
+
     func testMatchDealersByExactPreferredName() {
         var syncResponse = APISyncResponse.randomWithoutDeletions
         var dealer = APIDealer.random
@@ -26,10 +26,10 @@ class WhenTellingDealersIndexToSearch_ApplicationShould: XCTestCase {
         dealersIndex.performSearch(term: preferredName)
         let expectedDealer = context.makeExpectedDealer(from: dealer)
         let expected = [AlphabetisedDealersGroup(indexingString: "B", dealers: [expectedDealer])]
-        
+
         XCTAssertEqual(expected, delegate.capturedAlphabetisedDealerSearchResults)
     }
-    
+
     func testMatchDealersByPartialNameMatches() {
         var syncResponse = APISyncResponse.randomWithoutDeletions
         var dealer = APIDealer.random
@@ -45,10 +45,10 @@ class WhenTellingDealersIndexToSearch_ApplicationShould: XCTestCase {
         dealersIndex.performSearch(term: "Cha")
         let expectedDealer = context.makeExpectedDealer(from: dealer)
         let expected = [AlphabetisedDealersGroup(indexingString: "C", dealers: [expectedDealer])]
-        
+
         XCTAssertEqual(expected, delegate.capturedAlphabetisedDealerSearchResults)
     }
-    
+
     func testMatchDealersIgnoringCase() {
         var syncResponse = APISyncResponse.randomWithoutDeletions
         var dealer = APIDealer.random
@@ -64,10 +64,10 @@ class WhenTellingDealersIndexToSearch_ApplicationShould: XCTestCase {
         dealersIndex.performSearch(term: "dude")
         let expectedDealer = context.makeExpectedDealer(from: dealer)
         let expected = [AlphabetisedDealersGroup(indexingString: "C", dealers: [expectedDealer])]
-        
+
         XCTAssertEqual(expected, delegate.capturedAlphabetisedDealerSearchResults)
     }
-    
+
     func testMatchDealersByExactAlternateNameButGroupByDisplayName() {
         var syncResponse = APISyncResponse.randomWithoutDeletions
         var dealer = APIDealer.random
@@ -84,10 +84,10 @@ class WhenTellingDealersIndexToSearch_ApplicationShould: XCTestCase {
         dealersIndex.performSearch(term: attendeeNickname)
         let expectedDealer = context.makeExpectedDealer(from: dealer)
         let expected = [AlphabetisedDealersGroup(indexingString: "C", dealers: [expectedDealer])]
-        
+
         XCTAssertEqual(expected, delegate.capturedAlphabetisedDealerSearchResults)
     }
-    
+
     func testMatchDealersByPartialAlternateNameButGroupByDisplayName() {
         var syncResponse = APISyncResponse.randomWithoutDeletions
         var dealer = APIDealer.random
@@ -104,10 +104,10 @@ class WhenTellingDealersIndexToSearch_ApplicationShould: XCTestCase {
         dealersIndex.performSearch(term: "ob")
         let expectedDealer = context.makeExpectedDealer(from: dealer)
         let expected = [AlphabetisedDealersGroup(indexingString: "C", dealers: [expectedDealer])]
-        
+
         XCTAssertEqual(expected, delegate.capturedAlphabetisedDealerSearchResults)
     }
-    
+
     func testMatchDealersAlternateNameIgnoringCasingButGroupByDisplayName() {
         var syncResponse = APISyncResponse.randomWithoutDeletions
         var dealer = APIDealer.random
@@ -124,10 +124,10 @@ class WhenTellingDealersIndexToSearch_ApplicationShould: XCTestCase {
         dealersIndex.performSearch(term: "bob")
         let expectedDealer = context.makeExpectedDealer(from: dealer)
         let expected = [AlphabetisedDealersGroup(indexingString: "C", dealers: [expectedDealer])]
-        
+
         XCTAssertEqual(expected, delegate.capturedAlphabetisedDealerSearchResults)
     }
-    
+
     func testNotMatchDealersWithoutAlternateNamesWhenSearchDoesNotMatchPreferredName() {
         var syncResponse = APISyncResponse.randomWithoutDeletions
         var dealer = APIDealer.random
@@ -142,8 +142,8 @@ class WhenTellingDealersIndexToSearch_ApplicationShould: XCTestCase {
         dealersIndex.setDelegate(delegate)
         dealersIndex.performSearch(term: "zzzzz")
         let expected = [AlphabetisedDealersGroup]()
-        
+
         XCTAssertEqual(expected, delegate.capturedAlphabetisedDealerSearchResults)
     }
-    
+
 }

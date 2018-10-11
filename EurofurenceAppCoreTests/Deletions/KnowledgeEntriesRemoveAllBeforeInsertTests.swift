@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class KnowledgeEntriesRemoveAllBeforeInsertTests: XCTestCase {
-    
+
     func testTellTheDataStoreToDeleteTheKnowledgeEntries() {
         let originalResponse = APISyncResponse.randomWithoutDeletions
         var subsequentResponse = originalResponse
@@ -20,9 +20,9 @@ class KnowledgeEntriesRemoveAllBeforeInsertTests: XCTestCase {
         context.performSuccessfulSync(response: subsequentResponse)
         let originalEntryIdentifiers = originalResponse.knowledgeEntries.changed.map({ $0.identifier })
         let deletedKnowledgeEntries = context.dataStore.transaction.deletedKnowledgeEntries
-        
+
         XCTAssertTrue(originalEntryIdentifiers.equalsIgnoringOrder(deletedKnowledgeEntries),
                       "Should have removed original knowledge entries between sync events")
     }
-    
+
 }

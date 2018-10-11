@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class InOrderToSupportDealersDenTag_ApplicationShould: XCTestCase {
-    
+
     func testIndicateItIsDealersDenEventWhenTagPresent() {
         var syncResponse = APISyncResponse.randomWithoutDeletions
         let randomEvent = syncResponse.events.changed.randomElement()
@@ -22,10 +22,10 @@ class InOrderToSupportDealersDenTag_ApplicationShould: XCTestCase {
         let eventsObserver = CapturingEventsServiceObserver()
         context.application.add(eventsObserver)
         let observedEvent = eventsObserver.allEvents.first
-        
+
         XCTAssertEqual(true, observedEvent?.isDealersDen)
     }
-    
+
     func testNotIndicateItIsDealersDenEventWhenTagNotPresent() {
         var syncResponse = APISyncResponse.randomWithoutDeletions
         let randomEvent = syncResponse.events.changed.randomElement()
@@ -37,8 +37,8 @@ class InOrderToSupportDealersDenTag_ApplicationShould: XCTestCase {
         let eventsObserver = CapturingEventsServiceObserver()
         context.application.add(eventsObserver)
         let observedEvent = eventsObserver.allEvents.first
-        
+
         XCTAssertEqual(false, observedEvent?.isDealersDen)
     }
-    
+
 }

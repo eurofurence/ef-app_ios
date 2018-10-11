@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenResolvingEventByIdentifier_ForEventThatExists_ApplicationShould: XCTestCase {
-    
+
     func testInvokeTheHandlerWithTheExpectedEvent() {
         let response = APISyncResponse.randomWithoutDeletions
         let context = ApplicationTestBuilder().build()
@@ -20,8 +20,8 @@ class WhenResolvingEventByIdentifier_ForEventThatExists_ApplicationShould: XCTes
         let expected = context.makeExpectedEvent(from: event, response: response)
         var actual: Event?
         context.application.fetchEvent(for: Event.Identifier(event.identifier)) { actual = $0 }
-        
+
         XCTAssertEqual(expected, actual)
     }
-    
+
 }

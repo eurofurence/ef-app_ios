@@ -12,7 +12,7 @@ import EurofurenceAppCoreTestDoubles
 import XCTest
 
 class WhenSceneSelectsDealer_DealersPresenterShould: XCTestCase {
-    
+
     func testTellTheModuleDelegateTheDealerIdentifierForTheIndexPathWasSelected() {
         let viewModel = CapturingDealersViewModel()
         let identifier = Dealer.Identifier.random
@@ -22,17 +22,17 @@ class WhenSceneSelectsDealer_DealersPresenterShould: XCTestCase {
         let context = DealersPresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
         context.simulateSceneDidSelectDealer(at: indexPath)
-        
+
         XCTAssertEqual(identifier, context.delegate.capturedSelectedDealerIdentifier)
     }
-    
+
     func testTellTheSceneToDeselectTheSelectedDealer() {
         let indexPath = IndexPath.random
         let context = DealersPresenterTestBuilder().build()
         context.simulateSceneDidLoad()
         context.simulateSceneDidSelectDealer(at: indexPath)
-        
+
         XCTAssertEqual(indexPath, context.scene.capturedIndexPathToDeselect)
     }
-    
+
 }

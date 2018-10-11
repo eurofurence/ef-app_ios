@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import Foundation
 
 class CapturingSyncAPI: SyncAPI {
-    
+
     fileprivate var completionHandler: ((APISyncResponse?) -> Void)?
     private(set) var capturedLastSyncTime: Date?
     private(set) var didBeginSync = false
@@ -19,16 +19,16 @@ class CapturingSyncAPI: SyncAPI {
         capturedLastSyncTime = lastSyncTime
         self.completionHandler = completionHandler
     }
-    
+
 }
 
 extension CapturingSyncAPI {
-    
+
     func simulateSuccessfulSync(_ response: APISyncResponse) {
         completionHandler?(response)
     }
     func simulateUnsuccessfulSync() {
         completionHandler?(nil)
     }
-    
+
 }

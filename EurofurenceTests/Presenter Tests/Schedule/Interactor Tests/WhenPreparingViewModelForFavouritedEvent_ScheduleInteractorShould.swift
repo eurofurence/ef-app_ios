@@ -12,7 +12,7 @@ import EurofurenceAppCoreTestDoubles
 import XCTest
 
 class WhenPreparingViewModelForFavouritedEvent_ScheduleInteractorShould: XCTestCase {
-    
+
     func testIndicateTheEventIsFavourited() {
         let eventsService = FakeEventsService()
         let events = [Event].random
@@ -22,8 +22,8 @@ class WhenPreparingViewModelForFavouritedEvent_ScheduleInteractorShould: XCTestC
         let context = ScheduleInteractorTestBuilder().with(eventsService).build()
         context.makeViewModel()
         let eventViewModel = context.eventsViewModels.randomElement().element.events.randomElement().element
-        
+
         XCTAssertTrue(eventViewModel.isFavourite)
     }
-    
+
 }

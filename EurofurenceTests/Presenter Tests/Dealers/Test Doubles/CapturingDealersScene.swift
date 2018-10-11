@@ -11,27 +11,27 @@ import EurofurenceAppCore
 import UIKit.UIViewController
 
 class CapturingDealersScene: UIViewController, DealersScene {
-    
+
     private(set) var delegate: DealersSceneDelegate?
     func setDelegate(_ delegate: DealersSceneDelegate) {
         self.delegate = delegate
     }
-    
+
     private(set) var capturedTitle: String?
     func setDealersTitle(_ title: String) {
         capturedTitle = title
     }
-    
+
     private(set) var didShowRefreshIndicator = false
     func showRefreshIndicator() {
         didShowRefreshIndicator = true
     }
-    
+
     private(set) var didHideRefreshIndicator = false
     func hideRefreshIndicator() {
         didHideRefreshIndicator = true
     }
-    
+
     private(set) var capturedDealersPerSectionToBind = [Int]()
     private(set) var capturedSectionIndexTitles = [String]()
     private(set) var binder: DealersBinder?
@@ -40,7 +40,7 @@ class CapturingDealersScene: UIViewController, DealersScene {
         capturedSectionIndexTitles = sectionIndexTitles
         self.binder = binder
     }
-    
+
     private(set) var capturedDealersPerSectionToBindToSearchResults = [Int]()
     private(set) var capturedSectionIndexTitlesToBindToSearchResults = [String]()
     private(set) var searchResultsBinder: DealersSearchResultsBinder?
@@ -49,10 +49,10 @@ class CapturingDealersScene: UIViewController, DealersScene {
         capturedSectionIndexTitlesToBindToSearchResults = sectionIndexTitles
         searchResultsBinder = binder
     }
-    
+
     private(set) var capturedIndexPathToDeselect: IndexPath?
     func deselectDealer(at indexPath: IndexPath) {
         capturedIndexPathToDeselect = indexPath
     }
-    
+
 }

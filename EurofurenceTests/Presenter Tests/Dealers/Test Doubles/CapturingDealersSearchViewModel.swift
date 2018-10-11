@@ -12,35 +12,35 @@ import EurofurenceAppCoreTestDoubles
 import Foundation
 
 class CapturingDealersSearchViewModel: DealersSearchViewModel {
-    
+
     var dealerGroups: [DealersGroupViewModel]
     var sectionIndexTitles: [String]
-    
+
     init(dealerGroups: [DealersGroupViewModel] = .random, sectionIndexTitles: [String] = .random) {
         self.dealerGroups = dealerGroups
         self.sectionIndexTitles = sectionIndexTitles
     }
-    
+
     func setSearchResultsDelegate(_ delegate: DealersSearchViewModelDelegate) {
         delegate.dealerSearchResultsDidChange(dealerGroups, indexTitles: sectionIndexTitles)
     }
-    
+
     private(set) var capturedSearchQuery: String?
     func updateSearchResults(with query: String) {
         capturedSearchQuery = query
     }
-    
-    fileprivate var dealerIdentifiers = [IndexPath : Dealer.Identifier]()
+
+    fileprivate var dealerIdentifiers = [IndexPath: Dealer.Identifier]()
     func identifierForDealer(at indexPath: IndexPath) -> Dealer.Identifier? {
         return dealerIdentifiers[indexPath]
     }
-    
+
 }
 
 extension CapturingDealersSearchViewModel {
-    
+
     func stub(_ identifier: Dealer.Identifier, forDealerAt indexPath: IndexPath) {
         dealerIdentifiers[indexPath] = identifier
     }
-    
+
 }

@@ -11,7 +11,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenFetchingIdentifierForDealer_DealersInteractorShould: XCTestCase {
-    
+
     func testProvideTheIdentifierForTheDealer() {
         let dealersService = FakeDealersService()
         let context = DealerInteractorTestBuilder().with(dealersService).build()
@@ -26,5 +26,5 @@ class WhenFetchingIdentifierForDealer_DealersInteractorShould: XCTestCase {
 
         XCTAssertEqual(expected, actual)
     }
-    
+
 }

@@ -11,7 +11,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenDealersIndexProducesNewSearchResults_DealersInteractorShould: XCTestCase {
-    
+
     func testConvertIndexedDealersIntoExpectedGroupTitles() {
         let index = FakeDealersIndex()
         let modelDealers = index.alphabetisedDealersSearchResult
@@ -23,8 +23,8 @@ class WhenDealersIndexProducesNewSearchResults_DealersInteractorShould: XCTestCa
         let delegate = CapturingDealersSearchViewModelDelegate()
         searchViewModel?.setSearchResultsDelegate(delegate)
         let actual = delegate.capturedSearchResults.map({ $0.title })
-        
+
         XCTAssertEqual(expected, actual)
     }
-    
+
 }

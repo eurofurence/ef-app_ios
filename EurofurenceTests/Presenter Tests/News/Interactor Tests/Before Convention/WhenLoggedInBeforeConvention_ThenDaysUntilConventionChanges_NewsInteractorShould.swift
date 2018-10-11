@@ -11,7 +11,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenLoggedInBeforeConvention_ThenDaysUntilConventionChanges_NewsInteractorShould: XCTestCase {
-    
+
     func testUpdateTheCountdownWidget() {
         let countdownService = StubConventionCountdownService()
         let context = DefaultNewsInteractorTestBuilder()
@@ -21,7 +21,7 @@ class WhenLoggedInBeforeConvention_ThenDaysUntilConventionChanges_NewsInteractor
         context.subscribeViewModelUpdates()
         let daysUntilConvention = Int.random
         countdownService.changeDaysUntilConvention(to: daysUntilConvention)
-        
+
         context.assert()
             .thatViewModel()
             .hasYourEurofurence()
@@ -29,5 +29,5 @@ class WhenLoggedInBeforeConvention_ThenDaysUntilConventionChanges_NewsInteractor
             .hasAnnouncements()
             .verify()
     }
-    
+
 }

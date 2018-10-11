@@ -11,23 +11,23 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenBindingFavouriteEvent_FromSearchResult_SchedulePresenterShould: XCTestCase {
-    
+
     func testTellTheSceneToShowTheFavouriteEventIndicator() {
         var searchResult = ScheduleEventViewModel.random
         searchResult.isFavourite = true
         let component = SchedulePresenterTestBuilder.buildForTestingBindingOfSearchResult(searchResult)
-        
+
         XCTAssertTrue(component.didShowFavouriteEventIndicator)
     }
-    
+
     func testNotTellTheSceneToHideTheFavouriteEventIndicator() {
         var searchResult = ScheduleEventViewModel.random
         searchResult.isFavourite = true
         let component = SchedulePresenterTestBuilder.buildForTestingBindingOfSearchResult(searchResult)
-        
+
         XCTAssertFalse(component.didHideFavouriteEventIndicator)
     }
-    
+
     func testSupplyUnfavouriteActionInformation() {
         let searchViewModel = CapturingScheduleSearchViewModel()
         let interactor = FakeScheduleInteractor(searchViewModel: searchViewModel)
@@ -39,10 +39,10 @@ class WhenBindingFavouriteEvent_FromSearchResult_SchedulePresenterShould: XCTest
         searchViewModel.simulateSearchResultsUpdated(results)
         let indexPath = IndexPath(item: 0, section: 0)
         let action = context.scene.searchResultsBinder?.eventActionForComponent(at: indexPath)
-        
+
         XCTAssertEqual(.unfavourite, action?.title)
     }
-    
+
     func testTellViewModelToUnfavouriteEventAtIndexPathWhenInvokingAction() {
         let searchViewModel = CapturingScheduleSearchViewModel()
         let interactor = FakeScheduleInteractor(searchViewModel: searchViewModel)
@@ -55,8 +55,8 @@ class WhenBindingFavouriteEvent_FromSearchResult_SchedulePresenterShould: XCTest
         let indexPath = IndexPath(item: 0, section: 0)
         let action = context.scene.searchResultsBinder?.eventActionForComponent(at: indexPath)
         action?.run()
-        
+
         XCTAssertEqual(indexPath, searchViewModel.indexPathForUnfavouritedEvent)
     }
-    
+
 }

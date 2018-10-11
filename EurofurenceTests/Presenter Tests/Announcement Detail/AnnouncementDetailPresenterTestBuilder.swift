@@ -12,14 +12,14 @@ import EurofurenceAppCoreTestDoubles
 import UIKit.UIViewController
 
 class AnnouncementDetailPresenterTestBuilder {
-    
+
     struct Context {
         var announcementDetailScene: UIViewController
         var sceneFactory: StubAnnouncementDetailSceneFactory
         var scene: CapturingAnnouncementDetailScene
         var announcementViewModel: AnnouncementViewModel
     }
-    
+
     func build() -> Context {
         let sceneFactory = StubAnnouncementDetailSceneFactory()
         let announcement: Announcement = .random
@@ -29,19 +29,19 @@ class AnnouncementDetailPresenterTestBuilder {
             .with(announcementDetailInteractor)
             .build()
             .makeAnnouncementDetailModule(for: announcement.identifier)
-        
+
         return Context(announcementDetailScene: module,
                        sceneFactory: sceneFactory,
                        scene: sceneFactory.stubbedScene,
                        announcementViewModel: announcementDetailInteractor.viewModel)
     }
-    
+
 }
 
 extension AnnouncementDetailPresenterTestBuilder.Context {
-    
+
     func simulateAnnouncementDetailSceneDidLoad() {
         scene.delegate?.announcementDetailSceneDidLoad()
     }
-    
+
 }

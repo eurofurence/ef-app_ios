@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenObservingMaps_ThenSyncSucceeds_ApplicationShould: XCTestCase {
-    
+
     func testProvideTheMapsToTheObserverInAlphabeticalOrder() {
         let context = ApplicationTestBuilder().build()
         let syncResponse = APISyncResponse.randomWithoutDeletions
@@ -18,8 +18,8 @@ class WhenObservingMaps_ThenSyncSucceeds_ApplicationShould: XCTestCase {
         context.application.add(observer)
         context.performSuccessfulSync(response: syncResponse)
         let expected = context.makeExpectedMaps(from: syncResponse)
-        
+
         XCTAssertEqual(expected, observer.capturedMaps)
     }
-    
+
 }

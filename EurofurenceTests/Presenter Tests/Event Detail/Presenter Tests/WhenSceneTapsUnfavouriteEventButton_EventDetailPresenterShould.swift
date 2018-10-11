@@ -12,7 +12,7 @@ import EurofurenceAppCoreTestDoubles
 import XCTest
 
 class WhenSceneTapsUnfavouriteEventButton_EventDetailPresenterShould: XCTestCase {
-    
+
     func testInvokeTheUnfavouriteActionOnTheViewModel() {
         let event = Event.random
         let viewModel = CapturingEventDetailViewModel()
@@ -20,16 +20,16 @@ class WhenSceneTapsUnfavouriteEventButton_EventDetailPresenterShould: XCTestCase
         let context = EventDetailPresenterTestBuilder().with(interactor).build(for: event)
         context.simulateSceneDidLoad()
         context.scene.simulateUnfavouriteEventButtonTapped()
-        
+
         XCTAssertTrue(viewModel.wasToldToUnfavouriteEvent)
     }
-    
+
     func testPlaySelectionHaptic() {
         let context = EventDetailPresenterTestBuilder().build()
         context.simulateSceneDidLoad()
         context.scene.simulateUnfavouriteEventButtonTapped()
-        
+
         XCTAssertTrue(context.hapticEngine.didPlaySelectionHaptic)
     }
-    
+
 }

@@ -8,12 +8,12 @@
 
 import EurofurenceAppCore
 
-public struct StubV2ApiUrlProviding : V2ApiUrlProviding {
-    
+public struct StubV2ApiUrlProviding: V2ApiUrlProviding {
+
     public init() {
-        
+
     }
-    
+
     public let url = "https://api.example.com/v2/"
-    
+
 }

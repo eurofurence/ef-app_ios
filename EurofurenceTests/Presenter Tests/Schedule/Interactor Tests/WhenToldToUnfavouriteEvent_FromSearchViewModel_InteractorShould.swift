@@ -12,7 +12,7 @@ import EurofurenceAppCoreTestDoubles
 import XCTest
 
 class WhenToldToUnfavouriteEvent_FromSearchViewModel_InteractorShould: XCTestCase {
-    
+
     func testTellTheEventsServiceToUnfavouriteTheEvent() {
         let eventsService = FakeEventsService()
         let events = [Event].random
@@ -24,8 +24,8 @@ class WhenToldToUnfavouriteEvent_FromSearchViewModel_InteractorShould: XCTestCas
         viewModel?.updateSearchResults(input: randomEvent.element.title)
         let indexPath = IndexPath(item: 0, section: 0)
         viewModel?.unfavouriteEvent(at: indexPath)
-        
+
         XCTAssertEqual(randomEvent.element.identifier, eventsService.unfavouritedEventIdentifier)
     }
-    
+
 }

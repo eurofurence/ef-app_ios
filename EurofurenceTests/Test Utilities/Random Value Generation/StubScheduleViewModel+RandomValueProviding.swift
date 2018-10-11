@@ -12,23 +12,23 @@ import Foundation
 import RandomDataGeneration
 
 extension CapturingScheduleViewModel: RandomValueProviding {
-    
+
     public static var random: CapturingScheduleViewModel {
         return CapturingScheduleViewModel(days: .random, events: .random, currentDay: .random)
     }
-    
+
 }
 
 extension ScheduleEventGroupViewModel: RandomValueProviding {
-    
+
     public static var random: ScheduleEventGroupViewModel {
         return ScheduleEventGroupViewModel(title: .random, events: .random)
     }
-    
+
 }
 
 extension ScheduleEventViewModel: RandomValueProviding {
-    
+
     public static var random: ScheduleEventViewModel {
         return ScheduleEventViewModel(title: .random,
                                       startTime: .random,
@@ -44,13 +44,13 @@ extension ScheduleEventViewModel: RandomValueProviding {
                                       isMainStageEvent: .random,
                                       isPhotoshootEvent: .random)
     }
-    
+
 }
 
 extension ScheduleDayViewModel: RandomValueProviding {
-    
+
     public static var random: ScheduleDayViewModel {
         return ScheduleDayViewModel(title: .random)
     }
-    
+
 }

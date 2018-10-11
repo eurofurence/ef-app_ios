@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenFetchingIconDataForDealerWithArtwork_ApplicationShould: XCTestCase {
-    
+
     func testReturnTheArtworkFromTheImageAPIForTheArtistThumbnailIdentifier() {
         let syncResponse = APISyncResponse.randomWithoutDeletions
         let dealer = syncResponse.dealers.changed.randomElement().element
@@ -22,8 +22,8 @@ class WhenFetchingIconDataForDealerWithArtwork_ApplicationShould: XCTestCase {
         let expected = context.imageAPI.stubbedImage(for: dealer.artistThumbnailImageId)
         var artworkData: Data?
         context.application.fetchIconPNGData(for: Dealer.Identifier(dealer.identifier)) { artworkData = $0 }
-        
+
         XCTAssertEqual(expected, artworkData)
     }
-    
+
 }

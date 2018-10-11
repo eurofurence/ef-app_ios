@@ -11,10 +11,10 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenBuildingMapDetailModule: XCTestCase {
-    
+
     func testTheSceneFromTheFactoryIsReturned() {
         let context = MapDetailPresenterTestBuilder().build()
         XCTAssertEqual(context.scene, context.producedViewController)
     }
-    
+
 }

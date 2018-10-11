@@ -11,7 +11,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenBindingAboutTheArtistComponent_DealerDetailPresenterShould: XCTestCase {
-    
+
     func testBindTheArtistDescriptionOntoTheComponent() {
         let aboutTheArtistViewModel = DealerDetailAboutTheArtistViewModel.random
         let viewModel = FakeDealerDetailAboutTheArtistViewModel(aboutTheArtist: aboutTheArtistViewModel)
@@ -19,10 +19,10 @@ class WhenBindingAboutTheArtistComponent_DealerDetailPresenterShould: XCTestCase
         let context = DealerDetailPresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
         context.bindComponent(at: 0)
-        
+
         XCTAssertEqual(aboutTheArtistViewModel.artistDescription, context.boundAboutTheArtistComponent?.capturedArtistDescription)
     }
-    
+
     func testBindTheTitleOntoTheComponent() {
         let aboutTheArtistViewModel = DealerDetailAboutTheArtistViewModel.random
         let viewModel = FakeDealerDetailAboutTheArtistViewModel(aboutTheArtist: aboutTheArtistViewModel)
@@ -30,8 +30,8 @@ class WhenBindingAboutTheArtistComponent_DealerDetailPresenterShould: XCTestCase
         let context = DealerDetailPresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
         context.bindComponent(at: 0)
-        
+
         XCTAssertEqual(aboutTheArtistViewModel.title, context.boundAboutTheArtistComponent?.capturedTitle)
     }
-    
+
 }

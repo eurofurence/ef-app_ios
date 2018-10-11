@@ -11,23 +11,23 @@ import EurofurenceAppCore
 import XCTest
 
 class SchedulePresenterKageIconBindingTests: XCTestCase {
-    
+
     func testShowTheKageIndicator() {
         var eventViewModel = ScheduleEventViewModel.random
         eventViewModel.isKageEvent = true
         let component = SchedulePresenterTestBuilder.buildForTestingBindingOfEvent(eventViewModel)
-        
+
         XCTAssertTrue(component.didShowKageEventIndicator)
         XCTAssertFalse(component.didHideKageEventIndicator)
     }
-    
+
     func testHideTheKageIndicator() {
         var eventViewModel = ScheduleEventViewModel.random
         eventViewModel.isKageEvent = false
         let component = SchedulePresenterTestBuilder.buildForTestingBindingOfEvent(eventViewModel)
-        
+
         XCTAssertFalse(component.didShowKageEventIndicator)
         XCTAssertTrue(component.didHideKageEventIndicator)
     }
-    
+
 }

@@ -12,7 +12,7 @@ import EurofurenceAppCoreTestDoubles
 import UIKit.UIViewController
 
 class StubKnowledgeDetailModuleProviding: KnowledgeDetailModuleProviding {
-    
+
     let stubInterface = UIViewController()
     private(set) var capturedModel: KnowledgeEntry.Identifier?
     private(set) var delegate: KnowledgeDetailModuleDelegate?
@@ -21,13 +21,13 @@ class StubKnowledgeDetailModuleProviding: KnowledgeDetailModuleProviding {
         self.delegate = delegate
         return stubInterface
     }
-    
+
 }
 
 extension StubKnowledgeDetailModuleProviding {
-    
+
     func simulateLinkSelected(_ link: Link) {
         delegate?.knowledgeDetailModuleDidSelectLink(link)
     }
-    
+
 }

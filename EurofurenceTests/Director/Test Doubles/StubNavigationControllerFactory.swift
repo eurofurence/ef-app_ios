@@ -11,9 +11,9 @@ import EurofurenceAppCore
 import UIKit.UINavigationController
 
 struct StubNavigationControllerFactory: NavigationControllerFactory {
-    
+
     func makeNavigationController() -> UINavigationController {
         return CapturingNavigationController()
     }
-    
+
 }

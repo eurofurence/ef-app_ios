@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class InOrderToSupportMainStageTag_ApplicationShould: XCTestCase {
-    
+
     func testIndicateItIsMainStageEventWhenTagPresent() {
         var syncResponse = APISyncResponse.randomWithoutDeletions
         let randomEvent = syncResponse.events.changed.randomElement()
@@ -22,10 +22,10 @@ class InOrderToSupportMainStageTag_ApplicationShould: XCTestCase {
         let eventsObserver = CapturingEventsServiceObserver()
         context.application.add(eventsObserver)
         let observedEvent = eventsObserver.allEvents.first
-        
+
         XCTAssertEqual(true, observedEvent?.isMainStage)
     }
-    
+
     func testNotIndicateItIsMainStageEventWhenTagNotPresent() {
         var syncResponse = APISyncResponse.randomWithoutDeletions
         let randomEvent = syncResponse.events.changed.randomElement()
@@ -37,8 +37,8 @@ class InOrderToSupportMainStageTag_ApplicationShould: XCTestCase {
         let eventsObserver = CapturingEventsServiceObserver()
         context.application.add(eventsObserver)
         let observedEvent = eventsObserver.allEvents.first
-        
+
         XCTAssertEqual(false, observedEvent?.isMainStage)
     }
-    
+
 }

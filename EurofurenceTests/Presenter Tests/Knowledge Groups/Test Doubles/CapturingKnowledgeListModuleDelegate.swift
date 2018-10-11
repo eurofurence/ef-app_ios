@@ -11,10 +11,10 @@ import EurofurenceAppCore
 import EurofurenceAppCoreTestDoubles
 
 class CapturingKnowledgeGroupsListModuleDelegate: KnowledgeGroupsListModuleDelegate {
-    
+
     private(set) var capturedKnowledgeGroupToPresent: KnowledgeGroup.Identifier?
     func knowledgeListModuleDidSelectKnowledgeGroup(_ knowledgeGroup: KnowledgeGroup.Identifier) {
         capturedKnowledgeGroupToPresent = knowledgeGroup
     }
-    
+
 }

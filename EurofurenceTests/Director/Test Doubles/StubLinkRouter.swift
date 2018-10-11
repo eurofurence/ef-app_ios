@@ -9,10 +9,10 @@
 import EurofurenceAppCore
 
 class StubLinkRouter: LinkLookupService {
-    
-    var stubbedLinkActions = [Link : LinkContentLookupResult]()
+
+    var stubbedLinkActions = [Link: LinkContentLookupResult]()
     func lookupContent(for link: Link) -> LinkContentLookupResult? {
         return stubbedLinkActions[link]
     }
-    
+
 }

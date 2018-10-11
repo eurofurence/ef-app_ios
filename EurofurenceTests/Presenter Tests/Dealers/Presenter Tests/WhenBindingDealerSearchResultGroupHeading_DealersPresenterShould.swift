@@ -11,7 +11,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenBindingDealerSearchResultGroupHeading_DealersPresenterShould: XCTestCase {
-    
+
     func testBindTheGroupHeadingOntoTheComponent() {
         let groups = [DealersGroupViewModel].random
         let randomGroup = groups.randomElement()
@@ -21,8 +21,8 @@ class WhenBindingDealerSearchResultGroupHeading_DealersPresenterShould: XCTestCa
         let context = DealersPresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
         let component = context.makeAndBindComponentHeader(forSearchResultGroupAt: randomGroup.index)
-        
+
         XCTAssertEqual(expected, component.capturedDealersGroupTitle)
     }
-    
+
 }

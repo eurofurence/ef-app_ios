@@ -11,7 +11,7 @@ import Foundation
 import RandomDataGeneration
 
 extension Dealer: RandomValueProviding {
-    
+
     public static var random: Dealer {
         return Dealer(identifier: .random,
                        preferredName: .random,
@@ -21,13 +21,13 @@ extension Dealer: RandomValueProviding {
                        isAttendingOnSaturday: .random,
                        isAfterDark: .random)
     }
-    
+
 }
 
 extension Dealer.Identifier: RandomValueProviding {
-    
+
     public static var random: Dealer.Identifier {
         return Dealer.Identifier(.random)
     }
-    
+
 }

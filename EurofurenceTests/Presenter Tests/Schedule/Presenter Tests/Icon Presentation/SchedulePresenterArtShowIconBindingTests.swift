@@ -11,23 +11,23 @@ import EurofurenceAppCore
 import XCTest
 
 class SchedulePresenterArtShowIconBindingTests: XCTestCase {
-    
+
     func testShowTheArtShowIndicator() {
         var eventViewModel = ScheduleEventViewModel.random
         eventViewModel.isArtShow = true
         let component = SchedulePresenterTestBuilder.buildForTestingBindingOfEvent(eventViewModel)
-        
+
         XCTAssertTrue(component.didShowArtShowEventIndicator)
         XCTAssertFalse(component.didHideArtShowEventIndicator)
     }
-    
+
     func testHideTheArtShowIndicator() {
         var eventViewModel = ScheduleEventViewModel.random
         eventViewModel.isArtShow = false
         let component = SchedulePresenterTestBuilder.buildForTestingBindingOfEvent(eventViewModel)
-        
+
         XCTAssertFalse(component.didShowArtShowEventIndicator)
         XCTAssertTrue(component.didHideArtShowEventIndicator)
     }
-    
+
 }

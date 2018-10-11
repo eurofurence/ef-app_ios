@@ -22,5 +22,5 @@ struct StubRouters: Routers {
     var tutorialRouter: TutorialRouter
     var splashScreenRouter: SplashScreenRouter
     var alertRouter: AlertRouter
-    
+
 }

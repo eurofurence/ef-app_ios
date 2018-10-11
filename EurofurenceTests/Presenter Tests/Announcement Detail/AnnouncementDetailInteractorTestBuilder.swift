@@ -12,14 +12,14 @@ import EurofurenceAppCoreTestDoubles
 import Foundation
 
 class AnnouncementDetailInteractorTestBuilder {
-    
+
     struct Context {
         var interactor: AnnouncementDetailInteractor
         var markdownRenderer: StubMarkdownRenderer
         var announcement: Announcement
         var announcementsService: StubAnnouncementsService
     }
-    
+
     func build(for identifier: Announcement.Identifier = .random) -> Context {
         var announcement = Announcement.random
         announcement.identifier = identifier
@@ -27,22 +27,22 @@ class AnnouncementDetailInteractorTestBuilder {
         let markdownRenderer = StubMarkdownRenderer()
         let interactor = DefaultAnnouncementDetailInteractor(announcementsService: announcementsService,
                                                              markdownRenderer: markdownRenderer)
-        
+
         return Context(interactor: interactor,
                        markdownRenderer: markdownRenderer,
                        announcement: announcement,
                        announcementsService: announcementsService)
     }
-    
+
 }
 
 extension AnnouncementDetailInteractorTestBuilder.Context {
-    
+
     func makeViewModel() -> AnnouncementViewModel? {
         var viewModel: AnnouncementViewModel?
         interactor.makeViewModel(for: announcement.identifier) { viewModel = $0 }
-        
+
         return viewModel
     }
-    
+
 }

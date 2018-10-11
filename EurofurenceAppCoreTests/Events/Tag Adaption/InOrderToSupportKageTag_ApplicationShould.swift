@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class InOrderToSupportKageTag_ApplicationShould: XCTestCase {
-    
+
     func testIndicateItIsKageEventWhenTagPresent() {
         var syncResponse = APISyncResponse.randomWithoutDeletions
         let randomEvent = syncResponse.events.changed.randomElement()
@@ -22,10 +22,10 @@ class InOrderToSupportKageTag_ApplicationShould: XCTestCase {
         let eventsObserver = CapturingEventsServiceObserver()
         context.application.add(eventsObserver)
         let observedEvent = eventsObserver.allEvents.first
-        
+
         XCTAssertEqual(true, observedEvent?.isKageEvent)
     }
-    
+
     func testNotIndicateItIsArtShowEventWhenTagNotPresent() {
         var syncResponse = APISyncResponse.randomWithoutDeletions
         let randomEvent = syncResponse.events.changed.randomElement()
@@ -37,8 +37,8 @@ class InOrderToSupportKageTag_ApplicationShould: XCTestCase {
         let eventsObserver = CapturingEventsServiceObserver()
         context.application.add(eventsObserver)
         let observedEvent = eventsObserver.allEvents.first
-        
+
         XCTAssertEqual(false, observedEvent?.isKageEvent)
     }
-    
+
 }

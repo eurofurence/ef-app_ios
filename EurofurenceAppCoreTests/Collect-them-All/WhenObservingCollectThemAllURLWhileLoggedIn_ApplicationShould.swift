@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenObservingCollectThemAllURLWhileLoggedIn_ApplicationShould: XCTestCase {
-    
+
     func testEmitAuthenticatedGameURLForUser() {
         let collectThemAllRequestFactory = StubCollectThemAllRequestFactory()
         let credential = Credential(username: .random,
@@ -21,10 +21,10 @@ class WhenObservingCollectThemAllURLWhileLoggedIn_ApplicationShould: XCTestCase 
         let observer = CapturingCollectThemAllURLObserver()
         context.application.subscribe(observer)
         let expected = collectThemAllRequestFactory.makeAuthenticatedGameURLRequest(credential: credential)
-        
+
         XCTAssertEqual(expected, observer.capturedURLRequest)
     }
-    
+
     func testUpdateTheObserversWithTheAnonymousRequestWhenLoggingOut() {
         let collectThemAllRequestFactory = StubCollectThemAllRequestFactory()
         let credential = Credential(username: .random,
@@ -34,10 +34,10 @@ class WhenObservingCollectThemAllURLWhileLoggedIn_ApplicationShould: XCTestCase 
         let context = ApplicationTestBuilder().with(collectThemAllRequestFactory).with(credential).build()
         let observer = CapturingCollectThemAllURLObserver()
         context.application.subscribe(observer)
-        context.application.logout() { (_) in }
+        context.application.logout { (_) in }
         context.capturingTokenRegistration.succeedLastRequest()
-        
+
         XCTAssertEqual(collectThemAllRequestFactory.anonymousGameURLRequest, observer.capturedURLRequest)
     }
-    
+
 }

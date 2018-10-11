@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenFetchingMapContents_ThatRevealsDealer_ContentsSavedInDataStore_ApplicationShould: XCTestCase {
-    
+
     func testProvideTheDealerIdentifer() {
         var syncResponse = APISyncResponse.randomWithoutDeletions
         let dealer = APIDealer.random
@@ -28,8 +28,8 @@ class WhenFetchingMapContents_ThatRevealsDealer_ContentsSavedInDataStore_Applica
         var content: Map.Content?
         context.application.fetchContent(for: Map.Identifier(map.identifier), atX: x, y: y) { content = $0 }
         let expected = Map.Content.dealer(expectedDealer)
-        
+
         XCTAssertEqual(expected, content)
     }
-    
+
 }

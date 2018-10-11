@@ -12,20 +12,20 @@ import EurofurenceAppCoreTestDoubles
 import XCTest
 
 struct StubKageEventViewModel: EventDetailViewModel {
-    
+
     var kageMessageViewModel: EventKageMessageViewModel
-    
+
     var numberOfComponents: Int { return 1 }
     func setDelegate(_ delegate: EventDetailViewModelDelegate) { }
     func describe(componentAt index: Int, to visitor: EventDetailViewModelVisitor) { visitor.visit(kageMessageViewModel
         ) }
     func favourite() { }
     func unfavourite() { }
-    
+
 }
 
 class WhenBindingKageBanner_EventDetailPresenterShould: XCTestCase {
-    
+
     func testBindTheMessageOntoTheComponent() {
         let event = Event.random
         let message = String.random
@@ -35,8 +35,8 @@ class WhenBindingKageBanner_EventDetailPresenterShould: XCTestCase {
         let context = EventDetailPresenterTestBuilder().with(interactor).build(for: event)
         context.simulateSceneDidLoad()
         context.scene.bindComponent(at: IndexPath(item: 0, section: 0))
-        
+
         XCTAssertEqual(message, context.scene.stubbedKageMessageComponent.capturedMessage)
     }
-    
+
 }

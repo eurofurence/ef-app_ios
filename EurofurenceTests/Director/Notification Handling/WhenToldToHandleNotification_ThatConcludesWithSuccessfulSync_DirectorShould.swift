@@ -11,15 +11,15 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenToldToHandleNotification_ThatConcludesWithSuccessfulSync_DirectorShould: XCTestCase {
-    
+
     func testInvokeTheHandlerWithNewDataResult() {
         let context = ApplicationDirectorTestBuilder().build()
-        let payload = [String.random : String.random]
+        let payload = [String.random: String.random]
         context.notificationHandling.stub(.successfulSync, for: payload)
         var result: UIBackgroundFetchResult?
         context.director.handleRemoteNotification(payload) { result = $0 }
-        
+
         XCTAssertEqual(UIBackgroundFetchResult.newData, result)
     }
-    
+
 }

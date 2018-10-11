@@ -12,10 +12,10 @@ import EurofurenceAppCoreTestDoubles
 import Foundation
 
 class CapturingMapsModuleDelegate: MapsModuleDelegate {
-    
+
     private(set) var capturedMapIdentifierToPresent: Map.Identifier?
     func mapsModuleDidSelectMap(identifier: Map.Identifier) {
         capturedMapIdentifierToPresent = identifier
     }
-    
+
 }

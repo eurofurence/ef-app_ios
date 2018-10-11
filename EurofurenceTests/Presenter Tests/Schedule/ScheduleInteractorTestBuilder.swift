@@ -12,25 +12,24 @@ import EurofurenceAppCoreTestDoubles
 import Foundation
 
 class FakeShortFormDayAndTimeFormatter: ShortFormDayAndTimeFormatter {
-    
-    private var strings = [Date : String]()
-    
+
+    private var strings = [Date: String]()
+
     func dayAndHoursString(from date: Date) -> String {
         var output = String.random
         if let previous = strings[date] {
             output = previous
-        }
-        else {
+        } else {
             strings[date] = output
         }
-        
+
         return output
     }
-    
+
 }
 
 class ScheduleInteractorTestBuilder {
-    
+
     struct Context {
         var interactor: DefaultScheduleInteractor
         var eventsService: FakeEventsService
@@ -41,19 +40,19 @@ class ScheduleInteractorTestBuilder {
         let searchViewModelDelegate = CapturingScheduleSearchViewModelDelegate()
         var refreshService: CapturingRefreshService
     }
-    
+
     private var eventsService: FakeEventsService
-    
+
     init() {
         eventsService = FakeEventsService()
     }
-    
+
     @discardableResult
     func with(_ eventsService: FakeEventsService) -> ScheduleInteractorTestBuilder {
         self.eventsService = eventsService
         return self
     }
-    
+
     func build() -> Context {
         let hoursFormatter = FakeHoursDateFormatter()
         let shortFormDateFormatter = FakeShortFormDateFormatter()
@@ -64,7 +63,7 @@ class ScheduleInteractorTestBuilder {
                                                    shortFormDateFormatter: shortFormDateFormatter,
                                                    shortFormDayAndTimeFormatter: shortFormDayAndTimeFormatter,
                                                    refreshService: refreshService)
-        
+
         return Context(interactor: interactor,
                        eventsService: eventsService,
                        hoursFormatter: hoursFormatter,
@@ -72,23 +71,23 @@ class ScheduleInteractorTestBuilder {
                        shortFormDayAndTimeFormatter: shortFormDayAndTimeFormatter,
                        refreshService: refreshService)
     }
-    
+
 }
 
 extension ScheduleInteractorTestBuilder.Context {
-    
+
     var eventsViewModels: [ScheduleEventGroupViewModel] {
         return viewModelDelegate.eventsViewModels
     }
-    
+
     var daysViewModels: [ScheduleDayViewModel] {
         return viewModelDelegate.daysViewModels
     }
-    
+
     var currentDayIndex: Int? {
         return viewModelDelegate.currentDayIndex
     }
-    
+
     @discardableResult
     func makeViewModel() -> ScheduleViewModel? {
         var viewModel: ScheduleViewModel?
@@ -96,10 +95,10 @@ extension ScheduleInteractorTestBuilder.Context {
             viewModel = vm
             vm.setDelegate(self.viewModelDelegate)
         }
-        
+
         return viewModel
     }
-    
+
     @discardableResult
     func makeSearchViewModel() -> ScheduleSearchViewModel? {
         var searchViewModel: ScheduleSearchViewModel?
@@ -107,10 +106,10 @@ extension ScheduleInteractorTestBuilder.Context {
             searchViewModel = viewModel
             viewModel.setDelegate(self.searchViewModelDelegate)
         }
-        
+
         return searchViewModel
     }
-    
+
     func makeExpectedEventViewModel(from event: Event) -> ScheduleEventViewModel {
         return ScheduleEventViewModel(title: event.title,
                                       startTime: hoursFormatter.hoursString(from: event.startDate),
@@ -126,9 +125,9 @@ extension ScheduleInteractorTestBuilder.Context {
                                       isMainStageEvent: event.isMainStage,
                                       isPhotoshootEvent: event.isPhotoshoot)
     }
-    
+
     func makeExpectedDayViewModel(from day: Day) -> ScheduleDayViewModel {
         return ScheduleDayViewModel(title: shortFormDateFormatter.dateString(from: day.date))
     }
-    
+
 }

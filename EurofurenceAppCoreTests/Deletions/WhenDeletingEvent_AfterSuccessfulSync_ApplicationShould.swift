@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenDeletingEvent_AfterSuccessfulSync_ApplicationShould: XCTestCase {
-    
+
     func testUpdateDelegateWithoutDeletedEvent() {
         var response = APISyncResponse.randomWithoutDeletions
         let context = ApplicationTestBuilder().build()
@@ -26,9 +26,9 @@ class WhenDeletingEvent_AfterSuccessfulSync_ApplicationShould: XCTestCase {
         context.refreshLocalStore()
         context.syncAPI.simulateSuccessfulSync(response)
         let actual = Set(delegate.allEvents.map({ $0.identifier.rawValue }))
-        
+
         XCTAssertEqual(expected, actual,
                        "Should have removed event \(eventToDelete.element.identifier)")
     }
-    
+
 }

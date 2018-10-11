@@ -11,11 +11,11 @@ import EurofurenceAppCoreTestDoubles
 import XCTest
 
 class KeychainCredentialStoreTests: XCTestCase {
-    
+
     private func makeStore() -> KeychainCredentialStore {
         return KeychainCredentialStore(userAccount: "Eurofurence.Test")
     }
-    
+
     func testStoringLoginShouldRetainItBetweenLifetimes() {
         var store = makeStore()
         let credential = Credential(username: "User",
@@ -24,10 +24,10 @@ class KeychainCredentialStoreTests: XCTestCase {
                                          tokenExpiryDate: .distantFuture)
         store.store(credential)
         store = makeStore()
-        
+
         XCTAssertEqual(credential, store.persistedCredential)
     }
-    
+
     func testStoringLoginThenDeletingItShouldReturnNilToken() {
         let store = makeStore()
         let credential = Credential(username: "User",
@@ -36,8 +36,8 @@ class KeychainCredentialStoreTests: XCTestCase {
                                          tokenExpiryDate: .distantFuture)
         store.store(credential)
         store.deletePersistedToken()
-        
+
         XCTAssertNil(store.persistedCredential)
     }
-    
+
 }

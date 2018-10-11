@@ -12,7 +12,7 @@ import EurofurenceAppCoreTestDoubles
 import XCTest
 
 class WhenPreparingViewModel_ForPhotoshootEvent_EventDetailInteractorShould: XCTestCase {
-    
+
     func testProducePhotoshootHeadingAfterDescriptionComponent() {
         var event = Event.randomStandardEvent
         event.isPhotoshoot = true
@@ -20,8 +20,8 @@ class WhenPreparingViewModel_ForPhotoshootEvent_EventDetailInteractorShould: XCT
         let visitor = CapturingEventDetailViewModelVisitor()
         context.viewModel?.describe(componentAt: 2, to: visitor)
         let expected = EventPhotoshootMessageViewModel(message: .photoshoot)
-        
+
         XCTAssertEqual([expected], visitor.visitedViewModels)
     }
-    
+
 }

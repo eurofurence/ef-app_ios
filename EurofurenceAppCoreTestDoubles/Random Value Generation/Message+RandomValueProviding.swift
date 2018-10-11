@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import RandomDataGeneration
 
 extension Message: RandomValueProviding {
-    
+
     public static var random: Message {
         return Message(identifier: .random,
                        authorName: .random,
@@ -19,5 +19,5 @@ extension Message: RandomValueProviding {
                        contents: .random,
                        isRead: .random)
     }
-    
+
 }

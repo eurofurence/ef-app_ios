@@ -23,17 +23,17 @@ class CapturingRemoteNotificationsTokenRegistration: RemoteNotificationsTokenReg
         capturedUserAuthenticationToken = userAuthenticationToken
         numberOfRegistrations += 1
         self.completionHandler = completionHandler
-        
+
         didRegisterNilPushTokenAndAuthToken = token == nil && userAuthenticationToken == nil
     }
-    
+
     func succeedLastRequest() {
         completionHandler?(nil)
     }
-    
+
     func failLastRequest() {
         struct SomeError: Error {}
         completionHandler?(SomeError())
     }
-    
+
 }

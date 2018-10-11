@@ -12,7 +12,7 @@ import EurofurenceAppCoreTestDoubles
 import XCTest
 
 class WhenLoggedOutDuringConvention_WithNoUpcomingEvents_NewsInteractorShould: XCTestCase {
-    
+
     func testProduceViewModelWithMessagesPrompt_Announcements_RunningEvents_AndFavouriteEvents() {
         let eventsService = FakeEventsService()
         let upcomingEvents = [Event]()
@@ -26,7 +26,7 @@ class WhenLoggedOutDuringConvention_WithNoUpcomingEvents_NewsInteractorShould: X
             .with(eventsService)
             .build()
         context.subscribeViewModelUpdates()
-        
+
         context.assert()
             .thatViewModel()
             .hasYourEurofurence()
@@ -35,5 +35,5 @@ class WhenLoggedOutDuringConvention_WithNoUpcomingEvents_NewsInteractorShould: X
             .hasFavouriteEvents()
             .verify()
     }
-    
+
 }

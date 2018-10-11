@@ -11,7 +11,7 @@ import EurofurenceAppCoreTestDoubles
 import XCTest
 
 class WhenToldToOpenDealersTwitter_WhenApplicationCanHandleURL_ApplicationShould: XCTestCase {
-    
+
     func testTellTheApplicationToOpenTheTwitterURLWithTheDealersHandle() {
         let syncResponse = APISyncResponse.randomWithoutDeletions
         let dealer = syncResponse.dealers.changed.randomElement().element
@@ -21,10 +21,10 @@ class WhenToldToOpenDealersTwitter_WhenApplicationCanHandleURL_ApplicationShould
         let dealerIdentifier = Dealer.Identifier(dealer.identifier)
         context.application.openTwitter(for: dealerIdentifier)
         let expected = URL(string: "https://twitter.com/")!.appendingPathComponent(dealer.twitterHandle)
-        
+
         XCTAssertEqual(expected, urlOpener.capturedURLToOpen)
     }
-    
+
     func testNotTellTheApplicationToOpenTheTwitterURLWhenTheDealersHandleIsEmpty() {
         var syncResponse = APISyncResponse.randomWithoutDeletions
         var dealer = APIDealer.random
@@ -35,8 +35,8 @@ class WhenToldToOpenDealersTwitter_WhenApplicationCanHandleURL_ApplicationShould
         context.performSuccessfulSync(response: syncResponse)
         let dealerIdentifier = Dealer.Identifier(dealer.identifier)
         context.application.openTwitter(for: dealerIdentifier)
-        
+
         XCTAssertNil(urlOpener.capturedURLToOpen)
     }
-    
+
 }

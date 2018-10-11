@@ -11,17 +11,17 @@ import Foundation
 import RandomDataGeneration
 
 extension KnowledgeEntry: RandomValueProviding {
-    
+
     public static var random: KnowledgeEntry {
         return KnowledgeEntry(identifier: .random, title: .random, order: .random, contents: .random, links: .random)
     }
-    
+
 }
 
 extension KnowledgeEntry.Identifier: RandomValueProviding {
-    
+
     public static var random: KnowledgeEntry.Identifier {
         return KnowledgeEntry.Identifier(.random)
     }
-    
+
 }

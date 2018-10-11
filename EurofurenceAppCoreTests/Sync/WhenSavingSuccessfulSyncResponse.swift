@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenSavingSuccessfulSyncResponse: XCTestCase {
-    
+
     func testTheCompletionHandlerIsNotInvokedUntilDataStoreTransactionCompletes() {
         let context = ApplicationTestBuilder().build()
         var invokedWithNilError = false
@@ -18,8 +18,8 @@ class WhenSavingSuccessfulSyncResponse: XCTestCase {
         context.dataStore.transactionInvokedBlock = {
             XCTAssertFalse(invokedWithNilError)
         }
-        
+
         context.syncAPI.simulateSuccessfulSync(.randomWithoutDeletions)
     }
-    
+
 }

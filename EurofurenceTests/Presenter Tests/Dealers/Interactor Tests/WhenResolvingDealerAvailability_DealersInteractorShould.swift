@@ -12,7 +12,7 @@ import EurofurenceAppCoreTestDoubles
 import XCTest
 
 class WhenResolvingDealerAvailability_DealersInteractorShould: XCTestCase {
-    
+
     func testIndicateDealerIsPresentForAllDaysWhenAttendingOnAllDays() {
         var dealer = Dealer.random
         dealer.isAttendingOnThursday = true
@@ -27,10 +27,10 @@ class WhenResolvingDealerAvailability_DealersInteractorShould: XCTestCase {
         let delegate = CapturingDealersViewModelDelegate()
         viewModel?.setDelegate(delegate)
         let dealerViewModel = delegate.capturedDealerViewModel(at: IndexPath(item: 0, section: 0))
-        
+
         XCTAssertEqual(true, dealerViewModel?.isPresentForAllDays)
     }
-    
+
     func testIndicateDealerIsNotPresentForAllDaysWhenNotAttendingOnThursday() {
         var dealer = Dealer.random
         dealer.isAttendingOnThursday = false
@@ -45,10 +45,10 @@ class WhenResolvingDealerAvailability_DealersInteractorShould: XCTestCase {
         let delegate = CapturingDealersViewModelDelegate()
         viewModel?.setDelegate(delegate)
         let dealerViewModel = delegate.capturedDealerViewModel(at: IndexPath(item: 0, section: 0))
-        
+
         XCTAssertEqual(false, dealerViewModel?.isPresentForAllDays)
     }
-    
+
     func testIndicateDealerIsNotPresentForAllDaysWhenNotAttendingOnFriday() {
         var dealer = Dealer.random
         dealer.isAttendingOnThursday = true
@@ -63,10 +63,10 @@ class WhenResolvingDealerAvailability_DealersInteractorShould: XCTestCase {
         let delegate = CapturingDealersViewModelDelegate()
         viewModel?.setDelegate(delegate)
         let dealerViewModel = delegate.capturedDealerViewModel(at: IndexPath(item: 0, section: 0))
-        
+
         XCTAssertEqual(false, dealerViewModel?.isPresentForAllDays)
     }
-    
+
     func testIndicateDealerIsNotPresentForAllDaysWhenNotAttendingOnSaturday() {
         var dealer = Dealer.random
         dealer.isAttendingOnThursday = true
@@ -81,8 +81,8 @@ class WhenResolvingDealerAvailability_DealersInteractorShould: XCTestCase {
         let delegate = CapturingDealersViewModelDelegate()
         viewModel?.setDelegate(delegate)
         let dealerViewModel = delegate.capturedDealerViewModel(at: IndexPath(item: 0, section: 0))
-        
+
         XCTAssertEqual(false, dealerViewModel?.isPresentForAllDays)
     }
-    
+
 }

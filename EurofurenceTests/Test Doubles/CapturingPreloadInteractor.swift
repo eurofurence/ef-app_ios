@@ -10,7 +10,7 @@
 import EurofurenceAppCore
 
 class CapturingPreloadInteractor: PreloadInteractor {
-    
+
     private(set) var didBeginPreloading = false
     private(set) var beginPreloadInvocationCount = 0
     private var delegate: PreloadInteractorDelegate?
@@ -19,19 +19,19 @@ class CapturingPreloadInteractor: PreloadInteractor {
         didBeginPreloading = true
         beginPreloadInvocationCount += 1
     }
-    
+
     func notifyFailedToPreload() {
         delegate?.preloadInteractorDidFailToPreload()
     }
-    
+
     func notifySucceededPreload() {
         delegate?.preloadInteractorDidFinishPreloading()
     }
-    
+
     func notifyProgressMade(current: Int, total: Int, localizedDescription: String) {
         delegate?.preloadInteractorDidProgress(currentUnitCount: current,
                                                totalUnitCount: total,
                                                localizedDescription: localizedDescription)
     }
-    
+
 }

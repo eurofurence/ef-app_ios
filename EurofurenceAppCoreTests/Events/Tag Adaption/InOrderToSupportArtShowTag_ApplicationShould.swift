@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class InOrderToSupportArtShowTag_ApplicationShould: XCTestCase {
-    
+
     func testIndicateItIsArtShowEventWhenTagPresent() {
         var syncResponse = APISyncResponse.randomWithoutDeletions
         let randomEvent = syncResponse.events.changed.randomElement()
@@ -22,10 +22,10 @@ class InOrderToSupportArtShowTag_ApplicationShould: XCTestCase {
         let eventsObserver = CapturingEventsServiceObserver()
         context.application.add(eventsObserver)
         let observedEvent = eventsObserver.allEvents.first
-        
+
         XCTAssertEqual(true, observedEvent?.isArtShow)
     }
-    
+
     func testNotIndicateItIsArtShowEventWhenTagNotPresent() {
         var syncResponse = APISyncResponse.randomWithoutDeletions
         let randomEvent = syncResponse.events.changed.randomElement()
@@ -40,5 +40,5 @@ class InOrderToSupportArtShowTag_ApplicationShould: XCTestCase {
 
         XCTAssertEqual(false, observedEvent?.isArtShow)
     }
-    
+
 }

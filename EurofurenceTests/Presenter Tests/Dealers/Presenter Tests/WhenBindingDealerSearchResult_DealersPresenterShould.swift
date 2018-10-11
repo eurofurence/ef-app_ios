@@ -11,14 +11,14 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenBindingDealerSearchResult_DealersPresenterShould: XCTestCase {
-    
+
     var context: DealersPresenterTestBuilder.Context!
     var dealer: StubDealerViewModel!
     var component: CapturingDealerComponent!
-    
+
     override func setUp() {
         super.setUp()
-        
+
         let dealerGroups = [DealersGroupViewModel].random
         let searchViewModel = CapturingDealersSearchViewModel(dealerGroups: dealerGroups)
         let interactor = FakeDealersInteractor(searchViewModel: searchViewModel)
@@ -32,17 +32,17 @@ class WhenBindingDealerSearchResult_DealersPresenterShould: XCTestCase {
         component = CapturingDealerComponent()
         context.bind(component, toDealerSearchResultAt: indexPath)
     }
-    
+
     func testBindTheDealerTitleOntoTheComponent() {
         XCTAssertEqual(dealer.title, component.capturedDealerTitle)
     }
-    
+
     func testBindTheDealerSubtitleOntoTheComponent() {
         XCTAssertEqual(dealer.subtitle, component.capturedDealerSubtitle)
     }
-    
+
     func testBindTheDealerIconPNGDataOntoTheComponent() {
         XCTAssertEqual(dealer.iconPNGData, component.capturedDealerPNGData)
     }
-    
+
 }

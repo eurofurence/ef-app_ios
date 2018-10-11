@@ -11,7 +11,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenLoggedInBeforeConvention_ThenLogOut_NewsInteractorShould: XCTestCase {
-    
+
     func testUpdateTheDelegateWithLoggedOutUserWidget() {
         let authenticationService = FakeAuthenticationService.loggedInService()
         let context = DefaultNewsInteractorTestBuilder()
@@ -20,7 +20,7 @@ class WhenLoggedInBeforeConvention_ThenLogOut_NewsInteractorShould: XCTestCase {
             .build()
         context.subscribeViewModelUpdates()
         authenticationService.notifyObserversUserDidLogout()
-        
+
         context.assert()
             .thatViewModel()
             .hasYourEurofurence()
@@ -28,5 +28,5 @@ class WhenLoggedInBeforeConvention_ThenLogOut_NewsInteractorShould: XCTestCase {
             .hasAnnouncements()
             .verify()
     }
-    
+
 }

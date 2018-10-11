@@ -11,7 +11,7 @@ import EurofurenceAppCore
 import XCTest
 
 class UserDefaultsWitnessedTutorialPushPermissionsRequestTests: XCTestCase {
-    
+
     var defaults: UserDefaults!
     var witnessedTutorialPushPermissionsRequestProvider: UserDefaultsWitnessedTutorialPushPermissionsRequest!
 
@@ -48,5 +48,5 @@ class UserDefaultsWitnessedTutorialPushPermissionsRequestTests: XCTestCase {
 
         XCTAssertTrue(defaults.bool(forKey: UserDefaultsWitnessedTutorialPushPermissionsRequest.WitnessedTutorialPushPermissionsRequestKey))
     }
-    
+
 }

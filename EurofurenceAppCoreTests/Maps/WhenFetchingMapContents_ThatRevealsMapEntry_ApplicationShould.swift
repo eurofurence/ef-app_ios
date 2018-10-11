@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenFetchingMapContents_ThatRevealsMapEntry_ApplicationShould: XCTestCase {
-	
+
 	func testProvideTheDealer() {
 		let context = ApplicationTestBuilder().build()
 		var syncResponse = APISyncResponse.randomWithoutDeletions
@@ -22,12 +22,12 @@ class WhenFetchingMapContents_ThatRevealsMapEntry_ApplicationShould: XCTestCase 
 		map.entries = [entry, expectedMapEntry]
 		syncResponse.maps.changed = [map]
 		context.performSuccessfulSync(response: syncResponse)
-		
+
 		var content: Map.Content?
 		context.application.fetchContent(for: Map.Identifier(map.identifier), atX: x, y: y) { content = $0 }
 		let expected = Map.Content.location(x: Float(expectedMapEntry.x), y: Float(expectedMapEntry.y), name: link.name)
-		
+
 		XCTAssertEqual(expected, content)
 	}
-	
+
 }

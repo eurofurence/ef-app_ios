@@ -10,10 +10,10 @@
 import EurofurenceAppCore
 
 class CapturingTutorialModuleDelegate: TutorialModuleDelegate {
-    
+
     private(set) var wasToldTutorialFinished = false
     func tutorialModuleDidFinishPresentingTutorial() {
         wasToldTutorialFinished = true
     }
-    
+
 }

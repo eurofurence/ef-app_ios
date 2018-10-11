@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenSignificantTimeChanges_ScheduleShould: XCTestCase {
-    
+
     func testTellTheDelegateWhenMovingFromConDayToNonConDay() {
         let syncResponse = APISyncResponse.randomWithoutDeletions
         let randomDay = syncResponse.conferenceDays.changed.randomElement().element
@@ -22,8 +22,8 @@ class WhenSignificantTimeChanges_ScheduleShould: XCTestCase {
         schedule.setDelegate(delegate)
         context.clock.tickTime(to: .distantPast)
         context.simulateSignificantTimeChange()
-        
+
         XCTAssertNil(delegate.capturedCurrentDay)
     }
-    
+
 }

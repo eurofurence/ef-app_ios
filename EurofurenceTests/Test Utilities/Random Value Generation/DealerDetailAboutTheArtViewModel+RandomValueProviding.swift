@@ -11,12 +11,12 @@ import EurofurenceAppCore
 import RandomDataGeneration
 
 extension DealerDetailAboutTheArtViewModel: RandomValueProviding {
-    
+
     public static var random: DealerDetailAboutTheArtViewModel {
         return DealerDetailAboutTheArtViewModel(title: .random,
                                                 aboutTheArt: .random,
                                                 artPreviewImagePNGData: .random,
                                                 artPreviewCaption: .random)
     }
-    
+
 }

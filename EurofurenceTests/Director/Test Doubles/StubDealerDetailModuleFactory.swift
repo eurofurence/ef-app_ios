@@ -12,12 +12,12 @@ import EurofurenceAppCoreTestDoubles
 import UIKit
 
 class StubDealerDetailModuleProviding: DealerDetailModuleProviding {
-    
+
     let stubInterface = UIViewController()
     private(set) var capturedModel: Dealer.Identifier?
     func makeDealerDetailModule(for dealer: Dealer.Identifier) -> UIViewController {
         capturedModel = dealer
         return stubInterface
     }
-    
+
 }

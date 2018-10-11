@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenSearchingForEvents_ApplicationShould: XCTestCase {
-    
+
     func testReturnExactMatchesOnTitles() {
         let context = ApplicationTestBuilder().build()
         let syncResponse = APISyncResponse.randomWithoutDeletions
@@ -21,10 +21,10 @@ class WhenSearchingForEvents_ApplicationShould: XCTestCase {
         eventsSearchController.setResultsDelegate(delegate)
         eventsSearchController.changeSearchTerm(randomEvent.title)
         let expected = context.makeExpectedEvent(from: randomEvent, response: syncResponse)
-        
+
         XCTAssertEqual([expected], delegate.capturedSearchResults)
     }
-    
+
     func testReturnFuzzyMatchesOnTitles() {
         let context = ApplicationTestBuilder().build()
         let syncResponse = APISyncResponse.randomWithoutDeletions
@@ -36,10 +36,10 @@ class WhenSearchingForEvents_ApplicationShould: XCTestCase {
         let partialTitle = String(randomEvent.title.dropLast())
         eventsSearchController.changeSearchTerm(partialTitle)
         let expected = context.makeExpectedEvent(from: randomEvent, response: syncResponse)
-        
+
         XCTAssertEqual([expected], delegate.capturedSearchResults)
     }
-    
+
     func testBeCaseInsensitive() {
         let context = ApplicationTestBuilder().build()
         var syncResponse = APISyncResponse.randomWithoutDeletions
@@ -53,8 +53,8 @@ class WhenSearchingForEvents_ApplicationShould: XCTestCase {
         eventsSearchController.setResultsDelegate(delegate)
         eventsSearchController.changeSearchTerm("random")
         let expected = context.makeExpectedEvent(from: event, response: syncResponse)
-        
+
         XCTAssertEqual([expected], delegate.capturedSearchResults)
     }
-    
+
 }

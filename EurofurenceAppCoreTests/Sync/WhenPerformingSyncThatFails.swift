@@ -10,22 +10,22 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenPerformingSyncThatFails: XCTestCase {
-    
+
     func testTheCompletionHandlerIsInvokedWithAnError() {
         let context = ApplicationTestBuilder().build()
         var error: Error?
         context.refreshLocalStore { error = $0 }
         context.syncAPI.simulateUnsuccessfulSync()
-        
+
         XCTAssertNotNil(error)
     }
-    
+
     func testTheLongRunningTaskManagerIsToldToEndTaskBeganAtStartOfSync() {
         let context = ApplicationTestBuilder().build()
         context.refreshLocalStore()
         context.syncAPI.simulateUnsuccessfulSync()
-        
+
         XCTAssertTrue(context.longRunningTaskManager.finishedTask)
     }
-    
+
 }

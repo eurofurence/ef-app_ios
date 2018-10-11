@@ -11,7 +11,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenAnnouncementsViewModelUpdatesAnnouncements_AnnouncementsPresenterShould: XCTestCase {
-    
+
     func testRebindTheNewAnnouncements() {
         let viewModel = FakeAnnouncementsListViewModel()
         let interactor = FakeAnnouncementsInteractor(viewModel: viewModel)
@@ -19,8 +19,8 @@ class WhenAnnouncementsViewModelUpdatesAnnouncements_AnnouncementsPresenterShoul
         context.simulateSceneDidLoad()
         let newAnnouncements = [AnnouncementComponentViewModel].random
         viewModel.simulateUpdatedAnnouncements(newAnnouncements)
-        
+
         XCTAssertEqual(newAnnouncements.count, context.scene.capturedAnnouncementsToBind)
     }
-    
+
 }

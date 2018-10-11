@@ -12,7 +12,7 @@ import EurofurenceAppCoreTestDoubles
 import XCTest
 
 class WhenServiceIndicatesEventIsUnfavourited_EventDetailInteractorShould: XCTestCase {
-    
+
     func testTellTheViewModelDelegateTheEventIsUnfavourited() {
         let event = Event.random
         let service = FakeEventsService(favourites: [event.identifier])
@@ -20,10 +20,10 @@ class WhenServiceIndicatesEventIsUnfavourited_EventDetailInteractorShould: XCTes
         let delegate = CapturingEventDetailViewModelDelegate()
         context.viewModel?.setDelegate(delegate)
         context.viewModel?.unfavourite()
-        
+
         XCTAssertTrue(delegate.toldEventUnfavourited)
     }
-    
+
     func testNotTellTheViewModelDelegateTheEventIsUnfavouritedWhenAnotherEventIsUnfavourited() {
         let event = Event.random
         let service = FakeEventsService(favourites: [event.identifier])
@@ -32,8 +32,8 @@ class WhenServiceIndicatesEventIsUnfavourited_EventDetailInteractorShould: XCTes
         context.viewModel?.setDelegate(delegate)
         context.viewModel?.favourite()
         context.eventsService.simulateEventUnfavourited(identifier: .random)
-        
+
         XCTAssertFalse(delegate.toldEventUnfavourited)
     }
-    
+
 }

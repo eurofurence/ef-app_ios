@@ -11,9 +11,9 @@ import Foundation
 import RandomDataGeneration
 
 extension Day: RandomValueProviding {
-    
+
     public static var random: Day {
         return Day(date: .random)
     }
-    
+
 }

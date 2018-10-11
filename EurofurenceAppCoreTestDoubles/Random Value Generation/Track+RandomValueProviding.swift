@@ -11,9 +11,9 @@ import Foundation
 import RandomDataGeneration
 
 extension Track: RandomValueProviding {
-    
+
     public static var random: Track {
         return Track(name: .random)
     }
-    
+
 }

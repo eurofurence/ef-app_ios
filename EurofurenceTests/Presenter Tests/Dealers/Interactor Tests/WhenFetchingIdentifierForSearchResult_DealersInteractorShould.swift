@@ -11,7 +11,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenFetchingIdentifierForSearchResult_DealersInteractorShould: XCTestCase {
-    
+
     func testProvideTheIdentifierForTheDealer() {
         let dealersService = FakeDealersService()
         let context = DealerInteractorTestBuilder().with(dealersService).build()
@@ -23,8 +23,8 @@ class WhenFetchingIdentifierForSearchResult_DealersInteractorShould: XCTestCase 
         let expected = randomDealer.element.identifier
         let indexPath = IndexPath(item: randomDealer.index, section: randomGroup.index)
         let actual = viewModel?.identifierForDealer(at: indexPath)
-        
+
         XCTAssertEqual(expected, actual)
     }
-    
+
 }

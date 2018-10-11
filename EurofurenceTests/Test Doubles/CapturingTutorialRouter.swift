@@ -19,5 +19,5 @@ class CapturingTutorialRouter: TutorialRouter {
         wasToldToShowTutorial = true
         return tutorialScene
     }
-    
+
 }

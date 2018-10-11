@@ -10,7 +10,7 @@ import EurofurenceAppCore
 import XCTest
 
 class WhenObservingDealersAfterLoadingFromStore_ApplicationShould: XCTestCase {
-    
+
     func testUpdateTheDelegateWithDealersGroupedByDisplayName() {
         let syncResponse = APISyncResponse.randomWithoutDeletions
         let dataStore = CapturingEurofurenceDataStore()
@@ -20,8 +20,8 @@ class WhenObservingDealersAfterLoadingFromStore_ApplicationShould: XCTestCase {
         let delegate = CapturingDealersIndexDelegate()
         dealersIndex.setDelegate(delegate)
         let expected = context.makeExpectedAlphabetisedDealers(from: syncResponse)
-        
+
         XCTAssertEqual(expected, delegate.capturedAlphabetisedDealerGroups)
     }
-    
+
 }
