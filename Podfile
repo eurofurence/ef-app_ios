@@ -38,6 +38,10 @@ target :EurofurenceAppCore do
         inherit! :search_paths
     end
     
+    target :EurofurenceAppCoreAdapterTests do
+        inherit! :search_paths
+    end
+    
     target :EurofurenceAppCoreTestDoubles do
         inherit! :search_paths
     end
