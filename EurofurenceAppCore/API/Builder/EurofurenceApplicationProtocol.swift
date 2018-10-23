@@ -15,16 +15,16 @@ public enum EurofurenceDataStoreState {
 }
 
 public protocol EurofurenceApplicationProtocol: ApplicationNotificationHandling,
-                                         RefreshService,
-                                         AnnouncementsService,
-                                         AuthenticationService,
-                                         EventsService,
-                                         DealersService,
-                                         KnowledgeService,
-                                         LinkLookupService,
-                                         ConventionCountdownService,
-                                         CollectThemAllService,
-                                         MapsService {
+                                                RefreshService,
+                                                AnnouncementsService,
+                                                AuthenticationService,
+                                                EventsService,
+                                                DealersService,
+                                                KnowledgeService,
+                                                LinkLookupService,
+                                                ConventionCountdownService,
+                                                CollectThemAllService,
+                                                MapsService {
 
     func performFullStoreRefresh(completionHandler: @escaping (Error?) -> Void) -> Progress
 
@@ -39,8 +39,5 @@ public protocol EurofurenceApplicationProtocol: ApplicationNotificationHandling,
     func add(_ observer: PrivateMessagesObserver)
     func fetchPrivateMessages(completionHandler: @escaping (PrivateMessageResult) -> Void)
     func markMessageAsRead(_ message: Message)
-
-    func login(_ arguments: LoginArguments, completionHandler: @escaping (LoginResult) -> Void)
-    func logout(completionHandler: @escaping (LogoutResult) -> Void)
 
 }
