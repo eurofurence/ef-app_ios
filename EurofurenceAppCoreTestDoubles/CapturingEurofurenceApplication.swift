@@ -211,23 +211,12 @@ public class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
 
     }
 
-    private(set) public var wasToldToRefreshLocalStore = false
-    fileprivate var refreshCompletionHandler: ((Error?) -> Void)?
-    fileprivate var refreshProgress: Progress?
     public func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress {
-        wasToldToRefreshLocalStore = true
-        refreshCompletionHandler = completionHandler
-        refreshProgress = Progress()
-
-        return refreshProgress!
+        return Progress()
     }
 
     public func performFullStoreRefresh(completionHandler: @escaping (Error?) -> Void) -> Progress {
-        wasToldToRefreshLocalStore = true
-        refreshCompletionHandler = completionHandler
-        refreshProgress = Progress()
-
-        return refreshProgress!
+        return Progress()
     }
 
     public func add(_ observer: ConventionCountdownServiceObserver) {
@@ -258,20 +247,6 @@ public extension CapturingEurofurenceApplication {
 
     public func resolvePrivateMessagesFetch(_ result: PrivateMessageResult) {
         privateMessageFetchCompletionHandler?(result)
-    }
-
-    public func failLastRefresh() {
-        struct SomeError: Error {}
-        refreshCompletionHandler?(SomeError())
-    }
-
-    public func succeedLastRefresh() {
-        refreshCompletionHandler?(nil)
-    }
-
-    public func updateProgressForCurrentRefresh(currentUnitCount: Int, totalUnitCount: Int) {
-        refreshProgress?.totalUnitCount = Int64(totalUnitCount)
-        refreshProgress?.completedUnitCount = Int64(currentUnitCount)
     }
 
     public func simulateMessagesLoaded(_ messages: [Message]) {
