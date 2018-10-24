@@ -26,8 +26,6 @@ public protocol EurofurenceApplicationProtocol: ApplicationNotificationHandling,
                                                 CollectThemAllService,
                                                 MapsService {
 
-    func performFullStoreRefresh(completionHandler: @escaping (Error?) -> Void) -> Progress
-
     func setExternalContentHandler(_ externalContentHandler: ExternalContentHandler)
 
     var localPrivateMessages: [Message] { get }

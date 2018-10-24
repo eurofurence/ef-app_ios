@@ -21,7 +21,7 @@ class ApplicationPreloadingServiceTests: XCTestCase {
         super.setUp()
 
         app = CapturingEurofurenceApplication()
-        interactor = ApplicationPreloadInteractor(app: app)
+        interactor = ApplicationPreloadInteractor(refreshService: app)
         delegate = CapturingPreloadInteractorDelegate()
     }
 

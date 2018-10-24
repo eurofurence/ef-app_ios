@@ -14,6 +14,10 @@ import XCTest
 
 class CapturingRefreshService: RefreshService {
 
+    func performFullStoreRefresh(completionHandler: @escaping (Error?) -> Void) -> Progress {
+        return Progress()
+    }
+
     private(set) var toldToRefresh = false
     func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress {
         toldToRefresh = true

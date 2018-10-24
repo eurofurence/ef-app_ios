@@ -10,15 +10,15 @@ import EurofurenceAppCore
 
 class ApplicationPreloadInteractor: PreloadInteractor {
 
-    private let app: EurofurenceApplicationProtocol
+    private let app: RefreshService
     private var observations = [Any]()
 
     convenience init() {
-        self.init(app: EurofurenceApplication.shared)
+        self.init(refreshService: EurofurenceApplication.shared)
     }
 
-    init(app: EurofurenceApplicationProtocol) {
-        self.app = app
+    init(refreshService: RefreshService) {
+        self.app = refreshService
     }
 
     func beginPreloading(delegate: PreloadInteractorDelegate) {
