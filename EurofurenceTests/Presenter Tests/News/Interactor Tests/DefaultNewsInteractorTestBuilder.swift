@@ -14,19 +14,42 @@ import XCTest
 
 class CapturingRefreshService: RefreshService {
 
+    private var refreshCompletionHandler: ((Error?) -> Void)?
+    private(set) var toldToRefresh = false
+    fileprivate var refreshProgress: Progress?
     func performFullStoreRefresh(completionHandler: @escaping (Error?) -> Void) -> Progress {
-        return Progress()
+        toldToRefresh = true
+        refreshCompletionHandler = completionHandler
+        refreshProgress = Progress()
+
+        return refreshProgress!
     }
 
-    private(set) var toldToRefresh = false
     func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress {
         toldToRefresh = true
-        return Progress()
+        refreshCompletionHandler = completionHandler
+        refreshProgress = Progress()
+
+        return refreshProgress!
     }
 
     private(set) var refreshObservers = [RefreshServiceObserver]()
     func add(_ observer: RefreshServiceObserver) {
         refreshObservers.append(observer)
+    }
+
+    public func failLastRefresh() {
+        struct SomeError: Error {}
+        refreshCompletionHandler?(SomeError())
+    }
+
+    public func succeedLastRefresh() {
+        refreshCompletionHandler?(nil)
+    }
+
+    public func updateProgressForCurrentRefresh(currentUnitCount: Int, totalUnitCount: Int) {
+        refreshProgress?.totalUnitCount = Int64(totalUnitCount)
+        refreshProgress?.completedUnitCount = Int64(currentUnitCount)
     }
 
 }
