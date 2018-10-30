@@ -26,25 +26,19 @@ class WhenLoggingIn: XCTestCase {
         context = ApplicationTestBuilder().build()
     }
 
-    func testLoggingInShouldAttemptLoginWithProvidedUsername() {
-        let expectedUsername = "Some awesome guy"
-        context.login(username: expectedUsername)
+    func testUsesLoginArgumentsAgainstAPI() {
+        let username = "Some awesome guy"
+        let registrationNumber = 42
+        let password = "Some awesome password"
+        let arguments = LoginArguments(registrationNumber: registrationNumber,
+                                       username: username,
+                                       password: password)
+        context.application.login(arguments) { (_) in }
+        let capturedLoginRequest: LoginRequest? = context.loginAPI.capturedLoginRequest
 
-        XCTAssertEqual(expectedUsername, context.loginAPI.capturedLoginRequest?.username)
-    }
-
-    func testLoggingInShouldAttemptLoginWithProvidedRegNo() {
-        let expectedRegNo = 42
-        context.login(registrationNumber: expectedRegNo)
-
-        XCTAssertEqual(expectedRegNo, context.loginAPI.capturedLoginRequest?.regNo)
-    }
-
-    func testLoggingInShouldAttemptLoginWithProvidedPassword() {
-        let expectedPassword = "Some awesome password"
-        context.login(password: expectedPassword)
-
-        XCTAssertEqual(expectedPassword, context.loginAPI.capturedLoginRequest?.password)
+        XCTAssertEqual(username, capturedLoginRequest?.username)
+        XCTAssertEqual(registrationNumber, capturedLoginRequest?.regNo)
+        XCTAssertEqual(password, capturedLoginRequest?.password)
     }
 
     func testLoggingInSuccessfullyShouldPersistCredentialWithUsername() {
