@@ -41,44 +41,25 @@ class WhenLoggingIn: XCTestCase {
         XCTAssertEqual(password, capturedLoginRequest?.password)
     }
 
-    func testLoggingInSuccessfullyShouldPersistCredentialWithUsername() {
+    func testPersistsCredentialFromResponse() {
         let expectedUsername = "Some awesome guy"
-        context.login(username: expectedUsername)
-        context.loginAPI.simulateResponse(makeLoginResponse(username: expectedUsername))
-
-        XCTAssertEqual(expectedUsername, context.capturingCredentialStore.capturedCredential?.username)
-    }
-
-    func testLoggingInSuccessfullyShouldPersistCredentialWithUsernameProvidedByLoginCallAndNotLoginResponse() {
-        let expectedUsername = "Some awesome guy"
-        let unexpectedUsername = "Some other guy"
-        context.login(username: expectedUsername)
-        context.loginAPI.simulateResponse(makeLoginResponse(username: unexpectedUsername))
-
-        XCTAssertEqual(expectedUsername, context.capturingCredentialStore.capturedCredential?.username)
-    }
-
-    func testLoggingInSuccessfullyShouldPersistCredentialWithUserIDFromLoginRequest() {
         let expectedUserID = 42
-        context.login(registrationNumber: expectedUserID)
-        context.loginAPI.simulateResponse(makeLoginResponse(uid: "Something else"))
-
-        XCTAssertEqual(expectedUserID, context.capturingCredentialStore.capturedCredential?.registrationNumber)
-    }
-
-    func testLoggingInSuccessfullyShouldPersistCredentialWithLoginToken() {
         let expectedToken = "JWT Token"
-        context.login()
-        context.loginAPI.simulateResponse(makeLoginResponse(token: expectedToken))
-
-        XCTAssertEqual(expectedToken, context.capturingCredentialStore.capturedCredential?.authenticationToken)
-    }
-
-    func testLoggingInSuccessfullyShouldPersistCredentialWithTokenExpiry() {
         let expectedTokenExpiry = Date.distantFuture
-        context.login()
-        context.loginAPI.simulateResponse(makeLoginResponse(tokenValidUntil: expectedTokenExpiry))
+        let arguments = LoginArguments(registrationNumber: expectedUserID,
+                                       username: expectedUsername,
+                                       password: "Not used for this test")
+        let response = LoginResponse(userIdentifier: "",
+                                     username: "",
+                                     token: expectedToken,
+                                     tokenValidUntil: .distantFuture)
 
+        context.application.login(arguments, completionHandler: { (_) in })
+        context.loginAPI.simulateResponse(response)
+
+        XCTAssertEqual(expectedUsername, context.capturingCredentialStore.capturedCredential?.username)
+        XCTAssertEqual(expectedUserID, context.capturingCredentialStore.capturedCredential?.registrationNumber)
+        XCTAssertEqual(expectedToken, context.capturingCredentialStore.capturedCredential?.authenticationToken)
         XCTAssertEqual(expectedTokenExpiry, context.capturingCredentialStore.capturedCredential?.tokenExpiryDate)
     }
 
