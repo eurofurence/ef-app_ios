@@ -148,6 +148,7 @@
 		CA0B1EE9217F415900A6A949 /* JournallingURLRequestLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA1090216E823100B0C7A6 /* JournallingURLRequestLogger.swift */; };
 		CA0B1EEA217F415900A6A949 /* TestURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA1092216E824C00B0C7A6 /* TestURLProtocol.swift */; };
 		CA0B1EEB217F418B00A6A949 /* APISyncResponse+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF5979C20449A5300089BE8 /* APISyncResponse+RandomValueProviding.swift */; };
+		CA0B1EEF21888A0000A6A949 /* WhenAlreadyLoggedIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0B1EEE21888A0000A6A949 /* WhenAlreadyLoggedIn.swift */; };
 		CA0E5205208E6FE4005259FE /* StoryboardDealersSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5204208E6FE4005259FE /* StoryboardDealersSceneFactory.swift */; };
 		CA0E5207208E700E005259FE /* DealersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5206208E700E005259FE /* DealersViewController.swift */; };
 		CA0E5209208E7020005259FE /* Dealers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA0E5208208E7020005259FE /* Dealers.storyboard */; };
@@ -1524,6 +1525,7 @@
 		CA08159F20D47D4100F750D4 /* WhenRestrictingEventsToSpecificDay_ScheduleShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenRestrictingEventsToSpecificDay_ScheduleShould.swift; sourceTree = "<group>"; };
 		CA0B1ED8217F40EC00A6A949 /* EurofurenceAppCoreAdapterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EurofurenceAppCoreAdapterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA0B1EDC217F40EC00A6A949 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CA0B1EEE21888A0000A6A949 /* WhenAlreadyLoggedIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenAlreadyLoggedIn.swift; sourceTree = "<group>"; };
 		CA0E5204208E6FE4005259FE /* StoryboardDealersSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardDealersSceneFactory.swift; sourceTree = "<group>"; };
 		CA0E5206208E700E005259FE /* DealersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersViewController.swift; sourceTree = "<group>"; };
 		CA0E5208208E7020005259FE /* Dealers.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dealers.storyboard; sourceTree = "<group>"; };
@@ -5257,6 +5259,7 @@
 		CA81D4951FEA950600A52A2F /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				CA0B1EEE21888A0000A6A949 /* WhenAlreadyLoggedIn.swift */,
 				CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */,
 				CACE1B041F2BBA1A00DFCB60 /* WhenLoggingOut.swift */,
 			);
@@ -8295,6 +8298,7 @@
 				CAEA10A6216E8BB600B0C7A6 /* CapturingForceRefreshRequired.swift in Sources */,
 				CAEA0FCC216E1CC000B0C7A6 /* WhenDeletingKnowledgeGroup_AfterSuccessfulSync_ApplicationShould.swift in Sources */,
 				CAEA1003216E1CE700B0C7A6 /* WhenToldToOpenNotification_ThatRepresentsAnnouncement_ApplicationShould.swift in Sources */,
+				CA0B1EEF21888A0000A6A949 /* WhenAlreadyLoggedIn.swift in Sources */,
 				CAEA100B216E1CE800B0C7A6 /* WhenRequestingPrivateMessagesWhileAuthenticated.swift in Sources */,
 				CAEA0FD6216E1CC000B0C7A6 /* WhenSyncFinishesForEventWithPoster_WhenImageAPIIsSlow_ApplicationShould.swift in Sources */,
 				CAEA0F9C216E1CC000B0C7A6 /* WhenAddingAnnouncementsObserver_ThenRefreshSucceeds_ApplicationShould.swift in Sources */,

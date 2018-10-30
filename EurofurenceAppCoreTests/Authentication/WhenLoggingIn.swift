@@ -114,22 +114,6 @@ class WhenLoggingIn: XCTestCase {
         XCTAssertFalse(loginObserver.notifiedLoginFailed)
     }
 
-    func testBeingLoggedInThenLoggingInShouldNotifyObserverLoginSuccessful() {
-        let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
-        let loginObserver = CapturingLoginObserver()
-        context.login(completionHandler: loginObserver.completionHandler)
-
-        XCTAssertTrue(loginObserver.notifiedLoginSucceeded)
-    }
-
-    func testBeingLoggedInThenLoggingInShouldNotRequestTheAPIToLogin() {
-        let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
-        let loginObserver = CapturingLoginObserver()
-        context.login(completionHandler: loginObserver.completionHandler)
-
-        XCTAssertNil(context.loginAPI.capturedLoginRequest)
-    }
-
     func testLoggingInSuccessfullyThenRegisteringPushTokenShouldProvideAuthTokenWithPushRegistration() {
         let expectedToken = "JWT Token"
         context.login()
