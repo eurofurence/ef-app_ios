@@ -11,19 +11,12 @@ import XCTest
 
 class WhenAlreadyLoggedIn: XCTestCase {
 
-    func testBeingLoggedInThenLoggingInShouldNotifyObserverLoginSuccessful() {
+    func testSubsequentLoginsIgnoredAndToldLoginSucceeded() {
         let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         let loginObserver = CapturingLoginObserver()
         context.login(completionHandler: loginObserver.completionHandler)
 
         XCTAssertTrue(loginObserver.notifiedLoginSucceeded)
-    }
-
-    func testBeingLoggedInThenLoggingInShouldNotRequestTheAPIToLogin() {
-        let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
-        let loginObserver = CapturingLoginObserver()
-        context.login(completionHandler: loginObserver.completionHandler)
-
         XCTAssertNil(context.loginAPI.capturedLoginRequest)
     }
 
