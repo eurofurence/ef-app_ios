@@ -18,8 +18,15 @@ class WhenLoggingIn: XCTestCase {
         return LoginResponse(userIdentifier: uid, username: username, token: token, tokenValidUntil: tokenValidUntil)
     }
 
+    var context: ApplicationTestBuilder.Context!
+
+    override func setUp() {
+        super.setUp()
+
+        context = ApplicationTestBuilder().build()
+    }
+
     func testLoggingInShouldAttemptLoginWithProvidedUsername() {
-        let context = ApplicationTestBuilder().build()
         let expectedUsername = "Some awesome guy"
         context.login(username: expectedUsername)
 
@@ -27,7 +34,6 @@ class WhenLoggingIn: XCTestCase {
     }
 
     func testLoggingInShouldAttemptLoginWithProvidedRegNo() {
-        let context = ApplicationTestBuilder().build()
         let expectedRegNo = 42
         context.login(registrationNumber: expectedRegNo)
 
@@ -35,7 +41,6 @@ class WhenLoggingIn: XCTestCase {
     }
 
     func testLoggingInShouldAttemptLoginWithProvidedPassword() {
-        let context = ApplicationTestBuilder().build()
         let expectedPassword = "Some awesome password"
         context.login(password: expectedPassword)
 
@@ -43,7 +48,6 @@ class WhenLoggingIn: XCTestCase {
     }
 
     func testLoggingInSuccessfullyShouldPersistCredentialWithUsername() {
-        let context = ApplicationTestBuilder().build()
         let expectedUsername = "Some awesome guy"
         context.login(username: expectedUsername)
         context.loginAPI.simulateResponse(makeLoginResponse(username: expectedUsername))
@@ -52,7 +56,6 @@ class WhenLoggingIn: XCTestCase {
     }
 
     func testLoggingInSuccessfullyShouldPersistCredentialWithUsernameProvidedByLoginCallAndNotLoginResponse() {
-        let context = ApplicationTestBuilder().build()
         let expectedUsername = "Some awesome guy"
         let unexpectedUsername = "Some other guy"
         context.login(username: expectedUsername)
@@ -62,7 +65,6 @@ class WhenLoggingIn: XCTestCase {
     }
 
     func testLoggingInSuccessfullyShouldPersistCredentialWithUserIDFromLoginRequest() {
-        let context = ApplicationTestBuilder().build()
         let expectedUserID = 42
         context.login(registrationNumber: expectedUserID)
         context.loginAPI.simulateResponse(makeLoginResponse(uid: "Something else"))
@@ -71,7 +73,6 @@ class WhenLoggingIn: XCTestCase {
     }
 
     func testLoggingInSuccessfullyShouldPersistCredentialWithLoginToken() {
-        let context = ApplicationTestBuilder().build()
         let expectedToken = "JWT Token"
         context.login()
         context.loginAPI.simulateResponse(makeLoginResponse(token: expectedToken))
@@ -80,7 +81,6 @@ class WhenLoggingIn: XCTestCase {
     }
 
     func testLoggingInSuccessfullyShouldPersistCredentialWithTokenExpiry() {
-        let context = ApplicationTestBuilder().build()
         let expectedTokenExpiry = Date.distantFuture
         context.login()
         context.loginAPI.simulateResponse(makeLoginResponse(tokenValidUntil: expectedTokenExpiry))
@@ -89,7 +89,6 @@ class WhenLoggingIn: XCTestCase {
     }
 
     func testLoggingInSuccessfulyShouldNotifyObserversAboutIt() {
-        let context = ApplicationTestBuilder().build()
         let loginObserver = CapturingLoginObserver()
         context.login(completionHandler: loginObserver.completionHandler)
         context.loginAPI.simulateResponse(makeLoginResponse())
@@ -98,7 +97,6 @@ class WhenLoggingIn: XCTestCase {
     }
 
     func testLoggingInSuccessfulyShouldNotNotifyObserversAboutItUntilTokenPersistenceCompletes() {
-        let context = ApplicationTestBuilder().build()
         let loginObserver = CapturingLoginObserver()
         context.capturingCredentialStore.blockToRunBeforeCompletingCredentialStorage = {
             XCTAssertFalse(loginObserver.notifiedLoginSucceeded)
@@ -109,7 +107,6 @@ class WhenLoggingIn: XCTestCase {
     }
 
     func testLoggingInSuccessfulyShouldNotNotifyObserversAboutLoginFailure() {
-        let context = ApplicationTestBuilder().build()
         let loginObserver = CapturingLoginObserver()
         context.login(completionHandler: loginObserver.completionHandler)
         context.loginAPI.simulateResponse(makeLoginResponse())
@@ -134,7 +131,6 @@ class WhenLoggingIn: XCTestCase {
     }
 
     func testLoggingInSuccessfullyThenRegisteringPushTokenShouldProvideAuthTokenWithPushRegistration() {
-        let context = ApplicationTestBuilder().build()
         let expectedToken = "JWT Token"
         context.login()
         context.loginAPI.simulateResponse(makeLoginResponse(token: expectedToken))
@@ -144,7 +140,6 @@ class WhenLoggingIn: XCTestCase {
     }
 
     func testLoggingInAfterRegisteringPushTokenShouldReRegisterThePushTokenWithTheUserAuthenticationToken() {
-        let context = ApplicationTestBuilder().build()
         let expectedToken = "JWT Token"
         context.application.storeRemoteNotificationsToken(Data())
         context.login()
@@ -154,7 +149,6 @@ class WhenLoggingIn: XCTestCase {
     }
 
     func testLoggingInSuccessfullyShouldProvideExpectedLoginToHandler() {
-        let context = ApplicationTestBuilder().build()
         let loginObserver = CapturingLoginObserver()
         let username = "Some cool guy"
         let regNo = 42
@@ -166,7 +160,6 @@ class WhenLoggingIn: XCTestCase {
     }
 
     func testSuccessfulLoginTellsObserversTheUserHasLoggedIn() {
-        let context = ApplicationTestBuilder().build()
         let observer = CapturingAuthenticationStateObserver()
         context.application.add(observer)
         let user = User(registrationNumber: .random, username: .random)
@@ -177,7 +170,6 @@ class WhenLoggingIn: XCTestCase {
     }
 
     func testAddingObserverAfterSuccessfullyLoggingInTellsItAboutTheLoggedInUser() {
-        let context = ApplicationTestBuilder().build()
         let user = User(registrationNumber: .random, username: .random)
         context.login(registrationNumber: user.registrationNumber, username: user.username, completionHandler: { (_) in })
         context.loginAPI.simulateResponse(makeLoginResponse())
@@ -188,7 +180,6 @@ class WhenLoggingIn: XCTestCase {
     }
 
     func testLoggingOutTellsObserversTheUserHasLoggedOut() {
-        let context = ApplicationTestBuilder().build()
         let observer = CapturingAuthenticationStateObserver()
         context.application.add(observer)
         let user = User(registrationNumber: .random, username: .random)
@@ -201,7 +192,6 @@ class WhenLoggingIn: XCTestCase {
     }
 
     func testObserverNotToldUserLoggedOutUntilLogoutSucceeds() {
-        let context = ApplicationTestBuilder().build()
         let observer = CapturingAuthenticationStateObserver()
         context.application.add(observer)
         observer.loggedOut = false
@@ -214,7 +204,6 @@ class WhenLoggingIn: XCTestCase {
     }
 
     func testObserverNotToldUserLoggedOutWhenLogoutFails() {
-        let context = ApplicationTestBuilder().build()
         let observer = CapturingAuthenticationStateObserver()
         context.application.add(observer)
         observer.loggedOut = false
@@ -228,7 +217,6 @@ class WhenLoggingIn: XCTestCase {
     }
 
     func testAddingObserverWhenNotLoggedInTellsObserverUserLoggedOut() {
-        let context = ApplicationTestBuilder().build()
         let observer = CapturingAuthenticationStateObserver()
         context.application.add(observer)
 
