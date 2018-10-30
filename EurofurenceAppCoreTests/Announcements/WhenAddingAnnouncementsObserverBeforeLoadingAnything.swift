@@ -11,21 +11,12 @@ import XCTest
 
 class WhenAddingAnnouncementsObserverBeforeLoadingAnything: XCTestCase {
 
-    var observer: CapturingAnnouncementsServiceObserver!
-
-    override func setUp() {
-        super.setUp()
-
+    func testEmptyAnnouncementsAreStillPropogatedToTheObserver() {
         let context = ApplicationTestBuilder().build()
-        observer = CapturingAnnouncementsServiceObserver()
+        let observer = CapturingAnnouncementsServiceObserver()
         context.application.add(observer)
-    }
 
-    func testEmptyAnnouncementsAreReturned() {
         XCTAssertTrue(observer.didReceieveEmptyAllAnnouncements)
-    }
-
-    func testEmptyReadAnnouncementsAreReturned() {
         XCTAssertTrue(observer.didReceieveEmptyReadAnnouncements)
     }
 
