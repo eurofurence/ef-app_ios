@@ -11,77 +11,80 @@ import XCTest
 
 class WhenOpeningAnnouncement_ApplicationShould: XCTestCase {
 
+    var context: ApplicationTestBuilder.Context!
+    var syncResponse: APISyncResponse!
+
+    override func setUp() {
+        super.setUp()
+
+        context = ApplicationTestBuilder().build()
+        syncResponse = APISyncResponse.randomWithoutDeletions
+        context.performSuccessfulSync(response: syncResponse)
+    }
+
+    @discardableResult
+    private func openAnnouncement(_ identifier: Announcement.Identifier) -> Announcement? {
+        var announcement: Announcement?
+        context.application.openAnnouncement(identifier: identifier) { announcement = $0 }
+
+        return announcement
+    }
+
     func testProvideTheAnnouncementToTheCompletionHandler() {
-        let syncResponse = APISyncResponse.randomWithoutDeletions
         let announcements = syncResponse.announcements.changed
         let announcement = announcements.randomElement().element
         let identifier = announcement.identifier
-        let context = ApplicationTestBuilder().build()
         let expected = context.expectedAnnouncement(from: announcement)
-        context.performSuccessfulSync(response: syncResponse)
-        var model: Announcement?
-        context.application.openAnnouncement(identifier: Announcement.Identifier(identifier)) { model = $0 }
+        let model = openAnnouncement(Announcement.Identifier(identifier))
 
         XCTAssertEqual(expected, model)
     }
 
     func testSaveTheAnnouncementIdentifierAsReadAnnouncementToStore() {
-        let syncResponse = APISyncResponse.randomWithoutDeletions
         let announcements = syncResponse.announcements.changed
         let announcement = announcements.randomElement().element
         let identifier = announcement.identifier
-        let context = ApplicationTestBuilder().build()
-        context.performSuccessfulSync(response: syncResponse)
-        context.application.openAnnouncement(identifier: Announcement.Identifier(identifier)) { (_) in }
+        openAnnouncement(Announcement.Identifier(identifier))
 
         XCTAssertTrue(context.dataStore.didSaveReadAnnouncement(Announcement.Identifier(identifier)))
     }
 
     func testSaveAllPreviouslyReadAnnouncementIdentifierAsRead() {
-        let syncResponse = APISyncResponse.randomWithoutDeletions
         let announcements = syncResponse.announcements.changed
         let firstAnnouncement = announcements.randomElement().element
         let firstIdentifier = firstAnnouncement.identifier
         let secondAnnouncement = announcements.randomElement().element
         let secondIdentifier = secondAnnouncement.identifier
-        let context = ApplicationTestBuilder().build()
-        context.performSuccessfulSync(response: syncResponse)
-        context.application.openAnnouncement(identifier: Announcement.Identifier(firstIdentifier)) { (_) in }
-        context.application.openAnnouncement(identifier: Announcement.Identifier(secondIdentifier)) { (_) in }
+        openAnnouncement(Announcement.Identifier(firstIdentifier))
+        openAnnouncement(Announcement.Identifier(secondIdentifier))
         let expected = [firstIdentifier, secondIdentifier].map({ Announcement.Identifier($0) })
 
         XCTAssertTrue(context.dataStore.didSaveReadAnnouncements(expected))
     }
 
     func testTellServiceObserversWhenMarkingAnnouncementAsRead() {
-        let syncResponse = APISyncResponse.randomWithoutDeletions
         let announcements = syncResponse.announcements.changed
         let firstAnnouncement = announcements.randomElement().element
         let firstIdentifier = firstAnnouncement.identifier
         let secondAnnouncement = announcements.randomElement().element
         let secondIdentifier = secondAnnouncement.identifier
-        let context = ApplicationTestBuilder().build()
         let observer = CapturingAnnouncementsServiceObserver()
         context.application.add(observer)
-        context.performSuccessfulSync(response: syncResponse)
-        context.application.openAnnouncement(identifier: Announcement.Identifier(firstIdentifier)) { (_) in }
-        context.application.openAnnouncement(identifier: Announcement.Identifier(secondIdentifier)) { (_) in }
+        openAnnouncement(Announcement.Identifier(firstIdentifier))
+        openAnnouncement(Announcement.Identifier(secondIdentifier))
         let expected = [firstIdentifier, secondIdentifier].map({ Announcement.Identifier($0) })
 
         XCTAssertTrue(observer.readAnnouncementIdentifiers.contains(elementsFrom: expected))
     }
 
     func testTellLaterAddedObserversAboutMarkedReadAnnouncements() {
-        let syncResponse = APISyncResponse.randomWithoutDeletions
         let announcements = syncResponse.announcements.changed
         let firstAnnouncement = announcements.randomElement().element
         let firstIdentifier = firstAnnouncement.identifier
         let secondAnnouncement = announcements.randomElement().element
         let secondIdentifier = secondAnnouncement.identifier
-        let context = ApplicationTestBuilder().build()
-        context.performSuccessfulSync(response: syncResponse)
-        context.application.openAnnouncement(identifier: Announcement.Identifier(firstIdentifier)) { (_) in }
-        context.application.openAnnouncement(identifier: Announcement.Identifier(secondIdentifier)) { (_) in }
+        openAnnouncement(Announcement.Identifier(firstIdentifier))
+        openAnnouncement(Announcement.Identifier(secondIdentifier))
         let expected = [firstIdentifier, secondIdentifier].map({ Announcement.Identifier($0) })
         let observer = CapturingAnnouncementsServiceObserver()
         context.application.add(observer)
