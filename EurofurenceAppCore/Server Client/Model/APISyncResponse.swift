@@ -8,34 +8,34 @@
 
 import Foundation
 
-public struct APISyncDelta<T>: Equatable where T: Equatable {
-
-    public var changed: [T]
-    public var deleted: [String]
-    public var removeAllBeforeInsert: Bool
-
-    public init(changed: [T] = [], deleted: [String] = [], removeAllBeforeInsert: Bool = false) {
-        self.changed = changed
-        self.deleted = deleted
-        self.removeAllBeforeInsert = removeAllBeforeInsert
-    }
-
-}
-
 public struct APISyncResponse: Equatable {
 
-    public var knowledgeGroups: APISyncDelta<APIKnowledgeGroup>
-    public var knowledgeEntries: APISyncDelta<APIKnowledgeEntry>
-    public var announcements: APISyncDelta<APIAnnouncement>
-    public var events: APISyncDelta<APIEvent>
-    public var rooms: APISyncDelta<APIRoom>
-    public var tracks: APISyncDelta<APITrack>
-    public var conferenceDays: APISyncDelta<APIConferenceDay>
-    public var dealers: APISyncDelta<APIDealer>
-    public var maps: APISyncDelta<APIMap>
-    public var images: APISyncDelta<APIImage>
+    public struct Delta<T>: Equatable where T: Equatable {
 
-    public init(knowledgeGroups: APISyncDelta<APIKnowledgeGroup>, knowledgeEntries: APISyncDelta<APIKnowledgeEntry>, announcements: APISyncDelta<APIAnnouncement>, events: APISyncDelta<APIEvent>, rooms: APISyncDelta<APIRoom>, tracks: APISyncDelta<APITrack>, conferenceDays: APISyncDelta<APIConferenceDay>, dealers: APISyncDelta<APIDealer>, maps: APISyncDelta<APIMap>, images: APISyncDelta<APIImage>) {
+        public var changed: [T]
+        public var deleted: [String]
+        public var removeAllBeforeInsert: Bool
+
+        public init(changed: [T] = [], deleted: [String] = [], removeAllBeforeInsert: Bool = false) {
+            self.changed = changed
+            self.deleted = deleted
+            self.removeAllBeforeInsert = removeAllBeforeInsert
+        }
+
+    }
+
+    public var knowledgeGroups: APISyncResponse.Delta<APIKnowledgeGroup>
+    public var knowledgeEntries: APISyncResponse.Delta<APIKnowledgeEntry>
+    public var announcements: APISyncResponse.Delta<APIAnnouncement>
+    public var events: APISyncResponse.Delta<APIEvent>
+    public var rooms: APISyncResponse.Delta<APIRoom>
+    public var tracks: APISyncResponse.Delta<APITrack>
+    public var conferenceDays: APISyncResponse.Delta<APIConferenceDay>
+    public var dealers: APISyncResponse.Delta<APIDealer>
+    public var maps: APISyncResponse.Delta<APIMap>
+    public var images: APISyncResponse.Delta<APIImage>
+
+    public init(knowledgeGroups: APISyncResponse.Delta<APIKnowledgeGroup>, knowledgeEntries: APISyncResponse.Delta<APIKnowledgeEntry>, announcements: APISyncResponse.Delta<APIAnnouncement>, events: APISyncResponse.Delta<APIEvent>, rooms: APISyncResponse.Delta<APIRoom>, tracks: APISyncResponse.Delta<APITrack>, conferenceDays: APISyncResponse.Delta<APIConferenceDay>, dealers: APISyncResponse.Delta<APIDealer>, maps: APISyncResponse.Delta<APIMap>, images: APISyncResponse.Delta<APIImage>) {
         self.knowledgeGroups = knowledgeGroups
         self.knowledgeEntries = knowledgeEntries
         self.announcements = announcements

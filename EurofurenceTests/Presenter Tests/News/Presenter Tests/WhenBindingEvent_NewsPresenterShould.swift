@@ -16,7 +16,7 @@ class EventsViewModel: NewsViewModel {
     var events: [[EventComponentViewModel]]
 
     init() {
-        events = (0...Int.random(upperLimit: 5) + 1).map { (index) -> [EventComponentViewModel] in
+        events = (0...Int.random(upperLimit: 5) + 1).map { (_) -> [EventComponentViewModel] in
             return [EventComponentViewModel].random
         }
     }

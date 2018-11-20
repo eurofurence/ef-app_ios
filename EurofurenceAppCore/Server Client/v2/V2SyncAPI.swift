@@ -72,10 +72,10 @@ private struct JSONSyncResponse: Decodable {
         var DeletedEntities: [String]
         var RemoveAllBeforeInsert: Bool
 
-        var delta: APISyncDelta<T.ModelType> {
-            return APISyncDelta(changed: ChangedEntities.map({ $0.modelValue }),
-                                deleted: DeletedEntities,
-                                removeAllBeforeInsert: RemoveAllBeforeInsert)
+        var delta: APISyncResponse.Delta<T.ModelType> {
+            return APISyncResponse.Delta(changed: ChangedEntities.map({ $0.modelValue }),
+                                         deleted: DeletedEntities,
+                                         removeAllBeforeInsert: RemoveAllBeforeInsert)
         }
     }
 

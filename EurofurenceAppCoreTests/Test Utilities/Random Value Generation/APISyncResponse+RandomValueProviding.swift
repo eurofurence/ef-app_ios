@@ -35,8 +35,8 @@ extension APISyncResponse {
                             tags: .random)
         }
 
-        let dealers: APISyncDelta<APIDealer> = APISyncDelta(changed: .random)
-        let maps: APISyncDelta<APIMap> = APISyncDelta(changed: .random)
+        let dealers: APISyncResponse.Delta<APIDealer> = APISyncResponse.Delta(changed: .random)
+        let maps: APISyncResponse.Delta<APIMap> = APISyncResponse.Delta(changed: .random)
 
         var allImages: [APIImage] = events.compactMap({ $0.bannerImageId }).map({ APIImage(identifier: $0, internalReference: "") })
         allImages.append(contentsOf: events.compactMap({ $0.posterImageId }).map({ APIImage(identifier: $0, internalReference: "") }))
@@ -53,16 +53,16 @@ extension APISyncResponse {
         let announcementImages = announcements.compactMap({ $0.imageIdentifier }).map({ APIImage(identifier: $0, internalReference: "") })
         allImages.append(contentsOf: announcementImages)
 
-        return APISyncResponse(knowledgeGroups: APISyncDelta(changed: knowledge.groups),
-                               knowledgeEntries: APISyncDelta(changed: knowledge.entries),
-                               announcements: APISyncDelta(changed: announcements),
-                               events: APISyncDelta(changed: events),
-                               rooms: APISyncDelta(changed: rooms),
-                               tracks: APISyncDelta(changed: tracks),
-                               conferenceDays: APISyncDelta(changed: days),
+        return APISyncResponse(knowledgeGroups: APISyncResponse.Delta(changed: knowledge.groups),
+                               knowledgeEntries: APISyncResponse.Delta(changed: knowledge.entries),
+                               announcements: APISyncResponse.Delta(changed: announcements),
+                               events: APISyncResponse.Delta(changed: events),
+                               rooms: APISyncResponse.Delta(changed: rooms),
+                               tracks: APISyncResponse.Delta(changed: tracks),
+                               conferenceDays: APISyncResponse.Delta(changed: days),
                                dealers: dealers,
                                maps: maps,
-                               images: APISyncDelta(changed: allImages))
+                               images: APISyncResponse.Delta(changed: allImages))
     }
 
 }

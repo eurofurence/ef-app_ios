@@ -15,7 +15,7 @@ class AnnouncementsViewModel: NewsViewModel {
     var announcements: [[AnnouncementComponentViewModel]]
 
     convenience init() {
-        let announcements = (0...Int.random(upperLimit: 5) + 1).map { (index) -> [AnnouncementComponentViewModel] in
+        let announcements = (0...Int.random(upperLimit: 5) + 1).map { (_) -> [AnnouncementComponentViewModel] in
             return [AnnouncementComponentViewModel].random
         }
 
