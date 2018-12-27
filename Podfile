@@ -6,7 +6,7 @@ target :RandomDataGeneration do
     pod 'SwiftLint'
 end
 
-target 'Eurofurence' do
+target :Eurofurence do
 	plugin 'cocoapods-acknowledgements', :settings_bundle => true
 	
 	pod 'Down'
@@ -24,24 +24,35 @@ target 'Eurofurence' do
 		pod 'Firebase/Core'
 		pod 'Firebase/Crash'
 	end
+    
+    target :EurofurenceUITests do
+        inherit! :search_paths
+        
+        pod 'Firebase/Core'
+        pod 'Firebase/Crash'
+    end
+    
+    target :ScreenshotGenerator do
+        inherit! :search_paths
+    end
 	
 end
 
-target :EurofurenceAppCore do
+target :EurofurenceModel do
     
     pod 'SwiftLint'
     pod 'ReachabilitySwift'
     pod 'Locksmith'
     
-    target :EurofurenceAppCoreTests do
+    target :EurofurenceModelTests do
         inherit! :search_paths
     end
     
-    target :EurofurenceAppCoreAdapterTests do
+    target :EurofurenceModelAdapterTests do
         inherit! :search_paths
     end
     
-    target :EurofurenceAppCoreTestDoubles do
+    target :EurofurenceModelTestDoubles do
         inherit! :search_paths
     end
     

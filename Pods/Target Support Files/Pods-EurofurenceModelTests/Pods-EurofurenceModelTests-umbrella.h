@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_EurofurenceAppCoreVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_EurofurenceAppCoreVersionString[];
+FOUNDATION_EXPORT double Pods_EurofurenceModelTestsVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_EurofurenceModelTestsVersionString[];
 
