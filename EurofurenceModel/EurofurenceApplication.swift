@@ -19,10 +19,7 @@ public enum PrivateMessageResult {
     case userNotAuthenticated
 }
 
-// TODO: Temporarily made public to aid migration, should be internal
-public class EurofurenceApplication: EurofurenceApplicationProtocol {
-
-    public static var shared: EurofurenceApplicationProtocol = EurofurenceApplicationBuilder().build()
+class EurofurenceApplication: EurofurenceApplicationProtocol {
 
     private let eventBus = EventBus()
     private let userPreferences: UserPreferences

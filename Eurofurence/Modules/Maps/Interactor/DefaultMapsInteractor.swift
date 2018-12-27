@@ -60,7 +60,7 @@ class DefaultMapsInteractor: MapsInteractor, MapsObserver {
     private var maps = [Map]()
 
     convenience init() {
-        self.init(mapsService: EurofurenceApplication.shared)
+        self.init(mapsService: SharedModel.instance.session)
     }
 
     init(mapsService: MapsService) {

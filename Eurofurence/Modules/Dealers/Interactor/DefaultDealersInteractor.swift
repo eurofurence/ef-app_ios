@@ -20,7 +20,7 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
     private let eventBus = EventBus()
 
     init() {
-        self.init(dealersService: EurofurenceApplication.shared)
+        self.init(dealersService: SharedModel.instance.session)
     }
 
     init(dealersService: DealersService) {
@@ -28,7 +28,7 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
         let defaultIconData = defaultIcon.pngData()!
         self.init(dealersService: dealersService,
                   defaultIconData: defaultIconData,
-                  refreshService: EurofurenceApplication.shared)
+                  refreshService: SharedModel.instance.session)
     }
 
     init(dealersService: DealersService, defaultIconData: Data, refreshService: RefreshService) {

@@ -52,16 +52,16 @@ class DefaultNewsInteractor: NewsInteractor,
     // MARK: Initialization
 
     convenience init() {
-        self.init(announcementsService: EurofurenceApplication.shared,
-                  authenticationService: EurofurenceApplication.shared,
+        self.init(announcementsService: SharedModel.instance.session,
+                  authenticationService: SharedModel.instance.session,
                   privateMessagesService: EurofurencePrivateMessagesService.shared,
-                  daysUntilConventionService: EurofurenceApplication.shared,
-                  eventsService: EurofurenceApplication.shared,
+                  daysUntilConventionService: SharedModel.instance.session,
+                  eventsService: SharedModel.instance.session,
                   relativeTimeIntervalCountdownFormatter: FoundationRelativeTimeIntervalCountdownFormatter.shared,
                   hoursDateFormatter: FoundationHoursDateFormatter.shared,
                   dateDistanceCalculator: FoundationDateDistanceCalculator(),
                   clock: SystemClock.shared,
-                  refreshService: EurofurenceApplication.shared,
+                  refreshService: SharedModel.instance.session,
                   announcementsDateFormatter: FoundationAnnouncementDateFormatter.shared,
 				  announcementsMarkdownRenderer: SubtleDownMarkdownRenderer())
     }

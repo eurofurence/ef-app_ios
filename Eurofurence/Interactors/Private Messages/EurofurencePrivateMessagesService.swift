@@ -10,7 +10,7 @@ import EurofurenceModel
 
 class EurofurencePrivateMessagesService: PrivateMessagesService, PrivateMessagesObserver {
 
-    static var shared = EurofurencePrivateMessagesService(app: EurofurenceApplication.shared)
+    static var shared = EurofurencePrivateMessagesService(app: SharedModel.instance.session)
 
     private let app: EurofurenceApplicationProtocol
     private var observers = [PrivateMessagesServiceObserver]()

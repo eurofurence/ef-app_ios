@@ -16,7 +16,7 @@ class LoginModuleBuilder {
 
     init() {
         sceneFactory = LoginViewControllerV2Factory()
-        authenticationService = EurofurenceApplication.shared
+        authenticationService = SharedModel.instance.session
         alertRouter = WindowAlertRouter.shared
     }
 

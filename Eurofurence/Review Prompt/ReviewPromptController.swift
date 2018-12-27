@@ -30,7 +30,7 @@ struct ReviewPromptController: EventsServiceObserver {
                                    versionProviding: BundleAppVersionProviding.shared,
                                    reviewPromptAppVersionRepository: UserDefaultsReviewPromptAppVersionRepository(),
                                    appStateProviding: ApplicationAppStateProviding(),
-                                   eventsService: EurofurenceApplication.shared)
+                                   eventsService: SharedModel.instance.session)
     }
 
     init(config: ReviewPromptController.Config,

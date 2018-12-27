@@ -19,11 +19,11 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
     // MARK: Initialization
 
     convenience init() {
-        self.init(eventsService: EurofurenceApplication.shared,
+        self.init(eventsService: SharedModel.instance.session,
                   hoursDateFormatter: FoundationHoursDateFormatter.shared,
                   shortFormDateFormatter: FoundationShortFormDateFormatter.shared,
                   shortFormDayAndTimeFormatter: FoundationShortFormDayAndTimeFormatter.shared,
-                  refreshService: EurofurenceApplication.shared)
+                  refreshService: SharedModel.instance.session)
     }
 
     init(eventsService: EventsService,

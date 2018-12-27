@@ -13,7 +13,7 @@ class RootModuleBuilder {
     private var app: EurofurenceApplicationProtocol
 
     init() {
-        app = EurofurenceApplication.shared
+        app = SharedModel.instance.session
     }
 
     @discardableResult

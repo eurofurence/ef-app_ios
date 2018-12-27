@@ -166,7 +166,7 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
 
     convenience init() {
         self.init(dateRangeFormatter: FoundationDateRangeFormatter.shared,
-                  eventsService: EurofurenceApplication.shared,
+                  eventsService: SharedModel.instance.session,
 				  markdownRenderer: DefaultDownMarkdownRenderer())
     }
 

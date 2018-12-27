@@ -33,7 +33,7 @@ struct DefaultKnowledgeDetailSceneInteractor: KnowledgeDetailSceneInteractor {
 
     }
 
-    var knowledgeService: KnowledgeService = EurofurenceApplication.shared
+    var knowledgeService: KnowledgeService = SharedModel.instance.session
     var renderer: MarkdownRenderer = DefaultDownMarkdownRenderer()
 
     func makeViewModel(for identifier: KnowledgeEntry.Identifier, completionHandler: @escaping (KnowledgeEntryDetailViewModel) -> Void) {

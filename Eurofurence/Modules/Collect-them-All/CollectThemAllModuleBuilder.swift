@@ -16,7 +16,7 @@ class CollectThemAllModuleBuilder {
 
     init() {
         sceneFactory = StoryboardCollectThemAllSceneFactory()
-        service = EurofurenceApplication.shared
+        service = SharedModel.instance.session
     }
 
     @discardableResult

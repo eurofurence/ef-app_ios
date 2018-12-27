@@ -14,7 +14,7 @@ class KnowledgeGroupsModuleBuilder {
     private var knowledgeSceneFactory: KnowledgeListSceneFactory
 
     init() {
-        knowledgeListInteractor = DefaultKnowledgeGroupsInteractor(service: EurofurenceApplication.shared)
+        knowledgeListInteractor = DefaultKnowledgeGroupsInteractor(service: SharedModel.instance.session)
         knowledgeSceneFactory = StoryboardKnowledgeListSceneFactory()
     }
 

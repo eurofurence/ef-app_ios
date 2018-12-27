@@ -181,7 +181,7 @@ class DefaultDealerDetailInteractor: DealerDetailInteractor {
     private let dealersService: DealersService
 
     convenience init() {
-        self.init(dealersService: EurofurenceApplication.shared)
+        self.init(dealersService: SharedModel.instance.session)
     }
 
     init(dealersService: DealersService) {

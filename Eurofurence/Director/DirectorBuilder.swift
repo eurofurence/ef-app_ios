@@ -67,10 +67,10 @@ class DirectorBuilder {
         announcementDetailModuleProviding = AnnouncementDetailModuleBuilder().build()
         eventDetailModuleProviding = EventDetailModuleBuilder().build()
 
-        linkLookupService = EurofurenceApplication.shared
+        linkLookupService = SharedModel.instance.session
         webModuleProviding = SafariWebModuleProviding()
         urlOpener = AppURLOpener()
-        notificationHandling = EurofurenceApplication.shared
+        notificationHandling = SharedModel.instance.session
     }
 
     @discardableResult

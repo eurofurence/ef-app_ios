@@ -18,7 +18,7 @@ class MessagesModuleBuilder {
 
     init() {
         sceneFactory = PhoneMessagesSceneFactory()
-        authenticationService = EurofurenceApplication.shared
+        authenticationService = SharedModel.instance.session
         privateMessagesService = EurofurencePrivateMessagesService.shared
         dateFormatter = DateFormatter()
     }

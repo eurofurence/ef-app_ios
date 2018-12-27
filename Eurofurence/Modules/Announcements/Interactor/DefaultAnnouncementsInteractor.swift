@@ -16,7 +16,7 @@ struct DefaultAnnouncementsInteractor: AnnouncementsInteractor {
 	private let markdownRenderer: MarkdownRenderer
 
     init() {
-        self.init(announcementsService: EurofurenceApplication.shared,
+        self.init(announcementsService: SharedModel.instance.session,
                   announcementDateFormatter: FoundationAnnouncementDateFormatter.shared,
 				  markdownRenderer: SubtleDownMarkdownRenderer())
     }
