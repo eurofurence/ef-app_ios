@@ -13,7 +13,7 @@ public struct V2API: ImageAPI, LoginAPI, PrivateMessagesAPI {
     // MARK: Properties
 
     private let jsonSession: JSONSession
-    let apiUrl: String
+    private let apiUrl: String
     private let decoder: JSONDecoder
     private let encoder: JSONEncoder
 
@@ -34,10 +34,12 @@ public struct V2API: ImageAPI, LoginAPI, PrivateMessagesAPI {
 
     public func performLogin(request: LoginRequest, completionHandler: @escaping (LoginResponse?) -> Void) {
         let url = apiUrl + "Tokens/RegSys"
-        let jsonData = try! encoder.encode(Request.APILogin(from: request))
+        let request: Request.Login = Request.Login(RegNo: request.regNo, Username: request.username, Password: request.password)
+        let jsonData = try! encoder.encode(request)
         let jsonRequest = JSONRequest(url: url, body: jsonData)
+        
         jsonSession.post(jsonRequest) { (data, _) in
-            if let data = data, let response = try? self.decoder.decode(Response.APILogin.self, from: data) {
+            if let data = data, let response = try? self.decoder.decode(Response.Login.self, from: data) {
                 completionHandler(response.makeDomainLoginResponse())
             } else {
                 completionHandler(nil)
@@ -49,7 +51,8 @@ public struct V2API: ImageAPI, LoginAPI, PrivateMessagesAPI {
     
     public func fetchImage(identifier: String, completionHandler: @escaping (Data?) -> Void) {
         let url = apiUrl + "Images/\(identifier)/Content"
-        let request = JSONRequest(url: url, body: Data())
+        let request = JSONRequest(url: url)
+        
         jsonSession.get(request) { (data, _) in
             completionHandler(data)
         }
@@ -60,8 +63,9 @@ public struct V2API: ImageAPI, LoginAPI, PrivateMessagesAPI {
     public func loadPrivateMessages(authorizationToken: String,
                                     completionHandler: @escaping ([Message]?) -> Void) {
         let url = apiUrl + "Communication/PrivateMessages"
-        var request = JSONRequest(url: url, body: Data())
+        var request = JSONRequest(url: url)
         request.headers = ["Authorization": "Bearer \(authorizationToken)"]
+        
         jsonSession.get(request) { (data, _) in
             var messages: [Message]?
             defer { completionHandler(messages) }
@@ -87,23 +91,17 @@ public struct V2API: ImageAPI, LoginAPI, PrivateMessagesAPI {
     
     private struct Request {
         
-        struct APILogin: Encodable {
+        struct Login: Encodable {
             var RegNo: Int
             var Username: String
             var Password: String
-            
-            init(from request: LoginRequest) {
-                RegNo = request.regNo
-                Username = request.username
-                Password = request.password
-            }
         }
         
     }
     
     private struct Response {
         
-        struct APILogin: Decodable {
+        struct Login: Decodable {
             var Uid: String
             var Username: String
             var Token: String
