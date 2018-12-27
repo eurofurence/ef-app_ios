@@ -3075,8 +3075,8 @@
 				9ACF994B1EBE172D006FC958 /* EurofurenceTests */,
 				78D7EEA21F17F40C005372A9 /* EurofurenceUITests */,
 				CA9845C81F2907A800E8821D /* ScreenshotGenerator */,
-				CAEA0B7B2165626900B0C7A6 /* EurofurenceAppCore */,
-				CAEA0B882165626900B0C7A6 /* EurofurenceAppCoreTests */,
+				CAEA0B7B2165626900B0C7A6 /* EurofurenceModel */,
+				CAEA0B882165626900B0C7A6 /* EurofurenceModelTests */,
 				CA0B1ED9217F40EC00A6A949 /* EurofurenceAppCoreAdapterTests */,
 				CAEA0F5D216D294000B0C7A6 /* EurofurenceAppCoreTestDoubles */,
 				9ACF99351EBE172D006FC958 /* Products */,
@@ -5941,7 +5941,7 @@
 			path = "Model Adaptation";
 			sourceTree = "<group>";
 		};
-		CAEA0B7B2165626900B0C7A6 /* EurofurenceAppCore */ = {
+		CAEA0B7B2165626900B0C7A6 /* EurofurenceModel */ = {
 			isa = PBXGroup;
 			children = (
 				CAEA0B7C2165626900B0C7A6 /* EurofurenceAppCore.h */,
@@ -5984,10 +5984,10 @@
 				CA804DCF1F20CE5F00E07A4A /* Server Client */,
 				CAB3A72B1F7532DF005DF77B /* System Services */,
 			);
-			path = EurofurenceAppCore;
+			path = EurofurenceModel;
 			sourceTree = "<group>";
 		};
-		CAEA0B882165626900B0C7A6 /* EurofurenceAppCoreTests */ = {
+		CAEA0B882165626900B0C7A6 /* EurofurenceModelTests */ = {
 			isa = PBXGroup;
 			children = (
 				CAEA0B8B2165626900B0C7A6 /* Info.plist */,
@@ -6017,7 +6017,7 @@
 				CAEA1080216E80D700B0C7A6 /* Test Utilities */,
 				CADABF072119BE630023C3B6 /* Upgrade Path */,
 			);
-			path = EurofurenceAppCoreTests;
+			path = EurofurenceModelTests;
 			sourceTree = "<group>";
 		};
 		CAEA0D812166B3F700B0C7A6 /* Formatters */ = {
@@ -9168,7 +9168,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = EurofurenceAppCore/Info.plist;
+				INFOPLIST_FILE = EurofurenceModel/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -9203,7 +9203,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = EurofurenceAppCore/Info.plist;
+				INFOPLIST_FILE = EurofurenceModel/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -9237,7 +9237,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = EurofurenceAppCore/Info.plist;
+				INFOPLIST_FILE = EurofurenceModel/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -9271,7 +9271,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = EurofurenceAppCore/Info.plist;
+				INFOPLIST_FILE = EurofurenceModel/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -9299,7 +9299,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 557SGQG5H4;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = EurofurenceAppCoreTests/Info.plist;
+				INFOPLIST_FILE = EurofurenceModelTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -9324,7 +9324,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 557SGQG5H4;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = EurofurenceAppCoreTests/Info.plist;
+				INFOPLIST_FILE = EurofurenceModelTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceAppCoreTests;
@@ -9348,7 +9348,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 557SGQG5H4;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = EurofurenceAppCoreTests/Info.plist;
+				INFOPLIST_FILE = EurofurenceModelTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceAppCoreTests;
@@ -9372,7 +9372,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 557SGQG5H4;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = EurofurenceAppCoreTests/Info.plist;
+				INFOPLIST_FILE = EurofurenceModelTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceAppCoreTests;

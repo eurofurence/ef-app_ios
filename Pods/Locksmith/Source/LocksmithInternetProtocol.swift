@@ -2,7 +2,7 @@ import Foundation
 
 public enum LocksmithInternetProtocol: RawRepresentable {
     case ftp, ftpAccount, http, irc, nntp, pop3, smtp, socks, imap, ldap, appleTalk, afp, telnet, ssh, ftps, https, httpProxy, httpsProxy, ftpProxy, smb, rtsp, rtspProxy, daap, eppc, ipp, nntps, ldaps, telnetS, imaps, ircs, pop3S
-    
+
     public init?(rawValue: String) {
         switch rawValue {
         case String(kSecAttrProtocolFTP):
@@ -71,7 +71,7 @@ public enum LocksmithInternetProtocol: RawRepresentable {
             self = .http
         }
     }
-    
+
     public var rawValue: String {
         switch self {
         case .ftp:

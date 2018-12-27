@@ -127,7 +127,7 @@ class URLSessionBasedJSONSessionTests: XCTestCase {
         JournallingURLRequestLogger.shared.stubResponse(for: expectedURL, with: Data())
 
         let correctQueueExpectation = expectation(description: "Completion handler should be called on the main queue")
-        post(expectedURL, completionHandler: { (data, _) in
+        post(expectedURL, completionHandler: { (_, _) in
             if Thread.current.isMainThread {
                 correctQueueExpectation.fulfill()
             }
@@ -198,7 +198,7 @@ class URLSessionBasedJSONSessionTests: XCTestCase {
         JournallingURLRequestLogger.shared.stubResponse(for: expectedURL, with: Data())
 
         let correctQueueExpectation = expectation(description: "Completion handler should be called on the main queue")
-        get(expectedURL, completionHandler: { (data, _) in
+        get(expectedURL, completionHandler: { (_, _) in
             if Thread.current.isMainThread {
                 correctQueueExpectation.fulfill()
             }

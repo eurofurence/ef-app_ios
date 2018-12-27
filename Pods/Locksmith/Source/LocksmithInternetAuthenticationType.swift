@@ -2,7 +2,7 @@ import Foundation
 
 public enum LocksmithInternetAuthenticationType: RawRepresentable {
     case ntlm, msn, dpa, rpa, httpBasic, httpDigest, htmlForm, `default`
-    
+
     public init?(rawValue: String) {
         switch rawValue {
         case String(kSecAttrAuthenticationTypeNTLM):
@@ -25,7 +25,7 @@ public enum LocksmithInternetAuthenticationType: RawRepresentable {
             self = .default
         }
     }
-    
+
     public var rawValue: String {
         switch self {
         case .ntlm:

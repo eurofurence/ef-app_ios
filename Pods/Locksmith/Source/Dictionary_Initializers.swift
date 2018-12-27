@@ -9,21 +9,21 @@ public extension Dictionary {
             }
         }
     }
-    
+
     init(pairs: [(Key, Value)]) {
         self = [Key: Value]()
-        pairs.forEach { (k, v) -> () in
+        pairs.forEach { (k, v) -> Void in
             self[k] = v
         }
     }
-    
+
     init(initial: Dictionary<Key, Value>, toMerge: Dictionary<Key, Value>) {
         self = Dictionary<Key, Value>()
-        
+
         for pair in initial {
             self[pair.0] = pair.1
         }
-        
+
         for pair in toMerge {
             self[pair.0] = pair.1
         }

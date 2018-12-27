@@ -3,7 +3,7 @@ import Foundation
 // MARK: Accessible
 public enum LocksmithAccessibleOption: RawRepresentable {
     case whenUnlocked, afterFirstUnlock, always, whenUnlockedThisDeviceOnly, afterFirstUnlockThisDeviceOnly, alwaysThisDeviceOnly, whenPasscodeSetThisDeviceOnly
-    
+
     public init?(rawValue: String) {
         switch rawValue {
         case String(kSecAttrAccessibleWhenUnlocked):
@@ -24,7 +24,7 @@ public enum LocksmithAccessibleOption: RawRepresentable {
             self = .whenUnlocked
         }
     }
-    
+
     public var rawValue: String {
         switch self {
         case .whenUnlocked:

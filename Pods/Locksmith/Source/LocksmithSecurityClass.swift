@@ -4,7 +4,7 @@ import Foundation
 // MARK: Security Class
 public enum LocksmithSecurityClass: RawRepresentable {
     case genericPassword, internetPassword, certificate, key, identity
-    
+
     public init?(rawValue: String) {
         switch rawValue {
         case String(kSecClassGenericPassword):
@@ -21,7 +21,7 @@ public enum LocksmithSecurityClass: RawRepresentable {
             self = .genericPassword
         }
     }
-    
+
     public var rawValue: String {
         switch self {
         case .genericPassword:

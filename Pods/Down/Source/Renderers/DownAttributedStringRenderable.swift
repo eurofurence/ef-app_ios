@@ -21,7 +21,7 @@ public protocol DownAttributedStringRenderable: DownHTMLRenderable {
 
      - returns: An `NSAttributedString`
      */
-    
+
     func toAttributedString(_ options: DownOptions, stylesheet: String?) throws -> NSAttributedString
 }
 
@@ -37,7 +37,7 @@ public extension DownAttributedStringRenderable {
 
      - returns: An `NSAttributedString`
      */
-    
+
     public func toAttributedString(_ options: DownOptions = .default, stylesheet: String? = nil) throws -> NSAttributedString {
         let html = try self.toHTML(options)
         let defaultStylesheet = "* {font-family: Helvetica } code, pre { font-family: Menlo }"

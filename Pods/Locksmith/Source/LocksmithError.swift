@@ -16,7 +16,7 @@ public enum LocksmithError: String, Error {
     case unableToClear = "Unable to clear the keychain"
     case undefined = "An undefined error occurred"
     case unimplemented = "Function or operation not implemented."
-    
+
     init?(fromStatusCode code: Int) {
         switch code {
         case Int(errSecAllocate):
