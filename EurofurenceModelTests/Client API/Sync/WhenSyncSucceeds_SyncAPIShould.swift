@@ -12,7 +12,7 @@ import XCTest
 
 class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
 
-    var syncApi: V2SyncAPI!
+    var syncApi: V2API!
     var jsonSession: CapturingJSONSession!
     var response: APISyncResponse?
 
@@ -21,7 +21,7 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
 
         let jsonSession = CapturingJSONSession()
         let apiUrl = StubV2ApiUrlProviding()
-        let syncApi = V2SyncAPI(jsonSession: jsonSession, apiUrl: apiUrl)
+        let syncApi = V2API(jsonSession: jsonSession, apiUrl: apiUrl)
         let responseDataURL = Bundle(for: V2SyncAPITests.self).url(forResource: "V2SyncAPIResponse", withExtension: "json")!
         let responseData = try! Data(contentsOf: responseDataURL)
         syncApi.fetchLatestData(lastSyncTime: nil) { self.response = $0 }

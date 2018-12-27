@@ -15,7 +15,7 @@ class V2SyncAPITests: XCTestCase {
     func testTheSyncEndpointShouldReceieveRequest() {
         let jsonSession = CapturingJSONSession()
         let apiUrl = StubV2ApiUrlProviding()
-        let syncApi = V2SyncAPI(jsonSession: jsonSession, apiUrl: apiUrl)
+        let syncApi = V2API(jsonSession: jsonSession, apiUrl: apiUrl)
         let url = apiUrl.url + "Sync"
         syncApi.fetchLatestData(lastSyncTime: nil) { (_) in }
 
@@ -25,7 +25,7 @@ class V2SyncAPITests: XCTestCase {
     func testInvalidResponseEmitsNilResult() {
         let jsonSession = CapturingJSONSession()
         let apiUrl = StubV2ApiUrlProviding()
-        let syncApi = V2SyncAPI(jsonSession: jsonSession, apiUrl: apiUrl)
+        let syncApi = V2API(jsonSession: jsonSession, apiUrl: apiUrl)
         let invalidResponseData = "{not json!".data(using: .utf8)
         var providedWithNilResponse = false
         syncApi.fetchLatestData(lastSyncTime: nil) { providedWithNilResponse = $0 == nil }
@@ -37,7 +37,7 @@ class V2SyncAPITests: XCTestCase {
     func testSuccessfulResponseDoesNotEmitNilResponse() {
         let jsonSession = CapturingJSONSession()
         let apiUrl = StubV2ApiUrlProviding()
-        let syncApi = V2SyncAPI(jsonSession: jsonSession, apiUrl: apiUrl)
+        let syncApi = V2API(jsonSession: jsonSession, apiUrl: apiUrl)
         let responseDataURL = Bundle(for: V2SyncAPITests.self).url(forResource: "V2SyncAPIResponse", withExtension: "json")!
         let responseData = try! Data(contentsOf: responseDataURL)
         let providedWithNilResponseExpectation = expectation(description: "Should not be provided with nil response when parsing valid sync response")
@@ -51,7 +51,7 @@ class V2SyncAPITests: XCTestCase {
     func testFailedNetworkResponseEmitsNilResult() {
         let jsonSession = CapturingJSONSession()
         let apiUrl = StubV2ApiUrlProviding()
-        let syncApi = V2SyncAPI(jsonSession: jsonSession, apiUrl: apiUrl)
+        let syncApi = V2API(jsonSession: jsonSession, apiUrl: apiUrl)
         var providedWithNilResponse = false
         syncApi.fetchLatestData(lastSyncTime: nil) { providedWithNilResponse = $0 == nil }
         jsonSession.invokeLastGETCompletionHandler(responseData: nil)
@@ -62,7 +62,7 @@ class V2SyncAPITests: XCTestCase {
     func testSupplyingLastSyncTimeSuppliesSinceParameter() {
         let jsonSession = CapturingJSONSession()
         let apiUrl = StubV2ApiUrlProviding()
-        let syncApi = V2SyncAPI(jsonSession: jsonSession, apiUrl: apiUrl)
+        let syncApi = V2API(jsonSession: jsonSession, apiUrl: apiUrl)
         let lastSyncTime = Date.random
         syncApi.fetchLatestData(lastSyncTime: lastSyncTime) { (_) in }
         let expectedSinceTime = Iso8601DateFormatter.instance.string(from: lastSyncTime)

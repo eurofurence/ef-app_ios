@@ -45,7 +45,7 @@ public class EurofurenceSessionBuilder {
         loginAPI = api
         imageAPI = api
         privateMessagesAPI = api
-        syncAPI = V2SyncAPI(jsonSession: jsonSession, apiUrl: apiUrl)
+        syncAPI = api
 
         clock = SystemClock.shared
         credentialStore = KeychainCredentialStore()

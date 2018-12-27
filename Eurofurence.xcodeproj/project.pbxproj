@@ -977,7 +977,6 @@
 		CAEA0E02216BDE3100B0C7A6 /* SyncAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF03CF20422B7A0028BD62 /* SyncAPI.swift */; };
 		CAEA0E03216BDE3100B0C7A6 /* ImageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1EBB20B60A6000D904B5 /* ImageAPI.swift */; };
 		CAEA0E05216BDE3100B0C7A6 /* V2API.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD11F20CE8F00E07A4A /* V2API.swift */; };
-		CAEA0E07216BDE3100B0C7A6 /* V2SyncAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF597A52045F1C000089BE8 /* V2SyncAPI.swift */; };
 		CAEA0E08216BDE3100B0C7A6 /* V2ApiUrlProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DD58D320D91069001893ED /* V2ApiUrlProviding.swift */; };
 		CAEA0E09216BDE3100B0C7A6 /* SystemNetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF96CF01F1495F400EE6134 /* SystemNetworkReachability.swift */; };
 		CAEA0E0A216BDE3100B0C7A6 /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A861EBB1F25551400B75A8C /* NetworkReachability.swift */; };
@@ -2620,7 +2619,6 @@
 		CAF5979E2045886A00089BE8 /* WhenFetchingKnowledgeGroupsBeforeRefreshWhenStoreHasGroups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingKnowledgeGroupsBeforeRefreshWhenStoreHasGroups.swift; sourceTree = "<group>"; };
 		CAF597A120458D1000089BE8 /* WhenPerformingSyncThatSucceeds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPerformingSyncThatSucceeds.swift; sourceTree = "<group>"; };
 		CAF597A32045EF5A00089BE8 /* V2SyncAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V2SyncAPITests.swift; sourceTree = "<group>"; };
-		CAF597A52045F1C000089BE8 /* V2SyncAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V2SyncAPI.swift; sourceTree = "<group>"; };
 		CAF597A720482EC000089BE8 /* V2SyncAPIResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = V2SyncAPIResponse.json; sourceTree = "<group>"; };
 		CAF705601F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationDirectorTests.swift; sourceTree = "<group>"; };
 		CAF705631F82D0DF00A9FEA2 /* RootModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootModuleProviding.swift; sourceTree = "<group>"; };
@@ -5346,7 +5344,6 @@
 			isa = PBXGroup;
 			children = (
 				CA804DD11F20CE8F00E07A4A /* V2API.swift */,
-				CAF597A52045F1C000089BE8 /* V2SyncAPI.swift */,
 				C6DD58D320D91069001893ED /* V2ApiUrlProviding.swift */,
 			);
 			path = v2;
@@ -8479,7 +8476,6 @@
 				CAEA0DE1216BDE2300B0C7A6 /* RoomEntity+Adaptation.swift in Sources */,
 				CAEA0E0F216BDE5700B0C7A6 /* EventBusRegistration.swift in Sources */,
 				CAEA0DBB216BDE2300B0C7A6 /* Map.swift in Sources */,
-				CAEA0E07216BDE3100B0C7A6 /* V2SyncAPI.swift in Sources */,
 				CAEA0DCA216BDE2300B0C7A6 /* UserAuthenticationCoordinator.swift in Sources */,
 				CAEA0DC1216BDE2300B0C7A6 /* AuthenticationService.swift in Sources */,
 				CAEA0D9F216BDE2300B0C7A6 /* Clock.swift in Sources */,
