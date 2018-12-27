@@ -7,7 +7,7 @@
 //
 
 import EurofurenceModel
-import EurofurenceAppCoreTestDoubles
+import EurofurenceModelTestDoubles
 import RandomDataGeneration
 import XCTest
 

@@ -7,7 +7,7 @@
 //
 
 import EurofurenceModel
-import EurofurenceAppCoreTestDoubles
+import EurofurenceModelTestDoubles
 import XCTest
 
 class BuildConfigurationV2ApiUrlProvidingTest: XCTestCase {

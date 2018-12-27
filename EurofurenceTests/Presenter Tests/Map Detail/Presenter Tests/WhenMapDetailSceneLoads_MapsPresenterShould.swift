@@ -8,7 +8,7 @@
 
 @testable import Eurofurence
 import EurofurenceModel
-import EurofurenceAppCoreTestDoubles
+import EurofurenceModelTestDoubles
 import XCTest
 
 class WhenMapDetailSceneLoads_MapsPresenterShould: XCTestCase {
