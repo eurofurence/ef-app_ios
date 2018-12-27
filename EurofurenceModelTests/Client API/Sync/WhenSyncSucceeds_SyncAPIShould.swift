@@ -12,78 +12,19 @@ import XCTest
 
 class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
 
-    var syncApi: V2API!
-    var jsonSession: CapturingJSONSession!
-    var response: APISyncResponse?
-
-    override func setUp() {
-        super.setUp()
-
+    func testProduceExpectedResponse() {
         let jsonSession = CapturingJSONSession()
         let apiUrl = StubV2ApiUrlProviding()
         let syncApi = V2API(jsonSession: jsonSession, apiUrl: apiUrl)
         let responseDataURL = Bundle(for: V2SyncAPITests.self).url(forResource: "V2SyncAPIResponse", withExtension: "json")!
         let responseData = try! Data(contentsOf: responseDataURL)
-        syncApi.fetchLatestData(lastSyncTime: nil) { self.response = $0 }
+        var response: APISyncResponse?
+        syncApi.fetchLatestData(lastSyncTime: nil) { response = $0 }
         jsonSession.invokeLastGETCompletionHandler(responseData: responseData)
-    }
 
-    func testSuccessfulResponseProducesExpectedKnowledgeEntries() {
-        let expected = makeExpectedSyncResponseFromTestFile().knowledgeEntries
-        XCTAssertEqual(expected, response?.knowledgeEntries)
-    }
+        let expectedResponse: APISyncResponse = makeExpectedSyncResponseFromTestFile()
 
-    func testSuccessfulResponseProducesExpectedKnowledgeGroups() {
-        let expected = makeExpectedSyncResponseFromTestFile().knowledgeGroups
-        XCTAssertEqual(expected, response?.knowledgeGroups)
-    }
-
-    func testProduceExpectedAnnouncements() {
-        let expectedFirstComponents = DateComponents(calendar: .current, timeZone: TimeZone(secondsFromGMT: 0), year: 2018, month: 4, day: 5, hour: 12, minute: 47, second: 0)
-
-        let expected = APISyncResponse.Delta<APIAnnouncement>(changed: [APIAnnouncement(identifier: "b89567a0-beda-46e8-8261-26a5bf2d6a30",
-                                                                                        title: "Test-Announcement-Title",
-                                                                                        content: "This is Content.\n\n**with markdown**",
-                                                                                        lastChangedDateTime: expectedFirstComponents.date!,
-                                                                                        imageIdentifier: "e5b6efdd-8bbf-42f1-aa9e-159744c732b7")],
-                                                              deleted: ["c8c8a9ad-4f43-489f-905d-9d22d0ef045f"],
-                                                              removeAllBeforeInsert: false)
-        XCTAssertEqual(expected, response?.announcements)
-    }
-
-    func testProduceExpectedRooms() {
-        let expected = makeExpectedSyncResponseFromTestFile().rooms
-        XCTAssertEqual(expected, response?.rooms)
-    }
-
-    func testProduceExpectedEvents() {
-        let expected = makeExpectedSyncResponseFromTestFile().events
-        XCTAssertEqual(expected, response?.events)
-    }
-
-    func testProduceExpectedTracks() {
-        let expected = makeExpectedSyncResponseFromTestFile().tracks
-        XCTAssertEqual(expected, response?.tracks)
-    }
-
-    func testProduceExpectedConferenceDays() {
-        let expected = makeExpectedSyncResponseFromTestFile().conferenceDays
-        XCTAssertEqual(expected, response?.conferenceDays)
-    }
-
-    func testProduceExpectedDealers() {
-        let expected = makeExpectedSyncResponseFromTestFile().dealers
-        XCTAssertEqual(expected, response?.dealers)
-    }
-
-    func testProduceExpectedMaps() {
-        let expected = makeExpectedSyncResponseFromTestFile().maps
-        XCTAssertEqual(expected, response?.maps)
-    }
-
-    func testProduceExpectedImages() {
-        let expected = makeExpectedSyncResponseFromTestFile().images
-        XCTAssertEqual(expected, response?.images)
+        XCTAssertEqual(expectedResponse, response)
     }
 
     private func makeExpectedSyncResponseFromTestFile() -> APISyncResponse {
@@ -191,9 +132,26 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                                      deleted: ["2513aa0a-48a0-49cf-807e-8a57cf5306f8"],
                                                      removeAllBeforeInsert: true)
 
+        let announcementLastChangedDateComponents = DateComponents(calendar: .current,
+                                                                   timeZone: TimeZone(secondsFromGMT: 0),
+                                                                   year: 2018,
+                                                                   month: 4,
+                                                                   day: 5,
+                                                                   hour: 12,
+                                                                   minute: 47,
+                                                                   second: 0)
+
+        let announcements = APISyncResponse.Delta<APIAnnouncement>(changed: [APIAnnouncement(identifier: "b89567a0-beda-46e8-8261-26a5bf2d6a30",
+                                                                                             title: "Test-Announcement-Title",
+                                                                                             content: "This is Content.\n\n**with markdown**",
+                                                                                             lastChangedDateTime: announcementLastChangedDateComponents.date!,
+                                                                                             imageIdentifier: "e5b6efdd-8bbf-42f1-aa9e-159744c732b7")],
+                                                                   deleted: ["c8c8a9ad-4f43-489f-905d-9d22d0ef045f"],
+                                                                   removeAllBeforeInsert: false)
+
         return APISyncResponse(knowledgeGroups: knowledgeGroups,
                                knowledgeEntries: knowledgeEntries,
-                               announcements: APISyncResponse.Delta(),
+                               announcements: announcements,
                                events: events,
                                rooms: rooms,
                                tracks: tracks,
