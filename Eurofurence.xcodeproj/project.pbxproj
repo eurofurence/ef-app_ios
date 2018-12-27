@@ -179,6 +179,7 @@
 		CA0F7632203314FE009DA079 /* KnowledgeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F7631203314FE009DA079 /* KnowledgeListViewController.swift */; };
 		CA0F763420331506009DA079 /* KnowledgeList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA0F763320331506009DA079 /* KnowledgeList.storyboard */; };
 		CA0F763620331896009DA079 /* KnowledgeListSectionHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F763520331896009DA079 /* KnowledgeListSectionHeaderTableViewCell.swift */; };
+		CA0F9D9221D53A2A0084886E /* EventsScheduleAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F9D9121D53A2A0084886E /* EventsScheduleAdapter.swift */; };
 		CA131BD120C1851A00DB1036 /* WhenPreparingViewModel_ForEventThatIsFavourite_EventDetailInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA131BD020C1851A00DB1036 /* WhenPreparingViewModel_ForEventThatIsFavourite_EventDetailInteractorShould.swift */; };
 		CA131BD320C1866D00DB1036 /* CapturingEventDetailViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA131BD220C1866D00DB1036 /* CapturingEventDetailViewModelDelegate.swift */; };
 		CA131BD520C186B300DB1036 /* WhenPreparingViewModel_ForEventThatIsNotFavourite_EventDetailInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA131BD420C186B300DB1036 /* WhenPreparingViewModel_ForEventThatIsNotFavourite_EventDetailInteractorShould.swift */; };
@@ -1598,6 +1599,7 @@
 		CA0F7631203314FE009DA079 /* KnowledgeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListViewController.swift; sourceTree = "<group>"; };
 		CA0F763320331506009DA079 /* KnowledgeList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = KnowledgeList.storyboard; sourceTree = "<group>"; };
 		CA0F763520331896009DA079 /* KnowledgeListSectionHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListSectionHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		CA0F9D9121D53A2A0084886E /* EventsScheduleAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsScheduleAdapter.swift; sourceTree = "<group>"; };
 		CA131BD020C1851A00DB1036 /* WhenPreparingViewModel_ForEventThatIsFavourite_EventDetailInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPreparingViewModel_ForEventThatIsFavourite_EventDetailInteractorShould.swift; sourceTree = "<group>"; };
 		CA131BD220C1866D00DB1036 /* CapturingEventDetailViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingEventDetailViewModelDelegate.swift; sourceTree = "<group>"; };
 		CA131BD420C186B300DB1036 /* WhenPreparingViewModel_ForEventThatIsNotFavourite_EventDetailInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPreparingViewModel_ForEventThatIsNotFavourite_EventDetailInteractorShould.swift; sourceTree = "<group>"; };
@@ -3472,6 +3474,15 @@
 				CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */,
 			);
 			path = UIKit;
+			sourceTree = "<group>";
+		};
+		CA0F9D9021D539EE0084886E /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				CA680F7F20CDA49D006ACD3D /* Schedule.swift */,
+				CA0F9D9121D53A2A0084886E /* EventsScheduleAdapter.swift */,
+			);
+			path = Schedule;
 			sourceTree = "<group>";
 		};
 		CA162E6C20A468C4004AFED6 /* Countdown */ = {
@@ -6052,7 +6063,6 @@
 				CA27254D2110DEE2004C6D0A /* Optional+Extensions.swift */,
 				CABA83E920CDBBD600DD0795 /* PersistentImageRepository.swift */,
 				CAF3F63A2016797400374B4C /* PrivateMessagesController.swift */,
-				CA680F7F20CDA49D006ACD3D /* Schedule.swift */,
 				CA52C67C20D59560009D3A9E /* SignificantTimeObserver.swift */,
 				CA27618D20DFEFB4000E52AC /* URLHandler.swift */,
 				CAAF4C732164E1CF0017946C /* API */,
@@ -6069,6 +6079,7 @@
 				78D7EEB91F196B40005372A9 /* Notifications */,
 				CA72849920A1C332007D912A /* Observers */,
 				CAEA0D82216BDC2900B0C7A6 /* Resources */,
+				CA0F9D9021D539EE0084886E /* Schedule */,
 				CA804DCF1F20CE5F00E07A4A /* Server Client */,
 				CAB3A72B1F7532DF005DF77B /* System Services */,
 			);
@@ -8367,6 +8378,7 @@
 				CAEA0DEE216BDE2300B0C7A6 /* FoundationDateDistanceCalculator.swift in Sources */,
 				CAEA0DA2216BDE2300B0C7A6 /* CredentialStore.swift in Sources */,
 				CAEA0DD2216BDE2300B0C7A6 /* UserDefaultsForceRefreshRequired.swift in Sources */,
+				CA0F9D9221D53A2A0084886E /* EventsScheduleAdapter.swift in Sources */,
 				CAEA0DC8216BDE2300B0C7A6 /* MapsService.swift in Sources */,
 				CAEA0DBE216BDE2300B0C7A6 /* Track.swift in Sources */,
 				CAEA0D90216BDD9500B0C7A6 /* Announcements.swift in Sources */,
