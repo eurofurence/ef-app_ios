@@ -25,40 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         Theme.apply()
         UNUserNotificationCenter.current().delegate = self
 
-        let jsonSession = URLSessionBasedJSONSession.shared
-        let buildConfiguration = PreprocessorBuildConfigurationProviding()
-        let apiUrl = BuildConfigurationV2ApiUrlProviding(buildConfiguration)
-        let fcmRegistration = EurofurenceFCMDeviceRegistration(JSONSession: jsonSession, urlProviding: apiUrl)
-        let remoteNotificationsTokenRegistration = FirebaseRemoteNotificationsTokenRegistration(buildConfiguration: buildConfiguration,
-                                                                                                appVersion: BundleAppVersionProviding.shared,
-                                                                                                firebaseAdapter: FirebaseMessagingAdapter(),
-                                                                                                fcmRegistration: fcmRegistration)
-
-        let pushPermissionsRequester = ApplicationPushPermissionsRequester.shared
-
-        let significantTimeChangeAdapter = ApplicationSignificantTimeChangeAdapter()
-
-        let urlOpener = AppURLOpener()
-
-        let longRunningTaskManager = ApplicationLongRunningTaskManager()
-
-        let notificationsService = UserNotificationsNotificationService()
-
-        let mapCoordinateRender = UIKitMapCoordinateRender()
-
-        app = EurofurenceApplicationBuilder()
-            .with(remoteNotificationsTokenRegistration)
-            .with(pushPermissionsRequester)
-            .with(significantTimeChangeAdapter)
-            .with(urlOpener)
-            .with(longRunningTaskManager)
-            .with(notificationsService)
-            .with(mapCoordinateRender)
-            .build()
-
         let director = DirectorBuilder().build()
         self.director = director
-        app.setExternalContentHandler(director)
+        SharedModel.instance.session.setExternalContentHandler(director)
 
         window?.makeKeyAndVisible()
         ReviewPromptController.initialize()
@@ -68,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func application(_ application: UIApplication,
                      didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        app.storeRemoteNotificationsToken(deviceToken)
+        SharedModel.instance.session.storeRemoteNotificationsToken(deviceToken)
     }
 
 	func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
