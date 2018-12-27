@@ -11,7 +11,7 @@ import XCTest
 
 class URLSessionBasedJSONSessionTests: XCTestCase {
 
-    private let testTimeout: TimeInterval = 0.5
+    private let testTimeout: TimeInterval = 1
 
     override func setUp() {
         super.setUp()
@@ -204,7 +204,7 @@ class URLSessionBasedJSONSessionTests: XCTestCase {
             }
         })
 
-        waitForExpectations(timeout: 0.5)
+        waitForExpectations(timeout: testTimeout)
     }
 
     func testNetworkErrorOccursShouldPropagateErrorToCompletionHandler() {
