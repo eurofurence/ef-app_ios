@@ -7,7 +7,7 @@
 //
 
 @testable import Eurofurence
-import EurofurenceAppCore
+import EurofurenceModel
 import XCTest
 
 class WhenToldToHandleNotification_ThatConcludesWithAnnouncementThatIsInvalid_DirectorShould: XCTestCase {

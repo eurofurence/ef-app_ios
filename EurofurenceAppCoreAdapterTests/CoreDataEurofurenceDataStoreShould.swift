@@ -7,7 +7,7 @@
 //
 
 import CoreData
-import EurofurenceAppCore
+import EurofurenceModel
 import XCTest
 
 class CoreDataEurofurenceDataStoreShould: XCTestCase {

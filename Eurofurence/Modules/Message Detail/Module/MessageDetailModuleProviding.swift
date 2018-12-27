@@ -6,7 +6,7 @@
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
-import EurofurenceAppCore
+import EurofurenceModel
 import UIKit.UIViewController
 
 protocol MessageDetailModuleProviding {

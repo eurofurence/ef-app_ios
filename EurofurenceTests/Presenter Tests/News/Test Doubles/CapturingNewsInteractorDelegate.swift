@@ -7,7 +7,7 @@
 //
 
 @testable import Eurofurence
-import EurofurenceAppCore
+import EurofurenceModel
 import Foundation.NSIndexPath
 
 class CapturingNewsInteractorDelegate: NewsInteractorDelegate {

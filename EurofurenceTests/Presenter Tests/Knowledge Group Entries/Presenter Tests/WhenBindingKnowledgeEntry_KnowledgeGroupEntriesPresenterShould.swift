@@ -7,7 +7,7 @@
 //
 
 @testable import Eurofurence
-import EurofurenceAppCore
+import EurofurenceModel
 import XCTest
 
 class WhenBindingKnowledgeEntry_KnowledgeGroupEntriesPresenterShould: XCTestCase {

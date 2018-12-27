@@ -7,7 +7,7 @@
 //
 
 @testable import Eurofurence
-import EurofurenceAppCore
+import EurofurenceModel
 import EurofurenceAppCoreTestDoubles
 
 class CapturingRootModuleDelegate: RootModuleDelegate {

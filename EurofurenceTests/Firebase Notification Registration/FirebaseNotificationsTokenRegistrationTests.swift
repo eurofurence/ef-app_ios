@@ -7,7 +7,7 @@
 //
 
 import Eurofurence
-import EurofurenceAppCore
+import EurofurenceModel
 import EurofurenceAppCoreTestDoubles
 import XCTest
 

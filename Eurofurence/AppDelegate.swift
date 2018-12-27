@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 import UserNotifications
-import EurofurenceAppCore
+import EurofurenceModel
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {

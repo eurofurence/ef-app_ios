@@ -18,7 +18,7 @@ class EventsScheduleAdapter: EventsSchedule, EventConsumer {
 
     private let schedule: Schedule
     private let clock: Clock
-    private var events = [EurofurenceAppCore.Event]()
+    private var events = [EurofurenceModel.Event]()
     private var days = [Day]()
     private var filters = [EventFilter]()
     private var currentDay: Day? {

@@ -7,7 +7,7 @@
 //
 
 @testable import Eurofurence
-import EurofurenceAppCore
+import EurofurenceModel
 import UIKit.UIViewController
 
 class StubKnowledgeDetailSceneFactory: KnowledgeDetailSceneFactory {

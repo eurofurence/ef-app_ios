@@ -6,7 +6,7 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
-import EurofurenceAppCore
+import EurofurenceModel
 import XCTest
 
 class WhenFetchingMapContents_ThatRevealsRoom_ContentsSavedInDataStore_ApplicationShould: XCTestCase {

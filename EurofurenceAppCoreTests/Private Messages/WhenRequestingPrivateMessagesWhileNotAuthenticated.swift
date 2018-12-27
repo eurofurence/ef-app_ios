@@ -6,7 +6,7 @@
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
-import EurofurenceAppCore
+import EurofurenceModel
 import XCTest
 
 class WhenRequestingPrivateMessagesWhileNotAuthenticated: XCTestCase {

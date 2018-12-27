@@ -87,8 +87,8 @@ public struct V2PrivateMessagesAPI: PrivateMessagesAPI {
             case readDateTime = "ReadDateTimeUtc"
         }
 
-        func makeAppDomainMessage() -> EurofurenceAppCore.Message {
-            return EurofurenceAppCore.Message(identifier: id,
+        func makeAppDomainMessage() -> EurofurenceModel.Message {
+            return EurofurenceModel.Message(identifier: id,
                                               authorName: authorName,
                                               receivedDateTime: receivedDateTime,
                                               subject: subject,

@@ -7,7 +7,7 @@
 //
 
 @testable import Eurofurence
-import EurofurenceAppCore
+import EurofurenceModel
 import Foundation
 
 struct FakeAnnouncementsInteractor: AnnouncementsInteractor {

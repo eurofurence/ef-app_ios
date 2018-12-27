@@ -27,8 +27,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CAEA0B812165626900B0C7A6"
-               BuildableName = "EurofurenceAppCoreTests.xctest"
-               BlueprintName = "EurofurenceAppCoreTests"
+               BuildableName = "EurofurenceModelTests.xctest"
+               BlueprintName = "EurofurenceModelTests"
                ReferencedContainer = "container:Eurofurence.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -74,15 +74,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9ACF99331EBE172D006FC958"
-            BuildableName = "Eurofurence.app"
-            BlueprintName = "Eurofurence"
-            ReferencedContainer = "container:Eurofurence.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

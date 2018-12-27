@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CAEA0B792165626900B0C7A6"
-               BuildableName = "EurofurenceAppCore.framework"
-               BlueprintName = "EurofurenceAppCore"
+               BuildableName = "EurofurenceModel.framework"
+               BlueprintName = "EurofurenceModel"
                ReferencedContainer = "container:Eurofurence.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -33,8 +33,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CAEA0B792165626900B0C7A6"
-            BuildableName = "EurofurenceAppCore.framework"
-            BlueprintName = "EurofurenceAppCore"
+            BuildableName = "EurofurenceModel.framework"
+            BlueprintName = "EurofurenceModel"
             ReferencedContainer = "container:Eurofurence.xcodeproj">
          </BuildableReference>
       </CodeCoverageTargets>
@@ -44,8 +44,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CAEA0B812165626900B0C7A6"
-               BuildableName = "EurofurenceAppCoreTests.xctest"
-               BlueprintName = "EurofurenceAppCoreTests"
+               BuildableName = "EurofurenceModelTests.xctest"
+               BlueprintName = "EurofurenceModelTests"
                ReferencedContainer = "container:Eurofurence.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -54,8 +54,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CAEA0B792165626900B0C7A6"
-            BuildableName = "EurofurenceAppCore.framework"
-            BlueprintName = "EurofurenceAppCore"
+            BuildableName = "EurofurenceModel.framework"
+            BlueprintName = "EurofurenceModel"
             ReferencedContainer = "container:Eurofurence.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -76,8 +76,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CAEA0B792165626900B0C7A6"
-            BuildableName = "EurofurenceAppCore.framework"
-            BlueprintName = "EurofurenceAppCore"
+            BuildableName = "EurofurenceModel.framework"
+            BlueprintName = "EurofurenceModel"
             ReferencedContainer = "container:Eurofurence.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -94,8 +94,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CAEA0B792165626900B0C7A6"
-            BuildableName = "EurofurenceAppCore.framework"
-            BlueprintName = "EurofurenceAppCore"
+            BuildableName = "EurofurenceModel.framework"
+            BlueprintName = "EurofurenceModel"
             ReferencedContainer = "container:Eurofurence.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

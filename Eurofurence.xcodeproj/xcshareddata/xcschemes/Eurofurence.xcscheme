@@ -64,8 +64,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CAEA0B812165626900B0C7A6"
-               BuildableName = "EurofurenceAppCoreTests.xctest"
-               BlueprintName = "EurofurenceAppCoreTests"
+               BuildableName = "EurofurenceModelTests.xctest"
+               BlueprintName = "EurofurenceModelTests"
                ReferencedContainer = "container:Eurofurence.xcodeproj">
             </BuildableReference>
          </TestableReference>
