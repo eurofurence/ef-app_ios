@@ -242,14 +242,6 @@ class Schedule: ClockDelegate {
         favouriteEventIdentifiers = dataStore.getSavedFavouriteEventIdentifiers().or([])
     }
 
-    private func isFavourite(_ event: Event) -> Bool {
-        return favouriteEventIdentifiers.contains(event.identifier)
-    }
-
-    private func compareEventsByStartDate(_ first: Event, second: Event) -> Bool {
-        return first.startDate < second.startDate
-    }
-
     private func makeDays(from models: [APIConferenceDay]) -> [Day] {
         return models.map(makeDay).sorted()
     }
