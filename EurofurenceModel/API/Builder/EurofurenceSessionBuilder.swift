@@ -44,7 +44,7 @@ public class EurofurenceSessionBuilder {
         let api = V2API(jsonSession: jsonSession, apiUrl: apiUrl)
         loginAPI = api
         imageAPI = api
-        privateMessagesAPI = V2PrivateMessagesAPI(jsonSession: jsonSession, apiUrl: apiUrl)
+        privateMessagesAPI = api
         syncAPI = V2SyncAPI(jsonSession: jsonSession, apiUrl: apiUrl)
 
         clock = SystemClock.shared

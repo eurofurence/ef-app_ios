@@ -29,7 +29,7 @@ class CapturingV2PrivateMessagesObserver {
 class V2PrivateMessagesAPITests: XCTestCase {
 
     var JSONSession: CapturingJSONSession!
-    var api: V2PrivateMessagesAPI!
+    var api: V2API!
     var apiUrl: V2ApiUrlProviding!
 
     override func setUp() {
@@ -37,7 +37,7 @@ class V2PrivateMessagesAPITests: XCTestCase {
 
         JSONSession = CapturingJSONSession()
         apiUrl = StubV2ApiUrlProviding()
-        api = V2PrivateMessagesAPI(jsonSession: JSONSession, apiUrl: apiUrl)
+        api = V2API(jsonSession: JSONSession, apiUrl: apiUrl)
     }
 
     private func makeCapturingObserverForResponse(_ response: String?) -> CapturingV2PrivateMessagesObserver {

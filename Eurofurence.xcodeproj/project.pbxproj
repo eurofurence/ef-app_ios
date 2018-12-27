@@ -977,7 +977,6 @@
 		CAEA0E02216BDE3100B0C7A6 /* SyncAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF03CF20422B7A0028BD62 /* SyncAPI.swift */; };
 		CAEA0E03216BDE3100B0C7A6 /* ImageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1EBB20B60A6000D904B5 /* ImageAPI.swift */; };
 		CAEA0E05216BDE3100B0C7A6 /* V2API.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD11F20CE8F00E07A4A /* V2API.swift */; };
-		CAEA0E06216BDE3100B0C7A6 /* V2PrivateMessagesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EACB1F267E9C0053DBF6 /* V2PrivateMessagesAPI.swift */; };
 		CAEA0E07216BDE3100B0C7A6 /* V2SyncAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF597A52045F1C000089BE8 /* V2SyncAPI.swift */; };
 		CAEA0E08216BDE3100B0C7A6 /* V2ApiUrlProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DD58D320D91069001893ED /* V2ApiUrlProviding.swift */; };
 		CAEA0E09216BDE3100B0C7A6 /* SystemNetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF96CF01F1495F400EE6134 /* SystemNetworkReachability.swift */; };
@@ -1868,7 +1867,6 @@
 		CA30EABD1F2660D80053DBF6 /* PrivateMessagesAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivateMessagesAPI.swift; sourceTree = "<group>"; };
 		CA30EAC31F2672BF0053DBF6 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		CA30EAC91F267D3C0053DBF6 /* V2PrivateMessagesAPITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = V2PrivateMessagesAPITests.swift; sourceTree = "<group>"; };
-		CA30EACB1F267E9C0053DBF6 /* V2PrivateMessagesAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = V2PrivateMessagesAPI.swift; sourceTree = "<group>"; };
 		CA30EACF1F27D8620053DBF6 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		CA321F4D1F7BC7FD0050E489 /* PhonePreloadSceneFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhonePreloadSceneFactoryTests.swift; sourceTree = "<group>"; };
 		CA321F501F7BC8550050E489 /* PreloadSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadSceneFactory.swift; sourceTree = "<group>"; };
@@ -5348,7 +5346,6 @@
 			isa = PBXGroup;
 			children = (
 				CA804DD11F20CE8F00E07A4A /* V2API.swift */,
-				CA30EACB1F267E9C0053DBF6 /* V2PrivateMessagesAPI.swift */,
 				CAF597A52045F1C000089BE8 /* V2SyncAPI.swift */,
 				C6DD58D320D91069001893ED /* V2ApiUrlProviding.swift */,
 			);
@@ -8500,7 +8497,6 @@
 				CAEA0DE0216BDE2300B0C7A6 /* ReadAnnouncementEntity.swift in Sources */,
 				CAEA0DAF216BDE2300B0C7A6 /* URLOpener.swift in Sources */,
 				CAEA0DDA216BDE2300B0C7A6 /* FavouriteEventEntity+Adaptation.swift in Sources */,
-				CAEA0E06216BDE3100B0C7A6 /* V2PrivateMessagesAPI.swift in Sources */,
 				CAEA0DBD216BDE2300B0C7A6 /* Room.swift in Sources */,
 				CAEA0DC0216BDE2300B0C7A6 /* AnnouncementsService.swift in Sources */,
 				CAEA0DB0216BDE2300B0C7A6 /* UserPreferences.swift in Sources */,
