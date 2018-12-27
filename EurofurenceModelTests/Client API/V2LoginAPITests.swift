@@ -23,7 +23,7 @@ class V2LoginAPITests: XCTestCase {
 
     }
 
-    var api: V2LoginAPI!
+    var api: V2API!
     var jsonSession: CapturingJSONSession!
     var apiUrl: V2ApiUrlProviding!
 
@@ -32,7 +32,7 @@ class V2LoginAPITests: XCTestCase {
 
         jsonSession = CapturingJSONSession()
         apiUrl = StubV2ApiUrlProviding()
-        api = V2LoginAPI(jsonSession: jsonSession, apiUrl: apiUrl)
+        api = V2API(jsonSession: jsonSession, apiUrl: apiUrl)
     }
 
     private func makeSuccessfulLoginPayload(username: String = "",

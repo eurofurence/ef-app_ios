@@ -39,14 +39,16 @@ public class EurofurenceSessionBuilder {
 
         let jsonSession = URLSessionBasedJSONSession.shared
         let buildConfiguration = PreprocessorBuildConfigurationProviding()
+        
         let apiUrl = BuildConfigurationV2ApiUrlProviding(buildConfiguration)
+        let api = V2API(jsonSession: jsonSession, apiUrl: apiUrl)
+        loginAPI = api
+        imageAPI = api
+        privateMessagesAPI = V2PrivateMessagesAPI(jsonSession: jsonSession, apiUrl: apiUrl)
+        syncAPI = V2SyncAPI(jsonSession: jsonSession, apiUrl: apiUrl)
 
         clock = SystemClock.shared
         credentialStore = KeychainCredentialStore()
-        loginAPI = V2LoginAPI(jsonSession: jsonSession, apiUrl: apiUrl)
-        privateMessagesAPI = V2PrivateMessagesAPI(jsonSession: jsonSession, apiUrl: apiUrl)
-        syncAPI = V2SyncAPI(jsonSession: jsonSession, apiUrl: apiUrl)
-        imageAPI = V2ImageAPI(jsonSession: jsonSession, apiUrl: apiUrl)
         dateDistanceCalculator = FoundationDateDistanceCalculator()
         conventionStartDateRepository = EF24StartDateRepository()
         timeIntervalForUpcomingEventsSinceNow = 3600

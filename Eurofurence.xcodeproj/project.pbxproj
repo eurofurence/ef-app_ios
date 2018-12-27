@@ -976,8 +976,7 @@
 		CAEA0E01216BDE3100B0C7A6 /* PrivateMessagesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EABD1F2660D80053DBF6 /* PrivateMessagesAPI.swift */; };
 		CAEA0E02216BDE3100B0C7A6 /* SyncAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF03CF20422B7A0028BD62 /* SyncAPI.swift */; };
 		CAEA0E03216BDE3100B0C7A6 /* ImageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1EBB20B60A6000D904B5 /* ImageAPI.swift */; };
-		CAEA0E04216BDE3100B0C7A6 /* V2ImageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA83ED20CDC0CA00DD0795 /* V2ImageAPI.swift */; };
-		CAEA0E05216BDE3100B0C7A6 /* V2LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD11F20CE8F00E07A4A /* V2LoginAPI.swift */; };
+		CAEA0E05216BDE3100B0C7A6 /* V2API.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD11F20CE8F00E07A4A /* V2API.swift */; };
 		CAEA0E06216BDE3100B0C7A6 /* V2PrivateMessagesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EACB1F267E9C0053DBF6 /* V2PrivateMessagesAPI.swift */; };
 		CAEA0E07216BDE3100B0C7A6 /* V2SyncAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF597A52045F1C000089BE8 /* V2SyncAPI.swift */; };
 		CAEA0E08216BDE3100B0C7A6 /* V2ApiUrlProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DD58D320D91069001893ED /* V2ApiUrlProviding.swift */; };
@@ -2293,7 +2292,7 @@
 		CA73AEF4201A08D1004E77BF /* KnowledgeGroupsListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeGroupsListPresenter.swift; sourceTree = "<group>"; };
 		CA73AEF7201A0908004E77BF /* WhenBuildingKnowledgePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBuildingKnowledgePresenter.swift; sourceTree = "<group>"; };
 		CA7EB7D41F799991002674A6 /* TutorialScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScene.swift; sourceTree = "<group>"; };
-		CA804DD11F20CE8F00E07A4A /* V2LoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = V2LoginAPI.swift; sourceTree = "<group>"; };
+		CA804DD11F20CE8F00E07A4A /* V2API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = V2API.swift; sourceTree = "<group>"; };
 		CA804DD91F20D2F500E07A4A /* V2LoginAPITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = V2LoginAPITests.swift; sourceTree = "<group>"; };
 		CA81D48D1FE9A8DB00A52A2F /* CapturingTutorialModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingTutorialModuleDelegate.swift; sourceTree = "<group>"; };
 		CA81D48F1FE9A91000A52A2F /* WhenTheTutorialAppears.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenTheTutorialAppears.swift; sourceTree = "<group>"; };
@@ -2391,7 +2390,6 @@
 		CABA43AB1FD5DC68009CB5B0 /* LoginScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScene.swift; sourceTree = "<group>"; };
 		CABA83E920CDBBD600DD0795 /* PersistentImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentImageRepository.swift; sourceTree = "<group>"; };
 		CABA83EB20CDBE8F00DD0795 /* V2ImageAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V2ImageAPITests.swift; sourceTree = "<group>"; };
-		CABA83ED20CDC0CA00DD0795 /* V2ImageAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V2ImageAPI.swift; sourceTree = "<group>"; };
 		CABA83EF20CDC80500DD0795 /* WhenSyncSuceeds_ThenObservingUpcomingEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSyncSuceeds_ThenObservingUpcomingEvents.swift; sourceTree = "<group>"; };
 		CABA83F120CE332500DD0795 /* WhenPerformingSubsequentSync_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPerformingSubsequentSync_ApplicationShould.swift; sourceTree = "<group>"; };
 		CABA83F320CE988B00DD0795 /* WhenFavouritingEventViewModel_EventDetailInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFavouritingEventViewModel_EventDetailInteractorShould.swift; sourceTree = "<group>"; };
@@ -5349,8 +5347,7 @@
 		CA804DD01F20CE6600E07A4A /* v2 */ = {
 			isa = PBXGroup;
 			children = (
-				CABA83ED20CDC0CA00DD0795 /* V2ImageAPI.swift */,
-				CA804DD11F20CE8F00E07A4A /* V2LoginAPI.swift */,
+				CA804DD11F20CE8F00E07A4A /* V2API.swift */,
 				CA30EACB1F267E9C0053DBF6 /* V2PrivateMessagesAPI.swift */,
 				CAF597A52045F1C000089BE8 /* V2SyncAPI.swift */,
 				C6DD58D320D91069001893ED /* V2ApiUrlProviding.swift */,
@@ -8489,7 +8486,7 @@
 				CAEA0DCA216BDE2300B0C7A6 /* UserAuthenticationCoordinator.swift in Sources */,
 				CAEA0DC1216BDE2300B0C7A6 /* AuthenticationService.swift in Sources */,
 				CAEA0D9F216BDE2300B0C7A6 /* Clock.swift in Sources */,
-				CAEA0E05216BDE3100B0C7A6 /* V2LoginAPI.swift in Sources */,
+				CAEA0E05216BDE3100B0C7A6 /* V2API.swift in Sources */,
 				CAEA0E14216BDE9B00B0C7A6 /* Optional+Extensions.swift in Sources */,
 				CAEA0D8E216BDD9500B0C7A6 /* ConventionCountdownController.swift in Sources */,
 				CAEA0E0B216BDE3100B0C7A6 /* JSONSession.swift in Sources */,
@@ -8512,7 +8509,6 @@
 				CAEA0E0C216BDE3100B0C7A6 /* URLSessionBasedJSONSession.swift in Sources */,
 				CAEA0DE3216BDE2300B0C7A6 /* DomainEvent.swift in Sources */,
 				CAEA0D88216BDD9500B0C7A6 /* ExternalContentHandler.swift in Sources */,
-				CAEA0E04216BDE3100B0C7A6 /* V2ImageAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
