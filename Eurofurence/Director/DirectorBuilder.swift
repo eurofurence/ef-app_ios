@@ -40,7 +40,7 @@ class DirectorBuilder {
     private var notificationHandling: ApplicationNotificationHandling
     private var orderingPolicy: ModuleOrderingPolicy
 
-    init() {
+    init(linkLookupService: LinkLookupService, notificationHandling: ApplicationNotificationHandling) {
         animate = true
         windowWireframe = PhoneWindowWireframe.shared
         navigationControllerFactory = PhoneNavigationControllerFactory()
@@ -67,16 +67,10 @@ class DirectorBuilder {
         announcementDetailModuleProviding = AnnouncementDetailModuleBuilder().build()
         eventDetailModuleProviding = EventDetailModuleBuilder().build()
 
-        linkLookupService = SharedModel.instance.session
+        self.linkLookupService = linkLookupService
         webModuleProviding = SafariWebModuleProviding()
         urlOpener = AppURLOpener()
-        notificationHandling = SharedModel.instance.session
-    }
-
-    @discardableResult
-    func with(_ linkLookupService: LinkLookupService) -> DirectorBuilder {
-        self.linkLookupService = linkLookupService
-        return self
+        self.notificationHandling = notificationHandling
     }
 
     @discardableResult
@@ -232,12 +226,6 @@ class DirectorBuilder {
     @discardableResult
     func with(_ eventDetailModuleProviding: EventDetailModuleProviding) -> DirectorBuilder {
         self.eventDetailModuleProviding = eventDetailModuleProviding
-        return self
-    }
-
-    @discardableResult
-    func with(_ notificationHandling: ApplicationNotificationHandling) -> DirectorBuilder {
-        self.notificationHandling = notificationHandling
         return self
     }
 

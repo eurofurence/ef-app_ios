@@ -25,9 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         Theme.apply()
         UNUserNotificationCenter.current().delegate = self
 
-        let director = DirectorBuilder().build()
+        let sharedSession = SharedModel.instance.session
+        let director = DirectorBuilder(linkLookupService: sharedSession, notificationHandling: sharedSession).build()
+        sharedSession.setExternalContentHandler(director)
+
         self.director = director
-        SharedModel.instance.session.setExternalContentHandler(director)
 
         window?.makeKeyAndVisible()
         ReviewPromptController.initialize()

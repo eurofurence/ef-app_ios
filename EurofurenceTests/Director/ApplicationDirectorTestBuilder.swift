@@ -191,7 +191,7 @@ class ApplicationDirectorTestBuilder {
     func build() -> Context {
         let notificationHandling = FakeApplicationNotificationHandling()
 
-        let builder = DirectorBuilder()
+        let builder = DirectorBuilder(linkLookupService: linkRouter, notificationHandling: notificationHandling)
         builder.withAnimations(false)
         builder.with(moduleOrderingPolicy)
         builder.with(windowWireframe)
@@ -216,10 +216,8 @@ class ApplicationDirectorTestBuilder {
         builder.with(announcementsModule)
         builder.with(announcementDetailModule)
         builder.with(eventDetailModule)
-        builder.with(linkRouter)
         builder.with(webModuleProviding)
         builder.with(urlOpener)
-        builder.with(notificationHandling)
 
         let director = builder.build()
 
