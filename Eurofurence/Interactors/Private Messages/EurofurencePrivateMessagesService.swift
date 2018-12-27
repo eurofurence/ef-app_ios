@@ -12,11 +12,11 @@ class EurofurencePrivateMessagesService: PrivateMessagesService, PrivateMessages
 
     static var shared = EurofurencePrivateMessagesService(app: SharedModel.instance.session)
 
-    private let app: EurofurenceApplicationProtocol
+    private let app: EurofurenceSession
     private var observers = [PrivateMessagesServiceObserver]()
     private var messages: [Message] = []
 
-    init(app: EurofurenceApplicationProtocol) {
+    init(app: EurofurenceSession) {
         self.app = app
 
         messages = app.localPrivateMessages

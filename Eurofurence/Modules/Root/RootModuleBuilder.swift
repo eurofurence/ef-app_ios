@@ -10,14 +10,14 @@ import EurofurenceModel
 
 class RootModuleBuilder {
 
-    private var app: EurofurenceApplicationProtocol
+    private var app: EurofurenceSession
 
     init() {
         app = SharedModel.instance.session
     }
 
     @discardableResult
-    func with(_ app: EurofurenceApplicationProtocol) -> RootModuleBuilder {
+    func with(_ app: EurofurenceSession) -> RootModuleBuilder {
         self.app = app
         return self
     }

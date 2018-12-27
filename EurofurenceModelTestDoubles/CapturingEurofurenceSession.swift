@@ -1,5 +1,5 @@
 //
-//  CapturingEurofurenceApplication.swift
+//  CapturingEurofurenceSession.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 25/08/2017.
@@ -9,7 +9,7 @@
 import EurofurenceModel
 import Foundation
 
-public class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
+public class CapturingEurofurenceSession: EurofurenceSession {
 
     public init() {
 
@@ -239,7 +239,7 @@ public class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
 
 // MARK: - Test Helpers
 
-public extension CapturingEurofurenceApplication {
+public extension CapturingEurofurenceSession {
 
     public func resolveUserRetrievalWithUser(_ user: User?) {
         retrieveUserCompletionHandler?(user)

@@ -1,5 +1,5 @@
 //
-//  EurofurenceApplicationProtocol.swift
+//  EurofurenceSession.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 25/08/2017.
@@ -14,7 +14,7 @@ public enum EurofurenceDataStoreState {
     case available
 }
 
-public protocol EurofurenceApplicationProtocol: ApplicationNotificationHandling,
+public protocol EurofurenceSession: ApplicationNotificationHandling,
                                                 RefreshService,
                                                 AnnouncementsService,
                                                 AuthenticationService,

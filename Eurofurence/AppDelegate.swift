@@ -14,7 +14,7 @@ import EurofurenceModel
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
 	var window: UIWindow? = UIWindow()
-    var app: EurofurenceApplicationProtocol!
+    var app: EurofurenceSession!
     private var director: ApplicationDirector?
 
 	func application(_ application: UIApplication,

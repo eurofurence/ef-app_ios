@@ -35,12 +35,12 @@ class CapturingPrivateMessageUnreadCountObserver: PrivateMessagesServiceObserver
 class EurofurencePrivateMessagesServiceTests: XCTestCase {
 
     var service: EurofurencePrivateMessagesService!
-    var app: CapturingEurofurenceApplication!
+    var app: CapturingEurofurenceSession!
 
     override func setUp() {
         super.setUp()
 
-        app = CapturingEurofurenceApplication()
+        app = CapturingEurofurenceSession()
         service = EurofurencePrivateMessagesService(app: app)
     }
 

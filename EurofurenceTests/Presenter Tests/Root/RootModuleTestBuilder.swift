@@ -35,7 +35,7 @@ class RootModuleTestBuilder {
         var delegate: CapturingRootModuleDelegate
     }
 
-    private let app = CapturingEurofurenceApplication()
+    private let app = CapturingEurofurenceSession()
     private let delegate = CapturingRootModuleDelegate()
     private var storeState: EurofurenceDataStoreState = .absent
 

@@ -13,7 +13,7 @@ import Foundation
 class ApplicationTestBuilder {
 
     struct Context {
-        var application: EurofurenceApplicationProtocol
+        var application: EurofurenceSession
         var clock: StubClock
         var capturingTokenRegistration: CapturingRemoteNotificationsTokenRegistration
         var capturingCredentialStore: CapturingCredentialStore
@@ -294,7 +294,7 @@ class ApplicationTestBuilder {
         let notificationsService = CapturingNotificationsService()
         let hoursDateFormatter = FakeHoursDateFormatter()
         let mapCoordinateRender = CapturingMapCoordinateRender()
-        let app = EurofurenceApplicationBuilder()
+        let app = EurofurenceSessionBuilder()
             .with(stubClock)
             .with(capturingCredentialStore)
             .with(dataStore)

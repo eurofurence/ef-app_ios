@@ -1,5 +1,5 @@
 //
-//  EurofurenceApplication.swift
+//  ConcreteSession.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 14/07/2017.
@@ -19,7 +19,7 @@ public enum PrivateMessageResult {
     case userNotAuthenticated
 }
 
-class EurofurenceApplication: EurofurenceApplicationProtocol {
+class ConcreteSession: EurofurenceSession {
 
     private let eventBus = EventBus()
     private let userPreferences: UserPreferences

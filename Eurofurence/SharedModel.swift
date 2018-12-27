@@ -12,7 +12,7 @@ import Foundation
 class SharedModel {
 
     static let instance: SharedModel = SharedModel()
-    let session: EurofurenceApplicationProtocol
+    let session: EurofurenceSession
 
     private init() {
         let jsonSession = URLSessionBasedJSONSession.shared
@@ -36,7 +36,7 @@ class SharedModel {
 
         let mapCoordinateRender = UIKitMapCoordinateRender()
 
-        session = EurofurenceApplicationBuilder()
+        session = EurofurenceSessionBuilder()
             .with(remoteNotificationsTokenRegistration)
             .with(pushPermissionsRequester)
             .with(significantTimeChangeAdapter)

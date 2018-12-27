@@ -10,7 +10,7 @@ import EurofurenceModel
 
 struct PhoneRootModuleFactory: RootModuleProviding {
 
-    var app: EurofurenceApplicationProtocol
+    var app: EurofurenceSession
 
     func makeRootModule(_ delegate: RootModuleDelegate) {
         let actions: [EurofurenceDataStoreState : () -> Void] = [
