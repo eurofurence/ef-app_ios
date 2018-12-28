@@ -18,13 +18,10 @@
 		205B8D2E211F8E5700D9EE35 /* DownMarkdownRendererTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205B8D2D211F8E5700D9EE35 /* DownMarkdownRendererTest.swift */; };
 		20E87E17210A34D800B55A04 /* DownMarkdownRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E87E16210A34D800B55A04 /* DownMarkdownRenderer.swift */; };
 		3BD9A26B85A544733E4E9DE5 /* Pods-EurofurenceModel-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 030470A0E4AD804889E5D4C7 /* Pods-EurofurenceModel-settings-metadata.plist */; };
-		41220748BC6F963F18A37977 /* Pods-EurofurenceAppCore-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = C869B75DF780C2BBBFD9FD0A /* Pods-EurofurenceAppCore-metadata.plist */; };
-		418319A531BD27EA77F7C685 /* Pods-EurofurenceAppCore-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB515BDD9C2C36320963EF3C /* Pods-EurofurenceAppCore-settings-metadata.plist */; };
 		5A43B51BE2BA5EDBE5AF9A46 /* Pods-EventBus-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = F58D80FA27FD3C4109C60C35 /* Pods-EventBus-settings-metadata.plist */; };
 		5C62DB213D345F4352C1EF9E /* Pods_EurofurenceUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACC25D30ADAC4ABE283F54E0 /* Pods_EurofurenceUITests.framework */; };
 		5EEA10389AA73E5CA7FA62E5 /* Pods-RandomDataGeneration-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5AA4D9EDC6A678EFA0EF7BEF /* Pods-RandomDataGeneration-metadata.plist */; };
 		619F863A1C62CEE50859B398 /* Pods-EventBus-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1131DBE9E3B9B99FE36DBDB0 /* Pods-EventBus-metadata.plist */; };
-		6D649E67563AE99CC57C0BB1 /* Pods-EurofurenceAppCoreTests-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4162DBDF2B58D4E457C5C7F2 /* Pods-EurofurenceAppCoreTests-settings-metadata.plist */; };
 		6EEC6DA11F1BF79F00205F2D /* FirebaseTopicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEC6DA01F1BF79F00205F2D /* FirebaseTopicTests.swift */; };
 		781A94301F1A1972002DE70F /* FirebaseAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781A942F1F1A1972002DE70F /* FirebaseAdapter.swift */; };
 		781A94331F1A1994002DE70F /* FCMDeviceRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781A94321F1A1994002DE70F /* FCMDeviceRegistration.swift */; };
@@ -102,7 +99,6 @@
 		BD74A2713260C66AAE431CF3 /* Pods_EurofurenceModelAdapterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 465C5F02EFD7CB8CEE95D61A /* Pods_EurofurenceModelAdapterTests.framework */; };
 		C53773C1C43BBBE8F2A064C9 /* Pods_RandomDataGeneration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEAA057D37994EF60D517EF0 /* Pods_RandomDataGeneration.framework */; };
 		C74800FDD10051941095AB9F /* Pods-Eurofurence-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7E8E02928B7F019466A32E8B /* Pods-Eurofurence-metadata.plist */; };
-		C7AAAA556744E3B45227BD90 /* Pods-EurofurenceAppCoreTests-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 502917EFC4168DE2BBDCC1E5 /* Pods-EurofurenceAppCoreTests-metadata.plist */; };
 		CA00AE4520D16BBD00C2FBB0 /* ScheduleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE4420D16BBD00C2FBB0 /* ScheduleInteractor.swift */; };
 		CA00AE4720D16BCB00C2FBB0 /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE4620D16BCB00C2FBB0 /* ScheduleViewModel.swift */; };
 		CA00AE4920D16BD900C2FBB0 /* FakeScheduleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE4820D16BD900C2FBB0 /* FakeScheduleInteractor.swift */; };
@@ -7029,8 +7025,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41220748BC6F963F18A37977 /* Pods-EurofurenceAppCore-metadata.plist in Resources */,
-				418319A531BD27EA77F7C685 /* Pods-EurofurenceAppCore-settings-metadata.plist in Resources */,
 				CAEA0D9C216BDDF900B0C7A6 /* AppCoreStrings.strings in Resources */,
 				A1426CBB4B4738AE225767E3 /* Pods-EurofurenceModel-metadata.plist in Resources */,
 				3BD9A26B85A544733E4E9DE5 /* Pods-EurofurenceModel-settings-metadata.plist in Resources */,
@@ -7041,9 +7035,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7AAAA556744E3B45227BD90 /* Pods-EurofurenceAppCoreTests-metadata.plist in Resources */,
 				CAEA0F6F216D2C0900B0C7A6 /* V2SyncAPIResponse.json in Resources */,
-				6D649E67563AE99CC57C0BB1 /* Pods-EurofurenceAppCoreTests-settings-metadata.plist in Resources */,
 				F1006B77362EF4A2C72D1AB5 /* Pods-EurofurenceModelTests-metadata.plist in Resources */,
 				D8081FC3A720C891C06E835B /* Pods-EurofurenceModelTests-settings-metadata.plist in Resources */,
 			);
