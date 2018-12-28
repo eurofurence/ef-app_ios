@@ -142,13 +142,6 @@ public class CapturingEurofurenceSession: EurofurenceSession {
         capturedStoreStateResolutionHandler = completionHandler
     }
 
-    private(set) public var wasRequestedForCurrentUser = false
-    private(set) fileprivate var retrieveUserCompletionHandler: ((User?) -> Void)?
-    public func retrieveCurrentUser(completionHandler: @escaping (User?) -> Void) {
-        wasRequestedForCurrentUser = true
-        retrieveUserCompletionHandler = completionHandler
-    }
-
     private(set) fileprivate var privateMessageFetchCompletionHandler: ((PrivateMessageResult) -> Void)?
     public func fetchPrivateMessages(completionHandler: @escaping (PrivateMessageResult) -> Void) {
         privateMessageFetchCompletionHandler = completionHandler
@@ -240,10 +233,6 @@ public class CapturingEurofurenceSession: EurofurenceSession {
 // MARK: - Test Helpers
 
 public extension CapturingEurofurenceSession {
-
-    public func resolveUserRetrievalWithUser(_ user: User?) {
-        retrieveUserCompletionHandler?(user)
-    }
 
     public func resolvePrivateMessagesFetch(_ result: PrivateMessageResult) {
         privateMessageFetchCompletionHandler?(result)

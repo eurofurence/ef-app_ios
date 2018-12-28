@@ -194,10 +194,6 @@ class ConcreteSession: EurofurenceSession {
         privateMessagesController.markMessageAsRead(message)
     }
 
-    public func retrieveCurrentUser(completionHandler: @escaping (User?) -> Void) {
-        authenticationCoordinator.retrieveCurrentUser(completionHandler: completionHandler)
-    }
-
     public func add(_ observer: KnowledgeServiceObserver) {
         knowledge.add(observer)
     }

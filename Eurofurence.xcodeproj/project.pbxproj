@@ -1050,7 +1050,6 @@
 		CAEA0F8D216E1AE200B0C7A6 /* Map+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DA820E2CE2C007536CD /* Map+RandomValueProviding.swift */; };
 		CAEA0F8F216E1C2D00B0C7A6 /* APISyncResponse+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF5979C20449A5300089BE8 /* APISyncResponse+RandomValueProviding.swift */; };
 		CAEA0F90216E1C4C00B0C7A6 /* ApplicationTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA51F1EA1B300F007E1 /* ApplicationTestBuilder.swift */; };
-		CAEA0F91216E1C4C00B0C7A6 /* WhenRequestingCurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A9461F50B95F00628833 /* WhenRequestingCurrentUser.swift */; };
 		CAEA0F92216E1C4C00B0C7A6 /* WhenResolvingDataStoreState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D07F81FE9021A00BFD785 /* WhenResolvingDataStoreState.swift */; };
 		CAEA0F9C216E1CC000B0C7A6 /* WhenAddingAnnouncementsObserver_ThenRefreshSucceeds_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1F7D6020CB82F600FB87F5 /* WhenAddingAnnouncementsObserver_ThenRefreshSucceeds_ApplicationShould.swift */; };
 		CAEA0F9D216E1CC000B0C7A6 /* WhenAddingAnnouncementsObserverAfterSuccessfulRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA65A2202091F5320078A4A7 /* WhenAddingAnnouncementsObserverAfterSuccessfulRefresh.swift */; };
@@ -2675,7 +2674,6 @@
 		CAF81C7A20DEE80900898C52 /* WhenFetchingExtendedDealerData_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingExtendedDealerData_ApplicationShould.swift; sourceTree = "<group>"; };
 		CAF9A9421F50B87600628833 /* EurofurenceSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EurofurenceSession.swift; sourceTree = "<group>"; };
 		CAF9A9441F50B89000628833 /* CapturingEurofurenceSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingEurofurenceSession.swift; sourceTree = "<group>"; };
-		CAF9A9461F50B95F00628833 /* WhenRequestingCurrentUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenRequestingCurrentUser.swift; sourceTree = "<group>"; };
 		CAF9A9491F54BB5600628833 /* PrivateMessagesService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivateMessagesService.swift; sourceTree = "<group>"; };
 		CAF9A94B1F55877100628833 /* EurofurencePrivateMessagesServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EurofurencePrivateMessagesServiceTests.swift; sourceTree = "<group>"; };
 		CAF9A94D1F558BEC00628833 /* WhenRetrievingLocalPrivateMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenRetrievingLocalPrivateMessages.swift; sourceTree = "<group>"; };
@@ -6128,7 +6126,6 @@
 			children = (
 				CAEA0B8B2165626900B0C7A6 /* Info.plist */,
 				CA2B4FA51F1EA1B300F007E1 /* ApplicationTestBuilder.swift */,
-				CAF9A9461F50B95F00628833 /* WhenRequestingCurrentUser.swift */,
 				CA2D07F81FE9021A00BFD785 /* WhenResolvingDataStoreState.swift */,
 				CA65A21A2091120C0078A4A7 /* Announcements */,
 				CA81D4951FEA950600A52A2F /* Authentication */,
@@ -8771,7 +8768,6 @@
 				CAEA102A216E1CE800B0C7A6 /* CapturingEventsSearchControllerDelegate.swift in Sources */,
 				CAEA103A216E1CE800B0C7A6 /* UserDefaultsForceRefreshRequired.swift in Sources */,
 				CAEA0FD8216E1CC000B0C7A6 /* WhenFavouritingMultipleEvents_ApplicationShould.swift in Sources */,
-				CAEA0F91216E1C4C00B0C7A6 /* WhenRequestingCurrentUser.swift in Sources */,
 				CAEA0F92216E1C4C00B0C7A6 /* WhenResolvingDataStoreState.swift in Sources */,
 				CAEA0FAE216E1CC000B0C7A6 /* WhenFetchingDaysBeforeRefreshWhenStoreHasConferenceDays.swift in Sources */,
 				CAEA0FAD216E1CC000B0C7A6 /* WhenSyncCompletesWithConferenceDays_ApplicationShould.swift in Sources */,

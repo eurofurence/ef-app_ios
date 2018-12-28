@@ -68,10 +68,6 @@ class UserAuthenticationCoordinator {
         }
     }
 
-    func retrieveCurrentUser(completionHandler: @escaping (User?) -> Void) {
-        completionHandler(loggedInUser)
-    }
-
     func add(_ observer: AuthenticationStateObserver) {
         observers.append(observer)
 
