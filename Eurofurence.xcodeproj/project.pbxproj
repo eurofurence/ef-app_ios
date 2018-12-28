@@ -5788,6 +5788,34 @@
 			path = News;
 			sourceTree = "<group>";
 		};
+		CACD2E8B21D676FE00BACD91 /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				CA1F7D6220CB83A100FB87F5 /* Announcements.swift */,
+				CA2761D120E03B29000E52AC /* CollectThemAll.swift */,
+				78D7EEBC1F196B62005372A9 /* ConcreteSession.swift */,
+				CA162E8520A5BB85004AFED6 /* ConventionCountdownController.swift */,
+				CADABF0121177B3B0023C3B6 /* DataStoreChangedConsumer.swift */,
+				CACF26C420FCC04500EDE150 /* FileUtilities.swift */,
+				CA680F8120CDABB6006ACD3D /* ImageDownloader.swift */,
+				CACF1EC520B6C31000D904B5 /* ImagesCache.swift */,
+				CA36A44420D7051900EE6537 /* InMemoryEventsSearchController.swift */,
+				CA680F7920CD7AD7006ACD3D /* Knowledge.swift */,
+				CA6A8DB720E2DC62007536CD /* Maps.swift */,
+				CAF3F63A2016797400374B4C /* PrivateMessagesController.swift */,
+				CA52C67C20D59560009D3A9E /* SignificantTimeObserver.swift */,
+				CA27618D20DFEFB4000E52AC /* URLHandler.swift */,
+				CAF3F63E20167E7000374B4C /* Authentication */,
+				CA162E7120A4B69A004AFED6 /* Countdown */,
+				CA36A48D20D92EA400EE6537 /* Dealers */,
+				CA8D97C9201610C80074838F /* Domain Events */,
+				CA6A8E0A20E592D0007536CD /* Extensions */,
+				78D7EEB91F196B40005372A9 /* Notifications */,
+				CA0F9D9021D539EE0084886E /* Schedule */,
+			);
+			path = Private;
+			sourceTree = "<group>";
+		};
 		CACF1E4920AE2A3D00D904B5 /* Event Detail */ = {
 			isa = PBXGroup;
 			children = (
@@ -6059,28 +6087,8 @@
 			children = (
 				CAEA0B7C2165626900B0C7A6 /* EurofurenceAppCore.h */,
 				CAEA0B7D2165626900B0C7A6 /* Info.plist */,
-				CA1F7D6220CB83A100FB87F5 /* Announcements.swift */,
-				CA2761D120E03B29000E52AC /* CollectThemAll.swift */,
-				78D7EEBC1F196B62005372A9 /* ConcreteSession.swift */,
-				CA162E8520A5BB85004AFED6 /* ConventionCountdownController.swift */,
-				CADABF0121177B3B0023C3B6 /* DataStoreChangedConsumer.swift */,
-				CACF26C420FCC04500EDE150 /* FileUtilities.swift */,
-				CA680F8120CDABB6006ACD3D /* ImageDownloader.swift */,
-				CACF1EC520B6C31000D904B5 /* ImagesCache.swift */,
-				CA36A44420D7051900EE6537 /* InMemoryEventsSearchController.swift */,
-				CA680F7920CD7AD7006ACD3D /* Knowledge.swift */,
-				CA6A8DB720E2DC62007536CD /* Maps.swift */,
-				CAF3F63A2016797400374B4C /* PrivateMessagesController.swift */,
-				CA52C67C20D59560009D3A9E /* SignificantTimeObserver.swift */,
-				CA27618D20DFEFB4000E52AC /* URLHandler.swift */,
+				CACD2E8B21D676FE00BACD91 /* Private */,
 				CAAF4C732164E1CF0017946C /* Public */,
-				CAF3F63E20167E7000374B4C /* Authentication */,
-				CA162E7120A4B69A004AFED6 /* Countdown */,
-				CA36A48D20D92EA400EE6537 /* Dealers */,
-				CA8D97C9201610C80074838F /* Domain Events */,
-				CA6A8E0A20E592D0007536CD /* Extensions */,
-				78D7EEB91F196B40005372A9 /* Notifications */,
-				CA0F9D9021D539EE0084886E /* Schedule */,
 			);
 			path = EurofurenceModel;
 			sourceTree = "<group>";
