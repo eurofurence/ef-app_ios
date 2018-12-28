@@ -3139,14 +3139,6 @@
 			path = "Application Tests";
 			sourceTree = "<group>";
 		};
-		78D7EEB91F196B40005372A9 /* Notifications */ = {
-			isa = PBXGroup;
-			children = (
-				CA8D97D4201613010074838F /* RemoteNotificationRegistrationController.swift */,
-			);
-			path = Notifications;
-			sourceTree = "<group>";
-		};
 		78D7EEC21F196BC3005372A9 /* Build Config */ = {
 			isa = PBXGroup;
 			children = (
@@ -3477,29 +3469,12 @@
 			path = UIKit;
 			sourceTree = "<group>";
 		};
-		CA0F9D9021D539EE0084886E /* Schedule */ = {
-			isa = PBXGroup;
-			children = (
-				CA680F7F20CDA49D006ACD3D /* Schedule.swift */,
-				CA0F9D9121D53A2A0084886E /* EventsScheduleAdapter.swift */,
-			);
-			path = Schedule;
-			sourceTree = "<group>";
-		};
 		CA162E6C20A468C4004AFED6 /* Countdown */ = {
 			isa = PBXGroup;
 			children = (
 				CA162E6D20A468E7004AFED6 /* WhenObservingCountdownUntilConvention_EurofurenceApplicationShould.swift */,
 				CA162E7F20A5B738004AFED6 /* WhenObservingConventionCountdown_AndSignificantTimeChangeOccurs_EurofurenceApplicationShould.swift */,
 				CA162E8C20A64C8C004AFED6 /* WhenObservingConventionCountdownAfterConventionStarts_EurofurenceApplicationShould.swift */,
-			);
-			path = Countdown;
-			sourceTree = "<group>";
-		};
-		CA162E7120A4B69A004AFED6 /* Countdown */ = {
-			isa = PBXGroup;
-			children = (
-				CA162E7D20A4B9CD004AFED6 /* EF24StartDateRepository.swift */,
 			);
 			path = Countdown;
 			sourceTree = "<group>";
@@ -4101,14 +4076,6 @@
 				CA283A7220E8E84100F7D195 /* WhenApplicationRefreshStateChanges_DealersViewModelShould.swift */,
 			);
 			path = "Interactor Tests";
-			sourceTree = "<group>";
-		};
-		CA36A48D20D92EA400EE6537 /* Dealers */ = {
-			isa = PBXGroup;
-			children = (
-				CA36A4A720D984E400EE6537 /* Dealers.swift */,
-			);
-			path = Dealers;
 			sourceTree = "<group>";
 		};
 		CA36A4A420D9845A00EE6537 /* Dealers */ = {
@@ -4877,14 +4844,6 @@
 				CADABEF9211504310023C3B6 /* WhenShowingMapContents_ForPositionWithMultipleOptions_MapDetailInteractorShould.swift */,
 			);
 			path = "Interactor Tests";
-			sourceTree = "<group>";
-		};
-		CA6A8E0A20E592D0007536CD /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				CA6A8E0B20E592E1007536CD /* Array+AppExtensions.swift */,
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 		CA6A9FEF1FD5DE0E0092C6DB /* View */ = {
@@ -5792,10 +5751,14 @@
 			isa = PBXGroup;
 			children = (
 				CA1F7D6220CB83A100FB87F5 /* Announcements.swift */,
+				CA6A8E0B20E592E1007536CD /* Array+AppExtensions.swift */,
 				CA2761D120E03B29000E52AC /* CollectThemAll.swift */,
 				78D7EEBC1F196B62005372A9 /* ConcreteSession.swift */,
 				CA162E8520A5BB85004AFED6 /* ConventionCountdownController.swift */,
 				CADABF0121177B3B0023C3B6 /* DataStoreChangedConsumer.swift */,
+				CA36A4A720D984E400EE6537 /* Dealers.swift */,
+				CA162E7D20A4B9CD004AFED6 /* EF24StartDateRepository.swift */,
+				CA0F9D9121D53A2A0084886E /* EventsScheduleAdapter.swift */,
 				CACF26C420FCC04500EDE150 /* FileUtilities.swift */,
 				CA680F8120CDABB6006ACD3D /* ImageDownloader.swift */,
 				CACF1EC520B6C31000D904B5 /* ImagesCache.swift */,
@@ -5803,15 +5766,12 @@
 				CA680F7920CD7AD7006ACD3D /* Knowledge.swift */,
 				CA6A8DB720E2DC62007536CD /* Maps.swift */,
 				CAF3F63A2016797400374B4C /* PrivateMessagesController.swift */,
+				CA8D97D4201613010074838F /* RemoteNotificationRegistrationController.swift */,
+				CA680F7F20CDA49D006ACD3D /* Schedule.swift */,
 				CA52C67C20D59560009D3A9E /* SignificantTimeObserver.swift */,
 				CA27618D20DFEFB4000E52AC /* URLHandler.swift */,
-				CAF3F63E20167E7000374B4C /* Authentication */,
-				CA162E7120A4B69A004AFED6 /* Countdown */,
-				CA36A48D20D92EA400EE6537 /* Dealers */,
+				CA281B631F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift */,
 				CA8D97C9201610C80074838F /* Domain Events */,
-				CA6A8E0A20E592D0007536CD /* Extensions */,
-				78D7EEB91F196B40005372A9 /* Notifications */,
-				CA0F9D9021D539EE0084886E /* Schedule */,
 			);
 			path = Private;
 			sourceTree = "<group>";
@@ -6428,14 +6388,6 @@
 				CA250DE520D6F72200E7513C /* ShortFormDayAndTimeFormatter.swift */,
 			);
 			path = Formatters;
-			sourceTree = "<group>";
-		};
-		CAF3F63E20167E7000374B4C /* Authentication */ = {
-			isa = PBXGroup;
-			children = (
-				CA281B631F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift */,
-			);
-			path = Authentication;
 			sourceTree = "<group>";
 		};
 		CAF59794204499FB00089BE8 /* Model */ = {
