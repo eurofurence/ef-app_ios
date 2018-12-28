@@ -782,6 +782,9 @@
 		CACD2EA421D6785F00BACD91 /* EventHandlerRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA49E93E2015480A00EB571C /* EventHandlerRegistration.swift */; };
 		CACD2EA521D6785F00BACD91 /* EventBus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D97CE201611430074838F /* EventBus.swift */; };
 		CACD2EA621D6788200BACD91 /* EventBus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CACD2E9121D677CB00BACD91 /* EventBus.framework */; };
+		CACD2EB021D67EE300BACD91 /* EurofurenceDataStoreState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD2EAA21D67DA600BACD91 /* EurofurenceDataStoreState.swift */; };
+		CACD2EB121D67EF200BACD91 /* BundleAppVersionProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD2EAE21D67EB000BACD91 /* BundleAppVersionProviding.swift */; };
+		CACD2EB221D67F0F00BACD91 /* PreprocessorBuildConfigurationProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD2EAC21D67E7F00BACD91 /* PreprocessorBuildConfigurationProviding.swift */; };
 		CACF1E4620AE292D00D904B5 /* WhenNewsModuleSelectsEvent_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E4520AE292D00D904B5 /* WhenNewsModuleSelectsEvent_DirectorShould.swift */; };
 		CACF1E4820AE29CB00D904B5 /* StubEventDetailModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E4720AE29CB00D904B5 /* StubEventDetailModuleFactory.swift */; };
 		CACF1E4C20AE2A5A00D904B5 /* EventDetailModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E4B20AE2A5A00D904B5 /* EventDetailModuleProviding.swift */; };
@@ -2456,6 +2459,9 @@
 		CACD2E9121D677CB00BACD91 /* EventBus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EventBus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CACD2E9321D677CB00BACD91 /* EventBus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventBus.h; sourceTree = "<group>"; };
 		CACD2E9421D677CB00BACD91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CACD2EAA21D67DA600BACD91 /* EurofurenceDataStoreState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EurofurenceDataStoreState.swift; sourceTree = "<group>"; };
+		CACD2EAC21D67E7F00BACD91 /* PreprocessorBuildConfigurationProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreprocessorBuildConfigurationProviding.swift; sourceTree = "<group>"; };
+		CACD2EAE21D67EB000BACD91 /* BundleAppVersionProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleAppVersionProviding.swift; sourceTree = "<group>"; };
 		CACE1B041F2BBA1A00DFCB60 /* WhenLoggingOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenLoggingOut.swift; sourceTree = "<group>"; };
 		CACE1B061F2BBEC900DFCB60 /* CapturingLogoutObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingLogoutObserver.swift; sourceTree = "<group>"; };
 		CACF1E4520AE292D00D904B5 /* WhenNewsModuleSelectsEvent_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenNewsModuleSelectsEvent_DirectorShould.swift; sourceTree = "<group>"; };
@@ -3181,15 +3187,6 @@
 			path = "Application Tests";
 			sourceTree = "<group>";
 		};
-		78D7EEC21F196BC3005372A9 /* Build Config */ = {
-			isa = PBXGroup;
-			children = (
-				78D7EEB71F196B30005372A9 /* BuildConfigurationProviding.swift */,
-				6EEC6DA41F1BFC7700205F2D /* AppVersionProviding.swift */,
-			);
-			path = "Build Config";
-			sourceTree = "<group>";
-		};
 		9ACF992B1EBE172D006FC958 = {
 			isa = PBXGroup;
 			children = (
@@ -3586,9 +3583,10 @@
 			path = "Interactor Tests";
 			sourceTree = "<group>";
 		};
-		CA18B3451F49AF4500038E52 /* Model */ = {
+		CA18B3451F49AF4500038E52 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
+				CACF1EC720B6D5A300D904B5 /* Entities */,
 				CA0E520E208F4BDF005259FE /* Announcement.swift */,
 				CAD780421F1D4CA3002A8333 /* Credential.swift */,
 				CA00AE8820D28AAD00C2FBB0 /* Day.swift */,
@@ -3605,7 +3603,7 @@
 				CACF1E8F20B36B5800D904B5 /* Track.swift */,
 				CA30EAAD1F2148780053DBF6 /* User.swift */,
 			);
-			path = Model;
+			path = Objects;
 			sourceTree = "<group>";
 		};
 		CA18B3471F49FE9800038E52 /* Protocols */ = {
@@ -5495,31 +5493,29 @@
 			children = (
 				CACD2E8721D6764000BACD91 /* ApplicationNotificationHandling.swift */,
 				CA2761C920E03143000E52AC /* DefaultCollectThemAllRequestFactory.swift */,
+				CACD2EAA21D67DA600BACD91 /* EurofurenceDataStoreState.swift */,
 				CA250DDF20D6EAF500E7513C /* EventsSearchController.swift */,
 				CA27618920DFEE00000E52AC /* ExternalContentHandler.swift */,
 				CACD2E8321D6761D00BACD91 /* LogoutResult.swift */,
 				CA27254D2110DEE2004C6D0A /* Optional+Extensions.swift */,
-				CABA83E920CDBBD600DD0795 /* PersistentImageRepository.swift */,
 				CACD2E8521D6762B00BACD91 /* PrivateMessageResult.swift */,
-				78D7EEC21F196BC3005372A9 /* Build Config */,
 				CAAF4C752164E2900017946C /* Builder */,
-				CAAF4C762164E33B0017946C /* Configurable Dependencies */,
 				CAAF4C772164E34F0017946C /* Default Dependency Implementations */,
-				CACF1EC720B6D5A300D904B5 /* Entities */,
 				CAEA0D812166B3F700B0C7A6 /* Formatters */,
-				CA18B3451F49AF4500038E52 /* Model */,
+				CA18B3451F49AF4500038E52 /* Objects */,
 				CA72849920A1C332007D912A /* Observers */,
 				CAEA0D82216BDC2900B0C7A6 /* Resources */,
 				CA804DCF1F20CE5F00E07A4A /* Server Client */,
-				CAAF4C742164E2860017946C /* Services */,
+				CAAF4C742164E2860017946C /* Session */,
 				CAB3A72B1F7532DF005DF77B /* System Services */,
 			);
 			path = Public;
 			sourceTree = "<group>";
 		};
-		CAAF4C742164E2860017946C /* Services */ = {
+		CAAF4C742164E2860017946C /* Session */ = {
 			isa = PBXGroup;
 			children = (
+				CAF9A9421F50B87600628833 /* EurofurenceSession.swift */,
 				CA0E5212208F4CD7005259FE /* AnnouncementsService.swift */,
 				CAEAEBE61FDC94F800C0EE7C /* AuthenticationService.swift */,
 				CA2761B920E02A16000E52AC /* CollectThemAllService.swift */,
@@ -5531,14 +5527,14 @@
 				CA6A8DAD20E2CF87007536CD /* MapsService.swift */,
 				CA283A6220E6ED6400F7D195 /* RefreshService.swift */,
 			);
-			path = Services;
+			path = Session;
 			sourceTree = "<group>";
 		};
 		CAAF4C752164E2900017946C /* Builder */ = {
 			isa = PBXGroup;
 			children = (
-				CAF9A9421F50B87600628833 /* EurofurenceSession.swift */,
 				CAF3F63C20167B3100374B4C /* EurofurenceSessionBuilder.swift */,
+				CAAF4C762164E33B0017946C /* Configurable Dependencies */,
 			);
 			path = Builder;
 			sourceTree = "<group>";
@@ -5546,6 +5542,8 @@
 		CAAF4C762164E33B0017946C /* Configurable Dependencies */ = {
 			isa = PBXGroup;
 			children = (
+				6EEC6DA41F1BFC7700205F2D /* AppVersionProviding.swift */,
+				78D7EEB71F196B30005372A9 /* BuildConfigurationProviding.swift */,
 				CAD7804B1F1D5212002A8333 /* Clock.swift */,
 				CA2761C520E02EDC000E52AC /* CollectThemAllRequestFactory.swift */,
 				CA162E7220A4B6A5004AFED6 /* ConventionStartDateRepository.swift */,
@@ -5572,10 +5570,13 @@
 			children = (
 				CA3990EE20ACD559001E3F1A /* FoundationHoursDateFormatter.swift */,
 				CAD780591F1E8E7D002A8333 /* KeychainCredentialStore.swift */,
+				CABA83E920CDBBD600DD0795 /* PersistentImageRepository.swift */,
+				CACD2EAC21D67E7F00BACD91 /* PreprocessorBuildConfigurationProviding.swift */,
 				CAD7804D1F1D5227002A8333 /* SystemClock.swift */,
 				CA44C33B211A2727003C1C4E /* UserDefaultsForceRefreshRequired.swift */,
 				CA680F7B20CD819F006ACD3D /* UserDefaultsPreferences.swift */,
 				CABEB0DA20C9C79B000BEE66 /* Core Data Store */,
+				CACD2EAE21D67EB000BACD91 /* BundleAppVersionProviding.swift */,
 			);
 			path = "Default Dependency Implementations";
 			sourceTree = "<group>";
@@ -8477,6 +8478,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAEA0DD5216BDE2300B0C7A6 /* AnnouncementEntity+Adaptation.swift in Sources */,
+				CACD2EB221D67F0F00BACD91 /* PreprocessorBuildConfigurationProviding.swift in Sources */,
 				CAEA0DF3216BDE3100B0C7A6 /* APIAnnouncement.swift in Sources */,
 				CAEA0DEB216BDE2300B0C7A6 /* DataStoreChangedEvent.swift in Sources */,
 				CAEA0DF0216BDE3100B0C7A6 /* RemoteNotificationRegistrationController.swift in Sources */,
@@ -8534,6 +8536,7 @@
 				CAEA0E0A216BDE3100B0C7A6 /* NetworkReachability.swift in Sources */,
 				CAEA0DBF216BDE2300B0C7A6 /* User.swift in Sources */,
 				CAEA0DFF216BDE3100B0C7A6 /* LoginAPI.swift in Sources */,
+				CACD2EB121D67EF200BACD91 /* BundleAppVersionProviding.swift in Sources */,
 				CAEA0DB6216BDE2300B0C7A6 /* ExtendedDealerData.swift in Sources */,
 				CAEA0DCE216BDE2300B0C7A6 /* Dealers.swift in Sources */,
 				CAEA0DE5216BDE2300B0C7A6 /* LatestDataFetchedEvent.swift in Sources */,
@@ -8595,6 +8598,7 @@
 				CAEA0E0B216BDE3100B0C7A6 /* JSONSession.swift in Sources */,
 				CAEA0D9D216BDE2300B0C7A6 /* EurofurenceSessionBuilder.swift in Sources */,
 				CAEA0DCD216BDE2300B0C7A6 /* EF24StartDateRepository.swift in Sources */,
+				CACD2EB021D67EE300BACD91 /* EurofurenceDataStoreState.swift in Sources */,
 				CAEA0D93216BDD9500B0C7A6 /* SignificantTimeObserver.swift in Sources */,
 				CAEA0D92216BDD9500B0C7A6 /* PersistentImageRepository.swift in Sources */,
 				CAEA0DAD216BDE2300B0C7A6 /* SignificantTimeChangeAdapter.swift in Sources */,

@@ -8,12 +8,6 @@
 
 import Foundation
 
-public enum EurofurenceDataStoreState {
-    case absent
-    case stale
-    case available
-}
-
 public protocol EurofurenceSession: ApplicationNotificationHandling,
                                                 RefreshService,
                                                 AnnouncementsService,

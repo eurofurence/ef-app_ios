@@ -1,25 +1,19 @@
 //
-//  AppVersionProviding.swift
+//  BundleAppVersionProviding.swift
 //  Eurofurence
 //
-//  Created by Thomas Sherwood on 16/07/2017.
-//  Copyright © 2017 Eurofurence. All rights reserved.
+//  Created by Thomas Sherwood on 28/12/2018.
+//  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
 import Foundation
 
-public protocol AppVersionProviding {
-
-    var version: String { get }
-
-}
-
 public struct BundleAppVersionProviding: AppVersionProviding {
-
+    
     public static let shared = BundleAppVersionProviding()
-
+    
     public var version: String {
         return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? ""
     }
-
+    
 }
