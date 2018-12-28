@@ -3193,21 +3193,13 @@
 		9ACF992B1EBE172D006FC958 = {
 			isa = PBXGroup;
 			children = (
-				CAEA0E84216BEF7C00B0C7A6 /* RandomDataGeneration */,
-				CACD2E9221D677CB00BACD91 /* EventBus */,
-				9ACF99361EBE172D006FC958 /* Eurofurence */,
-				78CA0D0E1F0E57D5006DFD64 /* GoogleService-Info.plist */,
-				9ACF994B1EBE172D006FC958 /* EurofurenceTests */,
-				78D7EEA21F17F40C005372A9 /* EurofurenceUITests */,
-				CA9845C81F2907A800E8821D /* ScreenshotGenerator */,
-				CAEA0B7B2165626900B0C7A6 /* EurofurenceModel */,
-				CAEA0B882165626900B0C7A6 /* EurofurenceModelTests */,
-				CA0B1ED9217F40EC00A6A949 /* EurofurenceModelAdapterTests */,
-				CAEA0F5D216D294000B0C7A6 /* EurofurenceModelTestDoubles */,
-				9ACF99351EBE172D006FC958 /* Products */,
-				2A4A738C931BBD9059F30151 /* Pods */,
-				164F3A1C0E53F6ADD4C20674 /* Frameworks */,
 				D6F3D21513FCE6CCDC157C6A /* .travis.yml */,
+				CACD2EA921D67C9A00BACD91 /* Application */,
+				CACD2EA821D67C8A00BACD91 /* Domain Model */,
+				CACD2EA721D67C6D00BACD91 /* Shared Kernel */,
+				164F3A1C0E53F6ADD4C20674 /* Frameworks */,
+				2A4A738C931BBD9059F30151 /* Pods */,
+				9ACF99351EBE172D006FC958 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -5821,6 +5813,38 @@
 			path = EventBus;
 			sourceTree = "<group>";
 		};
+		CACD2EA721D67C6D00BACD91 /* Shared Kernel */ = {
+			isa = PBXGroup;
+			children = (
+				CAEA0E84216BEF7C00B0C7A6 /* RandomDataGeneration */,
+				CACD2E9221D677CB00BACD91 /* EventBus */,
+			);
+			name = "Shared Kernel";
+			sourceTree = "<group>";
+		};
+		CACD2EA821D67C8A00BACD91 /* Domain Model */ = {
+			isa = PBXGroup;
+			children = (
+				CAEA0B7B2165626900B0C7A6 /* EurofurenceModel */,
+				CAEA0B882165626900B0C7A6 /* EurofurenceModelTests */,
+				CA0B1ED9217F40EC00A6A949 /* EurofurenceModelAdapterTests */,
+				CAEA0F5D216D294000B0C7A6 /* EurofurenceModelTestDoubles */,
+			);
+			name = "Domain Model";
+			sourceTree = "<group>";
+		};
+		CACD2EA921D67C9A00BACD91 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				78CA0D0E1F0E57D5006DFD64 /* GoogleService-Info.plist */,
+				9ACF99361EBE172D006FC958 /* Eurofurence */,
+				9ACF994B1EBE172D006FC958 /* EurofurenceTests */,
+				78D7EEA21F17F40C005372A9 /* EurofurenceUITests */,
+				CA9845C81F2907A800E8821D /* ScreenshotGenerator */,
+			);
+			name = Application;
+			sourceTree = "<group>";
+		};
 		CACF1E4920AE2A3D00D904B5 /* Event Detail */ = {
 			isa = PBXGroup;
 			children = (
@@ -6900,8 +6924,6 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CAEA0E82216BEF7C00B0C7A6 /* RandomDataGeneration */,
-				CACD2E9021D677CB00BACD91 /* EventBus */,
 				9ACF99331EBE172D006FC958 /* Eurofurence */,
 				9ACF99471EBE172D006FC958 /* EurofurenceTests */,
 				78D7EEA01F17F40C005372A9 /* EurofurenceUITests */,
@@ -6909,6 +6931,8 @@
 				CAEA0B792165626900B0C7A6 /* EurofurenceModel */,
 				CAEA0B812165626900B0C7A6 /* EurofurenceModelTests */,
 				CA0B1ED7217F40EC00A6A949 /* EurofurenceModelAdapterTests */,
+				CACD2E9021D677CB00BACD91 /* EventBus */,
+				CAEA0E82216BEF7C00B0C7A6 /* RandomDataGeneration */,
 				CAEA0F5B216D294000B0C7A6 /* EurofurenceModelTestDoubles */,
 			);
 		};
