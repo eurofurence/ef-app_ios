@@ -8,17 +8,6 @@
 
 import Foundation
 
-public enum LogoutResult {
-    case success
-    case failure
-}
-
-public enum PrivateMessageResult {
-    case success([Message])
-    case failedToLoad
-    case userNotAuthenticated
-}
-
 class ConcreteSession: EurofurenceSession {
 
     private let eventBus = EventBus()
