@@ -6,6 +6,10 @@ target :RandomDataGeneration do
     pod 'SwiftLint'
 end
 
+target :EventBus do
+    pod 'SwiftLint'
+end
+
 target :Eurofurence do
 	plugin 'cocoapods-acknowledgements', :settings_bundle => true
 	
