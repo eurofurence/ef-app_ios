@@ -7,6 +7,7 @@
 //
 
 import EurofurenceModel
+import EventBus
 import Foundation
 import UIKit
 

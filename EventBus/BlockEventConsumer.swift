@@ -6,17 +6,17 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
-class BlockEventConsumer<T>: EventConsumer {
+public class BlockEventConsumer<T>: EventConsumer {
 
     private let block: (T) -> Void
 
-    init(block: @escaping (T) -> Void) {
+    public init(block: @escaping (T) -> Void) {
         self.block = block
     }
 
-    typealias Event = T
+    public typealias Event = T
 
-    func consume(event: BlockEventConsumer.Event) {
+    public func consume(event: BlockEventConsumer.Event) {
         block(event)
     }
 

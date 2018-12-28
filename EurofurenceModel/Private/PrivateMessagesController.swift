@@ -6,6 +6,8 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
+import EventBus
+
 class PrivateMessagesController {
 
     private let privateMessagesAPI: PrivateMessagesAPI

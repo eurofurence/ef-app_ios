@@ -6,6 +6,7 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
+import EventBus
 import Foundation
 
 private protocol EventFilter {

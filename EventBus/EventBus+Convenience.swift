@@ -8,9 +8,9 @@
 
 import Foundation
 
-extension EventBus {
+public extension EventBus {
 
-    func subscribe<T>(_ block: @escaping (T) -> Void) {
+    public func subscribe<T>(_ block: @escaping (T) -> Void) {
         let consumer = BlockEventConsumer(block: block)
         subscribe(consumer: consumer)
     }

@@ -774,6 +774,14 @@
 		CACD2E9521D677CB00BACD91 /* EventBus.h in Headers */ = {isa = PBXBuildFile; fileRef = CACD2E9321D677CB00BACD91 /* EventBus.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CACD2E9821D677CB00BACD91 /* EventBus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CACD2E9121D677CB00BACD91 /* EventBus.framework */; };
 		CACD2E9921D677CB00BACD91 /* EventBus.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CACD2E9121D677CB00BACD91 /* EventBus.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CACD2E9F21D6785F00BACD91 /* EventCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA49E9432015480A00EB571C /* EventCache.swift */; };
+		CACD2EA021D6785F00BACD91 /* EventConsumer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA49E94C20154AF900EB571C /* EventConsumer.swift */; };
+		CACD2EA121D6785F00BACD91 /* EventBus+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA65A87420990C9500B72533 /* EventBus+Convenience.swift */; };
+		CACD2EA221D6785F00BACD91 /* EventBusRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA49E9422015480A00EB571C /* EventBusRegistration.swift */; };
+		CACD2EA321D6785F00BACD91 /* BlockEventConsumer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D97D6201616DF0074838F /* BlockEventConsumer.swift */; };
+		CACD2EA421D6785F00BACD91 /* EventHandlerRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA49E93E2015480A00EB571C /* EventHandlerRegistration.swift */; };
+		CACD2EA521D6785F00BACD91 /* EventBus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D97CE201611430074838F /* EventBus.swift */; };
+		CACD2EA621D6788200BACD91 /* EventBus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CACD2E9121D677CB00BACD91 /* EventBus.framework */; };
 		CACF1E4620AE292D00D904B5 /* WhenNewsModuleSelectsEvent_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E4520AE292D00D904B5 /* WhenNewsModuleSelectsEvent_DirectorShould.swift */; };
 		CACF1E4820AE29CB00D904B5 /* StubEventDetailModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E4720AE29CB00D904B5 /* StubEventDetailModuleFactory.swift */; };
 		CACF1E4C20AE2A5A00D904B5 /* EventDetailModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E4B20AE2A5A00D904B5 /* EventDetailModuleProviding.swift */; };
@@ -990,13 +998,6 @@
 		CAEA0E0A216BDE3100B0C7A6 /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A861EBB1F25551400B75A8C /* NetworkReachability.swift */; };
 		CAEA0E0B216BDE3100B0C7A6 /* JSONSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE77CE1F1A2E8600E9A0BE /* JSONSession.swift */; };
 		CAEA0E0C216BDE3100B0C7A6 /* URLSessionBasedJSONSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE77D81F1BB9E400E9A0BE /* URLSessionBasedJSONSession.swift */; };
-		CAEA0E0D216BDE5700B0C7A6 /* BlockEventConsumer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D97D6201616DF0074838F /* BlockEventConsumer.swift */; };
-		CAEA0E0E216BDE5700B0C7A6 /* EventBus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D97CE201611430074838F /* EventBus.swift */; };
-		CAEA0E0F216BDE5700B0C7A6 /* EventBusRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA49E9422015480A00EB571C /* EventBusRegistration.swift */; };
-		CAEA0E10216BDE5700B0C7A6 /* EventCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA49E9432015480A00EB571C /* EventCache.swift */; };
-		CAEA0E11216BDE5700B0C7A6 /* EventConsumer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA49E94C20154AF900EB571C /* EventConsumer.swift */; };
-		CAEA0E12216BDE5700B0C7A6 /* EventHandlerRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA49E93E2015480A00EB571C /* EventHandlerRegistration.swift */; };
-		CAEA0E13216BDE5700B0C7A6 /* EventBus+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA65A87420990C9500B72533 /* EventBus+Convenience.swift */; };
 		CAEA0E14216BDE9B00B0C7A6 /* Optional+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27254D2110DEE2004C6D0A /* Optional+Extensions.swift */; };
 		CAEA0E87216BEF7C00B0C7A6 /* RandomDataGeneration.h in Headers */ = {isa = PBXBuildFile; fileRef = CAEA0E85216BEF7C00B0C7A6 /* RandomDataGeneration.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CAEA0E8D216BEFC300B0C7A6 /* RandomDataGeneration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAEA0E83216BEF7C00B0C7A6 /* RandomDataGeneration.framework */; };
@@ -2753,6 +2754,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CACD2EA621D6788200BACD91 /* EventBus.framework in Frameworks */,
 				E7D5220E7B033A9BD6974870 /* Pods_EurofurenceModel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4296,20 +4298,6 @@
 			path = "Interactor Tests";
 			sourceTree = "<group>";
 		};
-		CA49E93B201547ED00EB571C /* Event Bus */ = {
-			isa = PBXGroup;
-			children = (
-				CA8D97D6201616DF0074838F /* BlockEventConsumer.swift */,
-				CA8D97CE201611430074838F /* EventBus.swift */,
-				CA49E9422015480A00EB571C /* EventBusRegistration.swift */,
-				CA49E9432015480A00EB571C /* EventCache.swift */,
-				CA49E94C20154AF900EB571C /* EventConsumer.swift */,
-				CA49E93E2015480A00EB571C /* EventHandlerRegistration.swift */,
-				CA65A87420990C9500B72533 /* EventBus+Convenience.swift */,
-			);
-			path = "Event Bus";
-			sourceTree = "<group>";
-		};
 		CA5BF9D31F7AEE070045DBC0 /* Preload */ = {
 			isa = PBXGroup;
 			children = (
@@ -5526,7 +5514,6 @@
 				CAAF4C762164E33B0017946C /* Configurable Dependencies */,
 				CAAF4C772164E34F0017946C /* Default Dependency Implementations */,
 				CACF1EC720B6D5A300D904B5 /* Entities */,
-				CA49E93B201547ED00EB571C /* Event Bus */,
 				CAEA0D812166B3F700B0C7A6 /* Formatters */,
 				CA18B3451F49AF4500038E52 /* Model */,
 				CA72849920A1C332007D912A /* Observers */,
@@ -5823,6 +5810,13 @@
 			children = (
 				CACD2E9321D677CB00BACD91 /* EventBus.h */,
 				CACD2E9421D677CB00BACD91 /* Info.plist */,
+				CA8D97D6201616DF0074838F /* BlockEventConsumer.swift */,
+				CA8D97CE201611430074838F /* EventBus.swift */,
+				CA65A87420990C9500B72533 /* EventBus+Convenience.swift */,
+				CA49E9422015480A00EB571C /* EventBusRegistration.swift */,
+				CA49E9432015480A00EB571C /* EventCache.swift */,
+				CA49E94C20154AF900EB571C /* EventConsumer.swift */,
+				CA49E93E2015480A00EB571C /* EventHandlerRegistration.swift */,
 			);
 			path = EventBus;
 			sourceTree = "<group>";
@@ -8444,6 +8438,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CACD2EA221D6785F00BACD91 /* EventBusRegistration.swift in Sources */,
+				CACD2EA121D6785F00BACD91 /* EventBus+Convenience.swift in Sources */,
+				CACD2EA021D6785F00BACD91 /* EventConsumer.swift in Sources */,
+				CACD2EA321D6785F00BACD91 /* BlockEventConsumer.swift in Sources */,
+				CACD2EA421D6785F00BACD91 /* EventHandlerRegistration.swift in Sources */,
+				CACD2EA521D6785F00BACD91 /* EventBus.swift in Sources */,
+				CACD2E9F21D6785F00BACD91 /* EventCache.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8473,7 +8474,6 @@
 				CAEA0DCB216BDE2300B0C7A6 /* BuildConfigurationProviding.swift in Sources */,
 				CAEA0DA3216BDE2300B0C7A6 /* DateDistanceCalculator.swift in Sources */,
 				CAEA0E00216BDE3100B0C7A6 /* LoginResponse.swift in Sources */,
-				CAEA0E13216BDE5700B0C7A6 /* EventBus+Convenience.swift in Sources */,
 				CAEA0DD9216BDE2300B0C7A6 /* EventEntity+Adaptation.swift in Sources */,
 				CAEA0E09216BDE3100B0C7A6 /* SystemNetworkReachability.swift in Sources */,
 				CAEA0DE2216BDE2300B0C7A6 /* TrackEntity+Adaptation.swift in Sources */,
@@ -8481,12 +8481,10 @@
 				CAEA0D8B216BDD9500B0C7A6 /* DataStoreChangedConsumer.swift in Sources */,
 				CAEA0DA4216BDE2300B0C7A6 /* EurofurenceDataStore.swift in Sources */,
 				CAEA0DDD216BDE2300B0C7A6 /* KnowledgeGroupEntity+Adaptation.swift in Sources */,
-				CAEA0E0D216BDE5700B0C7A6 /* BlockEventConsumer.swift in Sources */,
 				CAEA0DF4216BDE3100B0C7A6 /* APIConferenceDay.swift in Sources */,
 				CAEA0DE7216BDE2300B0C7A6 /* LoggedOut.swift in Sources */,
 				CAEA0DC3216BDE2300B0C7A6 /* ConventionCountdownService.swift in Sources */,
 				CAEA0DF6216BDE3100B0C7A6 /* APIEvent.swift in Sources */,
-				CAEA0E10216BDE5700B0C7A6 /* EventCache.swift in Sources */,
 				CAEA0DBA216BDE2300B0C7A6 /* LoginArguments.swift in Sources */,
 				CAEA0DA0216BDE2300B0C7A6 /* CollectThemAllRequestFactory.swift in Sources */,
 				CAEA0DC7216BDE2300B0C7A6 /* LinkLookupService.swift in Sources */,
@@ -8543,7 +8541,6 @@
 				CAEA0DA7216BDE2300B0C7A6 /* ImageRepository.swift in Sources */,
 				CAEA0DC9216BDE2300B0C7A6 /* RefreshService.swift in Sources */,
 				CAEA0DB9216BDE2300B0C7A6 /* Link.swift in Sources */,
-				CAEA0E12216BDE5700B0C7A6 /* EventHandlerRegistration.swift in Sources */,
 				CAEA0D9A216BDD9500B0C7A6 /* DefaultCollectThemAllRequestFactory.swift in Sources */,
 				CAEA0DD7216BDE2300B0C7A6 /* DealerEntity+Adaptation.swift in Sources */,
 				CAEA0DEC216BDE2300B0C7A6 /* ImageEntity.swift in Sources */,
@@ -8564,7 +8561,6 @@
 				CAEA0D8A216BDD9500B0C7A6 /* Maps.swift in Sources */,
 				CAEA0DC5216BDE2300B0C7A6 /* EventsService.swift in Sources */,
 				CAEA0DE1216BDE2300B0C7A6 /* RoomEntity+Adaptation.swift in Sources */,
-				CAEA0E0F216BDE5700B0C7A6 /* EventBusRegistration.swift in Sources */,
 				CAEA0DBB216BDE2300B0C7A6 /* Map.swift in Sources */,
 				CAEA0DCA216BDE2300B0C7A6 /* UserAuthenticationCoordinator.swift in Sources */,
 				CAEA0DC1216BDE2300B0C7A6 /* AuthenticationService.swift in Sources */,
@@ -8573,13 +8569,11 @@
 				CAEA0E14216BDE9B00B0C7A6 /* Optional+Extensions.swift in Sources */,
 				CAEA0D8E216BDD9500B0C7A6 /* ConventionCountdownController.swift in Sources */,
 				CAEA0E0B216BDE3100B0C7A6 /* JSONSession.swift in Sources */,
-				CAEA0E11216BDE5700B0C7A6 /* EventConsumer.swift in Sources */,
 				CAEA0D9D216BDE2300B0C7A6 /* EurofurenceSessionBuilder.swift in Sources */,
 				CAEA0DCD216BDE2300B0C7A6 /* EF24StartDateRepository.swift in Sources */,
 				CAEA0D93216BDD9500B0C7A6 /* SignificantTimeObserver.swift in Sources */,
 				CAEA0D92216BDD9500B0C7A6 /* PersistentImageRepository.swift in Sources */,
 				CAEA0DAD216BDE2300B0C7A6 /* SignificantTimeChangeAdapter.swift in Sources */,
-				CAEA0E0E216BDE5700B0C7A6 /* EventBus.swift in Sources */,
 				CAEA0DE0216BDE2300B0C7A6 /* ReadAnnouncementEntity.swift in Sources */,
 				CAEA0DAF216BDE2300B0C7A6 /* URLOpener.swift in Sources */,
 				CAEA0DDA216BDE2300B0C7A6 /* FavouriteEventEntity+Adaptation.swift in Sources */,
@@ -8990,6 +8984,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7B35D29A24C86C9717A690E6 /* Pods-Eurofurence.profiling.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Eurofurence/Eurofurence.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -9150,6 +9145,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 513BAD2C582D99F2993B8162 /* Pods-Eurofurence.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Eurofurence/Eurofurence.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -9169,6 +9165,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 27C948D12455A352D46AF5B6 /* Pods-Eurofurence.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Eurofurence/Eurofurence.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -9426,6 +9423,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 62AD5BCA61ABA2B7A2D6087A /* Pods-Eurofurence.screenshots.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Eurofurence/Eurofurence.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -9491,6 +9489,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 430C10CE175233D7CBB646AF /* Pods-EventBus.debug.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
@@ -9525,6 +9524,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4FD1A00AF0640D6329C34BB7 /* Pods-EventBus.screenshots.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
@@ -9558,6 +9558,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E5F6C34BE585B9DDFF675F27 /* Pods-EventBus.release.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
@@ -9591,6 +9592,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0E71AF5F9D46ABDD611718CB /* Pods-EventBus.profiling.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
