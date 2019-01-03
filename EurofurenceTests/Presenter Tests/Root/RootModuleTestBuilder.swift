@@ -35,20 +35,28 @@ class RootModuleTestBuilder {
         var delegate: CapturingRootModuleDelegate
     }
 
-    private let app = CapturingEurofurenceSession()
+    private struct FakeDataStoreStateService: DataStoreStateService {
+
+        var state: EurofurenceDataStoreState
+
+        func resolveDataStoreState(completionHandler: @escaping (EurofurenceDataStoreState) -> Void) {
+            completionHandler(state)
+        }
+
+    }
+
+    private var dataStoreStateService = FakeDataStoreStateService(state: .absent)
     private let delegate = CapturingRootModuleDelegate()
     private var storeState: EurofurenceDataStoreState = .absent
 
     @discardableResult
     func with(storeState: EurofurenceDataStoreState) -> RootModuleTestBuilder {
-        self.storeState = storeState
+        dataStoreStateService = FakeDataStoreStateService(state: storeState)
         return self
     }
 
     func build() -> RootModuleTestBuilder.Context {
-        _ = RootModuleBuilder().with(app).build().makeRootModule(delegate)
-        app.capturedStoreStateResolutionHandler?(storeState)
-
+        _ = RootModuleBuilder().with(dataStoreStateService).build().makeRootModule(delegate)
         return Context(delegate: delegate)
     }
 
