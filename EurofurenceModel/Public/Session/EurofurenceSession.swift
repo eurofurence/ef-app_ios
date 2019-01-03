@@ -9,16 +9,17 @@
 import Foundation
 
 public protocol EurofurenceSession: ApplicationNotificationHandling,
-                                                RefreshService,
-                                                AnnouncementsService,
-                                                AuthenticationService,
-                                                EventsService,
-                                                DealersService,
-                                                KnowledgeService,
-                                                LinkLookupService,
-                                                ConventionCountdownService,
-                                                CollectThemAllService,
-                                                MapsService {
+                                    RefreshService,
+                                    AnnouncementsService,
+                                    AuthenticationService,
+                                    EventsService,
+                                    DealersService,
+                                    KnowledgeService,
+                                    LinkLookupService,
+                                    ConventionCountdownService,
+                                    CollectThemAllService,
+                                    MapsService,
+                                    DataStoreStateService {
 
     func setExternalContentHandler(_ externalContentHandler: ExternalContentHandler)
 
