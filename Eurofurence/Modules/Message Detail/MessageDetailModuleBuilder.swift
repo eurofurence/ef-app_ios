@@ -6,6 +6,7 @@
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
+import EurofurenceModel
 import UIKit.UIViewController
 
 class MessageDetailModuleBuilder {
@@ -15,7 +16,7 @@ class MessageDetailModuleBuilder {
 
     init() {
         messageDetailSceneFactory = PhoneMessageDetailSceneFactory()
-        privateMessagesService = EurofurencePrivateMessagesService.shared
+        privateMessagesService = SharedModel.instance.privateMessagesService
     }
 
     func with(_ messageDetailSceneFactory: MessageDetailSceneFactory) -> MessageDetailModuleBuilder {

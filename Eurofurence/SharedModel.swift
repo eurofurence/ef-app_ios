@@ -13,6 +13,7 @@ class SharedModel {
 
     static let instance: SharedModel = SharedModel()
     let session: EurofurenceSession
+    let privateMessagesService: EurofurencePrivateMessagesService
 
     private init() {
         let jsonSession = URLSessionBasedJSONSession.shared
@@ -45,6 +46,8 @@ class SharedModel {
             .with(notificationsService)
             .with(mapCoordinateRender)
             .build()
+
+        privateMessagesService = EurofurencePrivateMessagesService(app: session)
     }
 
 }

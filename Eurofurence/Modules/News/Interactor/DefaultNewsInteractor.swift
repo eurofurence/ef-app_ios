@@ -54,7 +54,7 @@ class DefaultNewsInteractor: NewsInteractor,
     convenience init() {
         self.init(announcementsService: SharedModel.instance.session,
                   authenticationService: SharedModel.instance.session,
-                  privateMessagesService: EurofurencePrivateMessagesService.shared,
+                  privateMessagesService: SharedModel.instance.privateMessagesService,
                   daysUntilConventionService: SharedModel.instance.session,
                   eventsService: SharedModel.instance.session,
                   relativeTimeIntervalCountdownFormatter: FoundationRelativeTimeIntervalCountdownFormatter.shared,

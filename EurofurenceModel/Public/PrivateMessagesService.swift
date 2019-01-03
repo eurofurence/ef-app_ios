@@ -6,9 +6,7 @@
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
-import EurofurenceModel
-
-protocol PrivateMessagesService {
+public protocol PrivateMessagesService {
 
     func add(_ observer: PrivateMessagesServiceObserver)
     func refreshMessages()
@@ -16,7 +14,7 @@ protocol PrivateMessagesService {
 
 }
 
-protocol PrivateMessagesServiceObserver {
+public protocol PrivateMessagesServiceObserver {
 
     func privateMessagesServiceDidUpdateUnreadMessageCount(to unreadCount: Int)
     func privateMessagesServiceDidFinishRefreshingMessages(_ messages: [Message])

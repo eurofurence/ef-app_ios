@@ -19,7 +19,7 @@ public protocol DownASTRenderable: DownRenderable {
 
      - returns: An abstract syntax tree representation of the Markdown input
      */
-    
+
     func toAST(_ options: DownOptions) throws -> UnsafeMutablePointer<cmark_node>
 }
 
@@ -33,7 +33,7 @@ public extension DownASTRenderable {
 
      - returns: An abstract syntax tree representation of the Markdown input
      */
-    
+
     public func toAST(_ options: DownOptions = .default) throws -> UnsafeMutablePointer<cmark_node> {
         return try DownASTRenderer.stringToAST(markdownString, options: options)
     }
@@ -51,7 +51,7 @@ public struct DownASTRenderer {
 
      - returns: An abstract syntax tree representation of the Markdown input
      */
-    
+
     public static func stringToAST(_ string: String, options: DownOptions = .default) throws -> UnsafeMutablePointer<cmark_node> {
         var tree: UnsafeMutablePointer<cmark_node>?
         string.withCString {

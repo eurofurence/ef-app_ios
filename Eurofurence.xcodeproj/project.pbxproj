@@ -782,6 +782,9 @@
 		CACD2EB121D67EF200BACD91 /* BundleAppVersionProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD2EAE21D67EB000BACD91 /* BundleAppVersionProviding.swift */; };
 		CACD2EB221D67F0F00BACD91 /* PreprocessorBuildConfigurationProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD2EAC21D67E7F00BACD91 /* PreprocessorBuildConfigurationProviding.swift */; };
 		CACD2F0721DEB9DE00BACD91 /* DataStoreStateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD2F0621DEB9DE00BACD91 /* DataStoreStateService.swift */; };
+		CACD2F0821DEBD4400BACD91 /* EurofurencePrivateMessagesServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A94B1F55877100628833 /* EurofurencePrivateMessagesServiceTests.swift */; };
+		CACD2F0921DEBD5600BACD91 /* PrivateMessagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A9491F54BB5600628833 /* PrivateMessagesService.swift */; };
+		CACD2F0A21DEBD5600BACD91 /* EurofurencePrivateMessagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A9521F55F3B300628833 /* EurofurencePrivateMessagesService.swift */; };
 		CACF1E4620AE292D00D904B5 /* WhenNewsModuleSelectsEvent_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E4520AE292D00D904B5 /* WhenNewsModuleSelectsEvent_DirectorShould.swift */; };
 		CACF1E4820AE29CB00D904B5 /* StubEventDetailModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E4720AE29CB00D904B5 /* StubEventDetailModuleFactory.swift */; };
 		CACF1E4C20AE2A5A00D904B5 /* EventDetailModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E4B20AE2A5A00D904B5 /* EventDetailModuleProviding.swift */; };
@@ -1260,9 +1263,6 @@
 		CAF81C7120DDA8EA00898C52 /* WhenProducingDealerViewModel_HappyPath_DealerDetailInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF81C7020DDA8EA00898C52 /* WhenProducingDealerViewModel_HappyPath_DealerDetailInteractorShould.swift */; };
 		CAF81C7320DDA9D100898C52 /* DefaultDealerDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF81C7220DDA9D100898C52 /* DefaultDealerDetailInteractor.swift */; };
 		CAF81C7520DDAA9C00898C52 /* CapturingDealerDetailViewModelVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF81C7420DDAA9C00898C52 /* CapturingDealerDetailViewModelVisitor.swift */; };
-		CAF9A94A1F54BB5600628833 /* PrivateMessagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A9491F54BB5600628833 /* PrivateMessagesService.swift */; };
-		CAF9A94C1F55877100628833 /* EurofurencePrivateMessagesServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A94B1F55877100628833 /* EurofurencePrivateMessagesServiceTests.swift */; };
-		CAF9A9531F55F3B300628833 /* EurofurencePrivateMessagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A9521F55F3B300628833 /* EurofurencePrivateMessagesService.swift */; };
 		CAF9A9581F5601A700628833 /* WhenViewingMessagesWhileLoggedOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A9571F5601A700628833 /* WhenViewingMessagesWhileLoggedOut.swift */; };
 		D8081FC3A720C891C06E835B /* Pods-EurofurenceModelTests-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2E75514D1ADA566D1BB5D20E /* Pods-EurofurenceModelTests-settings-metadata.plist */; };
 		DE53838D7196118A73CF0A5B /* Pods_EurofurenceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4BE2399E8F0912910303B02 /* Pods_EurofurenceTests.framework */; };
@@ -3132,7 +3132,6 @@
 				CA1B6F0420DB803000ADF414 /* Dealer Detail */,
 				CA6375A9208E020200536BE2 /* Dealers */,
 				CACF1E5120AE2D0C00D904B5 /* Event Detail */,
-				CAF9A93D1F5048FB00628833 /* Interactor Tests */,
 				CA6EC4762051CADF00402894 /* Knowledge Detail */,
 				CA401063210FA8650056E16C /* Knowledge Group Entries */,
 				CA73AED2201A03F1004E77BF /* Knowledge Groups */,
@@ -3174,13 +3173,6 @@
 				78D7EEA51F17F40C005372A9 /* Info.plist */,
 			);
 			path = EurofurenceUITests;
-			sourceTree = "<group>";
-		};
-		78D7EEB31F195E8B005372A9 /* Application Tests */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Application Tests";
 			sourceTree = "<group>";
 		};
 		9ACF992B1EBE172D006FC958 = {
@@ -3248,7 +3240,6 @@
 				78C86D531F1228B0003A20E6 /* TutorialViewControllerTests.swift */,
 				78455B3B1F116E24005BE2D7 /* UserDefaultsTutorialStateProvider.swift */,
 				7820A6F51F16B123004C0FB5 /* UserDefaultsUserAcknowledgedPushPermissionsRequestStateProvidingTests.swift */,
-				78D7EEB31F195E8B005372A9 /* Application Tests */,
 				CAF7055F1F82CBC800A9FEA2 /* Director */,
 				781A94441F1A1DCE002DE70F /* Firebase Notification Registration */,
 				78C86D5B1F12355C003A20E6 /* Module Tests */,
@@ -5340,6 +5331,7 @@
 		CA81D4961FEA951D00A52A2F /* Private Messages */ = {
 			isa = PBXGroup;
 			children = (
+				CAF9A94B1F55877100628833 /* EurofurencePrivateMessagesServiceTests.swift */,
 				CA46A73820F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift */,
 				CA9845DB1F2A62D100E8821D /* WhenMarkingMessageAsRead.swift */,
 				CA30EAB51F26128A0053DBF6 /* WhenRequestingPrivateMessagesWhileAuthenticated.swift */,
@@ -5490,11 +5482,13 @@
 				CACD2E8721D6764000BACD91 /* ApplicationNotificationHandling.swift */,
 				CA2761C920E03143000E52AC /* DefaultCollectThemAllRequestFactory.swift */,
 				CACD2EAA21D67DA600BACD91 /* EurofurenceDataStoreState.swift */,
+				CAF9A9521F55F3B300628833 /* EurofurencePrivateMessagesService.swift */,
 				CA250DDF20D6EAF500E7513C /* EventsSearchController.swift */,
 				CA27618920DFEE00000E52AC /* ExternalContentHandler.swift */,
 				CACD2E8321D6761D00BACD91 /* LogoutResult.swift */,
 				CA27254D2110DEE2004C6D0A /* Optional+Extensions.swift */,
 				CACD2E8521D6762B00BACD91 /* PrivateMessageResult.swift */,
+				CAF9A9491F54BB5600628833 /* PrivateMessagesService.swift */,
 				CAAF4C752164E2900017946C /* Builder */,
 				CAAF4C772164E34F0017946C /* Default Dependency Implementations */,
 				CAEA0D812166B3F700B0C7A6 /* Formatters */,
@@ -6533,19 +6527,9 @@
 			path = Interactors;
 			sourceTree = "<group>";
 		};
-		CAF9A93D1F5048FB00628833 /* Interactor Tests */ = {
-			isa = PBXGroup;
-			children = (
-				CAF9A94B1F55877100628833 /* EurofurencePrivateMessagesServiceTests.swift */,
-			);
-			path = "Interactor Tests";
-			sourceTree = "<group>";
-		};
 		CAF9A9481F54BB4100628833 /* Private Messages */ = {
 			isa = PBXGroup;
 			children = (
-				CAF9A9491F54BB5600628833 /* PrivateMessagesService.swift */,
-				CAF9A9521F55F3B300628833 /* EurofurencePrivateMessagesService.swift */,
 			);
 			path = "Private Messages";
 			sourceTree = "<group>";
@@ -7778,7 +7762,6 @@
 				CA8240A021249A5E007E4A70 /* ReviewPromptController.swift in Sources */,
 				CA27619C20E01E01000E52AC /* CollectThemAllModuleBuilder.swift in Sources */,
 				CAB138101FE08D0E00AD61FE /* MessageBubbleCollectionViewCell.swift in Sources */,
-				CAF9A94A1F54BB5600628833 /* PrivateMessagesService.swift in Sources */,
 				CA36A46120D8497400EE6537 /* DealersPresenter.swift in Sources */,
 				CA6A8DE920E41DA5007536CD /* MapDetailViewModel.swift in Sources */,
 				CA6A8D8020E265BE007536CD /* StoryboardMapsScenefactory.swift in Sources */,
@@ -7925,7 +7908,6 @@
 				CAD2609D20C02BCF007E3618 /* EventDetailBannerTableViewCell.swift in Sources */,
 				CA6A8DE220E41903007536CD /* StoryboardMapDetailSceneFactory.swift in Sources */,
 				CA283AD620EAC9BA00F7D195 /* DefaultAnnouncementsInteractor.swift in Sources */,
-				CAF9A9531F55F3B300628833 /* EurofurencePrivateMessagesService.swift in Sources */,
 				CA6A8D9820E2C634007536CD /* MapComponent.swift in Sources */,
 				CACF1E7E20B212B400D904B5 /* EventDetailComponentFactory.swift in Sources */,
 				CA00AE5420D16FD300C2FBB0 /* ScheduleEventViewModel.swift in Sources */,
@@ -8300,7 +8282,6 @@
 				CACF1E7A20B1D12E00D904B5 /* BeforeEventDetailSceneLoads_EventDetailPresenterShould.swift in Sources */,
 				CA283AE420EC178600F7D195 /* WhenBindingFavouriteEvent_FromSearchResult_SchedulePresenterShould.swift in Sources */,
 				CA36A49720D92EF700EE6537 /* CapturingDealersViewModelDelegate.swift in Sources */,
-				CAF9A94C1F55877100628833 /* EurofurencePrivateMessagesServiceTests.swift in Sources */,
 				CA2D080C1FE94F9900BFD785 /* TutorialModuleTestBuilder.swift in Sources */,
 				CA728441209D001B007D912A /* WhenNewsModuleSelectsAnnouncement_DirectorShould.swift in Sources */,
 				CA72846C209D1457007D912A /* AnnouncementViewModel+RandomValueProviding.swift in Sources */,
@@ -8554,6 +8535,7 @@
 				CAEA0D8D216BDD9500B0C7A6 /* PrivateMessagesController.swift in Sources */,
 				CAEA0DFD216BDE3100B0C7A6 /* APITrack.swift in Sources */,
 				CAEA0DE8216BDE2300B0C7A6 /* OpenURL.swift in Sources */,
+				CACD2F0921DEBD5600BACD91 /* PrivateMessagesService.swift in Sources */,
 				CAEA0D89216BDD9500B0C7A6 /* ImageDownloader.swift in Sources */,
 				CAEA0DED216BDE2300B0C7A6 /* Array+AppExtensions.swift in Sources */,
 				CAEA0DE9216BDE2300B0C7A6 /* RemoteNotificationRegistrationSucceeded.swift in Sources */,
@@ -8603,6 +8585,7 @@
 				CAEA0DB0216BDE2300B0C7A6 /* UserPreferences.swift in Sources */,
 				CAEA0DB2216BDE2300B0C7A6 /* Credential.swift in Sources */,
 				CAEA0DC2216BDE2300B0C7A6 /* CollectThemAllService.swift in Sources */,
+				CACD2F0A21DEBD5600BACD91 /* EurofurencePrivateMessagesService.swift in Sources */,
 				CAEA0E0C216BDE3100B0C7A6 /* URLSessionBasedJSONSession.swift in Sources */,
 				CAEA0DE3216BDE2300B0C7A6 /* DomainEvent.swift in Sources */,
 				CAEA0D88216BDD9500B0C7A6 /* ExternalContentHandler.swift in Sources */,
@@ -8778,6 +8761,7 @@
 				CAEA0FE0216E1CE700B0C7A6 /* InOrderToSupportDealersDenTag_ApplicationShould.swift in Sources */,
 				CAEA1026216E1CE800B0C7A6 /* CapturingCredentialStore.swift in Sources */,
 				CAEA0FDB216E1CC000B0C7A6 /* WhenUnfavouritingEvent_ApplicationShould.swift in Sources */,
+				CACD2F0821DEBD4400BACD91 /* EurofurencePrivateMessagesServiceTests.swift in Sources */,
 				CAEA101F216E1CE800B0C7A6 /* WhenSyncingWhileLoggedIn.swift in Sources */,
 				CAEA0F6E216D2BFB00B0C7A6 /* V2PrivateMessagesAPITests.swift in Sources */,
 				CAEA1009216E1CE800B0C7A6 /* WhenLaunchingApplication_PrivateMessagesShould.swift in Sources */,
