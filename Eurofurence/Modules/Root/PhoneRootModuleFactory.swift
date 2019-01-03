@@ -10,7 +10,7 @@ import EurofurenceModel
 
 struct PhoneRootModuleFactory: RootModuleProviding {
 
-    var app: EurofurenceSession
+    var dataStoreStateService: DataStoreStateService
 
     func makeRootModule(_ delegate: RootModuleDelegate) {
         let actions: [EurofurenceDataStoreState : () -> Void] = [
@@ -19,7 +19,7 @@ struct PhoneRootModuleFactory: RootModuleProviding {
             .available: delegate.rootModuleDidDetermineRootModuleShouldBePresented
         ]
 
-        app.resolveDataStoreState { actions[$0]!() }
+        dataStoreStateService.resolveDataStoreState { actions[$0]!() }
     }
 
 }
