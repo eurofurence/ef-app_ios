@@ -14,8 +14,16 @@ class CapturingPrivateMessagesObserver: PrivateMessagesObserver {
     // MARK: New
 
     private(set) var observedMessages: [Message] = []
-    func eurofurenceApplicationDidLoad(messages: [Message]) {
+    func privateMessagesServiceDidFinishRefreshingMessages(messages: [Message]) {
         observedMessages = messages
+    }
+
+    func privateMessagesServiceDidUpdateUnreadMessageCount(to unreadCount: Int) {
+
+    }
+
+    func privateMessagesServiceDidFailToLoadMessages() {
+
     }
 
     // MARK: Old

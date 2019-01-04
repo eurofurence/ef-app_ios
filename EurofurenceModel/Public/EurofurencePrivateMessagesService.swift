@@ -7,6 +7,15 @@
 //
 
 public class EurofurencePrivateMessagesService: PrivateMessagesService, PrivateMessagesObserver {
+    
+    public func privateMessagesServiceDidUpdateUnreadMessageCount(to unreadCount: Int) {
+        
+    }
+    
+    public func privateMessagesServiceDidFailToLoadMessages() {
+        
+    }
+    
 
     private let app: PrivateMessagesService2
     private var observers = [PrivateMessagesServiceObserver]()
@@ -19,7 +28,7 @@ public class EurofurencePrivateMessagesService: PrivateMessagesService, PrivateM
         app.add(self)
     }
 
-    public func eurofurenceApplicationDidLoad(messages: [Message]) {
+    public func privateMessagesServiceDidFinishRefreshingMessages(messages: [Message]) {
         self.messages = messages
         observers.forEach(provideUnreadMessageCount)
     }

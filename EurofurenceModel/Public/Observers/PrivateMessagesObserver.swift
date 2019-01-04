@@ -8,6 +8,8 @@
 
 public protocol PrivateMessagesObserver {
 
-    func eurofurenceApplicationDidLoad(messages: [Message])
+    func privateMessagesServiceDidFinishRefreshingMessages(messages: [Message])
+    func privateMessagesServiceDidUpdateUnreadMessageCount(to unreadCount: Int)
+    func privateMessagesServiceDidFailToLoadMessages()
 
 }

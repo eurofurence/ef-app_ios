@@ -55,7 +55,7 @@ class FakePrivateMessagesService2: PrivateMessagesService2 {
     }
 
     func simulateMessagesLoaded(_ messages: [Message]) {
-        privateMessageObservers.forEach({ $0.eurofurenceApplicationDidLoad(messages: messages) })
+        privateMessageObservers.forEach({ $0.privateMessagesServiceDidFinishRefreshingMessages(messages: messages) })
     }
 
 }

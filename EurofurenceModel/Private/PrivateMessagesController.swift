@@ -23,7 +23,7 @@ class PrivateMessagesController {
 
     func add(_ observer: PrivateMessagesObserver) {
         privateMessageObservers.append(observer)
-        observer.eurofurenceApplicationDidLoad(messages: localPrivateMessages)
+        observer.privateMessagesServiceDidFinishRefreshingMessages(messages: localPrivateMessages)
     }
 
     func fetchPrivateMessages(completionHandler: @escaping (PrivateMessageResult) -> Void) {
@@ -32,7 +32,7 @@ class PrivateMessagesController {
                 if let messages = messages {
                     let messages = messages.sorted()
                     self.localPrivateMessages = messages
-                    self.privateMessageObservers.forEach({ $0.eurofurenceApplicationDidLoad(messages: messages) })
+                    self.privateMessageObservers.forEach({ $0.privateMessagesServiceDidFinishRefreshingMessages(messages: messages) })
                     completionHandler(.success(messages))
                 } else {
                     completionHandler(.failedToLoad)
