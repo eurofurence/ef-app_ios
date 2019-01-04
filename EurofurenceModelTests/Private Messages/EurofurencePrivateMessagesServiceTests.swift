@@ -31,15 +31,44 @@ class CapturingPrivateMessageUnreadCountObserver: PrivateMessagesServiceObserver
 
 }
 
+class FakePrivateMessagesService2: PrivateMessagesService2 {
+
+    var localPrivateMessages: [Message] = []
+
+    private(set) fileprivate var privateMessageFetchCompletionHandler: ((PrivateMessageResult) -> Void)?
+    func fetchPrivateMessages(completionHandler: @escaping (PrivateMessageResult) -> Void) {
+        privateMessageFetchCompletionHandler = completionHandler
+    }
+
+    private(set) public var messageMarkedAsRead: Message?
+    func markMessageAsRead(_ message: Message) {
+        messageMarkedAsRead = message
+    }
+
+    private var privateMessageObservers = [PrivateMessagesObserver]()
+    func add(_ observer: PrivateMessagesObserver) {
+        privateMessageObservers.append(observer)
+    }
+
+    func resolvePrivateMessagesFetch(_ result: PrivateMessageResult) {
+        privateMessageFetchCompletionHandler?(result)
+    }
+
+    func simulateMessagesLoaded(_ messages: [Message]) {
+        privateMessageObservers.forEach({ $0.eurofurenceApplicationDidLoad(messages: messages) })
+    }
+
+}
+
 class EurofurencePrivateMessagesServiceTests: XCTestCase {
 
     var service: EurofurencePrivateMessagesService!
-    var app: CapturingEurofurenceSession!
+    var app: FakePrivateMessagesService2!
 
     override func setUp() {
         super.setUp()
 
-        app = CapturingEurofurenceSession()
+        app = FakePrivateMessagesService2()
         service = EurofurencePrivateMessagesService(app: app)
     }
 

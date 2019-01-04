@@ -8,11 +8,11 @@
 
 public class EurofurencePrivateMessagesService: PrivateMessagesService, PrivateMessagesObserver {
 
-    private let app: EurofurenceSession
+    private let app: PrivateMessagesService2
     private var observers = [PrivateMessagesServiceObserver]()
     private var messages: [Message] = []
 
-    public init(app: EurofurenceSession) {
+    public init(app: PrivateMessagesService2) {
         self.app = app
 
         messages = app.localPrivateMessages
