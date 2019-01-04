@@ -18,7 +18,7 @@ class WhenToldToOpenNotification_ThatRepresentsEventReminder_ApplicationShould: 
             ApplicationNotificationKey.notificationContentIdentifier.rawValue: String.random
         ]
 
-        context.application.handleRemoteNotification(payload: payload) { (_) in }
+        context.application.handleNotification(payload: payload) { (_) in }
 
         XCTAssertFalse(context.syncAPI.didBeginSync)
     }
@@ -34,10 +34,10 @@ class WhenToldToOpenNotification_ThatRepresentsEventReminder_ApplicationShould: 
             ApplicationNotificationKey.notificationContentIdentifier.rawValue: event.identifier
         ]
 
-        var result: ApplicationPushActionResult?
-        context.application.handleRemoteNotification(payload: payload) { result = $0 }
+        var result: NotificationContent?
+        context.application.handleNotification(payload: payload) { result = $0 }
 
-        XCTAssertEqual(ApplicationPushActionResult.event(Event.Identifier(event.identifier)), result)
+        XCTAssertEqual(NotificationContent.event(Event.Identifier(event.identifier)), result)
     }
 
     func testProvideUnknownActionWhenMissingContentIdentifierKey() {
@@ -46,10 +46,10 @@ class WhenToldToOpenNotification_ThatRepresentsEventReminder_ApplicationShould: 
             ApplicationNotificationKey.notificationContentKind.rawValue: ApplicationNotificationContentKind.event.rawValue
         ]
 
-        var result: ApplicationPushActionResult?
-        context.application.handleRemoteNotification(payload: payload) { result = $0 }
+        var result: NotificationContent?
+        context.application.handleNotification(payload: payload) { result = $0 }
 
-        XCTAssertEqual(ApplicationPushActionResult.unknown, result)
+        XCTAssertEqual(NotificationContent.unknown, result)
     }
 
     func testProvideUnknownActionWhenEventWithIdentifierDoesNotExistWithinStore() {
@@ -59,10 +59,10 @@ class WhenToldToOpenNotification_ThatRepresentsEventReminder_ApplicationShould: 
             ApplicationNotificationKey.notificationContentIdentifier.rawValue: String.random
         ]
 
-        var result: ApplicationPushActionResult?
-        context.application.handleRemoteNotification(payload: payload) { result = $0 }
+        var result: NotificationContent?
+        context.application.handleNotification(payload: payload) { result = $0 }
 
-        XCTAssertEqual(ApplicationPushActionResult.unknown, result)
+        XCTAssertEqual(NotificationContent.unknown, result)
     }
 
 }

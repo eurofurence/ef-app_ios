@@ -74,7 +74,7 @@ class ApplicationDirector: ExternalContentHandler,
     private let announcementsModuleFactory: AnnouncementsModuleProviding
     private let announcementDetailModuleProviding: AnnouncementDetailModuleProviding
     private let eventDetailModuleProviding: EventDetailModuleProviding
-    private let notificationHandling: ApplicationNotificationHandling
+    private let notificationService: NotificationService
 
     private let rootNavigationController: UINavigationController
     private let rootNavigationControllerDelegate = DissolveTransitionAnimationProviding()
@@ -116,7 +116,7 @@ class ApplicationDirector: ExternalContentHandler,
          announcementsModuleFactory: AnnouncementsModuleProviding,
          announcementDetailModuleProviding: AnnouncementDetailModuleProviding,
          eventDetailModuleProviding: EventDetailModuleProviding,
-         notificationHandling: ApplicationNotificationHandling) {
+         notificationHandling: NotificationService) {
         self.animate = animate
         self.navigationControllerFactory = navigationControllerFactory
         self.linkLookupService = linkLookupService
@@ -144,7 +144,7 @@ class ApplicationDirector: ExternalContentHandler,
         self.mapDetailModuleProviding = mapDetailModuleProviding
         self.announcementDetailModuleProviding = announcementDetailModuleProviding
         self.eventDetailModuleProviding = eventDetailModuleProviding
-        self.notificationHandling = notificationHandling
+        self.notificationService = notificationHandling
 
         saveTabOrder = SaveTabOrderWhenCustomizationFinishes(orderingPolicy: orderingPolicy)
 
@@ -166,8 +166,8 @@ class ApplicationDirector: ExternalContentHandler,
 
         let castedPayload = castedPayloadKeysAndValues.reduce(into: [String: String](), { $0[$1.0] = $1.1 })
 
-        notificationHandling.handleRemoteNotification(payload: castedPayload) { (result) in
-            switch result {
+        notificationService.handleNotification(payload: castedPayload) { (content) in
+            switch content {
             case .successfulSync:
                 completionHandler()
 
@@ -220,8 +220,8 @@ class ApplicationDirector: ExternalContentHandler,
 
         let castedPayload = castedPayloadKeysAndValues.reduce(into: [String: String](), { $0[$1.0] = $1.1 })
 
-        notificationHandling.handleRemoteNotification(payload: castedPayload) { (result) in
-            switch result {
+        notificationService.handleNotification(payload: castedPayload) { (content) in
+            switch content {
             case .successfulSync:
                 completionHandler(.newData)
 

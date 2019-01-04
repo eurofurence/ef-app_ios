@@ -115,7 +115,7 @@ class ConcreteSession: EurofurenceSession {
         fetchPrivateMessages { (_) in }
     }
 
-    public func handleRemoteNotification(payload: [String: String], completionHandler: @escaping (ApplicationPushActionResult) -> Void) {
+    public func handleNotification(payload: [String: String], completionHandler: @escaping (NotificationContent) -> Void) {
         if payload[ApplicationNotificationKey.notificationContentKind.rawValue] == ApplicationNotificationContentKind.event.rawValue {
             guard let identifier = payload[ApplicationNotificationKey.notificationContentIdentifier.rawValue] else {
                 completionHandler(.unknown)
@@ -127,7 +127,7 @@ class ConcreteSession: EurofurenceSession {
                 return
             }
 
-            let action = ApplicationPushActionResult.event(Event.Identifier(identifier))
+            let action = NotificationContent.event(Event.Identifier(identifier))
             completionHandler(action)
 
             return

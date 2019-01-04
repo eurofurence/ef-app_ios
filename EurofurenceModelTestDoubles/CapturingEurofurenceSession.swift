@@ -19,7 +19,7 @@ public class CapturingEurofurenceSession: EurofurenceSession {
 
     }
 
-    public func handleRemoteNotification(payload: [String: String], completionHandler: @escaping (ApplicationPushActionResult) -> Void) {
+    public func handleNotification(payload: [String: String], completionHandler: @escaping (NotificationContent) -> Void) {
 
     }
 

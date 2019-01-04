@@ -766,7 +766,7 @@
 		CAC2338A2100C4DA00E73486 /* WhenToldToUnfavouriteEvent_FromSearchViewModel_InteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC233892100C4DA00E73486 /* WhenToldToUnfavouriteEvent_FromSearchViewModel_InteractorShould.swift */; };
 		CACD2E8421D6761D00BACD91 /* LogoutResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD2E8321D6761D00BACD91 /* LogoutResult.swift */; };
 		CACD2E8621D6762B00BACD91 /* PrivateMessageResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD2E8521D6762B00BACD91 /* PrivateMessageResult.swift */; };
-		CACD2E8821D6764000BACD91 /* ApplicationNotificationHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD2E8721D6764000BACD91 /* ApplicationNotificationHandling.swift */; };
+		CACD2E8821D6764000BACD91 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD2E8721D6764000BACD91 /* NotificationService.swift */; };
 		CACD2E9521D677CB00BACD91 /* EventBus.h in Headers */ = {isa = PBXBuildFile; fileRef = CACD2E9321D677CB00BACD91 /* EventBus.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CACD2E9821D677CB00BACD91 /* EventBus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CACD2E9121D677CB00BACD91 /* EventBus.framework */; };
 		CACD2E9921D677CB00BACD91 /* EventBus.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CACD2E9121D677CB00BACD91 /* EventBus.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -2451,7 +2451,7 @@
 		CAC233892100C4DA00E73486 /* WhenToldToUnfavouriteEvent_FromSearchViewModel_InteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToUnfavouriteEvent_FromSearchViewModel_InteractorShould.swift; sourceTree = "<group>"; };
 		CACD2E8321D6761D00BACD91 /* LogoutResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutResult.swift; sourceTree = "<group>"; };
 		CACD2E8521D6762B00BACD91 /* PrivateMessageResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateMessageResult.swift; sourceTree = "<group>"; };
-		CACD2E8721D6764000BACD91 /* ApplicationNotificationHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationNotificationHandling.swift; sourceTree = "<group>"; };
+		CACD2E8721D6764000BACD91 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		CACD2E9121D677CB00BACD91 /* EventBus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EventBus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CACD2E9321D677CB00BACD91 /* EventBus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventBus.h; sourceTree = "<group>"; };
 		CACD2E9421D677CB00BACD91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -5479,7 +5479,7 @@
 		CAAF4C732164E1CF0017946C /* Public */ = {
 			isa = PBXGroup;
 			children = (
-				CACD2E8721D6764000BACD91 /* ApplicationNotificationHandling.swift */,
+				CACD2E8721D6764000BACD91 /* NotificationService.swift */,
 				CA2761C920E03143000E52AC /* DefaultCollectThemAllRequestFactory.swift */,
 				CACD2EAA21D67DA600BACD91 /* EurofurenceSessionState.swift */,
 				CAF9A9521F55F3B300628833 /* EurofurencePrivateMessagesService.swift */,
@@ -8539,7 +8539,7 @@
 				CAEA0D89216BDD9500B0C7A6 /* ImageDownloader.swift in Sources */,
 				CAEA0DED216BDE2300B0C7A6 /* Array+AppExtensions.swift in Sources */,
 				CAEA0DE9216BDE2300B0C7A6 /* RemoteNotificationRegistrationSucceeded.swift in Sources */,
-				CACD2E8821D6764000BACD91 /* ApplicationNotificationHandling.swift in Sources */,
+				CACD2E8821D6764000BACD91 /* NotificationService.swift in Sources */,
 				CAEA0DA7216BDE2300B0C7A6 /* ImageRepository.swift in Sources */,
 				CAEA0DC9216BDE2300B0C7A6 /* RefreshService.swift in Sources */,
 				CAEA0DB9216BDE2300B0C7A6 /* Link.swift in Sources */,

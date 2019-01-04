@@ -16,13 +16,13 @@ class WhenToldToOpenNotification_ThatRepresentsAnnouncement_ThatHasBeenDeleted_A
         let randomAnnouncement = syncResponse.announcements.changed.randomElement().element
         let context = ApplicationTestBuilder().build()
         let payload: [String: String] = ["event": "announcement", "announcement_id": randomAnnouncement.identifier]
-        var result: ApplicationPushActionResult?
-        context.application.handleRemoteNotification(payload: payload) { result = $0 }
+        var result: NotificationContent?
+        context.application.handleNotification(payload: payload) { result = $0 }
         syncResponse.announcements.changed = []
         syncResponse.announcements.deleted = [randomAnnouncement.identifier]
         context.syncAPI.simulateSuccessfulSync(syncResponse)
 
-        let expected = ApplicationPushActionResult.invalidatedAnnouncement
+        let expected = NotificationContent.invalidatedAnnouncement
         XCTAssertEqual(expected, result)
     }
 

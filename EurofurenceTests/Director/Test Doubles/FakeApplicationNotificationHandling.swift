@@ -9,15 +9,15 @@
 import EurofurenceModel
 import Foundation
 
-class FakeApplicationNotificationHandling: ApplicationNotificationHandling {
+class FakeApplicationNotificationHandling: NotificationService {
 
     private struct RegisteredAction {
         var payload: [String: String]
-        var result: ApplicationPushActionResult
+        var result: NotificationContent
     }
 
     private var actions = [RegisteredAction]()
-    func handleRemoteNotification(payload: [String: String], completionHandler: @escaping (ApplicationPushActionResult) -> Void) {
+    func handleNotification(payload: [String: String], completionHandler: @escaping (NotificationContent) -> Void) {
         guard let action = actions.first(where: { $0.payload == payload }) else { return }
         completionHandler(action.result)
     }
@@ -26,7 +26,7 @@ class FakeApplicationNotificationHandling: ApplicationNotificationHandling {
 
 extension FakeApplicationNotificationHandling {
 
-    func stub(_ result: ApplicationPushActionResult, for payload: [String: String]) {
+    func stub(_ result: NotificationContent, for payload: [String: String]) {
         actions.append(RegisteredAction(payload: payload, result: result))
     }
 

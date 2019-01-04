@@ -37,10 +37,10 @@ class DirectorBuilder {
     private var announcementDetailModuleProviding: AnnouncementDetailModuleProviding
     private var eventDetailModuleProviding: EventDetailModuleProviding
     private var urlOpener: URLOpener
-    private var notificationHandling: ApplicationNotificationHandling
+    private var notificationHandling: NotificationService
     private var orderingPolicy: ModuleOrderingPolicy
 
-    init(linkLookupService: LinkLookupService, notificationHandling: ApplicationNotificationHandling) {
+    init(linkLookupService: LinkLookupService, notificationHandling: NotificationService) {
         animate = true
         windowWireframe = PhoneWindowWireframe.shared
         navigationControllerFactory = PhoneNavigationControllerFactory()

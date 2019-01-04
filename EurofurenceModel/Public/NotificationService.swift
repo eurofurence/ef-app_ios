@@ -1,5 +1,5 @@
 //
-//  ApplicationNotificationHandling.swift
+//  NotificationService.swift
 //  EurofurenceModel
 //
 //  Created by Thomas Sherwood on 28/12/2018.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum ApplicationPushActionResult: Equatable {
+public enum NotificationContent: Equatable {
     case successfulSync
     case failedSync
     case unknown
@@ -17,8 +17,8 @@ public enum ApplicationPushActionResult: Equatable {
     case event(Event.Identifier)
 }
 
-public protocol ApplicationNotificationHandling {
+public protocol NotificationService {
     
-    func handleRemoteNotification(payload: [String: String], completionHandler: @escaping (ApplicationPushActionResult) -> Void)
+    func handleNotification(payload: [String: String], completionHandler: @escaping (NotificationContent) -> Void)
     
 }
