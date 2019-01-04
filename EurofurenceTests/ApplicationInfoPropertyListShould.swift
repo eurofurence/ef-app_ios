@@ -7,23 +7,20 @@
 //
 
 @testable import Eurofurence
-import EurofurenceModel
 import XCTest
 
 class ApplicationInfoPropertyListShould: XCTestCase {
 
-    func testContainTheCalendarUsageKey() {
+    private func objectFromMainBundlePropertyList<T>(forInfoDictionaryKey key: String) -> T? {
         let bundle = Bundle(for: AppDelegate.self)
-        let calendarUsageDescription = bundle.object(forInfoDictionaryKey: "NSCalendarsUsageDescription")
-
-        XCTAssertNotNil(calendarUsageDescription)
+        return bundle.object(forInfoDictionaryKey: key) as? T
     }
 
-    func testContainSuitableDescriptionForCalendarUsage() {
-        let bundle = Bundle(for: AppDelegate.self)
-        let calendarUsageDescription = bundle.object(forInfoDictionaryKey: "NSCalendarsUsageDescription") as? String
+    func testContainTheCalendarUsageKey() {
+        let calendarUsageDescription: String? = objectFromMainBundlePropertyList(forInfoDictionaryKey: "NSCalendarsUsageDescription")
         let expectedDescription = "Eurofurence uses your calendar to add events and alerts"
 
+        XCTAssertNotNil(calendarUsageDescription)
         XCTAssertEqual(expectedDescription, calendarUsageDescription)
     }
 
