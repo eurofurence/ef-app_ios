@@ -588,9 +588,9 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
 
     private func verifyDeletion<T>(for element: T,
                                    elementIdentifier: String,
-                                   savingBlock: @escaping (EurofurenceDataStoreTransaction) -> ([T]) -> Void,
-                                   deletionBlock: @escaping (EurofurenceDataStoreTransaction) -> (String) -> Void,
-                                   loadingBlock: (EurofurenceDataStore) -> () -> [T]?,
+                                   savingBlock: @escaping (DataStoreTransaction) -> ([T]) -> Void,
+                                   deletionBlock: @escaping (DataStoreTransaction) -> (String) -> Void,
+                                   loadingBlock: (DataStore) -> () -> [T]?,
                                    file: StaticString = #file,
                                    line: UInt = #line) where T: Equatable {
         store.performTransaction { (transaction) in

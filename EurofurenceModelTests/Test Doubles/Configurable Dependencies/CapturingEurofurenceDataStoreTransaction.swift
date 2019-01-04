@@ -9,7 +9,7 @@
 import EurofurenceModel
 import Foundation
 
-class CapturingEurofurenceDataStoreTransaction: EurofurenceDataStoreTransaction {
+class CapturingEurofurenceDataStoreTransaction: DataStoreTransaction {
 
     private(set) var persistedKnowledgeGroups: [APIKnowledgeGroup] = []
     func saveKnowledgeGroups(_ knowledgeGroups: [APIKnowledgeGroup]) {

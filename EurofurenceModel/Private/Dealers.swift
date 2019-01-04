@@ -71,12 +71,12 @@ class Dealers: DealersService {
     private var dealerModels = [Dealer]()
     private var models = [APIDealer]()
     private let eventBus: EventBus
-    private let dataStore: EurofurenceDataStore
+    private let dataStore: DataStore
     private let imageCache: ImagesCache
     private let mapCoordinateRender: MapCoordinateRender?
 
     init(eventBus: EventBus,
-         dataStore: EurofurenceDataStore,
+         dataStore: DataStore,
          imageCache: ImagesCache,
          mapCoordinateRender: MapCoordinateRender?) {
         self.eventBus = eventBus

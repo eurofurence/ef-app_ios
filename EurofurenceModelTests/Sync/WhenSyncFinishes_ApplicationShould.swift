@@ -16,7 +16,7 @@ class WhenSyncFinishes_ApplicationShould: XCTestCase {
 
             private var transactionCount = 0
 
-            override func performTransaction(_ block: @escaping (EurofurenceDataStoreTransaction) -> Void) {
+            override func performTransaction(_ block: @escaping (DataStoreTransaction) -> Void) {
                 super.performTransaction(block)
                 transactionCount += 1
             }

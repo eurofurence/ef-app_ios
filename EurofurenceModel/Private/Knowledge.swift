@@ -13,7 +13,7 @@ class Knowledge {
 
     // MARK: Properties
 
-    private let dataStore: EurofurenceDataStore
+    private let dataStore: DataStore
     private let imageRepository: ImageRepository
     private var observers = [KnowledgeServiceObserver]()
     var models = [KnowledgeGroup]() {
@@ -24,7 +24,7 @@ class Knowledge {
 
     // MARK: Initialization
 
-    init(eventBus: EventBus, dataStore: EurofurenceDataStore, imageRepository: ImageRepository) {
+    init(eventBus: EventBus, dataStore: DataStore, imageRepository: ImageRepository) {
         self.dataStore = dataStore
         self.imageRepository = imageRepository
         eventBus.subscribe(consumer: DataStoreChangedConsumer(handler: reloadKnowledgeBaseFromDataStore))

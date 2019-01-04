@@ -13,7 +13,7 @@ class ConcreteSession: EurofurenceSession {
 
     private let eventBus = EventBus()
     private let userPreferences: UserPreferences
-    private let dataStore: EurofurenceDataStore
+    private let dataStore: DataStore
     private let clock: Clock
     private let remoteNotificationRegistrationController: RemoteNotificationRegistrationController
     private let authenticationCoordinator: UserAuthenticationCoordinator
@@ -42,7 +42,7 @@ class ConcreteSession: EurofurenceSession {
     private let maps: Maps
 
     init(userPreferences: UserPreferences,
-         dataStore: EurofurenceDataStore,
+         dataStore: DataStore,
          remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration?,
          pushPermissionsRequester: PushPermissionsRequester?,
          clock: Clock,

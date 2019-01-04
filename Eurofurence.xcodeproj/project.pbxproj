@@ -900,7 +900,7 @@
 		CAEA0DA1216BDE2300B0C7A6 /* ConventionStartDateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E7220A4B6A5004AFED6 /* ConventionStartDateRepository.swift */; };
 		CAEA0DA2216BDE2300B0C7A6 /* CredentialStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD7804F1F1E2D13002A8333 /* CredentialStore.swift */; };
 		CAEA0DA3216BDE2300B0C7A6 /* DateDistanceCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E6F20A4B691004AFED6 /* DateDistanceCalculator.swift */; };
-		CAEA0DA4216BDE2300B0C7A6 /* EurofurenceDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D07FA1FE902ED00BFD785 /* EurofurenceDataStore.swift */; };
+		CAEA0DA4216BDE2300B0C7A6 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D07FA1FE902ED00BFD785 /* DataStore.swift */; };
 		CAEA0DA5216BDE2300B0C7A6 /* ForceRefreshRequired.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C3372119BFFE003C1C4E /* ForceRefreshRequired.swift */; };
 		CAEA0DA6216BDE2300B0C7A6 /* HoursDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990EC20ACD35C001E3F1A /* HoursDateFormatter.swift */; };
 		CAEA0DA7216BDE2300B0C7A6 /* ImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1ECC20B6D65400D904B5 /* ImageRepository.swift */; };
@@ -1866,7 +1866,7 @@
 		CA2D04FD20EE910E00CF54E1 /* NotificationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsService.swift; sourceTree = "<group>"; };
 		CA2D04FF20EE92CD00CF54E1 /* WhenSchedulingReminderForEvent_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSchedulingReminderForEvent_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA2D07F81FE9021A00BFD785 /* WhenResolvingDataStoreState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenResolvingDataStoreState.swift; sourceTree = "<group>"; };
-		CA2D07FA1FE902ED00BFD785 /* EurofurenceDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EurofurenceDataStore.swift; sourceTree = "<group>"; };
+		CA2D07FA1FE902ED00BFD785 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		CA2D07FC1FE904CD00BFD785 /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		CA2D07FF1FE94AF900BFD785 /* WhenTheAppLaunchesWithAbsentDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenTheAppLaunchesWithAbsentDataStore.swift; sourceTree = "<group>"; };
 		CA2D08011FE94B5500BFD785 /* WhenTheAppLaunchesWithStaleDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenTheAppLaunchesWithStaleDataStore.swift; sourceTree = "<group>"; };
@@ -5540,7 +5540,7 @@
 				CA162E7220A4B6A5004AFED6 /* ConventionStartDateRepository.swift */,
 				CAD7804F1F1E2D13002A8333 /* CredentialStore.swift */,
 				CA162E6F20A4B691004AFED6 /* DateDistanceCalculator.swift */,
-				CA2D07FA1FE902ED00BFD785 /* EurofurenceDataStore.swift */,
+				CA2D07FA1FE902ED00BFD785 /* DataStore.swift */,
 				CA44C3372119BFFE003C1C4E /* ForceRefreshRequired.swift */,
 				CA3990EC20ACD35C001E3F1A /* HoursDateFormatter.swift */,
 				CACF1ECC20B6D65400D904B5 /* ImageRepository.swift */,
@@ -8478,7 +8478,7 @@
 				CAEA0DE2216BDE2300B0C7A6 /* TrackEntity+Adaptation.swift in Sources */,
 				CAEA0DDB216BDE2300B0C7A6 /* ImageModelEntity+Adaptation.swift in Sources */,
 				CAEA0D8B216BDD9500B0C7A6 /* DataStoreChangedConsumer.swift in Sources */,
-				CAEA0DA4216BDE2300B0C7A6 /* EurofurenceDataStore.swift in Sources */,
+				CAEA0DA4216BDE2300B0C7A6 /* DataStore.swift in Sources */,
 				CAEA0DDD216BDE2300B0C7A6 /* KnowledgeGroupEntity+Adaptation.swift in Sources */,
 				CAEA0DF4216BDE3100B0C7A6 /* APIConferenceDay.swift in Sources */,
 				CAEA0DE7216BDE2300B0C7A6 /* LoggedOut.swift in Sources */,

@@ -9,7 +9,7 @@
 import CoreData
 import Foundation
 
-public struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
+public struct CoreDataEurofurenceDataStore: DataStore {
 
     private class EurofurencePersistentContainer: NSPersistentContainer {
         override class func defaultDirectoryURL() -> URL {
@@ -40,9 +40,9 @@ public struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
         self.init(storeName: "EF24")
     }
 
-    // MARK: EurofurenceDataStore
+    // MARK: DataStore
 
-    public func performTransaction(_ block: @escaping (EurofurenceDataStoreTransaction) -> Void) {
+    public func performTransaction(_ block: @escaping (DataStoreTransaction) -> Void) {
         let context = container.viewContext
         let transaction = Transaction()
         block(transaction)
@@ -139,7 +139,7 @@ public struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
         return models
     }
 
-    class Transaction: EurofurenceDataStoreTransaction {
+    class Transaction: DataStoreTransaction {
 
         // MARK: Properties
 
@@ -153,7 +153,7 @@ public struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
             }
         }
 
-        // MARK: EurofurenceDataStoreTransaction
+        // MARK: DataStoreTransaction
 
         func saveLastRefreshDate(_ lastRefreshDate: Date) {
             mutations.append { (context) in

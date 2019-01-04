@@ -11,7 +11,7 @@ import Foundation
 public class EurofurenceSessionBuilder {
 
     private var userPreferences: UserPreferences
-    private var dataStore: EurofurenceDataStore
+    private var dataStore: DataStore
     private var remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration?
     private var pushPermissionsRequester: PushPermissionsRequester?
     private var clock: Clock
@@ -65,7 +65,7 @@ public class EurofurenceSessionBuilder {
     }
 
     @discardableResult
-    public func with(_ dataStore: EurofurenceDataStore) -> EurofurenceSessionBuilder {
+    public func with(_ dataStore: DataStore) -> EurofurenceSessionBuilder {
         self.dataStore = dataStore
         return self
     }

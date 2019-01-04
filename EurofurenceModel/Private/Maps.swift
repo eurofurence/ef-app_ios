@@ -11,7 +11,7 @@ import Foundation
 
 class Maps {
 
-    private let dataStore: EurofurenceDataStore
+    private let dataStore: DataStore
     private let imageRepository: ImageRepository
     private let dealers: Dealers
 
@@ -28,7 +28,7 @@ class Maps {
     private var observers = [MapsObserver]()
 
     init(eventBus: EventBus,
-         dataStore: EurofurenceDataStore,
+         dataStore: DataStore,
          imageRepository: ImageRepository,
          dealers: Dealers) {
         self.dataStore = dataStore

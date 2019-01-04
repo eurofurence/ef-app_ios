@@ -1,5 +1,5 @@
 //
-//  EurofurenceDataStore.swift
+//  DataStore.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 19/12/2017.
@@ -8,9 +8,9 @@
 
 import Foundation
 
-public protocol EurofurenceDataStore {
+public protocol DataStore {
 
-    func performTransaction(_ block: @escaping (EurofurenceDataStoreTransaction) -> Void)
+    func performTransaction(_ block: @escaping (DataStoreTransaction) -> Void)
 
     func getLastRefreshDate() -> Date?
     func getSavedKnowledgeGroups() -> [APIKnowledgeGroup]?
@@ -28,7 +28,7 @@ public protocol EurofurenceDataStore {
 
 }
 
-public protocol EurofurenceDataStoreTransaction {
+public protocol DataStoreTransaction {
 
     func saveLastRefreshDate(_ lastRefreshDate: Date)
     func saveKnowledgeGroups(_ knowledgeGroups: [APIKnowledgeGroup])

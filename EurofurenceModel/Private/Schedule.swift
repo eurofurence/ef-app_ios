@@ -22,7 +22,7 @@ class Schedule: ClockDelegate {
     // MARK: Properties
 
     private var observers = [EventsServiceObserver]()
-    private let dataStore: EurofurenceDataStore
+    private let dataStore: DataStore
     private let imageCache: ImagesCache
     private let clock: Clock
     private let timeIntervalForUpcomingEventsSinceNow: TimeInterval
@@ -75,7 +75,7 @@ class Schedule: ClockDelegate {
     // MARK: Initialization
 
     init(eventBus: EventBus,
-         dataStore: EurofurenceDataStore,
+         dataStore: DataStore,
          imageCache: ImagesCache,
          clock: Clock,
          timeIntervalForUpcomingEventsSinceNow: TimeInterval,

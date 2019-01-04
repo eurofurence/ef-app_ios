@@ -9,7 +9,7 @@
 import EurofurenceModel
 import Foundation
 
-class CapturingEurofurenceDataStore: EurofurenceDataStore {
+class CapturingEurofurenceDataStore: DataStore {
 
     func getSavedAnnouncements() -> [APIAnnouncement]? {
         return transaction.persistedAnnouncements
@@ -66,7 +66,7 @@ class CapturingEurofurenceDataStore: EurofurenceDataStore {
     private(set) var capturedKnowledgeGroupsToSave: [KnowledgeGroup]?
     var transactionInvokedBlock: (() -> Void)?
     let transaction = CapturingEurofurenceDataStoreTransaction()
-    func performTransaction(_ block: @escaping (EurofurenceDataStoreTransaction) -> Void) {
+    func performTransaction(_ block: @escaping (DataStoreTransaction) -> Void) {
         block(transaction)
         transactionInvokedBlock?()
     }
@@ -75,7 +75,7 @@ class CapturingEurofurenceDataStore: EurofurenceDataStore {
 
 extension CapturingEurofurenceDataStore {
 
-    func save(_ response: APISyncResponse, lastRefreshDate: Date = Date(), block: ((EurofurenceDataStoreTransaction) -> Void)? = nil) {
+    func save(_ response: APISyncResponse, lastRefreshDate: Date = Date(), block: ((DataStoreTransaction) -> Void)? = nil) {
         performTransaction { (transaction) in
             transaction.saveLastRefreshDate(lastRefreshDate)
             transaction.saveKnowledgeGroups(response.knowledgeGroups.changed)
