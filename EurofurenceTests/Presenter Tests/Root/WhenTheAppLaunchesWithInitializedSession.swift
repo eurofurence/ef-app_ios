@@ -12,23 +12,11 @@ import XCTest
 
 class WhenTheAppLaunchesWithInitializedSession: XCTestCase {
 
-    var context: RootModuleTestBuilder.Context!
+    func testTheAppShouldFollowThePrincipleModulePathway() {
+        let context = RootModuleTestBuilder().with(storeState: .initialized).build()
 
-    override func setUp() {
-        super.setUp()
-
-        context = RootModuleTestBuilder().with(storeState: .initialized).build()
-    }
-
-    func testAndTheStoreIsAvailableTheDelegateIsNotToldToPreloadStore() {
         XCTAssertFalse(context.delegate.toldStoreShouldRefresh)
-    }
-
-    func testAndTheStoreIsAvailableTheDelegateIsNotToldToShowTutorial() {
         XCTAssertFalse(context.delegate.toldTutorialShouldBePresented)
-    }
-
-    func testAndTheStoreIsAvailableTheDelegateIsNotToldToShowPrincipleModule() {
         XCTAssertTrue(context.delegate.toldPrincipleModuleShouldBePresented)
     }
 
