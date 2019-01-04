@@ -10,10 +10,22 @@ import UIKit
 
 struct Theme {
 
-    static func apply() {
-        let whiteTextAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.white]
-        let pantone330UColourImage = makePantone330UShadowImage()
+    private static let whiteTextAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.white]
+    private static let pantone330UColourImage = makePantone330UShadowImage()
 
+    static func apply() {
+        styleNavigationBars()
+        styleTabBars()
+        styleButtons()
+        styleTableViews()
+        styleTabBarItems()
+        styleNavigationBarExtensions()
+        styleSearchBars()
+        styleTextFields()
+        styleSegmentedControls()
+    }
+
+    private static func styleNavigationBars() {
         let navigationBar = UINavigationBar.appearance()
         navigationBar.isTranslucent = false
         navigationBar.barTintColor = .pantone330U
@@ -21,42 +33,73 @@ struct Theme {
         navigationBar.titleTextAttributes = whiteTextAttributes
         navigationBar.setBackgroundImage(pantone330UColourImage, for: .default)
         navigationBar.shadowImage = pantone330UColourImage
+    }
 
+    private static func styleTabBars() {
         let tabBar = UITabBar.appearance()
         tabBar.isTranslucent = false
         tabBar.barTintColor = .pantone330U
         tabBar.tintColor = .white
         tabBar.backgroundImage = pantone330UColourImage
         tabBar.shadowImage = pantone330UColourImage
+    }
 
+    private static func styleButtons() {
+        styleButtonsWithinTableViewCells()
+        styleButtonsWithinNavigationBars()
+    }
+
+    private static func styleButtonsWithinTableViewCells() {
         let buttonInsideTableView = UIButton.appearance(whenContainedInInstancesOf: [UITableViewCell.self])
         buttonInsideTableView.setTitleColor(.pantone330U, for: .normal)
+    }
 
-        let tableView = UITableView.appearance()
-        tableView.sectionIndexColor = .pantone330U
-
-        let tabBarItem = UITabBarItem.appearance()
-        tabBarItem.setTitleTextAttributes(whiteTextAttributes, for: .normal)
-
+    private static func styleButtonsWithinNavigationBars() {
         let buttonsInsideNavigationBar = UIButton.appearance(whenContainedInInstancesOf: [UINavigationBar.self])
         buttonsInsideNavigationBar.tintColor = .white
+    }
 
+    private static func styleTableViews() {
+        let tableView = UITableView.appearance()
+        tableView.sectionIndexColor = .pantone330U
+    }
+
+    private static func styleTabBarItems() {
+        let tabBarItem = UITabBarItem.appearance()
+        tabBarItem.setTitleTextAttributes(whiteTextAttributes, for: .normal)
+    }
+
+    private static func styleNavigationBarExtensions() {
         let navigationBarExtension = NavigationBarViewExtensionContainer.appearance()
         navigationBarExtension.backgroundColor = .pantone330U
 
+        styleLabelsWithinNavigationBarExtensions()
+    }
+
+    private static func styleLabelsWithinNavigationBarExtensions() {
         let labelsInsideNavigationBarExtension = UILabel.appearance(whenContainedInInstancesOf: [NavigationBarViewExtensionContainer.self])
         labelsInsideNavigationBarExtension.textColor = .white
+    }
 
+    private static func styleSearchBars() {
         let searchBar = UISearchBar.appearance()
         searchBar.barTintColor = .pantone330U
         searchBar.isTranslucent = false
 
-        let textField = UITextField.appearance()
-        textField.tintColor = .pantone330U
+        styleBarButtonItemsWithinSearchBars()
+    }
 
+    private static func styleBarButtonItemsWithinSearchBars() {
         let buttonsInsideSearchBar = UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self])
         buttonsInsideSearchBar.setTitleTextAttributes(whiteTextAttributes, for: .normal)
+    }
 
+    private static func styleTextFields() {
+        let textField = UITextField.appearance()
+        textField.tintColor = .pantone330U
+    }
+
+    private static func styleSegmentedControls() {
         let segmentControl = UISegmentedControl.appearance()
         segmentControl.tintColor = .white
     }
