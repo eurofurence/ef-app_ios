@@ -19,16 +19,10 @@ public protocol EurofurenceSession: NotificationService,
                                     ConventionCountdownService,
                                     CollectThemAllService,
                                     MapsService,
-                                    SessionStateService {
+                                    SessionStateService,
+                                    PrivateMessagesService2 {
 
     func setExternalContentHandler(_ externalContentHandler: ExternalContentHandler)
-
-    var localPrivateMessages: [Message] { get }
-
     func storeRemoteNotificationsToken(_ deviceToken: Data)
-
-    func add(_ observer: PrivateMessagesObserver)
-    func fetchPrivateMessages(completionHandler: @escaping (PrivateMessageResult) -> Void)
-    func markMessageAsRead(_ message: Message)
 
 }
