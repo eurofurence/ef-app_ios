@@ -785,6 +785,7 @@
 		CACD2F0821DEBD4400BACD91 /* EurofurencePrivateMessagesServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A94B1F55877100628833 /* EurofurencePrivateMessagesServiceTests.swift */; };
 		CACD2F0921DEBD5600BACD91 /* PrivateMessagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A9491F54BB5600628833 /* PrivateMessagesService.swift */; };
 		CACD2F0A21DEBD5600BACD91 /* EurofurencePrivateMessagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A9521F55F3B300628833 /* EurofurencePrivateMessagesService.swift */; };
+		CACD2F0D21DF832000BACD91 /* NotificationServiceFetchResultAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD2F0C21DF832000BACD91 /* NotificationServiceFetchResultAdapter.swift */; };
 		CACF1E4620AE292D00D904B5 /* WhenNewsModuleSelectsEvent_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E4520AE292D00D904B5 /* WhenNewsModuleSelectsEvent_DirectorShould.swift */; };
 		CACF1E4820AE29CB00D904B5 /* StubEventDetailModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E4720AE29CB00D904B5 /* StubEventDetailModuleFactory.swift */; };
 		CACF1E4C20AE2A5A00D904B5 /* EventDetailModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E4B20AE2A5A00D904B5 /* EventDetailModuleProviding.swift */; };
@@ -2459,6 +2460,7 @@
 		CACD2EAC21D67E7F00BACD91 /* PreprocessorBuildConfigurationProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreprocessorBuildConfigurationProviding.swift; sourceTree = "<group>"; };
 		CACD2EAE21D67EB000BACD91 /* BundleAppVersionProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleAppVersionProviding.swift; sourceTree = "<group>"; };
 		CACD2F0621DEB9DE00BACD91 /* SessionStateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStateService.swift; sourceTree = "<group>"; };
+		CACD2F0C21DF832000BACD91 /* NotificationServiceFetchResultAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationServiceFetchResultAdapter.swift; sourceTree = "<group>"; };
 		CACE1B041F2BBA1A00DFCB60 /* WhenLoggingOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenLoggingOut.swift; sourceTree = "<group>"; };
 		CACE1B061F2BBEC900DFCB60 /* CapturingLogoutObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingLogoutObserver.swift; sourceTree = "<group>"; };
 		CACF1E4520AE292D00D904B5 /* WhenNewsModuleSelectsEvent_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenNewsModuleSelectsEvent_DirectorShould.swift; sourceTree = "<group>"; };
@@ -3243,6 +3245,7 @@
 				CAF7055F1F82CBC800A9FEA2 /* Director */,
 				781A94441F1A1DCE002DE70F /* Firebase Notification Registration */,
 				78C86D5B1F12355C003A20E6 /* Module Tests */,
+				CACD2F0B21DF830300BACD91 /* Notification Content Adapter */,
 				CA82409B212498E6007E4A70 /* Review Prompt */,
 				6EF96CCD1F0EDB1300EE6134 /* Test Doubles */,
 				CAF9A94F1F558E6200628833 /* Test Utilities */,
@@ -5837,6 +5840,14 @@
 			name = Application;
 			sourceTree = "<group>";
 		};
+		CACD2F0B21DF830300BACD91 /* Notification Content Adapter */ = {
+			isa = PBXGroup;
+			children = (
+				CACD2F0C21DF832000BACD91 /* NotificationServiceFetchResultAdapter.swift */,
+			);
+			path = "Notification Content Adapter";
+			sourceTree = "<group>";
+		};
 		CACF1E4920AE2A3D00D904B5 /* Event Detail */ = {
 			isa = PBXGroup;
 			children = (
@@ -8177,6 +8188,7 @@
 				CACF26D320FE5D2C00EDE150 /* WhenToldToFilterToAllEvents_ScheduleInteractorShould.swift in Sources */,
 				CA401084210FAFB10056E16C /* BeforeKnowledgeGroupEntriesSceneLoads.swift in Sources */,
 				CA4FBE0E1F72FF2A00D29405 /* MessagesPresenterTestsWhenBindingMessages.swift in Sources */,
+				CACD2F0D21DF832000BACD91 /* NotificationServiceFetchResultAdapter.swift in Sources */,
 				CA36A46520D84A8100EE6537 /* FakeDealersInteractor.swift in Sources */,
 				CA283AD120EAC64A00F7D195 /* WhenAnnouncementsViewModelUpdatesAnnouncements_AnnouncementsPresenterShould.swift in Sources */,
 				CA36A47D20D85D4500EE6537 /* WhenBindingDealerComponent_ForDealerWithAfterDarkContent_DealersPresenterShould.swift in Sources */,
