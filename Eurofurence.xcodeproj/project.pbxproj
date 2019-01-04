@@ -32,7 +32,6 @@
 		781A94461F1A1E1C002DE70F /* FirebaseNotificationsTokenRegistrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781A94451F1A1E1C002DE70F /* FirebaseNotificationsTokenRegistrationTests.swift */; };
 		781A94481F1A1E5D002DE70F /* EurofurenceFCMDeviceRegistrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781A94471F1A1E5D002DE70F /* EurofurenceFCMDeviceRegistrationTests.swift */; };
 		7820A6DB1F13F4DE004C0FB5 /* StubPresentationAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6DA1F13F4DE004C0FB5 /* StubPresentationAssets.swift */; };
-		7820A6DF1F13F6CE004C0FB5 /* ApplicationPresentationAssetsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6DE1F13F6CE004C0FB5 /* ApplicationPresentationAssetsTests.swift */; };
 		7820A6E11F13FC7F004C0FB5 /* NetworkReachabilityTestDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6E01F13FC7F004C0FB5 /* NetworkReachabilityTestDoubles.swift */; };
 		7820A6E51F140056004C0FB5 /* CapturingAlertRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6E41F140056004C0FB5 /* CapturingAlertRouter.swift */; };
 		7820A6E71F1400A8004C0FB5 /* AlertRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6E61F1400A8004C0FB5 /* AlertRouter.swift */; };
@@ -1424,7 +1423,6 @@
 		781A94451F1A1E1C002DE70F /* FirebaseNotificationsTokenRegistrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseNotificationsTokenRegistrationTests.swift; sourceTree = "<group>"; };
 		781A94471F1A1E5D002DE70F /* EurofurenceFCMDeviceRegistrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EurofurenceFCMDeviceRegistrationTests.swift; sourceTree = "<group>"; };
 		7820A6DA1F13F4DE004C0FB5 /* StubPresentationAssets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubPresentationAssets.swift; sourceTree = "<group>"; };
-		7820A6DE1F13F6CE004C0FB5 /* ApplicationPresentationAssetsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationPresentationAssetsTests.swift; sourceTree = "<group>"; };
 		7820A6E01F13FC7F004C0FB5 /* NetworkReachabilityTestDoubles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkReachabilityTestDoubles.swift; sourceTree = "<group>"; };
 		7820A6E41F140056004C0FB5 /* CapturingAlertRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingAlertRouter.swift; sourceTree = "<group>"; };
 		7820A6E61F1400A8004C0FB5 /* AlertRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertRouter.swift; sourceTree = "<group>"; };
@@ -3224,7 +3222,6 @@
 			children = (
 				9ACF994E1EBE172D006FC958 /* Info.plist */,
 				78CA0D051F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift */,
-				7820A6DE1F13F6CE004C0FB5 /* ApplicationPresentationAssetsTests.swift */,
 				CA52C68220D5980C009D3A9E /* ApplicationSignificantTimeChangeAdapterTests.swift */,
 				7820A6E81F1415B0004C0FB5 /* StoryboardAlertRouterTests.swift */,
 				78455B511F1179F4005BE2D7 /* StoryboardTutorialRouterTests.swift */,
@@ -8194,7 +8191,6 @@
 				CAF81C6220DD95BC00898C52 /* DealerDetailAboutTheArtistViewModel+RandomValueProviding.swift in Sources */,
 				CA8E7EF41FB08D3B00F0BF10 /* PhoneWindowWireframeTests.swift in Sources */,
 				CACF1E9E20B4386B00D904B5 /* WhenBindingEventDescription_EventDetailPresenterShould.swift in Sources */,
-				7820A6DF1F13F6CE004C0FB5 /* ApplicationPresentationAssetsTests.swift in Sources */,
 				CA36A49920D9778400EE6537 /* FakeDealersIndex.swift in Sources */,
 				CA283A8620E9483F00F7D195 /* WhenPreparingAnnouncementViewModel_ForReadAnnouncement_NewsInteractorShould.swift in Sources */,
 				CA8E17EF1F817A8C003C348C /* CapturingPreloadInteractor.swift in Sources */,
