@@ -10,16 +10,16 @@ import EurofurenceModel
 
 struct PhoneRootModuleFactory: RootModuleProviding {
 
-    var dataStoreStateService: DataStoreStateService
+    var sessionStateService: SessionStateService
 
     func makeRootModule(_ delegate: RootModuleDelegate) {
-        let actions: [EurofurenceDataStoreState : () -> Void] = [
-            .absent: delegate.rootModuleDidDetermineTutorialShouldBePresented,
+        let actions: [EurofurenceSessionState : () -> Void] = [
+            .uninitialized: delegate.rootModuleDidDetermineTutorialShouldBePresented,
             .stale: delegate.rootModuleDidDetermineStoreShouldRefresh,
-            .available: delegate.rootModuleDidDetermineRootModuleShouldBePresented
+            .initialized: delegate.rootModuleDidDetermineRootModuleShouldBePresented
         ]
 
-        dataStoreStateService.resolveDataStoreState { actions[$0]!() }
+        sessionStateService.determineSessionState { actions[$0]!() }
     }
 
 }

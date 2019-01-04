@@ -137,8 +137,8 @@ public class CapturingEurofurenceSession: EurofurenceSession {
 
     public var localPrivateMessages: [Message] = []
 
-    private(set) public  var capturedStoreStateResolutionHandler: (((EurofurenceDataStoreState) -> Void))?
-    public func resolveDataStoreState(completionHandler: @escaping (EurofurenceDataStoreState) -> Void) {
+    private(set) public  var capturedStoreStateResolutionHandler: (((EurofurenceSessionState) -> Void))?
+    public func determineSessionState(completionHandler: @escaping (EurofurenceSessionState) -> Void) {
         capturedStoreStateResolutionHandler = completionHandler
     }
 

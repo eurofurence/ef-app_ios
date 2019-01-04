@@ -1,5 +1,5 @@
 //
-//  EurofurenceDataStoreState.swift
+//  EurofurenceSessionState.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 28/12/2018.
@@ -8,8 +8,8 @@
 
 import Foundation
 
-public enum EurofurenceDataStoreState {
-    case absent
+public enum EurofurenceSessionState {
+    case uninitialized
     case stale
-    case available
+    case initialized
 }

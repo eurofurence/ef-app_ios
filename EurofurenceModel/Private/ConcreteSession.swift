@@ -156,13 +156,13 @@ class ConcreteSession: EurofurenceSession {
         refreshObservers.append(observer)
     }
 
-    public func resolveDataStoreState(completionHandler: @escaping (EurofurenceDataStoreState) -> Void) {
+    public func determineSessionState(completionHandler: @escaping (EurofurenceSessionState) -> Void) {
         let shouldPerformForceRefresh: Bool = forceRefreshRequired.isForceRefreshRequired
-        let state: EurofurenceDataStoreState = {
-            guard dataStore.getLastRefreshDate() != nil else { return .absent }
+        let state: EurofurenceSessionState = {
+            guard dataStore.getLastRefreshDate() != nil else { return .uninitialized }
 
             let dataStoreStale = shouldPerformForceRefresh || userPreferences.refreshStoreOnLaunch
-            return dataStoreStale ? .stale : .available
+            return dataStoreStale ? .stale : .initialized
         }()
 
         completionHandler(state)

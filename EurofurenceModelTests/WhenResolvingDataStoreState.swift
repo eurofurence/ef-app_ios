@@ -14,10 +14,10 @@ class WhenResolvingDataStoreState: XCTestCase {
     func testStoreWithNoLastRefreshTimeIsAbsent() {
         let capturingDataStore = CapturingEurofurenceDataStore()
         let context = ApplicationTestBuilder().with(capturingDataStore).build()
-        var state: EurofurenceDataStoreState?
-        context.application.resolveDataStoreState { state = $0 }
+        var state: EurofurenceSessionState?
+        context.application.determineSessionState { state = $0 }
 
-        XCTAssertEqual(.absent, state)
+        XCTAssertEqual(.uninitialized, state)
     }
 
     func testStoreWithLastRefreshDateWithRefreshOnLaunchEnabledIsStale() {
@@ -29,8 +29,8 @@ class WhenResolvingDataStoreState: XCTestCase {
         let userPreferences = StubUserPreferences()
         userPreferences.refreshStoreOnLaunch = true
         let context = ApplicationTestBuilder().with(capturingDataStore).with(userPreferences).build()
-        var state: EurofurenceDataStoreState?
-        context.application.resolveDataStoreState { state = $0 }
+        var state: EurofurenceSessionState?
+        context.application.determineSessionState { state = $0 }
 
         XCTAssertEqual(.stale, state)
     }
@@ -44,10 +44,10 @@ class WhenResolvingDataStoreState: XCTestCase {
         let userPreferences = StubUserPreferences()
         userPreferences.refreshStoreOnLaunch = false
         let context = ApplicationTestBuilder().with(capturingDataStore).with(userPreferences).build()
-        var state: EurofurenceDataStoreState?
-        context.application.resolveDataStoreState { state = $0 }
+        var state: EurofurenceSessionState?
+        context.application.determineSessionState { state = $0 }
 
-        XCTAssertEqual(.available, state)
+        XCTAssertEqual(.initialized, state)
     }
 
 }

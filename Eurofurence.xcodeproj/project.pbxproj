@@ -352,9 +352,9 @@
 		CA2A586D20F76F03002C69B6 /* UIKitMapCoordinateRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2A586C20F76F03002C69B6 /* UIKitMapCoordinateRender.swift */; };
 		CA2A586F20F7F137002C69B6 /* AnnouncementDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2A586E20F7F137002C69B6 /* AnnouncementDateFormatter.swift */; };
 		CA2A587120F7F369002C69B6 /* FoundationAnnouncementDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2A587020F7F369002C69B6 /* FoundationAnnouncementDateFormatter.swift */; };
-		CA2D08001FE94AF900BFD785 /* WhenTheAppLaunchesWithAbsentDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D07FF1FE94AF900BFD785 /* WhenTheAppLaunchesWithAbsentDataStore.swift */; };
-		CA2D08021FE94B5500BFD785 /* WhenTheAppLaunchesWithStaleDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D08011FE94B5500BFD785 /* WhenTheAppLaunchesWithStaleDataStore.swift */; };
-		CA2D08041FE94B9100BFD785 /* WhenTheAppLaunchesWithAvailableDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D08031FE94B9100BFD785 /* WhenTheAppLaunchesWithAvailableDataStore.swift */; };
+		CA2D08001FE94AF900BFD785 /* WhenTheAppLaunchesWithUninitializedSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D07FF1FE94AF900BFD785 /* WhenTheAppLaunchesWithUninitializedSession.swift */; };
+		CA2D08021FE94B5500BFD785 /* WhenTheAppLaunchesWithStaleSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D08011FE94B5500BFD785 /* WhenTheAppLaunchesWithStaleSession.swift */; };
+		CA2D08041FE94B9100BFD785 /* WhenTheAppLaunchesWithInitializedSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D08031FE94B9100BFD785 /* WhenTheAppLaunchesWithInitializedSession.swift */; };
 		CA2D08061FE94BF000BFD785 /* RootModuleTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D08051FE94BF000BFD785 /* RootModuleTestBuilder.swift */; };
 		CA2D080C1FE94F9900BFD785 /* TutorialModuleTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D080B1FE94F9900BFD785 /* TutorialModuleTestBuilder.swift */; };
 		CA2D08121FE9540F00BFD785 /* WhenThePerformInitialDownloadPageAppears.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D08111FE9540F00BFD785 /* WhenThePerformInitialDownloadPageAppears.swift */; };
@@ -778,10 +778,10 @@
 		CACD2EA421D6785F00BACD91 /* EventHandlerRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA49E93E2015480A00EB571C /* EventHandlerRegistration.swift */; };
 		CACD2EA521D6785F00BACD91 /* EventBus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D97CE201611430074838F /* EventBus.swift */; };
 		CACD2EA621D6788200BACD91 /* EventBus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CACD2E9121D677CB00BACD91 /* EventBus.framework */; };
-		CACD2EB021D67EE300BACD91 /* EurofurenceDataStoreState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD2EAA21D67DA600BACD91 /* EurofurenceDataStoreState.swift */; };
+		CACD2EB021D67EE300BACD91 /* EurofurenceSessionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD2EAA21D67DA600BACD91 /* EurofurenceSessionState.swift */; };
 		CACD2EB121D67EF200BACD91 /* BundleAppVersionProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD2EAE21D67EB000BACD91 /* BundleAppVersionProviding.swift */; };
 		CACD2EB221D67F0F00BACD91 /* PreprocessorBuildConfigurationProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD2EAC21D67E7F00BACD91 /* PreprocessorBuildConfigurationProviding.swift */; };
-		CACD2F0721DEB9DE00BACD91 /* DataStoreStateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD2F0621DEB9DE00BACD91 /* DataStoreStateService.swift */; };
+		CACD2F0721DEB9DE00BACD91 /* SessionStateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD2F0621DEB9DE00BACD91 /* SessionStateService.swift */; };
 		CACD2F0821DEBD4400BACD91 /* EurofurencePrivateMessagesServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A94B1F55877100628833 /* EurofurencePrivateMessagesServiceTests.swift */; };
 		CACD2F0921DEBD5600BACD91 /* PrivateMessagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A9491F54BB5600628833 /* PrivateMessagesService.swift */; };
 		CACD2F0A21DEBD5600BACD91 /* EurofurencePrivateMessagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A9521F55F3B300628833 /* EurofurencePrivateMessagesService.swift */; };
@@ -1868,9 +1868,9 @@
 		CA2D07F81FE9021A00BFD785 /* WhenResolvingDataStoreState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenResolvingDataStoreState.swift; sourceTree = "<group>"; };
 		CA2D07FA1FE902ED00BFD785 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		CA2D07FC1FE904CD00BFD785 /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
-		CA2D07FF1FE94AF900BFD785 /* WhenTheAppLaunchesWithAbsentDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenTheAppLaunchesWithAbsentDataStore.swift; sourceTree = "<group>"; };
-		CA2D08011FE94B5500BFD785 /* WhenTheAppLaunchesWithStaleDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenTheAppLaunchesWithStaleDataStore.swift; sourceTree = "<group>"; };
-		CA2D08031FE94B9100BFD785 /* WhenTheAppLaunchesWithAvailableDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenTheAppLaunchesWithAvailableDataStore.swift; sourceTree = "<group>"; };
+		CA2D07FF1FE94AF900BFD785 /* WhenTheAppLaunchesWithUninitializedSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenTheAppLaunchesWithUninitializedSession.swift; sourceTree = "<group>"; };
+		CA2D08011FE94B5500BFD785 /* WhenTheAppLaunchesWithStaleSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenTheAppLaunchesWithStaleSession.swift; sourceTree = "<group>"; };
+		CA2D08031FE94B9100BFD785 /* WhenTheAppLaunchesWithInitializedSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenTheAppLaunchesWithInitializedSession.swift; sourceTree = "<group>"; };
 		CA2D08051FE94BF000BFD785 /* RootModuleTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootModuleTestBuilder.swift; sourceTree = "<group>"; };
 		CA2D080B1FE94F9900BFD785 /* TutorialModuleTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialModuleTestBuilder.swift; sourceTree = "<group>"; };
 		CA2D08111FE9540F00BFD785 /* WhenThePerformInitialDownloadPageAppears.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenThePerformInitialDownloadPageAppears.swift; sourceTree = "<group>"; };
@@ -2455,10 +2455,10 @@
 		CACD2E9121D677CB00BACD91 /* EventBus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EventBus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CACD2E9321D677CB00BACD91 /* EventBus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventBus.h; sourceTree = "<group>"; };
 		CACD2E9421D677CB00BACD91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CACD2EAA21D67DA600BACD91 /* EurofurenceDataStoreState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EurofurenceDataStoreState.swift; sourceTree = "<group>"; };
+		CACD2EAA21D67DA600BACD91 /* EurofurenceSessionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EurofurenceSessionState.swift; sourceTree = "<group>"; };
 		CACD2EAC21D67E7F00BACD91 /* PreprocessorBuildConfigurationProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreprocessorBuildConfigurationProviding.swift; sourceTree = "<group>"; };
 		CACD2EAE21D67EB000BACD91 /* BundleAppVersionProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleAppVersionProviding.swift; sourceTree = "<group>"; };
-		CACD2F0621DEB9DE00BACD91 /* DataStoreStateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStoreStateService.swift; sourceTree = "<group>"; };
+		CACD2F0621DEB9DE00BACD91 /* SessionStateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStateService.swift; sourceTree = "<group>"; };
 		CACE1B041F2BBA1A00DFCB60 /* WhenLoggingOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenLoggingOut.swift; sourceTree = "<group>"; };
 		CACE1B061F2BBEC900DFCB60 /* CapturingLogoutObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingLogoutObserver.swift; sourceTree = "<group>"; };
 		CACF1E4520AE292D00D904B5 /* WhenNewsModuleSelectsEvent_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenNewsModuleSelectsEvent_DirectorShould.swift; sourceTree = "<group>"; };
@@ -4019,9 +4019,9 @@
 			isa = PBXGroup;
 			children = (
 				CA2D08051FE94BF000BFD785 /* RootModuleTestBuilder.swift */,
-				CA2D07FF1FE94AF900BFD785 /* WhenTheAppLaunchesWithAbsentDataStore.swift */,
-				CA2D08011FE94B5500BFD785 /* WhenTheAppLaunchesWithStaleDataStore.swift */,
-				CA2D08031FE94B9100BFD785 /* WhenTheAppLaunchesWithAvailableDataStore.swift */,
+				CA2D08031FE94B9100BFD785 /* WhenTheAppLaunchesWithInitializedSession.swift */,
+				CA2D08011FE94B5500BFD785 /* WhenTheAppLaunchesWithStaleSession.swift */,
+				CA2D07FF1FE94AF900BFD785 /* WhenTheAppLaunchesWithUninitializedSession.swift */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -5481,7 +5481,7 @@
 			children = (
 				CACD2E8721D6764000BACD91 /* ApplicationNotificationHandling.swift */,
 				CA2761C920E03143000E52AC /* DefaultCollectThemAllRequestFactory.swift */,
-				CACD2EAA21D67DA600BACD91 /* EurofurenceDataStoreState.swift */,
+				CACD2EAA21D67DA600BACD91 /* EurofurenceSessionState.swift */,
 				CAF9A9521F55F3B300628833 /* EurofurencePrivateMessagesService.swift */,
 				CA250DDF20D6EAF500E7513C /* EventsSearchController.swift */,
 				CA27618920DFEE00000E52AC /* ExternalContentHandler.swift */,
@@ -5516,7 +5516,7 @@
 				CAD3BDBE205AA69600C91E6E /* LinkLookupService.swift */,
 				CA6A8DAD20E2CF87007536CD /* MapsService.swift */,
 				CA283A6220E6ED6400F7D195 /* RefreshService.swift */,
-				CACD2F0621DEB9DE00BACD91 /* DataStoreStateService.swift */,
+				CACD2F0621DEB9DE00BACD91 /* SessionStateService.swift */,
 			);
 			path = Session;
 			sourceTree = "<group>";
@@ -7964,7 +7964,7 @@
 				CA6A8E0320E5048A007536CD /* WhenSceneTapsMapPosition_ThatProvidesSimpleContextualDetail_MapsPresenterShould.swift in Sources */,
 				CA283A7C20E91F3600F7D195 /* WhenToldToRefresh_ScheduleViewModelShould.swift in Sources */,
 				CA08159320D470F800F750D4 /* WhenViewModelIsToldToShowEventsForSpecificDay_ScheduleInteractorShould.swift in Sources */,
-				CA2D08021FE94B5500BFD785 /* WhenTheAppLaunchesWithStaleDataStore.swift in Sources */,
+				CA2D08021FE94B5500BFD785 /* WhenTheAppLaunchesWithStaleSession.swift in Sources */,
 				CA44C362211B1238003C1C4E /* WhenBindingMainStageEvent_EventDetailPresenterShould.swift in Sources */,
 				CA66C0162124A25400F87AFE /* FakeReviewPromptAppVersionRepository.swift in Sources */,
 				CACF1E6120AE2F0100D904B5 /* CapturingEventDetailScene.swift in Sources */,
@@ -7984,7 +7984,7 @@
 				CA6375BB208E03D100536BE2 /* StubDealersSceneFactory.swift in Sources */,
 				CA44C35C211B0D14003C1C4E /* WhenPreparingViewModel_ForEventWithKage_EventDetailInteractorShould.swift in Sources */,
 				CA6A8DF020E424C1007536CD /* BeforeMapDetailSceneLoads_MapDetailPresenterShould.swift in Sources */,
-				CA2D08041FE94B9100BFD785 /* WhenTheAppLaunchesWithAvailableDataStore.swift in Sources */,
+				CA2D08041FE94B9100BFD785 /* WhenTheAppLaunchesWithInitializedSession.swift in Sources */,
 				CA6A8D9420E2C596007536CD /* WhenBindingMap_MapsPresenterShould.swift in Sources */,
 				CA8E17F11F817AA2003C348C /* CapturingPreloadModuleDelegate.swift in Sources */,
 				CACF1EAC20B5C14F00D904B5 /* WhenPreparingViewModelForEventWithIdenticalAbstractAndDescription_EventDetailInteractorShould.swift in Sources */,
@@ -8260,7 +8260,7 @@
 				CACF1E7820B1D10E00D904B5 /* DummyEventDetailInteractor.swift in Sources */,
 				CA36A47920D8538A00EE6537 /* WhenBindingDealerComponent_ForDealerNotPresentOnAllDays_DealersPresenterShould.swift in Sources */,
 				CA36A4D420DAE15A00EE6537 /* WhenSceneSelectsDealer_DealersPresenterShould.swift in Sources */,
-				CA2D08001FE94AF900BFD785 /* WhenTheAppLaunchesWithAbsentDataStore.swift in Sources */,
+				CA2D08001FE94AF900BFD785 /* WhenTheAppLaunchesWithUninitializedSession.swift in Sources */,
 				CA8276BC204F25DF006A7419 /* InOrderToSupportSyncKnowledgeListLoading_KnowledgeListPresenterShould.swift in Sources */,
 				CA63753D208A6E4900536BE2 /* WhenLoggedOutBeforeConvention_NewsInteractorShould.swift in Sources */,
 				CA162E8B20A64352004AFED6 /* WhenLoggedOutDuringConvention_NewsInteractorShould.swift in Sources */,
@@ -8511,7 +8511,7 @@
 				CAEA0DFF216BDE3100B0C7A6 /* LoginAPI.swift in Sources */,
 				CACD2EB121D67EF200BACD91 /* BundleAppVersionProviding.swift in Sources */,
 				CAEA0DB6216BDE2300B0C7A6 /* ExtendedDealerData.swift in Sources */,
-				CACD2F0721DEB9DE00BACD91 /* DataStoreStateService.swift in Sources */,
+				CACD2F0721DEB9DE00BACD91 /* SessionStateService.swift in Sources */,
 				CAEA0DCE216BDE2300B0C7A6 /* Dealers.swift in Sources */,
 				CAEA0DE5216BDE2300B0C7A6 /* LatestDataFetchedEvent.swift in Sources */,
 				CAEA0DFC216BDE3100B0C7A6 /* APISyncResponse.swift in Sources */,
@@ -8573,7 +8573,7 @@
 				CAEA0E0B216BDE3100B0C7A6 /* JSONSession.swift in Sources */,
 				CAEA0D9D216BDE2300B0C7A6 /* EurofurenceSessionBuilder.swift in Sources */,
 				CAEA0DCD216BDE2300B0C7A6 /* EF24StartDateRepository.swift in Sources */,
-				CACD2EB021D67EE300BACD91 /* EurofurenceDataStoreState.swift in Sources */,
+				CACD2EB021D67EE300BACD91 /* EurofurenceSessionState.swift in Sources */,
 				CAEA0D93216BDD9500B0C7A6 /* SignificantTimeObserver.swift in Sources */,
 				CAEA0D92216BDD9500B0C7A6 /* PersistentImageRepository.swift in Sources */,
 				CAEA0DAD216BDE2300B0C7A6 /* SignificantTimeChangeAdapter.swift in Sources */,

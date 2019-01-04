@@ -1,5 +1,5 @@
 //
-//  WhenTheAppLaunchesWithStaleDataStore.swift
+//  WhenTheAppLaunchesWithStaleSession.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 19/12/2017.
@@ -10,7 +10,7 @@
 import EurofurenceModel
 import XCTest
 
-class WhenTheAppLaunchesWithStaleDataStore: XCTestCase {
+class WhenTheAppLaunchesWithStaleSession: XCTestCase {
 
     var context: RootModuleTestBuilder.Context!
 

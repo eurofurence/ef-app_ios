@@ -1,5 +1,5 @@
 //
-//  WhenTheAppLaunchesWithAbsentDataStore.swift
+//  WhenTheAppLaunchesWithUninitializedSession.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 19/12/2017.
@@ -10,14 +10,14 @@
 import EurofurenceModel
 import XCTest
 
-class WhenTheAppLaunchesWithAbsentDataStore: XCTestCase {
+class WhenTheAppLaunchesWithUninitializedSession: XCTestCase {
 
     var context: RootModuleTestBuilder.Context!
 
     override func setUp() {
         super.setUp()
 
-        context = RootModuleTestBuilder().with(storeState: .absent).build()
+        context = RootModuleTestBuilder().with(storeState: .uninitialized).build()
     }
 
     func testTheDelegateIsToldToShowTutorial() {

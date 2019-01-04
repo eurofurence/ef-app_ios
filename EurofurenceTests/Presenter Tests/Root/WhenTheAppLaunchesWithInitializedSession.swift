@@ -1,5 +1,5 @@
 //
-//  WhenTheAppLaunchesWithAvailableDataStore.swift
+//  WhenTheAppLaunchesWithInitializedSession.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 19/12/2017.
@@ -10,14 +10,14 @@
 import EurofurenceModel
 import XCTest
 
-class WhenTheAppLaunchesWithAvailableDataStore: XCTestCase {
+class WhenTheAppLaunchesWithInitializedSession: XCTestCase {
 
     var context: RootModuleTestBuilder.Context!
 
     override func setUp() {
         super.setUp()
 
-        context = RootModuleTestBuilder().with(storeState: .available).build()
+        context = RootModuleTestBuilder().with(storeState: .initialized).build()
     }
 
     func testAndTheStoreIsAvailableTheDelegateIsNotToldToPreloadStore() {

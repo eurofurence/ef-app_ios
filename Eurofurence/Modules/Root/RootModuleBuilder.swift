@@ -10,20 +10,20 @@ import EurofurenceModel
 
 class RootModuleBuilder {
 
-    private var dataStoreStateService: DataStoreStateService
+    private var sessionStateService: SessionStateService
 
     init() {
-        dataStoreStateService = SharedModel.instance.session
+        sessionStateService = SharedModel.instance.session
     }
 
     @discardableResult
-    func with(_ dataStoreStateService: DataStoreStateService) -> RootModuleBuilder {
-        self.dataStoreStateService = dataStoreStateService
+    func with(_ dataStoreStateService: SessionStateService) -> RootModuleBuilder {
+        self.sessionStateService = dataStoreStateService
         return self
     }
 
     func build() -> RootModuleProviding {
-        return PhoneRootModuleFactory(dataStoreStateService: dataStoreStateService)
+        return PhoneRootModuleFactory(sessionStateService: sessionStateService)
     }
 
 }

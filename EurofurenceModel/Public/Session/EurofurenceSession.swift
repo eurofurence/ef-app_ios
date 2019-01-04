@@ -19,7 +19,7 @@ public protocol EurofurenceSession: ApplicationNotificationHandling,
                                     ConventionCountdownService,
                                     CollectThemAllService,
                                     MapsService,
-                                    DataStoreStateService {
+                                    SessionStateService {
 
     func setExternalContentHandler(_ externalContentHandler: ExternalContentHandler)
 
