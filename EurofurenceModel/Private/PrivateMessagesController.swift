@@ -23,7 +23,12 @@ class PrivateMessagesController {
 
     func add(_ observer: PrivateMessagesObserver) {
         privateMessageObservers.append(observer)
+        observer.privateMessagesServiceDidUpdateUnreadMessageCount(to: determineUnreadMessageCount())
         observer.privateMessagesServiceDidFinishRefreshingMessages(messages: localPrivateMessages)
+    }
+    
+    private func determineUnreadMessageCount() -> Int {
+        return localPrivateMessages.filter({ $0.isRead == false }).count
     }
 
     func fetchPrivateMessages(completionHandler: @escaping (PrivateMessageResult) -> Void) {
@@ -32,7 +37,11 @@ class PrivateMessagesController {
                 if let messages = messages {
                     let messages = messages.sorted()
                     self.localPrivateMessages = messages
-                    self.privateMessageObservers.forEach({ $0.privateMessagesServiceDidFinishRefreshingMessages(messages: messages) })
+                    let unreadCount = self.determineUnreadMessageCount()
+                    self.privateMessageObservers.forEach({ (observer) in
+                        observer.privateMessagesServiceDidUpdateUnreadMessageCount(to: unreadCount)
+                        observer.privateMessagesServiceDidFinishRefreshingMessages(messages: messages)
+                    })
                     completionHandler(.success(messages))
                 } else {
                     completionHandler(.failedToLoad)

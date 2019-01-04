@@ -21,4 +21,12 @@ class WhenLaunchingApplication_PrivateMessagesShould: XCTestCase {
         XCTAssertTrue(observer.observedMessages.contains(elementsFrom: messages))
     }
 
+    func testProvideZeroCountForNumberOfUnreadPrivateMessages() {
+        let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
+        let observer = CapturingPrivateMessagesObserver()
+        context.application.add(observer)
+
+        XCTAssertEqual(0, observer.observedUnreadMessageCount)
+    }
+
 }

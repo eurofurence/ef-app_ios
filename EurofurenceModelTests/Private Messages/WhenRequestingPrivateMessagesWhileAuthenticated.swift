@@ -25,6 +25,7 @@ class WhenRequestingPrivateMessagesWhileAuthenticated: XCTestCase {
                                      tokenExpiryDate: .distantFuture)
         context = ApplicationTestBuilder().with(credential).build()
         capturingMessagesObserver = CapturingPrivateMessagesObserver()
+        context.application.add(capturingMessagesObserver)
         context.application.fetchPrivateMessages(completionHandler: capturingMessagesObserver.completionHandler)
     }
 
@@ -108,6 +109,31 @@ class WhenRequestingPrivateMessagesWhileAuthenticated: XCTestCase {
         let actualDateOrdering = capturingMessagesObserver.capturedMessages?.map({ $0.receivedDateTime }) ?? []
 
         XCTAssertEqual(expectedDateOrdering, actualDateOrdering)
+    }
+
+    func testObserversToldOfNewUnreadCount() {
+        let message = AppDataBuilder.makeMessage()
+        context.privateMessagesAPI.simulateSuccessfulResponse(response: [message])
+
+        XCTAssertEqual(1, capturingMessagesObserver.observedUnreadMessageCount)
+    }
+
+    func testReadMessagesNotIncludedInUnreadCount() {
+        let unreadMessage = AppDataBuilder.makeMessage(read: false)
+        let readMessage = AppDataBuilder.makeMessage(read: true)
+        context.privateMessagesAPI.simulateSuccessfulResponse(response: [unreadMessage, readMessage])
+
+        XCTAssertEqual(1, capturingMessagesObserver.observedUnreadMessageCount)
+    }
+
+    func testLateAddedObserversToldOfNewUnreadCount() {
+        let message = AppDataBuilder.makeMessage()
+        context.privateMessagesAPI.simulateSuccessfulResponse(response: [message])
+
+        let observer = CapturingPrivateMessagesObserver()
+        context.application.add(observer)
+
+        XCTAssertEqual(1, observer.observedUnreadMessageCount)
     }
 
 }

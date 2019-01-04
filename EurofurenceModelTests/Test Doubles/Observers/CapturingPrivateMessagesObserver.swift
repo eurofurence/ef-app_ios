@@ -18,8 +18,9 @@ class CapturingPrivateMessagesObserver: PrivateMessagesObserver {
         observedMessages = messages
     }
 
+    private(set) var observedUnreadMessageCount: Int?
     func privateMessagesServiceDidUpdateUnreadMessageCount(to unreadCount: Int) {
-
+        observedUnreadMessageCount = unreadCount
     }
 
     func privateMessagesServiceDidFailToLoadMessages() {
