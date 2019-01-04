@@ -42,4 +42,16 @@ class WhenMarkingMessageAsRead: XCTestCase {
         XCTAssertEqual(authenticationToken, context.privateMessagesAPI.capturedAuthTokenForMarkingMessageAsRead)
     }
 
+    func testItShouldNotifyObserversUnreadMessageCountChanged() {
+        let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
+        let observer = CapturingPrivateMessagesObserver()
+        context.application.add(observer)
+        context.application.refreshMessages()
+        let message = AppDataBuilder.makeMessage()
+        context.privateMessagesAPI.simulateSuccessfulResponse(response: [message])
+        context.application.markMessageAsRead(message)
+
+        XCTAssertEqual(0, observer.observedUnreadMessageCount)
+    }
+
 }

@@ -55,6 +55,17 @@ class PrivateMessagesController {
     func markMessageAsRead(_ message: APIMessage) {
         guard let token = userAuthenticationToken else { return }
         privateMessagesAPI.markMessageWithIdentifierAsRead(message.identifier, authorizationToken: token)
+        
+        if let idx = localPrivateMessages.firstIndex(where: { $0.identifier == message.identifier  }) {
+            var readMessage = localPrivateMessages[idx]
+            readMessage.isRead = true
+            localPrivateMessages[idx] = readMessage
+        }
+        
+        let unreadCount = determineUnreadMessageCount()
+        privateMessageObservers.forEach({ (observer) in
+            observer.privateMessagesServiceDidUpdateUnreadMessageCount(to: unreadCount)
+        })
     }
 
     private func userLoggedIn(_ event: DomainEvent.LoggedIn) {
