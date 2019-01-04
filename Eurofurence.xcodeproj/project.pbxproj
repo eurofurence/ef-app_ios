@@ -1207,7 +1207,6 @@
 		CAEA103E216E1DA600B0C7A6 /* CapturingPushPermissionsRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB3A7291F7532A2005DF77B /* CapturingPushPermissionsRequester.swift */; };
 		CAEA103F216E1E5000B0C7A6 /* StubDateDistanceCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E7520A4B6CE004AFED6 /* StubDateDistanceCalculator.swift */; };
 		CAEA1040216E1E7D00B0C7A6 /* AppDataBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD234411F5F2FA8004BB959 /* AppDataBuilder.swift */; };
-		CAEA1041216E1EE600B0C7A6 /* CapturingEurofurenceSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A9441F50B89000628833 /* CapturingEurofurenceSession.swift */; };
 		CAEA1042216E1FB400B0C7A6 /* CapturingSignificantTimeChangeAdapterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C68420D59A5B009D3A9E /* CapturingSignificantTimeChangeAdapterDelegate.swift */; };
 		CAEA1044216E775300B0C7A6 /* ScreenshotAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9845D91F29199E00E8821D /* ScreenshotAssistant.swift */; };
 		CAEA1046216E77DE00B0C7A6 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA1045216E77DE00B0C7A6 /* Theme.swift */; };
@@ -2663,7 +2662,6 @@
 		CAF81C7820DDAEAA00898C52 /* ExtendedDealerData+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExtendedDealerData+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CAF81C7A20DEE80900898C52 /* WhenFetchingExtendedDealerData_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingExtendedDealerData_ApplicationShould.swift; sourceTree = "<group>"; };
 		CAF9A9421F50B87600628833 /* EurofurenceSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EurofurenceSession.swift; sourceTree = "<group>"; };
-		CAF9A9441F50B89000628833 /* CapturingEurofurenceSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingEurofurenceSession.swift; sourceTree = "<group>"; };
 		CAF9A9491F54BB5600628833 /* PrivateMessagesService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivateMessagesService.swift; sourceTree = "<group>"; };
 		CAF9A94B1F55877100628833 /* EurofurencePrivateMessagesServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EurofurencePrivateMessagesServiceTests.swift; sourceTree = "<group>"; };
 		CAF9A94D1F558BEC00628833 /* WhenRetrievingLocalPrivateMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenRetrievingLocalPrivateMessages.swift; sourceTree = "<group>"; };
@@ -6185,7 +6183,6 @@
 			children = (
 				CAEA0F5E216D294000B0C7A6 /* EurofurenceAppCoreTestDoubles.h */,
 				CAEA0F5F216D294000B0C7A6 /* Info.plist */,
-				CAF9A9441F50B89000628833 /* CapturingEurofurenceSession.swift */,
 				78FE77D21F1A2EB000E9A0BE /* CapturingJSONSession.swift */,
 				CAB3A7291F7532A2005DF77B /* CapturingPushPermissionsRequester.swift */,
 				CA63755F208CBC5F00536BE2 /* CapturingURLOpener.swift */,
@@ -8783,7 +8780,6 @@
 				CAEA0F83216E1AE200B0C7A6 /* KnowledgeEntry+RandomValueProviding.swift in Sources */,
 				CAEA0F86216E1AE200B0C7A6 /* Message+RandomValueProviding.swift in Sources */,
 				CAEA0F7D216E188C00B0C7A6 /* CapturingURLOpener.swift in Sources */,
-				CAEA1041216E1EE600B0C7A6 /* CapturingEurofurenceSession.swift in Sources */,
 				CAEA0F7A216D341600B0C7A6 /* StubClock.swift in Sources */,
 				CAEA0F7C216D370600B0C7A6 /* FakeHoursDateFormatter.swift in Sources */,
 				CAEA0F7F216E1AE200B0C7A6 /* Announcement+RandomValueProviding.swift in Sources */,
