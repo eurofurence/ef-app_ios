@@ -26,7 +26,6 @@ public protocol EurofurenceSession: ApplicationNotificationHandling,
     var localPrivateMessages: [Message] { get }
 
     func storeRemoteNotificationsToken(_ deviceToken: Data)
-    func resolveDataStoreState(completionHandler: @escaping (EurofurenceDataStoreState) -> Void)
 
     func add(_ observer: PrivateMessagesObserver)
     func fetchPrivateMessages(completionHandler: @escaping (PrivateMessageResult) -> Void)
