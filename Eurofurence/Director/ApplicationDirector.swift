@@ -211,38 +211,6 @@ class ApplicationDirector: ExternalContentHandler,
         }
     }
 
-    func handleRemoteNotification(_ payload: [AnyHashable: Any],
-                                  completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        let castedPayloadKeysAndValues = payload.compactMap { (key, value) -> (String, String)? in
-            guard let stringKey = key as? String, let stringValue = value as? String else { return nil }
-            return (stringKey, stringValue)
-        }
-
-        let castedPayload = castedPayloadKeysAndValues.reduce(into: [String: String](), { $0[$1.0] = $1.1 })
-
-        notificationService.handleNotification(payload: castedPayload) { (content) in
-            switch content {
-            case .successfulSync:
-                completionHandler(.newData)
-
-            case .failedSync:
-                completionHandler(.failed)
-
-            case .announcement:
-                completionHandler(.newData)
-
-            case .event:
-                completionHandler(.noData)
-
-            case .invalidatedAnnouncement:
-                completionHandler(.noData)
-
-            case .unknown:
-                completionHandler(.noData)
-            }
-        }
-    }
-
     // MARK: ExternalContentHandler
 
     func handleExternalContent(url: URL) {

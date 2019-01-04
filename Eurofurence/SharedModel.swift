@@ -14,6 +14,7 @@ class SharedModel {
     static let instance: SharedModel = SharedModel()
     let session: EurofurenceSession
     let privateMessagesService: EurofurencePrivateMessagesService
+    let notificationFetchResultAdapter: NotificationServiceFetchResultAdapter
 
     private init() {
         let jsonSession = URLSessionBasedJSONSession.shared
@@ -48,6 +49,7 @@ class SharedModel {
             .build()
 
         privateMessagesService = EurofurencePrivateMessagesService(app: session)
+        notificationFetchResultAdapter = NotificationServiceFetchResultAdapter(notificationService: session)
     }
 
 }

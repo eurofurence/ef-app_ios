@@ -130,10 +130,7 @@
 		CA00AE8E20D2925500C2FBB0 /* ScheduleDayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE8C20D2925500C2FBB0 /* ScheduleDayCollectionViewCell.swift */; };
 		CA00AE9120D293B800C2FBB0 /* UICollectionView+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE9020D293B800C2FBB0 /* UICollectionView+Convenience.swift */; };
 		CA057A5B2088BDBB00504FA4 /* AnnouncementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA057A5A2088BDBA00504FA4 /* AnnouncementTableViewCell.swift */; };
-		CA063B3820F2318A00241CC9 /* WhenToldToHandleNotification_ThatConcludesWithSuccessfulSync_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA063B3720F2318A00241CC9 /* WhenToldToHandleNotification_ThatConcludesWithSuccessfulSync_DirectorShould.swift */; };
 		CA063B3C20F25E5B00241CC9 /* FakeApplicationNotificationHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA063B3B20F25E5B00241CC9 /* FakeApplicationNotificationHandling.swift */; };
-		CA063B3E20F25EF600241CC9 /* WhenToldToHandleNotification_ThatConcludesWithUnsuccessfulSync_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA063B3D20F25EF600241CC9 /* WhenToldToHandleNotification_ThatConcludesWithUnsuccessfulSync_DirectorShould.swift */; };
-		CA063B4020F2869600241CC9 /* WhenToldToHandleNotification_ThatConcludesWithAnnouncement_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA063B3F20F2869600241CC9 /* WhenToldToHandleNotification_ThatConcludesWithAnnouncement_DirectorShould.swift */; };
 		CA063B4420F3862500241CC9 /* ModuleOrderingPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA063B4320F3862500241CC9 /* ModuleOrderingPolicy.swift */; };
 		CA063B4620F3E0D800241CC9 /* RestorationIdentifierOrderingPolicyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA063B4520F3E0D800241CC9 /* RestorationIdentifierOrderingPolicyTests.swift */; };
 		CA063B4820F3E27000241CC9 /* RestorationIdentifierOrderingPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA063B4720F3E27000241CC9 /* RestorationIdentifierOrderingPolicy.swift */; };
@@ -468,6 +465,7 @@
 		CA44C37A211CAD69003C1C4E /* NewsPresenterMainStageIconBindingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C379211CAD69003C1C4E /* NewsPresenterMainStageIconBindingTests.swift */; };
 		CA44C37C211CAE55003C1C4E /* SchedulePresenterPhotoshootIconBindingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C37B211CAE55003C1C4E /* SchedulePresenterPhotoshootIconBindingTests.swift */; };
 		CA44C37E211CAF29003C1C4E /* NewsPresenterPhotoshootIconBindingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C37D211CAF29003C1C4E /* NewsPresenterPhotoshootIconBindingTests.swift */; };
+		CA4C474A21DF88B9005231AD /* NotificationServiceFetchResultAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4C474921DF88B9005231AD /* NotificationServiceFetchResultAdapter.swift */; };
 		CA4FBE0E1F72FF2A00D29405 /* MessagesPresenterTestsWhenBindingMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FBE0D1F72FF2A00D29405 /* MessagesPresenterTestsWhenBindingMessages.swift */; };
 		CA4FBE101F73047700D29405 /* CapturingDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FBE0F1F73047700D29405 /* CapturingDateFormatter.swift */; };
 		CA4FBE121F7304B400D29405 /* DateFormatterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FBE111F7304B400D29405 /* DateFormatterProtocol.swift */; };
@@ -758,8 +756,6 @@
 		CAC1E12B1F5040E100195513 /* NewsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E12A1F5040E100195513 /* NewsScene.swift */; };
 		CAC1E1311F50413500195513 /* CapturingNewsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E1301F50413500195513 /* CapturingNewsScene.swift */; };
 		CAC1E1391F50431000195513 /* NewsPresenterTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E1381F50431000195513 /* NewsPresenterTestBuilder.swift */; };
-		CAC2338020FF86EE00E73486 /* WhenToldToHandleNotification_ThatConcludesWithEvent_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC2337F20FF86EE00E73486 /* WhenToldToHandleNotification_ThatConcludesWithEvent_DirectorShould.swift */; };
-		CAC2338220FF8A4A00E73486 /* WhenToldToHandleNotification_ThatConcludesWithUnknownContent_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC2338120FF8A4A00E73486 /* WhenToldToHandleNotification_ThatConcludesWithUnknownContent_DirectorShould.swift */; };
 		CAC2338420FFDE0900E73486 /* WhenToldToFavouriteEvent_ScheduleInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC2338320FFDE0900E73486 /* WhenToldToFavouriteEvent_ScheduleInteractorShould.swift */; };
 		CAC2338620FFE1BD00E73486 /* WhenToldToUnfavouriteEvent_ScheduleInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC2338520FFE1BD00E73486 /* WhenToldToUnfavouriteEvent_ScheduleInteractorShould.swift */; };
 		CAC233882100C0F700E73486 /* WhenToldToFavouriteEvent_FromSearchViewModel_InteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC233872100C0F700E73486 /* WhenToldToFavouriteEvent_FromSearchViewModel_InteractorShould.swift */; };
@@ -1240,7 +1236,6 @@
 		CAEAEC081FE06F3C00C0EE7C /* MessageDetailViewControllerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEC071FE06F3C00C0EE7C /* MessageDetailViewControllerV2.swift */; };
 		CAEAEC0A1FE06FA500C0EE7C /* PhoneMessageDetailSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEC091FE06FA500C0EE7C /* PhoneMessageDetailSceneFactory.swift */; };
 		CAEAEC0E1FE07AD700C0EE7C /* MessageBubbleBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEC0D1FE07AD700C0EE7C /* MessageBubbleBackgroundView.swift */; };
-		CAF1A67C211F6D4F00513226 /* WhenToldToHandleNotification_ThatConcludesWithAnnouncementThatIsInvalid_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF1A67B211F6D4F00513226 /* WhenToldToHandleNotification_ThatConcludesWithAnnouncementThatIsInvalid_DirectorShould.swift */; };
 		CAF3C7441F9F5C550008F027 /* NewsModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C7431F9F5C550008F027 /* NewsModuleProviding.swift */; };
 		CAF3C7481F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C7471F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift */; };
 		CAF3C74C1F9F619C0008F027 /* PhoneNewsModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C74B1F9F619C0008F027 /* PhoneNewsModuleFactory.swift */; };
@@ -1565,10 +1560,7 @@
 		CA00AE8C20D2925500C2FBB0 /* ScheduleDayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDayCollectionViewCell.swift; sourceTree = "<group>"; };
 		CA00AE9020D293B800C2FBB0 /* UICollectionView+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Convenience.swift"; sourceTree = "<group>"; };
 		CA057A5A2088BDBA00504FA4 /* AnnouncementTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnouncementTableViewCell.swift; sourceTree = "<group>"; };
-		CA063B3720F2318A00241CC9 /* WhenToldToHandleNotification_ThatConcludesWithSuccessfulSync_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToHandleNotification_ThatConcludesWithSuccessfulSync_DirectorShould.swift; sourceTree = "<group>"; };
 		CA063B3B20F25E5B00241CC9 /* FakeApplicationNotificationHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeApplicationNotificationHandling.swift; sourceTree = "<group>"; };
-		CA063B3D20F25EF600241CC9 /* WhenToldToHandleNotification_ThatConcludesWithUnsuccessfulSync_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToHandleNotification_ThatConcludesWithUnsuccessfulSync_DirectorShould.swift; sourceTree = "<group>"; };
-		CA063B3F20F2869600241CC9 /* WhenToldToHandleNotification_ThatConcludesWithAnnouncement_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToHandleNotification_ThatConcludesWithAnnouncement_DirectorShould.swift; sourceTree = "<group>"; };
 		CA063B4120F2929300241CC9 /* WhenToldToOpenNotification_ThatRepresentsAnnouncement_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToOpenNotification_ThatRepresentsAnnouncement_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA063B4320F3862500241CC9 /* ModuleOrderingPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleOrderingPolicy.swift; sourceTree = "<group>"; };
 		CA063B4520F3E0D800241CC9 /* RestorationIdentifierOrderingPolicyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorationIdentifierOrderingPolicyTests.swift; sourceTree = "<group>"; };
@@ -2041,6 +2033,7 @@
 		CA49E9422015480A00EB571C /* EventBusRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBusRegistration.swift; sourceTree = "<group>"; };
 		CA49E9432015480A00EB571C /* EventCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCache.swift; sourceTree = "<group>"; };
 		CA49E94C20154AF900EB571C /* EventConsumer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventConsumer.swift; sourceTree = "<group>"; };
+		CA4C474921DF88B9005231AD /* NotificationServiceFetchResultAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationServiceFetchResultAdapter.swift; sourceTree = "<group>"; };
 		CA4FBE0D1F72FF2A00D29405 /* MessagesPresenterTestsWhenBindingMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesPresenterTestsWhenBindingMessages.swift; sourceTree = "<group>"; };
 		CA4FBE0F1F73047700D29405 /* CapturingDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingDateFormatter.swift; sourceTree = "<group>"; };
 		CA4FBE111F7304B400D29405 /* DateFormatterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterProtocol.swift; sourceTree = "<group>"; };
@@ -2444,8 +2437,6 @@
 		CAC2337920FF3EC800E73486 /* WhenRemovingFavouritesRestrictionForEvents_ScheduleShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenRemovingFavouritesRestrictionForEvents_ScheduleShould.swift; sourceTree = "<group>"; };
 		CAC2337B20FF46E800E73486 /* WhenRemovingFavouritesRestrictionForEvents_WhileQueryActive_ScheduleShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenRemovingFavouritesRestrictionForEvents_WhileQueryActive_ScheduleShould.swift; sourceTree = "<group>"; };
 		CAC2337D20FF7F5E00E73486 /* WhenToldToOpenNotification_ThatRepresentsEventReminder_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToOpenNotification_ThatRepresentsEventReminder_ApplicationShould.swift; sourceTree = "<group>"; };
-		CAC2337F20FF86EE00E73486 /* WhenToldToHandleNotification_ThatConcludesWithEvent_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToHandleNotification_ThatConcludesWithEvent_DirectorShould.swift; sourceTree = "<group>"; };
-		CAC2338120FF8A4A00E73486 /* WhenToldToHandleNotification_ThatConcludesWithUnknownContent_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToHandleNotification_ThatConcludesWithUnknownContent_DirectorShould.swift; sourceTree = "<group>"; };
 		CAC2338320FFDE0900E73486 /* WhenToldToFavouriteEvent_ScheduleInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToFavouriteEvent_ScheduleInteractorShould.swift; sourceTree = "<group>"; };
 		CAC2338520FFE1BD00E73486 /* WhenToldToUnfavouriteEvent_ScheduleInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToUnfavouriteEvent_ScheduleInteractorShould.swift; sourceTree = "<group>"; };
 		CAC233872100C0F700E73486 /* WhenToldToFavouriteEvent_FromSearchViewModel_InteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToFavouriteEvent_FromSearchViewModel_InteractorShould.swift; sourceTree = "<group>"; };
@@ -2635,7 +2626,6 @@
 		CAEAEC091FE06FA500C0EE7C /* PhoneMessageDetailSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneMessageDetailSceneFactory.swift; sourceTree = "<group>"; };
 		CAEAEC0D1FE07AD700C0EE7C /* MessageBubbleBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubbleBackgroundView.swift; sourceTree = "<group>"; };
 		CAF1A679211F6A0800513226 /* WhenToldToOpenNotification_ThatRepresentsAnnouncement_ThatHasBeenDeleted_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToOpenNotification_ThatRepresentsAnnouncement_ThatHasBeenDeleted_ApplicationShould.swift; sourceTree = "<group>"; };
-		CAF1A67B211F6D4F00513226 /* WhenToldToHandleNotification_ThatConcludesWithAnnouncementThatIsInvalid_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToHandleNotification_ThatConcludesWithAnnouncementThatIsInvalid_DirectorShould.swift; sourceTree = "<group>"; };
 		CAF3C7431F9F5C550008F027 /* NewsModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsModuleProviding.swift; sourceTree = "<group>"; };
 		CAF3C7471F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingNewsModuleDelegate.swift; sourceTree = "<group>"; };
 		CAF3C74B1F9F619C0008F027 /* PhoneNewsModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNewsModuleFactory.swift; sourceTree = "<group>"; };
@@ -3213,6 +3203,7 @@
 				CA728436209C7DE1007D912A /* Settings.bundle */,
 				9ACF99431EBE172D006FC958 /* Info.plist */,
 				9ACF99371EBE172D006FC958 /* AppDelegate.swift */,
+				CA4C474921DF88B9005231AD /* NotificationServiceFetchResultAdapter.swift */,
 				CA9845D91F29199E00E8821D /* ScreenshotAssistant.swift */,
 				CA0F9D9321D53C6F0084886E /* SharedModel.swift */,
 				CAEA1045216E77DE00B0C7A6 /* Theme.swift */,
@@ -3220,7 +3211,6 @@
 				CAF1A674211E4B3600513226 /* Application Adapter Implementations */,
 				CA1FE99C1FA0B3F2009C7DF3 /* Director */,
 				CABF03B22041BC770028BD62 /* Extensions */,
-				CAF9A93B1F50484A00628833 /* Interactors */,
 				6EF96CE01F12688700EE6134 /* Modules */,
 				9ACF999B1ECA259C006FC958 /* Resources */,
 				CA82409E21249A50007E4A70 /* Review Prompt */,
@@ -3405,12 +3395,6 @@
 			isa = PBXGroup;
 			children = (
 				CA2A586120F683DF002C69B6 /* WhenOpeningNotification_DirectorShould.swift */,
-				CA063B3F20F2869600241CC9 /* WhenToldToHandleNotification_ThatConcludesWithAnnouncement_DirectorShould.swift */,
-				CAF1A67B211F6D4F00513226 /* WhenToldToHandleNotification_ThatConcludesWithAnnouncementThatIsInvalid_DirectorShould.swift */,
-				CAC2337F20FF86EE00E73486 /* WhenToldToHandleNotification_ThatConcludesWithEvent_DirectorShould.swift */,
-				CA063B3720F2318A00241CC9 /* WhenToldToHandleNotification_ThatConcludesWithSuccessfulSync_DirectorShould.swift */,
-				CAC2338120FF8A4A00E73486 /* WhenToldToHandleNotification_ThatConcludesWithUnknownContent_DirectorShould.swift */,
-				CA063B3D20F25EF600241CC9 /* WhenToldToHandleNotification_ThatConcludesWithUnsuccessfulSync_DirectorShould.swift */,
 			);
 			path = "Notification Handling";
 			sourceTree = "<group>";
@@ -6530,21 +6514,6 @@
 			path = "Interactor Tests";
 			sourceTree = "<group>";
 		};
-		CAF9A93B1F50484A00628833 /* Interactors */ = {
-			isa = PBXGroup;
-			children = (
-				CAF9A9481F54BB4100628833 /* Private Messages */,
-			);
-			path = Interactors;
-			sourceTree = "<group>";
-		};
-		CAF9A9481F54BB4100628833 /* Private Messages */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Private Messages";
-			sourceTree = "<group>";
-		};
 		CAF9A94F1F558E6200628833 /* Test Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -7809,6 +7778,7 @@
 				CA8E7F031FB094A600F0BF10 /* PhoneTabModuleFactory.swift in Sources */,
 				CA283ADA20EB9CA600F7D195 /* AnnouncementsModuleDelegate.swift in Sources */,
 				CA0F762320322DEF009DA079 /* KnowledgeListBinder.swift in Sources */,
+				CA4C474A21DF88B9005231AD /* NotificationServiceFetchResultAdapter.swift in Sources */,
 				CABA438F1FBCDBEE009CB5B0 /* LoginSceneFactory.swift in Sources */,
 				2020ECCB211CDB870036E2CF /* NSAttributedString+trim.swift in Sources */,
 				CA8E7F0A1FB10D5000F0BF10 /* PhoneMessagesModuleFactory.swift in Sources */,
@@ -8064,7 +8034,6 @@
 				CA40109321107F7C0056E16C /* CapturingKnowledgeGroupEntriesModuleDelegate.swift in Sources */,
 				CA680F7E20CD8263006ACD3D /* WhenBuiltWithAlreadyPrimedApp_DirectorShould.swift in Sources */,
 				CA36A47B20D854E200EE6537 /* WhenBindingDealerComponent_ForDealerPresentOnAllDays_DealersPresenterShould.swift in Sources */,
-				CA063B3820F2318A00241CC9 /* WhenToldToHandleNotification_ThatConcludesWithSuccessfulSync_DirectorShould.swift in Sources */,
 				CA1ECB3D1FE331750076083A /* WhenInitialMessagesLoadCompletesWithNoMessages.swift in Sources */,
 				CABF03B72041C2150028BD62 /* DefaultKnowledgeGroupsInteractorTests.swift in Sources */,
 				CA40109F211083610056E16C /* DefaultKnowledgeGroupEntriesInteractorShould.swift in Sources */,
@@ -8094,7 +8063,6 @@
 				CAF81C6620DD9FB400898C52 /* WhenBindingAboutTheArtComponent_DealerDetailPresenterShould.swift in Sources */,
 				CABA43931FCE0A2D009CB5B0 /* CapturingLoginModuleDelegate.swift in Sources */,
 				CA637588208CDE9000536BE2 /* StubScheduleModuleFactory.swift in Sources */,
-				CAC2338020FF86EE00E73486 /* WhenToldToHandleNotification_ThatConcludesWithEvent_DirectorShould.swift in Sources */,
 				CA2725502110F12F004C6D0A /* StubKnowledgeGroupsListViewModel.swift in Sources */,
 				CACF26CF20FE590600EDE150 /* WhenSceneChangesSearchScopeToAllEvents_SchedulePresenterShould.swift in Sources */,
 				CA6A8DD920E4182F007536CD /* CapturingMapDetailScene.swift in Sources */,
@@ -8121,7 +8089,6 @@
 				CA8240962122F62D007E4A70 /* WhenBindingEvent_WithNoPoster_SchedulePresenterShould.swift in Sources */,
 				78C86D791F12ADF8003A20E6 /* CapturingSplashScene.swift in Sources */,
 				CA63756A208CCB5800536BE2 /* WhenStoreShouldBeRefreshed_DirectorShould.swift in Sources */,
-				CAF1A67C211F6D4F00513226 /* WhenToldToHandleNotification_ThatConcludesWithAnnouncementThatIsInvalid_DirectorShould.swift in Sources */,
 				CA728439209CEE97007D912A /* StubConventionCountdownService.swift in Sources */,
 				CA637564208CC8F800536BE2 /* WhenBuilt_DirectorShould.swift in Sources */,
 				78455B3C1F116E24005BE2D7 /* UserDefaultsTutorialStateProvider.swift in Sources */,
@@ -8145,7 +8112,6 @@
 				CA1B6F3520DC171200ADF414 /* WhenBindingDealerSummaryWithMissingAttributes_DealerDetailPresenterShould.swift in Sources */,
 				78455B5D1F1182B7005BE2D7 /* TutorialPageViewControllerTests.swift in Sources */,
 				CA283A7320E8E84100F7D195 /* WhenApplicationRefreshStateChanges_DealersViewModelShould.swift in Sources */,
-				CA063B3E20F25EF600241CC9 /* WhenToldToHandleNotification_ThatConcludesWithUnsuccessfulSync_DirectorShould.swift in Sources */,
 				CA60BFE62078E5F700697566 /* CapturingPrivateMessagesService.swift in Sources */,
 				CA6EC4792051CAFA00402894 /* WhenBuildingKnowledgeDetailModule.swift in Sources */,
 				CAC1E1311F50413500195513 /* CapturingNewsScene.swift in Sources */,
@@ -8330,7 +8296,6 @@
 				CA60C002207F7D2100697566 /* WhenNewsSceneDidLoad.swift in Sources */,
 				CA63758C208CE06100536BE2 /* WhenBuildingScheduleModule.swift in Sources */,
 				CAD260AD20C066B0007E3618 /* WhenSceneTapsUnfavouriteEventButton_EventDetailPresenterShould.swift in Sources */,
-				CA063B4020F2869600241CC9 /* WhenToldToHandleNotification_ThatConcludesWithAnnouncement_DirectorShould.swift in Sources */,
 				CA36A44D20D771C400EE6537 /* CapturingHapticEngine.swift in Sources */,
 				CA82409D21249907007E4A70 /* ReviewPromptControllerTests.swift in Sources */,
 				CA63755C208CBC3C00536BE2 /* StubLinkRouter.swift in Sources */,
@@ -8362,7 +8327,6 @@
 				CAD2609F20C02E7C007E3618 /* WhenPreparingViewModel_ForEventWithBannerButNoPoster_EventDetailInteractorShould.swift in Sources */,
 				CA283A6F20E8DA5D00F7D195 /* CapturingDealersSearchViewModelDelegate.swift in Sources */,
 				CA637562208CC88200536BE2 /* ApplicationDirectorTestBuilder.swift in Sources */,
-				CAC2338220FF8A4A00E73486 /* WhenToldToHandleNotification_ThatConcludesWithUnknownContent_DirectorShould.swift in Sources */,
 				CA250DD820D6E4AF00E7513C /* WhenBindingGroupFromSearchResult_SchedulePresenterShould.swift in Sources */,
 				CA283AC220EAB75700F7D195 /* FakeAnnouncementsInteractor.swift in Sources */,
 				CA637570208CD00400536BE2 /* WhenShowingTabModule_DirectorShould.swift in Sources */,

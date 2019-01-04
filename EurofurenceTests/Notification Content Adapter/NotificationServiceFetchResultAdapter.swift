@@ -10,48 +10,6 @@
 import EurofurenceModel
 import XCTest
 
-struct NotificationServiceFetchResultAdapter {
-
-    private let notificationService: NotificationService
-
-    init(notificationService: NotificationService) {
-        self.notificationService = notificationService
-    }
-
-    func handleRemoteNotification(_ payload: [AnyHashable: Any],
-                                  completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        let castedPayloadKeysAndValues = payload.compactMap { (key, value) -> (String, String)? in
-            guard let stringKey = key as? String, let stringValue = value as? String else { return nil }
-            return (stringKey, stringValue)
-        }
-
-        let castedPayload = castedPayloadKeysAndValues.reduce(into: [String: String](), { $0[$1.0] = $1.1 })
-
-        notificationService.handleNotification(payload: castedPayload) { (content) in
-            switch content {
-            case .successfulSync:
-                completionHandler(.newData)
-
-            case .failedSync:
-                completionHandler(.failed)
-
-            case .announcement(_):
-                completionHandler(.newData)
-
-            case .event(_):
-                completionHandler(.noData)
-
-            case .invalidatedAnnouncement:
-                completionHandler(.noData)
-
-            case .unknown:
-                completionHandler(.noData)
-            }
-        }
-    }
-
-}
-
 class NotificationServiceFetchResultAdapterTests: XCTestCase {
 
     private func handleNotification(_ serviceResponse: NotificationContent) -> UIBackgroundFetchResult? {
