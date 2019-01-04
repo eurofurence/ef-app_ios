@@ -35,6 +35,10 @@ class FakePrivateMessagesService2: PrivateMessagesService2 {
 
     var localPrivateMessages: [Message] = []
 
+    func refreshMessages() {
+
+    }
+
     private(set) fileprivate var privateMessageFetchCompletionHandler: ((PrivateMessageResult) -> Void)?
     func fetchPrivateMessages(completionHandler: @escaping (PrivateMessageResult) -> Void) {
         privateMessageFetchCompletionHandler = completionHandler

@@ -12,7 +12,9 @@ public protocol PrivateMessagesService2 {
     
     var localPrivateMessages: [Message] { get }
     
+    func refreshMessages()
     func fetchPrivateMessages(completionHandler: @escaping (PrivateMessageResult) -> Void)
+    
     func markMessageAsRead(_ message: Message)
     func add(_ observer: PrivateMessagesObserver)
     
