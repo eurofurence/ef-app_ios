@@ -17,9 +17,9 @@ class CapturingPrivateMessageUnreadCountObserver: PrivateMessagesServiceObserver
         capturedUnreadMessagesCount = unreadCount
     }
 
-    private(set) var loadedMessages: [Message] = []
+    private(set) var loadedMessages: [APIMessage] = []
     private(set) var serviceDidLoadEmptyMessagesArray = false
-    func privateMessagesServiceDidFinishRefreshingMessages(_ messages: [Message]) {
+    func privateMessagesServiceDidFinishRefreshingMessages(_ messages: [APIMessage]) {
         loadedMessages = messages
         serviceDidLoadEmptyMessagesArray = messages.isEmpty
     }
@@ -33,7 +33,7 @@ class CapturingPrivateMessageUnreadCountObserver: PrivateMessagesServiceObserver
 
 class FakePrivateMessagesService2: PrivateMessagesService2 {
 
-    var localPrivateMessages: [Message] = []
+    var localPrivateMessages: [APIMessage] = []
 
     func refreshMessages() {
 
@@ -44,8 +44,8 @@ class FakePrivateMessagesService2: PrivateMessagesService2 {
         privateMessageFetchCompletionHandler = completionHandler
     }
 
-    private(set) public var messageMarkedAsRead: Message?
-    func markMessageAsRead(_ message: Message) {
+    private(set) public var messageMarkedAsRead: APIMessage?
+    func markMessageAsRead(_ message: APIMessage) {
         messageMarkedAsRead = message
     }
 
@@ -58,7 +58,7 @@ class FakePrivateMessagesService2: PrivateMessagesService2 {
         privateMessageFetchCompletionHandler?(result)
     }
 
-    func simulateMessagesLoaded(_ messages: [Message]) {
+    func simulateMessagesLoaded(_ messages: [APIMessage]) {
         privateMessageObservers.forEach({ $0.privateMessagesServiceDidFinishRefreshingMessages(messages: messages) })
     }
 
@@ -149,7 +149,7 @@ class EurofurencePrivateMessagesServiceTests: XCTestCase {
 
     func testAddingUnreadPrivateMessageCountObserverTellsItTheNumberOfCurrentlyUnreadMessages() {
         let observer = CapturingPrivateMessageUnreadCountObserver()
-        let messages = [Message].random
+        let messages = [APIMessage].random
         let expected = messages.filter({ !$0.isRead }).count
         app.simulateMessagesLoaded(messages)
         service.add(observer)
@@ -170,7 +170,7 @@ class EurofurencePrivateMessagesServiceTests: XCTestCase {
     }
 
     func testPropogateMarkingMessageAsReadOntoCore() {
-        let message = Message.random
+        let message = APIMessage.random
         service.markMessageAsRead(message)
 
         XCTAssertEqual(message, app.messageMarkedAsRead)
@@ -179,7 +179,7 @@ class EurofurencePrivateMessagesServiceTests: XCTestCase {
     func testUpdateUnreadCountWhenToldMessagesChanges() {
         let observer = CapturingPrivateMessageUnreadCountObserver()
         service.add(observer)
-        let messages = [Message].random
+        let messages = [APIMessage].random
         let expected = messages.filter({ !$0.isRead }).count
         app.simulateMessagesLoaded(messages)
 

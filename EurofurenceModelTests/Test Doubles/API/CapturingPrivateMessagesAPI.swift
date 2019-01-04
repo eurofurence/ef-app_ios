@@ -13,9 +13,9 @@ class CapturingPrivateMessagesAPI: PrivateMessagesAPI {
 
     private(set) var wasToldToLoadPrivateMessages = false
     private(set) var capturedAuthToken: String?
-    private var completionHandler: (([Message]?) -> Void)?
+    private var completionHandler: (([APIMessage]?) -> Void)?
     func loadPrivateMessages(authorizationToken: String,
-                             completionHandler: @escaping ([Message]?) -> Void) {
+                             completionHandler: @escaping ([APIMessage]?) -> Void) {
         wasToldToLoadPrivateMessages = true
         capturedAuthToken = authorizationToken
         self.completionHandler = completionHandler
@@ -28,7 +28,7 @@ class CapturingPrivateMessagesAPI: PrivateMessagesAPI {
         capturedAuthTokenForMarkingMessageAsRead = authorizationToken
     }
 
-    func simulateSuccessfulResponse(response: [Message] = []) {
+    func simulateSuccessfulResponse(response: [APIMessage] = []) {
         completionHandler?(response)
     }
 

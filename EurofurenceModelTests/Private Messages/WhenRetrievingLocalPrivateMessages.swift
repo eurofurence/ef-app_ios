@@ -14,7 +14,7 @@ class WhenRetrievingLocalPrivateMessages: XCTestCase {
     func testLoadingMessagesThenRequestingLocalVersionShouldReturnMessage() {
         let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         let receivedDate = Date()
-        let expected = Message(identifier: "ID",
+        let expected = APIMessage(identifier: "ID",
                                authorName: "Author",
                                receivedDateTime: receivedDate,
                                subject: "Subject",

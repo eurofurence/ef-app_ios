@@ -61,13 +61,13 @@ public struct V2API: ImageAPI, LoginAPI, PrivateMessagesAPI, SyncAPI {
     // MARK: PrivateMessagesAPI
     
     public func loadPrivateMessages(authorizationToken: String,
-                                    completionHandler: @escaping ([Message]?) -> Void) {
+                                    completionHandler: @escaping ([APIMessage]?) -> Void) {
         let url = apiUrl + "Communication/PrivateMessages"
         var request = JSONRequest(url: url)
         request.headers = ["Authorization": "Bearer \(authorizationToken)"]
         
         jsonSession.get(request) { (data, _) in
-            var messages: [Message]?
+            var messages: [APIMessage]?
             defer { completionHandler(messages) }
             
             guard let data = data else { return }
@@ -176,8 +176,8 @@ public struct V2API: ImageAPI, LoginAPI, PrivateMessagesAPI, SyncAPI {
                 case readDateTime = "ReadDateTimeUtc"
             }
             
-            func makeAppDomainMessage() -> EurofurenceModel.Message {
-                return EurofurenceModel.Message(identifier: id,
+            func makeAppDomainMessage() -> EurofurenceModel.APIMessage {
+                return EurofurenceModel.APIMessage(identifier: id,
                                                 authorName: authorName,
                                                 receivedDateTime: receivedDateTime,
                                                 subject: subject,

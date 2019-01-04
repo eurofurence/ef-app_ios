@@ -13,9 +13,9 @@ import EurofurenceModelTestDoubles
 class CapturingPrivateMessagesService: PrivateMessagesService {
 
     var unreadMessageCount: Int = 0
-    var localMessages: [Message] = []
+    var localMessages: [APIMessage] = []
 
-    init(unreadMessageCount: Int = 0, localMessages: [Message] = []) {
+    init(unreadMessageCount: Int = 0, localMessages: [APIMessage] = []) {
         self.localMessages = localMessages
     }
 
@@ -31,8 +31,8 @@ class CapturingPrivateMessagesService: PrivateMessagesService {
         observers.append(observer)
     }
 
-    private(set) var messageMarkedAsRead: Message?
-    func markMessageAsRead(_ message: Message) {
+    private(set) var messageMarkedAsRead: APIMessage?
+    func markMessageAsRead(_ message: APIMessage) {
         messageMarkedAsRead = message
     }
 
@@ -40,7 +40,7 @@ class CapturingPrivateMessagesService: PrivateMessagesService {
         observers.forEach { $0.privateMessagesServiceDidFailToLoadMessages() }
     }
 
-    func succeedLastRefresh(messages: [Message] = []) {
+    func succeedLastRefresh(messages: [APIMessage] = []) {
         observers.forEach { $0.privateMessagesServiceDidFinishRefreshingMessages(messages) }
     }
 

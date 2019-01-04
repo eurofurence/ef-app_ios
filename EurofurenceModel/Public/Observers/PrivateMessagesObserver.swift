@@ -8,7 +8,7 @@
 
 public protocol PrivateMessagesObserver {
 
-    func privateMessagesServiceDidFinishRefreshingMessages(messages: [Message])
+    func privateMessagesServiceDidFinishRefreshingMessages(messages: [APIMessage])
     func privateMessagesServiceDidUpdateUnreadMessageCount(to unreadCount: Int)
     func privateMessagesServiceDidFailToLoadMessages()
 

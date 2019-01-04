@@ -19,8 +19,8 @@ class CapturingMessagesModuleDelegate: MessagesModuleDelegate {
         userResolutionCompletionHandler = completionHandler
     }
 
-    private(set) var messageToShow: Message?
-    func messagesModuleDidRequestPresentation(for message: Message) {
+    private(set) var messageToShow: APIMessage?
+    func messagesModuleDidRequestPresentation(for message: APIMessage) {
         messageToShow = message
     }
 
@@ -73,7 +73,7 @@ struct MessagesPresenterTestContext {
                                             privateMessagesService: privateMessagesService)
     }
 
-    static func makeTestCaseForUserWithMessages(_ messages: [Message]) -> MessagesPresenterTestContext {
+    static func makeTestCaseForUserWithMessages(_ messages: [APIMessage]) -> MessagesPresenterTestContext {
         let service = CapturingPrivateMessagesService(localMessages: messages)
         return makeTestCaseForAuthenticatedUser(privateMessagesService: service)
     }

@@ -180,7 +180,7 @@ class ConcreteSession: EurofurenceSession {
         eventBus.post(DomainEvent.RemoteNotificationRegistrationSucceeded(deviceToken: deviceToken))
     }
 
-    public var localPrivateMessages: [Message] { return privateMessagesController.localPrivateMessages }
+    public var localPrivateMessages: [APIMessage] { return privateMessagesController.localPrivateMessages }
 
     public func add(_ observer: PrivateMessagesObserver) {
         privateMessagesController.add(observer)
@@ -194,7 +194,7 @@ class ConcreteSession: EurofurenceSession {
         privateMessagesController.fetchPrivateMessages(completionHandler: completionHandler)
     }
 
-    public func markMessageAsRead(_ message: Message) {
+    public func markMessageAsRead(_ message: APIMessage) {
         privateMessagesController.markMessageAsRead(message)
     }
 

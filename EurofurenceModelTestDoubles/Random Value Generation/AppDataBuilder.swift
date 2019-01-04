@@ -16,8 +16,8 @@ public struct AppDataBuilder {
                                    receivedDateTime: Date = Date(),
                                    subject: String = "Subject",
                                    contents: String = "Contents",
-                                   read: Bool = false) -> Message {
-        return Message(identifier: identifier,
+                                   read: Bool = false) -> APIMessage {
+        return APIMessage(identifier: identifier,
                        authorName: authorName,
                        receivedDateTime: receivedDateTime,
                        subject: subject,
@@ -25,7 +25,7 @@ public struct AppDataBuilder {
                        isRead: read)
     }
 
-    public static func makeRandomNumberOfMessages() -> [Message] {
+    public static func makeRandomNumberOfMessages() -> [APIMessage] {
         return (0...Int.random(upperLimit: 10)).map { (number) in
             return makeMessage(identifier: String(describing: number),
                                authorName: "Author \(number)",

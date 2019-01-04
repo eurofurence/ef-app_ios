@@ -13,8 +13,8 @@ class CapturingPrivateMessagesObserver: PrivateMessagesObserver {
 
     // MARK: New
 
-    private(set) var observedMessages: [Message] = []
-    func privateMessagesServiceDidFinishRefreshingMessages(messages: [Message]) {
+    private(set) var observedMessages: [APIMessage] = []
+    func privateMessagesServiceDidFinishRefreshingMessages(messages: [APIMessage]) {
         observedMessages = messages
     }
 
@@ -30,7 +30,7 @@ class CapturingPrivateMessagesObserver: PrivateMessagesObserver {
     // MARK: Old
 
     private(set) var wasToldSuccessfullyLoadedPrivateMessages = false
-    private(set) var capturedMessages: [Message]?
+    private(set) var capturedMessages: [APIMessage]?
     private(set) var wasToldFailedToLoadPrivateMessages = false
     private(set) var wasToldUserNotAuthenticated = false
     func completionHandler(_ result: PrivateMessageResult) {

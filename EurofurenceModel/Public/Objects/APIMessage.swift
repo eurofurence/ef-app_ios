@@ -1,5 +1,5 @@
 //
-//  Message.swift
+//  APIMessage.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 24/07/2017.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Message: Comparable, Equatable {
+public struct APIMessage: Comparable, Equatable {
 
     public var identifier: String
     public var authorName: String
@@ -26,11 +26,11 @@ public struct Message: Comparable, Equatable {
         self.isRead = isRead
     }
 
-    public static func <(lhs: Message, rhs: Message) -> Bool {
+    public static func <(lhs: APIMessage, rhs: APIMessage) -> Bool {
         return lhs.receivedDateTime.compare(rhs.receivedDateTime) == .orderedDescending
     }
 
-    public static func ==(lhs: Message, rhs: Message) -> Bool {
+    public static func ==(lhs: APIMessage, rhs: APIMessage) -> Bool {
         return  lhs.identifier == rhs.identifier &&
                 lhs.authorName == rhs.authorName &&
                 lhs.receivedDateTime == rhs.receivedDateTime &&

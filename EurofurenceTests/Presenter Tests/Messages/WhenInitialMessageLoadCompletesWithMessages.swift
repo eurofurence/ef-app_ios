@@ -14,7 +14,7 @@ import XCTest
 class WhenInitialMessageLoadCompletesWithMessages: XCTestCase {
 
     var context: MessagesPresenterTestContext!
-    var message: Message!
+    var message: APIMessage!
 
     override func setUp() {
         super.setUp()

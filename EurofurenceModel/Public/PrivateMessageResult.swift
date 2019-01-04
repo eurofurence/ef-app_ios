@@ -9,7 +9,7 @@
 import Foundation
 
 public enum PrivateMessageResult {
-    case success([Message])
+    case success([APIMessage])
     case failedToLoad
     case userNotAuthenticated
 }

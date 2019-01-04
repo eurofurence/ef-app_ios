@@ -19,7 +19,7 @@ public class EurofurencePrivateMessagesService: PrivateMessagesService, PrivateM
 
     private let app: PrivateMessagesService2
     private var observers = [PrivateMessagesServiceObserver]()
-    private var messages: [Message] = []
+    private var messages: [APIMessage] = []
 
     public init(app: PrivateMessagesService2) {
         self.app = app
@@ -28,7 +28,7 @@ public class EurofurencePrivateMessagesService: PrivateMessagesService, PrivateM
         app.add(self)
     }
 
-    public func privateMessagesServiceDidFinishRefreshingMessages(messages: [Message]) {
+    public func privateMessagesServiceDidFinishRefreshingMessages(messages: [APIMessage]) {
         self.messages = messages
         observers.forEach(provideUnreadMessageCount)
     }
@@ -56,11 +56,11 @@ public class EurofurencePrivateMessagesService: PrivateMessagesService, PrivateM
         }
     }
 
-    public func markMessageAsRead(_ message: Message) {
+    public func markMessageAsRead(_ message: APIMessage) {
         app.markMessageAsRead(message)
     }
 
-    private func isUnread(_ message: Message) -> Bool {
+    private func isUnread(_ message: APIMessage) -> Bool {
         return !message.isRead
     }
 
