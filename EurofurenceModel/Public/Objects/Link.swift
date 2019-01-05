@@ -22,16 +22,8 @@ public struct Link: Comparable, Hashable, Equatable {
         self.contents = contents
     }
 
-    public var hashValue: Int {
-        return name.hashValue
-    }
-
     public static func <(lhs: Link, rhs: Link) -> Bool {
         return lhs.name < rhs.name
-    }
-
-    public static func ==(lhs: Link, rhs: Link) -> Bool {
-        return lhs.name == rhs.name && lhs.type == rhs.type && lhs.contents == rhs.contents
     }
 
 }

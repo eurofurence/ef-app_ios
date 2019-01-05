@@ -30,13 +30,4 @@ public struct APIMessage: Comparable, Equatable {
         return lhs.receivedDateTime.compare(rhs.receivedDateTime) == .orderedDescending
     }
 
-    public static func ==(lhs: APIMessage, rhs: APIMessage) -> Bool {
-        return  lhs.identifier == rhs.identifier &&
-                lhs.authorName == rhs.authorName &&
-                lhs.receivedDateTime == rhs.receivedDateTime &&
-                lhs.subject == rhs.subject &&
-                lhs.contents == rhs.contents &&
-                lhs.isRead == rhs.isRead
-    }
-
 }
