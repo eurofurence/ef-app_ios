@@ -63,7 +63,10 @@ class MessageDetailPresenterTests: XCTestCase {
     override func setUp() {
         super.setUp()
 
-        message = AppDataBuilder.makeMessage(authorName: "Author", subject: "Subject", contents: "Contents")
+        message = .random
+        message.authorName = "Author"
+        message.subject = "Subject"
+        message.contents = "Contents"
         messageDetailSceneFactory = StubMessageDetailSceneFactory()
         messagesService = CapturingPrivateMessagesService()
         viewController = MessageDetailModuleBuilder()

@@ -44,7 +44,7 @@ class WhenRefreshingMessages: XCTestCase {
     }
 
     func testWhenRefreshActionCompletesWithMessagesTheSceneIsToldToShowTheMessagesList() {
-        context.privateMessagesService.succeedLastRefresh(messages: [AppDataBuilder.makeMessage()])
+        context.privateMessagesService.succeedLastRefresh(messages: [.random])
         XCTAssertTrue(context.scene.didShowMessages)
     }
 
@@ -54,12 +54,12 @@ class WhenRefreshingMessages: XCTestCase {
     }
 
     func testWhenRefreshActionCompletesWithMessagesTheSceneIsNotToldShowTheNoMessagesPlaceholder() {
-        context.privateMessagesService.succeedLastRefresh(messages: [AppDataBuilder.makeMessage()])
+        context.privateMessagesService.succeedLastRefresh(messages: [.random])
         XCTAssertFalse(context.scene.didShowNoMessagesPlaceholder)
     }
 
     func testWhenRefreshActionCompletesWithMessageTheSceneIsToldHideTheNoMessagesPlaceholder() {
-        context.privateMessagesService.succeedLastRefresh(messages: [AppDataBuilder.makeMessage()])
+        context.privateMessagesService.succeedLastRefresh(messages: [.random])
         XCTAssertTrue(context.scene.didHideNoMessagesPlaceholder)
     }
 
@@ -69,14 +69,14 @@ class WhenRefreshingMessages: XCTestCase {
     }
 
     func testWhenRefreshActionCompletesWithMessagesTheSceneIsToldToBindWithTheNumberOfMessages() {
-        let messages = AppDataBuilder.makeRandomNumberOfMessages()
+        let messages = [APIMessage].random
         context.privateMessagesService.succeedLastRefresh(messages: messages)
 
         XCTAssertEqual(messages.count, context.scene.boundMessageCount)
     }
 
     func testWhenRefreshActionCompletesWithMessagesTheSceneIsToldToBindWithTheMessage() {
-        let message = AppDataBuilder.makeMessage()
+        let message = APIMessage.random
         context.privateMessagesService.succeedLastRefresh(messages: [message])
         let component = CapturingMessageItemScene()
         context.scene.capturedMessageItemBinder?.bind(component, toMessageAt: IndexPath(row: 0, section: 0))

@@ -19,7 +19,7 @@ class WhenViewingMessageWhileLoggedInWithLocalMessage: XCTestCase {
     override func setUp() {
         super.setUp()
 
-        localMessage = AppDataBuilder.makeMessage()
+        localMessage = .random
         context = MessagesPresenterTestContext.makeTestCaseForUserWithMessages([localMessage])
         context.scene.delegate?.messagesSceneWillAppear()
         context.privateMessagesService.succeedLastRefresh(messages: [localMessage])

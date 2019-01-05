@@ -19,7 +19,7 @@ class WhenInitialMessageLoadCompletesWithMessages: XCTestCase {
     override func setUp() {
         super.setUp()
 
-        message = AppDataBuilder.makeMessage()
+        message = .random
         context = MessagesPresenterTestContext.makeTestCaseForAuthenticatedUser()
         context.scene.delegate?.messagesSceneWillAppear()
         context.scene.reset()
