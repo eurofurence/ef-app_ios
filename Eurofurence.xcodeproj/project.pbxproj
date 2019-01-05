@@ -1206,7 +1206,6 @@
 		CAEA103D216E1D8700B0C7A6 /* StubAppVersionProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEC6DA21F1BFC5000205F2D /* StubAppVersionProviding.swift */; };
 		CAEA103E216E1DA600B0C7A6 /* CapturingPushPermissionsRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB3A7291F7532A2005DF77B /* CapturingPushPermissionsRequester.swift */; };
 		CAEA103F216E1E5000B0C7A6 /* StubDateDistanceCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E7520A4B6CE004AFED6 /* StubDateDistanceCalculator.swift */; };
-		CAEA1040216E1E7D00B0C7A6 /* AppDataBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD234411F5F2FA8004BB959 /* AppDataBuilder.swift */; };
 		CAEA1042216E1FB400B0C7A6 /* CapturingSignificantTimeChangeAdapterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C68420D59A5B009D3A9E /* CapturingSignificantTimeChangeAdapterDelegate.swift */; };
 		CAEA1044216E775300B0C7A6 /* ScreenshotAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9845D91F29199E00E8821D /* ScreenshotAssistant.swift */; };
 		CAEA1046216E77DE00B0C7A6 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA1045216E77DE00B0C7A6 /* Theme.swift */; };
@@ -2521,7 +2520,6 @@
 		CAD2343B1F5D7203004BB959 /* MessagesScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesScene.swift; sourceTree = "<group>"; };
 		CAD2343D1F5D7211004BB959 /* MessagesPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesPresenter.swift; sourceTree = "<group>"; };
 		CAD2343F1F5D726C004BB959 /* WhenViewingMessagesWhileLoggedIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenViewingMessagesWhileLoggedIn.swift; sourceTree = "<group>"; };
-		CAD234411F5F2FA8004BB959 /* AppDataBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDataBuilder.swift; sourceTree = "<group>"; };
 		CAD2609C20C02BCF007E3618 /* EventDetailBannerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailBannerTableViewCell.swift; sourceTree = "<group>"; };
 		CAD2609E20C02E7C007E3618 /* WhenPreparingViewModel_ForEventWithBannerButNoPoster_EventDetailInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPreparingViewModel_ForEventWithBannerButNoPoster_EventDetailInteractorShould.swift; sourceTree = "<group>"; };
 		CAD260A020C03350007E3618 /* WhenSceneTapsFavouriteEventButton_EventDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSceneTapsFavouriteEventButton_EventDetailPresenterShould.swift; sourceTree = "<group>"; };
@@ -6212,7 +6210,6 @@
 		CAEA0F7E216E1AA000B0C7A6 /* Random Value Generation */ = {
 			isa = PBXGroup;
 			children = (
-				CAD234411F5F2FA8004BB959 /* AppDataBuilder.swift */,
 				CA0E5210208F4BF3005259FE /* Announcement+RandomValueProviding.swift */,
 				CA00AE8A20D28AF400C2FBB0 /* Day+RandomValueProviding.swift */,
 				CA162E9320A87D3D004AFED6 /* Event+RandomValueProviding.swift */,
@@ -8792,7 +8789,6 @@
 				CAEA103F216E1E5000B0C7A6 /* StubDateDistanceCalculator.swift in Sources */,
 				CAEA0F8D216E1AE200B0C7A6 /* Map+RandomValueProviding.swift in Sources */,
 				CAEA103E216E1DA600B0C7A6 /* CapturingPushPermissionsRequester.swift in Sources */,
-				CAEA1040216E1E7D00B0C7A6 /* AppDataBuilder.swift in Sources */,
 				CAEA0F85216E1AE200B0C7A6 /* Link+RandomValueProviding.swift in Sources */,
 				CAEA0F66216D29FD00B0C7A6 /* StubBuildConfigurationProviding.swift in Sources */,
 				CAEA103D216E1D8700B0C7A6 /* StubAppVersionProviding.swift in Sources */,

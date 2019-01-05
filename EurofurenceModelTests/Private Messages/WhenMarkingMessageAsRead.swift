@@ -17,7 +17,9 @@ class WhenMarkingMessageAsRead: XCTestCase {
         let observer = CapturingPrivateMessagesObserver()
         context.application.fetchPrivateMessages(completionHandler: observer.completionHandler)
         let identifier = "Message ID"
-        context.privateMessagesAPI.simulateSuccessfulResponse(response: [AppDataBuilder.makeMessage(identifier: identifier)])
+        var message = APIMessage.random
+        message.identifier = identifier
+        context.privateMessagesAPI.simulateSuccessfulResponse(response: [message])
 
         if let receievedMessage = observer.capturedMessages?.first {
             context.application.markMessageAsRead(receievedMessage)
@@ -33,7 +35,9 @@ class WhenMarkingMessageAsRead: XCTestCase {
         let observer = CapturingPrivateMessagesObserver()
         context.application.fetchPrivateMessages(completionHandler: observer.completionHandler)
         let identifier = "Message ID"
-        context.privateMessagesAPI.simulateSuccessfulResponse(response: [AppDataBuilder.makeMessage(identifier: identifier)])
+        var message = APIMessage.random
+        message.identifier = identifier
+        context.privateMessagesAPI.simulateSuccessfulResponse(response: [message])
 
         if let receievedMessage = observer.capturedMessages?.first {
             context.application.markMessageAsRead(receievedMessage)
@@ -47,7 +51,7 @@ class WhenMarkingMessageAsRead: XCTestCase {
         let observer = CapturingPrivateMessagesObserver()
         context.application.add(observer)
         context.application.refreshMessages()
-        let message = AppDataBuilder.makeMessage()
+        let message = APIMessage.random
         context.privateMessagesAPI.simulateSuccessfulResponse(response: [message])
         context.application.markMessageAsRead(message)
 

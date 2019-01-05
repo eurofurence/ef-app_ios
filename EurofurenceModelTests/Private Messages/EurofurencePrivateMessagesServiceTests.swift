@@ -80,7 +80,13 @@ class EurofurencePrivateMessagesServiceTests: XCTestCase {
         let observer = CapturingPrivateMessageUnreadCountObserver()
         service.add(observer)
         let unreadMessageCount = Int.random(upperLimit: 10)
-        let messages = (0..<unreadMessageCount).map({ _ in AppDataBuilder.makeMessage(read: false) })
+        let makeUnreadMessage: () -> APIMessage = {
+            var message = APIMessage.random
+            message.isRead = false
+            return message
+        }
+
+        let messages: [APIMessage] = (0..<unreadMessageCount).map({ _ in makeUnreadMessage() })
         app.localPrivateMessages = messages
         service.refreshMessages()
         app.resolvePrivateMessagesFetch(.success(messages))
@@ -91,8 +97,10 @@ class EurofurencePrivateMessagesServiceTests: XCTestCase {
     func testUnreadCountEqualsOneWithTwoMessagesWhereOneIsAlreadyRead() {
         let observer = CapturingPrivateMessageUnreadCountObserver()
         service.add(observer)
-        let unreadMessage = AppDataBuilder.makeMessage(read: false)
-        let readMessage = AppDataBuilder.makeMessage(read: true)
+        var unreadMessage = APIMessage.random
+        unreadMessage.isRead = false
+        var readMessage = APIMessage.random
+        readMessage.isRead = true
         app.localPrivateMessages = [unreadMessage, readMessage]
         service.refreshMessages()
         app.resolvePrivateMessagesFetch(.success([unreadMessage, readMessage]))
@@ -119,7 +127,7 @@ class EurofurencePrivateMessagesServiceTests: XCTestCase {
     }
 
     func testLoadingPrivateMessagesSuccessfullyShouldTellObserverLoadSucceeded() {
-        let messages = [AppDataBuilder.makeMessage()]
+        let messages = [APIMessage.random]
         let observer = CapturingPrivateMessageUnreadCountObserver()
         service.add(observer)
         service.refreshMessages()
@@ -131,7 +139,7 @@ class EurofurencePrivateMessagesServiceTests: XCTestCase {
     func testLoadingMessagesEmitsAppLocalMessagesWhileLoading() {
         let observer = CapturingPrivateMessageUnreadCountObserver()
         service.add(observer)
-        let messages = [AppDataBuilder.makeMessage()]
+        let messages = [APIMessage.random]
         app.localPrivateMessages = messages
         service.refreshMessages()
 
@@ -160,7 +168,9 @@ class EurofurencePrivateMessagesServiceTests: XCTestCase {
     func testAddingObserverThenRefreshProvidesMoreUnreadMessagesTellsObserver() {
         let observer = CapturingPrivateMessageUnreadCountObserver()
         service.add(observer)
-        let messages = repeatElement(AppDataBuilder.makeMessage(read: false), count: .random(upperLimit: 10))
+        var unreadMessage = APIMessage.random
+        unreadMessage.isRead = false
+        let messages = repeatElement(unreadMessage, count: .random(upperLimit: 10))
         let expected = messages.count
         app.localPrivateMessages = Array(messages)
         service.refreshMessages()

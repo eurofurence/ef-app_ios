@@ -67,7 +67,8 @@ class WhenRequestingPrivateMessagesWhileAuthenticated: XCTestCase {
 
     func testReceievingAPIResponseWithSuccessShouldPropogateAuthorNameForMessage() {
         let authorName = "Some guy"
-        let message = AppDataBuilder.makeMessage(authorName: authorName)
+        var message = APIMessage.random
+        message.authorName = authorName
         context.privateMessagesAPI.simulateSuccessfulResponse(response: [message])
 
         XCTAssertEqual(authorName, capturingMessagesObserver.capturedMessages?.first?.authorName)
@@ -75,7 +76,8 @@ class WhenRequestingPrivateMessagesWhileAuthenticated: XCTestCase {
 
     func testReceievingAPIResponseWithSuccessShouldPropogatereceivedDateTimeForMessage() {
         let receivedDateTime = Date.distantPast
-        let message = AppDataBuilder.makeMessage(receivedDateTime: receivedDateTime)
+        var message = APIMessage.random
+        message.receivedDateTime = receivedDateTime
         context.privateMessagesAPI.simulateSuccessfulResponse(response: [message])
 
         XCTAssertEqual(receivedDateTime, capturingMessagesObserver.capturedMessages?.first?.receivedDateTime)
@@ -83,7 +85,8 @@ class WhenRequestingPrivateMessagesWhileAuthenticated: XCTestCase {
 
     func testReceievingAPIResponseWithSuccessShouldPropogateContentsForMessage() {
         let contents = "Blah blah important stuff blah blah"
-        let message = AppDataBuilder.makeMessage(contents: contents)
+        var message = APIMessage.random
+        message.contents = contents
         context.privateMessagesAPI.simulateSuccessfulResponse(response: [message])
 
         XCTAssertEqual(contents, capturingMessagesObserver.capturedMessages?.first?.contents)
@@ -91,7 +94,8 @@ class WhenRequestingPrivateMessagesWhileAuthenticated: XCTestCase {
 
     func testReceievingAPIResponseWithSuccessShouldPropogateSubjectForMessage() {
         let subject = "You won something!!"
-        let message = AppDataBuilder.makeMessage(subject: subject)
+        var message = APIMessage.random
+        message.subject = subject
         context.privateMessagesAPI.simulateSuccessfulResponse(response: [message])
 
         XCTAssertEqual(subject, capturingMessagesObserver.capturedMessages?.first?.subject)
@@ -100,7 +104,9 @@ class WhenRequestingPrivateMessagesWhileAuthenticated: XCTestCase {
     func testMessagesShouldBeSortedWithLatestMessagesFirst() {
         let makeRandomMessage: () -> APIMessage = {
             let randomDate = Date(timeIntervalSinceNow: .random(upperLimit: 3600))
-            return AppDataBuilder.makeMessage(receivedDateTime: randomDate)
+            var message = APIMessage.random
+            message.receivedDateTime = randomDate
+            return message
         }
 
         let messages = (0...5).map({ (_) in makeRandomMessage() })
@@ -112,23 +118,27 @@ class WhenRequestingPrivateMessagesWhileAuthenticated: XCTestCase {
     }
 
     func testObserversToldOfNewUnreadCount() {
-        let message = AppDataBuilder.makeMessage()
-        context.privateMessagesAPI.simulateSuccessfulResponse(response: [message])
+        var unreadMessage = APIMessage.random
+        unreadMessage.isRead = false
+        context.privateMessagesAPI.simulateSuccessfulResponse(response: [unreadMessage])
 
         XCTAssertEqual(1, capturingMessagesObserver.observedUnreadMessageCount)
     }
 
     func testReadMessagesNotIncludedInUnreadCount() {
-        let unreadMessage = AppDataBuilder.makeMessage(read: false)
-        let readMessage = AppDataBuilder.makeMessage(read: true)
+        var unreadMessage = APIMessage.random
+        unreadMessage.isRead = false
+        var readMessage = APIMessage.random
+        readMessage.isRead = true
         context.privateMessagesAPI.simulateSuccessfulResponse(response: [unreadMessage, readMessage])
 
         XCTAssertEqual(1, capturingMessagesObserver.observedUnreadMessageCount)
     }
 
     func testLateAddedObserversToldOfNewUnreadCount() {
-        let message = AppDataBuilder.makeMessage()
-        context.privateMessagesAPI.simulateSuccessfulResponse(response: [message])
+        var unreadMessage = APIMessage.random
+        unreadMessage.isRead = false
+        context.privateMessagesAPI.simulateSuccessfulResponse(response: [unreadMessage])
 
         let observer = CapturingPrivateMessagesObserver()
         context.application.add(observer)
