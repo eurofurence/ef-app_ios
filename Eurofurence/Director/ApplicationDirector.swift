@@ -271,7 +271,7 @@ class ApplicationDirector: ExternalContentHandler,
 
     // MARK: ScheduleModuleDelegate
 
-    func scheduleModuleDidSelectEvent(identifier: Event.Identifier) {
+    func scheduleModuleDidSelectEvent(identifier: EventIdentifier) {
         let module = eventDetailModuleProviding.makeEventDetailModule(for: identifier)
         scheduleViewController?.navigationController?.pushViewController(module, animated: animate)
     }

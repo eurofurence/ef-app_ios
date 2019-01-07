@@ -19,7 +19,7 @@ class WhenResolvingEventByIdentifier_ForEventThatExists_ApplicationShould: XCTes
         let event = response.events.changed.randomElement().element
         let expected = context.makeExpectedEvent(from: event, response: response)
         var actual: Event?
-        context.application.fetchEvent(for: Event.Identifier(event.identifier)) { actual = $0 }
+        context.application.fetchEvent(for: EventIdentifier(event.identifier)) { actual = $0 }
 
         XCTAssertEqual(expected, actual)
     }

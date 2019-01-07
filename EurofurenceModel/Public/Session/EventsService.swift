@@ -26,11 +26,11 @@ public protocol EventsScheduleDelegate {
 public protocol EventsService {
 
     func add(_ observer: EventsServiceObserver)
-    func favouriteEvent(identifier: Event.Identifier)
-    func unfavouriteEvent(identifier: Event.Identifier)
+    func favouriteEvent(identifier: EventIdentifier)
+    func unfavouriteEvent(identifier: EventIdentifier)
     func makeEventsSchedule() -> EventsSchedule
     func makeEventsSearchController() -> EventsSearchController
-    func fetchEvent(for identifier: Event.Identifier, completionHandler: @escaping (Event?) -> Void)
+    func fetchEvent(for identifier: EventIdentifier, completionHandler: @escaping (Event?) -> Void)
 
 }
 
@@ -39,6 +39,6 @@ public protocol EventsServiceObserver {
     func eventsDidChange(to events: [Event])
     func runningEventsDidChange(to events: [Event])
     func upcomingEventsDidChange(to events: [Event])
-    func favouriteEventsDidChange(_ identifiers: [Event.Identifier])
+    func favouriteEventsDidChange(_ identifiers: [EventIdentifier])
 
 }

@@ -10,12 +10,12 @@ import Foundation
 
 public protocol NotificationsService {
 
-    func scheduleReminderForEvent(identifier: Event.Identifier,
+    func scheduleReminderForEvent(identifier: EventIdentifier,
                                   scheduledFor date: Date,
                                   title: String,
                                   body: String,
                                   userInfo: [ApplicationNotificationKey: String])
-    func removeEventReminder(for identifier: Event.Identifier)
+    func removeEventReminder(for identifier: EventIdentifier)
 
 }
 

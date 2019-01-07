@@ -37,7 +37,7 @@ class WhenToldToOpenNotification_ThatRepresentsEventReminder_ApplicationShould: 
         var result: NotificationContent?
         context.application.handleNotification(payload: payload) { result = $0 }
 
-        XCTAssertEqual(NotificationContent.event(Event.Identifier(event.identifier)), result)
+        XCTAssertEqual(NotificationContent.event(EventIdentifier(event.identifier)), result)
     }
 
     func testProvideUnknownActionWhenMissingContentIdentifierKey() {

@@ -108,13 +108,13 @@ class EventDetailPresenter: EventDetailSceneDelegate, EventDetailViewModelDelega
     private let scene: EventDetailScene
     private let interactor: EventDetailInteractor
     private let hapticEngine: HapticEngine
-    private let event: Event.Identifier
+    private let event: EventIdentifier
     private var viewModel: EventDetailViewModel?
 
     init(scene: EventDetailScene,
          interactor: EventDetailInteractor,
          hapticEngine: HapticEngine,
-         event: Event.Identifier) {
+         event: EventIdentifier) {
         self.scene = scene
         self.interactor = interactor
         self.hapticEngine = hapticEngine

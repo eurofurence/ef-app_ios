@@ -11,6 +11,6 @@ import Foundation
 
 protocol EventDetailInteractor {
 
-    func makeViewModel(for event: Event.Identifier, completionHandler: @escaping (EventDetailViewModel) -> Void)
+    func makeViewModel(for event: EventIdentifier, completionHandler: @escaping (EventDetailViewModel) -> Void)
 
 }

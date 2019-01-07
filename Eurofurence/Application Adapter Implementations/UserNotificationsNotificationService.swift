@@ -11,7 +11,7 @@ import UserNotifications
 
 struct UserNotificationsNotificationService: NotificationsService {
 
-    func scheduleReminderForEvent(identifier: Event.Identifier,
+    func scheduleReminderForEvent(identifier: EventIdentifier,
                                   scheduledFor date: Date,
                                   title: String,
                                   body: String,
@@ -40,7 +40,7 @@ struct UserNotificationsNotificationService: NotificationsService {
         }
     }
 
-    func removeEventReminder(for identifier: Event.Identifier) {
+    func removeEventReminder(for identifier: EventIdentifier) {
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [identifier.rawValue])
     }
 

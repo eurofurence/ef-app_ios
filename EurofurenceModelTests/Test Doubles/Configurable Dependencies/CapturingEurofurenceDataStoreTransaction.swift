@@ -92,13 +92,13 @@ class CapturingEurofurenceDataStoreTransaction: DataStoreTransaction {
         persistedLastRefreshDate = lastRefreshDate
     }
 
-    private(set) var persistedFavouriteEvents = [Event.Identifier]()
-    func saveFavouriteEventIdentifier(_ identifier: Event.Identifier) {
+    private(set) var persistedFavouriteEvents = [EventIdentifier]()
+    func saveFavouriteEventIdentifier(_ identifier: EventIdentifier) {
         persistedFavouriteEvents.append(identifier)
     }
 
-    private(set) var deletedFavouriteEvents = [Event.Identifier]()
-    func deleteFavouriteEventIdentifier(_ identifier: Event.Identifier) {
+    private(set) var deletedFavouriteEvents = [EventIdentifier]()
+    func deleteFavouriteEventIdentifier(_ identifier: EventIdentifier) {
         deletedFavouriteEvents.append(identifier)
     }
 

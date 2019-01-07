@@ -164,7 +164,7 @@ class DefaultNewsInteractor: NewsInteractor,
 
     private var allEvents = [Event]()
     private var favouriteEvents = [Event]()
-    private var favouriteEventIdentifiers = [Event.Identifier]()
+    private var favouriteEventIdentifiers = [EventIdentifier]()
     func eventsDidChange(to events: [Event]) {
         allEvents = events
         regenerateFavouriteEvents()
@@ -180,7 +180,7 @@ class DefaultNewsInteractor: NewsInteractor,
         regenerateViewModel()
     }
 
-    func favouriteEventsDidChange(_ identifiers: [Event.Identifier]) {
+    func favouriteEventsDidChange(_ identifiers: [EventIdentifier]) {
         favouriteEventIdentifiers = identifiers
         regenerateFavouriteEvents()
     }
@@ -381,7 +381,7 @@ class DefaultNewsInteractor: NewsInteractor,
 
         init(title: String,
              events: [Event],
-             favouriteEventIdentifiers: [Event.Identifier],
+             favouriteEventIdentifiers: [EventIdentifier],
              startTimeFormatter: (Event) -> String,
              hoursDateFormatter: HoursDateFormatter) {
             self.title = title

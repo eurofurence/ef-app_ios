@@ -11,6 +11,6 @@ import UIKit.UIViewController
 
 protocol EventDetailModuleProviding {
 
-    func makeEventDetailModule(for event: Event.Identifier) -> UIViewController
+    func makeEventDetailModule(for event: EventIdentifier) -> UIViewController
 
 }

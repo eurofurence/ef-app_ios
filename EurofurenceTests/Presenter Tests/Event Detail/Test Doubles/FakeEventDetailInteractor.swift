@@ -21,7 +21,7 @@ struct FakeEventDetailInteractor: EventDetailInteractor {
         self.event = event
     }
 
-    func makeViewModel(for event: Event.Identifier, completionHandler: @escaping (EventDetailViewModel) -> Void) {
+    func makeViewModel(for event: EventIdentifier, completionHandler: @escaping (EventDetailViewModel) -> Void) {
         if event == self.event.identifier {
             completionHandler(viewModel)
         }

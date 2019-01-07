@@ -145,7 +145,7 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
         func runningEventsDidChange(to events: [Event]) { }
         func upcomingEventsDidChange(to events: [Event]) { }
 
-        func favouriteEventsDidChange(_ identifiers: [Event.Identifier]) {
+        func favouriteEventsDidChange(_ identifiers: [EventIdentifier]) {
             isFavourite = identifiers.contains(event.identifier)
             informDelegateAboutEventFavouriteState()
         }
@@ -176,7 +176,7 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
 		self.markdownRenderer = markdownRenderer
     }
 
-    func makeViewModel(for identifier: Event.Identifier, completionHandler: @escaping (EventDetailViewModel) -> Void) {
+    func makeViewModel(for identifier: EventIdentifier, completionHandler: @escaping (EventDetailViewModel) -> Void) {
         eventsService.fetchEvent(for: identifier) { (event) in
             guard let event = event else { return }
             var components = [EventDetailViewModelComponent]()

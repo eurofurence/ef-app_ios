@@ -16,7 +16,7 @@ struct EventDetailModule: EventDetailModuleProviding {
     var interactor: EventDetailInteractor
     var hapticEngine: HapticEngine
 
-    func makeEventDetailModule(for event: Event.Identifier) -> UIViewController {
+    func makeEventDetailModule(for event: EventIdentifier) -> UIViewController {
         let scene = sceneFactory.makeEventDetailScene()
         _ = EventDetailPresenter(scene: scene,
                                  interactor: interactor,

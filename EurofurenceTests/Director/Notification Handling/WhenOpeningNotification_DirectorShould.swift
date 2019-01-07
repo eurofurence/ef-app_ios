@@ -82,7 +82,7 @@ class WhenOpeningNotification_DirectorShould: XCTestCase {
     func testShowEvent() {
         let context = ApplicationDirectorTestBuilder().build()
         let payload = [String.random: String.random]
-        let event = Event.Identifier.random
+        let event = EventIdentifier.random
         context.navigateToTabController()
         context.notificationHandling.stub(.event(event), for: payload)
 

@@ -49,11 +49,3 @@ extension Event: RandomValueProviding {
     }
 
 }
-
-extension Event.Identifier: RandomValueProviding {
-
-    public static var random: Event.Identifier {
-        return Event.Identifier(.random)
-    }
-
-}

@@ -11,6 +11,6 @@ import Foundation
 
 protocol ScheduleModuleDelegate {
 
-    func scheduleModuleDidSelectEvent(identifier: Event.Identifier)
+    func scheduleModuleDidSelectEvent(identifier: EventIdentifier)
 
 }

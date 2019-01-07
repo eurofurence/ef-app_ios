@@ -98,7 +98,7 @@ class ApplicationTestBuilder {
             let expectedBannerGraphic = imageAPI.stubbedImage(for: event.bannerImageId)
             let tags = event.tags.or([])
 
-            return Event(identifier: Event.Identifier(event.identifier),
+            return Event(identifier: EventIdentifier(event.identifier),
                           title: event.title,
                           subtitle: event.subtitle,
                           abstract: event.abstract,

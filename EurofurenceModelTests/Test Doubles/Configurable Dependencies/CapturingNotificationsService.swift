@@ -11,12 +11,12 @@ import Foundation
 
 class CapturingNotificationsService: NotificationsService {
 
-    private(set) var capturedEventIdentifier: Event.Identifier?
+    private(set) var capturedEventIdentifier: EventIdentifier?
     private(set) var capturedEventNotificationScheduledDate: Date?
     private(set) var capturedEventNotificationTitle: String?
     private(set) var capturedEventNotificationBody: String?
     private(set) var capturedEventNotificationUserInfo: [ApplicationNotificationKey: String] = [:]
-    func scheduleReminderForEvent(identifier: Event.Identifier,
+    func scheduleReminderForEvent(identifier: EventIdentifier,
                                   scheduledFor date: Date,
                                   title: String,
                                   body: String,
@@ -28,8 +28,8 @@ class CapturingNotificationsService: NotificationsService {
         capturedEventNotificationUserInfo = userInfo
     }
 
-    private(set) var capturedEventIdentifierToRemoveNotification: Event.Identifier?
-    func removeEventReminder(for identifier: Event.Identifier) {
+    private(set) var capturedEventIdentifierToRemoveNotification: EventIdentifier?
+    func removeEventReminder(for identifier: EventIdentifier) {
         capturedEventIdentifierToRemoveNotification = identifier
     }
 

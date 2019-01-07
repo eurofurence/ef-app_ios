@@ -30,8 +30,8 @@ class CapturingEventsServiceObserver: EventsServiceObserver {
         upcomingEvents = events
     }
 
-    private(set) var capturedFavouriteEventIdentifiers = [Event.Identifier]()
-    func favouriteEventsDidChange(_ identifiers: [Event.Identifier]) {
+    private(set) var capturedFavouriteEventIdentifiers = [EventIdentifier]()
+    func favouriteEventsDidChange(_ identifiers: [EventIdentifier]) {
         capturedFavouriteEventIdentifiers = identifiers
     }
 

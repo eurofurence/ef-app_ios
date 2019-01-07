@@ -22,7 +22,7 @@ class WhenFavouritingMultipleEvents_ApplicationShould: XCTestCase {
         }
 
         let context = ApplicationTestBuilder().with(dataStore).build()
-        let identifiers = events.map({ Event.Identifier($0.identifier) })
+        let identifiers = events.map({ EventIdentifier($0.identifier) })
         let observer = CapturingEventsServiceObserver()
         context.application.add(observer)
         identifiers.forEach(context.application.favouriteEvent)
@@ -41,7 +41,7 @@ class WhenFavouritingMultipleEvents_ApplicationShould: XCTestCase {
         }
 
         let context = ApplicationTestBuilder().with(dataStore).build()
-        let identifiers = events.map({ Event.Identifier($0.identifier) })
+        let identifiers = events.map({ EventIdentifier($0.identifier) })
         let observer = CapturingEventsServiceObserver()
         context.application.add(observer)
         identifiers.forEach(context.application.favouriteEvent)
@@ -58,7 +58,7 @@ class WhenFavouritingMultipleEvents_ApplicationShould: XCTestCase {
         let events = response.events.changed
         let dataStore = CapturingEurofurenceDataStore()
         dataStore.performTransaction { (transaction) in
-            events.map({ Event.Identifier($0.identifier) }).forEach(transaction.saveFavouriteEventIdentifier)
+            events.map({ EventIdentifier($0.identifier) }).forEach(transaction.saveFavouriteEventIdentifier)
         }
 
         let context = ApplicationTestBuilder().with(dataStore).build()
@@ -67,7 +67,7 @@ class WhenFavouritingMultipleEvents_ApplicationShould: XCTestCase {
         let observer = CapturingEventsServiceObserver()
         context.application.add(observer)
 
-        let expected = events.sorted(by: { $0.startDateTime < $1.startDateTime }).map({ Event.Identifier($0.identifier) })
+        let expected = events.sorted(by: { $0.startDateTime < $1.startDateTime }).map({ EventIdentifier($0.identifier) })
 
         XCTAssertTrue(expected.contains(elementsFrom: observer.capturedFavouriteEventIdentifiers))
     }

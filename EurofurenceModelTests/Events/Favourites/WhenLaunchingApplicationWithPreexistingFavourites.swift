@@ -13,7 +13,7 @@ class WhenLaunchingApplicationWithPreexistingFavourites: XCTestCase {
 
     func testTheObserversAreToldAboutTheFavouritedEvents() {
         let dataStore = CapturingEurofurenceDataStore()
-        let expected = [Event.Identifier].random
+        let expected = [EventIdentifier].random
         dataStore.performTransaction { (transaction) in
             expected.forEach(transaction.saveFavouriteEventIdentifier)
         }
@@ -33,14 +33,14 @@ class WhenLaunchingApplicationWithPreexistingFavourites: XCTestCase {
             transaction.saveEvents(response.events.changed)
             transaction.saveRooms(response.rooms.changed)
             transaction.saveTracks(response.tracks.changed)
-            events.map({ Event.Identifier($0.identifier) }).forEach(transaction.saveFavouriteEventIdentifier)
+            events.map({ EventIdentifier($0.identifier) }).forEach(transaction.saveFavouriteEventIdentifier)
         }
 
         let context = ApplicationTestBuilder().with(dataStore).build()
         let observer = CapturingEventsServiceObserver()
         context.application.add(observer)
 
-        let expected = events.sorted(by: { $0.startDateTime < $1.startDateTime }).map({ Event.Identifier($0.identifier) })
+        let expected = events.sorted(by: { $0.startDateTime < $1.startDateTime }).map({ EventIdentifier($0.identifier) })
 
         XCTAssertEqual(expected, observer.capturedFavouriteEventIdentifiers)
     }

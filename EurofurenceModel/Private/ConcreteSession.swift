@@ -123,7 +123,7 @@ class ConcreteSession: EurofurenceSession {
                 return
             }
 
-            let action = NotificationContent.event(Event.Identifier(identifier))
+            let action = NotificationContent.event(EventIdentifier(identifier))
             completionHandler(action)
 
             return
@@ -208,11 +208,11 @@ class ConcreteSession: EurofurenceSession {
         schedule.add(observer)
     }
 
-    func favouriteEvent(identifier: Event.Identifier) {
+    func favouriteEvent(identifier: EventIdentifier) {
         schedule.favouriteEvent(identifier: identifier)
     }
 
-    func unfavouriteEvent(identifier: Event.Identifier) {
+    func unfavouriteEvent(identifier: EventIdentifier) {
         schedule.unfavouriteEvent(identifier: identifier)
     }
 
@@ -224,7 +224,7 @@ class ConcreteSession: EurofurenceSession {
         return schedule.makeEventsSearchController()
     }
 
-    func fetchEvent(for identifier: Event.Identifier, completionHandler: @escaping (Event?) -> Void) {
+    func fetchEvent(for identifier: EventIdentifier, completionHandler: @escaping (Event?) -> Void) {
         schedule.fetchEvent(for: identifier, completionHandler: completionHandler)
     }
 

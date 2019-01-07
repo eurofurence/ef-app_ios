@@ -14,7 +14,7 @@ public enum NotificationContent: Equatable {
     case unknown
     case announcement(AnnouncementIdentifier)
     case invalidatedAnnouncement
-    case event(Event.Identifier)
+    case event(EventIdentifier)
 }
 
 public protocol NotificationService {

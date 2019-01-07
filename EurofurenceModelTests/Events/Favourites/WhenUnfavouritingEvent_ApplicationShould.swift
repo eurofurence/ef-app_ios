@@ -13,7 +13,7 @@ class WhenUnfavouritingEvent_ApplicationShould: XCTestCase {
 
     func testTellTheDataStoreToDeleteTheEventIdentifier() {
         let context = ApplicationTestBuilder().build()
-        let identifier = Event.Identifier.random
+        let identifier = EventIdentifier.random
         context.application.favouriteEvent(identifier: identifier)
         context.application.unfavouriteEvent(identifier: identifier)
 
@@ -22,7 +22,7 @@ class WhenUnfavouritingEvent_ApplicationShould: XCTestCase {
 
     func testTellObserversTheEventHasBeenUnfavourited() {
         let context = ApplicationTestBuilder().build()
-        let identifier = Event.Identifier.random
+        let identifier = EventIdentifier.random
         let observer = CapturingEventsServiceObserver()
         context.application.add(observer)
         context.application.favouriteEvent(identifier: identifier)
@@ -33,7 +33,7 @@ class WhenUnfavouritingEvent_ApplicationShould: XCTestCase {
 
     func testTellTheNotificationServiceToRemoveTheScheduledNotification() {
         let context = ApplicationTestBuilder().build()
-        let identifier = Event.Identifier.random
+        let identifier = EventIdentifier.random
         context.application.favouriteEvent(identifier: identifier)
         context.application.unfavouriteEvent(identifier: identifier)
 

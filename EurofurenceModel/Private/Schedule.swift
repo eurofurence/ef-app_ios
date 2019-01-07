@@ -16,7 +16,7 @@ class Schedule: ClockDelegate {
     struct ChangedEvent {}
 
     struct EventUnfavouritedEvent {
-        var identifier: Event.Identifier
+        var identifier: EventIdentifier
     }
 
     // MARK: Properties
@@ -44,7 +44,7 @@ class Schedule: ClockDelegate {
 
     private(set) var dayModels = [Day]()
 
-    private(set) var favouriteEventIdentifiers = [Event.Identifier]() {
+    private(set) var favouriteEventIdentifiers = [EventIdentifier]() {
         didSet {
             favouriteEventIdentifiers.sort { (first, second) -> Bool in
                 guard let firstEvent = eventModels.first(where: { $0.identifier == first }) else { return false }
@@ -111,7 +111,7 @@ class Schedule: ClockDelegate {
         return InMemoryEventsSearchController(schedule: self, eventBus: eventBus)
     }
 
-    func fetchEvent(for identifier: Event.Identifier, completionHandler: @escaping (Event?) -> Void) {
+    func fetchEvent(for identifier: EventIdentifier, completionHandler: @escaping (Event?) -> Void) {
         let event = eventModels.first(where: { $0.identifier == identifier })
         completionHandler(event)
     }
@@ -121,7 +121,7 @@ class Schedule: ClockDelegate {
         provideScheduleInformation(to: observer)
     }
 
-    func favouriteEvent(identifier: Event.Identifier) {
+    func favouriteEvent(identifier: EventIdentifier) {
         dataStore.performTransaction { (transaction) in
             transaction.saveFavouriteEventIdentifier(identifier)
         }
@@ -146,7 +146,7 @@ class Schedule: ClockDelegate {
                                                        userInfo: userInfo)
     }
 
-    func unfavouriteEvent(identifier: Event.Identifier) {
+    func unfavouriteEvent(identifier: EventIdentifier) {
         dataStore.performTransaction { (transaction) in
             transaction.deleteFavouriteEventIdentifier(identifier)
         }
@@ -218,7 +218,7 @@ class Schedule: ClockDelegate {
             }
         }()
 
-        return Event(identifier: Event.Identifier(event.identifier),
+        return Event(identifier: EventIdentifier(event.identifier),
                       title: title,
                       subtitle: event.subtitle,
                       abstract: event.abstract,
