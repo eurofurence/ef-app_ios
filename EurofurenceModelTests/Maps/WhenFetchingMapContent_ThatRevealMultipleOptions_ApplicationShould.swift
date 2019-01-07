@@ -26,7 +26,7 @@ class WhenFetchingMapContent_ThatRevealMultipleOptions_ApplicationShould: XCTest
         syncResponse.maps.changed[randomMap.index] = map
         context.performSuccessfulSync(response: syncResponse)
         var content: Map.Content?
-        context.application.fetchContent(for: Map.Identifier(map.identifier), atX: x, y: y) { content = $0 }
+        context.application.fetchContent(for: MapIdentifier(map.identifier), atX: x, y: y) { content = $0 }
         let expected = Map.Content.multiple([.room(Room(name: room.name)), .dealer(context.makeExpectedDealer(from: dealer))])
 
         XCTAssertEqual(expected, content)

@@ -17,11 +17,3 @@ extension Map: RandomValueProviding {
     }
 
 }
-
-extension Map.Identifier: RandomValueProviding {
-
-    public static var random: Map.Identifier {
-        return Map.Identifier(.random)
-    }
-
-}

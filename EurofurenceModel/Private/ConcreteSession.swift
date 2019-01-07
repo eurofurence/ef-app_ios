@@ -264,11 +264,11 @@ class ConcreteSession: EurofurenceSession {
         maps.add(observer)
     }
 
-    func fetchImagePNGDataForMap(identifier: Map.Identifier, completionHandler: @escaping (Data) -> Void) {
+    func fetchImagePNGDataForMap(identifier: MapIdentifier, completionHandler: @escaping (Data) -> Void) {
         maps.fetchImagePNGDataForMap(identifier: identifier, completionHandler: completionHandler)
     }
 
-    func fetchContent(for identifier: Map.Identifier,
+    func fetchContent(for identifier: MapIdentifier,
                       atX x: Int,
                       y: Int,
                       completionHandler: @escaping (Map.Content) -> Void) {

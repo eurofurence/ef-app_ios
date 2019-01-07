@@ -8,27 +8,9 @@
 
 import Foundation
 
+public typealias MapIdentifier = Identifier<Map>
+
 public struct Map: Equatable {
-
-    public struct Identifier: Comparable, Equatable, Hashable, RawRepresentable {
-
-        public typealias RawValue = String
-
-        public init(_ value: String) {
-            self.rawValue = value
-        }
-
-        public init?(rawValue: String) {
-            self.rawValue = rawValue
-        }
-
-        public var rawValue: String
-
-        public static func < (lhs: Map.Identifier, rhs: Map.Identifier) -> Bool {
-            return lhs.rawValue < rhs.rawValue
-        }
-
-    }
 
     public enum Content: Equatable {
         case none
@@ -52,10 +34,10 @@ public struct Map: Equatable {
 
     }
 
-    public var identifier: Map.Identifier
+    public var identifier: MapIdentifier
     public var location: String
 
-    public init(identifier: Map.Identifier, location: String) {
+    public init(identifier: MapIdentifier, location: String) {
         self.identifier = identifier
         self.location = location
     }

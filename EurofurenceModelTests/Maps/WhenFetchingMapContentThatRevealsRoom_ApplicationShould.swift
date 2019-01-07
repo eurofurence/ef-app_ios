@@ -37,7 +37,7 @@ class WhenFetchingMapContentThatRevealsRoom_ApplicationShould: XCTestCase {
 
     private func fetchContent(atX x: Int, y: Int) -> Map.Content? {
         var content: Map.Content?
-        context.application.fetchContent(for: Map.Identifier(map.identifier), atX: x, y: y) { content = $0 }
+        context.application.fetchContent(for: MapIdentifier(map.identifier), atX: x, y: y) { content = $0 }
         return content
     }
 

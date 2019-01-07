@@ -11,6 +11,6 @@ import Foundation
 
 protocol MapsModuleDelegate {
 
-    func mapsModuleDidSelectMap(identifier: Map.Identifier)
+    func mapsModuleDidSelectMap(identifier: MapIdentifier)
 
 }

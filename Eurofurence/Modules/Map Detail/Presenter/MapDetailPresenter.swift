@@ -13,13 +13,13 @@ class MapDetailPresenter: MapDetailSceneDelegate {
 
     private let scene: MapDetailScene
     private let interactor: MapDetailInteractor
-    private let identifier: Map.Identifier
+    private let identifier: MapIdentifier
     private let delegate: MapDetailModuleDelegate
     private var viewModel: MapDetailViewModel?
 
     init(scene: MapDetailScene,
          interactor: MapDetailInteractor,
-         identifier: Map.Identifier,
+         identifier: MapIdentifier,
          delegate: MapDetailModuleDelegate) {
         self.scene = scene
         self.interactor = interactor

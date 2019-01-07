@@ -17,7 +17,7 @@ class WhenFetchingMapImageData_ApplicationShould: XCTestCase {
         context.performSuccessfulSync(response: syncResponse)
         let randomMap = syncResponse.maps.changed.randomElement()
         var mapImageData: Data?
-        context.application.fetchImagePNGDataForMap(identifier: Map.Identifier(randomMap.element.identifier)) { mapImageData = $0 }
+        context.application.fetchImagePNGDataForMap(identifier: MapIdentifier(randomMap.element.identifier)) { mapImageData = $0 }
         let imageEntity = context.imageRepository.loadImage(identifier: randomMap.element.imageIdentifier)
 
         XCTAssertEqual(imageEntity?.pngImageData, mapImageData)

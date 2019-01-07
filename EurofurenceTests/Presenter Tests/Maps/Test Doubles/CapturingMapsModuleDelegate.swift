@@ -13,8 +13,8 @@ import Foundation
 
 class CapturingMapsModuleDelegate: MapsModuleDelegate {
 
-    private(set) var capturedMapIdentifierToPresent: Map.Identifier?
-    func mapsModuleDidSelectMap(identifier: Map.Identifier) {
+    private(set) var capturedMapIdentifierToPresent: MapIdentifier?
+    func mapsModuleDidSelectMap(identifier: MapIdentifier) {
         capturedMapIdentifierToPresent = identifier
     }
 

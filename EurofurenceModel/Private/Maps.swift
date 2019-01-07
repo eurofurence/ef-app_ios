@@ -44,14 +44,14 @@ class Maps {
         observer.mapsServiceDidChangeMaps(models)
     }
 
-    func fetchImagePNGDataForMap(identifier: Map.Identifier, completionHandler: @escaping (Data) -> Void) {
+    func fetchImagePNGDataForMap(identifier: MapIdentifier, completionHandler: @escaping (Data) -> Void) {
         serverModels
             .first(where: { $0.identifier == identifier.rawValue })
             .let({ imageRepository.loadImage(identifier: $0.imageIdentifier) })
             .let({ completionHandler($0.pngImageData) })
     }
 
-    func fetchContent(for identifier: Map.Identifier,
+    func fetchContent(for identifier: MapIdentifier,
                       atX x: Int,
                       y: Int,
                       completionHandler: @escaping (Map.Content) -> Void) {
@@ -111,7 +111,7 @@ class Maps {
         dealerServerModels = dealers
 
         models = serverModels.map({ (map) -> Map in
-            return Map(identifier: Map.Identifier(map.identifier), location: map.mapDescription)
+            return Map(identifier: MapIdentifier(map.identifier), location: map.mapDescription)
         }).sorted(by: { (first, second) -> Bool in
             return first.location < second.location
         })

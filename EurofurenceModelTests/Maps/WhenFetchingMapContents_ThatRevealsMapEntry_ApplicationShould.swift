@@ -24,7 +24,7 @@ class WhenFetchingMapContents_ThatRevealsMapEntry_ApplicationShould: XCTestCase 
 		context.performSuccessfulSync(response: syncResponse)
 
 		var content: Map.Content?
-		context.application.fetchContent(for: Map.Identifier(map.identifier), atX: x, y: y) { content = $0 }
+		context.application.fetchContent(for: MapIdentifier(map.identifier), atX: x, y: y) { content = $0 }
 		let expected = Map.Content.location(x: Float(expectedMapEntry.x), y: Float(expectedMapEntry.y), name: link.name)
 
 		XCTAssertEqual(expected, content)

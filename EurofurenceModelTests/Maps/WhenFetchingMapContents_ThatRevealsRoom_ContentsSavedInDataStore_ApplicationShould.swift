@@ -26,7 +26,7 @@ class WhenFetchingMapContents_ThatRevealsRoom_ContentsSavedInDataStore_Applicati
         dataStore.save(syncResponse)
         let context = ApplicationTestBuilder().with(dataStore).build()
         var content: Map.Content?
-        context.application.fetchContent(for: Map.Identifier(map.identifier), atX: x, y: y) { content = $0 }
+        context.application.fetchContent(for: MapIdentifier(map.identifier), atX: x, y: y) { content = $0 }
         let expected = Map.Content.room(Room(name: room.name))
 
         XCTAssertEqual(expected, content)

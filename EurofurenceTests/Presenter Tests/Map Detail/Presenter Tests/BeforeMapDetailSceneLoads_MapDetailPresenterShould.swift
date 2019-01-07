@@ -14,7 +14,7 @@ import XCTest
 class BeforeMapDetailSceneLoads_MapDetailPresenterShould: XCTestCase {
 
     func testNotBindAnySceneComponents() {
-        let identifier = Map.Identifier.random
+        let identifier = MapIdentifier.random
         let interactor = FakeMapDetailInteractor(expectedMapIdentifier: identifier)
         let context = MapDetailPresenterTestBuilder().with(interactor).build(for: identifier)
 

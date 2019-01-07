@@ -14,7 +14,7 @@ import XCTest
 class WhenSceneTapsMapDetail_ThatRepresentsDealer_MapsPresenterShould: XCTestCase {
 
     func testTellTheModuleDelegateToShowDealer() {
-        let identifier = Map.Identifier.random
+        let identifier = MapIdentifier.random
         let interactor = FakeMapDetailInteractor(expectedMapIdentifier: identifier)
         let context = MapDetailPresenterTestBuilder().with(interactor).build(for: identifier)
         context.simulateSceneDidLoad()

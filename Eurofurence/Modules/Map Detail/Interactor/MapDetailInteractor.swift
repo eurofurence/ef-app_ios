@@ -11,6 +11,6 @@ import Foundation
 
 protocol MapDetailInteractor {
 
-    func makeViewModelForMap(identifier: Map.Identifier, completionHandler: @escaping (MapDetailViewModel) -> Void)
+    func makeViewModelForMap(identifier: MapIdentifier, completionHandler: @escaping (MapDetailViewModel) -> Void)
 
 }

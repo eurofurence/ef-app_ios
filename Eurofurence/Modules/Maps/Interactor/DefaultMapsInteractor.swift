@@ -30,7 +30,7 @@ class DefaultMapsInteractor: MapsInteractor, MapsObserver {
             return SingleViewModel(map: map, mapsService: mapsService)
         }
 
-        func identifierForMap(at index: Int) -> Map.Identifier? {
+        func identifierForMap(at index: Int) -> MapIdentifier? {
             return maps[index].identifier
         }
 

@@ -14,7 +14,7 @@ class DefaultMapDetailInteractor: MapDetailInteractor, MapsObserver {
     private struct ViewModel: MapDetailViewModel {
 
         var mapsService: MapsService
-        var mapIdentifier: Map.Identifier
+        var mapIdentifier: MapIdentifier
         var mapImagePNGData: Data
         var mapName: String
 
@@ -104,7 +104,7 @@ class DefaultMapDetailInteractor: MapDetailInteractor, MapsObserver {
         mapsService.add(self)
     }
 
-    func makeViewModelForMap(identifier: Map.Identifier, completionHandler: @escaping (MapDetailViewModel) -> Void) {
+    func makeViewModelForMap(identifier: MapIdentifier, completionHandler: @escaping (MapDetailViewModel) -> Void) {
         guard let map = maps.first(where: { $0.identifier == identifier }) else { return }
 
         mapsService.fetchImagePNGDataForMap(identifier: identifier) { (mapGraphicData) in

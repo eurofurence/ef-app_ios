@@ -160,7 +160,7 @@ class ApplicationTestBuilder {
 
         func makeExpectedMaps(from response: APISyncResponse) -> [Map] {
             return response.maps.changed.map({ (map) -> Map in
-                return Map(identifier: Map.Identifier(map.identifier), location: map.mapDescription)
+                return Map(identifier: MapIdentifier(map.identifier), location: map.mapDescription)
             }).sorted(by: { $0.location < $1.location })
         }
 
