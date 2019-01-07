@@ -61,7 +61,7 @@ class MapDetailPresenter: MapDetailSceneDelegate {
             scene.show(contextualContent: content)
         }
 
-        func visit(_ dealer: Dealer.Identifier) {
+        func visit(_ dealer: DealerIdentifier) {
             delegate.mapDetailModuleDidSelectDealer(dealer)
         }
 

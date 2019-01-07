@@ -23,8 +23,8 @@ class CapturingMapContentVisitor: MapContentVisitor {
         capturedContextualContent = content
     }
 
-    private(set) var capturedDealer: Dealer.Identifier?
-    func visit(_ dealer: Dealer.Identifier) {
+    private(set) var capturedDealer: DealerIdentifier?
+    func visit(_ dealer: DealerIdentifier) {
         capturedDealer = dealer
     }
 

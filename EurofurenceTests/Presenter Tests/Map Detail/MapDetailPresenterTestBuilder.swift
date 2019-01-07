@@ -13,8 +13,8 @@ import UIKit
 
 class CapturingMapDetailModuleDelegate: MapDetailModuleDelegate {
 
-    private(set) var capturedDealerToShow: Dealer.Identifier?
-    func mapDetailModuleDidSelectDealer(_ identifier: Dealer.Identifier) {
+    private(set) var capturedDealerToShow: DealerIdentifier?
+    func mapDetailModuleDidSelectDealer(_ identifier: DealerIdentifier) {
         capturedDealerToShow = identifier
     }
 

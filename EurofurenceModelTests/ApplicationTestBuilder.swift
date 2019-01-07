@@ -132,7 +132,7 @@ class ApplicationTestBuilder {
         }
 
         func makeExpectedDealer(from dealer: APIDealer) -> Dealer {
-            return Dealer(identifier: Dealer.Identifier(dealer.identifier),
+            return Dealer(identifier: DealerIdentifier(dealer.identifier),
                            preferredName: dealer.displayName,
                            alternateName: dealer.attendeeNickname == dealer.displayName ? nil : dealer.attendeeNickname,
                            isAttendingOnThursday: dealer.attendsOnThursday,

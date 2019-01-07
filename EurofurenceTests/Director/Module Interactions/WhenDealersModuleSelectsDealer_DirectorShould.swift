@@ -17,7 +17,7 @@ class WhenDealersModuleSelectsDealer_DirectorShould: XCTestCase {
         let context = ApplicationDirectorTestBuilder().build()
         context.navigateToTabController()
         let dealersNavigationController = context.navigationController(for: context.dealersModule.stubInterface)
-        let dealer = Dealer.Identifier.random
+        let dealer = DealerIdentifier.random
         context.dealersModule.simulateDidSelectDealer(dealer)
 
         XCTAssertEqual(context.dealerDetailModule.stubInterface, dealersNavigationController?.topViewController)

@@ -326,7 +326,7 @@ class ApplicationDirector: ExternalContentHandler,
 
     // MARK: DealersModuleDelegate
 
-    func dealersModuleDidSelectDealer(identifier: Dealer.Identifier) {
+    func dealersModuleDidSelectDealer(identifier: DealerIdentifier) {
         let module = dealerDetailModuleProviding.makeDealerDetailModule(for: identifier)
         dealersViewController?.navigationController?.pushViewController(module, animated: animate)
     }
@@ -369,7 +369,7 @@ class ApplicationDirector: ExternalContentHandler,
 
     // MARK: MapDetailModuleDelegate
 
-    func mapDetailModuleDidSelectDealer(_ identifier: Dealer.Identifier) {
+    func mapDetailModuleDidSelectDealer(_ identifier: DealerIdentifier) {
         let module = dealerDetailModuleProviding.makeDealerDetailModule(for: identifier)
         mapsModule?.navigationController?.pushViewController(module, animated: animate)
     }

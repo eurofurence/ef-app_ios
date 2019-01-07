@@ -30,8 +30,8 @@ class CapturingDealersSearchViewModel: DealersSearchViewModel {
         capturedSearchQuery = query
     }
 
-    fileprivate var dealerIdentifiers = [IndexPath: Dealer.Identifier]()
-    func identifierForDealer(at indexPath: IndexPath) -> Dealer.Identifier? {
+    fileprivate var dealerIdentifiers = [IndexPath: DealerIdentifier]()
+    func identifierForDealer(at indexPath: IndexPath) -> DealerIdentifier? {
         return dealerIdentifiers[indexPath]
     }
 
@@ -39,7 +39,7 @@ class CapturingDealersSearchViewModel: DealersSearchViewModel {
 
 extension CapturingDealersSearchViewModel {
 
-    func stub(_ identifier: Dealer.Identifier, forDealerAt indexPath: IndexPath) {
+    func stub(_ identifier: DealerIdentifier, forDealerAt indexPath: IndexPath) {
         dealerIdentifiers[indexPath] = identifier
     }
 

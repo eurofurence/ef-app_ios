@@ -19,7 +19,7 @@ class WhenMapsDetailModuleSelectsDealer_DirectorShould: XCTestCase {
         let map = Map.Identifier.random
         context.mapsModule.simulateDidSelectMap(map)
         let mapsNavigationController = context.navigationController(for: context.mapsModule.stubInterface)
-        let dealer = Dealer.Identifier.random
+        let dealer = DealerIdentifier.random
         context.mapDetailModule.simulateDidSelectDealer(dealer)
 
         XCTAssertEqual(context.dealerDetailModule.stubInterface, mapsNavigationController?.topViewController)

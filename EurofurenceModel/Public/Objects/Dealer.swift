@@ -8,25 +8,11 @@
 
 import Foundation
 
+public typealias DealerIdentifier = Identifier<Dealer>
+
 public struct Dealer: Equatable {
 
-    public struct Identifier: Equatable, Hashable, RawRepresentable {
-
-        public typealias RawValue = String
-
-        public init(_ value: String) {
-            self.rawValue = value
-        }
-
-        public init?(rawValue: String) {
-            self.rawValue = rawValue
-        }
-
-        public var rawValue: String
-
-    }
-
-    public var identifier: Dealer.Identifier
+    public var identifier: DealerIdentifier
 
     public var preferredName: String
     public var alternateName: String?
@@ -37,7 +23,7 @@ public struct Dealer: Equatable {
 
     public var isAfterDark: Bool
 
-    public init(identifier: Dealer.Identifier, preferredName: String, alternateName: String?, isAttendingOnThursday: Bool, isAttendingOnFriday: Bool, isAttendingOnSaturday: Bool, isAfterDark: Bool) {
+    public init(identifier: DealerIdentifier, preferredName: String, alternateName: String?, isAttendingOnThursday: Bool, isAttendingOnFriday: Bool, isAttendingOnSaturday: Bool, isAfterDark: Bool) {
         self.identifier = identifier
         self.preferredName = preferredName
         self.alternateName = alternateName

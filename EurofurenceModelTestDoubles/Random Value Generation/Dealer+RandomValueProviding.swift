@@ -14,20 +14,12 @@ extension Dealer: RandomValueProviding {
 
     public static var random: Dealer {
         return Dealer(identifier: .random,
-                       preferredName: .random,
-                       alternateName: .random,
-                       isAttendingOnThursday: .random,
-                       isAttendingOnFriday: .random,
-                       isAttendingOnSaturday: .random,
-                       isAfterDark: .random)
-    }
-
-}
-
-extension Dealer.Identifier: RandomValueProviding {
-
-    public static var random: Dealer.Identifier {
-        return Dealer.Identifier(.random)
+                      preferredName: .random,
+                      alternateName: .random,
+                      isAttendingOnThursday: .random,
+                      isAttendingOnFriday: .random,
+                      isAttendingOnSaturday: .random,
+                      isAfterDark: .random)
     }
 
 }

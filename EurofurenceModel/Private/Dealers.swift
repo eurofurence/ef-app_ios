@@ -92,7 +92,7 @@ class Dealers: DealersService {
         return Index(dealers: self, eventBus: eventBus)
     }
 
-    func fetchIconPNGData(for identifier: Dealer.Identifier, completionHandler: @escaping (Data?) -> Void) {
+    func fetchIconPNGData(for identifier: DealerIdentifier, completionHandler: @escaping (Data?) -> Void) {
         guard let dealer = fetchDealer(identifier) else { return }
 
         var iconData: Data?
@@ -103,7 +103,7 @@ class Dealers: DealersService {
         completionHandler(iconData)
     }
 
-    private func fetchMapData(for identifier: Dealer.Identifier) -> (map: APIMap, entry: APIMap.Entry)? {
+    private func fetchMapData(for identifier: DealerIdentifier) -> (map: APIMap, entry: APIMap.Entry)? {
         guard let maps = dataStore.getSavedMaps() else { return nil }
 
         for map in maps {
@@ -117,7 +117,7 @@ class Dealers: DealersService {
         return nil
     }
 
-    func fetchExtendedDealerData(for dealer: Dealer.Identifier, completionHandler: @escaping (ExtendedDealerData) -> Void) {
+    func fetchExtendedDealerData(for dealer: DealerIdentifier, completionHandler: @escaping (ExtendedDealerData) -> Void) {
         guard let dealerModel = dealerModels.first(where: { $0.identifier == dealer }) else { return }
         guard let model = fetchDealer(dealer) else { return }
 
@@ -158,7 +158,7 @@ class Dealers: DealersService {
         completionHandler(extendedData)
     }
 
-    func openWebsite(for identifier: Dealer.Identifier) {
+    func openWebsite(for identifier: DealerIdentifier) {
         guard let dealer = fetchDealer(identifier) else { return }
         guard let externalLink = dealer.links?.first(where: { $0.fragmentType == .WebExternal }) else { return }
         guard let url = URL(string: externalLink.target) else { return }
@@ -166,14 +166,14 @@ class Dealers: DealersService {
         open(url)
     }
 
-    func openTwitter(for identifier: Dealer.Identifier) {
+    func openTwitter(for identifier: DealerIdentifier) {
         guard let dealer = fetchDealer(identifier), dealer.twitterHandle.isEmpty == false else { return }
         guard let url = URL(string: "https://twitter.com/")?.appendingPathComponent(dealer.twitterHandle) else { return }
 
         open(url)
     }
 
-    func openTelegram(for identifier: Dealer.Identifier) {
+    func openTelegram(for identifier: DealerIdentifier) {
         guard let dealer = fetchDealer(identifier), dealer.telegramHandle.isEmpty == false else { return }
         guard let url = URL(string: "https://t.me/")?.appendingPathComponent(dealer.twitterHandle) else { return }
 
@@ -184,7 +184,7 @@ class Dealers: DealersService {
         eventBus.post(DomainEvent.OpenURL(url: url))
     }
 
-    private func fetchDealer(_ identifier: Dealer.Identifier) -> APIDealer? {
+    private func fetchDealer(_ identifier: DealerIdentifier) -> APIDealer? {
         return models.first(where: { $0.identifier == identifier.rawValue })
     }
 
@@ -201,7 +201,7 @@ class Dealers: DealersService {
                 }
             }
 
-            return Dealer(identifier: Dealer.Identifier(dealer.identifier),
+            return Dealer(identifier: DealerIdentifier(dealer.identifier),
                            preferredName: preferredName,
                            alternateName: dealer.attendeeNickname == dealer.displayName ? nil : dealer.attendeeNickname,
                            isAttendingOnThursday: dealer.attendsOnThursday,

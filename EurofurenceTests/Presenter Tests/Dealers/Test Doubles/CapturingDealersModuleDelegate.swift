@@ -13,8 +13,8 @@ import Foundation
 
 class CapturingDealersModuleDelegate: DealersModuleDelegate {
 
-    private(set) var capturedSelectedDealerIdentifier: Dealer.Identifier?
-    func dealersModuleDidSelectDealer(identifier: Dealer.Identifier) {
+    private(set) var capturedSelectedDealerIdentifier: DealerIdentifier?
+    func dealersModuleDidSelectDealer(identifier: DealerIdentifier) {
         capturedSelectedDealerIdentifier = identifier
     }
 

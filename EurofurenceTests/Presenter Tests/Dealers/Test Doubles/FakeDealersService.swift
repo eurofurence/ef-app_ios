@@ -21,29 +21,29 @@ class FakeDealersService: DealersService {
         return index
     }
 
-    fileprivate var iconData = [Dealer.Identifier: Data]()
-    func fetchIconPNGData(for identifier: Dealer.Identifier, completionHandler: @escaping (Data?) -> Void) {
+    fileprivate var iconData = [DealerIdentifier: Data]()
+    func fetchIconPNGData(for identifier: DealerIdentifier, completionHandler: @escaping (Data?) -> Void) {
         completionHandler(iconData[identifier])
     }
 
-    fileprivate var fakedDealerData = [Dealer.Identifier: ExtendedDealerData]()
-    func fetchExtendedDealerData(for dealer: Dealer.Identifier, completionHandler: @escaping (ExtendedDealerData) -> Void) {
+    fileprivate var fakedDealerData = [DealerIdentifier: ExtendedDealerData]()
+    func fetchExtendedDealerData(for dealer: DealerIdentifier, completionHandler: @escaping (ExtendedDealerData) -> Void) {
         let data = fetchOrMakeExtendedDealerData(for: dealer)
         completionHandler(data)
     }
 
-    private(set) var capturedIdentifierForOpeningWebsite: Dealer.Identifier?
-    func openWebsite(for identifier: Dealer.Identifier) {
+    private(set) var capturedIdentifierForOpeningWebsite: DealerIdentifier?
+    func openWebsite(for identifier: DealerIdentifier) {
         capturedIdentifierForOpeningWebsite = identifier
     }
 
-    private(set) var capturedIdentifierForOpeningTwitter: Dealer.Identifier?
-    func openTwitter(for identifier: Dealer.Identifier) {
+    private(set) var capturedIdentifierForOpeningTwitter: DealerIdentifier?
+    func openTwitter(for identifier: DealerIdentifier) {
         capturedIdentifierForOpeningTwitter = identifier
     }
 
-    private(set) var capturedIdentifierForOpeningTelegram: Dealer.Identifier?
-    func openTelegram(for identifier: Dealer.Identifier) {
+    private(set) var capturedIdentifierForOpeningTelegram: DealerIdentifier?
+    func openTelegram(for identifier: DealerIdentifier) {
         capturedIdentifierForOpeningTelegram = identifier
     }
 
@@ -51,11 +51,11 @@ class FakeDealersService: DealersService {
 
 extension FakeDealersService {
 
-    func stubIconPNGData(_ data: Data, for identifier: Dealer.Identifier) {
+    func stubIconPNGData(_ data: Data, for identifier: DealerIdentifier) {
         iconData[identifier] = data
     }
 
-    fileprivate func fetchOrMakeExtendedDealerData(for dealer: Dealer.Identifier) -> ExtendedDealerData {
+    fileprivate func fetchOrMakeExtendedDealerData(for dealer: DealerIdentifier) -> ExtendedDealerData {
         if let data = fakedDealerData[dealer] {
             return data
         }
@@ -65,11 +65,11 @@ extension FakeDealersService {
         return data
     }
 
-    func fakedDealerData(for identifier: Dealer.Identifier) -> ExtendedDealerData {
+    func fakedDealerData(for identifier: DealerIdentifier) -> ExtendedDealerData {
         return fetchOrMakeExtendedDealerData(for: identifier)
     }
 
-    func stub(_ data: ExtendedDealerData, for identifier: Dealer.Identifier) {
+    func stub(_ data: ExtendedDealerData, for identifier: DealerIdentifier) {
         fakedDealerData[identifier] = data
     }
 

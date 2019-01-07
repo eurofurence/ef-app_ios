@@ -31,7 +31,7 @@ class WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould: 
         context = ApplicationTestBuilder().build()
         context.refreshLocalStore()
         context.syncAPI.simulateSuccessfulSync(response)
-        let identifier = Dealer.Identifier(dealer.identifier)
+        let identifier = DealerIdentifier(dealer.identifier)
         context.application.fetchExtendedDealerData(for: identifier) { self.dealerData = $0 }
     }
 

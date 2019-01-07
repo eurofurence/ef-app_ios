@@ -24,7 +24,7 @@ class StubDealersModuleFactory: DealersModuleProviding {
 
 extension StubDealersModuleFactory {
 
-    func simulateDidSelectDealer(_ dealer: Dealer.Identifier) {
+    func simulateDidSelectDealer(_ dealer: DealerIdentifier) {
         delegate?.dealersModuleDidSelectDealer(identifier: dealer)
     }
 

@@ -32,7 +32,7 @@ class DealerDetailPresenterTestBuilder {
         return self
     }
 
-    func build(for identifier: Dealer.Identifier = .random) -> Context {
+    func build(for identifier: DealerIdentifier = .random) -> Context {
         let sceneFactory = StubDealerDetailSceneFactory()
         let module = DealerDetailModuleBuilder()
             .with(sceneFactory)

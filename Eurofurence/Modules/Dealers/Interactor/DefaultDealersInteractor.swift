@@ -129,7 +129,7 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
             delegate.dealerGroupsDidChange(groups, indexTitles: indexTitles)
         }
 
-        func identifierForDealer(at indexPath: IndexPath) -> Dealer.Identifier? {
+        func identifierForDealer(at indexPath: IndexPath) -> DealerIdentifier? {
             return rawGroups[indexPath.section].dealers[indexPath.item].identifier
         }
 
@@ -177,7 +177,7 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
             index.performSearch(term: query)
         }
 
-        func identifierForDealer(at indexPath: IndexPath) -> Dealer.Identifier? {
+        func identifierForDealer(at indexPath: IndexPath) -> DealerIdentifier? {
             return rawGroups[indexPath.section].dealers[indexPath.item].identifier
         }
 

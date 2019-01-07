@@ -26,8 +26,8 @@ final class CapturingDealersViewModel: DealersViewModel {
         delegate.dealerGroupsDidChange(dealerGroups, indexTitles: sectionIndexTitles)
     }
 
-    fileprivate var dealerIdentifiers = [IndexPath: Dealer.Identifier]()
-    func identifierForDealer(at indexPath: IndexPath) -> Dealer.Identifier? {
+    fileprivate var dealerIdentifiers = [IndexPath: DealerIdentifier]()
+    func identifierForDealer(at indexPath: IndexPath) -> DealerIdentifier? {
         return dealerIdentifiers[indexPath]
     }
 
@@ -40,7 +40,7 @@ final class CapturingDealersViewModel: DealersViewModel {
 
 extension CapturingDealersViewModel {
 
-    func stub(_ identifier: Dealer.Identifier, forDealerAt indexPath: IndexPath) {
+    func stub(_ identifier: DealerIdentifier, forDealerAt indexPath: IndexPath) {
         dealerIdentifiers[indexPath] = identifier
     }
 

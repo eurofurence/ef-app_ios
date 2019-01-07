@@ -232,23 +232,23 @@ class ConcreteSession: EurofurenceSession {
         return dealers.makeDealersIndex()
     }
 
-    func fetchIconPNGData(for identifier: Dealer.Identifier, completionHandler: @escaping (Data?) -> Void) {
+    func fetchIconPNGData(for identifier: DealerIdentifier, completionHandler: @escaping (Data?) -> Void) {
         dealers.fetchIconPNGData(for: identifier, completionHandler: completionHandler)
     }
 
-    func fetchExtendedDealerData(for dealer: Dealer.Identifier, completionHandler: @escaping (ExtendedDealerData) -> Void) {
+    func fetchExtendedDealerData(for dealer: DealerIdentifier, completionHandler: @escaping (ExtendedDealerData) -> Void) {
         dealers.fetchExtendedDealerData(for: dealer, completionHandler: completionHandler)
     }
 
-    func openWebsite(for identifier: Dealer.Identifier) {
+    func openWebsite(for identifier: DealerIdentifier) {
         dealers.openWebsite(for: identifier)
     }
 
-    func openTwitter(for identifier: Dealer.Identifier) {
+    func openTwitter(for identifier: DealerIdentifier) {
         dealers.openTwitter(for: identifier)
     }
 
-    func openTelegram(for identifier: Dealer.Identifier) {
+    func openTelegram(for identifier: DealerIdentifier) {
         dealers.openTelegram(for: identifier)
     }
 

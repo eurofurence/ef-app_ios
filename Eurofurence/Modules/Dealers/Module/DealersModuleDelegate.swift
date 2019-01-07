@@ -11,6 +11,6 @@ import Foundation
 
 protocol DealersModuleDelegate {
 
-    func dealersModuleDidSelectDealer(identifier: Dealer.Identifier)
+    func dealersModuleDidSelectDealer(identifier: DealerIdentifier)
 
 }

@@ -25,7 +25,7 @@ class WhenPreparingDealerMapGraphic_ApplicationShould: XCTestCase {
         let renderedData = Data.random
         context.mapCoordinateRender.stub(renderedData, forGraphic: mapGraphic, atX: dealerMapEntry.x, y: dealerMapEntry.y, radius: dealerMapEntry.tapRadius)
         var extendedData: ExtendedDealerData?
-        context.application.fetchExtendedDealerData(for: Dealer.Identifier(rawValue: randomDealer.element.identifier)!) { extendedData = $0 }
+        context.application.fetchExtendedDealerData(for: DealerIdentifier(rawValue: randomDealer.element.identifier)!) { extendedData = $0 }
 
         XCTAssertEqual(renderedData, extendedData?.dealersDenMapLocationGraphicPNGData)
     }

@@ -12,7 +12,7 @@ import Foundation
 protocol DealersViewModel {
 
     func setDelegate(_ delegate: DealersViewModelDelegate)
-    func identifierForDealer(at indexPath: IndexPath) -> Dealer.Identifier?
+    func identifierForDealer(at indexPath: IndexPath) -> DealerIdentifier?
     func refresh()
 
 }

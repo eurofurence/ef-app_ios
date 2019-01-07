@@ -132,9 +132,9 @@ struct DealerDetailPresenter: DealerDetailSceneDelegate {
 
     private let scene: DealerDetailScene
     private let interactor: DealerDetailInteractor
-    private let dealer: Dealer.Identifier
+    private let dealer: DealerIdentifier
 
-    init(scene: DealerDetailScene, interactor: DealerDetailInteractor, dealer: Dealer.Identifier) {
+    init(scene: DealerDetailScene, interactor: DealerDetailInteractor, dealer: DealerIdentifier) {
         self.scene = scene
         self.interactor = interactor
         self.dealer = dealer

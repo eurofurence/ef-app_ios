@@ -11,6 +11,6 @@ import UIKit
 
 protocol DealerDetailModuleProviding {
 
-    func makeDealerDetailModule(for dealer: Dealer.Identifier) -> UIViewController
+    func makeDealerDetailModule(for dealer: DealerIdentifier) -> UIViewController
 
 }

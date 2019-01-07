@@ -14,7 +14,7 @@ import XCTest
 class WhenDealerDetailSceneLoads_DealerDetailPresenterShould: XCTestCase {
 
     func testTellTheInteractorToMakeViewModelUsingDealerIdentifier() {
-        let identifier: Dealer.Identifier = .random
+        let identifier: DealerIdentifier = .random
         let context = DealerDetailPresenterTestBuilder().build(for: identifier)
         context.simulateSceneDidLoad()
 

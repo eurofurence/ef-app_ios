@@ -11,11 +11,11 @@ import Foundation
 public protocol DealersService {
 
     func makeDealersIndex() -> DealersIndex
-    func fetchIconPNGData(for identifier: Dealer.Identifier, completionHandler: @escaping (Data?) -> Void)
-    func fetchExtendedDealerData(for dealer: Dealer.Identifier, completionHandler: @escaping (ExtendedDealerData) -> Void)
-    func openWebsite(for identifier: Dealer.Identifier)
-    func openTwitter(for identifier: Dealer.Identifier)
-    func openTelegram(for identifier: Dealer.Identifier)
+    func fetchIconPNGData(for identifier: DealerIdentifier, completionHandler: @escaping (Data?) -> Void)
+    func fetchExtendedDealerData(for dealer: DealerIdentifier, completionHandler: @escaping (ExtendedDealerData) -> Void)
+    func openWebsite(for identifier: DealerIdentifier)
+    func openTwitter(for identifier: DealerIdentifier)
+    func openTelegram(for identifier: DealerIdentifier)
 
 }
 
