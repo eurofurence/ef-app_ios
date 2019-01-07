@@ -15,7 +15,7 @@ private protocol EventFilter {
     
 }
 
-class EventsScheduleAdapter: EventsSchedule, EventConsumer {
+class EventsScheduleAdapter: EventsSchedule {
     
     private let schedule: Schedule
     private let clock: Clock
@@ -38,12 +38,30 @@ class EventsScheduleAdapter: EventsSchedule, EventConsumer {
         
     }
     
-    private struct UpdateCurrentDayWhenSignificantTimePasses: EventConsumer {
+    private class UpdateCurrentDayWhenSignificantTimePasses: EventConsumer {
         
-        var scheduleAdapter: EventsScheduleAdapter
+        private let scheduleAdapter: EventsScheduleAdapter
+        
+        init(scheduleAdapter: EventsScheduleAdapter) {
+            self.scheduleAdapter = scheduleAdapter
+        }
         
         func consume(event: DomainEvent.SignificantTimePassedEvent) {
             scheduleAdapter.updateCurrentDay()
+        }
+        
+    }
+    
+    private class UpdateAdapterWhenScheduleChanges: EventConsumer {
+        
+        private let scheduleAdapter: EventsScheduleAdapter
+        
+        init(scheduleAdapter: EventsScheduleAdapter) {
+            self.scheduleAdapter = scheduleAdapter
+        }
+        
+        func consume(event: Schedule.ChangedEvent) {
+            scheduleAdapter.updateFromSchedule()
         }
         
     }
@@ -54,7 +72,7 @@ class EventsScheduleAdapter: EventsSchedule, EventConsumer {
         events = schedule.eventModels
         days = schedule.dayModels
         
-        eventBus.subscribe(consumer: self)
+        eventBus.subscribe(consumer: UpdateAdapterWhenScheduleChanges(scheduleAdapter: self))
         eventBus.subscribe(consumer: UpdateCurrentDayWhenSignificantTimePasses(scheduleAdapter: self))
         regenerateSchedule()
         updateCurrentDay()
@@ -129,7 +147,7 @@ class EventsScheduleAdapter: EventsSchedule, EventConsumer {
         delegate?.eventDaysDidChange(to: schedule.dayModels)
     }
     
-    func consume(event: Schedule.ChangedEvent) {
+    private func updateFromSchedule() {
         regenerateSchedule()
         
         if days != schedule.dayModels {
