@@ -39,18 +39,11 @@
 		7820A6F61F16B123004C0FB5 /* UserDefaultsUserAcknowledgedPushPermissionsRequestStateProvidingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6F51F16B123004C0FB5 /* UserDefaultsUserAcknowledgedPushPermissionsRequestStateProvidingTests.swift */; };
 		7820A6FD1F16C0C8004C0FB5 /* AcknowledgedPushPermissionsRequestTestDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6FC1F16C0C8004C0FB5 /* AcknowledgedPushPermissionsRequestTestDoubles.swift */; };
 		78455B3C1F116E24005BE2D7 /* UserDefaultsTutorialStateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78455B3B1F116E24005BE2D7 /* UserDefaultsTutorialStateProvider.swift */; };
-		78455B451F11778D005BE2D7 /* TutorialRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78455B441F11778D005BE2D7 /* TutorialRouter.swift */; };
-		78455B471F11779D005BE2D7 /* SplashScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78455B461F11779D005BE2D7 /* SplashScreenRouter.swift */; };
-		78455B491F1177AD005BE2D7 /* CapturingTutorialRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78455B481F1177AD005BE2D7 /* CapturingTutorialRouter.swift */; };
-		78455B4B1F1177C0005BE2D7 /* CapturingSplashScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78455B4A1F1177C0005BE2D7 /* CapturingSplashScreenRouter.swift */; };
 		78455B4D1F1177CF005BE2D7 /* StubFirstTimeLaunchStateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78455B4C1F1177CF005BE2D7 /* StubFirstTimeLaunchStateProvider.swift */; };
-		78455B521F1179F4005BE2D7 /* StoryboardTutorialRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78455B511F1179F4005BE2D7 /* StoryboardTutorialRouterTests.swift */; };
 		78455B561F117B24005BE2D7 /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78455B551F117B24005BE2D7 /* Tutorial.storyboard */; };
 		78455B5D1F1182B7005BE2D7 /* TutorialPageViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78455B5C1F1182B7005BE2D7 /* TutorialPageViewControllerTests.swift */; };
 		78455B621F118699005BE2D7 /* RoundedCornerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78455B611F118699005BE2D7 /* RoundedCornerButton.swift */; };
 		78C86D541F1228B0003A20E6 /* TutorialViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D531F1228B0003A20E6 /* TutorialViewControllerTests.swift */; };
-		78C86D561F12334D003A20E6 /* Routers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D551F12334D003A20E6 /* Routers.swift */; };
-		78C86D5A1F1234F0003A20E6 /* StubRouters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D591F1234F0003A20E6 /* StubRouters.swift */; };
 		78C86D601F123859003A20E6 /* CapturingTutorialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D5F1F123859003A20E6 /* CapturingTutorialScene.swift */; };
 		78C86D651F123B20003A20E6 /* CapturingTutorialPageScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D641F123B20003A20E6 /* CapturingTutorialPageScene.swift */; };
 		78C86D791F12ADF8003A20E6 /* CapturingSplashScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D781F12ADF8003A20E6 /* CapturingSplashScene.swift */; };
@@ -78,10 +71,6 @@
 		9A861ECC1F25555000B75A8C /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A861EC61F25555000B75A8C /* TutorialViewController.swift */; };
 		9A861ECD1F25555000B75A8C /* TutorialPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A861EC71F25555000B75A8C /* TutorialPageViewController.swift */; };
 		9A861ED41F25564900B75A8C /* WindowAlertRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A861ECE1F25564900B75A8C /* WindowAlertRouter.swift */; };
-		9A861ED51F25564900B75A8C /* StoryboardTutorialRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A861ECF1F25564900B75A8C /* StoryboardTutorialRouter.swift */; };
-		9A861ED61F25564900B75A8C /* StoryboardSplashScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A861ED01F25564900B75A8C /* StoryboardSplashScreenRouter.swift */; };
-		9A861ED71F25564900B75A8C /* StoryboardRouters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A861ED11F25564900B75A8C /* StoryboardRouters.swift */; };
-		9A861ED91F25564900B75A8C /* RootViewControllerAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A861ED31F25564900B75A8C /* RootViewControllerAnimator.swift */; };
 		9A8ECA1E1F2BB46000351A83 /* j1_generic.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9A8ECA1A1F2BB44100351A83 /* j1_generic.caf */; };
 		9A8ECA1F1F2BB46000351A83 /* j1_themed.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9A8ECA1B1F2BB44100351A83 /* j1_themed.caf */; };
 		9A8ECA201F2BB46000351A83 /* j2_generic.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9A8ECA1C1F2BB44100351A83 /* j2_generic.caf */; };
@@ -1429,19 +1418,12 @@
 		7820A6F91F16B8A0004C0FB5 /* Eurofurence.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Eurofurence.entitlements; path = ../Eurofurence.entitlements; sourceTree = "<group>"; };
 		7820A6FC1F16C0C8004C0FB5 /* AcknowledgedPushPermissionsRequestTestDoubles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcknowledgedPushPermissionsRequestTestDoubles.swift; sourceTree = "<group>"; };
 		78455B3B1F116E24005BE2D7 /* UserDefaultsTutorialStateProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsTutorialStateProvider.swift; sourceTree = "<group>"; };
-		78455B441F11778D005BE2D7 /* TutorialRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialRouter.swift; sourceTree = "<group>"; };
-		78455B461F11779D005BE2D7 /* SplashScreenRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashScreenRouter.swift; sourceTree = "<group>"; };
-		78455B481F1177AD005BE2D7 /* CapturingTutorialRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingTutorialRouter.swift; sourceTree = "<group>"; };
-		78455B4A1F1177C0005BE2D7 /* CapturingSplashScreenRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingSplashScreenRouter.swift; sourceTree = "<group>"; };
 		78455B4C1F1177CF005BE2D7 /* StubFirstTimeLaunchStateProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubFirstTimeLaunchStateProvider.swift; sourceTree = "<group>"; };
-		78455B511F1179F4005BE2D7 /* StoryboardTutorialRouterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardTutorialRouterTests.swift; sourceTree = "<group>"; };
 		78455B551F117B24005BE2D7 /* Tutorial.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tutorial.storyboard; sourceTree = "<group>"; };
 		78455B5C1F1182B7005BE2D7 /* TutorialPageViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialPageViewControllerTests.swift; sourceTree = "<group>"; };
 		78455B611F118699005BE2D7 /* RoundedCornerButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedCornerButton.swift; sourceTree = "<group>"; };
 		78AFF1A026F6BE694946AE1B /* Pods-EurofurenceModelAdapterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EurofurenceModelAdapterTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-EurofurenceModelAdapterTests/Pods-EurofurenceModelAdapterTests.release.xcconfig"; sourceTree = "<group>"; };
 		78C86D531F1228B0003A20E6 /* TutorialViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewControllerTests.swift; sourceTree = "<group>"; };
-		78C86D551F12334D003A20E6 /* Routers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routers.swift; sourceTree = "<group>"; };
-		78C86D591F1234F0003A20E6 /* StubRouters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubRouters.swift; sourceTree = "<group>"; };
 		78C86D5F1F123859003A20E6 /* CapturingTutorialScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingTutorialScene.swift; sourceTree = "<group>"; };
 		78C86D641F123B20003A20E6 /* CapturingTutorialPageScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingTutorialPageScene.swift; sourceTree = "<group>"; };
 		78C86D781F12ADF8003A20E6 /* CapturingSplashScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingSplashScene.swift; sourceTree = "<group>"; };
@@ -1490,10 +1472,6 @@
 		9A861EC61F25555000B75A8C /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		9A861EC71F25555000B75A8C /* TutorialPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialPageViewController.swift; sourceTree = "<group>"; };
 		9A861ECE1F25564900B75A8C /* WindowAlertRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowAlertRouter.swift; sourceTree = "<group>"; };
-		9A861ECF1F25564900B75A8C /* StoryboardTutorialRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardTutorialRouter.swift; sourceTree = "<group>"; };
-		9A861ED01F25564900B75A8C /* StoryboardSplashScreenRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardSplashScreenRouter.swift; sourceTree = "<group>"; };
-		9A861ED11F25564900B75A8C /* StoryboardRouters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardRouters.swift; sourceTree = "<group>"; };
-		9A861ED31F25564900B75A8C /* RootViewControllerAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewControllerAnimator.swift; sourceTree = "<group>"; };
 		9A8ECA1A1F2BB44100351A83 /* j1_generic.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = j1_generic.caf; sourceTree = "<group>"; };
 		9A8ECA1B1F2BB44100351A83 /* j1_themed.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = j1_themed.caf; sourceTree = "<group>"; };
 		9A8ECA1C1F2BB44100351A83 /* j2_generic.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = j2_generic.caf; sourceTree = "<group>"; };
@@ -2959,16 +2937,13 @@
 				CAF3C7471F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift */,
 				CA8E17F01F817AA2003C348C /* CapturingPreloadModuleDelegate.swift */,
 				CA8E17EE1F817A8C003C348C /* CapturingPreloadInteractor.swift */,
-				78455B4A1F1177C0005BE2D7 /* CapturingSplashScreenRouter.swift */,
 				CA81D48D1FE9A8DB00A52A2F /* CapturingTutorialModuleDelegate.swift */,
-				78455B481F1177AD005BE2D7 /* CapturingTutorialRouter.swift */,
 				CA60BFFD207CDC1700697566 /* FakeAuthenticationService.swift */,
 				7820A6E01F13FC7F004C0FB5 /* NetworkReachabilityTestDoubles.swift */,
 				78455B4C1F1177CF005BE2D7 /* StubFirstTimeLaunchStateProvider.swift */,
 				CABA43961FCE0A5C009CB5B0 /* StubLoginSceneFactory.swift */,
 				CAF3C74D1F9FC72C0008F027 /* StubNewsSceneFactory.swift */,
 				7820A6DA1F13F4DE004C0FB5 /* StubPresentationAssets.swift */,
-				78C86D591F1234F0003A20E6 /* StubRouters.swift */,
 				78C86D5E1F12384C003A20E6 /* Scenes */,
 			);
 			path = "Test Doubles";
@@ -3072,9 +3047,6 @@
 			children = (
 				78455B571F117BC0005BE2D7 /* Storyboard */,
 				7820A6E61F1400A8004C0FB5 /* AlertRouter.swift */,
-				78C86D551F12334D003A20E6 /* Routers.swift */,
-				78455B461F11779D005BE2D7 /* SplashScreenRouter.swift */,
-				78455B441F11778D005BE2D7 /* TutorialRouter.swift */,
 			);
 			path = Routers;
 			sourceTree = "<group>";
@@ -3090,10 +3062,6 @@
 		78455B571F117BC0005BE2D7 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				9A861ED31F25564900B75A8C /* RootViewControllerAnimator.swift */,
-				9A861ED11F25564900B75A8C /* StoryboardRouters.swift */,
-				9A861ED01F25564900B75A8C /* StoryboardSplashScreenRouter.swift */,
-				9A861ECF1F25564900B75A8C /* StoryboardTutorialRouter.swift */,
 				9A861ECE1F25564900B75A8C /* WindowAlertRouter.swift */,
 			);
 			path = Storyboard;
@@ -3220,7 +3188,6 @@
 				78CA0D051F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift */,
 				CA52C68220D5980C009D3A9E /* ApplicationSignificantTimeChangeAdapterTests.swift */,
 				7820A6E81F1415B0004C0FB5 /* StoryboardAlertRouterTests.swift */,
-				78455B511F1179F4005BE2D7 /* StoryboardTutorialRouterTests.swift */,
 				78455B5C1F1182B7005BE2D7 /* TutorialPageViewControllerTests.swift */,
 				78C86D531F1228B0003A20E6 /* TutorialViewControllerTests.swift */,
 				78455B3B1F116E24005BE2D7 /* UserDefaultsTutorialStateProvider.swift */,
@@ -7645,7 +7612,6 @@
 				CA00AE8E20D2925500C2FBB0 /* ScheduleDayCollectionViewCell.swift in Sources */,
 				CA17FE9420586A3C005A4C05 /* DefaultKnowledgeDetailSceneInteractor.swift in Sources */,
 				CACF1E6D20B1CDB800D904B5 /* EventDetailInteractor.swift in Sources */,
-				78C86D561F12334D003A20E6 /* Routers.swift in Sources */,
 				CA6AA0141FD74F910092C6DB /* ViewControllerDissolveTransitioning.swift in Sources */,
 				CA6A8D6320E26247007536CD /* MapsModuleProviding.swift in Sources */,
 				CA6A8DC620E41513007536CD /* MapDetailModuleProviding.swift in Sources */,
@@ -7703,7 +7669,6 @@
 				CA6AA0041FD6C7B50092C6DB /* DirectorBuilder.swift in Sources */,
 				CACF1E8820B34F8900D904B5 /* DefaultEventDetailInteractor.swift in Sources */,
 				CAF3C74C1F9F619C0008F027 /* PhoneNewsModuleFactory.swift in Sources */,
-				78455B451F11778D005BE2D7 /* TutorialRouter.swift in Sources */,
 				CA1B6F2F20DB8E0900ADF414 /* DealerDetailSceneBinder.swift in Sources */,
 				CA36A47120D84D9D00EE6537 /* DealersBinder.swift in Sources */,
 				9A861EB11F2554F900B75A8C /* TutorialModule.swift in Sources */,
@@ -7741,7 +7706,6 @@
 				CA73AEE3201A0869004E77BF /* KnowledgeGroupsModuleBuilder.swift in Sources */,
 				78455B621F118699005BE2D7 /* RoundedCornerButton.swift in Sources */,
 				CA00AE4520D16BBD00C2FBB0 /* ScheduleInteractor.swift in Sources */,
-				78455B471F11779D005BE2D7 /* SplashScreenRouter.swift in Sources */,
 				CA957B601F705AF9004DFD5A /* MessagesViewControllerV2.swift in Sources */,
 				CA321F511F7BC8550050E489 /* PreloadSceneFactory.swift in Sources */,
 				CA0F762720322E36009DA079 /* KnowledgeGroupScene.swift in Sources */,
@@ -7756,7 +7720,6 @@
 				CA283AA720EAA09B00F7D195 /* StoryboardAnnouncementsSceneFactory.swift in Sources */,
 				CA0E521E208FC796005259FE /* NewsConventionCountdownTableViewCell.swift in Sources */,
 				CA6375A6208E009D00536BE2 /* DealersModuleProviding.swift in Sources */,
-				9A861ED61F25564900B75A8C /* StoryboardSplashScreenRouter.swift in Sources */,
 				CA6EC4712051656C00402894 /* KnowledgeDetailModuleProviding.swift in Sources */,
 				CA2A586F20F7F137002C69B6 /* AnnouncementDateFormatter.swift in Sources */,
 				CAD3BDB92059539D00C91E6E /* KnowledgeDetailModuleDelegate.swift in Sources */,
@@ -7778,7 +7741,6 @@
 				CA36A45320D82D9700EE6537 /* UIColor+Eurofurence.swift in Sources */,
 				CA6EC4732051662B00402894 /* KnowledgeDetailModule.swift in Sources */,
 				CA36A44F20D772F300EE6537 /* CocoaTouchHapticEngine.swift in Sources */,
-				9A861ED71F25564900B75A8C /* StoryboardRouters.swift in Sources */,
 				CA73AEEE201A08A6004E77BF /* KnowledgeGroupsInteractor.swift in Sources */,
 				CA728461209D0642007D912A /* AnnouncementDetailViewController.swift in Sources */,
 				781A94401F1A1A72002DE70F /* FirebaseMessagingAdapter.swift in Sources */,
@@ -7855,7 +7817,6 @@
 				9A861ECD1F25555000B75A8C /* TutorialPageViewController.swift in Sources */,
 				CABA43861FBC6FE1009CB5B0 /* LoginModuleProviding.swift in Sources */,
 				CA72848E209F93A4007D912A /* MarkdownRenderer.swift in Sources */,
-				9A861ED91F25564900B75A8C /* RootViewControllerAnimator.swift in Sources */,
 				CA057A5B2088BDBB00504FA4 /* AnnouncementTableViewCell.swift in Sources */,
 				CA1FE99B1FA0B3EB009C7DF3 /* WindowWireframe.swift in Sources */,
 				CA283AAB20EAA0C800F7D195 /* AnnouncementsViewController.swift in Sources */,
@@ -7910,7 +7871,6 @@
 				CA1B6F0B20DB816600ADF414 /* DealerDetailSceneFactory.swift in Sources */,
 				CA6A8D8520E2BB88007536CD /* MapsInteractor.swift in Sources */,
 				CA8E7EF61FB08E2500F0BF10 /* PhoneWindowWireframe.swift in Sources */,
-				9A861ED51F25564900B75A8C /* StoryboardTutorialRouter.swift in Sources */,
 				CA637584208CDE3F00536BE2 /* ScheduleModuleBuilder.swift in Sources */,
 				CA0F761F203229CF009DA079 /* KnowledgeBaseViewModel.swift in Sources */,
 			);
@@ -7970,7 +7930,6 @@
 				CAD234311F5D7156004BB959 /* MessagesPresenterTestContext.swift in Sources */,
 				CA728492209F9540007D912A /* StubMarkdownRenderer.swift in Sources */,
 				CA36A4C620DA777800EE6537 /* WhenViewModelUpdatesSearchResults_DealersPresenterShould.swift in Sources */,
-				78455B491F1177AD005BE2D7 /* CapturingTutorialRouter.swift in Sources */,
 				CABA43971FCE0A5C009CB5B0 /* StubLoginSceneFactory.swift in Sources */,
 				CA44C366211B692A003C1C4E /* WhenBindingPhotoshootBanner_EventDetailPresenterShould.swift in Sources */,
 				CA1B6F3920DD1D9D00ADF414 /* DealerDetailLocationAndAvailabilityViewModel+RandomValueProviding.swift in Sources */,
@@ -8007,7 +7966,6 @@
 				CAD6882A208A107500B31F5F /* UserWidgetComponentViewModel+RandomValueProviding.swift in Sources */,
 				CA36A4D820DAE2CE00EE6537 /* CapturingDealersModuleDelegate.swift in Sources */,
 				CA283AAE20EAA18D00F7D195 /* CapturingAnnouncementsScene.swift in Sources */,
-				78455B521F1179F4005BE2D7 /* StoryboardTutorialRouterTests.swift in Sources */,
 				CA6A8D8220E2BA6C007536CD /* WhenMapsSceneLoads_MapsPresenterShould.swift in Sources */,
 				CA283A8020E93CBC00F7D195 /* WhenBindingReadAnnouncements_NewsPresenterShould.swift in Sources */,
 				CA40108D21107C2C0056E16C /* WhenBindingKnowledgeEntry_KnowledgeGroupEntriesPresenterShould.swift in Sources */,
@@ -8321,7 +8279,6 @@
 				CA250DD820D6E4AF00E7513C /* WhenBindingGroupFromSearchResult_SchedulePresenterShould.swift in Sources */,
 				CA283AC220EAB75700F7D195 /* FakeAnnouncementsInteractor.swift in Sources */,
 				CA637570208CD00400536BE2 /* WhenShowingTabModule_DirectorShould.swift in Sources */,
-				78C86D5A1F1234F0003A20E6 /* StubRouters.swift in Sources */,
 				CA728473209D163E007D912A /* StubAnnouncementDetailInteractor.swift in Sources */,
 				CA637542208CBB2400536BE2 /* StubNavigationControllerFactory.swift in Sources */,
 				CA6A8D7420E264B5007536CD /* CapturingMapsScene.swift in Sources */,
@@ -8349,7 +8306,6 @@
 				CA250DDC20D6E85700E7513C /* WhenSearching_ScheduleInteractorShould.swift in Sources */,
 				CA6A8DDB20E41844007536CD /* MapDetailPresenterTestBuilder.swift in Sources */,
 				CA283AEC20ED421E00F7D195 /* WhenScheduleIndicatesCurrentDayHasChanged_NewsInteractorShould.swift in Sources */,
-				78455B4B1F1177C0005BE2D7 /* CapturingSplashScreenRouter.swift in Sources */,
 				CACF1E7420B1D0ED00D904B5 /* FakeEventDetailInteractor.swift in Sources */,
 				CA283A6020E6ECD300F7D195 /* WhenToldToRefresh_NewsInteractorShould.swift in Sources */,
 				CA637578208CDB4700536BE2 /* WhenUserSelectsMessage_DirectorShould.swift in Sources */,

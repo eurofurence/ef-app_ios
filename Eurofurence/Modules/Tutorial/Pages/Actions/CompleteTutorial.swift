@@ -9,11 +9,9 @@
 struct CompleteTutorial: TutorialPageDelegate {
 
     var delegate: TutorialModuleDelegate
-    var splashScreenRouter: SplashScreenRouter
     var tutorialStateProviding: UserCompletedTutorialStateProviding
 
     func tutorialPageCompletedByUser(_ tutorialPage: TutorialPage) {
-        _ = splashScreenRouter.showSplashScreen()
         delegate.tutorialModuleDidFinishPresentingTutorial()
         tutorialStateProviding.markTutorialAsComplete()
     }

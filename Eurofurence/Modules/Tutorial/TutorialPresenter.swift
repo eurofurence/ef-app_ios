@@ -23,7 +23,6 @@ class TutorialPresenter {
         self.context = context
 
         let completeTutorial = CompleteTutorial(delegate: delegate,
-                                                splashScreenRouter: context.splashScreenRouter,
                                                 tutorialStateProviding: context.tutorialStateProviding)
         _ = InitiateDownloadTutorialPagePresenter(delegate: completeTutorial,
                                                   tutorialScene: context.tutorialScene,

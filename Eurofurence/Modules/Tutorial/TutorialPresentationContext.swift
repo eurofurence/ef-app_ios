@@ -13,11 +13,9 @@ struct TutorialPresentationContext {
 
     var tutorialScene: TutorialScene
     var presentationAssets: PresentationAssets
-    var splashScreenRouter: SplashScreenRouter
     var alertRouter: AlertRouter
     var tutorialStateProviding: UserCompletedTutorialStateProviding
     var networkReachability: NetworkReachability
-    var pushPermissionsRequesting: PushPermissionsRequester
     var witnessedTutorialPushPermissionsRequest: WitnessedTutorialPushPermissionsRequest
 
 }

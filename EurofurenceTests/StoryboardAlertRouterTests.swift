@@ -49,7 +49,7 @@ class StoryboardAlertRouterTests: XCTestCase {
         capturingViewController = CapturingViewController()
         let window = UIWindow(frame: .zero)
         window.rootViewController = capturingViewController
-        alertRouter = StoryboardRouters(window: window).alertRouter
+        alertRouter = WindowAlertRouter(window: window)
     }
 
     func testPresentingAlertShouldShowAlertControllerWithAlertStyleOntoRootViewController() {
