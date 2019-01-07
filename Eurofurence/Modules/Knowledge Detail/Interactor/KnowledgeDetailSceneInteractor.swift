@@ -11,6 +11,6 @@ import Foundation
 
 protocol KnowledgeDetailSceneInteractor {
 
-    func makeViewModel(for identifier: KnowledgeEntry.Identifier, completionHandler: @escaping (KnowledgeEntryDetailViewModel) -> Void)
+    func makeViewModel(for identifier: KnowledgeEntryIdentifier, completionHandler: @escaping (KnowledgeEntryDetailViewModel) -> Void)
 
 }

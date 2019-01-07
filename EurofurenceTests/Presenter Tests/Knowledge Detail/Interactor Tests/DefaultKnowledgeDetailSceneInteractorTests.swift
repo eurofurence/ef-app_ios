@@ -17,12 +17,12 @@ class FakeKnowledgeService: KnowledgeService {
 
     }
 
-    private var stubbedKnowledgeEntries = [KnowledgeEntry.Identifier: KnowledgeEntry]()
-    func fetchKnowledgeEntry(for identifier: KnowledgeEntry.Identifier, completionHandler: @escaping (KnowledgeEntry) -> Void) {
+    private var stubbedKnowledgeEntries = [KnowledgeEntryIdentifier: KnowledgeEntry]()
+    func fetchKnowledgeEntry(for identifier: KnowledgeEntryIdentifier, completionHandler: @escaping (KnowledgeEntry) -> Void) {
         completionHandler(stubbedKnowledgeEntry(for: identifier))
     }
 
-    func fetchImagesForKnowledgeEntry(identifier: KnowledgeEntry.Identifier, completionHandler: @escaping ([Data]) -> Void) {
+    func fetchImagesForKnowledgeEntry(identifier: KnowledgeEntryIdentifier, completionHandler: @escaping ([Data]) -> Void) {
         completionHandler(stubbedKnowledgeEntryImages(for: identifier))
     }
 
@@ -35,7 +35,7 @@ class FakeKnowledgeService: KnowledgeService {
 
 extension FakeKnowledgeService {
 
-    func stubbedKnowledgeEntry(for identifier: KnowledgeEntry.Identifier) -> KnowledgeEntry {
+    func stubbedKnowledgeEntry(for identifier: KnowledgeEntryIdentifier) -> KnowledgeEntry {
         if let entry = stubbedKnowledgeEntries[identifier] {
             return entry
         }
@@ -51,7 +51,7 @@ extension FakeKnowledgeService {
         stubbedGroups.append(group)
     }
 
-    func stubbedKnowledgeEntryImages(for identifier: KnowledgeEntry.Identifier) -> [Data] {
+    func stubbedKnowledgeEntryImages(for identifier: KnowledgeEntryIdentifier) -> [Data] {
         return [identifier.rawValue.data(using: .utf8)!]
     }
 

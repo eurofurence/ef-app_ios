@@ -23,7 +23,7 @@ struct DefaultKnowledgeGroupEntriesInteractor: KnowledgeGroupEntriesInteractor {
             return KnowledgeListEntryViewModel(title: entry.title)
         }
 
-        func identifierForKnowledgeEntry(at index: Int) -> KnowledgeEntry.Identifier {
+        func identifierForKnowledgeEntry(at index: Int) -> KnowledgeEntryIdentifier {
             return entries[index].identifier
         }
 

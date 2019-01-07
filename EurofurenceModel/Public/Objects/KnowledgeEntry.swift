@@ -6,35 +6,17 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
+public typealias KnowledgeEntryIdentifier = Identifier<KnowledgeEntry>
+
 public struct KnowledgeEntry: Comparable, Equatable {
 
-    public struct Identifier: Comparable, Equatable, Hashable, RawRepresentable {
-
-        public typealias RawValue = String
-
-        public init(_ value: String) {
-            self.rawValue = value
-        }
-
-        public init?(rawValue: String) {
-            self.rawValue = rawValue
-        }
-
-        public var rawValue: String
-
-        public static func < (lhs: KnowledgeEntry.Identifier, rhs: KnowledgeEntry.Identifier) -> Bool {
-            return lhs.rawValue < rhs.rawValue
-        }
-
-    }
-
-    public var identifier: KnowledgeEntry.Identifier
+    public var identifier: KnowledgeEntryIdentifier
     public var title: String
     public var order: Int
     public var contents: String
     public var links: [Link]
 
-    public init(identifier: KnowledgeEntry.Identifier, title: String, order: Int, contents: String, links: [Link]) {
+    public init(identifier: KnowledgeEntryIdentifier, title: String, order: Int, contents: String, links: [Link]) {
         self.identifier = identifier
         self.title = title
         self.order = order
@@ -51,7 +33,7 @@ public struct KnowledgeEntry: Comparable, Equatable {
 public extension KnowledgeEntry {
 
     public static func fromServerModel(_ entry: APIKnowledgeEntry) -> KnowledgeEntry {
-        return KnowledgeEntry(identifier: KnowledgeEntry.Identifier(entry.identifier),
+        return KnowledgeEntry(identifier: KnowledgeEntryIdentifier(entry.identifier),
                                title: entry.title,
                                order: entry.order,
                                contents: entry.text,

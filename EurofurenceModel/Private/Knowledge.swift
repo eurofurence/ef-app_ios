@@ -39,7 +39,7 @@ class Knowledge {
         observer.knowledgeGroupsDidChange(to: models)
     }
 
-    func fetchKnowledgeEntry(for identifier: KnowledgeEntry.Identifier, completionHandler: @escaping (KnowledgeEntry) -> Void) {
+    func fetchKnowledgeEntry(for identifier: KnowledgeEntryIdentifier, completionHandler: @escaping (KnowledgeEntry) -> Void) {
         models.reduce([], { $0 + $1.entries }).first(where: { $0.identifier == identifier }).let(completionHandler)
     }
 
@@ -47,7 +47,7 @@ class Knowledge {
         models.first(where: { $0.identifier == identifier }).let(completionHandler)
     }
 
-    func fetchImagesForKnowledgeEntry(identifier: KnowledgeEntry.Identifier, completionHandler: @escaping ([Data]) -> Void) {
+    func fetchImagesForKnowledgeEntry(identifier: KnowledgeEntryIdentifier, completionHandler: @escaping ([Data]) -> Void) {
         let imageIdentifiers: [String] = {
             guard let entries = dataStore.getSavedKnowledgeEntries() else { return [] }
             guard let entry = entries.first(where: { $0.identifier == identifier.rawValue }) else { return [] }

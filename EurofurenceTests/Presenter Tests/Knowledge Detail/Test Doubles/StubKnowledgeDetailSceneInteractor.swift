@@ -76,7 +76,7 @@ extension NSAttributedString {
 class StubKnowledgeDetailSceneInteractor: KnowledgeDetailSceneInteractor {
 
     var viewModel = StubKnowledgeEntryDetailViewModel.random
-    func makeViewModel(for entry: KnowledgeEntry.Identifier, completionHandler: @escaping (KnowledgeEntryDetailViewModel) -> Void) {
+    func makeViewModel(for entry: KnowledgeEntryIdentifier, completionHandler: @escaping (KnowledgeEntryDetailViewModel) -> Void) {
         completionHandler(viewModel)
     }
 

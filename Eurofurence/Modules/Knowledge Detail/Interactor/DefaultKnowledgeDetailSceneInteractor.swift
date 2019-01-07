@@ -36,7 +36,7 @@ struct DefaultKnowledgeDetailSceneInteractor: KnowledgeDetailSceneInteractor {
     var knowledgeService: KnowledgeService = SharedModel.instance.session
     var renderer: MarkdownRenderer = DefaultDownMarkdownRenderer()
 
-    func makeViewModel(for identifier: KnowledgeEntry.Identifier, completionHandler: @escaping (KnowledgeEntryDetailViewModel) -> Void) {
+    func makeViewModel(for identifier: KnowledgeEntryIdentifier, completionHandler: @escaping (KnowledgeEntryDetailViewModel) -> Void) {
         let service = knowledgeService
         service.fetchKnowledgeEntry(for: identifier) { (entry) in
             service.fetchImagesForKnowledgeEntry(identifier: identifier) { (images) in

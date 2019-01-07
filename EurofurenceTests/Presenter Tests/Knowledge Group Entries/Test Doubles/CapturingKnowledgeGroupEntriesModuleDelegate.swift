@@ -13,8 +13,8 @@ import Foundation
 
 class CapturingKnowledgeGroupEntriesModuleDelegate: KnowledgeGroupEntriesModuleDelegate {
 
-    private(set) var selectedKnowledgeEntryIdentifier: KnowledgeEntry.Identifier?
-    func knowledgeGroupEntriesModuleDidSelectKnowledgeEntry(identifier: KnowledgeEntry.Identifier) {
+    private(set) var selectedKnowledgeEntryIdentifier: KnowledgeEntryIdentifier?
+    func knowledgeGroupEntriesModuleDidSelectKnowledgeEntry(identifier: KnowledgeEntryIdentifier) {
         selectedKnowledgeEntryIdentifier = identifier
     }
 

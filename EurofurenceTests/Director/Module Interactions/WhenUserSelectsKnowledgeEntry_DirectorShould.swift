@@ -18,7 +18,7 @@ class WhenUserSelectsKnowledgeEntry_DirectorShould: XCTestCase {
         context.navigateToTabController()
         context.knowledgeListModule.simulateKnowledgeGroupSelected(.random)
         let knowledgeNavigationController = context.navigationController(for: context.knowledgeListModule.stubInterface)
-        let entry = KnowledgeEntry.Identifier.random
+        let entry = KnowledgeEntryIdentifier.random
         context.knowledgeGroupEntriesModule.simulateKnowledgeEntrySelected(entry)
 
         XCTAssertEqual(context.knowledgeDetailModule.stubInterface, knowledgeNavigationController?.topViewController)

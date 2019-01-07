@@ -14,7 +14,7 @@ import UIKit.UIViewController
 class KnowledgeDetailPresenterTestBuilder {
 
     struct Context {
-        var knowledgeEntryIdentifier: KnowledgeEntry.Identifier
+        var knowledgeEntryIdentifier: KnowledgeEntryIdentifier
         var knowledgeDetailScene: CapturingKnowledgeDetailScene
         var interactor: StubKnowledgeDetailSceneInteractor
         var module: UIViewController
@@ -30,7 +30,7 @@ class KnowledgeDetailPresenterTestBuilder {
     }
 
     func build() -> Context {
-        let knowledgeEntryIdentifier = KnowledgeEntry.Identifier.random
+        let knowledgeEntryIdentifier = KnowledgeEntryIdentifier.random
         let knowledgeDetailSceneFactory = StubKnowledgeDetailSceneFactory()
         let knowledgeDetailScene = knowledgeDetailSceneFactory.interface
         let delegate = CapturingKnowledgeDetailModuleDelegate()

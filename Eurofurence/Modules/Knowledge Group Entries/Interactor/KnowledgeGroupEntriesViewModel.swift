@@ -15,6 +15,6 @@ protocol KnowledgeGroupEntriesViewModel {
     var numberOfEntries: Int { get }
 
     func knowledgeEntry(at index: Int) -> KnowledgeListEntryViewModel
-    func identifierForKnowledgeEntry(at index: Int) -> KnowledgeEntry.Identifier
+    func identifierForKnowledgeEntry(at index: Int) -> KnowledgeEntryIdentifier
 
 }

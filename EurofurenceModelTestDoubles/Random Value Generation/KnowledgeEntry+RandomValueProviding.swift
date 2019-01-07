@@ -17,11 +17,3 @@ extension KnowledgeEntry: RandomValueProviding {
     }
 
 }
-
-extension KnowledgeEntry.Identifier: RandomValueProviding {
-
-    public static var random: KnowledgeEntry.Identifier {
-        return KnowledgeEntry.Identifier(.random)
-    }
-
-}

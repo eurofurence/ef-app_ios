@@ -14,9 +14,9 @@ import UIKit.UIViewController
 class StubKnowledgeDetailModuleProviding: KnowledgeDetailModuleProviding {
 
     let stubInterface = UIViewController()
-    private(set) var capturedModel: KnowledgeEntry.Identifier?
+    private(set) var capturedModel: KnowledgeEntryIdentifier?
     private(set) var delegate: KnowledgeDetailModuleDelegate?
-    func makeKnowledgeListModule(_ knowledgeEntry: KnowledgeEntry.Identifier, delegate: KnowledgeDetailModuleDelegate) -> UIViewController {
+    func makeKnowledgeListModule(_ knowledgeEntry: KnowledgeEntryIdentifier, delegate: KnowledgeDetailModuleDelegate) -> UIViewController {
         capturedModel = knowledgeEntry
         self.delegate = delegate
         return stubInterface

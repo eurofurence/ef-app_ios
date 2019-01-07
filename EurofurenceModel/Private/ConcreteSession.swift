@@ -192,7 +192,7 @@ class ConcreteSession: EurofurenceSession {
         knowledge.add(observer)
     }
 
-    func fetchKnowledgeEntry(for identifier: KnowledgeEntry.Identifier, completionHandler: @escaping (KnowledgeEntry) -> Void) {
+    func fetchKnowledgeEntry(for identifier: KnowledgeEntryIdentifier, completionHandler: @escaping (KnowledgeEntry) -> Void) {
         knowledge.fetchKnowledgeEntry(for: identifier, completionHandler: completionHandler)
     }
 
@@ -200,7 +200,7 @@ class ConcreteSession: EurofurenceSession {
         knowledge.fetchKnowledgeGroup(identifier: identifier, completionHandler: completionHandler)
     }
 
-    func fetchImagesForKnowledgeEntry(identifier: KnowledgeEntry.Identifier, completionHandler: @escaping ([Data]) -> Void) {
+    func fetchImagesForKnowledgeEntry(identifier: KnowledgeEntryIdentifier, completionHandler: @escaping ([Data]) -> Void) {
         knowledge.fetchImagesForKnowledgeEntry(identifier: identifier, completionHandler: completionHandler)
     }
 

@@ -24,8 +24,8 @@ struct StubKnowledgeGroupEntriesViewModel: KnowledgeGroupEntriesViewModel {
         return entries[index]
     }
 
-    func identifierForKnowledgeEntry(at index: Int) -> KnowledgeEntry.Identifier {
-        return KnowledgeEntry.Identifier("\(index) - \(entries[index].title)")
+    func identifierForKnowledgeEntry(at index: Int) -> KnowledgeEntryIdentifier {
+        return KnowledgeEntryIdentifier("\(index) - \(entries[index].title)")
     }
 
     var entries: [KnowledgeListEntryViewModel]

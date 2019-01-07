@@ -340,7 +340,7 @@ class ApplicationDirector: ExternalContentHandler,
 
     // MARK: KnowledgeGroupEntriesModuleDelegate
 
-    func knowledgeGroupEntriesModuleDidSelectKnowledgeEntry(identifier: KnowledgeEntry.Identifier) {
+    func knowledgeGroupEntriesModuleDidSelectKnowledgeEntry(identifier: KnowledgeEntryIdentifier) {
         let knowledgeDetailModule = knowledgeDetailModuleProviding.makeKnowledgeListModule(identifier, delegate: self)
         knowledgeListController?.navigationController?.pushViewController(knowledgeDetailModule, animated: animate)
     }
