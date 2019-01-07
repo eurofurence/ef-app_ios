@@ -10,7 +10,16 @@
 import EurofurenceModel
 import EurofurenceModelTestDoubles
 
-class CapturingPrivateMessagesService: PrivateMessagesService {
+class CapturingPrivateMessagesService: PrivateMessagesService, PrivateMessagesService2 {
+
+    func fetchPrivateMessages(completionHandler: @escaping (PrivateMessageResult) -> Void) {
+
+    }
+
+    private var privateMessageObservers = [PrivateMessagesObserver]()
+    func add(_ observer: PrivateMessagesObserver) {
+        privateMessageObservers.append(observer)
+    }
 
     var unreadMessageCount: Int = 0
     var localMessages: [APIMessage] = []
@@ -38,16 +47,19 @@ class CapturingPrivateMessagesService: PrivateMessagesService {
 
     func failLastRefresh() {
         observers.forEach { $0.privateMessagesServiceDidFailToLoadMessages() }
+        privateMessageObservers.forEach({ $0.privateMessagesServiceDidFailToLoadMessages() })
     }
 
     func succeedLastRefresh(messages: [APIMessage] = []) {
         observers.forEach { $0.privateMessagesServiceDidFinishRefreshingMessages(messages) }
+        privateMessageObservers.forEach({ $0.privateMessagesServiceDidFinishRefreshingMessages(messages: messages) })
     }
 
     private(set) var unreadCount: Int = 0
     func notifyUnreadCountDidChange(to count: Int) {
         unreadCount = count
         observers.forEach { $0.privateMessagesServiceDidUpdateUnreadMessageCount(to: count) }
+        privateMessageObservers.forEach({ $0.privateMessagesServiceDidUpdateUnreadMessageCount(to: count) })
     }
 
 }
