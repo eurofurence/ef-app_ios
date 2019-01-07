@@ -19,17 +19,5 @@ public enum LinkContentLookupResult: Equatable {
 
     case web(URL)
     case externalURL(URL)
-
-    public static func ==(lhs: LinkContentLookupResult, rhs: LinkContentLookupResult) -> Bool {
-        switch (lhs, rhs) {
-        case (.web(let l), .web(let r)):
-            return l == r
-
-        case (.externalURL(let l), .externalURL(let r)):
-            return l == r
-
-        default:
-            return false
-        }
-    }
+    
 }
