@@ -12,7 +12,7 @@ import UIKit.UIViewController
 class MessageDetailModuleBuilder {
 
     private var messageDetailSceneFactory: MessageDetailSceneFactory
-    private var privateMessagesService: PrivateMessagesService2
+    private var privateMessagesService: PrivateMessagesService
 
     init() {
         messageDetailSceneFactory = PhoneMessageDetailSceneFactory()
@@ -25,7 +25,7 @@ class MessageDetailModuleBuilder {
     }
 
     @discardableResult
-    func with(_ privateMessagesService: PrivateMessagesService2) -> MessageDetailModuleBuilder {
+    func with(_ privateMessagesService: PrivateMessagesService) -> MessageDetailModuleBuilder {
         self.privateMessagesService = privateMessagesService
         return self
     }

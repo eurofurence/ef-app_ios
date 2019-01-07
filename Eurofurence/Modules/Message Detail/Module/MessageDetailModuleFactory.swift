@@ -12,7 +12,7 @@ import UIKit.UIViewController
 struct MessageDetailModuleFactory: MessageDetailModuleProviding {
 
     var messageDetailSceneFactory: MessageDetailSceneFactory
-    var privateMessagesService: PrivateMessagesService2
+    var privateMessagesService: PrivateMessagesService
 
     func makeMessageDetailModule(message: APIMessage) -> UIViewController {
         let scene = messageDetailSceneFactory.makeMessageDetailScene()

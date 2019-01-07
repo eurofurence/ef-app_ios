@@ -13,7 +13,7 @@ class MessagesModuleBuilder {
 
     private var sceneFactory: MessagesSceneFactory
     private var authenticationService: AuthenticationService
-    private var privateMessagesService: PrivateMessagesService2
+    private var privateMessagesService: PrivateMessagesService
     private var dateFormatter: DateFormatterProtocol
 
     init() {
@@ -33,7 +33,7 @@ class MessagesModuleBuilder {
         return self
     }
 
-    func with(_ privateMessagesService: PrivateMessagesService2) ->
+    func with(_ privateMessagesService: PrivateMessagesService) ->
         MessagesModuleBuilder {
         self.privateMessagesService = privateMessagesService
         return self

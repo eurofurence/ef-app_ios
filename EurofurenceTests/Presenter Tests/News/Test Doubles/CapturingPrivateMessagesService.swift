@@ -10,7 +10,7 @@
 import EurofurenceModel
 import EurofurenceModelTestDoubles
 
-class CapturingPrivateMessagesService: PrivateMessagesService2 {
+class CapturingPrivateMessagesService: PrivateMessagesService {
 
     private var privateMessageObservers = [PrivateMessagesObserver]()
     func add(_ observer: PrivateMessagesObserver) {

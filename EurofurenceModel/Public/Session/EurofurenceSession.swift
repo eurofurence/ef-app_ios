@@ -20,7 +20,7 @@ public protocol EurofurenceSession: NotificationService,
                                     CollectThemAllService,
                                     MapsService,
                                     SessionStateService,
-                                    PrivateMessagesService2 {
+                                    PrivateMessagesService {
 
     func setExternalContentHandler(_ externalContentHandler: ExternalContentHandler)
     func storeRemoteNotificationsToken(_ deviceToken: Data)

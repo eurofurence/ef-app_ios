@@ -1,5 +1,5 @@
 //
-//  PrivateMessagesService2.swift
+//  PrivateMessagesService.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 04/01/2019.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol PrivateMessagesService2 {
+public protocol PrivateMessagesService {
     
     func add(_ observer: PrivateMessagesObserver)
     func refreshMessages()

@@ -68,7 +68,7 @@ class DefaultNewsInteractor: NewsInteractor,
 
     init(announcementsService: AnnouncementsService,
          authenticationService: AuthenticationService,
-         privateMessagesService: PrivateMessagesService2,
+         privateMessagesService: PrivateMessagesService,
          daysUntilConventionService: ConventionCountdownService,
          eventsService: EventsService,
          relativeTimeIntervalCountdownFormatter: RelativeTimeIntervalCountdownFormatter,

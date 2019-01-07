@@ -15,7 +15,7 @@ class MessagesPresenter: MessagesSceneDelegate, AuthenticationStateObserver, Pri
 
     private let scene: MessagesScene
     private let authenticationService: AuthenticationService
-    private let privateMessagesService: PrivateMessagesService2
+    private let privateMessagesService: PrivateMessagesService
     private let dateFormatter: DateFormatterProtocol
     private let delegate: MessagesModuleDelegate
     private var presentedMessages = [APIMessage]()
@@ -24,7 +24,7 @@ class MessagesPresenter: MessagesSceneDelegate, AuthenticationStateObserver, Pri
 
     init(scene: MessagesScene,
          authenticationService: AuthenticationService,
-         privateMessagesService: PrivateMessagesService2,
+         privateMessagesService: PrivateMessagesService,
          dateFormatter: DateFormatterProtocol,
          delegate: MessagesModuleDelegate) {
         self.scene = scene

@@ -469,7 +469,7 @@
 		CA44C37C211CAE55003C1C4E /* SchedulePresenterPhotoshootIconBindingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C37B211CAE55003C1C4E /* SchedulePresenterPhotoshootIconBindingTests.swift */; };
 		CA44C37E211CAF29003C1C4E /* NewsPresenterPhotoshootIconBindingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C37D211CAF29003C1C4E /* NewsPresenterPhotoshootIconBindingTests.swift */; };
 		CA4C474A21DF88B9005231AD /* NotificationServiceFetchResultAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4C474921DF88B9005231AD /* NotificationServiceFetchResultAdapter.swift */; };
-		CA4C474D21DFFE4F005231AD /* PrivateMessagesService2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4C474B21DFFE0E005231AD /* PrivateMessagesService2.swift */; };
+		CA4C474D21DFFE4F005231AD /* PrivateMessagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4C474B21DFFE0E005231AD /* PrivateMessagesService.swift */; };
 		CA4FBE0E1F72FF2A00D29405 /* MessagesPresenterTestsWhenBindingMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FBE0D1F72FF2A00D29405 /* MessagesPresenterTestsWhenBindingMessages.swift */; };
 		CA4FBE101F73047700D29405 /* CapturingDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FBE0F1F73047700D29405 /* CapturingDateFormatter.swift */; };
 		CA4FBE121F7304B400D29405 /* DateFormatterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FBE111F7304B400D29405 /* DateFormatterProtocol.swift */; };
@@ -2034,7 +2034,7 @@
 		CA49E9432015480A00EB571C /* EventCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCache.swift; sourceTree = "<group>"; };
 		CA49E94C20154AF900EB571C /* EventConsumer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventConsumer.swift; sourceTree = "<group>"; };
 		CA4C474921DF88B9005231AD /* NotificationServiceFetchResultAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationServiceFetchResultAdapter.swift; sourceTree = "<group>"; };
-		CA4C474B21DFFE0E005231AD /* PrivateMessagesService2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateMessagesService2.swift; sourceTree = "<group>"; };
+		CA4C474B21DFFE0E005231AD /* PrivateMessagesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateMessagesService.swift; sourceTree = "<group>"; };
 		CA4FBE0D1F72FF2A00D29405 /* MessagesPresenterTestsWhenBindingMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesPresenterTestsWhenBindingMessages.swift; sourceTree = "<group>"; };
 		CA4FBE0F1F73047700D29405 /* CapturingDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingDateFormatter.swift; sourceTree = "<group>"; };
 		CA4FBE111F7304B400D29405 /* DateFormatterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterProtocol.swift; sourceTree = "<group>"; };
@@ -5494,7 +5494,7 @@
 				CA6A8DAD20E2CF87007536CD /* MapsService.swift */,
 				CA283A6220E6ED6400F7D195 /* RefreshService.swift */,
 				CACD2F0621DEB9DE00BACD91 /* SessionStateService.swift */,
-				CA4C474B21DFFE0E005231AD /* PrivateMessagesService2.swift */,
+				CA4C474B21DFFE0E005231AD /* PrivateMessagesService.swift */,
 			);
 			path = Session;
 			sourceTree = "<group>";
@@ -8501,7 +8501,7 @@
 				CAEA0D8D216BDD9500B0C7A6 /* PrivateMessagesController.swift in Sources */,
 				CAEA0DFD216BDE3100B0C7A6 /* APITrack.swift in Sources */,
 				CAEA0DE8216BDE2300B0C7A6 /* OpenURL.swift in Sources */,
-				CA4C474D21DFFE4F005231AD /* PrivateMessagesService2.swift in Sources */,
+				CA4C474D21DFFE4F005231AD /* PrivateMessagesService.swift in Sources */,
 				CAEA0D89216BDD9500B0C7A6 /* ImageDownloader.swift in Sources */,
 				CAEA0DED216BDE2300B0C7A6 /* Array+AppExtensions.swift in Sources */,
 				CAEA0DE9216BDE2300B0C7A6 /* RemoteNotificationRegistrationSucceeded.swift in Sources */,
