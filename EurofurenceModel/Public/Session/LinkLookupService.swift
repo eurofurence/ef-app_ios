@@ -11,6 +11,7 @@ import Foundation
 public protocol LinkLookupService {
 
     func lookupContent(for link: Link) -> LinkContentLookupResult?
+    func setExternalContentHandler(_ externalContentHandler: ExternalContentHandler)
 
 }
 

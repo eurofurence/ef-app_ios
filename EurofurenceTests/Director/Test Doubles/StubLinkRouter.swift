@@ -15,4 +15,8 @@ class StubLinkRouter: LinkLookupService {
         return stubbedLinkActions[link]
     }
 
+    func setExternalContentHandler(_ externalContentHandler: ExternalContentHandler) {
+
+    }
+
 }

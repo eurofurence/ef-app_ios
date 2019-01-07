@@ -22,6 +22,10 @@ class FakeApplicationNotificationHandling: NotificationService {
         completionHandler(action.result)
     }
 
+    func storeRemoteNotificationsToken(_ deviceToken: Data) {
+
+    }
+
 }
 
 extension FakeApplicationNotificationHandling {

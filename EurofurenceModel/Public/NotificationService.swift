@@ -19,6 +19,7 @@ public enum NotificationContent: Equatable {
 
 public protocol NotificationService {
     
+    func storeRemoteNotificationsToken(_ deviceToken: Data)
     func handleNotification(payload: [String: String], completionHandler: @escaping (NotificationContent) -> Void)
     
 }
