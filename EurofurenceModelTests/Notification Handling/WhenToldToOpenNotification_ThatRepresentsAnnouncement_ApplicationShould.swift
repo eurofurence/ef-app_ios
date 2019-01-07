@@ -20,7 +20,7 @@ class WhenToldToOpenNotification_ThatRepresentsAnnouncement_ApplicationShould: X
         context.application.handleNotification(payload: payload) { result = $0 }
         context.syncAPI.simulateSuccessfulSync(syncResponse)
 
-        let expected = NotificationContent.announcement(Announcement.Identifier(randomAnnouncement.identifier))
+        let expected = NotificationContent.announcement(AnnouncementIdentifier(randomAnnouncement.identifier))
         XCTAssertEqual(expected, result)
     }
 

@@ -85,7 +85,7 @@ class ApplicationTestBuilder {
         }
 
         func expectedAnnouncement(from announcement: APIAnnouncement) -> Announcement {
-            return Announcement(identifier: Announcement.Identifier(announcement.identifier),
+            return Announcement(identifier: AnnouncementIdentifier(announcement.identifier),
                                  title: announcement.title,
                                  content: announcement.content,
                                  date: announcement.lastChangedDateTime)

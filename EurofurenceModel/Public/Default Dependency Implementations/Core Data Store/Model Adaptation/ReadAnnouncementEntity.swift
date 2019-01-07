@@ -10,10 +10,10 @@ import Foundation
 
 extension ReadAnnouncementEntity: EntityAdapting {
 
-    typealias AdaptedType = Announcement.Identifier
+    typealias AdaptedType = AnnouncementIdentifier
 
-    func asAdaptedType() -> Announcement.Identifier {
-        return Announcement.Identifier(announcementIdentifier!)
+    func asAdaptedType() -> AnnouncementIdentifier {
+        return AnnouncementIdentifier(announcementIdentifier!)
     }
 
 }

@@ -38,7 +38,7 @@ class DefaultNewsInteractor: NewsInteractor,
     private var runningEvents = [Event]()
     private var upcomingEvents = [Event]()
     private var announcements = [Announcement]()
-    private var readAnnouncements = [Announcement.Identifier]()
+    private var readAnnouncements = [AnnouncementIdentifier]()
     private var currentUser: User?
     private let dateDistanceCalculator: DateDistanceCalculator
     private let clock: Clock
@@ -114,7 +114,7 @@ class DefaultNewsInteractor: NewsInteractor,
         regenerateViewModel()
     }
 
-    func announcementsServiceDidUpdateReadAnnouncements(_ readAnnouncements: [Announcement.Identifier]) {
+    func announcementsServiceDidUpdateReadAnnouncements(_ readAnnouncements: [AnnouncementIdentifier]) {
         self.readAnnouncements = readAnnouncements
         regenerateViewModel()
     }
@@ -335,7 +335,7 @@ class DefaultNewsInteractor: NewsInteractor,
         private let viewModels: [AnnouncementComponentViewModel]
 
         init(announcements: [Announcement],
-             readAnnouncements: [Announcement.Identifier],
+             readAnnouncements: [AnnouncementIdentifier],
              announcementsDateFormatter: AnnouncementDateFormatter,
 			 markdownRenderer: MarkdownRenderer) {
             self.announcements = announcements

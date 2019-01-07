@@ -132,7 +132,7 @@ class ConcreteSession: EurofurenceSession {
         refreshLocalStore { (error) in
             if error == nil {
                 if let announcementIdentifier = payload["announcement_id"] {
-                    let identifier = Announcement.Identifier(announcementIdentifier)
+                    let identifier = AnnouncementIdentifier(announcementIdentifier)
                     if self.announcements.models.contains(where: { $0.identifier == identifier }) {
                         completionHandler(.announcement(identifier))
                     } else {
@@ -451,11 +451,11 @@ class ConcreteSession: EurofurenceSession {
         announcements.add(observer)
     }
 
-    func openAnnouncement(identifier: Announcement.Identifier, completionHandler: @escaping (Announcement) -> Void) {
+    func openAnnouncement(identifier: AnnouncementIdentifier, completionHandler: @escaping (Announcement) -> Void) {
         announcements.openAnnouncement(identifier: identifier, completionHandler: completionHandler)
     }
 
-    func fetchAnnouncementImage(identifier: Announcement.Identifier, completionHandler: @escaping (Data?) -> Void) {
+    func fetchAnnouncementImage(identifier: AnnouncementIdentifier, completionHandler: @escaping (Data?) -> Void) {
         announcements.fetchAnnouncementImage(identifier: identifier, completionHandler: completionHandler)
     }
 

@@ -114,7 +114,7 @@ public struct CoreDataEurofurenceDataStore: DataStore {
         return getModels(fetchRequest: MapEntity.fetchRequest())
     }
 
-    public func getSavedReadAnnouncementIdentifiers() -> [Announcement.Identifier]? {
+    public func getSavedReadAnnouncementIdentifiers() -> [AnnouncementIdentifier]? {
         return getModels(fetchRequest: ReadAnnouncementEntity.fetchRequest())
     }
 
@@ -458,7 +458,7 @@ public struct CoreDataEurofurenceDataStore: DataStore {
             }
         }
 
-        func saveReadAnnouncements(_ announcements: [Announcement.Identifier]) {
+        func saveReadAnnouncements(_ announcements: [AnnouncementIdentifier]) {
             mutations.append { (context) in
                 announcements.forEach { (announcement) in
                     let announcementIdentifierPredicate = NSPredicate(format: "announcementIdentifier == %@", announcement.rawValue)

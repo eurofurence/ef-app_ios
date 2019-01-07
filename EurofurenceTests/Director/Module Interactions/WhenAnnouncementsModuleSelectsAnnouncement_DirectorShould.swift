@@ -17,7 +17,7 @@ class WhenAnnouncementsModuleSelectsAnnouncement_DirectorShould: XCTestCase {
         let context = ApplicationDirectorTestBuilder().build()
         context.navigateToTabController()
         let newsNavigationController = context.navigationController(for: context.newsModule.stubInterface)
-        let announcement = Announcement.Identifier.random
+        let announcement = AnnouncementIdentifier.random
         context.newsModule.simulateAllAnnouncementsDisplayRequested()
         context.announcementsModule.simulateDidSelectAnnouncement(announcement)
 

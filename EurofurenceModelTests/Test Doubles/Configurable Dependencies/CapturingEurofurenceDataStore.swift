@@ -55,7 +55,7 @@ class CapturingEurofurenceDataStore: DataStore {
         return transaction.persistedMaps
     }
 
-    func getSavedReadAnnouncementIdentifiers() -> [Announcement.Identifier]? {
+    func getSavedReadAnnouncementIdentifiers() -> [AnnouncementIdentifier]? {
         return transaction.persistedReadAnnouncementIdentifiers
     }
 
@@ -140,11 +140,11 @@ extension CapturingEurofurenceDataStore {
         return transaction.persistedMaps.contains(elementsFrom: maps)
     }
 
-    func didSaveReadAnnouncement(_ identifier: Announcement.Identifier) -> Bool {
+    func didSaveReadAnnouncement(_ identifier: AnnouncementIdentifier) -> Bool {
         return transaction.persistedReadAnnouncementIdentifiers.contains(identifier)
     }
 
-    func didSaveReadAnnouncements(_ identifiers: [Announcement.Identifier]) -> Bool {
+    func didSaveReadAnnouncements(_ identifiers: [AnnouncementIdentifier]) -> Bool {
         return transaction.persistedReadAnnouncementIdentifiers.contains(elementsFrom: identifiers)
     }
 

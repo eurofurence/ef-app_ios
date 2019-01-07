@@ -23,7 +23,7 @@ class WhenOpeningAnnouncement_ApplicationShould: XCTestCase {
     }
 
     @discardableResult
-    private func openAnnouncement(_ identifier: Announcement.Identifier) -> Announcement? {
+    private func openAnnouncement(_ identifier: AnnouncementIdentifier) -> Announcement? {
         var announcement: Announcement?
         context.application.openAnnouncement(identifier: identifier) { announcement = $0 }
 
@@ -35,7 +35,7 @@ class WhenOpeningAnnouncement_ApplicationShould: XCTestCase {
         let announcement = announcements.randomElement().element
         let identifier = announcement.identifier
         let expected = context.expectedAnnouncement(from: announcement)
-        let model = openAnnouncement(Announcement.Identifier(identifier))
+        let model = openAnnouncement(AnnouncementIdentifier(identifier))
 
         XCTAssertEqual(expected, model)
     }
@@ -44,9 +44,9 @@ class WhenOpeningAnnouncement_ApplicationShould: XCTestCase {
         let announcements = syncResponse.announcements.changed
         let announcement = announcements.randomElement().element
         let identifier = announcement.identifier
-        openAnnouncement(Announcement.Identifier(identifier))
+        openAnnouncement(AnnouncementIdentifier(identifier))
 
-        XCTAssertTrue(context.dataStore.didSaveReadAnnouncement(Announcement.Identifier(identifier)))
+        XCTAssertTrue(context.dataStore.didSaveReadAnnouncement(AnnouncementIdentifier(identifier)))
     }
 
     func testSaveAllPreviouslyReadAnnouncementIdentifierAsRead() {
@@ -55,9 +55,9 @@ class WhenOpeningAnnouncement_ApplicationShould: XCTestCase {
         let firstIdentifier = firstAnnouncement.identifier
         let secondAnnouncement = announcements.randomElement().element
         let secondIdentifier = secondAnnouncement.identifier
-        openAnnouncement(Announcement.Identifier(firstIdentifier))
-        openAnnouncement(Announcement.Identifier(secondIdentifier))
-        let expected = [firstIdentifier, secondIdentifier].map({ Announcement.Identifier($0) })
+        openAnnouncement(AnnouncementIdentifier(firstIdentifier))
+        openAnnouncement(AnnouncementIdentifier(secondIdentifier))
+        let expected = [firstIdentifier, secondIdentifier].map({ AnnouncementIdentifier($0) })
 
         XCTAssertTrue(context.dataStore.didSaveReadAnnouncements(expected))
     }
@@ -70,9 +70,9 @@ class WhenOpeningAnnouncement_ApplicationShould: XCTestCase {
         let secondIdentifier = secondAnnouncement.identifier
         let observer = CapturingAnnouncementsServiceObserver()
         context.application.add(observer)
-        openAnnouncement(Announcement.Identifier(firstIdentifier))
-        openAnnouncement(Announcement.Identifier(secondIdentifier))
-        let expected = [firstIdentifier, secondIdentifier].map({ Announcement.Identifier($0) })
+        openAnnouncement(AnnouncementIdentifier(firstIdentifier))
+        openAnnouncement(AnnouncementIdentifier(secondIdentifier))
+        let expected = [firstIdentifier, secondIdentifier].map({ AnnouncementIdentifier($0) })
 
         XCTAssertTrue(observer.readAnnouncementIdentifiers.contains(elementsFrom: expected))
     }
@@ -83,9 +83,9 @@ class WhenOpeningAnnouncement_ApplicationShould: XCTestCase {
         let firstIdentifier = firstAnnouncement.identifier
         let secondAnnouncement = announcements.randomElement().element
         let secondIdentifier = secondAnnouncement.identifier
-        openAnnouncement(Announcement.Identifier(firstIdentifier))
-        openAnnouncement(Announcement.Identifier(secondIdentifier))
-        let expected = [firstIdentifier, secondIdentifier].map({ Announcement.Identifier($0) })
+        openAnnouncement(AnnouncementIdentifier(firstIdentifier))
+        openAnnouncement(AnnouncementIdentifier(secondIdentifier))
+        let expected = [firstIdentifier, secondIdentifier].map({ AnnouncementIdentifier($0) })
         let observer = CapturingAnnouncementsServiceObserver()
         context.application.add(observer)
 
@@ -100,7 +100,7 @@ class WhenOpeningAnnouncement_ApplicationShould: XCTestCase {
         let secondAnnouncement = announcements.randomElement().element
         let secondIdentifier = secondAnnouncement.identifier
         let dataStore = CapturingEurofurenceDataStore()
-        let identifiers = [firstIdentifier, secondIdentifier].map({ Announcement.Identifier($0) })
+        let identifiers = [firstIdentifier, secondIdentifier].map({ AnnouncementIdentifier($0) })
         dataStore.save(syncResponse)
         dataStore.performTransaction { (transaction) in
             transaction.saveReadAnnouncements(identifiers)

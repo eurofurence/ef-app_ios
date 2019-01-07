@@ -12,9 +12,9 @@ import Foundation
 class StubAnnouncementsService: AnnouncementsService {
 
     var announcements: [Announcement]
-    var stubbedReadAnnouncements: [Announcement.Identifier]
+    var stubbedReadAnnouncements: [AnnouncementIdentifier]
 
-    init(announcements: [Announcement], stubbedReadAnnouncements: [Announcement.Identifier] = []) {
+    init(announcements: [Announcement], stubbedReadAnnouncements: [AnnouncementIdentifier] = []) {
         self.announcements = announcements
         self.stubbedReadAnnouncements = stubbedReadAnnouncements
     }
@@ -26,12 +26,12 @@ class StubAnnouncementsService: AnnouncementsService {
         observer.announcementsServiceDidUpdateReadAnnouncements(stubbedReadAnnouncements)
     }
 
-    func openAnnouncement(identifier: Announcement.Identifier, completionHandler: @escaping (Announcement) -> Void) {
+    func openAnnouncement(identifier: AnnouncementIdentifier, completionHandler: @escaping (Announcement) -> Void) {
         guard let announcement = announcements.first(where: { $0.identifier == identifier }) else { return }
         completionHandler(announcement)
     }
 
-    func fetchAnnouncementImage(identifier: Announcement.Identifier, completionHandler: @escaping (Data?) -> Void) {
+    func fetchAnnouncementImage(identifier: AnnouncementIdentifier, completionHandler: @escaping (Data?) -> Void) {
         completionHandler(stubbedAnnouncementImageData(for: identifier))
     }
 
@@ -43,11 +43,11 @@ extension StubAnnouncementsService {
         observers.forEach({ $0.eurofurenceApplicationDidChangeAnnouncements(announcements) })
     }
 
-    func updateReadAnnouncements(_ readAnnouncements: [Announcement.Identifier]) {
+    func updateReadAnnouncements(_ readAnnouncements: [AnnouncementIdentifier]) {
         observers.forEach({ $0.announcementsServiceDidUpdateReadAnnouncements(readAnnouncements) })
     }
 
-    func stubbedAnnouncementImageData(for announcement: Announcement.Identifier) -> Data {
+    func stubbedAnnouncementImageData(for announcement: AnnouncementIdentifier) -> Data {
         return announcement.rawValue.data(using: .utf8)!
     }
 

@@ -13,8 +13,8 @@ import UIKit
 
 class CapturingAnnouncementsModuleDelegate: AnnouncementsModuleDelegate {
 
-    private(set) var capturedSelectedAnnouncement: Announcement.Identifier?
-    func announcementsModuleDidSelectAnnouncement(_ announcement: Announcement.Identifier) {
+    private(set) var capturedSelectedAnnouncement: AnnouncementIdentifier?
+    func announcementsModuleDidSelectAnnouncement(_ announcement: AnnouncementIdentifier) {
         capturedSelectedAnnouncement = announcement
     }
 

@@ -23,7 +23,7 @@ protocol NewsViewModel {
 
 enum NewsViewModelValue: Equatable {
     case messages
-    case announcement(Announcement.Identifier)
+    case announcement(AnnouncementIdentifier)
     case allAnnouncements
     case event(Event)
 

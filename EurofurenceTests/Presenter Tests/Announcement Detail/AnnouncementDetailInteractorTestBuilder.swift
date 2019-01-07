@@ -20,7 +20,7 @@ class AnnouncementDetailInteractorTestBuilder {
         var announcementsService: StubAnnouncementsService
     }
 
-    func build(for identifier: Announcement.Identifier = .random) -> Context {
+    func build(for identifier: AnnouncementIdentifier = .random) -> Context {
         var announcement = Announcement.random
         announcement.identifier = identifier
         let announcementsService = StubAnnouncementsService(announcements: [announcement])

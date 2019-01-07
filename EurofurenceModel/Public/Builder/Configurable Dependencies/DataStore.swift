@@ -23,7 +23,7 @@ public protocol DataStore {
     func getSavedFavouriteEventIdentifiers() -> [Event.Identifier]?
     func getSavedDealers() -> [APIDealer]?
     func getSavedMaps() -> [APIMap]?
-    func getSavedReadAnnouncementIdentifiers() -> [Announcement.Identifier]?
+    func getSavedReadAnnouncementIdentifiers() -> [AnnouncementIdentifier]?
     func getSavedImages() -> [APIImage]?
 
 }
@@ -41,7 +41,7 @@ public protocol DataStoreTransaction {
     func saveFavouriteEventIdentifier(_ identifier: Event.Identifier)
     func saveDealers(_ dealers: [APIDealer])
     func saveMaps(_ maps: [APIMap])
-    func saveReadAnnouncements(_ announcements: [Announcement.Identifier])
+    func saveReadAnnouncements(_ announcements: [AnnouncementIdentifier])
     func saveImages(_ images: [APIImage])
 
     func deleteFavouriteEventIdentifier(_ identifier: Event.Identifier)

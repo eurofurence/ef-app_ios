@@ -12,9 +12,9 @@ struct AnnouncementDetailPresenter: AnnouncementDetailSceneDelegate {
 
     private let scene: AnnouncementDetailScene
     private let interactor: AnnouncementDetailInteractor
-    private let announcement: Announcement.Identifier
+    private let announcement: AnnouncementIdentifier
 
-    init(scene: AnnouncementDetailScene, interactor: AnnouncementDetailInteractor, announcement: Announcement.Identifier) {
+    init(scene: AnnouncementDetailScene, interactor: AnnouncementDetailInteractor, announcement: AnnouncementIdentifier) {
         self.scene = scene
         self.interactor = interactor
         self.announcement = announcement

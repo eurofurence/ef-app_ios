@@ -15,7 +15,7 @@ class Announcements {
 
     private let dataStore: DataStore
     private let imageRepository: ImageRepository
-    private var readAnnouncementIdentifiers = [Announcement.Identifier]()
+    private var readAnnouncementIdentifiers = [AnnouncementIdentifier]()
 
     var models = [Announcement]() {
         didSet {
@@ -43,7 +43,7 @@ class Announcements {
         announcementsObservers.append(observer)
     }
 
-    func openAnnouncement(identifier: Announcement.Identifier, completionHandler: @escaping (Announcement) -> Void) {
+    func openAnnouncement(identifier: AnnouncementIdentifier, completionHandler: @escaping (Announcement) -> Void) {
         guard let model = models.first(where: { $0.identifier == identifier }) else { return }
         completionHandler(model)
 
@@ -55,7 +55,7 @@ class Announcements {
         }
     }
 
-    func fetchAnnouncementImage(identifier: Announcement.Identifier, completionHandler: @escaping (Data?) -> Void) {
+    func fetchAnnouncementImage(identifier: AnnouncementIdentifier, completionHandler: @escaping (Data?) -> Void) {
         let announcement = dataStore.getSavedAnnouncements()?.first(where: { $0.identifier == identifier.rawValue })
         let imageData: Data? = announcement.let { (announcement) in
             let entity: ImageEntity? = announcement.imageIdentifier.let(imageRepository.loadImage)

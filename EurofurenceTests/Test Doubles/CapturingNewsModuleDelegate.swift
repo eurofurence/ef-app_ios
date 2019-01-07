@@ -18,8 +18,8 @@ class CapturingNewsModuleDelegate: NewsModuleDelegate {
         showPrivateMessagesRequested = true
     }
 
-    private(set) var capturedAnnouncement: Announcement.Identifier?
-    func newsModuleDidSelectAnnouncement(_ announcement: Announcement.Identifier) {
+    private(set) var capturedAnnouncement: AnnouncementIdentifier?
+    func newsModuleDidSelectAnnouncement(_ announcement: AnnouncementIdentifier) {
         capturedAnnouncement = announcement
     }
 

@@ -441,7 +441,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
     }
 
     func testSaveReadAnnouncements() {
-        let expected = [Announcement.Identifier].random
+        let expected = [AnnouncementIdentifier].random
         store.performTransaction { (transaction) in
             transaction.saveReadAnnouncements(expected)
         }
@@ -453,7 +453,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
     }
 
     func testNotDuplicateReadAnnouncementIdentifiers() {
-        let expected = [Announcement.Identifier].random
+        let expected = [AnnouncementIdentifier].random
         store.performTransaction { (transaction) in
             transaction.saveReadAnnouncements(expected)
         }

@@ -12,7 +12,7 @@ public enum NotificationContent: Equatable {
     case successfulSync
     case failedSync
     case unknown
-    case announcement(Announcement.Identifier)
+    case announcement(AnnouncementIdentifier)
     case invalidatedAnnouncement
     case event(Event.Identifier)
 }

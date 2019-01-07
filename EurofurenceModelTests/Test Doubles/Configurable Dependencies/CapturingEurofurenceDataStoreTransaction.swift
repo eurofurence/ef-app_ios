@@ -130,8 +130,8 @@ class CapturingEurofurenceDataStoreTransaction: DataStoreTransaction {
         }
     }
 
-    private(set) var persistedReadAnnouncementIdentifiers: [Announcement.Identifier] = []
-    func saveReadAnnouncements(_ announcements: [Announcement.Identifier]) {
+    private(set) var persistedReadAnnouncementIdentifiers: [AnnouncementIdentifier] = []
+    func saveReadAnnouncements(_ announcements: [AnnouncementIdentifier]) {
         persistedReadAnnouncementIdentifiers = announcements
     }
 

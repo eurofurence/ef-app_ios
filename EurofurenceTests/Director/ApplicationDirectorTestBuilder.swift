@@ -73,7 +73,7 @@ class StubAnnouncementsModuleProviding: AnnouncementsModuleProviding {
 
 extension StubAnnouncementsModuleProviding {
 
-    func simulateDidSelectAnnouncement(_ announcement: Announcement.Identifier) {
+    func simulateDidSelectAnnouncement(_ announcement: AnnouncementIdentifier) {
         delegate?.announcementsModuleDidSelectAnnouncement(announcement)
     }
 
