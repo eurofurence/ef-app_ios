@@ -54,8 +54,8 @@ class Maps {
     func fetchContent(for identifier: MapIdentifier,
                       atX x: Int,
                       y: Int,
-                      completionHandler: @escaping (Map.Content) -> Void) {
-        var content: Map.Content = .none
+                      completionHandler: @escaping (MapContent) -> Void) {
+        var content: MapContent = .none
         defer { completionHandler(content) }
 
         guard let model = serverModels.first(where: { $0.identifier == identifier.rawValue }) else { return }
@@ -78,7 +78,7 @@ class Maps {
 
         guard let entry = model.entries.compactMap(tappedWithinEntry).sorted(by: { $0.displacement < $1.displacement }).first?.entry else { return }
 
-        let contentFromLink: (APIMap.Entry.Link) -> Map.Content? = { (link) in
+        let contentFromLink: (APIMap.Entry.Link) -> MapContent? = { (link) in
             if let room = self.roomServerModels.first(where: { $0.roomIdentifier == link.target }) {
                 return .room(Room(name: room.name))
             }
@@ -95,8 +95,8 @@ class Maps {
         }
 
         let links = entry.links
-        let contents: [Map.Content] = links.compactMap(contentFromLink)
-        content = contents.reduce(into: Map.Content.none, +)
+        let contents: [MapContent] = links.compactMap(contentFromLink)
+        content = contents.reduce(into: MapContent.none, +)
     }
 
     private func reloadMapsFromDataStore() {

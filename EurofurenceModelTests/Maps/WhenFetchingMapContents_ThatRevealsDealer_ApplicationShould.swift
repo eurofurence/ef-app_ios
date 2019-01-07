@@ -25,9 +25,9 @@ class WhenFetchingMapContents_ThatRevealsDealer_ApplicationShould: XCTestCase {
         syncResponse.dealers.changed = [dealer]
         context.performSuccessfulSync(response: syncResponse)
 
-        var content: Map.Content?
+        var content: MapContent?
         context.application.fetchContent(for: MapIdentifier(map.identifier), atX: x, y: y) { content = $0 }
-        let expected = Map.Content.dealer(expectedDealer)
+        let expected = MapContent.dealer(expectedDealer)
 
         XCTAssertEqual(expected, content)
     }

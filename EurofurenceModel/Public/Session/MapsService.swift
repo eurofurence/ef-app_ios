@@ -15,7 +15,7 @@ public protocol MapsService {
     func fetchContent(for identifier: MapIdentifier,
                       atX x: Int,
                       y: Int,
-                      completionHandler: @escaping (Map.Content) -> Void)
+                      completionHandler: @escaping (MapContent) -> Void)
 
 }
 

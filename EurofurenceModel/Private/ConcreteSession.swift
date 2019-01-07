@@ -271,7 +271,7 @@ class ConcreteSession: EurofurenceSession {
     func fetchContent(for identifier: MapIdentifier,
                       atX x: Int,
                       y: Int,
-                      completionHandler: @escaping (Map.Content) -> Void) {
+                      completionHandler: @escaping (MapContent) -> Void) {
         maps.fetchContent(for: identifier, atX: x, y: y, completionHandler: completionHandler)
     }
 

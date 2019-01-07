@@ -25,9 +25,9 @@ class WhenFetchingMapContents_ThatRevealsDealer_ContentsSavedInDataStore_Applica
         dataStore.save(syncResponse)
         let context = ApplicationTestBuilder().with(dataStore).build()
         let expectedDealer = context.makeExpectedDealer(from: dealer)
-        var content: Map.Content?
+        var content: MapContent?
         context.application.fetchContent(for: MapIdentifier(map.identifier), atX: x, y: y) { content = $0 }
-        let expected = Map.Content.dealer(expectedDealer)
+        let expected = MapContent.dealer(expectedDealer)
 
         XCTAssertEqual(expected, content)
     }

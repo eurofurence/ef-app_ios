@@ -12,28 +12,6 @@ public typealias MapIdentifier = Identifier<Map>
 
 public struct Map: Equatable {
 
-    public enum Content: Equatable {
-        case none
-		case location(x: Float, y: Float, name: String?)
-        case room(Room)
-        case dealer(Dealer)
-        indirect case multiple([Map.Content])
-
-        public static func + (lhs: inout Map.Content, rhs: Map.Content) {
-            switch lhs {
-            case .multiple(let inner):
-                lhs = .multiple(inner + [rhs])
-
-            case .none:
-                lhs = rhs
-
-            default:
-                lhs = .multiple([lhs, rhs])
-            }
-        }
-
-    }
-
     public var identifier: MapIdentifier
     public var location: String
 

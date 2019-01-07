@@ -28,14 +28,14 @@ class FakeMapsService: MapsService {
         var identifier: MapIdentifier
         var x: Int
         var y: Int
-        var completionHandler: (Map.Content) -> Void
+        var completionHandler: (MapContent) -> Void
     }
 
     fileprivate var requests = [ContentRequest]()
     func fetchContent(for identifier: MapIdentifier,
                       atX x: Int,
                       y: Int,
-                      completionHandler: @escaping (Map.Content) -> Void) {
+                      completionHandler: @escaping (MapContent) -> Void) {
         requests.append(ContentRequest(identifier: identifier, x: x, y: y, completionHandler: completionHandler))
     }
 
@@ -47,7 +47,7 @@ extension FakeMapsService {
         return identifier.rawValue.data(using: .utf8)!
     }
 
-    func resolveMapContents(identifier: MapIdentifier, atX x: Int, y: Int, with mapContent: Map.Content) {
+    func resolveMapContents(identifier: MapIdentifier, atX x: Int, y: Int, with mapContent: MapContent) {
         guard let request = requests.first(where: { $0.identifier == identifier && $0.x == x && $0.y == y }) else { return }
         request.completionHandler(mapContent)
     }

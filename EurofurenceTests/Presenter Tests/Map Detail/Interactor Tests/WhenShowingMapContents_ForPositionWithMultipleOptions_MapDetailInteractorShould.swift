@@ -25,7 +25,7 @@ class WhenShowingMapContents_ForPositionWithMultipleOptions_MapDetailInteractorS
         viewModel?.showContentsAtPosition(x: x, y: y, describingTo: visitor)
         let dealer = Dealer.random
         let room = Room.random
-        let content: Map.Content = .multiple([.dealer(dealer), .room(room)])
+        let content: MapContent = .multiple([.dealer(dealer), .room(room)])
         mapsService.resolveMapContents(identifier: randomMap.element.identifier, atX: Int(x), y: Int(y), with: content)
         let expectedOptions = [dealer.preferredName, room.name]
 
@@ -44,7 +44,7 @@ class WhenShowingMapContents_ForPositionWithMultipleOptions_MapDetailInteractorS
         viewModel?.showContentsAtPosition(x: x, y: y, describingTo: visitor)
         let dealer = Dealer.random
         let room = Room.random
-        let content: Map.Content = .multiple([.dealer(dealer), .room(room)])
+        let content: MapContent = .multiple([.dealer(dealer), .room(room)])
         mapsService.resolveMapContents(identifier: randomMap.element.identifier, atX: Int(x), y: Int(y), with: content)
 
         XCTAssertEqual(.selectAnOption, visitor.capturedMapContents?.optionsHeading)
@@ -62,8 +62,8 @@ class WhenShowingMapContents_ForPositionWithMultipleOptions_MapDetailInteractorS
         viewModel?.showContentsAtPosition(x: x, y: y, describingTo: visitor)
         let dealer = Dealer.random
         let room = Room.random
-        let contents: [Map.Content] = [.dealer(dealer), .room(room)]
-        let content: Map.Content = .multiple(contents)
+        let contents: [MapContent] = [.dealer(dealer), .room(room)]
+        let content: MapContent = .multiple(contents)
         mapsService.resolveMapContents(identifier: randomMap.element.identifier, atX: Int(x), y: Int(y), with: content)
         visitor.capturedMapContents?.selectOption(at: 0)
 

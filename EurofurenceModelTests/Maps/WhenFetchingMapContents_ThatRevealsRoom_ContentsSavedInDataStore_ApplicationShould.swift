@@ -25,9 +25,9 @@ class WhenFetchingMapContents_ThatRevealsRoom_ContentsSavedInDataStore_Applicati
         let dataStore = CapturingEurofurenceDataStore()
         dataStore.save(syncResponse)
         let context = ApplicationTestBuilder().with(dataStore).build()
-        var content: Map.Content?
+        var content: MapContent?
         context.application.fetchContent(for: MapIdentifier(map.identifier), atX: x, y: y) { content = $0 }
-        let expected = Map.Content.room(Room(name: room.name))
+        let expected = MapContent.room(Room(name: room.name))
 
         XCTAssertEqual(expected, content)
     }

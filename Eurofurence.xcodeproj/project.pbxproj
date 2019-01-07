@@ -237,6 +237,7 @@
 		CA240F3F21E3A4DE002DB747 /* BeforeMessagesViewAppears_MessagesPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA240F3E21E3A4DE002DB747 /* BeforeMessagesViewAppears_MessagesPresenterShould.swift */; };
 		CA240F4521E3D62C002DB747 /* Identifier+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA240F4321E3D5E1002DB747 /* Identifier+RandomValueProviding.swift */; };
 		CA240F4821E3D8C3002DB747 /* Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA240F4621E3D8B9002DB747 /* Identifier.swift */; };
+		CA240F4B21E3D985002DB747 /* MapContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA240F4921E3D980002DB747 /* MapContent.swift */; };
 		CA250DCC20D6D3BE00E7513C /* WhenSceneUpdatesSearchQuery_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA250DCB20D6D3BE00E7513C /* WhenSceneUpdatesSearchQuery_SchedulePresenterShould.swift */; };
 		CA250DCE20D6D4E500E7513C /* ScheduleSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA250DCD20D6D4E500E7513C /* ScheduleSearchViewModel.swift */; };
 		CA250DD020D6D4F500E7513C /* CapturingScheduleSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA250DCF20D6D4F500E7513C /* CapturingScheduleSearchViewModel.swift */; };
@@ -1698,6 +1699,7 @@
 		CA240F3E21E3A4DE002DB747 /* BeforeMessagesViewAppears_MessagesPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeforeMessagesViewAppears_MessagesPresenterShould.swift; sourceTree = "<group>"; };
 		CA240F4321E3D5E1002DB747 /* Identifier+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Identifier+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA240F4621E3D8B9002DB747 /* Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifier.swift; sourceTree = "<group>"; };
+		CA240F4921E3D980002DB747 /* MapContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapContent.swift; sourceTree = "<group>"; };
 		CA250DCB20D6D3BE00E7513C /* WhenSceneUpdatesSearchQuery_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSceneUpdatesSearchQuery_SchedulePresenterShould.swift; sourceTree = "<group>"; };
 		CA250DCD20D6D4E500E7513C /* ScheduleSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleSearchViewModel.swift; sourceTree = "<group>"; };
 		CA250DCF20D6D4F500E7513C /* CapturingScheduleSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingScheduleSearchViewModel.swift; sourceTree = "<group>"; };
@@ -3568,6 +3570,7 @@
 				CACF1E8F20B36B5800D904B5 /* Track.swift */,
 				CA30EAAD1F2148780053DBF6 /* User.swift */,
 				CACF1EC720B6D5A300D904B5 /* Entities */,
+				CA240F4921E3D980002DB747 /* MapContent.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -8535,6 +8538,7 @@
 				CAEA0D8E216BDD9500B0C7A6 /* ConventionCountdownController.swift in Sources */,
 				CAEA0E0B216BDE3100B0C7A6 /* JSONSession.swift in Sources */,
 				CAEA0D9D216BDE2300B0C7A6 /* EurofurenceSessionBuilder.swift in Sources */,
+				CA240F4B21E3D985002DB747 /* MapContent.swift in Sources */,
 				CAEA0DCD216BDE2300B0C7A6 /* EF24StartDateRepository.swift in Sources */,
 				CACD2EB021D67EE300BACD91 /* EurofurenceSessionState.swift in Sources */,
 				CAEA0D93216BDD9500B0C7A6 /* SignificantTimeObserver.swift in Sources */,

@@ -29,7 +29,7 @@ class DefaultMapDetailInteractor: MapDetailInteractor, MapsObserver {
             var y: Float
             var visitor: MapContentVisitor
 
-            func handle(_ content: Map.Content) {
+            func handle(_ content: MapContent) {
                 switch content {
                 case .location(let altX, let altY, let name):
 					let coordinate = MapCoordinate(x: altX, y: altY)
@@ -59,10 +59,10 @@ class DefaultMapDetailInteractor: MapDetailInteractor, MapsObserver {
 
         private struct OptionsViewModel: MapContentOptionsViewModel {
 
-            private let contents: [Map.Content]
+            private let contents: [MapContent]
             private let handler: ContentHandler
 
-            init(contents: [Map.Content], handler: ContentHandler) {
+            init(contents: [MapContent], handler: ContentHandler) {
                 self.contents = contents
                 self.handler = handler
                 optionsHeading = .selectAnOption
