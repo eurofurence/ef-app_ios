@@ -12,11 +12,11 @@ import UIKit.UIViewController
 class MessageDetailModuleBuilder {
 
     private var messageDetailSceneFactory: MessageDetailSceneFactory
-    private var privateMessagesService: PrivateMessagesService
+    private var privateMessagesService: PrivateMessagesService2
 
     init() {
         messageDetailSceneFactory = PhoneMessageDetailSceneFactory()
-        privateMessagesService = SharedModel.instance.privateMessagesService
+        privateMessagesService = SharedModel.instance.session
     }
 
     func with(_ messageDetailSceneFactory: MessageDetailSceneFactory) -> MessageDetailModuleBuilder {
@@ -25,7 +25,7 @@ class MessageDetailModuleBuilder {
     }
 
     @discardableResult
-    func with(_ privateMessagesService: PrivateMessagesService) -> MessageDetailModuleBuilder {
+    func with(_ privateMessagesService: PrivateMessagesService2) -> MessageDetailModuleBuilder {
         self.privateMessagesService = privateMessagesService
         return self
     }
