@@ -22,11 +22,3 @@ extension KnowledgeGroup: RandomValueProviding {
     }
 
 }
-
-extension KnowledgeGroup.Identifier: RandomValueProviding {
-
-    public static var random: KnowledgeGroup.Identifier {
-        return KnowledgeGroup.Identifier(.random)
-    }
-
-}

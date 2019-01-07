@@ -13,15 +13,15 @@ import Foundation
 
 struct FakeKnowledgeGroupEntriesInteractor: KnowledgeGroupEntriesInteractor {
 
-    private let groupIdentifier: KnowledgeGroup.Identifier
+    private let groupIdentifier: KnowledgeGroupIdentifier
     private let viewModel: KnowledgeGroupEntriesViewModel
 
-    init(for groupIdentifier: KnowledgeGroup.Identifier, viewModel: KnowledgeGroupEntriesViewModel) {
+    init(for groupIdentifier: KnowledgeGroupIdentifier, viewModel: KnowledgeGroupEntriesViewModel) {
         self.groupIdentifier = groupIdentifier
         self.viewModel = viewModel
     }
 
-    func makeViewModelForGroup(identifier: KnowledgeGroup.Identifier, completionHandler: @escaping (KnowledgeGroupEntriesViewModel) -> Void) {
+    func makeViewModelForGroup(identifier: KnowledgeGroupIdentifier, completionHandler: @escaping (KnowledgeGroupEntriesViewModel) -> Void) {
         guard identifier == groupIdentifier else { return }
         completionHandler(viewModel)
     }

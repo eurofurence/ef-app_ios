@@ -24,13 +24,13 @@ class KnowledgeGroupEntriesPresenter: KnowledgeGroupEntriesSceneDelegate {
 
     private let scene: KnowledgeGroupEntriesScene
     private let interactor: KnowledgeGroupEntriesInteractor
-    private let groupIdentifier: KnowledgeGroup.Identifier
+    private let groupIdentifier: KnowledgeGroupIdentifier
     private let delegate: KnowledgeGroupEntriesModuleDelegate
     private var viewModel: KnowledgeGroupEntriesViewModel?
 
     init(scene: KnowledgeGroupEntriesScene,
          interactor: KnowledgeGroupEntriesInteractor,
-         groupIdentifier: KnowledgeGroup.Identifier,
+         groupIdentifier: KnowledgeGroupIdentifier,
          delegate: KnowledgeGroupEntriesModuleDelegate) {
         self.scene = scene
         self.interactor = interactor

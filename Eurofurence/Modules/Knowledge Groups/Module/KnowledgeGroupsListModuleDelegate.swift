@@ -10,6 +10,6 @@ import EurofurenceModel
 
 protocol KnowledgeGroupsListModuleDelegate {
 
-    func knowledgeListModuleDidSelectKnowledgeGroup(_ knowledgeGroup: KnowledgeGroup.Identifier)
+    func knowledgeListModuleDidSelectKnowledgeGroup(_ knowledgeGroup: KnowledgeGroupIdentifier)
 
 }

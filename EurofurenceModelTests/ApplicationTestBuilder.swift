@@ -184,7 +184,7 @@ class ApplicationTestBuilder {
             let unicodeScalar = UnicodeScalar(intValue)!
             let character = Character(unicodeScalar)
 
-            return KnowledgeGroup(identifier: KnowledgeGroup.Identifier(group.identifier),
+            return KnowledgeGroup(identifier: KnowledgeGroupIdentifier(group.identifier),
                                    title: group.groupName,
                                    groupDescription: group.groupDescription,
                                    fontAwesomeCharacterAddress: character,

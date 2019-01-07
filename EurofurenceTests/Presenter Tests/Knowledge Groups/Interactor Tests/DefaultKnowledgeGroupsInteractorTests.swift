@@ -74,7 +74,7 @@ class DefaultKnowledgeGroupsInteractorTests: XCTestCase {
 
         let randomGroup = models.randomElement()
         let expected = randomGroup.element.identifier
-        var actual: KnowledgeGroup.Identifier?
+        var actual: KnowledgeGroupIdentifier?
         viewModel?.fetchIdentifierForGroup(at: randomGroup.index) { actual = $0 }
 
         XCTAssertEqual(expected, actual)

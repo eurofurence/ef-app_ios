@@ -27,7 +27,7 @@ class FakeKnowledgeService: KnowledgeService {
     }
 
     private var stubbedGroups = [KnowledgeGroup]()
-    func fetchKnowledgeGroup(identifier: KnowledgeGroup.Identifier, completionHandler: @escaping (KnowledgeGroup) -> Void) {
+    func fetchKnowledgeGroup(identifier: KnowledgeGroupIdentifier, completionHandler: @escaping (KnowledgeGroup) -> Void) {
         stubbedGroups.first(where: { $0.identifier == identifier }).let(completionHandler)
     }
 

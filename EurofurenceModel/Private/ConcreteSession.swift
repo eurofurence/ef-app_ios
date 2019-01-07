@@ -196,7 +196,7 @@ class ConcreteSession: EurofurenceSession {
         knowledge.fetchKnowledgeEntry(for: identifier, completionHandler: completionHandler)
     }
 
-    func fetchKnowledgeGroup(identifier: KnowledgeGroup.Identifier, completionHandler: @escaping (KnowledgeGroup) -> Void) {
+    func fetchKnowledgeGroup(identifier: KnowledgeGroupIdentifier, completionHandler: @escaping (KnowledgeGroup) -> Void) {
         knowledge.fetchKnowledgeGroup(identifier: identifier, completionHandler: completionHandler)
     }
 

@@ -83,8 +83,8 @@ class StubKnowledgeGroupEntriesModuleProviding: KnowledgeGroupEntriesModuleProvi
 
     let stubInterface = UIViewController()
     private(set) var delegate: KnowledgeGroupEntriesModuleDelegate?
-    private(set) var capturedModel: KnowledgeGroup.Identifier?
-    func makeKnowledgeGroupEntriesModule(_ groupIdentifier: KnowledgeGroup.Identifier, delegate: KnowledgeGroupEntriesModuleDelegate) -> UIViewController {
+    private(set) var capturedModel: KnowledgeGroupIdentifier?
+    func makeKnowledgeGroupEntriesModule(_ groupIdentifier: KnowledgeGroupIdentifier, delegate: KnowledgeGroupEntriesModuleDelegate) -> UIViewController {
         capturedModel = groupIdentifier
         self.delegate = delegate
         return stubInterface

@@ -24,7 +24,7 @@ class StubKnowledgeGroupsListModuleProviding: KnowledgeGroupsListModuleProviding
 
 extension StubKnowledgeGroupsListModuleProviding {
 
-    func simulateKnowledgeGroupSelected(_ group: KnowledgeGroup.Identifier) {
+    func simulateKnowledgeGroupSelected(_ group: KnowledgeGroupIdentifier) {
         delegate?.knowledgeListModuleDidSelectKnowledgeGroup(group)
     }
 

@@ -20,7 +20,7 @@ struct StubKnowledgeGroupsListViewModel: KnowledgeGroupsListViewModel {
         delegate.knowledgeGroupsViewModelsDidUpdate(to: knowledgeGroups)
     }
 
-    func fetchIdentifierForGroup(at index: Int, completionHandler: @escaping (KnowledgeGroup.Identifier) -> Void) {
+    func fetchIdentifierForGroup(at index: Int, completionHandler: @escaping (KnowledgeGroupIdentifier) -> Void) {
         completionHandler(stubbedGroupIdentifier(at: index))
     }
 
@@ -32,8 +32,8 @@ extension StubKnowledgeGroupsListViewModel: RandomValueProviding {
         return StubKnowledgeGroupsListViewModel(knowledgeGroups: .random)
     }
 
-    func stubbedGroupIdentifier(at index: Int) -> KnowledgeGroup.Identifier {
-        return KnowledgeGroup.Identifier("\(index)")
+    func stubbedGroupIdentifier(at index: Int) -> KnowledgeGroupIdentifier {
+        return KnowledgeGroupIdentifier("\(index)")
     }
 
 }

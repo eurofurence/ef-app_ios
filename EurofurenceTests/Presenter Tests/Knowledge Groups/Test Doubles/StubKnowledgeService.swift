@@ -11,7 +11,7 @@ import Foundation
 
 class StubKnowledgeService: KnowledgeService {
 
-    func fetchKnowledgeGroup(identifier: KnowledgeGroup.Identifier, completionHandler: @escaping (KnowledgeGroup) -> Void) {
+    func fetchKnowledgeGroup(identifier: KnowledgeGroupIdentifier, completionHandler: @escaping (KnowledgeGroup) -> Void) {
 
     }
 
@@ -24,7 +24,7 @@ class StubKnowledgeService: KnowledgeService {
 
     }
 
-    func fetchKnowledgeGroup(identifier: KnowledgeGroup.Identifier, completionHandler: @escaping ([KnowledgeEntry]) -> Void) {
+    func fetchKnowledgeGroup(identifier: KnowledgeGroupIdentifier, completionHandler: @escaping ([KnowledgeEntry]) -> Void) {
 
     }
 

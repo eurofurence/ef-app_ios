@@ -38,7 +38,7 @@ struct DefaultKnowledgeGroupsInteractor: KnowledgeGroupsInteractor {
             delegate.knowledgeGroupsViewModelsDidUpdate(to: knowledgeGroups)
         }
 
-        func fetchIdentifierForGroup(at index: Int, completionHandler: @escaping (KnowledgeGroup.Identifier) -> Void) {
+        func fetchIdentifierForGroup(at index: Int, completionHandler: @escaping (KnowledgeGroupIdentifier) -> Void) {
             completionHandler(groups[index].identifier)
         }
 

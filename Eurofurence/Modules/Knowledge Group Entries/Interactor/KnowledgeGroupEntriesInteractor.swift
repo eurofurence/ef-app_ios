@@ -11,6 +11,6 @@ import Foundation
 
 protocol KnowledgeGroupEntriesInteractor {
 
-    func makeViewModelForGroup(identifier: KnowledgeGroup.Identifier, completionHandler: @escaping (KnowledgeGroupEntriesViewModel) -> Void)
+    func makeViewModelForGroup(identifier: KnowledgeGroupIdentifier, completionHandler: @escaping (KnowledgeGroupEntriesViewModel) -> Void)
 
 }

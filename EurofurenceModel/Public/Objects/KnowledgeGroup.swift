@@ -8,36 +8,18 @@
 
 import Foundation
 
+public typealias KnowledgeGroupIdentifier = Identifier<KnowledgeGroup>
+
 public struct KnowledgeGroup: Comparable, Equatable {
 
-    public struct Identifier: Comparable, Equatable, Hashable, RawRepresentable {
-
-        public typealias RawValue = String
-
-        public init(_ value: String) {
-            self.rawValue = value
-        }
-
-        public init?(rawValue: String) {
-            self.rawValue = rawValue
-        }
-
-        public var rawValue: String
-
-        public static func < (lhs: KnowledgeGroup.Identifier, rhs: KnowledgeGroup.Identifier) -> Bool {
-            return lhs.rawValue < rhs.rawValue
-        }
-
-    }
-
-    public var identifier: KnowledgeGroup.Identifier
+    public var identifier: KnowledgeGroupIdentifier
     public var title: String
     public var groupDescription: String
     public var fontAwesomeCharacterAddress: Character
     public var order: Int
     public var entries: [KnowledgeEntry]
 
-    public init(identifier: KnowledgeGroup.Identifier, title: String, groupDescription: String, fontAwesomeCharacterAddress: Character, order: Int, entries: [KnowledgeEntry]) {
+    public init(identifier: KnowledgeGroupIdentifier, title: String, groupDescription: String, fontAwesomeCharacterAddress: Character, order: Int, entries: [KnowledgeEntry]) {
         self.identifier = identifier
         self.title = title
         self.groupDescription = groupDescription
@@ -63,7 +45,7 @@ public extension KnowledgeGroup {
                 .let(Character.init)
                 .or(defaultFontAwesomeBackupCharacter)
 
-            return KnowledgeGroup(identifier: KnowledgeGroup.Identifier(group.identifier),
+            return KnowledgeGroup(identifier: KnowledgeGroupIdentifier(group.identifier),
                                    title: group.groupName,
                                    groupDescription: group.groupDescription,
                                    fontAwesomeCharacterAddress: fontAwesomeCharacter,

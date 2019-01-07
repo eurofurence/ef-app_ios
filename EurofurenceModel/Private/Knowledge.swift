@@ -43,7 +43,7 @@ class Knowledge {
         models.reduce([], { $0 + $1.entries }).first(where: { $0.identifier == identifier }).let(completionHandler)
     }
 
-    func fetchKnowledgeGroup(identifier: KnowledgeGroup.Identifier, completionHandler: @escaping (KnowledgeGroup) -> Void) {
+    func fetchKnowledgeGroup(identifier: KnowledgeGroupIdentifier, completionHandler: @escaping (KnowledgeGroup) -> Void) {
         models.first(where: { $0.identifier == identifier }).let(completionHandler)
     }
 
