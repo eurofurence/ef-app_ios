@@ -762,7 +762,6 @@
 		CAC233882100C0F700E73486 /* WhenToldToFavouriteEvent_FromSearchViewModel_InteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC233872100C0F700E73486 /* WhenToldToFavouriteEvent_FromSearchViewModel_InteractorShould.swift */; };
 		CAC2338A2100C4DA00E73486 /* WhenToldToUnfavouriteEvent_FromSearchViewModel_InteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC233892100C4DA00E73486 /* WhenToldToUnfavouriteEvent_FromSearchViewModel_InteractorShould.swift */; };
 		CACD2E8421D6761D00BACD91 /* LogoutResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD2E8321D6761D00BACD91 /* LogoutResult.swift */; };
-		CACD2E8621D6762B00BACD91 /* PrivateMessageResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD2E8521D6762B00BACD91 /* PrivateMessageResult.swift */; };
 		CACD2E8821D6764000BACD91 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD2E8721D6764000BACD91 /* NotificationService.swift */; };
 		CACD2E9521D677CB00BACD91 /* EventBus.h in Headers */ = {isa = PBXBuildFile; fileRef = CACD2E9321D677CB00BACD91 /* EventBus.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CACD2E9821D677CB00BACD91 /* EventBus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CACD2E9121D677CB00BACD91 /* EventBus.framework */; };
@@ -1158,7 +1157,6 @@
 		CAEA100A216E1CE800B0C7A6 /* WhenMarkingMessageAsRead.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9845DB1F2A62D100E8821D /* WhenMarkingMessageAsRead.swift */; };
 		CAEA100B216E1CE800B0C7A6 /* WhenRequestingPrivateMessagesWhileAuthenticated.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAB51F26128A0053DBF6 /* WhenRequestingPrivateMessagesWhileAuthenticated.swift */; };
 		CAEA100C216E1CE800B0C7A6 /* WhenRequestingPrivateMessagesWhileNotAuthenticated.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA81D4931FEA92EA00A52A2F /* WhenRequestingPrivateMessagesWhileNotAuthenticated.swift */; };
-		CAEA100D216E1CE800B0C7A6 /* WhenRetrievingLocalPrivateMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A94D1F558BEC00628833 /* WhenRetrievingLocalPrivateMessages.swift */; };
 		CAEA100E216E1CE800B0C7A6 /* TheFirstTimeSyncFinishes_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA66C02E212690FE00F87AFE /* TheFirstTimeSyncFinishes_ApplicationShould.swift */; };
 		CAEA100F216E1CE800B0C7A6 /* WhenAppLaunchesWhenClockDoesNotReadConferenceDay_ScheduleShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C67420D58EC6009D3A9E /* WhenAppLaunchesWhenClockDoesNotReadConferenceDay_ScheduleShould.swift */; };
 		CAEA1010216E1CE800B0C7A6 /* WhenAppLaunchesWhenClockReadsConferenceDay_ScheduleShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C67620D590BF009D3A9E /* WhenAppLaunchesWhenClockReadsConferenceDay_ScheduleShould.swift */; };
@@ -2439,7 +2437,6 @@
 		CAC233872100C0F700E73486 /* WhenToldToFavouriteEvent_FromSearchViewModel_InteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToFavouriteEvent_FromSearchViewModel_InteractorShould.swift; sourceTree = "<group>"; };
 		CAC233892100C4DA00E73486 /* WhenToldToUnfavouriteEvent_FromSearchViewModel_InteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToUnfavouriteEvent_FromSearchViewModel_InteractorShould.swift; sourceTree = "<group>"; };
 		CACD2E8321D6761D00BACD91 /* LogoutResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutResult.swift; sourceTree = "<group>"; };
-		CACD2E8521D6762B00BACD91 /* PrivateMessageResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateMessageResult.swift; sourceTree = "<group>"; };
 		CACD2E8721D6764000BACD91 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		CACD2E9121D677CB00BACD91 /* EventBus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EventBus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CACD2E9321D677CB00BACD91 /* EventBus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventBus.h; sourceTree = "<group>"; };
@@ -2659,7 +2656,6 @@
 		CAF81C7820DDAEAA00898C52 /* ExtendedDealerData+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExtendedDealerData+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CAF81C7A20DEE80900898C52 /* WhenFetchingExtendedDealerData_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingExtendedDealerData_ApplicationShould.swift; sourceTree = "<group>"; };
 		CAF9A9421F50B87600628833 /* EurofurenceSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EurofurenceSession.swift; sourceTree = "<group>"; };
-		CAF9A94D1F558BEC00628833 /* WhenRetrievingLocalPrivateMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenRetrievingLocalPrivateMessages.swift; sourceTree = "<group>"; };
 		CAF9A9571F5601A700628833 /* WhenViewingMessagesWhileLoggedOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenViewingMessagesWhileLoggedOut.swift; sourceTree = "<group>"; };
 		CAFD012720C6F2A2004F3935 /* WhenSyncSucceeds_ForEmptyDataStore_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSyncSucceeds_ForEmptyDataStore_ApplicationShould.swift; sourceTree = "<group>"; };
 		D27E666C2FB166EEC7D70C0B /* Pods-EurofurenceAppCoreTestDoubles.screenshots.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EurofurenceAppCoreTestDoubles.screenshots.xcconfig"; path = "Pods/Target Support Files/Pods-EurofurenceAppCoreTestDoubles/Pods-EurofurenceAppCoreTestDoubles.screenshots.xcconfig"; sourceTree = "<group>"; };
@@ -5313,7 +5309,6 @@
 				CA9845DB1F2A62D100E8821D /* WhenMarkingMessageAsRead.swift */,
 				CA30EAB51F26128A0053DBF6 /* WhenRequestingPrivateMessagesWhileAuthenticated.swift */,
 				CA81D4931FEA92EA00A52A2F /* WhenRequestingPrivateMessagesWhileNotAuthenticated.swift */,
-				CAF9A94D1F558BEC00628833 /* WhenRetrievingLocalPrivateMessages.swift */,
 			);
 			path = "Private Messages";
 			sourceTree = "<group>";
@@ -5463,7 +5458,6 @@
 				CA27618920DFEE00000E52AC /* ExternalContentHandler.swift */,
 				CACD2E8321D6761D00BACD91 /* LogoutResult.swift */,
 				CA27254D2110DEE2004C6D0A /* Optional+Extensions.swift */,
-				CACD2E8521D6762B00BACD91 /* PrivateMessageResult.swift */,
 				CAAF4C752164E2900017946C /* Builder */,
 				CAAF4C772164E34F0017946C /* Default Dependency Implementations */,
 				CAEA0D812166B3F700B0C7A6 /* Formatters */,
@@ -8464,7 +8458,6 @@
 				CAEA0DD6216BDE2300B0C7A6 /* ConferenceDayEntity+Adaptation.swift in Sources */,
 				CAEA0DE4216BDE2300B0C7A6 /* ImageDownloadedEvent.swift in Sources */,
 				CAEA0DA5216BDE2300B0C7A6 /* ForceRefreshRequired.swift in Sources */,
-				CACD2E8621D6762B00BACD91 /* PrivateMessageResult.swift in Sources */,
 				CAEA0DB8216BDE2300B0C7A6 /* KnowledgeGroup.swift in Sources */,
 				CAEA0DFE216BDE3100B0C7A6 /* APIImage.swift in Sources */,
 				CAEA0DF5216BDE3100B0C7A6 /* APIDealer.swift in Sources */,
@@ -8631,7 +8624,6 @@
 				CAEA0FDE216E1CE700B0C7A6 /* WhenObservingRunningEventsBeforeLoadingAnything.swift in Sources */,
 				CAEA0FEC216E1CE700B0C7A6 /* WhenSyncSucceeds_WithImages_ThenSubsequentSyncDeletesImage_ApplicationShould.swift in Sources */,
 				CAEA108A216E818A00B0C7A6 /* CapturingSignificantTimeChangeAdapter.swift in Sources */,
-				CAEA100D216E1CE800B0C7A6 /* WhenRetrievingLocalPrivateMessages.swift in Sources */,
 				CAEA1006216E1CE800B0C7A6 /* WhenToldToOpenNotification_ThatRepresentsSyncEvent_ApplicationShould.swift in Sources */,
 				CAEA0FE3216E1CE700B0C7A6 /* InOrderToSupportMainStageTag_ApplicationShould.swift in Sources */,
 				CAEA1088216E817700B0C7A6 /* CapturingImageRepository.swift in Sources */,

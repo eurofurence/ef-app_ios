@@ -10,13 +10,6 @@ import Foundation
 
 public protocol PrivateMessagesService2 {
     
-    // Old
-    
-    var localMessages: [APIMessage] { get }
-    func fetchPrivateMessages(completionHandler: @escaping (PrivateMessageResult) -> Void)
-    
-    // New
-    
     func add(_ observer: PrivateMessagesObserver)
     func refreshMessages()
     func markMessageAsRead(_ message: APIMessage)

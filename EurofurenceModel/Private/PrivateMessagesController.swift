@@ -14,7 +14,7 @@ class PrivateMessagesController {
     private var userAuthenticationToken: String?
     private var privateMessageObservers = [PrivateMessagesObserver]()
 
-    private(set) var localMessages: [APIMessage] = []
+    private var localMessages: [APIMessage] = []
 
     init(eventBus: EventBus, privateMessagesAPI: PrivateMessagesAPI) {
         self.privateMessagesAPI = privateMessagesAPI
@@ -31,7 +31,7 @@ class PrivateMessagesController {
         return localMessages.filter({ $0.isRead == false }).count
     }
     
-    func refreshMessages() {
+    func refreshMessages(completionHandler: (() -> Void)? = nil) {
         if let token = userAuthenticationToken {
             privateMessagesAPI.loadPrivateMessages(authorizationToken: token) { (messages) in
                 if let messages = messages {
@@ -47,32 +47,15 @@ class PrivateMessagesController {
                         observer.privateMessagesServiceDidFailToLoadMessages()
                     }
                 }
+                
+                completionHandler?()
             }
         } else {
             for observer in privateMessageObservers {
                 observer.privateMessagesServiceDidFailToLoadMessages()
             }
-        }
-    }
-
-    func fetchPrivateMessages(completionHandler: @escaping (PrivateMessageResult) -> Void) {
-        if let token = userAuthenticationToken {
-            privateMessagesAPI.loadPrivateMessages(authorizationToken: token) { (messages) in
-                if let messages = messages {
-                    let messages = messages.sorted()
-                    self.localMessages = messages
-                    let unreadCount = self.determineUnreadMessageCount()
-                    self.privateMessageObservers.forEach({ (observer) in
-                        observer.privateMessagesServiceDidUpdateUnreadMessageCount(to: unreadCount)
-                        observer.privateMessagesServiceDidFinishRefreshingMessages(messages: messages)
-                    })
-                    completionHandler(.success(messages))
-                } else {
-                    completionHandler(.failedToLoad)
-                }
-            }
-        } else {
-            completionHandler(.userNotAuthenticated)
+            
+            completionHandler?()
         }
     }
 

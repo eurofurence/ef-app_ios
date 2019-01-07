@@ -12,10 +12,6 @@ import EurofurenceModelTestDoubles
 
 class CapturingPrivateMessagesService: PrivateMessagesService2 {
 
-    func fetchPrivateMessages(completionHandler: @escaping (PrivateMessageResult) -> Void) {
-
-    }
-
     private var privateMessageObservers = [PrivateMessagesObserver]()
     func add(_ observer: PrivateMessagesObserver) {
         privateMessageObservers.append(observer)

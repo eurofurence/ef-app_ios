@@ -112,7 +112,7 @@ class ConcreteSession: EurofurenceSession {
                                         credentialStore: credentialStore)
         maps = Maps(eventBus: eventBus, dataStore: dataStore, imageRepository: imageRepository, dealers: dealers)
 
-        fetchPrivateMessages { (_) in }
+        refreshMessages()
     }
 
     public func handleNotification(payload: [String: String], completionHandler: @escaping (NotificationContent) -> Void) {
@@ -180,18 +180,12 @@ class ConcreteSession: EurofurenceSession {
         eventBus.post(DomainEvent.RemoteNotificationRegistrationSucceeded(deviceToken: deviceToken))
     }
 
-    public var localMessages: [APIMessage] { return privateMessagesController.localMessages }
-
     public func add(_ observer: PrivateMessagesObserver) {
         privateMessagesController.add(observer)
     }
     
     func refreshMessages() {
         privateMessagesController.refreshMessages()
-    }
-
-    public func fetchPrivateMessages(completionHandler: @escaping (PrivateMessageResult) -> Void) {
-        privateMessagesController.fetchPrivateMessages(completionHandler: completionHandler)
     }
 
     public func markMessageAsRead(_ message: APIMessage) {
@@ -438,7 +432,7 @@ class ConcreteSession: EurofurenceSession {
 
                 self.eventBus.post(DomainEvent.DataStoreChangedEvent())
 
-                self.privateMessagesController.fetchPrivateMessages { (_) in
+                self.privateMessagesController.refreshMessages {
                     completionHandler(nil)
                     self.refreshObservers.forEach({ $0.refreshServiceDidFinishRefreshing() })
                     finishLongRunningTask()
