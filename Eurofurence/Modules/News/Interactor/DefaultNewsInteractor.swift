@@ -22,7 +22,7 @@ private protocol NewsViewModelComponent {
 class DefaultNewsInteractor: NewsInteractor,
                              AnnouncementsServiceObserver,
                              AuthenticationStateObserver,
-                             PrivateMessagesServiceObserver,
+                             PrivateMessagesObserver,
                              ConventionCountdownServiceObserver,
                              EventsServiceObserver,
                              RefreshServiceObserver,
@@ -54,7 +54,7 @@ class DefaultNewsInteractor: NewsInteractor,
     convenience init() {
         self.init(announcementsService: SharedModel.instance.session,
                   authenticationService: SharedModel.instance.session,
-                  privateMessagesService: SharedModel.instance.privateMessagesService,
+                  privateMessagesService: SharedModel.instance.session,
                   daysUntilConventionService: SharedModel.instance.session,
                   eventsService: SharedModel.instance.session,
                   relativeTimeIntervalCountdownFormatter: FoundationRelativeTimeIntervalCountdownFormatter.shared,
@@ -68,7 +68,7 @@ class DefaultNewsInteractor: NewsInteractor,
 
     init(announcementsService: AnnouncementsService,
          authenticationService: AuthenticationService,
-         privateMessagesService: PrivateMessagesService,
+         privateMessagesService: PrivateMessagesService2,
          daysUntilConventionService: ConventionCountdownService,
          eventsService: EventsService,
          relativeTimeIntervalCountdownFormatter: RelativeTimeIntervalCountdownFormatter,
@@ -138,7 +138,7 @@ class DefaultNewsInteractor: NewsInteractor,
         regenerateViewModel()
     }
 
-    func privateMessagesServiceDidFinishRefreshingMessages(_ messages: [APIMessage]) {
+    func privateMessagesServiceDidFinishRefreshingMessages(messages: [APIMessage]) {
 
     }
 
