@@ -12,13 +12,18 @@ import XCTest
 class WhenLaunchingApplication_PrivateMessagesShould: XCTestCase {
 
     func testBeRefreshed() {
-        let messages = [APIMessage].random
+        let message = APIMessage.random
         let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
-        context.privateMessagesAPI.simulateSuccessfulResponse(response: messages)
+        context.privateMessagesAPI.simulateSuccessfulResponse(response: [message])
         let observer = CapturingPrivateMessagesObserver()
         context.application.add(observer)
+        let observedMessage = observer.observedMessages.first
 
-        XCTAssertTrue(observer.observedMessages.contains(elementsFrom: messages))
+        XCTAssertEqual(message.authorName, observedMessage?.authorName)
+        XCTAssertEqual(message.receivedDateTime, observedMessage?.receivedDateTime)
+        XCTAssertEqual(message.subject, observedMessage?.subject)
+        XCTAssertEqual(message.contents, observedMessage?.contents)
+        XCTAssertEqual(message.isRead, observedMessage?.isRead)
     }
 
     func testProvideZeroCountForNumberOfUnreadPrivateMessages() {
