@@ -30,20 +30,4 @@ class CapturingPrivateMessagesObserver: PrivateMessagesObserver {
         wasToldFailedToLoadPrivateMessages = true
     }
 
-    // MARK: Old
-
-    private(set) var wasToldUserNotAuthenticated = false
-    func completionHandler(_ result: PrivateMessageResult) {
-        switch result {
-        case .success(_):
-            break
-
-        case .userNotAuthenticated:
-            self.wasToldUserNotAuthenticated = true
-
-        case .failedToLoad:
-            break
-        }
-    }
-
 }

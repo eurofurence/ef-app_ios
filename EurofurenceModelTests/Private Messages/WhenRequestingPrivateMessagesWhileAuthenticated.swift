@@ -30,10 +30,6 @@ class WhenRequestingPrivateMessagesWhileAuthenticated: XCTestCase {
         context.application.refreshMessages()
     }
 
-    func testHandlerShouldNotBeGivenNotAuthenticatedResponse() {
-        XCTAssertFalse(capturingMessagesObserver.wasToldUserNotAuthenticated)
-    }
-
     func testPrivateMessagesAPIShouldLoad() {
         XCTAssertTrue(context.privateMessagesAPI.wasToldToLoadPrivateMessages)
     }
