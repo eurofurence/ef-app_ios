@@ -14,7 +14,7 @@ class PrivateMessagesController {
     private var userAuthenticationToken: String?
     private var privateMessageObservers = [PrivateMessagesObserver]()
 
-    private(set) var localPrivateMessages: [APIMessage] = []
+    private(set) var localMessages: [APIMessage] = []
 
     init(eventBus: EventBus, privateMessagesAPI: PrivateMessagesAPI) {
         self.privateMessagesAPI = privateMessagesAPI
@@ -24,11 +24,11 @@ class PrivateMessagesController {
     func add(_ observer: PrivateMessagesObserver) {
         privateMessageObservers.append(observer)
         observer.privateMessagesServiceDidUpdateUnreadMessageCount(to: determineUnreadMessageCount())
-        observer.privateMessagesServiceDidFinishRefreshingMessages(messages: localPrivateMessages)
+        observer.privateMessagesServiceDidFinishRefreshingMessages(messages: localMessages)
     }
     
     private func determineUnreadMessageCount() -> Int {
-        return localPrivateMessages.filter({ $0.isRead == false }).count
+        return localMessages.filter({ $0.isRead == false }).count
     }
 
     func fetchPrivateMessages(completionHandler: @escaping (PrivateMessageResult) -> Void) {
@@ -36,7 +36,7 @@ class PrivateMessagesController {
             privateMessagesAPI.loadPrivateMessages(authorizationToken: token) { (messages) in
                 if let messages = messages {
                     let messages = messages.sorted()
-                    self.localPrivateMessages = messages
+                    self.localMessages = messages
                     let unreadCount = self.determineUnreadMessageCount()
                     self.privateMessageObservers.forEach({ (observer) in
                         observer.privateMessagesServiceDidUpdateUnreadMessageCount(to: unreadCount)
@@ -56,10 +56,10 @@ class PrivateMessagesController {
         guard let token = userAuthenticationToken else { return }
         privateMessagesAPI.markMessageWithIdentifierAsRead(message.identifier, authorizationToken: token)
         
-        if let idx = localPrivateMessages.firstIndex(where: { $0.identifier == message.identifier  }) {
-            var readMessage = localPrivateMessages[idx]
+        if let idx = localMessages.firstIndex(where: { $0.identifier == message.identifier  }) {
+            var readMessage = localMessages[idx]
             readMessage.isRead = true
-            localPrivateMessages[idx] = readMessage
+            localMessages[idx] = readMessage
         }
         
         let unreadCount = determineUnreadMessageCount()

@@ -24,7 +24,7 @@ public class EurofurencePrivateMessagesService: PrivateMessagesService, PrivateM
     public init(app: PrivateMessagesService2) {
         self.app = app
 
-        messages = app.localPrivateMessages
+        messages = app.localMessages
         app.add(self)
     }
 
@@ -39,14 +39,14 @@ public class EurofurencePrivateMessagesService: PrivateMessagesService, PrivateM
     }
 
     public func refreshMessages() {
-        if !app.localPrivateMessages.isEmpty {
-            observers.forEach({ $0.privateMessagesServiceDidFinishRefreshingMessages(app.localPrivateMessages) })
+        if !app.localMessages.isEmpty {
+            observers.forEach({ $0.privateMessagesServiceDidFinishRefreshingMessages(app.localMessages) })
         }
 
         app.fetchPrivateMessages { (result) in
             switch result {
             case .success(let messages):
-                self.messages = self.app.localPrivateMessages
+                self.messages = self.app.localMessages
                 self.observers.forEach({ $0.privateMessagesServiceDidFinishRefreshingMessages(messages) })
                 self.observers.forEach(self.provideUnreadMessageCount)
 

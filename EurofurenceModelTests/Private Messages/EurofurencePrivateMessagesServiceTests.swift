@@ -33,7 +33,7 @@ class CapturingPrivateMessageUnreadCountObserver: PrivateMessagesServiceObserver
 
 class FakePrivateMessagesService2: PrivateMessagesService2 {
 
-    var localPrivateMessages: [APIMessage] = []
+    var localMessages: [APIMessage] = []
 
     func refreshMessages() {
 
@@ -87,7 +87,7 @@ class EurofurencePrivateMessagesServiceTests: XCTestCase {
         }
 
         let messages: [APIMessage] = (0..<unreadMessageCount).map({ _ in makeUnreadMessage() })
-        app.localPrivateMessages = messages
+        app.localMessages = messages
         service.refreshMessages()
         app.resolvePrivateMessagesFetch(.success(messages))
 
@@ -101,7 +101,7 @@ class EurofurencePrivateMessagesServiceTests: XCTestCase {
         unreadMessage.isRead = false
         var readMessage = APIMessage.random
         readMessage.isRead = true
-        app.localPrivateMessages = [unreadMessage, readMessage]
+        app.localMessages = [unreadMessage, readMessage]
         service.refreshMessages()
         app.resolvePrivateMessagesFetch(.success([unreadMessage, readMessage]))
 
@@ -140,7 +140,7 @@ class EurofurencePrivateMessagesServiceTests: XCTestCase {
         let observer = CapturingPrivateMessageUnreadCountObserver()
         service.add(observer)
         let messages = [APIMessage.random]
-        app.localPrivateMessages = messages
+        app.localMessages = messages
         service.refreshMessages()
 
         XCTAssertEqual(messages, observer.loadedMessages)
@@ -149,7 +149,7 @@ class EurofurencePrivateMessagesServiceTests: XCTestCase {
     func testLoadingMessagesWhenAppDoesNotHaveLocalMessagesDoesNotEmitEmptyMessagesArrayWhileLoading() {
         let observer = CapturingPrivateMessageUnreadCountObserver()
         service.add(observer)
-        app.localPrivateMessages = []
+        app.localMessages = []
         service.refreshMessages()
 
         XCTAssertFalse(observer.serviceDidLoadEmptyMessagesArray)
@@ -172,7 +172,7 @@ class EurofurencePrivateMessagesServiceTests: XCTestCase {
         unreadMessage.isRead = false
         let messages = repeatElement(unreadMessage, count: .random(upperLimit: 10))
         let expected = messages.count
-        app.localPrivateMessages = Array(messages)
+        app.localMessages = Array(messages)
         service.refreshMessages()
         app.resolvePrivateMessagesFetch(.success([]))
 

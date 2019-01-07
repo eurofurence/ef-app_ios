@@ -180,7 +180,7 @@ class ConcreteSession: EurofurenceSession {
         eventBus.post(DomainEvent.RemoteNotificationRegistrationSucceeded(deviceToken: deviceToken))
     }
 
-    public var localPrivateMessages: [APIMessage] { return privateMessagesController.localPrivateMessages }
+    public var localMessages: [APIMessage] { return privateMessagesController.localMessages }
 
     public func add(_ observer: PrivateMessagesObserver) {
         privateMessagesController.add(observer)
