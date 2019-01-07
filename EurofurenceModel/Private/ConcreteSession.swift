@@ -21,9 +21,6 @@ class ConcreteSession: EurofurenceSession {
     private let syncAPI: SyncAPI
     private let imageAPI: ImageAPI
     private let conventionCountdownController: ConventionCountdownController
-    private var syncResponse: APISyncResponse?
-    private var events = [Event]()
-    private var timeIntervalForUpcomingEventsSinceNow: TimeInterval
     private let collectThemAllRequestFactory: CollectThemAllRequestFactory
     private let credentialStore: CredentialStore
     private let longRunningTaskManager: LongRunningTaskManager?
@@ -68,7 +65,6 @@ class ConcreteSession: EurofurenceSession {
         self.clock = clock
         self.syncAPI = syncAPI
         self.imageAPI = imageAPI
-        self.timeIntervalForUpcomingEventsSinceNow = timeIntervalForUpcomingEventsSinceNow
         self.collectThemAllRequestFactory = collectThemAllRequestFactory
         self.credentialStore = credentialStore
         self.longRunningTaskManager = longRunningTaskManager
@@ -321,8 +317,6 @@ class ConcreteSession: EurofurenceSession {
                 completionHandler(SyncError.failedToLoadResponse)
                 return
             }
-
-            self.syncResponse = response
 
             let imageIdentifiers = response.images.changed.map({ $0.identifier })
             progress.completedUnitCount = 0
