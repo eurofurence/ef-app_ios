@@ -500,7 +500,7 @@
 		CA637556208CBBCE00536BE2 /* StubMessageDetailModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637555208CBBCE00536BE2 /* StubMessageDetailModuleProviding.swift */; };
 		CA637558208CBC1D00536BE2 /* StubKnowledgeListModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637557208CBC1D00536BE2 /* StubKnowledgeListModuleProviding.swift */; };
 		CA63755A208CBC2C00536BE2 /* StubKnowledgeDetailModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637559208CBC2C00536BE2 /* StubKnowledgeDetailModuleProviding.swift */; };
-		CA63755C208CBC3C00536BE2 /* StubLinkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63755B208CBC3C00536BE2 /* StubLinkRouter.swift */; };
+		CA63755C208CBC3C00536BE2 /* StubContentLinksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63755B208CBC3C00536BE2 /* StubContentLinksService.swift */; };
 		CA63755E208CBC4E00536BE2 /* StubWebMobuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63755D208CBC4E00536BE2 /* StubWebMobuleProviding.swift */; };
 		CA637562208CC88200536BE2 /* ApplicationDirectorTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637561208CC88200536BE2 /* ApplicationDirectorTestBuilder.swift */; };
 		CA637564208CC8F800536BE2 /* WhenBuilt_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637563208CC8F800536BE2 /* WhenBuilt_DirectorShould.swift */; };
@@ -931,7 +931,7 @@
 		CAEA0DC4216BDE2300B0C7A6 /* DealersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A48E20D92EAA00EE6537 /* DealersService.swift */; };
 		CAEA0DC5216BDE2300B0C7A6 /* EventsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E8F20A652AA004AFED6 /* EventsService.swift */; };
 		CAEA0DC6216BDE2300B0C7A6 /* KnowledgeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF03BC2041C2B70028BD62 /* KnowledgeService.swift */; };
-		CAEA0DC7216BDE2300B0C7A6 /* LinkLookupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDBE205AA69600C91E6E /* LinkLookupService.swift */; };
+		CAEA0DC7216BDE2300B0C7A6 /* ContentLinksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDBE205AA69600C91E6E /* ContentLinksService.swift */; };
 		CAEA0DC8216BDE2300B0C7A6 /* MapsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DAD20E2CF87007536CD /* MapsService.swift */; };
 		CAEA0DC9216BDE2300B0C7A6 /* RefreshService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A6220E6ED6400F7D195 /* RefreshService.swift */; };
 		CAEA0DCA216BDE2300B0C7A6 /* UserAuthenticationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA281B631F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift */; };
@@ -2076,7 +2076,7 @@
 		CA637555208CBBCE00536BE2 /* StubMessageDetailModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubMessageDetailModuleProviding.swift; sourceTree = "<group>"; };
 		CA637557208CBC1D00536BE2 /* StubKnowledgeListModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubKnowledgeListModuleProviding.swift; sourceTree = "<group>"; };
 		CA637559208CBC2C00536BE2 /* StubKnowledgeDetailModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubKnowledgeDetailModuleProviding.swift; sourceTree = "<group>"; };
-		CA63755B208CBC3C00536BE2 /* StubLinkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubLinkRouter.swift; sourceTree = "<group>"; };
+		CA63755B208CBC3C00536BE2 /* StubContentLinksService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubContentLinksService.swift; sourceTree = "<group>"; };
 		CA63755D208CBC4E00536BE2 /* StubWebMobuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubWebMobuleProviding.swift; sourceTree = "<group>"; };
 		CA63755F208CBC5F00536BE2 /* CapturingURLOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingURLOpener.swift; sourceTree = "<group>"; };
 		CA637561208CC88200536BE2 /* ApplicationDirectorTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationDirectorTestBuilder.swift; sourceTree = "<group>"; };
@@ -2538,7 +2538,7 @@
 		CAD3BDB82059539D00C91E6E /* KnowledgeDetailModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailModuleDelegate.swift; sourceTree = "<group>"; };
 		CAD3BDBA205953AD00C91E6E /* CapturingKnowledgeDetailModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingKnowledgeDetailModuleDelegate.swift; sourceTree = "<group>"; };
 		CAD3BDBC205AA61B00C91E6E /* URL+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+RandomValueProviding.swift"; sourceTree = "<group>"; };
-		CAD3BDBE205AA69600C91E6E /* LinkLookupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkLookupService.swift; sourceTree = "<group>"; };
+		CAD3BDBE205AA69600C91E6E /* ContentLinksService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentLinksService.swift; sourceTree = "<group>"; };
 		CAD3BDC1205AA7BE00C91E6E /* WebModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebModuleProviding.swift; sourceTree = "<group>"; };
 		CAD3BDC4205FE42A00C91E6E /* WhenLookingUpWebLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLookingUpWebLinks.swift; sourceTree = "<group>"; };
 		CAD3BDC6205FE88900C91E6E /* SafariWebModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebModuleProviding.swift; sourceTree = "<group>"; };
@@ -4317,7 +4317,7 @@
 				CACF1E4720AE29CB00D904B5 /* StubEventDetailModuleFactory.swift */,
 				CA637559208CBC2C00536BE2 /* StubKnowledgeDetailModuleProviding.swift */,
 				CA637557208CBC1D00536BE2 /* StubKnowledgeListModuleProviding.swift */,
-				CA63755B208CBC3C00536BE2 /* StubLinkRouter.swift */,
+				CA63755B208CBC3C00536BE2 /* StubContentLinksService.swift */,
 				CA637551208CBBAE00536BE2 /* StubLoginModuleFactory.swift */,
 				CA637555208CBBCE00536BE2 /* StubMessageDetailModuleProviding.swift */,
 				CA63754B208CBB7800536BE2 /* StubMessagesModuleFactory.swift */,
@@ -5490,7 +5490,7 @@
 				CA36A48E20D92EAA00EE6537 /* DealersService.swift */,
 				CA162E8F20A652AA004AFED6 /* EventsService.swift */,
 				CABF03BC2041C2B70028BD62 /* KnowledgeService.swift */,
-				CAD3BDBE205AA69600C91E6E /* LinkLookupService.swift */,
+				CAD3BDBE205AA69600C91E6E /* ContentLinksService.swift */,
 				CA6A8DAD20E2CF87007536CD /* MapsService.swift */,
 				CA283A6220E6ED6400F7D195 /* RefreshService.swift */,
 				CACD2F0621DEB9DE00BACD91 /* SessionStateService.swift */,
@@ -8289,7 +8289,7 @@
 				CAD260AD20C066B0007E3618 /* WhenSceneTapsUnfavouriteEventButton_EventDetailPresenterShould.swift in Sources */,
 				CA36A44D20D771C400EE6537 /* CapturingHapticEngine.swift in Sources */,
 				CA82409D21249907007E4A70 /* ReviewPromptControllerTests.swift in Sources */,
-				CA63755C208CBC3C00536BE2 /* StubLinkRouter.swift in Sources */,
+				CA63755C208CBC3C00536BE2 /* StubContentLinksService.swift in Sources */,
 				CA250DCC20D6D3BE00E7513C /* WhenSceneUpdatesSearchQuery_SchedulePresenterShould.swift in Sources */,
 				CA00AE8320D1C21900C2FBB0 /* CapturingScheduleDayComponent.swift in Sources */,
 				CA2547C11FEB1B2A0023F2CB /* WhenRefreshingMessages.swift in Sources */,
@@ -8453,7 +8453,7 @@
 				CAEA0DF6216BDE3100B0C7A6 /* APIEvent.swift in Sources */,
 				CAEA0DBA216BDE2300B0C7A6 /* LoginArguments.swift in Sources */,
 				CAEA0DA0216BDE2300B0C7A6 /* CollectThemAllRequestFactory.swift in Sources */,
-				CAEA0DC7216BDE2300B0C7A6 /* LinkLookupService.swift in Sources */,
+				CAEA0DC7216BDE2300B0C7A6 /* ContentLinksService.swift in Sources */,
 				CAEA0E03216BDE3100B0C7A6 /* ImageAPI.swift in Sources */,
 				CAEA0DF2216BDE3100B0C7A6 /* AppCoreStrings.swift in Sources */,
 				CAEA0DB4216BDE2300B0C7A6 /* Dealer.swift in Sources */,

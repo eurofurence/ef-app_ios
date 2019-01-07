@@ -12,7 +12,7 @@ import UIKit.UIViewController
 class DirectorBuilder {
 
     private var animate: Bool
-    private var linkLookupService: LinkLookupService
+    private var linkLookupService: ContentLinksService
     private var webModuleProviding: WebModuleProviding
     private var windowWireframe: WindowWireframe
     private var navigationControllerFactory: NavigationControllerFactory
@@ -40,7 +40,7 @@ class DirectorBuilder {
     private var notificationHandling: NotificationService
     private var orderingPolicy: ModuleOrderingPolicy
 
-    init(linkLookupService: LinkLookupService, notificationHandling: NotificationService) {
+    init(linkLookupService: ContentLinksService, notificationHandling: NotificationService) {
         animate = true
         windowWireframe = PhoneWindowWireframe.shared
         navigationControllerFactory = PhoneNavigationControllerFactory()

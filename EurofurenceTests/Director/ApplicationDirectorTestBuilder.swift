@@ -127,7 +127,7 @@ class ApplicationDirectorTestBuilder {
         var announcementsModule: StubAnnouncementsModuleProviding
         var announcementDetailModule: StubAnnouncementDetailModuleFactory
         var eventDetailModule: StubEventDetailModuleFactory
-        var linkRouter: StubLinkRouter
+        var linkRouter: StubContentLinksService
         var webModuleProviding: StubWebMobuleProviding
         var urlOpener: CapturingURLOpener
         var notificationHandling: FakeApplicationNotificationHandling
@@ -156,7 +156,7 @@ class ApplicationDirectorTestBuilder {
     private let announcementsModule: StubAnnouncementsModuleProviding
     private let announcementDetailModule: StubAnnouncementDetailModuleFactory
     private let eventDetailModule: StubEventDetailModuleFactory
-    private let linkRouter: StubLinkRouter
+    private let linkRouter: StubContentLinksService
     private let webModuleProviding: StubWebMobuleProviding
     private let urlOpener: CapturingURLOpener
 
@@ -183,7 +183,7 @@ class ApplicationDirectorTestBuilder {
         announcementsModule = StubAnnouncementsModuleProviding()
         announcementDetailModule = StubAnnouncementDetailModuleFactory()
         eventDetailModule = StubEventDetailModuleFactory()
-        linkRouter = StubLinkRouter()
+        linkRouter = StubContentLinksService()
         webModuleProviding = StubWebMobuleProviding()
         urlOpener = CapturingURLOpener()
     }

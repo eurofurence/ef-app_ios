@@ -1,5 +1,5 @@
 //
-//  LinkLookupService.swift
+//  ContentLinksService.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 15/03/2018.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol LinkLookupService {
+public protocol ContentLinksService {
 
     func lookupContent(for link: Link) -> LinkContentLookupResult?
     func setExternalContentHandler(_ externalContentHandler: ExternalContentHandler)

@@ -49,7 +49,7 @@ class ApplicationDirector: ExternalContentHandler,
 
     private let animate: Bool
     private let navigationControllerFactory: NavigationControllerFactory
-    private let linkLookupService: LinkLookupService
+    private let linkLookupService: ContentLinksService
     private let urlOpener: URLOpener
     private let orderingPolicy: ModuleOrderingPolicy
     private let webModuleProviding: WebModuleProviding
@@ -90,7 +90,7 @@ class ApplicationDirector: ExternalContentHandler,
     private let saveTabOrder: SaveTabOrderWhenCustomizationFinishes
 
     init(animate: Bool,
-         linkLookupService: LinkLookupService,
+         linkLookupService: ContentLinksService,
          urlOpener: URLOpener,
          orderingPolicy: ModuleOrderingPolicy,
          webModuleProviding: WebModuleProviding,

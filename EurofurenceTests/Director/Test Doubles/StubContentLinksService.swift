@@ -1,5 +1,5 @@
 //
-//  StubLinkRouter.swift
+//  StubContentLinksService.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 22/04/2018.
@@ -8,7 +8,7 @@
 
 import EurofurenceModel
 
-class StubLinkRouter: LinkLookupService {
+class StubContentLinksService: ContentLinksService {
 
     var stubbedLinkActions = [Link: LinkContentLookupResult]()
     func lookupContent(for link: Link) -> LinkContentLookupResult? {
