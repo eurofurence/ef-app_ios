@@ -13,13 +13,13 @@ class MessagesModuleBuilder {
 
     private var sceneFactory: MessagesSceneFactory
     private var authenticationService: AuthenticationService
-    private var privateMessagesService: PrivateMessagesService
+    private var privateMessagesService: PrivateMessagesService2
     private var dateFormatter: DateFormatterProtocol
 
     init() {
         sceneFactory = PhoneMessagesSceneFactory()
         authenticationService = SharedModel.instance.session
-        privateMessagesService = SharedModel.instance.privateMessagesService
+        privateMessagesService = SharedModel.instance.session
         dateFormatter = DateFormatter()
     }
 
@@ -33,7 +33,7 @@ class MessagesModuleBuilder {
         return self
     }
 
-    func with(_ privateMessagesService: PrivateMessagesService) ->
+    func with(_ privateMessagesService: PrivateMessagesService2) ->
         MessagesModuleBuilder {
         self.privateMessagesService = privateMessagesService
         return self

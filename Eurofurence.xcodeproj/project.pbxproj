@@ -234,6 +234,7 @@
 		CA1FE9991FA0B3AE009C7DF3 /* ApplicationDirector.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1FE9981FA0B3AE009C7DF3 /* ApplicationDirector.swift */; };
 		CA1FE99B1FA0B3EB009C7DF3 /* WindowWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1FE99A1FA0B3EB009C7DF3 /* WindowWireframe.swift */; };
 		CA1FE99E1FA0B41E009C7DF3 /* NavigationControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1FE99D1FA0B41E009C7DF3 /* NavigationControllerFactory.swift */; };
+		CA240F3F21E3A4DE002DB747 /* BeforeMessagesViewAppears_MessagesPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA240F3E21E3A4DE002DB747 /* BeforeMessagesViewAppears_MessagesPresenterShould.swift */; };
 		CA250DCC20D6D3BE00E7513C /* WhenSceneUpdatesSearchQuery_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA250DCB20D6D3BE00E7513C /* WhenSceneUpdatesSearchQuery_SchedulePresenterShould.swift */; };
 		CA250DCE20D6D4E500E7513C /* ScheduleSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA250DCD20D6D4E500E7513C /* ScheduleSearchViewModel.swift */; };
 		CA250DD020D6D4F500E7513C /* CapturingScheduleSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA250DCF20D6D4F500E7513C /* CapturingScheduleSearchViewModel.swift */; };
@@ -1697,6 +1698,7 @@
 		CA1FE9981FA0B3AE009C7DF3 /* ApplicationDirector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ApplicationDirector.swift; path = ../Director/ApplicationDirector.swift; sourceTree = "<group>"; };
 		CA1FE99A1FA0B3EB009C7DF3 /* WindowWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WindowWireframe.swift; path = ../Director/WindowWireframe.swift; sourceTree = "<group>"; };
 		CA1FE99D1FA0B41E009C7DF3 /* NavigationControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NavigationControllerFactory.swift; path = ../Director/NavigationControllerFactory.swift; sourceTree = "<group>"; };
+		CA240F3E21E3A4DE002DB747 /* BeforeMessagesViewAppears_MessagesPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeforeMessagesViewAppears_MessagesPresenterShould.swift; sourceTree = "<group>"; };
 		CA250DCB20D6D3BE00E7513C /* WhenSceneUpdatesSearchQuery_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSceneUpdatesSearchQuery_SchedulePresenterShould.swift; sourceTree = "<group>"; };
 		CA250DCD20D6D4E500E7513C /* ScheduleSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleSearchViewModel.swift; sourceTree = "<group>"; };
 		CA250DCF20D6D4F500E7513C /* CapturingScheduleSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingScheduleSearchViewModel.swift; sourceTree = "<group>"; };
@@ -6531,6 +6533,7 @@
 				CAF9A9571F5601A700628833 /* WhenViewingMessagesWhileLoggedOut.swift */,
 				CA1ECB401FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift */,
 				CAA6DD1020E1649600328C37 /* WhenMessagesSceneTapsLogoutButton_MessagesPresenterShould.swift */,
+				CA240F3E21E3A4DE002DB747 /* BeforeMessagesViewAppears_MessagesPresenterShould.swift */,
 			);
 			path = Messages;
 			sourceTree = "<group>";
@@ -8267,6 +8270,7 @@
 				CA63754E208CBB8600536BE2 /* FakeViewController.swift in Sources */,
 				CA6A8E0720E56DE5007536CD /* CapturingMapContentVisitor.swift in Sources */,
 				CAF81C7520DDAA9C00898C52 /* CapturingDealerDetailViewModelVisitor.swift in Sources */,
+				CA240F3F21E3A4DE002DB747 /* BeforeMessagesViewAppears_MessagesPresenterShould.swift in Sources */,
 				CA1B5F63211DA4DA007A24B5 /* WhenAnnouncementContainsImage_AnnouncementDetailPresenterShould.swift in Sources */,
 				CA44C374211C655E003C1C4E /* NewsPresenterDealersDenIconBindingTests.swift in Sources */,
 				CABA840520CF01C600DD0795 /* WhenServiceIndicatesEventIsUnfavourited_EventDetailInteractorShould.swift in Sources */,

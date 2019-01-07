@@ -9,13 +9,13 @@
 import EurofurenceModel
 import Foundation.NSIndexPath
 
-class MessagesPresenter: MessagesSceneDelegate, AuthenticationStateObserver, PrivateMessagesServiceObserver {
+class MessagesPresenter: MessagesSceneDelegate, AuthenticationStateObserver, PrivateMessagesObserver {
 
     // MARK: Properties
 
     private let scene: MessagesScene
     private let authenticationService: AuthenticationService
-    private let privateMessagesService: PrivateMessagesService
+    private let privateMessagesService: PrivateMessagesService2
     private let dateFormatter: DateFormatterProtocol
     private let delegate: MessagesModuleDelegate
     private var presentedMessages = [APIMessage]()
@@ -24,7 +24,7 @@ class MessagesPresenter: MessagesSceneDelegate, AuthenticationStateObserver, Pri
 
     init(scene: MessagesScene,
          authenticationService: AuthenticationService,
-         privateMessagesService: PrivateMessagesService,
+         privateMessagesService: PrivateMessagesService2,
          dateFormatter: DateFormatterProtocol,
          delegate: MessagesModuleDelegate) {
         self.scene = scene
@@ -35,13 +35,13 @@ class MessagesPresenter: MessagesSceneDelegate, AuthenticationStateObserver, Pri
 
         scene.delegate = self
         scene.setMessagesTitle(.messages)
-        privateMessagesService.add(self)
     }
 
     // MARK: MessagesSceneDelegate
 
     func messagesSceneWillAppear() {
         authenticationService.add(self)
+        privateMessagesService.add(self)
     }
 
     func messagesSceneDidSelectMessage(at indexPath: IndexPath) {
@@ -85,7 +85,7 @@ class MessagesPresenter: MessagesSceneDelegate, AuthenticationStateObserver, Pri
 
     }
 
-    func privateMessagesServiceDidFinishRefreshingMessages(_ messages: [APIMessage]) {
+    func privateMessagesServiceDidFinishRefreshingMessages(messages: [APIMessage]) {
         scene.hideRefreshIndicator()
         presentMessages(messages)
     }
