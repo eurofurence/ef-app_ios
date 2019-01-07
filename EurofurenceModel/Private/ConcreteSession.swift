@@ -115,7 +115,7 @@ class ConcreteSession: EurofurenceSession {
         refreshMessages()
     }
 
-    public func handleNotification(payload: [String: String], completionHandler: @escaping (NotificationContent) -> Void) {
+    func handleNotification(payload: [String: String], completionHandler: @escaping (NotificationContent) -> Void) {
         if payload[ApplicationNotificationKey.notificationContentKind.rawValue] == ApplicationNotificationContentKind.event.rawValue {
             guard let identifier = payload[ApplicationNotificationKey.notificationContentIdentifier.rawValue] else {
                 completionHandler(.unknown)
@@ -152,11 +152,11 @@ class ConcreteSession: EurofurenceSession {
     }
 
     private var refreshObservers = [RefreshServiceObserver]()
-    public func add(_ observer: RefreshServiceObserver) {
+    func add(_ observer: RefreshServiceObserver) {
         refreshObservers.append(observer)
     }
 
-    public func determineSessionState(completionHandler: @escaping (EurofurenceSessionState) -> Void) {
+    func determineSessionState(completionHandler: @escaping (EurofurenceSessionState) -> Void) {
         let shouldPerformForceRefresh: Bool = forceRefreshRequired.isForceRefreshRequired
         let state: EurofurenceSessionState = {
             guard dataStore.getLastRefreshDate() != nil else { return .uninitialized }
@@ -168,19 +168,19 @@ class ConcreteSession: EurofurenceSession {
         completionHandler(state)
     }
 
-    public func login(_ arguments: LoginArguments, completionHandler: @escaping (LoginResult) -> Void) {
+    func login(_ arguments: LoginArguments, completionHandler: @escaping (LoginResult) -> Void) {
         authenticationCoordinator.login(arguments, completionHandler: completionHandler)
     }
 
-    public func logout(completionHandler: @escaping (LogoutResult) -> Void) {
+    func logout(completionHandler: @escaping (LogoutResult) -> Void) {
         authenticationCoordinator.logout(completionHandler: completionHandler)
     }
 
-    public func storeRemoteNotificationsToken(_ deviceToken: Data) {
+    func storeRemoteNotificationsToken(_ deviceToken: Data) {
         eventBus.post(DomainEvent.RemoteNotificationRegistrationSucceeded(deviceToken: deviceToken))
     }
 
-    public func add(_ observer: PrivateMessagesObserver) {
+    func add(_ observer: PrivateMessagesObserver) {
         privateMessagesController.add(observer)
     }
     
@@ -188,103 +188,103 @@ class ConcreteSession: EurofurenceSession {
         privateMessagesController.refreshMessages()
     }
 
-    public func markMessageAsRead(_ message: APIMessage) {
+    func markMessageAsRead(_ message: APIMessage) {
         privateMessagesController.markMessageAsRead(message)
     }
 
-    public func add(_ observer: KnowledgeServiceObserver) {
+    func add(_ observer: KnowledgeServiceObserver) {
         knowledge.add(observer)
     }
 
-    public func fetchKnowledgeEntry(for identifier: KnowledgeEntry.Identifier, completionHandler: @escaping (KnowledgeEntry) -> Void) {
+    func fetchKnowledgeEntry(for identifier: KnowledgeEntry.Identifier, completionHandler: @escaping (KnowledgeEntry) -> Void) {
         knowledge.fetchKnowledgeEntry(for: identifier, completionHandler: completionHandler)
     }
 
-    public func fetchKnowledgeGroup(identifier: KnowledgeGroup.Identifier, completionHandler: @escaping (KnowledgeGroup) -> Void) {
+    func fetchKnowledgeGroup(identifier: KnowledgeGroup.Identifier, completionHandler: @escaping (KnowledgeGroup) -> Void) {
         knowledge.fetchKnowledgeGroup(identifier: identifier, completionHandler: completionHandler)
     }
 
-    public func fetchImagesForKnowledgeEntry(identifier: KnowledgeEntry.Identifier, completionHandler: @escaping ([Data]) -> Void) {
+    func fetchImagesForKnowledgeEntry(identifier: KnowledgeEntry.Identifier, completionHandler: @escaping ([Data]) -> Void) {
         knowledge.fetchImagesForKnowledgeEntry(identifier: identifier, completionHandler: completionHandler)
     }
 
-    public func add(_ observer: EventsServiceObserver) {
+    func add(_ observer: EventsServiceObserver) {
         schedule.add(observer)
     }
 
-    public func favouriteEvent(identifier: Event.Identifier) {
+    func favouriteEvent(identifier: Event.Identifier) {
         schedule.favouriteEvent(identifier: identifier)
     }
 
-    public func unfavouriteEvent(identifier: Event.Identifier) {
+    func unfavouriteEvent(identifier: Event.Identifier) {
         schedule.unfavouriteEvent(identifier: identifier)
     }
 
-    public func makeEventsSchedule() -> EventsSchedule {
+    func makeEventsSchedule() -> EventsSchedule {
         return schedule.makeScheduleAdapter()
     }
 
-    public func makeEventsSearchController() -> EventsSearchController {
+    func makeEventsSearchController() -> EventsSearchController {
         return schedule.makeEventsSearchController()
     }
 
-    public func fetchEvent(for identifier: Event.Identifier, completionHandler: @escaping (Event?) -> Void) {
+    func fetchEvent(for identifier: Event.Identifier, completionHandler: @escaping (Event?) -> Void) {
         schedule.fetchEvent(for: identifier, completionHandler: completionHandler)
     }
 
-    public func makeDealersIndex() -> DealersIndex {
+    func makeDealersIndex() -> DealersIndex {
         return dealers.makeDealersIndex()
     }
 
-    public func fetchIconPNGData(for identifier: Dealer.Identifier, completionHandler: @escaping (Data?) -> Void) {
+    func fetchIconPNGData(for identifier: Dealer.Identifier, completionHandler: @escaping (Data?) -> Void) {
         dealers.fetchIconPNGData(for: identifier, completionHandler: completionHandler)
     }
 
-    public func fetchExtendedDealerData(for dealer: Dealer.Identifier, completionHandler: @escaping (ExtendedDealerData) -> Void) {
+    func fetchExtendedDealerData(for dealer: Dealer.Identifier, completionHandler: @escaping (ExtendedDealerData) -> Void) {
         dealers.fetchExtendedDealerData(for: dealer, completionHandler: completionHandler)
     }
 
-    public func openWebsite(for identifier: Dealer.Identifier) {
+    func openWebsite(for identifier: Dealer.Identifier) {
         dealers.openWebsite(for: identifier)
     }
 
-    public func openTwitter(for identifier: Dealer.Identifier) {
+    func openTwitter(for identifier: Dealer.Identifier) {
         dealers.openTwitter(for: identifier)
     }
 
-    public func openTelegram(for identifier: Dealer.Identifier) {
+    func openTelegram(for identifier: Dealer.Identifier) {
         dealers.openTelegram(for: identifier)
     }
 
-    public func setExternalContentHandler(_ externalContentHandler: ExternalContentHandler) {
+    func setExternalContentHandler(_ externalContentHandler: ExternalContentHandler) {
         urlHandler.externalContentHandler = externalContentHandler
     }
 
-    public func subscribe(_ observer: CollectThemAllURLObserver) {
+    func subscribe(_ observer: CollectThemAllURLObserver) {
         collectThemAll.subscribe(observer)
     }
 
-    public func add(_ observer: MapsObserver) {
+    func add(_ observer: MapsObserver) {
         maps.add(observer)
     }
 
-    public func fetchImagePNGDataForMap(identifier: Map.Identifier, completionHandler: @escaping (Data) -> Void) {
+    func fetchImagePNGDataForMap(identifier: Map.Identifier, completionHandler: @escaping (Data) -> Void) {
         maps.fetchImagePNGDataForMap(identifier: identifier, completionHandler: completionHandler)
     }
 
-    public func fetchContent(for identifier: Map.Identifier,
+    func fetchContent(for identifier: Map.Identifier,
                       atX x: Int,
                       y: Int,
                       completionHandler: @escaping (Map.Content) -> Void) {
         maps.fetchContent(for: identifier, atX: x, y: y, completionHandler: completionHandler)
     }
 
-    public func performFullStoreRefresh(completionHandler: @escaping (Error?) -> Void) -> Progress {
+    func performFullStoreRefresh(completionHandler: @escaping (Error?) -> Void) -> Progress {
         return performSync(lastSyncTime: nil, completionHandler: completionHandler)
     }
 
     @discardableResult
-    public func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress {
+    func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress {
         return performSync(lastSyncTime: dataStore.getLastRefreshDate(), completionHandler: completionHandler)
     }
 
@@ -443,7 +443,7 @@ class ConcreteSession: EurofurenceSession {
         return progress
     }
 
-    public func lookupContent(for link: Link) -> LinkContentLookupResult? {
+    func lookupContent(for link: Link) -> LinkContentLookupResult? {
         guard let urlString = link.contents as? String, let url = URL(string: urlString) else { return nil }
 
         if let scheme = url.scheme, scheme == "https" || scheme == "http" {
@@ -453,23 +453,23 @@ class ConcreteSession: EurofurenceSession {
         return .externalURL(url)
     }
 
-    public func add(_ observer: AnnouncementsServiceObserver) {
+    func add(_ observer: AnnouncementsServiceObserver) {
         announcements.add(observer)
     }
 
-    public func openAnnouncement(identifier: Announcement.Identifier, completionHandler: @escaping (Announcement) -> Void) {
+    func openAnnouncement(identifier: Announcement.Identifier, completionHandler: @escaping (Announcement) -> Void) {
         announcements.openAnnouncement(identifier: identifier, completionHandler: completionHandler)
     }
 
-    public func fetchAnnouncementImage(identifier: Announcement.Identifier, completionHandler: @escaping (Data?) -> Void) {
+    func fetchAnnouncementImage(identifier: Announcement.Identifier, completionHandler: @escaping (Data?) -> Void) {
         announcements.fetchAnnouncementImage(identifier: identifier, completionHandler: completionHandler)
     }
 
-    public func add(_ observer: ConventionCountdownServiceObserver) {
+    func add(_ observer: ConventionCountdownServiceObserver) {
         conventionCountdownController.observeDaysUntilConvention(using: observer)
     }
 
-    public func add(_ observer: AuthenticationStateObserver) {
+    func add(_ observer: AuthenticationStateObserver) {
         authenticationCoordinator.add(observer)
     }
 
