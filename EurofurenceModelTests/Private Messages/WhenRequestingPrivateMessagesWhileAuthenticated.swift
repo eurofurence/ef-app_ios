@@ -26,7 +26,8 @@ class WhenRequestingPrivateMessagesWhileAuthenticated: XCTestCase {
         context = ApplicationTestBuilder().with(credential).build()
         capturingMessagesObserver = CapturingPrivateMessagesObserver()
         context.application.add(capturingMessagesObserver)
-        context.application.fetchPrivateMessages(completionHandler: capturingMessagesObserver.completionHandler)
+        capturingMessagesObserver.wasToldSuccessfullyLoadedPrivateMessages = false
+        context.application.refreshMessages()
     }
 
     func testHandlerShouldNotBeGivenNotAuthenticatedResponse() {
@@ -71,7 +72,7 @@ class WhenRequestingPrivateMessagesWhileAuthenticated: XCTestCase {
         message.authorName = authorName
         context.privateMessagesAPI.simulateSuccessfulResponse(response: [message])
 
-        XCTAssertEqual(authorName, capturingMessagesObserver.capturedMessages?.first?.authorName)
+        XCTAssertEqual(authorName, capturingMessagesObserver.observedMessages.first?.authorName)
     }
 
     func testReceievingAPIResponseWithSuccessShouldPropogatereceivedDateTimeForMessage() {
@@ -80,7 +81,7 @@ class WhenRequestingPrivateMessagesWhileAuthenticated: XCTestCase {
         message.receivedDateTime = receivedDateTime
         context.privateMessagesAPI.simulateSuccessfulResponse(response: [message])
 
-        XCTAssertEqual(receivedDateTime, capturingMessagesObserver.capturedMessages?.first?.receivedDateTime)
+        XCTAssertEqual(receivedDateTime, capturingMessagesObserver.observedMessages.first?.receivedDateTime)
     }
 
     func testReceievingAPIResponseWithSuccessShouldPropogateContentsForMessage() {
@@ -89,7 +90,7 @@ class WhenRequestingPrivateMessagesWhileAuthenticated: XCTestCase {
         message.contents = contents
         context.privateMessagesAPI.simulateSuccessfulResponse(response: [message])
 
-        XCTAssertEqual(contents, capturingMessagesObserver.capturedMessages?.first?.contents)
+        XCTAssertEqual(contents, capturingMessagesObserver.observedMessages.first?.contents)
     }
 
     func testReceievingAPIResponseWithSuccessShouldPropogateSubjectForMessage() {
@@ -98,7 +99,7 @@ class WhenRequestingPrivateMessagesWhileAuthenticated: XCTestCase {
         message.subject = subject
         context.privateMessagesAPI.simulateSuccessfulResponse(response: [message])
 
-        XCTAssertEqual(subject, capturingMessagesObserver.capturedMessages?.first?.subject)
+        XCTAssertEqual(subject, capturingMessagesObserver.observedMessages.first?.subject)
     }
 
     func testMessagesShouldBeSortedWithLatestMessagesFirst() {
@@ -112,7 +113,7 @@ class WhenRequestingPrivateMessagesWhileAuthenticated: XCTestCase {
         let messages = (0...5).map({ (_) in makeRandomMessage() })
         let expectedDateOrdering = Array(messages.map({ $0.receivedDateTime }).sorted().reversed())
         context.privateMessagesAPI.simulateSuccessfulResponse(response: messages)
-        let actualDateOrdering = capturingMessagesObserver.capturedMessages?.map({ $0.receivedDateTime }) ?? []
+        let actualDateOrdering = capturingMessagesObserver.observedMessages.map({ $0.receivedDateTime })
 
         XCTAssertEqual(expectedDateOrdering, actualDateOrdering)
     }

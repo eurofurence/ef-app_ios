@@ -187,7 +187,7 @@ class ConcreteSession: EurofurenceSession {
     }
     
     func refreshMessages() {
-        
+        privateMessagesController.refreshMessages()
     }
 
     public func fetchPrivateMessages(completionHandler: @escaping (PrivateMessageResult) -> Void) {

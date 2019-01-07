@@ -13,9 +13,11 @@ class CapturingPrivateMessagesObserver: PrivateMessagesObserver {
 
     // MARK: New
 
+    var wasToldSuccessfullyLoadedPrivateMessages = false
     private(set) var observedMessages: [APIMessage] = []
     func privateMessagesServiceDidFinishRefreshingMessages(messages: [APIMessage]) {
         observedMessages = messages
+        self.wasToldSuccessfullyLoadedPrivateMessages = true
     }
 
     private(set) var observedUnreadMessageCount: Int?
@@ -23,27 +25,24 @@ class CapturingPrivateMessagesObserver: PrivateMessagesObserver {
         observedUnreadMessageCount = unreadCount
     }
 
+    private(set) var wasToldFailedToLoadPrivateMessages = false
     func privateMessagesServiceDidFailToLoadMessages() {
-
+        wasToldFailedToLoadPrivateMessages = true
     }
 
     // MARK: Old
 
-    private(set) var wasToldSuccessfullyLoadedPrivateMessages = false
-    private(set) var capturedMessages: [APIMessage]?
-    private(set) var wasToldFailedToLoadPrivateMessages = false
     private(set) var wasToldUserNotAuthenticated = false
     func completionHandler(_ result: PrivateMessageResult) {
         switch result {
-        case .success(let messages):
-            self.wasToldSuccessfullyLoadedPrivateMessages = true
-            self.capturedMessages = messages
+        case .success(_):
+            break
 
         case .userNotAuthenticated:
             self.wasToldUserNotAuthenticated = true
 
         case .failedToLoad:
-            self.wasToldFailedToLoadPrivateMessages = true
+            break
         }
     }
 

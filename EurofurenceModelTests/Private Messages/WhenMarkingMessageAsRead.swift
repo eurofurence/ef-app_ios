@@ -15,13 +15,14 @@ class WhenMarkingMessageAsRead: XCTestCase {
     func testItShouldTellTheMarkAsReadAPIToMarkTheIdentifierOfTheMessageAsRead() {
         let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         let observer = CapturingPrivateMessagesObserver()
-        context.application.fetchPrivateMessages(completionHandler: observer.completionHandler)
+        context.application.add(observer)
+        context.application.refreshMessages()
         let identifier = "Message ID"
         var message = APIMessage.random
         message.identifier = identifier
         context.privateMessagesAPI.simulateSuccessfulResponse(response: [message])
 
-        if let receievedMessage = observer.capturedMessages?.first {
+        if let receievedMessage = observer.observedMessages.first {
             context.application.markMessageAsRead(receievedMessage)
         }
 
@@ -33,13 +34,14 @@ class WhenMarkingMessageAsRead: XCTestCase {
         let credential = Credential(username: "", registrationNumber: 0, authenticationToken: authenticationToken, tokenExpiryDate: .distantFuture)
         let context = ApplicationTestBuilder().with(credential).build()
         let observer = CapturingPrivateMessagesObserver()
-        context.application.fetchPrivateMessages(completionHandler: observer.completionHandler)
+        context.application.add(observer)
+        context.application.refreshMessages()
         let identifier = "Message ID"
         var message = APIMessage.random
         message.identifier = identifier
         context.privateMessagesAPI.simulateSuccessfulResponse(response: [message])
 
-        if let receievedMessage = observer.capturedMessages?.first {
+        if let receievedMessage = observer.observedMessages.first {
             context.application.markMessageAsRead(receievedMessage)
         }
 

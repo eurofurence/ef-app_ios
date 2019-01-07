@@ -20,7 +20,7 @@ class WhenRetrievingLocalPrivateMessages: XCTestCase {
                                subject: "Subject",
                                contents: "Contents",
                                isRead: false)
-        context.application.fetchPrivateMessages { (_) in }
+        context.application.refreshMessages()
         context.privateMessagesAPI.simulateSuccessfulResponse(response: [expected])
 
         XCTAssertEqual([expected], context.application.localMessages)

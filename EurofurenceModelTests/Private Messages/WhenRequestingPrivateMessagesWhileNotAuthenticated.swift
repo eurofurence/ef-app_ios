@@ -19,11 +19,12 @@ class WhenRequestingPrivateMessagesWhileNotAuthenticated: XCTestCase {
 
         context = ApplicationTestBuilder().build()
         capturingMessagesObserver = CapturingPrivateMessagesObserver()
-        context.application.fetchPrivateMessages(completionHandler: capturingMessagesObserver.completionHandler)
+        context.application.add(capturingMessagesObserver)
+        context.application.refreshMessages()
     }
 
-    func testHandlerShouldBeGivenNotAuthenticatedResult() {
-        XCTAssertTrue(capturingMessagesObserver.wasToldUserNotAuthenticated)
+    func testHandlerShouldBeToldFailedToLoadMessages() {
+        XCTAssertTrue(capturingMessagesObserver.wasToldFailedToLoadPrivateMessages)
     }
 
     func testPrivateMessagesShouldNotBeFetched() {
