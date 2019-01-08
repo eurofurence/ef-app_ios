@@ -1,5 +1,5 @@
 //
-//  NotificationsService.swift
+//  NotificationScheduler.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 05/07/2018.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol NotificationsService {
+public protocol NotificationScheduler {
 
     func scheduleReminderForEvent(identifier: EventIdentifier,
                                   scheduledFor date: Date,

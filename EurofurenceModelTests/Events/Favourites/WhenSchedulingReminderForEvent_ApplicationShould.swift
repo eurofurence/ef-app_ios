@@ -30,7 +30,7 @@ class WhenSchedulingReminderForEvent_ApplicationShould: XCTestCase {
         let identifier = EventIdentifier(event.identifier)
         context.application.favouriteEvent(identifier: identifier)
 
-        XCTAssertEqual(expectedScheduleTime, context.notificationsService.capturedEventNotificationScheduledDate)
+        XCTAssertEqual(expectedScheduleTime, context.notificationScheduler.capturedEventNotificationScheduledDate)
     }
 
     func testSupplyTheNameOfTheEventAsTheReminderTitle() {
@@ -48,7 +48,7 @@ class WhenSchedulingReminderForEvent_ApplicationShould: XCTestCase {
         let identifier = EventIdentifier(event.identifier)
         context.application.favouriteEvent(identifier: identifier)
 
-        XCTAssertEqual(event.title, context.notificationsService.capturedEventNotificationTitle)
+        XCTAssertEqual(event.title, context.notificationScheduler.capturedEventNotificationTitle)
     }
 
     func testSupplyFormattedStartTimeAndLocationAsNotificationBody() {
@@ -69,7 +69,7 @@ class WhenSchedulingReminderForEvent_ApplicationShould: XCTestCase {
         let expectedLocationString = response.rooms.changed.first(where: { $0.roomIdentifier == event.roomIdentifier })!.name
         let expected = AppCoreStrings.eventReminderBody(timeString: expectedTimeString, roomName: expectedLocationString)
 
-        XCTAssertEqual(expected, context.notificationsService.capturedEventNotificationBody)
+        XCTAssertEqual(expected, context.notificationScheduler.capturedEventNotificationBody)
     }
 
     func testSupplyCustomUserInfoWithEventTypeAndEventIdentifier() {
@@ -90,7 +90,7 @@ class WhenSchedulingReminderForEvent_ApplicationShould: XCTestCase {
             [ApplicationNotificationKey.notificationContentKind: ApplicationNotificationContentKind.event.rawValue,
              ApplicationNotificationKey.notificationContentIdentifier: event.identifier]
 
-        XCTAssertEqual(expected, context.notificationsService.capturedEventNotificationUserInfo)
+        XCTAssertEqual(expected, context.notificationScheduler.capturedEventNotificationUserInfo)
     }
 
 }

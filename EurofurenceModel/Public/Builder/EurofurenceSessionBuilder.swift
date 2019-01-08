@@ -28,7 +28,7 @@ public class EurofurenceSessionBuilder {
     private var urlOpener: URLOpener?
     private var collectThemAllRequestFactory: CollectThemAllRequestFactory
     private var longRunningTaskManager: LongRunningTaskManager?
-    private var notificationsService: NotificationsService?
+    private var notificationScheduler: NotificationScheduler?
     private var hoursDateFormatter: HoursDateFormatter
     private var mapCoordinateRender: MapCoordinateRender?
     private var forceRefreshRequired: ForceRefreshRequired
@@ -167,8 +167,8 @@ public class EurofurenceSessionBuilder {
     }
 
     @discardableResult
-    public func with(_ notificationsService: NotificationsService) -> EurofurenceSessionBuilder {
-        self.notificationsService = notificationsService
+    public func with(_ notificationScheduler: NotificationScheduler) -> EurofurenceSessionBuilder {
+        self.notificationScheduler = notificationScheduler
         return self
     }
 
@@ -209,7 +209,7 @@ public class EurofurenceSessionBuilder {
                                urlOpener: urlOpener,
                                collectThemAllRequestFactory: collectThemAllRequestFactory,
                                longRunningTaskManager: longRunningTaskManager,
-                               notificationsService: notificationsService,
+                               notificationScheduler: notificationScheduler,
                                hoursDateFormatter: hoursDateFormatter,
                                mapCoordinateRender: mapCoordinateRender,
                                forceRefreshRequired: forceRefreshRequired)

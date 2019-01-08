@@ -717,7 +717,7 @@
 		CA9AC16D2085476E0039C0C2 /* EventComponentViewModel+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9AC16C2085476E0039C0C2 /* EventComponentViewModel+RandomValueProviding.swift */; };
 		CAA39E0820051B5C00F2F3D3 /* LocalizedStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA39E0720051B5C00F2F3D3 /* LocalizedStrings.swift */; };
 		CAA39E0920051C6C00F2F3D3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CAA39E0B20051C6C00F2F3D3 /* Localizable.strings */; };
-		CAA6060720EEB4F200075A4E /* UserNotificationsNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA6060620EEB4F200075A4E /* UserNotificationsNotificationService.swift */; };
+		CAA6060720EEB4F200075A4E /* UserNotificationsScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA6060620EEB4F200075A4E /* UserNotificationsScheduler.swift */; };
 		CAA6060A20EEC02C00075A4E /* Debug.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAA6060920EEC02C00075A4E /* Debug.storyboard */; };
 		CAA6060C20EEC06500075A4E /* DebugTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA6060B20EEC06500075A4E /* DebugTableViewController.swift */; };
 		CAA6DD1120E1649600328C37 /* WhenMessagesSceneTapsLogoutButton_MessagesPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA6DD1020E1649600328C37 /* WhenMessagesSceneTapsLogoutButton_MessagesPresenterShould.swift */; };
@@ -893,7 +893,7 @@
 		CAEA0DA7216BDE2300B0C7A6 /* ImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1ECC20B6D65400D904B5 /* ImageRepository.swift */; };
 		CAEA0DA8216BDE2300B0C7A6 /* LongRunningTaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A5720E6E23200F7D195 /* LongRunningTaskManager.swift */; };
 		CAEA0DA9216BDE2300B0C7A6 /* MapCoordinateRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2A586A20F69EB7002C69B6 /* MapCoordinateRender.swift */; };
-		CAEA0DAA216BDE2300B0C7A6 /* NotificationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D04FD20EE910E00CF54E1 /* NotificationsService.swift */; };
+		CAEA0DAA216BDE2300B0C7A6 /* NotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D04FD20EE910E00CF54E1 /* NotificationScheduler.swift */; };
 		CAEA0DAB216BDE2300B0C7A6 /* PushPermissionsRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB3A72C1F753308005DF77B /* PushPermissionsRequester.swift */; };
 		CAEA0DAC216BDE2300B0C7A6 /* RemoteNotificationsTokenRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781A943B1F1A19F1002DE70F /* RemoteNotificationsTokenRegistration.swift */; };
 		CAEA0DAD216BDE2300B0C7A6 /* SignificantTimeChangeAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C67A20D59457009D3A9E /* SignificantTimeChangeAdapter.swift */; };
@@ -1203,7 +1203,7 @@
 		CAEA1088216E817700B0C7A6 /* CapturingImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA1087216E817700B0C7A6 /* CapturingImageRepository.swift */; };
 		CAEA108A216E818A00B0C7A6 /* CapturingSignificantTimeChangeAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA1089216E818A00B0C7A6 /* CapturingSignificantTimeChangeAdapter.swift */; };
 		CAEA108C216E819B00B0C7A6 /* FakeLongRunningTaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA108B216E819B00B0C7A6 /* FakeLongRunningTaskManager.swift */; };
-		CAEA108E216E81AA00B0C7A6 /* CapturingNotificationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA108D216E81AA00B0C7A6 /* CapturingNotificationsService.swift */; };
+		CAEA108E216E81AA00B0C7A6 /* CapturingNotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA108D216E81AA00B0C7A6 /* CapturingNotificationScheduler.swift */; };
 		CAEA1098216E8A9900B0C7A6 /* CapturingMapsObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA1097216E8A9900B0C7A6 /* CapturingMapsObserver.swift */; };
 		CAEA109A216E8ABC00B0C7A6 /* CapturingRefreshServiceObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA1099216E8ABC00B0C7A6 /* CapturingRefreshServiceObserver.swift */; };
 		CAEA109C216E8AE800B0C7A6 /* CapturingEurofurenceDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA109B216E8AE800B0C7A6 /* CapturingEurofurenceDataStore.swift */; };
@@ -1836,7 +1836,7 @@
 		CA2B4FA51F1EA1B300F007E1 /* ApplicationTestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationTestBuilder.swift; sourceTree = "<group>"; };
 		CA2B4FA71F1EA72A00F007E1 /* LoginArguments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginArguments.swift; sourceTree = "<group>"; };
 		CA2B4FA91F1F7F1200F007E1 /* CapturingLoginObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingLoginObserver.swift; sourceTree = "<group>"; };
-		CA2D04FD20EE910E00CF54E1 /* NotificationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsService.swift; sourceTree = "<group>"; };
+		CA2D04FD20EE910E00CF54E1 /* NotificationScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationScheduler.swift; sourceTree = "<group>"; };
 		CA2D04FF20EE92CD00CF54E1 /* WhenSchedulingReminderForEvent_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSchedulingReminderForEvent_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA2D07F81FE9021A00BFD785 /* WhenResolvingDataStoreState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenResolvingDataStoreState.swift; sourceTree = "<group>"; };
 		CA2D07FA1FE902ED00BFD785 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
@@ -2354,7 +2354,7 @@
 		CA9AC16C2085476E0039C0C2 /* EventComponentViewModel+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventComponentViewModel+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CAA39E0720051B5C00F2F3D3 /* LocalizedStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedStrings.swift; sourceTree = "<group>"; };
 		CAA39E0A20051C6C00F2F3D3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		CAA6060620EEB4F200075A4E /* UserNotificationsNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationsNotificationService.swift; sourceTree = "<group>"; };
+		CAA6060620EEB4F200075A4E /* UserNotificationsScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationsScheduler.swift; sourceTree = "<group>"; };
 		CAA6060920EEC02C00075A4E /* Debug.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Debug.storyboard; sourceTree = "<group>"; };
 		CAA6060B20EEC06500075A4E /* DebugTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugTableViewController.swift; sourceTree = "<group>"; };
 		CAA6060E20EF913C00075A4E /* WhenToldToOpenNotification_ThatRepresentsSyncEvent_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToOpenNotification_ThatRepresentsSyncEvent_ApplicationShould.swift; sourceTree = "<group>"; };
@@ -2581,7 +2581,7 @@
 		CAEA1087216E817700B0C7A6 /* CapturingImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingImageRepository.swift; sourceTree = "<group>"; };
 		CAEA1089216E818A00B0C7A6 /* CapturingSignificantTimeChangeAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingSignificantTimeChangeAdapter.swift; sourceTree = "<group>"; };
 		CAEA108B216E819B00B0C7A6 /* FakeLongRunningTaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeLongRunningTaskManager.swift; sourceTree = "<group>"; };
-		CAEA108D216E81AA00B0C7A6 /* CapturingNotificationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingNotificationsService.swift; sourceTree = "<group>"; };
+		CAEA108D216E81AA00B0C7A6 /* CapturingNotificationScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingNotificationScheduler.swift; sourceTree = "<group>"; };
 		CAEA1090216E823100B0C7A6 /* JournallingURLRequestLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournallingURLRequestLogger.swift; sourceTree = "<group>"; };
 		CAEA1092216E824C00B0C7A6 /* TestURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestURLProtocol.swift; sourceTree = "<group>"; };
 		CAEA1097216E8A9900B0C7A6 /* CapturingMapsObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingMapsObserver.swift; sourceTree = "<group>"; };
@@ -5494,7 +5494,7 @@
 				CACF1ECC20B6D65400D904B5 /* ImageRepository.swift */,
 				CA283A5720E6E23200F7D195 /* LongRunningTaskManager.swift */,
 				CA2A586A20F69EB7002C69B6 /* MapCoordinateRender.swift */,
-				CA2D04FD20EE910E00CF54E1 /* NotificationsService.swift */,
+				CA2D04FD20EE910E00CF54E1 /* NotificationScheduler.swift */,
 				CAB3A72C1F753308005DF77B /* PushPermissionsRequester.swift */,
 				781A943B1F1A19F1002DE70F /* RemoteNotificationsTokenRegistration.swift */,
 				CA52C67A20D59457009D3A9E /* SignificantTimeChangeAdapter.swift */,
@@ -6264,7 +6264,7 @@
 				CAEA10A5216E8BB600B0C7A6 /* CapturingForceRefreshRequired.swift */,
 				CAEA1087216E817700B0C7A6 /* CapturingImageRepository.swift */,
 				CA2A586820F69EA1002C69B6 /* CapturingMapCoordinateRender.swift */,
-				CAEA108D216E81AA00B0C7A6 /* CapturingNotificationsService.swift */,
+				CAEA108D216E81AA00B0C7A6 /* CapturingNotificationScheduler.swift */,
 				CAEA1089216E818A00B0C7A6 /* CapturingSignificantTimeChangeAdapter.swift */,
 				CAEA108B216E819B00B0C7A6 /* FakeLongRunningTaskManager.swift */,
 				CA2761CB20E034BD000E52AC /* StubCollectThemAllRequestFactory.swift */,
@@ -6371,7 +6371,7 @@
 				CA52C68020D597E1009D3A9E /* ApplicationSignificantTimeChangeAdapter.swift */,
 				CAD3BDCA2061394700C91E6E /* AppURLOpener.swift */,
 				CA2A586C20F76F03002C69B6 /* UIKitMapCoordinateRender.swift */,
-				CAA6060620EEB4F200075A4E /* UserNotificationsNotificationService.swift */,
+				CAA6060620EEB4F200075A4E /* UserNotificationsScheduler.swift */,
 				781A94311F1A1981002DE70F /* Firebase Notification Registration */,
 			);
 			path = "Application Adapter Implementations";
@@ -7772,7 +7772,7 @@
 				CA08157A20D3877700F750D4 /* FoundationShortFormDateFormatter.swift in Sources */,
 				CA00AE6020D1746900C2FBB0 /* ScheduleEventComponent.swift in Sources */,
 				CA283AC820EAB9D100F7D195 /* AnnouncementsBinder.swift in Sources */,
-				CAA6060720EEB4F200075A4E /* UserNotificationsNotificationService.swift in Sources */,
+				CAA6060720EEB4F200075A4E /* UserNotificationsScheduler.swift in Sources */,
 				CA401087210FB8010056E16C /* KnowledgeGroupEntriesPresenter.swift in Sources */,
 				CA36A4EA20DB007900EE6537 /* DealerDetailModule.swift in Sources */,
 				CA401079210FAF040056E16C /* KnowledgeGroupEntriesScene.swift in Sources */,
@@ -8416,7 +8416,7 @@
 				CAEA0E03216BDE3100B0C7A6 /* ImageAPI.swift in Sources */,
 				CAEA0DF2216BDE3100B0C7A6 /* AppCoreStrings.swift in Sources */,
 				CAEA0DB4216BDE2300B0C7A6 /* Dealer.swift in Sources */,
-				CAEA0DAA216BDE2300B0C7A6 /* NotificationsService.swift in Sources */,
+				CAEA0DAA216BDE2300B0C7A6 /* NotificationScheduler.swift in Sources */,
 				CAEA0D9B216BDDF000B0C7A6 /* EurofurenceApplicationModel.xcdatamodeld in Sources */,
 				CAEA0D87216BDD9400B0C7A6 /* Schedule.swift in Sources */,
 				CAEA0DDC216BDE2300B0C7A6 /* KnowledgeEntryEntity+Adaptation.swift in Sources */,
@@ -8606,7 +8606,7 @@
 				CAEA1019216E1CE800B0C7A6 /* WhenPerformingSync_ApplicationShould.swift in Sources */,
 				CAEA1022216E1CE800B0C7A6 /* CapturingAnnouncementsServiceObserver.swift in Sources */,
 				CAEA0FA3216E1CC000B0C7A6 /* WhenLoggingIn.swift in Sources */,
-				CAEA108E216E81AA00B0C7A6 /* CapturingNotificationsService.swift in Sources */,
+				CAEA108E216E81AA00B0C7A6 /* CapturingNotificationScheduler.swift in Sources */,
 				CAEA0FCE216E1CC000B0C7A6 /* WhenDeletingRoom_AfterSuccessfulSync_ApplicationShould.swift in Sources */,
 				CAEA109E216E8B1600B0C7A6 /* CapturingEurofurenceDataStoreTransaction.swift in Sources */,
 				CAEA0FAA216E1CC000B0C7A6 /* WhenObservingConventionCountdownAfterConventionStarts_EurofurenceApplicationShould.swift in Sources */,

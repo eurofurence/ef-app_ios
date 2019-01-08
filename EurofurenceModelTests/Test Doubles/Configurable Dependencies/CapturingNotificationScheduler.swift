@@ -1,5 +1,5 @@
 //
-//  CapturingNotificationsService.swift
+//  CapturingNotificationScheduler.swift
 //  EurofurenceAppCoreTests
 //
 //  Created by Thomas Sherwood on 10/10/2018.
@@ -9,7 +9,7 @@
 import EurofurenceModel
 import Foundation
 
-class CapturingNotificationsService: NotificationsService {
+class CapturingNotificationScheduler: NotificationScheduler {
 
     private(set) var capturedEventIdentifier: EventIdentifier?
     private(set) var capturedEventNotificationScheduledDate: Date?

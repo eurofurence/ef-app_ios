@@ -28,7 +28,7 @@ class ApplicationTestBuilder {
         var significantTimeChangeAdapter: CapturingSignificantTimeChangeAdapter
         var urlOpener: CapturingURLOpener
         var longRunningTaskManager: FakeLongRunningTaskManager
-        var notificationsService: CapturingNotificationsService
+        var notificationScheduler: CapturingNotificationScheduler
         var hoursDateFormatter: FakeHoursDateFormatter
         var mapCoordinateRender: CapturingMapCoordinateRender
 
@@ -291,7 +291,7 @@ class ApplicationTestBuilder {
         let conventionStartDateRepository = StubConventionStartDateRepository()
         let significantTimeChangeAdapter = CapturingSignificantTimeChangeAdapter()
         let longRunningTaskManager = FakeLongRunningTaskManager()
-        let notificationsService = CapturingNotificationsService()
+        let notificationsService = CapturingNotificationScheduler()
         let hoursDateFormatter = FakeHoursDateFormatter()
         let mapCoordinateRender = CapturingMapCoordinateRender()
         let app = EurofurenceSessionBuilder()
@@ -334,7 +334,7 @@ class ApplicationTestBuilder {
                        significantTimeChangeAdapter: significantTimeChangeAdapter,
                        urlOpener: urlOpener,
                        longRunningTaskManager: longRunningTaskManager,
-                       notificationsService: notificationsService,
+                       notificationScheduler: notificationsService,
                        hoursDateFormatter: hoursDateFormatter,
                        mapCoordinateRender: mapCoordinateRender)
     }

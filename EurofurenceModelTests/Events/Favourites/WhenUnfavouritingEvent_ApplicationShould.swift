@@ -37,7 +37,7 @@ class WhenUnfavouritingEvent_ApplicationShould: XCTestCase {
         context.application.favouriteEvent(identifier: identifier)
         context.application.unfavouriteEvent(identifier: identifier)
 
-        XCTAssertEqual(identifier, context.notificationsService.capturedEventIdentifierToRemoveNotification)
+        XCTAssertEqual(identifier, context.notificationScheduler.capturedEventIdentifierToRemoveNotification)
     }
 
 }

@@ -1,5 +1,5 @@
 //
-//  UserNotificationsNotificationService.swift
+//  UserNotificationsScheduler.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 05/07/2018.
@@ -9,7 +9,7 @@
 import EurofurenceModel
 import UserNotifications
 
-struct UserNotificationsNotificationService: NotificationsService {
+struct UserNotificationsScheduler: NotificationScheduler {
 
     func scheduleReminderForEvent(identifier: EventIdentifier,
                                   scheduledFor date: Date,

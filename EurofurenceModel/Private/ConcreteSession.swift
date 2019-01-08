@@ -56,7 +56,7 @@ class ConcreteSession: EurofurenceSession, Services {
          urlOpener: URLOpener?,
          collectThemAllRequestFactory: CollectThemAllRequestFactory,
          longRunningTaskManager: LongRunningTaskManager?,
-         notificationsService: NotificationsService?,
+         notificationScheduler: NotificationScheduler?,
          hoursDateFormatter: HoursDateFormatter,
          mapCoordinateRender: MapCoordinateRender?,
          forceRefreshRequired: ForceRefreshRequired) {
@@ -95,7 +95,7 @@ class ConcreteSession: EurofurenceSession, Services {
                             imageCache: imageCache,
                             clock: clock,
                             timeIntervalForUpcomingEventsSinceNow: timeIntervalForUpcomingEventsSinceNow,
-                            notificationsService: notificationsService,
+                            notificationScheduler: notificationScheduler,
                             userPreferences: userPreferences,
                             hoursDateFormatter: hoursDateFormatter)
         imageDownloader = ImageDownloader(eventBus: eventBus, imageAPI: imageAPI, imageRepository: imageRepository)

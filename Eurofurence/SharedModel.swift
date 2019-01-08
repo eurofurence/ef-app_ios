@@ -33,7 +33,7 @@ class SharedModel {
 
         let longRunningTaskManager = ApplicationLongRunningTaskManager()
 
-        let notificationsService = UserNotificationsNotificationService()
+        let notificationsService = UserNotificationsScheduler()
 
         let mapCoordinateRender = UIKitMapCoordinateRender()
 

@@ -70,7 +70,7 @@ class WhenFavouritingEvent_ApplicationShould: XCTestCase {
         let identifier = EventIdentifier(events.randomElement().element.identifier)
         context.application.favouriteEvent(identifier: identifier)
 
-        XCTAssertEqual(identifier, context.notificationsService.capturedEventIdentifier)
+        XCTAssertEqual(identifier, context.notificationScheduler.capturedEventIdentifier)
     }
 
 }
