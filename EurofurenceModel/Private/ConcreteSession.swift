@@ -29,14 +29,14 @@ class ConcreteSession: EurofurenceSession {
 
     private let imageCache: ImagesCache
     private let imageDownloader: ImageDownloader
-    private let announcements: Announcements
-    private let knowledge: Knowledge
+    private let announcementsService: Announcements
+    private let knowledgeService: Knowledge
     private let schedule: Schedule
-    private let dealers: Dealers
+    private let dealersService: Dealers
     private let significantTimeObserver: SignificantTimeObserver
     private let urlHandler: URLHandler
-    private let collectThemAll: CollectThemAll
-    private let maps: Maps
+    private let collectThemAllService: CollectThemAll
+    private let mapsService: Maps
 
     init(userPreferences: UserPreferences,
          dataStore: DataStore,
@@ -88,8 +88,8 @@ class ConcreteSession: EurofurenceSession {
                                                                       clock: clock)
 
         imageCache = ImagesCache(eventBus: eventBus, imageRepository: imageRepository)
-        announcements = Announcements(eventBus: eventBus, dataStore: dataStore, imageRepository: imageRepository)
-        knowledge = Knowledge(eventBus: eventBus, dataStore: dataStore, imageRepository: imageRepository)
+        announcementsService = Announcements(eventBus: eventBus, dataStore: dataStore, imageRepository: imageRepository)
+        knowledgeService = Knowledge(eventBus: eventBus, dataStore: dataStore, imageRepository: imageRepository)
         schedule = Schedule(eventBus: eventBus,
                             dataStore: dataStore,
                             imageCache: imageCache,
@@ -101,12 +101,12 @@ class ConcreteSession: EurofurenceSession {
         imageDownloader = ImageDownloader(eventBus: eventBus, imageAPI: imageAPI, imageRepository: imageRepository)
         significantTimeObserver = SignificantTimeObserver(significantTimeChangeAdapter: significantTimeChangeAdapter,
                                                           eventBus: eventBus)
-        dealers = Dealers(eventBus: eventBus, dataStore: dataStore, imageCache: imageCache, mapCoordinateRender: mapCoordinateRender)
+        dealersService = Dealers(eventBus: eventBus, dataStore: dataStore, imageCache: imageCache, mapCoordinateRender: mapCoordinateRender)
         urlHandler = URLHandler(eventBus: eventBus, urlOpener: urlOpener)
-        collectThemAll = CollectThemAll(eventBus: eventBus,
+        collectThemAllService = CollectThemAll(eventBus: eventBus,
                                         collectThemAllRequestFactory: collectThemAllRequestFactory,
                                         credentialStore: credentialStore)
-        maps = Maps(eventBus: eventBus, dataStore: dataStore, imageRepository: imageRepository, dealers: dealers)
+        mapsService = Maps(eventBus: eventBus, dataStore: dataStore, imageRepository: imageRepository, dealers: dealersService)
 
         refreshMessages()
     }
@@ -133,7 +133,7 @@ class ConcreteSession: EurofurenceSession {
             if error == nil {
                 if let announcementIdentifier = payload["announcement_id"] {
                     let identifier = AnnouncementIdentifier(announcementIdentifier)
-                    if self.announcements.models.contains(where: { $0.identifier == identifier }) {
+                    if self.announcementsService.models.contains(where: { $0.identifier == identifier }) {
                         completionHandler(.announcement(identifier))
                     } else {
                         completionHandler(.invalidatedAnnouncement)
@@ -189,19 +189,19 @@ class ConcreteSession: EurofurenceSession {
     }
 
     func add(_ observer: KnowledgeServiceObserver) {
-        knowledge.add(observer)
+        knowledgeService.add(observer)
     }
 
     func fetchKnowledgeEntry(for identifier: KnowledgeEntryIdentifier, completionHandler: @escaping (KnowledgeEntry) -> Void) {
-        knowledge.fetchKnowledgeEntry(for: identifier, completionHandler: completionHandler)
+        knowledgeService.fetchKnowledgeEntry(for: identifier, completionHandler: completionHandler)
     }
 
     func fetchKnowledgeGroup(identifier: KnowledgeGroupIdentifier, completionHandler: @escaping (KnowledgeGroup) -> Void) {
-        knowledge.fetchKnowledgeGroup(identifier: identifier, completionHandler: completionHandler)
+        knowledgeService.fetchKnowledgeGroup(identifier: identifier, completionHandler: completionHandler)
     }
 
     func fetchImagesForKnowledgeEntry(identifier: KnowledgeEntryIdentifier, completionHandler: @escaping ([Data]) -> Void) {
-        knowledge.fetchImagesForKnowledgeEntry(identifier: identifier, completionHandler: completionHandler)
+        knowledgeService.fetchImagesForKnowledgeEntry(identifier: identifier, completionHandler: completionHandler)
     }
 
     func add(_ observer: EventsServiceObserver) {
@@ -229,27 +229,27 @@ class ConcreteSession: EurofurenceSession {
     }
 
     func makeDealersIndex() -> DealersIndex {
-        return dealers.makeDealersIndex()
+        return dealersService.makeDealersIndex()
     }
 
     func fetchIconPNGData(for identifier: DealerIdentifier, completionHandler: @escaping (Data?) -> Void) {
-        dealers.fetchIconPNGData(for: identifier, completionHandler: completionHandler)
+        dealersService.fetchIconPNGData(for: identifier, completionHandler: completionHandler)
     }
 
     func fetchExtendedDealerData(for dealer: DealerIdentifier, completionHandler: @escaping (ExtendedDealerData) -> Void) {
-        dealers.fetchExtendedDealerData(for: dealer, completionHandler: completionHandler)
+        dealersService.fetchExtendedDealerData(for: dealer, completionHandler: completionHandler)
     }
 
     func openWebsite(for identifier: DealerIdentifier) {
-        dealers.openWebsite(for: identifier)
+        dealersService.openWebsite(for: identifier)
     }
 
     func openTwitter(for identifier: DealerIdentifier) {
-        dealers.openTwitter(for: identifier)
+        dealersService.openTwitter(for: identifier)
     }
 
     func openTelegram(for identifier: DealerIdentifier) {
-        dealers.openTelegram(for: identifier)
+        dealersService.openTelegram(for: identifier)
     }
 
     func setExternalContentHandler(_ externalContentHandler: ExternalContentHandler) {
@@ -257,22 +257,22 @@ class ConcreteSession: EurofurenceSession {
     }
 
     func subscribe(_ observer: CollectThemAllURLObserver) {
-        collectThemAll.subscribe(observer)
+        collectThemAllService.subscribe(observer)
     }
 
     func add(_ observer: MapsObserver) {
-        maps.add(observer)
+        mapsService.add(observer)
     }
 
     func fetchImagePNGDataForMap(identifier: MapIdentifier, completionHandler: @escaping (Data) -> Void) {
-        maps.fetchImagePNGDataForMap(identifier: identifier, completionHandler: completionHandler)
+        mapsService.fetchImagePNGDataForMap(identifier: identifier, completionHandler: completionHandler)
     }
 
     func fetchContent(for identifier: MapIdentifier,
                       atX x: Int,
                       y: Int,
                       completionHandler: @escaping (MapContent) -> Void) {
-        maps.fetchContent(for: identifier, atX: x, y: y, completionHandler: completionHandler)
+        mapsService.fetchContent(for: identifier, atX: x, y: y, completionHandler: completionHandler)
     }
 
     func performFullStoreRefresh(completionHandler: @escaping (Error?) -> Void) -> Progress {
@@ -381,7 +381,7 @@ class ConcreteSession: EurofurenceSession {
                     }
 
                     if response.announcements.removeAllBeforeInsert {
-                        self.announcements.models.map({ $0.identifier.rawValue }).forEach(transaction.deleteAnnouncement)
+                        self.announcementsService.models.map({ $0.identifier.rawValue }).forEach(transaction.deleteAnnouncement)
                     }
 
                     if response.conferenceDays.removeAllBeforeInsert {
@@ -397,11 +397,11 @@ class ConcreteSession: EurofurenceSession {
                     }
 
                     if response.knowledgeGroups.removeAllBeforeInsert {
-                        self.knowledge.models.map({ $0.identifier.rawValue }).forEach(transaction.deleteKnowledgeGroup)
+                        self.knowledgeService.models.map({ $0.identifier.rawValue }).forEach(transaction.deleteKnowledgeGroup)
                     }
 
                     if response.knowledgeEntries.removeAllBeforeInsert {
-                        self.knowledge.models.reduce([], { $0 + $1.entries }).map({ $0.identifier.rawValue }).forEach(transaction.deleteKnowledgeEntry)
+                        self.knowledgeService.models.reduce([], { $0 + $1.entries }).map({ $0.identifier.rawValue }).forEach(transaction.deleteKnowledgeEntry)
                     }
 
                     if response.dealers.removeAllBeforeInsert {
@@ -448,15 +448,15 @@ class ConcreteSession: EurofurenceSession {
     }
 
     func add(_ observer: AnnouncementsServiceObserver) {
-        announcements.add(observer)
+        announcementsService.add(observer)
     }
 
     func openAnnouncement(identifier: AnnouncementIdentifier, completionHandler: @escaping (Announcement) -> Void) {
-        announcements.openAnnouncement(identifier: identifier, completionHandler: completionHandler)
+        announcementsService.openAnnouncement(identifier: identifier, completionHandler: completionHandler)
     }
 
     func fetchAnnouncementImage(identifier: AnnouncementIdentifier, completionHandler: @escaping (Data?) -> Void) {
-        announcements.fetchAnnouncementImage(identifier: identifier, completionHandler: completionHandler)
+        announcementsService.fetchAnnouncementImage(identifier: identifier, completionHandler: completionHandler)
     }
 
     func add(_ observer: ConventionCountdownServiceObserver) {
