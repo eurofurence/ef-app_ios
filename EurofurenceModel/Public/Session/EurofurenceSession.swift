@@ -21,5 +21,7 @@ public protocol EurofurenceSession: NotificationService,
                                     MapsService,
                                     SessionStateService,
                                     PrivateMessagesService {
+    
+    var services: Services { get }
 
 }

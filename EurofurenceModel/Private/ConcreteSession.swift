@@ -9,7 +9,7 @@
 import EventBus
 import Foundation
 
-class ConcreteSession: EurofurenceSession {
+class ConcreteSession: EurofurenceSession, Services {
 
     private let eventBus = EventBus()
     private let userPreferences: UserPreferences
@@ -110,6 +110,24 @@ class ConcreteSession: EurofurenceSession {
 
         refreshMessages()
     }
+    
+    var services: Services {
+        return self
+    }
+    
+    var notifications: NotificationService { return self }
+    var refresh: RefreshService { return self }
+    var announcements: AnnouncementsService { return self }
+    var authentication: AuthenticationService { return self }
+    var events: EventsService { return self }
+    var dealers: DealersService { return self }
+    var knowledge: KnowledgeService { return self }
+    var contentLinks: ContentLinksService { return self }
+    var conventionCountdown: ConventionCountdownService { return self }
+    var collectThemAll: CollectThemAllService { return self }
+    var maps: MapsService { return self }
+    var sessionState: SessionStateService { return self }
+    var privateMessages: PrivateMessagesService { return self }
 
     func handleNotification(payload: [String: String], completionHandler: @escaping (NotificationContent) -> Void) {
         if payload[ApplicationNotificationKey.notificationContentKind.rawValue] == ApplicationNotificationContentKind.event.rawValue {
