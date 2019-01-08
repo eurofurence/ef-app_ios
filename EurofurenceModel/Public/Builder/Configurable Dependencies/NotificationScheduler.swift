@@ -9,13 +9,13 @@
 import Foundation
 
 public protocol NotificationScheduler {
-
-    func scheduleReminderForEvent(identifier: EventIdentifier,
-                                  scheduledFor date: Date,
-                                  title: String,
-                                  body: String,
-                                  userInfo: [ApplicationNotificationKey: String])
-    func removeEventReminder(for identifier: EventIdentifier)
+    
+    func scheduleNotification(forEvent identifier: EventIdentifier,
+                              at date: Date,
+                              title: String,
+                              body: String,
+                              userInfo: [ApplicationNotificationKey: String])
+    func cancelNotification(forEvent identifier: EventIdentifier)
 
 }
 

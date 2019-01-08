@@ -11,11 +11,11 @@ import UserNotifications
 
 struct UserNotificationsScheduler: NotificationScheduler {
 
-    func scheduleReminderForEvent(identifier: EventIdentifier,
-                                  scheduledFor date: Date,
-                                  title: String,
-                                  body: String,
-                                  userInfo: [ApplicationNotificationKey: String]) {
+    func scheduleNotification(forEvent identifier: EventIdentifier,
+                              at date: Date,
+                              title: String,
+                              body: String,
+                              userInfo: [ApplicationNotificationKey: String]) {
         let content = UNMutableNotificationContent()
         content.title = title
         content.body = body
@@ -40,7 +40,7 @@ struct UserNotificationsScheduler: NotificationScheduler {
         }
     }
 
-    func removeEventReminder(for identifier: EventIdentifier) {
+    func cancelNotification(forEvent identifier: EventIdentifier) {
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [identifier.rawValue])
     }
 

@@ -139,8 +139,8 @@ class Schedule: ClockDelegate {
             .notificationContentIdentifier: identifier.rawValue
         ]
 
-        notificationScheduler?.scheduleReminderForEvent(identifier: identifier,
-                                                       scheduledFor: reminderDate,
+        notificationScheduler?.scheduleNotification(forEvent: identifier,
+                                                       at: reminderDate,
                                                        title: event.title,
                                                        body: body,
                                                        userInfo: userInfo)
@@ -152,7 +152,7 @@ class Schedule: ClockDelegate {
         }
 
         favouriteEventIdentifiers.index(of: identifier).let({ favouriteEventIdentifiers.remove(at: $0) })
-        notificationScheduler?.removeEventReminder(for: identifier)
+        notificationScheduler?.cancelNotification(forEvent: identifier)
 
         let event = EventUnfavouritedEvent(identifier: identifier)
         eventBus.post(event)

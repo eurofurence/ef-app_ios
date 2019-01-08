@@ -16,11 +16,11 @@ class CapturingNotificationScheduler: NotificationScheduler {
     private(set) var capturedEventNotificationTitle: String?
     private(set) var capturedEventNotificationBody: String?
     private(set) var capturedEventNotificationUserInfo: [ApplicationNotificationKey: String] = [:]
-    func scheduleReminderForEvent(identifier: EventIdentifier,
-                                  scheduledFor date: Date,
-                                  title: String,
-                                  body: String,
-                                  userInfo: [ApplicationNotificationKey: String]) {
+    func scheduleNotification(forEvent identifier: EventIdentifier,
+                              at date: Date,
+                              title: String,
+                              body: String,
+                              userInfo: [ApplicationNotificationKey: String]) {
         capturedEventIdentifier = identifier
         capturedEventNotificationScheduledDate = date
         capturedEventNotificationTitle = title
@@ -29,7 +29,7 @@ class CapturingNotificationScheduler: NotificationScheduler {
     }
 
     private(set) var capturedEventIdentifierToRemoveNotification: EventIdentifier?
-    func removeEventReminder(for identifier: EventIdentifier) {
+    func cancelNotification(forEvent identifier: EventIdentifier) {
         capturedEventIdentifierToRemoveNotification = identifier
     }
 
