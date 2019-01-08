@@ -1,15 +1,15 @@
 //
-//  WhenLoggingOut.swift
-//  Eurofurence
+//  WhenLoggingOutSuccessfully.swift
+//  EurofurenceTests
 //
-//  Created by Thomas Sherwood on 28/07/2017.
-//  Copyright © 2017 Eurofurence. All rights reserved.
+//  Created by Thomas Sherwood on 08/01/2019.
+//  Copyright © 2019 Eurofurence. All rights reserved.
 //
 
 import EurofurenceModel
 import XCTest
 
-class WhenLoggingOut: XCTestCase {
+class WhenLoggingOutSuccessfully: XCTestCase {
 
     func testTheRemoteNotificationsTokenRegistrationShouldReRegisterTheDeviceTokenWithNilUserRegistrationToken() {
         let unexpectedToken = "JWT Token"
@@ -28,16 +28,6 @@ class WhenLoggingOut: XCTestCase {
         context.application.logout { _ in }
 
         XCTAssertEqual(deviceToken, context.capturingTokenRegistration.capturedRemoteNotificationsDeviceToken)
-    }
-
-    func testFailureToUnregisterAuthTokenWithRemoteTokenRegistrationShouldIndicateLogoutFailure() {
-        let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
-        let logoutObserver = CapturingLogoutObserver()
-        context.registerForRemoteNotifications()
-        context.application.logout(completionHandler: logoutObserver.completionHandler)
-        context.capturingTokenRegistration.failLastRequest()
-
-        XCTAssertTrue(logoutObserver.didFailToLogout)
     }
 
     func testSucceedingToUnregisterAuthTokenWithRemoteTokenRegistrationShouldNotIndicateLogoutFailure() {
@@ -59,15 +49,6 @@ class WhenLoggingOut: XCTestCase {
         XCTAssertTrue(context.capturingCredentialStore.didDeletePersistedToken)
     }
 
-    func testFailingToUnregisterAuthTokenWithRemoteTokenRegistrationShouldNotDeletePersistedCredential() {
-        let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
-        context.registerForRemoteNotifications()
-        context.application.logout { _ in }
-        context.capturingTokenRegistration.failLastRequest()
-
-        XCTAssertFalse(context.capturingCredentialStore.didDeletePersistedToken)
-    }
-
     func testSucceedingToUnregisterAuthTokenWithRemoteTokenRegistrationShouldNotifyLogoutObserversUserLoggedOut() {
         let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         let logoutObserver = CapturingLogoutObserver()
@@ -76,34 +57,6 @@ class WhenLoggingOut: XCTestCase {
         context.capturingTokenRegistration.succeedLastRequest()
 
         XCTAssertTrue(logoutObserver.didLogout)
-    }
-
-    func testFailingToUnregisterAuthTokenWithRemoteTokenRegistrationShouldNotNotifyLogoutObserversUserLoggedOut() {
-        let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
-        let logoutObserver = CapturingLogoutObserver()
-        context.registerForRemoteNotifications()
-        context.application.logout(completionHandler: logoutObserver.completionHandler)
-        context.capturingTokenRegistration.failLastRequest()
-
-        XCTAssertFalse(logoutObserver.didLogout)
-    }
-
-    func testWithoutHavingRegisteredForNotificationsThenTheUserShouldStillBeLoggedOut() {
-        let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
-        let logoutObserver = CapturingLogoutObserver()
-        context.application.logout(completionHandler: logoutObserver.completionHandler)
-
-        XCTAssertTrue(context.capturingTokenRegistration.didRegisterNilPushTokenAndAuthToken)
-    }
-
-    func testLoggingInAsAnotherUserShouldRequestLoginUsingTheirDetails() {
-        let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
-        context.application.logout { _ in }
-        context.capturingTokenRegistration.succeedLastRequest()
-        let secondUser = "Some other awesome guy"
-        context.login(username: secondUser)
-
-        XCTAssertEqual(secondUser, context.loginAPI.capturedLoginRequest?.username)
     }
 
 }

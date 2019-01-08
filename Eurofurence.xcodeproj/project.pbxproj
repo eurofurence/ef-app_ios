@@ -228,6 +228,9 @@
 		CA240F4821E3D8C3002DB747 /* Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA240F4621E3D8B9002DB747 /* Identifier.swift */; };
 		CA240F4B21E3D985002DB747 /* MapContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA240F4921E3D980002DB747 /* MapContent.swift */; };
 		CA240F5721E4A0EB002DB747 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA240F5521E4A065002DB747 /* Services.swift */; };
+		CA240F5B21E4A9F8002DB747 /* WhenLoggingOutSuccessfully.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA240F5921E4A9E4002DB747 /* WhenLoggingOutSuccessfully.swift */; };
+		CA240F5D21E4AA08002DB747 /* WhenLoggingOutUnsuccessfully.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA240F5C21E4AA08002DB747 /* WhenLoggingOutUnsuccessfully.swift */; };
+		CA240F5F21E4AA1C002DB747 /* WhenLoggingOut_WithoutRegisteredDeviceToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA240F5E21E4AA1C002DB747 /* WhenLoggingOut_WithoutRegisteredDeviceToken.swift */; };
 		CA250DCC20D6D3BE00E7513C /* WhenSceneUpdatesSearchQuery_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA250DCB20D6D3BE00E7513C /* WhenSceneUpdatesSearchQuery_SchedulePresenterShould.swift */; };
 		CA250DCE20D6D4E500E7513C /* ScheduleSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA250DCD20D6D4E500E7513C /* ScheduleSearchViewModel.swift */; };
 		CA250DD020D6D4F500E7513C /* CapturingScheduleSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA250DCF20D6D4F500E7513C /* CapturingScheduleSearchViewModel.swift */; };
@@ -1046,7 +1049,6 @@
 		CAEA0FA1216E1CC000B0C7A6 /* WhenRequestingImageForAnnouncementThatHasImage_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B5F66211DB071007A24B5 /* WhenRequestingImageForAnnouncementThatHasImage_ApplicationShould.swift */; };
 		CAEA0FA2216E1CC000B0C7A6 /* WhenRequestingImageForAnnouncementThatHasNoImage_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B5F64211DAE65007A24B5 /* WhenRequestingImageForAnnouncementThatHasNoImage_ApplicationShould.swift */; };
 		CAEA0FA3216E1CC000B0C7A6 /* WhenLoggingIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */; };
-		CAEA0FA4216E1CC000B0C7A6 /* WhenLoggingOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACE1B041F2BBA1A00DFCB60 /* WhenLoggingOut.swift */; };
 		CAEA0FA5216E1CC000B0C7A6 /* DefaultCollectThemAllRequestFactoryShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2761C720E0305D000E52AC /* DefaultCollectThemAllRequestFactoryShould.swift */; };
 		CAEA0FA6216E1CC000B0C7A6 /* WhenObservingCollectThemAllURLWhileLoggedIn_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2761CF20E0353F000E52AC /* WhenObservingCollectThemAllURLWhileLoggedIn_ApplicationShould.swift */; };
 		CAEA0FA7216E1CC000B0C7A6 /* WhenObservingCollectThemAllURLWhileLoggedOut_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2761C320E02D74000E52AC /* WhenObservingCollectThemAllURLWhileLoggedOut_ApplicationShould.swift */; };
@@ -1680,6 +1682,9 @@
 		CA240F4621E3D8B9002DB747 /* Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifier.swift; sourceTree = "<group>"; };
 		CA240F4921E3D980002DB747 /* MapContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapContent.swift; sourceTree = "<group>"; };
 		CA240F5521E4A065002DB747 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
+		CA240F5921E4A9E4002DB747 /* WhenLoggingOutSuccessfully.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLoggingOutSuccessfully.swift; sourceTree = "<group>"; };
+		CA240F5C21E4AA08002DB747 /* WhenLoggingOutUnsuccessfully.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLoggingOutUnsuccessfully.swift; sourceTree = "<group>"; };
+		CA240F5E21E4AA1C002DB747 /* WhenLoggingOut_WithoutRegisteredDeviceToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLoggingOut_WithoutRegisteredDeviceToken.swift; sourceTree = "<group>"; };
 		CA250DCB20D6D3BE00E7513C /* WhenSceneUpdatesSearchQuery_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSceneUpdatesSearchQuery_SchedulePresenterShould.swift; sourceTree = "<group>"; };
 		CA250DCD20D6D4E500E7513C /* ScheduleSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleSearchViewModel.swift; sourceTree = "<group>"; };
 		CA250DCF20D6D4F500E7513C /* CapturingScheduleSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingScheduleSearchViewModel.swift; sourceTree = "<group>"; };
@@ -2432,7 +2437,6 @@
 		CACD2EAE21D67EB000BACD91 /* BundleAppVersionProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleAppVersionProviding.swift; sourceTree = "<group>"; };
 		CACD2F0621DEB9DE00BACD91 /* SessionStateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStateService.swift; sourceTree = "<group>"; };
 		CACD2F0C21DF832000BACD91 /* NotificationServiceFetchResultAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationServiceFetchResultAdapter.swift; sourceTree = "<group>"; };
-		CACE1B041F2BBA1A00DFCB60 /* WhenLoggingOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenLoggingOut.swift; sourceTree = "<group>"; };
 		CACE1B061F2BBEC900DFCB60 /* CapturingLogoutObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingLogoutObserver.swift; sourceTree = "<group>"; };
 		CACF1E4520AE292D00D904B5 /* WhenNewsModuleSelectsEvent_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenNewsModuleSelectsEvent_DirectorShould.swift; sourceTree = "<group>"; };
 		CACF1E4720AE29CB00D904B5 /* StubEventDetailModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubEventDetailModuleFactory.swift; sourceTree = "<group>"; };
@@ -3662,6 +3666,16 @@
 				CA063B4720F3E27000241CC9 /* RestorationIdentifierOrderingPolicy.swift */,
 			);
 			path = Director;
+			sourceTree = "<group>";
+		};
+		CA240F5821E4A9D8002DB747 /* Logging Out */ = {
+			isa = PBXGroup;
+			children = (
+				CA240F5E21E4AA1C002DB747 /* WhenLoggingOut_WithoutRegisteredDeviceToken.swift */,
+				CA240F5921E4A9E4002DB747 /* WhenLoggingOutSuccessfully.swift */,
+				CA240F5C21E4AA08002DB747 /* WhenLoggingOutUnsuccessfully.swift */,
+			);
+			path = "Logging Out";
 			sourceTree = "<group>";
 		};
 		CA27256921132755004C6D0A /* Icon Presentation */ = {
@@ -5274,7 +5288,7 @@
 			children = (
 				CA0B1EEE21888A0000A6A949 /* WhenAlreadyLoggedIn.swift */,
 				CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */,
-				CACE1B041F2BBA1A00DFCB60 /* WhenLoggingOut.swift */,
+				CA240F5821E4A9D8002DB747 /* Logging Out */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -8552,7 +8566,6 @@
 				CAEA1002216E1CE700B0C7A6 /* WhenFetchingMapContents_ThatRevealsMapEntry_ApplicationShould.swift in Sources */,
 				CAEA0FC7216E1CC000B0C7A6 /* WhenDeletingAnnouncement_AfterSuccessfulSync_ApplicationShould.swift in Sources */,
 				CAEA1015216E1CE800B0C7A6 /* WhenSignificantTimeChanges_ScheduleShould.swift in Sources */,
-				CAEA0FA4216E1CC000B0C7A6 /* WhenLoggingOut.swift in Sources */,
 				CAEA0FF0216E1CE700B0C7A6 /* WhenFetchingKnowledgeEntryByIdentifier_ApplicationShould.swift in Sources */,
 				CAEA0FA1216E1CC000B0C7A6 /* WhenRequestingImageForAnnouncementThatHasImage_ApplicationShould.swift in Sources */,
 				CAEA1027216E1CE800B0C7A6 /* CapturingDealersIndexDelegate.swift in Sources */,
@@ -8605,6 +8618,7 @@
 				CAEA101A216E1CE800B0C7A6 /* WhenPerformingSync_BeforeImageDownload.swift in Sources */,
 				CAEA1019216E1CE800B0C7A6 /* WhenPerformingSync_ApplicationShould.swift in Sources */,
 				CAEA1022216E1CE800B0C7A6 /* CapturingAnnouncementsServiceObserver.swift in Sources */,
+				CA240F5D21E4AA08002DB747 /* WhenLoggingOutUnsuccessfully.swift in Sources */,
 				CAEA0FA3216E1CC000B0C7A6 /* WhenLoggingIn.swift in Sources */,
 				CAEA108E216E81AA00B0C7A6 /* CapturingNotificationScheduler.swift in Sources */,
 				CAEA0FCE216E1CC000B0C7A6 /* WhenDeletingRoom_AfterSuccessfulSync_ApplicationShould.swift in Sources */,
@@ -8627,6 +8641,7 @@
 				CAEA0FDD216E1CE700B0C7A6 /* WhenObservingRunningEventsAfterSuccessfulLoad.swift in Sources */,
 				CAEA0FF3216E1CE700B0C7A6 /* WhenFetchingKnowledgeGroupsBeforeRefreshWhenStoreHasGroups.swift in Sources */,
 				CAEA0FA6216E1CC000B0C7A6 /* WhenObservingCollectThemAllURLWhileLoggedIn_ApplicationShould.swift in Sources */,
+				CA240F5B21E4A9F8002DB747 /* WhenLoggingOutSuccessfully.swift in Sources */,
 				CAEA0FC0216E1CC000B0C7A6 /* DealersRemoveAllBeforeInsertTests.swift in Sources */,
 				CAEA0FD0216E1CC000B0C7A6 /* WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift in Sources */,
 				CAEA101C216E1CE800B0C7A6 /* WhenPerformingSyncThatFails.swift in Sources */,
@@ -8643,6 +8658,7 @@
 				CAEA0FBE216E1CC000B0C7A6 /* WhenPreparingDealerMapGraphic_ApplicationShould.swift in Sources */,
 				CAEA0FDF216E1CE700B0C7A6 /* InOrderToSupportArtShowTag_ApplicationShould.swift in Sources */,
 				CAEA102E216E1CE800B0C7A6 /* CapturingLogoutObserver.swift in Sources */,
+				CA240F5F21E4AA1C002DB747 /* WhenLoggingOut_WithoutRegisteredDeviceToken.swift in Sources */,
 				CAEA0FE9216E1CE700B0C7A6 /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift in Sources */,
 				CAEA1039216E1CE800B0C7A6 /* CapturingRemoteNotificationsTokenRegistration.swift in Sources */,
 				CAEA1024216E1CE800B0C7A6 /* CapturingCollectThemAllURLObserver.swift in Sources */,
