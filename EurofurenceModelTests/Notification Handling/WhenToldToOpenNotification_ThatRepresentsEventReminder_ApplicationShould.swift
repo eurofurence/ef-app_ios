@@ -18,7 +18,7 @@ class WhenToldToOpenNotification_ThatRepresentsEventReminder_ApplicationShould: 
             ApplicationNotificationKey.notificationContentIdentifier.rawValue: String.random
         ]
 
-        context.application.handleNotification(payload: payload) { (_) in }
+        context.notificationsService.handleNotification(payload: payload) { (_) in }
 
         XCTAssertFalse(context.syncAPI.didBeginSync)
     }
@@ -35,7 +35,7 @@ class WhenToldToOpenNotification_ThatRepresentsEventReminder_ApplicationShould: 
         ]
 
         var result: NotificationContent?
-        context.application.handleNotification(payload: payload) { result = $0 }
+        context.notificationsService.handleNotification(payload: payload) { result = $0 }
 
         XCTAssertEqual(NotificationContent.event(EventIdentifier(event.identifier)), result)
     }
@@ -47,7 +47,7 @@ class WhenToldToOpenNotification_ThatRepresentsEventReminder_ApplicationShould: 
         ]
 
         var result: NotificationContent?
-        context.application.handleNotification(payload: payload) { result = $0 }
+        context.notificationsService.handleNotification(payload: payload) { result = $0 }
 
         XCTAssertEqual(NotificationContent.unknown, result)
     }
@@ -60,7 +60,7 @@ class WhenToldToOpenNotification_ThatRepresentsEventReminder_ApplicationShould: 
         ]
 
         var result: NotificationContent?
-        context.application.handleNotification(payload: payload) { result = $0 }
+        context.notificationsService.handleNotification(payload: payload) { result = $0 }
 
         XCTAssertEqual(NotificationContent.unknown, result)
     }

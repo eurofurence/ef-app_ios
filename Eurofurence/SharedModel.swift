@@ -13,6 +13,7 @@ class SharedModel {
 
     static let instance: SharedModel = SharedModel()
     let session: EurofurenceSession
+    let services: Services
     let notificationFetchResultAdapter: NotificationServiceFetchResultAdapter
 
     private init() {
@@ -47,7 +48,9 @@ class SharedModel {
             .with(mapCoordinateRender)
             .build()
 
-        notificationFetchResultAdapter = NotificationServiceFetchResultAdapter(notificationService: session)
+        services = session.services
+
+        notificationFetchResultAdapter = NotificationServiceFetchResultAdapter(notificationService: services.notifications)
     }
 
 }

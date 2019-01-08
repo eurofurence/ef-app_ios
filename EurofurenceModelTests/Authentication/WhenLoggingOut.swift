@@ -15,7 +15,7 @@ class WhenLoggingOut: XCTestCase {
         let unexpectedToken = "JWT Token"
         let credential = Credential(username: "", registrationNumber: 0, authenticationToken: unexpectedToken, tokenExpiryDate: .distantFuture)
         let context = ApplicationTestBuilder().with(credential).build()
-        context.application.storeRemoteNotificationsToken(Data())
+        context.application.services.notifications.storeRemoteNotificationsToken(Data())
         context.application.logout { _ in }
 
         XCTAssertNil(context.capturingTokenRegistration.capturedUserAuthenticationToken)
@@ -24,7 +24,7 @@ class WhenLoggingOut: XCTestCase {
     func testTheRemoteNotificationsTokenRegistrationShouldReRegisterTheDeviceTokenThatWasPreviouslyRegistered() {
         let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         let deviceToken = "Token time".data(using: .utf8)!
-        context.application.storeRemoteNotificationsToken(deviceToken)
+        context.application.services.notifications.storeRemoteNotificationsToken(deviceToken)
         context.application.logout { _ in }
 
         XCTAssertEqual(deviceToken, context.capturingTokenRegistration.capturedRemoteNotificationsDeviceToken)

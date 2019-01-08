@@ -32,6 +32,10 @@ class ApplicationTestBuilder {
         var hoursDateFormatter: FakeHoursDateFormatter
         var mapCoordinateRender: CapturingMapCoordinateRender
 
+        var notificationsService: NotificationService {
+            return application.services.notifications
+        }
+
         var authenticationToken: String? {
             return capturingCredentialStore.persistedCredential?.authenticationToken
         }
@@ -41,7 +45,7 @@ class ApplicationTestBuilder {
         }
 
         func registerForRemoteNotifications(_ deviceToken: Data = Data()) {
-            application.storeRemoteNotificationsToken(deviceToken)
+            notificationsService.storeRemoteNotificationsToken(deviceToken)
         }
 
         func login(registrationNumber: Int = 0,

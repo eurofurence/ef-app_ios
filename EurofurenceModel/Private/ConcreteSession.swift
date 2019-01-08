@@ -9,7 +9,7 @@
 import EventBus
 import Foundation
 
-class ConcreteSession: EurofurenceSession, Services {
+class ConcreteSession: EurofurenceSession, Services, NotificationService {
 
     private let eventBus = EventBus()
     private let userPreferences: UserPreferences

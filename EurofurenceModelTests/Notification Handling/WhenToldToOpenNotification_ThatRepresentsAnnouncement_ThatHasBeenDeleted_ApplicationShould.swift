@@ -17,7 +17,7 @@ class WhenToldToOpenNotification_ThatRepresentsAnnouncement_ThatHasBeenDeleted_A
         let context = ApplicationTestBuilder().build()
         let payload: [String: String] = ["event": "announcement", "announcement_id": randomAnnouncement.identifier]
         var result: NotificationContent?
-        context.application.handleNotification(payload: payload) { result = $0 }
+        context.notificationsService.handleNotification(payload: payload) { result = $0 }
         syncResponse.announcements.changed = []
         syncResponse.announcements.deleted = [randomAnnouncement.identifier]
         context.syncAPI.simulateSuccessfulSync(syncResponse)

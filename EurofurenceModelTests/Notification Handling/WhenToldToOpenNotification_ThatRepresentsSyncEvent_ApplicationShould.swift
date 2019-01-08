@@ -21,7 +21,7 @@ class WhenToldToOpenNotification_ThatRepresentsSyncEvent_ApplicationShould: XCTe
 
     private func simulateSyncPushNotification(_ handler: @escaping (NotificationContent) -> Void) {
         let payload: [String: String] = ["event": "sync"]
-        context.application.handleNotification(payload: payload, completionHandler: handler)
+        context.notificationsService.handleNotification(payload: payload, completionHandler: handler)
     }
 
     func testRefreshTheLocalStore() {

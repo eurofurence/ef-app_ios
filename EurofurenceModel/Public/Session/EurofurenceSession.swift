@@ -8,8 +8,7 @@
 
 import Foundation
 
-public protocol EurofurenceSession: NotificationService,
-                                    RefreshService,
+public protocol EurofurenceSession: RefreshService,
                                     AnnouncementsService,
                                     AuthenticationService,
                                     EventsService,

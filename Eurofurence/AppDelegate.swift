@@ -26,7 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         UNUserNotificationCenter.current().delegate = self
 
         let sharedSession = SharedModel.instance.session
-        let director = DirectorBuilder(linkLookupService: sharedSession, notificationHandling: sharedSession).build()
+        let services = SharedModel.instance.services
+        let director = DirectorBuilder(linkLookupService: sharedSession, notificationHandling: services.notifications).build()
         sharedSession.setExternalContentHandler(director)
 
         self.director = director
@@ -39,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func application(_ application: UIApplication,
                      didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        SharedModel.instance.session.storeRemoteNotificationsToken(deviceToken)
+        SharedModel.instance.services.notifications.storeRemoteNotificationsToken(deviceToken)
     }
 
 	func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
