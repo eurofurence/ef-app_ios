@@ -227,6 +227,7 @@
 		CA240F4521E3D62C002DB747 /* Identifier+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA240F4321E3D5E1002DB747 /* Identifier+RandomValueProviding.swift */; };
 		CA240F4821E3D8C3002DB747 /* Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA240F4621E3D8B9002DB747 /* Identifier.swift */; };
 		CA240F4B21E3D985002DB747 /* MapContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA240F4921E3D980002DB747 /* MapContent.swift */; };
+		CA240F5721E4A0EB002DB747 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA240F5521E4A065002DB747 /* Services.swift */; };
 		CA250DCC20D6D3BE00E7513C /* WhenSceneUpdatesSearchQuery_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA250DCB20D6D3BE00E7513C /* WhenSceneUpdatesSearchQuery_SchedulePresenterShould.swift */; };
 		CA250DCE20D6D4E500E7513C /* ScheduleSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA250DCD20D6D4E500E7513C /* ScheduleSearchViewModel.swift */; };
 		CA250DD020D6D4F500E7513C /* CapturingScheduleSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA250DCF20D6D4F500E7513C /* CapturingScheduleSearchViewModel.swift */; };
@@ -1678,6 +1679,7 @@
 		CA240F4321E3D5E1002DB747 /* Identifier+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Identifier+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA240F4621E3D8B9002DB747 /* Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifier.swift; sourceTree = "<group>"; };
 		CA240F4921E3D980002DB747 /* MapContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapContent.swift; sourceTree = "<group>"; };
+		CA240F5521E4A065002DB747 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		CA250DCB20D6D3BE00E7513C /* WhenSceneUpdatesSearchQuery_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSceneUpdatesSearchQuery_SchedulePresenterShould.swift; sourceTree = "<group>"; };
 		CA250DCD20D6D4E500E7513C /* ScheduleSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleSearchViewModel.swift; sourceTree = "<group>"; };
 		CA250DCF20D6D4F500E7513C /* CapturingScheduleSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingScheduleSearchViewModel.swift; sourceTree = "<group>"; };
@@ -5426,13 +5428,14 @@
 		CAAF4C732164E1CF0017946C /* Public */ = {
 			isa = PBXGroup;
 			children = (
-				CACD2E8721D6764000BACD91 /* NotificationService.swift */,
 				CA2761C920E03143000E52AC /* DefaultCollectThemAllRequestFactory.swift */,
 				CACD2EAA21D67DA600BACD91 /* EurofurenceSessionState.swift */,
 				CA250DDF20D6EAF500E7513C /* EventsSearchController.swift */,
 				CA27618920DFEE00000E52AC /* ExternalContentHandler.swift */,
 				CACD2E8321D6761D00BACD91 /* LogoutResult.swift */,
+				CACD2E8721D6764000BACD91 /* NotificationService.swift */,
 				CA27254D2110DEE2004C6D0A /* Optional+Extensions.swift */,
+				CA240F5521E4A065002DB747 /* Services.swift */,
 				CAAF4C752164E2900017946C /* Builder */,
 				CAAF4C772164E34F0017946C /* Default Dependency Implementations */,
 				CAEA0D812166B3F700B0C7A6 /* Formatters */,
@@ -8418,6 +8421,7 @@
 				CAEA0D87216BDD9400B0C7A6 /* Schedule.swift in Sources */,
 				CAEA0DDC216BDE2300B0C7A6 /* KnowledgeEntryEntity+Adaptation.swift in Sources */,
 				CAEA0DE6216BDE2300B0C7A6 /* LoggedIn.swift in Sources */,
+				CA240F5721E4A0EB002DB747 /* Services.swift in Sources */,
 				CAEA0D8F216BDD9500B0C7A6 /* ConcreteSession.swift in Sources */,
 				CAEA0D91216BDD9500B0C7A6 /* URLHandler.swift in Sources */,
 				CAEA0DD6216BDE2300B0C7A6 /* ConferenceDayEntity+Adaptation.swift in Sources */,
