@@ -10,7 +10,6 @@ import EventBus
 import Foundation
 
 class ConcreteSession: EurofurenceSession,
-                       Services,
                        NotificationService,
                        RefreshService,
                        AnnouncementsService,
@@ -25,7 +24,24 @@ class ConcreteSession: EurofurenceSession,
                        SessionStateService,
                        PrivateMessagesService {
 
+    struct SessionServices: Services {
+        var notifications: NotificationService
+        var refresh: RefreshService
+        var announcements: AnnouncementsService
+        var authentication: AuthenticationService
+        var events: EventsService
+        var dealers: DealersService
+        var knowledge: KnowledgeService
+        var contentLinks: ContentLinksService
+        var conventionCountdown: ConventionCountdownService
+        var collectThemAll: CollectThemAllService
+        var maps: MapsService
+        var sessionState: SessionStateService
+        var privateMessages: PrivateMessagesService
+    }
+
     private let eventBus = EventBus()
+
     private let userPreferences: UserPreferences
     private let dataStore: DataStore
     private let clock: Clock
@@ -125,23 +141,22 @@ class ConcreteSession: EurofurenceSession,
         refreshMessages()
     }
 
-    var services: Services {
-        return self
-    }
+    lazy var services: Services = {
+        return SessionServices(notifications: self,
+                               refresh: self,
+                               announcements: self,
+                               authentication: self,
+                               events: self,
+                               dealers: self,
+                               knowledge: self,
+                               contentLinks: self,
+                               conventionCountdown: self,
+                               collectThemAll: self,
+                               maps: self,
+                               sessionState: self,
+                               privateMessages: self)
 
-    var notifications: NotificationService { return self }
-    var refresh: RefreshService { return self }
-    var announcements: AnnouncementsService { return self }
-    var authentication: AuthenticationService { return self }
-    var events: EventsService { return self }
-    var dealers: DealersService { return self }
-    var knowledge: KnowledgeService { return self }
-    var contentLinks: ContentLinksService { return self }
-    var conventionCountdown: ConventionCountdownService { return self }
-    var collectThemAll: CollectThemAllService { return self }
-    var maps: MapsService { return self }
-    var sessionState: SessionStateService { return self }
-    var privateMessages: PrivateMessagesService { return self }
+    }()
 
     func handleNotification(payload: [String: String], completionHandler: @escaping (NotificationContent) -> Void) {
         if payload[ApplicationNotificationKey.notificationContentKind.rawValue] == ApplicationNotificationContentKind.event.rawValue {
