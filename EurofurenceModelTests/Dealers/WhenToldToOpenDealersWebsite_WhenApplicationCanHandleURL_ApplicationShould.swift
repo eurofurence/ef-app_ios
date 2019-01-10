@@ -35,7 +35,7 @@ class WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould
         let urlOpener = HappyPathURLOpener()
         let context = ApplicationTestBuilder().with(urlOpener).build()
         let externalContentHandler = CapturingExternalContentHandler()
-        context.application.setExternalContentHandler(externalContentHandler)
+        context.contentLinksService.setExternalContentHandler(externalContentHandler)
         context.performSuccessfulSync(response: syncResponse)
         let dealerIdentifier = DealerIdentifier(dealer.identifier)
         context.dealersService.openWebsite(for: dealerIdentifier)

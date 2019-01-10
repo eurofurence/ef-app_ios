@@ -15,7 +15,7 @@ class WhenLookingUpMailToLinks: XCTestCase {
         let context = ApplicationTestBuilder().build()
         let expected = URL(string: "mailto:someguy@somewhere.co.uk")!
         let link = Link(name: .random, type: .webExternal, contents: expected.absoluteString)
-        let action = context.application.lookupContent(for: link)
+        let action = context.contentLinksService.lookupContent(for: link)
 
         XCTAssertEqual(.externalURL(expected), action)
     }

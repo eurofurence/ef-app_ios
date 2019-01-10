@@ -25,10 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         Theme.apply()
         UNUserNotificationCenter.current().delegate = self
 
-        let sharedSession = SharedModel.instance.session
         let services = SharedModel.instance.services
-        let director = DirectorBuilder(linkLookupService: sharedSession, notificationHandling: services.notifications).build()
-        sharedSession.setExternalContentHandler(director)
+        let director = DirectorBuilder(linkLookupService: services.contentLinks, notificationHandling: services.notifications).build()
+        services.contentLinks.setExternalContentHandler(director)
 
         self.director = director
 

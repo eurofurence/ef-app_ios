@@ -68,6 +68,10 @@ class ApplicationTestBuilder {
             return capturingCredentialStore.persistedCredential?.authenticationToken
         }
 
+        var contentLinksService: ContentLinksService {
+            return services.contentLinks
+        }
+
         func tickTime(to time: Date) {
             clock.tickTime(to: time)
         }
