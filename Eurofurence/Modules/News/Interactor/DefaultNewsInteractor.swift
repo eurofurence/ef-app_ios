@@ -53,7 +53,7 @@ class DefaultNewsInteractor: NewsInteractor,
 
     convenience init() {
         self.init(announcementsService: SharedModel.instance.services.announcements,
-                  authenticationService: SharedModel.instance.session,
+                  authenticationService: SharedModel.instance.services.authentication,
                   privateMessagesService: SharedModel.instance.session,
                   daysUntilConventionService: SharedModel.instance.session,
                   eventsService: SharedModel.instance.session,

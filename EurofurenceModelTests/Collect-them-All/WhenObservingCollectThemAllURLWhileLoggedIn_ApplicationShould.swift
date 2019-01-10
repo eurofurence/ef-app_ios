@@ -34,7 +34,7 @@ class WhenObservingCollectThemAllURLWhileLoggedIn_ApplicationShould: XCTestCase 
         let context = ApplicationTestBuilder().with(collectThemAllRequestFactory).with(credential).build()
         let observer = CapturingCollectThemAllURLObserver()
         context.application.subscribe(observer)
-        context.application.logout { (_) in }
+        context.authenticationService.logout { (_) in }
         context.capturingTokenRegistration.succeedLastRequest()
 
         XCTAssertEqual(collectThemAllRequestFactory.anonymousGameURLRequest, observer.capturedURLRequest)

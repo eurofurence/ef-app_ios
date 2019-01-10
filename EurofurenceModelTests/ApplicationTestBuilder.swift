@@ -48,6 +48,10 @@ class ApplicationTestBuilder {
             return services.announcements
         }
 
+        var authenticationService: AuthenticationService {
+            return services.authentication
+        }
+
         var authenticationToken: String? {
             return capturingCredentialStore.persistedCredential?.authenticationToken
         }
@@ -65,7 +69,7 @@ class ApplicationTestBuilder {
                    password: String = "",
                    completionHandler: @escaping (LoginResult) -> Void = { _ in }) {
             let arguments = LoginArguments(registrationNumber: registrationNumber, username: username, password: password)
-            application.login(arguments, completionHandler: completionHandler)
+            authenticationService.login(arguments, completionHandler: completionHandler)
         }
 
         func loginSuccessfully() {

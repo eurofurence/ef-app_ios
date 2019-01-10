@@ -26,7 +26,7 @@ class WhenObservingCollectThemAllURLWhileLoggedOut_ApplicationShould: XCTestCase
         let observer = CapturingCollectThemAllURLObserver()
         context.application.subscribe(observer)
         let args = LoginArguments(registrationNumber: .random, username: .random, password: .random)
-        context.application.login(args) { (_) in }
+        context.authenticationService.login(args) { (_) in }
         let response = LoginResponse(userIdentifier: .random, username: .random, token: .random, tokenValidUntil: .random)
         context.loginAPI.simulateResponse(response)
         let expectedCredential = Credential(username: response.username, registrationNumber: args.registrationNumber, authenticationToken: response.token, tokenExpiryDate: response.tokenValidUntil)

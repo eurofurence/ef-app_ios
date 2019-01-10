@@ -33,7 +33,7 @@ class WhenLoggingIn: XCTestCase {
         let arguments = LoginArguments(registrationNumber: registrationNumber,
                                        username: username,
                                        password: password)
-        context.application.login(arguments) { (_) in }
+        context.authenticationService.login(arguments) { (_) in }
         let capturedLoginRequest: LoginRequest? = context.loginAPI.capturedLoginRequest
 
         XCTAssertEqual(username, capturedLoginRequest?.username)
@@ -54,7 +54,7 @@ class WhenLoggingIn: XCTestCase {
                                      token: expectedToken,
                                      tokenValidUntil: .distantFuture)
 
-        context.application.login(arguments, completionHandler: { (_) in })
+        context.authenticationService.login(arguments, completionHandler: { (_) in })
         context.loginAPI.simulateResponse(response)
 
         XCTAssertEqual(expectedUsername, context.capturingCredentialStore.capturedCredential?.username)
@@ -120,7 +120,7 @@ class WhenLoggingIn: XCTestCase {
 
     func testSuccessfulLoginTellsObserversTheUserHasLoggedIn() {
         let observer = CapturingAuthenticationStateObserver()
-        context.application.add(observer)
+        context.authenticationService.add(observer)
         let user = User(registrationNumber: .random, username: .random)
         context.login(registrationNumber: user.registrationNumber, username: user.username, completionHandler: { (_) in })
         context.loginAPI.simulateResponse(makeLoginResponse())
@@ -133,18 +133,18 @@ class WhenLoggingIn: XCTestCase {
         context.login(registrationNumber: user.registrationNumber, username: user.username, completionHandler: { (_) in })
         context.loginAPI.simulateResponse(makeLoginResponse())
         let observer = CapturingAuthenticationStateObserver()
-        context.application.add(observer)
+        context.authenticationService.add(observer)
 
         XCTAssertEqual(user, observer.capturedLoggedInUser)
     }
 
     func testLoggingOutTellsObserversTheUserHasLoggedOut() {
         let observer = CapturingAuthenticationStateObserver()
-        context.application.add(observer)
+        context.authenticationService.add(observer)
         let user = User(registrationNumber: .random, username: .random)
         context.login(registrationNumber: user.registrationNumber, username: user.username, completionHandler: { (_) in })
         context.loginAPI.simulateResponse(makeLoginResponse())
-        context.application.logout(completionHandler: { (_) in })
+        context.authenticationService.logout(completionHandler: { (_) in })
         context.capturingTokenRegistration.succeedLastRequest()
 
         XCTAssertTrue(observer.loggedOut)
@@ -152,24 +152,24 @@ class WhenLoggingIn: XCTestCase {
 
     func testObserverNotToldUserLoggedOutUntilLogoutSucceeds() {
         let observer = CapturingAuthenticationStateObserver()
-        context.application.add(observer)
+        context.authenticationService.add(observer)
         observer.loggedOut = false
         let user = User(registrationNumber: .random, username: .random)
         context.login(registrationNumber: user.registrationNumber, username: user.username, completionHandler: { (_) in })
         context.loginAPI.simulateResponse(makeLoginResponse())
-        context.application.logout(completionHandler: { (_) in })
+        context.authenticationService.logout(completionHandler: { (_) in })
 
         XCTAssertFalse(observer.loggedOut)
     }
 
     func testObserverNotToldUserLoggedOutWhenLogoutFails() {
         let observer = CapturingAuthenticationStateObserver()
-        context.application.add(observer)
+        context.authenticationService.add(observer)
         observer.loggedOut = false
         let user = User(registrationNumber: .random, username: .random)
         context.login(registrationNumber: user.registrationNumber, username: user.username, completionHandler: { (_) in })
         context.loginAPI.simulateResponse(makeLoginResponse())
-        context.application.logout(completionHandler: { (_) in })
+        context.authenticationService.logout(completionHandler: { (_) in })
         context.capturingTokenRegistration.failLastRequest()
 
         XCTAssertFalse(observer.loggedOut)
@@ -177,7 +177,7 @@ class WhenLoggingIn: XCTestCase {
 
     func testAddingObserverWhenNotLoggedInTellsObserverUserLoggedOut() {
         let observer = CapturingAuthenticationStateObserver()
-        context.application.add(observer)
+        context.authenticationService.add(observer)
 
         XCTAssertTrue(observer.loggedOut)
     }

@@ -15,7 +15,7 @@ class WhenLoggingOutUnsuccessfully: XCTestCase {
         let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         let logoutObserver = CapturingLogoutObserver()
         context.registerForRemoteNotifications()
-        context.application.logout(completionHandler: logoutObserver.completionHandler)
+        context.authenticationService.logout(completionHandler: logoutObserver.completionHandler)
         context.capturingTokenRegistration.failLastRequest()
 
         XCTAssertTrue(logoutObserver.didFailToLogout)
@@ -24,7 +24,7 @@ class WhenLoggingOutUnsuccessfully: XCTestCase {
     func testFailingToUnregisterAuthTokenWithRemoteTokenRegistrationShouldNotDeletePersistedCredential() {
         let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         context.registerForRemoteNotifications()
-        context.application.logout { _ in }
+        context.authenticationService.logout { _ in }
         context.capturingTokenRegistration.failLastRequest()
 
         XCTAssertFalse(context.capturingCredentialStore.didDeletePersistedToken)
@@ -34,7 +34,7 @@ class WhenLoggingOutUnsuccessfully: XCTestCase {
         let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         let logoutObserver = CapturingLogoutObserver()
         context.registerForRemoteNotifications()
-        context.application.logout(completionHandler: logoutObserver.completionHandler)
+        context.authenticationService.logout(completionHandler: logoutObserver.completionHandler)
         context.capturingTokenRegistration.failLastRequest()
 
         XCTAssertFalse(logoutObserver.didLogout)

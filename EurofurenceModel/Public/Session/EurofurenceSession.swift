@@ -8,8 +8,7 @@
 
 import Foundation
 
-public protocol EurofurenceSession: AuthenticationService,
-                                    EventsService,
+public protocol EurofurenceSession: EventsService,
                                     DealersService,
                                     KnowledgeService,
                                     ContentLinksService,
