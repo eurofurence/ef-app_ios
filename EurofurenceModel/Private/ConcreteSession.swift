@@ -24,22 +24,6 @@ class ConcreteSession: EurofurenceSession,
                        SessionStateService,
                        PrivateMessagesService {
 
-    struct SessionServices: Services {
-        var notifications: NotificationService
-        var refresh: RefreshService
-        var announcements: AnnouncementsService
-        var authentication: AuthenticationService
-        var events: EventsService
-        var dealers: DealersService
-        var knowledge: KnowledgeService
-        var contentLinks: ContentLinksService
-        var conventionCountdown: ConventionCountdownService
-        var collectThemAll: CollectThemAllService
-        var maps: MapsService
-        var sessionState: SessionStateService
-        var privateMessages: PrivateMessagesService
-    }
-
     private let eventBus = EventBus()
 
     private let userPreferences: UserPreferences
@@ -142,20 +126,19 @@ class ConcreteSession: EurofurenceSession,
     }
 
     lazy var services: Services = {
-        return SessionServices(notifications: self,
-                               refresh: self,
-                               announcements: self,
-                               authentication: self,
-                               events: self,
-                               dealers: self,
-                               knowledge: self,
-                               contentLinks: self,
-                               conventionCountdown: self,
-                               collectThemAll: self,
-                               maps: self,
-                               sessionState: self,
-                               privateMessages: self)
-
+        return Services(notifications: self,
+                        refresh: self,
+                        announcements: self,
+                        authentication: self,
+                        events: self,
+                        dealers: self,
+                        knowledge: self,
+                        contentLinks: self,
+                        conventionCountdown: self,
+                        collectThemAll: self,
+                        maps: self,
+                        sessionState: self,
+                        privateMessages: self)
     }()
 
     func handleNotification(payload: [String: String], completionHandler: @escaping (NotificationContent) -> Void) {

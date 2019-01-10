@@ -8,20 +8,20 @@
 
 import Foundation
 
-public protocol Services {
+public struct Services {
 
-    var notifications: NotificationService { get }
-    var refresh: RefreshService { get }
-    var announcements: AnnouncementsService { get }
-    var authentication: AuthenticationService { get }
-    var events: EventsService { get }
-    var dealers: DealersService { get }
-    var knowledge: KnowledgeService { get }
-    var contentLinks: ContentLinksService { get }
-    var conventionCountdown: ConventionCountdownService { get }
-    var collectThemAll: CollectThemAllService { get }
-    var maps: MapsService { get }
-    var sessionState: SessionStateService { get }
-    var privateMessages: PrivateMessagesService { get }
+    public var notifications: NotificationService
+    public var refresh: RefreshService
+    public var announcements: AnnouncementsService
+    public var authentication: AuthenticationService
+    public var events: EventsService
+    public var dealers: DealersService
+    public var knowledge: KnowledgeService
+    public var contentLinks: ContentLinksService
+    public var conventionCountdown: ConventionCountdownService
+    public var collectThemAll: CollectThemAllService
+    public var maps: MapsService
+    public var sessionState: SessionStateService
+    public var privateMessages: PrivateMessagesService
 
 }
