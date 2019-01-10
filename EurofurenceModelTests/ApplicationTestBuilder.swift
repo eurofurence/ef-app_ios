@@ -64,12 +64,16 @@ class ApplicationTestBuilder {
             return services.knowledge
         }
 
-        var authenticationToken: String? {
-            return capturingCredentialStore.persistedCredential?.authenticationToken
-        }
-
         var contentLinksService: ContentLinksService {
             return services.contentLinks
+        }
+
+        var conventionCountdownService: ConventionCountdownService {
+            return services.conventionCountdown
+        }
+
+        var authenticationToken: String? {
+            return capturingCredentialStore.persistedCredential?.authenticationToken
         }
 
         func tickTime(to time: Date) {

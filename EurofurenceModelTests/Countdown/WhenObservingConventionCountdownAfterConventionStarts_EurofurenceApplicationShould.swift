@@ -19,7 +19,7 @@ class WhenObservingConventionCountdownAfterConventionStarts_EurofurenceApplicati
         context.dateDistanceCalculator.stubDistance(between: clockTime,
                                                     and: context.conventionStartDateRepository.conventionStartDate,
                                                     with: distanceToImplyConventionHasStarted)
-        context.application.add(observer)
+        context.conventionCountdownService.add(observer)
 
         XCTAssertTrue(observer.toldCountdownDidElapse)
     }

@@ -17,7 +17,7 @@ class WhenObservingConventionCountdown_AndSignificantTimeChangeOccurs_Eurofurenc
         let context = ApplicationTestBuilder().with(clockTime).build()
         var expected: Int = .random
         context.dateDistanceCalculator.stubDistance(between: clockTime, and: context.conventionStartDateRepository.conventionStartDate, with: expected)
-        context.application.add(observer)
+        context.conventionCountdownService.add(observer)
         expected = .random
         context.dateDistanceCalculator.stubDistance(between: clockTime, and: context.conventionStartDateRepository.conventionStartDate, with: expected)
         context.significantTimeChangeAdapter.simulateSignificantTimeChange()

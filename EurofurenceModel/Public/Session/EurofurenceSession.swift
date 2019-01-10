@@ -8,8 +8,7 @@
 
 import Foundation
 
-public protocol EurofurenceSession: ConventionCountdownService,
-                                    CollectThemAllService,
+public protocol EurofurenceSession: CollectThemAllService,
                                     MapsService,
                                     SessionStateService,
                                     PrivateMessagesService {
