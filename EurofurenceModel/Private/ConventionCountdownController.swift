@@ -9,7 +9,7 @@
 import EventBus
 import Foundation
 
-class ConventionCountdownController: EventConsumer {
+class ConventionCountdownController: ConventionCountdownService, EventConsumer {
 
     private let conventionStartDateRepository: ConventionStartDateRepository
     private let dateDistanceCalculator: DateDistanceCalculator
@@ -32,7 +32,7 @@ class ConventionCountdownController: EventConsumer {
         daysUntilConventionObservers.forEach({ $0.conventionCountdownStateDidChange(to: state) })
     }
 
-    func observeDaysUntilConvention(using observer: ConventionCountdownServiceObserver) {
+    func add(_ observer: ConventionCountdownServiceObserver) {
         daysUntilConventionObservers.append(observer)
 
         let state = resolveCountdownState()

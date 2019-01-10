@@ -9,7 +9,7 @@
 import EventBus
 import Foundation
 
-class Schedule: ClockDelegate {
+class Schedule: ClockDelegate, EventsService {
 
     // MARK: Nested Types
 
@@ -103,7 +103,7 @@ class Schedule: ClockDelegate {
 
     // MARK: Functions
 
-    func makeScheduleAdapter() -> EventsSchedule {
+    func makeEventsSchedule() -> EventsSchedule {
         return EventsScheduleAdapter(schedule: self, clock: clock, eventBus: eventBus)
     }
 

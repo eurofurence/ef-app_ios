@@ -9,7 +9,7 @@
 import EventBus
 import Foundation
 
-class Maps {
+class Maps: MapsService {
 
     private let dataStore: DataStore
     private let imageRepository: ImageRepository

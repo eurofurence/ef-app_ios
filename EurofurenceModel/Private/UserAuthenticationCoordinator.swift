@@ -9,7 +9,7 @@
 import EventBus
 import Foundation
 
-class UserAuthenticationCoordinator {
+class UserAuthenticationCoordinator: AuthenticationService {
 
     private let eventBus: EventBus
     private let clock: Clock

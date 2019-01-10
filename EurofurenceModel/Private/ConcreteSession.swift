@@ -12,17 +12,8 @@ import Foundation
 class ConcreteSession: EurofurenceSession,
                        NotificationService,
                        RefreshService,
-                       AnnouncementsService,
-                       AuthenticationService,
-                       EventsService,
-                       DealersService,
-                       KnowledgeService,
                        ContentLinksService,
-                       ConventionCountdownService,
-                       CollectThemAllService,
-                       MapsService,
-                       SessionStateService,
-                       PrivateMessagesService {
+                       SessionStateService {
 
     private let eventBus = EventBus()
 
@@ -122,23 +113,23 @@ class ConcreteSession: EurofurenceSession,
                                         credentialStore: credentialStore)
         mapsService = Maps(eventBus: eventBus, dataStore: dataStore, imageRepository: imageRepository, dealers: dealersService)
 
-        refreshMessages()
+        privateMessagesController.refreshMessages()
     }
 
     lazy var services: Services = {
         return Services(notifications: self,
                         refresh: self,
-                        announcements: self,
-                        authentication: self,
-                        events: self,
-                        dealers: self,
-                        knowledge: self,
+                        announcements: announcementsService,
+                        authentication: authenticationCoordinator,
+                        events: schedule,
+                        dealers: dealersService,
+                        knowledge: knowledgeService,
                         contentLinks: self,
-                        conventionCountdown: self,
-                        collectThemAll: self,
-                        maps: self,
+                        conventionCountdown: conventionCountdownController,
+                        collectThemAll: collectThemAllService,
+                        maps: mapsService,
                         sessionState: self,
-                        privateMessages: self)
+                        privateMessages: privateMessagesController)
     }()
 
     func handleNotification(payload: [String: String], completionHandler: @escaping (NotificationContent) -> Void) {
@@ -194,115 +185,12 @@ class ConcreteSession: EurofurenceSession,
         completionHandler(state)
     }
 
-    func login(_ arguments: LoginArguments, completionHandler: @escaping (LoginResult) -> Void) {
-        authenticationCoordinator.login(arguments, completionHandler: completionHandler)
-    }
-
-    func logout(completionHandler: @escaping (LogoutResult) -> Void) {
-        authenticationCoordinator.logout(completionHandler: completionHandler)
-    }
-
     func storeRemoteNotificationsToken(_ deviceToken: Data) {
         eventBus.post(DomainEvent.RemoteNotificationRegistrationSucceeded(deviceToken: deviceToken))
     }
 
-    func add(_ observer: PrivateMessagesObserver) {
-        privateMessagesController.add(observer)
-    }
-
-    func refreshMessages() {
-        privateMessagesController.refreshMessages()
-    }
-
-    func markMessageAsRead(_ message: APIMessage) {
-        privateMessagesController.markMessageAsRead(message)
-    }
-
-    func add(_ observer: KnowledgeServiceObserver) {
-        knowledgeService.add(observer)
-    }
-
-    func fetchKnowledgeEntry(for identifier: KnowledgeEntryIdentifier, completionHandler: @escaping (KnowledgeEntry) -> Void) {
-        knowledgeService.fetchKnowledgeEntry(for: identifier, completionHandler: completionHandler)
-    }
-
-    func fetchKnowledgeGroup(identifier: KnowledgeGroupIdentifier, completionHandler: @escaping (KnowledgeGroup) -> Void) {
-        knowledgeService.fetchKnowledgeGroup(identifier: identifier, completionHandler: completionHandler)
-    }
-
-    func fetchImagesForKnowledgeEntry(identifier: KnowledgeEntryIdentifier, completionHandler: @escaping ([Data]) -> Void) {
-        knowledgeService.fetchImagesForKnowledgeEntry(identifier: identifier, completionHandler: completionHandler)
-    }
-
-    func add(_ observer: EventsServiceObserver) {
-        schedule.add(observer)
-    }
-
-    func favouriteEvent(identifier: EventIdentifier) {
-        schedule.favouriteEvent(identifier: identifier)
-    }
-
-    func unfavouriteEvent(identifier: EventIdentifier) {
-        schedule.unfavouriteEvent(identifier: identifier)
-    }
-
-    func makeEventsSchedule() -> EventsSchedule {
-        return schedule.makeScheduleAdapter()
-    }
-
-    func makeEventsSearchController() -> EventsSearchController {
-        return schedule.makeEventsSearchController()
-    }
-
-    func fetchEvent(for identifier: EventIdentifier, completionHandler: @escaping (Event?) -> Void) {
-        schedule.fetchEvent(for: identifier, completionHandler: completionHandler)
-    }
-
-    func makeDealersIndex() -> DealersIndex {
-        return dealersService.makeDealersIndex()
-    }
-
-    func fetchIconPNGData(for identifier: DealerIdentifier, completionHandler: @escaping (Data?) -> Void) {
-        dealersService.fetchIconPNGData(for: identifier, completionHandler: completionHandler)
-    }
-
-    func fetchExtendedDealerData(for dealer: DealerIdentifier, completionHandler: @escaping (ExtendedDealerData) -> Void) {
-        dealersService.fetchExtendedDealerData(for: dealer, completionHandler: completionHandler)
-    }
-
-    func openWebsite(for identifier: DealerIdentifier) {
-        dealersService.openWebsite(for: identifier)
-    }
-
-    func openTwitter(for identifier: DealerIdentifier) {
-        dealersService.openTwitter(for: identifier)
-    }
-
-    func openTelegram(for identifier: DealerIdentifier) {
-        dealersService.openTelegram(for: identifier)
-    }
-
     func setExternalContentHandler(_ externalContentHandler: ExternalContentHandler) {
         urlHandler.externalContentHandler = externalContentHandler
-    }
-
-    func subscribe(_ observer: CollectThemAllURLObserver) {
-        collectThemAllService.subscribe(observer)
-    }
-
-    func add(_ observer: MapsObserver) {
-        mapsService.add(observer)
-    }
-
-    func fetchImagePNGDataForMap(identifier: MapIdentifier, completionHandler: @escaping (Data) -> Void) {
-        mapsService.fetchImagePNGDataForMap(identifier: identifier, completionHandler: completionHandler)
-    }
-
-    func fetchContent(for identifier: MapIdentifier,
-                      atX x: Int,
-                      y: Int,
-                      completionHandler: @escaping (MapContent) -> Void) {
-        mapsService.fetchContent(for: identifier, atX: x, y: y, completionHandler: completionHandler)
     }
 
     func performFullStoreRefresh(completionHandler: @escaping (Error?) -> Void) -> Progress {
@@ -475,26 +363,6 @@ class ConcreteSession: EurofurenceSession,
         }
 
         return .externalURL(url)
-    }
-
-    func add(_ observer: AnnouncementsServiceObserver) {
-        announcementsService.add(observer)
-    }
-
-    func openAnnouncement(identifier: AnnouncementIdentifier, completionHandler: @escaping (Announcement) -> Void) {
-        announcementsService.openAnnouncement(identifier: identifier, completionHandler: completionHandler)
-    }
-
-    func fetchAnnouncementImage(identifier: AnnouncementIdentifier, completionHandler: @escaping (Data?) -> Void) {
-        announcementsService.fetchAnnouncementImage(identifier: identifier, completionHandler: completionHandler)
-    }
-
-    func add(_ observer: ConventionCountdownServiceObserver) {
-        conventionCountdownController.observeDaysUntilConvention(using: observer)
-    }
-
-    func add(_ observer: AuthenticationStateObserver) {
-        authenticationCoordinator.add(observer)
     }
 
 }

@@ -9,7 +9,7 @@
 import EventBus
 import Foundation
 
-class Announcements {
+class Announcements: AnnouncementsService {
 
     // MARK: Properties
 

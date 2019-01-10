@@ -9,7 +9,7 @@
 import EventBus
 import Foundation
 
-class Knowledge {
+class Knowledge: KnowledgeService {
 
     // MARK: Properties
 

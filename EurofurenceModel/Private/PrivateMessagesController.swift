@@ -8,7 +8,7 @@
 
 import EventBus
 
-class PrivateMessagesController {
+class PrivateMessagesController: PrivateMessagesService {
 
     private let privateMessagesAPI: PrivateMessagesAPI
     private var userAuthenticationToken: String?
@@ -29,6 +29,10 @@ class PrivateMessagesController {
 
     private func determineUnreadMessageCount() -> Int {
         return localMessages.filter({ $0.isRead == false }).count
+    }
+
+    func refreshMessages() {
+        refreshMessages(completionHandler: nil)
     }
 
     func refreshMessages(completionHandler: (() -> Void)? = nil) {

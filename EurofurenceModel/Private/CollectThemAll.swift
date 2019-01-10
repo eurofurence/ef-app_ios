@@ -9,7 +9,7 @@
 import EventBus
 import Foundation
 
-class CollectThemAll {
+class CollectThemAll: CollectThemAllService {
 
     private class LoggedOut: EventConsumer {
 
