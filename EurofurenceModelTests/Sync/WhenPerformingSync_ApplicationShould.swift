@@ -19,7 +19,7 @@ class WhenPerformingSync_ApplicationShould: XCTestCase {
 
         context = ApplicationTestBuilder().build()
         refreshObserver = CapturingRefreshServiceObserver()
-        context.application.add(refreshObserver)
+        context.refreshService.add(refreshObserver)
     }
 
     func testTellRefreshServiceObserversRefreshStarted() {

@@ -61,7 +61,7 @@ class DefaultNewsInteractor: NewsInteractor,
                   hoursDateFormatter: FoundationHoursDateFormatter.shared,
                   dateDistanceCalculator: FoundationDateDistanceCalculator(),
                   clock: SystemClock.shared,
-                  refreshService: SharedModel.instance.session,
+                  refreshService: SharedModel.instance.services.refresh,
                   announcementsDateFormatter: FoundationAnnouncementDateFormatter.shared,
 				  announcementsMarkdownRenderer: SubtleDownMarkdownRenderer())
     }

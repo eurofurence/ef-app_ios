@@ -29,7 +29,7 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
         let defaultIconData = defaultIcon.pngData()!
         self.init(dealersService: dealersService,
                   defaultIconData: defaultIconData,
-                  refreshService: SharedModel.instance.session)
+                  refreshService: SharedModel.instance.services.refresh)
     }
 
     init(dealersService: DealersService, defaultIconData: Data, refreshService: RefreshService) {

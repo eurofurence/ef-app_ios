@@ -22,7 +22,7 @@ class WhenFullRefreshOccurs_YieldingOrphanedEntities: XCTestCase {
         originalResponse = .randomWithoutDeletions
         fullSyncResponse = .randomWithoutDeletions
         context.performSuccessfulSync(response: originalResponse)
-        _ = context.application.performFullStoreRefresh { (_) in }
+        _ = context.refreshService.performFullStoreRefresh { (_) in }
         context.syncAPI.simulateSuccessfulSync(fullSyncResponse)
     }
 

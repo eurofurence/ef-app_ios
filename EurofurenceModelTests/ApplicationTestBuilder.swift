@@ -36,6 +36,10 @@ class ApplicationTestBuilder {
             return application.services.notifications
         }
 
+        var refreshService: RefreshService {
+            return application.services.refresh
+        }
+
         var authenticationToken: String? {
             return capturingCredentialStore.persistedCredential?.authenticationToken
         }
@@ -63,7 +67,7 @@ class ApplicationTestBuilder {
 
         @discardableResult
         func refreshLocalStore(completionHandler: ((Error?) -> Void)? = nil) -> Progress {
-            return application.refreshLocalStore { (error) in
+            return application.services.refresh.refreshLocalStore { (error) in
                 completionHandler?(error)
             }
         }

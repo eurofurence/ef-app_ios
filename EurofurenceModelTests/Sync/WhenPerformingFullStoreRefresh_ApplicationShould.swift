@@ -16,7 +16,7 @@ class WhenPerformingFullStoreRefresh_ApplicationShould: XCTestCase {
         dataStore.save(.randomWithoutDeletions)
         let context = ApplicationTestBuilder().with(dataStore).build()
         context.performSuccessfulSync(response: .randomWithoutDeletions)
-        _ = context.application.performFullStoreRefresh { (_) in }
+        _ = context.refreshService.performFullStoreRefresh { (_) in }
 
         XCTAssertNil(context.syncAPI.capturedLastSyncTime)
     }

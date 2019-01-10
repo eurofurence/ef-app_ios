@@ -14,7 +14,7 @@ class ApplicationPreloadInteractor: PreloadInteractor {
     private var observations = [Any]()
 
     convenience init() {
-        self.init(refreshService: SharedModel.instance.session)
+        self.init(refreshService: SharedModel.instance.services.refresh)
     }
 
     init(refreshService: RefreshService) {
