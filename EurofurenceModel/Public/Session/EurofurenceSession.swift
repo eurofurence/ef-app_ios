@@ -8,8 +8,7 @@
 
 import Foundation
 
-public protocol EurofurenceSession: SessionStateService,
-                                    PrivateMessagesService {
+public protocol EurofurenceSession: PrivateMessagesService {
 
     var services: Services { get }
 

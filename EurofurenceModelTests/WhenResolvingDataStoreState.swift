@@ -15,7 +15,7 @@ class WhenResolvingDataStoreState: XCTestCase {
         let capturingDataStore = CapturingEurofurenceDataStore()
         let context = ApplicationTestBuilder().with(capturingDataStore).build()
         var state: EurofurenceSessionState?
-        context.application.determineSessionState { state = $0 }
+        context.sessionStateService.determineSessionState { state = $0 }
 
         XCTAssertEqual(.uninitialized, state)
     }
@@ -30,7 +30,7 @@ class WhenResolvingDataStoreState: XCTestCase {
         userPreferences.refreshStoreOnLaunch = true
         let context = ApplicationTestBuilder().with(capturingDataStore).with(userPreferences).build()
         var state: EurofurenceSessionState?
-        context.application.determineSessionState { state = $0 }
+        context.sessionStateService.determineSessionState { state = $0 }
 
         XCTAssertEqual(.stale, state)
     }
@@ -45,7 +45,7 @@ class WhenResolvingDataStoreState: XCTestCase {
         userPreferences.refreshStoreOnLaunch = false
         let context = ApplicationTestBuilder().with(capturingDataStore).with(userPreferences).build()
         var state: EurofurenceSessionState?
-        context.application.determineSessionState { state = $0 }
+        context.sessionStateService.determineSessionState { state = $0 }
 
         XCTAssertEqual(.initialized, state)
     }

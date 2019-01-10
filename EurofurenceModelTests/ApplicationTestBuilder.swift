@@ -80,6 +80,10 @@ class ApplicationTestBuilder {
             return services.maps
         }
 
+        var sessionStateService: SessionStateService {
+            return services.sessionState
+        }
+
         var authenticationToken: String? {
             return capturingCredentialStore.persistedCredential?.authenticationToken
         }
