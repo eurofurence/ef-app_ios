@@ -230,6 +230,7 @@
 		CA240F5B21E4A9F8002DB747 /* WhenLoggingOutSuccessfully.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA240F5921E4A9E4002DB747 /* WhenLoggingOutSuccessfully.swift */; };
 		CA240F5D21E4AA08002DB747 /* WhenLoggingOutUnsuccessfully.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA240F5C21E4AA08002DB747 /* WhenLoggingOutUnsuccessfully.swift */; };
 		CA240F5F21E4AA1C002DB747 /* WhenLoggingOut_WithoutRegisteredDeviceToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA240F5E21E4AA1C002DB747 /* WhenLoggingOut_WithoutRegisteredDeviceToken.swift */; };
+		CA240F6421E79141002DB747 /* CoreDataStoreTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA240F6321E79141002DB747 /* CoreDataStoreTransaction.swift */; };
 		CA250DCC20D6D3BE00E7513C /* WhenSceneUpdatesSearchQuery_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA250DCB20D6D3BE00E7513C /* WhenSceneUpdatesSearchQuery_SchedulePresenterShould.swift */; };
 		CA250DCE20D6D4E500E7513C /* ScheduleSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA250DCD20D6D4E500E7513C /* ScheduleSearchViewModel.swift */; };
 		CA250DD020D6D4F500E7513C /* CapturingScheduleSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA250DCF20D6D4F500E7513C /* CapturingScheduleSearchViewModel.swift */; };
@@ -1682,6 +1683,7 @@
 		CA240F5921E4A9E4002DB747 /* WhenLoggingOutSuccessfully.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLoggingOutSuccessfully.swift; sourceTree = "<group>"; };
 		CA240F5C21E4AA08002DB747 /* WhenLoggingOutUnsuccessfully.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLoggingOutUnsuccessfully.swift; sourceTree = "<group>"; };
 		CA240F5E21E4AA1C002DB747 /* WhenLoggingOut_WithoutRegisteredDeviceToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLoggingOut_WithoutRegisteredDeviceToken.swift; sourceTree = "<group>"; };
+		CA240F6321E79141002DB747 /* CoreDataStoreTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStoreTransaction.swift; sourceTree = "<group>"; };
 		CA250DCB20D6D3BE00E7513C /* WhenSceneUpdatesSearchQuery_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSceneUpdatesSearchQuery_SchedulePresenterShould.swift; sourceTree = "<group>"; };
 		CA250DCD20D6D4E500E7513C /* ScheduleSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleSearchViewModel.swift; sourceTree = "<group>"; };
 		CA250DCF20D6D4F500E7513C /* CapturingScheduleSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingScheduleSearchViewModel.swift; sourceTree = "<group>"; };
@@ -5658,6 +5660,7 @@
 			isa = PBXGroup;
 			children = (
 				CABEB0DB20C9C7A3000BEE66 /* CoreDataEurofurenceDataStore.swift */,
+				CA240F6321E79141002DB747 /* CoreDataStoreTransaction.swift */,
 				CABEB0DD20C9C7ED000BEE66 /* EurofurenceApplicationModel.xcdatamodeld */,
 				CAE8B0B520CA4D800029D4D6 /* Model Adaptation */,
 			);
@@ -8398,6 +8401,7 @@
 				CAEA0DC8216BDE2300B0C7A6 /* MapsService.swift in Sources */,
 				CAEA0DBE216BDE2300B0C7A6 /* Track.swift in Sources */,
 				CAEA0D90216BDD9500B0C7A6 /* Announcements.swift in Sources */,
+				CA240F6421E79141002DB747 /* CoreDataStoreTransaction.swift in Sources */,
 				CAEA0DEA216BDE2300B0C7A6 /* SignificantTimePassedEvent.swift in Sources */,
 				CAEA0DA6216BDE2300B0C7A6 /* HoursDateFormatter.swift in Sources */,
 				CAEA0DB5216BDE2300B0C7A6 /* Event.swift in Sources */,
