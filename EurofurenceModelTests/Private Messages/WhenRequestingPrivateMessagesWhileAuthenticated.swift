@@ -25,9 +25,9 @@ class WhenRequestingPrivateMessagesWhileAuthenticated: XCTestCase {
                                      tokenExpiryDate: .distantFuture)
         context = ApplicationTestBuilder().with(credential).build()
         capturingMessagesObserver = CapturingPrivateMessagesObserver()
-        context.application.add(capturingMessagesObserver)
+        context.privateMessagesService.add(capturingMessagesObserver)
         capturingMessagesObserver.wasToldSuccessfullyLoadedPrivateMessages = false
-        context.application.refreshMessages()
+        context.privateMessagesService.refreshMessages()
     }
 
     func testPrivateMessagesAPIShouldLoad() {
@@ -138,7 +138,7 @@ class WhenRequestingPrivateMessagesWhileAuthenticated: XCTestCase {
         context.privateMessagesAPI.simulateSuccessfulResponse(response: [unreadMessage])
 
         let observer = CapturingPrivateMessagesObserver()
-        context.application.add(observer)
+        context.privateMessagesService.add(observer)
 
         XCTAssertEqual(1, observer.observedUnreadMessageCount)
     }

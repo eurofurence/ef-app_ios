@@ -19,8 +19,8 @@ class WhenRequestingPrivateMessagesWhileNotAuthenticated: XCTestCase {
 
         context = ApplicationTestBuilder().build()
         capturingMessagesObserver = CapturingPrivateMessagesObserver()
-        context.application.add(capturingMessagesObserver)
-        context.application.refreshMessages()
+        context.privateMessagesService.add(capturingMessagesObserver)
+        context.privateMessagesService.refreshMessages()
     }
 
     func testHandlerShouldBeToldFailedToLoadMessages() {

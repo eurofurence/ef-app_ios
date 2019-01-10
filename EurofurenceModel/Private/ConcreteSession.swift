@@ -22,7 +22,8 @@ class ConcreteSession: EurofurenceSession,
                        ConventionCountdownService,
                        CollectThemAllService,
                        MapsService,
-                       SessionStateService {
+                       SessionStateService,
+                       PrivateMessagesService {
 
     private let eventBus = EventBus()
     private let userPreferences: UserPreferences

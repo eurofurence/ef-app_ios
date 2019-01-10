@@ -15,15 +15,15 @@ class WhenMarkingMessageAsRead: XCTestCase {
     func testItShouldTellTheMarkAsReadAPIToMarkTheIdentifierOfTheMessageAsRead() {
         let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         let observer = CapturingPrivateMessagesObserver()
-        context.application.add(observer)
-        context.application.refreshMessages()
+        context.privateMessagesService.add(observer)
+        context.privateMessagesService.refreshMessages()
         let identifier = "Message ID"
         var message = APIMessage.random
         message.identifier = identifier
         context.privateMessagesAPI.simulateSuccessfulResponse(response: [message])
 
         if let receievedMessage = observer.observedMessages.first {
-            context.application.markMessageAsRead(receievedMessage)
+            context.privateMessagesService.markMessageAsRead(receievedMessage)
         }
 
         XCTAssertEqual(identifier, context.privateMessagesAPI.messageIdentifierMarkedAsRead)
@@ -34,15 +34,15 @@ class WhenMarkingMessageAsRead: XCTestCase {
         let credential = Credential(username: "", registrationNumber: 0, authenticationToken: authenticationToken, tokenExpiryDate: .distantFuture)
         let context = ApplicationTestBuilder().with(credential).build()
         let observer = CapturingPrivateMessagesObserver()
-        context.application.add(observer)
-        context.application.refreshMessages()
+        context.privateMessagesService.add(observer)
+        context.privateMessagesService.refreshMessages()
         let identifier = "Message ID"
         var message = APIMessage.random
         message.identifier = identifier
         context.privateMessagesAPI.simulateSuccessfulResponse(response: [message])
 
         if let receievedMessage = observer.observedMessages.first {
-            context.application.markMessageAsRead(receievedMessage)
+            context.privateMessagesService.markMessageAsRead(receievedMessage)
         }
 
         XCTAssertEqual(authenticationToken, context.privateMessagesAPI.capturedAuthTokenForMarkingMessageAsRead)
@@ -51,11 +51,11 @@ class WhenMarkingMessageAsRead: XCTestCase {
     func testItShouldNotifyObserversUnreadMessageCountChanged() {
         let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         let observer = CapturingPrivateMessagesObserver()
-        context.application.add(observer)
-        context.application.refreshMessages()
+        context.privateMessagesService.add(observer)
+        context.privateMessagesService.refreshMessages()
         let message = APIMessage.random
         context.privateMessagesAPI.simulateSuccessfulResponse(response: [message])
-        context.application.markMessageAsRead(message)
+        context.privateMessagesService.markMessageAsRead(message)
 
         XCTAssertEqual(0, observer.observedUnreadMessageCount)
     }

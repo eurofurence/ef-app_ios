@@ -16,7 +16,7 @@ class WhenLaunchingApplication_PrivateMessagesShould: XCTestCase {
         let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         context.privateMessagesAPI.simulateSuccessfulResponse(response: [message])
         let observer = CapturingPrivateMessagesObserver()
-        context.application.add(observer)
+        context.privateMessagesService.add(observer)
         let observedMessage = observer.observedMessages.first
 
         XCTAssertEqual(message.authorName, observedMessage?.authorName)
@@ -29,7 +29,7 @@ class WhenLaunchingApplication_PrivateMessagesShould: XCTestCase {
     func testProvideZeroCountForNumberOfUnreadPrivateMessages() {
         let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         let observer = CapturingPrivateMessagesObserver()
-        context.application.add(observer)
+        context.privateMessagesService.add(observer)
 
         XCTAssertEqual(0, observer.observedUnreadMessageCount)
     }

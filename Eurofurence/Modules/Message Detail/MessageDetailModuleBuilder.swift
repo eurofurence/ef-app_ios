@@ -16,7 +16,7 @@ class MessageDetailModuleBuilder {
 
     init() {
         messageDetailSceneFactory = PhoneMessageDetailSceneFactory()
-        privateMessagesService = SharedModel.instance.session
+        privateMessagesService = SharedModel.instance.services.privateMessages
     }
 
     func with(_ messageDetailSceneFactory: MessageDetailSceneFactory) -> MessageDetailModuleBuilder {

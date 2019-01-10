@@ -84,6 +84,10 @@ class ApplicationTestBuilder {
             return services.sessionState
         }
 
+        var privateMessagesService: PrivateMessagesService {
+            return services.privateMessages
+        }
+
         var authenticationToken: String? {
             return capturingCredentialStore.persistedCredential?.authenticationToken
         }
