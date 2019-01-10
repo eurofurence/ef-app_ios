@@ -40,12 +40,12 @@ class V2SyncAPITests: XCTestCase {
         let syncApi = V2API(jsonSession: jsonSession, apiUrl: apiUrl)
         let responseDataURL = Bundle(for: V2SyncAPITests.self).url(forResource: "V2SyncAPIResponse", withExtension: "json")!
         let responseData = try! Data(contentsOf: responseDataURL)
-        let providedWithNilResponseExpectation = expectation(description: "Should not be provided with nil response when parsing valid sync response")
-        providedWithNilResponseExpectation.isInverted = true
-        syncApi.fetchLatestData(lastSyncTime: nil) { if $0 == nil { providedWithNilResponseExpectation.fulfill() } }
+
+        var wasProvidedWithNilResponse = false
+        syncApi.fetchLatestData(lastSyncTime: nil) { wasProvidedWithNilResponse = $0 == nil }
         jsonSession.invokeLastGETCompletionHandler(responseData: responseData)
 
-        waitForExpectations(timeout: 0.1)
+        XCTAssertFalse(wasProvidedWithNilResponse)
     }
 
     func testFailedNetworkResponseEmitsNilResult() {
