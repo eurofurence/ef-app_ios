@@ -15,7 +15,7 @@ class WhenObservingCollectThemAllURLWhileLoggedOut_ApplicationShould: XCTestCase
         let collectThemAllRequestFactory = StubCollectThemAllRequestFactory()
         let context = ApplicationTestBuilder().with(collectThemAllRequestFactory).build()
         let observer = CapturingCollectThemAllURLObserver()
-        context.application.subscribe(observer)
+        context.collectThemAllService.subscribe(observer)
 
         XCTAssertEqual(collectThemAllRequestFactory.anonymousGameURLRequest, observer.capturedURLRequest)
     }
@@ -24,7 +24,7 @@ class WhenObservingCollectThemAllURLWhileLoggedOut_ApplicationShould: XCTestCase
         let collectThemAllRequestFactory = StubCollectThemAllRequestFactory()
         let context = ApplicationTestBuilder().with(collectThemAllRequestFactory).build()
         let observer = CapturingCollectThemAllURLObserver()
-        context.application.subscribe(observer)
+        context.collectThemAllService.subscribe(observer)
         let args = LoginArguments(registrationNumber: .random, username: .random, password: .random)
         context.authenticationService.login(args) { (_) in }
         let response = LoginResponse(userIdentifier: .random, username: .random, token: .random, tokenValidUntil: .random)

@@ -72,6 +72,10 @@ class ApplicationTestBuilder {
             return services.conventionCountdown
         }
 
+        var collectThemAllService: CollectThemAllService {
+            return services.collectThemAll
+        }
+
         var authenticationToken: String? {
             return capturingCredentialStore.persistedCredential?.authenticationToken
         }

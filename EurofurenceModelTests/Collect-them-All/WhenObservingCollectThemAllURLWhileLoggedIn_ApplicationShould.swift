@@ -19,7 +19,7 @@ class WhenObservingCollectThemAllURLWhileLoggedIn_ApplicationShould: XCTestCase 
                                     tokenExpiryDate: .random)
         let context = ApplicationTestBuilder().with(collectThemAllRequestFactory).with(credential).build()
         let observer = CapturingCollectThemAllURLObserver()
-        context.application.subscribe(observer)
+        context.collectThemAllService.subscribe(observer)
         let expected = collectThemAllRequestFactory.makeAuthenticatedGameURLRequest(credential: credential)
 
         XCTAssertEqual(expected, observer.capturedURLRequest)
@@ -33,7 +33,7 @@ class WhenObservingCollectThemAllURLWhileLoggedIn_ApplicationShould: XCTestCase 
                                     tokenExpiryDate: .random)
         let context = ApplicationTestBuilder().with(collectThemAllRequestFactory).with(credential).build()
         let observer = CapturingCollectThemAllURLObserver()
-        context.application.subscribe(observer)
+        context.collectThemAllService.subscribe(observer)
         context.authenticationService.logout { (_) in }
         context.capturingTokenRegistration.succeedLastRequest()
 
