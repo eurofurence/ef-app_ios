@@ -28,7 +28,7 @@ class WhenSchedulingReminderForEvent_ApplicationShould: XCTestCase {
         let event = events.randomElement().element
         let expectedScheduleTime = event.startDateTime.addingTimeInterval(-upcomingEventReminderInterval)
         let identifier = EventIdentifier(event.identifier)
-        context.application.favouriteEvent(identifier: identifier)
+        context.eventsService.favouriteEvent(identifier: identifier)
 
         XCTAssertEqual(expectedScheduleTime, context.notificationScheduler.capturedEventNotificationScheduledDate)
     }
@@ -46,7 +46,7 @@ class WhenSchedulingReminderForEvent_ApplicationShould: XCTestCase {
         let context = ApplicationTestBuilder().with(dataStore).build()
         let event = events.randomElement().element
         let identifier = EventIdentifier(event.identifier)
-        context.application.favouriteEvent(identifier: identifier)
+        context.eventsService.favouriteEvent(identifier: identifier)
 
         XCTAssertEqual(event.title, context.notificationScheduler.capturedEventNotificationTitle)
     }
@@ -64,7 +64,7 @@ class WhenSchedulingReminderForEvent_ApplicationShould: XCTestCase {
         let context = ApplicationTestBuilder().with(dataStore).build()
         let event = events.randomElement().element
         let identifier = EventIdentifier(event.identifier)
-        context.application.favouriteEvent(identifier: identifier)
+        context.eventsService.favouriteEvent(identifier: identifier)
         let expectedTimeString = context.hoursDateFormatter.hoursString(from: event.startDateTime)
         let expectedLocationString = response.rooms.changed.first(where: { $0.roomIdentifier == event.roomIdentifier })!.name
         let expected = AppCoreStrings.eventReminderBody(timeString: expectedTimeString, roomName: expectedLocationString)
@@ -85,7 +85,7 @@ class WhenSchedulingReminderForEvent_ApplicationShould: XCTestCase {
         let context = ApplicationTestBuilder().with(dataStore).build()
         let event = events.randomElement().element
         let identifier = EventIdentifier(event.identifier)
-        context.application.favouriteEvent(identifier: identifier)
+        context.eventsService.favouriteEvent(identifier: identifier)
         let expected: [ApplicationNotificationKey: String] =
             [ApplicationNotificationKey.notificationContentKind: ApplicationNotificationContentKind.event.rawValue,
              ApplicationNotificationKey.notificationContentIdentifier: event.identifier]

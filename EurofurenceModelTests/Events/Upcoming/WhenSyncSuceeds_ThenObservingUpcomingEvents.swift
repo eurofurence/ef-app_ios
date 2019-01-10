@@ -18,7 +18,7 @@ class WhenSyncSuceeds_ThenObservingUpcomingEvents: XCTestCase {
         let context = ApplicationTestBuilder().with(simulatedTime).build()
         context.performSuccessfulSync(response: syncResponse)
         let observer = CapturingEventsServiceObserver()
-        context.application.add(observer)
+        context.eventsService.add(observer)
         let expected = context.makeExpectedEvent(from: randomEvent, response: syncResponse)
 
         XCTAssertTrue(observer.upcomingEvents.contains(expected))

@@ -20,7 +20,7 @@ class InOrderToSupportEssentialSubtitleTag_ApplicationShould: XCTestCase {
         let context = ApplicationTestBuilder().build()
         context.performSuccessfulSync(response: syncResponse)
         let eventsObserver = CapturingEventsServiceObserver()
-        context.application.add(eventsObserver)
+        context.eventsService.add(eventsObserver)
         let observedEvent = eventsObserver.allEvents.first
         let expected = "\(event.title) - \(event.subtitle)"
 

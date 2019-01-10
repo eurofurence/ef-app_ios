@@ -14,7 +14,7 @@ class WhenObservingUpcomingEventsBeforeLoadingAnything: XCTestCase {
     func testTheObserverIsProvidedWithEmptyUpcomingEvents() {
         let context = ApplicationTestBuilder().build()
         let observer = CapturingEventsServiceObserver()
-        context.application.add(observer)
+        context.eventsService.add(observer)
 
         XCTAssertTrue(observer.wasProvidedWithEmptyUpcomingEvents)
     }

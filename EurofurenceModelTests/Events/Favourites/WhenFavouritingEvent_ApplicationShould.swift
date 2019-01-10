@@ -31,7 +31,7 @@ class WhenFavouritingEvent_ApplicationShould: XCTestCase {
 
     func testTellTheDataStoreToSaveTheEventIdentifier() {
         let identifier = EventIdentifier(events.randomElement().element.identifier)
-        context.application.favouriteEvent(identifier: identifier)
+        context.eventsService.favouriteEvent(identifier: identifier)
 
         XCTAssertTrue(context.dataStore.didFavouriteEvent(identifier))
     }
@@ -39,8 +39,8 @@ class WhenFavouritingEvent_ApplicationShould: XCTestCase {
     func testTellEventsObserversTheEventIsNowFavourited() {
         let identifier = EventIdentifier(events.randomElement().element.identifier)
         let observer = CapturingEventsServiceObserver()
-        context.application.add(observer)
-        context.application.favouriteEvent(identifier: identifier)
+        context.eventsService.add(observer)
+        context.eventsService.favouriteEvent(identifier: identifier)
 
         XCTAssertTrue(observer.capturedFavouriteEventIdentifiers.contains(identifier))
     }
@@ -48,8 +48,8 @@ class WhenFavouritingEvent_ApplicationShould: XCTestCase {
     func testTellLateAddedObserversAboutTheFavouritedEvent() {
         let identifier = EventIdentifier(events.randomElement().element.identifier)
         let observer = CapturingEventsServiceObserver()
-        context.application.favouriteEvent(identifier: identifier)
-        context.application.add(observer)
+        context.eventsService.favouriteEvent(identifier: identifier)
+        context.eventsService.add(observer)
 
         XCTAssertTrue(observer.capturedFavouriteEventIdentifiers.contains(identifier))
     }
@@ -57,10 +57,10 @@ class WhenFavouritingEvent_ApplicationShould: XCTestCase {
     func testOrganiseTheFavouritesInStartTimeOrder() {
         let identifier = EventIdentifier(events.randomElement().element.identifier)
         let storedFavourites = events.map({ EventIdentifier($0.identifier) })
-        storedFavourites.filter({ $0 != identifier }).forEach(context.application.favouriteEvent)
+        storedFavourites.filter({ $0 != identifier }).forEach(context.eventsService.favouriteEvent)
         let observer = CapturingEventsServiceObserver()
-        context.application.add(observer)
-        context.application.favouriteEvent(identifier: identifier)
+        context.eventsService.add(observer)
+        context.eventsService.favouriteEvent(identifier: identifier)
         let expected = events.sorted(by: { $0.startDateTime < $1.startDateTime }).map({ EventIdentifier($0.identifier) })
 
         XCTAssertEqual(expected, observer.capturedFavouriteEventIdentifiers)
@@ -68,7 +68,7 @@ class WhenFavouritingEvent_ApplicationShould: XCTestCase {
 
     func testScheduleReminderForEvent() {
         let identifier = EventIdentifier(events.randomElement().element.identifier)
-        context.application.favouriteEvent(identifier: identifier)
+        context.eventsService.favouriteEvent(identifier: identifier)
 
         XCTAssertEqual(identifier, context.notificationScheduler.capturedEventIdentifier)
     }

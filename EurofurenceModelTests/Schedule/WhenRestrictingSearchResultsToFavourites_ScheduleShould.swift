@@ -20,7 +20,7 @@ class WhenRestrictingSearchResultsToFavourites_ScheduleShould: XCTestCase {
         }
 
         let context = ApplicationTestBuilder().with(dataStore).build()
-        let schedule = context.application.makeEventsSearchController()
+        let schedule = context.eventsService.makeEventsSearchController()
         let delegate = CapturingEventsSearchControllerDelegate()
         schedule.setResultsDelegate(delegate)
         schedule.restrictResultsToFavourites()
@@ -41,7 +41,7 @@ class WhenRestrictingSearchResultsToFavourites_ScheduleShould: XCTestCase {
         }
 
         let context = ApplicationTestBuilder().with(dataStore).build()
-        let schedule = context.application.makeEventsSearchController()
+        let schedule = context.eventsService.makeEventsSearchController()
         let delegate = CapturingEventsSearchControllerDelegate()
         schedule.setResultsDelegate(delegate)
         schedule.restrictResultsToFavourites()
@@ -60,11 +60,11 @@ class WhenRestrictingSearchResultsToFavourites_ScheduleShould: XCTestCase {
         }
 
         let context = ApplicationTestBuilder().with(dataStore).build()
-        let schedule = context.application.makeEventsSearchController()
+        let schedule = context.eventsService.makeEventsSearchController()
         let delegate = CapturingEventsSearchControllerDelegate()
         schedule.setResultsDelegate(delegate)
         schedule.restrictResultsToFavourites()
-        context.application.unfavouriteEvent(identifier: randomFavourite.element)
+        context.eventsService.unfavouriteEvent(identifier: randomFavourite.element)
         var expected = favourites
         expected.remove(at: randomFavourite.index)
         let searchResultIdentifiers = delegate.capturedSearchResults.map({ $0.identifier })

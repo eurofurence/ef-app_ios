@@ -23,7 +23,7 @@ class WhenRemovingFavouritesRestrictionForEvents_WhileQueryActive_ScheduleShould
         }
 
         let context = ApplicationTestBuilder().with(dataStore).build()
-        let schedule = context.application.makeEventsSearchController()
+        let schedule = context.eventsService.makeEventsSearchController()
         let delegate = CapturingEventsSearchControllerDelegate()
         schedule.setResultsDelegate(delegate)
         schedule.restrictResultsToFavourites()

@@ -14,7 +14,7 @@ class WhenObservingRunningEventsBeforeLoadingAnything: XCTestCase {
     func testTheObserverIsProvidedWithEmptyEvents() {
         let context = ApplicationTestBuilder().build()
         let observer = CapturingEventsServiceObserver()
-        context.application.add(observer)
+        context.eventsService.add(observer)
 
         XCTAssertTrue(observer.wasProvidedWithEmptyRunningEvents)
     }

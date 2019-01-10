@@ -21,7 +21,7 @@ class WhenFetchingDaysBeforeRefreshWhenStoreHasConferenceDays: XCTestCase {
 
         let context = ApplicationTestBuilder().with(dataStore).build()
         let delegate = CapturingEventsScheduleDelegate()
-        let schedule = context.application.makeEventsSchedule()
+        let schedule = context.eventsService.makeEventsSchedule()
         schedule.setDelegate(delegate)
         let expected = context.makeExpectedDays(from: response)
 

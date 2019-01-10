@@ -19,7 +19,7 @@ class WhenObservingRunningEventsAfterSuccessfulLoad: XCTestCase {
         context.performSuccessfulSync(response: syncResponse)
 
         let observer = CapturingEventsServiceObserver()
-        context.application.add(observer)
+        context.eventsService.add(observer)
 
         let expectedEvents = syncResponse.events.changed.filter { (event) -> Bool in
             return simulatedTime >= event.startDateTime && simulatedTime < event.endDateTime
@@ -40,7 +40,7 @@ class WhenObservingRunningEventsAfterSuccessfulLoad: XCTestCase {
         context.performSuccessfulSync(response: syncResponse)
 
         let observer = CapturingEventsServiceObserver()
-        context.application.add(observer)
+        context.eventsService.add(observer)
 
         let unexpected = context.makeExpectedEvent(from: randomEvent, response: syncResponse)
 

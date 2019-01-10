@@ -20,7 +20,7 @@ class WhenRemovingFavouritesRestrictionForEvents_ScheduleShould: XCTestCase {
         }
 
         let context = ApplicationTestBuilder().with(dataStore).build()
-        let schedule = context.application.makeEventsSearchController()
+        let schedule = context.eventsService.makeEventsSearchController()
         let delegate = CapturingEventsSearchControllerDelegate()
         schedule.setResultsDelegate(delegate)
         schedule.restrictResultsToFavourites()
@@ -41,7 +41,7 @@ class WhenRemovingFavouritesRestrictionForEvents_ScheduleShould: XCTestCase {
         }
 
         let context = ApplicationTestBuilder().with(dataStore).build()
-        let schedule = context.application.makeEventsSearchController()
+        let schedule = context.eventsService.makeEventsSearchController()
         let delegate = CapturingEventsSearchControllerDelegate()
         schedule.setResultsDelegate(delegate)
         schedule.restrictResultsToFavourites()

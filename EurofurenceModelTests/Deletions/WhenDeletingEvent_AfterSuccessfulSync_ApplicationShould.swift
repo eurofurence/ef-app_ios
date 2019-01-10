@@ -15,7 +15,7 @@ class WhenDeletingEvent_AfterSuccessfulSync_ApplicationShould: XCTestCase {
         var response = APISyncResponse.randomWithoutDeletions
         let context = ApplicationTestBuilder().build()
         let delegate = CapturingEventsServiceObserver()
-        context.application.add(delegate)
+        context.eventsService.add(delegate)
         context.refreshLocalStore()
         context.syncAPI.simulateSuccessfulSync(response)
         let eventToDelete = response.events.changed.randomElement()

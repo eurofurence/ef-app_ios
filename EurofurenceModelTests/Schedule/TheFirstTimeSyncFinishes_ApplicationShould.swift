@@ -15,7 +15,7 @@ class TheFirstTimeSyncFinishes_ApplicationShould: XCTestCase {
         let response = APISyncResponse.randomWithoutDeletions
         let firstDay = response.conferenceDays.changed.sorted(by: { $0.date < $1.date }).first!
         let context = ApplicationTestBuilder().with(.distantPast).build()
-        let schedule = context.application.makeEventsSchedule()
+        let schedule = context.eventsService.makeEventsSchedule()
         let delegate = CapturingEventsScheduleDelegate()
         schedule.setDelegate(delegate)
         context.performSuccessfulSync(response: response)

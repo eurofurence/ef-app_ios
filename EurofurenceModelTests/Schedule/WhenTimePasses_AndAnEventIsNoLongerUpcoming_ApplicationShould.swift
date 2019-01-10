@@ -18,7 +18,7 @@ class WhenTimePasses_AndAnEventIsNoLongerUpcoming_ApplicationShould: XCTestCase 
         let context = ApplicationTestBuilder().with(simulatedTime).build()
         context.performSuccessfulSync(response: syncResponse)
         let observer = CapturingEventsServiceObserver()
-        context.application.add(observer)
+        context.eventsService.add(observer)
         simulatedTime = randomEvent.startDateTime.addingTimeInterval(1)
         context.tickTime(to: simulatedTime)
 

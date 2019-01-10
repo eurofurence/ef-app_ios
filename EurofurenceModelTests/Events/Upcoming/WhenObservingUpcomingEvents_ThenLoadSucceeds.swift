@@ -17,7 +17,7 @@ class WhenObservingUpcomingEvents_ThenLoadSucceeds: XCTestCase {
         let simulatedTime = randomEvent.startDateTime.addingTimeInterval(-1)
         let context = ApplicationTestBuilder().with(simulatedTime).build()
         let observer = CapturingEventsServiceObserver()
-        context.application.add(observer)
+        context.eventsService.add(observer)
         context.performSuccessfulSync(response: syncResponse)
         let expected = context.makeExpectedEvent(from: randomEvent, response: syncResponse)
 
@@ -30,7 +30,7 @@ class WhenObservingUpcomingEvents_ThenLoadSucceeds: XCTestCase {
         let simulatedTime = randomEvent.startDateTime.addingTimeInterval(-1)
         let context = ApplicationTestBuilder().with(simulatedTime).build()
         let observer = CapturingEventsServiceObserver()
-        context.application.add(observer)
+        context.eventsService.add(observer)
         context.performSuccessfulSync(response: syncResponse)
 
         let expectedEvents = syncResponse.events.changed.filter { (event) -> Bool in
@@ -51,7 +51,7 @@ class WhenObservingUpcomingEvents_ThenLoadSucceeds: XCTestCase {
         let simulatedTime = randomEvent.startDateTime.addingTimeInterval(-timeIntervalForUpcomingEventsSinceNow - 1)
         let context = ApplicationTestBuilder().with(simulatedTime).with(timeIntervalForUpcomingEventsSinceNow: timeIntervalForUpcomingEventsSinceNow).build()
         let observer = CapturingEventsServiceObserver()
-        context.application.add(observer)
+        context.eventsService.add(observer)
         context.performSuccessfulSync(response: syncResponse)
 
         let unexpected = context.makeExpectedEvent(from: randomEvent, response: syncResponse)
@@ -66,7 +66,7 @@ class WhenObservingUpcomingEvents_ThenLoadSucceeds: XCTestCase {
         let simulatedTime = randomEvent.startDateTime
         let context = ApplicationTestBuilder().with(simulatedTime).with(timeIntervalForUpcomingEventsSinceNow: timeIntervalForUpcomingEventsSinceNow).build()
         let observer = CapturingEventsServiceObserver()
-        context.application.add(observer)
+        context.eventsService.add(observer)
         context.performSuccessfulSync(response: syncResponse)
 
         let unexpected = context.makeExpectedEvent(from: randomEvent, response: syncResponse)

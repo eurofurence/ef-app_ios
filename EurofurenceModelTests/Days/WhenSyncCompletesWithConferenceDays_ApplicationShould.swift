@@ -15,7 +15,7 @@ class WhenSyncCompletesWithConferenceDays_ApplicationShould: XCTestCase {
         let context = ApplicationTestBuilder().build()
         let syncResponse = APISyncResponse.randomWithoutDeletions
         let delegate = CapturingEventsScheduleDelegate()
-        let schedule = context.application.makeEventsSchedule()
+        let schedule = context.eventsService.makeEventsSchedule()
         schedule.setDelegate(delegate)
         context.performSuccessfulSync(response: syncResponse)
         let expected = context.makeExpectedDays(from: syncResponse)
@@ -27,7 +27,7 @@ class WhenSyncCompletesWithConferenceDays_ApplicationShould: XCTestCase {
         let context = ApplicationTestBuilder().build()
         let syncResponse = APISyncResponse.randomWithoutDeletions
         let delegate = CapturingEventsScheduleDelegate()
-        let schedule = context.application.makeEventsSchedule()
+        let schedule = context.eventsService.makeEventsSchedule()
         schedule.setDelegate(delegate)
         context.performSuccessfulSync(response: syncResponse)
         delegate.allDays.removeAll()
@@ -42,7 +42,7 @@ class WhenSyncCompletesWithConferenceDays_ApplicationShould: XCTestCase {
         dataStore.save(syncResponse)
         let context = ApplicationTestBuilder().with(dataStore).build()
         let delegate = CapturingEventsScheduleDelegate()
-        let schedule = context.application.makeEventsSchedule()
+        let schedule = context.eventsService.makeEventsSchedule()
         schedule.setDelegate(delegate)
         delegate.allDays.removeAll()
         context.performSuccessfulSync(response: syncResponse)
@@ -55,7 +55,7 @@ class WhenSyncCompletesWithConferenceDays_ApplicationShould: XCTestCase {
         let syncResponse = APISyncResponse.randomWithoutDeletions
         context.performSuccessfulSync(response: syncResponse)
         let delegate = CapturingEventsScheduleDelegate()
-        let schedule = context.application.makeEventsSchedule()
+        let schedule = context.eventsService.makeEventsSchedule()
         schedule.setDelegate(delegate)
         let expected = context.makeExpectedDays(from: syncResponse)
 

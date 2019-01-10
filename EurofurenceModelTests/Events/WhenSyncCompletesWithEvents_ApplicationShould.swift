@@ -15,7 +15,7 @@ class WhenSyncCompletesWithEvents_ApplicationShould: XCTestCase {
         let context = ApplicationTestBuilder().build()
         let syncResponse = APISyncResponse.randomWithoutDeletions
         let observer = CapturingEventsServiceObserver()
-        context.application.add(observer)
+        context.eventsService.add(observer)
         context.performSuccessfulSync(response: syncResponse)
         let expected = context.makeExpectedEvents(from: syncResponse.events.changed, response: syncResponse)
 

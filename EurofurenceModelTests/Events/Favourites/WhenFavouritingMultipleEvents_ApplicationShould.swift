@@ -24,8 +24,8 @@ class WhenFavouritingMultipleEvents_ApplicationShould: XCTestCase {
         let context = ApplicationTestBuilder().with(dataStore).build()
         let identifiers = events.map({ EventIdentifier($0.identifier) })
         let observer = CapturingEventsServiceObserver()
-        context.application.add(observer)
-        identifiers.forEach(context.application.favouriteEvent)
+        context.eventsService.add(observer)
+        identifiers.forEach(context.eventsService.favouriteEvent)
 
         XCTAssertTrue(identifiers.contains(elementsFrom: observer.capturedFavouriteEventIdentifiers))
     }
@@ -43,10 +43,10 @@ class WhenFavouritingMultipleEvents_ApplicationShould: XCTestCase {
         let context = ApplicationTestBuilder().with(dataStore).build()
         let identifiers = events.map({ EventIdentifier($0.identifier) })
         let observer = CapturingEventsServiceObserver()
-        context.application.add(observer)
-        identifiers.forEach(context.application.favouriteEvent)
+        context.eventsService.add(observer)
+        identifiers.forEach(context.eventsService.favouriteEvent)
         let randomIdentifier = identifiers.randomElement()
-        context.application.unfavouriteEvent(identifier: randomIdentifier.element)
+        context.eventsService.unfavouriteEvent(identifier: randomIdentifier.element)
         var expected = identifiers
         expected.remove(at: randomIdentifier.index)
 
@@ -65,7 +65,7 @@ class WhenFavouritingMultipleEvents_ApplicationShould: XCTestCase {
         context.refreshLocalStore()
         context.syncAPI.simulateSuccessfulSync(response)
         let observer = CapturingEventsServiceObserver()
-        context.application.add(observer)
+        context.eventsService.add(observer)
 
         let expected = events.sorted(by: { $0.startDateTime < $1.startDateTime }).map({ EventIdentifier($0.identifier) })
 

@@ -17,7 +17,7 @@ class WhenObservingRunningEvents_ThenLoadSucceeds: XCTestCase {
         let simulatedTime = randomEvent.startDateTime
         let context = ApplicationTestBuilder().with(simulatedTime).build()
         let observer = CapturingEventsServiceObserver()
-        context.application.add(observer)
+        context.eventsService.add(observer)
         context.performSuccessfulSync(response: syncResponse)
         let expected = context.makeExpectedEvent(from: randomEvent, response: syncResponse)
 

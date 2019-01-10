@@ -29,7 +29,7 @@ class WhenFetchingEventsBeforeRefreshWhenStoreHasEvents: XCTestCase {
         let expected = context.makeExpectedEvents(from: response.events.changed, response: response)
 
         let observer = CapturingEventsServiceObserver()
-        context.application.add(observer)
+        context.eventsService.add(observer)
 
         XCTAssertEqual(expected, observer.allEvents)
     }

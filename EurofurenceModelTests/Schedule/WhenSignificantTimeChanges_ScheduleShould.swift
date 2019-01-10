@@ -17,7 +17,7 @@ class WhenSignificantTimeChanges_ScheduleShould: XCTestCase {
         let dataStore = CapturingEurofurenceDataStore()
         dataStore.save(syncResponse)
         let context = ApplicationTestBuilder().with(randomDay.date).with(dataStore).build()
-        let schedule = context.application.makeEventsSchedule()
+        let schedule = context.eventsService.makeEventsSchedule()
         let delegate = CapturingEventsScheduleDelegate()
         schedule.setDelegate(delegate)
         context.clock.tickTime(to: .distantPast)

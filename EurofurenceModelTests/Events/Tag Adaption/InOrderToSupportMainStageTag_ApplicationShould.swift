@@ -20,7 +20,7 @@ class InOrderToSupportMainStageTag_ApplicationShould: XCTestCase {
         let context = ApplicationTestBuilder().build()
         context.performSuccessfulSync(response: syncResponse)
         let eventsObserver = CapturingEventsServiceObserver()
-        context.application.add(eventsObserver)
+        context.eventsService.add(eventsObserver)
         let observedEvent = eventsObserver.allEvents.first
 
         XCTAssertEqual(true, observedEvent?.isMainStage)
@@ -35,7 +35,7 @@ class InOrderToSupportMainStageTag_ApplicationShould: XCTestCase {
         let context = ApplicationTestBuilder().build()
         context.performSuccessfulSync(response: syncResponse)
         let eventsObserver = CapturingEventsServiceObserver()
-        context.application.add(eventsObserver)
+        context.eventsService.add(eventsObserver)
         let observedEvent = eventsObserver.allEvents.first
 
         XCTAssertEqual(false, observedEvent?.isMainStage)

@@ -15,7 +15,7 @@ class WhenSearchingForEvents_ApplicationShould: XCTestCase {
         let context = ApplicationTestBuilder().build()
         let syncResponse = APISyncResponse.randomWithoutDeletions
         context.performSuccessfulSync(response: syncResponse)
-        let eventsSearchController = context.application.makeEventsSearchController()
+        let eventsSearchController = context.eventsService.makeEventsSearchController()
         let randomEvent = syncResponse.events.changed.randomElement().element
         let delegate = CapturingEventsSearchControllerDelegate()
         eventsSearchController.setResultsDelegate(delegate)
@@ -29,7 +29,7 @@ class WhenSearchingForEvents_ApplicationShould: XCTestCase {
         let context = ApplicationTestBuilder().build()
         let syncResponse = APISyncResponse.randomWithoutDeletions
         context.performSuccessfulSync(response: syncResponse)
-        let eventsSearchController = context.application.makeEventsSearchController()
+        let eventsSearchController = context.eventsService.makeEventsSearchController()
         let randomEvent = syncResponse.events.changed.randomElement().element
         let delegate = CapturingEventsSearchControllerDelegate()
         eventsSearchController.setResultsDelegate(delegate)
@@ -48,7 +48,7 @@ class WhenSearchingForEvents_ApplicationShould: XCTestCase {
         event.title = "iGNoRe tHe rANdoM CAsing"
         syncResponse.events.changed[randomEvent.index] = event
         context.performSuccessfulSync(response: syncResponse)
-        let eventsSearchController = context.application.makeEventsSearchController()
+        let eventsSearchController = context.eventsService.makeEventsSearchController()
         let delegate = CapturingEventsSearchControllerDelegate()
         eventsSearchController.setResultsDelegate(delegate)
         eventsSearchController.changeSearchTerm("random")

@@ -20,7 +20,7 @@ class WhenLaunchingApplicationWithPreexistingFavourites: XCTestCase {
 
         let context = ApplicationTestBuilder().with(dataStore).build()
         let observer = CapturingEventsServiceObserver()
-        context.application.add(observer)
+        context.eventsService.add(observer)
 
         XCTAssertTrue(expected.contains(elementsFrom: observer.capturedFavouriteEventIdentifiers))
     }
@@ -38,7 +38,7 @@ class WhenLaunchingApplicationWithPreexistingFavourites: XCTestCase {
 
         let context = ApplicationTestBuilder().with(dataStore).build()
         let observer = CapturingEventsServiceObserver()
-        context.application.add(observer)
+        context.eventsService.add(observer)
 
         let expected = events.sorted(by: { $0.startDateTime < $1.startDateTime }).map({ EventIdentifier($0.identifier) })
 

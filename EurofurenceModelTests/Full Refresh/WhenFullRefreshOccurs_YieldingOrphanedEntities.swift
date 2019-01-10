@@ -37,7 +37,7 @@ class WhenFullRefreshOccurs_YieldingOrphanedEntities: XCTestCase {
 
     func testTheOrphanedEventsAreRemoved() {
         let eventsObserver = CapturingEventsServiceObserver()
-        context.application.add(eventsObserver)
+        context.eventsService.add(eventsObserver)
         let originalEventIdentifiers = originalResponse.events.changed.map({ $0.identifier })
         let eventIdentifiers = eventsObserver.allEvents.map({ $0.identifier.rawValue })
 

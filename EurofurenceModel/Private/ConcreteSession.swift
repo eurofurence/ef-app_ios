@@ -14,7 +14,8 @@ class ConcreteSession: EurofurenceSession,
                        NotificationService,
                        RefreshService,
                        AnnouncementsService,
-                       AuthenticationService {
+                       AuthenticationService,
+                       EventsService {
 
     private let eventBus = EventBus()
     private let userPreferences: UserPreferences

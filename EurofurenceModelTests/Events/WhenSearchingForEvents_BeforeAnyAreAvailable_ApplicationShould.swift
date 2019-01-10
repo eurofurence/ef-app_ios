@@ -13,7 +13,7 @@ class WhenSearchingForEvents_BeforeAnyAreAvailable_ApplicationShould: XCTestCase
 
     func testProduceEmptyResults() {
         let context = ApplicationTestBuilder().build()
-        let eventsSearchController = context.application.makeEventsSearchController()
+        let eventsSearchController = context.eventsService.makeEventsSearchController()
         let delegate = CapturingEventsSearchControllerDelegate()
         eventsSearchController.setResultsDelegate(delegate)
         eventsSearchController.changeSearchTerm(.random)
