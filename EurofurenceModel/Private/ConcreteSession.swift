@@ -20,7 +20,8 @@ class ConcreteSession: EurofurenceSession,
                        KnowledgeService,
                        ContentLinksService,
                        ConventionCountdownService,
-                       CollectThemAllService {
+                       CollectThemAllService,
+                       MapsService {
 
     private let eventBus = EventBus()
     private let userPreferences: UserPreferences

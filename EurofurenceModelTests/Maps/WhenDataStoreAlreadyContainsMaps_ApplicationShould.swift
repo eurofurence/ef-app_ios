@@ -18,7 +18,7 @@ class WhenDataStoreAlreadyContainsMaps_ApplicationShould: XCTestCase {
         let context = ApplicationTestBuilder().with(dataStore).build()
         let expected = context.makeExpectedMaps(from: syncResponse)
         let observer = CapturingMapsObserver()
-        context.application.add(observer)
+        context.mapsService.add(observer)
 
         XCTAssertEqual(expected, observer.capturedMaps)
     }

@@ -15,7 +15,7 @@ class WhenDeletingMap_AfterSuccessfulSync_ApplicationShould: XCTestCase {
         var response = APISyncResponse.randomWithoutDeletions
         let context = ApplicationTestBuilder().build()
         let delegate = CapturingMapsObserver()
-        context.application.add(delegate)
+        context.mapsService.add(delegate)
         context.refreshLocalStore()
         context.syncAPI.simulateSuccessfulSync(response)
         let mapToDelete = response.maps.changed.randomElement()

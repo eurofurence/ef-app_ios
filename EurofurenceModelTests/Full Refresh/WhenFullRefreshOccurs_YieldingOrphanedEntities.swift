@@ -80,7 +80,7 @@ class WhenFullRefreshOccurs_YieldingOrphanedEntities: XCTestCase {
 
     func testTheOrphanedMapsAreRemoved() {
         let mapsObserver = CapturingMapsObserver()
-        context.application.add(mapsObserver)
+        context.mapsService.add(mapsObserver)
         let originalMapsIdentifiers = originalResponse.maps.changed.map({ $0.identifier })
         let mapsIdentifiers = mapsObserver.capturedMaps.map({ $0.identifier.rawValue })
 

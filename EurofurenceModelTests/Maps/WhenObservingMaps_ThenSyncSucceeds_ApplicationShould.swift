@@ -15,7 +15,7 @@ class WhenObservingMaps_ThenSyncSucceeds_ApplicationShould: XCTestCase {
         let context = ApplicationTestBuilder().build()
         let syncResponse = APISyncResponse.randomWithoutDeletions
         let observer = CapturingMapsObserver()
-        context.application.add(observer)
+        context.mapsService.add(observer)
         context.performSuccessfulSync(response: syncResponse)
         let expected = context.makeExpectedMaps(from: syncResponse)
 

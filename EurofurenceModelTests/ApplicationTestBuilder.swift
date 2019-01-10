@@ -76,6 +76,10 @@ class ApplicationTestBuilder {
             return services.collectThemAll
         }
 
+        var mapsService: MapsService {
+            return services.maps
+        }
+
         var authenticationToken: String? {
             return capturingCredentialStore.persistedCredential?.authenticationToken
         }
