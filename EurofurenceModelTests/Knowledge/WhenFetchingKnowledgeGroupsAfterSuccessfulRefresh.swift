@@ -18,7 +18,7 @@ class WhenFetchingKnowledgeGroupsAfterSuccessfulRefresh: XCTestCase {
 
         context.performSuccessfulSync(response: syncResponse)
         let observer = CapturingKnowledgeServiceObserver()
-        context.application.add(observer)
+        context.knowledgeService.add(observer)
 
         XCTAssertEqual(expected, observer.capturedGroups)
     }
@@ -26,7 +26,7 @@ class WhenFetchingKnowledgeGroupsAfterSuccessfulRefresh: XCTestCase {
     func testEarlyBoundObserversAreUpdatedWithNewKnowledgeGroups() {
         let context = ApplicationTestBuilder().build()
         let observer = CapturingKnowledgeServiceObserver()
-        context.application.add(observer)
+        context.knowledgeService.add(observer)
         let syncResponse = APISyncResponse.randomWithoutDeletions
         let expected = context.expectedKnowledgeGroups(from: syncResponse)
         context.performSuccessfulSync(response: syncResponse)

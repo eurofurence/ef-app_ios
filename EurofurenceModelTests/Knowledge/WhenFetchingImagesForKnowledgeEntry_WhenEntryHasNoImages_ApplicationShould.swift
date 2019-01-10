@@ -14,7 +14,7 @@ class WhenFetchingImagesForKnowledgeEntry_WhenEntryHasNoImages_ApplicationShould
     func testInvokeTheHandlerWithEmptyImages() {
         let context = ApplicationTestBuilder().build()
         var images: [Data]?
-        context.application.fetchImagesForKnowledgeEntry(identifier: .random) { images = $0 }
+        context.knowledgeService.fetchImagesForKnowledgeEntry(identifier: .random) { images = $0 }
 
         XCTAssertEqual([], images)
     }

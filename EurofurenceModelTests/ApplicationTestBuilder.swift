@@ -60,6 +60,10 @@ class ApplicationTestBuilder {
             return services.dealers
         }
 
+        var knowledgeService: KnowledgeService {
+            return services.knowledge
+        }
+
         var authenticationToken: String? {
             return capturingCredentialStore.persistedCredential?.authenticationToken
         }

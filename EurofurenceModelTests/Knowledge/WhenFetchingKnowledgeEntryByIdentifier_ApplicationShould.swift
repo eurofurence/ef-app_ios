@@ -22,7 +22,7 @@ class WhenFetchingKnowledgeEntryByIdentifier_ApplicationShould: XCTestCase {
                                         contents: randomEntry.text,
                                         links: randomEntry.links.map({ return Link(name: $0.name, type: Link.Kind(rawValue: $0.fragmentType.rawValue)!, contents: $0.target) }).sorted(by: { $0.name < $1.name }))
         var actual: KnowledgeEntry?
-        context.application.fetchKnowledgeEntry(for: KnowledgeEntryIdentifier(randomEntry.identifier)) { actual = $0 }
+        context.knowledgeService.fetchKnowledgeEntry(for: KnowledgeEntryIdentifier(randomEntry.identifier)) { actual = $0 }
 
         XCTAssertEqual(expected, actual)
     }

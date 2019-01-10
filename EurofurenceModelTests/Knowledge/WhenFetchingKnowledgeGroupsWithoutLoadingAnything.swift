@@ -14,7 +14,7 @@ class WhenFetchingKnowledgeGroupsWithoutLoadingAnything: XCTestCase {
     func testEmptyGroupsAreReturned() {
         let context = ApplicationTestBuilder().build()
         let observer = CapturingKnowledgeServiceObserver()
-        context.application.add(observer)
+        context.knowledgeService.add(observer)
 
         XCTAssertTrue(observer.wasProvidedWithEmptyGroups)
     }

@@ -46,7 +46,7 @@ class WhenFullRefreshOccurs_YieldingOrphanedEntities: XCTestCase {
 
     func testTheOrphanedKnowledgeGroupsAreRemoved() {
         let knowledgeObserver = CapturingKnowledgeServiceObserver()
-        context.application.add(knowledgeObserver)
+        context.knowledgeService.add(knowledgeObserver)
         let originalGroupIdentifiers = originalResponse.knowledgeGroups.changed.map({ $0.identifier })
         let groupIdentifiers = knowledgeObserver.capturedGroups.map({ $0.identifier.rawValue })
 
@@ -55,7 +55,7 @@ class WhenFullRefreshOccurs_YieldingOrphanedEntities: XCTestCase {
 
     func testTheOrphanedKnowledgeEntriesAreRemoved() {
         let knowledgeObserver = CapturingKnowledgeServiceObserver()
-        context.application.add(knowledgeObserver)
+        context.knowledgeService.add(knowledgeObserver)
         let originalEntryIdentifiers = originalResponse.knowledgeEntries.changed.map({ $0.identifier })
 
         XCTAssertTrue(context.dataStore.transaction.deletedKnowledgeEntries.contains(elementsFrom: originalEntryIdentifiers))

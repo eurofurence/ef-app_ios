@@ -8,8 +8,7 @@
 
 import Foundation
 
-public protocol EurofurenceSession: KnowledgeService,
-                                    ContentLinksService,
+public protocol EurofurenceSession: ContentLinksService,
                                     ConventionCountdownService,
                                     CollectThemAllService,
                                     MapsService,

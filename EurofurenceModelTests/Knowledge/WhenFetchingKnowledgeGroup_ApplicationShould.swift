@@ -19,7 +19,7 @@ class WhenFetchingKnowledgeGroup_ApplicationShould: XCTestCase {
         let expected = context.expectedKnowledgeGroup(from: randomGroup.element, syncResponse: syncResponse)
 
         var actual: KnowledgeGroup?
-        context.application.fetchKnowledgeGroup(identifier: KnowledgeGroupIdentifier(randomGroup.element.identifier)) { actual = $0 }
+        context.knowledgeService.fetchKnowledgeGroup(identifier: KnowledgeGroupIdentifier(randomGroup.element.identifier)) { actual = $0 }
 
         XCTAssertEqual(expected, actual)
     }
