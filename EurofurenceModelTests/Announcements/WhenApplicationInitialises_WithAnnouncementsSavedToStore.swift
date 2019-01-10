@@ -20,7 +20,7 @@ class WhenApplicationInitialises_WithAnnouncementsSavedToStore: XCTestCase {
 
         let context = ApplicationTestBuilder().with(dataStore).build()
         let observer = CapturingAnnouncementsServiceObserver()
-        context.application.add(observer)
+        context.announcementsService.add(observer)
 
         let expected = context.expectedAnnouncements(from: announcements)
 

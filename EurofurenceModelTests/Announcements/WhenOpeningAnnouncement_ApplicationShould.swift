@@ -25,7 +25,7 @@ class WhenOpeningAnnouncement_ApplicationShould: XCTestCase {
     @discardableResult
     private func openAnnouncement(_ identifier: AnnouncementIdentifier) -> Announcement? {
         var announcement: Announcement?
-        context.application.openAnnouncement(identifier: identifier) { announcement = $0 }
+        context.announcementsService.openAnnouncement(identifier: identifier) { announcement = $0 }
 
         return announcement
     }
@@ -69,7 +69,7 @@ class WhenOpeningAnnouncement_ApplicationShould: XCTestCase {
         let secondAnnouncement = announcements.randomElement().element
         let secondIdentifier = secondAnnouncement.identifier
         let observer = CapturingAnnouncementsServiceObserver()
-        context.application.add(observer)
+        context.announcementsService.add(observer)
         openAnnouncement(AnnouncementIdentifier(firstIdentifier))
         openAnnouncement(AnnouncementIdentifier(secondIdentifier))
         let expected = [firstIdentifier, secondIdentifier].map({ AnnouncementIdentifier($0) })
@@ -87,7 +87,7 @@ class WhenOpeningAnnouncement_ApplicationShould: XCTestCase {
         openAnnouncement(AnnouncementIdentifier(secondIdentifier))
         let expected = [firstIdentifier, secondIdentifier].map({ AnnouncementIdentifier($0) })
         let observer = CapturingAnnouncementsServiceObserver()
-        context.application.add(observer)
+        context.announcementsService.add(observer)
 
         XCTAssertTrue(observer.readAnnouncementIdentifiers.contains(elementsFrom: expected))
     }
@@ -108,7 +108,7 @@ class WhenOpeningAnnouncement_ApplicationShould: XCTestCase {
 
         let context = ApplicationTestBuilder().with(dataStore).build()
         let observer = CapturingAnnouncementsServiceObserver()
-        context.application.add(observer)
+        context.announcementsService.add(observer)
 
         XCTAssertTrue(observer.readAnnouncementIdentifiers.contains(elementsFrom: identifiers))
     }

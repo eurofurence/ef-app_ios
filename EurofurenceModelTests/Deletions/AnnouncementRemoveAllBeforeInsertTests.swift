@@ -20,7 +20,7 @@ class AnnouncementRemoveAllBeforeInsertTests: XCTestCase {
         context.performSuccessfulSync(response: subsequentResponse)
         let expected = context.expectedAnnouncements(from: subsequentResponse)
         let observer = CapturingAnnouncementsServiceObserver()
-        context.application.add(observer)
+        context.announcementsService.add(observer)
 
         XCTAssertEqual(expected, observer.allAnnouncements,
                        "Should have removed original announcements between sync events")
@@ -37,7 +37,7 @@ class AnnouncementRemoveAllBeforeInsertTests: XCTestCase {
         let second = context.expectedAnnouncements(from: subsequentResponse)
         let expected = first + second
         let observer = CapturingAnnouncementsServiceObserver()
-        context.application.add(observer)
+        context.announcementsService.add(observer)
 
         XCTAssertTrue(expected.equalsIgnoringOrder(observer.allAnnouncements),
                       "Should have not removed original announcements between sync events")

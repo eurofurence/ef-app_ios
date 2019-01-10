@@ -17,7 +17,7 @@ class WhenAddingAnnouncementsObserver_ThenRefreshSucceeds_ApplicationShould: XCT
         let expected = context.expectedAnnouncements(from: syncResponse)
 
         let observer = CapturingAnnouncementsServiceObserver()
-        context.application.add(observer)
+        context.announcementsService.add(observer)
         context.performSuccessfulSync(response: syncResponse)
 
         XCTAssertEqual(expected, observer.allAnnouncements)

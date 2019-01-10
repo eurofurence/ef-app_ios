@@ -18,7 +18,7 @@ class WhenAddingAnnouncementsObserverAfterSuccessfulRefresh: XCTestCase {
 
         context.performSuccessfulSync(response: syncResponse)
         let observer = CapturingAnnouncementsServiceObserver()
-        context.application.add(observer)
+        context.announcementsService.add(observer)
 
         XCTAssertEqual(expected, observer.allAnnouncements)
     }

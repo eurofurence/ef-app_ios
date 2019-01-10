@@ -14,7 +14,7 @@ class WhenAddingAnnouncementsObserverBeforeLoadingAnything: XCTestCase {
     func testEmptyAnnouncementsAreStillPropogatedToTheObserver() {
         let context = ApplicationTestBuilder().build()
         let observer = CapturingAnnouncementsServiceObserver()
-        context.application.add(observer)
+        context.announcementsService.add(observer)
 
         XCTAssertTrue(observer.didReceieveEmptyAllAnnouncements)
         XCTAssertTrue(observer.didReceieveEmptyReadAnnouncements)

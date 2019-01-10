@@ -19,7 +19,7 @@ class WhenRequestingImageForAnnouncementThatHasImage_ApplicationShould: XCTestCa
         let expected = context.imageAPI.stubbedImage(for: announcement.imageIdentifier)
         let identifier = AnnouncementIdentifier(announcement.identifier)
         var actual: Data?
-        context.application.fetchAnnouncementImage(identifier: identifier) { actual = $0 }
+        context.announcementsService.fetchAnnouncementImage(identifier: identifier) { actual = $0 }
 
         XCTAssertEqual(expected, actual)
     }

@@ -15,7 +15,7 @@ class WhenDeletingAnnouncement_AfterSuccessfulSync_ApplicationShould: XCTestCase
         var response = APISyncResponse.randomWithoutDeletions
         let context = ApplicationTestBuilder().build()
         let delegate = CapturingAnnouncementsServiceObserver()
-        context.application.add(delegate)
+        context.announcementsService.add(delegate)
         context.refreshLocalStore()
         context.syncAPI.simulateSuccessfulSync(response)
         let announcementToDelete = response.announcements.changed.randomElement()

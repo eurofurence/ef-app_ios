@@ -32,12 +32,20 @@ class ApplicationTestBuilder {
         var hoursDateFormatter: FakeHoursDateFormatter
         var mapCoordinateRender: CapturingMapCoordinateRender
 
+        var services: Services {
+            return application.services
+        }
+
         var notificationsService: NotificationService {
-            return application.services.notifications
+            return services.notifications
         }
 
         var refreshService: RefreshService {
-            return application.services.refresh
+            return services.refresh
+        }
+
+        var announcementsService: AnnouncementsService {
+            return services.announcements
         }
 
         var authenticationToken: String? {

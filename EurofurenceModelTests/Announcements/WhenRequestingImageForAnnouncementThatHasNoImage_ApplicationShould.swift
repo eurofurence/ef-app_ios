@@ -21,7 +21,7 @@ class WhenRequestingImageForAnnouncementThatHasNoImage_ApplicationShould: XCTest
         context.performSuccessfulSync(response: syncResponse)
         let identifier = AnnouncementIdentifier(announcement.identifier)
         var invokedHandlerWithNilData = false
-        context.application.fetchAnnouncementImage(identifier: identifier) { invokedHandlerWithNilData = $0 == nil }
+        context.announcementsService.fetchAnnouncementImage(identifier: identifier) { invokedHandlerWithNilData = $0 == nil }
 
         XCTAssertTrue(invokedHandlerWithNilData)
     }
