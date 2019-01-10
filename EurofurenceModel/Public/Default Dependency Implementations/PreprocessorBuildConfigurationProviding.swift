@@ -9,11 +9,11 @@
 import Foundation
 
 public struct PreprocessorBuildConfigurationProviding: BuildConfigurationProviding {
-    
+
     public init() {
-        
+
     }
-    
+
     public var configuration: BuildConfiguration {
 #if DEBUG
         return .debug
@@ -21,5 +21,5 @@ public struct PreprocessorBuildConfigurationProviding: BuildConfigurationProvidi
         return .release
 #endif
     }
-    
+
 }

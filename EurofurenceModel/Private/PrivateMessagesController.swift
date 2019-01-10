@@ -26,11 +26,11 @@ class PrivateMessagesController {
         observer.privateMessagesServiceDidUpdateUnreadMessageCount(to: determineUnreadMessageCount())
         observer.privateMessagesServiceDidFinishRefreshingMessages(messages: localMessages)
     }
-    
+
     private func determineUnreadMessageCount() -> Int {
         return localMessages.filter({ $0.isRead == false }).count
     }
-    
+
     func refreshMessages(completionHandler: (() -> Void)? = nil) {
         if let token = userAuthenticationToken {
             privateMessagesAPI.loadPrivateMessages(authorizationToken: token) { (messages) in
@@ -47,14 +47,14 @@ class PrivateMessagesController {
                         observer.privateMessagesServiceDidFailToLoadMessages()
                     }
                 }
-                
+
                 completionHandler?()
             }
         } else {
             for observer in privateMessageObservers {
                 observer.privateMessagesServiceDidFailToLoadMessages()
             }
-            
+
             completionHandler?()
         }
     }
@@ -62,13 +62,13 @@ class PrivateMessagesController {
     func markMessageAsRead(_ message: APIMessage) {
         guard let token = userAuthenticationToken else { return }
         privateMessagesAPI.markMessageWithIdentifierAsRead(message.identifier, authorizationToken: token)
-        
+
         if let idx = localMessages.firstIndex(where: { $0.identifier == message.identifier  }) {
             var readMessage = localMessages[idx]
             readMessage.isRead = true
             localMessages[idx] = readMessage
         }
-        
+
         let unreadCount = determineUnreadMessageCount()
         privateMessageObservers.forEach({ (observer) in
             observer.privateMessagesServiceDidUpdateUnreadMessageCount(to: unreadCount)

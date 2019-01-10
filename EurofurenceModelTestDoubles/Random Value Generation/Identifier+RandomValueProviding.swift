@@ -10,9 +10,9 @@ import EurofurenceModel
 import RandomDataGeneration
 
 extension Identifier: RandomValueProviding {
-    
+
     public static var random: Identifier {
         return Identifier(.random)
     }
-    
+
 }

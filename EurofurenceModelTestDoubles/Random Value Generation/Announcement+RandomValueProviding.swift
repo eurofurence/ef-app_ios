@@ -10,12 +10,12 @@ import EurofurenceModel
 import RandomDataGeneration
 
 extension Announcement: RandomValueProviding {
-    
+
     public static var random: Announcement {
         return Announcement(identifier: .random,
                             title: .random,
                             content: .random,
                             date: .random)
     }
-    
+
 }

@@ -39,7 +39,7 @@ public class EurofurenceSessionBuilder {
 
         let jsonSession = URLSessionBasedJSONSession.shared
         let buildConfiguration = PreprocessorBuildConfigurationProviding()
-        
+
         let apiUrl = BuildConfigurationV2ApiUrlProviding(buildConfiguration)
         let api = V2API(jsonSession: jsonSession, apiUrl: apiUrl)
         loginAPI = api

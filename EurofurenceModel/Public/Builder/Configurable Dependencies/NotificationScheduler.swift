@@ -9,7 +9,7 @@
 import Foundation
 
 public protocol NotificationScheduler {
-    
+
     func scheduleNotification(forEvent identifier: EventIdentifier,
                               at date: Date,
                               title: String,

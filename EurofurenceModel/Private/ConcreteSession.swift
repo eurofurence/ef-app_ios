@@ -115,11 +115,11 @@ class ConcreteSession: EurofurenceSession,
 
         refreshMessages()
     }
-    
+
     var services: Services {
         return self
     }
-    
+
     var notifications: NotificationService { return self }
     var refresh: RefreshService { return self }
     var announcements: AnnouncementsService { return self }
@@ -202,7 +202,7 @@ class ConcreteSession: EurofurenceSession,
     func add(_ observer: PrivateMessagesObserver) {
         privateMessagesController.add(observer)
     }
-    
+
     func refreshMessages() {
         privateMessagesController.refreshMessages()
     }

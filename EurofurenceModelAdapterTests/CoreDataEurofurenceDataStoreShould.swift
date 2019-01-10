@@ -319,7 +319,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
         recreateStore()
         let actual = store.getSavedFavouriteEventIdentifiers()
 
-        assertThat(exected.sorted(), isEqualTo: actual?.sorted())
+        assertThat(exected, isEqualTo: actual)
     }
 
     func testNotDuplicatedSavedFavouriteEventIdentifiers() {

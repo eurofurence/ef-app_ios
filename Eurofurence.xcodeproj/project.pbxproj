@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		06FBBF5FABD26161587517BB /* Pods-EurofurenceAppCoreAdapterTests-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = ECE03F8D1BD2EF31B9ED5DB1 /* Pods-EurofurenceAppCoreAdapterTests-metadata.plist */; };
 		09CCA668D5E112B61A53B5E6 /* Pods-EurofurenceTests-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A91AD0059ADB02A143766DB /* Pods-EurofurenceTests-settings-metadata.plist */; };
 		1D7401330A841C510EAA5F4A /* Pods-RandomDataGeneration-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 375E05980E305BB4DE0655D6 /* Pods-RandomDataGeneration-settings-metadata.plist */; };
 		1DC7AA3C728F55DB3C211828 /* Pods_EurofurenceModelTestDoubles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 888EA4F86DFE1223A7E43D48 /* Pods_EurofurenceModelTestDoubles.framework */; };
@@ -1255,7 +1254,6 @@
 		E7D5220E7B033A9BD6974870 /* Pods_EurofurenceModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACEE79B8E17A0BB12C431EDA /* Pods_EurofurenceModel.framework */; };
 		EAC4EAA631D3DB4D13B345A0 /* Pods_ScreenshotGenerator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5969EBB099A84DB93CE3EE6 /* Pods_ScreenshotGenerator.framework */; };
 		F1006B77362EF4A2C72D1AB5 /* Pods-EurofurenceModelTests-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 35E13E9A8458924ADC2FCF5F /* Pods-EurofurenceModelTests-metadata.plist */; };
-		F3D836783A91BCBB3864177B /* Pods-EurofurenceAppCoreAdapterTests-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49CAAB83D53E7C7960422A6E /* Pods-EurofurenceAppCoreAdapterTests-settings-metadata.plist */; };
 		FDA174B75DF6670FE6F9D0FE /* Pods-Eurofurence-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = FCB5D8F683D64BAB8D2FB3BF /* Pods-Eurofurence-settings-metadata.plist */; };
 /* End PBXBuildFile section */
 
@@ -6940,8 +6938,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				06FBBF5FABD26161587517BB /* Pods-EurofurenceAppCoreAdapterTests-metadata.plist in Resources */,
-				F3D836783A91BCBB3864177B /* Pods-EurofurenceAppCoreAdapterTests-settings-metadata.plist in Resources */,
 				E77620C66D916EA09C691650 /* Pods-EurofurenceModelAdapterTests-metadata.plist in Resources */,
 				AFE9980F8620FAD015DE0C30 /* Pods-EurofurenceModelAdapterTests-settings-metadata.plist in Resources */,
 			);
@@ -7014,7 +7010,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "PLISTBUDDY=\"/usr/libexec/PlistBuddy\"\nINFO_PLIST=\"$CODESIGNING_FOLDER_PATH/Info.plist\"\nSETTINGS_PLIST=\"$CODESIGNING_FOLDER_PATH/Settings.bundle/Root.plist\"\nVERSION_NUMBER=\"`$PLISTBUDDY -c \\\"Print CFBundleShortVersionString\\\" \\\"$INFO_PLIST\\\"`\"\nBUILD_NUMBER=\"`$PLISTBUDDY -c \\\"Print CFBundleVersion\\\" \\\"$INFO_PLIST\\\"`\"\nVERSION=\"$VERSION_NUMBER ($BUILD_NUMBER)\"\n\necho $VERSION\necho $SETTINGS_PLIST\n# The PreferenceSpecifier is currently at position 4 in the array.\n# This value needs to be adjusted if the entry is moved further up or down!\n$PLISTBUDDY -c \"Set :PreferenceSpecifiers:4:DefaultValue '$VERSION'\" \"$SETTINGS_PLIST\"";
+			shellScript = "PLISTBUDDY=\"/usr/libexec/PlistBuddy\"\nINFO_PLIST=\"$CODESIGNING_FOLDER_PATH/Info.plist\"\nSETTINGS_PLIST=\"$CODESIGNING_FOLDER_PATH/Settings.bundle/Root.plist\"\nVERSION_NUMBER=\"`$PLISTBUDDY -c \\\"Print CFBundleShortVersionString\\\" \\\"$INFO_PLIST\\\"`\"\nBUILD_NUMBER=\"`$PLISTBUDDY -c \\\"Print CFBundleVersion\\\" \\\"$INFO_PLIST\\\"`\"\nVERSION=\"$VERSION_NUMBER ($BUILD_NUMBER)\"\n\necho $VERSION\necho $SETTINGS_PLIST\n# The PreferenceSpecifier is currently at position 4 in the array.\n# This value needs to be adjusted if the entry is moved further up or down!\n$PLISTBUDDY -c \"Set :PreferenceSpecifiers:4:DefaultValue '$VERSION'\" \"$SETTINGS_PLIST\"\n";
 		};
 		2C6805F27B955B8FC3A8A88C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -7308,7 +7304,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ -f \"${PODS_ROOT}/SwiftLint/swiftlint\" ]; then\n    cd EurofurenceTests\n    \"${PODS_ROOT}/SwiftLint/swiftlint\" autocorrect\n    cd ..\nelse\n    echo \"warning: SwiftLint pod not installed, please run pod install in the root directory of the project!\"\nfi\n";
+			shellScript = "if [ -f \"${PODS_ROOT}/SwiftLint/swiftlint\" ]; then\n    cd EurofurenceUITests\n    \"${PODS_ROOT}/SwiftLint/swiftlint\" autocorrect\n    cd ..\nelse\n    echo \"warning: SwiftLint pod not installed, please run pod install in the root directory of the project!\"\nfi\n";
 		};
 		CA0F9D8E21D535400084886E /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -7326,7 +7322,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ -f \"${PODS_ROOT}/SwiftLint/swiftlint\" ]; then\n    cd EurofurenceTests\n    \"${PODS_ROOT}/SwiftLint/swiftlint\" autocorrect\n    cd ..\nelse\n    echo \"warning: SwiftLint pod not installed, please run pod install in the root directory of the project!\"\nfi\n";
+			shellScript = "if [ -f \"${PODS_ROOT}/SwiftLint/swiftlint\" ]; then\n    cd ScreenshotGenerator\n    \"${PODS_ROOT}/SwiftLint/swiftlint\" autocorrect\n    cd ..\nelse\n    echo \"warning: SwiftLint pod not installed, please run pod install in the root directory of the project!\"\nfi\n";
 		};
 		CA0F9D8F21D535AD0084886E /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -7344,7 +7340,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ -f \"${PODS_ROOT}/SwiftLint/swiftlint\" ]; then\n    cd EurofurenceAppCoreTestDoubles\n    \"${PODS_ROOT}/SwiftLint/swiftlint\" autocorrect\n    cd ..\nelse\n    echo \"warning: SwiftLint pod not installed, please run pod install in the root directory of the project!\"\nfi\n";
+			shellScript = "if [ -f \"${PODS_ROOT}/SwiftLint/swiftlint\" ]; then\n    cd EurofurenceModelAdapterTests\n    \"${PODS_ROOT}/SwiftLint/swiftlint\" autocorrect\n    cd ..\nelse\n    echo \"warning: SwiftLint pod not installed, please run pod install in the root directory of the project!\"\nfi\n";
 		};
 		CAEA10A9216F6E3200B0C7A6 /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -7380,7 +7376,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ -f \"${PODS_ROOT}/SwiftLint/swiftlint\" ]; then\n    cd EurofurenceAppCore\n    \"${PODS_ROOT}/SwiftLint/swiftlint\" autocorrect\n    cd ..\nelse\n    echo \"warning: SwiftLint pod not installed, please run pod install in the root directory of the project!\"\nfi\n";
+			shellScript = "if [ -f \"${PODS_ROOT}/SwiftLint/swiftlint\" ]; then\n    cd EurofurenceModel\n    \"${PODS_ROOT}/SwiftLint/swiftlint\" autocorrect\n    cd ..\nelse\n    echo \"warning: SwiftLint pod not installed, please run pod install in the root directory of the project!\"\nfi\n";
 		};
 		CAEA10AB216F6E5700B0C7A6 /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -7398,7 +7394,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ -f \"${PODS_ROOT}/SwiftLint/swiftlint\" ]; then\n    cd EurofurenceAppCoreTests\n    \"${PODS_ROOT}/SwiftLint/swiftlint\" autocorrect\n    cd ..\nelse\n    echo \"warning: SwiftLint pod not installed, please run pod install in the root directory of the project!\"\nfi\n";
+			shellScript = "if [ -f \"${PODS_ROOT}/SwiftLint/swiftlint\" ]; then\n    cd EurofurenceModelTests\n    \"${PODS_ROOT}/SwiftLint/swiftlint\" autocorrect\n    cd ..\nelse\n    echo \"warning: SwiftLint pod not installed, please run pod install in the root directory of the project!\"\nfi\n";
 		};
 		CAEA10AC216F6E7000B0C7A6 /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -7416,7 +7412,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ -f \"${PODS_ROOT}/SwiftLint/swiftlint\" ]; then\n    cd EurofurenceAppCoreTestDoubles\n    \"${PODS_ROOT}/SwiftLint/swiftlint\" autocorrect\n    cd ..\nelse\n    echo \"warning: SwiftLint pod not installed, please run pod install in the root directory of the project!\"\nfi\n";
+			shellScript = "if [ -f \"${PODS_ROOT}/SwiftLint/swiftlint\" ]; then\n    cd EurofurenceModelTestDoubles\n    \"${PODS_ROOT}/SwiftLint/swiftlint\" autocorrect\n    cd ..\nelse\n    echo \"warning: SwiftLint pod not installed, please run pod install in the root directory of the project!\"\nfi\n";
 		};
 		CAEA10AD216F6E9700B0C7A6 /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;

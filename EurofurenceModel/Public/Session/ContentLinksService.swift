@@ -19,5 +19,5 @@ public enum LinkContentLookupResult: Equatable {
 
     case web(URL)
     case externalURL(URL)
-    
+
 }

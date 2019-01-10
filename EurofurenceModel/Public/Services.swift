@@ -9,7 +9,7 @@
 import Foundation
 
 public protocol Services {
-    
+
     var notifications: NotificationService { get }
     var refresh: RefreshService { get }
     var announcements: AnnouncementsService { get }
@@ -23,5 +23,5 @@ public protocol Services {
     var maps: MapsService { get }
     var sessionState: SessionStateService { get }
     var privateMessages: PrivateMessagesService { get }
-    
+
 }

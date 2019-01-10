@@ -37,7 +37,7 @@ public struct V2API: ImageAPI, LoginAPI, PrivateMessagesAPI, SyncAPI {
         let request: Request.Login = Request.Login(RegNo: request.regNo, Username: request.username, Password: request.password)
         let jsonData = try! encoder.encode(request)
         let jsonRequest = JSONRequest(url: url, body: jsonData)
-        
+
         jsonSession.post(jsonRequest) { (data, _) in
             if let data = data, let response = try? self.decoder.decode(Response.Login.self, from: data) {
                 completionHandler(response.makeDomainLoginResponse())
@@ -46,49 +46,49 @@ public struct V2API: ImageAPI, LoginAPI, PrivateMessagesAPI, SyncAPI {
             }
         }
     }
-    
+
     // MARK: ImageAPI
-    
+
     public func fetchImage(identifier: String, completionHandler: @escaping (Data?) -> Void) {
         let url = apiUrl + "Images/\(identifier)/Content"
         let request = JSONRequest(url: url)
-        
+
         jsonSession.get(request) { (data, _) in
             completionHandler(data)
         }
     }
-    
+
     // MARK: PrivateMessagesAPI
-    
+
     public func loadPrivateMessages(authorizationToken: String,
                                     completionHandler: @escaping ([APIMessage]?) -> Void) {
         let url = apiUrl + "Communication/PrivateMessages"
         var request = JSONRequest(url: url)
         request.headers = ["Authorization": "Bearer \(authorizationToken)"]
-        
+
         jsonSession.get(request) { (data, _) in
             var messages: [APIMessage]?
             defer { completionHandler(messages) }
-            
+
             guard let data = data else { return }
-            
+
             if let jsonMessages = try? self.decoder.decode([Response.Message].self, from: data) {
                 messages = jsonMessages.map({ $0.makeAppDomainMessage() })
             }
         }
     }
-    
+
     public func markMessageWithIdentifierAsRead(_ identifier: String, authorizationToken: String) {
         let url = apiUrl + "Communication/PrivateMessages/\(identifier)/Read"
         let messageContentsToSupportSwagger = "true".data(using: .utf8)!
         var request = JSONRequest(url: url, body: messageContentsToSupportSwagger)
         request.headers = ["Authorization": "Bearer \(authorizationToken)"]
-        
+
         jsonSession.post(request, completionHandler: { (_, _)  in })
     }
-    
+
     // MARK: SyncAPI
-    
+
     public func fetchLatestData(lastSyncTime: Date?, completionHandler: @escaping (APISyncResponse?) -> Void) {
         let sinceParameterPathComponent: String = {
             if let lastSyncTime = lastSyncTime {
@@ -98,14 +98,14 @@ public struct V2API: ImageAPI, LoginAPI, PrivateMessagesAPI, SyncAPI {
                 return ""
             }
         }()
-        
+
         let url = "\(apiUrl)Sync\(sinceParameterPathComponent)"
         let request = JSONRequest(url: url, body: Data())
-        
+
         jsonSession.get(request) { (data, _) in
             var response: APISyncResponse?
             defer { completionHandler(response) }
-            
+
             if let data = data {
                 do {
                     let decodedResponse = try self.decoder.decode(JSONSyncResponse.self, from: data)
@@ -118,25 +118,25 @@ public struct V2API: ImageAPI, LoginAPI, PrivateMessagesAPI, SyncAPI {
     }
 
     // MARK: Private
-    
+
     private struct Request {
-        
+
         struct Login: Encodable {
             var RegNo: Int
             var Username: String
             var Password: String
         }
-        
+
     }
-    
+
     private struct Response {
-        
+
         struct Login: Decodable {
             var Uid: String
             var Username: String
             var Token: String
             var TokenValidUntil: Date
-            
+
             func makeDomainLoginResponse() -> LoginResponse {
                 return LoginResponse(userIdentifier: Uid,
                                      username: Username,
@@ -144,16 +144,16 @@ public struct V2API: ImageAPI, LoginAPI, PrivateMessagesAPI, SyncAPI {
                                      tokenValidUntil: TokenValidUntil)
             }
         }
-        
+
         struct Message: Decodable {
-            
+
             var id: String
             var authorName: String
             var subject: String
             var message: String
             var receivedDateTime: Date
             var readDateTime: Date?
-            
+
             init(from decoder: Decoder) throws {
                 let container = try decoder.container(keyedBy: CodingKeys.self)
                 id = try container.decode(String.self, forKey: .id)
@@ -161,12 +161,12 @@ public struct V2API: ImageAPI, LoginAPI, PrivateMessagesAPI, SyncAPI {
                 subject = try container.decode(String.self, forKey: .subject)
                 message = try container.decode(String.self, forKey: .message)
                 receivedDateTime = try container.decode(Date.self, forKey: .receivedDateTime)
-                
+
                 if let readTime = try? container.decodeIfPresent(Date.self, forKey: .readDateTime) {
                     readDateTime = readTime
                 }
             }
-            
+
             private enum CodingKeys: String, CodingKey {
                 case id = "Id"
                 case authorName = "AuthorName"
@@ -175,7 +175,7 @@ public struct V2API: ImageAPI, LoginAPI, PrivateMessagesAPI, SyncAPI {
                 case receivedDateTime = "ReceivedDateTimeUtc"
                 case readDateTime = "ReadDateTimeUtc"
             }
-            
+
             func makeAppDomainMessage() -> EurofurenceModel.APIMessage {
                 return EurofurenceModel.APIMessage(identifier: id,
                                                 authorName: authorName,
@@ -184,15 +184,15 @@ public struct V2API: ImageAPI, LoginAPI, PrivateMessagesAPI, SyncAPI {
                                                 contents: message,
                                                 isRead: readDateTime != nil)
             }
-            
+
         }
-        
+
     }
 
 }
 
 private struct JSONSyncResponse: Decodable {
-    
+
     func asAPIResponse() -> APISyncResponse {
         return APISyncResponse(knowledgeGroups: KnowledgeGroups.delta,
                                knowledgeEntries: KnowledgeEntries.delta,
@@ -205,26 +205,26 @@ private struct JSONSyncResponse: Decodable {
                                maps: Maps.delta,
                                images: Images.delta)
     }
-    
+
     struct Leaf<T>: Decodable where T: Decodable & ModelRepresenting {
         var ChangedEntities: [T]
         var DeletedEntities: [String]
         var RemoveAllBeforeInsert: Bool
-        
+
         var delta: APISyncResponse.Delta<T.ModelType> {
             return APISyncResponse.Delta(changed: ChangedEntities.map({ $0.modelValue }),
                                          deleted: DeletedEntities,
                                          removeAllBeforeInsert: RemoveAllBeforeInsert)
         }
     }
-    
+
     struct JSONKnowledgeGroup: Decodable, ModelRepresenting {
         var Id: String
         var Order: Int
         var Name: String
         var Description: String
         var FontAwesomeIconCharacterUnicodeAddress: String
-        
+
         var modelValue: APIKnowledgeGroup {
             return APIKnowledgeGroup(identifier: Id,
                                      order: Order,
@@ -233,9 +233,9 @@ private struct JSONSyncResponse: Decodable {
                                      fontAwesomeCharacterAddress: FontAwesomeIconCharacterUnicodeAddress)
         }
     }
-    
+
     struct JSONKnowledgeEntry: Decodable, ModelRepresenting {
-        
+
         var Id: String
         var KnowledgeGroupId: String
         var Title: String
@@ -243,7 +243,7 @@ private struct JSONSyncResponse: Decodable {
         var Text: String
         var Links: [JSONLink]
         var ImageIds: [String]
-        
+
         var modelValue: APIKnowledgeEntry {
             return APIKnowledgeEntry(identifier: Id,
                                      groupIdentifier: KnowledgeGroupId,
@@ -254,12 +254,12 @@ private struct JSONSyncResponse: Decodable {
                                      imageIdentifiers: ImageIds)
         }
     }
-    
+
     struct JSONLink: Decodable, ModelRepresenting {
-        
+
         enum JSONFragmentType: String, Decodable, ModelRepresenting {
             case WebExternal
-            
+
             var modelValue: APILink.FragmentType {
                 switch self {
                 case JSONLink.JSONFragmentType.WebExternal:
@@ -267,24 +267,24 @@ private struct JSONSyncResponse: Decodable {
                 }
             }
         }
-        
+
         var Name: String
         var FragmentType: JSONFragmentType
         var Target: String
-        
+
         var modelValue: APILink {
             return APILink(name: Name, fragmentType: FragmentType.modelValue, target: Target)
         }
     }
-    
+
     struct JSONAnnouncement: Decodable, ModelRepresenting {
-        
+
         var Id: String
         var Title: String
         var Content: String
         var LastChangeDateTimeUtc: Date
         var ImageId: String?
-        
+
         var modelValue: APIAnnouncement {
             return APIAnnouncement(identifier: Id,
                                    title: Title,
@@ -292,22 +292,22 @@ private struct JSONSyncResponse: Decodable {
                                    lastChangedDateTime: LastChangeDateTimeUtc,
                                    imageIdentifier: ImageId)
         }
-        
+
     }
-    
+
     struct JSONRoom: Decodable, ModelRepresenting {
-        
+
         var Id: String
         var Name: String
-        
+
         var modelValue: APIRoom {
             return APIRoom(roomIdentifier: Id, name: Name)
         }
-        
+
     }
-    
+
     struct JSONEvent: Decodable, ModelRepresenting {
-        
+
         var Id: String
         var ConferenceRoomId: String
         var ConferenceTrackId: String
@@ -322,7 +322,7 @@ private struct JSONSyncResponse: Decodable {
         var BannerImageId: String?
         var PosterImageId: String?
         var Tags: [String]?
-        
+
         var modelValue: APIEvent {
             return APIEvent(identifier: Id,
                             roomIdentifier: ConferenceRoomId,
@@ -339,33 +339,33 @@ private struct JSONSyncResponse: Decodable {
                             bannerImageId: BannerImageId,
                             tags: Tags)
         }
-        
+
     }
-    
+
     struct JSONTrack: Decodable, ModelRepresenting {
-        
+
         var Id: String
         var Name: String
-        
+
         var modelValue: APITrack {
             return APITrack(trackIdentifier: Id, name: Name)
         }
-        
+
     }
-    
+
     struct JSONEventConferenceDay: Decodable, ModelRepresenting {
-        
+
         var Id: String
         var Date: Date
-        
+
         var modelValue: APIConferenceDay {
             return APIConferenceDay(identifier: Id, date: Date)
         }
-        
+
     }
-    
+
     struct JSONDealer: Decodable, ModelRepresenting {
-        
+
         var Id: String
         var DisplayName: String
         var AttendeeNickname: String
@@ -384,7 +384,7 @@ private struct JSONSyncResponse: Decodable {
         var AboutTheArtistText: String
         var AboutTheArtText: String
         var ArtPreviewCaption: String
-        
+
         var modelValue: APIDealer {
             return APIDealer(identifier: Id,
                              displayName: DisplayName,
@@ -405,20 +405,20 @@ private struct JSONSyncResponse: Decodable {
                              aboutTheArtText: AboutTheArtText,
                              artPreviewCaption: ArtPreviewCaption)
         }
-        
+
     }
-    
+
     struct JSONMap: Decodable, ModelRepresenting {
-        
+
         struct JSONMapEntry: Decodable, ModelRepresenting {
-            
+
             struct JSONMapEntryLink: Decodable, ModelRepresenting {
-                
+
                 enum LinkFragmentType: String, Decodable, ModelRepresenting {
                     case DealerDetail
                     case EventConferenceRoom
                     case MapEntry
-                    
+
                     var modelValue: APIMap.Entry.Link.FragmentType {
                         switch self {
                         case .DealerDetail:
@@ -430,22 +430,22 @@ private struct JSONSyncResponse: Decodable {
                         }
                     }
                 }
-                
+
                 var FragmentType: LinkFragmentType
                 var Name: String?
                 var Target: String
-                
+
                 var modelValue: APIMap.Entry.Link {
                     return APIMap.Entry.Link(type: FragmentType.modelValue, name: Name, target: Target)
                 }
             }
-            
+
             var Id: String
             var X: Int
             var Y: Int
             var TapRadius: Int
             var Links: [JSONMapEntryLink]
-            
+
             var modelValue: APIMap.Entry {
                 return APIMap.Entry(identifier: Id,
                                     x: X,
@@ -453,34 +453,34 @@ private struct JSONSyncResponse: Decodable {
                                     tapRadius: TapRadius,
                                     links: Links.map({ $0.modelValue }))
             }
-            
+
         }
-        
+
         var Id: String
         var ImageId: String
         var Description: String
         var Entries: [JSONMapEntry]
-        
+
         var modelValue: APIMap {
             return APIMap(identifier: Id,
                           imageIdentifier: ImageId,
                           mapDescription: Description,
                           entries: Entries.map({ $0.modelValue }))
         }
-        
+
     }
-    
+
     struct JSONImage: Decodable, ModelRepresenting {
-        
+
         var Id: String
         var InternalReference: String
-        
+
         var modelValue: APIImage {
             return APIImage(identifier: Id, internalReference: InternalReference)
         }
-        
+
     }
-    
+
     var KnowledgeGroups: Leaf<JSONKnowledgeGroup>
     var KnowledgeEntries: Leaf<JSONKnowledgeEntry>
     var Announcements: Leaf<JSONAnnouncement>
@@ -491,12 +491,11 @@ private struct JSONSyncResponse: Decodable {
     var Dealers: Leaf<JSONDealer>
     var Maps: Leaf<JSONMap>
     var Images: Leaf<JSONImage>
-    
+
 }
 
 private protocol ModelRepresenting {
     associatedtype ModelType: Equatable
-    
+
     var modelValue: ModelType { get }
 }
-
