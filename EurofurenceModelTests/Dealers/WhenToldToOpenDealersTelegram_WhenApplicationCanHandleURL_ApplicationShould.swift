@@ -19,7 +19,7 @@ class WhenToldToOpenDealersTelegram_WhenApplicationCanHandleURL_ApplicationShoul
         let context = ApplicationTestBuilder().with(urlOpener).build()
         context.performSuccessfulSync(response: syncResponse)
         let dealerIdentifier = DealerIdentifier(dealer.identifier)
-        context.application.openTelegram(for: dealerIdentifier)
+        context.dealersService.openTelegram(for: dealerIdentifier)
         let expected = URL(string: "https://t.me/")!.appendingPathComponent(dealer.twitterHandle)
 
         XCTAssertEqual(expected, urlOpener.capturedURLToOpen)
@@ -34,7 +34,7 @@ class WhenToldToOpenDealersTelegram_WhenApplicationCanHandleURL_ApplicationShoul
         let context = ApplicationTestBuilder().with(urlOpener).build()
         context.performSuccessfulSync(response: syncResponse)
         let dealerIdentifier = DealerIdentifier(dealer.identifier)
-        context.application.openTelegram(for: dealerIdentifier)
+        context.dealersService.openTelegram(for: dealerIdentifier)
 
         XCTAssertNil(urlOpener.capturedURLToOpen)
     }

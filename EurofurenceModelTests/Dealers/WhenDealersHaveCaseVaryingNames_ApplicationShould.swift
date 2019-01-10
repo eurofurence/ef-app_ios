@@ -21,7 +21,7 @@ class WhenDealersHaveCaseVaryingNames_ApplicationShould: XCTestCase {
         let dataStore = CapturingEurofurenceDataStore()
         dataStore.save(syncResponse)
         let context = ApplicationTestBuilder().with(dataStore).build()
-        let dealersIndex = context.application.makeDealersIndex()
+        let dealersIndex = context.dealersService.makeDealersIndex()
         let delegate = CapturingDealersIndexDelegate()
         dealersIndex.setDelegate(delegate)
         let group = delegate.capturedAlphabetisedDealerGroups.first

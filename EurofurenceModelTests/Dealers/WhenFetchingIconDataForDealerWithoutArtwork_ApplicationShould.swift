@@ -18,11 +18,11 @@ class WhenFetchingIconDataForDealerWithoutArtwork_ApplicationShould: XCTestCase 
         syncResponse.dealers.changed = [dealer]
         let context = ApplicationTestBuilder().build()
         context.performSuccessfulSync(response: syncResponse)
-        let dealersIndex = context.application.makeDealersIndex()
+        let dealersIndex = context.dealersService.makeDealersIndex()
         let delegate = CapturingDealersIndexDelegate()
         dealersIndex.setDelegate(delegate)
         var invokedFetchHandlerWithNilData = false
-        context.application.fetchIconPNGData(for: DealerIdentifier(dealer.identifier)) { invokedFetchHandlerWithNilData = $0 == nil }
+        context.dealersService.fetchIconPNGData(for: DealerIdentifier(dealer.identifier)) { invokedFetchHandlerWithNilData = $0 == nil }
 
         XCTAssertTrue(invokedFetchHandlerWithNilData)
     }

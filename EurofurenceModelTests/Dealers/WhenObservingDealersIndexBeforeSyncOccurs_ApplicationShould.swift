@@ -13,7 +13,7 @@ class WhenObservingDealersIndexBeforeSyncOccurs_ApplicationShould: XCTestCase {
 
     func testTellTheIndexDelegateChangedToEmptyGroups() {
         let context = ApplicationTestBuilder().build()
-        let dealersIndex = context.application.makeDealersIndex()
+        let dealersIndex = context.dealersService.makeDealersIndex()
         let delegate = CapturingDealersIndexDelegate()
         dealersIndex.setDelegate(delegate)
 

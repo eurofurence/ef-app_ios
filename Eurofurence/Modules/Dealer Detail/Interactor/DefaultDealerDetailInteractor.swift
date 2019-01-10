@@ -181,7 +181,7 @@ class DefaultDealerDetailInteractor: DealerDetailInteractor {
     private let dealersService: DealersService
 
     convenience init() {
-        self.init(dealersService: SharedModel.instance.session)
+        self.init(dealersService: SharedModel.instance.services.dealers)
     }
 
     init(dealersService: DealersService) {

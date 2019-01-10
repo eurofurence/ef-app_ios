@@ -70,7 +70,7 @@ class WhenFullRefreshOccurs_YieldingOrphanedEntities: XCTestCase {
 
     func testTheOrphanedDealersAreRemoved() {
         let delegate = CapturingDealersIndexDelegate()
-        let index = context.application.makeDealersIndex()
+        let index = context.dealersService.makeDealersIndex()
         index.setDelegate(delegate)
         let originalDealerIdentifiers = originalResponse.dealers.changed.map({ $0.identifier })
         let dealerIdentifiers = delegate.capturedAlphabetisedDealerGroups.reduce([], { $0 + $1.dealers }).map({ $0.identifier.rawValue })

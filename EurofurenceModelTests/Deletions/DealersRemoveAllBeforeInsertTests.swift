@@ -19,7 +19,7 @@ class DealersRemoveAllBeforeInsertTests: XCTestCase {
         context.performSuccessfulSync(response: originalResponse)
         context.performSuccessfulSync(response: subsequentResponse)
         let expected = context.makeExpectedAlphabetisedDealers(from: subsequentResponse)
-        let index = context.application.makeDealersIndex()
+        let index = context.dealersService.makeDealersIndex()
         let delegate = CapturingDealersIndexDelegate()
         index.setDelegate(delegate)
 

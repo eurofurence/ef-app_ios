@@ -22,7 +22,7 @@ class WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould
         let context = ApplicationTestBuilder().with(urlOpener).build()
         context.performSuccessfulSync(response: syncResponse)
         let dealerIdentifier = DealerIdentifier(dealer.identifier)
-        context.application.openWebsite(for: dealerIdentifier)
+        context.dealersService.openWebsite(for: dealerIdentifier)
 
         XCTAssertEqual(expected, urlOpener.capturedURLToOpen)
     }
@@ -38,7 +38,7 @@ class WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould
         context.application.setExternalContentHandler(externalContentHandler)
         context.performSuccessfulSync(response: syncResponse)
         let dealerIdentifier = DealerIdentifier(dealer.identifier)
-        context.application.openWebsite(for: dealerIdentifier)
+        context.dealersService.openWebsite(for: dealerIdentifier)
 
         XCTAssertNil(externalContentHandler.capturedExternalContentURL)
     }

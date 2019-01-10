@@ -70,7 +70,7 @@ class ImagesRemoveAllBeforeInsertTests: XCTestCase {
         context.performSuccessfulSync(response: subsequentResponse)
         let randomDealer = subsequentResponse.dealers.changed.randomElement().element
         var data: ExtendedDealerData?
-        context.application.fetchExtendedDealerData(for: DealerIdentifier(randomDealer.identifier)) { data = $0 }
+        context.dealersService.fetchExtendedDealerData(for: DealerIdentifier(randomDealer.identifier)) { data = $0 }
 
         XCTAssertEqual(data?.artistImagePNGData, context.imageAPI.stubbedImage(for: randomDealer.artistImageId))
     }

@@ -56,6 +56,10 @@ class ApplicationTestBuilder {
             return services.events
         }
 
+        var dealersService: DealersService {
+            return services.dealers
+        }
+
         var authenticationToken: String? {
             return capturingCredentialStore.persistedCredential?.authenticationToken
         }

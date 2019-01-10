@@ -15,7 +15,7 @@ class WhenDeletingDealer_AfterSuccessfulSync_ApplicationShould: XCTestCase {
         var response = APISyncResponse.randomWithoutDeletions
         let context = ApplicationTestBuilder().build()
         let delegate = CapturingDealersIndexDelegate()
-        let index = context.application.makeDealersIndex()
+        let index = context.dealersService.makeDealersIndex()
         index.setDelegate(delegate)
         context.refreshLocalStore()
         context.syncAPI.simulateSuccessfulSync(response)

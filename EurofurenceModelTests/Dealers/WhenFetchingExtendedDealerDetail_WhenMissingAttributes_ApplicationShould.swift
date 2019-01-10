@@ -32,7 +32,7 @@ class WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould: 
         context.refreshLocalStore()
         context.syncAPI.simulateSuccessfulSync(response)
         let identifier = DealerIdentifier(dealer.identifier)
-        context.application.fetchExtendedDealerData(for: identifier) { self.dealerData = $0 }
+        context.dealersService.fetchExtendedDealerData(for: identifier) { self.dealerData = $0 }
     }
 
     func testProvideNilTwitterUsernameWhenEmptyHandleProvided() {

@@ -15,7 +15,7 @@ class WhenObservingDealersIndexAfterSyncOccurs_ApplicationShould: XCTestCase {
         let context = ApplicationTestBuilder().build()
         let syncResponse = APISyncResponse.randomWithoutDeletions
         context.performSuccessfulSync(response: syncResponse)
-        let dealersIndex = context.application.makeDealersIndex()
+        let dealersIndex = context.dealersService.makeDealersIndex()
         let delegate = CapturingDealersIndexDelegate()
         dealersIndex.setDelegate(delegate)
         let expected = context.makeExpectedAlphabetisedDealers(from: syncResponse)

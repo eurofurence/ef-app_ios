@@ -21,7 +21,7 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
     private let eventBus = EventBus()
 
     init() {
-        self.init(dealersService: SharedModel.instance.session)
+        self.init(dealersService: SharedModel.instance.services.dealers)
     }
 
     init(dealersService: DealersService) {

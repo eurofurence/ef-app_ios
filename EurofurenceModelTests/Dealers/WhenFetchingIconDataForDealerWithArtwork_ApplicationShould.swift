@@ -16,12 +16,12 @@ class WhenFetchingIconDataForDealerWithArtwork_ApplicationShould: XCTestCase {
         let dealer = syncResponse.dealers.changed.randomElement().element
         let context = ApplicationTestBuilder().build()
         context.performSuccessfulSync(response: syncResponse)
-        let dealersIndex = context.application.makeDealersIndex()
+        let dealersIndex = context.dealersService.makeDealersIndex()
         let delegate = CapturingDealersIndexDelegate()
         dealersIndex.setDelegate(delegate)
         let expected = context.imageAPI.stubbedImage(for: dealer.artistThumbnailImageId)
         var artworkData: Data?
-        context.application.fetchIconPNGData(for: DealerIdentifier(dealer.identifier)) { artworkData = $0 }
+        context.dealersService.fetchIconPNGData(for: DealerIdentifier(dealer.identifier)) { artworkData = $0 }
 
         XCTAssertEqual(expected, artworkData)
     }
