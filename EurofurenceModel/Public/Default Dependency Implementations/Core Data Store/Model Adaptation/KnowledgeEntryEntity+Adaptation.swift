@@ -24,4 +24,13 @@ extension KnowledgeEntryEntity: EntityAdapting {
                                  imageIdentifiers: imageIdentifiers.or([]))
     }
 
+    func consumeAttributes(from value: APIKnowledgeEntry) {
+        identifier = value.identifier
+        title = value.title
+        text = value.text
+        groupIdentifier = value.groupIdentifier
+        order = Int64(value.order)
+        imageIdentifiers = value.imageIdentifiers
+    }
+
 }

@@ -20,6 +20,12 @@ extension MapEntity: EntityAdapting {
                       entries: entries.map({ $0.asAdaptedType() }))
     }
 
+    func consumeAttributes(from value: APIMap) {
+        identifier = value.identifier
+        imageIdentifier = value.imageIdentifier
+        mapDescription = value.mapDescription
+    }
+
 }
 
 extension MapEntryEntity: EntityAdapting {
@@ -35,6 +41,13 @@ extension MapEntryEntity: EntityAdapting {
                             links: links.map({ $0.asAdaptedType() }))
     }
 
+    func consumeAttributes(from value: APIMap.Entry) {
+        identifier = value.identifier
+        x = Int64(value.x)
+        y = Int64(value.y)
+        tapRadius = Int64(value.tapRadius)
+    }
+
 }
 
 extension MapEntryLinkEntity: EntityAdapting {
@@ -45,6 +58,12 @@ extension MapEntryLinkEntity: EntityAdapting {
         return APIMap.Entry.Link(type: APIMap.Entry.Link.FragmentType(rawValue: Int(type))!,
                                  name: name,
                                  target: target!)
+    }
+
+    func consumeAttributes(from value: APIMap.Entry.Link) {
+        type = Int16(value.type.rawValue)
+        name = value.name
+        target = value.target
     }
 
 }

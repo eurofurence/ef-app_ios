@@ -29,4 +29,21 @@ extension EventEntity: EntityAdapting {
                         tags: tags)
     }
 
+    func consumeAttributes(from value: APIEvent) {
+        identifier = value.identifier
+        roomIdentifier = value.roomIdentifier
+        trackIdentifier = value.trackIdentifier
+        dayIdentifier = value.dayIdentifier
+        startDateTime = value.startDateTime
+        endDateTime = value.endDateTime
+        title = value.title
+        subtitle = value.subtitle
+        abstract = value.abstract
+        panelHosts = value.panelHosts
+        eventDescription = value.eventDescription
+        posterImageId = value.posterImageId
+        bannerImageId = value.bannerImageId
+        tags = value.tags
+    }
+
 }

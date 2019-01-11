@@ -34,4 +34,24 @@ extension DealerEntity: EntityAdapting {
                          artPreviewCaption: artPreviewCaption!)
     }
 
+    func consumeAttributes(from value: APIDealer) {
+        identifier = value.identifier
+        displayName = value.displayName
+        attendeeNickname = value.attendeeNickname
+        attendsOnThursday = value.attendsOnThursday
+        attendsOnFriday = value.attendsOnFriday
+        attendsOnSaturday = value.attendsOnSaturday
+        isAfterDark = value.isAfterDark
+        artistThumbnailImageId = value.artistThumbnailImageId
+        artistImageId = value.artistImageId
+        artPreviewImageId = value.artPreviewImageId
+        categories = value.categories
+        dealerShortDescription = value.shortDescription
+        twitterHandle = value.twitterHandle
+        telegramHandle = value.telegramHandle
+        aboutTheArtist = value.aboutTheArtistText
+        aboutTheArtText = value.aboutTheArtText
+        artPreviewCaption = value.artPreviewCaption
+    }
+
 }

@@ -13,5 +13,6 @@ protocol EntityAdapting {
     associatedtype AdaptedType
 
     func asAdaptedType() -> AdaptedType
+    func consumeAttributes(from value: AdaptedType)
 
 }

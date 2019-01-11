@@ -20,4 +20,12 @@ extension KnowledgeGroupEntity: EntityAdapting {
                                  fontAwesomeCharacterAddress: fontAwesomeCharacterAddress ?? "")
     }
 
+    func consumeAttributes(from value: APIKnowledgeGroup) {
+        identifier = value.identifier
+        order = Int64(value.order)
+        groupName = value.groupName
+        groupDescription = value.groupDescription
+        fontAwesomeCharacterAddress = value.fontAwesomeCharacterAddress
+    }
+
 }

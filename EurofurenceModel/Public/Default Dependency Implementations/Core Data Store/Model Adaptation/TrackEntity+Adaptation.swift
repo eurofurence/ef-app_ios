@@ -16,4 +16,9 @@ extension TrackEntity: EntityAdapting {
         return APITrack(trackIdentifier: identifier!, name: name!)
     }
 
+    func consumeAttributes(from value: APITrack) {
+        identifier = value.trackIdentifier
+        name = value.name
+    }
+
 }

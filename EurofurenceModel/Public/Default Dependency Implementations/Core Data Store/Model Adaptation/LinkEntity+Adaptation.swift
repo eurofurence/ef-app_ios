@@ -18,4 +18,10 @@ extension LinkEntity: EntityAdapting {
                        target: target!)
     }
 
+    func consumeAttributes(from value: APILink) {
+        name = value.name
+        target = value.target
+        fragmentType = Int16(Float(value.fragmentType.rawValue))
+    }
+
 }

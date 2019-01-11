@@ -16,4 +16,9 @@ extension RoomEntity: EntityAdapting {
         return APIRoom(roomIdentifier: identifier!, name: name!)
     }
 
+    func consumeAttributes(from value: APIRoom) {
+        identifier = value.roomIdentifier
+        name = value.name
+    }
+
 }

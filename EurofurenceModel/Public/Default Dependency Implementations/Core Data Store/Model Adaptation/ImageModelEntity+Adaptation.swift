@@ -17,4 +17,9 @@ extension ImageModelEntity: EntityAdapting {
                         internalReference: internalReference!)
     }
 
+    func consumeAttributes(from value: APIImage) {
+        identifier = value.identifier
+        internalReference = value.internalReference
+    }
+
 }

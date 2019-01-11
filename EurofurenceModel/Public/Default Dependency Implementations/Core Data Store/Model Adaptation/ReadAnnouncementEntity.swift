@@ -16,4 +16,8 @@ extension ReadAnnouncementEntity: EntityAdapting {
         return AnnouncementIdentifier(announcementIdentifier!)
     }
 
+    func consumeAttributes(from value: AnnouncementIdentifier) {
+        announcementIdentifier = value.rawValue
+    }
+
 }

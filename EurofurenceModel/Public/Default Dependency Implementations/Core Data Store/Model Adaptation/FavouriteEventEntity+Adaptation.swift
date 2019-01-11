@@ -16,4 +16,8 @@ extension FavouriteEventEntity: EntityAdapting {
         return EventIdentifier(eventIdentifier!)
     }
 
+    func consumeAttributes(from value: EventIdentifier) {
+        eventIdentifier = value.rawValue
+    }
+
 }

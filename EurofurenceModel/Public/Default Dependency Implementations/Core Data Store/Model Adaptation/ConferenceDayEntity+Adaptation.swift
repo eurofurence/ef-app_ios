@@ -16,4 +16,9 @@ extension ConferenceDayEntity: EntityAdapting {
         return APIConferenceDay(identifier: identifier!, date: date!)
     }
 
+    func consumeAttributes(from value: APIConferenceDay) {
+        identifier = value.identifier
+        date = value.date
+    }
+
 }

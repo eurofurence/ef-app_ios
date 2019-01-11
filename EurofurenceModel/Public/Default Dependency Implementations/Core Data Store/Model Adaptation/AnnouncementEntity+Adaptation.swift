@@ -20,4 +20,12 @@ extension AnnouncementEntity: EntityAdapting {
                                imageIdentifier: imageIdentifier)
     }
 
+    func consumeAttributes(from value: APIAnnouncement) {
+        identifier = value.identifier
+        title = value.title
+        content = value.content
+        lastChangedDateTime = value.lastChangedDateTime
+        imageIdentifier = value.imageIdentifier
+    }
+
 }
