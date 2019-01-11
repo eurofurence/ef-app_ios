@@ -12,6 +12,10 @@ extension TrackEntity: EntityAdapting {
 
     typealias AdaptedType = APITrack
 
+    static func makeIdentifyingPredicate(for model: APITrack) -> NSPredicate {
+        return NSPredicate(format: "identifier == %@", model.trackIdentifier)
+    }
+
     func asAdaptedType() -> APITrack {
         return APITrack(trackIdentifier: identifier!, name: name!)
     }

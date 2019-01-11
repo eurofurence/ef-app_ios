@@ -12,6 +12,10 @@ extension LinkEntity: EntityAdapting {
 
     typealias AdaptedType = APILink
 
+    static func makeIdentifyingPredicate(for model: APILink) -> NSPredicate {
+        return NSPredicate(value: false)
+    }
+
     func asAdaptedType() -> APILink {
         return APILink(name: name!,
                        fragmentType: APILink.FragmentType(rawValue: Int(fragmentType))!,

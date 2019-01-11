@@ -42,12 +42,7 @@ class CoreDataStoreTransaction: DataStoreTransaction {
     }
 
     func saveKnowledgeGroups(_ knowledgeGroups: [APIKnowledgeGroup]) {
-        mutations.append { (context) in
-            knowledgeGroups.forEach { (group) in
-                let entity: KnowledgeGroupEntity = self.makeEntity(in: context, uniquelyIdentifiedBy: group.identifier)
-                entity.consumeAttributes(from: group)
-            }
-        }
+        updateEntities(ofKind: KnowledgeGroupEntity.self, using: knowledgeGroups)
     }
 
     func saveKnowledgeEntries(_ knowledgeEntries: [APIKnowledgeEntry]) {
@@ -71,56 +66,27 @@ class CoreDataStoreTransaction: DataStoreTransaction {
     }
 
     func saveAnnouncements(_ announcements: [APIAnnouncement]) {
-        mutations.append { (context) in
-            announcements.forEach { (announcement) in
-                let entity: AnnouncementEntity = self.makeEntity(in: context, uniquelyIdentifiedBy: announcement.identifier)
-                entity.consumeAttributes(from: announcement)
-            }
-        }
+        updateEntities(ofKind: AnnouncementEntity.self, using: announcements)
     }
 
     func saveEvents(_ events: [APIEvent]) {
-        mutations.append { (context) in
-            events.forEach { (event) in
-                let entity: EventEntity = self.makeEntity(in: context, uniquelyIdentifiedBy: event.identifier)
-                entity.consumeAttributes(from: event)
-            }
-        }
+        updateEntities(ofKind: EventEntity.self, using: events)
     }
 
     func saveRooms(_ rooms: [APIRoom]) {
-        mutations.append { (context) in
-            rooms.forEach { (room) in
-                let entity: RoomEntity = self.makeEntity(in: context, uniquelyIdentifiedBy: room.roomIdentifier)
-                entity.consumeAttributes(from: room)
-            }
-        }
+        updateEntities(ofKind: RoomEntity.self, using: rooms)
     }
 
     func saveTracks(_ tracks: [APITrack]) {
-        mutations.append { (context) in
-            tracks.forEach { (track) in
-                let entity: TrackEntity = self.makeEntity(in: context, uniquelyIdentifiedBy: track.trackIdentifier)
-                entity.consumeAttributes(from: track)
-            }
-        }
+        updateEntities(ofKind: TrackEntity.self, using: tracks)
     }
 
     func saveConferenceDays(_ conferenceDays: [APIConferenceDay]) {
-        mutations.append { (context) in
-            conferenceDays.forEach { (conferenceDay) in
-                let entity: ConferenceDayEntity = self.makeEntity(in: context, uniquelyIdentifiedBy: conferenceDay.identifier)
-                entity.consumeAttributes(from: conferenceDay)
-            }
-        }
+        updateEntities(ofKind: ConferenceDayEntity.self, using: conferenceDays)
     }
 
     func saveFavouriteEventIdentifier(_ identifier: EventIdentifier) {
-        mutations.append { (context) in
-            let favouriteEventIdentifierPredicate = NSPredicate(format: "eventIdentifier == %@", identifier.rawValue)
-            let entity: FavouriteEventEntity = self.makeEntity(in: context, uniquelyIdentifiedBy: favouriteEventIdentifierPredicate)
-            entity.consumeAttributes(from: identifier)
-        }
+        updateEntities(ofKind: FavouriteEventEntity.self, using: [identifier])
     }
 
     func saveDealers(_ dealers: [APIDealer]) {
@@ -170,22 +136,11 @@ class CoreDataStoreTransaction: DataStoreTransaction {
     }
 
     func saveReadAnnouncements(_ announcements: [AnnouncementIdentifier]) {
-        mutations.append { (context) in
-            announcements.forEach { (announcement) in
-                let announcementIdentifierPredicate = NSPredicate(format: "announcementIdentifier == %@", announcement.rawValue)
-                let entity: ReadAnnouncementEntity = self.makeEntity(in: context, uniquelyIdentifiedBy: announcementIdentifierPredicate)
-                entity.consumeAttributes(from: announcement)
-            }
-        }
+        updateEntities(ofKind: ReadAnnouncementEntity.self, using: announcements)
     }
 
     func saveImages(_ images: [APIImage]) {
-        mutations.append { (context) in
-            images.forEach { (image) in
-                let entity: ImageModelEntity = self.makeEntity(in: context, uniquelyIdentifiedBy: image.identifier)
-                entity.consumeAttributes(from: image)
-            }
-        }
+        updateEntities(ofKind: ImageModelEntity.self, using: images)
     }
 
     func deleteFavouriteEventIdentifier(_ identifier: EventIdentifier) {
@@ -299,6 +254,15 @@ class CoreDataStoreTransaction: DataStoreTransaction {
     }
 
     // MARK: Private
+
+    private func updateEntities<E: NSManagedObject & EntityAdapting>(ofKind entityType: E.Type, using models: [E.AdaptedType]) {
+        mutations.append { (context) in
+            models.forEach { (model) in
+                let entity: E = self.makeEntity(in: context, uniquelyIdentifiedBy: E.makeIdentifyingPredicate(for: model))
+                entity.consumeAttributes(from: model)
+            }
+        }
+    }
 
     private func makeEntity<Entity>(in context: NSManagedObjectContext,
                                     uniquelyIdentifiedBy identifier: String) -> Entity where Entity: NSManagedObject {

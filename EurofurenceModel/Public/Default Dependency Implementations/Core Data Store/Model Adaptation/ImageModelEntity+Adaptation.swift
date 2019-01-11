@@ -12,6 +12,10 @@ extension ImageModelEntity: EntityAdapting {
 
     typealias AdaptedType = APIImage
 
+    static func makeIdentifyingPredicate(for model: APIImage) -> NSPredicate {
+        return NSPredicate(format: "identifier == %@", model.identifier)
+    }
+
     func asAdaptedType() -> APIImage {
         return APIImage(identifier: identifier!,
                         internalReference: internalReference!)

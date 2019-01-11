@@ -12,6 +12,10 @@ extension MapEntity: EntityAdapting {
 
     typealias AdaptedType = APIMap
 
+    static func makeIdentifyingPredicate(for model: APIMap) -> NSPredicate {
+        return NSPredicate(format: "identifier == %@", model.identifier)
+    }
+
     func asAdaptedType() -> APIMap {
         let entries = ((self.entries as? Set<MapEntryEntity>) ?? Set())
         return APIMap(identifier: identifier!,
@@ -31,6 +35,10 @@ extension MapEntity: EntityAdapting {
 extension MapEntryEntity: EntityAdapting {
 
     typealias AdaptedType = APIMap.Entry
+
+    static func makeIdentifyingPredicate(for model: APIMap.Entry) -> NSPredicate {
+        return NSPredicate(format: "identifier == %@", model.identifier)
+    }
 
     func asAdaptedType() -> APIMap.Entry {
         let links = ((self.links as? Set<MapEntryLinkEntity>) ?? Set())
@@ -53,6 +61,10 @@ extension MapEntryEntity: EntityAdapting {
 extension MapEntryLinkEntity: EntityAdapting {
 
     typealias AdaptedType = APIMap.Entry.Link
+
+    static func makeIdentifyingPredicate(for model: APIMap.Entry.Link) -> NSPredicate {
+        return NSPredicate(value: false)
+    }
 
     func asAdaptedType() -> APIMap.Entry.Link {
         return APIMap.Entry.Link(type: APIMap.Entry.Link.FragmentType(rawValue: Int(type))!,

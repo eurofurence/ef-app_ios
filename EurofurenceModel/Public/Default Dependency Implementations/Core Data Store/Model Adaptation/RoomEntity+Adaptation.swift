@@ -12,6 +12,10 @@ extension RoomEntity: EntityAdapting {
 
     typealias AdaptedType = APIRoom
 
+    static func makeIdentifyingPredicate(for model: APIRoom) -> NSPredicate {
+        return NSPredicate(format: "identifier == %@", model.roomIdentifier)
+    }
+
     func asAdaptedType() -> APIRoom {
         return APIRoom(roomIdentifier: identifier!, name: name!)
     }

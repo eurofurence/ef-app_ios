@@ -12,6 +12,10 @@ extension AnnouncementEntity: EntityAdapting {
 
     typealias AdaptedType = APIAnnouncement
 
+    static func makeIdentifyingPredicate(for model: APIAnnouncement) -> NSPredicate {
+        return NSPredicate(format: "identifier == %@", model.identifier)
+    }
+
     func asAdaptedType() -> APIAnnouncement {
         return APIAnnouncement(identifier: identifier!,
                                title: title!,

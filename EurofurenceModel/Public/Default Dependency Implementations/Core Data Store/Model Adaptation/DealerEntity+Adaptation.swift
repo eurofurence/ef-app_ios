@@ -12,6 +12,10 @@ extension DealerEntity: EntityAdapting {
 
     typealias AdaptedType = APIDealer
 
+    static func makeIdentifyingPredicate(for model: APIDealer) -> NSPredicate {
+        return NSPredicate(format: "identifier == %@", model.identifier)
+    }
+
     func asAdaptedType() -> APIDealer {
         let linksArray = (links?.allObjects as? [LinkEntity])?.map({ $0.asAdaptedType() })
         return APIDealer(identifier: identifier!,

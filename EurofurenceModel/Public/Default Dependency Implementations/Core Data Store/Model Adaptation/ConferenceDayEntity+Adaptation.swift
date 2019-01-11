@@ -12,6 +12,10 @@ extension ConferenceDayEntity: EntityAdapting {
 
     typealias AdaptedType = APIConferenceDay
 
+    static func makeIdentifyingPredicate(for model: APIConferenceDay) -> NSPredicate {
+        return NSPredicate(format: "identifier == %@", model.identifier)
+    }
+
     func asAdaptedType() -> APIConferenceDay {
         return APIConferenceDay(identifier: identifier!, date: date!)
     }

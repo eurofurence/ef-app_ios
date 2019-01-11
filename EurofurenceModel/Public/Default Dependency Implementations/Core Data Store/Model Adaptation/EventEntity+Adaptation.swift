@@ -12,6 +12,10 @@ extension EventEntity: EntityAdapting {
 
     typealias AdaptedType = APIEvent
 
+    static func makeIdentifyingPredicate(for model: APIEvent) -> NSPredicate {
+        return NSPredicate(format: "identifier == %@", model.identifier)
+    }
+
     func asAdaptedType() -> APIEvent {
         return APIEvent(identifier: identifier!,
                         roomIdentifier: roomIdentifier!,

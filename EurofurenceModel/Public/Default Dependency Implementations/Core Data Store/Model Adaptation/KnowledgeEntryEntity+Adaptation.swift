@@ -12,6 +12,10 @@ extension KnowledgeEntryEntity: EntityAdapting {
 
     typealias AdaptedType = APIKnowledgeEntry
 
+    static func makeIdentifyingPredicate(for model: APIKnowledgeEntry) -> NSPredicate {
+        return NSPredicate(format: "identifier == %@", model.identifier)
+    }
+
     func asAdaptedType() -> APIKnowledgeEntry {
         let links = Array((self.links as? Set<LinkEntity>) ?? Set<LinkEntity>())
 
