@@ -1,5 +1,5 @@
 //
-//  V2API.swift
+//  JSONAPI.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 20/07/2017.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct V2API: ImageAPI, LoginAPI, PrivateMessagesAPI, SyncAPI {
+public struct JSONAPI: ImageAPI, LoginAPI, PrivateMessagesAPI, SyncAPI {
 
     // MARK: Properties
 

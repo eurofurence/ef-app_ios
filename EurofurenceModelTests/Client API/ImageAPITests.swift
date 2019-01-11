@@ -1,5 +1,5 @@
 //
-//  V2ImageAPITests.swift
+//  ImageAPITests.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 10/06/2018.
@@ -11,14 +11,14 @@ import EurofurenceModelTestDoubles
 import RandomDataGeneration
 import XCTest
 
-class V2ImageAPITests: XCTestCase {
+class ImageAPITests: XCTestCase {
 
     func testSubmitsExpectedURL() {
         let identifier = String.random
         let apiUrl = StubV2ApiUrlProviding()
         let expected = URL(string: apiUrl.url + "Images/\(identifier)/Content")!.absoluteString
         let jsonSession = CapturingJSONSession()
-        let api = V2API(jsonSession: jsonSession, apiUrl: apiUrl)
+        let api = JSONAPI(jsonSession: jsonSession, apiUrl: apiUrl)
         api.fetchImage(identifier: identifier) { (_) in }
 
         XCTAssertEqual(expected, jsonSession.getRequestURL)
@@ -27,7 +27,7 @@ class V2ImageAPITests: XCTestCase {
     func testProvidesDataFromRequest() {
         let jsonSession = CapturingJSONSession()
         let apiUrl = StubV2ApiUrlProviding()
-        let api = V2API(jsonSession: jsonSession, apiUrl: apiUrl)
+        let api = JSONAPI(jsonSession: jsonSession, apiUrl: apiUrl)
         let expected = Data.random
         var actual: Data?
         api.fetchImage(identifier: .random) { actual = $0 }

@@ -1,5 +1,5 @@
 //
-//  V2LoginAPITests.swift
+//  LoginAPITests.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 20/07/2017.
@@ -10,7 +10,7 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import XCTest
 
-class V2LoginAPITests: XCTestCase {
+class LoginAPITests: XCTestCase {
 
     class CapturingV2LoginObserver {
 
@@ -23,7 +23,7 @@ class V2LoginAPITests: XCTestCase {
 
     }
 
-    var api: V2API!
+    var api: JSONAPI!
     var jsonSession: CapturingJSONSession!
     var apiUrl: V2ApiUrlProviding!
 
@@ -32,7 +32,7 @@ class V2LoginAPITests: XCTestCase {
 
         jsonSession = CapturingJSONSession()
         apiUrl = StubV2ApiUrlProviding()
-        api = V2API(jsonSession: jsonSession, apiUrl: apiUrl)
+        api = JSONAPI(jsonSession: jsonSession, apiUrl: apiUrl)
     }
 
     private func makeSuccessfulLoginPayload(username: String = "",

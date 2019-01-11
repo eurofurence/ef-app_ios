@@ -41,7 +41,7 @@ public class EurofurenceSessionBuilder {
         let buildConfiguration = PreprocessorBuildConfigurationProviding()
 
         let apiUrl = BuildConfigurationV2ApiUrlProviding(buildConfiguration)
-        let api = V2API(jsonSession: jsonSession, apiUrl: apiUrl)
+        let api = JSONAPI(jsonSession: jsonSession, apiUrl: apiUrl)
         loginAPI = api
         imageAPI = api
         privateMessagesAPI = api

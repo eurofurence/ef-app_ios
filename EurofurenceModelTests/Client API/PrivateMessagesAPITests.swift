@@ -1,5 +1,5 @@
 //
-//  V2PrivateMessagesAPITests.swift
+//  PrivateMessagesAPITests.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 24/07/2017.
@@ -26,10 +26,10 @@ class CapturingV2PrivateMessagesObserver {
 
 }
 
-class V2PrivateMessagesAPITests: XCTestCase {
+class PrivateMessagesAPITests: XCTestCase {
 
     var JSONSession: CapturingJSONSession!
-    var api: V2API!
+    var api: JSONAPI!
     var apiUrl: V2ApiUrlProviding!
 
     override func setUp() {
@@ -37,7 +37,7 @@ class V2PrivateMessagesAPITests: XCTestCase {
 
         JSONSession = CapturingJSONSession()
         apiUrl = StubV2ApiUrlProviding()
-        api = V2API(jsonSession: JSONSession, apiUrl: apiUrl)
+        api = JSONAPI(jsonSession: JSONSession, apiUrl: apiUrl)
     }
 
     private func makeCapturingObserverForResponse(_ response: String?) -> CapturingV2PrivateMessagesObserver {

@@ -985,7 +985,7 @@
 		CAEA0E01216BDE3100B0C7A6 /* PrivateMessagesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EABD1F2660D80053DBF6 /* PrivateMessagesAPI.swift */; };
 		CAEA0E02216BDE3100B0C7A6 /* SyncAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF03CF20422B7A0028BD62 /* SyncAPI.swift */; };
 		CAEA0E03216BDE3100B0C7A6 /* ImageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1EBB20B60A6000D904B5 /* ImageAPI.swift */; };
-		CAEA0E05216BDE3100B0C7A6 /* V2API.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD11F20CE8F00E07A4A /* V2API.swift */; };
+		CAEA0E05216BDE3100B0C7A6 /* JSONAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD11F20CE8F00E07A4A /* JSONAPI.swift */; };
 		CAEA0E08216BDE3100B0C7A6 /* V2ApiUrlProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DD58D320D91069001893ED /* V2ApiUrlProviding.swift */; };
 		CAEA0E09216BDE3100B0C7A6 /* SystemNetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF96CF01F1495F400EE6134 /* SystemNetworkReachability.swift */; };
 		CAEA0E0A216BDE3100B0C7A6 /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A861EBB1F25551400B75A8C /* NetworkReachability.swift */; };
@@ -1013,11 +1013,11 @@
 		CAEA0F68216D2A2700B0C7A6 /* EurofurenceModelTestDoubles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAEA0F5C216D294000B0C7A6 /* EurofurenceModelTestDoubles.framework */; };
 		CAEA0F6A216D2B5E00B0C7A6 /* BuildConfigurationV2ApiUrlProvidingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61870E120DAE28D0089E836 /* BuildConfigurationV2ApiUrlProvidingTest.swift */; };
 		CAEA0F6B216D2B8600B0C7A6 /* EurofurenceModelTestDoubles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAEA0F5C216D294000B0C7A6 /* EurofurenceModelTestDoubles.framework */; };
-		CAEA0F6C216D2BFB00B0C7A6 /* V2ImageAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA83EB20CDBE8F00DD0795 /* V2ImageAPITests.swift */; };
-		CAEA0F6D216D2BFB00B0C7A6 /* V2LoginAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD91F20D2F500E07A4A /* V2LoginAPITests.swift */; };
-		CAEA0F6E216D2BFB00B0C7A6 /* V2PrivateMessagesAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAC91F267D3C0053DBF6 /* V2PrivateMessagesAPITests.swift */; };
+		CAEA0F6C216D2BFB00B0C7A6 /* ImageAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA83EB20CDBE8F00DD0795 /* ImageAPITests.swift */; };
+		CAEA0F6D216D2BFB00B0C7A6 /* LoginAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD91F20D2F500E07A4A /* LoginAPITests.swift */; };
+		CAEA0F6E216D2BFB00B0C7A6 /* PrivateMessagesAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAC91F267D3C0053DBF6 /* PrivateMessagesAPITests.swift */; };
 		CAEA0F6F216D2C0900B0C7A6 /* V2SyncAPIResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = CAF597A720482EC000089BE8 /* V2SyncAPIResponse.json */; };
-		CAEA0F70216D2C0900B0C7A6 /* V2SyncAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF597A32045EF5A00089BE8 /* V2SyncAPITests.swift */; };
+		CAEA0F70216D2C0900B0C7A6 /* SyncAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF597A32045EF5A00089BE8 /* SyncAPITests.swift */; };
 		CAEA0F71216D2C0900B0C7A6 /* WhenSyncSucceeds_SyncAPIShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA65A21E2091F1EC0078A4A7 /* WhenSyncSucceeds_SyncAPIShould.swift */; };
 		CAEA0F75216D2CE400B0C7A6 /* CapturingJSONSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE77D21F1A2EB000E9A0BE /* CapturingJSONSession.swift */; };
 		CAEA0F76216D2CE800B0C7A6 /* StubV2ApiUrlProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61870DF20DAD8E00089E836 /* StubV2ApiUrlProviding.swift */; };
@@ -1863,7 +1863,7 @@
 		CA30EABB1F2660AD0053DBF6 /* CapturingPrivateMessagesAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingPrivateMessagesAPI.swift; sourceTree = "<group>"; };
 		CA30EABD1F2660D80053DBF6 /* PrivateMessagesAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivateMessagesAPI.swift; sourceTree = "<group>"; };
 		CA30EAC31F2672BF0053DBF6 /* APIMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIMessage.swift; sourceTree = "<group>"; };
-		CA30EAC91F267D3C0053DBF6 /* V2PrivateMessagesAPITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = V2PrivateMessagesAPITests.swift; sourceTree = "<group>"; };
+		CA30EAC91F267D3C0053DBF6 /* PrivateMessagesAPITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivateMessagesAPITests.swift; sourceTree = "<group>"; };
 		CA30EACF1F27D8620053DBF6 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		CA321F4D1F7BC7FD0050E489 /* PhonePreloadSceneFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhonePreloadSceneFactoryTests.swift; sourceTree = "<group>"; };
 		CA321F501F7BC8550050E489 /* PreloadSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadSceneFactory.swift; sourceTree = "<group>"; };
@@ -2288,8 +2288,8 @@
 		CA73AEF4201A08D1004E77BF /* KnowledgeGroupsListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeGroupsListPresenter.swift; sourceTree = "<group>"; };
 		CA73AEF7201A0908004E77BF /* WhenBuildingKnowledgePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBuildingKnowledgePresenter.swift; sourceTree = "<group>"; };
 		CA7EB7D41F799991002674A6 /* TutorialScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScene.swift; sourceTree = "<group>"; };
-		CA804DD11F20CE8F00E07A4A /* V2API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = V2API.swift; sourceTree = "<group>"; };
-		CA804DD91F20D2F500E07A4A /* V2LoginAPITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = V2LoginAPITests.swift; sourceTree = "<group>"; };
+		CA804DD11F20CE8F00E07A4A /* JSONAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONAPI.swift; sourceTree = "<group>"; };
+		CA804DD91F20D2F500E07A4A /* LoginAPITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginAPITests.swift; sourceTree = "<group>"; };
 		CA81D48D1FE9A8DB00A52A2F /* CapturingTutorialModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingTutorialModuleDelegate.swift; sourceTree = "<group>"; };
 		CA81D48F1FE9A91000A52A2F /* WhenTheTutorialAppears.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenTheTutorialAppears.swift; sourceTree = "<group>"; };
 		CA81D4911FE9AC9200A52A2F /* PhoneTabModuleFactoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneTabModuleFactoryTests.swift; sourceTree = "<group>"; };
@@ -2385,7 +2385,7 @@
 		CABA43A21FD57C65009CB5B0 /* TutorialModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialModuleBuilder.swift; sourceTree = "<group>"; };
 		CABA43AB1FD5DC68009CB5B0 /* LoginScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScene.swift; sourceTree = "<group>"; };
 		CABA83E920CDBBD600DD0795 /* PersistentImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentImageRepository.swift; sourceTree = "<group>"; };
-		CABA83EB20CDBE8F00DD0795 /* V2ImageAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V2ImageAPITests.swift; sourceTree = "<group>"; };
+		CABA83EB20CDBE8F00DD0795 /* ImageAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAPITests.swift; sourceTree = "<group>"; };
 		CABA83EF20CDC80500DD0795 /* WhenSyncSuceeds_ThenObservingUpcomingEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSyncSuceeds_ThenObservingUpcomingEvents.swift; sourceTree = "<group>"; };
 		CABA83F120CE332500DD0795 /* WhenPerformingSubsequentSync_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPerformingSubsequentSync_ApplicationShould.swift; sourceTree = "<group>"; };
 		CABA83F320CE988B00DD0795 /* WhenFavouritingEventViewModel_EventDetailInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFavouritingEventViewModel_EventDetailInteractorShould.swift; sourceTree = "<group>"; };
@@ -2622,7 +2622,7 @@
 		CAF5979C20449A5300089BE8 /* APISyncResponse+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APISyncResponse+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CAF5979E2045886A00089BE8 /* WhenFetchingKnowledgeGroupsBeforeRefreshWhenStoreHasGroups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingKnowledgeGroupsBeforeRefreshWhenStoreHasGroups.swift; sourceTree = "<group>"; };
 		CAF597A120458D1000089BE8 /* WhenPerformingSyncThatSucceeds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPerformingSyncThatSucceeds.swift; sourceTree = "<group>"; };
-		CAF597A32045EF5A00089BE8 /* V2SyncAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V2SyncAPITests.swift; sourceTree = "<group>"; };
+		CAF597A32045EF5A00089BE8 /* SyncAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncAPITests.swift; sourceTree = "<group>"; };
 		CAF597A720482EC000089BE8 /* V2SyncAPIResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = V2SyncAPIResponse.json; sourceTree = "<group>"; };
 		CAF705601F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationDirectorTests.swift; sourceTree = "<group>"; };
 		CAF705631F82D0DF00A9FEA2 /* RootModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootModuleProviding.swift; sourceTree = "<group>"; };
@@ -4572,7 +4572,7 @@
 			isa = PBXGroup;
 			children = (
 				CAF597A720482EC000089BE8 /* V2SyncAPIResponse.json */,
-				CAF597A32045EF5A00089BE8 /* V2SyncAPITests.swift */,
+				CAF597A32045EF5A00089BE8 /* SyncAPITests.swift */,
 				CA65A21E2091F1EC0078A4A7 /* WhenSyncSucceeds_SyncAPIShould.swift */,
 			);
 			path = Sync;
@@ -5288,7 +5288,7 @@
 		CA804DD01F20CE6600E07A4A /* v2 */ = {
 			isa = PBXGroup;
 			children = (
-				CA804DD11F20CE8F00E07A4A /* V2API.swift */,
+				CA804DD11F20CE8F00E07A4A /* JSONAPI.swift */,
 				C6DD58D320D91069001893ED /* V2ApiUrlProviding.swift */,
 			);
 			path = v2;
@@ -6179,9 +6179,9 @@
 			isa = PBXGroup;
 			children = (
 				C61870E120DAE28D0089E836 /* BuildConfigurationV2ApiUrlProvidingTest.swift */,
-				CABA83EB20CDBE8F00DD0795 /* V2ImageAPITests.swift */,
-				CA804DD91F20D2F500E07A4A /* V2LoginAPITests.swift */,
-				CA30EAC91F267D3C0053DBF6 /* V2PrivateMessagesAPITests.swift */,
+				CABA83EB20CDBE8F00DD0795 /* ImageAPITests.swift */,
+				CA804DD91F20D2F500E07A4A /* LoginAPITests.swift */,
+				CA30EAC91F267D3C0053DBF6 /* PrivateMessagesAPITests.swift */,
 				CA65A21D2091F16C0078A4A7 /* Sync */,
 			);
 			path = "Client API";
@@ -8507,7 +8507,7 @@
 				CAEA0DCA216BDE2300B0C7A6 /* UserAuthenticationCoordinator.swift in Sources */,
 				CAEA0DC1216BDE2300B0C7A6 /* AuthenticationService.swift in Sources */,
 				CAEA0D9F216BDE2300B0C7A6 /* Clock.swift in Sources */,
-				CAEA0E05216BDE3100B0C7A6 /* V2API.swift in Sources */,
+				CAEA0E05216BDE3100B0C7A6 /* JSONAPI.swift in Sources */,
 				CAEA0E14216BDE9B00B0C7A6 /* Optional+Extensions.swift in Sources */,
 				CAEA0D8E216BDD9500B0C7A6 /* ConventionCountdownController.swift in Sources */,
 				CAEA0E0B216BDE3100B0C7A6 /* JSONSession.swift in Sources */,
@@ -8595,7 +8595,7 @@
 				CAEA0FB9216E1CC000B0C7A6 /* WhenTellingDealersIndexToSearch_ApplicationShould.swift in Sources */,
 				CAEA10A2216E8B8100B0C7A6 /* CapturingExternalContentHandler.swift in Sources */,
 				CAEA1038216E1CE800B0C7A6 /* CapturingSyncAPI.swift in Sources */,
-				CAEA0F6C216D2BFB00B0C7A6 /* V2ImageAPITests.swift in Sources */,
+				CAEA0F6C216D2BFB00B0C7A6 /* ImageAPITests.swift in Sources */,
 				CAEA0FC5216E1CC000B0C7A6 /* KnowledgeEntriesRemoveAllBeforeInsertTests.swift in Sources */,
 				CAEA0FC3216E1CC000B0C7A6 /* EventConferenceTracksRemoveAllBeforeInsertTests.swift in Sources */,
 				CAEA0FF4216E1CE700B0C7A6 /* WhenFetchingKnowledgeGroupsWithoutLoadingAnything.swift in Sources */,
@@ -8684,7 +8684,7 @@
 				CAEA0FCB216E1CC000B0C7A6 /* WhenDeletingKnowledgeEntry_AfterSuccessfulSync_ApplicationShould.swift in Sources */,
 				CAEA0FF2216E1CE700B0C7A6 /* WhenFetchingKnowledgeGroupsAfterSuccessfulRefresh.swift in Sources */,
 				CAEA0F9F216E1CC000B0C7A6 /* WhenApplicationInitialises_WithAnnouncementsSavedToStore.swift in Sources */,
-				CAEA0F6D216D2BFB00B0C7A6 /* V2LoginAPITests.swift in Sources */,
+				CAEA0F6D216D2BFB00B0C7A6 /* LoginAPITests.swift in Sources */,
 				CAEA0FA7216E1CC000B0C7A6 /* WhenObservingCollectThemAllURLWhileLoggedOut_ApplicationShould.swift in Sources */,
 				CAEA102A216E1CE800B0C7A6 /* CapturingEventsSearchControllerDelegate.swift in Sources */,
 				CAEA103A216E1CE800B0C7A6 /* UserDefaultsForceRefreshRequired.swift in Sources */,
@@ -8704,7 +8704,7 @@
 				CAEA1026216E1CE800B0C7A6 /* CapturingCredentialStore.swift in Sources */,
 				CAEA0FDB216E1CC000B0C7A6 /* WhenUnfavouritingEvent_ApplicationShould.swift in Sources */,
 				CAEA101F216E1CE800B0C7A6 /* WhenSyncingWhileLoggedIn.swift in Sources */,
-				CAEA0F6E216D2BFB00B0C7A6 /* V2PrivateMessagesAPITests.swift in Sources */,
+				CAEA0F6E216D2BFB00B0C7A6 /* PrivateMessagesAPITests.swift in Sources */,
 				CAEA1009216E1CE800B0C7A6 /* WhenLaunchingApplication_PrivateMessagesShould.swift in Sources */,
 				CAEA1098216E8A9900B0C7A6 /* CapturingMapsObserver.swift in Sources */,
 				CAEA100A216E1CE800B0C7A6 /* WhenMarkingMessageAsRead.swift in Sources */,
@@ -8716,7 +8716,7 @@
 				CAEA0F6A216D2B5E00B0C7A6 /* BuildConfigurationV2ApiUrlProvidingTest.swift in Sources */,
 				CAEA0FD7216E1CC000B0C7A6 /* WhenFavouritingEvent_ApplicationShould.swift in Sources */,
 				CAEA0F8F216E1C2D00B0C7A6 /* APISyncResponse+RandomValueProviding.swift in Sources */,
-				CAEA0F70216D2C0900B0C7A6 /* V2SyncAPITests.swift in Sources */,
+				CAEA0F70216D2C0900B0C7A6 /* SyncAPITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
