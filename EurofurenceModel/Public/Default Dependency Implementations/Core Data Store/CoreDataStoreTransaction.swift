@@ -48,12 +48,13 @@ class CoreDataStoreTransaction: DataStoreTransaction {
     func saveKnowledgeEntries(_ knowledgeEntries: [APIKnowledgeEntry]) {
         mutations.append { (context) in
             knowledgeEntries.forEach { (entry) in
-                let entity: KnowledgeEntryEntity = self.makeEntity(in: context, uniquelyIdentifiedBy: entry.identifier)
+                let predicate = KnowledgeEntryEntity.makeIdentifyingPredicate(for: entry)
+                let entity: KnowledgeEntryEntity = context.makeEntity(uniquelyIdentifiedBy: predicate)
                 entity.links.let(entity.removeFromLinks)
 
                 let links = entry.links.map { (link) -> LinkEntity in
                     let predicate = NSPredicate(format: "\(#keyPath(LinkEntity.name)) == %@ AND \(#keyPath(LinkEntity.target)) == %@ AND \(#keyPath(LinkEntity.fragmentType)) == %li", link.name, link.target, link.fragmentType.rawValue)
-                    let entity: LinkEntity = self.makeEntity(in: context, uniquelyIdentifiedBy: predicate)
+                    let entity: LinkEntity = context.makeEntity(uniquelyIdentifiedBy: predicate)
                     entity.consumeAttributes(from: link)
 
                     return entity
@@ -92,12 +93,13 @@ class CoreDataStoreTransaction: DataStoreTransaction {
     func saveDealers(_ dealers: [APIDealer]) {
         mutations.append { (context) in
             dealers.forEach { (dealer) in
-                let entity: DealerEntity = self.makeEntity(in: context, uniquelyIdentifiedBy: dealer.identifier)
+                let predicate = DealerEntity.makeIdentifyingPredicate(for: dealer)
+                let entity: DealerEntity = context.makeEntity(uniquelyIdentifiedBy: predicate)
                 entity.consumeAttributes(from: dealer)
 
                 let links = dealer.links?.map { (link) -> LinkEntity in
                     let predicate = NSPredicate(format: "\(#keyPath(LinkEntity.name)) == %@ AND \(#keyPath(LinkEntity.target)) == %@ AND \(#keyPath(LinkEntity.fragmentType)) == %li", link.name, link.target, link.fragmentType.rawValue)
-                    let entity: LinkEntity = self.makeEntity(in: context, uniquelyIdentifiedBy: predicate)
+                    let entity: LinkEntity = context.makeEntity(uniquelyIdentifiedBy: predicate)
                     entity.consumeAttributes(from: link)
 
                     return entity
@@ -111,7 +113,8 @@ class CoreDataStoreTransaction: DataStoreTransaction {
     func saveMaps(_ maps: [APIMap]) {
         mutations.append { (context) in
             maps.forEach { (map) in
-                let entity: MapEntity = self.makeEntity(in: context, uniquelyIdentifiedBy: map.identifier)
+                let predicate = MapEntity.makeIdentifyingPredicate(for: map)
+                let entity: MapEntity = context.makeEntity(uniquelyIdentifiedBy: predicate)
                 entity.consumeAttributes(from: map)
                 entity.entries.let(entity.removeFromEntries)
 
@@ -258,37 +261,10 @@ class CoreDataStoreTransaction: DataStoreTransaction {
     private func updateEntities<E: NSManagedObject & EntityAdapting>(ofKind entityType: E.Type, using models: [E.AdaptedType]) {
         mutations.append { (context) in
             models.forEach { (model) in
-                let entity: E = self.makeEntity(in: context, uniquelyIdentifiedBy: E.makeIdentifyingPredicate(for: model))
+                let entity: E = context.makeEntity(uniquelyIdentifiedBy: E.makeIdentifyingPredicate(for: model))
                 entity.consumeAttributes(from: model)
             }
         }
-    }
-
-    private func makeEntity<Entity>(in context: NSManagedObjectContext,
-                                    uniquelyIdentifiedBy identifier: String) -> Entity where Entity: NSManagedObject {
-        let predicate = NSPredicate(format: "identifier == %@", identifier)
-        return makeEntity(in: context, uniquelyIdentifiedBy: predicate)
-    }
-
-    private func makeEntity<Entity>(in context: NSManagedObjectContext,
-                                    uniquelyIdentifiedBy predicate: NSPredicate) -> Entity where Entity: NSManagedObject {
-        let fetchRequest = Entity.fetchRequest() as? NSFetchRequest<Entity>
-        fetchRequest?.fetchLimit = 1
-        fetchRequest?.predicate = predicate
-
-        let entity: Entity
-        do {
-            let results = try fetchRequest?.execute()
-            if let result = results?.first {
-                entity = result
-            } else {
-                entity = Entity(context: context)
-            }
-        } catch {
-            entity = Entity(context: context)
-        }
-
-        return entity
     }
 
     private func deleteFirstMatch<T>(for fetchRequest: NSFetchRequest<T>,
