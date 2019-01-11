@@ -152,7 +152,7 @@ class CoreDataStoreTransaction: DataStoreTransaction {
             fetchRequest.predicate = NSPredicate(format: "eventIdentifier == %@", identifier.rawValue)
             fetchRequest.fetchLimit = 1
 
-            self.deleteFirstMatch(for: fetchRequest, in: context)
+            context.deleteFirstMatch(for: fetchRequest)
         }
     }
 
@@ -162,7 +162,7 @@ class CoreDataStoreTransaction: DataStoreTransaction {
             fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
             fetchRequest.fetchLimit = 1
 
-            self.deleteFirstMatch(for: fetchRequest, in: context)
+            context.deleteFirstMatch(for: fetchRequest)
         }
     }
 
@@ -172,7 +172,7 @@ class CoreDataStoreTransaction: DataStoreTransaction {
             fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
             fetchRequest.fetchLimit = 1
 
-            self.deleteFirstMatch(for: fetchRequest, in: context)
+            context.deleteFirstMatch(for: fetchRequest)
         }
     }
 
@@ -182,7 +182,7 @@ class CoreDataStoreTransaction: DataStoreTransaction {
             fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
             fetchRequest.fetchLimit = 1
 
-            self.deleteFirstMatch(for: fetchRequest, in: context)
+            context.deleteFirstMatch(for: fetchRequest)
         }
     }
 
@@ -192,7 +192,7 @@ class CoreDataStoreTransaction: DataStoreTransaction {
             fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
             fetchRequest.fetchLimit = 1
 
-            self.deleteFirstMatch(for: fetchRequest, in: context)
+            context.deleteFirstMatch(for: fetchRequest)
         }
     }
 
@@ -202,7 +202,7 @@ class CoreDataStoreTransaction: DataStoreTransaction {
             fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
             fetchRequest.fetchLimit = 1
 
-            self.deleteFirstMatch(for: fetchRequest, in: context)
+            context.deleteFirstMatch(for: fetchRequest)
         }
     }
 
@@ -212,7 +212,7 @@ class CoreDataStoreTransaction: DataStoreTransaction {
             fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
             fetchRequest.fetchLimit = 1
 
-            self.deleteFirstMatch(for: fetchRequest, in: context)
+            context.deleteFirstMatch(for: fetchRequest)
         }
     }
 
@@ -222,7 +222,7 @@ class CoreDataStoreTransaction: DataStoreTransaction {
             fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
             fetchRequest.fetchLimit = 1
 
-            self.deleteFirstMatch(for: fetchRequest, in: context)
+            context.deleteFirstMatch(for: fetchRequest)
         }
     }
 
@@ -232,7 +232,7 @@ class CoreDataStoreTransaction: DataStoreTransaction {
             fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
             fetchRequest.fetchLimit = 1
 
-            self.deleteFirstMatch(for: fetchRequest, in: context)
+            context.deleteFirstMatch(for: fetchRequest)
         }
     }
 
@@ -242,7 +242,7 @@ class CoreDataStoreTransaction: DataStoreTransaction {
             fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
             fetchRequest.fetchLimit = 1
 
-            self.deleteFirstMatch(for: fetchRequest, in: context)
+            context.deleteFirstMatch(for: fetchRequest)
         }
     }
 
@@ -252,7 +252,7 @@ class CoreDataStoreTransaction: DataStoreTransaction {
             fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
             fetchRequest.fetchLimit = 1
 
-            self.deleteFirstMatch(for: fetchRequest, in: context)
+            context.deleteFirstMatch(for: fetchRequest)
         }
     }
 
@@ -264,18 +264,6 @@ class CoreDataStoreTransaction: DataStoreTransaction {
                 let entity: E = context.makeEntity(uniquelyIdentifiedBy: E.makeIdentifyingPredicate(for: model))
                 entity.consumeAttributes(from: model)
             }
-        }
-    }
-
-    private func deleteFirstMatch<T>(for fetchRequest: NSFetchRequest<T>,
-                                     in context: NSManagedObjectContext) where T: NSManagedObject {
-        do {
-            let results = try fetchRequest.execute()
-            if let result = results.first {
-                context.delete(result)
-            }
-        } catch {
-            print(error)
         }
     }
 
