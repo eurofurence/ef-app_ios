@@ -1,18 +1,18 @@
 //
-//  V2ApiUrlProviding.swift
+//  APIURLProviding.swift
 //  Eurofurence
 //
 //  Created by Dominik Schöner on 19/06/18.
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
-public protocol V2ApiUrlProviding {
+public protocol APIURLProviding {
 
     var url: String { get }
 
 }
 
-public struct BuildConfigurationV2ApiUrlProviding: V2ApiUrlProviding {
+public struct BuildConfigurationAPIURLProviding: APIURLProviding {
 
     public let url: String
 

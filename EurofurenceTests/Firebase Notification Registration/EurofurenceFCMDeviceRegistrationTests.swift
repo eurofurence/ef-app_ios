@@ -14,13 +14,13 @@ class EurofurenceFCMDeviceRegistrationTests: XCTestCase {
 
     var capturingJSONSession: CapturingJSONSession!
     var registration: EurofurenceFCMDeviceRegistration!
-    var urlProviding: StubV2ApiUrlProviding!
+    var urlProviding: StubAPIURLProviding!
 
     override func setUp() {
         super.setUp()
 
         capturingJSONSession = CapturingJSONSession()
-        urlProviding = StubV2ApiUrlProviding()
+        urlProviding = StubAPIURLProviding()
         registration = EurofurenceFCMDeviceRegistration(JSONSession: capturingJSONSession, urlProviding: urlProviding)
     }
 

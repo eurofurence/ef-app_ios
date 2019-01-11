@@ -1,5 +1,5 @@
 //
-//  StubV2ApiUrlProviding.swift
+//  StubAPIURLProviding.swift
 //  EurofurenceTests
 //
 //  Created by Dominik Schöner on 20/06/18.
@@ -8,7 +8,7 @@
 
 import EurofurenceModel
 
-public struct StubV2ApiUrlProviding: V2ApiUrlProviding {
+public struct StubAPIURLProviding: APIURLProviding {
 
     public init() {
 

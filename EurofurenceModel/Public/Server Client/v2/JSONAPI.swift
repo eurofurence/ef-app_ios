@@ -19,7 +19,7 @@ public struct JSONAPI: ImageAPI, LoginAPI, PrivateMessagesAPI, SyncAPI {
 
     // MARK: Initialization
 
-    public init(jsonSession: JSONSession, apiUrl: V2ApiUrlProviding) {
+    public init(jsonSession: JSONSession, apiUrl: APIURLProviding) {
         self.jsonSession = jsonSession
         self.apiUrl = apiUrl.url
 

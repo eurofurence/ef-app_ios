@@ -30,13 +30,13 @@ class PrivateMessagesAPITests: XCTestCase {
 
     var JSONSession: CapturingJSONSession!
     var api: JSONAPI!
-    var apiUrl: V2ApiUrlProviding!
+    var apiUrl: APIURLProviding!
 
     override func setUp() {
         super.setUp()
 
         JSONSession = CapturingJSONSession()
-        apiUrl = StubV2ApiUrlProviding()
+        apiUrl = StubAPIURLProviding()
         api = JSONAPI(jsonSession: JSONSession, apiUrl: apiUrl)
     }
 

@@ -14,7 +14,7 @@ class SyncAPITests: XCTestCase {
 
     func testTheSyncEndpointShouldReceieveRequest() {
         let jsonSession = CapturingJSONSession()
-        let apiUrl = StubV2ApiUrlProviding()
+        let apiUrl = StubAPIURLProviding()
         let syncApi = JSONAPI(jsonSession: jsonSession, apiUrl: apiUrl)
         let url = apiUrl.url + "Sync"
         syncApi.fetchLatestData(lastSyncTime: nil) { (_) in }
@@ -24,7 +24,7 @@ class SyncAPITests: XCTestCase {
 
     func testInvalidResponseEmitsNilResult() {
         let jsonSession = CapturingJSONSession()
-        let apiUrl = StubV2ApiUrlProviding()
+        let apiUrl = StubAPIURLProviding()
         let syncApi = JSONAPI(jsonSession: jsonSession, apiUrl: apiUrl)
         let invalidResponseData = "{not json!".data(using: .utf8)
         var providedWithNilResponse = false
@@ -36,7 +36,7 @@ class SyncAPITests: XCTestCase {
 
     func testSuccessfulResponseDoesNotEmitNilResponse() {
         let jsonSession = CapturingJSONSession()
-        let apiUrl = StubV2ApiUrlProviding()
+        let apiUrl = StubAPIURLProviding()
         let syncApi = JSONAPI(jsonSession: jsonSession, apiUrl: apiUrl)
         let responseDataURL = Bundle(for: SyncAPITests.self).url(forResource: "V2SyncAPIResponse", withExtension: "json")!
         let responseData = try! Data(contentsOf: responseDataURL)
@@ -50,7 +50,7 @@ class SyncAPITests: XCTestCase {
 
     func testFailedNetworkResponseEmitsNilResult() {
         let jsonSession = CapturingJSONSession()
-        let apiUrl = StubV2ApiUrlProviding()
+        let apiUrl = StubAPIURLProviding()
         let syncApi = JSONAPI(jsonSession: jsonSession, apiUrl: apiUrl)
         var providedWithNilResponse = false
         syncApi.fetchLatestData(lastSyncTime: nil) { providedWithNilResponse = $0 == nil }
@@ -61,7 +61,7 @@ class SyncAPITests: XCTestCase {
 
     func testSupplyingLastSyncTimeSuppliesSinceParameter() {
         let jsonSession = CapturingJSONSession()
-        let apiUrl = StubV2ApiUrlProviding()
+        let apiUrl = StubAPIURLProviding()
         let syncApi = JSONAPI(jsonSession: jsonSession, apiUrl: apiUrl)
         let lastSyncTime = Date.random
         syncApi.fetchLatestData(lastSyncTime: lastSyncTime) { (_) in }

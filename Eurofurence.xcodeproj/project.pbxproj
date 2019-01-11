@@ -986,7 +986,7 @@
 		CAEA0E02216BDE3100B0C7A6 /* SyncAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF03CF20422B7A0028BD62 /* SyncAPI.swift */; };
 		CAEA0E03216BDE3100B0C7A6 /* ImageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1EBB20B60A6000D904B5 /* ImageAPI.swift */; };
 		CAEA0E05216BDE3100B0C7A6 /* JSONAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD11F20CE8F00E07A4A /* JSONAPI.swift */; };
-		CAEA0E08216BDE3100B0C7A6 /* V2ApiUrlProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DD58D320D91069001893ED /* V2ApiUrlProviding.swift */; };
+		CAEA0E08216BDE3100B0C7A6 /* APIURLProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DD58D320D91069001893ED /* APIURLProviding.swift */; };
 		CAEA0E09216BDE3100B0C7A6 /* SystemNetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF96CF01F1495F400EE6134 /* SystemNetworkReachability.swift */; };
 		CAEA0E0A216BDE3100B0C7A6 /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A861EBB1F25551400B75A8C /* NetworkReachability.swift */; };
 		CAEA0E0B216BDE3100B0C7A6 /* JSONSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE77CE1F1A2E8600E9A0BE /* JSONSession.swift */; };
@@ -1020,7 +1020,7 @@
 		CAEA0F70216D2C0900B0C7A6 /* SyncAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF597A32045EF5A00089BE8 /* SyncAPITests.swift */; };
 		CAEA0F71216D2C0900B0C7A6 /* WhenSyncSucceeds_SyncAPIShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA65A21E2091F1EC0078A4A7 /* WhenSyncSucceeds_SyncAPIShould.swift */; };
 		CAEA0F75216D2CE400B0C7A6 /* CapturingJSONSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE77D21F1A2EB000E9A0BE /* CapturingJSONSession.swift */; };
-		CAEA0F76216D2CE800B0C7A6 /* StubV2ApiUrlProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61870DF20DAD8E00089E836 /* StubV2ApiUrlProviding.swift */; };
+		CAEA0F76216D2CE800B0C7A6 /* StubAPIURLProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61870DF20DAD8E00089E836 /* StubAPIURLProviding.swift */; };
 		CAEA0F7A216D341600B0C7A6 /* StubClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780481F1D51EB002A8333 /* StubClock.swift */; };
 		CAEA0F7C216D370600B0C7A6 /* FakeHoursDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA0F7B216D370600B0C7A6 /* FakeHoursDateFormatter.swift */; };
 		CAEA0F7D216E188C00B0C7A6 /* CapturingURLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63755F208CBC5F00536BE2 /* CapturingURLOpener.swift */; };
@@ -1499,9 +1499,9 @@
 		B4939A463603D9F022E19825 /* Pods-EurofurenceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EurofurenceTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EurofurenceTests/Pods-EurofurenceTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BEAA057D37994EF60D517EF0 /* Pods_RandomDataGeneration.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RandomDataGeneration.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0A22937D5D26AA9A66DC330 /* Pods_EurofurenceAppCoreTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EurofurenceAppCoreTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C61870DF20DAD8E00089E836 /* StubV2ApiUrlProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubV2ApiUrlProviding.swift; sourceTree = "<group>"; };
+		C61870DF20DAD8E00089E836 /* StubAPIURLProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubAPIURLProviding.swift; sourceTree = "<group>"; };
 		C61870E120DAE28D0089E836 /* BuildConfigurationV2ApiUrlProvidingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildConfigurationV2ApiUrlProvidingTest.swift; sourceTree = "<group>"; };
-		C6DD58D320D91069001893ED /* V2ApiUrlProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V2ApiUrlProviding.swift; sourceTree = "<group>"; };
+		C6DD58D320D91069001893ED /* APIURLProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIURLProviding.swift; sourceTree = "<group>"; };
 		C869B75DF780C2BBBFD9FD0A /* Pods-EurofurenceAppCore-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-EurofurenceAppCore-metadata.plist"; path = "Pods/Pods-EurofurenceAppCore-metadata.plist"; sourceTree = "<group>"; };
 		CA00AE4420D16BBD00C2FBB0 /* ScheduleInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleInteractor.swift; sourceTree = "<group>"; };
 		CA00AE4620D16BCB00C2FBB0 /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
@@ -5289,7 +5289,7 @@
 			isa = PBXGroup;
 			children = (
 				CA804DD11F20CE8F00E07A4A /* JSONAPI.swift */,
-				C6DD58D320D91069001893ED /* V2ApiUrlProviding.swift */,
+				C6DD58D320D91069001893ED /* APIURLProviding.swift */,
 			);
 			path = v2;
 			sourceTree = "<group>";
@@ -6169,7 +6169,7 @@
 				78D7EEBE1F196B77005372A9 /* StubBuildConfigurationProviding.swift */,
 				CAD780481F1D51EB002A8333 /* StubClock.swift */,
 				CA162E7520A4B6CE004AFED6 /* StubDateDistanceCalculator.swift */,
-				C61870DF20DAD8E00089E836 /* StubV2ApiUrlProviding.swift */,
+				C61870DF20DAD8E00089E836 /* StubAPIURLProviding.swift */,
 				CAEA0F7E216E1AA000B0C7A6 /* Random Value Generation */,
 			);
 			path = EurofurenceModelTestDoubles;
@@ -8499,7 +8499,7 @@
 				CAEA0DD0216BDE2300B0C7A6 /* KeychainCredentialStore.swift in Sources */,
 				CAEA0DB7216BDE2300B0C7A6 /* KnowledgeEntry.swift in Sources */,
 				CAEA0DF9216BDE3100B0C7A6 /* APILink.swift in Sources */,
-				CAEA0E08216BDE3100B0C7A6 /* V2ApiUrlProviding.swift in Sources */,
+				CAEA0E08216BDE3100B0C7A6 /* APIURLProviding.swift in Sources */,
 				CAEA0D8A216BDD9500B0C7A6 /* Maps.swift in Sources */,
 				CAEA0DC5216BDE2300B0C7A6 /* EventsService.swift in Sources */,
 				CAEA0DE1216BDE2300B0C7A6 /* RoomEntity+Adaptation.swift in Sources */,
@@ -8753,7 +8753,7 @@
 				CAEA0F7F216E1AE200B0C7A6 /* Announcement+RandomValueProviding.swift in Sources */,
 				CAEA0F88216E1AE200B0C7A6 /* Track+RandomValueProviding.swift in Sources */,
 				CAEA0F8B216E1AE200B0C7A6 /* AlphabetisedDealersGroup+RandomValueProviding.swift in Sources */,
-				CAEA0F76216D2CE800B0C7A6 /* StubV2ApiUrlProviding.swift in Sources */,
+				CAEA0F76216D2CE800B0C7A6 /* StubAPIURLProviding.swift in Sources */,
 				CAEA0F8C216E1AE200B0C7A6 /* ExtendedDealerData+RandomValueProviding.swift in Sources */,
 				CAEA0F82216E1AE200B0C7A6 /* Event+RandomValueProviding.swift in Sources */,
 				CAEA0F75216D2CE400B0C7A6 /* CapturingJSONSession.swift in Sources */,

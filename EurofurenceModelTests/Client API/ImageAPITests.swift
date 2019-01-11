@@ -15,7 +15,7 @@ class ImageAPITests: XCTestCase {
 
     func testSubmitsExpectedURL() {
         let identifier = String.random
-        let apiUrl = StubV2ApiUrlProviding()
+        let apiUrl = StubAPIURLProviding()
         let expected = URL(string: apiUrl.url + "Images/\(identifier)/Content")!.absoluteString
         let jsonSession = CapturingJSONSession()
         let api = JSONAPI(jsonSession: jsonSession, apiUrl: apiUrl)
@@ -26,7 +26,7 @@ class ImageAPITests: XCTestCase {
 
     func testProvidesDataFromRequest() {
         let jsonSession = CapturingJSONSession()
-        let apiUrl = StubV2ApiUrlProviding()
+        let apiUrl = StubAPIURLProviding()
         let api = JSONAPI(jsonSession: jsonSession, apiUrl: apiUrl)
         let expected = Data.random
         var actual: Data?

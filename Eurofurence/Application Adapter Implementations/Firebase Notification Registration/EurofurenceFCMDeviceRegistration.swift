@@ -12,9 +12,9 @@ import Foundation
 public struct EurofurenceFCMDeviceRegistration: FCMDeviceRegistration {
 
     var JSONSession: JSONSession
-    var urlProviding: V2ApiUrlProviding
+    var urlProviding: APIURLProviding
 
-    public init(JSONSession: JSONSession, urlProviding: V2ApiUrlProviding) {
+    public init(JSONSession: JSONSession, urlProviding: APIURLProviding) {
         self.JSONSession = JSONSession
         self.urlProviding = urlProviding
     }

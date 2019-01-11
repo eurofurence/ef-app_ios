@@ -18,7 +18,7 @@ class BuildConfigurationV2ApiUrlProvidingTest: XCTestCase {
         let expectedUrl = debugUrl
         let buildConfiguration = StubBuildConfigurationProviding(configuration: .debug)
 
-        let provider = BuildConfigurationV2ApiUrlProviding(buildConfiguration,
+        let provider = BuildConfigurationAPIURLProviding(buildConfiguration,
                                                            debugUrl: debugUrl,
                                                            releaseUrl: releaseUrl)
         XCTAssertEqual(expectedUrl, provider.url)
@@ -28,7 +28,7 @@ class BuildConfigurationV2ApiUrlProvidingTest: XCTestCase {
         let expectedUrl = releaseUrl
         let buildConfiguration = StubBuildConfigurationProviding(configuration: .release)
 
-        let provider = BuildConfigurationV2ApiUrlProviding(buildConfiguration,
+        let provider = BuildConfigurationAPIURLProviding(buildConfiguration,
                                                            debugUrl: debugUrl,
                                                            releaseUrl: releaseUrl)
         XCTAssertEqual(expectedUrl, provider.url)

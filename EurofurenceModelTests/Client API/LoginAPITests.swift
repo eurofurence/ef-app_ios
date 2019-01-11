@@ -25,13 +25,13 @@ class LoginAPITests: XCTestCase {
 
     var api: JSONAPI!
     var jsonSession: CapturingJSONSession!
-    var apiUrl: V2ApiUrlProviding!
+    var apiUrl: APIURLProviding!
 
     override func setUp() {
         super.setUp()
 
         jsonSession = CapturingJSONSession()
-        apiUrl = StubV2ApiUrlProviding()
+        apiUrl = StubAPIURLProviding()
         api = JSONAPI(jsonSession: jsonSession, apiUrl: apiUrl)
     }
 
