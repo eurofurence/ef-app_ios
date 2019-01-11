@@ -6,12 +6,6 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
-public protocol APIURLProviding {
-
-    var url: String { get }
-
-}
-
 public struct BuildConfigurationAPIURLProviding: APIURLProviding {
 
     public let url: String
