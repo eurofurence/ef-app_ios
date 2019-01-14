@@ -1,5 +1,5 @@
 //
-//  APILink.swift
+//  LinkCharacteristics.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 13/03/2018.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct APILink: Comparable, Equatable {
+public struct LinkCharacteristics: Comparable, Equatable {
 
     public enum FragmentType: Int {
         case WebExternal
@@ -24,11 +24,11 @@ public struct APILink: Comparable, Equatable {
         self.target = target
     }
 
-    public static func <(lhs: APILink, rhs: APILink) -> Bool {
+    public static func <(lhs: LinkCharacteristics, rhs: LinkCharacteristics) -> Bool {
         return lhs.name < rhs.name
     }
 
-    public static func ==(lhs: APILink, rhs: APILink) -> Bool {
+    public static func ==(lhs: LinkCharacteristics, rhs: LinkCharacteristics) -> Bool {
         return lhs.name == rhs.name && lhs.fragmentType == rhs.fragmentType && lhs.target == rhs.target
     }
 

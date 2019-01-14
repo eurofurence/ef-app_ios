@@ -12,7 +12,7 @@ import XCTest
 class WhenRestrictingSearchResultsToFavourites_ScheduleShould: XCTestCase {
 
     func testUpdateTheDelegateWithAllTheFavourites() {
-        let response = APISyncResponse.randomWithoutDeletions
+        let response = ModelCharacteristics.randomWithoutDeletions
         let dataStore = CapturingEurofurenceDataStore()
         let expected = response.events.changed.map({ EventIdentifier($0.identifier) })
         dataStore.save(response) { (transaction) in
@@ -30,7 +30,7 @@ class WhenRestrictingSearchResultsToFavourites_ScheduleShould: XCTestCase {
     }
 
     func testNotIncludeQueryResultsThatAreNotFavourites() {
-        let response = APISyncResponse.randomWithoutDeletions
+        let response = ModelCharacteristics.randomWithoutDeletions
         let dataStore = CapturingEurofurenceDataStore()
         var favouriteEventIdentifiers = response.events.changed.map({ EventIdentifier($0.identifier) })
         let notAFavourite = favouriteEventIdentifiers.randomElement()
@@ -51,7 +51,7 @@ class WhenRestrictingSearchResultsToFavourites_ScheduleShould: XCTestCase {
     }
 
     func testUpdateDelegateWhenUnfavouritingEvent() {
-        let response = APISyncResponse.randomWithoutDeletions
+        let response = ModelCharacteristics.randomWithoutDeletions
         let dataStore = CapturingEurofurenceDataStore()
         let favourites = response.events.changed.map({ EventIdentifier($0.identifier) })
         let randomFavourite = favourites.randomElement()

@@ -13,7 +13,7 @@ class WhenFetchingEventsBeforeRefreshWhenStoreHasEvents: XCTestCase {
 
     func testTheEventsFromTheStoreAreAdapted() {
         let dataStore = CapturingEurofurenceDataStore()
-        let response = APISyncResponse.randomWithoutDeletions
+        let response = ModelCharacteristics.randomWithoutDeletions
         dataStore.performTransaction { (transaction) in
             transaction.saveRooms(response.rooms.changed)
             transaction.saveEvents(response.events.changed)

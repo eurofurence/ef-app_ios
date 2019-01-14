@@ -1,5 +1,5 @@
 //
-//  APIDealer.swift
+//  DealerCharacteristics.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 19/06/2018.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct APIDealer: Equatable {
+public struct DealerCharacteristics: Equatable {
 
     public var identifier: String
     public var displayName: String
@@ -22,14 +22,14 @@ public struct APIDealer: Equatable {
     public var artPreviewImageId: String?
     public var categories: [String]
     public var shortDescription: String
-    public var links: [APILink]?
+    public var links: [LinkCharacteristics]?
     public var twitterHandle: String
     public var telegramHandle: String
     public var aboutTheArtistText: String
     public var aboutTheArtText: String
     public var artPreviewCaption: String
 
-    public init(identifier: String, displayName: String, attendeeNickname: String, attendsOnThursday: Bool, attendsOnFriday: Bool, attendsOnSaturday: Bool, isAfterDark: Bool, artistThumbnailImageId: String?, artistImageId: String?, artPreviewImageId: String?, categories: [String], shortDescription: String, links: [APILink]?, twitterHandle: String, telegramHandle: String, aboutTheArtistText: String, aboutTheArtText: String, artPreviewCaption: String) {
+    public init(identifier: String, displayName: String, attendeeNickname: String, attendsOnThursday: Bool, attendsOnFriday: Bool, attendsOnSaturday: Bool, isAfterDark: Bool, artistThumbnailImageId: String?, artistImageId: String?, artPreviewImageId: String?, categories: [String], shortDescription: String, links: [LinkCharacteristics]?, twitterHandle: String, telegramHandle: String, aboutTheArtistText: String, aboutTheArtText: String, artPreviewCaption: String) {
         self.identifier = identifier
         self.displayName = displayName
         self.attendeeNickname = attendeeNickname

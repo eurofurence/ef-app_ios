@@ -12,7 +12,7 @@ import XCTest
 class WhenObservingUpcomingEvents_ThenLoadSucceeds: XCTestCase {
 
     func testTheObserverIsProvidedWithTheUpcomingEvents() {
-        let syncResponse = APISyncResponse.randomWithoutDeletions
+        let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let randomEvent = syncResponse.events.changed.randomElement().element
         let simulatedTime = randomEvent.startDateTime.addingTimeInterval(-1)
         let context = ApplicationTestBuilder().with(simulatedTime).build()
@@ -25,7 +25,7 @@ class WhenObservingUpcomingEvents_ThenLoadSucceeds: XCTestCase {
     }
 
     func testTheObserverIsNotProvidedWithEventsThatHaveBegan() {
-        let syncResponse = APISyncResponse.randomWithoutDeletions
+        let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let randomEvent = syncResponse.events.changed.randomElement().element
         let simulatedTime = randomEvent.startDateTime.addingTimeInterval(-1)
         let context = ApplicationTestBuilder().with(simulatedTime).build()
@@ -46,7 +46,7 @@ class WhenObservingUpcomingEvents_ThenLoadSucceeds: XCTestCase {
 
     func testTheObserverIsNotProvidedWithEventsTooFarIntoTheFuture() {
         let timeIntervalForUpcomingEventsSinceNow: TimeInterval = .random
-        let syncResponse = APISyncResponse.randomWithoutDeletions
+        let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let randomEvent = syncResponse.events.changed.randomElement().element
         let simulatedTime = randomEvent.startDateTime.addingTimeInterval(-timeIntervalForUpcomingEventsSinceNow - 1)
         let context = ApplicationTestBuilder().with(simulatedTime).with(timeIntervalForUpcomingEventsSinceNow: timeIntervalForUpcomingEventsSinceNow).build()
@@ -61,7 +61,7 @@ class WhenObservingUpcomingEvents_ThenLoadSucceeds: XCTestCase {
 
     func testEventsThatHaveJustStartedAreNotConsideredUpcoming() {
         let timeIntervalForUpcomingEventsSinceNow: TimeInterval = .random
-        let syncResponse = APISyncResponse.randomWithoutDeletions
+        let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let randomEvent = syncResponse.events.changed.randomElement().element
         let simulatedTime = randomEvent.startDateTime
         let context = ApplicationTestBuilder().with(simulatedTime).with(timeIntervalForUpcomingEventsSinceNow: timeIntervalForUpcomingEventsSinceNow).build()

@@ -12,15 +12,15 @@ import XCTest
 class WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould: XCTestCase {
 
     var context: ApplicationTestBuilder.Context!
-    var response: APISyncResponse!
-    var dealer: APIDealer!
+    var response: ModelCharacteristics!
+    var dealer: DealerCharacteristics!
     var dealerData: ExtendedDealerData!
 
     override func setUp() {
         super.setUp()
 
-        response = APISyncResponse.randomWithoutDeletions
-        dealer = APIDealer.random
+        response = ModelCharacteristics.randomWithoutDeletions
+        dealer = DealerCharacteristics.random
         dealer.links = nil
         dealer.twitterHandle = ""
         dealer.telegramHandle = ""

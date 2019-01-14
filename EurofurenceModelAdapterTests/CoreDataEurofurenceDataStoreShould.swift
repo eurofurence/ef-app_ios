@@ -71,7 +71,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
     }
 
     func testSaveKnowledgeGroups() {
-        let expected = [APIKnowledgeGroup].random
+        let expected = [KnowledgeGroupCharacteristics].random
         store.performTransaction { (transaction) in
             transaction.saveKnowledgeGroups(expected)
         }
@@ -83,7 +83,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
     }
 
     func testUpdateExistingKnowledgeGroupsByIdentifier() {
-        var group = APIKnowledgeGroup.random
+        var group = KnowledgeGroupCharacteristics.random
         store.performTransaction { (transaction) in
             transaction.saveKnowledgeGroups([group])
         }
@@ -100,7 +100,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
     }
 
     func testSaveKnowledgeEntries() {
-        let expected = [APIKnowledgeEntry].random.sorted()
+        let expected = [KnowledgeEntryCharacteristics].random.sorted()
         store.performTransaction { (transaction) in
             transaction.saveKnowledgeEntries(expected)
         }
@@ -112,7 +112,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
     }
 
     func testUpdateExistingKnowledgeEntriesByIdentifier() {
-        var entry = APIKnowledgeEntry.random
+        var entry = KnowledgeEntryCharacteristics.random
         store.performTransaction { (transaction) in
             transaction.saveKnowledgeEntries([entry])
         }
@@ -130,7 +130,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
 
     // TODO: This is sorta testing internals, but not sure if there's another avenue for us to assert upon
     func testNotDuplicateLinksWhenUpdatingKnowledgeEntries() {
-        let entry = APIKnowledgeEntry.random
+        let entry = KnowledgeEntryCharacteristics.random
         store.performTransaction { (transaction) in
             transaction.saveKnowledgeEntries([entry])
         }
@@ -155,7 +155,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
     }
 
     func testEnsureLinksDeletedFromRemoteModelAreNotReconstitutedLater_BUG() {
-        var entry = APIKnowledgeEntry.random
+        var entry = KnowledgeEntryCharacteristics.random
         store.performTransaction { (transaction) in
             transaction.saveKnowledgeEntries([entry])
         }
@@ -175,7 +175,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
     }
 
     func testEnsureDeletedMapEntriesAreNotReconstitutedLater_BUG() {
-        var map = APIMap.random
+        var map = MapCharacteristics.random
         store.performTransaction { (transaction) in
             transaction.saveMaps([map])
         }
@@ -195,7 +195,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
     }
 
     func testSaveEvents() {
-        let expected = [APIEvent].random
+        let expected = [EventCharacteristics].random
         store.performTransaction { (transaction) in
             transaction.saveEvents(expected)
         }
@@ -207,7 +207,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
     }
 
     func testUpdateExistingEventsByIdentifier() {
-        var event = APIEvent.random
+        var event = EventCharacteristics.random
         store.performTransaction { (transaction) in
             transaction.saveEvents([event])
         }
@@ -224,7 +224,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
     }
 
     func testSaveRooms() {
-        let expected = [APIRoom].random
+        let expected = [RoomCharacteristics].random
         store.performTransaction { (transaction) in
             transaction.saveRooms(expected)
         }
@@ -236,7 +236,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
     }
 
     func testUpdateExistingRoomsByIdentifier() {
-        var room = APIRoom.random
+        var room = RoomCharacteristics.random
         store.performTransaction { (transaction) in
             transaction.saveRooms([room])
         }
@@ -253,7 +253,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
     }
 
     func testSaveTracks() {
-        let expected = [APITrack].random
+        let expected = [TrackCharacteristics].random
         store.performTransaction { (transaction) in
             transaction.saveTracks(expected)
         }
@@ -265,7 +265,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
     }
 
     func testUpdateExistingTracksByIdentifier() {
-        var track = APITrack.random
+        var track = TrackCharacteristics.random
         store.performTransaction { (transaction) in
             transaction.saveTracks([track])
         }
@@ -282,7 +282,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
     }
 
     func testSaveAnnouncements() {
-        let expected = [APIAnnouncement].random
+        let expected = [AnnouncementCharacteristics].random
         store.performTransaction { (transaction) in
             transaction.saveAnnouncements(expected)
         }
@@ -294,7 +294,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
     }
 
     func testUpdateExistingAnnouncementsByIdentifier() {
-        var announcement = APIAnnouncement.random
+        var announcement = AnnouncementCharacteristics.random
         store.performTransaction { (transaction) in
             transaction.saveAnnouncements([announcement])
         }
@@ -354,7 +354,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
     }
 
     func testSaveConferenceDays() {
-        let conferenceDays = [APIConferenceDay].random
+        let conferenceDays = [ConferenceDayCharacteristics].random
         store.performTransaction { (transaction) in
             transaction.saveConferenceDays(conferenceDays)
         }
@@ -366,7 +366,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
     }
 
     func testUpdateExistingConferenceDaysByIdentifier() {
-        var conferenceDay = APIConferenceDay.random
+        var conferenceDay = ConferenceDayCharacteristics.random
         store.performTransaction { (transaction) in
             transaction.saveConferenceDays([conferenceDay])
         }
@@ -383,7 +383,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
     }
 
     func testSaveDealers() {
-        let dealers = [APIDealer].random
+        let dealers = [DealerCharacteristics].random
         store.performTransaction { (transaction) in
             transaction.saveDealers(dealers)
         }
@@ -395,7 +395,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
     }
 
     func testUpdateExistingDealersByIdentifier() {
-        var dealer = APIDealer.random
+        var dealer = DealerCharacteristics.random
         store.performTransaction { (transaction) in
             transaction.saveDealers([dealer])
         }
@@ -412,7 +412,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
     }
 
     func testSaveMaps() {
-        let maps = [APIMap].random
+        let maps = [MapCharacteristics].random
         store.performTransaction { (transaction) in
             transaction.saveMaps(maps)
         }
@@ -424,7 +424,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
     }
 
     func testUpdateExistingMapsByIdentifier() {
-        var map = APIMap.random
+        var map = MapCharacteristics.random
         store.performTransaction { (transaction) in
             transaction.saveMaps([map])
         }
@@ -468,7 +468,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
     }
 
     func testDeleteAnnouncements() {
-        let element = APIAnnouncement.random
+        let element = AnnouncementCharacteristics.random
         verifyDeletion(for: element,
                        elementIdentifier: element.identifier,
                        savingBlock: { $0.saveAnnouncements },
@@ -477,7 +477,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
     }
 
     func testDeleteKnowledgeGroups() {
-        let element = APIKnowledgeGroup.random
+        let element = KnowledgeGroupCharacteristics.random
         verifyDeletion(for: element,
                        elementIdentifier: element.identifier,
                        savingBlock: { $0.saveKnowledgeGroups },
@@ -486,7 +486,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
     }
 
     func testDeleteKnowledgeEntries() {
-        let element = APIKnowledgeEntry.random
+        let element = KnowledgeEntryCharacteristics.random
         verifyDeletion(for: element,
                        elementIdentifier: element.identifier,
                        savingBlock: { $0.saveKnowledgeEntries },
@@ -495,7 +495,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
     }
 
     func testDeleteEvents() {
-        let element = APIEvent.random
+        let element = EventCharacteristics.random
         verifyDeletion(for: element,
                        elementIdentifier: element.identifier,
                        savingBlock: { $0.saveEvents },
@@ -504,7 +504,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
     }
 
     func testDeleteTracks() {
-        let element = APITrack.random
+        let element = TrackCharacteristics.random
         verifyDeletion(for: element,
                        elementIdentifier: element.trackIdentifier,
                        savingBlock: { $0.saveTracks },
@@ -513,7 +513,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
     }
 
     func testDeleteRooms() {
-        let element = APIRoom.random
+        let element = RoomCharacteristics.random
         verifyDeletion(for: element,
                        elementIdentifier: element.roomIdentifier,
                        savingBlock: { $0.saveRooms },
@@ -522,7 +522,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
     }
 
     func testDeleteConferenceDays() {
-        let element = APIConferenceDay.random
+        let element = ConferenceDayCharacteristics.random
         verifyDeletion(for: element,
                        elementIdentifier: element.identifier,
                        savingBlock: { $0.saveConferenceDays },
@@ -531,7 +531,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
     }
 
     func testDeleteDealers() {
-        let element = APIDealer.random
+        let element = DealerCharacteristics.random
         verifyDeletion(for: element,
                        elementIdentifier: element.identifier,
                        savingBlock: { $0.saveDealers },
@@ -540,7 +540,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
     }
 
     func testDeleteMaps() {
-        let element = APIMap.random
+        let element = MapCharacteristics.random
         verifyDeletion(for: element,
                        elementIdentifier: element.identifier,
                        savingBlock: { $0.saveMaps },
@@ -549,7 +549,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
     }
 
     func testSaveImages() {
-        let expected = [APIImage].random
+        let expected = [ImageCharacteristics].random
         store.performTransaction { (transaction) in
             transaction.saveImages(expected)
         }
@@ -561,7 +561,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
     }
 
     func testUpdateExistingImagesByIdentifier() {
-        var image = APIImage.random
+        var image = ImageCharacteristics.random
         store.performTransaction { (transaction) in
             transaction.saveImages([image])
         }
@@ -578,7 +578,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
     }
 
     func testDeleteImages() {
-        let element = APIImage.random
+        let element = ImageCharacteristics.random
         verifyDeletion(for: element,
                        elementIdentifier: element.identifier,
                        savingBlock: { $0.saveImages },

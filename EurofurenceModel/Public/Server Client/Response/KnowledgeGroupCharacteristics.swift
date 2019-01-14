@@ -1,5 +1,5 @@
 //
-//  APIKnowledgeGroup.swift
+//  KnowledgeGroupCharacteristics.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 26/02/2018.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct APIKnowledgeGroup: Equatable {
+public struct KnowledgeGroupCharacteristics: Equatable {
 
     public var identifier: String
     public var order: Int

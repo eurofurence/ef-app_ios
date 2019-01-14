@@ -12,7 +12,7 @@ import XCTest
 class InOrderToSupportSuperSponsorTag_ApplicationShould: XCTestCase {
 
     func testIndicateItIsSuperSponsorEventWhenTagPresent() {
-        var syncResponse = APISyncResponse.randomWithoutDeletions
+        var syncResponse = ModelCharacteristics.randomWithoutDeletions
         let randomEvent = syncResponse.events.changed.randomElement()
         var event = randomEvent.element
         event.tags = ["supersponsors_only"]
@@ -27,7 +27,7 @@ class InOrderToSupportSuperSponsorTag_ApplicationShould: XCTestCase {
     }
 
     func testNotIndicateItIsSponsorEventWhenTagotPresent() {
-        var syncResponse = APISyncResponse.randomWithoutDeletions
+        var syncResponse = ModelCharacteristics.randomWithoutDeletions
         let randomEvent = syncResponse.events.changed.randomElement()
         var event = randomEvent.element
         event.tags = []

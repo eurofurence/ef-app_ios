@@ -13,7 +13,7 @@ class WhenSearchingForEvents_ApplicationShould: XCTestCase {
 
     func testReturnExactMatchesOnTitles() {
         let context = ApplicationTestBuilder().build()
-        let syncResponse = APISyncResponse.randomWithoutDeletions
+        let syncResponse = ModelCharacteristics.randomWithoutDeletions
         context.performSuccessfulSync(response: syncResponse)
         let eventsSearchController = context.eventsService.makeEventsSearchController()
         let randomEvent = syncResponse.events.changed.randomElement().element
@@ -27,7 +27,7 @@ class WhenSearchingForEvents_ApplicationShould: XCTestCase {
 
     func testReturnFuzzyMatchesOnTitles() {
         let context = ApplicationTestBuilder().build()
-        let syncResponse = APISyncResponse.randomWithoutDeletions
+        let syncResponse = ModelCharacteristics.randomWithoutDeletions
         context.performSuccessfulSync(response: syncResponse)
         let eventsSearchController = context.eventsService.makeEventsSearchController()
         let randomEvent = syncResponse.events.changed.randomElement().element
@@ -42,7 +42,7 @@ class WhenSearchingForEvents_ApplicationShould: XCTestCase {
 
     func testBeCaseInsensitive() {
         let context = ApplicationTestBuilder().build()
-        var syncResponse = APISyncResponse.randomWithoutDeletions
+        var syncResponse = ModelCharacteristics.randomWithoutDeletions
         let randomEvent = syncResponse.events.changed.randomElement()
         var event = randomEvent.element
         event.title = "iGNoRe tHe rANdoM CAsing"

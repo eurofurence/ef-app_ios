@@ -12,7 +12,7 @@ import XCTest
 class WhenResolvingEventByIdentifier_ForEventThatExists_ApplicationShould: XCTestCase {
 
     func testInvokeTheHandlerWithTheExpectedEvent() {
-        let response = APISyncResponse.randomWithoutDeletions
+        let response = ModelCharacteristics.randomWithoutDeletions
         let context = ApplicationTestBuilder().build()
         context.refreshLocalStore()
         context.syncAPI.simulateSuccessfulSync(response)

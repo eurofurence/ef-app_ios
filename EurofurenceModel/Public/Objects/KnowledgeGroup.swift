@@ -36,7 +36,7 @@ public struct KnowledgeGroup: Comparable, Equatable {
 
 public extension KnowledgeGroup {
 
-    public static func fromServerModels(groups: [APIKnowledgeGroup], entries: [APIKnowledgeEntry]) -> [KnowledgeGroup] {
+    public static func fromServerModels(groups: [KnowledgeGroupCharacteristics], entries: [KnowledgeEntryCharacteristics]) -> [KnowledgeGroup] {
         return groups.map({ (group) -> KnowledgeGroup in
             let entries = entries.filter({ $0.groupIdentifier == group.identifier }).map(KnowledgeEntry.fromServerModel).sorted()
             let defaultFontAwesomeBackupCharacter: Character = " "

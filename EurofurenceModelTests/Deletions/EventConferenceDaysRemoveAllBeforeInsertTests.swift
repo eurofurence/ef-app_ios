@@ -12,7 +12,7 @@ import XCTest
 class EventConferenceDaysRemoveAllBeforeInsertTests: XCTestCase {
 
     func testTellTheDataStoreToDeleteTheConferenceDays() {
-        let originalResponse = APISyncResponse.randomWithoutDeletions
+        let originalResponse = ModelCharacteristics.randomWithoutDeletions
         var subsequentResponse = originalResponse
         subsequentResponse.conferenceDays.removeAllBeforeInsert = true
         let context = ApplicationTestBuilder().build()

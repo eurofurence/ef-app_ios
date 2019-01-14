@@ -12,7 +12,7 @@ import XCTest
 class WhenToldToOpenNotification_ThatRepresentsAnnouncement_ApplicationShould: XCTestCase {
 
     func testProvideTheAnnouncementToTheCompletionHandler() {
-        let syncResponse = APISyncResponse.randomWithoutDeletions
+        let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let randomAnnouncement = syncResponse.announcements.changed.randomElement().element
         let context = ApplicationTestBuilder().build()
         let payload: [String: String] = ["event": "announcement", "announcement_id": randomAnnouncement.identifier]

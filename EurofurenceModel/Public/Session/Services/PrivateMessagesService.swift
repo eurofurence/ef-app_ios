@@ -12,13 +12,13 @@ public protocol PrivateMessagesService {
 
     func add(_ observer: PrivateMessagesObserver)
     func refreshMessages()
-    func markMessageAsRead(_ message: APIMessage)
+    func markMessageAsRead(_ message: MessageCharacteristics)
 
 }
 
 public protocol PrivateMessagesObserver {
 
-    func privateMessagesServiceDidFinishRefreshingMessages(messages: [APIMessage])
+    func privateMessagesServiceDidFinishRefreshingMessages(messages: [MessageCharacteristics])
     func privateMessagesServiceDidUpdateUnreadMessageCount(to unreadCount: Int)
     func privateMessagesServiceDidFailToLoadMessages()
 

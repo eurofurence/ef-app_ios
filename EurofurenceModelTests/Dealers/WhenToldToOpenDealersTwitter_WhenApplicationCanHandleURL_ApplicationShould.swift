@@ -13,7 +13,7 @@ import XCTest
 class WhenToldToOpenDealersTwitter_WhenApplicationCanHandleURL_ApplicationShould: XCTestCase {
 
     func testTellTheApplicationToOpenTheTwitterURLWithTheDealersHandle() {
-        let syncResponse = APISyncResponse.randomWithoutDeletions
+        let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let dealer = syncResponse.dealers.changed.randomElement().element
         let urlOpener = HappyPathURLOpener()
         let context = ApplicationTestBuilder().with(urlOpener).build()
@@ -26,8 +26,8 @@ class WhenToldToOpenDealersTwitter_WhenApplicationCanHandleURL_ApplicationShould
     }
 
     func testNotTellTheApplicationToOpenTheTwitterURLWhenTheDealersHandleIsEmpty() {
-        var syncResponse = APISyncResponse.randomWithoutDeletions
-        var dealer = APIDealer.random
+        var syncResponse = ModelCharacteristics.randomWithoutDeletions
+        var dealer = DealerCharacteristics.random
         dealer.twitterHandle = ""
         syncResponse.dealers.changed = [dealer]
         let urlOpener = HappyPathURLOpener()

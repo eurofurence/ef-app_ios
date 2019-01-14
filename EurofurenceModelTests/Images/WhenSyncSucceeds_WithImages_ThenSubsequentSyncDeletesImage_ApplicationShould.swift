@@ -14,7 +14,7 @@ class WhenSyncSucceeds_WithImages_ThenSubsequentSyncDeletesImage_ApplicationShou
     func testDeleteTheImageFromTheStore() {
         let dataStore = CapturingEurofurenceDataStore()
         let context = ApplicationTestBuilder().with(dataStore).build()
-        var syncResponse = APISyncResponse.randomWithoutDeletions
+        var syncResponse = ModelCharacteristics.randomWithoutDeletions
         context.performSuccessfulSync(response: syncResponse)
         let imageToDelegate = syncResponse.images.changed.randomElement().element
         syncResponse.images.changed.removeAll()

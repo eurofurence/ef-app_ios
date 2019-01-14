@@ -12,14 +12,14 @@ import XCTest
 class WhenFetchingExtendedDealerData_ApplicationShould: XCTestCase {
 
     var context: ApplicationTestBuilder.Context!
-    var response: APISyncResponse!
-    var randomDealer: APIDealer!
+    var response: ModelCharacteristics!
+    var randomDealer: DealerCharacteristics!
     var dealerData: ExtendedDealerData!
 
     override func setUp() {
         super.setUp()
 
-        response = APISyncResponse.randomWithoutDeletions
+        response = ModelCharacteristics.randomWithoutDeletions
         context = ApplicationTestBuilder().build()
         context.refreshLocalStore()
         context.syncAPI.simulateSuccessfulSync(response)

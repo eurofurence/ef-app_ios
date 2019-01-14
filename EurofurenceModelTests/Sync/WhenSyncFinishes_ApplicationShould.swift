@@ -29,7 +29,7 @@ class WhenSyncFinishes_ApplicationShould: XCTestCase {
 
         let assertion = SingleTransactionOnlyAllowed()
         let context = ApplicationTestBuilder().with(assertion).build()
-        let syncResponse = APISyncResponse.randomWithoutDeletions
+        let syncResponse = ModelCharacteristics.randomWithoutDeletions
         context.performSuccessfulSync(response: syncResponse)
 
         assertion.verify()

@@ -9,10 +9,10 @@
 import EurofurenceModel
 import RandomDataGeneration
 
-extension APIMessage: RandomValueProviding {
+extension MessageCharacteristics: RandomValueProviding {
 
-    public static var random: APIMessage {
-        return APIMessage(identifier: .random,
+    public static var random: MessageCharacteristics {
+        return MessageCharacteristics(identifier: .random,
                        authorName: .random,
                        receivedDateTime: .random,
                        subject: .random,

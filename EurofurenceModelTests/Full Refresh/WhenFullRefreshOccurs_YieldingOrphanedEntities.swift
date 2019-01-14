@@ -12,8 +12,8 @@ import XCTest
 class WhenFullRefreshOccurs_YieldingOrphanedEntities: XCTestCase {
 
     var context: ApplicationTestBuilder.Context!
-    var originalResponse: APISyncResponse!
-    var fullSyncResponse: APISyncResponse!
+    var originalResponse: ModelCharacteristics!
+    var fullSyncResponse: ModelCharacteristics!
 
     override func setUp() {
         super.setUp()

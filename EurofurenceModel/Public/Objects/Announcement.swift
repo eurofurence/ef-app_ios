@@ -28,11 +28,11 @@ public struct Announcement: Equatable {
 
 public extension Announcement {
 
-    public static func fromServerModels(_ models: [APIAnnouncement]) -> [Announcement] {
+    public static func fromServerModels(_ models: [AnnouncementCharacteristics]) -> [Announcement] {
         return models.map(Announcement.init)
     }
 
-    public init(serverModel: APIAnnouncement) {
+    public init(serverModel: AnnouncementCharacteristics) {
         identifier = AnnouncementIdentifier(serverModel.identifier)
         title = serverModel.title
         content = serverModel.content

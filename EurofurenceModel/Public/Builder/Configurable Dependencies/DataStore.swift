@@ -13,36 +13,36 @@ public protocol DataStore {
     func performTransaction(_ block: @escaping (DataStoreTransaction) -> Void)
 
     func getLastRefreshDate() -> Date?
-    func getSavedKnowledgeGroups() -> [APIKnowledgeGroup]?
-    func getSavedKnowledgeEntries() -> [APIKnowledgeEntry]?
-    func getSavedRooms() -> [APIRoom]?
-    func getSavedTracks() -> [APITrack]?
-    func getSavedEvents() -> [APIEvent]?
-    func getSavedAnnouncements() -> [APIAnnouncement]?
-    func getSavedConferenceDays() -> [APIConferenceDay]?
+    func getSavedKnowledgeGroups() -> [KnowledgeGroupCharacteristics]?
+    func getSavedKnowledgeEntries() -> [KnowledgeEntryCharacteristics]?
+    func getSavedRooms() -> [RoomCharacteristics]?
+    func getSavedTracks() -> [TrackCharacteristics]?
+    func getSavedEvents() -> [EventCharacteristics]?
+    func getSavedAnnouncements() -> [AnnouncementCharacteristics]?
+    func getSavedConferenceDays() -> [ConferenceDayCharacteristics]?
     func getSavedFavouriteEventIdentifiers() -> [EventIdentifier]?
-    func getSavedDealers() -> [APIDealer]?
-    func getSavedMaps() -> [APIMap]?
+    func getSavedDealers() -> [DealerCharacteristics]?
+    func getSavedMaps() -> [MapCharacteristics]?
     func getSavedReadAnnouncementIdentifiers() -> [AnnouncementIdentifier]?
-    func getSavedImages() -> [APIImage]?
+    func getSavedImages() -> [ImageCharacteristics]?
 
 }
 
 public protocol DataStoreTransaction {
 
     func saveLastRefreshDate(_ lastRefreshDate: Date)
-    func saveKnowledgeGroups(_ knowledgeGroups: [APIKnowledgeGroup])
-    func saveKnowledgeEntries(_ knowledgeEntries: [APIKnowledgeEntry])
-    func saveAnnouncements(_ announcements: [APIAnnouncement])
-    func saveEvents(_ events: [APIEvent])
-    func saveRooms(_ rooms: [APIRoom])
-    func saveTracks(_ tracks: [APITrack])
-    func saveConferenceDays(_ conferenceDays: [APIConferenceDay])
+    func saveKnowledgeGroups(_ knowledgeGroups: [KnowledgeGroupCharacteristics])
+    func saveKnowledgeEntries(_ knowledgeEntries: [KnowledgeEntryCharacteristics])
+    func saveAnnouncements(_ announcements: [AnnouncementCharacteristics])
+    func saveEvents(_ events: [EventCharacteristics])
+    func saveRooms(_ rooms: [RoomCharacteristics])
+    func saveTracks(_ tracks: [TrackCharacteristics])
+    func saveConferenceDays(_ conferenceDays: [ConferenceDayCharacteristics])
     func saveFavouriteEventIdentifier(_ identifier: EventIdentifier)
-    func saveDealers(_ dealers: [APIDealer])
-    func saveMaps(_ maps: [APIMap])
+    func saveDealers(_ dealers: [DealerCharacteristics])
+    func saveMaps(_ maps: [MapCharacteristics])
     func saveReadAnnouncements(_ announcements: [AnnouncementIdentifier])
-    func saveImages(_ images: [APIImage])
+    func saveImages(_ images: [ImageCharacteristics])
 
     func deleteFavouriteEventIdentifier(_ identifier: EventIdentifier)
     func deleteKnowledgeGroup(identifier: String)

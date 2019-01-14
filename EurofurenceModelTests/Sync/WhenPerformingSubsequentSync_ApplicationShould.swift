@@ -27,7 +27,7 @@ class WhenPerformingSubsequentSync_ApplicationShould: XCTestCase {
         let expected = Date.random
         context.clock.tickTime(to: expected)
         context.refreshLocalStore()
-        let syncResponse = APISyncResponse.randomWithoutDeletions
+        let syncResponse = ModelCharacteristics.randomWithoutDeletions
         context.syncAPI.simulateSuccessfulSync(syncResponse)
         var didFinishSync = false
         context.refreshLocalStore { (_) in didFinishSync = true }
@@ -41,7 +41,7 @@ class WhenPerformingSubsequentSync_ApplicationShould: XCTestCase {
         let expected = Date.random
         context.clock.tickTime(to: expected)
         context.refreshLocalStore()
-        let syncResponse = APISyncResponse.randomWithoutDeletions
+        let syncResponse = ModelCharacteristics.randomWithoutDeletions
         context.syncAPI.simulateSuccessfulSync(syncResponse)
         let progress = context.refreshLocalStore()
         context.syncAPI.simulateSuccessfulSync(syncResponse)

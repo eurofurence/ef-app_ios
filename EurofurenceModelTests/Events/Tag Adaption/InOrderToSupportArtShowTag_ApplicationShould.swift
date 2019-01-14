@@ -12,7 +12,7 @@ import XCTest
 class InOrderToSupportArtShowTag_ApplicationShould: XCTestCase {
 
     func testIndicateItIsArtShowEventWhenTagPresent() {
-        var syncResponse = APISyncResponse.randomWithoutDeletions
+        var syncResponse = ModelCharacteristics.randomWithoutDeletions
         let randomEvent = syncResponse.events.changed.randomElement()
         var event = randomEvent.element
         event.tags = ["art_show"]
@@ -27,7 +27,7 @@ class InOrderToSupportArtShowTag_ApplicationShould: XCTestCase {
     }
 
     func testNotIndicateItIsArtShowEventWhenTagNotPresent() {
-        var syncResponse = APISyncResponse.randomWithoutDeletions
+        var syncResponse = ModelCharacteristics.randomWithoutDeletions
         let randomEvent = syncResponse.events.changed.randomElement()
         var event = randomEvent.element
         event.tags = []

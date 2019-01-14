@@ -12,7 +12,7 @@ import XCTest
 class EventConferenceTracksRemoveAllBeforeInsertTests: XCTestCase {
 
     func testTellTheDataStoreToDeleteTheTracks() {
-        let originalResponse = APISyncResponse.randomWithoutDeletions
+        let originalResponse = ModelCharacteristics.randomWithoutDeletions
         var subsequentResponse = originalResponse
         subsequentResponse.tracks.removeAllBeforeInsert = true
         let context = ApplicationTestBuilder().build()

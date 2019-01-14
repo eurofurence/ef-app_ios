@@ -13,9 +13,9 @@ import XCTest
 class WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould: XCTestCase {
 
     func testTellTheApplicationToOpenTheURL() {
-        var dealer = APIDealer.random
-        dealer.links = [APILink(name: .random, fragmentType: .WebExternal, target: "https://www.eurofurence.org")]
-        var syncResponse = APISyncResponse.randomWithoutDeletions
+        var dealer = DealerCharacteristics.random
+        dealer.links = [LinkCharacteristics(name: .random, fragmentType: .WebExternal, target: "https://www.eurofurence.org")]
+        var syncResponse = ModelCharacteristics.randomWithoutDeletions
         syncResponse.dealers.changed = [dealer]
         let expected = URL(string: "https://www.eurofurence.org")!
         let urlOpener = HappyPathURLOpener()
@@ -28,9 +28,9 @@ class WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould
     }
 
     func testNotTellExternalContentHandlerToOpenTheURL() {
-        var dealer = APIDealer.random
-        dealer.links = [APILink(name: .random, fragmentType: .WebExternal, target: "https://www.eurofurence.org")]
-        var syncResponse = APISyncResponse.randomWithoutDeletions
+        var dealer = DealerCharacteristics.random
+        dealer.links = [LinkCharacteristics(name: .random, fragmentType: .WebExternal, target: "https://www.eurofurence.org")]
+        var syncResponse = ModelCharacteristics.randomWithoutDeletions
         syncResponse.dealers.changed = [dealer]
         let urlOpener = HappyPathURLOpener()
         let context = ApplicationTestBuilder().with(urlOpener).build()

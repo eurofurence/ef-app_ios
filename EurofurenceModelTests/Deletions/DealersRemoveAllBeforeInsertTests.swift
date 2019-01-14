@@ -12,7 +12,7 @@ import XCTest
 class DealersRemoveAllBeforeInsertTests: XCTestCase {
 
     func testShouldRemoveAllDealersWhenToldTo() {
-        let originalResponse = APISyncResponse.randomWithoutDeletions
+        let originalResponse = ModelCharacteristics.randomWithoutDeletions
         var subsequentResponse = originalResponse
         subsequentResponse.dealers.removeAllBeforeInsert = true
         let context = ApplicationTestBuilder().build()

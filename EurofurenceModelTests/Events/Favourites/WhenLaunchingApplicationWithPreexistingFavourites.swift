@@ -26,7 +26,7 @@ class WhenLaunchingApplicationWithPreexistingFavourites: XCTestCase {
     }
 
     func testTheFavouritesAreSortedByEventStartTime() {
-        let response = APISyncResponse.randomWithoutDeletions
+        let response = ModelCharacteristics.randomWithoutDeletions
         let events = response.events.changed
         let dataStore = CapturingEurofurenceDataStore()
         dataStore.performTransaction { (transaction) in

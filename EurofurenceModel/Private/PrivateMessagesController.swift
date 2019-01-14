@@ -14,7 +14,7 @@ class PrivateMessagesController: PrivateMessagesService {
     private var userAuthenticationToken: String?
     private var privateMessageObservers = [PrivateMessagesObserver]()
 
-    private var localMessages: [APIMessage] = []
+    private var localMessages: [MessageCharacteristics] = []
 
     init(eventBus: EventBus, privateMessagesAPI: PrivateMessagesAPI) {
         self.privateMessagesAPI = privateMessagesAPI
@@ -63,7 +63,7 @@ class PrivateMessagesController: PrivateMessagesService {
         }
     }
 
-    func markMessageAsRead(_ message: APIMessage) {
+    func markMessageAsRead(_ message: MessageCharacteristics) {
         guard let token = userAuthenticationToken else { return }
         privateMessagesAPI.markMessageWithIdentifierAsRead(message.identifier, authorizationToken: token)
 

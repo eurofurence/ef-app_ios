@@ -12,8 +12,8 @@ import XCTest
 class WhenFetchingMapContentThatRevealsRoom_ApplicationShould: XCTestCase {
 
     var context: ApplicationTestBuilder.Context!
-    var map: APIMap!
-    var room: APIRoom!
+    var map: MapCharacteristics!
+    var room: RoomCharacteristics!
     var x: Int!
     var y: Int!
     var tapRadius: Int!
@@ -22,13 +22,13 @@ class WhenFetchingMapContentThatRevealsRoom_ApplicationShould: XCTestCase {
         super.setUp()
 
         context = ApplicationTestBuilder().build()
-        var syncResponse = APISyncResponse.randomWithoutDeletions
-        room = APIRoom(roomIdentifier: .random, name: .random)
+        var syncResponse = ModelCharacteristics.randomWithoutDeletions
+        room = RoomCharacteristics(roomIdentifier: .random, name: .random)
         (x, y, tapRadius) = (Int.random, Int.random, Int.random)
-        map = APIMap.random
-        let link = APIMap.Entry.Link(type: .conferenceRoom, name: .random, target: room.roomIdentifier)
-        let entry = APIMap.Entry(identifier: .random, x: x, y: y, tapRadius: tapRadius, links: [link])
-        let unrelatedEntry = APIMap.Entry(identifier: .random, x: .random, y: .random, tapRadius: 0, links: .random)
+        map = MapCharacteristics.random
+        let link = MapCharacteristics.Entry.Link(type: .conferenceRoom, name: .random, target: room.roomIdentifier)
+        let entry = MapCharacteristics.Entry(identifier: .random, x: x, y: y, tapRadius: tapRadius, links: [link])
+        let unrelatedEntry = MapCharacteristics.Entry(identifier: .random, x: .random, y: .random, tapRadius: 0, links: .random)
         map.entries = [entry, unrelatedEntry]
         syncResponse.maps.changed = [map]
         syncResponse.rooms.changed = [room]

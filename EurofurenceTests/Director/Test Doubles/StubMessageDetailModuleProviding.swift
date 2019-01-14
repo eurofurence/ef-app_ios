@@ -14,8 +14,8 @@ import UIKit.UIViewController
 class StubMessageDetailModuleProviding: MessageDetailModuleProviding {
 
     let stubInterface = UIViewController()
-    private(set) var capturedMessage: APIMessage?
-    func makeMessageDetailModule(message: APIMessage) -> UIViewController {
+    private(set) var capturedMessage: MessageCharacteristics?
+    func makeMessageDetailModule(message: MessageCharacteristics) -> UIViewController {
         capturedMessage = message
         return stubInterface
     }

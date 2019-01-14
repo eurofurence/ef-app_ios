@@ -12,7 +12,7 @@ import XCTest
 class WhenFetchingKnowledgeGroup_ApplicationShould: XCTestCase {
 
     func testReturnOnlyEntriesForThatGroup() {
-        let syncResponse = APISyncResponse.randomWithoutDeletions
+        let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let context = ApplicationTestBuilder().build()
         context.performSuccessfulSync(response: syncResponse)
         let randomGroup = syncResponse.knowledgeGroups.changed.randomElement()

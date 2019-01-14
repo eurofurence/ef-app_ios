@@ -12,8 +12,8 @@ import XCTest
 class WhenFetchingIconDataForDealerWithoutArtwork_ApplicationShould: XCTestCase {
 
     func testInvokeTheFetchHandlerWithNilData() {
-        var syncResponse = APISyncResponse.randomWithoutDeletions
-        var dealer = APIDealer.random
+        var syncResponse = ModelCharacteristics.randomWithoutDeletions
+        var dealer = DealerCharacteristics.random
         dealer.artistThumbnailImageId = nil
         syncResponse.dealers.changed = [dealer]
         let context = ApplicationTestBuilder().build()

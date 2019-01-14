@@ -13,7 +13,7 @@ class WhenObservingMaps_AfterSyncSucceeds_ApplicationShould: XCTestCase {
 
     func testProvideTheMapsToTheObserverInAlphabeticalOrder() {
         let context = ApplicationTestBuilder().build()
-        let syncResponse = APISyncResponse.randomWithoutDeletions
+        let syncResponse = ModelCharacteristics.randomWithoutDeletions
         context.performSuccessfulSync(response: syncResponse)
         let expected = context.makeExpectedMaps(from: syncResponse)
         let observer = CapturingMapsObserver()

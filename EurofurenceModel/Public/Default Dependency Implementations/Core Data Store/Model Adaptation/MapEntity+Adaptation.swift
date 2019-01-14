@@ -10,21 +10,21 @@ import Foundation
 
 extension MapEntity: EntityAdapting {
 
-    typealias AdaptedType = APIMap
+    typealias AdaptedType = MapCharacteristics
 
-    static func makeIdentifyingPredicate(for model: APIMap) -> NSPredicate {
+    static func makeIdentifyingPredicate(for model: MapCharacteristics) -> NSPredicate {
         return NSPredicate(format: "identifier == %@", model.identifier)
     }
 
-    func asAdaptedType() -> APIMap {
+    func asAdaptedType() -> MapCharacteristics {
         let entries = ((self.entries as? Set<MapEntryEntity>) ?? Set())
-        return APIMap(identifier: identifier!,
+        return MapCharacteristics(identifier: identifier!,
                       imageIdentifier: imageIdentifier!,
                       mapDescription: mapDescription!,
                       entries: entries.map({ $0.asAdaptedType() }))
     }
 
-    func consumeAttributes(from value: APIMap) {
+    func consumeAttributes(from value: MapCharacteristics) {
         identifier = value.identifier
         imageIdentifier = value.imageIdentifier
         mapDescription = value.mapDescription
@@ -34,22 +34,22 @@ extension MapEntity: EntityAdapting {
 
 extension MapEntryEntity: EntityAdapting {
 
-    typealias AdaptedType = APIMap.Entry
+    typealias AdaptedType = MapCharacteristics.Entry
 
-    static func makeIdentifyingPredicate(for model: APIMap.Entry) -> NSPredicate {
+    static func makeIdentifyingPredicate(for model: MapCharacteristics.Entry) -> NSPredicate {
         return NSPredicate(format: "identifier == %@", model.identifier)
     }
 
-    func asAdaptedType() -> APIMap.Entry {
+    func asAdaptedType() -> MapCharacteristics.Entry {
         let links = ((self.links as? Set<MapEntryLinkEntity>) ?? Set())
-        return APIMap.Entry(identifier: identifier.or(""),
+        return MapCharacteristics.Entry(identifier: identifier.or(""),
                             x: Int(x),
                             y: Int(y),
                             tapRadius: Int(tapRadius),
                             links: links.map({ $0.asAdaptedType() }))
     }
 
-    func consumeAttributes(from value: APIMap.Entry) {
+    func consumeAttributes(from value: MapCharacteristics.Entry) {
         identifier = value.identifier
         x = Int64(value.x)
         y = Int64(value.y)
@@ -60,19 +60,19 @@ extension MapEntryEntity: EntityAdapting {
 
 extension MapEntryLinkEntity: EntityAdapting {
 
-    typealias AdaptedType = APIMap.Entry.Link
+    typealias AdaptedType = MapCharacteristics.Entry.Link
 
-    static func makeIdentifyingPredicate(for model: APIMap.Entry.Link) -> NSPredicate {
+    static func makeIdentifyingPredicate(for model: MapCharacteristics.Entry.Link) -> NSPredicate {
         return NSPredicate(value: false)
     }
 
-    func asAdaptedType() -> APIMap.Entry.Link {
-        return APIMap.Entry.Link(type: APIMap.Entry.Link.FragmentType(rawValue: Int(type))!,
+    func asAdaptedType() -> MapCharacteristics.Entry.Link {
+        return MapCharacteristics.Entry.Link(type: MapCharacteristics.Entry.Link.FragmentType(rawValue: Int(type))!,
                                  name: name,
                                  target: target!)
     }
 
-    func consumeAttributes(from value: APIMap.Entry.Link) {
+    func consumeAttributes(from value: MapCharacteristics.Entry.Link) {
         type = Int16(value.type.rawValue)
         name = value.name
         target = value.target

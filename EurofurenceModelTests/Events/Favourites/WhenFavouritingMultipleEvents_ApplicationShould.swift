@@ -12,7 +12,7 @@ import XCTest
 class WhenFavouritingMultipleEvents_ApplicationShould: XCTestCase {
 
     func testTellEventsObserversTheEventsAreNowFavourited() {
-        let response = APISyncResponse.randomWithoutDeletions
+        let response = ModelCharacteristics.randomWithoutDeletions
         let events = response.events.changed
         let dataStore = CapturingEurofurenceDataStore()
         dataStore.performTransaction { (transaction) in
@@ -31,7 +31,7 @@ class WhenFavouritingMultipleEvents_ApplicationShould: XCTestCase {
     }
 
     func testTellEventsObserversWhenOnlyOneEventHasBeenUnfavourited() {
-        let response = APISyncResponse.randomWithoutDeletions
+        let response = ModelCharacteristics.randomWithoutDeletions
         let events = response.events.changed
         let dataStore = CapturingEurofurenceDataStore()
         dataStore.performTransaction { (transaction) in
@@ -54,7 +54,7 @@ class WhenFavouritingMultipleEvents_ApplicationShould: XCTestCase {
     }
 
     func testSortTheFavouriteIdentifiersByEventStartTime() {
-        let response = APISyncResponse.randomWithoutDeletions
+        let response = ModelCharacteristics.randomWithoutDeletions
         let events = response.events.changed
         let dataStore = CapturingEurofurenceDataStore()
         dataStore.performTransaction { (transaction) in

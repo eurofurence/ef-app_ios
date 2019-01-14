@@ -12,7 +12,7 @@ import XCTest
 class WhenLaunchingApplication_PrivateMessagesShould: XCTestCase {
 
     func testBeRefreshed() {
-        let message = APIMessage.random
+        let message = MessageCharacteristics.random
         let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         context.privateMessagesAPI.simulateSuccessfulResponse(response: [message])
         let observer = CapturingPrivateMessagesObserver()

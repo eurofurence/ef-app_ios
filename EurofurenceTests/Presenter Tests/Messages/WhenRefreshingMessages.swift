@@ -69,14 +69,14 @@ class WhenRefreshingMessages: XCTestCase {
     }
 
     func testWhenRefreshActionCompletesWithMessagesTheSceneIsToldToBindWithTheNumberOfMessages() {
-        let messages = [APIMessage].random
+        let messages = [MessageCharacteristics].random
         context.privateMessagesService.succeedLastRefresh(messages: messages)
 
         XCTAssertEqual(messages.count, context.scene.boundMessageCount)
     }
 
     func testWhenRefreshActionCompletesWithMessagesTheSceneIsToldToBindWithTheMessage() {
-        let message = APIMessage.random
+        let message = MessageCharacteristics.random
         context.privateMessagesService.succeedLastRefresh(messages: [message])
         let component = CapturingMessageItemScene()
         context.scene.capturedMessageItemBinder?.bind(component, toMessageAt: IndexPath(row: 0, section: 0))

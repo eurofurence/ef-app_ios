@@ -290,7 +290,7 @@ class ApplicationDirector: ExternalContentHandler,
         tabController?.present(navigationController, animated: animate)
     }
 
-    func messagesModuleDidRequestPresentation(for message: APIMessage) {
+    func messagesModuleDidRequestPresentation(for message: MessageCharacteristics) {
         let viewController = messageDetailModuleProviding.makeMessageDetailModule(message: message)
         newsController?.navigationController?.pushViewController(viewController, animated: animate)
     }

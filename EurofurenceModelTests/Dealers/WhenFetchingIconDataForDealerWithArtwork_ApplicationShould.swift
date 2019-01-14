@@ -12,7 +12,7 @@ import XCTest
 class WhenFetchingIconDataForDealerWithArtwork_ApplicationShould: XCTestCase {
 
     func testReturnTheArtworkFromTheImageAPIForTheArtistThumbnailIdentifier() {
-        let syncResponse = APISyncResponse.randomWithoutDeletions
+        let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let dealer = syncResponse.dealers.changed.randomElement().element
         let context = ApplicationTestBuilder().build()
         context.performSuccessfulSync(response: syncResponse)

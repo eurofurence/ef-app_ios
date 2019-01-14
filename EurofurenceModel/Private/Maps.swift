@@ -15,9 +15,9 @@ class Maps: MapsService {
     private let imageRepository: ImageRepository
     private let dealers: Dealers
 
-    private var serverModels = [APIMap]()
-    private var roomServerModels = [APIRoom]()
-    private var dealerServerModels = [APIDealer]()
+    private var serverModels = [MapCharacteristics]()
+    private var roomServerModels = [RoomCharacteristics]()
+    private var dealerServerModels = [DealerCharacteristics]()
 
     private var models = [Map]() {
         didSet {
@@ -61,11 +61,11 @@ class Maps: MapsService {
         guard let model = serverModels.first(where: { $0.identifier == identifier.rawValue }) else { return }
 
         struct MapEntryDisplacementResult {
-            var entry: APIMap.Entry
+            var entry: MapCharacteristics.Entry
             var displacement: Double
         }
 
-        let tappedWithinEntry: (APIMap.Entry) -> MapEntryDisplacementResult? = { (entry) -> MapEntryDisplacementResult? in
+        let tappedWithinEntry: (MapCharacteristics.Entry) -> MapEntryDisplacementResult? = { (entry) -> MapEntryDisplacementResult? in
             let tapRadius = entry.tapRadius
             let horizontalDelta = abs(entry.x - x)
             let verticalDelta = abs(entry.y - y)
@@ -78,7 +78,7 @@ class Maps: MapsService {
 
         guard let entry = model.entries.compactMap(tappedWithinEntry).sorted(by: { $0.displacement < $1.displacement }).first?.entry else { return }
 
-        let contentFromLink: (APIMap.Entry.Link) -> MapContent? = { (link) in
+        let contentFromLink: (MapCharacteristics.Entry.Link) -> MapContent? = { (link) in
             if let room = self.roomServerModels.first(where: { $0.roomIdentifier == link.target }) {
                 return .room(Room(name: room.name))
             }

@@ -12,7 +12,7 @@ import XCTest
 class InOrderToSupportKageTag_ApplicationShould: XCTestCase {
 
     func testIndicateItIsKageEventWhenTagPresent() {
-        var syncResponse = APISyncResponse.randomWithoutDeletions
+        var syncResponse = ModelCharacteristics.randomWithoutDeletions
         let randomEvent = syncResponse.events.changed.randomElement()
         var event = randomEvent.element
         event.tags = ["kage"]
@@ -27,7 +27,7 @@ class InOrderToSupportKageTag_ApplicationShould: XCTestCase {
     }
 
     func testNotIndicateItIsArtShowEventWhenTagNotPresent() {
-        var syncResponse = APISyncResponse.randomWithoutDeletions
+        var syncResponse = ModelCharacteristics.randomWithoutDeletions
         let randomEvent = syncResponse.events.changed.randomElement()
         var event = randomEvent.element
         event.tags = []

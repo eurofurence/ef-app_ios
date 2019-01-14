@@ -10,17 +10,17 @@ import Foundation
 
 extension TrackEntity: EntityAdapting {
 
-    typealias AdaptedType = APITrack
+    typealias AdaptedType = TrackCharacteristics
 
-    static func makeIdentifyingPredicate(for model: APITrack) -> NSPredicate {
+    static func makeIdentifyingPredicate(for model: TrackCharacteristics) -> NSPredicate {
         return NSPredicate(format: "identifier == %@", model.trackIdentifier)
     }
 
-    func asAdaptedType() -> APITrack {
-        return APITrack(trackIdentifier: identifier!, name: name!)
+    func asAdaptedType() -> TrackCharacteristics {
+        return TrackCharacteristics(trackIdentifier: identifier!, name: name!)
     }
 
-    func consumeAttributes(from value: APITrack) {
+    func consumeAttributes(from value: TrackCharacteristics) {
         identifier = value.trackIdentifier
         name = value.name
     }

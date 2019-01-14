@@ -1,5 +1,5 @@
 //
-//  APIConferenceDay.swift
+//  ConferenceDayCharacteristics.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 15/06/2018.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct APIConferenceDay: Equatable {
+public struct ConferenceDayCharacteristics: Equatable {
 
     public var identifier: String
     public var date: Date

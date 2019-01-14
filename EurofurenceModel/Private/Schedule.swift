@@ -31,10 +31,10 @@ class Schedule: ClockDelegate, EventsService {
     private let userPreferences: UserPreferences
     private let hoursDateFormatter: HoursDateFormatter
 
-    private(set) var events = [APIEvent]()
-    private(set) var rooms = [APIRoom]()
-    private(set) var tracks = [APITrack]()
-    private(set) var days = [APIConferenceDay]()
+    private(set) var events = [EventCharacteristics]()
+    private(set) var rooms = [RoomCharacteristics]()
+    private(set) var tracks = [TrackCharacteristics]()
+    private(set) var days = [ConferenceDayCharacteristics]()
 
     private(set) var eventModels = [Event]() {
         didSet {
@@ -200,7 +200,7 @@ class Schedule: ClockDelegate, EventsService {
         }
     }
 
-    func makeEventModel(from event: APIEvent) -> Event? {
+    func makeEventModel(from event: EventCharacteristics) -> Event? {
         guard let room = rooms.first(where: { $0.roomIdentifier == event.roomIdentifier }) else { return nil }
         guard let track = tracks.first(where: { $0.trackIdentifier == event.trackIdentifier }) else { return nil }
 
@@ -243,11 +243,11 @@ class Schedule: ClockDelegate, EventsService {
         favouriteEventIdentifiers = dataStore.getSavedFavouriteEventIdentifiers().or([])
     }
 
-    private func makeDays(from models: [APIConferenceDay]) -> [Day] {
+    private func makeDays(from models: [ConferenceDayCharacteristics]) -> [Day] {
         return models.map(makeDay).sorted()
     }
 
-    private func makeDay(from model: APIConferenceDay) -> Day {
+    private func makeDay(from model: ConferenceDayCharacteristics) -> Day {
         return Day(date: model.date)
     }
 

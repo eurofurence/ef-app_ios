@@ -12,7 +12,7 @@ import XCTest
 class WhenAppLaunchesWhenClockReadsConferenceDay_ScheduleShould: XCTestCase {
 
     func testChangeToExpectedConDay() {
-        let syncResponse = APISyncResponse.randomWithoutDeletions
+        let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let randomDay = syncResponse.conferenceDays.changed.randomElement().element
         let dataStore = CapturingEurofurenceDataStore()
         dataStore.save(syncResponse)
@@ -26,7 +26,7 @@ class WhenAppLaunchesWhenClockReadsConferenceDay_ScheduleShould: XCTestCase {
     }
 
     func testPermitFuzzyMatchingAgainstHoursMinutesAndSecondsWithinDay() {
-        let syncResponse = APISyncResponse.randomWithoutDeletions
+        let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let randomDay = syncResponse.conferenceDays.changed.randomElement().element
         var randomDayComponents = Calendar.current.dateComponents(in: TimeZone(abbreviation: "GMT")!, from: randomDay.date)
         randomDayComponents.hour = .random(upperLimit: 22)
@@ -45,7 +45,7 @@ class WhenAppLaunchesWhenClockReadsConferenceDay_ScheduleShould: XCTestCase {
     }
 
     func testProvideEventsForThatDay() {
-        let response = APISyncResponse.randomWithoutDeletions
+        let response = ModelCharacteristics.randomWithoutDeletions
         let randomDay = response.conferenceDays.changed.randomElement().element
         let dataStore = CapturingEurofurenceDataStore()
         dataStore.save(response)

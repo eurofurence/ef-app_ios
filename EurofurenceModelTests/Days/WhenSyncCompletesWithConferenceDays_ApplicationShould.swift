@@ -13,7 +13,7 @@ class WhenSyncCompletesWithConferenceDays_ApplicationShould: XCTestCase {
 
     func testProvideTheAdaptedDaysToObserversInDateOrder() {
         let context = ApplicationTestBuilder().build()
-        let syncResponse = APISyncResponse.randomWithoutDeletions
+        let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let delegate = CapturingEventsScheduleDelegate()
         let schedule = context.eventsService.makeEventsSchedule()
         schedule.setDelegate(delegate)
@@ -25,7 +25,7 @@ class WhenSyncCompletesWithConferenceDays_ApplicationShould: XCTestCase {
 
     func testNotUpdateTheDelegateIfTheDaysHaveNotChangedBetweenSyncs() {
         let context = ApplicationTestBuilder().build()
-        let syncResponse = APISyncResponse.randomWithoutDeletions
+        let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let delegate = CapturingEventsScheduleDelegate()
         let schedule = context.eventsService.makeEventsSchedule()
         schedule.setDelegate(delegate)
@@ -37,7 +37,7 @@ class WhenSyncCompletesWithConferenceDays_ApplicationShould: XCTestCase {
     }
 
     func testNotUpdateTheDelegateIfTheDaysHaveNotChangedBetweenDataStoreAndSync() {
-        let syncResponse = APISyncResponse.randomWithoutDeletions
+        let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let dataStore = CapturingEurofurenceDataStore()
         dataStore.save(syncResponse)
         let context = ApplicationTestBuilder().with(dataStore).build()
@@ -52,7 +52,7 @@ class WhenSyncCompletesWithConferenceDays_ApplicationShould: XCTestCase {
 
     func testProvideLateAddedObserversWithAdaptedDays() {
         let context = ApplicationTestBuilder().build()
-        let syncResponse = APISyncResponse.randomWithoutDeletions
+        let syncResponse = ModelCharacteristics.randomWithoutDeletions
         context.performSuccessfulSync(response: syncResponse)
         let delegate = CapturingEventsScheduleDelegate()
         let schedule = context.eventsService.makeEventsSchedule()
@@ -64,7 +64,7 @@ class WhenSyncCompletesWithConferenceDays_ApplicationShould: XCTestCase {
 
     func testSaveTheConferenceDaysToTheDataStore() {
         let context = ApplicationTestBuilder().build()
-        let syncResponse = APISyncResponse.randomWithoutDeletions
+        let syncResponse = ModelCharacteristics.randomWithoutDeletions
         context.performSuccessfulSync(response: syncResponse)
 
         XCTAssertTrue(context.dataStore.didSave(syncResponse.conferenceDays.changed))

@@ -11,10 +11,10 @@ import Foundation
 
 class CapturingSyncAPI: SyncAPI {
 
-    fileprivate var completionHandler: ((APISyncResponse?) -> Void)?
+    fileprivate var completionHandler: ((ModelCharacteristics?) -> Void)?
     private(set) var capturedLastSyncTime: Date?
     private(set) var didBeginSync = false
-    func fetchLatestData(lastSyncTime: Date?, completionHandler: @escaping (APISyncResponse?) -> Void) {
+    func fetchLatestData(lastSyncTime: Date?, completionHandler: @escaping (ModelCharacteristics?) -> Void) {
         didBeginSync = true
         capturedLastSyncTime = lastSyncTime
         self.completionHandler = completionHandler
@@ -24,7 +24,7 @@ class CapturingSyncAPI: SyncAPI {
 
 extension CapturingSyncAPI {
 
-    func simulateSuccessfulSync(_ response: APISyncResponse) {
+    func simulateSuccessfulSync(_ response: ModelCharacteristics) {
         completionHandler?(response)
     }
     func simulateUnsuccessfulSync() {

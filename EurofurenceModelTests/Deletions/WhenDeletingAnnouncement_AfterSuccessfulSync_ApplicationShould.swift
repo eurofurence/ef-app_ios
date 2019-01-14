@@ -12,7 +12,7 @@ import XCTest
 class WhenDeletingAnnouncement_AfterSuccessfulSync_ApplicationShould: XCTestCase {
 
     func testUpdateDelegateWithoutDeletedAnnouncement() {
-        var response = APISyncResponse.randomWithoutDeletions
+        var response = ModelCharacteristics.randomWithoutDeletions
         let context = ApplicationTestBuilder().build()
         let delegate = CapturingAnnouncementsServiceObserver()
         context.announcementsService.add(delegate)

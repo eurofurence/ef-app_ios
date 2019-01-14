@@ -10,17 +10,17 @@ import Foundation
 
 extension RoomEntity: EntityAdapting {
 
-    typealias AdaptedType = APIRoom
+    typealias AdaptedType = RoomCharacteristics
 
-    static func makeIdentifyingPredicate(for model: APIRoom) -> NSPredicate {
+    static func makeIdentifyingPredicate(for model: RoomCharacteristics) -> NSPredicate {
         return NSPredicate(format: "identifier == %@", model.roomIdentifier)
     }
 
-    func asAdaptedType() -> APIRoom {
-        return APIRoom(roomIdentifier: identifier!, name: name!)
+    func asAdaptedType() -> RoomCharacteristics {
+        return RoomCharacteristics(roomIdentifier: identifier!, name: name!)
     }
 
-    func consumeAttributes(from value: APIRoom) {
+    func consumeAttributes(from value: RoomCharacteristics) {
         identifier = value.roomIdentifier
         name = value.name
     }

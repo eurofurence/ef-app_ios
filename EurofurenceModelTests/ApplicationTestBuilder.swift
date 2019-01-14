@@ -120,34 +120,34 @@ class ApplicationTestBuilder {
             }
         }
 
-        func performSuccessfulSync(response: APISyncResponse) {
+        func performSuccessfulSync(response: ModelCharacteristics) {
             refreshLocalStore()
             syncAPI.simulateSuccessfulSync(response)
         }
 
-        func expectedUnreadAnnouncements(from syncResponse: APISyncResponse) -> [Announcement] {
+        func expectedUnreadAnnouncements(from syncResponse: ModelCharacteristics) -> [Announcement] {
             // TODO: Needs to take into account any unread status information
             return expectedAnnouncements(from: syncResponse)
         }
 
-        func expectedAnnouncements(from syncResponse: APISyncResponse) -> [Announcement] {
+        func expectedAnnouncements(from syncResponse: ModelCharacteristics) -> [Announcement] {
             return expectedAnnouncements(from: syncResponse.announcements.changed)
         }
 
-        func expectedAnnouncements(from announcements: [APIAnnouncement]) -> [Announcement] {
+        func expectedAnnouncements(from announcements: [AnnouncementCharacteristics]) -> [Announcement] {
             return Announcement.fromServerModels(announcements.sorted { (first, second) -> Bool in
                 return first.lastChangedDateTime.compare(second.lastChangedDateTime) == .orderedDescending
             })
         }
 
-        func expectedAnnouncement(from announcement: APIAnnouncement) -> Announcement {
+        func expectedAnnouncement(from announcement: AnnouncementCharacteristics) -> Announcement {
             return Announcement(identifier: AnnouncementIdentifier(announcement.identifier),
                                  title: announcement.title,
                                  content: announcement.content,
                                  date: announcement.lastChangedDateTime)
         }
 
-        func makeExpectedEvent(from event: APIEvent, response: APISyncResponse) -> Event {
+        func makeExpectedEvent(from event: EventCharacteristics, response: ModelCharacteristics) -> Event {
             let expectedRoom = response.rooms.changed.first(where: { $0.roomIdentifier == event.roomIdentifier })!
             let expectedTrack = response.tracks.changed.first(where: { $0.trackIdentifier == event.trackIdentifier })!
             let expectedPosterGraphic = imageAPI.stubbedImage(for: event.posterImageId)
@@ -175,19 +175,19 @@ class ApplicationTestBuilder {
                           isPhotoshoot: tags.contains("photshoot"))
         }
 
-        func makeExpectedEvents(from events: [APIEvent], response: APISyncResponse) -> [Event] {
+        func makeExpectedEvents(from events: [EventCharacteristics], response: ModelCharacteristics) -> [Event] {
             return events.map { makeExpectedEvent(from: $0, response: response) }
         }
 
-        func makeExpectedDay(from day: APIConferenceDay) -> Day {
+        func makeExpectedDay(from day: ConferenceDayCharacteristics) -> Day {
             return Day(date: day.date)
         }
 
-        func makeExpectedDays(from response: APISyncResponse) -> [Day] {
+        func makeExpectedDays(from response: ModelCharacteristics) -> [Day] {
             return response.conferenceDays.changed.map(makeExpectedDay).sorted(by: { $0.date < $1.date })
         }
 
-        func makeExpectedDealer(from dealer: APIDealer) -> Dealer {
+        func makeExpectedDealer(from dealer: DealerCharacteristics) -> Dealer {
             return Dealer(identifier: DealerIdentifier(dealer.identifier),
                            preferredName: dealer.displayName,
                            alternateName: dealer.attendeeNickname == dealer.displayName ? nil : dealer.attendeeNickname,
@@ -197,8 +197,8 @@ class ApplicationTestBuilder {
                            isAfterDark: dealer.isAfterDark)
         }
 
-        func makeExpectedAlphabetisedDealers(from response: APISyncResponse) -> [AlphabetisedDealersGroup] {
-            let dealers: [APIDealer] = response.dealers.changed
+        func makeExpectedAlphabetisedDealers(from response: ModelCharacteristics) -> [AlphabetisedDealersGroup] {
+            let dealers: [DealerCharacteristics] = response.dealers.changed
             let indexTitles = dealers.map({ String($0.displayName.first!) })
             var dealersByIndexBuckets = [String: [Dealer]]()
             for title in indexTitles {
@@ -214,19 +214,19 @@ class ApplicationTestBuilder {
             }
         }
 
-        func makeExpectedMaps(from response: APISyncResponse) -> [Map] {
+        func makeExpectedMaps(from response: ModelCharacteristics) -> [Map] {
             return response.maps.changed.map({ (map) -> Map in
                 return Map(identifier: MapIdentifier(map.identifier), location: map.mapDescription)
             }).sorted(by: { $0.location < $1.location })
         }
 
-        func expectedKnowledgeGroups(from syncResponse: APISyncResponse) -> [KnowledgeGroup] {
+        func expectedKnowledgeGroups(from syncResponse: ModelCharacteristics) -> [KnowledgeGroup] {
             return syncResponse.knowledgeGroups.changed.map({ (group) -> KnowledgeGroup in
                 return expectedKnowledgeGroup(from: group, syncResponse: syncResponse)
             }).sorted(by: { $0.order < $1.order })
         }
 
-        func expectedKnowledgeGroup(from group: APIKnowledgeGroup, syncResponse: APISyncResponse) -> KnowledgeGroup {
+        func expectedKnowledgeGroup(from group: KnowledgeGroupCharacteristics, syncResponse: ModelCharacteristics) -> KnowledgeGroup {
             let entries = syncResponse.knowledgeEntries.changed.filter({ $0.groupIdentifier == group.identifier }).map { (entry) in
                 return KnowledgeEntry(identifier: KnowledgeEntryIdentifier(entry.identifier),
                                        title: entry.title,

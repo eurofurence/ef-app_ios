@@ -12,7 +12,7 @@ import XCTest
 class InOrderToSupportEssentialSubtitleTag_ApplicationShould: XCTestCase {
 
     func testCombineSubtitleWithTitle() {
-        var syncResponse = APISyncResponse.randomWithoutDeletions
+        var syncResponse = ModelCharacteristics.randomWithoutDeletions
         let randomEvent = syncResponse.events.changed.randomElement()
         var event = randomEvent.element
         event.tags = ["essential_subtitle"]

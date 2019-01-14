@@ -12,7 +12,7 @@ import XCTest
 class WhenToldToOpenNotification_ThatRepresentsAnnouncement_ThatHasBeenDeleted_ApplicationShould: XCTestCase {
 
     func testProvideTheInvalidatedAnnouncementResponse() {
-        var syncResponse = APISyncResponse.randomWithoutDeletions
+        var syncResponse = ModelCharacteristics.randomWithoutDeletions
         let randomAnnouncement = syncResponse.announcements.changed.randomElement().element
         let context = ApplicationTestBuilder().build()
         let payload: [String: String] = ["event": "announcement", "announcement_id": randomAnnouncement.identifier]

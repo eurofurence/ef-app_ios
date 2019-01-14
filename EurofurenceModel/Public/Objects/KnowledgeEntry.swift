@@ -32,7 +32,7 @@ public struct KnowledgeEntry: Comparable, Equatable {
 
 public extension KnowledgeEntry {
 
-    public static func fromServerModel(_ entry: APIKnowledgeEntry) -> KnowledgeEntry {
+    public static func fromServerModel(_ entry: KnowledgeEntryCharacteristics) -> KnowledgeEntry {
         return KnowledgeEntry(identifier: KnowledgeEntryIdentifier(entry.identifier),
                                title: entry.title,
                                order: entry.order,

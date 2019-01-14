@@ -41,11 +41,11 @@ class CoreDataStoreTransaction: DataStoreTransaction {
         }
     }
 
-    func saveKnowledgeGroups(_ knowledgeGroups: [APIKnowledgeGroup]) {
+    func saveKnowledgeGroups(_ knowledgeGroups: [KnowledgeGroupCharacteristics]) {
         updateEntities(ofKind: KnowledgeGroupEntity.self, using: knowledgeGroups)
     }
 
-    func saveKnowledgeEntries(_ knowledgeEntries: [APIKnowledgeEntry]) {
+    func saveKnowledgeEntries(_ knowledgeEntries: [KnowledgeEntryCharacteristics]) {
         mutations.append { (context) in
             knowledgeEntries.forEach { (entry) in
                 let predicate = KnowledgeEntryEntity.makeIdentifyingPredicate(for: entry)
@@ -66,23 +66,23 @@ class CoreDataStoreTransaction: DataStoreTransaction {
         }
     }
 
-    func saveAnnouncements(_ announcements: [APIAnnouncement]) {
+    func saveAnnouncements(_ announcements: [AnnouncementCharacteristics]) {
         updateEntities(ofKind: AnnouncementEntity.self, using: announcements)
     }
 
-    func saveEvents(_ events: [APIEvent]) {
+    func saveEvents(_ events: [EventCharacteristics]) {
         updateEntities(ofKind: EventEntity.self, using: events)
     }
 
-    func saveRooms(_ rooms: [APIRoom]) {
+    func saveRooms(_ rooms: [RoomCharacteristics]) {
         updateEntities(ofKind: RoomEntity.self, using: rooms)
     }
 
-    func saveTracks(_ tracks: [APITrack]) {
+    func saveTracks(_ tracks: [TrackCharacteristics]) {
         updateEntities(ofKind: TrackEntity.self, using: tracks)
     }
 
-    func saveConferenceDays(_ conferenceDays: [APIConferenceDay]) {
+    func saveConferenceDays(_ conferenceDays: [ConferenceDayCharacteristics]) {
         updateEntities(ofKind: ConferenceDayEntity.self, using: conferenceDays)
     }
 
@@ -90,7 +90,7 @@ class CoreDataStoreTransaction: DataStoreTransaction {
         updateEntities(ofKind: FavouriteEventEntity.self, using: [identifier])
     }
 
-    func saveDealers(_ dealers: [APIDealer]) {
+    func saveDealers(_ dealers: [DealerCharacteristics]) {
         mutations.append { (context) in
             dealers.forEach { (dealer) in
                 let predicate = DealerEntity.makeIdentifyingPredicate(for: dealer)
@@ -110,7 +110,7 @@ class CoreDataStoreTransaction: DataStoreTransaction {
         }
     }
 
-    func saveMaps(_ maps: [APIMap]) {
+    func saveMaps(_ maps: [MapCharacteristics]) {
         mutations.append { (context) in
             maps.forEach { (map) in
                 let predicate = MapEntity.makeIdentifyingPredicate(for: map)
@@ -142,7 +142,7 @@ class CoreDataStoreTransaction: DataStoreTransaction {
         updateEntities(ofKind: ReadAnnouncementEntity.self, using: announcements)
     }
 
-    func saveImages(_ images: [APIImage]) {
+    func saveImages(_ images: [ImageCharacteristics]) {
         updateEntities(ofKind: ImageModelEntity.self, using: images)
     }
 

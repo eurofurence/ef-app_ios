@@ -12,10 +12,10 @@ import XCTest
 class WhenDealersHaveCaseVaryingNames_ApplicationShould: XCTestCase {
 
     func testGroupThemTogetherUsingTheCapitalForm() {
-        var syncResponse = APISyncResponse.randomWithoutDeletions
-        var firstDealer = APIDealer.random
+        var syncResponse = ModelCharacteristics.randomWithoutDeletions
+        var firstDealer = DealerCharacteristics.random
         firstDealer.displayName = "Barry"
-        var secondDealer = APIDealer.random
+        var secondDealer = DealerCharacteristics.random
         secondDealer.displayName = "barry"
         syncResponse.dealers.changed = [firstDealer, secondDealer]
         let dataStore = CapturingEurofurenceDataStore()

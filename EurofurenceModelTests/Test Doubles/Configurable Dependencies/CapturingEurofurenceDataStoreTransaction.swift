@@ -11,8 +11,8 @@ import Foundation
 
 class CapturingEurofurenceDataStoreTransaction: DataStoreTransaction {
 
-    private(set) var persistedKnowledgeGroups: [APIKnowledgeGroup] = []
-    func saveKnowledgeGroups(_ knowledgeGroups: [APIKnowledgeGroup]) {
+    private(set) var persistedKnowledgeGroups: [KnowledgeGroupCharacteristics] = []
+    func saveKnowledgeGroups(_ knowledgeGroups: [KnowledgeGroupCharacteristics]) {
         self.persistedKnowledgeGroups.append(contentsOf: knowledgeGroups)
     }
 
@@ -25,8 +25,8 @@ class CapturingEurofurenceDataStoreTransaction: DataStoreTransaction {
         }
     }
 
-    private(set) var persistedKnowledgeEntries: [APIKnowledgeEntry] = []
-    func saveKnowledgeEntries(_ knowledgeEntries: [APIKnowledgeEntry]) {
+    private(set) var persistedKnowledgeEntries: [KnowledgeEntryCharacteristics] = []
+    func saveKnowledgeEntries(_ knowledgeEntries: [KnowledgeEntryCharacteristics]) {
         persistedKnowledgeEntries.append(contentsOf: knowledgeEntries)
     }
 
@@ -35,13 +35,13 @@ class CapturingEurofurenceDataStoreTransaction: DataStoreTransaction {
         deletedKnowledgeEntries.append(identifier)
     }
 
-    private(set) var persistedAnnouncements: [APIAnnouncement] = []
-    func saveAnnouncements(_ announcements: [APIAnnouncement]) {
+    private(set) var persistedAnnouncements: [AnnouncementCharacteristics] = []
+    func saveAnnouncements(_ announcements: [AnnouncementCharacteristics]) {
         persistedAnnouncements.append(contentsOf: announcements)
     }
 
-    private(set) var persistedEvents: [APIEvent] = []
-    func saveEvents(_ events: [APIEvent]) {
+    private(set) var persistedEvents: [EventCharacteristics] = []
+    func saveEvents(_ events: [EventCharacteristics]) {
         for event in events {
             if let idx = persistedEvents.index(where: { $0.identifier == event.identifier }) {
                 persistedEvents.remove(at: idx)
@@ -57,8 +57,8 @@ class CapturingEurofurenceDataStoreTransaction: DataStoreTransaction {
         }
     }
 
-    private(set) var persistedRooms: [APIRoom] = []
-    func saveRooms(_ rooms: [APIRoom]) {
+    private(set) var persistedRooms: [RoomCharacteristics] = []
+    func saveRooms(_ rooms: [RoomCharacteristics]) {
         persistedRooms.append(contentsOf: rooms)
     }
 
@@ -72,8 +72,8 @@ class CapturingEurofurenceDataStoreTransaction: DataStoreTransaction {
         deletedRooms.append(identifier)
     }
 
-    private(set) var persistedTracks: [APITrack] = []
-    func saveTracks(_ tracks: [APITrack]) {
+    private(set) var persistedTracks: [TrackCharacteristics] = []
+    func saveTracks(_ tracks: [TrackCharacteristics]) {
         persistedTracks.append(contentsOf: tracks)
     }
 
@@ -82,8 +82,8 @@ class CapturingEurofurenceDataStoreTransaction: DataStoreTransaction {
         deletedTracks.append(identifier)
     }
 
-    private(set) var persistedConferenceDays: [APIConferenceDay] = []
-    func saveConferenceDays(_ conferenceDays: [APIConferenceDay]) {
+    private(set) var persistedConferenceDays: [ConferenceDayCharacteristics] = []
+    func saveConferenceDays(_ conferenceDays: [ConferenceDayCharacteristics]) {
         persistedConferenceDays.append(contentsOf: conferenceDays)
     }
 
@@ -108,8 +108,8 @@ class CapturingEurofurenceDataStoreTransaction: DataStoreTransaction {
         }
     }
 
-    private(set) var persistedDealers: [APIDealer] = []
-    func saveDealers(_ dealers: [APIDealer]) {
+    private(set) var persistedDealers: [DealerCharacteristics] = []
+    func saveDealers(_ dealers: [DealerCharacteristics]) {
         persistedDealers.append(contentsOf: dealers)
     }
 
@@ -119,8 +119,8 @@ class CapturingEurofurenceDataStoreTransaction: DataStoreTransaction {
         }
     }
 
-    private(set) var persistedMaps: [APIMap] = []
-    func saveMaps(_ maps: [APIMap]) {
+    private(set) var persistedMaps: [MapCharacteristics] = []
+    func saveMaps(_ maps: [MapCharacteristics]) {
         persistedMaps.append(contentsOf: maps)
     }
 
@@ -135,8 +135,8 @@ class CapturingEurofurenceDataStoreTransaction: DataStoreTransaction {
         persistedReadAnnouncementIdentifiers = announcements
     }
 
-    private(set) var persistedImages = [APIImage]()
-    func saveImages(_ images: [APIImage]) {
+    private(set) var persistedImages = [ImageCharacteristics]()
+    func saveImages(_ images: [ImageCharacteristics]) {
         persistedImages.append(contentsOf: images)
     }
 

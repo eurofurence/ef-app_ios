@@ -13,7 +13,7 @@ class WhenDeletingConferenceDay_AfterSuccessfulSync_ApplicationShould: XCTestCas
 
     func testTellTheStoreToDeleteTheDay() {
         let dataStore = CapturingEurofurenceDataStore()
-        var response = APISyncResponse.randomWithoutDeletions
+        var response = ModelCharacteristics.randomWithoutDeletions
         let context = ApplicationTestBuilder().with(dataStore).build()
         context.refreshLocalStore()
         context.syncAPI.simulateSuccessfulSync(response)

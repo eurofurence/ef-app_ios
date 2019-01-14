@@ -12,7 +12,7 @@ import XCTest
 class AnnouncementRemoveAllBeforeInsertTests: XCTestCase {
 
     func testShouldRemoveAllAnnouncementsWhenToldTo() {
-        let originalResponse = APISyncResponse.randomWithoutDeletions
+        let originalResponse = ModelCharacteristics.randomWithoutDeletions
         var subsequentResponse = originalResponse
         subsequentResponse.announcements.removeAllBeforeInsert = true
         let context = ApplicationTestBuilder().build()
@@ -27,8 +27,8 @@ class AnnouncementRemoveAllBeforeInsertTests: XCTestCase {
     }
 
     func testShouldNotRemoveAllAnnouncementsWhenNotToldToRemoveThem() {
-        let originalResponse = APISyncResponse.randomWithoutDeletions
-        var subsequentResponse = APISyncResponse.randomWithoutDeletions
+        let originalResponse = ModelCharacteristics.randomWithoutDeletions
+        var subsequentResponse = ModelCharacteristics.randomWithoutDeletions
         subsequentResponse.announcements.removeAllBeforeInsert = false
         let context = ApplicationTestBuilder().build()
         context.performSuccessfulSync(response: originalResponse)

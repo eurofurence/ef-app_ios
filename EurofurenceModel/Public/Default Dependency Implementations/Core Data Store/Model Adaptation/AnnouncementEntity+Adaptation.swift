@@ -10,21 +10,21 @@ import Foundation
 
 extension AnnouncementEntity: EntityAdapting {
 
-    typealias AdaptedType = APIAnnouncement
+    typealias AdaptedType = AnnouncementCharacteristics
 
-    static func makeIdentifyingPredicate(for model: APIAnnouncement) -> NSPredicate {
+    static func makeIdentifyingPredicate(for model: AnnouncementCharacteristics) -> NSPredicate {
         return NSPredicate(format: "identifier == %@", model.identifier)
     }
 
-    func asAdaptedType() -> APIAnnouncement {
-        return APIAnnouncement(identifier: identifier!,
+    func asAdaptedType() -> AnnouncementCharacteristics {
+        return AnnouncementCharacteristics(identifier: identifier!,
                                title: title!,
                                content: content!,
                                lastChangedDateTime: lastChangedDateTime! as Date,
                                imageIdentifier: imageIdentifier)
     }
 
-    func consumeAttributes(from value: APIAnnouncement) {
+    func consumeAttributes(from value: AnnouncementCharacteristics) {
         identifier = value.identifier
         title = value.title
         content = value.content

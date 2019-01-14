@@ -12,7 +12,7 @@ import XCTest
 class KnowledgeGroupsRemoveAllBeforeInsertTests: XCTestCase {
 
     func testTellTheDataStoreToDeleteTheKnowledgeGroups() {
-        let originalResponse = APISyncResponse.randomWithoutDeletions
+        let originalResponse = ModelCharacteristics.randomWithoutDeletions
         var subsequentResponse = originalResponse
         subsequentResponse.knowledgeGroups.removeAllBeforeInsert = true
         let context = ApplicationTestBuilder().build()

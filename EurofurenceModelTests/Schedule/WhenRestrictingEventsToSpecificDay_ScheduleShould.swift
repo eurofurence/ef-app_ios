@@ -12,7 +12,7 @@ import XCTest
 class WhenRestrictingEventsToSpecificDay_ScheduleShould: XCTestCase {
 
     func testOnlyIncludeEventsRunningOnThatDay() {
-        let response = APISyncResponse.randomWithoutDeletions
+        let response = ModelCharacteristics.randomWithoutDeletions
         let dataStore = CapturingEurofurenceDataStore()
         dataStore.save(response)
         let imageRepository = CapturingImageRepository()
@@ -30,7 +30,7 @@ class WhenRestrictingEventsToSpecificDay_ScheduleShould: XCTestCase {
     }
 
     func testUpdateRestrictedScheduleWhenLaterSyncCompletes() {
-        let response = APISyncResponse.randomWithoutDeletions
+        let response = ModelCharacteristics.randomWithoutDeletions
         let dataStore = CapturingEurofurenceDataStore()
         dataStore.save(response)
         let imageRepository = CapturingImageRepository()
@@ -50,7 +50,7 @@ class WhenRestrictingEventsToSpecificDay_ScheduleShould: XCTestCase {
     }
 
     func testRestrictEventsOnlyToTheLastSpecifiedRestrictedDay() {
-        let response = APISyncResponse.randomWithoutDeletions
+        let response = ModelCharacteristics.randomWithoutDeletions
         let dataStore = CapturingEurofurenceDataStore()
         dataStore.save(response)
         let imageRepository = CapturingImageRepository()

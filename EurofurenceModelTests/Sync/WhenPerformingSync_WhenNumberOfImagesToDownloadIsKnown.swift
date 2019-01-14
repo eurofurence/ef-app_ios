@@ -19,7 +19,7 @@ class WhenPerformingSync_WhenNumberOfImagesToDownloadIsKnown: XCTestCase {
         super.setUp()
 
         imageAPI = SlowFakeImageAPI()
-        let syncResponse = APISyncResponse.randomWithoutDeletions
+        let syncResponse = ModelCharacteristics.randomWithoutDeletions
         context = ApplicationTestBuilder().with(imageAPI).build()
         progress = context.refreshLocalStore()
         context.syncAPI.simulateSuccessfulSync(syncResponse)

@@ -18,7 +18,7 @@ class MessagesPresenter: MessagesSceneDelegate, AuthenticationStateObserver, Pri
     private let privateMessagesService: PrivateMessagesService
     private let dateFormatter: DateFormatterProtocol
     private let delegate: MessagesModuleDelegate
-    private var presentedMessages = [APIMessage]()
+    private var presentedMessages = [MessageCharacteristics]()
 
     // MARK: Initialization
 
@@ -85,7 +85,7 @@ class MessagesPresenter: MessagesSceneDelegate, AuthenticationStateObserver, Pri
 
     }
 
-    func privateMessagesServiceDidFinishRefreshingMessages(messages: [APIMessage]) {
+    func privateMessagesServiceDidFinishRefreshingMessages(messages: [MessageCharacteristics]) {
         scene.hideRefreshIndicator()
         presentMessages(messages)
     }
@@ -109,7 +109,7 @@ class MessagesPresenter: MessagesSceneDelegate, AuthenticationStateObserver, Pri
         privateMessagesService.refreshMessages()
     }
 
-    private func presentMessages(_ messages: [APIMessage]) {
+    private func presentMessages(_ messages: [MessageCharacteristics]) {
         presentedMessages = messages
 
         let binder = MessageBinder(messages: messages, dateFormatter: dateFormatter)
@@ -126,7 +126,7 @@ class MessagesPresenter: MessagesSceneDelegate, AuthenticationStateObserver, Pri
 
     private struct MessageBinder: MessageItemBinder {
 
-        var messages: [APIMessage]
+        var messages: [MessageCharacteristics]
         var dateFormatter: DateFormatterProtocol
 
         func bind(_ scene: MessageItemScene, toMessageAt indexPath: IndexPath) {

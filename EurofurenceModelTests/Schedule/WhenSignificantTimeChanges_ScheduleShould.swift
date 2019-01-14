@@ -12,7 +12,7 @@ import XCTest
 class WhenSignificantTimeChanges_ScheduleShould: XCTestCase {
 
     func testTellTheDelegateWhenMovingFromConDayToNonConDay() {
-        let syncResponse = APISyncResponse.randomWithoutDeletions
+        let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let randomDay = syncResponse.conferenceDays.changed.randomElement().element
         let dataStore = CapturingEurofurenceDataStore()
         dataStore.save(syncResponse)

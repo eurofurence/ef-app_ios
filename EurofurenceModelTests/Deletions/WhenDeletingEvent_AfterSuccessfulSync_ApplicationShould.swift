@@ -12,7 +12,7 @@ import XCTest
 class WhenDeletingEvent_AfterSuccessfulSync_ApplicationShould: XCTestCase {
 
     func testUpdateDelegateWithoutDeletedEvent() {
-        var response = APISyncResponse.randomWithoutDeletions
+        var response = ModelCharacteristics.randomWithoutDeletions
         let context = ApplicationTestBuilder().build()
         let delegate = CapturingEventsServiceObserver()
         context.eventsService.add(delegate)

@@ -10,18 +10,18 @@ import Foundation
 
 extension ImageModelEntity: EntityAdapting {
 
-    typealias AdaptedType = APIImage
+    typealias AdaptedType = ImageCharacteristics
 
-    static func makeIdentifyingPredicate(for model: APIImage) -> NSPredicate {
+    static func makeIdentifyingPredicate(for model: ImageCharacteristics) -> NSPredicate {
         return NSPredicate(format: "identifier == %@", model.identifier)
     }
 
-    func asAdaptedType() -> APIImage {
-        return APIImage(identifier: identifier!,
+    func asAdaptedType() -> ImageCharacteristics {
+        return ImageCharacteristics(identifier: identifier!,
                         internalReference: internalReference!)
     }
 
-    func consumeAttributes(from value: APIImage) {
+    func consumeAttributes(from value: ImageCharacteristics) {
         identifier = value.identifier
         internalReference = value.internalReference
     }

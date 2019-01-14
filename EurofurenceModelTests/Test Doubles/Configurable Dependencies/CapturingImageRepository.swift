@@ -50,7 +50,7 @@ extension CapturingImageRepository {
         identifiers.forEach(stub)
     }
 
-    func stubEverything(_ response: APISyncResponse) {
+    func stubEverything(_ response: ModelCharacteristics) {
         response.images.changed.map({ $0.identifier }).forEach(stub)
     }
 

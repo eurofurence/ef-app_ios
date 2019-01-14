@@ -12,7 +12,7 @@ import XCTest
 class WhenRequestingImageForAnnouncementThatHasImage_ApplicationShould: XCTestCase {
 
     func testProvideTheImageData() {
-        let syncResponse = APISyncResponse.randomWithoutDeletions
+        let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let announcement = syncResponse.announcements.changed.randomElement().element
         let context = ApplicationTestBuilder().build()
         context.performSuccessfulSync(response: syncResponse)

@@ -12,7 +12,7 @@ import XCTest
 class WhenAppLaunchesWhenClockDoesNotReadConferenceDay_ScheduleShould: XCTestCase {
 
     func testChangeToNilConDay() {
-        let syncResponse = APISyncResponse.randomWithoutDeletions
+        let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let dataStore = CapturingEurofurenceDataStore()
         dataStore.save(syncResponse)
         let context = ApplicationTestBuilder().with(.distantPast).with(dataStore).build()
@@ -24,7 +24,7 @@ class WhenAppLaunchesWhenClockDoesNotReadConferenceDay_ScheduleShould: XCTestCas
     }
 
     func testRestrictEventsToTheFirstConferenceDay() {
-        let response = APISyncResponse.randomWithoutDeletions
+        let response = ModelCharacteristics.randomWithoutDeletions
         let firstDay = response.conferenceDays.changed.sorted(by: { $0.date < $1.date }).first!
         let dataStore = CapturingEurofurenceDataStore()
         dataStore.save(response)

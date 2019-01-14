@@ -1,5 +1,5 @@
 //
-//  APIRoom.swift
+//  RoomCharacteristics.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 15/05/2018.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct APIRoom: Equatable {
+public struct RoomCharacteristics: Equatable {
 
     public var roomIdentifier: String
     public var name: String

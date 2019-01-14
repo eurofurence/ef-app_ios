@@ -10,16 +10,16 @@ import Foundation
 
 extension KnowledgeEntryEntity: EntityAdapting {
 
-    typealias AdaptedType = APIKnowledgeEntry
+    typealias AdaptedType = KnowledgeEntryCharacteristics
 
-    static func makeIdentifyingPredicate(for model: APIKnowledgeEntry) -> NSPredicate {
+    static func makeIdentifyingPredicate(for model: KnowledgeEntryCharacteristics) -> NSPredicate {
         return NSPredicate(format: "identifier == %@", model.identifier)
     }
 
-    func asAdaptedType() -> APIKnowledgeEntry {
+    func asAdaptedType() -> KnowledgeEntryCharacteristics {
         let links = Array((self.links as? Set<LinkEntity>) ?? Set<LinkEntity>())
 
-        return APIKnowledgeEntry(identifier: identifier!,
+        return KnowledgeEntryCharacteristics(identifier: identifier!,
                                  groupIdentifier: groupIdentifier!,
                                  title: title!,
                                  order: Int(order),
@@ -28,7 +28,7 @@ extension KnowledgeEntryEntity: EntityAdapting {
                                  imageIdentifiers: imageIdentifiers.or([]))
     }
 
-    func consumeAttributes(from value: APIKnowledgeEntry) {
+    func consumeAttributes(from value: KnowledgeEntryCharacteristics) {
         identifier = value.identifier
         title = value.title
         text = value.text

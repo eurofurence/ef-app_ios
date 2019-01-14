@@ -12,7 +12,7 @@ import XCTest
 class WhenDeletingMap_AfterSuccessfulSync_ApplicationShould: XCTestCase {
 
     func testUpdateDelegateWithoutDeletedMap() {
-        var response = APISyncResponse.randomWithoutDeletions
+        var response = ModelCharacteristics.randomWithoutDeletions
         let context = ApplicationTestBuilder().build()
         let delegate = CapturingMapsObserver()
         context.mapsService.add(delegate)

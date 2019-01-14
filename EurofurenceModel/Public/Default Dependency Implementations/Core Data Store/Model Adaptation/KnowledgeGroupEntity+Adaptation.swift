@@ -10,21 +10,21 @@ import Foundation
 
 extension KnowledgeGroupEntity: EntityAdapting {
 
-    typealias AdaptedType = APIKnowledgeGroup
+    typealias AdaptedType = KnowledgeGroupCharacteristics
 
-    static func makeIdentifyingPredicate(for model: APIKnowledgeGroup) -> NSPredicate {
+    static func makeIdentifyingPredicate(for model: KnowledgeGroupCharacteristics) -> NSPredicate {
         return NSPredicate(format: "identifier == %@", model.identifier)
     }
 
-    func asAdaptedType() -> APIKnowledgeGroup {
-        return APIKnowledgeGroup(identifier: identifier!,
+    func asAdaptedType() -> KnowledgeGroupCharacteristics {
+        return KnowledgeGroupCharacteristics(identifier: identifier!,
                                  order: Int(order),
                                  groupName: groupName!,
                                  groupDescription: groupDescription!,
                                  fontAwesomeCharacterAddress: fontAwesomeCharacterAddress ?? "")
     }
 
-    func consumeAttributes(from value: APIKnowledgeGroup) {
+    func consumeAttributes(from value: KnowledgeGroupCharacteristics) {
         identifier = value.identifier
         order = Int64(value.order)
         groupName = value.groupName

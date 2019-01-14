@@ -12,7 +12,7 @@ import XCTest
 class WhenDeletingDealer_AfterSuccessfulSync_ApplicationShould: XCTestCase {
 
     func testUpdateDelegateWithoutDeletedDealer() {
-        var response = APISyncResponse.randomWithoutDeletions
+        var response = ModelCharacteristics.randomWithoutDeletions
         let context = ApplicationTestBuilder().build()
         let delegate = CapturingDealersIndexDelegate()
         let index = context.dealersService.makeDealersIndex()

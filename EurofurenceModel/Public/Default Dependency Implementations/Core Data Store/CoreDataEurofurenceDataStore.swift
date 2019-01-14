@@ -55,11 +55,11 @@ public struct CoreDataEurofurenceDataStore: DataStore {
         }
     }
 
-    public func getSavedKnowledgeGroups() -> [APIKnowledgeGroup]? {
+    public func getSavedKnowledgeGroups() -> [KnowledgeGroupCharacteristics]? {
         return getModels(fetchRequest: KnowledgeGroupEntity.fetchRequest())
     }
 
-    public func getSavedKnowledgeEntries() -> [APIKnowledgeEntry]? {
+    public func getSavedKnowledgeEntries() -> [KnowledgeEntryCharacteristics]? {
         return getModels(fetchRequest: KnowledgeEntryEntity.fetchRequest())
     }
 
@@ -82,23 +82,23 @@ public struct CoreDataEurofurenceDataStore: DataStore {
         return lastRefreshDate
     }
 
-    public func getSavedRooms() -> [APIRoom]? {
+    public func getSavedRooms() -> [RoomCharacteristics]? {
         return getModels(fetchRequest: RoomEntity.fetchRequest())
     }
 
-    public func getSavedTracks() -> [APITrack]? {
+    public func getSavedTracks() -> [TrackCharacteristics]? {
         return getModels(fetchRequest: TrackEntity.fetchRequest())
     }
 
-    public func getSavedEvents() -> [APIEvent]? {
+    public func getSavedEvents() -> [EventCharacteristics]? {
         return getModels(fetchRequest: EventEntity.fetchRequest())
     }
 
-    public func getSavedAnnouncements() -> [APIAnnouncement]? {
+    public func getSavedAnnouncements() -> [AnnouncementCharacteristics]? {
         return getModels(fetchRequest: AnnouncementEntity.fetchRequest())
     }
 
-    public func getSavedConferenceDays() -> [APIConferenceDay]? {
+    public func getSavedConferenceDays() -> [ConferenceDayCharacteristics]? {
         return getModels(fetchRequest: ConferenceDayEntity.fetchRequest())
     }
 
@@ -106,11 +106,11 @@ public struct CoreDataEurofurenceDataStore: DataStore {
         return getModels(fetchRequest: FavouriteEventEntity.fetchRequest())
     }
 
-    public func getSavedDealers() -> [APIDealer]? {
+    public func getSavedDealers() -> [DealerCharacteristics]? {
         return getModels(fetchRequest: DealerEntity.fetchRequest())
     }
 
-    public func getSavedMaps() -> [APIMap]? {
+    public func getSavedMaps() -> [MapCharacteristics]? {
         return getModels(fetchRequest: MapEntity.fetchRequest())
     }
 
@@ -118,7 +118,7 @@ public struct CoreDataEurofurenceDataStore: DataStore {
         return getModels(fetchRequest: ReadAnnouncementEntity.fetchRequest())
     }
 
-    public func getSavedImages() -> [APIImage]? {
+    public func getSavedImages() -> [ImageCharacteristics]? {
         return getModels(fetchRequest: ImageModelEntity.fetchRequest())
     }
 

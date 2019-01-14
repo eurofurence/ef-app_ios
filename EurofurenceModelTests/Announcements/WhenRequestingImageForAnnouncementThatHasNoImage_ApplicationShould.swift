@@ -12,7 +12,7 @@ import XCTest
 class WhenRequestingImageForAnnouncementThatHasNoImage_ApplicationShould: XCTestCase {
 
     func testInvokeTheHandlerWithNilData() {
-        var syncResponse = APISyncResponse.randomWithoutDeletions
+        var syncResponse = ModelCharacteristics.randomWithoutDeletions
         let randomAnnouncement = syncResponse.announcements.changed.randomElement()
         var announcement = randomAnnouncement.element
         announcement.imageIdentifier = nil

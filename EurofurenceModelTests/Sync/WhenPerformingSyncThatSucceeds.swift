@@ -33,7 +33,7 @@ class WhenPerformingSyncThatSucceeds: XCTestCase {
     }
 
     func testAllImagesAreDownloaded() {
-        let syncResponse = APISyncResponse.randomWithoutDeletions
+        let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let context = ApplicationTestBuilder().build()
         context.performSuccessfulSync(response: syncResponse)
         let expected = syncResponse.images.changed.map({ ImageEntity(identifier: $0.identifier, pngImageData: context.imageAPI.stubbedImage(for: $0.identifier)!) })
@@ -42,7 +42,7 @@ class WhenPerformingSyncThatSucceeds: XCTestCase {
     }
 
     func testCompleteTheSyncWhenNoImagesToDownload() {
-        var syncResponse = APISyncResponse.randomWithoutDeletions
+        var syncResponse = ModelCharacteristics.randomWithoutDeletions
         syncResponse.images.changed = []
         let context = ApplicationTestBuilder().build()
         var didFinish = false

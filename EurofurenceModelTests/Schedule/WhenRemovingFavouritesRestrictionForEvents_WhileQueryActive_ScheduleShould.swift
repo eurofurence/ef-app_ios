@@ -12,7 +12,7 @@ import XCTest
 class WhenRemovingFavouritesRestrictionForEvents_WhileQueryActive_ScheduleShould: XCTestCase {
 
     func testUpdateTheDelegateWithMatchesForQuery() {
-        let response = APISyncResponse.randomWithoutDeletions
+        let response = ModelCharacteristics.randomWithoutDeletions
         let dataStore = CapturingEurofurenceDataStore()
         var favourites = response.events.changed.map({ EventIdentifier($0.identifier) })
         let notAFavourite = favourites.randomElement()

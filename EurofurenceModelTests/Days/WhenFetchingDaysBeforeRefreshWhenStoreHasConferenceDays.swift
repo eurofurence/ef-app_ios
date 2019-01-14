@@ -13,7 +13,7 @@ class WhenFetchingDaysBeforeRefreshWhenStoreHasConferenceDays: XCTestCase {
 
     func testTheEventsFromTheStoreAreAdapted() {
         let dataStore = CapturingEurofurenceDataStore()
-        let response = APISyncResponse.randomWithoutDeletions
+        let response = ModelCharacteristics.randomWithoutDeletions
         let conferenceDays = response.conferenceDays.changed
         dataStore.performTransaction { (transaction) in
             transaction.saveConferenceDays(conferenceDays)

@@ -12,13 +12,13 @@ import XCTest
 class WhenSyncSucceeds_ForEmptyDataStore_ApplicationShould: XCTestCase {
 
     var context: ApplicationTestBuilder.Context!
-    var syncResponse: APISyncResponse!
+    var syncResponse: ModelCharacteristics!
 
     override func setUp() {
         super.setUp()
 
         context = ApplicationTestBuilder().build()
-        syncResponse = APISyncResponse.randomWithoutDeletions
+        syncResponse = ModelCharacteristics.randomWithoutDeletions
         context.performSuccessfulSync(response: syncResponse)
     }
 

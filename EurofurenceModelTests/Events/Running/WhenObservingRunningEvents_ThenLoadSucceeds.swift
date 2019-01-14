@@ -12,7 +12,7 @@ import XCTest
 class WhenObservingRunningEvents_ThenLoadSucceeds: XCTestCase {
 
     func testTheObserverIsProvidedWithTheRunningEvents() {
-        let syncResponse = APISyncResponse.randomWithoutDeletions
+        let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let randomEvent = syncResponse.events.changed.randomElement().element
         let simulatedTime = randomEvent.startDateTime
         let context = ApplicationTestBuilder().with(simulatedTime).build()

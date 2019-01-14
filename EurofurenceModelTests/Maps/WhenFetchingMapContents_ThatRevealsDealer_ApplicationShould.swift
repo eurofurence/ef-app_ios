@@ -13,13 +13,13 @@ class WhenFetchingMapContents_ThatRevealsDealer_ApplicationShould: XCTestCase {
 
     func testProvideTheDealer() {
         let context = ApplicationTestBuilder().build()
-        var syncResponse = APISyncResponse.randomWithoutDeletions
-        let dealer = APIDealer.random
+        var syncResponse = ModelCharacteristics.randomWithoutDeletions
+        let dealer = DealerCharacteristics.random
         let expectedDealer = context.makeExpectedDealer(from: dealer)
         let (x, y, tapRadius) = (Int.random, Int.random, Int.random)
-        var map = APIMap.random
-        let link = APIMap.Entry.Link(type: .dealerDetail, name: .random, target: dealer.identifier)
-        let entry = APIMap.Entry(identifier: .random, x: x, y: y, tapRadius: tapRadius, links: [link])
+        var map = MapCharacteristics.random
+        let link = MapCharacteristics.Entry.Link(type: .dealerDetail, name: .random, target: dealer.identifier)
+        let entry = MapCharacteristics.Entry(identifier: .random, x: x, y: y, tapRadius: tapRadius, links: [link])
         map.entries = [entry]
         syncResponse.maps.changed = [map]
         syncResponse.dealers.changed = [dealer]

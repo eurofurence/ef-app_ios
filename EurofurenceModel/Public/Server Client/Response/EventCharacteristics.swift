@@ -1,5 +1,5 @@
 //
-//  APIEvent.swift
+//  EventCharacteristics.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 14/05/2018.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct APIEvent: Equatable {
+public struct EventCharacteristics: Equatable {
 
     public var identifier: String
     public var roomIdentifier: String

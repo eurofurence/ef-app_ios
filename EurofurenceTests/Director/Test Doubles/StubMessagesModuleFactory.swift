@@ -28,7 +28,7 @@ extension StubMessagesModuleFactory {
         delegate?.messagesModuleDidRequestResolutionForUser(completionHandler: handler)
     }
 
-    func simulateMessagePresentationRequested(_ message: APIMessage) {
+    func simulateMessagePresentationRequested(_ message: MessageCharacteristics) {
         delegate?.messagesModuleDidRequestPresentation(for: message)
     }
 

@@ -1,5 +1,5 @@
 //
-//  APIAnnouncement.swift
+//  AnnouncementCharacteristics.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 26/04/2018.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct APIAnnouncement: Equatable {
+public struct AnnouncementCharacteristics: Equatable {
 
     public var identifier: String
     public var title: String

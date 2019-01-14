@@ -13,15 +13,15 @@ class WhenFetchingMapContent_ThatRevealMultipleOptions_ApplicationShould: XCTest
 
     func testAdaptTheContentTypesIntoTheMultipleOption() {
         let context = ApplicationTestBuilder().build()
-        var syncResponse = APISyncResponse.randomWithoutDeletions
+        var syncResponse = ModelCharacteristics.randomWithoutDeletions
         let room = syncResponse.rooms.changed.randomElement().element
         let (x, y, tapRadius) = (Int.random, Int.random, Int.random)
         let randomMap = syncResponse.maps.changed.randomElement()
         var map = randomMap.element
         let dealer = syncResponse.dealers.changed.randomElement().element
-        let roomLink = APIMap.Entry.Link(type: .conferenceRoom, name: .random, target: room.roomIdentifier)
-        let dealerLink = APIMap.Entry.Link(type: .dealerDetail, name: .random, target: dealer.identifier)
-        let entry = APIMap.Entry(identifier: .random, x: x, y: y, tapRadius: tapRadius, links: [roomLink, dealerLink])
+        let roomLink = MapCharacteristics.Entry.Link(type: .conferenceRoom, name: .random, target: room.roomIdentifier)
+        let dealerLink = MapCharacteristics.Entry.Link(type: .dealerDetail, name: .random, target: dealer.identifier)
+        let entry = MapCharacteristics.Entry(identifier: .random, x: x, y: y, tapRadius: tapRadius, links: [roomLink, dealerLink])
         map.entries = [entry]
         syncResponse.maps.changed[randomMap.index] = map
         context.performSuccessfulSync(response: syncResponse)

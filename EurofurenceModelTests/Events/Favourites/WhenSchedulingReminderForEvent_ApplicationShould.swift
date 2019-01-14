@@ -12,7 +12,7 @@ import XCTest
 class WhenSchedulingReminderForEvent_ApplicationShould: XCTestCase {
 
     func testScheduleTheNotificationAtTheConfiguredReminderIntervalFromUserPreferences() {
-        let response = APISyncResponse.randomWithoutDeletions
+        let response = ModelCharacteristics.randomWithoutDeletions
         let events = response.events.changed
         let dataStore = CapturingEurofurenceDataStore()
         dataStore.performTransaction { (transaction) in
@@ -34,7 +34,7 @@ class WhenSchedulingReminderForEvent_ApplicationShould: XCTestCase {
     }
 
     func testSupplyTheNameOfTheEventAsTheReminderTitle() {
-        let response = APISyncResponse.randomWithoutDeletions
+        let response = ModelCharacteristics.randomWithoutDeletions
         let events = response.events.changed
         let dataStore = CapturingEurofurenceDataStore()
         dataStore.performTransaction { (transaction) in
@@ -52,7 +52,7 @@ class WhenSchedulingReminderForEvent_ApplicationShould: XCTestCase {
     }
 
     func testSupplyFormattedStartTimeAndLocationAsNotificationBody() {
-        let response = APISyncResponse.randomWithoutDeletions
+        let response = ModelCharacteristics.randomWithoutDeletions
         let events = response.events.changed
         let dataStore = CapturingEurofurenceDataStore()
         dataStore.performTransaction { (transaction) in
@@ -73,7 +73,7 @@ class WhenSchedulingReminderForEvent_ApplicationShould: XCTestCase {
     }
 
     func testSupplyCustomUserInfoWithEventTypeAndEventIdentifier() {
-        let response = APISyncResponse.randomWithoutDeletions
+        let response = ModelCharacteristics.randomWithoutDeletions
         let events = response.events.changed
         let dataStore = CapturingEurofurenceDataStore()
         dataStore.performTransaction { (transaction) in

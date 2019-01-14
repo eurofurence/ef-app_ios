@@ -12,7 +12,7 @@ extension DomainEvent {
 
     struct LatestDataFetchedEvent {
 
-        var response: APISyncResponse
+        var response: ModelCharacteristics
 
     }
 

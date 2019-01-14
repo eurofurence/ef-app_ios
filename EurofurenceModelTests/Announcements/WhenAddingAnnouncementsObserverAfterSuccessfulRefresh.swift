@@ -13,7 +13,7 @@ class WhenAddingAnnouncementsObserverAfterSuccessfulRefresh: XCTestCase {
 
     func testTheObserverIsProvidedWithAllAnnouncements() {
         let context = ApplicationTestBuilder().build()
-        let syncResponse = APISyncResponse.randomWithoutDeletions
+        let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let expected = context.expectedAnnouncements(from: syncResponse)
 
         context.performSuccessfulSync(response: syncResponse)

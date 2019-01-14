@@ -12,7 +12,7 @@ import XCTest
 class InOrderToSupportPhotoshootTag_ApplicationShould: XCTestCase {
 
     func testIndicateItIsPhotoshootEventWhenTagPresent() {
-        var syncResponse = APISyncResponse.randomWithoutDeletions
+        var syncResponse = ModelCharacteristics.randomWithoutDeletions
         let randomEvent = syncResponse.events.changed.randomElement()
         var event = randomEvent.element
         event.tags = ["photoshoot"]
@@ -27,7 +27,7 @@ class InOrderToSupportPhotoshootTag_ApplicationShould: XCTestCase {
     }
 
     func testNotIndicateItIsPhotoshootEventWhenTagNotPresent() {
-        var syncResponse = APISyncResponse.randomWithoutDeletions
+        var syncResponse = ModelCharacteristics.randomWithoutDeletions
         let randomEvent = syncResponse.events.changed.randomElement()
         var event = randomEvent.element
         event.tags = []

@@ -13,7 +13,7 @@ class WhenSyncFinishesForEventWithPoster_WhenImageAPIIsSlow_ApplicationShould: X
 
     func testStillAdaptTheFetchedDataIntoTheEvent() {
         let imageAPI = SlowFakeImageAPI()
-        let syncResponse = APISyncResponse.randomWithoutDeletions
+        let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let randomEvent = syncResponse.events.changed.randomElement().element
         let simulatedTime = randomEvent.startDateTime
         let context = ApplicationTestBuilder().with(imageAPI).with(simulatedTime).build()

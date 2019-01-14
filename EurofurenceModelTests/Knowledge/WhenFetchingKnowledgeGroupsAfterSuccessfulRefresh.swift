@@ -13,7 +13,7 @@ class WhenFetchingKnowledgeGroupsAfterSuccessfulRefresh: XCTestCase {
 
     func testEntriesAreConsolidatedByGroupIdentifierInGroupOrder() {
         let context = ApplicationTestBuilder().build()
-        let syncResponse = APISyncResponse.randomWithoutDeletions
+        let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let expected = context.expectedKnowledgeGroups(from: syncResponse)
 
         context.performSuccessfulSync(response: syncResponse)
@@ -27,7 +27,7 @@ class WhenFetchingKnowledgeGroupsAfterSuccessfulRefresh: XCTestCase {
         let context = ApplicationTestBuilder().build()
         let observer = CapturingKnowledgeServiceObserver()
         context.knowledgeService.add(observer)
-        let syncResponse = APISyncResponse.randomWithoutDeletions
+        let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let expected = context.expectedKnowledgeGroups(from: syncResponse)
         context.performSuccessfulSync(response: syncResponse)
 

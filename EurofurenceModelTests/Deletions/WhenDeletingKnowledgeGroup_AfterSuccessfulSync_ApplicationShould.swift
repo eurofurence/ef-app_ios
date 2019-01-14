@@ -13,7 +13,7 @@ class WhenDeletingKnowledgeGroup_AfterSuccessfulSync_ApplicationShould: XCTestCa
 
     func testTellTheStoreToDeleteTheGroup() {
         let dataStore = CapturingEurofurenceDataStore()
-        var response = APISyncResponse.randomWithoutDeletions
+        var response = ModelCharacteristics.randomWithoutDeletions
         let context = ApplicationTestBuilder().with(dataStore).build()
         context.refreshLocalStore()
         context.syncAPI.simulateSuccessfulSync(response)

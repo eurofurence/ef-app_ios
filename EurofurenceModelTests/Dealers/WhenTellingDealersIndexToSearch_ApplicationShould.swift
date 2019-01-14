@@ -12,8 +12,8 @@ import XCTest
 class WhenTellingDealersIndexToSearch_ApplicationShould: XCTestCase {
 
     func testMatchDealersByExactPreferredName() {
-        var syncResponse = APISyncResponse.randomWithoutDeletions
-        var dealer = APIDealer.random
+        var syncResponse = ModelCharacteristics.randomWithoutDeletions
+        var dealer = DealerCharacteristics.random
         let preferredName = "Bob"
         dealer.displayName = preferredName
         syncResponse.dealers.changed = [dealer]
@@ -31,8 +31,8 @@ class WhenTellingDealersIndexToSearch_ApplicationShould: XCTestCase {
     }
 
     func testMatchDealersByPartialNameMatches() {
-        var syncResponse = APISyncResponse.randomWithoutDeletions
-        var dealer = APIDealer.random
+        var syncResponse = ModelCharacteristics.randomWithoutDeletions
+        var dealer = DealerCharacteristics.random
         let preferredName = "Charlie"
         dealer.displayName = preferredName
         syncResponse.dealers.changed = [dealer]
@@ -50,8 +50,8 @@ class WhenTellingDealersIndexToSearch_ApplicationShould: XCTestCase {
     }
 
     func testMatchDealersIgnoringCase() {
-        var syncResponse = APISyncResponse.randomWithoutDeletions
-        var dealer = APIDealer.random
+        var syncResponse = ModelCharacteristics.randomWithoutDeletions
+        var dealer = DealerCharacteristics.random
         let preferredName = "coOL DudE"
         dealer.displayName = preferredName
         syncResponse.dealers.changed = [dealer]
@@ -69,8 +69,8 @@ class WhenTellingDealersIndexToSearch_ApplicationShould: XCTestCase {
     }
 
     func testMatchDealersByExactAlternateNameButGroupByDisplayName() {
-        var syncResponse = APISyncResponse.randomWithoutDeletions
-        var dealer = APIDealer.random
+        var syncResponse = ModelCharacteristics.randomWithoutDeletions
+        var dealer = DealerCharacteristics.random
         let attendeeNickname = "Bob"
         dealer.displayName = "Charlie"
         dealer.attendeeNickname = attendeeNickname
@@ -89,8 +89,8 @@ class WhenTellingDealersIndexToSearch_ApplicationShould: XCTestCase {
     }
 
     func testMatchDealersByPartialAlternateNameButGroupByDisplayName() {
-        var syncResponse = APISyncResponse.randomWithoutDeletions
-        var dealer = APIDealer.random
+        var syncResponse = ModelCharacteristics.randomWithoutDeletions
+        var dealer = DealerCharacteristics.random
         let attendeeNickname = "Bob"
         dealer.displayName = "Charlie"
         dealer.attendeeNickname = attendeeNickname
@@ -109,8 +109,8 @@ class WhenTellingDealersIndexToSearch_ApplicationShould: XCTestCase {
     }
 
     func testMatchDealersAlternateNameIgnoringCasingButGroupByDisplayName() {
-        var syncResponse = APISyncResponse.randomWithoutDeletions
-        var dealer = APIDealer.random
+        var syncResponse = ModelCharacteristics.randomWithoutDeletions
+        var dealer = DealerCharacteristics.random
         let attendeeNickname = "Bob"
         dealer.displayName = "Charlie"
         dealer.attendeeNickname = attendeeNickname
@@ -129,8 +129,8 @@ class WhenTellingDealersIndexToSearch_ApplicationShould: XCTestCase {
     }
 
     func testNotMatchDealersWithoutAlternateNamesWhenSearchDoesNotMatchPreferredName() {
-        var syncResponse = APISyncResponse.randomWithoutDeletions
-        var dealer = APIDealer.random
+        var syncResponse = ModelCharacteristics.randomWithoutDeletions
+        var dealer = DealerCharacteristics.random
         dealer.displayName = "Charlie"
         dealer.attendeeNickname = "Charlie"
         syncResponse.dealers.changed = [dealer]

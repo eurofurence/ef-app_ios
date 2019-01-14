@@ -138,7 +138,7 @@ class DefaultNewsInteractor: NewsInteractor,
         regenerateViewModel()
     }
 
-    func privateMessagesServiceDidFinishRefreshingMessages(messages: [APIMessage]) {
+    func privateMessagesServiceDidFinishRefreshingMessages(messages: [MessageCharacteristics]) {
 
     }
 

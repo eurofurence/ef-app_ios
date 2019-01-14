@@ -12,13 +12,13 @@ import XCTest
 class WhenOpeningAnnouncement_ApplicationShould: XCTestCase {
 
     var context: ApplicationTestBuilder.Context!
-    var syncResponse: APISyncResponse!
+    var syncResponse: ModelCharacteristics!
 
     override func setUp() {
         super.setUp()
 
         context = ApplicationTestBuilder().build()
-        syncResponse = APISyncResponse.randomWithoutDeletions
+        syncResponse = ModelCharacteristics.randomWithoutDeletions
         context.performSuccessfulSync(response: syncResponse)
     }
 
@@ -93,7 +93,7 @@ class WhenOpeningAnnouncement_ApplicationShould: XCTestCase {
     }
 
     func testTellObserversAboutReadAnnouncementsWhenLoadingFromStore() {
-        let syncResponse = APISyncResponse.randomWithoutDeletions
+        let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let announcements = syncResponse.announcements.changed
         let firstAnnouncement = announcements.randomElement().element
         let firstIdentifier = firstAnnouncement.identifier

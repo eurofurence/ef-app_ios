@@ -12,7 +12,7 @@ import XCTest
 class InOrderToSupportDealersDenTag_ApplicationShould: XCTestCase {
 
     func testIndicateItIsDealersDenEventWhenTagPresent() {
-        var syncResponse = APISyncResponse.randomWithoutDeletions
+        var syncResponse = ModelCharacteristics.randomWithoutDeletions
         let randomEvent = syncResponse.events.changed.randomElement()
         var event = randomEvent.element
         event.tags = ["dealers_den"]
@@ -27,7 +27,7 @@ class InOrderToSupportDealersDenTag_ApplicationShould: XCTestCase {
     }
 
     func testNotIndicateItIsDealersDenEventWhenTagNotPresent() {
-        var syncResponse = APISyncResponse.randomWithoutDeletions
+        var syncResponse = ModelCharacteristics.randomWithoutDeletions
         let randomEvent = syncResponse.events.changed.randomElement()
         var event = randomEvent.element
         event.tags = []

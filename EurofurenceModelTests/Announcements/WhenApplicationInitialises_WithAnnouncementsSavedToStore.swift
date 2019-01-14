@@ -13,7 +13,7 @@ class WhenApplicationInitialises_WithAnnouncementsSavedToStore: XCTestCase {
 
     func testTheEventsAreProvidedToTheObserver() {
         let dataStore = CapturingEurofurenceDataStore()
-        let announcements = [APIAnnouncement].random
+        let announcements = [AnnouncementCharacteristics].random
         dataStore.performTransaction { (transaction) in
             transaction.saveAnnouncements(announcements)
         }

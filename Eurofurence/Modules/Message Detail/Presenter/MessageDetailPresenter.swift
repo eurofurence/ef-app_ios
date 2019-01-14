@@ -10,10 +10,10 @@ import EurofurenceModel
 
 struct MessageDetailPresenter: MessageDetailSceneDelegate {
 
-    private let message: APIMessage
+    private let message: MessageCharacteristics
     private let scene: MessageDetailScene
 
-    init(message: APIMessage, scene: MessageDetailScene) {
+    init(message: MessageCharacteristics, scene: MessageDetailScene) {
         self.message = message
         self.scene = scene
 
@@ -27,7 +27,7 @@ struct MessageDetailPresenter: MessageDetailSceneDelegate {
 
     private struct MessageBinder: MessageComponentBinder {
 
-        var message: APIMessage
+        var message: MessageCharacteristics
 
         func bind(_ component: MessageComponent) {
             component.setMessageSubject(message.subject)

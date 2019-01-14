@@ -10,14 +10,14 @@ import Foundation
 
 extension EventEntity: EntityAdapting {
 
-    typealias AdaptedType = APIEvent
+    typealias AdaptedType = EventCharacteristics
 
-    static func makeIdentifyingPredicate(for model: APIEvent) -> NSPredicate {
+    static func makeIdentifyingPredicate(for model: EventCharacteristics) -> NSPredicate {
         return NSPredicate(format: "identifier == %@", model.identifier)
     }
 
-    func asAdaptedType() -> APIEvent {
-        return APIEvent(identifier: identifier!,
+    func asAdaptedType() -> EventCharacteristics {
+        return EventCharacteristics(identifier: identifier!,
                         roomIdentifier: roomIdentifier!,
                         trackIdentifier: trackIdentifier!,
                         dayIdentifier: dayIdentifier!,
@@ -33,7 +33,7 @@ extension EventEntity: EntityAdapting {
                         tags: tags)
     }
 
-    func consumeAttributes(from value: APIEvent) {
+    func consumeAttributes(from value: EventCharacteristics) {
         identifier = value.identifier
         roomIdentifier = value.roomIdentifier
         trackIdentifier = value.trackIdentifier

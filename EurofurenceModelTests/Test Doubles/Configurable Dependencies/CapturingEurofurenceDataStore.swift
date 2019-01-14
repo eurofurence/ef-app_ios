@@ -11,7 +11,7 @@ import Foundation
 
 class CapturingEurofurenceDataStore: DataStore {
 
-    func getSavedAnnouncements() -> [APIAnnouncement]? {
+    func getSavedAnnouncements() -> [AnnouncementCharacteristics]? {
         return transaction.persistedAnnouncements
     }
 
@@ -19,27 +19,27 @@ class CapturingEurofurenceDataStore: DataStore {
         return transaction.persistedLastRefreshDate
     }
 
-    func getSavedKnowledgeGroups() -> [APIKnowledgeGroup]? {
+    func getSavedKnowledgeGroups() -> [KnowledgeGroupCharacteristics]? {
         return transaction.persistedKnowledgeGroups
     }
 
-    func getSavedKnowledgeEntries() -> [APIKnowledgeEntry]? {
+    func getSavedKnowledgeEntries() -> [KnowledgeEntryCharacteristics]? {
         return transaction.persistedKnowledgeEntries
     }
 
-    func getSavedRooms() -> [APIRoom]? {
+    func getSavedRooms() -> [RoomCharacteristics]? {
         return transaction.persistedRooms
     }
 
-    func getSavedTracks() -> [APITrack]? {
+    func getSavedTracks() -> [TrackCharacteristics]? {
         return transaction.persistedTracks
     }
 
-    func getSavedConferenceDays() -> [APIConferenceDay]? {
+    func getSavedConferenceDays() -> [ConferenceDayCharacteristics]? {
         return transaction.persistedConferenceDays
     }
 
-    func getSavedEvents() -> [APIEvent]? {
+    func getSavedEvents() -> [EventCharacteristics]? {
         return transaction.persistedEvents
     }
 
@@ -47,11 +47,11 @@ class CapturingEurofurenceDataStore: DataStore {
         return transaction.persistedFavouriteEvents
     }
 
-    func getSavedDealers() -> [APIDealer]? {
+    func getSavedDealers() -> [DealerCharacteristics]? {
         return transaction.persistedDealers
     }
 
-    func getSavedMaps() -> [APIMap]? {
+    func getSavedMaps() -> [MapCharacteristics]? {
         return transaction.persistedMaps
     }
 
@@ -59,7 +59,7 @@ class CapturingEurofurenceDataStore: DataStore {
         return transaction.persistedReadAnnouncementIdentifiers
     }
 
-    func getSavedImages() -> [APIImage]? {
+    func getSavedImages() -> [ImageCharacteristics]? {
         return transaction.persistedImages
     }
 
@@ -75,7 +75,7 @@ class CapturingEurofurenceDataStore: DataStore {
 
 extension CapturingEurofurenceDataStore {
 
-    func save(_ response: APISyncResponse, lastRefreshDate: Date = Date(), block: ((DataStoreTransaction) -> Void)? = nil) {
+    func save(_ response: ModelCharacteristics, lastRefreshDate: Date = Date(), block: ((DataStoreTransaction) -> Void)? = nil) {
         performTransaction { (transaction) in
             transaction.saveLastRefreshDate(lastRefreshDate)
             transaction.saveKnowledgeGroups(response.knowledgeGroups.changed)
@@ -92,27 +92,27 @@ extension CapturingEurofurenceDataStore {
         }
     }
 
-    func didSave(_ knowledgeGroups: [APIKnowledgeGroup]) -> Bool {
+    func didSave(_ knowledgeGroups: [KnowledgeGroupCharacteristics]) -> Bool {
         return transaction.persistedKnowledgeGroups.contains(elementsFrom: knowledgeGroups)
     }
 
-    func didSave(_ knowledgeEntries: [APIKnowledgeEntry]) -> Bool {
+    func didSave(_ knowledgeEntries: [KnowledgeEntryCharacteristics]) -> Bool {
         return transaction.persistedKnowledgeEntries.contains(elementsFrom: knowledgeEntries)
     }
 
-    func didSave(_ announcements: [APIAnnouncement]) -> Bool {
+    func didSave(_ announcements: [AnnouncementCharacteristics]) -> Bool {
         return transaction.persistedAnnouncements.contains(elementsFrom: announcements)
     }
 
-    func didSave(_ events: [APIEvent]) -> Bool {
+    func didSave(_ events: [EventCharacteristics]) -> Bool {
         return transaction.persistedEvents.contains(elementsFrom: events)
     }
 
-    func didSave(_ events: [APIRoom]) -> Bool {
+    func didSave(_ events: [RoomCharacteristics]) -> Bool {
         return transaction.persistedRooms.contains(elementsFrom: events)
     }
 
-    func didSave(_ tracks: [APITrack]) -> Bool {
+    func didSave(_ tracks: [TrackCharacteristics]) -> Bool {
         return transaction.persistedTracks.contains(elementsFrom: tracks)
     }
 
@@ -124,7 +124,7 @@ extension CapturingEurofurenceDataStore {
         return transaction.persistedFavouriteEvents.contains(identifier)
     }
 
-    func didSave(_ dealers: [APIDealer]) -> Bool {
+    func didSave(_ dealers: [DealerCharacteristics]) -> Bool {
         return transaction.persistedDealers.contains(elementsFrom: dealers)
     }
 
@@ -132,11 +132,11 @@ extension CapturingEurofurenceDataStore {
         return transaction.deletedFavouriteEvents.contains(identifier)
     }
 
-    func didSave(_ conferenceDays: [APIConferenceDay]) -> Bool {
+    func didSave(_ conferenceDays: [ConferenceDayCharacteristics]) -> Bool {
         return transaction.persistedConferenceDays.contains(elementsFrom: conferenceDays)
     }
 
-    func didSave(_ maps: [APIMap]) -> Bool {
+    func didSave(_ maps: [MapCharacteristics]) -> Bool {
         return transaction.persistedMaps.contains(elementsFrom: maps)
     }
 
@@ -148,7 +148,7 @@ extension CapturingEurofurenceDataStore {
         return transaction.persistedReadAnnouncementIdentifiers.contains(elementsFrom: identifiers)
     }
 
-    func didSave(_ images: [APIImage]) -> Bool {
+    func didSave(_ images: [ImageCharacteristics]) -> Bool {
         return transaction.persistedImages.contains(elementsFrom: images)
     }
 

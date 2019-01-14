@@ -12,7 +12,7 @@ import XCTest
 class WhenFetchingImagesForKnowledgeEntry_WhenEntryHasImages_ApplicationShould: XCTestCase {
 
     func testProvideTheImageDataFromTheRepository() {
-        let syncResponse = APISyncResponse.randomWithoutDeletions
+        let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let context = ApplicationTestBuilder().build()
         context.performSuccessfulSync(response: syncResponse)
         let randomEntry = syncResponse.knowledgeEntries.changed.randomElement().element

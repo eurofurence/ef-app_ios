@@ -12,12 +12,12 @@ import XCTest
 class WhenFavouritingEvent_ApplicationShould: XCTestCase {
 
     var context: ApplicationTestBuilder.Context!
-    var events: [APIEvent]!
+    var events: [EventCharacteristics]!
 
     override func setUp() {
         super.setUp()
 
-        let response = APISyncResponse.randomWithoutDeletions
+        let response = ModelCharacteristics.randomWithoutDeletions
         events = response.events.changed
         let dataStore = CapturingEurofurenceDataStore()
         dataStore.performTransaction { (transaction) in

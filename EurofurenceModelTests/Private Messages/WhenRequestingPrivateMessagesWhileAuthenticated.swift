@@ -64,7 +64,7 @@ class WhenRequestingPrivateMessagesWhileAuthenticated: XCTestCase {
 
     func testReceievingAPIResponseWithSuccessShouldPropogateAuthorNameForMessage() {
         let authorName = "Some guy"
-        var message = APIMessage.random
+        var message = MessageCharacteristics.random
         message.authorName = authorName
         context.privateMessagesAPI.simulateSuccessfulResponse(response: [message])
 
@@ -73,7 +73,7 @@ class WhenRequestingPrivateMessagesWhileAuthenticated: XCTestCase {
 
     func testReceievingAPIResponseWithSuccessShouldPropogatereceivedDateTimeForMessage() {
         let receivedDateTime = Date.distantPast
-        var message = APIMessage.random
+        var message = MessageCharacteristics.random
         message.receivedDateTime = receivedDateTime
         context.privateMessagesAPI.simulateSuccessfulResponse(response: [message])
 
@@ -82,7 +82,7 @@ class WhenRequestingPrivateMessagesWhileAuthenticated: XCTestCase {
 
     func testReceievingAPIResponseWithSuccessShouldPropogateContentsForMessage() {
         let contents = "Blah blah important stuff blah blah"
-        var message = APIMessage.random
+        var message = MessageCharacteristics.random
         message.contents = contents
         context.privateMessagesAPI.simulateSuccessfulResponse(response: [message])
 
@@ -91,7 +91,7 @@ class WhenRequestingPrivateMessagesWhileAuthenticated: XCTestCase {
 
     func testReceievingAPIResponseWithSuccessShouldPropogateSubjectForMessage() {
         let subject = "You won something!!"
-        var message = APIMessage.random
+        var message = MessageCharacteristics.random
         message.subject = subject
         context.privateMessagesAPI.simulateSuccessfulResponse(response: [message])
 
@@ -99,9 +99,9 @@ class WhenRequestingPrivateMessagesWhileAuthenticated: XCTestCase {
     }
 
     func testMessagesShouldBeSortedWithLatestMessagesFirst() {
-        let makeRandomMessage: () -> APIMessage = {
+        let makeRandomMessage: () -> MessageCharacteristics = {
             let randomDate = Date(timeIntervalSinceNow: .random(upperLimit: 3600))
-            var message = APIMessage.random
+            var message = MessageCharacteristics.random
             message.receivedDateTime = randomDate
             return message
         }
@@ -115,7 +115,7 @@ class WhenRequestingPrivateMessagesWhileAuthenticated: XCTestCase {
     }
 
     func testObserversToldOfNewUnreadCount() {
-        var unreadMessage = APIMessage.random
+        var unreadMessage = MessageCharacteristics.random
         unreadMessage.isRead = false
         context.privateMessagesAPI.simulateSuccessfulResponse(response: [unreadMessage])
 
@@ -123,9 +123,9 @@ class WhenRequestingPrivateMessagesWhileAuthenticated: XCTestCase {
     }
 
     func testReadMessagesNotIncludedInUnreadCount() {
-        var unreadMessage = APIMessage.random
+        var unreadMessage = MessageCharacteristics.random
         unreadMessage.isRead = false
-        var readMessage = APIMessage.random
+        var readMessage = MessageCharacteristics.random
         readMessage.isRead = true
         context.privateMessagesAPI.simulateSuccessfulResponse(response: [unreadMessage, readMessage])
 
@@ -133,7 +133,7 @@ class WhenRequestingPrivateMessagesWhileAuthenticated: XCTestCase {
     }
 
     func testLateAddedObserversToldOfNewUnreadCount() {
-        var unreadMessage = APIMessage.random
+        var unreadMessage = MessageCharacteristics.random
         unreadMessage.isRead = false
         context.privateMessagesAPI.simulateSuccessfulResponse(response: [unreadMessage])
 

@@ -1,5 +1,5 @@
 //
-//  APIImage.swift
+//  ImageCharacteristics.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 27/07/2018.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct APIImage: Equatable {
+public struct ImageCharacteristics: Equatable {
 
     public var identifier: String
     public var internalReference: String

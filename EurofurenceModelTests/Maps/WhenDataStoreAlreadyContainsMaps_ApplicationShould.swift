@@ -12,7 +12,7 @@ import XCTest
 class WhenDataStoreAlreadyContainsMaps_ApplicationShould: XCTestCase {
 
     func testProvideTheMapsToTheObserverInAlphabeticalOrder() {
-        let syncResponse = APISyncResponse.randomWithoutDeletions
+        let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let dataStore = CapturingEurofurenceDataStore()
         dataStore.save(syncResponse)
         let context = ApplicationTestBuilder().with(dataStore).build()

@@ -10,15 +10,15 @@ import Foundation
 
 extension DealerEntity: EntityAdapting {
 
-    typealias AdaptedType = APIDealer
+    typealias AdaptedType = DealerCharacteristics
 
-    static func makeIdentifyingPredicate(for model: APIDealer) -> NSPredicate {
+    static func makeIdentifyingPredicate(for model: DealerCharacteristics) -> NSPredicate {
         return NSPredicate(format: "identifier == %@", model.identifier)
     }
 
-    func asAdaptedType() -> APIDealer {
+    func asAdaptedType() -> DealerCharacteristics {
         let linksArray = (links?.allObjects as? [LinkEntity])?.map({ $0.asAdaptedType() })
-        return APIDealer(identifier: identifier!,
+        return DealerCharacteristics(identifier: identifier!,
                          displayName: displayName!,
                          attendeeNickname: attendeeNickname!,
                          attendsOnThursday: attendsOnThursday,
@@ -38,7 +38,7 @@ extension DealerEntity: EntityAdapting {
                          artPreviewCaption: artPreviewCaption!)
     }
 
-    func consumeAttributes(from value: APIDealer) {
+    func consumeAttributes(from value: DealerCharacteristics) {
         identifier = value.identifier
         displayName = value.displayName
         attendeeNickname = value.attendeeNickname

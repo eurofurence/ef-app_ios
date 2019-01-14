@@ -13,7 +13,7 @@ class WhenSyncCompletesWithEvents_ApplicationShould: XCTestCase {
 
     func testTellObserversAboutAvailableEvents() {
         let context = ApplicationTestBuilder().build()
-        let syncResponse = APISyncResponse.randomWithoutDeletions
+        let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let observer = CapturingEventsServiceObserver()
         context.eventsService.add(observer)
         context.performSuccessfulSync(response: syncResponse)

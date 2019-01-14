@@ -11,7 +11,7 @@ import Foundation
 
 private protocol EventFilter {
 
-    func shouldFilter(event: APIEvent) -> Bool
+    func shouldFilter(event: EventCharacteristics) -> Bool
 
 }
 
@@ -30,9 +30,9 @@ class EventsScheduleAdapter: EventsSchedule {
 
     private struct DayRestrictionFilter: EventFilter {
 
-        var day: APIConferenceDay
+        var day: ConferenceDayCharacteristics
 
-        func shouldFilter(event: APIEvent) -> Bool {
+        func shouldFilter(event: EventCharacteristics) -> Bool {
             return event.dayIdentifier == day.identifier
         }
 
@@ -92,7 +92,7 @@ class EventsScheduleAdapter: EventsSchedule {
         restrictScheduleToEvents(on: day)
     }
 
-    private func restrictScheduleToEvents(on day: APIConferenceDay) {
+    private func restrictScheduleToEvents(on day: ConferenceDayCharacteristics) {
         if let idx = filters.index(where: { $0 is DayRestrictionFilter }) {
             let filter = filters[idx] as! DayRestrictionFilter
             guard filter.day != day else { return }
@@ -128,7 +128,7 @@ class EventsScheduleAdapter: EventsSchedule {
         delegate?.scheduleEventsDidChange(to: events)
     }
 
-    private func findDay(for date: Date) -> APIConferenceDay? {
+    private func findDay(for date: Date) -> ConferenceDayCharacteristics? {
         let dateOnlyComponents = resolveDateOnlyComponents(from: date)
 
         return schedule.days.first { (day) in

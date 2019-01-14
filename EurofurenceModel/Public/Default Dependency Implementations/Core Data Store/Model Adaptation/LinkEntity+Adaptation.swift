@@ -10,19 +10,19 @@ import Foundation
 
 extension LinkEntity: EntityAdapting {
 
-    typealias AdaptedType = APILink
+    typealias AdaptedType = LinkCharacteristics
 
-    static func makeIdentifyingPredicate(for model: APILink) -> NSPredicate {
+    static func makeIdentifyingPredicate(for model: LinkCharacteristics) -> NSPredicate {
         return NSPredicate(value: false)
     }
 
-    func asAdaptedType() -> APILink {
-        return APILink(name: name!,
-                       fragmentType: APILink.FragmentType(rawValue: Int(fragmentType))!,
+    func asAdaptedType() -> LinkCharacteristics {
+        return LinkCharacteristics(name: name!,
+                       fragmentType: LinkCharacteristics.FragmentType(rawValue: Int(fragmentType))!,
                        target: target!)
     }
 
-    func consumeAttributes(from value: APILink) {
+    func consumeAttributes(from value: LinkCharacteristics) {
         name = value.name
         target = value.target
         fragmentType = Int16(Float(value.fragmentType.rawValue))

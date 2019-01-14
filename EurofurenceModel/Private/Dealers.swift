@@ -69,7 +69,7 @@ class Dealers: DealersService {
     private struct UpdatedEvent {}
 
     private var dealerModels = [Dealer]()
-    private var models = [APIDealer]()
+    private var models = [DealerCharacteristics]()
     private let eventBus: EventBus
     private let dataStore: DataStore
     private let imageCache: ImagesCache
@@ -103,7 +103,7 @@ class Dealers: DealersService {
         completionHandler(iconData)
     }
 
-    private func fetchMapData(for identifier: DealerIdentifier) -> (map: APIMap, entry: APIMap.Entry)? {
+    private func fetchMapData(for identifier: DealerIdentifier) -> (map: MapCharacteristics, entry: MapCharacteristics.Entry)? {
         guard let maps = dataStore.getSavedMaps() else { return nil }
 
         for map in maps {
@@ -184,7 +184,7 @@ class Dealers: DealersService {
         eventBus.post(DomainEvent.OpenURL(url: url))
     }
 
-    private func fetchDealer(_ identifier: DealerIdentifier) -> APIDealer? {
+    private func fetchDealer(_ identifier: DealerIdentifier) -> DealerCharacteristics? {
         return models.first(where: { $0.identifier == identifier.rawValue })
     }
 

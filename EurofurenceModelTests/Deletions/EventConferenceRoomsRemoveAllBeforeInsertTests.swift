@@ -12,7 +12,7 @@ import XCTest
 class EventConferenceRoomsRemoveAllBeforeInsertTests: XCTestCase {
 
     func testTellTheDataStoreToDeleteTheConferenceRooms() {
-        let originalResponse = APISyncResponse.randomWithoutDeletions
+        let originalResponse = ModelCharacteristics.randomWithoutDeletions
         var subsequentResponse = originalResponse
         subsequentResponse.rooms.removeAllBeforeInsert = true
         let context = ApplicationTestBuilder().build()

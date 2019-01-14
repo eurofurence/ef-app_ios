@@ -12,7 +12,7 @@ import XCTest
 class ImagesRemoveAllBeforeInsertTests: XCTestCase {
 
     func testTellTheDataStoreToDeleteTheImages() {
-        let originalResponse = APISyncResponse.randomWithoutDeletions
+        let originalResponse = ModelCharacteristics.randomWithoutDeletions
         var subsequentResponse = originalResponse
         subsequentResponse.images.removeAllBeforeInsert = true
         let context = ApplicationTestBuilder().build()
@@ -25,7 +25,7 @@ class ImagesRemoveAllBeforeInsertTests: XCTestCase {
     }
 
     func testNotDeleteOriginalImagesWhenPurgeNotRequired() {
-        let originalResponse = APISyncResponse.randomWithoutDeletions
+        let originalResponse = ModelCharacteristics.randomWithoutDeletions
         var subsequentResponse = originalResponse
         subsequentResponse.images.removeAllBeforeInsert = false
         let context = ApplicationTestBuilder().build()
@@ -37,7 +37,7 @@ class ImagesRemoveAllBeforeInsertTests: XCTestCase {
     }
 
     func testRemoveImagesFromTheCache() {
-        let originalResponse = APISyncResponse.randomWithoutDeletions
+        let originalResponse = ModelCharacteristics.randomWithoutDeletions
         var subsequentResponse = originalResponse
         subsequentResponse.images.removeAllBeforeInsert = true
         let context = ApplicationTestBuilder().build()
@@ -50,7 +50,7 @@ class ImagesRemoveAllBeforeInsertTests: XCTestCase {
     }
 
     func testNotRemoveImagesFromTheCacheWhenPurgeNotRequired() {
-        let originalResponse = APISyncResponse.randomWithoutDeletions
+        let originalResponse = ModelCharacteristics.randomWithoutDeletions
         var subsequentResponse = originalResponse
         subsequentResponse.images.removeAllBeforeInsert = false
         let context = ApplicationTestBuilder().build()
@@ -62,7 +62,7 @@ class ImagesRemoveAllBeforeInsertTests: XCTestCase {
     }
 
     func testProduceExpectedImageDataForDealerUsingNewResponse() {
-        let originalResponse = APISyncResponse.randomWithoutDeletions
+        let originalResponse = ModelCharacteristics.randomWithoutDeletions
         var subsequentResponse = originalResponse
         subsequentResponse.images.removeAllBeforeInsert = true
         let context = ApplicationTestBuilder().build()

@@ -23,7 +23,7 @@ class WhenSyncSucceeds_ThenImageChanges_ApplicationShould: XCTestCase {
 
         let imageAPI = VerifyImageRedownloadedAPI()
         let context = ApplicationTestBuilder().with(imageAPI).build()
-        let originalResponse = APISyncResponse.randomWithoutDeletions
+        let originalResponse = ModelCharacteristics.randomWithoutDeletions
         var subsequentResponse = originalResponse
         let changedImage = originalResponse.images.changed.randomElement()
         subsequentResponse.images.changed = [changedImage.element]

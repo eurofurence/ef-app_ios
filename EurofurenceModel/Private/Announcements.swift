@@ -72,7 +72,7 @@ class Announcements: AnnouncementsService {
         models = announcements.sorted(by: isLastEditTimeAscending).map(Announcement.init)
     }
 
-    private func isLastEditTimeAscending(_ first: APIAnnouncement, _ second: APIAnnouncement) -> Bool {
+    private func isLastEditTimeAscending(_ first: AnnouncementCharacteristics, _ second: AnnouncementCharacteristics) -> Bool {
         return first.lastChangedDateTime.compare(second.lastChangedDateTime) == .orderedDescending
     }
 

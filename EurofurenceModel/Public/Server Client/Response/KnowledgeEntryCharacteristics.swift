@@ -1,5 +1,5 @@
 //
-//  APIKnowledgeEntry.swift
+//  KnowledgeEntryCharacteristics.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 26/02/2018.
@@ -8,17 +8,17 @@
 
 import Foundation
 
-public struct APIKnowledgeEntry: Comparable, Equatable {
+public struct KnowledgeEntryCharacteristics: Comparable, Equatable {
 
     public var identifier: String
     public var groupIdentifier: String
     public var title: String
     public var order: Int
     public var text: String
-    public var links: [APILink]
+    public var links: [LinkCharacteristics]
     public var imageIdentifiers: [String]
 
-    public init(identifier: String, groupIdentifier: String, title: String, order: Int, text: String, links: [APILink], imageIdentifiers: [String]) {
+    public init(identifier: String, groupIdentifier: String, title: String, order: Int, text: String, links: [LinkCharacteristics], imageIdentifiers: [String]) {
         self.identifier = identifier
         self.groupIdentifier = groupIdentifier
         self.title = title
@@ -28,7 +28,7 @@ public struct APIKnowledgeEntry: Comparable, Equatable {
         self.imageIdentifiers = imageIdentifiers
     }
 
-    public static func <(lhs: APIKnowledgeEntry, rhs: APIKnowledgeEntry) -> Bool {
+    public static func <(lhs: KnowledgeEntryCharacteristics, rhs: KnowledgeEntryCharacteristics) -> Bool {
         return lhs.title < rhs.title
     }
 

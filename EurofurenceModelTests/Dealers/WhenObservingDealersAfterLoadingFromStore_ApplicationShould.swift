@@ -12,7 +12,7 @@ import XCTest
 class WhenObservingDealersAfterLoadingFromStore_ApplicationShould: XCTestCase {
 
     func testUpdateTheDelegateWithDealersGroupedByDisplayName() {
-        let syncResponse = APISyncResponse.randomWithoutDeletions
+        let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let dataStore = CapturingEurofurenceDataStore()
         dataStore.save(syncResponse)
         let context = ApplicationTestBuilder().with(dataStore).build()

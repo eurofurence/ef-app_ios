@@ -12,7 +12,7 @@ import XCTest
 class InOrderToSupportMainStageTag_ApplicationShould: XCTestCase {
 
     func testIndicateItIsMainStageEventWhenTagPresent() {
-        var syncResponse = APISyncResponse.randomWithoutDeletions
+        var syncResponse = ModelCharacteristics.randomWithoutDeletions
         let randomEvent = syncResponse.events.changed.randomElement()
         var event = randomEvent.element
         event.tags = ["main_stage"]
@@ -27,7 +27,7 @@ class InOrderToSupportMainStageTag_ApplicationShould: XCTestCase {
     }
 
     func testNotIndicateItIsMainStageEventWhenTagNotPresent() {
-        var syncResponse = APISyncResponse.randomWithoutDeletions
+        var syncResponse = ModelCharacteristics.randomWithoutDeletions
         let randomEvent = syncResponse.events.changed.randomElement()
         var event = randomEvent.element
         event.tags = []

@@ -12,7 +12,7 @@ import XCTest
 class WhenTimePasses_AndAnEventIsNoLongerUpcoming_ApplicationShould: XCTestCase {
 
     func testTellTheObserverTheEventIsNoLongerAnUpcomingEvent() {
-        let syncResponse = APISyncResponse.randomWithoutDeletions
+        let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let randomEvent = syncResponse.events.changed.randomElement().element
         var simulatedTime = randomEvent.startDateTime.addingTimeInterval(-1)
         let context = ApplicationTestBuilder().with(simulatedTime).build()

@@ -1,5 +1,5 @@
 //
-//  APIMap.swift
+//  MapCharacteristics.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 26/06/2018.
@@ -8,9 +8,9 @@
 
 import Foundation
 
-public struct APIMap: Equatable {
+public struct MapCharacteristics: Equatable {
 
-    public static func == (lhs: APIMap, rhs: APIMap) -> Bool {
+    public static func == (lhs: MapCharacteristics, rhs: MapCharacteristics) -> Bool {
         return lhs.identifier == rhs.identifier &&
                lhs.imageIdentifier == rhs.imageIdentifier &&
                lhs.mapDescription == rhs.mapDescription &&

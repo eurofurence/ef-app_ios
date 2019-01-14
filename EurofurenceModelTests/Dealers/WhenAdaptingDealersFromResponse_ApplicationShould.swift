@@ -12,8 +12,8 @@ import XCTest
 class WhenAdaptingDealersFromResponse_ApplicationShould: XCTestCase {
 
     func testUseAttendeeNameAsAlternateNameWhenNotTheSameAsDisplayName() {
-        var syncResponse = APISyncResponse.randomWithoutDeletions
-        var dealer = APIDealer.random
+        var syncResponse = ModelCharacteristics.randomWithoutDeletions
+        var dealer = DealerCharacteristics.random
         let nickname = String.random
         dealer.displayName = .random
         dealer.attendeeNickname = nickname
@@ -30,8 +30,8 @@ class WhenAdaptingDealersFromResponse_ApplicationShould: XCTestCase {
     }
 
     func testUseNilAlternateNameWhenDisplayAndAttendeeNameAreTheSame() {
-        var syncResponse = APISyncResponse.randomWithoutDeletions
-        var dealer = APIDealer.random
+        var syncResponse = ModelCharacteristics.randomWithoutDeletions
+        var dealer = DealerCharacteristics.random
         dealer.displayName = .random
         dealer.attendeeNickname = dealer.displayName
         syncResponse.dealers.changed = [dealer]
@@ -47,8 +47,8 @@ class WhenAdaptingDealersFromResponse_ApplicationShould: XCTestCase {
     }
 
     func testUseAttendeeNameAsPreferredNameIfDisplayNameNotSpecified() {
-        var syncResponse = APISyncResponse.randomWithoutDeletions
-        var dealer = APIDealer.random
+        var syncResponse = ModelCharacteristics.randomWithoutDeletions
+        var dealer = DealerCharacteristics.random
         let nickname = String.random
         dealer.displayName = ""
         dealer.attendeeNickname = nickname
@@ -65,8 +65,8 @@ class WhenAdaptingDealersFromResponse_ApplicationShould: XCTestCase {
     }
 
     func testUseQuestionMarkAsPreferredNameIfAttendeeNicknameAndDisplayNameNotSpecified_toAvoidCrashing() {
-        var syncResponse = APISyncResponse.randomWithoutDeletions
-        var dealer = APIDealer.random
+        var syncResponse = ModelCharacteristics.randomWithoutDeletions
+        var dealer = DealerCharacteristics.random
         dealer.displayName = ""
         dealer.attendeeNickname = ""
         syncResponse.dealers.changed = [dealer]
