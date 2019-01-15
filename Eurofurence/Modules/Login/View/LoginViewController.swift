@@ -1,5 +1,5 @@
 //
-//  LoginViewControllerV2.swift
+//  LoginViewController.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 04/12/2017.
@@ -9,7 +9,7 @@
 import UIKit.UIButton
 import UIKit.UIViewController
 
-class LoginViewControllerV2: UITableViewController, LoginScene {
+class LoginViewController: UITableViewController, LoginScene {
 
     // MARK: IBOutlets
 

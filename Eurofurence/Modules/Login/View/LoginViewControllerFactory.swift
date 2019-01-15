@@ -1,5 +1,5 @@
 //
-//  LoginViewControllerV2Factory.swift
+//  LoginViewControllerFactory.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 04/12/2017.
@@ -9,12 +9,12 @@
 import UIKit.UIStoryboard
 import UIKit.UIViewController
 
-struct LoginViewControllerV2Factory: LoginSceneFactory {
+struct LoginViewControllerFactory: LoginSceneFactory {
 
     private let storyboard = UIStoryboard(name: "Login", bundle: .main)
 
     func makeLoginScene() -> UIViewController & LoginScene {
-        return storyboard.instantiate(LoginViewControllerV2.self)
+        return storyboard.instantiate(LoginViewController.self)
     }
 
 }

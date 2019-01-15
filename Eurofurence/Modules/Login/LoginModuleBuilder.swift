@@ -15,7 +15,7 @@ class LoginModuleBuilder {
     private var alertRouter: AlertRouter
 
     init() {
-        sceneFactory = LoginViewControllerV2Factory()
+        sceneFactory = LoginViewControllerFactory()
         authenticationService = SharedModel.instance.services.authentication
         alertRouter = WindowAlertRouter.shared
     }

@@ -46,15 +46,15 @@ class CapturingLoginSceneDelegate: LoginSceneDelegate {
 
 class LoginViewControllerTests: XCTestCase {
 
-    var loginViewController: LoginViewControllerV2!
+    var loginViewController: LoginViewController!
     var delegate: CapturingLoginSceneDelegate!
 
     override func setUp() {
         super.setUp()
 
-        let viewController = LoginViewControllerV2Factory().makeLoginScene()
-        precondition(viewController is LoginViewControllerV2)
-        loginViewController = viewController as? LoginViewControllerV2
+        let viewController = LoginViewControllerFactory().makeLoginScene()
+        precondition(viewController is LoginViewController)
+        loginViewController = viewController as? LoginViewController
         loginViewController.loadViewIfNeeded()
         delegate = CapturingLoginSceneDelegate()
         loginViewController.delegate = delegate
