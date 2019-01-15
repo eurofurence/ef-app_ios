@@ -12,10 +12,11 @@ import Foundation
 class ConcreteSession: EurofurenceSession,
                        NotificationService,
                        RefreshService,
-                       ContentLinksService,
-                       SessionStateService {
+                       ContentLinksService {
 
     private let eventBus = EventBus()
+
+    private let sessionStateService: ConcreteSessionStateService
 
     private let userPreferences: UserPreferences
     private let dataStore: DataStore
@@ -78,6 +79,8 @@ class ConcreteSession: EurofurenceSession,
 
         pushPermissionsRequester?.requestPushPermissions()
 
+        sessionStateService = ConcreteSessionStateService(forceRefreshRequired: forceRefreshRequired, userPreferences: userPreferences, dataStore: dataStore)
+
         remoteNotificationRegistrationController = RemoteNotificationRegistrationController(eventBus: eventBus,
                                                                                             remoteNotificationsTokenRegistration: remoteNotificationsTokenRegistration)
         privateMessagesController = PrivateMessagesController(eventBus: eventBus, privateMessagesAPI: privateMessagesAPI)
@@ -128,7 +131,7 @@ class ConcreteSession: EurofurenceSession,
                         conventionCountdown: conventionCountdownController,
                         collectThemAll: collectThemAllService,
                         maps: mapsService,
-                        sessionState: self,
+                        sessionState: sessionStateService,
                         privateMessages: privateMessagesController)
     }()
 
@@ -174,15 +177,7 @@ class ConcreteSession: EurofurenceSession,
     }
 
     func determineSessionState(completionHandler: @escaping (EurofurenceSessionState) -> Void) {
-        let shouldPerformForceRefresh: Bool = forceRefreshRequired.isForceRefreshRequired
-        let state: EurofurenceSessionState = {
-            guard dataStore.getLastRefreshDate() != nil else { return .uninitialized }
-
-            let dataStoreStale = shouldPerformForceRefresh || userPreferences.refreshStoreOnLaunch
-            return dataStoreStale ? .stale : .initialized
-        }()
-
-        completionHandler(state)
+        sessionStateService.determineSessionState(completionHandler: completionHandler)
     }
 
     func storeRemoteNotificationsToken(_ deviceToken: Data) {
