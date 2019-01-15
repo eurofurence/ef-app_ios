@@ -1,5 +1,5 @@
 //
-//  UserAuthenticationCoordinator.swift
+//  ConcreteAuthenticationService.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 19/07/2017.
@@ -9,7 +9,7 @@
 import EventBus
 import Foundation
 
-class UserAuthenticationCoordinator: AuthenticationService {
+class ConcreteAuthenticationService: AuthenticationService {
 
     private let eventBus: EventBus
     private let clock: Clock

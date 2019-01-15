@@ -1,5 +1,5 @@
 //
-//  Dealers.swift
+//  ConcreteDealersService.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 19/06/2018.
@@ -9,14 +9,14 @@
 import EventBus
 import Foundation
 
-class Dealers: DealersService {
+class ConcreteDealersService: DealersService {
 
     private class Index: DealersIndex, EventConsumer {
 
-        private let dealers: Dealers
+        private let dealers: ConcreteDealersService
         private var alphebetisedDealers = [AlphabetisedDealersGroup]()
 
-        init(dealers: Dealers, eventBus: EventBus) {
+        init(dealers: ConcreteDealersService, eventBus: EventBus) {
             self.dealers = dealers
             eventBus.subscribe(consumer: self)
         }
@@ -49,7 +49,7 @@ class Dealers: DealersService {
             delegate.alphabetisedDealersDidChange(to: alphebetisedDealers)
         }
 
-        func consume(event: Dealers.UpdatedEvent) {
+        func consume(event: ConcreteDealersService.UpdatedEvent) {
             updateAlphebetisedDealers()
             delegate?.alphabetisedDealersDidChange(to: alphebetisedDealers)
         }
@@ -210,7 +210,7 @@ class Dealers: DealersService {
                            isAfterDark: dealer.isAfterDark)
         }
 
-        eventBus.post(Dealers.UpdatedEvent())
+        eventBus.post(ConcreteDealersService.UpdatedEvent())
     }
 
     func dealer(for identifier: String) -> Dealer? {

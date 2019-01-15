@@ -1,5 +1,5 @@
 //
-//  Schedule.swift
+//  ConcreteEventsService.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 10/06/2018.
@@ -9,7 +9,7 @@
 import EventBus
 import Foundation
 
-class Schedule: ClockDelegate, EventsService {
+class ConcreteEventsService: ClockDelegate, EventsService {
 
     // MARK: Nested Types
 
@@ -196,7 +196,7 @@ class Schedule: ClockDelegate, EventsService {
             eventModels = events.compactMap(makeEventModel)
 
             dayModels = makeDays(from: days)
-            eventBus.post(Schedule.ChangedEvent())
+            eventBus.post(ConcreteEventsService.ChangedEvent())
         }
     }
 

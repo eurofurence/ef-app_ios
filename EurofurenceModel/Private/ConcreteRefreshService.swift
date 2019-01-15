@@ -11,10 +11,10 @@ import Foundation
 
 class ConcreteRefreshService: RefreshService {
 
-    private let announcementsService: Announcements
-    private let schedule: Schedule
-    private let knowledgeService: Knowledge
-    private let privateMessagesController: PrivateMessagesController
+    private let announcementsService: ConcreteAnnouncementsService
+    private let schedule: ConcreteEventsService
+    private let knowledgeService: ConcreteKnowledgeService
+    private let privateMessagesController: ConcretePrivateMessagesService
 
     private let longRunningTaskManager: LongRunningTaskManager?
     private let dataStore: DataStore
@@ -29,14 +29,14 @@ class ConcreteRefreshService: RefreshService {
          dataStore: DataStore,
          syncAPI: SyncAPI,
          imageDownloader: ImageDownloader,
-         announcementsService: Announcements,
-         schedule: Schedule,
+         announcementsService: ConcreteAnnouncementsService,
+         schedule: ConcreteEventsService,
          clock: Clock,
          eventBus: EventBus,
          imageCache: ImagesCache,
          imageRepository: ImageRepository,
-         knowledgeService: Knowledge,
-         privateMessagesController: PrivateMessagesController) {
+         knowledgeService: ConcreteKnowledgeService,
+         privateMessagesController: ConcretePrivateMessagesService) {
         self.longRunningTaskManager = longRunningTaskManager
         self.dataStore = dataStore
         self.syncAPI = syncAPI

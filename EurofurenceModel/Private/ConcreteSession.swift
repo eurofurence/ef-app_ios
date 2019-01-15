@@ -19,18 +19,18 @@ class ConcreteSession: EurofurenceSession,
     private let refreshService: ConcreteRefreshService
 
     private let remoteNotificationRegistrationController: RemoteNotificationRegistrationController
-    private let authenticationCoordinator: UserAuthenticationCoordinator
-    private let privateMessagesController: PrivateMessagesController
-    private let conventionCountdownController: ConventionCountdownController
+    private let authenticationService: ConcreteAuthenticationService
+    private let privateMessagesService: ConcretePrivateMessagesService
+    private let conventionCountdownService: ConcreteConventionCountdownService
 
-    private let announcementsService: Announcements
-    private let knowledgeService: Knowledge
-    private let schedule: Schedule
-    private let dealersService: Dealers
+    private let announcementsService: ConcreteAnnouncementsService
+    private let knowledgeService: ConcreteKnowledgeService
+    private let eventsService: ConcreteEventsService
+    private let dealersService: ConcreteDealersService
     private let significantTimeObserver: SignificantTimeObserver
     private let urlHandler: URLHandler
-    private let collectThemAllService: CollectThemAll
-    private let mapsService: Maps
+    private let collectThemAllService: ConcreteCollectThemAllService
+    private let mapsService: ConcreteMapsService
 
     init(userPreferences: UserPreferences,
          dataStore: DataStore,
@@ -54,6 +54,7 @@ class ConcreteSession: EurofurenceSession,
          hoursDateFormatter: HoursDateFormatter,
          mapCoordinateRender: MapCoordinateRender?,
          forceRefreshRequired: ForceRefreshRequired) {
+
         pushPermissionsRequester?.requestPushPermissions()
 
         sessionStateService = ConcreteSessionStateService(forceRefreshRequired: forceRefreshRequired,
@@ -63,39 +64,39 @@ class ConcreteSession: EurofurenceSession,
         remoteNotificationRegistrationController = RemoteNotificationRegistrationController(eventBus: eventBus,
                                                                                             remoteNotificationsTokenRegistration: remoteNotificationsTokenRegistration)
 
-        privateMessagesController = PrivateMessagesController(eventBus: eventBus,
-                                                              privateMessagesAPI: privateMessagesAPI)
+        privateMessagesService = ConcretePrivateMessagesService(eventBus: eventBus,
+                                                                privateMessagesAPI: privateMessagesAPI)
 
-        authenticationCoordinator = UserAuthenticationCoordinator(eventBus: eventBus,
-                                                                  clock: clock,
-                                                                  credentialStore: credentialStore,
-                                                                  remoteNotificationsTokenRegistration: remoteNotificationsTokenRegistration,
-                                                                  loginAPI: loginAPI)
+        authenticationService = ConcreteAuthenticationService(eventBus: eventBus,
+                                                              clock: clock,
+                                                              credentialStore: credentialStore,
+                                                              remoteNotificationsTokenRegistration: remoteNotificationsTokenRegistration,
+                                                              loginAPI: loginAPI)
 
-        conventionCountdownController = ConventionCountdownController(eventBus: eventBus,
-                                                                      conventionStartDateRepository: conventionStartDateRepository,
-                                                                      dateDistanceCalculator: dateDistanceCalculator,
-                                                                      clock: clock)
+        conventionCountdownService = ConcreteConventionCountdownService(eventBus: eventBus,
+                                                                        conventionStartDateRepository: conventionStartDateRepository,
+                                                                        dateDistanceCalculator: dateDistanceCalculator,
+                                                                        clock: clock)
 
-        announcementsService = Announcements(eventBus: eventBus,
-                                             dataStore: dataStore,
-                                             imageRepository: imageRepository)
+        announcementsService = ConcreteAnnouncementsService(eventBus: eventBus,
+                                                            dataStore: dataStore,
+                                                            imageRepository: imageRepository)
 
-        knowledgeService = Knowledge(eventBus: eventBus,
-                                     dataStore: dataStore,
-                                     imageRepository: imageRepository)
+        knowledgeService = ConcreteKnowledgeService(eventBus: eventBus,
+                                                    dataStore: dataStore,
+                                                    imageRepository: imageRepository)
 
         let imageCache = ImagesCache(eventBus: eventBus,
                                      imageRepository: imageRepository)
 
-        schedule = Schedule(eventBus: eventBus,
-                            dataStore: dataStore,
-                            imageCache: imageCache,
-                            clock: clock,
-                            timeIntervalForUpcomingEventsSinceNow: timeIntervalForUpcomingEventsSinceNow,
-                            notificationScheduler: notificationScheduler,
-                            userPreferences: userPreferences,
-                            hoursDateFormatter: hoursDateFormatter)
+        eventsService = ConcreteEventsService(eventBus: eventBus,
+                                              dataStore: dataStore,
+                                              imageCache: imageCache,
+                                              clock: clock,
+                                              timeIntervalForUpcomingEventsSinceNow: timeIntervalForUpcomingEventsSinceNow,
+                                              notificationScheduler: notificationScheduler,
+                                              userPreferences: userPreferences,
+                                              hoursDateFormatter: hoursDateFormatter)
 
         let imageDownloader = ImageDownloader(eventBus: eventBus,
                                               imageAPI: imageAPI,
@@ -103,52 +104,52 @@ class ConcreteSession: EurofurenceSession,
 
         significantTimeObserver = SignificantTimeObserver(significantTimeChangeAdapter: significantTimeChangeAdapter,
                                                           eventBus: eventBus)
-        dealersService = Dealers(eventBus: eventBus,
-                                 dataStore: dataStore,
-                                 imageCache: imageCache,
-                                 mapCoordinateRender: mapCoordinateRender)
+        dealersService = ConcreteDealersService(eventBus: eventBus,
+                                                dataStore: dataStore,
+                                                imageCache: imageCache,
+                                                mapCoordinateRender: mapCoordinateRender)
 
         urlHandler = URLHandler(eventBus: eventBus, urlOpener: urlOpener)
 
-        collectThemAllService = CollectThemAll(eventBus: eventBus,
-                                               collectThemAllRequestFactory: collectThemAllRequestFactory,
-                                               credentialStore: credentialStore)
+        collectThemAllService = ConcreteCollectThemAllService(eventBus: eventBus,
+                                                              collectThemAllRequestFactory: collectThemAllRequestFactory,
+                                                              credentialStore: credentialStore)
 
-        mapsService = Maps(eventBus: eventBus,
-                           dataStore: dataStore,
-                           imageRepository: imageRepository,
-                           dealers: dealersService)
+        mapsService = ConcreteMapsService(eventBus: eventBus,
+                                          dataStore: dataStore,
+                                          imageRepository: imageRepository,
+                                          dealers: dealersService)
 
         refreshService = ConcreteRefreshService(longRunningTaskManager: longRunningTaskManager,
                                                 dataStore: dataStore,
                                                 syncAPI: syncAPI,
                                                 imageDownloader: imageDownloader,
                                                 announcementsService: announcementsService,
-                                                schedule: schedule,
+                                                schedule: eventsService,
                                                 clock: clock,
                                                 eventBus: eventBus,
                                                 imageCache: imageCache,
                                                 imageRepository: imageRepository,
                                                 knowledgeService: knowledgeService,
-                                                privateMessagesController: privateMessagesController)
+                                                privateMessagesController: privateMessagesService)
 
-        privateMessagesController.refreshMessages()
+        privateMessagesService.refreshMessages()
     }
 
     lazy var services: Services = {
         return Services(notifications: self,
                         refresh: refreshService,
                         announcements: announcementsService,
-                        authentication: authenticationCoordinator,
-                        events: schedule,
+                        authentication: authenticationService,
+                        events: eventsService,
                         dealers: dealersService,
                         knowledge: knowledgeService,
                         contentLinks: self,
-                        conventionCountdown: conventionCountdownController,
+                        conventionCountdown: conventionCountdownService,
                         collectThemAll: collectThemAllService,
                         maps: mapsService,
                         sessionState: sessionStateService,
-                        privateMessages: privateMessagesController)
+                        privateMessages: privateMessagesService)
     }()
 
     func handleNotification(payload: [String: String], completionHandler: @escaping (NotificationContent) -> Void) {
@@ -158,7 +159,7 @@ class ConcreteSession: EurofurenceSession,
                 return
             }
 
-            guard schedule.eventModels.contains(where: { $0.identifier.rawValue == identifier }) else {
+            guard eventsService.eventModels.contains(where: { $0.identifier.rawValue == identifier }) else {
                 completionHandler(.unknown)
                 return
             }

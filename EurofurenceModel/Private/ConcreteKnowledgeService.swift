@@ -1,5 +1,5 @@
 //
-//  Knowledge.swift
+//  ConcreteKnowledgeService.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 10/06/2018.
@@ -9,7 +9,7 @@
 import EventBus
 import Foundation
 
-class Knowledge: KnowledgeService {
+class ConcreteKnowledgeService: KnowledgeService {
 
     // MARK: Properties
 

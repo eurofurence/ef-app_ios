@@ -1,5 +1,5 @@
 //
-//  PrivateMessagesController.swift
+//  ConcretePrivateMessagesService.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 22/01/2018.
@@ -8,7 +8,7 @@
 
 import EventBus
 
-class PrivateMessagesController: PrivateMessagesService {
+class ConcretePrivateMessagesService: PrivateMessagesService {
 
     private let privateMessagesAPI: PrivateMessagesAPI
     private var userAuthenticationToken: String?

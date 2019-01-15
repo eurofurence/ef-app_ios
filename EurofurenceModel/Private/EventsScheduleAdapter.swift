@@ -17,7 +17,7 @@ private protocol EventFilter {
 
 class EventsScheduleAdapter: EventsSchedule {
 
-    private let schedule: Schedule
+    private let schedule: ConcreteEventsService
     private let clock: Clock
     private var events = [EurofurenceModel.Event]()
     private var days = [Day]()
@@ -60,13 +60,13 @@ class EventsScheduleAdapter: EventsSchedule {
             self.scheduleAdapter = scheduleAdapter
         }
 
-        func consume(event: Schedule.ChangedEvent) {
+        func consume(event: ConcreteEventsService.ChangedEvent) {
             scheduleAdapter.updateFromSchedule()
         }
 
     }
 
-    init(schedule: Schedule, clock: Clock, eventBus: EventBus) {
+    init(schedule: ConcreteEventsService, clock: Clock, eventBus: EventBus) {
         self.schedule = schedule
         self.clock = clock
         events = schedule.eventModels

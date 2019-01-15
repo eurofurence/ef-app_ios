@@ -1,5 +1,5 @@
 //
-//  Maps.swift
+//  ConcreteMapsService.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 26/06/2018.
@@ -9,11 +9,11 @@
 import EventBus
 import Foundation
 
-class Maps: MapsService {
+class ConcreteMapsService: MapsService {
 
     private let dataStore: DataStore
     private let imageRepository: ImageRepository
-    private let dealers: Dealers
+    private let dealers: ConcreteDealersService
 
     private var serverModels = [MapCharacteristics]()
     private var roomServerModels = [RoomCharacteristics]()
@@ -30,7 +30,7 @@ class Maps: MapsService {
     init(eventBus: EventBus,
          dataStore: DataStore,
          imageRepository: ImageRepository,
-         dealers: Dealers) {
+         dealers: ConcreteDealersService) {
         self.dataStore = dataStore
         self.imageRepository = imageRepository
         self.dealers = dealers

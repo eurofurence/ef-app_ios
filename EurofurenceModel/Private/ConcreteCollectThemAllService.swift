@@ -1,5 +1,5 @@
 //
-//  CollectThemAll.swift
+//  ConcreteCollectThemAllService.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 24/06/2018.
@@ -9,7 +9,7 @@
 import EventBus
 import Foundation
 
-class CollectThemAll: CollectThemAllService {
+class ConcreteCollectThemAllService: CollectThemAllService {
 
     private class LoggedOut: EventConsumer {
 

@@ -51,9 +51,9 @@ class InMemoryEventsSearchController: EventsSearchController {
     private class FavouritesFilter: Filter {
 
         var enabled = false
-        private let schedule: Schedule
+        private let schedule: ConcreteEventsService
 
-        init(schedule: Schedule) {
+        init(schedule: ConcreteEventsService) {
             self.schedule = schedule
         }
 
@@ -72,18 +72,18 @@ class InMemoryEventsSearchController: EventsSearchController {
             self.searchController = searchController
         }
 
-        func consume(event: Schedule.EventUnfavouritedEvent) {
+        func consume(event: ConcreteEventsService.EventUnfavouritedEvent) {
             searchController.regenerateSearchResults()
         }
 
     }
 
-    private let schedule: Schedule
+    private let schedule: ConcreteEventsService
     private let filters: CompositeFilter
     private let queryFilter: QueryFilter
     private let favouritesFilter: FavouritesFilter
 
-    init(schedule: Schedule, eventBus: EventBus) {
+    init(schedule: ConcreteEventsService, eventBus: EventBus) {
         self.schedule = schedule
         queryFilter = QueryFilter()
         favouritesFilter = FavouritesFilter(schedule: schedule)

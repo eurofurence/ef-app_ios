@@ -1,5 +1,5 @@
 //
-//  ConventionCountdownController.swift
+//  ConcreteConventionCountdownService.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 11/05/2018.
@@ -9,7 +9,7 @@
 import EventBus
 import Foundation
 
-class ConventionCountdownController: ConventionCountdownService, EventConsumer {
+class ConcreteConventionCountdownService: ConventionCountdownService, EventConsumer {
 
     private let conventionStartDateRepository: ConventionStartDateRepository
     private let dateDistanceCalculator: DateDistanceCalculator

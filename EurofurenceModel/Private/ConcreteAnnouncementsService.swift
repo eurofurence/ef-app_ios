@@ -1,5 +1,5 @@
 //
-//  Announcements.swift
+//  ConcreteAnnouncementsService.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 08/06/2018.
@@ -9,7 +9,7 @@
 import EventBus
 import Foundation
 
-class Announcements: AnnouncementsService {
+class ConcreteAnnouncementsService: AnnouncementsService {
 
     // MARK: Properties
 
