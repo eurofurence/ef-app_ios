@@ -1,5 +1,5 @@
 //
-//  MessagesViewControllerV2.swift
+//  MessagesViewController.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 18/09/2017.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-class MessagesViewControllerV2: UIViewController,
-                                UITableViewDelegate,
-                                MessagesScene {
+class MessagesViewController: UIViewController,
+                              UITableViewDelegate,
+                              MessagesScene {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var noMessagesPlaceholder: UIView!

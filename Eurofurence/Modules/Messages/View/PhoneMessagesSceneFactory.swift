@@ -14,7 +14,7 @@ struct PhoneMessagesSceneFactory: MessagesSceneFactory {
     private let storyboard = UIStoryboard(name: "Messages", bundle: .main)
 
     func makeMessagesScene() -> UIViewController & MessagesScene {
-        return storyboard.instantiate(MessagesViewControllerV2.self)
+        return storyboard.instantiate(MessagesViewController.self)
     }
 
 }

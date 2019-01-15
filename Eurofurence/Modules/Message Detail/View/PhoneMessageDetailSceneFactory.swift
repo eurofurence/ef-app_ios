@@ -14,7 +14,7 @@ struct PhoneMessageDetailSceneFactory: MessageDetailSceneFactory {
     private let storyboard = UIStoryboard(name: "MessageDetail", bundle: .main)
 
     func makeMessageDetailScene() -> UIViewController & MessageDetailScene {
-        return storyboard.instantiate(MessageDetailViewControllerV2.self)
+        return storyboard.instantiate(MessageDetailViewController.self)
     }
 
 }

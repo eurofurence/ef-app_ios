@@ -714,7 +714,7 @@
 		CA8E7F031FB094A600F0BF10 /* PhoneTabModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E7F021FB094A600F0BF10 /* PhoneTabModuleFactory.swift */; };
 		CA8E7F0A1FB10D5000F0BF10 /* PhoneMessagesModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E7F091FB10D5000F0BF10 /* PhoneMessagesModuleFactory.swift */; };
 		CA957B5A1F705A6D004DFD5A /* MessagesViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA957B591F705A6D004DFD5A /* MessagesViewControllerTests.swift */; };
-		CA957B601F705AF9004DFD5A /* MessagesViewControllerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA957B5E1F705AF9004DFD5A /* MessagesViewControllerV2.swift */; };
+		CA957B601F705AF9004DFD5A /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA957B5E1F705AF9004DFD5A /* MessagesViewController.swift */; };
 		CA9845CA1F2907A800E8821D /* ScreenshotGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9845C91F2907A800E8821D /* ScreenshotGenerator.swift */; };
 		CA9845D31F2909DB00E8821D /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9845D21F2909DB00E8821D /* SnapshotHelper.swift */; };
 		CA9845DE1F2B01BA00E8821D /* UnreadMessageIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9845DD1F2B01BA00E8821D /* UnreadMessageIndicator.swift */; };
@@ -1223,7 +1223,7 @@
 		CAEAEC011FE0054500C0EE7C /* MessageDetailModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEC001FE0054500C0EE7C /* MessageDetailModuleFactory.swift */; };
 		CAEAEC041FE0057800C0EE7C /* MessageDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEC031FE0057800C0EE7C /* MessageDetailPresenter.swift */; };
 		CAEAEC061FE06F2800C0EE7C /* MessageDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAEAEC051FE06F2800C0EE7C /* MessageDetail.storyboard */; };
-		CAEAEC081FE06F3C00C0EE7C /* MessageDetailViewControllerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEC071FE06F3C00C0EE7C /* MessageDetailViewControllerV2.swift */; };
+		CAEAEC081FE06F3C00C0EE7C /* MessageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEC071FE06F3C00C0EE7C /* MessageDetailViewController.swift */; };
 		CAEAEC0A1FE06FA500C0EE7C /* PhoneMessageDetailSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEC091FE06FA500C0EE7C /* PhoneMessageDetailSceneFactory.swift */; };
 		CAEAEC0E1FE07AD700C0EE7C /* MessageBubbleBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEC0D1FE07AD700C0EE7C /* MessageBubbleBackgroundView.swift */; };
 		CAF3C7441F9F5C550008F027 /* NewsModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C7431F9F5C550008F027 /* NewsModuleProviding.swift */; };
@@ -2349,7 +2349,7 @@
 		CA8E7F021FB094A600F0BF10 /* PhoneTabModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneTabModuleFactory.swift; sourceTree = "<group>"; };
 		CA8E7F091FB10D5000F0BF10 /* PhoneMessagesModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneMessagesModuleFactory.swift; sourceTree = "<group>"; };
 		CA957B591F705A6D004DFD5A /* MessagesViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewControllerTests.swift; sourceTree = "<group>"; };
-		CA957B5E1F705AF9004DFD5A /* MessagesViewControllerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewControllerV2.swift; sourceTree = "<group>"; };
+		CA957B5E1F705AF9004DFD5A /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		CA9845C71F2907A800E8821D /* ScreenshotGenerator.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScreenshotGenerator.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA9845C91F2907A800E8821D /* ScreenshotGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotGenerator.swift; sourceTree = "<group>"; };
 		CA9845CB1F2907A800E8821D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -2607,7 +2607,7 @@
 		CAEAEC001FE0054500C0EE7C /* MessageDetailModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailModuleFactory.swift; sourceTree = "<group>"; };
 		CAEAEC031FE0057800C0EE7C /* MessageDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailPresenter.swift; sourceTree = "<group>"; };
 		CAEAEC051FE06F2800C0EE7C /* MessageDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MessageDetail.storyboard; sourceTree = "<group>"; };
-		CAEAEC071FE06F3C00C0EE7C /* MessageDetailViewControllerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailViewControllerV2.swift; sourceTree = "<group>"; };
+		CAEAEC071FE06F3C00C0EE7C /* MessageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailViewController.swift; sourceTree = "<group>"; };
 		CAEAEC091FE06FA500C0EE7C /* PhoneMessageDetailSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneMessageDetailSceneFactory.swift; sourceTree = "<group>"; };
 		CAEAEC0D1FE07AD700C0EE7C /* MessageBubbleBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubbleBackgroundView.swift; sourceTree = "<group>"; };
 		CAF1A679211F6A0800513226 /* WhenToldToOpenNotification_ThatRepresentsAnnouncement_ThatHasBeenDeleted_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToOpenNotification_ThatRepresentsAnnouncement_ThatHasBeenDeleted_ApplicationShould.swift; sourceTree = "<group>"; };
@@ -4853,7 +4853,7 @@
 			children = (
 				CA6AA01D1FD88F6B0092C6DB /* Messages.storyboard */,
 				CAD2343B1F5D7203004BB959 /* MessagesScene.swift */,
-				CA957B5E1F705AF9004DFD5A /* MessagesViewControllerV2.swift */,
+				CA957B5E1F705AF9004DFD5A /* MessagesViewController.swift */,
 				CA30EACF1F27D8620053DBF6 /* MessageTableViewCell.swift */,
 				CABA43821FB84834009CB5B0 /* PhoneMessagesSceneFactory.swift */,
 			);
@@ -6339,7 +6339,7 @@
 				CA1ECB481FE6E8100076083A /* MessageComponentBinder.swift */,
 				CAEAEBFE1FE0044900C0EE7C /* MessageDetailScene.swift */,
 				CAEAEBFC1FE0043B00C0EE7C /* MessageDetailSceneFactory.swift */,
-				CAEAEC071FE06F3C00C0EE7C /* MessageDetailViewControllerV2.swift */,
+				CAEAEC071FE06F3C00C0EE7C /* MessageDetailViewController.swift */,
 				CAB138121FE1555C00AD61FE /* MessagesCollectionViewFlowLayout.swift */,
 				CAEAEC091FE06FA500C0EE7C /* PhoneMessageDetailSceneFactory.swift */,
 			);
@@ -7665,7 +7665,7 @@
 				CA73AEE7201A0883004E77BF /* KnowledgeListScene.swift in Sources */,
 				CA00AE4720D16BCB00C2FBB0 /* ScheduleViewModel.swift in Sources */,
 				CA250DDA20D6E5FD00E7513C /* ScheduleSearchTableViewController.swift in Sources */,
-				CAEAEC081FE06F3C00C0EE7C /* MessageDetailViewControllerV2.swift in Sources */,
+				CAEAEC081FE06F3C00C0EE7C /* MessageDetailViewController.swift in Sources */,
 				CA162E9E20A8D158004AFED6 /* FoundationRelativeTimeIntervalCountdownFormatter.swift in Sources */,
 				CA63759E208DFE0500536BE2 /* ScheduleViewController.swift in Sources */,
 				CA89CBA9207F7F9A00570D54 /* NewsViewModel.swift in Sources */,
@@ -7733,7 +7733,7 @@
 				CA73AEE3201A0869004E77BF /* KnowledgeGroupsModuleBuilder.swift in Sources */,
 				78455B621F118699005BE2D7 /* RoundedCornerButton.swift in Sources */,
 				CA00AE4520D16BBD00C2FBB0 /* ScheduleInteractor.swift in Sources */,
-				CA957B601F705AF9004DFD5A /* MessagesViewControllerV2.swift in Sources */,
+				CA957B601F705AF9004DFD5A /* MessagesViewController.swift in Sources */,
 				CA321F511F7BC8550050E489 /* PreloadSceneFactory.swift in Sources */,
 				CA0F762720322E36009DA079 /* KnowledgeGroupScene.swift in Sources */,
 				CA08157820D3865600F750D4 /* NavigationBarViewExtensionContainer.swift in Sources */,

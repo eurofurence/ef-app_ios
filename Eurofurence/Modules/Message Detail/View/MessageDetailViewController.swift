@@ -1,5 +1,5 @@
 //
-//  MessageDetailViewControllerV2.swift
+//  MessageDetailViewController.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 12/12/2017.
@@ -8,9 +8,9 @@
 
 import UIKit.UIViewController
 
-class MessageDetailViewControllerV2: UIViewController,
-                                     UICollectionViewDataSource,
-                                     MessageDetailScene {
+class MessageDetailViewController: UIViewController,
+                                   UICollectionViewDataSource,
+                                   MessageDetailScene {
 
     // MARK: IBOutlets
 

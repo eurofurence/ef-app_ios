@@ -25,7 +25,7 @@ class StubMessageItemBinder: MessageItemBinder {
 
 class MessagesViewControllerTests: XCTestCase {
 
-    var viewController: MessagesViewControllerV2!
+    var viewController: MessagesViewController!
     var delegate: CapturingMessagesSceneDelegate!
 
     override func setUp() {
@@ -34,8 +34,8 @@ class MessagesViewControllerTests: XCTestCase {
         delegate = CapturingMessagesSceneDelegate()
         let factory = PhoneMessagesSceneFactory()
         let viewController = factory.makeMessagesScene()
-        precondition(viewController is MessagesViewControllerV2)
-        self.viewController = viewController as? MessagesViewControllerV2
+        precondition(viewController is MessagesViewController)
+        self.viewController = viewController as? MessagesViewController
         viewController.delegate = delegate
         viewController.loadViewIfNeeded()
     }
