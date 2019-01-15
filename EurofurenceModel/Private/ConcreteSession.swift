@@ -176,10 +176,6 @@ class ConcreteSession: EurofurenceSession,
         refreshObservers.append(observer)
     }
 
-    func determineSessionState(completionHandler: @escaping (EurofurenceSessionState) -> Void) {
-        sessionStateService.determineSessionState(completionHandler: completionHandler)
-    }
-
     func storeRemoteNotificationsToken(_ deviceToken: Data) {
         eventBus.post(DomainEvent.RemoteNotificationRegistrationSucceeded(deviceToken: deviceToken))
     }
