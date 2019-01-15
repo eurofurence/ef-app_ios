@@ -53,6 +53,7 @@ class UserAuthenticationCoordinator: AuthenticationService {
     }
 
     func logout(completionHandler: @escaping (LogoutResult) -> Void) {
+        self.observers.forEach({ $0.userDidFailToLogout() })
         remoteNotificationsTokenRegistration?.registerRemoteNotificationsDeviceToken(registeredDeviceToken,
                                                                                     userAuthenticationToken: nil) { error in
             if error != nil {

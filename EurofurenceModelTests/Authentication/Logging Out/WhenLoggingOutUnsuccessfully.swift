@@ -11,33 +11,44 @@ import XCTest
 
 class WhenLoggingOutUnsuccessfully: XCTestCase {
 
-    func testFailureToUnregisterAuthTokenWithRemoteTokenRegistrationShouldIndicateLogoutFailure() {
-        let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
-        let logoutObserver = CapturingLogoutObserver()
+    var context: ApplicationTestBuilder.Context!
+    var observer: CapturingAuthenticationStateObserver!
+
+    override func setUp() {
+        super.setUp()
+
+        observer = CapturingAuthenticationStateObserver()
+        context = ApplicationTestBuilder().loggedInWithValidCredential().build()
+        context.authenticationService.add(observer)
         context.registerForRemoteNotifications()
+    }
+
+    func testFailureToUnregisterAuthTokenWithRemoteTokenRegistrationShouldIndicateLogoutFailure() {
+        let logoutObserver = CapturingLogoutObserver()
         context.authenticationService.logout(completionHandler: logoutObserver.completionHandler)
         context.capturingTokenRegistration.failLastRequest()
 
         XCTAssertTrue(logoutObserver.didFailToLogout)
+        XCTAssertTrue(observer.logoutDidFail)
     }
 
     func testFailingToUnregisterAuthTokenWithRemoteTokenRegistrationShouldNotDeletePersistedCredential() {
-        let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
-        context.registerForRemoteNotifications()
         context.authenticationService.logout { _ in }
         context.capturingTokenRegistration.failLastRequest()
 
         XCTAssertFalse(context.capturingCredentialStore.didDeletePersistedToken)
+        XCTAssertFalse(observer.loggedOut)
+        XCTAssertTrue(observer.logoutDidFail)
     }
 
     func testFailingToUnregisterAuthTokenWithRemoteTokenRegistrationShouldNotNotifyLogoutObserversUserLoggedOut() {
-        let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         let logoutObserver = CapturingLogoutObserver()
-        context.registerForRemoteNotifications()
         context.authenticationService.logout(completionHandler: logoutObserver.completionHandler)
         context.capturingTokenRegistration.failLastRequest()
 
         XCTAssertFalse(logoutObserver.didLogout)
+        XCTAssertFalse(observer.loggedOut)
+        XCTAssertTrue(observer.logoutDidFail)
     }
 
 }

@@ -23,5 +23,6 @@ public protocol AuthenticationStateObserver {
 
     func userDidLogin(_ user: User)
     func userDidLogout()
+    func userDidFailToLogout()
 
 }

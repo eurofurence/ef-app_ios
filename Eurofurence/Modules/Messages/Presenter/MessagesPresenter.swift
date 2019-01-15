@@ -79,6 +79,10 @@ class MessagesPresenter: MessagesSceneDelegate, AuthenticationStateObserver, Pri
         delegate.messagesModuleDidRequestResolutionForUser(completionHandler: userResolved)
     }
 
+    func userDidFailToLogout() {
+
+    }
+
     // MARK: PrivateMessagesServiceObserver
 
     func privateMessagesServiceDidUpdateUnreadMessageCount(to unreadCount: Int) {

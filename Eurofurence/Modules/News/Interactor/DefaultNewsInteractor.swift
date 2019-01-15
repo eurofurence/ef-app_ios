@@ -131,6 +131,10 @@ class DefaultNewsInteractor: NewsInteractor,
         regenerateViewModel()
     }
 
+    func userDidFailToLogout() {
+
+    }
+
     // MARK: PrivateMessagesServiceObserver
 
     func privateMessagesServiceDidUpdateUnreadMessageCount(to unreadCount: Int) {
