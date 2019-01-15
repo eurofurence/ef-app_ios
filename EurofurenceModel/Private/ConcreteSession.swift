@@ -18,23 +18,11 @@ class ConcreteSession: EurofurenceSession,
     private let sessionStateService: ConcreteSessionStateService
     private let refreshService: ConcreteRefreshService
 
-    private let userPreferences: UserPreferences
-    private let dataStore: DataStore
-    private let clock: Clock
     private let remoteNotificationRegistrationController: RemoteNotificationRegistrationController
     private let authenticationCoordinator: UserAuthenticationCoordinator
     private let privateMessagesController: PrivateMessagesController
-    private let syncAPI: SyncAPI
-    private let imageAPI: ImageAPI
     private let conventionCountdownController: ConventionCountdownController
-    private let collectThemAllRequestFactory: CollectThemAllRequestFactory
-    private let credentialStore: CredentialStore
-    private let longRunningTaskManager: LongRunningTaskManager?
-    private let forceRefreshRequired: ForceRefreshRequired
-    private let imageRepository: ImageRepository
 
-    private let imageCache: ImagesCache
-    private let imageDownloader: ImageDownloader
     private let announcementsService: Announcements
     private let knowledgeService: Knowledge
     private let schedule: Schedule
@@ -66,24 +54,18 @@ class ConcreteSession: EurofurenceSession,
          hoursDateFormatter: HoursDateFormatter,
          mapCoordinateRender: MapCoordinateRender?,
          forceRefreshRequired: ForceRefreshRequired) {
-        self.userPreferences = userPreferences
-        self.dataStore = dataStore
-        self.clock = clock
-        self.syncAPI = syncAPI
-        self.imageAPI = imageAPI
-        self.collectThemAllRequestFactory = collectThemAllRequestFactory
-        self.credentialStore = credentialStore
-        self.longRunningTaskManager = longRunningTaskManager
-        self.forceRefreshRequired = forceRefreshRequired
-        self.imageRepository = imageRepository
-
         pushPermissionsRequester?.requestPushPermissions()
 
-        sessionStateService = ConcreteSessionStateService(forceRefreshRequired: forceRefreshRequired, userPreferences: userPreferences, dataStore: dataStore)
+        sessionStateService = ConcreteSessionStateService(forceRefreshRequired: forceRefreshRequired,
+                                                          userPreferences: userPreferences,
+                                                          dataStore: dataStore)
 
         remoteNotificationRegistrationController = RemoteNotificationRegistrationController(eventBus: eventBus,
                                                                                             remoteNotificationsTokenRegistration: remoteNotificationsTokenRegistration)
-        privateMessagesController = PrivateMessagesController(eventBus: eventBus, privateMessagesAPI: privateMessagesAPI)
+
+        privateMessagesController = PrivateMessagesController(eventBus: eventBus,
+                                                              privateMessagesAPI: privateMessagesAPI)
+
         authenticationCoordinator = UserAuthenticationCoordinator(eventBus: eventBus,
                                                                   clock: clock,
                                                                   credentialStore: credentialStore,
@@ -95,9 +77,17 @@ class ConcreteSession: EurofurenceSession,
                                                                       dateDistanceCalculator: dateDistanceCalculator,
                                                                       clock: clock)
 
-        imageCache = ImagesCache(eventBus: eventBus, imageRepository: imageRepository)
-        announcementsService = Announcements(eventBus: eventBus, dataStore: dataStore, imageRepository: imageRepository)
-        knowledgeService = Knowledge(eventBus: eventBus, dataStore: dataStore, imageRepository: imageRepository)
+        announcementsService = Announcements(eventBus: eventBus,
+                                             dataStore: dataStore,
+                                             imageRepository: imageRepository)
+
+        knowledgeService = Knowledge(eventBus: eventBus,
+                                     dataStore: dataStore,
+                                     imageRepository: imageRepository)
+
+        let imageCache = ImagesCache(eventBus: eventBus,
+                                     imageRepository: imageRepository)
+
         schedule = Schedule(eventBus: eventBus,
                             dataStore: dataStore,
                             imageCache: imageCache,
@@ -106,17 +96,41 @@ class ConcreteSession: EurofurenceSession,
                             notificationScheduler: notificationScheduler,
                             userPreferences: userPreferences,
                             hoursDateFormatter: hoursDateFormatter)
-        imageDownloader = ImageDownloader(eventBus: eventBus, imageAPI: imageAPI, imageRepository: imageRepository)
+
+        let imageDownloader = ImageDownloader(eventBus: eventBus,
+                                              imageAPI: imageAPI,
+                                              imageRepository: imageRepository)
+
         significantTimeObserver = SignificantTimeObserver(significantTimeChangeAdapter: significantTimeChangeAdapter,
                                                           eventBus: eventBus)
-        dealersService = Dealers(eventBus: eventBus, dataStore: dataStore, imageCache: imageCache, mapCoordinateRender: mapCoordinateRender)
-        urlHandler = URLHandler(eventBus: eventBus, urlOpener: urlOpener)
-        collectThemAllService = CollectThemAll(eventBus: eventBus,
-                                        collectThemAllRequestFactory: collectThemAllRequestFactory,
-                                        credentialStore: credentialStore)
-        mapsService = Maps(eventBus: eventBus, dataStore: dataStore, imageRepository: imageRepository, dealers: dealersService)
+        dealersService = Dealers(eventBus: eventBus,
+                                 dataStore: dataStore,
+                                 imageCache: imageCache,
+                                 mapCoordinateRender: mapCoordinateRender)
 
-        refreshService = ConcreteRefreshService(longRunningTaskManager: longRunningTaskManager, dataStore: dataStore, syncAPI: syncAPI, imageDownloader: imageDownloader, announcementsService: announcementsService, schedule: schedule, clock: clock, eventBus: eventBus, imageCache: imageCache, imageRepository: imageRepository, knowledgeService: knowledgeService, privateMessagesController: privateMessagesController)
+        urlHandler = URLHandler(eventBus: eventBus, urlOpener: urlOpener)
+
+        collectThemAllService = CollectThemAll(eventBus: eventBus,
+                                               collectThemAllRequestFactory: collectThemAllRequestFactory,
+                                               credentialStore: credentialStore)
+
+        mapsService = Maps(eventBus: eventBus,
+                           dataStore: dataStore,
+                           imageRepository: imageRepository,
+                           dealers: dealersService)
+
+        refreshService = ConcreteRefreshService(longRunningTaskManager: longRunningTaskManager,
+                                                dataStore: dataStore,
+                                                syncAPI: syncAPI,
+                                                imageDownloader: imageDownloader,
+                                                announcementsService: announcementsService,
+                                                schedule: schedule,
+                                                clock: clock,
+                                                eventBus: eventBus,
+                                                imageCache: imageCache,
+                                                imageRepository: imageRepository,
+                                                knowledgeService: knowledgeService,
+                                                privateMessagesController: privateMessagesController)
 
         privateMessagesController.refreshMessages()
     }
