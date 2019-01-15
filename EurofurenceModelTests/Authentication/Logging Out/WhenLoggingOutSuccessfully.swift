@@ -11,10 +11,17 @@ import XCTest
 
 class WhenLoggingOutSuccessfully: XCTestCase {
 
+    let credential = Credential(username: "", registrationNumber: 0, authenticationToken: "Token", tokenExpiryDate: .distantFuture)
+    var context: ApplicationTestBuilder.Context!
+    var observer: CapturingAuthenticationStateObserver!
+
+    override func setUp() {
+        super.setUp()
+
+        context = ApplicationTestBuilder().with(credential).build()
+    }
+
     func testTheRemoteNotificationsTokenRegistrationShouldReRegisterTheDeviceTokenWithNilUserRegistrationToken() {
-        let unexpectedToken = "JWT Token"
-        let credential = Credential(username: "", registrationNumber: 0, authenticationToken: unexpectedToken, tokenExpiryDate: .distantFuture)
-        let context = ApplicationTestBuilder().with(credential).build()
         context.application.services.notifications.storeRemoteNotificationsToken(Data())
         context.authenticationService.logout { _ in }
 
@@ -22,7 +29,6 @@ class WhenLoggingOutSuccessfully: XCTestCase {
     }
 
     func testTheRemoteNotificationsTokenRegistrationShouldReRegisterTheDeviceTokenThatWasPreviouslyRegistered() {
-        let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         let deviceToken = "Token time".data(using: .utf8)!
         context.application.services.notifications.storeRemoteNotificationsToken(deviceToken)
         context.authenticationService.logout { _ in }
@@ -31,7 +37,6 @@ class WhenLoggingOutSuccessfully: XCTestCase {
     }
 
     func testSucceedingToUnregisterAuthTokenWithRemoteTokenRegistrationShouldNotIndicateLogoutFailure() {
-        let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         let logoutObserver = CapturingLogoutObserver()
         context.registerForRemoteNotifications()
         context.authenticationService.logout(completionHandler: logoutObserver.completionHandler)
@@ -41,7 +46,6 @@ class WhenLoggingOutSuccessfully: XCTestCase {
     }
 
     func testSucceedingToUnregisterAuthTokenWithRemoteTokenRegistrationShouldDeletePersistedCredential() {
-        let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         context.registerForRemoteNotifications()
         context.authenticationService.logout { _ in }
         context.capturingTokenRegistration.succeedLastRequest()
@@ -50,7 +54,6 @@ class WhenLoggingOutSuccessfully: XCTestCase {
     }
 
     func testSucceedingToUnregisterAuthTokenWithRemoteTokenRegistrationShouldNotifyLogoutObserversUserLoggedOut() {
-        let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         let logoutObserver = CapturingLogoutObserver()
         context.registerForRemoteNotifications()
         context.authenticationService.logout(completionHandler: logoutObserver.completionHandler)
