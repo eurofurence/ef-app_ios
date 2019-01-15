@@ -1,5 +1,5 @@
 //
-//  PhoneNavigationControllerFactory.swift
+//  PlatformNavigationControllerFactory.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 06/11/2017.
@@ -8,7 +8,7 @@
 
 import UIKit.UINavigationController
 
-struct PhoneNavigationControllerFactory: NavigationControllerFactory {
+struct PlatformNavigationControllerFactory: NavigationControllerFactory {
 
     func makeNavigationController() -> UINavigationController {
         return UINavigationController()

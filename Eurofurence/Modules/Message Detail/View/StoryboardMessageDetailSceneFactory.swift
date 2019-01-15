@@ -1,5 +1,5 @@
 //
-//  PhoneMessageDetailSceneFactory.swift
+//  StoryboardMessageDetailSceneFactory.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 12/12/2017.
@@ -9,7 +9,7 @@
 import UIKit.UIStoryboard
 import UIKit.UIViewController
 
-struct PhoneMessageDetailSceneFactory: MessageDetailSceneFactory {
+struct StoryboardMessageDetailSceneFactory: MessageDetailSceneFactory {
 
     private let storyboard = UIStoryboard(name: "MessageDetail", bundle: .main)
 

@@ -27,7 +27,7 @@ class NewsModuleBuilder {
     }
 
     func build() -> NewsModuleProviding {
-        return PhoneNewsModuleFactory(newsSceneFactory: newsSceneFactory, newsInteractor: newsInteractor)
+        return NewsModule(newsSceneFactory: newsSceneFactory, newsInteractor: newsInteractor)
     }
 
 }

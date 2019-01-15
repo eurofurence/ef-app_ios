@@ -15,7 +15,7 @@ class MessageDetailModuleBuilder {
     private var privateMessagesService: PrivateMessagesService
 
     init() {
-        messageDetailSceneFactory = PhoneMessageDetailSceneFactory()
+        messageDetailSceneFactory = StoryboardMessageDetailSceneFactory()
         privateMessagesService = SharedModel.instance.services.privateMessages
     }
 

@@ -1,5 +1,5 @@
 //
-//  PhoneLoginModuleFactory.swift
+//  LoginModule.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 15/11/2017.
@@ -9,7 +9,7 @@
 import EurofurenceModel
 import UIKit.UIViewController
 
-struct PhoneLoginModuleFactory: LoginModuleProviding {
+struct LoginModule: LoginModuleProviding {
 
     var sceneFactory: LoginSceneFactory
     var authenticationService: AuthenticationService

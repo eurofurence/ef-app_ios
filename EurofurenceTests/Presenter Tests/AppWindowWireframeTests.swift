@@ -1,5 +1,5 @@
 //
-//  PhoneWindowWireframeTests.swift
+//  AppWindowWireframeTests.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 06/11/2017.
@@ -10,11 +10,11 @@
 import EurofurenceModel
 import XCTest
 
-class PhoneWindowWireframeTests: XCTestCase {
+class AppWindowWireframeTests: XCTestCase {
 
     func testSettingTheRootViewControllerSetsItAsTheRootControllerOnTheWindow() {
         let window = UIWindow()
-        let wireframe = PhoneWindowWireframe(window: window)
+        let wireframe = AppWindowWireframe(window: window)
         let vc = UIViewController()
         wireframe.setRoot(vc)
 

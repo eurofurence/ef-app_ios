@@ -1,5 +1,5 @@
 //
-//  PhoneTabModuleFactoryTests.swift
+//  PlatformTabModuleFactoryTests.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 06/11/2017.
@@ -10,11 +10,11 @@
 import EurofurenceModel
 import XCTest
 
-class PhoneTabModuleFactoryTests: XCTestCase {
+class PlatformTabModuleFactoryTests: XCTestCase {
 
     func testSetsChildModulesAsChildViewControllers() {
         let childModules = [UIViewController(), UIViewController()]
-        let factory = PhoneTabModuleFactory()
+        let factory = PlatformTabModuleFactory()
         let vc = factory.makeTabModule(childModules)
         let actual: [UIViewController] = vc.viewControllers ?? []
 

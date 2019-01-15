@@ -17,7 +17,7 @@ class MessagesModuleBuilder {
     private var dateFormatter: DateFormatterProtocol
 
     init() {
-        sceneFactory = PhoneMessagesSceneFactory()
+        sceneFactory = StoryboardMessagesSceneFactory()
         authenticationService = SharedModel.instance.services.authentication
         privateMessagesService = SharedModel.instance.services.privateMessages
         dateFormatter = DateFormatter()
@@ -45,10 +45,10 @@ class MessagesModuleBuilder {
     }
 
     func build() -> MessagesModuleProviding {
-        return PhoneMessagesModuleFactory(sceneFactory: sceneFactory,
-                                          authenticationService: authenticationService,
-                                          privateMessagesService: privateMessagesService,
-                                          dateFormatter: dateFormatter)
+        return MessagesModule(sceneFactory: sceneFactory,
+                              authenticationService: authenticationService,
+                              privateMessagesService: privateMessagesService,
+                              dateFormatter: dateFormatter)
     }
 
 }

@@ -1,5 +1,5 @@
 //
-//  PhoneTutorialModuleFactory.swift
+//  TutorialModule.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 04/10/2017.
@@ -10,7 +10,13 @@ import EurofurenceModel
 import Foundation
 import UIKit
 
-struct PhoneTutorialModuleFactory: TutorialModuleProviding {
+protocol TutorialModuleDelegate {
+
+    func tutorialModuleDidFinishPresentingTutorial()
+
+}
+
+struct TutorialModule: TutorialModuleProviding {
 
     var tutorialSceneFactory: TutorialSceneFactory
     var presentationAssets: PresentationAssets

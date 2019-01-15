@@ -1,5 +1,5 @@
 //
-//  PhoneTabModuleFactory.swift
+//  PlatformTabModuleFactory.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 06/11/2017.
@@ -9,7 +9,7 @@
 import UIKit.UITabBarController
 import UIKit.UIViewController
 
-struct PhoneTabModuleFactory: TabModuleProviding {
+struct PlatformTabModuleFactory: TabModuleProviding {
 
     func makeTabModule(_ childModules: [UIViewController]) -> UITabBarController {
         let tabBarController = UITabBarController()

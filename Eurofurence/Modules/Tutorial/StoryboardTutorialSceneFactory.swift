@@ -1,5 +1,5 @@
 //
-//  PhoneTutorialSceneFactory.swift
+//  StoryboardTutorialSceneFactory.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 06/11/2017.
@@ -8,7 +8,7 @@
 
 import UIKit.UIStoryboard
 
-struct PhoneTutorialSceneFactory: TutorialSceneFactory {
+struct StoryboardTutorialSceneFactory: TutorialSceneFactory {
 
     private let storyboard = UIStoryboard(name: "Tutorial", bundle: .main)
 

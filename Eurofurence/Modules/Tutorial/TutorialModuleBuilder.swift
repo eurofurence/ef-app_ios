@@ -19,7 +19,7 @@ class TutorialModuleBuilder {
     private var witnessedTutorialPushPermissionsRequest: WitnessedTutorialPushPermissionsRequest
 
     init() {
-        tutorialSceneFactory = PhoneTutorialSceneFactory()
+        tutorialSceneFactory = StoryboardTutorialSceneFactory()
         presentationAssets = ApplicationPresentationAssets()
         alertRouter = WindowAlertRouter.shared
         tutorialStateProviding = UserDefaultsTutorialStateProvider(userDefaults: .standard)
@@ -64,7 +64,7 @@ class TutorialModuleBuilder {
     }
 
     func build() -> TutorialModuleProviding {
-        return PhoneTutorialModuleFactory(tutorialSceneFactory: tutorialSceneFactory,
+        return TutorialModule(tutorialSceneFactory: tutorialSceneFactory,
                                           presentationAssets: presentationAssets,
                                           alertRouter: alertRouter,
                                           tutorialStateProviding: tutorialStateProviding,

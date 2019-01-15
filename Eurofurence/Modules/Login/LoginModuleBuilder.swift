@@ -36,9 +36,9 @@ class LoginModuleBuilder {
     }
 
     func build() -> LoginModuleProviding {
-        return PhoneLoginModuleFactory(sceneFactory: sceneFactory,
-                                       authenticationService: authenticationService,
-                                       alertRouter: alertRouter)
+        return LoginModule(sceneFactory: sceneFactory,
+                           authenticationService: authenticationService,
+                           alertRouter: alertRouter)
     }
 
 }

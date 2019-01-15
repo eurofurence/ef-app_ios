@@ -1,5 +1,5 @@
 //
-//  PhoneRootModuleFactory.swift
+//  RootModule.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 06/11/2017.
@@ -8,7 +8,7 @@
 
 import EurofurenceModel
 
-struct PhoneRootModuleFactory: RootModuleProviding {
+struct RootModule: RootModuleProviding {
 
     var sessionStateService: SessionStateService
 

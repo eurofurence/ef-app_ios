@@ -15,7 +15,7 @@ class PreloadModuleBuilder {
     private var alertRouter: AlertRouter
 
     init() {
-        preloadSceneFactory = PhonePreloadSceneFactory()
+        preloadSceneFactory = StoryboardPreloadSceneFactory()
         preloadService = ApplicationPreloadInteractor()
         alertRouter = WindowAlertRouter.shared
     }
@@ -36,10 +36,9 @@ class PreloadModuleBuilder {
     }
 
     func build() -> PreloadModuleProviding {
-        return PhonePreloadModuleFactory(preloadSceneFactory: preloadSceneFactory,
-                                         preloadService: preloadService,
-                                         alertRouter: alertRouter)
-
+        return PreloadModule(preloadSceneFactory: preloadSceneFactory,
+                             preloadService: preloadService,
+                             alertRouter: alertRouter)
     }
 
 }

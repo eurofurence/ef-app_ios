@@ -1,5 +1,5 @@
 //
-//  PhonePreloadSceneFactoryTests.swift
+//  StoryboardPreloadSceneFactoryTests.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 27/09/2017.
@@ -10,10 +10,10 @@
 import EurofurenceModel
 import XCTest
 
-class PhonePreloadSceneFactoryTests: XCTestCase {
+class StoryboardPreloadSceneFactoryTests: XCTestCase {
 
     func testThePreloadSceneViewControllerIsMade() {
-        let factory = PhonePreloadSceneFactory()
+        let factory = StoryboardPreloadSceneFactory()
         let scene = factory.makePreloadScene()
 
         XCTAssertNotNil(scene.storyboard)

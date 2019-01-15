@@ -1,5 +1,5 @@
 //
-//  PhoneMessagesModuleFactory.swift
+//  MessagesModule.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 06/11/2017.
@@ -9,7 +9,7 @@
 import EurofurenceModel
 import UIKit.UIViewController
 
-struct PhoneMessagesModuleFactory: MessagesModuleProviding {
+struct MessagesModule: MessagesModuleProviding {
 
     var sceneFactory: MessagesSceneFactory
     var authenticationService: AuthenticationService

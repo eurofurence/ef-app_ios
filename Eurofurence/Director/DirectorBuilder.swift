@@ -42,9 +42,9 @@ class DirectorBuilder {
 
     init(linkLookupService: ContentLinksService, notificationHandling: NotificationService) {
         animate = true
-        windowWireframe = PhoneWindowWireframe.shared
-        navigationControllerFactory = PhoneNavigationControllerFactory()
-        tabModuleProviding = PhoneTabModuleFactory()
+        windowWireframe = AppWindowWireframe.shared
+        navigationControllerFactory = PlatformNavigationControllerFactory()
+        tabModuleProviding = PlatformTabModuleFactory()
 
         orderingPolicy = RestorationIdentifierOrderingPolicy()
         rootModuleProviding = RootModuleBuilder().build()

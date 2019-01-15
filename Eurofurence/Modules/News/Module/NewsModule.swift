@@ -1,5 +1,5 @@
 //
-//  PhoneNewsModuleFactory.swift
+//  NewsModule.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 24/10/2017.
@@ -8,7 +8,7 @@
 
 import UIKit.UIViewController
 
-struct PhoneNewsModuleFactory: NewsModuleProviding {
+struct NewsModule: NewsModuleProviding {
 
     var newsSceneFactory: NewsSceneFactory
     var newsInteractor: NewsInteractor

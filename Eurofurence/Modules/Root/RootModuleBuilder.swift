@@ -23,7 +23,7 @@ class RootModuleBuilder {
     }
 
     func build() -> RootModuleProviding {
-        return PhoneRootModuleFactory(sessionStateService: sessionStateService)
+        return RootModule(sessionStateService: sessionStateService)
     }
 
 }

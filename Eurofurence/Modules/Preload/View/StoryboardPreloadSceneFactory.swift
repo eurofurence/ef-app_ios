@@ -1,5 +1,5 @@
 //
-//  PhonePreloadSceneFactory.swift
+//  StoryboardPreloadSceneFactory.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 27/09/2017.
@@ -9,7 +9,7 @@
 import UIKit.UIStoryboard
 import UIKit.UIViewController
 
-struct PhonePreloadSceneFactory: PreloadSceneFactory {
+struct StoryboardPreloadSceneFactory: PreloadSceneFactory {
 
     private let storyboard = UIStoryboard(name: "Preload", bundle: .main)
 

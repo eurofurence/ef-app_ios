@@ -1,5 +1,5 @@
 //
-//  PhoneWindowWireframe.swift
+//  AppWindowWireframe.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 06/11/2017.
@@ -9,11 +9,11 @@
 import UIKit.UIViewController
 import UIKit.UIWindow
 
-struct PhoneWindowWireframe: WindowWireframe {
+struct AppWindowWireframe: WindowWireframe {
 
-    static var shared: PhoneWindowWireframe = {
+    static var shared: AppWindowWireframe = {
         let window = UIApplication.shared.delegate!.window!!
-        return PhoneWindowWireframe(window: window)
+        return AppWindowWireframe(window: window)
     }()
 
     var window: UIWindow
