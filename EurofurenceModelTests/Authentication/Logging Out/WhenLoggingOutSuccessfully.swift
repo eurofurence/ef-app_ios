@@ -18,7 +18,9 @@ class WhenLoggingOutSuccessfully: XCTestCase {
     override func setUp() {
         super.setUp()
 
+        observer = CapturingAuthenticationStateObserver()
         context = ApplicationTestBuilder().with(credential).build()
+        context.authenticationService.add(observer)
     }
 
     func testTheRemoteNotificationsTokenRegistrationShouldReRegisterTheDeviceTokenWithNilUserRegistrationToken() {
@@ -43,6 +45,7 @@ class WhenLoggingOutSuccessfully: XCTestCase {
         context.capturingTokenRegistration.succeedLastRequest()
 
         XCTAssertFalse(logoutObserver.didFailToLogout)
+        XCTAssertFalse(observer.logoutDidFail)
     }
 
     func testSucceedingToUnregisterAuthTokenWithRemoteTokenRegistrationShouldDeletePersistedCredential() {
@@ -60,6 +63,7 @@ class WhenLoggingOutSuccessfully: XCTestCase {
         context.capturingTokenRegistration.succeedLastRequest()
 
         XCTAssertTrue(logoutObserver.didLogout)
+        XCTAssertFalse(observer.logoutDidFail)
     }
 
 }
