@@ -5440,6 +5440,45 @@
 			path = ScreenshotGenerator;
 			sourceTree = "<group>";
 		};
+		CAA4BA6D21EFCFE400DE2C88 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CAA4BA6F21EFD03900DE2C88 /* Events */,
+				CA1F7D6220CB83A100FB87F5 /* ConcreteAnnouncementsService.swift */,
+				CA281B631F1FE62D0002A4E5 /* ConcreteAuthenticationService.swift */,
+				CA2761D120E03B29000E52AC /* ConcreteCollectThemAllService.swift */,
+				CA162E8520A5BB85004AFED6 /* ConcreteConventionCountdownService.swift */,
+				CA36A4A720D984E400EE6537 /* ConcreteDealersService.swift */,
+				CA680F7920CD7AD7006ACD3D /* ConcreteKnowledgeService.swift */,
+				CA6A8DB720E2DC62007536CD /* ConcreteMapsService.swift */,
+				CAF3F63A2016797400374B4C /* ConcretePrivateMessagesService.swift */,
+				CAA4BA6B21EE851700DE2C88 /* ConcreteRefreshService.swift */,
+				78D7EEBC1F196B62005372A9 /* ConcreteSession.swift */,
+				CAA4BA6821EE80C500DE2C88 /* ConcreteSessionStateService.swift */,
+				CADABF0121177B3B0023C3B6 /* DataStoreChangedConsumer.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		CAA4BA6E21EFD00B00DE2C88 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				CA6A8E0B20E592E1007536CD /* Array+AppExtensions.swift */,
+				CACF26C420FCC04500EDE150 /* FileUtilities.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		CAA4BA6F21EFD03900DE2C88 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				CA680F7F20CDA49D006ACD3D /* ConcreteEventsService.swift */,
+				CA0F9D9121D53A2A0084886E /* EventsScheduleAdapter.swift */,
+				CA36A44420D7051900EE6537 /* InMemoryEventsSearchController.swift */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
 		CAA6060820EEC01C00075A4E /* Debug */ = {
 			isa = PBXGroup;
 			children = (
@@ -5735,30 +5774,15 @@
 		CACD2E8B21D676FE00BACD91 /* Private */ = {
 			isa = PBXGroup;
 			children = (
-				CA1F7D6220CB83A100FB87F5 /* ConcreteAnnouncementsService.swift */,
-				CA6A8E0B20E592E1007536CD /* Array+AppExtensions.swift */,
-				CA2761D120E03B29000E52AC /* ConcreteCollectThemAllService.swift */,
-				78D7EEBC1F196B62005372A9 /* ConcreteSession.swift */,
-				CAA4BA6821EE80C500DE2C88 /* ConcreteSessionStateService.swift */,
-				CA162E8520A5BB85004AFED6 /* ConcreteConventionCountdownService.swift */,
-				CADABF0121177B3B0023C3B6 /* DataStoreChangedConsumer.swift */,
-				CA36A4A720D984E400EE6537 /* ConcreteDealersService.swift */,
 				CA162E7D20A4B9CD004AFED6 /* EF24StartDateRepository.swift */,
-				CA0F9D9121D53A2A0084886E /* EventsScheduleAdapter.swift */,
-				CACF26C420FCC04500EDE150 /* FileUtilities.swift */,
 				CA680F8120CDABB6006ACD3D /* ImageDownloader.swift */,
 				CACF1EC520B6C31000D904B5 /* ImagesCache.swift */,
-				CA36A44420D7051900EE6537 /* InMemoryEventsSearchController.swift */,
-				CA680F7920CD7AD7006ACD3D /* ConcreteKnowledgeService.swift */,
-				CA6A8DB720E2DC62007536CD /* ConcreteMapsService.swift */,
-				CAF3F63A2016797400374B4C /* ConcretePrivateMessagesService.swift */,
 				CA8D97D4201613010074838F /* RemoteNotificationRegistrationController.swift */,
-				CA680F7F20CDA49D006ACD3D /* ConcreteEventsService.swift */,
 				CA52C67C20D59560009D3A9E /* SignificantTimeObserver.swift */,
 				CA27618D20DFEFB4000E52AC /* URLHandler.swift */,
-				CA281B631F1FE62D0002A4E5 /* ConcreteAuthenticationService.swift */,
 				CA8D97C9201610C80074838F /* Domain Events */,
-				CAA4BA6B21EE851700DE2C88 /* ConcreteRefreshService.swift */,
+				CAA4BA6D21EFCFE400DE2C88 /* Services */,
+				CAA4BA6E21EFD00B00DE2C88 /* Utilities */,
 			);
 			path = Private;
 			sourceTree = "<group>";
