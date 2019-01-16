@@ -120,10 +120,6 @@ class ConcreteRefreshService: RefreshService {
 
                     let isFullStoreRefresh: Bool = lastSyncTime == nil
                     if isFullStoreRefresh {
-                        func not<T>(_ predicate: @escaping (T) -> Bool) -> (T) -> Bool {
-                            return { (element) in return !predicate(element) }
-                        }
-
                         let changedAnnouncementIdentifiers = response.announcements.changed.map({ $0.identifier })
                         let orphanedAnnouncements = existingAnnouncements.map({ $0.identifier }).filter(not(changedAnnouncementIdentifiers.contains))
                         orphanedAnnouncements.forEach(transaction.deleteAnnouncement)

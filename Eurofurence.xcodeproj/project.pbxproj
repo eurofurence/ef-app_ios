@@ -722,6 +722,7 @@
 		CAA4BA6721EE7AB600DE2C88 /* MessagesModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA4BA6621EE7AB600DE2C88 /* MessagesModule.swift */; };
 		CAA4BA6A21EE80E100DE2C88 /* ConcreteSessionStateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA4BA6821EE80C500DE2C88 /* ConcreteSessionStateService.swift */; };
 		CAA4BA6C21EE851700DE2C88 /* ConcreteRefreshService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA4BA6B21EE851700DE2C88 /* ConcreteRefreshService.swift */; };
+		CAA4BA7121EFD0A500DE2C88 /* ModelFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA4BA7021EFD0A500DE2C88 /* ModelFunctions.swift */; };
 		CAA6060720EEB4F200075A4E /* UserNotificationsScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA6060620EEB4F200075A4E /* UserNotificationsScheduler.swift */; };
 		CAA6060A20EEC02C00075A4E /* Debug.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAA6060920EEC02C00075A4E /* Debug.storyboard */; };
 		CAA6060C20EEC06500075A4E /* DebugTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA6060B20EEC06500075A4E /* DebugTableViewController.swift */; };
@@ -2361,6 +2362,7 @@
 		CAA4BA6621EE7AB600DE2C88 /* MessagesModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesModule.swift; sourceTree = "<group>"; };
 		CAA4BA6821EE80C500DE2C88 /* ConcreteSessionStateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcreteSessionStateService.swift; sourceTree = "<group>"; };
 		CAA4BA6B21EE851700DE2C88 /* ConcreteRefreshService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcreteRefreshService.swift; sourceTree = "<group>"; };
+		CAA4BA7021EFD0A500DE2C88 /* ModelFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelFunctions.swift; sourceTree = "<group>"; };
 		CAA6060620EEB4F200075A4E /* UserNotificationsScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationsScheduler.swift; sourceTree = "<group>"; };
 		CAA6060920EEC02C00075A4E /* Debug.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Debug.storyboard; sourceTree = "<group>"; };
 		CAA6060B20EEC06500075A4E /* DebugTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugTableViewController.swift; sourceTree = "<group>"; };
@@ -5465,6 +5467,7 @@
 			children = (
 				CA6A8E0B20E592E1007536CD /* Array+AppExtensions.swift */,
 				CACF26C420FCC04500EDE150 /* FileUtilities.swift */,
+				CAA4BA7021EFD0A500DE2C88 /* ModelFunctions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -8478,6 +8481,7 @@
 				CAEA0DA5216BDE2300B0C7A6 /* ForceRefreshRequired.swift in Sources */,
 				CAEA0DB8216BDE2300B0C7A6 /* KnowledgeGroup.swift in Sources */,
 				CAEA0DFE216BDE3100B0C7A6 /* ImageCharacteristics.swift in Sources */,
+				CAA4BA7121EFD0A500DE2C88 /* ModelFunctions.swift in Sources */,
 				CAEA0DF5216BDE3100B0C7A6 /* DealerCharacteristics.swift in Sources */,
 				CAEA0DA1216BDE2300B0C7A6 /* ConventionStartDateRepository.swift in Sources */,
 				CAEA0E0A216BDE3100B0C7A6 /* NetworkReachability.swift in Sources */,
