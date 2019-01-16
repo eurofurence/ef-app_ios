@@ -87,7 +87,7 @@ class ConcreteAuthenticationService: AuthenticationService {
         }
     }
 
-    private func remoteNotificationTokenDidChange(_ event: DomainEvent.RemoteNotificationRegistrationSucceeded) {
+    private func remoteNotificationTokenDidChange(_ event: DomainEvent.RemoteNotificationTokenAvailable) {
         registeredDeviceToken = event.deviceToken
     }
 

@@ -189,7 +189,7 @@ class ConcreteSession: EurofurenceSession,
     }
 
     func storeRemoteNotificationsToken(_ deviceToken: Data) {
-        eventBus.post(DomainEvent.RemoteNotificationRegistrationSucceeded(deviceToken: deviceToken))
+        eventBus.post(DomainEvent.RemoteNotificationTokenAvailable(deviceToken: deviceToken))
     }
 
     func setExternalContentHandler(_ externalContentHandler: ExternalContentHandler) {

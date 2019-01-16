@@ -29,7 +29,7 @@ class RemoteNotificationRegistrationController {
         }
     }
 
-    private func remoteNotificationRegistrationSucceeded(_ event: DomainEvent.RemoteNotificationRegistrationSucceeded) {
+    private func remoteNotificationRegistrationSucceeded(_ event: DomainEvent.RemoteNotificationTokenAvailable) {
         deviceToken = event.deviceToken
         reregisterNotificationToken()
     }

@@ -960,7 +960,7 @@
 		CAEA0DE6216BDE2300B0C7A6 /* LoggedIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D97D02016126E0074838F /* LoggedIn.swift */; };
 		CAEA0DE7216BDE2300B0C7A6 /* LoggedOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2761D320E03B88000E52AC /* LoggedOut.swift */; };
 		CAEA0DE8216BDE2300B0C7A6 /* OpenURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27618B20DFEF6E000E52AC /* OpenURL.swift */; };
-		CAEA0DE9216BDE2300B0C7A6 /* RemoteNotificationRegistrationSucceeded.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D97D2201612A70074838F /* RemoteNotificationRegistrationSucceeded.swift */; };
+		CAEA0DE9216BDE2300B0C7A6 /* RemoteNotificationTokenAvailable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D97D2201612A70074838F /* RemoteNotificationTokenAvailable.swift */; };
 		CAEA0DEA216BDE2300B0C7A6 /* SignificantTimePassedEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C67E20D59572009D3A9E /* SignificantTimePassedEvent.swift */; };
 		CAEA0DEB216BDE2300B0C7A6 /* DataStoreChangedEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADABEFF21177ADE0023C3B6 /* DataStoreChangedEvent.swift */; };
 		CAEA0DEC216BDE2300B0C7A6 /* ImageEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1EC820B6D5AA00D904B5 /* ImageEntity.swift */; };
@@ -2331,7 +2331,7 @@
 		CA8D97CC201610EC0074838F /* DomainEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainEvent.swift; sourceTree = "<group>"; };
 		CA8D97CE201611430074838F /* EventBus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBus.swift; sourceTree = "<group>"; };
 		CA8D97D02016126E0074838F /* LoggedIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedIn.swift; sourceTree = "<group>"; };
-		CA8D97D2201612A70074838F /* RemoteNotificationRegistrationSucceeded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNotificationRegistrationSucceeded.swift; sourceTree = "<group>"; };
+		CA8D97D2201612A70074838F /* RemoteNotificationTokenAvailable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNotificationTokenAvailable.swift; sourceTree = "<group>"; };
 		CA8D97D4201613010074838F /* RemoteNotificationRegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNotificationRegistrationController.swift; sourceTree = "<group>"; };
 		CA8D97D6201616DF0074838F /* BlockEventConsumer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockEventConsumer.swift; sourceTree = "<group>"; };
 		CA8E17EC1F817A70003C348C /* PreloadInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadInteractor.swift; sourceTree = "<group>"; };
@@ -5415,7 +5415,7 @@
 				CA8D97D02016126E0074838F /* LoggedIn.swift */,
 				CA2761D320E03B88000E52AC /* LoggedOut.swift */,
 				CA27618B20DFEF6E000E52AC /* OpenURL.swift */,
-				CA8D97D2201612A70074838F /* RemoteNotificationRegistrationSucceeded.swift */,
+				CA8D97D2201612A70074838F /* RemoteNotificationTokenAvailable.swift */,
 				CA52C67E20D59572009D3A9E /* SignificantTimePassedEvent.swift */,
 				CADABEFF21177ADE0023C3B6 /* DataStoreChangedEvent.swift */,
 			);
@@ -8488,7 +8488,7 @@
 				CA4C474D21DFFE4F005231AD /* PrivateMessagesService.swift in Sources */,
 				CAEA0D89216BDD9500B0C7A6 /* ImageDownloader.swift in Sources */,
 				CAEA0DED216BDE2300B0C7A6 /* Array+AppExtensions.swift in Sources */,
-				CAEA0DE9216BDE2300B0C7A6 /* RemoteNotificationRegistrationSucceeded.swift in Sources */,
+				CAEA0DE9216BDE2300B0C7A6 /* RemoteNotificationTokenAvailable.swift in Sources */,
 				CACD2E8821D6764000BACD91 /* NotificationService.swift in Sources */,
 				CAEA0DA7216BDE2300B0C7A6 /* ImageRepository.swift in Sources */,
 				CAEA0DC9216BDE2300B0C7A6 /* RefreshService.swift in Sources */,

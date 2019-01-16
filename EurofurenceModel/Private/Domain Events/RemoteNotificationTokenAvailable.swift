@@ -1,5 +1,5 @@
 //
-//  RemoteNotificationRegistrationSucceeded.swift
+//  RemoteNotificationTokenAvailable.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 22/01/2018.
@@ -10,7 +10,7 @@ import Foundation
 
 extension DomainEvent {
 
-    struct RemoteNotificationRegistrationSucceeded {
+    struct RemoteNotificationTokenAvailable {
         var deviceToken: Data
     }
 
