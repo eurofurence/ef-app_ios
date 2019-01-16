@@ -957,7 +957,6 @@
 		CAEA0DE2216BDE2300B0C7A6 /* TrackEntity+Adaptation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE8B0BE20CA583D0029D4D6 /* TrackEntity+Adaptation.swift */; };
 		CAEA0DE3216BDE2300B0C7A6 /* DomainEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D97CC201610EC0074838F /* DomainEvent.swift */; };
 		CAEA0DE4216BDE2300B0C7A6 /* ImageDownloadedEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1ECE20B6D8CB00D904B5 /* ImageDownloadedEvent.swift */; };
-		CAEA0DE5216BDE2300B0C7A6 /* LatestDataFetchedEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1F7D6620CB856D00FB87F5 /* LatestDataFetchedEvent.swift */; };
 		CAEA0DE6216BDE2300B0C7A6 /* LoggedIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D97D02016126E0074838F /* LoggedIn.swift */; };
 		CAEA0DE7216BDE2300B0C7A6 /* LoggedOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2761D320E03B88000E52AC /* LoggedOut.swift */; };
 		CAEA0DE8216BDE2300B0C7A6 /* OpenURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27618B20DFEF6E000E52AC /* OpenURL.swift */; };
@@ -1670,7 +1669,6 @@
 		CA1ECB4C1FE7F2A10076083A /* NewsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsPresenter.swift; sourceTree = "<group>"; };
 		CA1F7D6020CB82F600FB87F5 /* WhenAddingAnnouncementsObserver_ThenRefreshSucceeds_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenAddingAnnouncementsObserver_ThenRefreshSucceeds_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA1F7D6220CB83A100FB87F5 /* ConcreteAnnouncementsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcreteAnnouncementsService.swift; sourceTree = "<group>"; };
-		CA1F7D6620CB856D00FB87F5 /* LatestDataFetchedEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestDataFetchedEvent.swift; sourceTree = "<group>"; };
 		CA1F7D6A20CBB9DA00FB87F5 /* WhenApplicationInitialises_WithAnnouncementsSavedToStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenApplicationInitialises_WithAnnouncementsSavedToStore.swift; sourceTree = "<group>"; };
 		CA1F7D6C20CBBD9200FB87F5 /* AnnouncementEntity+Adaptation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnnouncementEntity+Adaptation.swift"; sourceTree = "<group>"; };
 		CA1FE9961F9FCCA4009C7DF3 /* MessagesModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesModuleProviding.swift; sourceTree = "<group>"; };
@@ -5413,7 +5411,6 @@
 			children = (
 				CA8D97CC201610EC0074838F /* DomainEvent.swift */,
 				CACF1ECE20B6D8CB00D904B5 /* ImageDownloadedEvent.swift */,
-				CA1F7D6620CB856D00FB87F5 /* LatestDataFetchedEvent.swift */,
 				CA8D97D02016126E0074838F /* LoggedIn.swift */,
 				CA2761D320E03B88000E52AC /* LoggedOut.swift */,
 				CA27618B20DFEF6E000E52AC /* OpenURL.swift */,
@@ -8491,7 +8488,6 @@
 				CAEA0DB6216BDE2300B0C7A6 /* ExtendedDealerData.swift in Sources */,
 				CACD2F0721DEB9DE00BACD91 /* SessionStateService.swift in Sources */,
 				CAEA0DCE216BDE2300B0C7A6 /* ConcreteDealersService.swift in Sources */,
-				CAEA0DE5216BDE2300B0C7A6 /* LatestDataFetchedEvent.swift in Sources */,
 				CAEA0DFC216BDE3100B0C7A6 /* ModelCharacteristics.swift in Sources */,
 				CAEA0DDE216BDE2300B0C7A6 /* LinkEntity+Adaptation.swift in Sources */,
 				CAEA0DDF216BDE2300B0C7A6 /* MapEntity+Adaptation.swift in Sources */,

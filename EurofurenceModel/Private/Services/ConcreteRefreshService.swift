@@ -111,8 +111,6 @@ class ConcreteRefreshService: RefreshService {
             }
 
             self.imageDownloader.downloadImages(identifiers: imageIdentifiers, parentProgress: progress) {
-                self.eventBus.post(DomainEvent.LatestDataFetchedEvent(response: response))
-
                 self.dataStore.performTransaction({ (transaction) in
                     self.deleteExistingEntities(imageIdentifiersToDelete: imageIdentifiersToDelete,
                                                 response: response,
