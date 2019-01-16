@@ -66,11 +66,7 @@ class ConcreteRefreshService: RefreshService {
     }
 
     private func performSync(lastSyncTime: Date?, completionHandler: @escaping (Error?) -> Void) -> Progress {
-        enum SyncError: Error {
-            case failedToLoadResponse
-        }
-
-        refreshObservers.forEach({ $0.refreshServiceDidBeginRefreshing() })
+        notifyRefreshStarted()
 
         let longRunningTask = longRunningTaskManager?.beginLongRunningTask()
         let finishLongRunningTask: () -> Void = {
@@ -94,7 +90,12 @@ class ConcreteRefreshService: RefreshService {
             guard let response = response else {
                 finishLongRunningTask()
 
-                self.refreshObservers.forEach({ $0.refreshServiceDidFinishRefreshing() })
+                self.notifyRefreshFinished()
+
+                enum SyncError: Error {
+                    case failedToLoadResponse
+                }
+
                 completionHandler(SyncError.failedToLoadResponse)
                 return
             }
@@ -113,18 +114,12 @@ class ConcreteRefreshService: RefreshService {
                 self.eventBus.post(DomainEvent.LatestDataFetchedEvent(response: response))
 
                 self.dataStore.performTransaction({ (transaction) in
-                    imageIdentifiersToDelete.forEach(transaction.deleteImage)
-                    response.events.deleted.forEach(transaction.deleteEvent)
-                    response.tracks.deleted.forEach(transaction.deleteTrack)
-                    response.rooms.deleted.forEach(transaction.deleteRoom)
-                    response.conferenceDays.deleted.forEach(transaction.deleteConferenceDay)
-                    response.maps.deleted.forEach(transaction.deleteMap)
-                    response.dealers.deleted.forEach(transaction.deleteDealer)
-                    response.knowledgeEntries.deleted.forEach(transaction.deleteKnowledgeEntry)
-                    response.knowledgeGroups.deleted.forEach(transaction.deleteKnowledgeGroup)
-                    response.announcements.deleted.forEach(transaction.deleteAnnouncement)
+                    self.deleteExistingEntities(imageIdentifiersToDelete: imageIdentifiersToDelete,
+                                                response: response,
+                                                transaction: transaction)
 
-                    if lastSyncTime == nil {
+                    let isFullStoreRefresh: Bool = lastSyncTime == nil
+                    if isFullStoreRefresh {
                         func not<T>(_ predicate: @escaping (T) -> Bool) -> (T) -> Bool {
                             return { (element) in return !predicate(element) }
                         }
@@ -189,18 +184,8 @@ class ConcreteRefreshService: RefreshService {
                         existingDealers.map({ $0.identifier }).forEach(transaction.deleteDealer)
                     }
 
-                    transaction.saveEvents(response.events.changed)
-                    transaction.saveRooms(response.rooms.changed)
-                    transaction.saveTracks(response.tracks.changed)
-                    transaction.saveConferenceDays(response.conferenceDays.changed)
-                    transaction.saveMaps(response.maps.changed)
-                    transaction.saveDealers(response.dealers.changed)
-                    transaction.saveKnowledgeGroups(response.knowledgeGroups.changed)
-                    transaction.saveKnowledgeEntries(response.knowledgeEntries.changed)
-                    transaction.saveAnnouncements(response.announcements.changed)
+                    self.save(characteristics: response, in: transaction)
 
-                    transaction.saveLastRefreshDate(self.clock.currentDate)
-                    transaction.saveImages(response.images.changed)
                     response.images.deleted.forEach(transaction.deleteImage)
                     response.images.deleted.forEach(self.imageCache.deleteImage)
                 })
@@ -209,13 +194,50 @@ class ConcreteRefreshService: RefreshService {
 
                 self.privateMessagesController.refreshMessages {
                     completionHandler(nil)
-                    self.refreshObservers.forEach({ $0.refreshServiceDidFinishRefreshing() })
+                    self.notifyRefreshFinished()
                     finishLongRunningTask()
                 }
             }
         }
 
         return progress
+    }
+
+    private func notifyRefreshFinished() {
+        self.refreshObservers.forEach({ $0.refreshServiceDidFinishRefreshing() })
+    }
+
+    private func notifyRefreshStarted() {
+        refreshObservers.forEach({ $0.refreshServiceDidBeginRefreshing() })
+    }
+
+    private func deleteExistingEntities(imageIdentifiersToDelete: [String],
+                                        response: ModelCharacteristics,
+                                        transaction: DataStoreTransaction) {
+        imageIdentifiersToDelete.forEach(transaction.deleteImage)
+        response.events.deleted.forEach(transaction.deleteEvent)
+        response.tracks.deleted.forEach(transaction.deleteTrack)
+        response.rooms.deleted.forEach(transaction.deleteRoom)
+        response.conferenceDays.deleted.forEach(transaction.deleteConferenceDay)
+        response.maps.deleted.forEach(transaction.deleteMap)
+        response.dealers.deleted.forEach(transaction.deleteDealer)
+        response.knowledgeEntries.deleted.forEach(transaction.deleteKnowledgeEntry)
+        response.knowledgeGroups.deleted.forEach(transaction.deleteKnowledgeGroup)
+        response.announcements.deleted.forEach(transaction.deleteAnnouncement)
+    }
+
+    private func save(characteristics: ModelCharacteristics, in transaction: DataStoreTransaction) {
+        transaction.saveEvents(characteristics.events.changed)
+        transaction.saveRooms(characteristics.rooms.changed)
+        transaction.saveTracks(characteristics.tracks.changed)
+        transaction.saveConferenceDays(characteristics.conferenceDays.changed)
+        transaction.saveMaps(characteristics.maps.changed)
+        transaction.saveDealers(characteristics.dealers.changed)
+        transaction.saveKnowledgeGroups(characteristics.knowledgeGroups.changed)
+        transaction.saveKnowledgeEntries(characteristics.knowledgeEntries.changed)
+        transaction.saveAnnouncements(characteristics.announcements.changed)
+        transaction.saveLastRefreshDate(clock.currentDate)
+        transaction.saveImages(characteristics.images.changed)
     }
 
 }
