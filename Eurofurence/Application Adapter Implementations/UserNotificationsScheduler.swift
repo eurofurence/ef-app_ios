@@ -19,13 +19,7 @@ struct UserNotificationsScheduler: NotificationScheduler {
         let content = UNMutableNotificationContent()
         content.title = title
         content.body = body
-
-        var payload = [String: String]()
-        for (key, value) in userInfo {
-            payload[key.rawValue] = value
-        }
-
-        content.userInfo = payload
+        content.userInfo = userInfo
 
         let desiredComponents: Set<Calendar.Component> = Set([.year, .month, .day, .hour, .minute])
         let components = Calendar.current.dateComponents(desiredComponents, from: date)
