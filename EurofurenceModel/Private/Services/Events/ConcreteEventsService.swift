@@ -122,33 +122,9 @@ class ConcreteEventsService: ClockDelegate, EventsService {
     }
 
     func favouriteEvent(identifier: EventIdentifier) {
-        dataStore.performTransaction { (transaction) in
-            transaction.saveFavouriteEventIdentifier(identifier)
-        }
-
+        persistFavouritedEvent(identifier: identifier)
         favouriteEventIdentifiers.append(identifier)
-
-        guard let event = eventModels.first(where: { $0.identifier == identifier }) else { return }
-
-        let waitInterval = userPreferences.upcomingEventReminderInterval * -1
-        let reminderDate = event.startDate.addingTimeInterval(waitInterval)
-        let startTimeString = hoursDateFormatter.hoursString(from: event.startDate)
-        let body = AppCoreStrings.eventReminderBody(timeString: startTimeString, roomName: event.room.name)
-        let userInfo: [ApplicationNotificationKey: String] = [
-            .notificationContentKind: ApplicationNotificationContentKind.event.rawValue,
-            .notificationContentIdentifier: identifier.rawValue
-        ]
-
-        let components: DateComponents = {
-            let desired: Set<Calendar.Component> = Set([.calendar, .timeZone, .year, .month, .day, .hour, .minute])
-            return Calendar.current.dateComponents(desired, from: reminderDate)
-        }()
-
-        notificationScheduler?.scheduleNotification(forEvent: identifier,
-                                                    at: components,
-                                                    title: event.title,
-                                                    body: body,
-                                                    userInfo: userInfo)
+        scheduleReminderForEvent(identifier: identifier)
     }
 
     func unfavouriteEvent(identifier: EventIdentifier) {
@@ -254,6 +230,36 @@ class ConcreteEventsService: ClockDelegate, EventsService {
 
     private func makeDay(from model: ConferenceDayCharacteristics) -> Day {
         return Day(date: model.date)
+    }
+
+    private func persistFavouritedEvent(identifier: EventIdentifier) {
+        dataStore.performTransaction { (transaction) in
+            transaction.saveFavouriteEventIdentifier(identifier)
+        }
+    }
+
+    private func scheduleReminderForEvent(identifier: EventIdentifier) {
+        guard let event = eventModels.first(where: { $0.identifier == identifier }) else { return }
+
+        let waitInterval = userPreferences.upcomingEventReminderInterval * -1
+        let reminderDate = event.startDate.addingTimeInterval(waitInterval)
+        let startTimeString = hoursDateFormatter.hoursString(from: event.startDate)
+        let body = AppCoreStrings.eventReminderBody(timeString: startTimeString, roomName: event.room.name)
+        let userInfo: [ApplicationNotificationKey: String] = [
+            .notificationContentKind: ApplicationNotificationContentKind.event.rawValue,
+            .notificationContentIdentifier: identifier.rawValue
+        ]
+
+        let components: DateComponents = {
+            let desired: Set<Calendar.Component> = Set([.calendar, .timeZone, .year, .month, .day, .hour, .minute])
+            return Calendar.current.dateComponents(desired, from: reminderDate)
+        }()
+
+        notificationScheduler?.scheduleNotification(forEvent: identifier,
+                                                    at: components,
+                                                    title: event.title,
+                                                    body: body,
+                                                    userInfo: userInfo)
     }
 
 }
