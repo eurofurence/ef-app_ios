@@ -75,6 +75,11 @@ class CapturingEurofurenceDataStore: DataStore {
 
 extension CapturingEurofurenceDataStore {
 
+    convenience init(response: ModelCharacteristics) {
+        self.init()
+        save(response)
+    }
+
     func save(_ response: ModelCharacteristics, lastRefreshDate: Date = Date(), block: ((DataStoreTransaction) -> Void)? = nil) {
         performTransaction { (transaction) in
             transaction.saveLastRefreshDate(lastRefreshDate)

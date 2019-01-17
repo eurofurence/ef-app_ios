@@ -13,87 +13,40 @@ class WhenSchedulingReminderForEvent_ApplicationShould: XCTestCase {
 
     func testScheduleTheNotificationAtTheConfiguredReminderIntervalFromUserPreferences() {
         let response = ModelCharacteristics.randomWithoutDeletions
-        let events = response.events.changed
-        let dataStore = CapturingEurofurenceDataStore()
-        dataStore.performTransaction { (transaction) in
-            transaction.saveEvents(response.events.changed)
-            transaction.saveRooms(response.rooms.changed)
-            transaction.saveTracks(response.tracks.changed)
-        }
-
+        let dataStore = CapturingEurofurenceDataStore(response: response)
         let preferences = StubUserPreferences()
         let upcomingEventReminderInterval = TimeInterval.random
         preferences.upcomingEventReminderInterval = upcomingEventReminderInterval
         let context = ApplicationTestBuilder().with(preferences).with(dataStore).build()
-        let event = events.randomElement().element
-        let scheduleTime = event.startDateTime.addingTimeInterval(-upcomingEventReminderInterval)
-        let components: Set<Calendar.Component> = Set([.calendar, .timeZone, .year, .month, .day, .hour, .minute])
-        let expected = Calendar.current.dateComponents(components, from: scheduleTime)
+        let event = response.events.changed.randomElement().element
 
-        let identifier = EventIdentifier(event.identifier)
-        context.eventsService.favouriteEvent(identifier: identifier)
+        let expectedDateComponents: DateComponents = {
+            let scheduleTime = event.startDateTime.addingTimeInterval(-upcomingEventReminderInterval)
+            let components: Set<Calendar.Component> = Set([.calendar, .timeZone, .year, .month, .day, .hour, .minute])
 
-        XCTAssertEqual(expected, context.notificationScheduler.capturedEventNotificationScheduledDateComponents)
-    }
+            return Calendar.current.dateComponents(components, from: scheduleTime)
+        }()
 
-    func testSupplyTheNameOfTheEventAsTheReminderTitle() {
-        let response = ModelCharacteristics.randomWithoutDeletions
-        let events = response.events.changed
-        let dataStore = CapturingEurofurenceDataStore()
-        dataStore.performTransaction { (transaction) in
-            transaction.saveEvents(response.events.changed)
-            transaction.saveRooms(response.rooms.changed)
-            transaction.saveTracks(response.tracks.changed)
-        }
+        let expectedTitle = event.title
 
-        let context = ApplicationTestBuilder().with(dataStore).build()
-        let event = events.randomElement().element
-        let identifier = EventIdentifier(event.identifier)
-        context.eventsService.favouriteEvent(identifier: identifier)
+        let expectedBody: String = {
+            let expectedTimeString = context.hoursDateFormatter.hoursString(from: event.startDateTime)
+            let room: RoomCharacteristics = response.rooms.changed.first(where: { $0.roomIdentifier == event.roomIdentifier })!
+            let expectedLocationString = room.name
 
-        XCTAssertEqual(event.title, context.notificationScheduler.capturedEventNotificationTitle)
-    }
+            return AppCoreStrings.eventReminderBody(timeString: expectedTimeString, roomName: expectedLocationString)
+        }()
 
-    func testSupplyFormattedStartTimeAndLocationAsNotificationBody() {
-        let response = ModelCharacteristics.randomWithoutDeletions
-        let events = response.events.changed
-        let dataStore = CapturingEurofurenceDataStore()
-        dataStore.performTransaction { (transaction) in
-            transaction.saveEvents(response.events.changed)
-            transaction.saveRooms(response.rooms.changed)
-            transaction.saveTracks(response.tracks.changed)
-        }
+        let expectedUserInfo: [ApplicationNotificationKey: String] =
+            [.notificationContentKind: ApplicationNotificationContentKind.event.rawValue,
+             .notificationContentIdentifier: event.identifier]
 
-        let context = ApplicationTestBuilder().with(dataStore).build()
-        let event = events.randomElement().element
-        let identifier = EventIdentifier(event.identifier)
-        context.eventsService.favouriteEvent(identifier: identifier)
-        let expectedTimeString = context.hoursDateFormatter.hoursString(from: event.startDateTime)
-        let expectedLocationString = response.rooms.changed.first(where: { $0.roomIdentifier == event.roomIdentifier })!.name
-        let expected = AppCoreStrings.eventReminderBody(timeString: expectedTimeString, roomName: expectedLocationString)
+        context.eventsService.favouriteEvent(identifier: EventIdentifier(event.identifier))
 
-        XCTAssertEqual(expected, context.notificationScheduler.capturedEventNotificationBody)
-    }
-
-    func testSupplyCustomUserInfoWithEventTypeAndEventIdentifier() {
-        let response = ModelCharacteristics.randomWithoutDeletions
-        let events = response.events.changed
-        let dataStore = CapturingEurofurenceDataStore()
-        dataStore.performTransaction { (transaction) in
-            transaction.saveEvents(response.events.changed)
-            transaction.saveRooms(response.rooms.changed)
-            transaction.saveTracks(response.tracks.changed)
-        }
-
-        let context = ApplicationTestBuilder().with(dataStore).build()
-        let event = events.randomElement().element
-        let identifier = EventIdentifier(event.identifier)
-        context.eventsService.favouriteEvent(identifier: identifier)
-        let expected: [ApplicationNotificationKey: String] =
-            [ApplicationNotificationKey.notificationContentKind: ApplicationNotificationContentKind.event.rawValue,
-             ApplicationNotificationKey.notificationContentIdentifier: event.identifier]
-
-        XCTAssertEqual(expected, context.notificationScheduler.capturedEventNotificationUserInfo)
+        XCTAssertEqual(expectedDateComponents, context.notificationScheduler.capturedEventNotificationScheduledDateComponents)
+        XCTAssertEqual(expectedTitle, context.notificationScheduler.capturedEventNotificationTitle)
+        XCTAssertEqual(expectedBody, context.notificationScheduler.capturedEventNotificationBody)
+        XCTAssertEqual(expectedUserInfo, context.notificationScheduler.capturedEventNotificationUserInfo)
     }
 
 }
