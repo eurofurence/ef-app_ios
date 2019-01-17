@@ -26,11 +26,14 @@ class WhenSchedulingReminderForEvent_ApplicationShould: XCTestCase {
         preferences.upcomingEventReminderInterval = upcomingEventReminderInterval
         let context = ApplicationTestBuilder().with(preferences).with(dataStore).build()
         let event = events.randomElement().element
-        let expectedScheduleTime = event.startDateTime.addingTimeInterval(-upcomingEventReminderInterval)
+        let scheduleTime = event.startDateTime.addingTimeInterval(-upcomingEventReminderInterval)
+        let components: Set<Calendar.Component> = Set([.calendar, .year, .month, .day, .hour, .minute])
+        let expected = Calendar.current.dateComponents(components, from: scheduleTime)
+
         let identifier = EventIdentifier(event.identifier)
         context.eventsService.favouriteEvent(identifier: identifier)
 
-        XCTAssertEqual(expectedScheduleTime, context.notificationScheduler.capturedEventNotificationScheduledDate)
+        XCTAssertEqual(expected, context.notificationScheduler.capturedEventNotificationScheduledDateComponents)
     }
 
     func testSupplyTheNameOfTheEventAsTheReminderTitle() {

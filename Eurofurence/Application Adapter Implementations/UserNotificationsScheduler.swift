@@ -12,7 +12,7 @@ import UserNotifications
 struct UserNotificationsScheduler: NotificationScheduler {
 
     func scheduleNotification(forEvent identifier: EventIdentifier,
-                              at date: Date,
+                              at dateComponents: DateComponents,
                               title: String,
                               body: String,
                               userInfo: [ApplicationNotificationKey: String]) {
@@ -21,10 +21,7 @@ struct UserNotificationsScheduler: NotificationScheduler {
         content.body = body
         content.userInfo = userInfo
 
-        let desiredComponents: Set<Calendar.Component> = Set([.year, .month, .day, .hour, .minute])
-        let components = Calendar.current.dateComponents(desiredComponents, from: date)
-        let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
-
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
         let request = UNNotificationRequest(identifier: identifier.rawValue, content: content, trigger: trigger)
 
         UNUserNotificationCenter.current().add(request) { (error) in

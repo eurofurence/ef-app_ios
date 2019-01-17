@@ -139,11 +139,16 @@ class ConcreteEventsService: ClockDelegate, EventsService {
             .notificationContentIdentifier: identifier.rawValue
         ]
 
+        let components: DateComponents = {
+            let desired: Set<Calendar.Component> = Set([.calendar, .year, .month, .day, .hour, .minute])
+            return Calendar.current.dateComponents(desired, from: reminderDate)
+        }()
+
         notificationScheduler?.scheduleNotification(forEvent: identifier,
-                                                       at: reminderDate,
-                                                       title: event.title,
-                                                       body: body,
-                                                       userInfo: userInfo)
+                                                    at: components,
+                                                    title: event.title,
+                                                    body: body,
+                                                    userInfo: userInfo)
     }
 
     func unfavouriteEvent(identifier: EventIdentifier) {

@@ -11,7 +11,7 @@ import Foundation
 public protocol NotificationScheduler {
 
     func scheduleNotification(forEvent identifier: EventIdentifier,
-                              at date: Date,
+                              at dateComponents: DateComponents,
                               title: String,
                               body: String,
                               userInfo: [ApplicationNotificationKey: String])

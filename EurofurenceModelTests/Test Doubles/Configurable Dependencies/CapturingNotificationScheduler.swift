@@ -12,17 +12,17 @@ import Foundation
 class CapturingNotificationScheduler: NotificationScheduler {
 
     private(set) var capturedEventIdentifier: EventIdentifier?
-    private(set) var capturedEventNotificationScheduledDate: Date?
+    private(set) var capturedEventNotificationScheduledDateComponents: DateComponents?
     private(set) var capturedEventNotificationTitle: String?
     private(set) var capturedEventNotificationBody: String?
     private(set) var capturedEventNotificationUserInfo: [ApplicationNotificationKey: String] = [:]
     func scheduleNotification(forEvent identifier: EventIdentifier,
-                              at date: Date,
+                              at dateComponents: DateComponents,
                               title: String,
                               body: String,
                               userInfo: [ApplicationNotificationKey: String]) {
         capturedEventIdentifier = identifier
-        capturedEventNotificationScheduledDate = date
+        capturedEventNotificationScheduledDateComponents = dateComponents
         capturedEventNotificationTitle = title
         capturedEventNotificationBody = body
         capturedEventNotificationUserInfo = userInfo
