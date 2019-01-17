@@ -27,7 +27,7 @@ class WhenSchedulingReminderForEvent_ApplicationShould: XCTestCase {
         let context = ApplicationTestBuilder().with(preferences).with(dataStore).build()
         let event = events.randomElement().element
         let scheduleTime = event.startDateTime.addingTimeInterval(-upcomingEventReminderInterval)
-        let components: Set<Calendar.Component> = Set([.calendar, .year, .month, .day, .hour, .minute])
+        let components: Set<Calendar.Component> = Set([.calendar, .timeZone, .year, .month, .day, .hour, .minute])
         let expected = Calendar.current.dateComponents(components, from: scheduleTime)
 
         let identifier = EventIdentifier(event.identifier)

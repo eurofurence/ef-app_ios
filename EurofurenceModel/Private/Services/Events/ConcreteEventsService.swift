@@ -140,7 +140,7 @@ class ConcreteEventsService: ClockDelegate, EventsService {
         ]
 
         let components: DateComponents = {
-            let desired: Set<Calendar.Component> = Set([.calendar, .year, .month, .day, .hour, .minute])
+            let desired: Set<Calendar.Component> = Set([.calendar, .timeZone, .year, .month, .day, .hour, .minute])
             return Calendar.current.dateComponents(desired, from: reminderDate)
         }()
 
