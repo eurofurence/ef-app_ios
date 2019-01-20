@@ -14,6 +14,24 @@ public struct URLSessionBasedJSONSession: JSONSession {
 
     private let session: URLSession
 
+    private static let userAgent: String? = {
+        return Bundle.main.infoDictionary.let { (info) -> String in
+            let executable = info[kCFBundleExecutableKey as String] as? String ?? "Unknown"
+            let bundle = info[kCFBundleIdentifierKey as String] as? String ?? "Unknown"
+            let appVersion = info["CFBundleShortVersionString"] as? String ?? "Unknown"
+            let appBuild = info[kCFBundleVersionKey as String] as? String ?? "Unknown"
+
+            let osNameVersion: String = {
+                let version = ProcessInfo.processInfo.operatingSystemVersion
+                let versionString = "\(version.majorVersion).\(version.minorVersion).\(version.patchVersion)"
+
+                return "iOS \(versionString)"
+            }()
+
+            return "\(executable)/\(appVersion) (\(bundle); build:\(appBuild); \(osNameVersion))"
+        }
+    }()
+
     public init(session: URLSession = .shared) {
         self.session = session
     }
@@ -30,7 +48,7 @@ public struct URLSessionBasedJSONSession: JSONSession {
         guard let actualURL = URL(string: request.url) else { return }
 
         var urlRequest = URLRequest(url: actualURL)
-        urlRequest.setValue(makeUserAgent(), forHTTPHeaderField: "User-Agent")
+        urlRequest.setValue(type(of: self).userAgent, forHTTPHeaderField: "User-Agent")
         urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         urlRequest.httpMethod = method
         urlRequest.httpBody = request.body
@@ -41,24 +59,6 @@ public struct URLSessionBasedJSONSession: JSONSession {
                 completionHandler(data, error)
             }
         }).resume()
-    }
-
-    private func makeUserAgent() -> String? {
-        return Bundle.main.infoDictionary.let { (info) -> String in
-            let executable = info[kCFBundleExecutableKey as String] as? String ?? "Unknown"
-            let bundle = info[kCFBundleIdentifierKey as String] as? String ?? "Unknown"
-            let appVersion = info["CFBundleShortVersionString"] as? String ?? "Unknown"
-            let appBuild = info[kCFBundleVersionKey as String] as? String ?? "Unknown"
-
-            let osNameVersion: String = {
-                let version = ProcessInfo.processInfo.operatingSystemVersion
-                let versionString = "\(version.majorVersion).\(version.minorVersion).\(version.patchVersion)"
-
-                return "iOS \(versionString)"
-            }()
-
-            return "\(executable)/\(appVersion) (\(bundle); build:\(appBuild); \(osNameVersion))"
-        }
     }
 
 }
