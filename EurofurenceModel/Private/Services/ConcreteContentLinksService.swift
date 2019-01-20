@@ -9,16 +9,28 @@
 import EventBus
 import Foundation
 
-class ConcreteContentLinksService: ContentLinksService {
+class ConcreteContentLinksService: ContentLinksService, EventConsumer {
 
-    private let urlHandler: URLHandler
+    private var externalContentHandler: ExternalContentHandler?
+    private let urlOpener: URLOpener?
 
     init(eventBus: EventBus, urlOpener: URLOpener?) {
-        urlHandler = URLHandler(eventBus: eventBus, urlOpener: urlOpener)
+        self.urlOpener = urlOpener
+        eventBus.subscribe(consumer: self)
+    }
+
+    func consume(event: DomainEvent.OpenURL) {
+        let url = event.url
+
+        if let urlOpener = urlOpener, urlOpener.canOpen(url) {
+            urlOpener.open(url)
+        } else {
+            externalContentHandler?.handleExternalContent(url: url)
+        }
     }
 
     func setExternalContentHandler(_ externalContentHandler: ExternalContentHandler) {
-        urlHandler.externalContentHandler = externalContentHandler
+        self.externalContentHandler = externalContentHandler
     }
 
     func lookupContent(for link: Link) -> LinkContentLookupResult? {
@@ -29,29 +41,6 @@ class ConcreteContentLinksService: ContentLinksService {
         }
 
         return .externalURL(url)
-    }
-
-    private class URLHandler: EventConsumer {
-
-        var externalContentHandler: ExternalContentHandler?
-
-        private let urlOpener: URLOpener?
-
-        init(eventBus: EventBus, urlOpener: URLOpener?) {
-            self.urlOpener = urlOpener
-            eventBus.subscribe(consumer: self)
-        }
-
-        func consume(event: DomainEvent.OpenURL) {
-            let url = event.url
-
-            if let urlOpener = urlOpener, urlOpener.canOpen(url) {
-                urlOpener.open(url)
-            } else {
-                externalContentHandler?.handleExternalContent(url: url)
-            }
-        }
-
     }
 
 }
