@@ -14,26 +14,15 @@ import EurofurenceModel
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
 	var window: UIWindow? = UIWindow()
-    var app: EurofurenceSession!
     private var director: ApplicationDirector?
 
-	func application(_ application: UIApplication,
+    func application(_ application: UIApplication,
 	                 didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        ScreenshotAssistant.prepare()
-        FirebaseApp.configure()
-        Theme.apply()
-        UNUserNotificationCenter.current().delegate = self
-
+        prepareFrameworks()
+        prepareNotificationHandler()
         installDebugModule()
-
-        let services = SharedModel.instance.services
-        let director = DirectorBuilder(linkLookupService: services.contentLinks, notificationHandling: services.notifications).build()
-        services.contentLinks.setExternalContentHandler(director)
-
-        self.director = director
-
-        window?.makeKeyAndVisible()
-        ReviewPromptController.initialize()
+        prepareDirector()
+        showApplicationWindow()
 
 		return true
 	}
@@ -53,6 +42,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         director?.openNotification(response.notification.request.content.userInfo, completionHandler: completionHandler)
+    }
+
+    private func prepareFrameworks() {
+        ScreenshotAssistant.prepare()
+        FirebaseApp.configure()
+        Theme.apply()
+        ReviewPromptController.initialize()
+    }
+
+    private func prepareNotificationHandler() {
+        UNUserNotificationCenter.current().delegate = self
+    }
+
+    private func prepareDirector() {
+        let services = SharedModel.instance.services
+        let director = DirectorBuilder(linkLookupService: services.contentLinks, notificationHandling: services.notifications).build()
+        services.contentLinks.setExternalContentHandler(director)
+        self.director = director
+    }
+
+    private func showApplicationWindow() {
+        window?.makeKeyAndVisible()
     }
 
 }
