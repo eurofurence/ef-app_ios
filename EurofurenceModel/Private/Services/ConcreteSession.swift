@@ -26,7 +26,6 @@ class ConcreteSession: EurofurenceSession {
     private let eventsService: ConcreteEventsService
     private let dealersService: ConcreteDealersService
     private let significantTimeObserver: SignificantTimeObserver
-    private let urlHandler: URLHandler
     private let collectThemAllService: ConcreteCollectThemAllService
     private let mapsService: ConcreteMapsService
     private let notificationService: ConcreteNotificationService
@@ -109,8 +108,6 @@ class ConcreteSession: EurofurenceSession {
                                                 imageCache: imageCache,
                                                 mapCoordinateRender: mapCoordinateRender)
 
-        urlHandler = URLHandler(eventBus: eventBus, urlOpener: urlOpener)
-
         collectThemAllService = ConcreteCollectThemAllService(eventBus: eventBus,
                                                               collectThemAllRequestFactory: collectThemAllRequestFactory,
                                                               credentialStore: credentialStore)
@@ -138,7 +135,7 @@ class ConcreteSession: EurofurenceSession {
                                                           announcementsService: announcementsService,
                                                           refreshService: refreshService)
 
-        contentLinksService = ConcreteContentLinksService(urlHandler: urlHandler)
+        contentLinksService = ConcreteContentLinksService(eventBus: eventBus, urlOpener: urlOpener)
 
         privateMessagesService.refreshMessages()
     }

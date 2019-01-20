@@ -6,11 +6,16 @@
 //  Copyright © 2019 Eurofurence. All rights reserved.
 //
 
+import EventBus
 import Foundation
 
-struct ConcreteContentLinksService: ContentLinksService {
+class ConcreteContentLinksService: ContentLinksService {
 
-    var urlHandler: URLHandler
+    private let urlHandler: URLHandler
+
+    init(eventBus: EventBus, urlOpener: URLOpener?) {
+        urlHandler = URLHandler(eventBus: eventBus, urlOpener: urlOpener)
+    }
 
     func setExternalContentHandler(_ externalContentHandler: ExternalContentHandler) {
         urlHandler.externalContentHandler = externalContentHandler
@@ -24,6 +29,29 @@ struct ConcreteContentLinksService: ContentLinksService {
         }
 
         return .externalURL(url)
+    }
+
+    private class URLHandler: EventConsumer {
+
+        var externalContentHandler: ExternalContentHandler?
+
+        private let urlOpener: URLOpener?
+
+        init(eventBus: EventBus, urlOpener: URLOpener?) {
+            self.urlOpener = urlOpener
+            eventBus.subscribe(consumer: self)
+        }
+
+        func consume(event: DomainEvent.OpenURL) {
+            let url = event.url
+
+            if let urlOpener = urlOpener, urlOpener.canOpen(url) {
+                urlOpener.open(url)
+            } else {
+                externalContentHandler?.handleExternalContent(url: url)
+            }
+        }
+
     }
 
 }
