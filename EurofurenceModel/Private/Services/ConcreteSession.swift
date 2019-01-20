@@ -9,8 +9,7 @@
 import EventBus
 import Foundation
 
-class ConcreteSession: EurofurenceSession,
-                       ContentLinksService {
+class ConcreteSession: EurofurenceSession {
 
     private let eventBus = EventBus()
 
@@ -31,6 +30,7 @@ class ConcreteSession: EurofurenceSession,
     private let collectThemAllService: ConcreteCollectThemAllService
     private let mapsService: ConcreteMapsService
     private let notificationService: ConcreteNotificationService
+    private let contentLinksService: ConcreteContentLinksService
 
     init(userPreferences: UserPreferences,
          dataStore: DataStore,
@@ -138,6 +138,8 @@ class ConcreteSession: EurofurenceSession,
                                                           announcementsService: announcementsService,
                                                           refreshService: refreshService)
 
+        contentLinksService = ConcreteContentLinksService(urlHandler: urlHandler)
+
         privateMessagesService.refreshMessages()
     }
 
@@ -149,26 +151,12 @@ class ConcreteSession: EurofurenceSession,
                         events: eventsService,
                         dealers: dealersService,
                         knowledge: knowledgeService,
-                        contentLinks: self,
+                        contentLinks: contentLinksService,
                         conventionCountdown: conventionCountdownService,
                         collectThemAll: collectThemAllService,
                         maps: mapsService,
                         sessionState: sessionStateService,
                         privateMessages: privateMessagesService)
     }()
-
-    func setExternalContentHandler(_ externalContentHandler: ExternalContentHandler) {
-        urlHandler.externalContentHandler = externalContentHandler
-    }
-
-    func lookupContent(for link: Link) -> LinkContentLookupResult? {
-        guard let urlString = link.contents as? String, let url = URL(string: urlString) else { return nil }
-
-        if let scheme = url.scheme, scheme == "https" || scheme == "http" {
-            return .web(url)
-        }
-
-        return .externalURL(url)
-    }
 
 }
