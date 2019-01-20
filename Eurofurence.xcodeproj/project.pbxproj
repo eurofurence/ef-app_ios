@@ -115,6 +115,7 @@
 		CA00AE8720D28A8B00C2FBB0 /* ShortFormDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE8620D28A8B00C2FBB0 /* ShortFormDateFormatter.swift */; };
 		CA00AE8E20D2925500C2FBB0 /* ScheduleDayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE8C20D2925500C2FBB0 /* ScheduleDayCollectionViewCell.swift */; };
 		CA00AE9120D293B800C2FBB0 /* UICollectionView+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE9020D293B800C2FBB0 /* UICollectionView+Convenience.swift */; };
+		CA0290FE21F4B3C80007F350 /* ConcreteNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0290FD21F4B3C80007F350 /* ConcreteNotificationService.swift */; };
 		CA057A5B2088BDBB00504FA4 /* AnnouncementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA057A5A2088BDBA00504FA4 /* AnnouncementTableViewCell.swift */; };
 		CA063B3C20F25E5B00241CC9 /* FakeApplicationNotificationHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA063B3B20F25E5B00241CC9 /* FakeApplicationNotificationHandling.swift */; };
 		CA063B4420F3862500241CC9 /* ModuleOrderingPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA063B4320F3862500241CC9 /* ModuleOrderingPolicy.swift */; };
@@ -1535,6 +1536,7 @@
 		CA00AE8A20D28AF400C2FBB0 /* Day+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Day+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA00AE8C20D2925500C2FBB0 /* ScheduleDayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDayCollectionViewCell.swift; sourceTree = "<group>"; };
 		CA00AE9020D293B800C2FBB0 /* UICollectionView+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Convenience.swift"; sourceTree = "<group>"; };
+		CA0290FD21F4B3C80007F350 /* ConcreteNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcreteNotificationService.swift; sourceTree = "<group>"; };
 		CA057A5A2088BDBA00504FA4 /* AnnouncementTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnouncementTableViewCell.swift; sourceTree = "<group>"; };
 		CA063B3B20F25E5B00241CC9 /* FakeApplicationNotificationHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeApplicationNotificationHandling.swift; sourceTree = "<group>"; };
 		CA063B4120F2929300241CC9 /* WhenToldToOpenNotification_ThatRepresentsAnnouncement_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToOpenNotification_ThatRepresentsAnnouncement_ApplicationShould.swift; sourceTree = "<group>"; };
@@ -5442,7 +5444,6 @@
 		CAA4BA6D21EFCFE400DE2C88 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				CAA4BA6F21EFD03900DE2C88 /* Events */,
 				CA1F7D6220CB83A100FB87F5 /* ConcreteAnnouncementsService.swift */,
 				CA281B631F1FE62D0002A4E5 /* ConcreteAuthenticationService.swift */,
 				CA2761D120E03B29000E52AC /* ConcreteCollectThemAllService.swift */,
@@ -5450,11 +5451,13 @@
 				CA36A4A720D984E400EE6537 /* ConcreteDealersService.swift */,
 				CA680F7920CD7AD7006ACD3D /* ConcreteKnowledgeService.swift */,
 				CA6A8DB720E2DC62007536CD /* ConcreteMapsService.swift */,
+				CA0290FD21F4B3C80007F350 /* ConcreteNotificationService.swift */,
 				CAF3F63A2016797400374B4C /* ConcretePrivateMessagesService.swift */,
 				CAA4BA6B21EE851700DE2C88 /* ConcreteRefreshService.swift */,
 				78D7EEBC1F196B62005372A9 /* ConcreteSession.swift */,
 				CAA4BA6821EE80C500DE2C88 /* ConcreteSessionStateService.swift */,
 				CADABF0121177B3B0023C3B6 /* DataStoreChangedConsumer.swift */,
+				CAA4BA6F21EFD03900DE2C88 /* Events */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -8454,6 +8457,7 @@
 				CAEA0DDB216BDE2300B0C7A6 /* ImageModelEntity+Adaptation.swift in Sources */,
 				CAEA0D8B216BDD9500B0C7A6 /* DataStoreChangedConsumer.swift in Sources */,
 				CAEA0DA4216BDE2300B0C7A6 /* DataStore.swift in Sources */,
+				CA0290FE21F4B3C80007F350 /* ConcreteNotificationService.swift in Sources */,
 				CAEA0DDD216BDE2300B0C7A6 /* KnowledgeGroupEntity+Adaptation.swift in Sources */,
 				CAEA0DF4216BDE3100B0C7A6 /* ConferenceDayCharacteristics.swift in Sources */,
 				CAEA0DE7216BDE2300B0C7A6 /* LoggedOut.swift in Sources */,

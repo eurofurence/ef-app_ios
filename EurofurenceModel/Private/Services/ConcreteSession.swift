@@ -10,7 +10,6 @@ import EventBus
 import Foundation
 
 class ConcreteSession: EurofurenceSession,
-                       NotificationService,
                        ContentLinksService {
 
     private let eventBus = EventBus()
@@ -31,6 +30,7 @@ class ConcreteSession: EurofurenceSession,
     private let urlHandler: URLHandler
     private let collectThemAllService: ConcreteCollectThemAllService
     private let mapsService: ConcreteMapsService
+    private let notificationService: ConcreteNotificationService
 
     init(userPreferences: UserPreferences,
          dataStore: DataStore,
@@ -133,11 +133,16 @@ class ConcreteSession: EurofurenceSession,
                                                 knowledgeService: knowledgeService,
                                                 privateMessagesController: privateMessagesService)
 
+        notificationService = ConcreteNotificationService(eventBus: eventBus,
+                                                          eventsService: eventsService,
+                                                          announcementsService: announcementsService,
+                                                          refreshService: refreshService)
+
         privateMessagesService.refreshMessages()
     }
 
     lazy var services: Services = {
-        return Services(notifications: self,
+        return Services(notifications: notificationService,
                         refresh: refreshService,
                         announcements: announcementsService,
                         authentication: authenticationService,
@@ -151,46 +156,6 @@ class ConcreteSession: EurofurenceSession,
                         sessionState: sessionStateService,
                         privateMessages: privateMessagesService)
     }()
-
-    func handleNotification(payload: [String: String], completionHandler: @escaping (NotificationContent) -> Void) {
-        if payload[ApplicationNotificationKey.notificationContentKind.rawValue] == ApplicationNotificationContentKind.event.rawValue {
-            guard let identifier = payload[ApplicationNotificationKey.notificationContentIdentifier.rawValue] else {
-                completionHandler(.unknown)
-                return
-            }
-
-            guard eventsService.eventModels.contains(where: { $0.identifier.rawValue == identifier }) else {
-                completionHandler(.unknown)
-                return
-            }
-
-            let action = NotificationContent.event(EventIdentifier(identifier))
-            completionHandler(action)
-
-            return
-        }
-
-        refreshService.refreshLocalStore { (error) in
-            if error == nil {
-                if let announcementIdentifier = payload["announcement_id"] {
-                    let identifier = AnnouncementIdentifier(announcementIdentifier)
-                    if self.announcementsService.models.contains(where: { $0.identifier == identifier }) {
-                        completionHandler(.announcement(identifier))
-                    } else {
-                        completionHandler(.invalidatedAnnouncement)
-                    }
-                } else {
-                    completionHandler(.successfulSync)
-                }
-            } else {
-                completionHandler(.failedSync)
-            }
-        }
-    }
-
-    func storeRemoteNotificationsToken(_ deviceToken: Data) {
-        eventBus.post(DomainEvent.RemoteNotificationTokenAvailable(deviceToken: deviceToken))
-    }
 
     func setExternalContentHandler(_ externalContentHandler: ExternalContentHandler) {
         urlHandler.externalContentHandler = externalContentHandler
