@@ -24,18 +24,27 @@ public struct ModelCharacteristics: Equatable {
 
     }
 
-    public var knowledgeGroups: ModelCharacteristics.Update<KnowledgeGroupCharacteristics>
-    public var knowledgeEntries: ModelCharacteristics.Update<KnowledgeEntryCharacteristics>
-    public var announcements: ModelCharacteristics.Update<AnnouncementCharacteristics>
-    public var events: ModelCharacteristics.Update<EventCharacteristics>
-    public var rooms: ModelCharacteristics.Update<RoomCharacteristics>
-    public var tracks: ModelCharacteristics.Update<TrackCharacteristics>
-    public var conferenceDays: ModelCharacteristics.Update<ConferenceDayCharacteristics>
-    public var dealers: ModelCharacteristics.Update<DealerCharacteristics>
-    public var maps: ModelCharacteristics.Update<MapCharacteristics>
-    public var images: ModelCharacteristics.Update<ImageCharacteristics>
+    public var knowledgeGroups: Update<KnowledgeGroupCharacteristics>
+    public var knowledgeEntries: Update<KnowledgeEntryCharacteristics>
+    public var announcements: Update<AnnouncementCharacteristics>
+    public var events: Update<EventCharacteristics>
+    public var rooms: Update<RoomCharacteristics>
+    public var tracks: Update<TrackCharacteristics>
+    public var conferenceDays: Update<ConferenceDayCharacteristics>
+    public var dealers: Update<DealerCharacteristics>
+    public var maps: Update<MapCharacteristics>
+    public var images: Update<ImageCharacteristics>
 
-    public init(knowledgeGroups: ModelCharacteristics.Update<KnowledgeGroupCharacteristics>, knowledgeEntries: ModelCharacteristics.Update<KnowledgeEntryCharacteristics>, announcements: ModelCharacteristics.Update<AnnouncementCharacteristics>, events: ModelCharacteristics.Update<EventCharacteristics>, rooms: ModelCharacteristics.Update<RoomCharacteristics>, tracks: ModelCharacteristics.Update<TrackCharacteristics>, conferenceDays: ModelCharacteristics.Update<ConferenceDayCharacteristics>, dealers: ModelCharacteristics.Update<DealerCharacteristics>, maps: ModelCharacteristics.Update<MapCharacteristics>, images: ModelCharacteristics.Update<ImageCharacteristics>) {
+    public init(knowledgeGroups: Update<KnowledgeGroupCharacteristics>,
+                knowledgeEntries: Update<KnowledgeEntryCharacteristics>,
+                announcements: Update<AnnouncementCharacteristics>,
+                events: Update<EventCharacteristics>,
+                rooms: Update<RoomCharacteristics>,
+                tracks: Update<TrackCharacteristics>,
+                conferenceDays: Update<ConferenceDayCharacteristics>,
+                dealers: Update<DealerCharacteristics>,
+                maps: Update<MapCharacteristics>,
+                images: Update<ImageCharacteristics>) {
         self.knowledgeGroups = knowledgeGroups
         self.knowledgeEntries = knowledgeEntries
         self.announcements = announcements
