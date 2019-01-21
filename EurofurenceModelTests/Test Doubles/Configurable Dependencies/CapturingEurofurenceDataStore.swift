@@ -11,55 +11,55 @@ import Foundation
 
 class CapturingEurofurenceDataStore: DataStore {
 
-    func getSavedAnnouncements() -> [AnnouncementCharacteristics]? {
+    func fetchAnnouncements() -> [AnnouncementCharacteristics]? {
         return transaction.persistedAnnouncements
     }
 
-    func getLastRefreshDate() -> Date? {
+    func fetchLastRefreshDate() -> Date? {
         return transaction.persistedLastRefreshDate
     }
 
-    func getSavedKnowledgeGroups() -> [KnowledgeGroupCharacteristics]? {
+    func fetchKnowledgeGroups() -> [KnowledgeGroupCharacteristics]? {
         return transaction.persistedKnowledgeGroups
     }
 
-    func getSavedKnowledgeEntries() -> [KnowledgeEntryCharacteristics]? {
+    func fetchKnowledgeEntries() -> [KnowledgeEntryCharacteristics]? {
         return transaction.persistedKnowledgeEntries
     }
 
-    func getSavedRooms() -> [RoomCharacteristics]? {
+    func fetchRooms() -> [RoomCharacteristics]? {
         return transaction.persistedRooms
     }
 
-    func getSavedTracks() -> [TrackCharacteristics]? {
+    func fetchTracks() -> [TrackCharacteristics]? {
         return transaction.persistedTracks
     }
 
-    func getSavedConferenceDays() -> [ConferenceDayCharacteristics]? {
+    func fetchConferenceDays() -> [ConferenceDayCharacteristics]? {
         return transaction.persistedConferenceDays
     }
 
-    func getSavedEvents() -> [EventCharacteristics]? {
+    func fetchEvents() -> [EventCharacteristics]? {
         return transaction.persistedEvents
     }
 
-    func getSavedFavouriteEventIdentifiers() -> [EventIdentifier]? {
+    func fetchFavouriteEventIdentifiers() -> [EventIdentifier]? {
         return transaction.persistedFavouriteEvents
     }
 
-    func getSavedDealers() -> [DealerCharacteristics]? {
+    func fetchDealers() -> [DealerCharacteristics]? {
         return transaction.persistedDealers
     }
 
-    func getSavedMaps() -> [MapCharacteristics]? {
+    func fetchMaps() -> [MapCharacteristics]? {
         return transaction.persistedMaps
     }
 
-    func getSavedReadAnnouncementIdentifiers() -> [AnnouncementIdentifier]? {
+    func fetchReadAnnouncementIdentifiers() -> [AnnouncementIdentifier]? {
         return transaction.persistedReadAnnouncementIdentifiers
     }
 
-    func getSavedImages() -> [ImageCharacteristics]? {
+    func fetchImages() -> [ImageCharacteristics]? {
         return transaction.persistedImages
     }
 

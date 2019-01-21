@@ -12,19 +12,19 @@ public protocol DataStore {
 
     func performTransaction(_ block: @escaping (DataStoreTransaction) -> Void)
 
-    func getLastRefreshDate() -> Date?
-    func getSavedKnowledgeGroups() -> [KnowledgeGroupCharacteristics]?
-    func getSavedKnowledgeEntries() -> [KnowledgeEntryCharacteristics]?
-    func getSavedRooms() -> [RoomCharacteristics]?
-    func getSavedTracks() -> [TrackCharacteristics]?
-    func getSavedEvents() -> [EventCharacteristics]?
-    func getSavedAnnouncements() -> [AnnouncementCharacteristics]?
-    func getSavedConferenceDays() -> [ConferenceDayCharacteristics]?
-    func getSavedFavouriteEventIdentifiers() -> [EventIdentifier]?
-    func getSavedDealers() -> [DealerCharacteristics]?
-    func getSavedMaps() -> [MapCharacteristics]?
-    func getSavedReadAnnouncementIdentifiers() -> [AnnouncementIdentifier]?
-    func getSavedImages() -> [ImageCharacteristics]?
+    func fetchLastRefreshDate() -> Date?
+    func fetchKnowledgeGroups() -> [KnowledgeGroupCharacteristics]?
+    func fetchKnowledgeEntries() -> [KnowledgeEntryCharacteristics]?
+    func fetchRooms() -> [RoomCharacteristics]?
+    func fetchTracks() -> [TrackCharacteristics]?
+    func fetchEvents() -> [EventCharacteristics]?
+    func fetchAnnouncements() -> [AnnouncementCharacteristics]?
+    func fetchConferenceDays() -> [ConferenceDayCharacteristics]?
+    func fetchFavouriteEventIdentifiers() -> [EventIdentifier]?
+    func fetchDealers() -> [DealerCharacteristics]?
+    func fetchMaps() -> [MapCharacteristics]?
+    func fetchReadAnnouncementIdentifiers() -> [AnnouncementIdentifier]?
+    func fetchImages() -> [ImageCharacteristics]?
 
 }
 

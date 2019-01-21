@@ -49,7 +49,7 @@ class ConcreteKnowledgeService: KnowledgeService {
 
     func fetchImagesForKnowledgeEntry(identifier: KnowledgeEntryIdentifier, completionHandler: @escaping ([Data]) -> Void) {
         let imageIdentifiers: [String] = {
-            guard let entries = dataStore.getSavedKnowledgeEntries() else { return [] }
+            guard let entries = dataStore.fetchKnowledgeEntries() else { return [] }
             guard let entry = entries.first(where: { $0.identifier == identifier.rawValue }) else { return [] }
 
             return entry.imageIdentifiers
@@ -62,8 +62,8 @@ class ConcreteKnowledgeService: KnowledgeService {
     // MARK: Private
 
     private func reloadKnowledgeBaseFromDataStore() {
-        guard let groups = dataStore.getSavedKnowledgeGroups(),
-              let entries = dataStore.getSavedKnowledgeEntries() else {
+        guard let groups = dataStore.fetchKnowledgeGroups(),
+              let entries = dataStore.fetchKnowledgeEntries() else {
                 return
         }
 

@@ -45,7 +45,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
         }
 
         recreateStore()
-        let actual = store.getLastRefreshDate()
+        let actual = store.fetchLastRefreshDate()
 
         XCTAssertEqual(expected, actual)
     }
@@ -65,7 +65,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
         }
 
         recreateStore()
-        let actual = store.getLastRefreshDate()
+        let actual = store.fetchLastRefreshDate()
 
         XCTAssertEqual(expected, actual)
     }
@@ -77,7 +77,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
         }
 
         recreateStore()
-        let actual = store.getSavedKnowledgeGroups()
+        let actual = store.fetchKnowledgeGroups()
 
         assertThat(expected, isEqualTo: actual)
     }
@@ -93,7 +93,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
             transaction.saveKnowledgeGroups([group])
         }
 
-        let savedGroups = store.getSavedKnowledgeGroups()
+        let savedGroups = store.fetchKnowledgeGroups()
 
         XCTAssertEqual(1, savedGroups?.count)
         XCTAssertEqual(group.groupName, savedGroups?.first?.groupName)
@@ -106,7 +106,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
         }
 
         recreateStore()
-        let actual = store.getSavedKnowledgeEntries()
+        let actual = store.fetchKnowledgeEntries()
 
         assertThat(expected, isEqualTo: actual?.sorted())
     }
@@ -122,7 +122,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
             transaction.saveKnowledgeEntries([entry])
         }
 
-        let savedEntries = store.getSavedKnowledgeEntries()
+        let savedEntries = store.fetchKnowledgeEntries()
 
         XCTAssertEqual(1, savedEntries?.count)
         XCTAssertEqual(entry.title, savedEntries?.first?.title)
@@ -166,7 +166,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
             transaction.saveKnowledgeEntries([entry])
         }
 
-        if let entry = store.getSavedKnowledgeEntries()?.first {
+        if let entry = store.fetchKnowledgeEntries()?.first {
             XCTAssertFalse(entry.links.contains(deletedLink.element),
                            "Link deleted from remote model not deleted from local data store")
         } else {
@@ -186,7 +186,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
             transaction.saveMaps([map])
         }
 
-        if let map = store.getSavedMaps()?.first {
+        if let map = store.fetchMaps()?.first {
             XCTAssertFalse(map.entries.contains(deletedMapEntry.element),
                            "Map entry deleted from remote model not deleted from local data store")
         } else {
@@ -201,7 +201,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
         }
 
         recreateStore()
-        let actual = store.getSavedEvents()
+        let actual = store.fetchEvents()
 
         assertThat(expected, isEqualTo: actual)
     }
@@ -217,7 +217,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
             transaction.saveEvents([event])
         }
 
-        let savedEntries = store.getSavedEvents()
+        let savedEntries = store.fetchEvents()
 
         XCTAssertEqual(1, savedEntries?.count)
         XCTAssertEqual(event.title, savedEntries?.first?.title)
@@ -230,7 +230,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
         }
 
         recreateStore()
-        let actual = store.getSavedRooms()
+        let actual = store.fetchRooms()
 
         assertThat(expected, isEqualTo: actual)
     }
@@ -246,7 +246,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
             transaction.saveRooms([room])
         }
 
-        let savedRooms = store.getSavedRooms()
+        let savedRooms = store.fetchRooms()
 
         XCTAssertEqual(1, savedRooms?.count)
         XCTAssertEqual(room.name, savedRooms?.first?.name)
@@ -259,7 +259,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
         }
 
         recreateStore()
-        let actual = store.getSavedTracks()
+        let actual = store.fetchTracks()
 
         assertThat(expected, isEqualTo: actual)
     }
@@ -275,7 +275,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
             transaction.saveTracks([track])
         }
 
-        let savedTracks = store.getSavedTracks()
+        let savedTracks = store.fetchTracks()
 
         XCTAssertEqual(1, savedTracks?.count)
         XCTAssertEqual(track.name, savedTracks?.first?.name)
@@ -288,7 +288,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
         }
 
         recreateStore()
-        let actual = store.getSavedAnnouncements()
+        let actual = store.fetchAnnouncements()
 
         assertThat(expected, isEqualTo: actual)
     }
@@ -304,7 +304,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
             transaction.saveAnnouncements([announcement])
         }
 
-        let savedAnnouncements = store.getSavedAnnouncements()
+        let savedAnnouncements = store.fetchAnnouncements()
 
         XCTAssertEqual(1, savedAnnouncements?.count)
         XCTAssertEqual(announcement.title, savedAnnouncements?.first?.title)
@@ -317,7 +317,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
         }
 
         recreateStore()
-        let actual = store.getSavedFavouriteEventIdentifiers()
+        let actual = store.fetchFavouriteEventIdentifiers()
 
         assertThat(exected, isEqualTo: actual)
     }
@@ -333,7 +333,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
         }
 
         recreateStore()
-        let actual = store.getSavedFavouriteEventIdentifiers()
+        let actual = store.fetchFavouriteEventIdentifiers()
 
         XCTAssertEqual(expected.count, actual?.count)
     }
@@ -348,7 +348,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
             transaction.deleteFavouriteEventIdentifier(identifier)
         }
 
-        let actual = store.getSavedFavouriteEventIdentifiers()
+        let actual = store.fetchFavouriteEventIdentifiers()
 
         assertThat([], isEqualTo: actual)
     }
@@ -360,7 +360,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
         }
 
         recreateStore()
-        let actual = store.getSavedConferenceDays()
+        let actual = store.fetchConferenceDays()
 
         assertThat(conferenceDays, isEqualTo: actual)
     }
@@ -376,7 +376,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
             transaction.saveConferenceDays([conferenceDay])
         }
 
-        let savedConferenceDays = store.getSavedConferenceDays()
+        let savedConferenceDays = store.fetchConferenceDays()
 
         XCTAssertEqual(1, savedConferenceDays?.count)
         XCTAssertEqual(conferenceDay.date, savedConferenceDays?.first?.date)
@@ -389,7 +389,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
         }
 
         recreateStore()
-        let actual = store.getSavedDealers()
+        let actual = store.fetchDealers()
 
         assertThat(dealers, isEqualTo: actual)
     }
@@ -405,7 +405,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
             transaction.saveDealers([dealer])
         }
 
-        let savedDealers = store.getSavedDealers()
+        let savedDealers = store.fetchDealers()
 
         XCTAssertEqual(1, savedDealers?.count)
         XCTAssertEqual(dealer.attendeeNickname, savedDealers?.first?.attendeeNickname)
@@ -418,7 +418,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
         }
 
         recreateStore()
-        let actual = store.getSavedMaps()
+        let actual = store.fetchMaps()
 
         assertThat(maps, isEqualTo: actual)
     }
@@ -434,7 +434,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
             transaction.saveMaps([map])
         }
 
-        let savedMaps = store.getSavedMaps()
+        let savedMaps = store.fetchMaps()
 
         XCTAssertEqual(1, savedMaps?.count)
         XCTAssertEqual(map.mapDescription, savedMaps?.first?.mapDescription)
@@ -447,7 +447,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
         }
 
         recreateStore()
-        let actual = store.getSavedReadAnnouncementIdentifiers()
+        let actual = store.fetchReadAnnouncementIdentifiers()
 
         assertThat(expected, isEqualTo: actual)
     }
@@ -462,7 +462,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
             transaction.saveReadAnnouncements(expected)
         }
 
-        let actual = store.getSavedReadAnnouncementIdentifiers()
+        let actual = store.fetchReadAnnouncementIdentifiers()
 
         XCTAssertEqual(expected.count, actual?.count)
     }
@@ -473,7 +473,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
                        elementIdentifier: element.identifier,
                        savingBlock: { $0.saveAnnouncements },
                        deletionBlock: { $0.deleteAnnouncement },
-                       loadingBlock: { $0.getSavedAnnouncements })
+                       loadingBlock: { $0.fetchAnnouncements })
     }
 
     func testDeleteKnowledgeGroups() {
@@ -482,7 +482,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
                        elementIdentifier: element.identifier,
                        savingBlock: { $0.saveKnowledgeGroups },
                        deletionBlock: { $0.deleteKnowledgeGroup },
-                       loadingBlock: { $0.getSavedKnowledgeGroups })
+                       loadingBlock: { $0.fetchKnowledgeGroups })
     }
 
     func testDeleteKnowledgeEntries() {
@@ -491,7 +491,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
                        elementIdentifier: element.identifier,
                        savingBlock: { $0.saveKnowledgeEntries },
                        deletionBlock: { $0.deleteKnowledgeEntry },
-                       loadingBlock: { $0.getSavedKnowledgeEntries })
+                       loadingBlock: { $0.fetchKnowledgeEntries })
     }
 
     func testDeleteEvents() {
@@ -500,7 +500,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
                        elementIdentifier: element.identifier,
                        savingBlock: { $0.saveEvents },
                        deletionBlock: { $0.deleteEvent },
-                       loadingBlock: { $0.getSavedEvents })
+                       loadingBlock: { $0.fetchEvents })
     }
 
     func testDeleteTracks() {
@@ -509,7 +509,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
                        elementIdentifier: element.trackIdentifier,
                        savingBlock: { $0.saveTracks },
                        deletionBlock: { $0.deleteTrack },
-                       loadingBlock: { $0.getSavedTracks })
+                       loadingBlock: { $0.fetchTracks })
     }
 
     func testDeleteRooms() {
@@ -518,7 +518,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
                        elementIdentifier: element.roomIdentifier,
                        savingBlock: { $0.saveRooms },
                        deletionBlock: { $0.deleteRoom },
-                       loadingBlock: { $0.getSavedRooms })
+                       loadingBlock: { $0.fetchRooms })
     }
 
     func testDeleteConferenceDays() {
@@ -527,7 +527,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
                        elementIdentifier: element.identifier,
                        savingBlock: { $0.saveConferenceDays },
                        deletionBlock: { $0.deleteConferenceDay },
-                       loadingBlock: { $0.getSavedConferenceDays })
+                       loadingBlock: { $0.fetchConferenceDays })
     }
 
     func testDeleteDealers() {
@@ -536,7 +536,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
                        elementIdentifier: element.identifier,
                        savingBlock: { $0.saveDealers },
                        deletionBlock: { $0.deleteDealer },
-                       loadingBlock: { $0.getSavedDealers })
+                       loadingBlock: { $0.fetchDealers })
     }
 
     func testDeleteMaps() {
@@ -545,7 +545,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
                        elementIdentifier: element.identifier,
                        savingBlock: { $0.saveMaps },
                        deletionBlock: { $0.deleteMap },
-                       loadingBlock: { $0.getSavedMaps })
+                       loadingBlock: { $0.fetchMaps })
     }
 
     func testSaveImages() {
@@ -555,7 +555,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
         }
 
         recreateStore()
-        let actual = store.getSavedImages()
+        let actual = store.fetchImages()
 
         assertThat(expected, isEqualTo: actual)
     }
@@ -571,7 +571,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
             transaction.saveImages([image])
         }
 
-        let savedImages = store.getSavedImages()
+        let savedImages = store.fetchImages()
 
         XCTAssertEqual(1, savedImages?.count)
         XCTAssertEqual(image.internalReference, savedImages?.first?.internalReference)
@@ -583,7 +583,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
                        elementIdentifier: element.identifier,
                        savingBlock: { $0.saveImages },
                        deletionBlock: { $0.deleteImage },
-                       loadingBlock: { $0.getSavedImages })
+                       loadingBlock: { $0.fetchImages })
     }
 
     private func verifyDeletion<T>(for element: T,

@@ -33,7 +33,7 @@ class ConcreteAnnouncementsService: AnnouncementsService {
         eventBus.subscribe(consumer: DataStoreChangedConsumer(handler: reloadAnnouncementsFromStore))
 
         reloadAnnouncementsFromStore()
-        readAnnouncementIdentifiers = dataStore.getSavedReadAnnouncementIdentifiers().or([])
+        readAnnouncementIdentifiers = dataStore.fetchReadAnnouncementIdentifiers().or([])
     }
 
     // MARK: Functions
@@ -56,7 +56,7 @@ class ConcreteAnnouncementsService: AnnouncementsService {
     }
 
     func fetchAnnouncementImage(identifier: AnnouncementIdentifier, completionHandler: @escaping (Data?) -> Void) {
-        let announcement = dataStore.getSavedAnnouncements()?.first(where: { $0.identifier == identifier.rawValue })
+        let announcement = dataStore.fetchAnnouncements()?.first(where: { $0.identifier == identifier.rawValue })
         let imageData: Data? = announcement.let { (announcement) in
             let entity: ImageEntity? = announcement.imageIdentifier.let(imageRepository.loadImage)
             return entity?.pngImageData
@@ -68,7 +68,7 @@ class ConcreteAnnouncementsService: AnnouncementsService {
     // MARK: Private
 
     private func reloadAnnouncementsFromStore() {
-        guard let announcements = dataStore.getSavedAnnouncements() else { return }
+        guard let announcements = dataStore.fetchAnnouncements() else { return }
         models = announcements.sorted(by: isLastEditTimeAscending).map(Announcement.init)
     }
 

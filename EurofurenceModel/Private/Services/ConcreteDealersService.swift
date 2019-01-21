@@ -104,7 +104,7 @@ class ConcreteDealersService: DealersService {
     }
 
     private func fetchMapData(for identifier: DealerIdentifier) -> (map: MapCharacteristics, entry: MapCharacteristics.Entry)? {
-        guard let maps = dataStore.getSavedMaps() else { return nil }
+        guard let maps = dataStore.fetchMaps() else { return nil }
 
         for map in maps {
             guard let entry = map.entries.first(where: { (entry) -> Bool in
@@ -189,7 +189,7 @@ class ConcreteDealersService: DealersService {
     }
 
     fileprivate func reloadDealersFromDataStore() {
-        guard let dealers = dataStore.getSavedDealers() else { return }
+        guard let dealers = dataStore.fetchDealers() else { return }
 
         models = dealers
         dealerModels = models.map { (dealer) -> Dealer in

@@ -159,10 +159,10 @@ class ConcreteEventsService: ClockDelegate, EventsService {
     }
 
     private func reconstituteEventsFromDataStore() {
-        let events = dataStore.getSavedEvents()
-        let rooms = dataStore.getSavedRooms()
-        let tracks = dataStore.getSavedTracks()
-        let conferenceDays = dataStore.getSavedConferenceDays()
+        let events = dataStore.fetchEvents()
+        let rooms = dataStore.fetchRooms()
+        let tracks = dataStore.fetchTracks()
+        let conferenceDays = dataStore.fetchConferenceDays()
 
         if let events = events, let rooms = rooms, let tracks = tracks, let conferenceDays = conferenceDays {
             self.days = conferenceDays.reduce([], { (result, next) in
@@ -221,7 +221,7 @@ class ConcreteEventsService: ClockDelegate, EventsService {
     }
 
     private func reconstituteFavouritesFromDataStore() {
-        favouriteEventIdentifiers = dataStore.getSavedFavouriteEventIdentifiers().or([])
+        favouriteEventIdentifiers = dataStore.fetchFavouriteEventIdentifiers().or([])
     }
 
     private func makeDays(from models: [ConferenceDayCharacteristics]) -> [Day] {

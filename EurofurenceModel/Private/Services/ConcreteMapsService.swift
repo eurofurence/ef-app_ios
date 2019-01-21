@@ -100,9 +100,9 @@ class ConcreteMapsService: MapsService {
     }
 
     private func reloadMapsFromDataStore() {
-        guard let maps = dataStore.getSavedMaps(),
-              let rooms = dataStore.getSavedRooms(),
-              let dealers = dataStore.getSavedDealers() else {
+        guard let maps = dataStore.fetchMaps(),
+              let rooms = dataStore.fetchRooms(),
+              let dealers = dataStore.fetchDealers() else {
                 return
         }
 

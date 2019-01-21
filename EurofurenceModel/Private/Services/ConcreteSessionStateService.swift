@@ -17,7 +17,7 @@ struct ConcreteSessionStateService: SessionStateService {
     func determineSessionState(completionHandler: @escaping (EurofurenceSessionState) -> Void) {
         let shouldPerformForceRefresh: Bool = forceRefreshRequired.isForceRefreshRequired
         let state: EurofurenceSessionState = {
-            guard dataStore.getLastRefreshDate() != nil else { return .uninitialized }
+            guard dataStore.fetchLastRefreshDate() != nil else { return .uninitialized }
 
             let dataStoreStale = shouldPerformForceRefresh || userPreferences.refreshStoreOnLaunch
             return dataStoreStale ? .stale : .initialized

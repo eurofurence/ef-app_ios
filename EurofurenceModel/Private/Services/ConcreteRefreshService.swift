@@ -62,7 +62,7 @@ class ConcreteRefreshService: RefreshService {
 
     @discardableResult
     func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress {
-        return performSync(lastSyncTime: dataStore.getLastRefreshDate(), completionHandler: completionHandler)
+        return performSync(lastSyncTime: dataStore.fetchLastRefreshDate(), completionHandler: completionHandler)
     }
 
     private func performSync(lastSyncTime: Date?, completionHandler: @escaping (Error?) -> Void) -> Progress {
@@ -79,13 +79,13 @@ class ConcreteRefreshService: RefreshService {
         progress.totalUnitCount = -1
         progress.completedUnitCount = -1
 
-        let existingAnnouncements = dataStore.getSavedAnnouncements().or([])
-        let existingKnowledgeGroups = dataStore.getSavedKnowledgeGroups().or([])
-        let existingKnowledgeEntries = dataStore.getSavedKnowledgeEntries().or([])
-        let existingEvents = dataStore.getSavedEvents().or([])
-        let existingImages = dataStore.getSavedImages().or([])
-        let existingDealers = dataStore.getSavedDealers().or([])
-        let existingMaps = dataStore.getSavedMaps().or([])
+        let existingAnnouncements = dataStore.fetchAnnouncements().or([])
+        let existingKnowledgeGroups = dataStore.fetchKnowledgeGroups().or([])
+        let existingKnowledgeEntries = dataStore.fetchKnowledgeEntries().or([])
+        let existingEvents = dataStore.fetchEvents().or([])
+        let existingImages = dataStore.fetchImages().or([])
+        let existingDealers = dataStore.fetchDealers().or([])
+        let existingMaps = dataStore.fetchMaps().or([])
         syncAPI.fetchLatestData(lastSyncTime: lastSyncTime) { (response) in
             guard let response = response else {
                 finishLongRunningTask()

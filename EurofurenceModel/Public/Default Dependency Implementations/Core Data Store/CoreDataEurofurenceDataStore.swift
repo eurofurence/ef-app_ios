@@ -55,15 +55,15 @@ public struct CoreDataEurofurenceDataStore: DataStore {
         }
     }
 
-    public func getSavedKnowledgeGroups() -> [KnowledgeGroupCharacteristics]? {
+    public func fetchKnowledgeGroups() -> [KnowledgeGroupCharacteristics]? {
         return getModels(fetchRequest: KnowledgeGroupEntity.fetchRequest())
     }
 
-    public func getSavedKnowledgeEntries() -> [KnowledgeEntryCharacteristics]? {
+    public func fetchKnowledgeEntries() -> [KnowledgeEntryCharacteristics]? {
         return getModels(fetchRequest: KnowledgeEntryEntity.fetchRequest())
     }
 
-    public func getLastRefreshDate() -> Date? {
+    public func fetchLastRefreshDate() -> Date? {
         var lastRefreshDate: Date?
         let context = container.viewContext
         context.performAndWait {
@@ -82,43 +82,43 @@ public struct CoreDataEurofurenceDataStore: DataStore {
         return lastRefreshDate
     }
 
-    public func getSavedRooms() -> [RoomCharacteristics]? {
+    public func fetchRooms() -> [RoomCharacteristics]? {
         return getModels(fetchRequest: RoomEntity.fetchRequest())
     }
 
-    public func getSavedTracks() -> [TrackCharacteristics]? {
+    public func fetchTracks() -> [TrackCharacteristics]? {
         return getModels(fetchRequest: TrackEntity.fetchRequest())
     }
 
-    public func getSavedEvents() -> [EventCharacteristics]? {
+    public func fetchEvents() -> [EventCharacteristics]? {
         return getModels(fetchRequest: EventEntity.fetchRequest())
     }
 
-    public func getSavedAnnouncements() -> [AnnouncementCharacteristics]? {
+    public func fetchAnnouncements() -> [AnnouncementCharacteristics]? {
         return getModels(fetchRequest: AnnouncementEntity.fetchRequest())
     }
 
-    public func getSavedConferenceDays() -> [ConferenceDayCharacteristics]? {
+    public func fetchConferenceDays() -> [ConferenceDayCharacteristics]? {
         return getModels(fetchRequest: ConferenceDayEntity.fetchRequest())
     }
 
-    public func getSavedFavouriteEventIdentifiers() -> [EventIdentifier]? {
+    public func fetchFavouriteEventIdentifiers() -> [EventIdentifier]? {
         return getModels(fetchRequest: FavouriteEventEntity.fetchRequest())
     }
 
-    public func getSavedDealers() -> [DealerCharacteristics]? {
+    public func fetchDealers() -> [DealerCharacteristics]? {
         return getModels(fetchRequest: DealerEntity.fetchRequest())
     }
 
-    public func getSavedMaps() -> [MapCharacteristics]? {
+    public func fetchMaps() -> [MapCharacteristics]? {
         return getModels(fetchRequest: MapEntity.fetchRequest())
     }
 
-    public func getSavedReadAnnouncementIdentifiers() -> [AnnouncementIdentifier]? {
+    public func fetchReadAnnouncementIdentifiers() -> [AnnouncementIdentifier]? {
         return getModels(fetchRequest: ReadAnnouncementEntity.fetchRequest())
     }
 
-    public func getSavedImages() -> [ImageCharacteristics]? {
+    public func fetchImages() -> [ImageCharacteristics]? {
         return getModels(fetchRequest: ImageModelEntity.fetchRequest())
     }
 
