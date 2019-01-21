@@ -97,40 +97,44 @@ extension CapturingEurofurenceDataStore {
         }
     }
 
+    private func verifySaved<T>(expected: [T], actual: [T]?) -> Bool where T: Equatable {
+        return (actual?.contains(elementsFrom: expected)).or(false)
+    }
+
     func didSave(_ knowledgeGroups: [KnowledgeGroupCharacteristics]) -> Bool {
-        return transaction.persistedKnowledgeGroups.contains(elementsFrom: knowledgeGroups)
+        return verifySaved(expected: knowledgeGroups, actual: fetchKnowledgeGroups())
     }
 
     func didSave(_ knowledgeEntries: [KnowledgeEntryCharacteristics]) -> Bool {
-        return transaction.persistedKnowledgeEntries.contains(elementsFrom: knowledgeEntries)
+        return verifySaved(expected: knowledgeEntries, actual: fetchKnowledgeEntries())
     }
 
     func didSave(_ announcements: [AnnouncementCharacteristics]) -> Bool {
-        return transaction.persistedAnnouncements.contains(elementsFrom: announcements)
+        return verifySaved(expected: announcements, actual: fetchAnnouncements())
     }
 
     func didSave(_ events: [EventCharacteristics]) -> Bool {
-        return transaction.persistedEvents.contains(elementsFrom: events)
+        return verifySaved(expected: events, actual: fetchEvents())
     }
 
-    func didSave(_ events: [RoomCharacteristics]) -> Bool {
-        return transaction.persistedRooms.contains(elementsFrom: events)
+    func didSave(_ rooms: [RoomCharacteristics]) -> Bool {
+        return verifySaved(expected: rooms, actual: fetchRooms())
     }
 
     func didSave(_ tracks: [TrackCharacteristics]) -> Bool {
-        return transaction.persistedTracks.contains(elementsFrom: tracks)
+        return verifySaved(expected: tracks, actual: fetchTracks())
     }
 
     func didSaveLastRefreshTime(_ lastRefreshTime: Date) -> Bool {
-        return lastRefreshTime == transaction.persistedLastRefreshDate
+        return lastRefreshTime == fetchLastRefreshDate()
     }
 
     func didFavouriteEvent(_ identifier: EventIdentifier) -> Bool {
-        return transaction.persistedFavouriteEvents.contains(identifier)
+        return (fetchFavouriteEventIdentifiers()?.contains(identifier)).or(false)
     }
 
     func didSave(_ dealers: [DealerCharacteristics]) -> Bool {
-        return transaction.persistedDealers.contains(elementsFrom: dealers)
+        return verifySaved(expected: dealers, actual: fetchDealers())
     }
 
     func didDeleteFavouriteEvent(_ identifier: EventIdentifier) -> Bool {
@@ -138,11 +142,11 @@ extension CapturingEurofurenceDataStore {
     }
 
     func didSave(_ conferenceDays: [ConferenceDayCharacteristics]) -> Bool {
-        return transaction.persistedConferenceDays.contains(elementsFrom: conferenceDays)
+        return verifySaved(expected: conferenceDays, actual: fetchConferenceDays())
     }
 
     func didSave(_ maps: [MapCharacteristics]) -> Bool {
-        return transaction.persistedMaps.contains(elementsFrom: maps)
+        return verifySaved(expected: maps, actual: fetchMaps())
     }
 
     func didSaveReadAnnouncement(_ identifier: AnnouncementIdentifier) -> Bool {
@@ -154,7 +158,7 @@ extension CapturingEurofurenceDataStore {
     }
 
     func didSave(_ images: [ImageCharacteristics]) -> Bool {
-        return transaction.persistedImages.contains(elementsFrom: images)
+        return verifySaved(expected: images, actual: fetchImages())
     }
 
 }
