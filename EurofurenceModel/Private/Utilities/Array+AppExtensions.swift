@@ -8,6 +8,14 @@
 
 import Foundation
 
+extension Array {
+
+    static var empty: [Element] {
+        return []
+    }
+
+}
+
 extension Array where Element: Equatable {
 
     func contains(elementsFrom other: [Element]) -> Bool {

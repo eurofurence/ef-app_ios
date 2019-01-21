@@ -79,13 +79,13 @@ class ConcreteRefreshService: RefreshService {
         progress.totalUnitCount = -1
         progress.completedUnitCount = -1
 
-        let existingAnnouncements = dataStore.fetchAnnouncements().defaultingTo([])
-        let existingKnowledgeGroups = dataStore.fetchKnowledgeGroups().defaultingTo([])
-        let existingKnowledgeEntries = dataStore.fetchKnowledgeEntries().defaultingTo([])
-        let existingEvents = dataStore.fetchEvents().defaultingTo([])
-        let existingImages = dataStore.fetchImages().defaultingTo([])
-        let existingDealers = dataStore.fetchDealers().defaultingTo([])
-        let existingMaps = dataStore.fetchMaps().defaultingTo([])
+        let existingAnnouncements = dataStore.fetchAnnouncements().defaultingTo(.empty)
+        let existingKnowledgeGroups = dataStore.fetchKnowledgeGroups().defaultingTo(.empty)
+        let existingKnowledgeEntries = dataStore.fetchKnowledgeEntries().defaultingTo(.empty)
+        let existingEvents = dataStore.fetchEvents().defaultingTo(.empty)
+        let existingImages = dataStore.fetchImages().defaultingTo(.empty)
+        let existingDealers = dataStore.fetchDealers().defaultingTo(.empty)
+        let existingMaps = dataStore.fetchMaps().defaultingTo(.empty)
         syncAPI.fetchLatestData(lastSyncTime: lastSyncTime) { (response) in
             guard let response = response else {
                 finishLongRunningTask()

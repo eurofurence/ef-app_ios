@@ -165,7 +165,7 @@ class ConcreteEventsService: ClockDelegate, EventsService {
         let conferenceDays = dataStore.fetchConferenceDays()
 
         if let events = events, let rooms = rooms, let tracks = tracks, let conferenceDays = conferenceDays {
-            self.days = conferenceDays.reduce([], { (result, next) in
+            self.days = conferenceDays.reduce(.empty, { (result, next) in
                 if result.contains(where: { $0.identifier == next.identifier }) { return result }
                 return result + [next]
             })
@@ -221,7 +221,7 @@ class ConcreteEventsService: ClockDelegate, EventsService {
     }
 
     private func reconstituteFavouritesFromDataStore() {
-        favouriteEventIdentifiers = dataStore.fetchFavouriteEventIdentifiers().defaultingTo([])
+        favouriteEventIdentifiers = dataStore.fetchFavouriteEventIdentifiers().defaultingTo(.empty)
     }
 
     private func makeDays(from models: [ConferenceDayCharacteristics]) -> [Day] {

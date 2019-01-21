@@ -14,7 +14,7 @@ class ConcretePrivateMessagesService: PrivateMessagesService {
     private var userAuthenticationToken: String?
     private var privateMessageObservers = [PrivateMessagesObserver]()
 
-    private var localMessages: [MessageCharacteristics] = []
+    private var localMessages: [MessageCharacteristics] = .empty
 
     init(eventBus: EventBus, privateMessagesAPI: PrivateMessagesAPI) {
         self.privateMessagesAPI = privateMessagesAPI

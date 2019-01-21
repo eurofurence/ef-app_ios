@@ -110,7 +110,7 @@ class InMemoryEventsSearchController: EventsSearchController {
         favouritesFilter.enabled = false
 
         if queryFilter.query.isEmpty {
-            delegate?.searchResultsDidUpdate(to: [])
+            delegate?.searchResultsDidUpdate(to: .empty)
         } else {
             regenerateSearchResults()
         }

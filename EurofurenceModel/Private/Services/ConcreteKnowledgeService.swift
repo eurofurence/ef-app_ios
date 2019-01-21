@@ -40,7 +40,7 @@ class ConcreteKnowledgeService: KnowledgeService {
     }
 
     func fetchKnowledgeEntry(for identifier: KnowledgeEntryIdentifier, completionHandler: @escaping (KnowledgeEntry) -> Void) {
-        models.reduce([], { $0 + $1.entries }).first(where: { $0.identifier == identifier }).let(completionHandler)
+        models.reduce(.empty, { $0 + $1.entries }).first(where: { $0.identifier == identifier }).let(completionHandler)
     }
 
     func fetchKnowledgeGroup(identifier: KnowledgeGroupIdentifier, completionHandler: @escaping (KnowledgeGroup) -> Void) {
@@ -49,8 +49,8 @@ class ConcreteKnowledgeService: KnowledgeService {
 
     func fetchImagesForKnowledgeEntry(identifier: KnowledgeEntryIdentifier, completionHandler: @escaping ([Data]) -> Void) {
         let imageIdentifiers: [String] = {
-            guard let entries = dataStore.fetchKnowledgeEntries() else { return [] }
-            guard let entry = entries.first(where: { $0.identifier == identifier.rawValue }) else { return [] }
+            guard let entries = dataStore.fetchKnowledgeEntries() else { return .empty }
+            guard let entry = entries.first(where: { $0.identifier == identifier.rawValue }) else { return .empty }
 
             return entry.imageIdentifiers
         }()
