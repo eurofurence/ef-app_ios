@@ -5458,7 +5458,6 @@
 				CA0290FD21F4B3C80007F350 /* ConcreteNotificationService.swift */,
 				CAF3F63A2016797400374B4C /* ConcretePrivateMessagesService.swift */,
 				CAA4BA6B21EE851700DE2C88 /* ConcreteRefreshService.swift */,
-				78D7EEBC1F196B62005372A9 /* ConcreteSession.swift */,
 				CAA4BA6821EE80C500DE2C88 /* ConcreteSessionStateService.swift */,
 				CADABF0121177B3B0023C3B6 /* DataStoreChangedConsumer.swift */,
 				CAA4BA6F21EFD03900DE2C88 /* Events */,
@@ -5781,6 +5780,7 @@
 		CACD2E8B21D676FE00BACD91 /* Private */ = {
 			isa = PBXGroup;
 			children = (
+				78D7EEBC1F196B62005372A9 /* ConcreteSession.swift */,
 				CA162E7D20A4B9CD004AFED6 /* EF24StartDateRepository.swift */,
 				CA680F8120CDABB6006ACD3D /* ImageDownloader.swift */,
 				CACF1EC520B6C31000D904B5 /* ImagesCache.swift */,
