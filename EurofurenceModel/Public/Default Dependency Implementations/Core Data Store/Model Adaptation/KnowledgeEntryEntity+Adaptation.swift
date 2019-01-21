@@ -25,7 +25,7 @@ extension KnowledgeEntryEntity: EntityAdapting {
                                  order: Int(order),
                                  text: text!,
                                  links: links.map({ $0.asAdaptedType() }).sorted(),
-                                 imageIdentifiers: imageIdentifiers.or([]))
+                                 imageIdentifiers: imageIdentifiers.defaultingTo([]))
     }
 
     func consumeAttributes(from value: KnowledgeEntryCharacteristics) {

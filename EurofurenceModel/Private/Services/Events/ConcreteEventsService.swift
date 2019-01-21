@@ -221,7 +221,7 @@ class ConcreteEventsService: ClockDelegate, EventsService {
     }
 
     private func reconstituteFavouritesFromDataStore() {
-        favouriteEventIdentifiers = dataStore.fetchFavouriteEventIdentifiers().or([])
+        favouriteEventIdentifiers = dataStore.fetchFavouriteEventIdentifiers().defaultingTo([])
     }
 
     private func makeDays(from models: [ConferenceDayCharacteristics]) -> [Day] {

@@ -98,7 +98,7 @@ extension CapturingEurofurenceDataStore {
     }
 
     private func verifySaved<T>(expected: [T], actual: [T]?) -> Bool where T: Equatable {
-        return (actual?.contains(elementsFrom: expected)).or(false)
+        return (actual?.contains(elementsFrom: expected)).defaultingTo(false)
     }
 
     func didSave(_ knowledgeGroups: [KnowledgeGroupCharacteristics]) -> Bool {
@@ -130,7 +130,7 @@ extension CapturingEurofurenceDataStore {
     }
 
     func didFavouriteEvent(_ identifier: EventIdentifier) -> Bool {
-        return (fetchFavouriteEventIdentifiers()?.contains(identifier)).or(false)
+        return (fetchFavouriteEventIdentifiers()?.contains(identifier)).defaultingTo(false)
     }
 
     func didSave(_ dealers: [DealerCharacteristics]) -> Bool {

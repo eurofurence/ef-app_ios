@@ -15,7 +15,7 @@ public extension Optional {
         if case .some(let value) = self { return try block(value) } else { return nil }
     }
 
-    public func or(_ `default`: @autoclosure () throws -> Wrapped) rethrows -> Wrapped {
+    public func defaultingTo(_ `default`: @autoclosure () throws -> Wrapped) rethrows -> Wrapped {
         switch self {
         case .some(let value):
             return value

@@ -152,7 +152,7 @@ class ApplicationTestBuilder {
             let expectedTrack = response.tracks.changed.first(where: { $0.trackIdentifier == event.trackIdentifier })!
             let expectedPosterGraphic = imageAPI.stubbedImage(for: event.posterImageId)
             let expectedBannerGraphic = imageAPI.stubbedImage(for: event.bannerImageId)
-            let tags = event.tags.or([])
+            let tags = event.tags.defaultingTo([])
 
             return Event(identifier: EventIdentifier(event.identifier),
                           title: event.title,

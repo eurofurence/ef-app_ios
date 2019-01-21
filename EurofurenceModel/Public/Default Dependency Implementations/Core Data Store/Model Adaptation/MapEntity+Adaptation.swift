@@ -42,7 +42,7 @@ extension MapEntryEntity: EntityAdapting {
 
     func asAdaptedType() -> MapCharacteristics.Entry {
         let links = ((self.links as? Set<MapEntryLinkEntity>) ?? Set())
-        return MapCharacteristics.Entry(identifier: identifier.or(""),
+        return MapCharacteristics.Entry(identifier: identifier.defaultingTo(""),
                             x: Int(x),
                             y: Int(y),
                             tapRadius: Int(tapRadius),

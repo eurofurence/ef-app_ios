@@ -24,7 +24,7 @@ extension EventEntity: EntityAdapting {
                         startDateTime: startDateTime! as Date,
                         endDateTime: endDateTime! as Date,
                         title: title!,
-                        subtitle: subtitle.or(""),
+                        subtitle: subtitle.defaultingTo(""),
                         abstract: abstract!,
                         panelHosts: panelHosts!,
                         eventDescription: eventDescription!,

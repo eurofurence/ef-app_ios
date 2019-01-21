@@ -43,7 +43,7 @@ public extension KnowledgeGroup {
             let fontAwesomeCharacter: Character = Int(group.fontAwesomeCharacterAddress, radix: 16)
                 .let(UnicodeScalar.init)
                 .let(Character.init)
-                .or(defaultFontAwesomeBackupCharacter)
+                .defaultingTo(defaultFontAwesomeBackupCharacter)
 
             return KnowledgeGroup(identifier: KnowledgeGroupIdentifier(group.identifier),
                                    title: group.groupName,

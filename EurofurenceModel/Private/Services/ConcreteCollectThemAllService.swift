@@ -65,7 +65,7 @@ class ConcreteCollectThemAllService: CollectThemAllService {
     private func provideLatestRequestToObserver(_ observer: CollectThemAllURLObserver) {
         let request: URLRequest = credentialStore.persistedCredential
             .let(collectThemAllRequestFactory.makeAuthenticatedGameURLRequest)
-            .or(collectThemAllRequestFactory.makeAnonymousGameURLRequest())
+            .defaultingTo(collectThemAllRequestFactory.makeAnonymousGameURLRequest())
 
         observer.collectThemAllGameRequestDidChange(request)
     }

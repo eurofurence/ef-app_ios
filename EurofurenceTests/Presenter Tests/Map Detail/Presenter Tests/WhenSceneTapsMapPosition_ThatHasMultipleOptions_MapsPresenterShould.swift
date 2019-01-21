@@ -27,8 +27,8 @@ class WhenSceneTapsMapPosition_ThatHasMultipleOptions_MapsPresenterShould: XCTes
 
         XCTAssertEqual(contentOptions.optionsHeading, context.scene.capturedOptionsHeading)
         XCTAssertEqual(contentOptions.options, context.scene.capturedOptionsToShow)
-        XCTAssertEqual(x, context.scene.capturedOptionsPresentationX.or(.random), accuracy: .ulpOfOne)
-        XCTAssertEqual(y, context.scene.capturedOptionsPresentationY.or(.random), accuracy: .ulpOfOne)
+        XCTAssertEqual(x, context.scene.capturedOptionsPresentationX.defaultingTo(.random), accuracy: .ulpOfOne)
+        XCTAssertEqual(y, context.scene.capturedOptionsPresentationY.defaultingTo(.random), accuracy: .ulpOfOne)
     }
 
     func testTellTheViewModelWhichOptionIsSelected() {

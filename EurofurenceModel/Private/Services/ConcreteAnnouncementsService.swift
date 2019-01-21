@@ -33,7 +33,7 @@ class ConcreteAnnouncementsService: AnnouncementsService {
         eventBus.subscribe(consumer: DataStoreChangedConsumer(handler: reloadAnnouncementsFromStore))
 
         reloadAnnouncementsFromStore()
-        readAnnouncementIdentifiers = dataStore.fetchReadAnnouncementIdentifiers().or([])
+        readAnnouncementIdentifiers = dataStore.fetchReadAnnouncementIdentifiers().defaultingTo([])
     }
 
     // MARK: Functions
