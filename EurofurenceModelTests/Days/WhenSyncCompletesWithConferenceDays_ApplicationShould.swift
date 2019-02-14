@@ -18,9 +18,9 @@ class WhenSyncCompletesWithConferenceDays_ApplicationShould: XCTestCase {
         let schedule = context.eventsService.makeEventsSchedule()
         schedule.setDelegate(delegate)
         context.performSuccessfulSync(response: syncResponse)
-        let expected = context.makeExpectedDays(from: syncResponse)
 
-        XCTAssertEqual(expected, delegate.allDays)
+        DayAssertion()
+            .assertDays(delegate.allDays, characterisedBy: syncResponse.conferenceDays.changed)
     }
 
     func testNotUpdateTheDelegateIfTheDaysHaveNotChangedBetweenSyncs() {
@@ -33,7 +33,7 @@ class WhenSyncCompletesWithConferenceDays_ApplicationShould: XCTestCase {
         delegate.allDays.removeAll()
         context.performSuccessfulSync(response: syncResponse)
 
-        XCTAssertEqual([], delegate.allDays)
+        XCTAssertTrue(delegate.allDays.isEmpty)
     }
 
     func testNotUpdateTheDelegateIfTheDaysHaveNotChangedBetweenDataStoreAndSync() {
@@ -47,7 +47,7 @@ class WhenSyncCompletesWithConferenceDays_ApplicationShould: XCTestCase {
         delegate.allDays.removeAll()
         context.performSuccessfulSync(response: syncResponse)
 
-        XCTAssertEqual([], delegate.allDays)
+        XCTAssertTrue(delegate.allDays.isEmpty)
     }
 
     func testProvideLateAddedObserversWithAdaptedDays() {
@@ -57,9 +57,9 @@ class WhenSyncCompletesWithConferenceDays_ApplicationShould: XCTestCase {
         let delegate = CapturingEventsScheduleDelegate()
         let schedule = context.eventsService.makeEventsSchedule()
         schedule.setDelegate(delegate)
-        let expected = context.makeExpectedDays(from: syncResponse)
 
-        XCTAssertEqual(expected, delegate.allDays)
+        DayAssertion()
+            .assertDays(delegate.allDays, characterisedBy: syncResponse.conferenceDays.changed)
     }
 
     func testSaveTheConferenceDaysToTheDataStore() {

@@ -12,20 +12,15 @@ import XCTest
 class WhenFetchingDaysBeforeRefreshWhenStoreHasConferenceDays: XCTestCase {
 
     func testTheEventsFromTheStoreAreAdapted() {
-        let dataStore = CapturingEurofurenceDataStore()
         let response = ModelCharacteristics.randomWithoutDeletions
-        let conferenceDays = response.conferenceDays.changed
-        dataStore.performTransaction { (transaction) in
-            transaction.saveConferenceDays(conferenceDays)
-        }
-
+        let dataStore = CapturingEurofurenceDataStore(response: response)
         let context = ApplicationTestBuilder().with(dataStore).build()
         let delegate = CapturingEventsScheduleDelegate()
         let schedule = context.eventsService.makeEventsSchedule()
         schedule.setDelegate(delegate)
-        let expected = context.makeExpectedDays(from: response)
 
-        XCTAssertEqual(expected, delegate.allDays)
+        DayAssertion()
+            .assertDays(delegate.allDays, characterisedBy: response.conferenceDays.changed)
     }
 
 }
