@@ -18,13 +18,12 @@ class DealersRemoveAllBeforeInsertTests: XCTestCase {
         let context = ApplicationTestBuilder().build()
         context.performSuccessfulSync(response: originalResponse)
         context.performSuccessfulSync(response: subsequentResponse)
-        let expected = context.makeExpectedAlphabetisedDealers(from: subsequentResponse)
         let index = context.dealersService.makeDealersIndex()
         let delegate = CapturingDealersIndexDelegate()
         index.setDelegate(delegate)
 
-        XCTAssertEqual(expected, delegate.capturedAlphabetisedDealerGroups,
-                       "Should have removed original dealers between sync events")
+        AlphabetisedDealersGroupAssertion(groups: delegate.capturedAlphabetisedDealerGroups,
+                                          fromDealerCharacteristics: subsequentResponse.dealers.changed).assertGroups()
     }
 
 }
