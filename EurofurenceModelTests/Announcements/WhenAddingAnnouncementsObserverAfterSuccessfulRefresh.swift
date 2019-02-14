@@ -14,13 +14,13 @@ class WhenAddingAnnouncementsObserverAfterSuccessfulRefresh: XCTestCase {
     func testTheObserverIsProvidedWithAllAnnouncements() {
         let context = ApplicationTestBuilder().build()
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
-        let expected = context.expectedAnnouncements(from: syncResponse)
 
         context.performSuccessfulSync(response: syncResponse)
         let observer = CapturingAnnouncementsServiceObserver()
         context.announcementsService.add(observer)
 
-        XCTAssertEqual(expected, observer.allAnnouncements)
+        AnnouncementAssertion().assertOrderedAnnouncements(observer.allAnnouncements,
+                                                           characterisedBy: syncResponse.announcements.changed)
     }
 
 }

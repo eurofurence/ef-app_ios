@@ -22,9 +22,8 @@ class WhenApplicationInitialises_WithAnnouncementsSavedToStore: XCTestCase {
         let observer = CapturingAnnouncementsServiceObserver()
         context.announcementsService.add(observer)
 
-        let expected = context.expectedAnnouncements(from: announcements)
-
-        XCTAssertEqual(expected, observer.allAnnouncements)
+        AnnouncementAssertion().assertOrderedAnnouncements(observer.allAnnouncements,
+                                                           characterisedBy: announcements)
     }
 
 }
