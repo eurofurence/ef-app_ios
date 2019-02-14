@@ -19,9 +19,9 @@ class WhenObservingDealersAfterLoadingFromStore_ApplicationShould: XCTestCase {
         let dealersIndex = context.dealersService.makeDealersIndex()
         let delegate = CapturingDealersIndexDelegate()
         dealersIndex.setDelegate(delegate)
-        let expected = context.makeExpectedAlphabetisedDealers(from: syncResponse)
 
-        XCTAssertEqual(expected, delegate.capturedAlphabetisedDealerGroups)
+        AlphabetisedDealersGroupAssertion(groups: delegate.capturedAlphabetisedDealerGroups,
+                                          fromDealerCharacteristics: syncResponse.dealers.changed).assertGroups()
     }
 
 }

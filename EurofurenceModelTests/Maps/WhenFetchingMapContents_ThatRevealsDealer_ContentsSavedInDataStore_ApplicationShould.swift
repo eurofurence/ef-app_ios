@@ -24,12 +24,14 @@ class WhenFetchingMapContents_ThatRevealsDealer_ContentsSavedInDataStore_Applica
         let dataStore = CapturingEurofurenceDataStore()
         dataStore.save(syncResponse)
         let context = ApplicationTestBuilder().with(dataStore).build()
-        let expectedDealer = context.makeExpectedDealer(from: dealer)
-        var content: MapContent?
+        var content: MapContent = .none
         context.mapsService.fetchContent(for: MapIdentifier(map.identifier), atX: x, y: y) { content = $0 }
-        let expected = MapContent.dealer(expectedDealer)
 
-        XCTAssertEqual(expected, content)
+        if case .dealer(let dealerEntity) = content {
+            DealerAssertion().assertDealer(dealerEntity, characterisedBy: dealer)
+        } else {
+            XCTFail("Expected to find dealer content")
+        }
     }
 
 }

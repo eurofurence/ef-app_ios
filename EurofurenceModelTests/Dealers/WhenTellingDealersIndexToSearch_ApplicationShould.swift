@@ -24,10 +24,9 @@ class WhenTellingDealersIndexToSearch_ApplicationShould: XCTestCase {
         let delegate = CapturingDealersIndexDelegate()
         dealersIndex.setDelegate(delegate)
         dealersIndex.performSearch(term: preferredName)
-        let expectedDealer = context.makeExpectedDealer(from: dealer)
-        let expected = [AlphabetisedDealersGroup(indexingString: "B", dealers: [expectedDealer])]
 
-        XCTAssertEqual(expected, delegate.capturedAlphabetisedDealerSearchResults)
+        AlphabetisedDealersGroupAssertion(groups: delegate.capturedAlphabetisedDealerSearchResults,
+                                          fromDealerCharacteristics: [dealer]).assertGroups()
     }
 
     func testMatchDealersByPartialNameMatches() {
@@ -43,10 +42,9 @@ class WhenTellingDealersIndexToSearch_ApplicationShould: XCTestCase {
         let delegate = CapturingDealersIndexDelegate()
         dealersIndex.setDelegate(delegate)
         dealersIndex.performSearch(term: "Cha")
-        let expectedDealer = context.makeExpectedDealer(from: dealer)
-        let expected = [AlphabetisedDealersGroup(indexingString: "C", dealers: [expectedDealer])]
 
-        XCTAssertEqual(expected, delegate.capturedAlphabetisedDealerSearchResults)
+        AlphabetisedDealersGroupAssertion(groups: delegate.capturedAlphabetisedDealerSearchResults,
+                                          fromDealerCharacteristics: [dealer]).assertGroups()
     }
 
     func testMatchDealersIgnoringCase() {
@@ -62,10 +60,9 @@ class WhenTellingDealersIndexToSearch_ApplicationShould: XCTestCase {
         let delegate = CapturingDealersIndexDelegate()
         dealersIndex.setDelegate(delegate)
         dealersIndex.performSearch(term: "dude")
-        let expectedDealer = context.makeExpectedDealer(from: dealer)
-        let expected = [AlphabetisedDealersGroup(indexingString: "C", dealers: [expectedDealer])]
 
-        XCTAssertEqual(expected, delegate.capturedAlphabetisedDealerSearchResults)
+        AlphabetisedDealersGroupAssertion(groups: delegate.capturedAlphabetisedDealerSearchResults,
+                                          fromDealerCharacteristics: [dealer]).assertGroups()
     }
 
     func testMatchDealersByExactAlternateNameButGroupByDisplayName() {
@@ -82,10 +79,9 @@ class WhenTellingDealersIndexToSearch_ApplicationShould: XCTestCase {
         let delegate = CapturingDealersIndexDelegate()
         dealersIndex.setDelegate(delegate)
         dealersIndex.performSearch(term: attendeeNickname)
-        let expectedDealer = context.makeExpectedDealer(from: dealer)
-        let expected = [AlphabetisedDealersGroup(indexingString: "C", dealers: [expectedDealer])]
 
-        XCTAssertEqual(expected, delegate.capturedAlphabetisedDealerSearchResults)
+        AlphabetisedDealersGroupAssertion(groups: delegate.capturedAlphabetisedDealerSearchResults,
+                                          fromDealerCharacteristics: [dealer]).assertGroups()
     }
 
     func testMatchDealersByPartialAlternateNameButGroupByDisplayName() {
@@ -102,10 +98,9 @@ class WhenTellingDealersIndexToSearch_ApplicationShould: XCTestCase {
         let delegate = CapturingDealersIndexDelegate()
         dealersIndex.setDelegate(delegate)
         dealersIndex.performSearch(term: "ob")
-        let expectedDealer = context.makeExpectedDealer(from: dealer)
-        let expected = [AlphabetisedDealersGroup(indexingString: "C", dealers: [expectedDealer])]
 
-        XCTAssertEqual(expected, delegate.capturedAlphabetisedDealerSearchResults)
+        AlphabetisedDealersGroupAssertion(groups: delegate.capturedAlphabetisedDealerSearchResults,
+                                          fromDealerCharacteristics: [dealer]).assertGroups()
     }
 
     func testMatchDealersAlternateNameIgnoringCasingButGroupByDisplayName() {
@@ -122,10 +117,9 @@ class WhenTellingDealersIndexToSearch_ApplicationShould: XCTestCase {
         let delegate = CapturingDealersIndexDelegate()
         dealersIndex.setDelegate(delegate)
         dealersIndex.performSearch(term: "bob")
-        let expectedDealer = context.makeExpectedDealer(from: dealer)
-        let expected = [AlphabetisedDealersGroup(indexingString: "C", dealers: [expectedDealer])]
 
-        XCTAssertEqual(expected, delegate.capturedAlphabetisedDealerSearchResults)
+        AlphabetisedDealersGroupAssertion(groups: delegate.capturedAlphabetisedDealerSearchResults,
+                                          fromDealerCharacteristics: [dealer]).assertGroups()
     }
 
     func testNotMatchDealersWithoutAlternateNamesWhenSearchDoesNotMatchPreferredName() {
@@ -141,9 +135,8 @@ class WhenTellingDealersIndexToSearch_ApplicationShould: XCTestCase {
         let delegate = CapturingDealersIndexDelegate()
         dealersIndex.setDelegate(delegate)
         dealersIndex.performSearch(term: "zzzzz")
-        let expected = [AlphabetisedDealersGroup]()
 
-        XCTAssertEqual(expected, delegate.capturedAlphabetisedDealerSearchResults)
+        XCTAssertTrue(delegate.capturedAlphabetisedDealerSearchResults.isEmpty)
     }
 
 }
