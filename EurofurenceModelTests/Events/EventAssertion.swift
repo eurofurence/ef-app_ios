@@ -31,20 +31,16 @@ class EventAssertion: EntityAssertion {
 
         for (idx, event) in events.enumerated() {
             let characteristic = characteristics[idx]
-            assertEvent(event, isCharacterisedBy: characteristic)
+            assertEvent(event, characterisedBy: characteristic)
         }
     }
 
-    func assertCollection<C>(_ collection: C, containsEventCharacterisedBy characteristic: EventCharacteristics) where C: Collection, C.Element == Event {
-        guard let event = collection.first(where: { $0.identifier.rawValue == characteristic.identifier }) else {
-            fail(message: "Collection did not contain event")
+    func assertEvent(_ event: Event?, characterisedBy characteristic: EventCharacteristics) {
+        guard let event = event else {
+            fail(message: "Event not present - expected event \(characteristic.identifier)")
             return
         }
 
-        assertEvent(event, isCharacterisedBy: characteristic)
-    }
-
-    private func assertEvent(_ event: Event, isCharacterisedBy characteristic: EventCharacteristics) {
         let expectedRoom = modelCharacteristics.rooms.changed.first(where: { $0.roomIdentifier == characteristic.roomIdentifier })!
         let expectedTrack = modelCharacteristics.tracks.changed.first(where: { $0.trackIdentifier == characteristic.trackIdentifier })!
         let expectedPosterGraphic = context.imageAPI.stubbedImage(for: characteristic.posterImageId)
@@ -72,6 +68,15 @@ class EventAssertion: EntityAssertion {
         // TODO: When Event is an entity, should be fetched with a callback and not held in memory
         assert(event.posterGraphicPNGData, isEqualTo: expectedPosterGraphic)
         assert(event.bannerGraphicPNGData, isEqualTo: expectedBannerGraphic)
+    }
+
+    func assertCollection<C>(_ collection: C, containsEventCharacterisedBy characteristic: EventCharacteristics) where C: Collection, C.Element == Event {
+        guard let event = collection.first(where: { $0.identifier.rawValue == characteristic.identifier }) else {
+            fail(message: "Collection did not contain event")
+            return
+        }
+
+        assertEvent(event, characterisedBy: characteristic)
     }
 
 }
