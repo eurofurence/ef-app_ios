@@ -31,35 +31,47 @@ class EventAssertion: EntityAssertion {
 
         for (idx, event) in events.enumerated() {
             let characteristic = characteristics[idx]
-
-            let expectedRoom = modelCharacteristics.rooms.changed.first(where: { $0.roomIdentifier == characteristic.roomIdentifier })!
-            let expectedTrack = modelCharacteristics.tracks.changed.first(where: { $0.trackIdentifier == characteristic.trackIdentifier })!
-            let expectedPosterGraphic = context.imageAPI.stubbedImage(for: characteristic.posterImageId)
-            let expectedBannerGraphic = context.imageAPI.stubbedImage(for: characteristic.bannerImageId)
-            let tags = characteristic.tags.defaultingTo([])
-
-            assert(event.identifier, isEqualTo: EventIdentifier(characteristic.identifier))
-            assert(event.title, isEqualTo: characteristic.title)
-            assert(event.subtitle, isEqualTo: characteristic.subtitle)
-            assert(event.abstract, isEqualTo: characteristic.abstract)
-            assert(event.room.name, isEqualTo: expectedRoom.name)
-            assert(event.track.name, isEqualTo: expectedTrack.name)
-            assert(event.hosts, isEqualTo: characteristic.panelHosts)
-            assert(event.startDate, isEqualTo: characteristic.startDateTime)
-            assert(event.endDate, isEqualTo: characteristic.endDateTime)
-            assert(event.eventDescription, isEqualTo: characteristic.eventDescription)
-            assert(event.isSponsorOnly, isEqualTo: tags.contains("sponsors_only"))
-            assert(event.isSuperSponsorOnly, isEqualTo: tags.contains("supersponsors_only"))
-            assert(event.isArtShow, isEqualTo: tags.contains("art_show"))
-            assert(event.isKageEvent, isEqualTo: tags.contains("kage"))
-            assert(event.isDealersDen, isEqualTo: tags.contains("dealers_den"))
-            assert(event.isMainStage, isEqualTo: tags.contains("main_stage"))
-            assert(event.isPhotoshoot, isEqualTo: tags.contains("photshoot"))
-
-            // TODO: When Event is an entity, should be fetched with a callback and not held in memory
-            assert(event.posterGraphicPNGData, isEqualTo: expectedPosterGraphic)
-            assert(event.bannerGraphicPNGData, isEqualTo: expectedBannerGraphic)
+            assertEvent(event, isCharacterisedBy: characteristic)
         }
+    }
+
+    func assertCollection<C>(_ collection: C, containsEventCharacterisedBy characteristic: EventCharacteristics) where C: Collection, C.Element == Event {
+        guard let event = collection.first(where: { $0.identifier.rawValue == characteristic.identifier }) else {
+            fail(message: "Collection did not contain event")
+            return
+        }
+
+        assertEvent(event, isCharacterisedBy: characteristic)
+    }
+
+    private func assertEvent(_ event: Event, isCharacterisedBy characteristic: EventCharacteristics) {
+        let expectedRoom = modelCharacteristics.rooms.changed.first(where: { $0.roomIdentifier == characteristic.roomIdentifier })!
+        let expectedTrack = modelCharacteristics.tracks.changed.first(where: { $0.trackIdentifier == characteristic.trackIdentifier })!
+        let expectedPosterGraphic = context.imageAPI.stubbedImage(for: characteristic.posterImageId)
+        let expectedBannerGraphic = context.imageAPI.stubbedImage(for: characteristic.bannerImageId)
+        let tags = characteristic.tags.defaultingTo([])
+
+        assert(event.identifier, isEqualTo: EventIdentifier(characteristic.identifier))
+        assert(event.title, isEqualTo: characteristic.title)
+        assert(event.subtitle, isEqualTo: characteristic.subtitle)
+        assert(event.abstract, isEqualTo: characteristic.abstract)
+        assert(event.room.name, isEqualTo: expectedRoom.name)
+        assert(event.track.name, isEqualTo: expectedTrack.name)
+        assert(event.hosts, isEqualTo: characteristic.panelHosts)
+        assert(event.startDate, isEqualTo: characteristic.startDateTime)
+        assert(event.endDate, isEqualTo: characteristic.endDateTime)
+        assert(event.eventDescription, isEqualTo: characteristic.eventDescription)
+        assert(event.isSponsorOnly, isEqualTo: tags.contains("sponsors_only"))
+        assert(event.isSuperSponsorOnly, isEqualTo: tags.contains("supersponsors_only"))
+        assert(event.isArtShow, isEqualTo: tags.contains("art_show"))
+        assert(event.isKageEvent, isEqualTo: tags.contains("kage"))
+        assert(event.isDealersDen, isEqualTo: tags.contains("dealers_den"))
+        assert(event.isMainStage, isEqualTo: tags.contains("main_stage"))
+        assert(event.isPhotoshoot, isEqualTo: tags.contains("photshoot"))
+
+        // TODO: When Event is an entity, should be fetched with a callback and not held in memory
+        assert(event.posterGraphicPNGData, isEqualTo: expectedPosterGraphic)
+        assert(event.bannerGraphicPNGData, isEqualTo: expectedBannerGraphic)
     }
 
 }
