@@ -125,12 +125,6 @@ class ApplicationTestBuilder {
             syncAPI.simulateSuccessfulSync(response)
         }
 
-        func makeExpectedMaps(from response: ModelCharacteristics) -> [Map] {
-            return response.maps.changed.map({ (map) -> Map in
-                return Map(identifier: MapIdentifier(map.identifier), location: map.mapDescription)
-            }).sorted(by: { $0.location < $1.location })
-        }
-
         func expectedKnowledgeGroups(from syncResponse: ModelCharacteristics) -> [KnowledgeGroup] {
             return syncResponse.knowledgeGroups.changed.map({ (group) -> KnowledgeGroup in
                 return expectedKnowledgeGroup(from: group, syncResponse: syncResponse)
