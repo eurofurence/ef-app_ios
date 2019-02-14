@@ -125,38 +125,6 @@ class ApplicationTestBuilder {
             syncAPI.simulateSuccessfulSync(response)
         }
 
-        func makeExpectedEvent(from event: EventCharacteristics, response: ModelCharacteristics) -> Event {
-            let expectedRoom = response.rooms.changed.first(where: { $0.roomIdentifier == event.roomIdentifier })!
-            let expectedTrack = response.tracks.changed.first(where: { $0.trackIdentifier == event.trackIdentifier })!
-            let expectedPosterGraphic = imageAPI.stubbedImage(for: event.posterImageId)
-            let expectedBannerGraphic = imageAPI.stubbedImage(for: event.bannerImageId)
-            let tags = event.tags.defaultingTo([])
-
-            return Event(identifier: EventIdentifier(event.identifier),
-                          title: event.title,
-                          subtitle: event.subtitle,
-                          abstract: event.abstract,
-                          room: Room(name: expectedRoom.name),
-                          track: Track(name: expectedTrack.name),
-                          hosts: event.panelHosts,
-                          startDate: event.startDateTime,
-                          endDate: event.endDateTime,
-                          eventDescription: event.eventDescription,
-                          posterGraphicPNGData: expectedPosterGraphic,
-                          bannerGraphicPNGData: expectedBannerGraphic,
-                          isSponsorOnly: tags.contains("sponsors_only"),
-                          isSuperSponsorOnly: tags.contains("supersponsors_only"),
-                          isArtShow: tags.contains("art_show"),
-                          isKageEvent: tags.contains("kage"),
-                          isDealersDen: tags.contains("dealers_den"),
-                          isMainStage: tags.contains("main_stage"),
-                          isPhotoshoot: tags.contains("photshoot"))
-        }
-
-        func makeExpectedEvents(from events: [EventCharacteristics], response: ModelCharacteristics) -> [Event] {
-            return events.map { makeExpectedEvent(from: $0, response: response) }
-        }
-
         func makeExpectedDay(from day: ConferenceDayCharacteristics) -> Day {
             return Day(date: day.date)
         }
