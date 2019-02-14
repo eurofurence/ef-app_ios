@@ -10,6 +10,21 @@ import EurofurenceModel
 
 class KnowledgeGroupAssertion: EntityAssertion {
 
+    func assertGroups(_ groups: [KnowledgeGroup],
+                      characterisedByGroup groupCharacteristics: [KnowledgeGroupCharacteristics],
+                      entries: [KnowledgeEntryCharacteristics]) {
+        guard groups.count == groupCharacteristics.count else {
+            fail(message: "Expected \(groupCharacteristics.count) groups, got \(groups.count)")
+            return
+        }
+
+        let orderedGroupCharacteristics = groupCharacteristics.sorted(by: { $0.order < $1.order })
+        for (idx, group) in groups.enumerated() {
+            let characteristic = orderedGroupCharacteristics[idx]
+            assertGroup(group, characterisedByGroup: characteristic, entries: entries)
+        }
+    }
+
     func assertGroup(_ group: KnowledgeGroup?,
                      characterisedByGroup groupCharacteristics: KnowledgeGroupCharacteristics,
                      entries: [KnowledgeEntryCharacteristics]) {
