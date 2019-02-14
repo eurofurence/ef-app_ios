@@ -125,34 +125,6 @@ class ApplicationTestBuilder {
             syncAPI.simulateSuccessfulSync(response)
         }
 
-        func expectedKnowledgeGroups(from syncResponse: ModelCharacteristics) -> [KnowledgeGroup] {
-            return syncResponse.knowledgeGroups.changed.map({ (group) -> KnowledgeGroup in
-                return expectedKnowledgeGroup(from: group, syncResponse: syncResponse)
-            }).sorted(by: { $0.order < $1.order })
-        }
-
-        func expectedKnowledgeGroup(from group: KnowledgeGroupCharacteristics, syncResponse: ModelCharacteristics) -> KnowledgeGroup {
-            let entries = syncResponse.knowledgeEntries.changed.filter({ $0.groupIdentifier == group.identifier }).map { (entry) in
-                return KnowledgeEntry(identifier: KnowledgeEntryIdentifier(entry.identifier),
-                                       title: entry.title,
-                                       order: entry.order,
-                                       contents: entry.text,
-                                       links: entry.links.map({ return Link(name: $0.name, type: Link.Kind(rawValue: $0.fragmentType.rawValue)!, contents: $0.target) }).sorted(by: { $0.name < $1.name }))
-                }.sorted(by: { $0.order < $1.order })
-
-            let addressString = group.fontAwesomeCharacterAddress
-            let intValue = Int(addressString, radix: 16)!
-            let unicodeScalar = UnicodeScalar(intValue)!
-            let character = Character(unicodeScalar)
-
-            return KnowledgeGroup(identifier: KnowledgeGroupIdentifier(group.identifier),
-                                   title: group.groupName,
-                                   groupDescription: group.groupDescription,
-                                   fontAwesomeCharacterAddress: character,
-                                   order: group.order,
-                                   entries: entries)
-        }
-
         func simulateSignificantTimeChange() {
             significantTimeChangeAdapter.simulateSignificantTimeChange()
         }
