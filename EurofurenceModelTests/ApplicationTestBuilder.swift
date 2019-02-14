@@ -125,28 +125,6 @@ class ApplicationTestBuilder {
             syncAPI.simulateSuccessfulSync(response)
         }
 
-        func expectedUnreadAnnouncements(from syncResponse: ModelCharacteristics) -> [Announcement] {
-            // TODO: Needs to take into account any unread status information
-            return expectedAnnouncements(from: syncResponse)
-        }
-
-        func expectedAnnouncements(from syncResponse: ModelCharacteristics) -> [Announcement] {
-            return expectedAnnouncements(from: syncResponse.announcements.changed)
-        }
-
-        func expectedAnnouncements(from announcements: [AnnouncementCharacteristics]) -> [Announcement] {
-            return Announcement.fromServerModels(announcements.sorted { (first, second) -> Bool in
-                return first.lastChangedDateTime.compare(second.lastChangedDateTime) == .orderedDescending
-            })
-        }
-
-        func expectedAnnouncement(from announcement: AnnouncementCharacteristics) -> Announcement {
-            return Announcement(identifier: AnnouncementIdentifier(announcement.identifier),
-                                 title: announcement.title,
-                                 content: announcement.content,
-                                 date: announcement.lastChangedDateTime)
-        }
-
         func makeExpectedEvent(from event: EventCharacteristics, response: ModelCharacteristics) -> Event {
             let expectedRoom = response.rooms.changed.first(where: { $0.roomIdentifier == event.roomIdentifier })!
             let expectedTrack = response.tracks.changed.first(where: { $0.trackIdentifier == event.trackIdentifier })!
