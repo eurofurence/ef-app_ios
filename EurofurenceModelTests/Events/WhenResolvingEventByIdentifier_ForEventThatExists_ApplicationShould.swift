@@ -17,11 +17,11 @@ class WhenResolvingEventByIdentifier_ForEventThatExists_ApplicationShould: XCTes
         context.refreshLocalStore()
         context.syncAPI.simulateSuccessfulSync(response)
         let event = response.events.changed.randomElement().element
-        let expected = context.makeExpectedEvent(from: event, response: response)
         var actual: Event?
         context.eventsService.fetchEvent(for: EventIdentifier(event.identifier)) { actual = $0 }
 
-        XCTAssertEqual(expected, actual)
+        EventAssertion(context: context, modelCharacteristics: response)
+            .assertEvent(actual, characterisedBy: event)
     }
 
 }

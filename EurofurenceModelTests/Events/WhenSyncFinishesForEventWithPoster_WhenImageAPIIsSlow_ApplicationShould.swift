@@ -21,9 +21,9 @@ class WhenSyncFinishesForEventWithPoster_WhenImageAPIIsSlow_ApplicationShould: X
         context.eventsService.add(observer)
         context.performSuccessfulSync(response: syncResponse)
         imageAPI.resolvePendingFetches()
-        let expected = context.makeExpectedEvent(from: randomEvent, response: syncResponse)
 
-        XCTAssertTrue(observer.runningEvents.contains(expected))
+        EventAssertion(context: context, modelCharacteristics: syncResponse)
+            .assertCollection(observer.runningEvents, containsEventCharacterisedBy: randomEvent)
     }
 
 }

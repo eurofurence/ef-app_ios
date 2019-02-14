@@ -25,11 +25,8 @@ class WhenObservingRunningEventsAfterSuccessfulLoad: XCTestCase {
             return simulatedTime >= event.startDateTime && simulatedTime < event.endDateTime
         }
 
-        let expected = expectedEvents.map { (event) -> Event in
-            return context.makeExpectedEvent(from: event, response: syncResponse)
-        }
-
-        XCTAssertTrue(expected.contains(elementsFrom: observer.runningEvents))
+        EventAssertion(context: context, modelCharacteristics: syncResponse)
+            .assertEvents(observer.runningEvents, characterisedBy: expectedEvents)
     }
 
     func testEventsThatHaveNotStartedAreNotProvidedToTheObserver() {
@@ -42,10 +39,8 @@ class WhenObservingRunningEventsAfterSuccessfulLoad: XCTestCase {
         let observer = CapturingEventsServiceObserver()
         context.eventsService.add(observer)
 
-        let unexpected = context.makeExpectedEvent(from: randomEvent, response: syncResponse)
-
-        XCTAssertFalse(observer.runningEvents.contains(unexpected),
-                       "Simulated Time: \(simulatedTime)\nDid Not Expect: \(unexpected)")
+        XCTAssertFalse(observer.runningEvents.contains(where: { $0.identifier.rawValue == randomEvent.identifier }),
+                       "Simulated Time: \(simulatedTime)\nDid Not Expect: \(randomEvent)")
     }
 
 }

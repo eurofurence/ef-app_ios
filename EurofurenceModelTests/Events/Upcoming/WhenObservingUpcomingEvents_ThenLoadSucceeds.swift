@@ -19,9 +19,9 @@ class WhenObservingUpcomingEvents_ThenLoadSucceeds: XCTestCase {
         let observer = CapturingEventsServiceObserver()
         context.eventsService.add(observer)
         context.performSuccessfulSync(response: syncResponse)
-        let expected = context.makeExpectedEvent(from: randomEvent, response: syncResponse)
 
-        XCTAssertTrue(observer.upcomingEvents.contains(expected))
+        EventAssertion(context: context, modelCharacteristics: syncResponse)
+            .assertCollection(observer.upcomingEvents, containsEventCharacterisedBy: randomEvent)
     }
 
     func testTheObserverIsNotProvidedWithEventsThatHaveBegan() {
@@ -37,11 +37,8 @@ class WhenObservingUpcomingEvents_ThenLoadSucceeds: XCTestCase {
             return event.startDateTime > simulatedTime
         }
 
-        let expected = expectedEvents.map { (event) -> Event in
-            return context.makeExpectedEvent(from: event, response: syncResponse)
-        }
-
-        XCTAssertEqual(expected, observer.upcomingEvents)
+        EventAssertion(context: context, modelCharacteristics: syncResponse)
+            .assertEvents(observer.upcomingEvents, characterisedBy: expectedEvents)
     }
 
     func testTheObserverIsNotProvidedWithEventsTooFarIntoTheFuture() {
@@ -54,9 +51,7 @@ class WhenObservingUpcomingEvents_ThenLoadSucceeds: XCTestCase {
         context.eventsService.add(observer)
         context.performSuccessfulSync(response: syncResponse)
 
-        let unexpected = context.makeExpectedEvent(from: randomEvent, response: syncResponse)
-
-        XCTAssertFalse(observer.upcomingEvents.contains(unexpected))
+        XCTAssertFalse(observer.upcomingEvents.contains(where: { $0.identifier.rawValue == randomEvent.identifier }))
     }
 
     func testEventsThatHaveJustStartedAreNotConsideredUpcoming() {
@@ -69,9 +64,7 @@ class WhenObservingUpcomingEvents_ThenLoadSucceeds: XCTestCase {
         context.eventsService.add(observer)
         context.performSuccessfulSync(response: syncResponse)
 
-        let unexpected = context.makeExpectedEvent(from: randomEvent, response: syncResponse)
-
-        XCTAssertFalse(observer.upcomingEvents.contains(unexpected))
+        XCTAssertFalse(observer.upcomingEvents.contains(where: { $0.identifier.rawValue == randomEvent.identifier }))
     }
 
 }

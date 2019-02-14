@@ -20,9 +20,9 @@ class WhenSearchingForEvents_ApplicationShould: XCTestCase {
         let delegate = CapturingEventsSearchControllerDelegate()
         eventsSearchController.setResultsDelegate(delegate)
         eventsSearchController.changeSearchTerm(randomEvent.title)
-        let expected = context.makeExpectedEvent(from: randomEvent, response: syncResponse)
 
-        XCTAssertEqual([expected], delegate.capturedSearchResults)
+        EventAssertion(context: context, modelCharacteristics: syncResponse)
+            .assertEvents(delegate.capturedSearchResults, characterisedBy: [randomEvent])
     }
 
     func testReturnFuzzyMatchesOnTitles() {
@@ -35,9 +35,9 @@ class WhenSearchingForEvents_ApplicationShould: XCTestCase {
         eventsSearchController.setResultsDelegate(delegate)
         let partialTitle = String(randomEvent.title.dropLast())
         eventsSearchController.changeSearchTerm(partialTitle)
-        let expected = context.makeExpectedEvent(from: randomEvent, response: syncResponse)
 
-        XCTAssertEqual([expected], delegate.capturedSearchResults)
+        EventAssertion(context: context, modelCharacteristics: syncResponse)
+            .assertEvents(delegate.capturedSearchResults, characterisedBy: [randomEvent])
     }
 
     func testBeCaseInsensitive() {
@@ -52,9 +52,9 @@ class WhenSearchingForEvents_ApplicationShould: XCTestCase {
         let delegate = CapturingEventsSearchControllerDelegate()
         eventsSearchController.setResultsDelegate(delegate)
         eventsSearchController.changeSearchTerm("random")
-        let expected = context.makeExpectedEvent(from: event, response: syncResponse)
 
-        XCTAssertEqual([expected], delegate.capturedSearchResults)
+        EventAssertion(context: context, modelCharacteristics: syncResponse)
+            .assertEvents(delegate.capturedSearchResults, characterisedBy: [event])
     }
 
 }

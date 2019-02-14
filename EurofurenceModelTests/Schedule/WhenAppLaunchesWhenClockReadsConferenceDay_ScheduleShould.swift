@@ -56,9 +56,9 @@ class WhenAppLaunchesWhenClockReadsConferenceDay_ScheduleShould: XCTestCase {
         let delegate = CapturingEventsScheduleDelegate()
         schedule.setDelegate(delegate)
         let expectedEvents = response.events.changed.filter({ $0.dayIdentifier == randomDay.identifier })
-        let expected = context.makeExpectedEvents(from: expectedEvents, response: response)
 
-        XCTAssertEqual(expected, delegate.events)
+        EventAssertion(context: context, modelCharacteristics: response)
+            .assertEvents(delegate.events, characterisedBy: expectedEvents)
     }
 
 }

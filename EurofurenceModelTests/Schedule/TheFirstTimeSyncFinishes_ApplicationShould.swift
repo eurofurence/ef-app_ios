@@ -20,9 +20,9 @@ class TheFirstTimeSyncFinishes_ApplicationShould: XCTestCase {
         schedule.setDelegate(delegate)
         context.performSuccessfulSync(response: response)
         let expectedEvents = response.events.changed.filter({ $0.dayIdentifier == firstDay.identifier })
-        let expected = context.makeExpectedEvents(from: expectedEvents, response: response)
 
-        XCTAssertEqual(expected, delegate.events)
+        EventAssertion(context: context, modelCharacteristics: response)
+            .assertEvents(delegate.events, characterisedBy: expectedEvents)
     }
 
 }

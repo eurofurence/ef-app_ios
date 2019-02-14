@@ -23,10 +23,10 @@ class WhenRestrictingEventsToSpecificDay_ScheduleShould: XCTestCase {
         schedule.setDelegate(delegate)
         let randomDay = response.conferenceDays.changed.randomElement()
         let expectedEvents = response.events.changed.filter({ $0.dayIdentifier == randomDay.element.identifier })
-        let expected = context.makeExpectedEvents(from: expectedEvents, response: response)
         schedule.restrictEvents(to: Day(date: randomDay.element.date))
 
-        XCTAssertEqual(expected, delegate.events)
+        EventAssertion(context: context, modelCharacteristics: response)
+            .assertEvents(delegate.events, characterisedBy: expectedEvents)
     }
 
     func testUpdateRestrictedScheduleWhenLaterSyncCompletes() {
@@ -40,13 +40,13 @@ class WhenRestrictingEventsToSpecificDay_ScheduleShould: XCTestCase {
         let delegate = CapturingEventsScheduleDelegate()
         let randomDay = response.conferenceDays.changed.randomElement()
         let expectedEvents = response.events.changed.filter({ $0.dayIdentifier == randomDay.element.identifier })
-        let expected = context.makeExpectedEvents(from: expectedEvents, response: response)
         schedule.restrictEvents(to: Day(date: randomDay.element.date))
         context.refreshLocalStore()
         context.syncAPI.simulateSuccessfulSync(response)
         schedule.setDelegate(delegate)
 
-        XCTAssertEqual(expected, delegate.events)
+        EventAssertion(context: context, modelCharacteristics: response)
+            .assertEvents(delegate.events, characterisedBy: expectedEvents)
     }
 
     func testRestrictEventsOnlyToTheLastSpecifiedRestrictedDay() {
@@ -62,11 +62,11 @@ class WhenRestrictingEventsToSpecificDay_ScheduleShould: XCTestCase {
         let randomDay = response.conferenceDays.changed.randomElement()
         let anotherRandomDay = response.conferenceDays.changed.randomElement()
         let expectedEvents = response.events.changed.filter({ $0.dayIdentifier == randomDay.element.identifier })
-        let expected = context.makeExpectedEvents(from: expectedEvents, response: response)
         schedule.restrictEvents(to: Day(date: anotherRandomDay.element.date))
         schedule.restrictEvents(to: Day(date: randomDay.element.date))
 
-        XCTAssertEqual(expected, delegate.events)
+        EventAssertion(context: context, modelCharacteristics: response)
+            .assertEvents(delegate.events, characterisedBy: expectedEvents)
     }
 
 }

@@ -12,26 +12,19 @@ import XCTest
 class WhenFetchingEventsBeforeRefreshWhenStoreHasEvents: XCTestCase {
 
     func testTheEventsFromTheStoreAreAdapted() {
-        let dataStore = CapturingEurofurenceDataStore()
         let response = ModelCharacteristics.randomWithoutDeletions
-        dataStore.performTransaction { (transaction) in
-            transaction.saveRooms(response.rooms.changed)
-            transaction.saveEvents(response.events.changed)
-            transaction.saveTracks(response.tracks.changed)
-        }
-
+        let dataStore = CapturingEurofurenceDataStore(response: response)
         let imageRepository = CapturingImageRepository()
         let bannerIdentifiers = response.events.changed.compactMap({ $0.bannerImageId })
         let posterIdentifiers = response.events.changed.compactMap({ $0.posterImageId })
         imageRepository.stub(identifiers: bannerIdentifiers + posterIdentifiers)
 
         let context = ApplicationTestBuilder().with(dataStore).with(imageRepository).build()
-        let expected = context.makeExpectedEvents(from: response.events.changed, response: response)
-
         let observer = CapturingEventsServiceObserver()
         context.eventsService.add(observer)
 
-        XCTAssertEqual(expected, observer.allEvents)
+        EventAssertion(context: context, modelCharacteristics: response)
+            .assertEvents(observer.allEvents, characterisedBy: response.events.changed)
     }
 
 }
