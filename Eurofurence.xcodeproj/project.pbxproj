@@ -855,6 +855,8 @@
 		CAD6882C208A12F700B31F5F /* WhenBindingUserWithUnreadMessages_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6882B208A12F700B31F5F /* WhenBindingUserWithUnreadMessages_NewsPresenterShould.swift */; };
 		CAD68830208A144800B31F5F /* WhenBindingUserWithNoUnreadMessages_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6882F208A144800B31F5F /* WhenBindingUserWithNoUnreadMessages_NewsPresenterShould.swift */; };
 		CAD6FD3B22159C700011712D /* AnnouncementAssertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6FD3922159C6C0011712D /* AnnouncementAssertion.swift */; };
+		CAD6FD3E2215A73B0011712D /* EntityAssertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6FD3C2215A72D0011712D /* EntityAssertion.swift */; };
+		CAD6FD402215A74A0011712D /* EventAssertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6FD3F2215A74A0011712D /* EventAssertion.swift */; };
 		CADABEF021147D560023C3B6 /* EventInformationBannerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADABEEF21147D560023C3B6 /* EventInformationBannerTableViewCell.swift */; };
 		CADABEF22114A9370023C3B6 /* WhenBindingSuperSponsorsOnlyMessage_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADABEF12114A9370023C3B6 /* WhenBindingSuperSponsorsOnlyMessage_EventDetailPresenterShould.swift */; };
 		CADABEF42114ACA50023C3B6 /* WhenPreparingViewModel_ForSuperSponsorsOnlyEvent_EventDetailInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADABEF32114ACA50023C3B6 /* WhenPreparingViewModel_ForSuperSponsorsOnlyEvent_EventDetailInteractorShould.swift */; };
@@ -2542,6 +2544,8 @@
 		CAD6882D208A13D400B31F5F /* Bool+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bool+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CAD6882F208A144800B31F5F /* WhenBindingUserWithNoUnreadMessages_NewsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingUserWithNoUnreadMessages_NewsPresenterShould.swift; sourceTree = "<group>"; };
 		CAD6FD3922159C6C0011712D /* AnnouncementAssertion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnouncementAssertion.swift; sourceTree = "<group>"; };
+		CAD6FD3C2215A72D0011712D /* EntityAssertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityAssertion.swift; sourceTree = "<group>"; };
+		CAD6FD3F2215A74A0011712D /* EventAssertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAssertion.swift; sourceTree = "<group>"; };
 		CAD7803F1F1D4C2A002A8333 /* WhenLoginStateChanges.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenLoginStateChanges.swift; sourceTree = "<group>"; };
 		CAD780421F1D4CA3002A8333 /* Credential.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credential.swift; sourceTree = "<group>"; };
 		CAD780481F1D51EB002A8333 /* StubClock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubClock.swift; sourceTree = "<group>"; };
@@ -3487,6 +3491,7 @@
 		CA162EAF20AA2DC0004AFED6 /* Events */ = {
 			isa = PBXGroup;
 			children = (
+				CAD6FD3F2215A74A0011712D /* EventAssertion.swift */,
 				CABEB0D120C7694F000BEE66 /* WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift */,
 				CA52C68620D6A671009D3A9E /* WhenResolvingEventByIdentifier_ForEventThatDoesNotExist_ApplicationShould.swift */,
 				CA52C68820D6A756009D3A9E /* WhenResolvingEventByIdentifier_ForEventThatExists_ApplicationShould.swift */,
@@ -6134,6 +6139,7 @@
 			children = (
 				CAEA0B8B2165626900B0C7A6 /* Info.plist */,
 				CA2B4FA51F1EA1B300F007E1 /* ApplicationTestBuilder.swift */,
+				CAD6FD3C2215A72D0011712D /* EntityAssertion.swift */,
 				CA2D07F81FE9021A00BFD785 /* WhenResolvingDataStoreState.swift */,
 				CA65A21A2091120C0078A4A7 /* Announcements */,
 				CA81D4951FEA950600A52A2F /* Authentication */,
@@ -8699,6 +8705,7 @@
 				CAEA1011216E1CE800B0C7A6 /* WhenRemovingFavouritesRestrictionForEvents_ScheduleShould.swift in Sources */,
 				CAEA0FC1216E1CC000B0C7A6 /* EventConferenceDaysRemoveAllBeforeInsertTests.swift in Sources */,
 				CAEA0FE4216E1CE700B0C7A6 /* InOrderToSupportPhotoshootTag_ApplicationShould.swift in Sources */,
+				CAD6FD402215A74A0011712D /* EventAssertion.swift in Sources */,
 				CAEA0FFA216E1CE700B0C7A6 /* WhenFetchingMapContents_TappingWithinRadiusOfMultipleEntries_ApplicationShould.swift in Sources */,
 				CAEA1010216E1CE800B0C7A6 /* WhenAppLaunchesWhenClockReadsConferenceDay_ScheduleShould.swift in Sources */,
 				CAEA0FE6216E1CE700B0C7A6 /* InOrderToSupportSuperSponsorTag_ApplicationShould.swift in Sources */,
@@ -8731,6 +8738,7 @@
 				CAEA0FCB216E1CC000B0C7A6 /* WhenDeletingKnowledgeEntry_AfterSuccessfulSync_ApplicationShould.swift in Sources */,
 				CAEA0FF2216E1CE700B0C7A6 /* WhenFetchingKnowledgeGroupsAfterSuccessfulRefresh.swift in Sources */,
 				CAEA0F9F216E1CC000B0C7A6 /* WhenApplicationInitialises_WithAnnouncementsSavedToStore.swift in Sources */,
+				CAD6FD3E2215A73B0011712D /* EntityAssertion.swift in Sources */,
 				CAEA0F6D216D2BFB00B0C7A6 /* LoginAPITests.swift in Sources */,
 				CAEA0FA7216E1CC000B0C7A6 /* WhenObservingCollectThemAllURLWhileLoggedOut_ApplicationShould.swift in Sources */,
 				CAEA102A216E1CE800B0C7A6 /* CapturingEventsSearchControllerDelegate.swift in Sources */,

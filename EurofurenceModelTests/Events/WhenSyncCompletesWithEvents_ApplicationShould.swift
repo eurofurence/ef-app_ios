@@ -17,9 +17,9 @@ class WhenSyncCompletesWithEvents_ApplicationShould: XCTestCase {
         let observer = CapturingEventsServiceObserver()
         context.eventsService.add(observer)
         context.performSuccessfulSync(response: syncResponse)
-        let expected = context.makeExpectedEvents(from: syncResponse.events.changed, response: syncResponse)
 
-        XCTAssertEqual(expected, observer.allEvents)
+        EventAssertion(context: context, modelCharacteristics: syncResponse)
+            .assertEvents(observer.allEvents, characterisedBy: syncResponse.events.changed)
     }
 
 }
