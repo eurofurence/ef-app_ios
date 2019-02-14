@@ -125,33 +125,6 @@ class ApplicationTestBuilder {
             syncAPI.simulateSuccessfulSync(response)
         }
 
-        func makeExpectedDealer(from dealer: DealerCharacteristics) -> Dealer {
-            return Dealer(identifier: DealerIdentifier(dealer.identifier),
-                           preferredName: dealer.displayName,
-                           alternateName: dealer.attendeeNickname == dealer.displayName ? nil : dealer.attendeeNickname,
-                           isAttendingOnThursday: dealer.attendsOnThursday,
-                           isAttendingOnFriday: dealer.attendsOnFriday,
-                           isAttendingOnSaturday: dealer.attendsOnSaturday,
-                           isAfterDark: dealer.isAfterDark)
-        }
-
-        func makeExpectedAlphabetisedDealers(from response: ModelCharacteristics) -> [AlphabetisedDealersGroup] {
-            let dealers: [DealerCharacteristics] = response.dealers.changed
-            let indexTitles = dealers.map({ String($0.displayName.first!) })
-            var dealersByIndexBuckets = [String: [Dealer]]()
-            for title in indexTitles {
-                let dealersInBucket = dealers.filter({ $0.displayName.hasPrefix(title) })
-                    .sorted(by: { $0.displayName < $1.displayName })
-                    .map(makeExpectedDealer)
-                dealersByIndexBuckets[title] = dealersInBucket
-            }
-
-            return dealersByIndexBuckets.sorted(by: { $0.key < $1.key }).map { (arg) -> AlphabetisedDealersGroup in
-                let (title, dealers) = arg
-                return AlphabetisedDealersGroup(indexingString: title, dealers: dealers)
-            }
-        }
-
         func makeExpectedMaps(from response: ModelCharacteristics) -> [Map] {
             return response.maps.changed.map({ (map) -> Map in
                 return Map(identifier: MapIdentifier(map.identifier), location: map.mapDescription)
