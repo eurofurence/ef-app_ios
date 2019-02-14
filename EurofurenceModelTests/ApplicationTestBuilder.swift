@@ -125,14 +125,6 @@ class ApplicationTestBuilder {
             syncAPI.simulateSuccessfulSync(response)
         }
 
-        func makeExpectedDay(from day: ConferenceDayCharacteristics) -> Day {
-            return Day(date: day.date)
-        }
-
-        func makeExpectedDays(from response: ModelCharacteristics) -> [Day] {
-            return response.conferenceDays.changed.map(makeExpectedDay).sorted(by: { $0.date < $1.date })
-        }
-
         func makeExpectedDealer(from dealer: DealerCharacteristics) -> Dealer {
             return Dealer(identifier: DealerIdentifier(dealer.identifier),
                            preferredName: dealer.displayName,
