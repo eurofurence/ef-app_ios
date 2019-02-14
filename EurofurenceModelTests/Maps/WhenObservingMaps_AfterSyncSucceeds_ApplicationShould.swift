@@ -15,11 +15,11 @@ class WhenObservingMaps_AfterSyncSucceeds_ApplicationShould: XCTestCase {
         let context = ApplicationTestBuilder().build()
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
         context.performSuccessfulSync(response: syncResponse)
-        let expected = context.makeExpectedMaps(from: syncResponse)
         let observer = CapturingMapsObserver()
         context.mapsService.add(observer)
 
-        XCTAssertEqual(expected, observer.capturedMaps)
+        MapEntityAssertion().assertMaps(observer.capturedMaps,
+                                        characterisedBy: syncResponse.maps.changed)
     }
 
 }

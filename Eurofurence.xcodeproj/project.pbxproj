@@ -860,6 +860,7 @@
 		CAD6FD422215B8A60011712D /* DayAssertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6FD412215B8A60011712D /* DayAssertion.swift */; };
 		CAD6FD442215BD670011712D /* DealerAssertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6FD432215BD670011712D /* DealerAssertion.swift */; };
 		CAD6FD462215F6D70011712D /* AlphabetisedDealersGroupAssertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6FD452215F6D70011712D /* AlphabetisedDealersGroupAssertion.swift */; };
+		CAD6FD4822160D190011712D /* MapEntityAssertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6FD4722160D190011712D /* MapEntityAssertion.swift */; };
 		CADABEF021147D560023C3B6 /* EventInformationBannerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADABEEF21147D560023C3B6 /* EventInformationBannerTableViewCell.swift */; };
 		CADABEF22114A9370023C3B6 /* WhenBindingSuperSponsorsOnlyMessage_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADABEF12114A9370023C3B6 /* WhenBindingSuperSponsorsOnlyMessage_EventDetailPresenterShould.swift */; };
 		CADABEF42114ACA50023C3B6 /* WhenPreparingViewModel_ForSuperSponsorsOnlyEvent_EventDetailInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADABEF32114ACA50023C3B6 /* WhenPreparingViewModel_ForSuperSponsorsOnlyEvent_EventDetailInteractorShould.swift */; };
@@ -2552,6 +2553,7 @@
 		CAD6FD412215B8A60011712D /* DayAssertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayAssertion.swift; sourceTree = "<group>"; };
 		CAD6FD432215BD670011712D /* DealerAssertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerAssertion.swift; sourceTree = "<group>"; };
 		CAD6FD452215F6D70011712D /* AlphabetisedDealersGroupAssertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphabetisedDealersGroupAssertion.swift; sourceTree = "<group>"; };
+		CAD6FD4722160D190011712D /* MapEntityAssertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapEntityAssertion.swift; sourceTree = "<group>"; };
 		CAD7803F1F1D4C2A002A8333 /* WhenLoginStateChanges.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenLoginStateChanges.swift; sourceTree = "<group>"; };
 		CAD780421F1D4CA3002A8333 /* Credential.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credential.swift; sourceTree = "<group>"; };
 		CAD780481F1D51EB002A8333 /* StubClock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubClock.swift; sourceTree = "<group>"; };
@@ -4737,17 +4739,18 @@
 		CA6A8DB420E2DA1F007536CD /* Maps */ = {
 			isa = PBXGroup;
 			children = (
+				CAD6FD4722160D190011712D /* MapEntityAssertion.swift */,
 				CA6A8DBD20E2E1ED007536CD /* WhenDataStoreAlreadyContainsMaps_ApplicationShould.swift */,
 				CADABEFB2116211E0023C3B6 /* WhenFetchingMapContent_ThatRevealMultipleOptions_ApplicationShould.swift */,
 				CA25A7F620E62E0400875891 /* WhenFetchingMapContents_TappingWithinRadiusOfMultipleEntries_ApplicationShould.swift */,
 				CA25A7FC20E6412300875891 /* WhenFetchingMapContents_ThatRevealsDealer_ApplicationShould.swift */,
 				CA25A80020E6716A00875891 /* WhenFetchingMapContents_ThatRevealsDealer_ContentsSavedInDataStore_ApplicationShould.swift */,
+				20762B4C212730BF007CAD76 /* WhenFetchingMapContents_ThatRevealsMapEntry_ApplicationShould.swift */,
 				CA25A80220E6730C00875891 /* WhenFetchingMapContents_ThatRevealsRoom_ContentsSavedInDataStore_ApplicationShould.swift */,
 				CA6A8E0820E57795007536CD /* WhenFetchingMapContentThatRevealsRoom_ApplicationShould.swift */,
 				CA6A8DBB20E2DF09007536CD /* WhenFetchingMapImageData_ApplicationShould.swift */,
 				CA6A8DB520E2DA44007536CD /* WhenObservingMaps_AfterSyncSucceeds_ApplicationShould.swift */,
 				CA6A8DB920E2DD79007536CD /* WhenObservingMaps_ThenSyncSucceeds_ApplicationShould.swift */,
-				20762B4C212730BF007CAD76 /* WhenFetchingMapContents_ThatRevealsMapEntry_ApplicationShould.swift */,
 			);
 			path = Maps;
 			sourceTree = "<group>";
@@ -8708,6 +8711,7 @@
 				CA240F5B21E4A9F8002DB747 /* WhenLoggingOutSuccessfully.swift in Sources */,
 				CAEA0FC0216E1CC000B0C7A6 /* DealersRemoveAllBeforeInsertTests.swift in Sources */,
 				CAEA0FD0216E1CC000B0C7A6 /* WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift in Sources */,
+				CAD6FD4822160D190011712D /* MapEntityAssertion.swift in Sources */,
 				CAD6FD422215B8A60011712D /* DayAssertion.swift in Sources */,
 				CAEA101C216E1CE800B0C7A6 /* WhenPerformingSyncThatFails.swift in Sources */,
 				CAEA0FA0216E1CC000B0C7A6 /* WhenOpeningAnnouncement_ApplicationShould.swift in Sources */,
