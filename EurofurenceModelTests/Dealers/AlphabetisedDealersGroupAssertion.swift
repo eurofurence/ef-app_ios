@@ -59,8 +59,8 @@ class AlphabetisedDealersGroupAssertion: EntityAssertion {
     }
 
     func doesGroupContainExpectedNumberOfDealers(_ group: AlphabetisedDealersGroup) -> Bool {
-        let groupIndexTitle = group.indexingString
-        let dealersWithIndexingPrefix = characteristics.filter({ $0.displayName.starts(with: groupIndexTitle) })
+        let groupIndexTitle = group.indexingString.lowercased()
+        let dealersWithIndexingPrefix = characteristics.filter({ $0.displayName.lowercased().starts(with: groupIndexTitle) })
         let isExpectedNumberOfDealersPresent = dealersWithIndexingPrefix.count == group.dealers.count
 
         if isExpectedNumberOfDealersPresent == false {
