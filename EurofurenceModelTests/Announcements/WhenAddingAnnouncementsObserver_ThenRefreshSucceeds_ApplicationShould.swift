@@ -19,8 +19,8 @@ class WhenAddingAnnouncementsObserver_ThenRefreshSucceeds_ApplicationShould: XCT
         context.announcementsService.add(observer)
         context.performSuccessfulSync(response: syncResponse)
 
-        AnnouncementAssertion.assertOrderedAnnouncements(observer.allAnnouncements,
-                                                         characterisedBy: syncResponse.announcements.changed)
+        AnnouncementAssertion().assertOrderedAnnouncements(observer.allAnnouncements,
+                                                           characterisedBy: syncResponse.announcements.changed)
     }
 
 }
