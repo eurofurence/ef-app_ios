@@ -26,4 +26,8 @@ class EntityAssertion {
         XCTAssertEqual(first, second, file: file, line: line)
     }
 
+    func assertTrue(_ block: @autoclosure () -> Bool) {
+        XCTAssertTrue(block(), file: file, line: line)
+    }
+
 }

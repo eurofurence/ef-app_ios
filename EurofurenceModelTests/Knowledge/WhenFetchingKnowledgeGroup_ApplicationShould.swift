@@ -16,12 +16,13 @@ class WhenFetchingKnowledgeGroup_ApplicationShould: XCTestCase {
         let context = ApplicationTestBuilder().build()
         context.performSuccessfulSync(response: syncResponse)
         let randomGroup = syncResponse.knowledgeGroups.changed.randomElement()
-        let expected = context.expectedKnowledgeGroup(from: randomGroup.element, syncResponse: syncResponse)
 
         var actual: KnowledgeGroup?
         context.knowledgeService.fetchKnowledgeGroup(identifier: KnowledgeGroupIdentifier(randomGroup.element.identifier)) { actual = $0 }
 
-        XCTAssertEqual(expected, actual)
+        KnowledgeGroupAssertion().assertGroup(actual,
+                                              characterisedByGroup: randomGroup.element,
+                                              entries: syncResponse.knowledgeEntries.changed)
     }
 
 }

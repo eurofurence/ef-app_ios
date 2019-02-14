@@ -861,6 +861,7 @@
 		CAD6FD442215BD670011712D /* DealerAssertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6FD432215BD670011712D /* DealerAssertion.swift */; };
 		CAD6FD462215F6D70011712D /* AlphabetisedDealersGroupAssertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6FD452215F6D70011712D /* AlphabetisedDealersGroupAssertion.swift */; };
 		CAD6FD4822160D190011712D /* MapEntityAssertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6FD4722160D190011712D /* MapEntityAssertion.swift */; };
+		CAD6FD4A2216181D0011712D /* KnowledgeGroupAssertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6FD492216181D0011712D /* KnowledgeGroupAssertion.swift */; };
 		CADABEF021147D560023C3B6 /* EventInformationBannerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADABEEF21147D560023C3B6 /* EventInformationBannerTableViewCell.swift */; };
 		CADABEF22114A9370023C3B6 /* WhenBindingSuperSponsorsOnlyMessage_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADABEF12114A9370023C3B6 /* WhenBindingSuperSponsorsOnlyMessage_EventDetailPresenterShould.swift */; };
 		CADABEF42114ACA50023C3B6 /* WhenPreparingViewModel_ForSuperSponsorsOnlyEvent_EventDetailInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADABEF32114ACA50023C3B6 /* WhenPreparingViewModel_ForSuperSponsorsOnlyEvent_EventDetailInteractorShould.swift */; };
@@ -2554,6 +2555,7 @@
 		CAD6FD432215BD670011712D /* DealerAssertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerAssertion.swift; sourceTree = "<group>"; };
 		CAD6FD452215F6D70011712D /* AlphabetisedDealersGroupAssertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphabetisedDealersGroupAssertion.swift; sourceTree = "<group>"; };
 		CAD6FD4722160D190011712D /* MapEntityAssertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapEntityAssertion.swift; sourceTree = "<group>"; };
+		CAD6FD492216181D0011712D /* KnowledgeGroupAssertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeGroupAssertion.swift; sourceTree = "<group>"; };
 		CAD7803F1F1D4C2A002A8333 /* WhenLoginStateChanges.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenLoginStateChanges.swift; sourceTree = "<group>"; };
 		CAD780421F1D4CA3002A8333 /* Credential.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credential.swift; sourceTree = "<group>"; };
 		CAD780481F1D51EB002A8333 /* StubClock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubClock.swift; sourceTree = "<group>"; };
@@ -5764,6 +5766,7 @@
 		CABF03C820421B2A0028BD62 /* Knowledge */ = {
 			isa = PBXGroup;
 			children = (
+				CAD6FD492216181D0011712D /* KnowledgeGroupAssertion.swift */,
 				CA44C381211CB7D6003C1C4E /* WhenFetchingImagesForKnowledgeEntry_WhenEntryHasImages_ApplicationShould.swift */,
 				CA44C37F211CB6C4003C1C4E /* WhenFetchingImagesForKnowledgeEntry_WhenEntryHasNoImages_ApplicationShould.swift */,
 				CA401061210F900F0056E16C /* WhenFetchingKnowledgeEntryByIdentifier_ApplicationShould.swift */,
@@ -8619,6 +8622,7 @@
 				CAEA0FFD216E1CE700B0C7A6 /* WhenFetchingMapContents_ThatRevealsRoom_ContentsSavedInDataStore_ApplicationShould.swift in Sources */,
 				CAEA0FA2216E1CC000B0C7A6 /* WhenRequestingImageForAnnouncementThatHasNoImage_ApplicationShould.swift in Sources */,
 				CAEA0FBD216E1CC000B0C7A6 /* WhenToldToOpenDealersWebsite_WhenApplicationCannotHandleURL_ApplicationShould.swift in Sources */,
+				CAD6FD4A2216181D0011712D /* KnowledgeGroupAssertion.swift in Sources */,
 				CAEA0FEE216E1CE700B0C7A6 /* WhenFetchingImagesForKnowledgeEntry_WhenEntryHasImages_ApplicationShould.swift in Sources */,
 				CAEA10A6216E8BB600B0C7A6 /* CapturingForceRefreshRequired.swift in Sources */,
 				CAEA0FCC216E1CC000B0C7A6 /* WhenDeletingKnowledgeGroup_AfterSuccessfulSync_ApplicationShould.swift in Sources */,
