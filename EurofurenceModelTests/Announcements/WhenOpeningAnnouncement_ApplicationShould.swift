@@ -34,10 +34,9 @@ class WhenOpeningAnnouncement_ApplicationShould: XCTestCase {
         let announcements = syncResponse.announcements.changed
         let announcement = announcements.randomElement().element
         let identifier = announcement.identifier
-        let expected = context.expectedAnnouncement(from: announcement)
         let model = openAnnouncement(AnnouncementIdentifier(identifier))
 
-        XCTAssertEqual(expected, model)
+        AnnouncementAssertion().assertAnnouncement(model, characterisedBy: announcement)
     }
 
     func testSaveTheAnnouncementIdentifierAsReadAnnouncementToStore() {
