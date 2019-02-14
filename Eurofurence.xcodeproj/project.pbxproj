@@ -858,6 +858,7 @@
 		CAD6FD3E2215A73B0011712D /* EntityAssertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6FD3C2215A72D0011712D /* EntityAssertion.swift */; };
 		CAD6FD402215A74A0011712D /* EventAssertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6FD3F2215A74A0011712D /* EventAssertion.swift */; };
 		CAD6FD422215B8A60011712D /* DayAssertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6FD412215B8A60011712D /* DayAssertion.swift */; };
+		CAD6FD442215BD670011712D /* DealerAssertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6FD432215BD670011712D /* DealerAssertion.swift */; };
 		CADABEF021147D560023C3B6 /* EventInformationBannerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADABEEF21147D560023C3B6 /* EventInformationBannerTableViewCell.swift */; };
 		CADABEF22114A9370023C3B6 /* WhenBindingSuperSponsorsOnlyMessage_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADABEF12114A9370023C3B6 /* WhenBindingSuperSponsorsOnlyMessage_EventDetailPresenterShould.swift */; };
 		CADABEF42114ACA50023C3B6 /* WhenPreparingViewModel_ForSuperSponsorsOnlyEvent_EventDetailInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADABEF32114ACA50023C3B6 /* WhenPreparingViewModel_ForSuperSponsorsOnlyEvent_EventDetailInteractorShould.swift */; };
@@ -2548,6 +2549,7 @@
 		CAD6FD3C2215A72D0011712D /* EntityAssertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityAssertion.swift; sourceTree = "<group>"; };
 		CAD6FD3F2215A74A0011712D /* EventAssertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAssertion.swift; sourceTree = "<group>"; };
 		CAD6FD412215B8A60011712D /* DayAssertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayAssertion.swift; sourceTree = "<group>"; };
+		CAD6FD432215BD670011712D /* DealerAssertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerAssertion.swift; sourceTree = "<group>"; };
 		CAD7803F1F1D4C2A002A8333 /* WhenLoginStateChanges.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenLoginStateChanges.swift; sourceTree = "<group>"; };
 		CAD780421F1D4CA3002A8333 /* Credential.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credential.swift; sourceTree = "<group>"; };
 		CAD780481F1D51EB002A8333 /* StubClock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubClock.swift; sourceTree = "<group>"; };
@@ -4127,6 +4129,7 @@
 				CA27618520DFE8F6000E52AC /* WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould.swift */,
 				CA27618720DFEC73000E52AC /* WhenToldToOpenDealersWebsite_WhenApplicationCannotHandleURL_ApplicationShould.swift */,
 				CA2A586620F698D1002C69B6 /* WhenPreparingDealerMapGraphic_ApplicationShould.swift */,
+				CAD6FD432215BD670011712D /* DealerAssertion.swift */,
 			);
 			path = Dealers;
 			sourceTree = "<group>";
@@ -8617,6 +8620,7 @@
 				CA0B1EEF21888A0000A6A949 /* WhenAlreadyLoggedIn.swift in Sources */,
 				CAEA100B216E1CE800B0C7A6 /* WhenRequestingPrivateMessagesWhileAuthenticated.swift in Sources */,
 				CAEA0FD6216E1CC000B0C7A6 /* WhenSyncFinishesForEventWithPoster_WhenImageAPIIsSlow_ApplicationShould.swift in Sources */,
+				CAD6FD442215BD670011712D /* DealerAssertion.swift in Sources */,
 				CAEA0F9C216E1CC000B0C7A6 /* WhenAddingAnnouncementsObserver_ThenRefreshSucceeds_ApplicationShould.swift in Sources */,
 				CAEA0FE7216E1CE700B0C7A6 /* WhenObservingUpcomingEvents_ThenLoadSucceeds.swift in Sources */,
 				CAEA1002216E1CE700B0C7A6 /* WhenFetchingMapContents_ThatRevealsMapEntry_ApplicationShould.swift in Sources */,

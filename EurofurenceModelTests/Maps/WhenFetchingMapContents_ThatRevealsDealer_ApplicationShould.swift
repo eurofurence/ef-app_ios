@@ -15,7 +15,6 @@ class WhenFetchingMapContents_ThatRevealsDealer_ApplicationShould: XCTestCase {
         let context = ApplicationTestBuilder().build()
         var syncResponse = ModelCharacteristics.randomWithoutDeletions
         let dealer = DealerCharacteristics.random
-        let expectedDealer = context.makeExpectedDealer(from: dealer)
         let (x, y, tapRadius) = (Int.random, Int.random, Int.random)
         var map = MapCharacteristics.random
         let link = MapCharacteristics.Entry.Link(type: .dealerDetail, name: .random, target: dealer.identifier)
@@ -25,11 +24,15 @@ class WhenFetchingMapContents_ThatRevealsDealer_ApplicationShould: XCTestCase {
         syncResponse.dealers.changed = [dealer]
         context.performSuccessfulSync(response: syncResponse)
 
-        var content: MapContent?
-        context.mapsService.fetchContent(for: MapIdentifier(map.identifier), atX: x, y: y) { content = $0 }
-        let expected = MapContent.dealer(expectedDealer)
+        var actual: Dealer?
+        context.mapsService.fetchContent(for: MapIdentifier(map.identifier), atX: x, y: y) { (content) in
+            if case .dealer(let dealer) = content {
+                actual = dealer
+            }
+        }
 
-        XCTAssertEqual(expected, content)
+        DealerAssertion()
+            .assertDealer(actual, characterisedBy: dealer)
     }
 
 }
