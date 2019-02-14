@@ -18,12 +18,11 @@ class AnnouncementRemoveAllBeforeInsertTests: XCTestCase {
         let context = ApplicationTestBuilder().build()
         context.performSuccessfulSync(response: originalResponse)
         context.performSuccessfulSync(response: subsequentResponse)
-        let expected = context.expectedAnnouncements(from: subsequentResponse)
         let observer = CapturingAnnouncementsServiceObserver()
         context.announcementsService.add(observer)
 
-        XCTAssertEqual(expected, observer.allAnnouncements,
-                       "Should have removed original announcements between sync events")
+        AnnouncementAssertion().assertOrderedAnnouncements(observer.allAnnouncements,
+                                                           characterisedBy: subsequentResponse.announcements.changed)
     }
 
     func testShouldNotRemoveAllAnnouncementsWhenNotToldToRemoveThem() {
@@ -33,14 +32,12 @@ class AnnouncementRemoveAllBeforeInsertTests: XCTestCase {
         let context = ApplicationTestBuilder().build()
         context.performSuccessfulSync(response: originalResponse)
         context.performSuccessfulSync(response: subsequentResponse)
-        let first = context.expectedAnnouncements(from: originalResponse)
-        let second = context.expectedAnnouncements(from: subsequentResponse)
-        let expected = first + second
+        let combinedResponses = originalResponse.announcements.changed + subsequentResponse.announcements.changed
         let observer = CapturingAnnouncementsServiceObserver()
         context.announcementsService.add(observer)
 
-        XCTAssertTrue(expected.equalsIgnoringOrder(observer.allAnnouncements),
-                      "Should have not removed original announcements between sync events")
+        AnnouncementAssertion().assertOrderedAnnouncements(observer.allAnnouncements,
+                                                           characterisedBy: combinedResponses)
     }
 
 }
