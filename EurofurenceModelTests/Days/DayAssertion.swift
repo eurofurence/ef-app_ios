@@ -22,9 +22,17 @@ class DayAssertion: EntityAssertion {
 
         for (idx, day) in days.enumerated() {
             let characteristic = orderedCharacteristics[idx]
-
-            assert(day.date, isEqualTo: characteristic.date)
+            assertDay(day, characterisedBy: characteristic)
         }
+    }
+
+    func assertDay(_ day: Day?, characterisedBy characteristic: ConferenceDayCharacteristics) {
+        guard let day = day else {
+            fail(message: "Expected day: \(characteristic)")
+            return
+        }
+
+        assert(day.date, isEqualTo: characteristic.date)
     }
 
 }

@@ -20,9 +20,9 @@ class WhenAppLaunchesWhenClockReadsConferenceDay_ScheduleShould: XCTestCase {
         let schedule = context.eventsService.makeEventsSchedule()
         let delegate = CapturingEventsScheduleDelegate()
         schedule.setDelegate(delegate)
-        let expected = context.makeExpectedDay(from: randomDay)
 
-        XCTAssertEqual(expected, delegate.capturedCurrentDay)
+        DayAssertion()
+            .assertDay(delegate.capturedCurrentDay, characterisedBy: randomDay)
     }
 
     func testPermitFuzzyMatchingAgainstHoursMinutesAndSecondsWithinDay() {
@@ -39,9 +39,9 @@ class WhenAppLaunchesWhenClockReadsConferenceDay_ScheduleShould: XCTestCase {
         let schedule = context.eventsService.makeEventsSchedule()
         let delegate = CapturingEventsScheduleDelegate()
         schedule.setDelegate(delegate)
-        let expected = context.makeExpectedDay(from: randomDay)
 
-        XCTAssertEqual(expected, delegate.capturedCurrentDay)
+        DayAssertion()
+            .assertDay(delegate.capturedCurrentDay, characterisedBy: randomDay)
     }
 
     func testProvideEventsForThatDay() {
