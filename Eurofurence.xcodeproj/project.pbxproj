@@ -3562,8 +3562,6 @@
 			children = (
 				CAD780421F1D4CA3002A8333 /* Credential.swift */,
 				CA00AE8820D28AAD00C2FBB0 /* Day.swift */,
-				CA467998221761FE006B3090 /* Dealer.swift */,
-				CA4679A122176A3F006B3090 /* Event.swift */,
 				CAF81C7620DDAD6F00898C52 /* ExtendedDealerData.swift */,
 				CA240F4621E3D8B9002DB747 /* Identifier.swift */,
 				CABF03B82041C2B00028BD62 /* KnowledgeEntry.swift */,
@@ -6071,6 +6069,8 @@
 			isa = PBXGroup;
 			children = (
 				CA46798F221708FA006B3090 /* Announcement.swift */,
+				CA467998221761FE006B3090 /* Dealer.swift */,
+				CA4679A122176A3F006B3090 /* Event.swift */,
 				CACF1EC820B6D5AA00D904B5 /* ImageEntity.swift */,
 			);
 			path = Entities;
