@@ -23,7 +23,7 @@ class ConcreteDealersService: DealersService {
 
         func performSearch(term: String) {
             let matches = alphebetisedDealers.compactMap { (group) -> AlphabetisedDealersGroup? in
-                let matchingDealers = group.dealers.compactMap { (dealer) -> Dealer? in
+                let matchingDealers = group.dealers.compactMap { (dealer) -> DealerProtocol? in
                     let preferredNameMatches = dealer.preferredName.localizedCaseInsensitiveContains(term)
                     var alternateNameMatches = false
                     if let alternateName = dealer.alternateName {

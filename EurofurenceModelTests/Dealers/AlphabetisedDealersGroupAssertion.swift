@@ -80,13 +80,13 @@ class AlphabetisedDealersGroupAssertion: EntityAssertion {
         assertDealersMatchCharacteristics(dealersAndCharacteristics)
     }
 
-    private typealias DealerAndCharacteristics = (Dealer, DealerCharacteristics)
+    private typealias DealerAndCharacteristics = (DealerProtocol, DealerCharacteristics)
 
-    private func resolveCharacteristicsForDealers(_ dealers: [Dealer]) -> [DealerAndCharacteristics] {
+    private func resolveCharacteristicsForDealers(_ dealers: [DealerProtocol]) -> [DealerAndCharacteristics] {
         return dealers.compactMap(characteristicsForDealer)
     }
 
-    private func characteristicsForDealer(_ dealer: Dealer) -> DealerAndCharacteristics? {
+    private func characteristicsForDealer(_ dealer: DealerProtocol) -> DealerAndCharacteristics? {
         if let characteristics = characteristics.first(where: { $0.identifier == dealer.identifier.rawValue }) {
             return (dealer, characteristics)
         } else {

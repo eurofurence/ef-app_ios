@@ -36,9 +36,9 @@ public protocol DealersIndexDelegate {
 public struct AlphabetisedDealersGroup {
 
     public var indexingString: String
-    public var dealers: [Dealer]
+    public var dealers: [DealerProtocol]
 
-    public init(indexingString: String, dealers: [Dealer]) {
+    public init(indexingString: String, dealers: [DealerProtocol]) {
         self.indexingString = indexingString
         self.dealers = dealers
     }

@@ -77,7 +77,7 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
         return (groups: groups, titles: indexTitles)
     }
 
-    private func makeDealerViewModel(for dealer: Dealer) -> DealerVM {
+    private func makeDealerViewModel(for dealer: DealerProtocol) -> DealerVM {
         return DealerVM(dealer: dealer, dealersService: dealersService, defaultIconData: defaultIconData)
     }
 
@@ -193,11 +193,11 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
 
     private struct DealerVM: DealerViewModel {
 
-        private let dealer: Dealer
+        private let dealer: DealerProtocol
         private let dealersService: DealersService
         private let defaultIconData: Data
 
-        init(dealer: Dealer, dealersService: DealersService, defaultIconData: Data) {
+        init(dealer: DealerProtocol, dealersService: DealersService, defaultIconData: Data) {
             self.dealer = dealer
             self.dealersService = dealersService
             self.defaultIconData = defaultIconData

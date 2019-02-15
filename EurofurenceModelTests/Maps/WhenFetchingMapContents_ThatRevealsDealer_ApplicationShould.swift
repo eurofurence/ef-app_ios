@@ -24,7 +24,7 @@ class WhenFetchingMapContents_ThatRevealsDealer_ApplicationShould: XCTestCase {
         syncResponse.dealers.changed = [dealer]
         context.performSuccessfulSync(response: syncResponse)
 
-        var actual: Dealer?
+        var actual: DealerProtocol?
         context.mapsService.fetchContent(for: MapIdentifier(map.identifier), atX: x, y: y) { (content) in
             if case .dealer(let dealer) = content {
                 actual = dealer

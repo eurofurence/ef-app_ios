@@ -467,6 +467,7 @@
 		CA44C37E211CAF29003C1C4E /* NewsPresenterPhotoshootIconBindingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C37D211CAF29003C1C4E /* NewsPresenterPhotoshootIconBindingTests.swift */; };
 		CA467990221708FA006B3090 /* Announcement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA46798F221708FA006B3090 /* Announcement.swift */; };
 		CA46799422170911006B3090 /* AnnouncementImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA46799322170911006B3090 /* AnnouncementImpl.swift */; };
+		CA46799722175F6D006B3090 /* StubDealer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA46799522175F4B006B3090 /* StubDealer.swift */; };
 		CA4C474A21DF88B9005231AD /* NotificationServiceFetchResultAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4C474921DF88B9005231AD /* NotificationServiceFetchResultAdapter.swift */; };
 		CA4C474D21DFFE4F005231AD /* PrivateMessagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4C474B21DFFE0E005231AD /* PrivateMessagesService.swift */; };
 		CA4FBE0E1F72FF2A00D29405 /* MessagesPresenterTestsWhenBindingMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FBE0D1F72FF2A00D29405 /* MessagesPresenterTestsWhenBindingMessages.swift */; };
@@ -1048,7 +1049,6 @@
 		CAEA0F87216E1AE200B0C7A6 /* Room+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E9720A8886C004AFED6 /* Room+RandomValueProviding.swift */; };
 		CAEA0F88216E1AE200B0C7A6 /* Track+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E9120B36BC800D904B5 /* Track+RandomValueProviding.swift */; };
 		CAEA0F89216E1AE200B0C7A6 /* User+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFE22078E42800697566 /* User+RandomValueProviding.swift */; };
-		CAEA0F8A216E1AE200B0C7A6 /* Dealer+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A49420D92EE600EE6537 /* Dealer+RandomValueProviding.swift */; };
 		CAEA0F8B216E1AE200B0C7A6 /* AlphabetisedDealersGroup+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A49A20D9779C00EE6537 /* AlphabetisedDealersGroup+RandomValueProviding.swift */; };
 		CAEA0F8C216E1AE200B0C7A6 /* ExtendedDealerData+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF81C7820DDAEAA00898C52 /* ExtendedDealerData+RandomValueProviding.swift */; };
 		CAEA0F8D216E1AE200B0C7A6 /* Map+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DA820E2CE2C007536CD /* Map+RandomValueProviding.swift */; };
@@ -1921,7 +1921,6 @@
 		CA36A48E20D92EAA00EE6537 /* DealersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersService.swift; sourceTree = "<group>"; };
 		CA36A49020D92EC100EE6537 /* FakeDealersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeDealersService.swift; sourceTree = "<group>"; };
 		CA36A49220D92ED400EE6537 /* Dealer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dealer.swift; sourceTree = "<group>"; };
-		CA36A49420D92EE600EE6537 /* Dealer+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dealer+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA36A49620D92EF700EE6537 /* CapturingDealersViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingDealersViewModelDelegate.swift; sourceTree = "<group>"; };
 		CA36A49820D9778400EE6537 /* FakeDealersIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeDealersIndex.swift; sourceTree = "<group>"; };
 		CA36A49A20D9779C00EE6537 /* AlphabetisedDealersGroup+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlphabetisedDealersGroup+RandomValueProviding.swift"; sourceTree = "<group>"; };
@@ -2030,6 +2029,7 @@
 		CA44C381211CB7D6003C1C4E /* WhenFetchingImagesForKnowledgeEntry_WhenEntryHasImages_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingImagesForKnowledgeEntry_WhenEntryHasImages_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA46798F221708FA006B3090 /* Announcement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Announcement.swift; sourceTree = "<group>"; };
 		CA46799322170911006B3090 /* AnnouncementImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementImpl.swift; sourceTree = "<group>"; };
+		CA46799522175F4B006B3090 /* StubDealer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubDealer.swift; sourceTree = "<group>"; };
 		CA46A73820F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLaunchingApplication_PrivateMessagesShould.swift; sourceTree = "<group>"; };
 		CA49E93E2015480A00EB571C /* EventHandlerRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventHandlerRegistration.swift; sourceTree = "<group>"; };
 		CA49E9422015480A00EB571C /* EventBusRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBusRegistration.swift; sourceTree = "<group>"; };
@@ -6128,6 +6128,7 @@
 			isa = PBXGroup;
 			children = (
 				CA0E5210208F4BF3005259FE /* StubAnnouncement.swift */,
+				CA46799522175F4B006B3090 /* StubDealer.swift */,
 			);
 			path = "Entity Test Doubles";
 			sourceTree = "<group>";
@@ -6298,7 +6299,6 @@
 				CA162E9720A8886C004AFED6 /* Room+RandomValueProviding.swift */,
 				CACF1E9120B36BC800D904B5 /* Track+RandomValueProviding.swift */,
 				CA60BFE22078E42800697566 /* User+RandomValueProviding.swift */,
-				CA36A49420D92EE600EE6537 /* Dealer+RandomValueProviding.swift */,
 				CA36A49A20D9779C00EE6537 /* AlphabetisedDealersGroup+RandomValueProviding.swift */,
 				CAF81C7820DDAEAA00898C52 /* ExtendedDealerData+RandomValueProviding.swift */,
 				CA6A8DA820E2CE2C007536CD /* Map+RandomValueProviding.swift */,
@@ -8856,7 +8856,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAEA0F89216E1AE200B0C7A6 /* User+RandomValueProviding.swift in Sources */,
-				CAEA0F8A216E1AE200B0C7A6 /* Dealer+RandomValueProviding.swift in Sources */,
 				CAEA0F83216E1AE200B0C7A6 /* KnowledgeEntry+RandomValueProviding.swift in Sources */,
 				CAEA0F86216E1AE200B0C7A6 /* Message+RandomValueProviding.swift in Sources */,
 				CAEA0F7D216E188C00B0C7A6 /* CapturingURLOpener.swift in Sources */,
@@ -8878,6 +8877,7 @@
 				CAEA103D216E1D8700B0C7A6 /* StubAppVersionProviding.swift in Sources */,
 				CAEA0F81216E1AE200B0C7A6 /* Day+RandomValueProviding.swift in Sources */,
 				CAEA0F87216E1AE200B0C7A6 /* Room+RandomValueProviding.swift in Sources */,
+				CA46799722175F6D006B3090 /* StubDealer.swift in Sources */,
 				CAEA0F84216E1AE200B0C7A6 /* KnowledgeGroup+RandomValueProviding.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

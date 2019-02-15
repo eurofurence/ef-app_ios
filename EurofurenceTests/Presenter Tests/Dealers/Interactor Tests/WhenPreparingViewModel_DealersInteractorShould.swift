@@ -26,7 +26,7 @@ class WhenPreparingViewModel_DealersInteractorShould: XCTestCase {
         viewModel?.setDelegate(delegate)
     }
 
-    private func fetchRandomDealerAndAssociatedViewModel() -> (dealer: Dealer, viewModel: DealerViewModel?) {
+    private func fetchRandomDealerAndAssociatedViewModel() -> (dealer: DealerProtocol, viewModel: DealerViewModel?) {
         let modelDealers = context.dealersService.index.alphabetisedDealers
         let randomGroup = modelDealers.randomElement()
         let randomDealer = randomGroup.element.dealers.randomElement()

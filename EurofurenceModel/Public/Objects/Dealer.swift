@@ -10,7 +10,22 @@ import Foundation
 
 public typealias DealerIdentifier = Identifier<Dealer>
 
-public struct Dealer {
+public protocol DealerProtocol {
+
+    var identifier: DealerIdentifier { get }
+
+    var preferredName: String { get }
+    var alternateName: String? { get }
+
+    var isAttendingOnThursday: Bool { get }
+    var isAttendingOnFriday: Bool { get }
+    var isAttendingOnSaturday: Bool { get }
+
+    var isAfterDark: Bool { get }
+
+}
+
+public struct Dealer: DealerProtocol {
 
     public var identifier: DealerIdentifier
 
