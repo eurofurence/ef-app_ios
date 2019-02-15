@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct LoginArguments: Equatable {
+public struct LoginArguments {
 
     public var registrationNumber: Int
     public var username: String
