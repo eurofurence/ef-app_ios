@@ -19,7 +19,7 @@ class ConcreteMapsService: MapsService {
     private var roomServerModels = [RoomCharacteristics]()
     private var dealerServerModels = [DealerCharacteristics]()
 
-    private var models = [Map]() {
+    private var models = [MapImpl]() {
         didSet {
             observers.forEach({ $0.mapsServiceDidChangeMaps(models) })
         }
@@ -110,8 +110,8 @@ class ConcreteMapsService: MapsService {
         roomServerModels = rooms
         dealerServerModels = dealers
 
-        models = serverModels.map({ (map) -> Map in
-            return Map(identifier: MapIdentifier(map.identifier), location: map.mapDescription)
+        models = serverModels.map({ (map) -> MapImpl in
+            return MapImpl(identifier: MapIdentifier(map.identifier), location: map.mapDescription)
         }).sorted(by: { (first, second) -> Bool in
             return first.location < second.location
         })

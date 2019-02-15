@@ -8,16 +8,16 @@
 
 import Foundation
 
-public typealias MapIdentifier = Identifier<MapProtocol>
+public typealias MapIdentifier = Identifier<Map>
 
-public protocol MapProtocol {
+public protocol Map {
 
     var identifier: MapIdentifier { get }
     var location: String { get }
 
 }
 
-struct Map: MapProtocol {
+struct MapImpl: Map {
 
     var identifier: MapIdentifier
     var location: String

@@ -13,10 +13,10 @@ class DefaultMapsInteractor: MapsInteractor, MapsObserver {
 
     private struct ViewModel: MapsViewModel {
 
-        private let maps: [MapProtocol]
+        private let maps: [Map]
         private let mapsService: MapsService
 
-        init(maps: [MapProtocol], mapsService: MapsService) {
+        init(maps: [Map], mapsService: MapsService) {
             self.maps = maps
             self.mapsService = mapsService
         }
@@ -38,10 +38,10 @@ class DefaultMapsInteractor: MapsInteractor, MapsObserver {
 
     private struct SingleViewModel: MapViewModel2 {
 
-        private let map: MapProtocol
+        private let map: Map
         private let mapsService: MapsService
 
-        init(map: MapProtocol, mapsService: MapsService) {
+        init(map: Map, mapsService: MapsService) {
             self.map = map
             self.mapsService = mapsService
         }
@@ -57,7 +57,7 @@ class DefaultMapsInteractor: MapsInteractor, MapsObserver {
     }
 
     private let mapsService: MapsService
-    private var maps = [MapProtocol]()
+    private var maps = [Map]()
 
     convenience init() {
         self.init(mapsService: SharedModel.instance.services.maps)
@@ -68,7 +68,7 @@ class DefaultMapsInteractor: MapsInteractor, MapsObserver {
         mapsService.add(self)
     }
 
-    func mapsServiceDidChangeMaps(_ maps: [MapProtocol]) {
+    func mapsServiceDidChangeMaps(_ maps: [Map]) {
         self.maps = maps
     }
 

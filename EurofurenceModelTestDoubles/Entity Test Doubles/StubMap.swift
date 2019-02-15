@@ -10,7 +10,7 @@ import EurofurenceModel
 import Foundation
 import RandomDataGeneration
 
-public struct StubMap: MapProtocol {
+public struct StubMap: Map {
 
     public var identifier: MapIdentifier
     public var location: String

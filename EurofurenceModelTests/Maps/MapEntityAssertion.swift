@@ -10,7 +10,7 @@ import EurofurenceModel
 
 class MapEntityAssertion: EntityAssertion {
 
-    func assertMaps(_ maps: [MapProtocol], characterisedBy characteristics: [MapCharacteristics]) {
+    func assertMaps(_ maps: [Map], characterisedBy characteristics: [MapCharacteristics]) {
         guard maps.count == characteristics.count else {
             fail(message: "Expected \(characteristics.count) maps, got \(maps.count)")
             return
