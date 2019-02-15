@@ -26,13 +26,13 @@ public struct Announcement {
 
 }
 
-public extension Announcement {
+extension Announcement {
 
-    public static func fromServerModels(_ models: [AnnouncementCharacteristics]) -> [Announcement] {
+    static func fromServerModels(_ models: [AnnouncementCharacteristics]) -> [Announcement] {
         return models.map(Announcement.init)
     }
 
-    public init(serverModel: AnnouncementCharacteristics) {
+    init(serverModel: AnnouncementCharacteristics) {
         identifier = AnnouncementIdentifier(serverModel.identifier)
         title = serverModel.title
         content = serverModel.content

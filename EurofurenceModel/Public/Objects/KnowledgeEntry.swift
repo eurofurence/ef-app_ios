@@ -30,9 +30,9 @@ public struct KnowledgeEntry: Comparable {
 
 }
 
-public extension KnowledgeEntry {
+extension KnowledgeEntry {
 
-    public static func fromServerModel(_ entry: KnowledgeEntryCharacteristics) -> KnowledgeEntry {
+    static func fromServerModel(_ entry: KnowledgeEntryCharacteristics) -> KnowledgeEntry {
         return KnowledgeEntry(identifier: KnowledgeEntryIdentifier(entry.identifier),
                                title: entry.title,
                                order: entry.order,

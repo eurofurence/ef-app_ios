@@ -28,13 +28,13 @@ public struct Link: Comparable, Hashable, Equatable {
 
 }
 
-public extension Link {
+extension Link {
 
-    public static func fromServerModel(_ link: LinkCharacteristics) -> Link {
+    static func fromServerModel(_ link: LinkCharacteristics) -> Link {
         return Link(name: link.name, type: Link.Kind(rawValue: link.fragmentType.rawValue)!, contents: link.target)
     }
 
-    public static func fromServerModels(_ links: [LinkCharacteristics]) -> [Link] {
+    static func fromServerModels(_ links: [LinkCharacteristics]) -> [Link] {
         return links.map(fromServerModel)
     }
 

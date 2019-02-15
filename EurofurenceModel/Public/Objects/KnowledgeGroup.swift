@@ -34,9 +34,9 @@ public struct KnowledgeGroup: Comparable {
 
 }
 
-public extension KnowledgeGroup {
+extension KnowledgeGroup {
 
-    public static func fromServerModels(groups: [KnowledgeGroupCharacteristics], entries: [KnowledgeEntryCharacteristics]) -> [KnowledgeGroup] {
+    static func fromServerModels(groups: [KnowledgeGroupCharacteristics], entries: [KnowledgeEntryCharacteristics]) -> [KnowledgeGroup] {
         return groups.map({ (group) -> KnowledgeGroup in
             let entries = entries.filter({ $0.groupIdentifier == group.identifier }).map(KnowledgeEntry.fromServerModel).sorted()
             let defaultFontAwesomeBackupCharacter: Character = " "
