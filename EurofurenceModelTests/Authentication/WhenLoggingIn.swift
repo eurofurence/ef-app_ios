@@ -111,31 +111,35 @@ class WhenLoggingIn: XCTestCase {
         let loginObserver = CapturingLoginObserver()
         let username = "Some cool guy"
         let regNo = 42
-        let expectedUser = User(registrationNumber: regNo, username: username)
         context.login(registrationNumber: regNo, username: username, completionHandler: loginObserver.completionHandler)
         context.loginAPI.simulateResponse(makeLoginResponse())
 
-        XCTAssertEqual(expectedUser, loginObserver.loggedInUser)
+        XCTAssertEqual(username, loginObserver.loggedInUser?.username)
+        XCTAssertEqual(regNo, loginObserver.loggedInUser?.registrationNumber)
     }
 
     func testSuccessfulLoginTellsObserversTheUserHasLoggedIn() {
         let observer = CapturingAuthenticationStateObserver()
         context.authenticationService.add(observer)
-        let user = User(registrationNumber: .random, username: .random)
-        context.login(registrationNumber: user.registrationNumber, username: user.username, completionHandler: { (_) in })
+        let regNo: Int = .random
+        let username: String = .random
+        context.login(registrationNumber: regNo, username: username, completionHandler: { (_) in })
         context.loginAPI.simulateResponse(makeLoginResponse())
 
-        XCTAssertEqual(user, observer.capturedLoggedInUser)
+        XCTAssertEqual(username, observer.capturedLoggedInUser?.username)
+        XCTAssertEqual(regNo, observer.capturedLoggedInUser?.registrationNumber)
     }
 
     func testAddingObserverAfterSuccessfullyLoggingInTellsItAboutTheLoggedInUser() {
-        let user = User(registrationNumber: .random, username: .random)
-        context.login(registrationNumber: user.registrationNumber, username: user.username, completionHandler: { (_) in })
+        let regNo: Int = .random
+        let username: String = .random
+        context.login(registrationNumber: regNo, username: username, completionHandler: { (_) in })
         context.loginAPI.simulateResponse(makeLoginResponse())
         let observer = CapturingAuthenticationStateObserver()
         context.authenticationService.add(observer)
 
-        XCTAssertEqual(user, observer.capturedLoggedInUser)
+        XCTAssertEqual(username, observer.capturedLoggedInUser?.username)
+        XCTAssertEqual(regNo, observer.capturedLoggedInUser?.registrationNumber)
     }
 
     func testLoggingOutTellsObserversTheUserHasLoggedOut() {
