@@ -63,9 +63,9 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
         searchViewModel.favouriteEventsDidChange(identifiers)
     }
 
-    func eventsDidChange(to events: [EventProtocol]) {}
-    func runningEventsDidChange(to events: [EventProtocol]) {}
-    func upcomingEventsDidChange(to events: [EventProtocol]) {}
+    func eventsDidChange(to events: [Event]) {}
+    func runningEventsDidChange(to events: [Event]) {}
+    func upcomingEventsDidChange(to events: [Event]) {}
 
     // MARK: Private
 
@@ -73,7 +73,7 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
 
         private struct EventsGroupedByDate {
             var date: Date
-            var events: [EventProtocol]
+            var events: [Event]
 
             func compare(against: EventsGroupedByDate) -> Bool {
                 return date < against.date
@@ -101,7 +101,7 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
         private let hoursDateFormatter: HoursDateFormatter
         private let shortFormDateFormatter: ShortFormDateFormatter
         private let refreshService: RefreshService
-        private var events = [EventProtocol]()
+        private var events = [Event]()
         private var favouriteEvents = [EventIdentifier]()
 
         init(schedule: EventsSchedule,
@@ -149,7 +149,7 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
             }
         }
 
-        func scheduleEventsDidChange(to events: [EventProtocol]) {
+        func scheduleEventsDidChange(to events: [Event]) {
             self.events = events
             regenerateEventViewModels()
         }
@@ -219,7 +219,7 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
 
         private struct EventsGroupedByDate {
             var date: Date
-            var events: [EventProtocol]
+            var events: [Event]
 
             func compare(against: EventsGroupedByDate) -> Bool {
                 return date < against.date
@@ -231,7 +231,7 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
         private let shortFormDayAndTimeFormatter: ShortFormDayAndTimeFormatter
         private let hoursDateFormatter: HoursDateFormatter
         private var rawModelGroups = [EventsGroupedByDate]()
-        private var searchResults = [EventProtocol]()
+        private var searchResults = [Event]()
         private var favouriteEvents = [EventIdentifier]()
 
         init(searchController: EventsSearchController,
@@ -267,7 +267,7 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
             searchController.removeFavouritesEventsRestriction()
         }
 
-        func searchResultsDidUpdate(to results: [EventProtocol]) {
+        func searchResultsDidUpdate(to results: [Event]) {
             searchResults = results
             regenerateViewModel()
         }

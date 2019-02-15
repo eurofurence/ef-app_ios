@@ -10,7 +10,7 @@ import EurofurenceModel
 import Foundation
 import RandomDataGeneration
 
-public struct StubEvent: EventProtocol {
+public struct StubEvent: Event {
 
     public var identifier: EventIdentifier
     public var title: String

@@ -12,10 +12,10 @@ import Foundation
 
 class FakeEventsSchedule: EventsSchedule {
 
-    var events: [EventProtocol]
+    var events: [Event]
     var currentDay: Day?
 
-    init(events: [EventProtocol] = [StubEvent].random, currentDay: Day? = .random) {
+    init(events: [Event] = [StubEvent].random, currentDay: Day? = .random) {
         self.events = events
         self.currentDay = currentDay
     }
@@ -36,7 +36,7 @@ class FakeEventsSchedule: EventsSchedule {
 
 extension FakeEventsSchedule {
 
-    func simulateEventsChanged(_ events: [EventProtocol]) {
+    func simulateEventsChanged(_ events: [Event]) {
         delegate?.scheduleEventsDidChange(to: events)
     }
 

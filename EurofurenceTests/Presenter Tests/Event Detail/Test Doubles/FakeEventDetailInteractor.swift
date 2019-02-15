@@ -14,9 +14,9 @@ import Foundation
 struct FakeEventDetailInteractor: EventDetailInteractor {
 
     private let viewModel: EventDetailViewModel
-    private let event: EventProtocol
+    private let event: Event
 
-    init(viewModel: EventDetailViewModel, for event: EventProtocol) {
+    init(viewModel: EventDetailViewModel, for event: Event) {
         self.viewModel = viewModel
         self.event = event
     }

@@ -12,9 +12,9 @@ import Foundation
 
 class FakeEventsService: EventsService {
 
-    var runningEvents: [EventProtocol] = []
-    var upcomingEvents: [EventProtocol] = []
-    var allEvents: [EventProtocol] = []
+    var runningEvents: [Event] = []
+    var upcomingEvents: [Event] = []
+    var allEvents: [Event] = []
     var favourites: [EventIdentifier] = []
 
     init(favourites: [EventIdentifier] = []) {
@@ -62,8 +62,8 @@ class FakeEventsService: EventsService {
         return searchController
     }
 
-    fileprivate var stubbedEvents = [EventIdentifier: EventProtocol]()
-    func fetchEvent(for identifier: EventIdentifier, completionHandler: @escaping (EventProtocol?) -> Void) {
+    fileprivate var stubbedEvents = [EventIdentifier: Event]()
+    func fetchEvent(for identifier: EventIdentifier, completionHandler: @escaping (Event?) -> Void) {
         completionHandler(stubbedEvents[identifier])
     }
 
@@ -71,7 +71,7 @@ class FakeEventsService: EventsService {
 
 extension FakeEventsService {
 
-    func stub(_ event: EventProtocol, for identifier: EventIdentifier) {
+    func stub(_ event: Event, for identifier: EventIdentifier) {
         stubbedEvents[identifier] = event
     }
 
@@ -98,7 +98,7 @@ extension FakeEventsService {
         observers.forEach { $0.favouriteEventsDidChange(favourites) }
     }
 
-    func simulateEventsChanged(_ events: [EventProtocol]) {
+    func simulateEventsChanged(_ events: [Event]) {
         lastProducedSchedule?.simulateEventsChanged(events)
     }
 

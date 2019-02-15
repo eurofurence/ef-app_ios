@@ -36,7 +36,7 @@ class ConcreteEventsService: ClockDelegate, EventsService {
     private(set) var tracks = [TrackCharacteristics]()
     private(set) var days = [ConferenceDayCharacteristics]()
 
-    private(set) var eventModels = [EventProtocol]() {
+    private(set) var eventModels = [Event]() {
         didSet {
             updateObserversWithLatestScheduleInformation()
         }
@@ -57,14 +57,14 @@ class ConcreteEventsService: ClockDelegate, EventsService {
         }
     }
 
-    var runningEvents: [EventProtocol] {
+    var runningEvents: [Event] {
         let now = clock.currentDate
         return eventModels.filter { (event) -> Bool in
             return DateInterval(start: event.startDate, end: event.endDate).contains(now)
         }
     }
 
-    var upcomingEvents: [EventProtocol] {
+    var upcomingEvents: [Event] {
         let now = clock.currentDate
         let range = DateInterval(start: now, end: now.addingTimeInterval(timeIntervalForUpcomingEventsSinceNow))
         return eventModels.filter { (event) -> Bool in
@@ -111,7 +111,7 @@ class ConcreteEventsService: ClockDelegate, EventsService {
         return InMemoryEventsSearchController(schedule: self, eventBus: eventBus)
     }
 
-    func fetchEvent(for identifier: EventIdentifier, completionHandler: @escaping (EventProtocol?) -> Void) {
+    func fetchEvent(for identifier: EventIdentifier, completionHandler: @escaping (Event?) -> Void) {
         let event = eventModels.first(where: { $0.identifier == identifier })
         completionHandler(event)
     }
@@ -181,7 +181,7 @@ class ConcreteEventsService: ClockDelegate, EventsService {
         }
     }
 
-    func makeEventModel(from event: EventCharacteristics) -> EventProtocol? {
+    func makeEventModel(from event: EventCharacteristics) -> Event? {
         guard let room = rooms.first(where: { $0.roomIdentifier == event.roomIdentifier }) else { return nil }
         guard let track = tracks.first(where: { $0.trackIdentifier == event.trackIdentifier }) else { return nil }
 
@@ -199,7 +199,7 @@ class ConcreteEventsService: ClockDelegate, EventsService {
             }
         }()
 
-        return Event(identifier: EventIdentifier(event.identifier),
+        return EventImpl(identifier: EventIdentifier(event.identifier),
                       title: title,
                       subtitle: event.subtitle,
                       abstract: event.abstract,

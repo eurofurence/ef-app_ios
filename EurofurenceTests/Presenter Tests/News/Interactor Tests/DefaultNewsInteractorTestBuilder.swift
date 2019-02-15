@@ -225,7 +225,7 @@ extension DefaultNewsInteractorTestBuilder.Context {
         return Array(announcementsService.announcements.prefix(3))
     }
 
-    var runningEvents: [EventProtocol] {
+    var runningEvents: [Event] {
         return eventsService.runningEvents
     }
 
@@ -331,20 +331,20 @@ extension DefaultNewsInteractorTestBuilder.Context {
             return days
         }
 
-        private func makeExpectedEventViewModelForRunningEvent(from event: EventProtocol) -> AnyHashable {
+        private func makeExpectedEventViewModelForRunningEvent(from event: Event) -> AnyHashable {
             return makeExpectedEventViewModel(event: event,
                                               startTime: .now,
                                               endTime: context.hoursDateFormatter.hoursString(from: event.endDate))
         }
 
-        private func makeExpectedEventViewModelForUpcomingEvent(from event: EventProtocol) -> AnyHashable {
+        private func makeExpectedEventViewModelForUpcomingEvent(from event: Event) -> AnyHashable {
             let timeDifference = event.startDate.timeIntervalSince1970 - context.clock.currentDate.timeIntervalSince1970
             return makeExpectedEventViewModel(event: event,
                                               startTime: context.relativeTimeFormatter.relativeString(from: timeDifference),
                                               endTime: context.hoursDateFormatter.hoursString(from: event.endDate))
         }
 
-        private func makeExpectedViewModelForFavouriteEvent(from event: EventProtocol) -> AnyHashable {
+        private func makeExpectedViewModelForFavouriteEvent(from event: Event) -> AnyHashable {
             let isFavourite = context.eventsService.favourites.contains(event.identifier)
             return makeExpectedEventViewModel(event: event,
                                               startTime: context.hoursDateFormatter.hoursString(from: event.startDate),
@@ -352,7 +352,7 @@ extension DefaultNewsInteractorTestBuilder.Context {
                                               isFavourite: isFavourite)
         }
 
-        private func makeExpectedEventViewModel(event: EventProtocol,
+        private func makeExpectedEventViewModel(event: Event,
                                                 startTime: String,
                                                 endTime: String,
                                                 isFavourite: Bool = false) -> AnyHashable {

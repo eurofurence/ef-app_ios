@@ -32,7 +32,7 @@ extension StubNewsModuleFactory {
         delegate?.newsModuleDidSelectAnnouncement(announcement)
     }
 
-    func simulateDidSelectEvent(_ event: EventProtocol) {
+    func simulateDidSelectEvent(_ event: Event) {
         delegate?.newsModuleDidSelectEvent(event)
     }
 

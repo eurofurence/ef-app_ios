@@ -13,9 +13,9 @@ import XCTest
 
 class WhenGroupingEventsByStartTime_ScheduleInteractorShould: XCTestCase {
 
-    var firstGroupEvents: [EventProtocol]!
-    var secondGroupEvents: [EventProtocol]!
-    var events: [EventProtocol]!
+    var firstGroupEvents: [Event]!
+    var secondGroupEvents: [Event]!
+    var events: [Event]!
     var eventsService: FakeEventsService!
     var context: ScheduleInteractorTestBuilder.Context!
     var expectedEventViewModels: [ScheduleEventGroupViewModel]!

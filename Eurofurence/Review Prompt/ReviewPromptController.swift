@@ -59,8 +59,8 @@ struct ReviewPromptController: EventsServiceObserver {
         }
     }
 
-    func eventsDidChange(to events: [EventProtocol]) { }
-    func runningEventsDidChange(to events: [EventProtocol]) { }
-    func upcomingEventsDidChange(to events: [EventProtocol]) { }
+    func eventsDidChange(to events: [Event]) { }
+    func runningEventsDidChange(to events: [Event]) { }
+    func upcomingEventsDidChange(to events: [Event]) { }
 
 }

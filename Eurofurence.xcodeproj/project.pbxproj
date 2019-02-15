@@ -470,6 +470,8 @@
 		CA46799722175F6D006B3090 /* StubDealer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA46799522175F4B006B3090 /* StubDealer.swift */; };
 		CA467999221761FE006B3090 /* Dealer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA467998221761FE006B3090 /* Dealer.swift */; };
 		CA46799B22176329006B3090 /* DealerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA46799A22176329006B3090 /* DealerImpl.swift */; };
+		CA4679A222176A3F006B3090 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4679A122176A3F006B3090 /* Event.swift */; };
+		CA4679A422176AAF006B3090 /* EventImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4679A322176AAF006B3090 /* EventImpl.swift */; };
 		CA4C474A21DF88B9005231AD /* NotificationServiceFetchResultAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4C474921DF88B9005231AD /* NotificationServiceFetchResultAdapter.swift */; };
 		CA4C474D21DFFE4F005231AD /* PrivateMessagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4C474B21DFFE0E005231AD /* PrivateMessagesService.swift */; };
 		CA4FBE0E1F72FF2A00D29405 /* MessagesPresenterTestsWhenBindingMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FBE0D1F72FF2A00D29405 /* MessagesPresenterTestsWhenBindingMessages.swift */; };
@@ -924,7 +926,6 @@
 		CAEA0DB0216BDE2300B0C7A6 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D07FC1FE904CD00BFD785 /* UserPreferences.swift */; };
 		CAEA0DB2216BDE2300B0C7A6 /* Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780421F1D4CA3002A8333 /* Credential.swift */; };
 		CAEA0DB3216BDE2300B0C7A6 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE8820D28AAD00C2FBB0 /* Day.swift */; };
-		CAEA0DB5216BDE2300B0C7A6 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E9120A652B5004AFED6 /* Event.swift */; };
 		CAEA0DB6216BDE2300B0C7A6 /* ExtendedDealerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF81C7620DDAD6F00898C52 /* ExtendedDealerData.swift */; };
 		CAEA0DB7216BDE2300B0C7A6 /* KnowledgeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF03B82041C2B00028BD62 /* KnowledgeEntry.swift */; };
 		CAEA0DB8216BDE2300B0C7A6 /* KnowledgeGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF03B92041C2B00028BD62 /* KnowledgeGroup.swift */; };
@@ -1619,7 +1620,6 @@
 		CA162E8A20A64352004AFED6 /* WhenLoggedOutDuringConvention_NewsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLoggedOutDuringConvention_NewsInteractorShould.swift; sourceTree = "<group>"; };
 		CA162E8C20A64C8C004AFED6 /* WhenObservingConventionCountdownAfterConventionStarts_EurofurenceApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingConventionCountdownAfterConventionStarts_EurofurenceApplicationShould.swift; sourceTree = "<group>"; };
 		CA162E8F20A652AA004AFED6 /* EventsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsService.swift; sourceTree = "<group>"; };
-		CA162E9120A652B5004AFED6 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		CA162E9320A87D3D004AFED6 /* Event+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA162E9520A88854004AFED6 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		CA162E9720A8886C004AFED6 /* Room+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Room+RandomValueProviding.swift"; sourceTree = "<group>"; };
@@ -2032,6 +2032,8 @@
 		CA46799522175F4B006B3090 /* StubDealer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubDealer.swift; sourceTree = "<group>"; };
 		CA467998221761FE006B3090 /* Dealer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dealer.swift; sourceTree = "<group>"; };
 		CA46799A22176329006B3090 /* DealerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerImpl.swift; sourceTree = "<group>"; };
+		CA4679A122176A3F006B3090 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		CA4679A322176AAF006B3090 /* EventImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventImpl.swift; sourceTree = "<group>"; };
 		CA46A73820F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLaunchingApplication_PrivateMessagesShould.swift; sourceTree = "<group>"; };
 		CA49E93E2015480A00EB571C /* EventHandlerRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventHandlerRegistration.swift; sourceTree = "<group>"; };
 		CA49E9422015480A00EB571C /* EventBusRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBusRegistration.swift; sourceTree = "<group>"; };
@@ -3558,10 +3560,10 @@
 		CA18B3451F49AF4500038E52 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
-				CA467998221761FE006B3090 /* Dealer.swift */,
 				CAD780421F1D4CA3002A8333 /* Credential.swift */,
 				CA00AE8820D28AAD00C2FBB0 /* Day.swift */,
-				CA162E9120A652B5004AFED6 /* Event.swift */,
+				CA467998221761FE006B3090 /* Dealer.swift */,
+				CA4679A122176A3F006B3090 /* Event.swift */,
 				CAF81C7620DDAD6F00898C52 /* ExtendedDealerData.swift */,
 				CA240F4621E3D8B9002DB747 /* Identifier.swift */,
 				CABF03B82041C2B00028BD62 /* KnowledgeEntry.swift */,
@@ -4314,6 +4316,7 @@
 			children = (
 				CA46799322170911006B3090 /* AnnouncementImpl.swift */,
 				CA46799A22176329006B3090 /* DealerImpl.swift */,
+				CA4679A322176AAF006B3090 /* EventImpl.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -8508,7 +8511,6 @@
 				CA240F6421E79141002DB747 /* CoreDataStoreTransaction.swift in Sources */,
 				CAEA0DEA216BDE2300B0C7A6 /* SignificantTimePassedEvent.swift in Sources */,
 				CAEA0DA6216BDE2300B0C7A6 /* HoursDateFormatter.swift in Sources */,
-				CAEA0DB5216BDE2300B0C7A6 /* Event.swift in Sources */,
 				CAEA0DD8216BDE2300B0C7A6 /* EntityAdapting.swift in Sources */,
 				CAEA0DD3216BDE2300B0C7A6 /* UserDefaultsPreferences.swift in Sources */,
 				CA240F6721E8A93C002DB747 /* NSManagedObjectContext+Convenience.swift in Sources */,
@@ -8530,6 +8532,7 @@
 				CAEA0DBA216BDE2300B0C7A6 /* LoginArguments.swift in Sources */,
 				CAEA0DA0216BDE2300B0C7A6 /* CollectThemAllRequestFactory.swift in Sources */,
 				CAEA0DC7216BDE2300B0C7A6 /* ContentLinksService.swift in Sources */,
+				CA4679A222176A3F006B3090 /* Event.swift in Sources */,
 				CAEA0E03216BDE3100B0C7A6 /* ImageAPI.swift in Sources */,
 				CAEA0DF2216BDE3100B0C7A6 /* AppCoreStrings.swift in Sources */,
 				CAEA0DAA216BDE2300B0C7A6 /* NotificationScheduler.swift in Sources */,
@@ -8551,6 +8554,7 @@
 				CAEA0E0A216BDE3100B0C7A6 /* NetworkReachability.swift in Sources */,
 				CAEA0DBF216BDE2300B0C7A6 /* User.swift in Sources */,
 				CAEA0DFF216BDE3100B0C7A6 /* LoginAPI.swift in Sources */,
+				CA4679A422176AAF006B3090 /* EventImpl.swift in Sources */,
 				CACD2EB121D67EF200BACD91 /* BundleAppVersionProviding.swift in Sources */,
 				CAEA0DB6216BDE2300B0C7A6 /* ExtendedDealerData.swift in Sources */,
 				CACD2F0721DEB9DE00BACD91 /* SessionStateService.swift in Sources */,
