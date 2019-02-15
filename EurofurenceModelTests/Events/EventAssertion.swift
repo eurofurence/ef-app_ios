@@ -23,7 +23,7 @@ class EventAssertion: EntityAssertion {
         super.init(file: file, line: line)
     }
 
-    func assertEvents(_ events: [Event], characterisedBy characteristics: [EventCharacteristics]) {
+    func assertEvents(_ events: [EventProtocol], characterisedBy characteristics: [EventCharacteristics]) {
         guard events.count == characteristics.count else {
             fail(message: "Differing amount of expected/actual events")
             return
@@ -35,7 +35,7 @@ class EventAssertion: EntityAssertion {
         }
     }
 
-    func assertEvent(_ event: Event?, characterisedBy characteristic: EventCharacteristics) {
+    func assertEvent(_ event: EventProtocol?, characterisedBy characteristic: EventCharacteristics) {
         guard let event = event else {
             fail(message: "Event not present - expected event \(characteristic.identifier)")
             return
@@ -70,7 +70,7 @@ class EventAssertion: EntityAssertion {
         assert(event.bannerGraphicPNGData, isEqualTo: expectedBannerGraphic)
     }
 
-    func assertCollection<C>(_ collection: C, containsEventCharacterisedBy characteristic: EventCharacteristics) where C: Collection, C.Element == Event {
+    func assertCollection<C>(_ collection: C, containsEventCharacterisedBy characteristic: EventCharacteristics) where C: Collection, C.Element == EventProtocol {
         guard let event = collection.first(where: { $0.identifier.rawValue == characteristic.identifier }) else {
             fail(message: "Collection did not contain event")
             return

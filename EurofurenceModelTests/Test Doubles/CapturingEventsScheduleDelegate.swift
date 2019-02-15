@@ -11,8 +11,8 @@ import Foundation
 
 class CapturingEventsScheduleDelegate: EventsScheduleDelegate {
 
-    private(set) var events = [Event]()
-    func scheduleEventsDidChange(to events: [Event]) {
+    private(set) var events = [EventProtocol]()
+    func scheduleEventsDidChange(to events: [EventProtocol]) {
         self.events = events
     }
 

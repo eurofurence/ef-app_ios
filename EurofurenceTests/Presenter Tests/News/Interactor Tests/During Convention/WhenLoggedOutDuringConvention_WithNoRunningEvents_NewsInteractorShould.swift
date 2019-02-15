@@ -17,7 +17,7 @@ class WhenLoggedOutDuringConvention_WithNoRunningEvents_NewsInteractorShould: XC
         let eventsService = FakeEventsService()
         let runningEvents = [Event]()
         eventsService.runningEvents = runningEvents
-        eventsService.upcomingEvents = .random(minimum: 1)
+        eventsService.upcomingEvents = [StubEvent].random(minimum: 1)
         eventsService.stubSomeFavouriteEvents()
         let context = DefaultNewsInteractorTestBuilder()
             .with(FakeAuthenticationService.loggedOutService())

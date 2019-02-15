@@ -17,7 +17,7 @@ class WhenScheduleModuleSelectsEvent_DirectorShould: XCTestCase {
         let context = ApplicationDirectorTestBuilder().build()
         context.navigateToTabController()
         let scheduleNavigationController = context.navigationController(for: context.scheduleModule.stubInterface)
-        let event = Event.random
+        let event = StubEvent.random
         context.scheduleModule.simulateDidSelectEvent(event.identifier)
 
         XCTAssertEqual(context.eventDetailModule.stubInterface, scheduleNavigationController?.topViewController)

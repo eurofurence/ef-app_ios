@@ -7,14 +7,15 @@
 //
 
 import EurofurenceModel
+import EurofurenceModelTestDoubles
 import Foundation
 
 class FakeEventsSchedule: EventsSchedule {
 
-    var events: [Event]
+    var events: [EventProtocol]
     var currentDay: Day?
 
-    init(events: [Event] = .random, currentDay: Day? = .random) {
+    init(events: [EventProtocol] = [StubEvent].random, currentDay: Day? = .random) {
         self.events = events
         self.currentDay = currentDay
     }
@@ -35,7 +36,7 @@ class FakeEventsSchedule: EventsSchedule {
 
 extension FakeEventsSchedule {
 
-    func simulateEventsChanged(_ events: [Event]) {
+    func simulateEventsChanged(_ events: [EventProtocol]) {
         delegate?.scheduleEventsDidChange(to: events)
     }
 

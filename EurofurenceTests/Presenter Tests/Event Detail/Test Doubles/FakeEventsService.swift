@@ -7,13 +7,14 @@
 //
 
 import EurofurenceModel
+import EurofurenceModelTestDoubles
 import Foundation
 
 class FakeEventsService: EventsService {
 
-    var runningEvents: [Event] = []
-    var upcomingEvents: [Event] = []
-    var allEvents: [Event] = []
+    var runningEvents: [EventProtocol] = []
+    var upcomingEvents: [EventProtocol] = []
+    var allEvents: [EventProtocol] = []
     var favourites: [EventIdentifier] = []
 
     init(favourites: [EventIdentifier] = []) {
@@ -61,8 +62,8 @@ class FakeEventsService: EventsService {
         return searchController
     }
 
-    fileprivate var stubbedEvents = [EventIdentifier: Event]()
-    func fetchEvent(for identifier: EventIdentifier, completionHandler: @escaping (Event?) -> Void) {
+    fileprivate var stubbedEvents = [EventIdentifier: EventProtocol]()
+    func fetchEvent(for identifier: EventIdentifier, completionHandler: @escaping (EventProtocol?) -> Void) {
         completionHandler(stubbedEvents[identifier])
     }
 
@@ -70,12 +71,12 @@ class FakeEventsService: EventsService {
 
 extension FakeEventsService {
 
-    func stub(_ event: Event, for identifier: EventIdentifier) {
+    func stub(_ event: EventProtocol, for identifier: EventIdentifier) {
         stubbedEvents[identifier] = event
     }
 
     func stubSomeFavouriteEvents() {
-        allEvents = .random(minimum: 3)
+        allEvents = [StubEvent].random(minimum: 3)
         favourites = Array(allEvents.dropFirst()).map({ $0.identifier })
     }
 
@@ -97,7 +98,7 @@ extension FakeEventsService {
         observers.forEach { $0.favouriteEventsDidChange(favourites) }
     }
 
-    func simulateEventsChanged(_ events: [Event]) {
+    func simulateEventsChanged(_ events: [EventProtocol]) {
         lastProducedSchedule?.simulateEventsChanged(events)
     }
 

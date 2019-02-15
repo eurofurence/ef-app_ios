@@ -104,12 +104,12 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
         }
 
         private let components: [EventDetailViewModelComponent]
-        private let event: Event
+        private let event: EventProtocol
         private let eventsService: EventsService
         private var isFavourite = false
 
         init(components: [EventDetailViewModelComponent],
-             event: Event,
+             event: EventProtocol,
              eventsService: EventsService) {
             self.components = components
             self.event = event
@@ -141,9 +141,9 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
             eventsService.unfavouriteEvent(identifier: event.identifier)
         }
 
-        func eventsDidChange(to events: [Event]) { }
-        func runningEventsDidChange(to events: [Event]) { }
-        func upcomingEventsDidChange(to events: [Event]) { }
+        func eventsDidChange(to events: [EventProtocol]) { }
+        func runningEventsDidChange(to events: [EventProtocol]) { }
+        func upcomingEventsDidChange(to events: [EventProtocol]) { }
 
         func favouriteEventsDidChange(_ identifiers: [EventIdentifier]) {
             isFavourite = identifiers.contains(event.identifier)

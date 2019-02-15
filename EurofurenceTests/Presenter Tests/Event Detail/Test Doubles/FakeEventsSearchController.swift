@@ -35,7 +35,7 @@ class FakeEventsSearchController: EventsSearchController {
 
 extension FakeEventsSearchController {
 
-    func simulateSearchResultsChanged(_ results: [Event]) {
+    func simulateSearchResultsChanged(_ results: [EventProtocol]) {
         searchResultsDelegate?.searchResultsDidUpdate(to: results)
     }
 

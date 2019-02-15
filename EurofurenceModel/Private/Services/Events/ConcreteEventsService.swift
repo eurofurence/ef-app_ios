@@ -36,7 +36,7 @@ class ConcreteEventsService: ClockDelegate, EventsService {
     private(set) var tracks = [TrackCharacteristics]()
     private(set) var days = [ConferenceDayCharacteristics]()
 
-    private(set) var eventModels = [Event]() {
+    private(set) var eventModels = [EventProtocol]() {
         didSet {
             updateObserversWithLatestScheduleInformation()
         }
@@ -57,14 +57,14 @@ class ConcreteEventsService: ClockDelegate, EventsService {
         }
     }
 
-    var runningEvents: [Event] {
+    var runningEvents: [EventProtocol] {
         let now = clock.currentDate
         return eventModels.filter { (event) -> Bool in
             return DateInterval(start: event.startDate, end: event.endDate).contains(now)
         }
     }
 
-    var upcomingEvents: [Event] {
+    var upcomingEvents: [EventProtocol] {
         let now = clock.currentDate
         let range = DateInterval(start: now, end: now.addingTimeInterval(timeIntervalForUpcomingEventsSinceNow))
         return eventModels.filter { (event) -> Bool in
@@ -111,7 +111,7 @@ class ConcreteEventsService: ClockDelegate, EventsService {
         return InMemoryEventsSearchController(schedule: self, eventBus: eventBus)
     }
 
-    func fetchEvent(for identifier: EventIdentifier, completionHandler: @escaping (Event?) -> Void) {
+    func fetchEvent(for identifier: EventIdentifier, completionHandler: @escaping (EventProtocol?) -> Void) {
         let event = eventModels.first(where: { $0.identifier == identifier })
         completionHandler(event)
     }
@@ -181,7 +181,7 @@ class ConcreteEventsService: ClockDelegate, EventsService {
         }
     }
 
-    func makeEventModel(from event: EventCharacteristics) -> Event? {
+    func makeEventModel(from event: EventCharacteristics) -> EventProtocol? {
         guard let room = rooms.first(where: { $0.roomIdentifier == event.roomIdentifier }) else { return nil }
         guard let track = tracks.first(where: { $0.trackIdentifier == event.trackIdentifier }) else { return nil }
 

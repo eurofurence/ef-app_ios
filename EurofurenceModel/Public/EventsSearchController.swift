@@ -19,6 +19,6 @@ public protocol EventsSearchController {
 
 public protocol EventsSearchControllerDelegate {
 
-    func searchResultsDidUpdate(to results: [Event])
+    func searchResultsDidUpdate(to results: [EventProtocol])
 
 }

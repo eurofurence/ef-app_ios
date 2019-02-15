@@ -27,7 +27,7 @@ struct StubArtShowEventViewModel: EventDetailViewModel {
 class WhenBindingArtShowMessage_EventDetailPresenterShould: XCTestCase {
 
     func testBindTheMessageOntoTheComponent() {
-        let event = Event.random
+        let event = StubEvent.random
         let message = String.random
         let artShowViewModel = EventArtShowMessageViewModel(message: message)
         let viewModel = StubArtShowEventViewModel(artShowMessageViewModel: artShowViewModel)

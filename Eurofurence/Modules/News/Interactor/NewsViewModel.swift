@@ -25,7 +25,7 @@ enum NewsViewModelValue {
     case messages
     case announcement(AnnouncementIdentifier)
     case allAnnouncements
-    case event(Event)
+    case event(EventProtocol)
 }
 
 protocol NewsViewModelVisitor {

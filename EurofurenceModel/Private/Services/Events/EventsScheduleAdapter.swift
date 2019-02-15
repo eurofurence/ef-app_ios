@@ -31,7 +31,7 @@ class EventsScheduleAdapter: EventsSchedule {
 
     private let schedule: ConcreteEventsService
     private let clock: Clock
-    private var events = [EurofurenceModel.Event]()
+    private var events = [EurofurenceModel.EventProtocol]()
     private var days = [Day]()
     private var filters = [EventFilter]()
     private var currentDay: Day? {

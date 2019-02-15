@@ -35,8 +35,8 @@ class DefaultNewsInteractor: NewsInteractor,
     private var delegate: NewsInteractorDelegate?
     private var unreadMessagesCount = 0
     private var daysUntilConvention: Int?
-    private var runningEvents = [Event]()
-    private var upcomingEvents = [Event]()
+    private var runningEvents = [EventProtocol]()
+    private var upcomingEvents = [EventProtocol]()
     private var announcements = [Announcement]()
     private var readAnnouncements = [AnnouncementIdentifier]()
     private var currentUser: User?
@@ -44,7 +44,7 @@ class DefaultNewsInteractor: NewsInteractor,
     private let clock: Clock
     private let refreshService: RefreshService
     private let favouritesSchedule: EventsSchedule
-    private var todaysEvents = [Event]()
+    private var todaysEvents = [EventProtocol]()
     private var currentDay: Day?
     private let announcementsDateFormatter: AnnouncementDateFormatter
 	private let announcementsMarkdownRenderer: MarkdownRenderer
@@ -166,20 +166,20 @@ class DefaultNewsInteractor: NewsInteractor,
 
     // MARK: EventsServiceObserver
 
-    private var allEvents = [Event]()
-    private var favouriteEvents = [Event]()
+    private var allEvents = [EventProtocol]()
+    private var favouriteEvents = [EventProtocol]()
     private var favouriteEventIdentifiers = [EventIdentifier]()
-    func eventsDidChange(to events: [Event]) {
+    func eventsDidChange(to events: [EventProtocol]) {
         allEvents = events
         regenerateFavouriteEvents()
     }
 
-    func runningEventsDidChange(to events: [Event]) {
+    func runningEventsDidChange(to events: [EventProtocol]) {
         runningEvents = events
         regenerateViewModel()
     }
 
-    func upcomingEventsDidChange(to events: [Event]) {
+    func upcomingEventsDidChange(to events: [EventProtocol]) {
         upcomingEvents = events
         regenerateViewModel()
     }
@@ -191,7 +191,7 @@ class DefaultNewsInteractor: NewsInteractor,
 
     // MARK: EventsScheduleDelegate
 
-    func scheduleEventsDidChange(to events: [Event]) {
+    func scheduleEventsDidChange(to events: [EventProtocol]) {
         todaysEvents = events
         regenerateViewModel()
     }
@@ -380,13 +380,13 @@ class DefaultNewsInteractor: NewsInteractor,
 
     private struct EventsComponent: NewsViewModelComponent {
 
-        private let events: [Event]
+        private let events: [EventProtocol]
         private let viewModels: [EventComponentViewModel]
 
         init(title: String,
-             events: [Event],
+             events: [EventProtocol],
              favouriteEventIdentifiers: [EventIdentifier],
-             startTimeFormatter: (Event) -> String,
+             startTimeFormatter: (EventProtocol) -> String,
              hoursDateFormatter: HoursDateFormatter) {
             self.title = title
             self.events = events

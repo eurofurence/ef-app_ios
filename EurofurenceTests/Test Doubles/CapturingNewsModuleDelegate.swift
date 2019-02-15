@@ -23,8 +23,8 @@ class CapturingNewsModuleDelegate: NewsModuleDelegate {
         capturedAnnouncement = announcement
     }
 
-    private(set) var capturedEvent: Event?
-    func newsModuleDidSelectEvent(_ event: Event) {
+    private(set) var capturedEvent: EventProtocol?
+    func newsModuleDidSelectEvent(_ event: EventProtocol) {
         capturedEvent = event
     }
 

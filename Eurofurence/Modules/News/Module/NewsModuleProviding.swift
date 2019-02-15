@@ -19,7 +19,7 @@ protocol NewsModuleDelegate {
 
     func newsModuleDidRequestShowingPrivateMessages()
     func newsModuleDidSelectAnnouncement(_ announcement: AnnouncementIdentifier)
-    func newsModuleDidSelectEvent(_ event: Event)
+    func newsModuleDidSelectEvent(_ event: EventProtocol)
     func newsModuleDidRequestShowingAllAnnouncements()
 
 }

@@ -27,7 +27,7 @@ struct StubDealersDenEventViewModel: EventDetailViewModel {
 class WhenBindingDealersDenBanner_EventDetailPresenterShould: XCTestCase {
 
     func testBindTheMessageOntoTheComponent() {
-        let event = Event.random
+        let event = StubEvent.random
         let message = String.random
         let artShowViewModel = EventDealersDenMessageViewModel(message: message)
         let viewModel = StubDealersDenEventViewModel(dealersDenMessageViewModel: artShowViewModel)

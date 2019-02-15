@@ -17,7 +17,7 @@ class WhenNewsModuleSelectsEvent_DirectorShould: XCTestCase {
         let context = ApplicationDirectorTestBuilder().build()
         context.navigateToTabController()
         let newsNavigationController = context.navigationController(for: context.newsModule.stubInterface)
-        let event = Event.random
+        let event = StubEvent.random
         context.newsModule.simulateDidSelectEvent(event)
 
         XCTAssertEqual(context.eventDetailModule.stubInterface, newsNavigationController?.topViewController)

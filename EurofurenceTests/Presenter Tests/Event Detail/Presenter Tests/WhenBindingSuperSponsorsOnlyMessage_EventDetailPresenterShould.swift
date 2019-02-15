@@ -27,7 +27,7 @@ struct StubSuperSponsorsOnlyEventViewModel: EventDetailViewModel {
 class WhenBindingSuperSponsorsOnlyMessage_EventDetailPresenterShould: XCTestCase {
 
     func testBindTheMessageOntoTheComponent() {
-        let event = Event.random
+        let event = StubEvent.random
         let message = String.random
         let superSponsorsOnlyWarningViewModel = EventSuperSponsorsOnlyWarningViewModel(message: message)
         let viewModel = StubSuperSponsorsOnlyEventViewModel(superSponsorsOnlyWarningViewModel: superSponsorsOnlyWarningViewModel)

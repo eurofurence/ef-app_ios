@@ -14,7 +14,7 @@ import XCTest
 class WhenPreparingViewModel_ForEventWithKage_EventDetailInteractorShould: XCTestCase {
 
     func testProduceKageHeadingAfterDescriptionComponent() {
-        var event = Event.randomStandardEvent
+        var event = StubEvent.randomStandardEvent
         event.isKageEvent = true
         let context = EventDetailInteractorTestBuilder().build(for: event)
         let visitor = CapturingEventDetailViewModelVisitor()

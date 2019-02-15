@@ -259,7 +259,7 @@ class ApplicationDirector: ExternalContentHandler,
         newsController?.navigationController?.pushViewController(module, animated: animate)
     }
 
-    func newsModuleDidSelectEvent(_ event: Event) {
+    func newsModuleDidSelectEvent(_ event: EventProtocol) {
         let module = eventDetailModuleProviding.makeEventDetailModule(for: event.identifier)
         newsController?.navigationController?.pushViewController(module, animated: animate)
     }

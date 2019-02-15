@@ -12,8 +12,8 @@ import Foundation
 class CapturingEventsSearchControllerDelegate: EventsSearchControllerDelegate {
 
     private(set) var toldSearchResultsUpdatedToEmptyArray = false
-    private(set) var capturedSearchResults = [Event]()
-    func searchResultsDidUpdate(to results: [Event]) {
+    private(set) var capturedSearchResults = [EventProtocol]()
+    func searchResultsDidUpdate(to results: [EventProtocol]) {
         toldSearchResultsUpdatedToEmptyArray = results.isEmpty
         capturedSearchResults = results
     }
