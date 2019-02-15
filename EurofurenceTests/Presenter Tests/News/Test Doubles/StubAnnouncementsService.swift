@@ -11,10 +11,10 @@ import Foundation
 
 class StubAnnouncementsService: AnnouncementsService {
 
-    var announcements: [AnnouncementProtocol]
+    var announcements: [Announcement]
     var stubbedReadAnnouncements: [AnnouncementIdentifier]
 
-    init(announcements: [AnnouncementProtocol], stubbedReadAnnouncements: [AnnouncementIdentifier] = []) {
+    init(announcements: [Announcement], stubbedReadAnnouncements: [AnnouncementIdentifier] = []) {
         self.announcements = announcements
         self.stubbedReadAnnouncements = stubbedReadAnnouncements
     }
@@ -26,7 +26,7 @@ class StubAnnouncementsService: AnnouncementsService {
         observer.announcementsServiceDidUpdateReadAnnouncements(stubbedReadAnnouncements)
     }
 
-    func openAnnouncement(identifier: AnnouncementIdentifier, completionHandler: @escaping (AnnouncementProtocol) -> Void) {
+    func openAnnouncement(identifier: AnnouncementIdentifier, completionHandler: @escaping (Announcement) -> Void) {
         guard let announcement = announcements.first(where: { $0.identifier == identifier }) else { return }
         completionHandler(announcement)
     }
@@ -39,7 +39,7 @@ class StubAnnouncementsService: AnnouncementsService {
 
 extension StubAnnouncementsService {
 
-    func updateAnnouncements(_ announcements: [AnnouncementProtocol]) {
+    func updateAnnouncements(_ announcements: [Announcement]) {
         observers.forEach({ $0.announcementsServiceDidChangeAnnouncements(announcements) })
     }
 

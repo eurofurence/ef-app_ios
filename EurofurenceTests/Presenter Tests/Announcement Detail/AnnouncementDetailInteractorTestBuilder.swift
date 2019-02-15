@@ -16,7 +16,7 @@ class AnnouncementDetailInteractorTestBuilder {
     struct Context {
         var interactor: AnnouncementDetailInteractor
         var markdownRenderer: StubMarkdownRenderer
-        var announcement: AnnouncementProtocol
+        var announcement: Announcement
         var announcementsService: StubAnnouncementsService
     }
 

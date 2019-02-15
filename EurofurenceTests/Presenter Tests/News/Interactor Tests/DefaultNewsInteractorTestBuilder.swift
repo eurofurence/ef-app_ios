@@ -217,11 +217,11 @@ extension DefaultNewsInteractorTestBuilder.Context {
         interactor.subscribeViewModelUpdates(delegate)
     }
 
-    var announcements: [AnnouncementProtocol] {
+    var announcements: [Announcement] {
         return announcementsService.announcements
     }
 
-    var displayedAnnouncements: [AnnouncementProtocol] {
+    var displayedAnnouncements: [Announcement] {
         return Array(announcementsService.announcements.prefix(3))
     }
 
@@ -319,7 +319,7 @@ extension DefaultNewsInteractorTestBuilder.Context {
             return context.announcements.map(makeExpectedAnnouncementViewModel)
         }
 
-        private func makeExpectedAnnouncementViewModel(from announcement: AnnouncementProtocol) -> AnyHashable {
+        private func makeExpectedAnnouncementViewModel(from announcement: Announcement) -> AnyHashable {
             return AnnouncementComponentViewModel(title: announcement.title,
                                                   detail: context.markdownRenderer.stubbedContents(for: announcement.content),
                                                   receivedDateTime: context.announcementDateFormatter.string(from: announcement.date),

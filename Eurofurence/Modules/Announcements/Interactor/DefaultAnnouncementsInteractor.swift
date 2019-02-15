@@ -39,7 +39,7 @@ struct DefaultAnnouncementsInteractor: AnnouncementsInteractor {
 
         private let announcementDateFormatter: AnnouncementDateFormatter
 		private let markdownRenderer: MarkdownRenderer
-        private var announcements = [AnnouncementProtocol]()
+        private var announcements = [Announcement]()
         private var readAnnouncements = [AnnouncementIdentifier]()
 
         init(announcementsService: AnnouncementsService, announcementDateFormatter: AnnouncementDateFormatter,
@@ -74,7 +74,7 @@ struct DefaultAnnouncementsInteractor: AnnouncementsInteractor {
             return announcements[index].identifier
         }
 
-        func announcementsServiceDidChangeAnnouncements(_ announcements: [AnnouncementProtocol]) {
+        func announcementsServiceDidChangeAnnouncements(_ announcements: [Announcement]) {
             self.announcements = announcements
             delegate?.announcementsViewModelDidChangeAnnouncements()
         }

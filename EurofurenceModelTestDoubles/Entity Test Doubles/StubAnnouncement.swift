@@ -9,7 +9,7 @@
 import EurofurenceModel
 import RandomDataGeneration
 
-public struct StubAnnouncement: AnnouncementProtocol {
+public struct StubAnnouncement: Announcement {
 
     public var identifier: AnnouncementIdentifier
     public var title: String

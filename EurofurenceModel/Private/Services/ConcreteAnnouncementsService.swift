@@ -17,7 +17,7 @@ class ConcreteAnnouncementsService: AnnouncementsService {
     private let imageRepository: ImageRepository
     private var readAnnouncementIdentifiers = [AnnouncementIdentifier]()
 
-    var models = [Announcement]() {
+    var models = [AnnouncementImpl]() {
         didSet {
             announcementsObservers.forEach(provideLatestData)
         }
@@ -43,7 +43,7 @@ class ConcreteAnnouncementsService: AnnouncementsService {
         announcementsObservers.append(observer)
     }
 
-    func openAnnouncement(identifier: AnnouncementIdentifier, completionHandler: @escaping (AnnouncementProtocol) -> Void) {
+    func openAnnouncement(identifier: AnnouncementIdentifier, completionHandler: @escaping (Announcement) -> Void) {
         guard let model = models.first(where: { $0.identifier == identifier }) else { return }
         completionHandler(model)
 
@@ -69,7 +69,7 @@ class ConcreteAnnouncementsService: AnnouncementsService {
 
     private func reloadAnnouncementsFromStore() {
         guard let announcements = dataStore.fetchAnnouncements() else { return }
-        models = announcements.sorted(by: isLastEditTimeAscending).map(Announcement.init)
+        models = announcements.sorted(by: isLastEditTimeAscending).map(AnnouncementImpl.init)
     }
 
     private func isLastEditTimeAscending(_ first: AnnouncementCharacteristics, _ second: AnnouncementCharacteristics) -> Bool {

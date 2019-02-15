@@ -26,8 +26,8 @@ class WhenPreparingViewModel_AnnouncementsInteractorShould: XCTestCase {
     var interactor: DefaultAnnouncementsInteractor!
     var announcementDateFormatter: FakeAnnouncementDateFormatter!
 	var markdownRenderer: StubMarkdownRenderer!
-    var announcements: [AnnouncementProtocol]!
-    var announcement: (element: AnnouncementProtocol, index: Int)!
+    var announcements: [Announcement]!
+    var announcement: (element: Announcement, index: Int)!
 
     override func setUp() {
         super.setUp()

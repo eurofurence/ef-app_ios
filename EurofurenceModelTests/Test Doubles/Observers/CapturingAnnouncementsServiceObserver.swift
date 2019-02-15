@@ -11,9 +11,9 @@ import Foundation
 
 class CapturingAnnouncementsServiceObserver: AnnouncementsServiceObserver {
 
-    private(set) var allAnnouncements: [AnnouncementProtocol] = []
+    private(set) var allAnnouncements: [Announcement] = []
     private(set) var didReceieveEmptyAllAnnouncements = false
-    func announcementsServiceDidChangeAnnouncements(_ announcements: [AnnouncementProtocol]) {
+    func announcementsServiceDidChangeAnnouncements(_ announcements: [Announcement]) {
         allAnnouncements = announcements
         didReceieveEmptyAllAnnouncements = didReceieveEmptyAllAnnouncements || announcements.isEmpty
     }

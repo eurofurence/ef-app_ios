@@ -11,14 +11,14 @@ import Foundation
 public protocol AnnouncementsService {
 
     func add(_ observer: AnnouncementsServiceObserver)
-    func openAnnouncement(identifier: AnnouncementIdentifier, completionHandler: @escaping (AnnouncementProtocol) -> Void)
+    func openAnnouncement(identifier: AnnouncementIdentifier, completionHandler: @escaping (Announcement) -> Void)
     func fetchAnnouncementImage(identifier: AnnouncementIdentifier, completionHandler: @escaping (Data?) -> Void)
 
 }
 
 public protocol AnnouncementsServiceObserver {
 
-    func announcementsServiceDidChangeAnnouncements(_ announcements: [AnnouncementProtocol])
+    func announcementsServiceDidChangeAnnouncements(_ announcements: [Announcement])
     func announcementsServiceDidUpdateReadAnnouncements(_ readAnnouncements: [AnnouncementIdentifier])
 
 }

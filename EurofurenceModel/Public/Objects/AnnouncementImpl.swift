@@ -8,9 +8,9 @@
 
 import Foundation
 
-public typealias AnnouncementIdentifier = Identifier<AnnouncementProtocol>
+public typealias AnnouncementIdentifier = Identifier<Announcement>
 
-public protocol AnnouncementProtocol {
+public protocol Announcement {
 
     var identifier: AnnouncementIdentifier { get }
     var title: String { get }
@@ -19,7 +19,7 @@ public protocol AnnouncementProtocol {
 
 }
 
-struct Announcement: AnnouncementProtocol {
+struct AnnouncementImpl: Announcement {
 
     var identifier: AnnouncementIdentifier
     var title: String
@@ -35,10 +35,10 @@ struct Announcement: AnnouncementProtocol {
 
 }
 
-extension Announcement {
+extension AnnouncementImpl {
 
-    static func fromServerModels(_ models: [AnnouncementCharacteristics]) -> [Announcement] {
-        return models.map(Announcement.init)
+    static func fromServerModels(_ models: [AnnouncementCharacteristics]) -> [AnnouncementImpl] {
+        return models.map(AnnouncementImpl.init)
     }
 
     init(serverModel: AnnouncementCharacteristics) {

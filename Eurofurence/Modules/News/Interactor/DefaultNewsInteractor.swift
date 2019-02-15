@@ -37,7 +37,7 @@ class DefaultNewsInteractor: NewsInteractor,
     private var daysUntilConvention: Int?
     private var runningEvents = [Event]()
     private var upcomingEvents = [Event]()
-    private var announcements = [AnnouncementProtocol]()
+    private var announcements = [Announcement]()
     private var readAnnouncements = [AnnouncementIdentifier]()
     private var currentUser: User?
     private let dateDistanceCalculator: DateDistanceCalculator
@@ -109,7 +109,7 @@ class DefaultNewsInteractor: NewsInteractor,
 
     // MARK: AnnouncementsServiceObserver
 
-    func announcementsServiceDidChangeAnnouncements(_ announcements: [AnnouncementProtocol]) {
+    func announcementsServiceDidChangeAnnouncements(_ announcements: [Announcement]) {
         self.announcements = Array(announcements.prefix(3))
         regenerateViewModel()
     }
@@ -335,10 +335,10 @@ class DefaultNewsInteractor: NewsInteractor,
 
     private struct AnnouncementsComponent: NewsViewModelComponent {
 
-        private let announcements: [AnnouncementProtocol]
+        private let announcements: [Announcement]
         private let viewModels: [AnnouncementComponentViewModel]
 
-        init(announcements: [AnnouncementProtocol],
+        init(announcements: [Announcement],
              readAnnouncements: [AnnouncementIdentifier],
              announcementsDateFormatter: AnnouncementDateFormatter,
 			 markdownRenderer: MarkdownRenderer) {
