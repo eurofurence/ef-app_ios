@@ -469,6 +469,7 @@
 		CA46799422170911006B3090 /* AnnouncementImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA46799322170911006B3090 /* AnnouncementImpl.swift */; };
 		CA46799722175F6D006B3090 /* StubDealer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA46799522175F4B006B3090 /* StubDealer.swift */; };
 		CA467999221761FE006B3090 /* Dealer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA467998221761FE006B3090 /* Dealer.swift */; };
+		CA46799B22176329006B3090 /* DealerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA46799A22176329006B3090 /* DealerImpl.swift */; };
 		CA4C474A21DF88B9005231AD /* NotificationServiceFetchResultAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4C474921DF88B9005231AD /* NotificationServiceFetchResultAdapter.swift */; };
 		CA4C474D21DFFE4F005231AD /* PrivateMessagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4C474B21DFFE0E005231AD /* PrivateMessagesService.swift */; };
 		CA4FBE0E1F72FF2A00D29405 /* MessagesPresenterTestsWhenBindingMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FBE0D1F72FF2A00D29405 /* MessagesPresenterTestsWhenBindingMessages.swift */; };
@@ -2030,6 +2031,7 @@
 		CA46799322170911006B3090 /* AnnouncementImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementImpl.swift; sourceTree = "<group>"; };
 		CA46799522175F4B006B3090 /* StubDealer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubDealer.swift; sourceTree = "<group>"; };
 		CA467998221761FE006B3090 /* Dealer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dealer.swift; sourceTree = "<group>"; };
+		CA46799A22176329006B3090 /* DealerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerImpl.swift; sourceTree = "<group>"; };
 		CA46A73820F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLaunchingApplication_PrivateMessagesShould.swift; sourceTree = "<group>"; };
 		CA49E93E2015480A00EB571C /* EventHandlerRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventHandlerRegistration.swift; sourceTree = "<group>"; };
 		CA49E9422015480A00EB571C /* EventBusRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBusRegistration.swift; sourceTree = "<group>"; };
@@ -4311,6 +4313,7 @@
 			isa = PBXGroup;
 			children = (
 				CA46799322170911006B3090 /* AnnouncementImpl.swift */,
+				CA46799A22176329006B3090 /* DealerImpl.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -8600,6 +8603,7 @@
 				CAEA0E08216BDE3100B0C7A6 /* BuildConfigurationAPIURLProviding.swift in Sources */,
 				CAEA0D8A216BDD9500B0C7A6 /* ConcreteMapsService.swift in Sources */,
 				CAEA0DC5216BDE2300B0C7A6 /* EventsService.swift in Sources */,
+				CA46799B22176329006B3090 /* DealerImpl.swift in Sources */,
 				CAEA0DE1216BDE2300B0C7A6 /* RoomEntity+Adaptation.swift in Sources */,
 				CAEA0DBB216BDE2300B0C7A6 /* Map.swift in Sources */,
 				CAEA0DCA216BDE2300B0C7A6 /* ConcreteAuthenticationService.swift in Sources */,
