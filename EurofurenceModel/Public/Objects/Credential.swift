@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Credential: Equatable {
+public struct Credential {
 
     public var username: String
     public var registrationNumber: Int
