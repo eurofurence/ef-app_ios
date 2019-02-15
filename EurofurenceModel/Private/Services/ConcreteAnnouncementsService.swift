@@ -77,7 +77,7 @@ class ConcreteAnnouncementsService: AnnouncementsService {
     }
 
     private func provideLatestData(to observer: AnnouncementsServiceObserver) {
-        observer.eurofurenceApplicationDidChangeAnnouncements(models)
+        observer.announcementsServiceDidChangeAnnouncements(models)
         observer.announcementsServiceDidUpdateReadAnnouncements(readAnnouncementIdentifiers)
     }
 

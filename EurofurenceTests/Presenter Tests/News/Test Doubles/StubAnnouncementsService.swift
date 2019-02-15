@@ -22,7 +22,7 @@ class StubAnnouncementsService: AnnouncementsService {
     fileprivate var observers = [AnnouncementsServiceObserver]()
     func add(_ observer: AnnouncementsServiceObserver) {
         observers.append(observer)
-        observer.eurofurenceApplicationDidChangeAnnouncements(announcements)
+        observer.announcementsServiceDidChangeAnnouncements(announcements)
         observer.announcementsServiceDidUpdateReadAnnouncements(stubbedReadAnnouncements)
     }
 
@@ -40,7 +40,7 @@ class StubAnnouncementsService: AnnouncementsService {
 extension StubAnnouncementsService {
 
     func updateAnnouncements(_ announcements: [Announcement]) {
-        observers.forEach({ $0.eurofurenceApplicationDidChangeAnnouncements(announcements) })
+        observers.forEach({ $0.announcementsServiceDidChangeAnnouncements(announcements) })
     }
 
     func updateReadAnnouncements(_ readAnnouncements: [AnnouncementIdentifier]) {

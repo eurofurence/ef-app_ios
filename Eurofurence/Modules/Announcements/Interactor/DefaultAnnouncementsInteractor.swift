@@ -74,7 +74,7 @@ struct DefaultAnnouncementsInteractor: AnnouncementsInteractor {
             return announcements[index].identifier
         }
 
-        func eurofurenceApplicationDidChangeAnnouncements(_ announcements: [AnnouncementProtocol]) {
+        func announcementsServiceDidChangeAnnouncements(_ announcements: [AnnouncementProtocol]) {
             self.announcements = announcements
             delegate?.announcementsViewModelDidChangeAnnouncements()
         }
