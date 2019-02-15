@@ -29,11 +29,13 @@ public struct KnowledgeEntry {
 extension KnowledgeEntry {
 
     static func fromServerModel(_ entry: KnowledgeEntryCharacteristics) -> KnowledgeEntry {
+        let links: [Link] = Link.fromServerModels(entry.links)
+
         return KnowledgeEntry(identifier: KnowledgeEntryIdentifier(entry.identifier),
-                               title: entry.title,
-                               order: entry.order,
-                               contents: entry.text,
-                               links: Link.fromServerModels(entry.links).sorted())
+                              title: entry.title,
+                              order: entry.order,
+                              contents: entry.text,
+                              links: links)
     }
 
 }

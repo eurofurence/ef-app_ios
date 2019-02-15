@@ -101,7 +101,7 @@ class DefaultKnowledgeDetailSceneInteractorTests: XCTestCase {
         let expected = randomLink.element
         let actual = viewModel?.link(at: randomLink.index)
 
-        XCTAssertEqual(expected, actual)
+        XCTAssertEqual(expected.name, actual?.name)
     }
 
     func testUsesTitlesOfEntryAsTitle() {

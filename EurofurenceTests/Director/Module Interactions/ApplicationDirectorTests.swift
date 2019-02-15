@@ -28,7 +28,7 @@ class ApplicationDirectorTests: XCTestCase {
         context.knowledgeGroupEntriesModule.simulateKnowledgeEntrySelected(.random)
         let link = entry.links.randomElement().element
         let url = URL.random
-        context.linkRouter.stubbedLinkActions[link] = .web(url)
+        context.linkRouter.stubContent(.web(url), for: link)
         context.knowledgeDetailModule.simulateLinkSelected(link)
         let webModuleForURL = context.webModuleProviding.producedWebModules[url]
 
@@ -43,7 +43,7 @@ class ApplicationDirectorTests: XCTestCase {
         context.knowledgeGroupEntriesModule.simulateKnowledgeEntrySelected(.random)
         let link = entry.links.randomElement().element
         let url = URL.random
-        context.linkRouter.stubbedLinkActions[link] = .externalURL(url)
+        context.linkRouter.stubContent(.externalURL(url), for: link)
         context.knowledgeDetailModule.simulateLinkSelected(link)
 
         XCTAssertEqual(url, context.urlOpener.capturedURLToOpen)

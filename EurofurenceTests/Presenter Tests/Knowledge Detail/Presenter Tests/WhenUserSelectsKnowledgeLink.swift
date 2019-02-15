@@ -19,7 +19,7 @@ class WhenUserSelectsKnowledgeLink: XCTestCase {
         let expected = context.interactor.viewModel.link(at: randomLink.index)
         context.knowledgeDetailScene.simulateSelectingLink(at: randomLink.index)
 
-        XCTAssertEqual(expected, context.delegate.capturedLinkToOpen)
+        XCTAssertEqual(expected.name, context.delegate.capturedLinkToOpen?.name)
     }
 
 }

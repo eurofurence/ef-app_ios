@@ -6,7 +6,7 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
-public struct Link: Comparable, Hashable, Equatable {
+public struct Link {
 
     public enum Kind: Int {
         case webExternal
@@ -22,10 +22,6 @@ public struct Link: Comparable, Hashable, Equatable {
         self.contents = contents
     }
 
-    public static func <(lhs: Link, rhs: Link) -> Bool {
-        return lhs.name < rhs.name
-    }
-
 }
 
 extension Link {
@@ -35,7 +31,9 @@ extension Link {
     }
 
     static func fromServerModels(_ links: [LinkCharacteristics]) -> [Link] {
-        return links.map(fromServerModel)
+        return links.map(fromServerModel).sorted(by: { (first, second) in
+            return first.name < second.name
+        })
     }
 
 }
