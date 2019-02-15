@@ -1037,7 +1037,7 @@
 		CAEA0F7A216D341600B0C7A6 /* StubClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780481F1D51EB002A8333 /* StubClock.swift */; };
 		CAEA0F7C216D370600B0C7A6 /* FakeHoursDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA0F7B216D370600B0C7A6 /* FakeHoursDateFormatter.swift */; };
 		CAEA0F7D216E188C00B0C7A6 /* CapturingURLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63755F208CBC5F00536BE2 /* CapturingURLOpener.swift */; };
-		CAEA0F7F216E1AE200B0C7A6 /* Announcement+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5210208F4BF3005259FE /* Announcement+RandomValueProviding.swift */; };
+		CAEA0F7F216E1AE200B0C7A6 /* StubAnnouncement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5210208F4BF3005259FE /* StubAnnouncement.swift */; };
 		CAEA0F81216E1AE200B0C7A6 /* Day+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE8A20D28AF400C2FBB0 /* Day+RandomValueProviding.swift */; };
 		CAEA0F82216E1AE200B0C7A6 /* Event+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E9320A87D3D004AFED6 /* Event+RandomValueProviding.swift */; };
 		CAEA0F83216E1AE200B0C7A6 /* KnowledgeEntry+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF03C22041C2FD0028BD62 /* KnowledgeEntry+RandomValueProviding.swift */; };
@@ -1579,7 +1579,7 @@
 		CA0E5208208E7020005259FE /* Dealers.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dealers.storyboard; sourceTree = "<group>"; };
 		CA0E520C208E759F005259FE /* DefaultNewsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNewsInteractor.swift; sourceTree = "<group>"; };
 		CA0E520E208F4BDF005259FE /* Announcement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Announcement.swift; sourceTree = "<group>"; };
-		CA0E5210208F4BF3005259FE /* Announcement+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Announcement+RandomValueProviding.swift"; sourceTree = "<group>"; };
+		CA0E5210208F4BF3005259FE /* StubAnnouncement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubAnnouncement.swift; sourceTree = "<group>"; };
 		CA0E5212208F4CD7005259FE /* AnnouncementsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsService.swift; sourceTree = "<group>"; };
 		CA0E5214208F52ED005259FE /* CapturingNewsInteractorDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingNewsInteractorDelegate.swift; sourceTree = "<group>"; };
 		CA0E5216208FBEA9005259FE /* StubAnnouncementsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubAnnouncementsService.swift; sourceTree = "<group>"; };
@@ -6105,6 +6105,14 @@
 			path = "Presenter Tests";
 			sourceTree = "<group>";
 		};
+		CAD6FD4F221707560011712D /* Entity Test Doubles */ = {
+			isa = PBXGroup;
+			children = (
+				CA0E5210208F4BF3005259FE /* StubAnnouncement.swift */,
+			);
+			path = "Entity Test Doubles";
+			sourceTree = "<group>";
+		};
 		CADABF072119BE630023C3B6 /* Upgrade Path */ = {
 			isa = PBXGroup;
 			children = (
@@ -6236,11 +6244,12 @@
 				CAB3A7291F7532A2005DF77B /* CapturingPushPermissionsRequester.swift */,
 				CA63755F208CBC5F00536BE2 /* CapturingURLOpener.swift */,
 				CAEA0F7B216D370600B0C7A6 /* FakeHoursDateFormatter.swift */,
+				C61870DF20DAD8E00089E836 /* StubAPIURLProviding.swift */,
 				6EEC6DA21F1BFC5000205F2D /* StubAppVersionProviding.swift */,
 				78D7EEBE1F196B77005372A9 /* StubBuildConfigurationProviding.swift */,
 				CAD780481F1D51EB002A8333 /* StubClock.swift */,
 				CA162E7520A4B6CE004AFED6 /* StubDateDistanceCalculator.swift */,
-				C61870DF20DAD8E00089E836 /* StubAPIURLProviding.swift */,
+				CAD6FD4F221707560011712D /* Entity Test Doubles */,
 				CAEA0F7E216E1AA000B0C7A6 /* Random Value Generation */,
 			);
 			path = EurofurenceModelTestDoubles;
@@ -6261,7 +6270,6 @@
 		CAEA0F7E216E1AA000B0C7A6 /* Random Value Generation */ = {
 			isa = PBXGroup;
 			children = (
-				CA0E5210208F4BF3005259FE /* Announcement+RandomValueProviding.swift */,
 				CA00AE8A20D28AF400C2FBB0 /* Day+RandomValueProviding.swift */,
 				CA162E9320A87D3D004AFED6 /* Event+RandomValueProviding.swift */,
 				CABF03C22041C2FD0028BD62 /* KnowledgeEntry+RandomValueProviding.swift */,
@@ -8834,7 +8842,7 @@
 				CAEA0F7D216E188C00B0C7A6 /* CapturingURLOpener.swift in Sources */,
 				CAEA0F7A216D341600B0C7A6 /* StubClock.swift in Sources */,
 				CAEA0F7C216D370600B0C7A6 /* FakeHoursDateFormatter.swift in Sources */,
-				CAEA0F7F216E1AE200B0C7A6 /* Announcement+RandomValueProviding.swift in Sources */,
+				CAEA0F7F216E1AE200B0C7A6 /* StubAnnouncement.swift in Sources */,
 				CAEA0F88216E1AE200B0C7A6 /* Track+RandomValueProviding.swift in Sources */,
 				CAEA0F8B216E1AE200B0C7A6 /* AlphabetisedDealersGroup+RandomValueProviding.swift in Sources */,
 				CAEA0F76216D2CE800B0C7A6 /* StubAPIURLProviding.swift in Sources */,

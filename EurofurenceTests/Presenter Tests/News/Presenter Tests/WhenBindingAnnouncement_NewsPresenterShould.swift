@@ -47,7 +47,7 @@ class WhenBindingAnnouncement_NewsPresenterShould: XCTestCase {
     }
 
     func testTellTheDelegateAnnouncementSelectedWhenSceneSelectsComponentAtIndexPath() {
-        let announcement = Announcement.random
+        let announcement = StubAnnouncement.random
         viewModel.stub(.announcement(announcement.identifier), at: indexPath)
         context.selectComponent(at: indexPath)
 
@@ -55,7 +55,7 @@ class WhenBindingAnnouncement_NewsPresenterShould: XCTestCase {
     }
 
     func testNotTellTheDelegateToShowPrivateMessagesWhenSelectingAnnouncement() {
-        let announcement = Announcement.random
+        let announcement = StubAnnouncement.random
         viewModel.stub(.announcement(announcement.identifier), at: indexPath)
         context.selectComponent(at: indexPath)
 

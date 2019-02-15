@@ -16,7 +16,7 @@ class WhenLoggedOutBeforeConvention_ThenLogIn_NewsInteractorShould: XCTestCase {
     func testUpdateTheDelegateWithLoggedInUserWidget() {
         let authenticationService = FakeAuthenticationService.loggedOutService()
         let context = DefaultNewsInteractorTestBuilder()
-            .with(StubAnnouncementsService(announcements: .random))
+            .with(StubAnnouncementsService(announcements: [StubAnnouncement].random))
             .with(authenticationService)
             .build()
         context.subscribeViewModelUpdates()

@@ -22,7 +22,7 @@ class AnnouncementDetailPresenterTestBuilder {
 
     func build() -> Context {
         let sceneFactory = StubAnnouncementDetailSceneFactory()
-        let announcement: Announcement = .random
+        let announcement: StubAnnouncement = .random
         let announcementDetailInteractor = StubAnnouncementDetailInteractor(for: announcement.identifier)
         let module = AnnouncementDetailModuleBuilder()
             .with(sceneFactory)

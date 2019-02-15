@@ -26,13 +26,13 @@ class WhenPreparingViewModel_AnnouncementsInteractorShould: XCTestCase {
     var interactor: DefaultAnnouncementsInteractor!
     var announcementDateFormatter: FakeAnnouncementDateFormatter!
 	var markdownRenderer: StubMarkdownRenderer!
-    var announcements: [Announcement]!
-    var announcement: (element: Announcement, index: Int)!
+    var announcements: [AnnouncementProtocol]!
+    var announcement: (element: AnnouncementProtocol, index: Int)!
 
     override func setUp() {
         super.setUp()
 
-        announcements = [Announcement].random
+        announcements = [StubAnnouncement].random
         announcement = announcements.randomElement()
         announcementsService = StubAnnouncementsService(announcements: announcements)
         announcementDateFormatter = FakeAnnouncementDateFormatter()
@@ -100,7 +100,7 @@ class WhenPreparingViewModel_AnnouncementsInteractorShould: XCTestCase {
     func testUpdateTheAvailableViewModelsWhenAnnouncementsChange() {
         var viewModel: AnnouncementsListViewModel?
         interactor.makeViewModel { viewModel = $0 }
-        let newAnnouncements = [Announcement].random(upperLimit: announcements.count)
+        let newAnnouncements = [StubAnnouncement].random(upperLimit: announcements.count)
         let delegate = CapturingAnnouncementsListViewModelDelegate()
         viewModel?.setDelegate(delegate)
         announcementsService.updateAnnouncements(newAnnouncements)

@@ -11,7 +11,7 @@ import Foundation
 public protocol AnnouncementsService {
 
     func add(_ observer: AnnouncementsServiceObserver)
-    func openAnnouncement(identifier: AnnouncementIdentifier, completionHandler: @escaping (Announcement) -> Void)
+    func openAnnouncement(identifier: AnnouncementIdentifier, completionHandler: @escaping (AnnouncementProtocol) -> Void)
     func fetchAnnouncementImage(identifier: AnnouncementIdentifier, completionHandler: @escaping (Data?) -> Void)
 
 }

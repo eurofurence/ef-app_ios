@@ -8,7 +8,7 @@
 
 import Foundation
 
-public typealias AnnouncementIdentifier = Identifier<Announcement>
+public typealias AnnouncementIdentifier = Identifier<AnnouncementProtocol>
 
 public protocol AnnouncementProtocol {
 
@@ -19,14 +19,14 @@ public protocol AnnouncementProtocol {
 
 }
 
-public struct Announcement: AnnouncementProtocol {
+struct Announcement: AnnouncementProtocol {
 
-    public var identifier: AnnouncementIdentifier
-    public var title: String
-    public var content: String
-    public var date: Date
+    var identifier: AnnouncementIdentifier
+    var title: String
+    var content: String
+    var date: Date
 
-    public init(identifier: AnnouncementIdentifier, title: String, content: String, date: Date) {
+    init(identifier: AnnouncementIdentifier, title: String, content: String, date: Date) {
         self.identifier = identifier
         self.title = title
         self.content = content

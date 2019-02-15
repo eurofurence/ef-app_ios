@@ -8,6 +8,7 @@
 
 @testable import Eurofurence
 import EurofurenceModel
+import EurofurenceModelTestDoubles
 import XCTest
 
 class WhenLoggedOutBeforeConvention_NewsInteractorShould: XCTestCase {
@@ -18,7 +19,7 @@ class WhenLoggedOutBeforeConvention_NewsInteractorShould: XCTestCase {
         super.setUp()
 
         context = DefaultNewsInteractorTestBuilder()
-            .with(StubAnnouncementsService(announcements: .random))
+            .with(StubAnnouncementsService(announcements: [StubAnnouncement].random))
             .with(FakeAuthenticationService.loggedOutService())
             .build()
         context.subscribeViewModelUpdates()

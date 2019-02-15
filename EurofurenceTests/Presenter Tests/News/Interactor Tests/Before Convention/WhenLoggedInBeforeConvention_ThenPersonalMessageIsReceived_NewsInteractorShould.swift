@@ -8,6 +8,7 @@
 
 @testable import Eurofurence
 import EurofurenceModel
+import EurofurenceModelTestDoubles
 import XCTest
 
 class WhenLoggedInBeforeConvention_ThenPersonalMessageIsReceived_NewsInteractorShould: XCTestCase {
@@ -16,7 +17,7 @@ class WhenLoggedInBeforeConvention_ThenPersonalMessageIsReceived_NewsInteractorS
         let privateMessagesService = CapturingPrivateMessagesService()
         let context = DefaultNewsInteractorTestBuilder()
             .with(FakeAuthenticationService.loggedInService())
-            .with(StubAnnouncementsService(announcements: .random))
+            .with(StubAnnouncementsService(announcements: [StubAnnouncement].random))
             .with(privateMessagesService)
             .build()
         context.subscribeViewModelUpdates()
