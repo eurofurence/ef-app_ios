@@ -7,11 +7,12 @@
 //
 
 import EurofurenceModel
+import EurofurenceModelTestDoubles
 import Foundation
 
 class FakeMapsService: MapsService {
 
-    let maps = [Map].random
+    let maps = [StubMap].random
     func add(_ observer: MapsObserver) {
         observer.mapsServiceDidChangeMaps(maps)
     }

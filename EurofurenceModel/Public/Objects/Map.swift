@@ -8,7 +8,7 @@
 
 import Foundation
 
-public typealias MapIdentifier = Identifier<Map>
+public typealias MapIdentifier = Identifier<MapProtocol>
 
 public protocol MapProtocol {
 
@@ -17,12 +17,12 @@ public protocol MapProtocol {
 
 }
 
-public struct Map: MapProtocol {
+struct Map: MapProtocol {
 
-    public var identifier: MapIdentifier
-    public var location: String
+    var identifier: MapIdentifier
+    var location: String
 
-    public init(identifier: MapIdentifier, location: String) {
+    init(identifier: MapIdentifier, location: String) {
         self.identifier = identifier
         self.location = location
     }

@@ -1043,7 +1043,7 @@
 		CAEA0F7D216E188C00B0C7A6 /* CapturingURLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63755F208CBC5F00536BE2 /* CapturingURLOpener.swift */; };
 		CAEA0F7F216E1AE200B0C7A6 /* StubAnnouncement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5210208F4BF3005259FE /* StubAnnouncement.swift */; };
 		CAEA0F81216E1AE200B0C7A6 /* Day+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE8A20D28AF400C2FBB0 /* Day+RandomValueProviding.swift */; };
-		CAEA0F82216E1AE200B0C7A6 /* Event+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E9320A87D3D004AFED6 /* Event+RandomValueProviding.swift */; };
+		CAEA0F82216E1AE200B0C7A6 /* StubEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E9320A87D3D004AFED6 /* StubEvent.swift */; };
 		CAEA0F83216E1AE200B0C7A6 /* KnowledgeEntry+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF03C22041C2FD0028BD62 /* KnowledgeEntry+RandomValueProviding.swift */; };
 		CAEA0F84216E1AE200B0C7A6 /* KnowledgeGroup+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF03C02041C2EC0028BD62 /* KnowledgeGroup+RandomValueProviding.swift */; };
 		CAEA0F85216E1AE200B0C7A6 /* Link+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDB02058719300C91E6E /* Link+RandomValueProviding.swift */; };
@@ -1053,7 +1053,7 @@
 		CAEA0F89216E1AE200B0C7A6 /* User+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFE22078E42800697566 /* User+RandomValueProviding.swift */; };
 		CAEA0F8B216E1AE200B0C7A6 /* AlphabetisedDealersGroup+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A49A20D9779C00EE6537 /* AlphabetisedDealersGroup+RandomValueProviding.swift */; };
 		CAEA0F8C216E1AE200B0C7A6 /* ExtendedDealerData+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF81C7820DDAEAA00898C52 /* ExtendedDealerData+RandomValueProviding.swift */; };
-		CAEA0F8D216E1AE200B0C7A6 /* Map+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DA820E2CE2C007536CD /* Map+RandomValueProviding.swift */; };
+		CAEA0F8D216E1AE200B0C7A6 /* StubMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DA820E2CE2C007536CD /* StubMap.swift */; };
 		CAEA0F8F216E1C2D00B0C7A6 /* APISyncResponse+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF5979C20449A5300089BE8 /* APISyncResponse+RandomValueProviding.swift */; };
 		CAEA0F90216E1C4C00B0C7A6 /* ApplicationTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA51F1EA1B300F007E1 /* ApplicationTestBuilder.swift */; };
 		CAEA0F92216E1C4C00B0C7A6 /* WhenResolvingDataStoreState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D07F81FE9021A00BFD785 /* WhenResolvingDataStoreState.swift */; };
@@ -1620,7 +1620,7 @@
 		CA162E8A20A64352004AFED6 /* WhenLoggedOutDuringConvention_NewsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLoggedOutDuringConvention_NewsInteractorShould.swift; sourceTree = "<group>"; };
 		CA162E8C20A64C8C004AFED6 /* WhenObservingConventionCountdownAfterConventionStarts_EurofurenceApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingConventionCountdownAfterConventionStarts_EurofurenceApplicationShould.swift; sourceTree = "<group>"; };
 		CA162E8F20A652AA004AFED6 /* EventsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsService.swift; sourceTree = "<group>"; };
-		CA162E9320A87D3D004AFED6 /* Event+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+RandomValueProviding.swift"; sourceTree = "<group>"; };
+		CA162E9320A87D3D004AFED6 /* StubEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubEvent.swift; sourceTree = "<group>"; };
 		CA162E9520A88854004AFED6 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		CA162E9720A8886C004AFED6 /* Room+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Room+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA162E9920A88A71004AFED6 /* RelativeTimeIntervalCountdownFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelativeTimeIntervalCountdownFormatter.swift; sourceTree = "<group>"; };
@@ -2183,7 +2183,7 @@
 		CA6A8DA120E2CB5C007536CD /* MapsModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsModuleDelegate.swift; sourceTree = "<group>"; };
 		CA6A8DA320E2CB66007536CD /* CapturingMapsModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingMapsModuleDelegate.swift; sourceTree = "<group>"; };
 		CA6A8DA620E2CD6E007536CD /* WhenPreparingViewModel_MapsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPreparingViewModel_MapsInteractorShould.swift; sourceTree = "<group>"; };
-		CA6A8DA820E2CE2C007536CD /* Map+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Map+RandomValueProviding.swift"; sourceTree = "<group>"; };
+		CA6A8DA820E2CE2C007536CD /* StubMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubMap.swift; sourceTree = "<group>"; };
 		CA6A8DAA20E2CF6D007536CD /* FakeMapsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeMapsService.swift; sourceTree = "<group>"; };
 		CA6A8DAD20E2CF87007536CD /* MapsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsService.swift; sourceTree = "<group>"; };
 		CA6A8DAF20E2CF97007536CD /* DefaultMapsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMapsInteractor.swift; sourceTree = "<group>"; };
@@ -6135,6 +6135,8 @@
 			children = (
 				CA0E5210208F4BF3005259FE /* StubAnnouncement.swift */,
 				CA46799522175F4B006B3090 /* StubDealer.swift */,
+				CA162E9320A87D3D004AFED6 /* StubEvent.swift */,
+				CA6A8DA820E2CE2C007536CD /* StubMap.swift */,
 			);
 			path = "Entity Test Doubles";
 			sourceTree = "<group>";
@@ -6297,7 +6299,6 @@
 			isa = PBXGroup;
 			children = (
 				CA00AE8A20D28AF400C2FBB0 /* Day+RandomValueProviding.swift */,
-				CA162E9320A87D3D004AFED6 /* Event+RandomValueProviding.swift */,
 				CABF03C22041C2FD0028BD62 /* KnowledgeEntry+RandomValueProviding.swift */,
 				CABF03C02041C2EC0028BD62 /* KnowledgeGroup+RandomValueProviding.swift */,
 				CAD3BDB02058719300C91E6E /* Link+RandomValueProviding.swift */,
@@ -6307,7 +6308,6 @@
 				CA60BFE22078E42800697566 /* User+RandomValueProviding.swift */,
 				CA36A49A20D9779C00EE6537 /* AlphabetisedDealersGroup+RandomValueProviding.swift */,
 				CAF81C7820DDAEAA00898C52 /* ExtendedDealerData+RandomValueProviding.swift */,
-				CA6A8DA820E2CE2C007536CD /* Map+RandomValueProviding.swift */,
 				CA240F4321E3D5E1002DB747 /* Identifier+RandomValueProviding.swift */,
 			);
 			path = "Random Value Generation";
@@ -8874,11 +8874,11 @@
 				CAEA0F8B216E1AE200B0C7A6 /* AlphabetisedDealersGroup+RandomValueProviding.swift in Sources */,
 				CAEA0F76216D2CE800B0C7A6 /* StubAPIURLProviding.swift in Sources */,
 				CAEA0F8C216E1AE200B0C7A6 /* ExtendedDealerData+RandomValueProviding.swift in Sources */,
-				CAEA0F82216E1AE200B0C7A6 /* Event+RandomValueProviding.swift in Sources */,
+				CAEA0F82216E1AE200B0C7A6 /* StubEvent.swift in Sources */,
 				CAEA0F75216D2CE400B0C7A6 /* CapturingJSONSession.swift in Sources */,
 				CA240F4521E3D62C002DB747 /* Identifier+RandomValueProviding.swift in Sources */,
 				CAEA103F216E1E5000B0C7A6 /* StubDateDistanceCalculator.swift in Sources */,
-				CAEA0F8D216E1AE200B0C7A6 /* Map+RandomValueProviding.swift in Sources */,
+				CAEA0F8D216E1AE200B0C7A6 /* StubMap.swift in Sources */,
 				CAEA103E216E1DA600B0C7A6 /* CapturingPushPermissionsRequester.swift in Sources */,
 				CAEA0F85216E1AE200B0C7A6 /* Link+RandomValueProviding.swift in Sources */,
 				CAEA0F66216D29FD00B0C7A6 /* StubBuildConfigurationProviding.swift in Sources */,
