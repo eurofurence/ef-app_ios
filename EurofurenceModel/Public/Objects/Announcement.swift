@@ -10,7 +10,16 @@ import Foundation
 
 public typealias AnnouncementIdentifier = Identifier<Announcement>
 
-public struct Announcement {
+public protocol AnnouncementProtocol {
+
+    var identifier: AnnouncementIdentifier { get }
+    var title: String { get }
+    var content: String { get }
+    var date: Date { get }
+
+}
+
+public struct Announcement: AnnouncementProtocol {
 
     public var identifier: AnnouncementIdentifier
     public var title: String

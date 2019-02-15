@@ -39,7 +39,7 @@ struct DefaultAnnouncementsInteractor: AnnouncementsInteractor {
 
         private let announcementDateFormatter: AnnouncementDateFormatter
 		private let markdownRenderer: MarkdownRenderer
-        private var announcements = [Announcement]()
+        private var announcements = [AnnouncementProtocol]()
         private var readAnnouncements = [AnnouncementIdentifier]()
 
         init(announcementsService: AnnouncementsService, announcementDateFormatter: AnnouncementDateFormatter,
@@ -74,7 +74,7 @@ struct DefaultAnnouncementsInteractor: AnnouncementsInteractor {
             return announcements[index].identifier
         }
 
-        func eurofurenceApplicationDidChangeAnnouncements(_ announcements: [Announcement]) {
+        func eurofurenceApplicationDidChangeAnnouncements(_ announcements: [AnnouncementProtocol]) {
             self.announcements = announcements
             delegate?.announcementsViewModelDidChangeAnnouncements()
         }

@@ -10,7 +10,7 @@ import EurofurenceModel
 
 class AnnouncementAssertion: EntityAssertion {
 
-    func assertOrderedAnnouncements(_ announcements: [Announcement],
+    func assertOrderedAnnouncements(_ announcements: [AnnouncementProtocol],
                                     characterisedBy characteristics: [AnnouncementCharacteristics]) {
         guard announcements.count == characteristics.count else {
             fail(message: "Differing amount of expected/actual announcements")
@@ -25,7 +25,8 @@ class AnnouncementAssertion: EntityAssertion {
         }
     }
 
-    func assertAnnouncement(_ announcement: Announcement?, characterisedBy characteristic: AnnouncementCharacteristics) {
+    func assertAnnouncement(_ announcement: AnnouncementProtocol?,
+                            characterisedBy characteristic: AnnouncementCharacteristics) {
         assert(announcement?.identifier, isEqualTo: AnnouncementIdentifier(characteristic.identifier))
         assert(announcement?.title, isEqualTo: characteristic.title)
         assert(announcement?.content, isEqualTo: characteristic.content)
