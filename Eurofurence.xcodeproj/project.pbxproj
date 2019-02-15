@@ -862,6 +862,7 @@
 		CAD6FD462215F6D70011712D /* AlphabetisedDealersGroupAssertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6FD452215F6D70011712D /* AlphabetisedDealersGroupAssertion.swift */; };
 		CAD6FD4822160D190011712D /* MapEntityAssertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6FD4722160D190011712D /* MapEntityAssertion.swift */; };
 		CAD6FD4A2216181D0011712D /* KnowledgeGroupAssertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6FD492216181D0011712D /* KnowledgeGroupAssertion.swift */; };
+		CAD6FD4C2216EB2E0011712D /* MapContent+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6FD4B2216EB2E0011712D /* MapContent+Equatable.swift */; };
 		CADABEF021147D560023C3B6 /* EventInformationBannerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADABEEF21147D560023C3B6 /* EventInformationBannerTableViewCell.swift */; };
 		CADABEF22114A9370023C3B6 /* WhenBindingSuperSponsorsOnlyMessage_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADABEF12114A9370023C3B6 /* WhenBindingSuperSponsorsOnlyMessage_EventDetailPresenterShould.swift */; };
 		CADABEF42114ACA50023C3B6 /* WhenPreparingViewModel_ForSuperSponsorsOnlyEvent_EventDetailInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADABEF32114ACA50023C3B6 /* WhenPreparingViewModel_ForSuperSponsorsOnlyEvent_EventDetailInteractorShould.swift */; };
@@ -2556,6 +2557,7 @@
 		CAD6FD452215F6D70011712D /* AlphabetisedDealersGroupAssertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphabetisedDealersGroupAssertion.swift; sourceTree = "<group>"; };
 		CAD6FD4722160D190011712D /* MapEntityAssertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapEntityAssertion.swift; sourceTree = "<group>"; };
 		CAD6FD492216181D0011712D /* KnowledgeGroupAssertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeGroupAssertion.swift; sourceTree = "<group>"; };
+		CAD6FD4B2216EB2E0011712D /* MapContent+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapContent+Equatable.swift"; sourceTree = "<group>"; };
 		CAD7803F1F1D4C2A002A8333 /* WhenLoginStateChanges.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenLoginStateChanges.swift; sourceTree = "<group>"; };
 		CAD780421F1D4CA3002A8333 /* Credential.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credential.swift; sourceTree = "<group>"; };
 		CAD780481F1D51EB002A8333 /* StubClock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubClock.swift; sourceTree = "<group>"; };
@@ -4741,6 +4743,7 @@
 		CA6A8DB420E2DA1F007536CD /* Maps */ = {
 			isa = PBXGroup;
 			children = (
+				CAD6FD4B2216EB2E0011712D /* MapContent+Equatable.swift */,
 				CAD6FD4722160D190011712D /* MapEntityAssertion.swift */,
 				CA6A8DBD20E2E1ED007536CD /* WhenDataStoreAlreadyContainsMaps_ApplicationShould.swift */,
 				CADABEFB2116211E0023C3B6 /* WhenFetchingMapContent_ThatRevealMultipleOptions_ApplicationShould.swift */,
@@ -8726,6 +8729,7 @@
 				CAEA0FC1216E1CC000B0C7A6 /* EventConferenceDaysRemoveAllBeforeInsertTests.swift in Sources */,
 				CAEA0FE4216E1CE700B0C7A6 /* InOrderToSupportPhotoshootTag_ApplicationShould.swift in Sources */,
 				CAD6FD402215A74A0011712D /* EventAssertion.swift in Sources */,
+				CAD6FD4C2216EB2E0011712D /* MapContent+Equatable.swift in Sources */,
 				CAEA0FFA216E1CE700B0C7A6 /* WhenFetchingMapContents_TappingWithinRadiusOfMultipleEntries_ApplicationShould.swift in Sources */,
 				CAEA1010216E1CE800B0C7A6 /* WhenAppLaunchesWhenClockReadsConferenceDay_ScheduleShould.swift in Sources */,
 				CAEA0FE6216E1CE700B0C7A6 /* InOrderToSupportSuperSponsorTag_ApplicationShould.swift in Sources */,
