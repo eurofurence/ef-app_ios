@@ -19,7 +19,7 @@ extension MapContent: Equatable {
             return lx == rx && ly == ry && lname == rname
 
         case (.room(let lRoom), .room(let rRoom)):
-            return lRoom == rRoom
+            return lRoom.name == rRoom.name
 
         case (.dealer(let lDealer), .dealer(let rDealer)):
             return lDealer.identifier == rDealer.identifier

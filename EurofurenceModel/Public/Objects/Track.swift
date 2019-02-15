@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Track: Equatable {
+public struct Track {
 
     public var name: String
 

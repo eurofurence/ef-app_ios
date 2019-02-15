@@ -71,13 +71,13 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
 
     private class ViewModel: ScheduleViewModel, EventsScheduleDelegate, RefreshServiceObserver {
 
-        private struct EventsGroupedByDate: Comparable {
-            static func < (lhs: EventsGroupedByDate, rhs: EventsGroupedByDate) -> Bool {
-                return lhs.date < rhs.date
-            }
-
+        private struct EventsGroupedByDate {
             var date: Date
             var events: [Event]
+
+            func compare(against: EventsGroupedByDate) -> Bool {
+                return date < against.date
+            }
         }
 
         private var delegate: ScheduleViewModelDelegate?
@@ -123,7 +123,10 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
 
         fileprivate func regenerateEventViewModels() {
             let groupedByDate = Dictionary(grouping: events, by: { $0.startDate })
-            rawModelGroups = groupedByDate.map(EventsGroupedByDate.init).sorted()
+            rawModelGroups = groupedByDate.map(EventsGroupedByDate.init).sorted(by: { (first, second) -> Bool in
+                return first.compare(against: second)
+            })
+
             eventGroupViewModels = rawModelGroups.map { (group) -> ScheduleEventGroupViewModel in
                 let title = hoursDateFormatter.hoursString(from: group.date)
                 let viewModels = group.events.map { (event) -> ScheduleEventViewModel in
@@ -214,13 +217,13 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
 
     private class SearchViewModel: ScheduleSearchViewModel, EventsSearchControllerDelegate {
 
-        private struct EventsGroupedByDate: Comparable {
-            static func < (lhs: EventsGroupedByDate, rhs: EventsGroupedByDate) -> Bool {
-                return lhs.date < rhs.date
-            }
-
+        private struct EventsGroupedByDate {
             var date: Date
             var events: [Event]
+
+            func compare(against: EventsGroupedByDate) -> Bool {
+                return date < against.date
+            }
         }
 
         private let searchController: EventsSearchController
@@ -286,7 +289,10 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
 
         private func regenerateViewModel() {
             let groupedByDate = Dictionary(grouping: searchResults, by: { $0.startDate })
-            rawModelGroups = groupedByDate.map(EventsGroupedByDate.init).sorted()
+            rawModelGroups = groupedByDate.map(EventsGroupedByDate.init).sorted(by: { (first, second) -> Bool in
+                return first.compare(against: second)
+            })
+
             let eventGroupViewModels = rawModelGroups.map { (group) -> ScheduleEventGroupViewModel in
                 let title = shortFormDayAndTimeFormatter.dayAndHoursString(from: group.date)
                 let viewModels = group.events.map { (event) -> ScheduleEventViewModel in

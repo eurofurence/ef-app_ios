@@ -10,7 +10,7 @@ import Foundation
 
 public typealias KnowledgeGroupIdentifier = Identifier<KnowledgeGroup>
 
-public struct KnowledgeGroup: Comparable, Equatable {
+public struct KnowledgeGroup: Comparable {
 
     public var identifier: KnowledgeGroupIdentifier
     public var title: String

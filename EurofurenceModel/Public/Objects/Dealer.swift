@@ -10,7 +10,7 @@ import Foundation
 
 public typealias DealerIdentifier = Identifier<Dealer>
 
-public struct Dealer: Equatable {
+public struct Dealer {
 
     public var identifier: DealerIdentifier
 

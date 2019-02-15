@@ -10,7 +10,7 @@ import Foundation
 
 public typealias AnnouncementIdentifier = Identifier<Announcement>
 
-public struct Announcement: Equatable {
+public struct Announcement {
 
     public var identifier: AnnouncementIdentifier
     public var title: String

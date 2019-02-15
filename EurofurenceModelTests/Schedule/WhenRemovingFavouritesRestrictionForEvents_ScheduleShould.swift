@@ -26,7 +26,7 @@ class WhenRemovingFavouritesRestrictionForEvents_ScheduleShould: XCTestCase {
         schedule.restrictResultsToFavourites()
         schedule.removeFavouritesEventsRestriction()
 
-        XCTAssertEqual([], delegate.capturedSearchResults)
+        XCTAssertTrue(delegate.capturedSearchResults.isEmpty)
     }
 
     func testIncludeNonFavouritesInSearchResultsWhenQueryChanges() {

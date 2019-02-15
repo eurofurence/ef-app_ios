@@ -10,7 +10,7 @@ import Foundation
 
 public typealias MapIdentifier = Identifier<Map>
 
-public struct Map: Equatable {
+public struct Map {
 
     public var identifier: MapIdentifier
     public var location: String

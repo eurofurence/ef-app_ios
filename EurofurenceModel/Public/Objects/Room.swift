@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Room: Equatable {
+public struct Room {
 
     public var name: String
 

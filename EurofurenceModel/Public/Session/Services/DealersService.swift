@@ -33,7 +33,7 @@ public protocol DealersIndexDelegate {
 
 }
 
-public struct AlphabetisedDealersGroup: Equatable {
+public struct AlphabetisedDealersGroup {
 
     public var indexingString: String
     public var dealers: [Dealer]

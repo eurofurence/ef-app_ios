@@ -8,7 +8,7 @@
 
 public typealias KnowledgeEntryIdentifier = Identifier<KnowledgeEntry>
 
-public struct KnowledgeEntry: Comparable, Equatable {
+public struct KnowledgeEntry: Comparable {
 
     public var identifier: KnowledgeEntryIdentifier
     public var title: String

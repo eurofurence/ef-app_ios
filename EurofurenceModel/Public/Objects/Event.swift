@@ -10,7 +10,7 @@ import Foundation
 
 public typealias EventIdentifier = Identifier<Event>
 
-public struct Event: Equatable {
+public struct Event {
 
     public var identifier: EventIdentifier
     public var title: String
