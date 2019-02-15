@@ -23,7 +23,7 @@ class ConcreteDealersService: DealersService {
 
         func performSearch(term: String) {
             let matches = alphebetisedDealers.compactMap { (group) -> AlphabetisedDealersGroup? in
-                let matchingDealers = group.dealers.compactMap { (dealer) -> DealerProtocol? in
+                let matchingDealers = group.dealers.compactMap { (dealer) -> Dealer? in
                     let preferredNameMatches = dealer.preferredName.localizedCaseInsensitiveContains(term)
                     var alternateNameMatches = false
                     if let alternateName = dealer.alternateName {
@@ -68,7 +68,7 @@ class ConcreteDealersService: DealersService {
 
     private struct UpdatedEvent {}
 
-    private var dealerModels = [Dealer]()
+    private var dealerModels = [DealerImpl]()
     private var models = [DealerCharacteristics]()
     private let eventBus: EventBus
     private let dataStore: DataStore
@@ -192,7 +192,7 @@ class ConcreteDealersService: DealersService {
         guard let dealers = dataStore.fetchDealers() else { return }
 
         models = dealers
-        dealerModels = models.map { (dealer) -> Dealer in
+        dealerModels = models.map { (dealer) -> DealerImpl in
             var preferredName = dealer.displayName
             if preferredName.isEmpty {
                 preferredName = dealer.attendeeNickname
@@ -201,7 +201,7 @@ class ConcreteDealersService: DealersService {
                 }
             }
 
-            return Dealer(identifier: DealerIdentifier(dealer.identifier),
+            return DealerImpl(identifier: DealerIdentifier(dealer.identifier),
                            preferredName: preferredName,
                            alternateName: dealer.attendeeNickname == dealer.displayName ? nil : dealer.attendeeNickname,
                            isAttendingOnThursday: dealer.attendsOnThursday,
@@ -213,7 +213,7 @@ class ConcreteDealersService: DealersService {
         eventBus.post(ConcreteDealersService.UpdatedEvent())
     }
 
-    func dealer(for identifier: String) -> Dealer? {
+    func dealer(for identifier: String) -> DealerImpl? {
         return dealerModels.first(where: { $0.identifier.rawValue == identifier })
     }
 

@@ -10,7 +10,7 @@ import EurofurenceModel
 
 class DealerAssertion: EntityAssertion {
 
-    func assertDealer(_ dealer: DealerProtocol?, characterisedBy characteristic: DealerCharacteristics) {
+    func assertDealer(_ dealer: Dealer?, characterisedBy characteristic: DealerCharacteristics) {
         guard let dealer = dealer else {
             fail(message: "Expected dealer \(characteristic)")
             return

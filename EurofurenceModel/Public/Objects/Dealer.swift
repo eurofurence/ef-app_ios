@@ -8,9 +8,9 @@
 
 import Foundation
 
-public typealias DealerIdentifier = Identifier<DealerProtocol>
+public typealias DealerIdentifier = Identifier<Dealer>
 
-public protocol DealerProtocol {
+public protocol Dealer {
 
     var identifier: DealerIdentifier { get }
 
@@ -25,7 +25,7 @@ public protocol DealerProtocol {
 
 }
 
-struct Dealer: DealerProtocol {
+struct DealerImpl: Dealer {
 
     var identifier: DealerIdentifier
 

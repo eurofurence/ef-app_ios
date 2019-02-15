@@ -9,7 +9,7 @@
 import EurofurenceModel
 import RandomDataGeneration
 
-public struct StubDealer: DealerProtocol {
+public struct StubDealer: Dealer {
 
     public var identifier: DealerIdentifier
     public var preferredName: String

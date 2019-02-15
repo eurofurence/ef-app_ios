@@ -12,7 +12,7 @@ public enum MapContent {
     case none
     case location(x: Float, y: Float, name: String?)
     case room(Room)
-    case dealer(DealerProtocol)
+    case dealer(Dealer)
     indirect case multiple([MapContent])
 
     public static func + (lhs: inout MapContent, rhs: MapContent) {
