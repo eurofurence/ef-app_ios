@@ -18,13 +18,6 @@ class CapturingAnnouncementsServiceObserver: AnnouncementsServiceObserver {
         didReceieveEmptyAllAnnouncements = didReceieveEmptyAllAnnouncements || announcements.isEmpty
     }
 
-    private(set) var unreadAnnouncements: [Announcement] = []
-    private(set) var didReceieveEmptyUnreadAnnouncements = false
-    func eurofurenceApplicationDidChangeUnreadAnnouncements(to announcements: [Announcement]) {
-        unreadAnnouncements = announcements
-        didReceieveEmptyUnreadAnnouncements = didReceieveEmptyUnreadAnnouncements || announcements.isEmpty
-    }
-
     private(set) var didReceieveEmptyReadAnnouncements = false
     private(set) var readAnnouncementIdentifiers = [AnnouncementIdentifier]()
     func announcementsServiceDidUpdateReadAnnouncements(_ readAnnouncements: [AnnouncementIdentifier]) {
