@@ -8,7 +8,7 @@
 
 import Foundation
 
-public typealias DealerIdentifier = Identifier<Dealer>
+public typealias DealerIdentifier = Identifier<DealerProtocol>
 
 public protocol DealerProtocol {
 
@@ -25,20 +25,20 @@ public protocol DealerProtocol {
 
 }
 
-public struct Dealer: DealerProtocol {
+struct Dealer: DealerProtocol {
 
-    public var identifier: DealerIdentifier
+    var identifier: DealerIdentifier
 
-    public var preferredName: String
-    public var alternateName: String?
+    var preferredName: String
+    var alternateName: String?
 
-    public var isAttendingOnThursday: Bool
-    public var isAttendingOnFriday: Bool
-    public var isAttendingOnSaturday: Bool
+    var isAttendingOnThursday: Bool
+    var isAttendingOnFriday: Bool
+    var isAttendingOnSaturday: Bool
 
-    public var isAfterDark: Bool
+    var isAfterDark: Bool
 
-    public init(identifier: DealerIdentifier, preferredName: String, alternateName: String?, isAttendingOnThursday: Bool, isAttendingOnFriday: Bool, isAttendingOnSaturday: Bool, isAfterDark: Bool) {
+    init(identifier: DealerIdentifier, preferredName: String, alternateName: String?, isAttendingOnThursday: Bool, isAttendingOnFriday: Bool, isAttendingOnSaturday: Bool, isAfterDark: Bool) {
         self.identifier = identifier
         self.preferredName = preferredName
         self.alternateName = alternateName
