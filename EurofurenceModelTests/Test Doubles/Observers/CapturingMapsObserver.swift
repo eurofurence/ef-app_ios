@@ -11,8 +11,8 @@ import Foundation
 
 class CapturingMapsObserver: MapsObserver {
 
-    private(set) var capturedMaps: [Map] = []
-    func mapsServiceDidChangeMaps(_ maps: [Map]) {
+    private(set) var capturedMaps: [MapProtocol] = []
+    func mapsServiceDidChangeMaps(_ maps: [MapProtocol]) {
         capturedMaps = maps
     }
 

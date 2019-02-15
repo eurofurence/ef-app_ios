@@ -21,6 +21,6 @@ public protocol MapsService {
 
 public protocol MapsObserver {
 
-    func mapsServiceDidChangeMaps(_ maps: [Map])
+    func mapsServiceDidChangeMaps(_ maps: [MapProtocol])
 
 }

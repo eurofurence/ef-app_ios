@@ -10,7 +10,14 @@ import Foundation
 
 public typealias MapIdentifier = Identifier<Map>
 
-public struct Map {
+public protocol MapProtocol {
+
+    var identifier: MapIdentifier { get }
+    var location: String { get }
+
+}
+
+public struct Map: MapProtocol {
 
     public var identifier: MapIdentifier
     public var location: String

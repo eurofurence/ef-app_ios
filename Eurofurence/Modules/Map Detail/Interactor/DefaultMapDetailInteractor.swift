@@ -93,7 +93,7 @@ class DefaultMapDetailInteractor: MapDetailInteractor, MapsObserver {
     }
 
     private let mapsService: MapsService
-    private var maps = [Map]()
+    private var maps = [MapProtocol]()
 
     convenience init() {
         self.init(mapsService: SharedModel.instance.services.maps)
@@ -116,7 +116,7 @@ class DefaultMapDetailInteractor: MapDetailInteractor, MapsObserver {
         }
     }
 
-    func mapsServiceDidChangeMaps(_ maps: [Map]) {
+    func mapsServiceDidChangeMaps(_ maps: [MapProtocol]) {
         self.maps = maps
     }
 
