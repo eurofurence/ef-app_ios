@@ -10,7 +10,7 @@ import Foundation
 
 public typealias KnowledgeGroupIdentifier = Identifier<KnowledgeGroup>
 
-public struct KnowledgeGroup: Comparable {
+public struct KnowledgeGroup {
 
     public var identifier: KnowledgeGroupIdentifier
     public var title: String
@@ -28,17 +28,19 @@ public struct KnowledgeGroup: Comparable {
         self.entries = entries
     }
 
-    public static func <(lhs: KnowledgeGroup, rhs: KnowledgeGroup) -> Bool {
-        return lhs.order < rhs.order
-    }
-
 }
 
 extension KnowledgeGroup {
 
     static func fromServerModels(groups: [KnowledgeGroupCharacteristics], entries: [KnowledgeEntryCharacteristics]) -> [KnowledgeGroup] {
         return groups.map({ (group) -> KnowledgeGroup in
-            let entries = entries.filter({ $0.groupIdentifier == group.identifier }).map(KnowledgeEntry.fromServerModel).sorted()
+            let entries = entries
+                .filter({ $0.groupIdentifier == group.identifier })
+                .map(KnowledgeEntry.fromServerModel)
+                .sorted(by: { (first, second) in
+                    return first.order < second.order
+                })
+
             let defaultFontAwesomeBackupCharacter: Character = " "
             let fontAwesomeCharacter: Character = Int(group.fontAwesomeCharacterAddress, radix: 16)
                 .let(UnicodeScalar.init)
@@ -51,7 +53,9 @@ extension KnowledgeGroup {
                                    fontAwesomeCharacterAddress: fontAwesomeCharacter,
                                    order: group.order,
                                    entries: entries)
-        }).sorted()
+        }).sorted(by: { (first, second) in
+            return first.order < second.order
+        })
     }
 
 }

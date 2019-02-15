@@ -10,8 +10,8 @@ import XCTest
 
 class EntityAssertion {
 
-    private let file: StaticString
-    private let line: UInt
+    let file: StaticString
+    let line: UInt
 
     init(file: StaticString = #file, line: UInt = #line) {
         self.file = file

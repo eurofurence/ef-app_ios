@@ -16,15 +16,10 @@ class WhenFetchingKnowledgeEntryByIdentifier_ApplicationShould: XCTestCase {
         let context = ApplicationTestBuilder().build()
         context.performSuccessfulSync(response: syncResponse)
         let randomEntry = syncResponse.knowledgeEntries.changed.randomElement().element
-        let expected =  KnowledgeEntry(identifier: KnowledgeEntryIdentifier(randomEntry.identifier),
-                                        title: randomEntry.title,
-                                        order: randomEntry.order,
-                                        contents: randomEntry.text,
-                                        links: randomEntry.links.map({ return Link(name: $0.name, type: Link.Kind(rawValue: $0.fragmentType.rawValue)!, contents: $0.target) }).sorted(by: { $0.name < $1.name }))
         var actual: KnowledgeEntry?
         context.knowledgeService.fetchKnowledgeEntry(for: KnowledgeEntryIdentifier(randomEntry.identifier)) { actual = $0 }
 
-        XCTAssertEqual(expected, actual)
+        KnowledgeEntryAssertion().assertEntry(actual, characteristics: randomEntry)
     }
 
 }

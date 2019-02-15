@@ -8,7 +8,7 @@
 
 public typealias KnowledgeEntryIdentifier = Identifier<KnowledgeEntry>
 
-public struct KnowledgeEntry: Comparable {
+public struct KnowledgeEntry {
 
     public var identifier: KnowledgeEntryIdentifier
     public var title: String
@@ -22,10 +22,6 @@ public struct KnowledgeEntry: Comparable {
         self.order = order
         self.contents = contents
         self.links = links
-    }
-
-    public static func <(lhs: KnowledgeEntry, rhs: KnowledgeEntry) -> Bool {
-        return lhs.order < rhs.order
     }
 
 }
