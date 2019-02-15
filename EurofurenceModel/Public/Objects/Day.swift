@@ -8,11 +8,7 @@
 
 import Foundation
 
-public struct Day: Comparable {
-
-    public static func < (lhs: Day, rhs: Day) -> Bool {
-        return lhs.date < rhs.date
-    }
+public struct Day {
 
     public var date: Date
 
