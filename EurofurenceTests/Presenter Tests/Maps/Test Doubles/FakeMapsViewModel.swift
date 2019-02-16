@@ -19,7 +19,7 @@ class FakeMapsViewModel: MapsViewModel {
 
     var maps = [FakeMapViewModel(), FakeMapViewModel(), FakeMapViewModel()]
 
-    func mapViewModel(at index: Int) -> MapViewModel2 {
+    func mapViewModel(at index: Int) -> MapViewModel {
         return maps[index]
     }
 
@@ -29,7 +29,7 @@ class FakeMapsViewModel: MapsViewModel {
 
 }
 
-class FakeMapViewModel: MapViewModel2 {
+class FakeMapViewModel: MapViewModel {
 
     var mapName: String = .random
     var mapPreviewImagePNGData: Data = .random

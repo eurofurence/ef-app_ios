@@ -25,7 +25,7 @@ class DefaultMapsInteractor: MapsInteractor, MapsObserver {
             return maps.count
         }
 
-        func mapViewModel(at index: Int) -> MapViewModel2 {
+        func mapViewModel(at index: Int) -> MapViewModel {
             let map = maps[index]
             return SingleViewModel(map: map, mapsService: mapsService)
         }
@@ -36,7 +36,7 @@ class DefaultMapsInteractor: MapsInteractor, MapsObserver {
 
     }
 
-    private struct SingleViewModel: MapViewModel2 {
+    private struct SingleViewModel: MapViewModel {
 
         private let map: Map
         private let mapsService: MapsService
