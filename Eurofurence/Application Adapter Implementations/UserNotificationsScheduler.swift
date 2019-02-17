@@ -19,7 +19,12 @@ struct UserNotificationsScheduler: NotificationScheduler {
         let content = UNMutableNotificationContent()
         content.title = title
         content.body = body
-        content.userInfo = userInfo
+
+        let objCSafeUserInfo = Dictionary(pairs: userInfo.map({ (key, value) -> (String, String) in
+            return (key.rawValue, value)
+        }))
+
+        content.userInfo = objCSafeUserInfo
 
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
         let request = UNNotificationRequest(identifier: identifier.rawValue, content: content, trigger: trigger)
