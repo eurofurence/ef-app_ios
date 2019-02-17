@@ -1000,7 +1000,6 @@
 		CAEA0DFD216BDE3100B0C7A6 /* TrackCharacteristics.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E9320B36C5A00D904B5 /* TrackCharacteristics.swift */; };
 		CAEA0DFE216BDE3100B0C7A6 /* ImageCharacteristics.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA401058210B9FD40056E16C /* ImageCharacteristics.swift */; };
 		CAEA0E00216BDE3100B0C7A6 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAA01F2127350053DBF6 /* LoginResponse.swift */; };
-		CAEA0E01216BDE3100B0C7A6 /* PrivateMessagesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EABD1F2660D80053DBF6 /* PrivateMessagesAPI.swift */; };
 		CAEA0E02216BDE3100B0C7A6 /* SyncAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF03CF20422B7A0028BD62 /* SyncAPI.swift */; };
 		CAEA0E05216BDE3100B0C7A6 /* JSONAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD11F20CE8F00E07A4A /* JSONAPI.swift */; };
 		CAEA0E08216BDE3100B0C7A6 /* BuildConfigurationAPIURLProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DD58D320D91069001893ED /* BuildConfigurationAPIURLProviding.swift */; };
@@ -1204,7 +1203,6 @@
 		CAEA1030216E1CE800B0C7A6 /* CapturingPrivateMessagesObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAB91F26174B0053DBF6 /* CapturingPrivateMessagesObserver.swift */; };
 		CAEA1033216E1CE800B0C7A6 /* StubCollectThemAllRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2761CB20E034BD000E52AC /* StubCollectThemAllRequestFactory.swift */; };
 		CAEA1034216E1CE800B0C7A6 /* StubConventionStartDateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E7720A4B6E0004AFED6 /* StubConventionStartDateRepository.swift */; };
-		CAEA1037216E1CE800B0C7A6 /* CapturingPrivateMessagesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EABB1F2660AD0053DBF6 /* CapturingPrivateMessagesAPI.swift */; };
 		CAEA1038216E1CE800B0C7A6 /* CapturingSyncAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF03CD20422B240028BD62 /* CapturingSyncAPI.swift */; };
 		CAEA1039216E1CE800B0C7A6 /* CapturingRemoteNotificationsTokenRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781A94411F1A1D8B002DE70F /* CapturingRemoteNotificationsTokenRegistration.swift */; };
 		CAEA103A216E1CE800B0C7A6 /* UserDefaultsForceRefreshRequired.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C339211A1CAE003C1C4E /* UserDefaultsForceRefreshRequired.swift */; };
@@ -1872,8 +1870,6 @@
 		CA30EAAD1F2148780053DBF6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CA30EAB51F26128A0053DBF6 /* WhenRequestingPrivateMessagesWhileAuthenticated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenRequestingPrivateMessagesWhileAuthenticated.swift; sourceTree = "<group>"; };
 		CA30EAB91F26174B0053DBF6 /* CapturingPrivateMessagesObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingPrivateMessagesObserver.swift; sourceTree = "<group>"; };
-		CA30EABB1F2660AD0053DBF6 /* CapturingPrivateMessagesAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingPrivateMessagesAPI.swift; sourceTree = "<group>"; };
-		CA30EABD1F2660D80053DBF6 /* PrivateMessagesAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivateMessagesAPI.swift; sourceTree = "<group>"; };
 		CA30EAC31F2672BF0053DBF6 /* MessageCharacteristics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCharacteristics.swift; sourceTree = "<group>"; };
 		CA30EAC91F267D3C0053DBF6 /* PrivateMessagesAPITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivateMessagesAPITests.swift; sourceTree = "<group>"; };
 		CA30EACF1F27D8620053DBF6 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
@@ -3581,7 +3577,6 @@
 			children = (
 				CA4679A72219FC03006B3090 /* API.swift */,
 				CA30EAA01F2127350053DBF6 /* LoginResponse.swift */,
-				CA30EABD1F2660D80053DBF6 /* PrivateMessagesAPI.swift */,
 				CABF03CF20422B7A0028BD62 /* SyncAPI.swift */,
 			);
 			path = Protocols;
@@ -4060,7 +4055,6 @@
 		CA30EAA41F2129B70053DBF6 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				CA30EABB1F2660AD0053DBF6 /* CapturingPrivateMessagesAPI.swift */,
 				CABF03CD20422B240028BD62 /* CapturingSyncAPI.swift */,
 				CAEA1085216E815200B0C7A6 /* FakeAPI.swift */,
 			);
@@ -8562,7 +8556,6 @@
 				CAEA0DBC216BDE2300B0C7A6 /* MessageCharacteristics.swift in Sources */,
 				CAEA0D96216BDD9500B0C7A6 /* ImagesCache.swift in Sources */,
 				CAEA0DAC216BDE2300B0C7A6 /* RemoteNotificationsTokenRegistration.swift in Sources */,
-				CAEA0E01216BDE3100B0C7A6 /* PrivateMessagesAPI.swift in Sources */,
 				CAEA0D97216BDD9500B0C7A6 /* EventsSearchController.swift in Sources */,
 				CAEA0DFB216BDE3100B0C7A6 /* RoomCharacteristics.swift in Sources */,
 				CAEA0DAB216BDE2300B0C7A6 /* PushPermissionsRequester.swift in Sources */,
@@ -8809,7 +8802,6 @@
 				CAEA0FAE216E1CC000B0C7A6 /* WhenFetchingDaysBeforeRefreshWhenStoreHasConferenceDays.swift in Sources */,
 				CAEA0FAD216E1CC000B0C7A6 /* WhenSyncCompletesWithConferenceDays_ApplicationShould.swift in Sources */,
 				CAEA0FE8216E1CE700B0C7A6 /* WhenSyncSuceeds_ThenObservingUpcomingEvents.swift in Sources */,
-				CAEA1037216E1CE800B0C7A6 /* CapturingPrivateMessagesAPI.swift in Sources */,
 				CAEA1008216E1CE800B0C7A6 /* WhenRegisteredForPushNotifications.swift in Sources */,
 				CAEA0FAC216E1CC000B0C7A6 /* WhenSyncFinishes_ApplicationShould.swift in Sources */,
 				CAEA1007216E1CE800B0C7A6 /* WhenLoginStateChanges.swift in Sources */,

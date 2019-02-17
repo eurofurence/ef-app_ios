@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct JSONAPI: API, PrivateMessagesAPI, SyncAPI {
+public struct JSONAPI: API, SyncAPI {
 
     // MARK: Properties
 

@@ -10,13 +10,13 @@ import EventBus
 
 class ConcretePrivateMessagesService: PrivateMessagesService {
 
-    private let privateMessagesAPI: PrivateMessagesAPI
+    private let privateMessagesAPI: API
     private var userAuthenticationToken: String?
     private var privateMessageObservers = [PrivateMessagesObserver]()
 
     private var localMessages: [MessageCharacteristics] = .empty
 
-    init(eventBus: EventBus, privateMessagesAPI: PrivateMessagesAPI) {
+    init(eventBus: EventBus, privateMessagesAPI: API) {
         self.privateMessagesAPI = privateMessagesAPI
         eventBus.subscribe(userLoggedIn)
     }

@@ -38,7 +38,7 @@ class ConcreteSession: EurofurenceSession {
          clock: Clock,
          credentialStore: CredentialStore,
          loginAPI: API,
-         privateMessagesAPI: PrivateMessagesAPI,
+         privateMessagesAPI: API,
          syncAPI: SyncAPI,
          imageAPI: API,
          dateDistanceCalculator: DateDistanceCalculator,

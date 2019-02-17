@@ -18,12 +18,21 @@ class FakeAPI: API {
         handler = completionHandler
     }
 
-    func loadPrivateMessages(authorizationToken: String, completionHandler: @escaping ([MessageCharacteristics]?) -> Void) {
-
+    private(set) var wasToldToLoadPrivateMessages = false
+    private(set) var capturedAuthToken: String?
+    private var completionHandler: (([MessageCharacteristics]?) -> Void)?
+    func loadPrivateMessages(authorizationToken: String,
+                             completionHandler: @escaping ([MessageCharacteristics]?) -> Void) {
+        wasToldToLoadPrivateMessages = true
+        capturedAuthToken = authorizationToken
+        self.completionHandler = completionHandler
     }
 
+    private(set) var messageIdentifierMarkedAsRead: String?
+    private(set) var capturedAuthTokenForMarkingMessageAsRead: String?
     func markMessageWithIdentifierAsRead(_ identifier: String, authorizationToken: String) {
-
+        messageIdentifierMarkedAsRead = identifier
+        capturedAuthTokenForMarkingMessageAsRead = authorizationToken
     }
 
     func fetchLatestData(lastSyncTime: Date?, completionHandler: @escaping (ModelCharacteristics?) -> Void) {
@@ -50,6 +59,14 @@ extension FakeAPI {
 
     func simulateFailure() {
         handler?(nil)
+    }
+
+    func simulateSuccessfulResponse(response: [MessageCharacteristics] = []) {
+        completionHandler?(response)
+    }
+
+    func simulateUnsuccessfulResponse() {
+        completionHandler?(nil)
     }
 
 }
