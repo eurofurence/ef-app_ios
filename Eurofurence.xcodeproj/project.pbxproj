@@ -473,6 +473,7 @@
 		CA4679A222176A3F006B3090 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4679A122176A3F006B3090 /* Event.swift */; };
 		CA4679A422176AAF006B3090 /* EventImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4679A322176AAF006B3090 /* EventImpl.swift */; };
 		CA4679A6221770A9006B3090 /* MapImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4679A5221770A9006B3090 /* MapImpl.swift */; };
+		CA4679A82219FC03006B3090 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4679A72219FC03006B3090 /* API.swift */; };
 		CA4C474A21DF88B9005231AD /* NotificationServiceFetchResultAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4C474921DF88B9005231AD /* NotificationServiceFetchResultAdapter.swift */; };
 		CA4C474D21DFFE4F005231AD /* PrivateMessagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4C474B21DFFE0E005231AD /* PrivateMessagesService.swift */; };
 		CA4FBE0E1F72FF2A00D29405 /* MessagesPresenterTestsWhenBindingMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FBE0D1F72FF2A00D29405 /* MessagesPresenterTestsWhenBindingMessages.swift */; };
@@ -2036,6 +2037,7 @@
 		CA4679A122176A3F006B3090 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		CA4679A322176AAF006B3090 /* EventImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventImpl.swift; sourceTree = "<group>"; };
 		CA4679A5221770A9006B3090 /* MapImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapImpl.swift; sourceTree = "<group>"; };
+		CA4679A72219FC03006B3090 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		CA46A73820F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLaunchingApplication_PrivateMessagesShould.swift; sourceTree = "<group>"; };
 		CA49E93E2015480A00EB571C /* EventHandlerRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventHandlerRegistration.swift; sourceTree = "<group>"; };
 		CA49E9422015480A00EB571C /* EventBusRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBusRegistration.swift; sourceTree = "<group>"; };
@@ -3583,6 +3585,7 @@
 		CA18B3471F49FE9800038E52 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				CA4679A72219FC03006B3090 /* API.swift */,
 				CACF1EBB20B60A6000D904B5 /* ImageAPI.swift */,
 				CA30EAA21F2129700053DBF6 /* LoginAPI.swift */,
 				CA30EAA01F2127350053DBF6 /* LoginResponse.swift */,
@@ -8589,6 +8592,7 @@
 				CAEA0DE9216BDE2300B0C7A6 /* RemoteNotificationTokenAvailable.swift in Sources */,
 				CACD2E8821D6764000BACD91 /* NotificationService.swift in Sources */,
 				CAEA0DA7216BDE2300B0C7A6 /* ImageRepository.swift in Sources */,
+				CA4679A82219FC03006B3090 /* API.swift in Sources */,
 				CAEA0DC9216BDE2300B0C7A6 /* RefreshService.swift in Sources */,
 				CAEA0DB9216BDE2300B0C7A6 /* Link.swift in Sources */,
 				CAEA0D9A216BDD9500B0C7A6 /* DefaultCollectThemAllRequestFactory.swift in Sources */,
