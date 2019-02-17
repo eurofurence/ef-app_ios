@@ -20,13 +20,13 @@ class WhenMarkingMessageAsRead: XCTestCase {
         let identifier = "Message ID"
         var message = MessageCharacteristics.random
         message.identifier = identifier
-        context.privateMessagesAPI.simulateMessagesResponse(response: [message])
+        context.api.simulateMessagesResponse(response: [message])
 
         if let receievedMessage = observer.observedMessages.first {
             context.privateMessagesService.markMessageAsRead(receievedMessage)
         }
 
-        XCTAssertEqual(identifier, context.privateMessagesAPI.messageIdentifierMarkedAsRead)
+        XCTAssertEqual(identifier, context.api.messageIdentifierMarkedAsRead)
     }
 
     func testItShouldSupplyTheUsersAuthenticationTokenToTheMarkAsReadAPI() {
@@ -39,13 +39,13 @@ class WhenMarkingMessageAsRead: XCTestCase {
         let identifier = "Message ID"
         var message = MessageCharacteristics.random
         message.identifier = identifier
-        context.privateMessagesAPI.simulateMessagesResponse(response: [message])
+        context.api.simulateMessagesResponse(response: [message])
 
         if let receievedMessage = observer.observedMessages.first {
             context.privateMessagesService.markMessageAsRead(receievedMessage)
         }
 
-        XCTAssertEqual(authenticationToken, context.privateMessagesAPI.capturedAuthTokenForMarkingMessageAsRead)
+        XCTAssertEqual(authenticationToken, context.api.capturedAuthTokenForMarkingMessageAsRead)
     }
 
     func testItShouldNotifyObserversUnreadMessageCountChanged() {
@@ -54,7 +54,7 @@ class WhenMarkingMessageAsRead: XCTestCase {
         context.privateMessagesService.add(observer)
         context.privateMessagesService.refreshMessages()
         let message = MessageCharacteristics.random
-        context.privateMessagesAPI.simulateMessagesResponse(response: [message])
+        context.api.simulateMessagesResponse(response: [message])
         context.privateMessagesService.markMessageAsRead(message)
 
         XCTAssertEqual(0, observer.observedUnreadMessageCount)

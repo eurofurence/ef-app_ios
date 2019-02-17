@@ -63,7 +63,7 @@ class WhenFavouritingMultipleEvents_ApplicationShould: XCTestCase {
 
         let context = ApplicationTestBuilder().with(dataStore).build()
         context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(response)
+        context.api.simulateSuccessfulSync(response)
         let observer = CapturingEventsServiceObserver()
         context.eventsService.add(observer)
 

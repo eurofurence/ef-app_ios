@@ -42,7 +42,7 @@ class WhenRestrictingEventsToSpecificDay_ScheduleShould: XCTestCase {
         let expectedEvents = response.events.changed.filter({ $0.dayIdentifier == randomDay.element.identifier })
         schedule.restrictEvents(to: Day(date: randomDay.element.date))
         context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(response)
+        context.api.simulateSuccessfulSync(response)
         schedule.setDelegate(delegate)
 
         EventAssertion(context: context, modelCharacteristics: response)

@@ -19,7 +19,7 @@ class WhenFetchingIconDataForDealerWithArtwork_ApplicationShould: XCTestCase {
         let dealersIndex = context.dealersService.makeDealersIndex()
         let delegate = CapturingDealersIndexDelegate()
         dealersIndex.setDelegate(delegate)
-        let expected = context.imageAPI.stubbedImage(for: dealer.artistThumbnailImageId)
+        let expected = context.api.stubbedImage(for: dealer.artistThumbnailImageId)
         var artworkData: Data?
         context.dealersService.fetchIconPNGData(for: DealerIdentifier(dealer.identifier)) { artworkData = $0 }
 

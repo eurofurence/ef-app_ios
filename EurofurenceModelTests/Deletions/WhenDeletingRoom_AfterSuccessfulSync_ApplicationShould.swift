@@ -16,11 +16,11 @@ class WhenDeletingRoom_AfterSuccessfulSync_ApplicationShould: XCTestCase {
         var response = ModelCharacteristics.randomWithoutDeletions
         let context = ApplicationTestBuilder().with(dataStore).build()
         context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(response)
+        context.api.simulateSuccessfulSync(response)
         let roomToDelete = String.random
         response.rooms.deleted = [roomToDelete]
         context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(response)
+        context.api.simulateSuccessfulSync(response)
 
         XCTAssertEqual([roomToDelete], dataStore.transaction.deletedRooms)
     }

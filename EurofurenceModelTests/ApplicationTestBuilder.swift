@@ -17,13 +17,10 @@ class ApplicationTestBuilder {
         var clock: StubClock
         var capturingTokenRegistration: CapturingRemoteNotificationsTokenRegistration
         var capturingCredentialStore: CapturingCredentialStore
-        var loginAPI: FakeAPI
-        var privateMessagesAPI: FakeAPI
-        var syncAPI: FakeAPI
+        var api: FakeAPI
         var dataStore: CapturingEurofurenceDataStore
         var dateDistanceCalculator: StubDateDistanceCalculator
         var conventionStartDateRepository: StubConventionStartDateRepository
-        var imageAPI: FakeAPI
         var imageRepository: CapturingImageRepository
         var significantTimeChangeAdapter: CapturingSignificantTimeChangeAdapter
         var urlOpener: CapturingURLOpener
@@ -110,7 +107,7 @@ class ApplicationTestBuilder {
 
         func loginSuccessfully() {
             login()
-            loginAPI.simulateLoginResponse(LoginResponse(userIdentifier: .random, username: .random, token: .random, tokenValidUntil: Date(timeIntervalSinceNow: 1)))
+            api.simulateLoginResponse(LoginResponse(userIdentifier: .random, username: .random, token: .random, tokenValidUntil: Date(timeIntervalSinceNow: 1)))
         }
 
         @discardableResult
@@ -122,7 +119,7 @@ class ApplicationTestBuilder {
 
         func performSuccessfulSync(response: ModelCharacteristics) {
             refreshLocalStore()
-            syncAPI.simulateSuccessfulSync(response)
+            api.simulateSuccessfulSync(response)
         }
 
         func simulateSignificantTimeChange() {
@@ -131,17 +128,7 @@ class ApplicationTestBuilder {
 
     }
 
-    init() {
-        imageAPI = loginAPI
-        privateMessagesAPI = imageAPI
-        syncAPI = imageAPI
-    }
-
-    private var loginAPI = FakeAPI()
-    private var imageAPI: FakeAPI
-    private var privateMessagesAPI: FakeAPI
-    private var syncAPI: FakeAPI
-
+    private var api = FakeAPI()
     private let capturingTokenRegistration = CapturingRemoteNotificationsTokenRegistration()
     private var capturingCredentialStore = CapturingCredentialStore()
     private var stubClock = StubClock()
@@ -189,11 +176,7 @@ class ApplicationTestBuilder {
 
     @discardableResult
     func with(_ api: FakeAPI) -> ApplicationTestBuilder {
-        self.imageAPI = api
-        self.loginAPI = api
-        self.syncAPI = api
-        self.privateMessagesAPI = api
-
+        self.api = api
         return self
     }
 
@@ -239,19 +222,16 @@ class ApplicationTestBuilder {
         let hoursDateFormatter = FakeHoursDateFormatter()
         let mapCoordinateRender = CapturingMapCoordinateRender()
         let app = EurofurenceSessionBuilder()
+            .with(api)
             .with(stubClock)
             .with(capturingCredentialStore)
             .with(dataStore)
-            .with(loginAPI)
-            .with(privateMessagesAPI)
             .with(pushPermissionsRequester)
             .with(capturingTokenRegistration)
             .with(userPreferences)
-            .with(syncAPI)
             .with(dateDistanceCalculator)
             .with(conventionStartDateRepository)
             .with(timeIntervalForUpcomingEventsSinceNow: timeIntervalForUpcomingEventsSinceNow)
-            .with(imageAPI)
             .with(imageRepository)
             .with(significantTimeChangeAdapter)
             .with(urlOpener)
@@ -267,13 +247,10 @@ class ApplicationTestBuilder {
                        clock: stubClock,
                        capturingTokenRegistration: capturingTokenRegistration,
                        capturingCredentialStore: capturingCredentialStore,
-                       loginAPI: loginAPI,
-                       privateMessagesAPI: privateMessagesAPI,
-                       syncAPI: syncAPI,
+                       api: api,
                        dataStore: dataStore,
                        dateDistanceCalculator: dateDistanceCalculator,
                        conventionStartDateRepository: conventionStartDateRepository,
-                       imageAPI: imageAPI,
                        imageRepository: imageRepository,
                        significantTimeChangeAdapter: significantTimeChangeAdapter,
                        urlOpener: urlOpener,

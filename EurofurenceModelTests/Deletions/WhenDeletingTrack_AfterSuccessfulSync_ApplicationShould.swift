@@ -16,11 +16,11 @@ class WhenDeletingTrack_AfterSuccessfulSync_ApplicationShould: XCTestCase {
         var response = ModelCharacteristics.randomWithoutDeletions
         let context = ApplicationTestBuilder().with(dataStore).build()
         context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(response)
+        context.api.simulateSuccessfulSync(response)
         let trackToDelete = String.random
         response.tracks.deleted = [trackToDelete]
         context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(response)
+        context.api.simulateSuccessfulSync(response)
 
         XCTAssertEqual([trackToDelete], dataStore.transaction.deletedTracks)
     }

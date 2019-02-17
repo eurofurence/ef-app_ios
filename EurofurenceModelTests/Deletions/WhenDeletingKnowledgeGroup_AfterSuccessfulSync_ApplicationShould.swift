@@ -16,11 +16,11 @@ class WhenDeletingKnowledgeGroup_AfterSuccessfulSync_ApplicationShould: XCTestCa
         var response = ModelCharacteristics.randomWithoutDeletions
         let context = ApplicationTestBuilder().with(dataStore).build()
         context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(response)
+        context.api.simulateSuccessfulSync(response)
         let groupToDelete = String.random
         response.knowledgeGroups.deleted = [groupToDelete]
         context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(response)
+        context.api.simulateSuccessfulSync(response)
 
         XCTAssertEqual([groupToDelete], dataStore.transaction.deletedKnowledgeGroups)
     }

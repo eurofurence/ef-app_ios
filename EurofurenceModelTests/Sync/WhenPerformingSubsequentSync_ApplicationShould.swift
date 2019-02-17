@@ -16,10 +16,10 @@ class WhenPerformingSubsequentSync_ApplicationShould: XCTestCase {
         let expected = Date.random
         context.clock.tickTime(to: expected)
         context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(.randomWithoutDeletions)
+        context.api.simulateSuccessfulSync(.randomWithoutDeletions)
         context.refreshLocalStore()
 
-        XCTAssertEqual(expected, context.syncAPI.capturedLastSyncTime)
+        XCTAssertEqual(expected, context.api.capturedLastSyncTime)
     }
 
     func testCompleteSyncWhenNotRedownloadingAnyImages() {
@@ -28,10 +28,10 @@ class WhenPerformingSubsequentSync_ApplicationShould: XCTestCase {
         context.clock.tickTime(to: expected)
         context.refreshLocalStore()
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
-        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        context.api.simulateSuccessfulSync(syncResponse)
         var didFinishSync = false
         context.refreshLocalStore { (_) in didFinishSync = true }
-        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        context.api.simulateSuccessfulSync(syncResponse)
 
         XCTAssertTrue(didFinishSync)
     }
@@ -42,9 +42,9 @@ class WhenPerformingSubsequentSync_ApplicationShould: XCTestCase {
         context.clock.tickTime(to: expected)
         context.refreshLocalStore()
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
-        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        context.api.simulateSuccessfulSync(syncResponse)
         let progress = context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        context.api.simulateSuccessfulSync(syncResponse)
 
         XCTAssertEqual(1.0, progress.fractionCompleted, accuracy: .ulpOfOne)
     }

@@ -15,7 +15,7 @@ class WhenResolvingEventByIdentifier_ForEventThatExists_ApplicationShould: XCTes
         let response = ModelCharacteristics.randomWithoutDeletions
         let context = ApplicationTestBuilder().build()
         context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(response)
+        context.api.simulateSuccessfulSync(response)
         let event = response.events.changed.randomElement().element
         var actual: Event?
         context.eventsService.fetchEvent(for: EventIdentifier(event.identifier)) { actual = $0 }

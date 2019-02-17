@@ -28,7 +28,7 @@ class WhenRequestingPrivateMessagesWhileNotAuthenticated: XCTestCase {
     }
 
     func testPrivateMessagesShouldNotBeFetched() {
-        XCTAssertFalse(context.privateMessagesAPI.wasToldToLoadPrivateMessages)
+        XCTAssertFalse(context.api.wasToldToLoadPrivateMessages)
     }
 
 }

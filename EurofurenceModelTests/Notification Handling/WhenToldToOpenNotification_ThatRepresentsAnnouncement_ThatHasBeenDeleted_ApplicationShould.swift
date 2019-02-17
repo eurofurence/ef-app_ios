@@ -20,7 +20,7 @@ class WhenToldToOpenNotification_ThatRepresentsAnnouncement_ThatHasBeenDeleted_A
         context.notificationsService.handleNotification(payload: payload) { result = $0 }
         syncResponse.announcements.changed = []
         syncResponse.announcements.deleted = [randomAnnouncement.identifier]
-        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        context.api.simulateSuccessfulSync(syncResponse)
 
         let expected = NotificationContent.invalidatedAnnouncement
         XCTAssertEqual(expected, result)

@@ -31,21 +31,21 @@ class WhenRequestingPrivateMessagesWhileAuthenticated: XCTestCase {
     }
 
     func testPrivateMessagesAPIShouldLoad() {
-        XCTAssertTrue(context.privateMessagesAPI.wasToldToLoadPrivateMessages)
+        XCTAssertTrue(context.api.wasToldToLoadPrivateMessages)
     }
 
     func testReceievingAPIResponseWithErrorShouldTellObserversFailedToLoadPrivateMessages() {
-        context.privateMessagesAPI.simulateMessagesFailure()
+        context.api.simulateMessagesFailure()
         XCTAssertTrue(capturingMessagesObserver.wasToldFailedToLoadPrivateMessages)
     }
 
     func testReceievingAPIResponseWithSuccessShouldNotTellObserversFailedToLoadPrivateMessages() {
-        context.privateMessagesAPI.simulateMessagesResponse()
+        context.api.simulateMessagesResponse()
         XCTAssertFalse(capturingMessagesObserver.wasToldFailedToLoadPrivateMessages)
     }
 
     func testReceievingAPIResponseWithSuccessShouldTellObserversSuccessullyLoadedPrivateMessages() {
-        context.privateMessagesAPI.simulateMessagesResponse()
+        context.api.simulateMessagesResponse()
         XCTAssertTrue(capturingMessagesObserver.wasToldSuccessfullyLoadedPrivateMessages)
     }
 
@@ -54,19 +54,19 @@ class WhenRequestingPrivateMessagesWhileAuthenticated: XCTestCase {
     }
 
     func testReceievingAPIResponseWithErrorShouldNotTellObserversSuccessfullyLoadedPrivateMessages() {
-        context.privateMessagesAPI.simulateMessagesFailure()
+        context.api.simulateMessagesFailure()
         XCTAssertFalse(capturingMessagesObserver.wasToldSuccessfullyLoadedPrivateMessages)
     }
 
     func testTheAuthTokenFromTheCredentialShouldBeUsedWhenLoadingMessages() {
-        XCTAssertEqual(credential.authenticationToken, context.privateMessagesAPI.capturedAuthToken)
+        XCTAssertEqual(credential.authenticationToken, context.api.capturedAuthToken)
     }
 
     func testReceievingAPIResponseWithSuccessShouldPropogateAuthorNameForMessage() {
         let authorName = "Some guy"
         var message = MessageCharacteristics.random
         message.authorName = authorName
-        context.privateMessagesAPI.simulateMessagesResponse(response: [message])
+        context.api.simulateMessagesResponse(response: [message])
 
         XCTAssertEqual(authorName, capturingMessagesObserver.observedMessages.first?.authorName)
     }
@@ -75,7 +75,7 @@ class WhenRequestingPrivateMessagesWhileAuthenticated: XCTestCase {
         let receivedDateTime = Date.distantPast
         var message = MessageCharacteristics.random
         message.receivedDateTime = receivedDateTime
-        context.privateMessagesAPI.simulateMessagesResponse(response: [message])
+        context.api.simulateMessagesResponse(response: [message])
 
         XCTAssertEqual(receivedDateTime, capturingMessagesObserver.observedMessages.first?.receivedDateTime)
     }
@@ -84,7 +84,7 @@ class WhenRequestingPrivateMessagesWhileAuthenticated: XCTestCase {
         let contents = "Blah blah important stuff blah blah"
         var message = MessageCharacteristics.random
         message.contents = contents
-        context.privateMessagesAPI.simulateMessagesResponse(response: [message])
+        context.api.simulateMessagesResponse(response: [message])
 
         XCTAssertEqual(contents, capturingMessagesObserver.observedMessages.first?.contents)
     }
@@ -93,7 +93,7 @@ class WhenRequestingPrivateMessagesWhileAuthenticated: XCTestCase {
         let subject = "You won something!!"
         var message = MessageCharacteristics.random
         message.subject = subject
-        context.privateMessagesAPI.simulateMessagesResponse(response: [message])
+        context.api.simulateMessagesResponse(response: [message])
 
         XCTAssertEqual(subject, capturingMessagesObserver.observedMessages.first?.subject)
     }
@@ -108,7 +108,7 @@ class WhenRequestingPrivateMessagesWhileAuthenticated: XCTestCase {
 
         let messages = (0...5).map({ (_) in makeRandomMessage() })
         let expectedDateOrdering = Array(messages.map({ $0.receivedDateTime }).sorted().reversed())
-        context.privateMessagesAPI.simulateMessagesResponse(response: messages)
+        context.api.simulateMessagesResponse(response: messages)
         let actualDateOrdering = capturingMessagesObserver.observedMessages.map({ $0.receivedDateTime })
 
         XCTAssertEqual(expectedDateOrdering, actualDateOrdering)
@@ -117,7 +117,7 @@ class WhenRequestingPrivateMessagesWhileAuthenticated: XCTestCase {
     func testObserversToldOfNewUnreadCount() {
         var unreadMessage = MessageCharacteristics.random
         unreadMessage.isRead = false
-        context.privateMessagesAPI.simulateMessagesResponse(response: [unreadMessage])
+        context.api.simulateMessagesResponse(response: [unreadMessage])
 
         XCTAssertEqual(1, capturingMessagesObserver.observedUnreadMessageCount)
     }
@@ -127,7 +127,7 @@ class WhenRequestingPrivateMessagesWhileAuthenticated: XCTestCase {
         unreadMessage.isRead = false
         var readMessage = MessageCharacteristics.random
         readMessage.isRead = true
-        context.privateMessagesAPI.simulateMessagesResponse(response: [unreadMessage, readMessage])
+        context.api.simulateMessagesResponse(response: [unreadMessage, readMessage])
 
         XCTAssertEqual(1, capturingMessagesObserver.observedUnreadMessageCount)
     }
@@ -135,7 +135,7 @@ class WhenRequestingPrivateMessagesWhileAuthenticated: XCTestCase {
     func testLateAddedObserversToldOfNewUnreadCount() {
         var unreadMessage = MessageCharacteristics.random
         unreadMessage.isRead = false
-        context.privateMessagesAPI.simulateMessagesResponse(response: [unreadMessage])
+        context.api.simulateMessagesResponse(response: [unreadMessage])
 
         let observer = CapturingPrivateMessagesObserver()
         context.privateMessagesService.add(observer)

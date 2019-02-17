@@ -17,14 +17,14 @@ class WhenDeletingEvent_AfterSuccessfulSync_ApplicationShould: XCTestCase {
         let delegate = CapturingEventsServiceObserver()
         context.eventsService.add(delegate)
         context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(response)
+        context.api.simulateSuccessfulSync(response)
         let eventToDelete = response.events.changed.randomElement()
         response.events.changed = response.events.changed.filter({ $0.identifier != eventToDelete.element.identifier })
         let expected = Set(response.events.changed.map({ $0.identifier }))
         response.events.changed.removeAll()
         response.events.deleted.append(eventToDelete.element.identifier)
         context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(response)
+        context.api.simulateSuccessfulSync(response)
         let actual = Set(delegate.allEvents.map({ $0.identifier.rawValue }))
 
         XCTAssertEqual(expected, actual,

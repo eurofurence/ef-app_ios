@@ -21,7 +21,7 @@ class WhenPreparingDealerMapGraphic_ApplicationShould: XCTestCase {
         syncResponse.maps.changed[randomMap.index] = randomMap.element
         let context = ApplicationTestBuilder().build()
         context.performSuccessfulSync(response: syncResponse)
-        let mapGraphic = context.imageAPI.stubbedImage(for: randomMap.element.imageIdentifier)!
+        let mapGraphic = context.api.stubbedImage(for: randomMap.element.imageIdentifier)!
         let renderedData = Data.random
         context.mapCoordinateRender.stub(renderedData, forGraphic: mapGraphic, atX: dealerMapEntry.x, y: dealerMapEntry.y, radius: dealerMapEntry.tapRadius)
         var extendedData: ExtendedDealerData?

@@ -29,14 +29,14 @@ class WhenPerformingSync_ApplicationShould: XCTestCase {
 
     func testTellRefreshServiceObserversWhenSyncFinishesSuccessfully() {
         context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(.randomWithoutDeletions)
+        context.api.simulateSuccessfulSync(.randomWithoutDeletions)
 
         XCTAssertTrue(refreshObserver.toldDidFinishRefreshing)
     }
 
     func testTellRefreshServiceObserversWhenSyncFails() {
         context.refreshLocalStore()
-        context.syncAPI.simulateUnsuccessfulSync()
+        context.api.simulateUnsuccessfulSync()
 
         XCTAssertTrue(refreshObserver.toldDidFinishRefreshing)
     }

@@ -18,7 +18,7 @@ class WhenPerformingFullStoreRefresh_ApplicationShould: XCTestCase {
         context.performSuccessfulSync(response: .randomWithoutDeletions)
         _ = context.refreshService.performFullStoreRefresh { (_) in }
 
-        XCTAssertNil(context.syncAPI.capturedLastSyncTime)
+        XCTAssertNil(context.api.capturedLastSyncTime)
     }
 
 }

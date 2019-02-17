@@ -19,7 +19,7 @@ class WhenSavingSuccessfulSyncResponse: XCTestCase {
             XCTAssertFalse(invokedWithNilError)
         }
 
-        context.syncAPI.simulateSuccessfulSync(.randomWithoutDeletions)
+        context.api.simulateSuccessfulSync(.randomWithoutDeletions)
     }
 
 }

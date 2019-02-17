@@ -72,7 +72,7 @@ class ImagesRemoveAllBeforeInsertTests: XCTestCase {
         var data: ExtendedDealerData?
         context.dealersService.fetchExtendedDealerData(for: DealerIdentifier(randomDealer.identifier)) { data = $0 }
 
-        XCTAssertEqual(data?.artistImagePNGData, context.imageAPI.stubbedImage(for: randomDealer.artistImageId))
+        XCTAssertEqual(data?.artistImagePNGData, context.api.stubbedImage(for: randomDealer.artistImageId))
     }
 
 }

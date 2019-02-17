@@ -17,7 +17,7 @@ class WhenAlreadyLoggedIn: XCTestCase {
         context.login(completionHandler: loginObserver.completionHandler)
 
         XCTAssertTrue(loginObserver.notifiedLoginSucceeded)
-        XCTAssertNil(context.loginAPI.capturedLoginRequest)
+        XCTAssertNil(context.api.capturedLoginRequest)
     }
 
 }

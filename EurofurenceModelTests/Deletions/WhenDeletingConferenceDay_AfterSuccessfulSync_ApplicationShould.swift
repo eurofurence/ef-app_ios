@@ -16,11 +16,11 @@ class WhenDeletingConferenceDay_AfterSuccessfulSync_ApplicationShould: XCTestCas
         var response = ModelCharacteristics.randomWithoutDeletions
         let context = ApplicationTestBuilder().with(dataStore).build()
         context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(response)
+        context.api.simulateSuccessfulSync(response)
         let dayToDelete = String.random
         response.conferenceDays.deleted = [dayToDelete]
         context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(response)
+        context.api.simulateSuccessfulSync(response)
 
         XCTAssertEqual([dayToDelete], dataStore.transaction.deletedConferenceDays)
     }

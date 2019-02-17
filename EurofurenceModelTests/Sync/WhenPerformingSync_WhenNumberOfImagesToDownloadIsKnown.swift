@@ -22,7 +22,7 @@ class WhenPerformingSync_WhenNumberOfImagesToDownloadIsKnown: XCTestCase {
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
         context = ApplicationTestBuilder().with(imageAPI).build()
         progress = context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        context.api.simulateSuccessfulSync(syncResponse)
     }
 
     func testTheTotalUnitCountIsUpdatedWithTheNumberOfImagesToAcquire() {

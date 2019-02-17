@@ -23,7 +23,7 @@ class WhenFullRefreshOccurs_YieldingOrphanedEntities: XCTestCase {
         fullSyncResponse = .randomWithoutDeletions
         context.performSuccessfulSync(response: originalResponse)
         _ = context.refreshService.performFullStoreRefresh { (_) in }
-        context.syncAPI.simulateSuccessfulSync(fullSyncResponse)
+        context.api.simulateSuccessfulSync(fullSyncResponse)
     }
 
     func testTheOrphanedAnnouncementsAreRemoved() {

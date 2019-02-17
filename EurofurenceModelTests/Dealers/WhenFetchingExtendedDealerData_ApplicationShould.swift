@@ -22,7 +22,7 @@ class WhenFetchingExtendedDealerData_ApplicationShould: XCTestCase {
         response = ModelCharacteristics.randomWithoutDeletions
         context = ApplicationTestBuilder().build()
         context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(response)
+        context.api.simulateSuccessfulSync(response)
         randomDealer = response.dealers.changed.randomElement().element
         let identifier = DealerIdentifier(randomDealer.identifier)
         context.dealersService.fetchExtendedDealerData(for: identifier) { self.dealerData = $0 }
@@ -43,12 +43,12 @@ class WhenFetchingExtendedDealerData_ApplicationShould: XCTestCase {
     }
 
     func testProvideTheArtistImageData() {
-        let expected = context.imageAPI.stubbedImage(for: randomDealer.artistImageId)
+        let expected = context.api.stubbedImage(for: randomDealer.artistImageId)
         XCTAssertEqual(expected, dealerData?.artistImagePNGData)
     }
 
     func testProvideTheArtPreviewImageData() {
-        let expected = context.imageAPI.stubbedImage(for: randomDealer.artPreviewImageId)
+        let expected = context.api.stubbedImage(for: randomDealer.artPreviewImageId)
         XCTAssertEqual(expected, dealerData?.artPreviewImagePNGData)
     }
 

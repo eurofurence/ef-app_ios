@@ -30,7 +30,7 @@ class WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould: 
         response.dealers.changed = [dealer]
         context = ApplicationTestBuilder().build()
         context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(response)
+        context.api.simulateSuccessfulSync(response)
         let identifier = DealerIdentifier(dealer.identifier)
         context.dealersService.fetchExtendedDealerData(for: identifier) { self.dealerData = $0 }
     }

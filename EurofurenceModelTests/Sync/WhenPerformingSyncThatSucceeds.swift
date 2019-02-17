@@ -15,7 +15,7 @@ class WhenPerformingSyncThatSucceeds: XCTestCase {
         let context = ApplicationTestBuilder().build()
         var invokedWithNilError = false
         context.refreshLocalStore { invokedWithNilError = $0 == nil }
-        context.syncAPI.simulateSuccessfulSync(.randomWithoutDeletions)
+        context.api.simulateSuccessfulSync(.randomWithoutDeletions)
 
         XCTAssertTrue(invokedWithNilError)
     }
@@ -27,7 +27,7 @@ class WhenPerformingSyncThatSucceeds: XCTestCase {
 
         XCTAssertFalse(context.longRunningTaskManager.finishedTask)
 
-        context.syncAPI.simulateSuccessfulSync(.randomWithoutDeletions)
+        context.api.simulateSuccessfulSync(.randomWithoutDeletions)
         XCTAssertFalse(didFinishTaskBeforeCompletionHandlerReturned)
         XCTAssertTrue(context.longRunningTaskManager.finishedTask)
     }
@@ -36,7 +36,7 @@ class WhenPerformingSyncThatSucceeds: XCTestCase {
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let context = ApplicationTestBuilder().build()
         context.performSuccessfulSync(response: syncResponse)
-        let expected = syncResponse.images.changed.map({ ImageEntity(identifier: $0.identifier, pngImageData: context.imageAPI.stubbedImage(for: $0.identifier)!) })
+        let expected = syncResponse.images.changed.map({ ImageEntity(identifier: $0.identifier, pngImageData: context.api.stubbedImage(for: $0.identifier)!) })
 
         XCTAssertTrue(context.imageRepository.didSave(expected))
     }
@@ -47,7 +47,7 @@ class WhenPerformingSyncThatSucceeds: XCTestCase {
         let context = ApplicationTestBuilder().build()
         var didFinish = false
         context.refreshLocalStore { (_) in didFinish = true }
-        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        context.api.simulateSuccessfulSync(syncResponse)
 
         XCTAssertTrue(didFinish)
     }
@@ -57,7 +57,7 @@ class WhenPerformingSyncThatSucceeds: XCTestCase {
         context.refreshLocalStore()
         let randomTime = Date.random
         context.clock.tickTime(to: randomTime)
-        context.syncAPI.simulateSuccessfulSync(.randomWithoutDeletions)
+        context.api.simulateSuccessfulSync(.randomWithoutDeletions)
 
         XCTAssertTrue(context.dataStore.didSaveLastRefreshTime(randomTime))
     }

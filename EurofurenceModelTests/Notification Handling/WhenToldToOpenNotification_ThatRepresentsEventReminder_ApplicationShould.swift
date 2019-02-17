@@ -20,7 +20,7 @@ class WhenToldToOpenNotification_ThatRepresentsEventReminder_ApplicationShould: 
 
         context.notificationsService.handleNotification(payload: payload) { (_) in }
 
-        XCTAssertFalse(context.syncAPI.didBeginSync)
+        XCTAssertFalse(context.api.didBeginSync)
     }
 
     func testProvideEventIdentifierInCompletionHandler() {

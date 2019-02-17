@@ -16,11 +16,11 @@ class WhenDeletingKnowledgeEntry_AfterSuccessfulSync_ApplicationShould: XCTestCa
         var response = ModelCharacteristics.randomWithoutDeletions
         let context = ApplicationTestBuilder().with(dataStore).build()
         context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(response)
+        context.api.simulateSuccessfulSync(response)
         let entryToDelete = String.random
         response.knowledgeEntries.deleted = [entryToDelete]
         context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(response)
+        context.api.simulateSuccessfulSync(response)
 
         XCTAssertEqual([entryToDelete], dataStore.transaction.deletedKnowledgeEntries)
     }

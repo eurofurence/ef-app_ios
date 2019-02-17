@@ -26,13 +26,13 @@ class WhenToldToOpenNotification_ThatRepresentsSyncEvent_ApplicationShould: XCTe
 
     func testRefreshTheLocalStore() {
         simulateSyncPushNotification { (_) in }
-        XCTAssertTrue(context.syncAPI.didBeginSync)
+        XCTAssertTrue(context.api.didBeginSync)
     }
 
     func testProvideSyncSuccessResultWhenDownloadSucceeds() {
         var result: NotificationContent?
         simulateSyncPushNotification { result = $0 }
-        context.syncAPI.simulateSuccessfulSync(.randomWithoutDeletions)
+        context.api.simulateSuccessfulSync(.randomWithoutDeletions)
 
         XCTAssertEqual(.successfulSync, result)
     }
@@ -40,7 +40,7 @@ class WhenToldToOpenNotification_ThatRepresentsSyncEvent_ApplicationShould: XCTe
     func testProideSyncFailedResponseWhenDownloadFails() {
         var result: NotificationContent?
         simulateSyncPushNotification { result = $0 }
-        context.syncAPI.simulateUnsuccessfulSync()
+        context.api.simulateUnsuccessfulSync()
 
         XCTAssertEqual(.failedSync, result)
     }

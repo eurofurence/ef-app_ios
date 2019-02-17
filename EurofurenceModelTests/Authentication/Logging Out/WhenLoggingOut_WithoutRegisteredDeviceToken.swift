@@ -26,7 +26,7 @@ class WhenLoggingOut_WithoutRegisteredDeviceToken: XCTestCase {
         let secondUser = "Some other awesome guy"
         context.login(username: secondUser)
 
-        XCTAssertEqual(secondUser, context.loginAPI.capturedLoginRequest?.username)
+        XCTAssertEqual(secondUser, context.api.capturedLoginRequest?.username)
     }
 
 }
