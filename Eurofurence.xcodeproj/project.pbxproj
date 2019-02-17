@@ -1003,7 +1003,6 @@
 		CAEA0E00216BDE3100B0C7A6 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAA01F2127350053DBF6 /* LoginResponse.swift */; };
 		CAEA0E01216BDE3100B0C7A6 /* PrivateMessagesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EABD1F2660D80053DBF6 /* PrivateMessagesAPI.swift */; };
 		CAEA0E02216BDE3100B0C7A6 /* SyncAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF03CF20422B7A0028BD62 /* SyncAPI.swift */; };
-		CAEA0E03216BDE3100B0C7A6 /* ImageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1EBB20B60A6000D904B5 /* ImageAPI.swift */; };
 		CAEA0E05216BDE3100B0C7A6 /* JSONAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD11F20CE8F00E07A4A /* JSONAPI.swift */; };
 		CAEA0E08216BDE3100B0C7A6 /* BuildConfigurationAPIURLProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DD58D320D91069001893ED /* BuildConfigurationAPIURLProviding.swift */; };
 		CAEA0E09216BDE3100B0C7A6 /* SystemNetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF96CF01F1495F400EE6134 /* SystemNetworkReachability.swift */; };
@@ -1219,7 +1218,7 @@
 		CAEA1044216E775300B0C7A6 /* ScreenshotAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9845D91F29199E00E8821D /* ScreenshotAssistant.swift */; };
 		CAEA1046216E77DE00B0C7A6 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA1045216E77DE00B0C7A6 /* Theme.swift */; };
 		CAEA1084216E80F400B0C7A6 /* Array+Equality.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA1083216E80F400B0C7A6 /* Array+Equality.swift */; };
-		CAEA1086216E815200B0C7A6 /* FakeImageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA1085216E815200B0C7A6 /* FakeImageAPI.swift */; };
+		CAEA1086216E815200B0C7A6 /* FakeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA1085216E815200B0C7A6 /* FakeAPI.swift */; };
 		CAEA1088216E817700B0C7A6 /* CapturingImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA1087216E817700B0C7A6 /* CapturingImageRepository.swift */; };
 		CAEA108A216E818A00B0C7A6 /* CapturingSignificantTimeChangeAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA1089216E818A00B0C7A6 /* CapturingSignificantTimeChangeAdapter.swift */; };
 		CAEA108C216E819B00B0C7A6 /* FakeLongRunningTaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA108B216E819B00B0C7A6 /* FakeLongRunningTaskManager.swift */; };
@@ -2511,7 +2510,6 @@
 		CACF1EB320B5FFB600D904B5 /* Data+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CACF1EB520B600F200D904B5 /* EventGraphicComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventGraphicComponent.swift; sourceTree = "<group>"; };
 		CACF1EB920B6073100D904B5 /* WhenPreparingViewModel_ForEventWithNoPoster_EventDetailInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPreparingViewModel_ForEventWithNoPoster_EventDetailInteractorShould.swift; sourceTree = "<group>"; };
-		CACF1EBB20B60A6000D904B5 /* ImageAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAPI.swift; sourceTree = "<group>"; };
 		CACF1EBF20B60D2B00D904B5 /* WhenSyncFinishesForEventWithPoster_WhenImageAPIIsSlow_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSyncFinishesForEventWithPoster_WhenImageAPIIsSlow_ApplicationShould.swift; sourceTree = "<group>"; };
 		CACF1EC120B6B92F00D904B5 /* WhenPerformingSync_BeforeImageDownload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPerformingSync_BeforeImageDownload.swift; sourceTree = "<group>"; };
 		CACF1EC320B6B9B500D904B5 /* WhenPerformingSync_WhenNumberOfImagesToDownloadIsKnown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPerformingSync_WhenNumberOfImagesToDownloadIsKnown.swift; sourceTree = "<group>"; };
@@ -2617,7 +2615,7 @@
 		CAEA0F7B216D370600B0C7A6 /* FakeHoursDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeHoursDateFormatter.swift; sourceTree = "<group>"; };
 		CAEA1045216E77DE00B0C7A6 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		CAEA1083216E80F400B0C7A6 /* Array+Equality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Equality.swift"; sourceTree = "<group>"; };
-		CAEA1085216E815200B0C7A6 /* FakeImageAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeImageAPI.swift; sourceTree = "<group>"; };
+		CAEA1085216E815200B0C7A6 /* FakeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeAPI.swift; sourceTree = "<group>"; };
 		CAEA1087216E817700B0C7A6 /* CapturingImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingImageRepository.swift; sourceTree = "<group>"; };
 		CAEA1089216E818A00B0C7A6 /* CapturingSignificantTimeChangeAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingSignificantTimeChangeAdapter.swift; sourceTree = "<group>"; };
 		CAEA108B216E819B00B0C7A6 /* FakeLongRunningTaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeLongRunningTaskManager.swift; sourceTree = "<group>"; };
@@ -3586,7 +3584,6 @@
 			isa = PBXGroup;
 			children = (
 				CA4679A72219FC03006B3090 /* API.swift */,
-				CACF1EBB20B60A6000D904B5 /* ImageAPI.swift */,
 				CA30EAA21F2129700053DBF6 /* LoginAPI.swift */,
 				CA30EAA01F2127350053DBF6 /* LoginResponse.swift */,
 				CA30EABD1F2660D80053DBF6 /* PrivateMessagesAPI.swift */,
@@ -4071,7 +4068,7 @@
 				CA30EAA51F2129C60053DBF6 /* CapturingLoginAPI.swift */,
 				CA30EABB1F2660AD0053DBF6 /* CapturingPrivateMessagesAPI.swift */,
 				CABF03CD20422B240028BD62 /* CapturingSyncAPI.swift */,
-				CAEA1085216E815200B0C7A6 /* FakeImageAPI.swift */,
+				CAEA1085216E815200B0C7A6 /* FakeAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -8539,7 +8536,6 @@
 				CAEA0DA0216BDE2300B0C7A6 /* CollectThemAllRequestFactory.swift in Sources */,
 				CAEA0DC7216BDE2300B0C7A6 /* ContentLinksService.swift in Sources */,
 				CA4679A222176A3F006B3090 /* Event.swift in Sources */,
-				CAEA0E03216BDE3100B0C7A6 /* ImageAPI.swift in Sources */,
 				CAEA0DF2216BDE3100B0C7A6 /* AppCoreStrings.swift in Sources */,
 				CAEA0DAA216BDE2300B0C7A6 /* NotificationScheduler.swift in Sources */,
 				CAEA0D9B216BDDF000B0C7A6 /* EurofurenceApplicationModel.xcdatamodeld in Sources */,
@@ -8802,7 +8798,7 @@
 				CAEA0FB5216E1CC000B0C7A6 /* WhenObservingDealersAfterLoadingFromStore_ApplicationShould.swift in Sources */,
 				CAEA1033216E1CE800B0C7A6 /* StubCollectThemAllRequestFactory.swift in Sources */,
 				CAEA0FC2216E1CC000B0C7A6 /* EventConferenceRoomsRemoveAllBeforeInsertTests.swift in Sources */,
-				CAEA1086216E815200B0C7A6 /* FakeImageAPI.swift in Sources */,
+				CAEA1086216E815200B0C7A6 /* FakeAPI.swift in Sources */,
 				CAEA0FD2216E1CC000B0C7A6 /* WhenResolvingEventByIdentifier_ForEventThatExists_ApplicationShould.swift in Sources */,
 				CAEA102C216E1CE800B0C7A6 /* CapturingKnowledgeServiceObserver.swift in Sources */,
 				CAEA102B216E1CE800B0C7A6 /* CapturingEventsServiceObserver.swift in Sources */,

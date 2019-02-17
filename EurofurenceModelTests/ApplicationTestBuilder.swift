@@ -23,7 +23,7 @@ class ApplicationTestBuilder {
         var dataStore: CapturingEurofurenceDataStore
         var dateDistanceCalculator: StubDateDistanceCalculator
         var conventionStartDateRepository: StubConventionStartDateRepository
-        var imageAPI: FakeImageAPI
+        var imageAPI: FakeAPI
         var imageRepository: CapturingImageRepository
         var significantTimeChangeAdapter: CapturingSignificantTimeChangeAdapter
         var urlOpener: CapturingURLOpener
@@ -141,7 +141,7 @@ class ApplicationTestBuilder {
     private var userPreferences: UserPreferences = StubUserPreferences()
     private let syncAPI = CapturingSyncAPI()
     private var timeIntervalForUpcomingEventsSinceNow: TimeInterval = .greatestFiniteMagnitude
-    private var imageAPI: FakeImageAPI = FakeImageAPI()
+    private var imageAPI: FakeAPI = FakeAPI()
     private var imageRepository = CapturingImageRepository()
     private var urlOpener: CapturingURLOpener = CapturingURLOpener()
     private var collectThemAllRequestFactory: CollectThemAllRequestFactory = StubCollectThemAllRequestFactory()
@@ -181,7 +181,7 @@ class ApplicationTestBuilder {
     }
 
     @discardableResult
-    func with(_ imageAPI: FakeImageAPI) -> ApplicationTestBuilder {
+    func with(_ imageAPI: FakeAPI) -> ApplicationTestBuilder {
         self.imageAPI = imageAPI
         return self
     }

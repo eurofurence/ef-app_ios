@@ -1,5 +1,5 @@
 //
-//  FakeImageAPI.swift
+//  FakeAPI.swift
 //  EurofurenceAppCoreTests
 //
 //  Created by Thomas Sherwood on 10/10/2018.
@@ -9,7 +9,23 @@
 import EurofurenceModel
 import Foundation
 
-class FakeImageAPI: ImageAPI {
+class FakeAPI: API {
+
+    func performLogin(request: LoginRequest, completionHandler: @escaping (LoginResponse?) -> Void) {
+
+    }
+
+    func loadPrivateMessages(authorizationToken: String, completionHandler: @escaping ([MessageCharacteristics]?) -> Void) {
+
+    }
+
+    func markMessageWithIdentifierAsRead(_ identifier: String, authorizationToken: String) {
+
+    }
+
+    func fetchLatestData(lastSyncTime: Date?, completionHandler: @escaping (ModelCharacteristics?) -> Void) {
+
+    }
 
     private(set) var downloadedImageIdentifiers = [String]()
     func fetchImage(identifier: String, completionHandler: @escaping (Data?) -> Void) {
@@ -19,7 +35,7 @@ class FakeImageAPI: ImageAPI {
 
 }
 
-extension FakeImageAPI {
+extension FakeAPI {
 
     func stubbedImage(for identifier: String?) -> Data? {
         return identifier?.data(using: .utf8)
@@ -27,7 +43,7 @@ extension FakeImageAPI {
 
 }
 
-class SlowFakeImageAPI: FakeImageAPI {
+class SlowFakeImageAPI: FakeAPI {
 
     fileprivate var pendingFetches = [() -> Void]()
 

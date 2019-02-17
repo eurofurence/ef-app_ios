@@ -22,7 +22,7 @@ public class EurofurenceSessionBuilder {
     private var dateDistanceCalculator: DateDistanceCalculator
     private var conventionStartDateRepository: ConventionStartDateRepository
     private var timeIntervalForUpcomingEventsSinceNow: TimeInterval
-    private var imageAPI: ImageAPI
+    private var imageAPI: API
     private var imageRepository: ImageRepository
     private var significantTimeChangeAdapter: SignificantTimeChangeAdapter?
     private var urlOpener: URLOpener?
@@ -131,7 +131,7 @@ public class EurofurenceSessionBuilder {
     }
 
     @discardableResult
-    public func with(_ imageAPI: ImageAPI) -> EurofurenceSessionBuilder {
+    public func with(_ imageAPI: API) -> EurofurenceSessionBuilder {
         self.imageAPI = imageAPI
         return self
     }

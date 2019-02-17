@@ -12,10 +12,10 @@ import Foundation
 class ImageDownloader {
 
     private let eventBus: EventBus
-    private let imageAPI: ImageAPI
+    private let imageAPI: API
     private let imageRepository: ImageRepository
 
-    init(eventBus: EventBus, imageAPI: ImageAPI, imageRepository: ImageRepository) {
+    init(eventBus: EventBus, imageAPI: API, imageRepository: ImageRepository) {
         self.eventBus = eventBus
         self.imageAPI = imageAPI
         self.imageRepository = imageRepository

@@ -8,4 +8,8 @@
 
 import Foundation
 
-public protocol API: ImageAPI, LoginAPI, PrivateMessagesAPI, SyncAPI {}
+public protocol API: LoginAPI, PrivateMessagesAPI, SyncAPI {
+
+    func fetchImage(identifier: String, completionHandler: @escaping (Data?) -> Void)
+
+}

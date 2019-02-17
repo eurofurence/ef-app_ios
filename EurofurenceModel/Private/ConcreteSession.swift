@@ -40,7 +40,7 @@ class ConcreteSession: EurofurenceSession {
          loginAPI: LoginAPI,
          privateMessagesAPI: PrivateMessagesAPI,
          syncAPI: SyncAPI,
-         imageAPI: ImageAPI,
+         imageAPI: API,
          dateDistanceCalculator: DateDistanceCalculator,
          conventionStartDateRepository: ConventionStartDateRepository,
          timeIntervalForUpcomingEventsSinceNow: TimeInterval,

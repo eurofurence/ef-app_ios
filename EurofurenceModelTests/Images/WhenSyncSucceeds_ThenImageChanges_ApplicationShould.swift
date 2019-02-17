@@ -12,7 +12,7 @@ import XCTest
 class WhenSyncSucceeds_ThenImageChanges_ApplicationShould: XCTestCase {
 
     func testRedownloadTheImage() {
-        class VerifyImageRedownloadedAPI: FakeImageAPI {
+        class VerifyImageRedownloadedAPI: FakeAPI {
 
             func verifyDownloadedImage(identifier: String, count: Int, file: StaticString = #file, line: UInt = #line) {
                 let actualCount = downloadedImageIdentifiers.filter({ $0 == identifier }).count
