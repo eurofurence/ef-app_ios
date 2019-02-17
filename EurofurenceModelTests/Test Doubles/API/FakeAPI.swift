@@ -35,8 +35,13 @@ class FakeAPI: API {
         capturedAuthTokenForMarkingMessageAsRead = authorizationToken
     }
 
+    fileprivate var completionHandler: ((ModelCharacteristics?) -> Void)?
+    private(set) var capturedLastSyncTime: Date?
+    private(set) var didBeginSync = false
     func fetchLatestData(lastSyncTime: Date?, completionHandler: @escaping (ModelCharacteristics?) -> Void) {
-
+        didBeginSync = true
+        capturedLastSyncTime = lastSyncTime
+        self.completionHandler = completionHandler
     }
 
     private(set) var downloadedImageIdentifiers = [String]()
@@ -51,6 +56,14 @@ extension FakeAPI {
 
     func stubbedImage(for identifier: String?) -> Data? {
         return identifier?.data(using: .utf8)
+    }
+
+    func simulateSuccessfulSync(_ response: ModelCharacteristics) {
+        completionHandler?(response)
+    }
+
+    func simulateUnsuccessfulSync() {
+        completionHandler?(nil)
     }
 
     func simulateLoginResponse(_ response: LoginResponse) {

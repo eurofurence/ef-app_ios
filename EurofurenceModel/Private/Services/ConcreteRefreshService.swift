@@ -18,7 +18,7 @@ class ConcreteRefreshService: RefreshService {
 
     private let longRunningTaskManager: LongRunningTaskManager?
     private let dataStore: DataStore
-    private let syncAPI: SyncAPI
+    private let syncAPI: API
     private let imageDownloader: ImageDownloader
     private let clock: Clock
     private let eventBus: EventBus
@@ -27,7 +27,7 @@ class ConcreteRefreshService: RefreshService {
 
     init(longRunningTaskManager: LongRunningTaskManager?,
          dataStore: DataStore,
-         syncAPI: SyncAPI,
+         syncAPI: API,
          imageDownloader: ImageDownloader,
          announcementsService: ConcreteAnnouncementsService,
          schedule: ConcreteEventsService,

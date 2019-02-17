@@ -8,7 +8,9 @@
 
 import Foundation
 
-public protocol API: SyncAPI {
+public protocol API {
+
+    func fetchLatestData(lastSyncTime: Date?, completionHandler: @escaping (ModelCharacteristics?) -> Void)
 
     func fetchImage(identifier: String, completionHandler: @escaping (Data?) -> Void)
 

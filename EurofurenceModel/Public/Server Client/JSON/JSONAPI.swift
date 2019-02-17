@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct JSONAPI: API, SyncAPI {
+public struct JSONAPI: API {
 
     // MARK: Properties
 

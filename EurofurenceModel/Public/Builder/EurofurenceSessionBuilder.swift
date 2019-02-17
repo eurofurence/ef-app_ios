@@ -18,7 +18,7 @@ public class EurofurenceSessionBuilder {
     private var credentialStore: CredentialStore
     private var loginAPI: API
     private var privateMessagesAPI: API
-    private var syncAPI: SyncAPI
+    private var syncAPI: API
     private var dateDistanceCalculator: DateDistanceCalculator
     private var conventionStartDateRepository: ConventionStartDateRepository
     private var timeIntervalForUpcomingEventsSinceNow: TimeInterval
@@ -95,12 +95,6 @@ public class EurofurenceSessionBuilder {
     }
 
     @discardableResult
-    public func with(_ syncAPI: SyncAPI) -> EurofurenceSessionBuilder {
-        self.syncAPI = syncAPI
-        return self
-    }
-
-    @discardableResult
     public func with(_ dateDistanceCalculator: DateDistanceCalculator) -> EurofurenceSessionBuilder {
         self.dateDistanceCalculator = dateDistanceCalculator
         return self
@@ -123,6 +117,7 @@ public class EurofurenceSessionBuilder {
         self.imageAPI = api
         self.loginAPI = api
         self.privateMessagesAPI = api
+        self.syncAPI = api
 
         return self
     }

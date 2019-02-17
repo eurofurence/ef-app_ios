@@ -1000,7 +1000,6 @@
 		CAEA0DFD216BDE3100B0C7A6 /* TrackCharacteristics.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E9320B36C5A00D904B5 /* TrackCharacteristics.swift */; };
 		CAEA0DFE216BDE3100B0C7A6 /* ImageCharacteristics.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA401058210B9FD40056E16C /* ImageCharacteristics.swift */; };
 		CAEA0E00216BDE3100B0C7A6 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAA01F2127350053DBF6 /* LoginResponse.swift */; };
-		CAEA0E02216BDE3100B0C7A6 /* SyncAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF03CF20422B7A0028BD62 /* SyncAPI.swift */; };
 		CAEA0E05216BDE3100B0C7A6 /* JSONAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD11F20CE8F00E07A4A /* JSONAPI.swift */; };
 		CAEA0E08216BDE3100B0C7A6 /* BuildConfigurationAPIURLProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DD58D320D91069001893ED /* BuildConfigurationAPIURLProviding.swift */; };
 		CAEA0E09216BDE3100B0C7A6 /* SystemNetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF96CF01F1495F400EE6134 /* SystemNetworkReachability.swift */; };
@@ -1203,7 +1202,6 @@
 		CAEA1030216E1CE800B0C7A6 /* CapturingPrivateMessagesObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAB91F26174B0053DBF6 /* CapturingPrivateMessagesObserver.swift */; };
 		CAEA1033216E1CE800B0C7A6 /* StubCollectThemAllRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2761CB20E034BD000E52AC /* StubCollectThemAllRequestFactory.swift */; };
 		CAEA1034216E1CE800B0C7A6 /* StubConventionStartDateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E7720A4B6E0004AFED6 /* StubConventionStartDateRepository.swift */; };
-		CAEA1038216E1CE800B0C7A6 /* CapturingSyncAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF03CD20422B240028BD62 /* CapturingSyncAPI.swift */; };
 		CAEA1039216E1CE800B0C7A6 /* CapturingRemoteNotificationsTokenRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781A94411F1A1D8B002DE70F /* CapturingRemoteNotificationsTokenRegistration.swift */; };
 		CAEA103A216E1CE800B0C7A6 /* UserDefaultsForceRefreshRequired.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C339211A1CAE003C1C4E /* UserDefaultsForceRefreshRequired.swift */; };
 		CAEA103B216E1CE800B0C7A6 /* WhenUpgradingBetweenAppVersions_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADABF082119BE770023C3B6 /* WhenUpgradingBetweenAppVersions_ApplicationShould.swift */; };
@@ -2431,8 +2429,6 @@
 		CABF03C62041C3270028BD62 /* StubKnowledgeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubKnowledgeService.swift; sourceTree = "<group>"; };
 		CABF03C920421B490028BD62 /* WhenFetchingKnowledgeGroupsWithoutLoadingAnything.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingKnowledgeGroupsWithoutLoadingAnything.swift; sourceTree = "<group>"; };
 		CABF03CB204220460028BD62 /* WhenFetchingKnowledgeGroupsAfterSuccessfulRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingKnowledgeGroupsAfterSuccessfulRefresh.swift; sourceTree = "<group>"; };
-		CABF03CD20422B240028BD62 /* CapturingSyncAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingSyncAPI.swift; sourceTree = "<group>"; };
-		CABF03CF20422B7A0028BD62 /* SyncAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncAPI.swift; sourceTree = "<group>"; };
 		CAC1B3842014E93C00ED8B06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CAC1E12A1F5040E100195513 /* NewsScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsScene.swift; sourceTree = "<group>"; };
 		CAC1E1301F50413500195513 /* CapturingNewsScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingNewsScene.swift; sourceTree = "<group>"; };
@@ -3577,7 +3573,6 @@
 			children = (
 				CA4679A72219FC03006B3090 /* API.swift */,
 				CA30EAA01F2127350053DBF6 /* LoginResponse.swift */,
-				CABF03CF20422B7A0028BD62 /* SyncAPI.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -4055,7 +4050,6 @@
 		CA30EAA41F2129B70053DBF6 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				CABF03CD20422B240028BD62 /* CapturingSyncAPI.swift */,
 				CAEA1085216E815200B0C7A6 /* FakeAPI.swift */,
 			);
 			path = API;
@@ -8590,7 +8584,6 @@
 				CAEA0D98216BDD9500B0C7A6 /* ConcreteKnowledgeService.swift in Sources */,
 				CAEA0D9E216BDE2300B0C7A6 /* EurofurenceSession.swift in Sources */,
 				CAEA0DA9216BDE2300B0C7A6 /* MapCoordinateRender.swift in Sources */,
-				CAEA0E02216BDE3100B0C7A6 /* SyncAPI.swift in Sources */,
 				CAEA0DD0216BDE2300B0C7A6 /* KeychainCredentialStore.swift in Sources */,
 				CAEA0DB7216BDE2300B0C7A6 /* KnowledgeEntry.swift in Sources */,
 				CAEA0DF9216BDE3100B0C7A6 /* LinkCharacteristics.swift in Sources */,
@@ -8697,7 +8690,6 @@
 				CAEA1025216E1CE800B0C7A6 /* CapturingConventionCountdownServiceObserver.swift in Sources */,
 				CAEA0FB9216E1CC000B0C7A6 /* WhenTellingDealersIndexToSearch_ApplicationShould.swift in Sources */,
 				CAEA10A2216E8B8100B0C7A6 /* CapturingExternalContentHandler.swift in Sources */,
-				CAEA1038216E1CE800B0C7A6 /* CapturingSyncAPI.swift in Sources */,
 				CAEA0F6C216D2BFB00B0C7A6 /* ImageAPITests.swift in Sources */,
 				CAEA0FC5216E1CC000B0C7A6 /* KnowledgeEntriesRemoveAllBeforeInsertTests.swift in Sources */,
 				CAEA0FC3216E1CC000B0C7A6 /* EventConferenceTracksRemoveAllBeforeInsertTests.swift in Sources */,

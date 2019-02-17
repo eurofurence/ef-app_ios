@@ -19,7 +19,7 @@ class ApplicationTestBuilder {
         var capturingCredentialStore: CapturingCredentialStore
         var loginAPI: FakeAPI
         var privateMessagesAPI: FakeAPI
-        var syncAPI: CapturingSyncAPI
+        var syncAPI: FakeAPI
         var dataStore: CapturingEurofurenceDataStore
         var dateDistanceCalculator: StubDateDistanceCalculator
         var conventionStartDateRepository: StubConventionStartDateRepository
@@ -134,11 +134,13 @@ class ApplicationTestBuilder {
     init() {
         imageAPI = loginAPI
         privateMessagesAPI = imageAPI
+        syncAPI = imageAPI
     }
 
     private var loginAPI = FakeAPI()
     private var imageAPI: FakeAPI
-    private let privateMessagesAPI: FakeAPI
+    private var privateMessagesAPI: FakeAPI
+    private var syncAPI: FakeAPI
 
     private let capturingTokenRegistration = CapturingRemoteNotificationsTokenRegistration()
     private var capturingCredentialStore = CapturingCredentialStore()
@@ -146,7 +148,6 @@ class ApplicationTestBuilder {
     private var pushPermissionsRequester: PushPermissionsRequester = CapturingPushPermissionsRequester()
     private var dataStore = CapturingEurofurenceDataStore()
     private var userPreferences: UserPreferences = StubUserPreferences()
-    private let syncAPI = CapturingSyncAPI()
     private var timeIntervalForUpcomingEventsSinceNow: TimeInterval = .greatestFiniteMagnitude
     private var imageRepository = CapturingImageRepository()
     private var urlOpener: CapturingURLOpener = CapturingURLOpener()
@@ -190,6 +191,8 @@ class ApplicationTestBuilder {
     func with(_ api: FakeAPI) -> ApplicationTestBuilder {
         self.imageAPI = api
         self.loginAPI = api
+        self.syncAPI = api
+        self.privateMessagesAPI = api
 
         return self
     }
