@@ -12,7 +12,7 @@ import XCTest
 class WhenApplicationInitialises_WithAnnouncementsSavedToStore: XCTestCase {
 
     func testTheEventsAreProvidedToTheObserver() {
-        let dataStore = CapturingEurofurenceDataStore()
+        let dataStore = CapturingDataStore()
         let announcements = [AnnouncementCharacteristics].random
         dataStore.performTransaction { (transaction) in
             transaction.saveAnnouncements(announcements)

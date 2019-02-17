@@ -12,7 +12,7 @@ import XCTest
 class WhenLaunchingApplicationWithPreexistingFavourites: XCTestCase {
 
     func testTheObserversAreToldAboutTheFavouritedEvents() {
-        let dataStore = CapturingEurofurenceDataStore()
+        let dataStore = CapturingDataStore()
         let expected = [EventIdentifier].random
         dataStore.performTransaction { (transaction) in
             expected.forEach(transaction.saveFavouriteEventIdentifier)
@@ -28,7 +28,7 @@ class WhenLaunchingApplicationWithPreexistingFavourites: XCTestCase {
     func testTheFavouritesAreSortedByEventStartTime() {
         let response = ModelCharacteristics.randomWithoutDeletions
         let events = response.events.changed
-        let dataStore = CapturingEurofurenceDataStore()
+        let dataStore = CapturingDataStore()
         dataStore.performTransaction { (transaction) in
             transaction.saveEvents(response.events.changed)
             transaction.saveRooms(response.rooms.changed)

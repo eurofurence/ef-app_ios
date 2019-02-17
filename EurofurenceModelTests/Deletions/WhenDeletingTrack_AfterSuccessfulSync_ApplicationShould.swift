@@ -12,7 +12,7 @@ import XCTest
 class WhenDeletingTrack_AfterSuccessfulSync_ApplicationShould: XCTestCase {
 
     func testTellTheStoreToDeleteTheTrack() {
-        let dataStore = CapturingEurofurenceDataStore()
+        let dataStore = CapturingDataStore()
         var response = ModelCharacteristics.randomWithoutDeletions
         let context = ApplicationTestBuilder().with(dataStore).build()
         context.refreshLocalStore()

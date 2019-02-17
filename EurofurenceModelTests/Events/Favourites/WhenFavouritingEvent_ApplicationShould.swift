@@ -19,7 +19,7 @@ class WhenFavouritingEvent_ApplicationShould: XCTestCase {
 
         let response = ModelCharacteristics.randomWithoutDeletions
         events = response.events.changed
-        let dataStore = CapturingEurofurenceDataStore()
+        let dataStore = CapturingDataStore()
         dataStore.performTransaction { (transaction) in
             transaction.saveEvents(response.events.changed)
             transaction.saveRooms(response.rooms.changed)

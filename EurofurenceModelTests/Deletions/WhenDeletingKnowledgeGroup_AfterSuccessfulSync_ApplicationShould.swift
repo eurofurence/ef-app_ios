@@ -12,7 +12,7 @@ import XCTest
 class WhenDeletingKnowledgeGroup_AfterSuccessfulSync_ApplicationShould: XCTestCase {
 
     func testTellTheStoreToDeleteTheGroup() {
-        let dataStore = CapturingEurofurenceDataStore()
+        let dataStore = CapturingDataStore()
         var response = ModelCharacteristics.randomWithoutDeletions
         let context = ApplicationTestBuilder().with(dataStore).build()
         context.refreshLocalStore()

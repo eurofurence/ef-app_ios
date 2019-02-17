@@ -13,12 +13,12 @@ import Foundation
 class ApplicationTestBuilder {
 
     struct Context {
-        var application: EurofurenceSession
+        var session: EurofurenceSession
         var clock: StubClock
-        var capturingTokenRegistration: CapturingRemoteNotificationsTokenRegistration
-        var capturingCredentialStore: CapturingCredentialStore
+        var notificationTokenRegistration: CapturingRemoteNotificationsTokenRegistration
+        var credentialStore: CapturingCredentialStore
         var api: FakeAPI
-        var dataStore: CapturingEurofurenceDataStore
+        var dataStore: CapturingDataStore
         var dateDistanceCalculator: StubDateDistanceCalculator
         var conventionStartDateRepository: StubConventionStartDateRepository
         var imageRepository: CapturingImageRepository
@@ -30,7 +30,7 @@ class ApplicationTestBuilder {
         var mapCoordinateRender: CapturingMapCoordinateRender
 
         var services: Services {
-            return application.services
+            return session.services
         }
 
         var notificationsService: NotificationService {
@@ -86,7 +86,7 @@ class ApplicationTestBuilder {
         }
 
         var authenticationToken: String? {
-            return capturingCredentialStore.persistedCredential?.authenticationToken
+            return credentialStore.persistedCredential?.authenticationToken
         }
 
         func tickTime(to time: Date) {
@@ -112,7 +112,7 @@ class ApplicationTestBuilder {
 
         @discardableResult
         func refreshLocalStore(completionHandler: ((Error?) -> Void)? = nil) -> Progress {
-            return application.services.refresh.refreshLocalStore { (error) in
+            return session.services.refresh.refreshLocalStore { (error) in
                 completionHandler?(error)
             }
         }
@@ -129,11 +129,11 @@ class ApplicationTestBuilder {
     }
 
     private var api = FakeAPI()
-    private let capturingTokenRegistration = CapturingRemoteNotificationsTokenRegistration()
-    private var capturingCredentialStore = CapturingCredentialStore()
-    private var stubClock = StubClock()
+    private let notificationTokenRegistration = CapturingRemoteNotificationsTokenRegistration()
+    private var credentialStore = CapturingCredentialStore()
+    private var clock = StubClock()
     private var pushPermissionsRequester: PushPermissionsRequester = CapturingPushPermissionsRequester()
-    private var dataStore = CapturingEurofurenceDataStore()
+    private var dataStore = CapturingDataStore()
     private var userPreferences: UserPreferences = StubUserPreferences()
     private var timeIntervalForUpcomingEventsSinceNow: TimeInterval = .greatestFiniteMagnitude
     private var imageRepository = CapturingImageRepository()
@@ -142,12 +142,12 @@ class ApplicationTestBuilder {
     private var forceUpgradeRequired: ForceRefreshRequired = StubForceRefreshRequired(isForceRefreshRequired: false)
 
     func with(_ currentDate: Date) -> ApplicationTestBuilder {
-        stubClock = StubClock(currentDate: currentDate)
+        clock = StubClock(currentDate: currentDate)
         return self
     }
 
     func with(_ persistedCredential: Credential?) -> ApplicationTestBuilder {
-        capturingCredentialStore = CapturingCredentialStore(persistedCredential: persistedCredential)
+        credentialStore = CapturingCredentialStore(persistedCredential: persistedCredential)
         return self
     }
 
@@ -157,7 +157,7 @@ class ApplicationTestBuilder {
     }
 
     @discardableResult
-    func with(_ dataStore: CapturingEurofurenceDataStore) -> ApplicationTestBuilder {
+    func with(_ dataStore: CapturingDataStore) -> ApplicationTestBuilder {
         self.dataStore = dataStore
         return self
     }
@@ -223,11 +223,11 @@ class ApplicationTestBuilder {
         let mapCoordinateRender = CapturingMapCoordinateRender()
         let app = EurofurenceSessionBuilder()
             .with(api)
-            .with(stubClock)
-            .with(capturingCredentialStore)
+            .with(clock)
+            .with(credentialStore)
             .with(dataStore)
             .with(pushPermissionsRequester)
-            .with(capturingTokenRegistration)
+            .with(notificationTokenRegistration)
             .with(userPreferences)
             .with(dateDistanceCalculator)
             .with(conventionStartDateRepository)
@@ -243,10 +243,10 @@ class ApplicationTestBuilder {
             .with(forceUpgradeRequired)
             .build()
 
-        return Context(application: app,
-                       clock: stubClock,
-                       capturingTokenRegistration: capturingTokenRegistration,
-                       capturingCredentialStore: capturingCredentialStore,
+        return Context(session: app,
+                       clock: clock,
+                       notificationTokenRegistration: notificationTokenRegistration,
+                       credentialStore: credentialStore,
                        api: api,
                        dataStore: dataStore,
                        dateDistanceCalculator: dateDistanceCalculator,

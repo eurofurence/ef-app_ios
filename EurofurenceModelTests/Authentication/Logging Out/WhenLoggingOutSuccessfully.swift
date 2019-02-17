@@ -24,25 +24,25 @@ class WhenLoggingOutSuccessfully: XCTestCase {
     }
 
     func testTheRemoteNotificationsTokenRegistrationShouldReRegisterTheDeviceTokenWithNilUserRegistrationToken() {
-        context.application.services.notifications.storeRemoteNotificationsToken(Data())
+        context.session.services.notifications.storeRemoteNotificationsToken(Data())
         context.authenticationService.logout { _ in }
 
-        XCTAssertNil(context.capturingTokenRegistration.capturedUserAuthenticationToken)
+        XCTAssertNil(context.notificationTokenRegistration.capturedUserAuthenticationToken)
     }
 
     func testTheRemoteNotificationsTokenRegistrationShouldReRegisterTheDeviceTokenThatWasPreviouslyRegistered() {
         let deviceToken = "Token time".data(using: .utf8)!
-        context.application.services.notifications.storeRemoteNotificationsToken(deviceToken)
+        context.session.services.notifications.storeRemoteNotificationsToken(deviceToken)
         context.authenticationService.logout { _ in }
 
-        XCTAssertEqual(deviceToken, context.capturingTokenRegistration.capturedRemoteNotificationsDeviceToken)
+        XCTAssertEqual(deviceToken, context.notificationTokenRegistration.capturedRemoteNotificationsDeviceToken)
     }
 
     func testSucceedingToUnregisterAuthTokenWithRemoteTokenRegistrationShouldNotIndicateLogoutFailure() {
         let logoutObserver = CapturingLogoutObserver()
         context.registerForRemoteNotifications()
         context.authenticationService.logout(completionHandler: logoutObserver.completionHandler)
-        context.capturingTokenRegistration.succeedLastRequest()
+        context.notificationTokenRegistration.succeedLastRequest()
 
         XCTAssertFalse(logoutObserver.didFailToLogout)
         XCTAssertFalse(observer.logoutDidFail)
@@ -51,16 +51,16 @@ class WhenLoggingOutSuccessfully: XCTestCase {
     func testSucceedingToUnregisterAuthTokenWithRemoteTokenRegistrationShouldDeletePersistedCredential() {
         context.registerForRemoteNotifications()
         context.authenticationService.logout { _ in }
-        context.capturingTokenRegistration.succeedLastRequest()
+        context.notificationTokenRegistration.succeedLastRequest()
 
-        XCTAssertTrue(context.capturingCredentialStore.didDeletePersistedToken)
+        XCTAssertTrue(context.credentialStore.didDeletePersistedToken)
     }
 
     func testSucceedingToUnregisterAuthTokenWithRemoteTokenRegistrationShouldNotifyLogoutObserversUserLoggedOut() {
         let logoutObserver = CapturingLogoutObserver()
         context.registerForRemoteNotifications()
         context.authenticationService.logout(completionHandler: logoutObserver.completionHandler)
-        context.capturingTokenRegistration.succeedLastRequest()
+        context.notificationTokenRegistration.succeedLastRequest()
 
         XCTAssertTrue(logoutObserver.didLogout)
         XCTAssertFalse(observer.logoutDidFail)

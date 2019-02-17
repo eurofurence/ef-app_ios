@@ -13,7 +13,7 @@ class WhenFetchingDaysBeforeRefreshWhenStoreHasConferenceDays: XCTestCase {
 
     func testTheEventsFromTheStoreAreAdapted() {
         let response = ModelCharacteristics.randomWithoutDeletions
-        let dataStore = CapturingEurofurenceDataStore(response: response)
+        let dataStore = CapturingDataStore(response: response)
         let context = ApplicationTestBuilder().with(dataStore).build()
         let delegate = CapturingEventsScheduleDelegate()
         let schedule = context.eventsService.makeEventsSchedule()

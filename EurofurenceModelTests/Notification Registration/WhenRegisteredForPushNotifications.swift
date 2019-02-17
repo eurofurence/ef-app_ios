@@ -17,7 +17,7 @@ class WhenRegisteredForPushNotifications: XCTestCase {
         let deviceToken = Data()
         context.notificationsService.storeRemoteNotificationsToken(deviceToken)
 
-        XCTAssertEqual(deviceToken, context.capturingTokenRegistration.capturedRemoteNotificationsDeviceToken)
+        XCTAssertEqual(deviceToken, context.notificationTokenRegistration.capturedRemoteNotificationsDeviceToken)
     }
 
     func testLaunchingAppRequestsPushPermissions() {

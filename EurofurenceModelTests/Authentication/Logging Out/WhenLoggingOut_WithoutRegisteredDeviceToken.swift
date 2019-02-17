@@ -16,13 +16,13 @@ class WhenLoggingOut_WithoutRegisteredDeviceToken: XCTestCase {
         let logoutObserver = CapturingLogoutObserver()
         context.authenticationService.logout(completionHandler: logoutObserver.completionHandler)
 
-        XCTAssertTrue(context.capturingTokenRegistration.didRegisterNilPushTokenAndAuthToken)
+        XCTAssertTrue(context.notificationTokenRegistration.didRegisterNilPushTokenAndAuthToken)
     }
 
     func testLoggingInAsAnotherUserShouldRequestLoginUsingTheirDetails() {
         let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         context.authenticationService.logout { _ in }
-        context.capturingTokenRegistration.succeedLastRequest()
+        context.notificationTokenRegistration.succeedLastRequest()
         let secondUser = "Some other awesome guy"
         context.login(username: secondUser)
 

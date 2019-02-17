@@ -13,7 +13,7 @@ class WhenAppLaunchesWhenClockDoesNotReadConferenceDay_ScheduleShould: XCTestCas
 
     func testChangeToNilConDay() {
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
-        let dataStore = CapturingEurofurenceDataStore()
+        let dataStore = CapturingDataStore()
         dataStore.save(syncResponse)
         let context = ApplicationTestBuilder().with(.distantPast).with(dataStore).build()
         let schedule = context.eventsService.makeEventsSchedule()
@@ -26,7 +26,7 @@ class WhenAppLaunchesWhenClockDoesNotReadConferenceDay_ScheduleShould: XCTestCas
     func testRestrictEventsToTheFirstConferenceDay() {
         let response = ModelCharacteristics.randomWithoutDeletions
         let firstDay = response.conferenceDays.changed.sorted(by: { $0.date < $1.date }).first!
-        let dataStore = CapturingEurofurenceDataStore()
+        let dataStore = CapturingDataStore()
         dataStore.save(response)
         let imageRepository = CapturingImageRepository()
         imageRepository.stubEverything(response)

@@ -12,7 +12,7 @@ import XCTest
 class WhenSyncFinishes_ApplicationShould: XCTestCase {
 
     func testNotPerformMultipleTransactions() {
-        class SingleTransactionOnlyAllowed: CapturingEurofurenceDataStore {
+        class SingleTransactionOnlyAllowed: CapturingDataStore {
 
             private var transactionCount = 0
 

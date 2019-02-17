@@ -12,7 +12,7 @@ import XCTest
 class WhenSyncSucceedsWithChangedImages_ApplicationShould: XCTestCase {
 
     func testSaveTheImagesIntoTheStore() {
-        let dataStore = CapturingEurofurenceDataStore()
+        let dataStore = CapturingDataStore()
         let context = ApplicationTestBuilder().with(dataStore).build()
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
         context.performSuccessfulSync(response: syncResponse)

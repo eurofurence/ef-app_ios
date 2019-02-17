@@ -13,7 +13,7 @@ class WhenFetchingEventsBeforeRefreshWhenStoreHasEvents: XCTestCase {
 
     func testTheEventsFromTheStoreAreAdapted() {
         let response = ModelCharacteristics.randomWithoutDeletions
-        let dataStore = CapturingEurofurenceDataStore(response: response)
+        let dataStore = CapturingDataStore(response: response)
         let imageRepository = CapturingImageRepository()
         let bannerIdentifiers = response.events.changed.compactMap({ $0.bannerImageId })
         let posterIdentifiers = response.events.changed.compactMap({ $0.posterImageId })

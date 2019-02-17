@@ -1,5 +1,5 @@
 //
-//  CapturingEurofurenceDataStore.swift
+//  CapturingDataStore.swift
 //  EurofurenceAppCoreTests
 //
 //  Created by Thomas Sherwood on 10/10/2018.
@@ -9,7 +9,7 @@
 import EurofurenceModel
 import Foundation
 
-class CapturingEurofurenceDataStore: DataStore {
+class CapturingDataStore: DataStore {
 
     func fetchAnnouncements() -> [AnnouncementCharacteristics]? {
         return transaction.persistedAnnouncements
@@ -73,7 +73,7 @@ class CapturingEurofurenceDataStore: DataStore {
 
 }
 
-extension CapturingEurofurenceDataStore {
+extension CapturingDataStore {
 
     convenience init(response: ModelCharacteristics) {
         self.init()

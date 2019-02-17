@@ -17,7 +17,7 @@ class WhenTellingDealersIndexToSearch_ApplicationShould: XCTestCase {
         let preferredName = "Bob"
         dealer.displayName = preferredName
         syncResponse.dealers.changed = [dealer]
-        let dataStore = CapturingEurofurenceDataStore()
+        let dataStore = CapturingDataStore()
         dataStore.save(syncResponse)
         let context = ApplicationTestBuilder().with(dataStore).build()
         let dealersIndex = context.dealersService.makeDealersIndex()
@@ -35,7 +35,7 @@ class WhenTellingDealersIndexToSearch_ApplicationShould: XCTestCase {
         let preferredName = "Charlie"
         dealer.displayName = preferredName
         syncResponse.dealers.changed = [dealer]
-        let dataStore = CapturingEurofurenceDataStore()
+        let dataStore = CapturingDataStore()
         dataStore.save(syncResponse)
         let context = ApplicationTestBuilder().with(dataStore).build()
         let dealersIndex = context.dealersService.makeDealersIndex()
@@ -53,7 +53,7 @@ class WhenTellingDealersIndexToSearch_ApplicationShould: XCTestCase {
         let preferredName = "coOL DudE"
         dealer.displayName = preferredName
         syncResponse.dealers.changed = [dealer]
-        let dataStore = CapturingEurofurenceDataStore()
+        let dataStore = CapturingDataStore()
         dataStore.save(syncResponse)
         let context = ApplicationTestBuilder().with(dataStore).build()
         let dealersIndex = context.dealersService.makeDealersIndex()
@@ -72,7 +72,7 @@ class WhenTellingDealersIndexToSearch_ApplicationShould: XCTestCase {
         dealer.displayName = "Charlie"
         dealer.attendeeNickname = attendeeNickname
         syncResponse.dealers.changed = [dealer]
-        let dataStore = CapturingEurofurenceDataStore()
+        let dataStore = CapturingDataStore()
         dataStore.save(syncResponse)
         let context = ApplicationTestBuilder().with(dataStore).build()
         let dealersIndex = context.dealersService.makeDealersIndex()
@@ -91,7 +91,7 @@ class WhenTellingDealersIndexToSearch_ApplicationShould: XCTestCase {
         dealer.displayName = "Charlie"
         dealer.attendeeNickname = attendeeNickname
         syncResponse.dealers.changed = [dealer]
-        let dataStore = CapturingEurofurenceDataStore()
+        let dataStore = CapturingDataStore()
         dataStore.save(syncResponse)
         let context = ApplicationTestBuilder().with(dataStore).build()
         let dealersIndex = context.dealersService.makeDealersIndex()
@@ -110,7 +110,7 @@ class WhenTellingDealersIndexToSearch_ApplicationShould: XCTestCase {
         dealer.displayName = "Charlie"
         dealer.attendeeNickname = attendeeNickname
         syncResponse.dealers.changed = [dealer]
-        let dataStore = CapturingEurofurenceDataStore()
+        let dataStore = CapturingDataStore()
         dataStore.save(syncResponse)
         let context = ApplicationTestBuilder().with(dataStore).build()
         let dealersIndex = context.dealersService.makeDealersIndex()
@@ -128,7 +128,7 @@ class WhenTellingDealersIndexToSearch_ApplicationShould: XCTestCase {
         dealer.displayName = "Charlie"
         dealer.attendeeNickname = "Charlie"
         syncResponse.dealers.changed = [dealer]
-        let dataStore = CapturingEurofurenceDataStore()
+        let dataStore = CapturingDataStore()
         dataStore.save(syncResponse)
         let context = ApplicationTestBuilder().with(dataStore).build()
         let dealersIndex = context.dealersService.makeDealersIndex()

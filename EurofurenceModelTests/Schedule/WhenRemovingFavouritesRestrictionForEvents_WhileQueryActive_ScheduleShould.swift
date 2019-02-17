@@ -13,7 +13,7 @@ class WhenRemovingFavouritesRestrictionForEvents_WhileQueryActive_ScheduleShould
 
     func testUpdateTheDelegateWithMatchesForQuery() {
         let response = ModelCharacteristics.randomWithoutDeletions
-        let dataStore = CapturingEurofurenceDataStore()
+        let dataStore = CapturingDataStore()
         var favourites = response.events.changed.map({ EventIdentifier($0.identifier) })
         let notAFavourite = favourites.randomElement()
         let nonFavouriteEvent = response.events.changed.first(where: { $0.identifier == notAFavourite.element.rawValue })!

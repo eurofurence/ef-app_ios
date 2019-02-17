@@ -57,10 +57,10 @@ class WhenLoggingIn: XCTestCase {
         context.authenticationService.login(arguments, completionHandler: { (_) in })
         context.api.simulateLoginResponse(response)
 
-        XCTAssertEqual(expectedUsername, context.capturingCredentialStore.capturedCredential?.username)
-        XCTAssertEqual(expectedUserID, context.capturingCredentialStore.capturedCredential?.registrationNumber)
-        XCTAssertEqual(expectedToken, context.capturingCredentialStore.capturedCredential?.authenticationToken)
-        XCTAssertEqual(expectedTokenExpiry, context.capturingCredentialStore.capturedCredential?.tokenExpiryDate)
+        XCTAssertEqual(expectedUsername, context.credentialStore.capturedCredential?.username)
+        XCTAssertEqual(expectedUserID, context.credentialStore.capturedCredential?.registrationNumber)
+        XCTAssertEqual(expectedToken, context.credentialStore.capturedCredential?.authenticationToken)
+        XCTAssertEqual(expectedTokenExpiry, context.credentialStore.capturedCredential?.tokenExpiryDate)
     }
 
     func testLoggingInSuccessfulyShouldNotifyObserversAboutIt() {
@@ -73,7 +73,7 @@ class WhenLoggingIn: XCTestCase {
 
     func testLoggingInSuccessfulyShouldNotNotifyObserversAboutItUntilTokenPersistenceCompletes() {
         let loginObserver = CapturingLoginObserver()
-        context.capturingCredentialStore.blockToRunBeforeCompletingCredentialStorage = {
+        context.credentialStore.blockToRunBeforeCompletingCredentialStorage = {
             XCTAssertFalse(loginObserver.notifiedLoginSucceeded)
         }
 
@@ -95,7 +95,7 @@ class WhenLoggingIn: XCTestCase {
         context.api.simulateLoginResponse(makeLoginResponse(token: expectedToken))
         context.notificationsService.storeRemoteNotificationsToken(Data())
 
-        XCTAssertEqual(expectedToken, context.capturingTokenRegistration.capturedUserAuthenticationToken)
+        XCTAssertEqual(expectedToken, context.notificationTokenRegistration.capturedUserAuthenticationToken)
     }
 
     func testLoggingInAfterRegisteringPushTokenShouldReRegisterThePushTokenWithTheUserAuthenticationToken() {
@@ -104,7 +104,7 @@ class WhenLoggingIn: XCTestCase {
         context.login()
         context.api.simulateLoginResponse(makeLoginResponse(token: expectedToken))
 
-        XCTAssertEqual(expectedToken, context.capturingTokenRegistration.capturedUserAuthenticationToken)
+        XCTAssertEqual(expectedToken, context.notificationTokenRegistration.capturedUserAuthenticationToken)
     }
 
     func testLoggingInSuccessfullyShouldProvideExpectedLoginToHandler() {
@@ -149,7 +149,7 @@ class WhenLoggingIn: XCTestCase {
         context.login(registrationNumber: user.registrationNumber, username: user.username, completionHandler: { (_) in })
         context.api.simulateLoginResponse(makeLoginResponse())
         context.authenticationService.logout(completionHandler: { (_) in })
-        context.capturingTokenRegistration.succeedLastRequest()
+        context.notificationTokenRegistration.succeedLastRequest()
 
         XCTAssertTrue(observer.loggedOut)
     }
@@ -174,7 +174,7 @@ class WhenLoggingIn: XCTestCase {
         context.login(registrationNumber: user.registrationNumber, username: user.username, completionHandler: { (_) in })
         context.api.simulateLoginResponse(makeLoginResponse())
         context.authenticationService.logout(completionHandler: { (_) in })
-        context.capturingTokenRegistration.failLastRequest()
+        context.notificationTokenRegistration.failLastRequest()
 
         XCTAssertFalse(observer.loggedOut)
     }
