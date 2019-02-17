@@ -110,7 +110,7 @@ class ApplicationTestBuilder {
 
         func loginSuccessfully() {
             login()
-            loginAPI.simulateResponse(LoginResponse(userIdentifier: .random, username: .random, token: .random, tokenValidUntil: Date(timeIntervalSinceNow: 1)))
+            loginAPI.simulateLoginResponse(LoginResponse(userIdentifier: .random, username: .random, token: .random, tokenValidUntil: Date(timeIntervalSinceNow: 1)))
         }
 
         @discardableResult

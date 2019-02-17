@@ -55,7 +55,7 @@ class WhenLoggingIn: XCTestCase {
                                      tokenValidUntil: .distantFuture)
 
         context.authenticationService.login(arguments, completionHandler: { (_) in })
-        context.loginAPI.simulateResponse(response)
+        context.loginAPI.simulateLoginResponse(response)
 
         XCTAssertEqual(expectedUsername, context.capturingCredentialStore.capturedCredential?.username)
         XCTAssertEqual(expectedUserID, context.capturingCredentialStore.capturedCredential?.registrationNumber)
@@ -66,7 +66,7 @@ class WhenLoggingIn: XCTestCase {
     func testLoggingInSuccessfulyShouldNotifyObserversAboutIt() {
         let loginObserver = CapturingLoginObserver()
         context.login(completionHandler: loginObserver.completionHandler)
-        context.loginAPI.simulateResponse(makeLoginResponse())
+        context.loginAPI.simulateLoginResponse(makeLoginResponse())
 
         XCTAssertTrue(loginObserver.notifiedLoginSucceeded)
     }
@@ -78,13 +78,13 @@ class WhenLoggingIn: XCTestCase {
         }
 
         context.login(completionHandler: loginObserver.completionHandler)
-        context.loginAPI.simulateResponse(makeLoginResponse())
+        context.loginAPI.simulateLoginResponse(makeLoginResponse())
     }
 
     func testLoggingInSuccessfulyShouldNotNotifyObserversAboutLoginFailure() {
         let loginObserver = CapturingLoginObserver()
         context.login(completionHandler: loginObserver.completionHandler)
-        context.loginAPI.simulateResponse(makeLoginResponse())
+        context.loginAPI.simulateLoginResponse(makeLoginResponse())
 
         XCTAssertFalse(loginObserver.notifiedLoginFailed)
     }
@@ -92,7 +92,7 @@ class WhenLoggingIn: XCTestCase {
     func testLoggingInSuccessfullyThenRegisteringPushTokenShouldProvideAuthTokenWithPushRegistration() {
         let expectedToken = "JWT Token"
         context.login()
-        context.loginAPI.simulateResponse(makeLoginResponse(token: expectedToken))
+        context.loginAPI.simulateLoginResponse(makeLoginResponse(token: expectedToken))
         context.notificationsService.storeRemoteNotificationsToken(Data())
 
         XCTAssertEqual(expectedToken, context.capturingTokenRegistration.capturedUserAuthenticationToken)
@@ -102,7 +102,7 @@ class WhenLoggingIn: XCTestCase {
         let expectedToken = "JWT Token"
         context.notificationsService.storeRemoteNotificationsToken(Data())
         context.login()
-        context.loginAPI.simulateResponse(makeLoginResponse(token: expectedToken))
+        context.loginAPI.simulateLoginResponse(makeLoginResponse(token: expectedToken))
 
         XCTAssertEqual(expectedToken, context.capturingTokenRegistration.capturedUserAuthenticationToken)
     }
@@ -112,7 +112,7 @@ class WhenLoggingIn: XCTestCase {
         let username = "Some cool guy"
         let regNo = 42
         context.login(registrationNumber: regNo, username: username, completionHandler: loginObserver.completionHandler)
-        context.loginAPI.simulateResponse(makeLoginResponse())
+        context.loginAPI.simulateLoginResponse(makeLoginResponse())
 
         XCTAssertEqual(username, loginObserver.loggedInUser?.username)
         XCTAssertEqual(regNo, loginObserver.loggedInUser?.registrationNumber)
@@ -124,7 +124,7 @@ class WhenLoggingIn: XCTestCase {
         let regNo: Int = .random
         let username: String = .random
         context.login(registrationNumber: regNo, username: username, completionHandler: { (_) in })
-        context.loginAPI.simulateResponse(makeLoginResponse())
+        context.loginAPI.simulateLoginResponse(makeLoginResponse())
 
         XCTAssertEqual(username, observer.capturedLoggedInUser?.username)
         XCTAssertEqual(regNo, observer.capturedLoggedInUser?.registrationNumber)
@@ -134,7 +134,7 @@ class WhenLoggingIn: XCTestCase {
         let regNo: Int = .random
         let username: String = .random
         context.login(registrationNumber: regNo, username: username, completionHandler: { (_) in })
-        context.loginAPI.simulateResponse(makeLoginResponse())
+        context.loginAPI.simulateLoginResponse(makeLoginResponse())
         let observer = CapturingAuthenticationStateObserver()
         context.authenticationService.add(observer)
 
@@ -147,7 +147,7 @@ class WhenLoggingIn: XCTestCase {
         context.authenticationService.add(observer)
         let user = User(registrationNumber: .random, username: .random)
         context.login(registrationNumber: user.registrationNumber, username: user.username, completionHandler: { (_) in })
-        context.loginAPI.simulateResponse(makeLoginResponse())
+        context.loginAPI.simulateLoginResponse(makeLoginResponse())
         context.authenticationService.logout(completionHandler: { (_) in })
         context.capturingTokenRegistration.succeedLastRequest()
 
@@ -160,7 +160,7 @@ class WhenLoggingIn: XCTestCase {
         observer.loggedOut = false
         let user = User(registrationNumber: .random, username: .random)
         context.login(registrationNumber: user.registrationNumber, username: user.username, completionHandler: { (_) in })
-        context.loginAPI.simulateResponse(makeLoginResponse())
+        context.loginAPI.simulateLoginResponse(makeLoginResponse())
         context.authenticationService.logout(completionHandler: { (_) in })
 
         XCTAssertFalse(observer.loggedOut)
@@ -172,7 +172,7 @@ class WhenLoggingIn: XCTestCase {
         observer.loggedOut = false
         let user = User(registrationNumber: .random, username: .random)
         context.login(registrationNumber: user.registrationNumber, username: user.username, completionHandler: { (_) in })
-        context.loginAPI.simulateResponse(makeLoginResponse())
+        context.loginAPI.simulateLoginResponse(makeLoginResponse())
         context.authenticationService.logout(completionHandler: { (_) in })
         context.capturingTokenRegistration.failLastRequest()
 

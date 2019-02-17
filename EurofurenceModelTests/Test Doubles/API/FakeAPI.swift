@@ -12,20 +12,20 @@ import Foundation
 class FakeAPI: API {
 
     private(set) var capturedLoginRequest: LoginRequest?
-    private var handler: ((LoginResponse?) -> Void)?
+    private var loginHandler: ((LoginResponse?) -> Void)?
     func performLogin(request: LoginRequest, completionHandler: @escaping (LoginResponse?) -> Void) {
         capturedLoginRequest = request
-        handler = completionHandler
+        loginHandler = completionHandler
     }
 
     private(set) var wasToldToLoadPrivateMessages = false
     private(set) var capturedAuthToken: String?
-    private var completionHandler: (([MessageCharacteristics]?) -> Void)?
+    private var messagesHandler: (([MessageCharacteristics]?) -> Void)?
     func loadPrivateMessages(authorizationToken: String,
                              completionHandler: @escaping ([MessageCharacteristics]?) -> Void) {
         wasToldToLoadPrivateMessages = true
         capturedAuthToken = authorizationToken
-        self.completionHandler = completionHandler
+        self.messagesHandler = completionHandler
     }
 
     private(set) var messageIdentifierMarkedAsRead: String?
@@ -53,20 +53,20 @@ extension FakeAPI {
         return identifier?.data(using: .utf8)
     }
 
-    func simulateResponse(_ response: LoginResponse) {
-        handler?(response)
+    func simulateLoginResponse(_ response: LoginResponse) {
+        loginHandler?(response)
     }
 
-    func simulateFailure() {
-        handler?(nil)
+    func simulateLoginFailure() {
+        loginHandler?(nil)
     }
 
-    func simulateSuccessfulResponse(response: [MessageCharacteristics] = []) {
-        completionHandler?(response)
+    func simulateMessagesResponse(response: [MessageCharacteristics] = []) {
+        messagesHandler?(response)
     }
 
-    func simulateUnsuccessfulResponse() {
-        completionHandler?(nil)
+    func simulateMessagesFailure() {
+        messagesHandler?(nil)
     }
 
 }

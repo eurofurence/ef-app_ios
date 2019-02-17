@@ -14,7 +14,7 @@ class WhenLaunchingApplication_PrivateMessagesShould: XCTestCase {
     func testBeRefreshed() {
         let message = MessageCharacteristics.random
         let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
-        context.privateMessagesAPI.simulateSuccessfulResponse(response: [message])
+        context.privateMessagesAPI.simulateMessagesResponse(response: [message])
         let observer = CapturingPrivateMessagesObserver()
         context.privateMessagesService.add(observer)
         let observedMessage = observer.observedMessages.first

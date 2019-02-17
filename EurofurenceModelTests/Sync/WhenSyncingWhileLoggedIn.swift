@@ -19,7 +19,7 @@ class WhenSyncingWhileLoggedIn: XCTestCase {
         context.privateMessagesService.add(observer)
         context.refreshLocalStore()
         context.syncAPI.simulateSuccessfulSync(.randomWithoutDeletions)
-        context.privateMessagesAPI.simulateSuccessfulResponse(response: expected)
+        context.privateMessagesAPI.simulateMessagesResponse(response: expected)
 
         XCTAssertEqual(expected, observer.observedMessages)
     }
@@ -30,7 +30,7 @@ class WhenSyncingWhileLoggedIn: XCTestCase {
         context.loginSuccessfully()
         context.refreshLocalStore()
         context.syncAPI.simulateSuccessfulSync(.randomWithoutDeletions)
-        context.privateMessagesAPI.simulateSuccessfulResponse(response: expected)
+        context.privateMessagesAPI.simulateMessagesResponse(response: expected)
         let observer = CapturingPrivateMessagesObserver()
         context.privateMessagesService.add(observer)
 
