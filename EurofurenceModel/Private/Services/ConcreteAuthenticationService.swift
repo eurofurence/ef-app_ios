@@ -14,7 +14,7 @@ class ConcreteAuthenticationService: AuthenticationService {
     private let eventBus: EventBus
     private let clock: Clock
     private let credentialStore: CredentialStore
-    private let loginAPI: API
+    private let api: API
     private let remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration?
     private var userAuthenticationToken: String?
     private var registeredDeviceToken: Data?
@@ -25,11 +25,11 @@ class ConcreteAuthenticationService: AuthenticationService {
          clock: Clock,
          credentialStore: CredentialStore,
          remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration?,
-         loginAPI: API) {
+         api: API) {
         self.eventBus = eventBus
         self.clock = clock
         self.credentialStore = credentialStore
-        self.loginAPI = loginAPI
+        self.api = api
         self.remoteNotificationsTokenRegistration = remoteNotificationsTokenRegistration
 
         loadPersistedCredential()
@@ -43,7 +43,7 @@ class ConcreteAuthenticationService: AuthenticationService {
         }
 
         let request = LoginRequest(regNo: args.registrationNumber, username: args.username, password: args.password)
-        loginAPI.performLogin(request: request) { (response) in
+        api.performLogin(request: request) { (response) in
             if let response = response {
                 self.handleLoginSuccess(args, response: response, completionHandler: completionHandler)
             } else {

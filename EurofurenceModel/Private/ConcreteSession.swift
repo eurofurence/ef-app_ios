@@ -31,16 +31,13 @@ class ConcreteSession: EurofurenceSession {
     private let notificationService: ConcreteNotificationService
     private let contentLinksService: ConcreteContentLinksService
 
-    init(userPreferences: UserPreferences,
+    init(api: API,
+         userPreferences: UserPreferences,
          dataStore: DataStore,
          remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration?,
          pushPermissionsRequester: PushPermissionsRequester?,
          clock: Clock,
          credentialStore: CredentialStore,
-         loginAPI: API,
-         privateMessagesAPI: API,
-         syncAPI: API,
-         imageAPI: API,
          dateDistanceCalculator: DateDistanceCalculator,
          conventionStartDateRepository: ConventionStartDateRepository,
          timeIntervalForUpcomingEventsSinceNow: TimeInterval,
@@ -63,14 +60,13 @@ class ConcreteSession: EurofurenceSession {
         remoteNotificationRegistrationController = RemoteNotificationRegistrationController(eventBus: eventBus,
                                                                                             remoteNotificationsTokenRegistration: remoteNotificationsTokenRegistration)
 
-        privateMessagesService = ConcretePrivateMessagesService(eventBus: eventBus,
-                                                                privateMessagesAPI: privateMessagesAPI)
+        privateMessagesService = ConcretePrivateMessagesService(eventBus: eventBus, api: api)
 
         authenticationService = ConcreteAuthenticationService(eventBus: eventBus,
                                                               clock: clock,
                                                               credentialStore: credentialStore,
                                                               remoteNotificationsTokenRegistration: remoteNotificationsTokenRegistration,
-                                                              loginAPI: loginAPI)
+                                                              api: api)
 
         conventionCountdownService = ConcreteConventionCountdownService(eventBus: eventBus,
                                                                         conventionStartDateRepository: conventionStartDateRepository,
@@ -98,7 +94,7 @@ class ConcreteSession: EurofurenceSession {
                                               hoursDateFormatter: hoursDateFormatter)
 
         let imageDownloader = ImageDownloader(eventBus: eventBus,
-                                              imageAPI: imageAPI,
+                                              api: api,
                                               imageRepository: imageRepository)
 
         significantTimeObserver = SignificantTimeObserver(significantTimeChangeAdapter: significantTimeChangeAdapter,
@@ -119,7 +115,7 @@ class ConcreteSession: EurofurenceSession {
 
         refreshService = ConcreteRefreshService(longRunningTaskManager: longRunningTaskManager,
                                                 dataStore: dataStore,
-                                                syncAPI: syncAPI,
+                                                api: api,
                                                 imageDownloader: imageDownloader,
                                                 announcementsService: announcementsService,
                                                 schedule: eventsService,

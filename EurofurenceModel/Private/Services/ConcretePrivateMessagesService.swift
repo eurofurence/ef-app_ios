@@ -10,14 +10,14 @@ import EventBus
 
 class ConcretePrivateMessagesService: PrivateMessagesService {
 
-    private let privateMessagesAPI: API
+    private let api: API
     private var userAuthenticationToken: String?
     private var privateMessageObservers = [PrivateMessagesObserver]()
 
     private var localMessages: [MessageCharacteristics] = .empty
 
-    init(eventBus: EventBus, privateMessagesAPI: API) {
-        self.privateMessagesAPI = privateMessagesAPI
+    init(eventBus: EventBus, api: API) {
+        self.api = api
         eventBus.subscribe(userLoggedIn)
     }
 
@@ -37,7 +37,7 @@ class ConcretePrivateMessagesService: PrivateMessagesService {
 
     func refreshMessages(completionHandler: (() -> Void)? = nil) {
         if let token = userAuthenticationToken {
-            privateMessagesAPI.loadPrivateMessages(authorizationToken: token) { (messages) in
+            api.loadPrivateMessages(authorizationToken: token) { (messages) in
                 if let messages = messages {
                     let messages = messages.sorted()
                     self.localMessages = messages
@@ -65,7 +65,7 @@ class ConcretePrivateMessagesService: PrivateMessagesService {
 
     func markMessageAsRead(_ message: MessageCharacteristics) {
         guard let token = userAuthenticationToken else { return }
-        privateMessagesAPI.markMessageWithIdentifierAsRead(message.identifier, authorizationToken: token)
+        api.markMessageWithIdentifierAsRead(message.identifier, authorizationToken: token)
 
         if let idx = localMessages.firstIndex(where: { $0.identifier == message.identifier  }) {
             var readMessage = localMessages[idx]

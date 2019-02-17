@@ -12,12 +12,12 @@ import Foundation
 class ImageDownloader {
 
     private let eventBus: EventBus
-    private let imageAPI: API
+    private let api: API
     private let imageRepository: ImageRepository
 
-    init(eventBus: EventBus, imageAPI: API, imageRepository: ImageRepository) {
+    init(eventBus: EventBus, api: API, imageRepository: ImageRepository) {
         self.eventBus = eventBus
-        self.imageAPI = imageAPI
+        self.api = api
         self.imageRepository = imageRepository
     }
 
@@ -38,7 +38,7 @@ class ImageDownloader {
         }
 
         imagesToDownload.forEach { (identifier) in
-            imageAPI.fetchImage(identifier: identifier) { (data) in
+            api.fetchImage(identifier: identifier) { (data) in
                 guard let idx = pendingImageIdentifiers.index(of: identifier) else { return }
                 pendingImageIdentifiers.remove(at: idx)
 

@@ -18,7 +18,7 @@ class ConcreteRefreshService: RefreshService {
 
     private let longRunningTaskManager: LongRunningTaskManager?
     private let dataStore: DataStore
-    private let syncAPI: API
+    private let api: API
     private let imageDownloader: ImageDownloader
     private let clock: Clock
     private let eventBus: EventBus
@@ -27,7 +27,7 @@ class ConcreteRefreshService: RefreshService {
 
     init(longRunningTaskManager: LongRunningTaskManager?,
          dataStore: DataStore,
-         syncAPI: API,
+         api: API,
          imageDownloader: ImageDownloader,
          announcementsService: ConcreteAnnouncementsService,
          schedule: ConcreteEventsService,
@@ -39,7 +39,7 @@ class ConcreteRefreshService: RefreshService {
          privateMessagesController: ConcretePrivateMessagesService) {
         self.longRunningTaskManager = longRunningTaskManager
         self.dataStore = dataStore
-        self.syncAPI = syncAPI
+        self.api = api
         self.imageDownloader = imageDownloader
         self.announcementsService = announcementsService
         self.schedule = schedule
@@ -86,7 +86,7 @@ class ConcreteRefreshService: RefreshService {
         let existingImages = dataStore.fetchImages().defaultingTo(.empty)
         let existingDealers = dataStore.fetchDealers().defaultingTo(.empty)
         let existingMaps = dataStore.fetchMaps().defaultingTo(.empty)
-        syncAPI.fetchLatestData(lastSyncTime: lastSyncTime) { (response) in
+        api.fetchLatestData(lastSyncTime: lastSyncTime) { (response) in
             guard let response = response else {
                 finishLongRunningTask()
 

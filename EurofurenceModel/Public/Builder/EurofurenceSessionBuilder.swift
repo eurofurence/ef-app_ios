@@ -16,13 +16,10 @@ public class EurofurenceSessionBuilder {
     private var pushPermissionsRequester: PushPermissionsRequester?
     private var clock: Clock
     private var credentialStore: CredentialStore
-    private var loginAPI: API
-    private var privateMessagesAPI: API
-    private var syncAPI: API
+    private var api: API
     private var dateDistanceCalculator: DateDistanceCalculator
     private var conventionStartDateRepository: ConventionStartDateRepository
     private var timeIntervalForUpcomingEventsSinceNow: TimeInterval
-    private var imageAPI: API
     private var imageRepository: ImageRepository
     private var significantTimeChangeAdapter: SignificantTimeChangeAdapter?
     private var urlOpener: URLOpener?
@@ -41,11 +38,7 @@ public class EurofurenceSessionBuilder {
         let buildConfiguration = PreprocessorBuildConfigurationProviding()
 
         let apiUrl = BuildConfigurationAPIURLProviding(buildConfiguration)
-        let api = JSONAPI(jsonSession: jsonSession, apiUrl: apiUrl)
-        loginAPI = api
-        imageAPI = api
-        privateMessagesAPI = api
-        syncAPI = api
+        api = JSONAPI(jsonSession: jsonSession, apiUrl: apiUrl)
 
         clock = SystemClock.shared
         credentialStore = KeychainCredentialStore()
@@ -114,11 +107,7 @@ public class EurofurenceSessionBuilder {
 
     @discardableResult
     public func with(_ api: API) -> EurofurenceSessionBuilder {
-        self.imageAPI = api
-        self.loginAPI = api
-        self.privateMessagesAPI = api
-        self.syncAPI = api
-
+        self.api = api
         return self
     }
 
@@ -177,16 +166,13 @@ public class EurofurenceSessionBuilder {
     }
 
     public func build() -> EurofurenceSession {
-        return ConcreteSession(userPreferences: userPreferences,
+        return ConcreteSession(api: api,
+                               userPreferences: userPreferences,
                                dataStore: dataStore,
                                remoteNotificationsTokenRegistration: remoteNotificationsTokenRegistration,
                                pushPermissionsRequester: pushPermissionsRequester,
                                clock: clock,
                                credentialStore: credentialStore,
-                               loginAPI: loginAPI,
-                               privateMessagesAPI: privateMessagesAPI,
-                               syncAPI: syncAPI,
-                               imageAPI: imageAPI,
                                dateDistanceCalculator: dateDistanceCalculator,
                                conventionStartDateRepository: conventionStartDateRepository,
                                timeIntervalForUpcomingEventsSinceNow: timeIntervalForUpcomingEventsSinceNow,
