@@ -14,7 +14,7 @@ class ConcreteAuthenticationService: AuthenticationService {
     private let eventBus: EventBus
     private let clock: Clock
     private let credentialStore: CredentialStore
-    private let loginAPI: LoginAPI
+    private let loginAPI: API
     private let remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration?
     private var userAuthenticationToken: String?
     private var registeredDeviceToken: Data?
@@ -25,7 +25,7 @@ class ConcreteAuthenticationService: AuthenticationService {
          clock: Clock,
          credentialStore: CredentialStore,
          remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration?,
-         loginAPI: LoginAPI) {
+         loginAPI: API) {
         self.eventBus = eventBus
         self.clock = clock
         self.credentialStore = credentialStore

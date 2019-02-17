@@ -37,7 +37,7 @@ class ConcreteSession: EurofurenceSession {
          pushPermissionsRequester: PushPermissionsRequester?,
          clock: Clock,
          credentialStore: CredentialStore,
-         loginAPI: LoginAPI,
+         loginAPI: API,
          privateMessagesAPI: PrivateMessagesAPI,
          syncAPI: SyncAPI,
          imageAPI: API,

@@ -17,7 +17,7 @@ class ApplicationTestBuilder {
         var clock: StubClock
         var capturingTokenRegistration: CapturingRemoteNotificationsTokenRegistration
         var capturingCredentialStore: CapturingCredentialStore
-        var loginAPI: CapturingLoginAPI
+        var loginAPI: FakeAPI
         var privateMessagesAPI: CapturingPrivateMessagesAPI
         var syncAPI: CapturingSyncAPI
         var dataStore: CapturingEurofurenceDataStore
@@ -131,17 +131,22 @@ class ApplicationTestBuilder {
 
     }
 
+    init() {
+        imageAPI = loginAPI
+    }
+
+    private var loginAPI = FakeAPI()
+    private var imageAPI: FakeAPI
+
     private let capturingTokenRegistration = CapturingRemoteNotificationsTokenRegistration()
     private var capturingCredentialStore = CapturingCredentialStore()
     private var stubClock = StubClock()
-    private let loginAPI = CapturingLoginAPI()
     private let privateMessagesAPI = CapturingPrivateMessagesAPI()
     private var pushPermissionsRequester: PushPermissionsRequester = CapturingPushPermissionsRequester()
     private var dataStore = CapturingEurofurenceDataStore()
     private var userPreferences: UserPreferences = StubUserPreferences()
     private let syncAPI = CapturingSyncAPI()
     private var timeIntervalForUpcomingEventsSinceNow: TimeInterval = .greatestFiniteMagnitude
-    private var imageAPI: FakeAPI = FakeAPI()
     private var imageRepository = CapturingImageRepository()
     private var urlOpener: CapturingURLOpener = CapturingURLOpener()
     private var collectThemAllRequestFactory: CollectThemAllRequestFactory = StubCollectThemAllRequestFactory()
@@ -181,8 +186,10 @@ class ApplicationTestBuilder {
     }
 
     @discardableResult
-    func with(_ imageAPI: FakeAPI) -> ApplicationTestBuilder {
-        self.imageAPI = imageAPI
+    func with(_ api: FakeAPI) -> ApplicationTestBuilder {
+        self.imageAPI = api
+        self.loginAPI = api
+
         return self
     }
 

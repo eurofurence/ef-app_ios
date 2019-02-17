@@ -999,7 +999,6 @@
 		CAEA0DFC216BDE3100B0C7A6 /* ModelCharacteristics.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF5979520449A0400089BE8 /* ModelCharacteristics.swift */; };
 		CAEA0DFD216BDE3100B0C7A6 /* TrackCharacteristics.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E9320B36C5A00D904B5 /* TrackCharacteristics.swift */; };
 		CAEA0DFE216BDE3100B0C7A6 /* ImageCharacteristics.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA401058210B9FD40056E16C /* ImageCharacteristics.swift */; };
-		CAEA0DFF216BDE3100B0C7A6 /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAA21F2129700053DBF6 /* LoginAPI.swift */; };
 		CAEA0E00216BDE3100B0C7A6 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAA01F2127350053DBF6 /* LoginResponse.swift */; };
 		CAEA0E01216BDE3100B0C7A6 /* PrivateMessagesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EABD1F2660D80053DBF6 /* PrivateMessagesAPI.swift */; };
 		CAEA0E02216BDE3100B0C7A6 /* SyncAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF03CF20422B7A0028BD62 /* SyncAPI.swift */; };
@@ -1205,7 +1204,6 @@
 		CAEA1030216E1CE800B0C7A6 /* CapturingPrivateMessagesObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAB91F26174B0053DBF6 /* CapturingPrivateMessagesObserver.swift */; };
 		CAEA1033216E1CE800B0C7A6 /* StubCollectThemAllRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2761CB20E034BD000E52AC /* StubCollectThemAllRequestFactory.swift */; };
 		CAEA1034216E1CE800B0C7A6 /* StubConventionStartDateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E7720A4B6E0004AFED6 /* StubConventionStartDateRepository.swift */; };
-		CAEA1036216E1CE800B0C7A6 /* CapturingLoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAA51F2129C60053DBF6 /* CapturingLoginAPI.swift */; };
 		CAEA1037216E1CE800B0C7A6 /* CapturingPrivateMessagesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EABB1F2660AD0053DBF6 /* CapturingPrivateMessagesAPI.swift */; };
 		CAEA1038216E1CE800B0C7A6 /* CapturingSyncAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF03CD20422B240028BD62 /* CapturingSyncAPI.swift */; };
 		CAEA1039216E1CE800B0C7A6 /* CapturingRemoteNotificationsTokenRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781A94411F1A1D8B002DE70F /* CapturingRemoteNotificationsTokenRegistration.swift */; };
@@ -1871,8 +1869,6 @@
 		CA2D08111FE9540F00BFD785 /* WhenThePerformInitialDownloadPageAppears.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenThePerformInitialDownloadPageAppears.swift; sourceTree = "<group>"; };
 		CA2D08131FE9549600BFD785 /* WhenThePerformInitialDownloadPageAppearsWithUnreachableNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenThePerformInitialDownloadPageAppearsWithUnreachableNetwork.swift; sourceTree = "<group>"; };
 		CA30EAA01F2127350053DBF6 /* LoginResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
-		CA30EAA21F2129700053DBF6 /* LoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
-		CA30EAA51F2129C60053DBF6 /* CapturingLoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingLoginAPI.swift; sourceTree = "<group>"; };
 		CA30EAAD1F2148780053DBF6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CA30EAB51F26128A0053DBF6 /* WhenRequestingPrivateMessagesWhileAuthenticated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenRequestingPrivateMessagesWhileAuthenticated.swift; sourceTree = "<group>"; };
 		CA30EAB91F26174B0053DBF6 /* CapturingPrivateMessagesObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingPrivateMessagesObserver.swift; sourceTree = "<group>"; };
@@ -3584,7 +3580,6 @@
 			isa = PBXGroup;
 			children = (
 				CA4679A72219FC03006B3090 /* API.swift */,
-				CA30EAA21F2129700053DBF6 /* LoginAPI.swift */,
 				CA30EAA01F2127350053DBF6 /* LoginResponse.swift */,
 				CA30EABD1F2660D80053DBF6 /* PrivateMessagesAPI.swift */,
 				CABF03CF20422B7A0028BD62 /* SyncAPI.swift */,
@@ -4065,7 +4060,6 @@
 		CA30EAA41F2129B70053DBF6 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				CA30EAA51F2129C60053DBF6 /* CapturingLoginAPI.swift */,
 				CA30EABB1F2660AD0053DBF6 /* CapturingPrivateMessagesAPI.swift */,
 				CABF03CD20422B240028BD62 /* CapturingSyncAPI.swift */,
 				CAEA1085216E815200B0C7A6 /* FakeAPI.swift */,
@@ -8555,7 +8549,6 @@
 				CAEA0DA1216BDE2300B0C7A6 /* ConventionStartDateRepository.swift in Sources */,
 				CAEA0E0A216BDE3100B0C7A6 /* NetworkReachability.swift in Sources */,
 				CAEA0DBF216BDE2300B0C7A6 /* User.swift in Sources */,
-				CAEA0DFF216BDE3100B0C7A6 /* LoginAPI.swift in Sources */,
 				CA4679A422176AAF006B3090 /* EventImpl.swift in Sources */,
 				CACD2EB121D67EF200BACD91 /* BundleAppVersionProviding.swift in Sources */,
 				CAEA0DB6216BDE2300B0C7A6 /* ExtendedDealerData.swift in Sources */,
@@ -8767,7 +8760,6 @@
 				CAEA0FA0216E1CC000B0C7A6 /* WhenOpeningAnnouncement_ApplicationShould.swift in Sources */,
 				CAEA0FA8216E1CC000B0C7A6 /* WhenObservingCountdownUntilConvention_EurofurenceApplicationShould.swift in Sources */,
 				CAEA0FF9216E1CE700B0C7A6 /* WhenFetchingMapContent_ThatRevealMultipleOptions_ApplicationShould.swift in Sources */,
-				CAEA1036216E1CE800B0C7A6 /* CapturingLoginAPI.swift in Sources */,
 				CAEA1011216E1CE800B0C7A6 /* WhenRemovingFavouritesRestrictionForEvents_ScheduleShould.swift in Sources */,
 				CAEA0FC1216E1CC000B0C7A6 /* EventConferenceDaysRemoveAllBeforeInsertTests.swift in Sources */,
 				CAEA0FE4216E1CE700B0C7A6 /* InOrderToSupportPhotoshootTag_ApplicationShould.swift in Sources */,

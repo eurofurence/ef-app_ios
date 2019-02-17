@@ -11,8 +11,11 @@ import Foundation
 
 class FakeAPI: API {
 
+    private(set) var capturedLoginRequest: LoginRequest?
+    private var handler: ((LoginResponse?) -> Void)?
     func performLogin(request: LoginRequest, completionHandler: @escaping (LoginResponse?) -> Void) {
-
+        capturedLoginRequest = request
+        handler = completionHandler
     }
 
     func loadPrivateMessages(authorizationToken: String, completionHandler: @escaping ([MessageCharacteristics]?) -> Void) {
@@ -39,6 +42,14 @@ extension FakeAPI {
 
     func stubbedImage(for identifier: String?) -> Data? {
         return identifier?.data(using: .utf8)
+    }
+
+    func simulateResponse(_ response: LoginResponse) {
+        handler?(response)
+    }
+
+    func simulateFailure() {
+        handler?(nil)
     }
 
 }
