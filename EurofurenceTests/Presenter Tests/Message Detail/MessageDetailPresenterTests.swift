@@ -119,7 +119,7 @@ class MessageDetailPresenterTests: XCTestCase {
     }
 
     func testTellTheMessagesServiceToMarkTheMessageAsRead() {
-        XCTAssertEqual(message, messagesService.messageMarkedAsRead)
+        XCTAssertEqual(message.identifier, messagesService.messageMarkedAsRead?.identifier)
     }
 
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct MessageCharacteristics: Comparable, Equatable {
+public struct MessageCharacteristics {
 
     public var identifier: String
     public var authorName: String
@@ -24,10 +24,6 @@ public struct MessageCharacteristics: Comparable, Equatable {
         self.subject = subject
         self.contents = contents
         self.isRead = isRead
-    }
-
-    public static func <(lhs: MessageCharacteristics, rhs: MessageCharacteristics) -> Bool {
-        return lhs.receivedDateTime.compare(rhs.receivedDateTime) == .orderedDescending
     }
 
 }

@@ -39,7 +39,10 @@ class ConcretePrivateMessagesService: PrivateMessagesService {
         if let token = userAuthenticationToken {
             api.loadPrivateMessages(authorizationToken: token) { (messages) in
                 if let messages = messages {
-                    let messages = messages.sorted()
+                    let messages = messages.sorted(by: { (first, second) -> Bool in
+                        return first.receivedDateTime.compare(second.receivedDateTime) == .orderedDescending
+                    })
+
                     self.localMessages = messages
                     let unreadCount = self.determineUnreadMessageCount()
                     self.privateMessageObservers.forEach({ (observer) in
