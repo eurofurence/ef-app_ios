@@ -14,7 +14,7 @@ import XCTest
 class WhenUserSelectsMessage_DirectorShould: XCTestCase {
 
     var context: ApplicationDirectorTestBuilder.Context!
-    var message: MessageCharacteristics!
+    var message: MessageEntity!
 
     override func setUp() {
         super.setUp()

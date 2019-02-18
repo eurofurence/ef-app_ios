@@ -12,7 +12,7 @@ import XCTest
 class WhenSyncingWhileLoggedIn: XCTestCase {
 
     func testObserversArePassedLoadedMessages() {
-        let expected = [MessageCharacteristics].random
+        let expected = [MessageEntity].random
         let context = ApplicationTestBuilder().build()
         context.loginSuccessfully()
         let observer = CapturingPrivateMessagesObserver()
@@ -26,7 +26,7 @@ class WhenSyncingWhileLoggedIn: XCTestCase {
     }
 
     func testAddingAnotherObserverIsPassedLoadedMessages() {
-        let expected = [MessageCharacteristics].random
+        let expected = [MessageEntity].random
         let context = ApplicationTestBuilder().build()
         context.loginSuccessfully()
         context.refreshLocalStore()

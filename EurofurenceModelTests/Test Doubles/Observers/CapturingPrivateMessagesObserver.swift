@@ -14,8 +14,8 @@ class CapturingPrivateMessagesObserver: PrivateMessagesObserver {
     // MARK: New
 
     var wasToldSuccessfullyLoadedPrivateMessages = false
-    private(set) var observedMessages: [MessageCharacteristics] = []
-    func privateMessagesServiceDidFinishRefreshingMessages(messages: [MessageCharacteristics]) {
+    private(set) var observedMessages: [MessageEntity] = []
+    func privateMessagesServiceDidFinishRefreshingMessages(messages: [MessageEntity]) {
         observedMessages = messages
         self.wasToldSuccessfullyLoadedPrivateMessages = true
     }

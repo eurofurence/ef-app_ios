@@ -14,7 +14,7 @@ struct MessageDetailModuleFactory: MessageDetailModuleProviding {
     var messageDetailSceneFactory: MessageDetailSceneFactory
     var privateMessagesService: PrivateMessagesService
 
-    func makeMessageDetailModule(message: MessageCharacteristics) -> UIViewController {
+    func makeMessageDetailModule(message: MessageEntity) -> UIViewController {
         let scene = messageDetailSceneFactory.makeMessageDetailScene()
         privateMessagesService.markMessageAsRead(message)
         _ = MessageDetailPresenter(message: message, scene: scene)

@@ -64,7 +64,7 @@ class WhenRequestingPrivateMessagesWhileAuthenticated: XCTestCase {
 
     func testReceievingAPIResponseWithSuccessShouldPropogateAuthorNameForMessage() {
         let authorName = "Some guy"
-        var message = MessageCharacteristics.random
+        var message = MessageEntity.random
         message.authorName = authorName
         context.api.simulateMessagesResponse(response: [message])
 
@@ -73,7 +73,7 @@ class WhenRequestingPrivateMessagesWhileAuthenticated: XCTestCase {
 
     func testReceievingAPIResponseWithSuccessShouldPropogatereceivedDateTimeForMessage() {
         let receivedDateTime = Date.distantPast
-        var message = MessageCharacteristics.random
+        var message = MessageEntity.random
         message.receivedDateTime = receivedDateTime
         context.api.simulateMessagesResponse(response: [message])
 
@@ -82,7 +82,7 @@ class WhenRequestingPrivateMessagesWhileAuthenticated: XCTestCase {
 
     func testReceievingAPIResponseWithSuccessShouldPropogateContentsForMessage() {
         let contents = "Blah blah important stuff blah blah"
-        var message = MessageCharacteristics.random
+        var message = MessageEntity.random
         message.contents = contents
         context.api.simulateMessagesResponse(response: [message])
 
@@ -91,7 +91,7 @@ class WhenRequestingPrivateMessagesWhileAuthenticated: XCTestCase {
 
     func testReceievingAPIResponseWithSuccessShouldPropogateSubjectForMessage() {
         let subject = "You won something!!"
-        var message = MessageCharacteristics.random
+        var message = MessageEntity.random
         message.subject = subject
         context.api.simulateMessagesResponse(response: [message])
 
@@ -99,9 +99,9 @@ class WhenRequestingPrivateMessagesWhileAuthenticated: XCTestCase {
     }
 
     func testMessagesShouldBeSortedWithLatestMessagesFirst() {
-        let makeRandomMessage: () -> MessageCharacteristics = {
+        let makeRandomMessage: () -> MessageEntity = {
             let randomDate = Date(timeIntervalSinceNow: .random(upperLimit: 3600))
-            var message = MessageCharacteristics.random
+            var message = MessageEntity.random
             message.receivedDateTime = randomDate
             return message
         }
@@ -115,7 +115,7 @@ class WhenRequestingPrivateMessagesWhileAuthenticated: XCTestCase {
     }
 
     func testObserversToldOfNewUnreadCount() {
-        var unreadMessage = MessageCharacteristics.random
+        var unreadMessage = MessageEntity.random
         unreadMessage.isRead = false
         context.api.simulateMessagesResponse(response: [unreadMessage])
 
@@ -123,9 +123,9 @@ class WhenRequestingPrivateMessagesWhileAuthenticated: XCTestCase {
     }
 
     func testReadMessagesNotIncludedInUnreadCount() {
-        var unreadMessage = MessageCharacteristics.random
+        var unreadMessage = MessageEntity.random
         unreadMessage.isRead = false
-        var readMessage = MessageCharacteristics.random
+        var readMessage = MessageEntity.random
         readMessage.isRead = true
         context.api.simulateMessagesResponse(response: [unreadMessage, readMessage])
 
@@ -133,7 +133,7 @@ class WhenRequestingPrivateMessagesWhileAuthenticated: XCTestCase {
     }
 
     func testLateAddedObserversToldOfNewUnreadCount() {
-        var unreadMessage = MessageCharacteristics.random
+        var unreadMessage = MessageEntity.random
         unreadMessage.isRead = false
         context.api.simulateMessagesResponse(response: [unreadMessage])
 

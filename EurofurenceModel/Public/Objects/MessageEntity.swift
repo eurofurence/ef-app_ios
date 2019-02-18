@@ -1,5 +1,5 @@
 //
-//  MessageCharacteristics.swift
+//  MessageEntity.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 24/07/2017.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct MessageCharacteristics {
+public struct MessageEntity {
 
     public var identifier: String
     public var authorName: String

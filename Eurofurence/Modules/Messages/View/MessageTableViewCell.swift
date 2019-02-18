@@ -25,7 +25,7 @@ class MessageTableViewCell: UITableViewCell, MessageItemScene {
     @IBOutlet weak var messageReceivedDateLabel: UILabel!
     @IBOutlet weak var messageSynopsisLabel: UILabel!
     @IBOutlet weak var unreadMessageIndicator: UnreadMessageIndicator!
-    private var presentedMessage: MessageCharacteristics?
+    private var presentedMessage: MessageEntity?
 
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -37,7 +37,7 @@ class MessageTableViewCell: UITableViewCell, MessageItemScene {
         messageSynopsisLabel.text = nil
     }
 
-    func show(message: MessageCharacteristics) {
+    func show(message: MessageEntity) {
         let receivedDateString = MessageTableViewCell.dateFormatter.string(from: message.receivedDateTime)
         messageAuthorLabel.text = message.authorName
         messageSubjectLabel.text = message.subject

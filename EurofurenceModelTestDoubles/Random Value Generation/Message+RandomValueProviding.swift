@@ -9,10 +9,10 @@
 import EurofurenceModel
 import RandomDataGeneration
 
-extension MessageCharacteristics: RandomValueProviding {
+extension MessageEntity: RandomValueProviding {
 
-    public static var random: MessageCharacteristics {
-        return MessageCharacteristics(identifier: .random,
+    public static var random: MessageEntity {
+        return MessageEntity(identifier: .random,
                        authorName: .random,
                        receivedDateTime: .random,
                        subject: .random,

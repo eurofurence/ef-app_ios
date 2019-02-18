@@ -20,9 +20,9 @@ class FakeAPI: API {
 
     private(set) var wasToldToLoadPrivateMessages = false
     private(set) var capturedAuthToken: String?
-    private var messagesHandler: (([MessageCharacteristics]?) -> Void)?
+    private var messagesHandler: (([MessageEntity]?) -> Void)?
     func loadPrivateMessages(authorizationToken: String,
-                             completionHandler: @escaping ([MessageCharacteristics]?) -> Void) {
+                             completionHandler: @escaping ([MessageEntity]?) -> Void) {
         wasToldToLoadPrivateMessages = true
         capturedAuthToken = authorizationToken
         self.messagesHandler = completionHandler
@@ -74,7 +74,7 @@ extension FakeAPI {
         loginHandler?(nil)
     }
 
-    func simulateMessagesResponse(response: [MessageCharacteristics] = []) {
+    func simulateMessagesResponse(response: [MessageEntity] = []) {
         messagesHandler?(response)
     }
 

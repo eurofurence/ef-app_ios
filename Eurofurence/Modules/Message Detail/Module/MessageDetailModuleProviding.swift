@@ -11,6 +11,6 @@ import UIKit.UIViewController
 
 protocol MessageDetailModuleProviding {
 
-    func makeMessageDetailModule(message: MessageCharacteristics) -> UIViewController
+    func makeMessageDetailModule(message: MessageEntity) -> UIViewController
 
 }

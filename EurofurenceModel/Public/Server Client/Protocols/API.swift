@@ -16,7 +16,7 @@ public protocol API {
 
     func performLogin(request: LoginRequest, completionHandler: @escaping (LoginResponse?) -> Void)
 
-    func loadPrivateMessages(authorizationToken: String, completionHandler: @escaping ([MessageCharacteristics]?) -> Void)
+    func loadPrivateMessages(authorizationToken: String, completionHandler: @escaping ([MessageEntity]?) -> Void)
 
     func markMessageWithIdentifierAsRead(_ identifier: String, authorizationToken: String)
 

@@ -56,7 +56,7 @@ class CapturingMessageComponent: MessageComponent {
 class MessageDetailPresenterTests: XCTestCase {
 
     var messageDetailSceneFactory: StubMessageDetailSceneFactory!
-    var message: MessageCharacteristics!
+    var message: MessageEntity!
     var viewController: UIViewController!
     var messagesService: CapturingPrivateMessagesService!
 

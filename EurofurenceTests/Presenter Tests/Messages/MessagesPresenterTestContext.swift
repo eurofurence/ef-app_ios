@@ -19,8 +19,8 @@ class CapturingMessagesModuleDelegate: MessagesModuleDelegate {
         userResolutionCompletionHandler = completionHandler
     }
 
-    private(set) var messageToShow: MessageCharacteristics?
-    func messagesModuleDidRequestPresentation(for message: MessageCharacteristics) {
+    private(set) var messageToShow: MessageEntity?
+    func messagesModuleDidRequestPresentation(for message: MessageEntity) {
         messageToShow = message
     }
 
@@ -73,7 +73,7 @@ struct MessagesPresenterTestContext {
                                             privateMessagesService: privateMessagesService)
     }
 
-    static func makeTestCaseForUserWithMessages(_ messages: [MessageCharacteristics]) -> MessagesPresenterTestContext {
+    static func makeTestCaseForUserWithMessages(_ messages: [MessageEntity]) -> MessagesPresenterTestContext {
         let service = CapturingPrivateMessagesService(localMessages: messages)
         return makeTestCaseForAuthenticatedUser(privateMessagesService: service)
     }

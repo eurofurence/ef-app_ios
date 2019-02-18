@@ -18,9 +18,9 @@ class CapturingPrivateMessagesService: PrivateMessagesService {
     }
 
     var unreadMessageCount: Int = 0
-    var localMessages: [MessageCharacteristics] = []
+    var localMessages: [MessageEntity] = []
 
-    init(unreadMessageCount: Int = 0, localMessages: [MessageCharacteristics] = []) {
+    init(unreadMessageCount: Int = 0, localMessages: [MessageEntity] = []) {
         self.localMessages = localMessages
     }
 
@@ -31,8 +31,8 @@ class CapturingPrivateMessagesService: PrivateMessagesService {
         refreshMessagesCount += 1
     }
 
-    private(set) var messageMarkedAsRead: MessageCharacteristics?
-    func markMessageAsRead(_ message: MessageCharacteristics) {
+    private(set) var messageMarkedAsRead: MessageEntity?
+    func markMessageAsRead(_ message: MessageEntity) {
         messageMarkedAsRead = message
     }
 
@@ -40,7 +40,7 @@ class CapturingPrivateMessagesService: PrivateMessagesService {
         privateMessageObservers.forEach({ $0.privateMessagesServiceDidFailToLoadMessages() })
     }
 
-    func succeedLastRefresh(messages: [MessageCharacteristics] = []) {
+    func succeedLastRefresh(messages: [MessageEntity] = []) {
         privateMessageObservers.forEach({ $0.privateMessagesServiceDidFinishRefreshingMessages(messages: messages) })
     }
 

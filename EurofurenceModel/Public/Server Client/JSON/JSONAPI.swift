@@ -61,13 +61,13 @@ public struct JSONAPI: API {
     // MARK: PrivateMessagesAPI
 
     public func loadPrivateMessages(authorizationToken: String,
-                                    completionHandler: @escaping ([MessageCharacteristics]?) -> Void) {
+                                    completionHandler: @escaping ([MessageEntity]?) -> Void) {
         let url = apiUrl + "Communication/PrivateMessages"
         var request = JSONRequest(url: url)
         request.headers = ["Authorization": "Bearer \(authorizationToken)"]
 
         jsonSession.get(request) { (data, _) in
-            var messages: [MessageCharacteristics]?
+            var messages: [MessageEntity]?
             defer { completionHandler(messages) }
 
             guard let data = data else { return }
@@ -176,8 +176,8 @@ public struct JSONAPI: API {
                 case readDateTime = "ReadDateTimeUtc"
             }
 
-            func makeAppDomainMessage() -> EurofurenceModel.MessageCharacteristics {
-                return EurofurenceModel.MessageCharacteristics(identifier: id,
+            func makeAppDomainMessage() -> EurofurenceModel.MessageEntity {
+                return EurofurenceModel.MessageEntity(identifier: id,
                                                 authorName: authorName,
                                                 receivedDateTime: receivedDateTime,
                                                 subject: subject,

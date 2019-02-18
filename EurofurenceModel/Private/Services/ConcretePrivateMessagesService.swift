@@ -14,7 +14,7 @@ class ConcretePrivateMessagesService: PrivateMessagesService {
     private var userAuthenticationToken: String?
     private var privateMessageObservers = [PrivateMessagesObserver]()
 
-    private var localMessages: [MessageCharacteristics] = .empty
+    private var localMessages: [MessageEntity] = .empty
 
     init(eventBus: EventBus, api: API) {
         self.api = api
@@ -66,7 +66,7 @@ class ConcretePrivateMessagesService: PrivateMessagesService {
         }
     }
 
-    func markMessageAsRead(_ message: MessageCharacteristics) {
+    func markMessageAsRead(_ message: MessageEntity) {
         guard let token = userAuthenticationToken else { return }
         api.markMessageWithIdentifierAsRead(message.identifier, authorizationToken: token)
 
