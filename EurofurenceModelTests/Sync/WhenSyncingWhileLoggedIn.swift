@@ -21,7 +21,8 @@ class WhenSyncingWhileLoggedIn: XCTestCase {
         context.api.simulateSuccessfulSync(.randomWithoutDeletions)
         context.api.simulateMessagesResponse(response: expected)
 
-        XCTAssertEqual(expected, observer.observedMessages)
+        MessageAssertion()
+            .assertMessages(observer.observedMessages, characterisedBy: expected)
     }
 
     func testAddingAnotherObserverIsPassedLoadedMessages() {
@@ -34,7 +35,8 @@ class WhenSyncingWhileLoggedIn: XCTestCase {
         let observer = CapturingPrivateMessagesObserver()
         context.privateMessagesService.add(observer)
 
-        XCTAssertEqual(expected, observer.observedMessages)
+        MessageAssertion()
+            .assertMessages(observer.observedMessages, characterisedBy: expected)
     }
 
     func testTheSyncDoesNotFinishUntilMessagesHaveLoaded() {

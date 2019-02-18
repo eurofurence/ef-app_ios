@@ -474,6 +474,7 @@
 		CA4679A422176AAF006B3090 /* EventImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4679A322176AAF006B3090 /* EventImpl.swift */; };
 		CA4679A6221770A9006B3090 /* MapImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4679A5221770A9006B3090 /* MapImpl.swift */; };
 		CA4679A82219FC03006B3090 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4679A72219FC03006B3090 /* API.swift */; };
+		CA4679AD221B5089006B3090 /* MessageAssertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4679AB221B504D006B3090 /* MessageAssertion.swift */; };
 		CA4C474A21DF88B9005231AD /* NotificationServiceFetchResultAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4C474921DF88B9005231AD /* NotificationServiceFetchResultAdapter.swift */; };
 		CA4C474D21DFFE4F005231AD /* PrivateMessagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4C474B21DFFE0E005231AD /* PrivateMessagesService.swift */; };
 		CA4FBE0E1F72FF2A00D29405 /* MessagesPresenterTestsWhenBindingMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FBE0D1F72FF2A00D29405 /* MessagesPresenterTestsWhenBindingMessages.swift */; };
@@ -2027,6 +2028,7 @@
 		CA4679A322176AAF006B3090 /* EventImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventImpl.swift; sourceTree = "<group>"; };
 		CA4679A5221770A9006B3090 /* MapImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapImpl.swift; sourceTree = "<group>"; };
 		CA4679A72219FC03006B3090 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		CA4679AB221B504D006B3090 /* MessageAssertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageAssertion.swift; sourceTree = "<group>"; };
 		CA46A73820F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLaunchingApplication_PrivateMessagesShould.swift; sourceTree = "<group>"; };
 		CA49E93E2015480A00EB571C /* EventHandlerRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventHandlerRegistration.swift; sourceTree = "<group>"; };
 		CA49E9422015480A00EB571C /* EventBusRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBusRegistration.swift; sourceTree = "<group>"; };
@@ -5358,6 +5360,7 @@
 				CA9845DB1F2A62D100E8821D /* WhenMarkingMessageAsRead.swift */,
 				CA30EAB51F26128A0053DBF6 /* WhenRequestingPrivateMessagesWhileAuthenticated.swift */,
 				CA81D4931FEA92EA00A52A2F /* WhenRequestingPrivateMessagesWhileNotAuthenticated.swift */,
+				CA4679AB221B504D006B3090 /* MessageAssertion.swift */,
 			);
 			path = "Private Messages";
 			sourceTree = "<group>";
@@ -8648,6 +8651,7 @@
 				CAEA0FA2216E1CC000B0C7A6 /* WhenRequestingImageForAnnouncementThatHasNoImage_ApplicationShould.swift in Sources */,
 				CAEA0FBD216E1CC000B0C7A6 /* WhenToldToOpenDealersWebsite_WhenApplicationCannotHandleURL_ApplicationShould.swift in Sources */,
 				CAD6FD4A2216181D0011712D /* KnowledgeGroupAssertion.swift in Sources */,
+				CA4679AD221B5089006B3090 /* MessageAssertion.swift in Sources */,
 				CAEA0FEE216E1CE700B0C7A6 /* WhenFetchingImagesForKnowledgeEntry_WhenEntryHasImages_ApplicationShould.swift in Sources */,
 				CAEA10A6216E8BB600B0C7A6 /* CapturingForceRefreshRequired.swift in Sources */,
 				CAEA0FCC216E1CC000B0C7A6 /* WhenDeletingKnowledgeGroup_AfterSuccessfulSync_ApplicationShould.swift in Sources */,
