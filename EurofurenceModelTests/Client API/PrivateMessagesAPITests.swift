@@ -14,8 +14,8 @@ class CapturingV2PrivateMessagesObserver {
 
     private(set) var wasNotifiedResponseSucceeded = false
     private(set) var wasNotifiedResponseFailed = false
-    private(set) var capturedMessages: [MessageEntity]?
-    func handle(_ messages: [MessageEntity]?) {
+    private(set) var capturedMessages: [MessageCharacteristics]?
+    func handle(_ messages: [MessageCharacteristics]?) {
         if let messages = messages {
             wasNotifiedResponseSucceeded = true
             capturedMessages = messages

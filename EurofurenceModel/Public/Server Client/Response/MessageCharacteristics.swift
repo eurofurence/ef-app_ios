@@ -1,14 +1,14 @@
 //
-//  MessageEntity.swift
-//  Eurofurence
+//  MessageCharacteristics.swift
+//  EurofurenceModel
 //
-//  Created by Thomas Sherwood on 24/07/2017.
-//  Copyright © 2017 Eurofurence. All rights reserved.
+//  Created by Thomas Sherwood on 18/02/2019.
+//  Copyright © 2019 Eurofurence. All rights reserved.
 //
 
 import Foundation
 
-public struct MessageEntity {
+public struct MessageCharacteristics {
 
     public var identifier: String
     public var authorName: String

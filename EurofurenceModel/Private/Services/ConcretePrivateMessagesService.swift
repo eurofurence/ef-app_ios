@@ -43,11 +43,12 @@ class ConcretePrivateMessagesService: PrivateMessagesService {
                         return first.receivedDateTime.compare(second.receivedDateTime) == .orderedDescending
                     })
 
-                    self.localMessages = messages
+                    self.localMessages = MessageEntity.fromCharacteristics(messages)
+
                     let unreadCount = self.determineUnreadMessageCount()
                     self.privateMessageObservers.forEach({ (observer) in
                         observer.privateMessagesServiceDidUpdateUnreadMessageCount(to: unreadCount)
-                        observer.privateMessagesServiceDidFinishRefreshingMessages(messages: messages)
+                        observer.privateMessagesServiceDidFinishRefreshingMessages(messages: self.localMessages)
                     })
                 } else {
                     for observer in self.privateMessageObservers {
@@ -66,7 +67,7 @@ class ConcretePrivateMessagesService: PrivateMessagesService {
         }
     }
 
-    func markMessageAsRead(_ message: MessageEntity) {
+    func markMessageAsRead(_ message: Message) {
         guard let token = userAuthenticationToken else { return }
         api.markMessageWithIdentifierAsRead(message.identifier, authorizationToken: token)
 

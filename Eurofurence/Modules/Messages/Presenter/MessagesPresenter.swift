@@ -18,7 +18,7 @@ class MessagesPresenter: MessagesSceneDelegate, AuthenticationStateObserver, Pri
     private let privateMessagesService: PrivateMessagesService
     private let dateFormatter: DateFormatterProtocol
     private let delegate: MessagesModuleDelegate
-    private var presentedMessages = [MessageEntity]()
+    private var presentedMessages = [Message]()
 
     // MARK: Initialization
 
@@ -89,7 +89,7 @@ class MessagesPresenter: MessagesSceneDelegate, AuthenticationStateObserver, Pri
 
     }
 
-    func privateMessagesServiceDidFinishRefreshingMessages(messages: [MessageEntity]) {
+    func privateMessagesServiceDidFinishRefreshingMessages(messages: [Message]) {
         scene.hideRefreshIndicator()
         presentMessages(messages)
     }
@@ -113,7 +113,7 @@ class MessagesPresenter: MessagesSceneDelegate, AuthenticationStateObserver, Pri
         privateMessagesService.refreshMessages()
     }
 
-    private func presentMessages(_ messages: [MessageEntity]) {
+    private func presentMessages(_ messages: [Message]) {
         presentedMessages = messages
 
         let binder = MessageBinder(messages: messages, dateFormatter: dateFormatter)
@@ -130,7 +130,7 @@ class MessagesPresenter: MessagesSceneDelegate, AuthenticationStateObserver, Pri
 
     private struct MessageBinder: MessageItemBinder {
 
-        var messages: [MessageEntity]
+        var messages: [Message]
         var dateFormatter: DateFormatterProtocol
 
         func bind(_ scene: MessageItemScene, toMessageAt indexPath: IndexPath) {

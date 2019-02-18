@@ -14,8 +14,8 @@ import XCTest
 class MessagesPresenterTestsWhenBindingMessages: XCTestCase {
 
     var context: MessagesPresenterTestContext!
-    var allMessages: [MessageEntity]!
-    var message: MessageEntity!
+    var allMessages: [StubMessage]!
+    var message: Message!
     var capturingMessageScene: CapturingMessageItemScene!
 
     override func setUp() {
@@ -23,7 +23,7 @@ class MessagesPresenterTestsWhenBindingMessages: XCTestCase {
         prepareTestCase()
     }
 
-    private func prepareTestCase(messageMutations mutations: ((inout MessageEntity) -> Void)? = nil) {
+    private func prepareTestCase(messageMutations mutations: ((inout StubMessage) -> Void)? = nil) {
         allMessages = .random
         let randomIndex = Int.random(upperLimit: UInt32(allMessages.count))
         let randomIndexPath = IndexPath(row: randomIndex, section: 0)

@@ -142,7 +142,7 @@ class DefaultNewsInteractor: NewsInteractor,
         regenerateViewModel()
     }
 
-    func privateMessagesServiceDidFinishRefreshingMessages(messages: [MessageEntity]) {
+    func privateMessagesServiceDidFinishRefreshingMessages(messages: [Message]) {
 
     }
 

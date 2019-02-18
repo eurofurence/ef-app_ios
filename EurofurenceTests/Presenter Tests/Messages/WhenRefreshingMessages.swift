@@ -44,7 +44,7 @@ class WhenRefreshingMessages: XCTestCase {
     }
 
     func testWhenRefreshActionCompletesWithMessagesTheSceneIsToldToShowTheMessagesList() {
-        context.privateMessagesService.succeedLastRefresh(messages: [.random])
+        context.privateMessagesService.succeedLastRefresh(messages: [StubMessage.random])
         XCTAssertTrue(context.scene.didShowMessages)
     }
 
@@ -54,12 +54,12 @@ class WhenRefreshingMessages: XCTestCase {
     }
 
     func testWhenRefreshActionCompletesWithMessagesTheSceneIsNotToldShowTheNoMessagesPlaceholder() {
-        context.privateMessagesService.succeedLastRefresh(messages: [.random])
+        context.privateMessagesService.succeedLastRefresh(messages: [StubMessage.random])
         XCTAssertFalse(context.scene.didShowNoMessagesPlaceholder)
     }
 
     func testWhenRefreshActionCompletesWithMessageTheSceneIsToldHideTheNoMessagesPlaceholder() {
-        context.privateMessagesService.succeedLastRefresh(messages: [.random])
+        context.privateMessagesService.succeedLastRefresh(messages: [StubMessage.random])
         XCTAssertTrue(context.scene.didHideNoMessagesPlaceholder)
     }
 
@@ -69,14 +69,14 @@ class WhenRefreshingMessages: XCTestCase {
     }
 
     func testWhenRefreshActionCompletesWithMessagesTheSceneIsToldToBindWithTheNumberOfMessages() {
-        let messages = [MessageEntity].random
+        let messages = [StubMessage].random
         context.privateMessagesService.succeedLastRefresh(messages: messages)
 
         XCTAssertEqual(messages.count, context.scene.boundMessageCount)
     }
 
     func testWhenRefreshActionCompletesWithMessagesTheSceneIsToldToBindWithTheMessage() {
-        let message = MessageEntity.random
+        let message = StubMessage.random
         context.privateMessagesService.succeedLastRefresh(messages: [message])
         let component = CapturingMessageItemScene()
         context.scene.capturedMessageItemBinder?.bind(component, toMessageAt: IndexPath(row: 0, section: 0))

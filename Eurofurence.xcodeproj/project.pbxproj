@@ -224,6 +224,8 @@
 		CA1FE9991FA0B3AE009C7DF3 /* ApplicationDirector.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1FE9981FA0B3AE009C7DF3 /* ApplicationDirector.swift */; };
 		CA1FE99B1FA0B3EB009C7DF3 /* WindowWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1FE99A1FA0B3EB009C7DF3 /* WindowWireframe.swift */; };
 		CA1FE99E1FA0B41E009C7DF3 /* NavigationControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1FE99D1FA0B41E009C7DF3 /* NavigationControllerFactory.swift */; };
+		CA235866221B57620044B1FC /* StubMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA235865221B57620044B1FC /* StubMessage.swift */; };
+		CA235868221B591D0044B1FC /* MessageEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA235867221B591D0044B1FC /* MessageEntity.swift */; };
 		CA240F3F21E3A4DE002DB747 /* BeforeMessagesViewAppears_MessagesPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA240F3E21E3A4DE002DB747 /* BeforeMessagesViewAppears_MessagesPresenterShould.swift */; };
 		CA240F4521E3D62C002DB747 /* Identifier+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA240F4321E3D5E1002DB747 /* Identifier+RandomValueProviding.swift */; };
 		CA240F4821E3D8C3002DB747 /* Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA240F4621E3D8B9002DB747 /* Identifier.swift */; };
@@ -475,6 +477,7 @@
 		CA4679A6221770A9006B3090 /* MapImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4679A5221770A9006B3090 /* MapImpl.swift */; };
 		CA4679A82219FC03006B3090 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4679A72219FC03006B3090 /* API.swift */; };
 		CA4679AD221B5089006B3090 /* MessageAssertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4679AB221B504D006B3090 /* MessageAssertion.swift */; };
+		CA4679AF221B542D006B3090 /* MessageCharacteristics.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4679AE221B542D006B3090 /* MessageCharacteristics.swift */; };
 		CA4C474A21DF88B9005231AD /* NotificationServiceFetchResultAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4C474921DF88B9005231AD /* NotificationServiceFetchResultAdapter.swift */; };
 		CA4C474D21DFFE4F005231AD /* PrivateMessagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4C474B21DFFE0E005231AD /* PrivateMessagesService.swift */; };
 		CA4FBE0E1F72FF2A00D29405 /* MessagesPresenterTestsWhenBindingMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FBE0D1F72FF2A00D29405 /* MessagesPresenterTestsWhenBindingMessages.swift */; };
@@ -935,7 +938,7 @@
 		CAEA0DB9216BDE2300B0C7A6 /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDAE205870B500C91E6E /* Link.swift */; };
 		CAEA0DBA216BDE2300B0C7A6 /* LoginArguments.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA71F1EA72A00F007E1 /* LoginArguments.swift */; };
 		CAEA0DBB216BDE2300B0C7A6 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8D9F20E2CAB7007536CD /* Map.swift */; };
-		CAEA0DBC216BDE2300B0C7A6 /* MessageEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAC31F2672BF0053DBF6 /* MessageEntity.swift */; };
+		CAEA0DBC216BDE2300B0C7A6 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAC31F2672BF0053DBF6 /* Message.swift */; };
 		CAEA0DBD216BDE2300B0C7A6 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E9520A88854004AFED6 /* Room.swift */; };
 		CAEA0DBE216BDE2300B0C7A6 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E8F20B36B5800D904B5 /* Track.swift */; };
 		CAEA0DBF216BDE2300B0C7A6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAAD1F2148780053DBF6 /* User.swift */; };
@@ -1687,6 +1690,8 @@
 		CA1FE9981FA0B3AE009C7DF3 /* ApplicationDirector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ApplicationDirector.swift; path = ../Director/ApplicationDirector.swift; sourceTree = "<group>"; };
 		CA1FE99A1FA0B3EB009C7DF3 /* WindowWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WindowWireframe.swift; path = ../Director/WindowWireframe.swift; sourceTree = "<group>"; };
 		CA1FE99D1FA0B41E009C7DF3 /* NavigationControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NavigationControllerFactory.swift; path = ../Director/NavigationControllerFactory.swift; sourceTree = "<group>"; };
+		CA235865221B57620044B1FC /* StubMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubMessage.swift; sourceTree = "<group>"; };
+		CA235867221B591D0044B1FC /* MessageEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageEntity.swift; sourceTree = "<group>"; };
 		CA240F3E21E3A4DE002DB747 /* BeforeMessagesViewAppears_MessagesPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeforeMessagesViewAppears_MessagesPresenterShould.swift; sourceTree = "<group>"; };
 		CA240F4321E3D5E1002DB747 /* Identifier+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Identifier+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA240F4621E3D8B9002DB747 /* Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifier.swift; sourceTree = "<group>"; };
@@ -1869,7 +1874,7 @@
 		CA30EAAD1F2148780053DBF6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CA30EAB51F26128A0053DBF6 /* WhenRequestingPrivateMessagesWhileAuthenticated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenRequestingPrivateMessagesWhileAuthenticated.swift; sourceTree = "<group>"; };
 		CA30EAB91F26174B0053DBF6 /* CapturingPrivateMessagesObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingPrivateMessagesObserver.swift; sourceTree = "<group>"; };
-		CA30EAC31F2672BF0053DBF6 /* MessageEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageEntity.swift; sourceTree = "<group>"; };
+		CA30EAC31F2672BF0053DBF6 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		CA30EAC91F267D3C0053DBF6 /* PrivateMessagesAPITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivateMessagesAPITests.swift; sourceTree = "<group>"; };
 		CA30EACF1F27D8620053DBF6 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		CA321F4D1F7BC7FD0050E489 /* StoryboardPreloadSceneFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardPreloadSceneFactoryTests.swift; sourceTree = "<group>"; };
@@ -2029,6 +2034,7 @@
 		CA4679A5221770A9006B3090 /* MapImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapImpl.swift; sourceTree = "<group>"; };
 		CA4679A72219FC03006B3090 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		CA4679AB221B504D006B3090 /* MessageAssertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageAssertion.swift; sourceTree = "<group>"; };
+		CA4679AE221B542D006B3090 /* MessageCharacteristics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCharacteristics.swift; sourceTree = "<group>"; };
 		CA46A73820F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLaunchingApplication_PrivateMessagesShould.swift; sourceTree = "<group>"; };
 		CA49E93E2015480A00EB571C /* EventHandlerRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventHandlerRegistration.swift; sourceTree = "<group>"; };
 		CA49E9422015480A00EB571C /* EventBusRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBusRegistration.swift; sourceTree = "<group>"; };
@@ -3561,7 +3567,6 @@
 				CAD3BDAE205870B500C91E6E /* Link.swift */,
 				CA2B4FA71F1EA72A00F007E1 /* LoginArguments.swift */,
 				CA240F4921E3D980002DB747 /* MapContent.swift */,
-				CA30EAC31F2672BF0053DBF6 /* MessageEntity.swift */,
 				CA162E9520A88854004AFED6 /* Room.swift */,
 				CACF1E8F20B36B5800D904B5 /* Track.swift */,
 				CA30EAAD1F2148780053DBF6 /* User.swift */,
@@ -4301,6 +4306,7 @@
 				CA46799A22176329006B3090 /* DealerImpl.swift */,
 				CA4679A322176AAF006B3090 /* EventImpl.swift */,
 				CA4679A5221770A9006B3090 /* MapImpl.swift */,
+				CA235867221B591D0044B1FC /* MessageEntity.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -6060,6 +6066,7 @@
 				CA4679A122176A3F006B3090 /* Event.swift */,
 				CACF1EC820B6D5AA00D904B5 /* ImageEntity.swift */,
 				CA6A8D9F20E2CAB7007536CD /* Map.swift */,
+				CA30EAC31F2672BF0053DBF6 /* Message.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -6125,6 +6132,7 @@
 				CA46799522175F4B006B3090 /* StubDealer.swift */,
 				CA162E9320A87D3D004AFED6 /* StubEvent.swift */,
 				CA6A8DA820E2CE2C007536CD /* StubMap.swift */,
+				CA235865221B57620044B1FC /* StubMessage.swift */,
 			);
 			path = "Entity Test Doubles";
 			sourceTree = "<group>";
@@ -6516,7 +6524,6 @@
 			isa = PBXGroup;
 			children = (
 				CA65A2222091F6020078A4A7 /* AnnouncementCharacteristics.swift */,
-				CAF5979520449A0400089BE8 /* ModelCharacteristics.swift */,
 				CA08157E20D3D52D00F750D4 /* ConferenceDayCharacteristics.swift */,
 				CA36A4AD20D9895600EE6537 /* DealerCharacteristics.swift */,
 				CA162EB720AA2FB9004AFED6 /* EventCharacteristics.swift */,
@@ -6525,6 +6532,8 @@
 				CAF5979720449A1100089BE8 /* KnowledgeGroupCharacteristics.swift */,
 				CAD3BDB2205874AF00C91E6E /* LinkCharacteristics.swift */,
 				CA6A8DB220E2D773007536CD /* MapCharacteristics.swift */,
+				CA4679AE221B542D006B3090 /* MessageCharacteristics.swift */,
+				CAF5979520449A0400089BE8 /* ModelCharacteristics.swift */,
 				CA162EDF20AAF7C3004AFED6 /* RoomCharacteristics.swift */,
 				CACF1E9320B36C5A00D904B5 /* TrackCharacteristics.swift */,
 			);
@@ -8550,7 +8559,7 @@
 				CAEA0DDF216BDE2300B0C7A6 /* MapEntity+Adaptation.swift in Sources */,
 				CAEA0DEF216BDE2300B0C7A6 /* Iso8601DateFormatter.swift in Sources */,
 				CAEA0DFA216BDE3100B0C7A6 /* MapCharacteristics.swift in Sources */,
-				CAEA0DBC216BDE2300B0C7A6 /* MessageEntity.swift in Sources */,
+				CAEA0DBC216BDE2300B0C7A6 /* Message.swift in Sources */,
 				CAEA0D96216BDD9500B0C7A6 /* ImagesCache.swift in Sources */,
 				CAEA0DAC216BDE2300B0C7A6 /* RemoteNotificationsTokenRegistration.swift in Sources */,
 				CAEA0D97216BDD9500B0C7A6 /* EventsSearchController.swift in Sources */,
@@ -8608,9 +8617,11 @@
 				CA240F4B21E3D985002DB747 /* MapContent.swift in Sources */,
 				CAEA0DCD216BDE2300B0C7A6 /* EF24StartDateRepository.swift in Sources */,
 				CACD2EB021D67EE300BACD91 /* EurofurenceSessionState.swift in Sources */,
+				CA4679AF221B542D006B3090 /* MessageCharacteristics.swift in Sources */,
 				CAEA0D93216BDD9500B0C7A6 /* SignificantTimeObserver.swift in Sources */,
 				CAEA0D92216BDD9500B0C7A6 /* PersistentImageRepository.swift in Sources */,
 				CA467999221761FE006B3090 /* Dealer.swift in Sources */,
+				CA235868221B591D0044B1FC /* MessageEntity.swift in Sources */,
 				CAEA0DAD216BDE2300B0C7A6 /* SignificantTimeChangeAdapter.swift in Sources */,
 				CAEA0DE0216BDE2300B0C7A6 /* ReadAnnouncementEntity.swift in Sources */,
 				CAEA0DAF216BDE2300B0C7A6 /* URLOpener.swift in Sources */,
@@ -8855,6 +8866,7 @@
 				CAEA0F7C216D370600B0C7A6 /* FakeHoursDateFormatter.swift in Sources */,
 				CAEA0F7F216E1AE200B0C7A6 /* StubAnnouncement.swift in Sources */,
 				CAEA0F88216E1AE200B0C7A6 /* Track+RandomValueProviding.swift in Sources */,
+				CA235866221B57620044B1FC /* StubMessage.swift in Sources */,
 				CAEA0F8B216E1AE200B0C7A6 /* AlphabetisedDealersGroup+RandomValueProviding.swift in Sources */,
 				CAEA0F76216D2CE800B0C7A6 /* StubAPIURLProviding.swift in Sources */,
 				CAEA0F8C216E1AE200B0C7A6 /* ExtendedDealerData+RandomValueProviding.swift in Sources */,

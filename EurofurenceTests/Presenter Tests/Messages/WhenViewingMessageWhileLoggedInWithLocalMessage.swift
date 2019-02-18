@@ -14,7 +14,7 @@ import XCTest
 class WhenViewingMessageWhileLoggedInWithLocalMessage: XCTestCase {
 
     var context: MessagesPresenterTestContext!
-    var localMessage: MessageEntity!
+    var localMessage: StubMessage!
 
     override func setUp() {
         super.setUp()

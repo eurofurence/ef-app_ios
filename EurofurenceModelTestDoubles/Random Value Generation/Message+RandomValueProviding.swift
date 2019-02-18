@@ -1,5 +1,5 @@
 //
-//  Message+RandomValueProviding.swift
+//  MessageCharacteristics+RandomValueProviding.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 22/04/2018.
@@ -9,15 +9,15 @@
 import EurofurenceModel
 import RandomDataGeneration
 
-extension MessageEntity: RandomValueProviding {
+extension MessageCharacteristics: RandomValueProviding {
 
-    public static var random: MessageEntity {
-        return MessageEntity(identifier: .random,
-                       authorName: .random,
-                       receivedDateTime: .random,
-                       subject: .random,
-                       contents: .random,
-                       isRead: .random)
+    public static var random: MessageCharacteristics {
+        return MessageCharacteristics(identifier: .random,
+                                      authorName: .random,
+                                      receivedDateTime: .random,
+                                      subject: .random,
+                                      contents: .random,
+                                      isRead: .random)
     }
 
 }

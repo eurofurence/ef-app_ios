@@ -10,7 +10,7 @@ import EurofurenceModel
 
 class MessageAssertion: EntityAssertion {
 
-    func assertMessages(_ messages: [MessageEntity], characterisedBy characteristics: [MessageEntity]) {
+    func assertMessages(_ messages: [Message], characterisedBy characteristics: [MessageCharacteristics]) {
         guard messages.count == characteristics.count else {
             fail(message: "Differing amount of expected/actual messages")
             return
@@ -26,7 +26,7 @@ class MessageAssertion: EntityAssertion {
         }
     }
 
-    func assertMessage(_ message: MessageEntity, characterisedBy characteristic: MessageEntity) {
+    func assertMessage(_ message: Message, characterisedBy characteristic: MessageCharacteristics) {
         assert(message.identifier, isEqualTo: characteristic.identifier)
         assert(message.authorName, isEqualTo: characteristic.authorName)
         assert(message.receivedDateTime, isEqualTo: characteristic.receivedDateTime)
