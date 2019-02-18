@@ -19,12 +19,7 @@ struct UserNotificationsScheduler: NotificationScheduler {
         let content = UNMutableNotificationContent()
         content.title = title
         content.body = body
-
-        let objCSafeUserInfo = Dictionary(pairs: userInfo.map({ (key, value) -> (String, String) in
-            return (key.rawValue, value)
-        }))
-
-        content.userInfo = objCSafeUserInfo
+        content.userInfo = userInfo.xpcSafeDictionary
 
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
         let request = UNNotificationRequest(identifier: identifier.rawValue, content: content, trigger: trigger)
@@ -38,6 +33,18 @@ struct UserNotificationsScheduler: NotificationScheduler {
 
     func cancelNotification(forEvent identifier: EventIdentifier) {
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [identifier.rawValue])
+    }
+
+}
+
+private extension Dictionary where Key == ApplicationNotificationKey, Value == String {
+
+    var xpcSafeDictionary: Dictionary<String, String> {
+        let stringPairs: [(String, String)] = map({ (key, value) -> (String, String) in
+            return (key.rawValue, value)
+        })
+
+        return Dictionary<String, String>(pairs: stringPairs)
     }
 
 }
