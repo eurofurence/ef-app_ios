@@ -1,5 +1,5 @@
 //
-//  MessageEntity.swift
+//  MessageImpl.swift
 //  EurofurenceModel
 //
 //  Created by Thomas Sherwood on 18/02/2019.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct MessageEntity: Message {
+struct MessageImpl: Message {
 
     var identifier: String
     var authorName: String
@@ -28,14 +28,14 @@ struct MessageEntity: Message {
 
 }
 
-extension MessageEntity {
+extension MessageImpl {
 
-    static func fromCharacteristics(_ characteristics: [MessageCharacteristics]) -> [MessageEntity] {
+    static func fromCharacteristics(_ characteristics: [MessageCharacteristics]) -> [MessageImpl] {
         return characteristics.map(fromCharacteristic)
     }
 
-    static func fromCharacteristic(_ characteristic: MessageCharacteristics) -> MessageEntity {
-        return MessageEntity(identifier: characteristic.identifier,
+    static func fromCharacteristic(_ characteristic: MessageCharacteristics) -> MessageImpl {
+        return MessageImpl(identifier: characteristic.identifier,
                              authorName: characteristic.authorName,
                              receivedDateTime: characteristic.receivedDateTime,
                              subject: characteristic.subject,

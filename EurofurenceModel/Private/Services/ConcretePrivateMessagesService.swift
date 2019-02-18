@@ -14,7 +14,7 @@ class ConcretePrivateMessagesService: PrivateMessagesService {
     private var userAuthenticationToken: String?
     private var privateMessageObservers = [PrivateMessagesObserver]()
 
-    private var localMessages: [MessageEntity] = .empty
+    private var localMessages: [MessageImpl] = .empty
 
     init(eventBus: EventBus, api: API) {
         self.api = api
@@ -43,7 +43,7 @@ class ConcretePrivateMessagesService: PrivateMessagesService {
                         return first.receivedDateTime.compare(second.receivedDateTime) == .orderedDescending
                     })
 
-                    self.localMessages = MessageEntity.fromCharacteristics(messages)
+                    self.localMessages = MessageImpl.fromCharacteristics(messages)
 
                     let unreadCount = self.determineUnreadMessageCount()
                     self.privateMessageObservers.forEach({ (observer) in
