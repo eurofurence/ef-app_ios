@@ -41,7 +41,8 @@ class WhenSchedulingReminderForEvent_ApplicationShould: XCTestCase {
             [.notificationContentKind: ApplicationNotificationContentKind.event.rawValue,
              .notificationContentIdentifier: event.identifier]
 
-        context.eventsService.favouriteEvent(identifier: EventIdentifier(event.identifier))
+        let theEvent = context.eventsService.fetchEvent(identifier: EventIdentifier(event.identifier))
+        theEvent?.favourite()
 
         XCTAssertEqual(expectedDateComponents, context.notificationScheduler.capturedEventNotificationScheduledDateComponents)
         XCTAssertEqual(expectedTitle, context.notificationScheduler.capturedEventNotificationTitle)

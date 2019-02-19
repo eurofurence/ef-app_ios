@@ -14,7 +14,8 @@ class WhenUnfavouritingEvent_ApplicationShould: XCTestCase {
     func testTellTheDataStoreToDeleteTheEventIdentifier() {
         let context = ApplicationTestBuilder().build()
         let identifier = EventIdentifier.random
-        context.eventsService.favouriteEvent(identifier: identifier)
+        let event = context.eventsService.fetchEvent(identifier: identifier)
+        event?.favourite()
         context.eventsService.unfavouriteEvent(identifier: identifier)
 
         XCTAssertTrue(context.dataStore.didDeleteFavouriteEvent(identifier))
@@ -25,7 +26,8 @@ class WhenUnfavouritingEvent_ApplicationShould: XCTestCase {
         let identifier = EventIdentifier.random
         let observer = CapturingEventsServiceObserver()
         context.eventsService.add(observer)
-        context.eventsService.favouriteEvent(identifier: identifier)
+        let event = context.eventsService.fetchEvent(identifier: identifier)
+        event?.favourite()
         context.eventsService.unfavouriteEvent(identifier: identifier)
 
         XCTAssertFalse(observer.capturedFavouriteEventIdentifiers.contains(identifier))
@@ -34,7 +36,8 @@ class WhenUnfavouritingEvent_ApplicationShould: XCTestCase {
     func testTellTheNotificationServiceToRemoveTheScheduledNotification() {
         let context = ApplicationTestBuilder().build()
         let identifier = EventIdentifier.random
-        context.eventsService.favouriteEvent(identifier: identifier)
+        let event = context.eventsService.fetchEvent(identifier: identifier)
+        event?.favourite()
         context.eventsService.unfavouriteEvent(identifier: identifier)
 
         XCTAssertEqual(identifier, context.notificationScheduler.capturedEventIdentifierToRemoveNotification)

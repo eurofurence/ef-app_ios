@@ -28,7 +28,6 @@ public protocol EventsService {
     func fetchEvent(identifier: EventIdentifier) -> Event?
 
     func add(_ observer: EventsServiceObserver)
-    func favouriteEvent(identifier: EventIdentifier)
     func unfavouriteEvent(identifier: EventIdentifier)
     func makeEventsSchedule() -> EventsSchedule
     func makeEventsSearchController() -> EventsSearchController

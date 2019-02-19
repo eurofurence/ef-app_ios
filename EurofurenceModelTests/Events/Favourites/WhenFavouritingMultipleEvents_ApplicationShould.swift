@@ -11,6 +11,11 @@ import XCTest
 
 class WhenFavouritingMultipleEvents_ApplicationShould: XCTestCase {
 
+    private func favouriteEvents(_ identifiers: [EventIdentifier], service: EventsService) {
+        let events = identifiers.compactMap(service.fetchEvent)
+        events.forEach({ $0.favourite() })
+    }
+
     func testTellEventsObserversTheEventsAreNowFavourited() {
         let response = ModelCharacteristics.randomWithoutDeletions
         let events = response.events.changed
@@ -25,7 +30,7 @@ class WhenFavouritingMultipleEvents_ApplicationShould: XCTestCase {
         let identifiers = events.map({ EventIdentifier($0.identifier) })
         let observer = CapturingEventsServiceObserver()
         context.eventsService.add(observer)
-        identifiers.forEach(context.eventsService.favouriteEvent)
+        favouriteEvents(identifiers, service: context.eventsService)
 
         XCTAssertTrue(identifiers.contains(elementsFrom: observer.capturedFavouriteEventIdentifiers))
     }
@@ -44,7 +49,7 @@ class WhenFavouritingMultipleEvents_ApplicationShould: XCTestCase {
         let identifiers = events.map({ EventIdentifier($0.identifier) })
         let observer = CapturingEventsServiceObserver()
         context.eventsService.add(observer)
-        identifiers.forEach(context.eventsService.favouriteEvent)
+        favouriteEvents(identifiers, service: context.eventsService)
         let randomIdentifier = identifiers.randomElement()
         context.eventsService.unfavouriteEvent(identifier: randomIdentifier.element)
         var expected = identifiers

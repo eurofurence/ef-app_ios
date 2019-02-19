@@ -135,7 +135,7 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
 
         func favourite() {
             event.favourite()
-            eventsService.favouriteEvent(identifier: event.identifier)
+            delegate?.eventFavourited()
         }
 
         func unfavourite() {

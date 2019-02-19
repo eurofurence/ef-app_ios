@@ -143,12 +143,6 @@ class ConcreteEventsService: ClockDelegate, EventsService {
         provideScheduleInformation(to: observer)
     }
 
-    func favouriteEvent(identifier: EventIdentifier) {
-        persistFavouritedEvent(identifier: identifier)
-        favouriteEventIdentifiers.append(identifier)
-        scheduleReminderForEvent(identifier: identifier)
-    }
-
     func unfavouriteEvent(identifier: EventIdentifier) {
         dataStore.performTransaction { (transaction) in
             transaction.deleteFavouriteEventIdentifier(identifier)
