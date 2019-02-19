@@ -117,12 +117,7 @@ class InMemoryEventsSearchController: EventsSearchController {
     }
 
     private func regenerateSearchResults() {
-        var matches = [Event]()
-        for event in schedule.eventModels {
-            guard filters.include(event: event) else { continue }
-            matches.append(event)
-        }
-
+        let matches = schedule.eventsSatisfying(predicate: filters.include)
         delegate?.searchResultsDidUpdate(to: matches)
     }
 

@@ -134,6 +134,10 @@ class ConcreteEventsService: ClockDelegate, EventsService {
         updateObserversWithLatestScheduleInformation()
     }
 
+    func eventsSatisfying(predicate: (Event) -> Bool) -> [Event] {
+        return eventModels.filter(predicate)
+    }
+
     // MARK: Functions
 
     func fetchEvent(identifier: EventIdentifier) -> Event? {

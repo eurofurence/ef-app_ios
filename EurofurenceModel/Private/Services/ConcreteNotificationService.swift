@@ -23,13 +23,13 @@ struct ConcreteNotificationService: NotificationService {
                 return
             }
 
-            guard eventsService.eventModels.contains(where: { $0.identifier.rawValue == identifier }) else {
+            let eventIdentifier = EventIdentifier(identifier)
+            guard eventsService.fetchEvent(identifier: eventIdentifier) != nil else {
                 completionHandler(.unknown)
                 return
             }
 
-            let action = NotificationContent.event(EventIdentifier(identifier))
-            completionHandler(action)
+            completionHandler(.event(eventIdentifier))
 
             return
         }
