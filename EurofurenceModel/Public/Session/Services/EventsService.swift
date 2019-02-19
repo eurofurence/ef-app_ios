@@ -28,7 +28,6 @@ public protocol EventsService {
     func fetchEvent(identifier: EventIdentifier) -> Event?
 
     func add(_ observer: EventsServiceObserver)
-    func unfavouriteEvent(identifier: EventIdentifier)
     func makeEventsSchedule() -> EventsSchedule
     func makeEventsSearchController() -> EventsSearchController
     func fetchEvent(for identifier: EventIdentifier, completionHandler: @escaping (Event?) -> Void)

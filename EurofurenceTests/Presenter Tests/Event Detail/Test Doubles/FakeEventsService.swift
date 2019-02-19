@@ -36,16 +36,6 @@ class FakeEventsService: EventsService {
         observer.favouriteEventsDidChange(favourites)
     }
 
-    private(set) var unfavouritedEventIdentifier: EventIdentifier?
-    func unfavouriteEvent(identifier: EventIdentifier) {
-        unfavouritedEventIdentifier = identifier
-        if let idx = favourites.index(of: identifier) {
-            favourites.remove(at: idx)
-        }
-
-        observers.forEach { $0.favouriteEventsDidChange([]) }
-    }
-
     private(set) var lastProducedSchedule: FakeEventsSchedule?
     func makeEventsSchedule() -> EventsSchedule {
         let schedule = FakeEventsSchedule(events: allEvents)

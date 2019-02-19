@@ -169,18 +169,6 @@ class ConcreteEventsService: ClockDelegate, EventsService {
         provideScheduleInformation(to: observer)
     }
 
-    func unfavouriteEvent(identifier: EventIdentifier) {
-        dataStore.performTransaction { (transaction) in
-            transaction.deleteFavouriteEventIdentifier(identifier)
-        }
-
-        favouriteEventIdentifiers.index(of: identifier).let({ favouriteEventIdentifiers.remove(at: $0) })
-        notificationScheduler?.cancelNotification(forEvent: identifier)
-
-        let event = EventUnfavouritedEvent(identifier: identifier)
-        eventBus.post(event)
-    }
-
     // MARK: Private
 
     private func updateObserversWithLatestScheduleInformation() {
