@@ -76,6 +76,10 @@ struct EventImpl: Event {
         self.isPhotoshoot = isPhotoshoot
     }
 
+    func add(_ observer: EventObserver) {
+        observer.eventDidBecomeFavourite(self)
+    }
+
     func favourite() {
         let event = DomainEvent.FavouriteEvent(identifier: identifier)
         eventBus.post(event)

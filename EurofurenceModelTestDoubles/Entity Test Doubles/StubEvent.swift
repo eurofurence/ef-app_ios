@@ -80,9 +80,15 @@ public final class StubEvent: Event {
         favouritedState = .unset
     }
 
+    private var observers: [EventObserver] = []
+    public func add(_ observer: EventObserver) {
+        observers.append(observer)
+    }
+
     private(set) public var favouritedState: FavouritedState
     public func favourite() {
         favouritedState = .favourited
+        observers.forEach({ $0.eventDidBecomeFavourite(self) })
     }
 
     public func unfavourite() {

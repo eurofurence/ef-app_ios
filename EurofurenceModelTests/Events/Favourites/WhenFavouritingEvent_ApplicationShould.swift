@@ -58,6 +58,16 @@ class WhenFavouritingEvent_ApplicationShould: XCTestCase {
         XCTAssertTrue(observer.capturedFavouriteEventIdentifiers.contains(identifier))
     }
 
+    func testTellEventObserverItIsNowFavourited() {
+        let identifier = EventIdentifier(events.randomElement().element.identifier)
+        let observer = CapturingEventObserver()
+        let event = context.eventsService.fetchEvent(identifier: identifier)
+        event?.add(observer)
+        event?.favourite()
+
+        XCTAssertEqual(observer.eventFavouriteState, .favourite)
+    }
+
     func testOrganiseTheFavouritesInStartTimeOrder() {
         let identifier = EventIdentifier(events.randomElement().element.identifier)
         let storedFavourites = events.map({ EventIdentifier($0.identifier) })

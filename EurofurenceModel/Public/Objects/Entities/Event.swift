@@ -10,6 +10,12 @@ import Foundation
 
 public typealias EventIdentifier = Identifier<Event>
 
+public protocol EventObserver {
+
+    func eventDidBecomeFavourite(_ event: Event)
+
+}
+
 public protocol Event {
 
     var identifier: EventIdentifier { get }
@@ -32,6 +38,7 @@ public protocol Event {
     var isMainStage: Bool { get }
     var isPhotoshoot: Bool { get }
 
+    func add(_ observer: EventObserver)
     func favourite()
     func unfavourite()
 
