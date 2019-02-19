@@ -93,7 +93,7 @@ class MessagesViewControllerTests: XCTestCase {
     func testBindingAuthorSetsItOntoCell() {
         let author = "Author"
         let binding = makeAndBindCell()
-        binding.binder.capturedScene?.presentAuthor(author)
+        binding.binder.capturedScene?.setAuthor(author)
 
         XCTAssertEqual(author, binding.cell?.messageAuthorLabel.text)
     }
@@ -101,7 +101,7 @@ class MessagesViewControllerTests: XCTestCase {
     func testBindingSubjectSetsItOntoCell() {
         let subject = "Subject"
         let binding = makeAndBindCell()
-        binding.binder.capturedScene?.presentSubject(subject)
+        binding.binder.capturedScene?.setSubject(subject)
 
         XCTAssertEqual(subject, binding.cell?.messageSubjectLabel.text)
     }
@@ -109,7 +109,7 @@ class MessagesViewControllerTests: XCTestCase {
     func testBindingSynopsisSetsItOntoCell() {
         let synopsis = "Synopsis"
         let binding = makeAndBindCell()
-        binding.binder.capturedScene?.presentContents(synopsis)
+        binding.binder.capturedScene?.setContents(synopsis)
 
         XCTAssertEqual(synopsis, binding.cell?.messageSynopsisLabel.text)
     }
@@ -117,7 +117,7 @@ class MessagesViewControllerTests: XCTestCase {
     func testBindingDateTimeSetsItOntoCell() {
         let dateTime = "Date Time"
         let binding = makeAndBindCell()
-        binding.binder.capturedScene?.presentReceivedDateTime(dateTime)
+        binding.binder.capturedScene?.setReceivedDateTime(dateTime)
 
         XCTAssertEqual(dateTime, binding.cell?.messageReceivedDateLabel.text)
     }

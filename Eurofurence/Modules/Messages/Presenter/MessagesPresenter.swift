@@ -136,9 +136,9 @@ class MessagesPresenter: MessagesSceneDelegate, AuthenticationStateObserver, Pri
         func bind(_ scene: MessageItemScene, toMessageAt indexPath: IndexPath) {
             let message = messages[indexPath[1]]
 
-            scene.presentAuthor(message.authorName)
-            scene.presentSubject(message.subject)
-            scene.presentContents(message.contents)
+            scene.setAuthor(message.authorName)
+            scene.setSubject(message.subject)
+            scene.setContents(message.contents)
 
             if message.isRead {
                 scene.hideUnreadIndicator()
@@ -147,7 +147,7 @@ class MessagesPresenter: MessagesSceneDelegate, AuthenticationStateObserver, Pri
             }
 
             let formattedDateTime = dateFormatter.string(from: message.receivedDateTime)
-            scene.presentReceivedDateTime(formattedDateTime)
+            scene.setReceivedDateTime(formattedDateTime)
         }
 
     }

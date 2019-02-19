@@ -51,10 +51,10 @@ protocol MessageItemBinder {
 
 protocol MessageItemScene {
 
-    func presentAuthor(_ author: String)
-    func presentSubject(_ subject: String)
-    func presentContents(_ contents: String)
-    func presentReceivedDateTime(_ dateTime: String)
+    func setAuthor(_ author: String)
+    func setSubject(_ subject: String)
+    func setContents(_ contents: String)
+    func setReceivedDateTime(_ dateTime: String)
     func showUnreadIndicator()
     func hideUnreadIndicator()
 

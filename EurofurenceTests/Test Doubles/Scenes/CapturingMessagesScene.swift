@@ -85,22 +85,22 @@ class CapturingMessagesScene: UIViewController, MessagesScene {
 class CapturingMessageItemScene: MessageItemScene {
 
     private(set) var capturedAuthor: String?
-    func presentAuthor(_ author: String) {
+    func setAuthor(_ author: String) {
         capturedAuthor = author
     }
 
     private(set) var capturedSubject: String?
-    func presentSubject(_ subject: String) {
+    func setSubject(_ subject: String) {
         capturedSubject = subject
     }
 
     private(set) var capturedContents: String?
-    func presentContents(_ contents: String) {
+    func setContents(_ contents: String) {
         capturedContents = contents
     }
 
     private(set) var capturedReceivedDateTime: String?
-    func presentReceivedDateTime(_ dateTime: String) {
+    func setReceivedDateTime(_ dateTime: String) {
         capturedReceivedDateTime = dateTime
     }
 
