@@ -37,22 +37,6 @@ class MessageTableViewCell: UITableViewCell, MessageItemScene {
         messageSynopsisLabel.text = nil
     }
 
-    func show(message: Message) {
-        let receivedDateString = MessageTableViewCell.dateFormatter.string(from: message.receivedDateTime)
-        messageAuthorLabel.text = message.authorName
-        messageSubjectLabel.text = message.subject
-        messageReceivedDateLabel.text = receivedDateString
-        messageSynopsisLabel.text = message.contents
-        unreadMessageIndicator.isHidden = message.isRead
-
-        var messageOpening = "Message"
-        if !message.isRead {
-            messageOpening = "Unread message"
-        }
-
-        accessibilityLabel = "\(messageOpening) from \(message.authorName), \"\(message.subject)\". Received \(receivedDateString))."
-    }
-
     func presentAuthor(_ author: String) {
         messageAuthorLabel.text = author
     }
