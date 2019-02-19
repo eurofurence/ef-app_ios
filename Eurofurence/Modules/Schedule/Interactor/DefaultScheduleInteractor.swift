@@ -197,7 +197,7 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
 
         func unfavouriteEvent(at indexPath: IndexPath) {
             let event = rawModelGroups[indexPath.section].events[indexPath.item]
-            eventsService.unfavouriteEvent(identifier: event.identifier)
+            event.unfavourite()
         }
 
         func refreshServiceDidBeginRefreshing() {
@@ -284,7 +284,7 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
 
         func unfavouriteEvent(at indexPath: IndexPath) {
             let event = rawModelGroups[indexPath.section].events[indexPath.item]
-            eventsService.unfavouriteEvent(identifier: event.identifier)
+            event.unfavourite()
         }
 
         private func regenerateViewModel() {

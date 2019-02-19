@@ -139,7 +139,8 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
         }
 
         func unfavourite() {
-            eventsService.unfavouriteEvent(identifier: event.identifier)
+            event.unfavourite()
+            delegate?.eventUnfavourited()
         }
 
         func eventsDidChange(to events: [Event]) { }

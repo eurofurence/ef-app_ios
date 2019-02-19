@@ -13,7 +13,7 @@ import XCTest
 
 class WhenToldToUnfavouriteEvent_FromSearchViewModel_InteractorShould: XCTestCase {
 
-    func testTellTheEventsServiceToUnfavouriteTheEvent() {
+    func testUnfavouriteTheEvent() {
         let eventsService = FakeEventsService()
         let events = [StubEvent].random
         eventsService.allEvents = events
@@ -25,7 +25,7 @@ class WhenToldToUnfavouriteEvent_FromSearchViewModel_InteractorShould: XCTestCas
         let indexPath = IndexPath(item: 0, section: 0)
         viewModel?.unfavouriteEvent(at: indexPath)
 
-        XCTAssertEqual(randomEvent.element.identifier, eventsService.unfavouritedEventIdentifier)
+        XCTAssertEqual(randomEvent.element.favouritedState, .unfavourited)
     }
 
 }
