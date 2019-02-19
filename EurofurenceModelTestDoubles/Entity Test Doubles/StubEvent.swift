@@ -32,6 +32,10 @@ public struct StubEvent: Event {
     public var isMainStage: Bool
     public var isPhotoshoot: Bool
 
+    public func favourite() {
+
+    }
+
 }
 
 extension StubEvent: RandomValueProviding {

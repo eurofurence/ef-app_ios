@@ -32,4 +32,6 @@ public protocol Event {
     var isMainStage: Bool { get }
     var isPhotoshoot: Bool { get }
 
+    func favourite()
+
 }

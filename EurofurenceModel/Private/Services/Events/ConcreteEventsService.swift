@@ -19,6 +19,23 @@ class ConcreteEventsService: ClockDelegate, EventsService {
         var identifier: EventIdentifier
     }
 
+    private class FavouriteEventHandler: EventConsumer {
+
+        private let service: ConcreteEventsService
+
+        init(service: ConcreteEventsService) {
+            self.service = service
+        }
+
+        func consume(event: DomainEvent.FavouriteEvent) {
+            let identifier = event.identifier
+            service.persistFavouritedEvent(identifier: identifier)
+            service.favouriteEventIdentifiers.append(identifier)
+            service.scheduleReminderForEvent(identifier: identifier)
+        }
+
+    }
+
     // MARK: Properties
 
     private var observers = [EventsServiceObserver]()
@@ -92,6 +109,7 @@ class ConcreteEventsService: ClockDelegate, EventsService {
         self.hoursDateFormatter = hoursDateFormatter
 
         eventBus.subscribe(consumer: DataStoreChangedConsumer(handler: reconstituteEventsFromDataStore))
+        eventBus.subscribe(consumer: FavouriteEventHandler(service: self))
         reconstituteEventsFromDataStore()
         reconstituteFavouritesFromDataStore()
         clock.setDelegate(self)
@@ -102,6 +120,10 @@ class ConcreteEventsService: ClockDelegate, EventsService {
     }
 
     // MARK: Functions
+
+    func fetchEvent(identifier: EventIdentifier) -> Event? {
+        return eventModels.first(where: { $0.identifier == identifier })
+    }
 
     func makeEventsSchedule() -> EventsSchedule {
         return EventsScheduleAdapter(schedule: self, clock: clock, eventBus: eventBus)
@@ -199,25 +221,26 @@ class ConcreteEventsService: ClockDelegate, EventsService {
             }
         }()
 
-        return EventImpl(identifier: EventIdentifier(event.identifier),
-                      title: title,
-                      subtitle: event.subtitle,
-                      abstract: event.abstract,
-                      room: Room(name: room.name),
-                      track: Track(name: track.name),
-                      hosts: event.panelHosts,
-                      startDate: event.startDateTime,
-                      endDate: event.endDateTime,
-                      eventDescription: event.eventDescription,
-                      posterGraphicPNGData: posterGraphicData,
-                      bannerGraphicPNGData: bannerGraphicData,
-                      isSponsorOnly: containsTag("sponsors_only"),
-                      isSuperSponsorOnly: containsTag("supersponsors_only"),
-                      isArtShow: containsTag("art_show"),
-                      isKageEvent: containsTag("kage"),
-                      isDealersDen: containsTag("dealers_den"),
-                      isMainStage: containsTag("main_stage"),
-                      isPhotoshoot: containsTag("photoshoot"))
+        return EventImpl(eventBus: eventBus,
+                         identifier: EventIdentifier(event.identifier),
+                         title: title,
+                         subtitle: event.subtitle,
+                         abstract: event.abstract,
+                         room: Room(name: room.name),
+                         track: Track(name: track.name),
+                         hosts: event.panelHosts,
+                         startDate: event.startDateTime,
+                         endDate: event.endDateTime,
+                         eventDescription: event.eventDescription,
+                         posterGraphicPNGData: posterGraphicData,
+                         bannerGraphicPNGData: bannerGraphicData,
+                         isSponsorOnly: containsTag("sponsors_only"),
+                         isSuperSponsorOnly: containsTag("supersponsors_only"),
+                         isArtShow: containsTag("art_show"),
+                         isKageEvent: containsTag("kage"),
+                         isDealersDen: containsTag("dealers_den"),
+                         isMainStage: containsTag("main_stage"),
+                         isPhotoshoot: containsTag("photoshoot"))
     }
 
     private func reconstituteFavouritesFromDataStore() {

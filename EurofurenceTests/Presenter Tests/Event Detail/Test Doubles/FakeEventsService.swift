@@ -21,6 +21,11 @@ class FakeEventsService: EventsService {
         self.favourites = favourites
     }
 
+    var events = [Event]()
+    func fetchEvent(identifier: EventIdentifier) -> Event? {
+        return events.first(where: { $0.identifier == identifier })
+    }
+
     private var observers = [EventsServiceObserver]()
     func add(_ observer: EventsServiceObserver) {
         observers.append(observer)

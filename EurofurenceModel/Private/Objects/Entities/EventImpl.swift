@@ -6,9 +6,12 @@
 //  Copyright © 2019 Eurofurence. All rights reserved.
 //
 
+import EventBus
 import Foundation
 
 struct EventImpl: Event {
+
+    private let eventBus: EventBus
 
     var identifier: EventIdentifier
     var title: String
@@ -30,7 +33,28 @@ struct EventImpl: Event {
     var isMainStage: Bool
     var isPhotoshoot: Bool
 
-    init(identifier: EventIdentifier, title: String, subtitle: String, abstract: String, room: Room, track: Track, hosts: String, startDate: Date, endDate: Date, eventDescription: String, posterGraphicPNGData: Data?, bannerGraphicPNGData: Data?, isSponsorOnly: Bool, isSuperSponsorOnly: Bool, isArtShow: Bool, isKageEvent: Bool, isDealersDen: Bool, isMainStage: Bool, isPhotoshoot: Bool) {
+    init(eventBus: EventBus,
+         identifier: EventIdentifier,
+         title: String,
+         subtitle: String,
+         abstract: String,
+         room: Room,
+         track: Track,
+         hosts: String,
+         startDate: Date,
+         endDate: Date,
+         eventDescription: String,
+         posterGraphicPNGData: Data?,
+         bannerGraphicPNGData: Data?,
+         isSponsorOnly: Bool,
+         isSuperSponsorOnly: Bool,
+         isArtShow: Bool,
+         isKageEvent: Bool,
+         isDealersDen: Bool,
+         isMainStage: Bool,
+         isPhotoshoot: Bool) {
+        self.eventBus = eventBus
+
         self.identifier = identifier
         self.title = title
         self.subtitle = subtitle
@@ -50,6 +74,11 @@ struct EventImpl: Event {
         self.isDealersDen = isDealersDen
         self.isMainStage = isMainStage
         self.isPhotoshoot = isPhotoshoot
+    }
+
+    func favourite() {
+        let event = DomainEvent.FavouriteEvent(identifier: identifier)
+        eventBus.post(event)
     }
 
 }
