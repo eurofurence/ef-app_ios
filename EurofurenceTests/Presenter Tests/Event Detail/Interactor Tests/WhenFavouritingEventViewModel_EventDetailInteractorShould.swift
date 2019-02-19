@@ -13,12 +13,12 @@ import XCTest
 
 class WhenFavouritingEventViewModel_EventDetailInteractorShould: XCTestCase {
 
-    func testTellTheEventServiceToFavouriteTheEventByIdentifier() {
+    func testTellTheEventToBeFavourited() {
         let event = StubEvent.random
         let context = EventDetailInteractorTestBuilder().build(for: event)
         context.viewModel?.favourite()
 
-        XCTAssertEqual(event.identifier, context.eventsService.favouritedEventIdentifier)
+        XCTAssertEqual(event.favouritedState, .favourited)
     }
 
 }

@@ -192,7 +192,7 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
 
         func favouriteEvent(at indexPath: IndexPath) {
             let event = rawModelGroups[indexPath.section].events[indexPath.item]
-            eventsService.favouriteEvent(identifier: event.identifier)
+            event.favourite()
         }
 
         func unfavouriteEvent(at indexPath: IndexPath) {
@@ -279,7 +279,7 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
 
         func favouriteEvent(at indexPath: IndexPath) {
             let event = rawModelGroups[indexPath.section].events[indexPath.item]
-            eventsService.favouriteEvent(identifier: event.identifier)
+            event.favourite()
         }
 
         func unfavouriteEvent(at indexPath: IndexPath) {

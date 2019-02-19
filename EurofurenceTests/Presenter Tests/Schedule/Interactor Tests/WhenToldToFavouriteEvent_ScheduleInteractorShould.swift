@@ -13,7 +13,7 @@ import XCTest
 
 class WhenToldToFavouriteEvent_ScheduleInteractorShould: XCTestCase {
 
-    func testTellTheEventsServiceToFavouriteTheEvent() {
+    func testFavouriteTheEvent() {
         let eventsService = FakeEventsService()
         let events = [StubEvent].random
         eventsService.allEvents = events
@@ -25,7 +25,7 @@ class WhenToldToFavouriteEvent_ScheduleInteractorShould: XCTestCase {
         let indexPath = IndexPath(item: randomEvent.index, section: randomGroup.index)
         viewModel?.favouriteEvent(at: indexPath)
 
-        XCTAssertEqual(originalEvent?.identifier, eventsService.favouritedEventIdentifier)
+        XCTAssertEqual(originalEvent?.favouritedState, .favourited)
     }
 
 }
