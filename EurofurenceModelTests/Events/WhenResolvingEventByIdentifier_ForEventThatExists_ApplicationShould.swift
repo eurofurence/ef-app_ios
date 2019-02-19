@@ -11,17 +11,16 @@ import XCTest
 
 class WhenResolvingEventByIdentifier_ForEventThatExists_ApplicationShould: XCTestCase {
 
-    func testInvokeTheHandlerWithTheExpectedEvent() {
+    func testResolveTheExpectedEvent() {
         let response = ModelCharacteristics.randomWithoutDeletions
         let context = ApplicationTestBuilder().build()
         context.refreshLocalStore()
         context.api.simulateSuccessfulSync(response)
-        let event = response.events.changed.randomElement().element
-        var actual: Event?
-        context.eventsService.fetchEvent(for: EventIdentifier(event.identifier)) { actual = $0 }
+        let characteristics = response.events.changed.randomElement().element
+        let actual = context.eventsService.fetchEvent(identifier: EventIdentifier(characteristics.identifier))
 
         EventAssertion(context: context, modelCharacteristics: response)
-            .assertEvent(actual, characterisedBy: event)
+            .assertEvent(actual, characterisedBy: characteristics)
     }
 
 }

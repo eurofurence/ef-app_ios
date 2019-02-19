@@ -159,11 +159,6 @@ class ConcreteEventsService: ClockDelegate, EventsService {
         return InMemoryEventsSearchController(schedule: self, eventBus: eventBus)
     }
 
-    func fetchEvent(for identifier: EventIdentifier, completionHandler: @escaping (Event?) -> Void) {
-        let event = eventModels.first(where: { $0.identifier == identifier })
-        completionHandler(event)
-    }
-
     func add(_ observer: EventsServiceObserver) {
         observers.append(observer)
         provideScheduleInformation(to: observer)

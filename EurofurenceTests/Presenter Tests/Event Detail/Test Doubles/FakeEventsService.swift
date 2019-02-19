@@ -50,18 +50,9 @@ class FakeEventsService: EventsService {
         return searchController
     }
 
-    fileprivate var stubbedEvents = [EventIdentifier: Event]()
-    func fetchEvent(for identifier: EventIdentifier, completionHandler: @escaping (Event?) -> Void) {
-        completionHandler(stubbedEvents[identifier])
-    }
-
 }
 
 extension FakeEventsService {
-
-    func stub(_ event: Event, for identifier: EventIdentifier) {
-        stubbedEvents[identifier] = event
-    }
 
     func stubSomeFavouriteEvents() {
         allEvents = [StubEvent].random(minimum: 3)

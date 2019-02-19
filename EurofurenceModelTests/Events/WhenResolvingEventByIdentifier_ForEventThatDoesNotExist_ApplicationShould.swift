@@ -11,12 +11,11 @@ import XCTest
 
 class WhenResolvingEventByIdentifier_ForEventThatDoesNotExist_ApplicationShould: XCTestCase {
 
-    func testInvokeTheHandlerWithNilEvent() {
+    func testReturnNil() {
         let context = ApplicationTestBuilder().build()
-        var invokedWithNilEvent = false
-        context.eventsService.fetchEvent(for: EventIdentifier(.random)) { invokedWithNilEvent = $0 == nil }
+        let event = context.eventsService.fetchEvent(identifier: .random)
 
-        XCTAssertTrue(invokedWithNilEvent)
+        XCTAssertNil(event)
     }
 
 }

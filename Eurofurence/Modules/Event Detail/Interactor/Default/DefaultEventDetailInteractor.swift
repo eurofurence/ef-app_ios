@@ -179,63 +179,62 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
     }
 
     func makeViewModel(for identifier: EventIdentifier, completionHandler: @escaping (EventDetailViewModel) -> Void) {
-        eventsService.fetchEvent(for: identifier) { (event) in
-            guard let event = event else { return }
-            var components = [EventDetailViewModelComponent]()
+        guard let event = eventsService.fetchEvent(identifier: identifier) else { return }
 
-            if let graphicData = event.posterGraphicPNGData ?? event.bannerGraphicPNGData {
-                let graphicViewModel = EventGraphicViewModel(pngGraphicData: graphicData)
-                components.append(ViewModel.GraphicComponent(viewModel: graphicViewModel))
-            }
+        var components = [EventDetailViewModelComponent]()
 
-			let abstract = self.markdownRenderer.render(event.abstract)
-            let startEndTimeString = self.dateRangeFormatter.string(from: event.startDate, to: event.endDate)
-            let summaryViewModel = EventSummaryViewModel(title: event.title,
-                                                         subtitle: event.subtitle,
-                                                         abstract: abstract,
-                                                         eventStartEndTime: startEndTimeString,
-                                                         location: event.room.name,
-                                                         trackName: event.track.name,
-                                                         eventHosts: event.hosts)
-            components.append(ViewModel.SummaryComponent(viewModel: summaryViewModel))
-
-            if event.isSponsorOnly {
-                components.append(ViewModel.SponsorsOnlyComponent())
-            }
-
-            if event.isSuperSponsorOnly {
-                components.append(ViewModel.SuperSponsorsOnlyComponent())
-            }
-
-            if event.isArtShow {
-                components.append(ViewModel.ArtShowComponent())
-            }
-
-            if event.isKageEvent {
-                components.append(ViewModel.KageComponent())
-            }
-
-            if event.isDealersDen {
-                components.append(ViewModel.DealersDenComponent())
-            }
-
-            if event.isMainStage {
-                components.append(ViewModel.MainStageComponent())
-            }
-
-            if event.isPhotoshoot {
-                components.append(ViewModel.PhotoshootComponent())
-            }
-
-            if !event.eventDescription.isEmpty, event.eventDescription != event.abstract {
-				let description = self.markdownRenderer.render(event.eventDescription)
-                let descriptionViewModel = EventDescriptionViewModel(contents: description)
-                components.append(ViewModel.DescriptionComponent(viewModel: descriptionViewModel))
-            }
-
-            let viewModel = ViewModel(components: components, event: event, eventsService: self.eventsService)
-            completionHandler(viewModel)
+        if let graphicData = event.posterGraphicPNGData ?? event.bannerGraphicPNGData {
+            let graphicViewModel = EventGraphicViewModel(pngGraphicData: graphicData)
+            components.append(ViewModel.GraphicComponent(viewModel: graphicViewModel))
         }
+
+        let abstract = self.markdownRenderer.render(event.abstract)
+        let startEndTimeString = self.dateRangeFormatter.string(from: event.startDate, to: event.endDate)
+        let summaryViewModel = EventSummaryViewModel(title: event.title,
+                                                     subtitle: event.subtitle,
+                                                     abstract: abstract,
+                                                     eventStartEndTime: startEndTimeString,
+                                                     location: event.room.name,
+                                                     trackName: event.track.name,
+                                                     eventHosts: event.hosts)
+        components.append(ViewModel.SummaryComponent(viewModel: summaryViewModel))
+
+        if event.isSponsorOnly {
+            components.append(ViewModel.SponsorsOnlyComponent())
+        }
+
+        if event.isSuperSponsorOnly {
+            components.append(ViewModel.SuperSponsorsOnlyComponent())
+        }
+
+        if event.isArtShow {
+            components.append(ViewModel.ArtShowComponent())
+        }
+
+        if event.isKageEvent {
+            components.append(ViewModel.KageComponent())
+        }
+
+        if event.isDealersDen {
+            components.append(ViewModel.DealersDenComponent())
+        }
+
+        if event.isMainStage {
+            components.append(ViewModel.MainStageComponent())
+        }
+
+        if event.isPhotoshoot {
+            components.append(ViewModel.PhotoshootComponent())
+        }
+
+        if !event.eventDescription.isEmpty, event.eventDescription != event.abstract {
+            let description = self.markdownRenderer.render(event.eventDescription)
+            let descriptionViewModel = EventDescriptionViewModel(contents: description)
+            components.append(ViewModel.DescriptionComponent(viewModel: descriptionViewModel))
+        }
+
+        let viewModel = ViewModel(components: components, event: event, eventsService: self.eventsService)
+        completionHandler(viewModel)
     }
 
 }

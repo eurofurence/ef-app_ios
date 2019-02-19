@@ -30,7 +30,6 @@ public protocol EventsService {
     func add(_ observer: EventsServiceObserver)
     func makeEventsSchedule() -> EventsSchedule
     func makeEventsSearchController() -> EventsSearchController
-    func fetchEvent(for identifier: EventIdentifier, completionHandler: @escaping (Event?) -> Void)
 
 }
 

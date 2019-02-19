@@ -36,7 +36,7 @@ class EventDetailInteractorTestBuilder {
     func build(for event: Event = StubEvent.randomStandardEvent) -> Context {
         let dateRangeFormatter = FakeDateRangeFormatter()
 		let markdownRenderer = StubMarkdownRenderer()
-        eventsService.stub(event, for: event.identifier)
+        eventsService.events = [event]
 		let interactor = DefaultEventDetailInteractor(dateRangeFormatter: dateRangeFormatter, eventsService: eventsService, markdownRenderer: markdownRenderer)
         var viewModel: EventDetailViewModel?
         interactor.makeViewModel(for: event.identifier) { viewModel = $0 }
