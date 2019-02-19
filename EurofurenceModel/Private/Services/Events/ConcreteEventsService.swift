@@ -77,10 +77,10 @@ class ConcreteEventsService: ClockDelegate, EventsService {
     private(set) var tracks = [TrackCharacteristics]()
     private(set) var days = [ConferenceDayCharacteristics]()
 
-    private var runningEvents: [Event] = []
-    private var upcomingEvents: [Event] = []
+    private var runningEvents: [EventImpl] = []
+    private var upcomingEvents: [EventImpl] = []
 
-    private(set) var eventModels = [Event]() {
+    private(set) var eventModels = [EventImpl]() {
         didSet {
             refreshEventProperties()
         }
@@ -221,7 +221,7 @@ class ConcreteEventsService: ClockDelegate, EventsService {
         }
     }
 
-    func makeEventModel(from event: EventCharacteristics) -> Event? {
+    func makeEventModel(from event: EventCharacteristics) -> EventImpl? {
         guard let room = rooms.first(where: { $0.roomIdentifier == event.roomIdentifier }) else { return nil }
         guard let track = tracks.first(where: { $0.trackIdentifier == event.trackIdentifier }) else { return nil }
 
