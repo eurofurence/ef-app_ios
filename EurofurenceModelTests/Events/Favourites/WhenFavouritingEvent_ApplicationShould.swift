@@ -19,12 +19,7 @@ class WhenFavouritingEvent_ApplicationShould: XCTestCase {
 
         let response = ModelCharacteristics.randomWithoutDeletions
         events = response.events.changed
-        let dataStore = CapturingDataStore()
-        dataStore.performTransaction { (transaction) in
-            transaction.saveEvents(response.events.changed)
-            transaction.saveRooms(response.rooms.changed)
-            transaction.saveTracks(response.tracks.changed)
-        }
+        let dataStore = CapturingDataStore(response: response)
 
         context = ApplicationTestBuilder().with(dataStore).build()
     }

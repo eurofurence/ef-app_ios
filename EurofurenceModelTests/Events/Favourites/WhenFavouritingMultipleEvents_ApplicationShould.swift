@@ -19,12 +19,7 @@ class WhenFavouritingMultipleEvents_ApplicationShould: XCTestCase {
     func testTellEventsObserversTheEventsAreNowFavourited() {
         let response = ModelCharacteristics.randomWithoutDeletions
         let events = response.events.changed
-        let dataStore = CapturingDataStore()
-        dataStore.performTransaction { (transaction) in
-            transaction.saveEvents(response.events.changed)
-            transaction.saveRooms(response.rooms.changed)
-            transaction.saveTracks(response.tracks.changed)
-        }
+        let dataStore = CapturingDataStore(response: response)
 
         let context = ApplicationTestBuilder().with(dataStore).build()
         let identifiers = events.map({ EventIdentifier($0.identifier) })
@@ -38,12 +33,7 @@ class WhenFavouritingMultipleEvents_ApplicationShould: XCTestCase {
     func testTellEventsObserversWhenOnlyOneEventHasBeenUnfavourited() {
         let response = ModelCharacteristics.randomWithoutDeletions
         let events = response.events.changed
-        let dataStore = CapturingDataStore()
-        dataStore.performTransaction { (transaction) in
-            transaction.saveEvents(response.events.changed)
-            transaction.saveRooms(response.rooms.changed)
-            transaction.saveTracks(response.tracks.changed)
-        }
+        let dataStore = CapturingDataStore(response: response)
 
         let context = ApplicationTestBuilder().with(dataStore).build()
         let identifiers = events.map({ EventIdentifier($0.identifier) })
@@ -62,7 +52,7 @@ class WhenFavouritingMultipleEvents_ApplicationShould: XCTestCase {
     func testSortTheFavouriteIdentifiersByEventStartTime() {
         let response = ModelCharacteristics.randomWithoutDeletions
         let events = response.events.changed
-        let dataStore = CapturingDataStore()
+        let dataStore = CapturingDataStore(response: response)
         dataStore.performTransaction { (transaction) in
             events.map({ EventIdentifier($0.identifier) }).forEach(transaction.saveFavouriteEventIdentifier)
         }

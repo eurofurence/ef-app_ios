@@ -12,16 +12,13 @@ import XCTest
 class WhenApplicationInitialises_WithAnnouncementsSavedToStore: XCTestCase {
 
     func testTheEventsAreProvidedToTheObserver() {
-        let dataStore = CapturingDataStore()
-        let announcements = [AnnouncementCharacteristics].random
-        dataStore.performTransaction { (transaction) in
-            transaction.saveAnnouncements(announcements)
-        }
-
+        let characteristics = ModelCharacteristics.randomWithoutDeletions
+        let dataStore = CapturingDataStore(response: characteristics)
         let context = ApplicationTestBuilder().with(dataStore).build()
         let observer = CapturingAnnouncementsServiceObserver()
         context.announcementsService.add(observer)
 
+        let announcements = characteristics.announcements.changed
         AnnouncementAssertion().assertOrderedAnnouncements(observer.allAnnouncements,
                                                            characterisedBy: announcements)
     }
