@@ -29,15 +29,11 @@ class WhenFavouritingEvent_ApplicationShould: XCTestCase {
         context = ApplicationTestBuilder().with(dataStore).build()
     }
 
-    private func favouriteEvent(identifier: EventIdentifier) {
-        let event = context.eventsService.fetchEvent(identifier: identifier)
-        event?.favourite()
-    }
-
     func testTellTheDataStoreToSaveTheEventIdentifier() {
         let randomEvent = events.randomElement().element
         let identifier = EventIdentifier(randomEvent.identifier)
-        favouriteEvent(identifier: identifier)
+        let event = context.eventsService.fetchEvent(identifier: identifier)
+        event?.favourite()
 
         XCTAssertTrue(context.dataStore.didFavouriteEvent(identifier))
     }
