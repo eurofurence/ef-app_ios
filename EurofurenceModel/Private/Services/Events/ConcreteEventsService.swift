@@ -239,8 +239,12 @@ class ConcreteEventsService: ClockDelegate, EventsService {
             }
         }()
 
+        let eventIdentifier = EventIdentifier(event.identifier)
+        let favouriteEventIdentifiers = dataStore.fetchFavouriteEventIdentifiers().defaultingTo([])
+
         return EventImpl(eventBus: eventBus,
-                         identifier: EventIdentifier(event.identifier),
+                         isFavourite: favouriteEventIdentifiers.contains(eventIdentifier),
+                         identifier: eventIdentifier,
                          title: title,
                          subtitle: event.subtitle,
                          abstract: event.abstract,

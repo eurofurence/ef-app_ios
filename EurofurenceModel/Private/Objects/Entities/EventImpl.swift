@@ -9,7 +9,7 @@
 import EventBus
 import Foundation
 
-struct EventImpl: Event {
+class EventImpl: Event {
 
     private let eventBus: EventBus
 
@@ -34,6 +34,7 @@ struct EventImpl: Event {
     var isPhotoshoot: Bool
 
     init(eventBus: EventBus,
+         isFavourite: Bool,
          identifier: EventIdentifier,
          title: String,
          subtitle: String,
@@ -54,6 +55,7 @@ struct EventImpl: Event {
          isMainStage: Bool,
          isPhotoshoot: Bool) {
         self.eventBus = eventBus
+        self.isFavourite = isFavourite
 
         self.identifier = identifier
         self.title = title
@@ -76,13 +78,24 @@ struct EventImpl: Event {
         self.isPhotoshoot = isPhotoshoot
     }
 
+    private var observers: [EventObserver] = []
     func add(_ observer: EventObserver) {
-        observer.eventDidBecomeFavourite(self)
+        observers.append(observer)
+
+        if isFavourite {
+            observer.eventDidBecomeFavourite(self)
+        }
     }
 
+    private var isFavourite: Bool
+
     func favourite() {
+        isFavourite = true
+
         let event = DomainEvent.FavouriteEvent(identifier: identifier)
         eventBus.post(event)
+
+        observers.forEach({ $0.eventDidBecomeFavourite(self) })
     }
 
     func unfavourite() {

@@ -229,6 +229,9 @@
 		CA23586A221C15F40044B1FC /* FavouriteEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA235869221C15F40044B1FC /* FavouriteEvent.swift */; };
 		CA23586C221C3A000044B1FC /* UnfavouriteEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA23586B221C3A000044B1FC /* UnfavouriteEvent.swift */; };
 		CA235875221C55A30044B1FC /* CapturingEventObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA235874221C55A30044B1FC /* CapturingEventObserver.swift */; };
+		CA23587A221C89AC0044B1FC /* WhenObservingEvent_ThatIsNotFavourite.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA235879221C89AC0044B1FC /* WhenObservingEvent_ThatIsNotFavourite.swift */; };
+		CA23587C221C8BDA0044B1FC /* WhenObservingEvent_ThatIsFavourite.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA23587B221C8BDA0044B1FC /* WhenObservingEvent_ThatIsFavourite.swift */; };
+		CA23587E221C8DF10044B1FC /* WhenObservingEvent_ThatIsFavourite_FromPreviousSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA23587D221C8DF10044B1FC /* WhenObservingEvent_ThatIsFavourite_FromPreviousSession.swift */; };
 		CA240F3F21E3A4DE002DB747 /* BeforeMessagesViewAppears_MessagesPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA240F3E21E3A4DE002DB747 /* BeforeMessagesViewAppears_MessagesPresenterShould.swift */; };
 		CA240F4521E3D62C002DB747 /* Identifier+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA240F4321E3D5E1002DB747 /* Identifier+RandomValueProviding.swift */; };
 		CA240F4821E3D8C3002DB747 /* Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA240F4621E3D8B9002DB747 /* Identifier.swift */; };
@@ -1698,6 +1701,9 @@
 		CA235869221C15F40044B1FC /* FavouriteEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteEvent.swift; sourceTree = "<group>"; };
 		CA23586B221C3A000044B1FC /* UnfavouriteEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnfavouriteEvent.swift; sourceTree = "<group>"; };
 		CA235874221C55A30044B1FC /* CapturingEventObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingEventObserver.swift; sourceTree = "<group>"; };
+		CA235879221C89AC0044B1FC /* WhenObservingEvent_ThatIsNotFavourite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingEvent_ThatIsNotFavourite.swift; sourceTree = "<group>"; };
+		CA23587B221C8BDA0044B1FC /* WhenObservingEvent_ThatIsFavourite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingEvent_ThatIsFavourite.swift; sourceTree = "<group>"; };
+		CA23587D221C8DF10044B1FC /* WhenObservingEvent_ThatIsFavourite_FromPreviousSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingEvent_ThatIsFavourite_FromPreviousSession.swift; sourceTree = "<group>"; };
 		CA240F3E21E3A4DE002DB747 /* BeforeMessagesViewAppears_MessagesPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeforeMessagesViewAppears_MessagesPresenterShould.swift; sourceTree = "<group>"; };
 		CA240F4321E3D5E1002DB747 /* Identifier+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Identifier+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA240F4621E3D8B9002DB747 /* Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifier.swift; sourceTree = "<group>"; };
@@ -3520,6 +3526,7 @@
 			children = (
 				CAD6FD3F2215A74A0011712D /* EventAssertion.swift */,
 				CABEB0D120C7694F000BEE66 /* WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift */,
+				CA235879221C89AC0044B1FC /* WhenObservingEvent_ThatIsNotFavourite.swift */,
 				CA52C68620D6A671009D3A9E /* WhenResolvingEventByIdentifier_ForEventThatDoesNotExist_ApplicationShould.swift */,
 				CA52C68820D6A756009D3A9E /* WhenResolvingEventByIdentifier_ForEventThatExists_ApplicationShould.swift */,
 				CA36A44620D7065800EE6537 /* WhenSearchingForEvents_ApplicationShould.swift */,
@@ -5766,6 +5773,8 @@
 				CABA83FE20CEF91400DD0795 /* WhenLaunchingApplicationWithPreexistingFavourites.swift */,
 				CA2D04FF20EE92CD00CF54E1 /* WhenSchedulingReminderForEvent_ApplicationShould.swift */,
 				CABA83F920CE9D2500DD0795 /* WhenUnfavouritingEvent_ApplicationShould.swift */,
+				CA23587B221C8BDA0044B1FC /* WhenObservingEvent_ThatIsFavourite.swift */,
+				CA23587D221C8DF10044B1FC /* WhenObservingEvent_ThatIsFavourite_FromPreviousSession.swift */,
 			);
 			path = Favourites;
 			sourceTree = "<group>";
@@ -8686,6 +8695,7 @@
 				CAEA10A6216E8BB600B0C7A6 /* CapturingForceRefreshRequired.swift in Sources */,
 				CAEA0FCC216E1CC000B0C7A6 /* WhenDeletingKnowledgeGroup_AfterSuccessfulSync_ApplicationShould.swift in Sources */,
 				CAEA1003216E1CE700B0C7A6 /* WhenToldToOpenNotification_ThatRepresentsAnnouncement_ApplicationShould.swift in Sources */,
+				CA23587A221C89AC0044B1FC /* WhenObservingEvent_ThatIsNotFavourite.swift in Sources */,
 				CA0B1EEF21888A0000A6A949 /* WhenAlreadyLoggedIn.swift in Sources */,
 				CAEA100B216E1CE800B0C7A6 /* WhenRequestingPrivateMessagesWhileAuthenticated.swift in Sources */,
 				CAEA0FD6216E1CC000B0C7A6 /* WhenSyncFinishesForEventWithPoster_WhenImageAPIIsSlow_ApplicationShould.swift in Sources */,
@@ -8773,6 +8783,7 @@
 				CAEA0FA6216E1CC000B0C7A6 /* WhenObservingCollectThemAllURLWhileLoggedIn_ApplicationShould.swift in Sources */,
 				CA240F5B21E4A9F8002DB747 /* WhenLoggingOutSuccessfully.swift in Sources */,
 				CAEA0FC0216E1CC000B0C7A6 /* DealersRemoveAllBeforeInsertTests.swift in Sources */,
+				CA23587E221C8DF10044B1FC /* WhenObservingEvent_ThatIsFavourite_FromPreviousSession.swift in Sources */,
 				CAEA0FD0216E1CC000B0C7A6 /* WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift in Sources */,
 				CAD6FD4822160D190011712D /* MapEntityAssertion.swift in Sources */,
 				CAD6FD422215B8A60011712D /* DayAssertion.swift in Sources */,
@@ -8812,6 +8823,7 @@
 				CAEA0FC2216E1CC000B0C7A6 /* EventConferenceRoomsRemoveAllBeforeInsertTests.swift in Sources */,
 				CAEA1086216E815200B0C7A6 /* FakeAPI.swift in Sources */,
 				CAEA0FD2216E1CC000B0C7A6 /* WhenResolvingEventByIdentifier_ForEventThatExists_ApplicationShould.swift in Sources */,
+				CA23587C221C8BDA0044B1FC /* WhenObservingEvent_ThatIsFavourite.swift in Sources */,
 				CAEA102C216E1CE800B0C7A6 /* CapturingKnowledgeServiceObserver.swift in Sources */,
 				CAEA102B216E1CE800B0C7A6 /* CapturingEventsServiceObserver.swift in Sources */,
 				CAEA0FCB216E1CC000B0C7A6 /* WhenDeletingKnowledgeEntry_AfterSuccessfulSync_ApplicationShould.swift in Sources */,
