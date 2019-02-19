@@ -15,6 +15,7 @@ public final class StubEvent: Event {
     public enum FavouritedState {
         case unset
         case favourited
+        case unfavourited
     }
 
     public var identifier: EventIdentifier
@@ -82,6 +83,10 @@ public final class StubEvent: Event {
     private(set) public var favouritedState: FavouritedState
     public func favourite() {
         favouritedState = .favourited
+    }
+
+    public func unfavourite() {
+        favouritedState = .unfavourited
     }
 
 }

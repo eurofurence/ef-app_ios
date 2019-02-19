@@ -81,4 +81,9 @@ struct EventImpl: Event {
         eventBus.post(event)
     }
 
+    func unfavourite() {
+        let event = DomainEvent.UnfavouriteEvent(identifier: identifier)
+        eventBus.post(event)
+    }
+
 }

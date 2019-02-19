@@ -33,5 +33,6 @@ public protocol Event {
     var isPhotoshoot: Bool { get }
 
     func favourite()
+    func unfavourite()
 
 }

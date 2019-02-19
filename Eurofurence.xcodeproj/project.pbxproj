@@ -227,6 +227,7 @@
 		CA235866221B57620044B1FC /* StubMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA235865221B57620044B1FC /* StubMessage.swift */; };
 		CA235868221B591D0044B1FC /* MessageImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA235867221B591D0044B1FC /* MessageImpl.swift */; };
 		CA23586A221C15F40044B1FC /* FavouriteEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA235869221C15F40044B1FC /* FavouriteEvent.swift */; };
+		CA23586C221C3A000044B1FC /* UnfavouriteEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA23586B221C3A000044B1FC /* UnfavouriteEvent.swift */; };
 		CA240F3F21E3A4DE002DB747 /* BeforeMessagesViewAppears_MessagesPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA240F3E21E3A4DE002DB747 /* BeforeMessagesViewAppears_MessagesPresenterShould.swift */; };
 		CA240F4521E3D62C002DB747 /* Identifier+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA240F4321E3D5E1002DB747 /* Identifier+RandomValueProviding.swift */; };
 		CA240F4821E3D8C3002DB747 /* Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA240F4621E3D8B9002DB747 /* Identifier.swift */; };
@@ -1694,6 +1695,7 @@
 		CA235865221B57620044B1FC /* StubMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubMessage.swift; sourceTree = "<group>"; };
 		CA235867221B591D0044B1FC /* MessageImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageImpl.swift; sourceTree = "<group>"; };
 		CA235869221C15F40044B1FC /* FavouriteEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteEvent.swift; sourceTree = "<group>"; };
+		CA23586B221C3A000044B1FC /* UnfavouriteEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnfavouriteEvent.swift; sourceTree = "<group>"; };
 		CA240F3E21E3A4DE002DB747 /* BeforeMessagesViewAppears_MessagesPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeforeMessagesViewAppears_MessagesPresenterShould.swift; sourceTree = "<group>"; };
 		CA240F4321E3D5E1002DB747 /* Identifier+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Identifier+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA240F4621E3D8B9002DB747 /* Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifier.swift; sourceTree = "<group>"; };
@@ -5457,15 +5459,16 @@
 		CA8D97C9201610C80074838F /* Domain Events */ = {
 			isa = PBXGroup;
 			children = (
+				CADABEFF21177ADE0023C3B6 /* DataStoreChangedEvent.swift */,
 				CA8D97CC201610EC0074838F /* DomainEvent.swift */,
+				CA235869221C15F40044B1FC /* FavouriteEvent.swift */,
 				CACF1ECE20B6D8CB00D904B5 /* ImageDownloadedEvent.swift */,
 				CA8D97D02016126E0074838F /* LoggedIn.swift */,
 				CA2761D320E03B88000E52AC /* LoggedOut.swift */,
 				CA27618B20DFEF6E000E52AC /* OpenURL.swift */,
 				CA8D97D2201612A70074838F /* RemoteNotificationTokenAvailable.swift */,
 				CA52C67E20D59572009D3A9E /* SignificantTimePassedEvent.swift */,
-				CADABEFF21177ADE0023C3B6 /* DataStoreChangedEvent.swift */,
-				CA235869221C15F40044B1FC /* FavouriteEvent.swift */,
+				CA23586B221C3A000044B1FC /* UnfavouriteEvent.swift */,
 			);
 			path = "Domain Events";
 			sourceTree = "<group>";
@@ -8519,6 +8522,7 @@
 				CAEA0DA3216BDE2300B0C7A6 /* DateDistanceCalculator.swift in Sources */,
 				CAEA0E00216BDE3100B0C7A6 /* LoginResponse.swift in Sources */,
 				CAEA0DD9216BDE2300B0C7A6 /* EventEntity+Adaptation.swift in Sources */,
+				CA23586C221C3A000044B1FC /* UnfavouriteEvent.swift in Sources */,
 				CAEA0E09216BDE3100B0C7A6 /* SystemNetworkReachability.swift in Sources */,
 				CAEA0DE2216BDE2300B0C7A6 /* TrackEntity+Adaptation.swift in Sources */,
 				CAEA0DDB216BDE2300B0C7A6 /* ImageModelEntity+Adaptation.swift in Sources */,

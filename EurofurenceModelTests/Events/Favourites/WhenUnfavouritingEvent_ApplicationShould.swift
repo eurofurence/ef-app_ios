@@ -13,10 +13,14 @@ class WhenUnfavouritingEvent_ApplicationShould: XCTestCase {
 
     func testTellTheDataStoreToDeleteTheEventIdentifier() {
         let context = ApplicationTestBuilder().build()
-        let identifier = EventIdentifier.random
+        let modelCharacteristics = ModelCharacteristics.randomWithoutDeletions
+        let randomEvent = modelCharacteristics.events.changed.randomElement().element
+        context.performSuccessfulSync(response: modelCharacteristics)
+
+        let identifier = EventIdentifier(randomEvent.identifier)
         let event = context.eventsService.fetchEvent(identifier: identifier)
         event?.favourite()
-        context.eventsService.unfavouriteEvent(identifier: identifier)
+        event?.unfavourite()
 
         XCTAssertTrue(context.dataStore.didDeleteFavouriteEvent(identifier))
     }

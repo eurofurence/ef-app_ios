@@ -36,6 +36,30 @@ class ConcreteEventsService: ClockDelegate, EventsService {
 
     }
 
+    private class UnfavouriteEventHandler: EventConsumer {
+
+        private let service: ConcreteEventsService
+
+        init(service: ConcreteEventsService) {
+            self.service = service
+        }
+
+        func consume(event: DomainEvent.UnfavouriteEvent) {
+            let identifier = event.identifier
+
+            service.dataStore.performTransaction { (transaction) in
+                transaction.deleteFavouriteEventIdentifier(identifier)
+            }
+
+            service.favouriteEventIdentifiers.index(of: identifier).let({ service.favouriteEventIdentifiers.remove(at: $0) })
+            service.notificationScheduler?.cancelNotification(forEvent: identifier)
+
+            let event = EventUnfavouritedEvent(identifier: identifier)
+            service.eventBus.post(event)
+        }
+
+    }
+
     // MARK: Properties
 
     private var observers = [EventsServiceObserver]()
@@ -110,6 +134,8 @@ class ConcreteEventsService: ClockDelegate, EventsService {
 
         eventBus.subscribe(consumer: DataStoreChangedConsumer(handler: reconstituteEventsFromDataStore))
         eventBus.subscribe(consumer: FavouriteEventHandler(service: self))
+        eventBus.subscribe(consumer: UnfavouriteEventHandler(service: self))
+
         reconstituteEventsFromDataStore()
         reconstituteFavouritesFromDataStore()
         clock.setDelegate(self)
