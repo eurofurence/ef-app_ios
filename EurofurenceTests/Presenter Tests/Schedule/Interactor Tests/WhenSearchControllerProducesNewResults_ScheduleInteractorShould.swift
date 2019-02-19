@@ -15,18 +15,18 @@ class WhenSearchControllerProducesNewResults_ScheduleInteractorShould: XCTestCas
 
     func testGroupTheResultsByStartTimeWithDayAndTimeGroupTitle() {
         let firstGroupDate = Date.random
-        var a = StubEvent.random
+        let a = StubEvent.random
         a.startDate = firstGroupDate
-        var b = StubEvent.random
+        let b = StubEvent.random
         b.startDate = firstGroupDate
-        var c = StubEvent.random
+        let c = StubEvent.random
         c.startDate = firstGroupDate
         let firstGroupEvents = [a, b, c].sorted(by: { $0.title < $1.title })
 
         let secondGroupDate = firstGroupDate.addingTimeInterval(100)
-        var d = StubEvent.random
+        let d = StubEvent.random
         d.startDate = secondGroupDate
-        var e = StubEvent.random
+        let e = StubEvent.random
         e.startDate = secondGroupDate
         let secondGroupEvents = [d, e].sorted(by: { $0.title < $1.title })
 
@@ -50,18 +50,18 @@ class WhenSearchControllerProducesNewResults_ScheduleInteractorShould: XCTestCas
 
     func testProvideTheExpectedIdentifier() {
         let firstGroupDate = Date.random
-        var a = StubEvent.random
+        let a = StubEvent.random
         a.startDate = firstGroupDate
-        var b = StubEvent.random
+        let b = StubEvent.random
         b.startDate = firstGroupDate
-        var c = StubEvent.random
+        let c = StubEvent.random
         c.startDate = firstGroupDate
         let firstGroupEvents = [a, b, c].sorted(by: { $0.title < $1.title })
 
         let secondGroupDate = firstGroupDate.addingTimeInterval(100)
-        var d = StubEvent.random
+        let d = StubEvent.random
         d.startDate = secondGroupDate
-        var e = StubEvent.random
+        let e = StubEvent.random
         e.startDate = secondGroupDate
         let secondGroupEvents = [d, e].sorted(by: { $0.title < $1.title })
 

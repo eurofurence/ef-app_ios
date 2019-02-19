@@ -10,7 +10,12 @@ import EurofurenceModel
 import Foundation
 import RandomDataGeneration
 
-public struct StubEvent: Event {
+public final class StubEvent: Event {
+
+    public enum FavouritedState {
+        case unset
+        case favourited
+    }
 
     public var identifier: EventIdentifier
     public var title: String
@@ -32,8 +37,51 @@ public struct StubEvent: Event {
     public var isMainStage: Bool
     public var isPhotoshoot: Bool
 
-    public func favourite() {
+    public init(identifier: EventIdentifier,
+                title: String,
+                subtitle: String,
+                abstract: String,
+                room: Room,
+                track: Track,
+                hosts: String,
+                startDate: Date,
+                endDate: Date,
+                eventDescription: String,
+                posterGraphicPNGData: Data?,
+                bannerGraphicPNGData: Data?,
+                isSponsorOnly: Bool,
+                isSuperSponsorOnly: Bool,
+                isArtShow: Bool,
+                isKageEvent: Bool,
+                isDealersDen: Bool,
+                isMainStage: Bool,
+                isPhotoshoot: Bool) {
+        self.identifier = identifier
+        self.title = title
+        self.subtitle = subtitle
+        self.abstract = abstract
+        self.room = room
+        self.track = track
+        self.hosts = hosts
+        self.startDate = startDate
+        self.endDate = endDate
+        self.eventDescription = eventDescription
+        self.posterGraphicPNGData = posterGraphicPNGData
+        self.bannerGraphicPNGData = bannerGraphicPNGData
+        self.isSponsorOnly = isSponsorOnly
+        self.isSuperSponsorOnly = isSuperSponsorOnly
+        self.isArtShow = isArtShow
+        self.isKageEvent = isKageEvent
+        self.isDealersDen = isDealersDen
+        self.isMainStage = isMainStage
+        self.isPhotoshoot = isPhotoshoot
 
+        favouritedState = .unset
+    }
+
+    private(set) public var favouritedState: FavouritedState
+    public func favourite() {
+        favouritedState = .favourited
     }
 
 }
@@ -64,7 +112,7 @@ extension StubEvent: RandomValueProviding {
     }
 
     public static var randomStandardEvent: StubEvent {
-        var event = StubEvent.random
+        let event = StubEvent.random
         event.isSponsorOnly = false
         event.isSuperSponsorOnly = false
         event.isArtShow = false

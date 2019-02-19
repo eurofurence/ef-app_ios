@@ -18,6 +18,7 @@ class WhenToldToFavouriteEvent_FromSearchViewModel_InteractorShould: XCTestCase 
         let events = [StubEvent].random
         eventsService.allEvents = events
         let randomEvent = events.randomElement()
+        let originalEvent = randomEvent.element
         let context = ScheduleInteractorTestBuilder().with(eventsService).build()
         let viewModel = context.makeSearchViewModel()
         eventsService.lastProducedSearchController?.simulateSearchResultsChanged([randomEvent.element])
