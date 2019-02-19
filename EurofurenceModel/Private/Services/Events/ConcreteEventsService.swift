@@ -77,9 +77,12 @@ class ConcreteEventsService: ClockDelegate, EventsService {
     private(set) var tracks = [TrackCharacteristics]()
     private(set) var days = [ConferenceDayCharacteristics]()
 
+    private var runningEvents: [Event] = []
+    private var upcomingEvents: [Event] = []
+
     private(set) var eventModels = [Event]() {
         didSet {
-            updateObserversWithLatestScheduleInformation()
+            refreshEventProperties()
         }
     }
 
@@ -95,21 +98,6 @@ class ConcreteEventsService: ClockDelegate, EventsService {
             }
 
             provideFavouritesInformationToObservers()
-        }
-    }
-
-    var runningEvents: [Event] {
-        let now = clock.currentDate
-        return eventModels.filter { (event) -> Bool in
-            return DateInterval(start: event.startDate, end: event.endDate).contains(now)
-        }
-    }
-
-    var upcomingEvents: [Event] {
-        let now = clock.currentDate
-        let range = DateInterval(start: now, end: now.addingTimeInterval(timeIntervalForUpcomingEventsSinceNow))
-        return eventModels.filter { (event) -> Bool in
-            return event.startDate > now && range.contains(event.startDate)
         }
     }
 
@@ -142,6 +130,7 @@ class ConcreteEventsService: ClockDelegate, EventsService {
     }
 
     func clockDidTick(to time: Date) {
+        refreshUpcomingEvents()
         updateObserversWithLatestScheduleInformation()
     }
 
@@ -165,6 +154,28 @@ class ConcreteEventsService: ClockDelegate, EventsService {
     }
 
     // MARK: Private
+
+    private func refreshEventProperties() {
+        refreshRunningEvents()
+        refreshUpcomingEvents()
+
+        updateObserversWithLatestScheduleInformation()
+    }
+
+    private func refreshRunningEvents() {
+        let now = clock.currentDate
+        runningEvents = eventModels.filter { (event) -> Bool in
+            return DateInterval(start: event.startDate, end: event.endDate).contains(now)
+        }
+    }
+
+    private func refreshUpcomingEvents() {
+        let now = clock.currentDate
+        let range = DateInterval(start: now, end: now.addingTimeInterval(timeIntervalForUpcomingEventsSinceNow))
+        upcomingEvents = eventModels.filter { (event) -> Bool in
+            return event.startDate > now && range.contains(event.startDate)
+        }
+    }
 
     private func updateObserversWithLatestScheduleInformation() {
         observers.forEach(provideScheduleInformation)
