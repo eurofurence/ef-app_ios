@@ -27,22 +27,30 @@ class WhenUnfavouritingEvent_ApplicationShould: XCTestCase {
 
     func testTellObserversTheEventHasBeenUnfavourited() {
         let context = ApplicationTestBuilder().build()
-        let identifier = EventIdentifier.random
+        let modelCharacteristics = ModelCharacteristics.randomWithoutDeletions
         let observer = CapturingEventsServiceObserver()
         context.eventsService.add(observer)
+        let randomEvent = modelCharacteristics.events.changed.randomElement().element
+        context.performSuccessfulSync(response: modelCharacteristics)
+
+        let identifier = EventIdentifier(randomEvent.identifier)
         let event = context.eventsService.fetchEvent(identifier: identifier)
         event?.favourite()
-        context.eventsService.unfavouriteEvent(identifier: identifier)
+        event?.unfavourite()
 
         XCTAssertFalse(observer.capturedFavouriteEventIdentifiers.contains(identifier))
     }
 
     func testTellTheNotificationServiceToRemoveTheScheduledNotification() {
         let context = ApplicationTestBuilder().build()
-        let identifier = EventIdentifier.random
+        let modelCharacteristics = ModelCharacteristics.randomWithoutDeletions
+        let randomEvent = modelCharacteristics.events.changed.randomElement().element
+        context.performSuccessfulSync(response: modelCharacteristics)
+
+        let identifier = EventIdentifier(randomEvent.identifier)
         let event = context.eventsService.fetchEvent(identifier: identifier)
         event?.favourite()
-        context.eventsService.unfavouriteEvent(identifier: identifier)
+        event?.unfavourite()
 
         XCTAssertEqual(identifier, context.notificationScheduler.capturedEventIdentifierToRemoveNotification)
     }

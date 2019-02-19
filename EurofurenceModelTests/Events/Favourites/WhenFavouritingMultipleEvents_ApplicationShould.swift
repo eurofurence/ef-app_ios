@@ -51,7 +51,8 @@ class WhenFavouritingMultipleEvents_ApplicationShould: XCTestCase {
         context.eventsService.add(observer)
         favouriteEvents(identifiers, service: context.eventsService)
         let randomIdentifier = identifiers.randomElement()
-        context.eventsService.unfavouriteEvent(identifier: randomIdentifier.element)
+        let event = context.eventsService.fetchEvent(identifier: randomIdentifier.element)
+        event?.unfavourite()
         var expected = identifiers
         expected.remove(at: randomIdentifier.index)
 
