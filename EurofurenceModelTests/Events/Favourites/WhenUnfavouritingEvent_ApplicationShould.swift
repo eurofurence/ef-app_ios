@@ -11,47 +11,35 @@ import XCTest
 
 class WhenUnfavouritingEvent_ApplicationShould: XCTestCase {
 
-    func testTellTheDataStoreToDeleteTheEventIdentifier() {
-        let context = ApplicationTestBuilder().build()
+    var context: ApplicationTestBuilder.Context!
+    var identifier: EventIdentifier!
+    var observer: CapturingEventsServiceObserver!
+
+    override func setUp() {
+        super.setUp()
+
+        context = ApplicationTestBuilder().build()
         let modelCharacteristics = ModelCharacteristics.randomWithoutDeletions
-        let randomEvent = modelCharacteristics.events.changed.randomElement().element
-        context.performSuccessfulSync(response: modelCharacteristics)
-
-        let identifier = EventIdentifier(randomEvent.identifier)
-        let event = context.eventsService.fetchEvent(identifier: identifier)
-        event?.favourite()
-        event?.unfavourite()
-
-        XCTAssertTrue(context.dataStore.didDeleteFavouriteEvent(identifier))
-    }
-
-    func testTellObserversTheEventHasBeenUnfavourited() {
-        let context = ApplicationTestBuilder().build()
-        let modelCharacteristics = ModelCharacteristics.randomWithoutDeletions
-        let observer = CapturingEventsServiceObserver()
+        observer = CapturingEventsServiceObserver()
         context.eventsService.add(observer)
         let randomEvent = modelCharacteristics.events.changed.randomElement().element
         context.performSuccessfulSync(response: modelCharacteristics)
 
-        let identifier = EventIdentifier(randomEvent.identifier)
+        identifier = EventIdentifier(randomEvent.identifier)
         let event = context.eventsService.fetchEvent(identifier: identifier)
         event?.favourite()
         event?.unfavourite()
+    }
 
+    func testTellTheDataStoreToDeleteTheEventIdentifier() {
+        XCTAssertTrue(context.dataStore.didDeleteFavouriteEvent(identifier))
+    }
+
+    func testTellObserversTheEventHasBeenUnfavourited() {
         XCTAssertFalse(observer.capturedFavouriteEventIdentifiers.contains(identifier))
     }
 
     func testTellTheNotificationServiceToRemoveTheScheduledNotification() {
-        let context = ApplicationTestBuilder().build()
-        let modelCharacteristics = ModelCharacteristics.randomWithoutDeletions
-        let randomEvent = modelCharacteristics.events.changed.randomElement().element
-        context.performSuccessfulSync(response: modelCharacteristics)
-
-        let identifier = EventIdentifier(randomEvent.identifier)
-        let event = context.eventsService.fetchEvent(identifier: identifier)
-        event?.favourite()
-        event?.unfavourite()
-
         XCTAssertEqual(identifier, context.notificationScheduler.capturedEventIdentifierToRemoveNotification)
     }
 
