@@ -113,15 +113,10 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
 
         private let components: [EventDetailViewModelComponent]
         private let event: Event
-        private let eventsService: EventsService
-        private var isFavourite = false
 
-        init(components: [EventDetailViewModelComponent],
-             event: Event,
-             eventsService: EventsService) {
+        init(components: [EventDetailViewModelComponent], event: Event) {
             self.components = components
             self.event = event
-            self.eventsService = eventsService
         }
 
         var numberOfComponents: Int {
@@ -220,7 +215,7 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
             components.append(ViewModel.DescriptionComponent(viewModel: descriptionViewModel))
         }
 
-        let viewModel = ViewModel(components: components, event: event, eventsService: self.eventsService)
+        let viewModel = ViewModel(components: components, event: event)
         completionHandler(viewModel)
     }
 
