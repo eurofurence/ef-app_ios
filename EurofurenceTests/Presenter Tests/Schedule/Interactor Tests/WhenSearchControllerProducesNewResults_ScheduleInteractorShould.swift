@@ -45,7 +45,8 @@ class WhenSearchControllerProducesNewResults_ScheduleInteractorShould: XCTestCas
                                                                    events: secondGroupEvents.map(context.makeExpectedEventViewModel))
         ]
 
-        XCTAssertEqual(expectedEventViewModels, context.searchViewModelDelegate.capturedSearchResults)
+        ScheduleEventGroupViewModelAssertion()
+            .assertEventGroupViewModels(expectedEventViewModels, isEqualTo: context.searchViewModelDelegate.capturedSearchResults)
     }
 
     func testProvideTheExpectedIdentifier() {

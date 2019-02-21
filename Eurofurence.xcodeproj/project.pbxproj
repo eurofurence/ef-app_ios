@@ -505,6 +505,8 @@
 		CA60C002207F7D2100697566 /* WhenNewsSceneDidLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60C001207F7D2100697566 /* WhenNewsSceneDidLoad.swift */; };
 		CA621340221EDE7800E88880 /* WhenFavouritingThenUnfavouritingEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA62133F221EDE7800E88880 /* WhenFavouritingThenUnfavouritingEvent.swift */; };
 		CA621344221EFDAC00E88880 /* Assertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA621343221EFDAC00E88880 /* Assertion.swift */; };
+		CA62134B221F276000E88880 /* ScheduleEventGroupViewModelAssertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA621347221F274000E88880 /* ScheduleEventGroupViewModelAssertion.swift */; };
+		CA62134C221F276000E88880 /* ScheduleEventViewModelAssertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA621349221F274F00E88880 /* ScheduleEventViewModelAssertion.swift */; };
 		CA63753D208A6E4900536BE2 /* WhenLoggedOutBeforeConvention_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63753C208A6E4900536BE2 /* WhenLoggedOutBeforeConvention_NewsInteractorShould.swift */; };
 		CA637540208CBB0E00536BE2 /* CapturingNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63753F208CBB0E00536BE2 /* CapturingNavigationController.swift */; };
 		CA637542208CBB2400536BE2 /* StubNavigationControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637541208CBB2400536BE2 /* StubNavigationControllerFactory.swift */; };
@@ -2093,6 +2095,8 @@
 		CA62133F221EDE7800E88880 /* WhenFavouritingThenUnfavouritingEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFavouritingThenUnfavouritingEvent.swift; sourceTree = "<group>"; };
 		CA621343221EFDAC00E88880 /* Assertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assertion.swift; sourceTree = "<group>"; };
 		CA621345221EFDD800E88880 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		CA621347221F274000E88880 /* ScheduleEventGroupViewModelAssertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleEventGroupViewModelAssertion.swift; sourceTree = "<group>"; };
+		CA621349221F274F00E88880 /* ScheduleEventViewModelAssertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleEventViewModelAssertion.swift; sourceTree = "<group>"; };
 		CA63753C208A6E4900536BE2 /* WhenLoggedOutBeforeConvention_NewsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLoggedOutBeforeConvention_NewsInteractorShould.swift; sourceTree = "<group>"; };
 		CA63753F208CBB0E00536BE2 /* CapturingNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingNavigationController.swift; sourceTree = "<group>"; };
 		CA637541208CBB2400536BE2 /* StubNavigationControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubNavigationControllerFactory.swift; sourceTree = "<group>"; };
@@ -3371,6 +3375,8 @@
 		CA00AE7120D18D0700C2FBB0 /* Interactor Tests */ = {
 			isa = PBXGroup;
 			children = (
+				CA621347221F274000E88880 /* ScheduleEventGroupViewModelAssertion.swift */,
+				CA621349221F274F00E88880 /* ScheduleEventViewModelAssertion.swift */,
 				CA283A7D20E9211400F7D195 /* WhenApplicationRefreshStateChanges_ScheduleInteractorShould.swift */,
 				CA08158A20D4554900F750D4 /* WhenGroupingEventsByStartTime_ScheduleInteractorShould.swift */,
 				CA00AE7220D18D1E00C2FBB0 /* WhenPreparingViewModel_ScheduleInteractorShould.swift */,
@@ -8268,6 +8274,7 @@
 				CACF1E9E20B4386B00D904B5 /* WhenBindingEventDescription_EventDetailPresenterShould.swift in Sources */,
 				CA36A49920D9778400EE6537 /* FakeDealersIndex.swift in Sources */,
 				CA283A8620E9483F00F7D195 /* WhenPreparingAnnouncementViewModel_ForReadAnnouncement_NewsInteractorShould.swift in Sources */,
+				CA62134B221F276000E88880 /* ScheduleEventGroupViewModelAssertion.swift in Sources */,
 				CA8E17EF1F817A8C003C348C /* CapturingPreloadInteractor.swift in Sources */,
 				CA283AD820EB9A3C00F7D195 /* WhenSelectingAnnouncement_AnnouncementsPresenterShould.swift in Sources */,
 				CAD3BDBB205953AD00C91E6E /* CapturingKnowledgeDetailModuleDelegate.swift in Sources */,
@@ -8364,6 +8371,7 @@
 				CA89CBA6207F7F5400570D54 /* FakeNewsInteractor.swift in Sources */,
 				CA637556208CBBCE00536BE2 /* StubMessageDetailModuleProviding.swift in Sources */,
 				CA73AEDD201A0823004E77BF /* CapturingKnowledgeListScene.swift in Sources */,
+				CA62134C221F276000E88880 /* ScheduleEventViewModelAssertion.swift in Sources */,
 				CA36A47520D84DD600EE6537 /* CapturingDealerComponent.swift in Sources */,
 				CA60C002207F7D2100697566 /* WhenNewsSceneDidLoad.swift in Sources */,
 				CA63758C208CE06100536BE2 /* WhenBuildingScheduleModule.swift in Sources */,

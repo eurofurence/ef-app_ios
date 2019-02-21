@@ -58,14 +58,16 @@ class WhenGroupingEventsByStartTime_ScheduleInteractorShould: XCTestCase {
         simulateEventsChanged()
         context.makeViewModel()
 
-        XCTAssertEqual(expectedEventViewModels, context.eventsViewModels)
+        ScheduleEventGroupViewModelAssertion()
+            .assertEventGroupViewModels(expectedEventViewModels, isEqualTo: context.eventsViewModels)
     }
 
     func testProvideUpdatedGroupsToDelegate() {
         context.makeViewModel()
         simulateEventsChanged()
 
-        XCTAssertEqual(expectedEventViewModels, context.eventsViewModels)
+        ScheduleEventGroupViewModelAssertion()
+            .assertEventGroupViewModels(expectedEventViewModels, isEqualTo: context.eventsViewModels)
     }
 
     func testProvideTheExpectedIdentifier() {

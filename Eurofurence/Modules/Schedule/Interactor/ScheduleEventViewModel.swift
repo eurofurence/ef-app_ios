@@ -26,7 +26,7 @@ protocol ScheduleEventViewModelProtocol {
 
 }
 
-struct ScheduleEventViewModel: ScheduleEventViewModelProtocol, Equatable {
+struct ScheduleEventViewModel: ScheduleEventViewModelProtocol {
 
     var title: String
     var startTime: String

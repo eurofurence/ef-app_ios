@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ScheduleEventGroupViewModel: Equatable {
+struct ScheduleEventGroupViewModel {
 
     var title: String
     var events: [ScheduleEventViewModel]
