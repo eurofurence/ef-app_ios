@@ -293,28 +293,32 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
                 return first.compare(against: second)
             })
 
-            let eventGroupViewModels = rawModelGroups.map { (group) -> ScheduleEventGroupViewModel in
-                let title = shortFormDayAndTimeFormatter.dayAndHoursString(from: group.date)
-                let viewModels = group.events.map { (event) -> ScheduleEventViewModel in
-                    return ScheduleEventViewModel(title: event.title,
-                                                  startTime: hoursDateFormatter.hoursString(from: event.startDate),
-                                                  endTime: hoursDateFormatter.hoursString(from: event.endDate),
-                                                  location: event.room.name,
-                                                  bannerGraphicPNGData: event.bannerGraphicPNGData,
-                                                  isFavourite: favouriteEvents.contains(event.identifier),
-                                                  isSponsorOnly: event.isSponsorOnly,
-                                                  isSuperSponsorOnly: event.isSuperSponsorOnly,
-                                                  isArtShow: event.isArtShow,
-                                                  isKageEvent: event.isKageEvent,
-                                                  isDealersDenEvent: event.isDealersDen,
-                                                  isMainStageEvent: event.isMainStage,
-                                                  isPhotoshootEvent: event.isPhotoshoot)
-                }
-
-                return ScheduleEventGroupViewModel(title: title, events: viewModels)
-            }
+            let eventGroupViewModels = rawModelGroups.map(makeScheduleGroupViewModel)
 
             delegate?.scheduleSearchResultsUpdated(eventGroupViewModels)
+        }
+
+        private func makeScheduleGroupViewModel(_ group: EventsGroupedByDate) -> ScheduleEventGroupViewModel {
+            let title = shortFormDayAndTimeFormatter.dayAndHoursString(from: group.date)
+            let viewModels = group.events.map(makeEventViewModel)
+
+            return ScheduleEventGroupViewModel(title: title, events: viewModels)
+        }
+
+        private func makeEventViewModel(_ event: Event) -> ScheduleEventViewModel {
+            return ScheduleEventViewModel(title: event.title,
+                                          startTime: hoursDateFormatter.hoursString(from: event.startDate),
+                                          endTime: hoursDateFormatter.hoursString(from: event.endDate),
+                                          location: event.room.name,
+                                          bannerGraphicPNGData: event.bannerGraphicPNGData,
+                                          isFavourite: favouriteEvents.contains(event.identifier),
+                                          isSponsorOnly: event.isSponsorOnly,
+                                          isSuperSponsorOnly: event.isSuperSponsorOnly,
+                                          isArtShow: event.isArtShow,
+                                          isKageEvent: event.isKageEvent,
+                                          isDealersDenEvent: event.isDealersDen,
+                                          isMainStageEvent: event.isMainStage,
+                                          isPhotoshootEvent: event.isPhotoshoot)
         }
 
     }
