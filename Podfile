@@ -2,7 +2,7 @@ platform :ios, '10.0'
 inhibit_all_warnings!
 use_frameworks!
 
-target :RandomDataGeneration do
+target :TestUtilities do
     pod 'SwiftLint'
 end
 

@@ -8,7 +8,7 @@
 
 import EurofurenceModel
 import EurofurenceModelTestDoubles
-import RandomDataGeneration
+import TestUtilities
 import XCTest
 
 class ImageAPITests: XCTestCase {

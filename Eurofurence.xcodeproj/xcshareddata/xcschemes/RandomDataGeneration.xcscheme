@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CAEA0E82216BEF7C00B0C7A6"
-               BuildableName = "RandomDataGeneration.framework"
-               BlueprintName = "RandomDataGeneration"
+               BuildableName = "TestUtilities.framework"
+               BlueprintName = "TestUtilities"
                ReferencedContainer = "container:Eurofurence.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -46,8 +46,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CAEA0E82216BEF7C00B0C7A6"
-            BuildableName = "RandomDataGeneration.framework"
-            BlueprintName = "RandomDataGeneration"
+            BuildableName = "TestUtilities.framework"
+            BlueprintName = "TestUtilities"
             ReferencedContainer = "container:Eurofurence.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -64,8 +64,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CAEA0E82216BEF7C00B0C7A6"
-            BuildableName = "RandomDataGeneration.framework"
-            BlueprintName = "RandomDataGeneration"
+            BuildableName = "TestUtilities.framework"
+            BlueprintName = "TestUtilities"
             ReferencedContainer = "container:Eurofurence.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

@@ -9,7 +9,7 @@
 import Darwin
 @testable import Eurofurence
 import EurofurenceModel
-import RandomDataGeneration
+import TestUtilities
 import UIKit.UIImage
 
 extension KnowledgeListGroupViewModel: RandomValueProviding {

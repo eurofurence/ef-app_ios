@@ -7,7 +7,7 @@
 //
 
 import EurofurenceModel
-import RandomDataGeneration
+import TestUtilities
 
 extension MessageCharacteristics: RandomValueProviding {
 

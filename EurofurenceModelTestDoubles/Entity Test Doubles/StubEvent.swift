@@ -8,7 +8,7 @@
 
 import EurofurenceModel
 import Foundation
-import RandomDataGeneration
+import TestUtilities
 
 public final class StubEvent: Event {
 

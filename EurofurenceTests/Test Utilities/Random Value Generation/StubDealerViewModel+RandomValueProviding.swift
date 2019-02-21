@@ -9,7 +9,7 @@
 @testable import Eurofurence
 import EurofurenceModel
 import Foundation
-import RandomDataGeneration
+import TestUtilities
 
 extension StubDealerViewModel: RandomValueProviding {
 

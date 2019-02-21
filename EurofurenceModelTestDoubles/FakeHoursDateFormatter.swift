@@ -7,7 +7,7 @@
 //
 
 import EurofurenceModel
-import RandomDataGeneration
+import TestUtilities
 
 public class FakeHoursDateFormatter: HoursDateFormatter {
 

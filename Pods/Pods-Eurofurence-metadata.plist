@@ -980,61 +980,6 @@ support library is itself covered by the above license.
 		<dict>
 			<key>authors</key>
 			<dict>
-				<key>Dave Verwer</key>
-				<string>dave.verwer@shinydevelopment.com</string>
-				<key>Greg Spiers</key>
-				<string>greg.spiers@shinydevelopment.com</string>
-			</dict>
-			<key>description</key>
-			<string>&lt;p&gt;Modify the iOS Simulator so that it has a perfect status bar, then run your app and take perfect screenshots every time. The modifications made are designed to match the images you see on the Apple site and are as follows:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;9:41 AM is displayed for the time.&lt;/li&gt;
-&lt;li&gt;The battery is full and shows 100%.&lt;/li&gt;
-&lt;li&gt;On iPhone: The carrier text is removed, 5 bars of cellular signal and full WiFi bars are displayed.&lt;/li&gt;
-&lt;li&gt;On iPad: The carrier text is set to &amp;quot;iPad&amp;quot; and full WiFi bars are displayed.&lt;/li&gt;
-&lt;/ul&gt;
-</string>
-			<key>homepage</key>
-			<string>https://github.com/shinydevelopment/SimulatorStatusMagic</string>
-			<key>licenseText</key>
-			<string>The MIT License (MIT)
-
-Copyright (c) 2014 Shiny Development
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-</string>
-			<key>licenseType</key>
-			<string>MIT</string>
-			<key>name</key>
-			<string>SimulatorStatusMagic</string>
-			<key>socialMediaURL</key>
-			<string></string>
-			<key>summary</key>
-			<string>Enable perfect status bars in the iOS Simulator.</string>
-			<key>version</key>
-			<string>2.0</string>
-		</dict>
-		<dict>
-			<key>authors</key>
-			<dict>
 				<key>Petteri Aimonen</key>
 				<string>jpa@nanopb.mail.kapsi.fi</string>
 			</dict>
@@ -1164,6 +1109,61 @@ THE SOFTWARE.
 			<string>Replacement for Apple's Reachability re-written in Swift with callbacks.</string>
 			<key>version</key>
 			<string>4.1.0</string>
+		</dict>
+		<dict>
+			<key>authors</key>
+			<dict>
+				<key>Dave Verwer</key>
+				<string>dave.verwer@shinydevelopment.com</string>
+				<key>Greg Spiers</key>
+				<string>greg.spiers@shinydevelopment.com</string>
+			</dict>
+			<key>description</key>
+			<string>&lt;p&gt;Modify the iOS Simulator so that it has a perfect status bar, then run your app and take perfect screenshots every time. The modifications made are designed to match the images you see on the Apple site and are as follows:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;9:41 AM is displayed for the time.&lt;/li&gt;
+&lt;li&gt;The battery is full and shows 100%.&lt;/li&gt;
+&lt;li&gt;On iPhone: The carrier text is removed, 5 bars of cellular signal and full WiFi bars are displayed.&lt;/li&gt;
+&lt;li&gt;On iPad: The carrier text is set to &amp;quot;iPad&amp;quot; and full WiFi bars are displayed.&lt;/li&gt;
+&lt;/ul&gt;
+</string>
+			<key>homepage</key>
+			<string>https://github.com/shinydevelopment/SimulatorStatusMagic</string>
+			<key>licenseText</key>
+			<string>The MIT License (MIT)
+
+Copyright (c) 2014 Shiny Development
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+</string>
+			<key>licenseType</key>
+			<string>MIT</string>
+			<key>name</key>
+			<string>SimulatorStatusMagic</string>
+			<key>socialMediaURL</key>
+			<string></string>
+			<key>summary</key>
+			<string>Enable perfect status bars in the iOS Simulator.</string>
+			<key>version</key>
+			<string>2.0</string>
 		</dict>
 	</array>
 </dict>

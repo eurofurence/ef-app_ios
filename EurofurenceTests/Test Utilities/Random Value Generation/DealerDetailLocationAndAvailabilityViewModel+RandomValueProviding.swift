@@ -8,7 +8,7 @@
 
 @testable import Eurofurence
 import EurofurenceModel
-import RandomDataGeneration
+import TestUtilities
 
 extension DealerDetailLocationAndAvailabilityViewModel: RandomValueProviding {
 

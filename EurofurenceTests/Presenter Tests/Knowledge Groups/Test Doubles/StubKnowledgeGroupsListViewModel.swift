@@ -10,7 +10,7 @@
 import EurofurenceModel
 import EurofurenceModelTestDoubles
 import Foundation
-import RandomDataGeneration
+import TestUtilities
 
 struct StubKnowledgeGroupsListViewModel: KnowledgeGroupsListViewModel {
 

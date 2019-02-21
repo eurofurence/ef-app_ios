@@ -7,7 +7,7 @@
 //
 
 import EurofurenceModel
-import RandomDataGeneration
+import TestUtilities
 
 public struct StubDealer: Dealer {
 
