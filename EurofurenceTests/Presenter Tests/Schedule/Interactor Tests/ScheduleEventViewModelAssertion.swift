@@ -11,7 +11,8 @@ import TestUtilities
 
 class ScheduleEventViewModelAssertion: Assertion {
 
-    func assertEventViewModel(_ expected: ScheduleEventViewModel, isEqualTo actual: ScheduleEventViewModel) {
+    func assertEventViewModel(_ expected: ScheduleEventViewModelProtocol,
+                              isEqualTo actual: ScheduleEventViewModelProtocol) {
         assert(expected.title, isEqualTo: actual.title)
         assert(expected.startTime, isEqualTo: actual.startTime)
         assert(expected.endTime, isEqualTo: actual.endTime)

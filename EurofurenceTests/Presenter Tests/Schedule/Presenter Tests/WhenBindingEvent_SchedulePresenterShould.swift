@@ -14,7 +14,7 @@ class WhenBindingEvent_SchedulePresenterShould: XCTestCase {
 
     var context: SchedulePresenterTestBuilder.Context!
     var component: CapturingScheduleEventComponent!
-    var eventViewModel: ScheduleEventViewModel!
+    var eventViewModel: ScheduleEventViewModelProtocol!
 
     override func setUp() {
         super.setUp()

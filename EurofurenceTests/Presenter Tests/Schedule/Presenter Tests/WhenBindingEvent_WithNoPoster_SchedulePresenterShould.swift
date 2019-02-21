@@ -14,39 +14,19 @@ class WhenBindingEvent_WithNoPoster_SchedulePresenterShould: XCTestCase {
 
     func testNotShowTheBanner() {
         let viewModel = CapturingScheduleViewModel.random
-        let randomGroup = viewModel.events.randomElement()
-        var group = randomGroup.element
-        let randomEvent = randomGroup.element.events.randomElement()
-        var eventViewModel = randomEvent.element
-        eventViewModel.bannerGraphicPNGData = nil
-        group.events[randomEvent.index] = eventViewModel
-        viewModel.events[randomGroup.index] = group
+        let group = viewModel.events.randomElement()
+        let event = group.element.events.randomElement()
+        let stubbedEventViewModel = viewModel.eventViewModel(inGroup: group.index, at: event.index)
+        stubbedEventViewModel.bannerGraphicPNGData = nil
+
         let interactor = FakeScheduleInteractor(viewModel: viewModel)
         let context = SchedulePresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
-        let indexPath = IndexPath(item: randomEvent.index, section: randomGroup.index)
+        let indexPath = IndexPath(item: event.index, section: group.index)
         let component = CapturingScheduleEventComponent()
         context.bind(component, forEventAt: indexPath)
 
         XCTAssertFalse(component.didShowBanner)
-    }
-
-    func testHideTheBanner() {
-        let viewModel = CapturingScheduleViewModel.random
-        let randomGroup = viewModel.events.randomElement()
-        var group = randomGroup.element
-        let randomEvent = randomGroup.element.events.randomElement()
-        var eventViewModel = randomEvent.element
-        eventViewModel.bannerGraphicPNGData = nil
-        group.events[randomEvent.index] = eventViewModel
-        viewModel.events[randomGroup.index] = group
-        let interactor = FakeScheduleInteractor(viewModel: viewModel)
-        let context = SchedulePresenterTestBuilder().with(interactor).build()
-        context.simulateSceneDidLoad()
-        let indexPath = IndexPath(item: randomEvent.index, section: randomGroup.index)
-        let component = CapturingScheduleEventComponent()
-        context.bind(component, forEventAt: indexPath)
-
         XCTAssertTrue(component.didHideBanner)
     }
 

@@ -10,6 +10,7 @@
 import EurofurenceModel
 import EurofurenceModelTestDoubles
 import Foundation
+import TestUtilities
 
 final class CapturingScheduleViewModel: ScheduleViewModel {
 
@@ -69,6 +70,10 @@ final class CapturingScheduleViewModel: ScheduleViewModel {
 }
 
 extension CapturingScheduleViewModel {
+
+    func eventViewModel(inGroup group: Int, at index: Int) -> StubScheduleEventViewModel {
+        return events[group].events[index] as! StubScheduleEventViewModel
+    }
 
     func stub(_ identifier: EventIdentifier, at indexPath: IndexPath) {
         stubbedIdentifiersByIndexPath[indexPath] = identifier

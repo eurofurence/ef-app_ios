@@ -12,7 +12,7 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
 
     private struct EventComponentBinder {
 
-        func bind(component: ScheduleEventComponent, to event: ScheduleEventViewModel) {
+        func bind(component: ScheduleEventComponent, to event: ScheduleEventViewModelProtocol) {
             component.setEventName(event.title)
             component.setEventStartTime(event.startTime)
             component.setEventEndTime(event.endTime)
