@@ -7,8 +7,9 @@
 //
 
 import EurofurenceModel
+import TestUtilities
 
-class AnnouncementAssertion: EntityAssertion {
+class AnnouncementAssertion: Assertion {
 
     func assertOrderedAnnouncements(_ announcements: [Announcement],
                                     characterisedBy characteristics: [AnnouncementCharacteristics]) {

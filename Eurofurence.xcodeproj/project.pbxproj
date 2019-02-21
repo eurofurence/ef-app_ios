@@ -504,6 +504,7 @@
 		CA60BFFE207CDC1700697566 /* FakeAuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFFD207CDC1700697566 /* FakeAuthenticationService.swift */; };
 		CA60C002207F7D2100697566 /* WhenNewsSceneDidLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60C001207F7D2100697566 /* WhenNewsSceneDidLoad.swift */; };
 		CA621340221EDE7800E88880 /* WhenFavouritingThenUnfavouritingEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA62133F221EDE7800E88880 /* WhenFavouritingThenUnfavouritingEvent.swift */; };
+		CA621344221EFDAC00E88880 /* Assertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA621343221EFDAC00E88880 /* Assertion.swift */; };
 		CA63753D208A6E4900536BE2 /* WhenLoggedOutBeforeConvention_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63753C208A6E4900536BE2 /* WhenLoggedOutBeforeConvention_NewsInteractorShould.swift */; };
 		CA637540208CBB0E00536BE2 /* CapturingNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63753F208CBB0E00536BE2 /* CapturingNavigationController.swift */; };
 		CA637542208CBB2400536BE2 /* StubNavigationControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637541208CBB2400536BE2 /* StubNavigationControllerFactory.swift */; };
@@ -877,7 +878,6 @@
 		CAD6882C208A12F700B31F5F /* WhenBindingUserWithUnreadMessages_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6882B208A12F700B31F5F /* WhenBindingUserWithUnreadMessages_NewsPresenterShould.swift */; };
 		CAD68830208A144800B31F5F /* WhenBindingUserWithNoUnreadMessages_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6882F208A144800B31F5F /* WhenBindingUserWithNoUnreadMessages_NewsPresenterShould.swift */; };
 		CAD6FD3B22159C700011712D /* AnnouncementAssertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6FD3922159C6C0011712D /* AnnouncementAssertion.swift */; };
-		CAD6FD3E2215A73B0011712D /* EntityAssertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6FD3C2215A72D0011712D /* EntityAssertion.swift */; };
 		CAD6FD402215A74A0011712D /* EventAssertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6FD3F2215A74A0011712D /* EventAssertion.swift */; };
 		CAD6FD422215B8A60011712D /* DayAssertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6FD412215B8A60011712D /* DayAssertion.swift */; };
 		CAD6FD442215BD670011712D /* DealerAssertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6FD432215BD670011712D /* DealerAssertion.swift */; };
@@ -2091,6 +2091,8 @@
 		CA60BFFD207CDC1700697566 /* FakeAuthenticationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeAuthenticationService.swift; sourceTree = "<group>"; };
 		CA60C001207F7D2100697566 /* WhenNewsSceneDidLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenNewsSceneDidLoad.swift; sourceTree = "<group>"; };
 		CA62133F221EDE7800E88880 /* WhenFavouritingThenUnfavouritingEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFavouritingThenUnfavouritingEvent.swift; sourceTree = "<group>"; };
+		CA621343221EFDAC00E88880 /* Assertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assertion.swift; sourceTree = "<group>"; };
+		CA621345221EFDD800E88880 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		CA63753C208A6E4900536BE2 /* WhenLoggedOutBeforeConvention_NewsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLoggedOutBeforeConvention_NewsInteractorShould.swift; sourceTree = "<group>"; };
 		CA63753F208CBB0E00536BE2 /* CapturingNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingNavigationController.swift; sourceTree = "<group>"; };
 		CA637541208CBB2400536BE2 /* StubNavigationControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubNavigationControllerFactory.swift; sourceTree = "<group>"; };
@@ -2578,7 +2580,6 @@
 		CAD6882D208A13D400B31F5F /* Bool+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bool+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CAD6882F208A144800B31F5F /* WhenBindingUserWithNoUnreadMessages_NewsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingUserWithNoUnreadMessages_NewsPresenterShould.swift; sourceTree = "<group>"; };
 		CAD6FD3922159C6C0011712D /* AnnouncementAssertion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnouncementAssertion.swift; sourceTree = "<group>"; };
-		CAD6FD3C2215A72D0011712D /* EntityAssertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityAssertion.swift; sourceTree = "<group>"; };
 		CAD6FD3F2215A74A0011712D /* EventAssertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAssertion.swift; sourceTree = "<group>"; };
 		CAD6FD412215B8A60011712D /* DayAssertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayAssertion.swift; sourceTree = "<group>"; };
 		CAD6FD432215BD670011712D /* DealerAssertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerAssertion.swift; sourceTree = "<group>"; };
@@ -2818,6 +2819,7 @@
 		164F3A1C0E53F6ADD4C20674 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CA621345221EFDD800E88880 /* XCTest.framework */,
 				CA66C01D2124C6D800F87AFE /* StoreKit.framework */,
 				A81694C40AA0176899E15028 /* Pods_Eurofurence.framework */,
 				A4BE2399E8F0912910303B02 /* Pods_EurofurenceTests.framework */,
@@ -6247,7 +6249,6 @@
 			children = (
 				CAEA0B8B2165626900B0C7A6 /* Info.plist */,
 				CA2B4FA51F1EA1B300F007E1 /* ApplicationTestBuilder.swift */,
-				CAD6FD3C2215A72D0011712D /* EntityAssertion.swift */,
 				CA2D07F81FE9021A00BFD785 /* WhenResolvingDataStoreState.swift */,
 				CA65A21A2091120C0078A4A7 /* Announcements */,
 				CA81D4951FEA950600A52A2F /* Authentication */,
@@ -6298,6 +6299,7 @@
 			children = (
 				CAEA0E85216BEF7C00B0C7A6 /* TestUtilities.h */,
 				CAEA0E86216BEF7C00B0C7A6 /* Info.plist */,
+				CA621343221EFDAC00E88880 /* Assertion.swift */,
 				CA621342221EFC6600E88880 /* Random Data Generation */,
 			);
 			path = TestUtilities;
@@ -8809,7 +8811,6 @@
 				CAEA0FCB216E1CC000B0C7A6 /* WhenDeletingKnowledgeEntry_AfterSuccessfulSync_ApplicationShould.swift in Sources */,
 				CAEA0FF2216E1CE700B0C7A6 /* WhenFetchingKnowledgeGroupsAfterSuccessfulRefresh.swift in Sources */,
 				CAEA0F9F216E1CC000B0C7A6 /* WhenApplicationInitialises_WithAnnouncementsSavedToStore.swift in Sources */,
-				CAD6FD3E2215A73B0011712D /* EntityAssertion.swift in Sources */,
 				CAEA0F6D216D2BFB00B0C7A6 /* LoginAPITests.swift in Sources */,
 				CAEA0FA7216E1CC000B0C7A6 /* WhenObservingCollectThemAllURLWhileLoggedOut_ApplicationShould.swift in Sources */,
 				CAEA102A216E1CE800B0C7A6 /* CapturingEventsSearchControllerDelegate.swift in Sources */,
@@ -8862,6 +8863,7 @@
 				CAEA0E91216BF34F00B0C7A6 /* Array+RandomConvenience.swift in Sources */,
 				CAEA0E90216BF02800B0C7A6 /* RandomValueProviding.swift in Sources */,
 				CAEA0E98216BF34F00B0C7A6 /* Integer+RandomValueProviding.swift in Sources */,
+				CA621344221EFDAC00E88880 /* Assertion.swift in Sources */,
 				CAEA0E93216BF34F00B0C7A6 /* Character+RandomValueProviding.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -9945,6 +9947,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = TestUtilities/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -9978,6 +9984,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = TestUtilities/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -10010,6 +10020,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = TestUtilities/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -10042,6 +10056,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = TestUtilities/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";

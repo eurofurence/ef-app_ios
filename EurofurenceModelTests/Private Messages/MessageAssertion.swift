@@ -7,8 +7,9 @@
 //
 
 import EurofurenceModel
+import TestUtilities
 
-class MessageAssertion: EntityAssertion {
+class MessageAssertion: Assertion {
 
     func assertMessages(_ messages: [Message], characterisedBy characteristics: [MessageCharacteristics]) {
         guard messages.count == characteristics.count else {

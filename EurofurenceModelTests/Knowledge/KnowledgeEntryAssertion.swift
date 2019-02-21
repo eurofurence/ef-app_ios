@@ -7,8 +7,9 @@
 //
 
 import EurofurenceModel
+import TestUtilities
 
-class KnowledgeEntryAssertion: EntityAssertion {
+class KnowledgeEntryAssertion: Assertion {
 
     func assertEntry(_ entry: KnowledgeEntry?, characteristics: KnowledgeEntryCharacteristics) {
         guard let entry = entry else {

@@ -7,8 +7,9 @@
 //
 
 import EurofurenceModel
+import TestUtilities
 
-class EventAssertion: EntityAssertion {
+class EventAssertion: Assertion {
 
     private let context: ApplicationTestBuilder.Context
     private let modelCharacteristics: ModelCharacteristics

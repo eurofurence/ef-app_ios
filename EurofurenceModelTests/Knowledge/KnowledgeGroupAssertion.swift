@@ -7,8 +7,9 @@
 //
 
 import EurofurenceModel
+import TestUtilities
 
-class KnowledgeGroupAssertion: EntityAssertion {
+class KnowledgeGroupAssertion: Assertion {
 
     func assertGroups(_ groups: [KnowledgeGroup],
                       characterisedByGroup groupCharacteristics: [KnowledgeGroupCharacteristics],

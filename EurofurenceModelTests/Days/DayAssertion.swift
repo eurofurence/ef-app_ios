@@ -7,8 +7,9 @@
 //
 
 import EurofurenceModel
+import TestUtilities
 
-class DayAssertion: EntityAssertion {
+class DayAssertion: Assertion {
 
     func assertDays(_ days: [Day], characterisedBy characteristics: [ConferenceDayCharacteristics]) {
         guard days.count == characteristics.count else {

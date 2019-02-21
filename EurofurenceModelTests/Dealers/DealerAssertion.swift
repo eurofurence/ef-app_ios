@@ -7,8 +7,9 @@
 //
 
 import EurofurenceModel
+import TestUtilities
 
-class DealerAssertion: EntityAssertion {
+class DealerAssertion: Assertion {
 
     func assertDealer(_ dealer: Dealer?, characterisedBy characteristic: DealerCharacteristics) {
         guard let dealer = dealer else {

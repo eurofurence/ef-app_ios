@@ -7,8 +7,9 @@
 //
 
 import EurofurenceModel
+import TestUtilities
 
-class AlphabetisedDealersGroupAssertion: EntityAssertion {
+class AlphabetisedDealersGroupAssertion: Assertion {
 
     private let groups: [AlphabetisedDealersGroup]
     private let characteristics: [DealerCharacteristics]

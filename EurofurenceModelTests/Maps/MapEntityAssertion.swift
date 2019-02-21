@@ -7,8 +7,9 @@
 //
 
 import EurofurenceModel
+import TestUtilities
 
-class MapEntityAssertion: EntityAssertion {
+class MapEntityAssertion: Assertion {
 
     func assertMaps(_ maps: [Map], characterisedBy characteristics: [MapCharacteristics]) {
         guard maps.count == characteristics.count else {
