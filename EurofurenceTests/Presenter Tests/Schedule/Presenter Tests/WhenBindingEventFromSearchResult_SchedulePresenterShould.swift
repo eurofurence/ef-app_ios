@@ -12,40 +12,23 @@ import XCTest
 
 class WhenBindingEventFromSearchResult_SchedulePresenterShould: XCTestCase {
 
-    var context: SchedulePresenterTestBuilder.Context!
-    var component: CapturingScheduleEventComponent!
-    var eventViewModel: ScheduleEventViewModelProtocol!
-
-    override func setUp() {
-        super.setUp()
-
+    func testBindTheEventAttributesOntoTheComponent() {
         let searchViewModel = CapturingScheduleSearchViewModel()
         let interactor = FakeScheduleInteractor(searchViewModel: searchViewModel)
-        context = SchedulePresenterTestBuilder().with(interactor).build()
+        let context = SchedulePresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
         let results = [ScheduleEventGroupViewModel].random
         searchViewModel.simulateSearchResultsUpdated(results)
         let randomGroup = results.randomElement()
         let randomEvent = randomGroup.element.events.randomElement()
-        eventViewModel = randomEvent.element
+        let eventViewModel = randomEvent.element
         let indexPath = IndexPath(item: randomEvent.index, section: randomGroup.index)
-        component = CapturingScheduleEventComponent()
+        let component = CapturingScheduleEventComponent()
         context.bindSearchResultComponent(component, forSearchResultAt: indexPath)
-    }
 
-    func testBindTheEventNameOntoTheComponent() {
         XCTAssertEqual(eventViewModel.title, component.capturedEventTitle)
-    }
-
-    func testBindTheStartTimeFromTheEventOntoTheEventScene() {
         XCTAssertEqual(eventViewModel.startTime, component.capturedStartTime)
-    }
-
-    func testBindTheEndTimeFromTheEventOntoTheEventScene() {
         XCTAssertEqual(eventViewModel.endTime, component.capturedEndTime)
-    }
-
-    func testBindTheEventLocationFromTheEventOntoTheEventScene() {
         XCTAssertEqual(eventViewModel.location, component.capturedLocation)
     }
 
