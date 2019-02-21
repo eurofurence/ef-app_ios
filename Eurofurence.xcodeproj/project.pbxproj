@@ -4386,6 +4386,16 @@
 			path = Unauthenticated;
 			sourceTree = "<group>";
 		};
+		CA621342221EFC6600E88880 /* Random Data Generation */ = {
+			isa = PBXGroup;
+			children = (
+				CA71A34D2040349300C847C3 /* RandomRangedValueProviding.swift */,
+				CA71A347204031F700C847C3 /* RandomValueProviding.swift */,
+				CA71A3532041B6DA00C847C3 /* Foundation */,
+			);
+			path = "Random Data Generation";
+			sourceTree = "<group>";
+		};
 		CA63753B208A6E0900536BE2 /* Interactor Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -6288,9 +6298,7 @@
 			children = (
 				CAEA0E85216BEF7C00B0C7A6 /* TestUtilities.h */,
 				CAEA0E86216BEF7C00B0C7A6 /* Info.plist */,
-				CA71A34D2040349300C847C3 /* RandomRangedValueProviding.swift */,
-				CA71A347204031F700C847C3 /* RandomValueProviding.swift */,
-				CA71A3532041B6DA00C847C3 /* Foundation */,
+				CA621342221EFC6600E88880 /* Random Data Generation */,
 			);
 			path = TestUtilities;
 			sourceTree = "<group>";
