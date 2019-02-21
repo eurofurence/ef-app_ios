@@ -25,7 +25,11 @@ class KeychainCredentialStoreTests: XCTestCase {
         store.store(credential)
         store = makeStore()
 
-        XCTAssertEqual(credential, store.persistedCredential)
+        let persistedCredential: Credential? = store.persistedCredential
+        XCTAssertEqual(credential.username, persistedCredential?.username)
+        XCTAssertEqual(credential.registrationNumber, persistedCredential?.registrationNumber)
+        XCTAssertEqual(credential.authenticationToken, persistedCredential?.authenticationToken)
+        XCTAssertEqual(credential.tokenExpiryDate, persistedCredential?.tokenExpiryDate)
     }
 
     func testStoringLoginThenDeletingItShouldReturnNilToken() {

@@ -207,7 +207,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
     }
 
     func testUpdateExistingEventsByIdentifier() {
-        let event = EventCharacteristics.random
+        var event = EventCharacteristics.random
         store.performTransaction { (transaction) in
             transaction.saveEvents([event])
         }
