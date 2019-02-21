@@ -11,34 +11,41 @@ import XCTest
 
 class WhenFavouritingThenUnfavouritingEvent: XCTestCase {
 
-    func testObserversShouldBeToldTheEventIsUnfavourited() {
-        let context = ApplicationTestBuilder().build()
+    var context: ApplicationTestBuilder.Context!
+    var event: Event!
+    var eventObserver: CapturingEventObserver!
+
+    override func setUp() {
+        super.setUp()
+
+        context = ApplicationTestBuilder().build()
         let modelCharacteristics = ModelCharacteristics.randomWithoutDeletions
         let randomEvent = modelCharacteristics.events.changed.randomElement().element
         context.performSuccessfulSync(response: modelCharacteristics)
         let identifier = EventIdentifier(randomEvent.identifier)
-        let event = context.eventsService.fetchEvent(identifier: identifier)
-        let eventObserver = CapturingEventObserver()
-        event?.add(eventObserver)
+        event = context.eventsService.fetchEvent(identifier: identifier)
+        eventObserver = CapturingEventObserver()
+    }
 
-        event?.favourite()
-        event?.unfavourite()
+    private func registerEventObserver() {
+        event.add(eventObserver)
+    }
+
+    private func favouriteThenUnfavouriteEvent() {
+        event.favourite()
+        event.unfavourite()
+    }
+
+    func testObserversShouldBeToldTheEventIsUnfavourited() {
+        registerEventObserver()
+        favouriteThenUnfavouriteEvent()
 
         XCTAssertEqual(eventObserver.eventFavouriteState, .notFavourite)
     }
 
     func testNewlyAddedObserversShouldNotBeToldTheEventIsFavourited() {
-        let context = ApplicationTestBuilder().build()
-        let modelCharacteristics = ModelCharacteristics.randomWithoutDeletions
-        let randomEvent = modelCharacteristics.events.changed.randomElement().element
-        context.performSuccessfulSync(response: modelCharacteristics)
-        let identifier = EventIdentifier(randomEvent.identifier)
-        let event = context.eventsService.fetchEvent(identifier: identifier)
-        let eventObserver = CapturingEventObserver()
-
-        event?.favourite()
-        event?.unfavourite()
-        event?.add(eventObserver)
+        favouriteThenUnfavouriteEvent()
+        registerEventObserver()
 
         XCTAssertEqual(eventObserver.eventFavouriteState, .notFavourite)
     }

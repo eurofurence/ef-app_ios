@@ -79,10 +79,8 @@ class EventImpl: Event {
     }
 
     private var observers: [EventObserver] = []
-
     func add(_ observer: EventObserver) {
         observers.append(observer)
-
         provideFavouritedStateToObserver(observer)
     }
 
