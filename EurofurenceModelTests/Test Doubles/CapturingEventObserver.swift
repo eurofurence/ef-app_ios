@@ -21,4 +21,8 @@ class CapturingEventObserver: EventObserver {
         eventFavouriteState = .favourite
     }
 
+    func eventDidBecomeUnfavourite(_ event: Event) {
+        eventFavouriteState = .notFavourite
+    }
+
 }

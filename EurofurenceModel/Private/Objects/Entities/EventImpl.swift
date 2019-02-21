@@ -79,27 +79,49 @@ class EventImpl: Event {
     }
 
     private var observers: [EventObserver] = []
+
     func add(_ observer: EventObserver) {
         observers.append(observer)
 
-        if isFavourite {
-            observer.eventDidBecomeFavourite(self)
+        provideFavouritedStateToObserver(observer)
+    }
+
+    private var isFavourite: Bool {
+        didSet {
+            postFavouriteStateChangedEvent()
         }
     }
 
-    private var isFavourite: Bool
-
     func favourite() {
         isFavourite = true
-
-        let event = DomainEvent.FavouriteEvent(identifier: identifier)
-        eventBus.post(event)
-
-        observers.forEach({ $0.eventDidBecomeFavourite(self) })
+        notifyObserversFavouritedStateDidChange()
     }
 
     func unfavourite() {
-        let event = DomainEvent.UnfavouriteEvent(identifier: identifier)
+        isFavourite = false
+        notifyObserversFavouritedStateDidChange()
+    }
+
+    private func notifyObserversFavouritedStateDidChange() {
+        observers.forEach(provideFavouritedStateToObserver)
+    }
+
+    private func provideFavouritedStateToObserver(_ observer: EventObserver) {
+        if isFavourite {
+            observer.eventDidBecomeFavourite(self)
+        } else {
+            observer.eventDidBecomeUnfavourite(self)
+        }
+    }
+
+    private func postFavouriteStateChangedEvent() {
+        let event: Any
+        if isFavourite {
+            event = DomainEvent.FavouriteEvent(identifier: identifier)
+        } else {
+            event = DomainEvent.UnfavouriteEvent(identifier: identifier)
+        }
+
         eventBus.post(event)
     }
 

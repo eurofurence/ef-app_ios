@@ -11,7 +11,7 @@ import XCTest
 
 class WhenObservingEvent_ThatIsNotFavourite: XCTestCase {
 
-    func testTheObserverShouldNotBeToldTheEventIsFavourited() {
+    func testTheObserverShouldBeToldTheEventIsNotFavourited() {
         let response = ModelCharacteristics.randomWithoutDeletions
         let dataStore = CapturingDataStore(response: response)
         let context = ApplicationTestBuilder().with(dataStore).build()
@@ -20,7 +20,7 @@ class WhenObservingEvent_ThatIsNotFavourite: XCTestCase {
         let observer = CapturingEventObserver()
         event?.add(observer)
 
-        XCTAssertEqual(observer.eventFavouriteState, .unset)
+        XCTAssertEqual(observer.eventFavouriteState, .notFavourite)
     }
 
 }

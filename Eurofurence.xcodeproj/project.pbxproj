@@ -501,6 +501,7 @@
 		CA60BFE8207B88ED00697566 /* WhenBuildingNewsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFE7207B88ED00697566 /* WhenBuildingNewsPresenter.swift */; };
 		CA60BFFE207CDC1700697566 /* FakeAuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFFD207CDC1700697566 /* FakeAuthenticationService.swift */; };
 		CA60C002207F7D2100697566 /* WhenNewsSceneDidLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60C001207F7D2100697566 /* WhenNewsSceneDidLoad.swift */; };
+		CA621340221EDE7800E88880 /* WhenFavouritingThenUnfavouritingEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA62133F221EDE7800E88880 /* WhenFavouritingThenUnfavouritingEvent.swift */; };
 		CA63753D208A6E4900536BE2 /* WhenLoggedOutBeforeConvention_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63753C208A6E4900536BE2 /* WhenLoggedOutBeforeConvention_NewsInteractorShould.swift */; };
 		CA637540208CBB0E00536BE2 /* CapturingNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63753F208CBB0E00536BE2 /* CapturingNavigationController.swift */; };
 		CA637542208CBB2400536BE2 /* StubNavigationControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637541208CBB2400536BE2 /* StubNavigationControllerFactory.swift */; };
@@ -2080,6 +2081,7 @@
 		CA60BFE7207B88ED00697566 /* WhenBuildingNewsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBuildingNewsPresenter.swift; sourceTree = "<group>"; };
 		CA60BFFD207CDC1700697566 /* FakeAuthenticationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeAuthenticationService.swift; sourceTree = "<group>"; };
 		CA60C001207F7D2100697566 /* WhenNewsSceneDidLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenNewsSceneDidLoad.swift; sourceTree = "<group>"; };
+		CA62133F221EDE7800E88880 /* WhenFavouritingThenUnfavouritingEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFavouritingThenUnfavouritingEvent.swift; sourceTree = "<group>"; };
 		CA63753C208A6E4900536BE2 /* WhenLoggedOutBeforeConvention_NewsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLoggedOutBeforeConvention_NewsInteractorShould.swift; sourceTree = "<group>"; };
 		CA63753F208CBB0E00536BE2 /* CapturingNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingNavigationController.swift; sourceTree = "<group>"; };
 		CA637541208CBB2400536BE2 /* StubNavigationControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubNavigationControllerFactory.swift; sourceTree = "<group>"; };
@@ -5775,6 +5777,7 @@
 				CABA83F920CE9D2500DD0795 /* WhenUnfavouritingEvent_ApplicationShould.swift */,
 				CA23587B221C8BDA0044B1FC /* WhenObservingEvent_ThatIsFavourite.swift */,
 				CA23587D221C8DF10044B1FC /* WhenObservingEvent_ThatIsFavourite_FromPreviousSession.swift */,
+				CA62133F221EDE7800E88880 /* WhenFavouritingThenUnfavouritingEvent.swift */,
 			);
 			path = Favourites;
 			sourceTree = "<group>";
@@ -8676,6 +8679,7 @@
 				CAEA1013216E1CE800B0C7A6 /* WhenRestrictingEventsToSpecificDay_ScheduleShould.swift in Sources */,
 				CAEA108C216E819B00B0C7A6 /* FakeLongRunningTaskManager.swift in Sources */,
 				CAEA0FBB216E1CC000B0C7A6 /* WhenToldToOpenDealersTwitter_WhenApplicationCanHandleURL_ApplicationShould.swift in Sources */,
+				CA621340221EDE7800E88880 /* WhenFavouritingThenUnfavouritingEvent.swift in Sources */,
 				CAEA0FB0216E1CC000B0C7A6 /* WhenDealersHaveCaseVaryingNames_ApplicationShould.swift in Sources */,
 				CAEA0FCD216E1CC000B0C7A6 /* WhenDeletingMap_AfterSuccessfulSync_ApplicationShould.swift in Sources */,
 				CAEA0FA9216E1CC000B0C7A6 /* WhenObservingConventionCountdown_AndSignificantTimeChangeOccurs_EurofurenceApplicationShould.swift in Sources */,
