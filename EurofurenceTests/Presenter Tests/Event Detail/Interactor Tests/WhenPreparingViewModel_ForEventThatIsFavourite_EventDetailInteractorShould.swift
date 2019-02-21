@@ -15,8 +15,8 @@ class WhenPreparingViewModel_ForEventThatIsFavourite_EventDetailInteractorShould
 
     func testTellTheDelegateItIsAFavourite() {
         let event = StubEvent.random
-        let service = FakeEventsService(favourites: [event.identifier])
-        let context = EventDetailInteractorTestBuilder().with(service).build(for: event)
+        event.favourite()
+        let context = EventDetailInteractorTestBuilder().build(for: event)
         let delegate = CapturingEventDetailViewModelDelegate()
         context.viewModel?.setDelegate(delegate)
 
@@ -25,8 +25,8 @@ class WhenPreparingViewModel_ForEventThatIsFavourite_EventDetailInteractorShould
 
     func testNotTellTheDelegateItIsUnfavourited() {
         let event = StubEvent.random
-        let service = FakeEventsService(favourites: [event.identifier])
-        let context = EventDetailInteractorTestBuilder().with(service).build(for: event)
+        event.favourite()
+        let context = EventDetailInteractorTestBuilder().build(for: event)
         let delegate = CapturingEventDetailViewModelDelegate()
         context.viewModel?.setDelegate(delegate)
 

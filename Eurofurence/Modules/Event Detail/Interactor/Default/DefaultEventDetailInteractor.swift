@@ -15,7 +15,7 @@ private protocol EventDetailViewModelComponent {
 
 class DefaultEventDetailInteractor: EventDetailInteractor {
 
-    private class ViewModel: EventDetailViewModel, EventsServiceObserver {
+    private class ViewModel: EventDetailViewModel, EventObserver {
 
         struct SummaryComponent: EventDetailViewModelComponent {
 
@@ -103,6 +103,14 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
 
         }
 
+        func eventDidBecomeFavourite(_ event: Event) {
+            delegate?.eventFavourited()
+        }
+
+        func eventDidBecomeUnfavourite(_ event: Event) {
+            delegate?.eventUnfavourited()
+        }
+
         private let components: [EventDetailViewModelComponent]
         private let event: Event
         private let eventsService: EventsService
@@ -114,8 +122,6 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
             self.components = components
             self.event = event
             self.eventsService = eventsService
-
-            eventsService.add(self)
         }
 
         var numberOfComponents: Int {
@@ -125,7 +131,7 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
         private var delegate: EventDetailViewModelDelegate?
         func setDelegate(_ delegate: EventDetailViewModelDelegate) {
             self.delegate = delegate
-            informDelegateAboutEventFavouriteState()
+            event.add(self)
         }
 
         func describe(componentAt index: Int, to visitor: EventDetailViewModelVisitor) {
@@ -135,29 +141,10 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
 
         func favourite() {
             event.favourite()
-            delegate?.eventFavourited()
         }
 
         func unfavourite() {
             event.unfavourite()
-            delegate?.eventUnfavourited()
-        }
-
-        func eventsDidChange(to events: [Event]) { }
-        func runningEventsDidChange(to events: [Event]) { }
-        func upcomingEventsDidChange(to events: [Event]) { }
-
-        func favouriteEventsDidChange(_ identifiers: [EventIdentifier]) {
-            isFavourite = identifiers.contains(event.identifier)
-            informDelegateAboutEventFavouriteState()
-        }
-
-        private func informDelegateAboutEventFavouriteState() {
-            if isFavourite {
-                delegate?.eventFavourited()
-            } else {
-                delegate?.eventUnfavourited()
-            }
         }
 
     }

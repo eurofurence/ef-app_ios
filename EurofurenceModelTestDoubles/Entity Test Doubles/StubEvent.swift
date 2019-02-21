@@ -83,6 +83,7 @@ public final class StubEvent: Event {
     private var observers: [EventObserver] = []
     public func add(_ observer: EventObserver) {
         observers.append(observer)
+        notifyObserverOfCurrentFavouriteStateAsPerEventContract(observer)
     }
 
     private(set) public var favouritedState: FavouritedState
@@ -93,6 +94,15 @@ public final class StubEvent: Event {
 
     public func unfavourite() {
         favouritedState = .unfavourited
+        observers.forEach({ $0.eventDidBecomeUnfavourite(self) })
+    }
+
+    private func notifyObserverOfCurrentFavouriteStateAsPerEventContract(_ observer: EventObserver) {
+        if favouritedState == .favourited {
+            observer.eventDidBecomeFavourite(self)
+        } else {
+            observer.eventDidBecomeUnfavourite(self)
+        }
     }
 
 }
