@@ -323,4 +323,22 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
 
     }
 
+    private struct ScheduleEventViewModel: ScheduleEventViewModelProtocol {
+
+        var title: String
+        var startTime: String
+        var endTime: String
+        var location: String
+        var bannerGraphicPNGData: Data?
+        var isFavourite: Bool
+        var isSponsorOnly: Bool
+        var isSuperSponsorOnly: Bool
+        var isArtShow: Bool
+        var isKageEvent: Bool
+        var isDealersDenEvent: Bool
+        var isMainStageEvent: Bool
+        var isPhotoshootEvent: Bool
+
+    }
+
 }

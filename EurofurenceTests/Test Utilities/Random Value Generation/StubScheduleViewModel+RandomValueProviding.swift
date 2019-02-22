@@ -81,26 +81,6 @@ extension StubScheduleEventViewModel: RandomValueProviding {
 
 }
 
-extension ScheduleEventViewModel: RandomValueProviding {
-
-    public static var random: ScheduleEventViewModel {
-        return ScheduleEventViewModel(title: .random,
-                                      startTime: .random,
-                                      endTime: .random,
-                                      location: .random,
-                                      bannerGraphicPNGData: .random,
-                                      isFavourite: .random,
-                                      isSponsorOnly: .random,
-                                      isSuperSponsorOnly: .random,
-                                      isArtShow: .random,
-                                      isKageEvent: .random,
-                                      isDealersDenEvent: .random,
-                                      isMainStageEvent: .random,
-                                      isPhotoshootEvent: .random)
-    }
-
-}
-
 extension ScheduleDayViewModel: RandomValueProviding {
 
     public static var random: ScheduleDayViewModel {

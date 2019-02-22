@@ -110,22 +110,6 @@ extension ScheduleInteractorTestBuilder.Context {
         return searchViewModel
     }
 
-    func makeExpectedEventViewModel(from event: Event) -> ScheduleEventViewModel {
-        return ScheduleEventViewModel(title: event.title,
-                                      startTime: hoursFormatter.hoursString(from: event.startDate),
-                                      endTime: hoursFormatter.hoursString(from: event.endDate),
-                                      location: event.room.name,
-                                      bannerGraphicPNGData: event.bannerGraphicPNGData,
-                                      isFavourite: eventsService.favourites.contains(event.identifier),
-                                      isSponsorOnly: event.isSponsorOnly,
-                                      isSuperSponsorOnly: event.isSuperSponsorOnly,
-                                      isArtShow: event.isArtShow,
-                                      isKageEvent: event.isKageEvent,
-                                      isDealersDenEvent: event.isDealersDen,
-                                      isMainStageEvent: event.isMainStage,
-                                      isPhotoshootEvent: event.isPhotoshoot)
-    }
-
     func makeExpectedDayViewModel(from day: Day) -> ScheduleDayViewModel {
         return ScheduleDayViewModel(title: shortFormDateFormatter.dateString(from: day.date))
     }
