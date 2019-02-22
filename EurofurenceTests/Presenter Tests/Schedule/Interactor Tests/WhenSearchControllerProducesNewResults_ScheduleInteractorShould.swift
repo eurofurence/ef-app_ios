@@ -31,22 +31,21 @@ class WhenSearchControllerProducesNewResults_ScheduleInteractorShould: XCTestCas
         let secondGroupEvents = [d, e].sorted(by: { $0.title < $1.title })
 
         let results = firstGroupEvents + secondGroupEvents
+        let favouriteEvent = firstGroupEvents.randomElement().element
+        favouriteEvent.favourite()
         let eventsService = FakeEventsService()
-        eventsService.favourites = [firstGroupEvents.randomElement().element.identifier]
+        eventsService.favourites = [favouriteEvent.identifier]
 
         let context = ScheduleInteractorTestBuilder().with(eventsService).build()
         context.makeSearchViewModel()
 
         eventsService.lastProducedSearchController?.simulateSearchResultsChanged(results)
 
-        let expectedEventViewModels = [ScheduleEventGroupViewModel(title: context.shortFormDayAndTimeFormatter.dayAndHoursString(from: firstGroupDate),
-                                                                   events: firstGroupEvents.map(context.makeExpectedEventViewModel)),
-                                       ScheduleEventGroupViewModel(title: context.shortFormDayAndTimeFormatter.dayAndHoursString(from: secondGroupDate),
-                                                                   events: secondGroupEvents.map(context.makeExpectedEventViewModel))
-        ]
+        let groups = [ScheduleEventGroupViewModelAssertion.Group(date: firstGroupDate, events: firstGroupEvents),
+                      ScheduleEventGroupViewModelAssertion.Group(date: secondGroupDate, events: secondGroupEvents)]
 
-        ScheduleEventGroupViewModelAssertion()
-            .assertEventGroupViewModels(expectedEventViewModels, isEqualTo: context.searchViewModelDelegate.capturedSearchResults)
+        ScheduleEventGroupViewModelAssertion.assertionForSearchEventViewModels(context: context)
+            .assertEventGroupViewModels(context.searchViewModelDelegate.capturedSearchResults, isModeledBy: groups)
     }
 
     func testProvideTheExpectedIdentifier() {

@@ -7,25 +7,36 @@
 //
 
 @testable import Eurofurence
+import EurofurenceModelTestDoubles
 import TestUtilities
 
 class ScheduleEventViewModelAssertion: Assertion {
 
-    func assertEventViewModel(_ expected: ScheduleEventViewModelProtocol,
-                              isEqualTo actual: ScheduleEventViewModelProtocol) {
-        assert(expected.title, isEqualTo: actual.title)
-        assert(expected.startTime, isEqualTo: actual.startTime)
-        assert(expected.endTime, isEqualTo: actual.endTime)
-        assert(expected.location, isEqualTo: actual.location)
-        assert(expected.bannerGraphicPNGData, isEqualTo: actual.bannerGraphicPNGData)
-        assert(expected.isFavourite, isEqualTo: actual.isFavourite)
-        assert(expected.isSponsorOnly, isEqualTo: actual.isSponsorOnly)
-        assert(expected.isSuperSponsorOnly, isEqualTo: actual.isSuperSponsorOnly)
-        assert(expected.isArtShow, isEqualTo: actual.isArtShow)
-        assert(expected.isKageEvent, isEqualTo: actual.isKageEvent)
-        assert(expected.isDealersDenEvent, isEqualTo: actual.isDealersDenEvent)
-        assert(expected.isMainStageEvent, isEqualTo: actual.isMainStageEvent)
-        assert(expected.isPhotoshootEvent, isEqualTo: actual.isPhotoshootEvent)
+    private let context: ScheduleInteractorTestBuilder.Context
+
+    init(context: ScheduleInteractorTestBuilder.Context, file: StaticString = #file, line: UInt = #line) {
+        self.context = context
+        super.init(file: file, line: line)
+    }
+
+    func assertEventViewModel(_ viewModel: ScheduleEventViewModelProtocol,
+                              isModeledBy event: StubEvent) {
+        let expectedStartTime = context.hoursFormatter.hoursString(from: event.startDate)
+        let expectedEndTime = context.hoursFormatter.hoursString(from: event.endDate)
+
+        assert(viewModel.title, isEqualTo: event.title)
+        assert(viewModel.startTime, isEqualTo: expectedStartTime)
+        assert(viewModel.endTime, isEqualTo: expectedEndTime)
+        assert(viewModel.location, isEqualTo: event.room.name)
+        assert(viewModel.bannerGraphicPNGData, isEqualTo: event.bannerGraphicPNGData)
+        assert(viewModel.isFavourite, isEqualTo: event.favouritedState == .favourited)
+        assert(viewModel.isSponsorOnly, isEqualTo: event.isSponsorOnly)
+        assert(viewModel.isSuperSponsorOnly, isEqualTo: event.isSuperSponsorOnly)
+        assert(viewModel.isArtShow, isEqualTo: event.isArtShow)
+        assert(viewModel.isKageEvent, isEqualTo: event.isKageEvent)
+        assert(viewModel.isDealersDenEvent, isEqualTo: event.isDealersDen)
+        assert(viewModel.isMainStageEvent, isEqualTo: event.isMainStage)
+        assert(viewModel.isPhotoshootEvent, isEqualTo: event.isPhotoshoot)
     }
 
 }

@@ -13,12 +13,10 @@ import XCTest
 
 class WhenGroupingEventsByStartTime_ScheduleInteractorShould: XCTestCase {
 
-    var firstGroupEvents: [Event]!
-    var secondGroupEvents: [Event]!
     var events: [Event]!
     var eventsService: FakeEventsService!
     var context: ScheduleInteractorTestBuilder.Context!
-    var expectedEventViewModels: [ScheduleEventGroupViewModel]!
+    var expectedGroups: [ScheduleEventGroupViewModelAssertion.Group]!
 
     override func setUp() {
         super.setUp()
@@ -30,24 +28,22 @@ class WhenGroupingEventsByStartTime_ScheduleInteractorShould: XCTestCase {
         b.startDate = firstGroupDate
         let c = StubEvent.random
         c.startDate = firstGroupDate
-        firstGroupEvents = [a, b, c].sorted(by: { $0.title < $1.title })
+        let firstGroupEvents = [a, b, c].sorted(by: { $0.title < $1.title })
 
         let secondGroupDate = firstGroupDate.addingTimeInterval(100)
         let d = StubEvent.random
         d.startDate = secondGroupDate
         let e = StubEvent.random
         e.startDate = secondGroupDate
-        secondGroupEvents = [d, e].sorted(by: { $0.title < $1.title })
+        let secondGroupEvents = [d, e].sorted(by: { $0.title < $1.title })
 
         events = firstGroupEvents + secondGroupEvents
         eventsService = FakeEventsService()
 
         context = ScheduleInteractorTestBuilder().with(eventsService).build()
-        expectedEventViewModels = [ScheduleEventGroupViewModel(title: context.hoursFormatter.hoursString(from: firstGroupDate),
-                                                               events: firstGroupEvents.map(context.makeExpectedEventViewModel)),
-                                   ScheduleEventGroupViewModel(title: context.hoursFormatter.hoursString(from: secondGroupDate),
-                                                               events: secondGroupEvents.map(context.makeExpectedEventViewModel))
-        ]
+
+        expectedGroups = [ScheduleEventGroupViewModelAssertion.Group(date: firstGroupDate, events: firstGroupEvents),
+                          ScheduleEventGroupViewModelAssertion.Group(date: secondGroupDate, events: secondGroupEvents)]
     }
 
     private func simulateEventsChanged() {
@@ -58,23 +54,23 @@ class WhenGroupingEventsByStartTime_ScheduleInteractorShould: XCTestCase {
         simulateEventsChanged()
         context.makeViewModel()
 
-        ScheduleEventGroupViewModelAssertion()
-            .assertEventGroupViewModels(expectedEventViewModels, isEqualTo: context.eventsViewModels)
+        ScheduleEventGroupViewModelAssertion.assertionForEventViewModels(context: context)
+            .assertEventGroupViewModels(context.eventsViewModels, isModeledBy: expectedGroups)
     }
 
     func testProvideUpdatedGroupsToDelegate() {
         context.makeViewModel()
         simulateEventsChanged()
 
-        ScheduleEventGroupViewModelAssertion()
-            .assertEventGroupViewModels(expectedEventViewModels, isEqualTo: context.eventsViewModels)
+        ScheduleEventGroupViewModelAssertion.assertionForEventViewModels(context: context)
+            .assertEventGroupViewModels(context.eventsViewModels, isModeledBy: expectedGroups)
     }
 
     func testProvideTheExpectedIdentifier() {
         simulateEventsChanged()
         let viewModel = context.makeViewModel()
 
-        let randomEventInGroupOne = firstGroupEvents.randomElement()
+        let randomEventInGroupOne = expectedGroups[0].events.randomElement()
         let indexPath = IndexPath(item: randomEventInGroupOne.index, section: 0)
         let expected = randomEventInGroupOne.element.identifier
         let actual = viewModel?.identifierForEvent(at: indexPath)
