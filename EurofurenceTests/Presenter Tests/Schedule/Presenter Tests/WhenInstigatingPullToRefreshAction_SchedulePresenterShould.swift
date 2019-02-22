@@ -12,33 +12,30 @@ import XCTest
 
 class WhenInstigatingPullToRefreshAction_SchedulePresenterShould: XCTestCase {
 
-    func testTellTheViewModelToRefresh() {
-        let viewModel = CapturingScheduleViewModel.random
+    var context: SchedulePresenterTestBuilder.Context!
+    var viewModel: CapturingScheduleViewModel!
+
+    override func setUp() {
+        super.setUp()
+
+        viewModel = CapturingScheduleViewModel.random
         let interactor = FakeScheduleInteractor(viewModel: viewModel)
-        let context = SchedulePresenterTestBuilder().with(interactor).build()
+        context = SchedulePresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
         context.simulateSceneDidPerformRefreshAction()
+    }
 
+    func testTellTheViewModelToRefresh() {
         XCTAssertTrue(viewModel.didPerformRefresh)
     }
 
     func testShowTheRefreshIndicatorWhenRefreshBegins() {
-        let viewModel = CapturingScheduleViewModel.random
-        let interactor = FakeScheduleInteractor(viewModel: viewModel)
-        let context = SchedulePresenterTestBuilder().with(interactor).build()
-        context.simulateSceneDidLoad()
-        context.simulateSceneDidPerformRefreshAction()
         viewModel.simulateScheduleRefreshDidBegin()
 
         XCTAssertTrue(context.scene.didShowRefreshIndicator)
     }
 
     func testHideTheRefreshIndicatorWhenRefreshFinishes() {
-        let viewModel = CapturingScheduleViewModel.random
-        let interactor = FakeScheduleInteractor(viewModel: viewModel)
-        let context = SchedulePresenterTestBuilder().with(interactor).build()
-        context.simulateSceneDidLoad()
-        context.simulateSceneDidPerformRefreshAction()
         viewModel.simulateScheduleRefreshDidBegin()
         viewModel.simulateScheduleRefreshDidFinish()
 
