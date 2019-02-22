@@ -31,31 +31,16 @@ class WhenBindingEvent_SchedulePresenterShould: XCTestCase {
         context.bind(component, forEventAt: indexPath)
     }
 
-    func testBindTheEventNameOntoTheComponent() {
+    func testBindTheEventAttributesOntoTheComponent() {
         XCTAssertEqual(eventViewModel.title, component.capturedEventTitle)
-    }
-
-    func testBindTheStartTimeFromTheEventOntoTheEventScene() {
         XCTAssertEqual(eventViewModel.startTime, component.capturedStartTime)
-    }
-
-    func testBindTheEndTimeFromTheEventOntoTheEventScene() {
         XCTAssertEqual(eventViewModel.endTime, component.capturedEndTime)
-    }
-
-    func testBindTheEventLocationFromTheEventOntoTheEventScene() {
         XCTAssertEqual(eventViewModel.location, component.capturedLocation)
-    }
-
-    func testBindTheBannerGraphicDataOntoTheEventScene() {
         XCTAssertEqual(eventViewModel.bannerGraphicPNGData, component.capturedBannerGraphicPNGData)
     }
 
     func testShowTheBanner() {
         XCTAssertTrue(component.didShowBanner)
-    }
-
-    func testNotHideTheBanner() {
         XCTAssertFalse(component.didHideBanner)
     }
 
