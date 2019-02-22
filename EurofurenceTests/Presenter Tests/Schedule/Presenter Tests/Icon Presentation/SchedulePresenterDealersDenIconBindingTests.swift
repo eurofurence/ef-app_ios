@@ -13,7 +13,7 @@ import XCTest
 class SchedulePresenterDealersDenIconBindingTests: XCTestCase {
 
     func testShowTheDealersDenIndicator() {
-        var eventViewModel = ScheduleEventViewModel.random
+        let eventViewModel = StubScheduleEventViewModel.random
         eventViewModel.isDealersDenEvent = true
         let component = SchedulePresenterTestBuilder.buildForTestingBindingOfEvent(eventViewModel)
 
@@ -22,7 +22,7 @@ class SchedulePresenterDealersDenIconBindingTests: XCTestCase {
     }
 
     func testHideTheDealersDenIndicator() {
-        var eventViewModel = ScheduleEventViewModel.random
+        let eventViewModel = StubScheduleEventViewModel.random
         eventViewModel.isDealersDenEvent = false
         let component = SchedulePresenterTestBuilder.buildForTestingBindingOfEvent(eventViewModel)
 

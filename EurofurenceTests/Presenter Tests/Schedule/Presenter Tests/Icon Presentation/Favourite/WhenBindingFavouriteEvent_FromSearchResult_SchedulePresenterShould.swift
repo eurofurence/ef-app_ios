@@ -13,7 +13,7 @@ import XCTest
 class WhenBindingFavouriteEvent_FromSearchResult_SchedulePresenterShould: XCTestCase {
 
     func testTellTheSceneToShowTheFavouriteEventIndicator() {
-        var searchResult = ScheduleEventViewModel.random
+        let searchResult = StubScheduleEventViewModel.random
         searchResult.isFavourite = true
         let component = SchedulePresenterTestBuilder.buildForTestingBindingOfSearchResult(searchResult)
 
@@ -21,7 +21,7 @@ class WhenBindingFavouriteEvent_FromSearchResult_SchedulePresenterShould: XCTest
     }
 
     func testNotTellTheSceneToHideTheFavouriteEventIndicator() {
-        var searchResult = ScheduleEventViewModel.random
+        let searchResult = StubScheduleEventViewModel.random
         searchResult.isFavourite = true
         let component = SchedulePresenterTestBuilder.buildForTestingBindingOfSearchResult(searchResult)
 
@@ -33,7 +33,7 @@ class WhenBindingFavouriteEvent_FromSearchResult_SchedulePresenterShould: XCTest
         let interactor = FakeScheduleInteractor(searchViewModel: searchViewModel)
         let context = SchedulePresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
-        var searchResult = ScheduleEventViewModel.random
+        let searchResult = StubScheduleEventViewModel.random
         searchResult.isFavourite = true
         let results = [ScheduleEventGroupViewModel(title: .random, events: [searchResult])]
         searchViewModel.simulateSearchResultsUpdated(results)
@@ -48,7 +48,7 @@ class WhenBindingFavouriteEvent_FromSearchResult_SchedulePresenterShould: XCTest
         let interactor = FakeScheduleInteractor(searchViewModel: searchViewModel)
         let context = SchedulePresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
-        var searchResult = ScheduleEventViewModel.random
+        let searchResult = StubScheduleEventViewModel.random
         searchResult.isFavourite = true
         let results = [ScheduleEventGroupViewModel(title: .random, events: [searchResult])]
         searchViewModel.simulateSearchResultsUpdated(results)

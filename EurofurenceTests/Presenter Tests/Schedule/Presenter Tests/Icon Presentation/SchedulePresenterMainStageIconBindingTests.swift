@@ -13,7 +13,7 @@ import XCTest
 class SchedulePresenterMainStageIconBindingTests: XCTestCase {
 
     func testShowTheMainStageIndicator() {
-        var eventViewModel = ScheduleEventViewModel.random
+        let eventViewModel = StubScheduleEventViewModel.random
         eventViewModel.isMainStageEvent = true
         let component = SchedulePresenterTestBuilder.buildForTestingBindingOfEvent(eventViewModel)
 
@@ -22,7 +22,7 @@ class SchedulePresenterMainStageIconBindingTests: XCTestCase {
     }
 
     func testHideTheMainStageIndicator() {
-        var eventViewModel = ScheduleEventViewModel.random
+        let eventViewModel = StubScheduleEventViewModel.random
         eventViewModel.isMainStageEvent = false
         let component = SchedulePresenterTestBuilder.buildForTestingBindingOfEvent(eventViewModel)
 

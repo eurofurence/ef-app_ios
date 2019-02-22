@@ -13,7 +13,7 @@ import XCTest
 class SchedulePresenterKageIconBindingTests: XCTestCase {
 
     func testShowTheKageIndicator() {
-        var eventViewModel = ScheduleEventViewModel.random
+        let eventViewModel = StubScheduleEventViewModel.random
         eventViewModel.isKageEvent = true
         let component = SchedulePresenterTestBuilder.buildForTestingBindingOfEvent(eventViewModel)
 
@@ -22,7 +22,7 @@ class SchedulePresenterKageIconBindingTests: XCTestCase {
     }
 
     func testHideTheKageIndicator() {
-        var eventViewModel = ScheduleEventViewModel.random
+        let eventViewModel = StubScheduleEventViewModel.random
         eventViewModel.isKageEvent = false
         let component = SchedulePresenterTestBuilder.buildForTestingBindingOfEvent(eventViewModel)
 

@@ -52,7 +52,7 @@ class SchedulePresenterTestBuilder {
 
 extension SchedulePresenterTestBuilder {
 
-    static func buildForTestingBindingOfEvent(_ event: ScheduleEventViewModel) -> CapturingScheduleEventComponent {
+    static func buildForTestingBindingOfEvent(_ event: ScheduleEventViewModelProtocol) -> CapturingScheduleEventComponent {
         let eventGroupViewModel = ScheduleEventGroupViewModel(title: .random, events: [event])
         let viewModel = CapturingScheduleViewModel(days: .random, events: [eventGroupViewModel], currentDay: 0)
         let interactor = FakeScheduleInteractor(viewModel: viewModel)
@@ -69,7 +69,7 @@ extension SchedulePresenterTestBuilder {
 
 extension SchedulePresenterTestBuilder {
 
-    static func buildForTestingBindingOfSearchResult(_ event: ScheduleEventViewModel) -> CapturingScheduleEventComponent {
+    static func buildForTestingBindingOfSearchResult(_ event: ScheduleEventViewModelProtocol) -> CapturingScheduleEventComponent {
         let searchViewModel = CapturingScheduleSearchViewModel()
         let interactor = FakeScheduleInteractor(searchViewModel: searchViewModel)
         let context = SchedulePresenterTestBuilder().with(interactor).build()

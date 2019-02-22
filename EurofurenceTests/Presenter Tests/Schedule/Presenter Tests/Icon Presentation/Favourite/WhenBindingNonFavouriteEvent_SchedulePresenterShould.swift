@@ -13,7 +13,7 @@ import XCTest
 class WhenBindingNonFavouriteEvent_SchedulePresenterShould: XCTestCase {
 
     func testNotTellTheSceneToShowTheFavouriteEventIndicator() {
-        var eventViewModel = ScheduleEventViewModel.random
+        let eventViewModel = StubScheduleEventViewModel.random
         eventViewModel.isFavourite = false
         let component = SchedulePresenterTestBuilder.buildForTestingBindingOfEvent(eventViewModel)
 
@@ -21,7 +21,7 @@ class WhenBindingNonFavouriteEvent_SchedulePresenterShould: XCTestCase {
     }
 
     func testTellTheSceneToHideTheFavouriteEventIndicator() {
-        var eventViewModel = ScheduleEventViewModel.random
+        let eventViewModel = StubScheduleEventViewModel.random
         eventViewModel.isFavourite = false
         let component = SchedulePresenterTestBuilder.buildForTestingBindingOfEvent(eventViewModel)
 
@@ -29,14 +29,14 @@ class WhenBindingNonFavouriteEvent_SchedulePresenterShould: XCTestCase {
     }
 
     func testSupplyFavouriteActionInformation() {
-        var eventViewModel = ScheduleEventViewModel.random
+        let eventViewModel = StubScheduleEventViewModel.random
         eventViewModel.isFavourite = false
         let eventGroupViewModel = ScheduleEventGroupViewModel(title: .random, events: [eventViewModel])
         let viewModel = CapturingScheduleViewModel(days: .random, events: [eventGroupViewModel], currentDay: 0)
         let interactor = FakeScheduleInteractor(viewModel: viewModel)
         let context = SchedulePresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
-        var searchResult = ScheduleEventViewModel.random
+        let searchResult = StubScheduleEventViewModel.random
         searchResult.isFavourite = false
         let indexPath = IndexPath(item: 0, section: 0)
         let action = context.scene.binder?.eventActionForComponent(at: indexPath)
@@ -45,14 +45,14 @@ class WhenBindingNonFavouriteEvent_SchedulePresenterShould: XCTestCase {
     }
 
     func testTellViewModelToFavouriteEventAtIndexPathWhenInvokingAction() {
-        var eventViewModel = ScheduleEventViewModel.random
+        let eventViewModel = StubScheduleEventViewModel.random
         eventViewModel.isFavourite = false
         let eventGroupViewModel = ScheduleEventGroupViewModel(title: .random, events: [eventViewModel])
         let viewModel = CapturingScheduleViewModel(days: .random, events: [eventGroupViewModel], currentDay: 0)
         let interactor = FakeScheduleInteractor(viewModel: viewModel)
         let context = SchedulePresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
-        var searchResult = ScheduleEventViewModel.random
+        let searchResult = StubScheduleEventViewModel.random
         searchResult.isFavourite = false
         let indexPath = IndexPath(item: 0, section: 0)
         let action = context.scene.binder?.eventActionForComponent(at: indexPath)

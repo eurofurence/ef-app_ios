@@ -13,7 +13,7 @@ import XCTest
 class SchedulePresenterSponsorIconBindingTests: XCTestCase {
 
     func testShowTheSponsorOnlyIndicator() {
-        var eventViewModel = ScheduleEventViewModel.random
+        let eventViewModel = StubScheduleEventViewModel.random
         eventViewModel.isSponsorOnly = true
         let component = SchedulePresenterTestBuilder.buildForTestingBindingOfEvent(eventViewModel)
 
@@ -22,7 +22,7 @@ class SchedulePresenterSponsorIconBindingTests: XCTestCase {
     }
 
     func testHideTheSponsorOnlyIndicator() {
-        var eventViewModel = ScheduleEventViewModel.random
+        let eventViewModel = StubScheduleEventViewModel.random
         eventViewModel.isSponsorOnly = false
         let component = SchedulePresenterTestBuilder.buildForTestingBindingOfEvent(eventViewModel)
 

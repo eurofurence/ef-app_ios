@@ -17,7 +17,7 @@ class WhenBindingNonFavouriteEvent_FromSearchResult_SchedulePresenterShould: XCT
         let interactor = FakeScheduleInteractor(searchViewModel: searchViewModel)
         let context = SchedulePresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
-        var searchResult = ScheduleEventViewModel.random
+        let searchResult = StubScheduleEventViewModel.random
         searchResult.isFavourite = false
         let results = [ScheduleEventGroupViewModel(title: .random, events: [searchResult])]
         searchViewModel.simulateSearchResultsUpdated(results)
@@ -33,7 +33,7 @@ class WhenBindingNonFavouriteEvent_FromSearchResult_SchedulePresenterShould: XCT
         let interactor = FakeScheduleInteractor(searchViewModel: searchViewModel)
         let context = SchedulePresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
-        var searchResult = ScheduleEventViewModel.random
+        let searchResult = StubScheduleEventViewModel.random
         searchResult.isFavourite = false
         let results = [ScheduleEventGroupViewModel(title: .random, events: [searchResult])]
         searchViewModel.simulateSearchResultsUpdated(results)
@@ -49,7 +49,7 @@ class WhenBindingNonFavouriteEvent_FromSearchResult_SchedulePresenterShould: XCT
         let interactor = FakeScheduleInteractor(searchViewModel: searchViewModel)
         let context = SchedulePresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
-        var searchResult = ScheduleEventViewModel.random
+        let searchResult = StubScheduleEventViewModel.random
         searchResult.isFavourite = false
         let results = [ScheduleEventGroupViewModel(title: .random, events: [searchResult])]
         searchViewModel.simulateSearchResultsUpdated(results)
@@ -64,7 +64,7 @@ class WhenBindingNonFavouriteEvent_FromSearchResult_SchedulePresenterShould: XCT
         let interactor = FakeScheduleInteractor(searchViewModel: searchViewModel)
         let context = SchedulePresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
-        var searchResult = ScheduleEventViewModel.random
+        let searchResult = StubScheduleEventViewModel.random
         searchResult.isFavourite = false
         let results = [ScheduleEventGroupViewModel(title: .random, events: [searchResult])]
         searchViewModel.simulateSearchResultsUpdated(results)
