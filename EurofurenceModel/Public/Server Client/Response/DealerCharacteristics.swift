@@ -29,7 +29,24 @@ public struct DealerCharacteristics: Equatable {
     public var aboutTheArtText: String
     public var artPreviewCaption: String
 
-    public init(identifier: String, displayName: String, attendeeNickname: String, attendsOnThursday: Bool, attendsOnFriday: Bool, attendsOnSaturday: Bool, isAfterDark: Bool, artistThumbnailImageId: String?, artistImageId: String?, artPreviewImageId: String?, categories: [String], shortDescription: String, links: [LinkCharacteristics]?, twitterHandle: String, telegramHandle: String, aboutTheArtistText: String, aboutTheArtText: String, artPreviewCaption: String) {
+    public init(identifier: String,
+                displayName: String,
+                attendeeNickname: String,
+                attendsOnThursday: Bool,
+                attendsOnFriday: Bool,
+                attendsOnSaturday: Bool,
+                isAfterDark: Bool,
+                artistThumbnailImageId: String?,
+                artistImageId: String?,
+                artPreviewImageId: String?,
+                categories: [String],
+                shortDescription: String,
+                links: [LinkCharacteristics]?,
+                twitterHandle: String,
+                telegramHandle: String,
+                aboutTheArtistText: String,
+                aboutTheArtText: String,
+                artPreviewCaption: String) {
         self.identifier = identifier
         self.displayName = displayName
         self.attendeeNickname = attendeeNickname

@@ -142,7 +142,8 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
         let link = entry.links.randomElement().element
 
         let linksFetchRequest: NSFetchRequest<LinkEntity> = LinkEntity.fetchRequest()
-        linksFetchRequest.predicate = NSPredicate(format: "\(#keyPath(LinkEntity.name)) == %@ AND \(#keyPath(LinkEntity.target)) == %@ AND \(#keyPath(LinkEntity.fragmentType)) == %li", link.name, link.target, link.fragmentType.rawValue)
+        let preidcateFormat = "\(#keyPath(LinkEntity.name)) == %@ AND \(#keyPath(LinkEntity.target)) == %@ AND \(#keyPath(LinkEntity.fragmentType)) == %li"
+        linksFetchRequest.predicate = NSPredicate(format: preidcateFormat, link.name, link.target, link.fragmentType.rawValue)
 
         store.container.viewContext.performAndWait {
             do {

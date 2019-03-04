@@ -25,7 +25,20 @@ public struct EventCharacteristics: Equatable {
     public var bannerImageId: String?
     public var tags: [String]?
 
-    public init(identifier: String, roomIdentifier: String, trackIdentifier: String, dayIdentifier: String, startDateTime: Date, endDateTime: Date, title: String, subtitle: String, abstract: String, panelHosts: String, eventDescription: String, posterImageId: String?, bannerImageId: String?, tags: [String]?) {
+    public init(identifier: String,
+                roomIdentifier: String,
+                trackIdentifier: String,
+                dayIdentifier: String,
+                startDateTime: Date,
+                endDateTime: Date,
+                title: String,
+                subtitle: String,
+                abstract: String,
+                panelHosts: String,
+                eventDescription: String,
+                posterImageId: String?,
+                bannerImageId: String?,
+                tags: [String]?) {
         self.identifier = identifier
         self.roomIdentifier = roomIdentifier
         self.trackIdentifier = trackIdentifier

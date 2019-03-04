@@ -27,6 +27,8 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
         XCTAssertEqual(expectedResponse, response)
     }
 
+    // swiftlint:disable function_body_length
+    // swiftlint:disable line_length
     private func makeExpectedSyncResponseFromTestFile() -> ModelCharacteristics {
         let knowledgeGroups = ModelCharacteristics.Update<KnowledgeGroupCharacteristics>(changed: [KnowledgeGroupCharacteristics(identifier: "ec031cbf-d8d0-825d-4c36-b782ed8d19d8",
                                                                                                    order: 0,

@@ -1,0 +1,17 @@
+disabled_rules:
+  - identifier_name
+  - type_name
+  - weak_delegate
+  - force_cast
+  - force_try
+  - trailing_whitespace
+  - class_delegate_protocol
+  - todo
+
+line_length:
+  warning: 180
+  ignores_comments: true
+
+type_body_length:
+  warning: 400
+

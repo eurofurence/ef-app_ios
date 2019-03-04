@@ -53,7 +53,8 @@ class CoreDataStoreTransaction: DataStoreTransaction {
                 entity.links.let(entity.removeFromLinks)
 
                 let links = entry.links.map { (link) -> LinkEntity in
-                    let predicate = NSPredicate(format: "\(#keyPath(LinkEntity.name)) == %@ AND \(#keyPath(LinkEntity.target)) == %@ AND \(#keyPath(LinkEntity.fragmentType)) == %li", link.name, link.target, link.fragmentType.rawValue)
+                    let predicateFormat = "\(#keyPath(LinkEntity.name)) == %@ AND \(#keyPath(LinkEntity.target)) == %@ AND \(#keyPath(LinkEntity.fragmentType)) == %li"
+                    let predicate = NSPredicate(format: predicateFormat, link.name, link.target, link.fragmentType.rawValue)
                     let entity: LinkEntity = context.makeEntity(uniquelyIdentifiedBy: predicate)
                     entity.consumeAttributes(from: link)
 
@@ -98,7 +99,8 @@ class CoreDataStoreTransaction: DataStoreTransaction {
                 entity.consumeAttributes(from: dealer)
 
                 let links = dealer.links?.map { (link) -> LinkEntity in
-                    let predicate = NSPredicate(format: "\(#keyPath(LinkEntity.name)) == %@ AND \(#keyPath(LinkEntity.target)) == %@ AND \(#keyPath(LinkEntity.fragmentType)) == %li", link.name, link.target, link.fragmentType.rawValue)
+                    let predicateFormat = "\(#keyPath(LinkEntity.name)) == %@ AND \(#keyPath(LinkEntity.target)) == %@ AND \(#keyPath(LinkEntity.fragmentType)) == %li"
+                    let predicate = NSPredicate(format: predicateFormat, link.name, link.target, link.fragmentType.rawValue)
                     let entity: LinkEntity = context.makeEntity(uniquelyIdentifiedBy: predicate)
                     entity.consumeAttributes(from: link)
 

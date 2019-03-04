@@ -10,7 +10,7 @@ import Foundation
 
 public class ImageEntity: Equatable {
 
-    public static func ==(lhs: ImageEntity, rhs: ImageEntity) -> Bool {
+    public static func == (lhs: ImageEntity, rhs: ImageEntity) -> Bool {
         return lhs.identifier == rhs.identifier &&
                lhs.pngImageData == rhs.pngImageData
     }

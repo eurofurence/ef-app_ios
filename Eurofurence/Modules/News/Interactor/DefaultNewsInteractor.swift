@@ -238,7 +238,11 @@ class DefaultNewsInteractor: NewsInteractor,
             components.append(CountdownComponent(daysUntilConvention: daysUntilConvention))
         }
 
-		components.append(AnnouncementsComponent(announcements: announcements, readAnnouncements: readAnnouncements, announcementsDateFormatter: announcementsDateFormatter, markdownRenderer: announcementsMarkdownRenderer))
+        let announcementsComponent = AnnouncementsComponent(announcements: announcements,
+                                                            readAnnouncements: readAnnouncements,
+                                                            announcementsDateFormatter: announcementsDateFormatter,
+                                                            markdownRenderer: announcementsMarkdownRenderer)
+        components.append(announcementsComponent)
 
         if !upcomingEvents.isEmpty {
             components.append(EventsComponent(title: .upcomingEvents,

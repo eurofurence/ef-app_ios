@@ -9,6 +9,7 @@
 import EurofurenceModel
 import Foundation
 
+// swiftlint:disable line_length
 public extension String {
 
     private static let tableName = "Strings"

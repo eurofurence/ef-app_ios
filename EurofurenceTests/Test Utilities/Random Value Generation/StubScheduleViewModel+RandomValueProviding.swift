@@ -43,7 +43,19 @@ final class StubScheduleEventViewModel: ScheduleEventViewModelProtocol {
     var isMainStageEvent: Bool
     var isPhotoshootEvent: Bool
 
-    init(title: String, startTime: String, endTime: String, location: String, bannerGraphicPNGData: Data?, isFavourite: Bool, isSponsorOnly: Bool, isSuperSponsorOnly: Bool, isArtShow: Bool, isKageEvent: Bool, isDealersDenEvent: Bool, isMainStageEvent: Bool, isPhotoshootEvent: Bool) {
+    init(title: String,
+         startTime: String,
+         endTime: String,
+         location: String,
+         bannerGraphicPNGData: Data?,
+         isFavourite: Bool,
+         isSponsorOnly: Bool,
+         isSuperSponsorOnly: Bool,
+         isArtShow: Bool,
+         isKageEvent: Bool,
+         isDealersDenEvent: Bool,
+         isMainStageEvent: Bool,
+         isPhotoshootEvent: Bool) {
         self.title = title
         self.startTime = startTime
         self.endTime = endTime

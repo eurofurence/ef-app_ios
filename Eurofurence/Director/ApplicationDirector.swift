@@ -27,6 +27,7 @@ class ApplicationDirector: ExternalContentHandler,
 
     private class DissolveTransitionAnimationProviding: NSObject, UINavigationControllerDelegate {
 
+        // swiftlint:disable line_length
         func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
             return ViewControllerDissolveTransitioning()
         }
