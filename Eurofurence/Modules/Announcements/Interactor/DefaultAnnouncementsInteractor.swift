@@ -42,10 +42,11 @@ struct DefaultAnnouncementsInteractor: AnnouncementsInteractor {
         private var announcements = [Announcement]()
         private var readAnnouncements = [AnnouncementIdentifier]()
 
-        init(announcementsService: AnnouncementsService, announcementDateFormatter: AnnouncementDateFormatter,
-			 markdownRenderer: MarkdownRenderer) {
+        init(announcementsService: AnnouncementsService,
+             announcementDateFormatter: AnnouncementDateFormatter,
+             markdownRenderer: MarkdownRenderer) {
             self.announcementDateFormatter = announcementDateFormatter
-			self.markdownRenderer = markdownRenderer
+            self.markdownRenderer = markdownRenderer
             announcementsService.add(self)
         }
 

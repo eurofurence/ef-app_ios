@@ -34,10 +34,10 @@ struct NotificationServiceFetchResultAdapter {
             case .failedSync:
                 completionHandler(.failed)
 
-            case .announcement(_):
+            case .announcement:
                 completionHandler(.newData)
 
-            case .event(_):
+            case .event:
                 completionHandler(.noData)
 
             case .invalidatedAnnouncement:

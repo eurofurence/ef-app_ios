@@ -93,13 +93,11 @@ class NewsViewController: UIViewController, NewsScene {
 
         // MARK: NewsComponentFactory
 
-        typealias Component = UITableViewCell
-
         func makeConventionCountdownComponent(configuringUsing block: (ConventionCountdownComponent) -> Void) -> UITableViewCell {
             return manufacture(NewsConventionCountdownTableViewCell.self, configuration: block)
         }
 
-        func makeUserWidgetComponent(configuringUsing block: (UserWidgetComponent) -> Void) -> Component {
+        func makeUserWidgetComponent(configuringUsing block: (UserWidgetComponent) -> Void) -> UITableViewCell {
             return manufacture(NewsUserWidgetTableViewCell.self, configuration: block)
         }
 
@@ -107,7 +105,7 @@ class NewsViewController: UIViewController, NewsScene {
             return manufacture(AnnouncementTableViewCell.self, configuration: block)
         }
 
-        func makeAllAnnouncementsComponent(configuringUsing block: (AllAnnouncementsComponent) -> Void) -> Component {
+        func makeAllAnnouncementsComponent(configuringUsing block: (AllAnnouncementsComponent) -> Void) -> UITableViewCell {
             return manufacture(ViewAllAnnouncementsTableViewCell.self, configuration: block)
         }
 

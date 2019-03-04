@@ -395,60 +395,90 @@ class ApplicationDirector: ExternalContentHandler,
     }
 
     private func showTabModule() {
-        let newsNavigationController = navigationControllerFactory.makeNavigationController()
-        let scheduleNavigationController = navigationControllerFactory.makeNavigationController()
-        let dealersNavigationController = navigationControllerFactory.makeNavigationController()
-        let knowledgeNavigationController = navigationControllerFactory.makeNavigationController()
-        let mapsNavigationController = navigationControllerFactory.makeNavigationController()
-        let collectThemAllNavigationController = navigationControllerFactory.makeNavigationController()
+        let moduleControllers = makeTabNavigationControllers()
+        applyRestorationIdentifiers(moduleControllers)
 
-        let newsController = newsModuleProviding.makeNewsModule(self)
-        self.newsController = newsController
-        newsNavigationController.setViewControllers([newsController], animated: animate)
-        newsNavigationController.tabBarItem = newsController.tabBarItem
-
-        let knowledgeListController = knowledgeListModuleProviding.makeKnowledgeListModule(self)
-        self.knowledgeListController = knowledgeListController
-        knowledgeNavigationController.setViewControllers([knowledgeListController], animated: animate)
-        knowledgeNavigationController.tabBarItem = knowledgeListController.tabBarItem
-
-        let scheduleViewController = scheduleModuleProviding.makeScheduleModule(self)
-        self.scheduleViewController = scheduleViewController
-        scheduleNavigationController.setViewControllers([scheduleViewController], animated: animate)
-        scheduleNavigationController.tabBarItem = scheduleViewController.tabBarItem
-
-        let dealersViewController = dealersModuleProviding.makeDealersModule(self)
-        self.dealersViewController = dealersViewController
-        dealersNavigationController.setViewControllers([dealersViewController], animated: animate)
-        dealersNavigationController.tabBarItem = dealersViewController.tabBarItem
-
-        let collectThemAllModule = collectThemAllModuleProviding.makeCollectThemAllModule()
-        collectThemAllNavigationController.setViewControllers([collectThemAllModule], animated: animate)
-        collectThemAllNavigationController.tabBarItem = collectThemAllModule.tabBarItem
-
-        let mapsModule = mapsModuleProviding.makeMapsModule(self)
-        self.mapsModule = mapsModule
-        mapsNavigationController.setViewControllers([mapsModule], animated: animate)
-        mapsNavigationController.tabBarItem = mapsModule.tabBarItem
-
-        let moduleControllers: [UINavigationController] = [newsNavigationController,
-                                                           scheduleNavigationController,
-                                                           dealersNavigationController,
-                                                           collectThemAllNavigationController,
-                                                           knowledgeNavigationController,
-                                                           mapsNavigationController]
-
-        moduleControllers.forEach { (navigationController) in
-            guard let identifier = navigationController.topViewController?.restorationIdentifier else { return }
-            navigationController.restorationIdentifier = "NAV_" + identifier
-        }
-
-        let orderedControllers = orderingPolicy.order(modules: moduleControllers)
-        let tabModule = tabModuleProviding.makeTabModule(orderedControllers)
+        let orderedModules = orderingPolicy.order(modules: moduleControllers)
+        let tabModule = tabModuleProviding.makeTabModule(orderedModules)
         tabController = tabModule
         tabModule.delegate = saveTabOrder
 
         rootNavigationController.setViewControllers([tabModule], animated: animate)
+    }
+
+    private func makeTabNavigationControllers() -> [UINavigationController] {
+        return [makeNewsNavigationController(),
+                makeScheduleNavigationController(),
+                makeDealersNavigationController(),
+                makeKnowledgeNavigationController(),
+                makeMapsNavigationController(),
+                makeCollectThemAllNavigationController()]
+    }
+
+    private func makeNewsNavigationController() -> UINavigationController {
+        let navigationController = navigationControllerFactory.makeNavigationController()
+        let newsController = newsModuleProviding.makeNewsModule(self)
+        self.newsController = newsController
+        navigationController.setViewControllers([newsController], animated: animate)
+        navigationController.tabBarItem = newsController.tabBarItem
+
+        return navigationController
+    }
+
+    private func makeScheduleNavigationController() -> UINavigationController {
+        let navigationController = navigationControllerFactory.makeNavigationController()
+        let scheduleViewController = scheduleModuleProviding.makeScheduleModule(self)
+        self.scheduleViewController = scheduleViewController
+        navigationController.setViewControllers([scheduleViewController], animated: animate)
+        navigationController.tabBarItem = scheduleViewController.tabBarItem
+
+        return navigationController
+    }
+
+    private func makeDealersNavigationController() -> UINavigationController {
+        let navigationController = navigationControllerFactory.makeNavigationController()
+        let dealersViewController = dealersModuleProviding.makeDealersModule(self)
+        self.dealersViewController = dealersViewController
+        navigationController.setViewControllers([dealersViewController], animated: animate)
+        navigationController.tabBarItem = dealersViewController.tabBarItem
+
+        return navigationController
+    }
+
+    private func makeKnowledgeNavigationController() -> UINavigationController {
+        let navigationController = navigationControllerFactory.makeNavigationController()
+        let knowledgeListController = knowledgeListModuleProviding.makeKnowledgeListModule(self)
+        self.knowledgeListController = knowledgeListController
+        navigationController.setViewControllers([knowledgeListController], animated: animate)
+        navigationController.tabBarItem = knowledgeListController.tabBarItem
+
+        return navigationController
+    }
+
+    private func makeMapsNavigationController() -> UINavigationController {
+        let navigationController = navigationControllerFactory.makeNavigationController()
+        let mapsModule = mapsModuleProviding.makeMapsModule(self)
+        self.mapsModule = mapsModule
+        navigationController.setViewControllers([mapsModule], animated: animate)
+        navigationController.tabBarItem = mapsModule.tabBarItem
+
+        return navigationController
+    }
+
+    private func makeCollectThemAllNavigationController() -> UINavigationController {
+        let navigationController = navigationControllerFactory.makeNavigationController()
+        let collectThemAllModule = collectThemAllModuleProviding.makeCollectThemAllModule()
+        navigationController.setViewControllers([collectThemAllModule], animated: animate)
+        navigationController.tabBarItem = collectThemAllModule.tabBarItem
+
+        return navigationController
+    }
+
+    private func applyRestorationIdentifiers(_ moduleControllers: [UINavigationController]) {
+        moduleControllers.forEach { (navigationController) in
+            guard let identifier = navigationController.topViewController?.restorationIdentifier else { return }
+            navigationController.restorationIdentifier = "NAV_" + identifier
+        }
     }
 
 }

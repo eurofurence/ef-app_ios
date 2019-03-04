@@ -39,7 +39,7 @@ public extension EventConsumer where Self: AnyObject {
      - returns: `true` if `lhs` and `rhs` both refer to the same `EventConsumer`,
      `false` otherwise.
      */
-    public static func ==(lhs: Self, rhs: Self) -> Bool {
+    public static func == (lhs: Self, rhs: Self) -> Bool {
         return lhs === rhs
     }
 

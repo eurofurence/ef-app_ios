@@ -77,7 +77,7 @@ class DefaultNewsInteractor: NewsInteractor,
          clock: Clock,
          refreshService: RefreshService,
          announcementsDateFormatter: AnnouncementDateFormatter,
-		 announcementsMarkdownRenderer: MarkdownRenderer) {
+         announcementsMarkdownRenderer: MarkdownRenderer) {
         self.relativeTimeIntervalCountdownFormatter = relativeTimeIntervalCountdownFormatter
         self.hoursDateFormatter = hoursDateFormatter
         self.dateDistanceCalculator = dateDistanceCalculator
@@ -345,7 +345,7 @@ class DefaultNewsInteractor: NewsInteractor,
         init(announcements: [Announcement],
              readAnnouncements: [AnnouncementIdentifier],
              announcementsDateFormatter: AnnouncementDateFormatter,
-			 markdownRenderer: MarkdownRenderer) {
+             markdownRenderer: MarkdownRenderer) {
             self.announcements = announcements
             viewModels = announcements.map({ (announcement) -> AnnouncementComponentViewModel in
                 return AnnouncementComponentViewModel(title: announcement.title,

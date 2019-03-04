@@ -28,7 +28,7 @@ public class StubDateDistanceCalculator: DateDistanceCalculator {
             return first.hashValue ^ second.hashValue
         }
 
-        static func ==(lhs: StubDateDistanceCalculator.Input, rhs: StubDateDistanceCalculator.Input) -> Bool {
+        static func == (lhs: StubDateDistanceCalculator.Input, rhs: StubDateDistanceCalculator.Input) -> Bool {
             return lhs.hashValue == rhs.hashValue
         }
     }

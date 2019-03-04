@@ -701,6 +701,13 @@
 		CA73AEF3201A08C4004E77BF /* KnowledgeListModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA73AEF2201A08C4004E77BF /* KnowledgeListModule.swift */; };
 		CA73AEF5201A08D1004E77BF /* KnowledgeGroupsListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA73AEF4201A08D1004E77BF /* KnowledgeGroupsListPresenter.swift */; };
 		CA73AEF8201A0908004E77BF /* WhenBuildingKnowledgePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA73AEF7201A0908004E77BF /* WhenBuildingKnowledgePresenter.swift */; };
+		CA7D8B16222D4DA0003431A0 /* CapturingRefreshService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D8B15222D4DA0003431A0 /* CapturingRefreshService.swift */; };
+		CA7D8B18222D4E63003431A0 /* FakeAnnouncementDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D8B17222D4E63003431A0 /* FakeAnnouncementDateFormatter.swift */; };
+		CA7D8B1A222DB134003431A0 /* NewsViewModelValue+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D8B19222DB134003431A0 /* NewsViewModelValue+Equatable.swift */; };
+		CA7D8B1C222DB19B003431A0 /* DefaultNewsInteractorTestBuilderContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D8B1B222DB19B003431A0 /* DefaultNewsInteractorTestBuilderContext.swift */; };
+		CA7D8B1E222DB28A003431A0 /* JSONSyncResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D8B1D222DB28A003431A0 /* JSONSyncResponse.swift */; };
+		CA7D8B20222DBC28003431A0 /* DefaultEventDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D8B1F222DBC28003431A0 /* DefaultEventDetailViewModel.swift */; };
+		CA7D8B27222EAB61003431A0 /* DefaultDealerDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D8B26222EAB61003431A0 /* DefaultDealerDetailViewModel.swift */; };
 		CA7EB7D51F799991002674A6 /* TutorialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7EB7D41F799991002674A6 /* TutorialScene.swift */; };
 		CA81D48E1FE9A8DB00A52A2F /* CapturingTutorialModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA81D48D1FE9A8DB00A52A2F /* CapturingTutorialModuleDelegate.swift */; };
 		CA81D4901FE9A91000A52A2F /* WhenTheTutorialAppears.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA81D48F1FE9A91000A52A2F /* WhenTheTutorialAppears.swift */; };
@@ -2337,6 +2344,13 @@
 		CA73AEF2201A08C4004E77BF /* KnowledgeListModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListModule.swift; sourceTree = "<group>"; };
 		CA73AEF4201A08D1004E77BF /* KnowledgeGroupsListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeGroupsListPresenter.swift; sourceTree = "<group>"; };
 		CA73AEF7201A0908004E77BF /* WhenBuildingKnowledgePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBuildingKnowledgePresenter.swift; sourceTree = "<group>"; };
+		CA7D8B15222D4DA0003431A0 /* CapturingRefreshService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingRefreshService.swift; sourceTree = "<group>"; };
+		CA7D8B17222D4E63003431A0 /* FakeAnnouncementDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeAnnouncementDateFormatter.swift; sourceTree = "<group>"; };
+		CA7D8B19222DB134003431A0 /* NewsViewModelValue+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewsViewModelValue+Equatable.swift"; sourceTree = "<group>"; };
+		CA7D8B1B222DB19B003431A0 /* DefaultNewsInteractorTestBuilderContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNewsInteractorTestBuilderContext.swift; sourceTree = "<group>"; };
+		CA7D8B1D222DB28A003431A0 /* JSONSyncResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONSyncResponse.swift; sourceTree = "<group>"; };
+		CA7D8B1F222DBC28003431A0 /* DefaultEventDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultEventDetailViewModel.swift; sourceTree = "<group>"; };
+		CA7D8B26222EAB61003431A0 /* DefaultDealerDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDealerDetailViewModel.swift; sourceTree = "<group>"; };
 		CA7EB7D41F799991002674A6 /* TutorialScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScene.swift; sourceTree = "<group>"; };
 		CA804DD11F20CE8F00E07A4A /* JSONAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONAPI.swift; sourceTree = "<group>"; };
 		CA804DD91F20D2F500E07A4A /* LoginAPITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginAPITests.swift; sourceTree = "<group>"; };
@@ -3705,6 +3719,7 @@
 				CA1B6F1F20DB84E400ADF414 /* DealerDetailInteractor.swift */,
 				CA1B6F2320DB886300ADF414 /* DealerDetailViewModel.swift */,
 				CAF81C7220DDA9D100898C52 /* DefaultDealerDetailInteractor.swift */,
+				CA7D8B26222EAB61003431A0 /* DefaultDealerDetailViewModel.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -4375,6 +4390,7 @@
 				CA89CBBF2085383100570D54 /* StubNewsInteractor.swift */,
 				CA89CBB92084CA8A00570D54 /* StubNewsViewModel.swift */,
 				CA162E9F20A8D499004AFED6 /* FakeRelativeTimeIntervalCountdownFormatter.swift */,
+				CA7D8B17222D4E63003431A0 /* FakeAnnouncementDateFormatter.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -4400,6 +4416,8 @@
 			isa = PBXGroup;
 			children = (
 				CA65A87A209A5BDA00B72533 /* DefaultNewsInteractorTestBuilder.swift */,
+				CA7D8B1B222DB19B003431A0 /* DefaultNewsInteractorTestBuilderContext.swift */,
+				CA7D8B19222DB134003431A0 /* NewsViewModelValue+Equatable.swift */,
 				CA283A6420E6F27200F7D195 /* WhenApplicationRefreshStateChanges_NewsInteractorShould.swift */,
 				CA283A8520E9483F00F7D195 /* WhenPreparingAnnouncementViewModel_ForReadAnnouncement_NewsInteractorShould.swift */,
 				CA283AEB20ED421E00F7D195 /* WhenScheduleIndicatesCurrentDayHasChanged_NewsInteractorShould.swift */,
@@ -5395,6 +5413,7 @@
 			isa = PBXGroup;
 			children = (
 				CA804DD11F20CE8F00E07A4A /* JSONAPI.swift */,
+				CA7D8B1D222DB28A003431A0 /* JSONSyncResponse.swift */,
 			);
 			path = JSON;
 			sourceTree = "<group>";
@@ -6109,6 +6128,7 @@
 				CACF1E8720B34F8900D904B5 /* DefaultEventDetailInteractor.swift */,
 				CACF1E8920B351D400D904B5 /* DateRangeFormatter.swift */,
 				CACF1E8D20B352B800D904B5 /* FoundationDateRangeFormatter.swift */,
+				CA7D8B1F222DBC28003431A0 /* DefaultEventDetailViewModel.swift */,
 			);
 			path = Default;
 			sourceTree = "<group>";
@@ -6328,6 +6348,7 @@
 				CA162E7520A4B6CE004AFED6 /* StubDateDistanceCalculator.swift */,
 				CAD6FD4F221707560011712D /* Entity Test Doubles */,
 				CAEA0F7E216E1AA000B0C7A6 /* Random Value Generation */,
+				CA7D8B15222D4DA0003431A0 /* CapturingRefreshService.swift */,
 			);
 			path = EurofurenceModelTestDoubles;
 			sourceTree = "<group>";
@@ -7714,6 +7735,7 @@
 				9A861EBF1F25551400B75A8C /* PresentationAssets.swift in Sources */,
 				CA52C68120D597E1009D3A9E /* ApplicationSignificantTimeChangeAdapter.swift in Sources */,
 				CAEA1044216E775300B0C7A6 /* ScreenshotAssistant.swift in Sources */,
+				CA7D8B27222EAB61003431A0 /* DefaultDealerDetailViewModel.swift in Sources */,
 				CAF7056A1F82D15D00A9FEA2 /* PreloadModuleProviding.swift in Sources */,
 				CA36A47320D84DC900EE6537 /* DealerComponent.swift in Sources */,
 				CAD2343E1F5D7211004BB959 /* MessagesPresenter.swift in Sources */,
@@ -7826,6 +7848,7 @@
 				9ACF99381EBE172D006FC958 /* AppDelegate.swift in Sources */,
 				CA40106E210FAEC30056E16C /* KnowledgeGroupEntriesModuleProviding.swift in Sources */,
 				CA73AEE3201A0869004E77BF /* KnowledgeGroupsModuleBuilder.swift in Sources */,
+				CA7D8B20222DBC28003431A0 /* DefaultEventDetailViewModel.swift in Sources */,
 				78455B621F118699005BE2D7 /* RoundedCornerButton.swift in Sources */,
 				CA00AE4520D16BBD00C2FBB0 /* ScheduleInteractor.swift in Sources */,
 				CA957B601F705AF9004DFD5A /* MessagesViewController.swift in Sources */,
@@ -8072,6 +8095,7 @@
 				CA08159720D475B500F750D4 /* FakeEventsService.swift in Sources */,
 				CA1B6F1020DB818A00ADF414 /* CapturingDealerDetailScene.swift in Sources */,
 				CA63754C208CBB7800536BE2 /* StubMessagesModuleFactory.swift in Sources */,
+				CA7D8B1C222DB19B003431A0 /* DefaultNewsInteractorTestBuilderContext.swift in Sources */,
 				CA6A8D7620E264C5007536CD /* StubMapsSceneFactory.swift in Sources */,
 				CA0F762F2033119B009DA079 /* CapturingKnowledgeListModuleDelegate.swift in Sources */,
 				CA60BFFE207CDC1700697566 /* FakeAuthenticationService.swift in Sources */,
@@ -8243,6 +8267,7 @@
 				CA283A7120E8DCD000F7D195 /* WhenToldToRefresh_DealersViewModelShould.swift in Sources */,
 				CA283AB020EAA19C00F7D195 /* StubAnnouncementsSceneFactory.swift in Sources */,
 				CA44C370211B77AC003C1C4E /* NewsPresenterKageIconBindingTests.swift in Sources */,
+				CA7D8B18222D4E63003431A0 /* FakeAnnouncementDateFormatter.swift in Sources */,
 				CAF9A9581F5601A700628833 /* WhenViewingMessagesWhileLoggedOut.swift in Sources */,
 				CAF81C7120DDA8EA00898C52 /* WhenProducingDealerViewModel_HappyPath_DealerDetailInteractorShould.swift in Sources */,
 				CA63756E208CCBD400536BE2 /* WhenPreloadCompletes_DirectorShould.swift in Sources */,
@@ -8262,6 +8287,7 @@
 				CA283A6D20E8DA0300F7D195 /* DealerInteractorTestBuilder.swift in Sources */,
 				CA63755E208CBC4E00536BE2 /* StubWebMobuleProviding.swift in Sources */,
 				CAF81C6220DD95BC00898C52 /* DealerDetailAboutTheArtistViewModel+RandomValueProviding.swift in Sources */,
+				CA7D8B1A222DB134003431A0 /* NewsViewModelValue+Equatable.swift in Sources */,
 				CA8E7EF41FB08D3B00F0BF10 /* AppWindowWireframeTests.swift in Sources */,
 				CACF1E9E20B4386B00D904B5 /* WhenBindingEventDescription_EventDetailPresenterShould.swift in Sources */,
 				CA36A49920D9778400EE6537 /* FakeDealersIndex.swift in Sources */,
@@ -8625,6 +8651,7 @@
 				CAEA0D9D216BDE2300B0C7A6 /* EurofurenceSessionBuilder.swift in Sources */,
 				CA240F4B21E3D985002DB747 /* MapContent.swift in Sources */,
 				CAEA0DCD216BDE2300B0C7A6 /* EF24StartDateRepository.swift in Sources */,
+				CA7D8B1E222DB28A003431A0 /* JSONSyncResponse.swift in Sources */,
 				CACD2EB021D67EE300BACD91 /* EurofurenceSessionState.swift in Sources */,
 				CA4679AF221B542D006B3090 /* MessageCharacteristics.swift in Sources */,
 				CAEA0D93216BDD9500B0C7A6 /* SignificantTimeObserver.swift in Sources */,
@@ -8887,6 +8914,7 @@
 				CAEA0F82216E1AE200B0C7A6 /* StubEvent.swift in Sources */,
 				CAEA0F75216D2CE400B0C7A6 /* CapturingJSONSession.swift in Sources */,
 				CA240F4521E3D62C002DB747 /* Identifier+RandomValueProviding.swift in Sources */,
+				CA7D8B16222D4DA0003431A0 /* CapturingRefreshService.swift in Sources */,
 				CAEA103F216E1E5000B0C7A6 /* StubDateDistanceCalculator.swift in Sources */,
 				CAEA0F8D216E1AE200B0C7A6 /* StubMap.swift in Sources */,
 				CAEA103E216E1DA600B0C7A6 /* CapturingPushPermissionsRequester.swift in Sources */,

@@ -17,7 +17,7 @@ public struct BuildConfigurationAPIURLProviding: APIURLProviding {
     }
 
     public init(_ buildConfiguration: BuildConfigurationProviding, debugUrl: String, releaseUrl: String) {
-        switch (buildConfiguration.configuration) {
+        switch buildConfiguration.configuration {
         case .debug:
             url = debugUrl
         case .release:

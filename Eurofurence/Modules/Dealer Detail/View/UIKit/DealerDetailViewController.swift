@@ -62,8 +62,6 @@ class DealerDetailViewController: UIViewController, DealerDetailScene {
             return binder.bindComponent(at: indexPath.row, using: self)
         }
 
-        typealias Component = UITableViewCell
-
         func makeDealerSummaryComponent(configureUsing block: (DealerDetailSummaryComponent) -> Void) -> UITableViewCell {
             let cell = tableView.dequeue(DealerDetailSummaryTableViewCell.self)
             block(cell)

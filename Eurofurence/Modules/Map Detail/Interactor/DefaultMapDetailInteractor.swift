@@ -23,71 +23,71 @@ class DefaultMapDetailInteractor: MapDetailInteractor, MapsObserver {
             mapsService.fetchContent(for: mapIdentifier, atX: Int(x), y: Int(y), completionHandler: contentHandler.handle)
         }
 
-        private struct ContentHandler {
+    }
 
-            var x: Float
-            var y: Float
-            var visitor: MapContentVisitor
+    private struct ContentHandler {
 
-            func handle(_ content: MapContent) {
-                switch content {
-                case .location(let altX, let altY, let name):
-					let coordinate = MapCoordinate(x: altX, y: altY)
-					if let name = name {
-						let contextualInfo = MapInformationContextualContent(coordinate: coordinate, content: name)
-						visitor.visit(contextualInfo)
-					}
-					visitor.visit(coordinate)
+        var x: Float
+        var y: Float
+        var visitor: MapContentVisitor
 
-                case .room(let room):
-                    let coordinate = MapCoordinate(x: x, y: y)
-                    let contextualInfo = MapInformationContextualContent(coordinate: coordinate, content: room.name)
+        func handle(_ content: MapContent) {
+            switch content {
+            case .location(let altX, let altY, let name):
+                let coordinate = MapCoordinate(x: altX, y: altY)
+                if let name = name {
+                    let contextualInfo = MapInformationContextualContent(coordinate: coordinate, content: name)
                     visitor.visit(contextualInfo)
-
-                case .dealer(let dealer):
-                    visitor.visit(dealer.identifier)
-
-                case .multiple(let contents):
-                    visitor.visit(OptionsViewModel(contents: contents, handler: self))
-
-                case .none:
-                    break
                 }
-            }
+                visitor.visit(coordinate)
 
+            case .room(let room):
+                let coordinate = MapCoordinate(x: x, y: y)
+                let contextualInfo = MapInformationContextualContent(coordinate: coordinate, content: room.name)
+                visitor.visit(contextualInfo)
+
+            case .dealer(let dealer):
+                visitor.visit(dealer.identifier)
+
+            case .multiple(let contents):
+                visitor.visit(OptionsViewModel(contents: contents, handler: self))
+
+            case .none:
+                break
+            }
         }
 
-        private struct OptionsViewModel: MapContentOptionsViewModel {
+    }
 
-            private let contents: [MapContent]
-            private let handler: ContentHandler
+    private struct OptionsViewModel: MapContentOptionsViewModel {
 
-            init(contents: [MapContent], handler: ContentHandler) {
-                self.contents = contents
-                self.handler = handler
-                optionsHeading = .selectAnOption
-                options = contents.compactMap { (content) -> String? in
-                    switch content {
-                    case .room(let room):
-                        return room.name
+        private let contents: [MapContent]
+        private let handler: ContentHandler
 
-                    case .dealer(let dealer):
-                        return dealer.preferredName
+        init(contents: [MapContent], handler: ContentHandler) {
+            self.contents = contents
+            self.handler = handler
+            optionsHeading = .selectAnOption
+            options = contents.compactMap { (content) -> String? in
+                switch content {
+                case .room(let room):
+                    return room.name
 
-                    default:
-                        return nil
-                    }
+                case .dealer(let dealer):
+                    return dealer.preferredName
+
+                default:
+                    return nil
                 }
             }
+        }
 
-            var optionsHeading: String
-            var options: [String]
+        var optionsHeading: String
+        var options: [String]
 
-            func selectOption(at index: Int) {
-                let content = contents[index]
-                handler.handle(content)
-            }
-
+        func selectOption(at index: Int) {
+            let content = contents[index]
+            handler.handle(content)
         }
 
     }

@@ -141,6 +141,14 @@ class ApplicationTestBuilder {
     private var collectThemAllRequestFactory: CollectThemAllRequestFactory = StubCollectThemAllRequestFactory()
     private var forceUpgradeRequired: ForceRefreshRequired = StubForceRefreshRequired(isForceRefreshRequired: false)
 
+    private let dateDistanceCalculator = StubDateDistanceCalculator()
+    private let conventionStartDateRepository = StubConventionStartDateRepository()
+    private let significantTimeChangeAdapter = CapturingSignificantTimeChangeAdapter()
+    private let longRunningTaskManager = FakeLongRunningTaskManager()
+    private let notificationsService = CapturingNotificationScheduler()
+    private let hoursDateFormatter = FakeHoursDateFormatter()
+    private let mapCoordinateRender = CapturingMapCoordinateRender()
+
     func with(_ currentDate: Date) -> ApplicationTestBuilder {
         clock = StubClock(currentDate: currentDate)
         return self
@@ -214,13 +222,6 @@ class ApplicationTestBuilder {
 
     @discardableResult
     func build() -> Context {
-        let dateDistanceCalculator = StubDateDistanceCalculator()
-        let conventionStartDateRepository = StubConventionStartDateRepository()
-        let significantTimeChangeAdapter = CapturingSignificantTimeChangeAdapter()
-        let longRunningTaskManager = FakeLongRunningTaskManager()
-        let notificationsService = CapturingNotificationScheduler()
-        let hoursDateFormatter = FakeHoursDateFormatter()
-        let mapCoordinateRender = CapturingMapCoordinateRender()
         let app = EurofurenceSessionBuilder()
             .with(api)
             .with(clock)

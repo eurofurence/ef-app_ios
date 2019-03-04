@@ -12,11 +12,23 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
 
     private struct EventComponentBinder {
 
-        func bind(component: ScheduleEventComponent, to event: ScheduleEventViewModelProtocol) {
+        var component: ScheduleEventComponent
+        var event: ScheduleEventViewModelProtocol
+
+        func bind() {
+            bindTextualAttributes()
+            bindBannerGraphic()
+            bindEventIconography()
+        }
+
+        private func bindTextualAttributes() {
             component.setEventName(event.title)
             component.setEventStartTime(event.startTime)
             component.setEventEndTime(event.endTime)
             component.setLocation(event.location)
+        }
+
+        private func bindBannerGraphic() {
             event.bannerGraphicPNGData.let(component.setBannerGraphicPNGData)
 
             if event.bannerGraphicPNGData != nil {
@@ -24,49 +36,76 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
             } else {
                 component.hideBanner()
             }
+        }
 
+        private func bindEventIconography() {
+            bindSponsorOnlyIcon()
+            bindSuperSponsorOnlyIcon()
+            bindFavouriteIcon()
+            bindArtShowIcon()
+            bindKageIcon()
+            bindDealersDenIcon()
+            bindMainStageIcon()
+            bindPhotoshootIcon()
+        }
+
+        private func bindSponsorOnlyIcon() {
             if event.isSponsorOnly {
                 component.showSponsorEventIndicator()
             } else {
                 component.hideSponsorEventIndicator()
             }
+        }
 
+        private func bindSuperSponsorOnlyIcon() {
             if event.isSuperSponsorOnly {
                 component.showSuperSponsorOnlyEventIndicator()
             } else {
                 component.hideSuperSponsorOnlyEventIndicator()
             }
+        }
 
+        private func bindFavouriteIcon() {
             if event.isFavourite {
                 component.showFavouriteEventIndicator()
             } else {
                 component.hideFavouriteEventIndicator()
             }
+        }
 
+        private func bindArtShowIcon() {
             if event.isArtShow {
                 component.showArtShowEventIndicator()
             } else {
                 component.hideArtShowEventIndicator()
             }
+        }
 
+        private func bindKageIcon() {
             if event.isKageEvent {
                 component.showKageEventIndicator()
             } else {
                 component.hideKageEventIndicator()
             }
+        }
 
+        private func bindDealersDenIcon() {
             if event.isDealersDenEvent {
                 component.showDealersDenEventIndicator()
             } else {
                 component.hideDealersDenEventIndicator()
             }
+        }
 
+        private func bindMainStageIcon() {
             if event.isMainStageEvent {
                 component.showMainStageEventIndicator()
             } else {
                 component.hideMainStageEventIndicator()
             }
+        }
 
+        private func bindPhotoshootIcon() {
             if event.isPhotoshootEvent {
                 component.showPhotoshootStageEventIndicator()
             } else {
@@ -80,7 +119,6 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
 
         var viewModels: [ScheduleEventGroupViewModel]
         var scheduleViewModel: ScheduleViewModel?
-        var eventBinder: EventComponentBinder
 
         func bind(_ header: ScheduleEventGroupHeader, forGroupAt index: Int) {
             let group = viewModels[index]
@@ -90,7 +128,7 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
         func bind(_ eventComponent: ScheduleEventComponent, forEventAt indexPath: IndexPath) {
             let group = viewModels[indexPath.section]
             let event = group.events[indexPath.item]
-            eventBinder.bind(component: eventComponent, to: event)
+            EventComponentBinder(component: eventComponent, event: event).bind()
         }
 
         func eventActionForComponent(at indexPath: IndexPath) -> ScheduleEventComponentAction {
@@ -125,12 +163,11 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
 
         var viewModels: [ScheduleEventGroupViewModel]
         var scheduleSearchViewModel: ScheduleSearchViewModel?
-        var eventBinder: EventComponentBinder
 
         func bind(_ eventComponent: ScheduleEventComponent, forSearchResultAt indexPath: IndexPath) {
             let group = viewModels[indexPath.section]
             let event = group.events[indexPath.item]
-            eventBinder.bind(component: eventComponent, to: event)
+            EventComponentBinder(component: eventComponent, event: event).bind()
         }
 
         func bind(_ header: ScheduleEventGroupHeader, forSearchResultGroupAt index: Int) {
@@ -159,7 +196,6 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
     private let interactor: ScheduleInteractor
     private let delegate: ScheduleModuleDelegate
     private let hapticEngine: HapticEngine
-    private let eventBinder = EventComponentBinder()
     private var viewModel: ScheduleViewModel?
     private var searchViewModel: ScheduleSearchViewModel?
 
@@ -250,13 +286,13 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
 
     func scheduleViewModelDidUpdateEvents(_ events: [ScheduleEventGroupViewModel]) {
         let numberOfItemsPerGroup = events.map { $0.events.count }
-        let binder = EventsBinder(viewModels: events, scheduleViewModel: viewModel, eventBinder: eventBinder)
+        let binder = EventsBinder(viewModels: events, scheduleViewModel: viewModel)
         scene.bind(numberOfItemsPerSection: numberOfItemsPerGroup, using: binder)
     }
 
     func scheduleSearchResultsUpdated(_ results: [ScheduleEventGroupViewModel]) {
         let numberOfItemsPerGroup = results.map { $0.events.count }
-        let binder = SearchResultsBinder(viewModels: results, scheduleSearchViewModel: searchViewModel, eventBinder: eventBinder)
+        let binder = SearchResultsBinder(viewModels: results, scheduleSearchViewModel: searchViewModel)
         scene.bindSearchResults(numberOfItemsPerSection: numberOfItemsPerGroup, using: binder)
     }
 

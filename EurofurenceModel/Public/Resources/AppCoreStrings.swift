@@ -8,6 +8,7 @@
 
 import Foundation
 
+// swiftlint:disable line_length
 public class AppCoreStrings {
 
     private static var bundle: Bundle {

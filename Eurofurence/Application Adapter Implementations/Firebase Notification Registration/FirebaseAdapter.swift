@@ -20,7 +20,7 @@ public enum FirebaseTopic: CustomStringConvertible, Hashable {
     case debug
     case version(String)
 
-    public static func ==(lhs: FirebaseTopic, rhs: FirebaseTopic) -> Bool {
+    public static func == (lhs: FirebaseTopic, rhs: FirebaseTopic) -> Bool {
         return lhs.hashValue == rhs.hashValue
     }
 

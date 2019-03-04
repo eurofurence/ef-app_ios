@@ -15,7 +15,7 @@ class WhenBuiltWithAlreadyPrimedApp_DirectorShould: XCTestCase {
     func testShowTheTabModuleUsingDissolveTransition() {
         let context = ApplicationDirectorTestBuilder().build()
         context.rootModule.simulateAppReady()
-        
+
         let navigationController = context.rootNavigationController
         let preloadModule = context.preloadModule.stubInterface
         let tabModule = context.tabModule.stubInterface

@@ -8,6 +8,7 @@
 
 @testable import Eurofurence
 import EurofurenceModel
+import EurofurenceModelTestDoubles
 import Foundation
 
 class DealerInteractorTestBuilder {

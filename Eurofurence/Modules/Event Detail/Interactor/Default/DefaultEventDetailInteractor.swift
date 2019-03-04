@@ -9,140 +9,7 @@
 import EurofurenceModel
 import Foundation
 
-private protocol EventDetailViewModelComponent {
-    func describe(to visitor: EventDetailViewModelVisitor)
-}
-
 class DefaultEventDetailInteractor: EventDetailInteractor {
-
-    private class ViewModel: EventDetailViewModel, EventObserver {
-
-        struct SummaryComponent: EventDetailViewModelComponent {
-
-            var viewModel: EventSummaryViewModel
-
-            func describe(to visitor: EventDetailViewModelVisitor) {
-                visitor.visit(viewModel)
-            }
-
-        }
-
-        struct GraphicComponent: EventDetailViewModelComponent {
-
-            var viewModel: EventGraphicViewModel
-
-            func describe(to visitor: EventDetailViewModelVisitor) {
-                visitor.visit(viewModel)
-            }
-
-        }
-
-        struct DescriptionComponent: EventDetailViewModelComponent {
-
-            var viewModel: EventDescriptionViewModel
-
-            func describe(to visitor: EventDetailViewModelVisitor) {
-                visitor.visit(viewModel)
-            }
-
-        }
-
-        struct SponsorsOnlyComponent: EventDetailViewModelComponent {
-
-            func describe(to visitor: EventDetailViewModelVisitor) {
-                visitor.visit(EventSponsorsOnlyWarningViewModel(message: .thisEventIsForSponsorsOnly))
-            }
-
-        }
-
-        struct SuperSponsorsOnlyComponent: EventDetailViewModelComponent {
-
-            func describe(to visitor: EventDetailViewModelVisitor) {
-                visitor.visit(EventSuperSponsorsOnlyWarningViewModel(message: .thisEventIsForSuperSponsorsOnly))
-            }
-
-        }
-
-        struct ArtShowComponent: EventDetailViewModelComponent {
-
-            func describe(to visitor: EventDetailViewModelVisitor) {
-                visitor.visit(EventArtShowMessageViewModel(message: .artShow))
-            }
-
-        }
-
-        struct KageComponent: EventDetailViewModelComponent {
-
-            func describe(to visitor: EventDetailViewModelVisitor) {
-                visitor.visit(EventKageMessageViewModel(message: .kageGuestMessage))
-            }
-
-        }
-
-        struct DealersDenComponent: EventDetailViewModelComponent {
-
-            func describe(to visitor: EventDetailViewModelVisitor) {
-                visitor.visit(EventDealersDenMessageViewModel(message: .dealersDen))
-            }
-
-        }
-
-        struct MainStageComponent: EventDetailViewModelComponent {
-
-            func describe(to visitor: EventDetailViewModelVisitor) {
-                visitor.visit(EventMainStageMessageViewModel(message: .mainStageEvent))
-            }
-
-        }
-
-        struct PhotoshootComponent: EventDetailViewModelComponent {
-
-            func describe(to visitor: EventDetailViewModelVisitor) {
-                visitor.visit(EventPhotoshootMessageViewModel(message: .photoshoot))
-            }
-
-        }
-
-        func eventDidBecomeFavourite(_ event: Event) {
-            delegate?.eventFavourited()
-        }
-
-        func eventDidBecomeUnfavourite(_ event: Event) {
-            delegate?.eventUnfavourited()
-        }
-
-        private let components: [EventDetailViewModelComponent]
-        private let event: Event
-
-        init(components: [EventDetailViewModelComponent], event: Event) {
-            self.components = components
-            self.event = event
-        }
-
-        var numberOfComponents: Int {
-            return components.count
-        }
-
-        private var delegate: EventDetailViewModelDelegate?
-        func setDelegate(_ delegate: EventDetailViewModelDelegate) {
-            self.delegate = delegate
-            event.add(self)
-        }
-
-        func describe(componentAt index: Int, to visitor: EventDetailViewModelVisitor) {
-            guard index < components.count else { return }
-            components[index].describe(to: visitor)
-        }
-
-        func favourite() {
-            event.favourite()
-        }
-
-        func unfavourite() {
-            event.unfavourite()
-        }
-
-    }
 
     private let dateRangeFormatter: DateRangeFormatter
     private let eventsService: EventsService
@@ -167,7 +34,7 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
 
         if let graphicData = event.posterGraphicPNGData ?? event.bannerGraphicPNGData {
             let graphicViewModel = EventGraphicViewModel(pngGraphicData: graphicData)
-            components.append(ViewModel.GraphicComponent(viewModel: graphicViewModel))
+            components.append(DefaultEventDetailViewModel.GraphicComponent(viewModel: graphicViewModel))
         }
 
         let abstract = self.markdownRenderer.render(event.abstract)
@@ -179,43 +46,43 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
                                                      location: event.room.name,
                                                      trackName: event.track.name,
                                                      eventHosts: event.hosts)
-        components.append(ViewModel.SummaryComponent(viewModel: summaryViewModel))
+        components.append(DefaultEventDetailViewModel.SummaryComponent(viewModel: summaryViewModel))
 
         if event.isSponsorOnly {
-            components.append(ViewModel.SponsorsOnlyComponent())
+            components.append(DefaultEventDetailViewModel.SponsorsOnlyComponent())
         }
 
         if event.isSuperSponsorOnly {
-            components.append(ViewModel.SuperSponsorsOnlyComponent())
+            components.append(DefaultEventDetailViewModel.SuperSponsorsOnlyComponent())
         }
 
         if event.isArtShow {
-            components.append(ViewModel.ArtShowComponent())
+            components.append(DefaultEventDetailViewModel.ArtShowComponent())
         }
 
         if event.isKageEvent {
-            components.append(ViewModel.KageComponent())
+            components.append(DefaultEventDetailViewModel.KageComponent())
         }
 
         if event.isDealersDen {
-            components.append(ViewModel.DealersDenComponent())
+            components.append(DefaultEventDetailViewModel.DealersDenComponent())
         }
 
         if event.isMainStage {
-            components.append(ViewModel.MainStageComponent())
+            components.append(DefaultEventDetailViewModel.MainStageComponent())
         }
 
         if event.isPhotoshoot {
-            components.append(ViewModel.PhotoshootComponent())
+            components.append(DefaultEventDetailViewModel.PhotoshootComponent())
         }
 
         if !event.eventDescription.isEmpty, event.eventDescription != event.abstract {
             let description = self.markdownRenderer.render(event.eventDescription)
             let descriptionViewModel = EventDescriptionViewModel(contents: description)
-            components.append(ViewModel.DescriptionComponent(viewModel: descriptionViewModel))
+            components.append(DefaultEventDetailViewModel.DescriptionComponent(viewModel: descriptionViewModel))
         }
 
-        let viewModel = ViewModel(components: components, event: event)
+        let viewModel = DefaultEventDetailViewModel(components: components, event: event)
         completionHandler(viewModel)
     }
 

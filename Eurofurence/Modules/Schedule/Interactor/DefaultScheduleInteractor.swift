@@ -69,16 +69,16 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
 
     // MARK: Private
 
-    private class ViewModel: ScheduleViewModel, EventsScheduleDelegate, RefreshServiceObserver {
+    private struct EventsGroupedByDate {
+        var date: Date
+        var events: [Event]
 
-        private struct EventsGroupedByDate {
-            var date: Date
-            var events: [Event]
-
-            func compare(against: EventsGroupedByDate) -> Bool {
-                return date < against.date
-            }
+        func compare(against: EventsGroupedByDate) -> Bool {
+            return date < against.date
         }
+    }
+
+    private class ViewModel: ScheduleViewModel, EventsScheduleDelegate, RefreshServiceObserver {
 
         private var delegate: ScheduleViewModelDelegate?
         private var rawModelGroups = [EventsGroupedByDate]()
@@ -216,15 +216,6 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
     }
 
     private class SearchViewModel: ScheduleSearchViewModel, EventsSearchControllerDelegate {
-
-        private struct EventsGroupedByDate {
-            var date: Date
-            var events: [Event]
-
-            func compare(against: EventsGroupedByDate) -> Bool {
-                return date < against.date
-            }
-        }
 
         private let searchController: EventsSearchController
         private let eventsService: EventsService

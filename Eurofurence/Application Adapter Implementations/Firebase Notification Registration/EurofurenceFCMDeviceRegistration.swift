@@ -22,9 +22,9 @@ public struct EurofurenceFCMDeviceRegistration: FCMDeviceRegistration {
     private let jsonEncoder = JSONEncoder()
 
     public func registerFCM(_ fcm: String,
-                     topics: [FirebaseTopic],
-                     authenticationToken: String?,
-                     completionHandler: @escaping (Error?) -> Void) {
+                            topics: [FirebaseTopic],
+                            authenticationToken: String?,
+                            completionHandler: @escaping (Error?) -> Void) {
         let registrationRequest = Request(DeviceId: fcm, Topics: topics.map({ $0.description }))
         let jsonData = try! jsonEncoder.encode(registrationRequest)
 

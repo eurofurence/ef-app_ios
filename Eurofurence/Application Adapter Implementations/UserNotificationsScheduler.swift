@@ -39,12 +39,12 @@ struct UserNotificationsScheduler: NotificationScheduler {
 
 private extension Dictionary where Key == ApplicationNotificationKey, Value == String {
 
-    var xpcSafeDictionary: Dictionary<String, String> {
+    var xpcSafeDictionary: [String: String] {
         let stringPairs: [(String, String)] = map({ (key, value) -> (String, String) in
             return (key.rawValue, value)
         })
 
-        return Dictionary<String, String>(pairs: stringPairs)
+        return [String: String](pairs: stringPairs)
     }
 
 }

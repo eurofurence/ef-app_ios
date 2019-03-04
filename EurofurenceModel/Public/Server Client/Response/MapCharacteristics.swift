@@ -8,6 +8,7 @@
 
 import Foundation
 
+// swiftlint:disable nesting
 public struct MapCharacteristics: Equatable {
 
     public static func == (lhs: MapCharacteristics, rhs: MapCharacteristics) -> Bool {

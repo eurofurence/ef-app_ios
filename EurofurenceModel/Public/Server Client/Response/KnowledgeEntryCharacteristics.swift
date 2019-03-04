@@ -28,7 +28,7 @@ public struct KnowledgeEntryCharacteristics: Comparable, Equatable {
         self.imageIdentifiers = imageIdentifiers
     }
 
-    public static func <(lhs: KnowledgeEntryCharacteristics, rhs: KnowledgeEntryCharacteristics) -> Bool {
+    public static func < (lhs: KnowledgeEntryCharacteristics, rhs: KnowledgeEntryCharacteristics) -> Bool {
         return lhs.title < rhs.title
     }
 

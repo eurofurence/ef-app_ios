@@ -51,6 +51,11 @@ class ConcreteMapsService: MapsService {
             .let({ completionHandler($0.pngImageData) })
     }
 
+    private struct MapEntryDisplacementResult {
+        var entry: MapCharacteristics.Entry
+        var displacement: Double
+    }
+
     func fetchContent(for identifier: MapIdentifier,
                       atX x: Int,
                       y: Int,
@@ -59,11 +64,6 @@ class ConcreteMapsService: MapsService {
         defer { completionHandler(content) }
 
         guard let model = serverModels.first(where: { $0.identifier == identifier.rawValue }) else { return }
-
-        struct MapEntryDisplacementResult {
-            var entry: MapCharacteristics.Entry
-            var displacement: Double
-        }
 
         let tappedWithinEntry: (MapCharacteristics.Entry) -> MapEntryDisplacementResult? = { (entry) -> MapEntryDisplacementResult? in
             let tapRadius = entry.tapRadius

@@ -17,9 +17,9 @@ public struct FirebaseRemoteNotificationsTokenRegistration: RemoteNotificationsT
     private var fcmRegistration: FCMDeviceRegistration
 
     public init(buildConfiguration: BuildConfigurationProviding,
-         appVersion: AppVersionProviding,
-         firebaseAdapter: FirebaseAdapter,
-         fcmRegistration: FCMDeviceRegistration) {
+                appVersion: AppVersionProviding,
+                firebaseAdapter: FirebaseAdapter,
+                fcmRegistration: FCMDeviceRegistration) {
         self.buildConfiguration = buildConfiguration
         self.appVersion = appVersion
         self.firebaseAdapter = firebaseAdapter
@@ -27,8 +27,8 @@ public struct FirebaseRemoteNotificationsTokenRegistration: RemoteNotificationsT
     }
 
     public func registerRemoteNotificationsDeviceToken(_ token: Data?,
-                                                userAuthenticationToken: String?,
-                                                completionHandler: @escaping (Error?) -> Void) {
+                                                       userAuthenticationToken: String?,
+                                                       completionHandler: @escaping (Error?) -> Void) {
         firebaseAdapter.setAPNSToken(deviceToken: token)
         firebaseAdapter.subscribe(toTopic: .liveiOS)
         firebaseAdapter.subscribe(toTopic: .liveAll)

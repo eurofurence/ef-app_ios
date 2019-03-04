@@ -24,11 +24,11 @@ public struct LinkCharacteristics: Comparable, Equatable {
         self.target = target
     }
 
-    public static func <(lhs: LinkCharacteristics, rhs: LinkCharacteristics) -> Bool {
+    public static func < (lhs: LinkCharacteristics, rhs: LinkCharacteristics) -> Bool {
         return lhs.name < rhs.name
     }
 
-    public static func ==(lhs: LinkCharacteristics, rhs: LinkCharacteristics) -> Bool {
+    public static func == (lhs: LinkCharacteristics, rhs: LinkCharacteristics) -> Bool {
         return lhs.name == rhs.name && lhs.fragmentType == rhs.fragmentType && lhs.target == rhs.target
     }
 

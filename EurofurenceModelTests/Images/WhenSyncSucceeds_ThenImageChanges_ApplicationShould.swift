@@ -11,15 +11,16 @@ import XCTest
 
 class WhenSyncSucceeds_ThenImageChanges_ApplicationShould: XCTestCase {
 
-    func testRedownloadTheImage() {
-        class VerifyImageRedownloadedAPI: FakeAPI {
+    class VerifyImageRedownloadedAPI: FakeAPI {
 
-            func verifyDownloadedImage(identifier: String, count: Int, file: StaticString = #file, line: UInt = #line) {
-                let actualCount = downloadedImageIdentifiers.filter({ $0 == identifier }).count
-                XCTAssertEqual(count, actualCount, file: file, line: line)
-            }
-
+        func verifyDownloadedImage(identifier: String, count: Int, file: StaticString = #file, line: UInt = #line) {
+            let actualCount = downloadedImageIdentifiers.filter({ $0 == identifier }).count
+            XCTAssertEqual(count, actualCount, file: file, line: line)
         }
+
+    }
+
+    func testRedownloadTheImage() {
 
         let imageAPI = VerifyImageRedownloadedAPI()
         let context = ApplicationTestBuilder().with(imageAPI).build()

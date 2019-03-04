@@ -16,16 +16,19 @@ class LoginPresenter: LoginSceneDelegate {
     private let authenticationService: AuthenticationService
     private let alertRouter: AlertRouter
     private lazy var validator = LoginValidator(validationHandler: self.loginValidationStateDidChange)
-    private lazy var validationActions: [LoginValidator.Result : () -> Void] = [
+    private lazy var validationActions: [LoginResult : () -> Void] = [
         .valid: self.scene.enableLoginButton,
         .invalid: self.scene.disableLoginButton
     ]
 
+    private enum LoginResult {
+        case valid
+        case invalid
+    }
+
+    private struct ValidationError: Swift.Error {}
+
     private class LoginValidator {
-        enum Result {
-            case valid
-            case invalid
-        }
 
         var registrationNumber: String? {
             didSet { validate() }
@@ -39,9 +42,9 @@ class LoginPresenter: LoginSceneDelegate {
             didSet { validate() }
         }
 
-        private let validationHandler: (Result) -> Void
+        private let validationHandler: (LoginResult) -> Void
 
-        init(validationHandler: @escaping (Result) -> Void) {
+        init(validationHandler: @escaping (LoginResult) -> Void) {
             self.validationHandler = validationHandler
         }
 
@@ -51,8 +54,6 @@ class LoginPresenter: LoginSceneDelegate {
                                   username: try retrieveUsername(),
                                   password: try retrievePassword())
         }
-
-        private struct ValidationError: Swift.Error {}
 
         private func retrieveUsername() throws -> String {
             guard let username = username, !username.isEmpty else { throw ValidationError() }
@@ -145,7 +146,7 @@ class LoginPresenter: LoginSceneDelegate {
         validator.password = password
     }
 
-    private func loginValidationStateDidChange(_ state: LoginValidator.Result) {
+    private func loginValidationStateDidChange(_ state: LoginResult) {
         validationActions[state]?()
     }
 

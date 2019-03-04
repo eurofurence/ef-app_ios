@@ -15,14 +15,18 @@ class ScheduleEventGroupViewModelAssertion: Assertion {
     private let context: ScheduleInteractorTestBuilder.Context
     private let groupDateFormatter: (Date) -> String
 
-    class func assertionForEventViewModels(context: ScheduleInteractorTestBuilder.Context, file: StaticString = #file, line: UInt = #line) -> ScheduleEventGroupViewModelAssertion {
+    class func assertionForEventViewModels(context: ScheduleInteractorTestBuilder.Context,
+                                           file: StaticString = #file,
+                                           line: UInt = #line) -> ScheduleEventGroupViewModelAssertion {
         return ScheduleEventGroupViewModelAssertion(context: context,
                                                     groupDateFormatter: context.hoursFormatter.hoursString,
                                                     file: file,
                                                     line: line)
     }
 
-    class func assertionForSearchEventViewModels(context: ScheduleInteractorTestBuilder.Context, file: StaticString = #file, line: UInt = #line) -> ScheduleEventGroupViewModelAssertion {
+    class func assertionForSearchEventViewModels(context: ScheduleInteractorTestBuilder.Context,
+                                                 file: StaticString = #file,
+                                                 line: UInt = #line) -> ScheduleEventGroupViewModelAssertion {
         return ScheduleEventGroupViewModelAssertion(context: context,
                                                     groupDateFormatter: context.shortFormDayAndTimeFormatter.dayAndHoursString,
                                                     file: file,

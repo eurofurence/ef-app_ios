@@ -15,7 +15,7 @@ extension Array where Element: Equatable {
         return other.filter(contains).count == count
     }
 
-    func contains(elementsFrom other: Array<Element>) -> Bool {
+    func contains(elementsFrom other: [Element]) -> Bool {
         for item in other {
             if contains(item) == false {
                 return false

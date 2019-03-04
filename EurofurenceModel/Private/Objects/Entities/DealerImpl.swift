@@ -21,7 +21,13 @@ struct DealerImpl: Dealer {
 
     var isAfterDark: Bool
 
-    init(identifier: DealerIdentifier, preferredName: String, alternateName: String?, isAttendingOnThursday: Bool, isAttendingOnFriday: Bool, isAttendingOnSaturday: Bool, isAfterDark: Bool) {
+    init(identifier: DealerIdentifier,
+         preferredName: String,
+         alternateName: String?,
+         isAttendingOnThursday: Bool,
+         isAttendingOnFriday: Bool,
+         isAttendingOnSaturday: Bool,
+         isAfterDark: Bool) {
         self.identifier = identifier
         self.preferredName = preferredName
         self.alternateName = alternateName

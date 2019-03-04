@@ -18,7 +18,7 @@ class FakeDateRangeFormatter: DateRangeFormatter {
             return start.hashValue ^ end.hashValue
         }
 
-        static func ==(lhs: FakeDateRangeFormatter.Input, rhs: FakeDateRangeFormatter.Input) -> Bool {
+        static func == (lhs: FakeDateRangeFormatter.Input, rhs: FakeDateRangeFormatter.Input) -> Bool {
             return lhs.hashValue == rhs.hashValue
         }
 

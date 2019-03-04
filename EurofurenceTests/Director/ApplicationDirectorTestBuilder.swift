@@ -159,6 +159,7 @@ class ApplicationDirectorTestBuilder {
     private let linkRouter: StubContentLinksService
     private let webModuleProviding: StubWebMobuleProviding
     private let urlOpener: CapturingURLOpener
+    private let notificationHandling = FakeApplicationNotificationHandling()
 
     init() {
         moduleOrderingPolicy = FakeModuleOrderingPolicy()
@@ -189,37 +190,7 @@ class ApplicationDirectorTestBuilder {
     }
 
     func build() -> Context {
-        let notificationHandling = FakeApplicationNotificationHandling()
-
-        let builder = DirectorBuilder(linkLookupService: linkRouter, notificationHandling: notificationHandling)
-        builder.withAnimations(false)
-        builder.with(moduleOrderingPolicy)
-        builder.with(windowWireframe)
-        builder.with(StubNavigationControllerFactory())
-        builder.with(rootModule)
-        builder.with(tutorialModule)
-        builder.with(preloadModule)
-        builder.with(tabModule)
-        builder.with(newsModule)
-        builder.with(scheduleModule)
-        builder.with(dealersModule)
-        builder.with(dealerDetailModule)
-        builder.with(collectThemAllModule)
-        builder.with(messagesModule)
-        builder.with(loginModule)
-        builder.with(messageDetailModule)
-        builder.with(knowledgeListModule)
-        builder.with(knowledgeGroupEntriesModule)
-        builder.with(knowledgeDetailModule)
-        builder.with(mapsModule)
-        builder.with(mapDetailModule)
-        builder.with(announcementsModule)
-        builder.with(announcementDetailModule)
-        builder.with(eventDetailModule)
-        builder.with(webModuleProviding)
-        builder.with(urlOpener)
-
-        let director = builder.build()
+        let director = makeDirectorBuilder().build()
 
         return Context(director: director,
                        moduleOrderingPolicy: moduleOrderingPolicy,
@@ -248,6 +219,38 @@ class ApplicationDirectorTestBuilder {
                        webModuleProviding: webModuleProviding,
                        urlOpener: urlOpener,
                        notificationHandling: notificationHandling)
+    }
+
+    private func makeDirectorBuilder() -> DirectorBuilder {
+        let builder = DirectorBuilder(linkLookupService: linkRouter, notificationHandling: notificationHandling)
+        builder.withAnimations(false)
+        builder.with(moduleOrderingPolicy)
+        builder.with(windowWireframe)
+        builder.with(StubNavigationControllerFactory())
+        builder.with(rootModule)
+        builder.with(tutorialModule)
+        builder.with(preloadModule)
+        builder.with(tabModule)
+        builder.with(newsModule)
+        builder.with(scheduleModule)
+        builder.with(dealersModule)
+        builder.with(dealerDetailModule)
+        builder.with(collectThemAllModule)
+        builder.with(messagesModule)
+        builder.with(loginModule)
+        builder.with(messageDetailModule)
+        builder.with(knowledgeListModule)
+        builder.with(knowledgeGroupEntriesModule)
+        builder.with(knowledgeDetailModule)
+        builder.with(mapsModule)
+        builder.with(mapDetailModule)
+        builder.with(announcementsModule)
+        builder.with(announcementDetailModule)
+        builder.with(eventDetailModule)
+        builder.with(webModuleProviding)
+        builder.with(urlOpener)
+
+        return builder
     }
 
 }

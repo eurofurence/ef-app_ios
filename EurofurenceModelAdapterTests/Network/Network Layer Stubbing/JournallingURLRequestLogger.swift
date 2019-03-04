@@ -19,7 +19,7 @@ class JournallingURLRequestLogger {
             return url.hashValue
         }
 
-        static func ==(lhs: ExpectedRequest, rhs: ExpectedRequest) -> Bool {
+        static func == (lhs: ExpectedRequest, rhs: ExpectedRequest) -> Bool {
             return lhs.hashValue == rhs.hashValue
         }
 
