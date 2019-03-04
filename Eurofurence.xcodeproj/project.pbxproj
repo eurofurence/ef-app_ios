@@ -3266,7 +3266,6 @@
 				7820A6F51F16B123004C0FB5 /* UserDefaultsUserAcknowledgedPushPermissionsRequestStateProvidingTests.swift */,
 				CAF7055F1F82CBC800A9FEA2 /* Director */,
 				781A94441F1A1DCE002DE70F /* Firebase Notification Registration */,
-				CA235873221C51A10044B1FC /* Local Notification Scheduling */,
 				78C86D5B1F12355C003A20E6 /* Module Tests */,
 				CACD2F0B21DF830300BACD91 /* Notification Content Adapter */,
 				CA82409B212498E6007E4A70 /* Review Prompt */,
@@ -3731,13 +3730,6 @@
 				CA063B4720F3E27000241CC9 /* RestorationIdentifierOrderingPolicy.swift */,
 			);
 			path = Director;
-			sourceTree = "<group>";
-		};
-		CA235873221C51A10044B1FC /* Local Notification Scheduling */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Local Notification Scheduling";
 			sourceTree = "<group>";
 		};
 		CA240F5821E4A9D8002DB747 /* Logging Out */ = {
