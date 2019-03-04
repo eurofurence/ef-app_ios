@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                      didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         SharedModel.instance.services.notifications.storeRemoteNotificationsToken(deviceToken)
     }
-    
+
     func application(_ application: UIApplication,
                      didReceiveRemoteNotification userInfo: [AnyHashable: Any],
                      fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
