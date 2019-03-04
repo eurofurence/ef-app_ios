@@ -28,7 +28,7 @@ class WhenAppLaunchesWhenClockReadsConferenceDay_ScheduleShould: XCTestCase {
     func testPermitFuzzyMatchingAgainstHoursMinutesAndSecondsWithinDay() {
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let randomDay = syncResponse.conferenceDays.changed.randomElement().element
-        var randomDayComponents = Calendar.current.dateComponents(in: TimeZone(abbreviation: "GMT")!, from: randomDay.date)
+        var randomDayComponents = Calendar.current.dateComponents(in: .current, from: randomDay.date)
         randomDayComponents.hour = .random(upperLimit: 22)
         randomDayComponents.minute = .random(upperLimit: 58)
         randomDayComponents.second = .random(upperLimit: 58)
