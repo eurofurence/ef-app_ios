@@ -550,15 +550,9 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
     }
 
     func testSaveImages() {
-        let expected = [ImageCharacteristics].random
-        store.performTransaction { (transaction) in
-            transaction.saveImages(expected)
-        }
-
-        recreateStore()
-        let actual = store.fetchImages()
-
-        assertThat(expected, isEqualTo: actual)
+        verifySaving(for: [ImageCharacteristics].random,
+                     savingBlock: { $0.saveImages },
+                     loadingBlock: { $0.fetchImages })
     }
 
     func testUpdateExistingImagesByIdentifier() {
@@ -585,6 +579,24 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
                        savingBlock: { $0.saveImages },
                        deletionBlock: { $0.deleteImage },
                        loadingBlock: { $0.fetchImages })
+    }
+    
+    private func verifySaving<T>(for elements: [T],
+                                 savingBlock: @escaping (DataStoreTransaction) -> ([T]) -> Void,
+                                 loadingBlock: (DataStore) -> () -> [T]?,
+                                 file: StaticString = #file,
+                                 line: UInt = #line) where T: Equatable {
+        store.performTransaction { (transaction) in
+            let block = savingBlock(transaction)
+            block(elements)
+        }
+        
+        recreateStore()
+        
+        let loader = loadingBlock(store)
+        let loaded = loader()
+        
+        assertThat(elements, isEqualTo: loaded, file: file, line: line)
     }
 
     private func verifyDeletion<T>(for element: T,
