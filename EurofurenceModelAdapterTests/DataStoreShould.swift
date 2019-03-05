@@ -1,5 +1,5 @@
 //
-//  CoreDataEurofurenceDataStoreShould.swift
+//  DataStoreShould.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 06/06/2018.
@@ -10,14 +10,13 @@ import CoreData
 import EurofurenceModel
 import XCTest
 
-class CoreDataEurofurenceDataStoreShould: XCTestCase {
+class DataStoreShould: XCTestCase {
 
-    var storeIdentifier: String!
-    var store: CoreDataEurofurenceDataStore!
-
-    private func recreateStore() {
-        store = CoreDataEurofurenceDataStore(storeName: storeIdentifier)
-    }
+    var store: DataStore!
+    
+    private var storeIdentifier: String!
+    private var coreDataStore: CoreDataEurofurenceDataStore!
+    private var storeLocation: URL?
 
     override func setUp() {
         super.setUp()
@@ -28,8 +27,19 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
 
     override func tearDown() {
         super.tearDown()
-
-        if let url = store?.storeLocation {
+        teardownStore()
+    }
+    
+    func recreateStore() {
+        let store = CoreDataEurofurenceDataStore(storeName: storeIdentifier)
+        storeLocation = store.storeLocation
+        coreDataStore = store
+        
+        self.store = store
+    }
+    
+    func teardownStore() {
+        if let url = storeLocation {
             do {
                 try FileManager.default.removeItem(at: url)
             } catch {
@@ -114,33 +124,6 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
 
         XCTAssertEqual(1, savedEntries?.count)
         XCTAssertEqual(entry.title, savedEntries?.first?.title)
-    }
-
-    // TODO: This is sorta testing internals, but not sure if there's another avenue for us to assert upon
-    func testNotDuplicateLinksWhenUpdatingKnowledgeEntries() {
-        let entry = KnowledgeEntryCharacteristics.random
-        store.performTransaction { (transaction) in
-            transaction.saveKnowledgeEntries([entry])
-        }
-
-        store.performTransaction { (transaction) in
-            transaction.saveKnowledgeEntries([entry])
-        }
-
-        let link = entry.links.randomElement().element
-
-        let linksFetchRequest: NSFetchRequest<LinkEntity> = LinkEntity.fetchRequest()
-        let preidcateFormat = "\(#keyPath(LinkEntity.name)) == %@ AND \(#keyPath(LinkEntity.target)) == %@ AND \(#keyPath(LinkEntity.fragmentType)) == %li"
-        linksFetchRequest.predicate = NSPredicate(format: preidcateFormat, link.name, link.target, link.fragmentType.rawValue)
-
-        store.container.viewContext.performAndWait {
-            do {
-                let result = try linksFetchRequest.execute()
-                XCTAssertEqual(1, result.count)
-            } catch {
-                XCTFail("\(error)")
-            }
-        }
     }
 
     func testEnsureLinksDeletedFromRemoteModelAreNotReconstitutedLater_BUG() {
@@ -573,6 +556,35 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
         for item in expected {
             if actual.contains(item) { continue }
             XCTFail("Did not witness item: \(item)", file: file, line: line)
+        }
+    }
+    
+    // MARK: Core Data Specific Tests
+    
+    // TODO: This is sorta testing internals, but not sure if there's another avenue for us to assert upon
+    func testNotDuplicateLinksWhenUpdatingKnowledgeEntries() {
+        let entry = KnowledgeEntryCharacteristics.random
+        store.performTransaction { (transaction) in
+            transaction.saveKnowledgeEntries([entry])
+        }
+        
+        store.performTransaction { (transaction) in
+            transaction.saveKnowledgeEntries([entry])
+        }
+        
+        let link = entry.links.randomElement().element
+        
+        let linksFetchRequest: NSFetchRequest<LinkEntity> = LinkEntity.fetchRequest()
+        let preidcateFormat = "\(#keyPath(LinkEntity.name)) == %@ AND \(#keyPath(LinkEntity.target)) == %@ AND \(#keyPath(LinkEntity.fragmentType)) == %li"
+        linksFetchRequest.predicate = NSPredicate(format: preidcateFormat, link.name, link.target, link.fragmentType.rawValue)
+        
+        coreDataStore.container.viewContext.performAndWait {
+            do {
+                let result = try linksFetchRequest.execute()
+                XCTAssertEqual(1, result.count)
+            } catch {
+                XCTFail("\(error)")
+            }
         }
     }
 
