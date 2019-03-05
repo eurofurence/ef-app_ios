@@ -6735,7 +6735,6 @@
 			buildConfigurationList = 78D7EEAA1F17F40C005372A9 /* Build configuration list for PBXNativeTarget "EurofurenceUITests" */;
 			buildPhases = (
 				8C68993DA1A720470AD2C4D4 /* [CP] Check Pods Manifest.lock */,
-				CA0F9D8D21D5352B0084886E /* Swiftlint */,
 				78D7EE9D1F17F40C005372A9 /* Sources */,
 				78D7EE9E1F17F40C005372A9 /* Frameworks */,
 				78D7EE9F1F17F40C005372A9 /* Resources */,
@@ -6756,7 +6755,6 @@
 			buildConfigurationList = 9ACF99511EBE172D006FC958 /* Build configuration list for PBXNativeTarget "Eurofurence" */;
 			buildPhases = (
 				AB8BAC5DE2C718F04F373F4A /* [CP] Check Pods Manifest.lock */,
-				78CA0D0B1F0D7D81006DFD64 /* Swiftlint */,
 				9ACF99301EBE172D006FC958 /* Sources */,
 				9ACF99311EBE172D006FC958 /* Frameworks */,
 				9ACF99321EBE172D006FC958 /* Resources */,
@@ -6781,7 +6779,6 @@
 			buildConfigurationList = 9ACF99541EBE172D006FC958 /* Build configuration list for PBXNativeTarget "EurofurenceTests" */;
 			buildPhases = (
 				C7E1F661EF44B237C2B087D7 /* [CP] Check Pods Manifest.lock */,
-				CAEA10A9216F6E3200B0C7A6 /* Swiftlint */,
 				9ACF99441EBE172D006FC958 /* Sources */,
 				9ACF99451EBE172D006FC958 /* Frameworks */,
 				9ACF99461EBE172D006FC958 /* Resources */,
@@ -6802,7 +6799,6 @@
 			buildConfigurationList = CA0B1EE4217F40EC00A6A949 /* Build configuration list for PBXNativeTarget "EurofurenceModelAdapterTests" */;
 			buildPhases = (
 				2C6805F27B955B8FC3A8A88C /* [CP] Check Pods Manifest.lock */,
-				CA0F9D8F21D535AD0084886E /* Swiftlint */,
 				CA0B1ED4217F40EC00A6A949 /* Sources */,
 				CA0B1ED5217F40EC00A6A949 /* Frameworks */,
 				CA0B1ED6217F40EC00A6A949 /* Resources */,
@@ -6823,7 +6819,6 @@
 			buildConfigurationList = CA9845D11F2907A800E8821D /* Build configuration list for PBXNativeTarget "ScreenshotGenerator" */;
 			buildPhases = (
 				BF8B7846DB3963A97009EA36 /* [CP] Check Pods Manifest.lock */,
-				CA0F9D8E21D535400084886E /* Swiftlint */,
 				CA9845C31F2907A800E8821D /* Sources */,
 				CA9845C41F2907A800E8821D /* Frameworks */,
 				CA9845C51F2907A800E8821D /* Resources */,
@@ -6882,7 +6877,6 @@
 			buildConfigurationList = CAEA0B9B2165626900B0C7A6 /* Build configuration list for PBXNativeTarget "EurofurenceModelTests" */;
 			buildPhases = (
 				63E730AC772858750D1E34A4 /* [CP] Check Pods Manifest.lock */,
-				CAEA10AB216F6E5700B0C7A6 /* Swiftlint */,
 				CAEA0B7E2165626900B0C7A6 /* Sources */,
 				CAEA0B7F2165626900B0C7A6 /* Frameworks */,
 				CAEA0B802165626900B0C7A6 /* Resources */,
@@ -6903,7 +6897,6 @@
 			buildConfigurationList = CAEA0E8C216BEF7C00B0C7A6 /* Build configuration list for PBXNativeTarget "TestUtilities" */;
 			buildPhases = (
 				CF43CF38A7E5486C82F54EEF /* [CP] Check Pods Manifest.lock */,
-				CAEA10AD216F6E9700B0C7A6 /* Swiftlint */,
 				CAEA0E7E216BEF7C00B0C7A6 /* Headers */,
 				CAEA0E7F216BEF7C00B0C7A6 /* Sources */,
 				CAEA0E80216BEF7C00B0C7A6 /* Frameworks */,
@@ -6923,7 +6916,6 @@
 			buildConfigurationList = CAEA0F65216D294000B0C7A6 /* Build configuration list for PBXNativeTarget "EurofurenceModelTestDoubles" */;
 			buildPhases = (
 				E1C8F42924024D52023D95C4 /* [CP] Check Pods Manifest.lock */,
-				CAEA10AC216F6E7000B0C7A6 /* Swiftlint */,
 				CAEA0F57216D294000B0C7A6 /* Headers */,
 				CAEA0F58216D294000B0C7A6 /* Sources */,
 				CAEA0F59216D294000B0C7A6 /* Frameworks */,
@@ -7234,20 +7226,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		78CA0D0B1F0D7D81006DFD64 /* Swiftlint */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = Swiftlint;
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if [ -f \"${PODS_ROOT}/SwiftLint/swiftlint\" ]; then\n    cd Eurofurence\n    \"${PODS_ROOT}/SwiftLint/swiftlint\" autocorrect\n    cd ..\nelse\n    echo \"warning: SwiftLint pod not installed, please run pod install in the root directory of the project!\"\nfi\n";
-		};
 		8A07D0D9320EBA63A5933828 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -7418,78 +7396,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CA0F9D8D21D5352B0084886E /* Swiftlint */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = Swiftlint;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if [ -f \"${PODS_ROOT}/SwiftLint/swiftlint\" ]; then\n    cd EurofurenceUITests\n    \"${PODS_ROOT}/SwiftLint/swiftlint\" autocorrect\n    cd ..\nelse\n    echo \"warning: SwiftLint pod not installed, please run pod install in the root directory of the project!\"\nfi\n";
-		};
-		CA0F9D8E21D535400084886E /* Swiftlint */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = Swiftlint;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if [ -f \"${PODS_ROOT}/SwiftLint/swiftlint\" ]; then\n    cd ScreenshotGenerator\n    \"${PODS_ROOT}/SwiftLint/swiftlint\" autocorrect\n    cd ..\nelse\n    echo \"warning: SwiftLint pod not installed, please run pod install in the root directory of the project!\"\nfi\n";
-		};
-		CA0F9D8F21D535AD0084886E /* Swiftlint */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = Swiftlint;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if [ -f \"${PODS_ROOT}/SwiftLint/swiftlint\" ]; then\n    cd EurofurenceModelAdapterTests\n    \"${PODS_ROOT}/SwiftLint/swiftlint\" autocorrect\n    cd ..\nelse\n    echo \"warning: SwiftLint pod not installed, please run pod install in the root directory of the project!\"\nfi\n";
-		};
-		CAEA10A9216F6E3200B0C7A6 /* Swiftlint */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = Swiftlint;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if [ -f \"${PODS_ROOT}/SwiftLint/swiftlint\" ]; then\n    cd EurofurenceTests\n    \"${PODS_ROOT}/SwiftLint/swiftlint\" autocorrect\n    cd ..\nelse\n    echo \"warning: SwiftLint pod not installed, please run pod install in the root directory of the project!\"\nfi\n";
-		};
 		CAEA10AA216F6E4600B0C7A6 /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -7506,61 +7412,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ -f \"${PODS_ROOT}/SwiftLint/swiftlint\" ]; then\n    cd EurofurenceModel\n    \"${PODS_ROOT}/SwiftLint/swiftlint\" autocorrect\n    cd ..\nelse\n    echo \"warning: SwiftLint pod not installed, please run pod install in the root directory of the project!\"\nfi\n";
-		};
-		CAEA10AB216F6E5700B0C7A6 /* Swiftlint */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = Swiftlint;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if [ -f \"${PODS_ROOT}/SwiftLint/swiftlint\" ]; then\n    cd EurofurenceModelTests\n    \"${PODS_ROOT}/SwiftLint/swiftlint\" autocorrect\n    cd ..\nelse\n    echo \"warning: SwiftLint pod not installed, please run pod install in the root directory of the project!\"\nfi\n";
-		};
-		CAEA10AC216F6E7000B0C7A6 /* Swiftlint */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = Swiftlint;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if [ -f \"${PODS_ROOT}/SwiftLint/swiftlint\" ]; then\n    cd EurofurenceModelTestDoubles\n    \"${PODS_ROOT}/SwiftLint/swiftlint\" autocorrect\n    cd ..\nelse\n    echo \"warning: SwiftLint pod not installed, please run pod install in the root directory of the project!\"\nfi\n";
-		};
-		CAEA10AD216F6E9700B0C7A6 /* Swiftlint */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = Swiftlint;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if [ -f \"${PODS_ROOT}/SwiftLint/swiftlint\" ]; then\n    cd RandomDataGeneration\n    \"${PODS_ROOT}/SwiftLint/swiftlint\" autocorrect\n    cd ..\nelse\n    echo \"warning: SwiftLint pod not installed, please run pod install in the root directory of the project!\"\nfi\n";
+			shellScript = "if [ -f \"${PODS_ROOT}/SwiftLint/swiftlint\" ]; then\n    \"${PODS_ROOT}/SwiftLint/swiftlint\" \nelse\n    echo \"warning: SwiftLint pod not installed, please run pod install in the root directory of the project!\"\nfi\n";
 		};
 		CF43CF38A7E5486C82F54EEF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
