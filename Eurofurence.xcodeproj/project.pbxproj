@@ -710,6 +710,7 @@
 		CA7D8B27222EAB61003431A0 /* DefaultDealerDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D8B26222EAB61003431A0 /* DefaultDealerDetailViewModel.swift */; };
 		CA7D8B2C222EC258003431A0 /* FakeDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA109B216E8AE800B0C7A6 /* FakeDataStore.swift */; };
 		CA7D8B2D222EC2AA003431A0 /* CapturingEurofurenceDataStoreTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA109D216E8B1600B0C7A6 /* CapturingEurofurenceDataStoreTransaction.swift */; };
+		CA7D8B2F222EC835003431A0 /* CoreDataStoreShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D8B2E222EC835003431A0 /* CoreDataStoreShould.swift */; };
 		CA7EB7D51F799991002674A6 /* TutorialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7EB7D41F799991002674A6 /* TutorialScene.swift */; };
 		CA81D48E1FE9A8DB00A52A2F /* CapturingTutorialModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA81D48D1FE9A8DB00A52A2F /* CapturingTutorialModuleDelegate.swift */; };
 		CA81D4901FE9A91000A52A2F /* WhenTheTutorialAppears.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA81D48F1FE9A91000A52A2F /* WhenTheTutorialAppears.swift */; };
@@ -1319,6 +1320,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 9ACF99331EBE172D006FC958;
 			remoteInfo = Eurofurence;
+		};
+		CA7D8B30222F128B003431A0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9ACF992C1EBE172D006FC958 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CAEA0F5B216D294000B0C7A6;
+			remoteInfo = EurofurenceModelTestDoubles;
 		};
 		CA9845CC1F2907A800E8821D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -2351,6 +2359,7 @@
 		CA7D8B1D222DB28A003431A0 /* JSONSyncResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONSyncResponse.swift; sourceTree = "<group>"; };
 		CA7D8B1F222DBC28003431A0 /* DefaultEventDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultEventDetailViewModel.swift; sourceTree = "<group>"; };
 		CA7D8B26222EAB61003431A0 /* DefaultDealerDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDealerDetailViewModel.swift; sourceTree = "<group>"; };
+		CA7D8B2E222EC835003431A0 /* CoreDataStoreShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStoreShould.swift; sourceTree = "<group>"; };
 		CA7EB7D41F799991002674A6 /* TutorialScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScene.swift; sourceTree = "<group>"; };
 		CA804DD11F20CE8F00E07A4A /* JSONAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONAPI.swift; sourceTree = "<group>"; };
 		CA804DD91F20D2F500E07A4A /* LoginAPITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginAPITests.swift; sourceTree = "<group>"; };
@@ -3477,6 +3486,7 @@
 			isa = PBXGroup;
 			children = (
 				CA0B1EDC217F40EC00A6A949 /* Info.plist */,
+				CA7D8B2E222EC835003431A0 /* CoreDataStoreShould.swift */,
 				CABEB0D820C8A7E7000BEE66 /* DataStoreShould.swift */,
 				CAD7805C1F1E8EB0002A8333 /* KeychainCredentialStoreTests.swift */,
 				CA680F8420CDAE2F006ACD3D /* PersistentImageRepositoryTests.swift */,
@@ -6806,6 +6816,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				CA7D8B31222F128B003431A0 /* PBXTargetDependency */,
 				CA0B1EDF217F40EC00A6A949 /* PBXTargetDependency */,
 				CA0B1EED217F41F300A6A949 /* PBXTargetDependency */,
 			);
@@ -8340,6 +8351,7 @@
 				CA0B1EE7217F414B00A6A949 /* KeychainCredentialStoreTests.swift in Sources */,
 				CA0B1EE5217F414B00A6A949 /* DataStoreShould.swift in Sources */,
 				CA0B1EE9217F415900A6A949 /* JournallingURLRequestLogger.swift in Sources */,
+				CA7D8B2F222EC835003431A0 /* CoreDataStoreShould.swift in Sources */,
 				CA0B1EE6217F414B00A6A949 /* PersistentImageRepositoryTests.swift in Sources */,
 				CA0B1EEB217F418B00A6A949 /* APISyncResponse+RandomValueProviding.swift in Sources */,
 				CA0B1EE8217F415500A6A949 /* URLSessionBasedJSONSessionTests.swift in Sources */,
@@ -8802,6 +8814,11 @@
 			isa = PBXTargetDependency;
 			target = 9ACF99331EBE172D006FC958 /* Eurofurence */;
 			targetProxy = CA0B1EEC217F41F300A6A949 /* PBXContainerItemProxy */;
+		};
+		CA7D8B31222F128B003431A0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CAEA0F5B216D294000B0C7A6 /* EurofurenceModelTestDoubles */;
+			targetProxy = CA7D8B30222F128B003431A0 /* PBXContainerItemProxy */;
 		};
 		CA9845CD1F2907A800E8821D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

@@ -48,7 +48,7 @@ open class FakeDataStore: DataStore {
     }
 
     public func fetchFavouriteEventIdentifiers() -> [EventIdentifier]? {
-        return transaction.persistedFavouriteEvents
+        return Array(transaction.persistedFavouriteEvents)
     }
 
     public func fetchDealers() -> [DealerCharacteristics]? {
