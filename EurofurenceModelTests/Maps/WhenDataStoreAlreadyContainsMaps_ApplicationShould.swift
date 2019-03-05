@@ -7,6 +7,7 @@
 //
 
 import EurofurenceModel
+import EurofurenceModelTestDoubles
 import XCTest
 
 class WhenDataStoreAlreadyContainsMaps_ApplicationShould: XCTestCase {

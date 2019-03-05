@@ -9,78 +9,82 @@
 import EurofurenceModel
 import Foundation
 
-class FakeDataStore: DataStore {
+open class FakeDataStore: DataStore {
+    
+    public init() {
+        
+    }
 
-    func fetchAnnouncements() -> [AnnouncementCharacteristics]? {
+    public func fetchAnnouncements() -> [AnnouncementCharacteristics]? {
         return transaction.persistedAnnouncements
     }
 
-    func fetchLastRefreshDate() -> Date? {
+    public func fetchLastRefreshDate() -> Date? {
         return transaction.persistedLastRefreshDate
     }
 
-    func fetchKnowledgeGroups() -> [KnowledgeGroupCharacteristics]? {
+    public func fetchKnowledgeGroups() -> [KnowledgeGroupCharacteristics]? {
         return transaction.persistedKnowledgeGroups
     }
 
-    func fetchKnowledgeEntries() -> [KnowledgeEntryCharacteristics]? {
+    public func fetchKnowledgeEntries() -> [KnowledgeEntryCharacteristics]? {
         return transaction.persistedKnowledgeEntries
     }
 
-    func fetchRooms() -> [RoomCharacteristics]? {
+    public func fetchRooms() -> [RoomCharacteristics]? {
         return transaction.persistedRooms
     }
 
-    func fetchTracks() -> [TrackCharacteristics]? {
+    public func fetchTracks() -> [TrackCharacteristics]? {
         return transaction.persistedTracks
     }
 
-    func fetchConferenceDays() -> [ConferenceDayCharacteristics]? {
+    public func fetchConferenceDays() -> [ConferenceDayCharacteristics]? {
         return transaction.persistedConferenceDays
     }
 
-    func fetchEvents() -> [EventCharacteristics]? {
+    public func fetchEvents() -> [EventCharacteristics]? {
         return transaction.persistedEvents
     }
 
-    func fetchFavouriteEventIdentifiers() -> [EventIdentifier]? {
+    public func fetchFavouriteEventIdentifiers() -> [EventIdentifier]? {
         return transaction.persistedFavouriteEvents
     }
 
-    func fetchDealers() -> [DealerCharacteristics]? {
+    public func fetchDealers() -> [DealerCharacteristics]? {
         return transaction.persistedDealers
     }
 
-    func fetchMaps() -> [MapCharacteristics]? {
+    public func fetchMaps() -> [MapCharacteristics]? {
         return transaction.persistedMaps
     }
 
-    func fetchReadAnnouncementIdentifiers() -> [AnnouncementIdentifier]? {
+    public func fetchReadAnnouncementIdentifiers() -> [AnnouncementIdentifier]? {
         return transaction.persistedReadAnnouncementIdentifiers
     }
 
-    func fetchImages() -> [ImageCharacteristics]? {
+    public func fetchImages() -> [ImageCharacteristics]? {
         return transaction.persistedImages
     }
 
-    private(set) var capturedKnowledgeGroupsToSave: [KnowledgeGroup]?
-    var transactionInvokedBlock: (() -> Void)?
-    let transaction = CapturingEurofurenceDataStoreTransaction()
-    func performTransaction(_ block: @escaping (DataStoreTransaction) -> Void) {
+    private(set) public var capturedKnowledgeGroupsToSave: [KnowledgeGroup]?
+    public var transactionInvokedBlock: (() -> Void)?
+    public let transaction = CapturingEurofurenceDataStoreTransaction()
+    open func performTransaction(_ block: @escaping (DataStoreTransaction) -> Void) {
         block(transaction)
         transactionInvokedBlock?()
     }
 
 }
 
-extension FakeDataStore {
+public extension FakeDataStore {
 
-    convenience init(response: ModelCharacteristics) {
+    public convenience init(response: ModelCharacteristics) {
         self.init()
         save(response)
     }
 
-    func save(_ response: ModelCharacteristics, lastRefreshDate: Date = Date(), block: ((DataStoreTransaction) -> Void)? = nil) {
+    public func save(_ response: ModelCharacteristics, lastRefreshDate: Date = Date(), block: ((DataStoreTransaction) -> Void)? = nil) {
         performTransaction { (transaction) in
             transaction.saveLastRefreshDate(lastRefreshDate)
             transaction.saveKnowledgeGroups(response.knowledgeGroups.changed)
@@ -98,66 +102,76 @@ extension FakeDataStore {
     }
 
     private func verifySaved<T>(expected: [T], actual: [T]?) -> Bool where T: Equatable {
-        return (actual?.contains(elementsFrom: expected)).defaultingTo(false)
+        guard let actual = actual else { return false }
+        
+        for element in expected {
+            guard actual.contains(element) else { return false }
+        }
+        
+        return true
     }
 
-    func didSave(_ knowledgeGroups: [KnowledgeGroupCharacteristics]) -> Bool {
+    public func didSave(_ knowledgeGroups: [KnowledgeGroupCharacteristics]) -> Bool {
         return verifySaved(expected: knowledgeGroups, actual: fetchKnowledgeGroups())
     }
 
-    func didSave(_ knowledgeEntries: [KnowledgeEntryCharacteristics]) -> Bool {
+    public func didSave(_ knowledgeEntries: [KnowledgeEntryCharacteristics]) -> Bool {
         return verifySaved(expected: knowledgeEntries, actual: fetchKnowledgeEntries())
     }
 
-    func didSave(_ announcements: [AnnouncementCharacteristics]) -> Bool {
+    public func didSave(_ announcements: [AnnouncementCharacteristics]) -> Bool {
         return verifySaved(expected: announcements, actual: fetchAnnouncements())
     }
 
-    func didSave(_ events: [EventCharacteristics]) -> Bool {
+    public func didSave(_ events: [EventCharacteristics]) -> Bool {
         return verifySaved(expected: events, actual: fetchEvents())
     }
 
-    func didSave(_ rooms: [RoomCharacteristics]) -> Bool {
+    public func didSave(_ rooms: [RoomCharacteristics]) -> Bool {
         return verifySaved(expected: rooms, actual: fetchRooms())
     }
 
-    func didSave(_ tracks: [TrackCharacteristics]) -> Bool {
+    public func didSave(_ tracks: [TrackCharacteristics]) -> Bool {
         return verifySaved(expected: tracks, actual: fetchTracks())
     }
 
-    func didSaveLastRefreshTime(_ lastRefreshTime: Date) -> Bool {
+    public func didSaveLastRefreshTime(_ lastRefreshTime: Date) -> Bool {
         return lastRefreshTime == fetchLastRefreshDate()
     }
 
-    func didFavouriteEvent(_ identifier: EventIdentifier) -> Bool {
+    public func didFavouriteEvent(_ identifier: EventIdentifier) -> Bool {
         return (fetchFavouriteEventIdentifiers()?.contains(identifier)).defaultingTo(false)
     }
 
-    func didSave(_ dealers: [DealerCharacteristics]) -> Bool {
+    public func didSave(_ dealers: [DealerCharacteristics]) -> Bool {
         return verifySaved(expected: dealers, actual: fetchDealers())
     }
 
-    func didDeleteFavouriteEvent(_ identifier: EventIdentifier) -> Bool {
+    public func didDeleteFavouriteEvent(_ identifier: EventIdentifier) -> Bool {
         return transaction.deletedFavouriteEvents.contains(identifier)
     }
 
-    func didSave(_ conferenceDays: [ConferenceDayCharacteristics]) -> Bool {
+    public func didSave(_ conferenceDays: [ConferenceDayCharacteristics]) -> Bool {
         return verifySaved(expected: conferenceDays, actual: fetchConferenceDays())
     }
 
-    func didSave(_ maps: [MapCharacteristics]) -> Bool {
+    public func didSave(_ maps: [MapCharacteristics]) -> Bool {
         return verifySaved(expected: maps, actual: fetchMaps())
     }
 
-    func didSaveReadAnnouncement(_ identifier: AnnouncementIdentifier) -> Bool {
+    public func didSaveReadAnnouncement(_ identifier: AnnouncementIdentifier) -> Bool {
         return transaction.persistedReadAnnouncementIdentifiers.contains(identifier)
     }
 
-    func didSaveReadAnnouncements(_ identifiers: [AnnouncementIdentifier]) -> Bool {
-        return transaction.persistedReadAnnouncementIdentifiers.contains(elementsFrom: identifiers)
+    public func didSaveReadAnnouncements(_ identifiers: [AnnouncementIdentifier]) -> Bool {
+        for item in identifiers {
+            guard transaction.persistedReadAnnouncementIdentifiers.contains(item) else { return false }
+        }
+        
+        return true
     }
 
-    func didSave(_ images: [ImageCharacteristics]) -> Bool {
+    public func didSave(_ images: [ImageCharacteristics]) -> Bool {
         return verifySaved(expected: images, actual: fetchImages())
     }
 

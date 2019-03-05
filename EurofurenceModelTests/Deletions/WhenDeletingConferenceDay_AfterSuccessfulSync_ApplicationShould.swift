@@ -7,6 +7,7 @@
 //
 
 import EurofurenceModel
+import EurofurenceModelTestDoubles
 import XCTest
 
 class WhenDeletingConferenceDay_AfterSuccessfulSync_ApplicationShould: XCTestCase {

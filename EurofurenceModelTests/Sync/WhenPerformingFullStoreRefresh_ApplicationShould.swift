@@ -7,6 +7,7 @@
 //
 
 import EurofurenceModel
+import EurofurenceModelTestDoubles
 import XCTest
 
 class WhenPerformingFullStoreRefresh_ApplicationShould: XCTestCase {

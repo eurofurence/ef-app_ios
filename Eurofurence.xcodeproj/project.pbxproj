@@ -708,6 +708,8 @@
 		CA7D8B1E222DB28A003431A0 /* JSONSyncResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D8B1D222DB28A003431A0 /* JSONSyncResponse.swift */; };
 		CA7D8B20222DBC28003431A0 /* DefaultEventDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D8B1F222DBC28003431A0 /* DefaultEventDetailViewModel.swift */; };
 		CA7D8B27222EAB61003431A0 /* DefaultDealerDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D8B26222EAB61003431A0 /* DefaultDealerDetailViewModel.swift */; };
+		CA7D8B2C222EC258003431A0 /* FakeDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA109B216E8AE800B0C7A6 /* FakeDataStore.swift */; };
+		CA7D8B2D222EC2AA003431A0 /* CapturingEurofurenceDataStoreTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA109D216E8B1600B0C7A6 /* CapturingEurofurenceDataStoreTransaction.swift */; };
 		CA7EB7D51F799991002674A6 /* TutorialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7EB7D41F799991002674A6 /* TutorialScene.swift */; };
 		CA81D48E1FE9A8DB00A52A2F /* CapturingTutorialModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA81D48D1FE9A8DB00A52A2F /* CapturingTutorialModuleDelegate.swift */; };
 		CA81D4901FE9A91000A52A2F /* WhenTheTutorialAppears.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA81D48F1FE9A91000A52A2F /* WhenTheTutorialAppears.swift */; };
@@ -1241,8 +1243,6 @@
 		CAEA108E216E81AA00B0C7A6 /* CapturingNotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA108D216E81AA00B0C7A6 /* CapturingNotificationScheduler.swift */; };
 		CAEA1098216E8A9900B0C7A6 /* CapturingMapsObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA1097216E8A9900B0C7A6 /* CapturingMapsObserver.swift */; };
 		CAEA109A216E8ABC00B0C7A6 /* CapturingRefreshServiceObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA1099216E8ABC00B0C7A6 /* CapturingRefreshServiceObserver.swift */; };
-		CAEA109C216E8AE800B0C7A6 /* FakeDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA109B216E8AE800B0C7A6 /* FakeDataStore.swift */; };
-		CAEA109E216E8B1600B0C7A6 /* CapturingEurofurenceDataStoreTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA109D216E8B1600B0C7A6 /* CapturingEurofurenceDataStoreTransaction.swift */; };
 		CAEA10A0216E8B2D00B0C7A6 /* StubUserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA109F216E8B2D00B0C7A6 /* StubUserPreferences.swift */; };
 		CAEA10A2216E8B8100B0C7A6 /* CapturingExternalContentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA10A1216E8B8100B0C7A6 /* CapturingExternalContentHandler.swift */; };
 		CAEA10A4216E8BA800B0C7A6 /* StubForceRefreshRequired.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA10A3216E8BA800B0C7A6 /* StubForceRefreshRequired.swift */; };
@@ -6337,9 +6337,11 @@
 			children = (
 				CAEA0F5E216D294000B0C7A6 /* EurofurenceAppCoreTestDoubles.h */,
 				CAEA0F5F216D294000B0C7A6 /* Info.plist */,
+				CAEA109D216E8B1600B0C7A6 /* CapturingEurofurenceDataStoreTransaction.swift */,
 				78FE77D21F1A2EB000E9A0BE /* CapturingJSONSession.swift */,
 				CAB3A7291F7532A2005DF77B /* CapturingPushPermissionsRequester.swift */,
 				CA63755F208CBC5F00536BE2 /* CapturingURLOpener.swift */,
+				CAEA109B216E8AE800B0C7A6 /* FakeDataStore.swift */,
 				CAEA0F7B216D370600B0C7A6 /* FakeHoursDateFormatter.swift */,
 				C61870DF20DAD8E00089E836 /* StubAPIURLProviding.swift */,
 				6EEC6DA21F1BFC5000205F2D /* StubAppVersionProviding.swift */,
@@ -6447,14 +6449,12 @@
 			isa = PBXGroup;
 			children = (
 				CAD780511F1E2D2E002A8333 /* CapturingCredentialStore.swift */,
-				CAEA109D216E8B1600B0C7A6 /* CapturingEurofurenceDataStoreTransaction.swift */,
 				CAEA10A1216E8B8100B0C7A6 /* CapturingExternalContentHandler.swift */,
 				CAEA10A5216E8BB600B0C7A6 /* CapturingForceRefreshRequired.swift */,
 				CAEA1087216E817700B0C7A6 /* CapturingImageRepository.swift */,
 				CA2A586820F69EA1002C69B6 /* CapturingMapCoordinateRender.swift */,
 				CAEA108D216E81AA00B0C7A6 /* CapturingNotificationScheduler.swift */,
 				CAEA1089216E818A00B0C7A6 /* CapturingSignificantTimeChangeAdapter.swift */,
-				CAEA109B216E8AE800B0C7A6 /* FakeDataStore.swift */,
 				CAEA108B216E819B00B0C7A6 /* FakeLongRunningTaskManager.swift */,
 				CA2761CB20E034BD000E52AC /* StubCollectThemAllRequestFactory.swift */,
 				CA162E7720A4B6E0004AFED6 /* StubConventionStartDateRepository.swift */,
@@ -8602,7 +8602,6 @@
 				CAEA0FED216E1CE700B0C7A6 /* WhenSyncSucceeds_ThenImageChanges_ApplicationShould.swift in Sources */,
 				CAEA0FBC216E1CC000B0C7A6 /* WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould.swift in Sources */,
 				CAEA101E216E1CE800B0C7A6 /* WhenSavingSuccessfulSyncResponse.swift in Sources */,
-				CAEA109C216E8AE800B0C7A6 /* FakeDataStore.swift in Sources */,
 				CAEA1000216E1CE700B0C7A6 /* WhenObservingMaps_AfterSyncSucceeds_ApplicationShould.swift in Sources */,
 				CAEA0FDA216E1CC000B0C7A6 /* WhenSchedulingReminderForEvent_ApplicationShould.swift in Sources */,
 				CAEA0FDE216E1CE700B0C7A6 /* WhenObservingRunningEventsBeforeLoadingAnything.swift in Sources */,
@@ -8623,7 +8622,6 @@
 				CAEA108E216E81AA00B0C7A6 /* CapturingNotificationScheduler.swift in Sources */,
 				CAEA0FCE216E1CC000B0C7A6 /* WhenDeletingRoom_AfterSuccessfulSync_ApplicationShould.swift in Sources */,
 				CA235875221C55A30044B1FC /* CapturingEventObserver.swift in Sources */,
-				CAEA109E216E8B1600B0C7A6 /* CapturingEurofurenceDataStoreTransaction.swift in Sources */,
 				CAEA0FAA216E1CC000B0C7A6 /* WhenObservingConventionCountdownAfterConventionStarts_EurofurenceApplicationShould.swift in Sources */,
 				CAEA0F71216D2C0900B0C7A6 /* WhenSyncSucceeds_SyncAPIShould.swift in Sources */,
 				CAEA100F216E1CE800B0C7A6 /* WhenAppLaunchesWhenClockDoesNotReadConferenceDay_ScheduleShould.swift in Sources */,
@@ -8753,7 +8751,9 @@
 			files = (
 				CAEA0F89216E1AE200B0C7A6 /* User+RandomValueProviding.swift in Sources */,
 				CAEA0F83216E1AE200B0C7A6 /* KnowledgeEntry+RandomValueProviding.swift in Sources */,
+				CA7D8B2D222EC2AA003431A0 /* CapturingEurofurenceDataStoreTransaction.swift in Sources */,
 				CAEA0F86216E1AE200B0C7A6 /* Message+RandomValueProviding.swift in Sources */,
+				CA7D8B2C222EC258003431A0 /* FakeDataStore.swift in Sources */,
 				CAEA0F7D216E188C00B0C7A6 /* CapturingURLOpener.swift in Sources */,
 				CAEA0F7A216D341600B0C7A6 /* StubClock.swift in Sources */,
 				CAEA0F7C216D370600B0C7A6 /* FakeHoursDateFormatter.swift in Sources */,

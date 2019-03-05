@@ -7,6 +7,7 @@
 //
 
 import EurofurenceModel
+import EurofurenceModelTestDoubles
 import XCTest
 
 class WhenSchedulingReminderForEvent_ApplicationShould: XCTestCase {

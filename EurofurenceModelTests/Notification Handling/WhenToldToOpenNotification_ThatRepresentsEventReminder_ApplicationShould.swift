@@ -7,6 +7,7 @@
 //
 
 import EurofurenceModel
+import EurofurenceModelTestDoubles
 import XCTest
 
 class WhenToldToOpenNotification_ThatRepresentsEventReminder_ApplicationShould: XCTestCase {

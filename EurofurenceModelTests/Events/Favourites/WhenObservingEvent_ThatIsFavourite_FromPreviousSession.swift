@@ -7,6 +7,7 @@
 //
 
 import EurofurenceModel
+import EurofurenceModelTestDoubles
 import XCTest
 
 class WhenObservingEvent_ThatIsFavourite_FromPreviousSession: XCTestCase {

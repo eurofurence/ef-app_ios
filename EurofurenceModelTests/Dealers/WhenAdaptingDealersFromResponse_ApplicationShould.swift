@@ -7,6 +7,7 @@
 //
 
 import EurofurenceModel
+import EurofurenceModelTestDoubles
 import XCTest
 
 class WhenAdaptingDealersFromResponse_ApplicationShould: XCTestCase {
