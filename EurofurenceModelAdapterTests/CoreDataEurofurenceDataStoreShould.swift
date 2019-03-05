@@ -71,15 +71,9 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
     }
 
     func testSaveKnowledgeGroups() {
-        let expected = [KnowledgeGroupCharacteristics].random
-        store.performTransaction { (transaction) in
-            transaction.saveKnowledgeGroups(expected)
-        }
-
-        recreateStore()
-        let actual = store.fetchKnowledgeGroups()
-
-        assertThat(expected, isEqualTo: actual)
+        verifySaving(for: [KnowledgeGroupCharacteristics].random,
+                     savingBlock: { $0.saveKnowledgeGroups },
+                     loadingBlock: { $0.fetchKnowledgeGroups })
     }
 
     func testUpdateExistingKnowledgeGroupsByIdentifier() {
@@ -100,15 +94,9 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
     }
 
     func testSaveKnowledgeEntries() {
-        let expected = [KnowledgeEntryCharacteristics].random.sorted()
-        store.performTransaction { (transaction) in
-            transaction.saveKnowledgeEntries(expected)
-        }
-
-        recreateStore()
-        let actual = store.fetchKnowledgeEntries()
-
-        assertThat(expected, isEqualTo: actual?.sorted())
+        verifySaving(for: [KnowledgeEntryCharacteristics].random,
+                     savingBlock: { $0.saveKnowledgeEntries },
+                     loadingBlock: { $0.fetchKnowledgeEntries })
     }
 
     func testUpdateExistingKnowledgeEntriesByIdentifier() {
@@ -196,15 +184,9 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
     }
 
     func testSaveEvents() {
-        let expected = [EventCharacteristics].random
-        store.performTransaction { (transaction) in
-            transaction.saveEvents(expected)
-        }
-
-        recreateStore()
-        let actual = store.fetchEvents()
-
-        assertThat(expected, isEqualTo: actual)
+        verifySaving(for: [EventCharacteristics].random,
+                     savingBlock: { $0.saveEvents },
+                     loadingBlock: { $0.fetchEvents })
     }
 
     func testUpdateExistingEventsByIdentifier() {
@@ -225,15 +207,9 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
     }
 
     func testSaveRooms() {
-        let expected = [RoomCharacteristics].random
-        store.performTransaction { (transaction) in
-            transaction.saveRooms(expected)
-        }
-
-        recreateStore()
-        let actual = store.fetchRooms()
-
-        assertThat(expected, isEqualTo: actual)
+        verifySaving(for: [RoomCharacteristics].random,
+                     savingBlock: { $0.saveRooms },
+                     loadingBlock: { $0.fetchRooms })
     }
 
     func testUpdateExistingRoomsByIdentifier() {
@@ -254,15 +230,9 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
     }
 
     func testSaveTracks() {
-        let expected = [TrackCharacteristics].random
-        store.performTransaction { (transaction) in
-            transaction.saveTracks(expected)
-        }
-
-        recreateStore()
-        let actual = store.fetchTracks()
-
-        assertThat(expected, isEqualTo: actual)
+        verifySaving(for: [TrackCharacteristics].random,
+                     savingBlock: { $0.saveTracks },
+                     loadingBlock: { $0.fetchTracks })
     }
 
     func testUpdateExistingTracksByIdentifier() {
@@ -283,15 +253,9 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
     }
 
     func testSaveAnnouncements() {
-        let expected = [AnnouncementCharacteristics].random
-        store.performTransaction { (transaction) in
-            transaction.saveAnnouncements(expected)
-        }
-
-        recreateStore()
-        let actual = store.fetchAnnouncements()
-
-        assertThat(expected, isEqualTo: actual)
+        verifySaving(for: [AnnouncementCharacteristics].random,
+                     savingBlock: { $0.saveAnnouncements },
+                     loadingBlock: { $0.fetchAnnouncements })
     }
 
     func testUpdateExistingAnnouncementsByIdentifier() {
@@ -355,15 +319,9 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
     }
 
     func testSaveConferenceDays() {
-        let conferenceDays = [ConferenceDayCharacteristics].random
-        store.performTransaction { (transaction) in
-            transaction.saveConferenceDays(conferenceDays)
-        }
-
-        recreateStore()
-        let actual = store.fetchConferenceDays()
-
-        assertThat(conferenceDays, isEqualTo: actual)
+        verifySaving(for: [ConferenceDayCharacteristics].random,
+                     savingBlock: { $0.saveConferenceDays },
+                     loadingBlock: { $0.fetchConferenceDays })
     }
 
     func testUpdateExistingConferenceDaysByIdentifier() {
@@ -384,15 +342,9 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
     }
 
     func testSaveDealers() {
-        let dealers = [DealerCharacteristics].random
-        store.performTransaction { (transaction) in
-            transaction.saveDealers(dealers)
-        }
-
-        recreateStore()
-        let actual = store.fetchDealers()
-
-        assertThat(dealers, isEqualTo: actual)
+        verifySaving(for: [DealerCharacteristics].random,
+                     savingBlock: { $0.saveDealers },
+                     loadingBlock: { $0.fetchDealers })
     }
 
     func testUpdateExistingDealersByIdentifier() {
@@ -413,15 +365,9 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
     }
 
     func testSaveMaps() {
-        let maps = [MapCharacteristics].random
-        store.performTransaction { (transaction) in
-            transaction.saveMaps(maps)
-        }
-
-        recreateStore()
-        let actual = store.fetchMaps()
-
-        assertThat(maps, isEqualTo: actual)
+        verifySaving(for: [MapCharacteristics].random,
+                     savingBlock: { $0.saveMaps },
+                     loadingBlock: { $0.fetchMaps })
     }
 
     func testUpdateExistingMapsByIdentifier() {
@@ -442,15 +388,15 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
     }
 
     func testSaveReadAnnouncements() {
-        let expected = [AnnouncementIdentifier].random
-        store.performTransaction { (transaction) in
-            transaction.saveReadAnnouncements(expected)
-        }
-
-        recreateStore()
-        let actual = store.fetchReadAnnouncementIdentifiers()
-
-        assertThat(expected, isEqualTo: actual)
+        verifySaving(for: [AnnouncementIdentifier].random,
+                     savingBlock: { $0.saveReadAnnouncements },
+                     loadingBlock: { $0.fetchReadAnnouncementIdentifiers })
+    }
+    
+    func testSaveImages() {
+        verifySaving(for: [ImageCharacteristics].random,
+                     savingBlock: { $0.saveImages },
+                     loadingBlock: { $0.fetchImages })
     }
 
     func testNotDuplicateReadAnnouncementIdentifiers() {
@@ -548,11 +494,14 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
                        deletionBlock: { $0.deleteMap },
                        loadingBlock: { $0.fetchMaps })
     }
-
-    func testSaveImages() {
-        verifySaving(for: [ImageCharacteristics].random,
-                     savingBlock: { $0.saveImages },
-                     loadingBlock: { $0.fetchImages })
+    
+    func testDeleteImages() {
+        let element = ImageCharacteristics.random
+        verifyDeletion(for: element,
+                       elementIdentifier: element.identifier,
+                       savingBlock: { $0.saveImages },
+                       deletionBlock: { $0.deleteImage },
+                       loadingBlock: { $0.fetchImages })
     }
 
     func testUpdateExistingImagesByIdentifier() {
@@ -570,15 +519,6 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
 
         XCTAssertEqual(1, savedImages?.count)
         XCTAssertEqual(image.internalReference, savedImages?.first?.internalReference)
-    }
-
-    func testDeleteImages() {
-        let element = ImageCharacteristics.random
-        verifyDeletion(for: element,
-                       elementIdentifier: element.identifier,
-                       savingBlock: { $0.saveImages },
-                       deletionBlock: { $0.deleteImage },
-                       loadingBlock: { $0.fetchImages })
     }
     
     private func verifySaving<T>(for elements: [T],
