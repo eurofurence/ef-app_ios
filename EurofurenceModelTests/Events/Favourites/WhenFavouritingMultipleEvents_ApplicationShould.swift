@@ -19,7 +19,7 @@ class WhenFavouritingMultipleEvents_ApplicationShould: XCTestCase {
     func testTellEventsObserversTheEventsAreNowFavourited() {
         let response = ModelCharacteristics.randomWithoutDeletions
         let events = response.events.changed
-        let dataStore = CapturingDataStore(response: response)
+        let dataStore = FakeDataStore(response: response)
 
         let context = ApplicationTestBuilder().with(dataStore).build()
         let identifiers = events.map({ EventIdentifier($0.identifier) })
@@ -33,7 +33,7 @@ class WhenFavouritingMultipleEvents_ApplicationShould: XCTestCase {
     func testTellEventsObserversWhenOnlyOneEventHasBeenUnfavourited() {
         let response = ModelCharacteristics.randomWithoutDeletions
         let events = response.events.changed
-        let dataStore = CapturingDataStore(response: response)
+        let dataStore = FakeDataStore(response: response)
 
         let context = ApplicationTestBuilder().with(dataStore).build()
         let identifiers = events.map({ EventIdentifier($0.identifier) })
@@ -52,7 +52,7 @@ class WhenFavouritingMultipleEvents_ApplicationShould: XCTestCase {
     func testSortTheFavouriteIdentifiersByEventStartTime() {
         let response = ModelCharacteristics.randomWithoutDeletions
         let events = response.events.changed
-        let dataStore = CapturingDataStore(response: response)
+        let dataStore = FakeDataStore(response: response)
         dataStore.performTransaction { (transaction) in
             events.map({ EventIdentifier($0.identifier) }).forEach(transaction.saveFavouriteEventIdentifier)
         }

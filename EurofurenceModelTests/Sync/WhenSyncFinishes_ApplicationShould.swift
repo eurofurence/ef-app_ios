@@ -11,7 +11,7 @@ import XCTest
 
 class WhenSyncFinishes_ApplicationShould: XCTestCase {
 
-    class SingleTransactionOnlyAllowedDataStore: CapturingDataStore {
+    class SingleTransactionOnlyAllowedDataStore: FakeDataStore {
 
         private var transactionCount = 0
 

@@ -14,7 +14,7 @@ class WhenSignificantTimeChanges_ScheduleShould: XCTestCase {
     func testTellTheDelegateWhenMovingFromConDayToNonConDay() {
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let randomDay = syncResponse.conferenceDays.changed.randomElement().element
-        let dataStore = CapturingDataStore()
+        let dataStore = FakeDataStore()
         dataStore.save(syncResponse)
         let context = ApplicationTestBuilder().with(randomDay.date).with(dataStore).build()
         let schedule = context.eventsService.makeEventsSchedule()

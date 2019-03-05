@@ -12,7 +12,7 @@ import XCTest
 class WhenDeletingRoom_AfterSuccessfulSync_ApplicationShould: XCTestCase {
 
     func testTellTheStoreToDeleteTheRoom() {
-        let dataStore = CapturingDataStore()
+        let dataStore = FakeDataStore()
         var response = ModelCharacteristics.randomWithoutDeletions
         let context = ApplicationTestBuilder().with(dataStore).build()
         context.refreshLocalStore()

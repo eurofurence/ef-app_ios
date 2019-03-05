@@ -22,7 +22,7 @@ class WhenFetchingMapContents_ThatRevealsRoom_ContentsSavedInDataStore_Applicati
         map.entries = [entry, unrelatedEntry]
         syncResponse.maps.changed = [map]
         syncResponse.rooms.changed = [room]
-        let dataStore = CapturingDataStore()
+        let dataStore = FakeDataStore()
         dataStore.save(syncResponse)
         let context = ApplicationTestBuilder().with(dataStore).build()
         var content: MapContent?

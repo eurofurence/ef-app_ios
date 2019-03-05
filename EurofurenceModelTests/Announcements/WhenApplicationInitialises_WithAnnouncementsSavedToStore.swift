@@ -13,7 +13,7 @@ class WhenApplicationInitialises_WithAnnouncementsSavedToStore: XCTestCase {
 
     func testTheEventsAreProvidedToTheObserver() {
         let characteristics = ModelCharacteristics.randomWithoutDeletions
-        let dataStore = CapturingDataStore(response: characteristics)
+        let dataStore = FakeDataStore(response: characteristics)
         let context = ApplicationTestBuilder().with(dataStore).build()
         let observer = CapturingAnnouncementsServiceObserver()
         context.announcementsService.add(observer)

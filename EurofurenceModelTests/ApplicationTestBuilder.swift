@@ -18,7 +18,7 @@ class ApplicationTestBuilder {
         var notificationTokenRegistration: CapturingRemoteNotificationsTokenRegistration
         var credentialStore: CapturingCredentialStore
         var api: FakeAPI
-        var dataStore: CapturingDataStore
+        var dataStore: FakeDataStore
         var dateDistanceCalculator: StubDateDistanceCalculator
         var conventionStartDateRepository: StubConventionStartDateRepository
         var imageRepository: CapturingImageRepository
@@ -133,7 +133,7 @@ class ApplicationTestBuilder {
     private var credentialStore = CapturingCredentialStore()
     private var clock = StubClock()
     private var pushPermissionsRequester: PushPermissionsRequester = CapturingPushPermissionsRequester()
-    private var dataStore = CapturingDataStore()
+    private var dataStore = FakeDataStore()
     private var userPreferences: UserPreferences = StubUserPreferences()
     private var timeIntervalForUpcomingEventsSinceNow: TimeInterval = .greatestFiniteMagnitude
     private var imageRepository = CapturingImageRepository()
@@ -165,7 +165,7 @@ class ApplicationTestBuilder {
     }
 
     @discardableResult
-    func with(_ dataStore: CapturingDataStore) -> ApplicationTestBuilder {
+    func with(_ dataStore: FakeDataStore) -> ApplicationTestBuilder {
         self.dataStore = dataStore
         return self
     }

@@ -1241,7 +1241,7 @@
 		CAEA108E216E81AA00B0C7A6 /* CapturingNotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA108D216E81AA00B0C7A6 /* CapturingNotificationScheduler.swift */; };
 		CAEA1098216E8A9900B0C7A6 /* CapturingMapsObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA1097216E8A9900B0C7A6 /* CapturingMapsObserver.swift */; };
 		CAEA109A216E8ABC00B0C7A6 /* CapturingRefreshServiceObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA1099216E8ABC00B0C7A6 /* CapturingRefreshServiceObserver.swift */; };
-		CAEA109C216E8AE800B0C7A6 /* CapturingDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA109B216E8AE800B0C7A6 /* CapturingDataStore.swift */; };
+		CAEA109C216E8AE800B0C7A6 /* FakeDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA109B216E8AE800B0C7A6 /* FakeDataStore.swift */; };
 		CAEA109E216E8B1600B0C7A6 /* CapturingEurofurenceDataStoreTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA109D216E8B1600B0C7A6 /* CapturingEurofurenceDataStoreTransaction.swift */; };
 		CAEA10A0216E8B2D00B0C7A6 /* StubUserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA109F216E8B2D00B0C7A6 /* StubUserPreferences.swift */; };
 		CAEA10A2216E8B8100B0C7A6 /* CapturingExternalContentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA10A1216E8B8100B0C7A6 /* CapturingExternalContentHandler.swift */; };
@@ -2662,7 +2662,7 @@
 		CAEA1092216E824C00B0C7A6 /* TestURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestURLProtocol.swift; sourceTree = "<group>"; };
 		CAEA1097216E8A9900B0C7A6 /* CapturingMapsObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingMapsObserver.swift; sourceTree = "<group>"; };
 		CAEA1099216E8ABC00B0C7A6 /* CapturingRefreshServiceObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingRefreshServiceObserver.swift; sourceTree = "<group>"; };
-		CAEA109B216E8AE800B0C7A6 /* CapturingDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingDataStore.swift; sourceTree = "<group>"; };
+		CAEA109B216E8AE800B0C7A6 /* FakeDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeDataStore.swift; sourceTree = "<group>"; };
 		CAEA109D216E8B1600B0C7A6 /* CapturingEurofurenceDataStoreTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingEurofurenceDataStoreTransaction.swift; sourceTree = "<group>"; };
 		CAEA109F216E8B2D00B0C7A6 /* StubUserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubUserPreferences.swift; sourceTree = "<group>"; };
 		CAEA10A1216E8B8100B0C7A6 /* CapturingExternalContentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingExternalContentHandler.swift; sourceTree = "<group>"; };
@@ -6447,7 +6447,6 @@
 			isa = PBXGroup;
 			children = (
 				CAD780511F1E2D2E002A8333 /* CapturingCredentialStore.swift */,
-				CAEA109B216E8AE800B0C7A6 /* CapturingDataStore.swift */,
 				CAEA109D216E8B1600B0C7A6 /* CapturingEurofurenceDataStoreTransaction.swift */,
 				CAEA10A1216E8B8100B0C7A6 /* CapturingExternalContentHandler.swift */,
 				CAEA10A5216E8BB600B0C7A6 /* CapturingForceRefreshRequired.swift */,
@@ -6455,6 +6454,7 @@
 				CA2A586820F69EA1002C69B6 /* CapturingMapCoordinateRender.swift */,
 				CAEA108D216E81AA00B0C7A6 /* CapturingNotificationScheduler.swift */,
 				CAEA1089216E818A00B0C7A6 /* CapturingSignificantTimeChangeAdapter.swift */,
+				CAEA109B216E8AE800B0C7A6 /* FakeDataStore.swift */,
 				CAEA108B216E819B00B0C7A6 /* FakeLongRunningTaskManager.swift */,
 				CA2761CB20E034BD000E52AC /* StubCollectThemAllRequestFactory.swift */,
 				CA162E7720A4B6E0004AFED6 /* StubConventionStartDateRepository.swift */,
@@ -8602,7 +8602,7 @@
 				CAEA0FED216E1CE700B0C7A6 /* WhenSyncSucceeds_ThenImageChanges_ApplicationShould.swift in Sources */,
 				CAEA0FBC216E1CC000B0C7A6 /* WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould.swift in Sources */,
 				CAEA101E216E1CE800B0C7A6 /* WhenSavingSuccessfulSyncResponse.swift in Sources */,
-				CAEA109C216E8AE800B0C7A6 /* CapturingDataStore.swift in Sources */,
+				CAEA109C216E8AE800B0C7A6 /* FakeDataStore.swift in Sources */,
 				CAEA1000216E1CE700B0C7A6 /* WhenObservingMaps_AfterSyncSucceeds_ApplicationShould.swift in Sources */,
 				CAEA0FDA216E1CC000B0C7A6 /* WhenSchedulingReminderForEvent_ApplicationShould.swift in Sources */,
 				CAEA0FDE216E1CE700B0C7A6 /* WhenObservingRunningEventsBeforeLoadingAnything.swift in Sources */,

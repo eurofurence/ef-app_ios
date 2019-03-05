@@ -12,7 +12,7 @@ import XCTest
 class WhenPerformingFullStoreRefresh_ApplicationShould: XCTestCase {
 
     func testRequestSyncWithoutDeltas() {
-        let dataStore = CapturingDataStore()
+        let dataStore = FakeDataStore()
         dataStore.save(.randomWithoutDeletions)
         let context = ApplicationTestBuilder().with(dataStore).build()
         context.performSuccessfulSync(response: .randomWithoutDeletions)

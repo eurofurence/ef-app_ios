@@ -13,7 +13,7 @@ class WhenSchedulingReminderForEvent_ApplicationShould: XCTestCase {
 
     func testScheduleTheNotificationAtTheConfiguredReminderIntervalFromUserPreferences() {
         let response = ModelCharacteristics.randomWithoutDeletions
-        let dataStore = CapturingDataStore(response: response)
+        let dataStore = FakeDataStore(response: response)
         let preferences = StubUserPreferences()
         let upcomingEventReminderInterval = TimeInterval.random
         preferences.upcomingEventReminderInterval = upcomingEventReminderInterval

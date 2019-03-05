@@ -26,7 +26,7 @@ class WhenToldToOpenNotification_ThatRepresentsEventReminder_ApplicationShould: 
     func testProvideEventIdentifierInCompletionHandler() {
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let event = syncResponse.events.changed.randomElement().element
-        let dataStore = CapturingDataStore()
+        let dataStore = FakeDataStore()
         dataStore.save(syncResponse)
         let context = ApplicationTestBuilder().with(dataStore).build()
         let payload: [String: String] = [

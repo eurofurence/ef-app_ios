@@ -13,7 +13,7 @@ class WhenObservingDealersAfterLoadingFromStore_ApplicationShould: XCTestCase {
 
     func testUpdateTheDelegateWithDealersGroupedByDisplayName() {
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
-        let dataStore = CapturingDataStore()
+        let dataStore = FakeDataStore()
         dataStore.save(syncResponse)
         let context = ApplicationTestBuilder().with(dataStore).build()
         let dealersIndex = context.dealersService.makeDealersIndex()

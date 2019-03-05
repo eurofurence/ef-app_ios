@@ -12,7 +12,7 @@ import XCTest
 class WhenFetchingKnowledgeGroupsBeforeRefreshWhenStoreHasGroups: XCTestCase {
 
     func testTheGroupsFromTheStoreAreAdaptedInOrder() {
-        let dataStore = CapturingDataStore()
+        let dataStore = FakeDataStore()
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
         dataStore.save(syncResponse)
         let context = ApplicationTestBuilder().with(dataStore).build()

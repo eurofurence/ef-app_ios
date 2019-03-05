@@ -13,7 +13,7 @@ class WhenRestrictingSearchResultsToFavourites_ScheduleShould: XCTestCase {
 
     func testUpdateTheDelegateWithAllTheFavourites() {
         let response = ModelCharacteristics.randomWithoutDeletions
-        let dataStore = CapturingDataStore()
+        let dataStore = FakeDataStore()
         let expected = response.events.changed.map({ EventIdentifier($0.identifier) })
         dataStore.save(response) { (transaction) in
             expected.forEach(transaction.saveFavouriteEventIdentifier)
@@ -31,7 +31,7 @@ class WhenRestrictingSearchResultsToFavourites_ScheduleShould: XCTestCase {
 
     func testNotIncludeQueryResultsThatAreNotFavourites() {
         let response = ModelCharacteristics.randomWithoutDeletions
-        let dataStore = CapturingDataStore()
+        let dataStore = FakeDataStore()
         var favouriteEventIdentifiers = response.events.changed.map({ EventIdentifier($0.identifier) })
         let notAFavourite = favouriteEventIdentifiers.randomElement()
         let nonFavouriteEvent = response.events.changed.first(where: { $0.identifier == notAFavourite.element.rawValue })!
@@ -52,7 +52,7 @@ class WhenRestrictingSearchResultsToFavourites_ScheduleShould: XCTestCase {
 
     func testUpdateDelegateWhenUnfavouritingEvent() {
         let response = ModelCharacteristics.randomWithoutDeletions
-        let dataStore = CapturingDataStore()
+        let dataStore = FakeDataStore()
         let favourites = response.events.changed.map({ EventIdentifier($0.identifier) })
         let randomFavourite = favourites.randomElement()
         dataStore.save(response) { (transaction) in

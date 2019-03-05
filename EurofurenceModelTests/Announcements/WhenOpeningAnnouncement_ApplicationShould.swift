@@ -98,7 +98,7 @@ class WhenOpeningAnnouncement_ApplicationShould: XCTestCase {
         let firstIdentifier = firstAnnouncement.identifier
         let secondAnnouncement = announcements.randomElement().element
         let secondIdentifier = secondAnnouncement.identifier
-        let dataStore = CapturingDataStore(response: syncResponse)
+        let dataStore = FakeDataStore(response: syncResponse)
         let identifiers = [firstIdentifier, secondIdentifier].map({ AnnouncementIdentifier($0) })
         dataStore.save(syncResponse)
         dataStore.performTransaction { (transaction) in

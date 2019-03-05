@@ -14,7 +14,7 @@ class WhenAppLaunchesWhenClockReadsConferenceDay_ScheduleShould: XCTestCase {
     func testChangeToExpectedConDay() {
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let randomDay = syncResponse.conferenceDays.changed.randomElement().element
-        let dataStore = CapturingDataStore()
+        let dataStore = FakeDataStore()
         dataStore.save(syncResponse)
         let context = ApplicationTestBuilder().with(randomDay.date).with(dataStore).build()
         let schedule = context.eventsService.makeEventsSchedule()
@@ -33,7 +33,7 @@ class WhenAppLaunchesWhenClockReadsConferenceDay_ScheduleShould: XCTestCase {
         randomDayComponents.minute = .random(upperLimit: 58)
         randomDayComponents.second = .random(upperLimit: 58)
         let sameDayAsRandomDayButDifferentTime = randomDayComponents.date!
-        let dataStore = CapturingDataStore()
+        let dataStore = FakeDataStore()
         dataStore.save(syncResponse)
         let context = ApplicationTestBuilder().with(sameDayAsRandomDayButDifferentTime).with(dataStore).build()
         let schedule = context.eventsService.makeEventsSchedule()
@@ -47,7 +47,7 @@ class WhenAppLaunchesWhenClockReadsConferenceDay_ScheduleShould: XCTestCase {
     func testProvideEventsForThatDay() {
         let response = ModelCharacteristics.randomWithoutDeletions
         let randomDay = response.conferenceDays.changed.randomElement().element
-        let dataStore = CapturingDataStore()
+        let dataStore = FakeDataStore()
         dataStore.save(response)
         let imageRepository = CapturingImageRepository()
         imageRepository.stubEverything(response)

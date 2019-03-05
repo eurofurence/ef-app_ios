@@ -13,7 +13,7 @@ class WhenUpgradingBetweenAppVersions_ApplicationShould: XCTestCase {
 
     func testIndicateStoreIsStale() {
         let forceUpgradeRequired = StubForceRefreshRequired(isForceRefreshRequired: true)
-        let presentDataStore = CapturingDataStore()
+        let presentDataStore = FakeDataStore()
         presentDataStore.save(.randomWithoutDeletions)
         let context = ApplicationTestBuilder().with(presentDataStore).with(forceUpgradeRequired).build()
         var dataStoreState: EurofurenceSessionState?
@@ -24,7 +24,7 @@ class WhenUpgradingBetweenAppVersions_ApplicationShould: XCTestCase {
 
     func testAlwaysEnquireWhetherUpgradeRequiredEvenWhenRefreshWouldOccurByPreference() {
         let forceUpgradeRequired = CapturingForceRefreshRequired()
-        let presentDataStore = CapturingDataStore()
+        let presentDataStore = FakeDataStore()
         presentDataStore.save(.randomWithoutDeletions)
         let preferences = StubUserPreferences()
         preferences.refreshStoreOnLaunch = true
@@ -36,7 +36,7 @@ class WhenUpgradingBetweenAppVersions_ApplicationShould: XCTestCase {
 
     func testDetermineWhetherForceRefreshRequiredBeforeFirstEverSync() {
         let forceUpgradeRequired = CapturingForceRefreshRequired()
-        let absentDataStore = CapturingDataStore()
+        let absentDataStore = FakeDataStore()
         let preferences = StubUserPreferences()
         preferences.refreshStoreOnLaunch = true
         let context = ApplicationTestBuilder().with(preferences).with(absentDataStore).with(forceUpgradeRequired).build()

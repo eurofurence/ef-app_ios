@@ -21,7 +21,7 @@ class WhenFetchingMapContents_ThatRevealsDealer_ContentsSavedInDataStore_Applica
         map.entries = [entry]
         syncResponse.maps.changed = [map]
         syncResponse.dealers.changed = [dealer]
-        let dataStore = CapturingDataStore()
+        let dataStore = FakeDataStore()
         dataStore.save(syncResponse)
         let context = ApplicationTestBuilder().with(dataStore).build()
         var content: MapContent = .none
