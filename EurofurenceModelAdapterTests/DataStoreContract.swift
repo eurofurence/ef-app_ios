@@ -1,5 +1,5 @@
 //
-//  DataStoreShould.swift
+//  DataStoreContract.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 06/06/2018.
@@ -10,7 +10,7 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import XCTest
 
-class DataStoreShould: XCTestCase {
+class DataStoreContract: XCTestCase {
     
     var store: DataStore!
 

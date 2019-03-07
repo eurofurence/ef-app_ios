@@ -1,5 +1,5 @@
 //
-//  CapturingEurofurenceDataStoreTransaction.swift
+//  FakeDataStoreTransaction.swift
 //  EurofurenceModelTests
 //
 //  Created by Thomas Sherwood on 10/10/2018.
@@ -9,12 +9,12 @@
 import EurofurenceModel
 import Foundation
 
-extension Array {
+private extension Array {
     
-    mutating func append<E>(contentsOf other: [Element], distinct: (Element) -> E) where E: Equatable {
+    mutating func append<E>(contentsOf other: [Element], identifiedBy: (Element) -> E) where E: Equatable {
         for item in other {
-            let key = distinct(item)
-            if let index = firstIndex(where: { distinct($0) == key }) {
+            let key = identifiedBy(item)
+            if let index = firstIndex(where: { identifiedBy($0) == key }) {
                 self[index] = item
             } else {
                 append(item)
@@ -24,11 +24,11 @@ extension Array {
     
 }
 
-public class CapturingEurofurenceDataStoreTransaction: DataStoreTransaction {
+public class FakeDataStoreTransaction: DataStoreTransaction {
 
     private(set) public var persistedKnowledgeGroups: [KnowledgeGroupCharacteristics] = []
     public func saveKnowledgeGroups(_ knowledgeGroups: [KnowledgeGroupCharacteristics]) {
-        persistedKnowledgeGroups.append(contentsOf: knowledgeGroups, distinct: { $0.identifier })
+        persistedKnowledgeGroups.append(contentsOf: knowledgeGroups, identifiedBy: { $0.identifier })
     }
 
     private(set) public var deletedKnowledgeGroups: [String] = []
@@ -42,7 +42,7 @@ public class CapturingEurofurenceDataStoreTransaction: DataStoreTransaction {
 
     private(set) public var persistedKnowledgeEntries: [KnowledgeEntryCharacteristics] = []
     public func saveKnowledgeEntries(_ knowledgeEntries: [KnowledgeEntryCharacteristics]) {
-        persistedKnowledgeEntries.append(contentsOf: knowledgeEntries, distinct: { $0.identifier })
+        persistedKnowledgeEntries.append(contentsOf: knowledgeEntries, identifiedBy: { $0.identifier })
     }
 
     private(set) public var deletedKnowledgeEntries: [String] = []
@@ -54,12 +54,12 @@ public class CapturingEurofurenceDataStoreTransaction: DataStoreTransaction {
 
     private(set) public var persistedAnnouncements: [AnnouncementCharacteristics] = []
     public func saveAnnouncements(_ announcements: [AnnouncementCharacteristics]) {
-        persistedAnnouncements.append(contentsOf: announcements, distinct: { $0.identifier })
+        persistedAnnouncements.append(contentsOf: announcements, identifiedBy: { $0.identifier })
     }
 
     private(set) public var persistedEvents: [EventCharacteristics] = []
     public func saveEvents(_ events: [EventCharacteristics]) {
-        persistedEvents.append(contentsOf: events, distinct: { $0.identifier })
+        persistedEvents.append(contentsOf: events, identifiedBy: { $0.identifier })
     }
 
     public func deleteEvent(identifier: String) {
@@ -70,7 +70,7 @@ public class CapturingEurofurenceDataStoreTransaction: DataStoreTransaction {
 
     private(set) var persistedRooms: [RoomCharacteristics] = []
     public func saveRooms(_ rooms: [RoomCharacteristics]) {
-        persistedRooms.append(contentsOf: rooms, distinct: { $0.roomIdentifier })
+        persistedRooms.append(contentsOf: rooms, identifiedBy: { $0.roomIdentifier })
     }
 
     private(set) public var deletedConferenceDays: [String] = []
@@ -87,7 +87,7 @@ public class CapturingEurofurenceDataStoreTransaction: DataStoreTransaction {
 
     private(set) public var persistedTracks: [TrackCharacteristics] = []
     public func saveTracks(_ tracks: [TrackCharacteristics]) {
-        persistedTracks.append(contentsOf: tracks, distinct: { $0.trackIdentifier })
+        persistedTracks.append(contentsOf: tracks, identifiedBy: { $0.trackIdentifier })
     }
 
     private(set) public var deletedTracks: [String] = []
@@ -98,7 +98,7 @@ public class CapturingEurofurenceDataStoreTransaction: DataStoreTransaction {
 
     private(set) public var persistedConferenceDays: [ConferenceDayCharacteristics] = []
     public func saveConferenceDays(_ conferenceDays: [ConferenceDayCharacteristics]) {
-        persistedConferenceDays.append(contentsOf: conferenceDays, distinct: { $0.identifier })
+        persistedConferenceDays.append(contentsOf: conferenceDays, identifiedBy: { $0.identifier })
     }
 
     private(set) public var persistedLastRefreshDate: Date?
@@ -124,7 +124,7 @@ public class CapturingEurofurenceDataStoreTransaction: DataStoreTransaction {
 
     private(set) public var persistedDealers: [DealerCharacteristics] = []
     public func saveDealers(_ dealers: [DealerCharacteristics]) {
-        persistedDealers.append(contentsOf: dealers, distinct: { $0.identifier })
+        persistedDealers.append(contentsOf: dealers, identifiedBy: { $0.identifier })
     }
 
     public func deleteDealer(identifier: String) {
@@ -135,7 +135,7 @@ public class CapturingEurofurenceDataStoreTransaction: DataStoreTransaction {
 
     private(set) public var persistedMaps: [MapCharacteristics] = []
     public func saveMaps(_ maps: [MapCharacteristics]) {
-        persistedMaps.append(contentsOf: maps, distinct: { $0.identifier })
+        persistedMaps.append(contentsOf: maps, identifiedBy: { $0.identifier })
     }
 
     public func deleteMap(identifier: String) {
@@ -151,7 +151,7 @@ public class CapturingEurofurenceDataStoreTransaction: DataStoreTransaction {
 
     private(set) public var persistedImages = [ImageCharacteristics]()
     public func saveImages(_ images: [ImageCharacteristics]) {
-        persistedImages.append(contentsOf: images, distinct: { $0.identifier })
+        persistedImages.append(contentsOf: images, identifiedBy: { $0.identifier })
     }
 
     private(set) public var deletedImages = [String]()

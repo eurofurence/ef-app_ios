@@ -69,7 +69,7 @@ open class FakeDataStore: DataStore {
 
     private(set) public var capturedKnowledgeGroupsToSave: [KnowledgeGroup]?
     public var transactionInvokedBlock: (() -> Void)?
-    public let transaction = CapturingEurofurenceDataStoreTransaction()
+    public let transaction = FakeDataStoreTransaction()
     open func performTransaction(_ block: @escaping (DataStoreTransaction) -> Void) {
         block(transaction)
         transactionInvokedBlock?()

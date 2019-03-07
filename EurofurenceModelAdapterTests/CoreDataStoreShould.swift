@@ -10,7 +10,7 @@ import CoreData
 import EurofurenceModel
 import XCTest
 
-class CoreDataStoreShould: DataStoreShould {
+class CoreDataStoreShould: DataStoreContract {
     
     private var storeIdentifier: String!
     private var coreDataStore: CoreDataEurofurenceDataStore!

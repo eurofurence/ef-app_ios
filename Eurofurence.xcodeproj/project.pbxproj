@@ -135,7 +135,6 @@
 		CA08159520D472B700F750D4 /* FakeEventsSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08159420D472B700F750D4 /* FakeEventsSchedule.swift */; };
 		CA08159720D475B500F750D4 /* FakeEventsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08159620D475B500F750D4 /* FakeEventsService.swift */; };
 		CA0B1EDD217F40EC00A6A949 /* EurofurenceModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAEA0B7A2165626900B0C7A6 /* EurofurenceModel.framework */; };
-		CA0B1EE5217F414B00A6A949 /* DataStoreShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABEB0D820C8A7E7000BEE66 /* DataStoreShould.swift */; };
 		CA0B1EE6217F414B00A6A949 /* PersistentImageRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA680F8420CDAE2F006ACD3D /* PersistentImageRepositoryTests.swift */; };
 		CA0B1EE7217F414B00A6A949 /* KeychainCredentialStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD7805C1F1E8EB0002A8333 /* KeychainCredentialStoreTests.swift */; };
 		CA0B1EE8217F415500A6A949 /* URLSessionBasedJSONSessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE77D61F1B9FA500E9A0BE /* URLSessionBasedJSONSessionTests.swift */; };
@@ -709,8 +708,9 @@
 		CA7D8B20222DBC28003431A0 /* DefaultEventDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D8B1F222DBC28003431A0 /* DefaultEventDetailViewModel.swift */; };
 		CA7D8B27222EAB61003431A0 /* DefaultDealerDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D8B26222EAB61003431A0 /* DefaultDealerDetailViewModel.swift */; };
 		CA7D8B2C222EC258003431A0 /* FakeDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA109B216E8AE800B0C7A6 /* FakeDataStore.swift */; };
-		CA7D8B2D222EC2AA003431A0 /* CapturingEurofurenceDataStoreTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA109D216E8B1600B0C7A6 /* CapturingEurofurenceDataStoreTransaction.swift */; };
 		CA7D8B2F222EC835003431A0 /* CoreDataStoreShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D8B2E222EC835003431A0 /* CoreDataStoreShould.swift */; };
+		CA7D8B33222F1A04003431A0 /* DataStoreContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D8B32222F1A04003431A0 /* DataStoreContract.swift */; };
+		CA7D8B36222F1AEB003431A0 /* FakeDataStoreTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D8B34222F1AC1003431A0 /* FakeDataStoreTransaction.swift */; };
 		CA7EB7D51F799991002674A6 /* TutorialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7EB7D41F799991002674A6 /* TutorialScene.swift */; };
 		CA81D48E1FE9A8DB00A52A2F /* CapturingTutorialModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA81D48D1FE9A8DB00A52A2F /* CapturingTutorialModuleDelegate.swift */; };
 		CA81D4901FE9A91000A52A2F /* WhenTheTutorialAppears.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA81D48F1FE9A91000A52A2F /* WhenTheTutorialAppears.swift */; };
@@ -2360,6 +2360,8 @@
 		CA7D8B1F222DBC28003431A0 /* DefaultEventDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultEventDetailViewModel.swift; sourceTree = "<group>"; };
 		CA7D8B26222EAB61003431A0 /* DefaultDealerDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDealerDetailViewModel.swift; sourceTree = "<group>"; };
 		CA7D8B2E222EC835003431A0 /* CoreDataStoreShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStoreShould.swift; sourceTree = "<group>"; };
+		CA7D8B32222F1A04003431A0 /* DataStoreContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStoreContract.swift; sourceTree = "<group>"; };
+		CA7D8B34222F1AC1003431A0 /* FakeDataStoreTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeDataStoreTransaction.swift; sourceTree = "<group>"; };
 		CA7EB7D41F799991002674A6 /* TutorialScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScene.swift; sourceTree = "<group>"; };
 		CA804DD11F20CE8F00E07A4A /* JSONAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONAPI.swift; sourceTree = "<group>"; };
 		CA804DD91F20D2F500E07A4A /* LoginAPITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginAPITests.swift; sourceTree = "<group>"; };
@@ -2475,7 +2477,6 @@
 		CABA840620D0671E00DD0795 /* WhenScheduleSceneLoads_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenScheduleSceneLoads_SchedulePresenterShould.swift; sourceTree = "<group>"; };
 		CABEB0D120C7694F000BEE66 /* WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift; sourceTree = "<group>"; };
 		CABEB0D320C891CA000BEE66 /* WhenSyncCompletesWithEvents_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSyncCompletesWithEvents_ApplicationShould.swift; sourceTree = "<group>"; };
-		CABEB0D820C8A7E7000BEE66 /* DataStoreShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStoreShould.swift; sourceTree = "<group>"; };
 		CABEB0DB20C9C7A3000BEE66 /* CoreDataEurofurenceDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataEurofurenceDataStore.swift; sourceTree = "<group>"; };
 		CABEB0DE20C9C7ED000BEE66 /* EurofurenceApplicationModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EurofurenceApplicationModel.xcdatamodel; sourceTree = "<group>"; };
 		CABF03B32041BC870028BD62 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
@@ -2672,7 +2673,6 @@
 		CAEA1097216E8A9900B0C7A6 /* CapturingMapsObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingMapsObserver.swift; sourceTree = "<group>"; };
 		CAEA1099216E8ABC00B0C7A6 /* CapturingRefreshServiceObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingRefreshServiceObserver.swift; sourceTree = "<group>"; };
 		CAEA109B216E8AE800B0C7A6 /* FakeDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeDataStore.swift; sourceTree = "<group>"; };
-		CAEA109D216E8B1600B0C7A6 /* CapturingEurofurenceDataStoreTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingEurofurenceDataStoreTransaction.swift; sourceTree = "<group>"; };
 		CAEA109F216E8B2D00B0C7A6 /* StubUserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubUserPreferences.swift; sourceTree = "<group>"; };
 		CAEA10A1216E8B8100B0C7A6 /* CapturingExternalContentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingExternalContentHandler.swift; sourceTree = "<group>"; };
 		CAEA10A3216E8BA800B0C7A6 /* StubForceRefreshRequired.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubForceRefreshRequired.swift; sourceTree = "<group>"; };
@@ -3487,7 +3487,7 @@
 			children = (
 				CA0B1EDC217F40EC00A6A949 /* Info.plist */,
 				CA7D8B2E222EC835003431A0 /* CoreDataStoreShould.swift */,
-				CABEB0D820C8A7E7000BEE66 /* DataStoreShould.swift */,
+				CA7D8B32222F1A04003431A0 /* DataStoreContract.swift */,
 				CAD7805C1F1E8EB0002A8333 /* KeychainCredentialStoreTests.swift */,
 				CA680F8420CDAE2F006ACD3D /* PersistentImageRepositoryTests.swift */,
 				CAEA108F216E822100B0C7A6 /* Network */,
@@ -6347,11 +6347,12 @@
 			children = (
 				CAEA0F5E216D294000B0C7A6 /* EurofurenceAppCoreTestDoubles.h */,
 				CAEA0F5F216D294000B0C7A6 /* Info.plist */,
-				CAEA109D216E8B1600B0C7A6 /* CapturingEurofurenceDataStoreTransaction.swift */,
 				78FE77D21F1A2EB000E9A0BE /* CapturingJSONSession.swift */,
 				CAB3A7291F7532A2005DF77B /* CapturingPushPermissionsRequester.swift */,
+				CA7D8B15222D4DA0003431A0 /* CapturingRefreshService.swift */,
 				CA63755F208CBC5F00536BE2 /* CapturingURLOpener.swift */,
 				CAEA109B216E8AE800B0C7A6 /* FakeDataStore.swift */,
+				CA7D8B34222F1AC1003431A0 /* FakeDataStoreTransaction.swift */,
 				CAEA0F7B216D370600B0C7A6 /* FakeHoursDateFormatter.swift */,
 				C61870DF20DAD8E00089E836 /* StubAPIURLProviding.swift */,
 				6EEC6DA21F1BFC5000205F2D /* StubAppVersionProviding.swift */,
@@ -6360,7 +6361,6 @@
 				CA162E7520A4B6CE004AFED6 /* StubDateDistanceCalculator.swift */,
 				CAD6FD4F221707560011712D /* Entity Test Doubles */,
 				CAEA0F7E216E1AA000B0C7A6 /* Random Value Generation */,
-				CA7D8B15222D4DA0003431A0 /* CapturingRefreshService.swift */,
 			);
 			path = EurofurenceModelTestDoubles;
 			sourceTree = "<group>";
@@ -8349,12 +8349,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA0B1EE7217F414B00A6A949 /* KeychainCredentialStoreTests.swift in Sources */,
-				CA0B1EE5217F414B00A6A949 /* DataStoreShould.swift in Sources */,
 				CA0B1EE9217F415900A6A949 /* JournallingURLRequestLogger.swift in Sources */,
 				CA7D8B2F222EC835003431A0 /* CoreDataStoreShould.swift in Sources */,
 				CA0B1EE6217F414B00A6A949 /* PersistentImageRepositoryTests.swift in Sources */,
 				CA0B1EEB217F418B00A6A949 /* APISyncResponse+RandomValueProviding.swift in Sources */,
 				CA0B1EE8217F415500A6A949 /* URLSessionBasedJSONSessionTests.swift in Sources */,
+				CA7D8B33222F1A04003431A0 /* DataStoreContract.swift in Sources */,
 				CA0B1EEA217F415900A6A949 /* TestURLProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -8763,7 +8763,6 @@
 			files = (
 				CAEA0F89216E1AE200B0C7A6 /* User+RandomValueProviding.swift in Sources */,
 				CAEA0F83216E1AE200B0C7A6 /* KnowledgeEntry+RandomValueProviding.swift in Sources */,
-				CA7D8B2D222EC2AA003431A0 /* CapturingEurofurenceDataStoreTransaction.swift in Sources */,
 				CAEA0F86216E1AE200B0C7A6 /* Message+RandomValueProviding.swift in Sources */,
 				CA7D8B2C222EC258003431A0 /* FakeDataStore.swift in Sources */,
 				CAEA0F7D216E188C00B0C7A6 /* CapturingURLOpener.swift in Sources */,
@@ -8787,6 +8786,7 @@
 				CAEA103D216E1D8700B0C7A6 /* StubAppVersionProviding.swift in Sources */,
 				CAEA0F81216E1AE200B0C7A6 /* Day+RandomValueProviding.swift in Sources */,
 				CAEA0F87216E1AE200B0C7A6 /* Room+RandomValueProviding.swift in Sources */,
+				CA7D8B36222F1AEB003431A0 /* FakeDataStoreTransaction.swift in Sources */,
 				CA46799722175F6D006B3090 /* StubDealer.swift in Sources */,
 				CAEA0F84216E1AE200B0C7A6 /* KnowledgeGroup+RandomValueProviding.swift in Sources */,
 			);
