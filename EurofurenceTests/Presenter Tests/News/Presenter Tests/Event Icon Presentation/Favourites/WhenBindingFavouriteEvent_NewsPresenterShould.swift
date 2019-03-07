@@ -38,32 +38,18 @@ struct FavouriteEventNewsViewModel: NewsViewModel {
 
 class WhenBindingFavouriteEvent_NewsPresenterShould: XCTestCase {
 
-    var viewModel: FavouriteEventNewsViewModel!
-    var eventViewModel: EventComponentViewModel!
-    var indexPath: IndexPath!
-    var newsInteractor: StubNewsInteractor!
-    var context: NewsPresenterTestBuilder.Context!
-
-    override func setUp() {
-        super.setUp()
-
-        eventViewModel = .random
+    func testShowTheFavouriteIndicator() {
+        var eventViewModel = EventComponentViewModel.random
         eventViewModel.isFavourite = true
-        viewModel = FavouriteEventNewsViewModel(eventViewModel: eventViewModel)
+        let viewModel = FavouriteEventNewsViewModel(eventViewModel: eventViewModel)
         let indexPath = IndexPath(item: 0, section: 0)
-
-        newsInteractor = StubNewsInteractor(viewModel: viewModel)
-        context = NewsPresenterTestBuilder().with(newsInteractor).build()
+        
+        let newsInteractor = StubNewsInteractor(viewModel: viewModel)
+        let context = NewsPresenterTestBuilder().with(newsInteractor).build()
         context.simulateNewsSceneDidLoad()
         context.bindSceneComponent(at: indexPath)
-    }
-
-    func testShowTheFavouriteIndicator() {
-        XCTAssertTrue(context.newsScene.stubbedEventComponent.didShowFavouriteEventIndicator)
-    }
-
-    func testNotHideTheFavouriteIndicator() {
-        XCTAssertFalse(context.newsScene.stubbedEventComponent.didHideFavouriteEventIndicator)
+        
+        XCTAssertEqual(context.newsScene.stubbedEventComponent.favouriteIconVisibility, .visible)
     }
 
 }

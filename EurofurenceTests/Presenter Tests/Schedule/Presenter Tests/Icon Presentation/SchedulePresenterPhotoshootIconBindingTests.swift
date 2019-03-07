@@ -17,8 +17,7 @@ class SchedulePresenterPhotoshootIconBindingTests: XCTestCase {
         eventViewModel.isPhotoshootEvent = true
         let component = SchedulePresenterTestBuilder.buildForTestingBindingOfEvent(eventViewModel)
 
-        XCTAssertTrue(component.didShowPhotoshootStageEventIndicator)
-        XCTAssertFalse(component.didHidePhotoshootStageEventIndicator)
+        XCTAssertEqual(component.photoshootIconVisibility, .visible)
     }
 
     func testHideThePhotoshootIndicator() {
@@ -26,8 +25,7 @@ class SchedulePresenterPhotoshootIconBindingTests: XCTestCase {
         eventViewModel.isPhotoshootEvent = false
         let component = SchedulePresenterTestBuilder.buildForTestingBindingOfEvent(eventViewModel)
 
-        XCTAssertFalse(component.didShowPhotoshootStageEventIndicator)
-        XCTAssertTrue(component.didHidePhotoshootStageEventIndicator)
+        XCTAssertEqual(component.photoshootIconVisibility, .hidden)
     }
 
 }

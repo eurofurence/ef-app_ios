@@ -12,32 +12,18 @@ import XCTest
 
 class WhenBindingNonFavouriteEvent_NewsPresenterShould: XCTestCase {
 
-    var viewModel: FavouriteEventNewsViewModel!
-    var eventViewModel: EventComponentViewModel!
-    var indexPath: IndexPath!
-    var newsInteractor: StubNewsInteractor!
-    var context: NewsPresenterTestBuilder.Context!
-
-    override func setUp() {
-        super.setUp()
-
-        eventViewModel = .random
+    func testTellTheComponentToHideTheFavouriteIndicator() {
+        var eventViewModel = EventComponentViewModel.random
         eventViewModel.isFavourite = false
-        viewModel = FavouriteEventNewsViewModel(eventViewModel: eventViewModel)
+        let viewModel = FavouriteEventNewsViewModel(eventViewModel: eventViewModel)
         let indexPath = IndexPath(item: 0, section: 0)
-
-        newsInteractor = StubNewsInteractor(viewModel: viewModel)
-        context = NewsPresenterTestBuilder().with(newsInteractor).build()
+        
+        let newsInteractor = StubNewsInteractor(viewModel: viewModel)
+        let context = NewsPresenterTestBuilder().with(newsInteractor).build()
         context.simulateNewsSceneDidLoad()
         context.bindSceneComponent(at: indexPath)
-    }
-
-    func testTellTheComponentToHideTheFavouriteIndicator() {
-        XCTAssertTrue(context.newsScene.stubbedEventComponent.didHideFavouriteEventIndicator)
-    }
-
-    func testNotTellTheComponentToShowTheFavouriteIndicator() {
-        XCTAssertFalse(context.newsScene.stubbedEventComponent.didShowFavouriteEventIndicator)
+        
+        XCTAssertEqual(context.newsScene.stubbedEventComponent.favouriteIconVisibility, .hidden)
     }
 
 }

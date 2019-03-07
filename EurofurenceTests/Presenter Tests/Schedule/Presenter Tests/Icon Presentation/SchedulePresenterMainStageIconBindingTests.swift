@@ -17,8 +17,7 @@ class SchedulePresenterMainStageIconBindingTests: XCTestCase {
         eventViewModel.isMainStageEvent = true
         let component = SchedulePresenterTestBuilder.buildForTestingBindingOfEvent(eventViewModel)
 
-        XCTAssertTrue(component.didShowMainStageEventIndicator)
-        XCTAssertFalse(component.didHideMainStageEventIndicator)
+        XCTAssertEqual(component.mainStageIconVisibility, .visible)
     }
 
     func testHideTheMainStageIndicator() {
@@ -26,8 +25,7 @@ class SchedulePresenterMainStageIconBindingTests: XCTestCase {
         eventViewModel.isMainStageEvent = false
         let component = SchedulePresenterTestBuilder.buildForTestingBindingOfEvent(eventViewModel)
 
-        XCTAssertFalse(component.didShowMainStageEventIndicator)
-        XCTAssertTrue(component.didHideMainStageEventIndicator)
+        XCTAssertEqual(component.mainStageIconVisibility, .hidden)
     }
 
 }

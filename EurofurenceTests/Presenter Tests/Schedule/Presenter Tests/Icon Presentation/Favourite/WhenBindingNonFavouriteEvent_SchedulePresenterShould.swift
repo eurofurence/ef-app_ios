@@ -12,20 +12,12 @@ import XCTest
 
 class WhenBindingNonFavouriteEvent_SchedulePresenterShould: XCTestCase {
 
-    func testNotTellTheSceneToShowTheFavouriteEventIndicator() {
-        let eventViewModel = StubScheduleEventViewModel.random
-        eventViewModel.isFavourite = false
-        let component = SchedulePresenterTestBuilder.buildForTestingBindingOfEvent(eventViewModel)
-
-        XCTAssertFalse(component.didShowFavouriteEventIndicator)
-    }
-
     func testTellTheSceneToHideTheFavouriteEventIndicator() {
         let eventViewModel = StubScheduleEventViewModel.random
         eventViewModel.isFavourite = false
         let component = SchedulePresenterTestBuilder.buildForTestingBindingOfEvent(eventViewModel)
 
-        XCTAssertTrue(component.didHideFavouriteEventIndicator)
+        XCTAssertEqual(component.favouriteIconVisibility, .hidden)
     }
 
     func testSupplyFavouriteActionInformation() {

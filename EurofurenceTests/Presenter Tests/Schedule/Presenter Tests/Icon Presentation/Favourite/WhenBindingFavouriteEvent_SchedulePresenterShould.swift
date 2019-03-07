@@ -17,15 +17,7 @@ class WhenBindingFavouriteEvent_SchedulePresenterShould: XCTestCase {
         eventViewModel.isFavourite = true
         let component = SchedulePresenterTestBuilder.buildForTestingBindingOfEvent(eventViewModel)
 
-        XCTAssertTrue(component.didShowFavouriteEventIndicator)
-    }
-
-    func testNotTellTheSceneToHideTheFavouriteEventIndicator() {
-        let eventViewModel = StubScheduleEventViewModel.random
-        eventViewModel.isFavourite = true
-        let component = SchedulePresenterTestBuilder.buildForTestingBindingOfEvent(eventViewModel)
-
-        XCTAssertFalse(component.didHideFavouriteEventIndicator)
+        XCTAssertEqual(component.favouriteIconVisibility, .visible)
     }
 
     func testSupplyUnfavouriteActionInformation() {

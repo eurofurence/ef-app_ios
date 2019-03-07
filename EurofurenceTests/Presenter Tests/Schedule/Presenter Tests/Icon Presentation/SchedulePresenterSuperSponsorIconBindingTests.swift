@@ -17,8 +17,7 @@ class SchedulePresenterSuperSponsorIconBindingTests: XCTestCase {
         searchResult.isSuperSponsorOnly = true
         let component = SchedulePresenterTestBuilder.buildForTestingBindingOfEvent(searchResult)
 
-        XCTAssertTrue(component.didShowSuperSponsorOnlyEventIndicator)
-        XCTAssertFalse(component.didHideSuperSponsorOnlyEventIndicator)
+        XCTAssertEqual(component.superSponsorIconVisibility, .visible)
     }
 
     func testHideTheSponsorOnlyIndicator() {
@@ -26,8 +25,7 @@ class SchedulePresenterSuperSponsorIconBindingTests: XCTestCase {
         searchResult.isSuperSponsorOnly = false
         let component = SchedulePresenterTestBuilder.buildForTestingBindingOfEvent(searchResult)
 
-        XCTAssertFalse(component.didShowSuperSponsorOnlyEventIndicator)
-        XCTAssertTrue(component.didHideSuperSponsorOnlyEventIndicator)
+        XCTAssertEqual(component.superSponsorIconVisibility, .hidden)
     }
 
 }

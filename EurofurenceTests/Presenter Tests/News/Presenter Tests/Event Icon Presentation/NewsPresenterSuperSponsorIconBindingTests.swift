@@ -17,8 +17,7 @@ class NewsPresenterSuperSponsorIconBindingTests: XCTestCase {
         eventViewModel.isSuperSponsorEvent = true
         let component = NewsPresenterTestBuilder.buildForAssertingAgainstEventComponent(eventViewModel: eventViewModel)
 
-        XCTAssertTrue(component.didShowSuperSponsorOnlyEventIndicator)
-        XCTAssertFalse(component.didHideSuperSponsorOnlyEventIndicator)
+        XCTAssertEqual(component.superSponsorIconVisibility, .visible)
     }
 
     func testHideTheSuperSponsorOnlyIndicator() {
@@ -26,8 +25,7 @@ class NewsPresenterSuperSponsorIconBindingTests: XCTestCase {
         eventViewModel.isSuperSponsorEvent = false
         let component = NewsPresenterTestBuilder.buildForAssertingAgainstEventComponent(eventViewModel: eventViewModel)
 
-        XCTAssertFalse(component.didShowSuperSponsorOnlyEventIndicator)
-        XCTAssertTrue(component.didHideSuperSponsorOnlyEventIndicator)
+        XCTAssertEqual(component.superSponsorIconVisibility, .hidden)
     }
 
 }

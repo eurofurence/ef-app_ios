@@ -11,6 +11,12 @@ import EurofurenceModel
 import Foundation
 
 class CapturingScheduleEventComponent: ScheduleEventComponent {
+    
+    enum IconVisibility {
+        case visible
+        case hidden
+        case unset
+    }
 
     private(set) var capturedEventTitle: String?
     func setEventName(_ title: String) {
@@ -47,84 +53,77 @@ class CapturingScheduleEventComponent: ScheduleEventComponent {
         didHideBanner = true
     }
 
-    private(set) var didShowFavouriteEventIndicator = false
+    private(set) var favouriteIconVisibility: IconVisibility = .unset
     func showFavouriteEventIndicator() {
-        didShowFavouriteEventIndicator = true
+        favouriteIconVisibility = .visible
     }
 
-    private(set) var didHideFavouriteEventIndicator = false
     func hideFavouriteEventIndicator() {
-        didHideFavouriteEventIndicator = true
+        favouriteIconVisibility = .hidden
     }
 
-    private(set) var didShowSponsorEventIndicator = false
+    private(set) var sponsorIconVisibility: IconVisibility = .unset
     func showSponsorEventIndicator() {
-        didShowSponsorEventIndicator = true
+        sponsorIconVisibility = .visible
     }
 
-    private(set) var didHideSponsorEventIndicator = false
     func hideSponsorEventIndicator() {
-        didHideSponsorEventIndicator = true
+        sponsorIconVisibility = .hidden
     }
 
-    private(set) var didShowSuperSponsorOnlyEventIndicator = false
+    private(set) var superSponsorIconVisibility: IconVisibility = .unset
     func showSuperSponsorOnlyEventIndicator() {
-        didShowSuperSponsorOnlyEventIndicator = true
+        superSponsorIconVisibility = .visible
     }
 
-    private(set) var didHideSuperSponsorOnlyEventIndicator = false
     func hideSuperSponsorOnlyEventIndicator() {
-        didHideSuperSponsorOnlyEventIndicator = true
+        superSponsorIconVisibility = .hidden
     }
 
-    private(set) var didShowArtShowEventIndicator = false
+    private(set) var artShowIconVisibility: IconVisibility = .unset
     func showArtShowEventIndicator() {
-        didShowArtShowEventIndicator = true
+        artShowIconVisibility = .visible
     }
 
-    private(set) var didHideArtShowEventIndicator = false
     func hideArtShowEventIndicator() {
-        didHideArtShowEventIndicator = true
+        artShowIconVisibility = .hidden
     }
 
-    private(set) var didShowKageEventIndicator = false
+    private(set) var kageIconVisibility: IconVisibility = .unset
     func showKageEventIndicator() {
-        didShowKageEventIndicator = true
+        kageIconVisibility = .visible
     }
 
-    private(set) var didHideKageEventIndicator = false
     func hideKageEventIndicator() {
-        didHideKageEventIndicator = true
+        kageIconVisibility = .hidden
     }
 
-    private(set) var didShowDealersDenEventIndicator = false
+    private(set) var dealersDenIconVisibility: IconVisibility = .unset
     func showDealersDenEventIndicator() {
-        didShowDealersDenEventIndicator  = true
+        dealersDenIconVisibility = .visible
     }
 
-    private(set) var didHideDealersDenEventIndicator = false
     func hideDealersDenEventIndicator() {
-        didHideDealersDenEventIndicator = true
+        dealersDenIconVisibility = .hidden
     }
 
-    private(set) var didShowMainStageEventIndicator = false
+    private(set) var mainStageIconVisibility: IconVisibility = .unset
     func showMainStageEventIndicator() {
-        didShowMainStageEventIndicator = true
+        mainStageIconVisibility = .visible
     }
 
-    private(set) var didHideMainStageEventIndicator = false
     func hideMainStageEventIndicator() {
-        didHideMainStageEventIndicator = true
+        mainStageIconVisibility = .hidden
     }
 
-    private(set) var didShowPhotoshootStageEventIndicator = false
+    private(set) var photoshootIconVisibility: IconVisibility = .unset
     func showPhotoshootStageEventIndicator() {
-        didShowPhotoshootStageEventIndicator = true
+        photoshootIconVisibility = .visible
     }
 
     private(set) var didHidePhotoshootStageEventIndicator = false
     func hidePhotoshootStageEventIndicator() {
-        didHidePhotoshootStageEventIndicator = true
+        photoshootIconVisibility = .hidden
     }
 
 }

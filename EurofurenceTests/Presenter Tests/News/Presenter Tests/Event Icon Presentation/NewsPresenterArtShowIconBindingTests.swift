@@ -17,8 +17,7 @@ class NewsPresenterArtShowIconBindingTests: XCTestCase {
         eventViewModel.isArtShowEvent = true
         let component = NewsPresenterTestBuilder.buildForAssertingAgainstEventComponent(eventViewModel: eventViewModel)
 
-        XCTAssertTrue(component.didShowArtShowEventIndicator)
-        XCTAssertFalse(component.didHideArtShowEventIndicator)
+        XCTAssertEqual(component.artShowIconVisibility, .visible)
     }
 
     func testHideTheArtShowIndicator() {
@@ -26,8 +25,7 @@ class NewsPresenterArtShowIconBindingTests: XCTestCase {
         eventViewModel.isArtShowEvent = false
         let component = NewsPresenterTestBuilder.buildForAssertingAgainstEventComponent(eventViewModel: eventViewModel)
 
-        XCTAssertFalse(component.didShowArtShowEventIndicator)
-        XCTAssertTrue(component.didHideArtShowEventIndicator)
+        XCTAssertEqual(component.artShowIconVisibility, .hidden)
     }
 
 }

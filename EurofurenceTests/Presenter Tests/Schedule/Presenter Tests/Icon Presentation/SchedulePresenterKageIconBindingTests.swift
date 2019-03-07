@@ -17,8 +17,7 @@ class SchedulePresenterKageIconBindingTests: XCTestCase {
         eventViewModel.isKageEvent = true
         let component = SchedulePresenterTestBuilder.buildForTestingBindingOfEvent(eventViewModel)
 
-        XCTAssertTrue(component.didShowKageEventIndicator)
-        XCTAssertFalse(component.didHideKageEventIndicator)
+        XCTAssertEqual(component.kageIconVisibility, .visible)
     }
 
     func testHideTheKageIndicator() {
@@ -26,8 +25,7 @@ class SchedulePresenterKageIconBindingTests: XCTestCase {
         eventViewModel.isKageEvent = false
         let component = SchedulePresenterTestBuilder.buildForTestingBindingOfEvent(eventViewModel)
 
-        XCTAssertFalse(component.didShowKageEventIndicator)
-        XCTAssertTrue(component.didHideKageEventIndicator)
+        XCTAssertEqual(component.kageIconVisibility, .hidden)
     }
 
 }
