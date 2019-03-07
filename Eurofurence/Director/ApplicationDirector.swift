@@ -47,6 +47,10 @@ class ApplicationDirector: ExternalContentHandler,
         }
 
     }
+    
+    private var performAnimations: Bool {
+        return animate && UIApplication.shared.applicationState == .active
+    }
 
     private let animate: Bool
     private let navigationControllerFactory: NavigationControllerFactory
@@ -181,7 +185,7 @@ class ApplicationDirector: ExternalContentHandler,
                     let tabBarController = self.tabController,
                     let index = tabBarController.viewControllers?.index(of: newsNavigationController) {
                     tabBarController.selectedIndex = index
-                    newsNavigationController.pushViewController(module, animated: self.animate)
+                    newsNavigationController.pushViewController(module, animated: self.performAnimations)
                 }
 
                 completionHandler()
@@ -191,7 +195,7 @@ class ApplicationDirector: ExternalContentHandler,
                                               message: .invalidAnnouncementAlertMessage,
                                               preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: .ok, style: .cancel))
-                self.tabController?.present(alert, animated: self.animate, completion: nil)
+                self.tabController?.present(alert, animated: self.performAnimations, completion: nil)
 
                 completionHandler()
 
@@ -202,7 +206,7 @@ class ApplicationDirector: ExternalContentHandler,
                     let index = tabBarController.viewControllers?.index(of: scheduleNavigationController),
                     let scheduleViewController = self.scheduleViewController {
                     tabBarController.selectedIndex = index
-                    scheduleNavigationController.setViewControllers([scheduleViewController, module], animated: self.animate)
+                    scheduleNavigationController.setViewControllers([scheduleViewController, module], animated: self.performAnimations)
                 }
 
                 completionHandler()
