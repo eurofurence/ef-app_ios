@@ -13,7 +13,7 @@ import XCTest
 class CoreDataStoreShould: DataStoreContract {
     
     private var storeIdentifier: String!
-    private var coreDataStore: CoreDataEurofurenceDataStore!
+    private var coreDataStore: CoreDataStore!
     private var storeLocation: URL?
 
     override func setUp() {
@@ -27,7 +27,7 @@ class CoreDataStoreShould: DataStoreContract {
     }
     
     override func recreateStore() {
-        let store = CoreDataEurofurenceDataStore(storeName: storeIdentifier)
+        let store = CoreDataStore(storeName: storeIdentifier)
         storeLocation = store.storeLocation
         coreDataStore = store
         

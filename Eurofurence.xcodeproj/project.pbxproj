@@ -984,7 +984,7 @@
 		CAEA0DD1216BDE2300B0C7A6 /* SystemClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD7804D1F1D5227002A8333 /* SystemClock.swift */; };
 		CAEA0DD2216BDE2300B0C7A6 /* UserDefaultsForceRefreshRequired.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C33B211A2727003C1C4E /* UserDefaultsForceRefreshRequired.swift */; };
 		CAEA0DD3216BDE2300B0C7A6 /* UserDefaultsPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA680F7B20CD819F006ACD3D /* UserDefaultsPreferences.swift */; };
-		CAEA0DD4216BDE2300B0C7A6 /* CoreDataEurofurenceDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABEB0DB20C9C7A3000BEE66 /* CoreDataEurofurenceDataStore.swift */; };
+		CAEA0DD4216BDE2300B0C7A6 /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABEB0DB20C9C7A3000BEE66 /* CoreDataStore.swift */; };
 		CAEA0DD5216BDE2300B0C7A6 /* AnnouncementEntity+Adaptation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1F7D6C20CBBD9200FB87F5 /* AnnouncementEntity+Adaptation.swift */; };
 		CAEA0DD6216BDE2300B0C7A6 /* ConferenceDayEntity+Adaptation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08158220D3DBC200F750D4 /* ConferenceDayEntity+Adaptation.swift */; };
 		CAEA0DD7216BDE2300B0C7A6 /* DealerEntity+Adaptation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4BB20DA1DE400EE6537 /* DealerEntity+Adaptation.swift */; };
@@ -2479,7 +2479,7 @@
 		CABA840620D0671E00DD0795 /* WhenScheduleSceneLoads_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenScheduleSceneLoads_SchedulePresenterShould.swift; sourceTree = "<group>"; };
 		CABEB0D120C7694F000BEE66 /* WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift; sourceTree = "<group>"; };
 		CABEB0D320C891CA000BEE66 /* WhenSyncCompletesWithEvents_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSyncCompletesWithEvents_ApplicationShould.swift; sourceTree = "<group>"; };
-		CABEB0DB20C9C7A3000BEE66 /* CoreDataEurofurenceDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataEurofurenceDataStore.swift; sourceTree = "<group>"; };
+		CABEB0DB20C9C7A3000BEE66 /* CoreDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
 		CABEB0DE20C9C7ED000BEE66 /* EurofurenceApplicationModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EurofurenceApplicationModel.xcdatamodel; sourceTree = "<group>"; };
 		CABF03B32041BC870028BD62 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		CABF03B62041C2150028BD62 /* DefaultKnowledgeGroupsInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultKnowledgeGroupsInteractorTests.swift; sourceTree = "<group>"; };
@@ -5843,7 +5843,7 @@
 		CABEB0DA20C9C79B000BEE66 /* Core Data Store */ = {
 			isa = PBXGroup;
 			children = (
-				CABEB0DB20C9C7A3000BEE66 /* CoreDataEurofurenceDataStore.swift */,
+				CABEB0DB20C9C7A3000BEE66 /* CoreDataStore.swift */,
 				CA240F6321E79141002DB747 /* CoreDataStoreTransaction.swift */,
 				CA240F6521E8A937002DB747 /* NSManagedObjectContext+Convenience.swift */,
 				CABEB0DD20C9C7ED000BEE66 /* EurofurenceApplicationModel.xcdatamodeld */,
@@ -8471,7 +8471,7 @@
 				CAEA0D8C216BDD9500B0C7A6 /* FileUtilities.swift in Sources */,
 				CACD2E8421D6761D00BACD91 /* LogoutResult.swift in Sources */,
 				CAEA0DCF216BDE2300B0C7A6 /* FoundationHoursDateFormatter.swift in Sources */,
-				CAEA0DD4216BDE2300B0C7A6 /* CoreDataEurofurenceDataStore.swift in Sources */,
+				CAEA0DD4216BDE2300B0C7A6 /* CoreDataStore.swift in Sources */,
 				CA46799422170911006B3090 /* AnnouncementImpl.swift in Sources */,
 				CAEA0DC4216BDE2300B0C7A6 /* DealersService.swift in Sources */,
 				CAEA0D8D216BDD9500B0C7A6 /* ConcretePrivateMessagesService.swift in Sources */,

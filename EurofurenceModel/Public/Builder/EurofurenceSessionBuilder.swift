@@ -32,7 +32,7 @@ public class EurofurenceSessionBuilder {
 
     public init() {
         userPreferences = UserDefaultsPreferences()
-        dataStore = CoreDataEurofurenceDataStore()
+        dataStore = CoreDataStore()
 
         let jsonSession = URLSessionBasedJSONSession.shared
         let buildConfiguration = PreprocessorBuildConfigurationProviding()

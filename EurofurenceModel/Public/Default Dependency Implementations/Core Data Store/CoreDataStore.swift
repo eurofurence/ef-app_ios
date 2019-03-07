@@ -1,5 +1,5 @@
 //
-//  CoreDataEurofurenceDataStore.swift
+//  CoreDataStore.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 07/06/2018.
@@ -9,7 +9,7 @@
 import CoreData
 import Foundation
 
-public struct CoreDataEurofurenceDataStore: DataStore {
+public struct CoreDataStore: DataStore {
 
     private class EurofurencePersistentContainer: NSPersistentContainer {
         override class func defaultDirectoryURL() -> URL {
