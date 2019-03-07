@@ -1,5 +1,6 @@
 excluded:
   - Pods
+  - "*+CoreDataProperties.swift"
 
 disabled_rules:
   - identifier_name
