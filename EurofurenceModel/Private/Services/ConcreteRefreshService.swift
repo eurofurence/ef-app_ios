@@ -67,29 +67,15 @@ class ConcreteRefreshService: RefreshService {
 
     private func performSync(lastSyncTime: Date?, completionHandler: @escaping (Error?) -> Void) -> Progress {
         notifyRefreshStarted()
-
-        let longRunningTask = longRunningTaskManager?.beginLongRunningTask()
-        let finishLongRunningTask: () -> Void = {
-            if let taskManager = self.longRunningTaskManager, let task = longRunningTask {
-                taskManager.finishLongRunningTask(token: task)
-            }
-        }
+        startLongRunningTask()
 
         let progress = Progress()
         progress.totalUnitCount = -1
         progress.completedUnitCount = -1
 
-        let existingAnnouncements = dataStore.fetchAnnouncements().defaultingTo(.empty)
-        let existingKnowledgeGroups = dataStore.fetchKnowledgeGroups().defaultingTo(.empty)
-        let existingKnowledgeEntries = dataStore.fetchKnowledgeEntries().defaultingTo(.empty)
-        let existingEvents = dataStore.fetchEvents().defaultingTo(.empty)
-        let existingImages = dataStore.fetchImages().defaultingTo(.empty)
-        let existingDealers = dataStore.fetchDealers().defaultingTo(.empty)
-        let existingMaps = dataStore.fetchMaps().defaultingTo(.empty)
         api.fetchLatestData(lastSyncTime: lastSyncTime) { (response) in
             guard let response = response else {
-                finishLongRunningTask()
-
+                self.finishLongRunningTask()
                 self.notifyRefreshFinished()
 
                 enum SyncError: Error {
@@ -104,6 +90,7 @@ class ConcreteRefreshService: RefreshService {
             progress.completedUnitCount = 0
             progress.totalUnitCount = Int64(imageIdentifiers.count)
 
+            let existingImages = self.dataStore.fetchImages().defaultingTo(.empty)
             var imageIdentifiersToDelete: [String] = []
             if response.images.removeAllBeforeInsert {
                 imageIdentifiersToDelete = existingImages.map({ $0.identifier })
@@ -118,66 +105,10 @@ class ConcreteRefreshService: RefreshService {
 
                     let isFullStoreRefresh: Bool = lastSyncTime == nil
                     if isFullStoreRefresh {
-                        let changedAnnouncementIdentifiers = response.announcements.changed.map({ $0.identifier })
-                        let orphanedAnnouncements = existingAnnouncements.map({ $0.identifier }).filter(not(changedAnnouncementIdentifiers.contains))
-                        orphanedAnnouncements.forEach(transaction.deleteAnnouncement)
-
-                        let changedEventIdentifiers = response.events.changed.map({ $0.identifier })
-                        let orphanedEvents = existingEvents.map({ $0.identifier }).filter(not(changedEventIdentifiers.contains))
-                        orphanedEvents.forEach(transaction.deleteEvent)
-
-                        let changedKnowledgeGroupIdentifiers = response.knowledgeGroups.changed.map({ $0.identifier })
-                        let orphanedKnowledgeGroups = existingKnowledgeGroups.map({ $0.identifier }).filter(not(changedKnowledgeGroupIdentifiers.contains))
-                        orphanedKnowledgeGroups.forEach(transaction.deleteKnowledgeGroup)
-
-                        let changedKnowledgeEntryIdentifiers = response.knowledgeEntries.changed.map({ $0.identifier })
-                        let orphanedKnowledgeEntries = existingKnowledgeEntries.map({ $0.identifier }).filter(not(changedKnowledgeEntryIdentifiers.contains))
-                        orphanedKnowledgeEntries.forEach(transaction.deleteKnowledgeEntry)
-
-                        let existingImageIdentifiers = existingImages.map({ $0.identifier })
-                        let changedImageIdentifiers = response.images.changed.map({ $0.identifier })
-                        let orphanedImages = existingImageIdentifiers.filter(not(changedImageIdentifiers.contains))
-                        orphanedImages.forEach(self.imageRepository.deleteEntity)
-
-                        let existingDealerIdentifiers = existingDealers.map({ $0.identifier })
-                        let changedDealerIdentifiers = response.dealers.changed.map({ $0.identifier })
-                        let orphanedDealers = existingDealerIdentifiers.filter(not(changedDealerIdentifiers.contains))
-                        orphanedDealers.forEach(transaction.deleteDealer)
-
-                        let existingMapsIdentifiers = existingMaps.map({ $0.identifier })
-                        let changedMapIdentifiers = response.maps.changed.map({ $0.identifier })
-                        let orphanedMaps = existingMapsIdentifiers.filter(not(changedMapIdentifiers.contains))
-                        orphanedMaps.forEach(transaction.deleteMap)
+                        self.deleteOrphanedEntities(response: response, transaction: transaction)
                     }
-
-                    if response.announcements.removeAllBeforeInsert {
-                        self.announcementsService.models.map({ $0.identifier.rawValue }).forEach(transaction.deleteAnnouncement)
-                    }
-
-                    if response.conferenceDays.removeAllBeforeInsert {
-                        self.schedule.days.map({ $0.identifier }).forEach(transaction.deleteConferenceDay)
-                    }
-
-                    if response.rooms.removeAllBeforeInsert {
-                        self.schedule.rooms.map({ $0.roomIdentifier }).forEach(transaction.deleteRoom)
-                    }
-
-                    if response.tracks.removeAllBeforeInsert {
-                        self.schedule.tracks.map({ $0.trackIdentifier }).forEach(transaction.deleteTrack)
-                    }
-
-                    if response.knowledgeGroups.removeAllBeforeInsert {
-                        self.knowledgeService.models.map({ $0.identifier.rawValue }).forEach(transaction.deleteKnowledgeGroup)
-                    }
-
-                    if response.knowledgeEntries.removeAllBeforeInsert {
-                        self.knowledgeService.models.reduce([], { $0 + $1.entries }).map({ $0.identifier.rawValue }).forEach(transaction.deleteKnowledgeEntry)
-                    }
-
-                    if response.dealers.removeAllBeforeInsert {
-                        existingDealers.map({ $0.identifier }).forEach(transaction.deleteDealer)
-                    }
-
+                    
+                    self.processRemoveAllBeforeInserts(response, transaction: transaction)
                     self.save(characteristics: response, in: transaction)
 
                     response.images.deleted.forEach(transaction.deleteImage)
@@ -189,7 +120,7 @@ class ConcreteRefreshService: RefreshService {
                 self.privateMessagesController.refreshMessages {
                     completionHandler(nil)
                     self.notifyRefreshFinished()
-                    finishLongRunningTask()
+                    self.finishLongRunningTask()
                 }
             }
         }
@@ -203,6 +134,18 @@ class ConcreteRefreshService: RefreshService {
 
     private func notifyRefreshStarted() {
         refreshObservers.forEach({ $0.refreshServiceDidBeginRefreshing() })
+    }
+    
+    private var longRunningTaskIdentifier: AnyHashable?
+    private func startLongRunningTask() {
+        longRunningTaskIdentifier = longRunningTaskManager?.beginLongRunningTask()
+    }
+    
+    private func finishLongRunningTask() {
+        if let identifier = longRunningTaskIdentifier {
+            longRunningTaskManager?.finishLongRunningTask(token: identifier)
+            longRunningTaskIdentifier = nil
+        }
     }
 
     private func deleteExistingEntities(imageIdentifiersToDelete: [String],
@@ -232,6 +175,80 @@ class ConcreteRefreshService: RefreshService {
         transaction.saveAnnouncements(characteristics.announcements.changed)
         transaction.saveLastRefreshDate(clock.currentDate)
         transaction.saveImages(characteristics.images.changed)
+    }
+    
+    private func deleteOrphanedEntities(response: ModelCharacteristics, transaction: DataStoreTransaction) {
+        let existingAnnouncements = dataStore.fetchAnnouncements().defaultingTo(.empty)
+        let existingKnowledgeGroups = dataStore.fetchKnowledgeGroups().defaultingTo(.empty)
+        let existingKnowledgeEntries = dataStore.fetchKnowledgeEntries().defaultingTo(.empty)
+        let existingEvents = dataStore.fetchEvents().defaultingTo(.empty)
+        let existingDealers = dataStore.fetchDealers().defaultingTo(.empty)
+        let existingMaps = dataStore.fetchMaps().defaultingTo(.empty)
+        let existingImages = dataStore.fetchImages().defaultingTo(.empty)
+        
+        let changedAnnouncementIdentifiers = response.announcements.changed.map({ $0.identifier })
+        let orphanedAnnouncements = existingAnnouncements.map({ $0.identifier }).filter(not(changedAnnouncementIdentifiers.contains))
+        orphanedAnnouncements.forEach(transaction.deleteAnnouncement)
+        
+        let changedEventIdentifiers = response.events.changed.map({ $0.identifier })
+        let orphanedEvents = existingEvents.map({ $0.identifier }).filter(not(changedEventIdentifiers.contains))
+        orphanedEvents.forEach(transaction.deleteEvent)
+        
+        let changedKnowledgeGroupIdentifiers = response.knowledgeGroups.changed.map({ $0.identifier })
+        let orphanedKnowledgeGroups = existingKnowledgeGroups.map({ $0.identifier }).filter(not(changedKnowledgeGroupIdentifiers.contains))
+        orphanedKnowledgeGroups.forEach(transaction.deleteKnowledgeGroup)
+        
+        let changedKnowledgeEntryIdentifiers = response.knowledgeEntries.changed.map({ $0.identifier })
+        let orphanedKnowledgeEntries = existingKnowledgeEntries.map({ $0.identifier }).filter(not(changedKnowledgeEntryIdentifiers.contains))
+        orphanedKnowledgeEntries.forEach(transaction.deleteKnowledgeEntry)
+        
+        let existingImageIdentifiers = existingImages.map({ $0.identifier })
+        let changedImageIdentifiers = response.images.changed.map({ $0.identifier })
+        let orphanedImages = existingImageIdentifiers.filter(not(changedImageIdentifiers.contains))
+        orphanedImages.forEach(self.imageRepository.deleteEntity)
+        
+        let existingDealerIdentifiers = existingDealers.map({ $0.identifier })
+        let changedDealerIdentifiers = response.dealers.changed.map({ $0.identifier })
+        let orphanedDealers = existingDealerIdentifiers.filter(not(changedDealerIdentifiers.contains))
+        orphanedDealers.forEach(transaction.deleteDealer)
+        
+        let existingMapsIdentifiers = existingMaps.map({ $0.identifier })
+        let changedMapIdentifiers = response.maps.changed.map({ $0.identifier })
+        let orphanedMaps = existingMapsIdentifiers.filter(not(changedMapIdentifiers.contains))
+        orphanedMaps.forEach(transaction.deleteMap)
+    }
+    
+    private func processRemoveAllBeforeInserts(_ response: ModelCharacteristics, transaction: DataStoreTransaction) {
+        if response.announcements.removeAllBeforeInsert {
+            self.announcementsService.models.map({ $0.identifier.rawValue }).forEach(transaction.deleteAnnouncement)
+        }
+        
+        if response.conferenceDays.removeAllBeforeInsert {
+            self.schedule.days.map({ $0.identifier }).forEach(transaction.deleteConferenceDay)
+        }
+        
+        if response.rooms.removeAllBeforeInsert {
+            self.schedule.rooms.map({ $0.roomIdentifier }).forEach(transaction.deleteRoom)
+        }
+        
+        if response.tracks.removeAllBeforeInsert {
+            self.schedule.tracks.map({ $0.trackIdentifier }).forEach(transaction.deleteTrack)
+        }
+        
+        if response.knowledgeGroups.removeAllBeforeInsert {
+            self.knowledgeService.models.map({ $0.identifier.rawValue }).forEach(transaction.deleteKnowledgeGroup)
+        }
+        
+        if response.knowledgeEntries.removeAllBeforeInsert {
+            self.knowledgeService.models.reduce([], { $0 + $1.entries }).map({ $0.identifier.rawValue }).forEach(transaction.deleteKnowledgeEntry)
+        }
+        
+        if response.dealers.removeAllBeforeInsert {
+            self.dataStore.fetchDealers()
+                .defaultingTo(.empty)
+                .map({ $0.identifier })
+                .forEach(transaction.deleteDealer)
+        }
     }
 
 }
