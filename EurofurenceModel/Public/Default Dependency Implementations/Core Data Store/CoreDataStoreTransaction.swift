@@ -149,113 +149,47 @@ class CoreDataStoreTransaction: DataStoreTransaction {
     }
 
     func deleteFavouriteEventIdentifier(_ identifier: EventIdentifier) {
-        mutations.append { (context) in
-            let fetchRequest: NSFetchRequest<FavouriteEventEntity> = FavouriteEventEntity.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "eventIdentifier == %@", identifier.rawValue)
-            fetchRequest.fetchLimit = 1
-
-            context.deleteFirstMatch(for: fetchRequest)
-        }
+        deleteFirst(FavouriteEventEntity.self, identifierKey: "eventIdentifier", identifier: identifier.rawValue)
     }
 
     func deleteKnowledgeGroup(identifier: String) {
-        mutations.append { (context) in
-            let fetchRequest: NSFetchRequest<KnowledgeGroupEntity> = KnowledgeGroupEntity.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
-            fetchRequest.fetchLimit = 1
-
-            context.deleteFirstMatch(for: fetchRequest)
-        }
+        deleteFirst(KnowledgeGroupEntity.self, identifier: identifier)
     }
 
     func deleteKnowledgeEntry(identifier: String) {
-        mutations.append { (context) in
-            let fetchRequest: NSFetchRequest<KnowledgeEntryEntity> = KnowledgeEntryEntity.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
-            fetchRequest.fetchLimit = 1
-
-            context.deleteFirstMatch(for: fetchRequest)
-        }
+        deleteFirst(KnowledgeEntryEntity.self, identifier: identifier)
     }
 
     func deleteAnnouncement(identifier: String) {
-        mutations.append { (context) in
-            let fetchRequest: NSFetchRequest<AnnouncementEntity> = AnnouncementEntity.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
-            fetchRequest.fetchLimit = 1
-
-            context.deleteFirstMatch(for: fetchRequest)
-        }
+        deleteFirst(AnnouncementEntity.self, identifier: identifier)
     }
 
     func deleteEvent(identifier: String) {
-        mutations.append { (context) in
-            let fetchRequest: NSFetchRequest<EventEntity> = EventEntity.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
-            fetchRequest.fetchLimit = 1
-
-            context.deleteFirstMatch(for: fetchRequest)
-        }
+        deleteFirst(EventEntity.self, identifier: identifier)
     }
 
     func deleteTrack(identifier: String) {
-        mutations.append { (context) in
-            let fetchRequest: NSFetchRequest<TrackEntity> = TrackEntity.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
-            fetchRequest.fetchLimit = 1
-
-            context.deleteFirstMatch(for: fetchRequest)
-        }
+        deleteFirst(TrackEntity.self, identifier: identifier)
     }
 
     func deleteRoom(identifier: String) {
-        mutations.append { (context) in
-            let fetchRequest: NSFetchRequest<RoomEntity> = RoomEntity.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
-            fetchRequest.fetchLimit = 1
-
-            context.deleteFirstMatch(for: fetchRequest)
-        }
+        deleteFirst(RoomEntity.self, identifier: identifier)
     }
 
     func deleteConferenceDay(identifier: String) {
-        mutations.append { (context) in
-            let fetchRequest: NSFetchRequest<ConferenceDayEntity> = ConferenceDayEntity.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
-            fetchRequest.fetchLimit = 1
-
-            context.deleteFirstMatch(for: fetchRequest)
-        }
+        deleteFirst(ConferenceDayEntity.self, identifier: identifier)
     }
 
     func deleteDealer(identifier: String) {
-        mutations.append { (context) in
-            let fetchRequest: NSFetchRequest<DealerEntity> = DealerEntity.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
-            fetchRequest.fetchLimit = 1
-
-            context.deleteFirstMatch(for: fetchRequest)
-        }
+        deleteFirst(DealerEntity.self, identifier: identifier)
     }
 
     func deleteMap(identifier: String) {
-        mutations.append { (context) in
-            let fetchRequest: NSFetchRequest<MapEntity> = MapEntity.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
-            fetchRequest.fetchLimit = 1
-
-            context.deleteFirstMatch(for: fetchRequest)
-        }
+        deleteFirst(MapEntity.self, identifier: identifier)
     }
 
     func deleteImage(identifier: String) {
-        mutations.append { (context) in
-            let fetchRequest: NSFetchRequest<ImageModelEntity> = ImageModelEntity.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
-            fetchRequest.fetchLimit = 1
-
-            context.deleteFirstMatch(for: fetchRequest)
-        }
+        deleteFirst(ImageModelEntity.self, identifier: identifier)
     }
 
     // MARK: Private
@@ -266,6 +200,17 @@ class CoreDataStoreTransaction: DataStoreTransaction {
                 let entity: E = context.makeEntity(uniquelyIdentifiedBy: E.makeIdentifyingPredicate(for: model))
                 entity.consumeAttributes(from: model)
             }
+        }
+    }
+    
+    private func deleteFirst<T>(_ kind: T.Type,
+                                identifierKey: String = "identifier",
+                                identifier: String) where T: NSManagedObject {
+        mutations.append { (context) in
+            let fetchRequest = NSFetchRequest<T>(entityName: String(describing: T.self))
+            fetchRequest.predicate = NSPredicate(format: "\(identifierKey) == %@", identifier)
+            fetchRequest.fetchLimit = 1
+            context.deleteFirstMatch(for: fetchRequest)
         }
     }
 
