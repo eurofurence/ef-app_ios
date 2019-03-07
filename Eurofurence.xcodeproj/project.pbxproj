@@ -711,6 +711,7 @@
 		CA7D8B2F222EC835003431A0 /* CoreDataStoreShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D8B2E222EC835003431A0 /* CoreDataStoreShould.swift */; };
 		CA7D8B33222F1A04003431A0 /* DataStoreContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D8B32222F1A04003431A0 /* DataStoreContract.swift */; };
 		CA7D8B36222F1AEB003431A0 /* FakeDataStoreTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D8B34222F1AC1003431A0 /* FakeDataStoreTransaction.swift */; };
+		CA7D8B3822312CFB003431A0 /* DefaultNewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D8B3722312CFB003431A0 /* DefaultNewsViewModel.swift */; };
 		CA7EB7D51F799991002674A6 /* TutorialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7EB7D41F799991002674A6 /* TutorialScene.swift */; };
 		CA81D48E1FE9A8DB00A52A2F /* CapturingTutorialModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA81D48D1FE9A8DB00A52A2F /* CapturingTutorialModuleDelegate.swift */; };
 		CA81D4901FE9A91000A52A2F /* WhenTheTutorialAppears.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA81D48F1FE9A91000A52A2F /* WhenTheTutorialAppears.swift */; };
@@ -2362,6 +2363,7 @@
 		CA7D8B2E222EC835003431A0 /* CoreDataStoreShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStoreShould.swift; sourceTree = "<group>"; };
 		CA7D8B32222F1A04003431A0 /* DataStoreContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStoreContract.swift; sourceTree = "<group>"; };
 		CA7D8B34222F1AC1003431A0 /* FakeDataStoreTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeDataStoreTransaction.swift; sourceTree = "<group>"; };
+		CA7D8B3722312CFB003431A0 /* DefaultNewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNewsViewModel.swift; sourceTree = "<group>"; };
 		CA7EB7D41F799991002674A6 /* TutorialScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScene.swift; sourceTree = "<group>"; };
 		CA804DD11F20CE8F00E07A4A /* JSONAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONAPI.swift; sourceTree = "<group>"; };
 		CA804DD91F20D2F500E07A4A /* LoginAPITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginAPITests.swift; sourceTree = "<group>"; };
@@ -5514,6 +5516,7 @@
 			isa = PBXGroup;
 			children = (
 				CA0E520C208E759F005259FE /* DefaultNewsInteractor.swift */,
+				CA7D8B3722312CFB003431A0 /* DefaultNewsViewModel.swift */,
 				CA162E9D20A8D158004AFED6 /* FoundationRelativeTimeIntervalCountdownFormatter.swift */,
 				CA89CBAC207F802400570D54 /* NewsInteractor.swift */,
 				CA89CBA8207F7F9A00570D54 /* NewsViewModel.swift */,
@@ -7733,6 +7736,7 @@
 				CAD3BDB92059539D00C91E6E /* KnowledgeDetailModuleDelegate.swift in Sources */,
 				CA6EC48E2051D97600402894 /* KnowledgeDetailPresenter.swift in Sources */,
 				CA1FE9971F9FCCA4009C7DF3 /* MessagesModuleProviding.swift in Sources */,
+				CA7D8B3822312CFB003431A0 /* DefaultNewsViewModel.swift in Sources */,
 				CA283ABB20EAA45000F7D195 /* AnnouncementsInteractor.swift in Sources */,
 				CADABF042118E08D0023C3B6 /* MapContextualContentViewController.swift in Sources */,
 				CA00AE4E20D16CAE00C2FBB0 /* SchedulePresenter.swift in Sources */,
