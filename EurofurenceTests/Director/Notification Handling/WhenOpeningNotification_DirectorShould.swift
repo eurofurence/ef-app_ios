@@ -94,6 +94,23 @@ class WhenOpeningNotification_DirectorShould: XCTestCase {
         XCTAssertEqual(event, context.eventDetailModule.capturedModel)
         XCTAssertEqual(scheduleTabIndex, context.tabModule.stubInterface.selectedTabIndex)
     }
+    
+    func testShowLastOpenedEventOnly_BUG() {
+        let context = ApplicationDirectorTestBuilder().build()
+        let firstPayload = [String.random: String.random]
+        let firstEvent = EventIdentifier.random
+        let secondPayload = [String.random: String.random]
+        let secondEvent = EventIdentifier.random
+        context.navigateToTabController()
+        context.notificationHandling.stub(.event(firstEvent), for: firstPayload)
+        context.notificationHandling.stub(.event(secondEvent), for: secondPayload)
+        
+        let scheduleNavigationController = context.navigationController(for: context.scheduleModule.stubInterface)!
+        context.director.openNotification(firstPayload) { }
+        context.director.openNotification(secondPayload) { }
+        
+        XCTAssertEqual(2, scheduleNavigationController.viewControllers.count)
+    }
 
     func testInvokeTheCompletionHandlerForInvalidatedAnnouncements() {
         let context = ApplicationDirectorTestBuilder().build()

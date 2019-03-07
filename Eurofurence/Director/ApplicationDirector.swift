@@ -199,9 +199,10 @@ class ApplicationDirector: ExternalContentHandler,
                 let module = self.eventDetailModuleProviding.makeEventDetailModule(for: event)
                 if  let scheduleNavigationController = self.scheduleViewController?.navigationController,
                     let tabBarController = self.tabController,
-                    let index = tabBarController.viewControllers?.index(of: scheduleNavigationController) {
+                    let index = tabBarController.viewControllers?.index(of: scheduleNavigationController),
+                    let scheduleViewController = self.scheduleViewController {
                     tabBarController.selectedIndex = index
-                    scheduleNavigationController.pushViewController(module, animated: self.animate)
+                    scheduleNavigationController.setViewControllers([scheduleViewController, module], animated: self.animate)
                 }
 
                 completionHandler()
