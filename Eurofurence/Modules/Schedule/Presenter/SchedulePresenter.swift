@@ -118,7 +118,8 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
     private struct EventsBinder: ScheduleSceneBinder {
 
         var viewModels: [ScheduleEventGroupViewModel]
-        var scheduleViewModel: ScheduleViewModel?
+        var favouriteHandler: (IndexPath) -> Void
+        var unfavouriteHandler: (IndexPath) -> Void
 
         func bind(_ header: ScheduleEventGroupHeader, forGroupAt index: Int) {
             let group = viewModels[index]
@@ -137,11 +138,11 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
 
             if event.isFavourite {
                 return ScheduleEventComponentAction(title: .unfavourite, run: {
-                    self.scheduleViewModel?.unfavouriteEvent(at: indexPath)
+                    self.unfavouriteHandler(indexPath)
                 })
             } else {
                 return ScheduleEventComponentAction(title: .favourite, run: {
-                    self.scheduleViewModel?.favouriteEvent(at: indexPath)
+                    self.favouriteHandler(indexPath)
                 })
             }
         }
@@ -155,39 +156,6 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
         func bind(_ dayComponent: ScheduleDayComponent, forDayAt index: Int) {
             let day = viewModels[index]
             dayComponent.setDayTitle(day.title)
-        }
-
-    }
-
-    private struct SearchResultsBinder: ScheduleSceneSearchResultsBinder {
-
-        var viewModels: [ScheduleEventGroupViewModel]
-        var scheduleSearchViewModel: ScheduleSearchViewModel?
-
-        func bind(_ eventComponent: ScheduleEventComponent, forSearchResultAt indexPath: IndexPath) {
-            let group = viewModels[indexPath.section]
-            let event = group.events[indexPath.item]
-            EventComponentBinder(component: eventComponent, event: event).bind()
-        }
-
-        func bind(_ header: ScheduleEventGroupHeader, forSearchResultGroupAt index: Int) {
-            let group = viewModels[index]
-            header.setEventGroupTitle(group.title)
-        }
-
-        func eventActionForComponent(at indexPath: IndexPath) -> ScheduleEventComponentAction {
-            let group = viewModels[indexPath.section]
-            let event = group.events[indexPath.item]
-
-            if event.isFavourite {
-                return ScheduleEventComponentAction(title: .unfavourite, run: {
-                    self.scheduleSearchViewModel?.unfavouriteEvent(at: indexPath)
-                })
-            } else {
-                return ScheduleEventComponentAction(title: .favourite, run: {
-                    self.scheduleSearchViewModel?.favouriteEvent(at: indexPath)
-                })
-            }
         }
 
     }
@@ -285,14 +253,22 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
     }
 
     func scheduleViewModelDidUpdateEvents(_ events: [ScheduleEventGroupViewModel]) {
+        guard let viewModel = viewModel else { return }
+        
         let numberOfItemsPerGroup = events.map { $0.events.count }
-        let binder = EventsBinder(viewModels: events, scheduleViewModel: viewModel)
+        let binder = EventsBinder(viewModels: events,
+                                  favouriteHandler: viewModel.favouriteEvent,
+                                  unfavouriteHandler: viewModel.unfavouriteEvent)
         scene.bind(numberOfItemsPerSection: numberOfItemsPerGroup, using: binder)
     }
 
     func scheduleSearchResultsUpdated(_ results: [ScheduleEventGroupViewModel]) {
+        guard let searchViewModel = searchViewModel else { return }
+        
         let numberOfItemsPerGroup = results.map { $0.events.count }
-        let binder = SearchResultsBinder(viewModels: results, scheduleSearchViewModel: searchViewModel)
+        let binder = EventsBinder(viewModels: results,
+                                  favouriteHandler: searchViewModel.favouriteEvent,
+                                  unfavouriteHandler: searchViewModel.unfavouriteEvent)
         scene.bindSearchResults(numberOfItemsPerSection: numberOfItemsPerGroup, using: binder)
     }
 

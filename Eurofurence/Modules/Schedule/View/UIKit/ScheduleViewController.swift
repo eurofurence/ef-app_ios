@@ -133,7 +133,7 @@ class ScheduleViewController: UIViewController,
                                           onDidSelectRow: scheduleTableViewDidSelectRow)
     }
 
-    func bindSearchResults(numberOfItemsPerSection: [Int], using binder: ScheduleSceneSearchResultsBinder) {
+    func bindSearchResults(numberOfItemsPerSection: [Int], using binder: ScheduleSceneBinder) {
         searchViewController?.updateSearchResults(numberOfItemsPerSection: numberOfItemsPerSection, binder: binder)
     }
 

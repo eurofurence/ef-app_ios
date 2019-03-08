@@ -13,10 +13,10 @@ class ScheduleSearchTableViewController: UITableViewController {
     // MARK: Search Convenience Collab
 
     private var numberOfItemsPerSection: [Int] = []
-    private var binder: ScheduleSceneSearchResultsBinder?
+    private var binder: ScheduleSceneBinder?
     var onDidSelectSearchResultAtIndexPath: ((IndexPath) -> Void)?
 
-    func updateSearchResults(numberOfItemsPerSection: [Int], binder: ScheduleSceneSearchResultsBinder) {
+    func updateSearchResults(numberOfItemsPerSection: [Int], binder: ScheduleSceneBinder) {
         self.numberOfItemsPerSection = numberOfItemsPerSection
         self.binder = binder
         tableView.reloadData()
@@ -50,13 +50,13 @@ class ScheduleSearchTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(EventTableViewCell.self)
-        binder?.bind(cell, forSearchResultAt: indexPath)
+        binder?.bind(cell, forEventAt: indexPath)
         return cell
     }
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: Header.identifier) as! Header
-        binder?.bind(header, forSearchResultGroupAt: section)
+        binder?.bind(header, forGroupAt: section)
         return header
     }
 

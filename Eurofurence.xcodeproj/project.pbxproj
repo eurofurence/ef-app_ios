@@ -249,7 +249,6 @@
 		CA250DD020D6D4F500E7513C /* CapturingScheduleSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA250DCF20D6D4F500E7513C /* CapturingScheduleSearchViewModel.swift */; };
 		CA250DD220D6D63600E7513C /* WhenSearchableViewModelProducesNewResult_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA250DD120D6D63600E7513C /* WhenSearchableViewModelProducesNewResult_SchedulePresenterShould.swift */; };
 		CA250DD420D6E28B00E7513C /* WhenBindingEventFromSearchResult_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA250DD320D6E28B00E7513C /* WhenBindingEventFromSearchResult_SchedulePresenterShould.swift */; };
-		CA250DD620D6E34A00E7513C /* ScheduleSceneSearchResultsBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA250DD520D6E34A00E7513C /* ScheduleSceneSearchResultsBinder.swift */; };
 		CA250DD820D6E4AF00E7513C /* WhenBindingGroupFromSearchResult_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA250DD720D6E4AF00E7513C /* WhenBindingGroupFromSearchResult_SchedulePresenterShould.swift */; };
 		CA250DDA20D6E5FD00E7513C /* ScheduleSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA250DD920D6E5FD00E7513C /* ScheduleSearchTableViewController.swift */; };
 		CA250DDC20D6E85700E7513C /* WhenSearching_ScheduleInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA250DDB20D6E85700E7513C /* WhenSearching_ScheduleInteractorShould.swift */; };
@@ -1748,7 +1747,6 @@
 		CA250DCF20D6D4F500E7513C /* CapturingScheduleSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingScheduleSearchViewModel.swift; sourceTree = "<group>"; };
 		CA250DD120D6D63600E7513C /* WhenSearchableViewModelProducesNewResult_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSearchableViewModelProducesNewResult_SchedulePresenterShould.swift; sourceTree = "<group>"; };
 		CA250DD320D6E28B00E7513C /* WhenBindingEventFromSearchResult_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingEventFromSearchResult_SchedulePresenterShould.swift; sourceTree = "<group>"; };
-		CA250DD520D6E34A00E7513C /* ScheduleSceneSearchResultsBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleSceneSearchResultsBinder.swift; sourceTree = "<group>"; };
 		CA250DD720D6E4AF00E7513C /* WhenBindingGroupFromSearchResult_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingGroupFromSearchResult_SchedulePresenterShould.swift; sourceTree = "<group>"; };
 		CA250DD920D6E5FD00E7513C /* ScheduleSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleSearchTableViewController.swift; sourceTree = "<group>"; };
 		CA250DDB20D6E85700E7513C /* WhenSearching_ScheduleInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSearching_ScheduleInteractorShould.swift; sourceTree = "<group>"; };
@@ -4547,7 +4545,6 @@
 				CA637591208CE4F700536BE2 /* ScheduleScene.swift */,
 				CA00AE5720D171D600C2FBB0 /* ScheduleSceneBinder.swift */,
 				CA63758F208CE4E100536BE2 /* ScheduleSceneFactory.swift */,
-				CA250DD520D6E34A00E7513C /* ScheduleSceneSearchResultsBinder.swift */,
 			);
 			path = Abstraction;
 			sourceTree = "<group>";
@@ -7836,7 +7833,6 @@
 				CAEAEC041FE0057800C0EE7C /* MessageDetailPresenter.swift in Sources */,
 				CACF1E6820AE2FB700D904B5 /* StoryboardEventDetailSceneFactory.swift in Sources */,
 				CA40108F21107D020056E16C /* KnowledgeGroupEntriesBinder.swift in Sources */,
-				CA250DD620D6E34A00E7513C /* ScheduleSceneSearchResultsBinder.swift in Sources */,
 				CA283AB920EAA44500F7D195 /* AnnouncementsListViewModel.swift in Sources */,
 				CABA438B1FBCDBBA009CB5B0 /* LoginModule.swift in Sources */,
 				CACF1E4E20AE2B3300D904B5 /* EventDetailModuleBuilder.swift in Sources */,

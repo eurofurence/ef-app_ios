@@ -62,8 +62,8 @@ class CapturingScheduleScene: UIViewController, ScheduleScene {
     }
 
     private(set) var boundSearchItemsPerSection = [Int]()
-    private(set) var searchResultsBinder: ScheduleSceneSearchResultsBinder?
-    func bindSearchResults(numberOfItemsPerSection: [Int], using binder: ScheduleSceneSearchResultsBinder) {
+    private(set) var searchResultsBinder: ScheduleSceneBinder?
+    func bindSearchResults(numberOfItemsPerSection: [Int], using binder: ScheduleSceneBinder) {
         boundSearchItemsPerSection = numberOfItemsPerSection
         searchResultsBinder = binder
     }

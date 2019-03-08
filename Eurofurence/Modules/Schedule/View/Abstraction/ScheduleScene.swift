@@ -16,7 +16,7 @@ protocol ScheduleScene {
     func hideRefreshIndicator()
     func bind(numberOfDays: Int, using binder: ScheduleDaysBinder)
     func bind(numberOfItemsPerSection: [Int], using binder: ScheduleSceneBinder)
-    func bindSearchResults(numberOfItemsPerSection: [Int], using binder: ScheduleSceneSearchResultsBinder)
+    func bindSearchResults(numberOfItemsPerSection: [Int], using binder: ScheduleSceneBinder)
     func selectDay(at index: Int)
     func deselectEvent(at indexPath: IndexPath)
     func deselectSearchResult(at indexPath: IndexPath)
