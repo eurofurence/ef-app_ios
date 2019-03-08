@@ -229,40 +229,38 @@ class ConcreteRefreshService: RefreshService {
     
     private func processRemoveAllBeforeInserts(_ response: ModelCharacteristics, transaction: DataStoreTransaction) {
         if response.announcements.removeAllBeforeInsert {
-            self.announcementsService.models.map({ $0.identifier.rawValue }).forEach(transaction.deleteAnnouncement)
+            dataStore.fetchAnnouncements()?.map({ $0.identifier }).forEach(transaction.deleteAnnouncement)
         }
         
         if response.conferenceDays.removeAllBeforeInsert {
-            self.schedule.days.map({ $0.identifier }).forEach(transaction.deleteConferenceDay)
+            dataStore.fetchConferenceDays()?.map({ $0.identifier }).forEach(transaction.deleteConferenceDay)
         }
         
         if response.rooms.removeAllBeforeInsert {
-            self.schedule.rooms.map({ $0.roomIdentifier }).forEach(transaction.deleteRoom)
+            dataStore.fetchRooms()?.map({ $0.roomIdentifier }).forEach(transaction.deleteRoom)
         }
         
         if response.tracks.removeAllBeforeInsert {
-            self.schedule.tracks.map({ $0.trackIdentifier }).forEach(transaction.deleteTrack)
+            dataStore.fetchTracks()?.map({ $0.trackIdentifier }).forEach(transaction.deleteTrack)
         }
         
         if response.knowledgeGroups.removeAllBeforeInsert {
-            self.knowledgeService.models.map({ $0.identifier.rawValue }).forEach(transaction.deleteKnowledgeGroup)
+            dataStore.fetchKnowledgeGroups()?.map({ $0.identifier }).forEach(transaction.deleteKnowledgeGroup)
         }
         
         if response.knowledgeEntries.removeAllBeforeInsert {
-            self.knowledgeService.models.reduce([], { $0 + $1.entries }).map({ $0.identifier.rawValue }).forEach(transaction.deleteKnowledgeEntry)
+            dataStore.fetchKnowledgeEntries()?.map({ $0.identifier }).forEach(transaction.deleteKnowledgeEntry)
         }
         
         if response.dealers.removeAllBeforeInsert {
-            self.dataStore.fetchDealers()
-                .defaultingTo(.empty)
-                .map({ $0.identifier })
-                .forEach(transaction.deleteDealer)
+            dataStore.fetchDealers()?.map({ $0.identifier }).forEach(transaction.deleteDealer)
         }
         
         if response.images.removeAllBeforeInsert {
-            let identifiers = dataStore.fetchImages()?.map({ $0.identifier })
-            identifiers?.forEach(transaction.deleteImage)
-            identifiers?.forEach(imageCache.deleteImage)
+            dataStore.fetchImages()?.map({ $0.identifier }).forEach({ (identifier) in
+                transaction.deleteImage(identifier: identifier)
+                imageCache.deleteImage(identifier: identifier)
+            })
         }
     }
 
