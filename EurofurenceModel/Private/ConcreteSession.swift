@@ -117,13 +117,10 @@ class ConcreteSession: EurofurenceSession {
                                                 dataStore: dataStore,
                                                 api: api,
                                                 imageDownloader: imageDownloader,
-                                                announcementsService: announcementsService,
-                                                schedule: eventsService,
                                                 clock: clock,
                                                 eventBus: eventBus,
                                                 imageCache: imageCache,
                                                 imageRepository: imageRepository,
-                                                knowledgeService: knowledgeService,
                                                 privateMessagesController: privateMessagesService)
 
         notificationService = ConcreteNotificationService(eventBus: eventBus,

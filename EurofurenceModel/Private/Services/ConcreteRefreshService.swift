@@ -10,10 +10,6 @@ import EventBus
 import Foundation
 
 class ConcreteRefreshService: RefreshService {
-
-    private let announcementsService: ConcreteAnnouncementsService
-    private let schedule: ConcreteEventsService
-    private let knowledgeService: ConcreteKnowledgeService
     private let privateMessagesController: ConcretePrivateMessagesService
 
     private let longRunningTaskManager: LongRunningTaskManager?
@@ -29,25 +25,19 @@ class ConcreteRefreshService: RefreshService {
          dataStore: DataStore,
          api: API,
          imageDownloader: ImageDownloader,
-         announcementsService: ConcreteAnnouncementsService,
-         schedule: ConcreteEventsService,
          clock: Clock,
          eventBus: EventBus,
          imageCache: ImagesCache,
          imageRepository: ImageRepository,
-         knowledgeService: ConcreteKnowledgeService,
          privateMessagesController: ConcretePrivateMessagesService) {
         self.longRunningTaskManager = longRunningTaskManager
         self.dataStore = dataStore
         self.api = api
         self.imageDownloader = imageDownloader
-        self.announcementsService = announcementsService
-        self.schedule = schedule
         self.clock = clock
         self.eventBus = eventBus
         self.imageCache = imageCache
         self.imageRepository = imageRepository
-        self.knowledgeService = knowledgeService
         self.privateMessagesController = privateMessagesController
     }
 
