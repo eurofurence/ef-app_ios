@@ -1287,7 +1287,9 @@
 		DE53838D7196118A73CF0A5B /* Pods_EurofurenceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4BE2399E8F0912910303B02 /* Pods_EurofurenceTests.framework */; };
 		E77620C66D916EA09C691650 /* Pods-EurofurenceModelAdapterTests-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3844D185DEED34633D55AB34 /* Pods-EurofurenceModelAdapterTests-metadata.plist */; };
 		E7D5220E7B033A9BD6974870 /* Pods_EurofurenceModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACEE79B8E17A0BB12C431EDA /* Pods_EurofurenceModel.framework */; };
+		E941517E082AE9447486D6D4 /* Pods-ScreenshotGenerator-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = A2121787EEEE8CD3E74F0E82 /* Pods-ScreenshotGenerator-metadata.plist */; };
 		EAC4EAA631D3DB4D13B345A0 /* Pods_ScreenshotGenerator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5969EBB099A84DB93CE3EE6 /* Pods_ScreenshotGenerator.framework */; };
+		EE24DE73C47CF78F1ED68BC7 /* Pods-ScreenshotGenerator-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = E17E5A2762A3DDFA8341E83C /* Pods-ScreenshotGenerator-settings-metadata.plist */; };
 		F1006B77362EF4A2C72D1AB5 /* Pods-EurofurenceModelTests-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 35E13E9A8458924ADC2FCF5F /* Pods-EurofurenceModelTests-metadata.plist */; };
 		FDA174B75DF6670FE6F9D0FE /* Pods-Eurofurence-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = FCB5D8F683D64BAB8D2FB3BF /* Pods-Eurofurence-settings-metadata.plist */; };
 /* End PBXBuildFile section */
@@ -1532,6 +1534,7 @@
 		9ACF99431EBE172D006FC958 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9ACF99481EBE172D006FC958 /* EurofurenceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EurofurenceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ACF994E1EBE172D006FC958 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A2121787EEEE8CD3E74F0E82 /* Pods-ScreenshotGenerator-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-ScreenshotGenerator-metadata.plist"; path = "Pods/Pods-ScreenshotGenerator-metadata.plist"; sourceTree = "<group>"; };
 		A352CB5AFA61A44128F4872A /* Pods-EurofurenceUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EurofurenceUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EurofurenceUITests/Pods-EurofurenceUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A44D8DC6F327D9659B4A72F9 /* Pods-EurofurenceAppCoreTests.profiling.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EurofurenceAppCoreTests.profiling.xcconfig"; path = "Pods/Target Support Files/Pods-EurofurenceAppCoreTests/Pods-EurofurenceAppCoreTests.profiling.xcconfig"; sourceTree = "<group>"; };
 		A4BE2399E8F0912910303B02 /* Pods_EurofurenceTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EurofurenceTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2732,6 +2735,7 @@
 		D27E666C2FB166EEC7D70C0B /* Pods-EurofurenceAppCoreTestDoubles.screenshots.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EurofurenceAppCoreTestDoubles.screenshots.xcconfig"; path = "Pods/Target Support Files/Pods-EurofurenceAppCoreTestDoubles/Pods-EurofurenceAppCoreTestDoubles.screenshots.xcconfig"; sourceTree = "<group>"; };
 		D6F3D21513FCE6CCDC157C6A /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = file.yml; path = .travis.yml; sourceTree = "<group>"; };
 		DB515BDD9C2C36320963EF3C /* Pods-EurofurenceAppCore-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-EurofurenceAppCore-settings-metadata.plist"; path = "Eurofurence/Settings.bundle/Pods-EurofurenceAppCore-settings-metadata.plist"; sourceTree = "<group>"; };
+		E17E5A2762A3DDFA8341E83C /* Pods-ScreenshotGenerator-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-ScreenshotGenerator-settings-metadata.plist"; path = "Eurofurence/Settings.bundle/Pods-ScreenshotGenerator-settings-metadata.plist"; sourceTree = "<group>"; };
 		E5969EBB099A84DB93CE3EE6 /* Pods_ScreenshotGenerator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ScreenshotGenerator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5B383A0F0C230E388005BA9 /* Pods_EurofurenceAppCoreAdapterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EurofurenceAppCoreAdapterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5F6C34BE585B9DDFF675F27 /* Pods-EventBus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EventBus.release.xcconfig"; path = "Pods/Target Support Files/Pods-EventBus/Pods-EventBus.release.xcconfig"; sourceTree = "<group>"; };
@@ -3007,6 +3011,8 @@
 				1590088C9418E0091331AA6E /* Pods-TestUtilities.profiling.xcconfig */,
 				33F11096E11E6AA44DC43B8E /* Pods-TestUtilities-metadata.plist */,
 				7337D1899C8B3767F4CAA405 /* Pods-TestUtilities-settings-metadata.plist */,
+				A2121787EEEE8CD3E74F0E82 /* Pods-ScreenshotGenerator-metadata.plist */,
+				E17E5A2762A3DDFA8341E83C /* Pods-ScreenshotGenerator-settings-metadata.plist */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -6833,6 +6839,7 @@
 				CA9845C31F2907A800E8821D /* Sources */,
 				CA9845C41F2907A800E8821D /* Frameworks */,
 				CA9845C51F2907A800E8821D /* Resources */,
+				120B53D27E2F4A071A8E7C26 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -7126,6 +7133,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E941517E082AE9447486D6D4 /* Pods-ScreenshotGenerator-metadata.plist in Resources */,
+				EE24DE73C47CF78F1ED68BC7 /* Pods-ScreenshotGenerator-settings-metadata.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7179,6 +7188,38 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		120B53D27E2F4A071A8E7C26 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ScreenshotGenerator/Pods-ScreenshotGenerator-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Down/Down.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${BUILT_PRODUCTS_DIR}/SimulatorStatusMagic/SimulatorStatusMagic.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Down.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SimulatorStatusMagic.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ScreenshotGenerator/Pods-ScreenshotGenerator-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		2055AB1121145F4600EB490B /* Set version in Root.plist */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

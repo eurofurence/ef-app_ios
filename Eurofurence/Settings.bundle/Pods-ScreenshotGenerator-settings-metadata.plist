@@ -2,63 +2,18 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>specs</key>
+	<key>PreferenceSpecifiers</key>
 	<array>
 		<dict>
-			<key>authors</key>
-			<dict>
-				<key>JP Simard</key>
-				<string>jp@jpsim.com</string>
-			</dict>
-			<key>description</key>
-			<string></string>
-			<key>homepage</key>
-			<string>https://github.com/realm/SwiftLint</string>
-			<key>licenseText</key>
-			<string>The MIT License (MIT)
-
-Copyright (c) 2015 Realm Inc.
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-</string>
-			<key>licenseType</key>
-			<string>MIT</string>
-			<key>name</key>
-			<string>SwiftLint</string>
-			<key>socialMediaURL</key>
-			<string></string>
-			<key>summary</key>
-			<string>A tool to enforce Swift style and conventions.</string>
-			<key>version</key>
-			<string>0.22.0</string>
+			<key>FooterText</key>
+			<string>This application makes use of the following third party libraries:</string>
+			<key>Title</key>
+			<string>Acknowledgements</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
 		</dict>
 		<dict>
-			<key>authors</key>
-			<dict>
-				<key>Rob Phillips</key>
-				<string>rob@robphillips.me</string>
-			</dict>
-			<key>description</key>
-			<string></string>
-			<key>homepage</key>
-			<string>https://github.com/iwasrobbed/Down</string>
-			<key>licenseText</key>
+			<key>FooterText</key>
 			<string>The MIT License (MIT)
 
 Copyright (c) 2016 Rob Phillips.
@@ -277,200 +232,69 @@ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
 LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</string>
-			<key>licenseType</key>
-			<string>MIT</string>
-			<key>name</key>
+			<key>Title</key>
 			<string>Down</string>
-			<key>socialMediaURL</key>
-			<string></string>
-			<key>summary</key>
-			<string>Blazing fast Markdown rendering in Swift, built upon cmark.</string>
-			<key>version</key>
-			<string>0.5.2</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
 		</dict>
 		<dict>
-			<key>authors</key>
-			<dict>
-				<key>Google, Inc.</key>
-				<string></string>
-			</dict>
-			<key>description</key>
-			<string>&lt;p&gt;Simplify your iOS development, grow your user base, and monetize more effectively with Firebase.&lt;/p&gt;
-</string>
-			<key>homepage</key>
-			<string>https://firebase.google.com</string>
-			<key>licenseText</key>
+			<key>FooterText</key>
 			<string>Copyright 2017 Google</string>
-			<key>licenseType</key>
-			<string>Copyright</string>
-			<key>name</key>
+			<key>Title</key>
 			<string>Firebase</string>
-			<key>socialMediaURL</key>
-			<string></string>
-			<key>summary</key>
-			<string>Firebase for iOS</string>
-			<key>version</key>
-			<string>4.1.1</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
 		</dict>
 		<dict>
-			<key>authors</key>
-			<dict>
-				<key>Google, Inc.</key>
-				<string></string>
-			</dict>
-			<key>description</key>
-			<string>&lt;p&gt;Firebase Analytics is a free, out-of-the-box analytics solution that inspires actionable insights based on app usage and user engagement.&lt;/p&gt;
-</string>
-			<key>homepage</key>
-			<string>https://firebase.google.com/features/analytics/</string>
-			<key>licenseText</key>
+			<key>FooterText</key>
 			<string>Copyright 2017 Google</string>
-			<key>licenseType</key>
-			<string>Copyright</string>
-			<key>name</key>
+			<key>Title</key>
 			<string>FirebaseAnalytics</string>
-			<key>socialMediaURL</key>
-			<string></string>
-			<key>summary</key>
-			<string>Firebase Analytics for iOS</string>
-			<key>version</key>
-			<string>4.0.3</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
 		</dict>
 		<dict>
-			<key>authors</key>
-			<dict>
-				<key>Google, Inc.</key>
-				<string></string>
-			</dict>
-			<key>description</key>
-			<string>&lt;p&gt;Firebase Core includes FIRApp and FIROptions which provide central configuration for other Firebase services.&lt;/p&gt;
-</string>
-			<key>homepage</key>
-			<string>https://firebase.google.com</string>
-			<key>licenseText</key>
+			<key>FooterText</key>
 			<string>Copyright 2017 Google</string>
-			<key>licenseType</key>
-			<string>Copyright</string>
-			<key>name</key>
+			<key>Title</key>
 			<string>FirebaseCore</string>
-			<key>socialMediaURL</key>
-			<string></string>
-			<key>summary</key>
-			<string>Firebase Core for iOS</string>
-			<key>version</key>
-			<string>4.0.6</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
 		</dict>
 		<dict>
-			<key>authors</key>
-			<dict>
-				<key>Google, Inc.</key>
-				<string></string>
-			</dict>
-			<key>description</key>
-			<string>&lt;p&gt;Firebase Mobile Crash Reporting provides analytics about the stability and number of bugs affecting your app, as well as diagnostic information for quickly fixing them.&lt;/p&gt;
-</string>
-			<key>homepage</key>
-			<string>https://firebase.google.com/docs/crash/</string>
-			<key>licenseText</key>
+			<key>FooterText</key>
 			<string>Copyright 2017 Google</string>
-			<key>licenseType</key>
-			<string>Copyright</string>
-			<key>name</key>
+			<key>Title</key>
 			<string>FirebaseCrash</string>
-			<key>socialMediaURL</key>
-			<string></string>
-			<key>summary</key>
-			<string>Firebase Mobile Crash Reporting for iOS</string>
-			<key>version</key>
-			<string>2.0.1</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
 		</dict>
 		<dict>
-			<key>authors</key>
-			<dict>
-				<key>Google, Inc.</key>
-				<string></string>
-			</dict>
-			<key>description</key>
-			<string>&lt;p&gt;Instance ID provides a unique ID per instance of your iOS apps. In addition to providing unique IDs for authentication, Instance ID can generate security tokens for use with other services.&lt;/p&gt;
-</string>
-			<key>homepage</key>
-			<string>https://firebase.google.com/docs/reference/ios/firebaseinstanceid/api/reference/Classes</string>
-			<key>licenseText</key>
+			<key>FooterText</key>
 			<string>Copyright 2017 Google</string>
-			<key>licenseType</key>
-			<string>Copyright</string>
-			<key>name</key>
+			<key>Title</key>
 			<string>FirebaseInstanceID</string>
-			<key>socialMediaURL</key>
-			<string></string>
-			<key>summary</key>
-			<string>Firebase Instance ID for iOS.</string>
-			<key>version</key>
-			<string>2.0.2</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
 		</dict>
 		<dict>
-			<key>authors</key>
-			<dict>
-				<key>Google, Inc.</key>
-				<string></string>
-			</dict>
-			<key>description</key>
-			<string>&lt;p&gt;Firebase Messaging for iOS is a service that allows you to send data from your server to your users&amp;#39; iOS device, and also to receive messages from devices on the same connection. The service handles all aspects of queueing of messages and delivery to the target iOS application running on the target device, and it is completely free.&lt;/p&gt;
-</string>
-			<key>homepage</key>
-			<string>https://firebase.google.com/docs/cloud-messaging/</string>
-			<key>licenseText</key>
+			<key>FooterText</key>
 			<string>Copyright 2017 Google</string>
-			<key>licenseType</key>
-			<string>Copyright</string>
-			<key>name</key>
+			<key>Title</key>
 			<string>FirebaseMessaging</string>
-			<key>socialMediaURL</key>
-			<string></string>
-			<key>summary</key>
-			<string>Firebase Messaging for iOS</string>
-			<key>version</key>
-			<string>2.0.2</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
 		</dict>
 		<dict>
-			<key>authors</key>
-			<dict>
-				<key>Google, Inc.</key>
-				<string></string>
-			</dict>
-			<key>description</key>
-			<string>&lt;p&gt;Firebase Performance provides insights into the performance characteristics of apps&lt;/p&gt;
-</string>
-			<key>homepage</key>
-			<string>https://firebase.google.com/docs/perf-mon/</string>
-			<key>licenseText</key>
+			<key>FooterText</key>
 			<string>Copyright 2017 Google</string>
-			<key>licenseType</key>
-			<string>Copyright</string>
-			<key>name</key>
+			<key>Title</key>
 			<string>FirebasePerformance</string>
-			<key>socialMediaURL</key>
-			<string></string>
-			<key>summary</key>
-			<string>Firebase Performance for iOS</string>
-			<key>version</key>
-			<string>1.0.4</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
 		</dict>
 		<dict>
-			<key>authors</key>
-			<dict>
-				<key>Google Inc.</key>
-				<string></string>
-			</dict>
-			<key>description</key>
-			<string>&lt;p&gt;GTMSessionFetcher makes it easy for Cocoa applications
-to perform http operations. The fetcher is implemented
-as a wrapper on NSURLSession, so its behavior is asynchronous
-and uses operating-system settings on iOS and Mac OS X.&lt;/p&gt;
-</string>
-			<key>homepage</key>
-			<string>https://github.com/google/gtm-session-fetcher</string>
-			<key>licenseText</key>
+			<key>FooterText</key>
 			<string>
                                  Apache License
                            Version 2.0, January 2004
@@ -674,30 +498,13 @@ and uses operating-system settings on iOS and Mac OS X.&lt;/p&gt;
    See the License for the specific language governing permissions and
    limitations under the License.
 </string>
-			<key>licenseType</key>
-			<string>Apache</string>
-			<key>name</key>
+			<key>Title</key>
 			<string>GTMSessionFetcher</string>
-			<key>socialMediaURL</key>
-			<string></string>
-			<key>summary</key>
-			<string>Google Toolbox for Mac - Session Fetcher</string>
-			<key>version</key>
-			<string>1.2.1</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
 		</dict>
 		<dict>
-			<key>authors</key>
-			<dict>
-				<key>Google Inc.</key>
-				<string></string>
-			</dict>
-			<key>description</key>
-			<string>&lt;p&gt;A collection of source from different Google projects that may be of use
-to developers working on iOS or OS X projects.&lt;/p&gt;
-</string>
-			<key>homepage</key>
-			<string>https://github.com/google/google-toolbox-for-mac</string>
-			<key>licenseText</key>
+			<key>FooterText</key>
 			<string>
                                  Apache License
                            Version 2.0, January 2004
@@ -901,28 +708,13 @@ to developers working on iOS or OS X projects.&lt;/p&gt;
    See the License for the specific language governing permissions and
    limitations under the License.
 </string>
-			<key>licenseType</key>
-			<string>Apache</string>
-			<key>name</key>
+			<key>Title</key>
 			<string>GoogleToolboxForMac</string>
-			<key>socialMediaURL</key>
-			<string></string>
-			<key>summary</key>
-			<string>Google utilities for iOS and OSX development.</string>
-			<key>version</key>
-			<string>2.1.1</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
 		</dict>
 		<dict>
-			<key>authors</key>
-			<dict>
-				<key>The Protocol Buffers contributors</key>
-				<string>protobuf@googlegroups.com</string>
-			</dict>
-			<key>description</key>
-			<string></string>
-			<key>homepage</key>
-			<string>https://github.com/google/protobuf</string>
-			<key>licenseText</key>
+			<key>FooterText</key>
 			<string>This license applies to all parts of Protocol Buffers except the following:
 
   - Atomicops support for generic gcc, located in
@@ -966,33 +758,13 @@ of the input file used when generating it.  This code is not
 standalone and requires a support library to be linked with it.  This
 support library is itself covered by the above license.
 </string>
-			<key>licenseType</key>
-			<string>3-Clause BSD License</string>
-			<key>name</key>
+			<key>Title</key>
 			<string>Protobuf</string>
-			<key>socialMediaURL</key>
-			<string></string>
-			<key>summary</key>
-			<string>Protocol Buffers v.3 runtime library for Objective-C.</string>
-			<key>version</key>
-			<string>3.4.0</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
 		</dict>
 		<dict>
-			<key>authors</key>
-			<dict>
-				<key>Petteri Aimonen</key>
-				<string>jpa@nanopb.mail.kapsi.fi</string>
-			</dict>
-			<key>description</key>
-			<string>&lt;p&gt;Nanopb is a plain-C implementation of Google&amp;#39;s
-&lt;a href="https://developers.google.com/protocol-buffers/"&gt;Protocol Buffers&lt;/a&gt; data format. It is targeted at
-32 bit microcontrollers, but is also fit for
-other embedded systems with tight (2-10 kB ROM,
-&amp;lt;1 kB RAM) memory constraints.&lt;/p&gt;
-</string>
-			<key>homepage</key>
-			<string>https://github.com/nanopb/nanopb</string>
-			<key>licenseText</key>
+			<key>FooterText</key>
 			<string>Copyright (c) 2011 Petteri Aimonen &lt;jpa at nanopb.mail.kapsi.fi&gt;
 
 This software is provided 'as-is', without any express or 
@@ -1014,123 +786,13 @@ redistribute it freely, subject to the following restrictions:
 3. This notice may not be removed or altered from any source 
    distribution.
 </string>
-			<key>licenseType</key>
-			<string>zlib</string>
-			<key>name</key>
+			<key>Title</key>
 			<string>nanopb</string>
-			<key>socialMediaURL</key>
-			<string></string>
-			<key>summary</key>
-			<string>Protocol buffers with small code size.</string>
-			<key>version</key>
-			<string>0.3.8</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
 		</dict>
 		<dict>
-			<key>authors</key>
-			<dict>
-				<key>matthewpalmer</key>
-				<string>matt@matthewpalmer.net</string>
-			</dict>
-			<key>description</key>
-			<string>&lt;p&gt;Locksmith is a powerful, protocol-oriented library for working with the iOS, Mac OS X, watchOS, and tvOS keychain in Swift. It provides extensive support for a lot of different keychain requests, and extensively uses Swift-native concepts.&lt;/p&gt;
-</string>
-			<key>homepage</key>
-			<string>https://github.com/matthewpalmer/Locksmith</string>
-			<key>licenseText</key>
-			<string>Copyright (c) 2015 matthewpalmer &lt;matt@matthewpalmer.net&gt;
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-</string>
-			<key>licenseType</key>
-			<string>MIT</string>
-			<key>name</key>
-			<string>Locksmith</string>
-			<key>socialMediaURL</key>
-			<string>https://twitter.com/_matthewpalmer</string>
-			<key>summary</key>
-			<string>Locksmith is a powerful, protocol-oriented library for working with the keychain in Swift.</string>
-			<key>version</key>
-			<string>3.0.0</string>
-		</dict>
-		<dict>
-			<key>authors</key>
-			<dict>
-				<key>Ashley Mills</key>
-				<string>ashleymills@mac.com</string>
-			</dict>
-			<key>description</key>
-			<string></string>
-			<key>homepage</key>
-			<string>https://github.com/ashleymills/Reachability.swift</string>
-			<key>licenseText</key>
-			<string>Copyright (c) 2016 Ashley Mills
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-</string>
-			<key>licenseType</key>
-			<string>MIT</string>
-			<key>name</key>
-			<string>ReachabilitySwift</string>
-			<key>socialMediaURL</key>
-			<string></string>
-			<key>summary</key>
-			<string>Replacement for Apple's Reachability re-written in Swift with callbacks.</string>
-			<key>version</key>
-			<string>4.1.0</string>
-		</dict>
-		<dict>
-			<key>authors</key>
-			<dict>
-				<key>Dave Verwer</key>
-				<string>dave.verwer@shinydevelopment.com</string>
-				<key>Greg Spiers</key>
-				<string>greg.spiers@shinydevelopment.com</string>
-			</dict>
-			<key>description</key>
-			<string>&lt;p&gt;Modify the iOS Simulator so that it has a perfect status bar, then run your app and take perfect screenshots every time. The modifications made are designed to match the images you see on the Apple site and are as follows:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;9:41 AM is displayed for the time.&lt;/li&gt;
-&lt;li&gt;The battery is full and shows 100%.&lt;/li&gt;
-&lt;li&gt;On iPhone: The carrier text is removed, 5 bars of cellular signal and full WiFi bars are displayed.&lt;/li&gt;
-&lt;li&gt;On iPad: The carrier text is set to &amp;quot;iPad&amp;quot; and full WiFi bars are displayed.&lt;/li&gt;
-&lt;/ul&gt;
-</string>
-			<key>homepage</key>
-			<string>https://github.com/shinydevelopment/SimulatorStatusMagic</string>
-			<key>licenseText</key>
+			<key>FooterText</key>
 			<string>The MIT License (MIT)
 
 Copyright (c) 2014 Shiny Development
@@ -1154,17 +816,23 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 </string>
-			<key>licenseType</key>
-			<string>MIT</string>
-			<key>name</key>
+			<key>Title</key>
 			<string>SimulatorStatusMagic</string>
-			<key>socialMediaURL</key>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>FooterText</key>
+			<string>Generated by CocoaPods - http://cocoapods.org</string>
+			<key>Title</key>
 			<string></string>
-			<key>summary</key>
-			<string>Enable perfect status bars in the iOS Simulator.</string>
-			<key>version</key>
-			<string>2.0</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
 		</dict>
 	</array>
+	<key>StringsTable</key>
+	<string>Acknowledgements</string>
+	<key>Title</key>
+	<string>Acknowledgements</string>
 </dict>
 </plist>

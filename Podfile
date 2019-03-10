@@ -28,17 +28,24 @@ target :Eurofurence do
 		pod 'Firebase/Core'
 		pod 'Firebase/Crash'
 	end
+  
+  target :EurofurenceUITests do
+    inherit! :search_paths
     
-    target :EurofurenceUITests do
-        inherit! :search_paths
-        
-        pod 'Firebase/Core'
-        pod 'Firebase/Crash'
-    end
+    pod 'Firebase/Core'
+    pod 'Firebase/Crash'
+  end
+  
+  target :ScreenshotGenerator do
+    inherit! :search_paths
     
-    target :ScreenshotGenerator do
-        inherit! :search_paths
-    end
+    pod 'Down'
+    pod 'Firebase/Core'
+    pod 'Firebase/Crash'
+    pod 'Firebase/Messaging'
+    pod 'Firebase/Performance'
+    pod 'SimulatorStatusMagic'
+  end
 	
 end
 
