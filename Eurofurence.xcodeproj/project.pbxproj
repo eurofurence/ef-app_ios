@@ -3499,10 +3499,9 @@
 			isa = PBXGroup;
 			children = (
 				CA0B1EDC217F40EC00A6A949 /* Info.plist */,
-				CA7D8B2E222EC835003431A0 /* CoreDataStoreShould.swift */,
-				CA7D8B32222F1A04003431A0 /* DataStoreContract.swift */,
-				CAD7805C1F1E8EB0002A8333 /* KeychainCredentialStoreTests.swift */,
-				CA680F8420CDAE2F006ACD3D /* PersistentImageRepositoryTests.swift */,
+				CA6D7CC72236975900AB816C /* Data Store */,
+				CA6D7CC92236976800AB816C /* Image Repository */,
+				CA6D7CC82236976200AB816C /* Keychain */,
 				CAEA108F216E822100B0C7A6 /* Network */,
 			);
 			path = EurofurenceModelAdapterTests;
@@ -5025,6 +5024,31 @@
 				CA6AA0131FD74F910092C6DB /* ViewControllerDissolveTransitioning.swift */,
 			);
 			path = Dissolve;
+			sourceTree = "<group>";
+		};
+		CA6D7CC72236975900AB816C /* Data Store */ = {
+			isa = PBXGroup;
+			children = (
+				CA7D8B2E222EC835003431A0 /* CoreDataStoreShould.swift */,
+				CA7D8B32222F1A04003431A0 /* DataStoreContract.swift */,
+			);
+			path = "Data Store";
+			sourceTree = "<group>";
+		};
+		CA6D7CC82236976200AB816C /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				CAD7805C1F1E8EB0002A8333 /* KeychainCredentialStoreTests.swift */,
+			);
+			path = Keychain;
+			sourceTree = "<group>";
+		};
+		CA6D7CC92236976800AB816C /* Image Repository */ = {
+			isa = PBXGroup;
+			children = (
+				CA680F8420CDAE2F006ACD3D /* PersistentImageRepositoryTests.swift */,
+			);
+			path = "Image Repository";
 			sourceTree = "<group>";
 		};
 		CA6EC46E2051655600402894 /* Knowledge Detail */ = {
