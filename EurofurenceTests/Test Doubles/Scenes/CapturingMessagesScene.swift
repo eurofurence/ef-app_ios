@@ -104,14 +104,13 @@ class CapturingMessageItemScene: MessageItemScene {
         capturedReceivedDateTime = dateTime
     }
 
-    private(set) var didShowUnreadIndicator = false
+    private(set) var unreadIndicatorVisibility: VisibilityState = .unset
     func showUnreadIndicator() {
-        didShowUnreadIndicator = true
+        unreadIndicatorVisibility = .visible
     }
 
-    private(set) var didHideUnreadIndicator = false
     func hideUnreadIndicator() {
-        didHideUnreadIndicator = true
+        unreadIndicatorVisibility = .hidden
     }
 
 }

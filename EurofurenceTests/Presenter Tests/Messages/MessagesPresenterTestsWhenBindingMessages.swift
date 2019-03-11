@@ -69,15 +69,7 @@ class MessagesPresenterTestsWhenBindingMessages: XCTestCase {
             message.isRead = false
         }
 
-        XCTAssertTrue(capturingMessageScene.didShowUnreadIndicator)
-    }
-
-    func testTheSceneIsNotToldToShowUnreadIndicatorForReadMessage() {
-        prepareTestCase { (message) in
-            message.isRead = true
-        }
-
-        XCTAssertFalse(capturingMessageScene.didShowUnreadIndicator)
+        XCTAssertEqual(capturingMessageScene.unreadIndicatorVisibility, .visible)
     }
 
     func testTheSceneIsToldToHideUnreadIndicatorForReadMessage() {
@@ -85,15 +77,7 @@ class MessagesPresenterTestsWhenBindingMessages: XCTestCase {
             message.isRead = true
         }
 
-        XCTAssertTrue(capturingMessageScene.didHideUnreadIndicator)
-    }
-
-    func testTheSceneIsNotToldToHideUnreadIndicatorForUnreadMessage() {
-        prepareTestCase { (message) in
-            message.isRead = false
-        }
-
-        XCTAssertFalse(capturingMessageScene.didHideUnreadIndicator)
+        XCTAssertEqual(capturingMessageScene.unreadIndicatorVisibility, .hidden)
     }
 
 }
