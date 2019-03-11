@@ -20,18 +20,12 @@ class MessagesPresenterTestsWhenBindingMessages: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        prepareTestCase()
-    }
-
-    private func prepareTestCase(messageMutations mutations: ((inout StubMessage) -> Void)? = nil) {
+        
         allMessages = .random
         let randomIndex = Int.random(upperLimit: UInt32(allMessages.count))
         let randomIndexPath = IndexPath(row: randomIndex, section: 0)
-        var randomMessage = allMessages[randomIndex]
-        mutations?(&randomMessage)
-        allMessages[randomIndex] = randomMessage
-        self.message = randomMessage
-
+        self.message = allMessages[randomIndex]
+        
         let service = CapturingPrivateMessagesService(localMessages: allMessages)
         context = MessagesPresenterTestContext.makeTestCaseForAuthenticatedUser(privateMessagesService: service)
         context.scene.delegate?.messagesSceneWillAppear()
@@ -40,30 +34,16 @@ class MessagesPresenterTestsWhenBindingMessages: XCTestCase {
         context.scene.capturedMessageItemBinder?.bind(capturingMessageScene, toMessageAt: randomIndexPath)
     }
 
-    func testTheSceneIsProvidedWithTheMessageCount() {
+    func testBindTheNumberOfMessagesToTheScene() {
         XCTAssertEqual(allMessages.count, context.scene.boundMessageCount)
     }
-
-    func testTheSceneIsProvidedWithTheAuthor() {
+    
+    func testBindTheMessageAttributesToTheComponent() {
         XCTAssertEqual(message.authorName, capturingMessageScene.capturedAuthor)
-    }
-
-    func testTheSceneIsProvidedWithTheSubject() {
         XCTAssertEqual(message.subject, capturingMessageScene.capturedSubject)
-    }
-
-    func testTheSceneIsProvidedWithTheContents() {
         XCTAssertEqual(message.contents, capturingMessageScene.capturedContents)
-    }
-
-    func testTheReceivedDateIsProvidedToTheDateFormatter() {
         XCTAssertEqual(message.receivedDateTime, context.dateFormatter.capturedDate)
-    }
-
-    func testTheProducedStringFromTheDateFormatterIsProvidedToTheScene() {
         XCTAssertEqual(context.dateFormatter.stubString, capturingMessageScene.capturedReceivedDateTime)
     }
-
-    
 
 }
