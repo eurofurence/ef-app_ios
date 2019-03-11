@@ -644,6 +644,7 @@
 		CA6AA0181FD8834D0092C6DB /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA6AA0171FD8834D0092C6DB /* News.storyboard */; };
 		CA6AA01C1FD88D930092C6DB /* UIStoryboard+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6AA01B1FD88D930092C6DB /* UIStoryboard+Convenience.swift */; };
 		CA6AA01E1FD88F6B0092C6DB /* Messages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA6AA01D1FD88F6B0092C6DB /* Messages.storyboard */; };
+		CA6D7CC222368DA400AB816C /* VisibilityState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6D7CC122368DA300AB816C /* VisibilityState.swift */; };
 		CA6EC4712051656C00402894 /* KnowledgeDetailModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EC4702051656C00402894 /* KnowledgeDetailModuleProviding.swift */; };
 		CA6EC4732051662B00402894 /* KnowledgeDetailModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EC4722051662B00402894 /* KnowledgeDetailModule.swift */; };
 		CA6EC4752051664D00402894 /* KnowledgeDetailModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EC4742051664D00402894 /* KnowledgeDetailModuleBuilder.swift */; };
@@ -2283,6 +2284,7 @@
 		CA6AA0171FD8834D0092C6DB /* News.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = News.storyboard; sourceTree = "<group>"; };
 		CA6AA01B1FD88D930092C6DB /* UIStoryboard+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Convenience.swift"; sourceTree = "<group>"; };
 		CA6AA01D1FD88F6B0092C6DB /* Messages.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Messages.storyboard; sourceTree = "<group>"; };
+		CA6D7CC122368DA300AB816C /* VisibilityState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisibilityState.swift; sourceTree = "<group>"; };
 		CA6EC4702051656C00402894 /* KnowledgeDetailModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailModuleProviding.swift; sourceTree = "<group>"; };
 		CA6EC4722051662B00402894 /* KnowledgeDetailModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailModule.swift; sourceTree = "<group>"; };
 		CA6EC4742051664D00402894 /* KnowledgeDetailModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailModuleBuilder.swift; sourceTree = "<group>"; };
@@ -3180,6 +3182,7 @@
 			isa = PBXGroup;
 			children = (
 				CA8E7EF31FB08D3B00F0BF10 /* AppWindowWireframeTests.swift */,
+				CA6D7CC122368DA300AB816C /* VisibilityState.swift */,
 				CA72844A209D0338007D912A /* Announcement Detail */,
 				CA283A9B20EA9F9400F7D195 /* Announcements */,
 				CA27619D20E01F82000E52AC /* Collect-them-All */,
@@ -7931,6 +7934,7 @@
 				CA0F7629203230E1009DA079 /* CapturingKnowledgeGroupEntryScene.swift in Sources */,
 				CA131BD120C1851A00DB1036 /* WhenPreparingViewModel_ForEventThatIsFavourite_EventDetailInteractorShould.swift in Sources */,
 				CA36A46720D84A9B00EE6537 /* CapturingDealersViewModel+RandomValueProviding.swift in Sources */,
+				CA6D7CC222368DA400AB816C /* VisibilityState.swift in Sources */,
 				CA250DDE20D6EA0500E7513C /* CapturingScheduleSearchViewModelDelegate.swift in Sources */,
 				CA65A87D209B2F6A00B72533 /* WhenLoggedOutBeforeConvention_ThenLogIn_NewsInteractorShould.swift in Sources */,
 				CACF1E5D20AE2EE100D904B5 /* EventDetailPresenterTestBuilder.swift in Sources */,

@@ -12,12 +12,6 @@ import Foundation
 
 class CapturingScheduleEventComponent: ScheduleEventComponent {
     
-    enum IconVisibility {
-        case visible
-        case hidden
-        case unset
-    }
-
     private(set) var capturedEventTitle: String?
     func setEventName(_ title: String) {
         capturedEventTitle = title
@@ -53,7 +47,7 @@ class CapturingScheduleEventComponent: ScheduleEventComponent {
         didHideBanner = true
     }
 
-    private(set) var favouriteIconVisibility: IconVisibility = .unset
+    private(set) var favouriteIconVisibility: VisibilityState = .unset
     func showFavouriteEventIndicator() {
         favouriteIconVisibility = .visible
     }
@@ -62,7 +56,7 @@ class CapturingScheduleEventComponent: ScheduleEventComponent {
         favouriteIconVisibility = .hidden
     }
 
-    private(set) var sponsorIconVisibility: IconVisibility = .unset
+    private(set) var sponsorIconVisibility: VisibilityState = .unset
     func showSponsorEventIndicator() {
         sponsorIconVisibility = .visible
     }
@@ -71,7 +65,7 @@ class CapturingScheduleEventComponent: ScheduleEventComponent {
         sponsorIconVisibility = .hidden
     }
 
-    private(set) var superSponsorIconVisibility: IconVisibility = .unset
+    private(set) var superSponsorIconVisibility: VisibilityState = .unset
     func showSuperSponsorOnlyEventIndicator() {
         superSponsorIconVisibility = .visible
     }
@@ -80,7 +74,7 @@ class CapturingScheduleEventComponent: ScheduleEventComponent {
         superSponsorIconVisibility = .hidden
     }
 
-    private(set) var artShowIconVisibility: IconVisibility = .unset
+    private(set) var artShowIconVisibility: VisibilityState = .unset
     func showArtShowEventIndicator() {
         artShowIconVisibility = .visible
     }
@@ -89,7 +83,7 @@ class CapturingScheduleEventComponent: ScheduleEventComponent {
         artShowIconVisibility = .hidden
     }
 
-    private(set) var kageIconVisibility: IconVisibility = .unset
+    private(set) var kageIconVisibility: VisibilityState = .unset
     func showKageEventIndicator() {
         kageIconVisibility = .visible
     }
@@ -98,7 +92,7 @@ class CapturingScheduleEventComponent: ScheduleEventComponent {
         kageIconVisibility = .hidden
     }
 
-    private(set) var dealersDenIconVisibility: IconVisibility = .unset
+    private(set) var dealersDenIconVisibility: VisibilityState = .unset
     func showDealersDenEventIndicator() {
         dealersDenIconVisibility = .visible
     }
@@ -107,7 +101,7 @@ class CapturingScheduleEventComponent: ScheduleEventComponent {
         dealersDenIconVisibility = .hidden
     }
 
-    private(set) var mainStageIconVisibility: IconVisibility = .unset
+    private(set) var mainStageIconVisibility: VisibilityState = .unset
     func showMainStageEventIndicator() {
         mainStageIconVisibility = .visible
     }
@@ -116,7 +110,7 @@ class CapturingScheduleEventComponent: ScheduleEventComponent {
         mainStageIconVisibility = .hidden
     }
 
-    private(set) var photoshootIconVisibility: IconVisibility = .unset
+    private(set) var photoshootIconVisibility: VisibilityState = .unset
     func showPhotoshootStageEventIndicator() {
         photoshootIconVisibility = .visible
     }
