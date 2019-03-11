@@ -64,20 +64,6 @@ class MessagesPresenterTestsWhenBindingMessages: XCTestCase {
         XCTAssertEqual(context.dateFormatter.stubString, capturingMessageScene.capturedReceivedDateTime)
     }
 
-    func testTheSceneIsToldToShowUnreadIndicatorForUnreadMessage() {
-        prepareTestCase { (message) in
-            message.isRead = false
-        }
-
-        XCTAssertEqual(capturingMessageScene.unreadIndicatorVisibility, .visible)
-    }
-
-    func testTheSceneIsToldToHideUnreadIndicatorForReadMessage() {
-        prepareTestCase { (message) in
-            message.isRead = true
-        }
-
-        XCTAssertEqual(capturingMessageScene.unreadIndicatorVisibility, .hidden)
-    }
+    
 
 }

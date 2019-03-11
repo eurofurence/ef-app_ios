@@ -486,7 +486,7 @@
 		CA4679AF221B542D006B3090 /* MessageCharacteristics.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4679AE221B542D006B3090 /* MessageCharacteristics.swift */; };
 		CA4C474A21DF88B9005231AD /* NotificationServiceFetchResultAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4C474921DF88B9005231AD /* NotificationServiceFetchResultAdapter.swift */; };
 		CA4C474D21DFFE4F005231AD /* PrivateMessagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4C474B21DFFE0E005231AD /* PrivateMessagesService.swift */; };
-		CA4FBE0E1F72FF2A00D29405 /* MessagesPresenterTestsWhenBindingMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FBE0D1F72FF2A00D29405 /* MessagesPresenterTestsWhenBindingMessages.swift */; };
+		CA4FBE0E1F72FF2A00D29405 /* WhenBindingMessage_MessagesPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FBE0D1F72FF2A00D29405 /* WhenBindingMessage_MessagesPresenterShould.swift */; };
 		CA4FBE101F73047700D29405 /* CapturingDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FBE0F1F73047700D29405 /* CapturingDateFormatter.swift */; };
 		CA4FBE121F7304B400D29405 /* DateFormatterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FBE111F7304B400D29405 /* DateFormatterProtocol.swift */; };
 		CA52C68120D597E1009D3A9E /* ApplicationSignificantTimeChangeAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C68020D597E1009D3A9E /* ApplicationSignificantTimeChangeAdapter.swift */; };
@@ -645,6 +645,8 @@
 		CA6AA01C1FD88D930092C6DB /* UIStoryboard+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6AA01B1FD88D930092C6DB /* UIStoryboard+Convenience.swift */; };
 		CA6AA01E1FD88F6B0092C6DB /* Messages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA6AA01D1FD88F6B0092C6DB /* Messages.storyboard */; };
 		CA6D7CC222368DA400AB816C /* VisibilityState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6D7CC122368DA300AB816C /* VisibilityState.swift */; };
+		CA6D7CC422368EC500AB816C /* WhenBindingUnreadMessage_MessagesPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6D7CC322368EC500AB816C /* WhenBindingUnreadMessage_MessagesPresenterShould.swift */; };
+		CA6D7CC622368F4F00AB816C /* WhenBindingReadMessage_MessagesPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6D7CC522368F4F00AB816C /* WhenBindingReadMessage_MessagesPresenterShould.swift */; };
 		CA6EC4712051656C00402894 /* KnowledgeDetailModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EC4702051656C00402894 /* KnowledgeDetailModuleProviding.swift */; };
 		CA6EC4732051662B00402894 /* KnowledgeDetailModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EC4722051662B00402894 /* KnowledgeDetailModule.swift */; };
 		CA6EC4752051664D00402894 /* KnowledgeDetailModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EC4742051664D00402894 /* KnowledgeDetailModuleBuilder.swift */; };
@@ -2084,7 +2086,7 @@
 		CA49E94C20154AF900EB571C /* EventConsumer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventConsumer.swift; sourceTree = "<group>"; };
 		CA4C474921DF88B9005231AD /* NotificationServiceFetchResultAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationServiceFetchResultAdapter.swift; sourceTree = "<group>"; };
 		CA4C474B21DFFE0E005231AD /* PrivateMessagesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateMessagesService.swift; sourceTree = "<group>"; };
-		CA4FBE0D1F72FF2A00D29405 /* MessagesPresenterTestsWhenBindingMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesPresenterTestsWhenBindingMessages.swift; sourceTree = "<group>"; };
+		CA4FBE0D1F72FF2A00D29405 /* WhenBindingMessage_MessagesPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingMessage_MessagesPresenterShould.swift; sourceTree = "<group>"; };
 		CA4FBE0F1F73047700D29405 /* CapturingDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingDateFormatter.swift; sourceTree = "<group>"; };
 		CA4FBE111F7304B400D29405 /* DateFormatterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterProtocol.swift; sourceTree = "<group>"; };
 		CA52C67420D58EC6009D3A9E /* WhenAppLaunchesWhenClockDoesNotReadConferenceDay_ScheduleShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenAppLaunchesWhenClockDoesNotReadConferenceDay_ScheduleShould.swift; sourceTree = "<group>"; };
@@ -2285,6 +2287,8 @@
 		CA6AA01B1FD88D930092C6DB /* UIStoryboard+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Convenience.swift"; sourceTree = "<group>"; };
 		CA6AA01D1FD88F6B0092C6DB /* Messages.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Messages.storyboard; sourceTree = "<group>"; };
 		CA6D7CC122368DA300AB816C /* VisibilityState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisibilityState.swift; sourceTree = "<group>"; };
+		CA6D7CC322368EC500AB816C /* WhenBindingUnreadMessage_MessagesPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingUnreadMessage_MessagesPresenterShould.swift; sourceTree = "<group>"; };
+		CA6D7CC522368F4F00AB816C /* WhenBindingReadMessage_MessagesPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingReadMessage_MessagesPresenterShould.swift; sourceTree = "<group>"; };
 		CA6EC4702051656C00402894 /* KnowledgeDetailModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailModuleProviding.swift; sourceTree = "<group>"; };
 		CA6EC4722051662B00402894 /* KnowledgeDetailModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailModule.swift; sourceTree = "<group>"; };
 		CA6EC4742051664D00402894 /* KnowledgeDetailModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailModuleBuilder.swift; sourceTree = "<group>"; };
@@ -6694,19 +6698,21 @@
 		CAF9A9561F56012100628833 /* Messages */ = {
 			isa = PBXGroup;
 			children = (
+				CA240F3E21E3A4DE002DB747 /* BeforeMessagesViewAppears_MessagesPresenterShould.swift */,
 				CAD234301F5D7156004BB959 /* MessagesPresenterTestContext.swift */,
-				CA4FBE0D1F72FF2A00D29405 /* MessagesPresenterTestsWhenBindingMessages.swift */,
 				CA957B591F705A6D004DFD5A /* MessagesViewControllerTests.swift */,
+				CA4FBE0D1F72FF2A00D29405 /* WhenBindingMessage_MessagesPresenterShould.swift */,
+				CA6D7CC522368F4F00AB816C /* WhenBindingReadMessage_MessagesPresenterShould.swift */,
+				CA6D7CC322368EC500AB816C /* WhenBindingUnreadMessage_MessagesPresenterShould.swift */,
 				CA1ECB441FE3A2880076083A /* WhenInitialMessageLoadCompletesWithMessages.swift */,
 				CA1ECB3E1FE333090076083A /* WhenInitialMessageLoadFails.swift */,
 				CA1ECB3C1FE331750076083A /* WhenInitialMessagesLoadCompletesWithNoMessages.swift */,
+				CAA6DD1020E1649600328C37 /* WhenMessagesSceneTapsLogoutButton_MessagesPresenterShould.swift */,
 				CA2547C01FEB1B2A0023F2CB /* WhenRefreshingMessages.swift */,
 				CA162EA920AA1E6A004AFED6 /* WhenViewingMessagesWhenLoggedIn_BeforeSceneAppears.swift */,
 				CAD2343F1F5D726C004BB959 /* WhenViewingMessagesWhileLoggedIn.swift */,
 				CAF9A9571F5601A700628833 /* WhenViewingMessagesWhileLoggedOut.swift */,
 				CA1ECB401FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift */,
-				CAA6DD1020E1649600328C37 /* WhenMessagesSceneTapsLogoutButton_MessagesPresenterShould.swift */,
-				CA240F3E21E3A4DE002DB747 /* BeforeMessagesViewAppears_MessagesPresenterShould.swift */,
 			);
 			path = Messages;
 			sourceTree = "<group>";
@@ -8027,6 +8033,7 @@
 				CA5BF9D51F7AF9160045DBC0 /* PreloadPresenterTests.swift in Sources */,
 				CA2761A920E021FB000E52AC /* CapturingCollectThemAllScene.swift in Sources */,
 				CA283AC020EAB5AE00F7D195 /* BeforeAnnouncementsDetailSceneLoads_AnnouncementsPresenterShould.swift in Sources */,
+				CA6D7CC422368EC500AB816C /* WhenBindingUnreadMessage_MessagesPresenterShould.swift in Sources */,
 				CA6A8DE420E41CC8007536CD /* WhenMapDetailSceneLoads_MapsPresenterShould.swift in Sources */,
 				CA283AE020EC032B00F7D195 /* WhenBindingNonFavouriteEvent_SchedulePresenterShould.swift in Sources */,
 				CA6A8D9620E2C61B007536CD /* CapturingMapComponent.swift in Sources */,
@@ -8155,7 +8162,7 @@
 				CA65A87B209A5BDA00B72533 /* DefaultNewsInteractorTestBuilder.swift in Sources */,
 				CACF26D320FE5D2C00EDE150 /* WhenToldToFilterToAllEvents_ScheduleInteractorShould.swift in Sources */,
 				CA401084210FAFB10056E16C /* BeforeKnowledgeGroupEntriesSceneLoads.swift in Sources */,
-				CA4FBE0E1F72FF2A00D29405 /* MessagesPresenterTestsWhenBindingMessages.swift in Sources */,
+				CA4FBE0E1F72FF2A00D29405 /* WhenBindingMessage_MessagesPresenterShould.swift in Sources */,
 				CACD2F0D21DF832000BACD91 /* NotificationServiceFetchResultAdapter.swift in Sources */,
 				CA36A46520D84A8100EE6537 /* FakeDealersInteractor.swift in Sources */,
 				CA283AD120EAC64A00F7D195 /* WhenAnnouncementsViewModelUpdatesAnnouncements_AnnouncementsPresenterShould.swift in Sources */,
@@ -8227,6 +8234,7 @@
 				CA283AE220EC05B700F7D195 /* WhenPreparingViewModelForFavouritedEvent_ScheduleInteractorShould.swift in Sources */,
 				CA72844D209D0358007D912A /* WhenBuildingAnnouncementDetailPresenter.swift in Sources */,
 				78455B4D1F1177CF005BE2D7 /* StubFirstTimeLaunchStateProvider.swift in Sources */,
+				CA6D7CC622368F4F00AB816C /* WhenBindingReadMessage_MessagesPresenterShould.swift in Sources */,
 				CA63755A208CBC2C00536BE2 /* StubKnowledgeDetailModuleProviding.swift in Sources */,
 				CA52C69120D6AB53009D3A9E /* CapturingScheduleModuleDelegate.swift in Sources */,
 				CA6A8DCE20E41735007536CD /* WhenBuildingMapDetailModule.swift in Sources */,
