@@ -52,7 +52,6 @@ end
 target :EurofurenceModel do
     
     pod 'SwiftLint'
-    pod 'ReachabilitySwift'
     
     target :EurofurenceModelTests do
         inherit! :search_paths

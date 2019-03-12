@@ -53,7 +53,6 @@ PODS:
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
   - Protobuf (3.4.0)
-  - ReachabilitySwift (4.1.0)
   - SimulatorStatusMagic (2.0)
   - SwiftLint (0.22.0)
 
@@ -63,7 +62,6 @@ DEPENDENCIES:
   - Firebase/Crash
   - Firebase/Messaging
   - Firebase/Performance
-  - ReachabilitySwift
   - SimulatorStatusMagic
   - SwiftLint
 
@@ -81,7 +79,6 @@ SPEC REPOS:
     - GTMSessionFetcher
     - nanopb
     - Protobuf
-    - ReachabilitySwift
     - SimulatorStatusMagic
     - SwiftLint
 
@@ -98,10 +95,9 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Protobuf: 03eef2ee0b674770735cf79d9c4d3659cf6908e8
-  ReachabilitySwift: 6849231cd4e06559f3b9ef4a97a0a0f96d41e09f
   SimulatorStatusMagic: c8e958d70e0e0cd2d7cf33bb95014a222ddecf0a
   SwiftLint: 1134786caedd2caab0560d2f36b76414a5a56808
 
-PODFILE CHECKSUM: d944cebf6a61cefcc94579855178fe8e4db96804
+PODFILE CHECKSUM: 885705066fd2f987c6e8fe83381ac1c3cdf6fa67
 
 COCOAPODS: 1.6.1
