@@ -47,7 +47,6 @@ PODS:
   - "GoogleToolboxForMac/NSData+zlib (2.1.1)":
     - GoogleToolboxForMac/Defines (= 2.1.1)
   - GTMSessionFetcher/Core (1.2.1)
-  - Locksmith (3.0.0)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
     - nanopb/encode (= 0.3.8)
@@ -64,7 +63,6 @@ DEPENDENCIES:
   - Firebase/Crash
   - Firebase/Messaging
   - Firebase/Performance
-  - Locksmith
   - ReachabilitySwift
   - SimulatorStatusMagic
   - SwiftLint
@@ -81,7 +79,6 @@ SPEC REPOS:
     - FirebasePerformance
     - GoogleToolboxForMac
     - GTMSessionFetcher
-    - Locksmith
     - nanopb
     - Protobuf
     - ReachabilitySwift
@@ -99,13 +96,12 @@ SPEC CHECKSUMS:
   FirebasePerformance: f1ba9ac64960f958434171877f06a0d7021b45a7
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
-  Locksmith: 310b4cc5031af5728bf4db5d4de547a5100c6a3b
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Protobuf: 03eef2ee0b674770735cf79d9c4d3659cf6908e8
   ReachabilitySwift: 6849231cd4e06559f3b9ef4a97a0a0f96d41e09f
   SimulatorStatusMagic: c8e958d70e0e0cd2d7cf33bb95014a222ddecf0a
   SwiftLint: 1134786caedd2caab0560d2f36b76414a5a56808
 
-PODFILE CHECKSUM: a7d37d4a8159abf288ca8e7377d1dc681023bb54
+PODFILE CHECKSUM: d944cebf6a61cefcc94579855178fe8e4db96804
 
 COCOAPODS: 1.6.1

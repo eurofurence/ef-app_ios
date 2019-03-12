@@ -53,7 +53,6 @@ target :EurofurenceModel do
     
     pod 'SwiftLint'
     pod 'ReachabilitySwift'
-    pod 'Locksmith'
     
     target :EurofurenceModelTests do
         inherit! :search_paths

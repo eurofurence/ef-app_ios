@@ -158,7 +158,6 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Locksmith/Locksmith.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework"
 fi
 if [[ "$CONFIGURATION" == "Screenshots" ]]; then
@@ -168,7 +167,6 @@ if [[ "$CONFIGURATION" == "Screenshots" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SimulatorStatusMagic/SimulatorStatusMagic.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Locksmith/Locksmith.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -177,7 +175,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Locksmith/Locksmith.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework"
 fi
 if [[ "$CONFIGURATION" == "Profiling" ]]; then
@@ -186,7 +183,6 @@ if [[ "$CONFIGURATION" == "Profiling" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Locksmith/Locksmith.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
