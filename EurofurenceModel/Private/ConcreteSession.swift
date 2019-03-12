@@ -34,7 +34,7 @@ class ConcreteSession: EurofurenceSession {
     // swiftlint:disable function_body_length
     init(api: API,
          userPreferences: UserPreferences,
-         dataStore: DataStore,
+         dataStoreFactory: DataStoreFactory,
          remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration?,
          pushPermissionsRequester: PushPermissionsRequester?,
          clock: Clock,
@@ -51,6 +51,8 @@ class ConcreteSession: EurofurenceSession {
          hoursDateFormatter: HoursDateFormatter,
          mapCoordinateRender: MapCoordinateRender?,
          forceRefreshRequired: ForceRefreshRequired) {
+        
+        let dataStore = dataStoreFactory.makeDataStore()
 
         pushPermissionsRequester?.requestPushPermissions()
 

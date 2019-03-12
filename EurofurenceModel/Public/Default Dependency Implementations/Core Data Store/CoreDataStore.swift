@@ -36,10 +36,6 @@ public struct CoreDataStore: DataStore {
         container.loadPersistentStores { (_, _) in }
     }
 
-    public init() {
-        self.init(storeName: "EF24")
-    }
-
     // MARK: DataStore
 
     public func performTransaction(_ block: @escaping (DataStoreTransaction) -> Void) {

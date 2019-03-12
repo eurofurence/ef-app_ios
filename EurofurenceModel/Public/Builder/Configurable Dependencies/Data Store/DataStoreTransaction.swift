@@ -1,35 +1,15 @@
 //
-//  DataStore.swift
-//  Eurofurence
+//  DataStoreTransaction.swift
+//  EurofurenceModel
 //
-//  Created by Thomas Sherwood on 19/12/2017.
-//  Copyright © 2017 Eurofurence. All rights reserved.
+//  Created by Thomas Sherwood on 12/03/2019.
+//  Copyright © 2019 Eurofurence. All rights reserved.
 //
 
 import Foundation
 
-public protocol DataStore {
-
-    func performTransaction(_ block: @escaping (DataStoreTransaction) -> Void)
-
-    func fetchLastRefreshDate() -> Date?
-    func fetchKnowledgeGroups() -> [KnowledgeGroupCharacteristics]?
-    func fetchKnowledgeEntries() -> [KnowledgeEntryCharacteristics]?
-    func fetchRooms() -> [RoomCharacteristics]?
-    func fetchTracks() -> [TrackCharacteristics]?
-    func fetchEvents() -> [EventCharacteristics]?
-    func fetchAnnouncements() -> [AnnouncementCharacteristics]?
-    func fetchConferenceDays() -> [ConferenceDayCharacteristics]?
-    func fetchFavouriteEventIdentifiers() -> [EventIdentifier]?
-    func fetchDealers() -> [DealerCharacteristics]?
-    func fetchMaps() -> [MapCharacteristics]?
-    func fetchReadAnnouncementIdentifiers() -> [AnnouncementIdentifier]?
-    func fetchImages() -> [ImageCharacteristics]?
-
-}
-
 public protocol DataStoreTransaction {
-
+    
     func saveLastRefreshDate(_ lastRefreshDate: Date)
     func saveKnowledgeGroups(_ knowledgeGroups: [KnowledgeGroupCharacteristics])
     func saveKnowledgeEntries(_ knowledgeEntries: [KnowledgeEntryCharacteristics])
@@ -43,7 +23,7 @@ public protocol DataStoreTransaction {
     func saveMaps(_ maps: [MapCharacteristics])
     func saveReadAnnouncements(_ announcements: [AnnouncementIdentifier])
     func saveImages(_ images: [ImageCharacteristics])
-
+    
     func deleteFavouriteEventIdentifier(_ identifier: EventIdentifier)
     func deleteKnowledgeGroup(identifier: String)
     func deleteKnowledgeEntry(identifier: String)
@@ -55,5 +35,5 @@ public protocol DataStoreTransaction {
     func deleteDealer(identifier: String)
     func deleteMap(identifier: String)
     func deleteImage(identifier: String)
-
+    
 }

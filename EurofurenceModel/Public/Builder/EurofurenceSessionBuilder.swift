@@ -11,7 +11,7 @@ import Foundation
 public class EurofurenceSessionBuilder {
 
     private var userPreferences: UserPreferences
-    private var dataStore: DataStore
+    private var dataStoreFactory: DataStoreFactory
     private var remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration?
     private var pushPermissionsRequester: PushPermissionsRequester?
     private var clock: Clock
@@ -32,7 +32,7 @@ public class EurofurenceSessionBuilder {
 
     public init() {
         userPreferences = UserDefaultsPreferences()
-        dataStore = CoreDataStore()
+        dataStoreFactory = CoreDataStoreFactory()
 
         let jsonSession = URLSessionBasedJSONSession.shared
         let buildConfiguration = PreprocessorBuildConfigurationProviding()
@@ -58,8 +58,8 @@ public class EurofurenceSessionBuilder {
     }
 
     @discardableResult
-    public func with(_ dataStore: DataStore) -> EurofurenceSessionBuilder {
-        self.dataStore = dataStore
+    public func with(_ dataStoreFactory: DataStoreFactory) -> EurofurenceSessionBuilder {
+        self.dataStoreFactory = dataStoreFactory
         return self
     }
 
@@ -168,7 +168,7 @@ public class EurofurenceSessionBuilder {
     public func build() -> EurofurenceSession {
         return ConcreteSession(api: api,
                                userPreferences: userPreferences,
-                               dataStore: dataStore,
+                               dataStoreFactory: dataStoreFactory,
                                remoteNotificationsTokenRegistration: remoteNotificationsTokenRegistration,
                                pushPermissionsRequester: pushPermissionsRequester,
                                clock: clock,

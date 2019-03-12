@@ -704,6 +704,9 @@
 		CA73AEF8201A0908004E77BF /* WhenBuildingKnowledgePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA73AEF7201A0908004E77BF /* WhenBuildingKnowledgePresenter.swift */; };
 		CA7BA2372237FCFB00D34592 /* SystemNetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF96CF01F1495F400EE6134 /* SystemNetworkReachability.swift */; };
 		CA7BA2382237FCFB00D34592 /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A861EBB1F25551400B75A8C /* NetworkReachability.swift */; };
+		CA7BA23B2238028900D34592 /* DataStoreTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7BA23A2238028900D34592 /* DataStoreTransaction.swift */; };
+		CA7BA23D2238029B00D34592 /* DataStoreFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7BA23C2238029B00D34592 /* DataStoreFactory.swift */; };
+		CA7BA23F2238036C00D34592 /* CoreDataStoreFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7BA23E2238036C00D34592 /* CoreDataStoreFactory.swift */; };
 		CA7D8B16222D4DA0003431A0 /* CapturingRefreshService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D8B15222D4DA0003431A0 /* CapturingRefreshService.swift */; };
 		CA7D8B18222D4E63003431A0 /* FakeAnnouncementDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D8B17222D4E63003431A0 /* FakeAnnouncementDateFormatter.swift */; };
 		CA7D8B1A222DB134003431A0 /* NewsViewModelValue+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D8B19222DB134003431A0 /* NewsViewModelValue+Equatable.swift */; };
@@ -2360,6 +2363,9 @@
 		CA73AEF2201A08C4004E77BF /* KnowledgeListModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListModule.swift; sourceTree = "<group>"; };
 		CA73AEF4201A08D1004E77BF /* KnowledgeGroupsListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeGroupsListPresenter.swift; sourceTree = "<group>"; };
 		CA73AEF7201A0908004E77BF /* WhenBuildingKnowledgePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBuildingKnowledgePresenter.swift; sourceTree = "<group>"; };
+		CA7BA23A2238028900D34592 /* DataStoreTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStoreTransaction.swift; sourceTree = "<group>"; };
+		CA7BA23C2238029B00D34592 /* DataStoreFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStoreFactory.swift; sourceTree = "<group>"; };
+		CA7BA23E2238036C00D34592 /* CoreDataStoreFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStoreFactory.swift; sourceTree = "<group>"; };
 		CA7D8B15222D4DA0003431A0 /* CapturingRefreshService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingRefreshService.swift; sourceTree = "<group>"; };
 		CA7D8B17222D4E63003431A0 /* FakeAnnouncementDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeAnnouncementDateFormatter.swift; sourceTree = "<group>"; };
 		CA7D8B19222DB134003431A0 /* NewsViewModelValue+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewsViewModelValue+Equatable.swift"; sourceTree = "<group>"; };
@@ -5445,6 +5451,16 @@
 			path = "Presenter Tests";
 			sourceTree = "<group>";
 		};
+		CA7BA2392238027800D34592 /* Data Store */ = {
+			isa = PBXGroup;
+			children = (
+				CA2D07FA1FE902ED00BFD785 /* DataStore.swift */,
+				CA7BA23C2238029B00D34592 /* DataStoreFactory.swift */,
+				CA7BA23A2238028900D34592 /* DataStoreTransaction.swift */,
+			);
+			path = "Data Store";
+			sourceTree = "<group>";
+		};
 		CA804DCF1F20CE5F00E07A4A /* Server Client */ = {
 			isa = PBXGroup;
 			children = (
@@ -5707,6 +5723,7 @@
 		CAAF4C762164E33B0017946C /* Configurable Dependencies */ = {
 			isa = PBXGroup;
 			children = (
+				CA7BA2392238027800D34592 /* Data Store */,
 				CACD2E8721D6764000BACD91 /* NotificationService.swift */,
 				6EEC6DA41F1BFC7700205F2D /* AppVersionProviding.swift */,
 				78D7EEB71F196B30005372A9 /* BuildConfigurationProviding.swift */,
@@ -5715,7 +5732,6 @@
 				CA162E7220A4B6A5004AFED6 /* ConventionStartDateRepository.swift */,
 				CAD7804F1F1E2D13002A8333 /* CredentialStore.swift */,
 				CA162E6F20A4B691004AFED6 /* DateDistanceCalculator.swift */,
-				CA2D07FA1FE902ED00BFD785 /* DataStore.swift */,
 				CA44C3372119BFFE003C1C4E /* ForceRefreshRequired.swift */,
 				CA3990EC20ACD35C001E3F1A /* HoursDateFormatter.swift */,
 				CACF1ECC20B6D65400D904B5 /* ImageRepository.swift */,
@@ -5878,6 +5894,7 @@
 			isa = PBXGroup;
 			children = (
 				CABEB0DB20C9C7A3000BEE66 /* CoreDataStore.swift */,
+				CA7BA23E2238036C00D34592 /* CoreDataStoreFactory.swift */,
 				CA240F6321E79141002DB747 /* CoreDataStoreTransaction.swift */,
 				CA240F6521E8A937002DB747 /* NSManagedObjectContext+Convenience.swift */,
 				CABEB0DD20C9C7ED000BEE66 /* EurofurenceApplicationModel.xcdatamodeld */,
@@ -8522,6 +8539,7 @@
 				CAEA0DA1216BDE2300B0C7A6 /* ConventionStartDateRepository.swift in Sources */,
 				CAEA0DBF216BDE2300B0C7A6 /* User.swift in Sources */,
 				CA4679A422176AAF006B3090 /* EventImpl.swift in Sources */,
+				CA7BA23F2238036C00D34592 /* CoreDataStoreFactory.swift in Sources */,
 				CACD2EB121D67EF200BACD91 /* BundleAppVersionProviding.swift in Sources */,
 				CAEA0DB6216BDE2300B0C7A6 /* ExtendedDealerData.swift in Sources */,
 				CACD2F0721DEB9DE00BACD91 /* SessionStateService.swift in Sources */,
@@ -8531,6 +8549,7 @@
 				CAEA0DDF216BDE2300B0C7A6 /* MapEntity+Adaptation.swift in Sources */,
 				CAEA0DEF216BDE2300B0C7A6 /* Iso8601DateFormatter.swift in Sources */,
 				CAEA0DFA216BDE3100B0C7A6 /* MapCharacteristics.swift in Sources */,
+				CA7BA23B2238028900D34592 /* DataStoreTransaction.swift in Sources */,
 				CAEA0DBC216BDE2300B0C7A6 /* Message.swift in Sources */,
 				CAEA0D96216BDD9500B0C7A6 /* ImagesCache.swift in Sources */,
 				CAEA0DAC216BDE2300B0C7A6 /* RemoteNotificationsTokenRegistration.swift in Sources */,
@@ -8560,6 +8579,7 @@
 				CAEA0DEC216BDE2300B0C7A6 /* ImageEntity.swift in Sources */,
 				CAEA0DF7216BDE3100B0C7A6 /* KnowledgeEntryCharacteristics.swift in Sources */,
 				CAEA0DB3216BDE2300B0C7A6 /* Day.swift in Sources */,
+				CA7BA23D2238029B00D34592 /* DataStoreFactory.swift in Sources */,
 				CAEA0D99216BDD9500B0C7A6 /* ConcreteCollectThemAllService.swift in Sources */,
 				CA4679A6221770A9006B3090 /* MapImpl.swift in Sources */,
 				CAEA0DA8216BDE2300B0C7A6 /* LongRunningTaskManager.swift in Sources */,
