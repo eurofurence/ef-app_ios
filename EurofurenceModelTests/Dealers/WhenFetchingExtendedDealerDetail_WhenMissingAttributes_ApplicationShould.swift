@@ -11,16 +11,9 @@ import XCTest
 
 class WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould: XCTestCase {
 
-    var context: EurofurenceSessionTestBuilder.Context!
-    var response: ModelCharacteristics!
-    var dealer: DealerCharacteristics!
-    var dealerData: ExtendedDealerData!
-
-    override func setUp() {
-        super.setUp()
-
-        response = ModelCharacteristics.randomWithoutDeletions
-        dealer = DealerCharacteristics.random
+    func testConvertEmptyStringAttributesIntoNils() {
+        var response = ModelCharacteristics.randomWithoutDeletions
+        var dealer = DealerCharacteristics.random
         dealer.links = nil
         dealer.twitterHandle = ""
         dealer.telegramHandle = ""
@@ -28,32 +21,20 @@ class WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould: 
         dealer.aboutTheArtText = ""
         dealer.artPreviewCaption = ""
         response.dealers.changed = [dealer]
-        context = EurofurenceSessionTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         context.refreshLocalStore()
         context.api.simulateSuccessfulSync(response)
         let identifier = DealerIdentifier(dealer.identifier)
         let entity = context.dealersService.fetchDealer(for: identifier)
-        entity?.fetchExtendedDealerData { self.dealerData = $0 }
-    }
-
-    func testProvideNilTwitterUsernameWhenEmptyHandleProvided() {
-        XCTAssertNil(dealerData.twitterUsername)
-    }
-
-    func testProvideNilTelegramUsernameWhenEmptyHandleProvided() {
-        XCTAssertNil(dealerData.telegramUsername)
-    }
-
-    func testProvideNilAboutTheArtistTextWhenEmptyDescriptionProvided() {
-        XCTAssertNil(dealerData.aboutTheArtist)
-    }
-
-    func testProvideNilAboutTheArtDescriptionWhenEmptyDescriptionProvided() {
-        XCTAssertNil(dealerData.aboutTheArt)
-    }
-
-    func testProvideNilAboutTheArtCaptionWhenEmptyCaptionProvided() {
-        XCTAssertNil(dealerData.artPreviewCaption)
+        var dealerData: ExtendedDealerData?
+        entity?.fetchExtendedDealerData { dealerData = $0 }
+        
+        XCTAssertNotNil(dealerData)
+        XCTAssertNil(dealerData?.twitterUsername)
+        XCTAssertNil(dealerData?.telegramUsername)
+        XCTAssertNil(dealerData?.aboutTheArtist)
+        XCTAssertNil(dealerData?.aboutTheArt)
+        XCTAssertNil(dealerData?.artPreviewCaption)
     }
 
 }
