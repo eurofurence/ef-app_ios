@@ -707,6 +707,7 @@
 		CA7BA23B2238028900D34592 /* DataStoreTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7BA23A2238028900D34592 /* DataStoreTransaction.swift */; };
 		CA7BA23D2238029B00D34592 /* DataStoreFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7BA23C2238029B00D34592 /* DataStoreFactory.swift */; };
 		CA7BA23F2238036C00D34592 /* CoreDataStoreFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7BA23E2238036C00D34592 /* CoreDataStoreFactory.swift */; };
+		CA7BA2412238041100D34592 /* StubDataStoreFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7BA2402238041100D34592 /* StubDataStoreFactory.swift */; };
 		CA7D8B16222D4DA0003431A0 /* CapturingRefreshService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D8B15222D4DA0003431A0 /* CapturingRefreshService.swift */; };
 		CA7D8B18222D4E63003431A0 /* FakeAnnouncementDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D8B17222D4E63003431A0 /* FakeAnnouncementDateFormatter.swift */; };
 		CA7D8B1A222DB134003431A0 /* NewsViewModelValue+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D8B19222DB134003431A0 /* NewsViewModelValue+Equatable.swift */; };
@@ -2366,6 +2367,7 @@
 		CA7BA23A2238028900D34592 /* DataStoreTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStoreTransaction.swift; sourceTree = "<group>"; };
 		CA7BA23C2238029B00D34592 /* DataStoreFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStoreFactory.swift; sourceTree = "<group>"; };
 		CA7BA23E2238036C00D34592 /* CoreDataStoreFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStoreFactory.swift; sourceTree = "<group>"; };
+		CA7BA2402238041100D34592 /* StubDataStoreFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubDataStoreFactory.swift; sourceTree = "<group>"; };
 		CA7D8B15222D4DA0003431A0 /* CapturingRefreshService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingRefreshService.swift; sourceTree = "<group>"; };
 		CA7D8B17222D4E63003431A0 /* FakeAnnouncementDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeAnnouncementDateFormatter.swift; sourceTree = "<group>"; };
 		CA7D8B19222DB134003431A0 /* NewsViewModelValue+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewsViewModelValue+Equatable.swift"; sourceTree = "<group>"; };
@@ -3568,13 +3570,13 @@
 			isa = PBXGroup;
 			children = (
 				CA36A4A920D985FD00EE6537 /* CapturingDealersIndexDelegate.swift */,
+				CA235874221C55A30044B1FC /* CapturingEventObserver.swift */,
 				CA08159B20D47BEA00F750D4 /* CapturingEventsScheduleDelegate.swift */,
 				CA36A44220D703FA00EE6537 /* CapturingEventsSearchControllerDelegate.swift */,
 				CA30EAA41F2129B70053DBF6 /* API */,
 				CAEA10A8216E90F000B0C7A6 /* Configurable Dependencies */,
 				781A94351F1A19A8002DE70F /* Notifications */,
 				CAEA10A7216E90B100B0C7A6 /* Observers */,
-				CA235874221C55A30044B1FC /* CapturingEventObserver.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -6522,6 +6524,7 @@
 				CAEA108B216E819B00B0C7A6 /* FakeLongRunningTaskManager.swift */,
 				CA2761CB20E034BD000E52AC /* StubCollectThemAllRequestFactory.swift */,
 				CA162E7720A4B6E0004AFED6 /* StubConventionStartDateRepository.swift */,
+				CA7BA2402238041100D34592 /* StubDataStoreFactory.swift */,
 				CAEA10A3216E8BA800B0C7A6 /* StubForceRefreshRequired.swift */,
 				CAEA109F216E8B2D00B0C7A6 /* StubUserPreferences.swift */,
 			);
@@ -8815,6 +8818,7 @@
 				CAEA0FDB216E1CC000B0C7A6 /* WhenUnfavouritingEvent_ApplicationShould.swift in Sources */,
 				CAEA101F216E1CE800B0C7A6 /* WhenSyncingWhileLoggedIn.swift in Sources */,
 				CAEA0F6E216D2BFB00B0C7A6 /* PrivateMessagesAPITests.swift in Sources */,
+				CA7BA2412238041100D34592 /* StubDataStoreFactory.swift in Sources */,
 				CAEA1009216E1CE800B0C7A6 /* WhenLaunchingApplication_PrivateMessagesShould.swift in Sources */,
 				CAEA1098216E8A9900B0C7A6 /* CapturingMapsObserver.swift in Sources */,
 				CAEA100A216E1CE800B0C7A6 /* WhenMarkingMessageAsRead.swift in Sources */,

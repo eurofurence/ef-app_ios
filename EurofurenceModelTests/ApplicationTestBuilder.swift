@@ -222,16 +222,6 @@ class ApplicationTestBuilder {
 
     @discardableResult
     func build() -> Context {
-        struct StubDataStoreFactory: DataStoreFactory {
-            
-            var dataStore: DataStore
-            
-            func makeDataStore() -> DataStore {
-                return dataStore
-            }
-            
-        }
-        
         let app = EurofurenceSessionBuilder()
             .with(api)
             .with(clock)
