@@ -15,11 +15,29 @@ struct DealerImpl: Dealer {
     private let dataStore: DataStore
     private let imageCache: ImagesCache
     private let mapCoordinateRender: MapCoordinateRender?
+    private let characteristics: DealerCharacteristics
 
     var identifier: DealerIdentifier
 
-    var preferredName: String
-    var alternateName: String?
+    var preferredName: String {
+        if characteristics.displayName.isEmpty {
+            if characteristics.attendeeNickname.isEmpty {
+                return "?"
+            }
+            
+            return characteristics.attendeeNickname
+        }
+        
+        return characteristics.displayName
+    }
+    
+    var alternateName: String? {
+        if isNicknameEqualToDisplayName() {
+            return nil
+        } else {
+            return characteristics.attendeeNickname
+        }
+    }
 
     var isAttendingOnThursday: Bool
     var isAttendingOnFriday: Bool
@@ -31,66 +49,54 @@ struct DealerImpl: Dealer {
          dataStore: DataStore,
          imageCache: ImagesCache,
          mapCoordinateRender: MapCoordinateRender?,
-         identifier: DealerIdentifier,
-         preferredName: String,
-         alternateName: String?,
-         isAttendingOnThursday: Bool,
-         isAttendingOnFriday: Bool,
-         isAttendingOnSaturday: Bool,
-         isAfterDark: Bool) {
+         characteristics: DealerCharacteristics) {
         self.eventBus = eventBus
         self.dataStore = dataStore
         self.imageCache = imageCache
         self.mapCoordinateRender = mapCoordinateRender
+        self.characteristics = characteristics
         
-        self.identifier = identifier
-        self.preferredName = preferredName
-        self.alternateName = alternateName
-        self.isAttendingOnThursday = isAttendingOnThursday
-        self.isAttendingOnFriday = isAttendingOnFriday
-        self.isAttendingOnSaturday = isAttendingOnSaturday
-        self.isAfterDark = isAfterDark
+        self.identifier = DealerIdentifier(characteristics.identifier)
+        self.isAttendingOnThursday = characteristics.attendsOnThursday
+        self.isAttendingOnFriday = characteristics.attendsOnFriday
+        self.isAttendingOnSaturday = characteristics.attendsOnSaturday
+        self.isAfterDark = characteristics.isAfterDark
     }
     
     func openWebsite() {
-        guard let model = dataStore.fetchDealers()?.first(where: { $0.identifier == identifier.rawValue }) else { return }
-        guard let externalLink = model.links?.first(where: { $0.fragmentType == .WebExternal }) else { return }
+        guard let externalLink = characteristics.links?.first(where: { $0.fragmentType == .WebExternal }) else { return }
         guard let url = URL(string: externalLink.target) else { return }
         
         eventBus.post(DomainEvent.OpenURL(url: url))
     }
     
     func openTwitter() {
-        guard let model = dataStore.fetchDealers()?.first(where: { $0.identifier == identifier.rawValue }),
-              model.twitterHandle.isEmpty == false else { return }
-        guard let url = URL(string: "https://twitter.com/")?.appendingPathComponent(model.twitterHandle) else { return }
+        guard characteristics.twitterHandle.isEmpty == false else { return }
+        guard let url = URL(string: "https://twitter.com/")?.appendingPathComponent(characteristics.twitterHandle) else { return }
         
         eventBus.post(DomainEvent.OpenURL(url: url))
     }
     
     func openTelegram() {
-        guard let model = dataStore.fetchDealers()?.first(where: { $0.identifier == identifier.rawValue }),
-              model.telegramHandle.isEmpty == false else { return }
-        guard let url = URL(string: "https://t.me/")?.appendingPathComponent(model.twitterHandle) else { return }
+        guard characteristics.telegramHandle.isEmpty == false else { return }
+        guard let url = URL(string: "https://t.me/")?.appendingPathComponent(characteristics.twitterHandle) else { return }
         
         eventBus.post(DomainEvent.OpenURL(url: url))
     }
     
     func fetchExtendedDealerData(completionHandler: @escaping (ExtendedDealerData) -> Void) {
-        guard let model = dataStore.fetchDealers()?.first(where: { $0.identifier == identifier.rawValue }) else { return }
-        
         var dealerMapLocationData: Data?
         if let (map, entry) = fetchMapData(), let mapData = imageCache.cachedImageData(for: map.imageIdentifier) {
             dealerMapLocationData = mapCoordinateRender?.render(x: entry.x, y: entry.y, radius: entry.tapRadius, onto: mapData)
         }
         
         var artistImagePNGData: Data?
-        if let artistImageId = model.artistImageId {
+        if let artistImageId = characteristics.artistImageId {
             artistImagePNGData = imageCache.cachedImageData(for: artistImageId)
         }
         
         var artPreviewImagePNGData: Data?
-        if let artPreviewImageId = model.artPreviewImageId {
+        if let artPreviewImageId = characteristics.artPreviewImageId {
             artPreviewImagePNGData = imageCache.cachedImageData(for: artPreviewImageId)
         }
         
@@ -100,27 +106,25 @@ struct DealerImpl: Dealer {
                                               dealersDenMapLocationGraphicPNGData: dealerMapLocationData,
                                               preferredName: preferredName,
                                               alternateName: alternateName,
-                                              categories: model.categories.sorted(),
-                                              dealerShortDescription: model.shortDescription,
+                                              categories: characteristics.categories.sorted(),
+                                              dealerShortDescription: characteristics.shortDescription,
                                               isAttendingOnThursday: isAttendingOnThursday,
                                               isAttendingOnFriday: isAttendingOnFriday,
                                               isAttendingOnSaturday: isAttendingOnSaturday,
-                                              isAfterDark: model.isAfterDark,
-                                              websiteName: model.links?.first(where: { $0.fragmentType == .WebExternal })?.target,
-                                              twitterUsername: convertEmptyStringsIntoNil(model.twitterHandle),
-                                              telegramUsername: convertEmptyStringsIntoNil(model.telegramHandle),
-                                              aboutTheArtist: convertEmptyStringsIntoNil(model.aboutTheArtistText),
-                                              aboutTheArt: convertEmptyStringsIntoNil(model.aboutTheArtText),
+                                              isAfterDark: characteristics.isAfterDark,
+                                              websiteName: characteristics.links?.first(where: { $0.fragmentType == .WebExternal })?.target,
+                                              twitterUsername: convertEmptyStringsIntoNil(characteristics.twitterHandle),
+                                              telegramUsername: convertEmptyStringsIntoNil(characteristics.telegramHandle),
+                                              aboutTheArtist: convertEmptyStringsIntoNil(characteristics.aboutTheArtistText),
+                                              aboutTheArt: convertEmptyStringsIntoNil(characteristics.aboutTheArtText),
                                               artPreviewImagePNGData: artPreviewImagePNGData,
-                                              artPreviewCaption: convertEmptyStringsIntoNil(model.artPreviewCaption))
+                                              artPreviewCaption: convertEmptyStringsIntoNil(characteristics.artPreviewCaption))
         completionHandler(extendedData)
     }
     
     func fetchIconPNGData(completionHandler: @escaping (Data?) -> Void) {
-        guard let model = dataStore.fetchDealers()?.first(where: { $0.identifier == identifier.rawValue }) else { return }
-        
         var iconData: Data?
-        if let iconIdentifier = model.artistThumbnailImageId {
+        if let iconIdentifier = characteristics.artistThumbnailImageId {
             iconData = imageCache.cachedImageData(for: iconIdentifier)
         }
         
@@ -139,6 +143,10 @@ struct DealerImpl: Dealer {
         }
         
         return nil
+    }
+    
+    private func isNicknameEqualToDisplayName() -> Bool {
+        return characteristics.attendeeNickname == characteristics.displayName
     }
 
 }

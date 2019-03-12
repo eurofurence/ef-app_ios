@@ -68,8 +68,7 @@ class ConcreteDealersService: DealersService {
 
     private struct UpdatedEvent {}
 
-    private var dealerModels = [DealerImpl]()
-    private var models = [DealerCharacteristics]()
+    private var dealerModels = [Dealer]()
     private let eventBus: EventBus
     private let dataStore: DataStore
     private let imageCache: ImagesCache
@@ -96,37 +95,19 @@ class ConcreteDealersService: DealersService {
         return Index(dealers: self, eventBus: eventBus)
     }
 
-    private func fetchDealer(_ identifier: DealerIdentifier) -> DealerCharacteristics? {
-        return models.first(where: { $0.identifier == identifier.rawValue })
-    }
-
-    fileprivate func reloadDealersFromDataStore() {
+    private func reloadDealersFromDataStore() {
         guard let dealers = dataStore.fetchDealers() else { return }
 
-        models = dealers
-        dealerModels = models.map { (dealer) -> DealerImpl in
-            var preferredName = dealer.displayName
-            if preferredName.isEmpty {
-                preferredName = dealer.attendeeNickname
-                if preferredName.isEmpty {
-                    preferredName = "?"
-                }
-            }
-
-            return DealerImpl(eventBus: self.eventBus,
-                              dataStore: self.dataStore,
-                              imageCache: self.imageCache,
-                              mapCoordinateRender: self.mapCoordinateRender,
-                              identifier: DealerIdentifier(dealer.identifier),
-                              preferredName: preferredName,
-                              alternateName: dealer.attendeeNickname == dealer.displayName ? nil : dealer.attendeeNickname,
-                              isAttendingOnThursday: dealer.attendsOnThursday,
-                              isAttendingOnFriday: dealer.attendsOnFriday,
-                              isAttendingOnSaturday: dealer.attendsOnSaturday,
-                              isAfterDark: dealer.isAfterDark)
-        }
-
+        dealerModels = dealers.map(makeDealer)
         eventBus.post(ConcreteDealersService.UpdatedEvent())
+    }
+    
+    private func makeDealer(from characteristics: DealerCharacteristics) -> Dealer {
+        return DealerImpl(eventBus: eventBus,
+                          dataStore: dataStore,
+                          imageCache: imageCache,
+                          mapCoordinateRender: mapCoordinateRender,
+                          characteristics: characteristics)
     }
 
 }
