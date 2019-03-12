@@ -96,17 +96,6 @@ class ConcreteDealersService: DealersService {
         return Index(dealers: self, eventBus: eventBus)
     }
 
-    func fetchIconPNGData(for identifier: DealerIdentifier, completionHandler: @escaping (Data?) -> Void) {
-        guard let dealer = fetchDealer(identifier) else { return }
-
-        var iconData: Data?
-        if let iconIdentifier = dealer.artistThumbnailImageId {
-            iconData = imageCache.cachedImageData(for: iconIdentifier)
-        }
-
-        completionHandler(iconData)
-    }
-
     func openWebsite(for identifier: DealerIdentifier) {
         guard let dealer = fetchDealer(identifier) else { return }
         guard let externalLink = dealer.links?.first(where: { $0.fragmentType == .WebExternal }) else { return }
