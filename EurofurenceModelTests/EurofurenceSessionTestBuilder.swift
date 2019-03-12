@@ -128,6 +128,7 @@ class EurofurenceSessionTestBuilder {
 
     }
 
+    private let conventionIdentifier = ConventionIdentifier.random
     private var api = FakeAPI()
     private let notificationTokenRegistration = CapturingRemoteNotificationsTokenRegistration()
     private var credentialStore = CapturingCredentialStore()
@@ -222,11 +223,11 @@ class EurofurenceSessionTestBuilder {
 
     @discardableResult
     func build() -> Context {
-        let app = EurofurenceSessionBuilder()
+        let app = EurofurenceSessionBuilder(conventionIdentifier: conventionIdentifier)
             .with(api)
             .with(clock)
             .with(credentialStore)
-            .with(StubDataStoreFactory(dataStore: dataStore))
+            .with(StubDataStoreFactory(conventionIdentifier: conventionIdentifier, dataStore: dataStore))
             .with(pushPermissionsRequester)
             .with(notificationTokenRegistration)
             .with(userPreferences)

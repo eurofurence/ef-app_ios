@@ -10,6 +10,8 @@ import EurofurenceModel
 import Foundation
 
 class SharedModel {
+    
+    private static let CID = ConventionIdentifier(identifier: "EF24")
 
     static let instance: SharedModel = SharedModel()
     let session: EurofurenceSession
@@ -38,7 +40,7 @@ class SharedModel {
 
         let mapCoordinateRender = UIKitMapCoordinateRender()
 
-        session = EurofurenceSessionBuilder()
+        session = EurofurenceSessionBuilder(conventionIdentifier: SharedModel.CID)
             .with(remoteNotificationsTokenRegistration)
             .with(pushPermissionsRequester)
             .with(significantTimeChangeAdapter)

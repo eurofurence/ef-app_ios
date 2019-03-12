@@ -9,6 +9,8 @@
 import Foundation
 
 public class EurofurenceSessionBuilder {
+    
+    private let conventionIdentifier: ConventionIdentifier
 
     private var userPreferences: UserPreferences
     private var dataStoreFactory: DataStoreFactory
@@ -30,7 +32,9 @@ public class EurofurenceSessionBuilder {
     private var mapCoordinateRender: MapCoordinateRender?
     private var forceRefreshRequired: ForceRefreshRequired
 
-    public init() {
+    public init(conventionIdentifier: ConventionIdentifier) {
+        self.conventionIdentifier = conventionIdentifier
+        
         userPreferences = UserDefaultsPreferences()
         dataStoreFactory = CoreDataStoreFactory()
 
@@ -166,7 +170,8 @@ public class EurofurenceSessionBuilder {
     }
 
     public func build() -> EurofurenceSession {
-        return ConcreteSession(api: api,
+        return ConcreteSession(conventionIdentifier: conventionIdentifier,
+                               api: api,
                                userPreferences: userPreferences,
                                dataStoreFactory: dataStoreFactory,
                                remoteNotificationsTokenRegistration: remoteNotificationsTokenRegistration,

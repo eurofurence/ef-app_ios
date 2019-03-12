@@ -32,7 +32,8 @@ class ConcreteSession: EurofurenceSession {
     private let contentLinksService: ConcreteContentLinksService
 
     // swiftlint:disable function_body_length
-    init(api: API,
+    init(conventionIdentifier: ConventionIdentifier,
+         api: API,
          userPreferences: UserPreferences,
          dataStoreFactory: DataStoreFactory,
          remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration?,
@@ -52,7 +53,7 @@ class ConcreteSession: EurofurenceSession {
          mapCoordinateRender: MapCoordinateRender?,
          forceRefreshRequired: ForceRefreshRequired) {
         
-        let dataStore = dataStoreFactory.makeDataStore()
+        let dataStore = dataStoreFactory.makeDataStore(for: conventionIdentifier)
 
         pushPermissionsRequester?.requestPushPermissions()
 

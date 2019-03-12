@@ -10,8 +10,8 @@ import Foundation
 
 public struct CoreDataStoreFactory: DataStoreFactory {
     
-    public func makeDataStore() -> DataStore {
-        return CoreDataStore(storeName: "EF24")
+    public func makeDataStore(for conventionIdentifier: ConventionIdentifier) -> DataStore {
+        return CoreDataStore(storeName: conventionIdentifier.identifier)
     }
     
 }

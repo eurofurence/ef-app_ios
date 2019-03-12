@@ -10,6 +10,6 @@ import Foundation
 
 public protocol DataStoreFactory {
     
-    func makeDataStore() -> DataStore
+    func makeDataStore(for conventionIdentifier: ConventionIdentifier) -> DataStore
     
 }
