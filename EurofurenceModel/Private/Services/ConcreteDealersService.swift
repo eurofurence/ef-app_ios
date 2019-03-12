@@ -96,17 +96,6 @@ class ConcreteDealersService: DealersService {
         return Index(dealers: self, eventBus: eventBus)
     }
 
-    func openTelegram(for identifier: DealerIdentifier) {
-        guard let dealer = fetchDealer(identifier), dealer.telegramHandle.isEmpty == false else { return }
-        guard let url = URL(string: "https://t.me/")?.appendingPathComponent(dealer.twitterHandle) else { return }
-
-        open(url)
-    }
-
-    private func open(_ url: URL) {
-        eventBus.post(DomainEvent.OpenURL(url: url))
-    }
-
     private func fetchDealer(_ identifier: DealerIdentifier) -> DealerCharacteristics? {
         return models.first(where: { $0.identifier == identifier.rawValue })
     }

@@ -11,9 +11,7 @@ import Foundation
 public protocol DealersService {
     
     func fetchDealer(for identifier: DealerIdentifier) -> Dealer?
-
     func makeDealersIndex() -> DealersIndex
-    func openTelegram(for identifier: DealerIdentifier)
 
 }
 
