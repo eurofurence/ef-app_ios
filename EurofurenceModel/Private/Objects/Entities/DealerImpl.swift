@@ -6,10 +6,12 @@
 //  Copyright © 2019 Eurofurence. All rights reserved.
 //
 
+import EventBus
 import Foundation
 
 struct DealerImpl: Dealer {
     
+    private let eventBus: EventBus
     private let dataStore: DataStore
     private let imageCache: ImagesCache
     private let mapCoordinateRender: MapCoordinateRender?
@@ -25,7 +27,8 @@ struct DealerImpl: Dealer {
 
     var isAfterDark: Bool
 
-    init(dataStore: DataStore,
+    init(eventBus: EventBus,
+         dataStore: DataStore,
          imageCache: ImagesCache,
          mapCoordinateRender: MapCoordinateRender?,
          identifier: DealerIdentifier,
@@ -35,6 +38,7 @@ struct DealerImpl: Dealer {
          isAttendingOnFriday: Bool,
          isAttendingOnSaturday: Bool,
          isAfterDark: Bool) {
+        self.eventBus = eventBus
         self.dataStore = dataStore
         self.imageCache = imageCache
         self.mapCoordinateRender = mapCoordinateRender
@@ -46,6 +50,14 @@ struct DealerImpl: Dealer {
         self.isAttendingOnFriday = isAttendingOnFriday
         self.isAttendingOnSaturday = isAttendingOnSaturday
         self.isAfterDark = isAfterDark
+    }
+    
+    func openWebsite() {
+        guard let model = dataStore.fetchDealers()?.first(where: { $0.identifier == identifier.rawValue }) else { return }
+        guard let externalLink = model.links?.first(where: { $0.fragmentType == .WebExternal }) else { return }
+        guard let url = URL(string: externalLink.target) else { return }
+        
+        eventBus.post(DomainEvent.OpenURL(url: url))
     }
     
     func fetchExtendedDealerData(completionHandler: @escaping (ExtendedDealerData) -> Void) {

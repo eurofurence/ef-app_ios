@@ -22,7 +22,8 @@ class WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould
         let context = EurofurenceSessionTestBuilder().with(urlOpener).build()
         context.performSuccessfulSync(response: syncResponse)
         let dealerIdentifier = DealerIdentifier(dealer.identifier)
-        context.dealersService.openWebsite(for: dealerIdentifier)
+        let entity = context.dealersService.fetchDealer(for: dealerIdentifier)
+        entity?.openWebsite()
 
         XCTAssertEqual(expected, urlOpener.capturedURLToOpen)
     }
@@ -38,7 +39,8 @@ class WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould
         context.contentLinksService.setExternalContentHandler(externalContentHandler)
         context.performSuccessfulSync(response: syncResponse)
         let dealerIdentifier = DealerIdentifier(dealer.identifier)
-        context.dealersService.openWebsite(for: dealerIdentifier)
+        let entity = context.dealersService.fetchDealer(for: dealerIdentifier)
+        entity?.openWebsite()
 
         XCTAssertNil(externalContentHandler.capturedExternalContentURL)
     }

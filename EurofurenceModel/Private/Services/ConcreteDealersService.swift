@@ -139,7 +139,8 @@ class ConcreteDealersService: DealersService {
                 }
             }
 
-            return DealerImpl(dataStore: self.dataStore,
+            return DealerImpl(eventBus: self.eventBus,
+                              dataStore: self.dataStore,
                               imageCache: self.imageCache,
                               mapCoordinateRender: self.mapCoordinateRender,
                               identifier: DealerIdentifier(dealer.identifier),

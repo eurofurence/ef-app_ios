@@ -38,6 +38,10 @@ public final class StubDealer: Dealer {
         self.isAfterDark = isAfterDark
     }
     
+    public func openWebsite() {
+        
+    }
+    
     public func fetchExtendedDealerData(completionHandler: @escaping (ExtendedDealerData) -> Void) {
         extendedData.let(completionHandler)
     }

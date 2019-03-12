@@ -169,7 +169,7 @@ struct DefaultDealerDetailViewModel: DealerDetailViewModel {
     }
 
     func openWebsite() {
-        dealersService.openWebsite(for: dealerIdentifier)
+//        dealersService.openWebsite(for: dealerIdentifier)
     }
 
     func openTwitter() {
