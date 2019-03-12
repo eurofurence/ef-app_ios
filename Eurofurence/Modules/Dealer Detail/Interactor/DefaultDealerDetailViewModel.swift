@@ -78,10 +78,15 @@ struct DefaultDealerDetailViewModel: DealerDetailViewModel {
     }
 
     private var components = [DetailViewModelComponent]()
+    private let dealer: Dealer
     private let dealerIdentifier: DealerIdentifier
     private let dealersService: DealersService
 
-    init(data: ExtendedDealerData, dealerIdentifier: DealerIdentifier, dealersService: DealersService) {
+    init(dealer: Dealer,
+         data: ExtendedDealerData,
+         dealerIdentifier: DealerIdentifier,
+         dealersService: DealersService) {
+        self.dealer = dealer
         self.dealerIdentifier = dealerIdentifier
         self.dealersService = dealersService
 
@@ -169,7 +174,7 @@ struct DefaultDealerDetailViewModel: DealerDetailViewModel {
     }
 
     func openWebsite() {
-//        dealersService.openWebsite(for: dealerIdentifier)
+        dealer.openWebsite()
     }
 
     func openTwitter() {

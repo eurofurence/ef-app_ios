@@ -18,6 +18,7 @@ class DealerDetailInteractorTestBuilder {
         var dealersService: FakeDealersService
         var dealerData: ExtendedDealerData
         var dealerIdentifier: DealerIdentifier
+        var dealer: StubDealer
     }
 
     func build(data: ExtendedDealerData = .random) -> Context {
@@ -28,7 +29,11 @@ class DealerDetailInteractorTestBuilder {
         
         let interactor = DefaultDealerDetailInteractor(dealersService: dealersService)
 
-        return Context(interactor: interactor, dealersService: dealersService, dealerData: data, dealerIdentifier: dealer.identifier)
+        return Context(interactor: interactor,
+                       dealersService: dealersService,
+                       dealerData: data,
+                       dealerIdentifier: dealer.identifier,
+                       dealer: dealer)
     }
 
 }
@@ -282,7 +287,7 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailInteractorShould: XCTes
         let viewModel = context.makeViewModel()
         viewModel?.openWebsite()
 
-        XCTAssertEqual(context.dealerIdentifier, context.dealersService.capturedIdentifierForOpeningWebsite)
+        XCTAssertTrue(context.dealer.websiteOpened)
     }
 
     func testTellTheDealerServiceToOpenTwitterForDealerWhenViewModelIsToldToOpenTwitter() {
