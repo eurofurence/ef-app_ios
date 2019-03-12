@@ -68,6 +68,14 @@ struct DealerImpl: Dealer {
         eventBus.post(DomainEvent.OpenURL(url: url))
     }
     
+    func openTelegram() {
+        guard let model = dataStore.fetchDealers()?.first(where: { $0.identifier == identifier.rawValue }),
+              model.telegramHandle.isEmpty == false else { return }
+        guard let url = URL(string: "https://t.me/")?.appendingPathComponent(model.twitterHandle) else { return }
+        
+        eventBus.post(DomainEvent.OpenURL(url: url))
+    }
+    
     func fetchExtendedDealerData(completionHandler: @escaping (ExtendedDealerData) -> Void) {
         guard let model = dataStore.fetchDealers()?.first(where: { $0.identifier == identifier.rawValue }) else { return }
         

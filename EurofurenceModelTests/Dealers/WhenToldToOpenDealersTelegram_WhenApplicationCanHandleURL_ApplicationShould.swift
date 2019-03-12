@@ -19,7 +19,8 @@ class WhenToldToOpenDealersTelegram_WhenApplicationCanHandleURL_ApplicationShoul
         let context = EurofurenceSessionTestBuilder().with(urlOpener).build()
         context.performSuccessfulSync(response: syncResponse)
         let dealerIdentifier = DealerIdentifier(dealer.identifier)
-        context.dealersService.openTelegram(for: dealerIdentifier)
+        let entity = context.dealersService.fetchDealer(for: dealerIdentifier)
+        entity?.openTelegram()
         let expected = URL(string: "https://t.me/")!.appendingPathComponent(dealer.twitterHandle)
 
         XCTAssertEqual(expected, urlOpener.capturedURLToOpen)
@@ -34,7 +35,8 @@ class WhenToldToOpenDealersTelegram_WhenApplicationCanHandleURL_ApplicationShoul
         let context = EurofurenceSessionTestBuilder().with(urlOpener).build()
         context.performSuccessfulSync(response: syncResponse)
         let dealerIdentifier = DealerIdentifier(dealer.identifier)
-        context.dealersService.openTelegram(for: dealerIdentifier)
+        let entity = context.dealersService.fetchDealer(for: dealerIdentifier)
+        entity?.openTelegram()
 
         XCTAssertNil(urlOpener.capturedURLToOpen)
     }
