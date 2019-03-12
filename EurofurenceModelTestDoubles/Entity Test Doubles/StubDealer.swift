@@ -20,6 +20,7 @@ public final class StubDealer: Dealer {
     public var isAfterDark: Bool
     
     public var extendedData: ExtendedDealerData?
+    public var iconPNGData: Data?
 
     public init(identifier: DealerIdentifier,
                 preferredName: String,
@@ -42,7 +43,7 @@ public final class StubDealer: Dealer {
     }
     
     public func fetchIconPNGData(completionHandler: @escaping (Data?) -> Void) {
-        
+        completionHandler(iconPNGData)
     }
 
 }

@@ -214,7 +214,7 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
         var isAfterDarkContentPresent: Bool = false
 
         func fetchIconPNGData(completionHandler: @escaping (Data) -> Void) {
-            dealersService.fetchIconPNGData(for: dealer.identifier) { (iconPNGData) in
+            dealer.fetchIconPNGData { (iconPNGData) in
                 completionHandler(iconPNGData ?? self.defaultIconData)
             }
         }

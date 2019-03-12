@@ -15,6 +15,8 @@ class WhenFetchingIconDataForDealerWithAvatar_DealersInteractorShould: XCTestCas
 
     func testSupplyTheAvatarFromTheDealersService() {
         let dealer = StubDealer.random
+        let expected = Data.random
+        dealer.iconPNGData = expected
         let group = AlphabetisedDealersGroup(indexingString: .random, dealers: [dealer])
         let index = FakeDealersIndex(alphabetisedDealers: [group])
         let dealersService = FakeDealersService(index: index)
@@ -24,7 +26,6 @@ class WhenFetchingIconDataForDealerWithAvatar_DealersInteractorShould: XCTestCas
         let delegate = CapturingDealersViewModelDelegate()
         viewModel?.setDelegate(delegate)
         let dealerViewModel = delegate.capturedDealerViewModel(at: IndexPath(item: 0, section: 0))
-        let expected = Data.random
         dealersService.stubIconPNGData(expected, for: dealer.identifier)
         var actual: Data?
         dealerViewModel?.fetchIconPNGData { actual = $0 }
