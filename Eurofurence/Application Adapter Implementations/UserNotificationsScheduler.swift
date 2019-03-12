@@ -44,7 +44,12 @@ private extension Dictionary where Key == ApplicationNotificationKey, Value == S
             return (key.rawValue, value)
         })
 
-        return [String: String](pairs: stringPairs)
+        var dictionary = [String: String]()
+        for (key, value) in stringPairs {
+            dictionary[key] = value
+        }
+        
+        return dictionary
     }
 
 }
