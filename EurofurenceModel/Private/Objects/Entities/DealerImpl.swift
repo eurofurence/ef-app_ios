@@ -20,15 +20,8 @@ struct DealerImpl: Dealer {
     var identifier: DealerIdentifier
 
     var preferredName: String {
-        if characteristics.displayName.isEmpty {
-            if characteristics.attendeeNickname.isEmpty {
-                return "?"
-            }
-            
-            return characteristics.attendeeNickname
-        }
-        
-        return characteristics.displayName
+        let preferredOrder = [characteristics.displayName, characteristics.attendeeNickname]
+        return preferredOrder.first(where: { $0.isEmpty == false }).defaultingTo("?")
     }
     
     var alternateName: String? {
