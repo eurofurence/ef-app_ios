@@ -22,5 +22,7 @@ public protocol Dealer {
     var isAttendingOnSaturday: Bool { get }
 
     var isAfterDark: Bool { get }
+    
+    func fetchExtendedDealerData(completionHandler: @escaping (ExtendedDealerData) -> Void)
 
 }

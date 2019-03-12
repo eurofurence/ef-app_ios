@@ -87,6 +87,10 @@ class ConcreteDealersService: DealersService {
         eventBus.subscribe(consumer: DataStoreChangedConsumer(handler: reloadDealersFromDataStore))
         reloadDealersFromDataStore()
     }
+    
+    func fetchDealer(for identifier: DealerIdentifier) -> Dealer? {
+        return dealerModels.first(where: { $0.identifier == identifier })
+    }
 
     func makeDealersIndex() -> DealersIndex {
         return Index(dealers: self, eventBus: eventBus)
@@ -201,20 +205,19 @@ class ConcreteDealersService: DealersService {
                 }
             }
 
-            return DealerImpl(identifier: DealerIdentifier(dealer.identifier),
-                           preferredName: preferredName,
-                           alternateName: dealer.attendeeNickname == dealer.displayName ? nil : dealer.attendeeNickname,
-                           isAttendingOnThursday: dealer.attendsOnThursday,
-                           isAttendingOnFriday: dealer.attendsOnFriday,
-                           isAttendingOnSaturday: dealer.attendsOnSaturday,
-                           isAfterDark: dealer.isAfterDark)
+            return DealerImpl(dataStore: self.dataStore,
+                              imageCache: self.imageCache,
+                              mapCoordinateRender: self.mapCoordinateRender,
+                              identifier: DealerIdentifier(dealer.identifier),
+                              preferredName: preferredName,
+                              alternateName: dealer.attendeeNickname == dealer.displayName ? nil : dealer.attendeeNickname,
+                              isAttendingOnThursday: dealer.attendsOnThursday,
+                              isAttendingOnFriday: dealer.attendsOnFriday,
+                              isAttendingOnSaturday: dealer.attendsOnSaturday,
+                              isAfterDark: dealer.isAfterDark)
         }
 
         eventBus.post(ConcreteDealersService.UpdatedEvent())
-    }
-
-    func dealer(for identifier: String) -> DealerImpl? {
-        return dealerModels.first(where: { $0.identifier.rawValue == identifier })
     }
 
 }

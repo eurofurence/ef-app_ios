@@ -68,11 +68,12 @@ class ImagesRemoveAllBeforeInsertTests: XCTestCase {
         let context = EurofurenceSessionTestBuilder().build()
         context.performSuccessfulSync(response: originalResponse)
         context.performSuccessfulSync(response: subsequentResponse)
-        let randomDealer = subsequentResponse.dealers.changed.randomElement().element
+        let randomDealerCharacteristics = subsequentResponse.dealers.changed.randomElement().element
+        let randomDealerEntity = context.dealersService.fetchDealer(for: DealerIdentifier(randomDealerCharacteristics.identifier))
         var data: ExtendedDealerData?
-        context.dealersService.fetchExtendedDealerData(for: DealerIdentifier(randomDealer.identifier)) { data = $0 }
+        randomDealerEntity?.fetchExtendedDealerData { data = $0 }
 
-        XCTAssertEqual(data?.artistImagePNGData, context.api.stubbedImage(for: randomDealer.artistImageId))
+        XCTAssertEqual(data?.artistImagePNGData, context.api.stubbedImage(for: randomDealerCharacteristics.artistImageId))
     }
 
 }

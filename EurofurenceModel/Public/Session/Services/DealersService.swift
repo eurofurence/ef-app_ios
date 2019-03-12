@@ -9,6 +9,8 @@
 import Foundation
 
 public protocol DealersService {
+    
+    func fetchDealer(for identifier: DealerIdentifier) -> Dealer?
 
     func makeDealersIndex() -> DealersIndex
     func fetchIconPNGData(for identifier: DealerIdentifier, completionHandler: @escaping (Data?) -> Void)

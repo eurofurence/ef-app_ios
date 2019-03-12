@@ -25,7 +25,8 @@ class WhenFetchingExtendedDealerData_ApplicationShould: XCTestCase {
         context.api.simulateSuccessfulSync(response)
         randomDealer = response.dealers.changed.randomElement().element
         let identifier = DealerIdentifier(randomDealer.identifier)
-        context.dealersService.fetchExtendedDealerData(for: identifier) { self.dealerData = $0 }
+        let dealerEntity = context.dealersService.fetchDealer(for: identifier)
+        dealerEntity?.fetchExtendedDealerData { self.dealerData = $0 }
     }
 
     func testUseTheSameAttributesFromTheShortFormDealerModel() {

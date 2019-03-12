@@ -83,7 +83,7 @@ class ConcreteMapsService: MapsService {
                 return .room(Room(name: room.name))
             }
 
-            if let dealer = self.dealers.dealer(for: link.target) {
+            if let dealer = self.dealers.fetchDealer(for: DealerIdentifier(link.target)) {
                 return .dealer(dealer)
             }
 

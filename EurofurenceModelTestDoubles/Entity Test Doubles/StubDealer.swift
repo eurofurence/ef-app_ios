@@ -18,6 +18,10 @@ public struct StubDealer: Dealer {
     public var isAttendingOnFriday: Bool
     public var isAttendingOnSaturday: Bool
     public var isAfterDark: Bool
+    
+    public func fetchExtendedDealerData(completionHandler: @escaping (ExtendedDealerData) -> Void) {
+        
+    }
 
 }
 

@@ -10,11 +10,15 @@ import EurofurenceModel
 import Foundation
 
 class FakeDealersService: DealersService {
-
+    
     let index: FakeDealersIndex
 
     init(index: FakeDealersIndex = FakeDealersIndex()) {
         self.index = index
+    }
+    
+    func fetchDealer(for identifier: DealerIdentifier) -> Dealer? {
+        return nil
     }
 
     func makeDealersIndex() -> DealersIndex {
