@@ -88,6 +88,17 @@ struct DealerImpl: Dealer {
         completionHandler(extendedData)
     }
     
+    func fetchIconPNGData(completionHandler: @escaping (Data?) -> Void) {
+        guard let model = dataStore.fetchDealers()?.first(where: { $0.identifier == identifier.rawValue }) else { return }
+        
+        var iconData: Data?
+        if let iconIdentifier = model.artistThumbnailImageId {
+            iconData = imageCache.cachedImageData(for: iconIdentifier)
+        }
+        
+        completionHandler(iconData)
+    }
+    
     private func fetchMapData() -> (map: MapCharacteristics, entry: MapCharacteristics.Entry)? {
         guard let maps = dataStore.fetchMaps() else { return nil }
         

@@ -40,6 +40,10 @@ public final class StubDealer: Dealer {
     public func fetchExtendedDealerData(completionHandler: @escaping (ExtendedDealerData) -> Void) {
         extendedData.let(completionHandler)
     }
+    
+    public func fetchIconPNGData(completionHandler: @escaping (Data?) -> Void) {
+        
+    }
 
 }
 

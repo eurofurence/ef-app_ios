@@ -24,5 +24,6 @@ public protocol Dealer {
     var isAfterDark: Bool { get }
     
     func fetchExtendedDealerData(completionHandler: @escaping (ExtendedDealerData) -> Void)
+    func fetchIconPNGData(completionHandler: @escaping (Data?) -> Void)
 
 }
