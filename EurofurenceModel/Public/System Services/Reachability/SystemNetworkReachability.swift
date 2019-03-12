@@ -6,24 +6,33 @@
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
-import Foundation
-import Reachability
+import SystemConfiguration
 
-public struct SwiftNetworkReachability: NetworkReachability {
+public struct SystemConfigurationNetworkReachability: NetworkReachability {
 
-    public static let shared = SwiftNetworkReachability()
-    private var reachability: Reachability
-
-    private init() {
-        guard let reachability = Reachability() else {
-            fatalError("Unable to configure Reachability")
-        }
-
-        self.reachability = reachability
+    public init() {
+        
     }
 
     public var wifiReachable: Bool {
-        return reachability.connection == .wifi
+        return isWifiReachable(with: resolveCurrentReachabilityFlags())
+    }
+    
+    private func resolveCurrentReachabilityFlags() -> SCNetworkReachabilityFlags {
+        var zeroAddress = sockaddr()
+        zeroAddress.sa_len = UInt8(MemoryLayout<sockaddr>.size)
+        zeroAddress.sa_family = sa_family_t(AF_INET)
+        
+        var flags: SCNetworkReachabilityFlags = []
+        if let systemReachability = SCNetworkReachabilityCreateWithAddress(nil, &zeroAddress) {
+            SCNetworkReachabilityGetFlags(systemReachability, &flags)
+        }
+        
+        return flags
+    }
+    
+    private func isWifiReachable(with flags: SCNetworkReachabilityFlags) -> Bool {
+        return flags.contains(.reachable) && flags.contains(.isWWAN) == false
     }
 
 }

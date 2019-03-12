@@ -23,7 +23,7 @@ class TutorialModuleBuilder {
         presentationAssets = ApplicationPresentationAssets()
         alertRouter = WindowAlertRouter.shared
         tutorialStateProviding = UserDefaultsTutorialStateProvider(userDefaults: .standard)
-        networkReachability = SwiftNetworkReachability.shared
+        networkReachability = SystemConfigurationNetworkReachability()
         pushPermissionsRequesting = ApplicationPushPermissionsRequester.shared
         witnessedTutorialPushPermissionsRequest = UserDefaultsWitnessedTutorialPushPermissionsRequest(userDefaults: .standard)
     }
