@@ -31,6 +31,7 @@ class ConcreteSession: EurofurenceSession {
     private let notificationService: ConcreteNotificationService
     private let contentLinksService: ConcreteContentLinksService
 
+    // swiftlint:disable function_body_length
     init(api: API,
          userPreferences: UserPreferences,
          dataStore: DataStore,
