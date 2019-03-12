@@ -31,11 +31,6 @@ class FakeDealersService: DealersService {
         completionHandler(iconData[identifier])
     }
 
-    fileprivate var fakedDealerData = [DealerIdentifier: ExtendedDealerData]()
-    func fetchExtendedDealerData(for dealer: DealerIdentifier, completionHandler: @escaping (ExtendedDealerData) -> Void) {
-        
-    }
-
     private(set) var capturedIdentifierForOpeningWebsite: DealerIdentifier?
     func openWebsite(for identifier: DealerIdentifier) {
         capturedIdentifierForOpeningWebsite = identifier

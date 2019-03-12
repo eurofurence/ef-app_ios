@@ -107,61 +107,6 @@ class ConcreteDealersService: DealersService {
         completionHandler(iconData)
     }
 
-    private func fetchMapData(for identifier: DealerIdentifier) -> (map: MapCharacteristics, entry: MapCharacteristics.Entry)? {
-        guard let maps = dataStore.fetchMaps() else { return nil }
-
-        for map in maps {
-            guard let entry = map.entries.first(where: { (entry) -> Bool in
-                return entry.links.contains(where: { $0.target == identifier.rawValue })
-            }) else { continue }
-
-            return (map: map, entry: entry)
-        }
-
-        return nil
-    }
-
-    func fetchExtendedDealerData(for dealer: DealerIdentifier, completionHandler: @escaping (ExtendedDealerData) -> Void) {
-        guard let dealerModel = dealerModels.first(where: { $0.identifier == dealer }) else { return }
-        guard let model = fetchDealer(dealer) else { return }
-
-        var dealerMapLocationData: Data?
-        if let (map, entry) = fetchMapData(for: dealer), let mapData = imageCache.cachedImageData(for: map.imageIdentifier) {
-            dealerMapLocationData = mapCoordinateRender?.render(x: entry.x, y: entry.y, radius: entry.tapRadius, onto: mapData)
-        }
-
-        var artistImagePNGData: Data?
-        if let artistImageId = model.artistImageId {
-            artistImagePNGData = imageCache.cachedImageData(for: artistImageId)
-        }
-
-        var artPreviewImagePNGData: Data?
-        if let artPreviewImageId = model.artPreviewImageId {
-            artPreviewImagePNGData = imageCache.cachedImageData(for: artPreviewImageId)
-        }
-
-        let convertEmptyStringsIntoNil: (String) -> String? = { $0.isEmpty ? nil : $0 }
-
-        let extendedData = ExtendedDealerData(artistImagePNGData: artistImagePNGData,
-                                              dealersDenMapLocationGraphicPNGData: dealerMapLocationData,
-                                              preferredName: dealerModel.preferredName,
-                                              alternateName: dealerModel.alternateName,
-                                              categories: model.categories.sorted(),
-                                              dealerShortDescription: model.shortDescription,
-                                              isAttendingOnThursday: dealerModel.isAttendingOnThursday,
-                                              isAttendingOnFriday: dealerModel.isAttendingOnFriday,
-                                              isAttendingOnSaturday: dealerModel.isAttendingOnSaturday,
-                                              isAfterDark: dealerModel.isAfterDark,
-                                              websiteName: model.links?.first(where: { $0.fragmentType == .WebExternal })?.target,
-                                              twitterUsername: convertEmptyStringsIntoNil(model.twitterHandle),
-                                              telegramUsername: convertEmptyStringsIntoNil(model.telegramHandle),
-                                              aboutTheArtist: convertEmptyStringsIntoNil(model.aboutTheArtistText),
-                                              aboutTheArt: convertEmptyStringsIntoNil(model.aboutTheArtText),
-                                              artPreviewImagePNGData: artPreviewImagePNGData,
-                                              artPreviewCaption: convertEmptyStringsIntoNil(model.artPreviewCaption))
-        completionHandler(extendedData)
-    }
-
     func openWebsite(for identifier: DealerIdentifier) {
         guard let dealer = fetchDealer(identifier) else { return }
         guard let externalLink = dealer.links?.first(where: { $0.fragmentType == .WebExternal }) else { return }

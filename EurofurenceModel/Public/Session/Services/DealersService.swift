@@ -14,7 +14,6 @@ public protocol DealersService {
 
     func makeDealersIndex() -> DealersIndex
     func fetchIconPNGData(for identifier: DealerIdentifier, completionHandler: @escaping (Data?) -> Void)
-    func fetchExtendedDealerData(for dealer: DealerIdentifier, completionHandler: @escaping (ExtendedDealerData) -> Void)
     func openWebsite(for identifier: DealerIdentifier)
     func openTwitter(for identifier: DealerIdentifier)
     func openTelegram(for identifier: DealerIdentifier)
