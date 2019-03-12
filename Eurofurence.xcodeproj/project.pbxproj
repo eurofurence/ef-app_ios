@@ -710,6 +710,7 @@
 		CA7BA2412238041100D34592 /* StubDataStoreFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7BA2402238041100D34592 /* StubDataStoreFactory.swift */; };
 		CA7BA2432238057B00D34592 /* ConventionIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7BA2422238057B00D34592 /* ConventionIdentifier.swift */; };
 		CA7BA245223805C800D34592 /* ConventionIdentifier+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7BA244223805C800D34592 /* ConventionIdentifier+RandomValueProviding.swift */; };
+		CA7BA2472238091F00D34592 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7BA2462238091F00D34592 /* LoginRequest.swift */; };
 		CA7D8B16222D4DA0003431A0 /* CapturingRefreshService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D8B15222D4DA0003431A0 /* CapturingRefreshService.swift */; };
 		CA7D8B18222D4E63003431A0 /* FakeAnnouncementDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D8B17222D4E63003431A0 /* FakeAnnouncementDateFormatter.swift */; };
 		CA7D8B1A222DB134003431A0 /* NewsViewModelValue+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D8B19222DB134003431A0 /* NewsViewModelValue+Equatable.swift */; };
@@ -2372,6 +2373,7 @@
 		CA7BA2402238041100D34592 /* StubDataStoreFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubDataStoreFactory.swift; sourceTree = "<group>"; };
 		CA7BA2422238057B00D34592 /* ConventionIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConventionIdentifier.swift; sourceTree = "<group>"; };
 		CA7BA244223805C800D34592 /* ConventionIdentifier+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConventionIdentifier+RandomValueProviding.swift"; sourceTree = "<group>"; };
+		CA7BA2462238091F00D34592 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		CA7D8B15222D4DA0003431A0 /* CapturingRefreshService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingRefreshService.swift; sourceTree = "<group>"; };
 		CA7D8B17222D4E63003431A0 /* FakeAnnouncementDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeAnnouncementDateFormatter.swift; sourceTree = "<group>"; };
 		CA7D8B19222DB134003431A0 /* NewsViewModelValue+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewsViewModelValue+Equatable.swift"; sourceTree = "<group>"; };
@@ -3670,6 +3672,7 @@
 			children = (
 				CA4679A72219FC03006B3090 /* API.swift */,
 				CA30EAA01F2127350053DBF6 /* LoginResponse.swift */,
+				CA7BA2462238091F00D34592 /* LoginRequest.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -8618,6 +8621,7 @@
 				CA240F4B21E3D985002DB747 /* MapContent.swift in Sources */,
 				CAEA0DCD216BDE2300B0C7A6 /* EF24StartDateRepository.swift in Sources */,
 				CA7D8B1E222DB28A003431A0 /* JSONSyncResponse.swift in Sources */,
+				CA7BA2472238091F00D34592 /* LoginRequest.swift in Sources */,
 				CACD2EB021D67EE300BACD91 /* EurofurenceSessionState.swift in Sources */,
 				CA7BA2432238057B00D34592 /* ConventionIdentifier.swift in Sources */,
 				CA4679AF221B542D006B3090 /* MessageCharacteristics.swift in Sources */,
