@@ -303,7 +303,7 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailInteractorShould: XCTes
         let viewModel = context.makeViewModel()
         viewModel?.openTelegram()
 
-        XCTAssertEqual(context.dealerIdentifier, context.dealersService.capturedIdentifierForOpeningTelegram)
+        XCTAssertTrue(context.dealer.telegramOpened)
     }
 
 }
