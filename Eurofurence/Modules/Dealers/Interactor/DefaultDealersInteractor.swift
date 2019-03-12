@@ -78,7 +78,7 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
     }
 
     private func makeDealerViewModel(for dealer: Dealer) -> DealerVM {
-        return DealerVM(dealer: dealer, dealersService: dealersService, defaultIconData: defaultIconData)
+        return DealerVM(dealer: dealer, defaultIconData: defaultIconData)
     }
 
     private class AllDealersChangedEvent {
@@ -194,12 +194,10 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
     private struct DealerVM: DealerViewModel {
 
         private let dealer: Dealer
-        private let dealersService: DealersService
         private let defaultIconData: Data
 
-        init(dealer: Dealer, dealersService: DealersService, defaultIconData: Data) {
+        init(dealer: Dealer, defaultIconData: Data) {
             self.dealer = dealer
-            self.dealersService = dealersService
             self.defaultIconData = defaultIconData
 
             title = dealer.preferredName
@@ -210,8 +208,8 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
 
         var title: String
         var subtitle: String?
-        var isPresentForAllDays: Bool = true
-        var isAfterDarkContentPresent: Bool = false
+        var isPresentForAllDays: Bool
+        var isAfterDarkContentPresent: Bool
 
         func fetchIconPNGData(completionHandler: @escaping (Data) -> Void) {
             dealer.fetchIconPNGData { (iconPNGData) in
