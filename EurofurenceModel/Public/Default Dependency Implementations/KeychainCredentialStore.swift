@@ -6,63 +6,88 @@
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
-import Locksmith
+import Foundation
+import Security
 
 public struct KeychainCredentialStore: CredentialStore {
-
+    
     private var userAccount: String
-
-    public var persistedCredential: Credential? {
-        guard let data = Locksmith.loadDataForUserAccount(userAccount: userAccount) else {
-            return nil
-        }
-
-        return Credential(keychainData: data)
-    }
-
+    private let decoder = JSONDecoder()
+    private let encoder = JSONEncoder()
+    
     public init(userAccount: String = "Eurofurence") {
         self.userAccount = userAccount
     }
-
+    
+    public var persistedCredential: Credential? {
+        var item: CFTypeRef?
+        SecItemCopyMatching(makeMutableLoginCredentialQuery(), &item)
+        
+        return parseCredentialFromKeychainItem(item)
+    }
+    
     public func store(_ credential: Credential) {
-        do {
-            try Locksmith.updateData(data: credential.keychainData, forUserAccount: userAccount)
-        } catch {
-            print("Unable to save credentials to Keychain: \(error)")
-        }
+        let keychainItem = KeychainItemAttributes.fromCredential(credential)
+        guard let keychainItemData = try? encoder.encode(keychainItem) else { return }
+        
+        storeCredentialData(keychainItemData)
     }
-
+    
     public func deletePersistedToken() {
-        do {
-            try Locksmith.deleteDataForUserAccount(userAccount: userAccount)
-        } catch {
-            print("Unable to delete credential from Keychain: \(error)")
+        SecItemDelete(makeMutableLoginCredentialQuery())
+    }
+    
+    private func makeMutableLoginCredentialQuery() -> NSMutableDictionary {
+        return [kSecClass: kSecClassGenericPassword,
+                kSecAttrAccount: userAccount,
+                kSecReturnData: kCFBooleanTrue] as NSMutableDictionary
+    }
+    
+    private func copyItemFromKeychain() -> CFTypeRef? {
+        var item: CFTypeRef?
+        SecItemCopyMatching(makeMutableLoginCredentialQuery(), &item)
+        
+        return item
+    }
+    
+    private func parseCredentialFromKeychainItem(_ item: CFTypeRef?) -> Credential? {
+        var credential: Credential?
+        if let data = item as? NSData {
+            let keychainItem = try? decoder.decode(KeychainItemAttributes.self, from: data as Data)
+            credential = keychainItem?.credential
         }
+        
+        return credential
     }
-
-}
-
-fileprivate extension Credential {
-
-    var keychainData: [String: Any] {
-        return ["username": username,
-                "registrationNumber": registrationNumber,
-                "authenticationToken": authenticationToken,
-                "tokenExpiryDate": tokenExpiryDate]
+    
+    private func storeCredentialData(_ data: Data) {
+        let loginCredentialQuery = makeMutableLoginCredentialQuery()
+        loginCredentialQuery.setObject(data, forKey: kSecValueData as NSString)
+        
+        SecItemAdd(loginCredentialQuery, nil)
     }
-
-    init?(keychainData: [String: Any]) {
-        guard let username = keychainData["username"] as? String,
-              let registrationNumber = keychainData["registrationNumber"] as? Int,
-              let authenticationToken = keychainData["authenticationToken"] as? String,
-              let tokenExpiryDate = keychainData["tokenExpiryDate"] as? Date else {
-                return nil
+    
+    private struct KeychainItemAttributes: Codable {
+        
+        var username: String
+        var authenticationToken: String
+        var registrationNumber: Int
+        var tokenExpiryDate: Date
+        
+        var credential: Credential {
+            return Credential(username: username,
+                              registrationNumber: registrationNumber,
+                              authenticationToken: authenticationToken,
+                              tokenExpiryDate: tokenExpiryDate)
         }
-
-        self.username = username
-        self.registrationNumber = registrationNumber
-        self.authenticationToken = authenticationToken
-        self.tokenExpiryDate = tokenExpiryDate
+        
+        static func fromCredential(_ credential: Credential) -> KeychainItemAttributes {
+            return KeychainItemAttributes(username: credential.username,
+                                          authenticationToken: credential.authenticationToken,
+                                          registrationNumber: credential.registrationNumber,
+                                          tokenExpiryDate: credential.tokenExpiryDate)
+        }
+        
     }
-
+    
 }
