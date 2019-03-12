@@ -19,7 +19,8 @@ class WhenToldToOpenDealersTwitter_WhenApplicationCanHandleURL_ApplicationShould
         let context = EurofurenceSessionTestBuilder().with(urlOpener).build()
         context.performSuccessfulSync(response: syncResponse)
         let dealerIdentifier = DealerIdentifier(dealer.identifier)
-        context.dealersService.openTwitter(for: dealerIdentifier)
+        let entity = context.dealersService.fetchDealer(for: dealerIdentifier)
+        entity?.openTwitter()
         let expected = URL(string: "https://twitter.com/")!.appendingPathComponent(dealer.twitterHandle)
 
         XCTAssertEqual(expected, urlOpener.capturedURLToOpen)
@@ -34,7 +35,8 @@ class WhenToldToOpenDealersTwitter_WhenApplicationCanHandleURL_ApplicationShould
         let context = EurofurenceSessionTestBuilder().with(urlOpener).build()
         context.performSuccessfulSync(response: syncResponse)
         let dealerIdentifier = DealerIdentifier(dealer.identifier)
-        context.dealersService.openTwitter(for: dealerIdentifier)
+        let entity = context.dealersService.fetchDealer(for: dealerIdentifier)
+        entity?.openTwitter()
 
         XCTAssertNil(urlOpener.capturedURLToOpen)
     }

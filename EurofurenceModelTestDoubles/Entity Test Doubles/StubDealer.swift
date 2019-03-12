@@ -43,6 +43,10 @@ public final class StubDealer: Dealer {
         websiteOpened = true
     }
     
+    public func openTwitter() {
+        
+    }
+    
     public func fetchExtendedDealerData(completionHandler: @escaping (ExtendedDealerData) -> Void) {
         extendedData.let(completionHandler)
     }

@@ -178,7 +178,7 @@ struct DefaultDealerDetailViewModel: DealerDetailViewModel {
     }
 
     func openTwitter() {
-        dealersService.openTwitter(for: dealerIdentifier)
+//        dealersService.openTwitter(for: dealerIdentifier)
     }
 
     func openTelegram() {
