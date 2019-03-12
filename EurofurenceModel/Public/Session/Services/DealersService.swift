@@ -13,7 +13,6 @@ public protocol DealersService {
     func fetchDealer(for identifier: DealerIdentifier) -> Dealer?
 
     func makeDealersIndex() -> DealersIndex
-    func openWebsite(for identifier: DealerIdentifier)
     func openTwitter(for identifier: DealerIdentifier)
     func openTelegram(for identifier: DealerIdentifier)
 

@@ -96,14 +96,6 @@ class ConcreteDealersService: DealersService {
         return Index(dealers: self, eventBus: eventBus)
     }
 
-    func openWebsite(for identifier: DealerIdentifier) {
-        guard let dealer = fetchDealer(identifier) else { return }
-        guard let externalLink = dealer.links?.first(where: { $0.fragmentType == .WebExternal }) else { return }
-        guard let url = URL(string: externalLink.target) else { return }
-
-        open(url)
-    }
-
     func openTwitter(for identifier: DealerIdentifier) {
         guard let dealer = fetchDealer(identifier), dealer.twitterHandle.isEmpty == false else { return }
         guard let url = URL(string: "https://twitter.com/")?.appendingPathComponent(dealer.twitterHandle) else { return }
