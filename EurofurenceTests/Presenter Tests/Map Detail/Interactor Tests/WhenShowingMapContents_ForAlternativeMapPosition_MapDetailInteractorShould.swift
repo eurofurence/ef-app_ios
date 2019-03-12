@@ -76,7 +76,7 @@ class WhenShowingMapContents_ForAlternativeMapPosition_MapDetailInteractorShould
         let (x, y) = (Float.random, Float.random)
         let visitor = CapturingMapContentVisitor()
         viewModel?.showContentsAtPosition(x: x, y: y, describingTo: visitor)
-        let expected = StubDealer.random
+        let expected = FakeDealer.random
         mapsService.resolveMapContents(identifier: randomMap.element.identifier, atX: Int(x), y: Int(y), with: .dealer(expected))
 
         XCTAssertEqual(expected.identifier, visitor.capturedDealer)

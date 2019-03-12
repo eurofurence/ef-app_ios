@@ -1,5 +1,5 @@
 //
-//  StubDealer.swift
+//  FakeDealer.swift
 //  EurofurenceModel
 //
 //  Created by Thomas Sherwood on 15/02/2019.
@@ -9,7 +9,7 @@
 import EurofurenceModel
 import TestUtilities
 
-public final class StubDealer: Dealer {
+public final class FakeDealer: Dealer {
 
     public var identifier: DealerIdentifier
     public var preferredName: String
@@ -63,10 +63,10 @@ public final class StubDealer: Dealer {
 
 }
 
-extension StubDealer: RandomValueProviding {
+extension FakeDealer: RandomValueProviding {
 
-    public static var random: StubDealer {
-        return StubDealer(identifier: .random,
+    public static var random: FakeDealer {
+        return FakeDealer(identifier: .random,
                           preferredName: .random,
                           alternateName: .random,
                           isAttendingOnThursday: .random,

@@ -14,7 +14,7 @@ import XCTest
 class WhenResolvingDealerAfterDarkContent_DealersInteractorShould: XCTestCase {
 
     func testIdentifyWhetherDealerContainsAfterDarkContentFromModel() {
-        let dealer = StubDealer.random
+        let dealer = FakeDealer.random
         let group = AlphabetisedDealersGroup(indexingString: .random, dealers: [dealer])
         let index = FakeDealersIndex(alphabetisedDealers: [group])
         let dealersService = FakeDealersService(index: index)

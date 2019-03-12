@@ -14,7 +14,7 @@ import XCTest
 class WhenFetchingIconDataForDealerWithAvatar_DealersInteractorShould: XCTestCase {
 
     func testSupplyTheAvatarFromTheDealersService() {
-        let dealer = StubDealer.random
+        let dealer = FakeDealer.random
         let expected = Data.random
         dealer.iconPNGData = expected
         let group = AlphabetisedDealersGroup(indexingString: .random, dealers: [dealer])

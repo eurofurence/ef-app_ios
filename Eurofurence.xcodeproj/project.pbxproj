@@ -475,7 +475,7 @@
 		CA44C37E211CAF29003C1C4E /* NewsPresenterPhotoshootIconBindingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C37D211CAF29003C1C4E /* NewsPresenterPhotoshootIconBindingTests.swift */; };
 		CA467990221708FA006B3090 /* Announcement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA46798F221708FA006B3090 /* Announcement.swift */; };
 		CA46799422170911006B3090 /* AnnouncementImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA46799322170911006B3090 /* AnnouncementImpl.swift */; };
-		CA46799722175F6D006B3090 /* StubDealer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA46799522175F4B006B3090 /* StubDealer.swift */; };
+		CA46799722175F6D006B3090 /* FakeDealer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA46799522175F4B006B3090 /* FakeDealer.swift */; };
 		CA467999221761FE006B3090 /* Dealer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA467998221761FE006B3090 /* Dealer.swift */; };
 		CA46799B22176329006B3090 /* DealerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA46799A22176329006B3090 /* DealerImpl.swift */; };
 		CA4679A222176A3F006B3090 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4679A122176A3F006B3090 /* Event.swift */; };
@@ -2077,7 +2077,7 @@
 		CA44C381211CB7D6003C1C4E /* WhenFetchingImagesForKnowledgeEntry_WhenEntryHasImages_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingImagesForKnowledgeEntry_WhenEntryHasImages_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA46798F221708FA006B3090 /* Announcement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Announcement.swift; sourceTree = "<group>"; };
 		CA46799322170911006B3090 /* AnnouncementImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementImpl.swift; sourceTree = "<group>"; };
-		CA46799522175F4B006B3090 /* StubDealer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubDealer.swift; sourceTree = "<group>"; };
+		CA46799522175F4B006B3090 /* FakeDealer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeDealer.swift; sourceTree = "<group>"; };
 		CA467998221761FE006B3090 /* Dealer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dealer.swift; sourceTree = "<group>"; };
 		CA46799A22176329006B3090 /* DealerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerImpl.swift; sourceTree = "<group>"; };
 		CA4679A122176A3F006B3090 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -6277,8 +6277,8 @@
 		CAD6FD4F221707560011712D /* Entity Test Doubles */ = {
 			isa = PBXGroup;
 			children = (
+				CA46799522175F4B006B3090 /* FakeDealer.swift */,
 				CA0E5210208F4BF3005259FE /* StubAnnouncement.swift */,
-				CA46799522175F4B006B3090 /* StubDealer.swift */,
 				CA162E9320A87D3D004AFED6 /* StubEvent.swift */,
 				CA6A8DA820E2CE2C007536CD /* StubMap.swift */,
 				CA235865221B57620044B1FC /* StubMessage.swift */,
@@ -8896,7 +8896,7 @@
 				CAEA0F81216E1AE200B0C7A6 /* Day+RandomValueProviding.swift in Sources */,
 				CAEA0F87216E1AE200B0C7A6 /* Room+RandomValueProviding.swift in Sources */,
 				CA7D8B36222F1AEB003431A0 /* FakeDataStoreTransaction.swift in Sources */,
-				CA46799722175F6D006B3090 /* StubDealer.swift in Sources */,
+				CA46799722175F6D006B3090 /* FakeDealer.swift in Sources */,
 				CAEA0F84216E1AE200B0C7A6 /* KnowledgeGroup+RandomValueProviding.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

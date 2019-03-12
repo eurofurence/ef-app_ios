@@ -13,7 +13,7 @@ import TestUtilities
 extension AlphabetisedDealersGroup: RandomValueProviding {
 
     public static var random: AlphabetisedDealersGroup {
-        return AlphabetisedDealersGroup(indexingString: .random, dealers: [StubDealer].random)
+        return AlphabetisedDealersGroup(indexingString: .random, dealers: [FakeDealer].random)
     }
 
 }
