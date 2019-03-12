@@ -702,6 +702,8 @@
 		CA73AEF3201A08C4004E77BF /* KnowledgeListModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA73AEF2201A08C4004E77BF /* KnowledgeListModule.swift */; };
 		CA73AEF5201A08D1004E77BF /* KnowledgeGroupsListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA73AEF4201A08D1004E77BF /* KnowledgeGroupsListPresenter.swift */; };
 		CA73AEF8201A0908004E77BF /* WhenBuildingKnowledgePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA73AEF7201A0908004E77BF /* WhenBuildingKnowledgePresenter.swift */; };
+		CA7BA2372237FCFB00D34592 /* SystemNetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF96CF01F1495F400EE6134 /* SystemNetworkReachability.swift */; };
+		CA7BA2382237FCFB00D34592 /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A861EBB1F25551400B75A8C /* NetworkReachability.swift */; };
 		CA7D8B16222D4DA0003431A0 /* CapturingRefreshService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D8B15222D4DA0003431A0 /* CapturingRefreshService.swift */; };
 		CA7D8B18222D4E63003431A0 /* FakeAnnouncementDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D8B17222D4E63003431A0 /* FakeAnnouncementDateFormatter.swift */; };
 		CA7D8B1A222DB134003431A0 /* NewsViewModelValue+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D8B19222DB134003431A0 /* NewsViewModelValue+Equatable.swift */; };
@@ -1030,8 +1032,6 @@
 		CAEA0E00216BDE3100B0C7A6 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAA01F2127350053DBF6 /* LoginResponse.swift */; };
 		CAEA0E05216BDE3100B0C7A6 /* JSONAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD11F20CE8F00E07A4A /* JSONAPI.swift */; };
 		CAEA0E08216BDE3100B0C7A6 /* BuildConfigurationAPIURLProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DD58D320D91069001893ED /* BuildConfigurationAPIURLProviding.swift */; };
-		CAEA0E09216BDE3100B0C7A6 /* SystemNetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF96CF01F1495F400EE6134 /* SystemNetworkReachability.swift */; };
-		CAEA0E0A216BDE3100B0C7A6 /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A861EBB1F25551400B75A8C /* NetworkReachability.swift */; };
 		CAEA0E0B216BDE3100B0C7A6 /* JSONSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE77CE1F1A2E8600E9A0BE /* JSONSession.swift */; };
 		CAEA0E0C216BDE3100B0C7A6 /* URLSessionBasedJSONSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE77D81F1BB9E400E9A0BE /* URLSessionBasedJSONSession.swift */; };
 		CAEA0E14216BDE9B00B0C7A6 /* Optional+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27254D2110DEE2004C6D0A /* Optional+Extensions.swift */; };
@@ -3105,6 +3105,7 @@
 				9A861EC31F25555000B75A8C /* UserDefaultsWitnessedTutorialPushPermissionsRequest.swift */,
 				9A861EC21F25555000B75A8C /* WitnessedTutorialPushPermissionsRequest.swift */,
 				6EEC6D9B1F173DCF00205F2D /* Pages */,
+				CAF1A671211E4AA200513226 /* Reachability */,
 			);
 			path = Tutorial;
 			sourceTree = "<group>";
@@ -5750,7 +5751,6 @@
 		CAB3A72B1F7532DF005DF77B /* System Services */ = {
 			isa = PBXGroup;
 			children = (
-				CAF1A671211E4AA200513226 /* Reachability */,
 				CAF1A66E211E4A7C00513226 /* Network */,
 			);
 			path = "System Services";
@@ -7891,11 +7891,13 @@
 				CA0E520D208E759F005259FE /* DefaultNewsInteractor.swift in Sources */,
 				CA401077210FAEF60056E16C /* KnowledgeGroupEntriesSceneFactory.swift in Sources */,
 				CA52C68F20D6AB47009D3A9E /* ScheduleModuleDelegate.swift in Sources */,
+				CA7BA2382237FCFB00D34592 /* NetworkReachability.swift in Sources */,
 				20516AC821123E5500C399C0 /* DefaultDownMarkdownRenderer.swift in Sources */,
 				9A861ECD1F25555000B75A8C /* TutorialPageViewController.swift in Sources */,
 				CABA43861FBC6FE1009CB5B0 /* LoginModuleProviding.swift in Sources */,
 				CA72848E209F93A4007D912A /* MarkdownRenderer.swift in Sources */,
 				CA057A5B2088BDBB00504FA4 /* AnnouncementTableViewCell.swift in Sources */,
+				CA7BA2372237FCFB00D34592 /* SystemNetworkReachability.swift in Sources */,
 				CA1FE99B1FA0B3EB009C7DF3 /* WindowWireframe.swift in Sources */,
 				CA283AAB20EAA0C800F7D195 /* AnnouncementsViewController.swift in Sources */,
 				CA283AA420EAA05900F7D195 /* AnnouncementsSceneFactory.swift in Sources */,
@@ -8487,7 +8489,6 @@
 				CAEA0E00216BDE3100B0C7A6 /* LoginResponse.swift in Sources */,
 				CAEA0DD9216BDE2300B0C7A6 /* EventEntity+Adaptation.swift in Sources */,
 				CA23586C221C3A000044B1FC /* UnfavouriteEvent.swift in Sources */,
-				CAEA0E09216BDE3100B0C7A6 /* SystemNetworkReachability.swift in Sources */,
 				CAEA0DE2216BDE2300B0C7A6 /* TrackEntity+Adaptation.swift in Sources */,
 				CAEA0DDB216BDE2300B0C7A6 /* ImageModelEntity+Adaptation.swift in Sources */,
 				CAEA0D8B216BDD9500B0C7A6 /* DataStoreChangedConsumer.swift in Sources */,
@@ -8519,7 +8520,6 @@
 				CAEA0DF5216BDE3100B0C7A6 /* DealerCharacteristics.swift in Sources */,
 				CA467990221708FA006B3090 /* Announcement.swift in Sources */,
 				CAEA0DA1216BDE2300B0C7A6 /* ConventionStartDateRepository.swift in Sources */,
-				CAEA0E0A216BDE3100B0C7A6 /* NetworkReachability.swift in Sources */,
 				CAEA0DBF216BDE2300B0C7A6 /* User.swift in Sources */,
 				CA4679A422176AAF006B3090 /* EventImpl.swift in Sources */,
 				CACD2EB121D67EF200BACD91 /* BundleAppVersionProviding.swift in Sources */,

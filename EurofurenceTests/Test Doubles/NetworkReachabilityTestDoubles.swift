@@ -6,7 +6,7 @@
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
-import EurofurenceModel
+import Eurofurence
 
 struct ReachableWiFiNetwork: NetworkReachability {
 
