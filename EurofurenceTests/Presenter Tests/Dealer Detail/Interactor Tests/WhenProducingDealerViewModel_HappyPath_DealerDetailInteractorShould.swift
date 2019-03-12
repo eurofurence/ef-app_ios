@@ -295,7 +295,7 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailInteractorShould: XCTes
         let viewModel = context.makeViewModel()
         viewModel?.openTwitter()
 
-        XCTAssertEqual(context.dealerIdentifier, context.dealersService.capturedIdentifierForOpeningTwitter)
+        XCTAssertTrue(context.dealer.twitterOpened)
     }
 
     func testTellTheDealerServiceToOpenTelegramForDealerWhenViewModelIsToldToOpenTelegram() {
