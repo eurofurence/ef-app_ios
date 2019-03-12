@@ -11,14 +11,14 @@ import XCTest
 
 class WhenLoggingOutUnsuccessfully: XCTestCase {
 
-    var context: ApplicationTestBuilder.Context!
+    var context: EurofurenceSessionTestBuilder.Context!
     var observer: CapturingAuthenticationStateObserver!
 
     override func setUp() {
         super.setUp()
 
         observer = CapturingAuthenticationStateObserver()
-        context = ApplicationTestBuilder().loggedInWithValidCredential().build()
+        context = EurofurenceSessionTestBuilder().loggedInWithValidCredential().build()
         context.authenticationService.add(observer)
         context.registerForRemoteNotifications()
     }

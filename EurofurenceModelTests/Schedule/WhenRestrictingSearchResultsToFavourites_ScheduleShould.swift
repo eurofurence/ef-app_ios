@@ -20,7 +20,7 @@ class WhenRestrictingSearchResultsToFavourites_ScheduleShould: XCTestCase {
             expected.forEach(transaction.saveFavouriteEventIdentifier)
         }
 
-        let context = ApplicationTestBuilder().with(dataStore).build()
+        let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let schedule = context.eventsService.makeEventsSearchController()
         let delegate = CapturingEventsSearchControllerDelegate()
         schedule.setResultsDelegate(delegate)
@@ -41,7 +41,7 @@ class WhenRestrictingSearchResultsToFavourites_ScheduleShould: XCTestCase {
             favouriteEventIdentifiers.forEach(transaction.saveFavouriteEventIdentifier)
         }
 
-        let context = ApplicationTestBuilder().with(dataStore).build()
+        let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let schedule = context.eventsService.makeEventsSearchController()
         let delegate = CapturingEventsSearchControllerDelegate()
         schedule.setResultsDelegate(delegate)
@@ -60,7 +60,7 @@ class WhenRestrictingSearchResultsToFavourites_ScheduleShould: XCTestCase {
             favourites.forEach(transaction.saveFavouriteEventIdentifier)
         }
 
-        let context = ApplicationTestBuilder().with(dataStore).build()
+        let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let schedule = context.eventsService.makeEventsSearchController()
         let delegate = CapturingEventsSearchControllerDelegate()
         schedule.setResultsDelegate(delegate)

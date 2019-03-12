@@ -12,7 +12,7 @@ import XCTest
 class WhenAlreadyLoggedIn: XCTestCase {
 
     func testSubsequentLoginsIgnoredAndToldLoginSucceeded() {
-        let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
+        let context = EurofurenceSessionTestBuilder().loggedInWithValidCredential().build()
         let loginObserver = CapturingLoginObserver()
         context.login(completionHandler: loginObserver.completionHandler)
 

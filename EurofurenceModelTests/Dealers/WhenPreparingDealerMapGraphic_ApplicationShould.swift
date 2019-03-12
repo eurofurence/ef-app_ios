@@ -19,7 +19,7 @@ class WhenPreparingDealerMapGraphic_ApplicationShould: XCTestCase {
         let dealerMapEntry = MapCharacteristics.Entry(identifier: .random, x: .random, y: .random, tapRadius: .random, links: [dealerMapLink])
         randomMap.element.entries = [dealerMapEntry]
         syncResponse.maps.changed[randomMap.index] = randomMap.element
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         context.performSuccessfulSync(response: syncResponse)
         let mapGraphic = context.api.stubbedImage(for: randomMap.element.imageIdentifier)!
         let renderedData = Data.random

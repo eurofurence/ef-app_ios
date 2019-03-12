@@ -17,7 +17,7 @@ class WhenObservingCollectThemAllURLWhileLoggedIn_ApplicationShould: XCTestCase 
                                     registrationNumber: .random,
                                     authenticationToken: .random,
                                     tokenExpiryDate: .random)
-        let context = ApplicationTestBuilder().with(collectThemAllRequestFactory).with(credential).build()
+        let context = EurofurenceSessionTestBuilder().with(collectThemAllRequestFactory).with(credential).build()
         let observer = CapturingCollectThemAllURLObserver()
         context.collectThemAllService.subscribe(observer)
         let expected = collectThemAllRequestFactory.makeAuthenticatedGameURLRequest(credential: credential)
@@ -31,7 +31,7 @@ class WhenObservingCollectThemAllURLWhileLoggedIn_ApplicationShould: XCTestCase 
                                     registrationNumber: .random,
                                     authenticationToken: .random,
                                     tokenExpiryDate: .random)
-        let context = ApplicationTestBuilder().with(collectThemAllRequestFactory).with(credential).build()
+        let context = EurofurenceSessionTestBuilder().with(collectThemAllRequestFactory).with(credential).build()
         let observer = CapturingCollectThemAllURLObserver()
         context.collectThemAllService.subscribe(observer)
         context.authenticationService.logout { (_) in }

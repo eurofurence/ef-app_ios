@@ -25,7 +25,7 @@ class WhenFetchingMapContents_ThatRevealsRoom_ContentsSavedInDataStore_Applicati
         syncResponse.rooms.changed = [room]
         let dataStore = FakeDataStore()
         dataStore.save(syncResponse)
-        let context = ApplicationTestBuilder().with(dataStore).build()
+        let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         var content: MapContent?
         context.mapsService.fetchContent(for: MapIdentifier(map.identifier), atX: x, y: y) { content = $0 }
         let expected = MapContent.room(Room(name: room.name))

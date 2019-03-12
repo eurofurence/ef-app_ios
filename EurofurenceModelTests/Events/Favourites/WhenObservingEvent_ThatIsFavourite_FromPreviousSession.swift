@@ -21,7 +21,7 @@ class WhenObservingEvent_ThatIsFavourite_FromPreviousSession: XCTestCase {
             transaction.saveFavouriteEventIdentifier(eventIdentifier)
         }
 
-        let context = ApplicationTestBuilder().with(dataStore).build()
+        let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let event = context.eventsService.fetchEvent(identifier: eventIdentifier)
         let observer = CapturingEventObserver()
         event?.add(observer)

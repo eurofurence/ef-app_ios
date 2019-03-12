@@ -13,7 +13,7 @@ class WhenSyncingWhileLoggedIn: XCTestCase {
 
     func testObserversArePassedLoadedMessages() {
         let expected = [MessageCharacteristics].random
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         context.loginSuccessfully()
         let observer = CapturingPrivateMessagesObserver()
         context.privateMessagesService.add(observer)
@@ -27,7 +27,7 @@ class WhenSyncingWhileLoggedIn: XCTestCase {
 
     func testAddingAnotherObserverIsPassedLoadedMessages() {
         let expected = [MessageCharacteristics].random
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         context.loginSuccessfully()
         context.refreshLocalStore()
         context.api.simulateSuccessfulSync(.randomWithoutDeletions)
@@ -40,7 +40,7 @@ class WhenSyncingWhileLoggedIn: XCTestCase {
     }
 
     func testTheSyncDoesNotFinishUntilMessagesHaveLoaded() {
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         context.loginSuccessfully()
         let observer = CapturingPrivateMessagesObserver()
         context.privateMessagesService.add(observer)

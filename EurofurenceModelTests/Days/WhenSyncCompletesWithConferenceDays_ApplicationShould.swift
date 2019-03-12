@@ -13,7 +13,7 @@ import XCTest
 class WhenSyncCompletesWithConferenceDays_ApplicationShould: XCTestCase {
 
     func testProvideTheAdaptedDaysToObserversInDateOrder() {
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let delegate = CapturingEventsScheduleDelegate()
         let schedule = context.eventsService.makeEventsSchedule()
@@ -25,7 +25,7 @@ class WhenSyncCompletesWithConferenceDays_ApplicationShould: XCTestCase {
     }
 
     func testNotUpdateTheDelegateIfTheDaysHaveNotChangedBetweenSyncs() {
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let delegate = CapturingEventsScheduleDelegate()
         let schedule = context.eventsService.makeEventsSchedule()
@@ -41,7 +41,7 @@ class WhenSyncCompletesWithConferenceDays_ApplicationShould: XCTestCase {
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let dataStore = FakeDataStore()
         dataStore.save(syncResponse)
-        let context = ApplicationTestBuilder().with(dataStore).build()
+        let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let delegate = CapturingEventsScheduleDelegate()
         let schedule = context.eventsService.makeEventsSchedule()
         schedule.setDelegate(delegate)
@@ -52,7 +52,7 @@ class WhenSyncCompletesWithConferenceDays_ApplicationShould: XCTestCase {
     }
 
     func testProvideLateAddedObserversWithAdaptedDays() {
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
         context.performSuccessfulSync(response: syncResponse)
         let delegate = CapturingEventsScheduleDelegate()
@@ -64,7 +64,7 @@ class WhenSyncCompletesWithConferenceDays_ApplicationShould: XCTestCase {
     }
 
     func testSaveTheConferenceDaysToTheDataStore() {
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
         context.performSuccessfulSync(response: syncResponse)
 

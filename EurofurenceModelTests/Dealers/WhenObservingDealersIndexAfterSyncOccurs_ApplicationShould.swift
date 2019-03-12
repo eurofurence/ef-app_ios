@@ -12,7 +12,7 @@ import XCTest
 class WhenObservingDealersIndexAfterSyncOccurs_ApplicationShould: XCTestCase {
 
     func testUpdateTheDelegateWithDealersGroupedByDisplayName() {
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
         context.performSuccessfulSync(response: syncResponse)
         let dealersIndex = context.dealersService.makeDealersIndex()

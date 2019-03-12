@@ -11,12 +11,12 @@ import XCTest
 
 class WhenToldToOpenNotification_ThatRepresentsSyncEvent_ApplicationShould: XCTestCase {
 
-    var context: ApplicationTestBuilder.Context!
+    var context: EurofurenceSessionTestBuilder.Context!
 
     override func setUp() {
         super.setUp()
 
-        context = ApplicationTestBuilder().build()
+        context = EurofurenceSessionTestBuilder().build()
     }
 
     private func simulateSyncPushNotification(_ handler: @escaping (NotificationContent) -> Void) {

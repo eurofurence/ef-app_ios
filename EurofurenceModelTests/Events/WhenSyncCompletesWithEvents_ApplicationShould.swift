@@ -12,7 +12,7 @@ import XCTest
 class WhenSyncCompletesWithEvents_ApplicationShould: XCTestCase {
 
     func testTellObserversAboutAvailableEvents() {
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let observer = CapturingEventsServiceObserver()
         context.eventsService.add(observer)

@@ -21,7 +21,7 @@ class WhenAdaptingDealersFromResponse_ApplicationShould: XCTestCase {
         syncResponse.dealers.changed = [dealer]
         let dataStore = FakeDataStore()
         dataStore.save(syncResponse)
-        let context = ApplicationTestBuilder().with(dataStore).build()
+        let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let dealersIndex = context.dealersService.makeDealersIndex()
         let delegate = CapturingDealersIndexDelegate()
         dealersIndex.setDelegate(delegate)
@@ -38,7 +38,7 @@ class WhenAdaptingDealersFromResponse_ApplicationShould: XCTestCase {
         syncResponse.dealers.changed = [dealer]
         let dataStore = FakeDataStore()
         dataStore.save(syncResponse)
-        let context = ApplicationTestBuilder().with(dataStore).build()
+        let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let dealersIndex = context.dealersService.makeDealersIndex()
         let delegate = CapturingDealersIndexDelegate()
         dealersIndex.setDelegate(delegate)
@@ -56,7 +56,7 @@ class WhenAdaptingDealersFromResponse_ApplicationShould: XCTestCase {
         syncResponse.dealers.changed = [dealer]
         let dataStore = FakeDataStore()
         dataStore.save(syncResponse)
-        let context = ApplicationTestBuilder().with(dataStore).build()
+        let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let dealersIndex = context.dealersService.makeDealersIndex()
         let delegate = CapturingDealersIndexDelegate()
         dealersIndex.setDelegate(delegate)
@@ -73,7 +73,7 @@ class WhenAdaptingDealersFromResponse_ApplicationShould: XCTestCase {
         syncResponse.dealers.changed = [dealer]
         let dataStore = FakeDataStore()
         dataStore.save(syncResponse)
-        let context = ApplicationTestBuilder().with(dataStore).build()
+        let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let dealersIndex = context.dealersService.makeDealersIndex()
         let delegate = CapturingDealersIndexDelegate()
         dealersIndex.setDelegate(delegate)

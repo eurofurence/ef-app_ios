@@ -17,7 +17,7 @@ class InOrderToSupportEssentialSubtitleTag_ApplicationShould: XCTestCase {
         var event = randomEvent.element
         event.tags = ["essential_subtitle"]
         syncResponse.events.changed = [event]
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         context.performSuccessfulSync(response: syncResponse)
         let eventsObserver = CapturingEventsServiceObserver()
         context.eventsService.add(eventsObserver)

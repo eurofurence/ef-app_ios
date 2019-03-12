@@ -13,7 +13,7 @@ class WhenFetchingKnowledgeGroup_ApplicationShould: XCTestCase {
 
     func testReturnOnlyEntriesForThatGroup() {
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         context.performSuccessfulSync(response: syncResponse)
         let randomGroup = syncResponse.knowledgeGroups.changed.randomElement()
 

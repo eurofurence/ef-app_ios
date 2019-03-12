@@ -13,7 +13,7 @@ class WhenFetchingImagesForKnowledgeEntry_WhenEntryHasImages_ApplicationShould: 
 
     func testProvideTheImageDataFromTheRepository() {
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         context.performSuccessfulSync(response: syncResponse)
         let randomEntry = syncResponse.knowledgeEntries.changed.randomElement().element
         let images = randomEntry.imageIdentifiers

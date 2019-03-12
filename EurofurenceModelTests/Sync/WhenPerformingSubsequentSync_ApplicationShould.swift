@@ -12,7 +12,7 @@ import XCTest
 class WhenPerformingSubsequentSync_ApplicationShould: XCTestCase {
 
     func testProvideTheLastSyncTimeToTheSyncAPI() {
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         let expected = Date.random
         context.clock.tickTime(to: expected)
         context.refreshLocalStore()
@@ -23,7 +23,7 @@ class WhenPerformingSubsequentSync_ApplicationShould: XCTestCase {
     }
 
     func testCompleteSyncWhenNotRedownloadingAnyImages() {
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         let expected = Date.random
         context.clock.tickTime(to: expected)
         context.refreshLocalStore()
@@ -37,7 +37,7 @@ class WhenPerformingSubsequentSync_ApplicationShould: XCTestCase {
     }
 
     func testIndicateCompleteProgressIfNothingToDownload() {
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         let expected = Date.random
         context.clock.tickTime(to: expected)
         context.refreshLocalStore()

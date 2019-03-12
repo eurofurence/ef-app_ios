@@ -15,7 +15,7 @@ class AnnouncementRemoveAllBeforeInsertTests: XCTestCase {
         let originalResponse = ModelCharacteristics.randomWithoutDeletions
         var subsequentResponse = originalResponse
         subsequentResponse.announcements.removeAllBeforeInsert = true
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         context.performSuccessfulSync(response: originalResponse)
         context.performSuccessfulSync(response: subsequentResponse)
         let observer = CapturingAnnouncementsServiceObserver()
@@ -29,7 +29,7 @@ class AnnouncementRemoveAllBeforeInsertTests: XCTestCase {
         let originalResponse = ModelCharacteristics.randomWithoutDeletions
         var subsequentResponse = ModelCharacteristics.randomWithoutDeletions
         subsequentResponse.announcements.removeAllBeforeInsert = false
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         context.performSuccessfulSync(response: originalResponse)
         context.performSuccessfulSync(response: subsequentResponse)
         let combinedResponses = originalResponse.announcements.changed + subsequentResponse.announcements.changed

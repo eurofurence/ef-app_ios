@@ -18,12 +18,12 @@ class WhenLoggingIn: XCTestCase {
         return LoginResponse(userIdentifier: uid, username: username, token: token, tokenValidUntil: tokenValidUntil)
     }
 
-    var context: ApplicationTestBuilder.Context!
+    var context: EurofurenceSessionTestBuilder.Context!
 
     override func setUp() {
         super.setUp()
 
-        context = ApplicationTestBuilder().build()
+        context = EurofurenceSessionTestBuilder().build()
     }
 
     func testUsesLoginArgumentsAgainstAPI() {

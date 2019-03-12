@@ -17,7 +17,7 @@ class WhenAppLaunchesWhenClockReadsConferenceDay_ScheduleShould: XCTestCase {
         let randomDay = syncResponse.conferenceDays.changed.randomElement().element
         let dataStore = FakeDataStore()
         dataStore.save(syncResponse)
-        let context = ApplicationTestBuilder().with(randomDay.date).with(dataStore).build()
+        let context = EurofurenceSessionTestBuilder().with(randomDay.date).with(dataStore).build()
         let schedule = context.eventsService.makeEventsSchedule()
         let delegate = CapturingEventsScheduleDelegate()
         schedule.setDelegate(delegate)
@@ -36,7 +36,7 @@ class WhenAppLaunchesWhenClockReadsConferenceDay_ScheduleShould: XCTestCase {
         let sameDayAsRandomDayButDifferentTime = randomDayComponents.date!
         let dataStore = FakeDataStore()
         dataStore.save(syncResponse)
-        let context = ApplicationTestBuilder().with(sameDayAsRandomDayButDifferentTime).with(dataStore).build()
+        let context = EurofurenceSessionTestBuilder().with(sameDayAsRandomDayButDifferentTime).with(dataStore).build()
         let schedule = context.eventsService.makeEventsSchedule()
         let delegate = CapturingEventsScheduleDelegate()
         schedule.setDelegate(delegate)
@@ -52,7 +52,7 @@ class WhenAppLaunchesWhenClockReadsConferenceDay_ScheduleShould: XCTestCase {
         dataStore.save(response)
         let imageRepository = CapturingImageRepository()
         imageRepository.stubEverything(response)
-        let context = ApplicationTestBuilder().with(dataStore).with(randomDay.date).with(imageRepository).build()
+        let context = EurofurenceSessionTestBuilder().with(dataStore).with(randomDay.date).with(imageRepository).build()
         let schedule = context.eventsService.makeEventsSchedule()
         let delegate = CapturingEventsScheduleDelegate()
         schedule.setDelegate(delegate)

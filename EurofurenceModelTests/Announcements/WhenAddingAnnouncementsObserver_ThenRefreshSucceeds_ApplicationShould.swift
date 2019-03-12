@@ -12,7 +12,7 @@ import XCTest
 class WhenAddingAnnouncementsObserver_ThenRefreshSucceeds_ApplicationShould: XCTestCase {
 
     func testProvideTheObserverWithAllTheAnnouncements() {
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
 
         let observer = CapturingAnnouncementsServiceObserver()

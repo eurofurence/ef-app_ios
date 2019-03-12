@@ -13,7 +13,7 @@ class WhenDeletingAnnouncement_AfterSuccessfulSync_ApplicationShould: XCTestCase
 
     func testUpdateDelegateWithoutDeletedAnnouncement() {
         var response = ModelCharacteristics.randomWithoutDeletions
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         let delegate = CapturingAnnouncementsServiceObserver()
         context.announcementsService.add(delegate)
         context.refreshLocalStore()

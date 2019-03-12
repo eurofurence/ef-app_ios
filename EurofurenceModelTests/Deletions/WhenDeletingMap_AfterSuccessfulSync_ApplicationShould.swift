@@ -13,7 +13,7 @@ class WhenDeletingMap_AfterSuccessfulSync_ApplicationShould: XCTestCase {
 
     func testUpdateDelegateWithoutDeletedMap() {
         var response = ModelCharacteristics.randomWithoutDeletions
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         let delegate = CapturingMapsObserver()
         context.mapsService.add(delegate)
         context.refreshLocalStore()

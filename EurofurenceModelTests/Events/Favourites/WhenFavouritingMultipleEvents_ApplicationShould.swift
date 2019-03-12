@@ -22,7 +22,7 @@ class WhenFavouritingMultipleEvents_ApplicationShould: XCTestCase {
         let events = response.events.changed
         let dataStore = FakeDataStore(response: response)
 
-        let context = ApplicationTestBuilder().with(dataStore).build()
+        let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let identifiers = events.map({ EventIdentifier($0.identifier) })
         let observer = CapturingEventsServiceObserver()
         context.eventsService.add(observer)
@@ -36,7 +36,7 @@ class WhenFavouritingMultipleEvents_ApplicationShould: XCTestCase {
         let events = response.events.changed
         let dataStore = FakeDataStore(response: response)
 
-        let context = ApplicationTestBuilder().with(dataStore).build()
+        let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let identifiers = events.map({ EventIdentifier($0.identifier) })
         let observer = CapturingEventsServiceObserver()
         context.eventsService.add(observer)
@@ -58,7 +58,7 @@ class WhenFavouritingMultipleEvents_ApplicationShould: XCTestCase {
             events.map({ EventIdentifier($0.identifier) }).forEach(transaction.saveFavouriteEventIdentifier)
         }
 
-        let context = ApplicationTestBuilder().with(dataStore).build()
+        let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         context.refreshLocalStore()
         context.api.simulateSuccessfulSync(response)
         let observer = CapturingEventsServiceObserver()

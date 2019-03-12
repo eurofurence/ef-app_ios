@@ -11,10 +11,10 @@ import TestUtilities
 
 class EventAssertion: Assertion {
 
-    private let context: ApplicationTestBuilder.Context
+    private let context: EurofurenceSessionTestBuilder.Context
     private let modelCharacteristics: ModelCharacteristics
 
-    init(context: ApplicationTestBuilder.Context,
+    init(context: EurofurenceSessionTestBuilder.Context,
          modelCharacteristics: ModelCharacteristics,
          file: StaticString = #file,
          line: UInt = #line) {

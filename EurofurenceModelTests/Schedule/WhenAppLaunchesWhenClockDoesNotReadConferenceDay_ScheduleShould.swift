@@ -16,7 +16,7 @@ class WhenAppLaunchesWhenClockDoesNotReadConferenceDay_ScheduleShould: XCTestCas
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let dataStore = FakeDataStore()
         dataStore.save(syncResponse)
-        let context = ApplicationTestBuilder().with(.distantPast).with(dataStore).build()
+        let context = EurofurenceSessionTestBuilder().with(.distantPast).with(dataStore).build()
         let schedule = context.eventsService.makeEventsSchedule()
         let delegate = CapturingEventsScheduleDelegate()
         schedule.setDelegate(delegate)
@@ -31,7 +31,7 @@ class WhenAppLaunchesWhenClockDoesNotReadConferenceDay_ScheduleShould: XCTestCas
         dataStore.save(response)
         let imageRepository = CapturingImageRepository()
         imageRepository.stubEverything(response)
-        let context = ApplicationTestBuilder().with(dataStore).with(.distantPast).with(imageRepository).build()
+        let context = EurofurenceSessionTestBuilder().with(dataStore).with(.distantPast).with(imageRepository).build()
         let schedule = context.eventsService.makeEventsSchedule()
         let delegate = CapturingEventsScheduleDelegate()
         schedule.setDelegate(delegate)

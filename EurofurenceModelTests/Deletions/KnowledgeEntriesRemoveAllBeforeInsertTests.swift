@@ -16,7 +16,7 @@ class KnowledgeEntriesRemoveAllBeforeInsertTests: XCTestCase {
         let originalResponse = ModelCharacteristics.randomWithoutDeletions
         var subsequentResponse = originalResponse
         subsequentResponse.knowledgeEntries.removeAllBeforeInsert = true
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         context.performSuccessfulSync(response: originalResponse)
         context.performSuccessfulSync(response: subsequentResponse)
         let originalEntryIdentifiers = originalResponse.knowledgeEntries.changed.map({ $0.identifier })

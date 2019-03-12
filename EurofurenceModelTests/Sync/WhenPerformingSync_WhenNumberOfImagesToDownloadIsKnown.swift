@@ -12,7 +12,7 @@ import XCTest
 class WhenPerformingSync_WhenNumberOfImagesToDownloadIsKnown: XCTestCase {
 
     var imageAPI: SlowFakeImageAPI!
-    var context: ApplicationTestBuilder.Context!
+    var context: EurofurenceSessionTestBuilder.Context!
     var progress: Progress!
 
     override func setUp() {
@@ -20,7 +20,7 @@ class WhenPerformingSync_WhenNumberOfImagesToDownloadIsKnown: XCTestCase {
 
         imageAPI = SlowFakeImageAPI()
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
-        context = ApplicationTestBuilder().with(imageAPI).build()
+        context = EurofurenceSessionTestBuilder().with(imageAPI).build()
         progress = context.refreshLocalStore()
         context.api.simulateSuccessfulSync(syncResponse)
     }

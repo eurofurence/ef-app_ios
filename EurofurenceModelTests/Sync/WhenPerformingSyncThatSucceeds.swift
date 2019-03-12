@@ -12,7 +12,7 @@ import XCTest
 class WhenPerformingSyncThatSucceeds: XCTestCase {
 
     func testTheCompletionHandlerIsInvokedWithoutAnError() {
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         var invokedWithNilError = false
         context.refreshLocalStore { invokedWithNilError = $0 == nil }
         context.api.simulateSuccessfulSync(.randomWithoutDeletions)
@@ -21,7 +21,7 @@ class WhenPerformingSyncThatSucceeds: XCTestCase {
     }
 
     func testTheLongRunningTaskManagerIsToldToEndTaskBeganAtStartOfSync_AfterCompletionHandlerInvoked() {
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         var didFinishTaskBeforeCompletionHandlerReturned = false
         context.refreshLocalStore { (_) in didFinishTaskBeforeCompletionHandlerReturned = context.longRunningTaskManager.finishedTask }
 
@@ -34,7 +34,7 @@ class WhenPerformingSyncThatSucceeds: XCTestCase {
 
     func testAllImagesAreDownloaded() {
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         context.performSuccessfulSync(response: syncResponse)
         let expected = syncResponse.images.changed.map({ ImageEntity(identifier: $0.identifier, pngImageData: context.api.stubbedImage(for: $0.identifier)!) })
 
@@ -44,7 +44,7 @@ class WhenPerformingSyncThatSucceeds: XCTestCase {
     func testCompleteTheSyncWhenNoImagesToDownload() {
         var syncResponse = ModelCharacteristics.randomWithoutDeletions
         syncResponse.images.changed = []
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         var didFinish = false
         context.refreshLocalStore { (_) in didFinish = true }
         context.api.simulateSuccessfulSync(syncResponse)
@@ -53,7 +53,7 @@ class WhenPerformingSyncThatSucceeds: XCTestCase {
     }
 
     func testTheDataStoreIsToldToSaveTheLastSyncDateTime() {
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         context.refreshLocalStore()
         let randomTime = Date.random
         context.clock.tickTime(to: randomTime)

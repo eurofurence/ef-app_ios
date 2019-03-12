@@ -15,7 +15,7 @@ class EventConferenceTracksRemoveAllBeforeInsertTests: XCTestCase {
         let originalResponse = ModelCharacteristics.randomWithoutDeletions
         var subsequentResponse = originalResponse
         subsequentResponse.tracks.removeAllBeforeInsert = true
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         context.performSuccessfulSync(response: originalResponse)
         context.performSuccessfulSync(response: subsequentResponse)
 

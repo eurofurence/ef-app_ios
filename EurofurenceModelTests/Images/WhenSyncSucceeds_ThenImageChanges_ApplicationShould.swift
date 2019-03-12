@@ -23,7 +23,7 @@ class WhenSyncSucceeds_ThenImageChanges_ApplicationShould: XCTestCase {
     func testRedownloadTheImage() {
 
         let imageAPI = VerifyImageRedownloadedAPI()
-        let context = ApplicationTestBuilder().with(imageAPI).build()
+        let context = EurofurenceSessionTestBuilder().with(imageAPI).build()
         let originalResponse = ModelCharacteristics.randomWithoutDeletions
         var subsequentResponse = originalResponse
         let changedImage = originalResponse.images.changed.randomElement()

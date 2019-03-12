@@ -16,7 +16,7 @@ class WhenToldToOpenDealersTelegram_WhenApplicationCanHandleURL_ApplicationShoul
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let dealer = syncResponse.dealers.changed.randomElement().element
         let urlOpener = HappyPathURLOpener()
-        let context = ApplicationTestBuilder().with(urlOpener).build()
+        let context = EurofurenceSessionTestBuilder().with(urlOpener).build()
         context.performSuccessfulSync(response: syncResponse)
         let dealerIdentifier = DealerIdentifier(dealer.identifier)
         context.dealersService.openTelegram(for: dealerIdentifier)
@@ -31,7 +31,7 @@ class WhenToldToOpenDealersTelegram_WhenApplicationCanHandleURL_ApplicationShoul
         dealer.telegramHandle = ""
         syncResponse.dealers.changed = [dealer]
         let urlOpener = HappyPathURLOpener()
-        let context = ApplicationTestBuilder().with(urlOpener).build()
+        let context = EurofurenceSessionTestBuilder().with(urlOpener).build()
         context.performSuccessfulSync(response: syncResponse)
         let dealerIdentifier = DealerIdentifier(dealer.identifier)
         context.dealersService.openTelegram(for: dealerIdentifier)

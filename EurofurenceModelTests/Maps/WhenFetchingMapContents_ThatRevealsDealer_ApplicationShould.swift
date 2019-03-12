@@ -12,7 +12,7 @@ import XCTest
 class WhenFetchingMapContents_ThatRevealsDealer_ApplicationShould: XCTestCase {
 
     func testProvideTheDealer() {
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         var syncResponse = ModelCharacteristics.randomWithoutDeletions
         let dealer = DealerCharacteristics.random
         let (x, y, tapRadius) = (Int.random, Int.random, Int.random)

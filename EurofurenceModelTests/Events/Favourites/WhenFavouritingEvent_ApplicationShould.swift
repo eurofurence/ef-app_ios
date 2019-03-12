@@ -12,7 +12,7 @@ import XCTest
 
 class WhenFavouritingEvent_ApplicationShould: XCTestCase {
 
-    var context: ApplicationTestBuilder.Context!
+    var context: EurofurenceSessionTestBuilder.Context!
     var events: [EventCharacteristics]!
 
     override func setUp() {
@@ -22,7 +22,7 @@ class WhenFavouritingEvent_ApplicationShould: XCTestCase {
         events = response.events.changed
         let dataStore = FakeDataStore(response: response)
 
-        context = ApplicationTestBuilder().with(dataStore).build()
+        context = EurofurenceSessionTestBuilder().with(dataStore).build()
     }
 
     func testTellTheDataStoreToSaveTheEventIdentifier() {

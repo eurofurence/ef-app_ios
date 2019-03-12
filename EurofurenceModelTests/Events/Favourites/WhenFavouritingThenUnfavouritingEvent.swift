@@ -11,14 +11,14 @@ import XCTest
 
 class WhenFavouritingThenUnfavouritingEvent: XCTestCase {
 
-    var context: ApplicationTestBuilder.Context!
+    var context: EurofurenceSessionTestBuilder.Context!
     var event: Event!
     var eventObserver: CapturingEventObserver!
 
     override func setUp() {
         super.setUp()
 
-        context = ApplicationTestBuilder().build()
+        context = EurofurenceSessionTestBuilder().build()
         let modelCharacteristics = ModelCharacteristics.randomWithoutDeletions
         let randomEvent = modelCharacteristics.events.changed.randomElement().element
         context.performSuccessfulSync(response: modelCharacteristics)

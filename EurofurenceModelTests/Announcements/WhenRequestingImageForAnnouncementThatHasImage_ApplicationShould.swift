@@ -14,7 +14,7 @@ class WhenRequestingImageForAnnouncementThatHasImage_ApplicationShould: XCTestCa
     func testProvideTheImageData() {
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let announcement = syncResponse.announcements.changed.randomElement().element
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         context.performSuccessfulSync(response: syncResponse)
         let expected = context.api.stubbedImage(for: announcement.imageIdentifier)
         let identifier = AnnouncementIdentifier(announcement.identifier)

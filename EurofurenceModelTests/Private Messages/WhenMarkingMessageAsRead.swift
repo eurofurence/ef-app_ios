@@ -13,7 +13,7 @@ import XCTest
 class WhenMarkingMessageAsRead: XCTestCase {
 
     func testItShouldTellTheMarkAsReadAPIToMarkTheIdentifierOfTheMessageAsRead() {
-        let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
+        let context = EurofurenceSessionTestBuilder().loggedInWithValidCredential().build()
         let observer = CapturingPrivateMessagesObserver()
         context.privateMessagesService.add(observer)
         context.privateMessagesService.refreshMessages()
@@ -32,7 +32,7 @@ class WhenMarkingMessageAsRead: XCTestCase {
     func testItShouldSupplyTheUsersAuthenticationTokenToTheMarkAsReadAPI() {
         let authenticationToken = "Some auth token"
         let credential = Credential(username: "", registrationNumber: 0, authenticationToken: authenticationToken, tokenExpiryDate: .distantFuture)
-        let context = ApplicationTestBuilder().with(credential).build()
+        let context = EurofurenceSessionTestBuilder().with(credential).build()
         let observer = CapturingPrivateMessagesObserver()
         context.privateMessagesService.add(observer)
         context.privateMessagesService.refreshMessages()
@@ -49,7 +49,7 @@ class WhenMarkingMessageAsRead: XCTestCase {
     }
 
     func testItShouldNotifyObserversUnreadMessageCountChanged() {
-        let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
+        let context = EurofurenceSessionTestBuilder().loggedInWithValidCredential().build()
         let observer = CapturingPrivateMessagesObserver()
         context.privateMessagesService.add(observer)
         context.privateMessagesService.refreshMessages()

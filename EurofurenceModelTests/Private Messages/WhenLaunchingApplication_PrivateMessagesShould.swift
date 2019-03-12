@@ -13,7 +13,7 @@ class WhenLaunchingApplication_PrivateMessagesShould: XCTestCase {
 
     func testBeRefreshed() {
         let message = MessageCharacteristics.random
-        let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
+        let context = EurofurenceSessionTestBuilder().loggedInWithValidCredential().build()
         context.api.simulateMessagesResponse(response: [message])
         let observer = CapturingPrivateMessagesObserver()
         context.privateMessagesService.add(observer)
@@ -27,7 +27,7 @@ class WhenLaunchingApplication_PrivateMessagesShould: XCTestCase {
     }
 
     func testProvideZeroCountForNumberOfUnreadPrivateMessages() {
-        let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
+        let context = EurofurenceSessionTestBuilder().loggedInWithValidCredential().build()
         let observer = CapturingPrivateMessagesObserver()
         context.privateMessagesService.add(observer)
 

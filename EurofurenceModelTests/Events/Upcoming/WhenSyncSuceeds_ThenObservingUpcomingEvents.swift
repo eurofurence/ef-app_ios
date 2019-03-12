@@ -15,7 +15,7 @@ class WhenSyncSuceeds_ThenObservingUpcomingEvents: XCTestCase {
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let randomEvent = syncResponse.events.changed.randomElement().element
         let simulatedTime = randomEvent.startDateTime.addingTimeInterval(-1)
-        let context = ApplicationTestBuilder().with(simulatedTime).build()
+        let context = EurofurenceSessionTestBuilder().with(simulatedTime).build()
         context.performSuccessfulSync(response: syncResponse)
         let observer = CapturingEventsServiceObserver()
         context.eventsService.add(observer)

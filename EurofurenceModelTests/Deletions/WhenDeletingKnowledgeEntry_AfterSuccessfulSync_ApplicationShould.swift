@@ -15,7 +15,7 @@ class WhenDeletingKnowledgeEntry_AfterSuccessfulSync_ApplicationShould: XCTestCa
     func testTellTheStoreToDeleteTheEntry() {
         let dataStore = FakeDataStore()
         var response = ModelCharacteristics.randomWithoutDeletions
-        let context = ApplicationTestBuilder().with(dataStore).build()
+        let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         context.refreshLocalStore()
         context.api.simulateSuccessfulSync(response)
         let entryToDelete = String.random

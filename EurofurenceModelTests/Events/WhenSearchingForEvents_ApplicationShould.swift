@@ -12,7 +12,7 @@ import XCTest
 class WhenSearchingForEvents_ApplicationShould: XCTestCase {
 
     func testReturnExactMatchesOnTitles() {
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
         context.performSuccessfulSync(response: syncResponse)
         let eventsSearchController = context.eventsService.makeEventsSearchController()
@@ -26,7 +26,7 @@ class WhenSearchingForEvents_ApplicationShould: XCTestCase {
     }
 
     func testReturnFuzzyMatchesOnTitles() {
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
         context.performSuccessfulSync(response: syncResponse)
         let eventsSearchController = context.eventsService.makeEventsSearchController()
@@ -41,7 +41,7 @@ class WhenSearchingForEvents_ApplicationShould: XCTestCase {
     }
 
     func testBeCaseInsensitive() {
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         var syncResponse = ModelCharacteristics.randomWithoutDeletions
         let randomEvent = syncResponse.events.changed.randomElement()
         var event = randomEvent.element

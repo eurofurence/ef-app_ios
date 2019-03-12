@@ -16,7 +16,7 @@ class WhenDataStoreAlreadyContainsMaps_ApplicationShould: XCTestCase {
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let dataStore = FakeDataStore()
         dataStore.save(syncResponse)
-        let context = ApplicationTestBuilder().with(dataStore).build()
+        let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let observer = CapturingMapsObserver()
         context.mapsService.add(observer)
 

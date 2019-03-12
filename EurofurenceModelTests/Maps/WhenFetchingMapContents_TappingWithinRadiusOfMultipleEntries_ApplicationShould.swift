@@ -12,7 +12,7 @@ import XCTest
 class WhenFetchingMapContents_TappingWithinRadiusOfMultipleEntries_ApplicationShould: XCTestCase {
 
     func testReturnTheClosestMatch() {
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         var syncResponse = ModelCharacteristics.randomWithoutDeletions
         let room = RoomCharacteristics(roomIdentifier: .random, name: .random)
         let (x, y, tapRadius) = (Int.random, Int.random, Int.random)

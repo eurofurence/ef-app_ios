@@ -14,7 +14,7 @@ class WhenFetchingIconDataForDealerWithArtwork_ApplicationShould: XCTestCase {
     func testReturnTheArtworkFromTheImageAPIForTheArtistThumbnailIdentifier() {
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let dealer = syncResponse.dealers.changed.randomElement().element
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         context.performSuccessfulSync(response: syncResponse)
         let dealersIndex = context.dealersService.makeDealersIndex()
         let delegate = CapturingDealersIndexDelegate()

@@ -20,7 +20,7 @@ class WhenLaunchingApplicationWithPreexistingFavourites: XCTestCase {
             expected.forEach(transaction.saveFavouriteEventIdentifier)
         }
 
-        let context = ApplicationTestBuilder().with(dataStore).build()
+        let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let observer = CapturingEventsServiceObserver()
         context.eventsService.add(observer)
 
@@ -35,7 +35,7 @@ class WhenLaunchingApplicationWithPreexistingFavourites: XCTestCase {
             events.map({ EventIdentifier($0.identifier) }).forEach(transaction.saveFavouriteEventIdentifier)
         }
 
-        let context = ApplicationTestBuilder().with(dataStore).build()
+        let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let observer = CapturingEventsServiceObserver()
         context.eventsService.add(observer)
 

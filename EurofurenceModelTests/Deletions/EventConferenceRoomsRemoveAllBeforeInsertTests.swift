@@ -15,7 +15,7 @@ class EventConferenceRoomsRemoveAllBeforeInsertTests: XCTestCase {
         let originalResponse = ModelCharacteristics.randomWithoutDeletions
         var subsequentResponse = originalResponse
         subsequentResponse.rooms.removeAllBeforeInsert = true
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         context.performSuccessfulSync(response: originalResponse)
         context.performSuccessfulSync(response: subsequentResponse)
 

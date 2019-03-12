@@ -12,7 +12,7 @@ import XCTest
 class WhenObservingDealersIndexBeforeSyncOccurs_ApplicationShould: XCTestCase {
 
     func testTellTheIndexDelegateChangedToEmptyGroups() {
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         let dealersIndex = context.dealersService.makeDealersIndex()
         let delegate = CapturingDealersIndexDelegate()
         dealersIndex.setDelegate(delegate)

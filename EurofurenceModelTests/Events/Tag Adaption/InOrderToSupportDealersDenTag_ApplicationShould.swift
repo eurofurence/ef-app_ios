@@ -17,7 +17,7 @@ class InOrderToSupportDealersDenTag_ApplicationShould: XCTestCase {
         var event = randomEvent.element
         event.tags = ["dealers_den"]
         syncResponse.events.changed = [event]
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         context.performSuccessfulSync(response: syncResponse)
         let eventsObserver = CapturingEventsServiceObserver()
         context.eventsService.add(eventsObserver)
@@ -32,7 +32,7 @@ class InOrderToSupportDealersDenTag_ApplicationShould: XCTestCase {
         var event = randomEvent.element
         event.tags = []
         syncResponse.events.changed = [event]
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         context.performSuccessfulSync(response: syncResponse)
         let eventsObserver = CapturingEventsServiceObserver()
         context.eventsService.add(eventsObserver)

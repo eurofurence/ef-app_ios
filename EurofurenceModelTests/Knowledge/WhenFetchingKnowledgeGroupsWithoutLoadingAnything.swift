@@ -12,7 +12,7 @@ import XCTest
 class WhenFetchingKnowledgeGroupsWithoutLoadingAnything: XCTestCase {
 
     func testEmptyGroupsAreReturned() {
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         let observer = CapturingKnowledgeServiceObserver()
         context.knowledgeService.add(observer)
 

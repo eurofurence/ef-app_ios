@@ -12,7 +12,7 @@ import XCTest
 class WhenFetchingMapContent_ThatRevealMultipleOptions_ApplicationShould: XCTestCase {
 
     func testAdaptTheContentTypesIntoTheMultipleOption() {
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         var syncResponse = ModelCharacteristics.randomWithoutDeletions
         let room = syncResponse.rooms.changed.randomElement().element
         let (x, y, tapRadius) = (Int.random, Int.random, Int.random)

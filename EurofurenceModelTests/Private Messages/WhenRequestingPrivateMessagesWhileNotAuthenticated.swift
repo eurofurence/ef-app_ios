@@ -11,13 +11,13 @@ import XCTest
 
 class WhenRequestingPrivateMessagesWhileNotAuthenticated: XCTestCase {
 
-    var context: ApplicationTestBuilder.Context!
+    var context: EurofurenceSessionTestBuilder.Context!
     var capturingMessagesObserver: CapturingPrivateMessagesObserver!
 
     override func setUp() {
         super.setUp()
 
-        context = ApplicationTestBuilder().build()
+        context = EurofurenceSessionTestBuilder().build()
         capturingMessagesObserver = CapturingPrivateMessagesObserver()
         context.privateMessagesService.add(capturingMessagesObserver)
         context.privateMessagesService.refreshMessages()

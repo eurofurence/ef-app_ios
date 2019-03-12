@@ -14,7 +14,7 @@ class WhenResolvingDataStoreState: XCTestCase {
 
     func testStoreWithNoLastRefreshTimeIsAbsent() {
         let capturingDataStore = FakeDataStore()
-        let context = ApplicationTestBuilder().with(capturingDataStore).build()
+        let context = EurofurenceSessionTestBuilder().with(capturingDataStore).build()
         var state: EurofurenceSessionState?
         context.sessionStateService.determineSessionState { state = $0 }
 
@@ -29,7 +29,7 @@ class WhenResolvingDataStoreState: XCTestCase {
 
         let userPreferences = StubUserPreferences()
         userPreferences.refreshStoreOnLaunch = true
-        let context = ApplicationTestBuilder().with(capturingDataStore).with(userPreferences).build()
+        let context = EurofurenceSessionTestBuilder().with(capturingDataStore).with(userPreferences).build()
         var state: EurofurenceSessionState?
         context.sessionStateService.determineSessionState { state = $0 }
 
@@ -44,7 +44,7 @@ class WhenResolvingDataStoreState: XCTestCase {
 
         let userPreferences = StubUserPreferences()
         userPreferences.refreshStoreOnLaunch = false
-        let context = ApplicationTestBuilder().with(capturingDataStore).with(userPreferences).build()
+        let context = EurofurenceSessionTestBuilder().with(capturingDataStore).with(userPreferences).build()
         var state: EurofurenceSessionState?
         context.sessionStateService.determineSessionState { state = $0 }
 

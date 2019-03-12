@@ -16,7 +16,7 @@ class WhenUpgradingBetweenAppVersions_ApplicationShould: XCTestCase {
         let forceUpgradeRequired = StubForceRefreshRequired(isForceRefreshRequired: true)
         let presentDataStore = FakeDataStore()
         presentDataStore.save(.randomWithoutDeletions)
-        let context = ApplicationTestBuilder().with(presentDataStore).with(forceUpgradeRequired).build()
+        let context = EurofurenceSessionTestBuilder().with(presentDataStore).with(forceUpgradeRequired).build()
         var dataStoreState: EurofurenceSessionState?
         context.sessionStateService.determineSessionState { dataStoreState = $0 }
 
@@ -29,7 +29,7 @@ class WhenUpgradingBetweenAppVersions_ApplicationShould: XCTestCase {
         presentDataStore.save(.randomWithoutDeletions)
         let preferences = StubUserPreferences()
         preferences.refreshStoreOnLaunch = true
-        let context = ApplicationTestBuilder().with(preferences).with(presentDataStore).with(forceUpgradeRequired).build()
+        let context = EurofurenceSessionTestBuilder().with(preferences).with(presentDataStore).with(forceUpgradeRequired).build()
         context.sessionStateService.determineSessionState { (_) in }
 
         XCTAssertTrue(forceUpgradeRequired.wasEnquiredWhetherForceRefreshRequired)
@@ -40,7 +40,7 @@ class WhenUpgradingBetweenAppVersions_ApplicationShould: XCTestCase {
         let absentDataStore = FakeDataStore()
         let preferences = StubUserPreferences()
         preferences.refreshStoreOnLaunch = true
-        let context = ApplicationTestBuilder().with(preferences).with(absentDataStore).with(forceUpgradeRequired).build()
+        let context = EurofurenceSessionTestBuilder().with(preferences).with(absentDataStore).with(forceUpgradeRequired).build()
         context.sessionStateService.determineSessionState { (_) in }
 
         XCTAssertTrue(forceUpgradeRequired.wasEnquiredWhetherForceRefreshRequired)

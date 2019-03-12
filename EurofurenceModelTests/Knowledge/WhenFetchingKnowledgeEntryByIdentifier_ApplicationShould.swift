@@ -13,7 +13,7 @@ class WhenFetchingKnowledgeEntryByIdentifier_ApplicationShould: XCTestCase {
 
     func testReturnTheSpecifiedEntry() {
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         context.performSuccessfulSync(response: syncResponse)
         let randomEntry = syncResponse.knowledgeEntries.changed.randomElement().element
         var actual: KnowledgeEntry?

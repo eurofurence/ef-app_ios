@@ -1,5 +1,5 @@
 //
-//  ApplicationTestBuilder.swift
+//  EurofurenceSessionTestBuilder.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 18/07/2017.
@@ -10,7 +10,7 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import Foundation
 
-class ApplicationTestBuilder {
+class EurofurenceSessionTestBuilder {
 
     struct Context {
         var session: EurofurenceSession
@@ -149,64 +149,64 @@ class ApplicationTestBuilder {
     private let hoursDateFormatter = FakeHoursDateFormatter()
     private let mapCoordinateRender = CapturingMapCoordinateRender()
 
-    func with(_ currentDate: Date) -> ApplicationTestBuilder {
+    func with(_ currentDate: Date) -> EurofurenceSessionTestBuilder {
         clock = StubClock(currentDate: currentDate)
         return self
     }
 
-    func with(_ persistedCredential: Credential?) -> ApplicationTestBuilder {
+    func with(_ persistedCredential: Credential?) -> EurofurenceSessionTestBuilder {
         credentialStore = CapturingCredentialStore(persistedCredential: persistedCredential)
         return self
     }
 
-    func with(_ pushPermissionsRequester: PushPermissionsRequester) -> ApplicationTestBuilder {
+    func with(_ pushPermissionsRequester: PushPermissionsRequester) -> EurofurenceSessionTestBuilder {
         self.pushPermissionsRequester = pushPermissionsRequester
         return self
     }
 
     @discardableResult
-    func with(_ dataStore: FakeDataStore) -> ApplicationTestBuilder {
+    func with(_ dataStore: FakeDataStore) -> EurofurenceSessionTestBuilder {
         self.dataStore = dataStore
         return self
     }
 
     @discardableResult
-    func with(_ userPreferences: UserPreferences) -> ApplicationTestBuilder {
+    func with(_ userPreferences: UserPreferences) -> EurofurenceSessionTestBuilder {
         self.userPreferences = userPreferences
         return self
     }
 
     @discardableResult
-    func with(timeIntervalForUpcomingEventsSinceNow: TimeInterval) -> ApplicationTestBuilder {
+    func with(timeIntervalForUpcomingEventsSinceNow: TimeInterval) -> EurofurenceSessionTestBuilder {
         self.timeIntervalForUpcomingEventsSinceNow = timeIntervalForUpcomingEventsSinceNow
         return self
     }
 
     @discardableResult
-    func with(_ api: FakeAPI) -> ApplicationTestBuilder {
+    func with(_ api: FakeAPI) -> EurofurenceSessionTestBuilder {
         self.api = api
         return self
     }
 
     @discardableResult
-    func with(_ imageRepository: CapturingImageRepository) -> ApplicationTestBuilder {
+    func with(_ imageRepository: CapturingImageRepository) -> EurofurenceSessionTestBuilder {
         self.imageRepository = imageRepository
         return self
     }
 
     @discardableResult
-    func with(_ urlOpener: CapturingURLOpener) -> ApplicationTestBuilder {
+    func with(_ urlOpener: CapturingURLOpener) -> EurofurenceSessionTestBuilder {
         self.urlOpener = urlOpener
         return self
     }
 
     @discardableResult
-    func with(_ collectThemAllRequestFactory: CollectThemAllRequestFactory) -> ApplicationTestBuilder {
+    func with(_ collectThemAllRequestFactory: CollectThemAllRequestFactory) -> EurofurenceSessionTestBuilder {
         self.collectThemAllRequestFactory = collectThemAllRequestFactory
         return self
     }
 
-    func loggedInWithValidCredential() -> ApplicationTestBuilder {
+    func loggedInWithValidCredential() -> EurofurenceSessionTestBuilder {
         let credential = Credential(username: "User",
                                     registrationNumber: 42,
                                     authenticationToken: "Token",
@@ -215,7 +215,7 @@ class ApplicationTestBuilder {
     }
 
     @discardableResult
-    func with(_ forceUpgradeRequired: ForceRefreshRequired) -> ApplicationTestBuilder {
+    func with(_ forceUpgradeRequired: ForceRefreshRequired) -> EurofurenceSessionTestBuilder {
         self.forceUpgradeRequired = forceUpgradeRequired
         return self
     }

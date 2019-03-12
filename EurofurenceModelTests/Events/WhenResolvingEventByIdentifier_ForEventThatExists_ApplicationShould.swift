@@ -13,7 +13,7 @@ class WhenResolvingEventByIdentifier_ForEventThatExists_ApplicationShould: XCTes
 
     func testResolveTheExpectedEvent() {
         let response = ModelCharacteristics.randomWithoutDeletions
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         context.refreshLocalStore()
         context.api.simulateSuccessfulSync(response)
         let characteristics = response.events.changed.randomElement().element

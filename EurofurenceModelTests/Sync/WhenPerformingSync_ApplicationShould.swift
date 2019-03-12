@@ -11,13 +11,13 @@ import XCTest
 
 class WhenPerformingSync_ApplicationShould: XCTestCase {
 
-    var context: ApplicationTestBuilder.Context!
+    var context: EurofurenceSessionTestBuilder.Context!
     var refreshObserver: CapturingRefreshServiceObserver!
 
     override func setUp() {
         super.setUp()
 
-        context = ApplicationTestBuilder().build()
+        context = EurofurenceSessionTestBuilder().build()
         refreshObserver = CapturingRefreshServiceObserver()
         context.refreshService.add(refreshObserver)
     }

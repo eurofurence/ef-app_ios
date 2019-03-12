@@ -12,7 +12,7 @@ import XCTest
 class WhenAddingAnnouncementsObserverBeforeLoadingAnything: XCTestCase {
 
     func testEmptyAnnouncementsAreStillPropogatedToTheObserver() {
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         let observer = CapturingAnnouncementsServiceObserver()
         context.announcementsService.add(observer)
 

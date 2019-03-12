@@ -12,7 +12,7 @@ import XCTest
 class WhenObservingMaps_ThenSyncSucceeds_ApplicationShould: XCTestCase {
 
     func testProvideTheMapsToTheObserverInAlphabeticalOrder() {
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let observer = CapturingMapsObserver()
         context.mapsService.add(observer)

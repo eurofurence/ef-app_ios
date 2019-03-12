@@ -12,13 +12,13 @@ import XCTest
 
 class WhenOpeningAnnouncement_ApplicationShould: XCTestCase {
 
-    var context: ApplicationTestBuilder.Context!
+    var context: EurofurenceSessionTestBuilder.Context!
     var syncResponse: ModelCharacteristics!
 
     override func setUp() {
         super.setUp()
 
-        context = ApplicationTestBuilder().build()
+        context = EurofurenceSessionTestBuilder().build()
         syncResponse = ModelCharacteristics.randomWithoutDeletions
         context.performSuccessfulSync(response: syncResponse)
     }
@@ -106,7 +106,7 @@ class WhenOpeningAnnouncement_ApplicationShould: XCTestCase {
             transaction.saveReadAnnouncements(identifiers)
         }
 
-        let context = ApplicationTestBuilder().with(dataStore).build()
+        let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let observer = CapturingAnnouncementsServiceObserver()
         context.announcementsService.add(observer)
 

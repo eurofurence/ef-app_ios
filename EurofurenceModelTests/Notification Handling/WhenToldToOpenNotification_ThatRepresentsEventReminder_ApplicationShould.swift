@@ -13,7 +13,7 @@ import XCTest
 class WhenToldToOpenNotification_ThatRepresentsEventReminder_ApplicationShould: XCTestCase {
 
     func testNotRefreshTheLocalStore() {
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         let payload: [String: String] = [
             ApplicationNotificationKey.notificationContentKind.rawValue: ApplicationNotificationContentKind.event.rawValue,
             ApplicationNotificationKey.notificationContentIdentifier.rawValue: String.random
@@ -29,7 +29,7 @@ class WhenToldToOpenNotification_ThatRepresentsEventReminder_ApplicationShould: 
         let event = syncResponse.events.changed.randomElement().element
         let dataStore = FakeDataStore()
         dataStore.save(syncResponse)
-        let context = ApplicationTestBuilder().with(dataStore).build()
+        let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let payload: [String: String] = [
             ApplicationNotificationKey.notificationContentKind.rawValue: ApplicationNotificationContentKind.event.rawValue,
             ApplicationNotificationKey.notificationContentIdentifier.rawValue: event.identifier
@@ -42,7 +42,7 @@ class WhenToldToOpenNotification_ThatRepresentsEventReminder_ApplicationShould: 
     }
 
     func testProvideUnknownActionWhenMissingContentIdentifierKey() {
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         let payload: [String: String] = [
             ApplicationNotificationKey.notificationContentKind.rawValue: ApplicationNotificationContentKind.event.rawValue
         ]
@@ -54,7 +54,7 @@ class WhenToldToOpenNotification_ThatRepresentsEventReminder_ApplicationShould: 
     }
 
     func testProvideUnknownActionWhenEventWithIdentifierDoesNotExistWithinStore() {
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         let payload: [String: String] = [
             ApplicationNotificationKey.notificationContentKind.rawValue: ApplicationNotificationContentKind.event.rawValue,
             ApplicationNotificationKey.notificationContentIdentifier.rawValue: String.random

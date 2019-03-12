@@ -12,7 +12,7 @@ import XCTest
 class WhenLoggingOut_WithoutRegisteredDeviceToken: XCTestCase {
 
     func testWithoutHavingRegisteredForNotificationsThenTheUserShouldStillBeLoggedOut() {
-        let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
+        let context = EurofurenceSessionTestBuilder().loggedInWithValidCredential().build()
         let logoutObserver = CapturingLogoutObserver()
         context.authenticationService.logout(completionHandler: logoutObserver.completionHandler)
 
@@ -20,7 +20,7 @@ class WhenLoggingOut_WithoutRegisteredDeviceToken: XCTestCase {
     }
 
     func testLoggingInAsAnotherUserShouldRequestLoginUsingTheirDetails() {
-        let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
+        let context = EurofurenceSessionTestBuilder().loggedInWithValidCredential().build()
         context.authenticationService.logout { _ in }
         context.notificationTokenRegistration.succeedLastRequest()
         let secondUser = "Some other awesome guy"

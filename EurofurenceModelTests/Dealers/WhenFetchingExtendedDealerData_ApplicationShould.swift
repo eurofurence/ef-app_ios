@@ -11,7 +11,7 @@ import XCTest
 
 class WhenFetchingExtendedDealerData_ApplicationShould: XCTestCase {
 
-    var context: ApplicationTestBuilder.Context!
+    var context: EurofurenceSessionTestBuilder.Context!
     var response: ModelCharacteristics!
     var randomDealer: DealerCharacteristics!
     var dealerData: ExtendedDealerData!
@@ -20,7 +20,7 @@ class WhenFetchingExtendedDealerData_ApplicationShould: XCTestCase {
         super.setUp()
 
         response = ModelCharacteristics.randomWithoutDeletions
-        context = ApplicationTestBuilder().build()
+        context = EurofurenceSessionTestBuilder().build()
         context.refreshLocalStore()
         context.api.simulateSuccessfulSync(response)
         randomDealer = response.dealers.changed.randomElement().element

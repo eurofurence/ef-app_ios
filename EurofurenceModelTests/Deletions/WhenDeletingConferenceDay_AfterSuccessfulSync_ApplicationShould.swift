@@ -15,7 +15,7 @@ class WhenDeletingConferenceDay_AfterSuccessfulSync_ApplicationShould: XCTestCas
     func testTellTheStoreToDeleteTheDay() {
         let dataStore = FakeDataStore()
         var response = ModelCharacteristics.randomWithoutDeletions
-        let context = ApplicationTestBuilder().with(dataStore).build()
+        let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         context.refreshLocalStore()
         context.api.simulateSuccessfulSync(response)
         let dayToDelete = String.random

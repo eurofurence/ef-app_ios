@@ -15,7 +15,7 @@ class WhenDeletingTrack_AfterSuccessfulSync_ApplicationShould: XCTestCase {
     func testTellTheStoreToDeleteTheTrack() {
         let dataStore = FakeDataStore()
         var response = ModelCharacteristics.randomWithoutDeletions
-        let context = ApplicationTestBuilder().with(dataStore).build()
+        let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         context.refreshLocalStore()
         context.api.simulateSuccessfulSync(response)
         let trackToDelete = String.random

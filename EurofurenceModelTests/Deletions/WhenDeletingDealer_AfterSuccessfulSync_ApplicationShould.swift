@@ -13,7 +13,7 @@ class WhenDeletingDealer_AfterSuccessfulSync_ApplicationShould: XCTestCase {
 
     func testUpdateDelegateWithoutDeletedDealer() {
         var response = ModelCharacteristics.randomWithoutDeletions
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         let delegate = CapturingDealersIndexDelegate()
         let index = context.dealersService.makeDealersIndex()
         index.setDelegate(delegate)

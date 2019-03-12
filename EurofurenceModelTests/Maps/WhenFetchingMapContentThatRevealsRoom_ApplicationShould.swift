@@ -11,7 +11,7 @@ import XCTest
 
 class WhenFetchingMapContentThatRevealsRoom_ApplicationShould: XCTestCase {
 
-    var context: ApplicationTestBuilder.Context!
+    var context: EurofurenceSessionTestBuilder.Context!
     var map: MapCharacteristics!
     var room: RoomCharacteristics!
     var x: Int!
@@ -21,7 +21,7 @@ class WhenFetchingMapContentThatRevealsRoom_ApplicationShould: XCTestCase {
     override func setUp() {
         super.setUp()
 
-        context = ApplicationTestBuilder().build()
+        context = EurofurenceSessionTestBuilder().build()
         var syncResponse = ModelCharacteristics.randomWithoutDeletions
         room = RoomCharacteristics(roomIdentifier: .random, name: .random)
         (x, y, tapRadius) = (Int.random, Int.random, Int.random)

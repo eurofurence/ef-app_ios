@@ -12,7 +12,7 @@ import XCTest
 class WhenSyncSucceeds_ForEmptyDataStore_ApplicationShould: XCTestCase {
 
     func testSaveAllCharacteristicsIntoTheStore() {
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         let characteristics = ModelCharacteristics.randomWithoutDeletions
         let store = context.dataStore
 

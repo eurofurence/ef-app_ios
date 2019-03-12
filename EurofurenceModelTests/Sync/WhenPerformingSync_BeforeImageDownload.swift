@@ -12,7 +12,7 @@ import XCTest
 class WhenPerformingSync_BeforeImageDownload: XCTestCase {
 
     func testTheProgressShouldBeIndeterminate() {
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         let progress = context.refreshLocalStore()
 
         XCTAssertTrue(progress.isIndeterminate)

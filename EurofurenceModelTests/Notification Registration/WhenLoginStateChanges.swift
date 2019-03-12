@@ -22,7 +22,7 @@ class WhenLoginStateChanges: XCTestCase {
     }
 
     func testLoggingInShouldReregisterTheSamePushDeviceToken() {
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         let deviceToken = "Token".data(using: .utf8)!
         context.registerForRemoteNotifications(deviceToken)
 
@@ -32,7 +32,7 @@ class WhenLoginStateChanges: XCTestCase {
     func testLoggingInWhenWeHaveTokenStoredShouldUseTheTokenWhenPushTokenRegistrationOccurs() {
         let authenticationToken = "JWT Token"
         let existingCredential = makeCredential(authenticationToken: authenticationToken, tokenExpiryDate: .distantFuture)
-        let context = ApplicationTestBuilder().with(existingCredential).build()
+        let context = EurofurenceSessionTestBuilder().with(existingCredential).build()
         context.registerForRemoteNotifications()
 
         XCTAssertEqual(authenticationToken, context.notificationTokenRegistration.capturedUserAuthenticationToken)
@@ -41,14 +41,14 @@ class WhenLoginStateChanges: XCTestCase {
     func testLoggingInWhenWeHaveTokenThatHasExpiredShouldNotUseTheTokenWhenPushTokenRegistrationOccurs() {
         let authenticationToken = "JWT Token"
         let existingCredential = makeCredential(authenticationToken: authenticationToken, tokenExpiryDate: .distantPast)
-        let context = ApplicationTestBuilder().with(existingCredential).build()
+        let context = EurofurenceSessionTestBuilder().with(existingCredential).build()
         context.registerForRemoteNotifications()
 
         XCTAssertNil(context.notificationTokenRegistration.capturedUserAuthenticationToken)
     }
 
     func testThePersistedTokenIsNotDeletedUntilTheUserActuallyLogsOut() {
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         XCTAssertFalse(context.credentialStore.didDeletePersistedToken)
     }
 

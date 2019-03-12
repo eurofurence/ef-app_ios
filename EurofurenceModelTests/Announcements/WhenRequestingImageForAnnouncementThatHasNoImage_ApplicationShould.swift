@@ -17,7 +17,7 @@ class WhenRequestingImageForAnnouncementThatHasNoImage_ApplicationShould: XCTest
         var announcement = randomAnnouncement.element
         announcement.imageIdentifier = nil
         syncResponse.announcements.changed[randomAnnouncement.index] = announcement
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         context.performSuccessfulSync(response: syncResponse)
         let identifier = AnnouncementIdentifier(announcement.identifier)
         var invokedHandlerWithNilData = false

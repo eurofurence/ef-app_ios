@@ -16,7 +16,7 @@ class WhenFetchingKnowledgeGroupsBeforeRefreshWhenStoreHasGroups: XCTestCase {
         let dataStore = FakeDataStore()
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
         dataStore.save(syncResponse)
-        let context = ApplicationTestBuilder().with(dataStore).build()
+        let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let observer = CapturingKnowledgeServiceObserver()
         context.knowledgeService.add(observer)
 

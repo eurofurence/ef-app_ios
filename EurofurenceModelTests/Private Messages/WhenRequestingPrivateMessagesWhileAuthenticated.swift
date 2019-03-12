@@ -12,7 +12,7 @@ import XCTest
 
 class WhenRequestingPrivateMessagesWhileAuthenticated: XCTestCase {
 
-    var context: ApplicationTestBuilder.Context!
+    var context: EurofurenceSessionTestBuilder.Context!
     var capturingMessagesObserver: CapturingPrivateMessagesObserver!
     var credential: Credential!
 
@@ -23,7 +23,7 @@ class WhenRequestingPrivateMessagesWhileAuthenticated: XCTestCase {
                                      registrationNumber: 0,
                                      authenticationToken: "Some super secret stuff",
                                      tokenExpiryDate: .distantFuture)
-        context = ApplicationTestBuilder().with(credential).build()
+        context = EurofurenceSessionTestBuilder().with(credential).build()
         capturingMessagesObserver = CapturingPrivateMessagesObserver()
         context.privateMessagesService.add(capturingMessagesObserver)
         capturingMessagesObserver.wasToldSuccessfullyLoadedPrivateMessages = false

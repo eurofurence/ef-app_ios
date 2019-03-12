@@ -18,7 +18,7 @@ class WhenSchedulingReminderForEvent_ApplicationShould: XCTestCase {
         let preferences = StubUserPreferences()
         let upcomingEventReminderInterval = TimeInterval.random
         preferences.upcomingEventReminderInterval = upcomingEventReminderInterval
-        let context = ApplicationTestBuilder().with(preferences).with(dataStore).build()
+        let context = EurofurenceSessionTestBuilder().with(preferences).with(dataStore).build()
         let event = response.events.changed.randomElement().element
 
         let expectedDateComponents: DateComponents = {

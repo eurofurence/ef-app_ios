@@ -29,7 +29,7 @@ class WhenSyncFinishes_ApplicationShould: XCTestCase {
 
     func testNotPerformMultipleTransactions() {
         let assertion = SingleTransactionOnlyAllowedDataStore()
-        let context = ApplicationTestBuilder().with(assertion).build()
+        let context = EurofurenceSessionTestBuilder().with(assertion).build()
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
         context.performSuccessfulSync(response: syncResponse)
 

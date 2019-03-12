@@ -12,7 +12,7 @@ import XCTest
 class WhenFetchingKnowledgeGroupsAfterSuccessfulRefresh: XCTestCase {
 
     func testEntriesAreConsolidatedByGroupIdentifierInGroupOrder() {
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
         context.performSuccessfulSync(response: syncResponse)
         let observer = CapturingKnowledgeServiceObserver()
@@ -24,7 +24,7 @@ class WhenFetchingKnowledgeGroupsAfterSuccessfulRefresh: XCTestCase {
     }
 
     func testEarlyBoundObserversAreUpdatedWithNewKnowledgeGroups() {
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         let observer = CapturingKnowledgeServiceObserver()
         context.knowledgeService.add(observer)
         let syncResponse = ModelCharacteristics.randomWithoutDeletions

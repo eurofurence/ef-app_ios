@@ -13,7 +13,7 @@ class WhenObservingCollectThemAllURLWhileLoggedOut_ApplicationShould: XCTestCase
 
     func testEmitAnonymousGameURL() {
         let collectThemAllRequestFactory = StubCollectThemAllRequestFactory()
-        let context = ApplicationTestBuilder().with(collectThemAllRequestFactory).build()
+        let context = EurofurenceSessionTestBuilder().with(collectThemAllRequestFactory).build()
         let observer = CapturingCollectThemAllURLObserver()
         context.collectThemAllService.subscribe(observer)
 
@@ -22,7 +22,7 @@ class WhenObservingCollectThemAllURLWhileLoggedOut_ApplicationShould: XCTestCase
 
     func testEmitAuthenticatedGameURLForUserWhenLoggingIn() {
         let collectThemAllRequestFactory = StubCollectThemAllRequestFactory()
-        let context = ApplicationTestBuilder().with(collectThemAllRequestFactory).build()
+        let context = EurofurenceSessionTestBuilder().with(collectThemAllRequestFactory).build()
         let observer = CapturingCollectThemAllURLObserver()
         context.collectThemAllService.subscribe(observer)
         let args = LoginArguments(registrationNumber: .random, username: .random, password: .random)

@@ -13,7 +13,7 @@ import XCTest
 class WhenRegisteredForPushNotifications: XCTestCase {
 
     func testTheApplicationTellsTheRemoteNotificationRegistrationItRegisteredWithTheDeviceToken() {
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         let deviceToken = Data()
         context.notificationsService.storeRemoteNotificationsToken(deviceToken)
 
@@ -22,7 +22,7 @@ class WhenRegisteredForPushNotifications: XCTestCase {
 
     func testLaunchingAppRequestsPushPermissions() {
         let permissionsRequester = CapturingPushPermissionsRequester()
-        ApplicationTestBuilder().with(permissionsRequester).build()
+        EurofurenceSessionTestBuilder().with(permissionsRequester).build()
 
         XCTAssertTrue(permissionsRequester.wasToldToRequestPushPermissions)
     }

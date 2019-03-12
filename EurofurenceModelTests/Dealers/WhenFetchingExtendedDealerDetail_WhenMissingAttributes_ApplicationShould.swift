@@ -11,7 +11,7 @@ import XCTest
 
 class WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould: XCTestCase {
 
-    var context: ApplicationTestBuilder.Context!
+    var context: EurofurenceSessionTestBuilder.Context!
     var response: ModelCharacteristics!
     var dealer: DealerCharacteristics!
     var dealerData: ExtendedDealerData!
@@ -28,7 +28,7 @@ class WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould: 
         dealer.aboutTheArtText = ""
         dealer.artPreviewCaption = ""
         response.dealers.changed = [dealer]
-        context = ApplicationTestBuilder().build()
+        context = EurofurenceSessionTestBuilder().build()
         context.refreshLocalStore()
         context.api.simulateSuccessfulSync(response)
         let identifier = DealerIdentifier(dealer.identifier)

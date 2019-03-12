@@ -12,7 +12,7 @@ import XCTest
 class WhenSavingSuccessfulSyncResponse: XCTestCase {
 
     func testTheCompletionHandlerIsNotInvokedUntilDataStoreTransactionCompletes() {
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         var invokedWithNilError = false
         context.refreshLocalStore { invokedWithNilError = $0 == nil }
         context.dataStore.transactionInvokedBlock = {

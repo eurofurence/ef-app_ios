@@ -15,7 +15,7 @@ class WhenPerformingFullStoreRefresh_ApplicationShould: XCTestCase {
     func testRequestSyncWithoutDeltas() {
         let dataStore = FakeDataStore()
         dataStore.save(.randomWithoutDeletions)
-        let context = ApplicationTestBuilder().with(dataStore).build()
+        let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         context.performSuccessfulSync(response: .randomWithoutDeletions)
         _ = context.refreshService.performFullStoreRefresh { (_) in }
 

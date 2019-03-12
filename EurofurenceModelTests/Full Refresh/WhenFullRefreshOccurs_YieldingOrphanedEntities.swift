@@ -11,14 +11,14 @@ import XCTest
 
 class WhenFullRefreshOccurs_YieldingOrphanedEntities: XCTestCase {
 
-    var context: ApplicationTestBuilder.Context!
+    var context: EurofurenceSessionTestBuilder.Context!
     var originalResponse: ModelCharacteristics!
     var fullSyncResponse: ModelCharacteristics!
 
     override func setUp() {
         super.setUp()
 
-        context = ApplicationTestBuilder().build()
+        context = EurofurenceSessionTestBuilder().build()
         originalResponse = .randomWithoutDeletions
         fullSyncResponse = .randomWithoutDeletions
         context.performSuccessfulSync(response: originalResponse)

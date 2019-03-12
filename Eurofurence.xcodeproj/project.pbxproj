@@ -1085,7 +1085,7 @@
 		CAEA0F8C216E1AE200B0C7A6 /* ExtendedDealerData+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF81C7820DDAEAA00898C52 /* ExtendedDealerData+RandomValueProviding.swift */; };
 		CAEA0F8D216E1AE200B0C7A6 /* StubMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DA820E2CE2C007536CD /* StubMap.swift */; };
 		CAEA0F8F216E1C2D00B0C7A6 /* APISyncResponse+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF5979C20449A5300089BE8 /* APISyncResponse+RandomValueProviding.swift */; };
-		CAEA0F90216E1C4C00B0C7A6 /* ApplicationTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA51F1EA1B300F007E1 /* ApplicationTestBuilder.swift */; };
+		CAEA0F90216E1C4C00B0C7A6 /* EurofurenceSessionTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA51F1EA1B300F007E1 /* EurofurenceSessionTestBuilder.swift */; };
 		CAEA0F92216E1C4C00B0C7A6 /* WhenResolvingDataStoreState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D07F81FE9021A00BFD785 /* WhenResolvingDataStoreState.swift */; };
 		CAEA0F9C216E1CC000B0C7A6 /* WhenAddingAnnouncementsObserver_ThenRefreshSucceeds_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1F7D6020CB82F600FB87F5 /* WhenAddingAnnouncementsObserver_ThenRefreshSucceeds_ApplicationShould.swift */; };
 		CAEA0F9D216E1CC000B0C7A6 /* WhenAddingAnnouncementsObserverAfterSuccessfulRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA65A2202091F5320078A4A7 /* WhenAddingAnnouncementsObserverAfterSuccessfulRefresh.swift */; };
@@ -1903,7 +1903,7 @@
 		CA2A586E20F7F137002C69B6 /* AnnouncementDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementDateFormatter.swift; sourceTree = "<group>"; };
 		CA2A587020F7F369002C69B6 /* FoundationAnnouncementDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationAnnouncementDateFormatter.swift; sourceTree = "<group>"; };
 		CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenLoggingIn.swift; sourceTree = "<group>"; };
-		CA2B4FA51F1EA1B300F007E1 /* ApplicationTestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationTestBuilder.swift; sourceTree = "<group>"; };
+		CA2B4FA51F1EA1B300F007E1 /* EurofurenceSessionTestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EurofurenceSessionTestBuilder.swift; sourceTree = "<group>"; };
 		CA2B4FA71F1EA72A00F007E1 /* LoginArguments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginArguments.swift; sourceTree = "<group>"; };
 		CA2B4FA91F1F7F1200F007E1 /* CapturingLoginObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingLoginObserver.swift; sourceTree = "<group>"; };
 		CA2D04FD20EE910E00CF54E1 /* NotificationScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationScheduler.swift; sourceTree = "<group>"; };
@@ -6332,7 +6332,7 @@
 			isa = PBXGroup;
 			children = (
 				CAEA0B8B2165626900B0C7A6 /* Info.plist */,
-				CA2B4FA51F1EA1B300F007E1 /* ApplicationTestBuilder.swift */,
+				CA2B4FA51F1EA1B300F007E1 /* EurofurenceSessionTestBuilder.swift */,
 				CA2D07F81FE9021A00BFD785 /* WhenResolvingDataStoreState.swift */,
 				CA65A21A2091120C0078A4A7 /* Announcements */,
 				CA81D4951FEA950600A52A2F /* Authentication */,
@@ -8784,7 +8784,7 @@
 				CAEA0FF8216E1CE700B0C7A6 /* WhenDataStoreAlreadyContainsMaps_ApplicationShould.swift in Sources */,
 				CAEA0FFE216E1CE700B0C7A6 /* WhenFetchingMapContentThatRevealsRoom_ApplicationShould.swift in Sources */,
 				CAEA1023216E1CE800B0C7A6 /* CapturingAuthenticationStateObserver.swift in Sources */,
-				CAEA0F90216E1C4C00B0C7A6 /* ApplicationTestBuilder.swift in Sources */,
+				CAEA0F90216E1C4C00B0C7A6 /* EurofurenceSessionTestBuilder.swift in Sources */,
 				CAEA0FB5216E1CC000B0C7A6 /* WhenObservingDealersAfterLoadingFromStore_ApplicationShould.swift in Sources */,
 				CAEA1033216E1CE800B0C7A6 /* StubCollectThemAllRequestFactory.swift in Sources */,
 				CAEA0FC2216E1CC000B0C7A6 /* EventConferenceRoomsRemoveAllBeforeInsertTests.swift in Sources */,

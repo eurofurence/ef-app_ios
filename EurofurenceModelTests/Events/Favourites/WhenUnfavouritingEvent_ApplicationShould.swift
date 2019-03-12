@@ -11,14 +11,14 @@ import XCTest
 
 class WhenUnfavouritingEvent_ApplicationShould: XCTestCase {
 
-    var context: ApplicationTestBuilder.Context!
+    var context: EurofurenceSessionTestBuilder.Context!
     var identifier: EventIdentifier!
     var observer: CapturingEventsServiceObserver!
 
     override func setUp() {
         super.setUp()
 
-        context = ApplicationTestBuilder().build()
+        context = EurofurenceSessionTestBuilder().build()
         let modelCharacteristics = ModelCharacteristics.randomWithoutDeletions
         observer = CapturingEventsServiceObserver()
         context.eventsService.add(observer)

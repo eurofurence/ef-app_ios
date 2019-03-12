@@ -12,7 +12,7 @@ import XCTest
 class WhenSearchingForEvents_BeforeAnyAreAvailable_ApplicationShould: XCTestCase {
 
     func testProduceEmptyResults() {
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         let eventsSearchController = context.eventsService.makeEventsSearchController()
         let delegate = CapturingEventsSearchControllerDelegate()
         eventsSearchController.setResultsDelegate(delegate)

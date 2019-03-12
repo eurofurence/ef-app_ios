@@ -19,7 +19,7 @@ class WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould
         syncResponse.dealers.changed = [dealer]
         let expected = URL(string: "https://www.eurofurence.org")!
         let urlOpener = HappyPathURLOpener()
-        let context = ApplicationTestBuilder().with(urlOpener).build()
+        let context = EurofurenceSessionTestBuilder().with(urlOpener).build()
         context.performSuccessfulSync(response: syncResponse)
         let dealerIdentifier = DealerIdentifier(dealer.identifier)
         context.dealersService.openWebsite(for: dealerIdentifier)
@@ -33,7 +33,7 @@ class WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould
         var syncResponse = ModelCharacteristics.randomWithoutDeletions
         syncResponse.dealers.changed = [dealer]
         let urlOpener = HappyPathURLOpener()
-        let context = ApplicationTestBuilder().with(urlOpener).build()
+        let context = EurofurenceSessionTestBuilder().with(urlOpener).build()
         let externalContentHandler = CapturingExternalContentHandler()
         context.contentLinksService.setExternalContentHandler(externalContentHandler)
         context.performSuccessfulSync(response: syncResponse)

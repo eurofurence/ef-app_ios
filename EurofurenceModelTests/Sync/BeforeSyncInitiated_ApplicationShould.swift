@@ -12,7 +12,7 @@ import XCTest
 class BeforeSyncInitiated_ApplicationShould: XCTestCase {
 
     func testNotRequestLongRunningTaskToBegin() {
-        let context = ApplicationTestBuilder().build()
+        let context = EurofurenceSessionTestBuilder().build()
         XCTAssertFalse(context.longRunningTaskManager.didBeginTask)
     }
 

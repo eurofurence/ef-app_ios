@@ -12,14 +12,14 @@ import XCTest
 class WhenLoggingOutSuccessfully: XCTestCase {
 
     let credential = Credential(username: "", registrationNumber: 0, authenticationToken: "Token", tokenExpiryDate: .distantFuture)
-    var context: ApplicationTestBuilder.Context!
+    var context: EurofurenceSessionTestBuilder.Context!
     var observer: CapturingAuthenticationStateObserver!
 
     override func setUp() {
         super.setUp()
 
         observer = CapturingAuthenticationStateObserver()
-        context = ApplicationTestBuilder().with(credential).build()
+        context = EurofurenceSessionTestBuilder().with(credential).build()
         context.authenticationService.add(observer)
     }
 
