@@ -23,9 +23,10 @@ class DefaultDealerDetailInteractor: DealerDetailInteractor {
 
     func makeDealerDetailViewModel(for identifier: DealerIdentifier,
                                    completionHandler: @escaping (DealerDetailViewModel) -> Void) {
-        dealersService.fetchExtendedDealerData(for: identifier) { (data) in
+        let dealer = dealersService.fetchDealer(for: identifier)
+        dealer?.fetchExtendedDealerData(completionHandler: { (data) in
             completionHandler(DefaultDealerDetailViewModel(data: data, dealerIdentifier: identifier, dealersService: self.dealersService))
-        }
+        })
     }
 
 }

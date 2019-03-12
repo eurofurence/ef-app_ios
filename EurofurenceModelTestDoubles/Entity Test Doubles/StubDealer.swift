@@ -9,7 +9,7 @@
 import EurofurenceModel
 import TestUtilities
 
-public struct StubDealer: Dealer {
+public final class StubDealer: Dealer {
 
     public var identifier: DealerIdentifier
     public var preferredName: String
@@ -19,8 +19,26 @@ public struct StubDealer: Dealer {
     public var isAttendingOnSaturday: Bool
     public var isAfterDark: Bool
     
+    public var extendedData: ExtendedDealerData?
+
+    public init(identifier: DealerIdentifier,
+                preferredName: String,
+                alternateName: String?,
+                isAttendingOnThursday: Bool,
+                isAttendingOnFriday: Bool,
+                isAttendingOnSaturday: Bool,
+                isAfterDark: Bool) {
+        self.identifier = identifier
+        self.preferredName = preferredName
+        self.alternateName = alternateName
+        self.isAttendingOnThursday = isAttendingOnThursday
+        self.isAttendingOnFriday = isAttendingOnFriday
+        self.isAttendingOnSaturday = isAttendingOnSaturday
+        self.isAfterDark = isAfterDark
+    }
+    
     public func fetchExtendedDealerData(completionHandler: @escaping (ExtendedDealerData) -> Void) {
-        
+        extendedData.let(completionHandler)
     }
 
 }

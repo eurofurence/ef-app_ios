@@ -17,8 +17,9 @@ class FakeDealersService: DealersService {
         self.index = index
     }
     
+    private var stubbedDealers = [Dealer]()
     func fetchDealer(for identifier: DealerIdentifier) -> Dealer? {
-        return nil
+        return stubbedDealers.first(where: { $0.identifier == identifier })
     }
 
     func makeDealersIndex() -> DealersIndex {
@@ -32,8 +33,7 @@ class FakeDealersService: DealersService {
 
     fileprivate var fakedDealerData = [DealerIdentifier: ExtendedDealerData]()
     func fetchExtendedDealerData(for dealer: DealerIdentifier, completionHandler: @escaping (ExtendedDealerData) -> Void) {
-        let data = fetchOrMakeExtendedDealerData(for: dealer)
-        completionHandler(data)
+        
     }
 
     private(set) var capturedIdentifierForOpeningWebsite: DealerIdentifier?
@@ -58,23 +58,9 @@ extension FakeDealersService {
     func stubIconPNGData(_ data: Data, for identifier: DealerIdentifier) {
         iconData[identifier] = data
     }
-
-    fileprivate func fetchOrMakeExtendedDealerData(for dealer: DealerIdentifier) -> ExtendedDealerData {
-        if let data = fakedDealerData[dealer] {
-            return data
-        }
-
-        let data = ExtendedDealerData.random
-        fakedDealerData[dealer] = data
-        return data
-    }
-
-    func fakedDealerData(for identifier: DealerIdentifier) -> ExtendedDealerData {
-        return fetchOrMakeExtendedDealerData(for: identifier)
-    }
-
-    func stub(_ data: ExtendedDealerData, for identifier: DealerIdentifier) {
-        fakedDealerData[identifier] = data
+    
+    func add(_ dealer: Dealer) {
+        stubbedDealers.append(dealer)
     }
 
 }
