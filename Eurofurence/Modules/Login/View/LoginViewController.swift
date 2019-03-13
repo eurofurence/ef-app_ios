@@ -9,7 +9,7 @@
 import UIKit.UIButton
 import UIKit.UIViewController
 
-class LoginViewController: UITableViewController, LoginScene {
+class LoginViewController: UITableViewController, UITextFieldDelegate, LoginScene {
 
     // MARK: IBOutlets
 
@@ -50,6 +50,13 @@ class LoginViewController: UITableViewController, LoginScene {
         super.viewWillAppear(animated)
 
         delegate?.loginSceneWillAppear()
+    }
+    
+    // MARK: UITextFieldDelegate
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 
     // MARK: LoginScene
