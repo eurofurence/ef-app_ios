@@ -16,7 +16,11 @@ class DefaultAnnouncementDetailInteractorShould: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        context = AnnouncementDetailInteractorTestBuilder().build()
+        
+        let imagePNGData = "Strike a poke".data(using: .utf8)!
+        context = AnnouncementDetailInteractorTestBuilder()
+            .with(imagePNGData: imagePNGData)
+            .build()
     }
 
     func testProduceViewModelUsingAnnouncementTitleAsHeading() {
@@ -31,10 +35,7 @@ class DefaultAnnouncementDetailInteractorShould: XCTestCase {
 
     func testProduceViewModelWithAnnouncementImage() {
         let viewModel = context.makeViewModel()
-        let announcementIdentifier = context.announcement.identifier
-        let expected = context.announcementsService.stubbedAnnouncementImageData(for: announcementIdentifier)
-
-        XCTAssertEqual(expected, viewModel?.imagePNGData)
+        XCTAssertEqual(context.announcement.imagePNGData, viewModel?.imagePNGData)
     }
 
 }

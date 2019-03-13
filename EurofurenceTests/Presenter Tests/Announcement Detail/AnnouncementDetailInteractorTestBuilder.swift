@@ -16,13 +16,21 @@ class AnnouncementDetailInteractorTestBuilder {
     struct Context {
         var interactor: AnnouncementDetailInteractor
         var markdownRenderer: StubMarkdownRenderer
-        var announcement: Announcement
+        var announcement: StubAnnouncement
         var announcementsService: StubAnnouncementsService
+    }
+    
+    private var imagePNGData: Data?
+    
+    func with(imagePNGData: Data) -> AnnouncementDetailInteractorTestBuilder {
+        self.imagePNGData = imagePNGData
+        return self
     }
 
     func build(for identifier: AnnouncementIdentifier = .random) -> Context {
-        var announcement = StubAnnouncement.random
+        let announcement = StubAnnouncement.random
         announcement.identifier = identifier
+        announcement.imagePNGData = imagePNGData
         let announcementsService = StubAnnouncementsService(announcements: [announcement])
         let markdownRenderer = StubMarkdownRenderer()
         let interactor = DefaultAnnouncementDetailInteractor(announcementsService: announcementsService,
