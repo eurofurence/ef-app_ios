@@ -44,13 +44,6 @@ class ConcreteMapsService: MapsService {
         observer.mapsServiceDidChangeMaps(models)
     }
 
-    func fetchImagePNGDataForMap(identifier: MapIdentifier, completionHandler: @escaping (Data) -> Void) {
-        serverModels
-            .first(where: { $0.identifier == identifier.rawValue })
-            .let({ imageRepository.loadImage(identifier: $0.imageIdentifier) })
-            .let({ completionHandler($0.pngImageData) })
-    }
-
     private struct MapEntryDisplacementResult {
         var entry: MapCharacteristics.Entry
         var displacement: Double

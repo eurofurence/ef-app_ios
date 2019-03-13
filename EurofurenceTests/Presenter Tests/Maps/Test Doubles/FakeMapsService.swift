@@ -21,10 +21,6 @@ class FakeMapsService: MapsService {
         return maps.first(where: { $0.identifier == identifier })
     }
 
-    func fetchImagePNGDataForMap(identifier: MapIdentifier, completionHandler: @escaping (Data) -> Void) {
-        
-    }
-
     struct ContentRequest: Equatable {
         static func == (lhs: FakeMapsService.ContentRequest, rhs: FakeMapsService.ContentRequest) -> Bool {
             return lhs.identifier == rhs.identifier && lhs.x == rhs.x && lhs.y == rhs.y
