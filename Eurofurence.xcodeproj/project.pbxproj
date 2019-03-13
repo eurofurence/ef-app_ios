@@ -293,6 +293,7 @@
 		CA2761BF20E02B93000E52AC /* CollectThemAllPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2761BE20E02B93000E52AC /* CollectThemAllPresenter.swift */; };
 		CA2761C120E02C68000E52AC /* BeforeCollectThemAllSceneLoads_PresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2761C020E02C68000E52AC /* BeforeCollectThemAllSceneLoads_PresenterShould.swift */; };
 		CA2783E6223938EC004B5DB2 /* FakeAnnouncementsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2783E422393871004B5DB2 /* FakeAnnouncementsService.swift */; };
+		CA2783E722393964004B5DB2 /* FakeMapsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DAA20E2CF6D007536CD /* FakeMapsService.swift */; };
 		CA283A5A20E6E24300F7D195 /* ApplicationLongRunningTaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A5920E6E24300F7D195 /* ApplicationLongRunningTaskManager.swift */; };
 		CA283A5E20E6E9FB00F7D195 /* WhenSceneInstigatesPullToRefresh_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A5D20E6E9FB00F7D195 /* WhenSceneInstigatesPullToRefresh_NewsPresenterShould.swift */; };
 		CA283A6020E6ECD300F7D195 /* WhenToldToRefresh_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A5F20E6ECD300F7D195 /* WhenToldToRefresh_NewsInteractorShould.swift */; };
@@ -602,7 +603,6 @@
 		CA6A8DA220E2CB5C007536CD /* MapsModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DA120E2CB5C007536CD /* MapsModuleDelegate.swift */; };
 		CA6A8DA420E2CB66007536CD /* CapturingMapsModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DA320E2CB66007536CD /* CapturingMapsModuleDelegate.swift */; };
 		CA6A8DA720E2CD6E007536CD /* WhenPreparingViewModel_MapsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DA620E2CD6E007536CD /* WhenPreparingViewModel_MapsInteractorShould.swift */; };
-		CA6A8DAB20E2CF6D007536CD /* FakeMapsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DAA20E2CF6D007536CD /* FakeMapsService.swift */; };
 		CA6A8DB020E2CF97007536CD /* DefaultMapsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DAF20E2CF97007536CD /* DefaultMapsInteractor.swift */; };
 		CA6A8DC220E4143A007536CD /* WhenSelectingMap_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DC120E4143A007536CD /* WhenSelectingMap_DirectorShould.swift */; };
 		CA6A8DC620E41513007536CD /* MapDetailModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DC520E41513007536CD /* MapDetailModuleProviding.swift */; };
@@ -4818,7 +4818,6 @@
 				CA6A8D8A20E2BBB1007536CD /* FakeMapsInteractor.swift */,
 				CA6A8D8820E2BBA4007536CD /* FakeMapsViewModel.swift */,
 				CA6A8D7520E264C5007536CD /* StubMapsSceneFactory.swift */,
-				CA6A8DAA20E2CF6D007536CD /* FakeMapsService.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -6423,6 +6422,7 @@
 				78D7EEBE1F196B77005372A9 /* StubBuildConfigurationProviding.swift */,
 				CAD780481F1D51EB002A8333 /* StubClock.swift */,
 				CA162E7520A4B6CE004AFED6 /* StubDateDistanceCalculator.swift */,
+				CA6A8DAA20E2CF6D007536CD /* FakeMapsService.swift */,
 				CAD6FD4F221707560011712D /* Entity Test Doubles */,
 				CAEA0F7E216E1AA000B0C7A6 /* Random Value Generation */,
 			);
@@ -8274,7 +8274,6 @@
 				CA1B6F3720DD1C2F00ADF414 /* WhenBindingDealerLocationAndAvailability_DealerDetailPresenterShould.swift in Sources */,
 				CA00AE7D20D1C08B00C2FBB0 /* WhenBindingDay_SchedulePresenterShould.swift in Sources */,
 				CA728458209D058A007D912A /* StubAnnouncementDetailSceneFactory.swift in Sources */,
-				CA6A8DAB20E2CF6D007536CD /* FakeMapsService.swift in Sources */,
 				CA1B6F2220DB84F400ADF414 /* FakeDealerDetailInteractor.swift in Sources */,
 				CA40107E210FAF410056E16C /* FakeKnowledgeGroupEntriesInteractor.swift in Sources */,
 				CAD260A520C0357F007E3618 /* WhenViewModelPrepared_EventDetailPresenterShould.swift in Sources */,
@@ -8891,6 +8890,7 @@
 				CAEA0F8D216E1AE200B0C7A6 /* StubMap.swift in Sources */,
 				CAEA103E216E1DA600B0C7A6 /* CapturingPushPermissionsRequester.swift in Sources */,
 				CAEA0F85216E1AE200B0C7A6 /* Link+RandomValueProviding.swift in Sources */,
+				CA2783E722393964004B5DB2 /* FakeMapsService.swift in Sources */,
 				CAEA0F66216D29FD00B0C7A6 /* StubBuildConfigurationProviding.swift in Sources */,
 				CAEA103D216E1D8700B0C7A6 /* StubAppVersionProviding.swift in Sources */,
 				CAEA0F81216E1AE200B0C7A6 /* Day+RandomValueProviding.swift in Sources */,
