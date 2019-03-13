@@ -14,5 +14,7 @@ public protocol Map {
 
     var identifier: MapIdentifier { get }
     var location: String { get }
+    
+    func fetchImagePNGData(completionHandler: @escaping (Data?) -> Void)
 
 }

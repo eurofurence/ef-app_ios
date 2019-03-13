@@ -55,6 +55,10 @@ class ConcreteMapsService: MapsService {
         var entry: MapCharacteristics.Entry
         var displacement: Double
     }
+    
+    func fetchMap(for identifier: MapIdentifier) -> Map? {
+        return models.first(where: { $0.identifier == identifier })
+    }
 
     func fetchContent(for identifier: MapIdentifier,
                       atX x: Int,
@@ -110,11 +114,13 @@ class ConcreteMapsService: MapsService {
         roomServerModels = rooms
         dealerServerModels = dealers
 
-        models = serverModels.map({ (map) -> MapImpl in
-            return MapImpl(identifier: MapIdentifier(map.identifier), location: map.mapDescription)
-        }).sorted(by: { (first, second) -> Bool in
+        models = serverModels.map(makeMap).sorted(by: { (first, second) -> Bool in
             return first.location < second.location
         })
+    }
+    
+    private func makeMap(from characteristics: MapCharacteristics) -> MapImpl {
+        return MapImpl(imageRepository: imageRepository, characteristics: characteristics)
     }
 
 }

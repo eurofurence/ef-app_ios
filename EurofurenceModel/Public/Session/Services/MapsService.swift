@@ -9,6 +9,8 @@
 import Foundation
 
 public protocol MapsService {
+    
+    func fetchMap(for identifier: MapIdentifier) -> Map?
 
     func add(_ observer: MapsObserver)
     func fetchImagePNGDataForMap(identifier: MapIdentifier, completionHandler: @escaping (Data) -> Void)

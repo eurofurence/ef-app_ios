@@ -14,6 +14,10 @@ public struct StubMap: Map {
 
     public var identifier: MapIdentifier
     public var location: String
+    
+    public func fetchImagePNGData(completionHandler: @escaping (Data?) -> Void) {
+        
+    }
 
 }
 

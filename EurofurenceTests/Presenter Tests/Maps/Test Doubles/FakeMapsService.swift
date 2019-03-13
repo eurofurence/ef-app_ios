@@ -16,6 +16,10 @@ class FakeMapsService: MapsService {
     func add(_ observer: MapsObserver) {
         observer.mapsServiceDidChangeMaps(maps)
     }
+    
+    func fetchMap(for identifier: MapIdentifier) -> Map? {
+        return maps.first(where: { $0.identifier == identifier })
+    }
 
     func fetchImagePNGDataForMap(identifier: MapIdentifier, completionHandler: @escaping (Data) -> Void) {
         completionHandler(imagePNGDataForMap(identifier: identifier))
