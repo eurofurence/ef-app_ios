@@ -16,5 +16,7 @@ public protocol Message {
     var subject: String { get }
     var contents: String { get }
     var isRead: Bool { get }
+    
+    func markAsRead()
 
 }

@@ -17,6 +17,10 @@ public struct StubMessage: Message {
     public var subject: String
     public var contents: String
     public var isRead: Bool
+    
+    public func markAsRead() {
+        
+    }
 
 }
 

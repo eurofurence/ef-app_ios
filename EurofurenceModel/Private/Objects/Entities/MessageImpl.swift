@@ -6,9 +6,16 @@
 //  Copyright © 2019 Eurofurence. All rights reserved.
 //
 
+import EventBus
 import Foundation
 
 struct MessageImpl: Message {
+    
+    struct ReadEvent {
+        var message: Message
+    }
+    
+    private let eventBus: EventBus
 
     var identifier: String
     var authorName: String
@@ -17,30 +24,19 @@ struct MessageImpl: Message {
     var contents: String
     var isRead: Bool
 
-    init(identifier: String, authorName: String, receivedDateTime: Date, subject: String, contents: String, isRead: Bool) {
-        self.identifier = identifier
-        self.authorName = authorName
-        self.receivedDateTime = receivedDateTime
-        self.subject = subject
-        self.contents = contents
-        self.isRead = isRead
+    init(eventBus: EventBus, characteristics: MessageCharacteristics) {
+        self.eventBus = eventBus
+        
+        self.identifier = characteristics.identifier
+        self.authorName = characteristics.authorName
+        self.receivedDateTime = characteristics.receivedDateTime
+        self.subject = characteristics.subject
+        self.contents = characteristics.contents
+        self.isRead = characteristics.isRead
     }
-
-}
-
-extension MessageImpl {
-
-    static func fromCharacteristics(_ characteristics: [MessageCharacteristics]) -> [MessageImpl] {
-        return characteristics.map(fromCharacteristic)
-    }
-
-    static func fromCharacteristic(_ characteristic: MessageCharacteristics) -> MessageImpl {
-        return MessageImpl(identifier: characteristic.identifier,
-                             authorName: characteristic.authorName,
-                             receivedDateTime: characteristic.receivedDateTime,
-                             subject: characteristic.subject,
-                             contents: characteristic.contents,
-                             isRead: characteristic.isRead)
+    
+    func markAsRead() {
+        eventBus.post(ReadEvent(message: self))
     }
 
 }

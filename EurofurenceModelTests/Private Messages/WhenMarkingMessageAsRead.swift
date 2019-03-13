@@ -21,10 +21,7 @@ class WhenMarkingMessageAsRead: XCTestCase {
         var message = MessageCharacteristics.random
         message.identifier = identifier
         context.api.simulateMessagesResponse(response: [message])
-
-        if let receievedMessage = observer.observedMessages.first {
-            context.privateMessagesService.markMessageAsRead(receievedMessage)
-        }
+        observer.observedMessages.first?.markAsRead()
 
         XCTAssertEqual(identifier, context.api.messageIdentifierMarkedAsRead)
     }
@@ -40,10 +37,7 @@ class WhenMarkingMessageAsRead: XCTestCase {
         var message = MessageCharacteristics.random
         message.identifier = identifier
         context.api.simulateMessagesResponse(response: [message])
-
-        if let receievedMessage = observer.observedMessages.first {
-            context.privateMessagesService.markMessageAsRead(receievedMessage)
-        }
+        observer.observedMessages.first?.markAsRead()
 
         XCTAssertEqual(authenticationToken, context.api.capturedAuthTokenForMarkingMessageAsRead)
     }
@@ -56,7 +50,7 @@ class WhenMarkingMessageAsRead: XCTestCase {
         let message = MessageCharacteristics.random
         context.api.simulateMessagesResponse(response: [message])
         let entity = observer.observedMessages.first(where: { $0.identifier == message.identifier })!
-        context.privateMessagesService.markMessageAsRead(entity)
+        entity.markAsRead()
 
         XCTAssertEqual(0, observer.observedUnreadMessageCount)
     }

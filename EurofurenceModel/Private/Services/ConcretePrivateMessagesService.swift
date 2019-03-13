@@ -10,15 +10,33 @@ import EventBus
 
 class ConcretePrivateMessagesService: PrivateMessagesService {
 
+    private let eventBus: EventBus
     private let api: API
     private var userAuthenticationToken: String?
     private var privateMessageObservers = [PrivateMessagesObserver]()
 
     private var localMessages: [MessageImpl] = .empty
+    
+    private class MarkMessageAsReadHandler: EventConsumer {
+        
+        private let service: ConcretePrivateMessagesService
+        
+        init(service: ConcretePrivateMessagesService) {
+            self.service = service
+        }
+        
+        func consume(event: MessageImpl.ReadEvent) {
+            service.markMessageAsRead(event.message)
+        }
+        
+    }
 
     init(eventBus: EventBus, api: API) {
+        self.eventBus = eventBus
         self.api = api
+        
         eventBus.subscribe(userLoggedIn)
+        eventBus.subscribe(consumer: MarkMessageAsReadHandler(service: self))
     }
 
     func add(_ observer: PrivateMessagesObserver) {
@@ -43,7 +61,7 @@ class ConcretePrivateMessagesService: PrivateMessagesService {
                         return first.receivedDateTime.compare(second.receivedDateTime) == .orderedDescending
                     })
 
-                    self.localMessages = MessageImpl.fromCharacteristics(messages)
+                    self.localMessages = messages.map(self.makeMessage)
 
                     let unreadCount = self.determineUnreadMessageCount()
                     self.privateMessageObservers.forEach({ (observer) in
@@ -67,7 +85,7 @@ class ConcretePrivateMessagesService: PrivateMessagesService {
         }
     }
 
-    func markMessageAsRead(_ message: Message) {
+    private func markMessageAsRead(_ message: Message) {
         guard let token = userAuthenticationToken else { return }
         api.markMessageWithIdentifierAsRead(message.identifier, authorizationToken: token)
 
@@ -81,6 +99,10 @@ class ConcretePrivateMessagesService: PrivateMessagesService {
         privateMessageObservers.forEach({ (observer) in
             observer.privateMessagesServiceDidUpdateUnreadMessageCount(to: unreadCount)
         })
+    }
+    
+    private func makeMessage(from characteristics: MessageCharacteristics) -> MessageImpl {
+        return MessageImpl(eventBus: eventBus, characteristics: characteristics)
     }
 
     private func userLoggedIn(_ event: DomainEvent.LoggedIn) {
