@@ -292,7 +292,7 @@
 		CA2761BC20E02A25000E52AC /* FakeCollectThemAllService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2761BB20E02A25000E52AC /* FakeCollectThemAllService.swift */; };
 		CA2761BF20E02B93000E52AC /* CollectThemAllPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2761BE20E02B93000E52AC /* CollectThemAllPresenter.swift */; };
 		CA2761C120E02C68000E52AC /* BeforeCollectThemAllSceneLoads_PresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2761C020E02C68000E52AC /* BeforeCollectThemAllSceneLoads_PresenterShould.swift */; };
-		CA2783E522393871004B5DB2 /* FakeAnnouncementsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2783E422393871004B5DB2 /* FakeAnnouncementsService.swift */; };
+		CA2783E6223938EC004B5DB2 /* FakeAnnouncementsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2783E422393871004B5DB2 /* FakeAnnouncementsService.swift */; };
 		CA283A5A20E6E24300F7D195 /* ApplicationLongRunningTaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A5920E6E24300F7D195 /* ApplicationLongRunningTaskManager.swift */; };
 		CA283A5E20E6E9FB00F7D195 /* WhenSceneInstigatesPullToRefresh_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A5D20E6E9FB00F7D195 /* WhenSceneInstigatesPullToRefresh_NewsPresenterShould.swift */; };
 		CA283A6020E6ECD300F7D195 /* WhenToldToRefresh_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A5F20E6ECD300F7D195 /* WhenToldToRefresh_NewsInteractorShould.swift */; };
@@ -4419,7 +4419,6 @@
 		CA60BFE42078E5F000697566 /* Test Doubles */ = {
 			isa = PBXGroup;
 			children = (
-				CA2783E422393871004B5DB2 /* FakeAnnouncementsService.swift */,
 				CA89CBC12085385900570D54 /* AnnouncementsViewModel.swift */,
 				CA89CBB32080031000570D54 /* CapturingNewsComponentHeaderScene.swift */,
 				CA0E5214208F52ED005259FE /* CapturingNewsInteractorDelegate.swift */,
@@ -6415,6 +6414,7 @@
 				CAB3A7291F7532A2005DF77B /* CapturingPushPermissionsRequester.swift */,
 				CA7D8B15222D4DA0003431A0 /* CapturingRefreshService.swift */,
 				CA63755F208CBC5F00536BE2 /* CapturingURLOpener.swift */,
+				CA2783E422393871004B5DB2 /* FakeAnnouncementsService.swift */,
 				CAEA109B216E8AE800B0C7A6 /* FakeDataStore.swift */,
 				CA7D8B34222F1AC1003431A0 /* FakeDataStoreTransaction.swift */,
 				CAEA0F7B216D370600B0C7A6 /* FakeHoursDateFormatter.swift */,
@@ -7841,7 +7841,6 @@
 				CA283ADA20EB9CA600F7D195 /* AnnouncementsModuleDelegate.swift in Sources */,
 				CA0F762320322DEF009DA079 /* KnowledgeListBinder.swift in Sources */,
 				CA4C474A21DF88B9005231AD /* NotificationServiceFetchResultAdapter.swift in Sources */,
-				CA2783E522393871004B5DB2 /* FakeAnnouncementsService.swift in Sources */,
 				CABA438F1FBCDBEE009CB5B0 /* LoginSceneFactory.swift in Sources */,
 				2020ECCB211CDB870036E2CF /* NSAttributedString+trim.swift in Sources */,
 				CA66C01C2124C6C700F87AFE /* StoreKitReviewPromptAction.swift in Sources */,
@@ -8870,6 +8869,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAEA0F89216E1AE200B0C7A6 /* User+RandomValueProviding.swift in Sources */,
+				CA2783E6223938EC004B5DB2 /* FakeAnnouncementsService.swift in Sources */,
 				CAEA0F83216E1AE200B0C7A6 /* KnowledgeEntry+RandomValueProviding.swift in Sources */,
 				CAEA0F86216E1AE200B0C7A6 /* Message+RandomValueProviding.swift in Sources */,
 				CA7D8B2C222EC258003431A0 /* FakeDataStore.swift in Sources */,

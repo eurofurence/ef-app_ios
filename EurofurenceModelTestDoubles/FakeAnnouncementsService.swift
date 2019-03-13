@@ -9,36 +9,36 @@
 import EurofurenceModel
 import Foundation
 
-class FakeAnnouncementsService: AnnouncementsService {
+public class FakeAnnouncementsService: AnnouncementsService {
 
-    var announcements: [Announcement]
-    var stubbedReadAnnouncements: [AnnouncementIdentifier]
+    public var announcements: [Announcement]
+    public var stubbedReadAnnouncements: [AnnouncementIdentifier]
 
-    init(announcements: [Announcement], stubbedReadAnnouncements: [AnnouncementIdentifier] = []) {
+    public init(announcements: [Announcement], stubbedReadAnnouncements: [AnnouncementIdentifier] = []) {
         self.announcements = announcements
         self.stubbedReadAnnouncements = stubbedReadAnnouncements
     }
 
     fileprivate var observers = [AnnouncementsServiceObserver]()
-    func add(_ observer: AnnouncementsServiceObserver) {
+    public func add(_ observer: AnnouncementsServiceObserver) {
         observers.append(observer)
         observer.announcementsServiceDidChangeAnnouncements(announcements)
         observer.announcementsServiceDidUpdateReadAnnouncements(stubbedReadAnnouncements)
     }
 
-    func fetchAnnouncement(identifier: AnnouncementIdentifier) -> Announcement? {
+    public func fetchAnnouncement(identifier: AnnouncementIdentifier) -> Announcement? {
         return announcements.first(where: { $0.identifier == identifier })
     }
 
 }
 
-extension FakeAnnouncementsService {
+public extension FakeAnnouncementsService {
 
-    func updateAnnouncements(_ announcements: [Announcement]) {
+    public func updateAnnouncements(_ announcements: [Announcement]) {
         observers.forEach({ $0.announcementsServiceDidChangeAnnouncements(announcements) })
     }
 
-    func updateReadAnnouncements(_ readAnnouncements: [AnnouncementIdentifier]) {
+    public func updateReadAnnouncements(_ readAnnouncements: [AnnouncementIdentifier]) {
         observers.forEach({ $0.announcementsServiceDidUpdateReadAnnouncements(readAnnouncements) })
     }
 
