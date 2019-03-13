@@ -22,7 +22,7 @@ class FakeMapsService: MapsService {
     }
 
     func fetchImagePNGDataForMap(identifier: MapIdentifier, completionHandler: @escaping (Data) -> Void) {
-        completionHandler(imagePNGDataForMap(identifier: identifier))
+        
     }
 
     struct ContentRequest: Equatable {
@@ -47,10 +47,6 @@ class FakeMapsService: MapsService {
 }
 
 extension FakeMapsService {
-
-    func imagePNGDataForMap(identifier: MapIdentifier) -> Data {
-        return identifier.rawValue.data(using: .utf8)!
-    }
 
     func resolveMapContents(identifier: MapIdentifier, atX x: Int, y: Int, with mapContent: MapContent) {
         guard let request = requests.first(where: { $0.identifier == identifier && $0.x == x && $0.y == y }) else { return }

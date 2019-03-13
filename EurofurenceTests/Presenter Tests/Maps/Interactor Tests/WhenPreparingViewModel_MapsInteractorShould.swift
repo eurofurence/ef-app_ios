@@ -42,7 +42,7 @@ class WhenPreparingViewModel_MapsInteractorShould: XCTestCase {
         var previewData: Data?
         mapViewModel?.fetchMapPreviewPNGData { previewData = $0 }
 
-        XCTAssertEqual(mapsService.imagePNGDataForMap(identifier: randomMap.element.identifier), previewData)
+        XCTAssertEqual(randomMap.element.imagePNGData, previewData)
     }
 
     func testExposeIdentifierForSpecifiedMap() {

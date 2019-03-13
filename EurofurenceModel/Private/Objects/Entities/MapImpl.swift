@@ -24,7 +24,7 @@ struct MapImpl: Map {
         self.location = characteristics.mapDescription
     }
     
-    func fetchImagePNGData(completionHandler: @escaping (Data?) -> Void) {
+    func fetchImagePNGData(completionHandler: @escaping (Data) -> Void) {
         if let image = imageRepository.loadImage(identifier: characteristics.imageIdentifier) {
             completionHandler(image.pngImageData)
         }

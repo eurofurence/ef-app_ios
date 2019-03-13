@@ -13,21 +13,14 @@ class DefaultMapsInteractor: MapsInteractor, MapsObserver {
 
     private struct ViewModel: MapsViewModel {
 
-        private let maps: [Map]
-        private let mapsService: MapsService
-
-        init(maps: [Map], mapsService: MapsService) {
-            self.maps = maps
-            self.mapsService = mapsService
-        }
+        let maps: [Map]
 
         var numberOfMaps: Int {
             return maps.count
         }
 
         func mapViewModel(at index: Int) -> MapViewModel {
-            let map = maps[index]
-            return SingleViewModel(map: map, mapsService: mapsService)
+            return SingleViewModel(map: maps[index])
         }
 
         func identifierForMap(at index: Int) -> MapIdentifier? {
@@ -38,12 +31,10 @@ class DefaultMapsInteractor: MapsInteractor, MapsObserver {
 
     private struct SingleViewModel: MapViewModel {
 
-        private let map: Map
-        private let mapsService: MapsService
+        let map: Map
 
-        init(map: Map, mapsService: MapsService) {
+        init(map: Map) {
             self.map = map
-            self.mapsService = mapsService
         }
 
         var mapName: String {
@@ -51,12 +42,11 @@ class DefaultMapsInteractor: MapsInteractor, MapsObserver {
         }
 
         func fetchMapPreviewPNGData(completionHandler: @escaping (Data) -> Void) {
-            mapsService.fetchImagePNGDataForMap(identifier: map.identifier, completionHandler: completionHandler)
+            map.fetchImagePNGData(completionHandler: completionHandler)
         }
 
     }
 
-    private let mapsService: MapsService
     private var maps = [Map]()
 
     convenience init() {
@@ -64,7 +54,6 @@ class DefaultMapsInteractor: MapsInteractor, MapsObserver {
     }
 
     init(mapsService: MapsService) {
-        self.mapsService = mapsService
         mapsService.add(self)
     }
 
@@ -73,7 +62,7 @@ class DefaultMapsInteractor: MapsInteractor, MapsObserver {
     }
 
     func makeMapsViewModel(completionHandler: @escaping (MapsViewModel) -> Void) {
-        completionHandler(ViewModel(maps: maps, mapsService: mapsService))
+        completionHandler(ViewModel(maps: maps))
     }
 
 }

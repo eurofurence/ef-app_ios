@@ -29,7 +29,7 @@ class WhenPreparingViewModel_MapDetailInteractorShould: XCTestCase {
         var viewModel: MapDetailViewModel?
         interactor.makeViewModelForMap(identifier: randomMap.element.identifier) { viewModel = $0 }
 
-        XCTAssertEqual(mapsService.imagePNGDataForMap(identifier: randomMap.element.identifier), viewModel?.mapImagePNGData)
+        XCTAssertEqual(randomMap.element.imagePNGData, viewModel?.mapImagePNGData)
     }
 
 }

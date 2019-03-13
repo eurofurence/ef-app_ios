@@ -15,8 +15,10 @@ public struct StubMap: Map {
     public var identifier: MapIdentifier
     public var location: String
     
-    public func fetchImagePNGData(completionHandler: @escaping (Data?) -> Void) {
-        
+    public var imagePNGData: Data
+    
+    public func fetchImagePNGData(completionHandler: @escaping (Data) -> Void) {
+        completionHandler(imagePNGData)
     }
 
 }
@@ -24,7 +26,7 @@ public struct StubMap: Map {
 extension StubMap: RandomValueProviding {
 
     public static var random: StubMap {
-        return StubMap(identifier: .random, location: .random)
+        return StubMap(identifier: .random, location: .random, imagePNGData: .random)
     }
 
 }

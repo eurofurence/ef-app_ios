@@ -106,8 +106,8 @@ class DefaultMapDetailInteractor: MapDetailInteractor, MapsObserver {
 
     func makeViewModelForMap(identifier: MapIdentifier, completionHandler: @escaping (MapDetailViewModel) -> Void) {
         guard let map = maps.first(where: { $0.identifier == identifier }) else { return }
-
-        mapsService.fetchImagePNGDataForMap(identifier: identifier) { (mapGraphicData) in
+        
+        map.fetchImagePNGData { (mapGraphicData) in
             let viewModel = ViewModel(mapsService: self.mapsService,
                                       mapIdentifier: identifier,
                                       mapImagePNGData: mapGraphicData,
