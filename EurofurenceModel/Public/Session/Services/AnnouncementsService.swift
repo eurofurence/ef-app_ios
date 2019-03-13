@@ -9,11 +9,9 @@
 import Foundation
 
 public protocol AnnouncementsService {
-
-    func fetchAnnouncement(identifier: AnnouncementIdentifier) -> Announcement?
     
     func add(_ observer: AnnouncementsServiceObserver)
-    func fetchAnnouncementImage(identifier: AnnouncementIdentifier, completionHandler: @escaping (Data?) -> Void)
+    func fetchAnnouncement(identifier: AnnouncementIdentifier) -> Announcement?
 
 }
 

@@ -58,16 +58,6 @@ class ConcreteAnnouncementsService: AnnouncementsService {
         }
     }
 
-    func fetchAnnouncementImage(identifier: AnnouncementIdentifier, completionHandler: @escaping (Data?) -> Void) {
-        let announcement = dataStore.fetchAnnouncements()?.first(where: { $0.identifier == identifier.rawValue })
-        let imageData: Data? = announcement.let { (announcement) in
-            let entity: ImageEntity? = announcement.imageIdentifier.let(imageRepository.loadImage)
-            return entity?.pngImageData
-        }
-
-        completionHandler(imageData)
-    }
-
     // MARK: Private
 
     private func reloadAnnouncementsFromStore() {
