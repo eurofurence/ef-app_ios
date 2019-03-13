@@ -113,7 +113,7 @@ class ConcreteMapsService: MapsService {
     }
     
     private func makeMap(from characteristics: MapCharacteristics) -> MapImpl {
-        return MapImpl(imageRepository: imageRepository, characteristics: characteristics)
+        return MapImpl(imageRepository: imageRepository, dataStore: dataStore, characteristics: characteristics, dealers: dealers)
     }
 
 }

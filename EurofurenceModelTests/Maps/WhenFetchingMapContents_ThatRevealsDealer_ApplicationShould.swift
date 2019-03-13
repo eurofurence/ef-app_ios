@@ -25,11 +25,12 @@ class WhenFetchingMapContents_ThatRevealsDealer_ApplicationShould: XCTestCase {
         context.performSuccessfulSync(response: syncResponse)
 
         var actual: Dealer?
-        context.mapsService.fetchContent(for: MapIdentifier(map.identifier), atX: x, y: y) { (content) in
+        let entity = context.mapsService.fetchMap(for: MapIdentifier(map.identifier))
+        entity?.fetchContentAt(x: x, y: y, completionHandler: { (content) in
             if case .dealer(let dealer) = content {
                 actual = dealer
             }
-        }
+        })
 
         DealerAssertion()
             .assertDealer(actual, characterisedBy: dealer)

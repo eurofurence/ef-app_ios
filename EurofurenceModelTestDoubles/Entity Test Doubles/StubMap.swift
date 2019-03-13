@@ -20,6 +20,10 @@ public struct StubMap: Map {
     public func fetchImagePNGData(completionHandler: @escaping (Data) -> Void) {
         completionHandler(imagePNGData)
     }
+    
+    public func fetchContentAt(x: Int, y: Int, completionHandler: @escaping (MapContent) -> Void) {
+        
+    }
 
 }
 

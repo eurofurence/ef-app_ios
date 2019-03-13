@@ -26,7 +26,8 @@ class WhenFetchingMapContents_ThatRevealsDealer_ContentsSavedInDataStore_Applica
         dataStore.save(syncResponse)
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         var content: MapContent = .none
-        context.mapsService.fetchContent(for: MapIdentifier(map.identifier), atX: x, y: y) { content = $0 }
+        let entity = context.mapsService.fetchMap(for: MapIdentifier(map.identifier))
+        entity?.fetchContentAt(x: x, y: y, completionHandler: { content = $0 })
 
         if case .dealer(let dealerEntity) = content {
             DealerAssertion().assertDealer(dealerEntity, characterisedBy: dealer)

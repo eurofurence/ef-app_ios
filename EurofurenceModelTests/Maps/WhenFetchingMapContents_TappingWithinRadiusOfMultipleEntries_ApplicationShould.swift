@@ -26,7 +26,8 @@ class WhenFetchingMapContents_TappingWithinRadiusOfMultipleEntries_ApplicationSh
         context.performSuccessfulSync(response: syncResponse)
 
         var content: MapContent?
-        context.mapsService.fetchContent(for: MapIdentifier(map.identifier), atX: x, y: y) { content = $0 }
+        let entity = context.mapsService.fetchMap(for: MapIdentifier(map.identifier))
+        entity?.fetchContentAt(x: x, y: y, completionHandler: { content = $0 })
         let expected = MapContent.room(Room(name: room.name))
 
         XCTAssertEqual(expected, content)

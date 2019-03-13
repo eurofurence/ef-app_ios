@@ -26,11 +26,12 @@ class WhenFetchingMapContent_ThatRevealMultipleOptions_ApplicationShould: XCTest
         syncResponse.maps.changed[randomMap.index] = map
         context.performSuccessfulSync(response: syncResponse)
         var childContent: [MapContent] = []
-        context.mapsService.fetchContent(for: MapIdentifier(map.identifier), atX: x, y: y) { (content) in
+        let entity = context.mapsService.fetchMap(for: MapIdentifier(map.identifier))
+        entity?.fetchContentAt(x: x, y: y, completionHandler: { (content) in
             if case .multiple(let innerContent) = content {
                 childContent = innerContent
             }
-        }
+        })
 
         var witnessedDealerContent = false, witnessedRoomContent = false
         for content in childContent {
