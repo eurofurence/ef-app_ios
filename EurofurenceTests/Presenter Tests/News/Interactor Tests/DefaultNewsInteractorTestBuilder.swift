@@ -19,7 +19,7 @@ class DefaultNewsInteractorTestBuilder {
         var relativeTimeFormatter: FakeRelativeTimeIntervalCountdownFormatter
         var hoursDateFormatter: FakeHoursDateFormatter
         var authenticationService: FakeAuthenticationService
-        var announcementsService: StubAnnouncementsService
+        var announcementsService: FakeAnnouncementsService
         var privateMessagesService: CapturingPrivateMessagesService
         var daysUntilConventionService: StubConventionCountdownService
         var eventsService: FakeEventsService
@@ -30,14 +30,14 @@ class DefaultNewsInteractorTestBuilder {
 		var markdownRenderer: StubMarkdownRenderer
     }
 
-    private var announcementsService: StubAnnouncementsService
+    private var announcementsService: FakeAnnouncementsService
     private var authenticationService: FakeAuthenticationService
     private var privateMessagesService: CapturingPrivateMessagesService
     private var daysUntilConventionService: StubConventionCountdownService
     private var eventsService: FakeEventsService
 
     init() {
-        announcementsService = StubAnnouncementsService(announcements: [])
+        announcementsService = FakeAnnouncementsService(announcements: [])
         authenticationService = FakeAuthenticationService(authState: .loggedOut)
         privateMessagesService = CapturingPrivateMessagesService()
         daysUntilConventionService = StubConventionCountdownService()
@@ -45,7 +45,7 @@ class DefaultNewsInteractorTestBuilder {
     }
 
     @discardableResult
-    func with(_ announcementsService: StubAnnouncementsService) -> DefaultNewsInteractorTestBuilder {
+    func with(_ announcementsService: FakeAnnouncementsService) -> DefaultNewsInteractorTestBuilder {
         self.announcementsService = announcementsService
         return self
     }

@@ -16,7 +16,7 @@ class WhenLoggedInBeforeConvention_NewsInteractorShould: XCTestCase {
     func testProduceViewModelWithMessagesPrompt_DaysUntilConvention_AndAnnouncements() {
         let context = DefaultNewsInteractorTestBuilder()
             .with(FakeAuthenticationService.loggedInService())
-            .with(StubAnnouncementsService(announcements: [StubAnnouncement].random))
+            .with(FakeAnnouncementsService(announcements: [StubAnnouncement].random))
             .build()
         context.subscribeViewModelUpdates()
 

@@ -22,7 +22,7 @@ class CapturingAnnouncementsListViewModelDelegate: AnnouncementsListViewModelDel
 
 class WhenPreparingViewModel_AnnouncementsInteractorShould: XCTestCase {
 
-    var announcementsService: StubAnnouncementsService!
+    var announcementsService: FakeAnnouncementsService!
     var interactor: DefaultAnnouncementsInteractor!
     var announcementDateFormatter: FakeAnnouncementDateFormatter!
 	var markdownRenderer: StubMarkdownRenderer!
@@ -34,7 +34,7 @@ class WhenPreparingViewModel_AnnouncementsInteractorShould: XCTestCase {
 
         announcements = [StubAnnouncement].random
         announcement = announcements.randomElement()
-        announcementsService = StubAnnouncementsService(announcements: announcements)
+        announcementsService = FakeAnnouncementsService(announcements: announcements)
         announcementDateFormatter = FakeAnnouncementDateFormatter()
 		markdownRenderer = StubMarkdownRenderer()
 		interactor = DefaultAnnouncementsInteractor(announcementsService: announcementsService, announcementDateFormatter: announcementDateFormatter, markdownRenderer: markdownRenderer)

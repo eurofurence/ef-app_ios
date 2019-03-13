@@ -15,7 +15,7 @@ class WhenPreparingAnnouncementViewModel_ForReadAnnouncement_NewsInteractorShoul
 
     func testPrepareViewModelWithReadStatus() {
         let announcement = StubAnnouncement.random
-        let announcementsService = StubAnnouncementsService(announcements: [announcement],
+        let announcementsService = FakeAnnouncementsService(announcements: [announcement],
                                                             stubbedReadAnnouncements: [announcement.identifier])
         let context = DefaultNewsInteractorTestBuilder().with(announcementsService).build()
         context.subscribeViewModelUpdates()

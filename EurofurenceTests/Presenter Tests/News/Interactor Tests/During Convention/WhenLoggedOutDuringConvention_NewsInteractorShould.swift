@@ -22,7 +22,7 @@ class WhenLoggedOutDuringConvention_NewsInteractorShould: XCTestCase {
         eventsService.stubSomeFavouriteEvents()
         let context = DefaultNewsInteractorTestBuilder()
             .with(FakeAuthenticationService.loggedOutService())
-            .with(StubAnnouncementsService(announcements: [StubAnnouncement].random))
+            .with(FakeAnnouncementsService(announcements: [StubAnnouncement].random))
             .with(StubConventionCountdownService(countdownState: .countdownElapsed))
             .with(eventsService)
             .build()
@@ -44,7 +44,7 @@ class WhenLoggedOutDuringConvention_NewsInteractorShould: XCTestCase {
         eventsService.upcomingEvents = upcomingEvents
         let context = DefaultNewsInteractorTestBuilder()
             .with(FakeAuthenticationService.loggedOutService())
-            .with(StubAnnouncementsService(announcements: [StubAnnouncement].random))
+            .with(FakeAnnouncementsService(announcements: [StubAnnouncement].random))
             .with(StubConventionCountdownService(countdownState: .countdownElapsed))
             .with(eventsService)
             .build()

@@ -17,7 +17,7 @@ class AnnouncementDetailInteractorTestBuilder {
         var interactor: AnnouncementDetailInteractor
         var markdownRenderer: StubMarkdownRenderer
         var announcement: StubAnnouncement
-        var announcementsService: StubAnnouncementsService
+        var announcementsService: FakeAnnouncementsService
     }
     
     private var imagePNGData: Data?
@@ -31,7 +31,7 @@ class AnnouncementDetailInteractorTestBuilder {
         let announcement = StubAnnouncement.random
         announcement.identifier = identifier
         announcement.imagePNGData = imagePNGData
-        let announcementsService = StubAnnouncementsService(announcements: [announcement])
+        let announcementsService = FakeAnnouncementsService(announcements: [announcement])
         let markdownRenderer = StubMarkdownRenderer()
         let interactor = DefaultAnnouncementDetailInteractor(announcementsService: announcementsService,
                                                              markdownRenderer: markdownRenderer)

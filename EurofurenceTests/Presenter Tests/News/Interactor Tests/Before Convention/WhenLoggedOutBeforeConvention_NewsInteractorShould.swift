@@ -19,7 +19,7 @@ class WhenLoggedOutBeforeConvention_NewsInteractorShould: XCTestCase {
         super.setUp()
 
         context = DefaultNewsInteractorTestBuilder()
-            .with(StubAnnouncementsService(announcements: [StubAnnouncement].random))
+            .with(FakeAnnouncementsService(announcements: [StubAnnouncement].random))
             .with(FakeAuthenticationService.loggedOutService())
             .build()
         context.subscribeViewModelUpdates()

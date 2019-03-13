@@ -1,5 +1,5 @@
 //
-//  StubAnnouncementsService.swift
+//  FakeAnnouncementsService.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 24/04/2018.
@@ -9,7 +9,7 @@
 import EurofurenceModel
 import Foundation
 
-class StubAnnouncementsService: AnnouncementsService {
+class FakeAnnouncementsService: AnnouncementsService {
 
     var announcements: [Announcement]
     var stubbedReadAnnouncements: [AnnouncementIdentifier]
@@ -32,7 +32,7 @@ class StubAnnouncementsService: AnnouncementsService {
 
 }
 
-extension StubAnnouncementsService {
+extension FakeAnnouncementsService {
 
     func updateAnnouncements(_ announcements: [Announcement]) {
         observers.forEach({ $0.announcementsServiceDidChangeAnnouncements(announcements) })

@@ -17,7 +17,7 @@ class WhenLoggedInBeforeConvention_ThenPersonalMessageIsReceived_NewsInteractorS
         let privateMessagesService = CapturingPrivateMessagesService()
         let context = DefaultNewsInteractorTestBuilder()
             .with(FakeAuthenticationService.loggedInService())
-            .with(StubAnnouncementsService(announcements: [StubAnnouncement].random))
+            .with(FakeAnnouncementsService(announcements: [StubAnnouncement].random))
             .with(privateMessagesService)
             .build()
         context.subscribeViewModelUpdates()
