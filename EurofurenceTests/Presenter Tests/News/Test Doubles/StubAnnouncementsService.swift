@@ -30,10 +30,6 @@ class StubAnnouncementsService: AnnouncementsService {
         return announcements.first(where: { $0.identifier == identifier })
     }
 
-    func fetchAnnouncementImage(identifier: AnnouncementIdentifier, completionHandler: @escaping (Data?) -> Void) {
-        completionHandler(stubbedAnnouncementImageData(for: identifier))
-    }
-
 }
 
 extension StubAnnouncementsService {
@@ -44,10 +40,6 @@ extension StubAnnouncementsService {
 
     func updateReadAnnouncements(_ readAnnouncements: [AnnouncementIdentifier]) {
         observers.forEach({ $0.announcementsServiceDidUpdateReadAnnouncements(readAnnouncements) })
-    }
-
-    func stubbedAnnouncementImageData(for announcement: AnnouncementIdentifier) -> Data {
-        return announcement.rawValue.data(using: .utf8)!
     }
 
 }

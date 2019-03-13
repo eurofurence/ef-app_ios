@@ -26,33 +26,9 @@ class FakeDealersService: DealersService {
         return index
     }
 
-    fileprivate var iconData = [DealerIdentifier: Data]()
-    func fetchIconPNGData(for identifier: DealerIdentifier, completionHandler: @escaping (Data?) -> Void) {
-        completionHandler(iconData[identifier])
-    }
-
-    private(set) var capturedIdentifierForOpeningWebsite: DealerIdentifier?
-    func openWebsite(for identifier: DealerIdentifier) {
-        capturedIdentifierForOpeningWebsite = identifier
-    }
-
-    private(set) var capturedIdentifierForOpeningTwitter: DealerIdentifier?
-    func openTwitter(for identifier: DealerIdentifier) {
-        capturedIdentifierForOpeningTwitter = identifier
-    }
-
-    private(set) var capturedIdentifierForOpeningTelegram: DealerIdentifier?
-    func openTelegram(for identifier: DealerIdentifier) {
-        capturedIdentifierForOpeningTelegram = identifier
-    }
-
 }
 
 extension FakeDealersService {
-
-    func stubIconPNGData(_ data: Data, for identifier: DealerIdentifier) {
-        iconData[identifier] = data
-    }
     
     func add(_ dealer: Dealer) {
         stubbedDealers.append(dealer)

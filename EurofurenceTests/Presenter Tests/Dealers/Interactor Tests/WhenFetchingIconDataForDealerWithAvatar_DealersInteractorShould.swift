@@ -26,7 +26,6 @@ class WhenFetchingIconDataForDealerWithAvatar_DealersInteractorShould: XCTestCas
         let delegate = CapturingDealersViewModelDelegate()
         viewModel?.setDelegate(delegate)
         let dealerViewModel = delegate.capturedDealerViewModel(at: IndexPath(item: 0, section: 0))
-        dealersService.stubIconPNGData(expected, for: dealer.identifier)
         var actual: Data?
         dealerViewModel?.fetchIconPNGData { actual = $0 }
 
