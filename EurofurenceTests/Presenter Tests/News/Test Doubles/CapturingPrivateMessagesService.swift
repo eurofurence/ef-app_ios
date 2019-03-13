@@ -31,11 +31,6 @@ class CapturingPrivateMessagesService: PrivateMessagesService {
         refreshMessagesCount += 1
     }
 
-    private(set) var messageMarkedAsRead: Message?
-    func markMessageAsRead(_ message: Message) {
-        messageMarkedAsRead = message
-    }
-
     func failLastRefresh() {
         privateMessageObservers.forEach({ $0.privateMessagesServiceDidFailToLoadMessages() })
     }

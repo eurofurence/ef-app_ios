@@ -12,7 +12,6 @@ public protocol PrivateMessagesService {
 
     func add(_ observer: PrivateMessagesObserver)
     func refreshMessages()
-    func markMessageAsRead(_ message: Message)
 
 }
 
