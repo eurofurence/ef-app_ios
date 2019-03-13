@@ -16,17 +16,17 @@ class WhenShowingMapContents_ForPositionWithMultipleOptions_MapDetailInteractorS
     func testEmitViewModelWithExpectedOptionNames() {
         let mapsService = FakeMapsService()
         let randomMap = mapsService.maps.randomElement()
-        let interactor = DefaultMapDetailInteractor(mapsService: mapsService)
-        var viewModel: MapDetailViewModel?
-        interactor.makeViewModelForMap(identifier: randomMap.element.identifier) { viewModel = $0 }
-
         let (x, y) = (Float.random, Float.random)
-        let visitor = CapturingMapContentVisitor()
-        viewModel?.showContentsAtPosition(x: x, y: y, describingTo: visitor)
         let dealer = FakeDealer.random
         let room = Room.random
         let content: MapContent = .multiple([.dealer(dealer), .room(room)])
-        mapsService.resolveMapContents(identifier: randomMap.element.identifier, atX: Int(x), y: Int(y), with: content)
+        randomMap.element.stub(content: content, atX: Int(x), y: Int(y))
+        
+        let interactor = DefaultMapDetailInteractor(mapsService: mapsService)
+        var viewModel: MapDetailViewModel?
+        interactor.makeViewModelForMap(identifier: randomMap.element.identifier) { viewModel = $0 }
+        let visitor = CapturingMapContentVisitor()
+        viewModel?.showContentsAtPosition(x: x, y: y, describingTo: visitor)
         let expectedOptions = [dealer.preferredName, room.name]
 
         XCTAssertEqual(expectedOptions, visitor.capturedMapContents?.options)
@@ -35,17 +35,17 @@ class WhenShowingMapContents_ForPositionWithMultipleOptions_MapDetailInteractorS
     func testEmitViewModelWithExpectedTitle() {
         let mapsService = FakeMapsService()
         let randomMap = mapsService.maps.randomElement()
+        let (x, y) = (Float.random, Float.random)
+        let dealer = FakeDealer.random
+        let room = Room.random
+        let content: MapContent = .multiple([.dealer(dealer), .room(room)])
+        randomMap.element.stub(content: content, atX: Int(x), y: Int(y))
         let interactor = DefaultMapDetailInteractor(mapsService: mapsService)
         var viewModel: MapDetailViewModel?
         interactor.makeViewModelForMap(identifier: randomMap.element.identifier) { viewModel = $0 }
 
-        let (x, y) = (Float.random, Float.random)
         let visitor = CapturingMapContentVisitor()
         viewModel?.showContentsAtPosition(x: x, y: y, describingTo: visitor)
-        let dealer = FakeDealer.random
-        let room = Room.random
-        let content: MapContent = .multiple([.dealer(dealer), .room(room)])
-        mapsService.resolveMapContents(identifier: randomMap.element.identifier, atX: Int(x), y: Int(y), with: content)
 
         XCTAssertEqual(.selectAnOption, visitor.capturedMapContents?.optionsHeading)
     }
@@ -53,18 +53,18 @@ class WhenShowingMapContents_ForPositionWithMultipleOptions_MapDetailInteractorS
     func testEmitExpectedModelWhenSelectingOption() {
         let mapsService = FakeMapsService()
         let randomMap = mapsService.maps.randomElement()
-        let interactor = DefaultMapDetailInteractor(mapsService: mapsService)
-        var viewModel: MapDetailViewModel?
-        interactor.makeViewModelForMap(identifier: randomMap.element.identifier) { viewModel = $0 }
-
         let (x, y) = (Float.random, Float.random)
-        let visitor = CapturingMapContentVisitor()
-        viewModel?.showContentsAtPosition(x: x, y: y, describingTo: visitor)
         let dealer = FakeDealer.random
         let room = Room.random
         let contents: [MapContent] = [.dealer(dealer), .room(room)]
         let content: MapContent = .multiple(contents)
-        mapsService.resolveMapContents(identifier: randomMap.element.identifier, atX: Int(x), y: Int(y), with: content)
+        randomMap.element.stub(content: content, atX: Int(x), y: Int(y))
+        let interactor = DefaultMapDetailInteractor(mapsService: mapsService)
+        var viewModel: MapDetailViewModel?
+        interactor.makeViewModelForMap(identifier: randomMap.element.identifier) { viewModel = $0 }
+
+        let visitor = CapturingMapContentVisitor()
+        viewModel?.showContentsAtPosition(x: x, y: y, describingTo: visitor)
         visitor.capturedMapContents?.selectOption(at: 0)
 
         XCTAssertEqual(dealer.identifier, visitor.capturedDealer)

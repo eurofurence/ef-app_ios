@@ -13,14 +13,17 @@ class DefaultMapDetailInteractor: MapDetailInteractor, MapsObserver {
 
     private struct ViewModel: MapDetailViewModel {
 
-        var mapsService: MapsService
-        var mapIdentifier: MapIdentifier
+        let map: Map
+        
         var mapImagePNGData: Data
-        var mapName: String
+        
+        var mapName: String {
+            return map.location
+        }
 
         func showContentsAtPosition(x: Float, y: Float, describingTo visitor: MapContentVisitor) {
             let contentHandler = ContentHandler(x: x, y: y, visitor: visitor)
-            mapsService.fetchContent(for: mapIdentifier, atX: Int(x), y: Int(y), completionHandler: contentHandler.handle)
+            map.fetchContentAt(x: Int(x), y: Int(y), completionHandler: contentHandler.handle)
         }
 
     }
@@ -108,10 +111,7 @@ class DefaultMapDetailInteractor: MapDetailInteractor, MapsObserver {
         guard let map = maps.first(where: { $0.identifier == identifier }) else { return }
         
         map.fetchImagePNGData { (mapGraphicData) in
-            let viewModel = ViewModel(mapsService: self.mapsService,
-                                      mapIdentifier: identifier,
-                                      mapImagePNGData: mapGraphicData,
-                                      mapName: map.location)
+            let viewModel = ViewModel(map: map, mapImagePNGData: mapGraphicData)
             completionHandler(viewModel)
         }
     }
