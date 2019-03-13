@@ -8,6 +8,7 @@
 
 @testable import Eurofurence
 import EurofurenceModel
+import EurofurenceModelTestDoubles
 import XCTest
 
 class WhenDealersIndexProducesNewSearchResults_DealersInteractorShould: XCTestCase {

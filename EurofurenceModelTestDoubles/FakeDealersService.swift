@@ -9,28 +9,28 @@
 import EurofurenceModel
 import Foundation
 
-class FakeDealersService: DealersService {
+public class FakeDealersService: DealersService {
     
-    let index: FakeDealersIndex
+    public let index: FakeDealersIndex
 
-    init(index: FakeDealersIndex = FakeDealersIndex()) {
+    public init(index: FakeDealersIndex = FakeDealersIndex()) {
         self.index = index
     }
     
     private var stubbedDealers = [Dealer]()
-    func fetchDealer(for identifier: DealerIdentifier) -> Dealer? {
+    public func fetchDealer(for identifier: DealerIdentifier) -> Dealer? {
         return stubbedDealers.first(where: { $0.identifier == identifier })
     }
 
-    func makeDealersIndex() -> DealersIndex {
+    public func makeDealersIndex() -> DealersIndex {
         return index
     }
 
 }
 
-extension FakeDealersService {
+public extension FakeDealersService {
     
-    func add(_ dealer: Dealer) {
+    public func add(_ dealer: Dealer) {
         stubbedDealers.append(dealer)
     }
 
