@@ -25,13 +25,12 @@ struct DefaultAnnouncementDetailInteractor: AnnouncementDetailInteractor {
     }
 
     func makeViewModel(for identifier: AnnouncementIdentifier, completionHandler: @escaping (AnnouncementViewModel) -> Void) {
-        let service = announcementsService
-        service.fetchAnnouncement(identifier: identifier) { (announcement) in
-            service.fetchAnnouncementImage(identifier: identifier) { (imageData) in
-                let contents = self.markdownRenderer.render(announcement.content)
-                let viewModel = AnnouncementViewModel(heading: announcement.title, contents: contents, imagePNGData: imageData)
-                completionHandler(viewModel)
-            }
+        guard let announcement = announcementsService.fetchAnnouncement(identifier: identifier) else { return }
+        
+        announcementsService.fetchAnnouncementImage(identifier: identifier) { (imageData) in
+            let contents = self.markdownRenderer.render(announcement.content)
+            let viewModel = AnnouncementViewModel(heading: announcement.title, contents: contents, imagePNGData: imageData)
+            completionHandler(viewModel)
         }
     }
 

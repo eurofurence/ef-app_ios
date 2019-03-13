@@ -26,9 +26,8 @@ class StubAnnouncementsService: AnnouncementsService {
         observer.announcementsServiceDidUpdateReadAnnouncements(stubbedReadAnnouncements)
     }
 
-    func fetchAnnouncement(identifier: AnnouncementIdentifier, completionHandler: @escaping (Announcement) -> Void) {
-        guard let announcement = announcements.first(where: { $0.identifier == identifier }) else { return }
-        completionHandler(announcement)
+    func fetchAnnouncement(identifier: AnnouncementIdentifier) -> Announcement? {
+        return announcements.first(where: { $0.identifier == identifier })
     }
 
     func fetchAnnouncementImage(identifier: AnnouncementIdentifier, completionHandler: @escaping (Data?) -> Void) {

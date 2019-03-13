@@ -42,16 +42,19 @@ class ConcreteAnnouncementsService: AnnouncementsService {
         provideLatestData(to: observer)
         announcementsObservers.append(observer)
     }
-
-    func fetchAnnouncement(identifier: AnnouncementIdentifier, completionHandler: @escaping (Announcement) -> Void) {
-        guard let model = models.first(where: { $0.identifier == identifier }) else { return }
-        completionHandler(model)
-
-        readAnnouncementIdentifiers.append(identifier)
-        announcementsObservers.forEach({ $0.announcementsServiceDidUpdateReadAnnouncements(readAnnouncementIdentifiers) })
-
-        dataStore.performTransaction { (transaction) in
-            transaction.saveReadAnnouncements(self.readAnnouncementIdentifiers)
+    
+    func fetchAnnouncement(identifier: AnnouncementIdentifier) -> Announcement? {
+        if let model = models.first(where: { $0.identifier == identifier }) {
+            readAnnouncementIdentifiers.append(identifier)
+            announcementsObservers.forEach({ $0.announcementsServiceDidUpdateReadAnnouncements(readAnnouncementIdentifiers) })
+            
+            dataStore.performTransaction { (transaction) in
+                transaction.saveReadAnnouncements(self.readAnnouncementIdentifiers)
+            }
+            
+            return model
+        } else {
+            return nil
         }
     }
 
