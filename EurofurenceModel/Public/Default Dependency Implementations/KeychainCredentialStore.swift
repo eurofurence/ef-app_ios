@@ -27,6 +27,11 @@ public struct KeychainCredentialStore: CredentialStore {
     }
     
     public func store(_ credential: Credential) {
+        // The keychain API needs the previous value for the query to be clear before
+        // updating it, otherwise it pollutes the new value. In our case this makes the
+        // stored credential data garbage and can't be decoded.
+        deletePersistedToken()
+        
         let keychainItem = KeychainItemAttributes.fromCredential(credential)
         guard let keychainItemData = try? encoder.encode(keychainItem) else { return }
         
