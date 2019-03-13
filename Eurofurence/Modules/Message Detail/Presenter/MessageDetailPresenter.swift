@@ -16,6 +16,8 @@ struct MessageDetailPresenter: MessageDetailSceneDelegate {
     init(message: Message, scene: MessageDetailScene) {
         self.message = message
         self.scene = scene
+        
+        message.markAsRead()
 
         scene.delegate = self
     }

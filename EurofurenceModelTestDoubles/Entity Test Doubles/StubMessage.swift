@@ -9,7 +9,7 @@
 import EurofurenceModel
 import TestUtilities
 
-public struct StubMessage: Message {
+public final class StubMessage: Message {
 
     public var identifier: String
     public var authorName: String
@@ -17,9 +17,24 @@ public struct StubMessage: Message {
     public var subject: String
     public var contents: String
     public var isRead: Bool
+
+    public init(identifier: String,
+                authorName: String,
+                receivedDateTime: Date,
+                subject: String,
+                contents: String,
+                isRead: Bool) {
+        self.identifier = identifier
+        self.authorName = authorName
+        self.receivedDateTime = receivedDateTime
+        self.subject = subject
+        self.contents = contents
+        self.isRead = isRead
+    }
     
+    private(set) public var markedRead = false
     public func markAsRead() {
-        
+        markedRead = true
     }
 
 }
