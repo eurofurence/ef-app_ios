@@ -24,11 +24,4 @@ public class FakeMapsService: MapsService {
         return maps.first(where: { $0.identifier == identifier })
     }
     
-    public func fetchContent(for identifier: MapIdentifier,
-                             atX x: Int,
-                             y: Int,
-                             completionHandler: @escaping (MapContent) -> Void) {
-        
-    }
-    
 }
