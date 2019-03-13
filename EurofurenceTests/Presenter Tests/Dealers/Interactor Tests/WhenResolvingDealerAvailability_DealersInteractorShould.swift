@@ -14,7 +14,7 @@ import XCTest
 class WhenResolvingDealerAvailability_DealersInteractorShould: XCTestCase {
 
     func testIndicateDealerIsPresentForAllDaysWhenAttendingOnAllDays() {
-        var dealer = FakeDealer.random
+        let dealer = FakeDealer.random
         dealer.isAttendingOnThursday = true
         dealer.isAttendingOnFriday = true
         dealer.isAttendingOnSaturday = true
@@ -32,7 +32,7 @@ class WhenResolvingDealerAvailability_DealersInteractorShould: XCTestCase {
     }
 
     func testIndicateDealerIsNotPresentForAllDaysWhenNotAttendingOnThursday() {
-        var dealer = FakeDealer.random
+        let dealer = FakeDealer.random
         dealer.isAttendingOnThursday = false
         dealer.isAttendingOnFriday = true
         dealer.isAttendingOnSaturday = true
@@ -50,7 +50,7 @@ class WhenResolvingDealerAvailability_DealersInteractorShould: XCTestCase {
     }
 
     func testIndicateDealerIsNotPresentForAllDaysWhenNotAttendingOnFriday() {
-        var dealer = FakeDealer.random
+        let dealer = FakeDealer.random
         dealer.isAttendingOnThursday = true
         dealer.isAttendingOnFriday = false
         dealer.isAttendingOnSaturday = true
@@ -68,7 +68,7 @@ class WhenResolvingDealerAvailability_DealersInteractorShould: XCTestCase {
     }
 
     func testIndicateDealerIsNotPresentForAllDaysWhenNotAttendingOnSaturday() {
-        var dealer = FakeDealer.random
+        let dealer = FakeDealer.random
         dealer.isAttendingOnThursday = true
         dealer.isAttendingOnFriday = true
         dealer.isAttendingOnSaturday = false
