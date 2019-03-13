@@ -12,6 +12,7 @@ struct AnnouncementImpl: Announcement {
     
     private let dataStore: DataStore
     private let imageRepository: ImageRepository
+    private let characteristics: AnnouncementCharacteristics
 
     var identifier: AnnouncementIdentifier
     var title: String
@@ -20,24 +21,21 @@ struct AnnouncementImpl: Announcement {
 
     init(dataStore: DataStore,
          imageRepository: ImageRepository,
-         identifier: AnnouncementIdentifier,
-         title: String,
-         content: String,
-         date: Date) {
+         characteristics: AnnouncementCharacteristics) {
         self.dataStore = dataStore
         self.imageRepository = imageRepository
+        self.characteristics = characteristics
         
-        self.identifier = identifier
-        self.title = title
-        self.content = content
-        self.date = date
+        self.identifier = AnnouncementIdentifier(characteristics.identifier)
+        self.title = characteristics.title
+        self.content = characteristics.content
+        self.date = characteristics.lastChangedDateTime
     }
     
     func fetchAnnouncementImagePNGData(completionHandler: @escaping (Data?) -> Void) {
-        let announcement = dataStore.fetchAnnouncements()?.first(where: { $0.identifier == identifier.rawValue })
-        let imageData: Data? = announcement.let { (announcement) in
-            let entity: ImageEntity? = announcement.imageIdentifier.let(imageRepository.loadImage)
-            return entity?.pngImageData
+        var imageData: Data?
+        if let imageIdentifier = characteristics.imageIdentifier {
+            imageData = imageRepository.loadImage(identifier: imageIdentifier)?.pngImageData
         }
         
         completionHandler(imageData)
