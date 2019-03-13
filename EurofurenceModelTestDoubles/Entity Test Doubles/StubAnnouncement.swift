@@ -15,6 +15,10 @@ public struct StubAnnouncement: Announcement {
     public var title: String
     public var content: String
     public var date: Date
+    
+    public func fetchAnnouncementImagePNGData(completionHandler: @escaping (Data?) -> Void) {
+        
+    }
 
 }
 

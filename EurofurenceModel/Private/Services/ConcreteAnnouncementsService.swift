@@ -72,7 +72,14 @@ class ConcreteAnnouncementsService: AnnouncementsService {
 
     private func reloadAnnouncementsFromStore() {
         guard let announcements = dataStore.fetchAnnouncements() else { return }
-        models = announcements.sorted(by: isLastEditTimeAscending).map(AnnouncementImpl.init)
+        models = announcements.sorted(by: isLastEditTimeAscending).map { (characteristics) -> AnnouncementImpl in
+            return AnnouncementImpl(dataStore: self.dataStore,
+                                    imageRepository: self.imageRepository,
+                                    identifier: AnnouncementIdentifier(characteristics.identifier),
+                                    title: characteristics.title,
+                                    content: characteristics.content,
+                                    date: characteristics.lastChangedDateTime)
+        }
     }
 
     private func isLastEditTimeAscending(_ first: AnnouncementCharacteristics, _ second: AnnouncementCharacteristics) -> Bool {

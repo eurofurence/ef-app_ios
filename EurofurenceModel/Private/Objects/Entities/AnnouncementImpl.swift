@@ -9,32 +9,38 @@
 import Foundation
 
 struct AnnouncementImpl: Announcement {
+    
+    private let dataStore: DataStore
+    private let imageRepository: ImageRepository
 
     var identifier: AnnouncementIdentifier
     var title: String
     var content: String
     var date: Date
 
-    init(identifier: AnnouncementIdentifier, title: String, content: String, date: Date) {
+    init(dataStore: DataStore,
+         imageRepository: ImageRepository,
+         identifier: AnnouncementIdentifier,
+         title: String,
+         content: String,
+         date: Date) {
+        self.dataStore = dataStore
+        self.imageRepository = imageRepository
+        
         self.identifier = identifier
         self.title = title
         self.content = content
         self.date = date
     }
-
-}
-
-extension AnnouncementImpl {
-
-    static func fromServerModels(_ models: [AnnouncementCharacteristics]) -> [AnnouncementImpl] {
-        return models.map(AnnouncementImpl.init)
-    }
-
-    init(serverModel: AnnouncementCharacteristics) {
-        identifier = AnnouncementIdentifier(serverModel.identifier)
-        title = serverModel.title
-        content = serverModel.content
-        date = serverModel.lastChangedDateTime
+    
+    func fetchAnnouncementImagePNGData(completionHandler: @escaping (Data?) -> Void) {
+        let announcement = dataStore.fetchAnnouncements()?.first(where: { $0.identifier == identifier.rawValue })
+        let imageData: Data? = announcement.let { (announcement) in
+            let entity: ImageEntity? = announcement.imageIdentifier.let(imageRepository.loadImage)
+            return entity?.pngImageData
+        }
+        
+        completionHandler(imageData)
     }
 
 }

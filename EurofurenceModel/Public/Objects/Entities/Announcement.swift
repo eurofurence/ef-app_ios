@@ -16,5 +16,7 @@ public protocol Announcement {
     var title: String { get }
     var content: String { get }
     var date: Date { get }
+    
+    func fetchAnnouncementImagePNGData(completionHandler: @escaping (Data?) -> Void)
 
 }
