@@ -26,7 +26,7 @@ class WhenOpeningAnnouncement_ApplicationShould: XCTestCase {
     @discardableResult
     private func openAnnouncement(_ identifier: AnnouncementIdentifier) -> Announcement? {
         var announcement: Announcement?
-        context.announcementsService.openAnnouncement(identifier: identifier) { announcement = $0 }
+        context.announcementsService.fetchAnnouncement(identifier: identifier) { announcement = $0 }
 
         return announcement
     }

@@ -43,7 +43,7 @@ class ConcreteAnnouncementsService: AnnouncementsService {
         announcementsObservers.append(observer)
     }
 
-    func openAnnouncement(identifier: AnnouncementIdentifier, completionHandler: @escaping (Announcement) -> Void) {
+    func fetchAnnouncement(identifier: AnnouncementIdentifier, completionHandler: @escaping (Announcement) -> Void) {
         guard let model = models.first(where: { $0.identifier == identifier }) else { return }
         completionHandler(model)
 
