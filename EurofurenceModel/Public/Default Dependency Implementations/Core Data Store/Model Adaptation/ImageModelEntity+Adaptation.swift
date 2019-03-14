@@ -18,12 +18,14 @@ extension ImageModelEntity: EntityAdapting {
 
     func asAdaptedType() -> ImageCharacteristics {
         return ImageCharacteristics(identifier: identifier!,
-                        internalReference: internalReference!)
+                                    internalReference: internalReference!,
+                                    contentHashSha1: contentHashSha1!)
     }
 
     func consumeAttributes(from value: ImageCharacteristics) {
         identifier = value.identifier
         internalReference = value.internalReference
+        contentHashSha1 = value.contentHashSha1
     }
 
 }

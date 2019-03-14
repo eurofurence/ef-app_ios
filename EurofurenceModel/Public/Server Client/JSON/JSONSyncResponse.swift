@@ -292,9 +292,12 @@ struct JSONSyncResponse: Decodable {
 
         var Id: String
         var InternalReference: String
+        var ContentHashSha1: String
 
         var modelValue: ImageCharacteristics {
-            return ImageCharacteristics(identifier: Id, internalReference: InternalReference)
+            return ImageCharacteristics(identifier: Id,
+                                        internalReference: InternalReference,
+                                        contentHashSha1: ContentHashSha1)
         }
 
     }

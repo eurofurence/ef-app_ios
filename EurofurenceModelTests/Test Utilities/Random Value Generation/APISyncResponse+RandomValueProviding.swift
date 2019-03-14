@@ -37,20 +37,24 @@ extension ModelCharacteristics {
 
         let dealers: ModelCharacteristics.Update<DealerCharacteristics> = ModelCharacteristics.Update(changed: .random)
         let maps: ModelCharacteristics.Update<MapCharacteristics> = ModelCharacteristics.Update(changed: .random)
+        
+        let makeImageFromIdentifier: (String) -> ImageCharacteristics = { (identifier) in
+            return ImageCharacteristics(identifier: identifier, internalReference: "", contentHashSha1: "")
+        }
 
-        var allImages: [ImageCharacteristics] = events.compactMap({ $0.bannerImageId }).map({ ImageCharacteristics(identifier: $0, internalReference: "") })
-        allImages.append(contentsOf: events.compactMap({ $0.posterImageId }).map({ ImageCharacteristics(identifier: $0, internalReference: "") }))
-        allImages.append(contentsOf: dealers.changed.compactMap({ $0.artistImageId }).map({ ImageCharacteristics(identifier: $0, internalReference: "") }))
-        allImages.append(contentsOf: dealers.changed.compactMap({ $0.artistThumbnailImageId }).map({ ImageCharacteristics(identifier: $0, internalReference: "") }))
-        allImages.append(contentsOf: dealers.changed.compactMap({ $0.artPreviewImageId }).map({ ImageCharacteristics(identifier: $0, internalReference: "") }))
-        allImages.append(contentsOf: maps.changed.map({ ImageCharacteristics(identifier: $0.imageIdentifier, internalReference: "") }))
+        var allImages: [ImageCharacteristics] = events.compactMap({ $0.bannerImageId }).map(makeImageFromIdentifier)
+        allImages.append(contentsOf: events.compactMap({ $0.posterImageId }).map(makeImageFromIdentifier))
+        allImages.append(contentsOf: dealers.changed.compactMap({ $0.artistImageId }).map(makeImageFromIdentifier))
+        allImages.append(contentsOf: dealers.changed.compactMap({ $0.artistThumbnailImageId }).map(makeImageFromIdentifier))
+        allImages.append(contentsOf: dealers.changed.compactMap({ $0.artPreviewImageId }).map(makeImageFromIdentifier))
+        allImages.append(contentsOf: maps.changed.map({ $0.imageIdentifier }).map(makeImageFromIdentifier))
 
         let knowledgeEntryImages = knowledge.entries.reduce([String](), { $0 + $1.imageIdentifiers })
-        let knowledgeEntryAPIImages = knowledgeEntryImages.map({ ImageCharacteristics(identifier: $0, internalReference: "") })
+        let knowledgeEntryAPIImages = knowledgeEntryImages.map(makeImageFromIdentifier)
         allImages.append(contentsOf: knowledgeEntryAPIImages)
 
         let announcements = [AnnouncementCharacteristics].random
-        let announcementImages = announcements.compactMap({ $0.imageIdentifier }).map({ ImageCharacteristics(identifier: $0, internalReference: "") })
+        let announcementImages = announcements.compactMap({ $0.imageIdentifier }).map(makeImageFromIdentifier)
         allImages.append(contentsOf: announcementImages)
 
         return ModelCharacteristics(knowledgeGroups: ModelCharacteristics.Update(changed: knowledge.groups),
@@ -246,7 +250,7 @@ extension MapCharacteristics.Entry.Link.FragmentType: RandomValueProviding {
 extension ImageCharacteristics: RandomValueProviding {
 
     public static var random: ImageCharacteristics {
-        return ImageCharacteristics(identifier: .random, internalReference: .random)
+        return ImageCharacteristics(identifier: .random, internalReference: .random, contentHashSha1: .random)
     }
 
 }

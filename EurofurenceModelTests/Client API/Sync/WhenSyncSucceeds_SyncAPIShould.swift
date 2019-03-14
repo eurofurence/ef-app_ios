@@ -130,7 +130,8 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                                  removeAllBeforeInsert: true)
 
         let images = ModelCharacteristics.Update<ImageCharacteristics>(changed: [ImageCharacteristics(identifier: "8ae7d323-b56d-4155-8a88-6b418bcfd057",
-                                                                        internalReference: "knowledge:1b9f7858-454d-0a68-824b-359e5bbfa5b0")],
+                                                                        internalReference: "knowledge:1b9f7858-454d-0a68-824b-359e5bbfa5b0",
+                                                                        contentHashSha1: "u7Ih+dL/QkQf/L5TdUQuQqSirLw=")],
                                                      deleted: ["2513aa0a-48a0-49cf-807e-8a57cf5306f8"],
                                                      removeAllBeforeInsert: true)
 
