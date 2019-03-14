@@ -58,7 +58,7 @@ public struct JSONAPI: API {
     // MARK: ImageAPI
 
     public func fetchImage(identifier: String, contentHashSha1: String, completionHandler: @escaping (Data?) -> Void) {
-        let url = urlStringByAppending(pathComponent: "Images/\(identifier)/Content")
+        let url = urlStringByAppending(pathComponent: "Images/\(identifier)/Content/with-hash:\(contentHashSha1)")
         let request = JSONRequest(url: url)
 
         jsonSession.get(request) { (data, _) in

@@ -15,11 +15,12 @@ class ImageAPITests: XCTestCase {
 
     func testSubmitsExpectedURL() {
         let identifier = String.random
+        let hash = String.random
         let apiUrl = StubAPIURLProviding()
-        let expected = URL(string: apiUrl.url + "Images/\(identifier)/Content")!.absoluteString
+        let expected = URL(string: apiUrl.url + "Images/\(identifier)/Content/with-hash:\(hash)")!.absoluteString
         let jsonSession = CapturingJSONSession()
         let api = JSONAPI(jsonSession: jsonSession, apiUrl: apiUrl)
-        api.fetchImage(identifier: identifier, contentHashSha1: "") { (_) in }
+        api.fetchImage(identifier: identifier, contentHashSha1: hash) { (_) in }
 
         XCTAssertEqual(expected, jsonSession.getRequestURL)
     }
