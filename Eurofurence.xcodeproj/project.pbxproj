@@ -497,6 +497,8 @@
 		CA52C69120D6AB53009D3A9E /* CapturingScheduleModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C69020D6AB53009D3A9E /* CapturingScheduleModuleDelegate.swift */; };
 		CA52C69520D6B001009D3A9E /* WhenScheduleModuleSelectsEvent_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C69420D6B001009D3A9E /* WhenScheduleModuleSelectsEvent_DirectorShould.swift */; };
 		CA52C69920D6B87E009D3A9E /* HideNavigationBarShadowForSpecificViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C69820D6B87E009D3A9E /* HideNavigationBarShadowForSpecificViewControllerDelegate.swift */; };
+		CA5335E5223A95C900115262 /* CIDAPIURLProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5335E4223A95C900115262 /* CIDAPIURLProviding.swift */; };
+		CA5335E7223A95F000115262 /* CIDAPIURLProvidingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5335E6223A95F000115262 /* CIDAPIURLProvidingTests.swift */; };
 		CA5BF9D51F7AF9160045DBC0 /* PreloadPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5BF9D41F7AF9160045DBC0 /* PreloadPresenterTests.swift */; };
 		CA60BFE62078E5F700697566 /* CapturingPrivateMessagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFE52078E5F700697566 /* CapturingPrivateMessagesService.swift */; };
 		CA60BFE8207B88ED00697566 /* WhenBuildingNewsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFE7207B88ED00697566 /* WhenBuildingNewsPresenter.swift */; };
@@ -2113,6 +2115,8 @@
 		CA52C69420D6B001009D3A9E /* WhenScheduleModuleSelectsEvent_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenScheduleModuleSelectsEvent_DirectorShould.swift; sourceTree = "<group>"; };
 		CA52C69620D6B24A009D3A9E /* IndexPath+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IndexPath+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA52C69820D6B87E009D3A9E /* HideNavigationBarShadowForSpecificViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideNavigationBarShadowForSpecificViewControllerDelegate.swift; sourceTree = "<group>"; };
+		CA5335E4223A95C900115262 /* CIDAPIURLProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIDAPIURLProviding.swift; sourceTree = "<group>"; };
+		CA5335E6223A95F000115262 /* CIDAPIURLProvidingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIDAPIURLProvidingTests.swift; sourceTree = "<group>"; };
 		CA5BF9D41F7AF9160045DBC0 /* PreloadPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadPresenterTests.swift; sourceTree = "<group>"; };
 		CA60BFE22078E42800697566 /* User+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA60BFE52078E5F700697566 /* CapturingPrivateMessagesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingPrivateMessagesService.swift; sourceTree = "<group>"; };
@@ -3820,6 +3824,7 @@
 			children = (
 				CA240F6821E8B1D4002DB747 /* APIURLProviding.swift */,
 				C6DD58D320D91069001893ED /* BuildConfigurationAPIURLProviding.swift */,
+				CA5335E4223A95C900115262 /* CIDAPIURLProviding.swift */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
@@ -6433,6 +6438,7 @@
 			isa = PBXGroup;
 			children = (
 				C61870E120DAE28D0089E836 /* BuildConfigurationV2ApiUrlProvidingTest.swift */,
+				CA5335E6223A95F000115262 /* CIDAPIURLProvidingTests.swift */,
 				CABA83EB20CDBE8F00DD0795 /* ImageAPITests.swift */,
 				CA804DD91F20D2F500E07A4A /* LoginAPITests.swift */,
 				CA30EAC91F267D3C0053DBF6 /* PrivateMessagesAPITests.swift */,
@@ -8496,6 +8502,7 @@
 				CAEA0DD1216BDE2300B0C7A6 /* SystemClock.swift in Sources */,
 				CAEA0DEE216BDE2300B0C7A6 /* FoundationDateDistanceCalculator.swift in Sources */,
 				CAEA0DA2216BDE2300B0C7A6 /* CredentialStore.swift in Sources */,
+				CA5335E5223A95C900115262 /* CIDAPIURLProviding.swift in Sources */,
 				CAA4BA6C21EE851700DE2C88 /* ConcreteRefreshService.swift in Sources */,
 				CAEA0DD2216BDE2300B0C7A6 /* UserDefaultsForceRefreshRequired.swift in Sources */,
 				CA0F9D9221D53A2A0084886E /* EventsScheduleAdapter.swift in Sources */,
@@ -8801,6 +8808,7 @@
 				CAEA102C216E1CE800B0C7A6 /* CapturingKnowledgeServiceObserver.swift in Sources */,
 				CAEA102B216E1CE800B0C7A6 /* CapturingEventsServiceObserver.swift in Sources */,
 				CAEA0FCB216E1CC000B0C7A6 /* WhenDeletingKnowledgeEntry_AfterSuccessfulSync_ApplicationShould.swift in Sources */,
+				CA5335E7223A95F000115262 /* CIDAPIURLProvidingTests.swift in Sources */,
 				CAEA0FF2216E1CE700B0C7A6 /* WhenFetchingKnowledgeGroupsAfterSuccessfulRefresh.swift in Sources */,
 				CAEA0F9F216E1CC000B0C7A6 /* WhenApplicationInitialises_WithAnnouncementsSavedToStore.swift in Sources */,
 				CAEA0F6D216D2BFB00B0C7A6 /* LoginAPITests.swift in Sources */,
