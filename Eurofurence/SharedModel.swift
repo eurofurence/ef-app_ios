@@ -21,7 +21,8 @@ class SharedModel {
     private init() {
         let jsonSession = URLSessionBasedJSONSession.shared
         let buildConfiguration = PreprocessorBuildConfigurationProviding()
-        let apiUrl = BuildConfigurationAPIURLProviding(buildConfiguration)
+        
+        let apiUrl = CIDAPIURLProviding(conventionIdentifier: SharedModel.CID)
         let fcmRegistration = EurofurenceFCMDeviceRegistration(JSONSession: jsonSession, urlProviding: apiUrl)
         let remoteNotificationsTokenRegistration = FirebaseRemoteNotificationsTokenRegistration(buildConfiguration: buildConfiguration,
                                                                                                 appVersion: BundleAppVersionProviding.shared,

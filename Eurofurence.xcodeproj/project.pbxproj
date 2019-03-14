@@ -1040,7 +1040,6 @@
 		CAEA0DFE216BDE3100B0C7A6 /* ImageCharacteristics.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA401058210B9FD40056E16C /* ImageCharacteristics.swift */; };
 		CAEA0E00216BDE3100B0C7A6 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAA01F2127350053DBF6 /* LoginResponse.swift */; };
 		CAEA0E05216BDE3100B0C7A6 /* JSONAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD11F20CE8F00E07A4A /* JSONAPI.swift */; };
-		CAEA0E08216BDE3100B0C7A6 /* BuildConfigurationAPIURLProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DD58D320D91069001893ED /* BuildConfigurationAPIURLProviding.swift */; };
 		CAEA0E0B216BDE3100B0C7A6 /* JSONSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE77CE1F1A2E8600E9A0BE /* JSONSession.swift */; };
 		CAEA0E0C216BDE3100B0C7A6 /* URLSessionBasedJSONSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE77D81F1BB9E400E9A0BE /* URLSessionBasedJSONSession.swift */; };
 		CAEA0E14216BDE9B00B0C7A6 /* Optional+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27254D2110DEE2004C6D0A /* Optional+Extensions.swift */; };
@@ -1063,7 +1062,6 @@
 		CAEA0F66216D29FD00B0C7A6 /* StubBuildConfigurationProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D7EEBE1F196B77005372A9 /* StubBuildConfigurationProviding.swift */; };
 		CAEA0F67216D2A1D00B0C7A6 /* EurofurenceModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAEA0B7A2165626900B0C7A6 /* EurofurenceModel.framework */; };
 		CAEA0F68216D2A2700B0C7A6 /* EurofurenceModelTestDoubles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAEA0F5C216D294000B0C7A6 /* EurofurenceModelTestDoubles.framework */; };
-		CAEA0F6A216D2B5E00B0C7A6 /* BuildConfigurationV2ApiUrlProvidingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61870E120DAE28D0089E836 /* BuildConfigurationV2ApiUrlProvidingTest.swift */; };
 		CAEA0F6B216D2B8600B0C7A6 /* EurofurenceModelTestDoubles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAEA0F5C216D294000B0C7A6 /* EurofurenceModelTestDoubles.framework */; };
 		CAEA0F6C216D2BFB00B0C7A6 /* ImageAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA83EB20CDBE8F00DD0795 /* ImageAPITests.swift */; };
 		CAEA0F6D216D2BFB00B0C7A6 /* LoginAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD91F20D2F500E07A4A /* LoginAPITests.swift */; };
@@ -1562,8 +1560,6 @@
 		C0A22937D5D26AA9A66DC330 /* Pods_EurofurenceAppCoreTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EurofurenceAppCoreTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C46C51E54AE646F68D49401A /* Pods-TestUtilities.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestUtilities.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestUtilities/Pods-TestUtilities.release.xcconfig"; sourceTree = "<group>"; };
 		C61870DF20DAD8E00089E836 /* StubAPIURLProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubAPIURLProviding.swift; sourceTree = "<group>"; };
-		C61870E120DAE28D0089E836 /* BuildConfigurationV2ApiUrlProvidingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildConfigurationV2ApiUrlProvidingTest.swift; sourceTree = "<group>"; };
-		C6DD58D320D91069001893ED /* BuildConfigurationAPIURLProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildConfigurationAPIURLProviding.swift; sourceTree = "<group>"; };
 		C869B75DF780C2BBBFD9FD0A /* Pods-EurofurenceAppCore-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-EurofurenceAppCore-metadata.plist"; path = "Pods/Pods-EurofurenceAppCore-metadata.plist"; sourceTree = "<group>"; };
 		CA00AE4420D16BBD00C2FBB0 /* ScheduleInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleInteractor.swift; sourceTree = "<group>"; };
 		CA00AE4620D16BCB00C2FBB0 /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
@@ -3823,7 +3819,6 @@
 			isa = PBXGroup;
 			children = (
 				CA240F6821E8B1D4002DB747 /* APIURLProviding.swift */,
-				C6DD58D320D91069001893ED /* BuildConfigurationAPIURLProviding.swift */,
 				CA5335E4223A95C900115262 /* CIDAPIURLProviding.swift */,
 			);
 			path = Configuration;
@@ -6437,7 +6432,6 @@
 		CAEA0F69216D2B4500B0C7A6 /* Client API */ = {
 			isa = PBXGroup;
 			children = (
-				C61870E120DAE28D0089E836 /* BuildConfigurationV2ApiUrlProvidingTest.swift */,
 				CA5335E6223A95F000115262 /* CIDAPIURLProvidingTests.swift */,
 				CABA83EB20CDBE8F00DD0795 /* ImageAPITests.swift */,
 				CA804DD91F20D2F500E07A4A /* LoginAPITests.swift */,
@@ -8606,7 +8600,6 @@
 				CAEA0DD0216BDE2300B0C7A6 /* KeychainCredentialStore.swift in Sources */,
 				CAEA0DB7216BDE2300B0C7A6 /* KnowledgeEntry.swift in Sources */,
 				CAEA0DF9216BDE3100B0C7A6 /* LinkCharacteristics.swift in Sources */,
-				CAEA0E08216BDE3100B0C7A6 /* BuildConfigurationAPIURLProviding.swift in Sources */,
 				CAEA0D8A216BDD9500B0C7A6 /* ConcreteMapsService.swift in Sources */,
 				CAEA0DC5216BDE2300B0C7A6 /* EventsService.swift in Sources */,
 				CA46799B22176329006B3090 /* DealerImpl.swift in Sources */,
@@ -8842,7 +8835,6 @@
 				CAEA0FB6216E1CC000B0C7A6 /* WhenObservingDealersIndexAfterSyncOccurs_ApplicationShould.swift in Sources */,
 				CAEA0FC6216E1CC000B0C7A6 /* KnowledgeGroupsRemoveAllBeforeInsertTests.swift in Sources */,
 				CAEA0FD9216E1CC000B0C7A6 /* WhenLaunchingApplicationWithPreexistingFavourites.swift in Sources */,
-				CAEA0F6A216D2B5E00B0C7A6 /* BuildConfigurationV2ApiUrlProvidingTest.swift in Sources */,
 				CAEA0FD7216E1CC000B0C7A6 /* WhenFavouritingEvent_ApplicationShould.swift in Sources */,
 				CAEA0F8F216E1C2D00B0C7A6 /* APISyncResponse+RandomValueProviding.swift in Sources */,
 				CAEA0F70216D2C0900B0C7A6 /* SyncAPITests.swift in Sources */,
