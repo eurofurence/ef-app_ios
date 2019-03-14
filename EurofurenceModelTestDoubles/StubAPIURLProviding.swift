@@ -10,10 +10,10 @@ import EurofurenceModel
 
 public struct StubAPIURLProviding: APIURLProviding {
 
-    public init() {
-
+    public init(url: String = "https://api.example.com/v2/") {
+        self.url = url
     }
 
-    public let url = "https://api.example.com/v2/"
+    public let url: String
 
 }

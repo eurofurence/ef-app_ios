@@ -22,7 +22,14 @@ public struct JSONAPI: API {
 
     public init(jsonSession: JSONSession, apiUrl: APIURLProviding) {
         self.jsonSession = jsonSession
-        self.apiUrl = apiUrl.url
+        self.apiUrl = {
+            var url = apiUrl.url
+            if url.hasSuffix("/") {
+                url.removeLast()
+            }
+            
+            return url
+        }()
 
         // TODO: Investigate why system ios8601 formatter fails to parse our dates
         decoder = JSONDecoder()
@@ -34,7 +41,7 @@ public struct JSONAPI: API {
     // MARK: LoginAPI
 
     public func performLogin(request: LoginRequest, completionHandler: @escaping (LoginResponse?) -> Void) {
-        let url = apiUrl + "Tokens/RegSys"
+        let url = urlStringByAppending(pathComponent: "Tokens/RegSys")
         let request: Request.Login = Request.Login(RegNo: request.regNo, Username: request.username, Password: request.password)
         let jsonData = try! encoder.encode(request)
         let jsonRequest = JSONRequest(url: url, body: jsonData)
@@ -51,7 +58,7 @@ public struct JSONAPI: API {
     // MARK: ImageAPI
 
     public func fetchImage(identifier: String, completionHandler: @escaping (Data?) -> Void) {
-        let url = apiUrl + "Images/\(identifier)/Content"
+        let url = urlStringByAppending(pathComponent: "Images/\(identifier)/Content")
         let request = JSONRequest(url: url)
 
         jsonSession.get(request) { (data, _) in
@@ -63,7 +70,7 @@ public struct JSONAPI: API {
 
     public func loadPrivateMessages(authorizationToken: String,
                                     completionHandler: @escaping ([MessageCharacteristics]?) -> Void) {
-        let url = apiUrl + "Communication/PrivateMessages"
+        let url = urlStringByAppending(pathComponent: "Communication/PrivateMessages")
         var request = JSONRequest(url: url)
         request.headers = ["Authorization": "Bearer \(authorizationToken)"]
 
@@ -80,7 +87,7 @@ public struct JSONAPI: API {
     }
 
     public func markMessageWithIdentifierAsRead(_ identifier: String, authorizationToken: String) {
-        let url = apiUrl + "Communication/PrivateMessages/\(identifier)/Read"
+        let url = urlStringByAppending(pathComponent: "Communication/PrivateMessages/\(identifier)/Read")
         let messageContentsToSupportSwagger = "true".data(using: .utf8)!
         var request = JSONRequest(url: url, body: messageContentsToSupportSwagger)
         request.headers = ["Authorization": "Bearer \(authorizationToken)"]
@@ -100,7 +107,7 @@ public struct JSONAPI: API {
             }
         }()
 
-        let url = "\(apiUrl)Sync\(sinceParameterPathComponent)"
+        let url = urlStringByAppending(pathComponent: "Sync\(sinceParameterPathComponent)")
         let request = JSONRequest(url: url, body: Data())
 
         jsonSession.get(request) { (data, _) in
@@ -119,6 +126,10 @@ public struct JSONAPI: API {
     }
 
     // MARK: Private
+    
+    private func urlStringByAppending(pathComponent: String) -> String {
+        return "\(apiUrl)/\(pathComponent)"
+    }
 
     private struct Request {
 

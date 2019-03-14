@@ -71,5 +71,17 @@ class SyncAPITests: XCTestCase {
 
         XCTAssertEqual(expected, actual)
     }
+    
+    func testPassingURLWithoutTrailingSlashFormatsURLCorrectly_BUG() {
+        let jsonSession = CapturingJSONSession()
+        let urlWithoutTrailingSlash = "https://some.domain/api"
+        let apiUrl = StubAPIURLProviding(url: urlWithoutTrailingSlash)
+        let syncApi = JSONAPI(jsonSession: jsonSession, apiUrl: apiUrl)
+        syncApi.fetchLatestData(lastSyncTime: nil) { (_) in }
+        let expected = "\(urlWithoutTrailingSlash)/Sync"
+        let actual = jsonSession.getRequestURL
+        
+        XCTAssertEqual(expected, actual)
+    }
 
 }
