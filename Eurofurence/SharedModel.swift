@@ -11,7 +11,7 @@ import Foundation
 
 class SharedModel {
     
-    private static let CID = ConventionIdentifier(identifier: "EF24")
+    private static let CID = ConventionIdentifier(identifier: "EF25")
 
     static let instance: SharedModel = SharedModel()
     let session: EurofurenceSession

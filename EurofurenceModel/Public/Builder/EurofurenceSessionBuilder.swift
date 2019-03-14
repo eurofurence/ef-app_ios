@@ -39,9 +39,7 @@ public class EurofurenceSessionBuilder {
         dataStoreFactory = CoreDataStoreFactory()
 
         let jsonSession = URLSessionBasedJSONSession.shared
-        let buildConfiguration = PreprocessorBuildConfigurationProviding()
-
-        let apiUrl = BuildConfigurationAPIURLProviding(buildConfiguration)
+        let apiUrl = CIDAPIURLProviding(conventionIdentifier: conventionIdentifier)
         api = JSONAPI(jsonSession: jsonSession, apiUrl: apiUrl)
 
         clock = SystemClock.shared
