@@ -19,7 +19,7 @@ class ImageAPITests: XCTestCase {
         let expected = URL(string: apiUrl.url + "Images/\(identifier)/Content")!.absoluteString
         let jsonSession = CapturingJSONSession()
         let api = JSONAPI(jsonSession: jsonSession, apiUrl: apiUrl)
-        api.fetchImage(identifier: identifier) { (_) in }
+        api.fetchImage(identifier: identifier, contentHashSha1: "") { (_) in }
 
         XCTAssertEqual(expected, jsonSession.getRequestURL)
     }
@@ -30,7 +30,7 @@ class ImageAPITests: XCTestCase {
         let api = JSONAPI(jsonSession: jsonSession, apiUrl: apiUrl)
         let expected = Data.random
         var actual: Data?
-        api.fetchImage(identifier: .random) { actual = $0 }
+        api.fetchImage(identifier: .random, contentHashSha1: "") { actual = $0 }
         jsonSession.invokeLastGETCompletionHandler(responseData: expected)
 
         XCTAssertEqual(expected, actual)

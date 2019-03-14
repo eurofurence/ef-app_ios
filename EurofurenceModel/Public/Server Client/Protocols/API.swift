@@ -12,7 +12,7 @@ public protocol API {
 
     func fetchLatestData(lastSyncTime: Date?, completionHandler: @escaping (ModelCharacteristics?) -> Void)
 
-    func fetchImage(identifier: String, completionHandler: @escaping (Data?) -> Void)
+    func fetchImage(identifier: String, contentHashSha1: String, completionHandler: @escaping (Data?) -> Void)
 
     func performLogin(request: LoginRequest, completionHandler: @escaping (LoginResponse?) -> Void)
 

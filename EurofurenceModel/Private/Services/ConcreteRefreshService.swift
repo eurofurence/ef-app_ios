@@ -75,11 +75,11 @@ class ConcreteRefreshService: RefreshService {
                 return
             }
 
-            let imageIdentifiers = response.images.changed.map({ $0.identifier })
+            let imageDownloadRequests = response.images.changed.map(ImageDownloader.DownloadRequest.init)
             progress.completedUnitCount = 0
-            progress.totalUnitCount = Int64(imageIdentifiers.count)
+            progress.totalUnitCount = Int64(imageDownloadRequests.count)
 
-            self.imageDownloader.downloadImages(identifiers: imageIdentifiers, parentProgress: progress) {
+            self.imageDownloader.downloadImages(requests: imageDownloadRequests, parentProgress: progress) {
                 self.updateLocalStore(response: response, lastSyncTime: lastSyncTime)
                 self.eventBus.post(DomainEvent.DataStoreChangedEvent())
 

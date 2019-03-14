@@ -39,7 +39,7 @@ extension ModelCharacteristics {
         let maps: ModelCharacteristics.Update<MapCharacteristics> = ModelCharacteristics.Update(changed: .random)
         
         let makeImageFromIdentifier: (String) -> ImageCharacteristics = { (identifier) in
-            return ImageCharacteristics(identifier: identifier, internalReference: "", contentHashSha1: "")
+            return ImageCharacteristics(identifier: identifier, internalReference: "", contentHashSha1: .random)
         }
 
         var allImages: [ImageCharacteristics] = events.compactMap({ $0.bannerImageId }).map(makeImageFromIdentifier)

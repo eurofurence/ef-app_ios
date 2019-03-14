@@ -44,8 +44,8 @@ class EventAssertion: Assertion {
 
         let expectedRoom = modelCharacteristics.rooms.changed.first(where: { $0.roomIdentifier == characteristic.roomIdentifier })!
         let expectedTrack = modelCharacteristics.tracks.changed.first(where: { $0.trackIdentifier == characteristic.trackIdentifier })!
-        let expectedPosterGraphic = context.api.stubbedImage(for: characteristic.posterImageId)
-        let expectedBannerGraphic = context.api.stubbedImage(for: characteristic.bannerImageId)
+        let expectedPosterGraphic = context.api.stubbedImage(for: characteristic.posterImageId, availableImages: modelCharacteristics.images.changed)
+        let expectedBannerGraphic = context.api.stubbedImage(for: characteristic.bannerImageId, availableImages: modelCharacteristics.images.changed)
         let tags = characteristic.tags.defaultingTo([])
 
         assert(event.identifier, isEqualTo: EventIdentifier(characteristic.identifier))

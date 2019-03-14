@@ -36,7 +36,11 @@ class WhenPerformingSyncThatSucceeds: XCTestCase {
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let context = EurofurenceSessionTestBuilder().build()
         context.performSuccessfulSync(response: syncResponse)
-        let expected = syncResponse.images.changed.map({ ImageEntity(identifier: $0.identifier, pngImageData: context.api.stubbedImage(for: $0.identifier)!) })
+        let expected = syncResponse.images.changed.map({ (image) -> ImageEntity in
+            let imageData: Data? = context.api.stubbedImage(for: image.identifier, availableImages: syncResponse.images.changed)
+            return ImageEntity(identifier: image.identifier,
+                               pngImageData: imageData!)
+        })
 
         XCTAssertTrue(context.imageRepository.didSave(expected))
     }

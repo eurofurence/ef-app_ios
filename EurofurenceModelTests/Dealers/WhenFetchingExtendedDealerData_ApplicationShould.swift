@@ -44,12 +44,12 @@ class WhenFetchingExtendedDealerData_ApplicationShould: XCTestCase {
     }
 
     func testProvideTheArtistImageData() {
-        let expected = context.api.stubbedImage(for: randomDealer.artistImageId)
+        let expected = context.api.stubbedImage(for: randomDealer.artistImageId, availableImages: response.images.changed)
         XCTAssertEqual(expected, dealerData?.artistImagePNGData)
     }
 
     func testProvideTheArtPreviewImageData() {
-        let expected = context.api.stubbedImage(for: randomDealer.artPreviewImageId)
+        let expected = context.api.stubbedImage(for: randomDealer.artPreviewImageId, availableImages: response.images.changed)
         XCTAssertEqual(expected, dealerData?.artPreviewImagePNGData)
     }
 

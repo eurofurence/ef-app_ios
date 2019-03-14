@@ -45,17 +45,23 @@ class FakeAPI: API {
     }
 
     private(set) var downloadedImageIdentifiers = [String]()
-    func fetchImage(identifier: String, completionHandler: @escaping (Data?) -> Void) {
+    func fetchImage(identifier: String, contentHashSha1: String, completionHandler: @escaping (Data?) -> Void) {
         downloadedImageIdentifiers.append(identifier)
-        completionHandler(identifier.data(using: .utf8)!)
+        completionHandler(stubbedImageData(identifier: identifier, contentHashSha1: contentHashSha1))
     }
 
 }
 
 extension FakeAPI {
-
-    func stubbedImage(for identifier: String?) -> Data? {
-        return identifier?.data(using: .utf8)
+    
+    func stubbedImage(for identifier: String?, availableImages: [ImageCharacteristics]) -> Data? {
+        guard let image = availableImages.first(where: { $0.identifier == identifier }) else { return nil }
+        return stubbedImageData(identifier: image.identifier, contentHashSha1: image.contentHashSha1)
+    }
+    
+    // TODO: This "test data" is identical to CapturingImageRepository.stub
+    private func stubbedImageData(identifier: String, contentHashSha1: String) -> Data? {
+        return "\(identifier)_\(contentHashSha1)".data(using: .utf8)
     }
 
     func simulateSuccessfulSync(_ response: ModelCharacteristics) {
@@ -92,9 +98,9 @@ class SlowFakeImageAPI: FakeAPI {
         return pendingFetches.count
     }
 
-    override func fetchImage(identifier: String, completionHandler: @escaping (Data?) -> Void) {
+    override func fetchImage(identifier: String, contentHashSha1: String, completionHandler: @escaping (Data?) -> Void) {
         pendingFetches.append {
-            super.fetchImage(identifier: identifier, completionHandler: completionHandler)
+            super.fetchImage(identifier: identifier, contentHashSha1: contentHashSha1, completionHandler: completionHandler)
         }
     }
 

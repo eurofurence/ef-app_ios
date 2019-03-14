@@ -16,9 +16,7 @@ class WhenFetchingEventsBeforeRefreshWhenStoreHasEvents: XCTestCase {
         let response = ModelCharacteristics.randomWithoutDeletions
         let dataStore = FakeDataStore(response: response)
         let imageRepository = CapturingImageRepository()
-        let bannerIdentifiers = response.events.changed.compactMap({ $0.bannerImageId })
-        let posterIdentifiers = response.events.changed.compactMap({ $0.posterImageId })
-        imageRepository.stub(identifiers: bannerIdentifiers + posterIdentifiers)
+        imageRepository.stubEverything(response)
 
         let context = EurofurenceSessionTestBuilder().with(dataStore).with(imageRepository).build()
         let observer = CapturingEventsServiceObserver()
