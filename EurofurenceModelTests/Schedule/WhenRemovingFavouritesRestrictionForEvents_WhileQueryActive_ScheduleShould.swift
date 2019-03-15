@@ -19,7 +19,8 @@ class WhenRemovingFavouritesRestrictionForEvents_WhileQueryActive_ScheduleShould
         let notAFavourite = favourites.randomElement()
         let nonFavouriteEvent = response.events.changed.first(where: { $0.identifier == notAFavourite.element.rawValue })!
         favourites.remove(at: notAFavourite.index)
-        dataStore.save(response) { (transaction) in
+        dataStore.save(response)
+        dataStore.performTransaction { (transaction) in
             favourites.forEach(transaction.saveFavouriteEventIdentifier)
         }
 

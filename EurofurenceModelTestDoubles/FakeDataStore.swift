@@ -83,7 +83,7 @@ public extension FakeDataStore {
         save(response)
     }
 
-    public func save(_ response: ModelCharacteristics, lastRefreshDate: Date = Date(), block: ((DataStoreTransaction) -> Void)? = nil) {
+    public func save(_ response: ModelCharacteristics, lastRefreshDate: Date = Date()) {
         performTransaction { (transaction) in
             transaction.saveLastRefreshDate(lastRefreshDate)
             transaction.saveKnowledgeGroups(response.knowledgeGroups.changed)
@@ -96,8 +96,6 @@ public extension FakeDataStore {
             transaction.saveDealers(response.dealers.changed)
             transaction.saveMaps(response.maps.changed)
             transaction.saveImages(response.images.changed)
-
-            block?(transaction)
         }
     }
 
