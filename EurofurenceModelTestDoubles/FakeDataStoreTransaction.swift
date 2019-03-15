@@ -40,10 +40,7 @@ public class FakeDataStoreTransaction: DataStoreTransaction {
         persistedKnowledgeEntries.append(contentsOf: knowledgeEntries, identifiedBy: { $0.identifier })
     }
 
-    private(set) public var deletedKnowledgeEntries: [String] = []
-    public func deleteKnowledgeEntry(identifier: String) {
-        deletedKnowledgeEntries.append(identifier)
-        
+    public func deleteKnowledgeEntry(identifier: String) {        
         persistedKnowledgeEntries.removeAll(where: { $0.identifier == identifier })
     }
 

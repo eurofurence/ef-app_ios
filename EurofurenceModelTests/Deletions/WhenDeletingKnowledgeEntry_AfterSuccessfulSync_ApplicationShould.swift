@@ -18,12 +18,13 @@ class WhenDeletingKnowledgeEntry_AfterSuccessfulSync_ApplicationShould: XCTestCa
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         context.refreshLocalStore()
         context.api.simulateSuccessfulSync(response)
-        let entryToDelete = String.random
-        response.knowledgeEntries.deleted = [entryToDelete]
+        let entryToDelete = response.knowledgeEntries.changed.remove(at: 0)
+        response.knowledgeEntries.deleted = [entryToDelete.identifier]
         context.refreshLocalStore()
         context.api.simulateSuccessfulSync(response)
+        let entries = dataStore.fetchKnowledgeEntries()
 
-        XCTAssertEqual([entryToDelete], dataStore.transaction.deletedKnowledgeEntries)
+        XCTAssertEqual(false, entries?.contains(entryToDelete))
     }
 
 }

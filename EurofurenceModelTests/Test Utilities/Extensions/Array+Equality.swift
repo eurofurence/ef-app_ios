@@ -23,5 +23,9 @@ extension Array where Element: Equatable {
         guard let other = other else { return false }
         return contains(elementsFrom: other)
     }
+    
+    func containsAny(elementsFrom other: [Element]) -> Bool {
+        return other.first(where: contains) != nil
+    }
 
 }

@@ -19,10 +19,9 @@ class KnowledgeEntriesRemoveAllBeforeInsertTests: XCTestCase {
         let context = EurofurenceSessionTestBuilder().build()
         context.performSuccessfulSync(response: originalResponse)
         context.performSuccessfulSync(response: subsequentResponse)
-        let originalEntryIdentifiers = originalResponse.knowledgeEntries.changed.map({ $0.identifier })
-        let deletedKnowledgeEntries = context.dataStore.transaction.deletedKnowledgeEntries
 
-        XCTAssertTrue(originalEntryIdentifiers.equalsIgnoringOrder(deletedKnowledgeEntries),
+        XCTAssertEqual(subsequentResponse.knowledgeEntries.changed,
+                       context.dataStore.fetchKnowledgeEntries(),
                       "Should have removed original knowledge entries between sync events")
     }
 
