@@ -18,12 +18,12 @@ class WhenDeletingKnowledgeGroup_AfterSuccessfulSync_ApplicationShould: XCTestCa
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         context.refreshLocalStore()
         context.api.simulateSuccessfulSync(response)
-        let groupToDelete = String.random
-        response.knowledgeGroups.deleted = [groupToDelete]
+        let groupToDelete = response.knowledgeGroups.changed.remove(at: 0)
+        response.knowledgeGroups.deleted = [groupToDelete.identifier]
         context.refreshLocalStore()
         context.api.simulateSuccessfulSync(response)
 
-        XCTAssertEqual([groupToDelete], dataStore.transaction.deletedKnowledgeGroups)
+        XCTAssertEqual(false, dataStore.fetchKnowledgeGroups()?.contains(groupToDelete))
     }
 
 }

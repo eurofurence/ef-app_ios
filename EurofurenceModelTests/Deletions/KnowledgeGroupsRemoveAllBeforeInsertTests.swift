@@ -18,11 +18,10 @@ class KnowledgeGroupsRemoveAllBeforeInsertTests: XCTestCase {
         let context = EurofurenceSessionTestBuilder().build()
         context.performSuccessfulSync(response: originalResponse)
         context.performSuccessfulSync(response: subsequentResponse)
-        let originalGroupIdentifiers = originalResponse.knowledgeGroups.changed.map({ $0.identifier })
-        let deletedKnowledgeGroups = context.dataStore.transaction.deletedKnowledgeGroups
 
-        XCTAssertTrue(originalGroupIdentifiers.equalsIgnoringOrder(deletedKnowledgeGroups),
-                      "Should have removed original groups between sync events")
+        XCTAssertEqual(subsequentResponse.knowledgeGroups.changed,
+                       context.dataStore.fetchKnowledgeGroups(),
+                       "Should have removed original groups between sync events")
     }
 
 }

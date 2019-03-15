@@ -31,13 +31,8 @@ public class FakeDataStoreTransaction: DataStoreTransaction {
         persistedKnowledgeGroups.append(contentsOf: knowledgeGroups, identifiedBy: { $0.identifier })
     }
 
-    private(set) public var deletedKnowledgeGroups: [String] = []
     public func deleteKnowledgeGroup(identifier: String) {
-        deletedKnowledgeGroups.append(identifier)
-
-        if let idx = persistedKnowledgeGroups.index(where: { $0.identifier == identifier }) {
-            persistedKnowledgeGroups.remove(at: idx)
-        }
+        persistedKnowledgeGroups.removeAll(where: { $0.identifier == identifier })
     }
 
     private(set) var persistedKnowledgeEntries: [KnowledgeEntryCharacteristics] = []
