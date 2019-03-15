@@ -14,8 +14,7 @@ class WhenObservingDealersAfterLoadingFromStore_ApplicationShould: XCTestCase {
 
     func testUpdateTheDelegateWithDealersGroupedByDisplayName() {
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
-        let dataStore = FakeDataStore()
-        dataStore.save(syncResponse)
+        let dataStore = FakeDataStore(response: syncResponse)
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let dealersIndex = context.dealersService.makeDealersIndex()
         let delegate = CapturingDealersIndexDelegate()

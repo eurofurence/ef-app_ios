@@ -14,8 +14,7 @@ class WhenUpgradingBetweenAppVersions_ApplicationShould: XCTestCase {
 
     func testIndicateStoreIsStale() {
         let forceUpgradeRequired = StubForceRefreshRequired(isForceRefreshRequired: true)
-        let presentDataStore = FakeDataStore()
-        presentDataStore.save(.randomWithoutDeletions)
+        let presentDataStore = FakeDataStore(response: .randomWithoutDeletions)
         presentDataStore.performTransaction { (transaction) in
             transaction.saveLastRefreshDate(.random)
         }
@@ -29,8 +28,7 @@ class WhenUpgradingBetweenAppVersions_ApplicationShould: XCTestCase {
 
     func testAlwaysEnquireWhetherUpgradeRequiredEvenWhenRefreshWouldOccurByPreference() {
         let forceUpgradeRequired = CapturingForceRefreshRequired()
-        let presentDataStore = FakeDataStore()
-        presentDataStore.save(.randomWithoutDeletions)
+        let presentDataStore = FakeDataStore(response: .randomWithoutDeletions)
         let preferences = StubUserPreferences()
         preferences.refreshStoreOnLaunch = true
         let context = EurofurenceSessionTestBuilder().with(preferences).with(presentDataStore).with(forceUpgradeRequired).build()

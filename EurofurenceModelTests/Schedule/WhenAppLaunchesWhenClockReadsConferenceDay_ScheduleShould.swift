@@ -15,8 +15,7 @@ class WhenAppLaunchesWhenClockReadsConferenceDay_ScheduleShould: XCTestCase {
     func testChangeToExpectedConDay() {
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let randomDay = syncResponse.conferenceDays.changed.randomElement().element
-        let dataStore = FakeDataStore()
-        dataStore.save(syncResponse)
+        let dataStore = FakeDataStore(response: syncResponse)
         let context = EurofurenceSessionTestBuilder().with(randomDay.date).with(dataStore).build()
         let schedule = context.eventsService.makeEventsSchedule()
         let delegate = CapturingEventsScheduleDelegate()
@@ -34,8 +33,7 @@ class WhenAppLaunchesWhenClockReadsConferenceDay_ScheduleShould: XCTestCase {
         randomDayComponents.minute = .random(upperLimit: 58)
         randomDayComponents.second = .random(upperLimit: 58)
         let sameDayAsRandomDayButDifferentTime = randomDayComponents.date!
-        let dataStore = FakeDataStore()
-        dataStore.save(syncResponse)
+        let dataStore = FakeDataStore(response: syncResponse)
         let context = EurofurenceSessionTestBuilder().with(sameDayAsRandomDayButDifferentTime).with(dataStore).build()
         let schedule = context.eventsService.makeEventsSchedule()
         let delegate = CapturingEventsScheduleDelegate()
@@ -48,8 +46,7 @@ class WhenAppLaunchesWhenClockReadsConferenceDay_ScheduleShould: XCTestCase {
     func testProvideEventsForThatDay() {
         let response = ModelCharacteristics.randomWithoutDeletions
         let randomDay = response.conferenceDays.changed.randomElement().element
-        let dataStore = FakeDataStore()
-        dataStore.save(response)
+        let dataStore = FakeDataStore(response: response)
         let imageRepository = CapturingImageRepository()
         imageRepository.stubEverything(response)
         let context = EurofurenceSessionTestBuilder().with(dataStore).with(randomDay.date).with(imageRepository).build()

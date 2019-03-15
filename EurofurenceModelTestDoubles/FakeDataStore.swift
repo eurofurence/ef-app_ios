@@ -80,10 +80,7 @@ public extension FakeDataStore {
 
     public convenience init(response: ModelCharacteristics) {
         self.init()
-        save(response)
-    }
-
-    public func save(_ response: ModelCharacteristics) {
+        
         performTransaction { (transaction) in
             transaction.saveKnowledgeGroups(response.knowledgeGroups.changed)
             transaction.saveKnowledgeEntries(response.knowledgeEntries.changed)

@@ -27,8 +27,7 @@ class WhenToldToOpenNotification_ThatRepresentsEventReminder_ApplicationShould: 
     func testProvideEventIdentifierInCompletionHandler() {
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let event = syncResponse.events.changed.randomElement().element
-        let dataStore = FakeDataStore()
-        dataStore.save(syncResponse)
+        let dataStore = FakeDataStore(response: syncResponse)
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let payload: [String: String] = [
             ApplicationNotificationKey.notificationContentKind.rawValue: ApplicationNotificationContentKind.event.rawValue,

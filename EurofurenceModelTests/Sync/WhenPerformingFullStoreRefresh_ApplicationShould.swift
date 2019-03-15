@@ -13,8 +13,7 @@ import XCTest
 class WhenPerformingFullStoreRefresh_ApplicationShould: XCTestCase {
 
     func testRequestSyncWithoutDeltas() {
-        let dataStore = FakeDataStore()
-        dataStore.save(.randomWithoutDeletions)
+        let dataStore = FakeDataStore(response: .randomWithoutDeletions)
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         context.performSuccessfulSync(response: .randomWithoutDeletions)
         _ = context.refreshService.performFullStoreRefresh { (_) in }

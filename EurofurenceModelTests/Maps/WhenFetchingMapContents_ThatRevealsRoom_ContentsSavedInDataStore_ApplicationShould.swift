@@ -23,8 +23,7 @@ class WhenFetchingMapContents_ThatRevealsRoom_ContentsSavedInDataStore_Applicati
         map.entries = [entry, unrelatedEntry]
         syncResponse.maps.changed = [map]
         syncResponse.rooms.changed = [room]
-        let dataStore = FakeDataStore()
-        dataStore.save(syncResponse)
+        let dataStore = FakeDataStore(response: syncResponse)
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         var content: MapContent?
         let entity = context.mapsService.fetchMap(for: MapIdentifier(map.identifier))
