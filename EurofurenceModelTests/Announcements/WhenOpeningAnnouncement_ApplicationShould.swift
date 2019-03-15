@@ -46,9 +46,10 @@ class WhenOpeningAnnouncement_ApplicationShould: XCTestCase {
         let announcements = syncResponse.announcements.changed
         let announcement = announcements.randomElement().element
         let identifier = announcement.identifier
+        let entityIdentifier = AnnouncementIdentifier(identifier)
         openAnnouncement(AnnouncementIdentifier(identifier))
-
-        XCTAssertTrue(context.dataStore.didSaveReadAnnouncement(AnnouncementIdentifier(identifier)))
+    
+        XCTAssertTrue([entityIdentifier].contains(elementsFrom: context.dataStore.fetchReadAnnouncementIdentifiers()))
     }
 
     func testSaveAllPreviouslyReadAnnouncementIdentifierAsRead() {
@@ -61,7 +62,7 @@ class WhenOpeningAnnouncement_ApplicationShould: XCTestCase {
         openAnnouncement(AnnouncementIdentifier(secondIdentifier))
         let expected = [firstIdentifier, secondIdentifier].map({ AnnouncementIdentifier($0) })
 
-        XCTAssertTrue(context.dataStore.didSaveReadAnnouncements(expected))
+        XCTAssertTrue(expected.contains(elementsFrom: context.dataStore.fetchReadAnnouncementIdentifiers()))
     }
 
     func testTellServiceObserversWhenMarkingAnnouncementAsRead() {

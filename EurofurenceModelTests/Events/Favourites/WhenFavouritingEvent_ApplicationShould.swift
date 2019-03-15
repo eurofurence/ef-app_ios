@@ -31,7 +31,7 @@ class WhenFavouritingEvent_ApplicationShould: XCTestCase {
         let event = context.eventsService.fetchEvent(identifier: identifier)
         event?.favourite()
 
-        XCTAssertTrue(context.dataStore.didFavouriteEvent(identifier))
+        XCTAssertTrue([identifier].contains(elementsFrom: context.dataStore.fetchFavouriteEventIdentifiers()))
     }
 
     func testTellEventsObserversTheEventIsNowFavourited() {

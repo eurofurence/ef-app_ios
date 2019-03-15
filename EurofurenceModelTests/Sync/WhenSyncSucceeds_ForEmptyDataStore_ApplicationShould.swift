@@ -18,14 +18,16 @@ class WhenSyncSucceeds_ForEmptyDataStore_ApplicationShould: XCTestCase {
 
         context.performSuccessfulSync(response: characteristics)
 
-        XCTAssertTrue(store.didSave(characteristics.knowledgeGroups.changed))
-        XCTAssertTrue(store.didSave(characteristics.knowledgeEntries.changed))
-        XCTAssertTrue(store.didSave(characteristics.announcements.changed))
-        XCTAssertTrue(store.didSave(characteristics.events.changed))
-        XCTAssertTrue(store.didSave(characteristics.rooms.changed))
-        XCTAssertTrue(store.didSave(characteristics.tracks.changed))
-        XCTAssertTrue(store.didSave(characteristics.dealers.changed))
-        XCTAssertTrue(store.didSave(characteristics.maps.changed))
+        XCTAssertTrue(characteristics.knowledgeGroups.changed.contains(elementsFrom: store.fetchKnowledgeGroups()))
+        XCTAssertTrue(characteristics.knowledgeEntries.changed.contains(elementsFrom: store.fetchKnowledgeEntries()))
+        XCTAssertTrue(characteristics.announcements.changed.contains(elementsFrom: store.fetchAnnouncements()))
+        XCTAssertTrue(characteristics.events.changed.contains(elementsFrom: store.fetchEvents()))
+        XCTAssertTrue(characteristics.rooms.changed.contains(elementsFrom: store.fetchRooms()))
+        XCTAssertTrue(characteristics.tracks.changed.contains(elementsFrom: store.fetchTracks()))
+        XCTAssertTrue(characteristics.dealers.changed.contains(elementsFrom: store.fetchDealers()))
+        XCTAssertTrue(characteristics.maps.changed.contains(elementsFrom: store.fetchMaps()))
+        XCTAssertTrue(characteristics.conferenceDays.changed.contains(elementsFrom: store.fetchConferenceDays()))
+        XCTAssertTrue(characteristics.images.changed.contains(elementsFrom: store.fetchImages()))
     }
 
 }

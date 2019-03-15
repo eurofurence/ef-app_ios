@@ -63,12 +63,4 @@ class WhenSyncCompletesWithConferenceDays_ApplicationShould: XCTestCase {
             .assertDays(delegate.allDays, characterisedBy: syncResponse.conferenceDays.changed)
     }
 
-    func testSaveTheConferenceDaysToTheDataStore() {
-        let context = EurofurenceSessionTestBuilder().build()
-        let syncResponse = ModelCharacteristics.randomWithoutDeletions
-        context.performSuccessfulSync(response: syncResponse)
-
-        XCTAssertTrue(context.dataStore.didSave(syncResponse.conferenceDays.changed))
-    }
-
 }

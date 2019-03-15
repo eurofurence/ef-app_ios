@@ -111,9 +111,8 @@ public class FakeDataStoreTransaction: DataStoreTransaction {
         persistedFavouriteEvents.insert(identifier)
     }
 
-    private(set) public var deletedFavouriteEvents = [EventIdentifier]()
     public func deleteFavouriteEventIdentifier(_ identifier: EventIdentifier) {
-        deletedFavouriteEvents.append(identifier)
+        persistedFavouriteEvents.remove(identifier)
     }
 
     public func deleteAnnouncement(identifier: String) {

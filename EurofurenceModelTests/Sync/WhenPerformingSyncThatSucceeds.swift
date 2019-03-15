@@ -63,7 +63,7 @@ class WhenPerformingSyncThatSucceeds: XCTestCase {
         context.clock.tickTime(to: randomTime)
         context.api.simulateSuccessfulSync(.randomWithoutDeletions)
 
-        XCTAssertTrue(context.dataStore.didSaveLastRefreshTime(randomTime))
+        XCTAssertEqual(randomTime, context.dataStore.fetchLastRefreshDate())
     }
 
 }

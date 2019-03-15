@@ -1167,7 +1167,6 @@
 		CAEA0FE8216E1CE700B0C7A6 /* WhenSyncSuceeds_ThenObservingUpcomingEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA83EF20CDC80500DD0795 /* WhenSyncSuceeds_ThenObservingUpcomingEvents.swift */; };
 		CAEA0FE9216E1CE700B0C7A6 /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990F120ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift */; };
 		CAEA0FEA216E1CE700B0C7A6 /* WhenFullRefreshOccurs_YieldingOrphanedEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA66C028212597F600F87AFE /* WhenFullRefreshOccurs_YieldingOrphanedEntities.swift */; };
-		CAEA0FEB216E1CE700B0C7A6 /* WhenSyncSucceedsWithChangedImages_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40105B210E19660056E16C /* WhenSyncSucceedsWithChangedImages_ApplicationShould.swift */; };
 		CAEA0FEC216E1CE700B0C7A6 /* WhenSyncSucceeds_WithImages_ThenSubsequentSyncDeletesImage_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40105D210E1A9D0056E16C /* WhenSyncSucceeds_WithImages_ThenSubsequentSyncDeletesImage_ApplicationShould.swift */; };
 		CAEA0FED216E1CE700B0C7A6 /* WhenSyncSucceeds_ThenImageChanges_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA66C02C21261E5600F87AFE /* WhenSyncSucceeds_ThenImageChanges_ApplicationShould.swift */; };
 		CAEA0FEE216E1CE700B0C7A6 /* WhenFetchingImagesForKnowledgeEntry_WhenEntryHasImages_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C381211CB7D6003C1C4E /* WhenFetchingImagesForKnowledgeEntry_WhenEntryHasImages_ApplicationShould.swift */; };
@@ -2014,7 +2013,6 @@
 		CA3990F320ACD73D001E3F1A /* WhenObservingUpcomingEvents_ThenLoadSucceeds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingUpcomingEvents_ThenLoadSucceeds.swift; sourceTree = "<group>"; };
 		CA401056210A6BAD0056E16C /* WhenDeletingMap_AfterSuccessfulSync_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDeletingMap_AfterSuccessfulSync_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA401058210B9FD40056E16C /* ImageCharacteristics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCharacteristics.swift; sourceTree = "<group>"; };
-		CA40105B210E19660056E16C /* WhenSyncSucceedsWithChangedImages_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSyncSucceedsWithChangedImages_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA40105D210E1A9D0056E16C /* WhenSyncSucceeds_WithImages_ThenSubsequentSyncDeletesImage_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSyncSucceeds_WithImages_ThenSubsequentSyncDeletesImage_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA40105F210E1E430056E16C /* ImageModelEntity+Adaptation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageModelEntity+Adaptation.swift"; sourceTree = "<group>"; };
 		CA401061210F900F0056E16C /* WhenFetchingKnowledgeEntryByIdentifier_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingKnowledgeEntryByIdentifier_ApplicationShould.swift; sourceTree = "<group>"; };
@@ -4266,7 +4264,6 @@
 		CA40105A210E19520056E16C /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				CA40105B210E19660056E16C /* WhenSyncSucceedsWithChangedImages_ApplicationShould.swift */,
 				CA40105D210E1A9D0056E16C /* WhenSyncSucceeds_WithImages_ThenSubsequentSyncDeletesImage_ApplicationShould.swift */,
 				CA66C02C21261E5600F87AFE /* WhenSyncSucceeds_ThenImageChanges_ApplicationShould.swift */,
 			);
@@ -8750,7 +8747,6 @@
 				CAEA0FBA216E1CC000B0C7A6 /* WhenToldToOpenDealersTelegram_WhenApplicationCanHandleURL_ApplicationShould.swift in Sources */,
 				CAEA1001216E1CE700B0C7A6 /* WhenObservingMaps_ThenSyncSucceeds_ApplicationShould.swift in Sources */,
 				CAEA0FD3216E1CC000B0C7A6 /* WhenSearchingForEvents_ApplicationShould.swift in Sources */,
-				CAEA0FEB216E1CE700B0C7A6 /* WhenSyncSucceedsWithChangedImages_ApplicationShould.swift in Sources */,
 				CAEA101B216E1CE800B0C7A6 /* WhenPerformingSync_WhenNumberOfImagesToDownloadIsKnown.swift in Sources */,
 				CAEA0FDD216E1CE700B0C7A6 /* WhenObservingRunningEventsAfterSuccessfulLoad.swift in Sources */,
 				CAEA0FF3216E1CE700B0C7A6 /* WhenFetchingKnowledgeGroupsBeforeRefreshWhenStoreHasGroups.swift in Sources */,

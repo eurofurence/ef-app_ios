@@ -16,13 +16,12 @@ extension Array where Element: Equatable {
     }
 
     func contains(elementsFrom other: [Element]) -> Bool {
-        for item in other {
-            if contains(item) == false {
-                return false
-            }
-        }
-
-        return true
+        return other.allSatisfy(contains)
+    }
+    
+    func contains(elementsFrom other: [Element]?) -> Bool {
+        guard let other = other else { return false }
+        return contains(elementsFrom: other)
     }
 
 }

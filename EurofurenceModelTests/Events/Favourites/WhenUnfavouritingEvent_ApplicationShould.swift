@@ -32,7 +32,7 @@ class WhenUnfavouritingEvent_ApplicationShould: XCTestCase {
     }
 
     func testTellTheDataStoreToDeleteTheEventIdentifier() {
-        XCTAssertTrue(context.dataStore.didDeleteFavouriteEvent(identifier))
+        XCTAssertEqual([], context.dataStore.fetchFavouriteEventIdentifiers())
     }
 
     func testTellObserversTheEventHasBeenUnfavourited() {
