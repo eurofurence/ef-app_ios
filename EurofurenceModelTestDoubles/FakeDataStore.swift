@@ -95,6 +95,7 @@ public extension FakeDataStore {
             transaction.saveConferenceDays(response.conferenceDays.changed)
             transaction.saveDealers(response.dealers.changed)
             transaction.saveMaps(response.maps.changed)
+            transaction.saveImages(response.images.changed)
 
             block?(transaction)
         }
