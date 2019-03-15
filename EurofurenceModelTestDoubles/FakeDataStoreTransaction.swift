@@ -26,7 +26,7 @@ private extension Array {
 
 public class FakeDataStoreTransaction: DataStoreTransaction {
 
-    private(set) public var persistedKnowledgeGroups: [KnowledgeGroupCharacteristics] = []
+    private(set) var persistedKnowledgeGroups: [KnowledgeGroupCharacteristics] = []
     public func saveKnowledgeGroups(_ knowledgeGroups: [KnowledgeGroupCharacteristics]) {
         persistedKnowledgeGroups.append(contentsOf: knowledgeGroups, identifiedBy: { $0.identifier })
     }
@@ -40,7 +40,7 @@ public class FakeDataStoreTransaction: DataStoreTransaction {
         }
     }
 
-    private(set) public var persistedKnowledgeEntries: [KnowledgeEntryCharacteristics] = []
+    private(set) var persistedKnowledgeEntries: [KnowledgeEntryCharacteristics] = []
     public func saveKnowledgeEntries(_ knowledgeEntries: [KnowledgeEntryCharacteristics]) {
         persistedKnowledgeEntries.append(contentsOf: knowledgeEntries, identifiedBy: { $0.identifier })
     }
@@ -52,7 +52,7 @@ public class FakeDataStoreTransaction: DataStoreTransaction {
         persistedKnowledgeEntries.removeAll(where: { $0.identifier == identifier })
     }
 
-    private(set) public var persistedAnnouncements: [AnnouncementCharacteristics] = []
+    private(set) var persistedAnnouncements: [AnnouncementCharacteristics] = []
     public func saveAnnouncements(_ announcements: [AnnouncementCharacteristics]) {
         persistedAnnouncements.append(contentsOf: announcements, identifiedBy: { $0.identifier })
     }
@@ -85,7 +85,7 @@ public class FakeDataStoreTransaction: DataStoreTransaction {
         persistedRooms.removeAll(where: { $0.roomIdentifier == identifier })
     }
 
-    private(set) public var persistedTracks: [TrackCharacteristics] = []
+    private(set) var persistedTracks: [TrackCharacteristics] = []
     public func saveTracks(_ tracks: [TrackCharacteristics]) {
         persistedTracks.append(contentsOf: tracks, identifiedBy: { $0.trackIdentifier })
     }
@@ -96,17 +96,17 @@ public class FakeDataStoreTransaction: DataStoreTransaction {
         persistedTracks.removeAll(where: { $0.trackIdentifier == identifier })
     }
 
-    private(set) public var persistedConferenceDays: [ConferenceDayCharacteristics] = []
+    private(set) var persistedConferenceDays: [ConferenceDayCharacteristics] = []
     public func saveConferenceDays(_ conferenceDays: [ConferenceDayCharacteristics]) {
         persistedConferenceDays.append(contentsOf: conferenceDays, identifiedBy: { $0.identifier })
     }
 
-    private(set) public var persistedLastRefreshDate: Date?
+    private(set) var persistedLastRefreshDate: Date?
     public func saveLastRefreshDate(_ lastRefreshDate: Date) {
         persistedLastRefreshDate = lastRefreshDate
     }
 
-    private(set) public var persistedFavouriteEvents = Set<EventIdentifier>()
+    private(set) var persistedFavouriteEvents = Set<EventIdentifier>()
     public func saveFavouriteEventIdentifier(_ identifier: EventIdentifier) {
         persistedFavouriteEvents.insert(identifier)
     }
@@ -121,7 +121,7 @@ public class FakeDataStoreTransaction: DataStoreTransaction {
         }
     }
 
-    private(set) public var persistedDealers: [DealerCharacteristics] = []
+    private(set) var persistedDealers: [DealerCharacteristics] = []
     public func saveDealers(_ dealers: [DealerCharacteristics]) {
         persistedDealers.append(contentsOf: dealers, identifiedBy: { $0.identifier })
     }
@@ -132,7 +132,7 @@ public class FakeDataStoreTransaction: DataStoreTransaction {
         }
     }
 
-    private(set) public var persistedMaps: [MapCharacteristics] = []
+    private(set) var persistedMaps: [MapCharacteristics] = []
     public func saveMaps(_ maps: [MapCharacteristics]) {
         persistedMaps.append(contentsOf: maps, identifiedBy: { $0.identifier })
     }
@@ -143,12 +143,12 @@ public class FakeDataStoreTransaction: DataStoreTransaction {
         }
     }
 
-    private(set) public var persistedReadAnnouncementIdentifiers: [AnnouncementIdentifier] = []
+    private(set) var persistedReadAnnouncementIdentifiers: [AnnouncementIdentifier] = []
     public func saveReadAnnouncements(_ announcements: [AnnouncementIdentifier]) {
         persistedReadAnnouncementIdentifiers = announcements
     }
 
-    private(set) public var persistedImages = [ImageCharacteristics]()
+    private(set) var persistedImages = [ImageCharacteristics]()
     public func saveImages(_ images: [ImageCharacteristics]) {
         persistedImages.append(contentsOf: images, identifiedBy: { $0.identifier })
     }

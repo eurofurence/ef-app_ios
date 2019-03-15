@@ -14,6 +14,23 @@ open class FakeDataStore: DataStore {
     public init() {
         
     }
+    
+    public convenience init(response: ModelCharacteristics) {
+        self.init()
+        
+        performTransaction { (transaction) in
+            transaction.saveKnowledgeGroups(response.knowledgeGroups.changed)
+            transaction.saveKnowledgeEntries(response.knowledgeEntries.changed)
+            transaction.saveAnnouncements(response.announcements.changed)
+            transaction.saveEvents(response.events.changed)
+            transaction.saveRooms(response.rooms.changed)
+            transaction.saveTracks(response.tracks.changed)
+            transaction.saveConferenceDays(response.conferenceDays.changed)
+            transaction.saveDealers(response.dealers.changed)
+            transaction.saveMaps(response.maps.changed)
+            transaction.saveImages(response.images.changed)
+        }
+    }
 
     public func fetchAnnouncements() -> [AnnouncementCharacteristics]? {
         return transaction.persistedAnnouncements
@@ -66,33 +83,10 @@ open class FakeDataStore: DataStore {
     public func fetchImages() -> [ImageCharacteristics]? {
         return transaction.persistedImages
     }
-
-    private(set) public var capturedKnowledgeGroupsToSave: [KnowledgeGroup]?
     
     public let transaction = FakeDataStoreTransaction()
     open func performTransaction(_ block: @escaping (DataStoreTransaction) -> Void) {
         block(transaction)
-    }
-
-}
-
-public extension FakeDataStore {
-
-    public convenience init(response: ModelCharacteristics) {
-        self.init()
-        
-        performTransaction { (transaction) in
-            transaction.saveKnowledgeGroups(response.knowledgeGroups.changed)
-            transaction.saveKnowledgeEntries(response.knowledgeEntries.changed)
-            transaction.saveAnnouncements(response.announcements.changed)
-            transaction.saveEvents(response.events.changed)
-            transaction.saveRooms(response.rooms.changed)
-            transaction.saveTracks(response.tracks.changed)
-            transaction.saveConferenceDays(response.conferenceDays.changed)
-            transaction.saveDealers(response.dealers.changed)
-            transaction.saveMaps(response.maps.changed)
-            transaction.saveImages(response.images.changed)
-        }
     }
 
 }
