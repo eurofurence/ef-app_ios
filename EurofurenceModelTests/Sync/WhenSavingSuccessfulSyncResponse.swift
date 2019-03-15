@@ -7,18 +7,31 @@
 //
 
 import EurofurenceModel
+import EurofurenceModelTestDoubles
 import XCTest
 
 class WhenSavingSuccessfulSyncResponse: XCTestCase {
+    
+    private class TransactionSpyDataStore: FakeDataStore {
+        
+        var transactionInvokedBlock: (() -> Void)?
+        override func performTransaction(_ block: @escaping (DataStoreTransaction) -> Void) {
+            super.performTransaction(block)
+            transactionInvokedBlock?()
+        }
+        
+    }
 
     func testTheCompletionHandlerIsNotInvokedUntilDataStoreTransactionCompletes() {
-        let context = EurofurenceSessionTestBuilder().build()
+        let dataStore = TransactionSpyDataStore()
+        let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         var invokedWithNilError = false
         context.refreshLocalStore { invokedWithNilError = $0 == nil }
-        context.dataStore.transactionInvokedBlock = {
+        
+        dataStore.transactionInvokedBlock = {
             XCTAssertFalse(invokedWithNilError)
         }
-
+        
         context.api.simulateSuccessfulSync(.randomWithoutDeletions)
     }
 
