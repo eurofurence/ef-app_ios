@@ -83,9 +83,8 @@ public extension FakeDataStore {
         save(response)
     }
 
-    public func save(_ response: ModelCharacteristics, lastRefreshDate: Date = Date()) {
+    public func save(_ response: ModelCharacteristics) {
         performTransaction { (transaction) in
-            transaction.saveLastRefreshDate(lastRefreshDate)
             transaction.saveKnowledgeGroups(response.knowledgeGroups.changed)
             transaction.saveKnowledgeEntries(response.knowledgeEntries.changed)
             transaction.saveAnnouncements(response.announcements.changed)

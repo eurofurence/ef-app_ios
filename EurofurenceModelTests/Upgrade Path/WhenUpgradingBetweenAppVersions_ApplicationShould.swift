@@ -16,6 +16,10 @@ class WhenUpgradingBetweenAppVersions_ApplicationShould: XCTestCase {
         let forceUpgradeRequired = StubForceRefreshRequired(isForceRefreshRequired: true)
         let presentDataStore = FakeDataStore()
         presentDataStore.save(.randomWithoutDeletions)
+        presentDataStore.performTransaction { (transaction) in
+            transaction.saveLastRefreshDate(.random)
+        }
+        
         let context = EurofurenceSessionTestBuilder().with(presentDataStore).with(forceUpgradeRequired).build()
         var dataStoreState: EurofurenceSessionState?
         context.sessionStateService.determineSessionState { dataStoreState = $0 }
