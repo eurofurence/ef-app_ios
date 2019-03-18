@@ -10,8 +10,16 @@ import Foundation
 
 public protocol Identifyable {
     
-    associatedtype Identifier
+    associatedtype Identifier: Equatable
     
     var identifier: Identifier { get }
+    
+}
+
+extension Array where Element: Identifyable {
+    
+    var identifiers: [Element.Identifier] {
+        return map({ $0.identifier })
+    }
     
 }

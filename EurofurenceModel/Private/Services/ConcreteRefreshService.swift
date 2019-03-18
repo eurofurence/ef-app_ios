@@ -169,49 +169,49 @@ class ConcreteRefreshService: RefreshService {
     }
     
     private func deleteOrphanedAnnouncements(_ response: ModelCharacteristics, _ transaction: DataStoreTransaction) {
-        deleteOrphans(existing: dataStore.fetchAnnouncements()?.map({ $0.identifier }),
-                      changed: response.announcements.changed.map({ $0.identifier }),
+        deleteOrphans(existing: dataStore.fetchAnnouncements(),
+                      changed: response.announcements.changed,
                       deletionHandler: transaction.deleteAnnouncement)
     }
     
     private func deleteOrphanedEvents(_ response: ModelCharacteristics, _ transaction: DataStoreTransaction) {
-        deleteOrphans(existing: dataStore.fetchEvents()?.map({ $0.identifier }),
-                      changed: response.events.changed.map({ $0.identifier }),
+        deleteOrphans(existing: dataStore.fetchEvents(),
+                      changed: response.events.changed,
                       deletionHandler: transaction.deleteEvent)
     }
     
     private func deleteOrphanedKnowledgeGroups(_ response: ModelCharacteristics, _ transaction: DataStoreTransaction) {
-        deleteOrphans(existing: dataStore.fetchKnowledgeGroups()?.map({ $0.identifier }),
-                      changed: response.knowledgeGroups.changed.map({ $0.identifier }),
+        deleteOrphans(existing: dataStore.fetchKnowledgeGroups(),
+                      changed: response.knowledgeGroups.changed,
                       deletionHandler: transaction.deleteKnowledgeGroup)
     }
     
     private func deleteOrphanedKnowledgeEntries(_ response: ModelCharacteristics, _ transaction: DataStoreTransaction) {
-        deleteOrphans(existing: dataStore.fetchKnowledgeEntries()?.map({ $0.identifier }),
-                      changed: response.knowledgeEntries.changed.map({ $0.identifier }),
+        deleteOrphans(existing: dataStore.fetchKnowledgeEntries(),
+                      changed: response.knowledgeEntries.changed,
                       deletionHandler: transaction.deleteKnowledgeEntry)
     }
     
     private func deleteOrphanedImages(_ response: ModelCharacteristics) {
-        deleteOrphans(existing: dataStore.fetchImages()?.map({ $0.identifier }),
-                      changed: response.images.changed.map({ $0.identifier }),
+        deleteOrphans(existing: dataStore.fetchImages(),
+                      changed: response.images.changed,
                       deletionHandler: imageRepository.deleteEntity)
     }
     
     private func deleteOrphanedDealers(_ response: ModelCharacteristics, _ transaction: DataStoreTransaction) {
-        deleteOrphans(existing: dataStore.fetchDealers()?.map({ $0.identifier }),
-                      changed: response.dealers.changed.map({ $0.identifier }),
+        deleteOrphans(existing: dataStore.fetchDealers(),
+                      changed: response.dealers.changed,
                       deletionHandler: transaction.deleteDealer)
     }
     
     private func deleteOrphanedMaps(_ response: ModelCharacteristics, _ transaction: DataStoreTransaction) {
-        deleteOrphans(existing: dataStore.fetchMaps()?.map({ $0.identifier }),
-                      changed: response.maps.changed.map({ $0.identifier }),
+        deleteOrphans(existing: dataStore.fetchMaps(),
+                      changed: response.maps.changed,
                       deletionHandler: transaction.deleteMap)
     }
     
-    private func deleteOrphans(existing: [String]?, changed: [String], deletionHandler: (String) -> Void) {
-        existing?.filter(not(changed.contains)).forEach(deletionHandler)
+    private func deleteOrphans<T: Identifyable>(existing: [T]?, changed: [T], deletionHandler: (T.Identifier) -> Void) {
+        existing?.identifiers.filter(not(changed.identifiers.contains)).forEach(deletionHandler)
     }
     
     private func processRemoveAllBeforeInserts(_ response: ModelCharacteristics, transaction: DataStoreTransaction) {
