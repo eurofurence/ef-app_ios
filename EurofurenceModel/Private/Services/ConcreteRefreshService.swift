@@ -216,35 +216,35 @@ class ConcreteRefreshService: RefreshService {
     
     private func processRemoveAllBeforeInserts(_ response: ModelCharacteristics, transaction: DataStoreTransaction) {
         if response.announcements.removeAllBeforeInsert {
-            dataStore.fetchAnnouncements()?.map({ $0.identifier }).forEach(transaction.deleteAnnouncement)
+            dataStore.fetchAnnouncements()?.identifiers.forEach(transaction.deleteAnnouncement)
         }
         
         if response.conferenceDays.removeAllBeforeInsert {
-            dataStore.fetchConferenceDays()?.map({ $0.identifier }).forEach(transaction.deleteConferenceDay)
+            dataStore.fetchConferenceDays()?.identifiers.forEach(transaction.deleteConferenceDay)
         }
         
         if response.rooms.removeAllBeforeInsert {
-            dataStore.fetchRooms()?.map({ $0.identifier }).forEach(transaction.deleteRoom)
+            dataStore.fetchRooms()?.identifiers.forEach(transaction.deleteRoom)
         }
         
         if response.tracks.removeAllBeforeInsert {
-            dataStore.fetchTracks()?.map({ $0.identifier }).forEach(transaction.deleteTrack)
+            dataStore.fetchTracks()?.identifiers.forEach(transaction.deleteTrack)
         }
         
         if response.knowledgeGroups.removeAllBeforeInsert {
-            dataStore.fetchKnowledgeGroups()?.map({ $0.identifier }).forEach(transaction.deleteKnowledgeGroup)
+            dataStore.fetchKnowledgeGroups()?.identifiers.forEach(transaction.deleteKnowledgeGroup)
         }
         
         if response.knowledgeEntries.removeAllBeforeInsert {
-            dataStore.fetchKnowledgeEntries()?.map({ $0.identifier }).forEach(transaction.deleteKnowledgeEntry)
+            dataStore.fetchKnowledgeEntries()?.identifiers.forEach(transaction.deleteKnowledgeEntry)
         }
         
         if response.dealers.removeAllBeforeInsert {
-            dataStore.fetchDealers()?.map({ $0.identifier }).forEach(transaction.deleteDealer)
+            dataStore.fetchDealers()?.identifiers.forEach(transaction.deleteDealer)
         }
         
         if response.images.removeAllBeforeInsert {
-            dataStore.fetchImages()?.map({ $0.identifier }).forEach({ (identifier) in
+            dataStore.fetchImages()?.identifiers.forEach({ (identifier) in
                 transaction.deleteImage(identifier: identifier)
                 imageCache.deleteImage(identifier: identifier)
             })

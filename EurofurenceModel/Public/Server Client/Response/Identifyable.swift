@@ -16,9 +16,9 @@ public protocol Identifyable {
     
 }
 
-extension Array where Element: Identifyable {
+public extension Array where Element: Identifyable {
     
-    var identifiers: [Element.Identifier] {
+    public var identifiers: [Element.Identifier] {
         return map({ $0.identifier })
     }
     

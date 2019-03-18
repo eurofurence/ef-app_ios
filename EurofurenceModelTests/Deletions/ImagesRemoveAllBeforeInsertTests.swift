@@ -45,7 +45,7 @@ class ImagesRemoveAllBeforeInsertTests: XCTestCase {
         context.performSuccessfulSync(response: originalResponse)
         context.performSuccessfulSync(response: subsequentResponse)
 
-        XCTAssertEqual(originalResponse.images.changed.map({ $0.identifier }),
+        XCTAssertEqual(originalResponse.images.changed.identifiers,
                        context.imageRepository.deletedImages,
                        "Should have removed original images between sync events")
     }

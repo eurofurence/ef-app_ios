@@ -29,7 +29,7 @@ class WhenFullRefreshOccurs_YieldingOrphanedEntities: XCTestCase {
     func testTheOrphanedAnnouncementsAreRemoved() {
         let announcementsObserver = CapturingAnnouncementsServiceObserver()
         context.announcementsService.add(announcementsObserver)
-        let originalAnnouncementIdentifiers = originalResponse.announcements.changed.map({ $0.identifier })
+        let originalAnnouncementIdentifiers = originalResponse.announcements.changed.identifiers
         let announcementIdentifiers = announcementsObserver.allAnnouncements.map({ $0.identifier.rawValue })
 
         XCTAssertFalse(announcementIdentifiers.contains(elementsFrom: originalAnnouncementIdentifiers))
@@ -38,7 +38,7 @@ class WhenFullRefreshOccurs_YieldingOrphanedEntities: XCTestCase {
     func testTheOrphanedEventsAreRemoved() {
         let eventsObserver = CapturingEventsServiceObserver()
         context.eventsService.add(eventsObserver)
-        let originalEventIdentifiers = originalResponse.events.changed.map({ $0.identifier })
+        let originalEventIdentifiers = originalResponse.events.changed.identifiers
         let eventIdentifiers = eventsObserver.allEvents.map({ $0.identifier.rawValue })
 
         XCTAssertFalse(eventIdentifiers.contains(elementsFrom: originalEventIdentifiers))
@@ -47,7 +47,7 @@ class WhenFullRefreshOccurs_YieldingOrphanedEntities: XCTestCase {
     func testTheOrphanedKnowledgeGroupsAreRemoved() {
         let knowledgeObserver = CapturingKnowledgeServiceObserver()
         context.knowledgeService.add(knowledgeObserver)
-        let originalGroupIdentifiers = originalResponse.knowledgeGroups.changed.map({ $0.identifier })
+        let originalGroupIdentifiers = originalResponse.knowledgeGroups.changed.identifiers
         let groupIdentifiers = knowledgeObserver.capturedGroups.map({ $0.identifier.rawValue })
 
         XCTAssertFalse(groupIdentifiers.contains(elementsFrom: originalGroupIdentifiers))
@@ -60,7 +60,7 @@ class WhenFullRefreshOccurs_YieldingOrphanedEntities: XCTestCase {
     }
 
     func testTheOrphanedImagesAreRemoved() {
-        let imageIdentifiers = originalResponse.images.changed.map({ $0.identifier })
+        let imageIdentifiers = originalResponse.images.changed.identifiers
         let deletedImageIdentifiers = context.imageRepository.deletedImages
 
         XCTAssertTrue(deletedImageIdentifiers.contains(elementsFrom: imageIdentifiers))
@@ -70,7 +70,7 @@ class WhenFullRefreshOccurs_YieldingOrphanedEntities: XCTestCase {
         let delegate = CapturingDealersIndexDelegate()
         let index = context.dealersService.makeDealersIndex()
         index.setDelegate(delegate)
-        let originalDealerIdentifiers = originalResponse.dealers.changed.map({ $0.identifier })
+        let originalDealerIdentifiers = originalResponse.dealers.changed.identifiers
         let dealerIdentifiers = delegate.capturedAlphabetisedDealerGroups.reduce([], { $0 + $1.dealers }).map({ $0.identifier.rawValue })
 
         XCTAssertFalse(dealerIdentifiers.contains(elementsFrom: originalDealerIdentifiers))
@@ -79,7 +79,7 @@ class WhenFullRefreshOccurs_YieldingOrphanedEntities: XCTestCase {
     func testTheOrphanedMapsAreRemoved() {
         let mapsObserver = CapturingMapsObserver()
         context.mapsService.add(mapsObserver)
-        let originalMapsIdentifiers = originalResponse.maps.changed.map({ $0.identifier })
+        let originalMapsIdentifiers = originalResponse.maps.changed.identifiers
         let mapsIdentifiers = mapsObserver.capturedMaps.map({ $0.identifier.rawValue })
 
         XCTAssertFalse(mapsIdentifiers.contains(elementsFrom: originalMapsIdentifiers))
