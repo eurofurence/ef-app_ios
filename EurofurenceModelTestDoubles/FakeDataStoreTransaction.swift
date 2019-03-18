@@ -55,9 +55,7 @@ public class FakeDataStoreTransaction: DataStoreTransaction {
     }
 
     public func deleteEvent(identifier: String) {
-        if let idx = persistedEvents.index(where: { $0.identifier == identifier }) {
-            persistedEvents.remove(at: idx)
-        }
+        persistedEvents.removeAll(where: { $0.identifier == identifier })
     }
 
     private(set) var persistedRooms: [RoomCharacteristics] = []
@@ -108,9 +106,7 @@ public class FakeDataStoreTransaction: DataStoreTransaction {
     }
 
     public func deleteAnnouncement(identifier: String) {
-        if let idx = persistedAnnouncements.index(where: { $0.identifier == identifier }) {
-            persistedAnnouncements.remove(at: idx)
-        }
+        persistedAnnouncements.removeAll(where: { $0.identifier == identifier })
     }
 
     private(set) var persistedDealers: [DealerCharacteristics] = []
@@ -119,9 +115,7 @@ public class FakeDataStoreTransaction: DataStoreTransaction {
     }
 
     public func deleteDealer(identifier: String) {
-        if let idx = persistedDealers.index(where: { $0.identifier == identifier }) {
-            persistedDealers.remove(at: idx)
-        }
+        persistedDealers.removeAll(where: { $0.identifier == identifier })
     }
 
     private(set) var persistedMaps: [MapCharacteristics] = []
@@ -130,9 +124,7 @@ public class FakeDataStoreTransaction: DataStoreTransaction {
     }
 
     public func deleteMap(identifier: String) {
-        if let idx = persistedMaps.index(where: { $0.identifier == identifier }) {
-            persistedMaps.remove(at: idx)
-        }
+        persistedMaps.removeAll(where: { $0.identifier == identifier })
     }
 
     private(set) var persistedReadAnnouncementIdentifiers: [AnnouncementIdentifier] = []
@@ -148,10 +140,7 @@ public class FakeDataStoreTransaction: DataStoreTransaction {
     private(set) public var deletedImages = [String]()
     public func deleteImage(identifier: String) {
         deletedImages.append(identifier)
-
-        if let idx = persistedImages.index(where: { $0.identifier == identifier }) {
-            persistedImages.remove(at: idx)
-        }
+        persistedImages.removeAll(where: { $0.identifier == identifier })
     }
 
 }
