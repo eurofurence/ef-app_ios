@@ -19,9 +19,9 @@ class EventConferenceTracksRemoveAllBeforeInsertTests: XCTestCase {
         context.performSuccessfulSync(response: originalResponse)
         context.performSuccessfulSync(response: subsequentResponse)
 
-        XCTAssertEqual(originalResponse.tracks.changed.map({ $0.trackIdentifier }),
-                       context.dataStore.transaction.deletedTracks,
-                       "Should have removed original days between sync events")
+        XCTAssertEqual(subsequentResponse.tracks.changed,
+                       context.dataStore.fetchTracks(),
+                       "Should have removed original tracks between sync events")
     }
 
 }

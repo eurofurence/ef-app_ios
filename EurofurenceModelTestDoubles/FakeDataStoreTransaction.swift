@@ -80,9 +80,7 @@ public class FakeDataStoreTransaction: DataStoreTransaction {
         persistedTracks.append(contentsOf: tracks, identifiedBy: { $0.trackIdentifier })
     }
 
-    private(set) public var deletedTracks: [String] = []
     public func deleteTrack(identifier: String) {
-        deletedTracks.append(identifier)
         persistedTracks.removeAll(where: { $0.trackIdentifier == identifier })
     }
 

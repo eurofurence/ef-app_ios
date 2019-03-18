@@ -18,12 +18,12 @@ class WhenDeletingTrack_AfterSuccessfulSync_ApplicationShould: XCTestCase {
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         context.refreshLocalStore()
         context.api.simulateSuccessfulSync(response)
-        let trackToDelete = String.random
-        response.tracks.deleted = [trackToDelete]
+        let trackToDelete = response.tracks.changed.remove(at: 0)
+        response.tracks.deleted = [trackToDelete.trackIdentifier]
         context.refreshLocalStore()
         context.api.simulateSuccessfulSync(response)
 
-        XCTAssertEqual([trackToDelete], dataStore.transaction.deletedTracks)
+        XCTAssertEqual(false, dataStore.fetchTracks()?.contains(trackToDelete))
     }
 
 }
