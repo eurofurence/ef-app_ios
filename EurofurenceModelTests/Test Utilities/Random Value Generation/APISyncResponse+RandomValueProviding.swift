@@ -17,7 +17,7 @@ extension ModelCharacteristics {
         let rooms = [RoomCharacteristics].random
         let tracks = [TrackCharacteristics].random
         let days = [ConferenceDayCharacteristics].random
-        let events = (0...Int.random(upperLimit: 10) + 5).map { (_) -> EventCharacteristics in
+        let events = (0...Int.random(upperLimit: 3) + 2).map { (_) -> EventCharacteristics in
             let eventStartTime: Date = .random
             return EventCharacteristics(identifier: .random,
                             roomIdentifier: rooms.randomElement().element.identifier,

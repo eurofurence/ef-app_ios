@@ -15,7 +15,7 @@ public extension Array where Element: RandomValueProviding {
     }
 
     public static func random(minimum: Int) -> [Element] {
-        let upperLimit = Int.random(upperLimit: 10) + minimum
+        let upperLimit = Int.random(upperLimit: 3) + minimum
         return random(upperLimit: upperLimit)
     }
 
