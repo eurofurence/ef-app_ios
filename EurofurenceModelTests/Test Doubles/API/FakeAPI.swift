@@ -56,7 +56,7 @@ extension FakeAPI {
     
     func stubbedImage(for identifier: String?, availableImages: [ImageCharacteristics]) -> Data? {
         guard let image = availableImages.first(where: { $0.identifier == identifier }) else { return nil }
-        return stubbedImageData(identifier: image.identifier, contentHashSha1: image.contentHashSha1)
+        return stubbedImageData(identifier: image.identifier, contentHashSha1: image.contentHashSha1.base64EncodedString)
     }
     
     // TODO: This "test data" is identical to CapturingImageRepository.stub

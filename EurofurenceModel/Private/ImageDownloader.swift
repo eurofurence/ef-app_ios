@@ -27,7 +27,7 @@ class ImageDownloader {
         
         init(characteristics: ImageCharacteristics) {
             imageIdentifier = characteristics.identifier
-            imageContentHashSha1 = characteristics.contentHashSha1
+            imageContentHashSha1 = characteristics.contentHashSha1.base64EncodedString
         }
     }
 
