@@ -225,6 +225,7 @@
 		CA1FE99B1FA0B3EB009C7DF3 /* WindowWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1FE99A1FA0B3EB009C7DF3 /* WindowWireframe.swift */; };
 		CA1FE99E1FA0B41E009C7DF3 /* NavigationControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1FE99D1FA0B41E009C7DF3 /* NavigationControllerFactory.swift */; };
 		CA223D87223FE70A00883FEA /* Identifyable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA223D86223FE70A00883FEA /* Identifyable.swift */; };
+		CA223D8922403D7F00883FEA /* String+Base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA223D8822403D7F00883FEA /* String+Base64.swift */; };
 		CA235866221B57620044B1FC /* StubMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA235865221B57620044B1FC /* StubMessage.swift */; };
 		CA235868221B591D0044B1FC /* MessageImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA235867221B591D0044B1FC /* MessageImpl.swift */; };
 		CA23586A221C15F40044B1FC /* FavouriteEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA235869221C15F40044B1FC /* FavouriteEvent.swift */; };
@@ -1733,6 +1734,7 @@
 		CA1FE99A1FA0B3EB009C7DF3 /* WindowWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WindowWireframe.swift; path = ../Director/WindowWireframe.swift; sourceTree = "<group>"; };
 		CA1FE99D1FA0B41E009C7DF3 /* NavigationControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NavigationControllerFactory.swift; path = ../Director/NavigationControllerFactory.swift; sourceTree = "<group>"; };
 		CA223D86223FE70A00883FEA /* Identifyable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifyable.swift; sourceTree = "<group>"; };
+		CA223D8822403D7F00883FEA /* String+Base64.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Base64.swift"; sourceTree = "<group>"; };
 		CA235865221B57620044B1FC /* StubMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubMessage.swift; sourceTree = "<group>"; };
 		CA235867221B591D0044B1FC /* MessageImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageImpl.swift; sourceTree = "<group>"; };
 		CA235869221C15F40044B1FC /* FavouriteEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteEvent.swift; sourceTree = "<group>"; };
@@ -5692,6 +5694,7 @@
 				CA27618920DFEE00000E52AC /* ExternalContentHandler.swift */,
 				CACD2E8321D6761D00BACD91 /* LogoutResult.swift */,
 				CA27254D2110DEE2004C6D0A /* Optional+Extensions.swift */,
+				CA223D8822403D7F00883FEA /* String+Base64.swift */,
 				CAAF4C752164E2900017946C /* Builder */,
 				CAAF4C772164E34F0017946C /* Default Dependency Implementations */,
 				CAEA0D812166B3F700B0C7A6 /* Formatters */,
@@ -8532,6 +8535,7 @@
 				CAEA0D9B216BDDF000B0C7A6 /* EurofurenceApplicationModel.xcdatamodeld in Sources */,
 				CAEA0D87216BDD9400B0C7A6 /* ConcreteEventsService.swift in Sources */,
 				CAEA0DDC216BDE2300B0C7A6 /* KnowledgeEntryEntity+Adaptation.swift in Sources */,
+				CA223D8922403D7F00883FEA /* String+Base64.swift in Sources */,
 				CAEA0DE6216BDE2300B0C7A6 /* LoggedIn.swift in Sources */,
 				CA240F5721E4A0EB002DB747 /* Services.swift in Sources */,
 				CAEA0D8F216BDD9500B0C7A6 /* ConcreteSession.swift in Sources */,
