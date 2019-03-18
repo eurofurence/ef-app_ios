@@ -33,55 +33,55 @@ open class FakeDataStore: DataStore {
     }
 
     public func fetchAnnouncements() -> [AnnouncementCharacteristics]? {
-        return transaction.persistedAnnouncements
+        return transaction.announcements
     }
 
     public func fetchLastRefreshDate() -> Date? {
-        return transaction.persistedLastRefreshDate
+        return transaction.lastRefreshDate
     }
 
     public func fetchKnowledgeGroups() -> [KnowledgeGroupCharacteristics]? {
-        return transaction.persistedKnowledgeGroups
+        return transaction.knowledgeGroups
     }
 
     public func fetchKnowledgeEntries() -> [KnowledgeEntryCharacteristics]? {
-        return transaction.persistedKnowledgeEntries
+        return transaction.knowledgeEntries
     }
 
     public func fetchRooms() -> [RoomCharacteristics]? {
-        return transaction.persistedRooms
+        return transaction.rooms
     }
 
     public func fetchTracks() -> [TrackCharacteristics]? {
-        return transaction.persistedTracks
+        return transaction.tracks
     }
 
     public func fetchConferenceDays() -> [ConferenceDayCharacteristics]? {
-        return transaction.persistedConferenceDays
+        return transaction.conferenceDays
     }
 
     public func fetchEvents() -> [EventCharacteristics]? {
-        return transaction.persistedEvents
+        return transaction.events
     }
 
     public func fetchFavouriteEventIdentifiers() -> [EventIdentifier]? {
-        return Array(transaction.persistedFavouriteEvents)
+        return Array(transaction.favouriteEvents)
     }
 
     public func fetchDealers() -> [DealerCharacteristics]? {
-        return transaction.persistedDealers
+        return transaction.dealers
     }
 
     public func fetchMaps() -> [MapCharacteristics]? {
-        return transaction.persistedMaps
+        return transaction.maps
     }
 
     public func fetchReadAnnouncementIdentifiers() -> [AnnouncementIdentifier]? {
-        return transaction.persistedReadAnnouncementIdentifiers
+        return transaction.readAnnouncementIdentifiers
     }
 
     public func fetchImages() -> [ImageCharacteristics]? {
-        return transaction.persistedImages
+        return transaction.images
     }
     
     private let transaction = FakeDataStoreTransaction()
@@ -108,113 +108,113 @@ private extension Array {
 
 private class FakeDataStoreTransaction: DataStoreTransaction {
     
-    fileprivate var persistedKnowledgeGroups: [KnowledgeGroupCharacteristics] = []
+    fileprivate var knowledgeGroups: [KnowledgeGroupCharacteristics] = []
     func saveKnowledgeGroups(_ knowledgeGroups: [KnowledgeGroupCharacteristics]) {
-        persistedKnowledgeGroups.append(contentsOf: knowledgeGroups, identifiedBy: { $0.identifier })
+        self.knowledgeGroups.append(contentsOf: knowledgeGroups, identifiedBy: { $0.identifier })
     }
     
     func deleteKnowledgeGroup(identifier: String) {
-        persistedKnowledgeGroups.removeAll(where: { $0.identifier == identifier })
+        knowledgeGroups.removeAll(where: { $0.identifier == identifier })
     }
     
-    fileprivate var persistedKnowledgeEntries: [KnowledgeEntryCharacteristics] = []
+    fileprivate var knowledgeEntries: [KnowledgeEntryCharacteristics] = []
     func saveKnowledgeEntries(_ knowledgeEntries: [KnowledgeEntryCharacteristics]) {
-        persistedKnowledgeEntries.append(contentsOf: knowledgeEntries, identifiedBy: { $0.identifier })
+        self.knowledgeEntries.append(contentsOf: knowledgeEntries, identifiedBy: { $0.identifier })
     }
     
     func deleteKnowledgeEntry(identifier: String) {
-        persistedKnowledgeEntries.removeAll(where: { $0.identifier == identifier })
+        knowledgeEntries.removeAll(where: { $0.identifier == identifier })
     }
     
-    fileprivate var persistedAnnouncements: [AnnouncementCharacteristics] = []
+    fileprivate var announcements: [AnnouncementCharacteristics] = []
     func saveAnnouncements(_ announcements: [AnnouncementCharacteristics]) {
-        persistedAnnouncements.append(contentsOf: announcements, identifiedBy: { $0.identifier })
+        self.announcements.append(contentsOf: announcements, identifiedBy: { $0.identifier })
     }
     
-    fileprivate var persistedEvents: [EventCharacteristics] = []
+    fileprivate var events: [EventCharacteristics] = []
     func saveEvents(_ events: [EventCharacteristics]) {
-        persistedEvents.append(contentsOf: events, identifiedBy: { $0.identifier })
+        self.events.append(contentsOf: events, identifiedBy: { $0.identifier })
     }
     
     func deleteEvent(identifier: String) {
-        persistedEvents.removeAll(where: { $0.identifier == identifier })
+        events.removeAll(where: { $0.identifier == identifier })
     }
     
-    fileprivate var persistedRooms: [RoomCharacteristics] = []
+    fileprivate var rooms: [RoomCharacteristics] = []
     func saveRooms(_ rooms: [RoomCharacteristics]) {
-        persistedRooms.append(contentsOf: rooms, identifiedBy: { $0.roomIdentifier })
+        self.rooms.append(contentsOf: rooms, identifiedBy: { $0.roomIdentifier })
     }
     
     func deleteConferenceDay(identifier: String) {
-        persistedConferenceDays.removeAll(where: { $0.identifier == identifier })
+        conferenceDays.removeAll(where: { $0.identifier == identifier })
     }
     
     func deleteRoom(identifier: String) {
-        persistedRooms.removeAll(where: { $0.roomIdentifier == identifier })
+        rooms.removeAll(where: { $0.roomIdentifier == identifier })
     }
     
-    fileprivate var persistedTracks: [TrackCharacteristics] = []
+    fileprivate var tracks: [TrackCharacteristics] = []
     func saveTracks(_ tracks: [TrackCharacteristics]) {
-        persistedTracks.append(contentsOf: tracks, identifiedBy: { $0.trackIdentifier })
+        self.tracks.append(contentsOf: tracks, identifiedBy: { $0.trackIdentifier })
     }
     
     func deleteTrack(identifier: String) {
-        persistedTracks.removeAll(where: { $0.trackIdentifier == identifier })
+        tracks.removeAll(where: { $0.trackIdentifier == identifier })
     }
     
-    fileprivate var persistedConferenceDays: [ConferenceDayCharacteristics] = []
+    fileprivate var conferenceDays: [ConferenceDayCharacteristics] = []
     func saveConferenceDays(_ conferenceDays: [ConferenceDayCharacteristics]) {
-        persistedConferenceDays.append(contentsOf: conferenceDays, identifiedBy: { $0.identifier })
+        self.conferenceDays.append(contentsOf: conferenceDays, identifiedBy: { $0.identifier })
     }
     
-    fileprivate var persistedLastRefreshDate: Date?
+    fileprivate var lastRefreshDate: Date?
     func saveLastRefreshDate(_ lastRefreshDate: Date) {
-        persistedLastRefreshDate = lastRefreshDate
+        self.lastRefreshDate = lastRefreshDate
     }
     
-    fileprivate var persistedFavouriteEvents = Set<EventIdentifier>()
+    fileprivate var favouriteEvents = Set<EventIdentifier>()
     func saveFavouriteEventIdentifier(_ identifier: EventIdentifier) {
-        persistedFavouriteEvents.insert(identifier)
+        favouriteEvents.insert(identifier)
     }
     
     func deleteFavouriteEventIdentifier(_ identifier: EventIdentifier) {
-        persistedFavouriteEvents.remove(identifier)
+        favouriteEvents.remove(identifier)
     }
     
     func deleteAnnouncement(identifier: String) {
-        persistedAnnouncements.removeAll(where: { $0.identifier == identifier })
+        announcements.removeAll(where: { $0.identifier == identifier })
     }
     
-    fileprivate var persistedDealers: [DealerCharacteristics] = []
+    fileprivate var dealers: [DealerCharacteristics] = []
     func saveDealers(_ dealers: [DealerCharacteristics]) {
-        persistedDealers.append(contentsOf: dealers, identifiedBy: { $0.identifier })
+        self.dealers.append(contentsOf: dealers, identifiedBy: { $0.identifier })
     }
     
     func deleteDealer(identifier: String) {
-        persistedDealers.removeAll(where: { $0.identifier == identifier })
+        dealers.removeAll(where: { $0.identifier == identifier })
     }
     
-    fileprivate var persistedMaps: [MapCharacteristics] = []
+    fileprivate var maps: [MapCharacteristics] = []
     func saveMaps(_ maps: [MapCharacteristics]) {
-        persistedMaps.append(contentsOf: maps, identifiedBy: { $0.identifier })
+        self.maps.append(contentsOf: maps, identifiedBy: { $0.identifier })
     }
     
     func deleteMap(identifier: String) {
-        persistedMaps.removeAll(where: { $0.identifier == identifier })
+        maps.removeAll(where: { $0.identifier == identifier })
     }
     
-    fileprivate var persistedReadAnnouncementIdentifiers: [AnnouncementIdentifier] = []
+    fileprivate var readAnnouncementIdentifiers: [AnnouncementIdentifier] = []
     func saveReadAnnouncements(_ announcements: [AnnouncementIdentifier]) {
-        persistedReadAnnouncementIdentifiers = announcements
+        readAnnouncementIdentifiers = announcements
     }
     
-    fileprivate var persistedImages = [ImageCharacteristics]()
+    fileprivate var images = [ImageCharacteristics]()
     func saveImages(_ images: [ImageCharacteristics]) {
-        persistedImages.append(contentsOf: images, identifiedBy: { $0.identifier })
+        self.images.append(contentsOf: images, identifiedBy: { $0.identifier })
     }
     
     func deleteImage(identifier: String) {
-        persistedImages.removeAll(where: { $0.identifier == identifier })
+        images.removeAll(where: { $0.identifier == identifier })
     }
     
 }
