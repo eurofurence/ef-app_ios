@@ -43,11 +43,23 @@ class FakeAPI: API {
         capturedLastSyncTime = lastSyncTime
         self.completionHandler = completionHandler
     }
+    
+    private struct DownloadRequest: Hashable {
+        var identifier: String
+        var contentHashSha1: String
+    }
+    
+    private var stubbedResponses = [DownloadRequest: Data]()
 
     private(set) var downloadedImageIdentifiers = [String]()
     func fetchImage(identifier: String, contentHashSha1: String, completionHandler: @escaping (Data?) -> Void) {
         downloadedImageIdentifiers.append(identifier)
-        completionHandler(stubbedImageData(identifier: identifier, contentHashSha1: contentHashSha1))
+        
+        let data = "\(identifier)_\(contentHashSha1)".data(using: .utf8)
+        let request = DownloadRequest(identifier: identifier, contentHashSha1: contentHashSha1)
+        stubbedResponses[request] = data
+        
+        completionHandler(data)
     }
 
 }
@@ -55,13 +67,7 @@ class FakeAPI: API {
 extension FakeAPI {
     
     func stubbedImage(for identifier: String?, availableImages: [ImageCharacteristics]) -> Data? {
-        guard let image = availableImages.first(where: { $0.identifier == identifier }) else { return nil }
-        return stubbedImageData(identifier: image.identifier, contentHashSha1: image.contentHashSha1.base64EncodedString)
-    }
-    
-    // TODO: This "test data" is identical to CapturingImageRepository.stub
-    private func stubbedImageData(identifier: String, contentHashSha1: String) -> Data? {
-        return "\(identifier)_\(contentHashSha1)".data(using: .utf8)
+        return stubbedResponses.first(where: { $0.key.identifier == identifier })?.value
     }
 
     func simulateSuccessfulSync(_ response: ModelCharacteristics) {

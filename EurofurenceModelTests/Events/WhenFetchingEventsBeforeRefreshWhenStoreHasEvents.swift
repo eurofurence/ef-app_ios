@@ -15,10 +15,7 @@ class WhenFetchingEventsBeforeRefreshWhenStoreHasEvents: XCTestCase {
     func testTheEventsFromTheStoreAreAdapted() {
         let response = ModelCharacteristics.randomWithoutDeletions
         let dataStore = FakeDataStore(response: response)
-        let imageRepository = CapturingImageRepository()
-        imageRepository.stubEverything(response)
-
-        let context = EurofurenceSessionTestBuilder().with(dataStore).with(imageRepository).build()
+        let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let observer = CapturingEventsServiceObserver()
         context.eventsService.add(observer)
 

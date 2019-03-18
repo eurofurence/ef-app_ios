@@ -27,9 +27,7 @@ class WhenAppLaunchesWhenClockDoesNotReadConferenceDay_ScheduleShould: XCTestCas
         let response = ModelCharacteristics.randomWithoutDeletions
         let firstDay = response.conferenceDays.changed.sorted(by: { $0.date < $1.date }).first!
         let dataStore = FakeDataStore(response: response)
-        let imageRepository = CapturingImageRepository()
-        imageRepository.stubEverything(response)
-        let context = EurofurenceSessionTestBuilder().with(dataStore).with(.distantPast).with(imageRepository).build()
+        let context = EurofurenceSessionTestBuilder().with(dataStore).with(.distantPast).build()
         let schedule = context.eventsService.makeEventsSchedule()
         let delegate = CapturingEventsScheduleDelegate()
         schedule.setDelegate(delegate)

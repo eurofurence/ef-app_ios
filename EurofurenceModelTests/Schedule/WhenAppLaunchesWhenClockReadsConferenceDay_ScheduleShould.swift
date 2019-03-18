@@ -47,9 +47,7 @@ class WhenAppLaunchesWhenClockReadsConferenceDay_ScheduleShould: XCTestCase {
         let response = ModelCharacteristics.randomWithoutDeletions
         let randomDay = response.conferenceDays.changed.randomElement().element
         let dataStore = FakeDataStore(response: response)
-        let imageRepository = CapturingImageRepository()
-        imageRepository.stubEverything(response)
-        let context = EurofurenceSessionTestBuilder().with(dataStore).with(randomDay.date).with(imageRepository).build()
+        let context = EurofurenceSessionTestBuilder().with(dataStore).with(randomDay.date).build()
         let schedule = context.eventsService.makeEventsSchedule()
         let delegate = CapturingEventsScheduleDelegate()
         schedule.setDelegate(delegate)

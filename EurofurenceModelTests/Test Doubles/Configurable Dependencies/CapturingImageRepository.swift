@@ -41,24 +41,4 @@ extension CapturingImageRepository {
         return savedImages.contains(elementsFrom: images)
     }
 
-    func stub(identifier: String) {
-        let entity = ImageEntity(identifier: identifier, pngImageData: identifier.data(using: .utf8)!)
-        save(entity)
-    }
-
-    func stub(identifiers: [String]) {
-        identifiers.forEach(stub)
-    }
-
-    func stubEverything(_ response: ModelCharacteristics) {
-        response.images.changed.forEach(stub)
-    }
-    
-    private func stub(_ image: ImageCharacteristics) {
-        // TODO: This "test data" is identical to FakeAPI.stubbedImageData
-        let data = "\(image.identifier)_\(image.contentHashSha1.base64EncodedString)".data(using: .utf8)!
-        let entity = ImageEntity(identifier: image.identifier, pngImageData: data)
-        save(entity)
-    }
-
 }

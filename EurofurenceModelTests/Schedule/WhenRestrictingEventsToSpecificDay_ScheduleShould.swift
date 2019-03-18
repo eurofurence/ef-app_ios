@@ -15,9 +15,7 @@ class WhenRestrictingEventsToSpecificDay_ScheduleShould: XCTestCase {
     func testOnlyIncludeEventsRunningOnThatDay() {
         let response = ModelCharacteristics.randomWithoutDeletions
         let dataStore = FakeDataStore(response: response)
-        let imageRepository = CapturingImageRepository()
-        imageRepository.stubEverything(response)
-        let context = EurofurenceSessionTestBuilder().with(dataStore).with(imageRepository).build()
+        let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let schedule = context.eventsService.makeEventsSchedule()
         let delegate = CapturingEventsScheduleDelegate()
         schedule.setDelegate(delegate)
@@ -32,9 +30,7 @@ class WhenRestrictingEventsToSpecificDay_ScheduleShould: XCTestCase {
     func testUpdateRestrictedScheduleWhenLaterSyncCompletes() {
         let response = ModelCharacteristics.randomWithoutDeletions
         let dataStore = FakeDataStore(response: response)
-        let imageRepository = CapturingImageRepository()
-        imageRepository.stubEverything(response)
-        let context = EurofurenceSessionTestBuilder().with(dataStore).with(imageRepository).build()
+        let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let schedule = context.eventsService.makeEventsSchedule()
         let delegate = CapturingEventsScheduleDelegate()
         let randomDay = response.conferenceDays.changed.randomElement()
@@ -51,9 +47,7 @@ class WhenRestrictingEventsToSpecificDay_ScheduleShould: XCTestCase {
     func testRestrictEventsOnlyToTheLastSpecifiedRestrictedDay() {
         let response = ModelCharacteristics.randomWithoutDeletions
         let dataStore = FakeDataStore(response: response)
-        let imageRepository = CapturingImageRepository()
-        imageRepository.stubEverything(response)
-        let context = EurofurenceSessionTestBuilder().with(dataStore).with(imageRepository).build()
+        let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let schedule = context.eventsService.makeEventsSchedule()
         let delegate = CapturingEventsScheduleDelegate()
         schedule.setDelegate(delegate)
