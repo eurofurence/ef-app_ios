@@ -23,31 +23,6 @@ public extension Array where Element: RandomValueProviding {
         return (0...upperLimit).map { (_) in Element.random }
     }
 
-    public static func randomWithMutations(_ block: (inout Element) -> Void) -> [Element] {
-        let elements = self.random
-        var copy = elements
-        for (idx, element) in elements.enumerated() {
-            var elementCopy = element
-            block(&elementCopy)
-            copy[idx] = elementCopy
-        }
-
-        return copy
-    }
-
-    public func take(upTo count: Int) -> [Element] {
-        var output = [Element]()
-        var i = 0
-        repeat {
-            guard i < count else { break }
-
-            output.append(self[i])
-            i += 1
-        } while i < count
-
-        return output
-    }
-
 }
 
 public extension Array {
