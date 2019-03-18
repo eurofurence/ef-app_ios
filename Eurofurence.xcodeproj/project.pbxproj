@@ -723,7 +723,6 @@
 		CA7D8B2C222EC258003431A0 /* FakeDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA109B216E8AE800B0C7A6 /* FakeDataStore.swift */; };
 		CA7D8B2F222EC835003431A0 /* CoreDataStoreShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D8B2E222EC835003431A0 /* CoreDataStoreShould.swift */; };
 		CA7D8B33222F1A04003431A0 /* DataStoreContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D8B32222F1A04003431A0 /* DataStoreContract.swift */; };
-		CA7D8B36222F1AEB003431A0 /* FakeDataStoreTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D8B34222F1AC1003431A0 /* FakeDataStoreTransaction.swift */; };
 		CA7D8B3822312CFB003431A0 /* DefaultNewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D8B3722312CFB003431A0 /* DefaultNewsViewModel.swift */; };
 		CA7EB7D51F799991002674A6 /* TutorialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7EB7D41F799991002674A6 /* TutorialScene.swift */; };
 		CA81D48E1FE9A8DB00A52A2F /* CapturingTutorialModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA81D48D1FE9A8DB00A52A2F /* CapturingTutorialModuleDelegate.swift */; };
@@ -2381,7 +2380,6 @@
 		CA7D8B26222EAB61003431A0 /* DefaultDealerDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDealerDetailViewModel.swift; sourceTree = "<group>"; };
 		CA7D8B2E222EC835003431A0 /* CoreDataStoreShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStoreShould.swift; sourceTree = "<group>"; };
 		CA7D8B32222F1A04003431A0 /* DataStoreContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStoreContract.swift; sourceTree = "<group>"; };
-		CA7D8B34222F1AC1003431A0 /* FakeDataStoreTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeDataStoreTransaction.swift; sourceTree = "<group>"; };
 		CA7D8B3722312CFB003431A0 /* DefaultNewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNewsViewModel.swift; sourceTree = "<group>"; };
 		CA7EB7D41F799991002674A6 /* TutorialScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScene.swift; sourceTree = "<group>"; };
 		CA804DD11F20CE8F00E07A4A /* JSONAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONAPI.swift; sourceTree = "<group>"; };
@@ -6410,7 +6408,6 @@
 				CA63755F208CBC5F00536BE2 /* CapturingURLOpener.swift */,
 				CA2783E422393871004B5DB2 /* FakeAnnouncementsService.swift */,
 				CAEA109B216E8AE800B0C7A6 /* FakeDataStore.swift */,
-				CA7D8B34222F1AC1003431A0 /* FakeDataStoreTransaction.swift */,
 				CA36A49820D9778400EE6537 /* FakeDealersIndex.swift */,
 				CA36A49020D92EC100EE6537 /* FakeDealersService.swift */,
 				CAEA0F7B216D370600B0C7A6 /* FakeHoursDateFormatter.swift */,
@@ -8890,7 +8887,6 @@
 				CAEA0F81216E1AE200B0C7A6 /* Day+RandomValueProviding.swift in Sources */,
 				CA2783E8223939E0004B5DB2 /* FakeDealersService.swift in Sources */,
 				CAEA0F87216E1AE200B0C7A6 /* Room+RandomValueProviding.swift in Sources */,
-				CA7D8B36222F1AEB003431A0 /* FakeDataStoreTransaction.swift in Sources */,
 				CA46799722175F6D006B3090 /* FakeDealer.swift in Sources */,
 				CA2783E9223939FD004B5DB2 /* FakeDealersIndex.swift in Sources */,
 				CAEA0F84216E1AE200B0C7A6 /* KnowledgeGroup+RandomValueProviding.swift in Sources */,
