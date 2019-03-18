@@ -47,7 +47,7 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                                                         deleted: ["ba2f31ad-d42a-9e40-2c79-17bb9b2f36f3"],
                                                                         removeAllBeforeInsert: true)
 
-        let rooms = ModelCharacteristics.Update<RoomCharacteristics>(changed: [RoomCharacteristics(roomIdentifier: "dfa62eae-f881-4aab-a592-acf8fab14ae9",
+        let rooms = ModelCharacteristics.Update<RoomCharacteristics>(changed: [RoomCharacteristics(identifier: "dfa62eae-f881-4aab-a592-acf8fab14ae9",
                                                                      name: "Art Show — Convention Hall Section D")],
                                                    deleted: ["87148f04-4c4b-433d-9469-c8a970952443"],
                                                    removeAllBeforeInsert: true)

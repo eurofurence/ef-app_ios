@@ -396,7 +396,7 @@ class DataStoreContract: XCTestCase {
     func testDeleteRooms() {
         let element = RoomCharacteristics.random
         verifyDeletion(for: element,
-                       elementIdentifier: element.roomIdentifier,
+                       elementIdentifier: element.identifier,
                        savingBlock: { $0.saveRooms },
                        deletionBlock: { $0.deleteRoom },
                        loadingBlock: { $0.fetchRooms })

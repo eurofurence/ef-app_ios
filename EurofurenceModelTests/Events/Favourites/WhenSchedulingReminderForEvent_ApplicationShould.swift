@@ -32,7 +32,7 @@ class WhenSchedulingReminderForEvent_ApplicationShould: XCTestCase {
 
         let expectedBody: String = {
             let expectedTimeString = context.hoursDateFormatter.hoursString(from: event.startDateTime)
-            let room: RoomCharacteristics = response.rooms.changed.first(where: { $0.roomIdentifier == event.roomIdentifier })!
+            let room: RoomCharacteristics = response.rooms.changed.first(where: { $0.identifier == event.roomIdentifier })!
             let expectedLocationString = room.name
 
             return AppCoreStrings.eventReminderBody(timeString: expectedTimeString, roomName: expectedLocationString)

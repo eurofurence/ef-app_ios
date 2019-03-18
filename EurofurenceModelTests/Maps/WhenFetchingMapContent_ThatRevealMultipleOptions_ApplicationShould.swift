@@ -19,7 +19,7 @@ class WhenFetchingMapContent_ThatRevealMultipleOptions_ApplicationShould: XCTest
         let randomMap = syncResponse.maps.changed.randomElement()
         var map = randomMap.element
         let dealer = syncResponse.dealers.changed.randomElement().element
-        let roomLink = MapCharacteristics.Entry.Link(type: .conferenceRoom, name: .random, target: room.roomIdentifier)
+        let roomLink = MapCharacteristics.Entry.Link(type: .conferenceRoom, name: .random, target: room.identifier)
         let dealerLink = MapCharacteristics.Entry.Link(type: .dealerDetail, name: .random, target: dealer.identifier)
         let entry = MapCharacteristics.Entry(identifier: .random, x: x, y: y, tapRadius: tapRadius, links: [roomLink, dealerLink])
         map.entries = [entry]

@@ -20,7 +20,7 @@ extension ModelCharacteristics {
         let events = (0...Int.random(upperLimit: 10) + 5).map { (_) -> EventCharacteristics in
             let eventStartTime: Date = .random
             return EventCharacteristics(identifier: .random,
-                            roomIdentifier: rooms.randomElement().element.roomIdentifier,
+                            roomIdentifier: rooms.randomElement().element.identifier,
                             trackIdentifier: tracks.randomElement().element.identifier,
                             dayIdentifier: days.randomElement().element.identifier,
                             startDateTime: eventStartTime,
@@ -147,7 +147,7 @@ extension AnnouncementCharacteristics: RandomValueProviding {
 extension RoomCharacteristics: RandomValueProviding {
 
     public static var random: RoomCharacteristics {
-        return RoomCharacteristics(roomIdentifier: .random, name: .random)
+        return RoomCharacteristics(identifier: .random, name: .random)
     }
 
 }

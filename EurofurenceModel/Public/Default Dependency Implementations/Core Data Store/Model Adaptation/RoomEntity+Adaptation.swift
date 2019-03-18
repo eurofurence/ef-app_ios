@@ -13,15 +13,15 @@ extension RoomEntity: EntityAdapting {
     typealias AdaptedType = RoomCharacteristics
 
     static func makeIdentifyingPredicate(for model: RoomCharacteristics) -> NSPredicate {
-        return NSPredicate(format: "identifier == %@", model.roomIdentifier)
+        return NSPredicate(format: "identifier == %@", model.identifier)
     }
 
     func asAdaptedType() -> RoomCharacteristics {
-        return RoomCharacteristics(roomIdentifier: identifier!, name: name!)
+        return RoomCharacteristics(identifier: identifier!, name: name!)
     }
 
     func consumeAttributes(from value: RoomCharacteristics) {
-        identifier = value.roomIdentifier
+        identifier = value.identifier
         name = value.name
     }
 

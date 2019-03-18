@@ -10,11 +10,11 @@ import Foundation
 
 public struct RoomCharacteristics: Equatable {
 
-    public var roomIdentifier: String
+    public var identifier: String
     public var name: String
 
-    public init(roomIdentifier: String, name: String) {
-        self.roomIdentifier = roomIdentifier
+    public init(identifier: String, name: String) {
+        self.identifier = identifier
         self.name = name
     }
 

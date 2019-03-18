@@ -142,7 +142,7 @@ private class FakeDataStoreTransaction: DataStoreTransaction {
     
     fileprivate var rooms: [RoomCharacteristics] = []
     func saveRooms(_ rooms: [RoomCharacteristics]) {
-        self.rooms.append(contentsOf: rooms, identifiedBy: { $0.roomIdentifier })
+        self.rooms.append(contentsOf: rooms, identifiedBy: { $0.identifier })
     }
     
     func deleteConferenceDay(identifier: String) {
@@ -150,7 +150,7 @@ private class FakeDataStoreTransaction: DataStoreTransaction {
     }
     
     func deleteRoom(identifier: String) {
-        rooms.removeAll(where: { $0.roomIdentifier == identifier })
+        rooms.removeAll(where: { $0.identifier == identifier })
     }
     
     fileprivate var tracks: [TrackCharacteristics] = []

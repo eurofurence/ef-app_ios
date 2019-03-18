@@ -19,7 +19,7 @@ class WhenDeletingRoom_AfterSuccessfulSync_ApplicationShould: XCTestCase {
         context.refreshLocalStore()
         context.api.simulateSuccessfulSync(response)
         let roomToDelete = response.rooms.changed.remove(at: 0)
-        response.rooms.deleted = [roomToDelete.roomIdentifier]
+        response.rooms.deleted = [roomToDelete.identifier]
         context.refreshLocalStore()
         context.api.simulateSuccessfulSync(response)
 

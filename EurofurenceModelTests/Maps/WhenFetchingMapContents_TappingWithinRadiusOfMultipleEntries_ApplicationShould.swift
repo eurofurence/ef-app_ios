@@ -14,10 +14,10 @@ class WhenFetchingMapContents_TappingWithinRadiusOfMultipleEntries_ApplicationSh
     func testReturnTheClosestMatch() {
         let context = EurofurenceSessionTestBuilder().build()
         var syncResponse = ModelCharacteristics.randomWithoutDeletions
-        let room = RoomCharacteristics(roomIdentifier: .random, name: .random)
+        let room = RoomCharacteristics(identifier: .random, name: .random)
         let (x, y, tapRadius) = (Int.random, Int.random, Int.random)
         var map = MapCharacteristics.random
-        let link = MapCharacteristics.Entry.Link(type: .conferenceRoom, name: .random, target: room.roomIdentifier)
+        let link = MapCharacteristics.Entry.Link(type: .conferenceRoom, name: .random, target: room.identifier)
         let entry = MapCharacteristics.Entry(identifier: .random, x: x, y: y, tapRadius: tapRadius, links: [link])
         let anotherCloseEntry = MapCharacteristics.Entry(identifier: .random, x: entry.x + 5, y: entry.y + 5, tapRadius: entry.tapRadius, links: .random)
         map.entries = [anotherCloseEntry, entry]

@@ -23,10 +23,10 @@ class WhenFetchingMapContentThatRevealsRoom_ApplicationShould: XCTestCase {
 
         context = EurofurenceSessionTestBuilder().build()
         var syncResponse = ModelCharacteristics.randomWithoutDeletions
-        room = RoomCharacteristics(roomIdentifier: .random, name: .random)
+        room = RoomCharacteristics(identifier: .random, name: .random)
         (x, y, tapRadius) = (Int.random, Int.random, Int.random)
         map = MapCharacteristics.random
-        let link = MapCharacteristics.Entry.Link(type: .conferenceRoom, name: .random, target: room.roomIdentifier)
+        let link = MapCharacteristics.Entry.Link(type: .conferenceRoom, name: .random, target: room.identifier)
         let entry = MapCharacteristics.Entry(identifier: .random, x: x, y: y, tapRadius: tapRadius, links: [link])
         let unrelatedEntry = MapCharacteristics.Entry(identifier: .random, x: .random, y: .random, tapRadius: 0, links: .random)
         map.entries = [entry, unrelatedEntry]

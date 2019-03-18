@@ -119,7 +119,7 @@ struct JSONSyncResponse: Decodable {
         var Name: String
 
         var modelValue: RoomCharacteristics {
-            return RoomCharacteristics(roomIdentifier: Id, name: Name)
+            return RoomCharacteristics(identifier: Id, name: Name)
         }
 
     }

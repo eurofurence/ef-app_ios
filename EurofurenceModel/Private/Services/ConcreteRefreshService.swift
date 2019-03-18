@@ -224,7 +224,7 @@ class ConcreteRefreshService: RefreshService {
         }
         
         if response.rooms.removeAllBeforeInsert {
-            dataStore.fetchRooms()?.map({ $0.roomIdentifier }).forEach(transaction.deleteRoom)
+            dataStore.fetchRooms()?.map({ $0.identifier }).forEach(transaction.deleteRoom)
         }
         
         if response.tracks.removeAllBeforeInsert {
