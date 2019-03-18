@@ -85,7 +85,7 @@ extension KnowledgeGroupCharacteristics: RandomValueProviding {
         let knowledgeGroups = [KnowledgeGroupCharacteristics].random
         var knowledgeEntries = [KnowledgeEntryCharacteristics]()
         for group in knowledgeGroups {
-            let upperLimit = Int.random(upperLimit: 10) + 1
+            let upperLimit = Int.random(upperLimit: 3) + 1
             let range = 0..<upperLimit
             let entries = range.map({ (_) -> KnowledgeEntryCharacteristics in
                 var entry = KnowledgeEntryCharacteristics.random
