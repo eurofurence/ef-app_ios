@@ -17,13 +17,13 @@ class WhenSyncSucceeds_WithImages_ThenSubsequentSyncDeletesImage_ApplicationShou
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         var syncResponse = ModelCharacteristics.randomWithoutDeletions
         context.performSuccessfulSync(response: syncResponse)
-        let imageToDelegate = syncResponse.images.changed.randomElement().element
+        let imageToDelete = syncResponse.images.changed.randomElement().element
         syncResponse.images.changed.removeAll()
-        syncResponse.images.deleted = [imageToDelegate.identifier]
+        syncResponse.images.deleted = [imageToDelete.identifier]
         context.performSuccessfulSync(response: syncResponse)
 
-        XCTAssertTrue(dataStore.transaction.deletedImages.contains(imageToDelegate.identifier))
-        XCTAssertTrue(context.imageRepository.deletedImages.contains(imageToDelegate.identifier))
+        XCTAssertEqual(false, dataStore.fetchImages()?.contains(imageToDelete))
+        XCTAssertTrue(context.imageRepository.deletedImages.contains(imageToDelete.identifier))
     }
 
 }

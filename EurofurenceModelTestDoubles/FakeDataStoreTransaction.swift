@@ -135,9 +135,7 @@ public class FakeDataStoreTransaction: DataStoreTransaction {
         persistedImages.append(contentsOf: images, identifiedBy: { $0.identifier })
     }
 
-    private(set) public var deletedImages = [String]()
     public func deleteImage(identifier: String) {
-        deletedImages.append(identifier)
         persistedImages.removeAll(where: { $0.identifier == identifier })
     }
 

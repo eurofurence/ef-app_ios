@@ -19,8 +19,7 @@ class ImagesRemoveAllBeforeInsertTests: XCTestCase {
         context.performSuccessfulSync(response: originalResponse)
         context.performSuccessfulSync(response: subsequentResponse)
 
-        XCTAssertEqual(originalResponse.images.changed.map({ $0.identifier }),
-                       context.dataStore.transaction.deletedImages,
+        XCTAssertEqual(subsequentResponse.images.changed, context.dataStore.fetchImages(),
                        "Should have removed original images between sync events")
     }
 
@@ -30,9 +29,11 @@ class ImagesRemoveAllBeforeInsertTests: XCTestCase {
         subsequentResponse.images.removeAllBeforeInsert = false
         let context = EurofurenceSessionTestBuilder().build()
         context.performSuccessfulSync(response: originalResponse)
+        let imagesAfterFirstSync = context.dataStore.fetchImages()
         context.performSuccessfulSync(response: subsequentResponse)
+        let imagesAfterSecondSync = context.dataStore.fetchImages()
 
-        XCTAssertTrue(context.dataStore.transaction.deletedImages.isEmpty,
+        XCTAssertEqual(imagesAfterFirstSync, imagesAfterSecondSync,
                       "Should not have removed original images between sync events")
     }
 
