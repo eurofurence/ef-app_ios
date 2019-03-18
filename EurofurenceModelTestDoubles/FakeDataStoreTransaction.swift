@@ -69,9 +69,7 @@ public class FakeDataStoreTransaction: DataStoreTransaction {
         persistedConferenceDays.removeAll(where: { $0.identifier == identifier })
     }
 
-    private(set) public var deletedRooms: [String] = []
     public func deleteRoom(identifier: String) {
-        deletedRooms.append(identifier)
         persistedRooms.removeAll(where: { $0.roomIdentifier == identifier })
     }
 

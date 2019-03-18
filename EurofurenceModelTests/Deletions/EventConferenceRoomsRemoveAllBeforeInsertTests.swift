@@ -19,9 +19,8 @@ class EventConferenceRoomsRemoveAllBeforeInsertTests: XCTestCase {
         context.performSuccessfulSync(response: originalResponse)
         context.performSuccessfulSync(response: subsequentResponse)
 
-        XCTAssertEqual(originalResponse.rooms.changed.map({ $0.roomIdentifier }),
-                       context.dataStore.transaction.deletedRooms,
-                       "Should have removed original days between sync events")
+        XCTAssertEqual(subsequentResponse.rooms.changed, context.dataStore.fetchRooms(),
+                       "Should have removed original rooms between sync events")
     }
 
 }

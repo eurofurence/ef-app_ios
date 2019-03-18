@@ -18,12 +18,12 @@ class WhenDeletingRoom_AfterSuccessfulSync_ApplicationShould: XCTestCase {
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         context.refreshLocalStore()
         context.api.simulateSuccessfulSync(response)
-        let roomToDelete = String.random
-        response.rooms.deleted = [roomToDelete]
+        let roomToDelete = response.rooms.changed.remove(at: 0)
+        response.rooms.deleted = [roomToDelete.roomIdentifier]
         context.refreshLocalStore()
         context.api.simulateSuccessfulSync(response)
 
-        XCTAssertEqual([roomToDelete], dataStore.transaction.deletedRooms)
+        XCTAssertEqual(false, dataStore.fetchRooms()?.contains(roomToDelete))
     }
 
 }
