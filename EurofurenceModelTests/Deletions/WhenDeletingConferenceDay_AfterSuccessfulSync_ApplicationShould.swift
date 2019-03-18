@@ -18,12 +18,12 @@ class WhenDeletingConferenceDay_AfterSuccessfulSync_ApplicationShould: XCTestCas
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         context.refreshLocalStore()
         context.api.simulateSuccessfulSync(response)
-        let dayToDelete = String.random
-        response.conferenceDays.deleted = [dayToDelete]
+        let dayToDelete = response.conferenceDays.changed.remove(at: 0)
+        response.conferenceDays.deleted = [dayToDelete.identifier]
         context.refreshLocalStore()
         context.api.simulateSuccessfulSync(response)
 
-        XCTAssertEqual([dayToDelete], dataStore.transaction.deletedConferenceDays)
+        XCTAssertEqual(false, dataStore.fetchConferenceDays()?.contains(dayToDelete))
     }
 
 }

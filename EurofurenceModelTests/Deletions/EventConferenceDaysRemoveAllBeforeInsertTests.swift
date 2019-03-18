@@ -19,8 +19,7 @@ class EventConferenceDaysRemoveAllBeforeInsertTests: XCTestCase {
         context.performSuccessfulSync(response: originalResponse)
         context.performSuccessfulSync(response: subsequentResponse)
 
-        XCTAssertEqual(originalResponse.conferenceDays.changed.map({ $0.identifier }),
-                       context.dataStore.transaction.deletedConferenceDays,
+        XCTAssertEqual(subsequentResponse.conferenceDays.changed, context.dataStore.fetchConferenceDays(),
                        "Should have removed original days between sync events")
     }
 
