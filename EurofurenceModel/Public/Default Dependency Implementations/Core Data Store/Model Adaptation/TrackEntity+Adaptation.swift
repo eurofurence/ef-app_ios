@@ -13,15 +13,15 @@ extension TrackEntity: EntityAdapting {
     typealias AdaptedType = TrackCharacteristics
 
     static func makeIdentifyingPredicate(for model: TrackCharacteristics) -> NSPredicate {
-        return NSPredicate(format: "identifier == %@", model.trackIdentifier)
+        return NSPredicate(format: "identifier == %@", model.identifier)
     }
 
     func asAdaptedType() -> TrackCharacteristics {
-        return TrackCharacteristics(trackIdentifier: identifier!, name: name!)
+        return TrackCharacteristics(identifier: identifier!, name: name!)
     }
 
     func consumeAttributes(from value: TrackCharacteristics) {
-        identifier = value.trackIdentifier
+        identifier = value.identifier
         name = value.name
     }
 

@@ -21,7 +21,7 @@ extension ModelCharacteristics {
             let eventStartTime: Date = .random
             return EventCharacteristics(identifier: .random,
                             roomIdentifier: rooms.randomElement().element.roomIdentifier,
-                            trackIdentifier: tracks.randomElement().element.trackIdentifier,
+                            trackIdentifier: tracks.randomElement().element.identifier,
                             dayIdentifier: days.randomElement().element.identifier,
                             startDateTime: eventStartTime,
                             endDateTime: eventStartTime.addingTimeInterval(.random),
@@ -155,7 +155,7 @@ extension RoomCharacteristics: RandomValueProviding {
 extension TrackCharacteristics: RandomValueProviding {
 
     public static var random: TrackCharacteristics {
-        return TrackCharacteristics(trackIdentifier: .random, name: .random)
+        return TrackCharacteristics(identifier: .random, name: .random)
     }
 
 }

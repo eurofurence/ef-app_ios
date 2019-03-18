@@ -228,7 +228,7 @@ class ConcreteRefreshService: RefreshService {
         }
         
         if response.tracks.removeAllBeforeInsert {
-            dataStore.fetchTracks()?.map({ $0.trackIdentifier }).forEach(transaction.deleteTrack)
+            dataStore.fetchTracks()?.map({ $0.identifier }).forEach(transaction.deleteTrack)
         }
         
         if response.knowledgeGroups.removeAllBeforeInsert {

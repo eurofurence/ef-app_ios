@@ -155,11 +155,11 @@ private class FakeDataStoreTransaction: DataStoreTransaction {
     
     fileprivate var tracks: [TrackCharacteristics] = []
     func saveTracks(_ tracks: [TrackCharacteristics]) {
-        self.tracks.append(contentsOf: tracks, identifiedBy: { $0.trackIdentifier })
+        self.tracks.append(contentsOf: tracks, identifiedBy: { $0.identifier })
     }
     
     func deleteTrack(identifier: String) {
-        tracks.removeAll(where: { $0.trackIdentifier == identifier })
+        tracks.removeAll(where: { $0.identifier == identifier })
     }
     
     fileprivate var conferenceDays: [ConferenceDayCharacteristics] = []

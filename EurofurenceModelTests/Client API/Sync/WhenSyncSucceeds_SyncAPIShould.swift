@@ -86,10 +86,10 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                                      deleted: ["1452d472-feae-4483-8f55-93c25f7ec920"],
                                                      removeAllBeforeInsert: true)
 
-        let tracks = ModelCharacteristics.Update<TrackCharacteristics>(changed: [TrackCharacteristics(trackIdentifier: "f92a4fc0-303f-4c13-9194-44121d80bd20",
-                                                                        name: "Stage")],
-                                                     deleted: ["cf410a89-379d-40c7-89ea-d0b6b51ea914"],
-                                                     removeAllBeforeInsert: true)
+        let tracks = ModelCharacteristics.Update<TrackCharacteristics>(changed: [TrackCharacteristics(identifier: "f92a4fc0-303f-4c13-9194-44121d80bd20",
+                                                                                                      name: "Stage")],
+                                                                       deleted: ["cf410a89-379d-40c7-89ea-d0b6b51ea914"],
+                                                                       removeAllBeforeInsert: true)
 
         let changedConferenceDayDate = DateComponents(calendar: .current,
                                                       timeZone: TimeZone(secondsFromGMT: 0),

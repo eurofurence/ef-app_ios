@@ -10,11 +10,11 @@ import Foundation
 
 public struct TrackCharacteristics: Equatable {
 
-    public var trackIdentifier: String
+    public var identifier: String
     public var name: String
 
-    public init(trackIdentifier: String, name: String) {
-        self.trackIdentifier = trackIdentifier
+    public init(identifier: String, name: String) {
+        self.identifier = identifier
         self.name = name
     }
 

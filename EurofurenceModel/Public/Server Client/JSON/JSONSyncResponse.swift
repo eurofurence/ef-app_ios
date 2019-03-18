@@ -166,7 +166,7 @@ struct JSONSyncResponse: Decodable {
         var Name: String
 
         var modelValue: TrackCharacteristics {
-            return TrackCharacteristics(trackIdentifier: Id, name: Name)
+            return TrackCharacteristics(identifier: Id, name: Name)
         }
 
     }

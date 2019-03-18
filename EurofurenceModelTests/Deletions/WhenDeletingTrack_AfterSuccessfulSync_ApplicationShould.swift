@@ -19,7 +19,7 @@ class WhenDeletingTrack_AfterSuccessfulSync_ApplicationShould: XCTestCase {
         context.refreshLocalStore()
         context.api.simulateSuccessfulSync(response)
         let trackToDelete = response.tracks.changed.remove(at: 0)
-        response.tracks.deleted = [trackToDelete.trackIdentifier]
+        response.tracks.deleted = [trackToDelete.identifier]
         context.refreshLocalStore()
         context.api.simulateSuccessfulSync(response)
 

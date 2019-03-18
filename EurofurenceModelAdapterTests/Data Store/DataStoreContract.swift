@@ -387,7 +387,7 @@ class DataStoreContract: XCTestCase {
     func testDeleteTracks() {
         let element = TrackCharacteristics.random
         verifyDeletion(for: element,
-                       elementIdentifier: element.trackIdentifier,
+                       elementIdentifier: element.identifier,
                        savingBlock: { $0.saveTracks },
                        deletionBlock: { $0.deleteTrack },
                        loadingBlock: { $0.fetchTracks })

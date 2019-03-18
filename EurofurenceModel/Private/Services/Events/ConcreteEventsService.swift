@@ -223,7 +223,7 @@ class ConcreteEventsService: ClockDelegate, EventsService {
 
     func makeEventModel(from event: EventCharacteristics) -> EventImpl? {
         guard let room = rooms.first(where: { $0.roomIdentifier == event.roomIdentifier }) else { return nil }
-        guard let track = tracks.first(where: { $0.trackIdentifier == event.trackIdentifier }) else { return nil }
+        guard let track = tracks.first(where: { $0.identifier == event.trackIdentifier }) else { return nil }
 
         let posterGraphicData: Data? = event.posterImageId.let(imageCache.cachedImageData)
         let bannerGraphicData: Data? = event.bannerImageId.let(imageCache.cachedImageData)
