@@ -8,9 +8,10 @@
 
 import Foundation
 
-public struct ImageCharacteristics: Equatable {
+public struct ImageCharacteristics: Equatable, Identifyable {
 
     public var identifier: String
+    
     public var internalReference: String
     public var contentHashSha1: String
 

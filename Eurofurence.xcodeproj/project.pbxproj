@@ -224,6 +224,7 @@
 		CA1FE9991FA0B3AE009C7DF3 /* ApplicationDirector.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1FE9981FA0B3AE009C7DF3 /* ApplicationDirector.swift */; };
 		CA1FE99B1FA0B3EB009C7DF3 /* WindowWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1FE99A1FA0B3EB009C7DF3 /* WindowWireframe.swift */; };
 		CA1FE99E1FA0B41E009C7DF3 /* NavigationControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1FE99D1FA0B41E009C7DF3 /* NavigationControllerFactory.swift */; };
+		CA223D87223FE70A00883FEA /* Identifyable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA223D86223FE70A00883FEA /* Identifyable.swift */; };
 		CA235866221B57620044B1FC /* StubMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA235865221B57620044B1FC /* StubMessage.swift */; };
 		CA235868221B591D0044B1FC /* MessageImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA235867221B591D0044B1FC /* MessageImpl.swift */; };
 		CA23586A221C15F40044B1FC /* FavouriteEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA235869221C15F40044B1FC /* FavouriteEvent.swift */; };
@@ -1731,6 +1732,7 @@
 		CA1FE9981FA0B3AE009C7DF3 /* ApplicationDirector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ApplicationDirector.swift; path = ../Director/ApplicationDirector.swift; sourceTree = "<group>"; };
 		CA1FE99A1FA0B3EB009C7DF3 /* WindowWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WindowWireframe.swift; path = ../Director/WindowWireframe.swift; sourceTree = "<group>"; };
 		CA1FE99D1FA0B41E009C7DF3 /* NavigationControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NavigationControllerFactory.swift; path = ../Director/NavigationControllerFactory.swift; sourceTree = "<group>"; };
+		CA223D86223FE70A00883FEA /* Identifyable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifyable.swift; sourceTree = "<group>"; };
 		CA235865221B57620044B1FC /* StubMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubMessage.swift; sourceTree = "<group>"; };
 		CA235867221B591D0044B1FC /* MessageImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageImpl.swift; sourceTree = "<group>"; };
 		CA235869221C15F40044B1FC /* FavouriteEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteEvent.swift; sourceTree = "<group>"; };
@@ -6671,6 +6673,7 @@
 				CA08157E20D3D52D00F750D4 /* ConferenceDayCharacteristics.swift */,
 				CA36A4AD20D9895600EE6537 /* DealerCharacteristics.swift */,
 				CA162EB720AA2FB9004AFED6 /* EventCharacteristics.swift */,
+				CA223D86223FE70A00883FEA /* Identifyable.swift */,
 				CA401058210B9FD40056E16C /* ImageCharacteristics.swift */,
 				CAF5979920449A1D00089BE8 /* KnowledgeEntryCharacteristics.swift */,
 				CAF5979720449A1100089BE8 /* KnowledgeGroupCharacteristics.swift */,
@@ -8512,6 +8515,7 @@
 				CAEA0DE2216BDE2300B0C7A6 /* TrackEntity+Adaptation.swift in Sources */,
 				CAEA0DDB216BDE2300B0C7A6 /* ImageModelEntity+Adaptation.swift in Sources */,
 				CAEA0D8B216BDD9500B0C7A6 /* DataStoreChangedConsumer.swift in Sources */,
+				CA223D87223FE70A00883FEA /* Identifyable.swift in Sources */,
 				CAEA0DA4216BDE2300B0C7A6 /* DataStore.swift in Sources */,
 				CA0290FE21F4B3C80007F350 /* ConcreteNotificationService.swift in Sources */,
 				CAEA0DDD216BDE2300B0C7A6 /* KnowledgeGroupEntity+Adaptation.swift in Sources */,

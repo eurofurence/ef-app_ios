@@ -8,9 +8,10 @@
 
 import Foundation
 
-public struct AnnouncementCharacteristics: Equatable {
+public struct AnnouncementCharacteristics: Equatable, Identifyable {
 
     public var identifier: String
+    
     public var title: String
     public var content: String
     public var lastChangedDateTime: Date

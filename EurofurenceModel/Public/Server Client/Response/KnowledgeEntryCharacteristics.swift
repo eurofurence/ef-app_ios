@@ -8,9 +8,10 @@
 
 import Foundation
 
-public struct KnowledgeEntryCharacteristics: Comparable, Equatable {
+public struct KnowledgeEntryCharacteristics: Comparable, Equatable, Identifyable {
 
     public var identifier: String
+    
     public var groupIdentifier: String
     public var title: String
     public var order: Int

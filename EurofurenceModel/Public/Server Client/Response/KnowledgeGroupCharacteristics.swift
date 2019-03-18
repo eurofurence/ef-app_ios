@@ -8,9 +8,10 @@
 
 import Foundation
 
-public struct KnowledgeGroupCharacteristics: Equatable {
+public struct KnowledgeGroupCharacteristics: Equatable, Identifyable {
 
     public var identifier: String
+    
     public var order: Int
     public var groupName: String
     public var groupDescription: String

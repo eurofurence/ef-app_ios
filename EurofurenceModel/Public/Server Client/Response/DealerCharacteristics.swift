@@ -8,9 +8,10 @@
 
 import Foundation
 
-public struct DealerCharacteristics: Equatable {
+public struct DealerCharacteristics: Equatable, Identifyable {
 
     public var identifier: String
+    
     public var displayName: String
     public var attendeeNickname: String
     public var attendsOnThursday: Bool

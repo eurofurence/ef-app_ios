@@ -8,9 +8,10 @@
 
 import Foundation
 
-public struct EventCharacteristics: Equatable {
+public struct EventCharacteristics: Equatable, Identifyable {
 
     public var identifier: String
+    
     public var roomIdentifier: String
     public var trackIdentifier: String
     public var dayIdentifier: String

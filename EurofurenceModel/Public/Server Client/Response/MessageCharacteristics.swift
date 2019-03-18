@@ -8,9 +8,10 @@
 
 import Foundation
 
-public struct MessageCharacteristics {
+public struct MessageCharacteristics: Identifyable {
 
     public var identifier: String
+    
     public var authorName: String
     public var receivedDateTime: Date
     public var subject: String

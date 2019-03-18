@@ -9,7 +9,7 @@
 import Foundation
 
 // swiftlint:disable nesting
-public struct MapCharacteristics: Equatable {
+public struct MapCharacteristics: Equatable, Identifyable {
 
     public static func == (lhs: MapCharacteristics, rhs: MapCharacteristics) -> Bool {
         return lhs.identifier == rhs.identifier &&
@@ -19,7 +19,7 @@ public struct MapCharacteristics: Equatable {
                lhs.entries.contains(elementsFrom: rhs.entries)
     }
 
-    public struct Entry: Equatable {
+    public struct Entry: Equatable, Identifyable {
 
         public static func == (lhs: Entry, rhs: Entry) -> Bool {
             return lhs.identifier == rhs.identifier &&
@@ -51,6 +51,7 @@ public struct MapCharacteristics: Equatable {
         }
 
         public var identifier: String
+        
         public var x: Int
         public var y: Int
         public var tapRadius: Int
@@ -67,6 +68,7 @@ public struct MapCharacteristics: Equatable {
     }
 
     public var identifier: String
+    
     public var imageIdentifier: String
     public var mapDescription: String
     public var entries: [Entry]
