@@ -169,52 +169,49 @@ class ConcreteRefreshService: RefreshService {
     }
     
     private func deleteOrphanedAnnouncements(_ response: ModelCharacteristics, _ transaction: DataStoreTransaction) {
-        let existingAnnouncementIdentifiers = dataStore.fetchAnnouncements().defaultingTo(.empty).map({ $0.identifier })
-        let changedAnnouncementIdentifiers = response.announcements.changed.map({ $0.identifier })
-        let orphanedAnnouncements = existingAnnouncementIdentifiers.filter(not(changedAnnouncementIdentifiers.contains))
-        orphanedAnnouncements.forEach(transaction.deleteAnnouncement)
+        deleteOrphans(existing: dataStore.fetchAnnouncements()?.map({ $0.identifier }),
+                      changed: response.announcements.changed.map({ $0.identifier }),
+                      deletionHandler: transaction.deleteAnnouncement)
     }
     
     private func deleteOrphanedEvents(_ response: ModelCharacteristics, _ transaction: DataStoreTransaction) {
-        let existingEventIdentifiers = dataStore.fetchEvents()?.map({ $0.identifier })
-        let changedEventIdentifiers = response.events.changed.map({ $0.identifier })
-        let orphanedEvents = existingEventIdentifiers?.filter(not(changedEventIdentifiers.contains))
-        orphanedEvents?.forEach(transaction.deleteEvent)
+        deleteOrphans(existing: dataStore.fetchEvents()?.map({ $0.identifier }),
+                      changed: response.events.changed.map({ $0.identifier }),
+                      deletionHandler: transaction.deleteEvent)
     }
     
     private func deleteOrphanedKnowledgeGroups(_ response: ModelCharacteristics, _ transaction: DataStoreTransaction) {
-        let existingKnowledgeGroupIdentifiers = dataStore.fetchKnowledgeGroups()?.map({ $0.identifier })
-        let changedKnowledgeGroupIdentifiers = response.knowledgeGroups.changed.map({ $0.identifier })
-        let orphanedKnowledgeGroups = existingKnowledgeGroupIdentifiers?.filter(not(changedKnowledgeGroupIdentifiers.contains))
-        orphanedKnowledgeGroups?.forEach(transaction.deleteKnowledgeGroup)
+        deleteOrphans(existing: dataStore.fetchKnowledgeGroups()?.map({ $0.identifier }),
+                      changed: response.knowledgeGroups.changed.map({ $0.identifier }),
+                      deletionHandler: transaction.deleteKnowledgeGroup)
     }
     
     private func deleteOrphanedKnowledgeEntries(_ response: ModelCharacteristics, _ transaction: DataStoreTransaction) {
-        let existingKnowledgeEntryIdentifiers = dataStore.fetchKnowledgeEntries()?.map({ $0.identifier })
-        let changedKnowledgeEntryIdentifiers = response.knowledgeEntries.changed.map({ $0.identifier })
-        let orphanedKnowledgeEntries = existingKnowledgeEntryIdentifiers?.filter(not(changedKnowledgeEntryIdentifiers.contains))
-        orphanedKnowledgeEntries?.forEach(transaction.deleteKnowledgeEntry)
+        deleteOrphans(existing: dataStore.fetchKnowledgeEntries()?.map({ $0.identifier }),
+                      changed: response.knowledgeEntries.changed.map({ $0.identifier }),
+                      deletionHandler: transaction.deleteKnowledgeEntry)
     }
     
     private func deleteOrphanedImages(_ response: ModelCharacteristics) {
-        let existingImageIdentifiers = dataStore.fetchImages()?.map({ $0.identifier })
-        let changedImageIdentifiers = response.images.changed.map({ $0.identifier })
-        let orphanedImages = existingImageIdentifiers?.filter(not(changedImageIdentifiers.contains))
-        orphanedImages?.forEach(imageRepository.deleteEntity)
+        deleteOrphans(existing: dataStore.fetchImages()?.map({ $0.identifier }),
+                      changed: response.images.changed.map({ $0.identifier }),
+                      deletionHandler: imageRepository.deleteEntity)
     }
     
     private func deleteOrphanedDealers(_ response: ModelCharacteristics, _ transaction: DataStoreTransaction) {
-        let existingDealerIdentifiers = dataStore.fetchDealers()?.map({ $0.identifier })
-        let changedDealerIdentifiers = response.dealers.changed.map({ $0.identifier })
-        let orphanedDealers = existingDealerIdentifiers?.filter(not(changedDealerIdentifiers.contains))
-        orphanedDealers?.forEach(transaction.deleteDealer)
+        deleteOrphans(existing: dataStore.fetchDealers()?.map({ $0.identifier }),
+                      changed: response.dealers.changed.map({ $0.identifier }),
+                      deletionHandler: transaction.deleteDealer)
     }
     
     private func deleteOrphanedMaps(_ response: ModelCharacteristics, _ transaction: DataStoreTransaction) {
-        let existingMapIdentifiers = dataStore.fetchMaps()?.map({ $0.identifier })
-        let changedMapIdentifiers = response.maps.changed.map({ $0.identifier })
-        let orphanedMaps = existingMapIdentifiers?.filter(not(changedMapIdentifiers.contains))
-        orphanedMaps?.forEach(transaction.deleteMap)
+        deleteOrphans(existing: dataStore.fetchMaps()?.map({ $0.identifier }),
+                      changed: response.maps.changed.map({ $0.identifier }),
+                      deletionHandler: transaction.deleteMap)
+    }
+    
+    private func deleteOrphans(existing: [String]?, changed: [String], deletionHandler: (String) -> Void) {
+        existing?.filter(not(changed.contains)).forEach(deletionHandler)
     }
     
     private func processRemoveAllBeforeInserts(_ response: ModelCharacteristics, transaction: DataStoreTransaction) {
