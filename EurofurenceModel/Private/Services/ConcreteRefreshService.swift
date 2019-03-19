@@ -73,8 +73,6 @@ class ConcreteRefreshService: RefreshService {
     private func performSync(lastSyncTime: Date?, completionHandler: @escaping (Error?) -> Void) -> Progress {
         notifyRefreshStarted()
         startLongRunningTask()
-        
-        forceRefreshRequired.markForceRefreshNoLongerRequired()
 
         let progress = Progress()
         progress.totalUnitCount = -1
@@ -91,6 +89,7 @@ class ConcreteRefreshService: RefreshService {
             let imageDownloadRequests = response.images.changed.map(ImageDownloader.DownloadRequest.init)
             progress.completedUnitCount = 0
             progress.totalUnitCount = Int64(imageDownloadRequests.count)
+            self.forceRefreshRequired.markForceRefreshNoLongerRequired()
 
             self.imageDownloader.downloadImages(requests: imageDownloadRequests, parentProgress: progress) {
                 self.updateLocalStore(response: response, lastSyncTime: lastSyncTime)
