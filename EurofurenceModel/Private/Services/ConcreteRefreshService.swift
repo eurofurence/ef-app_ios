@@ -83,6 +83,7 @@ class ConcreteRefreshService: RefreshService {
             
             guard self.conventionIdentifier.identifier == response.conventionIdentifier else {
                 self.finishLongRunningTask()
+                self.notifyRefreshFinished()
                 return
             }
 

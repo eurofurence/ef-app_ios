@@ -10,15 +10,25 @@ import EurofurenceModel
 import Foundation
 
 class CapturingRefreshServiceObserver: RefreshServiceObserver {
+    
+    enum State {
+        case unset
+        case refreshing
+        case finishedRefreshing
+    }
+    
+    private(set) var state: State = .unset
 
     private(set) var toldDidBeginRefreshing = false
     func refreshServiceDidBeginRefreshing() {
         toldDidBeginRefreshing = true
+        state = .refreshing
     }
 
     private(set) var toldDidFinishRefreshing = false
     func refreshServiceDidFinishRefreshing() {
         toldDidFinishRefreshing = true
+        state = .finishedRefreshing
     }
 
 }

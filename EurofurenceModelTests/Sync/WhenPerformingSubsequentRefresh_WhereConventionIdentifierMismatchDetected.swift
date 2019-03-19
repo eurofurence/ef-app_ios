@@ -43,5 +43,18 @@ class WhenPerformingSubsequentRefresh_WhereConventionIdentifierMismatchDetected:
         
         XCTAssertEqual(context.longRunningTaskManager.state, .ended)
     }
+    
+    func testObserversAreNotifiedTheRefreshFinished() {
+        let observer = CapturingRefreshServiceObserver()
+        let context = EurofurenceSessionTestBuilder().build()
+        context.refreshService.add(observer)
+        let first = ModelCharacteristics.randomWithoutDeletions
+        var second = ModelCharacteristics.randomWithoutDeletions
+        second.conventionIdentifier = .random
+        context.performSuccessfulSync(response: first)
+        context.performSuccessfulSync(response: second)
+        
+        XCTAssertEqual(observer.state, .finishedRefreshing)
+    }
 
 }
