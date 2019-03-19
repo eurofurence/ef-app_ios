@@ -9,7 +9,15 @@
 import EventBus
 import Foundation
 
-struct MessageImpl: Message {
+class MessageImpl: Message, Comparable {
+    
+    static func == (lhs: MessageImpl, rhs: MessageImpl) -> Bool {
+        return lhs.identifier == rhs.identifier
+    }
+    
+    static func < (lhs: MessageImpl, rhs: MessageImpl) -> Bool {
+        return lhs.receivedDateTime.compare(rhs.receivedDateTime) == .orderedDescending
+    }
     
     struct ReadEvent {
         var message: Message
@@ -36,6 +44,7 @@ struct MessageImpl: Message {
     }
     
     func markAsRead() {
+        isRead = true
         eventBus.post(ReadEvent(message: self))
     }
 

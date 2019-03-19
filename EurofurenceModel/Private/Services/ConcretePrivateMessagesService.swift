@@ -15,7 +15,11 @@ class ConcretePrivateMessagesService: PrivateMessagesService {
     private var userAuthenticationToken: String?
     private var privateMessageObservers = [PrivateMessagesObserver]()
 
-    private var localMessages: [MessageImpl] = .empty
+    private var localMessages: [MessageImpl] = .empty {
+        didSet {
+            privateMessageObservers.forEach({ $0.privateMessagesServiceDidFinishRefreshingMessages(messages: localMessages) })
+        }
+    }
     
     private class MarkMessageAsReadHandler: EventConsumer {
         
@@ -45,60 +49,54 @@ class ConcretePrivateMessagesService: PrivateMessagesService {
         observer.privateMessagesServiceDidFinishRefreshingMessages(messages: localMessages)
     }
 
-    private func determineUnreadMessageCount() -> Int {
-        return localMessages.filter({ $0.isRead == false }).count
-    }
-
     func refreshMessages() {
         refreshMessages(completionHandler: nil)
     }
 
     func refreshMessages(completionHandler: (() -> Void)? = nil) {
         if let token = userAuthenticationToken {
-            api.loadPrivateMessages(authorizationToken: token) { (messages) in
-                if let messages = messages {
-                    let messages = messages.sorted(by: { (first, second) -> Bool in
-                        return first.receivedDateTime.compare(second.receivedDateTime) == .orderedDescending
-                    })
-
-                    self.localMessages = messages.map(self.makeMessage)
-
-                    let unreadCount = self.determineUnreadMessageCount()
-                    self.privateMessageObservers.forEach({ (observer) in
-                        observer.privateMessagesServiceDidUpdateUnreadMessageCount(to: unreadCount)
-                        observer.privateMessagesServiceDidFinishRefreshingMessages(messages: self.localMessages)
-                    })
-                } else {
-                    for observer in self.privateMessageObservers {
-                        observer.privateMessagesServiceDidFailToLoadMessages()
-                    }
-                }
-
-                completionHandler?()
-            }
+            refreshMessages(token: token, completionHandler: completionHandler)
         } else {
-            for observer in privateMessageObservers {
-                observer.privateMessagesServiceDidFailToLoadMessages()
+            notifyDidFailToLoadMessages()
+            completionHandler?()
+        }
+    }
+    
+    private func refreshMessages(token: String, completionHandler: (() -> Void)?) {
+        api.loadPrivateMessages(authorizationToken: token) { (messages) in
+            if let messages = messages {
+                self.updateEntities(from: messages)
+            } else {
+                self.notifyDidFailToLoadMessages()
             }
 
             completionHandler?()
         }
     }
+    
+    private func updateEntities(from messages: [MessageCharacteristics]) {
+        localMessages = messages.map(makeMessage).sorted()
+        updateObserversWithUnreadMessageCount()
+    }
+    
+    private func notifyDidFailToLoadMessages() {
+        privateMessageObservers.forEach({ $0.privateMessagesServiceDidFailToLoadMessages() })
+    }
 
+    private func updateObserversWithUnreadMessageCount() {
+        let unreadCount = determineUnreadMessageCount()
+        privateMessageObservers.forEach({ $0.privateMessagesServiceDidUpdateUnreadMessageCount(to: unreadCount) })
+    }
+    
+    private func determineUnreadMessageCount() -> Int {
+        return localMessages.filter({ $0.isRead == false }).count
+    }
+    
     private func markMessageAsRead(_ message: Message) {
         guard let token = userAuthenticationToken else { return }
+        
         api.markMessageWithIdentifierAsRead(message.identifier, authorizationToken: token)
-
-        if let idx = localMessages.firstIndex(where: { $0.identifier == message.identifier  }) {
-            var readMessage = localMessages[idx]
-            readMessage.isRead = true
-            localMessages[idx] = readMessage
-        }
-
-        let unreadCount = determineUnreadMessageCount()
-        privateMessageObservers.forEach({ (observer) in
-            observer.privateMessagesServiceDidUpdateUnreadMessageCount(to: unreadCount)
-        })
+        updateObserversWithUnreadMessageCount()
     }
     
     private func makeMessage(from characteristics: MessageCharacteristics) -> MessageImpl {
