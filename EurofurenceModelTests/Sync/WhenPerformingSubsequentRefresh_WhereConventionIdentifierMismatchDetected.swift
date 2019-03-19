@@ -32,5 +32,16 @@ class WhenPerformingSubsequentRefresh_WhereConventionIdentifierMismatchDetected:
         XCTAssertEqual(first.maps.changed, store.fetchMaps())
         XCTAssertEqual(first.images.changed, store.fetchImages())
     }
+    
+    func testTheLongRunningTaskIsEnded() {
+        let context = EurofurenceSessionTestBuilder().build()
+        let first = ModelCharacteristics.randomWithoutDeletions
+        var second = ModelCharacteristics.randomWithoutDeletions
+        second.conventionIdentifier = .random
+        context.performSuccessfulSync(response: first)
+        context.performSuccessfulSync(response: second)
+        
+        XCTAssertEqual(context.longRunningTaskManager.state, .ended)
+    }
 
 }
