@@ -146,6 +146,11 @@ class EurofurenceSessionTestBuilder {
             login()
             api.simulateLoginResponse(LoginResponse(userIdentifier: .random, username: .random, token: .random, tokenValidUntil: Date(timeIntervalSinceNow: 1)))
         }
+        
+        func logoutSuccessfully() {
+            authenticationService.logout(completionHandler: { (_) in })
+            notificationTokenRegistration.succeedLastRequest()
+        }
 
         @discardableResult
         func refreshLocalStore(completionHandler: ((RefreshServiceError?) -> Void)? = nil) -> Progress {

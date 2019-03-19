@@ -767,6 +767,7 @@
 		CA8DA45D2240F6A100B1E5D1 /* WhenPerformingSync_AfterEnforcingFullStoreRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8DA45C2240F6A100B1E5D1 /* WhenPerformingSync_AfterEnforcingFullStoreRefresh.swift */; };
 		CA8DA45F2240F80D00B1E5D1 /* WhenPerformingSync_AfterEnforcingFullStoreRefresh_WhenFullRefreshFailed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8DA45E2240F80D00B1E5D1 /* WhenPerformingSync_AfterEnforcingFullStoreRefresh_WhenFullRefreshFailed.swift */; };
 		CA8DA4612241166E00B1E5D1 /* WhenPerformingSubsequentRefresh_WhereConventionIdentifierMismatchDetected.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8DA4602241166E00B1E5D1 /* WhenPerformingSubsequentRefresh_WhereConventionIdentifierMismatchDetected.swift */; };
+		CA8DA4632241736F00B1E5D1 /* WhenLoggingOut_PrivateMessagesShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8DA4622241736F00B1E5D1 /* WhenLoggingOut_PrivateMessagesShould.swift */; };
 		CA8E17ED1F817A70003C348C /* PreloadInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E17EC1F817A70003C348C /* PreloadInteractor.swift */; };
 		CA8E17EF1F817A8C003C348C /* CapturingPreloadInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E17EE1F817A8C003C348C /* CapturingPreloadInteractor.swift */; };
 		CA8E17F11F817AA2003C348C /* CapturingPreloadModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E17F01F817AA2003C348C /* CapturingPreloadModuleDelegate.swift */; };
@@ -2461,6 +2462,7 @@
 		CA8DA45C2240F6A100B1E5D1 /* WhenPerformingSync_AfterEnforcingFullStoreRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPerformingSync_AfterEnforcingFullStoreRefresh.swift; sourceTree = "<group>"; };
 		CA8DA45E2240F80D00B1E5D1 /* WhenPerformingSync_AfterEnforcingFullStoreRefresh_WhenFullRefreshFailed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPerformingSync_AfterEnforcingFullStoreRefresh_WhenFullRefreshFailed.swift; sourceTree = "<group>"; };
 		CA8DA4602241166E00B1E5D1 /* WhenPerformingSubsequentRefresh_WhereConventionIdentifierMismatchDetected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPerformingSubsequentRefresh_WhereConventionIdentifierMismatchDetected.swift; sourceTree = "<group>"; };
+		CA8DA4622241736F00B1E5D1 /* WhenLoggingOut_PrivateMessagesShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLoggingOut_PrivateMessagesShould.swift; sourceTree = "<group>"; };
 		CA8E17EC1F817A70003C348C /* PreloadInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadInteractor.swift; sourceTree = "<group>"; };
 		CA8E17EE1F817A8C003C348C /* CapturingPreloadInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingPreloadInteractor.swift; sourceTree = "<group>"; };
 		CA8E17F01F817AA2003C348C /* CapturingPreloadModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingPreloadModuleDelegate.swift; sourceTree = "<group>"; };
@@ -5534,6 +5536,7 @@
 				CA30EAB51F26128A0053DBF6 /* WhenRequestingPrivateMessagesWhileAuthenticated.swift */,
 				CA81D4931FEA92EA00A52A2F /* WhenRequestingPrivateMessagesWhileNotAuthenticated.swift */,
 				CA4679AB221B504D006B3090 /* MessageAssertion.swift */,
+				CA8DA4622241736F00B1E5D1 /* WhenLoggingOut_PrivateMessagesShould.swift */,
 			);
 			path = "Private Messages";
 			sourceTree = "<group>";
@@ -8802,6 +8805,7 @@
 				CAEA0FFC216E1CE700B0C7A6 /* WhenFetchingMapContents_ThatRevealsDealer_ContentsSavedInDataStore_ApplicationShould.swift in Sources */,
 				CAEA0FBA216E1CC000B0C7A6 /* WhenToldToOpenDealersTelegram_WhenApplicationCanHandleURL_ApplicationShould.swift in Sources */,
 				CAEA1001216E1CE700B0C7A6 /* WhenObservingMaps_ThenSyncSucceeds_ApplicationShould.swift in Sources */,
+				CA8DA4632241736F00B1E5D1 /* WhenLoggingOut_PrivateMessagesShould.swift in Sources */,
 				CAEA0FD3216E1CC000B0C7A6 /* WhenSearchingForEvents_ApplicationShould.swift in Sources */,
 				CAEA101B216E1CE800B0C7A6 /* WhenPerformingSync_WhenNumberOfImagesToDownloadIsKnown.swift in Sources */,
 				CAEA0FDD216E1CE700B0C7A6 /* WhenObservingRunningEventsAfterSuccessfulLoad.swift in Sources */,

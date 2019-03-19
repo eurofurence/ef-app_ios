@@ -40,6 +40,7 @@ class ConcretePrivateMessagesService: PrivateMessagesService {
         self.api = api
         
         eventBus.subscribe(userLoggedIn)
+        eventBus.subscribe(userLoggedOut)
         eventBus.subscribe(consumer: MarkMessageAsReadHandler(service: self))
     }
 
@@ -81,6 +82,10 @@ class ConcretePrivateMessagesService: PrivateMessagesService {
 
     private func userLoggedIn(_ event: DomainEvent.LoggedIn) {
         state = AuthenticatedState(service: self, token: event.authenticationToken)
+    }
+    
+    private func userLoggedOut(_ event: DomainEvent.LoggedOut) {
+        localMessages.removeAll()
     }
     
     // MARK: State Machine
