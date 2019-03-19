@@ -86,6 +86,7 @@ class ConcretePrivateMessagesService: PrivateMessagesService {
     
     private func userLoggedOut(_ event: DomainEvent.LoggedOut) {
         localMessages.removeAll()
+        state = UnauthenticatedState(service: self)
     }
     
     // MARK: State Machine

@@ -768,6 +768,7 @@
 		CA8DA45F2240F80D00B1E5D1 /* WhenPerformingSync_AfterEnforcingFullStoreRefresh_WhenFullRefreshFailed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8DA45E2240F80D00B1E5D1 /* WhenPerformingSync_AfterEnforcingFullStoreRefresh_WhenFullRefreshFailed.swift */; };
 		CA8DA4612241166E00B1E5D1 /* WhenPerformingSubsequentRefresh_WhereConventionIdentifierMismatchDetected.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8DA4602241166E00B1E5D1 /* WhenPerformingSubsequentRefresh_WhereConventionIdentifierMismatchDetected.swift */; };
 		CA8DA4632241736F00B1E5D1 /* WhenLoggingOut_PrivateMessagesShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8DA4622241736F00B1E5D1 /* WhenLoggingOut_PrivateMessagesShould.swift */; };
+		CA8DA4652241764600B1E5D1 /* WhenLoggingOut_ThenRequestingPrivateMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8DA4642241764600B1E5D1 /* WhenLoggingOut_ThenRequestingPrivateMessages.swift */; };
 		CA8E17ED1F817A70003C348C /* PreloadInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E17EC1F817A70003C348C /* PreloadInteractor.swift */; };
 		CA8E17EF1F817A8C003C348C /* CapturingPreloadInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E17EE1F817A8C003C348C /* CapturingPreloadInteractor.swift */; };
 		CA8E17F11F817AA2003C348C /* CapturingPreloadModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E17F01F817AA2003C348C /* CapturingPreloadModuleDelegate.swift */; };
@@ -2463,6 +2464,7 @@
 		CA8DA45E2240F80D00B1E5D1 /* WhenPerformingSync_AfterEnforcingFullStoreRefresh_WhenFullRefreshFailed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPerformingSync_AfterEnforcingFullStoreRefresh_WhenFullRefreshFailed.swift; sourceTree = "<group>"; };
 		CA8DA4602241166E00B1E5D1 /* WhenPerformingSubsequentRefresh_WhereConventionIdentifierMismatchDetected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPerformingSubsequentRefresh_WhereConventionIdentifierMismatchDetected.swift; sourceTree = "<group>"; };
 		CA8DA4622241736F00B1E5D1 /* WhenLoggingOut_PrivateMessagesShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLoggingOut_PrivateMessagesShould.swift; sourceTree = "<group>"; };
+		CA8DA4642241764600B1E5D1 /* WhenLoggingOut_ThenRequestingPrivateMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLoggingOut_ThenRequestingPrivateMessages.swift; sourceTree = "<group>"; };
 		CA8E17EC1F817A70003C348C /* PreloadInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadInteractor.swift; sourceTree = "<group>"; };
 		CA8E17EE1F817A8C003C348C /* CapturingPreloadInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingPreloadInteractor.swift; sourceTree = "<group>"; };
 		CA8E17F01F817AA2003C348C /* CapturingPreloadModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingPreloadModuleDelegate.swift; sourceTree = "<group>"; };
@@ -5537,6 +5539,7 @@
 				CA81D4931FEA92EA00A52A2F /* WhenRequestingPrivateMessagesWhileNotAuthenticated.swift */,
 				CA4679AB221B504D006B3090 /* MessageAssertion.swift */,
 				CA8DA4622241736F00B1E5D1 /* WhenLoggingOut_PrivateMessagesShould.swift */,
+				CA8DA4642241764600B1E5D1 /* WhenLoggingOut_ThenRequestingPrivateMessages.swift */,
 			);
 			path = "Private Messages";
 			sourceTree = "<group>";
@@ -8835,6 +8838,7 @@
 				CA8DA4612241166E00B1E5D1 /* WhenPerformingSubsequentRefresh_WhereConventionIdentifierMismatchDetected.swift in Sources */,
 				CA223D9D2240ECB900883FEA /* MapCharacteristics+RandomValueProviding.swift in Sources */,
 				CAEA102E216E1CE800B0C7A6 /* CapturingLogoutObserver.swift in Sources */,
+				CA8DA4652241764600B1E5D1 /* WhenLoggingOut_ThenRequestingPrivateMessages.swift in Sources */,
 				CA240F5F21E4AA1C002DB747 /* WhenLoggingOut_WithoutRegisteredDeviceToken.swift in Sources */,
 				CA223D8F2240EC0000883FEA /* LinkCharacteristics+RandomValueProviding.swift in Sources */,
 				CAEA0FE9216E1CE700B0C7A6 /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift in Sources */,
