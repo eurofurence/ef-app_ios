@@ -11,13 +11,13 @@ import XCTest
 
 class WhenPerformingSyncThatFails: XCTestCase {
 
-    func testTheCompletionHandlerIsInvokedWithAnError() {
+    func testTheCompletionHandlerIsInvokedWithNetworkError() {
         let context = EurofurenceSessionTestBuilder().build()
-        var error: Error?
+        var error: RefreshServiceError?
         context.refreshLocalStore { error = $0 }
         context.api.simulateUnsuccessfulSync()
 
-        XCTAssertNotNil(error)
+        XCTAssertEqual(RefreshServiceError.apiError, error)
     }
 
     func testTheLongRunningTaskManagerIsToldToEndTaskBeganAtStartOfSync() {

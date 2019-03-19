@@ -53,7 +53,7 @@ class ConcreteRefreshService: RefreshService {
     }
 
     @discardableResult
-    func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress {
+    func refreshLocalStore(completionHandler: @escaping (RefreshServiceError?) -> Void) -> Progress {
         let lastRefreshDate: Date? = {
             if forceRefreshRequired.isForceRefreshRequired {
                 return nil
@@ -64,12 +64,8 @@ class ConcreteRefreshService: RefreshService {
         
         return performSync(lastSyncTime: lastRefreshDate, completionHandler: completionHandler)
     }
-    
-    private enum SyncError: Error {
-        case failedToLoadResponse
-    }
 
-    private func performSync(lastSyncTime: Date?, completionHandler: @escaping (Error?) -> Void) -> Progress {
+    private func performSync(lastSyncTime: Date?, completionHandler: @escaping (RefreshServiceError?) -> Void) -> Progress {
         notifyRefreshStarted()
         startLongRunningTask()
 
@@ -81,7 +77,7 @@ class ConcreteRefreshService: RefreshService {
             guard let response = response else {
                 self.finishLongRunningTask()
                 self.notifyRefreshFinished()
-                completionHandler(SyncError.failedToLoadResponse)
+                completionHandler(RefreshServiceError.apiError)
                 return
             }
             

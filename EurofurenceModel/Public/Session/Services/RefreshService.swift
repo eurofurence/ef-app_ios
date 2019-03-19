@@ -8,12 +8,16 @@
 
 import Foundation
 
+public enum RefreshServiceError: Error {
+    case apiError
+}
+
 public protocol RefreshService {
 
     func add(_ observer: RefreshServiceObserver)
 
     @discardableResult
-    func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress
+    func refreshLocalStore(completionHandler: @escaping (RefreshServiceError?) -> Void) -> Progress
 
 }
 

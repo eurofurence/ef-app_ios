@@ -111,7 +111,7 @@ class EurofurenceSessionTestBuilder {
         }
 
         @discardableResult
-        func refreshLocalStore(completionHandler: ((Error?) -> Void)? = nil) -> Progress {
+        func refreshLocalStore(completionHandler: ((RefreshServiceError?) -> Void)? = nil) -> Progress {
             return session.services.refresh.refreshLocalStore { (error) in
                 completionHandler?(error)
             }

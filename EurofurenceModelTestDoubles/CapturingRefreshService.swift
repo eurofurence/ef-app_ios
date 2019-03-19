@@ -15,10 +15,10 @@ public class CapturingRefreshService: RefreshService {
 
     }
 
-    private var refreshCompletionHandler: ((Error?) -> Void)?
+    private var refreshCompletionHandler: ((RefreshServiceError?) -> Void)?
     private(set) public var toldToRefresh = false
     fileprivate var refreshProgress: Progress?
-    public func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress {
+    public func refreshLocalStore(completionHandler: @escaping (RefreshServiceError?) -> Void) -> Progress {
         toldToRefresh = true
         refreshCompletionHandler = completionHandler
         refreshProgress = Progress()
@@ -31,9 +31,8 @@ public class CapturingRefreshService: RefreshService {
         refreshObservers.append(observer)
     }
 
-    struct SomeError: Error {}
-    public func failLastRefresh() {
-        refreshCompletionHandler?(SomeError())
+    public func failLastRefresh(error: RefreshServiceError = .apiError) {
+        refreshCompletionHandler?(error)
     }
 
     public func succeedLastRefresh() {
