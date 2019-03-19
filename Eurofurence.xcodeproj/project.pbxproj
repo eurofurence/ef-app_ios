@@ -140,7 +140,7 @@
 		CA0B1EE8217F415500A6A949 /* URLSessionBasedJSONSessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE77D61F1B9FA500E9A0BE /* URLSessionBasedJSONSessionTests.swift */; };
 		CA0B1EE9217F415900A6A949 /* JournallingURLRequestLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA1090216E823100B0C7A6 /* JournallingURLRequestLogger.swift */; };
 		CA0B1EEA217F415900A6A949 /* TestURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA1092216E824C00B0C7A6 /* TestURLProtocol.swift */; };
-		CA0B1EEB217F418B00A6A949 /* APISyncResponse+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF5979C20449A5300089BE8 /* APISyncResponse+RandomValueProviding.swift */; };
+		CA0B1EEB217F418B00A6A949 /* ModelCharacteristics+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF5979C20449A5300089BE8 /* ModelCharacteristics+RandomValueProviding.swift */; };
 		CA0B1EEF21888A0000A6A949 /* WhenAlreadyLoggedIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0B1EEE21888A0000A6A949 /* WhenAlreadyLoggedIn.swift */; };
 		CA0E5205208E6FE4005259FE /* StoryboardDealersSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5204208E6FE4005259FE /* StoryboardDealersSceneFactory.swift */; };
 		CA0E5207208E700E005259FE /* DealersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5206208E700E005259FE /* DealersViewController.swift */; };
@@ -226,6 +226,17 @@
 		CA1FE99E1FA0B41E009C7DF3 /* NavigationControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1FE99D1FA0B41E009C7DF3 /* NavigationControllerFactory.swift */; };
 		CA223D87223FE70A00883FEA /* Identifyable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA223D86223FE70A00883FEA /* Identifyable.swift */; };
 		CA223D8922403D7F00883FEA /* String+Base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA223D8822403D7F00883FEA /* String+Base64.swift */; };
+		CA223D8B2240EBD100883FEA /* KnowledgeGroupCharacteristics+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA223D8A2240EBD100883FEA /* KnowledgeGroupCharacteristics+RandomValueProviding.swift */; };
+		CA223D8D2240EBE900883FEA /* KnowledgeEntryCharacteristics+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA223D8C2240EBE900883FEA /* KnowledgeEntryCharacteristics+RandomValueProviding.swift */; };
+		CA223D8F2240EC0000883FEA /* LinkCharacteristics+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA223D8E2240EC0000883FEA /* LinkCharacteristics+RandomValueProviding.swift */; };
+		CA223D912240EC1300883FEA /* AnnouncementCharacteristics+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA223D902240EC1300883FEA /* AnnouncementCharacteristics+RandomValueProviding.swift */; };
+		CA223D932240EC4100883FEA /* RoomCharacteristics+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA223D922240EC4100883FEA /* RoomCharacteristics+RandomValueProviding.swift */; };
+		CA223D952240EC6200883FEA /* TrackCharacteristics+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA223D942240EC6200883FEA /* TrackCharacteristics+RandomValueProviding.swift */; };
+		CA223D972240EC7500883FEA /* EventCharacteristics+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA223D962240EC7500883FEA /* EventCharacteristics+RandomValueProviding.swift */; };
+		CA223D992240EC8A00883FEA /* ConferenceDayCharacteristics+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA223D982240EC8A00883FEA /* ConferenceDayCharacteristics+RandomValueProviding.swift */; };
+		CA223D9B2240ECA000883FEA /* DealerCharacteristics+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA223D9A2240ECA000883FEA /* DealerCharacteristics+RandomValueProviding.swift */; };
+		CA223D9D2240ECB900883FEA /* MapCharacteristics+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA223D9C2240ECB900883FEA /* MapCharacteristics+RandomValueProviding.swift */; };
+		CA223D9F2240ECCE00883FEA /* ImageCharacteristics+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA223D9E2240ECCE00883FEA /* ImageCharacteristics+RandomValueProviding.swift */; };
 		CA235866221B57620044B1FC /* StubMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA235865221B57620044B1FC /* StubMessage.swift */; };
 		CA235868221B591D0044B1FC /* MessageImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA235867221B591D0044B1FC /* MessageImpl.swift */; };
 		CA23586A221C15F40044B1FC /* FavouriteEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA235869221C15F40044B1FC /* FavouriteEvent.swift */; };
@@ -1088,7 +1099,7 @@
 		CAEA0F8B216E1AE200B0C7A6 /* AlphabetisedDealersGroup+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A49A20D9779C00EE6537 /* AlphabetisedDealersGroup+RandomValueProviding.swift */; };
 		CAEA0F8C216E1AE200B0C7A6 /* ExtendedDealerData+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF81C7820DDAEAA00898C52 /* ExtendedDealerData+RandomValueProviding.swift */; };
 		CAEA0F8D216E1AE200B0C7A6 /* StubMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DA820E2CE2C007536CD /* StubMap.swift */; };
-		CAEA0F8F216E1C2D00B0C7A6 /* APISyncResponse+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF5979C20449A5300089BE8 /* APISyncResponse+RandomValueProviding.swift */; };
+		CAEA0F8F216E1C2D00B0C7A6 /* ModelCharacteristics+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF5979C20449A5300089BE8 /* ModelCharacteristics+RandomValueProviding.swift */; };
 		CAEA0F90216E1C4C00B0C7A6 /* EurofurenceSessionTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA51F1EA1B300F007E1 /* EurofurenceSessionTestBuilder.swift */; };
 		CAEA0F92216E1C4C00B0C7A6 /* WhenResolvingDataStoreState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D07F81FE9021A00BFD785 /* WhenResolvingDataStoreState.swift */; };
 		CAEA0F9C216E1CC000B0C7A6 /* WhenAddingAnnouncementsObserver_ThenRefreshSucceeds_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1F7D6020CB82F600FB87F5 /* WhenAddingAnnouncementsObserver_ThenRefreshSucceeds_ApplicationShould.swift */; };
@@ -1735,6 +1746,17 @@
 		CA1FE99D1FA0B41E009C7DF3 /* NavigationControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NavigationControllerFactory.swift; path = ../Director/NavigationControllerFactory.swift; sourceTree = "<group>"; };
 		CA223D86223FE70A00883FEA /* Identifyable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifyable.swift; sourceTree = "<group>"; };
 		CA223D8822403D7F00883FEA /* String+Base64.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Base64.swift"; sourceTree = "<group>"; };
+		CA223D8A2240EBD100883FEA /* KnowledgeGroupCharacteristics+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KnowledgeGroupCharacteristics+RandomValueProviding.swift"; sourceTree = "<group>"; };
+		CA223D8C2240EBE900883FEA /* KnowledgeEntryCharacteristics+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KnowledgeEntryCharacteristics+RandomValueProviding.swift"; sourceTree = "<group>"; };
+		CA223D8E2240EC0000883FEA /* LinkCharacteristics+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LinkCharacteristics+RandomValueProviding.swift"; sourceTree = "<group>"; };
+		CA223D902240EC1300883FEA /* AnnouncementCharacteristics+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnnouncementCharacteristics+RandomValueProviding.swift"; sourceTree = "<group>"; };
+		CA223D922240EC4100883FEA /* RoomCharacteristics+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RoomCharacteristics+RandomValueProviding.swift"; sourceTree = "<group>"; };
+		CA223D942240EC6200883FEA /* TrackCharacteristics+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrackCharacteristics+RandomValueProviding.swift"; sourceTree = "<group>"; };
+		CA223D962240EC7500883FEA /* EventCharacteristics+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventCharacteristics+RandomValueProviding.swift"; sourceTree = "<group>"; };
+		CA223D982240EC8A00883FEA /* ConferenceDayCharacteristics+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConferenceDayCharacteristics+RandomValueProviding.swift"; sourceTree = "<group>"; };
+		CA223D9A2240ECA000883FEA /* DealerCharacteristics+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DealerCharacteristics+RandomValueProviding.swift"; sourceTree = "<group>"; };
+		CA223D9C2240ECB900883FEA /* MapCharacteristics+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapCharacteristics+RandomValueProviding.swift"; sourceTree = "<group>"; };
+		CA223D9E2240ECCE00883FEA /* ImageCharacteristics+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageCharacteristics+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA235865221B57620044B1FC /* StubMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubMessage.swift; sourceTree = "<group>"; };
 		CA235867221B591D0044B1FC /* MessageImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageImpl.swift; sourceTree = "<group>"; };
 		CA235869221C15F40044B1FC /* FavouriteEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteEvent.swift; sourceTree = "<group>"; };
@@ -2723,7 +2745,7 @@
 		CAF5979520449A0400089BE8 /* ModelCharacteristics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCharacteristics.swift; sourceTree = "<group>"; };
 		CAF5979720449A1100089BE8 /* KnowledgeGroupCharacteristics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeGroupCharacteristics.swift; sourceTree = "<group>"; };
 		CAF5979920449A1D00089BE8 /* KnowledgeEntryCharacteristics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeEntryCharacteristics.swift; sourceTree = "<group>"; };
-		CAF5979C20449A5300089BE8 /* APISyncResponse+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APISyncResponse+RandomValueProviding.swift"; sourceTree = "<group>"; };
+		CAF5979C20449A5300089BE8 /* ModelCharacteristics+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ModelCharacteristics+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CAF5979E2045886A00089BE8 /* WhenFetchingKnowledgeGroupsBeforeRefreshWhenStoreHasGroups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingKnowledgeGroupsBeforeRefreshWhenStoreHasGroups.swift; sourceTree = "<group>"; };
 		CAF597A120458D1000089BE8 /* WhenPerformingSyncThatSucceeds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPerformingSyncThatSucceeds.swift; sourceTree = "<group>"; };
 		CAF597A32045EF5A00089BE8 /* SyncAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncAPITests.swift; sourceTree = "<group>"; };
@@ -6471,7 +6493,18 @@
 		CAEA1081216E80DF00B0C7A6 /* Random Value Generation */ = {
 			isa = PBXGroup;
 			children = (
-				CAF5979C20449A5300089BE8 /* APISyncResponse+RandomValueProviding.swift */,
+				CA223D902240EC1300883FEA /* AnnouncementCharacteristics+RandomValueProviding.swift */,
+				CA223D982240EC8A00883FEA /* ConferenceDayCharacteristics+RandomValueProviding.swift */,
+				CA223D9A2240ECA000883FEA /* DealerCharacteristics+RandomValueProviding.swift */,
+				CA223D962240EC7500883FEA /* EventCharacteristics+RandomValueProviding.swift */,
+				CA223D9E2240ECCE00883FEA /* ImageCharacteristics+RandomValueProviding.swift */,
+				CA223D8C2240EBE900883FEA /* KnowledgeEntryCharacteristics+RandomValueProviding.swift */,
+				CA223D8A2240EBD100883FEA /* KnowledgeGroupCharacteristics+RandomValueProviding.swift */,
+				CA223D8E2240EC0000883FEA /* LinkCharacteristics+RandomValueProviding.swift */,
+				CA223D9C2240ECB900883FEA /* MapCharacteristics+RandomValueProviding.swift */,
+				CAF5979C20449A5300089BE8 /* ModelCharacteristics+RandomValueProviding.swift */,
+				CA223D922240EC4100883FEA /* RoomCharacteristics+RandomValueProviding.swift */,
+				CA223D942240EC6200883FEA /* TrackCharacteristics+RandomValueProviding.swift */,
 			);
 			path = "Random Value Generation";
 			sourceTree = "<group>";
@@ -8452,7 +8485,7 @@
 				CA0B1EE9217F415900A6A949 /* JournallingURLRequestLogger.swift in Sources */,
 				CA7D8B2F222EC835003431A0 /* CoreDataStoreShould.swift in Sources */,
 				CA0B1EE6217F414B00A6A949 /* PersistentImageRepositoryTests.swift in Sources */,
-				CA0B1EEB217F418B00A6A949 /* APISyncResponse+RandomValueProviding.swift in Sources */,
+				CA0B1EEB217F418B00A6A949 /* ModelCharacteristics+RandomValueProviding.swift in Sources */,
 				CA0B1EE8217F415500A6A949 /* URLSessionBasedJSONSessionTests.swift in Sources */,
 				CA7D8B33222F1A04003431A0 /* DataStoreContract.swift in Sources */,
 				CA0B1EEA217F415900A6A949 /* TestURLProtocol.swift in Sources */,
@@ -8670,6 +8703,7 @@
 				CAD6FD4A2216181D0011712D /* KnowledgeGroupAssertion.swift in Sources */,
 				CA4679AD221B5089006B3090 /* MessageAssertion.swift in Sources */,
 				CAEA0FEE216E1CE700B0C7A6 /* WhenFetchingImagesForKnowledgeEntry_WhenEntryHasImages_ApplicationShould.swift in Sources */,
+				CA223D932240EC4100883FEA /* RoomCharacteristics+RandomValueProviding.swift in Sources */,
 				CAEA10A6216E8BB600B0C7A6 /* CapturingForceRefreshRequired.swift in Sources */,
 				CAEA0FCC216E1CC000B0C7A6 /* WhenDeletingKnowledgeGroup_AfterSuccessfulSync_ApplicationShould.swift in Sources */,
 				CAEA1003216E1CE700B0C7A6 /* WhenToldToOpenNotification_ThatRepresentsAnnouncement_ApplicationShould.swift in Sources */,
@@ -8677,7 +8711,9 @@
 				CA0B1EEF21888A0000A6A949 /* WhenAlreadyLoggedIn.swift in Sources */,
 				CAEA100B216E1CE800B0C7A6 /* WhenRequestingPrivateMessagesWhileAuthenticated.swift in Sources */,
 				CAEA0FD6216E1CC000B0C7A6 /* WhenSyncFinishesForEventWithPoster_WhenImageAPIIsSlow_ApplicationShould.swift in Sources */,
+				CA223D8D2240EBE900883FEA /* KnowledgeEntryCharacteristics+RandomValueProviding.swift in Sources */,
 				CAD6FD442215BD670011712D /* DealerAssertion.swift in Sources */,
+				CA223D8B2240EBD100883FEA /* KnowledgeGroupCharacteristics+RandomValueProviding.swift in Sources */,
 				CAEA0F9C216E1CC000B0C7A6 /* WhenAddingAnnouncementsObserver_ThenRefreshSucceeds_ApplicationShould.swift in Sources */,
 				CAEA0FE7216E1CE700B0C7A6 /* WhenObservingUpcomingEvents_ThenLoadSucceeds.swift in Sources */,
 				CAEA1002216E1CE700B0C7A6 /* WhenFetchingMapContents_ThatRevealsMapEntry_ApplicationShould.swift in Sources */,
@@ -8698,6 +8734,7 @@
 				CAEA102D216E1CE800B0C7A6 /* CapturingLoginObserver.swift in Sources */,
 				CAEA1018216E1CE800B0C7A6 /* WhenPerformingSubsequentSync_ApplicationShould.swift in Sources */,
 				CAEA0FF1216E1CE700B0C7A6 /* WhenFetchingKnowledgeGroup_ApplicationShould.swift in Sources */,
+				CA223D972240EC7500883FEA /* EventCharacteristics+RandomValueProviding.swift in Sources */,
 				CAEA0FF5216E1CE700B0C7A6 /* WhenLookingUpWebLinks.swift in Sources */,
 				CAEA1004216E1CE700B0C7A6 /* WhenToldToOpenNotification_ThatRepresentsAnnouncement_ThatHasBeenDeleted_ApplicationShould.swift in Sources */,
 				CAEA103B216E1CE800B0C7A6 /* WhenUpgradingBetweenAppVersions_ApplicationShould.swift in Sources */,
@@ -8706,6 +8743,7 @@
 				CAEA0FC9216E1CC000B0C7A6 /* WhenDeletingDealer_AfterSuccessfulSync_ApplicationShould.swift in Sources */,
 				CAEA0FEF216E1CE700B0C7A6 /* WhenFetchingImagesForKnowledgeEntry_WhenEntryHasNoImages_ApplicationShould.swift in Sources */,
 				CAEA0FE1216E1CE700B0C7A6 /* InOrderToSupportEssentialSubtitleTag_ApplicationShould.swift in Sources */,
+				CA223D992240EC8A00883FEA /* ConferenceDayCharacteristics+RandomValueProviding.swift in Sources */,
 				CAD6FD462215F6D70011712D /* AlphabetisedDealersGroupAssertion.swift in Sources */,
 				CAEA1034216E1CE800B0C7A6 /* StubConventionStartDateRepository.swift in Sources */,
 				CAEA0FAF216E1CC000B0C7A6 /* WhenAdaptingDealersFromResponse_ApplicationShould.swift in Sources */,
@@ -8776,8 +8814,11 @@
 				CAEA0FE6216E1CE700B0C7A6 /* InOrderToSupportSuperSponsorTag_ApplicationShould.swift in Sources */,
 				CAEA0FBE216E1CC000B0C7A6 /* WhenPreparingDealerMapGraphic_ApplicationShould.swift in Sources */,
 				CAEA0FDF216E1CE700B0C7A6 /* InOrderToSupportArtShowTag_ApplicationShould.swift in Sources */,
+				CA223D912240EC1300883FEA /* AnnouncementCharacteristics+RandomValueProviding.swift in Sources */,
+				CA223D9D2240ECB900883FEA /* MapCharacteristics+RandomValueProviding.swift in Sources */,
 				CAEA102E216E1CE800B0C7A6 /* CapturingLogoutObserver.swift in Sources */,
 				CA240F5F21E4AA1C002DB747 /* WhenLoggingOut_WithoutRegisteredDeviceToken.swift in Sources */,
+				CA223D8F2240EC0000883FEA /* LinkCharacteristics+RandomValueProviding.swift in Sources */,
 				CAEA0FE9216E1CE700B0C7A6 /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift in Sources */,
 				CAEA1039216E1CE800B0C7A6 /* CapturingRemoteNotificationsTokenRegistration.swift in Sources */,
 				CAEA1024216E1CE800B0C7A6 /* CapturingCollectThemAllURLObserver.swift in Sources */,
@@ -8790,6 +8831,7 @@
 				CAEA0FD1216E1CC000B0C7A6 /* WhenResolvingEventByIdentifier_ForEventThatDoesNotExist_ApplicationShould.swift in Sources */,
 				CAEA0FB2216E1CC000B0C7A6 /* WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould.swift in Sources */,
 				CAEA0FF8216E1CE700B0C7A6 /* WhenDataStoreAlreadyContainsMaps_ApplicationShould.swift in Sources */,
+				CA223D952240EC6200883FEA /* TrackCharacteristics+RandomValueProviding.swift in Sources */,
 				CAEA0FFE216E1CE700B0C7A6 /* WhenFetchingMapContentThatRevealsRoom_ApplicationShould.swift in Sources */,
 				CAEA1023216E1CE800B0C7A6 /* CapturingAuthenticationStateObserver.swift in Sources */,
 				CAEA0F90216E1C4C00B0C7A6 /* EurofurenceSessionTestBuilder.swift in Sources */,
@@ -8802,10 +8844,12 @@
 				CAEA102C216E1CE800B0C7A6 /* CapturingKnowledgeServiceObserver.swift in Sources */,
 				CAEA102B216E1CE800B0C7A6 /* CapturingEventsServiceObserver.swift in Sources */,
 				CAEA0FCB216E1CC000B0C7A6 /* WhenDeletingKnowledgeEntry_AfterSuccessfulSync_ApplicationShould.swift in Sources */,
+				CA223D9F2240ECCE00883FEA /* ImageCharacteristics+RandomValueProviding.swift in Sources */,
 				CA5335E7223A95F000115262 /* CIDAPIURLProvidingTests.swift in Sources */,
 				CAEA0FF2216E1CE700B0C7A6 /* WhenFetchingKnowledgeGroupsAfterSuccessfulRefresh.swift in Sources */,
 				CAEA0F9F216E1CC000B0C7A6 /* WhenApplicationInitialises_WithAnnouncementsSavedToStore.swift in Sources */,
 				CAEA0F6D216D2BFB00B0C7A6 /* LoginAPITests.swift in Sources */,
+				CA223D9B2240ECA000883FEA /* DealerCharacteristics+RandomValueProviding.swift in Sources */,
 				CAEA0FA7216E1CC000B0C7A6 /* WhenObservingCollectThemAllURLWhileLoggedOut_ApplicationShould.swift in Sources */,
 				CAEA102A216E1CE800B0C7A6 /* CapturingEventsSearchControllerDelegate.swift in Sources */,
 				CAD6FD4E2216F40B0011712D /* KnowledgeEntryAssertion.swift in Sources */,
@@ -8837,7 +8881,7 @@
 				CAEA0FC6216E1CC000B0C7A6 /* KnowledgeGroupsRemoveAllBeforeInsertTests.swift in Sources */,
 				CAEA0FD9216E1CC000B0C7A6 /* WhenLaunchingApplicationWithPreexistingFavourites.swift in Sources */,
 				CAEA0FD7216E1CC000B0C7A6 /* WhenFavouritingEvent_ApplicationShould.swift in Sources */,
-				CAEA0F8F216E1C2D00B0C7A6 /* APISyncResponse+RandomValueProviding.swift in Sources */,
+				CAEA0F8F216E1C2D00B0C7A6 /* ModelCharacteristics+RandomValueProviding.swift in Sources */,
 				CAEA0F70216D2C0900B0C7A6 /* SyncAPITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
