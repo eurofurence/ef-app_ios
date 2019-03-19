@@ -18,7 +18,7 @@ class WhenThePerformInitialDownloadPageAppearsWithCellularNetwork: XCTestCase {
         super.setUp()
 
         context = TutorialModuleTestBuilder()
-            .with(UnreachableWiFiNetwork())
+            .with(CellularNetwork())
             .with(UserAcknowledgedPushPermissions())
             .build()
     }

@@ -8,7 +8,7 @@
 
 import Eurofurence
 
-struct ReachableWiFiNetwork: NetworkReachability {
+struct WiFiNetwork: NetworkReachability {
 
     var wifiReachable: Bool {
         return true
@@ -16,7 +16,7 @@ struct ReachableWiFiNetwork: NetworkReachability {
 
 }
 
-struct UnreachableWiFiNetwork: NetworkReachability {
+struct CellularNetwork: NetworkReachability {
 
     var wifiReachable: Bool {
         return false

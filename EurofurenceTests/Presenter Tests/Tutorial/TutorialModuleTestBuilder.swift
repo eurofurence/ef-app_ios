@@ -31,7 +31,7 @@ class TutorialModuleTestBuilder {
     let presentationAssets = StubPresentationAssets()
     let tutorialSceneFactory = StubTutorialSceneFactory()
     let delegate = CapturingTutorialModuleDelegate()
-    var networkReachability: NetworkReachability = ReachableWiFiNetwork()
+    var networkReachability: NetworkReachability = WiFiNetwork()
     var pushPermissionsRequestStateProviding: WitnessedTutorialPushPermissionsRequest = UserNotAcknowledgedPushPermissions()
 
     @discardableResult
