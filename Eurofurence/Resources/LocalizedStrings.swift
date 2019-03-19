@@ -53,6 +53,12 @@ public extension String {
 
     public static let cellularDownloadAlertContinueOverCellularTitle = NSLocalizedString("cellularDownloadAlertContinueOverCellularTitle",
                                                                                          comment: "Confirmation action allowing the initial download to begin over cellular")
+    
+    public static let noNetworkAlertTitle = NSLocalizedString("noNetworkAlertTitle",
+                                                              comment: "Title for the alert when the initial sync fails due to no network")
+    
+    public static let noNetworkAlertMessage = NSLocalizedString("noNetworkAlertMessage",
+                                                                comment: "Alert body when the initial sync fails due to no network")
 
     public static let downloadError = NSLocalizedString("downloadError",
                                                         comment: "Title for the alert when the download fails")

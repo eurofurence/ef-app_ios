@@ -37,15 +37,24 @@ struct InitiateDownloadTutorialPagePresenter: TutorialPage,
     func tutorialPageSceneDidTapPrimaryActionButton(_ tutorialPageScene: TutorialPageScene) {
         if networkReachability.wifiReachable {
             delegate.tutorialPageCompletedByUser(self)
-        } else {
+        } else if networkReachability.cellularReachable {
             let allowDownloadOverCellular = AlertAction(title: .cellularDownloadAlertContinueOverCellularTitle, action: {
                 self.delegate.tutorialPageCompletedByUser(self)
             })
+            
             let cancel = AlertAction(title: .cancel)
 
             let alert = Alert(title: .cellularDownloadAlertTitle,
                               message: .cellularDownloadAlertMessage,
                               actions: [allowDownloadOverCellular, cancel])
+            
+            alertRouter.show(alert)
+        } else {
+            let ok = AlertAction(title: .ok)
+            let alert = Alert(title: .noNetworkAlertTitle,
+                              message: .noNetworkAlertMessage,
+                              actions: [ok])
+            
             alertRouter.show(alert)
         }
     }

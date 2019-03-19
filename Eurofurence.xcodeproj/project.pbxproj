@@ -848,6 +848,7 @@
 		CACD2EB221D67F0F00BACD91 /* PreprocessorBuildConfigurationProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD2EAC21D67E7F00BACD91 /* PreprocessorBuildConfigurationProviding.swift */; };
 		CACD2F0721DEB9DE00BACD91 /* SessionStateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD2F0621DEB9DE00BACD91 /* SessionStateService.swift */; };
 		CACD2F0D21DF832000BACD91 /* NotificationServiceFetchResultAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD2F0C21DF832000BACD91 /* NotificationServiceFetchResultAdapter.swift */; };
+		CACEA06A2241862400DFF26C /* WhenThePerformInitialDownloadPageAppearsWithNoNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACEA0692241862400DFF26C /* WhenThePerformInitialDownloadPageAppearsWithNoNetwork.swift */; };
 		CACF1E4620AE292D00D904B5 /* WhenNewsModuleSelectsEvent_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E4520AE292D00D904B5 /* WhenNewsModuleSelectsEvent_DirectorShould.swift */; };
 		CACF1E4820AE29CB00D904B5 /* StubEventDetailModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E4720AE29CB00D904B5 /* StubEventDetailModuleFactory.swift */; };
 		CACF1E4C20AE2A5A00D904B5 /* EventDetailModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E4B20AE2A5A00D904B5 /* EventDetailModuleProviding.swift */; };
@@ -2569,6 +2570,7 @@
 		CACD2F0621DEB9DE00BACD91 /* SessionStateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStateService.swift; sourceTree = "<group>"; };
 		CACD2F0C21DF832000BACD91 /* NotificationServiceFetchResultAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationServiceFetchResultAdapter.swift; sourceTree = "<group>"; };
 		CACE1B061F2BBEC900DFCB60 /* CapturingLogoutObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingLogoutObserver.swift; sourceTree = "<group>"; };
+		CACEA0692241862400DFF26C /* WhenThePerformInitialDownloadPageAppearsWithNoNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenThePerformInitialDownloadPageAppearsWithNoNetwork.swift; sourceTree = "<group>"; };
 		CACF1E4520AE292D00D904B5 /* WhenNewsModuleSelectsEvent_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenNewsModuleSelectsEvent_DirectorShould.swift; sourceTree = "<group>"; };
 		CACF1E4720AE29CB00D904B5 /* StubEventDetailModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubEventDetailModuleFactory.swift; sourceTree = "<group>"; };
 		CACF1E4B20AE2A5A00D904B5 /* EventDetailModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailModuleProviding.swift; sourceTree = "<group>"; };
@@ -4178,6 +4180,7 @@
 				CA81D48F1FE9A91000A52A2F /* WhenTheTutorialAppears.swift */,
 				CA2D08111FE9540F00BFD785 /* WhenThePerformInitialDownloadPageAppears.swift */,
 				CA2D08131FE9549600BFD785 /* WhenThePerformInitialDownloadPageAppearsWithCellularNetwork.swift */,
+				CACEA0692241862400DFF26C /* WhenThePerformInitialDownloadPageAppearsWithNoNetwork.swift */,
 			);
 			path = Tutorial;
 			sourceTree = "<group>";
@@ -8169,6 +8172,7 @@
 				CA401066210FA8830056E16C /* WhenKnowledgeGroupEntriesSceneLoads.swift in Sources */,
 				CA6A8D9E20E2CA58007536CD /* WhenSelectingMap_MapsPresenterShould.swift in Sources */,
 				CA36A4CC20DA7C9000EE6537 /* WhenBindingDealerSearchResultGroupHeading_DealersPresenterShould.swift in Sources */,
+				CACEA06A2241862400DFF26C /* WhenThePerformInitialDownloadPageAppearsWithNoNetwork.swift in Sources */,
 				CA17FE8E205867EB005A4C05 /* DefaultKnowledgeDetailSceneInteractorTests.swift in Sources */,
 				CA283ACC20EAB9F400F7D195 /* CapturingAnnouncementComponent.swift in Sources */,
 				CAF81C6620DD9FB400898C52 /* WhenBindingAboutTheArtComponent_DealerDetailPresenterShould.swift in Sources */,

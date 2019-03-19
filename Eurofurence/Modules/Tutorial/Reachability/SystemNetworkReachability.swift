@@ -18,6 +18,10 @@ public struct SystemConfigurationNetworkReachability: NetworkReachability {
         return isWifiReachable(with: resolveCurrentReachabilityFlags())
     }
     
+    public var cellularReachable: Bool {
+        return true
+    }
+    
     private func resolveCurrentReachabilityFlags() -> SCNetworkReachabilityFlags {
         var zeroAddress = sockaddr()
         zeroAddress.sa_len = UInt8(MemoryLayout<sockaddr>.size)
