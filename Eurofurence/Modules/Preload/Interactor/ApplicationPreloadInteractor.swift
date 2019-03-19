@@ -22,7 +22,7 @@ class ApplicationPreloadInteractor: PreloadInteractor {
     }
 
     func beginPreloading(delegate: PreloadInteractorDelegate) {
-        let progress = app.performFullStoreRefresh { (error) in
+        let progress = app.refreshLocalStore { (error) in
             if error == nil {
                 delegate.preloadInteractorDidFinishPreloading()
             } else {

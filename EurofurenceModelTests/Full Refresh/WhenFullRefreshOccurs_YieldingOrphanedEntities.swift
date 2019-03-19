@@ -7,6 +7,7 @@
 //
 
 import EurofurenceModel
+import EurofurenceModelTestDoubles
 import XCTest
 
 class WhenFullRefreshOccurs_YieldingOrphanedEntities: XCTestCase {
@@ -18,11 +19,15 @@ class WhenFullRefreshOccurs_YieldingOrphanedEntities: XCTestCase {
     override func setUp() {
         super.setUp()
 
-        context = EurofurenceSessionTestBuilder().build()
+        let store = FakeDataStore()
+        let forceRefreshRequired = StubForceRefreshRequired(isForceRefreshRequired: true)
+        
+        context = EurofurenceSessionTestBuilder().with(store).build()
         originalResponse = .randomWithoutDeletions
         fullSyncResponse = .randomWithoutDeletions
         context.performSuccessfulSync(response: originalResponse)
-        _ = context.refreshService.performFullStoreRefresh { (_) in }
+        context = EurofurenceSessionTestBuilder().with(store).with(forceRefreshRequired).build()
+        _ = context.refreshService.refreshLocalStore { (_) in }
         context.api.simulateSuccessfulSync(fullSyncResponse)
     }
 

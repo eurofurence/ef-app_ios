@@ -14,11 +14,13 @@ class WhenPerformingFullStoreRefresh_ApplicationShould: XCTestCase {
 
     func testRequestSyncWithoutDeltas() {
         let dataStore = FakeDataStore(response: .randomWithoutDeletions)
-        let context = EurofurenceSessionTestBuilder().with(dataStore).build()
+        let fullStoreRefreshRequired = StubForceRefreshRequired(isForceRefreshRequired: true)
+        var context = EurofurenceSessionTestBuilder().with(dataStore).build()
         context.performSuccessfulSync(response: .randomWithoutDeletions)
-        _ = context.refreshService.performFullStoreRefresh { (_) in }
+        context = EurofurenceSessionTestBuilder().with(dataStore).with(fullStoreRefreshRequired).build()
+        _ = context.refreshService.refreshLocalStore { (_) in }
 
-        XCTAssertNil(context.api.capturedLastSyncTime)
+        XCTAssertTrue(context.api.requestedFullStoreRefresh)
     }
 
 }
