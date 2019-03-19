@@ -1,5 +1,5 @@
 //
-//  WhenThePerformInitialDownloadPageAppearsWithUnreachableNetwork.swift
+//  WhenThePerformInitialDownloadPageAppearsWithCellularNetwork.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 19/12/2017.
@@ -10,7 +10,7 @@
 import EurofurenceModel
 import XCTest
 
-class WhenThePerformInitialDownloadPageAppearsWithUnreachableNetwork: XCTestCase {
+class WhenThePerformInitialDownloadPageAppearsWithCellularNetwork: XCTestCase {
 
     var context: TutorialModuleTestBuilder.Context!
 

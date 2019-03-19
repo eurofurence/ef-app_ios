@@ -380,7 +380,7 @@
 		CA2D08061FE94BF000BFD785 /* RootModuleTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D08051FE94BF000BFD785 /* RootModuleTestBuilder.swift */; };
 		CA2D080C1FE94F9900BFD785 /* TutorialModuleTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D080B1FE94F9900BFD785 /* TutorialModuleTestBuilder.swift */; };
 		CA2D08121FE9540F00BFD785 /* WhenThePerformInitialDownloadPageAppears.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D08111FE9540F00BFD785 /* WhenThePerformInitialDownloadPageAppears.swift */; };
-		CA2D08141FE9549600BFD785 /* WhenThePerformInitialDownloadPageAppearsWithUnreachableNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D08131FE9549600BFD785 /* WhenThePerformInitialDownloadPageAppearsWithUnreachableNetwork.swift */; };
+		CA2D08141FE9549600BFD785 /* WhenThePerformInitialDownloadPageAppearsWithCellularNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D08131FE9549600BFD785 /* WhenThePerformInitialDownloadPageAppearsWithCellularNetwork.swift */; };
 		CA30EAD01F27D8620053DBF6 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EACF1F27D8620053DBF6 /* MessageTableViewCell.swift */; };
 		CA321F4E1F7BC7FD0050E489 /* StoryboardPreloadSceneFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA321F4D1F7BC7FD0050E489 /* StoryboardPreloadSceneFactoryTests.swift */; };
 		CA321F511F7BC8550050E489 /* PreloadSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA321F501F7BC8550050E489 /* PreloadSceneFactory.swift */; };
@@ -1949,7 +1949,7 @@
 		CA2D08051FE94BF000BFD785 /* RootModuleTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootModuleTestBuilder.swift; sourceTree = "<group>"; };
 		CA2D080B1FE94F9900BFD785 /* TutorialModuleTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialModuleTestBuilder.swift; sourceTree = "<group>"; };
 		CA2D08111FE9540F00BFD785 /* WhenThePerformInitialDownloadPageAppears.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenThePerformInitialDownloadPageAppears.swift; sourceTree = "<group>"; };
-		CA2D08131FE9549600BFD785 /* WhenThePerformInitialDownloadPageAppearsWithUnreachableNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenThePerformInitialDownloadPageAppearsWithUnreachableNetwork.swift; sourceTree = "<group>"; };
+		CA2D08131FE9549600BFD785 /* WhenThePerformInitialDownloadPageAppearsWithCellularNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenThePerformInitialDownloadPageAppearsWithCellularNetwork.swift; sourceTree = "<group>"; };
 		CA30EAA01F2127350053DBF6 /* LoginResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		CA30EAAD1F2148780053DBF6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CA30EAB51F26128A0053DBF6 /* WhenRequestingPrivateMessagesWhileAuthenticated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenRequestingPrivateMessagesWhileAuthenticated.swift; sourceTree = "<group>"; };
@@ -4177,7 +4177,7 @@
 				CA2D080B1FE94F9900BFD785 /* TutorialModuleTestBuilder.swift */,
 				CA81D48F1FE9A91000A52A2F /* WhenTheTutorialAppears.swift */,
 				CA2D08111FE9540F00BFD785 /* WhenThePerformInitialDownloadPageAppears.swift */,
-				CA2D08131FE9549600BFD785 /* WhenThePerformInitialDownloadPageAppearsWithUnreachableNetwork.swift */,
+				CA2D08131FE9549600BFD785 /* WhenThePerformInitialDownloadPageAppearsWithCellularNetwork.swift */,
 			);
 			path = Tutorial;
 			sourceTree = "<group>";
@@ -8480,7 +8480,7 @@
 				CA89CBAF207F823A00570D54 /* WhenBuildingNewsModule.swift in Sources */,
 				CA44C34E211A3A30003C1C4E /* WhenBindingArtShowMessage_EventDetailPresenterShould.swift in Sources */,
 				CA637566208CC94E00536BE2 /* WhenShowingTutorial_DirectorShould.swift in Sources */,
-				CA2D08141FE9549600BFD785 /* WhenThePerformInitialDownloadPageAppearsWithUnreachableNetwork.swift in Sources */,
+				CA2D08141FE9549600BFD785 /* WhenThePerformInitialDownloadPageAppearsWithCellularNetwork.swift in Sources */,
 				CAD260A320C03543007E3618 /* CapturingEventDetailViewModel.swift in Sources */,
 				CA40107C210FAF210056E16C /* StubKnowledgeGroupEntriesViewModel.swift in Sources */,
 				7820A6E11F13FC7F004C0FB5 /* NetworkReachabilityTestDoubles.swift in Sources */,
