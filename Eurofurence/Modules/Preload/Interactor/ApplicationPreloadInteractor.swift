@@ -10,7 +10,7 @@ import EurofurenceModel
 
 class ApplicationPreloadInteractor: PreloadInteractor {
 
-    private let app: RefreshService
+    private let refreshService: RefreshService
     private var observations = [Any]()
 
     convenience init() {
@@ -18,11 +18,11 @@ class ApplicationPreloadInteractor: PreloadInteractor {
     }
 
     init(refreshService: RefreshService) {
-        self.app = refreshService
+        self.refreshService = refreshService
     }
 
     func beginPreloading(delegate: PreloadInteractorDelegate) {
-        let progress = app.refreshLocalStore { (error) in
+        let progress = refreshService.refreshLocalStore { (error) in
             if error == nil {
                 delegate.preloadInteractorDidFinishPreloading()
             } else {
