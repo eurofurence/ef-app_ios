@@ -54,71 +54,71 @@ class ConcreteRefreshService: RefreshService {
 
     @discardableResult
     func refreshLocalStore(completionHandler: @escaping (RefreshServiceError?) -> Void) -> Progress {
-        let lastRefreshDate: Date? = {
-            if forceRefreshRequired.isForceRefreshRequired {
-                return nil
-            } else {
-                return dataStore.fetchLastRefreshDate()
-            }
-        }()
-        
-        return performSync(lastSyncTime: lastRefreshDate, completionHandler: completionHandler)
-    }
-
-    private func performSync(lastSyncTime: Date?, completionHandler: @escaping (RefreshServiceError?) -> Void) -> Progress {
         notifyRefreshStarted()
         startLongRunningTask()
-
+        
         let progress = Progress()
         progress.totalUnitCount = -1
         progress.completedUnitCount = -1
-
+        
+        let lastSyncTime = determineLastRefreshDate()
         api.fetchLatestData(lastSyncTime: lastSyncTime) { (response) in
             guard let response = response else {
-                self.finishLongRunningTask()
-                self.notifyRefreshFinished()
                 completionHandler(.apiError)
+                self.refreshTaskDidFinish()
                 return
             }
             
             guard self.conventionIdentifier.identifier == response.conventionIdentifier else {
-                self.finishLongRunningTask()
-                self.notifyRefreshFinished()
                 completionHandler(.conventionIdentifierMismatch)
+                self.refreshTaskDidFinish()
                 return
             }
-
+            
             let imageDownloadRequests = response.images.changed.map(ImageDownloader.DownloadRequest.init)
             progress.completedUnitCount = 0
             progress.totalUnitCount = Int64(imageDownloadRequests.count)
             self.forceRefreshRequired.markForceRefreshNoLongerRequired()
-
+            
             self.imageDownloader.downloadImages(requests: imageDownloadRequests, parentProgress: progress) {
                 self.updateLocalStore(response: response, lastSyncTime: lastSyncTime)
-                self.eventBus.post(DomainEvent.DataStoreChangedEvent())
-
+                
                 self.privateMessagesController.refreshMessages {
                     completionHandler(nil)
-                    self.notifyRefreshFinished()
-                    self.finishLongRunningTask()
+                    self.refreshTaskDidFinish()
                 }
             }
         }
         
         return progress
     }
+
+    private func refreshTaskDidFinish() {
+        notifyRefreshFinished()
+        finishLongRunningTask()
+    }
+    
+    private func determineLastRefreshDate() -> Date? {
+        if forceRefreshRequired.isForceRefreshRequired {
+            return nil
+        } else {
+            return dataStore.fetchLastRefreshDate()
+        }
+    }
     
     private func updateLocalStore(response: ModelCharacteristics, lastSyncTime: Any?) {
-        self.dataStore.performTransaction({ (transaction) in
+        dataStore.performTransaction({ (transaction) in
             self.deleteRemovedEntities(response: response, transaction: transaction)
             self.deleteOrphanedRecords(response: response, transaction: transaction, lastSyncTime: lastSyncTime)
             self.processRemoveAllBeforeInserts(response, transaction: transaction)
             self.save(characteristics: response, in: transaction)
         })
+        
+        eventBus.post(DomainEvent.DataStoreChangedEvent())
     }
 
     private func notifyRefreshFinished() {
-        self.refreshObservers.forEach({ $0.refreshServiceDidFinishRefreshing() })
+        refreshObservers.forEach({ $0.refreshServiceDidFinishRefreshing() })
     }
 
     private func notifyRefreshStarted() {
@@ -183,49 +183,35 @@ class ConcreteRefreshService: RefreshService {
     }
     
     private func deleteOrphanedAnnouncements(_ response: ModelCharacteristics, _ transaction: DataStoreTransaction) {
-        deleteOrphans(existing: dataStore.fetchAnnouncements(),
-                      changed: response.announcements.changed,
-                      deletionHandler: transaction.deleteAnnouncement)
+        deleteOrphans(existing: dataStore.fetchAnnouncements(), changed: response.announcements.changed, delete: transaction.deleteAnnouncement)
     }
     
     private func deleteOrphanedEvents(_ response: ModelCharacteristics, _ transaction: DataStoreTransaction) {
-        deleteOrphans(existing: dataStore.fetchEvents(),
-                      changed: response.events.changed,
-                      deletionHandler: transaction.deleteEvent)
+        deleteOrphans(existing: dataStore.fetchEvents(), changed: response.events.changed, delete: transaction.deleteEvent)
     }
     
     private func deleteOrphanedKnowledgeGroups(_ response: ModelCharacteristics, _ transaction: DataStoreTransaction) {
-        deleteOrphans(existing: dataStore.fetchKnowledgeGroups(),
-                      changed: response.knowledgeGroups.changed,
-                      deletionHandler: transaction.deleteKnowledgeGroup)
+        deleteOrphans(existing: dataStore.fetchKnowledgeGroups(), changed: response.knowledgeGroups.changed, delete: transaction.deleteKnowledgeGroup)
     }
     
     private func deleteOrphanedKnowledgeEntries(_ response: ModelCharacteristics, _ transaction: DataStoreTransaction) {
-        deleteOrphans(existing: dataStore.fetchKnowledgeEntries(),
-                      changed: response.knowledgeEntries.changed,
-                      deletionHandler: transaction.deleteKnowledgeEntry)
+        deleteOrphans(existing: dataStore.fetchKnowledgeEntries(), changed: response.knowledgeEntries.changed, delete: transaction.deleteKnowledgeEntry)
     }
     
     private func deleteOrphanedImages(_ response: ModelCharacteristics) {
-        deleteOrphans(existing: dataStore.fetchImages(),
-                      changed: response.images.changed,
-                      deletionHandler: imageRepository.deleteEntity)
+        deleteOrphans(existing: dataStore.fetchImages(), changed: response.images.changed, delete: imageRepository.deleteEntity)
     }
     
     private func deleteOrphanedDealers(_ response: ModelCharacteristics, _ transaction: DataStoreTransaction) {
-        deleteOrphans(existing: dataStore.fetchDealers(),
-                      changed: response.dealers.changed,
-                      deletionHandler: transaction.deleteDealer)
+        deleteOrphans(existing: dataStore.fetchDealers(), changed: response.dealers.changed, delete: transaction.deleteDealer)
     }
     
     private func deleteOrphanedMaps(_ response: ModelCharacteristics, _ transaction: DataStoreTransaction) {
-        deleteOrphans(existing: dataStore.fetchMaps(),
-                      changed: response.maps.changed,
-                      deletionHandler: transaction.deleteMap)
+        deleteOrphans(existing: dataStore.fetchMaps(), changed: response.maps.changed, delete: transaction.deleteMap)
     }
     
-    private func deleteOrphans<T: Identifyable>(existing: [T]?, changed: [T], deletionHandler: (T.Identifier) -> Void) {
-        existing?.identifiers.filter(not(changed.identifiers.contains)).forEach(deletionHandler)
+    private func deleteOrphans<T: Identifyable>(existing: [T]?, changed: [T], delete: (T.Identifier) -> Void) {
+        existing?.identifiers.filter(not(changed.identifiers.contains)).forEach(delete)
     }
     
     private func processRemoveAllBeforeInserts(_ response: ModelCharacteristics, transaction: DataStoreTransaction) {
