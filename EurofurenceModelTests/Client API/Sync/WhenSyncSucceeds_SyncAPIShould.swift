@@ -152,7 +152,7 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                                                    deleted: ["c8c8a9ad-4f43-489f-905d-9d22d0ef045f"],
                                                                    removeAllBeforeInsert: false)
 
-        return ModelCharacteristics(conventionIdentifier: "",
+        return ModelCharacteristics(conventionIdentifier: "EF25",
                                     knowledgeGroups: knowledgeGroups,
                                     knowledgeEntries: knowledgeEntries,
                                     announcements: announcements,
