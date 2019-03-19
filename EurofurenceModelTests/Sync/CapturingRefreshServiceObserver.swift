@@ -19,15 +19,11 @@ class CapturingRefreshServiceObserver: RefreshServiceObserver {
     
     private(set) var state: State = .unset
 
-    private(set) var toldDidBeginRefreshing = false
     func refreshServiceDidBeginRefreshing() {
-        toldDidBeginRefreshing = true
         state = .refreshing
     }
 
-    private(set) var toldDidFinishRefreshing = false
     func refreshServiceDidFinishRefreshing() {
-        toldDidFinishRefreshing = true
         state = .finishedRefreshing
     }
 

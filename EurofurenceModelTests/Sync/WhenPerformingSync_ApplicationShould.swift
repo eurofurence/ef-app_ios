@@ -24,21 +24,21 @@ class WhenPerformingSync_ApplicationShould: XCTestCase {
 
     func testTellRefreshServiceObserversRefreshStarted() {
         context.refreshLocalStore()
-        XCTAssertTrue(refreshObserver.toldDidBeginRefreshing)
+        XCTAssertEqual(refreshObserver.state, .refreshing)
     }
 
     func testTellRefreshServiceObserversWhenSyncFinishesSuccessfully() {
         context.refreshLocalStore()
         context.api.simulateSuccessfulSync(.randomWithoutDeletions)
 
-        XCTAssertTrue(refreshObserver.toldDidFinishRefreshing)
+        XCTAssertEqual(refreshObserver.state, .finishedRefreshing)
     }
 
     func testTellRefreshServiceObserversWhenSyncFails() {
         context.refreshLocalStore()
         context.api.simulateUnsuccessfulSync()
 
-        XCTAssertTrue(refreshObserver.toldDidFinishRefreshing)
+        XCTAssertEqual(refreshObserver.state, .finishedRefreshing)
     }
 
 }
