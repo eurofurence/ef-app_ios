@@ -28,5 +28,9 @@ public struct UserDefaultsForceRefreshRequired: ForceRefreshRequired {
 
         return forceRefreshRequired
     }
+    
+    public func markForceRefreshNoLongerRequired() {
+        
+    }
 
 }

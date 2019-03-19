@@ -16,5 +16,9 @@ class CapturingForceRefreshRequired: ForceRefreshRequired {
         wasEnquiredWhetherForceRefreshRequired = true
         return true
     }
+    
+    func markForceRefreshNoLongerRequired() {
+        
+    }
 
 }

@@ -73,6 +73,8 @@ class ConcreteRefreshService: RefreshService {
     private func performSync(lastSyncTime: Date?, completionHandler: @escaping (Error?) -> Void) -> Progress {
         notifyRefreshStarted()
         startLongRunningTask()
+        
+        forceRefreshRequired.markForceRefreshNoLongerRequired()
 
         let progress = Progress()
         progress.totalUnitCount = -1
