@@ -15,9 +15,6 @@ public protocol RefreshService {
     @discardableResult
     func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress
 
-    @discardableResult
-    func performFullStoreRefresh(completionHandler: @escaping (Error?) -> Void) -> Progress
-
 }
 
 public protocol RefreshServiceObserver {

@@ -49,10 +49,6 @@ class ConcreteRefreshService: RefreshService {
         refreshObservers.append(observer)
     }
 
-    func performFullStoreRefresh(completionHandler: @escaping (Error?) -> Void) -> Progress {
-        return performSync(lastSyncTime: nil, completionHandler: completionHandler)
-    }
-
     @discardableResult
     func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress {
         let lastRefreshDate: Date? = {

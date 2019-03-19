@@ -16,16 +16,8 @@ public class CapturingRefreshService: RefreshService {
     }
 
     private var refreshCompletionHandler: ((Error?) -> Void)?
-    private(set) public  var toldToRefresh = false
+    private(set) public var toldToRefresh = false
     fileprivate var refreshProgress: Progress?
-    public func performFullStoreRefresh(completionHandler: @escaping (Error?) -> Void) -> Progress {
-        toldToRefresh = true
-        refreshCompletionHandler = completionHandler
-        refreshProgress = Progress()
-
-        return refreshProgress!
-    }
-
     public func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress {
         toldToRefresh = true
         refreshCompletionHandler = completionHandler
