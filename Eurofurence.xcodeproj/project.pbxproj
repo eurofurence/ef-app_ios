@@ -237,6 +237,7 @@
 		CA223D9B2240ECA000883FEA /* DealerCharacteristics+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA223D9A2240ECA000883FEA /* DealerCharacteristics+RandomValueProviding.swift */; };
 		CA223D9D2240ECB900883FEA /* MapCharacteristics+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA223D9C2240ECB900883FEA /* MapCharacteristics+RandomValueProviding.swift */; };
 		CA223D9F2240ECCE00883FEA /* ImageCharacteristics+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA223D9E2240ECCE00883FEA /* ImageCharacteristics+RandomValueProviding.swift */; };
+		CA223DA32240F4BB00883FEA /* WhenPerformingSubsequentSync_AndForceRefreshRequired.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA223DA22240F4BB00883FEA /* WhenPerformingSubsequentSync_AndForceRefreshRequired.swift */; };
 		CA235866221B57620044B1FC /* StubMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA235865221B57620044B1FC /* StubMessage.swift */; };
 		CA235868221B591D0044B1FC /* MessageImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA235867221B591D0044B1FC /* MessageImpl.swift */; };
 		CA23586A221C15F40044B1FC /* FavouriteEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA235869221C15F40044B1FC /* FavouriteEvent.swift */; };
@@ -1757,6 +1758,7 @@
 		CA223D9A2240ECA000883FEA /* DealerCharacteristics+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DealerCharacteristics+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA223D9C2240ECB900883FEA /* MapCharacteristics+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapCharacteristics+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA223D9E2240ECCE00883FEA /* ImageCharacteristics+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageCharacteristics+RandomValueProviding.swift"; sourceTree = "<group>"; };
+		CA223DA22240F4BB00883FEA /* WhenPerformingSubsequentSync_AndForceRefreshRequired.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPerformingSubsequentSync_AndForceRefreshRequired.swift; sourceTree = "<group>"; };
 		CA235865221B57620044B1FC /* StubMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubMessage.swift; sourceTree = "<group>"; };
 		CA235867221B591D0044B1FC /* MessageImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageImpl.swift; sourceTree = "<group>"; };
 		CA235869221C15F40044B1FC /* FavouriteEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteEvent.swift; sourceTree = "<group>"; };
@@ -6739,6 +6741,7 @@
 				CA72849720A1C091007D912A /* WhenSyncingWhileLoggedIn.swift */,
 				CAFD012720C6F2A2004F3935 /* WhenSyncSucceeds_ForEmptyDataStore_ApplicationShould.swift */,
 				CAEA1099216E8ABC00B0C7A6 /* CapturingRefreshServiceObserver.swift */,
+				CA223DA22240F4BB00883FEA /* WhenPerformingSubsequentSync_AndForceRefreshRequired.swift */,
 			);
 			path = Sync;
 			sourceTree = "<group>";
@@ -8867,6 +8870,7 @@
 				CAEA10A0216E8B2D00B0C7A6 /* StubUserPreferences.swift in Sources */,
 				CAEA1014216E1CE800B0C7A6 /* WhenRestrictingSearchResultsToFavourites_ScheduleShould.swift in Sources */,
 				CAEA0FE0216E1CE700B0C7A6 /* InOrderToSupportDealersDenTag_ApplicationShould.swift in Sources */,
+				CA223DA32240F4BB00883FEA /* WhenPerformingSubsequentSync_AndForceRefreshRequired.swift in Sources */,
 				CAEA1026216E1CE800B0C7A6 /* CapturingCredentialStore.swift in Sources */,
 				CAEA0FDB216E1CC000B0C7A6 /* WhenUnfavouritingEvent_ApplicationShould.swift in Sources */,
 				CAEA101F216E1CE800B0C7A6 /* WhenSyncingWhileLoggedIn.swift in Sources */,

@@ -34,6 +34,10 @@ class FakeAPI: API {
         messageIdentifierMarkedAsRead = identifier
         capturedAuthTokenForMarkingMessageAsRead = authorizationToken
     }
+    
+    var requestedFullStoreRefresh: Bool {
+        return capturedLastSyncTime == nil
+    }
 
     fileprivate var completionHandler: ((ModelCharacteristics?) -> Void)?
     private(set) var capturedLastSyncTime: Date?

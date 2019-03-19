@@ -125,7 +125,8 @@ class ConcreteSession: EurofurenceSession {
                                                 eventBus: eventBus,
                                                 imageCache: imageCache,
                                                 imageRepository: imageRepository,
-                                                privateMessagesController: privateMessagesService)
+                                                privateMessagesController: privateMessagesService,
+                                                forceRefreshRequired: forceRefreshRequired)
 
         notificationService = ConcreteNotificationService(eventBus: eventBus,
                                                           eventsService: eventsService,

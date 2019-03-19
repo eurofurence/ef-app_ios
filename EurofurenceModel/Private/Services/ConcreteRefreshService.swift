@@ -20,6 +20,7 @@ class ConcreteRefreshService: RefreshService {
     private let eventBus: EventBus
     private let imageCache: ImagesCache
     private let imageRepository: ImageRepository
+    private let forceRefreshRequired: ForceRefreshRequired
 
     init(longRunningTaskManager: LongRunningTaskManager?,
          dataStore: DataStore,
@@ -29,7 +30,8 @@ class ConcreteRefreshService: RefreshService {
          eventBus: EventBus,
          imageCache: ImagesCache,
          imageRepository: ImageRepository,
-         privateMessagesController: ConcretePrivateMessagesService) {
+         privateMessagesController: ConcretePrivateMessagesService,
+         forceRefreshRequired: ForceRefreshRequired) {
         self.longRunningTaskManager = longRunningTaskManager
         self.dataStore = dataStore
         self.api = api
@@ -39,6 +41,7 @@ class ConcreteRefreshService: RefreshService {
         self.imageCache = imageCache
         self.imageRepository = imageRepository
         self.privateMessagesController = privateMessagesController
+        self.forceRefreshRequired = forceRefreshRequired
     }
 
     private var refreshObservers = [RefreshServiceObserver]()
@@ -52,7 +55,15 @@ class ConcreteRefreshService: RefreshService {
 
     @discardableResult
     func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress {
-        return performSync(lastSyncTime: dataStore.fetchLastRefreshDate(), completionHandler: completionHandler)
+        let lastRefreshDate: Date? = {
+            if forceRefreshRequired.isForceRefreshRequired {
+                return nil
+            } else {
+                return dataStore.fetchLastRefreshDate()
+            }
+        }()
+        
+        return performSync(lastSyncTime: lastRefreshDate, completionHandler: completionHandler)
     }
     
     private enum SyncError: Error {
