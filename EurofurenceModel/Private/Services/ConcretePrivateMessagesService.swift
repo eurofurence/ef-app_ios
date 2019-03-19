@@ -12,12 +12,12 @@ class ConcretePrivateMessagesService: PrivateMessagesService {
 
     private let eventBus: EventBus
     private let api: API
-    private var userAuthenticationToken: String?
-    private var privateMessageObservers = [PrivateMessagesObserver]()
+    private lazy var state: State = UnauthenticatedState(service: self)
+    private var observers = [PrivateMessagesObserver]()
 
     private var localMessages: [MessageImpl] = .empty {
         didSet {
-            privateMessageObservers.forEach({ $0.privateMessagesServiceDidFinishRefreshingMessages(messages: localMessages) })
+            observers.forEach({ $0.privateMessagesServiceDidFinishRefreshingMessages(messages: localMessages) })
         }
     }
     
@@ -30,7 +30,7 @@ class ConcretePrivateMessagesService: PrivateMessagesService {
         }
         
         func consume(event: MessageImpl.ReadEvent) {
-            service.markMessageAsRead(event.message)
+            service.state.markMessageAsRead(event.message)
         }
         
     }
@@ -44,7 +44,7 @@ class ConcretePrivateMessagesService: PrivateMessagesService {
     }
 
     func add(_ observer: PrivateMessagesObserver) {
-        privateMessageObservers.append(observer)
+        observers.append(observer)
         observer.privateMessagesServiceDidUpdateUnreadMessageCount(to: determineUnreadMessageCount())
         observer.privateMessagesServiceDidFinishRefreshingMessages(messages: localMessages)
     }
@@ -54,24 +54,7 @@ class ConcretePrivateMessagesService: PrivateMessagesService {
     }
 
     func refreshMessages(completionHandler: (() -> Void)? = nil) {
-        if let token = userAuthenticationToken {
-            refreshMessages(token: token, completionHandler: completionHandler)
-        } else {
-            notifyDidFailToLoadMessages()
-            completionHandler?()
-        }
-    }
-    
-    private func refreshMessages(token: String, completionHandler: (() -> Void)?) {
-        api.loadPrivateMessages(authorizationToken: token) { (messages) in
-            if let messages = messages {
-                self.updateEntities(from: messages)
-            } else {
-                self.notifyDidFailToLoadMessages()
-            }
-
-            completionHandler?()
-        }
+        state.refreshMessages(completionHandler: completionHandler)
     }
     
     private func updateEntities(from messages: [MessageCharacteristics]) {
@@ -80,23 +63,16 @@ class ConcretePrivateMessagesService: PrivateMessagesService {
     }
     
     private func notifyDidFailToLoadMessages() {
-        privateMessageObservers.forEach({ $0.privateMessagesServiceDidFailToLoadMessages() })
+        observers.forEach({ $0.privateMessagesServiceDidFailToLoadMessages() })
     }
 
     private func updateObserversWithUnreadMessageCount() {
         let unreadCount = determineUnreadMessageCount()
-        privateMessageObservers.forEach({ $0.privateMessagesServiceDidUpdateUnreadMessageCount(to: unreadCount) })
+        observers.forEach({ $0.privateMessagesServiceDidUpdateUnreadMessageCount(to: unreadCount) })
     }
     
     private func determineUnreadMessageCount() -> Int {
         return localMessages.filter({ $0.isRead == false }).count
-    }
-    
-    private func markMessageAsRead(_ message: Message) {
-        guard let token = userAuthenticationToken else { return }
-        
-        api.markMessageWithIdentifierAsRead(message.identifier, authorizationToken: token)
-        updateObserversWithUnreadMessageCount()
     }
     
     private func makeMessage(from characteristics: MessageCharacteristics) -> MessageImpl {
@@ -104,7 +80,59 @@ class ConcretePrivateMessagesService: PrivateMessagesService {
     }
 
     private func userLoggedIn(_ event: DomainEvent.LoggedIn) {
-        userAuthenticationToken = event.authenticationToken
+        state = AuthenticatedState(service: self, token: event.authenticationToken)
+    }
+    
+    // MARK: State Machine
+    
+    private class State {
+        
+        unowned let service: ConcretePrivateMessagesService
+        
+        init(service: ConcretePrivateMessagesService) {
+            self.service = service
+        }
+        
+        func refreshMessages(completionHandler: (() -> Void)? = nil) { }
+        func markMessageAsRead(_ message: Message) { }
+        
+    }
+    
+    private class UnauthenticatedState: State {
+        
+        override func refreshMessages(completionHandler: (() -> Void)?) {
+            service.notifyDidFailToLoadMessages()
+            completionHandler?()
+        }
+        
+    }
+    
+    private class AuthenticatedState: State {
+        
+        private let token: String
+        
+        init(service: ConcretePrivateMessagesService, token: String) {
+            self.token = token
+            super.init(service: service)
+        }
+        
+        override func refreshMessages(completionHandler: (() -> Void)?) {
+            service.api.loadPrivateMessages(authorizationToken: token) { (messages) in
+                if let messages = messages {
+                    self.service.updateEntities(from: messages)
+                } else {
+                    self.service.notifyDidFailToLoadMessages()
+                }
+                
+                completionHandler?()
+            }
+        }
+        
+        override func markMessageAsRead(_ message: Message) {
+            service.api.markMessageWithIdentifierAsRead(message.identifier, authorizationToken: token)
+            service.updateObserversWithUnreadMessageCount()
+        }
+        
     }
 
 }
