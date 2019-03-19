@@ -12,33 +12,30 @@ import XCTest
 class WhenPerformingSync_ApplicationShould: XCTestCase {
 
     var context: EurofurenceSessionTestBuilder.Context!
-    var refreshObserver: CapturingRefreshServiceObserver!
 
     override func setUp() {
         super.setUp()
 
         context = EurofurenceSessionTestBuilder().build()
-        refreshObserver = CapturingRefreshServiceObserver()
-        context.refreshService.add(refreshObserver)
     }
 
     func testTellRefreshServiceObserversRefreshStarted() {
         context.refreshLocalStore()
-        XCTAssertEqual(refreshObserver.state, .refreshing)
+        XCTAssertEqual(context.refreshObserver.state, .refreshing)
     }
 
     func testTellRefreshServiceObserversWhenSyncFinishesSuccessfully() {
         context.refreshLocalStore()
         context.api.simulateSuccessfulSync(.randomWithoutDeletions)
 
-        XCTAssertEqual(refreshObserver.state, .finishedRefreshing)
+        XCTAssertEqual(context.refreshObserver.state, .finishedRefreshing)
     }
 
     func testTellRefreshServiceObserversWhenSyncFails() {
         context.refreshLocalStore()
         context.api.simulateUnsuccessfulSync()
 
-        XCTAssertEqual(refreshObserver.state, .finishedRefreshing)
+        XCTAssertEqual(context.refreshObserver.state, .finishedRefreshing)
     }
 
 }
