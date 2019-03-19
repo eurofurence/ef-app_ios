@@ -47,5 +47,9 @@ class WhenPerformingSubsequentRefresh_WhereConventionIdentifierMismatchDetected:
     func testObserversAreNotifiedTheRefreshFinished() {
         XCTAssertEqual(context.refreshObserver.state, .finishedRefreshing)
     }
+    
+    func testTheCIDMismatchErrorIsProvided() {
+        XCTAssertEqual(context.lastRefreshError, .conventionIdentifierMismatch)
+    }
 
 }

@@ -12,7 +12,7 @@ import Foundation
 
 class EurofurenceSessionTestBuilder {
 
-    struct Context {
+    class Context {
         var session: EurofurenceSession
         var clock: StubClock
         var notificationTokenRegistration: CapturingRemoteNotificationsTokenRegistration
@@ -28,8 +28,43 @@ class EurofurenceSessionTestBuilder {
         var notificationScheduler: CapturingNotificationScheduler
         var hoursDateFormatter: FakeHoursDateFormatter
         var mapCoordinateRender: CapturingMapCoordinateRender
-        
         var refreshObserver: CapturingRefreshServiceObserver
+        
+        private(set) var lastRefreshError: RefreshServiceError?
+
+        fileprivate init(session: EurofurenceSession,
+                         clock: StubClock,
+                         notificationTokenRegistration: CapturingRemoteNotificationsTokenRegistration,
+                         credentialStore: CapturingCredentialStore,
+                         api: FakeAPI,
+                         dataStore: FakeDataStore,
+                         dateDistanceCalculator: StubDateDistanceCalculator,
+                         conventionStartDateRepository: StubConventionStartDateRepository,
+                         imageRepository: CapturingImageRepository,
+                         significantTimeChangeAdapter: CapturingSignificantTimeChangeAdapter,
+                         urlOpener: CapturingURLOpener,
+                         longRunningTaskManager: FakeLongRunningTaskManager,
+                         notificationScheduler: CapturingNotificationScheduler,
+                         hoursDateFormatter: FakeHoursDateFormatter,
+                         mapCoordinateRender: CapturingMapCoordinateRender,
+                         refreshObserver: CapturingRefreshServiceObserver) {
+            self.session = session
+            self.clock = clock
+            self.notificationTokenRegistration = notificationTokenRegistration
+            self.credentialStore = credentialStore
+            self.api = api
+            self.dataStore = dataStore
+            self.dateDistanceCalculator = dateDistanceCalculator
+            self.conventionStartDateRepository = conventionStartDateRepository
+            self.imageRepository = imageRepository
+            self.significantTimeChangeAdapter = significantTimeChangeAdapter
+            self.urlOpener = urlOpener
+            self.longRunningTaskManager = longRunningTaskManager
+            self.notificationScheduler = notificationScheduler
+            self.hoursDateFormatter = hoursDateFormatter
+            self.mapCoordinateRender = mapCoordinateRender
+            self.refreshObserver = refreshObserver
+        }
 
         var services: Services {
             return session.services
@@ -115,6 +150,7 @@ class EurofurenceSessionTestBuilder {
         @discardableResult
         func refreshLocalStore(completionHandler: ((RefreshServiceError?) -> Void)? = nil) -> Progress {
             return session.services.refresh.refreshLocalStore { (error) in
+                self.lastRefreshError = error
                 completionHandler?(error)
             }
         }

@@ -77,13 +77,14 @@ class ConcreteRefreshService: RefreshService {
             guard let response = response else {
                 self.finishLongRunningTask()
                 self.notifyRefreshFinished()
-                completionHandler(RefreshServiceError.apiError)
+                completionHandler(.apiError)
                 return
             }
             
             guard self.conventionIdentifier.identifier == response.conventionIdentifier else {
                 self.finishLongRunningTask()
                 self.notifyRefreshFinished()
+                completionHandler(.conventionIdentifierMismatch)
                 return
             }
 

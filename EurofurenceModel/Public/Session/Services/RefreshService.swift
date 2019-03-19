@@ -10,6 +10,7 @@ import Foundation
 
 public enum RefreshServiceError: Error {
     case apiError
+    case conventionIdentifierMismatch
 }
 
 public protocol RefreshService {
