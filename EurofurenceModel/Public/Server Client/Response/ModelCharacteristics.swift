@@ -24,6 +24,7 @@ public struct ModelCharacteristics: Equatable {
 
     }
 
+    public var conventionIdentifier: String
     public var knowledgeGroups: Update<KnowledgeGroupCharacteristics>
     public var knowledgeEntries: Update<KnowledgeEntryCharacteristics>
     public var announcements: Update<AnnouncementCharacteristics>
@@ -35,7 +36,8 @@ public struct ModelCharacteristics: Equatable {
     public var maps: Update<MapCharacteristics>
     public var images: Update<ImageCharacteristics>
 
-    public init(knowledgeGroups: Update<KnowledgeGroupCharacteristics>,
+    public init(conventionIdentifier: String,
+                knowledgeGroups: Update<KnowledgeGroupCharacteristics>,
                 knowledgeEntries: Update<KnowledgeEntryCharacteristics>,
                 announcements: Update<AnnouncementCharacteristics>,
                 events: Update<EventCharacteristics>,
@@ -45,6 +47,7 @@ public struct ModelCharacteristics: Equatable {
                 dealers: Update<DealerCharacteristics>,
                 maps: Update<MapCharacteristics>,
                 images: Update<ImageCharacteristics>) {
+        self.conventionIdentifier = conventionIdentifier
         self.knowledgeGroups = knowledgeGroups
         self.knowledgeEntries = knowledgeEntries
         self.announcements = announcements

@@ -12,6 +12,7 @@ import Foundation
 class ConcreteRefreshService: RefreshService {
     private let privateMessagesController: ConcretePrivateMessagesService
 
+    private let conventionIdentifier: ConventionIdentifier
     private let longRunningTaskManager: LongRunningTaskManager?
     private let dataStore: DataStore
     private let api: API
@@ -22,7 +23,8 @@ class ConcreteRefreshService: RefreshService {
     private let imageRepository: ImageRepository
     private let forceRefreshRequired: ForceRefreshRequired
 
-    init(longRunningTaskManager: LongRunningTaskManager?,
+    init(conventionIdentifier: ConventionIdentifier,
+         longRunningTaskManager: LongRunningTaskManager?,
          dataStore: DataStore,
          api: API,
          imageDownloader: ImageDownloader,
@@ -32,6 +34,7 @@ class ConcreteRefreshService: RefreshService {
          imageRepository: ImageRepository,
          privateMessagesController: ConcretePrivateMessagesService,
          forceRefreshRequired: ForceRefreshRequired) {
+        self.conventionIdentifier = conventionIdentifier
         self.longRunningTaskManager = longRunningTaskManager
         self.dataStore = dataStore
         self.api = api
@@ -79,6 +82,10 @@ class ConcreteRefreshService: RefreshService {
                 self.finishLongRunningTask()
                 self.notifyRefreshFinished()
                 completionHandler(SyncError.failedToLoadResponse)
+                return
+            }
+            
+            guard self.conventionIdentifier.identifier == response.conventionIdentifier else {
                 return
             }
 

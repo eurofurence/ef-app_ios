@@ -128,7 +128,7 @@ class EurofurenceSessionTestBuilder {
 
     }
 
-    private let conventionIdentifier = ConventionIdentifier.random
+    private let conventionIdentifier = ConventionIdentifier(identifier: ModelCharacteristics.testConventionIdentifier)
     private var api = FakeAPI()
     private let notificationTokenRegistration = CapturingRemoteNotificationsTokenRegistration()
     private var credentialStore = CapturingCredentialStore()

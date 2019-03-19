@@ -117,7 +117,8 @@ class ConcreteSession: EurofurenceSession {
                                           imageRepository: imageRepository,
                                           dealers: dealersService)
 
-        refreshService = ConcreteRefreshService(longRunningTaskManager: longRunningTaskManager,
+        refreshService = ConcreteRefreshService(conventionIdentifier: conventionIdentifier,
+                                                longRunningTaskManager: longRunningTaskManager,
                                                 dataStore: dataStore,
                                                 api: api,
                                                 imageDownloader: imageDownloader,

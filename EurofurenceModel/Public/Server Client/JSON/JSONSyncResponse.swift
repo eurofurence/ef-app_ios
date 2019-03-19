@@ -12,7 +12,8 @@ import Foundation
 struct JSONSyncResponse: Decodable {
 
     func asAPIResponse() -> ModelCharacteristics {
-        return ModelCharacteristics(knowledgeGroups: KnowledgeGroups.delta,
+        return ModelCharacteristics(conventionIdentifier: "",
+                                    knowledgeGroups: KnowledgeGroups.delta,
                                     knowledgeEntries: KnowledgeEntries.delta,
                                     announcements: Announcements.delta,
                                     events: Events.delta,

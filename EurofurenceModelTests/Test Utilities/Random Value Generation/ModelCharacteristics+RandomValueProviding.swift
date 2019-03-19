@@ -12,6 +12,8 @@ import TestUtilities
 
 extension ModelCharacteristics {
     
+    static let testConventionIdentifier = "TEST_CONVENTION"
+    
     static var randomWithoutDeletions: ModelCharacteristics {
         let knowledge = KnowledgeGroupCharacteristics.makeRandomGroupsAndEntries()
         let rooms = [RoomCharacteristics].random
@@ -57,7 +59,8 @@ extension ModelCharacteristics {
         let announcementImages = announcements.compactMap({ $0.imageIdentifier }).map(makeImageFromIdentifier)
         allImages.append(contentsOf: announcementImages)
         
-        return ModelCharacteristics(knowledgeGroups: ModelCharacteristics.Update(changed: knowledge.groups),
+        return ModelCharacteristics(conventionIdentifier: testConventionIdentifier,
+                                    knowledgeGroups: ModelCharacteristics.Update(changed: knowledge.groups),
                                     knowledgeEntries: ModelCharacteristics.Update(changed: knowledge.entries),
                                     announcements: ModelCharacteristics.Update(changed: announcements),
                                     events: ModelCharacteristics.Update(changed: events),
