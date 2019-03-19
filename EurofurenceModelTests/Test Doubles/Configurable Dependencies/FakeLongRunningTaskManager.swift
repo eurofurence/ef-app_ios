@@ -10,21 +10,31 @@ import EurofurenceModel
 import Foundation
 
 class FakeLongRunningTaskManager: LongRunningTaskManager {
-
-    var finishedTask: Bool {
-        return terminatedLongRunningTaskToken == AnyHashable(stubTaskToken)
+    
+    enum State {
+        case notStarted
+        case running
+        case ended
+        case wrongToken
     }
 
-    let stubTaskToken = String.random
+    private(set) var state: State = .notStarted
+
+    private var stubTaskToken: AnyHashable?
     private(set) var didBeginTask = false
     func beginLongRunningTask() -> AnyHashable {
-        didBeginTask = true
-        return stubTaskToken
+        stubTaskToken = String.random
+        state = .running
+        
+        return stubTaskToken!
     }
 
-    private(set) var terminatedLongRunningTaskToken: AnyHashable?
     func finishLongRunningTask(token: AnyHashable) {
-        terminatedLongRunningTaskToken = token
+        if token == stubTaskToken {
+            state = .ended
+        } else {
+            state = .wrongToken
+        }
     }
 
 }

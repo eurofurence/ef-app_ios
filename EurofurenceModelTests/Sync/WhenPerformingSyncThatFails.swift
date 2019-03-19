@@ -25,7 +25,7 @@ class WhenPerformingSyncThatFails: XCTestCase {
         context.refreshLocalStore()
         context.api.simulateUnsuccessfulSync()
 
-        XCTAssertTrue(context.longRunningTaskManager.finishedTask)
+        XCTAssertEqual(context.longRunningTaskManager.state, .ended)
     }
 
 }

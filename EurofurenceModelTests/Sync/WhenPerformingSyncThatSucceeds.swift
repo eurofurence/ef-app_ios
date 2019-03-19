@@ -23,13 +23,13 @@ class WhenPerformingSyncThatSucceeds: XCTestCase {
     func testTheLongRunningTaskManagerIsToldToEndTaskBeganAtStartOfSync_AfterCompletionHandlerInvoked() {
         let context = EurofurenceSessionTestBuilder().build()
         var didFinishTaskBeforeCompletionHandlerReturned = false
-        context.refreshLocalStore { (_) in didFinishTaskBeforeCompletionHandlerReturned = context.longRunningTaskManager.finishedTask }
+        context.refreshLocalStore { (_) in didFinishTaskBeforeCompletionHandlerReturned = context.longRunningTaskManager.state == .ended }
 
-        XCTAssertFalse(context.longRunningTaskManager.finishedTask)
+        XCTAssertEqual(context.longRunningTaskManager.state, .running)
 
         context.api.simulateSuccessfulSync(.randomWithoutDeletions)
         XCTAssertFalse(didFinishTaskBeforeCompletionHandlerReturned)
-        XCTAssertTrue(context.longRunningTaskManager.finishedTask)
+        XCTAssertEqual(context.longRunningTaskManager.state, .ended)
     }
 
     func testAllImagesAreDownloaded() {
