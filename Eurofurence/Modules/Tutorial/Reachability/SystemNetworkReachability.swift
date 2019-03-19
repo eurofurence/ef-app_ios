@@ -19,7 +19,7 @@ public struct SystemConfigurationNetworkReachability: NetworkReachability {
     }
     
     public var cellularReachable: Bool {
-        return true
+        return isCellularReachable(with: resolveCurrentReachabilityFlags())
     }
     
     private func resolveCurrentReachabilityFlags() -> SCNetworkReachabilityFlags {
@@ -37,6 +37,10 @@ public struct SystemConfigurationNetworkReachability: NetworkReachability {
     
     private func isWifiReachable(with flags: SCNetworkReachabilityFlags) -> Bool {
         return flags.contains(.reachable) && flags.contains(.isWWAN) == false
+    }
+    
+    private func isCellularReachable(with flags: SCNetworkReachabilityFlags) -> Bool {
+        return flags.contains(.reachable) && flags.contains(.isWWAN)
     }
 
 }
