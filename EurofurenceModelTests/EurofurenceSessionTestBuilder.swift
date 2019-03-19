@@ -28,6 +28,8 @@ class EurofurenceSessionTestBuilder {
         var notificationScheduler: CapturingNotificationScheduler
         var hoursDateFormatter: FakeHoursDateFormatter
         var mapCoordinateRender: CapturingMapCoordinateRender
+        
+        var refreshObserver: CapturingRefreshServiceObserver
 
         var services: Services {
             return session.services
@@ -244,6 +246,9 @@ class EurofurenceSessionTestBuilder {
             .with(mapCoordinateRender)
             .with(forceUpgradeRequired)
             .build()
+        
+        let refreshObserver = CapturingRefreshServiceObserver()
+        app.services.refresh.add(refreshObserver)
 
         return Context(session: app,
                        clock: clock,
@@ -259,7 +264,8 @@ class EurofurenceSessionTestBuilder {
                        longRunningTaskManager: longRunningTaskManager,
                        notificationScheduler: notificationsService,
                        hoursDateFormatter: hoursDateFormatter,
-                       mapCoordinateRender: mapCoordinateRender)
+                       mapCoordinateRender: mapCoordinateRender,
+                       refreshObserver: refreshObserver)
     }
 
 }

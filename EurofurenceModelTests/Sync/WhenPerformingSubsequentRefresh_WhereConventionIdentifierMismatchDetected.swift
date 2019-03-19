@@ -10,51 +10,42 @@ import EurofurenceModel
 import XCTest
 
 class WhenPerformingSubsequentRefresh_WhereConventionIdentifierMismatchDetected: XCTestCase {
-
-    func testTheStoreRemainsUnchanged() {
-        let context = EurofurenceSessionTestBuilder().build()
-        let first = ModelCharacteristics.randomWithoutDeletions
+    
+    var context: EurofurenceSessionTestBuilder.Context!
+    var characteristics: ModelCharacteristics!
+    
+    override func setUp() {
+        super.setUp()
+        
+        context = EurofurenceSessionTestBuilder().build()
+        characteristics = ModelCharacteristics.randomWithoutDeletions
         var second = ModelCharacteristics.randomWithoutDeletions
         second.conventionIdentifier = .random
-        context.performSuccessfulSync(response: first)
+        context.performSuccessfulSync(response: characteristics)
         context.performSuccessfulSync(response: second)
-        
+    }
+
+    func testTheStoreRemainsUnchanged() {
         let store = context.dataStore
         
-        XCTAssertEqual(first.knowledgeGroups.changed, store.fetchKnowledgeGroups())
-        XCTAssertEqual(first.knowledgeEntries.changed, store.fetchKnowledgeEntries())
-        XCTAssertEqual(first.announcements.changed, store.fetchAnnouncements())
-        XCTAssertEqual(first.events.changed, store.fetchEvents())
-        XCTAssertEqual(first.rooms.changed, store.fetchRooms())
-        XCTAssertEqual(first.tracks.changed, store.fetchTracks())
-        XCTAssertEqual(first.conferenceDays.changed, store.fetchConferenceDays())
-        XCTAssertEqual(first.dealers.changed, store.fetchDealers())
-        XCTAssertEqual(first.maps.changed, store.fetchMaps())
-        XCTAssertEqual(first.images.changed, store.fetchImages())
+        XCTAssertEqual(characteristics.knowledgeGroups.changed, store.fetchKnowledgeGroups())
+        XCTAssertEqual(characteristics.knowledgeEntries.changed, store.fetchKnowledgeEntries())
+        XCTAssertEqual(characteristics.announcements.changed, store.fetchAnnouncements())
+        XCTAssertEqual(characteristics.events.changed, store.fetchEvents())
+        XCTAssertEqual(characteristics.rooms.changed, store.fetchRooms())
+        XCTAssertEqual(characteristics.tracks.changed, store.fetchTracks())
+        XCTAssertEqual(characteristics.conferenceDays.changed, store.fetchConferenceDays())
+        XCTAssertEqual(characteristics.dealers.changed, store.fetchDealers())
+        XCTAssertEqual(characteristics.maps.changed, store.fetchMaps())
+        XCTAssertEqual(characteristics.images.changed, store.fetchImages())
     }
     
     func testTheLongRunningTaskIsEnded() {
-        let context = EurofurenceSessionTestBuilder().build()
-        let first = ModelCharacteristics.randomWithoutDeletions
-        var second = ModelCharacteristics.randomWithoutDeletions
-        second.conventionIdentifier = .random
-        context.performSuccessfulSync(response: first)
-        context.performSuccessfulSync(response: second)
-        
         XCTAssertEqual(context.longRunningTaskManager.state, .ended)
     }
     
     func testObserversAreNotifiedTheRefreshFinished() {
-        let observer = CapturingRefreshServiceObserver()
-        let context = EurofurenceSessionTestBuilder().build()
-        context.refreshService.add(observer)
-        let first = ModelCharacteristics.randomWithoutDeletions
-        var second = ModelCharacteristics.randomWithoutDeletions
-        second.conventionIdentifier = .random
-        context.performSuccessfulSync(response: first)
-        context.performSuccessfulSync(response: second)
-        
-        XCTAssertEqual(observer.state, .finishedRefreshing)
+        XCTAssertEqual(context.refreshObserver.state, .finishedRefreshing)
     }
 
 }
