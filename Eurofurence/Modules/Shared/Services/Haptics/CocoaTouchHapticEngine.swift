@@ -10,10 +10,8 @@ import UIKit
 
 struct CocoaTouchHapticEngine: HapticEngine {
 
-    private let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
-
     func playSelectionHaptic() {
-        selectionFeedbackGenerator.selectionChanged()
+        UISelectionFeedbackGenerator().selectionChanged()
     }
 
 }
