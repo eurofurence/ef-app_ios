@@ -48,7 +48,6 @@ class ConcreteSession: EurofurenceSession {
          urlOpener: URLOpener?,
          collectThemAllRequestFactory: CollectThemAllRequestFactory,
          longRunningTaskManager: LongRunningTaskManager?,
-         hoursDateFormatter: HoursDateFormatter,
          mapCoordinateRender: MapCoordinateRender?,
          forceRefreshRequired: ForceRefreshRequired) {
         
@@ -91,9 +90,7 @@ class ConcreteSession: EurofurenceSession {
                                               dataStore: dataStore,
                                               imageCache: imageCache,
                                               clock: clock,
-                                              timeIntervalForUpcomingEventsSinceNow: timeIntervalForUpcomingEventsSinceNow,
-                                              userPreferences: userPreferences,
-                                              hoursDateFormatter: hoursDateFormatter)
+                                              timeIntervalForUpcomingEventsSinceNow: timeIntervalForUpcomingEventsSinceNow)
 
         let imageDownloader = ImageDownloader(eventBus: eventBus,
                                               api: api,

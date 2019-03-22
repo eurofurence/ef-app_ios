@@ -27,7 +27,6 @@ public class EurofurenceSessionBuilder {
     private var urlOpener: URLOpener?
     private var collectThemAllRequestFactory: CollectThemAllRequestFactory
     private var longRunningTaskManager: LongRunningTaskManager?
-    private var hoursDateFormatter: HoursDateFormatter
     private var mapCoordinateRender: MapCoordinateRender?
     private var forceRefreshRequired: ForceRefreshRequired
 
@@ -48,7 +47,6 @@ public class EurofurenceSessionBuilder {
         timeIntervalForUpcomingEventsSinceNow = 3600
         imageRepository = PersistentImageRepository()
         collectThemAllRequestFactory = DefaultCollectThemAllRequestFactory()
-        hoursDateFormatter = FoundationHoursDateFormatter.shared
         forceRefreshRequired = UserDefaultsForceRefreshRequired()
     }
 
@@ -143,12 +141,6 @@ public class EurofurenceSessionBuilder {
     }
 
     @discardableResult
-    public func with(_ hoursDateFormatter: HoursDateFormatter) -> EurofurenceSessionBuilder {
-        self.hoursDateFormatter = hoursDateFormatter
-        return self
-    }
-
-    @discardableResult
     public func with(_ mapCoordinateRender: MapCoordinateRender) -> EurofurenceSessionBuilder {
         self.mapCoordinateRender = mapCoordinateRender
         return self
@@ -177,7 +169,6 @@ public class EurofurenceSessionBuilder {
                                urlOpener: urlOpener,
                                collectThemAllRequestFactory: collectThemAllRequestFactory,
                                longRunningTaskManager: longRunningTaskManager,
-                               hoursDateFormatter: hoursDateFormatter,
                                mapCoordinateRender: mapCoordinateRender,
                                forceRefreshRequired: forceRefreshRequired)
     }

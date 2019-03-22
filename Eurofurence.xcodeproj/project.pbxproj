@@ -969,7 +969,6 @@
 		CAEA0D99216BDD9500B0C7A6 /* ConcreteCollectThemAllService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2761D120E03B29000E52AC /* ConcreteCollectThemAllService.swift */; };
 		CAEA0D9A216BDD9500B0C7A6 /* DefaultCollectThemAllRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2761C920E03143000E52AC /* DefaultCollectThemAllRequestFactory.swift */; };
 		CAEA0D9B216BDDF000B0C7A6 /* EurofurenceApplicationModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CABEB0DD20C9C7ED000BEE66 /* EurofurenceApplicationModel.xcdatamodeld */; };
-		CAEA0D9C216BDDF900B0C7A6 /* AppCoreStrings.strings in Resources */ = {isa = PBXBuildFile; fileRef = CAEA0D83216BDC5100B0C7A6 /* AppCoreStrings.strings */; };
 		CAEA0D9D216BDE2300B0C7A6 /* EurofurenceSessionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3F63C20167B3100374B4C /* EurofurenceSessionBuilder.swift */; };
 		CAEA0D9E216BDE2300B0C7A6 /* EurofurenceSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A9421F50B87600628833 /* EurofurenceSession.swift */; };
 		CAEA0D9F216BDE2300B0C7A6 /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD7804B1F1D5212002A8333 /* Clock.swift */; };
@@ -1048,7 +1047,6 @@
 		CAEA0DEE216BDE2300B0C7A6 /* FoundationDateDistanceCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E7B20A4B8EA004AFED6 /* FoundationDateDistanceCalculator.swift */; };
 		CAEA0DEF216BDE2300B0C7A6 /* Iso8601DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A34B9771ECF6E3B004A249E /* Iso8601DateFormatter.swift */; };
 		CAEA0DF0216BDE3100B0C7A6 /* RemoteNotificationRegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D97D4201613010074838F /* RemoteNotificationRegistrationController.swift */; };
-		CAEA0DF2216BDE3100B0C7A6 /* AppCoreStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA0D85216BDC7D00B0C7A6 /* AppCoreStrings.swift */; };
 		CAEA0DF3216BDE3100B0C7A6 /* AnnouncementCharacteristics.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA65A2222091F6020078A4A7 /* AnnouncementCharacteristics.swift */; };
 		CAEA0DF4216BDE3100B0C7A6 /* ConferenceDayCharacteristics.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08157E20D3D52D00F750D4 /* ConferenceDayCharacteristics.swift */; };
 		CAEA0DF5216BDE3100B0C7A6 /* DealerCharacteristics.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4AD20D9895600EE6537 /* DealerCharacteristics.swift */; };
@@ -2716,8 +2714,6 @@
 		CAEA0B7D2165626900B0C7A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CAEA0B822165626900B0C7A6 /* EurofurenceModelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EurofurenceModelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAEA0B8B2165626900B0C7A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CAEA0D83216BDC5100B0C7A6 /* AppCoreStrings.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = AppCoreStrings.strings; sourceTree = "<group>"; };
-		CAEA0D85216BDC7D00B0C7A6 /* AppCoreStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoreStrings.swift; sourceTree = "<group>"; };
 		CAEA0E83216BEF7C00B0C7A6 /* TestUtilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TestUtilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAEA0E85216BEF7C00B0C7A6 /* TestUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestUtilities.h; sourceTree = "<group>"; };
 		CAEA0E86216BEF7C00B0C7A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -5755,7 +5751,6 @@
 				CAAF4C772164E34F0017946C /* Default Dependency Implementations */,
 				CAEA0D812166B3F700B0C7A6 /* Formatters */,
 				CA18B3451F49AF4500038E52 /* Objects */,
-				CAEA0D82216BDC2900B0C7A6 /* Resources */,
 				CA804DCF1F20CE5F00E07A4A /* Server Client */,
 				CAAF4C742164E2860017946C /* Session */,
 				CAB3A72B1F7532DF005DF77B /* System Services */,
@@ -6434,15 +6429,6 @@
 				9A34B9771ECF6E3B004A249E /* Iso8601DateFormatter.swift */,
 			);
 			path = Formatters;
-			sourceTree = "<group>";
-		};
-		CAEA0D82216BDC2900B0C7A6 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				CAEA0D83216BDC5100B0C7A6 /* AppCoreStrings.strings */,
-				CAEA0D85216BDC7D00B0C7A6 /* AppCoreStrings.swift */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		CAEA0E84216BEF7C00B0C7A6 /* TestUtilities */ = {
@@ -7289,7 +7275,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CAEA0D9C216BDDF900B0C7A6 /* AppCoreStrings.strings in Resources */,
 				A1426CBB4B4738AE225767E3 /* Pods-EurofurenceModel-metadata.plist in Resources */,
 				3BD9A26B85A544733E4E9DE5 /* Pods-EurofurenceModel-settings-metadata.plist in Resources */,
 			);
@@ -8612,7 +8597,6 @@
 				CAEA0DA0216BDE2300B0C7A6 /* CollectThemAllRequestFactory.swift in Sources */,
 				CAEA0DC7216BDE2300B0C7A6 /* ContentLinksService.swift in Sources */,
 				CA4679A222176A3F006B3090 /* Event.swift in Sources */,
-				CAEA0DF2216BDE3100B0C7A6 /* AppCoreStrings.swift in Sources */,
 				CAEA0D9B216BDDF000B0C7A6 /* EurofurenceApplicationModel.xcdatamodeld in Sources */,
 				CAEA0D87216BDD9400B0C7A6 /* ConcreteEventsService.swift in Sources */,
 				CAEA0DDC216BDE2300B0C7A6 /* KnowledgeEntryEntity+Adaptation.swift in Sources */,
