@@ -9,12 +9,26 @@
 import EventBus
 import Foundation
 
-class ConcreteConventionCountdownService: ConventionCountdownService, EventConsumer {
+class ConcreteConventionCountdownService: ConventionCountdownService {
 
     private let conventionStartDateRepository: ConventionStartDateRepository
     private let dateDistanceCalculator: DateDistanceCalculator
     private let clock: Clock
     private var daysUntilConventionObservers = [ConventionCountdownServiceObserver]()
+    
+    private class RecomputeCountdownWhenSignificantTimePasses: EventConsumer {
+        
+        unowned let service: ConcreteConventionCountdownService
+        
+        init(service: ConcreteConventionCountdownService) {
+            self.service = service
+        }
+        
+        func consume(event: DomainEvent.SignificantTimePassedEvent) {
+            service.refreshCountdownState()
+        }
+        
+    }
 
     init(eventBus: EventBus,
          conventionStartDateRepository: ConventionStartDateRepository,
@@ -24,12 +38,7 @@ class ConcreteConventionCountdownService: ConventionCountdownService, EventConsu
         self.dateDistanceCalculator = dateDistanceCalculator
         self.clock = clock
 
-        eventBus.subscribe(consumer: self)
-    }
-
-    func consume(event: DomainEvent.SignificantTimePassedEvent) {
-        let state = resolveCountdownState()
-        daysUntilConventionObservers.forEach({ $0.conventionCountdownStateDidChange(to: state) })
+        eventBus.subscribe(consumer: RecomputeCountdownWhenSignificantTimePasses(service: self))
     }
 
     func add(_ observer: ConventionCountdownServiceObserver) {
@@ -37,6 +46,11 @@ class ConcreteConventionCountdownService: ConventionCountdownService, EventConsu
 
         let state = resolveCountdownState()
         observer.conventionCountdownStateDidChange(to: state)
+    }
+    
+    private func refreshCountdownState() {
+        let state = resolveCountdownState()
+        daysUntilConventionObservers.forEach({ $0.conventionCountdownStateDidChange(to: state) })
     }
 
     private func resolveCountdownState() -> ConventionCountdownState {
