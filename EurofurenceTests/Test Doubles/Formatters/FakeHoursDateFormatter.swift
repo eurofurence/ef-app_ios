@@ -6,18 +6,14 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
-import EurofurenceModel
+@testable import Eurofurence
 import TestUtilities
 
-public class FakeHoursDateFormatter: HoursDateFormatter {
-
-    public init() {
-
-    }
+class FakeHoursDateFormatter: HoursDateFormatter {
 
     private var strings = [Date: String]()
 
-    public func hoursString(from date: Date) -> String {
+    func hoursString(from date: Date) -> String {
         var output = String.random
         if let previous = strings[date] {
             output = previous

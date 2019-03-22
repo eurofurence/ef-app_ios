@@ -8,9 +8,9 @@
 
 import Foundation
 
-public struct FoundationHoursDateFormatter: HoursDateFormatter {
+struct FoundationHoursDateFormatter: HoursDateFormatter {
 
-    public static let shared = FoundationHoursDateFormatter()
+    static let shared = FoundationHoursDateFormatter()
     private let formatter: DateFormatter
 
     private init() {
@@ -18,7 +18,7 @@ public struct FoundationHoursDateFormatter: HoursDateFormatter {
         formatter.dateFormat = "HH:mm"
     }
 
-    public func hoursString(from date: Date) -> String {
+    func hoursString(from date: Date) -> String {
         return formatter.string(from: date)
     }
 

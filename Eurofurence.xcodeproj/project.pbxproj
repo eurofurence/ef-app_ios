@@ -721,6 +721,9 @@
 		CA7992462245174800DF1F84 /* NotificationScheduleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7992452245174800DF1F84 /* NotificationScheduleController.swift */; };
 		CA79924722451A4800DF1F84 /* NotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D04FD20EE910E00CF54E1 /* NotificationScheduler.swift */; };
 		CA79924922451AB500DF1F84 /* ApplicationNotificationKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA79924822451AB500DF1F84 /* ApplicationNotificationKey.swift */; };
+		CA79924B22451D9A00DF1F84 /* FoundationHoursDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990EE20ACD559001E3F1A /* FoundationHoursDateFormatter.swift */; };
+		CA79924C22451DC400DF1F84 /* HoursDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990EC20ACD35C001E3F1A /* HoursDateFormatter.swift */; };
+		CA79924F22451DFA00DF1F84 /* FakeHoursDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA0F7B216D370600B0C7A6 /* FakeHoursDateFormatter.swift */; };
 		CA7BA2372237FCFB00D34592 /* SystemNetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF96CF01F1495F400EE6134 /* SystemNetworkReachability.swift */; };
 		CA7BA2382237FCFB00D34592 /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A861EBB1F25551400B75A8C /* NetworkReachability.swift */; };
 		CA7BA23B2238028900D34592 /* DataStoreTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7BA23A2238028900D34592 /* DataStoreTransaction.swift */; };
@@ -978,7 +981,6 @@
 		CAEA0DA3216BDE2300B0C7A6 /* DateDistanceCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E6F20A4B691004AFED6 /* DateDistanceCalculator.swift */; };
 		CAEA0DA4216BDE2300B0C7A6 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D07FA1FE902ED00BFD785 /* DataStore.swift */; };
 		CAEA0DA5216BDE2300B0C7A6 /* ForceRefreshRequired.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C3372119BFFE003C1C4E /* ForceRefreshRequired.swift */; };
-		CAEA0DA6216BDE2300B0C7A6 /* HoursDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990EC20ACD35C001E3F1A /* HoursDateFormatter.swift */; };
 		CAEA0DA7216BDE2300B0C7A6 /* ImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1ECC20B6D65400D904B5 /* ImageRepository.swift */; };
 		CAEA0DA8216BDE2300B0C7A6 /* LongRunningTaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A5720E6E23200F7D195 /* LongRunningTaskManager.swift */; };
 		CAEA0DA9216BDE2300B0C7A6 /* MapCoordinateRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2A586A20F69EB7002C69B6 /* MapCoordinateRender.swift */; };
@@ -1014,7 +1016,6 @@
 		CAEA0DCC216BDE2300B0C7A6 /* AppVersionProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEC6DA41F1BFC7700205F2D /* AppVersionProviding.swift */; };
 		CAEA0DCD216BDE2300B0C7A6 /* EF24StartDateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E7D20A4B9CD004AFED6 /* EF24StartDateRepository.swift */; };
 		CAEA0DCE216BDE2300B0C7A6 /* ConcreteDealersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4A720D984E400EE6537 /* ConcreteDealersService.swift */; };
-		CAEA0DCF216BDE2300B0C7A6 /* FoundationHoursDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990EE20ACD559001E3F1A /* FoundationHoursDateFormatter.swift */; };
 		CAEA0DD0216BDE2300B0C7A6 /* KeychainCredentialStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780591F1E8E7D002A8333 /* KeychainCredentialStore.swift */; };
 		CAEA0DD1216BDE2300B0C7A6 /* SystemClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD7804D1F1D5227002A8333 /* SystemClock.swift */; };
 		CAEA0DD2216BDE2300B0C7A6 /* UserDefaultsForceRefreshRequired.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C33B211A2727003C1C4E /* UserDefaultsForceRefreshRequired.swift */; };
@@ -1093,7 +1094,6 @@
 		CAEA0F75216D2CE400B0C7A6 /* CapturingJSONSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE77D21F1A2EB000E9A0BE /* CapturingJSONSession.swift */; };
 		CAEA0F76216D2CE800B0C7A6 /* StubAPIURLProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61870DF20DAD8E00089E836 /* StubAPIURLProviding.swift */; };
 		CAEA0F7A216D341600B0C7A6 /* StubClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780481F1D51EB002A8333 /* StubClock.swift */; };
-		CAEA0F7C216D370600B0C7A6 /* FakeHoursDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA0F7B216D370600B0C7A6 /* FakeHoursDateFormatter.swift */; };
 		CAEA0F7D216E188C00B0C7A6 /* CapturingURLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63755F208CBC5F00536BE2 /* CapturingURLOpener.swift */; };
 		CAEA0F7F216E1AE200B0C7A6 /* StubAnnouncement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5210208F4BF3005259FE /* StubAnnouncement.swift */; };
 		CAEA0F81216E1AE200B0C7A6 /* Day+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE8A20D28AF400C2FBB0 /* Day+RandomValueProviding.swift */; };
@@ -3088,12 +3088,12 @@
 			children = (
 				7820A6FC1F16C0C8004C0FB5 /* AcknowledgedPushPermissionsRequestTestDoubles.swift */,
 				7820A6E41F140056004C0FB5 /* CapturingAlertRouter.swift */,
-				CA52C68420D59A5B009D3A9E /* CapturingSignificantTimeChangeAdapterDelegate.swift */,
 				CA4FBE0F1F73047700D29405 /* CapturingDateFormatter.swift */,
 				CABA43921FCE0A2D009CB5B0 /* CapturingLoginModuleDelegate.swift */,
 				CAF3C7471F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift */,
-				CA8E17F01F817AA2003C348C /* CapturingPreloadModuleDelegate.swift */,
 				CA8E17EE1F817A8C003C348C /* CapturingPreloadInteractor.swift */,
+				CA8E17F01F817AA2003C348C /* CapturingPreloadModuleDelegate.swift */,
+				CA52C68420D59A5B009D3A9E /* CapturingSignificantTimeChangeAdapterDelegate.swift */,
 				CA81D48D1FE9A8DB00A52A2F /* CapturingTutorialModuleDelegate.swift */,
 				CA60BFFD207CDC1700697566 /* FakeAuthenticationService.swift */,
 				7820A6E01F13FC7F004C0FB5 /* NetworkReachabilityTestDoubles.swift */,
@@ -3101,6 +3101,7 @@
 				CABA43961FCE0A5C009CB5B0 /* StubLoginSceneFactory.swift */,
 				CAF3C74D1F9FC72C0008F027 /* StubNewsSceneFactory.swift */,
 				7820A6DA1F13F4DE004C0FB5 /* StubPresentationAssets.swift */,
+				CA79925022451DFE00DF1F84 /* Formatters */,
 				78C86D5E1F12384C003A20E6 /* Scenes */,
 			);
 			path = "Test Doubles";
@@ -3332,6 +3333,7 @@
 				CAF1A674211E4B3600513226 /* Application Adapter Implementations */,
 				CA1FE99C1FA0B3F2009C7DF3 /* Director */,
 				CABF03B22041BC770028BD62 /* Extensions */,
+				CA79924D22451DCE00DF1F84 /* Formatters */,
 				6EF96CE01F12688700EE6134 /* Modules */,
 				CA7992442245173B00DF1F84 /* Notifications */,
 				9ACF999B1ECA259C006FC958 /* Resources */,
@@ -5505,6 +5507,31 @@
 			path = Notifications;
 			sourceTree = "<group>";
 		};
+		CA79924D22451DCE00DF1F84 /* Formatters */ = {
+			isa = PBXGroup;
+			children = (
+				CA79924E22451DD800DF1F84 /* Hours */,
+			);
+			path = Formatters;
+			sourceTree = "<group>";
+		};
+		CA79924E22451DD800DF1F84 /* Hours */ = {
+			isa = PBXGroup;
+			children = (
+				CA3990EC20ACD35C001E3F1A /* HoursDateFormatter.swift */,
+				CA3990EE20ACD559001E3F1A /* FoundationHoursDateFormatter.swift */,
+			);
+			path = Hours;
+			sourceTree = "<group>";
+		};
+		CA79925022451DFE00DF1F84 /* Formatters */ = {
+			isa = PBXGroup;
+			children = (
+				CAEA0F7B216D370600B0C7A6 /* FakeHoursDateFormatter.swift */,
+			);
+			path = Formatters;
+			sourceTree = "<group>";
+		};
 		CA7BA2392238027800D34592 /* Data Store */ = {
 			isa = PBXGroup;
 			children = (
@@ -5790,7 +5817,6 @@
 				CAD7804F1F1E2D13002A8333 /* CredentialStore.swift */,
 				CA162E6F20A4B691004AFED6 /* DateDistanceCalculator.swift */,
 				CA44C3372119BFFE003C1C4E /* ForceRefreshRequired.swift */,
-				CA3990EC20ACD35C001E3F1A /* HoursDateFormatter.swift */,
 				CACF1ECC20B6D65400D904B5 /* ImageRepository.swift */,
 				CA283A5720E6E23200F7D195 /* LongRunningTaskManager.swift */,
 				CA2A586A20F69EB7002C69B6 /* MapCoordinateRender.swift */,
@@ -5808,7 +5834,6 @@
 			children = (
 				CACD2EAE21D67EB000BACD91 /* BundleAppVersionProviding.swift */,
 				CA2761C920E03143000E52AC /* DefaultCollectThemAllRequestFactory.swift */,
-				CA3990EE20ACD559001E3F1A /* FoundationHoursDateFormatter.swift */,
 				CAD780591F1E8E7D002A8333 /* KeychainCredentialStore.swift */,
 				CABA83E920CDBBD600DD0795 /* PersistentImageRepository.swift */,
 				CACD2EAC21D67E7F00BACD91 /* PreprocessorBuildConfigurationProviding.swift */,
@@ -6464,7 +6489,6 @@
 				CAEA109B216E8AE800B0C7A6 /* FakeDataStore.swift */,
 				CA36A49820D9778400EE6537 /* FakeDealersIndex.swift */,
 				CA36A49020D92EC100EE6537 /* FakeDealersService.swift */,
-				CAEA0F7B216D370600B0C7A6 /* FakeHoursDateFormatter.swift */,
 				CA6A8DAA20E2CF6D007536CD /* FakeMapsService.swift */,
 				C61870DF20DAD8E00089E836 /* StubAPIURLProviding.swift */,
 				6EEC6DA21F1BFC5000205F2D /* StubAppVersionProviding.swift */,
@@ -7992,12 +8016,14 @@
 				CA7BA2372237FCFB00D34592 /* SystemNetworkReachability.swift in Sources */,
 				CA1FE99B1FA0B3EB009C7DF3 /* WindowWireframe.swift in Sources */,
 				CA283AAB20EAA0C800F7D195 /* AnnouncementsViewController.swift in Sources */,
+				CA79924C22451DC400DF1F84 /* HoursDateFormatter.swift in Sources */,
 				CA283AA420EAA05900F7D195 /* AnnouncementsSceneFactory.swift in Sources */,
 				CA2725952113BFD9004C6D0A /* EventInformationBannerComponent.swift in Sources */,
 				CAEAEC041FE0057800C0EE7C /* MessageDetailPresenter.swift in Sources */,
 				CACF1E6820AE2FB700D904B5 /* StoryboardEventDetailSceneFactory.swift in Sources */,
 				CA40108F21107D020056E16C /* KnowledgeGroupEntriesBinder.swift in Sources */,
 				CA283AB920EAA44500F7D195 /* AnnouncementsListViewModel.swift in Sources */,
+				CA79924B22451D9A00DF1F84 /* FoundationHoursDateFormatter.swift in Sources */,
 				CABA438B1FBCDBBA009CB5B0 /* LoginModule.swift in Sources */,
 				CACF1E4E20AE2B3300D904B5 /* EventDetailModuleBuilder.swift in Sources */,
 				CA66C0242124CC9900F87AFE /* ApplicationAppStateProviding.swift in Sources */,
@@ -8069,6 +8095,7 @@
 				CA283A7C20E91F3600F7D195 /* WhenToldToRefresh_ScheduleViewModelShould.swift in Sources */,
 				CA08159320D470F800F750D4 /* WhenViewModelIsToldToShowEventsForSpecificDay_ScheduleInteractorShould.swift in Sources */,
 				CA2D08021FE94B5500BFD785 /* WhenTheAppLaunchesWithStaleSession.swift in Sources */,
+				CA79924F22451DFA00DF1F84 /* FakeHoursDateFormatter.swift in Sources */,
 				CA44C362211B1238003C1C4E /* WhenBindingMainStageEvent_EventDetailPresenterShould.swift in Sources */,
 				CA66C0162124A25400F87AFE /* FakeReviewPromptAppVersionRepository.swift in Sources */,
 				CACF1E6120AE2F0100D904B5 /* CapturingEventDetailScene.swift in Sources */,
@@ -8572,7 +8599,6 @@
 				CAEA0D90216BDD9500B0C7A6 /* ConcreteAnnouncementsService.swift in Sources */,
 				CA240F6421E79141002DB747 /* CoreDataStoreTransaction.swift in Sources */,
 				CAEA0DEA216BDE2300B0C7A6 /* SignificantTimePassedEvent.swift in Sources */,
-				CAEA0DA6216BDE2300B0C7A6 /* HoursDateFormatter.swift in Sources */,
 				CAEA0DD8216BDE2300B0C7A6 /* EntityAdapting.swift in Sources */,
 				CAEA0DD3216BDE2300B0C7A6 /* UserDefaultsPreferences.swift in Sources */,
 				CA240F6721E8A93C002DB747 /* NSManagedObjectContext+Convenience.swift in Sources */,
@@ -8634,7 +8660,6 @@
 				CAEA0DAB216BDE2300B0C7A6 /* PushPermissionsRequester.swift in Sources */,
 				CAEA0D8C216BDD9500B0C7A6 /* FileUtilities.swift in Sources */,
 				CACD2E8421D6761D00BACD91 /* LogoutResult.swift in Sources */,
-				CAEA0DCF216BDE2300B0C7A6 /* FoundationHoursDateFormatter.swift in Sources */,
 				CAEA0DD4216BDE2300B0C7A6 /* CoreDataStore.swift in Sources */,
 				CA46799422170911006B3090 /* AnnouncementImpl.swift in Sources */,
 				CAEA0DC4216BDE2300B0C7A6 /* DealersService.swift in Sources */,
@@ -8953,7 +8978,6 @@
 				CA7D8B2C222EC258003431A0 /* FakeDataStore.swift in Sources */,
 				CAEA0F7D216E188C00B0C7A6 /* CapturingURLOpener.swift in Sources */,
 				CAEA0F7A216D341600B0C7A6 /* StubClock.swift in Sources */,
-				CAEA0F7C216D370600B0C7A6 /* FakeHoursDateFormatter.swift in Sources */,
 				CAEA0F7F216E1AE200B0C7A6 /* StubAnnouncement.swift in Sources */,
 				CAEA0F88216E1AE200B0C7A6 /* Track+RandomValueProviding.swift in Sources */,
 				CA235866221B57620044B1FC /* StubMessage.swift in Sources */,
