@@ -1487,7 +1487,7 @@
 		7820A6E61F1400A8004C0FB5 /* AlertRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertRouter.swift; sourceTree = "<group>"; };
 		7820A6E81F1415B0004C0FB5 /* StoryboardAlertRouterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardAlertRouterTests.swift; sourceTree = "<group>"; };
 		7820A6F51F16B123004C0FB5 /* UserDefaultsUserAcknowledgedPushPermissionsRequestStateProvidingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsUserAcknowledgedPushPermissionsRequestStateProvidingTests.swift; sourceTree = "<group>"; };
-		7820A6F91F16B8A0004C0FB5 /* Eurofurence.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Eurofurence.entitlements; path = ../Eurofurence.entitlements; sourceTree = "<group>"; };
+		7820A6F91F16B8A0004C0FB5 /* Eurofurence.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Eurofurence.entitlements; sourceTree = "<group>"; };
 		7820A6FC1F16C0C8004C0FB5 /* AcknowledgedPushPermissionsRequestTestDoubles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcknowledgedPushPermissionsRequestTestDoubles.swift; sourceTree = "<group>"; };
 		78455B3B1F116E24005BE2D7 /* UserDefaultsTutorialStateProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsTutorialStateProvider.swift; sourceTree = "<group>"; };
 		78455B4C1F1177CF005BE2D7 /* StubFirstTimeLaunchStateProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubFirstTimeLaunchStateProvider.swift; sourceTree = "<group>"; };
@@ -3310,10 +3310,10 @@
 			isa = PBXGroup;
 			children = (
 				CA728436209C7DE1007D912A /* Settings.bundle */,
+				7820A6F91F16B8A0004C0FB5 /* Eurofurence.entitlements */,
 				9ACF99431EBE172D006FC958 /* Info.plist */,
 				9ACF99371EBE172D006FC958 /* AppDelegate.swift */,
 				CA02910121F4D6020007F350 /* AppDelegate+DebugWindow.swift */,
-				CA4C474921DF88B9005231AD /* NotificationServiceFetchResultAdapter.swift */,
 				CA9845D91F29199E00E8821D /* ScreenshotAssistant.swift */,
 				CA0F9D9321D53C6F0084886E /* SharedModel.swift */,
 				CAEA1045216E77DE00B0C7A6 /* Theme.swift */,
@@ -3369,13 +3369,9 @@
 		9ACF999B1ECA259C006FC958 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				9A8ECA1A1F2BB44100351A83 /* j1_generic.caf */,
-				9A8ECA1C1F2BB44100351A83 /* j2_generic.caf */,
-				7820A6F91F16B8A0004C0FB5 /* Eurofurence.entitlements */,
-				CA72843C209CF07A007D912A /* Localizable.stringsdict */,
-				CAA39E0720051B5C00F2F3D3 /* LocalizedStrings.swift */,
-				9AB64BCE1F02665D004E8D91 /* fontawesome-webfont.ttf */,
-				CAA39E0B20051C6C00F2F3D3 /* Localizable.strings */,
+				CA79925B22459E4F00DF1F84 /* Fonts */,
+				CA79925922459E3D00DF1F84 /* Sounds */,
+				CA79925A22459E4800DF1F84 /* Strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -5485,9 +5481,9 @@
 		CA7992442245173B00DF1F84 /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
-				CA2D04FD20EE910E00CF54E1 /* NotificationScheduler.swift */,
-				CA7992452245174800DF1F84 /* NotificationScheduleController.swift */,
-				CAA6060620EEB4F200075A4E /* UserNotificationsScheduler.swift */,
+				CA4C474921DF88B9005231AD /* NotificationServiceFetchResultAdapter.swift */,
+				781A94311F1A1981002DE70F /* Firebase Notification Registration */,
+				CA79925C22459E8A00DF1F84 /* Scheduling */,
 			);
 			path = Notifications;
 			sourceTree = "<group>";
@@ -5515,6 +5511,43 @@
 				CAEA0F7B216D370600B0C7A6 /* FakeHoursDateFormatter.swift */,
 			);
 			path = Formatters;
+			sourceTree = "<group>";
+		};
+		CA79925922459E3D00DF1F84 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				9A8ECA1A1F2BB44100351A83 /* j1_generic.caf */,
+				9A8ECA1C1F2BB44100351A83 /* j2_generic.caf */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		CA79925A22459E4800DF1F84 /* Strings */ = {
+			isa = PBXGroup;
+			children = (
+				CA72843C209CF07A007D912A /* Localizable.stringsdict */,
+				CAA39E0720051B5C00F2F3D3 /* LocalizedStrings.swift */,
+				CAA39E0B20051C6C00F2F3D3 /* Localizable.strings */,
+			);
+			path = Strings;
+			sourceTree = "<group>";
+		};
+		CA79925B22459E4F00DF1F84 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				9AB64BCE1F02665D004E8D91 /* fontawesome-webfont.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		CA79925C22459E8A00DF1F84 /* Scheduling */ = {
+			isa = PBXGroup;
+			children = (
+				CA7992452245174800DF1F84 /* NotificationScheduleController.swift */,
+				CA2D04FD20EE910E00CF54E1 /* NotificationScheduler.swift */,
+				CAA6060620EEB4F200075A4E /* UserNotificationsScheduler.swift */,
+			);
+			path = Scheduling;
 			sourceTree = "<group>";
 		};
 		CA7BA2392238027800D34592 /* Data Store */ = {
@@ -6700,7 +6733,6 @@
 				CA52C68020D597E1009D3A9E /* ApplicationSignificantTimeChangeAdapter.swift */,
 				CAD3BDCA2061394700C91E6E /* AppURLOpener.swift */,
 				CA2A586C20F76F03002C69B6 /* UIKitMapCoordinateRender.swift */,
-				781A94311F1A1981002DE70F /* Firebase Notification Registration */,
 			);
 			path = "Application Adapter Implementations";
 			sourceTree = "<group>";
