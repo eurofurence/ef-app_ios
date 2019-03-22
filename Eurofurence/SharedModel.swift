@@ -38,8 +38,6 @@ class SharedModel {
 
         let longRunningTaskManager = ApplicationLongRunningTaskManager()
 
-        let notificationsService = UserNotificationsScheduler()
-
         let mapCoordinateRender = UIKitMapCoordinateRender()
         
         session = EurofurenceSessionBuilder(conventionIdentifier: SharedModel.CID)
@@ -48,7 +46,6 @@ class SharedModel {
             .with(significantTimeChangeAdapter)
             .with(urlOpener)
             .with(longRunningTaskManager)
-            .with(notificationsService)
             .with(mapCoordinateRender)
             .build()
 

@@ -27,7 +27,6 @@ public class EurofurenceSessionBuilder {
     private var urlOpener: URLOpener?
     private var collectThemAllRequestFactory: CollectThemAllRequestFactory
     private var longRunningTaskManager: LongRunningTaskManager?
-    private var notificationScheduler: NotificationScheduler?
     private var hoursDateFormatter: HoursDateFormatter
     private var mapCoordinateRender: MapCoordinateRender?
     private var forceRefreshRequired: ForceRefreshRequired
@@ -144,12 +143,6 @@ public class EurofurenceSessionBuilder {
     }
 
     @discardableResult
-    public func with(_ notificationScheduler: NotificationScheduler) -> EurofurenceSessionBuilder {
-        self.notificationScheduler = notificationScheduler
-        return self
-    }
-
-    @discardableResult
     public func with(_ hoursDateFormatter: HoursDateFormatter) -> EurofurenceSessionBuilder {
         self.hoursDateFormatter = hoursDateFormatter
         return self
@@ -184,7 +177,6 @@ public class EurofurenceSessionBuilder {
                                urlOpener: urlOpener,
                                collectThemAllRequestFactory: collectThemAllRequestFactory,
                                longRunningTaskManager: longRunningTaskManager,
-                               notificationScheduler: notificationScheduler,
                                hoursDateFormatter: hoursDateFormatter,
                                mapCoordinateRender: mapCoordinateRender,
                                forceRefreshRequired: forceRefreshRequired)

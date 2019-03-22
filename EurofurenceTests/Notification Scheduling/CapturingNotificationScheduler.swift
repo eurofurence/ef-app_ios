@@ -6,6 +6,7 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
+@testable import Eurofurence
 import EurofurenceModel
 import Foundation
 

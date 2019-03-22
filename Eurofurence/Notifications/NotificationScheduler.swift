@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import EurofurenceModel
 
 public protocol NotificationScheduler {
 
@@ -17,13 +18,4 @@ public protocol NotificationScheduler {
                               userInfo: [ApplicationNotificationKey: String])
     func cancelNotification(forEvent identifier: EventIdentifier)
 
-}
-
-public enum ApplicationNotificationKey: String, Codable {
-    case notificationContentKind
-    case notificationContentIdentifier
-}
-
-public enum ApplicationNotificationContentKind: String, Codable {
-    case event
 }

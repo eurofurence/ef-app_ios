@@ -66,7 +66,6 @@ class ConcreteEventsService: ClockDelegate, EventsService {
     private let clock: Clock
     private let timeIntervalForUpcomingEventsSinceNow: TimeInterval
     private let eventBus: EventBus
-    private let notificationScheduler: NotificationScheduler?
     private let userPreferences: UserPreferences
     private let hoursDateFormatter: HoursDateFormatter
 
@@ -106,7 +105,6 @@ class ConcreteEventsService: ClockDelegate, EventsService {
          imageCache: ImagesCache,
          clock: Clock,
          timeIntervalForUpcomingEventsSinceNow: TimeInterval,
-         notificationScheduler: NotificationScheduler?,
          userPreferences: UserPreferences,
          hoursDateFormatter: HoursDateFormatter) {
         self.dataStore = dataStore
@@ -114,7 +112,6 @@ class ConcreteEventsService: ClockDelegate, EventsService {
         self.clock = clock
         self.timeIntervalForUpcomingEventsSinceNow = timeIntervalForUpcomingEventsSinceNow
         self.eventBus = eventBus
-        self.notificationScheduler = notificationScheduler
         self.userPreferences = userPreferences
         self.hoursDateFormatter = hoursDateFormatter
 
@@ -279,30 +276,6 @@ class ConcreteEventsService: ClockDelegate, EventsService {
         dataStore.performTransaction { (transaction) in
             transaction.saveFavouriteEventIdentifier(identifier)
         }
-    }
-
-    private func scheduleReminderForEvent(identifier: EventIdentifier) {
-        guard let event = eventModels.first(where: { $0.identifier == identifier }) else { return }
-
-        let waitInterval = userPreferences.upcomingEventReminderInterval * -1
-        let reminderDate = event.startDate.addingTimeInterval(waitInterval)
-        let startTimeString = hoursDateFormatter.hoursString(from: event.startDate)
-        let body = AppCoreStrings.eventReminderBody(timeString: startTimeString, roomName: event.room.name)
-        let userInfo: [ApplicationNotificationKey: String] = [
-            .notificationContentKind: ApplicationNotificationContentKind.event.rawValue,
-            .notificationContentIdentifier: identifier.rawValue
-        ]
-
-        let components: DateComponents = {
-            let desired: Set<Calendar.Component> = Set([.calendar, .timeZone, .year, .month, .day, .hour, .minute])
-            return Calendar.current.dateComponents(desired, from: reminderDate)
-        }()
-
-        notificationScheduler?.scheduleNotification(forEvent: identifier,
-                                                    at: components,
-                                                    title: event.title,
-                                                    body: body,
-                                                    userInfo: userInfo)
     }
 
 }

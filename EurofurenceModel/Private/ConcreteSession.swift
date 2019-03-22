@@ -48,7 +48,6 @@ class ConcreteSession: EurofurenceSession {
          urlOpener: URLOpener?,
          collectThemAllRequestFactory: CollectThemAllRequestFactory,
          longRunningTaskManager: LongRunningTaskManager?,
-         notificationScheduler: NotificationScheduler?,
          hoursDateFormatter: HoursDateFormatter,
          mapCoordinateRender: MapCoordinateRender?,
          forceRefreshRequired: ForceRefreshRequired) {
@@ -93,7 +92,6 @@ class ConcreteSession: EurofurenceSession {
                                               imageCache: imageCache,
                                               clock: clock,
                                               timeIntervalForUpcomingEventsSinceNow: timeIntervalForUpcomingEventsSinceNow,
-                                              notificationScheduler: notificationScheduler,
                                               userPreferences: userPreferences,
                                               hoursDateFormatter: hoursDateFormatter)
 

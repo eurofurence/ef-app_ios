@@ -25,7 +25,6 @@ class EurofurenceSessionTestBuilder {
         var significantTimeChangeAdapter: CapturingSignificantTimeChangeAdapter
         var urlOpener: CapturingURLOpener
         var longRunningTaskManager: FakeLongRunningTaskManager
-        var notificationScheduler: CapturingNotificationScheduler
         var hoursDateFormatter: FakeHoursDateFormatter
         var mapCoordinateRender: CapturingMapCoordinateRender
         var refreshObserver: CapturingRefreshServiceObserver
@@ -44,7 +43,6 @@ class EurofurenceSessionTestBuilder {
                          significantTimeChangeAdapter: CapturingSignificantTimeChangeAdapter,
                          urlOpener: CapturingURLOpener,
                          longRunningTaskManager: FakeLongRunningTaskManager,
-                         notificationScheduler: CapturingNotificationScheduler,
                          hoursDateFormatter: FakeHoursDateFormatter,
                          mapCoordinateRender: CapturingMapCoordinateRender,
                          refreshObserver: CapturingRefreshServiceObserver) {
@@ -60,7 +58,6 @@ class EurofurenceSessionTestBuilder {
             self.significantTimeChangeAdapter = significantTimeChangeAdapter
             self.urlOpener = urlOpener
             self.longRunningTaskManager = longRunningTaskManager
-            self.notificationScheduler = notificationScheduler
             self.hoursDateFormatter = hoursDateFormatter
             self.mapCoordinateRender = mapCoordinateRender
             self.refreshObserver = refreshObserver
@@ -189,7 +186,6 @@ class EurofurenceSessionTestBuilder {
     private let conventionStartDateRepository = StubConventionStartDateRepository()
     private let significantTimeChangeAdapter = CapturingSignificantTimeChangeAdapter()
     private let longRunningTaskManager = FakeLongRunningTaskManager()
-    private let notificationsService = CapturingNotificationScheduler()
     private let hoursDateFormatter = FakeHoursDateFormatter()
     private let mapCoordinateRender = CapturingMapCoordinateRender()
 
@@ -282,7 +278,6 @@ class EurofurenceSessionTestBuilder {
             .with(urlOpener)
             .with(collectThemAllRequestFactory)
             .with(longRunningTaskManager)
-            .with(notificationsService)
             .with(hoursDateFormatter)
             .with(mapCoordinateRender)
             .with(forceUpgradeRequired)
@@ -303,7 +298,6 @@ class EurofurenceSessionTestBuilder {
                        significantTimeChangeAdapter: significantTimeChangeAdapter,
                        urlOpener: urlOpener,
                        longRunningTaskManager: longRunningTaskManager,
-                       notificationScheduler: notificationsService,
                        hoursDateFormatter: hoursDateFormatter,
                        mapCoordinateRender: mapCoordinateRender,
                        refreshObserver: refreshObserver)
