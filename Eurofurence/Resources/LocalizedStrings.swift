@@ -242,5 +242,12 @@ public extension String {
     static func restrictEventsAccessibilityHint(date: String) -> String {
         return localizedStringWithFormat(restrictEventsToDateFormat, date)
     }
+    
+    private static let eventReminderBodyFormat = NSLocalizedString("EventReminderBodyFormat",
+                                                                   comment: "Format string used for event reminder notifications to tell the user when and where an upcoming event is taking place")
+    
+    static func eventReminderBody(timeString: String, roomName: String) -> String {
+        return String.localizedStringWithFormat(eventReminderBodyFormat, timeString, roomName)
+    }
 
 }

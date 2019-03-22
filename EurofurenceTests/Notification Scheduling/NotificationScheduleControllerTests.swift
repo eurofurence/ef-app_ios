@@ -55,7 +55,7 @@ class NotificationScheduleController: EventsServiceObserver {
         let waitInterval = upcomingEventReminderInterval * -1
         let reminderDate = event.startDate.addingTimeInterval(waitInterval)
         let startTimeString = hoursDateFormatter.hoursString(from: event.startDate)
-        let body = AppCoreStrings.eventReminderBody(timeString: startTimeString, roomName: event.room.name)
+        let body = String.eventReminderBody(timeString: startTimeString, roomName: event.room.name)
         
         let eventIdentifier = event.identifier
         let userInfo: [ApplicationNotificationKey: String] = [
@@ -120,7 +120,7 @@ class NotificationScheduleControllerTests: XCTestCase {
         
         let expectedBody: String = {
             let expectedTimeString = hoursDateFormatter.hoursString(from: eventToFavourite.startDate)
-            return AppCoreStrings.eventReminderBody(timeString: expectedTimeString, roomName: eventToFavourite.room.name)
+            return String.eventReminderBody(timeString: expectedTimeString, roomName: eventToFavourite.room.name)
         }()
         
         let expectedUserInfo: [ApplicationNotificationKey: String] =
