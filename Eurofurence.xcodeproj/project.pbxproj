@@ -718,6 +718,7 @@
 		CA73AEF3201A08C4004E77BF /* KnowledgeListModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA73AEF2201A08C4004E77BF /* KnowledgeListModule.swift */; };
 		CA73AEF5201A08D1004E77BF /* KnowledgeGroupsListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA73AEF4201A08D1004E77BF /* KnowledgeGroupsListPresenter.swift */; };
 		CA73AEF8201A0908004E77BF /* WhenBuildingKnowledgePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA73AEF7201A0908004E77BF /* WhenBuildingKnowledgePresenter.swift */; };
+		CA7992462245174800DF1F84 /* NotificationScheduleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7992452245174800DF1F84 /* NotificationScheduleController.swift */; };
 		CA7BA2372237FCFB00D34592 /* SystemNetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF96CF01F1495F400EE6134 /* SystemNetworkReachability.swift */; };
 		CA7BA2382237FCFB00D34592 /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A861EBB1F25551400B75A8C /* NetworkReachability.swift */; };
 		CA7BA23B2238028900D34592 /* DataStoreTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7BA23A2238028900D34592 /* DataStoreTransaction.swift */; };
@@ -1171,7 +1172,6 @@
 		CAEA0FD7216E1CC000B0C7A6 /* WhenFavouritingEvent_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA83F720CE9B9C00DD0795 /* WhenFavouritingEvent_ApplicationShould.swift */; };
 		CAEA0FD8216E1CC000B0C7A6 /* WhenFavouritingMultipleEvents_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA83FB20CEF4B500DD0795 /* WhenFavouritingMultipleEvents_ApplicationShould.swift */; };
 		CAEA0FD9216E1CC000B0C7A6 /* WhenLaunchingApplicationWithPreexistingFavourites.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA83FE20CEF91400DD0795 /* WhenLaunchingApplicationWithPreexistingFavourites.swift */; };
-		CAEA0FDA216E1CC000B0C7A6 /* WhenSchedulingReminderForEvent_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D04FF20EE92CD00CF54E1 /* WhenSchedulingReminderForEvent_ApplicationShould.swift */; };
 		CAEA0FDB216E1CC000B0C7A6 /* WhenUnfavouritingEvent_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA83F920CE9D2500DD0795 /* WhenUnfavouritingEvent_ApplicationShould.swift */; };
 		CAEA0FDC216E1CE700B0C7A6 /* WhenObservingRunningEvents_ThenLoadSucceeds.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162EE120AC55EB004AFED6 /* WhenObservingRunningEvents_ThenLoadSucceeds.swift */; };
 		CAEA0FDD216E1CE700B0C7A6 /* WhenObservingRunningEventsAfterSuccessfulLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162EB520AA2F34004AFED6 /* WhenObservingRunningEventsAfterSuccessfulLoad.swift */; };
@@ -1942,7 +1942,6 @@
 		CA2B4FA71F1EA72A00F007E1 /* LoginArguments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginArguments.swift; sourceTree = "<group>"; };
 		CA2B4FA91F1F7F1200F007E1 /* CapturingLoginObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingLoginObserver.swift; sourceTree = "<group>"; };
 		CA2D04FD20EE910E00CF54E1 /* NotificationScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationScheduler.swift; sourceTree = "<group>"; };
-		CA2D04FF20EE92CD00CF54E1 /* WhenSchedulingReminderForEvent_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSchedulingReminderForEvent_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA2D07F81FE9021A00BFD785 /* WhenResolvingDataStoreState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenResolvingDataStoreState.swift; sourceTree = "<group>"; };
 		CA2D07FA1FE902ED00BFD785 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		CA2D07FC1FE904CD00BFD785 /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
@@ -2400,6 +2399,7 @@
 		CA73AEF2201A08C4004E77BF /* KnowledgeListModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListModule.swift; sourceTree = "<group>"; };
 		CA73AEF4201A08D1004E77BF /* KnowledgeGroupsListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeGroupsListPresenter.swift; sourceTree = "<group>"; };
 		CA73AEF7201A0908004E77BF /* WhenBuildingKnowledgePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBuildingKnowledgePresenter.swift; sourceTree = "<group>"; };
+		CA7992452245174800DF1F84 /* NotificationScheduleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationScheduleController.swift; sourceTree = "<group>"; };
 		CA7BA23A2238028900D34592 /* DataStoreTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStoreTransaction.swift; sourceTree = "<group>"; };
 		CA7BA23C2238029B00D34592 /* DataStoreFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStoreFactory.swift; sourceTree = "<group>"; };
 		CA7BA23E2238036C00D34592 /* CoreDataStoreFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStoreFactory.swift; sourceTree = "<group>"; };
@@ -3337,6 +3337,7 @@
 				CA1FE99C1FA0B3F2009C7DF3 /* Director */,
 				CABF03B22041BC770028BD62 /* Extensions */,
 				6EF96CE01F12688700EE6134 /* Modules */,
+				CA7992442245173B00DF1F84 /* Notifications */,
 				9ACF999B1ECA259C006FC958 /* Resources */,
 				CA82409E21249A50007E4A70 /* Review Prompt */,
 				9ACF99591EBE32FE006FC958 /* Views */,
@@ -5498,6 +5499,14 @@
 			path = "Presenter Tests";
 			sourceTree = "<group>";
 		};
+		CA7992442245173B00DF1F84 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				CA7992452245174800DF1F84 /* NotificationScheduleController.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
 		CA7BA2392238027800D34592 /* Data Store */ = {
 			isa = PBXGroup;
 			children = (
@@ -5931,7 +5940,6 @@
 				CABA83F720CE9B9C00DD0795 /* WhenFavouritingEvent_ApplicationShould.swift */,
 				CABA83FB20CEF4B500DD0795 /* WhenFavouritingMultipleEvents_ApplicationShould.swift */,
 				CABA83FE20CEF91400DD0795 /* WhenLaunchingApplicationWithPreexistingFavourites.swift */,
-				CA2D04FF20EE92CD00CF54E1 /* WhenSchedulingReminderForEvent_ApplicationShould.swift */,
 				CABA83F920CE9D2500DD0795 /* WhenUnfavouritingEvent_ApplicationShould.swift */,
 				CA23587B221C8BDA0044B1FC /* WhenObservingEvent_ThatIsFavourite.swift */,
 				CA23587D221C8DF10044B1FC /* WhenObservingEvent_ThatIsFavourite_FromPreviousSession.swift */,
@@ -7976,6 +7984,7 @@
 				CA8E7EF81FB08ED700F0BF10 /* RootModule.swift in Sources */,
 				CA36A48220D8C89700EE6537 /* DealerComponentTableViewCell.swift in Sources */,
 				CA17FE7D2057FCCB005A4C05 /* KnowledgeEntryDetailViewModel.swift in Sources */,
+				CA7992462245174800DF1F84 /* NotificationScheduleController.swift in Sources */,
 				CAA6060C20EEC06500075A4E /* DebugTableViewController.swift in Sources */,
 				CA17FE8520580144005A4C05 /* LinksBinder.swift in Sources */,
 				CAF81C5720DD208100898C52 /* DealerDetailLocationAndAvailabilityTableViewCell.swift in Sources */,
@@ -8797,7 +8806,6 @@
 				CAEA101E216E1CE800B0C7A6 /* WhenSavingSuccessfulSyncResponse.swift in Sources */,
 				CA8DA45F2240F80D00B1E5D1 /* WhenPerformingSync_AfterEnforcingFullStoreRefresh_WhenFullRefreshFailed.swift in Sources */,
 				CAEA1000216E1CE700B0C7A6 /* WhenObservingMaps_AfterSyncSucceeds_ApplicationShould.swift in Sources */,
-				CAEA0FDA216E1CC000B0C7A6 /* WhenSchedulingReminderForEvent_ApplicationShould.swift in Sources */,
 				CAEA0FDE216E1CE700B0C7A6 /* WhenObservingRunningEventsBeforeLoadingAnything.swift in Sources */,
 				CAEA0FEC216E1CE700B0C7A6 /* WhenSyncSucceeds_WithImages_ThenSubsequentSyncDeletesImage_ApplicationShould.swift in Sources */,
 				CAEA108A216E818A00B0C7A6 /* CapturingSignificantTimeChangeAdapter.swift in Sources */,

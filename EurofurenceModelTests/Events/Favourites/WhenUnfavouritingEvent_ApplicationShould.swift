@@ -39,8 +39,4 @@ class WhenUnfavouritingEvent_ApplicationShould: XCTestCase {
         XCTAssertFalse(observer.capturedFavouriteEventIdentifiers.contains(identifier))
     }
 
-    func testTellTheNotificationServiceToRemoveTheScheduledNotification() {
-        XCTAssertEqual(identifier, context.notificationScheduler.capturedEventIdentifierToRemoveNotification)
-    }
-
 }

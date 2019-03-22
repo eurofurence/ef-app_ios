@@ -80,12 +80,4 @@ class WhenFavouritingEvent_ApplicationShould: XCTestCase {
         XCTAssertEqual(expected, observer.capturedFavouriteEventIdentifiers)
     }
 
-    func testScheduleReminderForEvent() {
-        let identifier = EventIdentifier(events.randomElement().element.identifier)
-        let event = context.eventsService.fetchEvent(identifier: identifier)
-        event?.favourite()
-
-        XCTAssertEqual(identifier, context.notificationScheduler.capturedEventIdentifier)
-    }
-
 }

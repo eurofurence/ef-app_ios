@@ -31,7 +31,6 @@ class ConcreteEventsService: ClockDelegate, EventsService {
             let identifier = event.identifier
             service.persistFavouritedEvent(identifier: identifier)
             service.favouriteEventIdentifiers.append(identifier)
-            service.scheduleReminderForEvent(identifier: identifier)
         }
 
     }
@@ -52,7 +51,6 @@ class ConcreteEventsService: ClockDelegate, EventsService {
             }
 
             service.favouriteEventIdentifiers.index(of: identifier).let({ service.favouriteEventIdentifiers.remove(at: $0) })
-            service.notificationScheduler?.cancelNotification(forEvent: identifier)
 
             let event = EventUnfavouritedEvent(identifier: identifier)
             service.eventBus.post(event)

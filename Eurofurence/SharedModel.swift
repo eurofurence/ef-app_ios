@@ -17,6 +17,7 @@ class SharedModel {
     let session: EurofurenceSession
     let services: Services
     let notificationFetchResultAdapter: NotificationServiceFetchResultAdapter
+    let notificationScheduleController: NotificationScheduleController
 
     private init() {
         let jsonSession = URLSessionBasedJSONSession.shared
@@ -40,7 +41,7 @@ class SharedModel {
         let notificationsService = UserNotificationsScheduler()
 
         let mapCoordinateRender = UIKitMapCoordinateRender()
-
+        
         session = EurofurenceSessionBuilder(conventionIdentifier: SharedModel.CID)
             .with(remoteNotificationsTokenRegistration)
             .with(pushPermissionsRequester)
@@ -54,6 +55,13 @@ class SharedModel {
         services = session.services
 
         notificationFetchResultAdapter = NotificationServiceFetchResultAdapter(notificationService: services.notifications)
+        
+        // TODO: Source from preferences/Firebase
+        let upcomingEventReminderInterval: TimeInterval = 900
+        notificationScheduleController = NotificationScheduleController(eventsService: session.services.events,
+                                                                        notificationScheduler: UserNotificationsScheduler(),
+                                                                        hoursDateFormatter: FoundationHoursDateFormatter.shared,
+                                                                        upcomingEventReminderInterval: upcomingEventReminderInterval)
     }
 
 }
