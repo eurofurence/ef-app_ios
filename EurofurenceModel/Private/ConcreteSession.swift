@@ -37,7 +37,6 @@ class ConcreteSession: EurofurenceSession {
          userPreferences: UserPreferences,
          dataStoreFactory: DataStoreFactory,
          remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration?,
-         pushPermissionsRequester: PushPermissionsRequester?,
          clock: Clock,
          credentialStore: CredentialStore,
          dateDistanceCalculator: DateDistanceCalculator,
@@ -52,8 +51,6 @@ class ConcreteSession: EurofurenceSession {
          forceRefreshRequired: ForceRefreshRequired) {
         
         let dataStore = dataStoreFactory.makeDataStore(for: conventionIdentifier)
-
-        pushPermissionsRequester?.requestPushPermissions()
 
         sessionStateService = ConcreteSessionStateService(forceRefreshRequired: forceRefreshRequired,
                                                           userPreferences: userPreferences,

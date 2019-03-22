@@ -46,13 +46,6 @@ class WhenThePerformInitialDownloadPageAppears: XCTestCase {
                        context.page.capturedPrimaryActionDescription)
     }
 
-    func testTappingThePrimaryButtonOnTheInitiateDownloadPageShouldNotRequestPushPermissions() {
-        context.tutorial.tutorialPage.simulateTappingSecondaryActionButton()
-        context.page.simulateTappingPrimaryActionButton()
-
-        XCTAssertFalse(context.pushRequesting.wasToldToRequestPushPermissions)
-    }
-
     func testTappingThePrimaryButtonTellsTutorialDelegateTutorialFinished() {
         context.page.simulateTappingPrimaryActionButton()
         XCTAssertTrue(context.delegate.wasToldTutorialFinished)

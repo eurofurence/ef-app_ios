@@ -805,7 +805,6 @@
 		CAA6DD1120E1649600328C37 /* WhenMessagesSceneTapsLogoutButton_MessagesPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA6DD1020E1649600328C37 /* WhenMessagesSceneTapsLogoutButton_MessagesPresenterShould.swift */; };
 		CAB138101FE08D0E00AD61FE /* MessageBubbleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB1380E1FE08D0E00AD61FE /* MessageBubbleCollectionViewCell.swift */; };
 		CAB138131FE1555C00AD61FE /* MessagesCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB138121FE1555C00AD61FE /* MessagesCollectionViewFlowLayout.swift */; };
-		CAB3A72F1F7533AE005DF77B /* ApplicationPushPermissionsRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB3A72E1F7533AE005DF77B /* ApplicationPushPermissionsRequester.swift */; };
 		CABA43831FB84834009CB5B0 /* StoryboardMessagesSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43821FB84834009CB5B0 /* StoryboardMessagesSceneFactory.swift */; };
 		CABA43861FBC6FE1009CB5B0 /* LoginModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43851FBC6FE1009CB5B0 /* LoginModuleProviding.swift */; };
 		CABA43891FBCD94E009CB5B0 /* LoginPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43881FBCD94E009CB5B0 /* LoginPresenterTests.swift */; };
@@ -984,7 +983,6 @@
 		CAEA0DA7216BDE2300B0C7A6 /* ImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1ECC20B6D65400D904B5 /* ImageRepository.swift */; };
 		CAEA0DA8216BDE2300B0C7A6 /* LongRunningTaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A5720E6E23200F7D195 /* LongRunningTaskManager.swift */; };
 		CAEA0DA9216BDE2300B0C7A6 /* MapCoordinateRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2A586A20F69EB7002C69B6 /* MapCoordinateRender.swift */; };
-		CAEA0DAB216BDE2300B0C7A6 /* PushPermissionsRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB3A72C1F753308005DF77B /* PushPermissionsRequester.swift */; };
 		CAEA0DAC216BDE2300B0C7A6 /* RemoteNotificationsTokenRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781A943B1F1A19F1002DE70F /* RemoteNotificationsTokenRegistration.swift */; };
 		CAEA0DAD216BDE2300B0C7A6 /* SignificantTimeChangeAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C67A20D59457009D3A9E /* SignificantTimeChangeAdapter.swift */; };
 		CAEA0DAF216BDE2300B0C7A6 /* URLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDC82061382000C91E6E /* URLOpener.swift */; };
@@ -1260,7 +1258,6 @@
 		CAEA103A216E1CE800B0C7A6 /* UserDefaultsForceRefreshRequired.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C339211A1CAE003C1C4E /* UserDefaultsForceRefreshRequired.swift */; };
 		CAEA103B216E1CE800B0C7A6 /* WhenUpgradingBetweenAppVersions_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADABF082119BE770023C3B6 /* WhenUpgradingBetweenAppVersions_ApplicationShould.swift */; };
 		CAEA103D216E1D8700B0C7A6 /* StubAppVersionProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEC6DA21F1BFC5000205F2D /* StubAppVersionProviding.swift */; };
-		CAEA103E216E1DA600B0C7A6 /* CapturingPushPermissionsRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB3A7291F7532A2005DF77B /* CapturingPushPermissionsRequester.swift */; };
 		CAEA103F216E1E5000B0C7A6 /* StubDateDistanceCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E7520A4B6CE004AFED6 /* StubDateDistanceCalculator.swift */; };
 		CAEA1042216E1FB400B0C7A6 /* CapturingSignificantTimeChangeAdapterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C68420D59A5B009D3A9E /* CapturingSignificantTimeChangeAdapterDelegate.swift */; };
 		CAEA1044216E775300B0C7A6 /* ScreenshotAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9845D91F29199E00E8821D /* ScreenshotAssistant.swift */; };
@@ -2503,9 +2500,6 @@
 		CAB1380E1FE08D0E00AD61FE /* MessageBubbleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubbleCollectionViewCell.swift; sourceTree = "<group>"; };
 		CAB138121FE1555C00AD61FE /* MessagesCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		CAB258E22120431A00909C79 /* CapturingKnowledgeServiceObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingKnowledgeServiceObserver.swift; sourceTree = "<group>"; };
-		CAB3A7291F7532A2005DF77B /* CapturingPushPermissionsRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingPushPermissionsRequester.swift; sourceTree = "<group>"; };
-		CAB3A72C1F753308005DF77B /* PushPermissionsRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushPermissionsRequester.swift; sourceTree = "<group>"; };
-		CAB3A72E1F7533AE005DF77B /* ApplicationPushPermissionsRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationPushPermissionsRequester.swift; sourceTree = "<group>"; };
 		CABA43821FB84834009CB5B0 /* StoryboardMessagesSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardMessagesSceneFactory.swift; sourceTree = "<group>"; };
 		CABA43851FBC6FE1009CB5B0 /* LoginModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModuleProviding.swift; sourceTree = "<group>"; };
 		CABA43881FBCD94E009CB5B0 /* LoginPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenterTests.swift; sourceTree = "<group>"; };
@@ -5820,7 +5814,6 @@
 				CACF1ECC20B6D65400D904B5 /* ImageRepository.swift */,
 				CA283A5720E6E23200F7D195 /* LongRunningTaskManager.swift */,
 				CA2A586A20F69EB7002C69B6 /* MapCoordinateRender.swift */,
-				CAB3A72C1F753308005DF77B /* PushPermissionsRequester.swift */,
 				781A943B1F1A19F1002DE70F /* RemoteNotificationsTokenRegistration.swift */,
 				CA52C67A20D59457009D3A9E /* SignificantTimeChangeAdapter.swift */,
 				CAD3BDC82061382000C91E6E /* URLOpener.swift */,
@@ -6482,7 +6475,6 @@
 				CAEA0F5E216D294000B0C7A6 /* EurofurenceAppCoreTestDoubles.h */,
 				CAEA0F5F216D294000B0C7A6 /* Info.plist */,
 				78FE77D21F1A2EB000E9A0BE /* CapturingJSONSession.swift */,
-				CAB3A7291F7532A2005DF77B /* CapturingPushPermissionsRequester.swift */,
 				CA7D8B15222D4DA0003431A0 /* CapturingRefreshService.swift */,
 				CA63755F208CBC5F00536BE2 /* CapturingURLOpener.swift */,
 				CA2783E422393871004B5DB2 /* FakeAnnouncementsService.swift */,
@@ -6714,7 +6706,6 @@
 			isa = PBXGroup;
 			children = (
 				CA283A5920E6E24300F7D195 /* ApplicationLongRunningTaskManager.swift */,
-				CAB3A72E1F7533AE005DF77B /* ApplicationPushPermissionsRequester.swift */,
 				CA52C68020D597E1009D3A9E /* ApplicationSignificantTimeChangeAdapter.swift */,
 				CAD3BDCA2061394700C91E6E /* AppURLOpener.swift */,
 				CA2A586C20F76F03002C69B6 /* UIKitMapCoordinateRender.swift */,
@@ -7822,7 +7813,6 @@
 				CA40109C211081C80056E16C /* KnowledgeGroupEntriesViewController.swift in Sources */,
 				CA72846E209D14A3007D912A /* AnnouncementDetailInteractor.swift in Sources */,
 				CA0F762B203230F2009DA079 /* KnowledgeGroupEntryScene.swift in Sources */,
-				CAB3A72F1F7533AE005DF77B /* ApplicationPushPermissionsRequester.swift in Sources */,
 				CA6A8D6D20E26482007536CD /* MapsSceneFactory.swift in Sources */,
 				CA00AE9120D293B800C2FBB0 /* UICollectionView+Convenience.swift in Sources */,
 				CACF1EA420B5ACD400D904B5 /* EventDetailDescriptionTableViewCell.swift in Sources */,
@@ -8657,7 +8647,6 @@
 				CAEA0DAC216BDE2300B0C7A6 /* RemoteNotificationsTokenRegistration.swift in Sources */,
 				CAEA0D97216BDD9500B0C7A6 /* EventsSearchController.swift in Sources */,
 				CAEA0DFB216BDE3100B0C7A6 /* RoomCharacteristics.swift in Sources */,
-				CAEA0DAB216BDE2300B0C7A6 /* PushPermissionsRequester.swift in Sources */,
 				CAEA0D8C216BDD9500B0C7A6 /* FileUtilities.swift in Sources */,
 				CACD2E8421D6761D00BACD91 /* LogoutResult.swift in Sources */,
 				CAEA0DD4216BDE2300B0C7A6 /* CoreDataStore.swift in Sources */,
@@ -8991,7 +8980,6 @@
 				CA7D8B16222D4DA0003431A0 /* CapturingRefreshService.swift in Sources */,
 				CAEA103F216E1E5000B0C7A6 /* StubDateDistanceCalculator.swift in Sources */,
 				CAEA0F8D216E1AE200B0C7A6 /* StubMap.swift in Sources */,
-				CAEA103E216E1DA600B0C7A6 /* CapturingPushPermissionsRequester.swift in Sources */,
 				CAEA0F85216E1AE200B0C7A6 /* Link+RandomValueProviding.swift in Sources */,
 				CA2783E722393964004B5DB2 /* FakeMapsService.swift in Sources */,
 				CAEA0F66216D29FD00B0C7A6 /* StubBuildConfigurationProviding.swift in Sources */,

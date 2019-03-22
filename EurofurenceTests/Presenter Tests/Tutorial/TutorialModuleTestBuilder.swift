@@ -22,12 +22,10 @@ class TutorialModuleTestBuilder {
         var assets: PresentationAssets
         var alertRouter: CapturingAlertRouter
         var tutorialStateProviding: StubFirstTimeLaunchStateProvider
-        var pushRequesting: CapturingPushPermissionsRequester
     }
 
     let alertRouter = CapturingAlertRouter()
     let stateProviding = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: false)
-    let pushRequesting = CapturingPushPermissionsRequester()
     let presentationAssets = StubPresentationAssets()
     let tutorialSceneFactory = StubTutorialSceneFactory()
     let delegate = CapturingTutorialModuleDelegate()
@@ -53,7 +51,6 @@ class TutorialModuleTestBuilder {
             .with(alertRouter)
             .with(stateProviding)
             .with(networkReachability)
-            .with(pushRequesting)
             .with(pushPermissionsRequestStateProviding)
             .build()
             .makeTutorialModule(delegate)
@@ -65,8 +62,7 @@ class TutorialModuleTestBuilder {
                        page: tutorialSceneFactory.tutorialScene.tutorialPage,
                        assets: presentationAssets,
                        alertRouter: alertRouter,
-                       tutorialStateProviding: stateProviding,
-                       pushRequesting: pushRequesting)
+                       tutorialStateProviding: stateProviding)
     }
 
 }

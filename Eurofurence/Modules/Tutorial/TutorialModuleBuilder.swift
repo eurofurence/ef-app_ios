@@ -15,7 +15,6 @@ class TutorialModuleBuilder {
     private var alertRouter: AlertRouter
     private var tutorialStateProviding: UserCompletedTutorialStateProviding
     private var networkReachability: NetworkReachability
-    private var pushPermissionsRequesting: PushPermissionsRequester
     private var witnessedTutorialPushPermissionsRequest: WitnessedTutorialPushPermissionsRequest
 
     init() {
@@ -24,7 +23,6 @@ class TutorialModuleBuilder {
         alertRouter = WindowAlertRouter.shared
         tutorialStateProviding = UserDefaultsTutorialStateProvider(userDefaults: .standard)
         networkReachability = SystemConfigurationNetworkReachability()
-        pushPermissionsRequesting = ApplicationPushPermissionsRequester.shared
         witnessedTutorialPushPermissionsRequest = UserDefaultsWitnessedTutorialPushPermissionsRequest(userDefaults: .standard)
     }
 
@@ -53,11 +51,6 @@ class TutorialModuleBuilder {
         return self
     }
 
-    func with(_ pushPermissionsRequesting: PushPermissionsRequester) -> TutorialModuleBuilder {
-        self.pushPermissionsRequesting = pushPermissionsRequesting
-        return self
-    }
-
     func with(_ witnessedTutorialPushPermissionsRequest: WitnessedTutorialPushPermissionsRequest) -> TutorialModuleBuilder {
         self.witnessedTutorialPushPermissionsRequest = witnessedTutorialPushPermissionsRequest
         return self
@@ -69,7 +62,6 @@ class TutorialModuleBuilder {
                                           alertRouter: alertRouter,
                                           tutorialStateProviding: tutorialStateProviding,
                                           networkReachability: networkReachability,
-                                          pushPermissionsRequesting: pushPermissionsRequesting,
                                           witnessedTutorialPushPermissionsRequest: witnessedTutorialPushPermissionsRequest)
     }
 

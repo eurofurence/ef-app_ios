@@ -23,7 +23,6 @@ struct TutorialModule: TutorialModuleProviding {
     var alertRouter: AlertRouter
     var tutorialStateProviding: UserCompletedTutorialStateProviding
     var networkReachability: NetworkReachability
-    var pushPermissionsRequesting: PushPermissionsRequester
     var witnessedTutorialPushPermissionsRequest: WitnessedTutorialPushPermissionsRequest
 
     func makeTutorialModule(_ delegate: TutorialModuleDelegate) -> UIViewController {

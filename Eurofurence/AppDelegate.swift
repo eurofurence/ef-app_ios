@@ -54,9 +54,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         Theme.apply()
         ReviewPromptController.initialize()
     }
-
+    
     private func prepareNotificationHandler() {
         UNUserNotificationCenter.current().delegate = self
+        requestNotificationPermissions()
+    }
+    
+    private func requestNotificationPermissions() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (_, error) in
+            if let error = error {
+                print("Failed to register for notifications with error: \(error)")
+            }
+        }
     }
 
     private func prepareDirector() {

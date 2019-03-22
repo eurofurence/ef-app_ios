@@ -30,8 +30,6 @@ class SharedModel {
                                                                                                 firebaseAdapter: FirebaseMessagingAdapter(),
                                                                                                 fcmRegistration: fcmRegistration)
 
-        let pushPermissionsRequester = ApplicationPushPermissionsRequester.shared
-
         let significantTimeChangeAdapter = ApplicationSignificantTimeChangeAdapter()
 
         let urlOpener = AppURLOpener()
@@ -42,7 +40,6 @@ class SharedModel {
         
         session = EurofurenceSessionBuilder(conventionIdentifier: SharedModel.CID)
             .with(remoteNotificationsTokenRegistration)
-            .with(pushPermissionsRequester)
             .with(significantTimeChangeAdapter)
             .with(urlOpener)
             .with(longRunningTaskManager)

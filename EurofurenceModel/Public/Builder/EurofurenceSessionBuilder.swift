@@ -15,7 +15,6 @@ public class EurofurenceSessionBuilder {
     private var userPreferences: UserPreferences
     private var dataStoreFactory: DataStoreFactory
     private var remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration?
-    private var pushPermissionsRequester: PushPermissionsRequester?
     private var clock: Clock
     private var credentialStore: CredentialStore
     private var api: API
@@ -65,12 +64,6 @@ public class EurofurenceSessionBuilder {
     @discardableResult
     public func with(_ remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration) -> EurofurenceSessionBuilder {
         self.remoteNotificationsTokenRegistration = remoteNotificationsTokenRegistration
-        return self
-    }
-
-    @discardableResult
-    public func with(_ pushPermissionsRequester: PushPermissionsRequester) -> EurofurenceSessionBuilder {
-        self.pushPermissionsRequester = pushPermissionsRequester
         return self
     }
 
@@ -158,7 +151,6 @@ public class EurofurenceSessionBuilder {
                                userPreferences: userPreferences,
                                dataStoreFactory: dataStoreFactory,
                                remoteNotificationsTokenRegistration: remoteNotificationsTokenRegistration,
-                               pushPermissionsRequester: pushPermissionsRequester,
                                clock: clock,
                                credentialStore: credentialStore,
                                dateDistanceCalculator: dateDistanceCalculator,

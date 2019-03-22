@@ -170,7 +170,6 @@ class EurofurenceSessionTestBuilder {
     private let notificationTokenRegistration = CapturingRemoteNotificationsTokenRegistration()
     private var credentialStore = CapturingCredentialStore()
     private var clock = StubClock()
-    private var pushPermissionsRequester: PushPermissionsRequester = CapturingPushPermissionsRequester()
     private var dataStore = FakeDataStore()
     private var userPreferences: UserPreferences = StubUserPreferences()
     private var timeIntervalForUpcomingEventsSinceNow: TimeInterval = .greatestFiniteMagnitude
@@ -192,11 +191,6 @@ class EurofurenceSessionTestBuilder {
 
     func with(_ persistedCredential: Credential?) -> EurofurenceSessionTestBuilder {
         credentialStore = CapturingCredentialStore(persistedCredential: persistedCredential)
-        return self
-    }
-
-    func with(_ pushPermissionsRequester: PushPermissionsRequester) -> EurofurenceSessionTestBuilder {
-        self.pushPermissionsRequester = pushPermissionsRequester
         return self
     }
 
@@ -263,7 +257,6 @@ class EurofurenceSessionTestBuilder {
             .with(clock)
             .with(credentialStore)
             .with(StubDataStoreFactory(conventionIdentifier: conventionIdentifier, dataStore: dataStore))
-            .with(pushPermissionsRequester)
             .with(notificationTokenRegistration)
             .with(userPreferences)
             .with(dateDistanceCalculator)
