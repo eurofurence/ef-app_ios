@@ -34,7 +34,6 @@
 	<string>Eurofurence uses your calendar to add events and alerts</string>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Hieroglify.ttf</string>
 		<string>fontawesome-webfont.ttf</string>
 	</array>
 	<key>UIBackgroundModes</key>
