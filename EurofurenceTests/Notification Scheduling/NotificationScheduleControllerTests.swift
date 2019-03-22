@@ -82,20 +82,31 @@ class NotificationScheduleController: EventsServiceObserver {
 }
 
 class NotificationScheduleControllerTests: XCTestCase {
-
-    func testFavouritingEventSchedulesNotification() {
+    
+    var controller: NotificationScheduleController!
+    var notificationScheduler: CapturingNotificationScheduler!
+    var upcomingEventReminderInterval: TimeInterval!
+    var hoursDateFormatter: FakeHoursDateFormatter!
+    var eventToFavourite: Event!
+    
+    override func setUp() {
+        super.setUp()
+        
         let eventsService = FakeEventsService()
         let events = [StubEvent].random
         eventsService.allEvents = events
-        let notificationScheduler = CapturingNotificationScheduler()
-        let hoursDateFormatter = FakeHoursDateFormatter()
-        let upcomingEventReminderInterval = TimeInterval.random
-        let controller = NotificationScheduleController(eventsService: eventsService,
-                                                        notificationScheduler: notificationScheduler,
-                                                        hoursDateFormatter: hoursDateFormatter,
-                                                        upcomingEventReminderInterval: upcomingEventReminderInterval)
+        notificationScheduler = CapturingNotificationScheduler()
+        hoursDateFormatter = FakeHoursDateFormatter()
+        upcomingEventReminderInterval = TimeInterval.random
+        controller = NotificationScheduleController(eventsService: eventsService,
+                                                    notificationScheduler: notificationScheduler,
+                                                    hoursDateFormatter: hoursDateFormatter,
+                                                    upcomingEventReminderInterval: upcomingEventReminderInterval)
         
-        let eventToFavourite = events.randomElement().element
+        eventToFavourite = events.randomElement().element
+    }
+
+    func testFavouritingEventSchedulesNotification() {
         eventToFavourite.favourite()
         
         let expectedDateComponents: DateComponents = {
@@ -124,18 +135,6 @@ class NotificationScheduleControllerTests: XCTestCase {
     }
     
     func testUnfavouritingEventCancelsNotification() {
-        let eventsService = FakeEventsService()
-        let events = [StubEvent].random
-        eventsService.allEvents = events
-        let notificationScheduler = CapturingNotificationScheduler()
-        let hoursDateFormatter = FakeHoursDateFormatter()
-        let upcomingEventReminderInterval = TimeInterval.random
-        let controller = NotificationScheduleController(eventsService: eventsService,
-                                                        notificationScheduler: notificationScheduler,
-                                                        hoursDateFormatter: hoursDateFormatter,
-                                                        upcomingEventReminderInterval: upcomingEventReminderInterval)
-        
-        let eventToFavourite = events.randomElement().element
         eventToFavourite.favourite()
         eventToFavourite.unfavourite()
         
