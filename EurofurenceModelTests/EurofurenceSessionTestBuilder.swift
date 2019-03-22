@@ -165,9 +165,7 @@ class EurofurenceSessionTestBuilder {
 
     }
 
-    private let conventionIdentifier = ConventionIdentifier(identifier: ModelCharacteristics.testConventionIdentifier)
     private var api = FakeAPI()
-    private let notificationTokenRegistration = CapturingRemoteNotificationsTokenRegistration()
     private var credentialStore = CapturingCredentialStore()
     private var clock = StubClock()
     private var dataStore = FakeDataStore()
@@ -177,12 +175,6 @@ class EurofurenceSessionTestBuilder {
     private var urlOpener: CapturingURLOpener = CapturingURLOpener()
     private var collectThemAllRequestFactory: CollectThemAllRequestFactory = StubCollectThemAllRequestFactory()
     private var forceUpgradeRequired: ForceRefreshRequired = StubForceRefreshRequired(isForceRefreshRequired: false)
-
-    private let dateDistanceCalculator = StubDateDistanceCalculator()
-    private let conventionStartDateRepository = StubConventionStartDateRepository()
-    private let significantTimeChangeAdapter = CapturingSignificantTimeChangeAdapter()
-    private let longRunningTaskManager = FakeLongRunningTaskManager()
-    private let mapCoordinateRender = CapturingMapCoordinateRender()
 
     func with(_ currentDate: Date) -> EurofurenceSessionTestBuilder {
         clock = StubClock(currentDate: currentDate)
@@ -250,9 +242,18 @@ class EurofurenceSessionTestBuilder {
         return self
     }
 
+    // swiftlint:disable function_body_length
     @discardableResult
     func build() -> Context {
-        let app = EurofurenceSessionBuilder(conventionIdentifier: conventionIdentifier)
+        let conventionIdentifier = ConventionIdentifier(identifier: ModelCharacteristics.testConventionIdentifier)
+        let notificationTokenRegistration = CapturingRemoteNotificationsTokenRegistration()
+        let dateDistanceCalculator = StubDateDistanceCalculator()
+        let conventionStartDateRepository = StubConventionStartDateRepository()
+        let significantTimeChangeAdapter = CapturingSignificantTimeChangeAdapter()
+        let longRunningTaskManager = FakeLongRunningTaskManager()
+        let mapCoordinateRender = CapturingMapCoordinateRender()
+        
+        let session = EurofurenceSessionBuilder(conventionIdentifier: conventionIdentifier)
             .with(api)
             .with(clock)
             .with(credentialStore)
@@ -272,9 +273,9 @@ class EurofurenceSessionTestBuilder {
             .build()
         
         let refreshObserver = CapturingRefreshServiceObserver()
-        app.services.refresh.add(refreshObserver)
+        session.services.refresh.add(refreshObserver)
 
-        return Context(session: app,
+        return Context(session: session,
                        clock: clock,
                        notificationTokenRegistration: notificationTokenRegistration,
                        credentialStore: credentialStore,
