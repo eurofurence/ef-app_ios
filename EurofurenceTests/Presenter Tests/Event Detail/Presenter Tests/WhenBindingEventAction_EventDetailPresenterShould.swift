@@ -35,8 +35,18 @@ final class FakeEventActionViewModel: EventActionViewModel {
         self.performedAction = performedAction
     }
     
+    private var actionTraitsDidChangeHandler: ((EventActionViewModel) -> Void)?
+    func setActionTraitsDidChangeHandler(_ handler: @escaping (EventActionViewModel) -> Void) {
+        actionTraitsDidChangeHandler = handler
+    }
+    
     func perform() {
         performedAction = true
+    }
+    
+    func simulateTitleChanged(_ newTitle: String) {
+        title = newTitle
+        actionTraitsDidChangeHandler?(self)
     }
     
 }
@@ -74,6 +84,13 @@ class WhenBindingEventAction_EventDetailPresenterShould: XCTestCase {
     func testInvokeTheActionWhenBannerSelected() {
         stubbedActionComponent.simulateSelected()
         XCTAssertTrue(actionViewModel.performedAction)
+    }
+    
+    func testUpdateTheTextWhenTheActionChanges() {
+        let newTitle = String.random
+        actionViewModel.simulateTitleChanged(newTitle)
+        
+        XCTAssertEqual(newTitle, stubbedActionComponent.capturedTitle)
     }
 
 }

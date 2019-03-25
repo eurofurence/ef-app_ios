@@ -107,6 +107,10 @@ class EventDetailPresenter: EventDetailSceneDelegate, EventDetailViewModelDelega
             boundComponent = componentFactory.makeEventActionBannerComponent { (component) in
                 component.setActionTitle(actionViewModel.title)
                 component.setSelectionHandler(actionViewModel.perform)
+                
+                actionViewModel.setActionTraitsDidChangeHandler { (action) in
+                    component.setActionTitle(action.title)
+                }
             }
         }
 

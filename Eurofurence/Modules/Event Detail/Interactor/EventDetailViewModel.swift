@@ -111,6 +111,7 @@ protocol EventActionViewModel {
     
     var title: String { get }
     
+    func setActionTraitsDidChangeHandler(_ handler: @escaping (EventActionViewModel) -> Void)
     func perform()
     
 }
