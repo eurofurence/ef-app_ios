@@ -37,6 +37,7 @@ protocol EventDetailViewModelVisitor {
     func visit(_ dealersDenMessage: EventDealersDenMessageViewModel)
     func visit(_ mainStageMessage: EventMainStageMessageViewModel)
     func visit(_ photoshootMessage: EventPhotoshootMessageViewModel)
+    func visit(_ actionViewModel: EventActionViewModel)
 
 }
 
@@ -104,4 +105,10 @@ struct EventPhotoshootMessageViewModel: Equatable, Hashable {
 
     var message: String
 
+}
+
+protocol EventActionViewModel {
+    
+    var title: String { get }
+    
 }

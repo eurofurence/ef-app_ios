@@ -127,6 +127,10 @@ class EventDetailViewController: UIViewController, EventDetailScene {
         func makePhotoshootBannerComponent(configuringUsing block: (EventInformationBannerComponent) -> Void) -> UITableViewCell {
             return makeBannerComponent(text: "\u{f030}", configuration: block)
         }
+        
+        func makeEventActionBannerComponent(configuringUsing block: (EventActionBannerComponent) -> Void) -> UITableViewCell {
+            return UITableViewCell()
+        }
 
         // MARK: UITableViewDataSource
 

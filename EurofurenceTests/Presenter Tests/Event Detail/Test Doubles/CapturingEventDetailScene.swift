@@ -77,6 +77,15 @@ class CapturingEventInformationBannerComponent: EventInformationBannerComponent 
 
 }
 
+class CapturingEventActionBannerComponent: EventActionBannerComponent {
+    
+    private(set) var capturedTitle: String?
+    func setActionTitle(_ title: String) {
+        capturedTitle = title
+    }
+    
+}
+
 class StubEventDetailComponentFactory: EventDetailComponentFactory {
 
     let stubbedEventSummaryComponent = CapturingEventSummaryComponent()
@@ -137,6 +146,12 @@ class StubEventDetailComponentFactory: EventDetailComponentFactory {
     func makePhotoshootBannerComponent(configuringUsing block: (EventInformationBannerComponent) -> Void) -> Any {
         block(stubbedPhotoshootMessageComponent)
         return stubbedPhotoshootMessageComponent
+    }
+    
+    let stubbedActionComponent = CapturingEventActionBannerComponent()
+    func makeEventActionBannerComponent(configuringUsing block: (EventActionBannerComponent) -> Void) -> Any {
+        block(stubbedActionComponent)
+        return stubbedActionComponent
     }
 
 }
@@ -208,6 +223,10 @@ extension CapturingEventDetailScene {
 
     var stubbedPhotoshootMessageComponent: CapturingEventInformationBannerComponent {
         return componentFactory.stubbedPhotoshootMessageComponent
+    }
+    
+    var stubbedActionComponent: CapturingEventActionBannerComponent {
+        return componentFactory.stubbedActionComponent
     }
 
     func simulateSceneDidLoad() {

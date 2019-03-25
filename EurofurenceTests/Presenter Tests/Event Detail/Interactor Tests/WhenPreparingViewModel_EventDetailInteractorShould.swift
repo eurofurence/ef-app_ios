@@ -54,6 +54,10 @@ class CapturingEventDetailViewModelVisitor: EventDetailViewModelVisitor {
     func visit(_ photoshootMessage: EventPhotoshootMessageViewModel) {
         visitedViewModels.append(photoshootMessage)
     }
+    
+    func visit(_ actionViewModel: EventActionViewModel) {
+        
+    }
 
 }
 

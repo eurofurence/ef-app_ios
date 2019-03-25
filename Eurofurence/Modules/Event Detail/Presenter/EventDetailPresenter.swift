@@ -102,6 +102,12 @@ class EventDetailPresenter: EventDetailSceneDelegate, EventDetailViewModelDelega
                 component.setBannerMessage(photoshootMessage.message)
             }
         }
+        
+        func visit(_ actionViewModel: EventActionViewModel) {
+            boundComponent = componentFactory.makeEventActionBannerComponent { (component) in
+                component.setActionTitle(actionViewModel.title)
+            }
+        }
 
     }
 
