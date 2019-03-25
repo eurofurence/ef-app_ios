@@ -105,15 +105,21 @@ class EventDetailPresenter: EventDetailSceneDelegate, EventDetailViewModelDelega
         
         func visit(_ actionViewModel: EventActionViewModel) {
             boundComponent = componentFactory.makeEventActionBannerComponent { (component) in
-                component.setActionTitle(actionViewModel.title)
+                actionViewModel.describe(to: ComponentRebindingEventActionVisitor(component: component))
                 component.setSelectionHandler(actionViewModel.perform)
-                
-                actionViewModel.setActionTraitsDidChangeHandler { (action) in
-                    component.setActionTitle(action.title)
-                }
             }
         }
 
+    }
+    
+    struct ComponentRebindingEventActionVisitor: EventActionViewModelVisitor {
+        
+        let component: EventActionBannerComponent
+        
+        func visitActionTitle(_ actionTitle: String) {
+            component.setActionTitle(actionTitle)
+        }
+        
     }
 
     private let scene: EventDetailScene

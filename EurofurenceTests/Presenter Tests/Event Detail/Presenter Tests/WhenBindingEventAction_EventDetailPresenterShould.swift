@@ -40,13 +40,19 @@ final class FakeEventActionViewModel: EventActionViewModel {
         actionTraitsDidChangeHandler = handler
     }
     
+    private var visitor: EventActionViewModelVisitor?
+    func describe(to visitor: EventActionViewModelVisitor) {
+        self.visitor = visitor
+        visitor.visitActionTitle(title)
+    }
+    
     func perform() {
         performedAction = true
     }
     
     func simulateTitleChanged(_ newTitle: String) {
         title = newTitle
-        actionTraitsDidChangeHandler?(self)
+        visitor?.visitActionTitle(newTitle)
     }
     
 }

@@ -109,9 +109,13 @@ struct EventPhotoshootMessageViewModel: Equatable, Hashable {
 
 protocol EventActionViewModel {
     
-    var title: String { get }
-    
-    func setActionTraitsDidChangeHandler(_ handler: @escaping (EventActionViewModel) -> Void)
+    func describe(to visitor: EventActionViewModelVisitor)
     func perform()
+    
+}
+
+protocol EventActionViewModelVisitor {
+    
+    func visitActionTitle(_ actionTitle: String)
     
 }
