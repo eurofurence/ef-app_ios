@@ -50,29 +50,29 @@ extension FakeEventActionViewModel: RandomValueProviding {
 }
 
 class WhenBindingEventAction_EventDetailPresenterShould: XCTestCase {
-
-    func testBindTheActionText() {
-        let actionViewModel = FakeEventActionViewModel.random
+    
+    var actionViewModel: FakeEventActionViewModel!
+    var stubbedActionComponent: CapturingEventActionBannerComponent!
+    
+    override func setUp() {
+        super.setUp()
+        
+        actionViewModel = FakeEventActionViewModel.random
         let viewModel = StubActionEventViewModel(actionViewModel: actionViewModel)
         let event = StubEvent.random
         let interactor = FakeEventDetailInteractor(viewModel: viewModel, for: event)
         let context = EventDetailPresenterTestBuilder().with(interactor).build(for: event)
+        stubbedActionComponent = context.scene.stubbedActionComponent
         context.simulateSceneDidLoad()
         context.scene.bindComponent(at: IndexPath(item: 0, section: 0))
-        
-        XCTAssertEqual(actionViewModel.title, context.scene.stubbedActionComponent.capturedTitle)
+    }
+
+    func testBindTheActionText() {
+        XCTAssertEqual(actionViewModel.title, stubbedActionComponent.capturedTitle)
     }
     
     func testInvokeTheActionWhenBannerSelected() {
-        let actionViewModel = FakeEventActionViewModel.random
-        let viewModel = StubActionEventViewModel(actionViewModel: actionViewModel)
-        let event = StubEvent.random
-        let interactor = FakeEventDetailInteractor(viewModel: viewModel, for: event)
-        let context = EventDetailPresenterTestBuilder().with(interactor).build(for: event)
-        context.simulateSceneDidLoad()
-        context.scene.bindComponent(at: IndexPath(item: 0, section: 0))
-        context.scene.stubbedActionComponent.simulateSelected()
-        
+        stubbedActionComponent.simulateSelected()
         XCTAssertTrue(actionViewModel.performedAction)
     }
 
