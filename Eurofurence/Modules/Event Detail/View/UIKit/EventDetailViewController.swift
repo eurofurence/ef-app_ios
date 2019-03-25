@@ -129,7 +129,9 @@ class EventDetailViewController: UIViewController, EventDetailScene {
         }
         
         func makeEventActionBannerComponent(configuringUsing block: (EventActionBannerComponent) -> Void) -> UITableViewCell {
-            return UITableViewCell()
+            let cell = tableView.dequeue(EventActionBannerTableViewCell.self)
+            block(cell)
+            return cell
         }
 
         // MARK: UITableViewDataSource

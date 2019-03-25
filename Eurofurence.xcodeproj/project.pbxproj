@@ -774,6 +774,7 @@
 		CA8DA4652241764600B1E5D1 /* WhenLoggingOut_ThenRequestingPrivateMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8DA4642241764600B1E5D1 /* WhenLoggingOut_ThenRequestingPrivateMessages.swift */; };
 		CA8DDA1C2249045400ACD9BB /* WhenBindingEventAction_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8DDA1B2249045400ACD9BB /* WhenBindingEventAction_EventDetailPresenterShould.swift */; };
 		CA8DDA1E2249057A00ACD9BB /* EventActionBannerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8DDA1D2249057A00ACD9BB /* EventActionBannerComponent.swift */; };
+		CA8DDA2022490CB700ACD9BB /* EventActionBannerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8DDA1F22490CB700ACD9BB /* EventActionBannerTableViewCell.swift */; };
 		CA8E17ED1F817A70003C348C /* PreloadInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E17EC1F817A70003C348C /* PreloadInteractor.swift */; };
 		CA8E17EF1F817A8C003C348C /* CapturingPreloadInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E17EE1F817A8C003C348C /* CapturingPreloadInteractor.swift */; };
 		CA8E17F11F817AA2003C348C /* CapturingPreloadModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E17F01F817AA2003C348C /* CapturingPreloadModuleDelegate.swift */; };
@@ -2462,6 +2463,7 @@
 		CA8DA4642241764600B1E5D1 /* WhenLoggingOut_ThenRequestingPrivateMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLoggingOut_ThenRequestingPrivateMessages.swift; sourceTree = "<group>"; };
 		CA8DDA1B2249045400ACD9BB /* WhenBindingEventAction_EventDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingEventAction_EventDetailPresenterShould.swift; sourceTree = "<group>"; };
 		CA8DDA1D2249057A00ACD9BB /* EventActionBannerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventActionBannerComponent.swift; sourceTree = "<group>"; };
+		CA8DDA1F22490CB700ACD9BB /* EventActionBannerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventActionBannerTableViewCell.swift; sourceTree = "<group>"; };
 		CA8E17EC1F817A70003C348C /* PreloadInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadInteractor.swift; sourceTree = "<group>"; };
 		CA8E17EE1F817A8C003C348C /* CapturingPreloadInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingPreloadInteractor.swift; sourceTree = "<group>"; };
 		CA8E17F01F817AA2003C348C /* CapturingPreloadModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingPreloadModuleDelegate.swift; sourceTree = "<group>"; };
@@ -6251,6 +6253,7 @@
 				CACF1E6720AE2FB700D904B5 /* StoryboardEventDetailSceneFactory.swift */,
 				CAD2609C20C02BCF007E3618 /* EventDetailBannerTableViewCell.swift */,
 				CADABEEF21147D560023C3B6 /* EventInformationBannerTableViewCell.swift */,
+				CA8DDA1F22490CB700ACD9BB /* EventActionBannerTableViewCell.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -7755,6 +7758,7 @@
 				CA0F762D2033118D009DA079 /* KnowledgeGroupsListModuleDelegate.swift in Sources */,
 				CAF3C7441F9F5C550008F027 /* NewsModuleProviding.swift in Sources */,
 				CA1FE9991FA0B3AE009C7DF3 /* ApplicationDirector.swift in Sources */,
+				CA8DDA2022490CB700ACD9BB /* EventActionBannerTableViewCell.swift in Sources */,
 				CAF81C6E20DDA70D00898C52 /* AboutTheArtTableViewCell.swift in Sources */,
 				CA6375A0208DFE2E00536BE2 /* StoryboardEventsSceneFactory.swift in Sources */,
 				CA283A9220EA8ED900F7D195 /* ViewAllAnnouncementsTableViewCell.swift in Sources */,

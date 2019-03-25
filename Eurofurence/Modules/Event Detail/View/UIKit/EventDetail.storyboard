@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vaw-dc-Sde">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vaw-dc-Sde">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -29,7 +28,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="bBS-Mm-Km0">
-                                    <rect key="frame" x="0.0" y="629" width="375" height="1"/>
+                                    <rect key="frame" x="0.0" y="713" width="375" height="1"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
@@ -241,8 +240,47 @@
                                             <outlet property="messageLabel" destination="NiZ-ON-SJH" id="twi-i7-NUG"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EventDetailDescriptionTableViewCell" rowHeight="84" id="QyG-r2-Epy" customClass="EventDetailDescriptionTableViewCell" customModule="Eurofurence" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EventActionBannerTableViewCell" rowHeight="84" id="DRN-9T-fcm" customClass="EventActionBannerTableViewCell">
                                         <rect key="frame" x="0.0" y="545" width="375" height="84"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DRN-9T-fcm" id="yyd-PA-7ew">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="83.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gqx-3D-EeA">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="83.5"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LJ3-vs-ghM">
+                                                            <rect key="frame" x="20" y="20" width="335" height="43.5"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                            <state key="normal" title="Button"/>
+                                                            <connections>
+                                                                <action selector="performBannerAction" destination="DRN-9T-fcm" eventType="touchUpInside" id="Ufj-cm-P0Z"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstItem="LJ3-vs-ghM" firstAttribute="leading" secondItem="gqx-3D-EeA" secondAttribute="leading" constant="20" symbolic="YES" id="YKi-py-jFr"/>
+                                                        <constraint firstItem="LJ3-vs-ghM" firstAttribute="top" secondItem="gqx-3D-EeA" secondAttribute="top" constant="20" symbolic="YES" id="eKu-qk-4WQ"/>
+                                                        <constraint firstAttribute="bottom" secondItem="LJ3-vs-ghM" secondAttribute="bottom" constant="20" symbolic="YES" id="iYT-Ca-p8A"/>
+                                                        <constraint firstAttribute="trailing" secondItem="LJ3-vs-ghM" secondAttribute="trailing" constant="20" symbolic="YES" id="s6h-72-wsm"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="gqx-3D-EeA" firstAttribute="leading" secondItem="yyd-PA-7ew" secondAttribute="leading" id="4qB-GC-sTv"/>
+                                                <constraint firstAttribute="bottom" secondItem="gqx-3D-EeA" secondAttribute="bottom" id="Vvx-ip-1ZW"/>
+                                                <constraint firstAttribute="trailing" secondItem="gqx-3D-EeA" secondAttribute="trailing" id="kJn-8b-Bii"/>
+                                                <constraint firstItem="gqx-3D-EeA" firstAttribute="top" secondItem="yyd-PA-7ew" secondAttribute="top" id="mLv-xK-jkJ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="bannerActionButton" destination="LJ3-vs-ghM" id="O1m-ub-pQ1"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EventDetailDescriptionTableViewCell" rowHeight="84" id="QyG-r2-Epy" customClass="EventDetailDescriptionTableViewCell" customModule="Eurofurence" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="629" width="375" height="84"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QyG-r2-Epy" id="Vx6-kq-QSx">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="83.5"/>
