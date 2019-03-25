@@ -111,4 +111,6 @@ protocol EventActionViewModel {
     
     var title: String { get }
     
+    func perform()
+    
 }

@@ -84,6 +84,15 @@ class CapturingEventActionBannerComponent: EventActionBannerComponent {
         capturedTitle = title
     }
     
+    private(set) var selectionHandler: (() -> Void)?
+    func setSelectionHandler(_ handler: @escaping () -> Void) {
+        selectionHandler = handler
+    }
+    
+    func simulateSelected() {
+        selectionHandler?()
+    }
+    
 }
 
 class StubEventDetailComponentFactory: EventDetailComponentFactory {

@@ -28,9 +28,15 @@ struct StubActionEventViewModel: EventDetailViewModel {
 final class FakeEventActionViewModel: EventActionViewModel {
     
     var title: String
+    var performedAction: Bool
     
-    init(title: String) {
+    init(title: String, performedAction: Bool) {
         self.title = title
+        self.performedAction = performedAction
+    }
+    
+    func perform() {
+        performedAction = true
     }
     
 }
@@ -38,7 +44,7 @@ final class FakeEventActionViewModel: EventActionViewModel {
 extension FakeEventActionViewModel: RandomValueProviding {
     
     static var random: FakeEventActionViewModel {
-        return FakeEventActionViewModel(title: .random)
+        return FakeEventActionViewModel(title: .random, performedAction: false)
     }
     
 }
@@ -55,6 +61,19 @@ class WhenBindingEventAction_EventDetailPresenterShould: XCTestCase {
         context.scene.bindComponent(at: IndexPath(item: 0, section: 0))
         
         XCTAssertEqual(actionViewModel.title, context.scene.stubbedActionComponent.capturedTitle)
+    }
+    
+    func testInvokeTheActionWhenBannerSelected() {
+        let actionViewModel = FakeEventActionViewModel.random
+        let viewModel = StubActionEventViewModel(actionViewModel: actionViewModel)
+        let event = StubEvent.random
+        let interactor = FakeEventDetailInteractor(viewModel: viewModel, for: event)
+        let context = EventDetailPresenterTestBuilder().with(interactor).build(for: event)
+        context.simulateSceneDidLoad()
+        context.scene.bindComponent(at: IndexPath(item: 0, section: 0))
+        context.scene.stubbedActionComponent.simulateSelected()
+        
+        XCTAssertTrue(actionViewModel.performedAction)
     }
 
 }

@@ -106,6 +106,7 @@ class EventDetailPresenter: EventDetailSceneDelegate, EventDetailViewModelDelega
         func visit(_ actionViewModel: EventActionViewModel) {
             boundComponent = componentFactory.makeEventActionBannerComponent { (component) in
                 component.setActionTitle(actionViewModel.title)
+                component.setSelectionHandler(actionViewModel.perform)
             }
         }
 
