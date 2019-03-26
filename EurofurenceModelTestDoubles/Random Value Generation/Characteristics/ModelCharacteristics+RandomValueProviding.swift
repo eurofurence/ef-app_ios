@@ -10,7 +10,7 @@ import EurofurenceModel
 import Foundation
 import TestUtilities
 
-extension ModelCharacteristics {
+public extension ModelCharacteristics {
     
     static let testConventionIdentifier = "TEST_CONVENTION"
     
