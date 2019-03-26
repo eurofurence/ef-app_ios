@@ -73,7 +73,7 @@ public class EventBus {
         - consumer: An `EventConsumer` to be unsubscribed from this `EventBus`
     */
     public func unsubscribe<Consumer: EventConsumer>(consumer: Consumer) {
-        guard let index = storage.index(where: { $0.represents(consumer: consumer) }) else {
+        guard let index = storage.firstIndex(where: { $0.represents(consumer: consumer) }) else {
             return
         }
 

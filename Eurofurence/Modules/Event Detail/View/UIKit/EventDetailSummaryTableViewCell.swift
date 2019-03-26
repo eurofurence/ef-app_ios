@@ -24,7 +24,12 @@ class EventDetailSummaryTableViewCell: UITableViewCell, EventSummaryComponent {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        accessibilityElements = [eventTrackLabel, eventTitleLabel, eventTimesLabel, eventLocationLabel, eventHostsLabel, eventAbstractLabel]
+        accessibilityElements = [eventTrackLabel as Any,
+                                 eventTitleLabel as Any,
+                                 eventTimesLabel as Any,
+                                 eventLocationLabel as Any,
+                                 eventHostsLabel as Any,
+                                 eventAbstractLabel as Any]
     }
 
     // MARK: EventSummaryComponent

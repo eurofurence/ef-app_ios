@@ -21,8 +21,8 @@ class RestorationIdentifierOrderingPolicy: ModuleOrderingPolicy {
         return modules.sorted(by: { (first, second) -> Bool in
             guard let firstIdentifier = first.restorationIdentifier,
                   let secondIdentifier = second.restorationIdentifier,
-                  let firstIndex = order.index(of: firstIdentifier),
-                  let secondIndex = order.index(of: secondIdentifier) else { return false }
+                  let firstIndex = order.firstIndex(of: firstIdentifier),
+                  let secondIndex = order.firstIndex(of: secondIdentifier) else { return false }
 
             return firstIndex < secondIndex
         })

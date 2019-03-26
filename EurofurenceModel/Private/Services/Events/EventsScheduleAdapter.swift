@@ -105,7 +105,7 @@ class EventsScheduleAdapter: EventsSchedule {
     }
 
     private func restrictScheduleToEvents(on day: ConferenceDayCharacteristics) {
-        if let idx = filters.index(where: { $0 is DayRestrictionFilter }) {
+        if let idx = filters.firstIndex(where: { $0 is DayRestrictionFilter }) {
             let filter = filters[idx] as! DayRestrictionFilter
             guard filter.day != day else { return }
             filters.remove(at: idx)

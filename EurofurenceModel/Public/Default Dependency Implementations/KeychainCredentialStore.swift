@@ -45,7 +45,7 @@ public struct KeychainCredentialStore: CredentialStore {
     private func makeMutableLoginCredentialQuery() -> NSMutableDictionary {
         return [kSecClass: kSecClassGenericPassword,
                 kSecAttrAccount: userAccount,
-                kSecReturnData: kCFBooleanTrue] as NSMutableDictionary
+                kSecReturnData: kCFBooleanTrue as Any] as NSMutableDictionary
     }
     
     private func copyItemFromKeychain() -> CFTypeRef? {

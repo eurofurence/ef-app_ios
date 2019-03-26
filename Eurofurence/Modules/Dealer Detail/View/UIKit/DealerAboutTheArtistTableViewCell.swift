@@ -22,8 +22,8 @@ class DealerAboutTheArtistTableViewCell: UITableViewCell, DealerAboutTheArtistCo
 
         isAccessibilityElement = false
         accessibilityElements = [
-            componentTitleLabel,
-            artistDescriptionLabel
+            componentTitleLabel as Any,
+            artistDescriptionLabel as Any
         ]
     }
 

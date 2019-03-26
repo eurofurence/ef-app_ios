@@ -50,7 +50,7 @@ class ConcreteEventsService: ClockDelegate, EventsService {
                 transaction.deleteFavouriteEventIdentifier(identifier)
             }
 
-            service.favouriteEventIdentifiers.index(of: identifier).let({ service.favouriteEventIdentifiers.remove(at: $0) })
+            service.favouriteEventIdentifiers.firstIndex(of: identifier).let({ service.favouriteEventIdentifiers.remove(at: $0) })
 
             let event = EventUnfavouritedEvent(identifier: identifier)
             service.eventBus.post(event)

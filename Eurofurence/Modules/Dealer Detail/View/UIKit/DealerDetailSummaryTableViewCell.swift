@@ -34,13 +34,13 @@ class DealerDetailSummaryTableViewCell: UITableViewCell, DealerDetailSummaryComp
 
         isAccessibilityElement = false
         accessibilityElements = [
-            dealerTitleLabel,
-            dealerSubtitleLabel,
-            dealerCategoriesLabel,
-            dealerShortDescriptionLabel,
-            dealerWebsiteContainer,
-            dealerTwitterHandleContainer,
-            dealerTelegramContainer
+            dealerTitleLabel as Any,
+            dealerSubtitleLabel as Any,
+            dealerCategoriesLabel as Any,
+            dealerShortDescriptionLabel as Any,
+            dealerWebsiteContainer as Any,
+            dealerTwitterHandleContainer as Any,
+            dealerTelegramContainer as Any
         ]
 
         contentView.backgroundColor = .pantone330U

@@ -15,7 +15,7 @@ final class EventCache {
     // MARK: Public
 
     func append(event: Any) {
-        if let index = storage.index(where: { type(of: $0) == type(of: event) }) {
+        if let index = storage.firstIndex(where: { type(of: $0) == type(of: event) }) {
             storage.remove(at: index)
         }
 

@@ -70,7 +70,7 @@ extension FakeEventsService {
     }
 
     func simulateEventUnfavourited(identifier: EventIdentifier) {
-        if let idx = favourites.index(of: identifier) {
+        if let idx = favourites.firstIndex(of: identifier) {
             favourites.remove(at: idx)
         }
 

@@ -183,7 +183,7 @@ class ApplicationDirector: ExternalContentHandler,
                 let module = self.announcementDetailModuleProviding.makeAnnouncementDetailModule(for: announcement)
                 if  let newsNavigationController = self.newsController?.navigationController,
                     let tabBarController = self.tabController,
-                    let index = tabBarController.viewControllers?.index(of: newsNavigationController) {
+                    let index = tabBarController.viewControllers?.firstIndex(of: newsNavigationController) {
                     tabBarController.selectedIndex = index
                     newsNavigationController.pushViewController(module, animated: self.performAnimations)
                 }
@@ -203,7 +203,7 @@ class ApplicationDirector: ExternalContentHandler,
                 let module = self.eventDetailModuleProviding.makeEventDetailModule(for: event)
                 if  let scheduleNavigationController = self.scheduleViewController?.navigationController,
                     let tabBarController = self.tabController,
-                    let index = tabBarController.viewControllers?.index(of: scheduleNavigationController),
+                    let index = tabBarController.viewControllers?.firstIndex(of: scheduleNavigationController),
                     let scheduleViewController = self.scheduleViewController {
                     tabBarController.selectedIndex = index
                     scheduleNavigationController.setViewControllers([scheduleViewController, module], animated: self.performAnimations)

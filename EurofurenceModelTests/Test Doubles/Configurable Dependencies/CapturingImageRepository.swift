@@ -20,7 +20,7 @@ class CapturingImageRepository: ImageRepository {
     func deleteEntity(identifier: String) {
         deletedImages.append(identifier)
 
-        if let idx = savedImages.index(where: { $0.identifier == identifier }) {
+        if let idx = savedImages.firstIndex(where: { $0.identifier == identifier }) {
             savedImages.remove(at: idx)
         }
     }

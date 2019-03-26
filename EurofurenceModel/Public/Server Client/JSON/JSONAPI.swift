@@ -174,7 +174,7 @@ public struct JSONAPI: API {
                 message = try container.decode(String.self, forKey: .message)
                 receivedDateTime = try container.decode(Date.self, forKey: .receivedDateTime)
 
-                if let readTime = try? container.decodeIfPresent(Date.self, forKey: .readDateTime) {
+                if let readTime = ((try? container.decodeIfPresent(Date.self, forKey: .readDateTime)) as Date??) {
                     readDateTime = readTime
                 }
             }

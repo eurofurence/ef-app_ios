@@ -24,9 +24,9 @@ class AboutTheArtTableViewCell: UITableViewCell, AboutTheArtComponent {
 
         isAccessibilityElement = false
         accessibilityElements = [
-            componentTitleLabel,
-            artDescriptionLabel,
-            artworkCaptionLabel
+            componentTitleLabel as Any,
+            artDescriptionLabel as Any,
+            artworkCaptionLabel as Any
         ]
     }
 

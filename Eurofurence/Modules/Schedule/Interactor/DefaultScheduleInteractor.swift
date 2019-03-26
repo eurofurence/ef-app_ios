@@ -165,7 +165,7 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
             guard let day = day else { return }
             schedule.restrictEvents(to: day)
 
-            guard let idx = days.index(where: { $0.date == day.date }) else { return }
+            guard let idx = days.firstIndex(where: { $0.date == day.date }) else { return }
             selectedDayIndex = idx
         }
 

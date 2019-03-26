@@ -49,7 +49,7 @@ class ImageDownloader {
 
         imagesToDownload.forEach { (request) in
             api.fetchImage(identifier: request.imageIdentifier, contentHashSha1: request.imageContentHashSha1) { (data) in
-                guard let idx = pendingImageIdentifiers.index(of: request) else { return }
+                guard let idx = pendingImageIdentifiers.firstIndex(of: request) else { return }
                 pendingImageIdentifiers.remove(at: idx)
 
                 var completedUnitCount = parentProgress.completedUnitCount

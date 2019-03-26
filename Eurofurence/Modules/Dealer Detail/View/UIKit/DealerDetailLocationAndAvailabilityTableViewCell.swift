@@ -28,10 +28,10 @@ class DealerDetailLocationAndAvailabilityTableViewCell: UITableViewCell, DealerL
 
         isAccessibilityElement = false
         accessibilityElements = [
-            componentTitleLabel,
-            dealerMapImageView,
-            limitedAvailabilityWarningContainer,
-            afterDarkInformationContainer
+            componentTitleLabel as Any,
+            dealerMapImageView as Any,
+            limitedAvailabilityWarningContainer as Any,
+            afterDarkInformationContainer as Any
         ]
 
         dealerMapImageView.layer.borderColor = UIColor.lightGray.cgColor

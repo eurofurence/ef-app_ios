@@ -61,7 +61,7 @@ class WhenOpeningNotification_DirectorShould: XCTestCase {
         context.notificationHandling.stub(.announcement(announcement), for: payload)
 
         let newsNavigationController = context.navigationController(for: context.newsModule.stubInterface)!
-        let newsTabIndex = context.tabModule.stubInterface.viewControllers?.index(of: newsNavigationController)
+        let newsTabIndex = context.tabModule.stubInterface.viewControllers?.firstIndex(of: newsNavigationController)
         context.director.openNotification(payload) { }
 
         XCTAssertEqual(context.announcementDetailModule.stubInterface, newsNavigationController.topViewController)
@@ -87,7 +87,7 @@ class WhenOpeningNotification_DirectorShould: XCTestCase {
         context.notificationHandling.stub(.event(event), for: payload)
 
         let scheduleNavigationController = context.navigationController(for: context.scheduleModule.stubInterface)!
-        let scheduleTabIndex = context.tabModule.stubInterface.viewControllers?.index(of: scheduleNavigationController)
+        let scheduleTabIndex = context.tabModule.stubInterface.viewControllers?.firstIndex(of: scheduleNavigationController)
         context.director.openNotification(payload) { }
 
         XCTAssertEqual(context.eventDetailModule.stubInterface, scheduleNavigationController.topViewController)
