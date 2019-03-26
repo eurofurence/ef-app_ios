@@ -34,11 +34,11 @@ public class FakeAnnouncementsService: AnnouncementsService {
 
 public extension FakeAnnouncementsService {
 
-    public func updateAnnouncements(_ announcements: [Announcement]) {
+    func updateAnnouncements(_ announcements: [Announcement]) {
         observers.forEach({ $0.announcementsServiceDidChangeAnnouncements(announcements) })
     }
 
-    public func updateReadAnnouncements(_ readAnnouncements: [AnnouncementIdentifier]) {
+    func updateReadAnnouncements(_ readAnnouncements: [AnnouncementIdentifier]) {
         observers.forEach({ $0.announcementsServiceDidUpdateReadAnnouncements(readAnnouncements) })
     }
 

@@ -48,11 +48,11 @@ public class CapturingRefreshService: RefreshService {
 
 public extension CapturingRefreshService {
 
-    public func simulateRefreshBegan() {
+    func simulateRefreshBegan() {
         refreshObservers.forEach { $0.refreshServiceDidBeginRefreshing() }
     }
 
-    public func simulateRefreshFinished() {
+    func simulateRefreshFinished() {
         refreshObservers.forEach { $0.refreshServiceDidFinishRefreshing() }
     }
 

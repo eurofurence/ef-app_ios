@@ -242,7 +242,7 @@ fileprivate extension DefaultNewsInteractorTestBuilder.Context {
         }
     }
 
-    fileprivate struct Assertion {
+    struct Assertion {
 
         var file: StaticString
         var line: UInt

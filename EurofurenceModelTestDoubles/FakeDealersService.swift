@@ -30,7 +30,7 @@ public class FakeDealersService: DealersService {
 
 public extension FakeDealersService {
     
-    public func add(_ dealer: Dealer) {
+    func add(_ dealer: Dealer) {
         stubbedDealers.append(dealer)
     }
 

@@ -26,7 +26,7 @@ public class StubClock: Clock {
 
 public extension StubClock {
 
-    public func tickTime(to time: Date) {
+    func tickTime(to time: Date) {
         currentDate = time
         delegate?.clockDidTick(to: time)
     }
