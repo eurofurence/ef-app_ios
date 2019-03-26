@@ -23,9 +23,9 @@ public enum FirebaseTopic: CustomStringConvertible, Hashable {
     public static func == (lhs: FirebaseTopic, rhs: FirebaseTopic) -> Bool {
         return lhs.hashValue == rhs.hashValue
     }
-
-    public var hashValue: Int {
-        return description.hashValue
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(description)
     }
 
     public var description: String {

@@ -13,9 +13,10 @@ import Foundation
 class FakeDateRangeFormatter: DateRangeFormatter {
 
     private struct Input: Hashable {
-
-        var hashValue: Int {
-            return start.hashValue ^ end.hashValue
+        
+        func hash(into hasher: inout Hasher) {
+            hasher.combine(start)
+            hasher.combine(end)
         }
 
         static func == (lhs: FakeDateRangeFormatter.Input, rhs: FakeDateRangeFormatter.Input) -> Bool {

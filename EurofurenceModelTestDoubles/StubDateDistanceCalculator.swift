@@ -23,9 +23,10 @@ public class StubDateDistanceCalculator: DateDistanceCalculator {
     private struct Input: Hashable {
         var first: Date
         var second: Date
-
-        var hashValue: Int {
-            return first.hashValue ^ second.hashValue
+        
+        func hash(into hasher: inout Hasher) {
+            hasher.combine(first)
+            hasher.combine(second)
         }
 
         static func == (lhs: StubDateDistanceCalculator.Input, rhs: StubDateDistanceCalculator.Input) -> Bool {
