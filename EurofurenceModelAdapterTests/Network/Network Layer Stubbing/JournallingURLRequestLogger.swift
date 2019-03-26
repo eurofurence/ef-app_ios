@@ -15,8 +15,8 @@ class JournallingURLRequestLogger {
         var url: String
         var assertion: ((URLRequest) -> Bool)?
 
-        var hashValue: Int {
-            return url.hashValue
+        func hash(into hasher: inout Hasher) {
+            hasher.combine(url)
         }
 
         static func == (lhs: ExpectedRequest, rhs: ExpectedRequest) -> Bool {
