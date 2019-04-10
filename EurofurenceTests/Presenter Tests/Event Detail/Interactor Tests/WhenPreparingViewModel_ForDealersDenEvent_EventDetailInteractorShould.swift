@@ -14,7 +14,7 @@ import XCTest
 class WhenPreparingViewModel_ForDealersDenEvent_EventDetailInteractorShould: XCTestCase {
 
     func testProduceDealersDenHeadingAfterDescriptionComponent() {
-        let event = StubEvent.randomStandardEvent
+        let event = FakeEvent.randomStandardEvent
         event.isDealersDen = true
         let context = EventDetailInteractorTestBuilder().build(for: event)
         let visitor = CapturingEventDetailViewModelVisitor()

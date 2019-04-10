@@ -14,7 +14,7 @@ import XCTest
 class WhenSceneTapsUnfavouriteEventButton_EventDetailPresenterShould: XCTestCase {
 
     func testInvokeTheUnfavouriteActionOnTheViewModel() {
-        let event = StubEvent.random
+        let event = FakeEvent.random
         let viewModel = CapturingEventDetailViewModel()
         let interactor = FakeEventDetailInteractor(viewModel: viewModel, for: event)
         let context = EventDetailPresenterTestBuilder().with(interactor).build(for: event)

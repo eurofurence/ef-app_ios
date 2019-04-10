@@ -14,7 +14,7 @@ import XCTest
 class WhenUnfavouritingEventViewModel_EventDetailInteractorShould: XCTestCase {
 
     func testUnfavouriteTheEvent() {
-        let event = StubEvent.random
+        let event = FakeEvent.random
         let context = EventDetailInteractorTestBuilder().build(for: event)
         context.viewModel?.unfavourite()
 

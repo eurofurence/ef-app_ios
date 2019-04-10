@@ -15,7 +15,7 @@ class FakeEventsSchedule: EventsSchedule {
     var events: [Event]
     var currentDay: Day?
 
-    init(events: [Event] = [StubEvent].random, currentDay: Day? = .random) {
+    init(events: [Event] = [FakeEvent].random, currentDay: Day? = .random) {
         self.events = events
         self.currentDay = currentDay
     }

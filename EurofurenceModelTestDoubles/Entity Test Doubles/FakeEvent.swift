@@ -1,5 +1,5 @@
 //
-//  Event+RandomValueProviding.swift
+//  FakeEvent.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 13/05/2018.
@@ -10,7 +10,7 @@ import EurofurenceModel
 import Foundation
 import TestUtilities
 
-public final class StubEvent: Event {
+public final class FakeEvent: Event {
 
     public enum FavouritedState {
         case unset
@@ -107,11 +107,11 @@ public final class StubEvent: Event {
 
 }
 
-extension StubEvent: RandomValueProviding {
+extension FakeEvent: RandomValueProviding {
 
-    public static var random: StubEvent {
+    public static var random: FakeEvent {
         let startDate = Date.random
-        return StubEvent(identifier: .random,
+        return FakeEvent(identifier: .random,
                          title: .random,
                          subtitle: .random,
                          abstract: .random,
@@ -132,8 +132,8 @@ extension StubEvent: RandomValueProviding {
                          isPhotoshoot: .random)
     }
 
-    public static var randomStandardEvent: StubEvent {
-        let event = StubEvent.random
+    public static var randomStandardEvent: FakeEvent {
+        let event = FakeEvent.random
         event.isSponsorOnly = false
         event.isSuperSponsorOnly = false
         event.isArtShow = false

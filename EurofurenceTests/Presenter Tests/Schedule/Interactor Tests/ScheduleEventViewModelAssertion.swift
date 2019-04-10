@@ -20,7 +20,7 @@ class ScheduleEventViewModelAssertion: Assertion {
     }
 
     func assertEventViewModel(_ viewModel: ScheduleEventViewModelProtocol,
-                              isModeledBy event: StubEvent) {
+                              isModeledBy event: FakeEvent) {
         let expectedStartTime = context.hoursFormatter.hoursString(from: event.startDate)
         let expectedEndTime = context.hoursFormatter.hoursString(from: event.endDate)
 

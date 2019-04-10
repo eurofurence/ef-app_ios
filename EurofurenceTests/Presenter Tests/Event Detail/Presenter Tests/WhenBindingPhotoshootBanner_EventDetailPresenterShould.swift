@@ -27,7 +27,7 @@ struct StubPhotoshootEventViewModel: EventDetailViewModel {
 class WhenBindingPhotoshootBanner_EventDetailPresenterShould: XCTestCase {
 
     func testBindTheMessageOntoTheComponent() {
-        let event = StubEvent.random
+        let event = FakeEvent.random
         let message = String.random
         let kageMessageViewModel = EventPhotoshootMessageViewModel(message: message)
         let viewModel = StubPhotoshootEventViewModel(photoshootMessageViewModel: kageMessageViewModel)

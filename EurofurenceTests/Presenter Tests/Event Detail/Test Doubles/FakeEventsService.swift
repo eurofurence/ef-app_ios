@@ -55,7 +55,7 @@ class FakeEventsService: EventsService {
 extension FakeEventsService {
 
     func stubSomeFavouriteEvents() {
-        allEvents = [StubEvent].random(minimum: 3)
+        allEvents = [FakeEvent].random(minimum: 3)
         favourites = Array(allEvents.dropFirst()).map({ $0.identifier })
     }
 

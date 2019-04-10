@@ -14,7 +14,7 @@ import XCTest
 class WhenPreparingViewModel_ForArtShowEvent_EventDetailInteractorShould: XCTestCase {
 
     func testProduceArtShowComponentHeadingAfterDescriptionComponent() {
-        let event = StubEvent.randomStandardEvent
+        let event = FakeEvent.randomStandardEvent
         event.isArtShow = true
         let context = EventDetailInteractorTestBuilder().build(for: event)
         let visitor = CapturingEventDetailViewModelVisitor()

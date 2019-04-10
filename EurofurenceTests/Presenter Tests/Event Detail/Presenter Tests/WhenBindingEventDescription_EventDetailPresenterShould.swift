@@ -50,7 +50,7 @@ class WhenBindingEventDescription_EventDetailPresenterShould: XCTestCase {
     override func setUp() {
         super.setUp()
 
-        let event = StubEvent.random
+        let event = FakeEvent.random
         eventDescription = .random
         let index = Int.random
         let viewModel = StubEventDescriptionViewModel(eventDescription: eventDescription, at: index)

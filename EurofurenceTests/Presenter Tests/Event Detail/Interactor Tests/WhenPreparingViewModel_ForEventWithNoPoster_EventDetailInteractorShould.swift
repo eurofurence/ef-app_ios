@@ -14,7 +14,7 @@ import XCTest
 class WhenPreparingViewModel_ForEventWithNoPoster_EventDetailInteractorShould: XCTestCase {
 
     func testNotForcefullyIncludeGraphicComponent() {
-        let eventWithoutBanner = StubEvent.random
+        let eventWithoutBanner = FakeEvent.random
         eventWithoutBanner.posterGraphicPNGData = nil
         _ = EventDetailInteractorTestBuilder().build(for: eventWithoutBanner)
     }

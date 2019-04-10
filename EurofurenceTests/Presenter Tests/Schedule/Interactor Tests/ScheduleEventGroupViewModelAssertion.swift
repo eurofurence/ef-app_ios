@@ -40,7 +40,7 @@ class ScheduleEventGroupViewModelAssertion: Assertion {
         super.init(file: file, line: line)
     }
 
-    typealias Group = (date: Date, events: [StubEvent])
+    typealias Group = (date: Date, events: [FakeEvent])
 
     func assertEventGroupViewModels(_ expected: [ScheduleEventGroupViewModel], isModeledBy groups: [Group]) {
         guard expected.count == groups.count else {

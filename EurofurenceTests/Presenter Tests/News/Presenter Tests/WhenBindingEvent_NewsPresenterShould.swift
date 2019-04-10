@@ -96,7 +96,7 @@ class WhenBindingEvent_NewsPresenterShould: XCTestCase {
     }
 
     func testTellTheDelegateEventSelectedWhenSceneSelectsComponentAtIndexPath() {
-        let event = StubEvent.random
+        let event = FakeEvent.random
         viewModel.stub(.event(event), at: indexPath)
         context.selectComponent(at: indexPath)
 

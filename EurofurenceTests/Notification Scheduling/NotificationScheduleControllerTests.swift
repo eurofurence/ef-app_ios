@@ -23,7 +23,7 @@ class NotificationScheduleControllerTests: XCTestCase {
         super.setUp()
         
         let eventsService = FakeEventsService()
-        let events = [StubEvent].random
+        let events = [FakeEvent].random
         eventsService.allEvents = events
         notificationScheduler = CapturingNotificationScheduler()
         hoursDateFormatter = FakeHoursDateFormatter()

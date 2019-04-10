@@ -32,7 +32,7 @@ class EventDetailPresenterTestBuilder {
         return self
     }
 
-    func build(for event: StubEvent = .random) -> Context {
+    func build(for event: FakeEvent = .random) -> Context {
         let sceneFactory = StubEventDetailSceneFactory()
         let hapticEngine = CapturingHapticEngine()
         let module = EventDetailModuleBuilder()

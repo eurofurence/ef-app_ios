@@ -27,7 +27,7 @@ struct StubMainStageEventViewModel: EventDetailViewModel {
 class WhenBindingMainStageEvent_EventDetailPresenterShould: XCTestCase {
 
     func testBindTheMessageOntoTheComponent() {
-        let event = StubEvent.random
+        let event = FakeEvent.random
         let message = String.random
         let kageMessageViewModel = EventMainStageMessageViewModel(message: message)
         let viewModel = StubMainStageEventViewModel(mainStageMessageViewModel: kageMessageViewModel)

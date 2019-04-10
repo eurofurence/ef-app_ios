@@ -22,18 +22,18 @@ class WhenGroupingEventsByStartTime_ScheduleInteractorShould: XCTestCase {
         super.setUp()
 
         let firstGroupDate = Date.random
-        let a = StubEvent.random
+        let a = FakeEvent.random
         a.startDate = firstGroupDate
-        let b = StubEvent.random
+        let b = FakeEvent.random
         b.startDate = firstGroupDate
-        let c = StubEvent.random
+        let c = FakeEvent.random
         c.startDate = firstGroupDate
         let firstGroupEvents = [a, b, c].sorted(by: { $0.title < $1.title })
 
         let secondGroupDate = firstGroupDate.addingTimeInterval(100)
-        let d = StubEvent.random
+        let d = FakeEvent.random
         d.startDate = secondGroupDate
-        let e = StubEvent.random
+        let e = FakeEvent.random
         e.startDate = secondGroupDate
         let secondGroupEvents = [d, e].sorted(by: { $0.title < $1.title })
 

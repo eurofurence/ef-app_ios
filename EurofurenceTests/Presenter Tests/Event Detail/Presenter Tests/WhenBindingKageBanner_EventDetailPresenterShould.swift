@@ -27,7 +27,7 @@ struct StubKageEventViewModel: EventDetailViewModel {
 class WhenBindingKageBanner_EventDetailPresenterShould: XCTestCase {
 
     func testBindTheMessageOntoTheComponent() {
-        let event = StubEvent.random
+        let event = FakeEvent.random
         let message = String.random
         let kageMessageViewModel = EventKageMessageViewModel(message: message)
         let viewModel = StubKageEventViewModel(kageMessageViewModel: kageMessageViewModel)
