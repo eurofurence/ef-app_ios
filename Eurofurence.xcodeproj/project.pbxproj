@@ -819,6 +819,7 @@
 		CAA6DD1120E1649600328C37 /* WhenMessagesSceneTapsLogoutButton_MessagesPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA6DD1020E1649600328C37 /* WhenMessagesSceneTapsLogoutButton_MessagesPresenterShould.swift */; };
 		CAB138101FE08D0E00AD61FE /* MessageBubbleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB1380E1FE08D0E00AD61FE /* MessageBubbleCollectionViewCell.swift */; };
 		CAB138131FE1555C00AD61FE /* MessagesCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB138121FE1555C00AD61FE /* MessagesCollectionViewFlowLayout.swift */; };
+		CAB3B8F922611E260077B068 /* EventFeedbackPresenterTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB3B8F822611E260077B068 /* EventFeedbackPresenterTestBuilder.swift */; };
 		CABA43831FB84834009CB5B0 /* StoryboardMessagesSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43821FB84834009CB5B0 /* StoryboardMessagesSceneFactory.swift */; };
 		CABA43861FBC6FE1009CB5B0 /* LoginModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43851FBC6FE1009CB5B0 /* LoginModuleProviding.swift */; };
 		CABA43891FBCD94E009CB5B0 /* LoginPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43881FBCD94E009CB5B0 /* LoginPresenterTests.swift */; };
@@ -2527,6 +2528,7 @@
 		CAB1380E1FE08D0E00AD61FE /* MessageBubbleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubbleCollectionViewCell.swift; sourceTree = "<group>"; };
 		CAB138121FE1555C00AD61FE /* MessagesCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		CAB258E22120431A00909C79 /* CapturingKnowledgeServiceObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingKnowledgeServiceObserver.swift; sourceTree = "<group>"; };
+		CAB3B8F822611E260077B068 /* EventFeedbackPresenterTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFeedbackPresenterTestBuilder.swift; sourceTree = "<group>"; };
 		CABA43821FB84834009CB5B0 /* StoryboardMessagesSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardMessagesSceneFactory.swift; sourceTree = "<group>"; };
 		CABA43851FBC6FE1009CB5B0 /* LoginModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModuleProviding.swift; sourceTree = "<group>"; };
 		CABA43881FBCD94E009CB5B0 /* LoginPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenterTests.swift; sourceTree = "<group>"; };
@@ -4493,6 +4495,7 @@
 			isa = PBXGroup;
 			children = (
 				CA50B1A022610D580091E425 /* EventFeedbackPresenterTests.swift */,
+				CAB3B8F822611E260077B068 /* EventFeedbackPresenterTestBuilder.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -8259,6 +8262,7 @@
 				CA6A8DF020E424C1007536CD /* BeforeMapDetailSceneLoads_MapDetailPresenterShould.swift in Sources */,
 				CA2D08041FE94B9100BFD785 /* WhenTheAppLaunchesWithInitializedSession.swift in Sources */,
 				CA6A8D9420E2C596007536CD /* WhenBindingMap_MapsPresenterShould.swift in Sources */,
+				CAB3B8F922611E260077B068 /* EventFeedbackPresenterTestBuilder.swift in Sources */,
 				CA8E17F11F817AA2003C348C /* CapturingPreloadModuleDelegate.swift in Sources */,
 				CACF1EAC20B5C14F00D904B5 /* WhenPreparingViewModelForEventWithIdenticalAbstractAndDescription_EventDetailInteractorShould.swift in Sources */,
 				CA52C69520D6B001009D3A9E /* WhenScheduleModuleSelectsEvent_DirectorShould.swift in Sources */,
