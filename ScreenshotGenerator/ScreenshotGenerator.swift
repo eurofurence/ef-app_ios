@@ -1,11 +1,3 @@
-//
-//  ScreenshotGenerator.swift
-//  ScreenshotGenerator
-//
-//  Created by Thomas Sherwood on 26/07/2017.
-//  Copyright © 2017 Eurofurence. All rights reserved.
-//
-
 import XCTest
 
 class ScreenshotGenerator: XCTestCase {

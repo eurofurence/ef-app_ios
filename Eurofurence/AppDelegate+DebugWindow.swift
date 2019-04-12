@@ -1,11 +1,3 @@
-//
-//  AppDelegate+DebugWindow.swift
-//  Eurofurence
-//
-//  Created by Thomas Sherwood on 20/01/2019.
-//  Copyright © 2019 Eurofurence. All rights reserved.
-//
-
 import UIKit
 
 extension AppDelegate {

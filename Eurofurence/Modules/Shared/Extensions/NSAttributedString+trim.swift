@@ -1,11 +1,3 @@
-//
-//  NSAttributedString+trim.swift
-//  Eurofurence
-//
-//  Created by Dominik Schöner on 26/07/18.
-//  Copyright © 2018 Eurofurence. All rights reserved.
-//
-
 import Foundation
 
 extension NSAttributedString {

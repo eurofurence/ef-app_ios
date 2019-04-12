@@ -1,11 +1,3 @@
-//
-//  SharedModel.swift
-//  Eurofurence
-//
-//  Created by Thomas Sherwood on 27/12/2018.
-//  Copyright © 2018 Eurofurence. All rights reserved.
-//
-
 import EurofurenceModel
 import Foundation
 

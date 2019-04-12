@@ -1,11 +1,3 @@
-//
-//  WhenFetchingMapContent_ThatRevealMultipleOptions_ApplicationShould.swift
-//  EurofurenceTests
-//
-//  Created by Thomas Sherwood on 04/08/2018.
-//  Copyright © 2018 Eurofurence. All rights reserved.
-//
-
 import EurofurenceModel
 import XCTest
 

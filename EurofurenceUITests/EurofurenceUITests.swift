@@ -1,11 +1,3 @@
-//
-//  EurofurenceUITests.swift
-//  EurofurenceUITests
-//
-//  Created by Thomas Sherwood on 13/07/2017.
-//  Copyright © 2017 Eurofurence. All rights reserved.
-//
-
 import XCTest
 
 class EurofurenceUITests: XCTestCase {

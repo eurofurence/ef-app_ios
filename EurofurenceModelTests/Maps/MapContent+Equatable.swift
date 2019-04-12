@@ -1,11 +1,3 @@
-//
-//  MapContent+Equatable.swift
-//  EurofurenceModelTests
-//
-//  Created by Thomas Sherwood on 15/02/2019.
-//  Copyright © 2019 Eurofurence. All rights reserved.
-//
-
 import EurofurenceModel
 
 extension MapContent: Equatable {

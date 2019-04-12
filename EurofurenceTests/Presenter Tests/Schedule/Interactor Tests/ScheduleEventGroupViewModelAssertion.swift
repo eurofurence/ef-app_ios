@@ -1,11 +1,3 @@
-//
-//  ScheduleEventGroupViewModelAssertion.swift
-//  TestUtilities
-//
-//  Created by Thomas Sherwood on 21/02/2019.
-//  Copyright © 2019 Eurofurence. All rights reserved.
-//
-
 @testable import Eurofurence
 import EurofurenceModelTestDoubles
 import TestUtilities

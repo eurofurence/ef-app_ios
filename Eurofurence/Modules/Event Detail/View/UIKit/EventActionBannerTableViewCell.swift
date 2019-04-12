@@ -1,11 +1,3 @@
-//
-//  EventActionBannerTableViewCell.swift
-//  Eurofurence
-//
-//  Created by Thomas Sherwood on 25/03/2019.
-//  Copyright © 2019 Eurofurence. All rights reserved.
-//
-
 import UIKit
 
 class EventActionBannerTableViewCell: UITableViewCell, EventActionBannerComponent {

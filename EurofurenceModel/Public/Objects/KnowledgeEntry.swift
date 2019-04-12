@@ -1,11 +1,3 @@
-//
-//  KnowledgeEntry.swift
-//  Eurofurence
-//
-//  Created by Thomas Sherwood on 23/02/2018.
-//  Copyright © 2018 Eurofurence. All rights reserved.
-//
-
 public typealias KnowledgeEntryIdentifier = Identifier<KnowledgeEntry>
 
 public struct KnowledgeEntry {

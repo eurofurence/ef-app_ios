@@ -1,11 +1,3 @@
-//
-//  NotificationScheduleControllerTests.swift
-//  EurofurenceTests
-//
-//  Created by Thomas Sherwood on 20/03/2019.
-//  Copyright © 2019 Eurofurence. All rights reserved.
-//
-
 @testable import Eurofurence
 import EurofurenceModel
 import EurofurenceModelTestDoubles

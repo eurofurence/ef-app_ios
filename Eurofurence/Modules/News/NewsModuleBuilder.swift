@@ -1,11 +1,3 @@
-//
-//  NewsModuleBuilder.swift
-//  Eurofurence
-//
-//  Created by Thomas Sherwood on 04/12/2017.
-//  Copyright © 2017 Eurofurence. All rights reserved.
-//
-
 class NewsModuleBuilder {
 
     private var newsSceneFactory: NewsSceneFactory

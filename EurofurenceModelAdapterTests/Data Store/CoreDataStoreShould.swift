@@ -1,11 +1,3 @@
-//
-//  CoreDataStoreShould.swift
-//  EurofurenceModelAdapterTests
-//
-//  Created by Thomas Sherwood on 05/03/2019.
-//  Copyright © 2019 Eurofurence. All rights reserved.
-//
-
 import CoreData
 import EurofurenceModel
 import XCTest

@@ -1,11 +1,3 @@
-//
-//  EurofurenceModel.h
-//  EurofurenceModel
-//
-//  Created by Thomas Sherwood on 03/10/2018.
-//  Copyright © 2018 Eurofurence. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
 
 //! Project version number for EurofurenceModel.

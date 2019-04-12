@@ -1,11 +1,3 @@
-//
-//  WhenFetchingMapContents_ThatRevealsMapEntry_ApplicationShould.swift
-//  EurofurenceTests
-//
-//  Created by Dominik Schöner on 17/08/2018.
-//  Copyright © 2018 Eurofurence. All rights reserved.
-//
-
 import EurofurenceModel
 import XCTest
 

@@ -1,11 +1,3 @@
-//
-//  WhenBindingUnreadMessage_MessagesPresenterShould.swift
-//  EurofurenceTests
-//
-//  Created by Thomas Sherwood on 11/03/2019.
-//  Copyright © 2019 Eurofurence. All rights reserved.
-//
-
 @testable import Eurofurence
 import EurofurenceModel
 import EurofurenceModelTestDoubles

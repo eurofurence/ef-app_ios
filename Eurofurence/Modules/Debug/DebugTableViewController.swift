@@ -1,11 +1,3 @@
-//
-//  DebugTableViewController.swift
-//  Eurofurence
-//
-//  Created by Thomas Sherwood on 05/07/2018.
-//  Copyright © 2018 Eurofurence. All rights reserved.
-//
-
 import MobileCoreServices
 import FirebaseMessaging
 import UIKit

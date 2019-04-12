@@ -1,11 +1,3 @@
-//
-//  ApplicationInfoPropertyListShould.swift
-//  Eurofurence
-//
-//  Created by ShezHsky on 05/07/2017.
-//  Copyright © 2017 Eurofurence. All rights reserved.
-//
-
 @testable import Eurofurence
 import XCTest
 

@@ -1,11 +1,3 @@
-//
-//  MessagesViewControllerTests.swift
-//  EurofurenceTests
-//
-//  Created by Thomas Sherwood on 18/09/2017.
-//  Copyright © 2017 Eurofurence. All rights reserved.
-//
-
 @testable import Eurofurence
 import EurofurenceModel
 import XCTest

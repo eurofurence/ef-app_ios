@@ -1,11 +1,3 @@
-//
-//  CapturingNewsScene.swift
-//  Eurofurence
-//
-//  Created by Thomas Sherwood on 25/08/2017.
-//  Copyright © 2017 Eurofurence. All rights reserved.
-//
-
 @testable import Eurofurence
 import EurofurenceModel
 import UIKit.UIViewController

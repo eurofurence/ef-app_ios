@@ -1,11 +1,3 @@
-//
-//  EventBus.swift
-//  EventBus
-//
-//  Created by Thomas Sherwood on 25/07/2016.
-//  Copyright © 2016 ShezHsky. All rights reserved.
-//
-
 import Foundation
 
 /// An `EventBus` provides a mechanism for broadcasting events and relevant

@@ -1,11 +1,3 @@
-//
-//  PreloadInteractor.swift
-//  Eurofurence
-//
-//  Created by Thomas Sherwood on 01/10/2017.
-//  Copyright © 2017 Eurofurence. All rights reserved.
-//
-
 import Foundation
 
 protocol PreloadInteractor {

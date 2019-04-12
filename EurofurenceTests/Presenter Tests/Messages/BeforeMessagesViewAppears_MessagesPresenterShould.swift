@@ -1,11 +1,3 @@
-//
-//  BeforeMessagesViewAppears_MessagesPresenterShould.swift
-//  EurofurenceTests
-//
-//  Created by Thomas Sherwood on 07/01/2019.
-//  Copyright © 2019 Eurofurence. All rights reserved.
-//
-
 import EurofurenceModelTestDoubles
 import XCTest
 

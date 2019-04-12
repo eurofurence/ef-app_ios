@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  Eurofurence
-//
-//  Copyright © 2017 Eurofurence. All rights reserved.
-//
-
 import UIKit
 import Firebase
 import UserNotifications

@@ -1,11 +1,3 @@
-//
-//  JSONSyncResponse.swift
-//  EurofurenceModel
-//
-//  Created by Thomas Sherwood on 04/03/2019.
-//  Copyright © 2019 Eurofurence. All rights reserved.
-//
-
 import Foundation
 
 // swiftlint:disable nesting

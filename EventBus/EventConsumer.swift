@@ -1,11 +1,3 @@
-//
-//  EventConsumer.swift
-//  EventBus
-//
-//  Created by Thomas Sherwood on 25/07/2016.
-//  Copyright © 2016 ShezHsky. All rights reserved.
-//
-
 /**
  An `EventConsumer` represents a type that consumes events transmitted through
  an `EventBus`, acting upon the meaning and representation of the received

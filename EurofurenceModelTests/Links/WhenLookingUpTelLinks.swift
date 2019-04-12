@@ -1,11 +1,3 @@
-//
-//  WhenLookingUpTelLinks.swift
-//  EurofurenceTests
-//
-//  Created by Dominik Schöner on 10/08/2018.
-//  Copyright © 2018 Eurofurence. All rights reserved.
-//
-
 import EurofurenceModel
 import XCTest
 

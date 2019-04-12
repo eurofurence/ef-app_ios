@@ -1,11 +1,3 @@
-//
-//  EventCache.swift
-//  EventBus
-//
-//  Created by Thomas Sherwood on 25/07/2016.
-//  Copyright © 2016 ShezHsky. All rights reserved.
-//
-
 final class EventCache {
 
     // MARK: Properties

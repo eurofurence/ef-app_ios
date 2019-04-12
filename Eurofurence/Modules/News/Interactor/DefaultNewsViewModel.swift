@@ -1,11 +1,3 @@
-//
-//  DefaultNewsViewModel.swift
-//  Eurofurence
-//
-//  Created by Thomas Sherwood on 07/03/2019.
-//  Copyright © 2019 Eurofurence. All rights reserved.
-//
-
 import EurofurenceModel
 import Foundation
 

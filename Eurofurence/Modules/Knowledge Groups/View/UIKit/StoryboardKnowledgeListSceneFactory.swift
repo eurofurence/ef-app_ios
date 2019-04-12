@@ -1,11 +1,3 @@
-//
-//  StoryboardKnowledgeListSceneFactory.swift
-//  Eurofurence
-//
-//  Created by Thomas Sherwood on 14/02/2018.
-//  Copyright © 2018 Eurofurence. All rights reserved.
-//
-
 import UIKit
 
 struct StoryboardKnowledgeListSceneFactory: KnowledgeListSceneFactory {
