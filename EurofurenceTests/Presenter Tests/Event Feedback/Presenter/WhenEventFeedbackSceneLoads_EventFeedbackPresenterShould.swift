@@ -25,5 +25,10 @@ class WhenEventFeedbackSceneLoads_EventFeedbackPresenterShould: XCTestCase {
         
         XCTAssertEqual(expected, context.scene.capturedViewModel?.eventDayAndTime)
     }
+    
+    func testBindEventLocation() {
+        let expected = context.event.room.name
+        XCTAssertEqual(expected, context.scene.capturedViewModel?.eventLocation)
+    }
 
 }
