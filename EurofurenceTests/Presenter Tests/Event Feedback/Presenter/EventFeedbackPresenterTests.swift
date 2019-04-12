@@ -17,7 +17,13 @@ class EventFeedbackPresenterTests: XCTestCase {
     }
     
     func testBindsEventTime() {
-        XCTAssertEqual(context.stubbedDayOfWeekString, context.scene.capturedViewModel?.eventDayAndTime)
+        let formatString = String.eventFeedbackDayAndTimeFormat
+        let expected = String.localizedStringWithFormat(formatString,
+                                                        context.stubbedDayOfWeekString,
+                                                        context.stubbedStartTimeString,
+                                                        context.stubbedEndTimeString)
+        
+        XCTAssertEqual(expected, context.scene.capturedViewModel?.eventDayAndTime)
     }
 
 }

@@ -209,6 +209,9 @@ public extension String {
     static let invalidAnnouncementAlertMessage = NSLocalizedString("InvalidAnnouncementAlertMessage",
                                                                    comment: "Message for the alert shown when trying to open an announcenent that has been deleted")
     
+    static let eventFeedbackDayAndTimeFormat = NSLocalizedString("EventFeedbackDayAndTime",
+                                                                 comment: "Format string used to show when an event occurs, like 'Sunday from 18:00 to 00:00'")
+    
     private struct Formatters {
         static var numbers = NumberFormatter()
     }
