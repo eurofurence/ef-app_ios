@@ -501,7 +501,7 @@
 		CA4FBE0E1F72FF2A00D29405 /* WhenBindingMessage_MessagesPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FBE0D1F72FF2A00D29405 /* WhenBindingMessage_MessagesPresenterShould.swift */; };
 		CA4FBE101F73047700D29405 /* CapturingDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FBE0F1F73047700D29405 /* CapturingDateFormatter.swift */; };
 		CA4FBE121F7304B400D29405 /* DateFormatterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FBE111F7304B400D29405 /* DateFormatterProtocol.swift */; };
-		CA50B1A122610D580091E425 /* EventFeedbackPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA50B1A022610D580091E425 /* EventFeedbackPresenterTests.swift */; };
+		CA50B1A122610D580091E425 /* WhenEventFeedbackSceneLoads_EventFeedbackPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA50B1A022610D580091E425 /* WhenEventFeedbackSceneLoads_EventFeedbackPresenterShould.swift */; };
 		CA50B1A42261105C0091E425 /* CapturingEventFeedbackScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA50B1A32261105C0091E425 /* CapturingEventFeedbackScene.swift */; };
 		CA50B1A6226110740091E425 /* StubEventFeedbackSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA50B1A5226110740091E425 /* StubEventFeedbackSceneFactory.swift */; };
 		CA50B1AB226110B00091E425 /* EventFeedbackModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA50B1AA226110B00091E425 /* EventFeedbackModuleProviding.swift */; };
@@ -2132,7 +2132,7 @@
 		CA4FBE0D1F72FF2A00D29405 /* WhenBindingMessage_MessagesPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingMessage_MessagesPresenterShould.swift; sourceTree = "<group>"; };
 		CA4FBE0F1F73047700D29405 /* CapturingDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingDateFormatter.swift; sourceTree = "<group>"; };
 		CA4FBE111F7304B400D29405 /* DateFormatterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterProtocol.swift; sourceTree = "<group>"; };
-		CA50B1A022610D580091E425 /* EventFeedbackPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFeedbackPresenterTests.swift; sourceTree = "<group>"; };
+		CA50B1A022610D580091E425 /* WhenEventFeedbackSceneLoads_EventFeedbackPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenEventFeedbackSceneLoads_EventFeedbackPresenterShould.swift; sourceTree = "<group>"; };
 		CA50B1A32261105C0091E425 /* CapturingEventFeedbackScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingEventFeedbackScene.swift; sourceTree = "<group>"; };
 		CA50B1A5226110740091E425 /* StubEventFeedbackSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubEventFeedbackSceneFactory.swift; sourceTree = "<group>"; };
 		CA50B1AA226110B00091E425 /* EventFeedbackModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFeedbackModuleProviding.swift; sourceTree = "<group>"; };
@@ -4494,7 +4494,7 @@
 		CA50B19F22610D460091E425 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				CA50B1A022610D580091E425 /* EventFeedbackPresenterTests.swift */,
+				CA50B1A022610D580091E425 /* WhenEventFeedbackSceneLoads_EventFeedbackPresenterShould.swift */,
 				CAB3B8F822611E260077B068 /* EventFeedbackPresenterTestBuilder.swift */,
 			);
 			path = Presenter;
@@ -8286,7 +8286,7 @@
 				CA6375B6208E03A800536BE2 /* DealersPresenterTestBuilder.swift in Sources */,
 				CA637595208DFD3700536BE2 /* CapturingScheduleScene.swift in Sources */,
 				CA6A8DA720E2CD6E007536CD /* WhenPreparingViewModel_MapsInteractorShould.swift in Sources */,
-				CA50B1A122610D580091E425 /* EventFeedbackPresenterTests.swift in Sources */,
+				CA50B1A122610D580091E425 /* WhenEventFeedbackSceneLoads_EventFeedbackPresenterShould.swift in Sources */,
 				CA08159520D472B700F750D4 /* FakeEventsSchedule.swift in Sources */,
 				CA6A8DD720E4181A007536CD /* StubMapDetailSceneFactory.swift in Sources */,
 				CA40108B21107BC30056E16C /* KnowledgeGroupEntriesPresenterTestBuilder.swift in Sources */,

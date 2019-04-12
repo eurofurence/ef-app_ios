@@ -1,7 +1,7 @@
 @testable import Eurofurence
 import XCTest
 
-class EventFeedbackPresenterTests: XCTestCase {
+class WhenEventFeedbackSceneLoads_EventFeedbackPresenterShould: XCTestCase {
     
     var context: EventFeedbackPresenterTestBuilder.Context!
     
@@ -12,11 +12,11 @@ class EventFeedbackPresenterTests: XCTestCase {
         context.simulateSceneDidLoad()
     }
     
-    func testBindsEventTitle() {
+    func testBindEventTitle() {
         XCTAssertEqual(context.event.title, context.scene.capturedViewModel?.eventTitle)
     }
     
-    func testBindsEventTime() {
+    func testBindEventTime() {
         let formatString = String.eventFeedbackDayAndTimeFormat
         let expected = String.localizedStringWithFormat(formatString,
                                                         context.stubbedDayOfWeekString,
