@@ -513,6 +513,8 @@
 		CA50B1B8226111170091E425 /* EventFeedbackScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA50B1B7226111170091E425 /* EventFeedbackScene.swift */; };
 		CA50B1BA226111220091E425 /* EventFeedbackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA50B1B9226111220091E425 /* EventFeedbackViewModel.swift */; };
 		CA50B1BC2261112D0091E425 /* EventFeedbackSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA50B1BB2261112D0091E425 /* EventFeedbackSceneFactory.swift */; };
+		CA50B1BE226119F40091E425 /* DayOfWeekFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA50B1BD226119F40091E425 /* DayOfWeekFormatter.swift */; };
+		CA50B1C022611A810091E425 /* FakeDayOfWeekFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA50B1BF22611A810091E425 /* FakeDayOfWeekFormatter.swift */; };
 		CA52C68120D597E1009D3A9E /* ApplicationSignificantTimeChangeAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C68020D597E1009D3A9E /* ApplicationSignificantTimeChangeAdapter.swift */; };
 		CA52C68320D5980C009D3A9E /* ApplicationSignificantTimeChangeAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C68220D5980C009D3A9E /* ApplicationSignificantTimeChangeAdapterTests.swift */; };
 		CA52C68D20D6A9EB009D3A9E /* WhenSceneSelectsEvent_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C68C20D6A9EB009D3A9E /* WhenSceneSelectsEvent_SchedulePresenterShould.swift */; };
@@ -2141,6 +2143,8 @@
 		CA50B1B7226111170091E425 /* EventFeedbackScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFeedbackScene.swift; sourceTree = "<group>"; };
 		CA50B1B9226111220091E425 /* EventFeedbackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFeedbackViewModel.swift; sourceTree = "<group>"; };
 		CA50B1BB2261112D0091E425 /* EventFeedbackSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFeedbackSceneFactory.swift; sourceTree = "<group>"; };
+		CA50B1BD226119F40091E425 /* DayOfWeekFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeekFormatter.swift; sourceTree = "<group>"; };
+		CA50B1BF22611A810091E425 /* FakeDayOfWeekFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeDayOfWeekFormatter.swift; sourceTree = "<group>"; };
 		CA52C67420D58EC6009D3A9E /* WhenAppLaunchesWhenClockDoesNotReadConferenceDay_ScheduleShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenAppLaunchesWhenClockDoesNotReadConferenceDay_ScheduleShould.swift; sourceTree = "<group>"; };
 		CA52C67620D590BF009D3A9E /* WhenAppLaunchesWhenClockReadsConferenceDay_ScheduleShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenAppLaunchesWhenClockReadsConferenceDay_ScheduleShould.swift; sourceTree = "<group>"; };
 		CA52C67820D59357009D3A9E /* WhenSignificantTimeChanges_ScheduleShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSignificantTimeChanges_ScheduleShould.swift; sourceTree = "<group>"; };
@@ -4497,6 +4501,7 @@
 			isa = PBXGroup;
 			children = (
 				CA50B1A32261105C0091E425 /* CapturingEventFeedbackScene.swift */,
+				CA50B1BF22611A810091E425 /* FakeDayOfWeekFormatter.swift */,
 				CA50B1A5226110740091E425 /* StubEventFeedbackSceneFactory.swift */,
 			);
 			path = "Test Doubles";
@@ -4516,9 +4521,10 @@
 		CA50B1A8226110980091E425 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				CA50B1AE226110D20091E425 /* EventFeedbackPresenterFactoryImpl.swift */,
-				CA50B1B0226110E00091E425 /* EventFeedbackPresenterFactory.swift */,
+				CA50B1BD226119F40091E425 /* DayOfWeekFormatter.swift */,
 				CA50B1B2226110F40091E425 /* EventFeedbackPresenter.swift */,
+				CA50B1B0226110E00091E425 /* EventFeedbackPresenterFactory.swift */,
+				CA50B1AE226110D20091E425 /* EventFeedbackPresenterFactoryImpl.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -8060,6 +8066,7 @@
 				CA0F762320322DEF009DA079 /* KnowledgeListBinder.swift in Sources */,
 				CA4C474A21DF88B9005231AD /* NotificationServiceFetchResultAdapter.swift in Sources */,
 				CABA438F1FBCDBEE009CB5B0 /* LoginSceneFactory.swift in Sources */,
+				CA50B1BE226119F40091E425 /* DayOfWeekFormatter.swift in Sources */,
 				2020ECCB211CDB870036E2CF /* NSAttributedString+trim.swift in Sources */,
 				CA66C01C2124C6C700F87AFE /* StoreKitReviewPromptAction.swift in Sources */,
 				CA17FE782056B1B4005A4C05 /* KnowledgeDetailSceneInteractor.swift in Sources */,
@@ -8257,6 +8264,7 @@
 				CA52C69520D6B001009D3A9E /* WhenScheduleModuleSelectsEvent_DirectorShould.swift in Sources */,
 				CA283A9020EA8BE900F7D195 /* WhenBindingAllAnnouncementsComponent_NewsPresenterShould.swift in Sources */,
 				CAEAEBFA1FE0037700C0EE7C /* MessageDetailPresenterTests.swift in Sources */,
+				CA50B1C022611A810091E425 /* FakeDayOfWeekFormatter.swift in Sources */,
 				CACF1EBA20B6073100D904B5 /* WhenPreparingViewModel_ForEventWithNoPoster_EventDetailInteractorShould.swift in Sources */,
 				CAF81C6A20DDA10C00898C52 /* DealerDetailAboutTheArtViewModel+RandomValueProviding.swift in Sources */,
 				CA728485209F88E0007D912A /* DefaultAnnouncementDetailInteractorShould.swift in Sources */,
