@@ -16,9 +16,15 @@ struct EventFeedbackPresenter {
             return String.localizedStringWithFormat(eventDayAndTimeFormat, eventDayOfTheWeek, eventStartTime, eventEndTime)
         }()
         
+        let hosts: String = {
+            let formatString = String.eventHostedByFormat
+            return String.localizedStringWithFormat(formatString, event.hosts)
+        }()
+        
         let viewModel = ViewModel(eventTitle: event.title,
                                   eventDayAndTime: eventDayAndTime,
-                                  eventLocation: event.room.name)
+                                  eventLocation: event.room.name,
+                                  eventHosts: hosts)
         scene.bind(viewModel)
     }
     
@@ -27,6 +33,7 @@ struct EventFeedbackPresenter {
         var eventTitle: String
         var eventDayAndTime: String
         var eventLocation: String
+        var eventHosts: String
         
     }
     

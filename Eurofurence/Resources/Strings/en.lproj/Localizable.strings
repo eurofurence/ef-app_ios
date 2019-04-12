@@ -102,3 +102,4 @@
 "InvalidAnnouncementAlertMessage" = "The selected announcement has been removed as its contents are no longer valid";
 
 "EventFeedbackDayAndTime" = "%@ from %@ to %@";
+"EventHostedBy" = "Hosted by %@";
