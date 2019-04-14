@@ -12,11 +12,17 @@ class WhenEventFeedbackSceneLoads_EventFeedbackPresenterShould: XCTestCase {
         context.simulateSceneDidLoad()
     }
     
-    func testBindEventTitle() {
+    func testBindHeadingAttributes() {
+        assertTitleBound()
+        assertEventTimeBound()
+        assertEventHostBound()
+    }
+    
+    private func assertTitleBound() {
         XCTAssertEqual(context.event.title, context.scene.capturedViewModel?.eventTitle)
     }
     
-    func testBindEventTime() {
+    private func assertEventTimeBound() {
         let formatString = String.eventFeedbackDayAndTimeFormat
         let expected = String.localizedStringWithFormat(formatString,
                                                         context.stubbedDayOfWeekString,
@@ -26,12 +32,12 @@ class WhenEventFeedbackSceneLoads_EventFeedbackPresenterShould: XCTestCase {
         XCTAssertEqual(expected, context.scene.capturedViewModel?.eventDayAndTime)
     }
     
-    func testBindEventLocation() {
+    private func assertEventLocationBound() {
         let expected = context.event.room.name
         XCTAssertEqual(expected, context.scene.capturedViewModel?.eventLocation)
     }
     
-    func testBindHost() {
+    private func assertEventHostBound() {
         let formatString = String.eventHostedByFormat
         let expected = String.localizedStringWithFormat(formatString, context.event.hosts)
         
