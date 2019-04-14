@@ -91,6 +91,16 @@ class EventImpl: Event {
         isFavourite = false
         notifyObserversFavouritedStateDidChange()
     }
+    
+    private struct DummyEventFeedback: EventFeedback {
+        var feedback: String
+        var rating: Int
+        func submit() { }
+    }
+    
+    func prepareFeedback() -> EventFeedback {    
+        return DummyEventFeedback(feedback: "", rating: 0)
+    }
 
     private func notifyObserversFavouritedStateDidChange() {
         observers.forEach(provideFavouritedStateToObserver)

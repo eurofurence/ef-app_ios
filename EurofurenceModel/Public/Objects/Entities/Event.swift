@@ -34,5 +34,15 @@ public protocol Event {
     func add(_ observer: EventObserver)
     func favourite()
     func unfavourite()
+    func prepareFeedback() -> EventFeedback
 
+}
+
+public protocol EventFeedback {
+    
+    var feedback: String { get set }
+    var rating: Int { get set }
+    
+    func submit()
+    
 }

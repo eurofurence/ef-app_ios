@@ -5,7 +5,7 @@ import EurofurenceModelTestDoubles
 class EventFeedbackPresenterTestBuilder {
     
     struct Context {
-        var event: Event
+        var event: FakeEvent
         var scene: CapturingEventFeedbackScene
         
         var stubbedDayOfWeekString: String

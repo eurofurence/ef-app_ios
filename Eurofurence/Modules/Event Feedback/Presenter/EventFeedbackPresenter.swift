@@ -37,19 +37,42 @@ struct EventFeedbackPresenter: EventFeedbackSceneDelegate {
             return String.localizedStringWithFormat(formatString, event.hosts)
         }()
         
-        let viewModel = ViewModel(eventTitle: event.title,
+        let viewModel = ViewModel(eventFeedback: event.prepareFeedback(),
+                                  eventTitle: event.title,
                                   eventDayAndTime: eventDayAndTime,
                                   eventLocation: event.room.name,
                                   eventHosts: hosts)
         scene.bind(viewModel)
     }
     
-    private struct ViewModel: EventFeedbackViewModel {
+    private class ViewModel: EventFeedbackViewModel {
+        
+        private var eventFeedback: EventFeedback
         
         var eventTitle: String
         var eventDayAndTime: String
         var eventLocation: String
         var eventHosts: String
+
+        init(eventFeedback: EventFeedback, eventTitle: String, eventDayAndTime: String, eventLocation: String, eventHosts: String) {
+            self.eventFeedback = eventFeedback
+            self.eventTitle = eventTitle
+            self.eventDayAndTime = eventDayAndTime
+            self.eventLocation = eventLocation
+            self.eventHosts = eventHosts
+        }
+        
+        func feedbackChanged(_ feedback: String) {
+            eventFeedback.feedback = feedback
+        }
+        
+        func ratingPercentageChanged(_ ratingPercentage: Float) {
+            eventFeedback.rating = Int(ratingPercentage * 10) / 2
+        }
+        
+        func submitFeedback() {
+            eventFeedback.submit()
+        }
         
     }
     

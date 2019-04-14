@@ -88,6 +88,14 @@ public final class FakeEvent: Event {
         favouritedState = .unfavourited
         observers.forEach({ $0.eventDidBecomeUnfavourite(self) })
     }
+    
+    public private(set) var lastGeneratedFeedback: FakeEventFeedback?
+    public func prepareFeedback() -> EventFeedback {
+        let feedback = FakeEventFeedback()
+        lastGeneratedFeedback = feedback
+        
+        return feedback
+    }
 
     private func notifyObserverOfCurrentFavouriteStateAsPerEventContract(_ observer: EventObserver) {
         if favouritedState == .favourited {
@@ -97,6 +105,29 @@ public final class FakeEvent: Event {
         }
     }
 
+}
+
+public class FakeEventFeedback: EventFeedback {
+    
+    public enum State {
+        case unset
+        case submitted
+    }
+    
+    public private(set) var state: State = .unset
+    
+    public var feedback: String
+    public var rating: Int
+    
+    init() {
+        feedback = ""
+        rating = 0
+    }
+    
+    public func submit() {
+        state = .submitted
+    }
+    
 }
 
 extension FakeEvent: RandomValueProviding {

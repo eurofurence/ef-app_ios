@@ -17,4 +17,16 @@ class CapturingEventFeedbackScene: EventFeedbackScene {
         delegate?.eventFeedbackSceneDidLoad()
     }
     
+    func simulateFeedbackTextDidChange(_ feedbackText: String) {
+        capturedViewModel?.feedbackChanged(feedbackText)
+    }
+    
+    func simulateFeedbackRatioDidChange(_ feedbackRatio: Float) {
+        capturedViewModel?.ratingPercentageChanged(feedbackRatio)
+    }
+    
+    func simulateSubmitFeedbackTapped() {
+        capturedViewModel?.submitFeedback()
+    }
+    
 }
