@@ -23,25 +23,10 @@ struct EventFeedbackPresenter: EventFeedbackSceneDelegate {
     }
     
     func eventFeedbackSceneDidLoad() {
-        let eventDayAndTime: String = {
-            let eventDayOfTheWeek = dayOfWeekFormatter.formatDayOfWeek(from: event.startDate)
-            let eventStartTime = startTimeFormatter.hoursString(from: event.startDate)
-            let eventEndTime = endTimeFormatter.hoursString(from: event.endDate)
-            let eventDayAndTimeFormat = String.eventFeedbackDayAndTimeFormat
-            
-            return String.localizedStringWithFormat(eventDayAndTimeFormat, eventDayOfTheWeek, eventStartTime, eventEndTime)
-        }()
-        
-        let hosts: String = {
-            let formatString = String.eventHostedByFormat
-            return String.localizedStringWithFormat(formatString, event.hosts)
-        }()
-        
-        let viewModel = ViewModel(eventFeedback: event.prepareFeedback(),
-                                  eventTitle: event.title,
-                                  eventDayAndTime: eventDayAndTime,
-                                  eventLocation: event.room.name,
-                                  eventHosts: hosts)
+        let viewModel = ViewModel(event: event,
+                                  dayOfWeekFormatter: dayOfWeekFormatter,
+                                  startTimeFormatter: startTimeFormatter,
+                                  endTimeFormatter: endTimeFormatter)
         scene.bind(viewModel)
     }
     
@@ -54,12 +39,26 @@ struct EventFeedbackPresenter: EventFeedbackSceneDelegate {
         var eventLocation: String
         var eventHosts: String
 
-        init(eventFeedback: EventFeedback, eventTitle: String, eventDayAndTime: String, eventLocation: String, eventHosts: String) {
-            self.eventFeedback = eventFeedback
-            self.eventTitle = eventTitle
-            self.eventDayAndTime = eventDayAndTime
-            self.eventLocation = eventLocation
-            self.eventHosts = eventHosts
+        init(event: Event, dayOfWeekFormatter: DayOfWeekFormatter, startTimeFormatter: HoursDateFormatter, endTimeFormatter: HoursDateFormatter) {
+            let dayAndTime: String = {
+                let eventDayOfTheWeek = dayOfWeekFormatter.formatDayOfWeek(from: event.startDate)
+                let eventStartTime = startTimeFormatter.hoursString(from: event.startDate)
+                let eventEndTime = endTimeFormatter.hoursString(from: event.endDate)
+                let eventDayAndTimeFormat = String.eventFeedbackDayAndTimeFormat
+                
+                return String.localizedStringWithFormat(eventDayAndTimeFormat, eventDayOfTheWeek, eventStartTime, eventEndTime)
+            }()
+            
+            let hosts: String = {
+                let formatString = String.eventHostedByFormat
+                return String.localizedStringWithFormat(formatString, event.hosts)
+            }()
+            
+            eventFeedback = event.prepareFeedback()
+            eventTitle = event.title
+            eventDayAndTime = dayAndTime
+            eventLocation = event.room.name
+            eventHosts = hosts
         }
         
         func feedbackChanged(_ feedback: String) {
