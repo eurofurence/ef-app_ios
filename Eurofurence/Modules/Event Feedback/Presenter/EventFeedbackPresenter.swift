@@ -5,9 +5,7 @@ class EventFeedbackPresenter: EventFeedbackSceneDelegate, EventFeedbackDelegate 
     private let event: Event
     private let scene: EventFeedbackScene
     private let delegate: EventFeedbackModuleDelegate
-    private let dayOfWeekFormatter: DayOfWeekFormatter
-    private let startTimeFormatter: HoursDateFormatter
-    private let endTimeFormatter: HoursDateFormatter
+    private let dayAndTimeFormatter: EventDayAndTimeFormatter
     
     private let eventFeedback: EventFeedback
     
@@ -20,9 +18,9 @@ class EventFeedbackPresenter: EventFeedbackSceneDelegate, EventFeedbackDelegate 
         self.event = event
         self.scene = scene
         self.delegate = delegate
-        self.dayOfWeekFormatter = dayOfWeekFormatter
-        self.startTimeFormatter = startTimeFormatter
-        self.endTimeFormatter = endTimeFormatter
+        dayAndTimeFormatter = EventDayAndTimeFormatter(dayOfWeekFormatter: dayOfWeekFormatter,
+                                                       startTimeFormatter: startTimeFormatter,
+                                                       endTimeFormatter: endTimeFormatter)
         
         eventFeedback = event.prepareFeedback()
         scene.setDelegate(self)
@@ -33,9 +31,7 @@ class EventFeedbackPresenter: EventFeedbackSceneDelegate, EventFeedbackDelegate 
                                   eventFeedback: eventFeedback,
                                   submitFeedback: { [unowned self] in self.submitFeedback() },
                                   delegate: delegate,
-                                  dayOfWeekFormatter: dayOfWeekFormatter,
-                                  startTimeFormatter: startTimeFormatter,
-                                  endTimeFormatter: endTimeFormatter)
+                                  dayAndTimeFormatter: dayAndTimeFormatter)
         scene.bind(viewModel)
     }
     
@@ -45,6 +41,26 @@ class EventFeedbackPresenter: EventFeedbackSceneDelegate, EventFeedbackDelegate 
     
     private func submitFeedback() {
         eventFeedback.submit(self)
+    }
+    
+    private struct EventDayAndTimeFormatter {
+        
+        var dayOfWeekFormatter: DayOfWeekFormatter
+        var startTimeFormatter: HoursDateFormatter
+        var endTimeFormatter: HoursDateFormatter
+        
+        func formatDayAndTime(from event: Event) -> String {
+            let eventDayOfTheWeek = dayOfWeekFormatter.formatDayOfWeek(from: event.startDate)
+            let eventStartTime = startTimeFormatter.hoursString(from: event.startDate)
+            let eventEndTime = endTimeFormatter.hoursString(from: event.endDate)
+            let eventDayAndTimeFormat = String.eventFeedbackDayAndTimeFormat
+            
+            return String.localizedStringWithFormat(eventDayAndTimeFormat,
+                                                    eventDayOfTheWeek,
+                                                    eventStartTime,
+                                                    eventEndTime)
+        }
+        
     }
     
     private class ViewModel: EventFeedbackViewModel {
@@ -62,18 +78,7 @@ class EventFeedbackPresenter: EventFeedbackSceneDelegate, EventFeedbackDelegate 
              eventFeedback: EventFeedback,
              submitFeedback: @escaping () -> Void,
              delegate: EventFeedbackModuleDelegate,
-             dayOfWeekFormatter: DayOfWeekFormatter,
-             startTimeFormatter: HoursDateFormatter,
-             endTimeFormatter: HoursDateFormatter) {
-            let dayAndTime: String = {
-                let eventDayOfTheWeek = dayOfWeekFormatter.formatDayOfWeek(from: event.startDate)
-                let eventStartTime = startTimeFormatter.hoursString(from: event.startDate)
-                let eventEndTime = endTimeFormatter.hoursString(from: event.endDate)
-                let eventDayAndTimeFormat = String.eventFeedbackDayAndTimeFormat
-                
-                return String.localizedStringWithFormat(eventDayAndTimeFormat, eventDayOfTheWeek, eventStartTime, eventEndTime)
-            }()
-            
+             dayAndTimeFormatter: EventDayAndTimeFormatter) {
             let hosts: String = {
                 let formatString = String.eventHostedByFormat
                 return String.localizedStringWithFormat(formatString, event.hosts)
@@ -83,7 +88,7 @@ class EventFeedbackPresenter: EventFeedbackSceneDelegate, EventFeedbackDelegate 
             self.eventFeedback = eventFeedback
             submit = submitFeedback
             eventTitle = event.title
-            eventDayAndTime = dayAndTime
+            eventDayAndTime = dayAndTimeFormatter.formatDayAndTime(from: event)
             eventLocation = event.room.name
             eventHosts = hosts
         }
