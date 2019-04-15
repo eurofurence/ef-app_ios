@@ -20,5 +20,9 @@ class WhenEventFeedbackSubmitsSuccessfully_EventFeedbackPresenterShould: XCTestC
     func testPlaySuccessHaptic() {
         XCTAssertTrue(context.successHaptic.played)
     }
+    
+    func testNotPlayFailureHaptic() {
+        XCTAssertFalse(context.failureHaptic.played)
+    }
 
 }

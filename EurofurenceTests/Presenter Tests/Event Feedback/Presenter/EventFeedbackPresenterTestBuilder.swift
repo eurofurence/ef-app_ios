@@ -9,6 +9,7 @@ class EventFeedbackPresenterTestBuilder {
         var scene: CapturingEventFeedbackScene
         var delegate: CapturingEventFeedbackModuleDelegate
         var successHaptic: CapturingSuccessHaptic
+        var failureHaptic: CapturingFailureHaptic
         
         var stubbedDayOfWeekString: String
         var stubbedStartTimeString: String
@@ -36,10 +37,12 @@ class EventFeedbackPresenterTestBuilder {
         
         let sceneFactory = StubEventFeedbackSceneFactory()
         let successHaptic = CapturingSuccessHaptic()
+        let failureHaptic = CapturingFailureHaptic()
         let presenterFactory = EventFeedbackPresenterFactoryImpl(dayOfWeekFormatter: dayOfWeekFormatter,
                                                                  startTimeFormatter: startTimeFormatter,
                                                                  endTimeFormatter: endTimeFormatter,
-                                                                 successHaptic: successHaptic)
+                                                                 successHaptic: successHaptic,
+                                                                 failureHaptic: failureHaptic)
         
         let delegate = CapturingEventFeedbackModuleDelegate()
         let moduleFactory = EventFeedbackModuleProvidingImpl(presenterFactory: presenterFactory, sceneFactory: sceneFactory)
@@ -50,6 +53,7 @@ class EventFeedbackPresenterTestBuilder {
                        scene: scene,
                        delegate: delegate,
                        successHaptic: successHaptic,
+                       failureHaptic: failureHaptic,
                        stubbedDayOfWeekString: stubbedDayOfWeekString,
                        stubbedStartTimeString: stubbedStartTimeString,
                        stubbedEndTimeString: stubbedEndTimeString)

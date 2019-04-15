@@ -42,4 +42,8 @@ class EventFeedbackViewController: UITableViewController, UITextViewDelegate, Ev
         
     }
     
+    func showFeedbackSubmissionFailedPrompt() {
+        
+    }
+    
 }

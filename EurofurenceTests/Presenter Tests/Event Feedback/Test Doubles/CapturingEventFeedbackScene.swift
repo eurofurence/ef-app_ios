@@ -23,6 +23,11 @@ class CapturingEventFeedbackScene: EventFeedbackScene {
         feedbackState = .success
     }
     
+    private(set) var didShowFailurePrompt = false
+    func showFeedbackSubmissionFailedPrompt() {
+        didShowFailurePrompt = true
+    }
+    
     func simulateSceneDidLoad() {
         delegate?.eventFeedbackSceneDidLoad()
     }
