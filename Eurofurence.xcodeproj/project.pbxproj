@@ -188,6 +188,9 @@
 		CA152ED622651B7F00212742 /* SuccessHaptic.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA152ED522651B7F00212742 /* SuccessHaptic.swift */; };
 		CA152ED822651B9600212742 /* CapturingSuccessHaptic.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA152ED722651B9600212742 /* CapturingSuccessHaptic.swift */; };
 		CA152EDB22651CE800212742 /* WhenEventFeedbackSubmitsUnsuccessfully_EventFeedbackPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA152EDA22651CE800212742 /* WhenEventFeedbackSubmitsUnsuccessfully_EventFeedbackPresenterShould.swift */; };
+		CA152EDE22651DF700212742 /* EventObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA152EDD22651DF700212742 /* EventObserver.swift */; };
+		CA152EE022651E0A00212742 /* EventFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA152EDF22651E0A00212742 /* EventFeedback.swift */; };
+		CA152EE222651E1700212742 /* EventFeedbackDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA152EE122651E1700212742 /* EventFeedbackDelegate.swift */; };
 		CA162E8B20A64352004AFED6 /* WhenLoggedOutDuringConvention_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E8A20A64352004AFED6 /* WhenLoggedOutDuringConvention_NewsInteractorShould.swift */; };
 		CA162E9A20A88A71004AFED6 /* RelativeTimeIntervalCountdownFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E9920A88A71004AFED6 /* RelativeTimeIntervalCountdownFormatter.swift */; };
 		CA162E9E20A8D158004AFED6 /* FoundationRelativeTimeIntervalCountdownFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E9D20A8D158004AFED6 /* FoundationRelativeTimeIntervalCountdownFormatter.swift */; };
@@ -1697,6 +1700,9 @@
 		CA152ED522651B7F00212742 /* SuccessHaptic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessHaptic.swift; sourceTree = "<group>"; };
 		CA152ED722651B9600212742 /* CapturingSuccessHaptic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingSuccessHaptic.swift; sourceTree = "<group>"; };
 		CA152EDA22651CE800212742 /* WhenEventFeedbackSubmitsUnsuccessfully_EventFeedbackPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenEventFeedbackSubmitsUnsuccessfully_EventFeedbackPresenterShould.swift; sourceTree = "<group>"; };
+		CA152EDD22651DF700212742 /* EventObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventObserver.swift; sourceTree = "<group>"; };
+		CA152EDF22651E0A00212742 /* EventFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFeedback.swift; sourceTree = "<group>"; };
+		CA152EE122651E1700212742 /* EventFeedbackDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFeedbackDelegate.swift; sourceTree = "<group>"; };
 		CA162E6D20A468E7004AFED6 /* WhenObservingCountdownUntilConvention_EurofurenceApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingCountdownUntilConvention_EurofurenceApplicationShould.swift; sourceTree = "<group>"; };
 		CA162E6F20A4B691004AFED6 /* DateDistanceCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDistanceCalculator.swift; sourceTree = "<group>"; };
 		CA162E7220A4B6A5004AFED6 /* ConventionStartDateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConventionStartDateRepository.swift; sourceTree = "<group>"; };
@@ -3700,6 +3706,17 @@
 				CA152EDA22651CE800212742 /* WhenEventFeedbackSubmitsUnsuccessfully_EventFeedbackPresenterShould.swift */,
 			);
 			path = "Feedback Unsuccessful";
+			sourceTree = "<group>";
+		};
+		CA152EDC22651DEB00212742 /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				CA4679A122176A3F006B3090 /* Event.swift */,
+				CA152EDF22651E0A00212742 /* EventFeedback.swift */,
+				CA152EE122651E1700212742 /* EventFeedbackDelegate.swift */,
+				CA152EDD22651DF700212742 /* EventObserver.swift */,
+			);
+			path = Event;
 			sourceTree = "<group>";
 		};
 		CA162E6C20A468C4004AFED6 /* Countdown */ = {
@@ -6509,7 +6526,7 @@
 			children = (
 				CA46798F221708FA006B3090 /* Announcement.swift */,
 				CA467998221761FE006B3090 /* Dealer.swift */,
-				CA4679A122176A3F006B3090 /* Event.swift */,
+				CA152EDC22651DEB00212742 /* Event */,
 				CACF1EC820B6D5AA00D904B5 /* ImageEntity.swift */,
 				CA6A8D9F20E2CAB7007536CD /* Map.swift */,
 				CA30EAC31F2672BF0053DBF6 /* Message.swift */,
@@ -8841,6 +8858,7 @@
 				CAEA0E00216BDE3100B0C7A6 /* LoginResponse.swift in Sources */,
 				CAEA0DD9216BDE2300B0C7A6 /* EventEntity+Adaptation.swift in Sources */,
 				CA23586C221C3A000044B1FC /* UnfavouriteEvent.swift in Sources */,
+				CA152EDE22651DF700212742 /* EventObserver.swift in Sources */,
 				CAEA0DE2216BDE2300B0C7A6 /* TrackEntity+Adaptation.swift in Sources */,
 				CAEA0DDB216BDE2300B0C7A6 /* ImageModelEntity+Adaptation.swift in Sources */,
 				CAEA0D8B216BDD9500B0C7A6 /* DataStoreChangedConsumer.swift in Sources */,
@@ -8949,10 +8967,12 @@
 				CAEA0D93216BDD9500B0C7A6 /* SignificantTimeObserver.swift in Sources */,
 				CAEA0D92216BDD9500B0C7A6 /* PersistentImageRepository.swift in Sources */,
 				CA467999221761FE006B3090 /* Dealer.swift in Sources */,
+				CA152EE222651E1700212742 /* EventFeedbackDelegate.swift in Sources */,
 				CA235868221B591D0044B1FC /* MessageImpl.swift in Sources */,
 				CAEA0DAD216BDE2300B0C7A6 /* SignificantTimeChangeAdapter.swift in Sources */,
 				CAEA0DE0216BDE2300B0C7A6 /* ReadAnnouncementEntity.swift in Sources */,
 				CAEA0DAF216BDE2300B0C7A6 /* URLOpener.swift in Sources */,
+				CA152EE022651E0A00212742 /* EventFeedback.swift in Sources */,
 				CAA4BA6A21EE80E100DE2C88 /* ConcreteSessionStateService.swift in Sources */,
 				CAEA0DDA216BDE2300B0C7A6 /* FavouriteEventEntity+Adaptation.swift in Sources */,
 				CAEA0DBD216BDE2300B0C7A6 /* Room.swift in Sources */,

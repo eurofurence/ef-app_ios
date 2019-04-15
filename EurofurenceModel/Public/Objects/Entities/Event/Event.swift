@@ -2,13 +2,6 @@ import Foundation
 
 public typealias EventIdentifier = Identifier<Event>
 
-public protocol EventObserver {
-
-    func eventDidBecomeFavourite(_ event: Event)
-    func eventDidBecomeUnfavourite(_ event: Event)
-
-}
-
 public protocol Event {
 
     var identifier: EventIdentifier { get }
@@ -36,20 +29,4 @@ public protocol Event {
     func unfavourite()
     func prepareFeedback() -> EventFeedback
 
-}
-
-public protocol EventFeedback {
-    
-    var feedback: String { get set }
-    var rating: Int { get set }
-    
-    func submit(_ delegate: EventFeedbackDelegate)
-    
-}
-
-public protocol EventFeedbackDelegate {
-    
-    func eventFeedbackSubmissionDidFinish(_ feedback: EventFeedback)
-    func eventFeedbackSubmissionDidFail(_ feedback: EventFeedback)
-    
 }
