@@ -30,7 +30,7 @@ class EventFeedbackPresenter: EventFeedbackSceneDelegate, EventFeedbackDelegate 
         let viewModel = ViewModel(event: event,
                                   eventFeedback: eventFeedback,
                                   submitFeedback: { [unowned self] in self.submitFeedback() },
-                                  delegate: delegate,
+                                  cancelFeedback: { [unowned self] in self.cancelFeedback() },
                                   dayAndTimeFormatter: dayAndTimeFormatter)
         scene.bind(viewModel)
     }
@@ -41,6 +41,10 @@ class EventFeedbackPresenter: EventFeedbackSceneDelegate, EventFeedbackDelegate 
     
     private func submitFeedback() {
         eventFeedback.submit(self)
+    }
+    
+    private func cancelFeedback() {
+        delegate.eventFeedbackDismissed()
     }
     
     private struct EventDayAndTimeFormatter {
@@ -66,8 +70,8 @@ class EventFeedbackPresenter: EventFeedbackSceneDelegate, EventFeedbackDelegate 
     private class ViewModel: EventFeedbackViewModel {
         
         private var eventFeedback: EventFeedback
-        private let delegate: EventFeedbackModuleDelegate
         private let submit: () -> Void
+        private let cancel: () -> Void
         
         var eventTitle: String
         var eventDayAndTime: String
@@ -77,16 +81,16 @@ class EventFeedbackPresenter: EventFeedbackSceneDelegate, EventFeedbackDelegate 
         init(event: Event,
              eventFeedback: EventFeedback,
              submitFeedback: @escaping () -> Void,
-             delegate: EventFeedbackModuleDelegate,
+             cancelFeedback: @escaping () -> Void,
              dayAndTimeFormatter: EventDayAndTimeFormatter) {
             let hosts: String = {
                 let formatString = String.eventHostedByFormat
                 return String.localizedStringWithFormat(formatString, event.hosts)
             }()
             
-            self.delegate = delegate
             self.eventFeedback = eventFeedback
             submit = submitFeedback
+            cancel = cancelFeedback
             eventTitle = event.title
             eventDayAndTime = dayAndTimeFormatter.formatDayAndTime(from: event)
             eventLocation = event.room.name
@@ -106,7 +110,7 @@ class EventFeedbackPresenter: EventFeedbackSceneDelegate, EventFeedbackDelegate 
         }
         
         func cancelFeedback() {
-            delegate.eventFeedbackDismissed()
+            cancel()
         }
         
     }
