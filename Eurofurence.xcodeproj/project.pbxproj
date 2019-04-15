@@ -185,6 +185,9 @@
 		CA152ECC2265129B00212742 /* EventFeedbackModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA152ECB2265129B00212742 /* EventFeedbackModuleDelegate.swift */; };
 		CA152ECE2265143400212742 /* CapturingEventFeedbackModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA152ECD2265143400212742 /* CapturingEventFeedbackModuleDelegate.swift */; };
 		CA152ED022651A2100212742 /* WhenEventFeedbackSubmitsSuccessfully_EventFeedbackPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA152ECF22651A2100212742 /* WhenEventFeedbackSubmitsSuccessfully_EventFeedbackPresenterShould.swift */; };
+		CA152ED622651B7F00212742 /* SuccessHaptic.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA152ED522651B7F00212742 /* SuccessHaptic.swift */; };
+		CA152ED822651B9600212742 /* CapturingSuccessHaptic.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA152ED722651B9600212742 /* CapturingSuccessHaptic.swift */; };
+		CA152EDB22651CE800212742 /* WhenEventFeedbackSubmitsUnsuccessfully_EventFeedbackPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA152EDA22651CE800212742 /* WhenEventFeedbackSubmitsUnsuccessfully_EventFeedbackPresenterShould.swift */; };
 		CA162E8B20A64352004AFED6 /* WhenLoggedOutDuringConvention_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E8A20A64352004AFED6 /* WhenLoggedOutDuringConvention_NewsInteractorShould.swift */; };
 		CA162E9A20A88A71004AFED6 /* RelativeTimeIntervalCountdownFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E9920A88A71004AFED6 /* RelativeTimeIntervalCountdownFormatter.swift */; };
 		CA162E9E20A8D158004AFED6 /* FoundationRelativeTimeIntervalCountdownFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E9D20A8D158004AFED6 /* FoundationRelativeTimeIntervalCountdownFormatter.swift */; };
@@ -1691,6 +1694,9 @@
 		CA152ECB2265129B00212742 /* EventFeedbackModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFeedbackModuleDelegate.swift; sourceTree = "<group>"; };
 		CA152ECD2265143400212742 /* CapturingEventFeedbackModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingEventFeedbackModuleDelegate.swift; sourceTree = "<group>"; };
 		CA152ECF22651A2100212742 /* WhenEventFeedbackSubmitsSuccessfully_EventFeedbackPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenEventFeedbackSubmitsSuccessfully_EventFeedbackPresenterShould.swift; sourceTree = "<group>"; };
+		CA152ED522651B7F00212742 /* SuccessHaptic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessHaptic.swift; sourceTree = "<group>"; };
+		CA152ED722651B9600212742 /* CapturingSuccessHaptic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingSuccessHaptic.swift; sourceTree = "<group>"; };
+		CA152EDA22651CE800212742 /* WhenEventFeedbackSubmitsUnsuccessfully_EventFeedbackPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenEventFeedbackSubmitsUnsuccessfully_EventFeedbackPresenterShould.swift; sourceTree = "<group>"; };
 		CA162E6D20A468E7004AFED6 /* WhenObservingCountdownUntilConvention_EurofurenceApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingCountdownUntilConvention_EurofurenceApplicationShould.swift; sourceTree = "<group>"; };
 		CA162E6F20A4B691004AFED6 /* DateDistanceCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDistanceCalculator.swift; sourceTree = "<group>"; };
 		CA162E7220A4B6A5004AFED6 /* ConventionStartDateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConventionStartDateRepository.swift; sourceTree = "<group>"; };
@@ -3688,6 +3694,14 @@
 			path = "Feedback Submitted Successfully";
 			sourceTree = "<group>";
 		};
+		CA152ED922651CCD00212742 /* Feedback Unsuccessful */ = {
+			isa = PBXGroup;
+			children = (
+				CA152EDA22651CE800212742 /* WhenEventFeedbackSubmitsUnsuccessfully_EventFeedbackPresenterShould.swift */,
+			);
+			path = "Feedback Unsuccessful";
+			sourceTree = "<group>";
+		};
 		CA162E6C20A468C4004AFED6 /* Countdown */ = {
 			isa = PBXGroup;
 			children = (
@@ -4548,6 +4562,7 @@
 				CA152ED222651A7400212742 /* Submit Feedback Tapped */,
 				CA152ED322651A8800212742 /* Cancel Feedback Tapped */,
 				CA152ED422651A9200212742 /* Feedback Submitted Successfully */,
+				CA152ED922651CCD00212742 /* Feedback Unsuccessful */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -4559,6 +4574,7 @@
 				CA50B1BF22611A810091E425 /* FakeDayOfWeekFormatter.swift */,
 				CA50B1A5226110740091E425 /* StubEventFeedbackSceneFactory.swift */,
 				CA152ECD2265143400212742 /* CapturingEventFeedbackModuleDelegate.swift */,
+				CA152ED722651B9600212742 /* CapturingSuccessHaptic.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -4582,6 +4598,7 @@
 				CA50B1B2226110F40091E425 /* EventFeedbackPresenter.swift */,
 				CA50B1B0226110E00091E425 /* EventFeedbackPresenterFactory.swift */,
 				CA50B1AE226110D20091E425 /* EventFeedbackPresenterFactoryImpl.swift */,
+				CA152ED522651B7F00212742 /* SuccessHaptic.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -8195,6 +8212,7 @@
 				CAF705681F82D13F00A9FEA2 /* TutorialModuleProviding.swift in Sources */,
 				CA8E7EF81FB08ED700F0BF10 /* RootModule.swift in Sources */,
 				CA36A48220D8C89700EE6537 /* DealerComponentTableViewCell.swift in Sources */,
+				CA152ED622651B7F00212742 /* SuccessHaptic.swift in Sources */,
 				CA17FE7D2057FCCB005A4C05 /* KnowledgeEntryDetailViewModel.swift in Sources */,
 				CA7992462245174800DF1F84 /* NotificationScheduleController.swift in Sources */,
 				CAA6060C20EEC06500075A4E /* DebugTableViewController.swift in Sources */,
@@ -8324,6 +8342,7 @@
 				CA6A8D9420E2C596007536CD /* WhenBindingMap_MapsPresenterShould.swift in Sources */,
 				CAB3B8F922611E260077B068 /* EventFeedbackPresenterTestBuilder.swift in Sources */,
 				CA8E17F11F817AA2003C348C /* CapturingPreloadModuleDelegate.swift in Sources */,
+				CA152ED822651B9600212742 /* CapturingSuccessHaptic.swift in Sources */,
 				CACF1EAC20B5C14F00D904B5 /* WhenPreparingViewModelForEventWithIdenticalAbstractAndDescription_EventDetailInteractorShould.swift in Sources */,
 				CA52C69520D6B001009D3A9E /* WhenScheduleModuleSelectsEvent_DirectorShould.swift in Sources */,
 				CA283A9020EA8BE900F7D195 /* WhenBindingAllAnnouncementsComponent_NewsPresenterShould.swift in Sources */,
@@ -8585,6 +8604,7 @@
 				CA1ECB451FE3A2880076083A /* WhenInitialMessageLoadCompletesWithMessages.swift in Sources */,
 				CA283AE220EC05B700F7D195 /* WhenPreparingViewModelForFavouritedEvent_ScheduleInteractorShould.swift in Sources */,
 				CACEA06D2242827800DFF26C /* NotificationScheduleControllerTests.swift in Sources */,
+				CA152EDB22651CE800212742 /* WhenEventFeedbackSubmitsUnsuccessfully_EventFeedbackPresenterShould.swift in Sources */,
 				CA72844D209D0358007D912A /* WhenBuildingAnnouncementDetailPresenter.swift in Sources */,
 				78455B4D1F1177CF005BE2D7 /* StubFirstTimeLaunchStateProvider.swift in Sources */,
 				CA6D7CC622368F4F00AB816C /* WhenBindingReadMessage_MessagesPresenterShould.swift in Sources */,

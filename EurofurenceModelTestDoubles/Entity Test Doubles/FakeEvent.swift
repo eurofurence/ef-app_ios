@@ -134,6 +134,10 @@ public class FakeEventFeedback: EventFeedback {
         delegate?.eventFeedbackDidSubmitSuccessfully(self)
     }
     
+    public func simulateFailure() {
+        delegate?.eventFeedbackSubmissionDidFail(self)
+    }
+    
 }
 
 extension FakeEvent: RandomValueProviding {

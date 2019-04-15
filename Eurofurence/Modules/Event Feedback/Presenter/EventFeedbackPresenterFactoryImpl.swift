@@ -5,13 +5,16 @@ struct EventFeedbackPresenterFactoryImpl: EventFeedbackPresenterFactory {
     private let dayOfWeekFormatter: DayOfWeekFormatter
     private let startTimeFormatter: HoursDateFormatter
     private let endTimeFormatter: HoursDateFormatter
+    private let successHaptic: SuccessHaptic
     
     init(dayOfWeekFormatter: DayOfWeekFormatter,
          startTimeFormatter: HoursDateFormatter,
-         endTimeFormatter: HoursDateFormatter) {
+         endTimeFormatter: HoursDateFormatter,
+         successHaptic: SuccessHaptic) {
         self.dayOfWeekFormatter = dayOfWeekFormatter
         self.startTimeFormatter = startTimeFormatter
         self.endTimeFormatter = endTimeFormatter
+        self.successHaptic = successHaptic
     }
     
     func makeEventFeedbackPresenter(for event: Event,
@@ -22,7 +25,8 @@ struct EventFeedbackPresenterFactoryImpl: EventFeedbackPresenterFactory {
                                    delegate: delegate,
                                    dayOfWeekFormatter: dayOfWeekFormatter,
                                    startTimeFormatter: startTimeFormatter,
-                                   endTimeFormatter: endTimeFormatter)
+                                   endTimeFormatter: endTimeFormatter,
+                                   successHaptic: successHaptic)
     }
     
 }
