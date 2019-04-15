@@ -184,6 +184,7 @@
 		CA152ECA2263D88A00212742 /* WhenEventFeedbackSceneCancelsFeedback_EventFeedbackPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA152EC92263D88A00212742 /* WhenEventFeedbackSceneCancelsFeedback_EventFeedbackPresenterShould.swift */; };
 		CA152ECC2265129B00212742 /* EventFeedbackModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA152ECB2265129B00212742 /* EventFeedbackModuleDelegate.swift */; };
 		CA152ECE2265143400212742 /* CapturingEventFeedbackModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA152ECD2265143400212742 /* CapturingEventFeedbackModuleDelegate.swift */; };
+		CA152ED022651A2100212742 /* WhenEventFeedbackSubmitsSuccessfully_EventFeedbackPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA152ECF22651A2100212742 /* WhenEventFeedbackSubmitsSuccessfully_EventFeedbackPresenterShould.swift */; };
 		CA162E8B20A64352004AFED6 /* WhenLoggedOutDuringConvention_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E8A20A64352004AFED6 /* WhenLoggedOutDuringConvention_NewsInteractorShould.swift */; };
 		CA162E9A20A88A71004AFED6 /* RelativeTimeIntervalCountdownFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E9920A88A71004AFED6 /* RelativeTimeIntervalCountdownFormatter.swift */; };
 		CA162E9E20A8D158004AFED6 /* FoundationRelativeTimeIntervalCountdownFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E9D20A8D158004AFED6 /* FoundationRelativeTimeIntervalCountdownFormatter.swift */; };
@@ -1689,6 +1690,7 @@
 		CA152EC92263D88A00212742 /* WhenEventFeedbackSceneCancelsFeedback_EventFeedbackPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenEventFeedbackSceneCancelsFeedback_EventFeedbackPresenterShould.swift; sourceTree = "<group>"; };
 		CA152ECB2265129B00212742 /* EventFeedbackModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFeedbackModuleDelegate.swift; sourceTree = "<group>"; };
 		CA152ECD2265143400212742 /* CapturingEventFeedbackModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingEventFeedbackModuleDelegate.swift; sourceTree = "<group>"; };
+		CA152ECF22651A2100212742 /* WhenEventFeedbackSubmitsSuccessfully_EventFeedbackPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenEventFeedbackSubmitsSuccessfully_EventFeedbackPresenterShould.swift; sourceTree = "<group>"; };
 		CA162E6D20A468E7004AFED6 /* WhenObservingCountdownUntilConvention_EurofurenceApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingCountdownUntilConvention_EurofurenceApplicationShould.swift; sourceTree = "<group>"; };
 		CA162E6F20A4B691004AFED6 /* DateDistanceCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDistanceCalculator.swift; sourceTree = "<group>"; };
 		CA162E7220A4B6A5004AFED6 /* ConventionStartDateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConventionStartDateRepository.swift; sourceTree = "<group>"; };
@@ -3653,6 +3655,39 @@
 			path = UIKit;
 			sourceTree = "<group>";
 		};
+		CA152ED122651A6100212742 /* Binding View Model Attributes */ = {
+			isa = PBXGroup;
+			children = (
+				CA152EC12263C44600212742 /* BeforeEventFeedbackSceneLoads_EventFeedbackPresenterShould.swift */,
+				CA50B1A022610D580091E425 /* WhenEventFeedbackSceneLoads_EventFeedbackPresenterShould.swift */,
+			);
+			path = "Binding View Model Attributes";
+			sourceTree = "<group>";
+		};
+		CA152ED222651A7400212742 /* Submit Feedback Tapped */ = {
+			isa = PBXGroup;
+			children = (
+				CA152EC72263CD2000212742 /* WhenEventFeedbackScenePreparesFeedback_EventFeedbackPresenterShould.swift */,
+			);
+			path = "Submit Feedback Tapped";
+			sourceTree = "<group>";
+		};
+		CA152ED322651A8800212742 /* Cancel Feedback Tapped */ = {
+			isa = PBXGroup;
+			children = (
+				CA152EC92263D88A00212742 /* WhenEventFeedbackSceneCancelsFeedback_EventFeedbackPresenterShould.swift */,
+			);
+			path = "Cancel Feedback Tapped";
+			sourceTree = "<group>";
+		};
+		CA152ED422651A9200212742 /* Feedback Submitted Successfully */ = {
+			isa = PBXGroup;
+			children = (
+				CA152ECF22651A2100212742 /* WhenEventFeedbackSubmitsSuccessfully_EventFeedbackPresenterShould.swift */,
+			);
+			path = "Feedback Submitted Successfully";
+			sourceTree = "<group>";
+		};
 		CA162E6C20A468C4004AFED6 /* Countdown */ = {
 			isa = PBXGroup;
 			children = (
@@ -4509,10 +4544,10 @@
 			isa = PBXGroup;
 			children = (
 				CAB3B8F822611E260077B068 /* EventFeedbackPresenterTestBuilder.swift */,
-				CA152EC12263C44600212742 /* BeforeEventFeedbackSceneLoads_EventFeedbackPresenterShould.swift */,
-				CA50B1A022610D580091E425 /* WhenEventFeedbackSceneLoads_EventFeedbackPresenterShould.swift */,
-				CA152EC72263CD2000212742 /* WhenEventFeedbackScenePreparesFeedback_EventFeedbackPresenterShould.swift */,
-				CA152EC92263D88A00212742 /* WhenEventFeedbackSceneCancelsFeedback_EventFeedbackPresenterShould.swift */,
+				CA152ED122651A6100212742 /* Binding View Model Attributes */,
+				CA152ED222651A7400212742 /* Submit Feedback Tapped */,
+				CA152ED322651A8800212742 /* Cancel Feedback Tapped */,
+				CA152ED422651A9200212742 /* Feedback Submitted Successfully */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -8414,6 +8449,7 @@
 				CA321F4E1F7BC7FD0050E489 /* StoryboardPreloadSceneFactoryTests.swift in Sources */,
 				CA8240962122F62D007E4A70 /* WhenBindingEvent_WithNoPoster_SchedulePresenterShould.swift in Sources */,
 				78C86D791F12ADF8003A20E6 /* CapturingSplashScene.swift in Sources */,
+				CA152ED022651A2100212742 /* WhenEventFeedbackSubmitsSuccessfully_EventFeedbackPresenterShould.swift in Sources */,
 				CA63756A208CCB5800536BE2 /* WhenStoreShouldBeRefreshed_DirectorShould.swift in Sources */,
 				CA728439209CEE97007D912A /* StubConventionCountdownService.swift in Sources */,
 				CA637564208CC8F800536BE2 /* WhenBuilt_DirectorShould.swift in Sources */,
