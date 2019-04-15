@@ -14,9 +14,12 @@ struct EventFeedbackPresenterFactoryImpl: EventFeedbackPresenterFactory {
         self.endTimeFormatter = endTimeFormatter
     }
     
-    func makeEventFeedbackPresenter(for event: Event, scene: EventFeedbackScene) {
+    func makeEventFeedbackPresenter(for event: Event,
+                                    scene: EventFeedbackScene,
+                                    delegate: EventFeedbackModuleDelegate) {
         _ = EventFeedbackPresenter(event: event,
                                    scene: scene,
+                                   delegate: delegate,
                                    dayOfWeekFormatter: dayOfWeekFormatter,
                                    startTimeFormatter: startTimeFormatter,
                                    endTimeFormatter: endTimeFormatter)

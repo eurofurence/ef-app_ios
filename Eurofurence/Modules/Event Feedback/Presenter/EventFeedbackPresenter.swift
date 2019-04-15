@@ -4,17 +4,20 @@ struct EventFeedbackPresenter: EventFeedbackSceneDelegate {
     
     private let event: Event
     private let scene: EventFeedbackScene
+    private let delegate: EventFeedbackModuleDelegate
     private let dayOfWeekFormatter: DayOfWeekFormatter
     private let startTimeFormatter: HoursDateFormatter
     private let endTimeFormatter: HoursDateFormatter
     
     init(event: Event,
          scene: EventFeedbackScene,
+         delegate: EventFeedbackModuleDelegate,
          dayOfWeekFormatter: DayOfWeekFormatter,
          startTimeFormatter: HoursDateFormatter,
          endTimeFormatter: HoursDateFormatter) {
         self.event = event
         self.scene = scene
+        self.delegate = delegate
         self.dayOfWeekFormatter = dayOfWeekFormatter
         self.startTimeFormatter = startTimeFormatter
         self.endTimeFormatter = endTimeFormatter
@@ -24,6 +27,7 @@ struct EventFeedbackPresenter: EventFeedbackSceneDelegate {
     
     func eventFeedbackSceneDidLoad() {
         let viewModel = ViewModel(event: event,
+                                  delegate: delegate,
                                   dayOfWeekFormatter: dayOfWeekFormatter,
                                   startTimeFormatter: startTimeFormatter,
                                   endTimeFormatter: endTimeFormatter)
@@ -33,13 +37,18 @@ struct EventFeedbackPresenter: EventFeedbackSceneDelegate {
     private class ViewModel: EventFeedbackViewModel {
         
         private var eventFeedback: EventFeedback
+        private let delegate: EventFeedbackModuleDelegate
         
         var eventTitle: String
         var eventDayAndTime: String
         var eventLocation: String
         var eventHosts: String
 
-        init(event: Event, dayOfWeekFormatter: DayOfWeekFormatter, startTimeFormatter: HoursDateFormatter, endTimeFormatter: HoursDateFormatter) {
+        init(event: Event,
+             delegate: EventFeedbackModuleDelegate,
+             dayOfWeekFormatter: DayOfWeekFormatter,
+             startTimeFormatter: HoursDateFormatter,
+             endTimeFormatter: HoursDateFormatter) {
             let dayAndTime: String = {
                 let eventDayOfTheWeek = dayOfWeekFormatter.formatDayOfWeek(from: event.startDate)
                 let eventStartTime = startTimeFormatter.hoursString(from: event.startDate)
@@ -54,6 +63,7 @@ struct EventFeedbackPresenter: EventFeedbackSceneDelegate {
                 return String.localizedStringWithFormat(formatString, event.hosts)
             }()
             
+            self.delegate = delegate
             eventFeedback = event.prepareFeedback()
             eventTitle = event.title
             eventDayAndTime = dayAndTime
@@ -71,6 +81,10 @@ struct EventFeedbackPresenter: EventFeedbackSceneDelegate {
         
         func submitFeedback() {
             eventFeedback.submit()
+        }
+        
+        func cancelFeedback() {
+            delegate.eventFeedbackDismissed()
         }
         
     }

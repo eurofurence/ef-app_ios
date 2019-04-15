@@ -7,6 +7,7 @@ class EventFeedbackPresenterTestBuilder {
     struct Context {
         var event: FakeEvent
         var scene: CapturingEventFeedbackScene
+        var delegate: CapturingEventFeedbackModuleDelegate
         
         var stubbedDayOfWeekString: String
         var stubbedStartTimeString: String
@@ -36,12 +37,15 @@ class EventFeedbackPresenterTestBuilder {
         let presenterFactory = EventFeedbackPresenterFactoryImpl(dayOfWeekFormatter: dayOfWeekFormatter,
                                                                  startTimeFormatter: startTimeFormatter,
                                                                  endTimeFormatter: endTimeFormatter)
+        
+        let delegate = CapturingEventFeedbackModuleDelegate()
         let moduleFactory = EventFeedbackModuleProvidingImpl(presenterFactory: presenterFactory, sceneFactory: sceneFactory)
-        _ = moduleFactory.makeEventFeedbackModule(for: event)
+        _ = moduleFactory.makeEventFeedbackModule(for: event, delegate: delegate)
         let scene = sceneFactory.scene
         
         return Context(event: event,
                        scene: scene,
+                       delegate: delegate,
                        stubbedDayOfWeekString: stubbedDayOfWeekString,
                        stubbedStartTimeString: stubbedStartTimeString,
                        stubbedEndTimeString: stubbedEndTimeString)

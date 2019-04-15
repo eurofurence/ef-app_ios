@@ -10,5 +10,6 @@ protocol EventFeedbackViewModel {
     func feedbackChanged(_ feedback: String)
     func ratingPercentageChanged(_ ratingPercentage: Float)
     func submitFeedback()
+    func cancelFeedback()
     
 }

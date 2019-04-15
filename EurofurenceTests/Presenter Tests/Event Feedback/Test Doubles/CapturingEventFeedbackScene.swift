@@ -29,4 +29,8 @@ class CapturingEventFeedbackScene: EventFeedbackScene {
         capturedViewModel?.submitFeedback()
     }
     
+    func simulateCancelFeedbackTapped() {
+        capturedViewModel?.cancelFeedback()
+    }
+    
 }
