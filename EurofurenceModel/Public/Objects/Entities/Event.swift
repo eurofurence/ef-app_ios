@@ -49,7 +49,7 @@ public protocol EventFeedback {
 
 public protocol EventFeedbackDelegate {
     
-    func eventFeedbackDidSubmitSuccessfully(_ feedback: EventFeedback)
+    func eventFeedbackSubmissionDidFinish(_ feedback: EventFeedback)
     func eventFeedbackSubmissionDidFail(_ feedback: EventFeedback)
     
 }

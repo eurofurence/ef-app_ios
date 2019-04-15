@@ -131,7 +131,7 @@ public class FakeEventFeedback: EventFeedback {
     }
     
     public func simulateSuccess() {
-        delegate?.eventFeedbackDidSubmitSuccessfully(self)
+        delegate?.eventFeedbackSubmissionDidFinish(self)
     }
     
     public func simulateFailure() {

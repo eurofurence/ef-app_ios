@@ -38,7 +38,7 @@ class EventFeedbackPresenter: EventFeedbackSceneDelegate, EventFeedbackDelegate 
         scene.bind(viewModel)
     }
     
-    func eventFeedbackDidSubmitSuccessfully(_ feedback: EventFeedback) {
+    func eventFeedbackSubmissionDidFinish(_ feedback: EventFeedback) {
         scene.showFeedbackSubmissionSuccessful()
         successHaptic.play()
     }
