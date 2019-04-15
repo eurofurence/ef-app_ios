@@ -53,6 +53,7 @@ class EventFeedbackPresenter: EventFeedbackSceneDelegate, EventFeedbackDelegate 
     
     private func submitFeedback() {
         eventFeedback.submit(self)
+        scene.showFeedbackSubmissionInProgress()
     }
     
     private func cancelFeedback() {
