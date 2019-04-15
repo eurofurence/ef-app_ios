@@ -24,5 +24,9 @@ class WhenEventFeedbackSubmitsUnsuccessfully_EventFeedbackPresenterShould: XCTes
     func testNotPlaySuccessHaptic() {
         XCTAssertFalse(context.successHaptic.played)
     }
+    
+    func testHideFeedbackProgress() {
+        XCTAssertEqual(context.scene.feedbackState, .hiddenProgress)
+    }
 
 }

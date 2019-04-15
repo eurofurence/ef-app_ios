@@ -6,7 +6,9 @@ class CapturingEventFeedbackScene: EventFeedbackScene {
     enum State {
         case unset
         case inProgress
+        case hiddenProgress
         case success
+        case feedbackForm
     }
     
     private var delegate: EventFeedbackSceneDelegate?
@@ -26,6 +28,10 @@ class CapturingEventFeedbackScene: EventFeedbackScene {
     
     func showFeedbackSubmissionInProgress() {
         feedbackState = .inProgress
+    }
+    
+    func hideFeedbackSubmissionProgress() {
+        feedbackState = .hiddenProgress
     }
     
     private(set) var didShowFailurePrompt = false
