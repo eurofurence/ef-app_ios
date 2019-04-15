@@ -43,6 +43,12 @@ public protocol EventFeedback {
     var feedback: String { get set }
     var rating: Int { get set }
     
-    func submit()
+    func submit(_ delegate: EventFeedbackDelegate)
+    
+}
+
+public protocol EventFeedbackDelegate {
+    
+    func eventFeedbackDidSubmitSuccessfully(_ feedback: EventFeedback)
     
 }

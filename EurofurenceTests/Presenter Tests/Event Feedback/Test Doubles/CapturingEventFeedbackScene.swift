@@ -3,6 +3,11 @@ import Foundation
 
 class CapturingEventFeedbackScene: EventFeedbackScene {
     
+    enum State {
+        case unset
+        case success
+    }
+    
     private var delegate: EventFeedbackSceneDelegate?
     func setDelegate(_ delegate: EventFeedbackSceneDelegate) {
         self.delegate = delegate
@@ -11,6 +16,11 @@ class CapturingEventFeedbackScene: EventFeedbackScene {
     private(set) var capturedViewModel: EventFeedbackViewModel?
     func bind(_ viewModel: EventFeedbackViewModel) {
         capturedViewModel = viewModel
+    }
+    
+    private(set) var feedbackState: State = .unset
+    func showFeedbackSubmissionSuccessful() {
+        feedbackState = .success
     }
     
     func simulateSceneDidLoad() {

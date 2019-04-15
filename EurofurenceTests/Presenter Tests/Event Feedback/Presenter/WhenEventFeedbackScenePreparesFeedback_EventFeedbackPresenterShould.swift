@@ -20,5 +20,14 @@ class WhenEventFeedbackScenePreparesFeedback_EventFeedbackPresenterShould: XCTes
         XCTAssertEqual(feedback?.rating, expectedRating)
         XCTAssertEqual(feedback?.state, .submitted)
     }
+    
+    func testShowSuccessWhenFeedbackSubmitsSuccessfully() {
+        let context = EventFeedbackPresenterTestBuilder().build()
+        context.simulateSceneDidLoad()
+        context.scene.simulateSubmitFeedbackTapped()
+        context.event.lastGeneratedFeedback?.simulateSuccess()
+        
+        XCTAssertEqual(context.scene.feedbackState, .success)
+    }
 
 }

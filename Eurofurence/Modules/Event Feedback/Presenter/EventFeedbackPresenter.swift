@@ -1,6 +1,6 @@
 import EurofurenceModel
 
-struct EventFeedbackPresenter: EventFeedbackSceneDelegate {
+class EventFeedbackPresenter: EventFeedbackSceneDelegate, EventFeedbackDelegate {
     
     private let event: Event
     private let scene: EventFeedbackScene
@@ -8,6 +8,8 @@ struct EventFeedbackPresenter: EventFeedbackSceneDelegate {
     private let dayOfWeekFormatter: DayOfWeekFormatter
     private let startTimeFormatter: HoursDateFormatter
     private let endTimeFormatter: HoursDateFormatter
+    
+    private let eventFeedback: EventFeedback
     
     init(event: Event,
          scene: EventFeedbackScene,
@@ -22,11 +24,14 @@ struct EventFeedbackPresenter: EventFeedbackSceneDelegate {
         self.startTimeFormatter = startTimeFormatter
         self.endTimeFormatter = endTimeFormatter
         
+        eventFeedback = event.prepareFeedback()
         scene.setDelegate(self)
     }
     
     func eventFeedbackSceneDidLoad() {
         let viewModel = ViewModel(event: event,
+                                  eventFeedback: eventFeedback,
+                                  submitFeedback: { [unowned self] in self.submitFeedback() },
                                   delegate: delegate,
                                   dayOfWeekFormatter: dayOfWeekFormatter,
                                   startTimeFormatter: startTimeFormatter,
@@ -34,10 +39,19 @@ struct EventFeedbackPresenter: EventFeedbackSceneDelegate {
         scene.bind(viewModel)
     }
     
+    func eventFeedbackDidSubmitSuccessfully(_ feedback: EventFeedback) {
+        scene.showFeedbackSubmissionSuccessful()
+    }
+    
+    private func submitFeedback() {
+        eventFeedback.submit(self)
+    }
+    
     private class ViewModel: EventFeedbackViewModel {
         
         private var eventFeedback: EventFeedback
         private let delegate: EventFeedbackModuleDelegate
+        private let submit: () -> Void
         
         var eventTitle: String
         var eventDayAndTime: String
@@ -45,6 +59,8 @@ struct EventFeedbackPresenter: EventFeedbackSceneDelegate {
         var eventHosts: String
 
         init(event: Event,
+             eventFeedback: EventFeedback,
+             submitFeedback: @escaping () -> Void,
              delegate: EventFeedbackModuleDelegate,
              dayOfWeekFormatter: DayOfWeekFormatter,
              startTimeFormatter: HoursDateFormatter,
@@ -64,7 +80,8 @@ struct EventFeedbackPresenter: EventFeedbackSceneDelegate {
             }()
             
             self.delegate = delegate
-            eventFeedback = event.prepareFeedback()
+            self.eventFeedback = eventFeedback
+            submit = submitFeedback
             eventTitle = event.title
             eventDayAndTime = dayAndTime
             eventLocation = event.room.name
@@ -80,7 +97,7 @@ struct EventFeedbackPresenter: EventFeedbackSceneDelegate {
         }
         
         func submitFeedback() {
-            eventFeedback.submit()
+            submit()
         }
         
         func cancelFeedback() {

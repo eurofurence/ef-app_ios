@@ -38,4 +38,8 @@ class EventFeedbackViewController: UITableViewController, UITextViewDelegate, Ev
         eventSubheadingLabel.text = [viewModel.eventDayAndTime, viewModel.eventLocation, viewModel.eventHosts].joined(separator: "\n")
     }
     
+    func showFeedbackSubmissionSuccessful() {
+        
+    }
+    
 }

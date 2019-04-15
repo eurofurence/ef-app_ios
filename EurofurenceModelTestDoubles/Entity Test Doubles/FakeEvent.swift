@@ -124,8 +124,14 @@ public class FakeEventFeedback: EventFeedback {
         rating = 0
     }
     
-    public func submit() {
+    private var delegate: EventFeedbackDelegate?
+    public func submit(_ delegate: EventFeedbackDelegate) {
         state = .submitted
+        self.delegate = delegate
+    }
+    
+    public func simulateSuccess() {
+        delegate?.eventFeedbackDidSubmitSuccessfully(self)
     }
     
 }
