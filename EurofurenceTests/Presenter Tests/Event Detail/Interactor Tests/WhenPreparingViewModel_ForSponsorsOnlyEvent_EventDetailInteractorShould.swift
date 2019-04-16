@@ -10,7 +10,7 @@ class WhenPreparingViewModel_ForSponsorsOnlyEvent_EventDetailInteractorShould: X
         event.isSponsorOnly = true
         let context = EventDetailInteractorTestBuilder().build(for: event)
         let visitor = CapturingEventDetailViewModelVisitor()
-        context.viewModel.describe(componentAt: 2, to: visitor)
+        visitor.consume(contentsOf: context.viewModel)
         let expected = EventSponsorsOnlyWarningViewModel(message: .thisEventIsForSponsorsOnly)
 
         XCTAssertEqual(expected, visitor.visited(ofKind: EventSponsorsOnlyWarningViewModel.self))

@@ -10,7 +10,7 @@ class WhenPreparingViewModel_ForEventWithKage_EventDetailInteractorShould: XCTes
         event.isKageEvent = true
         let context = EventDetailInteractorTestBuilder().build(for: event)
         let visitor = CapturingEventDetailViewModelVisitor()
-        context.viewModel.describe(componentAt: 2, to: visitor)
+        visitor.consume(contentsOf: context.viewModel)
         let expected = EventKageMessageViewModel(message: .kageGuestMessage)
 
         XCTAssertEqual(expected, visitor.visited(ofKind: EventKageMessageViewModel.self))

@@ -10,7 +10,7 @@ class WhenPreparingViewModel_ForPhotoshootEvent_EventDetailInteractorShould: XCT
         event.isPhotoshoot = true
         let context = EventDetailInteractorTestBuilder().build(for: event)
         let visitor = CapturingEventDetailViewModelVisitor()
-        context.viewModel.describe(componentAt: 2, to: visitor)
+        visitor.consume(contentsOf: context.viewModel)
         let expected = EventPhotoshootMessageViewModel(message: .photoshoot)
 
         XCTAssertEqual(expected, visitor.visited(ofKind: EventPhotoshootMessageViewModel.self))
