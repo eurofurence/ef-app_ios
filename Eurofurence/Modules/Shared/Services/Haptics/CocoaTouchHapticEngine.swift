@@ -1,8 +1,8 @@
 import UIKit
 
-struct CocoaTouchHapticEngine: HapticEngine {
+struct CocoaTouchHapticEngine: SelectionChangedHaptic {
 
-    func playSelectionHaptic() {
+    func play() {
         UISelectionFeedbackGenerator().selectionChanged()
     }
 

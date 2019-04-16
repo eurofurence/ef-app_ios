@@ -155,14 +155,14 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
     private let scene: ScheduleScene
     private let interactor: ScheduleInteractor
     private let delegate: ScheduleModuleDelegate
-    private let hapticEngine: HapticEngine
+    private let hapticEngine: SelectionChangedHaptic
     private var viewModel: ScheduleViewModel?
     private var searchViewModel: ScheduleSearchViewModel?
 
     init(scene: ScheduleScene,
          interactor: ScheduleInteractor,
          delegate: ScheduleModuleDelegate,
-         hapticEngine: HapticEngine) {
+         hapticEngine: SelectionChangedHaptic) {
         self.scene = scene
         self.interactor = interactor
         self.delegate = delegate
@@ -189,7 +189,7 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
 
     func scheduleSceneDidSelectDay(at index: Int) {
         viewModel?.showEventsForDay(at: index)
-        hapticEngine.playSelectionHaptic()
+        hapticEngine.play()
     }
 
     func scheduleSceneDidSelectEvent(at indexPath: IndexPath) {

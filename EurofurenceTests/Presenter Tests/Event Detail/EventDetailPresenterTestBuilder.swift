@@ -9,7 +9,7 @@ class EventDetailPresenterTestBuilder {
     struct Context {
         var producedViewController: UIViewController
         var scene: CapturingEventDetailScene
-        var hapticEngine: CapturingHapticEngine
+        var hapticEngine: CapturingSelectionChangedHaptic
     }
 
     private var interactor: EventDetailInteractor
@@ -26,7 +26,7 @@ class EventDetailPresenterTestBuilder {
 
     func build(for event: FakeEvent = .random) -> Context {
         let sceneFactory = StubEventDetailSceneFactory()
-        let hapticEngine = CapturingHapticEngine()
+        let hapticEngine = CapturingSelectionChangedHaptic()
         let module = EventDetailModuleBuilder()
             .with(sceneFactory)
             .with(interactor)

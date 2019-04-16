@@ -4,7 +4,7 @@ struct ScheduleModule: ScheduleModuleProviding {
 
     var eventsSceneFactory: ScheduleSceneFactory
     var interactor: ScheduleInteractor
-    var hapticEngine: HapticEngine
+    var hapticEngine: SelectionChangedHaptic
 
     func makeScheduleModule(_ delegate: ScheduleModuleDelegate) -> UIViewController {
         let scene = eventsSceneFactory.makeEventsScene()

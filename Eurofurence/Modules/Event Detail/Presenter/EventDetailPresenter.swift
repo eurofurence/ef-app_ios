@@ -116,13 +116,13 @@ class EventDetailPresenter: EventDetailSceneDelegate, EventDetailViewModelDelega
 
     private let scene: EventDetailScene
     private let interactor: EventDetailInteractor
-    private let hapticEngine: HapticEngine
+    private let hapticEngine: SelectionChangedHaptic
     private let event: EventIdentifier
     private var viewModel: EventDetailViewModel?
 
     init(scene: EventDetailScene,
          interactor: EventDetailInteractor,
-         hapticEngine: HapticEngine,
+         hapticEngine: SelectionChangedHaptic,
          event: EventIdentifier) {
         self.scene = scene
         self.interactor = interactor
@@ -137,12 +137,12 @@ class EventDetailPresenter: EventDetailSceneDelegate, EventDetailViewModelDelega
     }
 
     func eventDetailSceneDidTapFavouriteEventButton() {
-        hapticEngine.playSelectionHaptic()
+        hapticEngine.play()
         viewModel?.favourite()
     }
 
     func eventDetailSceneDidTapUnfavouriteEventButton() {
-        hapticEngine.playSelectionHaptic()
+        hapticEngine.play()
         viewModel?.unfavourite()
     }
 

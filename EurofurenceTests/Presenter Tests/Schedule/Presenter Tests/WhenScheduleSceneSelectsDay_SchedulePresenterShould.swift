@@ -23,7 +23,7 @@ class WhenScheduleSceneSelectsDay_SchedulePresenterShould: XCTestCase {
         let randomDay = viewModel.days.randomElement()
         context.simulateSceneDidSelectDay(at: randomDay.index)
 
-        XCTAssertTrue(context.hapticEngine.didPlaySelectionHaptic)
+        XCTAssertTrue(context.hapticEngine.played)
     }
 
 }

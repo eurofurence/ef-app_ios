@@ -5,7 +5,7 @@ class ScheduleModuleBuilder {
 
     private var eventsSceneFactory: ScheduleSceneFactory
     private var interactor: ScheduleInteractor
-    private var hapticEngine: HapticEngine
+    private var hapticEngine: SelectionChangedHaptic
 
     init() {
         eventsSceneFactory = StoryboardScheduleSceneFactory()
@@ -26,7 +26,7 @@ class ScheduleModuleBuilder {
     }
 
     @discardableResult
-    func with(_ hapticEngine: HapticEngine) -> ScheduleModuleBuilder {
+    func with(_ hapticEngine: SelectionChangedHaptic) -> ScheduleModuleBuilder {
         self.hapticEngine = hapticEngine
         return self
     }

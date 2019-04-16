@@ -21,7 +21,7 @@ class WhenSceneTapsUnfavouriteEventButton_EventDetailPresenterShould: XCTestCase
         context.simulateSceneDidLoad()
         context.scene.simulateUnfavouriteEventButtonTapped()
 
-        XCTAssertTrue(context.hapticEngine.didPlaySelectionHaptic)
+        XCTAssertTrue(context.hapticEngine.played)
     }
 
 }

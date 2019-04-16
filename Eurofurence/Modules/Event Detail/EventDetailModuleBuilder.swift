@@ -5,7 +5,7 @@ class EventDetailModuleBuilder {
 
     private var sceneFactory: EventDetailSceneFactory
     private var interactor: EventDetailInteractor
-    private var hapticEngine: HapticEngine
+    private var hapticEngine: SelectionChangedHaptic
 
     init() {
         sceneFactory = StoryboardEventDetailSceneFactory()
@@ -26,7 +26,7 @@ class EventDetailModuleBuilder {
     }
 
     @discardableResult
-    func with(_ hapticEngine: HapticEngine) -> EventDetailModuleBuilder {
+    func with(_ hapticEngine: SelectionChangedHaptic) -> EventDetailModuleBuilder {
         self.hapticEngine = hapticEngine
         return self
     }

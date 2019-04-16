@@ -400,8 +400,8 @@
 		CA321F511F7BC8550050E489 /* PreloadSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA321F501F7BC8550050E489 /* PreloadSceneFactory.swift */; };
 		CA321F531F7BC88D0050E489 /* StoryboardPreloadSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA321F521F7BC88D0050E489 /* StoryboardPreloadSceneFactory.swift */; };
 		CA36A44920D76FA500EE6537 /* FoundationShortFormDayAndTimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A44820D76FA500EE6537 /* FoundationShortFormDayAndTimeFormatter.swift */; };
-		CA36A44B20D771B500EE6537 /* HapticEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A44A20D771B500EE6537 /* HapticEngine.swift */; };
-		CA36A44D20D771C400EE6537 /* CapturingHapticEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A44C20D771C400EE6537 /* CapturingHapticEngine.swift */; };
+		CA36A44B20D771B500EE6537 /* SelectionChangedHaptic.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A44A20D771B500EE6537 /* SelectionChangedHaptic.swift */; };
+		CA36A44D20D771C400EE6537 /* CapturingSelectionChangedHaptic.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A44C20D771C400EE6537 /* CapturingSelectionChangedHaptic.swift */; };
 		CA36A44F20D772F300EE6537 /* CocoaTouchHapticEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A44E20D772F300EE6537 /* CocoaTouchHapticEngine.swift */; };
 		CA36A45120D773B300EE6537 /* WhenSceneSelectsEventFromSearchViewModel_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A45020D773B300EE6537 /* WhenSceneSelectsEventFromSearchViewModel_SchedulePresenterShould.swift */; };
 		CA36A45320D82D9700EE6537 /* UIColor+Eurofurence.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A45220D82D9700EE6537 /* UIColor+Eurofurence.swift */; };
@@ -2007,8 +2007,8 @@
 		CA36A44420D7051900EE6537 /* InMemoryEventsSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryEventsSearchController.swift; sourceTree = "<group>"; };
 		CA36A44620D7065800EE6537 /* WhenSearchingForEvents_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSearchingForEvents_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA36A44820D76FA500EE6537 /* FoundationShortFormDayAndTimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationShortFormDayAndTimeFormatter.swift; sourceTree = "<group>"; };
-		CA36A44A20D771B500EE6537 /* HapticEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticEngine.swift; sourceTree = "<group>"; };
-		CA36A44C20D771C400EE6537 /* CapturingHapticEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingHapticEngine.swift; sourceTree = "<group>"; };
+		CA36A44A20D771B500EE6537 /* SelectionChangedHaptic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionChangedHaptic.swift; sourceTree = "<group>"; };
+		CA36A44C20D771C400EE6537 /* CapturingSelectionChangedHaptic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingSelectionChangedHaptic.swift; sourceTree = "<group>"; };
 		CA36A44E20D772F300EE6537 /* CocoaTouchHapticEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocoaTouchHapticEngine.swift; sourceTree = "<group>"; };
 		CA36A45020D773B300EE6537 /* WhenSceneSelectsEventFromSearchViewModel_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSceneSelectsEventFromSearchViewModel_SchedulePresenterShould.swift; sourceTree = "<group>"; };
 		CA36A45220D82D9700EE6537 /* UIColor+Eurofurence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Eurofurence.swift"; sourceTree = "<group>"; };
@@ -4825,7 +4825,7 @@
 		CA637593208DFD2B00536BE2 /* Test Doubles */ = {
 			isa = PBXGroup;
 			children = (
-				CA36A44C20D771C400EE6537 /* CapturingHapticEngine.swift */,
+				CA36A44C20D771C400EE6537 /* CapturingSelectionChangedHaptic.swift */,
 				CA00AE8220D1C21900C2FBB0 /* CapturingScheduleDayComponent.swift */,
 				CA00AE6120D1749200C2FBB0 /* CapturingScheduleEventComponent.swift */,
 				CA00AE5B20D171F200C2FBB0 /* CapturingScheduleEventGroupHeader.swift */,
@@ -6919,7 +6919,7 @@
 		CAF1A66F211E4A8900513226 /* Haptics */ = {
 			isa = PBXGroup;
 			children = (
-				CA36A44A20D771B500EE6537 /* HapticEngine.swift */,
+				CA36A44A20D771B500EE6537 /* SelectionChangedHaptic.swift */,
 				CA36A44E20D772F300EE6537 /* CocoaTouchHapticEngine.swift */,
 			);
 			path = Haptics;
@@ -8064,7 +8064,7 @@
 				CA6A8D6D20E26482007536CD /* MapsSceneFactory.swift in Sources */,
 				CA00AE9120D293B800C2FBB0 /* UICollectionView+Convenience.swift in Sources */,
 				CACF1EA420B5ACD400D904B5 /* EventDetailDescriptionTableViewCell.swift in Sources */,
-				CA36A44B20D771B500EE6537 /* HapticEngine.swift in Sources */,
+				CA36A44B20D771B500EE6537 /* SelectionChangedHaptic.swift in Sources */,
 				CA73AEE7201A0883004E77BF /* KnowledgeListScene.swift in Sources */,
 				CA00AE4720D16BCB00C2FBB0 /* ScheduleViewModel.swift in Sources */,
 				CA250DDA20D6E5FD00E7513C /* ScheduleSearchTableViewController.swift in Sources */,
@@ -8712,7 +8712,7 @@
 				CA60C002207F7D2100697566 /* WhenNewsSceneDidLoad.swift in Sources */,
 				CA63758C208CE06100536BE2 /* WhenBuildingScheduleModule.swift in Sources */,
 				CAD260AD20C066B0007E3618 /* WhenSceneTapsUnfavouriteEventButton_EventDetailPresenterShould.swift in Sources */,
-				CA36A44D20D771C400EE6537 /* CapturingHapticEngine.swift in Sources */,
+				CA36A44D20D771C400EE6537 /* CapturingSelectionChangedHaptic.swift in Sources */,
 				CA82409D21249907007E4A70 /* ReviewPromptControllerTests.swift in Sources */,
 				CA63755C208CBC3C00536BE2 /* StubContentLinksService.swift in Sources */,
 				CA250DCC20D6D3BE00E7513C /* WhenSceneUpdatesSearchQuery_SchedulePresenterShould.swift in Sources */,

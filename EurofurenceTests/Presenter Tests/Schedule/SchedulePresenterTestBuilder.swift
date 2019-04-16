@@ -8,7 +8,7 @@ class SchedulePresenterTestBuilder {
         var producedViewController: UIViewController
         var scene: CapturingScheduleScene
         var delegate: CapturingScheduleModuleDelegate
-        var hapticEngine: CapturingHapticEngine
+        var hapticEngine: CapturingSelectionChangedHaptic
     }
 
     private var interactor: ScheduleInteractor
@@ -26,7 +26,7 @@ class SchedulePresenterTestBuilder {
     func build() -> Context {
         let sceneFactory = StubScheduleSceneFactory()
         let delegate = CapturingScheduleModuleDelegate()
-        let hapticEngine = CapturingHapticEngine()
+        let hapticEngine = CapturingSelectionChangedHaptic()
         let viewController = ScheduleModuleBuilder()
             .with(sceneFactory)
             .with(interactor)

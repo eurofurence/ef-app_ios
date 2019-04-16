@@ -6,7 +6,7 @@ struct EventDetailModule: EventDetailModuleProviding {
 
     var sceneFactory: EventDetailSceneFactory
     var interactor: EventDetailInteractor
-    var hapticEngine: HapticEngine
+    var hapticEngine: SelectionChangedHaptic
 
     func makeEventDetailModule(for event: EventIdentifier) -> UIViewController {
         let scene = sceneFactory.makeEventDetailScene()
