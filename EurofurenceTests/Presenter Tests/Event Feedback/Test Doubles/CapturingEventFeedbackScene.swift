@@ -1,7 +1,8 @@
 @testable import Eurofurence
 import Foundation
+import UIKit.UIViewController
 
-class CapturingEventFeedbackScene: EventFeedbackScene {
+class CapturingEventFeedbackScene: UIViewController, EventFeedbackScene {
     
     enum State {
         case unset
