@@ -75,11 +75,14 @@ class CapturingEventDetailViewModelVisitor: EventDetailViewModelVisitor {
 class WhenPreparingViewModel_EventDetailInteractorShould: XCTestCase {
 
     var context: EventDetailInteractorTestBuilder.Context!
+    var visitor: CapturingEventDetailViewModelVisitor!
 
     override func setUp() {
         super.setUp()
 
         context = EventDetailInteractorTestBuilder().build()
+        visitor = CapturingEventDetailViewModelVisitor()
+        visitor.consume(contentsOf: context.viewModel)
     }
 
     func testProduceViewModelWithExpectedNumberOfComponents() {
@@ -87,25 +90,17 @@ class WhenPreparingViewModel_EventDetailInteractorShould: XCTestCase {
     }
 
     func testProduceExpectedGraphicViewModelBeforeSummary() {
-        let visitor = CapturingEventDetailViewModelVisitor()
-        visitor.consume(contentsOf: context.viewModel)
-
         XCTAssertEqual(context.makeExpectedEventGraphicViewModel(), visitor.visited(ofKind: EventGraphicViewModel.self))
         XCTAssertTrue(visitor.does(EventGraphicViewModel.self, precede: EventSummaryViewModel.self))
     }
 
-    func testProduceExpectedSummaryViewModelAtIndexOne() {
-        let visitor = CapturingEventDetailViewModelVisitor()
-        context.viewModel.describe(componentAt: 1, to: visitor)
-
-        XCTAssertEqual([context.makeExpectedEventSummaryViewModel()], visitor.visitedViewModels)
+    func testProduceExpectedSummaryViewModelBeforeDescription() {
+        XCTAssertEqual(context.makeExpectedEventSummaryViewModel(), visitor.visited(ofKind: EventSummaryViewModel.self))
+        XCTAssertTrue(visitor.does(EventSummaryViewModel.self, precede: EventDescriptionViewModel.self))
     }
 
-    func testProduceExpectedDescriptionViewModelAtIndexTwo() {
-        let visitor = CapturingEventDetailViewModelVisitor()
-        context.viewModel.describe(componentAt: 2, to: visitor)
-
-        XCTAssertEqual([context.makeExpectedEventDescriptionViewModel()], visitor.visitedViewModels)
+    func testProduceExpectedDescriptionViewModelAfterSummary() {
+        XCTAssertEqual(context.makeExpectedEventDescriptionViewModel(), visitor.visited(ofKind: EventDescriptionViewModel.self))
     }
 
 }
