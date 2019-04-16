@@ -13,8 +13,7 @@ class WhenPreparingViewModelForEventWithIdenticalAbstractAndDescription_EventDet
         let visitor = CapturingEventDetailViewModelVisitor()
         visitor.consume(contentsOf: context.viewModel)
 
-        let unexpected = context.makeExpectedEventDescriptionViewModel()
-        XCTAssertFalse(visitor.visitedViewModels.contains(unexpected))
+        XCTAssertNil(visitor.visited(ofKind: EventDescriptionViewModel.self))
     }
 
 }

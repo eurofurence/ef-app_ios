@@ -13,7 +13,7 @@ class WhenPreparingViewModel_ForPhotoshootEvent_EventDetailInteractorShould: XCT
         context.viewModel.describe(componentAt: 2, to: visitor)
         let expected = EventPhotoshootMessageViewModel(message: .photoshoot)
 
-        XCTAssertEqual([expected], visitor.visitedViewModels)
+        XCTAssertEqual(expected, visitor.visited(ofKind: EventPhotoshootMessageViewModel.self))
     }
 
 }

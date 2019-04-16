@@ -13,7 +13,7 @@ class WhenPreparingViewModel_ForEventWithKage_EventDetailInteractorShould: XCTes
         context.viewModel.describe(componentAt: 2, to: visitor)
         let expected = EventKageMessageViewModel(message: .kageGuestMessage)
 
-        XCTAssertEqual([expected], visitor.visitedViewModels)
+        XCTAssertEqual(expected, visitor.visited(ofKind: EventKageMessageViewModel.self))
     }
 
 }

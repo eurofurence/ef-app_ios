@@ -13,7 +13,7 @@ class WhenPreparingViewModel_ForDealersDenEvent_EventDetailInteractorShould: XCT
         context.viewModel.describe(componentAt: 2, to: visitor)
         let expected = EventDealersDenMessageViewModel(message: .dealersDen)
 
-        XCTAssertEqual([expected], visitor.visitedViewModels)
+        XCTAssertEqual(expected, visitor.visited(ofKind: EventDealersDenMessageViewModel.self))
     }
 
 }

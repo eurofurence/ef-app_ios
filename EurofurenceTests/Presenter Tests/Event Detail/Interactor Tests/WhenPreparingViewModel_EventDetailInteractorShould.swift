@@ -4,7 +4,7 @@ import XCTest
 
 class CapturingEventDetailViewModelVisitor: EventDetailViewModelVisitor {
 
-    private(set) var visitedViewModels = [AnyHashable]()
+    private(set) var visitedViewModels = [Any]()
 
     private(set) var visitedEventSummary: EventSummaryViewModel?
     func visit(_ summary: EventSummaryViewModel) {

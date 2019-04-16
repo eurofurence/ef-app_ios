@@ -13,7 +13,7 @@ class WhenPreparingViewModel_ForArtShowEvent_EventDetailInteractorShould: XCTest
         context.viewModel.describe(componentAt: 2, to: visitor)
         let expected = EventArtShowMessageViewModel(message: .artShow)
 
-        XCTAssertEqual([expected], visitor.visitedViewModels)
+        XCTAssertEqual(expected, visitor.visited(ofKind: EventArtShowMessageViewModel.self))
     }
 
 }

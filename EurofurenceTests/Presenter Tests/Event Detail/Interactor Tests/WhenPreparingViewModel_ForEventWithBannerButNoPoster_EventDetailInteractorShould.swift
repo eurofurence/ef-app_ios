@@ -14,7 +14,7 @@ class WhenPreparingViewModel_ForEventWithBannerButNoPoster_EventDetailInteractor
         let visitor = CapturingEventDetailViewModelVisitor()
         context.viewModel.describe(componentAt: 0, to: visitor)
 
-        XCTAssertEqual([context.makeExpectedEventGraphicViewModel()], visitor.visitedViewModels)
+        XCTAssertEqual(context.makeExpectedEventGraphicViewModel(), visitor.visited(ofKind: EventGraphicViewModel.self))
     }
 
 }

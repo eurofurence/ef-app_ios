@@ -13,7 +13,7 @@ class WhenPreparingViewModel_ForSuperSponsorsOnlyEvent_EventDetailInteractorShou
         context.viewModel.describe(componentAt: 2, to: visitor)
         let expected = EventSuperSponsorsOnlyWarningViewModel(message: .thisEventIsForSuperSponsorsOnly)
 
-        XCTAssertEqual([expected], visitor.visitedViewModels)
+        XCTAssertEqual(expected, visitor.visited(ofKind: EventSuperSponsorsOnlyWarningViewModel.self))
     }
 
 }

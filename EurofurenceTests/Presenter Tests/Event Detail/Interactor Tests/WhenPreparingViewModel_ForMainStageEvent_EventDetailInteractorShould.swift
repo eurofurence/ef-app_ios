@@ -13,7 +13,7 @@ class WhenPreparingViewModel_ForMainStageEvent_EventDetailInteractorShould: XCTe
         context.viewModel.describe(componentAt: 2, to: visitor)
         let expected = EventMainStageMessageViewModel(message: .mainStageEvent)
 
-        XCTAssertEqual([expected], visitor.visitedViewModels)
+        XCTAssertEqual(expected, visitor.visited(ofKind: EventMainStageMessageViewModel.self))
     }
 
 }
