@@ -33,7 +33,7 @@ protocol EventDetailViewModelVisitor {
 
 }
 
-struct EventSummaryViewModel: Equatable, Hashable {
+struct EventSummaryViewModel: Equatable {
 
     var title: String
     var subtitle: String
@@ -45,55 +45,55 @@ struct EventSummaryViewModel: Equatable, Hashable {
 
 }
 
-struct EventDescriptionViewModel: Equatable, Hashable {
+struct EventDescriptionViewModel: Equatable {
 
     var contents: NSAttributedString
 
 }
 
-struct EventGraphicViewModel: Equatable, Hashable {
+struct EventGraphicViewModel: Equatable {
 
     var pngGraphicData: Data
 
 }
 
-struct EventSponsorsOnlyWarningViewModel: Equatable, Hashable {
+struct EventSponsorsOnlyWarningViewModel: Equatable {
 
     var message: String
 
 }
 
-struct EventSuperSponsorsOnlyWarningViewModel: Equatable, Hashable {
+struct EventSuperSponsorsOnlyWarningViewModel: Equatable {
 
     var message: String
 
 }
 
-struct EventArtShowMessageViewModel: Equatable, Hashable {
+struct EventArtShowMessageViewModel: Equatable {
 
     var message: String
 
 }
 
-struct EventKageMessageViewModel: Equatable, Hashable {
+struct EventKageMessageViewModel: Equatable {
 
     var message: String
 
 }
 
-struct EventDealersDenMessageViewModel: Equatable, Hashable {
+struct EventDealersDenMessageViewModel: Equatable {
 
     var message: String
 
 }
 
-struct EventMainStageMessageViewModel: Equatable, Hashable {
+struct EventMainStageMessageViewModel: Equatable {
 
     var message: String
 
 }
 
-struct EventPhotoshootMessageViewModel: Equatable, Hashable {
+struct EventPhotoshootMessageViewModel: Equatable {
 
     var message: String
 
