@@ -199,6 +199,7 @@
 		CA152EF222665C8D00212742 /* EventFeedbackSceneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA152EF122665C8D00212742 /* EventFeedbackSceneTests.swift */; };
 		CA152EF422665E7000212742 /* StoryboardEventFeedbackSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA152EF322665E7000212742 /* StoryboardEventFeedbackSceneFactory.swift */; };
 		CA152EF622665E8200212742 /* DummyEventFeedbackPresenterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA152EF522665E8200212742 /* DummyEventFeedbackPresenterFactory.swift */; };
+		CA152EF822666D4F00212742 /* CapturingEventDetailViewModelVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA152EF722666D4F00212742 /* CapturingEventDetailViewModelVisitor.swift */; };
 		CA162E8B20A64352004AFED6 /* WhenLoggedOutDuringConvention_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E8A20A64352004AFED6 /* WhenLoggedOutDuringConvention_NewsInteractorShould.swift */; };
 		CA162E9A20A88A71004AFED6 /* RelativeTimeIntervalCountdownFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E9920A88A71004AFED6 /* RelativeTimeIntervalCountdownFormatter.swift */; };
 		CA162E9E20A8D158004AFED6 /* FoundationRelativeTimeIntervalCountdownFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E9D20A8D158004AFED6 /* FoundationRelativeTimeIntervalCountdownFormatter.swift */; };
@@ -1719,6 +1720,7 @@
 		CA152EF122665C8D00212742 /* EventFeedbackSceneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFeedbackSceneTests.swift; sourceTree = "<group>"; };
 		CA152EF322665E7000212742 /* StoryboardEventFeedbackSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardEventFeedbackSceneFactory.swift; sourceTree = "<group>"; };
 		CA152EF522665E8200212742 /* DummyEventFeedbackPresenterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyEventFeedbackPresenterFactory.swift; sourceTree = "<group>"; };
+		CA152EF722666D4F00212742 /* CapturingEventDetailViewModelVisitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingEventDetailViewModelVisitor.swift; sourceTree = "<group>"; };
 		CA162E6D20A468E7004AFED6 /* WhenObservingCountdownUntilConvention_EurofurenceApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingCountdownUntilConvention_EurofurenceApplicationShould.swift; sourceTree = "<group>"; };
 		CA162E6F20A4B691004AFED6 /* DateDistanceCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDistanceCalculator.swift; sourceTree = "<group>"; };
 		CA162E7220A4B6A5004AFED6 /* ConventionStartDateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConventionStartDateRepository.swift; sourceTree = "<group>"; };
@@ -6494,15 +6496,16 @@
 			isa = PBXGroup;
 			children = (
 				CACF1E6020AE2F0100D904B5 /* CapturingEventDetailScene.swift */,
-				CACF1E7320B1D0ED00D904B5 /* FakeEventDetailInteractor.swift */,
-				CACF1E5E20AE2EF400D904B5 /* StubEventDetailSceneFactory.swift */,
-				CACF1E7520B1D0FC00D904B5 /* StubEventSummaryViewModel.swift */,
-				CACF1E7720B1D10E00D904B5 /* DummyEventDetailInteractor.swift */,
-				CACF1E8B20B351EA00D904B5 /* FakeDateRangeFormatter.swift */,
 				CAD260A220C03543007E3618 /* CapturingEventDetailViewModel.swift */,
 				CA131BD220C1866D00DB1036 /* CapturingEventDetailViewModelDelegate.swift */,
-				CA08159620D475B500F750D4 /* FakeEventsService.swift */,
+				CA152EF722666D4F00212742 /* CapturingEventDetailViewModelVisitor.swift */,
+				CACF1E7720B1D10E00D904B5 /* DummyEventDetailInteractor.swift */,
+				CACF1E8B20B351EA00D904B5 /* FakeDateRangeFormatter.swift */,
+				CACF1E7320B1D0ED00D904B5 /* FakeEventDetailInteractor.swift */,
 				CA250DE120D6EB0300E7513C /* FakeEventsSearchController.swift */,
+				CA08159620D475B500F750D4 /* FakeEventsService.swift */,
+				CACF1E5E20AE2EF400D904B5 /* StubEventDetailSceneFactory.swift */,
+				CACF1E7520B1D0FC00D904B5 /* StubEventSummaryViewModel.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -8826,6 +8829,7 @@
 				CA637568208CC9C700536BE2 /* WhenTutorialFinished_DirectorShould.swift in Sources */,
 				CA250DDC20D6E85700E7513C /* WhenSearching_ScheduleInteractorShould.swift in Sources */,
 				CA6A8DDB20E41844007536CD /* MapDetailPresenterTestBuilder.swift in Sources */,
+				CA152EF822666D4F00212742 /* CapturingEventDetailViewModelVisitor.swift in Sources */,
 				CA283AEC20ED421E00F7D195 /* WhenScheduleIndicatesCurrentDayHasChanged_NewsInteractorShould.swift in Sources */,
 				CACF1E7420B1D0ED00D904B5 /* FakeEventDetailInteractor.swift in Sources */,
 				CA283A6020E6ECD300F7D195 /* WhenToldToRefresh_NewsInteractorShould.swift in Sources */,
