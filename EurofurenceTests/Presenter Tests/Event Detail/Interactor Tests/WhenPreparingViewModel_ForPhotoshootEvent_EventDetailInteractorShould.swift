@@ -14,6 +14,7 @@ class WhenPreparingViewModel_ForPhotoshootEvent_EventDetailInteractorShould: XCT
         let expected = EventPhotoshootMessageViewModel(message: .photoshoot)
 
         XCTAssertEqual(expected, visitor.visited(ofKind: EventPhotoshootMessageViewModel.self))
+        XCTAssertTrue(visitor.does(EventPhotoshootMessageViewModel.self, precede: EventDescriptionViewModel.self))
     }
 
 }

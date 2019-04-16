@@ -14,6 +14,7 @@ class WhenPreparingViewModel_ForSuperSponsorsOnlyEvent_EventDetailInteractorShou
         let expected = EventSuperSponsorsOnlyWarningViewModel(message: .thisEventIsForSuperSponsorsOnly)
 
         XCTAssertEqual(expected, visitor.visited(ofKind: EventSuperSponsorsOnlyWarningViewModel.self))
+        XCTAssertTrue(visitor.does(EventSuperSponsorsOnlyWarningViewModel.self, precede: EventDescriptionViewModel.self))
     }
 
 }

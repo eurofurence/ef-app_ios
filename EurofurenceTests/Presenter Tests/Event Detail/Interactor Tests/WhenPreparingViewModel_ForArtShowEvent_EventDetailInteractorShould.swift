@@ -14,6 +14,7 @@ class WhenPreparingViewModel_ForArtShowEvent_EventDetailInteractorShould: XCTest
         let expected = EventArtShowMessageViewModel(message: .artShow)
 
         XCTAssertEqual(expected, visitor.visited(ofKind: EventArtShowMessageViewModel.self))
+        XCTAssertTrue(visitor.does(EventArtShowMessageViewModel.self, precede: EventDescriptionViewModel.self))
     }
 
 }

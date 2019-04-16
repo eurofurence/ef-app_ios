@@ -14,6 +14,7 @@ class WhenPreparingViewModel_ForEventWithKage_EventDetailInteractorShould: XCTes
         let expected = EventKageMessageViewModel(message: .kageGuestMessage)
 
         XCTAssertEqual(expected, visitor.visited(ofKind: EventKageMessageViewModel.self))
+        XCTAssertTrue(visitor.does(EventKageMessageViewModel.self, precede: EventDescriptionViewModel.self))
     }
 
 }

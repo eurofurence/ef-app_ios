@@ -14,6 +14,7 @@ class WhenPreparingViewModel_ForDealersDenEvent_EventDetailInteractorShould: XCT
         let expected = EventDealersDenMessageViewModel(message: .dealersDen)
 
         XCTAssertEqual(expected, visitor.visited(ofKind: EventDealersDenMessageViewModel.self))
+        XCTAssertTrue(visitor.does(EventDealersDenMessageViewModel.self, precede: EventDescriptionViewModel.self))
     }
 
 }

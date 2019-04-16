@@ -14,6 +14,7 @@ class WhenPreparingViewModel_ForMainStageEvent_EventDetailInteractorShould: XCTe
         let expected = EventMainStageMessageViewModel(message: .mainStageEvent)
 
         XCTAssertEqual(expected, visitor.visited(ofKind: EventMainStageMessageViewModel.self))
+        XCTAssertTrue(visitor.does(EventMainStageMessageViewModel.self, precede: EventDescriptionViewModel.self))
     }
 
 }
