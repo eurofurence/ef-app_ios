@@ -11,10 +11,7 @@ class WhenPreparingViewModelForEventWithNoDescription_EventDetailInteractorShoul
 
         let context = EventDetailInteractorTestBuilder().build(for: event)
         let visitor = CapturingEventDetailViewModelVisitor()
-
-        if let viewModel = context.viewModel {
-            (0..<viewModel.numberOfComponents).forEach({ viewModel.describe(componentAt: $0, to: visitor) })
-        }
+        visitor.consume(contentsOf: context.viewModel)
 
         let unexpected = context.makeExpectedEventDescriptionViewModel()
         XCTAssertFalse(visitor.visitedViewModels.contains(unexpected))

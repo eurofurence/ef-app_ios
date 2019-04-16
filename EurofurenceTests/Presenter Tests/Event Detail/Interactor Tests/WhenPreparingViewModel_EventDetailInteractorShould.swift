@@ -50,6 +50,25 @@ class CapturingEventDetailViewModelVisitor: EventDetailViewModelVisitor {
     func visit(_ actionViewModel: EventActionViewModel) {
         
     }
+    
+    func visited<T>(ofKind kind: T.Type) -> T? {
+        return visitedViewModels.first(where: { $0 is T }) as? T
+    }
+    
+    func index<T>(of viewModelType: T.Type) -> Int? {
+        return visitedViewModels.firstIndex(where: { $0 is T })
+    }
+    
+    func does<A, B>(_ viewModel: A.Type, precede otherViewModel: B.Type) -> Bool {
+        guard let first = index(of: viewModel), let second = index(of: otherViewModel) else { return false }
+        return first < second
+    }
+    
+    func consume(contentsOf viewModel: EventDetailViewModel) {
+        for index in 0...viewModel.numberOfComponents {
+            viewModel.describe(componentAt: index, to: self)
+        }
+    }
 
 }
 
@@ -64,26 +83,27 @@ class WhenPreparingViewModel_EventDetailInteractorShould: XCTestCase {
     }
 
     func testProduceViewModelWithExpectedNumberOfComponents() {
-        XCTAssertEqual(3, context.viewModel?.numberOfComponents)
+        XCTAssertEqual(3, context.viewModel.numberOfComponents)
     }
 
-    func testProduceExpectedGraphicViewModelAtIndexZero() {
+    func testProduceExpectedGraphicViewModelBeforeSummary() {
         let visitor = CapturingEventDetailViewModelVisitor()
-        context.viewModel?.describe(componentAt: 0, to: visitor)
+        visitor.consume(contentsOf: context.viewModel)
 
-        XCTAssertEqual([context.makeExpectedEventGraphicViewModel()], visitor.visitedViewModels)
+        XCTAssertEqual(context.makeExpectedEventGraphicViewModel(), visitor.visited(ofKind: EventGraphicViewModel.self))
+        XCTAssertTrue(visitor.does(EventGraphicViewModel.self, precede: EventSummaryViewModel.self))
     }
 
     func testProduceExpectedSummaryViewModelAtIndexOne() {
         let visitor = CapturingEventDetailViewModelVisitor()
-        context.viewModel?.describe(componentAt: 1, to: visitor)
+        context.viewModel.describe(componentAt: 1, to: visitor)
 
         XCTAssertEqual([context.makeExpectedEventSummaryViewModel()], visitor.visitedViewModels)
     }
 
     func testProduceExpectedDescriptionViewModelAtIndexTwo() {
         let visitor = CapturingEventDetailViewModelVisitor()
-        context.viewModel?.describe(componentAt: 2, to: visitor)
+        context.viewModel.describe(componentAt: 2, to: visitor)
 
         XCTAssertEqual([context.makeExpectedEventDescriptionViewModel()], visitor.visitedViewModels)
     }

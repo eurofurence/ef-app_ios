@@ -10,7 +10,7 @@ class WhenPreparingViewModel_ForEventThatIsNotFavourite_EventDetailInteractorSho
         let service = FakeEventsService(favourites: [])
         let context = EventDetailInteractorTestBuilder().with(service).build(for: event)
         let delegate = CapturingEventDetailViewModelDelegate()
-        context.viewModel?.setDelegate(delegate)
+        context.viewModel.setDelegate(delegate)
 
         XCTAssertTrue(delegate.toldEventUnfavourited)
     }
@@ -20,7 +20,7 @@ class WhenPreparingViewModel_ForEventThatIsNotFavourite_EventDetailInteractorSho
         let service = FakeEventsService(favourites: [])
         let context = EventDetailInteractorTestBuilder().with(service).build(for: event)
         let delegate = CapturingEventDetailViewModelDelegate()
-        context.viewModel?.setDelegate(delegate)
+        context.viewModel.setDelegate(delegate)
 
         XCTAssertFalse(delegate.toldEventFavourited)
     }

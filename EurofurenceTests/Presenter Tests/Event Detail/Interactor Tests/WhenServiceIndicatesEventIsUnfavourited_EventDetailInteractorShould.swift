@@ -10,8 +10,8 @@ class WhenServiceIndicatesEventIsUnfavourited_EventDetailInteractorShould: XCTes
         let service = FakeEventsService(favourites: [event.identifier])
         let context = EventDetailInteractorTestBuilder().with(service).build(for: event)
         let delegate = CapturingEventDetailViewModelDelegate()
-        context.viewModel?.setDelegate(delegate)
-        context.viewModel?.unfavourite()
+        context.viewModel.setDelegate(delegate)
+        context.viewModel.unfavourite()
 
         XCTAssertTrue(delegate.toldEventUnfavourited)
     }

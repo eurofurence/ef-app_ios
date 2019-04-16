@@ -10,7 +10,7 @@ class WhenPreparingViewModel_ForArtShowEvent_EventDetailInteractorShould: XCTest
         event.isArtShow = true
         let context = EventDetailInteractorTestBuilder().build(for: event)
         let visitor = CapturingEventDetailViewModelVisitor()
-        context.viewModel?.describe(componentAt: 2, to: visitor)
+        context.viewModel.describe(componentAt: 2, to: visitor)
         let expected = EventArtShowMessageViewModel(message: .artShow)
 
         XCTAssertEqual([expected], visitor.visitedViewModels)

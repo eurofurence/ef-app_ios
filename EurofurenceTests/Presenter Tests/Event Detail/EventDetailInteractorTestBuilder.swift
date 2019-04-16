@@ -8,7 +8,7 @@ class EventDetailInteractorTestBuilder {
         var event: Event
         var dateRangeFormatter: FakeDateRangeFormatter
         var interactor: DefaultEventDetailInteractor
-        var viewModel: EventDetailViewModel?
+        var viewModel: EventDetailViewModel
         var eventsService: FakeEventsService
 		var markdownRenderer: StubMarkdownRenderer
     }
@@ -30,8 +30,10 @@ class EventDetailInteractorTestBuilder {
 		let markdownRenderer = StubMarkdownRenderer()
         eventsService.events = [event]
 		let interactor = DefaultEventDetailInteractor(dateRangeFormatter: dateRangeFormatter, eventsService: eventsService, markdownRenderer: markdownRenderer)
-        var viewModel: EventDetailViewModel?
+        var viewModel: EventDetailViewModel!
         interactor.makeViewModel(for: event.identifier) { viewModel = $0 }
+        
+        assert(viewModel != nil)
 
         return Context(event: event,
                        dateRangeFormatter: dateRangeFormatter,
