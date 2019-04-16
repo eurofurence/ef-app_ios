@@ -1,29 +1,60 @@
 import UIKit
 
-class EventFeedbackViewController: UITableViewController, UITextViewDelegate, EventFeedbackScene {
+class EventFeedbackViewController: UIViewController, EventFeedbackScene {
+    
+    // MARK: UIKit Stuff
     
     @IBOutlet private weak var eventTitleLabel: UILabel!
-    @IBOutlet private weak var eventSubheadingLabel: UILabel!
-    @IBOutlet private weak var feedbackTextView: UITextView!
-
-    @IBAction func cancelFeedback(_ sender: Any) {
-        
+    @IBOutlet private weak var eventSubtitleLabel: UILabel!
+    @IBOutlet private weak var childContainer: UIView!
+    
+    private var embeddedChild: UIViewController?
+    
+    @IBAction private func cancelFeedback(_ sender: Any) {
+        viewModel?.cancelFeedback()
     }
     
-    @IBAction func submitFeedback(_ sender: Any) {
+    @IBAction private func submitFeedback(_ sender: Any) {
         viewModel?.submitFeedback()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        feedbackTextView.delegate = self
         delegate?.eventFeedbackSceneDidLoad()
     }
     
-    func textViewDidChange(_ textView: UITextView) {
-        viewModel?.feedbackChanged(textView.text)
+    private func swapEmbeddedViewController(to newChild: UIViewController) {
+        unembedExistingChildController()
+        embedNewChildController(newChild)
     }
+    
+    private func unembedExistingChildController() {
+        if let embeddedChild = embeddedChild {
+            embeddedChild.willMove(toParent: nil)
+            embeddedChild.view.removeFromSuperview()
+            embeddedChild.removeFromParent()
+            embeddedChild.didMove(toParent: nil)
+        }
+    }
+    
+    private func embedNewChildController(_ newChild: UIViewController) {
+        newChild.willMove(toParent: self)
+        addChild(newChild)
+        childContainer.addSubview(newChild.view)
+        
+        NSLayoutConstraint.activate([
+            newChild.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            newChild.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            newChild.view.topAnchor.constraint(equalTo: view.topAnchor),
+            newChild.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+        
+        newChild.didMove(toParent: self)
+        
+        embeddedChild = newChild
+    }
+    
+    // MARK: EventFeedbackScene
     
     private var delegate: EventFeedbackSceneDelegate?
     func setDelegate(_ delegate: EventFeedbackSceneDelegate) {
@@ -35,18 +66,18 @@ class EventFeedbackViewController: UITableViewController, UITextViewDelegate, Ev
         self.viewModel = viewModel
         
         eventTitleLabel.text = viewModel.eventTitle
-        eventSubheadingLabel.text = [viewModel.eventDayAndTime, viewModel.eventLocation, viewModel.eventHosts].joined(separator: "\n")
+        eventSubtitleLabel.text = [viewModel.eventDayAndTime, viewModel.eventLocation, viewModel.eventHosts].joined(separator: "\n")
     }
     
     func showFeedbackSubmissionInProgress() {
         
     }
     
-    func showFeedbackSubmissionSuccessful() {
+    func hideFeedbackSubmissionProgress() {
         
     }
     
-    func hideFeedbackSubmissionProgress() {
+    func showFeedbackSubmissionSuccessful() {
         
     }
     

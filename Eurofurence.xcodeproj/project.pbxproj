@@ -193,6 +193,7 @@
 		CA152EE222651E1700212742 /* EventFeedbackDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA152EE122651E1700212742 /* EventFeedbackDelegate.swift */; };
 		CA152EE422651F5B00212742 /* FailureHaptic.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA152EE322651F5B00212742 /* FailureHaptic.swift */; };
 		CA152EE622651F6900212742 /* CapturingFailureHaptic.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA152EE522651F6900212742 /* CapturingFailureHaptic.swift */; };
+		CA152EE82265268C00212742 /* EventFeedbackFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA152EE72265268C00212742 /* EventFeedbackFormViewController.swift */; };
 		CA162E8B20A64352004AFED6 /* WhenLoggedOutDuringConvention_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E8A20A64352004AFED6 /* WhenLoggedOutDuringConvention_NewsInteractorShould.swift */; };
 		CA162E9A20A88A71004AFED6 /* RelativeTimeIntervalCountdownFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E9920A88A71004AFED6 /* RelativeTimeIntervalCountdownFormatter.swift */; };
 		CA162E9E20A8D158004AFED6 /* FoundationRelativeTimeIntervalCountdownFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E9D20A8D158004AFED6 /* FoundationRelativeTimeIntervalCountdownFormatter.swift */; };
@@ -1707,6 +1708,7 @@
 		CA152EE122651E1700212742 /* EventFeedbackDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFeedbackDelegate.swift; sourceTree = "<group>"; };
 		CA152EE322651F5B00212742 /* FailureHaptic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailureHaptic.swift; sourceTree = "<group>"; };
 		CA152EE522651F6900212742 /* CapturingFailureHaptic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingFailureHaptic.swift; sourceTree = "<group>"; };
+		CA152EE72265268C00212742 /* EventFeedbackFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFeedbackFormViewController.swift; sourceTree = "<group>"; };
 		CA162E6D20A468E7004AFED6 /* WhenObservingCountdownUntilConvention_EurofurenceApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingCountdownUntilConvention_EurofurenceApplicationShould.swift; sourceTree = "<group>"; };
 		CA162E6F20A4B691004AFED6 /* DateDistanceCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDistanceCalculator.swift; sourceTree = "<group>"; };
 		CA162E7220A4B6A5004AFED6 /* ConventionStartDateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConventionStartDateRepository.swift; sourceTree = "<group>"; };
@@ -4643,6 +4645,7 @@
 				CA50B1BB2261112D0091E425 /* EventFeedbackSceneFactory.swift */,
 				CA152EC32263C5A700212742 /* EventFeedback.storyboard */,
 				CA152EC52263C5B900212742 /* EventFeedbackViewController.swift */,
+				CA152EE72265268C00212742 /* EventFeedbackFormViewController.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -8219,6 +8222,7 @@
 				CACF1EB620B600F200D904B5 /* EventGraphicComponent.swift in Sources */,
 				CAF81C6420DD95FB00898C52 /* DealerAboutTheArtistTableViewCell.swift in Sources */,
 				CA637590208CE4E100536BE2 /* ScheduleSceneFactory.swift in Sources */,
+				CA152EE82265268C00212742 /* EventFeedbackFormViewController.swift in Sources */,
 				CA283A9A20EA9D9200F7D195 /* AnnouncementsModuleBuilder.swift in Sources */,
 				CA0F9D9421D53C6F0084886E /* SharedModel.swift in Sources */,
 				CA1B6F1720DB81DB00ADF414 /* StoryboardDealerDetailSceneFactory.swift in Sources */,
