@@ -194,6 +194,8 @@
 		CA152EE422651F5B00212742 /* FailureHaptic.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA152EE322651F5B00212742 /* FailureHaptic.swift */; };
 		CA152EE622651F6900212742 /* CapturingFailureHaptic.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA152EE522651F6900212742 /* CapturingFailureHaptic.swift */; };
 		CA152EE82265268C00212742 /* EventFeedbackFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA152EE72265268C00212742 /* EventFeedbackFormViewController.swift */; };
+		CA152EED22665B4400212742 /* CocoaTouchFailureHaptic.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA152EEC22665B4400212742 /* CocoaTouchFailureHaptic.swift */; };
+		CA152EEF22665B8100212742 /* CocoaTouchSuccessHaptic.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA152EEE22665B8100212742 /* CocoaTouchSuccessHaptic.swift */; };
 		CA162E8B20A64352004AFED6 /* WhenLoggedOutDuringConvention_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E8A20A64352004AFED6 /* WhenLoggedOutDuringConvention_NewsInteractorShould.swift */; };
 		CA162E9A20A88A71004AFED6 /* RelativeTimeIntervalCountdownFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E9920A88A71004AFED6 /* RelativeTimeIntervalCountdownFormatter.swift */; };
 		CA162E9E20A8D158004AFED6 /* FoundationRelativeTimeIntervalCountdownFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E9D20A8D158004AFED6 /* FoundationRelativeTimeIntervalCountdownFormatter.swift */; };
@@ -1709,6 +1711,8 @@
 		CA152EE322651F5B00212742 /* FailureHaptic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailureHaptic.swift; sourceTree = "<group>"; };
 		CA152EE522651F6900212742 /* CapturingFailureHaptic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingFailureHaptic.swift; sourceTree = "<group>"; };
 		CA152EE72265268C00212742 /* EventFeedbackFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFeedbackFormViewController.swift; sourceTree = "<group>"; };
+		CA152EEC22665B4400212742 /* CocoaTouchFailureHaptic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocoaTouchFailureHaptic.swift; sourceTree = "<group>"; };
+		CA152EEE22665B8100212742 /* CocoaTouchSuccessHaptic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocoaTouchSuccessHaptic.swift; sourceTree = "<group>"; };
 		CA162E6D20A468E7004AFED6 /* WhenObservingCountdownUntilConvention_EurofurenceApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingCountdownUntilConvention_EurofurenceApplicationShould.swift; sourceTree = "<group>"; };
 		CA162E6F20A4B691004AFED6 /* DateDistanceCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDistanceCalculator.swift; sourceTree = "<group>"; };
 		CA162E7220A4B6A5004AFED6 /* ConventionStartDateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConventionStartDateRepository.swift; sourceTree = "<group>"; };
@@ -3725,6 +3729,33 @@
 			path = Event;
 			sourceTree = "<group>";
 		};
+		CA152EE922665B2000212742 /* Selection Changed */ = {
+			isa = PBXGroup;
+			children = (
+				CA36A44E20D772F300EE6537 /* CocoaTouchHapticEngine.swift */,
+				CA36A44A20D771B500EE6537 /* SelectionChangedHaptic.swift */,
+			);
+			path = "Selection Changed";
+			sourceTree = "<group>";
+		};
+		CA152EEA22665B2C00212742 /* Success */ = {
+			isa = PBXGroup;
+			children = (
+				CA152ED522651B7F00212742 /* SuccessHaptic.swift */,
+				CA152EEE22665B8100212742 /* CocoaTouchSuccessHaptic.swift */,
+			);
+			path = Success;
+			sourceTree = "<group>";
+		};
+		CA152EEB22665B3200212742 /* Failure */ = {
+			isa = PBXGroup;
+			children = (
+				CA152EEC22665B4400212742 /* CocoaTouchFailureHaptic.swift */,
+				CA152EE322651F5B00212742 /* FailureHaptic.swift */,
+			);
+			path = Failure;
+			sourceTree = "<group>";
+		};
 		CA162E6C20A468C4004AFED6 /* Countdown */ = {
 			isa = PBXGroup;
 			children = (
@@ -4622,8 +4653,6 @@
 				CA50B1B2226110F40091E425 /* EventFeedbackPresenter.swift */,
 				CA50B1B0226110E00091E425 /* EventFeedbackPresenterFactory.swift */,
 				CA50B1AE226110D20091E425 /* EventFeedbackPresenterFactoryImpl.swift */,
-				CA152ED522651B7F00212742 /* SuccessHaptic.swift */,
-				CA152EE322651F5B00212742 /* FailureHaptic.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -6919,8 +6948,9 @@
 		CAF1A66F211E4A8900513226 /* Haptics */ = {
 			isa = PBXGroup;
 			children = (
-				CA36A44A20D771B500EE6537 /* SelectionChangedHaptic.swift */,
-				CA36A44E20D772F300EE6537 /* CocoaTouchHapticEngine.swift */,
+				CA152EEB22665B3200212742 /* Failure */,
+				CA152EE922665B2000212742 /* Selection Changed */,
+				CA152EEA22665B2C00212742 /* Success */,
 			);
 			path = Haptics;
 			sourceTree = "<group>";
@@ -7969,6 +7999,7 @@
 				CACF1E5020AE2B6100D904B5 /* EventDetailModule.swift in Sources */,
 				CA00AE6C20D178FA00C2FBB0 /* UITableView+Convenience.swift in Sources */,
 				CA29EF772034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift in Sources */,
+				CA152EED22665B4400212742 /* CocoaTouchFailureHaptic.swift in Sources */,
 				CA0F762D2033118D009DA079 /* KnowledgeGroupsListModuleDelegate.swift in Sources */,
 				CAF3C7441F9F5C550008F027 /* NewsModuleProviding.swift in Sources */,
 				CA1FE9991FA0B3AE009C7DF3 /* ApplicationDirector.swift in Sources */,
@@ -8119,6 +8150,7 @@
 				CAEA1046216E77DE00B0C7A6 /* Theme.swift in Sources */,
 				CA36A4CA20DA7B1B00EE6537 /* DealersSearchResultsBinder.swift in Sources */,
 				CA00AE8120D1C15900C2FBB0 /* ScheduleDaysBinder.swift in Sources */,
+				CA152EEF22665B8100212742 /* CocoaTouchSuccessHaptic.swift in Sources */,
 				CA17FE8120580082005A4C05 /* LinkScene.swift in Sources */,
 				CA66C0182124C58700F87AFE /* UserDefaultsReviewPromptAppVersionRepository.swift in Sources */,
 				CA6AA0061FD6C96B0092C6DB /* RootModuleBuilder.swift in Sources */,
