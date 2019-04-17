@@ -46,7 +46,7 @@ class CapturingEventDetailViewModelVisitor: EventDetailViewModelVisitor {
     }
     
     func visit(_ actionViewModel: EventActionViewModel) {
-        
+        visitedViewModels.append(actionViewModel)
     }
     
     func visited<T>(ofKind kind: T.Type) -> T? {

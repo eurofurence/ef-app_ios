@@ -92,6 +92,16 @@ class DefaultEventDetailViewModel: EventDetailViewModel, EventObserver {
         }
 
     }
+    
+    struct ActionComponent: EventDetailViewModelComponent {
+        
+        let actionViewModel: EventActionViewModel
+        
+        func describe(to visitor: EventDetailViewModelVisitor) {
+            visitor.visit(actionViewModel)
+        }
+        
+    }
 
     func eventDidBecomeFavourite(_ event: Event) {
         delegate?.eventFavourited()

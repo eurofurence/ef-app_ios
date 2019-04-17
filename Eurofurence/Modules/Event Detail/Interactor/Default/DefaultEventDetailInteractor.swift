@@ -39,6 +39,7 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
                                                      trackName: event.track.name,
                                                      eventHosts: event.hosts)
         components.append(DefaultEventDetailViewModel.SummaryComponent(viewModel: summaryViewModel))
+        components.append(DefaultEventDetailViewModel.ActionComponent(actionViewModel: ToggleEventFavouriteStateViewModel()))
 
         if event.isSponsorOnly {
             components.append(DefaultEventDetailViewModel.SponsorsOnlyComponent())

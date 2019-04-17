@@ -15,10 +15,6 @@ class WhenPreparingViewModel_EventDetailInteractorShould: XCTestCase {
         visitor.consume(contentsOf: context.viewModel)
     }
 
-    func testProduceViewModelWithExpectedNumberOfComponents() {
-        XCTAssertEqual(3, context.viewModel.numberOfComponents)
-    }
-
     func testProduceExpectedGraphicViewModelBeforeSummary() {
         XCTAssertEqual(context.makeExpectedEventGraphicViewModel(), visitor.visited(ofKind: EventGraphicViewModel.self))
         XCTAssertTrue(visitor.does(EventGraphicViewModel.self, precede: EventSummaryViewModel.self))

@@ -200,6 +200,8 @@
 		CA152EF422665E7000212742 /* StoryboardEventFeedbackSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA152EF322665E7000212742 /* StoryboardEventFeedbackSceneFactory.swift */; };
 		CA152EF622665E8200212742 /* DummyEventFeedbackPresenterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA152EF522665E8200212742 /* DummyEventFeedbackPresenterFactory.swift */; };
 		CA152EF822666D4F00212742 /* CapturingEventDetailViewModelVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA152EF722666D4F00212742 /* CapturingEventDetailViewModelVisitor.swift */; };
+		CA152EFA2267AB4900212742 /* ToggleEventFavouriteStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA152EF92267AB4900212742 /* ToggleEventFavouriteStateViewModel.swift */; };
+		CA152EFC2267AB7100212742 /* CapturingEventActionViewModelVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA152EFB2267AB7100212742 /* CapturingEventActionViewModelVisitor.swift */; };
 		CA162E8B20A64352004AFED6 /* WhenLoggedOutDuringConvention_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E8A20A64352004AFED6 /* WhenLoggedOutDuringConvention_NewsInteractorShould.swift */; };
 		CA162E9A20A88A71004AFED6 /* RelativeTimeIntervalCountdownFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E9920A88A71004AFED6 /* RelativeTimeIntervalCountdownFormatter.swift */; };
 		CA162E9E20A8D158004AFED6 /* FoundationRelativeTimeIntervalCountdownFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E9D20A8D158004AFED6 /* FoundationRelativeTimeIntervalCountdownFormatter.swift */; };
@@ -1721,6 +1723,8 @@
 		CA152EF322665E7000212742 /* StoryboardEventFeedbackSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardEventFeedbackSceneFactory.swift; sourceTree = "<group>"; };
 		CA152EF522665E8200212742 /* DummyEventFeedbackPresenterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyEventFeedbackPresenterFactory.swift; sourceTree = "<group>"; };
 		CA152EF722666D4F00212742 /* CapturingEventDetailViewModelVisitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingEventDetailViewModelVisitor.swift; sourceTree = "<group>"; };
+		CA152EF92267AB4900212742 /* ToggleEventFavouriteStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleEventFavouriteStateViewModel.swift; sourceTree = "<group>"; };
+		CA152EFB2267AB7100212742 /* CapturingEventActionViewModelVisitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingEventActionViewModelVisitor.swift; sourceTree = "<group>"; };
 		CA162E6D20A468E7004AFED6 /* WhenObservingCountdownUntilConvention_EurofurenceApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingCountdownUntilConvention_EurofurenceApplicationShould.swift; sourceTree = "<group>"; };
 		CA162E6F20A4B691004AFED6 /* DateDistanceCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDistanceCalculator.swift; sourceTree = "<group>"; };
 		CA162E7220A4B6A5004AFED6 /* ConventionStartDateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConventionStartDateRepository.swift; sourceTree = "<group>"; };
@@ -6506,6 +6510,7 @@
 				CA08159620D475B500F750D4 /* FakeEventsService.swift */,
 				CACF1E5E20AE2EF400D904B5 /* StubEventDetailSceneFactory.swift */,
 				CACF1E7520B1D0FC00D904B5 /* StubEventSummaryViewModel.swift */,
+				CA152EFB2267AB7100212742 /* CapturingEventActionViewModelVisitor.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -6531,6 +6536,7 @@
 				CACF1E8620B34F8200D904B5 /* Default */,
 				CACF1E6C20B1CDB800D904B5 /* EventDetailInteractor.swift */,
 				CACF1E6E20B1CDC300D904B5 /* EventDetailViewModel.swift */,
+				CA152EF92267AB4900212742 /* ToggleEventFavouriteStateViewModel.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -8195,6 +8201,7 @@
 				CA00AE4520D16BBD00C2FBB0 /* ScheduleInteractor.swift in Sources */,
 				CA957B601F705AF9004DFD5A /* MessagesViewController.swift in Sources */,
 				CA321F511F7BC8550050E489 /* PreloadSceneFactory.swift in Sources */,
+				CA152EFA2267AB4900212742 /* ToggleEventFavouriteStateViewModel.swift in Sources */,
 				CA0F762720322E36009DA079 /* KnowledgeGroupScene.swift in Sources */,
 				CA08157820D3865600F750D4 /* NavigationBarViewExtensionContainer.swift in Sources */,
 				CABF03B42041BC870028BD62 /* UITableView+Extensions.swift in Sources */,
@@ -8430,6 +8437,7 @@
 				CAEAEBFA1FE0037700C0EE7C /* MessageDetailPresenterTests.swift in Sources */,
 				CA50B1C022611A810091E425 /* FakeDayOfWeekFormatter.swift in Sources */,
 				CACF1EBA20B6073100D904B5 /* WhenPreparingViewModel_ForEventWithNoPoster_EventDetailInteractorShould.swift in Sources */,
+				CA152EFC2267AB7100212742 /* CapturingEventActionViewModelVisitor.swift in Sources */,
 				CAF81C6A20DDA10C00898C52 /* DealerDetailAboutTheArtViewModel+RandomValueProviding.swift in Sources */,
 				CA728485209F88E0007D912A /* DefaultAnnouncementDetailInteractorShould.swift in Sources */,
 				CA283ADC20EB9FD000F7D195 /* WhenAnnouncementsModuleSelectsAnnouncement_DirectorShould.swift in Sources */,
