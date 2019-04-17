@@ -1,42 +1,94 @@
 import EurofurenceModel
 
-class ToggleEventFavouriteStateViewModel: EventActionViewModel, EventObserver {
+class ToggleEventFavouriteStateViewModel: EventActionViewModel {
     
-    private let event: Event
-    private var isFavourite = false
+    private var stateMachine: StateMachine
     
     init(event: Event) {
-        self.event = event
-        event.add(self)
-    }
-    
-    func eventDidBecomeFavourite(_ event: Event) {
-        isFavourite = true
-    }
-    
-    func eventDidBecomeUnfavourite(_ event: Event) {
-        isFavourite = false
+        stateMachine = StateMachine(event: event)
     }
     
     private var visitor: EventActionViewModelVisitor?
     func describe(to visitor: EventActionViewModelVisitor) {
-        self.visitor = visitor
-        
-        if isFavourite {
-            visitor.visitActionTitle(.unfavourite)
-        } else {
-            visitor.visitActionTitle(.favourite)
-        }
+        stateMachine.describeCurrentState(to: visitor)
     }
     
     func perform() {
-        if isFavourite {
+        stateMachine.perform()
+    }
+    
+    private class StateMachine: EventObserver {
+        
+        private var state: State
+        
+        init(event: Event) {
+            state = UnfavouriteState(event: event)
+            event.add(self)
+        }
+        
+        func eventDidBecomeFavourite(_ event: Event) {
+            state = FavouriteState(event: event)
+        }
+        
+        func eventDidBecomeUnfavourite(_ event: Event) {
+            state = UnfavouriteState(event: event)
+        }
+        
+        func perform() {
+            state.perform()
+        }
+        
+        func describeCurrentState(to visitor: EventActionViewModelVisitor) {
+            state.describe(to: visitor)
+        }
+        
+    }
+    
+    private class State {
+        
+        let event: Event
+        private(set) var visitor: EventActionViewModelVisitor?
+        
+        init(event: Event) {
+            self.event = event
+        }
+        
+        func perform() {
+            
+        }
+        
+        func describe(to visitor: EventActionViewModelVisitor) {
+            self.visitor = visitor
+        }
+        
+    }
+    
+    private class FavouriteState: State {
+        
+        override func perform() {
             event.unfavourite()
             visitor?.visitActionTitle(.favourite)
-        } else {
+        }
+        
+        override func describe(to visitor: EventActionViewModelVisitor) {
+            super.describe(to: visitor)
+            visitor.visitActionTitle(.unfavourite)
+        }
+        
+    }
+    
+    private class UnfavouriteState: State {
+        
+        override func perform() {
             event.favourite()
             visitor?.visitActionTitle(.unfavourite)
         }
+        
+        override func describe(to visitor: EventActionViewModelVisitor) {
+            super.describe(to: visitor)
+            visitor.visitActionTitle(.favourite)
+        }
+        
     }
     
 }
