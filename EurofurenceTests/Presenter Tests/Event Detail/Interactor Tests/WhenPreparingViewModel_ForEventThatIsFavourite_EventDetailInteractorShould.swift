@@ -7,10 +7,10 @@ class WhenPreparingViewModel_ForEventThatIsFavourite_EventDetailInteractorShould
 
     func testTellTheDelegateItIsAFavourite() {
         let event = FakeEvent.random
-        event.favourite()
         let context = EventDetailInteractorTestBuilder().build(for: event)
         let delegate = CapturingEventDetailViewModelDelegate()
         context.viewModel.setDelegate(delegate)
+        event.favourite()
 
         XCTAssertTrue(delegate.toldEventFavourited)
     }

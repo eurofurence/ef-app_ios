@@ -117,6 +117,7 @@ class DefaultEventDetailViewModel: EventDetailViewModel, EventObserver {
     init(components: [EventDetailViewModelComponent], event: Event) {
         self.components = components
         self.event = event
+        event.add(self)
     }
 
     var numberOfComponents: Int {
@@ -126,7 +127,6 @@ class DefaultEventDetailViewModel: EventDetailViewModel, EventObserver {
     private var delegate: EventDetailViewModelDelegate?
     func setDelegate(_ delegate: EventDetailViewModelDelegate) {
         self.delegate = delegate
-        event.add(self)
     }
 
     func describe(componentAt index: Int, to visitor: EventDetailViewModelVisitor) {

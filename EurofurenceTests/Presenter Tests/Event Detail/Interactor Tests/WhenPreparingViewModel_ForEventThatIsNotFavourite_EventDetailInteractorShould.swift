@@ -11,6 +11,7 @@ class WhenPreparingViewModel_ForEventThatIsNotFavourite_EventDetailInteractorSho
         let context = EventDetailInteractorTestBuilder().with(service).build(for: event)
         let delegate = CapturingEventDetailViewModelDelegate()
         context.viewModel.setDelegate(delegate)
+        event.unfavourite()
 
         XCTAssertTrue(delegate.toldEventUnfavourited)
     }
