@@ -34,6 +34,7 @@ class WhenPreparingViewModel_AndInvokingUnfavouriteEventCommand_EventDetailInter
         command?.perform()
         
         XCTAssertEqual(event.favouritedState, .favourited)
+        XCTAssertEqual(actionVisitor.actionTitle, String.unfavourite)
     }
 
 }

@@ -19,7 +19,13 @@ class ToggleEventFavouriteStateViewModel: EventActionViewModel {
     
     private class StateMachine: EventObserver {
         
-        private var state: State
+        private var state: State {
+            didSet {
+                relayCurrentStateToVisitor()
+            }
+        }
+        
+        private var visitor: EventActionViewModelVisitor?
         
         init(event: Event) {
             state = UnfavouriteState(event: event)
@@ -39,7 +45,14 @@ class ToggleEventFavouriteStateViewModel: EventActionViewModel {
         }
         
         func describeCurrentState(to visitor: EventActionViewModelVisitor) {
+            self.visitor = visitor
             state.describe(to: visitor)
+        }
+        
+        private func relayCurrentStateToVisitor() {
+            if let visitor = visitor {
+                describeCurrentState(to: visitor)
+            }
         }
         
     }
