@@ -24,5 +24,34 @@ class WhenPreparingViewModel_ForEventThatIsNotFavourite_EventDetailInteractorSho
 
         XCTAssertFalse(delegate.toldEventFavourited)
     }
+    
+    func testIncludeFavouriteActionAfterSummary() {
+        let event = FakeEvent.random
+        event.unfavourite()
+        let context = EventDetailInteractorTestBuilder().build(for: event)
+        let visitor = CapturingEventDetailViewModelVisitor()
+        visitor.consume(contentsOf: context.viewModel)
+        
+        let command = visitor.visited(ofKind: ToggleEventFavouriteStateViewModel.self)
+        let actionVisitor = CapturingEventActionViewModelVisitor()
+        command?.describe(to: actionVisitor)
+        
+        XCTAssertEqual(actionVisitor.actionTitle, String.favourite)
+    }
+    
+    func testSwapToUnfavouriteEventActionWhenInvokingFavouriteEvent() {
+        let event = FakeEvent.random
+        event.unfavourite()
+        let context = EventDetailInteractorTestBuilder().build(for: event)
+        let visitor = CapturingEventDetailViewModelVisitor()
+        visitor.consume(contentsOf: context.viewModel)
+        
+        let command = visitor.visited(ofKind: ToggleEventFavouriteStateViewModel.self)
+        let actionVisitor = CapturingEventActionViewModelVisitor()
+        command?.describe(to: actionVisitor)
+        command?.perform()
+        
+        XCTAssertEqual(actionVisitor.actionTitle, String.unfavourite)
+    }
 
 }
