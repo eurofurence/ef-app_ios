@@ -36,7 +36,7 @@ class WhenPreparingViewModel_ForEventThatIsFavourite_EventDetailInteractorShould
         let actionVisitor = CapturingEventActionViewModelVisitor()
         command?.describe(to: actionVisitor)
         
-        XCTAssertEqual(actionVisitor.actionTitle, String.favourite)
+        XCTAssertEqual(actionVisitor.actionTitle, String.unfavourite)
     }
 
 }
