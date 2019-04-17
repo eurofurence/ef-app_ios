@@ -252,7 +252,7 @@
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LJ3-vs-ghM">
                                                             <rect key="frame" x="20" y="8" width="335" height="67.5"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                             <state key="normal" title="Button"/>
                                                             <connections>
                                                                 <action selector="performBannerAction" destination="DRN-9T-fcm" eventType="touchUpInside" id="Ufj-cm-P0Z"/>

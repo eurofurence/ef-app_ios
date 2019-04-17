@@ -67,8 +67,8 @@
 "AllAnnouncements" = "View all announcements";
 "Announcement" = "Announcement";
 
-"Favourite" = "Favourite";
-"Unfavourite" = "Unfavourite";
+"Favourite" = "Add to Favourites";
+"Unfavourite" = "Remove from Favourites";
 
 "LocationAndAvailability" = "Location and Availability";
 "LocatedWithinAfterDarkDen" = "Located in the after-dark dealers den";
