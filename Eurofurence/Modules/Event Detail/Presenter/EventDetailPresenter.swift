@@ -136,22 +136,12 @@ class EventDetailPresenter: EventDetailSceneDelegate, EventDetailViewModelDelega
         interactor.makeViewModel(for: event, completionHandler: eventDetailViewModelReady)
     }
 
-    func eventDetailSceneDidTapFavouriteEventButton() {
-        hapticEngine.play()
-        viewModel?.favourite()
-    }
-
-    func eventDetailSceneDidTapUnfavouriteEventButton() {
-        hapticEngine.play()
-        viewModel?.unfavourite()
-    }
-
     func eventFavourited() {
-        scene.showUnfavouriteEventButton()
+        hapticEngine.play()
     }
 
     func eventUnfavourited() {
-        scene.showFavouriteEventButton()
+        hapticEngine.play()
     }
 
     private func eventDetailViewModelReady(_ viewModel: EventDetailViewModel) {

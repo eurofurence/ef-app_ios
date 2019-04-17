@@ -16,14 +16,4 @@ class BeforeEventDetailSceneLoads_EventDetailPresenterShould: XCTestCase {
         XCTAssertNil(context.scene.stubbedEventSummaryComponent.capturedTitle)
     }
 
-    func testNotTellTheSceneToShowTheUnfavouriteEventButton() {
-        let context = EventDetailPresenterTestBuilder().build()
-        XCTAssertFalse(context.scene.didShowUnfavouriteEventButton)
-    }
-
-    func testNotTellTheSceneToShowTheFavouriteEventButton() {
-        let context = EventDetailPresenterTestBuilder().build()
-        XCTAssertFalse(context.scene.didShowFavouriteEventButton)
-    }
-
 }

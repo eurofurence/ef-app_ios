@@ -5,7 +5,7 @@ import XCTest
 
 class WhenViewModelIndicatesEventIsNotFavourite_EventDetailPresenterShould: XCTestCase {
 
-    func testShowTheFavouriteEventButton() {
+    func testPlaySelectionChangedHaptic() {
         let event = FakeEvent.random
         let viewModel = CapturingEventDetailViewModel()
         let interactor = FakeEventDetailInteractor(viewModel: viewModel, for: event)
@@ -13,7 +13,7 @@ class WhenViewModelIndicatesEventIsNotFavourite_EventDetailPresenterShould: XCTe
         context.simulateSceneDidLoad()
         viewModel.simulateUnfavourited()
 
-        XCTAssertTrue(context.scene.didShowFavouriteEventButton)
+        XCTAssertTrue(context.hapticEngine.played)
     }
 
 }

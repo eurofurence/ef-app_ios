@@ -7,22 +7,10 @@ class EventDetailViewController: UIViewController, EventDetailScene {
     @IBOutlet weak var tableView: UITableView!
     private var tableController: TableController?
 
-    private lazy var favouriteEventBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "Favorite"),
-                                                                   style: .plain,
-                                                                   target: self,
-                                                                   action: #selector(favouriteButtonTapped))
-    private lazy var unfavouriteEventBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "Unfavourite"),
-                                                                     style: .plain,
-                                                                     target: self,
-                                                                     action: #selector(unfavouriteButtonTapped))
-
     // MARK: Overrides
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        favouriteEventBarButtonItem.accessibilityLabel = .favourite
-        unfavouriteEventBarButtonItem.accessibilityLabel = .unfavourite
         delegate?.eventDetailSceneDidLoad()
     }
 
@@ -39,23 +27,7 @@ class EventDetailViewController: UIViewController, EventDetailScene {
                                           binder: binder)
     }
 
-    func showUnfavouriteEventButton() {
-        navigationItem.setRightBarButton(unfavouriteEventBarButtonItem, animated: true)
-    }
-
-    func showFavouriteEventButton() {
-        navigationItem.setRightBarButton(favouriteEventBarButtonItem, animated: true)
-    }
-
     // MARK: Private
-
-    @objc private func favouriteButtonTapped() {
-        delegate?.eventDetailSceneDidTapFavouriteEventButton()
-    }
-
-    @objc private func unfavouriteButtonTapped() {
-        delegate?.eventDetailSceneDidTapUnfavouriteEventButton()
-    }
 
     private class TableController: NSObject, UITableViewDataSource, EventDetailComponentFactory {
 

@@ -172,16 +172,6 @@ class CapturingEventDetailScene: UIViewController, EventDetailScene {
         self.binder = binder
     }
 
-    private(set) var didShowUnfavouriteEventButton = false
-    func showUnfavouriteEventButton() {
-        didShowUnfavouriteEventButton = true
-    }
-
-    private(set) var didShowFavouriteEventButton = false
-    func showFavouriteEventButton() {
-        didShowFavouriteEventButton = true
-    }
-
 }
 
 extension CapturingEventDetailScene {
@@ -237,14 +227,6 @@ extension CapturingEventDetailScene {
     @discardableResult
     func bindComponent(at indexPath: IndexPath) -> Any? {
         return binder?.bindComponent(at: indexPath, using: componentFactory)
-    }
-
-    func simulateFavouriteEventButtonTapped() {
-        delegate?.eventDetailSceneDidTapFavouriteEventButton()
-    }
-
-    func simulateUnfavouriteEventButtonTapped() {
-        delegate?.eventDetailSceneDidTapUnfavouriteEventButton()
     }
 
 }
