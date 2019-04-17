@@ -38,5 +38,18 @@ class WhenPreparingViewModel_ForEventThatIsFavourite_EventDetailInteractorShould
         
         XCTAssertEqual(actionVisitor.actionTitle, String.unfavourite)
     }
+    
+    func testUnfavouriteTheEventWhenInvokingUnfavouriteAction() {
+        let event = FakeEvent.random
+        event.favourite()
+        let context = EventDetailInteractorTestBuilder().build(for: event)
+        let visitor = CapturingEventDetailViewModelVisitor()
+        visitor.consume(contentsOf: context.viewModel)
+        
+        let command = visitor.visited(ofKind: ToggleEventFavouriteStateViewModel.self)
+        command?.perform()
+        
+        XCTAssertEqual(event.favouritedState, .unfavourited)
+    }
 
 }
