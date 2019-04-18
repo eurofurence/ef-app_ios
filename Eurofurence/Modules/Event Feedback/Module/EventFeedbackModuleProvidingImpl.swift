@@ -11,7 +11,7 @@ struct EventFeedbackModuleProvidingImpl: EventFeedbackModuleProviding {
         self.sceneFactory = sceneFactory
     }
     
-    func makeEventFeedbackModule(for event: Event, delegate: EventFeedbackModuleDelegate) -> UIViewController {
+    func makeEventFeedbackModule(for event: EventIdentifier, delegate: EventFeedbackModuleDelegate) -> UIViewController {
         let scene = sceneFactory.makeEventFeedbackScene()
         presenterFactory.makeEventFeedbackPresenter(for: event, scene: scene, delegate: delegate)
         

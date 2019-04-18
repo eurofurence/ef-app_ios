@@ -22,6 +22,8 @@ class EventFeedbackPresenterTestBuilder {
     
     func build() -> Context {
         let event = FakeEvent.random
+        let eventService = FakeEventsService()
+        eventService.events = [event]
         
         let dayOfWeekFormatter = FakeDayOfWeekFormatter()
         let stubbedDayOfWeekString = "Day Of Week"
@@ -38,7 +40,8 @@ class EventFeedbackPresenterTestBuilder {
         let sceneFactory = StubEventFeedbackSceneFactory()
         let successHaptic = CapturingSuccessHaptic()
         let failureHaptic = CapturingFailureHaptic()
-        let presenterFactory = EventFeedbackPresenterFactoryImpl(dayOfWeekFormatter: dayOfWeekFormatter,
+        let presenterFactory = EventFeedbackPresenterFactoryImpl(eventService: eventService,
+                                                                 dayOfWeekFormatter: dayOfWeekFormatter,
                                                                  startTimeFormatter: startTimeFormatter,
                                                                  endTimeFormatter: endTimeFormatter,
                                                                  successHaptic: successHaptic,
@@ -46,7 +49,7 @@ class EventFeedbackPresenterTestBuilder {
         
         let delegate = CapturingEventFeedbackModuleDelegate()
         let moduleFactory = EventFeedbackModuleProvidingImpl(presenterFactory: presenterFactory, sceneFactory: sceneFactory)
-        _ = moduleFactory.makeEventFeedbackModule(for: event, delegate: delegate)
+        _ = moduleFactory.makeEventFeedbackModule(for: event.identifier, delegate: delegate)
         let scene = sceneFactory.scene
         
         return Context(event: event,

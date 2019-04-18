@@ -3,6 +3,6 @@ import UIKit.UIViewController
 
 protocol EventFeedbackModuleProviding {
     
-    func makeEventFeedbackModule(for event: Event, delegate: EventFeedbackModuleDelegate) -> UIViewController
+    func makeEventFeedbackModule(for event: EventIdentifier, delegate: EventFeedbackModuleDelegate) -> UIViewController
     
 }

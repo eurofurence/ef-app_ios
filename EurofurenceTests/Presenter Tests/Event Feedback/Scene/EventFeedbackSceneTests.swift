@@ -8,7 +8,7 @@ class EventFeedbackSceneTests: XCTestCase {
         let presenterFactory = DummyEventFeedbackPresenterFactory()
         let sceneFactory = StoryboardEventFeedbackSceneFactory()
         let moduleFactory = EventFeedbackModuleProvidingImpl(presenterFactory: presenterFactory, sceneFactory: sceneFactory)
-        let module = moduleFactory.makeEventFeedbackModule(for: FakeEvent.random, delegate: CapturingEventFeedbackModuleDelegate()) as? EventFeedbackViewController
+        let module = moduleFactory.makeEventFeedbackModule(for: .random, delegate: CapturingEventFeedbackModuleDelegate()) as? EventFeedbackViewController
         
         XCTAssertNotNil(module)
         XCTAssertNotNil(module?.storyboard)
