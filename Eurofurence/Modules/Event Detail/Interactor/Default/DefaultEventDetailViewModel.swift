@@ -134,12 +134,4 @@ class DefaultEventDetailViewModel: EventDetailViewModel, EventObserver {
         components[index].describe(to: visitor)
     }
 
-    func favourite() {
-        event.favourite()
-    }
-
-    func unfavourite() {
-        event.unfavourite()
-    }
-
 }

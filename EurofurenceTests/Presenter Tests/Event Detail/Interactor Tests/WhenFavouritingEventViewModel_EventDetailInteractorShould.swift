@@ -7,8 +7,12 @@ class WhenFavouritingEventViewModel_EventDetailInteractorShould: XCTestCase {
 
     func testTellTheEventToBeFavourited() {
         let event = FakeEvent.random
+        event.unfavourite()
         let context = EventDetailInteractorTestBuilder().build(for: event)
-        context.viewModel.favourite()
+        let visitor = CapturingEventDetailViewModelVisitor()
+        visitor.consume(contentsOf: context.viewModel)
+        let toggleFavouriteCommand = visitor.visited(ofKind: ToggleEventFavouriteStateViewModel.self)
+        toggleFavouriteCommand?.perform()
 
         XCTAssertEqual(event.favouritedState, .favourited)
     }

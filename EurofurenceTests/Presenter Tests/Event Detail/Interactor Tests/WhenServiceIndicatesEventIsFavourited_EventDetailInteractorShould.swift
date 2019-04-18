@@ -7,11 +7,15 @@ class WhenServiceIndicatesEventIsFavourited_EventDetailInteractorShould: XCTestC
 
     func testTellTheViewModelDelegateTheEventIsFavourited() {
         let event = FakeEvent.random
+        event.unfavourite()
         let service = FakeEventsService(favourites: [])
         let context = EventDetailInteractorTestBuilder().with(service).build(for: event)
         let delegate = CapturingEventDetailViewModelDelegate()
         context.viewModel.setDelegate(delegate)
-        context.viewModel.favourite()
+        let visitor = CapturingEventDetailViewModelVisitor()
+        visitor.consume(contentsOf: context.viewModel)
+        let toggleFavouriteCommand = visitor.visited(ofKind: ToggleEventFavouriteStateViewModel.self)
+        toggleFavouriteCommand?.perform()
 
         XCTAssertTrue(delegate.toldEventFavourited)
     }
