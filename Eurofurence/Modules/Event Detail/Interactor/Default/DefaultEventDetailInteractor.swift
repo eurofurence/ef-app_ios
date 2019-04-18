@@ -40,11 +40,24 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
         }
         
         func build() -> DefaultEventDetailViewModel {
+            buildGraphicComponent()
+            buildSummaryComponent()
+            buildToggleFavouriteStateCommandComponent()
+            buildLeaveFeedbackComponent()
+            buildSupplementaryInformationBannerComponents()
+            buildEventDescriptionComponent()
+            
+            return DefaultEventDetailViewModel(components: components, event: event)
+        }
+        
+        private func buildGraphicComponent() {
             if let graphicData = event.posterGraphicPNGData ?? event.bannerGraphicPNGData {
                 let graphicViewModel = EventGraphicViewModel(pngGraphicData: graphicData)
                 components.append(DefaultEventDetailViewModel.GraphicComponent(viewModel: graphicViewModel))
             }
-            
+        }
+        
+        private func buildSummaryComponent() {
             let abstract = self.markdownRenderer.render(event.abstract)
             let startEndTimeString = self.dateRangeFormatter.string(from: event.startDate, to: event.endDate)
             let summaryViewModel = EventSummaryViewModel(title: event.title,
@@ -55,52 +68,80 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
                                                          trackName: event.track.name,
                                                          eventHosts: event.hosts)
             components.append(DefaultEventDetailViewModel.SummaryComponent(viewModel: summaryViewModel))
-            
+        }
+        
+        private func buildToggleFavouriteStateCommandComponent() {
             let toggleFavouriteStateCommand = ToggleEventFavouriteStateViewModel(event: event)
             let toggleFavouriteStateBanner = DefaultEventDetailViewModel.ActionComponent(actionViewModel: toggleFavouriteStateCommand)
             components.append(toggleFavouriteStateBanner)
-            
+        }
+        
+        private func buildLeaveFeedbackComponent() {
             if event.isAcceptingFeedback {
                 let leaveFeedbackCommand = LeaveFeedbackActionViewModel()
                 let leaveFeedbackBanner = DefaultEventDetailViewModel.ActionComponent(actionViewModel: leaveFeedbackCommand)
                 components.append(leaveFeedbackBanner)
             }
-            
+        }
+        
+        private func buildSupplementaryInformationBannerComponents() {
+            buildSponsorsOnlyComponent()
+            buildSuperSponsorsOnlyComponent()
+            buildArtShowComponent()
+            buildKageComponent()
+            buildDealersDenComponent()
+            buildMainStageComponent()
+            buildPhotoshootComponent()
+        }
+        
+        private func buildSponsorsOnlyComponent() {
             if event.isSponsorOnly {
                 components.append(DefaultEventDetailViewModel.SponsorsOnlyComponent())
             }
-            
+        }
+        
+        private func buildSuperSponsorsOnlyComponent() {
             if event.isSuperSponsorOnly {
                 components.append(DefaultEventDetailViewModel.SuperSponsorsOnlyComponent())
             }
-            
+        }
+        
+        private func buildArtShowComponent() {
             if event.isArtShow {
                 components.append(DefaultEventDetailViewModel.ArtShowComponent())
             }
-            
+        }
+        
+        private func buildKageComponent() {
             if event.isKageEvent {
                 components.append(DefaultEventDetailViewModel.KageComponent())
             }
-            
+        }
+        
+        private func buildDealersDenComponent() {
             if event.isDealersDen {
                 components.append(DefaultEventDetailViewModel.DealersDenComponent())
             }
-            
+        }
+        
+        private func buildMainStageComponent() {
             if event.isMainStage {
                 components.append(DefaultEventDetailViewModel.MainStageComponent())
             }
-            
+        }
+        
+        private func buildPhotoshootComponent() {
             if event.isPhotoshoot {
                 components.append(DefaultEventDetailViewModel.PhotoshootComponent())
             }
-            
+        }
+        
+        private func buildEventDescriptionComponent() {
             if !event.eventDescription.isEmpty, event.eventDescription != event.abstract {
-                let description = self.markdownRenderer.render(event.eventDescription)
+                let description = markdownRenderer.render(event.eventDescription)
                 let descriptionViewModel = EventDescriptionViewModel(contents: description)
                 components.append(DefaultEventDetailViewModel.DescriptionComponent(viewModel: descriptionViewModel))
             }
-            
-            return DefaultEventDetailViewModel(components: components, event: event)
         }
         
     }
