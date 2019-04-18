@@ -7,6 +7,7 @@ class ApplicationDirector: ExternalContentHandler,
                            PreloadModuleDelegate,
                            NewsModuleDelegate,
                            ScheduleModuleDelegate,
+                           EventDetailModuleDelegate,
                            MessagesModuleDelegate,
                            LoginModuleDelegate,
                            DealersModuleDelegate,
@@ -192,7 +193,7 @@ class ApplicationDirector: ExternalContentHandler,
                 completionHandler()
 
             case .event(let event):
-                let module = self.eventDetailModuleProviding.makeEventDetailModule(for: event)
+                let module = self.eventDetailModuleProviding.makeEventDetailModule(for: event, delegate: self)
                 if  let scheduleNavigationController = self.scheduleViewController?.navigationController,
                     let tabBarController = self.tabController,
                     let index = tabBarController.viewControllers?.firstIndex(of: scheduleNavigationController),
@@ -258,7 +259,7 @@ class ApplicationDirector: ExternalContentHandler,
     }
 
     func newsModuleDidSelectEvent(_ event: Event) {
-        let module = eventDetailModuleProviding.makeEventDetailModule(for: event.identifier)
+        let module = eventDetailModuleProviding.makeEventDetailModule(for: event.identifier, delegate: self)
         newsController?.navigationController?.pushViewController(module, animated: animate)
     }
 
@@ -270,8 +271,14 @@ class ApplicationDirector: ExternalContentHandler,
     // MARK: ScheduleModuleDelegate
 
     func scheduleModuleDidSelectEvent(identifier: EventIdentifier) {
-        let module = eventDetailModuleProviding.makeEventDetailModule(for: identifier)
+        let module = eventDetailModuleProviding.makeEventDetailModule(for: identifier, delegate: self)
         scheduleViewController?.navigationController?.pushViewController(module, animated: animate)
+    }
+    
+    // MARK: EventDetailModuleDelegate
+    
+    func eventDetailModuleDidRequestPresentationToLeaveFeedback(for event: EventIdentifier) {
+        
     }
 
     // MARK: MessagesModuleDelegate

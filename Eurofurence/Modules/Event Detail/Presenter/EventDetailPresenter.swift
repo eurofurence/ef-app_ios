@@ -118,16 +118,19 @@ class EventDetailPresenter: EventDetailSceneDelegate, EventDetailViewModelDelega
     private let interactor: EventDetailInteractor
     private let hapticEngine: SelectionChangedHaptic
     private let event: EventIdentifier
+    private let delegate: EventDetailModuleDelegate
     private var viewModel: EventDetailViewModel?
 
     init(scene: EventDetailScene,
          interactor: EventDetailInteractor,
          hapticEngine: SelectionChangedHaptic,
-         event: EventIdentifier) {
+         event: EventIdentifier,
+         delegate: EventDetailModuleDelegate) {
         self.scene = scene
         self.interactor = interactor
         self.hapticEngine = hapticEngine
         self.event = event
+        self.delegate = delegate
 
         scene.setDelegate(self)
     }
@@ -145,7 +148,7 @@ class EventDetailPresenter: EventDetailSceneDelegate, EventDetailViewModelDelega
     }
     
     func leaveFeedback() {
-        
+        delegate.eventDetailModuleDidRequestPresentationToLeaveFeedback(for: event)
     }
 
     private func eventDetailViewModelReady(_ viewModel: EventDetailViewModel) {

@@ -5,7 +5,7 @@ class CapturingEventDetailViewModel: EventDetailViewModel {
 
     var numberOfComponents: Int { return 0 }
 
-    fileprivate var delegate: EventDetailViewModelDelegate?
+    private(set) var delegate: EventDetailViewModelDelegate?
     func setDelegate(_ delegate: EventDetailViewModelDelegate) {
         self.delegate = delegate
     }

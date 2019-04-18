@@ -8,12 +8,13 @@ struct EventDetailModule: EventDetailModuleProviding {
     var interactor: EventDetailInteractor
     var hapticEngine: SelectionChangedHaptic
 
-    func makeEventDetailModule(for event: EventIdentifier) -> UIViewController {
+    func makeEventDetailModule(for event: EventIdentifier, delegate: EventDetailModuleDelegate) -> UIViewController {
         let scene = sceneFactory.makeEventDetailScene()
         _ = EventDetailPresenter(scene: scene,
                                  interactor: interactor,
                                  hapticEngine: hapticEngine,
-                                 event: event)
+                                 event: event,
+                                 delegate: delegate)
 
         return scene
     }

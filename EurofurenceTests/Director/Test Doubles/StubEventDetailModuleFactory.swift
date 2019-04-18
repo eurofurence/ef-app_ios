@@ -7,7 +7,7 @@ class StubEventDetailModuleFactory: EventDetailModuleProviding {
 
     private(set) var stubInterface: UIViewController?
     private(set) var capturedModel: EventIdentifier?
-    func makeEventDetailModule(for event: EventIdentifier) -> UIViewController {
+    func makeEventDetailModule(for event: EventIdentifier, delegate: EventDetailModuleDelegate) -> UIViewController {
         stubInterface = UIViewController()
         capturedModel = event
         return stubInterface!
