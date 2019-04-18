@@ -215,6 +215,9 @@ public extension String {
     static let eventHostedByFormat = NSLocalizedString("EventHostedBy",
                                                        comment: "Format string used to describe who is hosting an event, in the form 'Hosted by Stripe'")
     
+    static let leaveFeedback = NSLocalizedString("LeaveFeedback",
+                                                 comment: "Title for the command shown in the event detail scene for leaving feedback for an event")
+    
     private struct Formatters {
         static var numbers = NumberFormatter()
     }

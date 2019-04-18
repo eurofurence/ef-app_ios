@@ -43,6 +43,12 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
         let toggleFavouriteStateCommand = ToggleEventFavouriteStateViewModel(event: event)
         let toggleFavouriteStateBanner = DefaultEventDetailViewModel.ActionComponent(actionViewModel: toggleFavouriteStateCommand)
         components.append(toggleFavouriteStateBanner)
+        
+        if event.isAcceptingFeedback {
+            let leaveFeedbackCommand = LeaveFeedbackActionViewModel()
+            let leaveFeedbackBanner = DefaultEventDetailViewModel.ActionComponent(actionViewModel: leaveFeedbackCommand)
+            components.append(leaveFeedbackBanner)
+        }
 
         if event.isSponsorOnly {
             components.append(DefaultEventDetailViewModel.SponsorsOnlyComponent())

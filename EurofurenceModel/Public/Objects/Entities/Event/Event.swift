@@ -23,6 +23,7 @@ public protocol Event {
     var isDealersDen: Bool { get }
     var isMainStage: Bool { get }
     var isPhotoshoot: Bool { get }
+    var isAcceptingFeedback: Bool { get }
 
     func add(_ observer: EventObserver)
     func favourite()

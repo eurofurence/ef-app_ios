@@ -987,6 +987,9 @@
 		CAE27B4C1F855E0E005FDE39 /* TabModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE27B4B1F855E0E005FDE39 /* TabModuleProviding.swift */; };
 		CAE27B4E1F85611C005FDE39 /* PhoneTutorialModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE27B4D1F85611C005FDE39 /* PhoneTutorialModuleFactory.swift */; };
 		CAE27B501F857A99005FDE39 /* PreloadModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE27B4F1F857A99005FDE39 /* PreloadModule.swift */; };
+		CAE8879122690139001464C1 /* WhenEventIsAcceptingFeedback_EventDetailInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE8879022690139001464C1 /* WhenEventIsAcceptingFeedback_EventDetailInteractorShould.swift */; };
+		CAE8879322690263001464C1 /* LeaveFeedbackActionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE8879222690263001464C1 /* LeaveFeedbackActionViewModel.swift */; };
+		CAE8879522690358001464C1 /* WhenEventIsNotAcceptingFeedback_EventDetailInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE8879422690358001464C1 /* WhenEventIsNotAcceptingFeedback_EventDetailInteractorShould.swift */; };
 		CAEA0B832165626900B0C7A6 /* EurofurenceModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAEA0B7A2165626900B0C7A6 /* EurofurenceModel.framework */; };
 		CAEA0B8C2165626900B0C7A6 /* EurofurenceAppCore.h in Headers */ = {isa = PBXBuildFile; fileRef = CAEA0B7C2165626900B0C7A6 /* EurofurenceAppCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CAEA0B8F2165626900B0C7A6 /* EurofurenceModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAEA0B7A2165626900B0C7A6 /* EurofurenceModel.framework */; };
@@ -2773,6 +2776,9 @@
 		CAE27B4B1F855E0E005FDE39 /* TabModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabModuleProviding.swift; sourceTree = "<group>"; };
 		CAE27B4D1F85611C005FDE39 /* PhoneTutorialModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneTutorialModuleFactory.swift; sourceTree = "<group>"; };
 		CAE27B4F1F857A99005FDE39 /* PreloadModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadModule.swift; sourceTree = "<group>"; };
+		CAE8879022690139001464C1 /* WhenEventIsAcceptingFeedback_EventDetailInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenEventIsAcceptingFeedback_EventDetailInteractorShould.swift; sourceTree = "<group>"; };
+		CAE8879222690263001464C1 /* LeaveFeedbackActionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveFeedbackActionViewModel.swift; sourceTree = "<group>"; };
+		CAE8879422690358001464C1 /* WhenEventIsNotAcceptingFeedback_EventDetailInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenEventIsNotAcceptingFeedback_EventDetailInteractorShould.swift; sourceTree = "<group>"; };
 		CAE8B0B120CA4C530029D4D6 /* KnowledgeGroupEntity+Adaptation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KnowledgeGroupEntity+Adaptation.swift"; sourceTree = "<group>"; };
 		CAE8B0B320CA4C6B0029D4D6 /* EntityAdapting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityAdapting.swift; sourceTree = "<group>"; };
 		CAE8B0B620CA4E100029D4D6 /* LinkEntity+Adaptation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LinkEntity+Adaptation.swift"; sourceTree = "<group>"; };
@@ -6533,6 +6539,7 @@
 				CACF1E6C20B1CDB800D904B5 /* EventDetailInteractor.swift */,
 				CACF1E6E20B1CDC300D904B5 /* EventDetailViewModel.swift */,
 				CA152EF92267AB4900212742 /* ToggleEventFavouriteStateViewModel.swift */,
+				CAE8879222690263001464C1 /* LeaveFeedbackActionViewModel.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -6567,6 +6574,8 @@
 				CABA840420CF01C600DD0795 /* WhenServiceIndicatesEventIsUnfavourited_EventDetailInteractorShould.swift */,
 				CABA83F520CE9A6800DD0795 /* WhenUnfavouritingEventViewModel_EventDetailInteractorShould.swift */,
 				CA152EFD2267B16E00212742 /* WhenPreparingViewModel_AndInvokingUnfavouriteEventCommand_EventDetailInteractorShould.swift */,
+				CAE8879022690139001464C1 /* WhenEventIsAcceptingFeedback_EventDetailInteractorShould.swift */,
+				CAE8879422690358001464C1 /* WhenEventIsNotAcceptingFeedback_EventDetailInteractorShould.swift */,
 			);
 			path = "Interactor Tests";
 			sourceTree = "<group>";
@@ -8344,6 +8353,7 @@
 				CA6A8DE220E41903007536CD /* StoryboardMapDetailSceneFactory.swift in Sources */,
 				CA283AD620EAC9BA00F7D195 /* DefaultAnnouncementsInteractor.swift in Sources */,
 				CA6A8D9820E2C634007536CD /* MapComponent.swift in Sources */,
+				CAE8879322690263001464C1 /* LeaveFeedbackActionViewModel.swift in Sources */,
 				CACF1E7E20B212B400D904B5 /* EventDetailComponentFactory.swift in Sources */,
 				CA00AE5420D16FD300C2FBB0 /* ScheduleEventViewModel.swift in Sources */,
 				CA152EE422651F5B00212742 /* FailureHaptic.swift in Sources */,
@@ -8590,6 +8600,7 @@
 				CA1B6F2620DB887100ADF414 /* FakeDealerDetailViewModel.swift in Sources */,
 				7820A6E51F140056004C0FB5 /* CapturingAlertRouter.swift in Sources */,
 				CA8276B0204EBF0E006A7419 /* ApplicationPreloadingServiceTests.swift in Sources */,
+				CAE8879522690358001464C1 /* WhenEventIsNotAcceptingFeedback_EventDetailInteractorShould.swift in Sources */,
 				CA36A4DA20DAE4CF00EE6537 /* WhenSceneSelectsSearchResult_DealersPresenterShould.swift in Sources */,
 				CA36A48520D9243E00EE6537 /* WhenBindingDealerGroupHeading_DealersPresenterShould.swift in Sources */,
 				CA27257F211394C4004C6D0A /* NewsPresenterSponsorIconBindingTests.swift in Sources */,
@@ -8693,6 +8704,7 @@
 				CA1ECB451FE3A2880076083A /* WhenInitialMessageLoadCompletesWithMessages.swift in Sources */,
 				CA283AE220EC05B700F7D195 /* WhenPreparingViewModelForFavouritedEvent_ScheduleInteractorShould.swift in Sources */,
 				CACEA06D2242827800DFF26C /* NotificationScheduleControllerTests.swift in Sources */,
+				CAE8879122690139001464C1 /* WhenEventIsAcceptingFeedback_EventDetailInteractorShould.swift in Sources */,
 				CA152EDB22651CE800212742 /* WhenEventFeedbackSubmitsUnsuccessfully_EventFeedbackPresenterShould.swift in Sources */,
 				CA72844D209D0358007D912A /* WhenBuildingAnnouncementDetailPresenter.swift in Sources */,
 				78455B4D1F1177CF005BE2D7 /* StubFirstTimeLaunchStateProvider.swift in Sources */,

@@ -29,6 +29,7 @@ public final class FakeEvent: Event {
     public var isDealersDen: Bool
     public var isMainStage: Bool
     public var isPhotoshoot: Bool
+    public var isAcceptingFeedback: Bool
 
     public init(identifier: EventIdentifier,
                 title: String,
@@ -48,7 +49,8 @@ public final class FakeEvent: Event {
                 isKageEvent: Bool,
                 isDealersDen: Bool,
                 isMainStage: Bool,
-                isPhotoshoot: Bool) {
+                isPhotoshoot: Bool,
+                isAcceptingFeedback: Bool) {
         self.identifier = identifier
         self.title = title
         self.subtitle = subtitle
@@ -68,6 +70,7 @@ public final class FakeEvent: Event {
         self.isDealersDen = isDealersDen
         self.isMainStage = isMainStage
         self.isPhotoshoot = isPhotoshoot
+        self.isAcceptingFeedback = isAcceptingFeedback
 
         favouritedState = .unset
     }
@@ -162,7 +165,8 @@ extension FakeEvent: RandomValueProviding {
                          isKageEvent: .random,
                          isDealersDen: .random,
                          isMainStage: .random,
-                         isPhotoshoot: .random)
+                         isPhotoshoot: .random,
+                         isAcceptingFeedback: .random)
     }
 
     public static var randomStandardEvent: FakeEvent {

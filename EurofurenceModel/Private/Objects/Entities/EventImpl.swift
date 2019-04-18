@@ -24,6 +24,7 @@ class EventImpl: Event {
     var isDealersDen: Bool
     var isMainStage: Bool
     var isPhotoshoot: Bool
+    var isAcceptingFeedback: Bool
 
     init(eventBus: EventBus,
          isFavourite: Bool,
@@ -68,6 +69,7 @@ class EventImpl: Event {
         self.isDealersDen = isDealersDen
         self.isMainStage = isMainStage
         self.isPhotoshoot = isPhotoshoot
+        self.isAcceptingFeedback = false
     }
 
     private var observers: [EventObserver] = []
