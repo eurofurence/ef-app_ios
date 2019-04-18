@@ -32,6 +32,7 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
         private let event: Event
         private let markdownRenderer: MarkdownRenderer
         private var components = [EventDetailViewModelComponent]()
+        private let actionBus = DefaultEventDetailViewModel.ActionBus()
 
         init(dateRangeFormatter: DateRangeFormatter, event: Event, markdownRenderer: MarkdownRenderer) {
             self.dateRangeFormatter = dateRangeFormatter
@@ -47,7 +48,7 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
             buildSupplementaryInformationBannerComponents()
             buildEventDescriptionComponent()
             
-            return DefaultEventDetailViewModel(components: components, event: event)
+            return DefaultEventDetailViewModel(components: components, event: event, actionBus: actionBus)
         }
         
         private func buildGraphicComponent() {
@@ -78,7 +79,7 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
         
         private func buildLeaveFeedbackComponent() {
             if event.isAcceptingFeedback {
-                let leaveFeedbackCommand = LeaveFeedbackActionViewModel()
+                let leaveFeedbackCommand = LeaveFeedbackActionViewModel(actionBus: actionBus)
                 let leaveFeedbackBanner = DefaultEventDetailViewModel.ActionComponent(actionViewModel: leaveFeedbackCommand)
                 components.append(leaveFeedbackBanner)
             }

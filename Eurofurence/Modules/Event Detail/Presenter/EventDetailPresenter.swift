@@ -143,6 +143,10 @@ class EventDetailPresenter: EventDetailSceneDelegate, EventDetailViewModelDelega
     func eventUnfavourited() {
         hapticEngine.play()
     }
+    
+    func leaveFeedback() {
+        
+    }
 
     private func eventDetailViewModelReady(_ viewModel: EventDetailViewModel) {
         self.viewModel = viewModel

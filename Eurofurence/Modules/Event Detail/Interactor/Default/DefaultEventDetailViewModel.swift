@@ -6,6 +6,12 @@ protocol EventDetailViewModelComponent {
 }
 
 class DefaultEventDetailViewModel: EventDetailViewModel, EventObserver {
+    
+    class ActionBus {
+        
+        var leaveFeedbackAction: (() -> Void)?
+        
+    }
 
     struct SummaryComponent: EventDetailViewModelComponent {
 
@@ -113,10 +119,14 @@ class DefaultEventDetailViewModel: EventDetailViewModel, EventObserver {
 
     private let components: [EventDetailViewModelComponent]
     private let event: Event
+    private let actionBus: ActionBus
 
-    init(components: [EventDetailViewModelComponent], event: Event) {
+    init(components: [EventDetailViewModelComponent], event: Event, actionBus: ActionBus) {
         self.components = components
         self.event = event
+        self.actionBus = actionBus
+        
+        actionBus.leaveFeedbackAction = leaveFeedback
         event.add(self)
     }
 
@@ -132,6 +142,10 @@ class DefaultEventDetailViewModel: EventDetailViewModel, EventObserver {
     func describe(componentAt index: Int, to visitor: EventDetailViewModelVisitor) {
         guard index < components.count else { return }
         components[index].describe(to: visitor)
+    }
+    
+    private func leaveFeedback() {
+        delegate?.leaveFeedback()
     }
 
 }

@@ -13,5 +13,10 @@ class CapturingEventDetailViewModelDelegate: EventDetailViewModelDelegate {
     func eventUnfavourited() {
         toldEventUnfavourited = true
     }
+    
+    private(set) var leaveFeedbackInvoked = false
+    func leaveFeedback() {
+        leaveFeedbackInvoked = true
+    }
 
 }

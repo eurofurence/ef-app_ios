@@ -12,6 +12,7 @@ protocol EventDetailViewModelDelegate {
 
     func eventFavourited()
     func eventUnfavourited()
+    func leaveFeedback()
 
 }
 
