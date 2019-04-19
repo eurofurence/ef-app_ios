@@ -25,7 +25,7 @@ class EventFeedbackViewController: UIViewController, EventFeedbackScene {
     
     private func swapEmbeddedViewController(to newChild: UIViewController) {
         unembedExistingChildController()
-        embedNewChildController(newChild)
+        embed(newChild)
     }
     
     private func unembedExistingChildController() {
@@ -37,21 +37,27 @@ class EventFeedbackViewController: UIViewController, EventFeedbackScene {
         }
     }
     
-    private func embedNewChildController(_ newChild: UIViewController) {
+    private func embed(_ newChild: UIViewController) {
         newChild.willMove(toParent: self)
         addChild(newChild)
-        childContainer.addSubview(newChild.view)
-        
-        NSLayoutConstraint.activate([
-            newChild.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            newChild.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            newChild.view.topAnchor.constraint(equalTo: view.topAnchor),
-            newChild.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
-        
+        embedChildView(newChild.view)
         newChild.didMove(toParent: self)
         
         embeddedChild = newChild
+    }
+    
+    fileprivate func embedChildView(_ newChild: UIView) {
+        childContainer.addSubview(newChild)
+        newChild.frame = childContainer.bounds
+        
+        NSLayoutConstraint.activate([
+            newChild.leadingAnchor.constraint(equalTo: childContainer.leadingAnchor),
+            newChild.trailingAnchor.constraint(equalTo: childContainer.trailingAnchor),
+            newChild.topAnchor.constraint(equalTo: childContainer.topAnchor),
+            newChild.bottomAnchor.constraint(equalTo: childContainer.bottomAnchor)
+        ])
+        
+        newChild.setNeedsLayout()
     }
     
     // MARK: EventFeedbackScene
@@ -70,7 +76,8 @@ class EventFeedbackViewController: UIViewController, EventFeedbackScene {
     }
     
     func showFeedbackForm() {
-        
+        let feedbackForm = initialiseStoryboardViewController(EventFeedbackFormViewController.self)
+        swapEmbeddedViewController(to: feedbackForm)
     }
     
     func showFeedbackSubmissionInProgress() {
@@ -83,6 +90,16 @@ class EventFeedbackViewController: UIViewController, EventFeedbackScene {
     
     func showFeedbackSubmissionFailedPrompt() {
         
+    }
+    
+    // MARK: Private
+    
+    private func initialiseStoryboardViewController<T>(_ type: T.Type) -> T where T: UIViewController {
+        guard let storyboard = storyboard else {
+            fatalError("EventFeedbackViewController must be initialised from a storyboard")
+        }
+        
+        return storyboard.instantiate(type)
     }
     
 }
