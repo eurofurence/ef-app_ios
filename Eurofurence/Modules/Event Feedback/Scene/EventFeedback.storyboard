@@ -165,12 +165,12 @@
                     <navigationItem key="navigationItem" title="Event Feedback" id="411-YK-fMM">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Mt0-1l-i5d">
                             <connections>
-                                <action selector="cancelFeedback:" destination="yZm-3W-sd3" id="QuX-e0-gtH"/>
+                                <action selector="cancelFeedback:" destination="lSU-qy-7mX" id="PUP-AK-0fw"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Submit" id="7gK-ET-svE">
                             <connections>
-                                <action selector="submitFeedback:" destination="yZm-3W-sd3" id="4EG-JS-YxE"/>
+                                <action selector="submitFeedback:" destination="lSU-qy-7mX" id="AQJ-qc-QuV"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -183,7 +183,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J9P-zl-tZu" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="yZm-3W-sd3" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-475.36231884057975" y="-445.3125"/>
         </scene>
