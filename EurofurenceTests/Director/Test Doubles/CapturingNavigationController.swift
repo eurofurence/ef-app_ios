@@ -19,6 +19,12 @@ class CapturingNavigationController: UINavigationController {
         capturedPresentedViewController = viewControllerToPresent
         super.present(viewControllerToPresent, animated: flag, completion: completion)
     }
+    
+    private(set) var dismissed = false
+    override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
+        dismissed = true
+        super.dismiss(animated: flag, completion: completion)
+    }
 
 }
 

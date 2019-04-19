@@ -103,6 +103,10 @@ class StubEventFeedbackModuleProviding: EventFeedbackModuleProviding {
         return stubInterface
     }
     
+    func simulateDismissFeedback() {
+        delegate?.eventFeedbackDismissed()
+    }
+    
 }
 
 class ApplicationDirectorTestBuilder {

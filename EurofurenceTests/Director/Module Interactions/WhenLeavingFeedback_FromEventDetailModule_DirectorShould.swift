@@ -18,5 +18,18 @@ class WhenLeavingFeedback_FromEventDetailModule_DirectorShould: XCTestCase {
         XCTAssertEqual(context.eventFeedbackModule.stubInterface, presentedViewController?.topViewController)
         XCTAssertEqual(presentedViewController?.modalPresentationStyle, .formSheet)
     }
+    
+    func testDismissTheFeedbackWhenToldTo() {
+        let context = ApplicationDirectorTestBuilder().build()
+        context.navigateToTabController()
+        let scheduleNavigationController = context.navigationController(for: context.scheduleModule.stubInterface)
+        let event = FakeEvent.random
+        context.scheduleModule.simulateDidSelectEvent(event.identifier)
+        context.eventDetailModule.simulateLeaveFeedback()
+        context.eventFeedbackModule.simulateDismissFeedback()
+        let presentedViewController = scheduleNavigationController?.capturedPresentedViewController as? CapturingNavigationController
+        
+        XCTAssertEqual(true, presentedViewController?.dismissed)
+    }
 
 }

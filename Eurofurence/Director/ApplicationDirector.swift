@@ -281,11 +281,14 @@ class ApplicationDirector: ExternalContentHandler,
     
     // MARK: EventDetailModuleDelegate
     
+    private var presentedFeedbackViewController: UIViewController?
+    
     func eventDetailModuleDidRequestPresentationToLeaveFeedback(for event: EventIdentifier) {
         let module = eventFeedbackModuleProviding.makeEventFeedbackModule(for: event, delegate: self)
         let navigationController = navigationControllerFactory.makeNavigationController()
         navigationController.setViewControllers([module], animated: false)
         navigationController.modalPresentationStyle = .formSheet
+        presentedFeedbackViewController = navigationController
         
         scheduleViewController?.navigationController?.present(navigationController, animated: animate)
     }
@@ -293,7 +296,8 @@ class ApplicationDirector: ExternalContentHandler,
     // MARK: EventFeedbackModuleDelegate
     
     func eventFeedbackDismissed() {
-        
+        presentedFeedbackViewController?.dismiss(animated: animate)
+        presentedFeedbackViewController = nil
     }
 
     // MARK: MessagesModuleDelegate
