@@ -48,8 +48,8 @@ class EventFeedbackPresenter: EventFeedbackSceneDelegate, EventFeedbackDelegate 
     }
     
     func eventFeedbackSubmissionDidFail(_ feedback: EventFeedback) {
+        scene.showFeedbackForm()
         scene.showFeedbackSubmissionFailedPrompt()
-        scene.hideFeedbackSubmissionProgress()
         failureHaptic.play()
     }
     

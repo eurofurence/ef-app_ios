@@ -77,10 +77,6 @@ class EventFeedbackViewController: UIViewController, EventFeedbackScene {
         
     }
     
-    func hideFeedbackSubmissionProgress() {
-        
-    }
-    
     func showFeedbackSubmissionSuccessful() {
         
     }

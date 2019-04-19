@@ -6,7 +6,6 @@ protocol EventFeedbackScene {
     func bind(_ viewModel: EventFeedbackViewModel)
     func showFeedbackForm()
     func showFeedbackSubmissionInProgress()
-    func hideFeedbackSubmissionProgress()
     func showFeedbackSubmissionSuccessful()
     func showFeedbackSubmissionFailedPrompt()
     

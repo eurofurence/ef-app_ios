@@ -7,7 +7,6 @@ class CapturingEventFeedbackScene: UIViewController, EventFeedbackScene {
     enum State {
         case unset
         case inProgress
-        case hiddenProgress
         case success
         case feedbackForm
     }
@@ -29,10 +28,6 @@ class CapturingEventFeedbackScene: UIViewController, EventFeedbackScene {
     
     func showFeedbackSubmissionInProgress() {
         feedbackState = .inProgress
-    }
-    
-    func hideFeedbackSubmissionProgress() {
-        feedbackState = .hiddenProgress
     }
     
     func showFeedbackForm() {
