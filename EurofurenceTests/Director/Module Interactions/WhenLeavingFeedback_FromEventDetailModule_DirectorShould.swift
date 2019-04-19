@@ -12,10 +12,11 @@ class WhenLeavingFeedback_FromEventDetailModule_DirectorShould: XCTestCase {
         let event = FakeEvent.random
         context.scheduleModule.simulateDidSelectEvent(event.identifier)
         context.eventDetailModule.simulateLeaveFeedback()
+        let presentedViewController = scheduleNavigationController?.capturedPresentedViewController as? UINavigationController
         
         XCTAssertEqual(context.eventFeedbackModule.eventToLeaveFeedbackFor, event.identifier)
-        XCTAssertEqual(context.eventFeedbackModule.stubInterface, scheduleNavigationController?.capturedPresentedViewController)
-        XCTAssertEqual(context.eventFeedbackModule.stubInterface.modalPresentationStyle, .formSheet)
+        XCTAssertEqual(context.eventFeedbackModule.stubInterface, presentedViewController?.topViewController)
+        XCTAssertEqual(presentedViewController?.modalPresentationStyle, .formSheet)
     }
 
 }

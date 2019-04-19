@@ -283,8 +283,11 @@ class ApplicationDirector: ExternalContentHandler,
     
     func eventDetailModuleDidRequestPresentationToLeaveFeedback(for event: EventIdentifier) {
         let module = eventFeedbackModuleProviding.makeEventFeedbackModule(for: event, delegate: self)
-        module.modalPresentationStyle = .formSheet
-        scheduleViewController?.navigationController?.present(module, animated: animate)
+        let navigationController = navigationControllerFactory.makeNavigationController()
+        navigationController.setViewControllers([module], animated: false)
+        navigationController.modalPresentationStyle = .formSheet
+        
+        scheduleViewController?.navigationController?.present(navigationController, animated: animate)
     }
     
     // MARK: EventFeedbackModuleDelegate
