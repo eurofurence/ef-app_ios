@@ -35,6 +35,10 @@ class CapturingEventFeedbackScene: UIViewController, EventFeedbackScene {
         feedbackState = .hiddenProgress
     }
     
+    func showFeedbackForm() {
+        feedbackState = .feedbackForm
+    }
+    
     private(set) var didShowFailurePrompt = false
     func showFeedbackSubmissionFailedPrompt() {
         didShowFailurePrompt = true

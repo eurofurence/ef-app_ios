@@ -69,6 +69,10 @@ class EventFeedbackViewController: UIViewController, EventFeedbackScene {
         eventSubtitleLabel.text = [viewModel.eventDayAndTime, viewModel.eventLocation, viewModel.eventHosts].joined(separator: "\n")
     }
     
+    func showFeedbackForm() {
+        
+    }
+    
     func showFeedbackSubmissionInProgress() {
         
     }

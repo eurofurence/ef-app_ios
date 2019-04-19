@@ -18,6 +18,10 @@ class WhenEventFeedbackSceneLoads_EventFeedbackPresenterShould: XCTestCase {
         assertEventHostBound()
     }
     
+    func testShowTheFeedbackForm() {
+        XCTAssertEqual(context.scene.feedbackState, .feedbackForm)
+    }
+    
     private func assertTitleBound() {
         XCTAssertEqual(context.event.title, context.scene.capturedViewModel?.eventTitle)
     }
