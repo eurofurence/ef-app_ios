@@ -92,6 +92,19 @@ extension StubKnowledgeGroupEntriesModuleProviding {
 
 }
 
+class StubEventFeedbackModuleProviding: EventFeedbackModuleProviding {
+    
+    let stubInterface = UIViewController()
+    private(set) var eventToLeaveFeedbackFor: EventIdentifier?
+    private var delegate: EventFeedbackModuleDelegate?
+    func makeEventFeedbackModule(for event: EventIdentifier, delegate: EventFeedbackModuleDelegate) -> UIViewController {
+        eventToLeaveFeedbackFor = event
+        self.delegate = delegate
+        return stubInterface
+    }
+    
+}
+
 class ApplicationDirectorTestBuilder {
 
     struct Context {
@@ -119,6 +132,7 @@ class ApplicationDirectorTestBuilder {
         var announcementsModule: StubAnnouncementsModuleProviding
         var announcementDetailModule: StubAnnouncementDetailModuleFactory
         var eventDetailModule: StubEventDetailModuleFactory
+        var eventFeedbackModule: StubEventFeedbackModuleProviding
         var linkRouter: StubContentLinksService
         var webModuleProviding: StubWebMobuleProviding
         var urlOpener: CapturingURLOpener
@@ -148,6 +162,7 @@ class ApplicationDirectorTestBuilder {
     private let announcementsModule: StubAnnouncementsModuleProviding
     private let announcementDetailModule: StubAnnouncementDetailModuleFactory
     private let eventDetailModule: StubEventDetailModuleFactory
+    private let eventFeedbackModule: StubEventFeedbackModuleProviding
     private let linkRouter: StubContentLinksService
     private let webModuleProviding: StubWebMobuleProviding
     private let urlOpener: CapturingURLOpener
@@ -176,6 +191,7 @@ class ApplicationDirectorTestBuilder {
         announcementsModule = StubAnnouncementsModuleProviding()
         announcementDetailModule = StubAnnouncementDetailModuleFactory()
         eventDetailModule = StubEventDetailModuleFactory()
+        eventFeedbackModule = StubEventFeedbackModuleProviding()
         linkRouter = StubContentLinksService()
         webModuleProviding = StubWebMobuleProviding()
         urlOpener = CapturingURLOpener()
@@ -207,6 +223,7 @@ class ApplicationDirectorTestBuilder {
                        announcementsModule: announcementsModule,
                        announcementDetailModule: announcementDetailModule,
                        eventDetailModule: eventDetailModule,
+                       eventFeedbackModule: eventFeedbackModule,
                        linkRouter: linkRouter,
                        webModuleProviding: webModuleProviding,
                        urlOpener: urlOpener,
@@ -241,6 +258,7 @@ class ApplicationDirectorTestBuilder {
         builder.with(eventDetailModule)
         builder.with(webModuleProviding)
         builder.with(urlOpener)
+        builder.with(eventFeedbackModule)
 
         return builder
     }

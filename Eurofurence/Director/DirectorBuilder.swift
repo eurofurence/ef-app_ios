@@ -31,6 +31,7 @@ class DirectorBuilder {
     private var urlOpener: URLOpener
     private var notificationHandling: NotificationService
     private var orderingPolicy: ModuleOrderingPolicy
+    private var eventFeedbackModule: EventFeedbackModuleProviding
 
     init(linkLookupService: ContentLinksService, notificationHandling: NotificationService) {
         animate = true
@@ -58,6 +59,7 @@ class DirectorBuilder {
         announcementsModuleFactory = AnnouncementsModuleBuilder().build()
         announcementDetailModuleProviding = AnnouncementDetailModuleBuilder().build()
         eventDetailModuleProviding = EventDetailModuleBuilder().build()
+        eventFeedbackModule = EventFeedbackModuleProvidingImpl()
 
         self.linkLookupService = linkLookupService
         webModuleProviding = SafariWebModuleProviding()
@@ -220,6 +222,12 @@ class DirectorBuilder {
         self.eventDetailModuleProviding = eventDetailModuleProviding
         return self
     }
+    
+    @discardableResult
+    func with(_ eventFeedbackModule: EventFeedbackModuleProviding) -> DirectorBuilder {
+        self.eventFeedbackModule = eventFeedbackModule
+        return self
+    }
 
     func build() -> ApplicationDirector {
         return ApplicationDirector(animate: animate,
@@ -249,7 +257,8 @@ class DirectorBuilder {
                                    announcementsModuleFactory: announcementsModuleFactory,
                                    announcementDetailModuleProviding: announcementDetailModuleProviding,
                                    eventDetailModuleProviding: eventDetailModuleProviding,
-                                   notificationHandling: notificationHandling)
+                                   notificationHandling: notificationHandling,
+                                   eventFeedbackModule: eventFeedbackModule)
     }
 
 }

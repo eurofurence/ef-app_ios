@@ -716,6 +716,7 @@
 		CA6F652922690EF700483EE0 /* EventDetailModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F652822690EF700483EE0 /* EventDetailModuleDelegate.swift */; };
 		CA6F652B22690F0C00483EE0 /* CapturingEventDetailModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F652A22690F0C00483EE0 /* CapturingEventDetailModuleDelegate.swift */; };
 		CA6F652F2269DFAD00483EE0 /* FoundationDayOfWeekFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F652E2269DFAD00483EE0 /* FoundationDayOfWeekFormatter.swift */; };
+		CA6F652D2269DCC500483EE0 /* WhenLeavingFeedback_FromEventDetailModule_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F652C2269DCC500483EE0 /* WhenLeavingFeedback_FromEventDetailModule_DirectorShould.swift */; };
 		CA728437209C7DE1007D912A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CA728436209C7DE1007D912A /* Settings.bundle */; };
 		CA728439209CEE97007D912A /* StubConventionCountdownService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA728438209CEE97007D912A /* StubConventionCountdownService.swift */; };
 		CA72843D209CF07A007D912A /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = CA72843C209CF07A007D912A /* Localizable.stringsdict */; };
@@ -2421,6 +2422,7 @@
 		CA6F652822690EF700483EE0 /* EventDetailModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailModuleDelegate.swift; sourceTree = "<group>"; };
 		CA6F652A22690F0C00483EE0 /* CapturingEventDetailModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingEventDetailModuleDelegate.swift; sourceTree = "<group>"; };
 		CA6F652E2269DFAD00483EE0 /* FoundationDayOfWeekFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationDayOfWeekFormatter.swift; sourceTree = "<group>"; };
+		CA6F652C2269DCC500483EE0 /* WhenLeavingFeedback_FromEventDetailModule_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLeavingFeedback_FromEventDetailModule_DirectorShould.swift; sourceTree = "<group>"; };
 		CA71A347204031F700C847C3 /* RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomValueProviding.swift; sourceTree = "<group>"; };
 		CA71A3492040320A00C847C3 /* String+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA71A34B204032FC00C847C3 /* Integer+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Integer+RandomValueProviding.swift"; sourceTree = "<group>"; };
@@ -3574,6 +3576,7 @@
 				CA637563208CC8F800536BE2 /* WhenBuilt_DirectorShould.swift */,
 				CA680F7D20CD8263006ACD3D /* WhenBuiltWithAlreadyPrimedApp_DirectorShould.swift */,
 				CA36A4DF20DAFE7500EE6537 /* WhenDealersModuleSelectsDealer_DirectorShould.swift */,
+				CA6F652C2269DCC500483EE0 /* WhenLeavingFeedback_FromEventDetailModule_DirectorShould.swift */,
 				CA25A7FE20E6426C00875891 /* WhenMapsDetailModuleSelectsDealer_DirectorShould.swift */,
 				CA637575208CD96A00536BE2 /* WhenMessagesModuleRequestsUserResolution_DirectorShould.swift */,
 				CA283A9320EA9B8A00F7D195 /* WhenNewsModuleRequestsAllAnnouncements_DirectorShould.swift */,
@@ -8496,6 +8499,7 @@
 				CA6A8E0120E50008007536CD /* WhenSceneTapsMap_ThatRevealsAnotherPartOfTheMap_MapDetailPresenterShould.swift in Sources */,
 				CA283A5E20E6E9FB00F7D195 /* WhenSceneInstigatesPullToRefresh_NewsPresenterShould.swift in Sources */,
 				CA00AE5C20D171F200C2FBB0 /* CapturingScheduleEventGroupHeader.swift in Sources */,
+				CA6F652D2269DCC500483EE0 /* WhenLeavingFeedback_FromEventDetailModule_DirectorShould.swift in Sources */,
 				CA250DE220D6EB0300E7513C /* FakeEventsSearchController.swift in Sources */,
 				CA283A9E20EA9FB900F7D195 /* WhenBuildingAnnouncementsModule_AnnouncementsPresenterShould.swift in Sources */,
 				CABA840720D0671E00DD0795 /* WhenScheduleSceneLoads_SchedulePresenterShould.swift in Sources */,

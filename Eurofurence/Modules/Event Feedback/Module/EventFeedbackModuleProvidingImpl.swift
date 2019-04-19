@@ -6,6 +6,17 @@ struct EventFeedbackModuleProvidingImpl: EventFeedbackModuleProviding {
     private let presenterFactory: EventFeedbackPresenterFactory
     private let sceneFactory: EventFeedbackSceneFactory
     
+    init() {
+        let presenterFactory = EventFeedbackPresenterFactoryImpl(eventService: SharedModel.instance.services.events,
+                                                                 dayOfWeekFormatter: FoundationDayOfWeekFormatter.shared,
+                                                                 startTimeFormatter: FoundationHoursDateFormatter.shared,
+                                                                 endTimeFormatter: FoundationHoursDateFormatter.shared,
+                                                                 successHaptic: CocoaTouchSuccessHaptic(),
+                                                                 failureHaptic: CocoaTouchFailureHaptic())
+        let sceneFactory = StoryboardEventFeedbackSceneFactory()
+        self.init(presenterFactory: presenterFactory, sceneFactory: sceneFactory)
+    }
+    
     init(presenterFactory: EventFeedbackPresenterFactory, sceneFactory: EventFeedbackSceneFactory) {
         self.presenterFactory = presenterFactory
         self.sceneFactory = sceneFactory

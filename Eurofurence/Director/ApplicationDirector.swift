@@ -16,7 +16,8 @@ class ApplicationDirector: ExternalContentHandler,
                            KnowledgeDetailModuleDelegate,
                            MapsModuleDelegate,
                            MapDetailModuleDelegate,
-                           AnnouncementsModuleDelegate {
+                           AnnouncementsModuleDelegate,
+                           EventFeedbackModuleDelegate {
 
     private class DissolveTransitionAnimationProviding: NSObject, UINavigationControllerDelegate {
 
@@ -72,6 +73,7 @@ class ApplicationDirector: ExternalContentHandler,
     private let announcementsModuleFactory: AnnouncementsModuleProviding
     private let announcementDetailModuleProviding: AnnouncementDetailModuleProviding
     private let eventDetailModuleProviding: EventDetailModuleProviding
+    private let eventFeedbackModuleProviding: EventFeedbackModuleProviding
     private let notificationService: NotificationService
 
     private let rootNavigationController: UINavigationController
@@ -114,7 +116,8 @@ class ApplicationDirector: ExternalContentHandler,
          announcementsModuleFactory: AnnouncementsModuleProviding,
          announcementDetailModuleProviding: AnnouncementDetailModuleProviding,
          eventDetailModuleProviding: EventDetailModuleProviding,
-         notificationHandling: NotificationService) {
+         notificationHandling: NotificationService,
+         eventFeedbackModule: EventFeedbackModuleProviding) {
         self.animate = animate
         self.navigationControllerFactory = navigationControllerFactory
         self.linkLookupService = linkLookupService
@@ -143,6 +146,7 @@ class ApplicationDirector: ExternalContentHandler,
         self.announcementDetailModuleProviding = announcementDetailModuleProviding
         self.eventDetailModuleProviding = eventDetailModuleProviding
         self.notificationService = notificationHandling
+        self.eventFeedbackModuleProviding = eventFeedbackModule
 
         saveTabOrder = SaveTabOrderWhenCustomizationFinishes(orderingPolicy: orderingPolicy)
 
@@ -278,6 +282,14 @@ class ApplicationDirector: ExternalContentHandler,
     // MARK: EventDetailModuleDelegate
     
     func eventDetailModuleDidRequestPresentationToLeaveFeedback(for event: EventIdentifier) {
+        let module = eventFeedbackModuleProviding.makeEventFeedbackModule(for: event, delegate: self)
+        module.modalPresentationStyle = .formSheet
+        scheduleViewController?.navigationController?.present(module, animated: animate)
+    }
+    
+    // MARK: EventFeedbackModuleDelegate
+    
+    func eventFeedbackDismissed() {
         
     }
 

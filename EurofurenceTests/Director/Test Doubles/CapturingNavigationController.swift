@@ -13,6 +13,12 @@ class CapturingNavigationController: UINavigationController {
         viewControllerPoppedTo = viewController
         return super.popToViewController(viewController, animated: animated)
     }
+    
+    private(set) var capturedPresentedViewController: UIViewController?
+    override func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
+        capturedPresentedViewController = viewControllerToPresent
+        super.present(viewControllerToPresent, animated: flag, completion: completion)
+    }
 
 }
 

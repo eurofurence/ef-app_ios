@@ -5,12 +5,19 @@ import UIKit
 
 class StubEventDetailModuleFactory: EventDetailModuleProviding {
 
-    private(set) var stubInterface: UIViewController?
+    let stubInterface = UIViewController()
     private(set) var capturedModel: EventIdentifier?
+    private var delegate: EventDetailModuleDelegate?
     func makeEventDetailModule(for event: EventIdentifier, delegate: EventDetailModuleDelegate) -> UIViewController {
-        stubInterface = UIViewController()
         capturedModel = event
-        return stubInterface!
+        self.delegate = delegate
+        
+        return stubInterface
+    }
+    
+    func simulateLeaveFeedback() {
+        guard let capturedModel = capturedModel else { return }
+        delegate?.eventDetailModuleDidRequestPresentationToLeaveFeedback(for: capturedModel)
     }
 
 }
