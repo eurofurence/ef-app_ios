@@ -189,10 +189,10 @@
             </objects>
             <point key="canvasLocation" x="-475.36231884057975" y="-445.3125"/>
         </scene>
-        <!--View Controller-->
+        <!--Event Feedback Success View Controller-->
         <scene sceneID="dAj-5p-zX9">
             <objects>
-                <viewController storyboardIdentifier="EventFeedbackSuccess" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aiU-dS-BIi" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EventFeedbackSuccessViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aiU-dS-BIi" customClass="EventFeedbackSuccessViewController" customModule="Eurofurence" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Eve-0X-dfA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -216,6 +216,30 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gTu-WS-jeA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="314" y="-126"/>
+        </scene>
+        <!--Event Feedback Progress View Controller-->
+        <scene sceneID="uo8-yg-icz">
+            <objects>
+                <viewController storyboardIdentifier="EventFeedbackProgressViewController" id="TTn-ID-LDi" customClass="EventFeedbackProgressViewController" customModule="Eurofurence" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7ry-bT-agT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="JAO-ce-Fcx">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="JAO-ce-Fcx" firstAttribute="centerY" secondItem="7ry-bT-agT" secondAttribute="centerY" id="Cj1-DW-6XA"/>
+                            <constraint firstItem="JAO-ce-Fcx" firstAttribute="centerX" secondItem="7ry-bT-agT" secondAttribute="centerX" id="zun-1y-a4N"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="0MK-vz-Qhd"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7NL-12-XRT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1046" y="-417"/>
         </scene>
     </scenes>
 </document>

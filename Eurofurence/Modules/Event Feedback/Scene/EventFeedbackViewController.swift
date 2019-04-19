@@ -24,8 +24,8 @@ class EventFeedbackViewController: UIViewController, EventFeedbackScene {
     }
     
     private func swapEmbeddedViewController(to newChild: UIViewController) {
-        unembedExistingChildController()
-        embed(newChild)
+        self.unembedExistingChildController()
+        self.embed(newChild)
     }
     
     private func unembedExistingChildController() {
@@ -81,15 +81,22 @@ class EventFeedbackViewController: UIViewController, EventFeedbackScene {
     }
     
     func showFeedbackSubmissionInProgress() {
-        
+        let feedbackProgress = initialiseStoryboardViewController(EventFeedbackProgressViewController.self)
+        swapEmbeddedViewController(to: feedbackProgress)
     }
     
     func showFeedbackSubmissionSuccessful() {
-        
+        let successViewController = initialiseStoryboardViewController(EventFeedbackSuccessViewController.self)
+        swapEmbeddedViewController(to: successViewController)
     }
     
     func showFeedbackSubmissionFailedPrompt() {
-        
+        let alert = UIAlertController(title: .feedbackErrorTitle,
+                                      message: .feedbackErrorMessage,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: .ok,
+                                      style: .cancel))
+        present(alert, animated: true)
     }
     
     // MARK: Private

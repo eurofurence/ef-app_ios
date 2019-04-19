@@ -715,8 +715,10 @@
 		CA6F652722690DB500483EE0 /* WhenToldToLeaveFeedback_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F652622690DB500483EE0 /* WhenToldToLeaveFeedback_EventDetailPresenterShould.swift */; };
 		CA6F652922690EF700483EE0 /* EventDetailModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F652822690EF700483EE0 /* EventDetailModuleDelegate.swift */; };
 		CA6F652B22690F0C00483EE0 /* CapturingEventDetailModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F652A22690F0C00483EE0 /* CapturingEventDetailModuleDelegate.swift */; };
-		CA6F652F2269DFAD00483EE0 /* FoundationDayOfWeekFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F652E2269DFAD00483EE0 /* FoundationDayOfWeekFormatter.swift */; };
 		CA6F652D2269DCC500483EE0 /* WhenLeavingFeedback_FromEventDetailModule_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F652C2269DCC500483EE0 /* WhenLeavingFeedback_FromEventDetailModule_DirectorShould.swift */; };
+		CA6F652F2269DFAD00483EE0 /* FoundationDayOfWeekFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F652E2269DFAD00483EE0 /* FoundationDayOfWeekFormatter.swift */; };
+		CA6F6531226A4D1700483EE0 /* EventFeedbackSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F6530226A4D1700483EE0 /* EventFeedbackSuccessViewController.swift */; };
+		CA6F6533226A4D5F00483EE0 /* EventFeedbackProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F6532226A4D5F00483EE0 /* EventFeedbackProgressViewController.swift */; };
 		CA728437209C7DE1007D912A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CA728436209C7DE1007D912A /* Settings.bundle */; };
 		CA728439209CEE97007D912A /* StubConventionCountdownService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA728438209CEE97007D912A /* StubConventionCountdownService.swift */; };
 		CA72843D209CF07A007D912A /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = CA72843C209CF07A007D912A /* Localizable.stringsdict */; };
@@ -2421,8 +2423,10 @@
 		CA6F652622690DB500483EE0 /* WhenToldToLeaveFeedback_EventDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToLeaveFeedback_EventDetailPresenterShould.swift; sourceTree = "<group>"; };
 		CA6F652822690EF700483EE0 /* EventDetailModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailModuleDelegate.swift; sourceTree = "<group>"; };
 		CA6F652A22690F0C00483EE0 /* CapturingEventDetailModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingEventDetailModuleDelegate.swift; sourceTree = "<group>"; };
-		CA6F652E2269DFAD00483EE0 /* FoundationDayOfWeekFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationDayOfWeekFormatter.swift; sourceTree = "<group>"; };
 		CA6F652C2269DCC500483EE0 /* WhenLeavingFeedback_FromEventDetailModule_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLeavingFeedback_FromEventDetailModule_DirectorShould.swift; sourceTree = "<group>"; };
+		CA6F652E2269DFAD00483EE0 /* FoundationDayOfWeekFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationDayOfWeekFormatter.swift; sourceTree = "<group>"; };
+		CA6F6530226A4D1700483EE0 /* EventFeedbackSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFeedbackSuccessViewController.swift; sourceTree = "<group>"; };
+		CA6F6532226A4D5F00483EE0 /* EventFeedbackProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFeedbackProgressViewController.swift; sourceTree = "<group>"; };
 		CA71A347204031F700C847C3 /* RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomValueProviding.swift; sourceTree = "<group>"; };
 		CA71A3492040320A00C847C3 /* String+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA71A34B204032FC00C847C3 /* Integer+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Integer+RandomValueProviding.swift"; sourceTree = "<group>"; };
@@ -4714,6 +4718,8 @@
 				CA152EC52263C5B900212742 /* EventFeedbackViewController.swift */,
 				CA152EE72265268C00212742 /* EventFeedbackFormViewController.swift */,
 				CA152EF322665E7000212742 /* StoryboardEventFeedbackSceneFactory.swift */,
+				CA6F6530226A4D1700483EE0 /* EventFeedbackSuccessViewController.swift */,
+				CA6F6532226A4D5F00483EE0 /* EventFeedbackProgressViewController.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -8032,6 +8038,7 @@
 				CA6EC4752051664D00402894 /* KnowledgeDetailModuleBuilder.swift in Sources */,
 				781A94331F1A1994002DE70F /* FCMDeviceRegistration.swift in Sources */,
 				CA2725602112542D004C6D0A /* KnowledgentryImagesBinder.swift in Sources */,
+				CA6F6533226A4D5F00483EE0 /* EventFeedbackProgressViewController.swift in Sources */,
 				9A861EAF1F2554F900B75A8C /* TutorialPresenter.swift in Sources */,
 				9A861EC81F25555000B75A8C /* WitnessedTutorialPushPermissionsRequest.swift in Sources */,
 				CA6AA01C1FD88D930092C6DB /* UIStoryboard+Convenience.swift in Sources */,
@@ -8099,6 +8106,7 @@
 				CA52C68120D597E1009D3A9E /* ApplicationSignificantTimeChangeAdapter.swift in Sources */,
 				CAEA1044216E775300B0C7A6 /* ScreenshotAssistant.swift in Sources */,
 				CA7D8B27222EAB61003431A0 /* DefaultDealerDetailViewModel.swift in Sources */,
+				CA6F6531226A4D1700483EE0 /* EventFeedbackSuccessViewController.swift in Sources */,
 				CAF7056A1F82D15D00A9FEA2 /* PreloadModuleProviding.swift in Sources */,
 				CA36A47320D84DC900EE6537 /* DealerComponent.swift in Sources */,
 				CAD2343E1F5D7211004BB959 /* MessagesPresenter.swift in Sources */,

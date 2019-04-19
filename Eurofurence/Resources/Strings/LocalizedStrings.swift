@@ -218,6 +218,12 @@ public extension String {
     static let leaveFeedback = NSLocalizedString("LeaveFeedback",
                                                  comment: "Title for the command shown in the event detail scene for leaving feedback for an event")
     
+    static let feedbackErrorTitle = NSLocalizedString("FeedbackErrorTitle",
+                                                      comment: "Title for the alert displayed when attempting to leave feedback for an event fails")
+    
+    static let feedbackErrorMessage = NSLocalizedString("FeedbackErrorMessage",
+                                                        comment: "Message for the alert displayed when attempting to leave feedback for an event fails")
+    
     private struct Formatters {
         static var numbers = NumberFormatter()
     }
