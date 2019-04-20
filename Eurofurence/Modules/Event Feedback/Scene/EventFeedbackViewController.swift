@@ -24,8 +24,30 @@ class EventFeedbackViewController: UIViewController, EventFeedbackScene {
     }
     
     private func swapEmbeddedViewController(to newChild: UIViewController) {
-        self.unembedExistingChildController()
-        self.embed(newChild)
+        newChild.willMove(toParent: self)
+        embedChildView(newChild.view)
+        newChild.didMove(toParent: self)
+        
+        if let existingChild = embeddedChild {
+            performContainerTransition(from: existingChild.view, to: newChild.view, completion: {
+                self.unembedExistingChildController()
+                self.embeddedChild = newChild
+            })
+        } else {
+            unembedExistingChildController()
+            embeddedChild = newChild
+        }
+    }
+    
+    private func performContainerTransition(from original: UIView, to new: UIView, completion: @escaping () -> Void) {
+        new.alpha = 0
+        
+        let animations: () -> Void = {
+            new.alpha = 1
+            original.alpha = 0
+        }
+        
+        UIView.animate(withDuration: 0.25, animations: animations, completion: { (_) in completion() })
     }
     
     private func unembedExistingChildController() {
@@ -37,16 +59,7 @@ class EventFeedbackViewController: UIViewController, EventFeedbackScene {
         }
     }
     
-    private func embed(_ newChild: UIViewController) {
-        newChild.willMove(toParent: self)
-        addChild(newChild)
-        embedChildView(newChild.view)
-        newChild.didMove(toParent: self)
-        
-        embeddedChild = newChild
-    }
-    
-    fileprivate func embedChildView(_ newChild: UIView) {
+    private func embedChildView(_ newChild: UIView) {
         childContainer.addSubview(newChild)
         newChild.frame = childContainer.bounds
         
