@@ -28,5 +28,9 @@ class WhenEventFeedbackSubmitsUnsuccessfully_EventFeedbackPresenterShould: XCTes
     func testShowTheFeedbackForm() {
         XCTAssertEqual(context.scene.feedbackState, .feedbackForm)
     }
+    
+    func testEnableTheNavigationCommands() {
+        XCTAssertEqual(context.scene.navigationControlsState, .enabled)
+    }
 
 }

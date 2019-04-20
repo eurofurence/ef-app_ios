@@ -14,6 +14,7 @@ class CapturingEventFeedbackScene: UIViewController, EventFeedbackScene {
     enum NavigationControlsState {
         case unset
         case disabled
+        case enabled
     }
     
     private var delegate: EventFeedbackSceneDelegate?
@@ -47,6 +48,10 @@ class CapturingEventFeedbackScene: UIViewController, EventFeedbackScene {
     private(set) var navigationControlsState: NavigationControlsState = .unset
     func disableNavigationControls() {
         navigationControlsState = .disabled
+    }
+    
+    func enableNavigationControls() {
+        navigationControlsState = .enabled
     }
     
     func simulateSceneDidLoad() {

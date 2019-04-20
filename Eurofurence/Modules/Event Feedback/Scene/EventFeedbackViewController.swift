@@ -116,6 +116,10 @@ class EventFeedbackViewController: UIViewController, EventFeedbackScene {
         barButtonItems.forEach({ $0.isEnabled = false })
     }
     
+    func enableNavigationControls() {
+        barButtonItems.forEach({ $0.isEnabled = true })
+    }
+    
     // MARK: Private
     
     private func initialiseStoryboardViewController<T>(_ type: T.Type) -> T where T: UIViewController {
