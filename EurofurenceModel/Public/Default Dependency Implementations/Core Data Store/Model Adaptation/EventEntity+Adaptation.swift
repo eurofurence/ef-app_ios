@@ -22,7 +22,8 @@ extension EventEntity: EntityAdapting {
                         eventDescription: eventDescription!,
                         posterImageId: posterImageId,
                         bannerImageId: bannerImageId,
-                        tags: tags)
+                        tags: tags,
+                        isAcceptingFeedback: isAcceptingFeedback)
     }
 
     func consumeAttributes(from value: EventCharacteristics) {
@@ -40,6 +41,7 @@ extension EventEntity: EntityAdapting {
         posterImageId = value.posterImageId
         bannerImageId = value.bannerImageId
         tags = value.tags
+        isAcceptingFeedback = value.isAcceptingFeedback
     }
 
 }

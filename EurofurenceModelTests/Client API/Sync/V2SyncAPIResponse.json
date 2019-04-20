@@ -26,7 +26,8 @@
                             "IsDeviatingFromConBook": false,
                             "BannerImageId": "bannertest",
                             "PosterImageId": "postertest",
-                            "Tags": ["photoshoot"]
+                            "Tags": ["photoshoot"],
+                            "IsAcceptingFeedback": true,
                             }],
         "DeletedEntities": ["1452d472-feae-4483-8f55-93c25f7ec920"]
     },

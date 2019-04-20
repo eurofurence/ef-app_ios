@@ -133,6 +133,7 @@ struct JSONSyncResponse: Decodable {
         var BannerImageId: String?
         var PosterImageId: String?
         var Tags: [String]?
+        var IsAcceptingFeedback: Bool
 
         var modelValue: EventCharacteristics {
             return EventCharacteristics(identifier: Id,
@@ -148,7 +149,8 @@ struct JSONSyncResponse: Decodable {
                                         eventDescription: Description,
                                         posterImageId: PosterImageId,
                                         bannerImageId: BannerImageId,
-                                        tags: Tags)
+                                        tags: Tags,
+                                        isAcceptingFeedback: IsAcceptingFeedback)
         }
 
     }

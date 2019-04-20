@@ -18,7 +18,8 @@ extension EventCharacteristics: RandomValueProviding {
                                     eventDescription: .random,
                                     posterImageId: .random,
                                     bannerImageId: .random,
-                                    tags: .random)
+                                    tags: .random,
+                                    isAcceptingFeedback: .random)
     }
     
 }

@@ -32,7 +32,8 @@ public struct EventCharacteristics: Equatable, Identifyable {
                 eventDescription: String,
                 posterImageId: String?,
                 bannerImageId: String?,
-                tags: [String]?) {
+                tags: [String]?,
+                isAcceptingFeedback: Bool) {
         self.identifier = identifier
         self.roomIdentifier = roomIdentifier
         self.trackIdentifier = trackIdentifier
@@ -47,7 +48,7 @@ public struct EventCharacteristics: Equatable, Identifyable {
         self.posterImageId = posterImageId
         self.bannerImageId = bannerImageId
         self.tags = tags
-        self.isAcceptingFeedback = false
+        self.isAcceptingFeedback = isAcceptingFeedback
     }
 
 }

@@ -26,7 +26,8 @@ public extension ModelCharacteristics {
                                         eventDescription: .random,
                                         posterImageId: .random,
                                         bannerImageId: .random,
-                                        tags: .random)
+                                        tags: .random,
+                                        isAcceptingFeedback: .random)
         }
         
         let dealers: ModelCharacteristics.Update<DealerCharacteristics> = ModelCharacteristics.Update(changed: .random)
