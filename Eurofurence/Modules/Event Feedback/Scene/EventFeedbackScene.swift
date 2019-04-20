@@ -8,5 +8,6 @@ protocol EventFeedbackScene {
     func showFeedbackSubmissionInProgress()
     func showFeedbackSubmissionSuccessful()
     func showFeedbackSubmissionFailedPrompt()
+    func disableNavigationControls()
     
 }

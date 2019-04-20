@@ -112,6 +112,10 @@ class EventFeedbackViewController: UIViewController, EventFeedbackScene {
         present(alert, animated: true)
     }
     
+    func disableNavigationControls() {
+        barButtonItems.forEach({ $0.isEnabled = false })
+    }
+    
     // MARK: Private
     
     private func initialiseStoryboardViewController<T>(_ type: T.Type) -> T where T: UIViewController {
@@ -120,6 +124,13 @@ class EventFeedbackViewController: UIViewController, EventFeedbackScene {
         }
         
         return storyboard.instantiate(type)
+    }
+    
+    private var barButtonItems: [UIBarButtonItem] {
+        let leftBarButtonItems = navigationItem.leftBarButtonItems ?? []
+        let rightBarButtonItems = navigationItem.rightBarButtonItems ?? []
+        
+        return leftBarButtonItems + rightBarButtonItems
     }
     
 }

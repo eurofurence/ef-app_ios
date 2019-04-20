@@ -4,11 +4,16 @@ import UIKit.UIViewController
 
 class CapturingEventFeedbackScene: UIViewController, EventFeedbackScene {
     
-    enum State {
+    enum FeedbackState {
         case unset
         case inProgress
         case success
         case feedbackForm
+    }
+    
+    enum NavigationControlsState {
+        case unset
+        case disabled
     }
     
     private var delegate: EventFeedbackSceneDelegate?
@@ -21,7 +26,7 @@ class CapturingEventFeedbackScene: UIViewController, EventFeedbackScene {
         capturedViewModel = viewModel
     }
     
-    private(set) var feedbackState: State = .unset
+    private(set) var feedbackState: FeedbackState = .unset
     func showFeedbackSubmissionSuccessful() {
         feedbackState = .success
     }
@@ -37,6 +42,11 @@ class CapturingEventFeedbackScene: UIViewController, EventFeedbackScene {
     private(set) var didShowFailurePrompt = false
     func showFeedbackSubmissionFailedPrompt() {
         didShowFailurePrompt = true
+    }
+    
+    private(set) var navigationControlsState: NavigationControlsState = .unset
+    func disableNavigationControls() {
+        navigationControlsState = .disabled
     }
     
     func simulateSceneDidLoad() {

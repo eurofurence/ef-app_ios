@@ -28,5 +28,13 @@ class WhenEventFeedbackScenePreparesFeedback_EventFeedbackPresenterShould: XCTes
         
         XCTAssertEqual(context.scene.feedbackState, .inProgress)
     }
+    
+    func testDisableNavigationItems() {
+        let context = EventFeedbackPresenterTestBuilder().build()
+        context.simulateSceneDidLoad()
+        context.scene.simulateSubmitFeedbackTapped()
+        
+        XCTAssertEqual(context.scene.navigationControlsState, .disabled)
+    }
 
 }
