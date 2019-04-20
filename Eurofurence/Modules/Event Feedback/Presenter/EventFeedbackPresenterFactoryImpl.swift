@@ -8,19 +8,22 @@ struct EventFeedbackPresenterFactoryImpl: EventFeedbackPresenterFactory {
     private let endTimeFormatter: HoursDateFormatter
     private let successHaptic: SuccessHaptic
     private let failureHaptic: FailureHaptic
+    private let successWaitingRule: EventFeedbackSuccessWaitingRule
     
     init(eventService: EventsService,
          dayOfWeekFormatter: DayOfWeekFormatter,
          startTimeFormatter: HoursDateFormatter,
          endTimeFormatter: HoursDateFormatter,
          successHaptic: SuccessHaptic,
-         failureHaptic: FailureHaptic) {
+         failureHaptic: FailureHaptic,
+         successWaitingRule: EventFeedbackSuccessWaitingRule) {
         self.eventService = eventService
         self.dayOfWeekFormatter = dayOfWeekFormatter
         self.startTimeFormatter = startTimeFormatter
         self.endTimeFormatter = endTimeFormatter
         self.successHaptic = successHaptic
         self.failureHaptic = failureHaptic
+        self.successWaitingRule = successWaitingRule
     }
     
     func makeEventFeedbackPresenter(for event: EventIdentifier,
@@ -35,7 +38,8 @@ struct EventFeedbackPresenterFactoryImpl: EventFeedbackPresenterFactory {
                                    startTimeFormatter: startTimeFormatter,
                                    endTimeFormatter: endTimeFormatter,
                                    successHaptic: successHaptic,
-                                   failureHaptic: failureHaptic)
+                                   failureHaptic: failureHaptic,
+                                   successWaitingRule: successWaitingRule)
     }
     
 }

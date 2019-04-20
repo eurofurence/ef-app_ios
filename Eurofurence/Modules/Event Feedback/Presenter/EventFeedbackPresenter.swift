@@ -8,6 +8,7 @@ class EventFeedbackPresenter: EventFeedbackSceneDelegate, EventFeedbackDelegate 
     private let dayAndTimeFormatter: EventDayAndTimeFormatter
     private let successHaptic: SuccessHaptic
     private let failureHaptic: FailureHaptic
+    private let successWaitingRule: EventFeedbackSuccessWaitingRule
     
     private let eventFeedback: EventFeedback
     
@@ -18,12 +19,15 @@ class EventFeedbackPresenter: EventFeedbackSceneDelegate, EventFeedbackDelegate 
          startTimeFormatter: HoursDateFormatter,
          endTimeFormatter: HoursDateFormatter,
          successHaptic: SuccessHaptic,
-         failureHaptic: FailureHaptic) {
+         failureHaptic: FailureHaptic,
+         successWaitingRule: EventFeedbackSuccessWaitingRule) {
         self.event = event
         self.scene = scene
         self.delegate = delegate
         self.successHaptic = successHaptic
         self.failureHaptic = failureHaptic
+        self.successWaitingRule = successWaitingRule
+        
         dayAndTimeFormatter = EventDayAndTimeFormatter(dayOfWeekFormatter: dayOfWeekFormatter,
                                                        startTimeFormatter: startTimeFormatter,
                                                        endTimeFormatter: endTimeFormatter)
@@ -45,6 +49,7 @@ class EventFeedbackPresenter: EventFeedbackSceneDelegate, EventFeedbackDelegate 
     func eventFeedbackSubmissionDidFinish(_ feedback: EventFeedback) {
         scene.showFeedbackSubmissionSuccessful()
         successHaptic.play()
+        successWaitingRule.evaluateRule(handler: delegate.eventFeedbackDismissed)
     }
     
     func eventFeedbackSubmissionDidFail(_ feedback: EventFeedback) {

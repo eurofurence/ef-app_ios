@@ -719,6 +719,8 @@
 		CA6F652F2269DFAD00483EE0 /* FoundationDayOfWeekFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F652E2269DFAD00483EE0 /* FoundationDayOfWeekFormatter.swift */; };
 		CA6F6531226A4D1700483EE0 /* EventFeedbackSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F6530226A4D1700483EE0 /* EventFeedbackSuccessViewController.swift */; };
 		CA6F6533226A4D5F00483EE0 /* EventFeedbackProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F6532226A4D5F00483EE0 /* EventFeedbackProgressViewController.swift */; };
+		CA6F6535226B781900483EE0 /* EventFeedbackSuccessWaitingRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F6534226B781900483EE0 /* EventFeedbackSuccessWaitingRule.swift */; };
+		CA6F6537226B785700483EE0 /* ShortDelayEventFeedbackSuccessWaitingRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F6536226B785700483EE0 /* ShortDelayEventFeedbackSuccessWaitingRule.swift */; };
 		CA728437209C7DE1007D912A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CA728436209C7DE1007D912A /* Settings.bundle */; };
 		CA728439209CEE97007D912A /* StubConventionCountdownService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA728438209CEE97007D912A /* StubConventionCountdownService.swift */; };
 		CA72843D209CF07A007D912A /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = CA72843C209CF07A007D912A /* Localizable.stringsdict */; };
@@ -2427,6 +2429,8 @@
 		CA6F652E2269DFAD00483EE0 /* FoundationDayOfWeekFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationDayOfWeekFormatter.swift; sourceTree = "<group>"; };
 		CA6F6530226A4D1700483EE0 /* EventFeedbackSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFeedbackSuccessViewController.swift; sourceTree = "<group>"; };
 		CA6F6532226A4D5F00483EE0 /* EventFeedbackProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFeedbackProgressViewController.swift; sourceTree = "<group>"; };
+		CA6F6534226B781900483EE0 /* EventFeedbackSuccessWaitingRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFeedbackSuccessWaitingRule.swift; sourceTree = "<group>"; };
+		CA6F6536226B785700483EE0 /* ShortDelayEventFeedbackSuccessWaitingRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortDelayEventFeedbackSuccessWaitingRule.swift; sourceTree = "<group>"; };
 		CA71A347204031F700C847C3 /* RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomValueProviding.swift; sourceTree = "<group>"; };
 		CA71A3492040320A00C847C3 /* String+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA71A34B204032FC00C847C3 /* Integer+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Integer+RandomValueProviding.swift"; sourceTree = "<group>"; };
@@ -4695,6 +4699,8 @@
 				CA50B1B0226110E00091E425 /* EventFeedbackPresenterFactory.swift */,
 				CA50B1AE226110D20091E425 /* EventFeedbackPresenterFactoryImpl.swift */,
 				CA6F652E2269DFAD00483EE0 /* FoundationDayOfWeekFormatter.swift */,
+				CA6F6534226B781900483EE0 /* EventFeedbackSuccessWaitingRule.swift */,
+				CA6F6536226B785700483EE0 /* ShortDelayEventFeedbackSuccessWaitingRule.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -8120,6 +8126,7 @@
 				CA637592208CE4F700536BE2 /* ScheduleScene.swift in Sources */,
 				CAF81C6820DDA07B00898C52 /* AboutTheArtComponent.swift in Sources */,
 				9A861ECB1F25555000B75A8C /* UserCompletedTutorialStateProviding.swift in Sources */,
+				CA6F6535226B781900483EE0 /* EventFeedbackSuccessWaitingRule.swift in Sources */,
 				CA36A4BE20DA70B000EE6537 /* DealersSearchTableViewController.swift in Sources */,
 				CA6A8DD220E417EE007536CD /* MapDetailSceneFactory.swift in Sources */,
 				CA6375B0208E02CC00536BE2 /* DealersSceneFactory.swift in Sources */,
@@ -8174,6 +8181,7 @@
 				CA2761B220E0234C000E52AC /* StoryboardCollectThemAllSceneFactory.swift in Sources */,
 				CA36A4D620DAE2C000EE6537 /* DealersModuleDelegate.swift in Sources */,
 				CA00AE8720D28A8B00C2FBB0 /* ShortFormDateFormatter.swift in Sources */,
+				CA6F6537226B785700483EE0 /* ShortDelayEventFeedbackSuccessWaitingRule.swift in Sources */,
 				CA6A8DEC20E41F85007536CD /* MapDetailPresenter.swift in Sources */,
 				CA36A48720D9260000EE6537 /* DealerGroupHeader.swift in Sources */,
 				781A943E1F1A1A13002DE70F /* FirebaseRemoteNotificationsTokenRegistration.swift in Sources */,

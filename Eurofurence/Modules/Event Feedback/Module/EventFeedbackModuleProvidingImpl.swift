@@ -12,7 +12,8 @@ struct EventFeedbackModuleProvidingImpl: EventFeedbackModuleProviding {
                                                                  startTimeFormatter: FoundationHoursDateFormatter.shared,
                                                                  endTimeFormatter: FoundationHoursDateFormatter.shared,
                                                                  successHaptic: CocoaTouchSuccessHaptic(),
-                                                                 failureHaptic: CocoaTouchFailureHaptic())
+                                                                 failureHaptic: CocoaTouchFailureHaptic(),
+                                                                 successWaitingRule: ShortDelayEventFeedbackSuccessWaitingRule())
         let sceneFactory = StoryboardEventFeedbackSceneFactory()
         self.init(presenterFactory: presenterFactory, sceneFactory: sceneFactory)
     }

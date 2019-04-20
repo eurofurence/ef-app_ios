@@ -2,6 +2,19 @@
 import EurofurenceModel
 import EurofurenceModelTestDoubles
 
+class CapturingEventFeedbackSuccessWaitingRule: EventFeedbackSuccessWaitingRule {
+    
+    private var handler: (() -> Void)?
+    func evaluateRule(handler: @escaping () -> Void) {
+        self.handler = handler
+    }
+    
+    func elapse() {
+        handler?()
+    }
+    
+}
+
 class EventFeedbackPresenterTestBuilder {
     
     struct Context {
@@ -10,6 +23,7 @@ class EventFeedbackPresenterTestBuilder {
         var delegate: CapturingEventFeedbackModuleDelegate
         var successHaptic: CapturingSuccessHaptic
         var failureHaptic: CapturingFailureHaptic
+        var successWaitingRule: CapturingEventFeedbackSuccessWaitingRule
         
         var stubbedDayOfWeekString: String
         var stubbedStartTimeString: String
@@ -37,6 +51,8 @@ class EventFeedbackPresenterTestBuilder {
         let stubbedEndTimeString = "End Time"
         endTimeFormatter.stub(stubbedEndTimeString, for: event.endDate)
         
+        let successWaitingRule = CapturingEventFeedbackSuccessWaitingRule()
+        
         let sceneFactory = StubEventFeedbackSceneFactory()
         let successHaptic = CapturingSuccessHaptic()
         let failureHaptic = CapturingFailureHaptic()
@@ -45,7 +61,8 @@ class EventFeedbackPresenterTestBuilder {
                                                                  startTimeFormatter: startTimeFormatter,
                                                                  endTimeFormatter: endTimeFormatter,
                                                                  successHaptic: successHaptic,
-                                                                 failureHaptic: failureHaptic)
+                                                                 failureHaptic: failureHaptic,
+                                                                 successWaitingRule: successWaitingRule)
         
         let delegate = CapturingEventFeedbackModuleDelegate()
         let moduleFactory = EventFeedbackModuleProvidingImpl(presenterFactory: presenterFactory, sceneFactory: sceneFactory)
@@ -57,6 +74,7 @@ class EventFeedbackPresenterTestBuilder {
                        delegate: delegate,
                        successHaptic: successHaptic,
                        failureHaptic: failureHaptic,
+                       successWaitingRule: successWaitingRule,
                        stubbedDayOfWeekString: stubbedDayOfWeekString,
                        stubbedStartTimeString: stubbedStartTimeString,
                        stubbedEndTimeString: stubbedEndTimeString)

@@ -24,5 +24,13 @@ class WhenEventFeedbackSubmitsSuccessfully_EventFeedbackPresenterShould: XCTestC
     func testNotPlayFailureHaptic() {
         XCTAssertFalse(context.failureHaptic.played)
     }
+    
+    func testRequestDismissalAfterSuccessWaitingRuleElapses() {
+        XCTAssertFalse(context.delegate.dismissed)
+        
+        context.successWaitingRule.elapse()
+        
+        XCTAssertTrue(context.delegate.dismissed)
+    }
 
 }
