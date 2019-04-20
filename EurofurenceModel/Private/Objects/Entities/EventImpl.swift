@@ -46,7 +46,8 @@ class EventImpl: Event {
          isKageEvent: Bool,
          isDealersDen: Bool,
          isMainStage: Bool,
-         isPhotoshoot: Bool) {
+         isPhotoshoot: Bool,
+         isAcceptingFeedback: Bool) {
         self.eventBus = eventBus
         self.isFavourite = isFavourite
 
@@ -69,7 +70,7 @@ class EventImpl: Event {
         self.isDealersDen = isDealersDen
         self.isMainStage = isMainStage
         self.isPhotoshoot = isPhotoshoot
-        self.isAcceptingFeedback = false
+        self.isAcceptingFeedback = isAcceptingFeedback
     }
 
     private var observers: [EventObserver] = []

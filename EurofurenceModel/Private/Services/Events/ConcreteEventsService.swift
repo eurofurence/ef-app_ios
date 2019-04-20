@@ -243,7 +243,8 @@ class ConcreteEventsService: ClockDelegate, EventsService {
                          isKageEvent: containsTag("kage"),
                          isDealersDen: containsTag("dealers_den"),
                          isMainStage: containsTag("main_stage"),
-                         isPhotoshoot: containsTag("photoshoot"))
+                         isPhotoshoot: containsTag("photoshoot"),
+                         isAcceptingFeedback: event.isAcceptingFeedback)
     }
 
     private func reconstituteFavouritesFromDataStore() {

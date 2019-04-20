@@ -721,6 +721,8 @@
 		CA6F6533226A4D5F00483EE0 /* EventFeedbackProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F6532226A4D5F00483EE0 /* EventFeedbackProgressViewController.swift */; };
 		CA6F6535226B781900483EE0 /* EventFeedbackSuccessWaitingRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F6534226B781900483EE0 /* EventFeedbackSuccessWaitingRule.swift */; };
 		CA6F6537226B785700483EE0 /* ShortDelayEventFeedbackSuccessWaitingRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F6536226B785700483EE0 /* ShortDelayEventFeedbackSuccessWaitingRule.swift */; };
+		CA6F653A226BA50D00483EE0 /* WhenCharacteristicsIndicatesEventAcceptsFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F6539226BA50D00483EE0 /* WhenCharacteristicsIndicatesEventAcceptsFeedback.swift */; };
+		CA6F653C226BA66900483EE0 /* WhenCharacteristicsIndicatesEventDoesNotAcceptFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F653B226BA66900483EE0 /* WhenCharacteristicsIndicatesEventDoesNotAcceptFeedback.swift */; };
 		CA728437209C7DE1007D912A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CA728436209C7DE1007D912A /* Settings.bundle */; };
 		CA728439209CEE97007D912A /* StubConventionCountdownService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA728438209CEE97007D912A /* StubConventionCountdownService.swift */; };
 		CA72843D209CF07A007D912A /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = CA72843C209CF07A007D912A /* Localizable.stringsdict */; };
@@ -2431,6 +2433,8 @@
 		CA6F6532226A4D5F00483EE0 /* EventFeedbackProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFeedbackProgressViewController.swift; sourceTree = "<group>"; };
 		CA6F6534226B781900483EE0 /* EventFeedbackSuccessWaitingRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFeedbackSuccessWaitingRule.swift; sourceTree = "<group>"; };
 		CA6F6536226B785700483EE0 /* ShortDelayEventFeedbackSuccessWaitingRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortDelayEventFeedbackSuccessWaitingRule.swift; sourceTree = "<group>"; };
+		CA6F6539226BA50D00483EE0 /* WhenCharacteristicsIndicatesEventAcceptsFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenCharacteristicsIndicatesEventAcceptsFeedback.swift; sourceTree = "<group>"; };
+		CA6F653B226BA66900483EE0 /* WhenCharacteristicsIndicatesEventDoesNotAcceptFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenCharacteristicsIndicatesEventDoesNotAcceptFeedback.swift; sourceTree = "<group>"; };
 		CA71A347204031F700C847C3 /* RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomValueProviding.swift; sourceTree = "<group>"; };
 		CA71A3492040320A00C847C3 /* String+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA71A34B204032FC00C847C3 /* Integer+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Integer+RandomValueProviding.swift"; sourceTree = "<group>"; };
@@ -3847,6 +3851,7 @@
 				CABEB0D320C891CA000BEE66 /* WhenSyncCompletesWithEvents_ApplicationShould.swift */,
 				CACF1EBF20B60D2B00D904B5 /* WhenSyncFinishesForEventWithPoster_WhenImageAPIIsSlow_ApplicationShould.swift */,
 				CABA83FD20CEF88800DD0795 /* Favourites */,
+				CA6F6538226BA4EB00483EE0 /* Feedback */,
 				CA162EB020AA2DC9004AFED6 /* Running */,
 				CA27258B2113B1E3004C6D0A /* Tag Adaption */,
 				CA3990F020ACD693001E3F1A /* Upcoming */,
@@ -5487,6 +5492,15 @@
 				CA6EC48D2051D97600402894 /* KnowledgeDetailPresenter.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		CA6F6538226BA4EB00483EE0 /* Feedback */ = {
+			isa = PBXGroup;
+			children = (
+				CA6F6539226BA50D00483EE0 /* WhenCharacteristicsIndicatesEventAcceptsFeedback.swift */,
+				CA6F653B226BA66900483EE0 /* WhenCharacteristicsIndicatesEventDoesNotAcceptFeedback.swift */,
+			);
+			path = Feedback;
 			sourceTree = "<group>";
 		};
 		CA71A346204031E800C847C3 /* Random Value Generation */ = {
@@ -9245,6 +9259,7 @@
 				CA240F5F21E4AA1C002DB747 /* WhenLoggingOut_WithoutRegisteredDeviceToken.swift in Sources */,
 				CAEA0FE9216E1CE700B0C7A6 /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift in Sources */,
 				CAEA1039216E1CE800B0C7A6 /* CapturingRemoteNotificationsTokenRegistration.swift in Sources */,
+				CA6F653A226BA50D00483EE0 /* WhenCharacteristicsIndicatesEventAcceptsFeedback.swift in Sources */,
 				CAEA1024216E1CE800B0C7A6 /* CapturingCollectThemAllURLObserver.swift in Sources */,
 				CAEA0FB4216E1CC000B0C7A6 /* WhenFetchingIconDataForDealerWithoutArtwork_ApplicationShould.swift in Sources */,
 				CAEA0FF7216E1CE700B0C7A6 /* WhenLookingUpTelLinks.swift in Sources */,
@@ -9266,6 +9281,7 @@
 				CA8DA45D2240F6A100B1E5D1 /* WhenPerformingSync_AfterEnforcingFullStoreRefresh.swift in Sources */,
 				CA23587C221C8BDA0044B1FC /* WhenObservingEvent_ThatIsFavourite.swift in Sources */,
 				CAEA102C216E1CE800B0C7A6 /* CapturingKnowledgeServiceObserver.swift in Sources */,
+				CA6F653C226BA66900483EE0 /* WhenCharacteristicsIndicatesEventDoesNotAcceptFeedback.swift in Sources */,
 				CAEA102B216E1CE800B0C7A6 /* CapturingEventsServiceObserver.swift in Sources */,
 				CAEA0FCB216E1CC000B0C7A6 /* WhenDeletingKnowledgeEntry_AfterSuccessfulSync_ApplicationShould.swift in Sources */,
 				CA5335E7223A95F000115262 /* CIDAPIURLProvidingTests.swift in Sources */,

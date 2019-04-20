@@ -17,6 +17,7 @@ public struct EventCharacteristics: Equatable, Identifyable {
     public var posterImageId: String?
     public var bannerImageId: String?
     public var tags: [String]?
+    public var isAcceptingFeedback: Bool
 
     public init(identifier: String,
                 roomIdentifier: String,
@@ -46,6 +47,7 @@ public struct EventCharacteristics: Equatable, Identifyable {
         self.posterImageId = posterImageId
         self.bannerImageId = bannerImageId
         self.tags = tags
+        self.isAcceptingFeedback = false
     }
 
 }
