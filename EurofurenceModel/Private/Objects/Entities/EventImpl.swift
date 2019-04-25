@@ -98,7 +98,10 @@ class EventImpl: Event {
     private struct DummyEventFeedback: EventFeedback {
         var feedback: String
         var rating: Int
-        func submit(_ delegate: EventFeedbackDelegate) { }
+        
+        func submit(_ delegate: EventFeedbackDelegate) {
+            delegate.eventFeedbackSubmissionDidFail(self)
+        }
     }
     
     func prepareFeedback() -> EventFeedback {    

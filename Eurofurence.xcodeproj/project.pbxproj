@@ -723,6 +723,8 @@
 		CA6F6537226B785700483EE0 /* ShortDelayEventFeedbackSuccessWaitingRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F6536226B785700483EE0 /* ShortDelayEventFeedbackSuccessWaitingRule.swift */; };
 		CA6F653A226BA50D00483EE0 /* WhenCharacteristicsIndicatesEventAcceptsFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F6539226BA50D00483EE0 /* WhenCharacteristicsIndicatesEventAcceptsFeedback.swift */; };
 		CA6F653C226BA66900483EE0 /* WhenCharacteristicsIndicatesEventDoesNotAcceptFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F653B226BA66900483EE0 /* WhenCharacteristicsIndicatesEventDoesNotAcceptFeedback.swift */; };
+		CA6F6542226BD10500483EE0 /* WhenSubmittingFeedback_ForEventNotAcceptingFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F6541226BD10500483EE0 /* WhenSubmittingFeedback_ForEventNotAcceptingFeedback.swift */; };
+		CA6F654422724A3D00483EE0 /* CapturingEventFeedbackDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F654322724A3D00483EE0 /* CapturingEventFeedbackDelegate.swift */; };
 		CA728437209C7DE1007D912A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CA728436209C7DE1007D912A /* Settings.bundle */; };
 		CA728439209CEE97007D912A /* StubConventionCountdownService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA728438209CEE97007D912A /* StubConventionCountdownService.swift */; };
 		CA72843D209CF07A007D912A /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = CA72843C209CF07A007D912A /* Localizable.stringsdict */; };
@@ -2436,6 +2438,8 @@
 		CA6F6539226BA50D00483EE0 /* WhenCharacteristicsIndicatesEventAcceptsFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenCharacteristicsIndicatesEventAcceptsFeedback.swift; sourceTree = "<group>"; };
 		CA6F653B226BA66900483EE0 /* WhenCharacteristicsIndicatesEventDoesNotAcceptFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenCharacteristicsIndicatesEventDoesNotAcceptFeedback.swift; sourceTree = "<group>"; };
 		CA6F653D226BA8C800483EE0 /* EF25.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EF25.xcdatamodel; sourceTree = "<group>"; };
+		CA6F6541226BD10500483EE0 /* WhenSubmittingFeedback_ForEventNotAcceptingFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSubmittingFeedback_ForEventNotAcceptingFeedback.swift; sourceTree = "<group>"; };
+		CA6F654322724A3D00483EE0 /* CapturingEventFeedbackDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingEventFeedbackDelegate.swift; sourceTree = "<group>"; };
 		CA71A347204031F700C847C3 /* RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomValueProviding.swift; sourceTree = "<group>"; };
 		CA71A3492040320A00C847C3 /* String+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA71A34B204032FC00C847C3 /* Integer+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Integer+RandomValueProviding.swift"; sourceTree = "<group>"; };
@@ -3825,6 +3829,7 @@
 				CAEA10A8216E90F000B0C7A6 /* Configurable Dependencies */,
 				781A94351F1A19A8002DE70F /* Notifications */,
 				CAEA10A7216E90B100B0C7A6 /* Observers */,
+				CA6F654322724A3D00483EE0 /* CapturingEventFeedbackDelegate.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -5500,6 +5505,7 @@
 			children = (
 				CA6F6539226BA50D00483EE0 /* WhenCharacteristicsIndicatesEventAcceptsFeedback.swift */,
 				CA6F653B226BA66900483EE0 /* WhenCharacteristicsIndicatesEventDoesNotAcceptFeedback.swift */,
+				CA6F6541226BD10500483EE0 /* WhenSubmittingFeedback_ForEventNotAcceptingFeedback.swift */,
 			);
 			path = Feedback;
 			sourceTree = "<group>";
@@ -9188,6 +9194,7 @@
 				CAEA1034216E1CE800B0C7A6 /* StubConventionStartDateRepository.swift in Sources */,
 				CAEA0FAF216E1CC000B0C7A6 /* WhenAdaptingDealersFromResponse_ApplicationShould.swift in Sources */,
 				CAEA1025216E1CE800B0C7A6 /* CapturingConventionCountdownServiceObserver.swift in Sources */,
+				CA6F6542226BD10500483EE0 /* WhenSubmittingFeedback_ForEventNotAcceptingFeedback.swift in Sources */,
 				CAEA0FB9216E1CC000B0C7A6 /* WhenTellingDealersIndexToSearch_ApplicationShould.swift in Sources */,
 				CAEA10A2216E8B8100B0C7A6 /* CapturingExternalContentHandler.swift in Sources */,
 				CAEA0F6C216D2BFB00B0C7A6 /* ImageAPITests.swift in Sources */,
@@ -9261,6 +9268,7 @@
 				CAEA0FE9216E1CE700B0C7A6 /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift in Sources */,
 				CAEA1039216E1CE800B0C7A6 /* CapturingRemoteNotificationsTokenRegistration.swift in Sources */,
 				CA6F653A226BA50D00483EE0 /* WhenCharacteristicsIndicatesEventAcceptsFeedback.swift in Sources */,
+				CA6F654422724A3D00483EE0 /* CapturingEventFeedbackDelegate.swift in Sources */,
 				CAEA1024216E1CE800B0C7A6 /* CapturingCollectThemAllURLObserver.swift in Sources */,
 				CAEA0FB4216E1CC000B0C7A6 /* WhenFetchingIconDataForDealerWithoutArtwork_ApplicationShould.swift in Sources */,
 				CAEA0FF7216E1CE700B0C7A6 /* WhenLookingUpTelLinks.swift in Sources */,
