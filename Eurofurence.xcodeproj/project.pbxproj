@@ -119,6 +119,7 @@
 		CA017A0A2275FE1F0013FC2B /* AcceptingEventFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA017A092275FE1F0013FC2B /* AcceptingEventFeedback.swift */; };
 		CA017A0C2275FE2F0013FC2B /* NotAcceptingEventFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA017A0B2275FE2F0013FC2B /* NotAcceptingEventFeedback.swift */; };
 		CA017A0E2275FFFC0013FC2B /* EventFeedbackRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA017A0D2275FFFC0013FC2B /* EventFeedbackRequest.swift */; };
+		CA017A11227601250013FC2B /* WhenSubmittingFeedback_AndFeedbackIsUnsuccessful.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA017A0F227600A40013FC2B /* WhenSubmittingFeedback_AndFeedbackIsUnsuccessful.swift */; };
 		CA0290FE21F4B3C80007F350 /* ConcreteNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0290FD21F4B3C80007F350 /* ConcreteNotificationService.swift */; };
 		CA02910021F4B5C60007F350 /* ConcreteContentLinksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0290FF21F4B5C60007F350 /* ConcreteContentLinksService.swift */; };
 		CA02910221F4D6020007F350 /* AppDelegate+DebugWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA02910121F4D6020007F350 /* AppDelegate+DebugWindow.swift */; };
@@ -1670,6 +1671,7 @@
 		CA017A092275FE1F0013FC2B /* AcceptingEventFeedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcceptingEventFeedback.swift; sourceTree = "<group>"; };
 		CA017A0B2275FE2F0013FC2B /* NotAcceptingEventFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotAcceptingEventFeedback.swift; sourceTree = "<group>"; };
 		CA017A0D2275FFFC0013FC2B /* EventFeedbackRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFeedbackRequest.swift; sourceTree = "<group>"; };
+		CA017A0F227600A40013FC2B /* WhenSubmittingFeedback_AndFeedbackIsUnsuccessful.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSubmittingFeedback_AndFeedbackIsUnsuccessful.swift; sourceTree = "<group>"; };
 		CA0290FD21F4B3C80007F350 /* ConcreteNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcreteNotificationService.swift; sourceTree = "<group>"; };
 		CA0290FF21F4B5C60007F350 /* ConcreteContentLinksService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcreteContentLinksService.swift; sourceTree = "<group>"; };
 		CA02910121F4D6020007F350 /* AppDelegate+DebugWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+DebugWindow.swift"; sourceTree = "<group>"; };
@@ -5522,6 +5524,7 @@
 				CA6F653B226BA66900483EE0 /* WhenCharacteristicsIndicatesEventDoesNotAcceptFeedback.swift */,
 				CA6F6541226BD10500483EE0 /* WhenSubmittingFeedback_ForEventNotAcceptingFeedback.swift */,
 				CA6F654522724AB400483EE0 /* WhenSubmittingFeedback_AndFeedbackIsSuccessful.swift */,
+				CA017A0F227600A40013FC2B /* WhenSubmittingFeedback_AndFeedbackIsUnsuccessful.swift */,
 			);
 			path = Feedback;
 			sourceTree = "<group>";
@@ -9275,6 +9278,7 @@
 				CAEA0FA8216E1CC000B0C7A6 /* WhenObservingCountdownUntilConvention_EurofurenceApplicationShould.swift in Sources */,
 				CAEA0FF9216E1CE700B0C7A6 /* WhenFetchingMapContent_ThatRevealMultipleOptions_ApplicationShould.swift in Sources */,
 				CAEA1011216E1CE800B0C7A6 /* WhenRemovingFavouritesRestrictionForEvents_ScheduleShould.swift in Sources */,
+				CA017A11227601250013FC2B /* WhenSubmittingFeedback_AndFeedbackIsUnsuccessful.swift in Sources */,
 				CAEA0FC1216E1CC000B0C7A6 /* EventConferenceDaysRemoveAllBeforeInsertTests.swift in Sources */,
 				CAEA0FE4216E1CE700B0C7A6 /* InOrderToSupportPhotoshootTag_ApplicationShould.swift in Sources */,
 				CAD6FD402215A74A0011712D /* EventAssertion.swift in Sources */,

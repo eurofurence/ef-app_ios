@@ -15,6 +15,13 @@ class FakeAPI: API {
         handler(true)
         feedbackRequests[request] = nil
     }
+    
+    func simulateUnsuccessfulFeedbackResponse(for request: EventFeedbackRequest) {
+        guard let handler = feedbackRequests[request] else { return }
+        
+        handler(false)
+        feedbackRequests[request] = nil
+    }
 
     private(set) var capturedLoginRequest: LoginRequest?
     private var loginHandler: ((LoginResponse?) -> Void)?
