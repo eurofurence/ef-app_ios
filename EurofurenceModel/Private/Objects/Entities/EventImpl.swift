@@ -95,17 +95,12 @@ class EventImpl: Event {
         notifyObserversFavouritedStateDidChange()
     }
     
-    private struct DummyEventFeedback: EventFeedback {
-        var feedback: String
-        var rating: Int
-        
-        func submit(_ delegate: EventFeedbackDelegate) {
-            delegate.eventFeedbackSubmissionDidFail(self)
+    func prepareFeedback() -> EventFeedback {
+        if isAcceptingFeedback {
+            return AcceptingEventFeedback(eventBus: eventBus, eventIdentifier: identifier, feedback: "", rating: 0)
+        } else {
+            return NotAcceptingEventFeedback()
         }
-    }
-    
-    func prepareFeedback() -> EventFeedback {    
-        return DummyEventFeedback(feedback: "", rating: 0)
     }
 
     private func notifyObserversFavouritedStateDidChange() {

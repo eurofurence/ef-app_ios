@@ -116,6 +116,10 @@ public struct JSONAPI: API {
             }
         }
     }
+    
+    public func submitEventFeedback(_ request: EventFeedbackRequest, completionHandler: @escaping (Bool) -> Void) {
+        
+    }
 
     // MARK: Private
     

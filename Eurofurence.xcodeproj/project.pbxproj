@@ -114,6 +114,11 @@
 		CA00AE8720D28A8B00C2FBB0 /* ShortFormDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE8620D28A8B00C2FBB0 /* ShortFormDateFormatter.swift */; };
 		CA00AE8E20D2925500C2FBB0 /* ScheduleDayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE8C20D2925500C2FBB0 /* ScheduleDayCollectionViewCell.swift */; };
 		CA00AE9120D293B800C2FBB0 /* UICollectionView+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE9020D293B800C2FBB0 /* UICollectionView+Convenience.swift */; };
+		CA017A042275FA270013FC2B /* EventFeedbackReady.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA017A032275FA270013FC2B /* EventFeedbackReady.swift */; };
+		CA017A082275FD280013FC2B /* EventFeedbackService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA017A072275FD280013FC2B /* EventFeedbackService.swift */; };
+		CA017A0A2275FE1F0013FC2B /* AcceptingEventFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA017A092275FE1F0013FC2B /* AcceptingEventFeedback.swift */; };
+		CA017A0C2275FE2F0013FC2B /* NotAcceptingEventFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA017A0B2275FE2F0013FC2B /* NotAcceptingEventFeedback.swift */; };
+		CA017A0E2275FFFC0013FC2B /* EventFeedbackRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA017A0D2275FFFC0013FC2B /* EventFeedbackRequest.swift */; };
 		CA0290FE21F4B3C80007F350 /* ConcreteNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0290FD21F4B3C80007F350 /* ConcreteNotificationService.swift */; };
 		CA02910021F4B5C60007F350 /* ConcreteContentLinksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0290FF21F4B5C60007F350 /* ConcreteContentLinksService.swift */; };
 		CA02910221F4D6020007F350 /* AppDelegate+DebugWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA02910121F4D6020007F350 /* AppDelegate+DebugWindow.swift */; };
@@ -725,6 +730,7 @@
 		CA6F653C226BA66900483EE0 /* WhenCharacteristicsIndicatesEventDoesNotAcceptFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F653B226BA66900483EE0 /* WhenCharacteristicsIndicatesEventDoesNotAcceptFeedback.swift */; };
 		CA6F6542226BD10500483EE0 /* WhenSubmittingFeedback_ForEventNotAcceptingFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F6541226BD10500483EE0 /* WhenSubmittingFeedback_ForEventNotAcceptingFeedback.swift */; };
 		CA6F654422724A3D00483EE0 /* CapturingEventFeedbackDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F654322724A3D00483EE0 /* CapturingEventFeedbackDelegate.swift */; };
+		CA6F654622724AB400483EE0 /* WhenSubmittingFeedback_AndFeedbackIsSuccessful.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F654522724AB400483EE0 /* WhenSubmittingFeedback_AndFeedbackIsSuccessful.swift */; };
 		CA728437209C7DE1007D912A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CA728436209C7DE1007D912A /* Settings.bundle */; };
 		CA728439209CEE97007D912A /* StubConventionCountdownService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA728438209CEE97007D912A /* StubConventionCountdownService.swift */; };
 		CA72843D209CF07A007D912A /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = CA72843C209CF07A007D912A /* Localizable.stringsdict */; };
@@ -1659,6 +1665,11 @@
 		CA00AE8A20D28AF400C2FBB0 /* Day+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Day+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA00AE8C20D2925500C2FBB0 /* ScheduleDayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDayCollectionViewCell.swift; sourceTree = "<group>"; };
 		CA00AE9020D293B800C2FBB0 /* UICollectionView+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Convenience.swift"; sourceTree = "<group>"; };
+		CA017A032275FA270013FC2B /* EventFeedbackReady.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFeedbackReady.swift; sourceTree = "<group>"; };
+		CA017A072275FD280013FC2B /* EventFeedbackService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFeedbackService.swift; sourceTree = "<group>"; };
+		CA017A092275FE1F0013FC2B /* AcceptingEventFeedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcceptingEventFeedback.swift; sourceTree = "<group>"; };
+		CA017A0B2275FE2F0013FC2B /* NotAcceptingEventFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotAcceptingEventFeedback.swift; sourceTree = "<group>"; };
+		CA017A0D2275FFFC0013FC2B /* EventFeedbackRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFeedbackRequest.swift; sourceTree = "<group>"; };
 		CA0290FD21F4B3C80007F350 /* ConcreteNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcreteNotificationService.swift; sourceTree = "<group>"; };
 		CA0290FF21F4B5C60007F350 /* ConcreteContentLinksService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcreteContentLinksService.swift; sourceTree = "<group>"; };
 		CA02910121F4D6020007F350 /* AppDelegate+DebugWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+DebugWindow.swift"; sourceTree = "<group>"; };
@@ -2440,6 +2451,7 @@
 		CA6F653D226BA8C800483EE0 /* EF25.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EF25.xcdatamodel; sourceTree = "<group>"; };
 		CA6F6541226BD10500483EE0 /* WhenSubmittingFeedback_ForEventNotAcceptingFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSubmittingFeedback_ForEventNotAcceptingFeedback.swift; sourceTree = "<group>"; };
 		CA6F654322724A3D00483EE0 /* CapturingEventFeedbackDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingEventFeedbackDelegate.swift; sourceTree = "<group>"; };
+		CA6F654522724AB400483EE0 /* WhenSubmittingFeedback_AndFeedbackIsSuccessful.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSubmittingFeedback_AndFeedbackIsSuccessful.swift; sourceTree = "<group>"; };
 		CA71A347204031F700C847C3 /* RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomValueProviding.swift; sourceTree = "<group>"; };
 		CA71A3492040320A00C847C3 /* String+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA71A34B204032FC00C847C3 /* Integer+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Integer+RandomValueProviding.swift"; sourceTree = "<group>"; };
@@ -3822,6 +3834,7 @@
 			isa = PBXGroup;
 			children = (
 				CA36A4A920D985FD00EE6537 /* CapturingDealersIndexDelegate.swift */,
+				CA6F654322724A3D00483EE0 /* CapturingEventFeedbackDelegate.swift */,
 				CA235874221C55A30044B1FC /* CapturingEventObserver.swift */,
 				CA08159B20D47BEA00F750D4 /* CapturingEventsScheduleDelegate.swift */,
 				CA36A44220D703FA00EE6537 /* CapturingEventsSearchControllerDelegate.swift */,
@@ -3829,7 +3842,6 @@
 				CAEA10A8216E90F000B0C7A6 /* Configurable Dependencies */,
 				781A94351F1A19A8002DE70F /* Notifications */,
 				CAEA10A7216E90B100B0C7A6 /* Observers */,
-				CA6F654322724A3D00483EE0 /* CapturingEventFeedbackDelegate.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -3919,8 +3931,9 @@
 			isa = PBXGroup;
 			children = (
 				CA4679A72219FC03006B3090 /* API.swift */,
-				CA30EAA01F2127350053DBF6 /* LoginResponse.swift */,
+				CA017A0D2275FFFC0013FC2B /* EventFeedbackRequest.swift */,
 				CA7BA2462238091F00D34592 /* LoginRequest.swift */,
+				CA30EAA01F2127350053DBF6 /* LoginResponse.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -4644,11 +4657,13 @@
 		CA4679922217090B006B3090 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				CA017A092275FE1F0013FC2B /* AcceptingEventFeedback.swift */,
 				CA46799322170911006B3090 /* AnnouncementImpl.swift */,
 				CA46799A22176329006B3090 /* DealerImpl.swift */,
 				CA4679A322176AAF006B3090 /* EventImpl.swift */,
 				CA4679A5221770A9006B3090 /* MapImpl.swift */,
 				CA235867221B591D0044B1FC /* MessageImpl.swift */,
+				CA017A0B2275FE2F0013FC2B /* NotAcceptingEventFeedback.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -5506,6 +5521,7 @@
 				CA6F6539226BA50D00483EE0 /* WhenCharacteristicsIndicatesEventAcceptsFeedback.swift */,
 				CA6F653B226BA66900483EE0 /* WhenCharacteristicsIndicatesEventDoesNotAcceptFeedback.swift */,
 				CA6F6541226BD10500483EE0 /* WhenSubmittingFeedback_ForEventNotAcceptingFeedback.swift */,
+				CA6F654522724AB400483EE0 /* WhenSubmittingFeedback_AndFeedbackIsSuccessful.swift */,
 			);
 			path = Feedback;
 			sourceTree = "<group>";
@@ -6024,6 +6040,7 @@
 				CA8D97D2201612A70074838F /* RemoteNotificationTokenAvailable.swift */,
 				CA52C67E20D59572009D3A9E /* SignificantTimePassedEvent.swift */,
 				CA23586B221C3A000044B1FC /* UnfavouriteEvent.swift */,
+				CA017A032275FA270013FC2B /* EventFeedbackReady.swift */,
 			);
 			path = "Domain Events";
 			sourceTree = "<group>";
@@ -6062,6 +6079,7 @@
 				CAA4BA6B21EE851700DE2C88 /* ConcreteRefreshService.swift */,
 				CAA4BA6821EE80C500DE2C88 /* ConcreteSessionStateService.swift */,
 				CADABF0121177B3B0023C3B6 /* DataStoreChangedConsumer.swift */,
+				CA017A072275FD280013FC2B /* EventFeedbackService.swift */,
 				CAA4BA6F21EFD03900DE2C88 /* Events */,
 			);
 			path = Services;
@@ -9032,6 +9050,7 @@
 				CAEA0DF5216BDE3100B0C7A6 /* DealerCharacteristics.swift in Sources */,
 				CA467990221708FA006B3090 /* Announcement.swift in Sources */,
 				CAEA0DA1216BDE2300B0C7A6 /* ConventionStartDateRepository.swift in Sources */,
+				CA017A082275FD280013FC2B /* EventFeedbackService.swift in Sources */,
 				CAEA0DBF216BDE2300B0C7A6 /* User.swift in Sources */,
 				CA4679A422176AAF006B3090 /* EventImpl.swift in Sources */,
 				CA7BA23F2238036C00D34592 /* CoreDataStoreFactory.swift in Sources */,
@@ -9074,6 +9093,7 @@
 				CAEA0DB3216BDE2300B0C7A6 /* Day.swift in Sources */,
 				CA7BA23D2238029B00D34592 /* DataStoreFactory.swift in Sources */,
 				CAEA0D99216BDD9500B0C7A6 /* ConcreteCollectThemAllService.swift in Sources */,
+				CA017A042275FA270013FC2B /* EventFeedbackReady.swift in Sources */,
 				CA4679A6221770A9006B3090 /* MapImpl.swift in Sources */,
 				CAEA0DA8216BDE2300B0C7A6 /* LongRunningTaskManager.swift in Sources */,
 				CAEA0D94216BDD9500B0C7A6 /* InMemoryEventsSearchController.swift in Sources */,
@@ -9094,6 +9114,7 @@
 				CAEA0D9F216BDE2300B0C7A6 /* Clock.swift in Sources */,
 				CAEA0E05216BDE3100B0C7A6 /* JSONAPI.swift in Sources */,
 				CAEA0E14216BDE9B00B0C7A6 /* Optional+Extensions.swift in Sources */,
+				CA017A0A2275FE1F0013FC2B /* AcceptingEventFeedback.swift in Sources */,
 				CAEA0D8E216BDD9500B0C7A6 /* ConcreteConventionCountdownService.swift in Sources */,
 				CAEA0E0B216BDE3100B0C7A6 /* JSONSession.swift in Sources */,
 				CA02910021F4B5C60007F350 /* ConcreteContentLinksService.swift in Sources */,
@@ -9101,6 +9122,7 @@
 				CA240F4B21E3D985002DB747 /* MapContent.swift in Sources */,
 				CAEA0DCD216BDE2300B0C7A6 /* EF24StartDateRepository.swift in Sources */,
 				CA7D8B1E222DB28A003431A0 /* JSONSyncResponse.swift in Sources */,
+				CA017A0E2275FFFC0013FC2B /* EventFeedbackRequest.swift in Sources */,
 				CA7BA2472238091F00D34592 /* LoginRequest.swift in Sources */,
 				CACD2EB021D67EE300BACD91 /* EurofurenceSessionState.swift in Sources */,
 				CA7BA2432238057B00D34592 /* ConventionIdentifier.swift in Sources */,
@@ -9126,6 +9148,7 @@
 				CAEA0DE3216BDE2300B0C7A6 /* DomainEvent.swift in Sources */,
 				CA240F4821E3D8C3002DB747 /* Identifier.swift in Sources */,
 				CAEA0D88216BDD9500B0C7A6 /* ExternalContentHandler.swift in Sources */,
+				CA017A0C2275FE2F0013FC2B /* NotAcceptingEventFeedback.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9302,6 +9325,7 @@
 				CAD6FD4E2216F40B0011712D /* KnowledgeEntryAssertion.swift in Sources */,
 				CAEA103A216E1CE800B0C7A6 /* UserDefaultsForceRefreshRequired.swift in Sources */,
 				CAEA0FD8216E1CC000B0C7A6 /* WhenFavouritingMultipleEvents_ApplicationShould.swift in Sources */,
+				CA6F654622724AB400483EE0 /* WhenSubmittingFeedback_AndFeedbackIsSuccessful.swift in Sources */,
 				CAD6FD3B22159C700011712D /* AnnouncementAssertion.swift in Sources */,
 				CAEA0F92216E1C4C00B0C7A6 /* WhenResolvingDataStoreState.swift in Sources */,
 				CAEA0FAE216E1CC000B0C7A6 /* WhenFetchingDaysBeforeRefreshWhenStoreHasConferenceDays.swift in Sources */,

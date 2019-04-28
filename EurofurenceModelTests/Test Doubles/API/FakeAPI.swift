@@ -2,6 +2,19 @@ import EurofurenceModel
 import Foundation
 
 class FakeAPI: API {
+    
+    private var feedbackRequests: [EventFeedbackRequest: (Bool) -> Void] = [:]
+    
+    func submitEventFeedback(_ request: EventFeedbackRequest, completionHandler: @escaping (Bool) -> Void) {
+        feedbackRequests[request] = completionHandler
+    }
+    
+    func simulateSuccessfulFeedbackResponse(for request: EventFeedbackRequest) {
+        guard let handler = feedbackRequests[request] else { return }
+        
+        handler(true)
+        feedbackRequests[request] = nil
+    }
 
     private(set) var capturedLoginRequest: LoginRequest?
     private var loginHandler: ((LoginResponse?) -> Void)?
