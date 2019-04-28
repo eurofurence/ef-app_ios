@@ -4,7 +4,7 @@ class EventFeedbackService: EventConsumer {
     
     private let api: API
     
-    public init(api: API) {
+    init(api: API) {
         self.api = api
     }
     
