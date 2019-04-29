@@ -118,7 +118,14 @@ public struct JSONAPI: API {
     }
     
     public func submitEventFeedback(_ request: EventFeedbackRequest, completionHandler: @escaping (Bool) -> Void) {
+        let feedback = Request.EventFeedback(EventId: request.id, Rating: request.rating, Message: request.feedback)
+        guard let data = try? encoder.encode(feedback) else { return }
         
+        let url = urlStringByAppending(pathComponent: "EventFeedback")
+        let jsonRequest = JSONRequest(url: url, body: data)
+        jsonSession.post(jsonRequest) { (_, _) in
+            
+        }
     }
 
     // MARK: Private
@@ -133,6 +140,12 @@ public struct JSONAPI: API {
             var RegNo: Int
             var Username: String
             var Password: String
+        }
+        
+        struct EventFeedback: Encodable {
+            var EventId: String
+            var Rating: Int
+            var Message: String
         }
 
     }
