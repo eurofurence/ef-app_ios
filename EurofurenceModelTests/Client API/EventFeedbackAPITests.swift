@@ -35,5 +35,34 @@ class EventFeedbackAPITests: XCTestCase {
         XCTAssertEqual(expectedURL, jsonSession.postedURL)
         XCTAssertEqual(expectedFeedbackRequest, actualFeedbackRequest)
     }
+    
+    func testFeedbackSuccess() {
+        let jsonSession = CapturingJSONSession()
+        let apiUrl = StubAPIURLProviding()
+        let api = JSONAPI(jsonSession: jsonSession, apiUrl: apiUrl)
+        let request = EventFeedbackRequest(id: .random, rating: .random, feedback: .random)
+        var success = false
+        api.submitEventFeedback(request) { success = $0 }
+        
+        XCTAssertFalse(success)
+        
+        jsonSession.invokeLastPOSTCompletionHandler(responseData: Data())
+        
+        XCTAssertTrue(success)
+    }
+    
+    func testFeedbackFailure() {
+        let jsonSession = CapturingJSONSession()
+        let apiUrl = StubAPIURLProviding()
+        let api = JSONAPI(jsonSession: jsonSession, apiUrl: apiUrl)
+        let request = EventFeedbackRequest(id: .random, rating: .random, feedback: .random)
+        var success = false
+        api.submitEventFeedback(request) { success = $0 }
+        
+        let error = NSError(domain: "", code: 0, userInfo: nil)
+        jsonSession.invokeLastPOSTCompletionHandler(responseData: nil, error: error)
+        
+        XCTAssertFalse(success)
+    }
 
 }

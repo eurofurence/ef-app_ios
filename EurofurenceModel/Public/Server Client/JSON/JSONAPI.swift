@@ -123,8 +123,9 @@ public struct JSONAPI: API {
         
         let url = urlStringByAppending(pathComponent: "EventFeedback")
         let jsonRequest = JSONRequest(url: url, body: data)
-        jsonSession.post(jsonRequest) { (_, _) in
-            
+        jsonSession.post(jsonRequest) { (_, error) in
+            let successful = error == nil
+            completionHandler(successful)
         }
     }
 
