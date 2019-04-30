@@ -25,6 +25,10 @@ class StarRatingControl: UIControl {
         }
     }
     
+    var percentageValue: Float {
+        return Float(value) / Float(numberOfStars)
+    }
+    
     var enabledTintColor: UIColor = UIColor(red: 1, green: 0.8, blue: 0, alpha: 1) {
         didSet {
             if isEnabled {

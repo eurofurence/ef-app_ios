@@ -90,6 +90,7 @@ class EventFeedbackViewController: UIViewController, EventFeedbackScene {
     
     func showFeedbackForm() {
         let feedbackForm = initialiseStoryboardViewController(EventFeedbackFormViewController.self)
+        feedbackForm.viewModel = viewModel
         swapEmbeddedViewController(to: feedbackForm)
     }
     

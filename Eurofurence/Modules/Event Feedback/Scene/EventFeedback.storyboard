@@ -49,6 +49,9 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yGD-ZG-qR4" customClass="StarRatingControl" customModule="Eurofurence" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <connections>
+                                                        <action selector="starRatingValueDidChange:" destination="XOT-yp-mYS" eventType="valueChanged" id="rtn-DF-IIl"/>
+                                                    </connections>
                                                 </view>
                                             </subviews>
                                             <constraints>
@@ -117,6 +120,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="feedbackTextView" destination="ENU-IV-AzW" id="W5M-xj-J35"/>
+                        <outlet property="starRatingControl" destination="yGD-ZG-qR4" id="uNW-G4-lXm"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b4F-zG-O22" userLabel="First Responder" sceneMemberID="firstResponder"/>
