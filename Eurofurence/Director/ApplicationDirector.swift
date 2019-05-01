@@ -47,33 +47,13 @@ class ApplicationDirector: ExternalContentHandler,
     }
 
     private let animate: Bool
+    private let applicationModuleRepository: ApplicationModuleRepository
     private let navigationControllerFactory: NavigationControllerFactory
+    private let tabModuleProviding: TabModuleProviding
     private let linkLookupService: ContentLinksService
     private let urlOpener: URLOpener
     private let orderingPolicy: ModuleOrderingPolicy
-    private let webModuleProviding: WebModuleProviding
     private let windowWireframe: WindowWireframe
-    private let rootModuleProviding: RootModuleProviding
-    private let tutorialModuleProviding: TutorialModuleProviding
-    private let preloadModuleProviding: PreloadModuleProviding
-    private let tabModuleProviding: TabModuleProviding
-    private let newsModuleProviding: NewsModuleProviding
-    private let scheduleModuleProviding: ScheduleModuleProviding
-    private let dealersModuleProviding: DealersModuleProviding
-    private let dealerDetailModuleProviding: DealerDetailModuleProviding
-    private let collectThemAllModuleProviding: CollectThemAllModuleProviding
-    private let messagesModuleProviding: MessagesModuleProviding
-    private let loginModuleProviding: LoginModuleProviding
-    private let messageDetailModuleProviding: MessageDetailModuleProviding
-    private let knowledgeListModuleProviding: KnowledgeGroupsListModuleProviding
-    private let knowledgeGroupEntriesModule: KnowledgeGroupEntriesModuleProviding
-    private let knowledgeDetailModuleProviding: KnowledgeDetailModuleProviding
-    private let mapsModuleProviding: MapsModuleProviding
-    private let mapDetailModuleProviding: MapDetailModuleProviding
-    private let announcementsModuleFactory: AnnouncementsModuleProviding
-    private let announcementDetailModuleProviding: AnnouncementDetailModuleProviding
-    private let eventDetailModuleProviding: EventDetailModuleProviding
-    private let eventFeedbackModuleProviding: EventFeedbackModuleProviding
     private let notificationService: NotificationService
 
     private let rootNavigationController: UINavigationController
@@ -88,65 +68,25 @@ class ApplicationDirector: ExternalContentHandler,
     private var tabController: UITabBarController?
 
     private let saveTabOrder: SaveTabOrderWhenCustomizationFinishes
-
+    
     init(animate: Bool,
+         applicationModuleRepository: ApplicationModuleRepository,
          linkLookupService: ContentLinksService,
          urlOpener: URLOpener,
          orderingPolicy: ModuleOrderingPolicy,
-         webModuleProviding: WebModuleProviding,
          windowWireframe: WindowWireframe,
          navigationControllerFactory: NavigationControllerFactory,
-         rootModuleProviding: RootModuleProviding,
-         tutorialModuleProviding: TutorialModuleProviding,
-         preloadModuleProviding: PreloadModuleProviding,
          tabModuleProviding: TabModuleProviding,
-         newsModuleProviding: NewsModuleProviding,
-         scheduleModuleProviding: ScheduleModuleProviding,
-         dealersModuleProviding: DealersModuleProviding,
-         dealerDetailModuleProviding: DealerDetailModuleProviding,
-         collectThemAllModuleProviding: CollectThemAllModuleProviding,
-         messagesModuleProviding: MessagesModuleProviding,
-         loginModuleProviding: LoginModuleProviding,
-         messageDetailModuleProviding: MessageDetailModuleProviding,
-         knowledgeListModuleProviding: KnowledgeGroupsListModuleProviding,
-         knowledgeGroupEntriesModule: KnowledgeGroupEntriesModuleProviding,
-         knowledgeDetailModuleProviding: KnowledgeDetailModuleProviding,
-         mapsModuleProviding: MapsModuleProviding,
-         mapDetailModuleProviding: MapDetailModuleProviding,
-         announcementsModuleFactory: AnnouncementsModuleProviding,
-         announcementDetailModuleProviding: AnnouncementDetailModuleProviding,
-         eventDetailModuleProviding: EventDetailModuleProviding,
-         notificationHandling: NotificationService,
-         eventFeedbackModule: EventFeedbackModuleProviding) {
+         notificationHandling: NotificationService) {
         self.animate = animate
+        self.applicationModuleRepository = applicationModuleRepository
         self.navigationControllerFactory = navigationControllerFactory
+        self.tabModuleProviding = tabModuleProviding
         self.linkLookupService = linkLookupService
         self.urlOpener = urlOpener
         self.orderingPolicy = orderingPolicy
-        self.webModuleProviding = webModuleProviding
         self.windowWireframe = windowWireframe
-        self.rootModuleProviding = rootModuleProviding
-        self.tutorialModuleProviding = tutorialModuleProviding
-        self.preloadModuleProviding = preloadModuleProviding
-        self.tabModuleProviding = tabModuleProviding
-        self.newsModuleProviding = newsModuleProviding
-        self.scheduleModuleProviding = scheduleModuleProviding
-        self.dealersModuleProviding = dealersModuleProviding
-        self.dealerDetailModuleProviding = dealerDetailModuleProviding
-        self.collectThemAllModuleProviding = collectThemAllModuleProviding
-        self.messagesModuleProviding = messagesModuleProviding
-        self.loginModuleProviding = loginModuleProviding
-        self.messageDetailModuleProviding = messageDetailModuleProviding
-        self.knowledgeListModuleProviding = knowledgeListModuleProviding
-        self.knowledgeGroupEntriesModule = knowledgeGroupEntriesModule
-        self.knowledgeDetailModuleProviding = knowledgeDetailModuleProviding
-        self.mapsModuleProviding = mapsModuleProviding
-        self.announcementsModuleFactory = announcementsModuleFactory
-        self.mapDetailModuleProviding = mapDetailModuleProviding
-        self.announcementDetailModuleProviding = announcementDetailModuleProviding
-        self.eventDetailModuleProviding = eventDetailModuleProviding
         self.notificationService = notificationHandling
-        self.eventFeedbackModuleProviding = eventFeedbackModule
 
         saveTabOrder = SaveTabOrderWhenCustomizationFinishes(orderingPolicy: orderingPolicy)
 
@@ -155,7 +95,7 @@ class ApplicationDirector: ExternalContentHandler,
         rootNavigationController.isNavigationBarHidden = true
         windowWireframe.setRoot(rootNavigationController)
 
-        rootModuleProviding.makeRootModule(self)
+        applicationModuleRepository.makeRootModule(self)
     }
 
     // MARK: Public
@@ -177,7 +117,7 @@ class ApplicationDirector: ExternalContentHandler,
                 completionHandler()
 
             case .announcement(let announcement):
-                let module = self.announcementDetailModuleProviding.makeAnnouncementDetailModule(for: announcement)
+                let module = self.applicationModuleRepository.makeAnnouncementDetailModule(for: announcement)
                 if  let newsNavigationController = self.newsController?.navigationController,
                     let tabBarController = self.tabController,
                     let index = tabBarController.viewControllers?.firstIndex(of: newsNavigationController) {
@@ -197,7 +137,7 @@ class ApplicationDirector: ExternalContentHandler,
                 completionHandler()
 
             case .event(let event):
-                let module = self.eventDetailModuleProviding.makeEventDetailModule(for: event, delegate: self)
+                let module = self.applicationModuleRepository.makeEventDetailModule(for: event, delegate: self)
                 if  let scheduleNavigationController = self.scheduleViewController?.navigationController,
                     let tabBarController = self.tabController,
                     let index = tabBarController.viewControllers?.firstIndex(of: scheduleNavigationController),
@@ -217,7 +157,7 @@ class ApplicationDirector: ExternalContentHandler,
     // MARK: ExternalContentHandler
 
     func handleExternalContent(url: URL) {
-        let module = webModuleProviding.makeWebModule(for: url)
+        let module = applicationModuleRepository.makeWebModule(for: url)
         tabController?.present(module, animated: true)
     }
 
@@ -254,28 +194,28 @@ class ApplicationDirector: ExternalContentHandler,
     // MARK: NewsModuleDelegate
 
     func newsModuleDidRequestShowingPrivateMessages() {
-        newsController?.navigationController?.pushViewController(messagesModuleProviding.makeMessagesModule(self), animated: animate)
+        newsController?.navigationController?.pushViewController(applicationModuleRepository.makeMessagesModule(self), animated: animate)
     }
 
     func newsModuleDidSelectAnnouncement(_ announcement: AnnouncementIdentifier) {
-        let module = announcementDetailModuleProviding.makeAnnouncementDetailModule(for: announcement)
+        let module = applicationModuleRepository.makeAnnouncementDetailModule(for: announcement)
         newsController?.navigationController?.pushViewController(module, animated: animate)
     }
 
     func newsModuleDidSelectEvent(_ event: Event) {
-        let module = eventDetailModuleProviding.makeEventDetailModule(for: event.identifier, delegate: self)
+        let module = applicationModuleRepository.makeEventDetailModule(for: event.identifier, delegate: self)
         newsController?.navigationController?.pushViewController(module, animated: animate)
     }
 
     func newsModuleDidRequestShowingAllAnnouncements() {
-        let module = announcementsModuleFactory.makeAnnouncementsModule(self)
+        let module = applicationModuleRepository.makeAnnouncementsModule(self)
         newsController?.navigationController?.pushViewController(module, animated: animate)
     }
 
     // MARK: ScheduleModuleDelegate
 
     func scheduleModuleDidSelectEvent(identifier: EventIdentifier) {
-        let module = eventDetailModuleProviding.makeEventDetailModule(for: identifier, delegate: self)
+        let module = applicationModuleRepository.makeEventDetailModule(for: identifier, delegate: self)
         scheduleViewController?.navigationController?.pushViewController(module, animated: animate)
     }
     
@@ -284,7 +224,7 @@ class ApplicationDirector: ExternalContentHandler,
     private var presentedFeedbackViewController: UIViewController?
     
     func eventDetailModuleDidRequestPresentationToLeaveFeedback(for event: EventIdentifier) {
-        let module = eventFeedbackModuleProviding.makeEventFeedbackModule(for: event, delegate: self)
+        let module = applicationModuleRepository.makeEventFeedbackModule(for: event, delegate: self)
         let navigationController = navigationControllerFactory.makeNavigationController()
         navigationController.setViewControllers([module], animated: false)
         navigationController.modalPresentationStyle = .formSheet
@@ -306,7 +246,7 @@ class ApplicationDirector: ExternalContentHandler,
 
     func messagesModuleDidRequestResolutionForUser(completionHandler: @escaping (Bool) -> Void) {
         messagesModuleResolutionHandler = completionHandler
-        let loginModule = loginModuleProviding.makeLoginModule(self)
+        let loginModule = applicationModuleRepository.makeLoginModule(self)
         loginModule.modalPresentationStyle = .formSheet
 
         let navigationController = UINavigationController(rootViewController: loginModule)
@@ -315,7 +255,7 @@ class ApplicationDirector: ExternalContentHandler,
     }
 
     func messagesModuleDidRequestPresentation(for message: Message) {
-        let viewController = messageDetailModuleProviding.makeMessageDetailModule(message: message)
+        let viewController = applicationModuleRepository.makeMessageDetailModule(message: message)
         newsController?.navigationController?.pushViewController(viewController, animated: animate)
     }
 
@@ -351,21 +291,21 @@ class ApplicationDirector: ExternalContentHandler,
     // MARK: DealersModuleDelegate
 
     func dealersModuleDidSelectDealer(identifier: DealerIdentifier) {
-        let module = dealerDetailModuleProviding.makeDealerDetailModule(for: identifier)
+        let module = applicationModuleRepository.makeDealerDetailModule(for: identifier)
         dealersViewController?.navigationController?.pushViewController(module, animated: animate)
     }
 
     // MARK: KnowledgeGroupsListModuleDelegate
 
     func knowledgeListModuleDidSelectKnowledgeGroup(_ knowledgeGroup: KnowledgeGroupIdentifier) {
-        let module = knowledgeGroupEntriesModule.makeKnowledgeGroupEntriesModule(knowledgeGroup, delegate: self)
+        let module = applicationModuleRepository.makeKnowledgeGroupEntriesModule(knowledgeGroup, delegate: self)
         knowledgeListController?.navigationController?.pushViewController(module, animated: animate)
     }
 
     // MARK: KnowledgeGroupEntriesModuleDelegate
 
     func knowledgeGroupEntriesModuleDidSelectKnowledgeEntry(identifier: KnowledgeEntryIdentifier) {
-        let knowledgeDetailModule = knowledgeDetailModuleProviding.makeKnowledgeListModule(identifier, delegate: self)
+        let knowledgeDetailModule = applicationModuleRepository.makeKnowledgeDetailModule(identifier, delegate: self)
         knowledgeListController?.navigationController?.pushViewController(knowledgeDetailModule, animated: animate)
     }
 
@@ -376,7 +316,7 @@ class ApplicationDirector: ExternalContentHandler,
 
         switch action {
         case .web(let url):
-            let webModule = webModuleProviding.makeWebModule(for: url)
+            let webModule = applicationModuleRepository.makeWebModule(for: url)
             tabController?.present(webModule, animated: animate)
 
         case .externalURL(let url):
@@ -387,33 +327,33 @@ class ApplicationDirector: ExternalContentHandler,
     // MARK: MapsModuleDelegate
 
     func mapsModuleDidSelectMap(identifier: MapIdentifier) {
-        let detailModule = mapDetailModuleProviding.makeMapDetailModule(for: identifier, delegate: self)
+        let detailModule = applicationModuleRepository.makeMapDetailModule(for: identifier, delegate: self)
         mapsModule?.navigationController?.pushViewController(detailModule, animated: animate)
     }
 
     // MARK: MapDetailModuleDelegate
 
     func mapDetailModuleDidSelectDealer(_ identifier: DealerIdentifier) {
-        let module = dealerDetailModuleProviding.makeDealerDetailModule(for: identifier)
+        let module = applicationModuleRepository.makeDealerDetailModule(for: identifier)
         mapsModule?.navigationController?.pushViewController(module, animated: animate)
     }
 
     // MARK: AnnouncementsModuleDelegate
 
     func announcementsModuleDidSelectAnnouncement(_ announcement: AnnouncementIdentifier) {
-        let module = announcementDetailModuleProviding.makeAnnouncementDetailModule(for: announcement)
+        let module = applicationModuleRepository.makeAnnouncementDetailModule(for: announcement)
         newsController?.navigationController?.pushViewController(module, animated: animate)
     }
 
     // MARK: Private
 
     private func showPreloadModule() {
-        let preloadViewController = preloadModuleProviding.makePreloadModule(self)
+        let preloadViewController = applicationModuleRepository.makePreloadModule(self)
         rootNavigationController.setViewControllers([preloadViewController], animated: animate)
     }
 
     private func showTutorial() {
-        let tutorialViewController = tutorialModuleProviding.makeTutorialModule(self)
+        let tutorialViewController = applicationModuleRepository.makeTutorialModule(self)
         rootNavigationController.setViewControllers([tutorialViewController], animated: animate)
     }
 
@@ -440,7 +380,7 @@ class ApplicationDirector: ExternalContentHandler,
 
     private func makeNewsNavigationController() -> UINavigationController {
         let navigationController = navigationControllerFactory.makeNavigationController()
-        let newsController = newsModuleProviding.makeNewsModule(self)
+        let newsController = applicationModuleRepository.makeNewsModule(self)
         self.newsController = newsController
         navigationController.setViewControllers([newsController], animated: animate)
         navigationController.tabBarItem = newsController.tabBarItem
@@ -450,7 +390,7 @@ class ApplicationDirector: ExternalContentHandler,
 
     private func makeScheduleNavigationController() -> UINavigationController {
         let navigationController = navigationControllerFactory.makeNavigationController()
-        let scheduleViewController = scheduleModuleProviding.makeScheduleModule(self)
+        let scheduleViewController = applicationModuleRepository.makeScheduleModule(self)
         self.scheduleViewController = scheduleViewController
         navigationController.setViewControllers([scheduleViewController], animated: animate)
         navigationController.tabBarItem = scheduleViewController.tabBarItem
@@ -460,7 +400,7 @@ class ApplicationDirector: ExternalContentHandler,
 
     private func makeDealersNavigationController() -> UINavigationController {
         let navigationController = navigationControllerFactory.makeNavigationController()
-        let dealersViewController = dealersModuleProviding.makeDealersModule(self)
+        let dealersViewController = applicationModuleRepository.makeDealersModule(self)
         self.dealersViewController = dealersViewController
         navigationController.setViewControllers([dealersViewController], animated: animate)
         navigationController.tabBarItem = dealersViewController.tabBarItem
@@ -470,7 +410,7 @@ class ApplicationDirector: ExternalContentHandler,
 
     private func makeKnowledgeNavigationController() -> UINavigationController {
         let navigationController = navigationControllerFactory.makeNavigationController()
-        let knowledgeListController = knowledgeListModuleProviding.makeKnowledgeListModule(self)
+        let knowledgeListController = applicationModuleRepository.makeKnowledgeListModule(self)
         self.knowledgeListController = knowledgeListController
         navigationController.setViewControllers([knowledgeListController], animated: animate)
         navigationController.tabBarItem = knowledgeListController.tabBarItem
@@ -480,7 +420,7 @@ class ApplicationDirector: ExternalContentHandler,
 
     private func makeMapsNavigationController() -> UINavigationController {
         let navigationController = navigationControllerFactory.makeNavigationController()
-        let mapsModule = mapsModuleProviding.makeMapsModule(self)
+        let mapsModule = applicationModuleRepository.makeMapsModule(self)
         self.mapsModule = mapsModule
         navigationController.setViewControllers([mapsModule], animated: animate)
         navigationController.tabBarItem = mapsModule.tabBarItem
@@ -490,7 +430,7 @@ class ApplicationDirector: ExternalContentHandler,
 
     private func makeCollectThemAllNavigationController() -> UINavigationController {
         let navigationController = navigationControllerFactory.makeNavigationController()
-        let collectThemAllModule = collectThemAllModuleProviding.makeCollectThemAllModule()
+        let collectThemAllModule = applicationModuleRepository.makeCollectThemAllModule()
         navigationController.setViewControllers([collectThemAllModule], animated: animate)
         navigationController.tabBarItem = collectThemAllModule.tabBarItem
 
