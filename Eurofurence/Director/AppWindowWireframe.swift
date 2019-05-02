@@ -35,6 +35,7 @@ struct AppWindowWireframe: WindowWireframe {
                 newRoot.view.alpha = 1
                 self.currentRoot?.view.alpha = 0
             }, completion: { (_) in
+                newRoot.didMove(toParent: self)
                 self.unembedChild(self.currentRoot)
                 self.currentRoot = newRoot
             })
@@ -51,11 +52,9 @@ struct AppWindowWireframe: WindowWireframe {
                 ])
             
             addChild(newRoot)
-            newRoot.didMove(toParent: self)
         }
         
         private func unembedChild(_ oldRoot: UIViewController?) {
-            oldRoot?.view.alpha = 0
             oldRoot?.willMove(toParent: nil)
             oldRoot?.view.removeFromSuperview()
             oldRoot?.removeFromParent()
