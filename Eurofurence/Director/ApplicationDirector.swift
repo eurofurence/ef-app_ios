@@ -19,15 +19,6 @@ class ApplicationDirector: ExternalContentHandler,
                            AnnouncementsModuleDelegate,
                            EventFeedbackModuleDelegate {
 
-    private class DissolveTransitionAnimationProviding: NSObject, UINavigationControllerDelegate {
-
-        // swiftlint:disable line_length
-        func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-            return ViewControllerDissolveTransitioning()
-        }
-
-    }
-
     private class SaveTabOrderWhenCustomizationFinishes: NSObject, UITabBarControllerDelegate {
 
         private let orderingPolicy: ModuleOrderingPolicy
@@ -55,9 +46,6 @@ class ApplicationDirector: ExternalContentHandler,
     private let orderingPolicy: ModuleOrderingPolicy
     private let windowWireframe: WindowWireframe
     private let notificationService: NotificationService
-
-    private let rootNavigationController: UINavigationController
-    private let rootNavigationControllerDelegate = DissolveTransitionAnimationProviding()
 
     private var newsController: UIViewController?
     private var scheduleViewController: UIViewController?
@@ -89,11 +77,6 @@ class ApplicationDirector: ExternalContentHandler,
         self.notificationService = notificationHandling
 
         saveTabOrder = SaveTabOrderWhenCustomizationFinishes(orderingPolicy: orderingPolicy)
-
-        rootNavigationController = navigationControllerFactory.makeNavigationController()
-        rootNavigationController.delegate = rootNavigationControllerDelegate
-        rootNavigationController.isNavigationBarHidden = true
-        windowWireframe.setRoot(rootNavigationController)
 
         applicationModuleRepository.makeRootModule(self)
     }
@@ -349,12 +332,12 @@ class ApplicationDirector: ExternalContentHandler,
 
     private func showPreloadModule() {
         let preloadViewController = applicationModuleRepository.makePreloadModule(self)
-        rootNavigationController.setViewControllers([preloadViewController], animated: animate)
+        windowWireframe.setRoot(preloadViewController)
     }
 
     private func showTutorial() {
         let tutorialViewController = applicationModuleRepository.makeTutorialModule(self)
-        rootNavigationController.setViewControllers([tutorialViewController], animated: animate)
+        windowWireframe.setRoot(tutorialViewController)
     }
 
     private func showTabModule() {
@@ -366,7 +349,7 @@ class ApplicationDirector: ExternalContentHandler,
         tabController = tabModule
         tabModule.delegate = saveTabOrder
 
-        rootNavigationController.setViewControllers([tabModule], animated: animate)
+        windowWireframe.setRoot(tabModule)
     }
 
     private func makeTabNavigationControllers() -> [UINavigationController] {

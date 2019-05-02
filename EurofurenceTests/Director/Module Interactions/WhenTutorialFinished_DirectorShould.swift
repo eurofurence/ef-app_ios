@@ -7,7 +7,7 @@ class WhenTutorialFinished_DirectorShould: XCTestCase {
         context.rootModule.simulateTutorialShouldBePresented()
         context.tutorialModule.simulateTutorialFinished()
 
-        XCTAssertEqual([context.preloadModule.stubInterface], context.rootNavigationController.viewControllers)
+        XCTAssertEqual(context.preloadModule.stubInterface, context.windowWireframe.capturedRootInterface)
     }
 
 }

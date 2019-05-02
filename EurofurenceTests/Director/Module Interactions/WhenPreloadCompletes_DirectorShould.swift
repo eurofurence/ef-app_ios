@@ -9,14 +9,9 @@ class WhenPreloadCompletes_DirectorShould: XCTestCase {
         context.rootModule.simulateTutorialShouldBePresented()
         context.tutorialModule.simulateTutorialFinished()
         context.preloadModule.simulatePreloadFinished()
-
-        let navigationController = context.rootNavigationController
-        let preloadModule = context.preloadModule.stubInterface
         let tabModule = context.tabModule.stubInterface
-        let transition = navigationController.delegate?.navigationController?(navigationController, animationControllerFor: .push, from: preloadModule, to: tabModule)
 
-        XCTAssertEqual([context.tabModule.stubInterface], context.rootNavigationController.viewControllers)
-        XCTAssertTrue(transition is ViewControllerDissolveTransitioning)
+        XCTAssertEqual(tabModule, context.windowWireframe.capturedRootInterface)
     }
 
 }

@@ -8,7 +8,7 @@ class WhenPreloadFails_DirectorShould: XCTestCase {
         context.tutorialModule.simulateTutorialFinished()
         context.preloadModule.simulatePreloadCancelled()
 
-        XCTAssertEqual([context.tutorialModule.stubInterface], context.rootNavigationController.viewControllers)
+        XCTAssertEqual(context.tutorialModule.stubInterface, context.windowWireframe.capturedRootInterface)
     }
 
 }

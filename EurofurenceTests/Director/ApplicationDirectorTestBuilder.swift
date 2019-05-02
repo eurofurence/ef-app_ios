@@ -276,10 +276,6 @@ extension ApplicationDirectorTestBuilder.Context {
         preloadModule.simulatePreloadFinished()
     }
 
-    var rootNavigationController: UINavigationController {
-        return windowWireframe.capturedRootInterface as! UINavigationController
-    }
-
     func navigationController(for viewController: UIViewController) -> CapturingNavigationController? {
         return tabModule.navigationController(for: viewController)
     }

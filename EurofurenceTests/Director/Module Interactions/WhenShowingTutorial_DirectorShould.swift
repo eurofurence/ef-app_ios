@@ -6,7 +6,7 @@ class WhenShowingTutorial_DirectorShould: XCTestCase {
         let context = ApplicationDirectorTestBuilder().build()
         context.rootModule.simulateTutorialShouldBePresented()
 
-        XCTAssertEqual([context.tutorialModule.stubInterface], context.rootNavigationController.viewControllers)
+        XCTAssertEqual(context.tutorialModule.stubInterface, context.windowWireframe.capturedRootInterface)
     }
 
 }

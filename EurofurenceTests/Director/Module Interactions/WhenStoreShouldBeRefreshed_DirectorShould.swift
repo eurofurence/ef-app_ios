@@ -6,7 +6,7 @@ class WhenStoreShouldBeRefreshed_DirectorShould: XCTestCase {
         let context = ApplicationDirectorTestBuilder().build()
         context.rootModule.simulateStoreShouldBeRefreshed()
 
-        XCTAssertEqual([context.preloadModule.stubInterface], context.rootNavigationController.viewControllers)
+        XCTAssertEqual(context.preloadModule.stubInterface, context.windowWireframe.capturedRootInterface)
     }
 
 }
