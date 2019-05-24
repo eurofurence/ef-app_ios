@@ -41,8 +41,4 @@ extension CapturingKnowledgeDetailScene {
         delegate?.knowledgeDetailSceneDidLoad()
     }
 
-    func simulateSelectingLink(at index: Int) {
-        delegate?.knowledgeDetailSceneDidSelectLink(at: index)
-    }
-
 }

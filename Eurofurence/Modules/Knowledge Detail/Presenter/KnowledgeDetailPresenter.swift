@@ -24,11 +24,6 @@ class KnowledgeDetailPresenter: KnowledgeDetailSceneDelegate {
         knowledgeDetailSceneInteractor.makeViewModel(for: identifier, completionHandler: knowledgeDetailViewModelPrepared)
     }
 
-    func knowledgeDetailSceneDidSelectLink(at index: Int) {
-        guard let link = viewModel?.link(at: index) else { return }
-        delegate.knowledgeDetailModuleDidSelectLink(link)
-    }
-
     private func knowledgeDetailViewModelPrepared(_ viewModel: KnowledgeEntryDetailViewModel) {
         self.viewModel = viewModel
 

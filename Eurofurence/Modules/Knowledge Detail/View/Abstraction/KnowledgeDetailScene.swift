@@ -13,6 +13,5 @@ protocol KnowledgeDetailScene {
 protocol KnowledgeDetailSceneDelegate {
 
     func knowledgeDetailSceneDidLoad()
-    func knowledgeDetailSceneDidSelectLink(at index: Int)
 
 }
