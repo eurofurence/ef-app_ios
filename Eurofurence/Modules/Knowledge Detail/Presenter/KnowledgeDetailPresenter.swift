@@ -42,7 +42,7 @@ class KnowledgeDetailPresenter: KnowledgeDetailSceneDelegate {
         let links = viewModel.links
 
         if links.isEmpty == false {
-            let binder = ViewModelLinksBinder(viewModels: links)
+            let binder = ViewModelLinksBinder(delegate: delegate, viewModel: viewModel, viewModels: links)
             knowledgeDetailScene.presentLinks(count: links.count, using: binder)
         }
     }
@@ -60,11 +60,17 @@ class KnowledgeDetailPresenter: KnowledgeDetailSceneDelegate {
 
     private struct ViewModelLinksBinder: LinksBinder {
 
+        var delegate: KnowledgeDetailModuleDelegate
+        var viewModel: KnowledgeEntryDetailViewModel
         var viewModels: [LinkViewModel]
 
         func bind(_ scene: LinkScene, at index: Int) {
             let viewModel = viewModels[index]
             scene.setLinkName(viewModel.name)
+            scene.setTapHandler {
+                let link = self.viewModel.link(at: index)
+                self.delegate.knowledgeDetailModuleDidSelectLink(link)
+            }
         }
 
     }

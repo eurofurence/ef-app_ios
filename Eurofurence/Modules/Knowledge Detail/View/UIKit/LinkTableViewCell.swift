@@ -11,5 +11,9 @@ class LinkTableViewCell: UITableViewCell, LinkScene {
     func setLinkName(_ linkName: String) {
         linkButton.setTitle(linkName, for: .normal)
     }
+    
+    func setTapHandler(_ tapHandler: @escaping () -> Void) {
+        
+    }
 
 }
