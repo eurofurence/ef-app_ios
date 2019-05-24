@@ -27,7 +27,7 @@ class DataStoreContract: XCTestCase {
     
     private func onlyCreateTheInMemoryStoreOnceAsItDoesntMakeSenseOtherwise() {
         if store == nil {
-            store = FakeDataStore()
+            store = InMemoryDataStore()
         }
     }
     

@@ -6,7 +6,7 @@ class WhenFetchingKnowledgeGroupsBeforeRefreshWhenStoreHasGroups: XCTestCase {
 
     func testTheGroupsFromTheStoreAreAdaptedInOrder() {
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
-        let dataStore = FakeDataStore(response: syncResponse)
+        let dataStore = InMemoryDataStore(response: syncResponse)
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let observer = CapturingKnowledgeServiceObserver()
         context.knowledgeService.add(observer)

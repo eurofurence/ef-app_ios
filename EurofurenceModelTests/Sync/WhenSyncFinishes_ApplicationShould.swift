@@ -4,7 +4,7 @@ import XCTest
 
 class WhenSyncFinishes_ApplicationShould: XCTestCase {
 
-    class SingleTransactionOnlyAllowedDataStore: FakeDataStore {
+    class SingleTransactionOnlyAllowedDataStore: InMemoryDataStore {
 
         private var transactionCount = 0
 

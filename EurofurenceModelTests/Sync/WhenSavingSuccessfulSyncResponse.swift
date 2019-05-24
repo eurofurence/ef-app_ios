@@ -4,7 +4,7 @@ import XCTest
 
 class WhenSavingSuccessfulSyncResponse: XCTestCase {
     
-    private class TransactionSpyDataStore: FakeDataStore {
+    private class TransactionSpyDataStore: InMemoryDataStore {
         
         var transactionInvokedBlock: (() -> Void)?
         override func performTransaction(_ block: @escaping (DataStoreTransaction) -> Void) {

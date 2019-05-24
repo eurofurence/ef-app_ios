@@ -5,7 +5,7 @@ import XCTest
 class WhenDeletingRoom_AfterSuccessfulSync_ApplicationShould: XCTestCase {
 
     func testTellTheStoreToDeleteTheRoom() {
-        let dataStore = FakeDataStore()
+        let dataStore = InMemoryDataStore()
         var response = ModelCharacteristics.randomWithoutDeletions
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         context.refreshLocalStore()

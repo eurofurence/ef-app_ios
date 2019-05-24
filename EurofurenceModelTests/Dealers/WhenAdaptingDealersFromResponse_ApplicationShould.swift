@@ -11,7 +11,7 @@ class WhenAdaptingDealersFromResponse_ApplicationShould: XCTestCase {
         dealer.displayName = .random
         dealer.attendeeNickname = nickname
         syncResponse.dealers.changed = [dealer]
-        let dataStore = FakeDataStore(response: syncResponse)
+        let dataStore = InMemoryDataStore(response: syncResponse)
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let dealersIndex = context.dealersService.makeDealersIndex()
         let delegate = CapturingDealersIndexDelegate()
@@ -27,7 +27,7 @@ class WhenAdaptingDealersFromResponse_ApplicationShould: XCTestCase {
         dealer.displayName = .random
         dealer.attendeeNickname = dealer.displayName
         syncResponse.dealers.changed = [dealer]
-        let dataStore = FakeDataStore(response: syncResponse)
+        let dataStore = InMemoryDataStore(response: syncResponse)
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let dealersIndex = context.dealersService.makeDealersIndex()
         let delegate = CapturingDealersIndexDelegate()
@@ -44,7 +44,7 @@ class WhenAdaptingDealersFromResponse_ApplicationShould: XCTestCase {
         dealer.displayName = ""
         dealer.attendeeNickname = nickname
         syncResponse.dealers.changed = [dealer]
-        let dataStore = FakeDataStore(response: syncResponse)
+        let dataStore = InMemoryDataStore(response: syncResponse)
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let dealersIndex = context.dealersService.makeDealersIndex()
         let delegate = CapturingDealersIndexDelegate()
@@ -60,7 +60,7 @@ class WhenAdaptingDealersFromResponse_ApplicationShould: XCTestCase {
         dealer.displayName = ""
         dealer.attendeeNickname = ""
         syncResponse.dealers.changed = [dealer]
-        let dataStore = FakeDataStore(response: syncResponse)
+        let dataStore = InMemoryDataStore(response: syncResponse)
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let dealersIndex = context.dealersService.makeDealersIndex()
         let delegate = CapturingDealersIndexDelegate()

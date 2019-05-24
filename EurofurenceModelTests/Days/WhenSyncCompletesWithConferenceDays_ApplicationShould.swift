@@ -31,7 +31,7 @@ class WhenSyncCompletesWithConferenceDays_ApplicationShould: XCTestCase {
 
     func testNotUpdateTheDelegateIfTheDaysHaveNotChangedBetweenDataStoreAndSync() {
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
-        let dataStore = FakeDataStore(response: syncResponse)
+        let dataStore = InMemoryDataStore(response: syncResponse)
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let delegate = CapturingEventsScheduleDelegate()
         let schedule = context.eventsService.makeEventsSchedule()

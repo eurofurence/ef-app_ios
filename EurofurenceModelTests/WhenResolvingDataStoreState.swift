@@ -5,7 +5,7 @@ import XCTest
 class WhenResolvingDataStoreState: XCTestCase {
 
     func testStoreWithNoLastRefreshTimeIsAbsent() {
-        let capturingDataStore = FakeDataStore()
+        let capturingDataStore = InMemoryDataStore()
         let context = EurofurenceSessionTestBuilder().with(capturingDataStore).build()
         var state: EurofurenceSessionState?
         context.sessionStateService.determineSessionState { state = $0 }
@@ -14,7 +14,7 @@ class WhenResolvingDataStoreState: XCTestCase {
     }
 
     func testStoreWithLastRefreshDateWithRefreshOnLaunchEnabledIsStale() {
-        let capturingDataStore = FakeDataStore()
+        let capturingDataStore = InMemoryDataStore()
         capturingDataStore.performTransaction { (transaction) in
             transaction.saveLastRefreshDate(.random)
         }
@@ -29,7 +29,7 @@ class WhenResolvingDataStoreState: XCTestCase {
     }
 
     func testStoreWithLastRefreshDateWithRefreshOnLaunchDisabledIsAvailable() {
-        let capturingDataStore = FakeDataStore()
+        let capturingDataStore = InMemoryDataStore()
         capturingDataStore.performTransaction { (transaction) in
             transaction.saveLastRefreshDate(.random)
         }

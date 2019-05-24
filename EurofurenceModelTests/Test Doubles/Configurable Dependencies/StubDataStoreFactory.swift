@@ -10,7 +10,7 @@ struct StubDataStoreFactory: DataStoreFactory {
         if self.conventionIdentifier == conventionIdentifier {
             return dataStore
         } else {
-            return FakeDataStore()
+            return InMemoryDataStore()
         }
     }
     

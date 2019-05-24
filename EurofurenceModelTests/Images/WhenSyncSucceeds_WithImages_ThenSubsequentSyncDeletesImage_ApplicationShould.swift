@@ -5,7 +5,7 @@ import XCTest
 class WhenSyncSucceeds_WithImages_ThenSubsequentSyncDeletesImage_ApplicationShould: XCTestCase {
 
     func testDeleteTheImageFromTheStore() {
-        let dataStore = FakeDataStore()
+        let dataStore = InMemoryDataStore()
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         var syncResponse = ModelCharacteristics.randomWithoutDeletions
         context.performSuccessfulSync(response: syncResponse)

@@ -10,7 +10,7 @@ class EurofurenceSessionTestBuilder {
         var notificationTokenRegistration: CapturingRemoteNotificationsTokenRegistration
         var credentialStore: CapturingCredentialStore
         var api: FakeAPI
-        var dataStore: FakeDataStore
+        var dataStore: InMemoryDataStore
         var dateDistanceCalculator: StubDateDistanceCalculator
         var conventionStartDateRepository: StubConventionStartDateRepository
         var imageRepository: CapturingImageRepository
@@ -27,7 +27,7 @@ class EurofurenceSessionTestBuilder {
                          notificationTokenRegistration: CapturingRemoteNotificationsTokenRegistration,
                          credentialStore: CapturingCredentialStore,
                          api: FakeAPI,
-                         dataStore: FakeDataStore,
+                         dataStore: InMemoryDataStore,
                          dateDistanceCalculator: StubDateDistanceCalculator,
                          conventionStartDateRepository: StubConventionStartDateRepository,
                          imageRepository: CapturingImageRepository,
@@ -160,7 +160,7 @@ class EurofurenceSessionTestBuilder {
     private var api = FakeAPI()
     private var credentialStore = CapturingCredentialStore()
     private var clock = StubClock()
-    private var dataStore = FakeDataStore()
+    private var dataStore = InMemoryDataStore()
     private var userPreferences: UserPreferences = StubUserPreferences()
     private var timeIntervalForUpcomingEventsSinceNow: TimeInterval = .greatestFiniteMagnitude
     private var imageRepository = CapturingImageRepository()
@@ -179,7 +179,7 @@ class EurofurenceSessionTestBuilder {
     }
 
     @discardableResult
-    func with(_ dataStore: FakeDataStore) -> EurofurenceSessionTestBuilder {
+    func with(_ dataStore: InMemoryDataStore) -> EurofurenceSessionTestBuilder {
         self.dataStore = dataStore
         return self
     }

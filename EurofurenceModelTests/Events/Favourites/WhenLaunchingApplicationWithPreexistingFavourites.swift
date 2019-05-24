@@ -7,7 +7,7 @@ class WhenLaunchingApplicationWithPreexistingFavourites: XCTestCase {
     func testTheObserversAreToldAboutTheFavouritedEvents() {
         let characteristics = ModelCharacteristics.randomWithoutDeletions
         let expected = characteristics.events.changed.map({ EventIdentifier($0.identifier) })
-        let dataStore = FakeDataStore(response: characteristics)
+        let dataStore = InMemoryDataStore(response: characteristics)
         dataStore.performTransaction { (transaction) in
             expected.forEach(transaction.saveFavouriteEventIdentifier)
         }
@@ -22,7 +22,7 @@ class WhenLaunchingApplicationWithPreexistingFavourites: XCTestCase {
     func testTheFavouritesAreSortedByEventStartTime() {
         let response = ModelCharacteristics.randomWithoutDeletions
         let events = response.events.changed
-        let dataStore = FakeDataStore(response: response)
+        let dataStore = InMemoryDataStore(response: response)
         dataStore.performTransaction { (transaction) in
             events.map({ EventIdentifier($0.identifier) }).forEach(transaction.saveFavouriteEventIdentifier)
         }

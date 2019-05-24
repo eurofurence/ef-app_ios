@@ -5,7 +5,7 @@ import XCTest
 class WhenPerformingFullStoreRefresh_ApplicationShould: XCTestCase {
 
     func testRequestSyncWithoutDeltas() {
-        let dataStore = FakeDataStore(response: .randomWithoutDeletions)
+        let dataStore = InMemoryDataStore(response: .randomWithoutDeletions)
         let fullStoreRefreshRequired = StubForceRefreshRequired(isForceRefreshRequired: true)
         var context = EurofurenceSessionTestBuilder().with(dataStore).build()
         context.performSuccessfulSync(response: .randomWithoutDeletions)

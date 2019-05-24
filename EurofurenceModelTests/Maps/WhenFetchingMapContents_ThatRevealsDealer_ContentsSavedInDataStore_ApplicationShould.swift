@@ -14,7 +14,7 @@ class WhenFetchingMapContents_ThatRevealsDealer_ContentsSavedInDataStore_Applica
         map.entries = [entry]
         syncResponse.maps.changed = [map]
         syncResponse.dealers.changed = [dealer]
-        let dataStore = FakeDataStore(response: syncResponse)
+        let dataStore = InMemoryDataStore(response: syncResponse)
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         var content: MapContent = .none
         let entity = context.mapsService.fetchMap(for: MapIdentifier(map.identifier))

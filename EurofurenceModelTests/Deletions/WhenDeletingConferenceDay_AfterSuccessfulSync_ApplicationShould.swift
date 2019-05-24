@@ -5,7 +5,7 @@ import XCTest
 class WhenDeletingConferenceDay_AfterSuccessfulSync_ApplicationShould: XCTestCase {
 
     func testTellTheStoreToDeleteTheDay() {
-        let dataStore = FakeDataStore()
+        let dataStore = InMemoryDataStore()
         var response = ModelCharacteristics.randomWithoutDeletions
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         context.refreshLocalStore()

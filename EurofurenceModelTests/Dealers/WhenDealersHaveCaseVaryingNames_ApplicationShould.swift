@@ -11,7 +11,7 @@ class WhenDealersHaveCaseVaryingNames_ApplicationShould: XCTestCase {
         var secondDealer = DealerCharacteristics.random
         secondDealer.displayName = "barry"
         syncResponse.dealers.changed = [firstDealer, secondDealer]
-        let dataStore = FakeDataStore(response: syncResponse)
+        let dataStore = InMemoryDataStore(response: syncResponse)
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let dealersIndex = context.dealersService.makeDealersIndex()
         let delegate = CapturingDealersIndexDelegate()

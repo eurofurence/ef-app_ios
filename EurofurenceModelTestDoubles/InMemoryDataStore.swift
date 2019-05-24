@@ -1,7 +1,7 @@
 import EurofurenceModel
 import Foundation
 
-open class FakeDataStore: DataStore {
+open class InMemoryDataStore: DataStore {
     
     public init() {
         

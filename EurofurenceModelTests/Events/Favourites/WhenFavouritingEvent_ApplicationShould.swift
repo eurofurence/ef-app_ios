@@ -12,7 +12,7 @@ class WhenFavouritingEvent_ApplicationShould: XCTestCase {
 
         let response = ModelCharacteristics.randomWithoutDeletions
         events = response.events.changed
-        let dataStore = FakeDataStore(response: response)
+        let dataStore = InMemoryDataStore(response: response)
 
         context = EurofurenceSessionTestBuilder().with(dataStore).build()
     }

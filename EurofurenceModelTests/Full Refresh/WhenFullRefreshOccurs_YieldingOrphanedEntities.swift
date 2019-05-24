@@ -11,7 +11,7 @@ class WhenFullRefreshOccurs_YieldingOrphanedEntities: XCTestCase {
     override func setUp() {
         super.setUp()
 
-        let store = FakeDataStore()
+        let store = InMemoryDataStore()
         let forceRefreshRequired = StubForceRefreshRequired(isForceRefreshRequired: true)
         
         context = EurofurenceSessionTestBuilder().with(store).build()

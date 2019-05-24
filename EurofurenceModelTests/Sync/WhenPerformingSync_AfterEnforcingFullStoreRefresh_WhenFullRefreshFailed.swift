@@ -4,7 +4,7 @@ import XCTest
 class WhenPerformingSync_AfterEnforcingFullStoreRefresh_WhenFullRefreshFailed: XCTestCase {
 
     func testTheAPIPerformsFullSync() {
-        let store = FakeDataStore()
+        let store = InMemoryDataStore()
         var context = EurofurenceSessionTestBuilder().with(store).build()
         context.performSuccessfulSync(response: .randomWithoutDeletions)
         let forceRefreshRequired = StubForceRefreshRequired(isForceRefreshRequired: true)

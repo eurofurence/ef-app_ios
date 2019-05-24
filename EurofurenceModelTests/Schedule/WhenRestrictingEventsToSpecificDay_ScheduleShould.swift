@@ -6,7 +6,7 @@ class WhenRestrictingEventsToSpecificDay_ScheduleShould: XCTestCase {
 
     func testOnlyIncludeEventsRunningOnThatDay() {
         let response = ModelCharacteristics.randomWithoutDeletions
-        let dataStore = FakeDataStore(response: response)
+        let dataStore = InMemoryDataStore(response: response)
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let schedule = context.eventsService.makeEventsSchedule()
         let delegate = CapturingEventsScheduleDelegate()
@@ -21,7 +21,7 @@ class WhenRestrictingEventsToSpecificDay_ScheduleShould: XCTestCase {
 
     func testUpdateRestrictedScheduleWhenLaterSyncCompletes() {
         let response = ModelCharacteristics.randomWithoutDeletions
-        let dataStore = FakeDataStore(response: response)
+        let dataStore = InMemoryDataStore(response: response)
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let schedule = context.eventsService.makeEventsSchedule()
         let delegate = CapturingEventsScheduleDelegate()
@@ -38,7 +38,7 @@ class WhenRestrictingEventsToSpecificDay_ScheduleShould: XCTestCase {
 
     func testRestrictEventsOnlyToTheLastSpecifiedRestrictedDay() {
         let response = ModelCharacteristics.randomWithoutDeletions
-        let dataStore = FakeDataStore(response: response)
+        let dataStore = InMemoryDataStore(response: response)
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let schedule = context.eventsService.makeEventsSchedule()
         let delegate = CapturingEventsScheduleDelegate()

@@ -10,7 +10,7 @@ class WhenTellingDealersIndexToSearch_ApplicationShould: XCTestCase {
         let preferredName = "Bob"
         dealer.displayName = preferredName
         syncResponse.dealers.changed = [dealer]
-        let dataStore = FakeDataStore(response: syncResponse)
+        let dataStore = InMemoryDataStore(response: syncResponse)
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let dealersIndex = context.dealersService.makeDealersIndex()
         let delegate = CapturingDealersIndexDelegate()
@@ -27,7 +27,7 @@ class WhenTellingDealersIndexToSearch_ApplicationShould: XCTestCase {
         let preferredName = "Charlie"
         dealer.displayName = preferredName
         syncResponse.dealers.changed = [dealer]
-        let dataStore = FakeDataStore(response: syncResponse)
+        let dataStore = InMemoryDataStore(response: syncResponse)
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let dealersIndex = context.dealersService.makeDealersIndex()
         let delegate = CapturingDealersIndexDelegate()
@@ -44,7 +44,7 @@ class WhenTellingDealersIndexToSearch_ApplicationShould: XCTestCase {
         let preferredName = "coOL DudE"
         dealer.displayName = preferredName
         syncResponse.dealers.changed = [dealer]
-        let dataStore = FakeDataStore(response: syncResponse)
+        let dataStore = InMemoryDataStore(response: syncResponse)
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let dealersIndex = context.dealersService.makeDealersIndex()
         let delegate = CapturingDealersIndexDelegate()
@@ -62,7 +62,7 @@ class WhenTellingDealersIndexToSearch_ApplicationShould: XCTestCase {
         dealer.displayName = "Charlie"
         dealer.attendeeNickname = attendeeNickname
         syncResponse.dealers.changed = [dealer]
-        let dataStore = FakeDataStore(response: syncResponse)
+        let dataStore = InMemoryDataStore(response: syncResponse)
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let dealersIndex = context.dealersService.makeDealersIndex()
         let delegate = CapturingDealersIndexDelegate()
@@ -80,7 +80,7 @@ class WhenTellingDealersIndexToSearch_ApplicationShould: XCTestCase {
         dealer.displayName = "Charlie"
         dealer.attendeeNickname = attendeeNickname
         syncResponse.dealers.changed = [dealer]
-        let dataStore = FakeDataStore(response: syncResponse)
+        let dataStore = InMemoryDataStore(response: syncResponse)
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let dealersIndex = context.dealersService.makeDealersIndex()
         let delegate = CapturingDealersIndexDelegate()
@@ -98,7 +98,7 @@ class WhenTellingDealersIndexToSearch_ApplicationShould: XCTestCase {
         dealer.displayName = "Charlie"
         dealer.attendeeNickname = attendeeNickname
         syncResponse.dealers.changed = [dealer]
-        let dataStore = FakeDataStore(response: syncResponse)
+        let dataStore = InMemoryDataStore(response: syncResponse)
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let dealersIndex = context.dealersService.makeDealersIndex()
         let delegate = CapturingDealersIndexDelegate()
@@ -115,7 +115,7 @@ class WhenTellingDealersIndexToSearch_ApplicationShould: XCTestCase {
         dealer.displayName = "Charlie"
         dealer.attendeeNickname = "Charlie"
         syncResponse.dealers.changed = [dealer]
-        let dataStore = FakeDataStore(response: syncResponse)
+        let dataStore = InMemoryDataStore(response: syncResponse)
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let dealersIndex = context.dealersService.makeDealersIndex()
         let delegate = CapturingDealersIndexDelegate()
