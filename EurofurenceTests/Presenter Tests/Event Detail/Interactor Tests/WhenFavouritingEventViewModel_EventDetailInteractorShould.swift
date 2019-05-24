@@ -9,8 +9,7 @@ class WhenFavouritingEventViewModel_EventDetailInteractorShould: XCTestCase {
         let event = FakeEvent.random
         event.unfavourite()
         let context = EventDetailInteractorTestBuilder().build(for: event)
-        let visitor = CapturingEventDetailViewModelVisitor()
-        visitor.consume(contentsOf: context.viewModel)
+        let visitor = context.prepareVisitorForTesting()
         let toggleFavouriteCommand = visitor.visited(ofKind: ToggleEventFavouriteStateViewModel.self)
         toggleFavouriteCommand?.perform()
 

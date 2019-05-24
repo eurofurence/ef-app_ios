@@ -9,8 +9,7 @@ class WhenPreparingViewModel_ForSuperSponsorsOnlyEvent_EventDetailInteractorShou
         let event = FakeEvent.randomStandardEvent
         event.isSuperSponsorOnly = true
         let context = EventDetailInteractorTestBuilder().build(for: event)
-        let visitor = CapturingEventDetailViewModelVisitor()
-        visitor.consume(contentsOf: context.viewModel)
+        let visitor = context.prepareVisitorForTesting()
         let expected = EventSuperSponsorsOnlyWarningViewModel(message: .thisEventIsForSuperSponsorsOnly)
 
         XCTAssertEqual(expected, visitor.visited(ofKind: EventSuperSponsorsOnlyWarningViewModel.self))

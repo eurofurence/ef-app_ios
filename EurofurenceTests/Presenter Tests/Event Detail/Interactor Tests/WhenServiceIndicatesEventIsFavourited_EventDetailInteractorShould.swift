@@ -12,8 +12,7 @@ class WhenServiceIndicatesEventIsFavourited_EventDetailInteractorShould: XCTestC
         let context = EventDetailInteractorTestBuilder().with(service).build(for: event)
         let delegate = CapturingEventDetailViewModelDelegate()
         context.viewModel.setDelegate(delegate)
-        let visitor = CapturingEventDetailViewModelVisitor()
-        visitor.consume(contentsOf: context.viewModel)
+        let visitor = context.prepareVisitorForTesting()
         let toggleFavouriteCommand = visitor.visited(ofKind: ToggleEventFavouriteStateViewModel.self)
         toggleFavouriteCommand?.perform()
 

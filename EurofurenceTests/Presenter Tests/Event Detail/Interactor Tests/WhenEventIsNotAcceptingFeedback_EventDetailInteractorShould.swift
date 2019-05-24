@@ -8,8 +8,7 @@ class WhenEventIsNotAcceptingFeedback_EventDetailInteractorShould: XCTestCase {
         let event = FakeEvent.random
         event.isAcceptingFeedback = false
         let context = EventDetailInteractorTestBuilder().build(for: event)
-        let visitor = CapturingEventDetailViewModelVisitor()
-        visitor.consume(contentsOf: context.viewModel)
+        let visitor = context.prepareVisitorForTesting()
         
         let command = visitor.visited(ofKind: LeaveFeedbackActionViewModel.self)
         XCTAssertNil(command)

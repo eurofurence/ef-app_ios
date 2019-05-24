@@ -8,8 +8,7 @@ class WhenEventIsAcceptingFeedback_EventDetailInteractorShould: XCTestCase {
         let event = FakeEvent.random
         event.isAcceptingFeedback = true
         let context = EventDetailInteractorTestBuilder().build(for: event)
-        let visitor = CapturingEventDetailViewModelVisitor()
-        visitor.consume(contentsOf: context.viewModel)
+        let visitor = context.prepareVisitorForTesting()
         
         let command = visitor.visited(ofKind: LeaveFeedbackActionViewModel.self)
         let actionVisitor = CapturingEventActionViewModelVisitor()
@@ -24,8 +23,7 @@ class WhenEventIsAcceptingFeedback_EventDetailInteractorShould: XCTestCase {
         let context = EventDetailInteractorTestBuilder().build(for: event)
         let viewModelDelegate = CapturingEventDetailViewModelDelegate()
         context.viewModel.setDelegate(viewModelDelegate)
-        let visitor = CapturingEventDetailViewModelVisitor()
-        visitor.consume(contentsOf: context.viewModel)
+        let visitor = context.prepareVisitorForTesting()
         
         let command = visitor.visited(ofKind: LeaveFeedbackActionViewModel.self)
         command?.perform()

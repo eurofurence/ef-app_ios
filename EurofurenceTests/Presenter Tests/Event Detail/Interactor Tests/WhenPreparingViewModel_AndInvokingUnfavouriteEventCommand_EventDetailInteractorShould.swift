@@ -9,8 +9,7 @@ class WhenPreparingViewModel_AndInvokingUnfavouriteEventCommand_EventDetailInter
         let event = FakeEvent.random
         event.favourite()
         let context = EventDetailInteractorTestBuilder().build(for: event)
-        let visitor = CapturingEventDetailViewModelVisitor()
-        visitor.consume(contentsOf: context.viewModel)
+        let visitor = context.prepareVisitorForTesting()
         
         let command = visitor.visited(ofKind: ToggleEventFavouriteStateViewModel.self)
         let actionVisitor = CapturingEventActionViewModelVisitor()
@@ -24,8 +23,7 @@ class WhenPreparingViewModel_AndInvokingUnfavouriteEventCommand_EventDetailInter
         let event = FakeEvent.random
         event.favourite()
         let context = EventDetailInteractorTestBuilder().build(for: event)
-        let visitor = CapturingEventDetailViewModelVisitor()
-        visitor.consume(contentsOf: context.viewModel)
+        let visitor = context.prepareVisitorForTesting()
         
         let command = visitor.visited(ofKind: ToggleEventFavouriteStateViewModel.self)
         let actionVisitor = CapturingEventActionViewModelVisitor()

@@ -9,8 +9,7 @@ class WhenPreparingViewModel_ForDealersDenEvent_EventDetailInteractorShould: XCT
         let event = FakeEvent.randomStandardEvent
         event.isDealersDen = true
         let context = EventDetailInteractorTestBuilder().build(for: event)
-        let visitor = CapturingEventDetailViewModelVisitor()
-        visitor.consume(contentsOf: context.viewModel)
+        let visitor = context.prepareVisitorForTesting()
         let expected = EventDealersDenMessageViewModel(message: .dealersDen)
 
         XCTAssertEqual(expected, visitor.visited(ofKind: EventDealersDenMessageViewModel.self))

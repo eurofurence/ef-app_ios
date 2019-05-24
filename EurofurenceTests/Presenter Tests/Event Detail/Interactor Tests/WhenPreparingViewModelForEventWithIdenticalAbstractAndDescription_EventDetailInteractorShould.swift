@@ -10,8 +10,7 @@ class WhenPreparingViewModelForEventWithIdenticalAbstractAndDescription_EventDet
         event.eventDescription = event.abstract
 
         let context = EventDetailInteractorTestBuilder().build(for: event)
-        let visitor = CapturingEventDetailViewModelVisitor()
-        visitor.consume(contentsOf: context.viewModel)
+        let visitor = context.prepareVisitorForTesting()
 
         XCTAssertNil(visitor.visited(ofKind: EventDescriptionViewModel.self))
     }

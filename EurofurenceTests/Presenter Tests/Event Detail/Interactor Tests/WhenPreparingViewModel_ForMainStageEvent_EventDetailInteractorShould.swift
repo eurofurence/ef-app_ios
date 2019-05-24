@@ -9,8 +9,7 @@ class WhenPreparingViewModel_ForMainStageEvent_EventDetailInteractorShould: XCTe
         let event = FakeEvent.randomStandardEvent
         event.isMainStage = true
         let context = EventDetailInteractorTestBuilder().build(for: event)
-        let visitor = CapturingEventDetailViewModelVisitor()
-        visitor.consume(contentsOf: context.viewModel)
+        let visitor = context.prepareVisitorForTesting()
         let expected = EventMainStageMessageViewModel(message: .mainStageEvent)
 
         XCTAssertEqual(expected, visitor.visited(ofKind: EventMainStageMessageViewModel.self))

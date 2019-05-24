@@ -67,5 +67,12 @@ extension EventDetailInteractorTestBuilder.Context {
     func makeExpectedEventDescriptionViewModel() -> EventDescriptionViewModel {
         return EventDescriptionViewModel(contents: markdownRenderer.stubbedContents(for: event.eventDescription))
     }
+    
+    func prepareVisitorForTesting() -> CapturingEventDetailViewModelVisitor {
+        let visitor = CapturingEventDetailViewModelVisitor()
+        visitor.consume(contentsOf: viewModel)
+        
+        return visitor
+    }
 
 }

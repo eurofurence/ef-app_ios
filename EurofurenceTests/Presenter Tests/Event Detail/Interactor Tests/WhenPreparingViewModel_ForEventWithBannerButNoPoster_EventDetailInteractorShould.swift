@@ -11,8 +11,7 @@ class WhenPreparingViewModel_ForEventWithBannerButNoPoster_EventDetailInteractor
         event.posterGraphicPNGData = nil
         event.bannerGraphicPNGData = bannerGraphicData
         let context = EventDetailInteractorTestBuilder().build(for: event)
-        let visitor = CapturingEventDetailViewModelVisitor()
-        visitor.consume(contentsOf: context.viewModel)
+        let visitor = context.prepareVisitorForTesting()
 
         XCTAssertEqual(context.makeExpectedEventGraphicViewModel(), visitor.visited(ofKind: EventGraphicViewModel.self))
     }
