@@ -64,15 +64,21 @@ class KnowledgeDetailViewController: UIViewController, KnowledgeDetailScene {
 
         var binder: KnowledgentryImagesBinder
         var index: Int
-
+        
         func makeCell(for tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeue(KnowledgeDetailImageTableViewCell.self)
             binder.bind(cell, at: index)
+            hideSeperator(cell, tableView)
+            
             return cell
         }
 
         func selected() {
 
+        }
+        
+        fileprivate func hideSeperator(_ cell: KnowledgeDetailImageTableViewCell, _ tableView: UITableView) {
+            cell.separatorInset = UIEdgeInsets(top: 0, left: tableView.bounds.width, bottom: 0, right: 0)
         }
 
     }
