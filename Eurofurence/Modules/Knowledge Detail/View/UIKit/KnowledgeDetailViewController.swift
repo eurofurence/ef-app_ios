@@ -123,11 +123,6 @@ class KnowledgeDetailViewController: UIViewController, KnowledgeDetailScene {
             return items[indexPath.row].makeCell(for: tableView, at: indexPath)
         }
 
-        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            tableView.deselectRow(at: indexPath, animated: true)
-            items[indexPath.row].selected()
-        }
-
     }
 
 }

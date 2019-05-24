@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -80,23 +79,26 @@
                                             <outlet property="textView" destination="r9a-Rj-ojT" id="QGI-QU-yE1"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LinkTableViewCell" id="0Ed-jY-bnV" customClass="LinkTableViewCell" customModule="Eurofurence" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LinkTableViewCell" id="0Ed-jY-bnV" customClass="LinkTableViewCell" customModule="Eurofurence" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="116" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0Ed-jY-bnV" id="G8F-VH-xdh">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="CrS-Sv-B6l">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="CrS-Sv-B6l">
                                                     <rect key="frame" x="15" y="11" width="345" height="22"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <state key="normal" title="Button"/>
+                                                    <connections>
+                                                        <action selector="linkButtonTapped:" destination="0Ed-jY-bnV" eventType="touchUpInside" id="cua-Y4-oiO"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="CrS-Sv-B6l" secondAttribute="bottom" id="EDi-8w-VmS"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="CrS-Sv-B6l" secondAttribute="bottomMargin" constant="8" id="EDi-8w-VmS"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="CrS-Sv-B6l" secondAttribute="trailing" id="Rhi-vD-T72"/>
-                                                <constraint firstItem="CrS-Sv-B6l" firstAttribute="top" secondItem="G8F-VH-xdh" secondAttribute="topMargin" id="S8s-0C-vwR"/>
+                                                <constraint firstItem="CrS-Sv-B6l" firstAttribute="top" secondItem="G8F-VH-xdh" secondAttribute="top" constant="11" id="S8s-0C-vwR"/>
                                                 <constraint firstItem="CrS-Sv-B6l" firstAttribute="leading" secondItem="G8F-VH-xdh" secondAttribute="leadingMargin" id="n5V-6r-Ycx"/>
                                             </constraints>
                                         </tableViewCellContentView>
