@@ -54,10 +54,6 @@ class KnowledgeDetailViewController: UIViewController, KnowledgeDetailScene {
             return cell
         }
 
-        func selected() {
-
-        }
-
     }
 
     private struct ImageItem: TableViewDataItem {
@@ -71,10 +67,6 @@ class KnowledgeDetailViewController: UIViewController, KnowledgeDetailScene {
             hideSeperator(cell, tableView)
             
             return cell
-        }
-
-        func selected() {
-
         }
         
         fileprivate func hideSeperator(_ cell: KnowledgeDetailImageTableViewCell, _ tableView: UITableView) {
@@ -93,10 +85,6 @@ class KnowledgeDetailViewController: UIViewController, KnowledgeDetailScene {
             let cell = tableView.dequeue(LinkTableViewCell.self)
             binder.bind(cell, at: index)
             return cell
-        }
-
-        func selected() {
-            delegate?.knowledgeDetailSceneDidSelectLink(at: index)
         }
 
     }
@@ -130,6 +118,5 @@ class KnowledgeDetailViewController: UIViewController, KnowledgeDetailScene {
 private protocol TableViewDataItem {
 
     func makeCell(for tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell
-    func selected()
 
 }
