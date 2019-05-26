@@ -10,8 +10,8 @@ class MessagesModuleBuilder {
 
     init() {
         sceneFactory = StoryboardMessagesSceneFactory()
-        authenticationService = SharedModel.instance.services.authentication
-        privateMessagesService = SharedModel.instance.services.privateMessages
+        authenticationService = ApplicationStack.instance.services.authentication
+        privateMessagesService = ApplicationStack.instance.services.privateMessages
         dateFormatter = DateFormatter()
     }
 

@@ -6,7 +6,7 @@ class KnowledgeGroupsModuleBuilder {
     private var knowledgeSceneFactory: KnowledgeListSceneFactory
 
     init() {
-        knowledgeListInteractor = DefaultKnowledgeGroupsInteractor(service: SharedModel.instance.services.knowledge)
+        knowledgeListInteractor = DefaultKnowledgeGroupsInteractor(service: ApplicationStack.instance.services.knowledge)
         knowledgeSceneFactory = StoryboardKnowledgeListSceneFactory()
     }
 

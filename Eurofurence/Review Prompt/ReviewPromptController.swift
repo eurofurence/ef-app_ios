@@ -22,7 +22,7 @@ struct ReviewPromptController: EventsServiceObserver {
                                    versionProviding: BundleAppVersionProviding.shared,
                                    reviewPromptAppVersionRepository: UserDefaultsReviewPromptAppVersionRepository(),
                                    appStateProviding: ApplicationAppStateProviding(),
-                                   eventsService: SharedModel.instance.services.events)
+                                   eventsService: ApplicationStack.instance.services.events)
     }
 
     init(config: ReviewPromptController.Config,

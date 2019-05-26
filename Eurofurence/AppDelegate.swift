@@ -22,13 +22,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func application(_ application: UIApplication,
                      didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        SharedModel.instance.services.notifications.storeRemoteNotificationsToken(deviceToken)
+        ApplicationStack.instance.services.notifications.storeRemoteNotificationsToken(deviceToken)
     }
 
     func application(_ application: UIApplication,
                      didReceiveRemoteNotification userInfo: [AnyHashable: Any],
                      fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        SharedModel.instance.notificationFetchResultAdapter.handleRemoteNotification(userInfo, completionHandler: completionHandler)
+        ApplicationStack.instance.notificationFetchResultAdapter.handleRemoteNotification(userInfo, completionHandler: completionHandler)
 	}
 
     func userNotificationCenter(_ center: UNUserNotificationCenter,
@@ -38,6 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
 
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
         director?.openNotification(response.notification.request.content.userInfo, completionHandler: completionHandler)
     }
 
@@ -62,7 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
 
     private func prepareDirector() {
-        let services = SharedModel.instance.services
+        let services = ApplicationStack.instance.services
         let director = DirectorBuilder(linkLookupService: services.contentLinks, notificationHandling: services.notifications).build()
         services.contentLinks.setExternalContentHandler(director)
         self.director = director

@@ -8,7 +8,7 @@ class CollectThemAllModuleBuilder {
 
     init() {
         sceneFactory = StoryboardCollectThemAllSceneFactory()
-        service = SharedModel.instance.services.collectThemAll
+        service = ApplicationStack.instance.services.collectThemAll
     }
 
     @discardableResult

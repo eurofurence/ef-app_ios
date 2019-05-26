@@ -6,7 +6,7 @@ class DefaultDealerDetailInteractor: DealerDetailInteractor {
     private let dealersService: DealersService
 
     convenience init() {
-        self.init(dealersService: SharedModel.instance.services.dealers)
+        self.init(dealersService: ApplicationStack.instance.services.dealers)
     }
 
     init(dealersService: DealersService) {

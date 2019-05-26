@@ -9,7 +9,7 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
 
     convenience init() {
         self.init(dateRangeFormatter: FoundationDateRangeFormatter.shared,
-                  eventsService: SharedModel.instance.services.events,
+                  eventsService: ApplicationStack.instance.services.events,
 				  markdownRenderer: DefaultDownMarkdownRenderer())
     }
 

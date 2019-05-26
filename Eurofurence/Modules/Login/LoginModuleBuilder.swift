@@ -8,7 +8,7 @@ class LoginModuleBuilder {
 
     init() {
         sceneFactory = LoginViewControllerFactory()
-        authenticationService = SharedModel.instance.services.authentication
+        authenticationService = ApplicationStack.instance.services.authentication
         alertRouter = WindowAlertRouter.shared
     }
 

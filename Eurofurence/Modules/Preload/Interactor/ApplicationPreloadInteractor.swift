@@ -6,7 +6,7 @@ class ApplicationPreloadInteractor: PreloadInteractor {
     private var observations = [Any]()
 
     convenience init() {
-        self.init(refreshService: SharedModel.instance.services.refresh)
+        self.init(refreshService: ApplicationStack.instance.services.refresh)
     }
 
     init(refreshService: RefreshService) {

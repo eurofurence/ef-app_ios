@@ -8,7 +8,7 @@ class MessageDetailModuleBuilder {
 
     init() {
         messageDetailSceneFactory = StoryboardMessageDetailSceneFactory()
-        privateMessagesService = SharedModel.instance.services.privateMessages
+        privateMessagesService = ApplicationStack.instance.services.privateMessages
     }
 
     func with(_ messageDetailSceneFactory: MessageDetailSceneFactory) -> MessageDetailModuleBuilder {

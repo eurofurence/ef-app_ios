@@ -11,11 +11,11 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
     // MARK: Initialization
 
     convenience init() {
-        self.init(eventsService: SharedModel.instance.services.events,
+        self.init(eventsService: ApplicationStack.instance.services.events,
                   hoursDateFormatter: FoundationHoursDateFormatter.shared,
                   shortFormDateFormatter: FoundationShortFormDateFormatter.shared,
                   shortFormDayAndTimeFormatter: FoundationShortFormDayAndTimeFormatter.shared,
-                  refreshService: SharedModel.instance.services.refresh)
+                  refreshService: ApplicationStack.instance.services.refresh)
     }
 
     init(eventsService: EventsService,

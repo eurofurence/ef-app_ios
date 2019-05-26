@@ -180,7 +180,7 @@
 		CA0F763420331506009DA079 /* KnowledgeList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA0F763320331506009DA079 /* KnowledgeList.storyboard */; };
 		CA0F763620331896009DA079 /* KnowledgeListSectionHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F763520331896009DA079 /* KnowledgeListSectionHeaderTableViewCell.swift */; };
 		CA0F9D9221D53A2A0084886E /* EventsScheduleAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F9D9121D53A2A0084886E /* EventsScheduleAdapter.swift */; };
-		CA0F9D9421D53C6F0084886E /* SharedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F9D9321D53C6F0084886E /* SharedModel.swift */; };
+		CA0F9D9421D53C6F0084886E /* ApplicationStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F9D9321D53C6F0084886E /* ApplicationStack.swift */; };
 		CA131BD120C1851A00DB1036 /* WhenPreparingViewModel_ForEventThatIsFavourite_EventDetailInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA131BD020C1851A00DB1036 /* WhenPreparingViewModel_ForEventThatIsFavourite_EventDetailInteractorShould.swift */; };
 		CA131BD320C1866D00DB1036 /* CapturingEventDetailViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA131BD220C1866D00DB1036 /* CapturingEventDetailViewModelDelegate.swift */; };
 		CA131BD520C186B300DB1036 /* WhenPreparingViewModel_ForEventThatIsNotFavourite_EventDetailInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA131BD420C186B300DB1036 /* WhenPreparingViewModel_ForEventThatIsNotFavourite_EventDetailInteractorShould.swift */; };
@@ -1734,7 +1734,7 @@
 		CA0F763320331506009DA079 /* KnowledgeList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = KnowledgeList.storyboard; sourceTree = "<group>"; };
 		CA0F763520331896009DA079 /* KnowledgeListSectionHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListSectionHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		CA0F9D9121D53A2A0084886E /* EventsScheduleAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsScheduleAdapter.swift; sourceTree = "<group>"; };
-		CA0F9D9321D53C6F0084886E /* SharedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedModel.swift; sourceTree = "<group>"; };
+		CA0F9D9321D53C6F0084886E /* ApplicationStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationStack.swift; sourceTree = "<group>"; };
 		CA131BD020C1851A00DB1036 /* WhenPreparingViewModel_ForEventThatIsFavourite_EventDetailInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPreparingViewModel_ForEventThatIsFavourite_EventDetailInteractorShould.swift; sourceTree = "<group>"; };
 		CA131BD220C1866D00DB1036 /* CapturingEventDetailViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingEventDetailViewModelDelegate.swift; sourceTree = "<group>"; };
 		CA131BD420C186B300DB1036 /* WhenPreparingViewModel_ForEventThatIsNotFavourite_EventDetailInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPreparingViewModel_ForEventThatIsNotFavourite_EventDetailInteractorShould.swift; sourceTree = "<group>"; };
@@ -3464,8 +3464,8 @@
 				9ACF99431EBE172D006FC958 /* Info.plist */,
 				9ACF99371EBE172D006FC958 /* AppDelegate.swift */,
 				CA02910121F4D6020007F350 /* AppDelegate+DebugWindow.swift */,
+				CA0F9D9321D53C6F0084886E /* ApplicationStack.swift */,
 				CA9845D91F29199E00E8821D /* ScreenshotAssistant.swift */,
-				CA0F9D9321D53C6F0084886E /* SharedModel.swift */,
 				CAEA1045216E77DE00B0C7A6 /* Theme.swift */,
 				9ACF993E1EBE172D006FC958 /* Assets.xcassets */,
 				CAF1A674211E4B3600513226 /* Application Adapter Implementations */,
@@ -8402,7 +8402,7 @@
 				CA637590208CE4E100536BE2 /* ScheduleSceneFactory.swift in Sources */,
 				CA152EE82265268C00212742 /* EventFeedbackFormViewController.swift in Sources */,
 				CA283A9A20EA9D9200F7D195 /* AnnouncementsModuleBuilder.swift in Sources */,
-				CA0F9D9421D53C6F0084886E /* SharedModel.swift in Sources */,
+				CA0F9D9421D53C6F0084886E /* ApplicationStack.swift in Sources */,
 				CA1B6F1720DB81DB00ADF414 /* StoryboardDealerDetailSceneFactory.swift in Sources */,
 				CA2761BF20E02B93000E52AC /* CollectThemAllPresenter.swift in Sources */,
 				CAEAEC0A1FE06FA500C0EE7C /* StoryboardMessageDetailSceneFactory.swift in Sources */,

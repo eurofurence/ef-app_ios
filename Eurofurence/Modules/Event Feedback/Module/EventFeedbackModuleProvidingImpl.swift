@@ -7,7 +7,7 @@ struct EventFeedbackModuleProvidingImpl: EventFeedbackModuleProviding {
     private let sceneFactory: EventFeedbackSceneFactory
     
     init() {
-        let presenterFactory = EventFeedbackPresenterFactoryImpl(eventService: SharedModel.instance.services.events,
+        let presenterFactory = EventFeedbackPresenterFactoryImpl(eventService: ApplicationStack.instance.services.events,
                                                                  dayOfWeekFormatter: FoundationDayOfWeekFormatter.shared,
                                                                  startTimeFormatter: FoundationHoursDateFormatter.shared,
                                                                  endTimeFormatter: FoundationHoursDateFormatter.shared,

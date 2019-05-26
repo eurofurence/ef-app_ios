@@ -21,7 +21,7 @@ struct DefaultKnowledgeGroupEntriesInteractor: KnowledgeGroupEntriesInteractor {
 
     }
 
-    var service: KnowledgeService = SharedModel.instance.services.knowledge
+    var service: KnowledgeService = ApplicationStack.instance.services.knowledge
 
     func makeViewModelForGroup(identifier: KnowledgeGroupIdentifier, completionHandler: @escaping (KnowledgeGroupEntriesViewModel) -> Void) {
         service.fetchKnowledgeGroup(identifier: identifier) { (group) in

@@ -13,7 +13,7 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
     private let eventBus = EventBus()
 
     init() {
-        self.init(dealersService: SharedModel.instance.services.dealers)
+        self.init(dealersService: ApplicationStack.instance.services.dealers)
     }
 
     init(dealersService: DealersService) {
@@ -21,7 +21,7 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
         let defaultIconData = defaultIcon.pngData()!
         self.init(dealersService: dealersService,
                   defaultIconData: defaultIconData,
-                  refreshService: SharedModel.instance.services.refresh)
+                  refreshService: ApplicationStack.instance.services.refresh)
     }
 
     init(dealersService: DealersService, defaultIconData: Data, refreshService: RefreshService) {

@@ -1,11 +1,11 @@
 import EurofurenceModel
 import Foundation
 
-class SharedModel {
+class ApplicationStack {
     
     private static let CID = ConventionIdentifier(identifier: "EF25")
 
-    static let instance: SharedModel = SharedModel()
+    static let instance: ApplicationStack = ApplicationStack()
     let session: EurofurenceSession
     let services: Services
     let notificationFetchResultAdapter: NotificationServiceFetchResultAdapter
@@ -15,7 +15,7 @@ class SharedModel {
         let jsonSession = URLSessionBasedJSONSession.shared
         let buildConfiguration = PreprocessorBuildConfigurationProviding()
         
-        let apiUrl = CIDAPIURLProviding(conventionIdentifier: SharedModel.CID)
+        let apiUrl = CIDAPIURLProviding(conventionIdentifier: ApplicationStack.CID)
         let fcmRegistration = EurofurenceFCMDeviceRegistration(JSONSession: jsonSession, urlProviding: apiUrl)
         let remoteNotificationsTokenRegistration = FirebaseRemoteNotificationsTokenRegistration(buildConfiguration: buildConfiguration,
                                                                                                 appVersion: BundleAppVersionProviding.shared,
@@ -30,7 +30,7 @@ class SharedModel {
 
         let mapCoordinateRender = UIKitMapCoordinateRender()
         
-        session = EurofurenceSessionBuilder(conventionIdentifier: SharedModel.CID)
+        session = EurofurenceSessionBuilder(conventionIdentifier: ApplicationStack.CID)
             .with(remoteNotificationsTokenRegistration)
             .with(significantTimeChangeAdapter)
             .with(urlOpener)

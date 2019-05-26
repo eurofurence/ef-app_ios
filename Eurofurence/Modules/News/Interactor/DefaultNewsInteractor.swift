@@ -34,16 +34,16 @@ class DefaultNewsInteractor: NewsInteractor,
     // MARK: Initialization
 
     convenience init() {
-        self.init(announcementsService: SharedModel.instance.services.announcements,
-                  authenticationService: SharedModel.instance.services.authentication,
-                  privateMessagesService: SharedModel.instance.services.privateMessages,
-                  daysUntilConventionService: SharedModel.instance.services.conventionCountdown,
-                  eventsService: SharedModel.instance.services.events,
+        self.init(announcementsService: ApplicationStack.instance.services.announcements,
+                  authenticationService: ApplicationStack.instance.services.authentication,
+                  privateMessagesService: ApplicationStack.instance.services.privateMessages,
+                  daysUntilConventionService: ApplicationStack.instance.services.conventionCountdown,
+                  eventsService: ApplicationStack.instance.services.events,
                   relativeTimeIntervalCountdownFormatter: FoundationRelativeTimeIntervalCountdownFormatter.shared,
                   hoursDateFormatter: FoundationHoursDateFormatter.shared,
                   dateDistanceCalculator: FoundationDateDistanceCalculator(),
                   clock: SystemClock.shared,
-                  refreshService: SharedModel.instance.services.refresh,
+                  refreshService: ApplicationStack.instance.services.refresh,
                   announcementsDateFormatter: FoundationAnnouncementDateFormatter.shared,
 				  announcementsMarkdownRenderer: SubtleDownMarkdownRenderer())
     }

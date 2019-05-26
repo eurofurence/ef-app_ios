@@ -8,7 +8,7 @@ struct DefaultAnnouncementsInteractor: AnnouncementsInteractor {
 	private let markdownRenderer: MarkdownRenderer
 
     init() {
-        self.init(announcementsService: SharedModel.instance.services.announcements,
+        self.init(announcementsService: ApplicationStack.instance.services.announcements,
                   announcementDateFormatter: FoundationAnnouncementDateFormatter.shared,
 				  markdownRenderer: SubtleDownMarkdownRenderer())
     }

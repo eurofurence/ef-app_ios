@@ -5,7 +5,7 @@ class RootModuleBuilder {
     private var sessionStateService: SessionStateService
 
     init() {
-        sessionStateService = SharedModel.instance.services.sessionState
+        sessionStateService = ApplicationStack.instance.services.sessionState
     }
 
     @discardableResult
