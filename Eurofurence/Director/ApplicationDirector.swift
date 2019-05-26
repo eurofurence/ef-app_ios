@@ -103,6 +103,14 @@ class ApplicationDirector: ExternalContentHandler,
         tabBarController.selectedIndex = index
         scheduleNavigationController.setViewControllers([scheduleViewController, module], animated: performAnimations)
     }
+    
+    func showInvalidatedAnnouncementAlert() {
+        let alert = UIAlertController(title: .invalidAnnouncementAlertTitle,
+                                      message: .invalidAnnouncementAlertMessage,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: .ok, style: .cancel))
+        tabController?.present(alert, animated: performAnimations, completion: nil)
+    }
 
     func openNotification(_ payload: [AnyHashable: Any], completionHandler: @escaping () -> Void) {
         let castedPayloadKeysAndValues = payload.compactMap { (key, value) -> (String, String)? in
