@@ -992,6 +992,7 @@
 		CAD5593F229AF2890068DD46 /* WhenOpeningAnnouncement_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD5593E229AF2890068DD46 /* WhenOpeningAnnouncement_DirectorShould.swift */; };
 		CAD55941229AF4A70068DD46 /* WhenOpeningEvent_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD55940229AF4A70068DD46 /* WhenOpeningEvent_DirectorShould.swift */; };
 		CAD55943229AF6C30068DD46 /* WhenShowingInvalidatedAnnouncementAlert_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD55942229AF6C30068DD46 /* WhenShowingInvalidatedAnnouncementAlert_DirectorShould.swift */; };
+		CAD55946229AF7DB0068DD46 /* NavigateToContentNotificationResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD55945229AF7DB0068DD46 /* NavigateToContentNotificationResponseHandler.swift */; };
 		CAD68828208A0E7A00B31F5F /* WhenBindingUser_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD68827208A0E7A00B31F5F /* WhenBindingUser_NewsPresenterShould.swift */; };
 		CAD6882A208A107500B31F5F /* UserWidgetComponentViewModel+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD68829208A107500B31F5F /* UserWidgetComponentViewModel+RandomValueProviding.swift */; };
 		CAD6882C208A12F700B31F5F /* WhenBindingUserWithUnreadMessages_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6882B208A12F700B31F5F /* WhenBindingUserWithUnreadMessages_NewsPresenterShould.swift */; };
@@ -2795,6 +2796,7 @@
 		CAD5593E229AF2890068DD46 /* WhenOpeningAnnouncement_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenOpeningAnnouncement_DirectorShould.swift; sourceTree = "<group>"; };
 		CAD55940229AF4A70068DD46 /* WhenOpeningEvent_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenOpeningEvent_DirectorShould.swift; sourceTree = "<group>"; };
 		CAD55942229AF6C30068DD46 /* WhenShowingInvalidatedAnnouncementAlert_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenShowingInvalidatedAnnouncementAlert_DirectorShould.swift; sourceTree = "<group>"; };
+		CAD55945229AF7DB0068DD46 /* NavigateToContentNotificationResponseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateToContentNotificationResponseHandler.swift; sourceTree = "<group>"; };
 		CAD68827208A0E7A00B31F5F /* WhenBindingUser_NewsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingUser_NewsPresenterShould.swift; sourceTree = "<group>"; };
 		CAD68829208A107500B31F5F /* UserWidgetComponentViewModel+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserWidgetComponentViewModel+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CAD6882B208A12F700B31F5F /* WhenBindingUserWithUnreadMessages_NewsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingUserWithUnreadMessages_NewsPresenterShould.swift; sourceTree = "<group>"; };
@@ -5825,9 +5827,7 @@
 		CA7992442245173B00DF1F84 /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
-				CAD55937229AEFC50068DD46 /* NotificationResponseHandler.swift */,
-				CAD55931229AEF760068DD46 /* NotificationResponseProcessor.swift */,
-				CA4C474921DF88B9005231AD /* NotificationServiceFetchResultAdapter.swift */,
+				CAD55944229AF7B30068DD46 /* Opening Notifications */,
 				781A94311F1A1981002DE70F /* Firebase Notification Registration */,
 				CA79925C22459E8A00DF1F84 /* Scheduling */,
 			);
@@ -6724,6 +6724,17 @@
 				CAD55942229AF6C30068DD46 /* WhenShowingInvalidatedAnnouncementAlert_DirectorShould.swift */,
 			);
 			path = "Opening Content";
+			sourceTree = "<group>";
+		};
+		CAD55944229AF7B30068DD46 /* Opening Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				CAD55945229AF7DB0068DD46 /* NavigateToContentNotificationResponseHandler.swift */,
+				CAD55937229AEFC50068DD46 /* NotificationResponseHandler.swift */,
+				CAD55931229AEF760068DD46 /* NotificationResponseProcessor.swift */,
+				CA4C474921DF88B9005231AD /* NotificationServiceFetchResultAdapter.swift */,
+			);
+			path = "Opening Notifications";
 			sourceTree = "<group>";
 		};
 		CAD68823208A04B300B31F5F /* Presenter Tests */ = {
@@ -8324,6 +8335,7 @@
 				CA6EC4712051656C00402894 /* KnowledgeDetailModuleProviding.swift in Sources */,
 				CA2A586F20F7F137002C69B6 /* AnnouncementDateFormatter.swift in Sources */,
 				CAD3BDB92059539D00C91E6E /* KnowledgeDetailModuleDelegate.swift in Sources */,
+				CAD55946229AF7DB0068DD46 /* NavigateToContentNotificationResponseHandler.swift in Sources */,
 				CA6EC48E2051D97600402894 /* KnowledgeDetailPresenter.swift in Sources */,
 				CA1FE9971F9FCCA4009C7DF3 /* MessagesModuleProviding.swift in Sources */,
 				CA7D8B3822312CFB003431A0 /* DefaultNewsViewModel.swift in Sources */,
