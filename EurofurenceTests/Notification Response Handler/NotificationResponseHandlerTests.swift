@@ -14,15 +14,24 @@ class NotificationResponseHandler {
     
     func openNotification(_ payload: [String: String], completionHandler: @escaping () -> Void) {
         notificationHandling.handleNotification(payload: payload) { (content) in
-            if case .announcement(let announcement) = content {
-                self.contentRecipient.openAnnouncement(announcement)
-            }
-            
-            if case .event(let event) = content {
-                self.contentRecipient.openEvent(event)
-            }
-            
+            self.processNotificationContent(content)
             completionHandler()
+        }
+    }
+    
+    private func processNotificationContent(_ content: NotificationContent) {
+        switch content {
+        case .announcement(let announcement):
+            contentRecipient.openAnnouncement(announcement)
+            
+        case .event(let event):
+            contentRecipient.openEvent(event)
+            
+        case .invalidatedAnnouncement:
+            contentRecipient.handleInvalidatedAnnouncement()
+            
+        default:
+            break
         }
     }
     
@@ -54,6 +63,7 @@ protocol ContentRecipient {
     
     func openAnnouncement(_ announcement: AnnouncementIdentifier)
     func openEvent(_ event: EventIdentifier)
+    func handleInvalidatedAnnouncement()
     
 }
 
@@ -67,6 +77,11 @@ class CapturingContentRecipient: ContentRecipient {
     private(set) var openedEvent: EventIdentifier?
     func openEvent(_ event: EventIdentifier) {
         openedEvent = event
+    }
+    
+    private(set) var handledInvalidatedAnnouncement = false
+    func handleInvalidatedAnnouncement() {
+        handledInvalidatedAnnouncement = true
     }
     
 }
@@ -105,6 +120,7 @@ class NotificationResponseHandlerTests: XCTestCase {
         context.notificationResponseHandler.openNotification(payload) { }
         
         XCTAssertEqual(announcement, context.contentRecipient.openedAnnouncement)
+        XCTAssertFalse(context.contentRecipient.handledInvalidatedAnnouncement)
     }
     
     func testProcessingEventNotificationTellsContentRecipientToOpenEvent() {
@@ -114,6 +130,14 @@ class NotificationResponseHandlerTests: XCTestCase {
         context.notificationResponseHandler.openNotification(payload) { }
         
         XCTAssertEqual(event, context.contentRecipient.openedEvent)
+    }
+    
+    func testProcessingInvalidatedAnnouncementsTellContentRecipientToHandleIt() {
+        let payload = [String.random: String.random]
+        context.notificationHandling.stub(.invalidatedAnnouncement, for: payload)
+        context.notificationResponseHandler.openNotification(payload) { }
+        
+        XCTAssertTrue(context.contentRecipient.handledInvalidatedAnnouncement)
     }
 
 }
