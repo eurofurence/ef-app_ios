@@ -92,6 +92,17 @@ class ApplicationDirector: ExternalContentHandler,
         tabBarController.selectedIndex = index
         newsNavigationController.pushViewController(module, animated: performAnimations)
     }
+    
+    func openEvent(_ event: EventIdentifier) {
+        guard let scheduleViewController = scheduleViewController,
+              let scheduleNavigationController = scheduleViewController.navigationController,
+              let tabBarController = tabController,
+              let index = tabBarController.viewControllers?.firstIndex(of: scheduleNavigationController) else { return }
+        
+        let module = applicationModuleRepository.makeEventDetailModule(for: event, delegate: self)
+        tabBarController.selectedIndex = index
+        scheduleNavigationController.setViewControllers([scheduleViewController, module], animated: performAnimations)
+    }
 
     func openNotification(_ payload: [AnyHashable: Any], completionHandler: @escaping () -> Void) {
         let castedPayloadKeysAndValues = payload.compactMap { (key, value) -> (String, String)? in
