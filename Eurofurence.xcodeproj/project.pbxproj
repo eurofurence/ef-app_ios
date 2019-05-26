@@ -984,6 +984,7 @@
 		CAD3BDC2205AA7BE00C91E6E /* WebModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDC1205AA7BE00C91E6E /* WebModuleProviding.swift */; };
 		CAD3BDC7205FE88900C91E6E /* SafariWebModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDC6205FE88900C91E6E /* SafariWebModuleProviding.swift */; };
 		CAD3BDCB2061394700C91E6E /* AppURLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDCA2061394700C91E6E /* AppURLOpener.swift */; };
+		CAD55930229AE37B0068DD46 /* NotificationResponseHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD5592F229AE37B0068DD46 /* NotificationResponseHandlerTests.swift */; };
 		CAD68828208A0E7A00B31F5F /* WhenBindingUser_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD68827208A0E7A00B31F5F /* WhenBindingUser_NewsPresenterShould.swift */; };
 		CAD6882A208A107500B31F5F /* UserWidgetComponentViewModel+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD68829208A107500B31F5F /* UserWidgetComponentViewModel+RandomValueProviding.swift */; };
 		CAD6882C208A12F700B31F5F /* WhenBindingUserWithUnreadMessages_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6882B208A12F700B31F5F /* WhenBindingUserWithUnreadMessages_NewsPresenterShould.swift */; };
@@ -2779,6 +2780,7 @@
 		CAD3BDC82061382000C91E6E /* URLOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLOpener.swift; sourceTree = "<group>"; };
 		CAD3BDCA2061394700C91E6E /* AppURLOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppURLOpener.swift; sourceTree = "<group>"; };
 		CAD3BDCC20613A2800C91E6E /* WhenLookingUpMailToLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLookingUpMailToLinks.swift; sourceTree = "<group>"; };
+		CAD5592F229AE37B0068DD46 /* NotificationResponseHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationResponseHandlerTests.swift; sourceTree = "<group>"; };
 		CAD68827208A0E7A00B31F5F /* WhenBindingUser_NewsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingUser_NewsPresenterShould.swift; sourceTree = "<group>"; };
 		CAD68829208A107500B31F5F /* UserWidgetComponentViewModel+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserWidgetComponentViewModel+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CAD6882B208A12F700B31F5F /* WhenBindingUserWithUnreadMessages_NewsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingUserWithUnreadMessages_NewsPresenterShould.swift; sourceTree = "<group>"; };
@@ -3478,6 +3480,7 @@
 				781A94441F1A1DCE002DE70F /* Firebase Notification Registration */,
 				78C86D5B1F12355C003A20E6 /* Module Tests */,
 				CACD2F0B21DF830300BACD91 /* Notification Content Adapter */,
+				CAD5592E229AE3570068DD46 /* Notification Response Handler */,
 				CACEA06B2242824F00DFF26C /* Notification Scheduling */,
 				CA82409B212498E6007E4A70 /* Review Prompt */,
 				6EF96CCD1F0EDB1300EE6134 /* Test Doubles */,
@@ -6687,6 +6690,14 @@
 			path = Links;
 			sourceTree = "<group>";
 		};
+		CAD5592E229AE3570068DD46 /* Notification Response Handler */ = {
+			isa = PBXGroup;
+			children = (
+				CAD5592F229AE37B0068DD46 /* NotificationResponseHandlerTests.swift */,
+			);
+			path = "Notification Response Handler";
+			sourceTree = "<group>";
+		};
 		CAD68823208A04B300B31F5F /* Presenter Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -8514,6 +8525,7 @@
 				CABA43971FCE0A5C009CB5B0 /* StubLoginSceneFactory.swift in Sources */,
 				CA44C366211B692A003C1C4E /* WhenBindingPhotoshootBanner_EventDetailPresenterShould.swift in Sources */,
 				CA1B6F3920DD1D9D00ADF414 /* DealerDetailLocationAndAvailabilityViewModel+RandomValueProviding.swift in Sources */,
+				CAD55930229AE37B0068DD46 /* NotificationResponseHandlerTests.swift in Sources */,
 				CA81D48E1FE9A8DB00A52A2F /* CapturingTutorialModuleDelegate.swift in Sources */,
 				CA44C35E211B0E52003C1C4E /* WhenBindingDealersDenBanner_EventDetailPresenterShould.swift in Sources */,
 				CA250DD220D6D63600E7513C /* WhenSearchableViewModelProducesNewResult_SchedulePresenterShould.swift in Sources */,
