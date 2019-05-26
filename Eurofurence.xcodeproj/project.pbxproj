@@ -989,6 +989,7 @@
 		CAD55938229AEFC50068DD46 /* NotificationResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD55937229AEFC50068DD46 /* NotificationResponseHandler.swift */; };
 		CAD5593B229AF0C60068DD46 /* NotificationResponseProcessorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD55939229AF0C60068DD46 /* NotificationResponseProcessorTests.swift */; };
 		CAD5593C229AF0C60068DD46 /* NotificationResponseProcessorTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD5593A229AF0C60068DD46 /* NotificationResponseProcessorTestBuilder.swift */; };
+		CAD5593F229AF2890068DD46 /* WhenOpeningAnnouncement_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD5593E229AF2890068DD46 /* WhenOpeningAnnouncement_DirectorShould.swift */; };
 		CAD68828208A0E7A00B31F5F /* WhenBindingUser_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD68827208A0E7A00B31F5F /* WhenBindingUser_NewsPresenterShould.swift */; };
 		CAD6882A208A107500B31F5F /* UserWidgetComponentViewModel+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD68829208A107500B31F5F /* UserWidgetComponentViewModel+RandomValueProviding.swift */; };
 		CAD6882C208A12F700B31F5F /* WhenBindingUserWithUnreadMessages_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6882B208A12F700B31F5F /* WhenBindingUserWithUnreadMessages_NewsPresenterShould.swift */; };
@@ -2789,6 +2790,7 @@
 		CAD55937229AEFC50068DD46 /* NotificationResponseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationResponseHandler.swift; sourceTree = "<group>"; };
 		CAD55939229AF0C60068DD46 /* NotificationResponseProcessorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationResponseProcessorTests.swift; sourceTree = "<group>"; };
 		CAD5593A229AF0C60068DD46 /* NotificationResponseProcessorTestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationResponseProcessorTestBuilder.swift; sourceTree = "<group>"; };
+		CAD5593E229AF2890068DD46 /* WhenOpeningAnnouncement_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenOpeningAnnouncement_DirectorShould.swift; sourceTree = "<group>"; };
 		CAD68827208A0E7A00B31F5F /* WhenBindingUser_NewsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingUser_NewsPresenterShould.swift; sourceTree = "<group>"; };
 		CAD68829208A107500B31F5F /* UserWidgetComponentViewModel+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserWidgetComponentViewModel+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CAD6882B208A12F700B31F5F /* WhenBindingUserWithUnreadMessages_NewsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingUserWithUnreadMessages_NewsPresenterShould.swift; sourceTree = "<group>"; };
@@ -6710,6 +6712,14 @@
 			path = "Notification Response Handler";
 			sourceTree = "<group>";
 		};
+		CAD5593D229AF2700068DD46 /* Opening Content */ = {
+			isa = PBXGroup;
+			children = (
+				CAD5593E229AF2890068DD46 /* WhenOpeningAnnouncement_DirectorShould.swift */,
+			);
+			path = "Opening Content";
+			sourceTree = "<group>";
+		};
 		CAD68823208A04B300B31F5F /* Presenter Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -7171,6 +7181,7 @@
 				CA063B4520F3E0D800241CC9 /* RestorationIdentifierOrderingPolicyTests.swift */,
 				CA063B3020F2303900241CC9 /* Module Interactions */,
 				CA063B3620F2317D00241CC9 /* Notification Handling */,
+				CAD5593D229AF2700068DD46 /* Opening Content */,
 				CA63753E208CBAFF00536BE2 /* Test Doubles */,
 			);
 			path = Director;
@@ -8956,6 +8967,7 @@
 				CABA83F620CE9A6800DD0795 /* WhenUnfavouritingEventViewModel_EventDetailInteractorShould.swift in Sources */,
 				CA36A46920D84AA900EE6537 /* DealersGroupViewModel+RandomValueProviding.swift in Sources */,
 				CA283AE620EC188E00F7D195 /* WhenBindingNonFavouriteEvent_FromSearchResult_SchedulePresenterShould.swift in Sources */,
+				CAD5593F229AF2890068DD46 /* WhenOpeningAnnouncement_DirectorShould.swift in Sources */,
 				CA0E5215208F52EE005259FE /* CapturingNewsInteractorDelegate.swift in Sources */,
 				CA637599208DFD5F00536BE2 /* SchedulePresenterTestBuilder.swift in Sources */,
 				CA063B3C20F25E5B00241CC9 /* FakeApplicationNotificationHandling.swift in Sources */,

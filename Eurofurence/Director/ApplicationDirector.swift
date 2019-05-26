@@ -82,6 +82,16 @@ class ApplicationDirector: ExternalContentHandler,
     }
 
     // MARK: Public
+    
+    func openAnnouncement(_ announcement: AnnouncementIdentifier) {
+        guard let newsNavigationController = newsController?.navigationController,
+              let tabBarController = tabController,
+              let index = tabBarController.viewControllers?.firstIndex(of: newsNavigationController) else { return }
+        
+        let module = applicationModuleRepository.makeAnnouncementDetailModule(for: announcement)
+        tabBarController.selectedIndex = index
+        newsNavigationController.pushViewController(module, animated: performAnimations)
+    }
 
     func openNotification(_ payload: [AnyHashable: Any], completionHandler: @escaping () -> Void) {
         let castedPayloadKeysAndValues = payload.compactMap { (key, value) -> (String, String)? in
