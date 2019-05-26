@@ -2,14 +2,14 @@
 import EurofurenceModel
 import XCTest
 
-class NotificationResponseHandlerTests: XCTestCase {
+class NotificationResponseProcessorTests: XCTestCase {
     
-    var context: NotificationResponseHandlerTestBuilder.Context!
+    var context: NotificationResponseProcessorTestBuilder.Context!
     
     override func setUp() {
         super.setUp()
         
-        context = NotificationResponseHandlerTestBuilder().build()
+        context = NotificationResponseProcessorTestBuilder().build()
     }
 
     func testInvokeTheCallbackAfterHandlerProcessesNotification() {
@@ -35,7 +35,7 @@ class NotificationResponseHandlerTests: XCTestCase {
         context.notificationHandling.stub(.announcement(announcement), for: payload)
         context.notificationResponseHandler.openNotification(payload) { }
         
-        XCTAssertEqual(announcement, context.contentRecipient.openedAnnouncement)
+        XCTAssertEqual(announcement, context.contentRecipient.handledAnnouncement)
         XCTAssertFalse(context.contentRecipient.handledInvalidatedAnnouncement)
     }
     
@@ -45,7 +45,7 @@ class NotificationResponseHandlerTests: XCTestCase {
         context.notificationHandling.stub(.event(event), for: payload)
         context.notificationResponseHandler.openNotification(payload) { }
         
-        XCTAssertEqual(event, context.contentRecipient.openedEvent)
+        XCTAssertEqual(event, context.contentRecipient.handledEvent)
     }
     
     func testProcessingInvalidatedAnnouncementsTellContentRecipientToHandleIt() {
