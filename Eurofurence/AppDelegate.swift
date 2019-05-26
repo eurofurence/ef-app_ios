@@ -22,13 +22,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func application(_ application: UIApplication,
                      didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        ApplicationStack.instance.services.notifications.storeRemoteNotificationsToken(deviceToken)
+        ApplicationStack.storeRemoteNotificationsToken(deviceToken)
     }
 
     func application(_ application: UIApplication,
                      didReceiveRemoteNotification userInfo: [AnyHashable: Any],
                      fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        ApplicationStack.instance.notificationFetchResultAdapter.handleRemoteNotification(userInfo, completionHandler: completionHandler)
+        ApplicationStack.handleRemoteNotification(userInfo, completionHandler: completionHandler)
 	}
 
     func userNotificationCenter(_ center: UNUserNotificationCenter,

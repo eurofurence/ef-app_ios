@@ -1,5 +1,6 @@
 import EurofurenceModel
 import Foundation
+import UIKit
 
 class ApplicationStack {
     
@@ -8,8 +9,17 @@ class ApplicationStack {
     static let instance: ApplicationStack = ApplicationStack()
     let session: EurofurenceSession
     let services: Services
-    let notificationFetchResultAdapter: NotificationServiceFetchResultAdapter
+    private let notificationFetchResultAdapter: NotificationServiceFetchResultAdapter
     let notificationScheduleController: NotificationScheduleController
+    
+    static func storeRemoteNotificationsToken(_ deviceToken: Data) {
+        instance.services.notifications.storeRemoteNotificationsToken(deviceToken)
+    }
+    
+    static func handleRemoteNotification(_ payload: [AnyHashable: Any],
+                                         completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        instance.notificationFetchResultAdapter.handleRemoteNotification(payload, completionHandler: completionHandler)
+    }
 
     private init() {
         let jsonSession = URLSessionBasedJSONSession.shared
