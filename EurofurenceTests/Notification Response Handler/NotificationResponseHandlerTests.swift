@@ -5,13 +5,23 @@ import XCTest
 class NotificationResponseHandler {
     
     private let notificationHandling: NotificationService
+    private let contentRecipient: ContentRecipient
     
-    init(notificationHandling: NotificationService) {
+    init(notificationHandling: NotificationService, contentRecipient: ContentRecipient) {
         self.notificationHandling = notificationHandling
+        self.contentRecipient = contentRecipient
     }
     
     func openNotification(_ payload: [String: String], completionHandler: @escaping () -> Void) {
-        notificationHandling.handleNotification(payload: payload) { (_) in
+        notificationHandling.handleNotification(payload: payload) { (content) in
+            if case .announcement(let announcement) = content {
+                self.contentRecipient.openAnnouncement(announcement)
+            }
+            
+            if case .event(let event) = content {
+                self.contentRecipient.openEvent(event)
+            }
+            
             completionHandler()
         }
     }
@@ -24,15 +34,39 @@ class NotificationResponseHandlerTestBuilder {
         
         var notificationResponseHandler: NotificationResponseHandler
         var notificationHandling: FakeApplicationNotificationHandling
+        var contentRecipient: CapturingContentRecipient
         
     }
     
     func build() -> Context {
         let notificationHandling = FakeApplicationNotificationHandling()
-        let notificationResponseHandler = NotificationResponseHandler(notificationHandling: notificationHandling)
+        let contentRecipient = CapturingContentRecipient()
+        let notificationResponseHandler = NotificationResponseHandler(notificationHandling: notificationHandling, contentRecipient: contentRecipient)
         
         return Context(notificationResponseHandler: notificationResponseHandler,
-                       notificationHandling: notificationHandling)
+                       notificationHandling: notificationHandling,
+                       contentRecipient: contentRecipient)
+    }
+    
+}
+
+protocol ContentRecipient {
+    
+    func openAnnouncement(_ announcement: AnnouncementIdentifier)
+    func openEvent(_ event: EventIdentifier)
+    
+}
+
+class CapturingContentRecipient: ContentRecipient {
+    
+    private(set) var openedAnnouncement: AnnouncementIdentifier?
+    func openAnnouncement(_ announcement: AnnouncementIdentifier) {
+        openedAnnouncement = announcement
+    }
+    
+    private(set) var openedEvent: EventIdentifier?
+    func openEvent(_ event: EventIdentifier) {
+        openedEvent = event
     }
     
 }
@@ -62,6 +96,24 @@ class NotificationResponseHandlerTests: XCTestCase {
         context.notificationResponseHandler.openNotification(payload) { didInvokeHandler = true }
         
         XCTAssertFalse(didInvokeHandler)
+    }
+    
+    func testProcessingAnnouncementNotificationTellsContentRecipientToOpenAnnouncement() {
+        let payload = [String.random: String.random]
+        let announcement = AnnouncementIdentifier.random
+        context.notificationHandling.stub(.announcement(announcement), for: payload)
+        context.notificationResponseHandler.openNotification(payload) { }
+        
+        XCTAssertEqual(announcement, context.contentRecipient.openedAnnouncement)
+    }
+    
+    func testProcessingEventNotificationTellsContentRecipientToOpenEvent() {
+        let payload = [String.random: String.random]
+        let event = EventIdentifier.random
+        context.notificationHandling.stub(.event(event), for: payload)
+        context.notificationResponseHandler.openNotification(payload) { }
+        
+        XCTAssertEqual(event, context.contentRecipient.openedEvent)
     }
 
 }
