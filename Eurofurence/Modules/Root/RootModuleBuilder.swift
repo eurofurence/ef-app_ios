@@ -1,18 +1,8 @@
 import EurofurenceModel
 
-class RootModuleBuilder {
+struct RootModuleBuilder {
 
-    private var sessionStateService: SessionStateService
-
-    init() {
-        sessionStateService = ApplicationStack.instance.services.sessionState
-    }
-
-    @discardableResult
-    func with(_ dataStoreStateService: SessionStateService) -> RootModuleBuilder {
-        self.sessionStateService = dataStoreStateService
-        return self
-    }
+    var sessionStateService: SessionStateService
 
     func build() -> RootModuleProviding {
         return RootModule(sessionStateService: sessionStateService)

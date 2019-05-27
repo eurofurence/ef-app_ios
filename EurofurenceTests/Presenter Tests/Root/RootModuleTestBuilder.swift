@@ -48,7 +48,7 @@ class RootModuleTestBuilder {
     }
 
     func build() -> RootModuleTestBuilder.Context {
-        _ = RootModuleBuilder().with(dataStoreStateService).build().makeRootModule(delegate)
+        _ = RootModuleBuilder(sessionStateService: dataStoreStateService).build().makeRootModule(delegate)
         return Context(delegate: delegate)
     }
 

@@ -25,8 +25,8 @@ struct ApplicationModuleRepository: ModuleRepository {
     private let eventDetailModuleProviding: EventDetailModuleProviding
     private let eventFeedbackModuleProviding: EventFeedbackModuleProviding
     
-    init() {
-        rootModuleProviding = RootModuleBuilder().build()
+    init(services: Services) {
+        rootModuleProviding = RootModuleBuilder(sessionStateService: services.sessionState).build()
         tutorialModuleProviding = TutorialModuleBuilder().build()
         preloadModuleProviding = PreloadModuleBuilder().build()
         newsModuleProviding = NewsModuleBuilder().build()
