@@ -3,18 +3,8 @@ import Foundation.NSAttributedString
 
 struct DefaultAnnouncementDetailInteractor: AnnouncementDetailInteractor {
 
-    private let announcementsService: AnnouncementsService
-    private let markdownRenderer: MarkdownRenderer
-
-    init() {
-        self.init(announcementsService: ApplicationStack.instance.services.announcements,
-                  markdownRenderer: DefaultDownMarkdownRenderer())
-    }
-
-    init(announcementsService: AnnouncementsService, markdownRenderer: MarkdownRenderer) {
-        self.announcementsService = announcementsService
-        self.markdownRenderer = markdownRenderer
-    }
+    var announcementsService: AnnouncementsService
+    var markdownRenderer: MarkdownRenderer
 
     func makeViewModel(for identifier: AnnouncementIdentifier, completionHandler: @escaping (AnnouncementViewModel) -> Void) {
         guard let announcement = announcementsService.fetchAnnouncement(identifier: identifier) else { return }

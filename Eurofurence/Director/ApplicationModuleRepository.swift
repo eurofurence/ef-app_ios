@@ -43,7 +43,11 @@ struct ApplicationModuleRepository: ModuleRepository {
         mapsModuleProviding = MapsModuleBuilder().build()
         mapDetailModuleProviding = MapDetailModuleBuilder().build()
         announcementsModuleFactory = AnnouncementsModuleBuilder().build()
-        announcementDetailModuleProviding = AnnouncementDetailModuleBuilder().build()
+        
+        let announcementDetailInteractor = DefaultAnnouncementDetailInteractor(announcementsService: services.announcements,
+                                                                               markdownRenderer: DefaultMarkdownRenderer())
+        announcementDetailModuleProviding = AnnouncementDetailModuleBuilder(announcementDetailInteractor: announcementDetailInteractor).build()
+        
         eventDetailModuleProviding = EventDetailModuleBuilder().build()
         eventFeedbackModuleProviding = EventFeedbackModuleProvidingImpl()
         webModuleProviding = SafariWebModuleProviding()
