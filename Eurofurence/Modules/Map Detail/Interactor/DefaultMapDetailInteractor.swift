@@ -90,10 +90,6 @@ class DefaultMapDetailInteractor: MapDetailInteractor, MapsObserver {
     private let mapsService: MapsService
     private var maps = [Map]()
 
-    convenience init() {
-        self.init(mapsService: ApplicationStack.instance.services.maps)
-    }
-
     init(mapsService: MapsService) {
         self.mapsService = mapsService
         mapsService.add(self)

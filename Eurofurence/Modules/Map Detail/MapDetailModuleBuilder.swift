@@ -3,22 +3,16 @@ import Foundation
 class MapDetailModuleBuilder {
 
     private var sceneFactory: MapDetailSceneFactory
-    private var interactor: MapDetailInteractor
+    private let interactor: MapDetailInteractor
 
-    init() {
+    init(interactor: MapDetailInteractor) {
+        self.interactor = interactor
         sceneFactory = StoryboardMapDetailSceneFactory()
-        interactor = DefaultMapDetailInteractor()
     }
 
     @discardableResult
     func with(_ sceneFactory: MapDetailSceneFactory) -> MapDetailModuleBuilder {
         self.sceneFactory = sceneFactory
-        return self
-    }
-
-    @discardableResult
-    func with(_ interactor: MapDetailInteractor) -> MapDetailModuleBuilder {
-        self.interactor = interactor
         return self
     }
 

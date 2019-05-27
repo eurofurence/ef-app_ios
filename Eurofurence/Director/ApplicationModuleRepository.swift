@@ -54,7 +54,9 @@ struct ApplicationModuleRepository: ModuleRepository {
         knowledgeDetailModuleProviding = KnowledgeDetailModuleBuilder(knowledgeDetailSceneInteractor: knowledgeDetailSceneInteractor).build()
         
         mapsModuleProviding = MapsModuleBuilder().build()
-        mapDetailModuleProviding = MapDetailModuleBuilder().build()
+        
+        let mapDetailInteractor = DefaultMapDetailInteractor(mapsService: services.maps)
+        mapDetailModuleProviding = MapDetailModuleBuilder(interactor: mapDetailInteractor).build()
         
         let announcementsInteractor = DefaultAnnouncementsInteractor(announcementsService: services.announcements,
                                                                      announcementDateFormatter: FoundationAnnouncementDateFormatter.shared,
