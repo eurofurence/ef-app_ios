@@ -33,7 +33,7 @@ struct ApplicationModuleRepository: ModuleRepository {
         scheduleModuleProviding = ScheduleModuleBuilder().build()
         dealersModuleProviding = DealersModuleBuilder().build()
         dealerDetailModuleProviding = DealerDetailModuleBuilder().build()
-        collectThemAllModuleProviding = CollectThemAllModuleBuilder().build()
+        collectThemAllModuleProviding = CollectThemAllModuleBuilder(service: services.collectThemAll).build()
         messagesModuleProviding = MessagesModuleBuilder().build()
         loginModuleProviding = LoginModuleBuilder().build()
         messageDetailModuleProviding = MessageDetailModuleBuilder().build()

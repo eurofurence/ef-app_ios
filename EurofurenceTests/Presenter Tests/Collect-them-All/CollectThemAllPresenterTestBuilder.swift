@@ -13,9 +13,8 @@ class CollectThemAllPresenterTestBuilder {
     func build() -> Context {
         let sceneFactory = StubCollectThemAllSceneFactory()
         let service = FakeCollectThemAllService()
-        let module = CollectThemAllModuleBuilder()
+        let module = CollectThemAllModuleBuilder(service: service)
             .with(sceneFactory)
-            .with(service)
             .build()
             .makeCollectThemAllModule()
 

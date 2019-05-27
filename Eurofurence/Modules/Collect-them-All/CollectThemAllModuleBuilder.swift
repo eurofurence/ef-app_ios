@@ -4,22 +4,16 @@ import UIKit
 class CollectThemAllModuleBuilder {
 
     private var sceneFactory: CollectThemAllSceneFactory
-    private var service: CollectThemAllService
+    private let service: CollectThemAllService
 
-    init() {
+    init(service: CollectThemAllService) {
+        self.service = service
         sceneFactory = StoryboardCollectThemAllSceneFactory()
-        service = ApplicationStack.instance.services.collectThemAll
     }
 
     @discardableResult
     func with(_ sceneFactory: CollectThemAllSceneFactory) -> CollectThemAllModuleBuilder {
         self.sceneFactory = sceneFactory
-        return self
-    }
-
-    @discardableResult
-    func with(_ service: CollectThemAllService) -> CollectThemAllModuleBuilder {
-        self.service = service
         return self
     }
 
