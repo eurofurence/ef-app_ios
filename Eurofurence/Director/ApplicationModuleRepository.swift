@@ -40,7 +40,7 @@ struct ApplicationModuleRepository: ModuleRepository {
         dealerDetailModuleProviding = DealerDetailModuleBuilder(dealerDetailInteractor: dealerDetailInteractor).build()
         
         collectThemAllModuleProviding = CollectThemAllModuleBuilder(service: services.collectThemAll).build()
-        messagesModuleProviding = MessagesModuleBuilder().build()
+        messagesModuleProviding = MessagesModuleBuilder(authenticationService: services.authentication, privateMessagesService: services.privateMessages).build()
         loginModuleProviding = LoginModuleBuilder(authenticationService: services.authentication).build()
         messageDetailModuleProviding = MessageDetailModuleBuilder(privateMessagesService: services.privateMessages).build()
         

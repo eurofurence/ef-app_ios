@@ -4,30 +4,19 @@ import Foundation.NSDateFormatter
 class MessagesModuleBuilder {
 
     private var sceneFactory: MessagesSceneFactory
-    private var authenticationService: AuthenticationService
-    private var privateMessagesService: PrivateMessagesService
+    private let authenticationService: AuthenticationService
+    private let privateMessagesService: PrivateMessagesService
     private var dateFormatter: DateFormatterProtocol
 
-    init() {
+    init(authenticationService: AuthenticationService, privateMessagesService: PrivateMessagesService) {
+        self.authenticationService = authenticationService
+        self.privateMessagesService = privateMessagesService
         sceneFactory = StoryboardMessagesSceneFactory()
-        authenticationService = ApplicationStack.instance.services.authentication
-        privateMessagesService = ApplicationStack.instance.services.privateMessages
         dateFormatter = DateFormatter()
     }
 
     func with(_ sceneFactory: MessagesSceneFactory) -> MessagesModuleBuilder {
         self.sceneFactory = sceneFactory
-        return self
-    }
-
-    func with(_ authenticationService: AuthenticationService) -> MessagesModuleBuilder {
-        self.authenticationService = authenticationService
-        return self
-    }
-
-    func with(_ privateMessagesService: PrivateMessagesService) ->
-        MessagesModuleBuilder {
-        self.privateMessagesService = privateMessagesService
         return self
     }
 
