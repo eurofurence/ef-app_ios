@@ -2,18 +2,12 @@ import EurofurenceModel
 
 class KnowledgeGroupsModuleBuilder {
 
-    private var knowledgeListInteractor: KnowledgeGroupsInteractor
+    private let knowledgeListInteractor: KnowledgeGroupsInteractor
     private var knowledgeSceneFactory: KnowledgeListSceneFactory
 
-    init() {
-        knowledgeListInteractor = DefaultKnowledgeGroupsInteractor(service: ApplicationStack.instance.services.knowledge)
-        knowledgeSceneFactory = StoryboardKnowledgeListSceneFactory()
-    }
-
-    @discardableResult
-    func with(_ knowledgeListInteractor: KnowledgeGroupsInteractor) -> KnowledgeGroupsModuleBuilder {
+    init(knowledgeListInteractor: KnowledgeGroupsInteractor) {
         self.knowledgeListInteractor = knowledgeListInteractor
-        return self
+        knowledgeSceneFactory = StoryboardKnowledgeListSceneFactory()
     }
 
     @discardableResult
