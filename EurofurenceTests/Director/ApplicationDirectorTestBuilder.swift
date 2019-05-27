@@ -232,27 +232,27 @@ class ApplicationDirectorTestBuilder {
     }
 
     private func makeDirectorBuilder() -> DirectorBuilder {
-        let moduleRepository = ModuleAggregation(webModuleProviding: webModuleProviding,
-                                                 rootModuleProviding: rootModule,
-                                                 tutorialModuleProviding: tutorialModule,
-                                                 preloadModuleProviding: preloadModule,
-                                                 newsModuleProviding: newsModule,
-                                                 scheduleModuleProviding: scheduleModule,
-                                                 dealersModuleProviding: dealersModule,
-                                                 dealerDetailModuleProviding: dealerDetailModule,
-                                                 collectThemAllModuleProviding: collectThemAllModule,
-                                                 messagesModuleProviding: messagesModule,
-                                                 loginModuleProviding: loginModule,
-                                                 messageDetailModuleProviding: messageDetailModule,
-                                                 knowledgeListModuleProviding: knowledgeListModule,
-                                                 knowledgeGroupEntriesModule: knowledgeGroupEntriesModule,
-                                                 knowledgeDetailModuleProviding: knowledgeDetailModule,
-                                                 mapsModuleProviding: mapsModule,
-                                                 mapDetailModuleProviding: mapDetailModule,
-                                                 announcementsModuleFactory: announcementsModule,
-                                                 announcementDetailModuleProviding: announcementDetailModule,
-                                                 eventDetailModuleProviding: eventDetailModule,
-                                                 eventFeedbackModuleProviding: eventFeedbackModule)
+        let moduleRepository = FakeModuleRepository(webModuleProviding: webModuleProviding,
+                                                    rootModuleProviding: rootModule,
+                                                    tutorialModuleProviding: tutorialModule,
+                                                    preloadModuleProviding: preloadModule,
+                                                    newsModuleProviding: newsModule,
+                                                    scheduleModuleProviding: scheduleModule,
+                                                    dealersModuleProviding: dealersModule,
+                                                    dealerDetailModuleProviding: dealerDetailModule,
+                                                    collectThemAllModuleProviding: collectThemAllModule,
+                                                    messagesModuleProviding: messagesModule,
+                                                    loginModuleProviding: loginModule,
+                                                    messageDetailModuleProviding: messageDetailModule,
+                                                    knowledgeListModuleProviding: knowledgeListModule,
+                                                    knowledgeGroupEntriesModule: knowledgeGroupEntriesModule,
+                                                    knowledgeDetailModuleProviding: knowledgeDetailModule,
+                                                    mapsModuleProviding: mapsModule,
+                                                    mapDetailModuleProviding: mapDetailModule,
+                                                    announcementsModuleFactory: announcementsModule,
+                                                    announcementDetailModuleProviding: announcementDetailModule,
+                                                    eventDetailModuleProviding: eventDetailModule,
+                                                    eventFeedbackModuleProviding: eventFeedbackModule)
         
         let builder = DirectorBuilder(moduleRepository: moduleRepository, linkLookupService: linkRouter)
         builder.withAnimations(false)
