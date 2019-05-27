@@ -31,7 +31,10 @@ struct ApplicationModuleRepository: ModuleRepository {
         preloadModuleProviding = PreloadModuleBuilder().build()
         newsModuleProviding = NewsModuleBuilder().build()
         scheduleModuleProviding = ScheduleModuleBuilder().build()
-        dealersModuleProviding = DealersModuleBuilder().build()
+        
+        let defaultDealerIcon = #imageLiteral(resourceName: "defaultAvatar")
+        let dealersInteractor = DefaultDealersInteractor(dealersService: services.dealers, defaultIconData: defaultDealerIcon.pngData()!, refreshService: services.refresh)
+        dealersModuleProviding = DealersModuleBuilder(interactor: dealersInteractor).build()
         
         let dealerDetailInteractor = DefaultDealerDetailInteractor(dealersService: services.dealers)
         dealerDetailModuleProviding = DealerDetailModuleBuilder(dealerDetailInteractor: dealerDetailInteractor).build()

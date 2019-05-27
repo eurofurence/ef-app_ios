@@ -12,18 +12,6 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
     private let searchViewModel: SearchViewModel
     private let eventBus = EventBus()
 
-    init() {
-        self.init(dealersService: ApplicationStack.instance.services.dealers)
-    }
-
-    init(dealersService: DealersService) {
-        let defaultIcon = #imageLiteral(resourceName: "defaultAvatar")
-        let defaultIconData = defaultIcon.pngData()!
-        self.init(dealersService: dealersService,
-                  defaultIconData: defaultIconData,
-                  refreshService: ApplicationStack.instance.services.refresh)
-    }
-
     init(dealersService: DealersService, defaultIconData: Data, refreshService: RefreshService) {
         self.dealersService = dealersService
         self.defaultIconData = defaultIconData
