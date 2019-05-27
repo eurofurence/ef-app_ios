@@ -235,34 +235,35 @@ class ApplicationDirectorTestBuilder {
     }
 
     private func makeDirectorBuilder() -> DirectorBuilder {
-        let builder = DirectorBuilder(linkLookupService: linkRouter, notificationHandling: notificationHandling)
+        let moduleRepository = ModuleAggregation(webModuleProviding: webModuleProviding,
+                                                 rootModuleProviding: rootModule,
+                                                 tutorialModuleProviding: tutorialModule,
+                                                 preloadModuleProviding: preloadModule,
+                                                 newsModuleProviding: newsModule,
+                                                 scheduleModuleProviding: scheduleModule,
+                                                 dealersModuleProviding: dealersModule,
+                                                 dealerDetailModuleProviding: dealerDetailModule,
+                                                 collectThemAllModuleProviding: collectThemAllModule,
+                                                 messagesModuleProviding: messagesModule,
+                                                 loginModuleProviding: loginModule,
+                                                 messageDetailModuleProviding: messageDetailModule,
+                                                 knowledgeListModuleProviding: knowledgeListModule,
+                                                 knowledgeGroupEntriesModule: knowledgeGroupEntriesModule,
+                                                 knowledgeDetailModuleProviding: knowledgeDetailModule,
+                                                 mapsModuleProviding: mapsModule,
+                                                 mapDetailModuleProviding: mapDetailModule,
+                                                 announcementsModuleFactory: announcementsModule,
+                                                 announcementDetailModuleProviding: announcementDetailModule,
+                                                 eventDetailModuleProviding: eventDetailModule,
+                                                 eventFeedbackModuleProviding: eventFeedbackModule)
+        
+        let builder = DirectorBuilder(moduleRepository: moduleRepository, linkLookupService: linkRouter, notificationHandling: notificationHandling)
         builder.withAnimations(false)
         builder.with(moduleOrderingPolicy)
         builder.with(windowWireframe)
         builder.with(StubNavigationControllerFactory())
-        builder.with(rootModule)
-        builder.with(tutorialModule)
-        builder.with(preloadModule)
         builder.with(tabModule)
-        builder.with(newsModule)
-        builder.with(scheduleModule)
-        builder.with(dealersModule)
-        builder.with(dealerDetailModule)
-        builder.with(collectThemAllModule)
-        builder.with(messagesModule)
-        builder.with(loginModule)
-        builder.with(messageDetailModule)
-        builder.with(knowledgeListModule)
-        builder.with(knowledgeGroupEntriesModule)
-        builder.with(knowledgeDetailModule)
-        builder.with(mapsModule)
-        builder.with(mapDetailModule)
-        builder.with(announcementsModule)
-        builder.with(announcementDetailModule)
-        builder.with(eventDetailModule)
-        builder.with(webModuleProviding)
         builder.with(urlOpener)
-        builder.with(eventFeedbackModule)
 
         return builder
     }

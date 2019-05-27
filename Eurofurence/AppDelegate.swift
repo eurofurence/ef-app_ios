@@ -64,7 +64,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     private func prepareDirector() {
         let services = ApplicationStack.instance.services
-        let director = DirectorBuilder(linkLookupService: services.contentLinks, notificationHandling: services.notifications).build()
+        let director = DirectorBuilder(moduleRepository: ApplicationModuleRepository(),
+                                       linkLookupService: services.contentLinks,
+                                       notificationHandling: services.notifications).build()
         services.contentLinks.setExternalContentHandler(director)
         self.director = director
     }
