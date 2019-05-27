@@ -233,7 +233,7 @@ class DirectorBuilder {
         let moduleRepository = makeApplicationModuleRepository()
         
         return ApplicationDirector(animate: animate,
-                                   applicationModuleRepository: moduleRepository,
+                                   moduleRepository: moduleRepository,
                                    linkLookupService: linkLookupService,
                                    urlOpener: urlOpener,
                                    orderingPolicy: orderingPolicy,
@@ -243,28 +243,28 @@ class DirectorBuilder {
                                    notificationHandling: notificationHandling)
     }
     
-    private func makeApplicationModuleRepository() -> ApplicationModuleRepository {
-        return ApplicationModuleRepository(webModuleProviding: webModuleProviding,
-                                           rootModuleProviding: rootModuleProviding,
-                                           tutorialModuleProviding: tutorialModuleProviding,
-                                           preloadModuleProviding: preloadModuleProviding,
-                                           newsModuleProviding: newsModuleProviding,
-                                           scheduleModuleProviding: scheduleModuleProviding,
-                                           dealersModuleProviding: dealersModuleProviding,
-                                           dealerDetailModuleProviding: dealerDetailModuleProviding,
-                                           collectThemAllModuleProviding: collectThemAllModuleProviding,
-                                           messagesModuleProviding: messagesModuleProviding,
-                                           loginModuleProviding: loginModuleProviding,
-                                           messageDetailModuleProviding: messageDetailModuleProviding,
-                                           knowledgeListModuleProviding: knowledgeListModuleProviding,
-                                           knowledgeGroupEntriesModule: knowledgeGroupEntriesModule,
-                                           knowledgeDetailModuleProviding: knowledgeDetailModuleProviding,
-                                           mapsModuleProviding: mapsModuleProviding,
-                                           mapDetailModuleProviding: mapDetailModuleProviding,
-                                           announcementsModuleFactory: announcementsModuleFactory,
-                                           announcementDetailModuleProviding: announcementDetailModuleProviding,
-                                           eventDetailModuleProviding: eventDetailModuleProviding,
-                                           eventFeedbackModuleProviding: eventFeedbackModule)
+    private func makeApplicationModuleRepository() -> ModuleRepository {
+        return ModuleRepository(webModuleProviding: webModuleProviding,
+                                rootModuleProviding: rootModuleProviding,
+                                tutorialModuleProviding: tutorialModuleProviding,
+                                preloadModuleProviding: preloadModuleProviding,
+                                newsModuleProviding: newsModuleProviding,
+                                scheduleModuleProviding: scheduleModuleProviding,
+                                dealersModuleProviding: dealersModuleProviding,
+                                dealerDetailModuleProviding: dealerDetailModuleProviding,
+                                collectThemAllModuleProviding: collectThemAllModuleProviding,
+                                messagesModuleProviding: messagesModuleProviding,
+                                loginModuleProviding: loginModuleProviding,
+                                messageDetailModuleProviding: messageDetailModuleProviding,
+                                knowledgeListModuleProviding: knowledgeListModuleProviding,
+                                knowledgeGroupEntriesModule: knowledgeGroupEntriesModule,
+                                knowledgeDetailModuleProviding: knowledgeDetailModuleProviding,
+                                mapsModuleProviding: mapsModuleProviding,
+                                mapDetailModuleProviding: mapDetailModuleProviding,
+                                announcementsModuleFactory: announcementsModuleFactory,
+                                announcementDetailModuleProviding: announcementDetailModuleProviding,
+                                eventDetailModuleProviding: eventDetailModuleProviding,
+                                eventFeedbackModuleProviding: eventFeedbackModule)
     }
 
 }
