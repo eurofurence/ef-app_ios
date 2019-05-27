@@ -35,9 +35,8 @@ class AnnouncementsPresenterTestBuilder {
     func build() -> Context {
         let sceneFactory = StubAnnouncementsSceneFactory()
         let delegate = CapturingAnnouncementsModuleDelegate()
-        let module = AnnouncementsModuleBuilder()
+        let module = AnnouncementsModuleBuilder(announcementsInteractor: announcementsInteractor)
             .with(sceneFactory)
-            .with(announcementsInteractor)
             .build()
             .makeAnnouncementsModule(delegate)
 

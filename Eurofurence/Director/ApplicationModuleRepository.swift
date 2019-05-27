@@ -42,7 +42,11 @@ struct ApplicationModuleRepository: ModuleRepository {
         knowledgeDetailModuleProviding = KnowledgeDetailModuleBuilder().build()
         mapsModuleProviding = MapsModuleBuilder().build()
         mapDetailModuleProviding = MapDetailModuleBuilder().build()
-        announcementsModuleFactory = AnnouncementsModuleBuilder().build()
+        
+        let announcementsInteractor = DefaultAnnouncementsInteractor(announcementsService: services.announcements,
+                                                                     announcementDateFormatter: FoundationAnnouncementDateFormatter.shared,
+                                                                     markdownRenderer: SubtleDownMarkdownRenderer())
+        announcementsModuleFactory = AnnouncementsModuleBuilder(announcementsInteractor: announcementsInteractor).build()
         
         let announcementDetailInteractor = DefaultAnnouncementDetailInteractor(announcementsService: services.announcements,
                                                                                markdownRenderer: DefaultMarkdownRenderer())

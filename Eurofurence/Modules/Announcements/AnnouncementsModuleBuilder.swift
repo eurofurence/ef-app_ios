@@ -6,9 +6,9 @@ class AnnouncementsModuleBuilder {
     private var announcementsSceneFactory: AnnouncementsSceneFactory
     private var announcementsInteractor: AnnouncementsInteractor
 
-    init() {
+    init(announcementsInteractor: AnnouncementsInteractor) {
+        self.announcementsInteractor = announcementsInteractor
         announcementsSceneFactory = StoryboardAnnouncementsSceneFactory()
-        announcementsInteractor = DefaultAnnouncementsInteractor()
     }
 
     func build() -> AnnouncementsModuleProviding {
@@ -19,12 +19,6 @@ class AnnouncementsModuleBuilder {
     @discardableResult
     func with(_ announcementsSceneFactory: AnnouncementsSceneFactory) -> AnnouncementsModuleBuilder {
         self.announcementsSceneFactory = announcementsSceneFactory
-        return self
-    }
-
-    @discardableResult
-    func with(_ announcementsInteractor: AnnouncementsInteractor) -> AnnouncementsModuleBuilder {
-        self.announcementsInteractor = announcementsInteractor
         return self
     }
 
