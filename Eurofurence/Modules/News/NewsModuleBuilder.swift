@@ -1,20 +1,15 @@
 class NewsModuleBuilder {
 
     private var newsSceneFactory: NewsSceneFactory
-    private var newsInteractor: NewsInteractor
+    private let newsInteractor: NewsInteractor
 
-    init() {
+    init(newsInteractor: NewsInteractor) {
+        self.newsInteractor = newsInteractor
         newsSceneFactory = StoryboardNewsSceneFactory()
-        newsInteractor = DefaultNewsInteractor()
     }
 
     func with(_ newsSceneFactory: NewsSceneFactory) -> NewsModuleBuilder {
         self.newsSceneFactory = newsSceneFactory
-        return self
-    }
-
-    func with(_ newsInteractor: NewsInteractor) -> NewsModuleBuilder {
-        self.newsInteractor = newsInteractor
         return self
     }
 

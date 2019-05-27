@@ -29,7 +29,21 @@ struct ApplicationModuleRepository: ModuleRepository {
         rootModuleProviding = RootModuleBuilder(sessionStateService: services.sessionState).build()
         tutorialModuleProviding = TutorialModuleBuilder().build()
         preloadModuleProviding = PreloadModuleBuilder().build()
-        newsModuleProviding = NewsModuleBuilder().build()
+        
+        let newsInteractor = DefaultNewsInteractor(announcementsService: services.announcements,
+                                                   authenticationService: services.authentication,
+                                                   privateMessagesService: services.privateMessages,
+                                                   daysUntilConventionService: services.conventionCountdown,
+                                                   eventsService: services.events,
+                                                   relativeTimeIntervalCountdownFormatter: FoundationRelativeTimeIntervalCountdownFormatter.shared,
+                                                   hoursDateFormatter: FoundationHoursDateFormatter.shared,
+                                                   dateDistanceCalculator: FoundationDateDistanceCalculator(),
+                                                   clock: SystemClock.shared,
+                                                   refreshService: services.refresh,
+                                                   announcementsDateFormatter: FoundationAnnouncementDateFormatter.shared,
+                                                   announcementsMarkdownRenderer: SubtleDownMarkdownRenderer())
+        newsModuleProviding = NewsModuleBuilder(newsInteractor: newsInteractor).build()
+        
         scheduleModuleProviding = ScheduleModuleBuilder().build()
         
         let defaultDealerIcon = #imageLiteral(resourceName: "defaultAvatar")
