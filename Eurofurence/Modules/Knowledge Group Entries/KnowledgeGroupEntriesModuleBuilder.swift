@@ -2,18 +2,12 @@ import Foundation
 
 class KnowledgeGroupEntriesModuleBuilder {
 
-    private var interactor: KnowledgeGroupEntriesInteractor
+    private let interactor: KnowledgeGroupEntriesInteractor
     private var sceneFactory: KnowledgeGroupEntriesSceneFactory
 
-    init() {
-        interactor = DefaultKnowledgeGroupEntriesInteractor()
-        sceneFactory = StoryboardKnowledgeGroupEntriesSceneFactory()
-    }
-
-    @discardableResult
-    func with(_ interactor: KnowledgeGroupEntriesInteractor) -> KnowledgeGroupEntriesModuleBuilder {
+    init(interactor: KnowledgeGroupEntriesInteractor) {
         self.interactor = interactor
-        return self
+        sceneFactory = StoryboardKnowledgeGroupEntriesSceneFactory()
     }
 
     @discardableResult
