@@ -11,14 +11,9 @@ struct NotificationServiceFetchResultAdapter {
 
     func handleRemoteNotification(_ payload: [AnyHashable: Any],
                                   completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        let castedPayloadKeysAndValues: [(String, String)] = payload.compactMap { (key, value) -> (String, String)? in
-            guard let stringKey = key as? String, let stringValue = value as? String else { return nil }
-            return (stringKey, stringValue)
-        }
+        let notificationKeysAndValues: [String: String] = payload.castingKeysAndValues()
 
-        let castedPayload: [String: String] = castedPayloadKeysAndValues.reduce(into: [String: String](), { $0[$1.0] = $1.1 })
-
-        notificationService.handleNotification(payload: castedPayload) { (content) in
+        notificationService.handleNotification(payload: notificationKeysAndValues) { (content) in
             switch content {
             case .successfulSync:
                 completionHandler(.newData)
