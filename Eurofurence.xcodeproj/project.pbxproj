@@ -475,6 +475,7 @@
 		CA36A4EA20DB007900EE6537 /* DealerDetailModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4E920DB007900EE6537 /* DealerDetailModule.swift */; };
 		CA3ABA00229C2FF50045A35B /* ModuleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3AB9FF229C2FF50045A35B /* ModuleRepository.swift */; };
 		CA3ABA02229C30E70045A35B /* ApplicationModuleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3ABA01229C30E70045A35B /* ApplicationModuleRepository.swift */; };
+		CA3ABA06229C4B260045A35B /* AppNotificationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3ABA05229C4B260045A35B /* AppNotificationDelegate.swift */; };
 		CA401066210FA8830056E16C /* WhenKnowledgeGroupEntriesSceneLoads.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA401065210FA8830056E16C /* WhenKnowledgeGroupEntriesSceneLoads.swift */; };
 		CA401069210FAE9D0056E16C /* KnowledgeGroupEntriesModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA401068210FAE9D0056E16C /* KnowledgeGroupEntriesModuleBuilder.swift */; };
 		CA40106C210FAEB20056E16C /* KnowledgeGroupEntriesModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40106B210FAEB20056E16C /* KnowledgeGroupEntriesModule.swift */; };
@@ -2144,6 +2145,7 @@
 		CA3990F320ACD73D001E3F1A /* WhenObservingUpcomingEvents_ThenLoadSucceeds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingUpcomingEvents_ThenLoadSucceeds.swift; sourceTree = "<group>"; };
 		CA3AB9FF229C2FF50045A35B /* ModuleRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleRepository.swift; sourceTree = "<group>"; };
 		CA3ABA01229C30E70045A35B /* ApplicationModuleRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationModuleRepository.swift; sourceTree = "<group>"; };
+		CA3ABA05229C4B260045A35B /* AppNotificationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNotificationDelegate.swift; sourceTree = "<group>"; };
 		CA401056210A6BAD0056E16C /* WhenDeletingMap_AfterSuccessfulSync_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDeletingMap_AfterSuccessfulSync_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA401058210B9FD40056E16C /* ImageCharacteristics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCharacteristics.swift; sourceTree = "<group>"; };
 		CA40105D210E1A9D0056E16C /* WhenSyncSucceeds_WithImages_ThenSubsequentSyncDeletesImage_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSyncSucceeds_WithImages_ThenSubsequentSyncDeletesImage_ApplicationShould.swift; sourceTree = "<group>"; };
@@ -3469,6 +3471,7 @@
 				9ACF99371EBE172D006FC958 /* AppDelegate.swift */,
 				CA02910121F4D6020007F350 /* AppDelegate+DebugWindow.swift */,
 				CA0F9D9321D53C6F0084886E /* ApplicationStack.swift */,
+				CA3ABA05229C4B260045A35B /* AppNotificationDelegate.swift */,
 				CA9845D91F29199E00E8821D /* ScreenshotAssistant.swift */,
 				CAEA1045216E77DE00B0C7A6 /* Theme.swift */,
 				9ACF993E1EBE172D006FC958 /* Assets.xcassets */,
@@ -8173,6 +8176,7 @@
 				CA50B1AD226110C10091E425 /* EventFeedbackModuleProvidingImpl.swift in Sources */,
 				CA272562211255DE004C6D0A /* KnowledgeDetailImageTableViewCell.swift in Sources */,
 				CACF1E5820AE2DED00D904B5 /* EventDetailSceneFactory.swift in Sources */,
+				CA3ABA06229C4B260045A35B /* AppNotificationDelegate.swift in Sources */,
 				CA8240A221249A69007E4A70 /* ReviewPromptAction.swift in Sources */,
 				CA283ACA20EAB9E600F7D195 /* AnnouncementComponent.swift in Sources */,
 				CA6A8DA220E2CB5C007536CD /* MapsModuleDelegate.swift in Sources */,

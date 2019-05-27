@@ -3,7 +3,9 @@ import Firebase
 import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    // MARK: UIApplicationDelegate
 
 	var window: UIWindow? = UIWindow()
 
@@ -11,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         prepareFrameworks()
         prepareApplicationStack()
-        prepareNotificationHandler()
+        prepareNotificationDelegate()
         installDebugModule()
         showApplicationWindow()
 
@@ -28,16 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                      fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         ApplicationStack.handleRemoteNotification(userInfo, completionHandler: completionHandler)
 	}
-
-    func userNotificationCenter(_ center: UNUserNotificationCenter,
-                                willPresent notification: UNNotification,
-                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Swift.Void) {
-        completionHandler([.alert, .badge, .sound])
-    }
-
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        ApplicationStack.openNotification(response.notification.request.content.userInfo, completionHandler: completionHandler)
-    }
+    
+    // MARK: Private
 
     private func prepareFrameworks() {
         ScreenshotAssistant.prepare()
@@ -50,17 +44,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         ReviewPromptController.initialize()
     }
     
-    private func prepareNotificationHandler() {
-        UNUserNotificationCenter.current().delegate = self
-        requestNotificationPermissions()
-    }
-    
-    private func requestNotificationPermissions() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (_, error) in
-            if let error = error {
-                print("Failed to register for notifications with error: \(error)")
-            }
-        }
+    private func prepareNotificationDelegate() {
+        AppNotificationDelegate.instance.prepare()
     }
 
     private func showApplicationWindow() {
