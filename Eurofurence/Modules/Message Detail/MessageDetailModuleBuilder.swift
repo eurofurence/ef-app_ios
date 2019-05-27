@@ -4,21 +4,15 @@ import UIKit.UIViewController
 class MessageDetailModuleBuilder {
 
     private var messageDetailSceneFactory: MessageDetailSceneFactory
-    private var privateMessagesService: PrivateMessagesService
+    private let privateMessagesService: PrivateMessagesService
 
-    init() {
+    init(privateMessagesService: PrivateMessagesService) {
+        self.privateMessagesService = privateMessagesService
         messageDetailSceneFactory = StoryboardMessageDetailSceneFactory()
-        privateMessagesService = ApplicationStack.instance.services.privateMessages
     }
 
     func with(_ messageDetailSceneFactory: MessageDetailSceneFactory) -> MessageDetailModuleBuilder {
         self.messageDetailSceneFactory = messageDetailSceneFactory
-        return self
-    }
-
-    @discardableResult
-    func with(_ privateMessagesService: PrivateMessagesService) -> MessageDetailModuleBuilder {
-        self.privateMessagesService = privateMessagesService
         return self
     }
 

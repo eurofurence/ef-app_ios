@@ -61,9 +61,8 @@ class MessageDetailPresenterTests: XCTestCase {
         message.contents = "Contents"
         messageDetailSceneFactory = StubMessageDetailSceneFactory()
         messagesService = CapturingPrivateMessagesService()
-        viewController = MessageDetailModuleBuilder()
+        viewController = MessageDetailModuleBuilder(privateMessagesService: messagesService)
             .with(messageDetailSceneFactory)
-            .with(messagesService)
             .build()
             .makeMessageDetailModule(message: message)
     }
