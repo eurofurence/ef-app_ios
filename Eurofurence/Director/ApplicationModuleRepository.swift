@@ -63,7 +63,16 @@ struct ApplicationModuleRepository: ModuleRepository {
                                                                  markdownRenderer: DefaultDownMarkdownRenderer())
         eventDetailModuleProviding = EventDetailModuleBuilder(interactor: eventDetailInteractor).build()
         
-        eventFeedbackModuleProviding = EventFeedbackModuleProvidingImpl()
+        let eventFeedbackPresenterFactory = EventFeedbackPresenterFactoryImpl(eventService: services.events,
+                                                                 dayOfWeekFormatter: FoundationDayOfWeekFormatter.shared,
+                                                                 startTimeFormatter: FoundationHoursDateFormatter.shared,
+                                                                 endTimeFormatter: FoundationHoursDateFormatter.shared,
+                                                                 successHaptic: CocoaTouchSuccessHaptic(),
+                                                                 failureHaptic: CocoaTouchFailureHaptic(),
+                                                                 successWaitingRule: ShortDelayEventFeedbackSuccessWaitingRule())
+        let eventFeedbackSceneFactory = StoryboardEventFeedbackSceneFactory()
+        eventFeedbackModuleProviding = EventFeedbackModuleProvidingImpl(presenterFactory: eventFeedbackPresenterFactory, sceneFactory: eventFeedbackSceneFactory)
+        
         webModuleProviding = SafariWebModuleProviding()
     }
     
