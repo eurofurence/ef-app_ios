@@ -7,12 +7,6 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
     private let eventsService: EventsService
 	private let markdownRenderer: MarkdownRenderer
 
-    convenience init() {
-        self.init(dateRangeFormatter: FoundationDateRangeFormatter.shared,
-                  eventsService: ApplicationStack.instance.services.events,
-				  markdownRenderer: DefaultDownMarkdownRenderer())
-    }
-
 	init(dateRangeFormatter: DateRangeFormatter, eventsService: EventsService, markdownRenderer: MarkdownRenderer) {
         self.dateRangeFormatter = dateRangeFormatter
         self.eventsService = eventsService

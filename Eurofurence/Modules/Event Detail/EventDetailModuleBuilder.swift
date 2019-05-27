@@ -7,9 +7,9 @@ class EventDetailModuleBuilder {
     private var interactor: EventDetailInteractor
     private var hapticEngine: SelectionChangedHaptic
 
-    init() {
+    init(interactor: EventDetailInteractor) {
+        self.interactor = interactor
         sceneFactory = StoryboardEventDetailSceneFactory()
-        interactor = DefaultEventDetailInteractor()
         hapticEngine = CocoaTouchHapticEngine()
     }
 

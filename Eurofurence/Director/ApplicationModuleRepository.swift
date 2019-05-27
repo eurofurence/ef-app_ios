@@ -57,8 +57,12 @@ struct ApplicationModuleRepository: ModuleRepository {
         let announcementDetailInteractor = DefaultAnnouncementDetailInteractor(announcementsService: services.announcements,
                                                                                markdownRenderer: DefaultMarkdownRenderer())
         announcementDetailModuleProviding = AnnouncementDetailModuleBuilder(announcementDetailInteractor: announcementDetailInteractor).build()
+
+        let eventDetailInteractor = DefaultEventDetailInteractor(dateRangeFormatter: FoundationDateRangeFormatter.shared,
+                                                                 eventsService: services.events,
+                                                                 markdownRenderer: DefaultDownMarkdownRenderer())
+        eventDetailModuleProviding = EventDetailModuleBuilder(interactor: eventDetailInteractor).build()
         
-        eventDetailModuleProviding = EventDetailModuleBuilder().build()
         eventFeedbackModuleProviding = EventFeedbackModuleProvidingImpl()
         webModuleProviding = SafariWebModuleProviding()
     }
