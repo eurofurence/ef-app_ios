@@ -12,6 +12,7 @@ class ApplicationStack {
     let services: Services
     private let notificationFetchResultAdapter: NotificationServiceFetchResultAdapter
     let notificationScheduleController: NotificationScheduleController
+    private let notificationResponseProcessor: NotificationResponseProcessor
     
     static func assemble() {
         _ = instance
@@ -27,7 +28,7 @@ class ApplicationStack {
     }
     
     static func openNotification(_ userInfo: [AnyHashable: Any], completionHandler: @escaping () -> Void) {
-        instance.director.openNotification(userInfo, completionHandler: completionHandler)
+        instance.notificationResponseProcessor.openNotification(userInfo, completionHandler: completionHandler)
     }
 
     private init() {
@@ -72,6 +73,10 @@ class ApplicationStack {
                                    linkLookupService: services.contentLinks,
                                    notificationHandling: services.notifications).build()
         services.contentLinks.setExternalContentHandler(director)
+        
+        let notificationHandler = NavigateToContentNotificationResponseHandler(director: director)
+        notificationResponseProcessor = NotificationResponseProcessor(notificationHandling: services.notifications,
+                                                                      contentRecipient: notificationHandler)
     }
 
 }

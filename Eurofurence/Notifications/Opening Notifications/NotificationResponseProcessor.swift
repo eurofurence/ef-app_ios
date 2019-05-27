@@ -10,8 +10,15 @@ class NotificationResponseProcessor {
         self.contentRecipient = contentRecipient
     }
     
-    func openNotification(_ payload: [String: String], completionHandler: @escaping () -> Void) {
-        notificationHandling.handleNotification(payload: payload) { (content) in
+    func openNotification(_ payload: [AnyHashable: Any], completionHandler: @escaping () -> Void) {
+        let castedPayloadKeysAndValues = payload.compactMap { (key, value) -> (String, String)? in
+            guard let stringKey = key as? String, let stringValue = value as? String else { return nil }
+            return (stringKey, stringValue)
+        }
+        
+        let castedPayload = castedPayloadKeysAndValues.reduce(into: [String: String](), { $0[$1.0] = $1.1 })
+        
+        notificationHandling.handleNotification(payload: castedPayload) { (content) in
             self.processNotificationContent(content)
             completionHandler()
         }
