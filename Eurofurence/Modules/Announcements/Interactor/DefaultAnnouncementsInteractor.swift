@@ -3,21 +3,9 @@ import Foundation
 
 struct DefaultAnnouncementsInteractor: AnnouncementsInteractor {
 
-    private let announcementsService: AnnouncementsService
-    private let announcementDateFormatter: AnnouncementDateFormatter
-	private let markdownRenderer: MarkdownRenderer
-
-    init() {
-        self.init(announcementsService: ApplicationStack.instance.services.announcements,
-                  announcementDateFormatter: FoundationAnnouncementDateFormatter.shared,
-				  markdownRenderer: SubtleDownMarkdownRenderer())
-    }
-
-	init(announcementsService: AnnouncementsService, announcementDateFormatter: AnnouncementDateFormatter, markdownRenderer: MarkdownRenderer) {
-        self.announcementsService = announcementsService
-        self.announcementDateFormatter = announcementDateFormatter
-		self.markdownRenderer = markdownRenderer
-    }
+    var announcementsService: AnnouncementsService
+    var announcementDateFormatter: AnnouncementDateFormatter
+	var markdownRenderer: MarkdownRenderer
 
     func makeViewModel(completionHandler: @escaping (AnnouncementsListViewModel) -> Void) {
         let viewModel = ViewModel(
