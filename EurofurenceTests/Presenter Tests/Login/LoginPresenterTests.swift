@@ -19,9 +19,8 @@ class LoginPresenterTests: XCTestCase {
         alertRouter = CapturingAlertRouter()
         alertRouter.automaticallyPresentAlerts = true
         delegate = CapturingLoginModuleDelegate()
-        scene = LoginModuleBuilder()
+        scene = LoginModuleBuilder(authenticationService: authenticationService)
             .with(loginSceneFactory)
-            .with(authenticationService)
             .with(alertRouter)
             .build()
             .makeLoginModule(delegate)
