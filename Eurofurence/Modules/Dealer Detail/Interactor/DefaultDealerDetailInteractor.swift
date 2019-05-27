@@ -1,17 +1,9 @@
 import EurofurenceModel
 import Foundation
 
-class DefaultDealerDetailInteractor: DealerDetailInteractor {
+struct DefaultDealerDetailInteractor: DealerDetailInteractor {
 
-    private let dealersService: DealersService
-
-    convenience init() {
-        self.init(dealersService: ApplicationStack.instance.services.dealers)
-    }
-
-    init(dealersService: DealersService) {
-        self.dealersService = dealersService
-    }
+    var dealersService: DealersService
 
     func makeDealerDetailViewModel(for identifier: DealerIdentifier,
                                    completionHandler: @escaping (DealerDetailViewModel) -> Void) {

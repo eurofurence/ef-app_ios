@@ -3,22 +3,16 @@ import Foundation
 class DealerDetailModuleBuilder {
 
     private var dealerDetailSceneFactory: DealerDetailSceneFactory
-    private var dealerDetailInteractor: DealerDetailInteractor
+    private let dealerDetailInteractor: DealerDetailInteractor
 
-    init() {
+    init(dealerDetailInteractor: DealerDetailInteractor) {
+        self.dealerDetailInteractor = dealerDetailInteractor
         dealerDetailSceneFactory = StoryboardDealerDetailSceneFactory()
-        dealerDetailInteractor = DefaultDealerDetailInteractor()
     }
 
     @discardableResult
     func with(_ dealerDetailSceneFactory: DealerDetailSceneFactory) -> DealerDetailModuleBuilder {
         self.dealerDetailSceneFactory = dealerDetailSceneFactory
-        return self
-    }
-
-    @discardableResult
-    func with(_ dealerDetailInteractor: DealerDetailInteractor) -> DealerDetailModuleBuilder {
-        self.dealerDetailInteractor = dealerDetailInteractor
         return self
     }
 

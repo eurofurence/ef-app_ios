@@ -32,7 +32,10 @@ struct ApplicationModuleRepository: ModuleRepository {
         newsModuleProviding = NewsModuleBuilder().build()
         scheduleModuleProviding = ScheduleModuleBuilder().build()
         dealersModuleProviding = DealersModuleBuilder().build()
-        dealerDetailModuleProviding = DealerDetailModuleBuilder().build()
+        
+        let dealerDetailInteractor = DefaultDealerDetailInteractor(dealersService: services.dealers)
+        dealerDetailModuleProviding = DealerDetailModuleBuilder(dealerDetailInteractor: dealerDetailInteractor).build()
+        
         collectThemAllModuleProviding = CollectThemAllModuleBuilder(service: services.collectThemAll).build()
         messagesModuleProviding = MessagesModuleBuilder().build()
         loginModuleProviding = LoginModuleBuilder().build()
