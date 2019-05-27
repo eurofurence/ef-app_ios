@@ -26,6 +26,9 @@ struct ApplicationModuleRepository: ModuleRepository {
     private let eventFeedbackModuleProviding: EventFeedbackModuleProviding
     
     init(services: Services) {
+        let subtleMarkdownRenderer = SubtleDownMarkdownRenderer()
+        let defaultMarkdownRenderer = DefaultMarkdownRenderer()
+        
         rootModuleProviding = RootModuleBuilder(sessionStateService: services.sessionState).build()
         tutorialModuleProviding = TutorialModuleBuilder().build()
         
@@ -43,7 +46,7 @@ struct ApplicationModuleRepository: ModuleRepository {
                                                    clock: SystemClock.shared,
                                                    refreshService: services.refresh,
                                                    announcementsDateFormatter: FoundationAnnouncementDateFormatter.shared,
-                                                   announcementsMarkdownRenderer: SubtleDownMarkdownRenderer())
+                                                   announcementsMarkdownRenderer: subtleMarkdownRenderer)
         newsModuleProviding = NewsModuleBuilder(newsInteractor: newsInteractor).build()
         
         let scheduleInteractor = DefaultScheduleInteractor(eventsService: services.events,
@@ -71,7 +74,8 @@ struct ApplicationModuleRepository: ModuleRepository {
         let knowledgeGroupEntriesInteractor = DefaultKnowledgeGroupEntriesInteractor(service: services.knowledge)
         knowledgeGroupEntriesModule = KnowledgeGroupEntriesModuleBuilder(interactor: knowledgeGroupEntriesInteractor).build()
         
-        let knowledgeDetailSceneInteractor = DefaultKnowledgeDetailSceneInteractor(knowledgeService: services.knowledge, renderer: DefaultMarkdownRenderer())
+        
+        let knowledgeDetailSceneInteractor = DefaultKnowledgeDetailSceneInteractor(knowledgeService: services.knowledge, renderer: defaultMarkdownRenderer)
         knowledgeDetailModuleProviding = KnowledgeDetailModuleBuilder(knowledgeDetailSceneInteractor: knowledgeDetailSceneInteractor).build()
         
         let mapsInteractor = DefaultMapsInteractor(mapsService: services.maps)
@@ -82,11 +86,11 @@ struct ApplicationModuleRepository: ModuleRepository {
         
         let announcementsInteractor = DefaultAnnouncementsInteractor(announcementsService: services.announcements,
                                                                      announcementDateFormatter: FoundationAnnouncementDateFormatter.shared,
-                                                                     markdownRenderer: SubtleDownMarkdownRenderer())
+                                                                     markdownRenderer: subtleMarkdownRenderer)
         announcementsModuleFactory = AnnouncementsModuleBuilder(announcementsInteractor: announcementsInteractor).build()
         
         let announcementDetailInteractor = DefaultAnnouncementDetailInteractor(announcementsService: services.announcements,
-                                                                               markdownRenderer: DefaultMarkdownRenderer())
+                                                                               markdownRenderer: defaultMarkdownRenderer)
         announcementDetailModuleProviding = AnnouncementDetailModuleBuilder(announcementDetailInteractor: announcementDetailInteractor).build()
 
         let eventDetailInteractor = DefaultEventDetailInteractor(dateRangeFormatter: FoundationDateRangeFormatter.shared,
