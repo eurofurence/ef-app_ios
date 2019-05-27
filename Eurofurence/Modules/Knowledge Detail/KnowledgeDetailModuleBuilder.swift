@@ -3,22 +3,16 @@ import Foundation
 class KnowledgeDetailModuleBuilder {
 
     private var knowledgeDetailSceneFactory: KnowledgeDetailSceneFactory
-    private var knowledgeDetailSceneInteractor: KnowledgeDetailSceneInteractor
+    private let knowledgeDetailSceneInteractor: KnowledgeDetailSceneInteractor
 
-    init() {
+    init(knowledgeDetailSceneInteractor: KnowledgeDetailSceneInteractor) {
+        self.knowledgeDetailSceneInteractor = knowledgeDetailSceneInteractor
         knowledgeDetailSceneFactory = StoryboardKnowledgeDetailSceneFactory()
-        knowledgeDetailSceneInteractor = DefaultKnowledgeDetailSceneInteractor()
     }
 
     @discardableResult
     func with(_ knowledgeDetailSceneFactory: KnowledgeDetailSceneFactory) -> KnowledgeDetailModuleBuilder {
         self.knowledgeDetailSceneFactory = knowledgeDetailSceneFactory
-        return self
-    }
-
-    @discardableResult
-    func with(_ knowledgeDetailSceneInteractor: KnowledgeDetailSceneInteractor) -> KnowledgeDetailModuleBuilder {
-        self.knowledgeDetailSceneInteractor = knowledgeDetailSceneInteractor
         return self
     }
 

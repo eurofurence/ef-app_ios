@@ -26,9 +26,8 @@ class KnowledgeDetailPresenterTestBuilder {
         let knowledgeDetailSceneFactory = StubKnowledgeDetailSceneFactory()
         let knowledgeDetailScene = knowledgeDetailSceneFactory.interface
         let delegate = CapturingKnowledgeDetailModuleDelegate()
-        let moduleBuilder = KnowledgeDetailModuleBuilder()
+        let moduleBuilder = KnowledgeDetailModuleBuilder(knowledgeDetailSceneInteractor: interactor)
             .with(knowledgeDetailSceneFactory)
-            .with(interactor)
             .build()
         let module = moduleBuilder.makeKnowledgeListModule(knowledgeEntryIdentifier, delegate: delegate)
 

@@ -25,8 +25,8 @@ struct DefaultKnowledgeDetailSceneInteractor: KnowledgeDetailSceneInteractor {
 
     }
 
-    var knowledgeService: KnowledgeService = ApplicationStack.instance.services.knowledge
-    var renderer: MarkdownRenderer = DefaultDownMarkdownRenderer()
+    var knowledgeService: KnowledgeService
+    var renderer: MarkdownRenderer
 
     func makeViewModel(for identifier: KnowledgeEntryIdentifier, completionHandler: @escaping (KnowledgeEntryDetailViewModel) -> Void) {
         let service = knowledgeService

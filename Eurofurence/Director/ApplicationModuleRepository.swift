@@ -45,7 +45,10 @@ struct ApplicationModuleRepository: ModuleRepository {
         messageDetailModuleProviding = MessageDetailModuleBuilder().build()
         knowledgeListModuleProviding = KnowledgeGroupsModuleBuilder().build()
         knowledgeGroupEntriesModule = KnowledgeGroupEntriesModuleBuilder().build()
-        knowledgeDetailModuleProviding = KnowledgeDetailModuleBuilder().build()
+        
+        let knowledgeDetailSceneInteractor = DefaultKnowledgeDetailSceneInteractor(knowledgeService: services.knowledge, renderer: DefaultMarkdownRenderer())
+        knowledgeDetailModuleProviding = KnowledgeDetailModuleBuilder(knowledgeDetailSceneInteractor: knowledgeDetailSceneInteractor).build()
+        
         mapsModuleProviding = MapsModuleBuilder().build()
         mapDetailModuleProviding = MapDetailModuleBuilder().build()
         
