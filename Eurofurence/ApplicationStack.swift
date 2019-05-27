@@ -7,10 +7,15 @@ class ApplicationStack {
     private static let CID = ConventionIdentifier(identifier: "EF25")
 
     static let instance: ApplicationStack = ApplicationStack()
+    private let director: ApplicationDirector
     let session: EurofurenceSession
     let services: Services
     private let notificationFetchResultAdapter: NotificationServiceFetchResultAdapter
     let notificationScheduleController: NotificationScheduleController
+    
+    static func assemble() {
+        _ = instance
+    }
     
     static func storeRemoteNotificationsToken(_ deviceToken: Data) {
         instance.services.notifications.storeRemoteNotificationsToken(deviceToken)
@@ -19,6 +24,10 @@ class ApplicationStack {
     static func handleRemoteNotification(_ payload: [AnyHashable: Any],
                                          completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         instance.notificationFetchResultAdapter.handleRemoteNotification(payload, completionHandler: completionHandler)
+    }
+    
+    static func openNotification(_ userInfo: [AnyHashable: Any], completionHandler: @escaping () -> Void) {
+        instance.director.openNotification(userInfo, completionHandler: completionHandler)
     }
 
     private init() {
@@ -58,6 +67,11 @@ class ApplicationStack {
                                                                         notificationScheduler: UserNotificationsScheduler(),
                                                                         hoursDateFormatter: FoundationHoursDateFormatter.shared,
                                                                         upcomingEventReminderInterval: upcomingEventReminderInterval)
+        
+        director = DirectorBuilder(moduleRepository: ApplicationModuleRepository(services: services),
+                                   linkLookupService: services.contentLinks,
+                                   notificationHandling: services.notifications).build()
+        services.contentLinks.setExternalContentHandler(director)
     }
 
 }

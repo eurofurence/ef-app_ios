@@ -1,20 +1,18 @@
 import UIKit
 import Firebase
 import UserNotifications
-import EurofurenceModel
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
 	var window: UIWindow? = UIWindow()
-    private var director: ApplicationDirector?
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         prepareFrameworks()
+        prepareApplicationStack()
         prepareNotificationHandler()
         installDebugModule()
-        prepareDirector()
         showApplicationWindow()
 
 		return true
@@ -38,13 +36,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
 
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        
-        director?.openNotification(response.notification.request.content.userInfo, completionHandler: completionHandler)
+        ApplicationStack.openNotification(response.notification.request.content.userInfo, completionHandler: completionHandler)
     }
 
     private func prepareFrameworks() {
         ScreenshotAssistant.prepare()
         FirebaseApp.configure()
+    }
+    
+    private func prepareApplicationStack() {
+        ApplicationStack.assemble()
         Theme.apply()
         ReviewPromptController.initialize()
     }
@@ -60,15 +61,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 print("Failed to register for notifications with error: \(error)")
             }
         }
-    }
-
-    private func prepareDirector() {
-        let services = ApplicationStack.instance.services
-        let director = DirectorBuilder(moduleRepository: ApplicationModuleRepository(services: services),
-                                       linkLookupService: services.contentLinks,
-                                       notificationHandling: services.notifications).build()
-        services.contentLinks.setExternalContentHandler(director)
-        self.director = director
     }
 
     private func showApplicationWindow() {
