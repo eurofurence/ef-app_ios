@@ -70,8 +70,7 @@ class ApplicationStack {
                                                                         upcomingEventReminderInterval: upcomingEventReminderInterval)
         
         director = DirectorBuilder(moduleRepository: ApplicationModuleRepository(services: services),
-                                   linkLookupService: services.contentLinks,
-                                   notificationHandling: services.notifications).build()
+                                   linkLookupService: services.contentLinks).build()
         services.contentLinks.setExternalContentHandler(director)
         
         let notificationHandler = NavigateToContentNotificationResponseHandler(director: director)

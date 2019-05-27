@@ -45,7 +45,6 @@ class ApplicationDirector: ExternalContentHandler,
     private let urlOpener: URLOpener
     private let orderingPolicy: ModuleOrderingPolicy
     private let windowWireframe: WindowWireframe
-    private let notificationService: NotificationService
 
     private var newsController: UIViewController?
     private var scheduleViewController: UIViewController?
@@ -64,8 +63,7 @@ class ApplicationDirector: ExternalContentHandler,
          orderingPolicy: ModuleOrderingPolicy,
          windowWireframe: WindowWireframe,
          navigationControllerFactory: NavigationControllerFactory,
-         tabModuleProviding: TabModuleProviding,
-         notificationHandling: NotificationService) {
+         tabModuleProviding: TabModuleProviding) {
         self.animate = animate
         self.moduleRepository = moduleRepository
         self.navigationControllerFactory = navigationControllerFactory
@@ -74,7 +72,6 @@ class ApplicationDirector: ExternalContentHandler,
         self.urlOpener = urlOpener
         self.orderingPolicy = orderingPolicy
         self.windowWireframe = windowWireframe
-        self.notificationService = notificationHandling
 
         saveTabOrder = SaveTabOrderWhenCustomizationFinishes(orderingPolicy: orderingPolicy)
 
@@ -110,60 +107,6 @@ class ApplicationDirector: ExternalContentHandler,
                                       preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: .ok, style: .cancel))
         tabController?.present(alert, animated: performAnimations, completion: nil)
-    }
-
-    func openNotification(_ payload: [AnyHashable: Any], completionHandler: @escaping () -> Void) {
-        let castedPayloadKeysAndValues = payload.compactMap { (key, value) -> (String, String)? in
-            guard let stringKey = key as? String, let stringValue = value as? String else { return nil }
-            return (stringKey, stringValue)
-        }
-
-        let castedPayload = castedPayloadKeysAndValues.reduce(into: [String: String](), { $0[$1.0] = $1.1 })
-
-        notificationService.handleNotification(payload: castedPayload) { (content) in
-            switch content {
-            case .successfulSync:
-                completionHandler()
-
-            case .failedSync:
-                completionHandler()
-
-            case .announcement(let announcement):
-                let module = self.moduleRepository.makeAnnouncementDetailModule(for: announcement)
-                if  let newsNavigationController = self.newsController?.navigationController,
-                    let tabBarController = self.tabController,
-                    let index = tabBarController.viewControllers?.firstIndex(of: newsNavigationController) {
-                    tabBarController.selectedIndex = index
-                    newsNavigationController.pushViewController(module, animated: self.performAnimations)
-                }
-
-                completionHandler()
-
-            case .invalidatedAnnouncement:
-                let alert = UIAlertController(title: .invalidAnnouncementAlertTitle,
-                                              message: .invalidAnnouncementAlertMessage,
-                                              preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: .ok, style: .cancel))
-                self.tabController?.present(alert, animated: self.performAnimations, completion: nil)
-
-                completionHandler()
-
-            case .event(let event):
-                let module = self.moduleRepository.makeEventDetailModule(for: event, delegate: self)
-                if  let scheduleNavigationController = self.scheduleViewController?.navigationController,
-                    let tabBarController = self.tabController,
-                    let index = tabBarController.viewControllers?.firstIndex(of: scheduleNavigationController),
-                    let scheduleViewController = self.scheduleViewController {
-                    tabBarController.selectedIndex = index
-                    scheduleNavigationController.setViewControllers([scheduleViewController, module], animated: self.performAnimations)
-                }
-
-                completionHandler()
-
-            case .unknown:
-                completionHandler()
-            }
-        }
     }
 
     // MARK: ExternalContentHandler

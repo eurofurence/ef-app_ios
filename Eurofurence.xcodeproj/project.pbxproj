@@ -400,7 +400,6 @@
 		CA283AEC20ED421E00F7D195 /* WhenScheduleIndicatesCurrentDayHasChanged_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283AEB20ED421E00F7D195 /* WhenScheduleIndicatesCurrentDayHasChanged_NewsInteractorShould.swift */; };
 		CA29EF75203462E300672911 /* KnowledgeListEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */; };
 		CA29EF772034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */; };
-		CA2A586220F683DF002C69B6 /* WhenOpeningNotification_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2A586120F683DF002C69B6 /* WhenOpeningNotification_DirectorShould.swift */; };
 		CA2A586D20F76F03002C69B6 /* UIKitMapCoordinateRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2A586C20F76F03002C69B6 /* UIKitMapCoordinateRender.swift */; };
 		CA2A586F20F7F137002C69B6 /* AnnouncementDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2A586E20F7F137002C69B6 /* AnnouncementDateFormatter.swift */; };
 		CA2A587120F7F369002C69B6 /* FoundationAnnouncementDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2A587020F7F369002C69B6 /* FoundationAnnouncementDateFormatter.swift */; };
@@ -2028,7 +2027,6 @@
 		CA283AEB20ED421E00F7D195 /* WhenScheduleIndicatesCurrentDayHasChanged_NewsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenScheduleIndicatesCurrentDayHasChanged_NewsInteractorShould.swift; sourceTree = "<group>"; };
 		CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListEntryTableViewCell.swift; sourceTree = "<group>"; };
 		CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardKnowledgeListSceneFactory.swift; sourceTree = "<group>"; };
-		CA2A586120F683DF002C69B6 /* WhenOpeningNotification_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenOpeningNotification_DirectorShould.swift; sourceTree = "<group>"; };
 		CA2A586620F698D1002C69B6 /* WhenPreparingDealerMapGraphic_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPreparingDealerMapGraphic_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA2A586820F69EA1002C69B6 /* CapturingMapCoordinateRender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingMapCoordinateRender.swift; sourceTree = "<group>"; };
 		CA2A586A20F69EB7002C69B6 /* MapCoordinateRender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinateRender.swift; sourceTree = "<group>"; };
@@ -3652,14 +3650,6 @@
 				CA637577208CDB4700536BE2 /* WhenUserSelectsMessage_DirectorShould.swift */,
 			);
 			path = "Module Interactions";
-			sourceTree = "<group>";
-		};
-		CA063B3620F2317D00241CC9 /* Notification Handling */ = {
-			isa = PBXGroup;
-			children = (
-				CA2A586120F683DF002C69B6 /* WhenOpeningNotification_DirectorShould.swift */,
-			);
-			path = "Notification Handling";
 			sourceTree = "<group>";
 		};
 		CA08157B20D3D45A00F750D4 /* Days */ = {
@@ -7206,7 +7196,6 @@
 				CA637561208CC88200536BE2 /* ApplicationDirectorTestBuilder.swift */,
 				CA063B4520F3E0D800241CC9 /* RestorationIdentifierOrderingPolicyTests.swift */,
 				CA063B3020F2303900241CC9 /* Module Interactions */,
-				CA063B3620F2317D00241CC9 /* Notification Handling */,
 				CAD5593D229AF2700068DD46 /* Opening Content */,
 				CA63753E208CBAFF00536BE2 /* Test Doubles */,
 			);
@@ -8885,7 +8874,6 @@
 				7820A6E91F1415B0004C0FB5 /* StoryboardAlertRouterTests.swift in Sources */,
 				CA89CBBE208531FB00570D54 /* AnnouncementComponentViewModel+RandomValueProviding.swift in Sources */,
 				CA6EC4822051CBE600402894 /* CapturingKnowledgeDetailScene.swift in Sources */,
-				CA2A586220F683DF002C69B6 /* WhenOpeningNotification_DirectorShould.swift in Sources */,
 				CA1B6F1D20DB843E00ADF414 /* WhenDealerDetailSceneLoads_DealerDetailPresenterShould.swift in Sources */,
 				CADABEF22114A9370023C3B6 /* WhenBindingSuperSponsorsOnlyMessage_EventDetailPresenterShould.swift in Sources */,
 				CA44C37C211CAE55003C1C4E /* SchedulePresenterPhotoshootIconBindingTests.swift in Sources */,

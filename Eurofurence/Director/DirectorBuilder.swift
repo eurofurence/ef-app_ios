@@ -12,9 +12,8 @@ class DirectorBuilder {
     private var navigationControllerFactory: NavigationControllerFactory
     private var tabModuleProviding: TabModuleProviding
     private var urlOpener: URLOpener
-    private var notificationHandling: NotificationService
 
-    init(moduleRepository: ModuleRepository, linkLookupService: ContentLinksService, notificationHandling: NotificationService) {
+    init(moduleRepository: ModuleRepository, linkLookupService: ContentLinksService) {
         animate = true
         self.moduleRepository = moduleRepository
         orderingPolicy = RestorationIdentifierOrderingPolicy()
@@ -24,7 +23,6 @@ class DirectorBuilder {
 
         self.linkLookupService = linkLookupService
         urlOpener = AppURLOpener()
-        self.notificationHandling = notificationHandling
     }
 
     @discardableResult
@@ -71,8 +69,7 @@ class DirectorBuilder {
                                    orderingPolicy: orderingPolicy,
                                    windowWireframe: windowWireframe,
                                    navigationControllerFactory: navigationControllerFactory,
-                                   tabModuleProviding: tabModuleProviding,
-                                   notificationHandling: notificationHandling)
+                                   tabModuleProviding: tabModuleProviding)
     }
 
 }

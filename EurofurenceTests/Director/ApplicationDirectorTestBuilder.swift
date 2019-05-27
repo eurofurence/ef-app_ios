@@ -140,7 +140,6 @@ class ApplicationDirectorTestBuilder {
         var linkRouter: StubContentLinksService
         var webModuleProviding: StubWebMobuleProviding
         var urlOpener: CapturingURLOpener
-        var notificationHandling: FakeApplicationNotificationHandling
 
     }
 
@@ -170,7 +169,6 @@ class ApplicationDirectorTestBuilder {
     private let linkRouter: StubContentLinksService
     private let webModuleProviding: StubWebMobuleProviding
     private let urlOpener: CapturingURLOpener
-    private let notificationHandling = FakeApplicationNotificationHandling()
 
     init() {
         moduleOrderingPolicy = FakeModuleOrderingPolicy()
@@ -230,8 +228,7 @@ class ApplicationDirectorTestBuilder {
                        eventFeedbackModule: eventFeedbackModule,
                        linkRouter: linkRouter,
                        webModuleProviding: webModuleProviding,
-                       urlOpener: urlOpener,
-                       notificationHandling: notificationHandling)
+                       urlOpener: urlOpener)
     }
 
     private func makeDirectorBuilder() -> DirectorBuilder {
@@ -257,7 +254,7 @@ class ApplicationDirectorTestBuilder {
                                                  eventDetailModuleProviding: eventDetailModule,
                                                  eventFeedbackModuleProviding: eventFeedbackModule)
         
-        let builder = DirectorBuilder(moduleRepository: moduleRepository, linkLookupService: linkRouter, notificationHandling: notificationHandling)
+        let builder = DirectorBuilder(moduleRepository: moduleRepository, linkLookupService: linkRouter)
         builder.withAnimations(false)
         builder.with(moduleOrderingPolicy)
         builder.with(windowWireframe)
