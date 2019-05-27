@@ -475,6 +475,7 @@
 		CA3ABA00229C2FF50045A35B /* ModuleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3AB9FF229C2FF50045A35B /* ModuleRepository.swift */; };
 		CA3ABA02229C30E70045A35B /* ApplicationModuleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3ABA01229C30E70045A35B /* ApplicationModuleRepository.swift */; };
 		CA3ABA06229C4B260045A35B /* AppNotificationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3ABA05229C4B260045A35B /* AppNotificationDelegate.swift */; };
+		CA3ABA07229C76BE0045A35B /* ModuleAggregation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA527E79227A4887000ED74B /* ModuleAggregation.swift */; };
 		CA401066210FA8830056E16C /* WhenKnowledgeGroupEntriesSceneLoads.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA401065210FA8830056E16C /* WhenKnowledgeGroupEntriesSceneLoads.swift */; };
 		CA401069210FAE9D0056E16C /* KnowledgeGroupEntriesModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA401068210FAE9D0056E16C /* KnowledgeGroupEntriesModuleBuilder.swift */; };
 		CA40106C210FAEB20056E16C /* KnowledgeGroupEntriesModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40106B210FAEB20056E16C /* KnowledgeGroupEntriesModule.swift */; };
@@ -551,7 +552,6 @@
 		CA50B1BE226119F40091E425 /* DayOfWeekFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA50B1BD226119F40091E425 /* DayOfWeekFormatter.swift */; };
 		CA50B1C022611A810091E425 /* FakeDayOfWeekFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA50B1BF22611A810091E425 /* FakeDayOfWeekFormatter.swift */; };
 		CA527E782278D397000ED74B /* StarRatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA527E772278D397000ED74B /* StarRatingControl.swift */; };
-		CA527E7A227A4887000ED74B /* ModuleAggregation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA527E79227A4887000ED74B /* ModuleAggregation.swift */; };
 		CA52C68120D597E1009D3A9E /* ApplicationSignificantTimeChangeAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C68020D597E1009D3A9E /* ApplicationSignificantTimeChangeAdapter.swift */; };
 		CA52C68320D5980C009D3A9E /* ApplicationSignificantTimeChangeAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C68220D5980C009D3A9E /* ApplicationSignificantTimeChangeAdapterTests.swift */; };
 		CA52C68D20D6A9EB009D3A9E /* WhenSceneSelectsEvent_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C68C20D6A9EB009D3A9E /* WhenSceneSelectsEvent_SchedulePresenterShould.swift */; };
@@ -4059,7 +4059,6 @@
 				CA1FE99A1FA0B3EB009C7DF3 /* WindowWireframe.swift */,
 				CA063B4320F3862500241CC9 /* ModuleOrderingPolicy.swift */,
 				CA063B4720F3E27000241CC9 /* RestorationIdentifierOrderingPolicy.swift */,
-				CA527E79227A4887000ED74B /* ModuleAggregation.swift */,
 				CA3AB9FF229C2FF50045A35B /* ModuleRepository.swift */,
 				CA3ABA01229C30E70045A35B /* ApplicationModuleRepository.swift */,
 			);
@@ -4839,6 +4838,7 @@
 		CA63753E208CBAFF00536BE2 /* Test Doubles */ = {
 			isa = PBXGroup;
 			children = (
+				CA527E79227A4887000ED74B /* ModuleAggregation.swift */,
 				CA63753F208CBB0E00536BE2 /* CapturingNavigationController.swift */,
 				CA637553208CBBBF00536BE2 /* CapturingWindowWireframe.swift */,
 				CA63754D208CBB8600536BE2 /* FakeViewController.swift */,
@@ -8437,7 +8437,6 @@
 				CA7BA2382237FCFB00D34592 /* NetworkReachability.swift in Sources */,
 				20516AC821123E5500C399C0 /* DefaultDownMarkdownRenderer.swift in Sources */,
 				9A861ECD1F25555000B75A8C /* TutorialPageViewController.swift in Sources */,
-				CA527E7A227A4887000ED74B /* ModuleAggregation.swift in Sources */,
 				CABA43861FBC6FE1009CB5B0 /* LoginModuleProviding.swift in Sources */,
 				CA72848E209F93A4007D912A /* MarkdownRenderer.swift in Sources */,
 				CA057A5B2088BDBB00504FA4 /* AnnouncementTableViewCell.swift in Sources */,
@@ -8848,6 +8847,7 @@
 				CA63753D208A6E4900536BE2 /* WhenLoggedOutBeforeConvention_NewsInteractorShould.swift in Sources */,
 				CA162E8B20A64352004AFED6 /* WhenLoggedOutDuringConvention_NewsInteractorShould.swift in Sources */,
 				CA44C378211CAC8E003C1C4E /* SchedulePresenterMainStageIconBindingTests.swift in Sources */,
+				CA3ABA07229C76BE0045A35B /* ModuleAggregation.swift in Sources */,
 				CAC1E1391F50431000195513 /* NewsPresenterTestBuilder.swift in Sources */,
 				CA6375B9208E03C000536BE2 /* CapturingDealersScene.swift in Sources */,
 				CA44C350211A3D43003C1C4E /* WhenPreparingViewModel_ForArtShowEvent_EventDetailInteractorShould.swift in Sources */,

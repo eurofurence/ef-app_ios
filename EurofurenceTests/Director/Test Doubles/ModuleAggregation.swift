@@ -1,3 +1,4 @@
+@testable import Eurofurence
 import EurofurenceModel
 import UIKit
 
