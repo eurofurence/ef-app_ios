@@ -53,7 +53,8 @@ struct ApplicationModuleRepository: ModuleRepository {
         let knowledgeDetailSceneInteractor = DefaultKnowledgeDetailSceneInteractor(knowledgeService: services.knowledge, renderer: DefaultMarkdownRenderer())
         knowledgeDetailModuleProviding = KnowledgeDetailModuleBuilder(knowledgeDetailSceneInteractor: knowledgeDetailSceneInteractor).build()
         
-        mapsModuleProviding = MapsModuleBuilder().build()
+        let mapsInteractor = DefaultMapsInteractor(mapsService: services.maps)
+        mapsModuleProviding = MapsModuleBuilder(interactor: mapsInteractor).build()
         
         let mapDetailInteractor = DefaultMapDetailInteractor(mapsService: services.maps)
         mapDetailModuleProviding = MapDetailModuleBuilder(interactor: mapDetailInteractor).build()

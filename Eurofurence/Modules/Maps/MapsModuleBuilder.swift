@@ -2,18 +2,12 @@ import Foundation
 
 class MapsModuleBuilder {
 
-    private var interactor: MapsInteractor
+    private let interactor: MapsInteractor
     private var sceneFactory: MapsSceneFactory
 
-    init() {
-        interactor = DefaultMapsInteractor()
-        sceneFactory = StoryboardMapsScenefactory()
-    }
-
-    @discardableResult
-    func with(_ interactor: MapsInteractor) -> MapsModuleBuilder {
+    init(interactor: MapsInteractor) {
         self.interactor = interactor
-        return self
+        sceneFactory = StoryboardMapsScenefactory()
     }
 
     @discardableResult

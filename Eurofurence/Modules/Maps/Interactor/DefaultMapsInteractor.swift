@@ -41,10 +41,6 @@ class DefaultMapsInteractor: MapsInteractor, MapsObserver {
 
     private var maps = [Map]()
 
-    convenience init() {
-        self.init(mapsService: ApplicationStack.instance.services.maps)
-    }
-
     init(mapsService: MapsService) {
         mapsService.add(self)
     }
