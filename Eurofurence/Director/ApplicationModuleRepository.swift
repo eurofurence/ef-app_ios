@@ -46,7 +46,12 @@ struct ApplicationModuleRepository: ModuleRepository {
                                                    announcementsMarkdownRenderer: SubtleDownMarkdownRenderer())
         newsModuleProviding = NewsModuleBuilder(newsInteractor: newsInteractor).build()
         
-        scheduleModuleProviding = ScheduleModuleBuilder().build()
+        let scheduleInteractor = DefaultScheduleInteractor(eventsService: services.events,
+                                                           hoursDateFormatter: FoundationHoursDateFormatter.shared,
+                                                           shortFormDateFormatter: FoundationShortFormDateFormatter.shared,
+                                                           shortFormDayAndTimeFormatter: FoundationShortFormDayAndTimeFormatter.shared,
+                                                           refreshService: services.refresh)
+        scheduleModuleProviding = ScheduleModuleBuilder(interactor: scheduleInteractor).build()
         
         let defaultDealerIcon = #imageLiteral(resourceName: "defaultAvatar")
         let dealersInteractor = DefaultDealersInteractor(dealersService: services.dealers, defaultIconData: defaultDealerIcon.pngData()!, refreshService: services.refresh)

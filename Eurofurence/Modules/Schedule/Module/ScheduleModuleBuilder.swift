@@ -4,24 +4,18 @@ import UIKit.UIViewController
 class ScheduleModuleBuilder {
 
     private var eventsSceneFactory: ScheduleSceneFactory
-    private var interactor: ScheduleInteractor
+    private let interactor: ScheduleInteractor
     private var hapticEngine: SelectionChangedHaptic
 
-    init() {
+    init(interactor: ScheduleInteractor) {
+        self.interactor = interactor
         eventsSceneFactory = StoryboardScheduleSceneFactory()
-        interactor = DefaultScheduleInteractor()
         hapticEngine = CocoaTouchHapticEngine()
     }
 
     @discardableResult
     func with(_ eventsSceneFactory: ScheduleSceneFactory) -> ScheduleModuleBuilder {
         self.eventsSceneFactory = eventsSceneFactory
-        return self
-    }
-
-    @discardableResult
-    func with(_ interactor: ScheduleInteractor) -> ScheduleModuleBuilder {
-        self.interactor = interactor
         return self
     }
 
