@@ -3,22 +3,17 @@ import UIKit.UIApplication
 class PreloadModuleBuilder {
 
     private var preloadSceneFactory: PreloadSceneFactory
-    private var preloadService: PreloadInteractor
+    private let preloadInteractor: PreloadInteractor
     private var alertRouter: AlertRouter
 
-    init() {
+    init(preloadInteractor: PreloadInteractor) {
+        self.preloadInteractor = preloadInteractor
         preloadSceneFactory = StoryboardPreloadSceneFactory()
-        preloadService = ApplicationPreloadInteractor()
         alertRouter = WindowAlertRouter.shared
     }
 
     func with(_ preloadSceneFactory: PreloadSceneFactory) -> PreloadModuleBuilder {
         self.preloadSceneFactory = preloadSceneFactory
-        return self
-    }
-
-    func with(_ preloadService: PreloadInteractor) -> PreloadModuleBuilder {
-        self.preloadService = preloadService
         return self
     }
 
@@ -29,7 +24,7 @@ class PreloadModuleBuilder {
 
     func build() -> PreloadModuleProviding {
         return PreloadModule(preloadSceneFactory: preloadSceneFactory,
-                             preloadService: preloadService,
+                             preloadService: preloadInteractor,
                              alertRouter: alertRouter)
     }
 

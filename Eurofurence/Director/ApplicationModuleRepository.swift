@@ -28,7 +28,9 @@ struct ApplicationModuleRepository: ModuleRepository {
     init(services: Services) {
         rootModuleProviding = RootModuleBuilder(sessionStateService: services.sessionState).build()
         tutorialModuleProviding = TutorialModuleBuilder().build()
-        preloadModuleProviding = PreloadModuleBuilder().build()
+        
+        let preloadInteractor = ApplicationPreloadInteractor(refreshService: services.refresh)
+        preloadModuleProviding = PreloadModuleBuilder(preloadInteractor: preloadInteractor).build()
         
         let newsInteractor = DefaultNewsInteractor(announcementsService: services.announcements,
                                                    authenticationService: services.authentication,

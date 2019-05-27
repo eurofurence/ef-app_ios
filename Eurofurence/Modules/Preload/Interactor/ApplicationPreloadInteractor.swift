@@ -5,10 +5,6 @@ class ApplicationPreloadInteractor: PreloadInteractor {
     private let refreshService: RefreshService
     private var observations = [Any]()
 
-    convenience init() {
-        self.init(refreshService: ApplicationStack.instance.services.refresh)
-    }
-
     init(refreshService: RefreshService) {
         self.refreshService = refreshService
     }
