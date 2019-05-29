@@ -3,12 +3,15 @@ import UIKit.UIViewController
 
 class EventDetailModuleBuilder {
 
+    private let interactor: EventDetailInteractor
+    private let interactionRecorder: EventInteractionRecorder
     private var sceneFactory: EventDetailSceneFactory
-    private var interactor: EventDetailInteractor
     private var hapticEngine: SelectionChangedHaptic
 
-    init(interactor: EventDetailInteractor) {
+    init(interactor: EventDetailInteractor, interactionRecorder: EventInteractionRecorder) {
         self.interactor = interactor
+        self.interactionRecorder = interactionRecorder
+        
         sceneFactory = StoryboardEventDetailSceneFactory()
         hapticEngine = CocoaTouchHapticEngine()
     }
@@ -16,12 +19,6 @@ class EventDetailModuleBuilder {
     @discardableResult
     func with(_ sceneFactory: EventDetailSceneFactory) -> EventDetailModuleBuilder {
         self.sceneFactory = sceneFactory
-        return self
-    }
-
-    @discardableResult
-    func with(_ interactor: EventDetailInteractor) -> EventDetailModuleBuilder {
-        self.interactor = interactor
         return self
     }
 
@@ -34,7 +31,8 @@ class EventDetailModuleBuilder {
     func build() -> EventDetailModuleProviding {
         return EventDetailModule(sceneFactory: sceneFactory,
                                  interactor: interactor,
-                                 hapticEngine: hapticEngine)
+                                 hapticEngine: hapticEngine,
+                                 interactionRecorder: interactionRecorder)
     }
 
 }

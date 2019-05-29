@@ -4,6 +4,15 @@ import EurofurenceModelTestDoubles
 import Foundation
 import UIKit.UIViewController
 
+class CapturingEventInteractionRecorder: EventInteractionRecorder {
+    
+    private(set) var witnessedEvent: EventIdentifier?
+    func recordInteraction(for event: EventIdentifier) {
+        witnessedEvent = event
+    }
+    
+}
+
 class EventDetailPresenterTestBuilder {
 
     struct Context {
@@ -11,6 +20,7 @@ class EventDetailPresenterTestBuilder {
         var scene: CapturingEventDetailScene
         var hapticEngine: CapturingSelectionChangedHaptic
         var delegate: CapturingEventDetailModuleDelegate
+        var eventInteractionRecorder: CapturingEventInteractionRecorder
     }
 
     private var interactor: EventDetailInteractor
@@ -29,7 +39,8 @@ class EventDetailPresenterTestBuilder {
         let sceneFactory = StubEventDetailSceneFactory()
         let hapticEngine = CapturingSelectionChangedHaptic()
         let delegate = CapturingEventDetailModuleDelegate()
-        let module = EventDetailModuleBuilder(interactor: interactor)
+        let interactionRecorder = CapturingEventInteractionRecorder()
+        let module = EventDetailModuleBuilder(interactor: interactor, interactionRecorder: interactionRecorder)
             .with(sceneFactory)
             .with(hapticEngine)
             .build()
@@ -38,7 +49,8 @@ class EventDetailPresenterTestBuilder {
         return Context(producedViewController: module,
                        scene: sceneFactory.interface,
                        hapticEngine: hapticEngine,
-                       delegate: delegate)
+                       delegate: delegate,
+                       eventInteractionRecorder: interactionRecorder)
     }
 
 }

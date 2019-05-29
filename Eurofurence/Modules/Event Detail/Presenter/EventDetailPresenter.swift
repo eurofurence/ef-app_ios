@@ -120,22 +120,26 @@ class EventDetailPresenter: EventDetailSceneDelegate, EventDetailViewModelDelega
     private let event: EventIdentifier
     private let delegate: EventDetailModuleDelegate
     private var viewModel: EventDetailViewModel?
+    private let interactionRecorder: EventInteractionRecorder
 
     init(scene: EventDetailScene,
          interactor: EventDetailInteractor,
          hapticEngine: SelectionChangedHaptic,
          event: EventIdentifier,
-         delegate: EventDetailModuleDelegate) {
+         delegate: EventDetailModuleDelegate,
+         interactionRecorder: EventInteractionRecorder) {
         self.scene = scene
         self.interactor = interactor
         self.hapticEngine = hapticEngine
         self.event = event
         self.delegate = delegate
+        self.interactionRecorder = interactionRecorder
 
         scene.setDelegate(self)
     }
 
     func eventDetailSceneDidLoad() {
+        interactionRecorder.recordInteraction(for: event)
         interactor.makeViewModel(for: event, completionHandler: eventDetailViewModelReady)
     }
 

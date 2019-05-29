@@ -477,6 +477,8 @@
 		CA3ABA06229C4B260045A35B /* AppNotificationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3ABA05229C4B260045A35B /* AppNotificationDelegate.swift */; };
 		CA3ABA07229C76BE0045A35B /* FakeModuleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA527E79227A4887000ED74B /* FakeModuleRepository.swift */; };
 		CA3ABA09229C7B6E0045A35B /* Dictionary+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3ABA08229C7B6E0045A35B /* Dictionary+Extensions.swift */; };
+		CA3ABA0B229DCB4A0045A35B /* WhenEventDetailSceneAppears_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3ABA0A229DCB4A0045A35B /* WhenEventDetailSceneAppears_EventDetailPresenterShould.swift */; };
+		CA3ABA0E229DCC350045A35B /* EventInteractionRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3ABA0D229DCC350045A35B /* EventInteractionRecorder.swift */; };
 		CA401066210FA8830056E16C /* WhenKnowledgeGroupEntriesSceneLoads.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA401065210FA8830056E16C /* WhenKnowledgeGroupEntriesSceneLoads.swift */; };
 		CA401069210FAE9D0056E16C /* KnowledgeGroupEntriesModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA401068210FAE9D0056E16C /* KnowledgeGroupEntriesModuleBuilder.swift */; };
 		CA40106C210FAEB20056E16C /* KnowledgeGroupEntriesModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40106B210FAEB20056E16C /* KnowledgeGroupEntriesModule.swift */; };
@@ -571,6 +573,10 @@
 		CA621344221EFDAC00E88880 /* Assertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA621343221EFDAC00E88880 /* Assertion.swift */; };
 		CA62134B221F276000E88880 /* ScheduleEventGroupViewModelAssertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA621347221F274000E88880 /* ScheduleEventGroupViewModelAssertion.swift */; };
 		CA62134C221F276000E88880 /* ScheduleEventViewModelAssertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA621349221F274F00E88880 /* ScheduleEventViewModelAssertion.swift */; };
+		CA630BCF229F10BF00754C27 /* WhenRecordingEventInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630BCE229F10BF00754C27 /* WhenRecordingEventInteraction.swift */; };
+		CA630BD1229F11CC00754C27 /* IntentBasedEventInteractionRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630BD0229F11CC00754C27 /* IntentBasedEventInteractionRecorder.swift */; };
+		CA630BD3229F12D100754C27 /* CapturingEventIntentDonor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630BD2229F12D100754C27 /* CapturingEventIntentDonor.swift */; };
+		CA630BD6229F145E00754C27 /* EventIntentDonor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630BD5229F145E00754C27 /* EventIntentDonor.swift */; };
 		CA63753D208A6E4900536BE2 /* WhenLoggedOutBeforeConvention_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63753C208A6E4900536BE2 /* WhenLoggedOutBeforeConvention_NewsInteractorShould.swift */; };
 		CA637540208CBB0E00536BE2 /* CapturingNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63753F208CBB0E00536BE2 /* CapturingNavigationController.swift */; };
 		CA637542208CBB2400536BE2 /* StubNavigationControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637541208CBB2400536BE2 /* StubNavigationControllerFactory.swift */; };
@@ -2146,6 +2152,8 @@
 		CA3ABA01229C30E70045A35B /* ApplicationModuleRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationModuleRepository.swift; sourceTree = "<group>"; };
 		CA3ABA05229C4B260045A35B /* AppNotificationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNotificationDelegate.swift; sourceTree = "<group>"; };
 		CA3ABA08229C7B6E0045A35B /* Dictionary+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extensions.swift"; sourceTree = "<group>"; };
+		CA3ABA0A229DCB4A0045A35B /* WhenEventDetailSceneAppears_EventDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenEventDetailSceneAppears_EventDetailPresenterShould.swift; sourceTree = "<group>"; };
+		CA3ABA0D229DCC350045A35B /* EventInteractionRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInteractionRecorder.swift; sourceTree = "<group>"; };
 		CA401056210A6BAD0056E16C /* WhenDeletingMap_AfterSuccessfulSync_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDeletingMap_AfterSuccessfulSync_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA401058210B9FD40056E16C /* ImageCharacteristics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCharacteristics.swift; sourceTree = "<group>"; };
 		CA40105D210E1A9D0056E16C /* WhenSyncSucceeds_WithImages_ThenSubsequentSyncDeletesImage_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSyncSucceeds_WithImages_ThenSubsequentSyncDeletesImage_ApplicationShould.swift; sourceTree = "<group>"; };
@@ -2273,6 +2281,10 @@
 		CA621345221EFDD800E88880 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		CA621347221F274000E88880 /* ScheduleEventGroupViewModelAssertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleEventGroupViewModelAssertion.swift; sourceTree = "<group>"; };
 		CA621349221F274F00E88880 /* ScheduleEventViewModelAssertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleEventViewModelAssertion.swift; sourceTree = "<group>"; };
+		CA630BCE229F10BF00754C27 /* WhenRecordingEventInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenRecordingEventInteraction.swift; sourceTree = "<group>"; };
+		CA630BD0229F11CC00754C27 /* IntentBasedEventInteractionRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentBasedEventInteractionRecorder.swift; sourceTree = "<group>"; };
+		CA630BD2229F12D100754C27 /* CapturingEventIntentDonor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingEventIntentDonor.swift; sourceTree = "<group>"; };
+		CA630BD5229F145E00754C27 /* EventIntentDonor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventIntentDonor.swift; sourceTree = "<group>"; };
 		CA63753C208A6E4900536BE2 /* WhenLoggedOutBeforeConvention_NewsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLoggedOutBeforeConvention_NewsInteractorShould.swift; sourceTree = "<group>"; };
 		CA63753F208CBB0E00536BE2 /* CapturingNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingNavigationController.swift; sourceTree = "<group>"; };
 		CA637541208CBB2400536BE2 /* StubNavigationControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubNavigationControllerFactory.swift; sourceTree = "<group>"; };
@@ -3479,6 +3491,7 @@
 				CA1FE99C1FA0B3F2009C7DF3 /* Director */,
 				CABF03B22041BC770028BD62 /* Extensions */,
 				CA79924D22451DCE00DF1F84 /* Formatters */,
+				CA630BCA229F108900754C27 /* Interactions */,
 				6EF96CE01F12688700EE6134 /* Modules */,
 				CA7992442245173B00DF1F84 /* Notifications */,
 				9ACF999B1ECA259C006FC958 /* Resources */,
@@ -3501,6 +3514,7 @@
 				7820A6F51F16B123004C0FB5 /* UserDefaultsUserAcknowledgedPushPermissionsRequestStateProvidingTests.swift */,
 				CAF7055F1F82CBC800A9FEA2 /* Director */,
 				781A94441F1A1DCE002DE70F /* Firebase Notification Registration */,
+				CA630BCC229F10A900754C27 /* Interactions */,
 				78C86D5B1F12355C003A20E6 /* Module Tests */,
 				CACD2F0B21DF830300BACD91 /* Notification Content Adapter */,
 				CAD5592E229AE3570068DD46 /* Notification Response Handler */,
@@ -4819,6 +4833,49 @@
 				CA71A3532041B6DA00C847C3 /* Foundation */,
 			);
 			path = "Random Data Generation";
+			sourceTree = "<group>";
+		};
+		CA630BCA229F108900754C27 /* Interactions */ = {
+			isa = PBXGroup;
+			children = (
+				CA630BCB229F109600754C27 /* Events */,
+			);
+			path = Interactions;
+			sourceTree = "<group>";
+		};
+		CA630BCB229F109600754C27 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				CA3ABA0D229DCC350045A35B /* EventInteractionRecorder.swift */,
+				CA630BD4229F144A00754C27 /* Intents */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		CA630BCC229F10A900754C27 /* Interactions */ = {
+			isa = PBXGroup;
+			children = (
+				CA630BCD229F10AF00754C27 /* Events */,
+			);
+			path = Interactions;
+			sourceTree = "<group>";
+		};
+		CA630BCD229F10AF00754C27 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				CA630BD2229F12D100754C27 /* CapturingEventIntentDonor.swift */,
+				CA630BCE229F10BF00754C27 /* WhenRecordingEventInteraction.swift */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		CA630BD4229F144A00754C27 /* Intents */ = {
+			isa = PBXGroup;
+			children = (
+				CA630BD5229F145E00754C27 /* EventIntentDonor.swift */,
+				CA630BD0229F11CC00754C27 /* IntentBasedEventInteractionRecorder.swift */,
+			);
+			path = Intents;
 			sourceTree = "<group>";
 		};
 		CA63753B208A6E0900536BE2 /* Interactor Tests */ = {
@@ -6541,6 +6598,7 @@
 				CAD260A420C0357F007E3618 /* WhenViewModelPrepared_EventDetailPresenterShould.swift */,
 				CA8DDA1B2249045400ACD9BB /* WhenBindingEventAction_EventDetailPresenterShould.swift */,
 				CA6F652622690DB500483EE0 /* WhenToldToLeaveFeedback_EventDetailPresenterShould.swift */,
+				CA3ABA0A229DCB4A0045A35B /* WhenEventDetailSceneAppears_EventDetailPresenterShould.swift */,
 			);
 			path = "Presenter Tests";
 			sourceTree = "<group>";
@@ -8177,6 +8235,7 @@
 				CA6A8D8720E2BB90007536CD /* MapsViewModel.swift in Sources */,
 				CA728465209D0FAF007D912A /* AnnouncementDetailScene.swift in Sources */,
 				CA50B1BA226111220091E425 /* EventFeedbackViewModel.swift in Sources */,
+				CA630BD6229F145E00754C27 /* EventIntentDonor.swift in Sources */,
 				CAD3BDC7205FE88900C91E6E /* SafariWebModuleProviding.swift in Sources */,
 				CACF1E8A20B351D400D904B5 /* DateRangeFormatter.swift in Sources */,
 				CA321F531F7BC88D0050E489 /* StoryboardPreloadSceneFactory.swift in Sources */,
@@ -8230,6 +8289,7 @@
 				CA50B1BC2261112D0091E425 /* EventFeedbackSceneFactory.swift in Sources */,
 				CAE27B4C1F855E0E005FDE39 /* TabModuleProviding.swift in Sources */,
 				CA6A8D6F20E2648E007536CD /* MapsModuleBuilder.swift in Sources */,
+				CA630BD1229F11CC00754C27 /* IntentBasedEventInteractionRecorder.swift in Sources */,
 				CAD55938229AEFC50068DD46 /* NotificationResponseHandler.swift in Sources */,
 				CA8E17F51F817AE8003C348C /* PreloadPresenter.swift in Sources */,
 				CA72845D209D0627007D912A /* StoryboardAnnouncementDetailSceneFactory.swift in Sources */,
@@ -8423,6 +8483,7 @@
 				CA36A48220D8C89700EE6537 /* DealerComponentTableViewCell.swift in Sources */,
 				CA152ED622651B7F00212742 /* SuccessHaptic.swift in Sources */,
 				CA17FE7D2057FCCB005A4C05 /* KnowledgeEntryDetailViewModel.swift in Sources */,
+				CA3ABA0E229DCC350045A35B /* EventInteractionRecorder.swift in Sources */,
 				CA7992462245174800DF1F84 /* NotificationScheduleController.swift in Sources */,
 				CAA6060C20EEC06500075A4E /* DebugTableViewController.swift in Sources */,
 				CA17FE8520580144005A4C05 /* LinksBinder.swift in Sources */,
@@ -8563,6 +8624,7 @@
 				CA50B1C022611A810091E425 /* FakeDayOfWeekFormatter.swift in Sources */,
 				CACF1EBA20B6073100D904B5 /* WhenPreparingViewModel_ForEventWithNoPoster_EventDetailInteractorShould.swift in Sources */,
 				CA152EFC2267AB7100212742 /* CapturingEventActionViewModelVisitor.swift in Sources */,
+				CA630BCF229F10BF00754C27 /* WhenRecordingEventInteraction.swift in Sources */,
 				CAD5593B229AF0C60068DD46 /* NotificationResponseProcessorTests.swift in Sources */,
 				CAF81C6A20DDA10C00898C52 /* DealerDetailAboutTheArtViewModel+RandomValueProviding.swift in Sources */,
 				CA728485209F88E0007D912A /* DefaultAnnouncementDetailInteractorShould.swift in Sources */,
@@ -8675,6 +8737,7 @@
 				CA6EC4842051CBF600402894 /* StubKnowledgeDetailSceneFactory.swift in Sources */,
 				CA152EE622651F6900212742 /* CapturingFailureHaptic.swift in Sources */,
 				CA00AE5E20D173C000C2FBB0 /* WhenBindingEvent_SchedulePresenterShould.swift in Sources */,
+				CA3ABA0B229DCB4A0045A35B /* WhenEventDetailSceneAppears_EventDetailPresenterShould.swift in Sources */,
 				CA2D08061FE94BF000BFD785 /* RootModuleTestBuilder.swift in Sources */,
 				CACF1E4820AE29CB00D904B5 /* StubEventDetailModuleFactory.swift in Sources */,
 				CA00AE4B20D16BF300C2FBB0 /* StubScheduleViewModel+RandomValueProviding.swift in Sources */,
@@ -8949,6 +9012,7 @@
 				CABA43891FBCD94E009CB5B0 /* LoginPresenterTests.swift in Sources */,
 				CA1B6F2D20DB8BDC00ADF414 /* WhenBindingDealerSummaryComponent_DealerDetailPresenterShould.swift in Sources */,
 				CA36A4E020DAFE7500EE6537 /* WhenDealersModuleSelectsDealer_DirectorShould.swift in Sources */,
+				CA630BD3229F12D100754C27 /* CapturingEventIntentDonor.swift in Sources */,
 				CA2D08121FE9540F00BFD785 /* WhenThePerformInitialDownloadPageAppears.swift in Sources */,
 				CA17FE752056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift in Sources */,
 				781A943A1F1A19D8002DE70F /* CapturingFCMDeviceRegistration.swift in Sources */,

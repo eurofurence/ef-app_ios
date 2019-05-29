@@ -91,19 +91,25 @@ struct ApplicationModuleRepository: ModuleRepository {
         let announcementDetailInteractor = DefaultAnnouncementDetailInteractor(announcementsService: services.announcements,
                                                                                markdownRenderer: defaultMarkdownRenderer)
         announcementDetailModuleProviding = AnnouncementDetailModuleBuilder(announcementDetailInteractor: announcementDetailInteractor).build()
+        
+        struct DummyEventInteractionRecorder: EventInteractionRecorder {
+            func recordInteraction(for event: EventIdentifier) {
+                
+            }
+        }
 
         let eventDetailInteractor = DefaultEventDetailInteractor(dateRangeFormatter: FoundationDateRangeFormatter.shared,
                                                                  eventsService: services.events,
                                                                  markdownRenderer: DefaultDownMarkdownRenderer())
-        eventDetailModuleProviding = EventDetailModuleBuilder(interactor: eventDetailInteractor).build()
+        eventDetailModuleProviding = EventDetailModuleBuilder(interactor: eventDetailInteractor, interactionRecorder: DummyEventInteractionRecorder()).build()
         
         let eventFeedbackPresenterFactory = EventFeedbackPresenterFactoryImpl(eventService: services.events,
-                                                                 dayOfWeekFormatter: FoundationDayOfWeekFormatter.shared,
-                                                                 startTimeFormatter: FoundationHoursDateFormatter.shared,
-                                                                 endTimeFormatter: FoundationHoursDateFormatter.shared,
-                                                                 successHaptic: CocoaTouchSuccessHaptic(),
-                                                                 failureHaptic: CocoaTouchFailureHaptic(),
-                                                                 successWaitingRule: ShortDelayEventFeedbackSuccessWaitingRule())
+                                                                              dayOfWeekFormatter: FoundationDayOfWeekFormatter.shared,
+                                                                              startTimeFormatter: FoundationHoursDateFormatter.shared,
+                                                                              endTimeFormatter: FoundationHoursDateFormatter.shared,
+                                                                              successHaptic: CocoaTouchSuccessHaptic(),
+                                                                              failureHaptic: CocoaTouchFailureHaptic(),
+                                                                              successWaitingRule: ShortDelayEventFeedbackSuccessWaitingRule())
         let eventFeedbackSceneFactory = StoryboardEventFeedbackSceneFactory()
         eventFeedbackModuleProviding = EventFeedbackModuleProvidingImpl(presenterFactory: eventFeedbackPresenterFactory, sceneFactory: eventFeedbackSceneFactory)
         
