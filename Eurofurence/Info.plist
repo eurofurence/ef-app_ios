@@ -32,6 +32,10 @@
 	<true/>
 	<key>NSCalendarsUsageDescription</key>
 	<string>Eurofurence uses your calendar to add events and alerts</string>
+	<key>NSUserActivityTypes</key>
+	<array>
+		<string>ViewEventIntent</string>
+	</array>
 	<key>UIAppFonts</key>
 	<array>
 		<string>fontawesome-webfont.ttf</string>

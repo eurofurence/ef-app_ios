@@ -1,4 +1,5 @@
 import EurofurenceModel
+import EurofurenceIntentDefinitions
 
 struct IntentBasedEventInteractionRecorder: EventInteractionRecorder {
     
@@ -8,11 +9,7 @@ struct IntentBasedEventInteractionRecorder: EventInteractionRecorder {
     func recordInteraction(for event: EventIdentifier) {
         guard let entity = eventsService.fetchEvent(identifier: event) else { return }
         
-        let intentTraits = EventIntentTraits(identifier: event,
-                                             title: entity.title,
-                                             subtitle: entity.room.name,
-                                             startTime: entity.startDate,
-                                             endTime: entity.endDate)
+        let intentTraits = EventIntentTraits(identifier: event, eventName: entity.title)
         eventIntentDonor.donateEventIntent(traits: intentTraits)
     }
     

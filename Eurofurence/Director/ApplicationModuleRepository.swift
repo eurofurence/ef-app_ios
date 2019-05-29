@@ -92,16 +92,12 @@ struct ApplicationModuleRepository: ModuleRepository {
                                                                                markdownRenderer: defaultMarkdownRenderer)
         announcementDetailModuleProviding = AnnouncementDetailModuleBuilder(announcementDetailInteractor: announcementDetailInteractor).build()
         
-        struct DummyEventInteractionRecorder: EventInteractionRecorder {
-            func recordInteraction(for event: EventIdentifier) {
-                
-            }
-        }
-
+        let eventIntentDonor = ConcreteEventIntentDonor()
+        let eventInteractionRecorder = IntentBasedEventInteractionRecorder(eventsService: services.events, eventIntentDonor: eventIntentDonor)
         let eventDetailInteractor = DefaultEventDetailInteractor(dateRangeFormatter: FoundationDateRangeFormatter.shared,
                                                                  eventsService: services.events,
                                                                  markdownRenderer: DefaultDownMarkdownRenderer())
-        eventDetailModuleProviding = EventDetailModuleBuilder(interactor: eventDetailInteractor, interactionRecorder: DummyEventInteractionRecorder()).build()
+        eventDetailModuleProviding = EventDetailModuleBuilder(interactor: eventDetailInteractor, interactionRecorder: eventInteractionRecorder).build()
         
         let eventFeedbackPresenterFactory = EventFeedbackPresenterFactoryImpl(eventService: services.events,
                                                                               dayOfWeekFormatter: FoundationDayOfWeekFormatter.shared,

@@ -4,7 +4,7 @@ import EurofurenceModelTestDoubles
 import XCTest
 
 class WhenRecordingEventInteraction: XCTestCase {
-
+    
     func testTheEventInteractionIsRecordedWithBriefSummary() {
         let event = FakeEvent.random
         let eventsService = FakeEventsService()
@@ -13,12 +13,8 @@ class WhenRecordingEventInteraction: XCTestCase {
         let tracer = IntentBasedEventInteractionRecorder(eventsService: eventsService, eventIntentDonor: eventIntentDonor)
         tracer.recordInteraction(for: event.identifier)
         
-        let expected = EventIntentTraits(identifier: event.identifier,
-                                        title: event.title,
-                                        subtitle: event.room.name,
-                                        startTime: event.startDate,
-                                        endTime: event.endDate)
+        let expected = EventIntentTraits(identifier: event.identifier, eventName: event.title)
         XCTAssertEqual(expected, eventIntentDonor.donatedEventIntentTraits)
     }
-
+    
 }
