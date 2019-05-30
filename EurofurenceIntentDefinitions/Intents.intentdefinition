@@ -17,8 +17,6 @@
 		<dict>
 			<key>INIntentCategory</key>
 			<string>information</string>
-			<key>INIntentDefaultImageName</key>
-			<string>Calendar</string>
 			<key>INIntentDescription</key>
 			<string>View details of an event</string>
 			<key>INIntentDescriptionID</key>
