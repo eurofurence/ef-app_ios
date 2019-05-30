@@ -33,7 +33,6 @@ class ApplicationStack {
     }
     
     static func resumeInteraction(_ intent: Any?) -> Bool {
-//        let intentWrapperThanksToSwiftCastingIssues = IntentDefinitionProvidingFactory.intentDefinitionProvider(from: intent)
         return instance.interactionResumer.resume(intent: intent)
     }
 
