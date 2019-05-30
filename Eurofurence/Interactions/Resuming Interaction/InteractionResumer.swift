@@ -14,6 +14,11 @@ struct InteractionResumer {
             return true
         }
         
+        if intent is OpenCollectThemAllIntentDefinitionProviding {
+            resumeResponseHandler.resumeCollectThemAll()
+            return true
+        }
+        
         return false
     }
     

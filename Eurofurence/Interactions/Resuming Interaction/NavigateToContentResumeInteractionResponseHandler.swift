@@ -8,4 +8,8 @@ struct NavigateToContentResumeInteractionResponseHandler: ResumeInteractionRespo
         director.openEvent(identifier)
     }
     
+    func resumeCollectThemAll() {
+        
+    }
+    
 }

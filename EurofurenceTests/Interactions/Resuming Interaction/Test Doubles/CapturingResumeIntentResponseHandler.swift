@@ -8,4 +8,9 @@ class CapturingResumeIntentResponseHandler: ResumeInteractionResponseHandler {
         resumedEvent = identifier
     }
     
+    private(set) var didResumeCollectThemAllIntent = false
+    func resumeCollectThemAll() {
+        didResumeCollectThemAllIntent = true
+    }
+    
 }
