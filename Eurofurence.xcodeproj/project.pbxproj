@@ -581,7 +581,6 @@
 		CA630BE3229F14F800754C27 /* EurofurenceIntentDefinitions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA630BDC229F14F800754C27 /* EurofurenceIntentDefinitions.framework */; };
 		CA630BE4229F14F800754C27 /* EurofurenceIntentDefinitions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA630BDC229F14F800754C27 /* EurofurenceIntentDefinitions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CA630BEB229F151600754C27 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CA630BEA229F151600754C27 /* Intents.intentdefinition */; };
-		CA630BEC229F160300754C27 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CA630BEA229F151600754C27 /* Intents.intentdefinition */; };
 		CA630BEE229F16F400754C27 /* ConcreteEventIntentDonor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630BED229F16F400754C27 /* ConcreteEventIntentDonor.swift */; };
 		CA630BF722A0650E00754C27 /* WhenResumingUnknownIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630BF622A0650E00754C27 /* WhenResumingUnknownIntent.swift */; };
 		CA630BF922A065B300754C27 /* WhenResumingViewEventIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630BF822A065B300754C27 /* WhenResumingViewEventIntent.swift */; };
@@ -590,6 +589,11 @@
 		CA630C0022A068C200754C27 /* EventIntentDefinitionProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630BFF22A068C200754C27 /* EventIntentDefinitionProviding.swift */; };
 		CA630C0322A068DC00754C27 /* StubEventIntentDefinitionProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630C0222A068DC00754C27 /* StubEventIntentDefinitionProviding.swift */; };
 		CA630C0522A068EA00754C27 /* CapturingResumeIntentResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630C0422A068EA00754C27 /* CapturingResumeIntentResponseHandler.swift */; };
+		CA630C0722A0696D00754C27 /* ViewEventIntentDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630C0622A0696D00754C27 /* ViewEventIntentDefinition.swift */; };
+		CA630C0922A069AF00754C27 /* ViewEventIntent+Definition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630C0822A069AF00754C27 /* ViewEventIntent+Definition.swift */; };
+		CA630C0B22A06A7B00754C27 /* NavigateToContentResumeInteractionResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630C0A22A06A7B00754C27 /* NavigateToContentResumeInteractionResponseHandler.swift */; };
+		CA630C0D22A06D5900754C27 /* IntentDefinitionProvidingFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630C0C22A06D5900754C27 /* IntentDefinitionProvidingFactory.swift */; };
+		CA630C5122A079E100754C27 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CA630BEA229F151600754C27 /* Intents.intentdefinition */; settings = {ATTRIBUTES = (no_codegen, ); }; };
 		CA63753D208A6E4900536BE2 /* WhenLoggedOutBeforeConvention_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63753C208A6E4900536BE2 /* WhenLoggedOutBeforeConvention_NewsInteractorShould.swift */; };
 		CA637540208CBB0E00536BE2 /* CapturingNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63753F208CBB0E00536BE2 /* CapturingNavigationController.swift */; };
 		CA637542208CBB2400536BE2 /* StubNavigationControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637541208CBB2400536BE2 /* StubNavigationControllerFactory.swift */; };
@@ -2318,6 +2322,10 @@
 		CA630BFF22A068C200754C27 /* EventIntentDefinitionProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventIntentDefinitionProviding.swift; sourceTree = "<group>"; };
 		CA630C0222A068DC00754C27 /* StubEventIntentDefinitionProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubEventIntentDefinitionProviding.swift; sourceTree = "<group>"; };
 		CA630C0422A068EA00754C27 /* CapturingResumeIntentResponseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingResumeIntentResponseHandler.swift; sourceTree = "<group>"; };
+		CA630C0622A0696D00754C27 /* ViewEventIntentDefinition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewEventIntentDefinition.swift; sourceTree = "<group>"; };
+		CA630C0822A069AF00754C27 /* ViewEventIntent+Definition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewEventIntent+Definition.swift"; sourceTree = "<group>"; };
+		CA630C0A22A06A7B00754C27 /* NavigateToContentResumeInteractionResponseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateToContentResumeInteractionResponseHandler.swift; sourceTree = "<group>"; };
+		CA630C0C22A06D5900754C27 /* IntentDefinitionProvidingFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentDefinitionProvidingFactory.swift; sourceTree = "<group>"; };
 		CA63753C208A6E4900536BE2 /* WhenLoggedOutBeforeConvention_NewsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLoggedOutBeforeConvention_NewsInteractorShould.swift; sourceTree = "<group>"; };
 		CA63753F208CBB0E00536BE2 /* CapturingNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingNavigationController.swift; sourceTree = "<group>"; };
 		CA637541208CBB2400536BE2 /* StubNavigationControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubNavigationControllerFactory.swift; sourceTree = "<group>"; };
@@ -4889,7 +4897,10 @@
 		CA630BCB229F109600754C27 /* Events */ = {
 			isa = PBXGroup;
 			children = (
+				CA630BD5229F145E00754C27 /* EventIntentDonor.swift */,
 				CA3ABA0D229DCC350045A35B /* EventInteractionRecorder.swift */,
+				CA630BD0229F11CC00754C27 /* IntentBasedEventInteractionRecorder.swift */,
+				CA630C0622A0696D00754C27 /* ViewEventIntentDefinition.swift */,
 				CA630BD4229F144A00754C27 /* Intents */,
 			);
 			path = Events;
@@ -4916,9 +4927,8 @@
 		CA630BD4229F144A00754C27 /* Intents */ = {
 			isa = PBXGroup;
 			children = (
-				CA630BD5229F145E00754C27 /* EventIntentDonor.swift */,
-				CA630BD0229F11CC00754C27 /* IntentBasedEventInteractionRecorder.swift */,
 				CA630BED229F16F400754C27 /* ConcreteEventIntentDonor.swift */,
+				CA630C0822A069AF00754C27 /* ViewEventIntent+Definition.swift */,
 			);
 			path = Intents;
 			sourceTree = "<group>";
@@ -4946,9 +4956,11 @@
 		CA630BFA22A0686A00754C27 /* Resuming Interaction */ = {
 			isa = PBXGroup;
 			children = (
-				CA630BFB22A068A200754C27 /* InteractionResumer.swift */,
-				CA630BFD22A068B400754C27 /* ResumeInteractionResponseHandler.swift */,
 				CA630BFF22A068C200754C27 /* EventIntentDefinitionProviding.swift */,
+				CA630C0C22A06D5900754C27 /* IntentDefinitionProvidingFactory.swift */,
+				CA630BFB22A068A200754C27 /* InteractionResumer.swift */,
+				CA630C0A22A06A7B00754C27 /* NavigateToContentResumeInteractionResponseHandler.swift */,
+				CA630BFD22A068B400754C27 /* ResumeInteractionResponseHandler.swift */,
 			);
 			path = "Resuming Interaction";
 			sourceTree = "<group>";
@@ -8336,7 +8348,9 @@
 				CA637582208CDE2000536BE2 /* ScheduleModuleProviding.swift in Sources */,
 				CACF1E5A20AE2DFB00D904B5 /* EventDetailScene.swift in Sources */,
 				CACF1E7C20B212A800D904B5 /* EventDetailBinder.swift in Sources */,
+				CA630C0B22A06A7B00754C27 /* NavigateToContentResumeInteractionResponseHandler.swift in Sources */,
 				CAEAEC011FE0054500C0EE7C /* MessageDetailModuleFactory.swift in Sources */,
+				CA630C5122A079E100754C27 /* Intents.intentdefinition in Sources */,
 				CA9845DE1F2B01BA00E8821D /* UnreadMessageIndicator.swift in Sources */,
 				9A861ECA1F25555000B75A8C /* UserDefaultsTutorialStateProvider.swift in Sources */,
 				CA6A8DD420E417FF007536CD /* MapDetailScene.swift in Sources */,
@@ -8401,6 +8415,7 @@
 				CAEAEBF51FDEB56000C0EE7C /* MessageDetailModuleProviding.swift in Sources */,
 				CAD3BDCB2061394700C91E6E /* AppURLOpener.swift in Sources */,
 				CA00AE8E20D2925500C2FBB0 /* ScheduleDayCollectionViewCell.swift in Sources */,
+				CA630C0D22A06D5900754C27 /* IntentDefinitionProvidingFactory.swift in Sources */,
 				CA17FE9420586A3C005A4C05 /* DefaultKnowledgeDetailSceneInteractor.swift in Sources */,
 				CACF1E6D20B1CDB800D904B5 /* EventDetailInteractor.swift in Sources */,
 				CA6A8D6320E26247007536CD /* MapsModuleProviding.swift in Sources */,
@@ -8414,6 +8429,7 @@
 				CA73AEE9201A088C004E77BF /* KnowledgeListSceneDelegate.swift in Sources */,
 				CA36A45C20D8472E00EE6537 /* DealersViewModel.swift in Sources */,
 				CA50B1B6226111080091E425 /* EventFeedbackSceneDelegate.swift in Sources */,
+				CA630C0722A0696D00754C27 /* ViewEventIntentDefinition.swift in Sources */,
 				CA50B1BC2261112D0091E425 /* EventFeedbackSceneFactory.swift in Sources */,
 				CAE27B4C1F855E0E005FDE39 /* TabModuleProviding.swift in Sources */,
 				CA6A8D6F20E2648E007536CD /* MapsModuleBuilder.swift in Sources */,
@@ -8654,7 +8670,6 @@
 				9A861EA71F2554BE00B75A8C /* TutorialPage.swift in Sources */,
 				CAA4BA6721EE7AB600DE2C88 /* MessagesModule.swift in Sources */,
 				CA89CBB62080032000570D54 /* NewsComponentHeaderScene.swift in Sources */,
-				CA630BEC229F160300754C27 /* Intents.intentdefinition in Sources */,
 				CA6375B4208E039100536BE2 /* DealersModule.swift in Sources */,
 				CA66C0142124A24900F87AFE /* ReviewPromptAppVersionRepository.swift in Sources */,
 				CAD2609D20C02BCF007E3618 /* EventDetailBannerTableViewCell.swift in Sources */,
@@ -8665,6 +8680,7 @@
 				CACF1E7E20B212B400D904B5 /* EventDetailComponentFactory.swift in Sources */,
 				CA00AE5420D16FD300C2FBB0 /* ScheduleEventViewModel.swift in Sources */,
 				CA152EE422651F5B00212742 /* FailureHaptic.swift in Sources */,
+				CA630C0922A069AF00754C27 /* ViewEventIntent+Definition.swift in Sources */,
 				CA00AE6620D1784500C2FBB0 /* EventTableViewCell.swift in Sources */,
 				CA728455209D0576007D912A /* AnnouncementDetailSceneFactory.swift in Sources */,
 				CA1B6F2920DB89FE00ADF414 /* DealerDetailPresenter.swift in Sources */,

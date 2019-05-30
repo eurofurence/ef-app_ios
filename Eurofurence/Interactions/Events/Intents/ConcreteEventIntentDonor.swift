@@ -1,4 +1,5 @@
 import EurofurenceModel
+import EurofurenceIntentDefinitions
 import Intents
 
 struct ConcreteEventIntentDonor: EventIntentDonor {
@@ -6,10 +7,7 @@ struct ConcreteEventIntentDonor: EventIntentDonor {
     func donateEventIntent(definition: ViewEventIntentDefinition) {
         guard #available(iOS 12.0, *) else { return }
         
-        let intent = ViewEventIntent()
-        intent.eventIdentifier = definition.identifier.rawValue
-        intent.eventName = definition.eventName
-        
+        let intent = ViewEventIntent(intentDefinition: definition)
         let interation = INInteraction(intent: intent, response: nil)
         interation.identifier = definition.identifier.rawValue
         

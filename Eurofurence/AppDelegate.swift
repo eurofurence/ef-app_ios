@@ -31,6 +31,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ApplicationStack.handleRemoteNotification(userInfo, completionHandler: completionHandler)
 	}
     
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+        return ApplicationStack.resumeInteraction(userActivity.interaction?.intent)
+    }
+    
     // MARK: Private
 
     private func prepareFrameworks() {
