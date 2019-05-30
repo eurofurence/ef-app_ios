@@ -63,7 +63,13 @@ struct ApplicationModuleRepository: ModuleRepository {
         let dealerDetailInteractor = DefaultDealerDetailInteractor(dealersService: services.dealers)
         dealerDetailModuleProviding = DealerDetailModuleBuilder(dealerDetailInteractor: dealerDetailInteractor).build()
         
-        collectThemAllModuleProviding = CollectThemAllModuleBuilder(service: services.collectThemAll).build()
+        struct DummyCollectThemAllInteractionRecorder: CollectThemAllInteractionRecorder {
+            func recordCollectThemAllInteraction() {
+                
+            }
+        }
+        
+        collectThemAllModuleProviding = CollectThemAllModuleBuilder(service: services.collectThemAll, interactionRecorder: DummyCollectThemAllInteractionRecorder()).build()
         messagesModuleProviding = MessagesModuleBuilder(authenticationService: services.authentication, privateMessagesService: services.privateMessages).build()
         loginModuleProviding = LoginModuleBuilder(authenticationService: services.authentication).build()
         messageDetailModuleProviding = MessageDetailModuleBuilder(privateMessagesService: services.privateMessages).build()

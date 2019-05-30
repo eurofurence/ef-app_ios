@@ -594,6 +594,8 @@
 		CA630C0B22A06A7B00754C27 /* NavigateToContentResumeInteractionResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630C0A22A06A7B00754C27 /* NavigateToContentResumeInteractionResponseHandler.swift */; };
 		CA630C0D22A06D5900754C27 /* IntentDefinitionProvidingFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630C0C22A06D5900754C27 /* IntentDefinitionProvidingFactory.swift */; };
 		CA630C5122A079E100754C27 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CA630BEA229F151600754C27 /* Intents.intentdefinition */; settings = {ATTRIBUTES = (no_codegen, ); }; };
+		CA630C5422A07C6700754C27 /* CollectThemAllInteractionRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630C5322A07C6700754C27 /* CollectThemAllInteractionRecorder.swift */; };
+		CA630C5622A07D5300754C27 /* CapturingCollectThemAllInteractionRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630C5522A07D5300754C27 /* CapturingCollectThemAllInteractionRecorder.swift */; };
 		CA63753D208A6E4900536BE2 /* WhenLoggedOutBeforeConvention_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63753C208A6E4900536BE2 /* WhenLoggedOutBeforeConvention_NewsInteractorShould.swift */; };
 		CA637540208CBB0E00536BE2 /* CapturingNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63753F208CBB0E00536BE2 /* CapturingNavigationController.swift */; };
 		CA637542208CBB2400536BE2 /* StubNavigationControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637541208CBB2400536BE2 /* StubNavigationControllerFactory.swift */; };
@@ -2326,6 +2328,8 @@
 		CA630C0822A069AF00754C27 /* ViewEventIntent+Definition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewEventIntent+Definition.swift"; sourceTree = "<group>"; };
 		CA630C0A22A06A7B00754C27 /* NavigateToContentResumeInteractionResponseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateToContentResumeInteractionResponseHandler.swift; sourceTree = "<group>"; };
 		CA630C0C22A06D5900754C27 /* IntentDefinitionProvidingFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentDefinitionProvidingFactory.swift; sourceTree = "<group>"; };
+		CA630C5322A07C6700754C27 /* CollectThemAllInteractionRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectThemAllInteractionRecorder.swift; sourceTree = "<group>"; };
+		CA630C5522A07D5300754C27 /* CapturingCollectThemAllInteractionRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingCollectThemAllInteractionRecorder.swift; sourceTree = "<group>"; };
 		CA63753C208A6E4900536BE2 /* WhenLoggedOutBeforeConvention_NewsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLoggedOutBeforeConvention_NewsInteractorShould.swift; sourceTree = "<group>"; };
 		CA63753F208CBB0E00536BE2 /* CapturingNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingNavigationController.swift; sourceTree = "<group>"; };
 		CA637541208CBB2400536BE2 /* StubNavigationControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubNavigationControllerFactory.swift; sourceTree = "<group>"; };
@@ -4308,6 +4312,7 @@
 				CA2761A820E021FB000E52AC /* CapturingCollectThemAllScene.swift */,
 				CA2761AA20E0220A000E52AC /* StubCollectThemAllSceneFactory.swift */,
 				CA2761BB20E02A25000E52AC /* FakeCollectThemAllService.swift */,
+				CA630C5522A07D5300754C27 /* CapturingCollectThemAllInteractionRecorder.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -4888,8 +4893,9 @@
 		CA630BCA229F108900754C27 /* Interactions */ = {
 			isa = PBXGroup;
 			children = (
-				CA630BFA22A0686A00754C27 /* Resuming Interaction */,
+				CA630C5222A07C5900754C27 /* Collect-them-All */,
 				CA630BCB229F109600754C27 /* Events */,
+				CA630BFA22A0686A00754C27 /* Resuming Interaction */,
 			);
 			path = Interactions;
 			sourceTree = "<group>";
@@ -4972,6 +4978,14 @@
 				CA630C0422A068EA00754C27 /* CapturingResumeIntentResponseHandler.swift */,
 			);
 			path = "Test Doubles";
+			sourceTree = "<group>";
+		};
+		CA630C5222A07C5900754C27 /* Collect-them-All */ = {
+			isa = PBXGroup;
+			children = (
+				CA630C5322A07C6700754C27 /* CollectThemAllInteractionRecorder.swift */,
+			);
+			path = "Collect-them-All";
 			sourceTree = "<group>";
 		};
 		CA63753B208A6E0900536BE2 /* Interactor Tests */ = {
@@ -8484,6 +8498,7 @@
 				CA6AA0041FD6C7B50092C6DB /* DirectorBuilder.swift in Sources */,
 				CACF1E8820B34F8900D904B5 /* DefaultEventDetailInteractor.swift in Sources */,
 				CAF3C74C1F9F619C0008F027 /* NewsModule.swift in Sources */,
+				CA630C5422A07C6700754C27 /* CollectThemAllInteractionRecorder.swift in Sources */,
 				CA1B6F2F20DB8E0900ADF414 /* DealerDetailSceneBinder.swift in Sources */,
 				CA36A47120D84D9D00EE6537 /* DealersBinder.swift in Sources */,
 				20516AC621121AE400C399C0 /* SubtleDownMarkdownRenderer.swift in Sources */,
@@ -9002,6 +9017,7 @@
 				CA00AE8520D2320700C2FBB0 /* StubScheduleViewModel.swift in Sources */,
 				CACF26D120FE5B8300EDE150 /* WhenToldToFilterToFavouriteEvents_ScheduleInteractorShould.swift in Sources */,
 				CA283A7A20E91A7900F7D195 /* WhenInstigatingPullToRefreshAction_SchedulePresenterShould.swift in Sources */,
+				CA630C5622A07D5300754C27 /* CapturingCollectThemAllInteractionRecorder.swift in Sources */,
 				CA283ADE20EC00F100F7D195 /* WhenBindingFavouriteEvent_SchedulePresenterShould.swift in Sources */,
 				CA283A6D20E8DA0300F7D195 /* DealerInteractorTestBuilder.swift in Sources */,
 				CA63755E208CBC4E00536BE2 /* StubWebMobuleProviding.swift in Sources */,

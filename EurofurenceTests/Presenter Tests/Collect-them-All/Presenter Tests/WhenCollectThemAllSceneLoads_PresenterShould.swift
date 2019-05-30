@@ -10,5 +10,15 @@ class WhenCollectThemAllSceneLoads_PresenterShould: XCTestCase {
 
         XCTAssertEqual(context.service.urlRequest, context.scene.capturedURLRequest)
     }
+    
+    func testRecordCollectThemAllInteraction() {
+        let context = CollectThemAllPresenterTestBuilder().build()
+        
+        XCTAssertFalse(context.collectThemAllInteractionRecorder.didRecordInteraction)
+        
+        context.simulateSceneDidLoad()
+        
+        XCTAssertTrue(context.collectThemAllInteractionRecorder.didRecordInteraction)
+    }
 
 }
