@@ -3,15 +3,15 @@ import Intents
 
 struct ConcreteEventIntentDonor: EventIntentDonor {
     
-    func donateEventIntent(traits: EventIntentTraits) {
+    func donateEventIntent(definition: ViewEventIntentDefinition) {
         guard #available(iOS 12.0, *) else { return }
         
         let intent = ViewEventIntent()
-        intent.eventIdentifier = traits.identifier.rawValue
-        intent.eventName = traits.eventName
+        intent.eventIdentifier = definition.identifier.rawValue
+        intent.eventName = definition.eventName
         
         let interation = INInteraction(intent: intent, response: nil)
-        interation.identifier = traits.identifier.rawValue
+        interation.identifier = definition.identifier.rawValue
         
         interation.donate { (error) in
             if let error = error {

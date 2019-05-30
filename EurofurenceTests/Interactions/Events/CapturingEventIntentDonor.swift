@@ -2,9 +2,9 @@
 
 class CapturingEventIntentDonor: EventIntentDonor {
     
-    private(set) var donatedEventIntentTraits: EventIntentTraits?
-    func donateEventIntent(traits: EventIntentTraits) {
-        donatedEventIntentTraits = traits
+    private(set) var donatedEventIntentDefinition: ViewEventIntentDefinition?
+    func donateEventIntent(definition: ViewEventIntentDefinition) {
+        donatedEventIntentDefinition = definition
     }
     
 }

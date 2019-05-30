@@ -13,8 +13,8 @@ class WhenRecordingEventInteraction: XCTestCase {
         let tracer = IntentBasedEventInteractionRecorder(eventsService: eventsService, eventIntentDonor: eventIntentDonor)
         tracer.recordInteraction(for: event.identifier)
         
-        let expected = EventIntentTraits(identifier: event.identifier, eventName: event.title)
-        XCTAssertEqual(expected, eventIntentDonor.donatedEventIntentTraits)
+        let expected = ViewEventIntentDefinition(identifier: event.identifier, eventName: event.title)
+        XCTAssertEqual(expected, eventIntentDonor.donatedEventIntentDefinition)
     }
     
 }

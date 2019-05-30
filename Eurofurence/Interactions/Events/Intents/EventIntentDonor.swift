@@ -1,7 +1,7 @@
 import EurofurenceModel
 import Foundation
 
-struct EventIntentTraits: Equatable {
+struct ViewEventIntentDefinition: Equatable {
     
     var identifier: EventIdentifier
     var eventName: String
@@ -10,6 +10,6 @@ struct EventIntentTraits: Equatable {
 
 protocol EventIntentDonor {
     
-    func donateEventIntent(traits: EventIntentTraits)
+    func donateEventIntent(definition: ViewEventIntentDefinition)
     
 }

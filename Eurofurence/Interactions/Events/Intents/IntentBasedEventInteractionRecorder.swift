@@ -9,8 +9,8 @@ struct IntentBasedEventInteractionRecorder: EventInteractionRecorder {
     func recordInteraction(for event: EventIdentifier) {
         guard let entity = eventsService.fetchEvent(identifier: event) else { return }
         
-        let intentTraits = EventIntentTraits(identifier: event, eventName: entity.title)
-        eventIntentDonor.donateEventIntent(traits: intentTraits)
+        let intentDefinition = ViewEventIntentDefinition(identifier: event, eventName: entity.title)
+        eventIntentDonor.donateEventIntent(definition: intentDefinition)
     }
     
 }
