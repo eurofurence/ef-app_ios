@@ -1,6 +1,5 @@
-import UIKit
 import Firebase
-import UserNotifications
+import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -38,8 +37,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: Private
 
     private func prepareFrameworks() {
-        ScreenshotAssistant.prepare()
         FirebaseApp.configure()
+        ScreenshotAssistant.prepare()
     }
     
     private func prepareApplicationStack() {

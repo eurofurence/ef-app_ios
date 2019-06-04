@@ -40,14 +40,6 @@
 			<key>FooterText</key>
 			<string>Copyright 2017 Google</string>
 			<key>Title</key>
-			<string>FirebaseCrash</string>
-			<key>Type</key>
-			<string>PSGroupSpecifier</string>
-		</dict>
-		<dict>
-			<key>FooterText</key>
-			<string>Copyright 2017 Google</string>
-			<key>Title</key>
 			<string>FirebaseInstanceID</string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
@@ -337,6 +329,14 @@ redistribute it freely, subject to the following restrictions:
 </string>
 			<key>Title</key>
 			<string>nanopb</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>FooterText</key>
+			<string>Copyright 2017 Google</string>
+			<key>Title</key>
+			<string>FirebaseCrash</string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 		</dict>

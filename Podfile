@@ -13,38 +13,26 @@ end
 target :Eurofurence do
 	plugin 'cocoapods-acknowledgements', :settings_bundle => true
 	
-	pod 'Down'
-	pod 'SwiftLint'
-	pod 'Firebase/Core'
-	pod 'Firebase/Crash'
-	pod 'Firebase/Messaging'
-	pod 'Firebase/Performance'
+  pod 'Crashlytics'
+  pod 'Down'
+  pod 'Fabric'
+  pod 'Firebase/Core'
+  pod 'Firebase/Messaging'
+  pod 'Firebase/Performance'
+  pod 'SwiftLint'
 	
 	pod 'SimulatorStatusMagic', :configurations => ['Screenshots']
 
 	target :EurofurenceTests do
 		inherit! :search_paths
-
-		pod 'Firebase/Core'
-		pod 'Firebase/Crash'
 	end
   
   target :EurofurenceUITests do
     inherit! :search_paths
-    
-    pod 'Firebase/Core'
-    pod 'Firebase/Crash'
   end
   
   target :ScreenshotGenerator do
     inherit! :search_paths
-    
-    pod 'Down'
-    pod 'Firebase/Core'
-    pod 'Firebase/Crash'
-    pod 'Firebase/Messaging'
-    pod 'Firebase/Performance'
-    pod 'SimulatorStatusMagic'
   end
 	
 end
