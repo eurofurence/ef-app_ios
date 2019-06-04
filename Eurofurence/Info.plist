@@ -34,7 +34,6 @@
 	<string>Eurofurence uses your calendar to add events and alerts</string>
 	<key>NSUserActivityTypes</key>
 	<array>
-		<string>OpenCollectThemAllIntent</string>
 		<string>ViewEventIntent</string>
 	</array>
 	<key>UIAppFonts</key>

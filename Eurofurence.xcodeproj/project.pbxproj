@@ -596,7 +596,6 @@
 		CA630C5122A079E100754C27 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CA630BEA229F151600754C27 /* Intents.intentdefinition */; settings = {ATTRIBUTES = (no_codegen, ); }; };
 		CA630C5422A07C6700754C27 /* CollectThemAllInteractionRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630C5322A07C6700754C27 /* CollectThemAllInteractionRecorder.swift */; };
 		CA630C5622A07D5300754C27 /* CapturingCollectThemAllInteractionRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630C5522A07D5300754C27 /* CapturingCollectThemAllInteractionRecorder.swift */; };
-		CA630C5922A07E0C00754C27 /* DonateIntentCollectThemAllInteractionRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630C5822A07E0C00754C27 /* DonateIntentCollectThemAllInteractionRecorder.swift */; };
 		CA63753D208A6E4900536BE2 /* WhenLoggedOutBeforeConvention_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63753C208A6E4900536BE2 /* WhenLoggedOutBeforeConvention_NewsInteractorShould.swift */; };
 		CA637540208CBB0E00536BE2 /* CapturingNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63753F208CBB0E00536BE2 /* CapturingNavigationController.swift */; };
 		CA637542208CBB2400536BE2 /* StubNavigationControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637541208CBB2400536BE2 /* StubNavigationControllerFactory.swift */; };
@@ -2331,7 +2330,6 @@
 		CA630C0C22A06D5900754C27 /* IntentDefinitionProvidingFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentDefinitionProvidingFactory.swift; sourceTree = "<group>"; };
 		CA630C5322A07C6700754C27 /* CollectThemAllInteractionRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectThemAllInteractionRecorder.swift; sourceTree = "<group>"; };
 		CA630C5522A07D5300754C27 /* CapturingCollectThemAllInteractionRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingCollectThemAllInteractionRecorder.swift; sourceTree = "<group>"; };
-		CA630C5822A07E0C00754C27 /* DonateIntentCollectThemAllInteractionRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateIntentCollectThemAllInteractionRecorder.swift; sourceTree = "<group>"; };
 		CA63753C208A6E4900536BE2 /* WhenLoggedOutBeforeConvention_NewsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLoggedOutBeforeConvention_NewsInteractorShould.swift; sourceTree = "<group>"; };
 		CA63753F208CBB0E00536BE2 /* CapturingNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingNavigationController.swift; sourceTree = "<group>"; };
 		CA637541208CBB2400536BE2 /* StubNavigationControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubNavigationControllerFactory.swift; sourceTree = "<group>"; };
@@ -4986,17 +4984,8 @@
 			isa = PBXGroup;
 			children = (
 				CA630C5322A07C6700754C27 /* CollectThemAllInteractionRecorder.swift */,
-				CA630C5722A07DF300754C27 /* Intents */,
 			);
 			path = "Collect-them-All";
-			sourceTree = "<group>";
-		};
-		CA630C5722A07DF300754C27 /* Intents */ = {
-			isa = PBXGroup;
-			children = (
-				CA630C5822A07E0C00754C27 /* DonateIntentCollectThemAllInteractionRecorder.swift */,
-			);
-			path = Intents;
 			sourceTree = "<group>";
 		};
 		CA63753B208A6E0900536BE2 /* Interactor Tests */ = {
@@ -8605,7 +8594,6 @@
 				CA4010982110818C0056E16C /* StoryboardKnowledgeGroupEntriesSceneFactory.swift in Sources */,
 				CACF1E8020B212BE00D904B5 /* EventSummaryComponent.swift in Sources */,
 				20E87E17210A34D800B55A04 /* DownMarkdownRenderer.swift in Sources */,
-				CA630C5922A07E0C00754C27 /* DonateIntentCollectThemAllInteractionRecorder.swift in Sources */,
 				CA0F7632203314FE009DA079 /* KnowledgeListViewController.swift in Sources */,
 				CA728490209F9482007D912A /* DefaultMarkdownRenderer.swift in Sources */,
 				CAE27B4E1F85611C005FDE39 /* PhoneTutorialModuleFactory.swift in Sources */,
