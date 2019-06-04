@@ -597,7 +597,6 @@
 		CA630C5422A07C6700754C27 /* CollectThemAllInteractionRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630C5322A07C6700754C27 /* CollectThemAllInteractionRecorder.swift */; };
 		CA630C5622A07D5300754C27 /* CapturingCollectThemAllInteractionRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630C5522A07D5300754C27 /* CapturingCollectThemAllInteractionRecorder.swift */; };
 		CA630C5922A07E0C00754C27 /* DonateIntentCollectThemAllInteractionRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630C5822A07E0C00754C27 /* DonateIntentCollectThemAllInteractionRecorder.swift */; };
-		CA630C5B22A07FE000754C27 /* WhenResumingOpenCollectThemAllIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630C5A22A07FE000754C27 /* WhenResumingOpenCollectThemAllIntent.swift */; };
 		CA63753D208A6E4900536BE2 /* WhenLoggedOutBeforeConvention_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63753C208A6E4900536BE2 /* WhenLoggedOutBeforeConvention_NewsInteractorShould.swift */; };
 		CA637540208CBB0E00536BE2 /* CapturingNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63753F208CBB0E00536BE2 /* CapturingNavigationController.swift */; };
 		CA637542208CBB2400536BE2 /* StubNavigationControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637541208CBB2400536BE2 /* StubNavigationControllerFactory.swift */; };
@@ -876,9 +875,6 @@
 		CA8E7EFC1FB0932700F0BF10 /* StoryboardNewsSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E7EFB1FB0932700F0BF10 /* StoryboardNewsSceneFactory.swift */; };
 		CA8E7EFE1FB093D800F0BF10 /* PlatformNavigationControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E7EFD1FB093D800F0BF10 /* PlatformNavigationControllerFactory.swift */; };
 		CA8E7F031FB094A600F0BF10 /* PlatformTabModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E7F021FB094A600F0BF10 /* PlatformTabModuleFactory.swift */; };
-		CA925F2222A0806E00E0FDFA /* OpenCollectThemAllIntentDefinitionProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA925F2122A0806E00E0FDFA /* OpenCollectThemAllIntentDefinitionProviding.swift */; };
-		CA925F2422A0807E00E0FDFA /* StubOpenCollectThemAllIntentDefinitionProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA925F2322A0807E00E0FDFA /* StubOpenCollectThemAllIntentDefinitionProviding.swift */; };
-		CA925F2622A0810200E0FDFA /* OpenCollectThemAllIntent+Definition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA925F2522A0810200E0FDFA /* OpenCollectThemAllIntent+Definition.swift */; };
 		CA957B5A1F705A6D004DFD5A /* MessagesViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA957B591F705A6D004DFD5A /* MessagesViewControllerTests.swift */; };
 		CA957B601F705AF9004DFD5A /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA957B5E1F705AF9004DFD5A /* MessagesViewController.swift */; };
 		CA9845CA1F2907A800E8821D /* ScreenshotGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9845C91F2907A800E8821D /* ScreenshotGenerator.swift */; };
@@ -2336,7 +2332,6 @@
 		CA630C5322A07C6700754C27 /* CollectThemAllInteractionRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectThemAllInteractionRecorder.swift; sourceTree = "<group>"; };
 		CA630C5522A07D5300754C27 /* CapturingCollectThemAllInteractionRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingCollectThemAllInteractionRecorder.swift; sourceTree = "<group>"; };
 		CA630C5822A07E0C00754C27 /* DonateIntentCollectThemAllInteractionRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateIntentCollectThemAllInteractionRecorder.swift; sourceTree = "<group>"; };
-		CA630C5A22A07FE000754C27 /* WhenResumingOpenCollectThemAllIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenResumingOpenCollectThemAllIntent.swift; sourceTree = "<group>"; };
 		CA63753C208A6E4900536BE2 /* WhenLoggedOutBeforeConvention_NewsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLoggedOutBeforeConvention_NewsInteractorShould.swift; sourceTree = "<group>"; };
 		CA63753F208CBB0E00536BE2 /* CapturingNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingNavigationController.swift; sourceTree = "<group>"; };
 		CA637541208CBB2400536BE2 /* StubNavigationControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubNavigationControllerFactory.swift; sourceTree = "<group>"; };
@@ -2676,9 +2671,6 @@
 		CA8E7EFB1FB0932700F0BF10 /* StoryboardNewsSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardNewsSceneFactory.swift; sourceTree = "<group>"; };
 		CA8E7EFD1FB093D800F0BF10 /* PlatformNavigationControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformNavigationControllerFactory.swift; sourceTree = "<group>"; };
 		CA8E7F021FB094A600F0BF10 /* PlatformTabModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformTabModuleFactory.swift; sourceTree = "<group>"; };
-		CA925F2122A0806E00E0FDFA /* OpenCollectThemAllIntentDefinitionProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenCollectThemAllIntentDefinitionProviding.swift; sourceTree = "<group>"; };
-		CA925F2322A0807E00E0FDFA /* StubOpenCollectThemAllIntentDefinitionProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubOpenCollectThemAllIntentDefinitionProviding.swift; sourceTree = "<group>"; };
-		CA925F2522A0810200E0FDFA /* OpenCollectThemAllIntent+Definition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OpenCollectThemAllIntent+Definition.swift"; sourceTree = "<group>"; };
 		CA957B591F705A6D004DFD5A /* MessagesViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewControllerTests.swift; sourceTree = "<group>"; };
 		CA957B5E1F705AF9004DFD5A /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		CA9845C71F2907A800E8821D /* ScreenshotGenerator.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScreenshotGenerator.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -4962,10 +4954,9 @@
 		CA630BF522A064FA00754C27 /* Resuming Interaction */ = {
 			isa = PBXGroup;
 			children = (
-				CA630C5A22A07FE000754C27 /* WhenResumingOpenCollectThemAllIntent.swift */,
+				CA630C0122A068D300754C27 /* Test Doubles */,
 				CA630BF622A0650E00754C27 /* WhenResumingUnknownIntent.swift */,
 				CA630BF822A065B300754C27 /* WhenResumingViewEventIntent.swift */,
-				CA630C0122A068D300754C27 /* Test Doubles */,
 			);
 			path = "Resuming Interaction";
 			sourceTree = "<group>";
@@ -4978,7 +4969,6 @@
 				CA630BFB22A068A200754C27 /* InteractionResumer.swift */,
 				CA630C0A22A06A7B00754C27 /* NavigateToContentResumeInteractionResponseHandler.swift */,
 				CA630BFD22A068B400754C27 /* ResumeInteractionResponseHandler.swift */,
-				CA925F2122A0806E00E0FDFA /* OpenCollectThemAllIntentDefinitionProviding.swift */,
 			);
 			path = "Resuming Interaction";
 			sourceTree = "<group>";
@@ -4988,7 +4978,6 @@
 			children = (
 				CA630C0222A068DC00754C27 /* StubEventIntentDefinitionProviding.swift */,
 				CA630C0422A068EA00754C27 /* CapturingResumeIntentResponseHandler.swift */,
-				CA925F2322A0807E00E0FDFA /* StubOpenCollectThemAllIntentDefinitionProviding.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -5006,7 +4995,6 @@
 			isa = PBXGroup;
 			children = (
 				CA630C5822A07E0C00754C27 /* DonateIntentCollectThemAllInteractionRecorder.swift */,
-				CA925F2522A0810200E0FDFA /* OpenCollectThemAllIntent+Definition.swift */,
 			);
 			path = Intents;
 			sourceTree = "<group>";
@@ -8396,7 +8384,6 @@
 				CA6A8D8E20E2BC6C007536CD /* MapsPresenter.swift in Sources */,
 				CA6A8D9A20E2C678007536CD /* MapsBinder.swift in Sources */,
 				CA02910221F4D6020007F350 /* AppDelegate+DebugWindow.swift in Sources */,
-				CA925F2222A0806E00E0FDFA /* OpenCollectThemAllIntentDefinitionProviding.swift in Sources */,
 				CA2A587120F7F369002C69B6 /* FoundationAnnouncementDateFormatter.swift in Sources */,
 				CAF705641F82D0DF00A9FEA2 /* RootModuleProviding.swift in Sources */,
 				CA6A8DF520E42731007536CD /* DefaultMapDetailInteractor.swift in Sources */,
@@ -8414,7 +8401,6 @@
 				CA6A8D8720E2BB90007536CD /* MapsViewModel.swift in Sources */,
 				CA728465209D0FAF007D912A /* AnnouncementDetailScene.swift in Sources */,
 				CA50B1BA226111220091E425 /* EventFeedbackViewModel.swift in Sources */,
-				CA925F2622A0810200E0FDFA /* OpenCollectThemAllIntent+Definition.swift in Sources */,
 				CA630BD6229F145E00754C27 /* EventIntentDonor.swift in Sources */,
 				CAD3BDC7205FE88900C91E6E /* SafariWebModuleProviding.swift in Sources */,
 				CACF1E8A20B351D400D904B5 /* DateRangeFormatter.swift in Sources */,
@@ -9050,7 +9036,6 @@
 				CAF81C6220DD95BC00898C52 /* DealerDetailAboutTheArtistViewModel+RandomValueProviding.swift in Sources */,
 				CA7D8B1A222DB134003431A0 /* NewsViewModelValue+Equatable.swift in Sources */,
 				CACF1E9E20B4386B00D904B5 /* WhenBindingEventDescription_EventDetailPresenterShould.swift in Sources */,
-				CA925F2422A0807E00E0FDFA /* StubOpenCollectThemAllIntentDefinitionProviding.swift in Sources */,
 				CA283A8620E9483F00F7D195 /* WhenPreparingAnnouncementViewModel_ForReadAnnouncement_NewsInteractorShould.swift in Sources */,
 				CA62134B221F276000E88880 /* ScheduleEventGroupViewModelAssertion.swift in Sources */,
 				CA8E17EF1F817A8C003C348C /* CapturingPreloadInteractor.swift in Sources */,
@@ -9249,7 +9234,6 @@
 				CA36A46920D84AA900EE6537 /* DealersGroupViewModel+RandomValueProviding.swift in Sources */,
 				CA283AE620EC188E00F7D195 /* WhenBindingNonFavouriteEvent_FromSearchResult_SchedulePresenterShould.swift in Sources */,
 				CAD5593F229AF2890068DD46 /* WhenOpeningAnnouncement_DirectorShould.swift in Sources */,
-				CA630C5B22A07FE000754C27 /* WhenResumingOpenCollectThemAllIntent.swift in Sources */,
 				CA0E5215208F52EE005259FE /* CapturingNewsInteractorDelegate.swift in Sources */,
 				CA637599208DFD5F00536BE2 /* SchedulePresenterTestBuilder.swift in Sources */,
 				CA063B3C20F25E5B00241CC9 /* FakeApplicationNotificationHandling.swift in Sources */,
