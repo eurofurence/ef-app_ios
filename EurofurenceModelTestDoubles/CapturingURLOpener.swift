@@ -11,7 +11,7 @@ public class CapturingURLOpener: URLOpener {
         return true
     }
 
-    private(set) public var capturedURLToOpen: URL?
+    public private(set) var capturedURLToOpen: URL?
     public func open(_ url: URL) {
         capturedURLToOpen = url
     }
@@ -20,7 +20,7 @@ public class CapturingURLOpener: URLOpener {
 
 public class HappyPathURLOpener: CapturingURLOpener {
 
-    public override func canOpen(_ url: URL) -> Bool {
+    override public func canOpen(_ url: URL) -> Bool {
         return true
     }
 
@@ -28,7 +28,7 @@ public class HappyPathURLOpener: CapturingURLOpener {
 
 public class UnhappyPathURLOpener: CapturingURLOpener {
 
-    public override func canOpen(_ url: URL) -> Bool {
+    override public func canOpen(_ url: URL) -> Bool {
         return false
     }
 

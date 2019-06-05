@@ -81,7 +81,7 @@ public final class FakeEvent: Event {
         notifyObserverOfCurrentFavouriteStateAsPerEventContract(observer)
     }
 
-    private(set) public var favouritedState: FavouritedState
+    public private(set) var favouritedState: FavouritedState
     public func favourite() {
         favouritedState = .favourited
         observers.forEach({ $0.eventDidBecomeFavourite(self) })

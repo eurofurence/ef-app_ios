@@ -24,7 +24,7 @@ public final class StubMessage: Message {
         self.isRead = isRead
     }
     
-    private(set) public var markedRead = false
+    public private(set) var markedRead = false
     public func markAsRead() {
         markedRead = true
     }

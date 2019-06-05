@@ -18,7 +18,7 @@ class AppNotificationDelegate: NSObject, UNUserNotificationCenterDelegate {
     
     static let instance = AppNotificationDelegate()
     
-    private override init() {
+    override private init() {
         
     }
     

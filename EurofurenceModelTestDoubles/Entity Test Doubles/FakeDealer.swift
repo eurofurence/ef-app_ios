@@ -30,17 +30,17 @@ public final class FakeDealer: Dealer {
         self.isAfterDark = isAfterDark
     }
     
-    private(set) public var websiteOpened = false
+    public private(set) var websiteOpened = false
     public func openWebsite() {
         websiteOpened = true
     }
     
-    private(set) public var twitterOpened = false
+    public private(set) var twitterOpened = false
     public func openTwitter() {
         twitterOpened = true
     }
     
-    private(set) public var telegramOpened = false
+    public private(set) var telegramOpened = false
     public func openTelegram() {
         telegramOpened = true
     }

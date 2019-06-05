@@ -7,8 +7,8 @@ public class CapturingJSONSession: JSONSession {
 
     }
 
-    private(set) public var getRequestURL: String?
-    private(set) public var capturedAdditionalGETHeaders: [String: String]?
+    public private(set) var getRequestURL: String?
+    public private(set) var capturedAdditionalGETHeaders: [String: String]?
     private var GETCompletionHandler: ((Data?, Error?) -> Void)?
     public func get(_ request: JSONRequest, completionHandler: @escaping (Data?, Error?) -> Void) {
         getRequestURL = request.url
@@ -16,9 +16,9 @@ public class CapturingJSONSession: JSONSession {
         GETCompletionHandler = completionHandler
     }
 
-    private(set) public var postedURL: String?
-    private(set) public var capturedAdditionalPOSTHeaders: [String: String]?
-    private(set) public var POSTData: Data?
+    public private(set) var postedURL: String?
+    public private(set) var capturedAdditionalPOSTHeaders: [String: String]?
+    public private(set) var POSTData: Data?
     private var POSTCompletionHandler: ((Data?, Error?) -> Void)?
     public func post(_ request: JSONRequest, completionHandler: @escaping (Data?, Error?) -> Void) {
         postedURL = request.url

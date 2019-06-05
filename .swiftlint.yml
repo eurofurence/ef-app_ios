@@ -1,3 +1,5 @@
+reporter: "xcode"
+
 excluded:
   - DerivedData
   - Pods
@@ -12,7 +14,15 @@ disabled_rules:
   - todo
 
 opt_in_rules:
+  - empty_count
+  - empty_string
+  - explicit_init
+  - first_where
   - force_unwrapping
+  - last_where
+  - legacy_multiple
+  - mark
+  - modifier_order
 
 force_try:
   severity: error

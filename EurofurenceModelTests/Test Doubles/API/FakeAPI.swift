@@ -136,7 +136,7 @@ extension SlowFakeImageAPI {
     }
 
     func resolveNextFetch() {
-        guard pendingFetches.count > 0 else { return }
+        guard pendingFetches.isEmpty == false else { return }
 
         let next = pendingFetches.remove(at: 0)
         next()

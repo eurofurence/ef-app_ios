@@ -10,7 +10,7 @@ public class FakeDealersIndex: DealersIndex {
     }
 
     public let alphabetisedDealersSearchResult: [AlphabetisedDealersGroup] = .random
-    private(set) public var capturedSearchTerm: String?
+    public private(set) var capturedSearchTerm: String?
     public func performSearch(term: String) {
         capturedSearchTerm = term
     }

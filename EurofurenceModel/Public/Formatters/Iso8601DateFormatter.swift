@@ -15,7 +15,7 @@ public class Iso8601DateFormatter: DateFormatter {
 	public static let instance = Iso8601DateFormatter()
 	public let noFractionsDateFormatter = DateFormatter()
 
-	public override init() {
+	override public init() {
 		super.init()
 
 		locale = Locale(identifier: "en_US_POSIX")
@@ -31,7 +31,7 @@ public class Iso8601DateFormatter: DateFormatter {
 		super.init(coder: aDecoder)
 	}
 
-	public override func date(from string: String) -> Date? {
+	override public func date(from string: String) -> Date? {
 		if let date = noFractionsDateFormatter.date(from: string) {
 			return date
 		}
@@ -39,7 +39,7 @@ public class Iso8601DateFormatter: DateFormatter {
 		return super.date(from: string)
 	}
 
-	public override func string(from date: Date) -> String {
+	override public func string(from date: Date) -> String {
 		return super.string(from: date)
 	}
 }
