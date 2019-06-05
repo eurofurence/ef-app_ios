@@ -13,7 +13,7 @@ class WhenToldToOpenDealersTelegram_WhenApplicationCanHandleURL_ApplicationShoul
         let dealerIdentifier = DealerIdentifier(dealer.identifier)
         let entity = context.dealersService.fetchDealer(for: dealerIdentifier)
         entity?.openTelegram()
-        let expected = URL(string: "https://t.me/")!.appendingPathComponent(dealer.twitterHandle)
+        let expected = unwrap(URL(string: "https://t.me/")).appendingPathComponent(dealer.twitterHandle)
 
         XCTAssertEqual(expected, urlOpener.capturedURLToOpen)
     }

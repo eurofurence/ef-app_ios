@@ -47,7 +47,11 @@ class ConcreteDealersService: DealersService {
         }
 
         private func updateAlphebetisedDealers() {
-            let grouped = Dictionary(grouping: dealers.dealerModels) { String($0.preferredName.first!).uppercased() }
+            let grouped = Dictionary(grouping: dealers.dealerModels, by: { (dealer) -> String in
+                guard let firstCharacterOfName = dealer.preferredName.first else { fatalError("Dealer does not have a name!") }
+                return String(firstCharacterOfName).uppercased()
+            })
+            
             let sortedGroups = grouped.sorted(by: { $0.key < $1.key })
             alphebetisedDealers = sortedGroups.map({ (arg) -> AlphabetisedDealersGroup in
                 let (index, dealers) = arg

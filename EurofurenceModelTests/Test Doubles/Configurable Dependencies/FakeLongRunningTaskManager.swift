@@ -15,10 +15,11 @@ class FakeLongRunningTaskManager: LongRunningTaskManager {
     private var stubTaskToken: AnyHashable?
     private(set) var didBeginTask = false
     func beginLongRunningTask() -> AnyHashable {
-        stubTaskToken = String.random
+        let stubTaskToken = String.random
+        self.stubTaskToken = stubTaskToken
         state = .running
         
-        return stubTaskToken!
+        return stubTaskToken
     }
 
     func finishLongRunningTask(token: AnyHashable) {

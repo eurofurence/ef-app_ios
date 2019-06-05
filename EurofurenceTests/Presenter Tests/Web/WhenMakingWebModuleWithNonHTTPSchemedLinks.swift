@@ -6,7 +6,7 @@ class WhenMakingWebModuleWithNonHTTPSchemedLinks: XCTestCase {
 
     func testItShouldNotImplode_BUG() {
         let module = SafariWebModuleProviding()
-        let url = URL(string: "www.eurofurence.de")!
+        let url = unwrap(URL(string: "www.eurofurence.de"))
 
         // Crashes on the following line when bug is present.
         // -[SFSafariViewController initWithURL:] throws an exception when the URL does not

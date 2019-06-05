@@ -19,7 +19,11 @@ public struct Link {
 extension Link {
 
     static func fromServerModel(_ link: LinkCharacteristics) -> Link {
-        return Link(name: link.name, type: Link.Kind(rawValue: link.fragmentType.rawValue)!, contents: link.target)
+        guard let linkKind = Link.Kind(rawValue: link.fragmentType.rawValue) else {
+            fatalError("Unknown link type: \(link.fragmentType.rawValue)")
+        }
+        
+        return Link(name: link.name, type: linkKind, contents: link.target)
     }
 
     static func fromServerModels(_ links: [LinkCharacteristics]) -> [Link] {

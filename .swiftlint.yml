@@ -1,6 +1,7 @@
 excluded:
   - DerivedData
   - Pods
+  - "EurofurenceModel/Public/Default Dependency Implementations/Core Data Store/Model Adaptation/*.swift"
 
 disabled_rules:
   - identifier_name
@@ -9,6 +10,9 @@ disabled_rules:
   - trailing_whitespace
   - class_delegate_protocol
   - todo
+
+opt_in_rules:
+  - force_unwrapping
 
 line_length:
   warning: 180

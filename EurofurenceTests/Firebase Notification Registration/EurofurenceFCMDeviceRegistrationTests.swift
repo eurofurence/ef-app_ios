@@ -80,7 +80,7 @@ class EurofurenceFCMDeviceRegistrationTests: XCTestCase {
     func testFailingToRegisterFCMTokenPropagatesErrorToCompletionHandler() {
         let expectedError = NSError(domain: "Test", code: 0, userInfo: nil)
         var observedError: NSError?
-        performRegistration { observedError = $0! as NSError }
+        performRegistration { observedError = $0 as NSError? }
         capturingJSONSession.invokeLastPOSTCompletionHandler(responseData: nil, error: expectedError)
 
         XCTAssertEqual(expectedError, observedError)

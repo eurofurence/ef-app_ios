@@ -226,7 +226,7 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailInteractorShould: XCTes
         let dealerData = context.dealerData
         let viewModel = context.makeViewModel()
         let expected = DealerDetailAboutTheArtistViewModel(title: .aboutTheArtist,
-                                                           artistDescription: dealerData.aboutTheArtist!)
+                                                           artistDescription: unwrap(dealerData.aboutTheArtist))
         let visitor = CapturingDealerDetailViewModelVisitor()
         viewModel?.describeComponent(at: 2, to: visitor)
 

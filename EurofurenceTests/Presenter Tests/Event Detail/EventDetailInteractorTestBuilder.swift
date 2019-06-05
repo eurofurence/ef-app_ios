@@ -58,10 +58,11 @@ extension EventDetailInteractorTestBuilder.Context {
     }
 
     func makeExpectedEventGraphicViewModel() -> EventGraphicViewModel {
-        let data = event.posterGraphicPNGData ?? event.bannerGraphicPNGData
-        assert(data != nil, "Event used in test isn't stubbed with image data")
+        guard let data = event.posterGraphicPNGData ?? event.bannerGraphicPNGData else {
+            fatalError("Event used in test isn't stubbed with image data")
+        }
 
-        return EventGraphicViewModel(pngGraphicData: data!)
+        return EventGraphicViewModel(pngGraphicData: data)
     }
 
     func makeExpectedEventDescriptionViewModel() -> EventDescriptionViewModel {

@@ -32,8 +32,8 @@ class KnowledgeGroupAssertion: Assertion {
         assert(groupCharacteristics.order, isEqualTo: group.order)
 
         let addressString = groupCharacteristics.fontAwesomeCharacterAddress
-        let intValue = Int(addressString, radix: 16)!
-        let unicodeScalar = UnicodeScalar(intValue)!
+        let intValue = unwrap(Int(addressString, radix: 16))
+        let unicodeScalar = unwrap(UnicodeScalar(intValue))
         let character = Character(unicodeScalar)
         assert(character, isEqualTo: group.fontAwesomeCharacterAddress)
 

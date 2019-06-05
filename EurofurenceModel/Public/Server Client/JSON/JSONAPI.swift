@@ -80,7 +80,8 @@ public struct JSONAPI: API {
 
     public func markMessageWithIdentifierAsRead(_ identifier: String, authorizationToken: String) {
         let url = urlStringByAppending(pathComponent: "Communication/PrivateMessages/\(identifier)/Read")
-        let messageContentsToSupportSwagger = "true".data(using: .utf8)!
+        guard let messageContentsToSupportSwagger = "true".data(using: .utf8) else { fatalError() }
+        
         var request = JSONRequest(url: url, body: messageContentsToSupportSwagger)
         request.headers = ["Authorization": "Bearer \(authorizationToken)"]
 

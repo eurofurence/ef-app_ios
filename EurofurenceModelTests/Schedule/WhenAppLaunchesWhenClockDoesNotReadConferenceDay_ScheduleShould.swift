@@ -17,7 +17,7 @@ class WhenAppLaunchesWhenClockDoesNotReadConferenceDay_ScheduleShould: XCTestCas
 
     func testRestrictEventsToTheFirstConferenceDay() {
         let response = ModelCharacteristics.randomWithoutDeletions
-        let firstDay = response.conferenceDays.changed.sorted(by: { $0.date < $1.date }).first!
+        let firstDay = unwrap(response.conferenceDays.changed.sorted(by: { $0.date < $1.date }).first)
         let dataStore = InMemoryDataStore(response: response)
         let context = EurofurenceSessionTestBuilder().with(dataStore).with(.distantPast).build()
         let schedule = context.eventsService.makeEventsSchedule()

@@ -32,7 +32,7 @@ class WhenToldToOpenDealersWebsite_WhenApplicationCannotHandleURL_ApplicationSho
         let dealerIdentifier = DealerIdentifier(dealer.identifier)
         let entity = context.dealersService.fetchDealer(for: dealerIdentifier)
         entity?.openWebsite()
-        let expected = URL(string: "https://www.eurofurence.org")!
+        let expected = unwrap(URL(string: "https://www.eurofurence.org"))
 
         XCTAssertEqual(expected, externalContentHandler.capturedExternalContentURL)
     }

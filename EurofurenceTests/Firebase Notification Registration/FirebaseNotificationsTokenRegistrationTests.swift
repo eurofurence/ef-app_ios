@@ -97,7 +97,7 @@ class FirebaseRemoteNotificationsTokenRegistrationTests: XCTestCase {
 
     func testSetTheTokenOntoTheNotificationsService() {
         let context = assembleApp(configuration: .debug)
-        let deviceToken = "I'm a token".data(using: .utf8)!
+        let deviceToken = unwrap("I'm a token".data(using: .utf8))
         context.registerDeviceToken(deviceToken: deviceToken)
 
         XCTAssertEqual(deviceToken, context.capturingFirebaseAdapter.registeredDeviceToken)
@@ -244,7 +244,7 @@ class FirebaseRemoteNotificationsTokenRegistrationTests: XCTestCase {
     func testErrorsDuringFCMRegistrationArePropogatedBackThroughTheCompletionHandler() {
         let context = assembleApp(configuration: .debug)
         var observedError: NSError?
-        context.registerDeviceToken { observedError = $0! as NSError }
+        context.registerDeviceToken { observedError = $0 as NSError? }
         let expectedError = NSError(domain: "Test", code: 0, userInfo: nil)
         context.capturingFCMDeviceRegister.completionHandler?(expectedError)
 

@@ -855,6 +855,9 @@
 		CA89CBC02085383100570D54 /* StubNewsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89CBBF2085383100570D54 /* StubNewsInteractor.swift */; };
 		CA89CBC22085385900570D54 /* AnnouncementsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89CBC12085385900570D54 /* AnnouncementsViewModel.swift */; };
 		CA8D086A22A85ADE003E42CA /* EurofurenceModelTestAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D086922A85ADE003E42CA /* EurofurenceModelTestAssets.swift */; };
+		CA8D086D22A85DBF003E42CA /* Unwrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D086C22A85DBF003E42CA /* Unwrap.swift */; };
+		CA8D086E22A85E9E003E42CA /* Unwrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D086C22A85DBF003E42CA /* Unwrap.swift */; };
+		CA8D086F22A85EA3003E42CA /* Unwrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D086C22A85DBF003E42CA /* Unwrap.swift */; };
 		CA8DA45D2240F6A100B1E5D1 /* WhenPerformingSync_AfterEnforcingFullStoreRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8DA45C2240F6A100B1E5D1 /* WhenPerformingSync_AfterEnforcingFullStoreRefresh.swift */; };
 		CA8DA45F2240F80D00B1E5D1 /* WhenPerformingSync_AfterEnforcingFullStoreRefresh_WhenFullRefreshFailed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8DA45E2240F80D00B1E5D1 /* WhenPerformingSync_AfterEnforcingFullStoreRefresh_WhenFullRefreshFailed.swift */; };
 		CA8DA4612241166E00B1E5D1 /* WhenPerformingSubsequentRefresh_WhereConventionIdentifierMismatchDetected.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8DA4602241166E00B1E5D1 /* WhenPerformingSubsequentRefresh_WhereConventionIdentifierMismatchDetected.swift */; };
@@ -2643,6 +2646,7 @@
 		CA89CBBF2085383100570D54 /* StubNewsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubNewsInteractor.swift; sourceTree = "<group>"; };
 		CA89CBC12085385900570D54 /* AnnouncementsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsViewModel.swift; sourceTree = "<group>"; };
 		CA8D086922A85ADE003E42CA /* EurofurenceModelTestAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EurofurenceModelTestAssets.swift; sourceTree = "<group>"; };
+		CA8D086C22A85DBF003E42CA /* Unwrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unwrap.swift; sourceTree = "<group>"; };
 		CA8D97CC201610EC0074838F /* DomainEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainEvent.swift; sourceTree = "<group>"; };
 		CA8D97CE201611430074838F /* EventBus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBus.swift; sourceTree = "<group>"; };
 		CA8D97D02016126E0074838F /* LoggedIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedIn.swift; sourceTree = "<group>"; };
@@ -3562,6 +3566,7 @@
 				7820A6E81F1415B0004C0FB5 /* StoryboardAlertRouterTests.swift */,
 				78455B5C1F1182B7005BE2D7 /* TutorialPageViewControllerTests.swift */,
 				78C86D531F1228B0003A20E6 /* TutorialViewControllerTests.swift */,
+				CA8D086C22A85DBF003E42CA /* Unwrap.swift */,
 				78455B3B1F116E24005BE2D7 /* UserDefaultsTutorialStateProvider.swift */,
 				7820A6F51F16B123004C0FB5 /* UserDefaultsUserAcknowledgedPushPermissionsRequestStateProvidingTests.swift */,
 				CAF7055F1F82CBC800A9FEA2 /* Director */,
@@ -9050,6 +9055,7 @@
 				CA00AE8320D1C21900C2FBB0 /* CapturingScheduleDayComponent.swift in Sources */,
 				CA2547C11FEB1B2A0023F2CB /* WhenRefreshingMessages.swift in Sources */,
 				CA00AE4920D16BD900C2FBB0 /* FakeScheduleInteractor.swift in Sources */,
+				CA8D086D22A85DBF003E42CA /* Unwrap.swift in Sources */,
 				CA0E5219208FC062005259FE /* WhenBindingConventionCountdown_NewsPresenterShould.swift in Sources */,
 				CA637540208CBB0E00536BE2 /* CapturingNavigationController.swift in Sources */,
 				CA27256F21137EED004C6D0A /* SchedulePresenterSuperSponsorIconBindingTests.swift in Sources */,
@@ -9387,6 +9393,7 @@
 				CAEA0FC7216E1CC000B0C7A6 /* WhenDeletingAnnouncement_AfterSuccessfulSync_ApplicationShould.swift in Sources */,
 				CAEA1015216E1CE800B0C7A6 /* WhenSignificantTimeChanges_ScheduleShould.swift in Sources */,
 				CAEA0FF0216E1CE700B0C7A6 /* WhenFetchingKnowledgeEntryByIdentifier_ApplicationShould.swift in Sources */,
+				CA8D086F22A85EA3003E42CA /* Unwrap.swift in Sources */,
 				CAEA0FA1216E1CC000B0C7A6 /* WhenRequestingImageForAnnouncementThatHasImage_ApplicationShould.swift in Sources */,
 				CAEA1027216E1CE800B0C7A6 /* CapturingDealersIndexDelegate.swift in Sources */,
 				CAEA0FFB216E1CE700B0C7A6 /* WhenFetchingMapContents_ThatRevealsDealer_ApplicationShould.swift in Sources */,
@@ -9559,6 +9566,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA8D086E22A85E9E003E42CA /* Unwrap.swift in Sources */,
 				CAEA0E8F216BF02800B0C7A6 /* RandomRangedValueProviding.swift in Sources */,
 				CAEA0E94216BF34F00B0C7A6 /* Data+RandomValueProviding.swift in Sources */,
 				CAEA0E99216BF34F00B0C7A6 /* String+RandomValueProviding.swift in Sources */,

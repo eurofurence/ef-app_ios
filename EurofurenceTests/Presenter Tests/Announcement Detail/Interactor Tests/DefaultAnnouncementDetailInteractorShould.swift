@@ -9,7 +9,7 @@ class DefaultAnnouncementDetailInteractorShould: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        let imagePNGData = "Strike a poke".data(using: .utf8)!
+        let imagePNGData = unwrap("Strike a poke".data(using: .utf8))
         context = AnnouncementDetailInteractorTestBuilder()
             .with(imagePNGData: imagePNGData)
             .build()

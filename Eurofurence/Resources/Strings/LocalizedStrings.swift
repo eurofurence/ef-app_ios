@@ -229,9 +229,11 @@ public extension String {
     }
     
     internal static func welcomePrompt(for user: User) -> String {
+        guard let numbersString = Formatters.numbers.string(from: NSNumber(value: user.registrationNumber)) else { fatalError("Unable to format \(user.registrationNumber) into string") }
+        
         return localizedStringWithFormat(authenticatedUserLoginPromptFormat,
                                          user.username,
-                                         Formatters.numbers.string(from: NSNumber(value: user.registrationNumber))!)
+                                         numbersString)
     }
     
     internal static func welcomeDescription(messageCount: Int) -> String {

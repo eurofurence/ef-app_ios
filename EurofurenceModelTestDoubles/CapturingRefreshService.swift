@@ -13,9 +13,10 @@ public class CapturingRefreshService: RefreshService {
     public func refreshLocalStore(completionHandler: @escaping (RefreshServiceError?) -> Void) -> Progress {
         toldToRefresh = true
         refreshCompletionHandler = completionHandler
-        refreshProgress = Progress()
+        let refreshProgress = Progress()
+        self.refreshProgress = refreshProgress
 
-        return refreshProgress!
+        return refreshProgress
     }
 
     private(set) var refreshObservers = [RefreshServiceObserver]()

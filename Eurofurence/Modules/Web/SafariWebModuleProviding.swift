@@ -6,7 +6,10 @@ struct SafariWebModuleProviding: WebModuleProviding {
         var safeURL = url
         if var components = URLComponents(url: url, resolvingAgainstBaseURL: false), components.scheme != "https" {
             components.scheme = "https"
-            safeURL = components.url!
+            
+            if let schemedURL = components.url {
+                safeURL = schemedURL
+            }
         }
 
         let module = SFSafariViewController(url: safeURL)

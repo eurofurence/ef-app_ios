@@ -3,8 +3,8 @@ import UIKit
 struct WindowAlertRouter: AlertRouter {
 
     static var shared: WindowAlertRouter = {
-        let window = UIApplication.shared.delegate!.window!!
-        return WindowAlertRouter(window: window)
+        guard let window = UIApplication.shared.delegate?.window, let unwrappedWindow = window else { fatalError("No application window available") }
+        return WindowAlertRouter(window: unwrappedWindow)
     }()
 
     var window: UIWindow
@@ -19,22 +19,22 @@ struct WindowAlertRouter: AlertRouter {
             }))
         }
 
-        var presenting = window.rootViewController!
-        if let presented = presenting.presentedViewController {
+        var presenting: UIViewController? = window.rootViewController
+        if let presented = presenting?.presentedViewController {
             presenting = presented
         }
 
-        presenting.present(alertController, animated: true) {
+        presenting?.present(alertController, animated: true) {
             alert.onCompletedPresentation?(Dismissable(viewController: presenting))
         }
     }
 
     private struct Dismissable: AlertDismissable {
 
-        var viewController: UIViewController
+        var viewController: UIViewController?
 
         func dismiss(_ completionHandler: (() -> Void)?) {
-            viewController.dismiss(animated: true, completion: completionHandler)
+            viewController?.dismiss(animated: true, completion: completionHandler)
         }
 
     }

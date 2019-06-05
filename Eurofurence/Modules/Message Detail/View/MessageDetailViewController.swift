@@ -24,7 +24,7 @@ class MessageDetailViewController: UIViewController,
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return binders.first!.makeCell(from: collectionView, forItemAt: indexPath)
+        return binders[indexPath.row].makeCell(from: collectionView, forItemAt: indexPath)
     }
 
     // MARK: MessageDetailScene

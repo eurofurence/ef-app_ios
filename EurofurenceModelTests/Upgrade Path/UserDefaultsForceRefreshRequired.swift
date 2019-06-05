@@ -12,7 +12,7 @@ class UserDefaultsForceRefreshRequiredTests: XCTestCase {
         super.setUp()
 
         versionProviding = StubAppVersionProviding(version: .random)
-        userDefaults = UserDefaults(suiteName: .random)!
+        userDefaults = unwrap(UserDefaults(suiteName: .random))
         forceRefreshRequired = UserDefaultsForceRefreshRequired(userDefaults: userDefaults, versionProviding: versionProviding)
     }
 

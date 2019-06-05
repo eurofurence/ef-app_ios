@@ -11,7 +11,7 @@ struct RootModule: RootModuleProviding {
             .initialized: delegate.rootModuleDidDetermineRootModuleShouldBePresented
         ]
 
-        sessionStateService.determineSessionState { actions[$0]!() }
+        sessionStateService.determineSessionState { actions[$0]?() }
     }
 
 }

@@ -92,7 +92,10 @@ class ConcreteAuthenticationService: AuthenticationService {
                                     tokenExpiryDate: response.tokenValidUntil)
         credentialStore.store(credential)
         updateCurrentUser(from: credential)
-        completionHandler(.success(loggedInUser!))
+        
+        if let loggedInUser = loggedInUser {
+            completionHandler(.success(loggedInUser))
+        }
     }
 
     private func updateCurrentUser(from credential: Credential) {

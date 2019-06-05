@@ -12,7 +12,8 @@ struct FoundationRelativeTimeIntervalCountdownFormatter: RelativeTimeIntervalCou
     }
 
     func relativeString(from timeInterval: TimeInterval) -> String {
-        return formatter.string(from: timeInterval)!
+        guard let string = formatter.string(from: timeInterval) else { fatalError("Unable to format \(timeInterval) into String") }
+        return string
     }
 
 }

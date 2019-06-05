@@ -15,7 +15,11 @@ public struct DefaultCollectThemAllRequestFactory: CollectThemAllRequestFactory 
 
     private func makeGameURL(token: String) -> URL {
         let urlString = "https://app.eurofurence.org/collectemall/#token-\(token)/true"
-        return URL(string: urlString)!
+        guard let url = URL(string: urlString) else {
+            fatalError("Error marshalling token into url: \(urlString)")
+        }
+        
+        return url
     }
 
 }

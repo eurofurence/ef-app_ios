@@ -64,8 +64,8 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                                                         roomIdentifier: "87148f04-4c4b-433d-9469-c8a970952443",
                                                                         trackIdentifier: "ea76c202-5544-4bc7-92b7-1d1221211a55",
                                                                         dayIdentifier: "5f2e5aa4-a172-4f8b-8441-1e676ea3be9f",
-                                                                        startDateTime: changedEventStartDate.date!,
-                                                                        endDateTime: changedEventEndDate.date!,
+                                                                        startDateTime: unwrap(changedEventStartDate.date),
+                                                                        endDateTime: unwrap(changedEventEndDate.date),
                                                                         title: "Artists' Lounge",
                                                                         subtitle: "Let's be creative together!",
                                                                         abstract: "Do you like spending your evening around other artists, drawing and chatting about techniques, supplies and other themes? Then this social event, taking place every evening, is the right place for you to be creative and get to know eachother!",
@@ -83,11 +83,11 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                                                        deleted: ["cf410a89-379d-40c7-89ea-d0b6b51ea914"],
                                                                        removeAllBeforeInsert: true)
 
-        let changedConferenceDayDate = DateComponents(calendar: .current,
-                                                      timeZone: TimeZone(secondsFromGMT: 0),
-                                                      year: 2017,
-                                                      month: 8,
-                                                      day: 15).date!
+        let changedConferenceDayDate = unwrap(DateComponents(calendar: .current,
+                                                             timeZone: TimeZone(secondsFromGMT: 0),
+                                                             year: 2017,
+                                                             month: 8,
+                                                             day: 15).date)
         let conferenceDays = ModelCharacteristics.Update<ConferenceDayCharacteristics>(changed: [ConferenceDayCharacteristics(identifier: "5f2e5aa4-a172-4f8b-8441-1e676ea3be9f",
                                                                                                 date: changedConferenceDayDate)],
                                                                      deleted: ["db8e0455-8c49-4bc5-b472-e0033fe06b99"],
@@ -139,7 +139,7 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
         let announcements = ModelCharacteristics.Update<AnnouncementCharacteristics>(changed: [AnnouncementCharacteristics(identifier: "b89567a0-beda-46e8-8261-26a5bf2d6a30",
                                                                                              title: "Test-Announcement-Title",
                                                                                              content: "This is Content.\n\n**with markdown**",
-                                                                                             lastChangedDateTime: announcementLastChangedDateComponents.date!,
+                                                                                             lastChangedDateTime: unwrap(announcementLastChangedDateComponents.date),
                                                                                              imageIdentifier: "e5b6efdd-8bbf-42f1-aa9e-159744c732b7")],
                                                                    deleted: ["c8c8a9ad-4f43-489f-905d-9d22d0ef045f"],
                                                                    removeAllBeforeInsert: false)

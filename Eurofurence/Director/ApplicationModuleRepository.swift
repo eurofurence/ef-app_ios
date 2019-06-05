@@ -58,7 +58,8 @@ struct ApplicationModuleRepository: ModuleRepository {
         scheduleModuleProviding = ScheduleModuleBuilder(interactor: scheduleInteractor).build()
         
         let defaultDealerIcon = #imageLiteral(resourceName: "defaultAvatar")
-        let dealersInteractor = DefaultDealersInteractor(dealersService: services.dealers, defaultIconData: defaultDealerIcon.pngData()!, refreshService: services.refresh)
+        guard let defaultDealerIconData = defaultDealerIcon.pngData() else { fatalError("Default dealer icon is not a PNG") }
+        let dealersInteractor = DefaultDealersInteractor(dealersService: services.dealers, defaultIconData: defaultDealerIconData, refreshService: services.refresh)
         dealersModuleProviding = DealersModuleBuilder(interactor: dealersInteractor).build()
         
         let dealerDetailInteractor = DefaultDealerDetailInteractor(dealersService: services.dealers)
