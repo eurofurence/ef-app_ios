@@ -87,7 +87,7 @@ class MessagesViewController: UIViewController,
         }
 
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as! MessageTableViewCell
+            let cell = tableView.dequeue(MessageTableViewCell.self, for: indexPath)
             binder?.bind(cell, toMessageAt: indexPath)
 
             return cell

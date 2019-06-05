@@ -95,18 +95,21 @@ class EventsScheduleAdapter: EventsSchedule {
         guard let day = findDay(for: day.date) else { return }
         restrictScheduleToEvents(on: day)
     }
-
+    
     private func restrictScheduleToEvents(on day: ConferenceDayCharacteristics) {
-        if let idx = filters.firstIndex(where: { $0 is DayRestrictionFilter }) {
-            let filter = filters[idx] as! DayRestrictionFilter
-            guard filter.day != day else { return }
-            filters.remove(at: idx)
-        }
+        removeExistingDayRestrictionFilter(for: day)
 
         let filter = DayRestrictionFilter(day: day)
         filters.append(filter)
 
         regenerateSchedule()
+    }
+    
+    private func removeExistingDayRestrictionFilter(for day: ConferenceDayCharacteristics) {
+        if let idx = filters.firstIndex(where: { $0 is DayRestrictionFilter }), let filter = filters[idx] as? DayRestrictionFilter {
+            guard filter.day != day else { return }
+            filters.remove(at: idx)
+        }
     }
 
     private func updateCurrentDay() {

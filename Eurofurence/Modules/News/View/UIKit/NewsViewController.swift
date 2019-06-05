@@ -132,7 +132,8 @@ class NewsViewController: UIViewController, NewsScene {
         }
 
         func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-            let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: Header.identifier) as! Header
+            guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: Header.identifier) as? Header else { fatalError() }
+            
             binder.bindTitleForSection(at: section, scene: header)
             return header
         }

@@ -64,7 +64,11 @@ final class CapturingScheduleViewModel: ScheduleViewModel {
 extension CapturingScheduleViewModel {
 
     func eventViewModel(inGroup group: Int, at index: Int) -> StubScheduleEventViewModel {
-        return events[group].events[index] as! StubScheduleEventViewModel
+        guard let viewModel = events[group].events[index] as? StubScheduleEventViewModel else {
+            fatalError("Expected \(StubScheduleEventViewModel.self)")
+        }
+        
+        return viewModel
     }
 
     func stub(_ identifier: EventIdentifier, at indexPath: IndexPath) {

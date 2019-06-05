@@ -213,7 +213,8 @@ class ScheduleViewController: UIViewController,
         }
 
         func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-            let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: Header.identifier) as! Header
+            guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: Header.identifier) as? Header else { fatalError() }
+            
             binder.bind(header, forGroupAt: section)
             return header
         }

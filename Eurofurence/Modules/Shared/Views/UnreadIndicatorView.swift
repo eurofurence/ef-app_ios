@@ -8,7 +8,11 @@ class UnreadIndicatorView: UIView {
     }
 
     private var shapeLayer: CAShapeLayer {
-        return layer as! CAShapeLayer
+        guard let underlyingLayer = layer as? CAShapeLayer else {
+            fatalError("The underlying layer for the \(UnreadIndicatorView.self) has since changed from using \(CAShapeLayer.self)")
+        }
+        
+        return underlyingLayer
     }
 
     override init(frame: CGRect) {
