@@ -1,5 +1,0 @@
-protocol CollectThemAllInteractionRecorder {
-    
-    func recordCollectThemAllInteraction()
-    
-}

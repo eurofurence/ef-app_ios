@@ -5,12 +5,9 @@ class CollectThemAllModuleBuilder {
 
     private var sceneFactory: CollectThemAllSceneFactory
     private let service: CollectThemAllService
-    private let interactionRecorder: CollectThemAllInteractionRecorder
 
-    init(service: CollectThemAllService, interactionRecorder: CollectThemAllInteractionRecorder) {
+    init(service: CollectThemAllService) {
         self.service = service
-        self.interactionRecorder = interactionRecorder
-        
         sceneFactory = StoryboardCollectThemAllSceneFactory()
     }
 
@@ -21,7 +18,7 @@ class CollectThemAllModuleBuilder {
     }
 
     func build() -> CollectThemAllModuleProviding {
-        return CollectThemAllModule(sceneFactory: sceneFactory, service: service, interactionRecorder: interactionRecorder)
+        return CollectThemAllModule(sceneFactory: sceneFactory, service: service)
     }
 
 }
