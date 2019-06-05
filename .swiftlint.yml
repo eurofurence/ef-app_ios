@@ -14,6 +14,12 @@ disabled_rules:
 opt_in_rules:
   - force_unwrapping
 
+force_try:
+  severity: error
+
+force_unwrapping:
+  severity: error
+
 line_length:
   warning: 180
   ignores_comments: true
