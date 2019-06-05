@@ -334,61 +334,50 @@ class ApplicationDirector: ExternalContentHandler,
     }
 
     private func makeNewsNavigationController() -> UINavigationController {
-        let navigationController = navigationControllerFactory.makeNavigationController()
         let newsController = moduleRepository.makeNewsModule(self)
         self.newsController = newsController
-        navigationController.setViewControllers([newsController], animated: animate)
-        navigationController.tabBarItem = newsController.tabBarItem
 
-        return navigationController
+        return makeRootNavigationController(forModuleViewController: newsController)
     }
 
     private func makeScheduleNavigationController() -> UINavigationController {
-        let navigationController = navigationControllerFactory.makeNavigationController()
         let scheduleViewController = moduleRepository.makeScheduleModule(self)
         self.scheduleViewController = scheduleViewController
-        navigationController.setViewControllers([scheduleViewController], animated: animate)
-        navigationController.tabBarItem = scheduleViewController.tabBarItem
 
-        return navigationController
+        return makeRootNavigationController(forModuleViewController: scheduleViewController)
     }
 
     private func makeDealersNavigationController() -> UINavigationController {
-        let navigationController = navigationControllerFactory.makeNavigationController()
         let dealersViewController = moduleRepository.makeDealersModule(self)
         self.dealersViewController = dealersViewController
-        navigationController.setViewControllers([dealersViewController], animated: animate)
-        navigationController.tabBarItem = dealersViewController.tabBarItem
 
-        return navigationController
+        return makeRootNavigationController(forModuleViewController: dealersViewController)
     }
 
     private func makeKnowledgeNavigationController() -> UINavigationController {
-        let navigationController = navigationControllerFactory.makeNavigationController()
         let knowledgeListController = moduleRepository.makeKnowledgeListModule(self)
         self.knowledgeListController = knowledgeListController
-        navigationController.setViewControllers([knowledgeListController], animated: animate)
-        navigationController.tabBarItem = knowledgeListController.tabBarItem
 
-        return navigationController
+        return makeRootNavigationController(forModuleViewController: knowledgeListController)
     }
 
     private func makeMapsNavigationController() -> UINavigationController {
-        let navigationController = navigationControllerFactory.makeNavigationController()
         let mapsModule = moduleRepository.makeMapsModule(self)
         self.mapsModule = mapsModule
-        navigationController.setViewControllers([mapsModule], animated: animate)
-        navigationController.tabBarItem = mapsModule.tabBarItem
 
-        return navigationController
+        return makeRootNavigationController(forModuleViewController: mapsModule)
     }
 
     private func makeCollectThemAllNavigationController() -> UINavigationController {
-        let navigationController = navigationControllerFactory.makeNavigationController()
         let collectThemAllModule = moduleRepository.makeCollectThemAllModule()
-        navigationController.setViewControllers([collectThemAllModule], animated: animate)
-        navigationController.tabBarItem = collectThemAllModule.tabBarItem
-
+        return makeRootNavigationController(forModuleViewController: collectThemAllModule)
+    }
+    
+    private func makeRootNavigationController(forModuleViewController viewController: UIViewController) -> UINavigationController {
+        let navigationController = navigationControllerFactory.makeNavigationController()
+        navigationController.setViewControllers([viewController], animated: animate)
+        navigationController.tabBarItem = viewController.tabBarItem
+        
         return navigationController
     }
 

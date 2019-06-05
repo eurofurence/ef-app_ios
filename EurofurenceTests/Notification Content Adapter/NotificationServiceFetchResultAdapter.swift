@@ -7,7 +7,7 @@ class NotificationServiceFetchResultAdapterTests: XCTestCase {
     private func handleNotification(_ serviceResponse: NotificationContent) -> UIBackgroundFetchResult? {
         let notificationService = FakeApplicationNotificationHandling()
         let adapter = NotificationServiceFetchResultAdapter(notificationService: notificationService)
-        let payload: [String : String] = ["Key": "Value"]
+        let payload: [String: String] = ["Key": "Value"]
         notificationService.stub(serviceResponse, for: payload)
         var result: UIBackgroundFetchResult?
         adapter.handleRemoteNotification(payload, completionHandler: { result = $0 })

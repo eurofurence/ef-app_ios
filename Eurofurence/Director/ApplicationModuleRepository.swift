@@ -25,6 +25,7 @@ struct ApplicationModuleRepository: ModuleRepository {
     private let eventDetailModuleProviding: EventDetailModuleProviding
     private let eventFeedbackModuleProviding: EventFeedbackModuleProviding
     
+    // swiftlint:disable function_body_length
     init(services: Services) {
         let subtleMarkdownRenderer = SubtleDownMarkdownRenderer()
         let defaultMarkdownRenderer = DefaultMarkdownRenderer()
