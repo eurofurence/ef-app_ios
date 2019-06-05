@@ -8,8 +8,7 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
         let jsonSession = CapturingJSONSession()
         let apiUrl = StubAPIURLProviding()
         let syncApi = JSONAPI(jsonSession: jsonSession, apiUrl: apiUrl)
-        let responseDataURL = Bundle(for: SyncAPITests.self).url(forResource: "V2SyncAPIResponse", withExtension: "json")!
-        let responseData = try! Data(contentsOf: responseDataURL)
+        let responseData = EurofurenceModelTestAssets.successfulSyncResponseData
         var response: ModelCharacteristics?
         syncApi.fetchLatestData(lastSyncTime: nil) { response = $0 }
         jsonSession.invokeLastGETCompletionHandler(responseData: responseData)

@@ -42,7 +42,7 @@ class LoginAPITests: XCTestCase {
                                          authToken: String = "",
                                          validUntil: String = "2017-07-17T19:45:22.666Z") -> Data {
         let payload = makeSuccessfulLoginPayload(username: username, userID: userID, authToken: authToken, validUntil: validUntil)
-        return try! JSONSerialization.data(withJSONObject: payload, options: [])
+        return serializeJSONObjectIntoData(payload)
     }
 
     private func makeObserverForVerifyingLoginResponse(missingKey: String) -> CapturingV2LoginObserver {
@@ -52,7 +52,7 @@ class LoginAPITests: XCTestCase {
     }
 
     private func makeObserverForVerifyingLoginResponse(_ payload: [String: String]) -> CapturingV2LoginObserver {
-        let data = try! JSONSerialization.data(withJSONObject: payload, options: [])
+        let data = serializeJSONObjectIntoData(payload)
         return makeObserverForVerifyingLoginResponse(data)
     }
 
@@ -72,6 +72,14 @@ class LoginAPITests: XCTestCase {
 
     private func performLogin(_ request: LoginRequest, completionHandler: @escaping (LoginResponse?) -> Void = { _ in }) {
         api.performLogin(request: request, completionHandler: completionHandler)
+    }
+    
+    private func serializeJSONObjectIntoData(_ jsonObject: Any) -> Data {
+        do {
+            return try JSONSerialization.data(withJSONObject: jsonObject, options: [])
+        } catch {
+            fatalError("JSON not serialized - the following should be valid: \(jsonObject)")
+        }
     }
 
     func testTheLoginEndpointShouldReceieveRequest() {

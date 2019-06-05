@@ -854,6 +854,7 @@
 		CA89CBBE208531FB00570D54 /* AnnouncementComponentViewModel+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89CBBD208531FB00570D54 /* AnnouncementComponentViewModel+RandomValueProviding.swift */; };
 		CA89CBC02085383100570D54 /* StubNewsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89CBBF2085383100570D54 /* StubNewsInteractor.swift */; };
 		CA89CBC22085385900570D54 /* AnnouncementsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89CBC12085385900570D54 /* AnnouncementsViewModel.swift */; };
+		CA8D086A22A85ADE003E42CA /* EurofurenceModelTestAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D086922A85ADE003E42CA /* EurofurenceModelTestAssets.swift */; };
 		CA8DA45D2240F6A100B1E5D1 /* WhenPerformingSync_AfterEnforcingFullStoreRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8DA45C2240F6A100B1E5D1 /* WhenPerformingSync_AfterEnforcingFullStoreRefresh.swift */; };
 		CA8DA45F2240F80D00B1E5D1 /* WhenPerformingSync_AfterEnforcingFullStoreRefresh_WhenFullRefreshFailed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8DA45E2240F80D00B1E5D1 /* WhenPerformingSync_AfterEnforcingFullStoreRefresh_WhenFullRefreshFailed.swift */; };
 		CA8DA4612241166E00B1E5D1 /* WhenPerformingSubsequentRefresh_WhereConventionIdentifierMismatchDetected.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8DA4602241166E00B1E5D1 /* WhenPerformingSubsequentRefresh_WhereConventionIdentifierMismatchDetected.swift */; };
@@ -2641,6 +2642,7 @@
 		CA89CBBD208531FB00570D54 /* AnnouncementComponentViewModel+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnnouncementComponentViewModel+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA89CBBF2085383100570D54 /* StubNewsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubNewsInteractor.swift; sourceTree = "<group>"; };
 		CA89CBC12085385900570D54 /* AnnouncementsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsViewModel.swift; sourceTree = "<group>"; };
+		CA8D086922A85ADE003E42CA /* EurofurenceModelTestAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EurofurenceModelTestAssets.swift; sourceTree = "<group>"; };
 		CA8D97CC201610EC0074838F /* DomainEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainEvent.swift; sourceTree = "<group>"; };
 		CA8D97CE201611430074838F /* EventBus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBus.swift; sourceTree = "<group>"; };
 		CA8D97D02016126E0074838F /* LoggedIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedIn.swift; sourceTree = "<group>"; };
@@ -6983,6 +6985,7 @@
 			isa = PBXGroup;
 			children = (
 				CAEA0B8B2165626900B0C7A6 /* Info.plist */,
+				CA8D086922A85ADE003E42CA /* EurofurenceModelTestAssets.swift */,
 				CA2B4FA51F1EA1B300F007E1 /* EurofurenceSessionTestBuilder.swift */,
 				CA2D07F81FE9021A00BFD785 /* WhenResolvingDataStoreState.swift */,
 				CA65A21A2091120C0078A4A7 /* Announcements */,
@@ -9475,6 +9478,7 @@
 				CAD6FD4C2216EB2E0011712D /* MapContent+Equatable.swift in Sources */,
 				CAEA0FFA216E1CE700B0C7A6 /* WhenFetchingMapContents_TappingWithinRadiusOfMultipleEntries_ApplicationShould.swift in Sources */,
 				CAEA1010216E1CE800B0C7A6 /* WhenAppLaunchesWhenClockReadsConferenceDay_ScheduleShould.swift in Sources */,
+				CA8D086A22A85ADE003E42CA /* EurofurenceModelTestAssets.swift in Sources */,
 				CAEA0FE6216E1CE700B0C7A6 /* InOrderToSupportSuperSponsorTag_ApplicationShould.swift in Sources */,
 				CAEA0FBE216E1CC000B0C7A6 /* WhenPreparingDealerMapGraphic_ApplicationShould.swift in Sources */,
 				CAEA0FDF216E1CE700B0C7A6 /* InOrderToSupportArtShowTag_ApplicationShould.swift in Sources */,

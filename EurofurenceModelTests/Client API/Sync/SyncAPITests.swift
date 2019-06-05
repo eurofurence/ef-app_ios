@@ -30,8 +30,7 @@ class SyncAPITests: XCTestCase {
         let jsonSession = CapturingJSONSession()
         let apiUrl = StubAPIURLProviding()
         let syncApi = JSONAPI(jsonSession: jsonSession, apiUrl: apiUrl)
-        let responseDataURL = Bundle(for: SyncAPITests.self).url(forResource: "V2SyncAPIResponse", withExtension: "json")!
-        let responseData = try! Data(contentsOf: responseDataURL)
+        let responseData = EurofurenceModelTestAssets.successfulSyncResponseData
 
         var wasProvidedWithNilResponse = false
         syncApi.fetchLatestData(lastSyncTime: nil) { wasProvidedWithNilResponse = $0 == nil }
