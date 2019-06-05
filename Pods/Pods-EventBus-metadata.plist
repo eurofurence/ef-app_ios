@@ -46,7 +46,7 @@ SOFTWARE.
 			<key>summary</key>
 			<string>A tool to enforce Swift style and conventions.</string>
 			<key>version</key>
-			<string>0.22.0</string>
+			<string>0.33.0</string>
 		</dict>
 	</array>
 </dict>

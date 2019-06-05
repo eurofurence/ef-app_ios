@@ -68,7 +68,7 @@ typedef struct {
   unsigned int x_25_1_9;
   int x_25_1_10;
   int x_25_1_11;
-  unsigned int x_25_1_12;
+  unsigned int dataNetworkType;
   int x_25_1_13;
   unsigned int x_25_1_14;
   char batteryDetailString[150];//x_25_1_15[150];
@@ -102,7 +102,7 @@ typedef struct {
   unsigned int x8 : 1; // overrideServiceContentType
   unsigned int x9 : 1; // overrideWifiSignalStrengthRaw
   unsigned int x10 : 1; // overrideWifiSignalStrengthBars
-  unsigned int x11 : 1; // overrideDataNetworkType
+  unsigned int overrideDataNetworkType : 1; // overrideDataNetworkType
   unsigned int x12 : 1; // disallowsCellularDataNetworkTypes
   unsigned int x13 : 1; // overrideBatteryCapacity
   unsigned int x14 : 1; // overrideBatteryState
@@ -165,10 +165,14 @@ typedef struct {
 @implementation SDStatusBarOverriderPost9_3
 
 @synthesize timeString;
+@synthesize dateString;
 @synthesize carrierName;
 @synthesize bluetoothConnected;
 @synthesize bluetoothEnabled;
 @synthesize batteryDetailEnabled;
+@synthesize networkType;
+@synthesize iPadDateEnabled;
+@synthesize iPadGsmSignalEnabled;
 
 - (void)enableOverrides
 {
@@ -185,6 +189,9 @@ typedef struct {
     overrides->overrideGsmSignalStrengthBars = 1;
     overrides->values.gsmSignalStrengthBars = 5;
   }
+  
+  overrides->overrideDataNetworkType = self.networkType != SDStatusBarManagerNetworkTypeWiFi;
+  overrides->values.dataNetworkType = self.networkType - 1;
   
   // Remove carrier text for iPhone, set it to "iPad" for the iPad
   NSString *carrierText = self.carrierName;
@@ -228,6 +235,7 @@ typedef struct {
   // Remove specific overrides (separate flags)
   overrides->overrideTimeString = 0;
   overrides->overrideGsmSignalStrengthBars = 0;
+  overrides->overrideDataNetworkType = 0;
   overrides->overrideBatteryDetailString = 0;
   overrides->overrideBluetoothConnected = 0;
   
