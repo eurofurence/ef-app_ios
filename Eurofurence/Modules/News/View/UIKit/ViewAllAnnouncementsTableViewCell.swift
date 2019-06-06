@@ -4,7 +4,7 @@ class ViewAllAnnouncementsTableViewCell: UITableViewCell, AllAnnouncementsCompon
 
     // MARK: Properties
 
-    @IBOutlet weak var allAnnouncementsCaptionLabel: UILabel!
+    @IBOutlet private weak var allAnnouncementsCaptionLabel: UILabel!
 
     // MARK: AllAnnouncementsComponent
 

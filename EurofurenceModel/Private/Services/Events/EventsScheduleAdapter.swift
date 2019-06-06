@@ -116,7 +116,7 @@ class EventsScheduleAdapter: EventsSchedule {
         } else {
             currentDay = nil
 
-            if let firstDay = schedule.days.sorted(by: { $0.date < $1.date }).first {
+            if let firstDay = schedule.days.min(by: { $0.date < $1.date }) {
                 restrictScheduleToEvents(on: firstDay)
             }
         }

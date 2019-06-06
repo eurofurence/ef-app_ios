@@ -4,7 +4,7 @@ class KnowledgeDetailViewController: UIViewController, KnowledgeDetailScene {
 
     // MARK: IBOutlets
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView!
     private lazy var tableController = TableController(tableView: self.tableView)
 
     // MARK: Overrides
@@ -50,7 +50,7 @@ class KnowledgeDetailViewController: UIViewController, KnowledgeDetailScene {
 
         func makeCell(for tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeue(KnowledgeDetailContentsTableViewCell.self)
-            cell.textView.attributedText = contents
+            cell.configure(contents)
             return cell
         }
 

@@ -4,7 +4,7 @@ class KnowledgeDetailImageTableViewCell: UITableViewCell, KnowledgeEntryImageSce
 
     // MARK: Properties
 
-    @IBOutlet weak var entryImageView: UIImageView!
+    @IBOutlet private weak var entryImageView: UIImageView!
 
     // MARK: KnowledgeEntryImageScene
 

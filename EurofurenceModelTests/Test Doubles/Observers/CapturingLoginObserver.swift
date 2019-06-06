@@ -10,6 +10,7 @@ class CapturingLoginObserver {
         case .success(let user):
             self.notifiedLoginSucceeded = true
             self.loggedInUser = user
+            
         case .failure:
             self.notifiedLoginFailed = true
         }

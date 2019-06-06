@@ -2,7 +2,7 @@ import UIKit
 
 class MapContextualContentViewController: UIViewController {
 
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet private weak var titleLabel: UILabel!
 
     func setContextualContent(_ content: String) {
         titleLabel.text = content

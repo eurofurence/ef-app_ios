@@ -4,9 +4,9 @@ class KnowledgeListSectionHeaderTableViewCell: UITableViewCell, KnowledgeGroupSc
 
     // MARK: IBOutlets
 
-    @IBOutlet weak var knowledgeGroupTitleLabel: UILabel!
-    @IBOutlet weak var fontAwesomeCharacterLabel: UILabel!
-    @IBOutlet weak var knowledgeGroupDescriptionLabel: UILabel!
+    @IBOutlet private weak var knowledgeGroupTitleLabel: UILabel!
+    @IBOutlet private weak var fontAwesomeCharacterLabel: UILabel!
+    @IBOutlet private weak var knowledgeGroupDescriptionLabel: UILabel!
 
     // MARK: KnowledgeGroupHeaderScene
 

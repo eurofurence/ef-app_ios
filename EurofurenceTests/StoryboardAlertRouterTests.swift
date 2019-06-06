@@ -1,7 +1,7 @@
 @testable import Eurofurence
 import EurofurenceModel
-import XCTest
 import UIKit
+import XCTest
 
 class CapturingViewController: UIViewController {
 

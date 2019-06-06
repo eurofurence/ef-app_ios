@@ -4,8 +4,8 @@ class DealerAboutTheArtistTableViewCell: UITableViewCell, DealerAboutTheArtistCo
 
     // MARK: Properties
 
-    @IBOutlet weak var componentTitleLabel: UILabel!
-    @IBOutlet weak var artistDescriptionLabel: UILabel!
+    @IBOutlet private weak var componentTitleLabel: UILabel!
+    @IBOutlet private weak var artistDescriptionLabel: UILabel!
 
     // MARK: Overrides
 

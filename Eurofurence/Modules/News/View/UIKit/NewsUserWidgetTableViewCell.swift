@@ -9,10 +9,10 @@ class NewsUserWidgetTableViewCell: UITableViewCell, UserWidgetComponent {
 
     // MARK: IBOutlets
 
-    @IBOutlet weak var standardUserPromptView: UIView!
-    @IBOutlet weak var highlightedUserPromptView: UIView!
-    @IBOutlet weak var promptLabel: UILabel!
-    @IBOutlet weak var detailedPromptLabel: UILabel!
+    @IBOutlet private weak var standardUserPromptView: UIView!
+    @IBOutlet private weak var highlightedUserPromptView: UIView!
+    @IBOutlet private weak var promptLabel: UILabel!
+    @IBOutlet private weak var detailedPromptLabel: UILabel!
 
     // MARK: UserWidgetComponent
 

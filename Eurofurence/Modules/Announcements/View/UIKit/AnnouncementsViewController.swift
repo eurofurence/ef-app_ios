@@ -4,7 +4,7 @@ class AnnouncementsViewController: UIViewController, AnnouncementsScene {
 
     // MARK: Properties
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView!
     private var tableController: TableController? {
         didSet {
             tableView.dataSource = tableController

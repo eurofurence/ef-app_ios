@@ -4,7 +4,7 @@ class NewsViewController: UIViewController, NewsScene {
 
     // MARK: IBOutlets
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView!
     private let refreshControl = UIRefreshControl(frame: .zero)
 
     // MARK: Properties

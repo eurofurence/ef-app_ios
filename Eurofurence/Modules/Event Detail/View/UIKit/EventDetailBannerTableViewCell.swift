@@ -4,7 +4,7 @@ class EventDetailBannerTableViewCell: UITableViewCell, EventGraphicComponent {
 
     // MARK: IBOutlets
 
-    @IBOutlet weak var bannerImageView: UIImageView!
+    @IBOutlet private weak var bannerImageView: UIImageView!
 
     // MARK: EventGraphicComponent
 

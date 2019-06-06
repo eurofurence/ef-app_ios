@@ -5,33 +5,33 @@ class LoginViewController: UITableViewController, UITextFieldDelegate, LoginScen
 
     // MARK: IBOutlets
 
-    @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var cancelButton: UIBarButtonItem!
-    @IBOutlet weak var registrationNumberTextField: UITextField!
-    @IBOutlet weak var usernameTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet private weak var loginButton: UIButton!
+    @IBOutlet private weak var cancelButton: UIBarButtonItem!
+    @IBOutlet private weak var registrationNumberTextField: UITextField!
+    @IBOutlet private weak var usernameTextField: UITextField!
+    @IBOutlet private weak var passwordTextField: UITextField!
 
     // MARK: IBActions
 
-    @IBAction func loginButtonTapped(_ sender: Any) {
+    @IBAction private func loginButtonTapped(_ sender: Any) {
         delegate?.loginSceneDidTapLoginButton()
     }
 
-    @IBAction func cancelButtonTapped(_ sender: Any) {
+    @IBAction private func cancelButtonTapped(_ sender: Any) {
         delegate?.loginSceneDidTapCancelButton()
     }
 
-    @IBAction func registrationNumberDidChange(_ sender: UITextField) {
+    @IBAction private func registrationNumberDidChange(_ sender: UITextField) {
         guard let registrationNumber = sender.text else { return }
         delegate?.loginSceneDidUpdateRegistrationNumber(registrationNumber)
     }
 
-    @IBAction func usernameDidChange(_ sender: UITextField) {
+    @IBAction private func usernameDidChange(_ sender: UITextField) {
         guard let username = sender.text else { return }
         delegate?.loginSceneDidUpdateUsername(username)
     }
 
-    @IBAction func passwordDidChange(_ sender: UITextField) {
+    @IBAction private func passwordDidChange(_ sender: UITextField) {
         guard let password = sender.text else { return }
         delegate?.loginSceneDidUpdatePassword(password)
     }

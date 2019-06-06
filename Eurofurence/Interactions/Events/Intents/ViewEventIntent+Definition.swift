@@ -1,5 +1,5 @@
-import EurofurenceModel
 import EurofurenceIntentDefinitions
+import EurofurenceModel
 
 @available(iOS 12.0, *)
 extension ViewEventIntent {

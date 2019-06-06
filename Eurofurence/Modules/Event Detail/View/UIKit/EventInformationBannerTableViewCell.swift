@@ -4,13 +4,20 @@ class EventInformationBannerTableViewCell: UITableViewCell, EventInformationBann
 
     // MARK: Properties
 
-    @IBOutlet weak var iconLabel: UILabel!
-    @IBOutlet weak var messageLabel: UILabel!
+    @IBOutlet private weak var iconLabel: UILabel!
+    @IBOutlet private weak var messageLabel: UILabel!
 
     // MARK: EventInformationBannerComponent
 
     func setBannerMessage(_ message: String) {
         messageLabel.text = message
+    }
+    
+    // MARK: Functions
+    
+    func configureIcon(text: String, textColor: UIColor) {
+        iconLabel.text = text
+        iconLabel.textColor = textColor
     }
 
 }

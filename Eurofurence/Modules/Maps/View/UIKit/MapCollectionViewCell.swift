@@ -4,8 +4,8 @@ class MapCollectionViewCell: UICollectionViewCell, MapComponent {
 
     // MARK: Properties
 
-    @IBOutlet weak var mapPreviewImageView: UIImageView!
-    @IBOutlet weak var mapNameLabel: UILabel!
+    @IBOutlet private weak var mapPreviewImageView: UIImageView!
+    @IBOutlet private weak var mapNameLabel: UILabel!
 
     // MARK: Overrides
 

@@ -8,8 +8,8 @@ class ScheduleViewController: UIViewController,
 
     // MARK: Properties
 
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var daysCollectionView: UICollectionView!
+    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var daysCollectionView: UICollectionView!
     private let refreshControl = UIRefreshControl(frame: .zero)
     private lazy var navigationBarShadowDelegate = HideNavigationBarShadowForSpecificViewControllerDelegate(viewControllerToHideNavigationBarShadow: self)
 
@@ -31,7 +31,7 @@ class ScheduleViewController: UIViewController,
     private var searchViewController: ScheduleSearchTableViewController?
     private var searchController: UISearchController?
 
-    @IBAction func openSearch(_ sender: Any) {
+    @IBAction private func openSearch(_ sender: Any) {
         searchController?.isActive = true
     }
 

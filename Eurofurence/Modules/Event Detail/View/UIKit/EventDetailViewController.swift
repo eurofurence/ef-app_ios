@@ -4,7 +4,7 @@ class EventDetailViewController: UIViewController, EventDetailScene {
 
     // MARK: Properties
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView!
     private var tableController: TableController?
 
     // MARK: Overrides
@@ -113,8 +113,7 @@ class EventDetailViewController: UIViewController, EventDetailScene {
         private func makeBannerComponent(text: String, configuration: (EventInformationBannerComponent) -> Void) -> UITableViewCell {
             let cell = tableView.dequeue(EventInformationBannerTableViewCell.self)
             configuration(cell)
-            cell.iconLabel.text = text
-            cell.iconLabel.textColor = .pantone330U
+            cell.configureIcon(text: text, textColor: .pantone330U)
 
             return cell
         }

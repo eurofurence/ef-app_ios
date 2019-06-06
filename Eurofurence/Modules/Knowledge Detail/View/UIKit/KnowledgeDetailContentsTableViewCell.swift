@@ -4,6 +4,12 @@ class KnowledgeDetailContentsTableViewCell: UITableViewCell {
 
     // MARK: IBOutlets
 
-    @IBOutlet var textView: UITextView!
+    @IBOutlet private var textView: UITextView!
+    
+    // MARK: Functions
+    
+    func configure(_ attributedText: NSAttributedString) {
+        textView.attributedText = attributedText
+    }
 
 }

@@ -5,7 +5,7 @@ class TheFirstTimeSyncFinishes_ApplicationShould: XCTestCase {
 
     func testRestrictEventsToTheFirstConDayWhenRunningBeforeConStarts() {
         let response = ModelCharacteristics.randomWithoutDeletions
-        let firstDay = unwrap(response.conferenceDays.changed.sorted(by: { $0.date < $1.date }).first)
+        let firstDay = unwrap(response.conferenceDays.changed.min(by: { $0.date < $1.date }))
         let context = EurofurenceSessionTestBuilder().with(.distantPast).build()
         let schedule = context.eventsService.makeEventsSchedule()
         let delegate = CapturingEventsScheduleDelegate()

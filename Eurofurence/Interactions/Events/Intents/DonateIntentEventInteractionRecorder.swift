@@ -1,5 +1,5 @@
-import EurofurenceModel
 import EurofurenceIntentDefinitions
+import EurofurenceModel
 
 struct DonateIntentEventInteractionRecorder: EventInteractionRecorder {
     

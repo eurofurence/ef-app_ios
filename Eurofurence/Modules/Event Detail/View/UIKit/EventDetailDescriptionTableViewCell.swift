@@ -4,7 +4,7 @@ class EventDetailDescriptionTableViewCell: UITableViewCell, EventDescriptionComp
 
     // MARK: IBOutlets
 
-    @IBOutlet weak var eventDescriptionTextView: UITextView!
+    @IBOutlet private weak var eventDescriptionTextView: UITextView!
 
     // MARK: Overrides
 

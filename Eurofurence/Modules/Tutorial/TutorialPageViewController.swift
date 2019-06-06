@@ -4,19 +4,19 @@ class TutorialPageViewController: UIViewController, TutorialPageScene {
 
     // MARK: IBOutlets
 
-    @IBOutlet weak var tutorialPageImageView: UIImageView!
-    @IBOutlet weak var tutorialPageTitleLabel: UILabel!
-    @IBOutlet weak var tutorialPageDescriptionLabel: UILabel!
-    @IBOutlet weak var primaryActionButton: UIButton!
-    @IBOutlet weak var secondaryActionButton: RoundedCornerButton!
+    @IBOutlet private weak var tutorialPageImageView: UIImageView!
+    @IBOutlet private weak var tutorialPageTitleLabel: UILabel!
+    @IBOutlet private weak var tutorialPageDescriptionLabel: UILabel!
+    @IBOutlet private weak var primaryActionButton: UIButton!
+    @IBOutlet private weak var secondaryActionButton: RoundedCornerButton!
 
     // MARK: IBActions
 
-    @IBAction func performPrimaryAction(_ sender: Any) {
+    @IBAction private func performPrimaryAction(_ sender: Any) {
         tutorialPageSceneDelegate?.tutorialPageSceneDidTapPrimaryActionButton(self)
     }
 
-    @IBAction func performSecondaryAction(_ sender: Any) {
+    @IBAction private func performSecondaryAction(_ sender: Any) {
         tutorialPageSceneDelegate?.tutorialPageSceneDidTapSecondaryActionButton(self)
     }
 

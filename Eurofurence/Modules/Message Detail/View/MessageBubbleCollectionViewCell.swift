@@ -4,9 +4,9 @@ class MessageBubbleCollectionViewCell: UICollectionViewCell, MessageComponent {
 
     // MARK: IBOutlets
 
-    @IBOutlet weak var bubbleBackgroundView: MessageBubbleBackgroundView!
-    @IBOutlet weak var subjectLabel: UILabel!
-    @IBOutlet weak var messageLabel: UILabel!
+    @IBOutlet private weak var bubbleBackgroundView: MessageBubbleBackgroundView!
+    @IBOutlet private weak var subjectLabel: UILabel!
+    @IBOutlet private weak var messageLabel: UILabel!
 
     // MARK: MessageComponent
 

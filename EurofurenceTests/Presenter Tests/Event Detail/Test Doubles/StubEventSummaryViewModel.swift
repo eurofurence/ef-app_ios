@@ -1,7 +1,7 @@
 @testable import Eurofurence
 import EurofurenceModel
-import TestUtilities
 import Foundation
+import TestUtilities
 
 struct StubEventSummaryViewModel: EventDetailViewModel {
 

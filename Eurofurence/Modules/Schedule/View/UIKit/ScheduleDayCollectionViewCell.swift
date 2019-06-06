@@ -2,8 +2,8 @@ import UIKit
 
 class ScheduleDayCollectionViewCell: UICollectionViewCell, ScheduleDayComponent {
 
-    @IBOutlet weak var selectedDecorationView: UIView!
-    @IBOutlet weak var dayTitleLabel: UILabel!
+    @IBOutlet private weak var selectedDecorationView: UIView!
+    @IBOutlet private weak var dayTitleLabel: UILabel!
 
     override var isSelected: Bool {
         didSet {

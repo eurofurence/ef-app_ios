@@ -4,7 +4,7 @@ class PreloadViewController: UIViewController, SplashScene {
 
     // MARK: IBOutlets
 
-    @IBOutlet weak var progressDescriptionLabel: UILabel!
+    @IBOutlet private weak var progressDescriptionLabel: UILabel!
 
     // MARK: Overrides
 

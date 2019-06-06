@@ -6,7 +6,7 @@ class MessageDetailViewController: UIViewController,
 
     // MARK: IBOutlets
 
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet private weak var collectionView: UICollectionView!
     private var messageCell: MessageBubbleCollectionViewCell?
     private var binders = [CellBinder]()
 

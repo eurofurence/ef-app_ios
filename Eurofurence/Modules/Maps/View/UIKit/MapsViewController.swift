@@ -4,7 +4,7 @@ class MapsViewController: UIViewController, MapsScene {
 
     // MARK: Properties
 
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet private weak var collectionView: UICollectionView!
     private var mapsController: MapsController? {
         didSet {
             collectionView.dataSource = mapsController

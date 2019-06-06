@@ -4,13 +4,13 @@ class EventDetailSummaryTableViewCell: UITableViewCell, EventSummaryComponent {
 
     // MARK: IBOutlets
 
-    @IBOutlet weak var eventTitleLabel: UILabel!
-    @IBOutlet weak var eventSubtitleLabel: UILabel!
-    @IBOutlet weak var eventAbstractLabel: UILabel!
-    @IBOutlet weak var eventTimesLabel: UILabel!
-    @IBOutlet weak var eventLocationLabel: UILabel!
-    @IBOutlet weak var eventTrackLabel: UILabel!
-    @IBOutlet weak var eventHostsLabel: UILabel!
+    @IBOutlet private weak var eventTitleLabel: UILabel!
+    @IBOutlet private weak var eventSubtitleLabel: UILabel!
+    @IBOutlet private weak var eventAbstractLabel: UILabel!
+    @IBOutlet private weak var eventTimesLabel: UILabel!
+    @IBOutlet private weak var eventLocationLabel: UILabel!
+    @IBOutlet private weak var eventTrackLabel: UILabel!
+    @IBOutlet private weak var eventHostsLabel: UILabel!
 
     // MARK: Overrides
 

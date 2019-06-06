@@ -236,8 +236,10 @@ struct JSONSyncResponse: Decodable {
                         switch self {
                         case .DealerDetail:
                             return .dealerDetail
+                            
                         case .EventConferenceRoom:
                             return .conferenceRoom
+                            
                         case .MapEntry:
                             return .mapEntry
                         }

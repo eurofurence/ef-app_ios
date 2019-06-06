@@ -4,14 +4,14 @@ class DealerDetailLocationAndAvailabilityTableViewCell: UITableViewCell, DealerL
 
     // MARK: Properties
 
-    @IBOutlet weak var componentTitleLabel: UILabel!
-    @IBOutlet weak var dealerMapImageView: UIImageView!
-    @IBOutlet weak var limitedAvailabilityWarningContainer: UIStackView!
-    @IBOutlet weak var limitedAvailabilityIconLabel: UILabel!
-    @IBOutlet weak var limitedAvailabilityWarningLabel: UILabel!
-    @IBOutlet weak var afterDarkInformationContainer: UIStackView!
-    @IBOutlet weak var afterDarkInformationIconLabel: UILabel!
-    @IBOutlet weak var afterDarkInformationLabel: UILabel!
+    @IBOutlet private weak var componentTitleLabel: UILabel!
+    @IBOutlet private weak var dealerMapImageView: UIImageView!
+    @IBOutlet private weak var limitedAvailabilityWarningContainer: UIStackView!
+    @IBOutlet private weak var limitedAvailabilityIconLabel: UILabel!
+    @IBOutlet private weak var limitedAvailabilityWarningLabel: UILabel!
+    @IBOutlet private weak var afterDarkInformationContainer: UIStackView!
+    @IBOutlet private weak var afterDarkInformationIconLabel: UILabel!
+    @IBOutlet private weak var afterDarkInformationLabel: UILabel!
 
     // MARK: Overrides
 

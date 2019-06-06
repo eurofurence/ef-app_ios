@@ -10,7 +10,7 @@ class MapDetailViewController: UIViewController, UIScrollViewDelegate, UIPopover
 
     // MARK: Properties
 
-    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet private weak var scrollView: UIScrollView!
     private var imageView: UIImageView?
 
     // MARK: Overrides
@@ -24,7 +24,7 @@ class MapDetailViewController: UIViewController, UIScrollViewDelegate, UIPopover
 
     // MARK: Actions
 
-    @IBAction func scrollViewTapped(_ sender: UIGestureRecognizer) {
+    @IBAction private func scrollViewTapped(_ sender: UIGestureRecognizer) {
         let tapLocation = sender.location(in: imageView)
         let position = MapCoordinate(x: Float(tapLocation.x), y: Float(tapLocation.y))
         delegate?.mapDetailSceneDidTapMap(at: position)

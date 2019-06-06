@@ -4,10 +4,10 @@ class AboutTheArtTableViewCell: UITableViewCell, AboutTheArtComponent {
 
     // MARK: IBOutlets
 
-    @IBOutlet weak var componentTitleLabel: UILabel!
-    @IBOutlet weak var artDescriptionLabel: UILabel!
-    @IBOutlet weak var artworkImageView: UIImageView!
-    @IBOutlet weak var artworkCaptionLabel: UILabel!
+    @IBOutlet private weak var componentTitleLabel: UILabel!
+    @IBOutlet private weak var artDescriptionLabel: UILabel!
+    @IBOutlet private weak var artworkImageView: UIImageView!
+    @IBOutlet private weak var artworkCaptionLabel: UILabel!
 
     // MARK: Overrides
 

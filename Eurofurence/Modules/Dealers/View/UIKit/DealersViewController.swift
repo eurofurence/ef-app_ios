@@ -4,7 +4,7 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
 
     // MARK: Properties
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView!
     private var tableController: TableController? {
         didSet {
             tableView.dataSource = tableController
@@ -18,7 +18,7 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
 
     // MARK: IBActions
 
-    @IBAction func openSearch(_ sender: Any) {
+    @IBAction private func openSearch(_ sender: Any) {
         searchController?.isActive = true
     }
 

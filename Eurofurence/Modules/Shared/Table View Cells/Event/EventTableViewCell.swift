@@ -4,20 +4,20 @@ class EventTableViewCell: UITableViewCell, ScheduleEventComponent {
 
     // MARK: IBOutlets
 
-    @IBOutlet weak var startTimeLabel: UILabel!
-    @IBOutlet weak var endTimeLabel: UILabel!
-    @IBOutlet weak var favouritedEventIndicator: UIView!
-    @IBOutlet weak var eventNameLabel: UILabel!
-    @IBOutlet weak var locationLabel: UILabel!
-    @IBOutlet weak var eventBannerImageView: UIImageView!
-    @IBOutlet weak var sponsorEventIndicator: UILabel!
-    @IBOutlet weak var superSponsorEventIndicator: UILabel!
-    @IBOutlet weak var artShowIndicatorView: UILabel!
-    @IBOutlet weak var kageBugIndicatorView: UILabel!
-    @IBOutlet weak var kageWineGlassIndicatorView: UILabel!
-    @IBOutlet weak var dealersDenIndicatorView: UILabel!
-    @IBOutlet weak var mainStageIndicatorView: UILabel!
-    @IBOutlet weak var photoshootIndicatorView: UILabel!
+    @IBOutlet private weak var startTimeLabel: UILabel!
+    @IBOutlet private weak var endTimeLabel: UILabel!
+    @IBOutlet private weak var favouritedEventIndicator: UIView!
+    @IBOutlet private weak var eventNameLabel: UILabel!
+    @IBOutlet private weak var locationLabel: UILabel!
+    @IBOutlet private weak var eventBannerImageView: UIImageView!
+    @IBOutlet private weak var sponsorEventIndicator: UILabel!
+    @IBOutlet private weak var superSponsorEventIndicator: UILabel!
+    @IBOutlet private weak var artShowIndicatorView: UILabel!
+    @IBOutlet private weak var kageBugIndicatorView: UILabel!
+    @IBOutlet private weak var kageWineGlassIndicatorView: UILabel!
+    @IBOutlet private weak var dealersDenIndicatorView: UILabel!
+    @IBOutlet private weak var mainStageIndicatorView: UILabel!
+    @IBOutlet private weak var photoshootIndicatorView: UILabel!
 
     // MARK: Overrides
 

@@ -4,11 +4,11 @@ class DealerComponentTableViewCell: UITableViewCell, DealerComponent {
 
     // MARK: Properties
 
-    @IBOutlet weak var dealerIconImageView: UIImageView!
-    @IBOutlet weak var dealerTitleLabel: UILabel!
-    @IBOutlet weak var dealerSubtitleLabel: UILabel!
-    @IBOutlet weak var notAvailableForEntireConferenceWarningView: UILabel!
-    @IBOutlet weak var containsAfterDarkContentWarningView: UILabel!
+    @IBOutlet private weak var dealerIconImageView: UIImageView!
+    @IBOutlet private weak var dealerTitleLabel: UILabel!
+    @IBOutlet private weak var dealerSubtitleLabel: UILabel!
+    @IBOutlet private weak var notAvailableForEntireConferenceWarningView: UILabel!
+    @IBOutlet private weak var containsAfterDarkContentWarningView: UILabel!
 
     // MARK: Overrides
 

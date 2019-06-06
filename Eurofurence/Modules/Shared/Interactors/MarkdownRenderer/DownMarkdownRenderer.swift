@@ -1,5 +1,5 @@
-import Foundation
 import Down
+import Foundation
 
 protocol DownMarkdownRenderer: MarkdownRenderer {
 	var stylesheet: String? { get }

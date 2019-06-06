@@ -1,8 +1,8 @@
 @testable import Eurofurence
 import EurofurenceModel
 import EurofurenceModelTestDoubles
-import XCTest
 import UIKit.UIViewController
+import XCTest
 
 struct StubMessageDetailSceneFactory: MessageDetailSceneFactory {
 

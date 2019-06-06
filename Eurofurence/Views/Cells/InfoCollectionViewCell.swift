@@ -8,6 +8,6 @@
 import UIKit
 
 class InfoCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var cellTitle: UILabel!
+    @IBOutlet private weak var cellTitle: UILabel!
 
 }

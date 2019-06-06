@@ -12,11 +12,11 @@ class MessageTableViewCell: UITableViewCell, MessageItemScene {
         return formatter
     }()
 
-    @IBOutlet weak var messageAuthorLabel: UILabel!
-    @IBOutlet weak var messageSubjectLabel: UILabel!
-    @IBOutlet weak var messageReceivedDateLabel: UILabel!
-    @IBOutlet weak var messageSynopsisLabel: UILabel!
-    @IBOutlet weak var unreadMessageIndicator: UnreadMessageIndicator!
+    @IBOutlet private weak var messageAuthorLabel: UILabel!
+    @IBOutlet private weak var messageSubjectLabel: UILabel!
+    @IBOutlet private weak var messageReceivedDateLabel: UILabel!
+    @IBOutlet private weak var messageSynopsisLabel: UILabel!
+    @IBOutlet private weak var unreadMessageIndicator: UnreadMessageIndicator!
 
     override func prepareForReuse() {
         super.prepareForReuse()

@@ -1,5 +1,5 @@
-import Foundation
 import Down
+import Foundation
 
 struct SubtleDownMarkdownRenderer: DownMarkdownRenderer {
 

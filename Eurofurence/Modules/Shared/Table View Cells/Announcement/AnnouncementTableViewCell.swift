@@ -4,10 +4,10 @@ class AnnouncementTableViewCell: UITableViewCell, AnnouncementComponent {
 
     // MARK: IBOutlets
 
-    @IBOutlet weak var announcementReceivedDateTimeLabel: UILabel!
-    @IBOutlet weak var announcementTitleLabel: UILabel!
-    @IBOutlet weak var announcementDescriptionLabel: UILabel!
-    @IBOutlet weak var unreadIndicatorView: UIView!
+    @IBOutlet private weak var announcementReceivedDateTimeLabel: UILabel!
+    @IBOutlet private weak var announcementTitleLabel: UILabel!
+    @IBOutlet private weak var announcementDescriptionLabel: UILabel!
+    @IBOutlet private weak var unreadIndicatorView: UIView!
 
     // MARK: AnnouncementComponent
 

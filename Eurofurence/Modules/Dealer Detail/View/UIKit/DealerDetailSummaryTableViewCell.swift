@@ -4,20 +4,20 @@ class DealerDetailSummaryTableViewCell: UITableViewCell, DealerDetailSummaryComp
 
     // MARK: Properties
 
-    @IBOutlet weak var artistImageView: UIImageView!
-    @IBOutlet weak var dealerTitleLabel: UILabel!
-    @IBOutlet weak var dealerSubtitleLabel: UILabel!
-    @IBOutlet weak var dealerCategoriesLabel: UILabel!
-    @IBOutlet weak var dealerShortDescriptionLabel: UILabel!
-    @IBOutlet weak var dealerWebsiteLabel: UILabel!
-    @IBOutlet weak var dealerWebsiteIconLabel: UILabel!
-    @IBOutlet weak var dealerWebsiteContainer: UIView!
-    @IBOutlet weak var twitterIconLabel: UILabel!
-    @IBOutlet weak var dealerTwitterHandleLabel: UILabel!
-    @IBOutlet weak var dealerTwitterHandleContainer: UIView!
-    @IBOutlet weak var dealerTelegramHandleLabel: UILabel!
-    @IBOutlet weak var dealerTelegramContainer: UIView!
-    @IBOutlet weak var telegramIconLabel: UILabel!
+    @IBOutlet private weak var artistImageView: UIImageView!
+    @IBOutlet private weak var dealerTitleLabel: UILabel!
+    @IBOutlet private weak var dealerSubtitleLabel: UILabel!
+    @IBOutlet private weak var dealerCategoriesLabel: UILabel!
+    @IBOutlet private weak var dealerShortDescriptionLabel: UILabel!
+    @IBOutlet private weak var dealerWebsiteLabel: UILabel!
+    @IBOutlet private weak var dealerWebsiteIconLabel: UILabel!
+    @IBOutlet private weak var dealerWebsiteContainer: UIView!
+    @IBOutlet private weak var twitterIconLabel: UILabel!
+    @IBOutlet private weak var dealerTwitterHandleLabel: UILabel!
+    @IBOutlet private weak var dealerTwitterHandleContainer: UIView!
+    @IBOutlet private weak var dealerTelegramHandleLabel: UILabel!
+    @IBOutlet private weak var dealerTelegramContainer: UIView!
+    @IBOutlet private weak var telegramIconLabel: UILabel!
 
     // MARK: Overrides
 

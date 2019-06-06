@@ -1,5 +1,5 @@
-import Foundation
 import EurofurenceModel
+import Foundation
 
 public protocol NotificationScheduler {
 

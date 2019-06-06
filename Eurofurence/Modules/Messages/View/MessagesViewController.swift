@@ -4,8 +4,8 @@ class MessagesViewController: UIViewController,
                               UITableViewDelegate,
                               MessagesScene {
 
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var noMessagesPlaceholder: UIView!
+    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var noMessagesPlaceholder: UIView!
     let refreshIndicator = UIRefreshControl(frame: .zero)
     private let dataSource = MessagesTableViewDataSource()
     private lazy var logoutBarButtonItem = UIBarButtonItem(title: .logout,

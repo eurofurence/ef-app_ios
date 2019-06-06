@@ -4,9 +4,9 @@ class LinkTableViewCell: UITableViewCell, LinkScene {
 
     // MARK: Outlets/Actions
 
-    @IBOutlet weak var linkButton: UIButton!
+    @IBOutlet private weak var linkButton: UIButton!
 
-    @IBAction func linkButtonTapped(_ sender: Any) {
+    @IBAction private func linkButtonTapped(_ sender: Any) {
         tapHandler?()
     }
     

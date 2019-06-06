@@ -4,8 +4,8 @@ class EventFeedbackFormViewController: UITableViewController, UITextViewDelegate
     
     var viewModel: EventFeedbackViewModel?
 
-    @IBOutlet weak var feedbackTextView: UITextView!
-    @IBOutlet weak var starRatingControl: StarRatingControl!
+    @IBOutlet private weak var feedbackTextView: UITextView!
+    @IBOutlet private weak var starRatingControl: StarRatingControl!
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
@@ -25,7 +25,7 @@ class EventFeedbackFormViewController: UITableViewController, UITextViewDelegate
         viewModel?.feedbackChanged(textView.text)
     }
     
-    @IBAction func starRatingValueDidChange(_ sender: Any) {
+    @IBAction private func starRatingValueDidChange(_ sender: Any) {
         let percentage = starRatingControl.percentageValue
         viewModel?.ratingPercentageChanged(percentage)
     }

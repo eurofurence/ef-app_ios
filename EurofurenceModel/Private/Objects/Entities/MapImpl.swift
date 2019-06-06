@@ -49,7 +49,7 @@ struct MapImpl: Map {
             return MapEntryDisplacementResult(entry: entry, displacement: delta)
         }
         
-        guard let entry = characteristics.entries.compactMap(tappedWithinEntry).sorted(by: { $0.displacement < $1.displacement }).first?.entry else { return }
+        guard let entry = characteristics.entries.compactMap(tappedWithinEntry).min(by: { $0.displacement < $1.displacement })?.entry else { return }
         
         let contentFromLink: (MapCharacteristics.Entry.Link) -> MapContent? = { (link) in
             if let room = self.dataStore.fetchRooms()?.first(where: { $0.identifier == link.target }) {

@@ -4,7 +4,7 @@ class NewsConventionCountdownTableViewCell: UITableViewCell, ConventionCountdown
 
     // MARK: IBOutlets
 
-    @IBOutlet weak var timeUntilConventionLabel: UILabel!
+    @IBOutlet private weak var timeUntilConventionLabel: UILabel!
 
     // MARK: ConventionCountdownComponent
 

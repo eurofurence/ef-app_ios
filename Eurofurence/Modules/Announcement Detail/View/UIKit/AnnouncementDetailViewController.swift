@@ -4,9 +4,9 @@ class AnnouncementDetailViewController: UITableViewController, AnnouncementDetai
 
     // MARK: IBOutlets
 
-    @IBOutlet weak var announcementHeadingLabel: UILabel!
-    @IBOutlet weak var announcementContentsTextView: UITextView!
-    @IBOutlet weak var announcementImageView: UIImageView!
+    @IBOutlet private weak var announcementHeadingLabel: UILabel!
+    @IBOutlet private weak var announcementContentsTextView: UITextView!
+    @IBOutlet private weak var announcementImageView: UIImageView!
 
     // MARK: Overrides
 

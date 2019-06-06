@@ -1,5 +1,5 @@
-import EurofurenceModel
 import EurofurenceIntentDefinitions
+import EurofurenceModel
 import Intents
 
 struct ConcreteEventIntentDonor: EventIntentDonor {

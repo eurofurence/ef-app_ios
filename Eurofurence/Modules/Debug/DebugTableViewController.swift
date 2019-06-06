@@ -1,12 +1,12 @@
-import MobileCoreServices
 import FirebaseMessaging
+import MobileCoreServices
 import UIKit
 
 class DebugTableViewController: UITableViewController {
 
     // MARK: Properties
 
-    @IBOutlet weak var fcmTokenLabel: UILabel!
+    @IBOutlet private weak var fcmTokenLabel: UILabel!
     private lazy var actions: [IndexPath : () -> Void] = [
         IndexPath(item: 0, section: 0): self.copyFCMToPasteBoard
     ]
@@ -27,7 +27,7 @@ class DebugTableViewController: UITableViewController {
 
     // MARK: Functions
 
-    @IBAction func doneButtonTapped(_ sender: Any) {
+    @IBAction private func doneButtonTapped(_ sender: Any) {
         dismiss(animated: true)
     }
 
