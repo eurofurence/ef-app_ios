@@ -15,7 +15,7 @@ class WhenSubmittingFeedback_AndFeedbackIsUnsuccessful: XCTestCase {
         let entity = context.services.events.fetchEvent(identifier: EventIdentifier(event.identifier))
         let delegate = CapturingEventFeedbackDelegate()
         var feedback = entity?.prepareFeedback()
-        feedback?.rating = 5
+        feedback?.starRating = 5
         feedback?.feedback = "Feedback"
         feedback?.submit(delegate)
         let feedbackRequest = EventFeedbackRequest(id: event.identifier, rating: 5, feedback: "Feedback")

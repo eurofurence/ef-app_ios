@@ -17,7 +17,7 @@ class WhenEventFeedbackScenePreparesFeedback_EventFeedbackPresenterShould: XCTes
         let feedback = context.event.lastGeneratedFeedback
         
         XCTAssertEqual(feedback?.feedback, expectedFeedback)
-        XCTAssertEqual(feedback?.rating, expectedRating)
+        XCTAssertEqual(feedback?.starRating, expectedRating)
         XCTAssertEqual(feedback?.state, .submitted)
     }
     

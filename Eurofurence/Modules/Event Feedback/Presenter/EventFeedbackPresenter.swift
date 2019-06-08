@@ -118,7 +118,7 @@ class EventFeedbackPresenter: EventFeedbackSceneDelegate, EventFeedbackDelegate 
             eventDayAndTime = dayAndTimeFormatter.formatDayAndTime(from: event)
             eventLocation = event.room.name
             eventHosts = hosts
-            defaultEventStarRating = eventFeedback.rating
+            defaultEventStarRating = eventFeedback.starRating
         }
         
         func feedbackChanged(_ feedback: String) {
@@ -126,7 +126,7 @@ class EventFeedbackPresenter: EventFeedbackSceneDelegate, EventFeedbackDelegate 
         }
         
         func ratingPercentageChanged(_ ratingPercentage: Float) {
-            eventFeedback.rating = Int(ratingPercentage * 10) / 2
+            eventFeedback.starRating = Int(ratingPercentage * 10) / 2
         }
         
         func submitFeedback() {

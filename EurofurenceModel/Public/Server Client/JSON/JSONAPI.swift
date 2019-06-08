@@ -119,7 +119,7 @@ public struct JSONAPI: API {
     }
     
     public func submitEventFeedback(_ request: EventFeedbackRequest, completionHandler: @escaping (Bool) -> Void) {
-        let feedback = Request.EventFeedback(EventId: request.id, Rating: request.rating, Message: request.feedback)
+        let feedback = Request.EventFeedback(EventId: request.id, Rating: request.starRating, Message: request.feedback)
         guard let data = try? encoder.encode(feedback) else { return }
         
         let url = urlStringByAppending(pathComponent: "EventFeedback")

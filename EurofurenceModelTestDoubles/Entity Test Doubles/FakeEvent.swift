@@ -121,11 +121,11 @@ public class FakeEventFeedback: EventFeedback {
     public private(set) var state: State = .unset
     
     public var feedback: String
-    public var rating: Int
+    public var starRating: Int
     
     public init(rating: Int = 0) {
         feedback = ""
-        self.rating = rating
+        self.starRating = rating
     }
     
     private var delegate: EventFeedbackDelegate?

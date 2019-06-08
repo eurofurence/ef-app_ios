@@ -2,19 +2,19 @@ import EventBus
 
 struct AcceptingEventFeedback: EventFeedback {
     
-    private static let defaultEventRating = 3
+    private static let defaultStarRating = 3
     
     let eventBus: EventBus
     let eventIdentifier: EventIdentifier
     
     var feedback: String
-    var rating: Int
+    var starRating: Int
     
     init(eventBus: EventBus, eventIdentifier: EventIdentifier) {
         self.eventBus = eventBus
         self.eventIdentifier = eventIdentifier
         feedback = ""
-        rating = AcceptingEventFeedback.defaultEventRating
+        starRating = AcceptingEventFeedback.defaultStarRating
     }
     
     func submit(_ delegate: EventFeedbackDelegate) {

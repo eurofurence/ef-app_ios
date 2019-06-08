@@ -6,7 +6,7 @@ extension DomainEvent {
         var delegate: EventFeedbackDelegate
         
         var rating: Int {
-            return feedback.rating
+            return feedback.starRating
         }
         
         var eventFeedback: String {
