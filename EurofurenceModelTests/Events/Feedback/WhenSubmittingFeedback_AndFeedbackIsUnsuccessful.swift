@@ -14,7 +14,7 @@ class WhenSubmittingFeedback_AndFeedbackIsUnsuccessful: XCTestCase {
         let context = EurofurenceSessionTestBuilder().with(store).build()
         let entity = context.services.events.fetchEvent(identifier: EventIdentifier(event.identifier))
         let delegate = CapturingEventFeedbackDelegate()
-        var feedback = entity?.prepareFeedback()
+        let feedback = entity?.prepareFeedback()
         feedback?.starRating = 5
         feedback?.feedback = "Feedback"
         feedback?.submit(delegate)

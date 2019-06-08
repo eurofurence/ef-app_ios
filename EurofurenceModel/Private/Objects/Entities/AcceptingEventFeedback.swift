@@ -1,11 +1,11 @@
 import EventBus
 
-struct AcceptingEventFeedback: EventFeedback {
+class AcceptingEventFeedback: EventFeedback {
     
     private static let defaultStarRating = 3
     
-    let eventBus: EventBus
-    let eventIdentifier: EventIdentifier
+    private let eventBus: EventBus
+    private let eventIdentifier: EventIdentifier
     
     var feedback: String
     var starRating: Int

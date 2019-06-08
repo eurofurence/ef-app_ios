@@ -1,6 +1,6 @@
 import Foundation
 
-public protocol EventFeedback {
+public protocol EventFeedback: class {
     
     var feedback: String { get set }
     var starRating: Int { get set }

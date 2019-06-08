@@ -1,4 +1,4 @@
-struct NotAcceptingEventFeedback: EventFeedback {
+class NotAcceptingEventFeedback: EventFeedback {
     
     var feedback: String
     var starRating: Int
