@@ -99,6 +99,7 @@ class EventFeedbackPresenter: EventFeedbackSceneDelegate, EventFeedbackDelegate 
         var eventDayAndTime: String
         var eventLocation: String
         var eventHosts: String
+        var defaultEventStarRating: Int = 0
 
         init(event: Event,
              eventFeedback: EventFeedback,
@@ -117,6 +118,7 @@ class EventFeedbackPresenter: EventFeedbackSceneDelegate, EventFeedbackDelegate 
             eventDayAndTime = dayAndTimeFormatter.formatDayAndTime(from: event)
             eventLocation = event.room.name
             eventHosts = hosts
+            defaultEventStarRating = eventFeedback.rating
         }
         
         func feedbackChanged(_ feedback: String) {

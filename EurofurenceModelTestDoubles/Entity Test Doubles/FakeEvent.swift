@@ -92,9 +92,10 @@ public final class FakeEvent: Event {
         observers.forEach({ $0.eventDidBecomeUnfavourite(self) })
     }
     
+    public var feedbackToReturn: FakeEventFeedback?
     public private(set) var lastGeneratedFeedback: FakeEventFeedback?
     public func prepareFeedback() -> EventFeedback {
-        let feedback = FakeEventFeedback()
+        let feedback = feedbackToReturn ?? FakeEventFeedback()
         lastGeneratedFeedback = feedback
         
         return feedback
@@ -122,9 +123,9 @@ public class FakeEventFeedback: EventFeedback {
     public var feedback: String
     public var rating: Int
     
-    init() {
+    public init(rating: Int = 0) {
         feedback = ""
-        rating = 0
+        self.rating = rating
     }
     
     private var delegate: EventFeedbackDelegate?

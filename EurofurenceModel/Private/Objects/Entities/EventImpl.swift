@@ -97,7 +97,7 @@ class EventImpl: Event {
     
     func prepareFeedback() -> EventFeedback {
         if isAcceptingFeedback {
-            return AcceptingEventFeedback(eventBus: eventBus, eventIdentifier: identifier, feedback: "", rating: 0)
+            return AcceptingEventFeedback(eventBus: eventBus, eventIdentifier: identifier)
         } else {
             return NotAcceptingEventFeedback()
         }

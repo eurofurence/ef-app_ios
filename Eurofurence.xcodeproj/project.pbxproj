@@ -856,6 +856,7 @@
 		CA8D086D22A85DBF003E42CA /* Unwrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D086C22A85DBF003E42CA /* Unwrap.swift */; };
 		CA8D086E22A85E9E003E42CA /* Unwrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D086C22A85DBF003E42CA /* Unwrap.swift */; };
 		CA8D086F22A85EA3003E42CA /* Unwrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D086C22A85DBF003E42CA /* Unwrap.swift */; };
+		CA8D087122AC0CE5003E42CA /* WhenBindingStarRatingTraits_EventFeedbackPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D087022AC0CE5003E42CA /* WhenBindingStarRatingTraits_EventFeedbackPresenterShould.swift */; };
 		CA8DA45D2240F6A100B1E5D1 /* WhenPerformingSync_AfterEnforcingFullStoreRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8DA45C2240F6A100B1E5D1 /* WhenPerformingSync_AfterEnforcingFullStoreRefresh.swift */; };
 		CA8DA45F2240F80D00B1E5D1 /* WhenPerformingSync_AfterEnforcingFullStoreRefresh_WhenFullRefreshFailed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8DA45E2240F80D00B1E5D1 /* WhenPerformingSync_AfterEnforcingFullStoreRefresh_WhenFullRefreshFailed.swift */; };
 		CA8DA4612241166E00B1E5D1 /* WhenPerformingSubsequentRefresh_WhereConventionIdentifierMismatchDetected.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8DA4602241166E00B1E5D1 /* WhenPerformingSubsequentRefresh_WhereConventionIdentifierMismatchDetected.swift */; };
@@ -2642,6 +2643,7 @@
 		CA89CBC12085385900570D54 /* AnnouncementsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsViewModel.swift; sourceTree = "<group>"; };
 		CA8D086922A85ADE003E42CA /* EurofurenceModelTestAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EurofurenceModelTestAssets.swift; sourceTree = "<group>"; };
 		CA8D086C22A85DBF003E42CA /* Unwrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unwrap.swift; sourceTree = "<group>"; };
+		CA8D087022AC0CE5003E42CA /* WhenBindingStarRatingTraits_EventFeedbackPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingStarRatingTraits_EventFeedbackPresenterShould.swift; sourceTree = "<group>"; };
 		CA8D97CC201610EC0074838F /* DomainEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainEvent.swift; sourceTree = "<group>"; };
 		CA8D97CE201611430074838F /* EventBus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBus.swift; sourceTree = "<group>"; };
 		CA8D97D02016126E0074838F /* LoggedIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedIn.swift; sourceTree = "<group>"; };
@@ -3820,6 +3822,7 @@
 			children = (
 				CA152EC12263C44600212742 /* BeforeEventFeedbackSceneLoads_EventFeedbackPresenterShould.swift */,
 				CA50B1A022610D580091E425 /* WhenEventFeedbackSceneLoads_EventFeedbackPresenterShould.swift */,
+				CA8D087022AC0CE5003E42CA /* WhenBindingStarRatingTraits_EventFeedbackPresenterShould.swift */,
 			);
 			path = "Binding View Model Attributes";
 			sourceTree = "<group>";
@@ -8727,6 +8730,7 @@
 				CA60BFFE207CDC1700697566 /* FakeAuthenticationService.swift in Sources */,
 				205B8D2E211F8E5700D9EE35 /* DownMarkdownRendererTest.swift in Sources */,
 				CA283A8220E93F9600F7D195 /* WhenBindingUnreadAnnouncements_NewsPresenterShould.swift in Sources */,
+				CA8D087122AC0CE5003E42CA /* WhenBindingStarRatingTraits_EventFeedbackPresenterShould.swift in Sources */,
 				CA6A8E0120E50008007536CD /* WhenSceneTapsMap_ThatRevealsAnotherPartOfTheMap_MapDetailPresenterShould.swift in Sources */,
 				CA283A5E20E6E9FB00F7D195 /* WhenSceneInstigatesPullToRefresh_NewsPresenterShould.swift in Sources */,
 				CA00AE5C20D171F200C2FBB0 /* CapturingScheduleEventGroupHeader.swift in Sources */,

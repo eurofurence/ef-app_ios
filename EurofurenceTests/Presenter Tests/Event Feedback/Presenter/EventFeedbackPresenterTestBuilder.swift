@@ -34,8 +34,15 @@ class EventFeedbackPresenterTestBuilder {
         }
     }
     
+    private var event: FakeEvent = .random
+    
+    @discardableResult
+    func with(_ event: FakeEvent) -> EventFeedbackPresenterTestBuilder {
+        self.event = event
+        return self
+    }
+    
     func build() -> Context {
-        let event = FakeEvent.random
         let eventService = FakeEventsService()
         eventService.events = [event]
         
