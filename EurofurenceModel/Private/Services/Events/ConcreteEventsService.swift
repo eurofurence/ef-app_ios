@@ -206,9 +206,6 @@ class ConcreteEventsService: ClockDelegate, EventsService {
         guard let room = rooms.first(where: { $0.identifier == event.roomIdentifier }) else { return nil }
         guard let track = tracks.first(where: { $0.identifier == event.trackIdentifier }) else { return nil }
 
-        let posterGraphicData: Data? = event.posterImageId.let(imageCache.cachedImageData)
-        let bannerGraphicData: Data? = event.bannerImageId.let(imageCache.cachedImageData)
-
         let tags = event.tags
         let containsTag: (String) -> Bool = { tags?.contains($0) ?? false }
 
@@ -224,6 +221,7 @@ class ConcreteEventsService: ClockDelegate, EventsService {
         let favouriteEventIdentifiers = dataStore.fetchFavouriteEventIdentifiers().defaultingTo([])
 
         return EventImpl(eventBus: eventBus,
+                         imageCache: imageCache,
                          isFavourite: favouriteEventIdentifiers.contains(eventIdentifier),
                          identifier: eventIdentifier,
                          title: title,
@@ -235,8 +233,8 @@ class ConcreteEventsService: ClockDelegate, EventsService {
                          startDate: event.startDateTime,
                          endDate: event.endDateTime,
                          eventDescription: event.eventDescription,
-                         posterGraphicPNGData: posterGraphicData,
-                         bannerGraphicPNGData: bannerGraphicData,
+                         posterImageId: event.posterImageId,
+                         bannerImageId: event.bannerImageId,
                          isSponsorOnly: containsTag("sponsors_only"),
                          isSuperSponsorOnly: containsTag("supersponsors_only"),
                          isArtShow: containsTag("art_show"),

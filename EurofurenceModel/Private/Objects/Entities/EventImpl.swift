@@ -4,7 +4,18 @@ import Foundation
 class EventImpl: Event {
 
     private let eventBus: EventBus
+    private let imageCache: ImagesCache
+    private let posterImageId: String?
+    private let bannerImageId: String?
 
+    var posterGraphicPNGData: Data? {
+        return posterImageId.let(imageCache.cachedImageData)
+    }
+    
+    var bannerGraphicPNGData: Data? {
+        return bannerImageId.let(imageCache.cachedImageData)
+    }
+    
     var identifier: EventIdentifier
     var title: String
     var subtitle: String
@@ -15,8 +26,6 @@ class EventImpl: Event {
     var startDate: Date
     var endDate: Date
     var eventDescription: String
-    var posterGraphicPNGData: Data?
-    var bannerGraphicPNGData: Data?
     var isSponsorOnly: Bool
     var isSuperSponsorOnly: Bool
     var isArtShow: Bool
@@ -27,6 +36,7 @@ class EventImpl: Event {
     var isAcceptingFeedback: Bool
 
     init(eventBus: EventBus,
+         imageCache: ImagesCache,
          isFavourite: Bool,
          identifier: EventIdentifier,
          title: String,
@@ -38,8 +48,8 @@ class EventImpl: Event {
          startDate: Date,
          endDate: Date,
          eventDescription: String,
-         posterGraphicPNGData: Data?,
-         bannerGraphicPNGData: Data?,
+         posterImageId: String?,
+         bannerImageId: String?,
          isSponsorOnly: Bool,
          isSuperSponsorOnly: Bool,
          isArtShow: Bool,
@@ -49,6 +59,7 @@ class EventImpl: Event {
          isPhotoshoot: Bool,
          isAcceptingFeedback: Bool) {
         self.eventBus = eventBus
+        self.imageCache = imageCache
         self.isFavourite = isFavourite
 
         self.identifier = identifier
@@ -61,8 +72,8 @@ class EventImpl: Event {
         self.startDate = startDate
         self.endDate = endDate
         self.eventDescription = eventDescription
-        self.posterGraphicPNGData = posterGraphicPNGData
-        self.bannerGraphicPNGData = bannerGraphicPNGData
+        self.posterImageId = posterImageId
+        self.bannerImageId = bannerImageId
         self.isSponsorOnly = isSponsorOnly
         self.isSuperSponsorOnly = isSuperSponsorOnly
         self.isArtShow = isArtShow
