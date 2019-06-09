@@ -30,6 +30,22 @@ class PlaceholderTextView: UITextView {
         recomputePlaceholderLayout()
     }
     
+    override var accessibilityLabel: String? {
+        get {
+            let result: String?
+            if isPlaceholderNeedingDisplay(), let placeholderText = placeholderLabel.text {
+                result = "\(placeholderText)."
+            } else {
+                result = super.accessibilityLabel
+            }
+            
+            return result
+        }
+        set {
+            super.accessibilityLabel = newValue
+        }
+    }
+    
     private func calculatePlaceholderIntrinsictContentSize() -> CGSize {
         var intrinsicContentSize = placeholderLabel.intrinsicContentSize
         intrinsicContentSize.height += textContainerInset.top + textContainerInset.bottom
@@ -56,6 +72,7 @@ class PlaceholderTextView: UITextView {
     private var placeholderConstraints: [NSLayoutConstraint] = []
     private let placeholderLabel: UILabel = {
         let label = UILabel(frame: .zero)
+        label.isAccessibilityElement = false
         label.font = .preferredFont(forTextStyle: .body)
         label.numberOfLines = 0
         label.textColor = .lightGray
