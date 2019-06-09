@@ -10,5 +10,6 @@ protocol EventFeedbackScene {
     func showFeedbackSubmissionFailedPrompt()
     func disableNavigationControls()
     func enableNavigationControls()
+    func showDiscardFeedbackPrompt(discardHandler: @escaping () -> Void)
     
 }

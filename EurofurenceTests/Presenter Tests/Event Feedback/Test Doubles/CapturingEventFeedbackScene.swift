@@ -54,6 +54,13 @@ class CapturingEventFeedbackScene: UIViewController, EventFeedbackScene {
         navigationControlsState = .enabled
     }
     
+    private(set) var confirmCancellationAlertPresented = false
+    private var discardHandler: (() -> Void)?
+    func showDiscardFeedbackPrompt(discardHandler: @escaping () -> Void) {
+        confirmCancellationAlertPresented = true
+        self.discardHandler = discardHandler
+    }
+    
     func simulateSceneDidLoad() {
         delegate?.eventFeedbackSceneDidLoad()
     }
@@ -72,6 +79,10 @@ class CapturingEventFeedbackScene: UIViewController, EventFeedbackScene {
     
     func simulateCancelFeedbackTapped() {
         capturedViewModel?.cancelFeedback()
+    }
+    
+    func simulateUserWantsToDiscardFeedbackInput() {
+        discardHandler?()
     }
     
 }

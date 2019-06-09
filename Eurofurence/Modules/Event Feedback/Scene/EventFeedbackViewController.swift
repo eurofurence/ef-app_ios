@@ -121,6 +121,10 @@ class EventFeedbackViewController: UIViewController, EventFeedbackScene {
         barButtonItems.forEach({ $0.isEnabled = true })
     }
     
+    func showDiscardFeedbackPrompt(discardHandler: @escaping () -> Void) {
+        
+    }
+    
     // MARK: Private
     
     private func initialiseStoryboardViewController<T>(_ type: T.Type) -> T where T: UIViewController {

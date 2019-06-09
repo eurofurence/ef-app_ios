@@ -65,7 +65,23 @@ class EventFeedbackPresenter: EventFeedbackSceneDelegate, EventFeedbackDelegate 
         scene.disableNavigationControls()
     }
     
+    private var userHasEnteredFeedback: Bool {
+        return eventFeedback.feedback.isEmpty == false
+    }
+    
     private func cancelFeedback() {
+        if userHasEnteredFeedback {
+            requestCancellationConfirmation()
+        } else {
+            abandonFeedbackEntry()
+        }
+    }
+    
+    private func requestCancellationConfirmation() {
+        scene.showDiscardFeedbackPrompt(discardHandler: abandonFeedbackEntry)
+    }
+    
+    private func abandonFeedbackEntry() {
         delegate.eventFeedbackCancelled()
     }
     
