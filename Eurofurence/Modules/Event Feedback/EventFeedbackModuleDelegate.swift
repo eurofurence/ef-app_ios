@@ -2,6 +2,6 @@ import Foundation
 
 protocol EventFeedbackModuleDelegate {
     
-    func eventFeedbackDismissed()
+    func eventFeedbackCancelled()
     
 }

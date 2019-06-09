@@ -49,7 +49,7 @@ class EventFeedbackPresenter: EventFeedbackSceneDelegate, EventFeedbackDelegate 
     func eventFeedbackSubmissionDidFinish(_ feedback: EventFeedback) {
         scene.showFeedbackSubmissionSuccessful()
         successHaptic.play()
-        successWaitingRule.evaluateRule(handler: delegate.eventFeedbackDismissed)
+        successWaitingRule.evaluateRule(handler: delegate.eventFeedbackCancelled)
     }
     
     func eventFeedbackSubmissionDidFail(_ feedback: EventFeedback) {
@@ -66,7 +66,7 @@ class EventFeedbackPresenter: EventFeedbackSceneDelegate, EventFeedbackDelegate 
     }
     
     private func cancelFeedback() {
-        delegate.eventFeedbackDismissed()
+        delegate.eventFeedbackCancelled()
     }
     
     private struct EventDayAndTimeFormatter {

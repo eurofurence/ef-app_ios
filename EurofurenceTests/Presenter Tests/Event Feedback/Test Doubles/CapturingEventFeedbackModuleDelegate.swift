@@ -3,7 +3,7 @@
 class CapturingEventFeedbackModuleDelegate: EventFeedbackModuleDelegate {
     
     private(set) var dismissed = false
-    func eventFeedbackDismissed() {
+    func eventFeedbackCancelled() {
         dismissed = true
     }
     

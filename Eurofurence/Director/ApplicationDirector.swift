@@ -190,7 +190,7 @@ class ApplicationDirector: ExternalContentHandler,
     
     // MARK: EventFeedbackModuleDelegate
     
-    func eventFeedbackDismissed() {
+    func eventFeedbackCancelled() {
         presentedFeedbackViewController?.dismiss(animated: animate)
         presentedFeedbackViewController = nil
     }

@@ -104,7 +104,7 @@ class StubEventFeedbackModuleProviding: EventFeedbackModuleProviding {
     }
     
     func simulateDismissFeedback() {
-        delegate?.eventFeedbackDismissed()
+        delegate?.eventFeedbackCancelled()
     }
     
 }
