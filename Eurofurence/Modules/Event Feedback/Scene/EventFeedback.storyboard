@@ -216,21 +216,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thank you for your feedback!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c4w-4K-zEc">
-                                <rect key="frame" x="0.0" y="438" width="414" height="20.5"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="nkN-Cv-RAQ">
+                                <rect key="frame" x="0.0" y="354" width="414" height="188.5"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FeedbackSuccessful" translatesAutoresizingMaskIntoConstraints="NO" id="pPw-Y5-5we">
+                                        <rect key="frame" x="127" y="0.0" width="160" height="160"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="pPw-Y5-5we" secondAttribute="height" multiplier="1:1" id="SoI-KW-30v"/>
+                                            <constraint firstAttribute="height" constant="160" id="bzw-rI-Shm"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thank you for your feedback!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c4w-4K-zEc">
+                                        <rect key="frame" x="90.5" y="168" width="233.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="wRU-2d-9wZ" firstAttribute="trailing" secondItem="c4w-4K-zEc" secondAttribute="trailing" id="6ww-QD-7iH"/>
-                            <constraint firstItem="c4w-4K-zEc" firstAttribute="centerY" secondItem="Eve-0X-dfA" secondAttribute="centerY" id="AcE-r4-FDu"/>
-                            <constraint firstItem="c4w-4K-zEc" firstAttribute="leading" secondItem="wRU-2d-9wZ" secondAttribute="leading" id="wdQ-D1-5mh"/>
+                            <constraint firstItem="nkN-Cv-RAQ" firstAttribute="centerX" secondItem="Eve-0X-dfA" secondAttribute="centerX" id="UZb-8J-qbN"/>
+                            <constraint firstItem="nkN-Cv-RAQ" firstAttribute="centerY" secondItem="Eve-0X-dfA" secondAttribute="centerY" id="UzD-Q0-5bN"/>
+                            <constraint firstItem="nkN-Cv-RAQ" firstAttribute="leading" secondItem="wRU-2d-9wZ" secondAttribute="leading" id="dqe-k4-WsL"/>
+                            <constraint firstItem="wRU-2d-9wZ" firstAttribute="trailing" secondItem="nkN-Cv-RAQ" secondAttribute="trailing" id="nnX-Q2-Wg6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wRU-2d-9wZ"/>
                     </view>
+                    <connections>
+                        <outlet property="tickImageView" destination="pPw-Y5-5we" id="a3T-ix-Cdp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gTu-WS-jeA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -261,4 +277,7 @@
             <point key="canvasLocation" x="1046" y="-417"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="FeedbackSuccessful" width="100" height="100"/>
+    </resources>
 </document>
