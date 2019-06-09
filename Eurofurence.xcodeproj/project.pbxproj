@@ -2535,7 +2535,7 @@
 		CA728436209C7DE1007D912A /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		CA728438209CEE97007D912A /* StubConventionCountdownService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubConventionCountdownService.swift; sourceTree = "<group>"; };
 		CA72843A209CEF47007D912A /* ConventionCountdownService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConventionCountdownService.swift; sourceTree = "<group>"; };
-		CA72843C209CF07A007D912A /* Localizable.stringsdict */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; path = Localizable.stringsdict; sourceTree = "<group>"; };
+		CA72843C209CF07A007D912A /* Localizable.stringsdict */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = Localizable.stringsdict; path = Base.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		CA72843E209CF8D2007D912A /* WhenLoggedInBeforeConvention_ThenDaysUntilConventionChanges_NewsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLoggedInBeforeConvention_ThenDaysUntilConventionChanges_NewsInteractorShould.swift; sourceTree = "<group>"; };
 		CA728440209D001B007D912A /* WhenNewsModuleSelectsAnnouncement_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenNewsModuleSelectsAnnouncement_DirectorShould.swift; sourceTree = "<group>"; };
 		CA728444209D00B7007D912A /* StubAnnouncementDetailModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubAnnouncementDetailModuleFactory.swift; sourceTree = "<group>"; };
@@ -2685,7 +2685,6 @@
 		CA9AC16A208546530039C0C2 /* WhenBindingEvent_NewsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingEvent_NewsPresenterShould.swift; sourceTree = "<group>"; };
 		CA9AC16C2085476E0039C0C2 /* EventComponentViewModel+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventComponentViewModel+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CAA39E0720051B5C00F2F3D3 /* LocalizedStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedStrings.swift; sourceTree = "<group>"; };
-		CAA39E0A20051C6C00F2F3D3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CAA4BA6621EE7AB600DE2C88 /* MessagesModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesModule.swift; sourceTree = "<group>"; };
 		CAA4BA6821EE80C500DE2C88 /* ConcreteSessionStateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcreteSessionStateService.swift; sourceTree = "<group>"; };
 		CAA4BA6B21EE851700DE2C88 /* ConcreteRefreshService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcreteRefreshService.swift; sourceTree = "<group>"; };
@@ -7781,8 +7780,6 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
-				en,
 				Base,
 			);
 			mainGroup = 9ACF992B1EBE172D006FC958;
@@ -9709,7 +9706,6 @@
 		CAA39E0B20051C6C00F2F3D3 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				CAA39E0A20051C6C00F2F3D3 /* en */,
 				CAC1B3842014E93C00ED8B06 /* Base */,
 			);
 			name = Localizable.strings;
