@@ -65,6 +65,7 @@
                                 </cells>
                             </tableViewSection>
                             <tableViewSection id="fdE-MU-Y06">
+                                <string key="footerTitle">Your feedback will be submitted anonymously. Any comments will be manually reviewed and may be forwarded to the hosts or panelists. Hateful language or insults will not be forwarded.</string>
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="HoA-ME-1en" style="IBUITableViewCellStyleDefault" id="hga-e6-Yh5">
                                         <rect key="frame" x="0.0" y="159" width="414" height="44"/>
