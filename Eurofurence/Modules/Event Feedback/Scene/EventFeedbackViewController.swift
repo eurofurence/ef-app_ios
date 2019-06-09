@@ -122,7 +122,13 @@ class EventFeedbackViewController: UIViewController, EventFeedbackScene {
     }
     
     func showDiscardFeedbackPrompt(discardHandler: @escaping () -> Void) {
+        let alert = UIAlertController(title: .confirmDiscardEventFeedbackTitle, message: "", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: .cancel, style: .cancel)
+        alert.addAction(cancelAction)
+        alert.addAction(UIAlertAction(title: .discard, style: .destructive, handler: { (_) in discardHandler() }))
+        alert.preferredAction = cancelAction
         
+        present(alert, animated: true)
     }
     
     // MARK: Private

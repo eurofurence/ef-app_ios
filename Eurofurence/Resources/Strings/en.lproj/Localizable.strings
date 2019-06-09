@@ -106,3 +106,6 @@
 
 "EventFeedbackDayAndTime" = "%@ from %@ to %@";
 "EventHostedBy" = "Hosted by %@";
+
+"ConfirmDiscardEventFeedbackTitle" = "Discard Feedback?";
+"Discard" = "Discard";

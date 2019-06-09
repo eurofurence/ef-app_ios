@@ -224,6 +224,12 @@ public extension String {
     static let feedbackErrorMessage = NSLocalizedString("FeedbackErrorMessage",
                                                         comment: "Message for the alert displayed when attempting to leave feedback for an event fails")
     
+    static let confirmDiscardEventFeedbackTitle = NSLocalizedString("ConfirmDiscardEventFeedbackTitle",
+                                                                    comment: "Title for the alert presented to the user when confirming they want to discard any entered event feedback")
+    
+    static let discard = NSLocalizedString("Discard",
+                                           comment: "Text used to describe actions related to user input that will cause their input to be discarded")
+    
     private struct Formatters {
         static var numbers = NumberFormatter()
     }
