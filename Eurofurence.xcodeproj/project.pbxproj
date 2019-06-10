@@ -1051,7 +1051,6 @@
 		CAE8879322690263001464C1 /* LeaveFeedbackActionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE8879222690263001464C1 /* LeaveFeedbackActionViewModel.swift */; };
 		CAE8879522690358001464C1 /* WhenEventIsNotAcceptingFeedback_EventDetailInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE8879422690358001464C1 /* WhenEventIsNotAcceptingFeedback_EventDetailInteractorShould.swift */; };
 		CAEA0B832165626900B0C7A6 /* EurofurenceModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAEA0B7A2165626900B0C7A6 /* EurofurenceModel.framework */; };
-		CAEA0B8C2165626900B0C7A6 /* EurofurenceAppCore.h in Headers */ = {isa = PBXBuildFile; fileRef = CAEA0B7C2165626900B0C7A6 /* EurofurenceAppCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CAEA0B8F2165626900B0C7A6 /* EurofurenceModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAEA0B7A2165626900B0C7A6 /* EurofurenceModel.framework */; };
 		CAEA0B902165626900B0C7A6 /* EurofurenceModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CAEA0B7A2165626900B0C7A6 /* EurofurenceModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CAEA0D87216BDD9400B0C7A6 /* ConcreteEventsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA680F7F20CDA49D006ACD3D /* ConcreteEventsService.swift */; };
@@ -2912,7 +2911,6 @@
 		CAE8B0BC20CA57590029D4D6 /* RoomEntity+Adaptation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RoomEntity+Adaptation.swift"; sourceTree = "<group>"; };
 		CAE8B0BE20CA583D0029D4D6 /* TrackEntity+Adaptation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrackEntity+Adaptation.swift"; sourceTree = "<group>"; };
 		CAEA0B7A2165626900B0C7A6 /* EurofurenceModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EurofurenceModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CAEA0B7C2165626900B0C7A6 /* EurofurenceAppCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EurofurenceAppCore.h; sourceTree = "<group>"; };
 		CAEA0B7D2165626900B0C7A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CAEA0B822165626900B0C7A6 /* EurofurenceModelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EurofurenceModelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAEA0B8B2165626900B0C7A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -6981,7 +6979,6 @@
 		CAEA0B7B2165626900B0C7A6 /* EurofurenceModel */ = {
 			isa = PBXGroup;
 			children = (
-				CAEA0B7C2165626900B0C7A6 /* EurofurenceAppCore.h */,
 				CAEA0B7D2165626900B0C7A6 /* Info.plist */,
 				CACD2E8B21D676FE00BACD91 /* Private */,
 				CAAF4C732164E1CF0017946C /* Public */,
@@ -7441,7 +7438,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CAEA0B8C2165626900B0C7A6 /* EurofurenceAppCore.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
