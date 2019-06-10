@@ -7715,6 +7715,9 @@
 							com.apple.Push = {
 								enabled = 1;
 							};
+							com.apple.SafariKeychain = {
+								enabled = 1;
+							};
 						};
 					};
 					9ACF99471EBE172D006FC958 = {
@@ -7780,6 +7783,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				Base,
 			);
 			mainGroup = 9ACF992B1EBE172D006FC958;
