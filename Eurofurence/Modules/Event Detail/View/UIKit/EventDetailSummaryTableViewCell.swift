@@ -23,16 +23,10 @@ class EventDetailSummaryTableViewCell: UITableViewCell, EventSummaryComponent {
                                  eventHostsLabel as Any,
                                  eventAbstractLabel as Any]
     }
-    
-    override func awakeAfter(using aDecoder: NSCoder) -> Any? {
-        return super.awakeAfter(using: aDecoder)
-    }
 
     // MARK: EventSummaryComponent
 
     func setEventTitle(_ title: String) {
-        // Comment
-        eventTitleLabel.text = "Not localized"
         eventTitleLabel.text = title
     }
 
