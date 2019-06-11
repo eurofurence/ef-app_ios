@@ -19,6 +19,20 @@ extension UITableView {
 
         return cell
     }
+    
+    func registerConventionBrandedHeader() {
+        let headerType = ConventionBrandedTableViewHeaderFooterView.self
+        register(headerType, forHeaderFooterViewReuseIdentifier: headerType.identifier)
+    }
+    
+    func dequeueConventionBrandedHeader() -> ConventionBrandedTableViewHeaderFooterView {
+        let identifier = ConventionBrandedTableViewHeaderFooterView.identifier
+        guard let header = dequeueReusableHeaderFooterView(withIdentifier: identifier) as? ConventionBrandedTableViewHeaderFooterView else {
+            fatalError("\(ConventionBrandedTableViewHeaderFooterView.self) is not registered in this table view!")
+        }
+        
+        return header
+    }
 
     private func abortDueToUnregisteredOrMissingCell<T>(_ type: T.Type, identifier: String) -> Never {
         fatalError("Cell registered with identifier \"\(identifier)\" not present, or not an instance of \(type)")
