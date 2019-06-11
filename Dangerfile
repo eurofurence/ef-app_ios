@@ -45,18 +45,18 @@ end
 
 def catch_untested_code
     if is_dir_modified("Eurofurence") && !is_dir_modified("EurofurenceTests")
-        warn("The app was modified but not tests were changed. Make sure new behaviour is documented with tests. If you were refactoring or working in the view tier then ignore this message.")
+        warn("The app was modified but no tests were changed. Make sure new behaviour is documented with tests. If you were refactoring or working in the view tier then ignore this message")
     end
 
-    if is_dir_modified("EurofurenceModel") && !is_dir_modified("EurofurenceModel")
-        warn("The model was updated but no tests changed. If you were refactoring then no worries, otherwise backfill tests for new behaviour.")
+    if is_dir_modified("EurofurenceModel") && !is_dir_modified("EurofurenceModelTests")
+        warn("The model was modified but no tests were changed. Make sure new behaviour is documented with tests. If you were refactoring then ignore this message")
     end
 end
 
 # --- Automating Swift Code Review
 
 def perform_swift_code_review_on_file(file)
-    is_model_file = file.path =~ /EurofurenceModel/
+    is_model_file = file =~ /EurofurenceModel/
 
     filelines = File.readlines(file)
     filelines.each_with_index do |line, index|
@@ -65,7 +65,7 @@ def perform_swift_code_review_on_file(file)
             warn("Override methods which only call super can be removed", file: file, line: index+3)
         end
 
-        if line.include?("//")
+        if line.include?("//") and !line.include?("MARK:")
             warn("Comments should be avoided - express intent in proper names and functions", file: file, line: index)
         end
 
