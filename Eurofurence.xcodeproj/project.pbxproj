@@ -808,6 +808,7 @@
 		CA79924F22451DFA00DF1F84 /* FakeHoursDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA0F7B216D370600B0C7A6 /* FakeHoursDateFormatter.swift */; };
 		CA7A298922AD2A5F002AD939 /* WhenEventFeedbackSceneCancelsFeedback_WithFeedbackEntered_EventFeedbackPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A298822AD2A5F002AD939 /* WhenEventFeedbackSceneCancelsFeedback_WithFeedbackEntered_EventFeedbackPresenterShould.swift */; };
 		CA7A298B22AD2CE8002AD939 /* WhenUserAcknowledgesTheyWantToDiscardFeedbackInput_EventFeedbackPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A298A22AD2CE8002AD939 /* WhenUserAcknowledgesTheyWantToDiscardFeedbackInput_EventFeedbackPresenterShould.swift */; };
+		CA7A299422B02B46002AD939 /* Dangerfile in Resources */ = {isa = PBXBuildFile; fileRef = CA7A299322B02B46002AD939 /* Dangerfile */; };
 		CA7BA2372237FCFB00D34592 /* SystemNetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF96CF01F1495F400EE6134 /* SystemNetworkReachability.swift */; };
 		CA7BA2382237FCFB00D34592 /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A861EBB1F25551400B75A8C /* NetworkReachability.swift */; };
 		CA7BA23B2238028900D34592 /* DataStoreTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7BA23A2238028900D34592 /* DataStoreTransaction.swift */; };
@@ -2588,6 +2589,7 @@
 		CA79924822451AB500DF1F84 /* ApplicationNotificationKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationNotificationKey.swift; sourceTree = "<group>"; };
 		CA7A298822AD2A5F002AD939 /* WhenEventFeedbackSceneCancelsFeedback_WithFeedbackEntered_EventFeedbackPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenEventFeedbackSceneCancelsFeedback_WithFeedbackEntered_EventFeedbackPresenterShould.swift; sourceTree = "<group>"; };
 		CA7A298A22AD2CE8002AD939 /* WhenUserAcknowledgesTheyWantToDiscardFeedbackInput_EventFeedbackPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenUserAcknowledgesTheyWantToDiscardFeedbackInput_EventFeedbackPresenterShould.swift; sourceTree = "<group>"; };
+		CA7A299322B02B46002AD939 /* Dangerfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; fileEncoding = 4; path = Dangerfile; sourceTree = "<group>"; };
 		CA7BA23A2238028900D34592 /* DataStoreTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStoreTransaction.swift; sourceTree = "<group>"; };
 		CA7BA23C2238029B00D34592 /* DataStoreFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStoreFactory.swift; sourceTree = "<group>"; };
 		CA7BA23E2238036C00D34592 /* CoreDataStoreFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStoreFactory.swift; sourceTree = "<group>"; };
@@ -3501,6 +3503,7 @@
 		9ACF992B1EBE172D006FC958 = {
 			isa = PBXGroup;
 			children = (
+				CA7A299322B02B46002AD939 /* Dangerfile */,
 				D6F3D21513FCE6CCDC157C6A /* .travis.yml */,
 				CACD2EA921D67C9A00BACD91 /* Application */,
 				CACD2EA821D67C8A00BACD91 /* Domain Model */,
@@ -7838,6 +7841,7 @@
 				CA40109A211081A40056E16C /* KnowledgeGroupEntries.storyboard in Resources */,
 				CAA39E0920051C6C00F2F3D3 /* Localizable.strings in Resources */,
 				CA6A8D7B20E26588007536CD /* Maps.storyboard in Resources */,
+				CA7A299422B02B46002AD939 /* Dangerfile in Resources */,
 				9ACF99421EBE172D006FC958 /* LaunchScreen.storyboard in Resources */,
 				CA36A48320D8C89700EE6537 /* DealerComponentTableViewCell.xib in Resources */,
 				CA283ACF20EAC18500F7D195 /* AnnouncementTableViewCell.xib in Resources */,
