@@ -7488,7 +7488,7 @@
 				9ACF99311EBE172D006FC958 /* Frameworks */,
 				9ACF99321EBE172D006FC958 /* Resources */,
 				AD43207D87B13D6AADFF543F /* [CP] Embed Pods Frameworks */,
-				2055AB1121145F4600EB490B /* Set version in Root.plist */,
+				2055AB1121145F4600EB490B /* Update Settings bundle's version entry */,
 				CAEA0B9A2165626900B0C7A6 /* Embed Frameworks */,
 				9ACB01051F1808BA001CE9D2 /* Crashlytics */,
 			);
@@ -7936,14 +7936,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2055AB1121145F4600EB490B /* Set version in Root.plist */ = {
+		2055AB1121145F4600EB490B /* Update Settings bundle's version entry */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Set version in Root.plist";
+			name = "Update Settings bundle's version entry";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
