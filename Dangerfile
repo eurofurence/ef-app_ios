@@ -28,13 +28,13 @@ end
 
 # Application Specific Checks
 
-if is_dir_modified(Eurofurence) && !is_dir_modified(EurofurenceTests)
+if is_dir_modified("Eurofurence") && !is_dir_modified("EurofurenceTests")
     warn("Application code has been modified without any changes to the tests - if this PR was for refactoring then ignore this message, otherwise consider backfilling tests for your solution")
 end
 
 # Model Specific Checks
 
-if is_dir_modified(EurofurenceModel) && !is_dir_modified(EurofurenceModel)
+if is_dir_modified("EurofurenceModel") && !is_dir_modified("EurofurenceModel")
     warn("Application code has been modified without any changes to the tests - if this PR was for refactoring then ignore this message, otherwise consider backfilling tests for your solution")
 end
 
