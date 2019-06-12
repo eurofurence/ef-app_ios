@@ -2942,7 +2942,6 @@
 		CAF9A9571F5601A700628833 /* WhenViewingMessagesWhileLoggedOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenViewingMessagesWhileLoggedOut.swift; sourceTree = "<group>"; };
 		CAFD012720C6F2A2004F3935 /* WhenSyncSucceeds_ForEmptyDataStore_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSyncSucceeds_ForEmptyDataStore_ApplicationShould.swift; sourceTree = "<group>"; };
 		D27E666C2FB166EEC7D70C0B /* Pods-EurofurenceAppCoreTestDoubles.screenshots.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EurofurenceAppCoreTestDoubles.screenshots.xcconfig"; path = "Pods/Target Support Files/Pods-EurofurenceAppCoreTestDoubles/Pods-EurofurenceAppCoreTestDoubles.screenshots.xcconfig"; sourceTree = "<group>"; };
-		D6F3D21513FCE6CCDC157C6A /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = file.yml; path = .travis.yml; sourceTree = "<group>"; };
 		DB515BDD9C2C36320963EF3C /* Pods-EurofurenceAppCore-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-EurofurenceAppCore-settings-metadata.plist"; path = "Eurofurence/Settings.bundle/Pods-EurofurenceAppCore-settings-metadata.plist"; sourceTree = "<group>"; };
 		E17E5A2762A3DDFA8341E83C /* Pods-ScreenshotGenerator-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-ScreenshotGenerator-settings-metadata.plist"; path = "Eurofurence/Settings.bundle/Pods-ScreenshotGenerator-settings-metadata.plist"; sourceTree = "<group>"; };
 		E5969EBB099A84DB93CE3EE6 /* Pods_ScreenshotGenerator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ScreenshotGenerator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -3434,9 +3433,8 @@
 		9ACF992B1EBE172D006FC958 = {
 			isa = PBXGroup;
 			children = (
-				CA7A2F0222B0D451002AD939 /* Shared Kernel.xcodeproj */,
 				CA7A299322B02B46002AD939 /* Dangerfile */,
-				D6F3D21513FCE6CCDC157C6A /* .travis.yml */,
+				CA7A2F0222B0D451002AD939 /* Shared Kernel.xcodeproj */,
 				CACD2EA921D67C9A00BACD91 /* Application */,
 				CACD2EA821D67C8A00BACD91 /* Domain Model */,
 				164F3A1C0E53F6ADD4C20674 /* Frameworks */,
