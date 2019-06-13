@@ -6,6 +6,7 @@ struct Theme {
     private static let pantone330UColourImage = makePantone330UShadowImage()
 
     static func apply() {
+        styleSecondaryColorView()
         styleNavigationBars()
         styleTabBars()
         styleButtons()
@@ -15,6 +16,11 @@ struct Theme {
         styleSearchBars()
         styleTextFields()
         styleSegmentedControls()
+    }
+    
+    private static func styleSecondaryColorView() {
+        let secondaryColorView = ConventionSecondaryColorView.appearance()
+        secondaryColorView.backgroundColor = .pantone330U_45
     }
 
     private static func styleNavigationBars() {
@@ -50,10 +56,17 @@ struct Theme {
         let buttonsInsideNavigationBar = UIButton.appearance(whenContainedInInstancesOf: [UINavigationBar.self])
         buttonsInsideNavigationBar.tintColor = .white
     }
-
+    
     private static func styleTableViews() {
         let tableView = UITableView.appearance()
         tableView.sectionIndexColor = .pantone330U
+        
+        styleTableViewHeaders()
+    }
+    
+    private static func styleTableViewHeaders() {
+        let conventionTableViewHeaderLabel = UILabel.appearance(whenContainedInInstancesOf: [ConventionBrandedTableViewHeaderFooterView.self])
+        conventionTableViewHeaderLabel.textColor = .white
     }
 
     private static func styleTabBarItems() {

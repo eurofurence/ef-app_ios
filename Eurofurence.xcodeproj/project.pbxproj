@@ -172,6 +172,7 @@
 		CA162EA620A9B18E004AFED6 /* WhenLoggedOutDuringConvention_WithNoUpcomingEvents_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162EA520A9B18E004AFED6 /* WhenLoggedOutDuringConvention_WithNoUpcomingEvents_NewsInteractorShould.swift */; };
 		CA162EAA20AA1E6A004AFED6 /* WhenViewingMessagesWhenLoggedIn_BeforeSceneAppears.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162EA920AA1E6A004AFED6 /* WhenViewingMessagesWhenLoggedIn_BeforeSceneAppears.swift */; };
 		CA17015522B2DCC30067BCDE /* ConventionBrandedTableViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17015422B2DCC20067BCDE /* ConventionBrandedTableViewHeaderFooterView.swift */; };
+		CA17015722B2E5C40067BCDE /* ConventionSecondaryColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17015622B2E5C40067BCDE /* ConventionSecondaryColorView.swift */; };
 		CA17FE712056B070005A4C05 /* KnowledgeDetailPresenterTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE702056B070005A4C05 /* KnowledgeDetailPresenterTestBuilder.swift */; };
 		CA17FE732056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE722056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift */; };
 		CA17FE752056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE742056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift */; };
@@ -1207,6 +1208,7 @@
 		CA162EA520A9B18E004AFED6 /* WhenLoggedOutDuringConvention_WithNoUpcomingEvents_NewsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLoggedOutDuringConvention_WithNoUpcomingEvents_NewsInteractorShould.swift; sourceTree = "<group>"; };
 		CA162EA920AA1E6A004AFED6 /* WhenViewingMessagesWhenLoggedIn_BeforeSceneAppears.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenViewingMessagesWhenLoggedIn_BeforeSceneAppears.swift; sourceTree = "<group>"; };
 		CA17015422B2DCC20067BCDE /* ConventionBrandedTableViewHeaderFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConventionBrandedTableViewHeaderFooterView.swift; sourceTree = "<group>"; };
+		CA17015622B2E5C40067BCDE /* ConventionSecondaryColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConventionSecondaryColorView.swift; sourceTree = "<group>"; };
 		CA17FE702056B070005A4C05 /* KnowledgeDetailPresenterTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailPresenterTestBuilder.swift; sourceTree = "<group>"; };
 		CA17FE722056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenKnowledgeDetailSceneLoads.swift; sourceTree = "<group>"; };
 		CA17FE742056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubKnowledgeDetailSceneInteractor.swift; sourceTree = "<group>"; };
@@ -2460,11 +2462,11 @@
 		9ACF99591EBE32FE006FC958 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				CA17015422B2DCC20067BCDE /* ConventionBrandedTableViewHeaderFooterView.swift */,
 				78455B601F118685005BE2D7 /* Controls */,
 				9ACF99401EBE172D006FC958 /* LaunchScreen.storyboard */,
 				78455B4E1F117843005BE2D7 /* Presenters */,
 				78455B431F11777D005BE2D7 /* Routers */,
+				CA17015822B2E5D40067BCDE /* Themeing */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2727,6 +2729,15 @@
 				CA162EA520A9B18E004AFED6 /* WhenLoggedOutDuringConvention_WithNoUpcomingEvents_NewsInteractorShould.swift */,
 			);
 			path = "During Convention";
+			sourceTree = "<group>";
+		};
+		CA17015822B2E5D40067BCDE /* Themeing */ = {
+			isa = PBXGroup;
+			children = (
+				CA17015422B2DCC20067BCDE /* ConventionBrandedTableViewHeaderFooterView.swift */,
+				CA17015622B2E5C40067BCDE /* ConventionSecondaryColorView.swift */,
+			);
+			path = Themeing;
 			sourceTree = "<group>";
 		};
 		CA17FE762056B1AB005A4C05 /* Interactor */ = {
@@ -6113,6 +6124,7 @@
 				CA283A5A20E6E24300F7D195 /* ApplicationLongRunningTaskManager.swift in Sources */,
 				CABA439F1FD578E1009CB5B0 /* NewsModuleBuilder.swift in Sources */,
 				CA6EC4892051CD9C00402894 /* StoryboardKnowledgeDetailSceneFactory.swift in Sources */,
+				CA17015722B2E5C40067BCDE /* ConventionSecondaryColorView.swift in Sources */,
 				CA73AEF3201A08C4004E77BF /* KnowledgeListModule.swift in Sources */,
 				CA2761B620E0238F000E52AC /* CollectThemAllViewController.swift in Sources */,
 				CA1B6F3320DB9B4F00ADF414 /* DealerDetailSummaryTableViewCell.swift in Sources */,
