@@ -2370,7 +2370,12 @@
 			isa = PBXGroup;
 			children = (
 				CA7A299322B02B46002AD939 /* Dangerfile */,
-				CACD2EA921D67C9A00BACD91 /* Application */,
+				78CA0D0E1F0E57D5006DFD64 /* GoogleService-Info.plist */,
+				9ACF99361EBE172D006FC958 /* Eurofurence */,
+				9ACF994B1EBE172D006FC958 /* EurofurenceTests */,
+				78D7EEA21F17F40C005372A9 /* EurofurenceUITests */,
+				CA630BDD229F14F800754C27 /* EurofurenceIntentDefinitions */,
+				CA9845C81F2907A800E8821D /* ScreenshotGenerator */,
 				164F3A1C0E53F6ADD4C20674 /* Frameworks */,
 				2A4A738C931BBD9059F30151 /* Pods */,
 				9ACF99351EBE172D006FC958 /* Products */,
@@ -4723,19 +4728,6 @@
 				CABA43A81FD5DB55009CB5B0 /* View */,
 			);
 			path = News;
-			sourceTree = "<group>";
-		};
-		CACD2EA921D67C9A00BACD91 /* Application */ = {
-			isa = PBXGroup;
-			children = (
-				78CA0D0E1F0E57D5006DFD64 /* GoogleService-Info.plist */,
-				9ACF99361EBE172D006FC958 /* Eurofurence */,
-				9ACF994B1EBE172D006FC958 /* EurofurenceTests */,
-				78D7EEA21F17F40C005372A9 /* EurofurenceUITests */,
-				CA630BDD229F14F800754C27 /* EurofurenceIntentDefinitions */,
-				CA9845C81F2907A800E8821D /* ScreenshotGenerator */,
-			);
-			name = Application;
 			sourceTree = "<group>";
 		};
 		CACD2F0B21DF830300BACD91 /* Notification Content Adapter */ = {
