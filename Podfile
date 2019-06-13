@@ -1,16 +1,20 @@
 platform :ios, '10.0'
 inhibit_all_warnings!
 use_frameworks!
+workspace 'Eurofurence.xcworkspace'
 
 target :TestUtilities do
+  project 'Shared Kernel/Shared Kernel.xcodeproj'
   pod 'SwiftLint'
 end
 
 target :EventBus do
+  project 'Shared Kernel/Shared Kernel.xcodeproj'
   pod 'SwiftLint'
 end
 
 target :Eurofurence do
+  project 'Eurofurence.xcodeproj'
   plugin 'cocoapods-acknowledgements', :settings_bundle => true
   
   pod 'Crashlytics'
@@ -38,6 +42,7 @@ target :Eurofurence do
 end
 
 target :EurofurenceModel do
+  project 'Domain Model/Domain Model.xcodeproj'
   
   pod 'SwiftLint'
   
