@@ -54,7 +54,7 @@ class ScheduleViewController: UIViewController,
 
         navigationController?.delegate = navigationBarShadowDelegate
         tableView.register(EventTableViewCell.self)
-        tableView.register(Header.self, forHeaderFooterViewReuseIdentifier: Header.identifier)
+        tableView.registerConventionBrandedHeader()
         delegate?.scheduleSceneDidLoad()
     }
 
@@ -182,16 +182,6 @@ class ScheduleViewController: UIViewController,
         delegate?.scheduleSceneDidChangeSearchScopeToAllEvents()
     }
 
-    private class Header: UITableViewHeaderFooterView, ScheduleEventGroupHeader {
-
-        static let identifier = "Header"
-
-        func setEventGroupTitle(_ title: String) {
-            textLabel?.text = title
-        }
-
-    }
-
     private class TableController: NSObject, UITableViewDataSource, UITableViewDelegate {
 
         private let numberOfItemsPerSection: [Int]
@@ -213,8 +203,7 @@ class ScheduleViewController: UIViewController,
         }
 
         func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-            guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: Header.identifier) as? Header else { fatalError() }
-            
+            let header = tableView.dequeueConventionBrandedHeader()
             binder.bind(header, forGroupAt: section)
             return header
         }
@@ -293,4 +282,12 @@ class ScheduleViewController: UIViewController,
 
     }
 
+}
+
+extension ConventionBrandedTableViewHeaderFooterView: ScheduleEventGroupHeader {
+    
+    func setEventGroupTitle(_ title: String) {
+        textLabel?.text = title
+    }
+    
 }

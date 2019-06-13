@@ -37,7 +37,7 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
         tableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refreshControlValueDidChange), for: .valueChanged)
 
-        tableView.register(Header.self, forHeaderFooterViewReuseIdentifier: Header.identifier)
+        tableView.registerConventionBrandedHeader()
         tableView.register(DealerComponentTableViewCell.self)
         delegate?.dealersSceneDidLoad()
     }
@@ -106,16 +106,6 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
         delegate?.dealersSceneDidSelectDealerSearchResult(at: indexPath)
     }
 
-    private class Header: UITableViewHeaderFooterView, DealerGroupHeader {
-
-        static let identifier = "Header"
-
-        func setDealersGroupTitle(_ title: String) {
-            textLabel?.text = title
-        }
-
-    }
-
     private class TableController: NSObject, UITableViewDataSource, UITableViewDelegate {
 
         private let numberOfDealersPerSection: [Int]
@@ -148,7 +138,7 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
         }
 
         func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-            guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: Header.identifier) as? Header else { fatalError() }
+            let header = tableView.dequeueConventionBrandedHeader()
             
             binder.bind(header, toDealerGroupAt: section)
             return header
@@ -164,4 +154,12 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
 
     }
 
+}
+
+extension ConventionBrandedTableViewHeaderFooterView: DealerGroupHeader {
+    
+    func setDealersGroupTitle(_ title: String) {
+        textLabel?.text = title
+    }
+    
 }

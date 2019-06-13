@@ -24,8 +24,8 @@ class DealersSearchTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.register(Header.self, forHeaderFooterViewReuseIdentifier: Header.identifier)
         tableView.register(DealerComponentTableViewCell.self)
+        tableView.registerConventionBrandedHeader()
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -43,8 +43,7 @@ class DealersSearchTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: Header.identifier) as? Header else { fatalError() }
-        
+        let header = tableView.dequeueConventionBrandedHeader()
         binder?.bind(header, toDealerSearchResultGroupAt: section)
         return header
     }
@@ -55,18 +54,6 @@ class DealersSearchTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         onDidSelectSearchResultAtIndexPath?(indexPath)
-    }
-
-    // MARK: Private
-
-    private class Header: UITableViewHeaderFooterView, DealerGroupHeader {
-
-        static let identifier = "Header"
-
-        func setDealersGroupTitle(_ title: String) {
-            textLabel?.text = title
-        }
-
     }
 
 }
