@@ -26,6 +26,7 @@ def perform_basic_pr_checks
     warn("Please add a short summary about the change you have made in the Pull Request description") unless github.pr_body.length > 10
 
     # Prefer rebasing in-progress features onto the destination branch rather than polluting the history
+    
     if git.commits.any? { |c| c.message =~ /^Merge branch '#{github.branch_for_base}'/ }
         fail("Please rebase to get rid of the merge commits in this PR")
     end
