@@ -40,6 +40,7 @@ struct Theme {
         tabBar.tintColor = .white
         tabBar.backgroundImage = pantone330UColourImage
         tabBar.shadowImage = pantone330UColourImage
+        tabBar.unselectedItemTintColor = .pantone330U_45
     }
 
     private static func styleButtons() {
