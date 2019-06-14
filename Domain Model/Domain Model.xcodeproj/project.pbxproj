@@ -2025,6 +2025,7 @@
 				5B104192FC10B37B40A9316C /* [CP] Check Pods Manifest.lock */,
 				CA7A2F2622B16DA3002AD939 /* Headers */,
 				CA7A2F2722B16DA3002AD939 /* Sources */,
+				CA8950FA22B44DE200AF4875 /* SwiftLint */,
 				CA7A2F2822B16DA3002AD939 /* Frameworks */,
 				CA7A2F2922B16DA3002AD939 /* Resources */,
 			);
@@ -2043,6 +2044,7 @@
 			buildPhases = (
 				A9B32167C3D1C4FE65AAFAC0 /* [CP] Check Pods Manifest.lock */,
 				CA7A2F2F22B16DA3002AD939 /* Sources */,
+				CA8950FB22B4567500AF4875 /* SwiftLint */,
 				CA7A2F3022B16DA3002AD939 /* Frameworks */,
 				CA7A2F3122B16DA3002AD939 /* Resources */,
 			);
@@ -2062,6 +2064,7 @@
 			buildPhases = (
 				820C2373BCD6EE3CA63E5083 /* [CP] Check Pods Manifest.lock */,
 				CA7A325522B16E65002AD939 /* Sources */,
+				CA8950FC22B4568600AF4875 /* SwiftLint */,
 				CA7A325622B16E65002AD939 /* Frameworks */,
 				CA7A325722B16E65002AD939 /* Resources */,
 			);
@@ -2082,6 +2085,7 @@
 				6C645A95F36A96DFA8592A29 /* [CP] Check Pods Manifest.lock */,
 				CA7A326422B16E75002AD939 /* Headers */,
 				CA7A326522B16E75002AD939 /* Sources */,
+				CA8950FD22B4569C00AF4875 /* SwiftLint */,
 				CA7A326622B16E75002AD939 /* Frameworks */,
 				CA7A326722B16E75002AD939 /* Resources */,
 			);
@@ -2261,6 +2265,78 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		CA8950FA22B44DE200AF4875 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash\n\n\"${PODS_ROOT}/SwiftLint/swiftlint\" --path EurofurenceModel/ --config ../../.swiftlint.yml\n";
+		};
+		CA8950FB22B4567500AF4875 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash\n\n\"${PODS_ROOT}/SwiftLint/swiftlint\" --path EurofurenceModelTests/ --config ../../.swiftlint.yml\n";
+		};
+		CA8950FC22B4568600AF4875 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash\n\n\"${PODS_ROOT}/SwiftLint/swiftlint\" --path EurofurenceModelAdapterTests/ --config ../../.swiftlint.yml\n";
+		};
+		CA8950FD22B4569C00AF4875 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash\n\n\"${PODS_ROOT}/SwiftLint/swiftlint\" --path EurofurenceModelTestDoubles/ --config ../../.swiftlint.yml\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
