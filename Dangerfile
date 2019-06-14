@@ -9,7 +9,7 @@ declared_trivial = github.pr_title.include? "#trivial"
 # --- Branching Strategy
 
 def catch_branching_strategy_violations
-    failure("Features should be based from, and merged into, release branches") unless github.branch_for_base.include? "release"
+    failure("Please rebase to get rid of the merge commits in this PR") unless github.branch_for_base.include? "release"
 end
 
 # --- Basic PR Checks
@@ -22,8 +22,8 @@ def perform_basic_pr_checks
         warn("PR is classed as Work in Progress")
     end
 
-    warn("This Pull Request is pretty big. Consider breaking the work down into smaller changes next time") if git.lines_of_code > 500
-    warn("Please add a short summary about the change you have made in the Pull Request description") unless github.pr_body.length > 10
+    warn("This PR is pretty big. Consider breaking the change down into smaller slices") if git.lines_of_code > 500
+    warn("Please add a short summary about the change you have made in the PR description") unless github.pr_body.length > 10
 
     # Prefer rebasing in-progress features onto the destination branch rather than polluting the history
     
@@ -46,11 +46,16 @@ end
 
 def catch_untested_code
     if is_dir_modified("Eurofurence") && !is_dir_modified("EurofurenceTests")
-        warn("The app was modified but no tests were changed. Make sure new behaviour is documented with tests. If you were refactoring or working in the view tier then ignore this message")
+        warn("The app was modified but no tests were changed")
     end
 
-    if is_dir_modified("EurofurenceModel") && !is_dir_modified("EurofurenceModelTests")
-        warn("The model was modified but no tests were changed. Make sure new behaviour is documented with tests. If you were refactoring then ignore this message")
+    model_tests_changed = is_dir_modified("EurofurenceModelTests")
+    if is_dir_modified("EurofurenceModel") && !model_tests_changed
+        warn("The model was modified but it's tests weren't. Unless this change is a refactor, please backfill tests for behavioural changes")
+    end
+    
+    if model_tests_changed && !is_dir_modified("EurofurenceModelTestDoubles")
+        message("If any API contracts have changed, make sure to update the corresponding test doubles")
     end
 end
 
@@ -63,11 +68,11 @@ def perform_swift_code_review_on_file(file)
     filelines.each_with_index do |line, index|
 
         if line.include?("override") and line.include?("func") and filelines[index+1].include?("super") and filelines[index+2].include?("}")
-            warn("Override methods which only call super can be removed", file: file, line: index+3)
+            warn("Override methods which only call super can be removed", file: file, line: index+1)
         end
 
         if line =~ /^\/\/([^\/]|$)/ and !line.include?("MARK:") and !line.include?("swiftlint")
-            warn("Comments should be avoided - express intent in proper names and functions", file: file, line: index + 1)
+            warn("Comments should be avoided in favour of expressing intent in code", file: file, line: index + 1)
         end
 
         if line =~ /.text = \"(.)+/ || line =~ /setTitle\(\"(.)+/
