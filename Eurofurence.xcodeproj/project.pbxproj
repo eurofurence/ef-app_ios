@@ -714,8 +714,6 @@
 		CA79924F22451DFA00DF1F84 /* FakeHoursDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA0F7B216D370600B0C7A6 /* FakeHoursDateFormatter.swift */; };
 		CA7A298922AD2A5F002AD939 /* WhenEventFeedbackSceneCancelsFeedback_WithFeedbackEntered_EventFeedbackPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A298822AD2A5F002AD939 /* WhenEventFeedbackSceneCancelsFeedback_WithFeedbackEntered_EventFeedbackPresenterShould.swift */; };
 		CA7A298B22AD2CE8002AD939 /* WhenUserAcknowledgesTheyWantToDiscardFeedbackInput_EventFeedbackPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A298A22AD2CE8002AD939 /* WhenUserAcknowledgesTheyWantToDiscardFeedbackInput_EventFeedbackPresenterShould.swift */; };
-		CA7A32F822B179D8002AD939 /* EurofurenceModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A32F722B179D8002AD939 /* EurofurenceModel.framework */; };
-		CA7A32FA22B179D8002AD939 /* EventBus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A32F922B179D8002AD939 /* EventBus.framework */; };
 		CA7A32FC22B17A21002AD939 /* EurofurenceModelTestDoubles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A32FB22B17A21002AD939 /* EurofurenceModelTestDoubles.framework */; };
 		CA7BA2372237FCFB00D34592 /* SystemNetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF96CF01F1495F400EE6134 /* SystemNetworkReachability.swift */; };
 		CA7BA2382237FCFB00D34592 /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A861EBB1F25551400B75A8C /* NetworkReachability.swift */; };
@@ -738,6 +736,10 @@
 		CA8276B3204EC013006A7419 /* ApplicationPreloadInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8276B2204EC013006A7419 /* ApplicationPreloadInteractor.swift */; };
 		CA8276B6204EC026006A7419 /* CapturingPreloadInteractorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8276B5204EC026006A7419 /* CapturingPreloadInteractorDelegate.swift */; };
 		CA8276BC204F25DF006A7419 /* InOrderToSupportSyncKnowledgeListLoading_KnowledgeListPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8276BB204F25DF006A7419 /* InOrderToSupportSyncKnowledgeListLoading_KnowledgeListPresenterShould.swift */; };
+		CA8950F122B43CE300AF4875 /* EurofurenceModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A32F722B179D8002AD939 /* EurofurenceModel.framework */; };
+		CA8950F222B43CE300AF4875 /* EurofurenceModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A32F722B179D8002AD939 /* EurofurenceModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CA8950F322B43D0500AF4875 /* EventBus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A32F922B179D8002AD939 /* EventBus.framework */; };
+		CA8950F422B43D0500AF4875 /* EventBus.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A32F922B179D8002AD939 /* EventBus.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CA89CBA6207F7F5400570D54 /* FakeNewsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89CBA5207F7F5400570D54 /* FakeNewsInteractor.swift */; };
 		CA89CBA9207F7F9A00570D54 /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89CBA8207F7F9A00570D54 /* NewsViewModel.swift */; };
 		CA89CBAB207F7FE900570D54 /* NewsViewModel+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89CBAA207F7FE900570D54 /* NewsViewModel+RandomValueProviding.swift */; };
@@ -991,6 +993,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				CA8950F222B43CE300AF4875 /* EurofurenceModel.framework in Embed Frameworks */,
+				CA8950F422B43D0500AF4875 /* EventBus.framework in Embed Frameworks */,
 				CA630BE4229F14F800754C27 /* EurofurenceIntentDefinitions.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -2004,9 +2008,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA7A32F822B179D8002AD939 /* EurofurenceModel.framework in Frameworks */,
-				CA7A32FA22B179D8002AD939 /* EventBus.framework in Frameworks */,
+				CA8950F322B43D0500AF4875 /* EventBus.framework in Frameworks */,
 				CA66C01E2124C6D800F87AFE /* StoreKit.framework in Frameworks */,
+				CA8950F122B43CE300AF4875 /* EurofurenceModel.framework in Frameworks */,
 				CA630BE3229F14F800754C27 /* EurofurenceIntentDefinitions.framework in Frameworks */,
 				FE96E1AC111F9B9033F014ED /* Pods_Eurofurence.framework in Frameworks */,
 			);
