@@ -3,7 +3,7 @@ reporter: "xcode"
 excluded:
   - DerivedData
   - Pods
-  - "EurofurenceModel/Public/Default Dependency Implementations/Core Data Store/Model Adaptation/*.swift"
+  - "Domain Model/EurofurenceModel/Public/Default Dependency Implementations/Core Data Store/Model Adaptation/*.swift"
 
 disabled_rules:
   - identifier_name
