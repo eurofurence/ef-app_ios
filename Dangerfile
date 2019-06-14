@@ -91,6 +91,8 @@ def perform_swift_code_review
 
         perform_swift_code_review_on_file(file)
     end
+
+    swiftlint.lint_files
 end
 
 # ---
