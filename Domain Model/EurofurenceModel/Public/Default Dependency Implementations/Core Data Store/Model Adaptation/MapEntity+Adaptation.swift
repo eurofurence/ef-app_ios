@@ -10,10 +10,14 @@ extension MapEntity: EntityAdapting {
 
     func asAdaptedType() -> MapCharacteristics {
         let entries = ((self.entries as? Set<MapEntryEntity>) ?? Set())
-        return MapCharacteristics(identifier: identifier!,
-                      imageIdentifier: imageIdentifier!,
-                      mapDescription: mapDescription!,
-                      entries: entries.map({ $0.asAdaptedType() }))
+        guard let identifier = identifier, let imageIdentifier = imageIdentifier, let mapDescription = mapDescription else {
+            abandonDueToInconsistentState()
+        }
+        
+        return MapCharacteristics(identifier: identifier,
+                                  imageIdentifier: imageIdentifier,
+                                  mapDescription: mapDescription,
+                                  entries: entries.map({ $0.asAdaptedType() }))
     }
 
     func consumeAttributes(from value: MapCharacteristics) {
@@ -35,10 +39,10 @@ extension MapEntryEntity: EntityAdapting {
     func asAdaptedType() -> MapCharacteristics.Entry {
         let links = ((self.links as? Set<MapEntryLinkEntity>) ?? Set())
         return MapCharacteristics.Entry(identifier: identifier.defaultingTo(""),
-                            x: Int(x),
-                            y: Int(y),
-                            tapRadius: Int(tapRadius),
-                            links: links.map({ $0.asAdaptedType() }))
+                                        x: Int(x),
+                                        y: Int(y),
+                                        tapRadius: Int(tapRadius),
+                                        links: links.map({ $0.asAdaptedType() }))
     }
 
     func consumeAttributes(from value: MapCharacteristics.Entry) {
@@ -59,9 +63,13 @@ extension MapEntryLinkEntity: EntityAdapting {
     }
 
     func asAdaptedType() -> MapCharacteristics.Entry.Link {
-        return MapCharacteristics.Entry.Link(type: MapCharacteristics.Entry.Link.FragmentType(rawValue: Int(type))!,
-                                 name: name,
-                                 target: target!)
+        guard let type = MapCharacteristics.Entry.Link.FragmentType(rawValue: Int(type)), let target = target else {
+            abandonDueToInconsistentState()
+        }
+        
+        return MapCharacteristics.Entry.Link(type: type,
+                                             name: name,
+                                             target: target)
     }
 
     func consumeAttributes(from value: MapCharacteristics.Entry.Link) {

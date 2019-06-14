@@ -9,7 +9,11 @@ extension ConferenceDayEntity: EntityAdapting {
     }
 
     func asAdaptedType() -> ConferenceDayCharacteristics {
-        return ConferenceDayCharacteristics(identifier: identifier!, date: date!)
+        guard let identifier = identifier, let date = date else {
+            abandonDueToInconsistentState()
+        }
+        
+        return ConferenceDayCharacteristics(identifier: identifier, date: date)
     }
 
     func consumeAttributes(from value: ConferenceDayCharacteristics) {

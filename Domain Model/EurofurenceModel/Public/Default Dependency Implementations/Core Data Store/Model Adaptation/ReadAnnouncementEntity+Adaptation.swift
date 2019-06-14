@@ -9,7 +9,11 @@ extension ReadAnnouncementEntity: EntityAdapting {
     }
 
     func asAdaptedType() -> AnnouncementIdentifier {
-        return AnnouncementIdentifier(announcementIdentifier!)
+        guard let announcementIdentifier = announcementIdentifier else {
+            abandonDueToInconsistentState()
+        }
+        
+        return AnnouncementIdentifier(announcementIdentifier)
     }
 
     func consumeAttributes(from value: AnnouncementIdentifier) {

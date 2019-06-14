@@ -9,3 +9,11 @@ protocol EntityAdapting {
     func consumeAttributes(from value: AdaptedType)
 
 }
+
+extension EntityAdapting {
+    
+    func abandonDueToInconsistentState() -> Never {
+        fatalError("Entity in an inconsistent state - \(self)")
+    }
+    
+}

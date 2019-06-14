@@ -9,7 +9,11 @@ extension RoomEntity: EntityAdapting {
     }
 
     func asAdaptedType() -> RoomCharacteristics {
-        return RoomCharacteristics(identifier: identifier!, name: name!)
+        guard let identifier = identifier, let name = name else {
+            abandonDueToInconsistentState()
+        }
+        
+        return RoomCharacteristics(identifier: identifier, name: name)
     }
 
     func consumeAttributes(from value: RoomCharacteristics) {

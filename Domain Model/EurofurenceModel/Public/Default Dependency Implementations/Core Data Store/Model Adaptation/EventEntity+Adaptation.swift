@@ -9,21 +9,34 @@ extension EventEntity: EntityAdapting {
     }
 
     func asAdaptedType() -> EventCharacteristics {
-        return EventCharacteristics(identifier: identifier!,
-                        roomIdentifier: roomIdentifier!,
-                        trackIdentifier: trackIdentifier!,
-                        dayIdentifier: dayIdentifier!,
-                        startDateTime: startDateTime! as Date,
-                        endDateTime: endDateTime! as Date,
-                        title: title!,
-                        subtitle: subtitle.defaultingTo(""),
-                        abstract: abstract!,
-                        panelHosts: panelHosts!,
-                        eventDescription: eventDescription!,
-                        posterImageId: posterImageId,
-                        bannerImageId: bannerImageId,
-                        tags: tags,
-                        isAcceptingFeedback: isAcceptingFeedback)
+        guard let identifier = identifier,
+              let roomIdentifier = roomIdentifier,
+              let trackIdentifier = trackIdentifier,
+              let dayIdentifier = dayIdentifier,
+              let startDateTime = startDateTime,
+              let endDateTime = endDateTime,
+              let title = title,
+              let abstract = abstract,
+              let panelHosts = panelHosts,
+              let eventDescription = eventDescription else {
+            abandonDueToInconsistentState()
+        }
+        
+        return EventCharacteristics(identifier: identifier,
+                                    roomIdentifier: roomIdentifier,
+                                    trackIdentifier: trackIdentifier,
+                                    dayIdentifier: dayIdentifier,
+                                    startDateTime: startDateTime as Date,
+                                    endDateTime: endDateTime as Date,
+                                    title: title,
+                                    subtitle: subtitle.defaultingTo(""),
+                                    abstract: abstract,
+                                    panelHosts: panelHosts,
+                                    eventDescription: eventDescription,
+                                    posterImageId: posterImageId,
+                                    bannerImageId: bannerImageId,
+                                    tags: tags,
+                                    isAcceptingFeedback: isAcceptingFeedback)
     }
 
     func consumeAttributes(from value: EventCharacteristics) {
