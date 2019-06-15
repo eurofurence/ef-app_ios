@@ -128,11 +128,8 @@ public extension String {
     static let dealers = NSLocalizedString("Dealers",
                                            comment: "Title for the view that shows the dealers listed in the dealers den during the convention")
     
-    static let conventionInformation = NSLocalizedString("ConventionInformation",
-                                                         comment: "Title for the view showing all the categorised convention information")
-    
     static let information = NSLocalizedString("Information",
-                                               comment: "Tab bar item title for the view showing all the categoried convention information")
+                                               comment: "Title for the view showing all the categoried convention information")
     
     static let announcement = NSLocalizedString("Announcement",
                                                 comment: "Title for the view showing detailed information for an announcement")
