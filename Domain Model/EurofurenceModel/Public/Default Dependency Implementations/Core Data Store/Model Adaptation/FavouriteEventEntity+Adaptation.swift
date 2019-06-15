@@ -9,7 +9,11 @@ extension FavouriteEventEntity: EntityAdapting {
     }
 
     func asAdaptedType() -> EventIdentifier {
-        return EventIdentifier(eventIdentifier!)
+        guard let eventIdentifier = eventIdentifier else {
+            abandonDueToInconsistentState()
+        }
+        
+        return EventIdentifier(eventIdentifier)
     }
 
     func consumeAttributes(from value: EventIdentifier) {

@@ -9,11 +9,15 @@ extension KnowledgeGroupEntity: EntityAdapting {
     }
 
     func asAdaptedType() -> KnowledgeGroupCharacteristics {
-        return KnowledgeGroupCharacteristics(identifier: identifier!,
-                                 order: Int(order),
-                                 groupName: groupName!,
-                                 groupDescription: groupDescription!,
-                                 fontAwesomeCharacterAddress: fontAwesomeCharacterAddress ?? "")
+        guard let identifier = identifier, let groupName = groupName, let groupDescription = groupDescription else {
+            abandonDueToInconsistentState()
+        }
+        
+        return KnowledgeGroupCharacteristics(identifier: identifier,
+                                             order: Int(order),
+                                             groupName: groupName,
+                                             groupDescription: groupDescription,
+                                             fontAwesomeCharacterAddress: fontAwesomeCharacterAddress ?? "")
     }
 
     func consumeAttributes(from value: KnowledgeGroupCharacteristics) {

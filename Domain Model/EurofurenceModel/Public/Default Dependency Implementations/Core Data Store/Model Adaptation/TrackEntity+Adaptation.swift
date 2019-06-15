@@ -9,7 +9,11 @@ extension TrackEntity: EntityAdapting {
     }
 
     func asAdaptedType() -> TrackCharacteristics {
-        return TrackCharacteristics(identifier: identifier!, name: name!)
+        guard let identifier = identifier, let name = name else {
+            abandonDueToInconsistentState()
+        }
+        
+        return TrackCharacteristics(identifier: identifier, name: name)
     }
 
     func consumeAttributes(from value: TrackCharacteristics) {

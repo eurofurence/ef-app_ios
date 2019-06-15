@@ -7,27 +7,39 @@ extension DealerEntity: EntityAdapting {
     static func makeIdentifyingPredicate(for model: DealerCharacteristics) -> NSPredicate {
         return NSPredicate(format: "identifier == %@", model.identifier)
     }
-
+    
     func asAdaptedType() -> DealerCharacteristics {
         let linksArray = (links?.allObjects as? [LinkEntity])?.map({ $0.asAdaptedType() })
-        return DealerCharacteristics(identifier: identifier!,
-                         displayName: displayName!,
-                         attendeeNickname: attendeeNickname!,
-                         attendsOnThursday: attendsOnThursday,
-                         attendsOnFriday: attendsOnFriday,
-                         attendsOnSaturday: attendsOnSaturday,
-                         isAfterDark: isAfterDark,
-                         artistThumbnailImageId: artistThumbnailImageId,
-                         artistImageId: artistImageId,
-                         artPreviewImageId: artPreviewImageId,
-                         categories: categories.defaultingTo(.empty),
-                         shortDescription: dealerShortDescription!,
-                         links: linksArray?.sorted(),
-                         twitterHandle: twitterHandle!,
-                         telegramHandle: telegramHandle!,
-                         aboutTheArtistText: aboutTheArtist!,
-                         aboutTheArtText: aboutTheArtText!,
-                         artPreviewCaption: artPreviewCaption!)
+        guard let identifier = identifier,
+              let displayName = displayName,
+              let attendeeNickname = attendeeNickname,
+              let dealerShortDescription = dealerShortDescription,
+              let twitterHandle = twitterHandle,
+              let telegramHandle = telegramHandle,
+              let aboutTheArtist = aboutTheArtist,
+              let aboutTheArtText = aboutTheArtText,
+              let artPreviewCaption = artPreviewCaption else {
+            abandonDueToInconsistentState()
+        }
+        
+        return DealerCharacteristics(identifier: identifier,
+                                     displayName: displayName,
+                                     attendeeNickname: attendeeNickname,
+                                     attendsOnThursday: attendsOnThursday,
+                                     attendsOnFriday: attendsOnFriday,
+                                     attendsOnSaturday: attendsOnSaturday,
+                                     isAfterDark: isAfterDark,
+                                     artistThumbnailImageId: artistThumbnailImageId,
+                                     artistImageId: artistImageId,
+                                     artPreviewImageId: artPreviewImageId,
+                                     categories: categories.defaultingTo(.empty),
+                                     shortDescription: dealerShortDescription,
+                                     links: linksArray?.sorted(),
+                                     twitterHandle: twitterHandle,
+                                     telegramHandle: telegramHandle,
+                                     aboutTheArtistText: aboutTheArtist,
+                                     aboutTheArtText: aboutTheArtText,
+                                     artPreviewCaption: artPreviewCaption)
     }
 
     func consumeAttributes(from value: DealerCharacteristics) {

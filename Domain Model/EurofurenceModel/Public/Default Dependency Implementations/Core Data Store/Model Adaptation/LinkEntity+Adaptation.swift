@@ -9,9 +9,14 @@ extension LinkEntity: EntityAdapting {
     }
 
     func asAdaptedType() -> LinkCharacteristics {
-        return LinkCharacteristics(name: name!,
-                       fragmentType: LinkCharacteristics.FragmentType(rawValue: Int(fragmentType))!,
-                       target: target!)
+        guard let name = name,
+              let fragmentType = LinkCharacteristics.FragmentType(rawValue: Int(fragmentType)),
+              let target = target else {
+            abandonDueToInconsistentState()
+        }
+        return LinkCharacteristics(name: name,
+                                   fragmentType: fragmentType,
+                                   target: target)
     }
 
     func consumeAttributes(from value: LinkCharacteristics) {

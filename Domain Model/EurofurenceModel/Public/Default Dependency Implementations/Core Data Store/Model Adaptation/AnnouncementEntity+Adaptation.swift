@@ -9,11 +9,18 @@ extension AnnouncementEntity: EntityAdapting {
     }
 
     func asAdaptedType() -> AnnouncementCharacteristics {
-        return AnnouncementCharacteristics(identifier: identifier!,
-                               title: title!,
-                               content: content!,
-                               lastChangedDateTime: lastChangedDateTime! as Date,
-                               imageIdentifier: imageIdentifier)
+        guard let identifier = identifier,
+              let title = title,
+              let content = content,
+              let lastChangedDateTime = lastChangedDateTime else {
+            abandonDueToInconsistentState()
+        }
+        
+        return AnnouncementCharacteristics(identifier: identifier,
+                                           title: title,
+                                           content: content,
+                                           lastChangedDateTime: lastChangedDateTime as Date,
+                                           imageIdentifier: imageIdentifier)
     }
 
     func consumeAttributes(from value: AnnouncementCharacteristics) {
