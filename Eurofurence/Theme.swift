@@ -29,8 +29,12 @@ struct Theme {
         navigationBar.barTintColor = .pantone330U
         navigationBar.tintColor = .white
         navigationBar.titleTextAttributes = whiteTextAttributes
-        navigationBar.setBackgroundImage(pantone330UColourImage, for: .default)
         navigationBar.shadowImage = pantone330UColourImage
+        
+        if #available(iOS 11.0, *) {
+            navigationBar.prefersLargeTitles = true
+            navigationBar.largeTitleTextAttributes = whiteTextAttributes
+        }
     }
 
     private static func styleTabBars() {
