@@ -9,7 +9,7 @@ class ScheduleViewController: UIViewController,
     // MARK: Properties
 
     @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet private weak var daysCollectionView: UICollectionView!
+    @IBOutlet private weak var daysHorizontalPickerView: DaysHorizontalPickerView!
     private let refreshControl = UIRefreshControl(frame: .zero)
     private lazy var navigationBarShadowDelegate = HideNavigationBarShadowForSpecificViewControllerDelegate(viewControllerToHideNavigationBarShadow: self)
 
@@ -18,13 +18,6 @@ class ScheduleViewController: UIViewController,
             tableView.dataSource = tableController
             tableView.delegate = tableController
             tableView.reloadData()
-        }
-    }
-
-    private var daysController: DaysController? {
-        didSet {
-            daysCollectionView.dataSource = daysController
-            daysCollectionView.delegate = daysController
         }
     }
 
@@ -51,8 +44,6 @@ class ScheduleViewController: UIViewController,
 
         tableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refreshControlDidChangeValue), for: .valueChanged)
-        
-        daysCollectionView.register(ScheduleDayCollectionViewCell.self)
 
         navigationController?.delegate = navigationBarShadowDelegate
         tableView.register(EventTableViewCell.self)
@@ -118,7 +109,7 @@ class ScheduleViewController: UIViewController,
     }
 
     func bind(numberOfDays: Int, using binder: ScheduleDaysBinder) {
-        daysController = DaysController(numberOfDays: numberOfDays, binder: binder, onDaySelected: dayPickerDidSelectDay)
+        daysHorizontalPickerView.bind(numberOfDays: numberOfDays, using: binder)
     }
 
     func bind(numberOfItemsPerSection: [Int], using binder: ScheduleSceneBinder) {
@@ -140,9 +131,7 @@ class ScheduleViewController: UIViewController,
     }
 
     func selectDay(at index: Int) {
-        daysCollectionView.selectItem(at: IndexPath(item: index, section: 0),
-                                      animated: true,
-                                      scrollPosition: .centeredHorizontally)
+        daysHorizontalPickerView.selectDay(at: index)
     }
 
     func deselectEvent(at indexPath: IndexPath) {
@@ -176,7 +165,7 @@ class ScheduleViewController: UIViewController,
     }
 
     private func layoutDaysCollectionView() {
-        daysCollectionView?.collectionViewLayout.invalidateLayout()
+        daysHorizontalPickerView?.forceLayout()
     }
 
     private func resetSearchSceneForSearchingAllEvents() {

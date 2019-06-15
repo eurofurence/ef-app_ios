@@ -567,6 +567,7 @@
 		CA65A87F209B7CA200B72533 /* WhenLoggedInBeforeConvention_ThenLogOut_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA65A87E209B7CA200B72533 /* WhenLoggedInBeforeConvention_ThenLogOut_NewsInteractorShould.swift */; };
 		CA65A881209B7E1000B72533 /* WhenLoggedInBeforeConvention_ThenPersonalMessageIsReceived_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA65A880209B7E1000B72533 /* WhenLoggedInBeforeConvention_ThenPersonalMessageIsReceived_NewsInteractorShould.swift */; };
 		CA66609E22B59BCF0050A04E /* ScheduleDayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA66609D22B59BCF0050A04E /* ScheduleDayCollectionViewCell.xib */; };
+		CA6660A022B5A8DE0050A04E /* DaysHorizontalPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA66609F22B5A8DE0050A04E /* DaysHorizontalPickerView.swift */; };
 		CA66C0142124A24900F87AFE /* ReviewPromptAppVersionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA66C0132124A24900F87AFE /* ReviewPromptAppVersionRepository.swift */; };
 		CA66C0162124A25400F87AFE /* FakeReviewPromptAppVersionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA66C0152124A25400F87AFE /* FakeReviewPromptAppVersionRepository.swift */; };
 		CA66C0182124C58700F87AFE /* UserDefaultsReviewPromptAppVersionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA66C0172124C58700F87AFE /* UserDefaultsReviewPromptAppVersionRepository.swift */; };
@@ -1608,6 +1609,7 @@
 		CA65A87E209B7CA200B72533 /* WhenLoggedInBeforeConvention_ThenLogOut_NewsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLoggedInBeforeConvention_ThenLogOut_NewsInteractorShould.swift; sourceTree = "<group>"; };
 		CA65A880209B7E1000B72533 /* WhenLoggedInBeforeConvention_ThenPersonalMessageIsReceived_NewsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLoggedInBeforeConvention_ThenPersonalMessageIsReceived_NewsInteractorShould.swift; sourceTree = "<group>"; };
 		CA66609D22B59BCF0050A04E /* ScheduleDayCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleDayCollectionViewCell.xib; sourceTree = "<group>"; };
+		CA66609F22B5A8DE0050A04E /* DaysHorizontalPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysHorizontalPickerView.swift; sourceTree = "<group>"; };
 		CA66C0132124A24900F87AFE /* ReviewPromptAppVersionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPromptAppVersionRepository.swift; sourceTree = "<group>"; };
 		CA66C0152124A25400F87AFE /* FakeReviewPromptAppVersionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeReviewPromptAppVersionRepository.swift; sourceTree = "<group>"; };
 		CA66C0172124C58700F87AFE /* UserDefaultsReviewPromptAppVersionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsReviewPromptAppVersionRepository.swift; sourceTree = "<group>"; };
@@ -3728,6 +3730,7 @@
 				CA00AE8C20D2925500C2FBB0 /* ScheduleDayCollectionViewCell.swift */,
 				CA250DD920D6E5FD00E7513C /* ScheduleSearchTableViewController.swift */,
 				CA63759D208DFE0500536BE2 /* ScheduleViewController.swift */,
+				CA66609F22B5A8DE0050A04E /* DaysHorizontalPickerView.swift */,
 				CA63759F208DFE2E00536BE2 /* StoryboardEventsSceneFactory.swift */,
 			);
 			path = UIKit;
@@ -5771,6 +5774,7 @@
 				CACF1E5A20AE2DFB00D904B5 /* EventDetailScene.swift in Sources */,
 				CACF1E7C20B212A800D904B5 /* EventDetailBinder.swift in Sources */,
 				CA630C0B22A06A7B00754C27 /* NavigateToContentResumeInteractionResponseHandler.swift in Sources */,
+				CA6660A022B5A8DE0050A04E /* DaysHorizontalPickerView.swift in Sources */,
 				CAEAEC011FE0054500C0EE7C /* MessageDetailModuleFactory.swift in Sources */,
 				CA630C5122A079E100754C27 /* Intents.intentdefinition in Sources */,
 				CA9845DE1F2B01BA00E8821D /* UnreadMessageIndicator.swift in Sources */,
