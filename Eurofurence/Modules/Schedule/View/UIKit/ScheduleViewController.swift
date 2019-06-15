@@ -51,6 +51,8 @@ class ScheduleViewController: UIViewController,
 
         tableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refreshControlDidChangeValue), for: .valueChanged)
+        
+        daysCollectionView.register(ScheduleDayCollectionViewCell.self)
 
         navigationController?.delegate = navigationBarShadowDelegate
         tableView.register(EventTableViewCell.self)

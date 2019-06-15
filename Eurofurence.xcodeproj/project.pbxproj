@@ -566,6 +566,7 @@
 		CA65A87D209B2F6A00B72533 /* WhenLoggedOutBeforeConvention_ThenLogIn_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA65A87C209B2F6A00B72533 /* WhenLoggedOutBeforeConvention_ThenLogIn_NewsInteractorShould.swift */; };
 		CA65A87F209B7CA200B72533 /* WhenLoggedInBeforeConvention_ThenLogOut_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA65A87E209B7CA200B72533 /* WhenLoggedInBeforeConvention_ThenLogOut_NewsInteractorShould.swift */; };
 		CA65A881209B7E1000B72533 /* WhenLoggedInBeforeConvention_ThenPersonalMessageIsReceived_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA65A880209B7E1000B72533 /* WhenLoggedInBeforeConvention_ThenPersonalMessageIsReceived_NewsInteractorShould.swift */; };
+		CA66609E22B59BCF0050A04E /* ScheduleDayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA66609D22B59BCF0050A04E /* ScheduleDayCollectionViewCell.xib */; };
 		CA66C0142124A24900F87AFE /* ReviewPromptAppVersionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA66C0132124A24900F87AFE /* ReviewPromptAppVersionRepository.swift */; };
 		CA66C0162124A25400F87AFE /* FakeReviewPromptAppVersionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA66C0152124A25400F87AFE /* FakeReviewPromptAppVersionRepository.swift */; };
 		CA66C0182124C58700F87AFE /* UserDefaultsReviewPromptAppVersionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA66C0172124C58700F87AFE /* UserDefaultsReviewPromptAppVersionRepository.swift */; };
@@ -1606,6 +1607,7 @@
 		CA65A87C209B2F6A00B72533 /* WhenLoggedOutBeforeConvention_ThenLogIn_NewsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLoggedOutBeforeConvention_ThenLogIn_NewsInteractorShould.swift; sourceTree = "<group>"; };
 		CA65A87E209B7CA200B72533 /* WhenLoggedInBeforeConvention_ThenLogOut_NewsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLoggedInBeforeConvention_ThenLogOut_NewsInteractorShould.swift; sourceTree = "<group>"; };
 		CA65A880209B7E1000B72533 /* WhenLoggedInBeforeConvention_ThenPersonalMessageIsReceived_NewsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLoggedInBeforeConvention_ThenPersonalMessageIsReceived_NewsInteractorShould.swift; sourceTree = "<group>"; };
+		CA66609D22B59BCF0050A04E /* ScheduleDayCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleDayCollectionViewCell.xib; sourceTree = "<group>"; };
 		CA66C0132124A24900F87AFE /* ReviewPromptAppVersionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPromptAppVersionRepository.swift; sourceTree = "<group>"; };
 		CA66C0152124A25400F87AFE /* FakeReviewPromptAppVersionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeReviewPromptAppVersionRepository.swift; sourceTree = "<group>"; };
 		CA66C0172124C58700F87AFE /* UserDefaultsReviewPromptAppVersionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsReviewPromptAppVersionRepository.swift; sourceTree = "<group>"; };
@@ -3720,6 +3722,7 @@
 			isa = PBXGroup;
 			children = (
 				CA63759B208DFDF900536BE2 /* Schedule.storyboard */,
+				CA66609D22B59BCF0050A04E /* ScheduleDayCollectionViewCell.xib */,
 				CA52C69820D6B87E009D3A9E /* HideNavigationBarShadowForSpecificViewControllerDelegate.swift */,
 				CA08157720D3865600F750D4 /* NavigationBarViewExtensionContainer.swift */,
 				CA00AE8C20D2925500C2FBB0 /* ScheduleDayCollectionViewCell.swift */,
@@ -5457,6 +5460,7 @@
 				CA283ACF20EAC18500F7D195 /* AnnouncementTableViewCell.xib in Resources */,
 				CA6EC4872051CD8F00402894 /* KnowledgeDetail.storyboard in Resources */,
 				9ACF993F1EBE172D006FC958 /* Assets.xcassets in Resources */,
+				CA66609E22B59BCF0050A04E /* ScheduleDayCollectionViewCell.xib in Resources */,
 				CA72843D209CF07A007D912A /* Localizable.stringsdict in Resources */,
 				CACF1E6420AE2F7B00D904B5 /* EventDetail.storyboard in Resources */,
 				CAEAEC061FE06F2800C0EE7C /* MessageDetail.storyboard in Resources */,
