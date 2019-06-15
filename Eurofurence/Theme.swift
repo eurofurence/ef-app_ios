@@ -16,6 +16,7 @@ struct Theme {
         styleSearchBars()
         styleTextFields()
         styleSegmentedControls()
+        styleRefreshControls()
     }
     
     private static func styleSecondaryColorView() {
@@ -112,6 +113,11 @@ struct Theme {
     private static func styleSegmentedControls() {
         let segmentControl = UISegmentedControl.appearance()
         segmentControl.tintColor = .white
+    }
+    
+    private static func styleRefreshControls() {
+        let refreshControl = UIRefreshControl.appearance()
+        refreshControl.tintColor = .pantone330U_13
     }
 
     private static func makePantone330UShadowImage() -> UIImage {
