@@ -35,6 +35,8 @@ struct Theme {
         if #available(iOS 11.0, *) {
             navigationBar.prefersLargeTitles = true
             navigationBar.largeTitleTextAttributes = whiteTextAttributes
+        } else {
+            navigationBar.setBackgroundImage(pantone330UColourImage, for: .default)
         }
     }
 
