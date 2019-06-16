@@ -3,7 +3,7 @@ import UIKit
 struct Theme {
 
     private static let whiteTextAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.white]
-    private static let pantone330UColourImage = makePantone330UShadowImage()
+    private static let pantone330UColourImage = UIColor.pantone330U.makeColoredImage(size: CGSize(width: 1, height: 1))
 
     static func apply() {
         styleSecondaryColorView()
@@ -118,14 +118,6 @@ struct Theme {
     private static func styleRefreshControls() {
         let refreshControl = UIRefreshControl.appearance()
         refreshControl.tintColor = .pantone330U_13
-    }
-
-    private static func makePantone330UShadowImage() -> UIImage {
-        let renderer = UIGraphicsImageRenderer(size: CGSize(width: 1, height: 1))
-        return renderer.image { (context) in
-            UIColor.pantone330U.setFill()
-            context.fill(CGRect(x: 0, y: 0, width: 1, height: 1))
-        }
     }
 
 }

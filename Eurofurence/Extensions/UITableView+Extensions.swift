@@ -1,6 +1,12 @@
 import UIKit
 
 extension UITableView {
+    
+    func register<T>(_ cellType: T.Type) where T: UITableViewCell {
+        let cellName = String(describing: T.self)
+        let nib = UINib(nibName: cellName, bundle: .main)
+        register(nib, forCellReuseIdentifier: cellName)
+    }
 
     func dequeue<T>(_ cellType: T.Type) -> T where T: UITableViewCell {
         let identifier = String(describing: T.self)

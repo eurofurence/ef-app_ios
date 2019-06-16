@@ -6,7 +6,7 @@ class EventFeedbackSuccessViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tickImageView.tintColor = .eurofurenceGreen
+        tickImageView.tintColor = .pantone330U
     }
 
 }
