@@ -230,49 +230,6 @@ class ScheduleViewController: UIViewController,
 
     }
 
-    private class DaysController: NSObject, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-
-        private let numberOfDays: Int
-        private let binder: ScheduleDaysBinder
-        private let onDaySelected: (Int) -> Void
-
-        init(numberOfDays: Int, binder: ScheduleDaysBinder, onDaySelected: @escaping (Int) -> Void) {
-            self.numberOfDays = numberOfDays
-            self.binder = binder
-            self.onDaySelected = onDaySelected
-        }
-
-        func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return numberOfDays
-        }
-
-        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            let cell = collectionView.dequeue(ScheduleDayCollectionViewCell.self, for: indexPath)
-            binder.bind(cell, forDayAt: indexPath.item)
-            return cell
-        }
-
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            let availableWidth: CGFloat
-            if #available(iOS 11.0, *) {
-                availableWidth = collectionView.safeAreaLayoutGuide.layoutFrame.width
-            } else {
-                availableWidth = collectionView.bounds.width
-            }
-
-            let sensibleMinimumWidth: CGFloat = 64
-            let numberOfItems = collectionView.numberOfItems(inSection: indexPath.section)
-            let itemWidth = max(sensibleMinimumWidth, availableWidth / CGFloat(numberOfItems))
-
-            return CGSize(width: itemWidth, height: collectionView.bounds.height)
-        }
-
-        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            onDaySelected(indexPath.item)
-        }
-
-    }
-
 }
 
 extension ConventionBrandedTableViewHeaderFooterView: ScheduleEventGroupHeader {
