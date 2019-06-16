@@ -4,12 +4,18 @@ class ScheduleViewController: UIViewController,
                               UISearchControllerDelegate,
                               UISearchResultsUpdating,
                               UISearchBarDelegate,
+                              DaysHorizontalPickerViewDelegate,
                               ScheduleScene {
 
     // MARK: Properties
 
     @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet private weak var daysHorizontalPickerView: DaysHorizontalPickerView!
+    @IBOutlet private weak var daysHorizontalPickerView: DaysHorizontalPickerView! {
+        didSet {
+            daysHorizontalPickerView.delegate = self
+        }
+    }
+    
     private let refreshControl = UIRefreshControl(frame: .zero)
     private lazy var navigationBarShadowDelegate = HideNavigationBarShadowForSpecificViewControllerDelegate(viewControllerToHideNavigationBarShadow: self)
 
@@ -153,6 +159,12 @@ class ScheduleViewController: UIViewController,
     func deselectSearchResult(at indexPath: IndexPath) {
         searchViewController?.deselectSearchResult(at: indexPath)
     }
+    
+    // MARK: DaysHorizontalPickerViewDelegate
+    
+    func daysHorizontalPickerView(_ pickerView: DaysHorizontalPickerView, didSelectDayAt index: Int) {
+        delegate?.scheduleSceneDidSelectDay(at: index)
+    }
 
     // MARK: Private
 
@@ -170,10 +182,6 @@ class ScheduleViewController: UIViewController,
 
     private func scheduleTableViewDidSelectRow(_ indexPath: IndexPath) {
         delegate?.scheduleSceneDidSelectEvent(at: indexPath)
-    }
-
-    private func dayPickerDidSelectDay(_ index: Int) {
-        delegate?.scheduleSceneDidSelectDay(at: index)
     }
 
     private func layoutDaysCollectionView() {
