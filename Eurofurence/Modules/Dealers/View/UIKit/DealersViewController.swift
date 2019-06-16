@@ -30,16 +30,29 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
         definesPresentationContext = true
         searchViewController = storyboard?.instantiate(DealersSearchTableViewController.self)
         searchViewController?.onDidSelectSearchResultAtIndexPath = didSelectSearchResult
-        searchController = UISearchController(searchResultsController: searchViewController)
-        searchController?.delegate = self
-        searchController?.searchResultsUpdater = self
 
-        tableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refreshControlValueDidChange), for: .valueChanged)
 
+        tableView.refreshControl = refreshControl
         tableView.registerConventionBrandedHeader()
         tableView.register(DealerComponentTableViewCell.self)
+        
+        prepareSearchController()
+        
         delegate?.dealersSceneDidLoad()
+    }
+    
+    private func prepareSearchController() {
+        let searchController = UISearchController(searchResultsController: searchViewController)
+        searchController.delegate = self
+        searchController.searchResultsUpdater = self
+        
+        if #available(iOS 11.0, *) {
+            navigationItem.searchController = searchController
+            navigationItem.rightBarButtonItem = nil
+        }
+        
+        self.searchController = searchController
     }
 
     // MARK: UISearchControllerDelegate

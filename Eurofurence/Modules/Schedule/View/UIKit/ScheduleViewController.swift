@@ -36,14 +36,11 @@ class ScheduleViewController: UIViewController,
         definesPresentationContext = true
         searchViewController = storyboard?.instantiate(ScheduleSearchTableViewController.self)
         searchViewController?.onDidSelectSearchResultAtIndexPath = didSelectSearchResult
-        searchController = UISearchController(searchResultsController: searchViewController)
-        searchController?.delegate = self
-        searchController?.searchBar.delegate = self
-        searchController?.searchBar.scopeButtonTitles = [.allEvents, .favourites]
-        searchController?.searchResultsUpdater = self
-
+        
         tableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refreshControlDidChangeValue), for: .valueChanged)
+        
+        prepareSearchController()
 
         navigationController?.delegate = navigationBarShadowDelegate
         tableView.register(EventTableViewCell.self)
@@ -60,6 +57,21 @@ class ScheduleViewController: UIViewController,
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         layoutDaysCollectionView()
+    }
+    
+    private func prepareSearchController() {
+        let searchController = UISearchController(searchResultsController: searchViewController)
+        searchController.delegate = self
+        searchController.searchBar.delegate = self
+        searchController.searchBar.scopeButtonTitles = [.allEvents, .favourites]
+        searchController.searchResultsUpdater = self
+        
+        if #available(iOS 11.0, *) {
+            navigationItem.searchController = searchController
+            navigationItem.rightBarButtonItem = nil
+        }
+        
+        self.searchController = searchController
     }
 
     // MARK: UISearchBarDelegate
