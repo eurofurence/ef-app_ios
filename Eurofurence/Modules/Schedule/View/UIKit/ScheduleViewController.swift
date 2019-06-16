@@ -9,6 +9,7 @@ class ScheduleViewController: UIViewController,
 
     // MARK: Properties
 
+    @IBOutlet private weak var daysPickerTopConstraint: NSLayoutConstraint!
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var daysHorizontalPickerView: DaysHorizontalPickerView! {
         didSet {
@@ -133,7 +134,8 @@ class ScheduleViewController: UIViewController,
     func bind(numberOfItemsPerSection: [Int], using binder: ScheduleSceneBinder) {
         tableController = TableController(numberOfItemsPerSection: numberOfItemsPerSection,
                                           binder: binder,
-                                          onDidSelectRow: scheduleTableViewDidSelectRow)
+                                          onDidSelectRow: scheduleTableViewDidSelectRow,
+                                          onTableViewDidScroll: tableViewDidScroll)
     }
 
     func bindSearchResults(numberOfItemsPerSection: [Int], using binder: ScheduleSceneBinder) {
@@ -192,17 +194,33 @@ class ScheduleViewController: UIViewController,
         searchController?.searchBar.selectedScopeButtonIndex = 0
         delegate?.scheduleSceneDidChangeSearchScopeToAllEvents()
     }
+    
+    private func tableViewDidScroll(to offset: CGPoint) {
+        let verticalOffset: CGFloat
+        if offset.y >= 0 {
+            verticalOffset = 0
+        } else {
+            verticalOffset = abs(offset.y)
+        }
+        
+        daysPickerTopConstraint.constant = verticalOffset
+    }
 
     private class TableController: NSObject, UITableViewDataSource, UITableViewDelegate {
 
         private let numberOfItemsPerSection: [Int]
         private let binder: ScheduleSceneBinder
         private let onDidSelectRow: (IndexPath) -> Void
+        private let onTableViewDidScroll: (CGPoint) -> Void
 
-        init(numberOfItemsPerSection: [Int], binder: ScheduleSceneBinder, onDidSelectRow: @escaping (IndexPath) -> Void) {
+        init(numberOfItemsPerSection: [Int],
+             binder: ScheduleSceneBinder,
+             onDidSelectRow: @escaping (IndexPath) -> Void,
+             onTableViewDidScroll: @escaping (CGPoint) -> Void) {
             self.numberOfItemsPerSection = numberOfItemsPerSection
             self.binder = binder
             self.onDidSelectRow = onDidSelectRow
+            self.onTableViewDidScroll = onTableViewDidScroll
         }
 
         func numberOfSections(in tableView: UITableView) -> Int {
@@ -246,6 +264,10 @@ class ScheduleViewController: UIViewController,
             rowAction.backgroundColor = .pantone330U
 
             return [rowAction]
+        }
+        
+        func scrollViewDidScroll(_ scrollView: UIScrollView) {
+            onTableViewDidScroll(scrollView.contentOffset)
         }
 
     }
