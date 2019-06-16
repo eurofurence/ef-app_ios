@@ -86,15 +86,15 @@
                                 </prototypes>
                             </tableView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="0kk-QA-zOz">
-                                <rect key="frame" x="177.5" y="299" width="20" height="20"/>
+                                <rect key="frame" x="177.5" y="331" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="hxL-w7-jSf" firstAttribute="top" secondItem="VSq-B5-iJd" secondAttribute="top" id="RtQ-dj-rud"/>
                             <constraint firstAttribute="bottom" secondItem="hxL-w7-jSf" secondAttribute="bottom" id="VkO-4A-wT1"/>
-                            <constraint firstItem="0kk-QA-zOz" firstAttribute="centerX" secondItem="VSq-B5-iJd" secondAttribute="centerX" id="bhv-0d-3ZZ"/>
-                            <constraint firstItem="0kk-QA-zOz" firstAttribute="centerY" secondItem="VSq-B5-iJd" secondAttribute="centerY" id="dcz-z5-LNF"/>
+                            <constraint firstItem="0kk-QA-zOz" firstAttribute="centerX" secondItem="8Wu-Zk-ODn" secondAttribute="centerX" id="bhv-0d-3ZZ"/>
+                            <constraint firstItem="0kk-QA-zOz" firstAttribute="centerY" secondItem="8Wu-Zk-ODn" secondAttribute="centerY" id="dcz-z5-LNF"/>
                             <constraint firstItem="hxL-w7-jSf" firstAttribute="leading" secondItem="8Wu-Zk-ODn" secondAttribute="leading" id="lsM-Sd-73z"/>
                             <constraint firstItem="hxL-w7-jSf" firstAttribute="trailing" secondItem="8Wu-Zk-ODn" secondAttribute="trailing" id="p2r-DG-Fog"/>
                         </constraints>
