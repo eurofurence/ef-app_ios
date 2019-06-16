@@ -40,20 +40,12 @@
                                 </constraints>
                                 <viewLayoutGuide key="safeArea" id="Uxr-u2-IR5"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zjQ-ny-vBm" userLabel="Nav Bar Background Colour Override" customClass="NavigationBarViewExtensionContainer" customModule="Eurofurence" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="zjQ-ny-vBm" firstAttribute="leading" secondItem="MGV-Hg-vha" secondAttribute="leading" id="1xH-B9-OSa"/>
-                            <constraint firstItem="zjQ-ny-vBm" firstAttribute="trailing" secondItem="MGV-Hg-vha" secondAttribute="trailing" id="2Cy-Qg-2o7"/>
                             <constraint firstItem="3vS-0E-aVm" firstAttribute="leading" secondItem="Jed-Ti-sU7" secondAttribute="leading" id="5aq-41-ir1"/>
                             <constraint firstItem="MGV-Hg-vha" firstAttribute="leading" secondItem="UnK-qE-skU" secondAttribute="leading" id="Qg3-1p-C3k"/>
                             <constraint firstItem="UnK-qE-skU" firstAttribute="trailing" secondItem="MGV-Hg-vha" secondAttribute="trailing" id="SwL-GZ-z2Z"/>
-                            <constraint firstItem="zjQ-ny-vBm" firstAttribute="bottom" secondItem="3vS-0E-aVm" secondAttribute="top" id="UY7-v1-LmS"/>
-                            <constraint firstItem="zjQ-ny-vBm" firstAttribute="top" secondItem="Jed-Ti-sU7" secondAttribute="top" id="Vqf-7Z-7RM"/>
                             <constraint firstItem="MGV-Hg-vha" firstAttribute="top" secondItem="3vS-0E-aVm" secondAttribute="bottom" id="j2M-nt-iFM"/>
                             <constraint firstAttribute="bottom" secondItem="MGV-Hg-vha" secondAttribute="bottom" id="k3U-3a-gt4"/>
                             <constraint firstItem="3vS-0E-aVm" firstAttribute="trailing" secondItem="Jed-Ti-sU7" secondAttribute="trailing" id="n3v-8z-rIx"/>
