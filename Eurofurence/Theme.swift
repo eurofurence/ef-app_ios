@@ -68,6 +68,7 @@ struct Theme {
     private static func styleTableViews() {
         let tableView = UITableView.appearance()
         tableView.sectionIndexColor = .pantone330U
+        tableView.sectionIndexBackgroundColor = .clear
         
         styleTableViewHeaders()
     }
