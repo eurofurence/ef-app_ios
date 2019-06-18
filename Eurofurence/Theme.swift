@@ -19,6 +19,19 @@ struct Theme {
         styleRefreshControls()
     }
     
+    static func performUnsafeSearchControllerStyling(searchController: UISearchController) {
+        guard let backgroundview = resolveStylableBackgroundFromPrivateViewHiearchy(searchBar: searchController.searchBar) else { return }
+        
+        backgroundview.backgroundColor = .white
+        backgroundview.layer.cornerRadius = 10
+        backgroundview.clipsToBounds = true
+    }
+    
+    private static func resolveStylableBackgroundFromPrivateViewHiearchy(searchBar: UISearchBar) -> UIView? {
+        let textfield = searchBar.value(forKey: "searchField") as? UITextField
+        return textfield?.subviews.first
+    }
+    
     private static func styleSecondaryColorView() {
         let secondaryColorView = ConventionSecondaryColorView.appearance()
         secondaryColorView.backgroundColor = .pantone330U_45

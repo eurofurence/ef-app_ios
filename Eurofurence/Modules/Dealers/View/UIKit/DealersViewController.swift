@@ -50,6 +50,7 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
         if #available(iOS 11.0, *) {
             navigationItem.searchController = searchController
             navigationItem.rightBarButtonItem = nil
+            Theme.performUnsafeSearchControllerStyling(searchController: searchController)
         }
         
         self.searchController = searchController
