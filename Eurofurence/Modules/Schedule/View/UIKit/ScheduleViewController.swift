@@ -197,14 +197,16 @@ class ScheduleViewController: UIViewController,
     }
     
     private func tableViewDidScroll(to offset: CGPoint) {
-        let verticalOffset: CGFloat
-        if offset.y >= 0 {
-            verticalOffset = 0
-        } else {
-            verticalOffset = abs(offset.y)
+        if #available(iOS 11.0, *) {        
+            let verticalOffset: CGFloat
+            if offset.y >= 0 {
+                verticalOffset = 0
+            } else {
+                verticalOffset = abs(offset.y)
+            }
+            
+            daysPickerTopConstraint.constant = verticalOffset
         }
-        
-        daysPickerTopConstraint.constant = verticalOffset
     }
 
     private class TableController: NSObject, UITableViewDataSource, UITableViewDelegate {
