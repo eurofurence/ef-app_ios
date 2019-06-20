@@ -3,9 +3,10 @@ import UIKit
 struct Theme {
 
     private static let whiteTextAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.white]
-    private static let pantone330UColourImage = makePantone330UShadowImage()
+    private static let pantone330UColourImage = UIColor.pantone330U.makeColoredImage(size: CGSize(width: 1, height: 1))
 
     static func apply() {
+        styleSecondaryColorView()
         styleNavigationBars()
         styleTabBars()
         styleButtons()
@@ -15,6 +16,25 @@ struct Theme {
         styleSearchBars()
         styleTextFields()
         styleSegmentedControls()
+        styleRefreshControls()
+    }
+    
+    static func performUnsafeSearchControllerStyling(searchController: UISearchController) {
+        guard let backgroundview = resolveStylableBackgroundFromPrivateViewHiearchy(searchBar: searchController.searchBar) else { return }
+        
+        backgroundview.backgroundColor = .white
+        backgroundview.layer.cornerRadius = 10
+        backgroundview.clipsToBounds = true
+    }
+    
+    private static func resolveStylableBackgroundFromPrivateViewHiearchy(searchBar: UISearchBar) -> UIView? {
+        let textfield = searchBar.value(forKey: "searchField") as? UITextField
+        return textfield?.subviews.first
+    }
+    
+    private static func styleSecondaryColorView() {
+        let secondaryColorView = ConventionSecondaryColorView.appearance()
+        secondaryColorView.backgroundColor = .pantone330U_45
     }
 
     private static func styleNavigationBars() {
@@ -23,8 +43,14 @@ struct Theme {
         navigationBar.barTintColor = .pantone330U
         navigationBar.tintColor = .white
         navigationBar.titleTextAttributes = whiteTextAttributes
-        navigationBar.setBackgroundImage(pantone330UColourImage, for: .default)
         navigationBar.shadowImage = pantone330UColourImage
+        
+        if #available(iOS 11.0, *) {
+            navigationBar.prefersLargeTitles = true
+            navigationBar.largeTitleTextAttributes = whiteTextAttributes
+        } else {
+            navigationBar.setBackgroundImage(pantone330UColourImage, for: .default)
+        }
     }
 
     private static func styleTabBars() {
@@ -34,6 +60,7 @@ struct Theme {
         tabBar.tintColor = .white
         tabBar.backgroundImage = pantone330UColourImage
         tabBar.shadowImage = pantone330UColourImage
+        tabBar.unselectedItemTintColor = .pantone330U_45
     }
 
     private static func styleButtons() {
@@ -50,10 +77,18 @@ struct Theme {
         let buttonsInsideNavigationBar = UIButton.appearance(whenContainedInInstancesOf: [UINavigationBar.self])
         buttonsInsideNavigationBar.tintColor = .white
     }
-
+    
     private static func styleTableViews() {
         let tableView = UITableView.appearance()
         tableView.sectionIndexColor = .pantone330U
+        tableView.sectionIndexBackgroundColor = .clear
+        
+        styleTableViewHeaders()
+    }
+    
+    private static func styleTableViewHeaders() {
+        let conventionTableViewHeaderLabel = UILabel.appearance(whenContainedInInstancesOf: [ConventionBrandedTableViewHeaderFooterView.self])
+        conventionTableViewHeaderLabel.textColor = .white
     }
 
     private static func styleTabBarItems() {
@@ -95,13 +130,10 @@ struct Theme {
         let segmentControl = UISegmentedControl.appearance()
         segmentControl.tintColor = .white
     }
-
-    private static func makePantone330UShadowImage() -> UIImage {
-        let renderer = UIGraphicsImageRenderer(size: CGSize(width: 1, height: 1))
-        return renderer.image { (context) in
-            UIColor.pantone330U.setFill()
-            context.fill(CGRect(x: 0, y: 0, width: 1, height: 1))
-        }
+    
+    private static func styleRefreshControls() {
+        let refreshControl = UIRefreshControl.appearance()
+        refreshControl.tintColor = .pantone330U_13
     }
 
 }

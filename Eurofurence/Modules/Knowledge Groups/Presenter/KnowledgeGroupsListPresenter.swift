@@ -14,7 +14,7 @@ class KnowledgeGroupsListPresenter: KnowledgeListSceneDelegate, KnowledgeGroupsL
         self.knowledgeListInteractor = knowledgeListInteractor
         self.delegate = delegate
 
-        scene.setKnowledgeListTitle(.conventionInformation)
+        scene.setKnowledgeListTitle(.information)
         scene.setKnowledgeListShortTitle(.information)
     }
 

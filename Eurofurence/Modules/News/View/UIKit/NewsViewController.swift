@@ -20,7 +20,7 @@ class NewsViewController: UIViewController, NewsScene {
         tableView.refreshControl = refreshControl
         tableView.register(AnnouncementTableViewCell.self)
         tableView.register(EventTableViewCell.self)
-        tableView.register(Header.self, forHeaderFooterViewReuseIdentifier: Header.identifier)
+        tableView.registerConventionBrandedHeader()
         delegate?.newsSceneDidLoad()
     }
 
@@ -56,18 +56,6 @@ class NewsViewController: UIViewController, NewsScene {
 
     func tableViewDidSelectRow(at indexPath: IndexPath) {
         delegate?.newsSceneDidSelectComponent(at: indexPath)
-    }
-
-    // MARK: Nested Types
-
-    private class Header: UITableViewHeaderFooterView, NewsComponentHeaderScene {
-
-        static let identifier = "Header"
-
-        func setComponentTitle(_ title: String?) {
-            textLabel?.text = title
-        }
-
     }
 
     private class TableController: NSObject, NewsComponentFactory, UITableViewDataSource, UITableViewDelegate {
@@ -132,8 +120,7 @@ class NewsViewController: UIViewController, NewsScene {
         }
 
         func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-            guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: Header.identifier) as? Header else { fatalError() }
-            
+            let header = tableView.dequeueConventionBrandedHeader()
             binder.bindTitleForSection(at: section, scene: header)
             return header
         }
@@ -147,4 +134,12 @@ class NewsViewController: UIViewController, NewsScene {
 
     }
 
+}
+
+extension ConventionBrandedTableViewHeaderFooterView: NewsComponentHeaderScene {
+    
+    func setComponentTitle(_ title: String?) {
+        textLabel?.text = title
+    }
+    
 }

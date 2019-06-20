@@ -30,16 +30,30 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
         definesPresentationContext = true
         searchViewController = storyboard?.instantiate(DealersSearchTableViewController.self)
         searchViewController?.onDidSelectSearchResultAtIndexPath = didSelectSearchResult
-        searchController = UISearchController(searchResultsController: searchViewController)
-        searchController?.delegate = self
-        searchController?.searchResultsUpdater = self
 
-        tableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refreshControlValueDidChange), for: .valueChanged)
 
-        tableView.register(Header.self, forHeaderFooterViewReuseIdentifier: Header.identifier)
+        tableView.refreshControl = refreshControl
+        tableView.registerConventionBrandedHeader()
         tableView.register(DealerComponentTableViewCell.self)
+        
+        prepareSearchController()
+        
         delegate?.dealersSceneDidLoad()
+    }
+    
+    private func prepareSearchController() {
+        let searchController = UISearchController(searchResultsController: searchViewController)
+        searchController.delegate = self
+        searchController.searchResultsUpdater = self
+        
+        if #available(iOS 11.0, *) {
+            navigationItem.searchController = searchController
+            navigationItem.rightBarButtonItem = nil
+            Theme.performUnsafeSearchControllerStyling(searchController: searchController)
+        }
+        
+        self.searchController = searchController
     }
 
     // MARK: UISearchControllerDelegate
@@ -106,16 +120,6 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
         delegate?.dealersSceneDidSelectDealerSearchResult(at: indexPath)
     }
 
-    private class Header: UITableViewHeaderFooterView, DealerGroupHeader {
-
-        static let identifier = "Header"
-
-        func setDealersGroupTitle(_ title: String) {
-            textLabel?.text = title
-        }
-
-    }
-
     private class TableController: NSObject, UITableViewDataSource, UITableViewDelegate {
 
         private let numberOfDealersPerSection: [Int]
@@ -148,7 +152,7 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
         }
 
         func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-            guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: Header.identifier) as? Header else { fatalError() }
+            let header = tableView.dequeueConventionBrandedHeader()
             
             binder.bind(header, toDealerGroupAt: section)
             return header
@@ -164,4 +168,12 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
 
     }
 
+}
+
+extension ConventionBrandedTableViewHeaderFooterView: DealerGroupHeader {
+    
+    func setDealersGroupTitle(_ title: String) {
+        textLabel?.text = title
+    }
+    
 }

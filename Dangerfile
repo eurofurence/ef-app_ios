@@ -66,8 +66,8 @@ def perform_swift_code_review_on_file(file)
             warn("Override methods which only call super can be removed", file: file, line: index+3)
         end
 
-        if line =~ /^\/\/([^\/]|$)/ and !line.include?("MARK:")
-            warn("Comments should be avoided - express intent in proper names and functions", file: file, line: index)
+        if line =~ /^\/\/([^\/]|$)/ and !line.include?("MARK:") and !line.include?("swiftlint")
+            warn("Comments should be avoided - express intent in proper names and functions", file: file, line: index + 1)
         end
 
         if line =~ /.text = \"(.)+/ || line =~ /setTitle\(\"(.)+/
