@@ -10,6 +10,8 @@ struct CollectThemAllPresenter: HybridWebSceneDelegate, CollectThemAllURLObserve
         self.scene = scene
         self.service = service
 
+        scene.setSceneShortTitle(.collect)
+        scene.setSceneTitle(.collectThemAll)
         scene.setDelegate(self)
     }
 

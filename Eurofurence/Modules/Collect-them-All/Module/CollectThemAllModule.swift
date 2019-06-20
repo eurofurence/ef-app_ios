@@ -8,8 +8,6 @@ struct CollectThemAllModule: CollectThemAllModuleProviding {
 
     func makeCollectThemAllModule() -> UIViewController {
         let scene = sceneFactory.makeHybridWebScene()
-        scene.setSceneShortTitle(.collect)
-        scene.setSceneTitle(.collectThemAll)
         _ = CollectThemAllPresenter(scene: scene, service: service)
 
         return scene
