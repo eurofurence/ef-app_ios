@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Ckn-Ck-xoO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Ckn-Ck-xoO">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -32,8 +32,8 @@
             <objects>
                 <navigationController id="ovJ-yz-wGF" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="Transparent Pixel" id="y9A-O4-eZg"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="Sp4-hh-8US">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" largeTitles="YES" id="Sp4-hh-8US">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.0" green="0.34901960780000002" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
@@ -54,11 +54,11 @@
                         <viewControllerLayoutGuide type="bottom" id="0qG-Yf-tbq"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="d7z-hY-ukC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="673"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
-                    <navigationItem key="navigationItem" id="xgL-jW-8ZJ"/>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="xgL-jW-8ZJ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3aK-8h-Ja8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -66,6 +66,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Transparent Pixel" width="1" height="1"/>
+        <image name="Transparent Pixel" width="0.5" height="0.5"/>
     </resources>
 </document>
