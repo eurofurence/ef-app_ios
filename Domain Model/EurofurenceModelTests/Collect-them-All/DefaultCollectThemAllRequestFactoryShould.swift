@@ -6,7 +6,7 @@ class DefaultCollectThemAllRequestFactoryShould: XCTestCase {
     func testProduceExpectedAnonymousRequest() {
         let factory = DefaultCollectThemAllRequestFactory()
         let anonymousRequest = factory.makeAnonymousGameURLRequest()
-        let expectedURL = unwrap(URL(string: "https://app.eurofurence.org/collectemall/#token-empty/true"))
+        let expectedURL = unwrap(URL(string: "https://app.eurofurence.org/EF25/companion/#/login?embedded=true&returnPath=/collect"))
 
         XCTAssertEqual(expectedURL, anonymousRequest.url)
     }
@@ -18,7 +18,7 @@ class DefaultCollectThemAllRequestFactoryShould: XCTestCase {
                                     authenticationToken: .random,
                                     tokenExpiryDate: .random)
         let authenticatedRequest = factory.makeAuthenticatedGameURLRequest(credential: credential)
-        let expectedURL = unwrap(URL(string: "https://app.eurofurence.org/collectemall/#token-\(credential.authenticationToken)/true"))
+        let expectedURL = unwrap(URL(string: "https://app.eurofurence.org/EF25/companion/#/login?embedded=true&returnPath=/collect&token=\(credential.authenticationToken)"))
 
         XCTAssertEqual(expectedURL, authenticatedRequest.url)
     }
