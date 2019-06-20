@@ -67,7 +67,7 @@ def perform_swift_code_review_on_file(file)
         end
 
         if line =~ /^\/\/([^\/]|$)/ and !line.include?("MARK:")
-            warn("Comments should be avoided - express intent in proper names and functions", file: file, line: index)
+            warn("Comments should be avoided - express intent in proper names and functions", file: file, line: index + 1)
         end
 
         if line =~ /.text = \"(.)+/ || line =~ /setTitle\(\"(.)+/
