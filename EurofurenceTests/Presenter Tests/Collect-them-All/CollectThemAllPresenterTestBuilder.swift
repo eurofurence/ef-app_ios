@@ -6,12 +6,12 @@ class CollectThemAllPresenterTestBuilder {
 
     struct Context {
         var producedViewController: UIViewController
-        var scene: CapturingCollectThemAllScene
+        var scene: CapturingHybridWebScene
         var service: FakeCollectThemAllService
     }
 
     func build() -> Context {
-        let sceneFactory = StubCollectThemAllSceneFactory()
+        let sceneFactory = StubHybridWebSceneFactory()
         let service = FakeCollectThemAllService()
         let module = CollectThemAllModuleBuilder(service: service)
             .with(sceneFactory)
@@ -28,7 +28,7 @@ class CollectThemAllPresenterTestBuilder {
 extension CollectThemAllPresenterTestBuilder.Context {
 
     func simulateSceneDidLoad() {
-        scene.delegate?.collectThemAllSceneDidLoad()
+        scene.delegate?.hybridWebSceneDidLoad()
     }
 
 }

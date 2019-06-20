@@ -3,16 +3,16 @@ import UIKit
 
 class CollectThemAllModuleBuilder {
 
-    private var sceneFactory: CollectThemAllSceneFactory
+    private var sceneFactory: HybridWebSceneFactory
     private let service: CollectThemAllService
 
     init(service: CollectThemAllService) {
         self.service = service
-        sceneFactory = StoryboardCollectThemAllSceneFactory()
+        sceneFactory = StoryboardHybridWebSceneFactory()
     }
 
     @discardableResult
-    func with(_ sceneFactory: CollectThemAllSceneFactory) -> CollectThemAllModuleBuilder {
+    func with(_ sceneFactory: HybridWebSceneFactory) -> CollectThemAllModuleBuilder {
         self.sceneFactory = sceneFactory
         return self
     }

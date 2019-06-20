@@ -1,7 +1,7 @@
 import UIKit
 import WebKit
 
-class CollectThemAllViewController: UIViewController, CollectThemAllScene {
+class HybridWebViewController: UIViewController, HybridWebScene {
 
     // MARK: Properties
 
@@ -19,25 +19,25 @@ class CollectThemAllViewController: UIViewController, CollectThemAllScene {
         webView?.allowsLinkPreview = false
         webView?.allowsBackForwardNavigationGestures = true
         view = webView
-        delegate?.collectThemAllSceneDidLoad()
+        delegate?.hybridWebSceneDidLoad()
     }
 
-    // MARK: CollectThemAllScene
+    // MARK: HybridWebScene
 
-    private var delegate: CollectThemAllSceneDelegate?
-    func setDelegate(_ delegate: CollectThemAllSceneDelegate) {
+    private var delegate: HybridWebSceneDelegate?
+    func setDelegate(_ delegate: HybridWebSceneDelegate) {
         self.delegate = delegate
     }
 
-    func setShortCollectThemAllTitle(_ shortTitle: String) {
+    func setSceneShortTitle(_ shortTitle: String) {
         tabBarItem.title = shortTitle
     }
 
-    func setCollectThemAllTitle(_ title: String) {
+    func setSceneTitle(_ title: String) {
         navigationItem.title = title
     }
 
-    func loadGame(at urlRequest: URLRequest) {
+    func loadContents(of urlRequest: URLRequest) {
         webView?.load(urlRequest)
     }
 

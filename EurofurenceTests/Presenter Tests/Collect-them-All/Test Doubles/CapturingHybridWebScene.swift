@@ -2,25 +2,25 @@
 import EurofurenceModel
 import UIKit
 
-class CapturingCollectThemAllScene: UIViewController, CollectThemAllScene {
+class CapturingHybridWebScene: UIViewController, HybridWebScene {
 
-    private(set) var delegate: CollectThemAllSceneDelegate?
-    func setDelegate(_ delegate: CollectThemAllSceneDelegate) {
+    private(set) var delegate: HybridWebSceneDelegate?
+    func setDelegate(_ delegate: HybridWebSceneDelegate) {
         self.delegate = delegate
     }
 
     private(set) var capturedShortTitle: String?
-    func setShortCollectThemAllTitle(_ shortTitle: String) {
+    func setSceneShortTitle(_ shortTitle: String) {
         capturedShortTitle = shortTitle
     }
 
     private(set) var capturedTitle: String?
-    func setCollectThemAllTitle(_ title: String) {
+    func setSceneTitle(_ title: String) {
         capturedTitle = title
     }
 
     private(set) var capturedURLRequest: URLRequest?
-    func loadGame(at urlRequest: URLRequest) {
+    func loadContents(of urlRequest: URLRequest) {
         capturedURLRequest = urlRequest
     }
 

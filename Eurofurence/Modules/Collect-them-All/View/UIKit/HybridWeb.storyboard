@@ -13,7 +13,7 @@
         <!--Title-->
         <scene sceneID="f8A-Z2-GUl">
             <objects>
-                <viewController storyboardIdentifier="CollectThemAllViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JeW-cI-uOl" customClass="CollectThemAllViewController" customModule="Eurofurence" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HybridWebViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JeW-cI-uOl" customClass="HybridWebViewController" customModule="Eurofurence" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yib-hp-ISw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
