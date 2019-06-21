@@ -109,6 +109,15 @@ class StubEventFeedbackModuleProviding: EventFeedbackModuleProviding {
     
 }
 
+class StubAdditionalServicesModuleProviding: AdditionalServicesModuleProviding {
+    
+    let stubInterface = UIViewController()
+    func makeAdditionalServicesModule() -> UIViewController {
+        return stubInterface
+    }
+    
+}
+
 class ApplicationDirectorTestBuilder {
 
     struct Context {
@@ -137,6 +146,7 @@ class ApplicationDirectorTestBuilder {
         var announcementDetailModule: StubAnnouncementDetailModuleFactory
         var eventDetailModule: StubEventDetailModuleFactory
         var eventFeedbackModule: StubEventFeedbackModuleProviding
+        var additionalServicesModule: StubAdditionalServicesModuleProviding
         var linkRouter: StubContentLinksService
         var webModuleProviding: StubWebMobuleProviding
         var urlOpener: CapturingURLOpener
@@ -166,6 +176,7 @@ class ApplicationDirectorTestBuilder {
     private let announcementDetailModule: StubAnnouncementDetailModuleFactory
     private let eventDetailModule: StubEventDetailModuleFactory
     private let eventFeedbackModule: StubEventFeedbackModuleProviding
+    private let additionalServicesModule: StubAdditionalServicesModuleProviding
     private let linkRouter: StubContentLinksService
     private let webModuleProviding: StubWebMobuleProviding
     private let urlOpener: CapturingURLOpener
@@ -204,6 +215,7 @@ class ApplicationDirectorTestBuilder {
         announcementDetailModule = StubAnnouncementDetailModuleFactory()
         eventDetailModule = StubEventDetailModuleFactory()
         eventFeedbackModule = StubEventFeedbackModuleProviding()
+        additionalServicesModule = StubAdditionalServicesModuleProviding()
         linkRouter = StubContentLinksService()
         webModuleProviding = StubWebMobuleProviding()
         urlOpener = CapturingURLOpener()
@@ -242,6 +254,7 @@ class ApplicationDirectorTestBuilder {
                        announcementDetailModule: announcementDetailModule,
                        eventDetailModule: eventDetailModule,
                        eventFeedbackModule: eventFeedbackModule,
+                       additionalServicesModule: additionalServicesModule,
                        linkRouter: linkRouter,
                        webModuleProviding: webModuleProviding,
                        urlOpener: urlOpener)
@@ -268,7 +281,8 @@ class ApplicationDirectorTestBuilder {
                                                     announcementsModuleFactory: announcementsModule,
                                                     announcementDetailModuleProviding: announcementDetailModule,
                                                     eventDetailModuleProviding: eventDetailModule,
-                                                    eventFeedbackModuleProviding: eventFeedbackModule)
+                                                    eventFeedbackModuleProviding: eventFeedbackModule,
+                                                    additionalServicesModule: additionalServicesModule)
         
         let builder = DirectorBuilder(moduleRepository: moduleRepository, linkLookupService: linkRouter)
         builder.withAnimations(false)

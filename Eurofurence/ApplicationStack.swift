@@ -75,7 +75,7 @@ class ApplicationStack {
                                                                         hoursDateFormatter: FoundationHoursDateFormatter.shared,
                                                                         upcomingEventReminderInterval: upcomingEventReminderInterval)
         
-        director = DirectorBuilder(moduleRepository: ApplicationModuleRepository(services: services),
+        director = DirectorBuilder(moduleRepository: ApplicationModuleRepository(services: services, repositories: session.repositories),
                                    linkLookupService: services.contentLinks).build()
         services.contentLinks.setExternalContentHandler(director)
         

@@ -24,5 +24,6 @@ protocol ModuleRepository {
     func makeMapsModule(_ delegate: MapsModuleDelegate) -> UIViewController
     func makeMapDetailModule(for identifier: MapIdentifier, delegate: MapDetailModuleDelegate) -> UIViewController
     func makeCollectThemAllModule() -> UIViewController
+    func makeAdditionalServicesModule() -> UIViewController
     
 }

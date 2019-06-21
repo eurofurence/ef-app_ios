@@ -17,7 +17,8 @@ class WhenPreloadCompletes_DirectorShould: XCTestCase {
             context.dealersModule.stubInterface,
             context.knowledgeListModule.stubInterface,
             context.mapsModule.stubInterface,
-            context.collectThemAllModule.stubInterface
+            context.collectThemAllModule.stubInterface,
+            context.additionalServicesModule.stubInterface
         ]
 
         XCTAssertEqual(tabModule, context.windowWireframe.capturedRootInterface)
