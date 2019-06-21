@@ -35,8 +35,8 @@ extension Array {
 class WhenShowingTabModule_DirectorShould: XCTestCase {
 
     func testShowTheModulesInOrderDesignatedByOrderingPolicy() {
-        let context = ApplicationDirectorTestBuilder().build()
-        let moduleOrderingPolicy = context.moduleOrderingPolicy
+        let moduleOrderingPolicy = FakeModuleOrderingPolicy()
+        let context = ApplicationDirectorTestBuilder().with(moduleOrderingPolicy).build()
         context.navigateToTabController()
 
         let rootNavigationTabControllers = context.tabModule.capturedTabModules.compactMap({ $0 as? UINavigationController })
@@ -54,8 +54,8 @@ class WhenShowingTabModule_DirectorShould: XCTestCase {
     }
 
     func testTellThePolicyToSaveTabOrderWhenEditingFinishes() {
-        let context = ApplicationDirectorTestBuilder().build()
-        let moduleOrderingPolicy = context.moduleOrderingPolicy
+        let moduleOrderingPolicy = FakeModuleOrderingPolicy()
+        let context = ApplicationDirectorTestBuilder().with(moduleOrderingPolicy).build()
         context.navigateToTabController()
         let rootNavigationTabControllers = context.tabModule.capturedTabModules.compactMap({ $0 as? UINavigationController })
         let tabBarController = context.tabModule.stubInterface

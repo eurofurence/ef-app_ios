@@ -114,7 +114,7 @@ class ApplicationDirectorTestBuilder {
     struct Context {
 
         var director: ApplicationDirector
-        var moduleOrderingPolicy: FakeModuleOrderingPolicy
+        var moduleOrderingPolicy: ModuleOrderingPolicy
         var rootModule: StubRootModuleFactory
         var tutorialModule: StubTutorialModuleFactory
         var preloadModule: StubPreloadModuleFactory
@@ -143,7 +143,7 @@ class ApplicationDirectorTestBuilder {
 
     }
 
-    private let moduleOrderingPolicy: FakeModuleOrderingPolicy
+    private var moduleOrderingPolicy: ModuleOrderingPolicy
     private let rootModule: StubRootModuleFactory
     private let tutorialModule: StubTutorialModuleFactory
     private let preloadModule: StubPreloadModuleFactory
@@ -169,9 +169,19 @@ class ApplicationDirectorTestBuilder {
     private let linkRouter: StubContentLinksService
     private let webModuleProviding: StubWebMobuleProviding
     private let urlOpener: CapturingURLOpener
+    
+    private struct DoNotChangeOrderPolicy: ModuleOrderingPolicy {
+        func order(modules: [UIViewController]) -> [UIViewController] {
+            return modules
+        }
+        
+        func saveOrder(_ modules: [UIViewController]) {
+            
+        }
+    }
 
     init() {
-        moduleOrderingPolicy = FakeModuleOrderingPolicy()
+        moduleOrderingPolicy = DoNotChangeOrderPolicy()
         rootModule = StubRootModuleFactory()
         tutorialModule = StubTutorialModuleFactory()
         preloadModule = StubPreloadModuleFactory()
@@ -197,6 +207,12 @@ class ApplicationDirectorTestBuilder {
         linkRouter = StubContentLinksService()
         webModuleProviding = StubWebMobuleProviding()
         urlOpener = CapturingURLOpener()
+    }
+    
+    @discardableResult
+    func with(_ orderingPolicy: ModuleOrderingPolicy) -> ApplicationDirectorTestBuilder {
+        self.moduleOrderingPolicy = orderingPolicy
+        return self
     }
 
     func build() -> Context {
