@@ -3,13 +3,11 @@ import UIKit
 
 struct CollectThemAllModule: CollectThemAllModuleProviding {
 
-    var sceneFactory: CollectThemAllSceneFactory
+    var sceneFactory: HybridWebSceneFactory
     var service: CollectThemAllService
 
     func makeCollectThemAllModule() -> UIViewController {
-        let scene = sceneFactory.makeCollectThemAllScene()
-        scene.setShortCollectThemAllTitle(.collect)
-        scene.setCollectThemAllTitle(.collectThemAll)
+        let scene = sceneFactory.makeHybridWebScene()
         _ = CollectThemAllPresenter(scene: scene, service: service)
 
         return scene
