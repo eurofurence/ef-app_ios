@@ -38,11 +38,24 @@ class HybridWebViewController: UIViewController, HybridWebScene {
     }
     
     func setSceneIcon(pngData: Data) {
-        tabBarItem.image = UIImage(data: pngData)
+        guard let image = UIImage(data: pngData) else { return }
+        
+        tabBarItem.image = scaleImageForTabBarPresentation(image)
     }
 
     func loadContents(of urlRequest: URLRequest) {
         webView?.load(urlRequest)
+    }
+    
+    // MARK: Private
+    
+    private func scaleImageForTabBarPresentation(_ image: UIImage) -> UIImage {
+        let tabBarIconSize = CGSize(width: 25.0, height: 25.0)
+        let context = UIGraphicsImageRenderer(size: tabBarIconSize)
+        
+        return context.image { _ in
+            image.draw(in: CGRect(origin: .zero, size: tabBarIconSize))
+        }
     }
 
 }
