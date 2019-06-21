@@ -432,6 +432,8 @@
 		CA7A32F622B17217002AD939 /* EurofurenceModelTestDoubles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A326922B16E75002AD939 /* EurofurenceModelTestDoubles.framework */; };
 		CA7A32FE22B17A44002AD939 /* TestUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A32FD22B17A44002AD939 /* TestUtilities.framework */; };
 		CA7A32FF22B17B96002AD939 /* EurofurenceModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A2F2B22B16DA3002AD939 /* EurofurenceModel.framework */; };
+		CA8A73BF22BD0FC2007A5201 /* AdditionalServicesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73BE22BD0FC2007A5201 /* AdditionalServicesRepository.swift */; };
+		CA8A73C422BD0FFC007A5201 /* FakeAdditionalServicesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73C322BD0FFC007A5201 /* FakeAdditionalServicesRepository.swift */; };
 		CB70B8B9EEAD6A8C832A3C0B /* Pods_EurofurenceModelTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26657B2D5254404DBC47C53C /* Pods_EurofurenceModelTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -889,6 +891,8 @@
 		CA7A32F022B17023002AD939 /* TestUtilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TestUtilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA7A32F422B171AC002AD939 /* Unwrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unwrap.swift; sourceTree = "<group>"; };
 		CA7A32FD22B17A44002AD939 /* TestUtilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TestUtilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA8A73BE22BD0FC2007A5201 /* AdditionalServicesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalServicesRepository.swift; sourceTree = "<group>"; };
+		CA8A73C322BD0FFC007A5201 /* FakeAdditionalServicesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeAdditionalServicesRepository.swift; sourceTree = "<group>"; };
 		EC85896EECB18D7881B0665A /* Pods-EurofurenceModel-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-EurofurenceModel-metadata.plist"; sourceTree = "<group>"; };
 		FFE87D86E3ECE04913805820 /* Pods_EurofurenceModelTestDoubles.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EurofurenceModelTestDoubles.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -1281,6 +1285,7 @@
 		CA7A2FBF22B16DE3002AD939 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				CA8A73BE22BD0FC2007A5201 /* AdditionalServicesRepository.swift */,
 				CA7A2FC422B16DE3002AD939 /* AnnouncementsService.swift */,
 				CA7A2FC322B16DE3002AD939 /* AuthenticationService.swift */,
 				CA7A2FC822B16DE3002AD939 /* CollectThemAllService.swift */,
@@ -1877,6 +1882,7 @@
 				CA7A32A822B16EB5002AD939 /* StubDateDistanceCalculator.swift */,
 				CA7A32AA22B16EB5002AD939 /* Entity Test Doubles */,
 				CA7A328422B16EB4002AD939 /* Random Value Generation */,
+				CA8A73C322BD0FFC007A5201 /* FakeAdditionalServicesRepository.swift */,
 			);
 			path = EurofurenceModelTestDoubles;
 			sourceTree = "<group>";
@@ -2455,6 +2461,7 @@
 				CA7A300E22B16DE4002AD939 /* ImageEntity.swift in Sources */,
 				CA7A309522B16DE4002AD939 /* ConcreteRefreshService.swift in Sources */,
 				CA7A301E22B16DE4002AD939 /* UserDefaultsForceRefreshRequired.swift in Sources */,
+				CA8A73BF22BD0FC2007A5201 /* AdditionalServicesRepository.swift in Sources */,
 				CA7A308A22B16DE4002AD939 /* FileUtilities.swift in Sources */,
 				CA7A309322B16DE4002AD939 /* DataStoreChangedConsumer.swift in Sources */,
 				CA7A307D22B16DE4002AD939 /* RemoteNotificationTokenAvailable.swift in Sources */,
@@ -2774,6 +2781,7 @@
 				CA7A32CB22B16EB5002AD939 /* FakeAnnouncementsService.swift in Sources */,
 				CA7A32B622B16EB5002AD939 /* AnnouncementCharacteristics+RandomValueProviding.swift in Sources */,
 				CA7A32CF22B16EB5002AD939 /* CapturingRefreshService.swift in Sources */,
+				CA8A73C422BD0FFC007A5201 /* FakeAdditionalServicesRepository.swift in Sources */,
 				CA7A32C122B16EB5002AD939 /* Room+RandomValueProviding.swift in Sources */,
 				CA7A32BA22B16EB5002AD939 /* KnowledgeGroupCharacteristics+RandomValueProviding.swift in Sources */,
 				CA7A32D722B16EB5002AD939 /* FakeEvent.swift in Sources */,

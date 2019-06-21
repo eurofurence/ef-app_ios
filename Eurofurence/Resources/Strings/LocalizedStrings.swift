@@ -227,6 +227,12 @@ public extension String {
     static let discard = NSLocalizedString("Discard",
                                            comment: "Text used to describe actions related to user input that will cause their input to be discarded")
     
+    static let services = NSLocalizedString("Services",
+                                            comment: "Tab bar title used for the companion app hybrid scene")
+    
+    static let additionalServices = NSLocalizedString("AdditionalServices",
+                                                      comment: "Navigation title used for the compainion app hybrid scene")
+    
     private struct Formatters {
         static var numbers = NumberFormatter()
     }
