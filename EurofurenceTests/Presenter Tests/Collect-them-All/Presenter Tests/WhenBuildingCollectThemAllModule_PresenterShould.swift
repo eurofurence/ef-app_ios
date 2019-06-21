@@ -18,5 +18,12 @@ class WhenBuildingCollectThemAllModule_PresenterShould: XCTestCase {
         let context = CollectThemAllPresenterTestBuilder().build()
         XCTAssertEqual(.collectThemAll, context.scene.capturedTitle)
     }
+    
+    func testApplyTheIconToTheScene() {
+        let context = CollectThemAllPresenterTestBuilder().build()
+        let expected = UIImage(named: "Collectemall-50", in: .main, compatibleWith: nil)?.pngData()
+        
+        XCTAssertEqual(expected, context.scene.capturedIconData)
+    }
 
 }

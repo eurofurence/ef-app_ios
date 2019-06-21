@@ -36,6 +36,10 @@ class HybridWebViewController: UIViewController, HybridWebScene {
     func setSceneTitle(_ title: String) {
         navigationItem.title = title
     }
+    
+    func setSceneIcon(pngData: Data) {
+        tabBarItem.image = UIImage(data: pngData)
+    }
 
     func loadContents(of urlRequest: URLRequest) {
         webView?.load(urlRequest)

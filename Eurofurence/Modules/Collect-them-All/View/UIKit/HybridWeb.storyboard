@@ -20,7 +20,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="uBP-Oa-rxW"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" image="Collectemall-50" selectedImage="Collectemall-50" id="d5x-46-bVF"/>
+                    <tabBarItem key="tabBarItem" title="Item" id="d5x-46-bVF"/>
                     <navigationItem key="navigationItem" title="Title" largeTitleDisplayMode="never" id="eKf-JT-O3e"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -30,7 +30,4 @@
             <point key="canvasLocation" x="-130.40000000000001" y="278.41079460269867"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="Collectemall-50" width="32" height="32"/>
-    </resources>
 </document>

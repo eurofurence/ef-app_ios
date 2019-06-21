@@ -18,6 +18,11 @@ class CapturingHybridWebScene: UIViewController, HybridWebScene {
     func setSceneTitle(_ title: String) {
         capturedTitle = title
     }
+    
+    private(set) var capturedIconData: Data?
+    func setSceneIcon(pngData: Data) {
+        capturedIconData = pngData
+    }
 
     private(set) var capturedURLRequest: URLRequest?
     func loadContents(of urlRequest: URLRequest) {
