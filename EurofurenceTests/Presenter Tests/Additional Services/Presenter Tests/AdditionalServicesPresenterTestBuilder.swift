@@ -7,20 +7,20 @@ class AdditionalServicesPresenterTestBuilder {
     struct Context {
         var producedViewController: UIViewController
         var scene: CapturingHybridWebScene
-        var service: FakeAdditionalServicesRepository
+        var repository: FakeAdditionalServicesRepository
     }
     
     func build() -> Context {
         let sceneFactory = StubHybridWebSceneFactory()
         let service = FakeAdditionalServicesRepository()
-        let module = AdditionalServicesModuleBuilder(service: service)
+        let module = AdditionalServicesModuleBuilder(repository: service)
             .with(sceneFactory)
             .build()
             .makeAdditionalServicesModule()
         
         return Context(producedViewController: module,
                        scene: sceneFactory.interface,
-                       service: service)
+                       repository: service)
     }
     
 }

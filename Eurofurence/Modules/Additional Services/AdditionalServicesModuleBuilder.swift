@@ -2,9 +2,11 @@ import EurofurenceModel
 
 class AdditionalServicesModuleBuilder {
     
+    private let repository: AdditionalServicesRepository
     private var sceneFactory: HybridWebSceneFactory
     
-    init(service: AdditionalServicesRepository) {
+    init(repository: AdditionalServicesRepository) {
+        self.repository = repository
         sceneFactory = StoryboardHybridWebSceneFactory()
     }
     
@@ -15,7 +17,7 @@ class AdditionalServicesModuleBuilder {
     }
     
     func build() -> AdditionalServicesModule {
-        return AdditionalServicesModule(sceneFactory: sceneFactory)
+        return AdditionalServicesModule(repository: repository, sceneFactory: sceneFactory)
     }
     
 }

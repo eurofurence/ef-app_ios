@@ -763,6 +763,8 @@
 		CA8A73C722BD101E007A5201 /* AdditionalServicesModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73C622BD101E007A5201 /* AdditionalServicesModuleProviding.swift */; };
 		CA8A73C922BD1030007A5201 /* AdditionalServicesModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73C822BD1030007A5201 /* AdditionalServicesModule.swift */; };
 		CA8A73CC22BD10D2007A5201 /* AdditionalServicesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73CB22BD10D2007A5201 /* AdditionalServicesPresenter.swift */; };
+		CA8A73CE22BD130C007A5201 /* WhenAdditionalServicesSceneLoads_PresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73CD22BD130C007A5201 /* WhenAdditionalServicesSceneLoads_PresenterShould.swift */; };
+		CA8A73D022BD14F3007A5201 /* BeforeAdditionalServicesSceneLoads_PresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73CF22BD14F3007A5201 /* BeforeAdditionalServicesSceneLoads_PresenterShould.swift */; };
 		CA8D087122AC0CE5003E42CA /* WhenBindingStarRatingTraits_EventFeedbackPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D087022AC0CE5003E42CA /* WhenBindingStarRatingTraits_EventFeedbackPresenterShould.swift */; };
 		CA8D087922AC55B8003E42CA /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D087822AC55B8003E42CA /* PlaceholderTextView.swift */; };
 		CA8DDA1C2249045400ACD9BB /* WhenBindingEventAction_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8DDA1B2249045400ACD9BB /* WhenBindingEventAction_EventDetailPresenterShould.swift */; };
@@ -1802,6 +1804,8 @@
 		CA8A73C622BD101E007A5201 /* AdditionalServicesModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalServicesModuleProviding.swift; sourceTree = "<group>"; };
 		CA8A73C822BD1030007A5201 /* AdditionalServicesModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalServicesModule.swift; sourceTree = "<group>"; };
 		CA8A73CB22BD10D2007A5201 /* AdditionalServicesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalServicesPresenter.swift; sourceTree = "<group>"; };
+		CA8A73CD22BD130C007A5201 /* WhenAdditionalServicesSceneLoads_PresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenAdditionalServicesSceneLoads_PresenterShould.swift; sourceTree = "<group>"; };
+		CA8A73CF22BD14F3007A5201 /* BeforeAdditionalServicesSceneLoads_PresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeforeAdditionalServicesSceneLoads_PresenterShould.swift; sourceTree = "<group>"; };
 		CA8D087022AC0CE5003E42CA /* WhenBindingStarRatingTraits_EventFeedbackPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingStarRatingTraits_EventFeedbackPresenterShould.swift; sourceTree = "<group>"; };
 		CA8D087822AC55B8003E42CA /* PlaceholderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTextView.swift; sourceTree = "<group>"; };
 		CA8DDA1B2249045400ACD9BB /* WhenBindingEventAction_EventDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingEventAction_EventDetailPresenterShould.swift; sourceTree = "<group>"; };
@@ -4599,7 +4603,9 @@
 			isa = PBXGroup;
 			children = (
 				CA8A73BA22BD0BBD007A5201 /* AdditionalServicesPresenterTestBuilder.swift */,
+				CA8A73CF22BD14F3007A5201 /* BeforeAdditionalServicesSceneLoads_PresenterShould.swift */,
 				CA8A73BC22BD0C91007A5201 /* WhenBuildingAdditionalServicesModule_PresenterShould.swift */,
+				CA8A73CD22BD130C007A5201 /* WhenAdditionalServicesSceneLoads_PresenterShould.swift */,
 			);
 			path = "Presenter Tests";
 			sourceTree = "<group>";
@@ -6280,6 +6286,7 @@
 				CA63754C208CBB7800536BE2 /* StubMessagesModuleFactory.swift in Sources */,
 				CA7D8B1C222DB19B003431A0 /* DefaultNewsInteractorTestBuilderContext.swift in Sources */,
 				CA6A8D7620E264C5007536CD /* StubMapsSceneFactory.swift in Sources */,
+				CA8A73D022BD14F3007A5201 /* BeforeAdditionalServicesSceneLoads_PresenterShould.swift in Sources */,
 				CA0F762F2033119B009DA079 /* CapturingKnowledgeListModuleDelegate.swift in Sources */,
 				CA60BFFE207CDC1700697566 /* FakeAuthenticationService.swift in Sources */,
 				205B8D2E211F8E5700D9EE35 /* DownMarkdownRendererTest.swift in Sources */,
@@ -6427,6 +6434,7 @@
 				CA44C364211B55EB003C1C4E /* WhenPreparingViewModel_ForMainStageEvent_EventDetailInteractorShould.swift in Sources */,
 				CA063B4620F3E0D800241CC9 /* RestorationIdentifierOrderingPolicyTests.swift in Sources */,
 				CA1ECB411FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift in Sources */,
+				CA8A73CE22BD130C007A5201 /* WhenAdditionalServicesSceneLoads_PresenterShould.swift in Sources */,
 				CACF1E5F20AE2EF400D904B5 /* StubEventDetailSceneFactory.swift in Sources */,
 				CA8240A521249A80007E4A70 /* CapturingReviewPromptAction.swift in Sources */,
 				CAF3C74E1F9FC72C0008F027 /* StubNewsSceneFactory.swift in Sources */,
