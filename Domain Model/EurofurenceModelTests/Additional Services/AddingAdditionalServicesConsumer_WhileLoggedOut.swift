@@ -11,5 +11,16 @@ class AddingAdditionalServicesConsumer_WhileLoggedOut: XCTestCase {
         
         XCTAssertEqual(consumer.consumedAdditionalServicesURLRequest, additionalServicesRequestFactory.unauthenticatedAdditionalServicesRequest)
     }
+    
+    func testLoggingInUpdatesConsumerWithAuthenticatedURL() {
+        let additionalServicesRequestFactory = StubCompanionAppURLRequestFactory()
+        let context = EurofurenceSessionTestBuilder().with(additionalServicesRequestFactory).build()
+        let consumer = CapturingAdditionalServicesURLConsumer()
+        context.additionalServicesRepository.add(consumer)
+        context.loginSuccessfully()
+        
+        XCTAssertEqual(consumer.consumedAdditionalServicesURLRequest, additionalServicesRequestFactory.authenticatedAdditionalServicesRequest)
+        XCTAssertEqual(context.authenticationToken, additionalServicesRequestFactory.additionalServicesAuthenticationToken)
+    }
 
 }
