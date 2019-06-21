@@ -22,6 +22,17 @@ class ConcreteSession: EurofurenceSession {
     private let mapsService: ConcreteMapsService
     private let notificationService: ConcreteNotificationService
     private let contentLinksService: ConcreteContentLinksService
+    private let additionalServicesRepository: ConcreteAdditionalServicesRepository
+    
+    struct ConcreteAdditionalServicesRepository: AdditionalServicesRepository {
+        
+        var companionAppURLRequestFactory: CompanionAppURLRequestFactory
+        
+        func add(_ additionalServicesURLConsumer: AdditionalServicesURLConsumer) {
+            additionalServicesURLConsumer.consume(companionAppURLRequestFactory.makeAdditionalServicesRequest())
+        }
+        
+    }
 
     // swiftlint:disable function_body_length
     init(conventionIdentifier: ConventionIdentifier,
@@ -40,7 +51,8 @@ class ConcreteSession: EurofurenceSession {
          collectThemAllRequestFactory: CollectThemAllRequestFactory,
          longRunningTaskManager: LongRunningTaskManager?,
          mapCoordinateRender: MapCoordinateRender?,
-         forceRefreshRequired: ForceRefreshRequired) {
+         forceRefreshRequired: ForceRefreshRequired,
+         companionAppURLRequestFactory: CompanionAppURLRequestFactory) {
         
         let dataStore = dataStoreFactory.makeDataStore(for: conventionIdentifier)
 
@@ -121,6 +133,8 @@ class ConcreteSession: EurofurenceSession {
         contentLinksService = ConcreteContentLinksService(eventBus: eventBus, urlOpener: urlOpener)
         
         eventBus.subscribe(consumer: EventFeedbackService(api: api))
+        
+        additionalServicesRepository = ConcreteAdditionalServicesRepository(companionAppURLRequestFactory: companionAppURLRequestFactory)
 
         privateMessagesService.refreshMessages()
     }
@@ -140,5 +154,7 @@ class ConcreteSession: EurofurenceSession {
                         sessionState: sessionStateService,
                         privateMessages: privateMessagesService)
     }()
+    
+    lazy var repositories: Repositories = Repositories(additionalServices: additionalServicesRepository)
 
 }
