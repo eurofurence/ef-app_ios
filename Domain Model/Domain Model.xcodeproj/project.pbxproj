@@ -442,6 +442,8 @@
 		CA8A73DE22BD1EB0007A5201 /* AddingAdditionalServicesConsumer_WhileLoggedIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73DD22BD1EB0007A5201 /* AddingAdditionalServicesConsumer_WhileLoggedIn.swift */; };
 		CA8A73E022BD2062007A5201 /* AddingAdditionalServicesConsumer_AfterLoggingOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73DF22BD2062007A5201 /* AddingAdditionalServicesConsumer_AfterLoggingOut.swift */; };
 		CA8A73E322BD20B2007A5201 /* ConcreteAdditionalServicesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73E222BD20B2007A5201 /* ConcreteAdditionalServicesRepository.swift */; };
+		CA8A73E522BD2429007A5201 /* HardcodedCompanionAppURLRequestFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73E422BD2429007A5201 /* HardcodedCompanionAppURLRequestFactoryTests.swift */; };
+		CA8A73E722BD2577007A5201 /* HardcodedCompanionAppURLRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73E622BD2577007A5201 /* HardcodedCompanionAppURLRequestFactory.swift */; };
 		CB70B8B9EEAD6A8C832A3C0B /* Pods_EurofurenceModelTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26657B2D5254404DBC47C53C /* Pods_EurofurenceModelTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -909,6 +911,8 @@
 		CA8A73DD22BD1EB0007A5201 /* AddingAdditionalServicesConsumer_WhileLoggedIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingAdditionalServicesConsumer_WhileLoggedIn.swift; sourceTree = "<group>"; };
 		CA8A73DF22BD2062007A5201 /* AddingAdditionalServicesConsumer_AfterLoggingOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingAdditionalServicesConsumer_AfterLoggingOut.swift; sourceTree = "<group>"; };
 		CA8A73E222BD20B2007A5201 /* ConcreteAdditionalServicesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcreteAdditionalServicesRepository.swift; sourceTree = "<group>"; };
+		CA8A73E422BD2429007A5201 /* HardcodedCompanionAppURLRequestFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardcodedCompanionAppURLRequestFactoryTests.swift; sourceTree = "<group>"; };
+		CA8A73E622BD2577007A5201 /* HardcodedCompanionAppURLRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardcodedCompanionAppURLRequestFactory.swift; sourceTree = "<group>"; };
 		EC85896EECB18D7881B0665A /* Pods-EurofurenceModel-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-EurofurenceModel-metadata.plist"; sourceTree = "<group>"; };
 		FFE87D86E3ECE04913805820 /* Pods_EurofurenceModelTestDoubles.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EurofurenceModelTestDoubles.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -1123,6 +1127,7 @@
 			children = (
 				CA7A2F6622B16DE3002AD939 /* BundleAppVersionProviding.swift */,
 				CA7A2F6422B16DE3002AD939 /* DefaultCollectThemAllRequestFactory.swift */,
+				CA8A73E622BD2577007A5201 /* HardcodedCompanionAppURLRequestFactory.swift */,
 				CA7A2F6922B16DE3002AD939 /* KeychainCredentialStore.swift */,
 				CA7A2F6822B16DE3002AD939 /* PersistentImageRepository.swift */,
 				CA7A2F6A22B16DE3002AD939 /* PreprocessorBuildConfigurationProviding.swift */,
@@ -2028,9 +2033,10 @@
 		CA8A73D122BD15CB007A5201 /* Additional Services */ = {
 			isa = PBXGroup;
 			children = (
-				CA8A73D222BD15E4007A5201 /* AddingAdditionalServicesConsumer_WhileLoggedOut.swift */,
-				CA8A73DD22BD1EB0007A5201 /* AddingAdditionalServicesConsumer_WhileLoggedIn.swift */,
 				CA8A73DF22BD2062007A5201 /* AddingAdditionalServicesConsumer_AfterLoggingOut.swift */,
+				CA8A73DD22BD1EB0007A5201 /* AddingAdditionalServicesConsumer_WhileLoggedIn.swift */,
+				CA8A73D222BD15E4007A5201 /* AddingAdditionalServicesConsumer_WhileLoggedOut.swift */,
+				CA8A73E422BD2429007A5201 /* HardcodedCompanionAppURLRequestFactoryTests.swift */,
 			);
 			path = "Additional Services";
 			sourceTree = "<group>";
@@ -2545,6 +2551,7 @@
 				CA7A302622B16DE4002AD939 /* FavouriteEventEntity+Adaptation.swift in Sources */,
 				CA8A73D822BD196A007A5201 /* CompanionAppURLRequestFactory.swift in Sources */,
 				CA7A303E22B16DE4002AD939 /* MapCoordinateRender.swift in Sources */,
+				CA8A73E722BD2577007A5201 /* HardcodedCompanionAppURLRequestFactory.swift in Sources */,
 				CA7A308422B16DE4002AD939 /* EventImpl.swift in Sources */,
 				CA7A304722B16DE4002AD939 /* DataStoreFactory.swift in Sources */,
 				CA7A302F22B16DE4002AD939 /* EventEntity+Adaptation.swift in Sources */,
@@ -2736,6 +2743,7 @@
 				CA7A31D122B16E26002AD939 /* WhenFullRefreshOccurs_YieldingOrphanedEntities.swift in Sources */,
 				CA7A31B022B16E26002AD939 /* WhenDataStoreAlreadyContainsMaps_ApplicationShould.swift in Sources */,
 				CA7A319922B16E26002AD939 /* KnowledgeGroupsRemoveAllBeforeInsertTests.swift in Sources */,
+				CA8A73E522BD2429007A5201 /* HardcodedCompanionAppURLRequestFactoryTests.swift in Sources */,
 				CA7A322322B16E26002AD939 /* InOrderToSupportKageTag_ApplicationShould.swift in Sources */,
 				CA7A319C22B16E26002AD939 /* WhenDeletingKnowledgeGroup_AfterSuccessfulSync_ApplicationShould.swift in Sources */,
 				CA7A31C522B16E26002AD939 /* WhenPerformingSubsequentRefresh_WhereConventionIdentifierMismatchDetected.swift in Sources */,
