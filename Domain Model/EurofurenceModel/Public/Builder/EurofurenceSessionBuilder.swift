@@ -40,14 +40,7 @@ public class EurofurenceSessionBuilder {
         imageRepository = PersistentImageRepository()
         collectThemAllRequestFactory = DefaultCollectThemAllRequestFactory()
         forceRefreshRequired = UserDefaultsForceRefreshRequired()
-        
-        struct DummyCompanionAppURLRequestFactory: CompanionAppURLRequestFactory {
-            func makeAdditionalServicesRequest(authenticationToken: String?) -> URLRequest {
-                return URLRequest(url: unwrap(URL(string: "https://app.eurofurence.org")))
-            }
-        }
-        
-        companionAppURLRequestFactory = DummyCompanionAppURLRequestFactory()
+        companionAppURLRequestFactory = HardcodedCompanionAppURLRequestFactory()
     }
 
     @discardableResult
