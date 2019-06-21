@@ -42,7 +42,7 @@ public class EurofurenceSessionBuilder {
         forceRefreshRequired = UserDefaultsForceRefreshRequired()
         
         struct DummyCompanionAppURLRequestFactory: CompanionAppURLRequestFactory {
-            func makeAdditionalServicesRequest() -> URLRequest {
+            func makeAdditionalServicesRequest(authenticationToken: String?) -> URLRequest {
                 return URLRequest(url: unwrap(URL(string: "https://app.eurofurence.org")))
             }
         }

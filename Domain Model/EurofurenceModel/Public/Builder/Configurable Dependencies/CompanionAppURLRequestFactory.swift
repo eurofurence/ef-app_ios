@@ -2,6 +2,6 @@ import Foundation
 
 public protocol CompanionAppURLRequestFactory {
     
-    func makeAdditionalServicesRequest() -> URLRequest
+    func makeAdditionalServicesRequest(authenticationToken: String?) -> URLRequest
     
 }

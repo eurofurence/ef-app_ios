@@ -439,6 +439,7 @@
 		CA8A73D822BD196A007A5201 /* CompanionAppURLRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73D722BD196A007A5201 /* CompanionAppURLRequestFactory.swift */; };
 		CA8A73DA22BD197C007A5201 /* StubCompanionAppURLRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73D922BD197C007A5201 /* StubCompanionAppURLRequestFactory.swift */; };
 		CA8A73DC22BD198F007A5201 /* CapturingAdditionalServicesURLConsumer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73DB22BD198F007A5201 /* CapturingAdditionalServicesURLConsumer.swift */; };
+		CA8A73DE22BD1EB0007A5201 /* AddingAdditionalServicesConsumer_WhileLoggedIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73DD22BD1EB0007A5201 /* AddingAdditionalServicesConsumer_WhileLoggedIn.swift */; };
 		CB70B8B9EEAD6A8C832A3C0B /* Pods_EurofurenceModelTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26657B2D5254404DBC47C53C /* Pods_EurofurenceModelTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -903,6 +904,7 @@
 		CA8A73D722BD196A007A5201 /* CompanionAppURLRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanionAppURLRequestFactory.swift; sourceTree = "<group>"; };
 		CA8A73D922BD197C007A5201 /* StubCompanionAppURLRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubCompanionAppURLRequestFactory.swift; sourceTree = "<group>"; };
 		CA8A73DB22BD198F007A5201 /* CapturingAdditionalServicesURLConsumer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingAdditionalServicesURLConsumer.swift; sourceTree = "<group>"; };
+		CA8A73DD22BD1EB0007A5201 /* AddingAdditionalServicesConsumer_WhileLoggedIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingAdditionalServicesConsumer_WhileLoggedIn.swift; sourceTree = "<group>"; };
 		EC85896EECB18D7881B0665A /* Pods-EurofurenceModel-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-EurofurenceModel-metadata.plist"; sourceTree = "<group>"; };
 		FFE87D86E3ECE04913805820 /* Pods_EurofurenceModelTestDoubles.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EurofurenceModelTestDoubles.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -1195,6 +1197,7 @@
 				CA7A2F9122B16DE3002AD939 /* BuildConfigurationProviding.swift */,
 				CA7A2F8C22B16DE3002AD939 /* Clock.swift */,
 				CA7A2F9E22B16DE3002AD939 /* CollectThemAllRequestFactory.swift */,
+				CA8A73D722BD196A007A5201 /* CompanionAppURLRequestFactory.swift */,
 				CA7A2F9C22B16DE3002AD939 /* ConventionStartDateRepository.swift */,
 				CA7A2F9022B16DE3002AD939 /* CredentialStore.swift */,
 				CA7A2F8D22B16DE3002AD939 /* DateDistanceCalculator.swift */,
@@ -1208,7 +1211,6 @@
 				CA7A2F9322B16DE3002AD939 /* URLOpener.swift */,
 				CA7A2F8E22B16DE3002AD939 /* UserPreferences.swift */,
 				CA7A2F9622B16DE3002AD939 /* Data Store */,
-				CA8A73D722BD196A007A5201 /* CompanionAppURLRequestFactory.swift */,
 			);
 			path = "Configurable Dependencies";
 			sourceTree = "<group>";
@@ -2022,6 +2024,7 @@
 			isa = PBXGroup;
 			children = (
 				CA8A73D222BD15E4007A5201 /* AddingAdditionalServicesConsumer_WhileLoggedOut.swift */,
+				CA8A73DD22BD1EB0007A5201 /* AddingAdditionalServicesConsumer_WhileLoggedIn.swift */,
 			);
 			path = "Additional Services";
 			sourceTree = "<group>";
@@ -2726,6 +2729,7 @@
 				CA7A31F222B16E26002AD939 /* CapturingLogoutObserver.swift in Sources */,
 				CA7A31FB22B16E26002AD939 /* EurofurenceSessionTestBuilder.swift in Sources */,
 				CA7A31ED22B16E26002AD939 /* FakeAPI.swift in Sources */,
+				CA8A73DE22BD1EB0007A5201 /* AddingAdditionalServicesConsumer_WhileLoggedIn.swift in Sources */,
 				CA7A31DE22B16E26002AD939 /* StubForceRefreshRequired.swift in Sources */,
 				CA7A31F522B16E26002AD939 /* CapturingConventionCountdownServiceObserver.swift in Sources */,
 				CA7A321022B16E26002AD939 /* WhenFetchingDaysBeforeRefreshWhenStoreHasConferenceDays.swift in Sources */,

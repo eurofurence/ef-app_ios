@@ -24,12 +24,24 @@ class ConcreteSession: EurofurenceSession {
     private let contentLinksService: ConcreteContentLinksService
     private let additionalServicesRepository: ConcreteAdditionalServicesRepository
     
-    struct ConcreteAdditionalServicesRepository: AdditionalServicesRepository {
+    class ConcreteAdditionalServicesRepository: AdditionalServicesRepository, EventConsumer {
         
-        var companionAppURLRequestFactory: CompanionAppURLRequestFactory
+        private let companionAppURLRequestFactory: CompanionAppURLRequestFactory
+        private var authenticationToken: String?
+        
+        init(eventBus: EventBus, companionAppURLRequestFactory: CompanionAppURLRequestFactory) {
+            self.companionAppURLRequestFactory = companionAppURLRequestFactory
+            
+            eventBus.subscribe(consumer: self)
+        }
+        
+        func consume(event: DomainEvent.LoggedIn) {
+            authenticationToken = event.authenticationToken
+        }
         
         func add(_ additionalServicesURLConsumer: AdditionalServicesURLConsumer) {
-            additionalServicesURLConsumer.consume(companionAppURLRequestFactory.makeAdditionalServicesRequest())
+            let request = companionAppURLRequestFactory.makeAdditionalServicesRequest(authenticationToken: authenticationToken)
+            additionalServicesURLConsumer.consume(request)
         }
         
     }
@@ -64,6 +76,9 @@ class ConcreteSession: EurofurenceSession {
                                                                                             remoteNotificationsTokenRegistration: remoteNotificationsTokenRegistration)
 
         privateMessagesService = ConcretePrivateMessagesService(eventBus: eventBus, api: api)
+        
+        additionalServicesRepository = ConcreteAdditionalServicesRepository(eventBus: eventBus,
+                                                                            companionAppURLRequestFactory: companionAppURLRequestFactory)
 
         authenticationService = ConcreteAuthenticationService(eventBus: eventBus,
                                                               clock: clock,
@@ -133,8 +148,6 @@ class ConcreteSession: EurofurenceSession {
         contentLinksService = ConcreteContentLinksService(eventBus: eventBus, urlOpener: urlOpener)
         
         eventBus.subscribe(consumer: EventFeedbackService(api: api))
-        
-        additionalServicesRepository = ConcreteAdditionalServicesRepository(companionAppURLRequestFactory: companionAppURLRequestFactory)
 
         privateMessagesService.refreshMessages()
     }
