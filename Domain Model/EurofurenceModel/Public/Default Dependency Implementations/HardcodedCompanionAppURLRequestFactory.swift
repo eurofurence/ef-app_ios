@@ -9,7 +9,7 @@ public struct HardcodedCompanionAppURLRequestFactory: CompanionAppURLRequestFact
     public func makeAdditionalServicesRequest(authenticationToken: String?) -> URLRequest {
         let tokenValue = authenticationToken ?? ""
         
-        guard let url = URL(string: "https://app.eurofurence.org/EF25/companion/#/login?embedded=true&returnPath=/collect&token=\(tokenValue)") else {
+        guard let url = URL(string: "https://app.eurofurence.org/EF25/companion/#/login?embedded=true&returnPath=/&token=\(tokenValue)") else {
             fatalError("Unable to marshall companion app URL string into URL")
         }
         
