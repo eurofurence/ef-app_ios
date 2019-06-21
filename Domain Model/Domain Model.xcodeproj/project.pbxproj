@@ -444,6 +444,7 @@
 		CA8A73E322BD20B2007A5201 /* ConcreteAdditionalServicesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73E222BD20B2007A5201 /* ConcreteAdditionalServicesRepository.swift */; };
 		CA8A73E522BD2429007A5201 /* HardcodedCompanionAppURLRequestFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73E422BD2429007A5201 /* HardcodedCompanionAppURLRequestFactoryTests.swift */; };
 		CA8A73E722BD2577007A5201 /* HardcodedCompanionAppURLRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73E622BD2577007A5201 /* HardcodedCompanionAppURLRequestFactory.swift */; };
+		CA8A73E922BD3035007A5201 /* Credential+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73E822BD3035007A5201 /* Credential+Random.swift */; };
 		CB70B8B9EEAD6A8C832A3C0B /* Pods_EurofurenceModelTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26657B2D5254404DBC47C53C /* Pods_EurofurenceModelTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -913,6 +914,7 @@
 		CA8A73E222BD20B2007A5201 /* ConcreteAdditionalServicesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcreteAdditionalServicesRepository.swift; sourceTree = "<group>"; };
 		CA8A73E422BD2429007A5201 /* HardcodedCompanionAppURLRequestFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardcodedCompanionAppURLRequestFactoryTests.swift; sourceTree = "<group>"; };
 		CA8A73E622BD2577007A5201 /* HardcodedCompanionAppURLRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardcodedCompanionAppURLRequestFactory.swift; sourceTree = "<group>"; };
+		CA8A73E822BD3035007A5201 /* Credential+Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Credential+Random.swift"; sourceTree = "<group>"; };
 		EC85896EECB18D7881B0665A /* Pods-EurofurenceModel-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-EurofurenceModel-metadata.plist"; sourceTree = "<group>"; };
 		FFE87D86E3ECE04913805820 /* Pods_EurofurenceModelTestDoubles.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EurofurenceModelTestDoubles.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -1598,6 +1600,7 @@
 			isa = PBXGroup;
 			children = (
 				CA7A30FE22B16E25002AD939 /* Array+Equality.swift */,
+				CA8A73E822BD3035007A5201 /* Credential+Random.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2731,6 +2734,7 @@
 				CA7A31AA22B16E26002AD939 /* WhenFetchingMapContents_ThatRevealsMapEntry_ApplicationShould.swift in Sources */,
 				CA7A31FE22B16E26002AD939 /* DealerAssertion.swift in Sources */,
 				CA7A31C022B16E26002AD939 /* WhenSyncingWhileLoggedIn.swift in Sources */,
+				CA8A73E922BD3035007A5201 /* Credential+Random.swift in Sources */,
 				CA7A31C922B16E26002AD939 /* WhenLookingUpMailToLinks.swift in Sources */,
 				CA7A321D22B16E26002AD939 /* WhenObservingRunningEvents_ThenLoadSucceeds.swift in Sources */,
 				CA7A324922B16E26002AD939 /* WhenRestrictingSearchResultsToFavourites_ScheduleShould.swift in Sources */,

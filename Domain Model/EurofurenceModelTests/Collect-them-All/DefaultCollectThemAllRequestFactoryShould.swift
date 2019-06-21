@@ -13,10 +13,7 @@ class DefaultCollectThemAllRequestFactoryShould: XCTestCase {
 
     func testProduceExpectedAuthenticatedRequest() {
         let factory = DefaultCollectThemAllRequestFactory()
-        let credential = Credential(username: .random,
-                                    registrationNumber: .random,
-                                    authenticationToken: .random,
-                                    tokenExpiryDate: .random)
+        let credential = Credential.randomValidCredential
         let authenticatedRequest = factory.makeAuthenticatedGameURLRequest(credential: credential)
         let expectedURL = unwrap(URL(string: "https://app.eurofurence.org/EF25/companion/#/login?embedded=true&returnPath=/collect&token=\(credential.authenticationToken)"))
 

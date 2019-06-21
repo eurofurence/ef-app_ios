@@ -5,10 +5,7 @@ class AddingAdditionalServicesConsumer_WhileLoggedIn: XCTestCase {
 
     func testShouldProvideAuthenticatedURLToConsumer() {
         let additionalServicesRequestFactory = StubCompanionAppURLRequestFactory()
-        let credential = Credential(username: .random,
-                                    registrationNumber: .random,
-                                    authenticationToken: .random,
-                                    tokenExpiryDate: .random)
+        let credential = Credential.randomValidCredential
         let context = EurofurenceSessionTestBuilder().with(credential).with(additionalServicesRequestFactory).build()
         let consumer = CapturingAdditionalServicesURLConsumer()
         context.additionalServicesRepository.add(consumer)
@@ -19,10 +16,7 @@ class AddingAdditionalServicesConsumer_WhileLoggedIn: XCTestCase {
     
     func testLoggingOutUpdatesConsumerWithUnauthenticatedURL() {
         let additionalServicesRequestFactory = StubCompanionAppURLRequestFactory()
-        let credential = Credential(username: .random,
-                                    registrationNumber: .random,
-                                    authenticationToken: .random,
-                                    tokenExpiryDate: .random)
+        let credential = Credential.randomValidCredential
         let context = EurofurenceSessionTestBuilder().with(credential).with(additionalServicesRequestFactory).build()
         let consumer = CapturingAdditionalServicesURLConsumer()
         context.additionalServicesRepository.add(consumer)

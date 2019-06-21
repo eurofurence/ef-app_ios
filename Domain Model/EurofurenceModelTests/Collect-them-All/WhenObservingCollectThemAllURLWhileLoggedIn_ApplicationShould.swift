@@ -5,10 +5,7 @@ class WhenObservingCollectThemAllURLWhileLoggedIn_ApplicationShould: XCTestCase 
 
     func testEmitAuthenticatedGameURLForUser() {
         let collectThemAllRequestFactory = StubCollectThemAllRequestFactory()
-        let credential = Credential(username: .random,
-                                    registrationNumber: .random,
-                                    authenticationToken: .random,
-                                    tokenExpiryDate: .random)
+        let credential = Credential.randomValidCredential
         let context = EurofurenceSessionTestBuilder().with(collectThemAllRequestFactory).with(credential).build()
         let observer = CapturingCollectThemAllURLObserver()
         context.collectThemAllService.subscribe(observer)
@@ -19,10 +16,7 @@ class WhenObservingCollectThemAllURLWhileLoggedIn_ApplicationShould: XCTestCase 
 
     func testUpdateTheObserversWithTheAnonymousRequestWhenLoggingOut() {
         let collectThemAllRequestFactory = StubCollectThemAllRequestFactory()
-        let credential = Credential(username: .random,
-                                    registrationNumber: .random,
-                                    authenticationToken: .random,
-                                    tokenExpiryDate: .random)
+        let credential = Credential.randomValidCredential
         let context = EurofurenceSessionTestBuilder().with(collectThemAllRequestFactory).with(credential).build()
         let observer = CapturingCollectThemAllURLObserver()
         context.collectThemAllService.subscribe(observer)
