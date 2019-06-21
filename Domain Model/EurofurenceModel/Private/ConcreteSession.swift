@@ -23,28 +23,6 @@ class ConcreteSession: EurofurenceSession {
     private let notificationService: ConcreteNotificationService
     private let contentLinksService: ConcreteContentLinksService
     private let additionalServicesRepository: ConcreteAdditionalServicesRepository
-    
-    class ConcreteAdditionalServicesRepository: AdditionalServicesRepository, EventConsumer {
-        
-        private let companionAppURLRequestFactory: CompanionAppURLRequestFactory
-        private var authenticationToken: String?
-        
-        init(eventBus: EventBus, companionAppURLRequestFactory: CompanionAppURLRequestFactory) {
-            self.companionAppURLRequestFactory = companionAppURLRequestFactory
-            
-            eventBus.subscribe(consumer: self)
-        }
-        
-        func consume(event: DomainEvent.LoggedIn) {
-            authenticationToken = event.authenticationToken
-        }
-        
-        func add(_ additionalServicesURLConsumer: AdditionalServicesURLConsumer) {
-            let request = companionAppURLRequestFactory.makeAdditionalServicesRequest(authenticationToken: authenticationToken)
-            additionalServicesURLConsumer.consume(request)
-        }
-        
-    }
 
     // swiftlint:disable function_body_length
     init(conventionIdentifier: ConventionIdentifier,

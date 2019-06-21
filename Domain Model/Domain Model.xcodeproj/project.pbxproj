@@ -440,6 +440,8 @@
 		CA8A73DA22BD197C007A5201 /* StubCompanionAppURLRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73D922BD197C007A5201 /* StubCompanionAppURLRequestFactory.swift */; };
 		CA8A73DC22BD198F007A5201 /* CapturingAdditionalServicesURLConsumer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73DB22BD198F007A5201 /* CapturingAdditionalServicesURLConsumer.swift */; };
 		CA8A73DE22BD1EB0007A5201 /* AddingAdditionalServicesConsumer_WhileLoggedIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73DD22BD1EB0007A5201 /* AddingAdditionalServicesConsumer_WhileLoggedIn.swift */; };
+		CA8A73E022BD2062007A5201 /* AddingAdditionalServicesConsumer_AfterLoggingOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73DF22BD2062007A5201 /* AddingAdditionalServicesConsumer_AfterLoggingOut.swift */; };
+		CA8A73E322BD20B2007A5201 /* ConcreteAdditionalServicesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73E222BD20B2007A5201 /* ConcreteAdditionalServicesRepository.swift */; };
 		CB70B8B9EEAD6A8C832A3C0B /* Pods_EurofurenceModelTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26657B2D5254404DBC47C53C /* Pods_EurofurenceModelTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -905,6 +907,8 @@
 		CA8A73D922BD197C007A5201 /* StubCompanionAppURLRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubCompanionAppURLRequestFactory.swift; sourceTree = "<group>"; };
 		CA8A73DB22BD198F007A5201 /* CapturingAdditionalServicesURLConsumer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingAdditionalServicesURLConsumer.swift; sourceTree = "<group>"; };
 		CA8A73DD22BD1EB0007A5201 /* AddingAdditionalServicesConsumer_WhileLoggedIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingAdditionalServicesConsumer_WhileLoggedIn.swift; sourceTree = "<group>"; };
+		CA8A73DF22BD2062007A5201 /* AddingAdditionalServicesConsumer_AfterLoggingOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingAdditionalServicesConsumer_AfterLoggingOut.swift; sourceTree = "<group>"; };
+		CA8A73E222BD20B2007A5201 /* ConcreteAdditionalServicesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcreteAdditionalServicesRepository.swift; sourceTree = "<group>"; };
 		EC85896EECB18D7881B0665A /* Pods-EurofurenceModel-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-EurofurenceModel-metadata.plist"; sourceTree = "<group>"; };
 		FFE87D86E3ECE04913805820 /* Pods_EurofurenceModelTestDoubles.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EurofurenceModelTestDoubles.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -1328,6 +1332,7 @@
 				CA7A2FCE22B16DE3002AD939 /* SignificantTimeObserver.swift */,
 				CA7A2FD022B16DE3002AD939 /* Domain Events */,
 				CA7A2FDC22B16DE3002AD939 /* Objects */,
+				CA8A73E122BD20A6007A5201 /* Repositories */,
 				CA7A2FEC22B16DE3002AD939 /* Services */,
 				CA7A2FE722B16DE3002AD939 /* Utilities */,
 			);
@@ -2025,6 +2030,7 @@
 			children = (
 				CA8A73D222BD15E4007A5201 /* AddingAdditionalServicesConsumer_WhileLoggedOut.swift */,
 				CA8A73DD22BD1EB0007A5201 /* AddingAdditionalServicesConsumer_WhileLoggedIn.swift */,
+				CA8A73DF22BD2062007A5201 /* AddingAdditionalServicesConsumer_AfterLoggingOut.swift */,
 			);
 			path = "Additional Services";
 			sourceTree = "<group>";
@@ -2033,6 +2039,14 @@
 			isa = PBXGroup;
 			children = (
 				CA8A73BE22BD0FC2007A5201 /* AdditionalServicesRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		CA8A73E122BD20A6007A5201 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				CA8A73E222BD20B2007A5201 /* ConcreteAdditionalServicesRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -2418,6 +2432,7 @@
 				CA7A303922B16DE4002AD939 /* Optional+Extensions.swift in Sources */,
 				CA7A307C22B16DE4002AD939 /* SignificantTimePassedEvent.swift in Sources */,
 				CA7A302222B16DE4002AD939 /* ConferenceDayEntity+Adaptation.swift in Sources */,
+				CA8A73E322BD20B2007A5201 /* ConcreteAdditionalServicesRepository.swift in Sources */,
 				CA7A302822B16DE4002AD939 /* KnowledgeEntryEntity+Adaptation.swift in Sources */,
 				CA7A307622B16DE4002AD939 /* UnfavouriteEvent.swift in Sources */,
 				CA7A305A22B16DE4002AD939 /* MessageCharacteristics.swift in Sources */,
@@ -2757,6 +2772,7 @@
 				CA7A319722B16E26002AD939 /* KnowledgeEntriesRemoveAllBeforeInsertTests.swift in Sources */,
 				CA7A31F922B16E26002AD939 /* CapturingRemoteNotificationsTokenRegistration.swift in Sources */,
 				CA7A320A22B16E26002AD939 /* WhenFetchingExtendedDealerData_ApplicationShould.swift in Sources */,
+				CA8A73E022BD2062007A5201 /* AddingAdditionalServicesConsumer_AfterLoggingOut.swift in Sources */,
 				CA7A31AF22B16E26002AD939 /* WhenObservingMaps_ThenSyncSucceeds_ApplicationShould.swift in Sources */,
 				CA7A325022B16E26002AD939 /* WhenRegisteredForPushNotifications.swift in Sources */,
 				CA7A324D22B16E26002AD939 /* WhenLoggingOutSuccessfully.swift in Sources */,
