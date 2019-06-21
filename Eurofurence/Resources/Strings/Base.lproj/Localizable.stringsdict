@@ -12,6 +12,8 @@
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>li</string>
+			<key>zero</key>
+			<string>You have no unread messages</string>
 			<key>one</key>
 			<string>You have %li unread message</string>
 			<key>other</key>
