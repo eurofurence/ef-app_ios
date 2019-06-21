@@ -4,10 +4,11 @@ class ConcreteAdditionalServicesRepository: AdditionalServicesRepository {
     
     private let companionAppURLRequestFactory: CompanionAppURLRequestFactory
     private var consumers = [AdditionalServicesURLConsumer]()
-    private var authenticationToken: String?
+    private var currentAdditionalServicesRequest: URLRequest
     
     init(eventBus: EventBus, companionAppURLRequestFactory: CompanionAppURLRequestFactory) {
         self.companionAppURLRequestFactory = companionAppURLRequestFactory
+        currentAdditionalServicesRequest = companionAppURLRequestFactory.makeAdditionalServicesRequest(authenticationToken: nil)
         
         eventBus.subscribe(loggedIn)
         eventBus.subscribe(loggedOut)
@@ -15,27 +16,21 @@ class ConcreteAdditionalServicesRepository: AdditionalServicesRepository {
     
     func add(_ additionalServicesURLConsumer: AdditionalServicesURLConsumer) {
         consumers.append(additionalServicesURLConsumer)
-        
-        let request = companionAppURLRequestFactory.makeAdditionalServicesRequest(authenticationToken: authenticationToken)
-        additionalServicesURLConsumer.consume(request)
+        additionalServicesURLConsumer.consume(currentAdditionalServicesRequest)
     }
     
     private func loggedOut(_ event: DomainEvent.LoggedOut) {
-        authenticationToken = nil
-        
-        consumers.forEach { (additionalServicesURLConsumer) in
-            let request = companionAppURLRequestFactory.makeAdditionalServicesRequest(authenticationToken: authenticationToken)
-            additionalServicesURLConsumer.consume(request)
-        }
+        currentAdditionalServicesRequest = companionAppURLRequestFactory.makeAdditionalServicesRequest(authenticationToken: nil)
+        updateConsumersWithChangedServicesRequest()
     }
     
     private func loggedIn(_ event: DomainEvent.LoggedIn) {
-        authenticationToken = event.authenticationToken
-        
-        consumers.forEach { (additionalServicesURLConsumer) in
-            let request = companionAppURLRequestFactory.makeAdditionalServicesRequest(authenticationToken: authenticationToken)
-            additionalServicesURLConsumer.consume(request)
-        }
+        currentAdditionalServicesRequest = companionAppURLRequestFactory.makeAdditionalServicesRequest(authenticationToken: event.authenticationToken)
+        updateConsumersWithChangedServicesRequest()
+    }
+    
+    private func updateConsumersWithChangedServicesRequest() {
+        consumers.forEach({ $0.consume(currentAdditionalServicesRequest) })
     }
     
 }
