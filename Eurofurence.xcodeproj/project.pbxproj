@@ -762,6 +762,7 @@
 		CA8A73C222BD0FE5007A5201 /* AdditionalServicesModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73C122BD0FE5007A5201 /* AdditionalServicesModuleBuilder.swift */; };
 		CA8A73C722BD101E007A5201 /* AdditionalServicesModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73C622BD101E007A5201 /* AdditionalServicesModuleProviding.swift */; };
 		CA8A73C922BD1030007A5201 /* AdditionalServicesModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73C822BD1030007A5201 /* AdditionalServicesModule.swift */; };
+		CA8A73CC22BD10D2007A5201 /* AdditionalServicesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73CB22BD10D2007A5201 /* AdditionalServicesPresenter.swift */; };
 		CA8D087122AC0CE5003E42CA /* WhenBindingStarRatingTraits_EventFeedbackPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D087022AC0CE5003E42CA /* WhenBindingStarRatingTraits_EventFeedbackPresenterShould.swift */; };
 		CA8D087922AC55B8003E42CA /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D087822AC55B8003E42CA /* PlaceholderTextView.swift */; };
 		CA8DDA1C2249045400ACD9BB /* WhenBindingEventAction_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8DDA1B2249045400ACD9BB /* WhenBindingEventAction_EventDetailPresenterShould.swift */; };
@@ -1800,6 +1801,7 @@
 		CA8A73C122BD0FE5007A5201 /* AdditionalServicesModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalServicesModuleBuilder.swift; sourceTree = "<group>"; };
 		CA8A73C622BD101E007A5201 /* AdditionalServicesModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalServicesModuleProviding.swift; sourceTree = "<group>"; };
 		CA8A73C822BD1030007A5201 /* AdditionalServicesModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalServicesModule.swift; sourceTree = "<group>"; };
+		CA8A73CB22BD10D2007A5201 /* AdditionalServicesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalServicesPresenter.swift; sourceTree = "<group>"; };
 		CA8D087022AC0CE5003E42CA /* WhenBindingStarRatingTraits_EventFeedbackPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingStarRatingTraits_EventFeedbackPresenterShould.swift; sourceTree = "<group>"; };
 		CA8D087822AC55B8003E42CA /* PlaceholderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTextView.swift; sourceTree = "<group>"; };
 		CA8DDA1B2249045400ACD9BB /* WhenBindingEventAction_EventDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingEventAction_EventDetailPresenterShould.swift; sourceTree = "<group>"; };
@@ -4605,8 +4607,9 @@
 		CA8A73C022BD0FD6007A5201 /* Additional Services */ = {
 			isa = PBXGroup;
 			children = (
-				CA8A73C522BD1017007A5201 /* Module */,
 				CA8A73C122BD0FE5007A5201 /* AdditionalServicesModuleBuilder.swift */,
+				CA8A73C522BD1017007A5201 /* Module */,
+				CA8A73CA22BD10CC007A5201 /* Presenter */,
 			);
 			path = "Additional Services";
 			sourceTree = "<group>";
@@ -4618,6 +4621,14 @@
 				CA8A73C622BD101E007A5201 /* AdditionalServicesModuleProviding.swift */,
 			);
 			path = Module;
+			sourceTree = "<group>";
+		};
+		CA8A73CA22BD10CC007A5201 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				CA8A73CB22BD10D2007A5201 /* AdditionalServicesPresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		CA8E7EFF1FB0940600F0BF10 /* Tab */ = {
@@ -6163,6 +6174,7 @@
 				CA6A8D9220E2C554007536CD /* MapCollectionViewCell.swift in Sources */,
 				CADABEF021147D560023C3B6 /* EventInformationBannerTableViewCell.swift in Sources */,
 				CA6AA0011FD6C5FD0092C6DB /* LoginModuleBuilder.swift in Sources */,
+				CA8A73CC22BD10D2007A5201 /* AdditionalServicesPresenter.swift in Sources */,
 				CACF1E6F20B1CDC300D904B5 /* EventDetailViewModel.swift in Sources */,
 				CA283A5A20E6E24300F7D195 /* ApplicationLongRunningTaskManager.swift in Sources */,
 				CABA439F1FD578E1009CB5B0 /* NewsModuleBuilder.swift in Sources */,

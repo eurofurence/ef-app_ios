@@ -6,8 +6,7 @@ struct AdditionalServicesModule: AdditionalServicesModuleProviding {
     
     func makeAdditionalServicesModule() -> UIViewController {
         let scene = sceneFactory.makeHybridWebScene()
-        scene.setSceneTitle(.additionalServices)
-        scene.setSceneShortTitle(.services)
+        _ = AdditionalServicesPresenter(scene: scene)
         
         return scene
     }
