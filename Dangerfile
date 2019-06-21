@@ -51,11 +51,11 @@ def catch_untested_code
 
     model_tests_changed = is_dir_modified("EurofurenceModelTests")
     if is_dir_modified("EurofurenceModel") && !model_tests_changed
-        warn("The model was modified but it's tests weren't. Unless this change is a refactor, please backfill tests for behavioural changes")
+        warn("The model was modified but no tests were changed - unless this change is a refactor please backfill tests for behavioural changes")
     end
     
     if model_tests_changed && !is_dir_modified("EurofurenceModelTestDoubles")
-        message("If any API contracts have changed, make sure to update the corresponding test doubles")
+        message("Model changes detected - if any behavioural contracts have changed make sure to update the corresponding test doubles")
     end
 end
 
