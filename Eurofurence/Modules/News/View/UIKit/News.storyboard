@@ -185,11 +185,19 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Se9-cw-Plh" customClass="NavigationBarViewExtensionContainer" customModule="Eurofurence" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Ogd-Bj-WFd" firstAttribute="bottom" secondItem="HxA-JQ-dZ1" secondAttribute="bottom" id="IXW-Ey-fpB"/>
+                            <constraint firstAttribute="trailing" secondItem="Se9-cw-Plh" secondAttribute="trailing" id="Ou6-tW-wox"/>
                             <constraint firstItem="Ogd-Bj-WFd" firstAttribute="trailing" secondItem="HxA-JQ-dZ1" secondAttribute="trailing" id="WAM-l1-Po1"/>
+                            <constraint firstItem="Se9-cw-Plh" firstAttribute="leading" secondItem="Y7u-ae-31r" secondAttribute="leading" id="WGS-VB-RtL"/>
+                            <constraint firstItem="Ogd-Bj-WFd" firstAttribute="top" secondItem="Se9-cw-Plh" secondAttribute="bottom" id="YMN-0r-JrN"/>
+                            <constraint firstItem="Se9-cw-Plh" firstAttribute="top" secondItem="Y7u-ae-31r" secondAttribute="top" id="iF6-43-xZ4"/>
                             <constraint firstItem="Ogd-Bj-WFd" firstAttribute="top" secondItem="HxA-JQ-dZ1" secondAttribute="top" id="m3z-Vl-l5l"/>
                             <constraint firstItem="Ogd-Bj-WFd" firstAttribute="leading" secondItem="HxA-JQ-dZ1" secondAttribute="leading" id="uvQ-e8-oIv"/>
                         </constraints>
