@@ -56,7 +56,9 @@ class ConcreteDealersService: DealersService {
             alphebetisedDealers = sortedGroups.map({ (arg) -> AlphabetisedDealersGroup in
                 let (index, dealers) = arg
                 return AlphabetisedDealersGroup(indexingString: index,
-                                                dealers: dealers.sorted(by: { $0.preferredName < $1.preferredName }))
+                                                dealers: dealers.sorted(by: { (first, second) -> Bool in
+                                                    return first.preferredName.lowercased() < second.preferredName.lowercased()
+                                                }))
             })
         }
 
