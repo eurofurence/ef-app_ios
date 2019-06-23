@@ -52,6 +52,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="navigationBarExtension" destination="6mj-pw-eS0" id="MEY-1A-Lj6"/>
                         <outlet property="tableView" destination="dHW-vm-Gc3" id="Syc-pg-Xns"/>
                     </connections>
                 </viewController>

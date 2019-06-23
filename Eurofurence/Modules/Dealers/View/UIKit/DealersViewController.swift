@@ -5,6 +5,7 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
     // MARK: Properties
 
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var navigationBarExtension: NavigationBarViewExtensionContainer!
     private var tableController: TableController? {
         didSet {
             tableView.dataSource = tableController
@@ -63,14 +64,20 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
     }
 
     // MARK: UISearchControllerDelegate
-
+    
     func presentSearchController(_ searchController: UISearchController) {
         present(searchController, animated: true)
     }
     
     func willDismissSearchController(_ searchController: UISearchController) {
+        navigationBarExtension.isHidden = true
+        
         if #available(iOS 11.0, *) { return }
         adjustTableViewContentInsetsForiOS10LayoutProblems()
+    }
+    
+    func didDismissSearchController(_ searchController: UISearchController) {
+        navigationBarExtension.isHidden = false
     }
 
     // MARK: UISearchResultsUpdating
