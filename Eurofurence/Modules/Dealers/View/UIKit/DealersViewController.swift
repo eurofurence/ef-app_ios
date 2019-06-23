@@ -39,6 +39,12 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
         
         prepareSearchController()
         
+        if #available(iOS 11.0, *) {
+            extendedLayoutIncludesOpaqueBars = true
+        } else {
+            extendedLayoutIncludesOpaqueBars = false
+        }
+        
         delegate?.dealersSceneDidLoad()
     }
     
@@ -60,6 +66,11 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
 
     func presentSearchController(_ searchController: UISearchController) {
         present(searchController, animated: true)
+    }
+    
+    func willDismissSearchController(_ searchController: UISearchController) {
+        if #available(iOS 11.0, *) { return }
+        adjustTableViewContentInsetsForiOS10LayoutProblems()
     }
 
     // MARK: UISearchResultsUpdating
@@ -107,6 +118,10 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
     }
 
     // MARK: Private
+    
+    private func adjustTableViewContentInsetsForiOS10LayoutProblems() {
+        tableView.contentInset = .zero
+    }
 
     @objc private func refreshControlValueDidChange() {
         delegate?.dealersSceneDidPerformRefreshAction()
