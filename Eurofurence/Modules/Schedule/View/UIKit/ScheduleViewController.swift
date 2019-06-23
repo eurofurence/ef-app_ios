@@ -44,6 +44,10 @@ class ScheduleViewController: UIViewController,
         searchViewController = storyboard?.instantiate(ScheduleSearchTableViewController.self)
         searchViewController?.onDidSelectSearchResultAtIndexPath = didSelectSearchResult
         
+        var insets = tableView.contentInset
+        insets.top = 44.0
+        tableView.contentInset = insets
+        
         tableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refreshControlDidChangeValue), for: .valueChanged)
         
@@ -197,15 +201,12 @@ class ScheduleViewController: UIViewController,
     }
     
     private func tableViewDidScroll(to offset: CGPoint) {
-        if #available(iOS 11.0, *) {        
-            let verticalOffset: CGFloat
-            if offset.y >= 0 {
-                verticalOffset = 0
-            } else {
-                verticalOffset = abs(offset.y)
-            }
+        if #available(iOS 11.0, *) {
+            guard offset.y < 0 else { return }
             
-            daysPickerTopConstraint.constant = verticalOffset
+            let safeAreaApplyingScrollViewContentInsets = view.safeAreaLayoutGuide.layoutFrame.origin.y + tableView.contentInset.top
+            let distance = max(0, abs(offset.y) - safeAreaApplyingScrollViewContentInsets)
+            daysPickerTopConstraint.constant = distance
         }
     }
 
