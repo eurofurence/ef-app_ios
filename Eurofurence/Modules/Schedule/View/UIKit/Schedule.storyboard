@@ -19,26 +19,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MGV-Hg-vha">
-                                <rect key="frame" x="0.0" y="108" width="375" height="510"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RuE-YL-zzB" customClass="NavigationBarViewExtensionContainer" customModule="Eurofurence" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="108"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3vS-0E-aVm" customClass="NavigationBarViewExtensionContainer" customModule="Eurofurence" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3vS-0E-aVm" userLabel="Days Picker Container" customClass="NavigationBarViewExtensionContainer" customModule="Eurofurence" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="375" height="44"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KtS-4f-Pp1" customClass="DaysHorizontalPickerView" customModule="Eurofurence" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="HmB-zb-5TD"/>
-                                        </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="KtS-4f-Pp1" firstAttribute="bottom" secondItem="Uxr-u2-IR5" secondAttribute="bottom" id="COd-7c-eOo"/>
                                     <constraint firstItem="KtS-4f-Pp1" firstAttribute="top" secondItem="3vS-0E-aVm" secondAttribute="top" id="PMt-eD-wTa"/>
                                     <constraint firstItem="KtS-4f-Pp1" firstAttribute="leading" secondItem="Uxr-u2-IR5" secondAttribute="leading" id="Pvk-E4-G4O"/>
                                     <constraint firstAttribute="height" constant="44" id="Ux8-mS-oFf"/>
@@ -55,9 +53,9 @@
                             <constraint firstItem="RuE-YL-zzB" firstAttribute="leading" secondItem="UnK-qE-skU" secondAttribute="leading" id="JFT-Ns-DqM"/>
                             <constraint firstItem="MGV-Hg-vha" firstAttribute="leading" secondItem="UnK-qE-skU" secondAttribute="leading" id="Qg3-1p-C3k"/>
                             <constraint firstItem="UnK-qE-skU" firstAttribute="trailing" secondItem="MGV-Hg-vha" secondAttribute="trailing" id="SwL-GZ-z2Z"/>
-                            <constraint firstItem="MGV-Hg-vha" firstAttribute="top" secondItem="UnK-qE-skU" secondAttribute="top" constant="44" id="j2M-nt-iFM"/>
+                            <constraint firstItem="MGV-Hg-vha" firstAttribute="top" secondItem="Jed-Ti-sU7" secondAttribute="top" id="j2M-nt-iFM"/>
                             <constraint firstAttribute="bottom" secondItem="MGV-Hg-vha" secondAttribute="bottom" id="k3U-3a-gt4"/>
-                            <constraint firstItem="RuE-YL-zzB" firstAttribute="bottom" secondItem="KtS-4f-Pp1" secondAttribute="bottom" id="m7M-oD-J7D"/>
+                            <constraint firstItem="RuE-YL-zzB" firstAttribute="bottom" secondItem="UnK-qE-skU" secondAttribute="top" id="m7M-oD-J7D"/>
                             <constraint firstItem="3vS-0E-aVm" firstAttribute="trailing" secondItem="Jed-Ti-sU7" secondAttribute="trailing" id="n3v-8z-rIx"/>
                             <constraint firstItem="3vS-0E-aVm" firstAttribute="top" secondItem="UnK-qE-skU" secondAttribute="top" id="pWh-ih-Typ"/>
                         </constraints>
@@ -76,7 +74,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="daysHorizontalPickerView" destination="KtS-4f-Pp1" id="YUn-aY-EU6"/>
-                        <outlet property="daysPickerTopConstraint" destination="pWh-ih-Typ" id="GjP-Q2-dHh"/>
+                        <outlet property="daysPickerTopConstraint" destination="pWh-ih-Typ" id="xfb-aQ-tSQ"/>
                         <outlet property="tableView" destination="MGV-Hg-vha" id="yqL-H1-aBt"/>
                     </connections>
                 </viewController>

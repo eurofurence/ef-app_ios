@@ -44,6 +44,17 @@ class ScheduleViewController: UIViewController,
         searchViewController = storyboard?.instantiate(ScheduleSearchTableViewController.self)
         searchViewController?.onDidSelectSearchResultAtIndexPath = didSelectSearchResult
         
+        var insets = tableView.contentInset
+        insets.top = daysHorizontalPickerView.bounds.height
+        tableView.contentInset = insets
+        tableView.scrollIndicatorInsets = insets
+        
+        if #available(iOS 11.0, *) {
+            extendedLayoutIncludesOpaqueBars = true
+        } else {
+            extendedLayoutIncludesOpaqueBars = false
+        }
+        
         tableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refreshControlDidChangeValue), for: .valueChanged)
         
@@ -99,6 +110,11 @@ class ScheduleViewController: UIViewController,
     func presentSearchController(_ searchController: UISearchController) {
         resetSearchSceneForSearchingAllEvents()
         present(searchController, animated: true)
+    }
+    
+    func willDismissSearchController(_ searchController: UISearchController) {
+        if #available(iOS 11.0, *) { return }
+        adjustTableViewContentInsetsForiOS10LayoutProblems()
     }
 
     // MARK: UISearchResultsUpdating
@@ -170,6 +186,17 @@ class ScheduleViewController: UIViewController,
     }
 
     // MARK: Private
+    
+    private func adjustTableViewContentInsetsForiOS10LayoutProblems() {
+        var insets = tableView.contentInset
+        var topInsets = daysHorizontalPickerView.bounds.height
+        if let navigationBar = navigationController?.navigationBar {
+            topInsets += navigationBar.bounds.height
+        }
+        
+        insets.top = topInsets
+        tableView.contentInset = insets
+    }
 
     @objc private func refreshControlDidChangeValue() {
         delegate?.scheduleSceneDidPerformRefreshAction()
@@ -197,15 +224,12 @@ class ScheduleViewController: UIViewController,
     }
     
     private func tableViewDidScroll(to offset: CGPoint) {
-        if #available(iOS 11.0, *) {        
-            let verticalOffset: CGFloat
-            if offset.y >= 0 {
-                verticalOffset = 0
-            } else {
-                verticalOffset = abs(offset.y)
-            }
+        if #available(iOS 11.0, *) {
+            guard offset.y < 0 else { return }
             
-            daysPickerTopConstraint.constant = verticalOffset
+            let safeAreaApplyingScrollViewContentInsets = view.safeAreaLayoutGuide.layoutFrame.origin.y + tableView.contentInset.top
+            let distance = max(0, abs(offset.y) - safeAreaApplyingScrollViewContentInsets)
+            daysPickerTopConstraint.constant = distance
         }
     }
 

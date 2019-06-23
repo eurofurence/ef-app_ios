@@ -25,7 +25,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ogd-Bj-WFd">
-                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="DAO-ck-zi9">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="175"/>
@@ -66,10 +66,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5e7-Fs-Rfc" userLabel="Icon Container">
-                                                    <rect key="frame" x="19.999999999999996" y="17" width="35.666666666666657" height="42"/>
+                                                    <rect key="frame" x="19.999999999999996" y="13.333333333333336" width="35.666666666666657" height="49"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DyR-dZ-fn1">
-                                                            <rect key="frame" x="0.0" y="0.0" width="35.666666666666664" height="42"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="35.666666666666664" height="49"/>
                                                             <accessibility key="accessibilityConfiguration">
                                                                 <bool key="isElement" value="NO"/>
                                                             </accessibility>
@@ -78,7 +78,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nxz-qR-aoc">
-                                                            <rect key="frame" x="0.0" y="0.0" width="35.666666666666664" height="42"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="35.666666666666664" height="49"/>
                                                             <accessibility key="accessibilityConfiguration">
                                                                 <bool key="isElement" value="NO"/>
                                                             </accessibility>
@@ -192,13 +192,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Ogd-Bj-WFd" firstAttribute="bottom" secondItem="HxA-JQ-dZ1" secondAttribute="bottom" id="IXW-Ey-fpB"/>
+                            <constraint firstItem="Ogd-Bj-WFd" firstAttribute="bottom" secondItem="Y7u-ae-31r" secondAttribute="bottom" id="IXW-Ey-fpB"/>
                             <constraint firstAttribute="trailing" secondItem="Se9-cw-Plh" secondAttribute="trailing" id="Ou6-tW-wox"/>
                             <constraint firstItem="Ogd-Bj-WFd" firstAttribute="trailing" secondItem="HxA-JQ-dZ1" secondAttribute="trailing" id="WAM-l1-Po1"/>
                             <constraint firstItem="Se9-cw-Plh" firstAttribute="leading" secondItem="Y7u-ae-31r" secondAttribute="leading" id="WGS-VB-RtL"/>
-                            <constraint firstItem="Ogd-Bj-WFd" firstAttribute="top" secondItem="Se9-cw-Plh" secondAttribute="bottom" id="YMN-0r-JrN"/>
+                            <constraint firstItem="HxA-JQ-dZ1" firstAttribute="top" secondItem="Se9-cw-Plh" secondAttribute="bottom" id="YMN-0r-JrN"/>
                             <constraint firstItem="Se9-cw-Plh" firstAttribute="top" secondItem="Y7u-ae-31r" secondAttribute="top" id="iF6-43-xZ4"/>
-                            <constraint firstItem="Ogd-Bj-WFd" firstAttribute="top" secondItem="HxA-JQ-dZ1" secondAttribute="top" id="m3z-Vl-l5l"/>
+                            <constraint firstItem="Ogd-Bj-WFd" firstAttribute="top" secondItem="Y7u-ae-31r" secondAttribute="top" id="m3z-Vl-l5l"/>
                             <constraint firstItem="Ogd-Bj-WFd" firstAttribute="leading" secondItem="HxA-JQ-dZ1" secondAttribute="leading" id="uvQ-e8-oIv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HxA-JQ-dZ1"/>
