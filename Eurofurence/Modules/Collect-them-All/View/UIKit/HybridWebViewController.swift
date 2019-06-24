@@ -31,6 +31,7 @@ class HybridWebViewController: UIViewController, HybridWebScene {
 
     func setSceneShortTitle(_ shortTitle: String) {
         tabBarItem.title = shortTitle
+        restorationIdentifier = shortTitle
     }
 
     func setSceneTitle(_ title: String) {
