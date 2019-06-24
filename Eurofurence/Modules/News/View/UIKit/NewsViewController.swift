@@ -43,6 +43,7 @@ class NewsViewController: UIViewController, NewsScene {
     func bind(numberOfItemsPerComponent: [Int], using binder: NewsComponentsBinder) {
         tableController = TableController(tableView: tableView, numberOfItemsPerComponent: numberOfItemsPerComponent, binder: binder)
         tableController?.onDidSelectRowAtIndexPath = tableViewDidSelectRow
+        tableController?.onDidEndDragging = scrollViewDidEndDragging
         tableView.dataSource = tableController
         tableView.delegate = tableController
         tableView.reloadData()
@@ -51,10 +52,22 @@ class NewsViewController: UIViewController, NewsScene {
     // MARK: Private
 
     @objc private func refreshControlDidChangeValue() {
+        if tableView.isDragging == false {        
+            notifyDidPerformRefreshAction()
+        }
+    }
+    
+    private func scrollViewDidEndDragging() {
+        if refreshControl.isRefreshing {
+            notifyDidPerformRefreshAction()
+        }
+    }
+    
+    private func notifyDidPerformRefreshAction() {
         delegate?.newsSceneDidPerformRefreshAction()
     }
 
-    func tableViewDidSelectRow(at indexPath: IndexPath) {
+    private func tableViewDidSelectRow(at indexPath: IndexPath) {
         delegate?.newsSceneDidSelectComponent(at: indexPath)
     }
 
@@ -64,6 +77,7 @@ class NewsViewController: UIViewController, NewsScene {
         private let numberOfItemsPerComponent: [Int]
         private let binder: NewsComponentsBinder
         var onDidSelectRowAtIndexPath: ((IndexPath) -> Void)?
+        var onDidEndDragging: (() -> Void)?
 
         init(tableView: UITableView, numberOfItemsPerComponent: [Int], binder: NewsComponentsBinder) {
             self.tableView = tableView
@@ -123,6 +137,10 @@ class NewsViewController: UIViewController, NewsScene {
             let header = tableView.dequeueConventionBrandedHeader()
             binder.bindTitleForSection(at: section, scene: header)
             return header
+        }
+        
+        func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+            onDidEndDragging?()
         }
 
         // MARK: Functions
