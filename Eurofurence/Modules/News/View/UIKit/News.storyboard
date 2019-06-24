@@ -28,48 +28,48 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="DAO-ck-zi9">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="175"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="News Banner" translatesAutoresizingMaskIntoConstraints="NO" id="XPc-0P-r26">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="175"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
                                         </imageView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ef" translatesAutoresizingMaskIntoConstraints="NO" id="xcl-hI-ODM">
-                                            <rect key="frame" x="192" y="0.0" width="175" height="175"/>
+                                            <rect key="frame" x="247" y="15" width="120" height="120"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="175" id="eZT-Gi-gCy"/>
                                                 <constraint firstAttribute="width" secondItem="xcl-hI-ODM" secondAttribute="height" multiplier="1:1" id="j6U-9O-ZvP"/>
                                             </constraints>
                                         </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="XPc-0P-r26" secondAttribute="trailing" id="3qT-k3-C2C"/>
                                         <constraint firstItem="XPc-0P-r26" firstAttribute="top" secondItem="DAO-ck-zi9" secondAttribute="top" id="DqQ-92-46h"/>
-                                        <constraint firstItem="XPc-0P-r26" firstAttribute="leading" secondItem="DAO-ck-zi9" secondAttribute="leading" id="QY9-tJ-yfX"/>
+                                        <constraint firstAttribute="trailing" secondItem="XPc-0P-r26" secondAttribute="trailing" id="Sgz-pg-UTx"/>
                                         <constraint firstItem="xcl-hI-ODM" firstAttribute="trailing" secondItem="DAO-ck-zi9" secondAttribute="trailingMargin" id="UrW-UB-BNi"/>
+                                        <constraint firstItem="xcl-hI-ODM" firstAttribute="height" secondItem="XPc-0P-r26" secondAttribute="height" multiplier="0.8" id="k8Z-5A-1Ba"/>
+                                        <constraint firstItem="XPc-0P-r26" firstAttribute="leading" secondItem="DAO-ck-zi9" secondAttribute="leading" id="ooD-Sq-RGb"/>
                                         <constraint firstItem="xcl-hI-ODM" firstAttribute="centerY" secondItem="DAO-ck-zi9" secondAttribute="centerY" id="q3V-P2-pte"/>
                                         <constraint firstAttribute="bottom" secondItem="XPc-0P-r26" secondAttribute="bottom" id="xER-PG-4ac"/>
                                     </constraints>
                                 </view>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="t86-KP-Ntj">
-                                    <rect key="frame" x="0.0" y="401" width="375" height="1"/>
+                                    <rect key="frame" x="0.0" y="376" width="375" height="1"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NewsUserWidgetTableViewCell" rowHeight="76" id="mWN-xP-H3H" customClass="NewsUserWidgetTableViewCell" customModule="Eurofurence" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="203" width="375" height="76"/>
+                                        <rect key="frame" x="0.0" y="178" width="375" height="76"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mWN-xP-H3H" id="Fda-o9-5OR">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="75.666666666666671"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5e7-Fs-Rfc" userLabel="Icon Container">
-                                                    <rect key="frame" x="19.999999999999996" y="13.333333333333336" width="35.666666666666657" height="49"/>
+                                                    <rect key="frame" x="19.999999999999996" y="17" width="35.666666666666657" height="42"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DyR-dZ-fn1">
-                                                            <rect key="frame" x="0.0" y="0.0" width="35.666666666666664" height="49"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="35.666666666666664" height="42"/>
                                                             <accessibility key="accessibilityConfiguration">
                                                                 <bool key="isElement" value="NO"/>
                                                             </accessibility>
@@ -78,7 +78,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nxz-qR-aoc">
-                                                            <rect key="frame" x="0.0" y="0.0" width="35.666666666666664" height="49"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="35.666666666666664" height="42"/>
                                                             <accessibility key="accessibilityConfiguration">
                                                                 <bool key="isElement" value="NO"/>
                                                             </accessibility>
@@ -135,7 +135,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NewsConventionCountdownTableViewCell" rowHeight="61" id="cd3-fV-l9J" customClass="NewsConventionCountdownTableViewCell" customModule="Eurofurence" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="279" width="375" height="61"/>
+                                        <rect key="frame" x="0.0" y="254" width="375" height="61"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cd3-fV-l9J" id="eKn-Bs-cZS">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="60.666666666666664"/>
@@ -159,7 +159,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ViewAllAnnouncementsTableViewCell" rowHeight="61" id="X2B-iE-Rxm" customClass="ViewAllAnnouncementsTableViewCell" customModule="Eurofurence" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="340" width="375" height="61"/>
+                                        <rect key="frame" x="0.0" y="315" width="375" height="61"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="X2B-iE-Rxm" id="c6S-SK-nbL">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="60.666666666666664"/>
@@ -219,6 +219,6 @@
     <resources>
         <image name="News" width="16.666666030883789" height="16.666666030883789"/>
         <image name="News Banner" width="500" height="166.66667175292969"/>
-        <image name="ef" width="341.33334350585938" height="341.33334350585938"/>
+        <image name="ef" width="170.66667175292969" height="170.66667175292969"/>
     </resources>
 </document>
