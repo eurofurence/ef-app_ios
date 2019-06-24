@@ -12,6 +12,15 @@ class WhenRequestingStoreRefresh_MultipleTimes: XCTestCase {
         XCTAssertTrue(firstProgress === secondProgress, "The same refresh task should use the same Progress")
     }
     
+    func testOnlyOneLongRunningTaskIsManaged() {
+        let longRunningTaskManager = JournallingLongRunningTaskManager()
+        let context = EurofurenceSessionTestBuilder().with(longRunningTaskManager).build()
+        context.refreshLocalStore()
+        context.refreshLocalStore()
+        
+        XCTAssertEqual(1, longRunningTaskManager.longRunningTaskCount, "Only one task should start when coalescing multiple refreshes")
+    }
+    
     func testTheAPIIsOnlyHitOnce() {
         let api = OnlyToldToRefreshOnceMockAPI()
         let context = EurofurenceSessionTestBuilder().with(api).build()

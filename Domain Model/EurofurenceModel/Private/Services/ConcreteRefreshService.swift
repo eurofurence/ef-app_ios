@@ -49,11 +49,12 @@ class ConcreteRefreshService: RefreshService {
     @discardableResult
     func refreshLocalStore(completionHandler: @escaping (RefreshServiceError?) -> Void) -> Progress {
         notifyRefreshStarted()
-        startLongRunningTask()
         
         if let progress = ongoingProgress {
             return progress
         }
+        
+        startLongRunningTask()
         
         let progress = Progress()
         progress.totalUnitCount = -1

@@ -180,6 +180,7 @@ class EurofurenceSessionTestBuilder {
     private var collectThemAllRequestFactory: CollectThemAllRequestFactory = StubCollectThemAllRequestFactory()
     private var companionAppURLRequestFactory: CompanionAppURLRequestFactory = StubCompanionAppURLRequestFactory()
     private var forceUpgradeRequired: ForceRefreshRequired = StubForceRefreshRequired(isForceRefreshRequired: false)
+    private var longRunningTaskManager: FakeLongRunningTaskManager = FakeLongRunningTaskManager()
 
     func with(_ currentDate: Date) -> EurofurenceSessionTestBuilder {
         clock = StubClock(currentDate: currentDate)
@@ -238,6 +239,12 @@ class EurofurenceSessionTestBuilder {
         self.companionAppURLRequestFactory = companionAppURLRequestFactory
         return self
     }
+    
+    @discardableResult
+    func with(_ longRunningTaskManager: FakeLongRunningTaskManager) -> EurofurenceSessionTestBuilder {
+        self.longRunningTaskManager = longRunningTaskManager
+        return self
+    }
 
     func loggedInWithValidCredential() -> EurofurenceSessionTestBuilder {
         let credential = Credential(username: "User",
@@ -261,7 +268,6 @@ class EurofurenceSessionTestBuilder {
         let dateDistanceCalculator = StubDateDistanceCalculator()
         let conventionStartDateRepository = StubConventionStartDateRepository()
         let significantTimeChangeAdapter = CapturingSignificantTimeChangeAdapter()
-        let longRunningTaskManager = FakeLongRunningTaskManager()
         let mapCoordinateRender = CapturingMapCoordinateRender()
         
         let session = EurofurenceSessionBuilder(conventionIdentifier: conventionIdentifier)
