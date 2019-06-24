@@ -149,10 +149,18 @@ class EurofurenceSessionTestBuilder {
                 completionHandler?(error)
             }
         }
-
+        
         func performSuccessfulSync(response: ModelCharacteristics) {
             refreshLocalStore()
+            simulateSyncSuccess(response)
+        }
+        
+        func simulateSyncSuccess(_ response: ModelCharacteristics) {
             api.simulateSuccessfulSync(response)
+        }
+        
+        func simulateSyncAPIError() {
+            api.simulateUnsuccessfulSync()
         }
 
         func simulateSignificantTimeChange() {

@@ -13,6 +13,7 @@
 		BF91A447FA61C6354AB65ED6 /* Pods_EurofurenceModelAdapterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B0DDF6C8403F4E4C678F5B /* Pods_EurofurenceModelAdapterTests.framework */; };
 		CA17015022B183880067BCDE /* EurofurenceModelTestDoubles-Swift.h in Headers */ = {isa = PBXBuildFile; fileRef = CA17014F22B183880067BCDE /* EurofurenceModelTestDoubles-Swift.h */; };
 		CA17015122B188290067BCDE /* EurofurenceModelTestDoubles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A326922B16E75002AD939 /* EurofurenceModelTestDoubles.framework */; };
+		CA25A87522C15F4F00226478 /* WhenRequestingStoreRefresh_MultipleTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA25A87422C15F4F00226478 /* WhenRequestingStoreRefresh_MultipleTimes.swift */; };
 		CA7A2F3422B16DA3002AD939 /* EurofurenceModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A2F2B22B16DA3002AD939 /* EurofurenceModel.framework */; };
 		CA7A2FFF22B16DE4002AD939 /* EurofurenceSessionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F4322B16DE3002AD939 /* EurofurenceSessionState.swift */; };
 		CA7A300022B16DE4002AD939 /* ApplicationNotificationKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F4422B16DE3002AD939 /* ApplicationNotificationKey.swift */; };
@@ -478,6 +479,7 @@
 		A3B0DDF6C8403F4E4C678F5B /* Pods_EurofurenceModelAdapterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EurofurenceModelAdapterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD2DE387F01CB519CFFD1718 /* Pods-EurofurenceModelTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EurofurenceModelTests.debug.xcconfig"; path = "Target Support Files/Pods-EurofurenceModelTests/Pods-EurofurenceModelTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CA17014F22B183880067BCDE /* EurofurenceModelTestDoubles-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EurofurenceModelTestDoubles-Swift.h"; sourceTree = "<group>"; };
+		CA25A87422C15F4F00226478 /* WhenRequestingStoreRefresh_MultipleTimes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenRequestingStoreRefresh_MultipleTimes.swift; sourceTree = "<group>"; };
 		CA7A2F2B22B16DA3002AD939 /* EurofurenceModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EurofurenceModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA7A2F2E22B16DA3002AD939 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA7A2F3322B16DA3002AD939 /* EurofurenceModelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EurofurenceModelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -980,6 +982,14 @@
 			path = ../Pods;
 			sourceTree = "<group>";
 		};
+		CA25A87322C15F3B00226478 /* Coalescing Refreshes */ = {
+			isa = PBXGroup;
+			children = (
+				CA25A87422C15F4F00226478 /* WhenRequestingStoreRefresh_MultipleTimes.swift */,
+			);
+			path = "Coalescing Refreshes";
+			sourceTree = "<group>";
+		};
 		CA7A2F1122B16D70002AD939 = {
 			isa = PBXGroup;
 			children = (
@@ -1025,6 +1035,7 @@
 				CA7A313E22B16E25002AD939 /* Announcements */,
 				CA7A317D22B16E26002AD939 /* Authentication */,
 				CA7A30EE22B16E24002AD939 /* Client API */,
+				CA25A87322C15F3B00226478 /* Coalescing Refreshes */,
 				CA7A30F822B16E25002AD939 /* Collect-them-All */,
 				CA7A318722B16E26002AD939 /* Countdown */,
 				CA7A313822B16E25002AD939 /* Days */,
@@ -2735,6 +2746,7 @@
 				CA7A31FE22B16E26002AD939 /* DealerAssertion.swift in Sources */,
 				CA7A31C022B16E26002AD939 /* WhenSyncingWhileLoggedIn.swift in Sources */,
 				CA8A73E922BD3035007A5201 /* Credential+Random.swift in Sources */,
+				CA25A87522C15F4F00226478 /* WhenRequestingStoreRefresh_MultipleTimes.swift in Sources */,
 				CA7A31C922B16E26002AD939 /* WhenLookingUpMailToLinks.swift in Sources */,
 				CA7A321D22B16E26002AD939 /* WhenObservingRunningEvents_ThenLoadSucceeds.swift in Sources */,
 				CA7A324922B16E26002AD939 /* WhenRestrictingSearchResultsToFavourites_ScheduleShould.swift in Sources */,

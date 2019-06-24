@@ -143,3 +143,17 @@ extension SlowFakeImageAPI {
     }
 
 }
+
+class OnlyToldToRefreshOnceMockAPI: FakeAPI {
+    
+    private var refreshCount = 0
+    var toldToRefreshOnlyOnce: Bool {
+        return refreshCount == 1
+    }
+    
+    override func fetchLatestData(lastSyncTime: Date?, completionHandler: @escaping (ModelCharacteristics?) -> Void) {
+        refreshCount += 1
+        super.fetchLatestData(lastSyncTime: lastSyncTime, completionHandler: completionHandler)
+    }
+    
+}
