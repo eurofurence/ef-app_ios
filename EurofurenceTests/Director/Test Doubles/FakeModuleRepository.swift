@@ -25,6 +25,7 @@ struct FakeModuleRepository: ModuleRepository {
     var announcementDetailModuleProviding: AnnouncementDetailModuleProviding
     var eventDetailModuleProviding: EventDetailModuleProviding
     var eventFeedbackModuleProviding: EventFeedbackModuleProviding
+    var additionalServicesModule: AdditionalServicesModuleProviding
     
     func makeRootModule(_ delegate: RootModuleDelegate) {
         rootModuleProviding.makeRootModule(delegate)
@@ -108,6 +109,10 @@ struct FakeModuleRepository: ModuleRepository {
     
     func makeCollectThemAllModule() -> UIViewController {
         return collectThemAllModuleProviding.makeCollectThemAllModule()
+    }
+    
+    func makeAdditionalServicesModule() -> UIViewController {
+        return additionalServicesModule.makeAdditionalServicesModule()
     }
     
 }

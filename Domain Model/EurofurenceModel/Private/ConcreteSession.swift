@@ -22,6 +22,7 @@ class ConcreteSession: EurofurenceSession {
     private let mapsService: ConcreteMapsService
     private let notificationService: ConcreteNotificationService
     private let contentLinksService: ConcreteContentLinksService
+    private let additionalServicesRepository: ConcreteAdditionalServicesRepository
 
     // swiftlint:disable function_body_length
     init(conventionIdentifier: ConventionIdentifier,
@@ -40,7 +41,8 @@ class ConcreteSession: EurofurenceSession {
          collectThemAllRequestFactory: CollectThemAllRequestFactory,
          longRunningTaskManager: LongRunningTaskManager?,
          mapCoordinateRender: MapCoordinateRender?,
-         forceRefreshRequired: ForceRefreshRequired) {
+         forceRefreshRequired: ForceRefreshRequired,
+         companionAppURLRequestFactory: CompanionAppURLRequestFactory) {
         
         let dataStore = dataStoreFactory.makeDataStore(for: conventionIdentifier)
 
@@ -52,6 +54,9 @@ class ConcreteSession: EurofurenceSession {
                                                                                             remoteNotificationsTokenRegistration: remoteNotificationsTokenRegistration)
 
         privateMessagesService = ConcretePrivateMessagesService(eventBus: eventBus, api: api)
+        
+        additionalServicesRepository = ConcreteAdditionalServicesRepository(eventBus: eventBus,
+                                                                            companionAppURLRequestFactory: companionAppURLRequestFactory)
 
         authenticationService = ConcreteAuthenticationService(eventBus: eventBus,
                                                               clock: clock,
@@ -140,5 +145,7 @@ class ConcreteSession: EurofurenceSession {
                         sessionState: sessionStateService,
                         privateMessages: privateMessagesService)
     }()
+    
+    lazy var repositories: Repositories = Repositories(additionalServices: additionalServicesRepository)
 
 }

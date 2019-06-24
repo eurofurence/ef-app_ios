@@ -20,6 +20,7 @@ public class EurofurenceSessionBuilder {
     private var longRunningTaskManager: LongRunningTaskManager?
     private var mapCoordinateRender: MapCoordinateRender?
     private var forceRefreshRequired: ForceRefreshRequired
+    private var companionAppURLRequestFactory: CompanionAppURLRequestFactory
 
     public init(conventionIdentifier: ConventionIdentifier) {
         self.conventionIdentifier = conventionIdentifier
@@ -39,6 +40,7 @@ public class EurofurenceSessionBuilder {
         imageRepository = PersistentImageRepository()
         collectThemAllRequestFactory = DefaultCollectThemAllRequestFactory()
         forceRefreshRequired = UserDefaultsForceRefreshRequired()
+        companionAppURLRequestFactory = HardcodedCompanionAppURLRequestFactory()
     }
 
     @discardableResult
@@ -136,6 +138,12 @@ public class EurofurenceSessionBuilder {
         self.forceRefreshRequired = forceRefreshRequired
         return self
     }
+    
+    @discardableResult
+    public func with(_ companionAppURLRequestFactory: CompanionAppURLRequestFactory) -> EurofurenceSessionBuilder {
+        self.companionAppURLRequestFactory = companionAppURLRequestFactory
+        return self
+    }
 
     public func build() -> EurofurenceSession {
         return ConcreteSession(conventionIdentifier: conventionIdentifier,
@@ -154,7 +162,8 @@ public class EurofurenceSessionBuilder {
                                collectThemAllRequestFactory: collectThemAllRequestFactory,
                                longRunningTaskManager: longRunningTaskManager,
                                mapCoordinateRender: mapCoordinateRender,
-                               forceRefreshRequired: forceRefreshRequired)
+                               forceRefreshRequired: forceRefreshRequired,
+                               companionAppURLRequestFactory: companionAppURLRequestFactory)
     }
 
 }

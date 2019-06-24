@@ -8,18 +8,18 @@ class HybridWebViewController: UIViewController, HybridWebScene {
     private var webView: WKWebView?
 
     // MARK: Overrides
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let webConfiguration = WKWebViewConfiguration()
-        webConfiguration.preferences.javaScriptEnabled = true
-        webConfiguration.websiteDataStore = .nonPersistent()
-        webView = WKWebView(frame: .zero, configuration: webConfiguration)
-        webView?.allowsLinkPreview = false
-        webView?.allowsBackForwardNavigationGestures = true
-        view = webView
+        assembleWebView()
         delegate?.hybridWebSceneDidLoad()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        webView?.frame = view.bounds
     }
 
     // MARK: HybridWebScene
@@ -31,6 +31,7 @@ class HybridWebViewController: UIViewController, HybridWebScene {
 
     func setSceneShortTitle(_ shortTitle: String) {
         tabBarItem.title = shortTitle
+        restorationIdentifier = shortTitle
     }
 
     func setSceneTitle(_ title: String) {
@@ -44,10 +45,26 @@ class HybridWebViewController: UIViewController, HybridWebScene {
     }
 
     func loadContents(of urlRequest: URLRequest) {
+        webView?.removeFromSuperview()
+        assembleWebView()
+        
         webView?.load(urlRequest)
     }
     
     // MARK: Private
+    
+    private func assembleWebView() {
+        let webConfiguration = WKWebViewConfiguration()
+        webConfiguration.preferences.javaScriptEnabled = true
+        webConfiguration.websiteDataStore = .nonPersistent()
+        
+        let webView = WKWebView(frame: view.bounds, configuration: webConfiguration)
+        webView.allowsLinkPreview = false
+        webView.allowsBackForwardNavigationGestures = true
+        view.addSubview(webView)
+        
+        self.webView = webView
+    }
     
     private func scaleImageForTabBarPresentation(_ image: UIImage) -> UIImage {
         let tabBarIconSize = CGSize(width: 25.0, height: 25.0)

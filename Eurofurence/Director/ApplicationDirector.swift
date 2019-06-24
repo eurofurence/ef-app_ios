@@ -330,7 +330,8 @@ class ApplicationDirector: ExternalContentHandler,
                 makeDealersNavigationController(),
                 makeKnowledgeNavigationController(),
                 makeMapsNavigationController(),
-                makeCollectThemAllNavigationController()]
+                makeCollectThemAllNavigationController(),
+                makeAdditionalServicesNavigationController()]
     }
 
     private func makeNewsNavigationController() -> UINavigationController {
@@ -371,6 +372,11 @@ class ApplicationDirector: ExternalContentHandler,
     private func makeCollectThemAllNavigationController() -> UINavigationController {
         let collectThemAllModule = moduleRepository.makeCollectThemAllModule()
         return makeRootNavigationController(forModuleViewController: collectThemAllModule)
+    }
+    
+    private func makeAdditionalServicesNavigationController() -> UINavigationController {
+        let additionalServicesModule = moduleRepository.makeAdditionalServicesModule()
+        return makeRootNavigationController(forModuleViewController: additionalServicesModule)
     }
     
     private func makeRootNavigationController(forModuleViewController viewController: UIViewController) -> UINavigationController {

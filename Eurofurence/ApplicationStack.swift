@@ -33,7 +33,6 @@ class ApplicationStack {
     }
     
     static func resumeInteraction(_ intent: Any?) -> Bool {
-//        let intentWrapperThanksToSwiftCastingIssues = IntentDefinitionProvidingFactory.intentDefinitionProvider(from: intent)
         return instance.interactionResumer.resume(intent: intent)
     }
 
@@ -75,7 +74,7 @@ class ApplicationStack {
                                                                         hoursDateFormatter: FoundationHoursDateFormatter.shared,
                                                                         upcomingEventReminderInterval: upcomingEventReminderInterval)
         
-        director = DirectorBuilder(moduleRepository: ApplicationModuleRepository(services: services),
+        director = DirectorBuilder(moduleRepository: ApplicationModuleRepository(services: services, repositories: session.repositories),
                                    linkLookupService: services.contentLinks).build()
         services.contentLinks.setExternalContentHandler(director)
         

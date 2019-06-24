@@ -24,9 +24,10 @@ struct ApplicationModuleRepository: ModuleRepository {
     private let announcementDetailModuleProviding: AnnouncementDetailModuleProviding
     private let eventDetailModuleProviding: EventDetailModuleProviding
     private let eventFeedbackModuleProviding: EventFeedbackModuleProviding
+    private let additionalServicesModuleProviding: AdditionalServicesModuleProviding
     
     // swiftlint:disable function_body_length
-    init(services: Services) {
+    init(services: Services, repositories: Repositories) {
         let subtleMarkdownRenderer = SubtleDownMarkdownRenderer()
         let defaultMarkdownRenderer = DefaultMarkdownRenderer()
         
@@ -112,6 +113,8 @@ struct ApplicationModuleRepository: ModuleRepository {
         eventFeedbackModuleProviding = EventFeedbackModuleProvidingImpl(presenterFactory: eventFeedbackPresenterFactory, sceneFactory: eventFeedbackSceneFactory)
         
         webModuleProviding = SafariWebModuleProviding()
+        
+        additionalServicesModuleProviding = AdditionalServicesModuleBuilder(repository: repositories.additionalServices).build()
     }
     
     func makeRootModule(_ delegate: RootModuleDelegate) {
@@ -196,6 +199,10 @@ struct ApplicationModuleRepository: ModuleRepository {
     
     func makeCollectThemAllModule() -> UIViewController {
         return collectThemAllModuleProviding.makeCollectThemAllModule()
+    }
+    
+    func makeAdditionalServicesModule() -> UIViewController {
+        return additionalServicesModuleProviding.makeAdditionalServicesModule()
     }
     
 }

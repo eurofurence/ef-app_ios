@@ -432,6 +432,19 @@
 		CA7A32F622B17217002AD939 /* EurofurenceModelTestDoubles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A326922B16E75002AD939 /* EurofurenceModelTestDoubles.framework */; };
 		CA7A32FE22B17A44002AD939 /* TestUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A32FD22B17A44002AD939 /* TestUtilities.framework */; };
 		CA7A32FF22B17B96002AD939 /* EurofurenceModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A2F2B22B16DA3002AD939 /* EurofurenceModel.framework */; };
+		CA8A73BF22BD0FC2007A5201 /* AdditionalServicesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73BE22BD0FC2007A5201 /* AdditionalServicesRepository.swift */; };
+		CA8A73C422BD0FFC007A5201 /* FakeAdditionalServicesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73C322BD0FFC007A5201 /* FakeAdditionalServicesRepository.swift */; };
+		CA8A73D322BD15E4007A5201 /* AddingAdditionalServicesConsumer_WhileLoggedOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73D222BD15E4007A5201 /* AddingAdditionalServicesConsumer_WhileLoggedOut.swift */; };
+		CA8A73D522BD1889007A5201 /* Repositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73D422BD1889007A5201 /* Repositories.swift */; };
+		CA8A73D822BD196A007A5201 /* CompanionAppURLRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73D722BD196A007A5201 /* CompanionAppURLRequestFactory.swift */; };
+		CA8A73DA22BD197C007A5201 /* StubCompanionAppURLRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73D922BD197C007A5201 /* StubCompanionAppURLRequestFactory.swift */; };
+		CA8A73DC22BD198F007A5201 /* CapturingAdditionalServicesURLConsumer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73DB22BD198F007A5201 /* CapturingAdditionalServicesURLConsumer.swift */; };
+		CA8A73DE22BD1EB0007A5201 /* AddingAdditionalServicesConsumer_WhileLoggedIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73DD22BD1EB0007A5201 /* AddingAdditionalServicesConsumer_WhileLoggedIn.swift */; };
+		CA8A73E022BD2062007A5201 /* AddingAdditionalServicesConsumer_AfterLoggingOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73DF22BD2062007A5201 /* AddingAdditionalServicesConsumer_AfterLoggingOut.swift */; };
+		CA8A73E322BD20B2007A5201 /* ConcreteAdditionalServicesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73E222BD20B2007A5201 /* ConcreteAdditionalServicesRepository.swift */; };
+		CA8A73E522BD2429007A5201 /* HardcodedCompanionAppURLRequestFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73E422BD2429007A5201 /* HardcodedCompanionAppURLRequestFactoryTests.swift */; };
+		CA8A73E722BD2577007A5201 /* HardcodedCompanionAppURLRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73E622BD2577007A5201 /* HardcodedCompanionAppURLRequestFactory.swift */; };
+		CA8A73E922BD3035007A5201 /* Credential+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73E822BD3035007A5201 /* Credential+Random.swift */; };
 		CB70B8B9EEAD6A8C832A3C0B /* Pods_EurofurenceModelTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26657B2D5254404DBC47C53C /* Pods_EurofurenceModelTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -889,6 +902,19 @@
 		CA7A32F022B17023002AD939 /* TestUtilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TestUtilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA7A32F422B171AC002AD939 /* Unwrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unwrap.swift; sourceTree = "<group>"; };
 		CA7A32FD22B17A44002AD939 /* TestUtilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TestUtilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA8A73BE22BD0FC2007A5201 /* AdditionalServicesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalServicesRepository.swift; sourceTree = "<group>"; };
+		CA8A73C322BD0FFC007A5201 /* FakeAdditionalServicesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeAdditionalServicesRepository.swift; sourceTree = "<group>"; };
+		CA8A73D222BD15E4007A5201 /* AddingAdditionalServicesConsumer_WhileLoggedOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingAdditionalServicesConsumer_WhileLoggedOut.swift; sourceTree = "<group>"; };
+		CA8A73D422BD1889007A5201 /* Repositories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repositories.swift; sourceTree = "<group>"; };
+		CA8A73D722BD196A007A5201 /* CompanionAppURLRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanionAppURLRequestFactory.swift; sourceTree = "<group>"; };
+		CA8A73D922BD197C007A5201 /* StubCompanionAppURLRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubCompanionAppURLRequestFactory.swift; sourceTree = "<group>"; };
+		CA8A73DB22BD198F007A5201 /* CapturingAdditionalServicesURLConsumer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingAdditionalServicesURLConsumer.swift; sourceTree = "<group>"; };
+		CA8A73DD22BD1EB0007A5201 /* AddingAdditionalServicesConsumer_WhileLoggedIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingAdditionalServicesConsumer_WhileLoggedIn.swift; sourceTree = "<group>"; };
+		CA8A73DF22BD2062007A5201 /* AddingAdditionalServicesConsumer_AfterLoggingOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingAdditionalServicesConsumer_AfterLoggingOut.swift; sourceTree = "<group>"; };
+		CA8A73E222BD20B2007A5201 /* ConcreteAdditionalServicesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcreteAdditionalServicesRepository.swift; sourceTree = "<group>"; };
+		CA8A73E422BD2429007A5201 /* HardcodedCompanionAppURLRequestFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardcodedCompanionAppURLRequestFactoryTests.swift; sourceTree = "<group>"; };
+		CA8A73E622BD2577007A5201 /* HardcodedCompanionAppURLRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardcodedCompanionAppURLRequestFactory.swift; sourceTree = "<group>"; };
+		CA8A73E822BD3035007A5201 /* Credential+Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Credential+Random.swift"; sourceTree = "<group>"; };
 		EC85896EECB18D7881B0665A /* Pods-EurofurenceModel-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-EurofurenceModel-metadata.plist"; sourceTree = "<group>"; };
 		FFE87D86E3ECE04913805820 /* Pods_EurofurenceModelTestDoubles.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EurofurenceModelTestDoubles.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -995,6 +1021,7 @@
 				CA7A313D22B16E25002AD939 /* EurofurenceModelTestAssets.swift */,
 				CA7A312122B16E25002AD939 /* EurofurenceSessionTestBuilder.swift */,
 				CA7A313C22B16E25002AD939 /* WhenResolvingDataStoreState.swift */,
+				CA8A73D122BD15CB007A5201 /* Additional Services */,
 				CA7A313E22B16E25002AD939 /* Announcements */,
 				CA7A317D22B16E26002AD939 /* Authentication */,
 				CA7A30EE22B16E24002AD939 /* Client API */,
@@ -1102,6 +1129,7 @@
 			children = (
 				CA7A2F6622B16DE3002AD939 /* BundleAppVersionProviding.swift */,
 				CA7A2F6422B16DE3002AD939 /* DefaultCollectThemAllRequestFactory.swift */,
+				CA8A73E622BD2577007A5201 /* HardcodedCompanionAppURLRequestFactory.swift */,
 				CA7A2F6922B16DE3002AD939 /* KeychainCredentialStore.swift */,
 				CA7A2F6822B16DE3002AD939 /* PersistentImageRepository.swift */,
 				CA7A2F6A22B16DE3002AD939 /* PreprocessorBuildConfigurationProviding.swift */,
@@ -1180,6 +1208,7 @@
 				CA7A2F9122B16DE3002AD939 /* BuildConfigurationProviding.swift */,
 				CA7A2F8C22B16DE3002AD939 /* Clock.swift */,
 				CA7A2F9E22B16DE3002AD939 /* CollectThemAllRequestFactory.swift */,
+				CA8A73D722BD196A007A5201 /* CompanionAppURLRequestFactory.swift */,
 				CA7A2F9C22B16DE3002AD939 /* ConventionStartDateRepository.swift */,
 				CA7A2F9022B16DE3002AD939 /* CredentialStore.swift */,
 				CA7A2F8D22B16DE3002AD939 /* DateDistanceCalculator.swift */,
@@ -1272,7 +1301,9 @@
 			isa = PBXGroup;
 			children = (
 				CA7A2FBE22B16DE3002AD939 /* EurofurenceSession.swift */,
+				CA8A73D422BD1889007A5201 /* Repositories.swift */,
 				CA7A2FBD22B16DE3002AD939 /* Services.swift */,
+				CA8A73D622BD188F007A5201 /* Repositories */,
 				CA7A2FBF22B16DE3002AD939 /* Services */,
 			);
 			path = Session;
@@ -1308,6 +1339,7 @@
 				CA7A2FCE22B16DE3002AD939 /* SignificantTimeObserver.swift */,
 				CA7A2FD022B16DE3002AD939 /* Domain Events */,
 				CA7A2FDC22B16DE3002AD939 /* Objects */,
+				CA8A73E122BD20A6007A5201 /* Repositories */,
 				CA7A2FEC22B16DE3002AD939 /* Services */,
 				CA7A2FE722B16DE3002AD939 /* Utilities */,
 			);
@@ -1568,6 +1600,7 @@
 			isa = PBXGroup;
 			children = (
 				CA7A30FE22B16E25002AD939 /* Array+Equality.swift */,
+				CA8A73E822BD3035007A5201 /* Credential+Random.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1603,6 +1636,7 @@
 				CA7A310922B16E25002AD939 /* StubDataStoreFactory.swift */,
 				CA7A310122B16E25002AD939 /* StubForceRefreshRequired.swift */,
 				CA7A310C22B16E25002AD939 /* StubUserPreferences.swift */,
+				CA8A73D922BD197C007A5201 /* StubCompanionAppURLRequestFactory.swift */,
 			);
 			path = "Configurable Dependencies";
 			sourceTree = "<group>";
@@ -1628,6 +1662,7 @@
 				CA7A311722B16E25002AD939 /* CapturingLogoutObserver.swift */,
 				CA7A311822B16E25002AD939 /* CapturingMapsObserver.swift */,
 				CA7A311522B16E25002AD939 /* CapturingPrivateMessagesObserver.swift */,
+				CA8A73DB22BD198F007A5201 /* CapturingAdditionalServicesURLConsumer.swift */,
 			);
 			path = Observers;
 			sourceTree = "<group>";
@@ -1877,6 +1912,7 @@
 				CA7A32A822B16EB5002AD939 /* StubDateDistanceCalculator.swift */,
 				CA7A32AA22B16EB5002AD939 /* Entity Test Doubles */,
 				CA7A328422B16EB4002AD939 /* Random Value Generation */,
+				CA8A73C322BD0FFC007A5201 /* FakeAdditionalServicesRepository.swift */,
 			);
 			path = EurofurenceModelTestDoubles;
 			sourceTree = "<group>";
@@ -1995,6 +2031,33 @@
 				26657B2D5254404DBC47C53C /* Pods_EurofurenceModelTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CA8A73D122BD15CB007A5201 /* Additional Services */ = {
+			isa = PBXGroup;
+			children = (
+				CA8A73DF22BD2062007A5201 /* AddingAdditionalServicesConsumer_AfterLoggingOut.swift */,
+				CA8A73DD22BD1EB0007A5201 /* AddingAdditionalServicesConsumer_WhileLoggedIn.swift */,
+				CA8A73D222BD15E4007A5201 /* AddingAdditionalServicesConsumer_WhileLoggedOut.swift */,
+				CA8A73E422BD2429007A5201 /* HardcodedCompanionAppURLRequestFactoryTests.swift */,
+			);
+			path = "Additional Services";
+			sourceTree = "<group>";
+		};
+		CA8A73D622BD188F007A5201 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				CA8A73BE22BD0FC2007A5201 /* AdditionalServicesRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		CA8A73E122BD20A6007A5201 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				CA8A73E222BD20B2007A5201 /* ConcreteAdditionalServicesRepository.swift */,
+			);
+			path = Repositories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2378,6 +2441,7 @@
 				CA7A303922B16DE4002AD939 /* Optional+Extensions.swift in Sources */,
 				CA7A307C22B16DE4002AD939 /* SignificantTimePassedEvent.swift in Sources */,
 				CA7A302222B16DE4002AD939 /* ConferenceDayEntity+Adaptation.swift in Sources */,
+				CA8A73E322BD20B2007A5201 /* ConcreteAdditionalServicesRepository.swift in Sources */,
 				CA7A302822B16DE4002AD939 /* KnowledgeEntryEntity+Adaptation.swift in Sources */,
 				CA7A307622B16DE4002AD939 /* UnfavouriteEvent.swift in Sources */,
 				CA7A305A22B16DE4002AD939 /* MessageCharacteristics.swift in Sources */,
@@ -2419,6 +2483,7 @@
 				CA7A302B22B16DE4002AD939 /* EntityAdapting.swift in Sources */,
 				CA7A302922B16DE4002AD939 /* KnowledgeGroupEntity+Adaptation.swift in Sources */,
 				CA7A300B22B16DE4002AD939 /* KnowledgeGroup.swift in Sources */,
+				CA8A73D522BD1889007A5201 /* Repositories.swift in Sources */,
 				CA7A301122B16DE4002AD939 /* Map.swift in Sources */,
 				CA7A307822B16DE4002AD939 /* DataStoreChangedEvent.swift in Sources */,
 				CA7A306B22B16DE4002AD939 /* AnnouncementsService.swift in Sources */,
@@ -2455,6 +2520,7 @@
 				CA7A300E22B16DE4002AD939 /* ImageEntity.swift in Sources */,
 				CA7A309522B16DE4002AD939 /* ConcreteRefreshService.swift in Sources */,
 				CA7A301E22B16DE4002AD939 /* UserDefaultsForceRefreshRequired.swift in Sources */,
+				CA8A73BF22BD0FC2007A5201 /* AdditionalServicesRepository.swift in Sources */,
 				CA7A308A22B16DE4002AD939 /* FileUtilities.swift in Sources */,
 				CA7A309322B16DE4002AD939 /* DataStoreChangedConsumer.swift in Sources */,
 				CA7A307D22B16DE4002AD939 /* RemoteNotificationTokenAvailable.swift in Sources */,
@@ -2486,7 +2552,9 @@
 				CA7A304522B16DE4002AD939 /* DataStoreTransaction.swift in Sources */,
 				CA7A309922B16DE4002AD939 /* ConcreteDealersService.swift in Sources */,
 				CA7A302622B16DE4002AD939 /* FavouriteEventEntity+Adaptation.swift in Sources */,
+				CA8A73D822BD196A007A5201 /* CompanionAppURLRequestFactory.swift in Sources */,
 				CA7A303E22B16DE4002AD939 /* MapCoordinateRender.swift in Sources */,
+				CA8A73E722BD2577007A5201 /* HardcodedCompanionAppURLRequestFactory.swift in Sources */,
 				CA7A308422B16DE4002AD939 /* EventImpl.swift in Sources */,
 				CA7A304722B16DE4002AD939 /* DataStoreFactory.swift in Sources */,
 				CA7A302F22B16DE4002AD939 /* EventEntity+Adaptation.swift in Sources */,
@@ -2575,6 +2643,7 @@
 				CA7A322E22B16E26002AD939 /* WhenObservingEvent_ThatIsFavourite_FromPreviousSession.swift in Sources */,
 				CA7A322222B16E26002AD939 /* InOrderToSupportSuperSponsorTag_ApplicationShould.swift in Sources */,
 				CA7A320522B16E26002AD939 /* WhenObservingDealersIndexThenSyncOccurs_ApplicationShould.swift in Sources */,
+				CA8A73DA22BD197C007A5201 /* StubCompanionAppURLRequestFactory.swift in Sources */,
 				CA7A31A322B16E26002AD939 /* KnowledgeGroupAssertion.swift in Sources */,
 				CA7A319F22B16E26002AD939 /* EventConferenceTracksRemoveAllBeforeInsertTests.swift in Sources */,
 				CA7A321322B16E26002AD939 /* WhenResolvingDataStoreState.swift in Sources */,
@@ -2596,6 +2665,7 @@
 				CA7A321522B16E26002AD939 /* WhenAddingAnnouncementsObserverAfterSuccessfulRefresh.swift in Sources */,
 				CA7A31EE22B16E26002AD939 /* CapturingEventsSearchControllerDelegate.swift in Sources */,
 				CA7A324B22B16E26002AD939 /* WhenAlreadyLoggedIn.swift in Sources */,
+				CA8A73DC22BD198F007A5201 /* CapturingAdditionalServicesURLConsumer.swift in Sources */,
 				CA7A322922B16E26002AD939 /* InOrderToSupportPhotoshootTag_ApplicationShould.swift in Sources */,
 				CA7A31BB22B16E26002AD939 /* WhenPerformingSync_AfterEnforcingFullStoreRefresh.swift in Sources */,
 				CA7A320F22B16E26002AD939 /* WhenPreparingDealerMapGraphic_ApplicationShould.swift in Sources */,
@@ -2643,6 +2713,7 @@
 				CA7A31E522B16E26002AD939 /* CapturingExternalContentHandler.swift in Sources */,
 				CA7A31E622B16E26002AD939 /* StubDataStoreFactory.swift in Sources */,
 				CA7A321A22B16E26002AD939 /* WhenOpeningAnnouncement_ApplicationShould.swift in Sources */,
+				CA8A73D322BD15E4007A5201 /* AddingAdditionalServicesConsumer_WhileLoggedOut.swift in Sources */,
 				CA7A319422B16E26002AD939 /* WhenDeletingMap_AfterSuccessfulSync_ApplicationShould.swift in Sources */,
 				CA7A318E22B16E26002AD939 /* WhenToldToOpenNotification_ThatRepresentsAnnouncement_ThatHasBeenDeleted_ApplicationShould.swift in Sources */,
 				CA7A31BC22B16E26002AD939 /* WhenPerformingSubsequentSync_ApplicationShould.swift in Sources */,
@@ -2663,6 +2734,7 @@
 				CA7A31AA22B16E26002AD939 /* WhenFetchingMapContents_ThatRevealsMapEntry_ApplicationShould.swift in Sources */,
 				CA7A31FE22B16E26002AD939 /* DealerAssertion.swift in Sources */,
 				CA7A31C022B16E26002AD939 /* WhenSyncingWhileLoggedIn.swift in Sources */,
+				CA8A73E922BD3035007A5201 /* Credential+Random.swift in Sources */,
 				CA7A31C922B16E26002AD939 /* WhenLookingUpMailToLinks.swift in Sources */,
 				CA7A321D22B16E26002AD939 /* WhenObservingRunningEvents_ThenLoadSucceeds.swift in Sources */,
 				CA7A324922B16E26002AD939 /* WhenRestrictingSearchResultsToFavourites_ScheduleShould.swift in Sources */,
@@ -2675,6 +2747,7 @@
 				CA7A31D122B16E26002AD939 /* WhenFullRefreshOccurs_YieldingOrphanedEntities.swift in Sources */,
 				CA7A31B022B16E26002AD939 /* WhenDataStoreAlreadyContainsMaps_ApplicationShould.swift in Sources */,
 				CA7A319922B16E26002AD939 /* KnowledgeGroupsRemoveAllBeforeInsertTests.swift in Sources */,
+				CA8A73E522BD2429007A5201 /* HardcodedCompanionAppURLRequestFactoryTests.swift in Sources */,
 				CA7A322322B16E26002AD939 /* InOrderToSupportKageTag_ApplicationShould.swift in Sources */,
 				CA7A319C22B16E26002AD939 /* WhenDeletingKnowledgeGroup_AfterSuccessfulSync_ApplicationShould.swift in Sources */,
 				CA7A31C522B16E26002AD939 /* WhenPerformingSubsequentRefresh_WhereConventionIdentifierMismatchDetected.swift in Sources */,
@@ -2683,6 +2756,7 @@
 				CA7A31F222B16E26002AD939 /* CapturingLogoutObserver.swift in Sources */,
 				CA7A31FB22B16E26002AD939 /* EurofurenceSessionTestBuilder.swift in Sources */,
 				CA7A31ED22B16E26002AD939 /* FakeAPI.swift in Sources */,
+				CA8A73DE22BD1EB0007A5201 /* AddingAdditionalServicesConsumer_WhileLoggedIn.swift in Sources */,
 				CA7A31DE22B16E26002AD939 /* StubForceRefreshRequired.swift in Sources */,
 				CA7A31F522B16E26002AD939 /* CapturingConventionCountdownServiceObserver.swift in Sources */,
 				CA7A321022B16E26002AD939 /* WhenFetchingDaysBeforeRefreshWhenStoreHasConferenceDays.swift in Sources */,
@@ -2710,6 +2784,7 @@
 				CA7A319722B16E26002AD939 /* KnowledgeEntriesRemoveAllBeforeInsertTests.swift in Sources */,
 				CA7A31F922B16E26002AD939 /* CapturingRemoteNotificationsTokenRegistration.swift in Sources */,
 				CA7A320A22B16E26002AD939 /* WhenFetchingExtendedDealerData_ApplicationShould.swift in Sources */,
+				CA8A73E022BD2062007A5201 /* AddingAdditionalServicesConsumer_AfterLoggingOut.swift in Sources */,
 				CA7A31AF22B16E26002AD939 /* WhenObservingMaps_ThenSyncSucceeds_ApplicationShould.swift in Sources */,
 				CA7A325022B16E26002AD939 /* WhenRegisteredForPushNotifications.swift in Sources */,
 				CA7A324D22B16E26002AD939 /* WhenLoggingOutSuccessfully.swift in Sources */,
@@ -2774,6 +2849,7 @@
 				CA7A32CB22B16EB5002AD939 /* FakeAnnouncementsService.swift in Sources */,
 				CA7A32B622B16EB5002AD939 /* AnnouncementCharacteristics+RandomValueProviding.swift in Sources */,
 				CA7A32CF22B16EB5002AD939 /* CapturingRefreshService.swift in Sources */,
+				CA8A73C422BD0FFC007A5201 /* FakeAdditionalServicesRepository.swift in Sources */,
 				CA7A32C122B16EB5002AD939 /* Room+RandomValueProviding.swift in Sources */,
 				CA7A32BA22B16EB5002AD939 /* KnowledgeGroupCharacteristics+RandomValueProviding.swift in Sources */,
 				CA7A32D722B16EB5002AD939 /* FakeEvent.swift in Sources */,

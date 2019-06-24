@@ -55,6 +55,10 @@ class EurofurenceSessionTestBuilder {
         var services: Services {
             return session.services
         }
+        
+        var additionalServicesRepository: AdditionalServicesRepository {
+            return session.repositories.additionalServices
+        }
 
         var notificationsService: NotificationService {
             return services.notifications
@@ -166,6 +170,7 @@ class EurofurenceSessionTestBuilder {
     private var imageRepository = CapturingImageRepository()
     private var urlOpener: CapturingURLOpener = CapturingURLOpener()
     private var collectThemAllRequestFactory: CollectThemAllRequestFactory = StubCollectThemAllRequestFactory()
+    private var companionAppURLRequestFactory: CompanionAppURLRequestFactory = StubCompanionAppURLRequestFactory()
     private var forceUpgradeRequired: ForceRefreshRequired = StubForceRefreshRequired(isForceRefreshRequired: false)
 
     func with(_ currentDate: Date) -> EurofurenceSessionTestBuilder {
@@ -219,6 +224,12 @@ class EurofurenceSessionTestBuilder {
         self.collectThemAllRequestFactory = collectThemAllRequestFactory
         return self
     }
+    
+    @discardableResult
+    func with(_ companionAppURLRequestFactory: CompanionAppURLRequestFactory) -> EurofurenceSessionTestBuilder {
+        self.companionAppURLRequestFactory = companionAppURLRequestFactory
+        return self
+    }
 
     func loggedInWithValidCredential() -> EurofurenceSessionTestBuilder {
         let credential = Credential(username: "User",
@@ -262,6 +273,7 @@ class EurofurenceSessionTestBuilder {
             .with(longRunningTaskManager)
             .with(mapCoordinateRender)
             .with(forceUpgradeRequired)
+            .with(companionAppURLRequestFactory)
             .build()
         
         let refreshObserver = CapturingRefreshServiceObserver()
