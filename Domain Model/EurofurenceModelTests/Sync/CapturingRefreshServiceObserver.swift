@@ -20,3 +20,14 @@ class CapturingRefreshServiceObserver: RefreshServiceObserver {
     }
 
 }
+
+class JournallingRefreshServiceObserver: CapturingRefreshServiceObserver {
+    
+    private(set) var numberOfTimesToldDidBeginRefreshing = 0
+    
+    override func refreshServiceDidBeginRefreshing() {
+        super.refreshServiceDidBeginRefreshing()
+        numberOfTimesToldDidBeginRefreshing += 1
+    }
+    
+}

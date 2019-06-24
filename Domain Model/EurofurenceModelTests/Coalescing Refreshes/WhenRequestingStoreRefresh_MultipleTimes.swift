@@ -21,6 +21,16 @@ class WhenRequestingStoreRefresh_MultipleTimes: XCTestCase {
         XCTAssertEqual(1, longRunningTaskManager.longRunningTaskCount, "Only one task should start when coalescing multiple refreshes")
     }
     
+    func testObserversAreOnlyToldAboutTheRefreshStartingOnce() {
+        let context = EurofurenceSessionTestBuilder().build()
+        let observer = JournallingRefreshServiceObserver()
+        context.refreshService.add(observer)
+        context.refreshLocalStore()
+        context.refreshLocalStore()
+        
+        XCTAssertEqual(1, observer.numberOfTimesToldDidBeginRefreshing, "Observers should not be told about refreshes that are coalesced")
+    }
+    
     func testTheAPIIsOnlyHitOnce() {
         let api = OnlyToldToRefreshOnceMockAPI()
         let context = EurofurenceSessionTestBuilder().with(api).build()
