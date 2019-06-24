@@ -115,7 +115,8 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
         tableController = TableController(numberOfDealersPerSection: numberOfDealersPerSection,
                                           sectionIndexTitles: sectionIndexTitles,
                                           binder: binder,
-                                          onDidSelectRowAtIndexPath: didSelectDealer)
+                                          onDidSelectRowAtIndexPath: didSelectDealer,
+                                          onDidEndDragging: scrollViewDidEndDragging)
     }
 
     func bindSearchResults(numberOfDealersPerSection: [Int], sectionIndexTitles: [String], using binder: DealersSearchResultsBinder) {
@@ -131,7 +132,15 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
     }
 
     @objc private func refreshControlValueDidChange() {
-        delegate?.dealersSceneDidPerformRefreshAction()
+        if tableView.isDragging == false {        
+            delegate?.dealersSceneDidPerformRefreshAction()
+        }
+    }
+    
+    private func scrollViewDidEndDragging() {
+        if refreshControl.isRefreshing {
+            delegate?.dealersSceneDidPerformRefreshAction()
+        }
     }
 
     private func didSelectDealer(at indexPath: IndexPath) {
@@ -148,15 +157,18 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
         private let sectionIndexTitles: [String]
         private let binder: DealersBinder
         private let onDidSelectRowAtIndexPath: (IndexPath) -> Void
+        private let onDidEndDragging: () -> Void
 
         init(numberOfDealersPerSection: [Int],
              sectionIndexTitles: [String],
              binder: DealersBinder,
-             onDidSelectRowAtIndexPath: @escaping (IndexPath) -> Void) {
+             onDidSelectRowAtIndexPath: @escaping (IndexPath) -> Void,
+             onDidEndDragging: @escaping () -> Void) {
             self.numberOfDealersPerSection = numberOfDealersPerSection
             self.sectionIndexTitles = sectionIndexTitles
             self.binder = binder
             self.onDidSelectRowAtIndexPath = onDidSelectRowAtIndexPath
+            self.onDidEndDragging = onDidEndDragging
         }
 
         func numberOfSections(in tableView: UITableView) -> Int {
@@ -186,6 +198,10 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
 
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             onDidSelectRowAtIndexPath(indexPath)
+        }
+        
+        func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+            onDidEndDragging()
         }
 
     }

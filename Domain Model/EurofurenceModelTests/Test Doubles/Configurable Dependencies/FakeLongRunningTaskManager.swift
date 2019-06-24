@@ -31,3 +31,19 @@ class FakeLongRunningTaskManager: LongRunningTaskManager {
     }
 
 }
+
+class JournallingLongRunningTaskManager: FakeLongRunningTaskManager {
+    
+    private(set) var longRunningTaskCount = 0
+    
+    override func beginLongRunningTask() -> AnyHashable {
+        longRunningTaskCount += 1
+        return super.beginLongRunningTask()
+    }
+    
+    override func finishLongRunningTask(token: AnyHashable) {
+        super.finishLongRunningTask(token: token)
+        longRunningTaskCount -= 1
+    }
+    
+}

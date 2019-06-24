@@ -152,7 +152,8 @@ class ScheduleViewController: UIViewController,
         tableController = TableController(numberOfItemsPerSection: numberOfItemsPerSection,
                                           binder: binder,
                                           onDidSelectRow: scheduleTableViewDidSelectRow,
-                                          onTableViewDidScroll: tableViewDidScroll)
+                                          onTableViewDidScroll: tableViewDidScroll,
+                                          onDidEndDragging: scrollViewDidEndDragging)
     }
 
     func bindSearchResults(numberOfItemsPerSection: [Int], using binder: ScheduleSceneBinder) {
@@ -199,6 +200,18 @@ class ScheduleViewController: UIViewController,
     }
 
     @objc private func refreshControlDidChangeValue() {
+        if tableView.isDragging == false {
+            notifyDidPerformRefreshAction()
+        }
+    }
+    
+    private func scrollViewDidEndDragging() {
+        if refreshControl.isRefreshing {
+            notifyDidPerformRefreshAction()
+        }
+    }
+    
+    private func notifyDidPerformRefreshAction() {
         delegate?.scheduleSceneDidPerformRefreshAction()
     }
 
@@ -239,15 +252,18 @@ class ScheduleViewController: UIViewController,
         private let binder: ScheduleSceneBinder
         private let onDidSelectRow: (IndexPath) -> Void
         private let onTableViewDidScroll: (CGPoint) -> Void
+        private let onDidEndDragging: () -> Void
 
         init(numberOfItemsPerSection: [Int],
              binder: ScheduleSceneBinder,
              onDidSelectRow: @escaping (IndexPath) -> Void,
-             onTableViewDidScroll: @escaping (CGPoint) -> Void) {
+             onTableViewDidScroll: @escaping (CGPoint) -> Void,
+             onDidEndDragging: @escaping () -> Void) {
             self.numberOfItemsPerSection = numberOfItemsPerSection
             self.binder = binder
             self.onDidSelectRow = onDidSelectRow
             self.onTableViewDidScroll = onTableViewDidScroll
+            self.onDidEndDragging = onDidEndDragging
         }
 
         func numberOfSections(in tableView: UITableView) -> Int {
@@ -295,6 +311,10 @@ class ScheduleViewController: UIViewController,
         
         func scrollViewDidScroll(_ scrollView: UIScrollView) {
             onTableViewDidScroll(scrollView.contentOffset)
+        }
+        
+        func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+            onDidEndDragging()
         }
 
     }

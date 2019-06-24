@@ -43,15 +43,23 @@ class ConcreteRefreshService: RefreshService {
     func add(_ observer: RefreshServiceObserver) {
         refreshObservers.append(observer)
     }
+    
+    private var ongoingProgress: Progress?
 
     @discardableResult
     func refreshLocalStore(completionHandler: @escaping (RefreshServiceError?) -> Void) -> Progress {
-        notifyRefreshStarted()
+        if let progress = ongoingProgress {
+            return progress
+        }
+        
         startLongRunningTask()
+        notifyRefreshStarted()
         
         let progress = Progress()
         progress.totalUnitCount = -1
         progress.completedUnitCount = -1
+        
+        ongoingProgress = progress
         
         let lastSyncTime = determineLastRefreshDate()
         api.fetchLatestData(lastSyncTime: lastSyncTime) { (response) in
@@ -86,6 +94,7 @@ class ConcreteRefreshService: RefreshService {
     }
 
     private func refreshTaskDidFinish() {
+        ongoingProgress = nil
         notifyRefreshFinished()
         finishLongRunningTask()
     }
