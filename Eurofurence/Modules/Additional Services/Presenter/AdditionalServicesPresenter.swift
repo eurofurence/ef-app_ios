@@ -1,5 +1,6 @@
 import EurofurenceModel
 import Foundation
+import UIKit.UIImage
 
 struct AdditionalServicesPresenter: HybridWebSceneDelegate, AdditionalServicesURLConsumer {
     
@@ -12,6 +13,8 @@ struct AdditionalServicesPresenter: HybridWebSceneDelegate, AdditionalServicesUR
         
         scene.setSceneTitle(.additionalServices)
         scene.setSceneShortTitle(.services)
+        UIImage(named: "Additional Services", in: .main, compatibleWith: nil)?.pngData().let(scene.setSceneIcon)
+        
         scene.setDelegate(self)
     }
     

@@ -19,4 +19,11 @@ class WhenBuildingAdditionalServicesModule_PresenterShould: XCTestCase {
         XCTAssertEqual(.additionalServices, context.scene.capturedTitle)
     }
     
+    func testApplyTheIconToTheScene() {
+        let context = AdditionalServicesPresenterTestBuilder().build()
+        let expected = UIImage(named: "Additional Services", in: .main, compatibleWith: nil)?.pngData()
+        
+        XCTAssertEqual(expected, context.scene.capturedIconData)
+    }
+    
 }
