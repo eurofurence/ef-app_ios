@@ -29,20 +29,4 @@ class CapturingFirebaseAdapter: FirebaseAdapter {
         return unsubscribedTopics.contains(topic)
     }
 
-    var subscribedToTestAllNotifications: Bool {
-        return didSubscribeToTopic(.testAll)
-    }
-
-    var subscribedToTestiOSNotifications: Bool {
-        return didSubscribeToTopic(.testiOS)
-    }
-
-    var unsubscribedFromTestAllNotifications: Bool {
-        return didUnsubscribeFromTopic(.testAll)
-    }
-
-    var unsubscribedFromTestiOSNotifications: Bool {
-        return didUnsubscribeFromTopic(.testiOS)
-    }
-
 }

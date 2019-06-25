@@ -1,9 +1,6 @@
 import Foundation
 
 public enum FirebaseTopic: CustomStringConvertible, Hashable {
-
-    case testAll
-    case testiOS
     case ios
     case debug
     case version(String)
@@ -20,10 +17,6 @@ public enum FirebaseTopic: CustomStringConvertible, Hashable {
 
     public var description: String {
         switch self {
-        case .testAll:
-            return "test-all"
-        case .testiOS:
-            return "test-ios"
         case .ios:
             return "ios"
         case .debug:

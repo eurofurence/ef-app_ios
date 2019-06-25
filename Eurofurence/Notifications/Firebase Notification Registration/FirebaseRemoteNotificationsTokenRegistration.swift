@@ -32,12 +32,9 @@ public struct FirebaseRemoteNotificationsTokenRegistration: RemoteNotificationsT
         switch buildConfiguration.configuration {
         case .debug:
             fcmTopics += [.debug]
-            firebaseAdapter.subscribe(toTopic: .testiOS)
-            firebaseAdapter.subscribe(toTopic: .testAll)
 
         case .release:
-            firebaseAdapter.unsubscribe(fromTopic: .testiOS)
-            firebaseAdapter.unsubscribe(fromTopic: .testAll)
+            break
         }
 
         fcmRegistration.registerFCM(firebaseAdapter.fcmToken,

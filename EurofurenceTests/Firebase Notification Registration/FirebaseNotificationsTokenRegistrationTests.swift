@@ -43,39 +43,6 @@ class FirebaseRemoteNotificationsTokenRegistrationTests: XCTestCase {
         XCTAssertTrue(context.capturingFirebaseAdapter.didSubscribeToTopic(.cidiOS(cid.identifier)))
     }
 
-    func testForDebugConfigurationTestAllNotificationsShouldBeSubscribed() {
-        let context = assembleApp(configuration: .debug)
-        context.registerDeviceToken()
-
-        XCTAssertTrue(context.capturingFirebaseAdapter.subscribedToTestAllNotifications)
-    }
-
-    func testForReleaseConfigurationTestAllNotificationsShouldNotBeSubscribed() {
-        let context = assembleApp(configuration: .release)
-        context.registerDeviceToken()
-
-        XCTAssertFalse(context.capturingFirebaseAdapter.subscribedToTestAllNotifications)
-    }
-
-    func testForReleaseConfigurationTestAllNotificationsShouldBeUnsubscribed() {
-        let context = assembleApp(configuration: .release)
-        context.registerDeviceToken()
-
-        XCTAssertTrue(context.capturingFirebaseAdapter.unsubscribedFromTestAllNotifications)
-    }
-
-    func testForDebugConfigurationTestAllNotificationsShouldNotBeUnsubscribed() {
-        let context = assembleApp(configuration: .debug)
-        context.registerDeviceToken()
-
-        XCTAssertFalse(context.capturingFirebaseAdapter.unsubscribedFromTestAllNotifications)
-    }
-
-    func testForDebugConfigurationNotRegisterForTestAllNotificationsUntilWeActuallyReceievePushToken() {
-        let context = assembleApp(configuration: .debug)
-        XCTAssertFalse(context.capturingFirebaseAdapter.subscribedToTestAllNotifications)
-    }
-
     func testSetTheTokenOntoTheNotificationsService() {
         let context = assembleApp(configuration: .debug)
         let deviceToken = unwrap("I'm a token".data(using: .utf8))
@@ -143,34 +110,6 @@ class FirebaseRemoteNotificationsTokenRegistrationTests: XCTestCase {
         context.registerDeviceToken(userAuthenticationToken: authenticationToken)
 
         XCTAssertEqual(authenticationToken, context.capturingFCMDeviceRegister.capturedAuthenticationToken)
-    }
-
-    func testForDebugConfigurationTestiOSNotificationsShouldBeSubscribed() {
-        let context = assembleApp(configuration: .debug)
-        context.registerDeviceToken()
-
-        XCTAssertTrue(context.capturingFirebaseAdapter.subscribedToTestiOSNotifications)
-    }
-
-    func testForReleaseConfigurationTestiOSNotificationsShouldNotBeSubscribed() {
-        let context = assembleApp(configuration: .release)
-        context.registerDeviceToken()
-
-        XCTAssertFalse(context.capturingFirebaseAdapter.subscribedToTestiOSNotifications)
-    }
-
-    func testForReleaseConfigurationTestiOSNotificationsShouldBeUnsubscribed() {
-        let context = assembleApp(configuration: .release)
-        context.registerDeviceToken()
-
-        XCTAssertTrue(context.capturingFirebaseAdapter.unsubscribedFromTestiOSNotifications)
-    }
-
-    func testForDebugConfigurationTestiOSNotificationsShouldNotBeUnsubscribed() {
-        let context = assembleApp(configuration: .debug)
-        context.registerDeviceToken()
-
-        XCTAssertFalse(context.capturingFirebaseAdapter.unsubscribedFromTestiOSNotifications)
     }
 
     func testErrorsDuringFCMRegistrationArePropogatedBackThroughTheCompletionHandler() {
