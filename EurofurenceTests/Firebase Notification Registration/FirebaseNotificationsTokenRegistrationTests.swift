@@ -18,19 +18,29 @@ class FirebaseRemoteNotificationsTokenRegistrationTests: XCTestCase {
         }
     }
 
-    private func assembleApp(configuration: BuildConfiguration, version: String = "") -> Context {
+    private func assembleApp(configuration: BuildConfiguration, version: String = "", cid: ConventionIdentifier = ConventionIdentifier(identifier: "")) -> Context {
         let buildConfigurationProviding = StubBuildConfigurationProviding(configuration: configuration)
         let appVersionProviding = StubAppVersionProviding(version: version)
         let capturingFirebaseAdapter = CapturingFirebaseAdapter()
         let capturingFCMDeviceRegister = CapturingFCMDeviceRegistration()
         let tokenRegistration = FirebaseRemoteNotificationsTokenRegistration(buildConfiguration: buildConfigurationProviding,
                                                                              appVersion: appVersionProviding,
+                                                                             conventionIdentifier: cid,
                                                                              firebaseAdapter: capturingFirebaseAdapter,
                                                                              fcmRegistration: capturingFCMDeviceRegister)
 
         return Context(tokenRegistration: tokenRegistration,
                        capturingFirebaseAdapter: capturingFirebaseAdapter,
                        capturingFCMDeviceRegister: capturingFCMDeviceRegister)
+    }
+    
+    func testSubscribesToCIDTopics() {
+        let cid = ConventionIdentifier(identifier: "EF25")
+        let context = assembleApp(configuration: .debug, cid: cid)
+        context.registerDeviceToken()
+        
+        XCTAssertTrue(context.capturingFirebaseAdapter.didSubscribeToTopic(.cid(cid.identifier)))
+        XCTAssertTrue(context.capturingFirebaseAdapter.didSubscribeToTopic(.cidiOS(cid.identifier)))
     }
 
     func testForDebugConfigurationTestAllNotificationsShouldBeSubscribed() {

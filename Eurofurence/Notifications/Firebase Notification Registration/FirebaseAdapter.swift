@@ -9,6 +9,8 @@ public enum FirebaseTopic: CustomStringConvertible, Hashable {
     case ios
     case debug
     case version(String)
+    case cid(String)
+    case cidiOS(String)
 
     public static func == (lhs: FirebaseTopic, rhs: FirebaseTopic) -> Bool {
         return lhs.hashValue == rhs.hashValue
@@ -33,7 +35,11 @@ public enum FirebaseTopic: CustomStringConvertible, Hashable {
         case .debug:
             return "debug"
         case .version(let version):
-            return "Version-\(version)"
+            return "version-\(version)"
+        case .cid(let cid):
+            return "\(cid)"
+        case .cidiOS(let cid):
+            return "\(cid)-ios"
         }
     }
 
