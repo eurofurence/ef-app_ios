@@ -27,9 +27,6 @@ public struct FirebaseRemoteNotificationsTokenRegistration: RemoteNotificationsT
         firebaseAdapter.setAPNSToken(deviceToken: token)
         firebaseAdapter.subscribe(toTopic: .cid(conventionIdentifier.identifier))
         firebaseAdapter.subscribe(toTopic: .cidiOS(conventionIdentifier.identifier))
-        
-        firebaseAdapter.subscribe(toTopic: .liveiOS)
-        firebaseAdapter.subscribe(toTopic: .liveAll)
 
         var fcmTopics: [FirebaseTopic] = [.ios, .version(appVersion.version)]
         switch buildConfiguration.configuration {

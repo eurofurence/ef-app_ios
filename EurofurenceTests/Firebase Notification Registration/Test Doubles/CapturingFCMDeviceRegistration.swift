@@ -30,10 +30,6 @@ class CapturingFCMDeviceRegistration: FCMDeviceRegistration {
         return topics.contains(.testiOS)
     }
 
-    var registeredLiveiOSTopic: Bool {
-        return topics.contains(.liveiOS)
-    }
-
     func registeredVersionTopic(with version: String) -> Bool {
         return topics.contains(.version(version))
     }
