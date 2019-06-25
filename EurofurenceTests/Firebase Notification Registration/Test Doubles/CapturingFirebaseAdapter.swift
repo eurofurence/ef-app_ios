@@ -29,16 +29,8 @@ class CapturingFirebaseAdapter: FirebaseAdapter {
         return unsubscribedTopics.contains(topic)
     }
 
-    var subscribedToTestNotifications: Bool {
-        return didSubscribeToTopic(.test)
-    }
-
     var subscribedToTestAllNotifications: Bool {
         return didSubscribeToTopic(.testAll)
-    }
-
-    var subscribedToLiveNotifications: Bool {
-        return didSubscribeToTopic(.live)
     }
 
     var subscribedToLiveAllNotifications: Bool {
@@ -53,16 +45,8 @@ class CapturingFirebaseAdapter: FirebaseAdapter {
         return didSubscribeToTopic(.testiOS)
     }
 
-    var unsubscribedFromTestNotifications: Bool {
-        return didUnsubscribeFromTopic(.test)
-    }
-
     var unsubscribedFromTestAllNotifications: Bool {
         return didUnsubscribeFromTopic(.testAll)
-    }
-
-    var unsubscribedFromLiveNotifications: Bool {
-        return didUnsubscribeFromTopic(.live)
     }
 
     var unsubscribedFromLiveAllNotifications: Bool {

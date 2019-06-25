@@ -3,14 +3,6 @@ import XCTest
 
 class FirebaseTopicTests: XCTestCase {
 
-    func testProvideAppropriateTopicNameForTestTopic() {
-        XCTAssertEqual("test", FirebaseTopic.test.description)
-    }
-
-    func testProvideAppropriateTopicNameForLiveTopic() {
-        XCTAssertEqual("live", FirebaseTopic.live.description)
-    }
-
     func testProvideAppropriateTopicNameForiOSTopic() {
         XCTAssertEqual("ios", FirebaseTopic.ios.description)
     }

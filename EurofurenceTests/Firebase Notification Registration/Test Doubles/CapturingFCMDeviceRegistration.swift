@@ -18,14 +18,6 @@ class CapturingFCMDeviceRegistration: FCMDeviceRegistration {
         self.completionHandler = completionHandler
     }
 
-    var registeredTestTopic: Bool {
-        return topics.contains(.test)
-    }
-
-    var registeredLiveTopic: Bool {
-        return topics.contains(.live)
-    }
-
     var registeredToiOSTopic: Bool {
         return topics.contains(.ios)
     }

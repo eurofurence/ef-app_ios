@@ -90,11 +90,6 @@ class FirebaseRemoteNotificationsTokenRegistrationTests: XCTestCase {
         XCTAssertFalse(context.capturingFirebaseAdapter.unsubscribedFromLiveAllNotifications)
     }
 
-    func testForReleaseConfigurationNotUnregisterFromTestAllNotificationsUntilWeActuallyReceievePushToken() {
-        let context = assembleApp(configuration: .release)
-        XCTAssertFalse(context.capturingFirebaseAdapter.unsubscribedFromTestNotifications)
-    }
-
     func testSetTheTokenOntoTheNotificationsService() {
         let context = assembleApp(configuration: .debug)
         let deviceToken = unwrap("I'm a token".data(using: .utf8))
@@ -110,34 +105,6 @@ class FirebaseRemoteNotificationsTokenRegistrationTests: XCTestCase {
         context.registerDeviceToken()
 
         XCTAssertEqual(stubFCMToken, context.capturingFCMDeviceRegister.capturedFCM)
-    }
-
-    func testForDebugConfigurationRegisterTheDebugTopicToTheFCMDeviceRegister() {
-        let context = assembleApp(configuration: .debug)
-        context.registerDeviceToken()
-
-        XCTAssertTrue(context.capturingFCMDeviceRegister.registeredTestTopic)
-    }
-
-    func testForReleaseConfigurationRegisterTheLiveTopicToTheFCMDeviceRegister() {
-        let context = assembleApp(configuration: .release)
-        context.registerDeviceToken()
-
-        XCTAssertTrue(context.capturingFCMDeviceRegister.registeredLiveTopic)
-    }
-
-    func testForReleaseConfigurationNotRegisterTheTestTopicToTheFCMDeviceRegister() {
-        let context = assembleApp(configuration: .release)
-        context.registerDeviceToken()
-
-        XCTAssertFalse(context.capturingFCMDeviceRegister.registeredTestTopic)
-    }
-
-    func testForDebugConfigurationRegisterTheLiveTopicToTheFCMDeviceRegister() {
-        let context = assembleApp(configuration: .debug)
-        context.registerDeviceToken()
-
-        XCTAssertTrue(context.capturingFCMDeviceRegister.registeredLiveTopic)
     }
 
     func testRegisterTheiOSTopicForDebugConfiguration() {
