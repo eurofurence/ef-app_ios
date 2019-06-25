@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         prepareNotificationDelegate()
         installDebugModule()
         showApplicationWindow()
+        requestRemoteNotificationsDeviceToken()
 
 		return true
 	}
@@ -45,6 +46,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ApplicationStack.assemble()
         Theme.apply()
         ReviewPromptController.initialize()
+    }
+    
+    private func requestRemoteNotificationsDeviceToken() {
+        UIApplication.shared.registerForRemoteNotifications()
     }
     
     private func prepareNotificationDelegate() {

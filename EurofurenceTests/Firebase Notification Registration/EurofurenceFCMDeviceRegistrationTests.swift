@@ -25,7 +25,7 @@ class EurofurenceFCMDeviceRegistrationTests: XCTestCase {
 
     func testRegisteringTheFCMTokenSubmitsRequestToFCMRegistrationURL() {
         performRegistration()
-        let expectedURL = urlProviding.url + "PushNotifications/FcmDeviceRegistration"
+        let expectedURL = urlProviding.url + "/PushNotifications/FcmDeviceRegistration"
 
         XCTAssertEqual(expectedURL, capturingJSONSession.postedURL)
     }

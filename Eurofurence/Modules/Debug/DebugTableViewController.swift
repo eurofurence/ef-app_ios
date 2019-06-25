@@ -33,7 +33,7 @@ class DebugTableViewController: UITableViewController {
 
     private func copyFCMToPasteBoard() {
         guard let value = Messaging.messaging().fcmToken else { return }
-        UIPasteboard.general.setValue(value, forPasteboardType: kUTTypeRTF as String)
+        UIPasteboard.general.setValue(value, forPasteboardType: kUTTypePlainText as String)
 
         let alert = UIAlertController(title: "FCM Copied", message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel))
