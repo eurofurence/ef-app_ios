@@ -24,11 +24,13 @@ public struct FirebaseRemoteNotificationsTokenRegistration: RemoteNotificationsT
     public func registerRemoteNotificationsDeviceToken(_ token: Data?,
                                                        userAuthenticationToken: String?,
                                                        completionHandler: @escaping (Error?) -> Void) {
+        let conventionIdentifierString = conventionIdentifier.identifier
+        
         firebaseAdapter.setAPNSToken(deviceToken: token)
-        firebaseAdapter.subscribe(toTopic: .cid(conventionIdentifier.identifier))
-        firebaseAdapter.subscribe(toTopic: .cidiOS(conventionIdentifier.identifier))
+        firebaseAdapter.subscribe(toTopic: .cid(conventionIdentifierString))
+        firebaseAdapter.subscribe(toTopic: .cidiOS(conventionIdentifierString))
 
-        var fcmTopics: [FirebaseTopic] = [.ios, .version(appVersion.version)]
+        var fcmTopics: [FirebaseTopic] = [.ios, .version(appVersion.version), .backendCID(conventionIdentifierString)]
         if buildConfiguration.configuration == .debug {
             fcmTopics += [.debug]
         }

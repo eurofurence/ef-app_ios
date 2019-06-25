@@ -6,6 +6,7 @@ public enum FirebaseTopic: CustomStringConvertible, Hashable {
     case version(String)
     case cid(String)
     case cidiOS(String)
+    case backendCID(String)
 
     public static func == (lhs: FirebaseTopic, rhs: FirebaseTopic) -> Bool {
         return lhs.hashValue == rhs.hashValue
@@ -27,6 +28,8 @@ public enum FirebaseTopic: CustomStringConvertible, Hashable {
             return "\(cid)"
         case .cidiOS(let cid):
             return "\(cid)-ios"
+        case .backendCID(let cid):
+            return "cid-\(cid)"
         }
     }
 

@@ -103,6 +103,14 @@ class FirebaseRemoteNotificationsTokenRegistrationTests: XCTestCase {
 
         XCTAssertTrue(context.capturingFCMDeviceRegister.registeredVersionTopic(with: version))
     }
+    
+    func testRegisterTheCIDTopic() {
+        let cid = ConventionIdentifier(identifier: "EF25")
+        let context = assembleApp(configuration: .debug, cid: cid)
+        context.registerDeviceToken()
+        
+        XCTAssertTrue(context.capturingFCMDeviceRegister.registeredCIDTopic(with: cid.identifier))
+    }
 
     func testRegisteringDeviceTokenShouldProvideTheUserAuthenticationToken() {
         let authenticationToken = "Token"

@@ -29,5 +29,9 @@ class CapturingFCMDeviceRegistration: FCMDeviceRegistration {
     func registeredVersionTopic(with version: String) -> Bool {
         return topics.contains(.version(version))
     }
+    
+    func registeredCIDTopic(with version: String) -> Bool {
+        return topics.contains(.backendCID(version))
+    }
 
 }
