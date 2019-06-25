@@ -44,6 +44,7 @@ class ApplicationStack {
         let fcmRegistration = EurofurenceFCMDeviceRegistration(JSONSession: jsonSession, urlProviding: apiUrl)
         let remoteNotificationsTokenRegistration = FirebaseRemoteNotificationsTokenRegistration(buildConfiguration: buildConfiguration,
                                                                                                 appVersion: BundleAppVersionProviding.shared,
+                                                                                                conventionIdentifier: ApplicationStack.CID,
                                                                                                 firebaseAdapter: FirebaseMessagingAdapter(),
                                                                                                 fcmRegistration: fcmRegistration)
 

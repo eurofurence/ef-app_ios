@@ -3,14 +3,6 @@ import XCTest
 
 class FirebaseTopicTests: XCTestCase {
 
-    func testProvideAppropriateTopicNameForTestTopic() {
-        XCTAssertEqual("test", FirebaseTopic.test.description)
-    }
-
-    func testProvideAppropriateTopicNameForLiveTopic() {
-        XCTAssertEqual("live", FirebaseTopic.live.description)
-    }
-
     func testProvideAppropriateTopicNameForiOSTopic() {
         XCTAssertEqual("ios", FirebaseTopic.ios.description)
     }
@@ -21,7 +13,7 @@ class FirebaseTopicTests: XCTestCase {
 
     func testProvideAppropriateTopicNameForVersionTopic() {
         let version = "2.0.0"
-        XCTAssertEqual("Version-\(version)", FirebaseTopic.version(version).description)
+        XCTAssertEqual("version-\(version)", FirebaseTopic.version(version).description)
     }
 
 }

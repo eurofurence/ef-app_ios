@@ -1,16 +1,12 @@
 import Foundation
 
 public enum FirebaseTopic: CustomStringConvertible, Hashable {
-
-    case test
-    case testAll
-    case testiOS
-    case live
-    case liveAll
-    case liveiOS
     case ios
     case debug
     case version(String)
+    case cid(String)
+    case cidiOS(String)
+    case backendCID(String)
 
     public static func == (lhs: FirebaseTopic, rhs: FirebaseTopic) -> Bool {
         return lhs.hashValue == rhs.hashValue
@@ -22,24 +18,18 @@ public enum FirebaseTopic: CustomStringConvertible, Hashable {
 
     public var description: String {
         switch self {
-        case .test:
-            return "test"
-        case .testAll:
-            return "test-all"
-        case .testiOS:
-            return "test-ios"
-        case .live:
-            return "live"
-        case .liveAll:
-            return "live-all"
-        case .liveiOS:
-            return "live-ios"
         case .ios:
             return "ios"
         case .debug:
             return "debug"
         case .version(let version):
-            return "Version-\(version)"
+            return "version-\(version)"
+        case .cid(let cid):
+            return "\(cid)"
+        case .cidiOS(let cid):
+            return "\(cid)-ios"
+        case .backendCID(let cid):
+            return "cid-\(cid)"
         }
     }
 
