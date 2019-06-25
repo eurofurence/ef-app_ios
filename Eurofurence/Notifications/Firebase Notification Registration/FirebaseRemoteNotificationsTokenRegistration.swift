@@ -29,12 +29,8 @@ public struct FirebaseRemoteNotificationsTokenRegistration: RemoteNotificationsT
         firebaseAdapter.subscribe(toTopic: .cidiOS(conventionIdentifier.identifier))
 
         var fcmTopics: [FirebaseTopic] = [.ios, .version(appVersion.version)]
-        switch buildConfiguration.configuration {
-        case .debug:
+        if buildConfiguration.configuration == .debug {
             fcmTopics += [.debug]
-
-        case .release:
-            break
         }
 
         fcmRegistration.registerFCM(firebaseAdapter.fcmToken,
