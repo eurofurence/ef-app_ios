@@ -692,7 +692,6 @@
 		CA728485209F88E0007D912A /* DefaultAnnouncementDetailInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA728484209F88E0007D912A /* DefaultAnnouncementDetailInteractorShould.swift */; };
 		CA72848C209F9288007D912A /* DefaultAnnouncementDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA72848B209F9288007D912A /* DefaultAnnouncementDetailInteractor.swift */; };
 		CA72848E209F93A4007D912A /* MarkdownRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA72848D209F93A4007D912A /* MarkdownRenderer.swift */; };
-		CA728490209F9482007D912A /* DefaultMarkdownRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA72848F209F9482007D912A /* DefaultMarkdownRenderer.swift */; };
 		CA728492209F9540007D912A /* StubMarkdownRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA728491209F9540007D912A /* StubMarkdownRenderer.swift */; };
 		CA73AED4201A0413004E77BF /* WhenKnowledgeListSceneDidLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA73AED3201A0413004E77BF /* WhenKnowledgeListSceneDidLoad.swift */; };
 		CA73AED8201A07E7004E77BF /* KnowledgeGroupsPresenterTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA73AED7201A07E7004E77BF /* KnowledgeGroupsPresenterTestBuilder.swift */; };
@@ -1740,7 +1739,6 @@
 		CA728484209F88E0007D912A /* DefaultAnnouncementDetailInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAnnouncementDetailInteractorShould.swift; sourceTree = "<group>"; };
 		CA72848B209F9288007D912A /* DefaultAnnouncementDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAnnouncementDetailInteractor.swift; sourceTree = "<group>"; };
 		CA72848D209F93A4007D912A /* MarkdownRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownRenderer.swift; sourceTree = "<group>"; };
-		CA72848F209F9482007D912A /* DefaultMarkdownRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMarkdownRenderer.swift; sourceTree = "<group>"; };
 		CA728491209F9540007D912A /* StubMarkdownRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubMarkdownRenderer.swift; sourceTree = "<group>"; };
 		CA73AED3201A0413004E77BF /* WhenKnowledgeListSceneDidLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenKnowledgeListSceneDidLoad.swift; sourceTree = "<group>"; };
 		CA73AED7201A07E7004E77BF /* KnowledgeGroupsPresenterTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeGroupsPresenterTestBuilder.swift; sourceTree = "<group>"; };
@@ -2095,7 +2093,6 @@
 			isa = PBXGroup;
 			children = (
 				20516AC521121AE400C399C0 /* SubtleDownMarkdownRenderer.swift */,
-				CA72848F209F9482007D912A /* DefaultMarkdownRenderer.swift */,
 				CA72848D209F93A4007D912A /* MarkdownRenderer.swift */,
 				20E87E16210A34D800B55A04 /* DownMarkdownRenderer.swift */,
 				20516AC721123E5500C399C0 /* DefaultDownMarkdownRenderer.swift */,
@@ -6058,7 +6055,6 @@
 				CACF1E8020B212BE00D904B5 /* EventSummaryComponent.swift in Sources */,
 				20E87E17210A34D800B55A04 /* DownMarkdownRenderer.swift in Sources */,
 				CA0F7632203314FE009DA079 /* KnowledgeListViewController.swift in Sources */,
-				CA728490209F9482007D912A /* DefaultMarkdownRenderer.swift in Sources */,
 				CAE27B4E1F85611C005FDE39 /* PhoneTutorialModuleFactory.swift in Sources */,
 				CABA43831FB84834009CB5B0 /* StoryboardMessagesSceneFactory.swift in Sources */,
 				CA4FBE121F7304B400D29405 /* DateFormatterProtocol.swift in Sources */,
