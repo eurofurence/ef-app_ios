@@ -29,7 +29,7 @@ struct ApplicationModuleRepository: ModuleRepository {
     // swiftlint:disable function_body_length
     init(services: Services, repositories: Repositories) {
         let subtleMarkdownRenderer = SubtleDownMarkdownRenderer()
-        let defaultMarkdownRenderer = DefaultMarkdownRenderer()
+        let defaultMarkdownRenderer = DefaultDownMarkdownRenderer()
         
         rootModuleProviding = RootModuleBuilder(sessionStateService: services.sessionState).build()
         tutorialModuleProviding = TutorialModuleBuilder().build()
