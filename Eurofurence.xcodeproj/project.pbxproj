@@ -1077,7 +1077,7 @@
 		78C86D781F12ADF8003A20E6 /* CapturingSplashScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingSplashScene.swift; sourceTree = "<group>"; };
 		78CA0D051F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationInfoPropertyListShould.swift; sourceTree = "<group>"; };
 		78CA0D0E1F0E57D5006DFD64 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		78D7EEA11F17F40C005372A9 /* EurofurenceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EurofurenceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		78D7EEA11F17F40C005372A9 /* Screenshots.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Screenshots.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		78D7EEA51F17F40C005372A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		78FE77CB1F1A2E6700E9A0BE /* EurofurenceFCMDeviceRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EurofurenceFCMDeviceRegistration.swift; sourceTree = "<group>"; };
 		7E8E02928B7F019466A32E8B /* Pods-Eurofurence-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Eurofurence-metadata.plist"; path = "Pods/Pods-Eurofurence-metadata.plist"; sourceTree = "<group>"; };
@@ -2416,14 +2416,14 @@
 			path = Scenes;
 			sourceTree = "<group>";
 		};
-		78D7EEA21F17F40C005372A9 /* EurofurenceUITests */ = {
+		78D7EEA21F17F40C005372A9 /* Screenshots */ = {
 			isa = PBXGroup;
 			children = (
 				CA9845C91F2907A800E8821D /* ScreenshotGenerator.swift */,
 				CA9845D21F2909DB00E8821D /* SnapshotHelper.swift */,
 				78D7EEA51F17F40C005372A9 /* Info.plist */,
 			);
-			path = EurofurenceUITests;
+			path = Screenshots;
 			sourceTree = "<group>";
 		};
 		9ACF992B1EBE172D006FC958 = {
@@ -2433,7 +2433,7 @@
 				78CA0D0E1F0E57D5006DFD64 /* GoogleService-Info.plist */,
 				9ACF99361EBE172D006FC958 /* Eurofurence */,
 				9ACF994B1EBE172D006FC958 /* EurofurenceTests */,
-				78D7EEA21F17F40C005372A9 /* EurofurenceUITests */,
+				78D7EEA21F17F40C005372A9 /* Screenshots */,
 				CA630BDD229F14F800754C27 /* EurofurenceIntentDefinitions */,
 				164F3A1C0E53F6ADD4C20674 /* Frameworks */,
 				2A4A738C931BBD9059F30151 /* Pods */,
@@ -2446,7 +2446,7 @@
 			children = (
 				9ACF99341EBE172D006FC958 /* Eurofurence.app */,
 				9ACF99481EBE172D006FC958 /* EurofurenceTests.xctest */,
-				78D7EEA11F17F40C005372A9 /* EurofurenceUITests.xctest */,
+				78D7EEA11F17F40C005372A9 /* Screenshots.xctest */,
 				CA630BDC229F14F800754C27 /* EurofurenceIntentDefinitions.framework */,
 			);
 			name = Products;
@@ -5306,9 +5306,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		78D7EEA01F17F40C005372A9 /* EurofurenceUITests */ = {
+		78D7EEA01F17F40C005372A9 /* Screenshots */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 78D7EEAA1F17F40C005372A9 /* Build configuration list for PBXNativeTarget "EurofurenceUITests" */;
+			buildConfigurationList = 78D7EEAA1F17F40C005372A9 /* Build configuration list for PBXNativeTarget "Screenshots" */;
 			buildPhases = (
 				48EB54F36C971A1CDD10A4BA /* [CP] Check Pods Manifest.lock */,
 				78D7EE9D1F17F40C005372A9 /* Sources */,
@@ -5322,9 +5322,9 @@
 			dependencies = (
 				78D7EEA71F17F40C005372A9 /* PBXTargetDependency */,
 			);
-			name = EurofurenceUITests;
+			name = Screenshots;
 			productName = EurofurenceUITests;
-			productReference = 78D7EEA11F17F40C005372A9 /* EurofurenceUITests.xctest */;
+			productReference = 78D7EEA11F17F40C005372A9 /* Screenshots.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 		9ACF99331EBE172D006FC958 /* Eurofurence */ = {
@@ -5457,7 +5457,7 @@
 			targets = (
 				9ACF99331EBE172D006FC958 /* Eurofurence */,
 				9ACF99471EBE172D006FC958 /* EurofurenceTests */,
-				78D7EEA01F17F40C005372A9 /* EurofurenceUITests */,
+				78D7EEA01F17F40C005372A9 /* Screenshots */,
 				CA630BDB229F14F800754C27 /* EurofurenceIntentDefinitions */,
 			);
 		};
@@ -5721,7 +5721,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\n\nif which swiftlint >/dev/null; then\n    swiftlint --path EurofurenceUITests/ --config ../.swiftlint.yml\nfi\n";
+			shellScript = "#!/bin/bash\n\nif which swiftlint >/dev/null; then\n    swiftlint --path Screenshots/ --config ../.swiftlint.yml\nfi\n";
 		};
 		CB8692219C5D8841CE13E48A /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -6754,7 +6754,7 @@
 			baseConfigurationReference = CE2BA268DF915CD181D6DD26 /* Pods-Eurofurence-EurofurenceUITests.debug.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = 557SGQG5H4;
-				INFOPLIST_FILE = EurofurenceUITests/Info.plist;
+				INFOPLIST_FILE = Screenshots/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -6768,7 +6768,7 @@
 			baseConfigurationReference = 64C217FDE310E579D9B36353 /* Pods-Eurofurence-EurofurenceUITests.release.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = 557SGQG5H4;
-				INFOPLIST_FILE = EurofurenceUITests/Info.plist;
+				INFOPLIST_FILE = Screenshots/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -6868,7 +6868,7 @@
 			baseConfigurationReference = 35527F454F7DCEA1FF865D47 /* Pods-Eurofurence-EurofurenceUITests.profiling.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = 557SGQG5H4;
-				INFOPLIST_FILE = EurofurenceUITests/Info.plist;
+				INFOPLIST_FILE = Screenshots/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -7288,7 +7288,7 @@
 			baseConfigurationReference = 0F1BC01D158519F358FD24EC /* Pods-Eurofurence-EurofurenceUITests.screenshots.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = 557SGQG5H4;
-				INFOPLIST_FILE = EurofurenceUITests/Info.plist;
+				INFOPLIST_FILE = Screenshots/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -7300,7 +7300,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		78D7EEAA1F17F40C005372A9 /* Build configuration list for PBXNativeTarget "EurofurenceUITests" */ = {
+		78D7EEAA1F17F40C005372A9 /* Build configuration list for PBXNativeTarget "Screenshots" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				78D7EEA81F17F40C005372A9 /* Debug */,
