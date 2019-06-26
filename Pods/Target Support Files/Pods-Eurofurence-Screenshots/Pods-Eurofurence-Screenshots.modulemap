@@ -1,0 +1,6 @@
+framework module Pods_Eurofurence_Screenshots {
+  umbrella header "Pods-Eurofurence-Screenshots-umbrella.h"
+
+  export *
+  module * { export * }
+}

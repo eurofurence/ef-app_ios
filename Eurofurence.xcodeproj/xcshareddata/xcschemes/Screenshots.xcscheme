@@ -16,9 +16,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CA9845C61F2907A800E8821D"
-               BuildableName = "ScreenshotGenerator.xctest"
-               BlueprintName = "ScreenshotGenerator"
+               BlueprintIdentifier = "CA25A88D22C40EBA00226478"
+               BuildableName = "Screenshots.xctest"
+               BlueprintName = "Screenshots"
                ReferencedContainer = "container:Eurofurence.xcodeproj">
             </BuildableReference>
          </TestableReference>

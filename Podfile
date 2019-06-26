@@ -18,6 +18,6 @@ target :Eurofurence do
   
   target :EurofurenceTests
   target :EurofurenceUITests
-  target :ScreenshotGenerator
+  target :Screenshots
   
 end

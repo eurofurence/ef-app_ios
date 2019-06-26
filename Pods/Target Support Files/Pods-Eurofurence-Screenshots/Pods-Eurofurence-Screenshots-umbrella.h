@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_Eurofurence_ScreenshotGeneratorVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_Eurofurence_ScreenshotGeneratorVersionString[];
+FOUNDATION_EXPORT double Pods_Eurofurence_ScreenshotsVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_Eurofurence_ScreenshotsVersionString[];
 
