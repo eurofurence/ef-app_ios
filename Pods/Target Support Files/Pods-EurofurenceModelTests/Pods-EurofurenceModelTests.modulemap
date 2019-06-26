@@ -1,6 +1,0 @@
-framework module Pods_EurofurenceModelTests {
-  umbrella header "Pods-EurofurenceModelTests-umbrella.h"
-
-  export *
-  module * { export * }
-}
