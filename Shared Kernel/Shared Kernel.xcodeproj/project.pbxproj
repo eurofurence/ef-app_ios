@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		00541383F2FCF137BB790C28 /* Pods-TestUtilities-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1DF9F0FA5DC799DA3ED30D0 /* Pods-TestUtilities-metadata.plist */; };
 		5DB78B71AA5AF127FCA6F462 /* Pods-EventBus-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED55C12813DFC7E36D283E64 /* Pods-EventBus-metadata.plist */; };
-		606E4F3876C3317B933E2038 /* Pods_EventBus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 244C8AFCA4FA827F4EDD973B /* Pods_EventBus.framework */; };
 		9FB18BF900921F09A76C9AD7 /* Pods_TestUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9914BA08029D2A5CD2768950 /* Pods_TestUtilities.framework */; };
 		CA7A2EC722B0D32D002AD939 /* TestUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = CA7A2EC522B0D32D002AD939 /* TestUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CA7A2ED422B0D33A002AD939 /* EventBus.h in Headers */ = {isa = PBXBuildFile; fileRef = CA7A2ED222B0D33A002AD939 /* EventBus.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -85,7 +84,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				606E4F3876C3317B933E2038 /* Pods_EventBus.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

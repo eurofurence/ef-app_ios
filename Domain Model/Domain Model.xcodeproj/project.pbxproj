@@ -7,10 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		30FFDB401604FFE21373202E /* Pods_EurofurenceModelTestDoubles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFE87D86E3ECE04913805820 /* Pods_EurofurenceModelTestDoubles.framework */; };
 		9CAB56BEA611EF759F175FDF /* Pods-EurofurenceModel-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC85896EECB18D7881B0665A /* Pods-EurofurenceModel-metadata.plist */; };
-		B172128232C85300947F2923 /* Pods_EurofurenceModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23EE63340BAB29FFB98C9965 /* Pods_EurofurenceModel.framework */; };
-		BF91A447FA61C6354AB65ED6 /* Pods_EurofurenceModelAdapterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B0DDF6C8403F4E4C678F5B /* Pods_EurofurenceModelAdapterTests.framework */; };
 		CA17015022B183880067BCDE /* EurofurenceModelTestDoubles-Swift.h in Headers */ = {isa = PBXBuildFile; fileRef = CA17014F22B183880067BCDE /* EurofurenceModelTestDoubles-Swift.h */; };
 		CA17015122B188290067BCDE /* EurofurenceModelTestDoubles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A326922B16E75002AD939 /* EurofurenceModelTestDoubles.framework */; };
 		CA25A87522C15F4F00226478 /* WhenRequestingStoreRefresh_MultipleTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA25A87422C15F4F00226478 /* WhenRequestingStoreRefresh_MultipleTimes.swift */; };
@@ -446,7 +443,6 @@
 		CA8A73E522BD2429007A5201 /* HardcodedCompanionAppURLRequestFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73E422BD2429007A5201 /* HardcodedCompanionAppURLRequestFactoryTests.swift */; };
 		CA8A73E722BD2577007A5201 /* HardcodedCompanionAppURLRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73E622BD2577007A5201 /* HardcodedCompanionAppURLRequestFactory.swift */; };
 		CA8A73E922BD3035007A5201 /* Credential+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73E822BD3035007A5201 /* Credential+Random.swift */; };
-		CB70B8B9EEAD6A8C832A3C0B /* Pods_EurofurenceModelTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26657B2D5254404DBC47C53C /* Pods_EurofurenceModelTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -927,7 +923,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA7A32EF22B17011002AD939 /* EventBus.framework in Frameworks */,
-				B172128232C85300947F2923 /* Pods_EurofurenceModel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -938,7 +933,6 @@
 				CA17015122B188290067BCDE /* EurofurenceModelTestDoubles.framework in Frameworks */,
 				CA7A32F122B17023002AD939 /* TestUtilities.framework in Frameworks */,
 				CA7A2F3422B16DA3002AD939 /* EurofurenceModel.framework in Frameworks */,
-				CB70B8B9EEAD6A8C832A3C0B /* Pods_EurofurenceModelTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -948,7 +942,6 @@
 			files = (
 				CA7A32F622B17217002AD939 /* EurofurenceModelTestDoubles.framework in Frameworks */,
 				CA7A325E22B16E65002AD939 /* EurofurenceModel.framework in Frameworks */,
-				BF91A447FA61C6354AB65ED6 /* Pods_EurofurenceModelAdapterTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -958,7 +951,6 @@
 			files = (
 				CA7A32FF22B17B96002AD939 /* EurofurenceModel.framework in Frameworks */,
 				CA7A32FE22B17A44002AD939 /* TestUtilities.framework in Frameworks */,
-				30FFDB401604FFE21373202E /* Pods_EurofurenceModelTestDoubles.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
