@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00541383F2FCF137BB790C28 /* Pods-TestUtilities-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1DF9F0FA5DC799DA3ED30D0 /* Pods-TestUtilities-metadata.plist */; };
-		5DB78B71AA5AF127FCA6F462 /* Pods-EventBus-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED55C12813DFC7E36D283E64 /* Pods-EventBus-metadata.plist */; };
-		9FB18BF900921F09A76C9AD7 /* Pods_TestUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9914BA08029D2A5CD2768950 /* Pods_TestUtilities.framework */; };
 		CA7A2EC722B0D32D002AD939 /* TestUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = CA7A2EC522B0D32D002AD939 /* TestUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CA7A2ED422B0D33A002AD939 /* EventBus.h in Headers */ = {isa = PBXBuildFile; fileRef = CA7A2ED222B0D33A002AD939 /* EventBus.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CA7A2EDF22B0D380002AD939 /* BlockEventConsumer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2ED822B0D380002AD939 /* BlockEventConsumer.swift */; };
@@ -76,7 +73,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9FB18BF900921F09A76C9AD7 /* Pods_TestUtilities.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,7 +209,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CA7A2EC822B0D32D002AD939 /* Build configuration list for PBXNativeTarget "TestUtilities" */;
 			buildPhases = (
-				DB1882A8C83D593B083F4F84 /* [CP] Check Pods Manifest.lock */,
 				CA7A2EBE22B0D32D002AD939 /* Headers */,
 				CA7A2EBF22B0D32D002AD939 /* Sources */,
 				CA7A2EC022B0D32D002AD939 /* Frameworks */,
@@ -232,7 +227,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CA7A2ED522B0D33A002AD939 /* Build configuration list for PBXNativeTarget "EventBus" */;
 			buildPhases = (
-				605782B9E58915689A8CB741 /* [CP] Check Pods Manifest.lock */,
 				CA7A2ECB22B0D33A002AD939 /* Headers */,
 				CA7A2ECC22B0D33A002AD939 /* Sources */,
 				CA7A2ECD22B0D33A002AD939 /* Frameworks */,
@@ -289,7 +283,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00541383F2FCF137BB790C28 /* Pods-TestUtilities-metadata.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,58 +290,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5DB78B71AA5AF127FCA6F462 /* Pods-EventBus-metadata.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		605782B9E58915689A8CB741 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-EventBus-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DB1882A8C83D593B083F4F84 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-TestUtilities-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CA7A2EBF22B0D32D002AD939 /* Sources */ = {
@@ -512,7 +457,6 @@
 		};
 		CA7A2EC922B0D32D002AD939 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 758B95B2A0E86BB37A168546 /* Pods-TestUtilities.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -544,7 +488,6 @@
 		};
 		CA7A2ECA22B0D32D002AD939 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 74B3FFEDD5E2CFF6CE8AD3AF /* Pods-TestUtilities.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -575,7 +518,6 @@
 		};
 		CA7A2ED622B0D33A002AD939 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A9404B4512ED64B978691B01 /* Pods-EventBus.debug.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
@@ -604,7 +546,6 @@
 		};
 		CA7A2ED722B0D33A002AD939 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0DC92731423D193586AEA07F /* Pods-EventBus.release.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;

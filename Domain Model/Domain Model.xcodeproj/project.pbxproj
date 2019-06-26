@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9CAB56BEA611EF759F175FDF /* Pods-EurofurenceModel-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC85896EECB18D7881B0665A /* Pods-EurofurenceModel-metadata.plist */; };
 		CA17015022B183880067BCDE /* EurofurenceModelTestDoubles-Swift.h in Headers */ = {isa = PBXBuildFile; fileRef = CA17014F22B183880067BCDE /* EurofurenceModelTestDoubles-Swift.h */; };
 		CA17015122B188290067BCDE /* EurofurenceModelTestDoubles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A326922B16E75002AD939 /* EurofurenceModelTestDoubles.framework */; };
 		CA25A87522C15F4F00226478 /* WhenRequestingStoreRefresh_MultipleTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA25A87422C15F4F00226478 /* WhenRequestingStoreRefresh_MultipleTimes.swift */; };
@@ -2088,7 +2087,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CA7A2F3C22B16DA3002AD939 /* Build configuration list for PBXNativeTarget "EurofurenceModel" */;
 			buildPhases = (
-				5B104192FC10B37B40A9316C /* [CP] Check Pods Manifest.lock */,
 				CA7A2F2622B16DA3002AD939 /* Headers */,
 				CA7A2F2722B16DA3002AD939 /* Sources */,
 				CA8950FA22B44DE200AF4875 /* SwiftLint */,
@@ -2108,7 +2106,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CA7A2F3F22B16DA3002AD939 /* Build configuration list for PBXNativeTarget "EurofurenceModelTests" */;
 			buildPhases = (
-				A9B32167C3D1C4FE65AAFAC0 /* [CP] Check Pods Manifest.lock */,
 				CA7A2F2F22B16DA3002AD939 /* Sources */,
 				CA8950FB22B4567500AF4875 /* SwiftLint */,
 				CA7A2F3022B16DA3002AD939 /* Frameworks */,
@@ -2128,7 +2125,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CA7A326122B16E65002AD939 /* Build configuration list for PBXNativeTarget "EurofurenceModelAdapterTests" */;
 			buildPhases = (
-				820C2373BCD6EE3CA63E5083 /* [CP] Check Pods Manifest.lock */,
 				CA7A325522B16E65002AD939 /* Sources */,
 				CA8950FC22B4568600AF4875 /* SwiftLint */,
 				CA7A325622B16E65002AD939 /* Frameworks */,
@@ -2148,7 +2144,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CA7A326E22B16E75002AD939 /* Build configuration list for PBXNativeTarget "EurofurenceModelTestDoubles" */;
 			buildPhases = (
-				6C645A95F36A96DFA8592A29 /* [CP] Check Pods Manifest.lock */,
 				CA7A326422B16E75002AD939 /* Headers */,
 				CA7A326522B16E75002AD939 /* Sources */,
 				CA8950FD22B4569C00AF4875 /* SwiftLint */,
@@ -2215,7 +2210,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9CAB56BEA611EF759F175FDF /* Pods-EurofurenceModel-metadata.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2244,94 +2238,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		5B104192FC10B37B40A9316C /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-EurofurenceModel-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6C645A95F36A96DFA8592A29 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-EurofurenceModelTestDoubles-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		820C2373BCD6EE3CA63E5083 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-EurofurenceModelAdapterTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A9B32167C3D1C4FE65AAFAC0 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-EurofurenceModelTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		CA8950FA22B44DE200AF4875 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2348,7 +2254,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\n\n\"${PODS_ROOT}/SwiftLint/swiftlint\" --path EurofurenceModel/ --config ../../.swiftlint.yml\n";
+			shellScript = "#!/bin/bash\n\nif which swiftlint >/dev/null; then\n    swiftlint --path EurofurenceModel/ --config ../../.swiftlint.yml\nfi\n";
 		};
 		CA8950FB22B4567500AF4875 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2366,7 +2272,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\n\n\"${PODS_ROOT}/SwiftLint/swiftlint\" --path EurofurenceModelTests/ --config ../../.swiftlint.yml\n";
+			shellScript = "#!/bin/bash\n\nif which swiftlint >/dev/null; then\n    swiftlint --path EurofurenceModelTests/ --config ../../.swiftlint.yml\nfi\n";
 		};
 		CA8950FC22B4568600AF4875 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2384,7 +2290,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\n\n\"${PODS_ROOT}/SwiftLint/swiftlint\" --path EurofurenceModelAdapterTests/ --config ../../.swiftlint.yml\n";
+			shellScript = "#!/bin/bash\n\nif which swiftlint >/dev/null; then\n    swiftlint --path EurofurenceModelAdapterTests/ --config ../../.swiftlint.yml\nfi\n";
 		};
 		CA8950FD22B4569C00AF4875 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2402,7 +2308,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\n\n\"${PODS_ROOT}/SwiftLint/swiftlint\" --path EurofurenceModelTestDoubles/ --config ../../.swiftlint.yml\n";
+			shellScript = "#!/bin/bash\n\nif which swiftlint >/dev/null; then\n    swiftlint --path EurofurenceModelTestDoubles/ --config ../../.swiftlint.yml\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -3000,7 +2906,6 @@
 		};
 		CA7A2F3D22B16DA3002AD939 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 092C28B1200F0F1CC4742FA0 /* Pods-EurofurenceModel.debug.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -3027,7 +2932,6 @@
 		};
 		CA7A2F3E22B16DA3002AD939 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 96222584B002145D544260E0 /* Pods-EurofurenceModel.release.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -3054,7 +2958,6 @@
 		};
 		CA7A2F4022B16DA3002AD939 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AD2DE387F01CB519CFFD1718 /* Pods-EurofurenceModelTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
@@ -3077,7 +2980,6 @@
 		};
 		CA7A2F4122B16DA3002AD939 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 756230D05B876676767EA356 /* Pods-EurofurenceModelTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
@@ -3099,7 +3001,6 @@
 		};
 		CA7A326222B16E65002AD939 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2A9A5572B40D3E5CEEF00616 /* Pods-EurofurenceModelAdapterTests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 557SGQG5H4;
@@ -3120,7 +3021,6 @@
 		};
 		CA7A326322B16E65002AD939 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 23A492A37DEE7132F16E9C9E /* Pods-EurofurenceModelAdapterTests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 557SGQG5H4;
@@ -3141,7 +3041,6 @@
 		};
 		CA7A326F22B16E75002AD939 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0094B3322FA83BD0537305B0 /* Pods-EurofurenceModelTestDoubles.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -3169,7 +3068,6 @@
 		};
 		CA7A327022B16E75002AD939 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 99A743451D3A54C8CD79721D /* Pods-EurofurenceModelTestDoubles.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";

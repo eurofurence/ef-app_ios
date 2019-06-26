@@ -13,7 +13,6 @@ target :Eurofurence do
   pod 'Firebase/Core'
   pod 'Firebase/Messaging'
   pod 'Firebase/Performance'
-  pod 'SwiftLint'
   
   pod 'SimulatorStatusMagic', :configurations => ['Screenshots']
   
