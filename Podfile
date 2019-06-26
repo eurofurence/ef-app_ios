@@ -16,16 +16,8 @@ target :Eurofurence do
   
   pod 'SimulatorStatusMagic', :configurations => ['Screenshots']
   
-  target :EurofurenceTests do
-    inherit! :search_paths
-  end
-  
-  target :EurofurenceUITests do
-    inherit! :search_paths
-  end
-  
-  target :ScreenshotGenerator do
-    inherit! :search_paths
-  end
+  target :EurofurenceTests
+  target :EurofurenceUITests
+  target :ScreenshotGenerator
   
 end
