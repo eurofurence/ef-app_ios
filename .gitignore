@@ -62,5 +62,9 @@ playground.xcworkspace
 .idea
 ServiceAccount.json
 
-# Fastlane
-screenshots
+## Fastlane
+fastlane/report.xml
+Screenshots/de-DE/
+Screenshots/en-US/
+Screenshots/screenshots.html
+
