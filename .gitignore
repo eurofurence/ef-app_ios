@@ -61,3 +61,7 @@ playground.xcworkspace
 
 .idea
 ServiceAccount.json
+
+## Fastlane
+fastlane/report.xml
+
