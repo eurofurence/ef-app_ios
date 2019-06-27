@@ -39,44 +39,36 @@ class ScreenshotGenerator: XCTestCase {
 
     func testScreenshots() {
         navigateToRootTabController()
-
+        
         snapshot("01_News")
 
         app.tabBars.buttons["Schedule"].tap()
         app.tables.firstMatch.swipeDown()
-        app.searchFields["Search"].tap()
-        app.searchFields["Search"].typeText("Comic")
-        app/*@START_MENU_TOKEN@*/.buttons["Search"]/*[[".keyboards.buttons[\"Search\"]",".buttons[\"Search\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        app.tables.cells.staticTexts["DON'T MAKE COMICS!"].swipeLeft()
-
-        snapshot("02_ScheduleSearch")
-
-        app.tables.cells.staticTexts["DON'T MAKE COMICS!"].swipeRight()
-
-        repeat {
-            app.tables.cells.staticTexts["DON'T MAKE COMICS!"].tap()
-        } while app.navigationBars["Eurofurence.EventDetailView"].exists == false
-
-        let favouriteButton = app.navigationBars["Eurofurence.EventDetailView"].buttons["Favourite"]
-        if favouriteButton.exists {
-            favouriteButton.tap()
+        
+        snapshot("02_Schedule")
+        
+        let searchField = app.searchFields["Search"]
+        searchField.tap()
+        searchField.typeText("comic")
+        app.tables["Search results"].staticTexts["ECC Room 4"].tap()
+        
+        if app.tables.buttons["Add to Favourites"].exists {
+            app.tables.buttons["Add to Favourites"].tap()
         }
-
+        
         snapshot("03_EventDetail")
-
+        
         app.tabBars.buttons["Dealers"].tap()
-        app.tables.cells.staticTexts["Eurofurence ConStore"].firstMatch.tap()
-
-        snapshot("04_DealerDetail")
-
-        if app.tabBars.buttons["More"].exists {
-            app.tabBars.buttons["More"].tap()
-            app.staticTexts["Information"].tap()
-        } else {
-            app.tabBars.buttons["Information"].tap()
-        }
-
-        snapshot("05_Information")
+        
+        snapshot("04_Dealers")
+        
+        app.tables.staticTexts["Eurofurence Convention Store"].tap()
+        
+        snapshot("05_DealerDetail")
+        
+        app.tabBars.buttons["Information"].tap()
+        
+        snapshot("06_Information")
     }
 
 }
