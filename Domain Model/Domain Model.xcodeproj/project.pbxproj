@@ -445,6 +445,7 @@
 		CAA10FCA22C5597C00689A32 /* WhenResolvingMessageByItsIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA10FC922C5597C00689A32 /* WhenResolvingMessageByItsIdentifier.swift */; };
 		CAA10FCC22C5617100689A32 /* WhenToldToOpenNotification_ThatRepresentsMessage_AlreadyDownloaded.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA10FCB22C5617100689A32 /* WhenToldToOpenNotification_ThatRepresentsMessage_AlreadyDownloaded.swift */; };
 		CAA10FCE22C562EA00689A32 /* WhenToldToOpenNotification_ThatRepresentsMessage_NotDownloaded_DownloadFails.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA10FCD22C562EA00689A32 /* WhenToldToOpenNotification_ThatRepresentsMessage_NotDownloaded_DownloadFails.swift */; };
+		CAA10FD022C5655B00689A32 /* WhenToldToOpenNotification_ThatRepresentsMessage_NotDownloaded_DownloadSucceeds.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA10FCF22C5655B00689A32 /* WhenToldToOpenNotification_ThatRepresentsMessage_NotDownloaded_DownloadSucceeds.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -918,6 +919,7 @@
 		CAA10FC922C5597C00689A32 /* WhenResolvingMessageByItsIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenResolvingMessageByItsIdentifier.swift; sourceTree = "<group>"; };
 		CAA10FCB22C5617100689A32 /* WhenToldToOpenNotification_ThatRepresentsMessage_AlreadyDownloaded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToOpenNotification_ThatRepresentsMessage_AlreadyDownloaded.swift; sourceTree = "<group>"; };
 		CAA10FCD22C562EA00689A32 /* WhenToldToOpenNotification_ThatRepresentsMessage_NotDownloaded_DownloadFails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToOpenNotification_ThatRepresentsMessage_NotDownloaded_DownloadFails.swift; sourceTree = "<group>"; };
+		CAA10FCF22C5655B00689A32 /* WhenToldToOpenNotification_ThatRepresentsMessage_NotDownloaded_DownloadSucceeds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToOpenNotification_ThatRepresentsMessage_NotDownloaded_DownloadSucceeds.swift; sourceTree = "<group>"; };
 		EC85896EECB18D7881B0665A /* Pods-EurofurenceModel-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-EurofurenceModel-metadata.plist"; sourceTree = "<group>"; };
 		FFE87D86E3ECE04913805820 /* Pods_EurofurenceModelTestDoubles.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EurofurenceModelTestDoubles.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -1445,6 +1447,7 @@
 				CA7A30A122B16E24002AD939 /* WhenToldToOpenNotification_ThatRepresentsSyncEvent_ApplicationShould.swift */,
 				CAA10FCB22C5617100689A32 /* WhenToldToOpenNotification_ThatRepresentsMessage_AlreadyDownloaded.swift */,
 				CAA10FCD22C562EA00689A32 /* WhenToldToOpenNotification_ThatRepresentsMessage_NotDownloaded_DownloadFails.swift */,
+				CAA10FCF22C5655B00689A32 /* WhenToldToOpenNotification_ThatRepresentsMessage_NotDownloaded_DownloadSucceeds.swift */,
 			);
 			path = "Notification Handling";
 			sourceTree = "<group>";
@@ -2567,6 +2570,7 @@
 				CA7A321322B16E26002AD939 /* WhenResolvingDataStoreState.swift in Sources */,
 				CA7A320722B16E26002AD939 /* WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould.swift in Sources */,
 				CA7A322B22B16E26002AD939 /* WhenSearchingForEvents_BeforeAnyAreAvailable_ApplicationShould.swift in Sources */,
+				CAA10FD022C5655B00689A32 /* WhenToldToOpenNotification_ThatRepresentsMessage_NotDownloaded_DownloadSucceeds.swift in Sources */,
 				CA7A323322B16E26002AD939 /* WhenSyncFinishesForEventWithPoster_WhenImageAPIIsSlow_ApplicationShould.swift in Sources */,
 				CA7A31A622B16E26002AD939 /* WhenFetchingKnowledgeGroupsBeforeRefreshWhenStoreHasGroups.swift in Sources */,
 				CA7A321122B16E26002AD939 /* WhenSyncCompletesWithConferenceDays_ApplicationShould.swift in Sources */,

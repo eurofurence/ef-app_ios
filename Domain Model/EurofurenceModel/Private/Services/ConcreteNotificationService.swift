@@ -36,6 +36,14 @@ struct ConcreteNotificationService: NotificationService {
         }
 
         refreshService.refreshLocalStore { (error) in
+            if let messageIdentifier = payload["message_id"] {
+                let identifier = MessageIdentifier(messageIdentifier)
+                if self.privateMessagesService.fetchMessage(identifiedBy: identifier) != nil {
+                    completionHandler(.message(identifier))
+                    return
+                }
+            }
+            
             if error == nil {
                 if let announcementIdentifier = payload["announcement_id"] {
                     let identifier = AnnouncementIdentifier(announcementIdentifier)
