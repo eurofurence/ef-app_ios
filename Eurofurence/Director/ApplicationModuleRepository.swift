@@ -161,8 +161,8 @@ struct ApplicationModuleRepository: ModuleRepository {
         return messagesModuleProviding.makeMessagesModule(delegate)
     }
     
-    func makeMessageDetailModule(message: Message) -> UIViewController {
-        return messageDetailModuleProviding.makeMessageDetailModule(for: message.identifier)
+    func makeMessageDetailModule(message: MessageIdentifier) -> UIViewController {
+        return messageDetailModuleProviding.makeMessageDetailModule(for: message)
     }
     
     func makeScheduleModule(_ delegate: ScheduleModuleDelegate) -> UIViewController {

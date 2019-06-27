@@ -35,7 +35,7 @@ class WhenViewingMessageWhileLoggedInWithLocalMessage: XCTestCase {
 
     func testSelectingMessageTellsDelegateToShowTheMessage() {
         context.scene.tapMessage(at: 0)
-        XCTAssertEqual(localMessage.identifier, context.delegate.messageToShow?.identifier)
+        XCTAssertEqual(localMessage.identifier, context.delegate.messageToShow)
     }
 
 }
