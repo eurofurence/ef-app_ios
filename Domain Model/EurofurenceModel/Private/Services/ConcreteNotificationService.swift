@@ -7,6 +7,7 @@ struct ConcreteNotificationService: NotificationService {
     var eventsService: ConcreteEventsService
     var announcementsService: ConcreteAnnouncementsService
     var refreshService: ConcreteRefreshService
+    var privateMessagesService: PrivateMessagesService
 
     func handleNotification(payload: [String: String], completionHandler: @escaping (NotificationContent) -> Void) {
         if payload[ApplicationNotificationKey.notificationContentKind.rawValue] == ApplicationNotificationContentKind.event.rawValue {
@@ -28,8 +29,10 @@ struct ConcreteNotificationService: NotificationService {
         
         if let messageIdentifier = payload["message_id"] {
             let identifier = MessageIdentifier(messageIdentifier)
-            completionHandler(.message(identifier))
-            return
+            if privateMessagesService.fetchMessage(identifiedBy: identifier) != nil {   
+                completionHandler(.message(identifier))
+                return
+            }
         }
 
         refreshService.refreshLocalStore { (error) in
