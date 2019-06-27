@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		09CCA668D5E112B61A53B5E6 /* Pods-EurofurenceTests-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A91AD0059ADB02A143766DB /* Pods-EurofurenceTests-settings-metadata.plist */; };
 		0ED80F2096CECEDC8C602F06 /* Pods-Eurofurence-EurofurenceTests-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = C5FF38C242E379F5A7F1EC36 /* Pods-Eurofurence-EurofurenceTests-metadata.plist */; };
-		10D00B60BCF2DC9EF105FDC7 /* Pods_Eurofurence_EurofurenceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA0179650F2A341741B5D42 /* Pods_Eurofurence_EurofurenceTests.framework */; };
 		2020ECCB211CDB870036E2CF /* NSAttributedString+trim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2020ECCA211CDB870036E2CF /* NSAttributedString+trim.swift */; };
 		2020ECCD211CDBA50036E2CF /* NSMutableAttributedString+trim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2020ECCC211CDBA50036E2CF /* NSMutableAttributedString+trim.swift */; };
 		20516AC621121AE400C399C0 /* SubtleDownMarkdownRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20516AC521121AE400C399C0 /* SubtleDownMarkdownRenderer.swift */; };
@@ -45,6 +44,7 @@
 		78CA0D061F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CA0D051F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift */; };
 		78CA0D0F1F0E57D5006DFD64 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78CA0D0E1F0E57D5006DFD64 /* GoogleService-Info.plist */; };
 		78FE77CC1F1A2E6700E9A0BE /* EurofurenceFCMDeviceRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE77CB1F1A2E6700E9A0BE /* EurofurenceFCMDeviceRegistration.swift */; };
+		94B40DB0A8415A1F58227127 /* Pods_EurofurenceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51697E1150E99F9A207E1E52 /* Pods_EurofurenceTests.framework */; };
 		950734CEB09656B40D0BB1B1 /* Pods-EurofurenceUITests-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27D03B2A2184E7CF4471E914 /* Pods-EurofurenceUITests-settings-metadata.plist */; };
 		9A861EA31F2554AB00B75A8C /* CompleteTutorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A861EA11F2554AB00B75A8C /* CompleteTutorial.swift */; };
 		9A861EA71F2554BE00B75A8C /* TutorialPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A861EA41F2554BE00B75A8C /* TutorialPage.swift */; };
@@ -67,7 +67,9 @@
 		9ACF99381EBE172D006FC958 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF99371EBE172D006FC958 /* AppDelegate.swift */; };
 		9ACF993F1EBE172D006FC958 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ACF993E1EBE172D006FC958 /* Assets.xcassets */; };
 		9ACF99421EBE172D006FC958 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ACF99401EBE172D006FC958 /* LaunchScreen.storyboard */; };
+		B53D7CD72503C9C003054268 /* Pods-Eurofurence-Screenshots-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0146E1DBE774D281EFB3B6DB /* Pods-Eurofurence-Screenshots-metadata.plist */; };
 		BBA33156F191B7E0453923AF /* Pods-Eurofurence-EurofurenceUITests-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 124C5EF7B651952C6D657B37 /* Pods-Eurofurence-EurofurenceUITests-settings-metadata.plist */; };
+		C1E8B548B2D307EAE2B8CEF0 /* Pods-Eurofurence-Screenshots-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = A4EB650B45E89C0F08C708EB /* Pods-Eurofurence-Screenshots-settings-metadata.plist */; };
 		C74800FDD10051941095AB9F /* Pods-Eurofurence-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7E8E02928B7F019466A32E8B /* Pods-Eurofurence-metadata.plist */; };
 		CA00AE4520D16BBD00C2FBB0 /* ScheduleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE4420D16BBD00C2FBB0 /* ScheduleInteractor.swift */; };
 		CA00AE4720D16BCB00C2FBB0 /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE4620D16BCB00C2FBB0 /* ScheduleViewModel.swift */; };
@@ -960,7 +962,7 @@
 		CAF81C7520DDAA9C00898C52 /* CapturingDealerDetailViewModelVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF81C7420DDAA9C00898C52 /* CapturingDealerDetailViewModelVisitor.swift */; };
 		CAF9A9581F5601A700628833 /* WhenViewingMessagesWhileLoggedOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A9571F5601A700628833 /* WhenViewingMessagesWhileLoggedOut.swift */; };
 		D0448F94EED4B9FB5C3B07CD /* Pods-Eurofurence-EurofurenceTests-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3394169A8659D343AAB772B2 /* Pods-Eurofurence-EurofurenceTests-settings-metadata.plist */; };
-		D049A4E8CB7477F3C19E6278 /* Pods_Eurofurence_EurofurenceUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9B85B730C3DA2CD7600C993 /* Pods_Eurofurence_EurofurenceUITests.framework */; };
+		F6AA212665A84829CF0EB371 /* Pods_Eurofurence_Screenshots.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0019020918F90989AA4BDE21 /* Pods_Eurofurence_Screenshots.framework */; };
 		FDA174B75DF6670FE6F9D0FE /* Pods-Eurofurence-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = FCB5D8F683D64BAB8D2FB3BF /* Pods-Eurofurence-settings-metadata.plist */; };
 /* End PBXBuildFile section */
 
@@ -1036,6 +1038,7 @@
 		49CAAB83D53E7C7960422A6E /* Pods-EurofurenceAppCoreAdapterTests-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-EurofurenceAppCoreAdapterTests-settings-metadata.plist"; path = "Eurofurence/Settings.bundle/Pods-EurofurenceAppCoreAdapterTests-settings-metadata.plist"; sourceTree = "<group>"; };
 		502917EFC4168DE2BBDCC1E5 /* Pods-EurofurenceAppCoreTests-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-EurofurenceAppCoreTests-metadata.plist"; path = "Pods/Pods-EurofurenceAppCoreTests-metadata.plist"; sourceTree = "<group>"; };
 		50DD1FEC78870AE4E5A549C5 /* Pods-ScreenshotGenerator.screenshots.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScreenshotGenerator.screenshots.xcconfig"; path = "Pods/Target Support Files/Pods-ScreenshotGenerator/Pods-ScreenshotGenerator.screenshots.xcconfig"; sourceTree = "<group>"; };
+		51697E1150E99F9A207E1E52 /* Pods_EurofurenceTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EurofurenceTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		56B97D30AB8BEB36BD8250F4 /* Pods-Eurofurence-ScreenshotGenerator.profiling.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eurofurence-ScreenshotGenerator.profiling.xcconfig"; path = "Pods/Target Support Files/Pods-Eurofurence-ScreenshotGenerator/Pods-Eurofurence-ScreenshotGenerator.profiling.xcconfig"; sourceTree = "<group>"; };
 		5AA4D9EDC6A678EFA0EF7BEF /* Pods-RandomDataGeneration-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-RandomDataGeneration-metadata.plist"; path = "Pods/Pods-RandomDataGeneration-metadata.plist"; sourceTree = "<group>"; };
 		5CC062D36892B13F2A83180C /* Pods-Eurofurence.screenshots.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eurofurence.screenshots.xcconfig"; path = "Pods/Target Support Files/Pods-Eurofurence/Pods-Eurofurence.screenshots.xcconfig"; sourceTree = "<group>"; };
@@ -2009,7 +2012,6 @@
 		CAF81C7220DDA9D100898C52 /* DefaultDealerDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDealerDetailInteractor.swift; sourceTree = "<group>"; };
 		CAF81C7420DDAA9C00898C52 /* CapturingDealerDetailViewModelVisitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingDealerDetailViewModelVisitor.swift; sourceTree = "<group>"; };
 		CAF9A9571F5601A700628833 /* WhenViewingMessagesWhileLoggedOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenViewingMessagesWhileLoggedOut.swift; sourceTree = "<group>"; };
-		CBA0179650F2A341741B5D42 /* Pods_Eurofurence_EurofurenceTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Eurofurence_EurofurenceTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE2BA268DF915CD181D6DD26 /* Pods-Eurofurence-EurofurenceUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eurofurence-EurofurenceUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Eurofurence-EurofurenceUITests/Pods-Eurofurence-EurofurenceUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D48DFBCB82C7548D555B2169 /* Pods-Eurofurence-ScreenshotGenerator-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Eurofurence-ScreenshotGenerator-metadata.plist"; path = "Pods/Pods-Eurofurence-ScreenshotGenerator-metadata.plist"; sourceTree = "<group>"; };
 		DAF82756531E9F6E398091C2 /* Pods-Eurofurence-ScreenshotGenerator-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Eurofurence-ScreenshotGenerator-settings-metadata.plist"; path = "Eurofurence/Settings.bundle/Pods-Eurofurence-ScreenshotGenerator-settings-metadata.plist"; sourceTree = "<group>"; };
@@ -2023,7 +2025,6 @@
 		F2149010773618CC5183A177 /* Pods-EurofurenceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EurofurenceTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EurofurenceTests/Pods-EurofurenceTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F58D80FA27FD3C4109C60C35 /* Pods-EventBus-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-EventBus-settings-metadata.plist"; path = "Eurofurence/Settings.bundle/Pods-EventBus-settings-metadata.plist"; sourceTree = "<group>"; };
 		F971980C7604A91734C446D6 /* Pods-Eurofurence-EurofurenceIntentDefinitions-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Eurofurence-EurofurenceIntentDefinitions-metadata.plist"; path = "Pods/Pods-Eurofurence-EurofurenceIntentDefinitions-metadata.plist"; sourceTree = "<group>"; };
-		F9B85B730C3DA2CD7600C993 /* Pods_Eurofurence_EurofurenceUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Eurofurence_EurofurenceUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA3607D60898B0D4FB1E5623 /* Pods-Eurofurence-EurofurenceIntentDefinitions-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Eurofurence-EurofurenceIntentDefinitions-settings-metadata.plist"; path = "Eurofurence/Settings.bundle/Pods-Eurofurence-EurofurenceIntentDefinitions-settings-metadata.plist"; sourceTree = "<group>"; };
 		FCB5D8F683D64BAB8D2FB3BF /* Pods-Eurofurence-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Eurofurence-settings-metadata.plist"; path = "Eurofurence/Settings.bundle/Pods-Eurofurence-settings-metadata.plist"; sourceTree = "<group>"; };
 		FDE1E7E578B1C0FF34C4372E /* Pods-Eurofurence-EurofurenceTests.profiling.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eurofurence-EurofurenceTests.profiling.xcconfig"; path = "Pods/Target Support Files/Pods-Eurofurence-EurofurenceTests/Pods-Eurofurence-EurofurenceTests.profiling.xcconfig"; sourceTree = "<group>"; };
@@ -2035,7 +2036,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D049A4E8CB7477F3C19E6278 /* Pods_Eurofurence_EurofurenceUITests.framework in Frameworks */,
+				F6AA212665A84829CF0EB371 /* Pods_Eurofurence_Screenshots.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2056,7 +2057,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA7A32FC22B17A21002AD939 /* EurofurenceModelTestDoubles.framework in Frameworks */,
-				10D00B60BCF2DC9EF105FDC7 /* Pods_Eurofurence_EurofurenceTests.framework in Frameworks */,
+				94B40DB0A8415A1F58227127 /* Pods_EurofurenceTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2079,10 +2080,9 @@
 				CA621345221EFDD800E88880 /* XCTest.framework */,
 				CA66C01D2124C6D800F87AFE /* StoreKit.framework */,
 				DE54CE47397FFD19B7B7C5AE /* Pods_Eurofurence.framework */,
-				CBA0179650F2A341741B5D42 /* Pods_Eurofurence_EurofurenceTests.framework */,
-				F9B85B730C3DA2CD7600C993 /* Pods_Eurofurence_EurofurenceUITests.framework */,
 				C1047C1B4A78B1227F779CC9 /* Pods_Eurofurence_ScreenshotGenerator.framework */,
 				0019020918F90989AA4BDE21 /* Pods_Eurofurence_Screenshots.framework */,
+				51697E1150E99F9A207E1E52 /* Pods_EurofurenceTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -5360,7 +5360,6 @@
 				CA8950F622B44D1A00AF4875 /* SwiftLint */,
 				9ACF99451EBE172D006FC958 /* Frameworks */,
 				9ACF99461EBE172D006FC958 /* Resources */,
-				CB8692219C5D8841CE13E48A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -5471,6 +5470,8 @@
 				950734CEB09656B40D0BB1B1 /* Pods-EurofurenceUITests-settings-metadata.plist in Resources */,
 				558588DAAF799B30B287CFFF /* Pods-Eurofurence-EurofurenceUITests-metadata.plist in Resources */,
 				BBA33156F191B7E0453923AF /* Pods-Eurofurence-EurofurenceUITests-settings-metadata.plist in Resources */,
+				B53D7CD72503C9C003054268 /* Pods-Eurofurence-Screenshots-metadata.plist in Resources */,
+				C1E8B548B2D307EAE2B8CEF0 /* Pods-Eurofurence-Screenshots-settings-metadata.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5542,7 +5543,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Eurofurence-EurofurenceUITests/Pods-Eurofurence-EurofurenceUITests-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Eurofurence-Screenshots/Pods-Eurofurence-Screenshots-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Down/Down.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
@@ -5563,7 +5564,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Eurofurence-EurofurenceUITests/Pods-Eurofurence-EurofurenceUITests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Eurofurence-Screenshots/Pods-Eurofurence-Screenshots-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		0838CDC6778FFA72E3BCD1B4 /* [CP] Check Pods Manifest.lock */ = {
@@ -5581,7 +5582,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Eurofurence-EurofurenceTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-EurofurenceTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -5617,7 +5618,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Eurofurence-EurofurenceUITests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Eurofurence-Screenshots-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -5722,36 +5723,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "#!/bin/bash\n\nif which swiftlint >/dev/null; then\n    swiftlint --path Screenshots/ --config ../.swiftlint.yml\nfi\n";
-		};
-		CB8692219C5D8841CE13E48A /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Eurofurence-EurofurenceTests/Pods-Eurofurence-EurofurenceTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Down/Down.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-				"${BUILT_PRODUCTS_DIR}/SimulatorStatusMagic/SimulatorStatusMagic.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Down.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SimulatorStatusMagic.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Eurofurence-EurofurenceTests/Pods-Eurofurence-EurofurenceTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 		CEE267F67EF99FFD7682AC58 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -6751,7 +6722,7 @@
 /* Begin XCBuildConfiguration section */
 		78D7EEA81F17F40C005372A9 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CE2BA268DF915CD181D6DD26 /* Pods-Eurofurence-EurofurenceUITests.debug.xcconfig */;
+			baseConfigurationReference = 6C88209150186B7EFBA9C8CC /* Pods-Eurofurence-Screenshots.debug.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = 557SGQG5H4;
 				INFOPLIST_FILE = Screenshots/Info.plist;
@@ -6765,7 +6736,7 @@
 		};
 		78D7EEA91F17F40C005372A9 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 64C217FDE310E579D9B36353 /* Pods-Eurofurence-EurofurenceUITests.release.xcconfig */;
+			baseConfigurationReference = 66CD88822E2E9BDD59043711 /* Pods-Eurofurence-Screenshots.release.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = 557SGQG5H4;
 				INFOPLIST_FILE = Screenshots/Info.plist;
@@ -6850,7 +6821,7 @@
 		};
 		9ACB01081F180AA4001CE9D2 /* Profiling */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FDE1E7E578B1C0FF34C4372E /* Pods-Eurofurence-EurofurenceTests.profiling.xcconfig */;
+			baseConfigurationReference = 76BA1C12243EF90AE630527A /* Pods-EurofurenceTests.profiling.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 557SGQG5H4;
@@ -6865,7 +6836,7 @@
 		};
 		9ACB01091F180AA4001CE9D2 /* Profiling */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 35527F454F7DCEA1FF865D47 /* Pods-Eurofurence-EurofurenceUITests.profiling.xcconfig */;
+			baseConfigurationReference = 9836F4BC0F20EFAEC87DC002 /* Pods-Eurofurence-Screenshots.profiling.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = 557SGQG5H4;
 				INFOPLIST_FILE = Screenshots/Info.plist;
@@ -7030,7 +7001,7 @@
 		};
 		9ACF99551EBE172D006FC958 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0C86C8D9B4D661B3A3916661 /* Pods-Eurofurence-EurofurenceTests.debug.xcconfig */;
+			baseConfigurationReference = F2149010773618CC5183A177 /* Pods-EurofurenceTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 557SGQG5H4;
@@ -7045,7 +7016,7 @@
 		};
 		9ACF99561EBE172D006FC958 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2C387313D18985BA2C7EBE10 /* Pods-Eurofurence-EurofurenceTests.release.xcconfig */;
+			baseConfigurationReference = 12E3A700B2E0C6F95FBA562D /* Pods-EurofurenceTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 557SGQG5H4;
@@ -7270,7 +7241,7 @@
 		};
 		CA9845D61F2916CF00E8821D /* Screenshots */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4411568DE983095A35F9D0EF /* Pods-Eurofurence-EurofurenceTests.screenshots.xcconfig */;
+			baseConfigurationReference = 33EF333E8436FABD4F263F92 /* Pods-EurofurenceTests.screenshots.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 557SGQG5H4;
@@ -7285,7 +7256,7 @@
 		};
 		CA9845D71F2916CF00E8821D /* Screenshots */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0F1BC01D158519F358FD24EC /* Pods-Eurofurence-EurofurenceUITests.screenshots.xcconfig */;
+			baseConfigurationReference = 670F5123C04FA36A59E36715 /* Pods-Eurofurence-Screenshots.screenshots.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = 557SGQG5H4;
 				INFOPLIST_FILE = Screenshots/Info.plist;
