@@ -443,6 +443,7 @@
 		CA8A73E722BD2577007A5201 /* HardcodedCompanionAppURLRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73E622BD2577007A5201 /* HardcodedCompanionAppURLRequestFactory.swift */; };
 		CA8A73E922BD3035007A5201 /* Credential+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73E822BD3035007A5201 /* Credential+Random.swift */; };
 		CAA10FCA22C5597C00689A32 /* WhenResolvingMessageByItsIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA10FC922C5597C00689A32 /* WhenResolvingMessageByItsIdentifier.swift */; };
+		CAA10FCC22C5617100689A32 /* WhenToldToOpenNotification_ThatRepresentsMessage_AlreadyDownloaded.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA10FCB22C5617100689A32 /* WhenToldToOpenNotification_ThatRepresentsMessage_AlreadyDownloaded.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -914,6 +915,7 @@
 		CA8A73E622BD2577007A5201 /* HardcodedCompanionAppURLRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardcodedCompanionAppURLRequestFactory.swift; sourceTree = "<group>"; };
 		CA8A73E822BD3035007A5201 /* Credential+Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Credential+Random.swift"; sourceTree = "<group>"; };
 		CAA10FC922C5597C00689A32 /* WhenResolvingMessageByItsIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenResolvingMessageByItsIdentifier.swift; sourceTree = "<group>"; };
+		CAA10FCB22C5617100689A32 /* WhenToldToOpenNotification_ThatRepresentsMessage_AlreadyDownloaded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToOpenNotification_ThatRepresentsMessage_AlreadyDownloaded.swift; sourceTree = "<group>"; };
 		EC85896EECB18D7881B0665A /* Pods-EurofurenceModel-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-EurofurenceModel-metadata.plist"; sourceTree = "<group>"; };
 		FFE87D86E3ECE04913805820 /* Pods_EurofurenceModelTestDoubles.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EurofurenceModelTestDoubles.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -1439,6 +1441,7 @@
 				CA7A30A322B16E24002AD939 /* WhenToldToOpenNotification_ThatRepresentsAnnouncement_ThatHasBeenDeleted_ApplicationShould.swift */,
 				CA7A30A022B16E24002AD939 /* WhenToldToOpenNotification_ThatRepresentsEventReminder_ApplicationShould.swift */,
 				CA7A30A122B16E24002AD939 /* WhenToldToOpenNotification_ThatRepresentsSyncEvent_ApplicationShould.swift */,
+				CAA10FCB22C5617100689A32 /* WhenToldToOpenNotification_ThatRepresentsMessage_AlreadyDownloaded.swift */,
 			);
 			path = "Notification Handling";
 			sourceTree = "<group>";
@@ -2651,6 +2654,7 @@
 				CA7A31C922B16E26002AD939 /* WhenLookingUpMailToLinks.swift in Sources */,
 				CA7A321D22B16E26002AD939 /* WhenObservingRunningEvents_ThenLoadSucceeds.swift in Sources */,
 				CA7A324922B16E26002AD939 /* WhenRestrictingSearchResultsToFavourites_ScheduleShould.swift in Sources */,
+				CAA10FCC22C5617100689A32 /* WhenToldToOpenNotification_ThatRepresentsMessage_AlreadyDownloaded.swift in Sources */,
 				CA7A318D22B16E26002AD939 /* WhenToldToOpenNotification_ThatRepresentsAnnouncement_ApplicationShould.swift in Sources */,
 				CA7A322F22B16E26002AD939 /* WhenObservingEvent_ThatIsFavourite.swift in Sources */,
 				CA7A324222B16E26002AD939 /* WhenRemovingFavouritesRestrictionForEvents_ScheduleShould.swift in Sources */,

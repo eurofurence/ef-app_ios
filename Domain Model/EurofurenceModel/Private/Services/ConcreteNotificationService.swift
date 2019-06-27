@@ -25,6 +25,12 @@ struct ConcreteNotificationService: NotificationService {
 
             return
         }
+        
+        if let messageIdentifier = payload["message_id"] {
+            let identifier = MessageIdentifier(messageIdentifier)
+            completionHandler(.message(identifier))
+            return
+        }
 
         refreshService.refreshLocalStore { (error) in
             if error == nil {
