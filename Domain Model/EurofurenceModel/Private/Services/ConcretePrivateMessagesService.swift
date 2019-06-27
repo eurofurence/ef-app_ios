@@ -45,6 +45,10 @@ class ConcretePrivateMessagesService: PrivateMessagesService {
     func refreshMessages() {
         refreshMessages(completionHandler: nil)
     }
+    
+    func fetchMessage(identifiedBy identifier: MessageIdentifier) -> Message? {
+        return localMessages.first(where: { $0.identifier == identifier })
+    }
 
     func refreshMessages(completionHandler: (() -> Void)? = nil) {
         state.refreshMessages(completionHandler: completionHandler)
@@ -127,7 +131,7 @@ class ConcretePrivateMessagesService: PrivateMessagesService {
         }
         
         override func markMessageAsRead(_ message: Message) {
-            service.api.markMessageWithIdentifierAsRead(message.identifier, authorizationToken: token)
+            service.api.markMessageWithIdentifierAsRead(message.identifier.rawValue, authorizationToken: token)
             service.updateObserversWithUnreadMessageCount()
         }
         

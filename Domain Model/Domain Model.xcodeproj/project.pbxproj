@@ -442,6 +442,7 @@
 		CA8A73E522BD2429007A5201 /* HardcodedCompanionAppURLRequestFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73E422BD2429007A5201 /* HardcodedCompanionAppURLRequestFactoryTests.swift */; };
 		CA8A73E722BD2577007A5201 /* HardcodedCompanionAppURLRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73E622BD2577007A5201 /* HardcodedCompanionAppURLRequestFactory.swift */; };
 		CA8A73E922BD3035007A5201 /* Credential+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73E822BD3035007A5201 /* Credential+Random.swift */; };
+		CAA10FCA22C5597C00689A32 /* WhenResolvingMessageByItsIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA10FC922C5597C00689A32 /* WhenResolvingMessageByItsIdentifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -912,6 +913,7 @@
 		CA8A73E422BD2429007A5201 /* HardcodedCompanionAppURLRequestFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardcodedCompanionAppURLRequestFactoryTests.swift; sourceTree = "<group>"; };
 		CA8A73E622BD2577007A5201 /* HardcodedCompanionAppURLRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardcodedCompanionAppURLRequestFactory.swift; sourceTree = "<group>"; };
 		CA8A73E822BD3035007A5201 /* Credential+Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Credential+Random.swift"; sourceTree = "<group>"; };
+		CAA10FC922C5597C00689A32 /* WhenResolvingMessageByItsIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenResolvingMessageByItsIdentifier.swift; sourceTree = "<group>"; };
 		EC85896EECB18D7881B0665A /* Pods-EurofurenceModel-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-EurofurenceModel-metadata.plist"; sourceTree = "<group>"; };
 		FFE87D86E3ECE04913805820 /* Pods_EurofurenceModelTestDoubles.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EurofurenceModelTestDoubles.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -1545,6 +1547,7 @@
 				CA7A30EB22B16E24002AD939 /* WhenMarkingMessageAsRead.swift */,
 				CA7A30E522B16E24002AD939 /* WhenRequestingPrivateMessagesWhileAuthenticated.swift */,
 				CA7A30E822B16E24002AD939 /* WhenRequestingPrivateMessagesWhileNotAuthenticated.swift */,
+				CAA10FC922C5597C00689A32 /* WhenResolvingMessageByItsIdentifier.swift */,
 			);
 			path = "Private Messages";
 			sourceTree = "<group>";
@@ -2684,6 +2687,7 @@
 				CA7A31A022B16E26002AD939 /* KnowledgeEntryAssertion.swift in Sources */,
 				CA7A31E322B16E26002AD939 /* CapturingMapCoordinateRender.swift in Sources */,
 				CA7A323622B16E26002AD939 /* WhenCharacteristicsIndicatesEventAcceptsFeedback.swift in Sources */,
+				CAA10FCA22C5597C00689A32 /* WhenResolvingMessageByItsIdentifier.swift in Sources */,
 				CA7A31B222B16E26002AD939 /* MapContent+Equatable.swift in Sources */,
 				CA7A31C122B16E26002AD939 /* WhenPerformingSync_BeforeImageDownload.swift in Sources */,
 				CA7A31CB22B16E26002AD939 /* WhenLoggingOut_ThenRequestingPrivateMessages.swift in Sources */,
