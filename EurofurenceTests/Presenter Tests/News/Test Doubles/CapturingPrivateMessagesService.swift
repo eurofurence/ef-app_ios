@@ -10,7 +10,7 @@ class CapturingPrivateMessagesService: PrivateMessagesService {
     }
     
     func fetchMessage(identifiedBy identifier: MessageIdentifier) -> Message? {
-        return nil
+        return localMessages.first(where: { $0.identifier == identifier })
     }
 
     var unreadMessageCount: Int = 0

@@ -60,11 +60,12 @@ class MessageDetailPresenterTests: XCTestCase {
         message.subject = "Subject"
         message.contents = "Contents"
         messageDetailSceneFactory = StubMessageDetailSceneFactory()
-        messagesService = CapturingPrivateMessagesService()
+        messagesService = CapturingPrivateMessagesService(localMessages: [message])
+        
         viewController = MessageDetailModuleBuilder(privateMessagesService: messagesService)
             .with(messageDetailSceneFactory)
             .build()
-            .makeMessageDetailModule(message: message)
+            .makeMessageDetailModule(for: message.identifier)
     }
 
     private func simulateSceneDidLoad() {

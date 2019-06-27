@@ -19,7 +19,7 @@ class WhenUserSelectsMessage_DirectorShould: XCTestCase {
     }
 
     func testBuildMessageDetailModuleUsingMessage() {
-        XCTAssertEqual(message.identifier, context.messageDetailModule.capturedMessage?.identifier)
+        XCTAssertEqual(message.identifier, context.messageDetailModule.capturedMessage)
     }
 
     func testPushMessageDetailModuleOntoMessagesNavigationController() {

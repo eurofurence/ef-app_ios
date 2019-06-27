@@ -72,7 +72,7 @@ struct FakeModuleRepository: ModuleRepository {
     }
     
     func makeMessageDetailModule(message: Message) -> UIViewController {
-        return messageDetailModuleProviding.makeMessageDetailModule(message: message)
+        return messageDetailModuleProviding.makeMessageDetailModule(for: message.identifier)
     }
     
     func makeScheduleModule(_ delegate: ScheduleModuleDelegate) -> UIViewController {
