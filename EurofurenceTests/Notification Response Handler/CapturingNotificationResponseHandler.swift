@@ -13,6 +13,11 @@ class CapturingNotificationResponseHandler: NotificationResponseHandler {
         handledEvent = event
     }
     
+    private(set) var handledMessage: MessageIdentifier?
+    func handleMessage(_ message: MessageIdentifier) {
+        handledMessage = message
+    }
+    
     private(set) var handledInvalidatedAnnouncement = false
     func handleInvalidatedAnnouncement() {
         handledInvalidatedAnnouncement = true

@@ -12,6 +12,10 @@ struct NavigateToContentNotificationResponseHandler: NotificationResponseHandler
         director.openEvent(event)
     }
     
+    func handleMessage(_ message: MessageIdentifier) {
+        
+    }
+    
     func handleInvalidatedAnnouncement() {
         director.showInvalidatedAnnouncementAlert()
     }

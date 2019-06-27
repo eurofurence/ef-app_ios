@@ -32,6 +32,9 @@ struct NotificationServiceFetchResultAdapter {
 
             case .unknown:
                 completionHandler(.noData)
+                
+            case .message:
+                completionHandler(.newData)
             }
         }
     }

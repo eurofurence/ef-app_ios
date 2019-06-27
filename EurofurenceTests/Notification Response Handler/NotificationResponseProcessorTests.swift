@@ -55,5 +55,14 @@ class NotificationResponseProcessorTests: XCTestCase {
         
         XCTAssertTrue(context.contentRecipient.handledInvalidatedAnnouncement)
     }
+    
+    func testProcessingMessageTellsContentRecipientToHandleIt() {
+        let payload = [String.random: String.random]
+        let message = MessageIdentifier.random
+        context.notificationHandling.stub(.message(message), for: payload)
+        context.notificationResponseHandler.openNotification(payload) { }
+        
+        XCTAssertEqual(message, context.contentRecipient.handledMessage)
+    }
 
 }
