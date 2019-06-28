@@ -88,12 +88,7 @@ class ApplicationDirector: ExternalContentHandler,
     }
     
     func openMessage(_ message: MessageIdentifier) {
-        guard let newsNavigationController = newsController?.navigationController,
-              let tabBarController = tabController,
-              let index = tabBarController.viewControllers?.firstIndex(of: newsNavigationController) else { return }
-        
-        let viewController = moduleRepository.makeMessageDetailModule(message: message)
-        newsNavigationController.pushViewController(viewController, animated: animate)
+        openMessage(message, revealStyle: .replace)
     }
     
     func showInvalidatedAnnouncementAlert() {
@@ -103,7 +98,7 @@ class ApplicationDirector: ExternalContentHandler,
         alert.addAction(UIAlertAction(title: .ok, style: .cancel))
         tabController?.present(alert, animated: performAnimations, completion: nil)
     }
-
+    
     // MARK: ExternalContentHandler
 
     func handleExternalContent(url: URL) {
@@ -205,7 +200,7 @@ class ApplicationDirector: ExternalContentHandler,
     }
 
     func messagesModuleDidRequestPresentation(for message: MessageIdentifier) {
-        openMessage(message)
+        openMessage(message, revealStyle: .push)
     }
 
     func messagesModuleDidRequestDismissal() {
@@ -385,6 +380,30 @@ class ApplicationDirector: ExternalContentHandler,
         moduleControllers.forEach { (navigationController) in
             guard let identifier = navigationController.topViewController?.restorationIdentifier else { return }
             navigationController.restorationIdentifier = "NAV_" + identifier
+        }
+    }
+    
+    private enum RevealStyle {
+        case push
+        case replace
+    }
+    
+    private func openMessage(_ message: MessageIdentifier, revealStyle: RevealStyle) {
+        guard let newsController = newsController,
+            let newsNavigationController = newsController.navigationController,
+            let tabBarController = tabController,
+            let index = tabBarController.viewControllers?.firstIndex(of: newsNavigationController) else { return }
+        
+        tabBarController.selectedIndex = index
+        let messageViewController = moduleRepository.makeMessageDetailModule(message: message)
+        
+        switch revealStyle {
+        case .push:
+            newsNavigationController.pushViewController(messageViewController, animated: animate)
+            
+        case .replace:
+            let messages = moduleRepository.makeMessagesModule(self)
+            newsNavigationController.setViewControllers([newsController, messages, messageViewController], animated: animate)
         }
     }
 

@@ -12,7 +12,10 @@ class WhenOpeningMessage_DirectorShould: XCTestCase {
         let message = MessageIdentifier.random
         context.director.openMessage(message)
         
-        XCTAssertEqual(context.messageDetailModule.stubInterface, newsNavigationController?.topViewController)
+        XCTAssertEqual(3, newsNavigationController?.viewControllers.count)
+        XCTAssertTrue(newsNavigationController?.viewControllers[0] === context.newsModule.stubInterface)
+        XCTAssertTrue(newsNavigationController?.viewControllers[1] === context.messages.stubInterface)
+        XCTAssertTrue(newsNavigationController?.viewControllers[2] === context.messageDetailModule.stubInterface)
         XCTAssertEqual(message, context.messageDetailModule.capturedMessage)
     }
 
