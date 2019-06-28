@@ -18,20 +18,6 @@ class ApplicationDirector: ExternalContentHandler,
                            MapDetailModuleDelegate,
                            AnnouncementsModuleDelegate,
                            EventFeedbackModuleDelegate {
-
-    private class SaveTabOrderWhenCustomizationFinishes: NSObject, UITabBarControllerDelegate {
-
-        private let orderingPolicy: ModuleOrderingPolicy
-
-        init(orderingPolicy: ModuleOrderingPolicy) {
-            self.orderingPolicy = orderingPolicy
-        }
-
-        func tabBarController(_ tabBarController: UITabBarController, didEndCustomizing viewControllers: [UIViewController], changed: Bool) {
-            orderingPolicy.saveOrder(viewControllers)
-        }
-
-    }
     
     private var performAnimations: Bool {
         return animate && UIApplication.shared.applicationState == .active
@@ -99,6 +85,15 @@ class ApplicationDirector: ExternalContentHandler,
         let module = moduleRepository.makeEventDetailModule(for: event, delegate: self)
         tabBarController.selectedIndex = index
         scheduleNavigationController.setViewControllers([scheduleViewController, module], animated: performAnimations)
+    }
+    
+    func openMessage(_ message: MessageIdentifier) {
+        guard let newsNavigationController = newsController?.navigationController,
+              let tabBarController = tabController,
+              let index = tabBarController.viewControllers?.firstIndex(of: newsNavigationController) else { return }
+        
+        let viewController = moduleRepository.makeMessageDetailModule(message: message)
+        newsNavigationController.pushViewController(viewController, animated: animate)
     }
     
     func showInvalidatedAnnouncementAlert() {
@@ -210,8 +205,7 @@ class ApplicationDirector: ExternalContentHandler,
     }
 
     func messagesModuleDidRequestPresentation(for message: MessageIdentifier) {
-        let viewController = moduleRepository.makeMessageDetailModule(message: message)
-        newsController?.navigationController?.pushViewController(viewController, animated: animate)
+        openMessage(message)
     }
 
     func messagesModuleDidRequestDismissal() {
