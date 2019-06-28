@@ -13,7 +13,7 @@ struct NavigateToContentNotificationResponseHandler: NotificationResponseHandler
     }
     
     func handleMessage(_ message: MessageIdentifier) {
-        
+        director.openMessage(message)
     }
     
     func handleInvalidatedAnnouncement() {
