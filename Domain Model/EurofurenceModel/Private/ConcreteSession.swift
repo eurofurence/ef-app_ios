@@ -121,7 +121,8 @@ class ConcreteSession: EurofurenceSession {
         notificationService = ConcreteNotificationService(eventBus: eventBus,
                                                           eventsService: eventsService,
                                                           announcementsService: announcementsService,
-                                                          refreshService: refreshService)
+                                                          refreshService: refreshService,
+                                                          privateMessagesService: privateMessagesService)
 
         contentLinksService = ConcreteContentLinksService(eventBus: eventBus, urlOpener: urlOpener)
         

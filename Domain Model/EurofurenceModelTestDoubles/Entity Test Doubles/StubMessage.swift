@@ -3,14 +3,14 @@ import TestUtilities
 
 public final class StubMessage: Message {
 
-    public var identifier: String
+    public var identifier: MessageIdentifier
     public var authorName: String
     public var receivedDateTime: Date
     public var subject: String
     public var contents: String
     public var isRead: Bool
 
-    public init(identifier: String,
+    public init(identifier: MessageIdentifier,
                 authorName: String,
                 receivedDateTime: Date,
                 subject: String,

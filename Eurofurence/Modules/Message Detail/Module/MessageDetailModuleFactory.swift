@@ -6,9 +6,11 @@ struct MessageDetailModuleFactory: MessageDetailModuleProviding {
     var messageDetailSceneFactory: MessageDetailSceneFactory
     var privateMessagesService: PrivateMessagesService
 
-    func makeMessageDetailModule(message: Message) -> UIViewController {
+    func makeMessageDetailModule(for message: MessageIdentifier) -> UIViewController {
         let scene = messageDetailSceneFactory.makeMessageDetailScene()
-        _ = MessageDetailPresenter(message: message, scene: scene)
+        if let entity = privateMessagesService.fetchMessage(identifiedBy: message) {
+            _ = MessageDetailPresenter(message: entity, scene: scene)
+        }
 
         return scene
     }

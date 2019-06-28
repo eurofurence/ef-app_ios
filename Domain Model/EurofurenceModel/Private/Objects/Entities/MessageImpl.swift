@@ -17,7 +17,7 @@ class MessageImpl: Message, Comparable {
     
     private let eventBus: EventBus
 
-    var identifier: String
+    var identifier: MessageIdentifier
     var authorName: String
     var receivedDateTime: Date
     var subject: String
@@ -27,7 +27,7 @@ class MessageImpl: Message, Comparable {
     init(eventBus: EventBus, characteristics: MessageCharacteristics) {
         self.eventBus = eventBus
         
-        self.identifier = characteristics.identifier
+        self.identifier = MessageIdentifier(characteristics.identifier)
         self.authorName = characteristics.authorName
         self.receivedDateTime = characteristics.receivedDateTime
         self.subject = characteristics.subject

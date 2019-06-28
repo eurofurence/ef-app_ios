@@ -6,7 +6,7 @@ import XCTest
 class WhenUserSelectsMessage_DirectorShould: XCTestCase {
 
     var context: ApplicationDirectorTestBuilder.Context!
-    var message: StubMessage!
+    var message: MessageIdentifier!
 
     override func setUp() {
         super.setUp()
@@ -19,7 +19,7 @@ class WhenUserSelectsMessage_DirectorShould: XCTestCase {
     }
 
     func testBuildMessageDetailModuleUsingMessage() {
-        XCTAssertEqual(message.identifier, context.messageDetailModule.capturedMessage?.identifier)
+        XCTAssertEqual(message, context.messageDetailModule.capturedMessage)
     }
 
     func testPushMessageDetailModuleOntoMessagesNavigationController() {

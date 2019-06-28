@@ -38,7 +38,7 @@ class MessagesPresenter: MessagesSceneDelegate, AuthenticationStateObserver, Pri
 
     func messagesSceneDidSelectMessage(at indexPath: IndexPath) {
         let message = presentedMessages[indexPath[1]]
-        delegate.messagesModuleDidRequestPresentation(for: message)
+        delegate.messagesModuleDidRequestPresentation(for: message.identifier)
     }
 
     func messagesSceneDidPerformRefreshAction() {

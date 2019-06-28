@@ -14,7 +14,7 @@ protocol ModuleRepository {
     func makeEventFeedbackModule(for event: EventIdentifier, delegate: EventFeedbackModuleDelegate) -> UIViewController
     func makeWebModule(for url: URL) -> UIViewController
     func makeMessagesModule(_ delegate: MessagesModuleDelegate) -> UIViewController
-    func makeMessageDetailModule(message: Message) -> UIViewController
+    func makeMessageDetailModule(message: MessageIdentifier) -> UIViewController
     func makeScheduleModule(_ delegate: ScheduleModuleDelegate) -> UIViewController
     func makeDealersModule(_ delegate: DealersModuleDelegate) -> UIViewController
     func makeDealerDetailModule(for identifier: DealerIdentifier) -> UIViewController

@@ -8,6 +8,10 @@ class CapturingPrivateMessagesService: PrivateMessagesService {
     func add(_ observer: PrivateMessagesObserver) {
         privateMessageObservers.append(observer)
     }
+    
+    func fetchMessage(identifiedBy identifier: MessageIdentifier) -> Message? {
+        return localMessages.first(where: { $0.identifier == identifier })
+    }
 
     var unreadMessageCount: Int = 0
     var localMessages: [Message] = []

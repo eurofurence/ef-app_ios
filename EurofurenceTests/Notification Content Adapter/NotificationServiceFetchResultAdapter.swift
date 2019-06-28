@@ -38,5 +38,9 @@ class NotificationServiceFetchResultAdapterTests: XCTestCase {
     func testIndicatesNoDataForUnknownContent() {
         XCTAssertEqual(UIBackgroundFetchResult.noData, handleNotification(.unknown))
     }
+    
+    func testIndicatesNewDataForMessage() {
+        XCTAssertEqual(UIBackgroundFetchResult.newData, handleNotification(.message(.random)))
+    }
 
 }

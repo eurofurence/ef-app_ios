@@ -1,8 +1,10 @@
 import Foundation
 
+public typealias MessageIdentifier = Identifier<Message>
+
 public protocol Message {
 
-    var identifier: String { get }
+    var identifier: MessageIdentifier { get }
     var authorName: String { get }
     var receivedDateTime: Date { get }
     var subject: String { get }

@@ -19,8 +19,13 @@ class MessageAssertion: Assertion {
         }
     }
 
-    func assertMessage(_ message: Message, characterisedBy characteristic: MessageCharacteristics) {
-        assert(message.identifier, isEqualTo: characteristic.identifier)
+    func assertMessage(_ message: Message?, characterisedBy characteristic: MessageCharacteristics) {
+        guard let message = message else {
+            fail(message: "Expected a message with id \(characteristic.identifier), got nil")
+            return
+        }
+        
+        assert(message.identifier.rawValue, isEqualTo: characteristic.identifier)
         assert(message.authorName, isEqualTo: characteristic.authorName)
         assert(message.receivedDateTime, isEqualTo: characteristic.receivedDateTime)
         assert(message.subject, isEqualTo: characteristic.subject)

@@ -1,37 +1,12 @@
 import EurofurenceModel
 import UIKit
 
-class ApplicationDirector: ExternalContentHandler,
-                           RootModuleDelegate,
-                           TutorialModuleDelegate,
-                           PreloadModuleDelegate,
-                           NewsModuleDelegate,
-                           ScheduleModuleDelegate,
-                           EventDetailModuleDelegate,
-                           MessagesModuleDelegate,
-                           LoginModuleDelegate,
-                           DealersModuleDelegate,
-                           KnowledgeGroupsListModuleDelegate,
-                           KnowledgeGroupEntriesModuleDelegate,
-                           KnowledgeDetailModuleDelegate,
-                           MapsModuleDelegate,
-                           MapDetailModuleDelegate,
-                           AnnouncementsModuleDelegate,
-                           EventFeedbackModuleDelegate {
-
-    private class SaveTabOrderWhenCustomizationFinishes: NSObject, UITabBarControllerDelegate {
-
-        private let orderingPolicy: ModuleOrderingPolicy
-
-        init(orderingPolicy: ModuleOrderingPolicy) {
-            self.orderingPolicy = orderingPolicy
-        }
-
-        func tabBarController(_ tabBarController: UITabBarController, didEndCustomizing viewControllers: [UIViewController], changed: Bool) {
-            orderingPolicy.saveOrder(viewControllers)
-        }
-
-    }
+class ApplicationDirector: ExternalContentHandler, RootModuleDelegate, TutorialModuleDelegate,
+                           PreloadModuleDelegate, NewsModuleDelegate, ScheduleModuleDelegate,
+                           EventDetailModuleDelegate, MessagesModuleDelegate, LoginModuleDelegate,
+                           DealersModuleDelegate, KnowledgeGroupsListModuleDelegate, KnowledgeGroupEntriesModuleDelegate,
+                           KnowledgeDetailModuleDelegate, MapsModuleDelegate, MapDetailModuleDelegate,
+                           AnnouncementsModuleDelegate, EventFeedbackModuleDelegate {
     
     private var performAnimations: Bool {
         return animate && UIApplication.shared.applicationState == .active
@@ -101,6 +76,10 @@ class ApplicationDirector: ExternalContentHandler,
         scheduleNavigationController.setViewControllers([scheduleViewController, module], animated: performAnimations)
     }
     
+    func openMessage(_ message: MessageIdentifier) {
+        openMessage(message, revealStyle: .replace)
+    }
+    
     func showInvalidatedAnnouncementAlert() {
         let alert = UIAlertController(title: .invalidAnnouncementAlertTitle,
                                       message: .invalidAnnouncementAlertMessage,
@@ -108,7 +87,7 @@ class ApplicationDirector: ExternalContentHandler,
         alert.addAction(UIAlertAction(title: .ok, style: .cancel))
         tabController?.present(alert, animated: performAnimations, completion: nil)
     }
-
+    
     // MARK: ExternalContentHandler
 
     func handleExternalContent(url: URL) {
@@ -209,9 +188,8 @@ class ApplicationDirector: ExternalContentHandler,
         tabController?.present(navigationController, animated: animate)
     }
 
-    func messagesModuleDidRequestPresentation(for message: Message) {
-        let viewController = moduleRepository.makeMessageDetailModule(message: message)
-        newsController?.navigationController?.pushViewController(viewController, animated: animate)
+    func messagesModuleDidRequestPresentation(for message: MessageIdentifier) {
+        openMessage(message, revealStyle: .push)
     }
 
     func messagesModuleDidRequestDismissal() {
@@ -391,6 +369,30 @@ class ApplicationDirector: ExternalContentHandler,
         moduleControllers.forEach { (navigationController) in
             guard let identifier = navigationController.topViewController?.restorationIdentifier else { return }
             navigationController.restorationIdentifier = "NAV_" + identifier
+        }
+    }
+    
+    private enum RevealStyle {
+        case push
+        case replace
+    }
+    
+    private func openMessage(_ message: MessageIdentifier, revealStyle: RevealStyle) {
+        guard let newsController = newsController,
+            let newsNavigationController = newsController.navigationController,
+            let tabBarController = tabController,
+            let index = tabBarController.viewControllers?.firstIndex(of: newsNavigationController) else { return }
+        
+        tabBarController.selectedIndex = index
+        let messageViewController = moduleRepository.makeMessageDetailModule(message: message)
+        
+        switch revealStyle {
+        case .push:
+            newsNavigationController.pushViewController(messageViewController, animated: animate)
+            
+        case .replace:
+            let messages = moduleRepository.makeMessagesModule(self)
+            newsNavigationController.setViewControllers([newsController, messages, messageViewController], animated: animate)
         }
     }
 
