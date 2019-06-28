@@ -1,7 +1,7 @@
 import EventBus
 import Foundation
 
-class NotificationContentDecodingContext {
+class NotificationPayloadDecodingContext {
     
     let payload: [String: String]
     private let completionHandler: (NotificationContent) -> Void
@@ -17,30 +17,30 @@ class NotificationContentDecodingContext {
     
 }
 
-class NotificationContentDecodingChainComponent {
+class NotificationPayloadDecoder {
     
-    private let nextComponent: NotificationContentDecodingChainComponent?
+    private let nextComponent: NotificationPayloadDecoder?
     
-    init(nextComponent: NotificationContentDecodingChainComponent?) {
+    init(nextComponent: NotificationPayloadDecoder?) {
         self.nextComponent = nextComponent
     }
     
-    func process(context: NotificationContentDecodingContext) {
+    func process(context: NotificationPayloadDecodingContext) {
         nextComponent?.process(context: context)
     }
     
 }
 
-class EventNotificationContentDecodingChainComponent: NotificationContentDecodingChainComponent {
+class EventNotificationPayloadDecoder: NotificationPayloadDecoder {
     
     private let eventsService: EventsService
     
-    init(nextComponent: NotificationContentDecodingChainComponent?, eventsService: EventsService) {
+    init(nextComponent: NotificationPayloadDecoder?, eventsService: EventsService) {
         self.eventsService = eventsService
         super.init(nextComponent: nextComponent)
     }
     
-    override func process(context: NotificationContentDecodingContext) {
+    override func process(context: NotificationPayloadDecodingContext) {
         if isEventPayload(context) {
             processEventPayload(context)
         } else {
@@ -48,11 +48,11 @@ class EventNotificationContentDecodingChainComponent: NotificationContentDecodin
         }
     }
     
-    private func isEventPayload(_ context: NotificationContentDecodingContext) -> Bool {
+    private func isEventPayload(_ context: NotificationPayloadDecodingContext) -> Bool {
         return context.payload[ApplicationNotificationKey.notificationContentKind.rawValue] == ApplicationNotificationContentKind.event.rawValue
     }
     
-    private func processEventPayload(_ context: NotificationContentDecodingContext) {
+    private func processEventPayload(_ context: NotificationPayloadDecodingContext) {
         let content: NotificationContent = {
             guard let identifier = context.payload[ApplicationNotificationKey.notificationContentIdentifier.rawValue] else { return .unknown }
             
@@ -67,16 +67,16 @@ class EventNotificationContentDecodingChainComponent: NotificationContentDecodin
     
 }
 
-class MessageNotificationContentDecodingChainComponent: NotificationContentDecodingChainComponent {
+class MessageNotificationPayloadDecoder: NotificationPayloadDecoder {
     
     private let privateMessagesService: PrivateMessagesService
     
-    init(nextComponent: NotificationContentDecodingChainComponent?, privateMessagesService: PrivateMessagesService) {
+    init(nextComponent: NotificationPayloadDecoder?, privateMessagesService: PrivateMessagesService) {
         self.privateMessagesService = privateMessagesService
         super.init(nextComponent: nextComponent)
     }
     
-    override func process(context: NotificationContentDecodingContext) {
+    override func process(context: NotificationPayloadDecodingContext) {
         if let messageIdentifier = context.payload["message_id"] {
             let identifier = MessageIdentifier(messageIdentifier)
             if privateMessagesService.fetchMessage(identifiedBy: identifier) != nil {
@@ -90,16 +90,16 @@ class MessageNotificationContentDecodingChainComponent: NotificationContentDecod
     
 }
 
-class SyncBeforeContinuingNotificationContentDecodingChainComponent: NotificationContentDecodingChainComponent {
+class SyncBeforeContinuingNotificationPayloadDecoder: NotificationPayloadDecoder {
     
     private let refreshService: RefreshService
     
-    init(nextComponent: NotificationContentDecodingChainComponent?, refreshService: RefreshService) {
+    init(nextComponent: NotificationPayloadDecoder?, refreshService: RefreshService) {
         self.refreshService = refreshService
         super.init(nextComponent: nextComponent)
     }
     
-    override func process(context: NotificationContentDecodingContext) {
+    override func process(context: NotificationPayloadDecodingContext) {
         refreshService.refreshLocalStore { (error) in
             if error == nil {
                 super.process(context: context)
@@ -111,16 +111,16 @@ class SyncBeforeContinuingNotificationContentDecodingChainComponent: Notificatio
     
 }
 
-class AnnouncementNotificationContentDecodingChainComponent: NotificationContentDecodingChainComponent {
+class AnnouncementNotificationPayloadDecoder: NotificationPayloadDecoder {
     
     private let announcementsService: AnnouncementsService
     
-    init(nextComponent: NotificationContentDecodingChainComponent?, announcementsService: AnnouncementsService) {
+    init(nextComponent: NotificationPayloadDecoder?, announcementsService: AnnouncementsService) {
         self.announcementsService = announcementsService
         super.init(nextComponent: nextComponent)
     }
     
-    override func process(context: NotificationContentDecodingContext) {
+    override func process(context: NotificationPayloadDecodingContext) {
         if let announcementIdentifier = context.payload["announcement_id"] {
             processAnnouncement(announcementIdentifier, context: context)
         } else {
@@ -128,7 +128,7 @@ class AnnouncementNotificationContentDecodingChainComponent: NotificationContent
         }
     }
     
-    private func processAnnouncement(_ announcementIdentifier: String, context: NotificationContentDecodingContext) {
+    private func processAnnouncement(_ announcementIdentifier: String, context: NotificationPayloadDecodingContext) {
         let identifier = AnnouncementIdentifier(announcementIdentifier)
         if announcementsService.fetchAnnouncement(identifier: identifier) != nil {
             context.complete(content: .announcement(identifier))
@@ -139,9 +139,9 @@ class AnnouncementNotificationContentDecodingChainComponent: NotificationContent
     
 }
 
-class SuccessfulSyncNotificationContentDecodingChainComponent: NotificationContentDecodingChainComponent {
+class SuccessfulSyncNotificationPayloadDecoder: NotificationPayloadDecoder {
     
-    override func process(context: NotificationContentDecodingContext) {
+    override func process(context: NotificationPayloadDecodingContext) {
         context.complete(content: .successfulSync)
     }
     
@@ -156,13 +156,13 @@ struct ConcreteNotificationService: NotificationService {
     var privateMessagesService: PrivateMessagesService
     
     func handleNotification(payload: [String: String], completionHandler: @escaping (NotificationContent) -> Void) {
-        let catchAllChainComponent = SuccessfulSyncNotificationContentDecodingChainComponent(nextComponent: nil)
-        let findAnnouncement = AnnouncementNotificationContentDecodingChainComponent(nextComponent: catchAllChainComponent, announcementsService: announcementsService)
-        let findMessageAfterSyncComponent = MessageNotificationContentDecodingChainComponent(nextComponent: findAnnouncement, privateMessagesService: privateMessagesService)
-        let syncComponent = SyncBeforeContinuingNotificationContentDecodingChainComponent(nextComponent: findMessageAfterSyncComponent, refreshService: refreshService)
-        let findLocalMessageComponent = MessageNotificationContentDecodingChainComponent(nextComponent: syncComponent, privateMessagesService: privateMessagesService)
-        let findLocalEventComponent = EventNotificationContentDecodingChainComponent(nextComponent: findLocalMessageComponent, eventsService: eventsService)
-        let context = NotificationContentDecodingContext(payload: payload, completionHandler: completionHandler)
+        let catchAllChainComponent = SuccessfulSyncNotificationPayloadDecoder(nextComponent: nil)
+        let findAnnouncement = AnnouncementNotificationPayloadDecoder(nextComponent: catchAllChainComponent, announcementsService: announcementsService)
+        let findMessageAfterSyncComponent = MessageNotificationPayloadDecoder(nextComponent: findAnnouncement, privateMessagesService: privateMessagesService)
+        let syncComponent = SyncBeforeContinuingNotificationPayloadDecoder(nextComponent: findMessageAfterSyncComponent, refreshService: refreshService)
+        let findLocalMessageComponent = MessageNotificationPayloadDecoder(nextComponent: syncComponent, privateMessagesService: privateMessagesService)
+        let findLocalEventComponent = EventNotificationPayloadDecoder(nextComponent: findLocalMessageComponent, eventsService: eventsService)
+        let context = NotificationPayloadDecodingContext(payload: payload, completionHandler: completionHandler)
         findLocalEventComponent.process(context: context)
     }
 
