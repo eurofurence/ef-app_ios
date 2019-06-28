@@ -446,6 +446,13 @@
 		CAA10FCC22C5617100689A32 /* WhenToldToOpenNotification_ThatRepresentsMessage_AlreadyDownloaded.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA10FCB22C5617100689A32 /* WhenToldToOpenNotification_ThatRepresentsMessage_AlreadyDownloaded.swift */; };
 		CAA10FCE22C562EA00689A32 /* WhenToldToOpenNotification_ThatRepresentsMessage_NotDownloaded_DownloadFails.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA10FCD22C562EA00689A32 /* WhenToldToOpenNotification_ThatRepresentsMessage_NotDownloaded_DownloadFails.swift */; };
 		CAA10FD022C5655B00689A32 /* WhenToldToOpenNotification_ThatRepresentsMessage_NotDownloaded_DownloadSucceeds.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA10FCF22C5655B00689A32 /* WhenToldToOpenNotification_ThatRepresentsMessage_NotDownloaded_DownloadSucceeds.swift */; };
+		CAA10FD422C5E10500689A32 /* NotificationPayloadDecodingContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA10FD322C5E10500689A32 /* NotificationPayloadDecodingContext.swift */; };
+		CAA10FD622C5E11C00689A32 /* NotificationPayloadDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA10FD522C5E11C00689A32 /* NotificationPayloadDecoder.swift */; };
+		CAA10FD822C5E12600689A32 /* EventNotificationPayloadDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA10FD722C5E12600689A32 /* EventNotificationPayloadDecoder.swift */; };
+		CAA10FDA22C5E13200689A32 /* MessageNotificationPayloadDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA10FD922C5E13200689A32 /* MessageNotificationPayloadDecoder.swift */; };
+		CAA10FDC22C5E13C00689A32 /* SyncBeforeContinuingNotificationPayloadDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA10FDB22C5E13C00689A32 /* SyncBeforeContinuingNotificationPayloadDecoder.swift */; };
+		CAA10FDE22C5E14600689A32 /* AnnouncementNotificationPayloadDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA10FDD22C5E14600689A32 /* AnnouncementNotificationPayloadDecoder.swift */; };
+		CAA10FE022C5E15000689A32 /* SuccessfulSyncNotificationPayloadDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA10FDF22C5E15000689A32 /* SuccessfulSyncNotificationPayloadDecoder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -920,6 +927,13 @@
 		CAA10FCB22C5617100689A32 /* WhenToldToOpenNotification_ThatRepresentsMessage_AlreadyDownloaded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToOpenNotification_ThatRepresentsMessage_AlreadyDownloaded.swift; sourceTree = "<group>"; };
 		CAA10FCD22C562EA00689A32 /* WhenToldToOpenNotification_ThatRepresentsMessage_NotDownloaded_DownloadFails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToOpenNotification_ThatRepresentsMessage_NotDownloaded_DownloadFails.swift; sourceTree = "<group>"; };
 		CAA10FCF22C5655B00689A32 /* WhenToldToOpenNotification_ThatRepresentsMessage_NotDownloaded_DownloadSucceeds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToOpenNotification_ThatRepresentsMessage_NotDownloaded_DownloadSucceeds.swift; sourceTree = "<group>"; };
+		CAA10FD322C5E10500689A32 /* NotificationPayloadDecodingContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPayloadDecodingContext.swift; sourceTree = "<group>"; };
+		CAA10FD522C5E11C00689A32 /* NotificationPayloadDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPayloadDecoder.swift; sourceTree = "<group>"; };
+		CAA10FD722C5E12600689A32 /* EventNotificationPayloadDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventNotificationPayloadDecoder.swift; sourceTree = "<group>"; };
+		CAA10FD922C5E13200689A32 /* MessageNotificationPayloadDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageNotificationPayloadDecoder.swift; sourceTree = "<group>"; };
+		CAA10FDB22C5E13C00689A32 /* SyncBeforeContinuingNotificationPayloadDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncBeforeContinuingNotificationPayloadDecoder.swift; sourceTree = "<group>"; };
+		CAA10FDD22C5E14600689A32 /* AnnouncementNotificationPayloadDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementNotificationPayloadDecoder.swift; sourceTree = "<group>"; };
+		CAA10FDF22C5E15000689A32 /* SuccessfulSyncNotificationPayloadDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessfulSyncNotificationPayloadDecoder.swift; sourceTree = "<group>"; };
 		EC85896EECB18D7881B0665A /* Pods-EurofurenceModel-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-EurofurenceModel-metadata.plist"; sourceTree = "<group>"; };
 		FFE87D86E3ECE04913805820 /* Pods_EurofurenceModelTestDoubles.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EurofurenceModelTestDoubles.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -1417,7 +1431,7 @@
 				CA7A2FF822B16DE3002AD939 /* ConcreteDealersService.swift */,
 				CA7A2FF322B16DE3002AD939 /* ConcreteKnowledgeService.swift */,
 				CA7A2FF122B16DE3002AD939 /* ConcreteMapsService.swift */,
-				CA7A2FF722B16DE3002AD939 /* ConcreteNotificationService.swift */,
+				CAA10FD122C5E0F400689A32 /* Notifications */,
 				CA7A2FED22B16DE3002AD939 /* ConcretePrivateMessagesService.swift */,
 				CA7A2FF422B16DE3002AD939 /* ConcreteRefreshService.swift */,
 				CA7A2FEF22B16DE3002AD939 /* ConcreteSessionStateService.swift */,
@@ -2074,6 +2088,29 @@
 			path = Repositories;
 			sourceTree = "<group>";
 		};
+		CAA10FD122C5E0F400689A32 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				CAA10FD222C5E0FD00689A32 /* Payload Decoding */,
+				CA7A2FF722B16DE3002AD939 /* ConcreteNotificationService.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
+		CAA10FD222C5E0FD00689A32 /* Payload Decoding */ = {
+			isa = PBXGroup;
+			children = (
+				CAA10FD322C5E10500689A32 /* NotificationPayloadDecodingContext.swift */,
+				CAA10FD522C5E11C00689A32 /* NotificationPayloadDecoder.swift */,
+				CAA10FD722C5E12600689A32 /* EventNotificationPayloadDecoder.swift */,
+				CAA10FD922C5E13200689A32 /* MessageNotificationPayloadDecoder.swift */,
+				CAA10FDB22C5E13C00689A32 /* SyncBeforeContinuingNotificationPayloadDecoder.swift */,
+				CAA10FDD22C5E14600689A32 /* AnnouncementNotificationPayloadDecoder.swift */,
+				CAA10FDF22C5E15000689A32 /* SuccessfulSyncNotificationPayloadDecoder.swift */,
+			);
+			path = "Payload Decoding";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -2352,6 +2389,7 @@
 				CA7A306E22B16DE4002AD939 /* DealersService.swift in Sources */,
 				CA7A309622B16DE4002AD939 /* EventFeedbackService.swift in Sources */,
 				CA7A302E22B16DE4002AD939 /* AnnouncementEntity+Adaptation.swift in Sources */,
+				CAA10FD422C5E10500689A32 /* NotificationPayloadDecodingContext.swift in Sources */,
 				CA7A306222B16DE4002AD939 /* LoginResponse.swift in Sources */,
 				CA7A308822B16DE4002AD939 /* RemoteNotificationRegistrationController.swift in Sources */,
 				CA7A302D22B16DE4002AD939 /* LinkEntity+Adaptation.swift in Sources */,
@@ -2372,6 +2410,7 @@
 				CA7A306F22B16DE4002AD939 /* CollectThemAllService.swift in Sources */,
 				CA7A301422B16DE4002AD939 /* EventFeedbackDelegate.swift in Sources */,
 				CA7A300C22B16DE4002AD939 /* ExtendedDealerData.swift in Sources */,
+				CAA10FDA22C5E13200689A32 /* MessageNotificationPayloadDecoder.swift in Sources */,
 				CA7A304D22B16DE4002AD939 /* EurofurenceSessionBuilder.swift in Sources */,
 				CA7A307E22B16DE4002AD939 /* FavouriteEvent.swift in Sources */,
 				CA7A300622B16DE4002AD939 /* User.swift in Sources */,
@@ -2406,6 +2445,7 @@
 				CA7A300B22B16DE4002AD939 /* KnowledgeGroup.swift in Sources */,
 				CA8A73D522BD1889007A5201 /* Repositories.swift in Sources */,
 				CA7A301122B16DE4002AD939 /* Map.swift in Sources */,
+				CAA10FD822C5E12600689A32 /* EventNotificationPayloadDecoder.swift in Sources */,
 				CA7A307822B16DE4002AD939 /* DataStoreChangedEvent.swift in Sources */,
 				CA7A306B22B16DE4002AD939 /* AnnouncementsService.swift in Sources */,
 				CA7A304E22B16DE4002AD939 /* LogoutResult.swift in Sources */,
@@ -2413,6 +2453,7 @@
 				CA7A307922B16DE4002AD939 /* LoggedOut.swift in Sources */,
 				CA7A309E22B16DE4002AD939 /* ConcreteEventsService.swift in Sources */,
 				CA7A302722B16DE4002AD939 /* RoomEntity+Adaptation.swift in Sources */,
+				CAA10FDC22C5E13C00689A32 /* SyncBeforeContinuingNotificationPayloadDecoder.swift in Sources */,
 				CA7A301F22B16DE4002AD939 /* PersistentImageRepository.swift in Sources */,
 				CA7A306022B16DE4002AD939 /* JSONAPI.swift in Sources */,
 				CA7A300D22B16DE4002AD939 /* Dealer.swift in Sources */,
@@ -2475,7 +2516,9 @@
 				CA7A302622B16DE4002AD939 /* FavouriteEventEntity+Adaptation.swift in Sources */,
 				CA8A73D822BD196A007A5201 /* CompanionAppURLRequestFactory.swift in Sources */,
 				CA7A303E22B16DE4002AD939 /* MapCoordinateRender.swift in Sources */,
+				CAA10FE022C5E15000689A32 /* SuccessfulSyncNotificationPayloadDecoder.swift in Sources */,
 				CA8A73E722BD2577007A5201 /* HardcodedCompanionAppURLRequestFactory.swift in Sources */,
+				CAA10FD622C5E11C00689A32 /* NotificationPayloadDecoder.swift in Sources */,
 				CA7A308422B16DE4002AD939 /* EventImpl.swift in Sources */,
 				CA7A304722B16DE4002AD939 /* DataStoreFactory.swift in Sources */,
 				CA7A302F22B16DE4002AD939 /* EventEntity+Adaptation.swift in Sources */,
@@ -2493,6 +2536,7 @@
 				CA7A304022B16DE4002AD939 /* BuildConfigurationProviding.swift in Sources */,
 				CA7A302422B16DE4002AD939 /* TrackEntity+Adaptation.swift in Sources */,
 				CA7A301622B16DE4002AD939 /* Identifier.swift in Sources */,
+				CAA10FDE22C5E14600689A32 /* AnnouncementNotificationPayloadDecoder.swift in Sources */,
 				CA7A306C22B16DE4002AD939 /* ConventionCountdownService.swift in Sources */,
 				CA7A2FFF22B16DE4002AD939 /* EurofurenceSessionState.swift in Sources */,
 			);
