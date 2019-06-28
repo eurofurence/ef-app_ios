@@ -1,23 +1,12 @@
 import EurofurenceModel
 import UIKit
 
-class ApplicationDirector: ExternalContentHandler,
-                           RootModuleDelegate,
-                           TutorialModuleDelegate,
-                           PreloadModuleDelegate,
-                           NewsModuleDelegate,
-                           ScheduleModuleDelegate,
-                           EventDetailModuleDelegate,
-                           MessagesModuleDelegate,
-                           LoginModuleDelegate,
-                           DealersModuleDelegate,
-                           KnowledgeGroupsListModuleDelegate,
-                           KnowledgeGroupEntriesModuleDelegate,
-                           KnowledgeDetailModuleDelegate,
-                           MapsModuleDelegate,
-                           MapDetailModuleDelegate,
-                           AnnouncementsModuleDelegate,
-                           EventFeedbackModuleDelegate {
+class ApplicationDirector: ExternalContentHandler, RootModuleDelegate, TutorialModuleDelegate,
+                           PreloadModuleDelegate, NewsModuleDelegate, ScheduleModuleDelegate,
+                           EventDetailModuleDelegate, MessagesModuleDelegate, LoginModuleDelegate,
+                           DealersModuleDelegate, KnowledgeGroupsListModuleDelegate, KnowledgeGroupEntriesModuleDelegate,
+                           KnowledgeDetailModuleDelegate, MapsModuleDelegate, MapDetailModuleDelegate,
+                           AnnouncementsModuleDelegate, EventFeedbackModuleDelegate {
     
     private var performAnimations: Bool {
         return animate && UIApplication.shared.applicationState == .active
