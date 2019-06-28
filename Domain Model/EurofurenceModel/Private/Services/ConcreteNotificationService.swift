@@ -3,7 +3,7 @@ import Foundation
 
 class NotificationPayloadDecodingContext {
     
-    let payload: [String: String]
+    private let payload: [String: String]
     private let completionHandler: (NotificationContent) -> Void
     
     init(payload: [String: String], completionHandler: @escaping (NotificationContent) -> Void) {
@@ -13,6 +13,10 @@ class NotificationPayloadDecodingContext {
     
     func complete(content: NotificationContent) {
         completionHandler(content)
+    }
+    
+    func value(forPayloadKey key: String) -> String? {
+        return payload[key]
     }
     
 }
@@ -49,12 +53,12 @@ class EventNotificationPayloadDecoder: NotificationPayloadDecoder {
     }
     
     private func isEventPayload(_ context: NotificationPayloadDecodingContext) -> Bool {
-        return context.payload[ApplicationNotificationKey.notificationContentKind.rawValue] == ApplicationNotificationContentKind.event.rawValue
+        return context.value(forPayloadKey: ApplicationNotificationKey.notificationContentKind.rawValue) == ApplicationNotificationContentKind.event.rawValue
     }
     
     private func processEventPayload(_ context: NotificationPayloadDecodingContext) {
         let content: NotificationContent = {
-            guard let identifier = context.payload[ApplicationNotificationKey.notificationContentIdentifier.rawValue] else { return .unknown }
+            guard let identifier = context.value(forPayloadKey: ApplicationNotificationKey.notificationContentIdentifier.rawValue) else { return .unknown }
             
             let eventIdentifier = EventIdentifier(identifier)
             guard eventsService.fetchEvent(identifier: eventIdentifier) != nil else { return .unknown }
@@ -77,7 +81,7 @@ class MessageNotificationPayloadDecoder: NotificationPayloadDecoder {
     }
     
     override func process(context: NotificationPayloadDecodingContext) {
-        if let messageIdentifier = context.payload["message_id"] {
+        if let messageIdentifier = context.value(forPayloadKey: "message_id") {
             let identifier = MessageIdentifier(messageIdentifier)
             if privateMessagesService.fetchMessage(identifiedBy: identifier) != nil {
                 context.complete(content: .message(identifier))
@@ -121,7 +125,7 @@ class AnnouncementNotificationPayloadDecoder: NotificationPayloadDecoder {
     }
     
     override func process(context: NotificationPayloadDecodingContext) {
-        if let announcementIdentifier = context.payload["announcement_id"] {
+        if let announcementIdentifier = context.value(forPayloadKey: "announcement_id") {
             processAnnouncement(announcementIdentifier, context: context)
         } else {
             super.process(context: context)
@@ -150,9 +154,9 @@ class SuccessfulSyncNotificationPayloadDecoder: NotificationPayloadDecoder {
 struct ConcreteNotificationService: NotificationService {
 
     var eventBus: EventBus
-    var eventsService: ConcreteEventsService
-    var announcementsService: ConcreteAnnouncementsService
-    var refreshService: ConcreteRefreshService
+    var eventsService: EventsService
+    var announcementsService: AnnouncementsService
+    var refreshService: RefreshService
     var privateMessagesService: PrivateMessagesService
     
     func handleNotification(payload: [String: String], completionHandler: @escaping (NotificationContent) -> Void) {
