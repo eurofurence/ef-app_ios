@@ -35,7 +35,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xbx-ot-ymE">
-                                                    <rect key="frame" x="22" y="8.9999999999999982" width="258" height="20.333333333333329"/>
+                                                    <rect key="frame" x="24" y="9.9999999999999982" width="256" height="20.333333333333329"/>
                                                     <accessibility key="accessibilityConfiguration">
                                                         <bool key="isElement" value="NO"/>
                                                     </accessibility>
@@ -44,7 +44,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bTe-tr-QM8">
-                                                    <rect key="frame" x="288" y="10" width="38" height="18"/>
+                                                    <rect key="frame" x="288" y="11" width="38" height="18"/>
                                                     <accessibility key="accessibilityConfiguration">
                                                         <bool key="isElement" value="NO"/>
                                                     </accessibility>
@@ -53,7 +53,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xrP-mw-pf8">
-                                                    <rect key="frame" x="22" y="63.333333333333343" width="312" height="45.666666666666657"/>
+                                                    <rect key="frame" x="24" y="64.333333333333329" width="310" height="44.666666666666671"/>
                                                     <accessibility key="accessibilityConfiguration">
                                                         <bool key="isElement" value="NO"/>
                                                     </accessibility>
@@ -62,17 +62,16 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cjc-YF-xya">
-                                                    <rect key="frame" x="22" y="37.333333333333336" width="312" height="18"/>
+                                                    <rect key="frame" x="24" y="38.333333333333336" width="310" height="18"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bza-hP-eKo" customClass="UnreadMessageIndicator" customModule="Eurofurence" customModuleProvider="target">
-                                                    <rect key="frame" x="8" y="15" width="8" height="8"/>
-                                                    <color key="backgroundColor" red="0.292688638" green="0.61336147789999995" blue="0.87063741679999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bza-hP-eKo" customClass="UnreadIndicatorView" customModule="Eurofurence" customModuleProvider="target">
+                                                    <rect key="frame" x="8" y="15" width="10" height="10"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="8" id="3S9-HI-pqg"/>
-                                                        <constraint firstAttribute="height" constant="8" id="zIf-Hl-Mwi"/>
+                                                        <constraint firstAttribute="width" secondItem="Bza-hP-eKo" secondAttribute="height" multiplier="1:1" id="SDC-ze-K6G"/>
+                                                        <constraint firstAttribute="height" constant="10" id="zIf-Hl-Mwi"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -101,7 +100,7 @@
                                             <outlet property="messageReceivedDateLabel" destination="bTe-tr-QM8" id="X1i-vs-qXP"/>
                                             <outlet property="messageSubjectLabel" destination="cjc-YF-xya" id="YLj-sX-AzV"/>
                                             <outlet property="messageSynopsisLabel" destination="xrP-mw-pf8" id="Rif-TO-VHL"/>
-                                            <outlet property="unreadMessageIndicator" destination="Bza-hP-eKo" id="ZLl-Ys-Eh9"/>
+                                            <outlet property="unreadMessageIndicator" destination="Bza-hP-eKo" id="lwH-1Z-nUl"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
