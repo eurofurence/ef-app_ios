@@ -47,6 +47,9 @@ class ApplicationStack {
                                                                                                 conventionIdentifier: ApplicationStack.CID,
                                                                                                 firebaseAdapter: FirebaseMessagingAdapter(),
                                                                                                 fcmRegistration: fcmRegistration)
+        
+        let remoteConfigurationLoader = FirebaseRemoteConfigurationLoader()
+        let conventionStartDateRepository = RemotelyConfiguredConventionStartDateRepository(remoteConfigurationLoader: remoteConfigurationLoader)
 
         let significantTimeChangeAdapter = ApplicationSignificantTimeChangeAdapter()
 
@@ -57,6 +60,7 @@ class ApplicationStack {
         let mapCoordinateRender = UIKitMapCoordinateRender()
         
         session = EurofurenceSessionBuilder(conventionIdentifier: ApplicationStack.CID)
+            .with(conventionStartDateRepository)
             .with(remoteNotificationsTokenRegistration)
             .with(significantTimeChangeAdapter)
             .with(urlOpener)
