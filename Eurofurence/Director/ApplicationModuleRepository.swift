@@ -44,7 +44,6 @@ struct ApplicationModuleRepository: ModuleRepository {
                                                    eventsService: services.events,
                                                    relativeTimeIntervalCountdownFormatter: FoundationRelativeTimeIntervalCountdownFormatter.shared,
                                                    hoursDateFormatter: FoundationHoursDateFormatter.shared,
-                                                   dateDistanceCalculator: FoundationDateDistanceCalculator(),
                                                    clock: SystemClock.shared,
                                                    refreshService: services.refresh,
                                                    announcementsDateFormatter: FoundationAnnouncementDateFormatter.shared,

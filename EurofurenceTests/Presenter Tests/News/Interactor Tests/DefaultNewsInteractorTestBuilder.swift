@@ -15,7 +15,6 @@ class DefaultNewsInteractorTestBuilder {
         var privateMessagesService: CapturingPrivateMessagesService
         var daysUntilConventionService: StubConventionCountdownService
         var eventsService: FakeEventsService
-        var dateDistanceCalculator: StubDateDistanceCalculator
         var clock: StubClock
         var refreshService: CapturingRefreshService
         var announcementDateFormatter: FakeAnnouncementDateFormatter
@@ -67,7 +66,6 @@ class DefaultNewsInteractorTestBuilder {
     }
 
     func build() -> Context {
-        let dateDistanceCalculator = StubDateDistanceCalculator()
         let clock = StubClock()
         let relativeTimeFormatter = FakeRelativeTimeIntervalCountdownFormatter()
         let hoursDateFormatter = FakeHoursDateFormatter()
@@ -81,7 +79,6 @@ class DefaultNewsInteractorTestBuilder {
                                                eventsService: eventsService,
                                                relativeTimeIntervalCountdownFormatter: relativeTimeFormatter,
                                                hoursDateFormatter: hoursDateFormatter,
-                                               dateDistanceCalculator: dateDistanceCalculator,
                                                clock: clock,
                                                refreshService: refreshService,
                                                announcementsDateFormatter: announcementsDateFormatter,
@@ -97,7 +94,6 @@ class DefaultNewsInteractorTestBuilder {
                        privateMessagesService: privateMessagesService,
                        daysUntilConventionService: daysUntilConventionService,
                        eventsService: eventsService,
-                       dateDistanceCalculator: dateDistanceCalculator,
                        clock: clock,
                        refreshService: refreshService,
                        announcementDateFormatter: announcementsDateFormatter,
