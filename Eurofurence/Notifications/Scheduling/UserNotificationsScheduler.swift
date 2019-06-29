@@ -12,6 +12,9 @@ struct UserNotificationsScheduler: NotificationScheduler {
         content.title = title
         content.body = body
         content.userInfo = userInfo.xpcSafeDictionary
+        
+        let soundName = UNNotificationSoundName(rawValue: "personal_notification.caf")
+        content.sound = UNNotificationSound(named: soundName)
 
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
         let request = UNNotificationRequest(identifier: identifier.rawValue, content: content, trigger: trigger)
