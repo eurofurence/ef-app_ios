@@ -71,6 +71,7 @@ struct Theme {
     private static func styleButtonsWithinTableViewCells() {
         let buttonInsideTableView = UIButton.appearance(whenContainedInInstancesOf: [UITableViewCell.self])
         buttonInsideTableView.setTitleColor(.pantone330U, for: .normal)
+        buttonInsideTableView.setTitleColor(.conferenceGrey, for: .disabled)
     }
 
     private static func styleButtonsWithinNavigationBars() {
