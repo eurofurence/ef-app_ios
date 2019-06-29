@@ -4,7 +4,6 @@ import Foundation
 class ConcreteConventionCountdownService: ConventionCountdownService, ConventionStartDateConsumer {
     
     private let conventionStartDateRepository: ConventionStartDateRepository
-    private let dateDistanceCalculator: DateDistanceCalculator
     private let clock: Clock
     private var daysUntilConventionObservers = [ConventionCountdownServiceObserver]()
     private var conventionStartDate: Date?
@@ -31,10 +30,8 @@ class ConcreteConventionCountdownService: ConventionCountdownService, Convention
 
     init(eventBus: EventBus,
          conventionStartDateRepository: ConventionStartDateRepository,
-         dateDistanceCalculator: DateDistanceCalculator,
          clock: Clock) {
         self.conventionStartDateRepository = conventionStartDateRepository
-        self.dateDistanceCalculator = dateDistanceCalculator
         self.clock = clock
 
         eventBus.subscribe(consumer: RecomputeCountdownWhenSignificantTimePasses(service: self))
