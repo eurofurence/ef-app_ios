@@ -788,6 +788,7 @@
 		CA9AC16D2085476E0039C0C2 /* EventComponentViewModel+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9AC16C2085476E0039C0C2 /* EventComponentViewModel+RandomValueProviding.swift */; };
 		CAA10FE222C5E29700689A32 /* WhenOpeningMessage_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA10FE122C5E29700689A32 /* WhenOpeningMessage_DirectorShould.swift */; };
 		CAA10FE422C5E3CF00689A32 /* SaveTabOrderWhenCustomizationFinishes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA10FE322C5E3CF00689A32 /* SaveTabOrderWhenCustomizationFinishes.swift */; };
+		CAA10FE622C75CA800689A32 /* MultiStepFormTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA10FE522C75CA800689A32 /* MultiStepFormTextField.swift */; };
 		CAA39E0820051B5C00F2F3D3 /* LocalizedStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA39E0720051B5C00F2F3D3 /* LocalizedStrings.swift */; };
 		CAA39E0920051C6C00F2F3D3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CAA39E0B20051C6C00F2F3D3 /* Localizable.strings */; };
 		CAA4BA6721EE7AB600DE2C88 /* MessagesModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA4BA6621EE7AB600DE2C88 /* MessagesModule.swift */; };
@@ -1840,6 +1841,7 @@
 		CA9AC16C2085476E0039C0C2 /* EventComponentViewModel+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventComponentViewModel+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CAA10FE122C5E29700689A32 /* WhenOpeningMessage_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenOpeningMessage_DirectorShould.swift; sourceTree = "<group>"; };
 		CAA10FE322C5E3CF00689A32 /* SaveTabOrderWhenCustomizationFinishes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveTabOrderWhenCustomizationFinishes.swift; sourceTree = "<group>"; };
+		CAA10FE522C75CA800689A32 /* MultiStepFormTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiStepFormTextField.swift; sourceTree = "<group>"; };
 		CAA39E0720051B5C00F2F3D3 /* LocalizedStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedStrings.swift; sourceTree = "<group>"; };
 		CAA4BA6621EE7AB600DE2C88 /* MessagesModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesModule.swift; sourceTree = "<group>"; };
 		CAA6060620EEB4F200075A4E /* UserNotificationsScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationsScheduler.swift; sourceTree = "<group>"; };
@@ -2366,6 +2368,7 @@
 				78455B611F118699005BE2D7 /* RoundedCornerButton.swift */,
 				CA527E772278D397000ED74B /* StarRatingControl.swift */,
 				CA9845DD1F2B01BA00E8821D /* UnreadMessageIndicator.swift */,
+				CAA10FE522C75CA800689A32 /* MultiStepFormTextField.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -5921,6 +5924,7 @@
 				CA6A8DEC20E41F85007536CD /* MapDetailPresenter.swift in Sources */,
 				CA36A48720D9260000EE6537 /* DealerGroupHeader.swift in Sources */,
 				781A943E1F1A1A13002DE70F /* FirebaseRemoteNotificationsTokenRegistration.swift in Sources */,
+				CAA10FE622C75CA800689A32 /* MultiStepFormTextField.swift in Sources */,
 				CA1ECB4D1FE7F2A10076083A /* NewsPresenter.swift in Sources */,
 				CA17FE83205800A7005A4C05 /* LinkViewModel.swift in Sources */,
 				CA17FE8720580527005A4C05 /* KnowledgeDetailContentsTableViewCell.swift in Sources */,

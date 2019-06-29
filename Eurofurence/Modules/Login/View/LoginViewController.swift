@@ -35,20 +35,17 @@ class LoginViewController: UITableViewController, UITextFieldDelegate, LoginScen
         guard let password = sender.text else { return }
         delegate?.loginSceneDidUpdatePassword(password)
     }
-
+    
+    @IBAction private func passwordPrimaryActionTriggered(_ sender: Any) {
+        delegate?.loginSceneDidTapLoginButton()
+    }
+    
     // MARK: Overrides
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         delegate?.loginSceneWillAppear()
-    }
-    
-    // MARK: UITextFieldDelegate
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
     }
 
     // MARK: LoginScene
