@@ -61,8 +61,8 @@
 		9A861ECC1F25555000B75A8C /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A861EC61F25555000B75A8C /* TutorialViewController.swift */; };
 		9A861ECD1F25555000B75A8C /* TutorialPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A861EC71F25555000B75A8C /* TutorialPageViewController.swift */; };
 		9A861ED41F25564900B75A8C /* WindowAlertRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A861ECE1F25564900B75A8C /* WindowAlertRouter.swift */; };
-		9A8ECA1E1F2BB46000351A83 /* j1_generic.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9A8ECA1A1F2BB44100351A83 /* j1_generic.caf */; };
-		9A8ECA201F2BB46000351A83 /* j2_generic.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9A8ECA1C1F2BB44100351A83 /* j2_generic.caf */; };
+		9A8ECA1E1F2BB46000351A83 /* generic_notification.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9A8ECA1A1F2BB44100351A83 /* generic_notification.caf */; };
+		9A8ECA201F2BB46000351A83 /* personal_notification.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9A8ECA1C1F2BB44100351A83 /* personal_notification.caf */; };
 		9AB64BCF1F0272A5004E8D91 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9AB64BCE1F02665D004E8D91 /* fontawesome-webfont.ttf */; };
 		9ACF99381EBE172D006FC958 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF99371EBE172D006FC958 /* AppDelegate.swift */; };
 		9ACF993F1EBE172D006FC958 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ACF993E1EBE172D006FC958 /* Assets.xcassets */; };
@@ -1105,8 +1105,8 @@
 		9A861EC61F25555000B75A8C /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		9A861EC71F25555000B75A8C /* TutorialPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialPageViewController.swift; sourceTree = "<group>"; };
 		9A861ECE1F25564900B75A8C /* WindowAlertRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowAlertRouter.swift; sourceTree = "<group>"; };
-		9A8ECA1A1F2BB44100351A83 /* j1_generic.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = j1_generic.caf; sourceTree = "<group>"; };
-		9A8ECA1C1F2BB44100351A83 /* j2_generic.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = j2_generic.caf; sourceTree = "<group>"; };
+		9A8ECA1A1F2BB44100351A83 /* generic_notification.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = generic_notification.caf; sourceTree = "<group>"; };
+		9A8ECA1C1F2BB44100351A83 /* personal_notification.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = personal_notification.caf; sourceTree = "<group>"; };
 		9AB64BCE1F02665D004E8D91 /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
 		9ACF99341EBE172D006FC958 /* Eurofurence.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eurofurence.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ACF99371EBE172D006FC958 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -4511,8 +4511,8 @@
 		CA79925922459E3D00DF1F84 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				9A8ECA1A1F2BB44100351A83 /* j1_generic.caf */,
-				9A8ECA1C1F2BB44100351A83 /* j2_generic.caf */,
+				9A8ECA1A1F2BB44100351A83 /* generic_notification.caf */,
+				9A8ECA1C1F2BB44100351A83 /* personal_notification.caf */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -5479,8 +5479,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A8ECA1E1F2BB46000351A83 /* j1_generic.caf in Resources */,
-				9A8ECA201F2BB46000351A83 /* j2_generic.caf in Resources */,
+				9A8ECA1E1F2BB46000351A83 /* generic_notification.caf in Resources */,
+				9A8ECA201F2BB46000351A83 /* personal_notification.caf in Resources */,
 				CA2761B420E0236A000E52AC /* HybridWeb.storyboard in Resources */,
 				CAA6060A20EEC02C00075A4E /* Debug.storyboard in Resources */,
 				CA63759C208DFDF900536BE2 /* Schedule.storyboard in Resources */,
