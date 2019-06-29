@@ -3,6 +3,7 @@ import Foundation
 public class EurofurenceSessionBuilder {
     
     private let conventionIdentifier: ConventionIdentifier
+    private let conventionStartDateRepository: ConventionStartDateRepository
 
     private var userPreferences: UserPreferences
     private var dataStoreFactory: DataStoreFactory
@@ -10,7 +11,6 @@ public class EurofurenceSessionBuilder {
     private var clock: Clock
     private var credentialStore: CredentialStore
     private var api: API
-    private var conventionStartDateRepository: ConventionStartDateRepository
     private var timeIntervalForUpcomingEventsSinceNow: TimeInterval
     private var imageRepository: ImageRepository
     private var significantTimeChangeAdapter: SignificantTimeChangeAdapter?
@@ -21,8 +21,10 @@ public class EurofurenceSessionBuilder {
     private var forceRefreshRequired: ForceRefreshRequired
     private var companionAppURLRequestFactory: CompanionAppURLRequestFactory
 
-    public init(conventionIdentifier: ConventionIdentifier) {
+    public init(conventionIdentifier: ConventionIdentifier,
+                conventionStartDateRepository: ConventionStartDateRepository) {
         self.conventionIdentifier = conventionIdentifier
+        self.conventionStartDateRepository = conventionStartDateRepository
         
         userPreferences = UserDefaultsPreferences()
         dataStoreFactory = CoreDataStoreFactory()
@@ -33,7 +35,6 @@ public class EurofurenceSessionBuilder {
 
         clock = SystemClock.shared
         credentialStore = KeychainCredentialStore()
-        conventionStartDateRepository = EF24StartDateRepository()
         timeIntervalForUpcomingEventsSinceNow = 3600
         imageRepository = PersistentImageRepository()
         collectThemAllRequestFactory = DefaultCollectThemAllRequestFactory()
@@ -68,12 +69,6 @@ public class EurofurenceSessionBuilder {
     @discardableResult
     public func with(_ credentialStore: CredentialStore) -> EurofurenceSessionBuilder {
         self.credentialStore = credentialStore
-        return self
-    }
-
-    @discardableResult
-    public func with(_ conventionStartDateRepository: ConventionStartDateRepository) -> EurofurenceSessionBuilder {
-        self.conventionStartDateRepository = conventionStartDateRepository
         return self
     }
 

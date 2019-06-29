@@ -127,7 +127,6 @@
 		CA7A307222B16DE4002AD939 /* KnowledgeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2FCB22B16DE3002AD939 /* KnowledgeService.swift */; };
 		CA7A307322B16DE4002AD939 /* ImagesCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2FCD22B16DE3002AD939 /* ImagesCache.swift */; };
 		CA7A307422B16DE4002AD939 /* SignificantTimeObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2FCE22B16DE3002AD939 /* SignificantTimeObserver.swift */; };
-		CA7A307522B16DE4002AD939 /* EF24StartDateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2FCF22B16DE3002AD939 /* EF24StartDateRepository.swift */; };
 		CA7A307622B16DE4002AD939 /* UnfavouriteEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2FD122B16DE3002AD939 /* UnfavouriteEvent.swift */; };
 		CA7A307722B16DE4002AD939 /* OpenURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2FD222B16DE3002AD939 /* OpenURL.swift */; };
 		CA7A307822B16DE4002AD939 /* DataStoreChangedEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2FD322B16DE3002AD939 /* DataStoreChangedEvent.swift */; };
@@ -604,7 +603,6 @@
 		CA7A2FCB22B16DE3002AD939 /* KnowledgeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnowledgeService.swift; sourceTree = "<group>"; };
 		CA7A2FCD22B16DE3002AD939 /* ImagesCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagesCache.swift; sourceTree = "<group>"; };
 		CA7A2FCE22B16DE3002AD939 /* SignificantTimeObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignificantTimeObserver.swift; sourceTree = "<group>"; };
-		CA7A2FCF22B16DE3002AD939 /* EF24StartDateRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EF24StartDateRepository.swift; sourceTree = "<group>"; };
 		CA7A2FD122B16DE3002AD939 /* UnfavouriteEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnfavouriteEvent.swift; sourceTree = "<group>"; };
 		CA7A2FD222B16DE3002AD939 /* OpenURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenURL.swift; sourceTree = "<group>"; };
 		CA7A2FD322B16DE3002AD939 /* DataStoreChangedEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStoreChangedEvent.swift; sourceTree = "<group>"; };
@@ -1348,7 +1346,6 @@
 			isa = PBXGroup;
 			children = (
 				CA7A2FEB22B16DE3002AD939 /* ConcreteSession.swift */,
-				CA7A2FCF22B16DE3002AD939 /* EF24StartDateRepository.swift */,
 				CA7A2FE622B16DE3002AD939 /* ImageDownloader.swift */,
 				CA7A2FCD22B16DE3002AD939 /* ImagesCache.swift */,
 				CA7A2FE522B16DE3002AD939 /* RemoteNotificationRegistrationController.swift */,
@@ -2417,7 +2414,6 @@
 				CA7A305C22B16DE4002AD939 /* MapCharacteristics.swift in Sources */,
 				CA7A304422B16DE4002AD939 /* AppVersionProviding.swift in Sources */,
 				CA7A308B22B16DE4002AD939 /* Array+AppExtensions.swift in Sources */,
-				CA7A307522B16DE4002AD939 /* EF24StartDateRepository.swift in Sources */,
 				CA7A309A22B16DE4002AD939 /* ConcreteConventionCountdownService.swift in Sources */,
 				CA7A309D22B16DE4002AD939 /* EventsScheduleAdapter.swift in Sources */,
 				CA7A306322B16DE4002AD939 /* API.swift in Sources */,
