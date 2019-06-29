@@ -23,6 +23,11 @@ class NewsViewController: UIViewController, NewsScene {
         tableView.registerConventionBrandedHeader()
         delegate?.newsSceneDidLoad()
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tableView?.adjustScrollIndicatorInsetsForSafeAreaCompensation()
+    }
 
     // MARK: NewsScene
 

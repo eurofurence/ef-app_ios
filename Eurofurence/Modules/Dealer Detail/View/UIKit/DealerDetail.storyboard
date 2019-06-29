@@ -400,10 +400,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="ilg-bP-0CX" firstAttribute="trailing" secondItem="TDA-6E-w2l" secondAttribute="trailing" id="4uv-6m-nrP"/>
+                            <constraint firstItem="TDA-6E-w2l" firstAttribute="trailing" secondItem="Vmb-tq-NAL" secondAttribute="trailing" id="4uv-6m-nrP"/>
                             <constraint firstAttribute="bottom" secondItem="TDA-6E-w2l" secondAttribute="bottom" id="HNG-6p-me4"/>
                             <constraint firstItem="TDA-6E-w2l" firstAttribute="top" secondItem="Vmb-tq-NAL" secondAttribute="top" id="uwg-wH-ELt"/>
-                            <constraint firstItem="TDA-6E-w2l" firstAttribute="leading" secondItem="ilg-bP-0CX" secondAttribute="leading" id="zHL-52-IZL"/>
+                            <constraint firstItem="TDA-6E-w2l" firstAttribute="leading" secondItem="Vmb-tq-NAL" secondAttribute="leading" id="zHL-52-IZL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ilg-bP-0CX"/>
                     </view>

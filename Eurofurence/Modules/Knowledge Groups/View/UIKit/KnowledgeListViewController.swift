@@ -55,6 +55,11 @@ class KnowledgeListViewController: UIViewController, KnowledgeListScene {
         tableView.sectionHeaderHeight = UITableView.automaticDimension
         delegate?.knowledgeListSceneDidLoad()
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tableView?.adjustScrollIndicatorInsetsForSafeAreaCompensation()
+    }
 
     // MARK: Private
 

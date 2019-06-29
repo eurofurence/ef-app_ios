@@ -39,6 +39,12 @@ extension UITableView {
         
         return header
     }
+    
+    func adjustScrollIndicatorInsetsForSafeAreaCompensation() {
+        if #available(iOS 11.0, *) {        
+            scrollIndicatorInsets.right = -safeAreaInsets.right
+        }
+    }
 
     private func abortDueToUnregisteredOrMissingCell<T>(_ type: T.Type, identifier: String) -> Never {
         fatalError("Cell registered with identifier \"\(identifier)\" not present, or not an instance of \(type)")

@@ -71,6 +71,11 @@ class ScheduleViewController: UIViewController,
         layoutDaysCollectionView()
         tableView?.setEditing(false, animated: false)
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tableView?.adjustScrollIndicatorInsetsForSafeAreaCompensation()
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

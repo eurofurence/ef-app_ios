@@ -113,8 +113,8 @@
                         <constraints>
                             <constraint firstItem="1NE-E2-5fJ" firstAttribute="top" secondItem="jHS-KQ-VWp" secondAttribute="top" id="5S5-bD-3DQ"/>
                             <constraint firstItem="jHS-KQ-VWp" firstAttribute="bottom" secondItem="1NE-E2-5fJ" secondAttribute="bottom" id="e3a-qM-fz6"/>
-                            <constraint firstItem="jHS-KQ-VWp" firstAttribute="trailing" secondItem="1NE-E2-5fJ" secondAttribute="trailing" id="gDG-BK-YDU"/>
-                            <constraint firstItem="1NE-E2-5fJ" firstAttribute="leading" secondItem="jHS-KQ-VWp" secondAttribute="leading" id="r0J-nB-NKI"/>
+                            <constraint firstItem="1NE-E2-5fJ" firstAttribute="trailing" secondItem="ATu-BA-3Hp" secondAttribute="trailing" id="gDG-BK-YDU"/>
+                            <constraint firstItem="1NE-E2-5fJ" firstAttribute="leading" secondItem="ATu-BA-3Hp" secondAttribute="leading" id="r0J-nB-NKI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jHS-KQ-VWp"/>
                     </view>
