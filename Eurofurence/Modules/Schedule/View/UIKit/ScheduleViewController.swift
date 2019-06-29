@@ -71,6 +71,11 @@ class ScheduleViewController: UIViewController,
         layoutDaysCollectionView()
         tableView?.setEditing(false, animated: false)
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tableView?.adjustScrollIndicatorInsetsForSafeAreaCompensation()
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -284,14 +289,6 @@ class ScheduleViewController: UIViewController,
             let cell = tableView.dequeue(EventTableViewCell.self)
             binder.bind(cell, forEventAt: indexPath)
             return cell
-        }
-        
-        func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-            return UIView()
-        }
-        
-        func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-            return 1
         }
 
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

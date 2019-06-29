@@ -16,7 +16,7 @@ class MessageTableViewCell: UITableViewCell, MessageItemScene {
     @IBOutlet private weak var messageSubjectLabel: UILabel!
     @IBOutlet private weak var messageReceivedDateLabel: UILabel!
     @IBOutlet private weak var messageSynopsisLabel: UILabel!
-    @IBOutlet private weak var unreadMessageIndicator: UnreadMessageIndicator!
+    @IBOutlet private weak var unreadMessageIndicator: UIView!
 
     override func prepareForReuse() {
         super.prepareForReuse()

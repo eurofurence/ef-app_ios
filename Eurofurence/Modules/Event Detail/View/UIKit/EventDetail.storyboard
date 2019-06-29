@@ -205,6 +205,9 @@
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5uy-XH-efE">
                                                             <rect key="frame" x="20" y="20" width="0.0" height="43.5"/>
+                                                            <accessibility key="accessibilityConfiguration">
+                                                                <bool key="isElement" value="NO"/>
+                                                            </accessibility>
                                                             <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -312,8 +315,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Hnn-pu-fzg" firstAttribute="top" secondItem="p7r-6D-b2m" secondAttribute="top" id="OSK-xe-Cjh"/>
-                            <constraint firstItem="Hnn-pu-fzg" firstAttribute="trailing" secondItem="3m3-1u-4LM" secondAttribute="trailing" id="cnh-AW-voN"/>
-                            <constraint firstItem="Hnn-pu-fzg" firstAttribute="leading" secondItem="3m3-1u-4LM" secondAttribute="leading" id="eoR-fQ-4GK"/>
+                            <constraint firstItem="Hnn-pu-fzg" firstAttribute="trailing" secondItem="p7r-6D-b2m" secondAttribute="trailing" id="cnh-AW-voN"/>
+                            <constraint firstItem="Hnn-pu-fzg" firstAttribute="leading" secondItem="p7r-6D-b2m" secondAttribute="leading" id="eoR-fQ-4GK"/>
                             <constraint firstAttribute="bottom" secondItem="Hnn-pu-fzg" secondAttribute="bottom" id="uP7-NB-5ta"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3m3-1u-4LM"/>

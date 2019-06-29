@@ -194,12 +194,12 @@
                         <constraints>
                             <constraint firstItem="Ogd-Bj-WFd" firstAttribute="bottom" secondItem="Y7u-ae-31r" secondAttribute="bottom" id="IXW-Ey-fpB"/>
                             <constraint firstAttribute="trailing" secondItem="Se9-cw-Plh" secondAttribute="trailing" id="Ou6-tW-wox"/>
-                            <constraint firstItem="Ogd-Bj-WFd" firstAttribute="trailing" secondItem="HxA-JQ-dZ1" secondAttribute="trailing" id="WAM-l1-Po1"/>
+                            <constraint firstItem="Ogd-Bj-WFd" firstAttribute="trailing" secondItem="Y7u-ae-31r" secondAttribute="trailing" id="WAM-l1-Po1"/>
                             <constraint firstItem="Se9-cw-Plh" firstAttribute="leading" secondItem="Y7u-ae-31r" secondAttribute="leading" id="WGS-VB-RtL"/>
                             <constraint firstItem="HxA-JQ-dZ1" firstAttribute="top" secondItem="Se9-cw-Plh" secondAttribute="bottom" id="YMN-0r-JrN"/>
                             <constraint firstItem="Se9-cw-Plh" firstAttribute="top" secondItem="Y7u-ae-31r" secondAttribute="top" id="iF6-43-xZ4"/>
                             <constraint firstItem="Ogd-Bj-WFd" firstAttribute="top" secondItem="Y7u-ae-31r" secondAttribute="top" id="m3z-Vl-l5l"/>
-                            <constraint firstItem="Ogd-Bj-WFd" firstAttribute="leading" secondItem="HxA-JQ-dZ1" secondAttribute="leading" id="uvQ-e8-oIv"/>
+                            <constraint firstItem="Ogd-Bj-WFd" firstAttribute="leading" secondItem="Y7u-ae-31r" secondAttribute="leading" id="uvQ-e8-oIv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HxA-JQ-dZ1"/>
                     </view>

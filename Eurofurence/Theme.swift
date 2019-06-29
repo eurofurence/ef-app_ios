@@ -6,7 +6,7 @@ struct Theme {
     private static let pantone330UColourImage = UIColor.pantone330U.makeColoredImage(size: CGSize(width: 1, height: 1))
 
     static func apply() {
-        styleSecondaryColorView()
+        styleConventionColorViews()
         styleNavigationBars()
         styleTabBars()
         styleButtons()
@@ -32,7 +32,10 @@ struct Theme {
         return textfield?.subviews.first
     }
     
-    private static func styleSecondaryColorView() {
+    private static func styleConventionColorViews() {
+        let primaryColorView = ConventionPrimaryColorView.appearance()
+        primaryColorView.backgroundColor = .pantone330U
+        
         let secondaryColorView = ConventionSecondaryColorView.appearance()
         secondaryColorView.backgroundColor = .pantone330U_45
     }
@@ -71,6 +74,7 @@ struct Theme {
     private static func styleButtonsWithinTableViewCells() {
         let buttonInsideTableView = UIButton.appearance(whenContainedInInstancesOf: [UITableViewCell.self])
         buttonInsideTableView.setTitleColor(.pantone330U, for: .normal)
+        buttonInsideTableView.setTitleColor(.conferenceGrey, for: .disabled)
     }
 
     private static func styleButtonsWithinNavigationBars() {

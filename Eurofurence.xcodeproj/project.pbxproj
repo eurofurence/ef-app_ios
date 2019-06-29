@@ -172,7 +172,7 @@
 		CA162EA620A9B18E004AFED6 /* WhenLoggedOutDuringConvention_WithNoUpcomingEvents_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162EA520A9B18E004AFED6 /* WhenLoggedOutDuringConvention_WithNoUpcomingEvents_NewsInteractorShould.swift */; };
 		CA162EAA20AA1E6A004AFED6 /* WhenViewingMessagesWhenLoggedIn_BeforeSceneAppears.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162EA920AA1E6A004AFED6 /* WhenViewingMessagesWhenLoggedIn_BeforeSceneAppears.swift */; };
 		CA17015522B2DCC30067BCDE /* ConventionBrandedTableViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17015422B2DCC20067BCDE /* ConventionBrandedTableViewHeaderFooterView.swift */; };
-		CA17015722B2E5C40067BCDE /* ConventionSecondaryColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17015622B2E5C40067BCDE /* ConventionSecondaryColorView.swift */; };
+		CA17015722B2E5C40067BCDE /* ConventionColorViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17015622B2E5C40067BCDE /* ConventionColorViews.swift */; };
 		CA17FE712056B070005A4C05 /* KnowledgeDetailPresenterTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE702056B070005A4C05 /* KnowledgeDetailPresenterTestBuilder.swift */; };
 		CA17FE732056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE722056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift */; };
 		CA17FE752056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE742056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift */; };
@@ -783,11 +783,11 @@
 		CA8E7EFE1FB093D800F0BF10 /* PlatformNavigationControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E7EFD1FB093D800F0BF10 /* PlatformNavigationControllerFactory.swift */; };
 		CA8E7F031FB094A600F0BF10 /* PlatformTabModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E7F021FB094A600F0BF10 /* PlatformTabModuleFactory.swift */; };
 		CA957B601F705AF9004DFD5A /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA957B5E1F705AF9004DFD5A /* MessagesViewController.swift */; };
-		CA9845DE1F2B01BA00E8821D /* UnreadMessageIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9845DD1F2B01BA00E8821D /* UnreadMessageIndicator.swift */; };
 		CA9AC16B208546530039C0C2 /* WhenBindingEvent_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9AC16A208546530039C0C2 /* WhenBindingEvent_NewsPresenterShould.swift */; };
 		CA9AC16D2085476E0039C0C2 /* EventComponentViewModel+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9AC16C2085476E0039C0C2 /* EventComponentViewModel+RandomValueProviding.swift */; };
 		CAA10FE222C5E29700689A32 /* WhenOpeningMessage_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA10FE122C5E29700689A32 /* WhenOpeningMessage_DirectorShould.swift */; };
 		CAA10FE422C5E3CF00689A32 /* SaveTabOrderWhenCustomizationFinishes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA10FE322C5E3CF00689A32 /* SaveTabOrderWhenCustomizationFinishes.swift */; };
+		CAA10FE622C75CA800689A32 /* MultiStepFormTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA10FE522C75CA800689A32 /* MultiStepFormTextField.swift */; };
 		CAA39E0820051B5C00F2F3D3 /* LocalizedStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA39E0720051B5C00F2F3D3 /* LocalizedStrings.swift */; };
 		CAA39E0920051C6C00F2F3D3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CAA39E0B20051C6C00F2F3D3 /* Localizable.strings */; };
 		CAA4BA6721EE7AB600DE2C88 /* MessagesModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA4BA6621EE7AB600DE2C88 /* MessagesModule.swift */; };
@@ -1225,7 +1225,7 @@
 		CA162EA520A9B18E004AFED6 /* WhenLoggedOutDuringConvention_WithNoUpcomingEvents_NewsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLoggedOutDuringConvention_WithNoUpcomingEvents_NewsInteractorShould.swift; sourceTree = "<group>"; };
 		CA162EA920AA1E6A004AFED6 /* WhenViewingMessagesWhenLoggedIn_BeforeSceneAppears.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenViewingMessagesWhenLoggedIn_BeforeSceneAppears.swift; sourceTree = "<group>"; };
 		CA17015422B2DCC20067BCDE /* ConventionBrandedTableViewHeaderFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConventionBrandedTableViewHeaderFooterView.swift; sourceTree = "<group>"; };
-		CA17015622B2E5C40067BCDE /* ConventionSecondaryColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConventionSecondaryColorView.swift; sourceTree = "<group>"; };
+		CA17015622B2E5C40067BCDE /* ConventionColorViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConventionColorViews.swift; sourceTree = "<group>"; };
 		CA17FE702056B070005A4C05 /* KnowledgeDetailPresenterTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailPresenterTestBuilder.swift; sourceTree = "<group>"; };
 		CA17FE722056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenKnowledgeDetailSceneLoads.swift; sourceTree = "<group>"; };
 		CA17FE742056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubKnowledgeDetailSceneInteractor.swift; sourceTree = "<group>"; };
@@ -1835,11 +1835,11 @@
 		CA9845C91F2907A800E8821D /* ScreenshotGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotGenerator.swift; sourceTree = "<group>"; };
 		CA9845D21F2909DB00E8821D /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		CA9845D91F29199E00E8821D /* ScreenshotAssistant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenshotAssistant.swift; sourceTree = "<group>"; };
-		CA9845DD1F2B01BA00E8821D /* UnreadMessageIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnreadMessageIndicator.swift; sourceTree = "<group>"; };
 		CA9AC16A208546530039C0C2 /* WhenBindingEvent_NewsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingEvent_NewsPresenterShould.swift; sourceTree = "<group>"; };
 		CA9AC16C2085476E0039C0C2 /* EventComponentViewModel+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventComponentViewModel+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CAA10FE122C5E29700689A32 /* WhenOpeningMessage_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenOpeningMessage_DirectorShould.swift; sourceTree = "<group>"; };
 		CAA10FE322C5E3CF00689A32 /* SaveTabOrderWhenCustomizationFinishes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveTabOrderWhenCustomizationFinishes.swift; sourceTree = "<group>"; };
+		CAA10FE522C75CA800689A32 /* MultiStepFormTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiStepFormTextField.swift; sourceTree = "<group>"; };
 		CAA39E0720051B5C00F2F3D3 /* LocalizedStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedStrings.swift; sourceTree = "<group>"; };
 		CAA4BA6621EE7AB600DE2C88 /* MessagesModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesModule.swift; sourceTree = "<group>"; };
 		CAA6060620EEB4F200075A4E /* UserNotificationsScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationsScheduler.swift; sourceTree = "<group>"; };
@@ -2365,7 +2365,7 @@
 			children = (
 				78455B611F118699005BE2D7 /* RoundedCornerButton.swift */,
 				CA527E772278D397000ED74B /* StarRatingControl.swift */,
-				CA9845DD1F2B01BA00E8821D /* UnreadMessageIndicator.swift */,
+				CAA10FE522C75CA800689A32 /* MultiStepFormTextField.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -2765,7 +2765,7 @@
 			isa = PBXGroup;
 			children = (
 				CA17015422B2DCC20067BCDE /* ConventionBrandedTableViewHeaderFooterView.swift */,
-				CA17015622B2E5C40067BCDE /* ConventionSecondaryColorView.swift */,
+				CA17015622B2E5C40067BCDE /* ConventionColorViews.swift */,
 			);
 			path = Themeing;
 			sourceTree = "<group>";
@@ -5800,7 +5800,6 @@
 				CA6660A022B5A8DE0050A04E /* DaysHorizontalPickerView.swift in Sources */,
 				CAEAEC011FE0054500C0EE7C /* MessageDetailModuleFactory.swift in Sources */,
 				CA630C5122A079E100754C27 /* Intents.intentdefinition in Sources */,
-				CA9845DE1F2B01BA00E8821D /* UnreadMessageIndicator.swift in Sources */,
 				9A861ECA1F25555000B75A8C /* UserDefaultsTutorialStateProvider.swift in Sources */,
 				CA6A8DD420E417FF007536CD /* MapDetailScene.swift in Sources */,
 				CA630BEE229F16F400754C27 /* ConcreteEventIntentDonor.swift in Sources */,
@@ -5921,6 +5920,7 @@
 				CA6A8DEC20E41F85007536CD /* MapDetailPresenter.swift in Sources */,
 				CA36A48720D9260000EE6537 /* DealerGroupHeader.swift in Sources */,
 				781A943E1F1A1A13002DE70F /* FirebaseRemoteNotificationsTokenRegistration.swift in Sources */,
+				CAA10FE622C75CA800689A32 /* MultiStepFormTextField.swift in Sources */,
 				CA1ECB4D1FE7F2A10076083A /* NewsPresenter.swift in Sources */,
 				CA17FE83205800A7005A4C05 /* LinkViewModel.swift in Sources */,
 				CA17FE8720580527005A4C05 /* KnowledgeDetailContentsTableViewCell.swift in Sources */,
@@ -6158,7 +6158,7 @@
 				CA283A5A20E6E24300F7D195 /* ApplicationLongRunningTaskManager.swift in Sources */,
 				CABA439F1FD578E1009CB5B0 /* NewsModuleBuilder.swift in Sources */,
 				CA6EC4892051CD9C00402894 /* StoryboardKnowledgeDetailSceneFactory.swift in Sources */,
-				CA17015722B2E5C40067BCDE /* ConventionSecondaryColorView.swift in Sources */,
+				CA17015722B2E5C40067BCDE /* ConventionColorViews.swift in Sources */,
 				CA73AEF3201A08C4004E77BF /* KnowledgeListModule.swift in Sources */,
 				CA1B6F3320DB9B4F00ADF414 /* DealerDetailSummaryTableViewCell.swift in Sources */,
 				CA1B6F0B20DB816600ADF414 /* DealerDetailSceneFactory.swift in Sources */,

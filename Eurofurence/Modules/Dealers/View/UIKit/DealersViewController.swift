@@ -49,6 +49,11 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
         delegate?.dealersSceneDidLoad()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tableView?.adjustScrollIndicatorInsetsForSafeAreaCompensation()
+    }
+    
     private func prepareSearchController() {
         let searchController = UISearchController(searchResultsController: searchViewController)
         searchController.delegate = self

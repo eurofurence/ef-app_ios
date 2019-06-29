@@ -20,7 +20,9 @@ class RoundedCornerButton: UIButton {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        feedbackGenerator?.selectionChanged()
         transitionToUnpressedState()
+        
         super.touchesEnded(touches, with: event)
     }
     
@@ -29,7 +31,12 @@ class RoundedCornerButton: UIButton {
         super.touchesCancelled(touches, with: event)
     }
     
+    private var feedbackGenerator: UISelectionFeedbackGenerator?
+    
     private func transitionToPressedState() {
+        feedbackGenerator = UISelectionFeedbackGenerator()
+        feedbackGenerator?.selectionChanged()
+        
         let scaleFactor: CGFloat = 0.95
         let scaleTransform = CGAffineTransform(scaleX: scaleFactor, y: scaleFactor)
         swapTransform(to: scaleTransform)
@@ -37,6 +44,7 @@ class RoundedCornerButton: UIButton {
     
     private func transitionToUnpressedState() {
         swapTransform(to: .identity)
+        feedbackGenerator = nil
     }
     
     private func swapTransform(to transform: CGAffineTransform) {
