@@ -2,13 +2,13 @@
 
 class FakeRemoteConfigurationLoader: RemoteConfigurationLoader {
     
-    private var completionHandler: ((RemoteConfiguration) -> Void)?
-    func loadRemoteConfiguration(_ completionHandler: @escaping (RemoteConfiguration) -> Void) {
-        self.completionHandler = completionHandler
+    private var handler: ((RemoteConfiguration) -> Void)?
+    func registerConfigurationLoadedHandler(_ handler: @escaping (RemoteConfiguration) -> Void) {
+        self.handler = handler
     }
     
-    func simulateLoadFinished(_ configuration: RemoteConfiguration) {
-        completionHandler?(configuration)
+    func simulateConfigurationLoaded(_ configuration: RemoteConfiguration) {
+        handler?(configuration)
     }
     
 }

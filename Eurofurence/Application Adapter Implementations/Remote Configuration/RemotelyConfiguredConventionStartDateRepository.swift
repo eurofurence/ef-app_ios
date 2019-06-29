@@ -6,7 +6,7 @@ class RemotelyConfiguredConventionStartDateRepository: ConventionStartDateReposi
     private var configuration: RemoteConfiguration?
     
     init(remoteConfigurationLoader: RemoteConfigurationLoader) {
-        remoteConfigurationLoader.loadRemoteConfiguration(remoteConfigurationLoaded)
+        remoteConfigurationLoader.registerConfigurationLoadedHandler(remoteConfigurationLoaded)
     }
     
     func addConsumer(_ consumer: ConventionStartDateConsumer) {

@@ -19,7 +19,7 @@ class RemotelyConfiguredConventionStartDateRepositoryTests: XCTestCase {
         repository.addConsumer(consumer)
         let configuredStartDate = Date.random
         let remoteConfiguration = RemoteConfiguration(conventionStartDate: configuredStartDate)
-        remoteConfigurationLoader.simulateLoadFinished(remoteConfiguration)
+        remoteConfigurationLoader.simulateConfigurationLoaded(remoteConfiguration)
         
         XCTAssertEqual(configuredStartDate, consumer.capturedStartDate)
     }
@@ -27,7 +27,7 @@ class RemotelyConfiguredConventionStartDateRepositoryTests: XCTestCase {
     func testReceievingConfigUpdateThenAddingConsumer() {
         let configuredStartDate = Date.random
         let remoteConfiguration = RemoteConfiguration(conventionStartDate: configuredStartDate)
-        remoteConfigurationLoader.simulateLoadFinished(remoteConfiguration)
+        remoteConfigurationLoader.simulateConfigurationLoaded(remoteConfiguration)
         repository.addConsumer(consumer)
         
         XCTAssertEqual(configuredStartDate, consumer.capturedStartDate)

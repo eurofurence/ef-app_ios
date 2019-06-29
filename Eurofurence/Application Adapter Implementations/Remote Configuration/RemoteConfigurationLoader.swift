@@ -2,6 +2,6 @@ import Foundation
 
 protocol RemoteConfigurationLoader {
     
-    func loadRemoteConfiguration(_ completionHandler: @escaping (RemoteConfiguration) -> Void)
+    func registerConfigurationLoadedHandler(_ handler: @escaping (RemoteConfiguration) -> Void)
     
 }
