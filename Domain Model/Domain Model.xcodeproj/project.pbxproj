@@ -35,7 +35,6 @@
 		CA7A301422B16DE4002AD939 /* EventFeedbackDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F5B22B16DE3002AD939 /* EventFeedbackDelegate.swift */; };
 		CA7A301522B16DE4002AD939 /* EventFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F5C22B16DE3002AD939 /* EventFeedback.swift */; };
 		CA7A301622B16DE4002AD939 /* Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F5D22B16DE3002AD939 /* Identifier.swift */; };
-		CA7A301722B16DE4002AD939 /* FoundationDateDistanceCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F5F22B16DE3002AD939 /* FoundationDateDistanceCalculator.swift */; };
 		CA7A301822B16DE4002AD939 /* Iso8601DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F6022B16DE3002AD939 /* Iso8601DateFormatter.swift */; };
 		CA7A301922B16DE4002AD939 /* EventsSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F6122B16DE3002AD939 /* EventsSearchController.swift */; };
 		CA7A301A22B16DE4002AD939 /* SystemClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F6322B16DE3002AD939 /* SystemClock.swift */; };
@@ -72,7 +71,6 @@
 		CA7A303922B16DE4002AD939 /* Optional+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F8822B16DE3002AD939 /* Optional+Extensions.swift */; };
 		CA7A303A22B16DE4002AD939 /* SignificantTimeChangeAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F8B22B16DE3002AD939 /* SignificantTimeChangeAdapter.swift */; };
 		CA7A303B22B16DE4002AD939 /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F8C22B16DE3002AD939 /* Clock.swift */; };
-		CA7A303C22B16DE4002AD939 /* DateDistanceCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F8D22B16DE3002AD939 /* DateDistanceCalculator.swift */; };
 		CA7A303D22B16DE4002AD939 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F8E22B16DE3002AD939 /* UserPreferences.swift */; };
 		CA7A303E22B16DE4002AD939 /* MapCoordinateRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F8F22B16DE3002AD939 /* MapCoordinateRender.swift */; };
 		CA7A303F22B16DE4002AD939 /* CredentialStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F9022B16DE3002AD939 /* CredentialStore.swift */; };
@@ -413,7 +411,6 @@
 		CA7A32D122B16EB5002AD939 /* StubAPIURLProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A32A522B16EB4002AD939 /* StubAPIURLProviding.swift */; };
 		CA7A32D222B16EB5002AD939 /* InMemoryDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A32A622B16EB4002AD939 /* InMemoryDataStore.swift */; };
 		CA7A32D322B16EB5002AD939 /* StubBuildConfigurationProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A32A722B16EB4002AD939 /* StubBuildConfigurationProviding.swift */; };
-		CA7A32D422B16EB5002AD939 /* StubDateDistanceCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A32A822B16EB5002AD939 /* StubDateDistanceCalculator.swift */; };
 		CA7A32D522B16EB5002AD939 /* StubClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A32A922B16EB5002AD939 /* StubClock.swift */; };
 		CA7A32D622B16EB5002AD939 /* StubMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A32AB22B16EB5002AD939 /* StubMap.swift */; };
 		CA7A32D722B16EB5002AD939 /* FakeEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A32AC22B16EB5002AD939 /* FakeEvent.swift */; };
@@ -514,7 +511,6 @@
 		CA7A2F5B22B16DE3002AD939 /* EventFeedbackDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventFeedbackDelegate.swift; sourceTree = "<group>"; };
 		CA7A2F5C22B16DE3002AD939 /* EventFeedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventFeedback.swift; sourceTree = "<group>"; };
 		CA7A2F5D22B16DE3002AD939 /* Identifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identifier.swift; sourceTree = "<group>"; };
-		CA7A2F5F22B16DE3002AD939 /* FoundationDateDistanceCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundationDateDistanceCalculator.swift; sourceTree = "<group>"; };
 		CA7A2F6022B16DE3002AD939 /* Iso8601DateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Iso8601DateFormatter.swift; sourceTree = "<group>"; };
 		CA7A2F6122B16DE3002AD939 /* EventsSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsSearchController.swift; sourceTree = "<group>"; };
 		CA7A2F6322B16DE3002AD939 /* SystemClock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemClock.swift; sourceTree = "<group>"; };
@@ -552,7 +548,6 @@
 		CA7A2F8822B16DE3002AD939 /* Optional+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Optional+Extensions.swift"; sourceTree = "<group>"; };
 		CA7A2F8B22B16DE3002AD939 /* SignificantTimeChangeAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignificantTimeChangeAdapter.swift; sourceTree = "<group>"; };
 		CA7A2F8C22B16DE3002AD939 /* Clock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Clock.swift; sourceTree = "<group>"; };
-		CA7A2F8D22B16DE3002AD939 /* DateDistanceCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateDistanceCalculator.swift; sourceTree = "<group>"; };
 		CA7A2F8E22B16DE3002AD939 /* UserPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		CA7A2F8F22B16DE3002AD939 /* MapCoordinateRender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapCoordinateRender.swift; sourceTree = "<group>"; };
 		CA7A2F9022B16DE3002AD939 /* CredentialStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialStore.swift; sourceTree = "<group>"; };
@@ -896,7 +891,6 @@
 		CA7A32A522B16EB4002AD939 /* StubAPIURLProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubAPIURLProviding.swift; sourceTree = "<group>"; };
 		CA7A32A622B16EB4002AD939 /* InMemoryDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InMemoryDataStore.swift; sourceTree = "<group>"; };
 		CA7A32A722B16EB4002AD939 /* StubBuildConfigurationProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubBuildConfigurationProviding.swift; sourceTree = "<group>"; };
-		CA7A32A822B16EB5002AD939 /* StubDateDistanceCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubDateDistanceCalculator.swift; sourceTree = "<group>"; };
 		CA7A32A922B16EB5002AD939 /* StubClock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubClock.swift; sourceTree = "<group>"; };
 		CA7A32AB22B16EB5002AD939 /* StubMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubMap.swift; sourceTree = "<group>"; };
 		CA7A32AC22B16EB5002AD939 /* FakeEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeEvent.swift; sourceTree = "<group>"; };
@@ -1142,7 +1136,6 @@
 		CA7A2F5E22B16DE3002AD939 /* Formatters */ = {
 			isa = PBXGroup;
 			children = (
-				CA7A2F5F22B16DE3002AD939 /* FoundationDateDistanceCalculator.swift */,
 				CA7A2F6022B16DE3002AD939 /* Iso8601DateFormatter.swift */,
 			);
 			path = Formatters;
@@ -1235,7 +1228,6 @@
 				CA8A73D722BD196A007A5201 /* CompanionAppURLRequestFactory.swift */,
 				CA7A2F9C22B16DE3002AD939 /* ConventionStartDateRepository.swift */,
 				CA7A2F9022B16DE3002AD939 /* CredentialStore.swift */,
-				CA7A2F8D22B16DE3002AD939 /* DateDistanceCalculator.swift */,
 				CA7A2F9B22B16DE3002AD939 /* ForceRefreshRequired.swift */,
 				CA7A2F9D22B16DE3002AD939 /* ImageRepository.swift */,
 				CA7A2F9A22B16DE3002AD939 /* LongRunningTaskManager.swift */,
@@ -1937,7 +1929,6 @@
 				CA7A32A222B16EB4002AD939 /* StubAppVersionProviding.swift */,
 				CA7A32A722B16EB4002AD939 /* StubBuildConfigurationProviding.swift */,
 				CA7A32A922B16EB5002AD939 /* StubClock.swift */,
-				CA7A32A822B16EB5002AD939 /* StubDateDistanceCalculator.swift */,
 				CA7A32AA22B16EB5002AD939 /* Entity Test Doubles */,
 				CA7A328422B16EB4002AD939 /* Random Value Generation */,
 				CA8A73C322BD0FFC007A5201 /* FakeAdditionalServicesRepository.swift */,
@@ -2460,11 +2451,9 @@
 				CA7A309222B16DE4002AD939 /* ConcreteMapsService.swift in Sources */,
 				CA7A306122B16DE4002AD939 /* LoginRequest.swift in Sources */,
 				CA7A307A22B16DE4002AD939 /* EventFeedbackReady.swift in Sources */,
-				CA7A301722B16DE4002AD939 /* FoundationDateDistanceCalculator.swift in Sources */,
 				CA7A308922B16DE4002AD939 /* ImageDownloader.swift in Sources */,
 				CA7A300922B16DE4002AD939 /* Credential.swift in Sources */,
 				CA7A300722B16DE4002AD939 /* Room.swift in Sources */,
-				CA7A303C22B16DE4002AD939 /* DateDistanceCalculator.swift in Sources */,
 				CA7A303022B16DE4002AD939 /* EurofurenceApplicationModel.xcdatamodeld in Sources */,
 				CA7A303422B16DE4002AD939 /* CoreDataStoreFactory.swift in Sources */,
 				CA7A308722B16DE4002AD939 /* NotAcceptingEventFeedback.swift in Sources */,
@@ -2805,7 +2794,6 @@
 				CA7A32D522B16EB5002AD939 /* StubClock.swift in Sources */,
 				CA7A32C922B16EB5002AD939 /* Link+RandomValueProviding.swift in Sources */,
 				CA7A32D222B16EB5002AD939 /* InMemoryDataStore.swift in Sources */,
-				CA7A32D422B16EB5002AD939 /* StubDateDistanceCalculator.swift in Sources */,
 				CA7A32CE22B16EB5002AD939 /* StubAppVersionProviding.swift in Sources */,
 				CA7A32C322B16EB5002AD939 /* Track+RandomValueProviding.swift in Sources */,
 				CA7A32D822B16EB5002AD939 /* FakeDealer.swift in Sources */,
