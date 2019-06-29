@@ -1,10 +1,13 @@
 import Foundation
 
-// TODO: Promote into fetching from remote config
-// 1. Make acquiring start date async as-is (API change)
-// 2. Add second adapter for fetching value from Firebase
 public protocol ConventionStartDateRepository {
+    
+    func addConsumer(_ consumer: ConventionStartDateConsumer)
 
-    var conventionStartDate: Date { get }
+}
 
+public protocol ConventionStartDateConsumer {
+    
+    func conventionStartDateDidChange(to startDate: Date)
+    
 }

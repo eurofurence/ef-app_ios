@@ -13,5 +13,9 @@ struct EF24StartDateRepository: ConventionStartDateRepository {
         guard let date = components.date else { fatalError("Unable to produce date from components: \(components)") }
         return date
     }
+    
+    func addConsumer(_ consumer: ConventionStartDateConsumer) {
+        consumer.conventionStartDateDidChange(to: conventionStartDate)
+    }
 
 }

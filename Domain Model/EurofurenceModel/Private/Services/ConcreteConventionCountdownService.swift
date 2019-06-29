@@ -55,8 +55,22 @@ class ConcreteConventionCountdownService: ConventionCountdownService {
     }
 
     private func calculateDaysUntilConvention() -> Int {
+        class BlockBasedConsumer: ConventionStartDateConsumer {
+            var startDate: Date?
+            
+            func conventionStartDateDidChange(to startDate: Date) {
+                self.startDate = startDate
+            }
+        }
+        
         let now = clock.currentDate
-        let conventionStartTime = conventionStartDateRepository.conventionStartDate
+        let startDateConsumer = BlockBasedConsumer()
+        conventionStartDateRepository.addConsumer(startDateConsumer)
+        
+        guard let conventionStartTime = startDateConsumer.startDate else {
+            fatalError("Non-sync call into start date consumer")
+        }
+        
         return dateDistanceCalculator.calculateDays(between: now, and: conventionStartTime)
     }
 
