@@ -3,6 +3,7 @@ import XCTest
 
 class RemotelyConfiguredConventionStartDateRepositoryTests: XCTestCase {
     
+    var configuredStartDate: Date!
     var consumer: CapturingConventionStartDateConsumer!
     var remoteConfigurationLoader: FakeRemoteConfigurationLoader!
     var repository: RemotelyConfiguredConventionStartDateRepository!
@@ -10,25 +11,31 @@ class RemotelyConfiguredConventionStartDateRepositoryTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
+        configuredStartDate = .random
         consumer = CapturingConventionStartDateConsumer()
         remoteConfigurationLoader = FakeRemoteConfigurationLoader()
         repository = RemotelyConfiguredConventionStartDateRepository(remoteConfigurationLoader: remoteConfigurationLoader)
     }
     
-    func testAddingConsumerThenReceievingConfigUpdate() {
-        repository.addConsumer(consumer)
-        let configuredStartDate = Date.random
+    private func simulateConfigurationLoaded() {
         let remoteConfiguration = RemoteConfiguration(conventionStartDate: configuredStartDate)
         remoteConfigurationLoader.simulateConfigurationLoaded(remoteConfiguration)
+    }
+    
+    private func registerConsumer() {
+        repository.addConsumer(consumer)
+    }
+    
+    func testAddingConsumerThenReceievingConfigUpdate() {
+        registerConsumer()
+        simulateConfigurationLoaded()
         
         XCTAssertEqual(configuredStartDate, consumer.capturedStartDate)
     }
     
     func testReceievingConfigUpdateThenAddingConsumer() {
-        let configuredStartDate = Date.random
-        let remoteConfiguration = RemoteConfiguration(conventionStartDate: configuredStartDate)
-        remoteConfigurationLoader.simulateConfigurationLoaded(remoteConfiguration)
-        repository.addConsumer(consumer)
+        simulateConfigurationLoaded()
+        registerConsumer()
         
         XCTAssertEqual(configuredStartDate, consumer.capturedStartDate)
     }
