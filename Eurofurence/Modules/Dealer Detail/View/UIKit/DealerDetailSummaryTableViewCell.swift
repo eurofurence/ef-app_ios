@@ -35,7 +35,7 @@ class DealerDetailSummaryTableViewCell: UITableViewCell, DealerDetailSummaryComp
             dealerTelegramContainer as Any
         ]
 
-        contentView.backgroundColor = .pantone330U
+        backgroundView = ConventionPrimaryColorView()
 
         let labelTextColor = UIColor.white
         dealerTitleLabel.textColor = labelTextColor
