@@ -407,6 +407,7 @@
 		CA39851E22C7A94500117249 /* RemoteConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA39851D22C7A94500117249 /* RemoteConfiguration.swift */; };
 		CA39852022C7A94F00117249 /* RemoteConfigurationLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA39851F22C7A94F00117249 /* RemoteConfigurationLoader.swift */; };
 		CA39852222C7A95C00117249 /* FakeRemoteConfigurationLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA39852122C7A95C00117249 /* FakeRemoteConfigurationLoader.swift */; };
+		CA39852522C7ADBA00117249 /* FirebaseRemoteConfigurationLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA39852422C7ADBA00117249 /* FirebaseRemoteConfigurationLoader.swift */; };
 		CA3ABA00229C2FF50045A35B /* ModuleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3AB9FF229C2FF50045A35B /* ModuleRepository.swift */; };
 		CA3ABA02229C30E70045A35B /* ApplicationModuleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3ABA01229C30E70045A35B /* ApplicationModuleRepository.swift */; };
 		CA3ABA06229C4B260045A35B /* AppNotificationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3ABA05229C4B260045A35B /* AppNotificationDelegate.swift */; };
@@ -1465,6 +1466,7 @@
 		CA39851D22C7A94500117249 /* RemoteConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfiguration.swift; sourceTree = "<group>"; };
 		CA39851F22C7A94F00117249 /* RemoteConfigurationLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigurationLoader.swift; sourceTree = "<group>"; };
 		CA39852122C7A95C00117249 /* FakeRemoteConfigurationLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeRemoteConfigurationLoader.swift; sourceTree = "<group>"; };
+		CA39852422C7ADBA00117249 /* FirebaseRemoteConfigurationLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseRemoteConfigurationLoader.swift; sourceTree = "<group>"; };
 		CA3990EC20ACD35C001E3F1A /* HoursDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoursDateFormatter.swift; sourceTree = "<group>"; };
 		CA3990EE20ACD559001E3F1A /* FoundationHoursDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationHoursDateFormatter.swift; sourceTree = "<group>"; };
 		CA3AB9FF229C2FF50045A35B /* ModuleRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleRepository.swift; sourceTree = "<group>"; };
@@ -2484,6 +2486,7 @@
 				CA630BCA229F108900754C27 /* Interactions */,
 				6EF96CE01F12688700EE6134 /* Modules */,
 				CA7992442245173B00DF1F84 /* Notifications */,
+				CA39852322C7AD6D00117249 /* Remote Configuration */,
 				9ACF999B1ECA259C006FC958 /* Resources */,
 				CA82409E21249A50007E4A70 /* Review Prompt */,
 				9ACF99591EBE32FE006FC958 /* Views */,
@@ -3299,8 +3302,6 @@
 			isa = PBXGroup;
 			children = (
 				CA39851822C7A91800117249 /* RemotelyConfiguredConventionStartDateRepository.swift */,
-				CA39851D22C7A94500117249 /* RemoteConfiguration.swift */,
-				CA39851F22C7A94F00117249 /* RemoteConfigurationLoader.swift */,
 			);
 			path = "Remote Configuration";
 			sourceTree = "<group>";
@@ -3312,6 +3313,16 @@
 				CA39852122C7A95C00117249 /* FakeRemoteConfigurationLoader.swift */,
 			);
 			path = "Test Doubles";
+			sourceTree = "<group>";
+		};
+		CA39852322C7AD6D00117249 /* Remote Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				CA39851D22C7A94500117249 /* RemoteConfiguration.swift */,
+				CA39851F22C7A94F00117249 /* RemoteConfigurationLoader.swift */,
+				CA39852422C7ADBA00117249 /* FirebaseRemoteConfigurationLoader.swift */,
+			);
+			path = "Remote Configuration";
 			sourceTree = "<group>";
 		};
 		CA401063210FA8650056E16C /* Knowledge Group Entries */ = {
@@ -5826,6 +5837,7 @@
 				CA152EED22665B4400212742 /* CocoaTouchFailureHaptic.swift in Sources */,
 				CA0F762D2033118D009DA079 /* KnowledgeGroupsListModuleDelegate.swift in Sources */,
 				CAF3C7441F9F5C550008F027 /* NewsModuleProviding.swift in Sources */,
+				CA39852522C7ADBA00117249 /* FirebaseRemoteConfigurationLoader.swift in Sources */,
 				CA1FE9991FA0B3AE009C7DF3 /* ApplicationDirector.swift in Sources */,
 				CA8DDA2022490CB700ACD9BB /* EventActionBannerTableViewCell.swift in Sources */,
 				CA39851922C7A91800117249 /* RemotelyConfiguredConventionStartDateRepository.swift in Sources */,
