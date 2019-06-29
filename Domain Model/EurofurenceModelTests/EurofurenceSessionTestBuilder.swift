@@ -181,6 +181,7 @@ class EurofurenceSessionTestBuilder {
     private var companionAppURLRequestFactory: CompanionAppURLRequestFactory = StubCompanionAppURLRequestFactory()
     private var forceUpgradeRequired: ForceRefreshRequired = StubForceRefreshRequired(isForceRefreshRequired: false)
     private var longRunningTaskManager: FakeLongRunningTaskManager = FakeLongRunningTaskManager()
+    private var conventionStartDateRepository = StubConventionStartDateRepository()
 
     func with(_ currentDate: Date) -> EurofurenceSessionTestBuilder {
         clock = StubClock(currentDate: currentDate)
@@ -259,14 +260,18 @@ class EurofurenceSessionTestBuilder {
         self.forceUpgradeRequired = forceUpgradeRequired
         return self
     }
+    
+    @discardableResult
+    func with(_ conventionStartDateRepository: StubConventionStartDateRepository) -> EurofurenceSessionTestBuilder {
+        self.conventionStartDateRepository = conventionStartDateRepository
+        return self
+    }
 
-    // swiftlint:disable function_body_length
     @discardableResult
     func build() -> Context {
         let conventionIdentifier = ConventionIdentifier(identifier: ModelCharacteristics.testConventionIdentifier)
         let notificationTokenRegistration = CapturingRemoteNotificationsTokenRegistration()
         let dateDistanceCalculator = StubDateDistanceCalculator()
-        let conventionStartDateRepository = StubConventionStartDateRepository()
         let significantTimeChangeAdapter = CapturingSignificantTimeChangeAdapter()
         let mapCoordinateRender = CapturingMapCoordinateRender()
         

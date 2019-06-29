@@ -6,11 +6,9 @@ class WhenObservingConventionCountdownAfterConventionStarts_EurofurenceApplicati
     func testTellObserverTheCountdownElapsed() {
         let observer = CapturingConventionCountdownServiceObserver()
         let clockTime = Date.random
-        let context = EurofurenceSessionTestBuilder().with(clockTime).build()
-        let distanceToImplyConventionHasStarted = 0
-        context.dateDistanceCalculator.stubDistance(between: clockTime,
-                                                    and: context.conventionStartDateRepository.conventionStartDate,
-                                                    with: distanceToImplyConventionHasStarted)
+        let conventionStartDateRepository = StubConventionStartDateRepository()
+        conventionStartDateRepository.conventionStartDate = clockTime.addingTimeInterval(-(60 * 60 * 24))
+        let context = EurofurenceSessionTestBuilder().with(clockTime).with(conventionStartDateRepository).build()
         context.conventionCountdownService.add(observer)
 
         XCTAssertTrue(observer.toldCountdownDidElapse)

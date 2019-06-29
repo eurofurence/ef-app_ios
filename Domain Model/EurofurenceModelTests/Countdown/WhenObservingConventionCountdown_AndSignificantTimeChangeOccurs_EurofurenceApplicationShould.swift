@@ -6,15 +6,14 @@ class WhenObservingConventionCountdown_AndSignificantTimeChangeOccurs_Eurofurenc
     func testUpdateTheObserversWithTheNewCountdownInterval() {
         let observer = CapturingConventionCountdownServiceObserver()
         let clockTime = Date.random
-        let context = EurofurenceSessionTestBuilder().with(clockTime).build()
-        var expected: Int = .random
-        context.dateDistanceCalculator.stubDistance(between: clockTime, and: context.conventionStartDateRepository.conventionStartDate, with: expected)
+        let conventionStartDateRepository = StubConventionStartDateRepository()
+        conventionStartDateRepository.conventionStartDate = clockTime.addingTimeInterval(60 * 60 * 24)
+        let context = EurofurenceSessionTestBuilder().with(conventionStartDateRepository).build()
         context.conventionCountdownService.add(observer)
-        expected = .random
-        context.dateDistanceCalculator.stubDistance(between: clockTime, and: context.conventionStartDateRepository.conventionStartDate, with: expected)
+        context.tickTime(to: clockTime)
         context.significantTimeChangeAdapter.simulateSignificantTimeChange()
 
-        XCTAssertEqual(expected, observer.capturedDaysRemaining)
+        XCTAssertEqual(1, observer.capturedDaysRemaining)
     }
 
 }
