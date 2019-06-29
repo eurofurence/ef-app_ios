@@ -271,7 +271,12 @@ class EurofurenceSessionTestBuilder {
         let significantTimeChangeAdapter = CapturingSignificantTimeChangeAdapter()
         let mapCoordinateRender = CapturingMapCoordinateRender()
         
-        let session = EurofurenceSessionBuilder(conventionIdentifier: conventionIdentifier, conventionStartDateRepository: conventionStartDateRepository)
+        let mandatory = EurofurenceSessionBuilder.Mandatory(
+            conventionIdentifier: conventionIdentifier,
+            conventionStartDateRepository: conventionStartDateRepository
+        )
+        
+        let session = EurofurenceSessionBuilder(mandatory: mandatory)
             .with(api)
             .with(clock)
             .with(credentialStore)

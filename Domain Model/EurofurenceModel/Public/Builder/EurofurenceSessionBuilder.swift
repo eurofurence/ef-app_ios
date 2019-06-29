@@ -2,6 +2,18 @@ import Foundation
 
 public class EurofurenceSessionBuilder {
     
+    public struct Mandatory {
+        
+        public var conventionIdentifier: ConventionIdentifier
+        public var conventionStartDateRepository: ConventionStartDateRepository
+
+        public init(conventionIdentifier: ConventionIdentifier, conventionStartDateRepository: ConventionStartDateRepository) {
+            self.conventionIdentifier = conventionIdentifier
+            self.conventionStartDateRepository = conventionStartDateRepository
+        }
+        
+    }
+    
     private let conventionIdentifier: ConventionIdentifier
     private let conventionStartDateRepository: ConventionStartDateRepository
 
@@ -21,10 +33,9 @@ public class EurofurenceSessionBuilder {
     private var forceRefreshRequired: ForceRefreshRequired
     private var companionAppURLRequestFactory: CompanionAppURLRequestFactory
 
-    public init(conventionIdentifier: ConventionIdentifier,
-                conventionStartDateRepository: ConventionStartDateRepository) {
-        self.conventionIdentifier = conventionIdentifier
-        self.conventionStartDateRepository = conventionStartDateRepository
+    public init(mandatory: Mandatory) {
+        self.conventionIdentifier = mandatory.conventionIdentifier
+        self.conventionStartDateRepository = mandatory.conventionStartDateRepository
         
         userPreferences = UserDefaultsPreferences()
         dataStoreFactory = CoreDataStoreFactory()

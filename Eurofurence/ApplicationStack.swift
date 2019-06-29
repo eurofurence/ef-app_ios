@@ -59,8 +59,12 @@ class ApplicationStack {
 
         let mapCoordinateRender = UIKitMapCoordinateRender()
         
-        session = EurofurenceSessionBuilder(conventionIdentifier: ApplicationStack.CID,
-                                            conventionStartDateRepository: conventionStartDateRepository)
+        let mandatory = EurofurenceSessionBuilder.Mandatory(
+            conventionIdentifier: ApplicationStack.CID,
+            conventionStartDateRepository: conventionStartDateRepository
+        )
+        
+        session = EurofurenceSessionBuilder(mandatory: mandatory)
             .with(remoteNotificationsTokenRegistration)
             .with(significantTimeChangeAdapter)
             .with(urlOpener)
