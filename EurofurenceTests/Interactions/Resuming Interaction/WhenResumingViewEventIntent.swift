@@ -5,8 +5,8 @@ import XCTest
 class WhenResumingViewEventIntent: XCTestCase {
 
     func testTheIntentIsResumed() {
-        let resumeResponseHandler = CapturingResumeIntentResponseHandler()
-        let intentResumer = ActivityResumer(resumeResponseHandler: resumeResponseHandler)
+        let contentRouter = CapturingContentRouter()
+        let intentResumer = ActivityResumer(contentLinksService: StubContentLinksService(), contentRouter: contentRouter)
         let event = FakeEvent.random
         let eventIntentDefinition = ViewEventIntentDefinition(identifier: event.identifier, eventName: event.title)
         let eventIntent = StubEventIntentDefinitionProviding(eventIntentDefinition: eventIntentDefinition)
@@ -14,7 +14,7 @@ class WhenResumingViewEventIntent: XCTestCase {
         let resumed = intentResumer.resume(activity: activity)
         
         XCTAssertTrue(resumed)
-        XCTAssertEqual(event.identifier, resumeResponseHandler.resumedEvent)
+        XCTAssertEqual(event.identifier, contentRouter.resumedEvent)
     }
 
 }

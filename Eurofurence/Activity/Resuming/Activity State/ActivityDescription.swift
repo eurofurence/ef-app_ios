@@ -9,5 +9,6 @@ protocol ActivityDescription {
 protocol ActivityDescriptionVisitor {
     
     func visitIntent(_ intent: Any)
+    func visitURL(_ url: URL)
     
 }

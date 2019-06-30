@@ -92,8 +92,8 @@ class ApplicationStack {
         notificationResponseProcessor = NotificationResponseProcessor(notificationHandling: services.notifications,
                                                                       contentRecipient: notificationHandler)
         
-        let resumeInteractionResponseHandler = DirectorContentRouter(director: director)
-        activityResumer = ActivityResumer(resumeResponseHandler: resumeInteractionResponseHandler)
+        let directorContentRouter = DirectorContentRouter(director: director)
+        activityResumer = ActivityResumer(contentLinksService: services.contentLinks, contentRouter: directorContentRouter)
     }
 
 }

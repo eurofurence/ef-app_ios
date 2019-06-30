@@ -1,7 +1,7 @@
 @testable import Eurofurence
 import EurofurenceModel
 
-class CapturingResumeIntentResponseHandler: ContentRouter {
+class CapturingContentRouter: ContentRouter {
     
     private(set) var resumedEvent: EventIdentifier?
     func resumeViewingEvent(identifier: EventIdentifier) {

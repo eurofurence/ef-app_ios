@@ -34,5 +34,9 @@ class ConcreteContentLinksService: ContentLinksService, EventConsumer {
 
         return .externalURL(url)
     }
+    
+    func describeContent(in url: URL, toVisitor visitor: URLContentVisitor) {
+        
+    }
 
 }

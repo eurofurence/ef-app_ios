@@ -1,34 +1,70 @@
+import EurofurenceModel
 import Foundation
 
 struct ActivityResumer {
     
-    private let resumeResponseHandler: ContentRouter
+    private let contentRouter: ContentRouter
+    private let contentLinksService: ContentLinksService
     
-    init(resumeResponseHandler: ContentRouter) {
-        self.resumeResponseHandler = resumeResponseHandler
+    init(contentLinksService: ContentLinksService, contentRouter: ContentRouter) {
+        self.contentLinksService = contentLinksService
+        self.contentRouter = contentRouter
     }
     
     func resume(activity: ActivityDescription) -> Bool {
-        let handler = ActivityHandler(resumeResponseHandler: resumeResponseHandler)
-        activity.describe(to: handler)
-        
-        return handler.handledActivity
+        let handler = ActivityHandler(contentRouter: contentRouter, contentLinksService: contentLinksService)
+        return handler.handle(activity: activity)
     }
     
     private class ActivityHandler: ActivityDescriptionVisitor {
         
-        private let resumeResponseHandler: ContentRouter
+        private let contentRouter: ContentRouter
+        private let contentLinksService: ContentLinksService
         private(set) var handledActivity = false
         
-        init(resumeResponseHandler: ContentRouter) {
-            self.resumeResponseHandler = resumeResponseHandler
+        init(contentRouter: ContentRouter, contentLinksService: ContentLinksService) {
+            self.contentRouter = contentRouter
+            self.contentLinksService = contentLinksService
+        }
+        
+        func handle(activity: ActivityDescription) -> Bool {
+            activity.describe(to: self)
+            return handledActivity
         }
         
         func visitIntent(_ intent: Any) {
             if let intent = intent as? EventIntentDefinitionProviding, let intentDefinition = intent.eventIntentDefinition {
-                resumeResponseHandler.resumeViewingEvent(identifier: intentDefinition.identifier)
+                contentRouter.resumeViewingEvent(identifier: intentDefinition.identifier)
                 handledActivity = true
             }
+        }
+        
+        func visitURL(_ url: URL) {
+            let urlHandler = URLActivityHandler(contentRouter: contentRouter, contentLinksService: contentLinksService)
+            handledActivity = urlHandler.handle(url: url)
+        }
+        
+    }
+    
+    private class URLActivityHandler: URLContentVisitor {
+        
+        private let contentRouter: ContentRouter
+        private let contentLinksService: ContentLinksService
+        private var handledContent = false
+        
+        init(contentRouter: ContentRouter, contentLinksService: ContentLinksService) {
+            self.contentRouter = contentRouter
+            self.contentLinksService = contentLinksService
+        }
+        
+        func handle(url: URL) -> Bool {
+            contentLinksService.describeContent(in: url, toVisitor: self)
+            return handledContent
+        }
+        
+        func visit(_ event: EventIdentifier) {
+            contentRouter.resumeViewingEvent(identifier: event)
+            handledContent = true
         }
         
     }
