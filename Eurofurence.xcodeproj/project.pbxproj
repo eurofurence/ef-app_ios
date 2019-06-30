@@ -343,6 +343,9 @@
 		CA2AA2F022C94F7F00C0E1A1 /* DonateIntentDealerInteractionRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2EF22C94F7F00C0E1A1 /* DonateIntentDealerInteractionRecorder.swift */; };
 		CA2AA2F222C9514500C0E1A1 /* ConcreteViewDealerIntentDonor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2F122C9514500C0E1A1 /* ConcreteViewDealerIntentDonor.swift */; };
 		CA2AA2F422C9518A00C0E1A1 /* ViewDealerIntent+Definition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2F322C9518A00C0E1A1 /* ViewDealerIntent+Definition.swift */; };
+		CA2AA2F622C9529A00C0E1A1 /* WhenResumingViewDealerIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2F522C9529A00C0E1A1 /* WhenResumingViewDealerIntent.swift */; };
+		CA2AA2F822C9530900C0E1A1 /* DealerIntentDefinitionProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2F722C9530900C0E1A1 /* DealerIntentDefinitionProviding.swift */; };
+		CA2AA2FA22C9531900C0E1A1 /* StubDealerIntentDefinitionProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2F922C9531900C0E1A1 /* StubDealerIntentDefinitionProviding.swift */; };
 		CA2D08001FE94AF900BFD785 /* WhenTheAppLaunchesWithUninitializedSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D07FF1FE94AF900BFD785 /* WhenTheAppLaunchesWithUninitializedSession.swift */; };
 		CA2D08021FE94B5500BFD785 /* WhenTheAppLaunchesWithStaleSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D08011FE94B5500BFD785 /* WhenTheAppLaunchesWithStaleSession.swift */; };
 		CA2D08041FE94B9100BFD785 /* WhenTheAppLaunchesWithInitializedSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D08031FE94B9100BFD785 /* WhenTheAppLaunchesWithInitializedSession.swift */; };
@@ -1417,6 +1420,9 @@
 		CA2AA2EF22C94F7F00C0E1A1 /* DonateIntentDealerInteractionRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateIntentDealerInteractionRecorder.swift; sourceTree = "<group>"; };
 		CA2AA2F122C9514500C0E1A1 /* ConcreteViewDealerIntentDonor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcreteViewDealerIntentDonor.swift; sourceTree = "<group>"; };
 		CA2AA2F322C9518A00C0E1A1 /* ViewDealerIntent+Definition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewDealerIntent+Definition.swift"; sourceTree = "<group>"; };
+		CA2AA2F522C9529A00C0E1A1 /* WhenResumingViewDealerIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenResumingViewDealerIntent.swift; sourceTree = "<group>"; };
+		CA2AA2F722C9530900C0E1A1 /* DealerIntentDefinitionProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerIntentDefinitionProviding.swift; sourceTree = "<group>"; };
+		CA2AA2F922C9531900C0E1A1 /* StubDealerIntentDefinitionProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubDealerIntentDefinitionProviding.swift; sourceTree = "<group>"; };
 		CA2D04FD20EE910E00CF54E1 /* NotificationScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationScheduler.swift; sourceTree = "<group>"; };
 		CA2D07FF1FE94AF900BFD785 /* WhenTheAppLaunchesWithUninitializedSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenTheAppLaunchesWithUninitializedSession.swift; sourceTree = "<group>"; };
 		CA2D08011FE94B5500BFD785 /* WhenTheAppLaunchesWithStaleSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenTheAppLaunchesWithStaleSession.swift; sourceTree = "<group>"; };
@@ -3232,6 +3238,7 @@
 			children = (
 				CA630BF622A0650E00754C27 /* WhenResumingUnknownIntent.swift */,
 				CA630BF822A065B300754C27 /* WhenResumingViewEventIntent.swift */,
+				CA2AA2F522C9529A00C0E1A1 /* WhenResumingViewDealerIntent.swift */,
 			);
 			path = Intent;
 			sourceTree = "<group>";
@@ -3729,6 +3736,7 @@
 				CA630C0422A068EA00754C27 /* CapturingContentRouter.swift */,
 				CAB0FD5122C90B1E00D4CB98 /* IntentActivityDescription.swift */,
 				CAB0FD6622C93A1400D4CB98 /* URLActivityDescription.swift */,
+				CA2AA2F922C9531900C0E1A1 /* StubDealerIntentDefinitionProviding.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -4837,6 +4845,7 @@
 		CAB0FD5922C90BE900D4CB98 /* Intent Interactions */ = {
 			isa = PBXGroup;
 			children = (
+				CA2AA2F722C9530900C0E1A1 /* DealerIntentDefinitionProviding.swift */,
 				CA630BFF22A068C200754C27 /* EventIntentDefinitionProviding.swift */,
 				CA630C0C22A06D5900754C27 /* IntentDefinitionProvidingFactory.swift */,
 			);
@@ -6345,6 +6354,7 @@
 				CABA439F1FD578E1009CB5B0 /* NewsModuleBuilder.swift in Sources */,
 				CA6EC4892051CD9C00402894 /* StoryboardKnowledgeDetailSceneFactory.swift in Sources */,
 				CA17015722B2E5C40067BCDE /* ConventionColorViews.swift in Sources */,
+				CA2AA2F822C9530900C0E1A1 /* DealerIntentDefinitionProviding.swift in Sources */,
 				CA73AEF3201A08C4004E77BF /* KnowledgeListModule.swift in Sources */,
 				CA1B6F3320DB9B4F00ADF414 /* DealerDetailSummaryTableViewCell.swift in Sources */,
 				CA1B6F0B20DB816600ADF414 /* DealerDetailSceneFactory.swift in Sources */,
@@ -6670,6 +6680,7 @@
 				CA50B1A6226110740091E425 /* StubEventFeedbackSceneFactory.swift in Sources */,
 				CA89CBC02085383100570D54 /* StubNewsInteractor.swift in Sources */,
 				CA2725522110FA40004C6D0A /* WhenSelectingKnowledgeGroup_DirectorShould.swift in Sources */,
+				CA2AA2FA22C9531900C0E1A1 /* StubDealerIntentDefinitionProviding.swift in Sources */,
 				CA6375AC208E021A00536BE2 /* WhenBuildingDealersModule.swift in Sources */,
 				CA728445209D00B7007D912A /* StubAnnouncementDetailModuleFactory.swift in Sources */,
 				CA36A4D020DAC08100EE6537 /* WhenDealersIndexProducesNewSearchResults_DealersInteractorShould.swift in Sources */,
@@ -6844,6 +6855,7 @@
 				CAB0FD5B22C90D8D00D4CB98 /* WhenResumingEventURL.swift in Sources */,
 				CA00AE7720D1AA2100C2FBB0 /* CapturingScheduleViewModelDelegate.swift in Sources */,
 				CACF1EA620B5B77700D904B5 /* WhenBindingEventSummary_EventDetailPresenterShould.swift in Sources */,
+				CA2AA2F622C9529A00C0E1A1 /* WhenResumingViewDealerIntent.swift in Sources */,
 				CAB0FD6522C93A0B00D4CB98 /* WhenResumingDealerURL.swift in Sources */,
 				CA36A4C820DA7A1C00EE6537 /* WhenBindingDealerSearchResult_DealersPresenterShould.swift in Sources */,
 				CA283AC420EAB76800F7D195 /* FakeAnnouncementsListViewModel.swift in Sources */,

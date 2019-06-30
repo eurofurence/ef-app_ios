@@ -37,6 +37,11 @@ struct ActivityResumer {
                 contentRouter.resumeViewingEvent(identifier: intentDefinition.identifier)
                 handledActivity = true
             }
+            
+            if let intent = intent as? DealerIntentDefinitionProviding, let intentDefinition = intent.dealerIntentDefinition {
+                contentRouter.resumeViewingDealer(identifier: intentDefinition.identifier)
+                handledActivity = true
+            }
         }
         
         func visitURL(_ url: URL) {
