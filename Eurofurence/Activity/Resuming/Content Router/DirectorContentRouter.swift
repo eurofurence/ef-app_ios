@@ -9,7 +9,7 @@ struct DirectorContentRouter: ContentRouter {
     }
     
     func resumeViewingDealer(identifier: DealerIdentifier) {
-        
+        director.openDealer(identifier)
     }
     
 }
