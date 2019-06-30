@@ -802,6 +802,9 @@
 		CAA6060A20EEC02C00075A4E /* Debug.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAA6060920EEC02C00075A4E /* Debug.storyboard */; };
 		CAA6060C20EEC06500075A4E /* DebugTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA6060B20EEC06500075A4E /* DebugTableViewController.swift */; };
 		CAA6DD1120E1649600328C37 /* WhenMessagesSceneTapsLogoutButton_MessagesPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA6DD1020E1649600328C37 /* WhenMessagesSceneTapsLogoutButton_MessagesPresenterShould.swift */; };
+		CAB0FD5222C90B1E00D4CB98 /* IntentActivityDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB0FD5122C90B1E00D4CB98 /* IntentActivityDescription.swift */; };
+		CAB0FD5422C90B3400D4CB98 /* ActivityDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB0FD5322C90B3400D4CB98 /* ActivityDescription.swift */; };
+		CAB0FD5622C90B4000D4CB98 /* SystemActivityDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB0FD5522C90B4000D4CB98 /* SystemActivityDescription.swift */; };
 		CAB138131FE1555C00AD61FE /* MessagesCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB138121FE1555C00AD61FE /* MessagesCollectionViewFlowLayout.swift */; };
 		CAB3B8F922611E260077B068 /* EventFeedbackPresenterTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB3B8F822611E260077B068 /* EventFeedbackPresenterTestBuilder.swift */; };
 		CABA43831FB84834009CB5B0 /* StoryboardMessagesSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43821FB84834009CB5B0 /* StoryboardMessagesSceneFactory.swift */; };
@@ -1860,6 +1863,9 @@
 		CAA6060920EEC02C00075A4E /* Debug.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Debug.storyboard; sourceTree = "<group>"; };
 		CAA6060B20EEC06500075A4E /* DebugTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugTableViewController.swift; sourceTree = "<group>"; };
 		CAA6DD1020E1649600328C37 /* WhenMessagesSceneTapsLogoutButton_MessagesPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenMessagesSceneTapsLogoutButton_MessagesPresenterShould.swift; sourceTree = "<group>"; };
+		CAB0FD5122C90B1E00D4CB98 /* IntentActivityDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentActivityDescription.swift; sourceTree = "<group>"; };
+		CAB0FD5322C90B3400D4CB98 /* ActivityDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDescription.swift; sourceTree = "<group>"; };
+		CAB0FD5522C90B4000D4CB98 /* SystemActivityDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemActivityDescription.swift; sourceTree = "<group>"; };
 		CAB138121FE1555C00AD61FE /* MessagesCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		CAB3B8F822611E260077B068 /* EventFeedbackPresenterTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFeedbackPresenterTestBuilder.swift; sourceTree = "<group>"; };
 		CABA43821FB84834009CB5B0 /* StoryboardMessagesSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardMessagesSceneFactory.swift; sourceTree = "<group>"; };
@@ -3637,6 +3643,8 @@
 				CA630BFB22A068A200754C27 /* InteractionResumer.swift */,
 				CA630C0A22A06A7B00754C27 /* NavigateToContentResumeInteractionResponseHandler.swift */,
 				CA630BFD22A068B400754C27 /* ResumeInteractionResponseHandler.swift */,
+				CAB0FD5322C90B3400D4CB98 /* ActivityDescription.swift */,
+				CAB0FD5522C90B4000D4CB98 /* SystemActivityDescription.swift */,
 			);
 			path = "Resuming Interaction";
 			sourceTree = "<group>";
@@ -3646,6 +3654,7 @@
 			children = (
 				CA630C0222A068DC00754C27 /* StubEventIntentDefinitionProviding.swift */,
 				CA630C0422A068EA00754C27 /* CapturingResumeIntentResponseHandler.swift */,
+				CAB0FD5122C90B1E00D4CB98 /* IntentActivityDescription.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -5949,6 +5958,7 @@
 				CA6A8D6D20E26482007536CD /* MapsSceneFactory.swift in Sources */,
 				CA00AE9120D293B800C2FBB0 /* UICollectionView+Extensions.swift in Sources */,
 				CACF1EA420B5ACD400D904B5 /* EventDetailDescriptionTableViewCell.swift in Sources */,
+				CAB0FD5422C90B3400D4CB98 /* ActivityDescription.swift in Sources */,
 				CA36A44B20D771B500EE6537 /* SelectionChangedHaptic.swift in Sources */,
 				CA73AEE7201A0883004E77BF /* KnowledgeListScene.swift in Sources */,
 				CA00AE4720D16BCB00C2FBB0 /* ScheduleViewModel.swift in Sources */,
@@ -5978,6 +5988,7 @@
 				CAA10FE622C75CA800689A32 /* MultiStepFormTextField.swift in Sources */,
 				CA1ECB4D1FE7F2A10076083A /* NewsPresenter.swift in Sources */,
 				CA17FE83205800A7005A4C05 /* LinkViewModel.swift in Sources */,
+				CAB0FD5622C90B4000D4CB98 /* SystemActivityDescription.swift in Sources */,
 				CA17FE8720580527005A4C05 /* KnowledgeDetailContentsTableViewCell.swift in Sources */,
 				CA152ECC2265129B00212742 /* EventFeedbackModuleDelegate.swift in Sources */,
 				9A861ED41F25564900B75A8C /* WindowAlertRouter.swift in Sources */,
@@ -6262,6 +6273,7 @@
 				CA81D4921FE9AC9200A52A2F /* PlatformTabModuleFactoryTests.swift in Sources */,
 				CA40109121107ED00056E16C /* WhenSceneSelectsKnowledgeEntry_KnowledgeGroupEntriesPresenterShould.swift in Sources */,
 				CA9AC16D2085476E0039C0C2 /* EventComponentViewModel+RandomValueProviding.swift in Sources */,
+				CAB0FD5222C90B1E00D4CB98 /* IntentActivityDescription.swift in Sources */,
 				CA152ECE2265143400212742 /* CapturingEventFeedbackModuleDelegate.swift in Sources */,
 				CA401082210FAF620056E16C /* CapturingKnowledgeGroupEntriesScene.swift in Sources */,
 				78C86D541F1228B0003A20E6 /* TutorialViewControllerTests.swift in Sources */,

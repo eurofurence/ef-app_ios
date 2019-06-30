@@ -6,7 +6,8 @@ class WhenResumingUnknownIntent: XCTestCase {
     func testTheIntentResumerIndicatesTheIntentCannotBeResumed() {
         let intentResumer = InteractionResumer(resumeResponseHandler: CapturingResumeIntentResponseHandler())
         let unknownIntent = String.random
-        let resumed = intentResumer.resume(intent: unknownIntent)
+        let activity = IntentActivityDescription(intent: unknownIntent)
+        let resumed = intentResumer.resume(activity: activity)
         
         XCTAssertFalse(resumed)
     }

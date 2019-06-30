@@ -10,7 +10,8 @@ class WhenResumingViewEventIntent: XCTestCase {
         let event = FakeEvent.random
         let eventIntentDefinition = ViewEventIntentDefinition(identifier: event.identifier, eventName: event.title)
         let eventIntent = StubEventIntentDefinitionProviding(eventIntentDefinition: eventIntentDefinition)
-        let resumed = intentResumer.resume(intent: eventIntent)
+        let activity = IntentActivityDescription(intent: eventIntent)
+        let resumed = intentResumer.resume(activity: activity)
         
         XCTAssertTrue(resumed)
         XCTAssertEqual(event.identifier, resumeResponseHandler.resumedEvent)
