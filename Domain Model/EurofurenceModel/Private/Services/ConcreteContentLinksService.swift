@@ -5,9 +5,12 @@ class ConcreteContentLinksService: ContentLinksService, EventConsumer {
 
     private var externalContentHandler: ExternalContentHandler?
     private let urlOpener: URLOpener?
+    private let eventsService: EventsService
 
-    init(eventBus: EventBus, urlOpener: URLOpener?) {
+    init(eventBus: EventBus, urlOpener: URLOpener?, eventsService: EventsService) {
         self.urlOpener = urlOpener
+        self.eventsService = eventsService
+        
         eventBus.subscribe(consumer: self)
     }
 
@@ -36,7 +39,12 @@ class ConcreteContentLinksService: ContentLinksService, EventConsumer {
     }
     
     func describeContent(in url: URL, toVisitor visitor: URLContentVisitor) {
+        let identifierComponent = url.lastPathComponent
+        let identifier = EventIdentifier(identifierComponent)
         
+        if eventsService.fetchEvent(identifier: identifier) != nil {        
+            visitor.visit(EventIdentifier(identifierComponent))
+        }
     }
 
 }
