@@ -62,14 +62,10 @@ struct ApplicationModuleRepository: ModuleRepository {
         let dealersInteractor = DefaultDealersInteractor(dealersService: services.dealers, defaultIconData: defaultDealerIconData, refreshService: services.refresh)
         dealersModuleProviding = DealersModuleBuilder(interactor: dealersInteractor).build()
         
-        struct DummyDealerInteractionRecorder: DealerInteractionRecorder {
-            func recordInteraction(for dealer: DealerIdentifier) {
-                
-            }
-        }
-        
+        let dealerIntentDonor = ConcreteViewDealerIntentDonor()
+        let dealerInteractionRecorder = DonateIntentDealerInteractionRecorder(dealersService: services.dealers, viewDealerIntentDonor: dealerIntentDonor)
         let dealerDetailInteractor = DefaultDealerDetailInteractor(dealersService: services.dealers)
-        dealerDetailModuleProviding = DealerDetailModuleBuilder(dealerDetailInteractor: dealerDetailInteractor, dealerInteractionRecorder: DummyDealerInteractionRecorder()).build()
+        dealerDetailModuleProviding = DealerDetailModuleBuilder(dealerDetailInteractor: dealerDetailInteractor, dealerInteractionRecorder: dealerInteractionRecorder).build()
         
         collectThemAllModuleProviding = CollectThemAllModuleBuilder(service: services.collectThemAll).build()
         messagesModuleProviding = MessagesModuleBuilder(authenticationService: services.authentication, privateMessagesService: services.privateMessages).build()
