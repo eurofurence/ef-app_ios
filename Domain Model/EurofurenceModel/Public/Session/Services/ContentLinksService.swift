@@ -7,7 +7,6 @@ public enum URLContent {
 public protocol ContentLinksService {
 
     func lookupContent(for link: Link) -> LinkContentLookupResult?
-    func setExternalContentHandler(_ externalContentHandler: ExternalContentHandler)
     func describeContent(in url: URL, toVisitor visitor: URLContentVisitor)
 
 }

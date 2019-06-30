@@ -12,10 +12,6 @@ class StubContentLinksService: ContentLinksService {
     func lookupContent(for link: Link) -> LinkContentLookupResult? {
         return stubbedLinkActions[link.name]
     }
-
-    func setExternalContentHandler(_ externalContentHandler: ExternalContentHandler) {
-
-    }
     
     enum URLContent {
         case event(EventIdentifier)

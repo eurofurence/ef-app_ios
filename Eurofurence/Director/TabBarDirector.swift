@@ -1,7 +1,7 @@
 import EurofurenceModel
 import UIKit
 
-class TabBarDirector: ExternalContentHandler, NewsModuleDelegate, ScheduleModuleDelegate,
+class TabBarDirector: NewsModuleDelegate, ScheduleModuleDelegate,
                       EventDetailModuleDelegate, MessagesModuleDelegate, LoginModuleDelegate,
                       DealersModuleDelegate, KnowledgeGroupsListModuleDelegate, KnowledgeGroupEntriesModuleDelegate,
                       KnowledgeDetailModuleDelegate, MapsModuleDelegate, MapDetailModuleDelegate,
@@ -102,13 +102,6 @@ class TabBarDirector: ExternalContentHandler, NewsModuleDelegate, ScheduleModule
                                       preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: .ok, style: .cancel))
         tabController?.present(alert, animated: performAnimations, completion: nil)
-    }
-    
-    // MARK: ExternalContentHandler
-    
-    func handleExternalContent(url: URL) {
-        let module = moduleRepository.makeWebModule(for: url)
-        tabController?.present(module, animated: true)
     }
     
     // MARK: NewsModuleDelegate

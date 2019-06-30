@@ -3,7 +3,6 @@ import Foundation
 
 class ConcreteContentLinksService: ContentLinksService, EventConsumer {
 
-    private var externalContentHandler: ExternalContentHandler?
     private let urlOpener: URLOpener?
     private let urlEntityProcessor: URLEntityProcessor
 
@@ -15,17 +14,7 @@ class ConcreteContentLinksService: ContentLinksService, EventConsumer {
     }
 
     func consume(event: DomainEvent.OpenURL) {
-        let url = event.url
-
-        if let urlOpener = urlOpener, urlOpener.canOpen(url) {
-            urlOpener.open(url)
-        } else {
-            externalContentHandler?.handleExternalContent(url: url)
-        }
-    }
-
-    func setExternalContentHandler(_ externalContentHandler: ExternalContentHandler) {
-        self.externalContentHandler = externalContentHandler
+        urlOpener?.open(event.url)
     }
 
     func lookupContent(for link: Link) -> LinkContentLookupResult? {

@@ -67,7 +67,6 @@
 		CA7A303222B16DE4002AD939 /* NSManagedObjectContext+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F7F22B16DE3002AD939 /* NSManagedObjectContext+Convenience.swift */; };
 		CA7A303322B16DE4002AD939 /* CoreDataStoreTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F8022B16DE3002AD939 /* CoreDataStoreTransaction.swift */; };
 		CA7A303422B16DE4002AD939 /* CoreDataStoreFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F8122B16DE3002AD939 /* CoreDataStoreFactory.swift */; };
-		CA7A303522B16DE4002AD939 /* ExternalContentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F8222B16DE3002AD939 /* ExternalContentHandler.swift */; };
 		CA7A303622B16DE4002AD939 /* String+Base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F8322B16DE3002AD939 /* String+Base64.swift */; };
 		CA7A303722B16DE4002AD939 /* URLSessionBasedJSONSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F8622B16DE3002AD939 /* URLSessionBasedJSONSession.swift */; };
 		CA7A303822B16DE4002AD939 /* JSONSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F8722B16DE3002AD939 /* JSONSession.swift */; };
@@ -261,7 +260,6 @@
 		CA7A31E222B16E26002AD939 /* CapturingCredentialStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A310522B16E25002AD939 /* CapturingCredentialStore.swift */; };
 		CA7A31E322B16E26002AD939 /* CapturingMapCoordinateRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A310622B16E25002AD939 /* CapturingMapCoordinateRender.swift */; };
 		CA7A31E422B16E26002AD939 /* CapturingSignificantTimeChangeAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A310722B16E25002AD939 /* CapturingSignificantTimeChangeAdapter.swift */; };
-		CA7A31E522B16E26002AD939 /* CapturingExternalContentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A310822B16E25002AD939 /* CapturingExternalContentHandler.swift */; };
 		CA7A31E622B16E26002AD939 /* StubDataStoreFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A310922B16E25002AD939 /* StubDataStoreFactory.swift */; };
 		CA7A31E722B16E26002AD939 /* CapturingImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A310A22B16E25002AD939 /* CapturingImageRepository.swift */; };
 		CA7A31E822B16E26002AD939 /* FakeLongRunningTaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A310B22B16E25002AD939 /* FakeLongRunningTaskManager.swift */; };
@@ -549,7 +547,6 @@
 		CA7A2F7F22B16DE3002AD939 /* NSManagedObjectContext+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Convenience.swift"; sourceTree = "<group>"; };
 		CA7A2F8022B16DE3002AD939 /* CoreDataStoreTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStoreTransaction.swift; sourceTree = "<group>"; };
 		CA7A2F8122B16DE3002AD939 /* CoreDataStoreFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStoreFactory.swift; sourceTree = "<group>"; };
-		CA7A2F8222B16DE3002AD939 /* ExternalContentHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExternalContentHandler.swift; sourceTree = "<group>"; };
 		CA7A2F8322B16DE3002AD939 /* String+Base64.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Base64.swift"; sourceTree = "<group>"; };
 		CA7A2F8622B16DE3002AD939 /* URLSessionBasedJSONSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionBasedJSONSession.swift; sourceTree = "<group>"; };
 		CA7A2F8722B16DE3002AD939 /* JSONSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONSession.swift; sourceTree = "<group>"; };
@@ -743,7 +740,6 @@
 		CA7A310522B16E25002AD939 /* CapturingCredentialStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingCredentialStore.swift; sourceTree = "<group>"; };
 		CA7A310622B16E25002AD939 /* CapturingMapCoordinateRender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingMapCoordinateRender.swift; sourceTree = "<group>"; };
 		CA7A310722B16E25002AD939 /* CapturingSignificantTimeChangeAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingSignificantTimeChangeAdapter.swift; sourceTree = "<group>"; };
-		CA7A310822B16E25002AD939 /* CapturingExternalContentHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingExternalContentHandler.swift; sourceTree = "<group>"; };
 		CA7A310922B16E25002AD939 /* StubDataStoreFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubDataStoreFactory.swift; sourceTree = "<group>"; };
 		CA7A310A22B16E25002AD939 /* CapturingImageRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingImageRepository.swift; sourceTree = "<group>"; };
 		CA7A310B22B16E25002AD939 /* FakeLongRunningTaskManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeLongRunningTaskManager.swift; sourceTree = "<group>"; };
@@ -1101,7 +1097,6 @@
 				CA7A2F4422B16DE3002AD939 /* ApplicationNotificationKey.swift */,
 				CA7A2F4322B16DE3002AD939 /* EurofurenceSessionState.swift */,
 				CA7A2F6122B16DE3002AD939 /* EventsSearchController.swift */,
-				CA7A2F8222B16DE3002AD939 /* ExternalContentHandler.swift */,
 				CA7A2FA022B16DE3002AD939 /* LogoutResult.swift */,
 				CA7A2F8822B16DE3002AD939 /* Optional+Extensions.swift */,
 				CA7A2F8322B16DE3002AD939 /* String+Base64.swift */,
@@ -1674,7 +1669,6 @@
 			isa = PBXGroup;
 			children = (
 				CA7A310522B16E25002AD939 /* CapturingCredentialStore.swift */,
-				CA7A310822B16E25002AD939 /* CapturingExternalContentHandler.swift */,
 				CA7A310422B16E25002AD939 /* CapturingForceRefreshRequired.swift */,
 				CA7A310A22B16E25002AD939 /* CapturingImageRepository.swift */,
 				CA7A310622B16E25002AD939 /* CapturingMapCoordinateRender.swift */,
@@ -2546,7 +2540,6 @@
 				CA7A304B22B16DE4002AD939 /* ImageRepository.swift in Sources */,
 				CA7A303122B16DE4002AD939 /* CoreDataStore.swift in Sources */,
 				CA7A307F22B16DE4002AD939 /* LoggedIn.swift in Sources */,
-				CA7A303522B16DE4002AD939 /* ExternalContentHandler.swift in Sources */,
 				CA7A304522B16DE4002AD939 /* DataStoreTransaction.swift in Sources */,
 				CA7A309922B16DE4002AD939 /* ConcreteDealersService.swift in Sources */,
 				CA7A302622B16DE4002AD939 /* FavouriteEventEntity+Adaptation.swift in Sources */,
@@ -2716,7 +2709,6 @@
 				CA7A324822B16E26002AD939 /* WhenRestrictingEventsToSpecificDay_ScheduleShould.swift in Sources */,
 				CA7A31EF22B16E26002AD939 /* CapturingAuthenticationStateObserver.swift in Sources */,
 				CA7A31A822B16E26002AD939 /* WhenFetchingKnowledgeEntryByIdentifier_ApplicationShould.swift in Sources */,
-				CA7A31E522B16E26002AD939 /* CapturingExternalContentHandler.swift in Sources */,
 				CA7A31E622B16E26002AD939 /* StubDataStoreFactory.swift in Sources */,
 				CA7A321A22B16E26002AD939 /* WhenOpeningAnnouncement_ApplicationShould.swift in Sources */,
 				CA8A73D322BD15E4007A5201 /* AddingAdditionalServicesConsumer_WhileLoggedOut.swift in Sources */,
