@@ -2,7 +2,20 @@ import Foundation
 
 public class EurofurenceSessionBuilder {
     
+    public struct Mandatory {
+        
+        public var conventionIdentifier: ConventionIdentifier
+        public var conventionStartDateRepository: ConventionStartDateRepository
+
+        public init(conventionIdentifier: ConventionIdentifier, conventionStartDateRepository: ConventionStartDateRepository) {
+            self.conventionIdentifier = conventionIdentifier
+            self.conventionStartDateRepository = conventionStartDateRepository
+        }
+        
+    }
+    
     private let conventionIdentifier: ConventionIdentifier
+    private let conventionStartDateRepository: ConventionStartDateRepository
 
     private var userPreferences: UserPreferences
     private var dataStoreFactory: DataStoreFactory
@@ -10,8 +23,6 @@ public class EurofurenceSessionBuilder {
     private var clock: Clock
     private var credentialStore: CredentialStore
     private var api: API
-    private var dateDistanceCalculator: DateDistanceCalculator
-    private var conventionStartDateRepository: ConventionStartDateRepository
     private var timeIntervalForUpcomingEventsSinceNow: TimeInterval
     private var imageRepository: ImageRepository
     private var significantTimeChangeAdapter: SignificantTimeChangeAdapter?
@@ -22,8 +33,9 @@ public class EurofurenceSessionBuilder {
     private var forceRefreshRequired: ForceRefreshRequired
     private var companionAppURLRequestFactory: CompanionAppURLRequestFactory
 
-    public init(conventionIdentifier: ConventionIdentifier) {
-        self.conventionIdentifier = conventionIdentifier
+    public init(mandatory: Mandatory) {
+        self.conventionIdentifier = mandatory.conventionIdentifier
+        self.conventionStartDateRepository = mandatory.conventionStartDateRepository
         
         userPreferences = UserDefaultsPreferences()
         dataStoreFactory = CoreDataStoreFactory()
@@ -34,8 +46,6 @@ public class EurofurenceSessionBuilder {
 
         clock = SystemClock.shared
         credentialStore = KeychainCredentialStore()
-        dateDistanceCalculator = FoundationDateDistanceCalculator()
-        conventionStartDateRepository = EF24StartDateRepository()
         timeIntervalForUpcomingEventsSinceNow = 3600
         imageRepository = PersistentImageRepository()
         collectThemAllRequestFactory = DefaultCollectThemAllRequestFactory()
@@ -70,18 +80,6 @@ public class EurofurenceSessionBuilder {
     @discardableResult
     public func with(_ credentialStore: CredentialStore) -> EurofurenceSessionBuilder {
         self.credentialStore = credentialStore
-        return self
-    }
-
-    @discardableResult
-    public func with(_ dateDistanceCalculator: DateDistanceCalculator) -> EurofurenceSessionBuilder {
-        self.dateDistanceCalculator = dateDistanceCalculator
-        return self
-    }
-
-    @discardableResult
-    public func with(_ conventionStartDateRepository: ConventionStartDateRepository) -> EurofurenceSessionBuilder {
-        self.conventionStartDateRepository = conventionStartDateRepository
         return self
     }
 
@@ -153,7 +151,6 @@ public class EurofurenceSessionBuilder {
                                remoteNotificationsTokenRegistration: remoteNotificationsTokenRegistration,
                                clock: clock,
                                credentialStore: credentialStore,
-                               dateDistanceCalculator: dateDistanceCalculator,
                                conventionStartDateRepository: conventionStartDateRepository,
                                timeIntervalForUpcomingEventsSinceNow: timeIntervalForUpcomingEventsSinceNow,
                                imageRepository: imageRepository,

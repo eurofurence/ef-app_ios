@@ -1,12 +1,18 @@
 import EventBus
 import Foundation
 
-class ConcreteConventionCountdownService: ConventionCountdownService {
-
+class ConcreteConventionCountdownService: ConventionCountdownService, ConventionStartDateConsumer {
+    
     private let conventionStartDateRepository: ConventionStartDateRepository
-    private let dateDistanceCalculator: DateDistanceCalculator
     private let clock: Clock
     private var daysUntilConventionObservers = [ConventionCountdownServiceObserver]()
+    private var conventionStartDate: Date?
+    
+    private var countdownState: ConventionCountdownState = .countdownElapsed {
+        didSet {
+            daysUntilConventionObservers.forEach({ $0.conventionCountdownStateDidChange(to: countdownState) })
+        }
+    }
     
     private class RecomputeCountdownWhenSignificantTimePasses: EventConsumer {
         
@@ -24,40 +30,38 @@ class ConcreteConventionCountdownService: ConventionCountdownService {
 
     init(eventBus: EventBus,
          conventionStartDateRepository: ConventionStartDateRepository,
-         dateDistanceCalculator: DateDistanceCalculator,
          clock: Clock) {
         self.conventionStartDateRepository = conventionStartDateRepository
-        self.dateDistanceCalculator = dateDistanceCalculator
         self.clock = clock
 
         eventBus.subscribe(consumer: RecomputeCountdownWhenSignificantTimePasses(service: self))
+        conventionStartDateRepository.addConsumer(self)
     }
 
     func add(_ observer: ConventionCountdownServiceObserver) {
         daysUntilConventionObservers.append(observer)
-
-        let state = resolveCountdownState()
-        observer.conventionCountdownStateDidChange(to: state)
+        observer.conventionCountdownStateDidChange(to: countdownState)
+    }
+    
+    func conventionStartDateDidChange(to startDate: Date) {
+        conventionStartDate = startDate
+        refreshCountdownState()
     }
     
     private func refreshCountdownState() {
-        let state = resolveCountdownState()
-        daysUntilConventionObservers.forEach({ $0.conventionCountdownStateDidChange(to: state) })
-    }
-
-    private func resolveCountdownState() -> ConventionCountdownState {
-        let daysRemaining = calculateDaysUntilConvention()
+        guard let conventionStartDate = conventionStartDate else { return }
+        
+        let now = clock.currentDate.timeIntervalSince1970
+        let conventionStart = conventionStartDate.timeIntervalSince1970
+        let delta = max(0, conventionStart - now)
+        let secondsInDay: TimeInterval = 60 * 60 * 24
+        let daysRemaining = Int(delta / secondsInDay)
+        
         if daysRemaining > 0 {
-            return .countingDown(daysUntilConvention: daysRemaining)
+            countdownState = .countingDown(daysUntilConvention: daysRemaining)
         } else {
-            return .countdownElapsed
+            countdownState = .countdownElapsed
         }
-    }
-
-    private func calculateDaysUntilConvention() -> Int {
-        let now = clock.currentDate
-        let conventionStartTime = conventionStartDateRepository.conventionStartDate
-        return dateDistanceCalculator.calculateDays(between: now, and: conventionStartTime)
     }
 
 }

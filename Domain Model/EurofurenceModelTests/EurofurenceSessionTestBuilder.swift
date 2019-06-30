@@ -11,7 +11,6 @@ class EurofurenceSessionTestBuilder {
         var credentialStore: CapturingCredentialStore
         var api: FakeAPI
         var dataStore: InMemoryDataStore
-        var dateDistanceCalculator: StubDateDistanceCalculator
         var conventionStartDateRepository: StubConventionStartDateRepository
         var imageRepository: CapturingImageRepository
         var significantTimeChangeAdapter: CapturingSignificantTimeChangeAdapter
@@ -28,7 +27,6 @@ class EurofurenceSessionTestBuilder {
                          credentialStore: CapturingCredentialStore,
                          api: FakeAPI,
                          dataStore: InMemoryDataStore,
-                         dateDistanceCalculator: StubDateDistanceCalculator,
                          conventionStartDateRepository: StubConventionStartDateRepository,
                          imageRepository: CapturingImageRepository,
                          significantTimeChangeAdapter: CapturingSignificantTimeChangeAdapter,
@@ -42,7 +40,6 @@ class EurofurenceSessionTestBuilder {
             self.credentialStore = credentialStore
             self.api = api
             self.dataStore = dataStore
-            self.dateDistanceCalculator = dateDistanceCalculator
             self.conventionStartDateRepository = conventionStartDateRepository
             self.imageRepository = imageRepository
             self.significantTimeChangeAdapter = significantTimeChangeAdapter
@@ -181,6 +178,7 @@ class EurofurenceSessionTestBuilder {
     private var companionAppURLRequestFactory: CompanionAppURLRequestFactory = StubCompanionAppURLRequestFactory()
     private var forceUpgradeRequired: ForceRefreshRequired = StubForceRefreshRequired(isForceRefreshRequired: false)
     private var longRunningTaskManager: FakeLongRunningTaskManager = FakeLongRunningTaskManager()
+    private var conventionStartDateRepository = StubConventionStartDateRepository()
 
     func with(_ currentDate: Date) -> EurofurenceSessionTestBuilder {
         clock = StubClock(currentDate: currentDate)
@@ -259,26 +257,32 @@ class EurofurenceSessionTestBuilder {
         self.forceUpgradeRequired = forceUpgradeRequired
         return self
     }
+    
+    @discardableResult
+    func with(_ conventionStartDateRepository: StubConventionStartDateRepository) -> EurofurenceSessionTestBuilder {
+        self.conventionStartDateRepository = conventionStartDateRepository
+        return self
+    }
 
-    // swiftlint:disable function_body_length
     @discardableResult
     func build() -> Context {
         let conventionIdentifier = ConventionIdentifier(identifier: ModelCharacteristics.testConventionIdentifier)
         let notificationTokenRegistration = CapturingRemoteNotificationsTokenRegistration()
-        let dateDistanceCalculator = StubDateDistanceCalculator()
-        let conventionStartDateRepository = StubConventionStartDateRepository()
         let significantTimeChangeAdapter = CapturingSignificantTimeChangeAdapter()
         let mapCoordinateRender = CapturingMapCoordinateRender()
         
-        let session = EurofurenceSessionBuilder(conventionIdentifier: conventionIdentifier)
+        let mandatory = EurofurenceSessionBuilder.Mandatory(
+            conventionIdentifier: conventionIdentifier,
+            conventionStartDateRepository: conventionStartDateRepository
+        )
+        
+        let session = EurofurenceSessionBuilder(mandatory: mandatory)
             .with(api)
             .with(clock)
             .with(credentialStore)
             .with(StubDataStoreFactory(conventionIdentifier: conventionIdentifier, dataStore: dataStore))
             .with(notificationTokenRegistration)
             .with(userPreferences)
-            .with(dateDistanceCalculator)
-            .with(conventionStartDateRepository)
             .with(timeIntervalForUpcomingEventsSinceNow: timeIntervalForUpcomingEventsSinceNow)
             .with(imageRepository)
             .with(significantTimeChangeAdapter)
@@ -299,7 +303,6 @@ class EurofurenceSessionTestBuilder {
                        credentialStore: credentialStore,
                        api: api,
                        dataStore: dataStore,
-                       dateDistanceCalculator: dateDistanceCalculator,
                        conventionStartDateRepository: conventionStartDateRepository,
                        imageRepository: imageRepository,
                        significantTimeChangeAdapter: significantTimeChangeAdapter,

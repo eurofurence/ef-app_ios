@@ -32,7 +32,6 @@ class ConcreteSession: EurofurenceSession {
          remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration?,
          clock: Clock,
          credentialStore: CredentialStore,
-         dateDistanceCalculator: DateDistanceCalculator,
          conventionStartDateRepository: ConventionStartDateRepository,
          timeIntervalForUpcomingEventsSinceNow: TimeInterval,
          imageRepository: ImageRepository,
@@ -66,7 +65,6 @@ class ConcreteSession: EurofurenceSession {
 
         conventionCountdownService = ConcreteConventionCountdownService(eventBus: eventBus,
                                                                         conventionStartDateRepository: conventionStartDateRepository,
-                                                                        dateDistanceCalculator: dateDistanceCalculator,
                                                                         clock: clock)
 
         announcementsService = ConcreteAnnouncementsService(eventBus: eventBus,

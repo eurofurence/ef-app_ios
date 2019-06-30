@@ -401,6 +401,13 @@
 		CA36A4E620DAFFB000EE6537 /* StubDealerDetailModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4E520DAFFB000EE6537 /* StubDealerDetailModuleFactory.swift */; };
 		CA36A4E820DB006300EE6537 /* DealerDetailModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4E720DB006300EE6537 /* DealerDetailModuleBuilder.swift */; };
 		CA36A4EA20DB007900EE6537 /* DealerDetailModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4E920DB007900EE6537 /* DealerDetailModule.swift */; };
+		CA39851622C7A51C00117249 /* RemotelyConfiguredConventionStartDateRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA39851522C7A51C00117249 /* RemotelyConfiguredConventionStartDateRepositoryTests.swift */; };
+		CA39851922C7A91800117249 /* RemotelyConfiguredConventionStartDateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA39851822C7A91800117249 /* RemotelyConfiguredConventionStartDateRepository.swift */; };
+		CA39851C22C7A93300117249 /* CapturingConventionStartDateConsumer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA39851B22C7A93300117249 /* CapturingConventionStartDateConsumer.swift */; };
+		CA39851E22C7A94500117249 /* RemoteConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA39851D22C7A94500117249 /* RemoteConfiguration.swift */; };
+		CA39852022C7A94F00117249 /* RemoteConfigurationLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA39851F22C7A94F00117249 /* RemoteConfigurationLoader.swift */; };
+		CA39852222C7A95C00117249 /* FakeRemoteConfigurationLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA39852122C7A95C00117249 /* FakeRemoteConfigurationLoader.swift */; };
+		CA39852522C7ADBA00117249 /* FirebaseRemoteConfigurationLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA39852422C7ADBA00117249 /* FirebaseRemoteConfigurationLoader.swift */; };
 		CA3ABA00229C2FF50045A35B /* ModuleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3AB9FF229C2FF50045A35B /* ModuleRepository.swift */; };
 		CA3ABA02229C30E70045A35B /* ApplicationModuleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3ABA01229C30E70045A35B /* ApplicationModuleRepository.swift */; };
 		CA3ABA06229C4B260045A35B /* AppNotificationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3ABA05229C4B260045A35B /* AppNotificationDelegate.swift */; };
@@ -1453,6 +1460,13 @@
 		CA36A4E520DAFFB000EE6537 /* StubDealerDetailModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubDealerDetailModuleFactory.swift; sourceTree = "<group>"; };
 		CA36A4E720DB006300EE6537 /* DealerDetailModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailModuleBuilder.swift; sourceTree = "<group>"; };
 		CA36A4E920DB007900EE6537 /* DealerDetailModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailModule.swift; sourceTree = "<group>"; };
+		CA39851522C7A51C00117249 /* RemotelyConfiguredConventionStartDateRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemotelyConfiguredConventionStartDateRepositoryTests.swift; sourceTree = "<group>"; };
+		CA39851822C7A91800117249 /* RemotelyConfiguredConventionStartDateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemotelyConfiguredConventionStartDateRepository.swift; sourceTree = "<group>"; };
+		CA39851B22C7A93300117249 /* CapturingConventionStartDateConsumer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingConventionStartDateConsumer.swift; sourceTree = "<group>"; };
+		CA39851D22C7A94500117249 /* RemoteConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfiguration.swift; sourceTree = "<group>"; };
+		CA39851F22C7A94F00117249 /* RemoteConfigurationLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigurationLoader.swift; sourceTree = "<group>"; };
+		CA39852122C7A95C00117249 /* FakeRemoteConfigurationLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeRemoteConfigurationLoader.swift; sourceTree = "<group>"; };
+		CA39852422C7ADBA00117249 /* FirebaseRemoteConfigurationLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseRemoteConfigurationLoader.swift; sourceTree = "<group>"; };
 		CA3990EC20ACD35C001E3F1A /* HoursDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoursDateFormatter.swift; sourceTree = "<group>"; };
 		CA3990EE20ACD559001E3F1A /* FoundationHoursDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationHoursDateFormatter.swift; sourceTree = "<group>"; };
 		CA3AB9FF229C2FF50045A35B /* ModuleRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleRepository.swift; sourceTree = "<group>"; };
@@ -2472,6 +2486,7 @@
 				CA630BCA229F108900754C27 /* Interactions */,
 				6EF96CE01F12688700EE6134 /* Modules */,
 				CA7992442245173B00DF1F84 /* Notifications */,
+				CA39852322C7AD6D00117249 /* Remote Configuration */,
 				9ACF999B1ECA259C006FC958 /* Resources */,
 				CA82409E21249A50007E4A70 /* Review Prompt */,
 				9ACF99591EBE32FE006FC958 /* Views */,
@@ -2489,6 +2504,7 @@
 				78C86D531F1228B0003A20E6 /* TutorialViewControllerTests.swift */,
 				78455B3B1F116E24005BE2D7 /* UserDefaultsTutorialStateProvider.swift */,
 				7820A6F51F16B123004C0FB5 /* UserDefaultsUserAcknowledgedPushPermissionsRequestStateProvidingTests.swift */,
+				CA39851422C7A50600117249 /* Convention Start Date Repository */,
 				CAF7055F1F82CBC800A9FEA2 /* Director */,
 				781A94441F1A1DCE002DE70F /* Firebase Notification Registration */,
 				CA630BCC229F10A900754C27 /* Interactions */,
@@ -3271,6 +3287,42 @@
 				CA36A4E920DB007900EE6537 /* DealerDetailModule.swift */,
 			);
 			path = Module;
+			sourceTree = "<group>";
+		};
+		CA39851422C7A50600117249 /* Convention Start Date Repository */ = {
+			isa = PBXGroup;
+			children = (
+				CA39851522C7A51C00117249 /* RemotelyConfiguredConventionStartDateRepositoryTests.swift */,
+				CA39851A22C7A92900117249 /* Test Doubles */,
+			);
+			path = "Convention Start Date Repository";
+			sourceTree = "<group>";
+		};
+		CA39851722C7A91000117249 /* Remote Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				CA39851822C7A91800117249 /* RemotelyConfiguredConventionStartDateRepository.swift */,
+			);
+			path = "Remote Configuration";
+			sourceTree = "<group>";
+		};
+		CA39851A22C7A92900117249 /* Test Doubles */ = {
+			isa = PBXGroup;
+			children = (
+				CA39851B22C7A93300117249 /* CapturingConventionStartDateConsumer.swift */,
+				CA39852122C7A95C00117249 /* FakeRemoteConfigurationLoader.swift */,
+			);
+			path = "Test Doubles";
+			sourceTree = "<group>";
+		};
+		CA39852322C7AD6D00117249 /* Remote Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				CA39851D22C7A94500117249 /* RemoteConfiguration.swift */,
+				CA39851F22C7A94F00117249 /* RemoteConfigurationLoader.swift */,
+				CA39852422C7ADBA00117249 /* FirebaseRemoteConfigurationLoader.swift */,
+			);
+			path = "Remote Configuration";
 			sourceTree = "<group>";
 		};
 		CA401063210FA8650056E16C /* Knowledge Group Entries */ = {
@@ -5197,6 +5249,7 @@
 		CAF1A674211E4B3600513226 /* Application Adapter Implementations */ = {
 			isa = PBXGroup;
 			children = (
+				CA39851722C7A91000117249 /* Remote Configuration */,
 				CA283A5920E6E24300F7D195 /* ApplicationLongRunningTaskManager.swift */,
 				CA52C68020D597E1009D3A9E /* ApplicationSignificantTimeChangeAdapter.swift */,
 				CAD3BDCA2061394700C91E6E /* AppURLOpener.swift */,
@@ -5784,8 +5837,10 @@
 				CA152EED22665B4400212742 /* CocoaTouchFailureHaptic.swift in Sources */,
 				CA0F762D2033118D009DA079 /* KnowledgeGroupsListModuleDelegate.swift in Sources */,
 				CAF3C7441F9F5C550008F027 /* NewsModuleProviding.swift in Sources */,
+				CA39852522C7ADBA00117249 /* FirebaseRemoteConfigurationLoader.swift in Sources */,
 				CA1FE9991FA0B3AE009C7DF3 /* ApplicationDirector.swift in Sources */,
 				CA8DDA2022490CB700ACD9BB /* EventActionBannerTableViewCell.swift in Sources */,
+				CA39851922C7A91800117249 /* RemotelyConfiguredConventionStartDateRepository.swift in Sources */,
 				CA630C0022A068C200754C27 /* EventIntentDefinitionProviding.swift in Sources */,
 				CAF81C6E20DDA70D00898C52 /* AboutTheArtTableViewCell.swift in Sources */,
 				CA6375A0208DFE2E00536BE2 /* StoryboardEventsSceneFactory.swift in Sources */,
@@ -6088,6 +6143,7 @@
 				CAF81C5720DD208100898C52 /* DealerDetailLocationAndAvailabilityTableViewCell.swift in Sources */,
 				CACF1E7220B1CE9A00D904B5 /* EventDetailPresenter.swift in Sources */,
 				CAD3BDC2205AA7BE00C91E6E /* WebModuleProviding.swift in Sources */,
+				CA39852022C7A94F00117249 /* RemoteConfigurationLoader.swift in Sources */,
 				7820A6E71F1400A8004C0FB5 /* AlertRouter.swift in Sources */,
 				CA728451209D0557007D912A /* AnnouncementDetailModule.swift in Sources */,
 				CA6A8DCA20E415EF007536CD /* MapDetailModule.swift in Sources */,
@@ -6121,6 +6177,7 @@
 				CA728449209D012D007D912A /* AnnouncementDetailModuleProviding.swift in Sources */,
 				CACF1E4C20AE2A5A00D904B5 /* EventDetailModuleProviding.swift in Sources */,
 				9A861EA71F2554BE00B75A8C /* TutorialPage.swift in Sources */,
+				CA39851E22C7A94500117249 /* RemoteConfiguration.swift in Sources */,
 				CAA4BA6721EE7AB600DE2C88 /* MessagesModule.swift in Sources */,
 				CA89CBB62080032000570D54 /* NewsComponentHeaderScene.swift in Sources */,
 				CA6375B4208E039100536BE2 /* DealersModule.swift in Sources */,
@@ -6380,6 +6437,7 @@
 				CAD55936229AEFA80068DD46 /* CapturingNotificationResponseHandler.swift in Sources */,
 				CA1B6F3520DC171200ADF414 /* WhenBindingDealerSummaryWithMissingAttributes_DealerDetailPresenterShould.swift in Sources */,
 				CA283A7320E8E84100F7D195 /* WhenApplicationRefreshStateChanges_DealersViewModelShould.swift in Sources */,
+				CA39851C22C7A93300117249 /* CapturingConventionStartDateConsumer.swift in Sources */,
 				CA60BFE62078E5F700697566 /* CapturingPrivateMessagesService.swift in Sources */,
 				CA6EC4792051CAFA00402894 /* WhenBuildingKnowledgeDetailModule.swift in Sources */,
 				CAC1E1311F50413500195513 /* CapturingNewsScene.swift in Sources */,
@@ -6502,6 +6560,7 @@
 				CA52C69120D6AB53009D3A9E /* CapturingScheduleModuleDelegate.swift in Sources */,
 				CA6A8DCE20E41735007536CD /* WhenBuildingMapDetailModule.swift in Sources */,
 				CA73AED8201A07E7004E77BF /* KnowledgeGroupsPresenterTestBuilder.swift in Sources */,
+				CA39852222C7A95C00117249 /* FakeRemoteConfigurationLoader.swift in Sources */,
 				CAD68828208A0E7A00B31F5F /* WhenBindingUser_NewsPresenterShould.swift in Sources */,
 				CAD5593C229AF0C60068DD46 /* NotificationResponseProcessorTestBuilder.swift in Sources */,
 				CA00AE6220D1749200C2FBB0 /* CapturingScheduleEventComponent.swift in Sources */,
@@ -6571,6 +6630,7 @@
 				CA162EAA20AA1E6A004AFED6 /* WhenViewingMessagesWhenLoggedIn_BeforeSceneAppears.swift in Sources */,
 				CA44C368211B6C20003C1C4E /* WhenPreparingViewModel_ForPhotoshootEvent_EventDetailInteractorShould.swift in Sources */,
 				CA36A4DC20DAF9E800EE6537 /* WhenFetchingIdentifierForDealer_DealersInteractorShould.swift in Sources */,
+				CA39851622C7A51C00117249 /* RemotelyConfiguredConventionStartDateRepositoryTests.swift in Sources */,
 				CACF1EB020B5F86700D904B5 /* WhenBindingEventBanner_EventDetailPresenterShould.swift in Sources */,
 				CA728467209D1197007D912A /* WhenAnnouncementDetailSceneDidLoad_AnnouncementDetailPresenterShould.swift in Sources */,
 				CA89CBA6207F7F5400570D54 /* FakeNewsInteractor.swift in Sources */,

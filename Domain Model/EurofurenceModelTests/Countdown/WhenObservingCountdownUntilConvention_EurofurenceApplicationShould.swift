@@ -3,15 +3,26 @@ import XCTest
 
 class WhenObservingCountdownUntilConvention_EurofurenceApplicationShould: XCTestCase {
 
-    func testReturnTheNumberOfDaysBetweenTheClockTimeAndTheConventionStartTime() {
+    func testOneDayToGo() {
         let observer = CapturingConventionCountdownServiceObserver()
-        let clockTime = Date.random
-        let context = EurofurenceSessionTestBuilder().with(clockTime).build()
-        let expected = Int.random
-        context.dateDistanceCalculator.stubDistance(between: clockTime, and: context.conventionStartDateRepository.conventionStartDate, with: expected)
+        let clockTime = Date()
+        let conventionStartDateRepository = StubConventionStartDateRepository()
+        conventionStartDateRepository.conventionStartDate = clockTime.addingTimeInterval(60 * 60 * 24)
+        let context = EurofurenceSessionTestBuilder().with(clockTime).with(conventionStartDateRepository).build()
         context.conventionCountdownService.add(observer)
 
-        XCTAssertEqual(expected, observer.capturedDaysRemaining)
+        XCTAssertEqual(1, observer.capturedDaysRemaining)
+    }
+    
+    func testTwoDaysToGo() {
+        let observer = CapturingConventionCountdownServiceObserver()
+        let clockTime = Date()
+        let conventionStartDateRepository = StubConventionStartDateRepository()
+        conventionStartDateRepository.conventionStartDate = clockTime.addingTimeInterval((60 * 60 * 24) * 2)
+        let context = EurofurenceSessionTestBuilder().with(clockTime).with(conventionStartDateRepository).build()
+        context.conventionCountdownService.add(observer)
+        
+        XCTAssertEqual(2, observer.capturedDaysRemaining)
     }
 
 }
