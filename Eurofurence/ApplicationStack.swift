@@ -86,7 +86,6 @@ class ApplicationStack {
         
         director = DirectorBuilder(moduleRepository: ApplicationModuleRepository(services: services, repositories: session.repositories),
                                    linkLookupService: services.contentLinks).build()
-        services.contentLinks.setExternalContentHandler(director)
         
         let notificationHandler = NavigateToContentNotificationResponseHandler(director: director)
         notificationResponseProcessor = NotificationResponseProcessor(notificationHandling: services.notifications,
