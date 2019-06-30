@@ -336,6 +336,11 @@
 		CA2AA2D722C93FBA00C0E1A1 /* WhenOpeningDealer_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2D622C93FBA00C0E1A1 /* WhenOpeningDealer_DirectorShould.swift */; };
 		CA2AA2E222C94C1800C0E1A1 /* DealerInteractionRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2E122C94C1800C0E1A1 /* DealerInteractionRecorder.swift */; };
 		CA2AA2E422C94C2F00C0E1A1 /* CapturingDealerInteractionRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2E322C94C2F00C0E1A1 /* CapturingDealerInteractionRecorder.swift */; };
+		CA2AA2E722C94D8200C0E1A1 /* WhenRecordingDealerInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2E622C94D8200C0E1A1 /* WhenRecordingDealerInteraction.swift */; };
+		CA2AA2E922C94F4400C0E1A1 /* CapturingViewDealerIntentDonor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2E822C94F4400C0E1A1 /* CapturingViewDealerIntentDonor.swift */; };
+		CA2AA2EC22C94F6300C0E1A1 /* ViewDealerIntentDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2EB22C94F6300C0E1A1 /* ViewDealerIntentDefinition.swift */; };
+		CA2AA2EE22C94F7400C0E1A1 /* ViewDealerIntentDonor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2ED22C94F7400C0E1A1 /* ViewDealerIntentDonor.swift */; };
+		CA2AA2F022C94F7F00C0E1A1 /* DonateIntentDealerInteractionRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2EF22C94F7F00C0E1A1 /* DonateIntentDealerInteractionRecorder.swift */; };
 		CA2D08001FE94AF900BFD785 /* WhenTheAppLaunchesWithUninitializedSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D07FF1FE94AF900BFD785 /* WhenTheAppLaunchesWithUninitializedSession.swift */; };
 		CA2D08021FE94B5500BFD785 /* WhenTheAppLaunchesWithStaleSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D08011FE94B5500BFD785 /* WhenTheAppLaunchesWithStaleSession.swift */; };
 		CA2D08041FE94B9100BFD785 /* WhenTheAppLaunchesWithInitializedSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D08031FE94B9100BFD785 /* WhenTheAppLaunchesWithInitializedSession.swift */; };
@@ -1403,6 +1408,11 @@
 		CA2AA2D622C93FBA00C0E1A1 /* WhenOpeningDealer_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenOpeningDealer_DirectorShould.swift; sourceTree = "<group>"; };
 		CA2AA2E122C94C1800C0E1A1 /* DealerInteractionRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerInteractionRecorder.swift; sourceTree = "<group>"; };
 		CA2AA2E322C94C2F00C0E1A1 /* CapturingDealerInteractionRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingDealerInteractionRecorder.swift; sourceTree = "<group>"; };
+		CA2AA2E622C94D8200C0E1A1 /* WhenRecordingDealerInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenRecordingDealerInteraction.swift; sourceTree = "<group>"; };
+		CA2AA2E822C94F4400C0E1A1 /* CapturingViewDealerIntentDonor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingViewDealerIntentDonor.swift; sourceTree = "<group>"; };
+		CA2AA2EB22C94F6300C0E1A1 /* ViewDealerIntentDefinition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDealerIntentDefinition.swift; sourceTree = "<group>"; };
+		CA2AA2ED22C94F7400C0E1A1 /* ViewDealerIntentDonor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDealerIntentDonor.swift; sourceTree = "<group>"; };
+		CA2AA2EF22C94F7F00C0E1A1 /* DonateIntentDealerInteractionRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateIntentDealerInteractionRecorder.swift; sourceTree = "<group>"; };
 		CA2D04FD20EE910E00CF54E1 /* NotificationScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationScheduler.swift; sourceTree = "<group>"; };
 		CA2D07FF1FE94AF900BFD785 /* WhenTheAppLaunchesWithUninitializedSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenTheAppLaunchesWithUninitializedSession.swift; sourceTree = "<group>"; };
 		CA2D08011FE94B5500BFD785 /* WhenTheAppLaunchesWithStaleSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenTheAppLaunchesWithStaleSession.swift; sourceTree = "<group>"; };
@@ -3225,6 +3235,7 @@
 		CA2AA2D322C93B7C00C0E1A1 /* Intent Donation */ = {
 			isa = PBXGroup;
 			children = (
+				CA2AA2E522C94D7500C0E1A1 /* Dealers */,
 				CA630BCD229F10AF00754C27 /* Events */,
 			);
 			path = "Intent Donation";
@@ -3234,8 +3245,28 @@
 			isa = PBXGroup;
 			children = (
 				CA2AA2E122C94C1800C0E1A1 /* DealerInteractionRecorder.swift */,
+				CA2AA2EA22C94F5800C0E1A1 /* Intents */,
 			);
 			path = Dealers;
+			sourceTree = "<group>";
+		};
+		CA2AA2E522C94D7500C0E1A1 /* Dealers */ = {
+			isa = PBXGroup;
+			children = (
+				CA2AA2E622C94D8200C0E1A1 /* WhenRecordingDealerInteraction.swift */,
+				CA2AA2E822C94F4400C0E1A1 /* CapturingViewDealerIntentDonor.swift */,
+			);
+			path = Dealers;
+			sourceTree = "<group>";
+		};
+		CA2AA2EA22C94F5800C0E1A1 /* Intents */ = {
+			isa = PBXGroup;
+			children = (
+				CA2AA2EB22C94F6300C0E1A1 /* ViewDealerIntentDefinition.swift */,
+				CA2AA2ED22C94F7400C0E1A1 /* ViewDealerIntentDonor.swift */,
+				CA2AA2EF22C94F7F00C0E1A1 /* DonateIntentDealerInteractionRecorder.swift */,
+			);
+			path = Intents;
 			sourceTree = "<group>";
 		};
 		CA2D07FE1FE94AD200BFD785 /* Root */ = {
@@ -6003,6 +6034,7 @@
 				CAD3BDCB2061394700C91E6E /* AppURLOpener.swift in Sources */,
 				CA00AE8E20D2925500C2FBB0 /* ScheduleDayCollectionViewCell.swift in Sources */,
 				CA630C0D22A06D5900754C27 /* IntentDefinitionProvidingFactory.swift in Sources */,
+				CA2AA2EC22C94F6300C0E1A1 /* ViewDealerIntentDefinition.swift in Sources */,
 				CA17FE9420586A3C005A4C05 /* DefaultKnowledgeDetailSceneInteractor.swift in Sources */,
 				CACF1E6D20B1CDB800D904B5 /* EventDetailInteractor.swift in Sources */,
 				CA6A8D6320E26247007536CD /* MapsModuleProviding.swift in Sources */,
@@ -6060,6 +6092,7 @@
 				CA6A8DEC20E41F85007536CD /* MapDetailPresenter.swift in Sources */,
 				CA36A48720D9260000EE6537 /* DealerGroupHeader.swift in Sources */,
 				781A943E1F1A1A13002DE70F /* FirebaseRemoteNotificationsTokenRegistration.swift in Sources */,
+				CA2AA2F022C94F7F00C0E1A1 /* DonateIntentDealerInteractionRecorder.swift in Sources */,
 				CAA10FE622C75CA800689A32 /* MultiStepFormTextField.swift in Sources */,
 				CA1ECB4D1FE7F2A10076083A /* NewsPresenter.swift in Sources */,
 				CA17FE83205800A7005A4C05 /* LinkViewModel.swift in Sources */,
@@ -6169,6 +6202,7 @@
 				CA6EC47D2051CBB800402894 /* KnowledgeDetailSceneFactory.swift in Sources */,
 				CABA43A11FD57A78009CB5B0 /* PreloadModuleBuilder.swift in Sources */,
 				CA1B6F0D20DB817400ADF414 /* DealerDetailScene.swift in Sources */,
+				CA2AA2EE22C94F7400C0E1A1 /* ViewDealerIntentDonor.swift in Sources */,
 				CACF1E8E20B352B800D904B5 /* FoundationDateRangeFormatter.swift in Sources */,
 				CA36A48C20D92E9000EE6537 /* DefaultDealersInteractor.swift in Sources */,
 				CA4010982110818C0056E16C /* StoryboardKnowledgeGroupEntriesSceneFactory.swift in Sources */,
@@ -6344,6 +6378,7 @@
 				CACF1EAE20B5C2E500D904B5 /* EventDetailInteractorTestBuilder.swift in Sources */,
 				CA283A7E20E9211400F7D195 /* WhenApplicationRefreshStateChanges_ScheduleInteractorShould.swift in Sources */,
 				CA2761C120E02C68000E52AC /* BeforeCollectThemAllSceneLoads_PresenterShould.swift in Sources */,
+				CA2AA2E922C94F4400C0E1A1 /* CapturingViewDealerIntentDonor.swift in Sources */,
 				CA17FE712056B070005A4C05 /* KnowledgeDetailPresenterTestBuilder.swift in Sources */,
 				CA6A8D5F20E16BB3007536CD /* WhenShowingMessagesModuleAlerts_DirectorShould.swift in Sources */,
 				CA81D4921FE9AC9200A52A2F /* PlatformTabModuleFactoryTests.swift in Sources */,
@@ -6720,6 +6755,7 @@
 				CA162EAA20AA1E6A004AFED6 /* WhenViewingMessagesWhenLoggedIn_BeforeSceneAppears.swift in Sources */,
 				CA44C368211B6C20003C1C4E /* WhenPreparingViewModel_ForPhotoshootEvent_EventDetailInteractorShould.swift in Sources */,
 				CA36A4DC20DAF9E800EE6537 /* WhenFetchingIdentifierForDealer_DealersInteractorShould.swift in Sources */,
+				CA2AA2E722C94D8200C0E1A1 /* WhenRecordingDealerInteraction.swift in Sources */,
 				CA39851622C7A51C00117249 /* RemotelyConfiguredConventionStartDateRepositoryTests.swift in Sources */,
 				CACF1EB020B5F86700D904B5 /* WhenBindingEventBanner_EventDetailPresenterShould.swift in Sources */,
 				CA728467209D1197007D912A /* WhenAnnouncementDetailSceneDidLoad_AnnouncementDetailPresenterShould.swift in Sources */,
