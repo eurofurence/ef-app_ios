@@ -195,7 +195,7 @@ class ConcreteEventsService: ClockDelegate, EventsService {
             self.rooms = rooms
             self.tracks = tracks
 
-            eventModels = events.compactMap(makeEventModel)
+            eventModels = events.sorted(by: { $0.startDateTime < $1.startDateTime }).compactMap(makeEventModel)
 
             dayModels = makeDays(from: days)
             eventBus.post(ConcreteEventsService.ChangedEvent())
