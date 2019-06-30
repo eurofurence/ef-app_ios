@@ -21,9 +21,11 @@ class EventAssertion: Assertion {
             fail(message: "Differing amount of expected/actual events")
             return
         }
+        
+        let eventsShouldBeOrderedByStartTime = characteristics.sorted { $0.startDateTime < $1.startDateTime }
 
         for (idx, event) in events.enumerated() {
-            let characteristic = characteristics[idx]
+            let characteristic = eventsShouldBeOrderedByStartTime[idx]
             assertEvent(event, characterisedBy: characteristic)
         }
     }

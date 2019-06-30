@@ -128,7 +128,7 @@ class EventsScheduleAdapter: EventsSchedule {
             allEvents = allEvents.filter(filter.shouldFilter)
         }
 
-        events = allEvents.compactMap(schedule.makeEventModel)
+        events = allEvents.sorted(by: { $0.startDateTime < $1.startDateTime }).compactMap(schedule.makeEventModel)
         delegate?.scheduleEventsDidChange(to: events)
     }
 
