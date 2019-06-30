@@ -1,6 +1,6 @@
 import EurofurenceModel
 
-struct NavigateToContentResumeInteractionResponseHandler: ResumeInteractionResponseHandler {
+struct DirectorContentRouter: ContentRouter {
     
     let director: ApplicationDirector
     

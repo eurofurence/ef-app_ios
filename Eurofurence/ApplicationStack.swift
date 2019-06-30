@@ -13,7 +13,7 @@ class ApplicationStack {
     private let notificationFetchResultAdapter: NotificationServiceFetchResultAdapter
     let notificationScheduleController: NotificationScheduleController
     private let notificationResponseProcessor: NotificationResponseProcessor
-    private let interactionResumer: InteractionResumer
+    private let activityResumer: ActivityResumer
     
     static func assemble() {
         _ = instance
@@ -33,7 +33,7 @@ class ApplicationStack {
     }
     
     static func resumeInteraction(_ intent: Any?) -> Bool {
-        return instance.interactionResumer.resume(intent: intent)
+        return instance.activityResumer.resume(intent: intent)
     }
 
     private init() {
@@ -91,8 +91,8 @@ class ApplicationStack {
         notificationResponseProcessor = NotificationResponseProcessor(notificationHandling: services.notifications,
                                                                       contentRecipient: notificationHandler)
         
-        let resumeInteractionResponseHandler = NavigateToContentResumeInteractionResponseHandler(director: director)
-        interactionResumer = InteractionResumer(resumeResponseHandler: resumeInteractionResponseHandler)
+        let resumeInteractionResponseHandler = DirectorContentRouter(director: director)
+        activityResumer = ActivityResumer(resumeResponseHandler: resumeInteractionResponseHandler)
     }
 
 }

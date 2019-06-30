@@ -6,7 +6,7 @@ class WhenResumingViewEventIntent: XCTestCase {
 
     func testTheIntentIsResumed() {
         let resumeResponseHandler = CapturingResumeIntentResponseHandler()
-        let intentResumer = InteractionResumer(resumeResponseHandler: resumeResponseHandler)
+        let intentResumer = ActivityResumer(resumeResponseHandler: resumeResponseHandler)
         let event = FakeEvent.random
         let eventIntentDefinition = ViewEventIntentDefinition(identifier: event.identifier, eventName: event.title)
         let eventIntent = StubEventIntentDefinitionProviding(eventIntentDefinition: eventIntentDefinition)

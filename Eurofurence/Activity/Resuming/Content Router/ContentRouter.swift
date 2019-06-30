@@ -1,6 +1,6 @@
 import EurofurenceModel
 
-protocol ResumeInteractionResponseHandler {
+protocol ContentRouter {
     
     func resumeViewingEvent(identifier: EventIdentifier)
     

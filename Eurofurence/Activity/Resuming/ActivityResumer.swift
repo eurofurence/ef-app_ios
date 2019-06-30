@@ -1,10 +1,10 @@
 import Foundation
 
-struct InteractionResumer {
+struct ActivityResumer {
     
-    private let resumeResponseHandler: ResumeInteractionResponseHandler
+    private let resumeResponseHandler: ContentRouter
     
-    init(resumeResponseHandler: ResumeInteractionResponseHandler) {
+    init(resumeResponseHandler: ContentRouter) {
         self.resumeResponseHandler = resumeResponseHandler
     }
     
@@ -26,10 +26,10 @@ struct InteractionResumer {
     
     private class ActivityHandler: ActivityDescriptionVisitor {
         
-        private let resumeResponseHandler: ResumeInteractionResponseHandler
+        private let resumeResponseHandler: ContentRouter
         private(set) var handledActivity = false
         
-        init(resumeResponseHandler: ResumeInteractionResponseHandler) {
+        init(resumeResponseHandler: ContentRouter) {
             self.resumeResponseHandler = resumeResponseHandler
         }
         
