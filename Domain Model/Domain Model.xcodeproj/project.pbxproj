@@ -10,6 +10,8 @@
 		CA17015022B183880067BCDE /* EurofurenceModelTestDoubles-Swift.h in Headers */ = {isa = PBXBuildFile; fileRef = CA17014F22B183880067BCDE /* EurofurenceModelTestDoubles-Swift.h */; };
 		CA17015122B188290067BCDE /* EurofurenceModelTestDoubles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A326922B16E75002AD939 /* EurofurenceModelTestDoubles.framework */; };
 		CA25A87522C15F4F00226478 /* WhenRequestingStoreRefresh_MultipleTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA25A87422C15F4F00226478 /* WhenRequestingStoreRefresh_MultipleTimes.swift */; };
+		CA2AA2DA22C941C200C0E1A1 /* WhenDescribingAppLink_WithValidDealerIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2D922C941C200C0E1A1 /* WhenDescribingAppLink_WithValidDealerIdentifier.swift */; };
+		CA2AA2DC22C942AB00C0E1A1 /* WhenDescribingAppLink_WithInvalidDealerIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2DB22C942AB00C0E1A1 /* WhenDescribingAppLink_WithInvalidDealerIdentifier.swift */; };
 		CA7A2F3422B16DA3002AD939 /* EurofurenceModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A2F2B22B16DA3002AD939 /* EurofurenceModel.framework */; };
 		CA7A2FFF22B16DE4002AD939 /* EurofurenceSessionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F4322B16DE3002AD939 /* EurofurenceSessionState.swift */; };
 		CA7A300022B16DE4002AD939 /* ApplicationNotificationKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F4422B16DE3002AD939 /* ApplicationNotificationKey.swift */; };
@@ -485,6 +487,8 @@
 		AD2DE387F01CB519CFFD1718 /* Pods-EurofurenceModelTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EurofurenceModelTests.debug.xcconfig"; path = "Target Support Files/Pods-EurofurenceModelTests/Pods-EurofurenceModelTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CA17014F22B183880067BCDE /* EurofurenceModelTestDoubles-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EurofurenceModelTestDoubles-Swift.h"; sourceTree = "<group>"; };
 		CA25A87422C15F4F00226478 /* WhenRequestingStoreRefresh_MultipleTimes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenRequestingStoreRefresh_MultipleTimes.swift; sourceTree = "<group>"; };
+		CA2AA2D922C941C200C0E1A1 /* WhenDescribingAppLink_WithValidDealerIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDescribingAppLink_WithValidDealerIdentifier.swift; sourceTree = "<group>"; };
+		CA2AA2DB22C942AB00C0E1A1 /* WhenDescribingAppLink_WithInvalidDealerIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDescribingAppLink_WithInvalidDealerIdentifier.swift; sourceTree = "<group>"; };
 		CA7A2F2B22B16DA3002AD939 /* EurofurenceModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EurofurenceModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA7A2F2E22B16DA3002AD939 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA7A2F3322B16DA3002AD939 /* EurofurenceModelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EurofurenceModelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -999,6 +1003,15 @@
 				CA25A87422C15F4F00226478 /* WhenRequestingStoreRefresh_MultipleTimes.swift */,
 			);
 			path = "Coalescing Refreshes";
+			sourceTree = "<group>";
+		};
+		CA2AA2D822C941B100C0E1A1 /* Dealers */ = {
+			isa = PBXGroup;
+			children = (
+				CA2AA2D922C941C200C0E1A1 /* WhenDescribingAppLink_WithValidDealerIdentifier.swift */,
+				CA2AA2DB22C942AB00C0E1A1 /* WhenDescribingAppLink_WithInvalidDealerIdentifier.swift */,
+			);
+			path = Dealers;
 			sourceTree = "<group>";
 		};
 		CA7A2F1122B16D70002AD939 = {
@@ -2110,6 +2123,7 @@
 		CAB0FD5C22C9126F00D4CB98 /* App Links */ = {
 			isa = PBXGroup;
 			children = (
+				CA2AA2D822C941B100C0E1A1 /* Dealers */,
 				CAB0FD5F22C9128E00D4CB98 /* Events */,
 			);
 			path = "App Links";
@@ -2573,6 +2587,7 @@
 				CA7A31BA22B16E26002AD939 /* WhenSyncSucceeds_ForEmptyDataStore_ApplicationShould.swift in Sources */,
 				CA7A31F722B16E26002AD939 /* CapturingCollectThemAllURLObserver.swift in Sources */,
 				CA7A31FC22B16E26002AD939 /* UserDefaultsForceRefreshRequired.swift in Sources */,
+				CA2AA2DC22C942AB00C0E1A1 /* WhenDescribingAppLink_WithInvalidDealerIdentifier.swift in Sources */,
 				CA7A31D422B16E26002AD939 /* ImageAPITests.swift in Sources */,
 				CA7A323722B16E26002AD939 /* WhenSubmittingFeedback_ForEventNotAcceptingFeedback.swift in Sources */,
 				CA7A319822B16E26002AD939 /* DealersRemoveAllBeforeInsertTests.swift in Sources */,
@@ -2699,6 +2714,7 @@
 				CA7A31AC22B16E26002AD939 /* MapEntityAssertion.swift in Sources */,
 				CA7A321622B16E26002AD939 /* WhenAddingAnnouncementsObserver_ThenRefreshSucceeds_ApplicationShould.swift in Sources */,
 				CA7A321722B16E26002AD939 /* WhenApplicationInitialises_WithAnnouncementsSavedToStore.swift in Sources */,
+				CA2AA2DA22C941C200C0E1A1 /* WhenDescribingAppLink_WithValidDealerIdentifier.swift in Sources */,
 				CA7A31F422B16E26002AD939 /* CapturingLoginObserver.swift in Sources */,
 				CA7A31E922B16E26002AD939 /* StubUserPreferences.swift in Sources */,
 				CA7A324E22B16E26002AD939 /* WhenLoggingOut_WithoutRegisteredDeviceToken.swift in Sources */,

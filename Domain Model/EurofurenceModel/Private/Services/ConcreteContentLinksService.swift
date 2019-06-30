@@ -6,10 +6,15 @@ class ConcreteContentLinksService: ContentLinksService, EventConsumer {
     private var externalContentHandler: ExternalContentHandler?
     private let urlOpener: URLOpener?
     private let eventsService: EventsService
+    private let dealersService: DealersService
 
-    init(eventBus: EventBus, urlOpener: URLOpener?, eventsService: EventsService) {
+    init(eventBus: EventBus,
+         urlOpener: URLOpener?,
+         eventsService: EventsService,
+         dealersService: DealersService) {
         self.urlOpener = urlOpener
         self.eventsService = eventsService
+        self.dealersService = dealersService
         
         eventBus.subscribe(consumer: self)
     }
@@ -39,12 +44,28 @@ class ConcreteContentLinksService: ContentLinksService, EventConsumer {
     }
     
     func describeContent(in url: URL, toVisitor visitor: URLContentVisitor) {
-        let identifierComponent = url.lastPathComponent
-        let identifier = EventIdentifier(identifierComponent)
+        URLEntityProcessor(eventsService: eventsService, dealersService: dealersService).process(url, visitor: visitor)
+    }
+    
+    private struct URLEntityProcessor {
         
-        if eventsService.fetchEvent(identifier: identifier) != nil {        
-            visitor.visit(EventIdentifier(identifierComponent))
+        var eventsService: EventsService
+        var dealersService: DealersService
+        
+        func process(_ url: URL, visitor: URLContentVisitor) {
+            let identifierComponent = url.lastPathComponent
+            
+            let eventIdentifier = EventIdentifier(identifierComponent)
+            if eventsService.fetchEvent(identifier: eventIdentifier) != nil {
+                visitor.visit(EventIdentifier(identifierComponent))
+            }
+            
+            let dealerIdentifier = DealerIdentifier(identifierComponent)
+            if dealersService.fetchDealer(for: dealerIdentifier) != nil {
+                visitor.visit(dealerIdentifier)
+            }
         }
+        
     }
 
 }

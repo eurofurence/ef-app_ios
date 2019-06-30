@@ -8,4 +8,9 @@ class CapturingURLContentVisitor: URLContentVisitor {
         visitedEvent = event
     }
     
+    private(set) var visitedDealer: DealerIdentifier?
+    func visit(_ dealer: DealerIdentifier) {
+        visitedDealer = dealer
+    }
+    
 }

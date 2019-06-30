@@ -122,7 +122,10 @@ class ConcreteSession: EurofurenceSession {
                                                           refreshService: refreshService,
                                                           privateMessagesService: privateMessagesService)
 
-        contentLinksService = ConcreteContentLinksService(eventBus: eventBus, urlOpener: urlOpener, eventsService: eventsService)
+        contentLinksService = ConcreteContentLinksService(eventBus: eventBus,
+                                                          urlOpener: urlOpener,
+                                                          eventsService: eventsService,
+                                                          dealersService: dealersService)
         
         eventBus.subscribe(consumer: EventFeedbackService(api: api))
 
