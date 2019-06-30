@@ -2516,10 +2516,10 @@
 				78C86D531F1228B0003A20E6 /* TutorialViewControllerTests.swift */,
 				78455B3B1F116E24005BE2D7 /* UserDefaultsTutorialStateProvider.swift */,
 				7820A6F51F16B123004C0FB5 /* UserDefaultsUserAcknowledgedPushPermissionsRequestStateProvidingTests.swift */,
+				CA630BCC229F10A900754C27 /* Activity */,
 				CA39851422C7A50600117249 /* Convention Start Date Repository */,
 				CAF7055F1F82CBC800A9FEA2 /* Director */,
 				781A94441F1A1DCE002DE70F /* Firebase Notification Registration */,
-				CA630BCC229F10A900754C27 /* Interactions */,
 				78C86D5B1F12355C003A20E6 /* Module Tests */,
 				CACD2F0B21DF830300BACD91 /* Notification Content Adapter */,
 				CAD5592E229AE3570068DD46 /* Notification Response Handler */,
@@ -3206,6 +3206,23 @@
 			path = "Interactor Tests";
 			sourceTree = "<group>";
 		};
+		CA2AA2D222C93B5A00C0E1A1 /* Intent */ = {
+			isa = PBXGroup;
+			children = (
+				CA630BF622A0650E00754C27 /* WhenResumingUnknownIntent.swift */,
+				CA630BF822A065B300754C27 /* WhenResumingViewEventIntent.swift */,
+			);
+			path = Intent;
+			sourceTree = "<group>";
+		};
+		CA2AA2D322C93B7C00C0E1A1 /* Intent Donation */ = {
+			isa = PBXGroup;
+			children = (
+				CA630BCD229F10AF00754C27 /* Events */,
+			);
+			path = "Intent Donation";
+			sourceTree = "<group>";
+		};
 		CA2D07FE1FE94AD200BFD785 /* Root */ = {
 			isa = PBXGroup;
 			children = (
@@ -3591,13 +3608,13 @@
 			path = Events;
 			sourceTree = "<group>";
 		};
-		CA630BCC229F10A900754C27 /* Interactions */ = {
+		CA630BCC229F10A900754C27 /* Activity */ = {
 			isa = PBXGroup;
 			children = (
-				CA630BF522A064FA00754C27 /* Resuming Interaction */,
-				CA630BCD229F10AF00754C27 /* Events */,
+				CA630BF522A064FA00754C27 /* Resuming */,
+				CA2AA2D322C93B7C00C0E1A1 /* Intent Donation */,
 			);
-			path = Interactions;
+			path = Activity;
 			sourceTree = "<group>";
 		};
 		CA630BCD229F10AF00754C27 /* Events */ = {
@@ -3631,16 +3648,14 @@
 			path = EurofurenceIntentDefinitions;
 			sourceTree = "<group>";
 		};
-		CA630BF522A064FA00754C27 /* Resuming Interaction */ = {
+		CA630BF522A064FA00754C27 /* Resuming */ = {
 			isa = PBXGroup;
 			children = (
-				CAB0FD6422C93A0B00D4CB98 /* WhenResumingDealerURL.swift */,
-				CAB0FD5A22C90D8D00D4CB98 /* WhenResumingEventURL.swift */,
-				CA630BF622A0650E00754C27 /* WhenResumingUnknownIntent.swift */,
-				CA630BF822A065B300754C27 /* WhenResumingViewEventIntent.swift */,
+				CA2AA2D222C93B5A00C0E1A1 /* Intent */,
 				CA630C0122A068D300754C27 /* Test Doubles */,
+				CAB0FD6822C93B4100D4CB98 /* URL */,
 			);
-			path = "Resuming Interaction";
+			path = Resuming;
 			sourceTree = "<group>";
 		};
 		CA630BFA22A0686A00754C27 /* Resuming */ = {
@@ -4773,6 +4788,15 @@
 				CA630C0C22A06D5900754C27 /* IntentDefinitionProvidingFactory.swift */,
 			);
 			path = "Intent Interactions";
+			sourceTree = "<group>";
+		};
+		CAB0FD6822C93B4100D4CB98 /* URL */ = {
+			isa = PBXGroup;
+			children = (
+				CAB0FD6422C93A0B00D4CB98 /* WhenResumingDealerURL.swift */,
+				CAB0FD5A22C90D8D00D4CB98 /* WhenResumingEventURL.swift */,
+			);
+			path = URL;
 			sourceTree = "<group>";
 		};
 		CABA43841FBC6FD3009CB5B0 /* Login */ = {
