@@ -13,7 +13,7 @@ class ApplicationStack {
     private let notificationFetchResultAdapter: NotificationServiceFetchResultAdapter
     let notificationScheduleController: NotificationScheduleController
     private let notificationResponseProcessor: NotificationResponseProcessor
-    private let interactionResumer: InteractionResumer
+    private let activityResumer: ActivityResumer
     
     static func assemble() {
         _ = instance
@@ -32,8 +32,9 @@ class ApplicationStack {
         instance.notificationResponseProcessor.openNotification(userInfo, completionHandler: completionHandler)
     }
     
-    static func resumeInteraction(_ intent: Any?) -> Bool {
-        return instance.interactionResumer.resume(intent: intent)
+    static func resume(activity: NSUserActivity) -> Bool {
+        let activityDescription = SystemActivityDescription(userActivity: activity)
+        return instance.activityResumer.resume(activity: activityDescription)
     }
 
     private init() {
@@ -85,14 +86,13 @@ class ApplicationStack {
         
         director = DirectorBuilder(moduleRepository: ApplicationModuleRepository(services: services, repositories: session.repositories),
                                    linkLookupService: services.contentLinks).build()
-        services.contentLinks.setExternalContentHandler(director)
         
         let notificationHandler = NavigateToContentNotificationResponseHandler(director: director)
         notificationResponseProcessor = NotificationResponseProcessor(notificationHandling: services.notifications,
                                                                       contentRecipient: notificationHandler)
         
-        let resumeInteractionResponseHandler = NavigateToContentResumeInteractionResponseHandler(director: director)
-        interactionResumer = InteractionResumer(resumeResponseHandler: resumeInteractionResponseHandler)
+        let directorContentRouter = DirectorContentRouter(director: director)
+        activityResumer = ActivityResumer(contentLinksService: services.contentLinks, contentRouter: directorContentRouter)
     }
 
 }

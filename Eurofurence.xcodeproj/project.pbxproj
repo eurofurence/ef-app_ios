@@ -256,7 +256,6 @@
 		CA2725932113BE9A004C6D0A /* WhenBindingSponsorsOnlyMessage_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2725922113BE9A004C6D0A /* WhenBindingSponsorsOnlyMessage_EventDetailPresenterShould.swift */; };
 		CA2725952113BFD9004C6D0A /* EventInformationBannerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2725942113BFD9004C6D0A /* EventInformationBannerComponent.swift */; };
 		CA27618220DF932C000E52AC /* AspectRatioConstrainedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27618120DF932C000E52AC /* AspectRatioConstrainedImageView.swift */; };
-		CA27619420DFF66F000E52AC /* WhenApplicationRequestsHandlingOfExternalContent_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27619320DFF66F000E52AC /* WhenApplicationRequestsHandlingOfExternalContent_DirectorShould.swift */; };
 		CA27619A20E01D0F000E52AC /* CollectThemAllModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27619920E01D0F000E52AC /* CollectThemAllModuleProviding.swift */; };
 		CA27619C20E01E01000E52AC /* CollectThemAllModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27619B20E01E01000E52AC /* CollectThemAllModuleBuilder.swift */; };
 		CA2761A020E01F9F000E52AC /* WhenBuildingCollectThemAllModule_PresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27619F20E01F9F000E52AC /* WhenBuildingCollectThemAllModule_PresenterShould.swift */; };
@@ -333,6 +332,8 @@
 		CA2A586D20F76F03002C69B6 /* UIKitMapCoordinateRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2A586C20F76F03002C69B6 /* UIKitMapCoordinateRender.swift */; };
 		CA2A586F20F7F137002C69B6 /* AnnouncementDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2A586E20F7F137002C69B6 /* AnnouncementDateFormatter.swift */; };
 		CA2A587120F7F369002C69B6 /* FoundationAnnouncementDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2A587020F7F369002C69B6 /* FoundationAnnouncementDateFormatter.swift */; };
+		CA2AA2D522C93EC300C0E1A1 /* TabBarDirector.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2D422C93EC300C0E1A1 /* TabBarDirector.swift */; };
+		CA2AA2D722C93FBA00C0E1A1 /* WhenOpeningDealer_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2D622C93FBA00C0E1A1 /* WhenOpeningDealer_DirectorShould.swift */; };
 		CA2D08001FE94AF900BFD785 /* WhenTheAppLaunchesWithUninitializedSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D07FF1FE94AF900BFD785 /* WhenTheAppLaunchesWithUninitializedSession.swift */; };
 		CA2D08021FE94B5500BFD785 /* WhenTheAppLaunchesWithStaleSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D08011FE94B5500BFD785 /* WhenTheAppLaunchesWithStaleSession.swift */; };
 		CA2D08041FE94B9100BFD785 /* WhenTheAppLaunchesWithInitializedSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D08031FE94B9100BFD785 /* WhenTheAppLaunchesWithInitializedSession.swift */; };
@@ -504,14 +505,14 @@
 		CA630BEE229F16F400754C27 /* ConcreteEventIntentDonor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630BED229F16F400754C27 /* ConcreteEventIntentDonor.swift */; };
 		CA630BF722A0650E00754C27 /* WhenResumingUnknownIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630BF622A0650E00754C27 /* WhenResumingUnknownIntent.swift */; };
 		CA630BF922A065B300754C27 /* WhenResumingViewEventIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630BF822A065B300754C27 /* WhenResumingViewEventIntent.swift */; };
-		CA630BFC22A068A200754C27 /* InteractionResumer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630BFB22A068A200754C27 /* InteractionResumer.swift */; };
-		CA630BFE22A068B400754C27 /* ResumeInteractionResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630BFD22A068B400754C27 /* ResumeInteractionResponseHandler.swift */; };
+		CA630BFC22A068A200754C27 /* ActivityResumer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630BFB22A068A200754C27 /* ActivityResumer.swift */; };
+		CA630BFE22A068B400754C27 /* ContentRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630BFD22A068B400754C27 /* ContentRouter.swift */; };
 		CA630C0022A068C200754C27 /* EventIntentDefinitionProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630BFF22A068C200754C27 /* EventIntentDefinitionProviding.swift */; };
 		CA630C0322A068DC00754C27 /* StubEventIntentDefinitionProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630C0222A068DC00754C27 /* StubEventIntentDefinitionProviding.swift */; };
-		CA630C0522A068EA00754C27 /* CapturingResumeIntentResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630C0422A068EA00754C27 /* CapturingResumeIntentResponseHandler.swift */; };
+		CA630C0522A068EA00754C27 /* CapturingContentRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630C0422A068EA00754C27 /* CapturingContentRouter.swift */; };
 		CA630C0722A0696D00754C27 /* ViewEventIntentDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630C0622A0696D00754C27 /* ViewEventIntentDefinition.swift */; };
 		CA630C0922A069AF00754C27 /* ViewEventIntent+Definition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630C0822A069AF00754C27 /* ViewEventIntent+Definition.swift */; };
-		CA630C0B22A06A7B00754C27 /* NavigateToContentResumeInteractionResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630C0A22A06A7B00754C27 /* NavigateToContentResumeInteractionResponseHandler.swift */; };
+		CA630C0B22A06A7B00754C27 /* DirectorContentRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630C0A22A06A7B00754C27 /* DirectorContentRouter.swift */; };
 		CA630C0D22A06D5900754C27 /* IntentDefinitionProvidingFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630C0C22A06D5900754C27 /* IntentDefinitionProvidingFactory.swift */; };
 		CA630C5122A079E100754C27 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CA630BEA229F151600754C27 /* Intents.intentdefinition */; settings = {ATTRIBUTES = (no_codegen, ); }; };
 		CA63753D208A6E4900536BE2 /* WhenLoggedOutBeforeConvention_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63753C208A6E4900536BE2 /* WhenLoggedOutBeforeConvention_NewsInteractorShould.swift */; };
@@ -802,6 +803,12 @@
 		CAA6060A20EEC02C00075A4E /* Debug.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAA6060920EEC02C00075A4E /* Debug.storyboard */; };
 		CAA6060C20EEC06500075A4E /* DebugTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA6060B20EEC06500075A4E /* DebugTableViewController.swift */; };
 		CAA6DD1120E1649600328C37 /* WhenMessagesSceneTapsLogoutButton_MessagesPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA6DD1020E1649600328C37 /* WhenMessagesSceneTapsLogoutButton_MessagesPresenterShould.swift */; };
+		CAB0FD5222C90B1E00D4CB98 /* IntentActivityDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB0FD5122C90B1E00D4CB98 /* IntentActivityDescription.swift */; };
+		CAB0FD5422C90B3400D4CB98 /* ActivityDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB0FD5322C90B3400D4CB98 /* ActivityDescription.swift */; };
+		CAB0FD5622C90B4000D4CB98 /* SystemActivityDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB0FD5522C90B4000D4CB98 /* SystemActivityDescription.swift */; };
+		CAB0FD5B22C90D8D00D4CB98 /* WhenResumingEventURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB0FD5A22C90D8D00D4CB98 /* WhenResumingEventURL.swift */; };
+		CAB0FD6522C93A0B00D4CB98 /* WhenResumingDealerURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB0FD6422C93A0B00D4CB98 /* WhenResumingDealerURL.swift */; };
+		CAB0FD6722C93A1400D4CB98 /* URLActivityDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB0FD6622C93A1400D4CB98 /* URLActivityDescription.swift */; };
 		CAB138131FE1555C00AD61FE /* MessagesCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB138121FE1555C00AD61FE /* MessagesCollectionViewFlowLayout.swift */; };
 		CAB3B8F922611E260077B068 /* EventFeedbackPresenterTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB3B8F822611E260077B068 /* EventFeedbackPresenterTestBuilder.swift */; };
 		CABA43831FB84834009CB5B0 /* StoryboardMessagesSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43821FB84834009CB5B0 /* StoryboardMessagesSceneFactory.swift */; };
@@ -1314,7 +1321,6 @@
 		CA2725922113BE9A004C6D0A /* WhenBindingSponsorsOnlyMessage_EventDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingSponsorsOnlyMessage_EventDetailPresenterShould.swift; sourceTree = "<group>"; };
 		CA2725942113BFD9004C6D0A /* EventInformationBannerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInformationBannerComponent.swift; sourceTree = "<group>"; };
 		CA27618120DF932C000E52AC /* AspectRatioConstrainedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectRatioConstrainedImageView.swift; sourceTree = "<group>"; };
-		CA27619320DFF66F000E52AC /* WhenApplicationRequestsHandlingOfExternalContent_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenApplicationRequestsHandlingOfExternalContent_DirectorShould.swift; sourceTree = "<group>"; };
 		CA27619920E01D0F000E52AC /* CollectThemAllModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectThemAllModuleProviding.swift; sourceTree = "<group>"; };
 		CA27619B20E01E01000E52AC /* CollectThemAllModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectThemAllModuleBuilder.swift; sourceTree = "<group>"; };
 		CA27619F20E01F9F000E52AC /* WhenBuildingCollectThemAllModule_PresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBuildingCollectThemAllModule_PresenterShould.swift; sourceTree = "<group>"; };
@@ -1391,6 +1397,8 @@
 		CA2A586C20F76F03002C69B6 /* UIKitMapCoordinateRender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitMapCoordinateRender.swift; sourceTree = "<group>"; };
 		CA2A586E20F7F137002C69B6 /* AnnouncementDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementDateFormatter.swift; sourceTree = "<group>"; };
 		CA2A587020F7F369002C69B6 /* FoundationAnnouncementDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationAnnouncementDateFormatter.swift; sourceTree = "<group>"; };
+		CA2AA2D422C93EC300C0E1A1 /* TabBarDirector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarDirector.swift; sourceTree = "<group>"; };
+		CA2AA2D622C93FBA00C0E1A1 /* WhenOpeningDealer_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenOpeningDealer_DirectorShould.swift; sourceTree = "<group>"; };
 		CA2D04FD20EE910E00CF54E1 /* NotificationScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationScheduler.swift; sourceTree = "<group>"; };
 		CA2D07FF1FE94AF900BFD785 /* WhenTheAppLaunchesWithUninitializedSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenTheAppLaunchesWithUninitializedSession.swift; sourceTree = "<group>"; };
 		CA2D08011FE94B5500BFD785 /* WhenTheAppLaunchesWithStaleSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenTheAppLaunchesWithStaleSession.swift; sourceTree = "<group>"; };
@@ -1567,14 +1575,14 @@
 		CA630BED229F16F400754C27 /* ConcreteEventIntentDonor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcreteEventIntentDonor.swift; sourceTree = "<group>"; };
 		CA630BF622A0650E00754C27 /* WhenResumingUnknownIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenResumingUnknownIntent.swift; sourceTree = "<group>"; };
 		CA630BF822A065B300754C27 /* WhenResumingViewEventIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenResumingViewEventIntent.swift; sourceTree = "<group>"; };
-		CA630BFB22A068A200754C27 /* InteractionResumer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionResumer.swift; sourceTree = "<group>"; };
-		CA630BFD22A068B400754C27 /* ResumeInteractionResponseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeInteractionResponseHandler.swift; sourceTree = "<group>"; };
+		CA630BFB22A068A200754C27 /* ActivityResumer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityResumer.swift; sourceTree = "<group>"; };
+		CA630BFD22A068B400754C27 /* ContentRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentRouter.swift; sourceTree = "<group>"; };
 		CA630BFF22A068C200754C27 /* EventIntentDefinitionProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventIntentDefinitionProviding.swift; sourceTree = "<group>"; };
 		CA630C0222A068DC00754C27 /* StubEventIntentDefinitionProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubEventIntentDefinitionProviding.swift; sourceTree = "<group>"; };
-		CA630C0422A068EA00754C27 /* CapturingResumeIntentResponseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingResumeIntentResponseHandler.swift; sourceTree = "<group>"; };
+		CA630C0422A068EA00754C27 /* CapturingContentRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingContentRouter.swift; sourceTree = "<group>"; };
 		CA630C0622A0696D00754C27 /* ViewEventIntentDefinition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewEventIntentDefinition.swift; sourceTree = "<group>"; };
 		CA630C0822A069AF00754C27 /* ViewEventIntent+Definition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewEventIntent+Definition.swift"; sourceTree = "<group>"; };
-		CA630C0A22A06A7B00754C27 /* NavigateToContentResumeInteractionResponseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateToContentResumeInteractionResponseHandler.swift; sourceTree = "<group>"; };
+		CA630C0A22A06A7B00754C27 /* DirectorContentRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectorContentRouter.swift; sourceTree = "<group>"; };
 		CA630C0C22A06D5900754C27 /* IntentDefinitionProvidingFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentDefinitionProvidingFactory.swift; sourceTree = "<group>"; };
 		CA63753C208A6E4900536BE2 /* WhenLoggedOutBeforeConvention_NewsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLoggedOutBeforeConvention_NewsInteractorShould.swift; sourceTree = "<group>"; };
 		CA63753F208CBB0E00536BE2 /* CapturingNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingNavigationController.swift; sourceTree = "<group>"; };
@@ -1860,6 +1868,12 @@
 		CAA6060920EEC02C00075A4E /* Debug.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Debug.storyboard; sourceTree = "<group>"; };
 		CAA6060B20EEC06500075A4E /* DebugTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugTableViewController.swift; sourceTree = "<group>"; };
 		CAA6DD1020E1649600328C37 /* WhenMessagesSceneTapsLogoutButton_MessagesPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenMessagesSceneTapsLogoutButton_MessagesPresenterShould.swift; sourceTree = "<group>"; };
+		CAB0FD5122C90B1E00D4CB98 /* IntentActivityDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentActivityDescription.swift; sourceTree = "<group>"; };
+		CAB0FD5322C90B3400D4CB98 /* ActivityDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDescription.swift; sourceTree = "<group>"; };
+		CAB0FD5522C90B4000D4CB98 /* SystemActivityDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemActivityDescription.swift; sourceTree = "<group>"; };
+		CAB0FD5A22C90D8D00D4CB98 /* WhenResumingEventURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenResumingEventURL.swift; sourceTree = "<group>"; };
+		CAB0FD6422C93A0B00D4CB98 /* WhenResumingDealerURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenResumingDealerURL.swift; sourceTree = "<group>"; };
+		CAB0FD6622C93A1400D4CB98 /* URLActivityDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLActivityDescription.swift; sourceTree = "<group>"; };
 		CAB138121FE1555C00AD61FE /* MessagesCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		CAB3B8F822611E260077B068 /* EventFeedbackPresenterTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFeedbackPresenterTestBuilder.swift; sourceTree = "<group>"; };
 		CABA43821FB84834009CB5B0 /* StoryboardMessagesSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardMessagesSceneFactory.swift; sourceTree = "<group>"; };
@@ -2479,11 +2493,11 @@
 				CA9845D91F29199E00E8821D /* ScreenshotAssistant.swift */,
 				CAEA1045216E77DE00B0C7A6 /* Theme.swift */,
 				9ACF993E1EBE172D006FC958 /* Assets.xcassets */,
+				CA630BCA229F108900754C27 /* Activity */,
 				CAF1A674211E4B3600513226 /* Application Adapter Implementations */,
 				CA1FE99C1FA0B3F2009C7DF3 /* Director */,
 				CABF03B22041BC770028BD62 /* Extensions */,
 				CA79924D22451DCE00DF1F84 /* Formatters */,
-				CA630BCA229F108900754C27 /* Interactions */,
 				6EF96CE01F12688700EE6134 /* Modules */,
 				CA7992442245173B00DF1F84 /* Notifications */,
 				CA39852322C7AD6D00117249 /* Remote Configuration */,
@@ -2504,10 +2518,10 @@
 				78C86D531F1228B0003A20E6 /* TutorialViewControllerTests.swift */,
 				78455B3B1F116E24005BE2D7 /* UserDefaultsTutorialStateProvider.swift */,
 				7820A6F51F16B123004C0FB5 /* UserDefaultsUserAcknowledgedPushPermissionsRequestStateProvidingTests.swift */,
+				CA630BCC229F10A900754C27 /* Activity */,
 				CA39851422C7A50600117249 /* Convention Start Date Repository */,
 				CAF7055F1F82CBC800A9FEA2 /* Director */,
 				781A94441F1A1DCE002DE70F /* Firebase Notification Registration */,
-				CA630BCC229F10A900754C27 /* Interactions */,
 				78C86D5B1F12355C003A20E6 /* Module Tests */,
 				CACD2F0B21DF830300BACD91 /* Notification Content Adapter */,
 				CAD5592E229AE3570068DD46 /* Notification Response Handler */,
@@ -2622,7 +2636,6 @@
 			children = (
 				CAF705601F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift */,
 				CA283ADB20EB9FD000F7D195 /* WhenAnnouncementsModuleSelectsAnnouncement_DirectorShould.swift */,
-				CA27619320DFF66F000E52AC /* WhenApplicationRequestsHandlingOfExternalContent_DirectorShould.swift */,
 				CA680F7D20CD8263006ACD3D /* WhenBuiltWithAlreadyPrimedApp_DirectorShould.swift */,
 				CA36A4DF20DAFE7500EE6537 /* WhenDealersModuleSelectsDealer_DirectorShould.swift */,
 				CA6F652C2269DCC500483EE0 /* WhenLeavingFeedback_FromEventDetailModule_DirectorShould.swift */,
@@ -2913,6 +2926,7 @@
 				CA3AB9FF229C2FF50045A35B /* ModuleRepository.swift */,
 				CA3ABA01229C30E70045A35B /* ApplicationModuleRepository.swift */,
 				CAA10FE322C5E3CF00689A32 /* SaveTabOrderWhenCustomizationFinishes.swift */,
+				CA2AA2D422C93EC300C0E1A1 /* TabBarDirector.swift */,
 			);
 			path = Director;
 			sourceTree = "<group>";
@@ -3192,6 +3206,23 @@
 				CA283AD320EAC84300F7D195 /* WhenPreparingViewModel_AnnouncementsInteractorShould.swift */,
 			);
 			path = "Interactor Tests";
+			sourceTree = "<group>";
+		};
+		CA2AA2D222C93B5A00C0E1A1 /* Intent */ = {
+			isa = PBXGroup;
+			children = (
+				CA630BF622A0650E00754C27 /* WhenResumingUnknownIntent.swift */,
+				CA630BF822A065B300754C27 /* WhenResumingViewEventIntent.swift */,
+			);
+			path = Intent;
+			sourceTree = "<group>";
+		};
+		CA2AA2D322C93B7C00C0E1A1 /* Intent Donation */ = {
+			isa = PBXGroup;
+			children = (
+				CA630BCD229F10AF00754C27 /* Events */,
+			);
+			path = "Intent Donation";
 			sourceTree = "<group>";
 		};
 		CA2D07FE1FE94AD200BFD785 /* Root */ = {
@@ -3561,13 +3592,13 @@
 			path = Unauthenticated;
 			sourceTree = "<group>";
 		};
-		CA630BCA229F108900754C27 /* Interactions */ = {
+		CA630BCA229F108900754C27 /* Activity */ = {
 			isa = PBXGroup;
 			children = (
-				CA630BFA22A0686A00754C27 /* Resuming Interaction */,
+				CA630BFA22A0686A00754C27 /* Resuming */,
 				CA630BCB229F109600754C27 /* Events */,
 			);
-			path = Interactions;
+			path = Activity;
 			sourceTree = "<group>";
 		};
 		CA630BCB229F109600754C27 /* Events */ = {
@@ -3579,13 +3610,13 @@
 			path = Events;
 			sourceTree = "<group>";
 		};
-		CA630BCC229F10A900754C27 /* Interactions */ = {
+		CA630BCC229F10A900754C27 /* Activity */ = {
 			isa = PBXGroup;
 			children = (
-				CA630BF522A064FA00754C27 /* Resuming Interaction */,
-				CA630BCD229F10AF00754C27 /* Events */,
+				CA630BF522A064FA00754C27 /* Resuming */,
+				CA2AA2D322C93B7C00C0E1A1 /* Intent Donation */,
 			);
-			path = Interactions;
+			path = Activity;
 			sourceTree = "<group>";
 		};
 		CA630BCD229F10AF00754C27 /* Events */ = {
@@ -3619,33 +3650,34 @@
 			path = EurofurenceIntentDefinitions;
 			sourceTree = "<group>";
 		};
-		CA630BF522A064FA00754C27 /* Resuming Interaction */ = {
+		CA630BF522A064FA00754C27 /* Resuming */ = {
 			isa = PBXGroup;
 			children = (
+				CA2AA2D222C93B5A00C0E1A1 /* Intent */,
 				CA630C0122A068D300754C27 /* Test Doubles */,
-				CA630BF622A0650E00754C27 /* WhenResumingUnknownIntent.swift */,
-				CA630BF822A065B300754C27 /* WhenResumingViewEventIntent.swift */,
+				CAB0FD6822C93B4100D4CB98 /* URL */,
 			);
-			path = "Resuming Interaction";
+			path = Resuming;
 			sourceTree = "<group>";
 		};
-		CA630BFA22A0686A00754C27 /* Resuming Interaction */ = {
+		CA630BFA22A0686A00754C27 /* Resuming */ = {
 			isa = PBXGroup;
 			children = (
-				CA630BFF22A068C200754C27 /* EventIntentDefinitionProviding.swift */,
-				CA630C0C22A06D5900754C27 /* IntentDefinitionProvidingFactory.swift */,
-				CA630BFB22A068A200754C27 /* InteractionResumer.swift */,
-				CA630C0A22A06A7B00754C27 /* NavigateToContentResumeInteractionResponseHandler.swift */,
-				CA630BFD22A068B400754C27 /* ResumeInteractionResponseHandler.swift */,
+				CAB0FD5722C90BCE00D4CB98 /* Activity State */,
+				CA630BFB22A068A200754C27 /* ActivityResumer.swift */,
+				CAB0FD5822C90BD900D4CB98 /* Content Router */,
+				CAB0FD5922C90BE900D4CB98 /* Intent Interactions */,
 			);
-			path = "Resuming Interaction";
+			path = Resuming;
 			sourceTree = "<group>";
 		};
 		CA630C0122A068D300754C27 /* Test Doubles */ = {
 			isa = PBXGroup;
 			children = (
 				CA630C0222A068DC00754C27 /* StubEventIntentDefinitionProviding.swift */,
-				CA630C0422A068EA00754C27 /* CapturingResumeIntentResponseHandler.swift */,
+				CA630C0422A068EA00754C27 /* CapturingContentRouter.swift */,
+				CAB0FD5122C90B1E00D4CB98 /* IntentActivityDescription.swift */,
+				CAB0FD6622C93A1400D4CB98 /* URLActivityDescription.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -4733,6 +4765,42 @@
 			path = Debug;
 			sourceTree = "<group>";
 		};
+		CAB0FD5722C90BCE00D4CB98 /* Activity State */ = {
+			isa = PBXGroup;
+			children = (
+				CAB0FD5322C90B3400D4CB98 /* ActivityDescription.swift */,
+				CAB0FD5522C90B4000D4CB98 /* SystemActivityDescription.swift */,
+			);
+			path = "Activity State";
+			sourceTree = "<group>";
+		};
+		CAB0FD5822C90BD900D4CB98 /* Content Router */ = {
+			isa = PBXGroup;
+			children = (
+				CA630BFD22A068B400754C27 /* ContentRouter.swift */,
+				CA630C0A22A06A7B00754C27 /* DirectorContentRouter.swift */,
+			);
+			path = "Content Router";
+			sourceTree = "<group>";
+		};
+		CAB0FD5922C90BE900D4CB98 /* Intent Interactions */ = {
+			isa = PBXGroup;
+			children = (
+				CA630BFF22A068C200754C27 /* EventIntentDefinitionProviding.swift */,
+				CA630C0C22A06D5900754C27 /* IntentDefinitionProvidingFactory.swift */,
+			);
+			path = "Intent Interactions";
+			sourceTree = "<group>";
+		};
+		CAB0FD6822C93B4100D4CB98 /* URL */ = {
+			isa = PBXGroup;
+			children = (
+				CAB0FD6422C93A0B00D4CB98 /* WhenResumingDealerURL.swift */,
+				CAB0FD5A22C90D8D00D4CB98 /* WhenResumingEventURL.swift */,
+			);
+			path = URL;
+			sourceTree = "<group>";
+		};
 		CABA43841FBC6FD3009CB5B0 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -5112,6 +5180,7 @@
 				CAD55940229AF4A70068DD46 /* WhenOpeningEvent_DirectorShould.swift */,
 				CAD55942229AF6C30068DD46 /* WhenShowingInvalidatedAnnouncementAlert_DirectorShould.swift */,
 				CAA10FE122C5E29700689A32 /* WhenOpeningMessage_DirectorShould.swift */,
+				CA2AA2D622C93FBA00C0E1A1 /* WhenOpeningDealer_DirectorShould.swift */,
 			);
 			path = "Opening Content";
 			sourceTree = "<group>";
@@ -5851,7 +5920,7 @@
 				CA637582208CDE2000536BE2 /* ScheduleModuleProviding.swift in Sources */,
 				CACF1E5A20AE2DFB00D904B5 /* EventDetailScene.swift in Sources */,
 				CACF1E7C20B212A800D904B5 /* EventDetailBinder.swift in Sources */,
-				CA630C0B22A06A7B00754C27 /* NavigateToContentResumeInteractionResponseHandler.swift in Sources */,
+				CA630C0B22A06A7B00754C27 /* DirectorContentRouter.swift in Sources */,
 				CA6660A022B5A8DE0050A04E /* DaysHorizontalPickerView.swift in Sources */,
 				CAEAEC011FE0054500C0EE7C /* MessageDetailModuleFactory.swift in Sources */,
 				CA630C5122A079E100754C27 /* Intents.intentdefinition in Sources */,
@@ -5887,7 +5956,7 @@
 				CA2A586D20F76F03002C69B6 /* UIKitMapCoordinateRender.swift in Sources */,
 				CA27618220DF932C000E52AC /* AspectRatioConstrainedImageView.swift in Sources */,
 				CA6375B2208E02E300536BE2 /* DealersScene.swift in Sources */,
-				CA630BFE22A068B400754C27 /* ResumeInteractionResponseHandler.swift in Sources */,
+				CA630BFE22A068B400754C27 /* ContentRouter.swift in Sources */,
 				CA36A4E420DAFF7E00EE6537 /* DealerDetailModuleProviding.swift in Sources */,
 				CA1FE99E1FA0B41E009C7DF3 /* NavigationControllerFactory.swift in Sources */,
 				CA283AB420EAA1CE00F7D195 /* AnnouncementsModule.swift in Sources */,
@@ -5936,6 +6005,7 @@
 				CA630C0722A0696D00754C27 /* ViewEventIntentDefinition.swift in Sources */,
 				CA50B1BC2261112D0091E425 /* EventFeedbackSceneFactory.swift in Sources */,
 				CAE27B4C1F855E0E005FDE39 /* TabModuleProviding.swift in Sources */,
+				CA2AA2D522C93EC300C0E1A1 /* TabBarDirector.swift in Sources */,
 				CA6A8D6F20E2648E007536CD /* MapsModuleBuilder.swift in Sources */,
 				CA630BD1229F11CC00754C27 /* DonateIntentEventInteractionRecorder.swift in Sources */,
 				CAD55938229AEFC50068DD46 /* NotificationResponseHandler.swift in Sources */,
@@ -5949,6 +6019,7 @@
 				CA6A8D6D20E26482007536CD /* MapsSceneFactory.swift in Sources */,
 				CA00AE9120D293B800C2FBB0 /* UICollectionView+Extensions.swift in Sources */,
 				CACF1EA420B5ACD400D904B5 /* EventDetailDescriptionTableViewCell.swift in Sources */,
+				CAB0FD5422C90B3400D4CB98 /* ActivityDescription.swift in Sources */,
 				CA36A44B20D771B500EE6537 /* SelectionChangedHaptic.swift in Sources */,
 				CA73AEE7201A0883004E77BF /* KnowledgeListScene.swift in Sources */,
 				CA00AE4720D16BCB00C2FBB0 /* ScheduleViewModel.swift in Sources */,
@@ -5978,6 +6049,7 @@
 				CAA10FE622C75CA800689A32 /* MultiStepFormTextField.swift in Sources */,
 				CA1ECB4D1FE7F2A10076083A /* NewsPresenter.swift in Sources */,
 				CA17FE83205800A7005A4C05 /* LinkViewModel.swift in Sources */,
+				CAB0FD5622C90B4000D4CB98 /* SystemActivityDescription.swift in Sources */,
 				CA17FE8720580527005A4C05 /* KnowledgeDetailContentsTableViewCell.swift in Sources */,
 				CA152ECC2265129B00212742 /* EventFeedbackModuleDelegate.swift in Sources */,
 				9A861ED41F25564900B75A8C /* WindowAlertRouter.swift in Sources */,
@@ -6029,7 +6101,7 @@
 				CA7D8B20222DBC28003431A0 /* DefaultEventDetailViewModel.swift in Sources */,
 				78455B621F118699005BE2D7 /* RoundedCornerButton.swift in Sources */,
 				CA00AE4520D16BBD00C2FBB0 /* ScheduleInteractor.swift in Sources */,
-				CA630BFC22A068A200754C27 /* InteractionResumer.swift in Sources */,
+				CA630BFC22A068A200754C27 /* ActivityResumer.swift in Sources */,
 				CA957B601F705AF9004DFD5A /* MessagesViewController.swift in Sources */,
 				CA321F511F7BC8550050E489 /* PreloadSceneFactory.swift in Sources */,
 				CA152EFA2267AB4900212742 /* ToggleEventFavouriteStateViewModel.swift in Sources */,
@@ -6262,6 +6334,7 @@
 				CA81D4921FE9AC9200A52A2F /* PlatformTabModuleFactoryTests.swift in Sources */,
 				CA40109121107ED00056E16C /* WhenSceneSelectsKnowledgeEntry_KnowledgeGroupEntriesPresenterShould.swift in Sources */,
 				CA9AC16D2085476E0039C0C2 /* EventComponentViewModel+RandomValueProviding.swift in Sources */,
+				CAB0FD5222C90B1E00D4CB98 /* IntentActivityDescription.swift in Sources */,
 				CA152ECE2265143400212742 /* CapturingEventFeedbackModuleDelegate.swift in Sources */,
 				CA401082210FAF620056E16C /* CapturingKnowledgeGroupEntriesScene.swift in Sources */,
 				78C86D541F1228B0003A20E6 /* TutorialViewControllerTests.swift in Sources */,
@@ -6354,6 +6427,8 @@
 				CA1ECB3D1FE331750076083A /* WhenInitialMessagesLoadCompletesWithNoMessages.swift in Sources */,
 				CABF03B72041C2150028BD62 /* DefaultKnowledgeGroupsInteractorTests.swift in Sources */,
 				CA40109F211083610056E16C /* DefaultKnowledgeGroupEntriesInteractorShould.swift in Sources */,
+				CAB0FD6722C93A1400D4CB98 /* URLActivityDescription.swift in Sources */,
+				CA2AA2D722C93FBA00C0E1A1 /* WhenOpeningDealer_DirectorShould.swift in Sources */,
 				7820A6DB1F13F4DE004C0FB5 /* StubPresentationAssets.swift in Sources */,
 				CA250DD020D6D4F500E7513C /* CapturingScheduleSearchViewModel.swift in Sources */,
 				CA6A8DF320E425E2007536CD /* WhenPreparingViewModel_MapDetailInteractorShould.swift in Sources */,
@@ -6511,7 +6586,6 @@
 				CA637558208CBC1D00536BE2 /* StubKnowledgeListModuleProviding.swift in Sources */,
 				CA4FBE101F73047700D29405 /* CapturingDateFormatter.swift in Sources */,
 				781A94481F1A1E5D002DE70F /* EurofurenceFCMDeviceRegistrationTests.swift in Sources */,
-				CA27619420DFF66F000E52AC /* WhenApplicationRequestsHandlingOfExternalContent_DirectorShould.swift in Sources */,
 				CA44C376211C6617003C1C4E /* SchedulePresenterDealersDenIconBindingTests.swift in Sources */,
 				7820A6FD1F16C0C8004C0FB5 /* AcknowledgedPushPermissionsRequestTestDoubles.swift in Sources */,
 				CA00AE8520D2320700C2FBB0 /* StubScheduleViewModel.swift in Sources */,
@@ -6581,7 +6655,7 @@
 				CA63753D208A6E4900536BE2 /* WhenLoggedOutBeforeConvention_NewsInteractorShould.swift in Sources */,
 				CA162E8B20A64352004AFED6 /* WhenLoggedOutDuringConvention_NewsInteractorShould.swift in Sources */,
 				CA44C378211CAC8E003C1C4E /* SchedulePresenterMainStageIconBindingTests.swift in Sources */,
-				CA630C0522A068EA00754C27 /* CapturingResumeIntentResponseHandler.swift in Sources */,
+				CA630C0522A068EA00754C27 /* CapturingContentRouter.swift in Sources */,
 				CA3ABA07229C76BE0045A35B /* FakeModuleRepository.swift in Sources */,
 				CAC1E1391F50431000195513 /* NewsPresenterTestBuilder.swift in Sources */,
 				CA6375B9208E03C000536BE2 /* CapturingDealersScene.swift in Sources */,
@@ -6707,8 +6781,10 @@
 				CACF1E7420B1D0ED00D904B5 /* FakeEventDetailInteractor.swift in Sources */,
 				CA283A6020E6ECD300F7D195 /* WhenToldToRefresh_NewsInteractorShould.swift in Sources */,
 				CA637578208CDB4700536BE2 /* WhenUserSelectsMessage_DirectorShould.swift in Sources */,
+				CAB0FD5B22C90D8D00D4CB98 /* WhenResumingEventURL.swift in Sources */,
 				CA00AE7720D1AA2100C2FBB0 /* CapturingScheduleViewModelDelegate.swift in Sources */,
 				CACF1EA620B5B77700D904B5 /* WhenBindingEventSummary_EventDetailPresenterShould.swift in Sources */,
+				CAB0FD6522C93A0B00D4CB98 /* WhenResumingDealerURL.swift in Sources */,
 				CA36A4C820DA7A1C00EE6537 /* WhenBindingDealerSearchResult_DealersPresenterShould.swift in Sources */,
 				CA283AC420EAB76800F7D195 /* FakeAnnouncementsListViewModel.swift in Sources */,
 				CA1B6F1220DB819A00ADF414 /* StubDealerDetailSceneFactory.swift in Sources */,
