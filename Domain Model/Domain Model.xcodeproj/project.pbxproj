@@ -12,6 +12,7 @@
 		CA25A87522C15F4F00226478 /* WhenRequestingStoreRefresh_MultipleTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA25A87422C15F4F00226478 /* WhenRequestingStoreRefresh_MultipleTimes.swift */; };
 		CA2AA2DA22C941C200C0E1A1 /* WhenDescribingAppLink_WithValidDealerIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2D922C941C200C0E1A1 /* WhenDescribingAppLink_WithValidDealerIdentifier.swift */; };
 		CA2AA2DC22C942AB00C0E1A1 /* WhenDescribingAppLink_WithInvalidDealerIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2DB22C942AB00C0E1A1 /* WhenDescribingAppLink_WithInvalidDealerIdentifier.swift */; };
+		CA2AA2DF22C943E300C0E1A1 /* URLEntityProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2DE22C943E300C0E1A1 /* URLEntityProcessor.swift */; };
 		CA7A2F3422B16DA3002AD939 /* EurofurenceModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A2F2B22B16DA3002AD939 /* EurofurenceModel.framework */; };
 		CA7A2FFF22B16DE4002AD939 /* EurofurenceSessionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F4322B16DE3002AD939 /* EurofurenceSessionState.swift */; };
 		CA7A300022B16DE4002AD939 /* ApplicationNotificationKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F4422B16DE3002AD939 /* ApplicationNotificationKey.swift */; };
@@ -489,6 +490,7 @@
 		CA25A87422C15F4F00226478 /* WhenRequestingStoreRefresh_MultipleTimes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenRequestingStoreRefresh_MultipleTimes.swift; sourceTree = "<group>"; };
 		CA2AA2D922C941C200C0E1A1 /* WhenDescribingAppLink_WithValidDealerIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDescribingAppLink_WithValidDealerIdentifier.swift; sourceTree = "<group>"; };
 		CA2AA2DB22C942AB00C0E1A1 /* WhenDescribingAppLink_WithInvalidDealerIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDescribingAppLink_WithInvalidDealerIdentifier.swift; sourceTree = "<group>"; };
+		CA2AA2DE22C943E300C0E1A1 /* URLEntityProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLEntityProcessor.swift; sourceTree = "<group>"; };
 		CA7A2F2B22B16DA3002AD939 /* EurofurenceModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EurofurenceModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA7A2F2E22B16DA3002AD939 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA7A2F3322B16DA3002AD939 /* EurofurenceModelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EurofurenceModelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1014,6 +1016,15 @@
 			path = Dealers;
 			sourceTree = "<group>";
 		};
+		CA2AA2DD22C943D100C0E1A1 /* URL */ = {
+			isa = PBXGroup;
+			children = (
+				CA7A2FEE22B16DE3002AD939 /* ConcreteContentLinksService.swift */,
+				CA2AA2DE22C943E300C0E1A1 /* URLEntityProcessor.swift */,
+			);
+			path = URL;
+			sourceTree = "<group>";
+		};
 		CA7A2F1122B16D70002AD939 = {
 			isa = PBXGroup;
 			children = (
@@ -1435,18 +1446,18 @@
 				CA7A2FFA22B16DE3002AD939 /* ConcreteAnnouncementsService.swift */,
 				CA7A2FF622B16DE3002AD939 /* ConcreteAuthenticationService.swift */,
 				CA7A2FF022B16DE3002AD939 /* ConcreteCollectThemAllService.swift */,
-				CA7A2FEE22B16DE3002AD939 /* ConcreteContentLinksService.swift */,
 				CA7A2FF922B16DE3002AD939 /* ConcreteConventionCountdownService.swift */,
 				CA7A2FF822B16DE3002AD939 /* ConcreteDealersService.swift */,
 				CA7A2FF322B16DE3002AD939 /* ConcreteKnowledgeService.swift */,
 				CA7A2FF122B16DE3002AD939 /* ConcreteMapsService.swift */,
-				CAA10FD122C5E0F400689A32 /* Notifications */,
 				CA7A2FED22B16DE3002AD939 /* ConcretePrivateMessagesService.swift */,
 				CA7A2FF422B16DE3002AD939 /* ConcreteRefreshService.swift */,
 				CA7A2FEF22B16DE3002AD939 /* ConcreteSessionStateService.swift */,
 				CA7A2FF222B16DE3002AD939 /* DataStoreChangedConsumer.swift */,
 				CA7A2FF522B16DE3002AD939 /* EventFeedbackService.swift */,
 				CA7A2FFB22B16DE3002AD939 /* Events */,
+				CAA10FD122C5E0F400689A32 /* Notifications */,
+				CA2AA2DD22C943D100C0E1A1 /* URL */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -2417,6 +2428,7 @@
 				CA7A309622B16DE4002AD939 /* EventFeedbackService.swift in Sources */,
 				CA7A302E22B16DE4002AD939 /* AnnouncementEntity+Adaptation.swift in Sources */,
 				CAA10FD422C5E10500689A32 /* NotificationPayloadDecodingContext.swift in Sources */,
+				CA2AA2DF22C943E300C0E1A1 /* URLEntityProcessor.swift in Sources */,
 				CA7A306222B16DE4002AD939 /* LoginResponse.swift in Sources */,
 				CA7A308822B16DE4002AD939 /* RemoteNotificationRegistrationController.swift in Sources */,
 				CA7A302D22B16DE4002AD939 /* LinkEntity+Adaptation.swift in Sources */,
