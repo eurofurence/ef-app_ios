@@ -32,8 +32,9 @@ class ApplicationStack {
         instance.notificationResponseProcessor.openNotification(userInfo, completionHandler: completionHandler)
     }
     
-    static func resumeInteraction(_ intent: Any?) -> Bool {
-        return instance.activityResumer.resume(intent: intent)
+    static func resume(activity: NSUserActivity) -> Bool {
+        let activityDescription = SystemActivityDescription(userActivity: activity)
+        return instance.activityResumer.resume(activity: activityDescription)
     }
 
     private init() {
