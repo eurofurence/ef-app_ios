@@ -67,6 +67,11 @@ struct ActivityResumer {
             handledContent = true
         }
         
+        func visit(_ dealer: DealerIdentifier) {
+            contentRouter.resumeViewingDealer(identifier: dealer)
+            handledContent = true
+        }
+        
     }
     
 }

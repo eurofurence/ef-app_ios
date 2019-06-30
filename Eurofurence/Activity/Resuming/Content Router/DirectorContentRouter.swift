@@ -8,4 +8,8 @@ struct DirectorContentRouter: ContentRouter {
         director.openEvent(identifier)
     }
     
+    func resumeViewingDealer(identifier: DealerIdentifier) {
+        
+    }
+    
 }

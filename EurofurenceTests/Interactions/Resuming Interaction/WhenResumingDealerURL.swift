@@ -3,20 +3,20 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import XCTest
 
-class WhenResumingEventURL: XCTestCase {
+class WhenResumingDealerURL: XCTestCase {
 
     func testTheActivityIsResumed() {
         let contentLinksService = StubContentLinksService()
         let contentRouter = CapturingContentRouter()
         let intentResumer = ActivityResumer(contentLinksService: contentLinksService, contentRouter: contentRouter)
         let url = URL.random
-        let event = EventIdentifier.random
-        contentLinksService.stub(.event(event), for: url)
+        let dealer = DealerIdentifier.random
+        contentLinksService.stub(.dealer(dealer), for: url)
         let activity = URLActivityDescription(url: url)
         let handled = intentResumer.resume(activity: activity)
         
         XCTAssertTrue(handled)
-        XCTAssertEqual(event, contentRouter.resumedEvent)
+        XCTAssertEqual(dealer, contentRouter.resumedDealer)
     }
 
 }

@@ -8,4 +8,9 @@ class CapturingContentRouter: ContentRouter {
         resumedEvent = identifier
     }
     
+    private(set) var resumedDealer: DealerIdentifier?
+    func resumeViewingDealer(identifier: DealerIdentifier) {
+        resumedDealer = identifier
+    }
+    
 }

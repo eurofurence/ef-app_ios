@@ -19,6 +19,7 @@ class StubContentLinksService: ContentLinksService {
     
     enum URLContent {
         case event(EventIdentifier)
+        case dealer(DealerIdentifier)
     }
     
     private var urlContent = [URL: URLContent]()
@@ -32,6 +33,9 @@ class StubContentLinksService: ContentLinksService {
         switch content {
         case .event(let event):
             visitor.visit(event)
+            
+        case .dealer(let dealer):
+            visitor.visit(dealer)
         }
     }
 
