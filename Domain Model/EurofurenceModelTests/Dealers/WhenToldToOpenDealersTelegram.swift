@@ -2,33 +2,33 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import XCTest
 
-class WhenToldToOpenDealersTwitter_WhenApplicationCanHandleURL_ApplicationShould: XCTestCase {
+class WhenToldToOpenDealersTelegram: XCTestCase {
 
-    func testTellTheApplicationToOpenTheTwitterURLWithTheDealersHandle() {
+    func testTellTheApplicationToOpenTheTelegramURLWithTheDealersHandle() {
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let dealer = syncResponse.dealers.changed.randomElement().element
-        let urlOpener = HappyPathURLOpener()
+        let urlOpener = CapturingURLOpener()
         let context = EurofurenceSessionTestBuilder().with(urlOpener).build()
         context.performSuccessfulSync(response: syncResponse)
         let dealerIdentifier = DealerIdentifier(dealer.identifier)
         let entity = context.dealersService.fetchDealer(for: dealerIdentifier)
-        entity?.openTwitter()
-        let expected = unwrap(URL(string: "https://twitter.com/")).appendingPathComponent(dealer.twitterHandle)
+        entity?.openTelegram()
+        let expected = unwrap(URL(string: "https://t.me/")).appendingPathComponent(dealer.twitterHandle)
 
         XCTAssertEqual(expected, urlOpener.capturedURLToOpen)
     }
 
-    func testNotTellTheApplicationToOpenTheTwitterURLWhenTheDealersHandleIsEmpty() {
+    func testNotTellTheApplicationToOpenTheTelegramURLWhenTheDealersHandleIsEmpty() {
         var syncResponse = ModelCharacteristics.randomWithoutDeletions
         var dealer = DealerCharacteristics.random
-        dealer.twitterHandle = ""
+        dealer.telegramHandle = ""
         syncResponse.dealers.changed = [dealer]
-        let urlOpener = HappyPathURLOpener()
+        let urlOpener = CapturingURLOpener()
         let context = EurofurenceSessionTestBuilder().with(urlOpener).build()
         context.performSuccessfulSync(response: syncResponse)
         let dealerIdentifier = DealerIdentifier(dealer.identifier)
         let entity = context.dealersService.fetchDealer(for: dealerIdentifier)
-        entity?.openTwitter()
+        entity?.openTelegram()
 
         XCTAssertNil(urlOpener.capturedURLToOpen)
     }

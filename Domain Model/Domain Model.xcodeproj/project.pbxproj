@@ -285,14 +285,13 @@
 		CA7A31FC22B16E26002AD939 /* UserDefaultsForceRefreshRequired.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A312322B16E25002AD939 /* UserDefaultsForceRefreshRequired.swift */; };
 		CA7A31FD22B16E26002AD939 /* WhenUpgradingBetweenAppVersions_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A312422B16E25002AD939 /* WhenUpgradingBetweenAppVersions_ApplicationShould.swift */; };
 		CA7A31FE22B16E26002AD939 /* DealerAssertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A312622B16E25002AD939 /* DealerAssertion.swift */; };
-		CA7A31FF22B16E26002AD939 /* WhenToldToOpenDealersTelegram_WhenApplicationCanHandleURL_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A312722B16E25002AD939 /* WhenToldToOpenDealersTelegram_WhenApplicationCanHandleURL_ApplicationShould.swift */; };
+		CA7A31FF22B16E26002AD939 /* WhenToldToOpenDealersTelegram.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A312722B16E25002AD939 /* WhenToldToOpenDealersTelegram.swift */; };
 		CA7A320022B16E26002AD939 /* WhenFetchingIconDataForDealerWithoutArtwork_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A312822B16E25002AD939 /* WhenFetchingIconDataForDealerWithoutArtwork_ApplicationShould.swift */; };
-		CA7A320122B16E26002AD939 /* WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A312922B16E25002AD939 /* WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould.swift */; };
+		CA7A320122B16E26002AD939 /* WhenToldToOpenDealersWebsite.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A312922B16E25002AD939 /* WhenToldToOpenDealersWebsite.swift */; };
 		CA7A320222B16E26002AD939 /* WhenObservingDealersIndexBeforeSyncOccurs_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A312A22B16E25002AD939 /* WhenObservingDealersIndexBeforeSyncOccurs_ApplicationShould.swift */; };
 		CA7A320322B16E26002AD939 /* WhenTellingDealersIndexToSearch_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A312B22B16E25002AD939 /* WhenTellingDealersIndexToSearch_ApplicationShould.swift */; };
 		CA7A320422B16E26002AD939 /* WhenObservingDealersIndexAfterSyncOccurs_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A312C22B16E25002AD939 /* WhenObservingDealersIndexAfterSyncOccurs_ApplicationShould.swift */; };
 		CA7A320522B16E26002AD939 /* WhenObservingDealersIndexThenSyncOccurs_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A312D22B16E25002AD939 /* WhenObservingDealersIndexThenSyncOccurs_ApplicationShould.swift */; };
-		CA7A320622B16E26002AD939 /* WhenToldToOpenDealersWebsite_WhenApplicationCannotHandleURL_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A312E22B16E25002AD939 /* WhenToldToOpenDealersWebsite_WhenApplicationCannotHandleURL_ApplicationShould.swift */; };
 		CA7A320722B16E26002AD939 /* WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A312F22B16E25002AD939 /* WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould.swift */; };
 		CA7A320822B16E26002AD939 /* WhenFetchingIconDataForDealerWithArtwork_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A313022B16E25002AD939 /* WhenFetchingIconDataForDealerWithArtwork_ApplicationShould.swift */; };
 		CA7A320922B16E26002AD939 /* AlphabetisedDealersGroupAssertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A313122B16E25002AD939 /* AlphabetisedDealersGroupAssertion.swift */; };
@@ -300,7 +299,7 @@
 		CA7A320B22B16E26002AD939 /* WhenObservingDealersAfterLoadingFromStore_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A313322B16E25002AD939 /* WhenObservingDealersAfterLoadingFromStore_ApplicationShould.swift */; };
 		CA7A320C22B16E26002AD939 /* WhenDealersHaveCaseVaryingNames_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A313422B16E25002AD939 /* WhenDealersHaveCaseVaryingNames_ApplicationShould.swift */; };
 		CA7A320D22B16E26002AD939 /* WhenAdaptingDealersFromResponse_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A313522B16E25002AD939 /* WhenAdaptingDealersFromResponse_ApplicationShould.swift */; };
-		CA7A320E22B16E26002AD939 /* WhenToldToOpenDealersTwitter_WhenApplicationCanHandleURL_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A313622B16E25002AD939 /* WhenToldToOpenDealersTwitter_WhenApplicationCanHandleURL_ApplicationShould.swift */; };
+		CA7A320E22B16E26002AD939 /* WhenToldToOpenDealersTwitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A313622B16E25002AD939 /* WhenToldToOpenDealersTwitter.swift */; };
 		CA7A320F22B16E26002AD939 /* WhenPreparingDealerMapGraphic_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A313722B16E25002AD939 /* WhenPreparingDealerMapGraphic_ApplicationShould.swift */; };
 		CA7A321022B16E26002AD939 /* WhenFetchingDaysBeforeRefreshWhenStoreHasConferenceDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A313922B16E25002AD939 /* WhenFetchingDaysBeforeRefreshWhenStoreHasConferenceDays.swift */; };
 		CA7A321122B16E26002AD939 /* WhenSyncCompletesWithConferenceDays_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A313A22B16E25002AD939 /* WhenSyncCompletesWithConferenceDays_ApplicationShould.swift */; };
@@ -765,14 +764,13 @@
 		CA7A312322B16E25002AD939 /* UserDefaultsForceRefreshRequired.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsForceRefreshRequired.swift; sourceTree = "<group>"; };
 		CA7A312422B16E25002AD939 /* WhenUpgradingBetweenAppVersions_ApplicationShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenUpgradingBetweenAppVersions_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA7A312622B16E25002AD939 /* DealerAssertion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealerAssertion.swift; sourceTree = "<group>"; };
-		CA7A312722B16E25002AD939 /* WhenToldToOpenDealersTelegram_WhenApplicationCanHandleURL_ApplicationShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenToldToOpenDealersTelegram_WhenApplicationCanHandleURL_ApplicationShould.swift; sourceTree = "<group>"; };
+		CA7A312722B16E25002AD939 /* WhenToldToOpenDealersTelegram.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenToldToOpenDealersTelegram.swift; sourceTree = "<group>"; };
 		CA7A312822B16E25002AD939 /* WhenFetchingIconDataForDealerWithoutArtwork_ApplicationShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenFetchingIconDataForDealerWithoutArtwork_ApplicationShould.swift; sourceTree = "<group>"; };
-		CA7A312922B16E25002AD939 /* WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould.swift; sourceTree = "<group>"; };
+		CA7A312922B16E25002AD939 /* WhenToldToOpenDealersWebsite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenToldToOpenDealersWebsite.swift; sourceTree = "<group>"; };
 		CA7A312A22B16E25002AD939 /* WhenObservingDealersIndexBeforeSyncOccurs_ApplicationShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenObservingDealersIndexBeforeSyncOccurs_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA7A312B22B16E25002AD939 /* WhenTellingDealersIndexToSearch_ApplicationShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenTellingDealersIndexToSearch_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA7A312C22B16E25002AD939 /* WhenObservingDealersIndexAfterSyncOccurs_ApplicationShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenObservingDealersIndexAfterSyncOccurs_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA7A312D22B16E25002AD939 /* WhenObservingDealersIndexThenSyncOccurs_ApplicationShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenObservingDealersIndexThenSyncOccurs_ApplicationShould.swift; sourceTree = "<group>"; };
-		CA7A312E22B16E25002AD939 /* WhenToldToOpenDealersWebsite_WhenApplicationCannotHandleURL_ApplicationShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenToldToOpenDealersWebsite_WhenApplicationCannotHandleURL_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA7A312F22B16E25002AD939 /* WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA7A313022B16E25002AD939 /* WhenFetchingIconDataForDealerWithArtwork_ApplicationShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenFetchingIconDataForDealerWithArtwork_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA7A313122B16E25002AD939 /* AlphabetisedDealersGroupAssertion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlphabetisedDealersGroupAssertion.swift; sourceTree = "<group>"; };
@@ -780,7 +778,7 @@
 		CA7A313322B16E25002AD939 /* WhenObservingDealersAfterLoadingFromStore_ApplicationShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenObservingDealersAfterLoadingFromStore_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA7A313422B16E25002AD939 /* WhenDealersHaveCaseVaryingNames_ApplicationShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenDealersHaveCaseVaryingNames_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA7A313522B16E25002AD939 /* WhenAdaptingDealersFromResponse_ApplicationShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenAdaptingDealersFromResponse_ApplicationShould.swift; sourceTree = "<group>"; };
-		CA7A313622B16E25002AD939 /* WhenToldToOpenDealersTwitter_WhenApplicationCanHandleURL_ApplicationShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenToldToOpenDealersTwitter_WhenApplicationCanHandleURL_ApplicationShould.swift; sourceTree = "<group>"; };
+		CA7A313622B16E25002AD939 /* WhenToldToOpenDealersTwitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenToldToOpenDealersTwitter.swift; sourceTree = "<group>"; };
 		CA7A313722B16E25002AD939 /* WhenPreparingDealerMapGraphic_ApplicationShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenPreparingDealerMapGraphic_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA7A313922B16E25002AD939 /* WhenFetchingDaysBeforeRefreshWhenStoreHasConferenceDays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenFetchingDaysBeforeRefreshWhenStoreHasConferenceDays.swift; sourceTree = "<group>"; };
 		CA7A313A22B16E25002AD939 /* WhenSyncCompletesWithConferenceDays_ApplicationShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenSyncCompletesWithConferenceDays_ApplicationShould.swift; sourceTree = "<group>"; };
@@ -1744,10 +1742,9 @@
 				CA7A312D22B16E25002AD939 /* WhenObservingDealersIndexThenSyncOccurs_ApplicationShould.swift */,
 				CA7A313722B16E25002AD939 /* WhenPreparingDealerMapGraphic_ApplicationShould.swift */,
 				CA7A312B22B16E25002AD939 /* WhenTellingDealersIndexToSearch_ApplicationShould.swift */,
-				CA7A312722B16E25002AD939 /* WhenToldToOpenDealersTelegram_WhenApplicationCanHandleURL_ApplicationShould.swift */,
-				CA7A313622B16E25002AD939 /* WhenToldToOpenDealersTwitter_WhenApplicationCanHandleURL_ApplicationShould.swift */,
-				CA7A312922B16E25002AD939 /* WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould.swift */,
-				CA7A312E22B16E25002AD939 /* WhenToldToOpenDealersWebsite_WhenApplicationCannotHandleURL_ApplicationShould.swift */,
+				CA7A312722B16E25002AD939 /* WhenToldToOpenDealersTelegram.swift */,
+				CA7A313622B16E25002AD939 /* WhenToldToOpenDealersTwitter.swift */,
+				CA7A312922B16E25002AD939 /* WhenToldToOpenDealersWebsite.swift */,
 			);
 			path = Dealers;
 			sourceTree = "<group>";
@@ -2588,7 +2585,7 @@
 				CA7A31A222B16E26002AD939 /* WhenFetchingKnowledgeGroupsWithoutLoadingAnything.swift in Sources */,
 				CA7A31C622B16E26002AD939 /* WhenPerformingSync_ApplicationShould.swift in Sources */,
 				CAB0FD5E22C9128800D4CB98 /* WhenDescribingAppLink_WithValidEventIdentifier.swift in Sources */,
-				CA7A320E22B16E26002AD939 /* WhenToldToOpenDealersTwitter_WhenApplicationCanHandleURL_ApplicationShould.swift in Sources */,
+				CA7A320E22B16E26002AD939 /* WhenToldToOpenDealersTwitter.swift in Sources */,
 				CA7A31BA22B16E26002AD939 /* WhenSyncSucceeds_ForEmptyDataStore_ApplicationShould.swift in Sources */,
 				CA7A31F722B16E26002AD939 /* CapturingCollectThemAllURLObserver.swift in Sources */,
 				CA7A31FC22B16E26002AD939 /* UserDefaultsForceRefreshRequired.swift in Sources */,
@@ -2603,7 +2600,7 @@
 				CA7A320B22B16E26002AD939 /* WhenObservingDealersAfterLoadingFromStore_ApplicationShould.swift in Sources */,
 				CA7A325322B16E26002AD939 /* WhenObservingConventionCountdown_AndSignificantTimeChangeOccurs_EurofurenceApplicationShould.swift in Sources */,
 				CA7A319322B16E26002AD939 /* EventConferenceDaysRemoveAllBeforeInsertTests.swift in Sources */,
-				CA7A320122B16E26002AD939 /* WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould.swift in Sources */,
+				CA7A320122B16E26002AD939 /* WhenToldToOpenDealersWebsite.swift in Sources */,
 				CA7A31CC22B16E26002AD939 /* MessageAssertion.swift in Sources */,
 				CA7A31F622B16E26002AD939 /* CapturingEventsServiceObserver.swift in Sources */,
 				CA7A323C22B16E26002AD939 /* WhenSyncSuceeds_ThenObservingUpcomingEvents.swift in Sources */,
@@ -2623,7 +2620,6 @@
 				CA7A322C22B16E26002AD939 /* WhenFavouritingMultipleEvents_ApplicationShould.swift in Sources */,
 				CA7A31A722B16E26002AD939 /* WhenFetchingImagesForKnowledgeEntry_WhenEntryHasNoImages_ApplicationShould.swift in Sources */,
 				CA7A31FD22B16E26002AD939 /* WhenUpgradingBetweenAppVersions_ApplicationShould.swift in Sources */,
-				CA7A320622B16E26002AD939 /* WhenToldToOpenDealersWebsite_WhenApplicationCannotHandleURL_ApplicationShould.swift in Sources */,
 				CA7A324022B16E26002AD939 /* WhenSyncSucceeds_ThenImageChanges_ApplicationShould.swift in Sources */,
 				CA7A321222B16E26002AD939 /* DayAssertion.swift in Sources */,
 				CA7A31B522B16E26002AD939 /* WhenFetchingMapContents_ThatRevealsRoom_ContentsSavedInDataStore_ApplicationShould.swift in Sources */,
@@ -2683,7 +2679,7 @@
 				CAA10FCE22C562EA00689A32 /* WhenToldToOpenNotification_ThatRepresentsMessage_NotDownloaded_DownloadFails.swift in Sources */,
 				CA7A31B822B16E26002AD939 /* WhenPerformingSubsequentSync_AndForceRefreshRequired.swift in Sources */,
 				CA7A31EB22B16E26002AD939 /* CapturingEventObserver.swift in Sources */,
-				CA7A31FF22B16E26002AD939 /* WhenToldToOpenDealersTelegram_WhenApplicationCanHandleURL_ApplicationShould.swift in Sources */,
+				CA7A31FF22B16E26002AD939 /* WhenToldToOpenDealersTelegram.swift in Sources */,
 				CA7A31A122B16E26002AD939 /* WhenFetchingKnowledgeGroup_ApplicationShould.swift in Sources */,
 				CA7A321C22B16E26002AD939 /* WhenRequestingImageForAnnouncementThatHasNoImage_ApplicationShould.swift in Sources */,
 				CA7A31D222B16E26002AD939 /* EventFeedbackAPITests.swift in Sources */,

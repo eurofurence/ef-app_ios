@@ -2,33 +2,33 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import XCTest
 
-class WhenToldToOpenDealersTelegram: XCTestCase {
+class WhenToldToOpenDealersTwitter: XCTestCase {
 
-    func testTellTheApplicationToOpenTheTelegramURLWithTheDealersHandle() {
+    func testTellTheApplicationToOpenTheTwitterURLWithTheDealersHandle() {
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let dealer = syncResponse.dealers.changed.randomElement().element
-        let urlOpener = HappyPathURLOpener()
+        let urlOpener = CapturingURLOpener()
         let context = EurofurenceSessionTestBuilder().with(urlOpener).build()
         context.performSuccessfulSync(response: syncResponse)
         let dealerIdentifier = DealerIdentifier(dealer.identifier)
         let entity = context.dealersService.fetchDealer(for: dealerIdentifier)
-        entity?.openTelegram()
-        let expected = unwrap(URL(string: "https://t.me/")).appendingPathComponent(dealer.twitterHandle)
+        entity?.openTwitter()
+        let expected = unwrap(URL(string: "https://twitter.com/")).appendingPathComponent(dealer.twitterHandle)
 
         XCTAssertEqual(expected, urlOpener.capturedURLToOpen)
     }
 
-    func testNotTellTheApplicationToOpenTheTelegramURLWhenTheDealersHandleIsEmpty() {
+    func testNotTellTheApplicationToOpenTheTwitterURLWhenTheDealersHandleIsEmpty() {
         var syncResponse = ModelCharacteristics.randomWithoutDeletions
         var dealer = DealerCharacteristics.random
-        dealer.telegramHandle = ""
+        dealer.twitterHandle = ""
         syncResponse.dealers.changed = [dealer]
-        let urlOpener = HappyPathURLOpener()
+        let urlOpener = CapturingURLOpener()
         let context = EurofurenceSessionTestBuilder().with(urlOpener).build()
         context.performSuccessfulSync(response: syncResponse)
         let dealerIdentifier = DealerIdentifier(dealer.identifier)
         let entity = context.dealersService.fetchDealer(for: dealerIdentifier)
-        entity?.openTelegram()
+        entity?.openTwitter()
 
         XCTAssertNil(urlOpener.capturedURLToOpen)
     }
