@@ -56,6 +56,10 @@ class ApplicationDirector: RootModuleDelegate, TutorialModuleDelegate, PreloadMo
         tabBarDirector?.openEvent(event)
     }
     
+    func openDealer(_ dealer: DealerIdentifier) {
+        tabBarDirector?.openDealer(dealer)
+    }
+    
     func openMessage(_ message: MessageIdentifier) {
         tabBarDirector?.openMessage(message)
     }

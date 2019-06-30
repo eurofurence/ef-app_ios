@@ -333,6 +333,7 @@
 		CA2A586F20F7F137002C69B6 /* AnnouncementDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2A586E20F7F137002C69B6 /* AnnouncementDateFormatter.swift */; };
 		CA2A587120F7F369002C69B6 /* FoundationAnnouncementDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2A587020F7F369002C69B6 /* FoundationAnnouncementDateFormatter.swift */; };
 		CA2AA2D522C93EC300C0E1A1 /* TabBarDirector.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2D422C93EC300C0E1A1 /* TabBarDirector.swift */; };
+		CA2AA2D722C93FBA00C0E1A1 /* WhenOpeningDealer_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2D622C93FBA00C0E1A1 /* WhenOpeningDealer_DirectorShould.swift */; };
 		CA2D08001FE94AF900BFD785 /* WhenTheAppLaunchesWithUninitializedSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D07FF1FE94AF900BFD785 /* WhenTheAppLaunchesWithUninitializedSession.swift */; };
 		CA2D08021FE94B5500BFD785 /* WhenTheAppLaunchesWithStaleSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D08011FE94B5500BFD785 /* WhenTheAppLaunchesWithStaleSession.swift */; };
 		CA2D08041FE94B9100BFD785 /* WhenTheAppLaunchesWithInitializedSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D08031FE94B9100BFD785 /* WhenTheAppLaunchesWithInitializedSession.swift */; };
@@ -1397,6 +1398,7 @@
 		CA2A586E20F7F137002C69B6 /* AnnouncementDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementDateFormatter.swift; sourceTree = "<group>"; };
 		CA2A587020F7F369002C69B6 /* FoundationAnnouncementDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationAnnouncementDateFormatter.swift; sourceTree = "<group>"; };
 		CA2AA2D422C93EC300C0E1A1 /* TabBarDirector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarDirector.swift; sourceTree = "<group>"; };
+		CA2AA2D622C93FBA00C0E1A1 /* WhenOpeningDealer_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenOpeningDealer_DirectorShould.swift; sourceTree = "<group>"; };
 		CA2D04FD20EE910E00CF54E1 /* NotificationScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationScheduler.swift; sourceTree = "<group>"; };
 		CA2D07FF1FE94AF900BFD785 /* WhenTheAppLaunchesWithUninitializedSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenTheAppLaunchesWithUninitializedSession.swift; sourceTree = "<group>"; };
 		CA2D08011FE94B5500BFD785 /* WhenTheAppLaunchesWithStaleSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenTheAppLaunchesWithStaleSession.swift; sourceTree = "<group>"; };
@@ -5178,6 +5180,7 @@
 				CAD55940229AF4A70068DD46 /* WhenOpeningEvent_DirectorShould.swift */,
 				CAD55942229AF6C30068DD46 /* WhenShowingInvalidatedAnnouncementAlert_DirectorShould.swift */,
 				CAA10FE122C5E29700689A32 /* WhenOpeningMessage_DirectorShould.swift */,
+				CA2AA2D622C93FBA00C0E1A1 /* WhenOpeningDealer_DirectorShould.swift */,
 			);
 			path = "Opening Content";
 			sourceTree = "<group>";
@@ -6425,6 +6428,7 @@
 				CABF03B72041C2150028BD62 /* DefaultKnowledgeGroupsInteractorTests.swift in Sources */,
 				CA40109F211083610056E16C /* DefaultKnowledgeGroupEntriesInteractorShould.swift in Sources */,
 				CAB0FD6722C93A1400D4CB98 /* URLActivityDescription.swift in Sources */,
+				CA2AA2D722C93FBA00C0E1A1 /* WhenOpeningDealer_DirectorShould.swift in Sources */,
 				7820A6DB1F13F4DE004C0FB5 /* StubPresentationAssets.swift in Sources */,
 				CA250DD020D6D4F500E7513C /* CapturingScheduleSearchViewModel.swift in Sources */,
 				CA6A8DF320E425E2007536CD /* WhenPreparingViewModel_MapDetailInteractorShould.swift in Sources */,

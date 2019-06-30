@@ -81,6 +81,17 @@ class TabBarDirector: ExternalContentHandler, NewsModuleDelegate, ScheduleModule
         scheduleNavigationController.setViewControllers([scheduleViewController, module], animated: performAnimations)
     }
     
+    func openDealer(_ dealer: DealerIdentifier) {
+        guard let dealersViewController = dealersViewController,
+            let dealerNavigationController = dealersViewController.navigationController,
+            let tabBarController = tabController,
+            let index = tabBarController.viewControllers?.firstIndex(of: dealerNavigationController) else { return }
+        
+        let module = moduleRepository.makeDealerDetailModule(for: dealer)
+        tabBarController.selectedIndex = index
+        dealerNavigationController.pushViewController(module, animated: performAnimations)
+    }
+    
     func openMessage(_ message: MessageIdentifier) {
         openMessage(message, revealStyle: .replace)
     }
@@ -199,8 +210,7 @@ class TabBarDirector: ExternalContentHandler, NewsModuleDelegate, ScheduleModule
     // MARK: DealersModuleDelegate
     
     func dealersModuleDidSelectDealer(identifier: DealerIdentifier) {
-        let module = moduleRepository.makeDealerDetailModule(for: identifier)
-        dealersViewController?.navigationController?.pushViewController(module, animated: animate)
+        openDealer(identifier)
     }
     
     // MARK: KnowledgeGroupsListModuleDelegate
