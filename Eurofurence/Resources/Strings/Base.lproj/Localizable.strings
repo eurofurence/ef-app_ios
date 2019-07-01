@@ -28,7 +28,7 @@
 "preloadFailureMessage" = "Failed to download data from server. Please try again.";
 
 "UpdateRequiredAlertTitle" = "Update Required";
-"UpdateRequiredAlertMessage" = "A newer version of the Eurofurence application is available. Open the App Store and update to continue.";
+"UpdateRequiredAlertMessage" = "A newer version of the Eurofurence application is available. Open the App Store and update the app in order to continue.";
 
 "News" = "News";
 "YourEurofurence" = "Your Eurofurence";
