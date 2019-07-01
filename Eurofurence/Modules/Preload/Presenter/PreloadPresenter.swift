@@ -36,6 +36,7 @@ struct PreloadPresenter: SplashSceneDelegate, PreloadInteractorDelegate {
     
     func preloadInteractorFailedToLoadDueToOldAppDetected() {
         preloadScene.showStaleAppAlert()
+        delegate.preloadModuleDidCancelPreloading()
     }
 
     func preloadInteractorDidProgress(currentUnitCount: Int, totalUnitCount: Int, localizedDescription: String) {

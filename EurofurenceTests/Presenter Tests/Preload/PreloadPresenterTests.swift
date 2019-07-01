@@ -143,6 +143,7 @@ class PreloadPresenterTests: XCTestCase {
         context.preloadingService.simulateOldAppError()
         
         XCTAssertTrue(context.preloadSceneFactory.splashScene.didShowStaleAppAlert)
+        XCTAssertTrue(context.delegate.notifiedPreloadCancelled)
     }
 
 }
