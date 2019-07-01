@@ -60,6 +60,8 @@ class ApplicationStack {
 
         let mapCoordinateRender = UIKitMapCoordinateRender()
         
+        let updateRemoteConfigOnSync = UpdateRemoteConfigRefreshCollaboration(remoteConfigurationLoader: remoteConfigurationLoader)
+        
         let mandatory = EurofurenceSessionBuilder.Mandatory(
             conventionIdentifier: ApplicationStack.CID,
             conventionStartDateRepository: conventionStartDateRepository
@@ -71,6 +73,7 @@ class ApplicationStack {
             .with(urlOpener)
             .with(longRunningTaskManager)
             .with(mapCoordinateRender)
+            .with(updateRemoteConfigOnSync)
             .build()
 
         services = session.services
