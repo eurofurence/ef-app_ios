@@ -3,7 +3,7 @@ import XCTest
 
 class WhenPerfomingSync_WithUnsuccessfulCollaboration: XCTestCase {
 
-    func testTheErrorIsProvidedToTheCompletionHandler() {
+    func testTheTaskEndsWithCollaborationError() {
         let stubError = NSError()
         let syncCollaboration = UnsuccessfulRefreshCollaboration(error: stubError)
         let context = EurofurenceSessionTestBuilder().with(syncCollaboration).build()
@@ -12,6 +12,7 @@ class WhenPerfomingSync_WithUnsuccessfulCollaboration: XCTestCase {
         context.simulateSyncSuccess(.randomWithoutDeletions)
         
         XCTAssertEqual(.collaborationError(stubError), context.lastRefreshError)
+        XCTAssertEqual(context.longRunningTaskManager.state, .ended)
     }
 
 }

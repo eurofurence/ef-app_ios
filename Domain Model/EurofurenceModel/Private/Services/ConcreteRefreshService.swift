@@ -92,8 +92,9 @@ class ConcreteRefreshService: RefreshService {
                             completionHandler(.collaborationError(error))
                         } else {                        
                             completionHandler(nil)
-                            self.refreshTaskDidFinish()
                         }
+                        
+                        self.refreshTaskDidFinish()
                     })
                 }
             }
