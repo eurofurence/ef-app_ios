@@ -1,8 +1,26 @@
 import Foundation
 
-public enum RefreshServiceError: Error {
+public enum RefreshServiceError: Equatable, Error {
+    
+    public static func == (lhs: RefreshServiceError, rhs: RefreshServiceError) -> Bool {
+        switch (lhs, rhs) {
+        case (.apiError, .apiError):
+            return true
+            
+        case (.conventionIdentifierMismatch, .conventionIdentifierMismatch):
+            return true
+            
+        case (.collaborationError(let l), .collaborationError(let r)):
+            return (l as? AnyHashable) == (r as? AnyHashable)
+            
+        default:
+            return false
+        }
+    }
+    
     case apiError
     case conventionIdentifierMismatch
+    case collaborationError(Error)
 }
 
 public protocol RefreshService {

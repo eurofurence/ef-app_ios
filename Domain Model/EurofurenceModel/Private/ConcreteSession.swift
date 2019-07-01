@@ -41,7 +41,8 @@ class ConcreteSession: EurofurenceSession {
          longRunningTaskManager: LongRunningTaskManager?,
          mapCoordinateRender: MapCoordinateRender?,
          forceRefreshRequired: ForceRefreshRequired,
-         companionAppURLRequestFactory: CompanionAppURLRequestFactory) {
+         companionAppURLRequestFactory: CompanionAppURLRequestFactory,
+         refreshCollaboration: RefreshCollaboration) {
         
         let dataStore = dataStoreFactory.makeDataStore(for: conventionIdentifier)
 
@@ -114,7 +115,8 @@ class ConcreteSession: EurofurenceSession {
                                                 imageCache: imageCache,
                                                 imageRepository: imageRepository,
                                                 privateMessagesController: privateMessagesService,
-                                                forceRefreshRequired: forceRefreshRequired)
+                                                forceRefreshRequired: forceRefreshRequired,
+                                                refreshCollaboration: refreshCollaboration)
 
         notificationService = ConcreteNotificationService(eventBus: eventBus,
                                                           eventsService: eventsService,

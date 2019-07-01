@@ -13,6 +13,9 @@
 		CA2AA2DA22C941C200C0E1A1 /* WhenDescribingAppLink_WithValidDealerIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2D922C941C200C0E1A1 /* WhenDescribingAppLink_WithValidDealerIdentifier.swift */; };
 		CA2AA2DC22C942AB00C0E1A1 /* WhenDescribingAppLink_WithInvalidDealerIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2DB22C942AB00C0E1A1 /* WhenDescribingAppLink_WithInvalidDealerIdentifier.swift */; };
 		CA2AA2DF22C943E300C0E1A1 /* URLEntityProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2DE22C943E300C0E1A1 /* URLEntityProcessor.swift */; };
+		CA2AA2FD22CA8E0B00C0E1A1 /* WhenPerfomingSync_WithUnsuccessfulCollaboration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2FC22CA8E0B00C0E1A1 /* WhenPerfomingSync_WithUnsuccessfulCollaboration.swift */; };
+		CA2AA2FF22CA8F1D00C0E1A1 /* RefreshCollaboration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2FE22CA8F1D00C0E1A1 /* RefreshCollaboration.swift */; };
+		CA2AA30122CA8F3F00C0E1A1 /* UnsuccessfulRefreshCollaboration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA30022CA8F3F00C0E1A1 /* UnsuccessfulRefreshCollaboration.swift */; };
 		CA7A2F3422B16DA3002AD939 /* EurofurenceModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A2F2B22B16DA3002AD939 /* EurofurenceModel.framework */; };
 		CA7A2FFF22B16DE4002AD939 /* EurofurenceSessionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F4322B16DE3002AD939 /* EurofurenceSessionState.swift */; };
 		CA7A300022B16DE4002AD939 /* ApplicationNotificationKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F4422B16DE3002AD939 /* ApplicationNotificationKey.swift */; };
@@ -488,6 +491,9 @@
 		CA2AA2D922C941C200C0E1A1 /* WhenDescribingAppLink_WithValidDealerIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDescribingAppLink_WithValidDealerIdentifier.swift; sourceTree = "<group>"; };
 		CA2AA2DB22C942AB00C0E1A1 /* WhenDescribingAppLink_WithInvalidDealerIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDescribingAppLink_WithInvalidDealerIdentifier.swift; sourceTree = "<group>"; };
 		CA2AA2DE22C943E300C0E1A1 /* URLEntityProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLEntityProcessor.swift; sourceTree = "<group>"; };
+		CA2AA2FC22CA8E0B00C0E1A1 /* WhenPerfomingSync_WithUnsuccessfulCollaboration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPerfomingSync_WithUnsuccessfulCollaboration.swift; sourceTree = "<group>"; };
+		CA2AA2FE22CA8F1D00C0E1A1 /* RefreshCollaboration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshCollaboration.swift; sourceTree = "<group>"; };
+		CA2AA30022CA8F3F00C0E1A1 /* UnsuccessfulRefreshCollaboration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsuccessfulRefreshCollaboration.swift; sourceTree = "<group>"; };
 		CA7A2F2B22B16DA3002AD939 /* EurofurenceModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EurofurenceModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA7A2F2E22B16DA3002AD939 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA7A2F3322B16DA3002AD939 /* EurofurenceModelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EurofurenceModelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1019,6 +1025,14 @@
 			path = URL;
 			sourceTree = "<group>";
 		};
+		CA2AA2FB22CA8DE900C0E1A1 /* Collaboration */ = {
+			isa = PBXGroup;
+			children = (
+				CA2AA2FC22CA8E0B00C0E1A1 /* WhenPerfomingSync_WithUnsuccessfulCollaboration.swift */,
+			);
+			path = Collaboration;
+			sourceTree = "<group>";
+		};
 		CA7A2F1122B16D70002AD939 = {
 			isa = PBXGroup;
 			children = (
@@ -1255,6 +1269,7 @@
 				CA7A2F9A22B16DE3002AD939 /* LongRunningTaskManager.swift */,
 				CA7A2F8F22B16DE3002AD939 /* MapCoordinateRender.swift */,
 				CA7A2F9222B16DE3002AD939 /* NotificationService.swift */,
+				CA2AA2FE22CA8F1D00C0E1A1 /* RefreshCollaboration.swift */,
 				CA7A2F9422B16DE3002AD939 /* RemoteNotificationsTokenRegistration.swift */,
 				CA7A2F8B22B16DE3002AD939 /* SignificantTimeChangeAdapter.swift */,
 				CA7A2F9322B16DE3002AD939 /* URLOpener.swift */,
@@ -1542,6 +1557,7 @@
 		CA7A30CE22B16E24002AD939 /* Sync */ = {
 			isa = PBXGroup;
 			children = (
+				CA2AA2FB22CA8DE900C0E1A1 /* Collaboration */,
 				CA7A30D022B16E24002AD939 /* BeforeSyncInitiated_ApplicationShould.swift */,
 				CA7A30D622B16E24002AD939 /* CapturingRefreshServiceObserver.swift */,
 				CA7A30D222B16E24002AD939 /* WhenPerformingFullStoreRefresh_ApplicationShould.swift */,
@@ -1673,11 +1689,12 @@
 				CA7A310722B16E25002AD939 /* CapturingSignificantTimeChangeAdapter.swift */,
 				CA7A310B22B16E25002AD939 /* FakeLongRunningTaskManager.swift */,
 				CA7A310222B16E25002AD939 /* StubCollectThemAllRequestFactory.swift */,
+				CA8A73D922BD197C007A5201 /* StubCompanionAppURLRequestFactory.swift */,
 				CA7A310322B16E25002AD939 /* StubConventionStartDateRepository.swift */,
 				CA7A310922B16E25002AD939 /* StubDataStoreFactory.swift */,
 				CA7A310122B16E25002AD939 /* StubForceRefreshRequired.swift */,
 				CA7A310C22B16E25002AD939 /* StubUserPreferences.swift */,
-				CA8A73D922BD197C007A5201 /* StubCompanionAppURLRequestFactory.swift */,
+				CA2AA30022CA8F3F00C0E1A1 /* UnsuccessfulRefreshCollaboration.swift */,
 			);
 			path = "Configurable Dependencies";
 			sourceTree = "<group>";
@@ -2400,6 +2417,7 @@
 				CA7A301A22B16DE4002AD939 /* SystemClock.swift in Sources */,
 				CA7A302A22B16DE4002AD939 /* DealerEntity+Adaptation.swift in Sources */,
 				CA7A300522B16DE4002AD939 /* Link.swift in Sources */,
+				CA2AA2FF22CA8F1D00C0E1A1 /* RefreshCollaboration.swift in Sources */,
 				CA7A304F22B16DE4002AD939 /* APIURLProviding.swift in Sources */,
 				CA7A308322B16DE4002AD939 /* AnnouncementImpl.swift in Sources */,
 				CA7A304322B16DE4002AD939 /* RemoteNotificationsTokenRegistration.swift in Sources */,
@@ -2636,6 +2654,7 @@
 				CA7A322E22B16E26002AD939 /* WhenObservingEvent_ThatIsFavourite_FromPreviousSession.swift in Sources */,
 				CA7A322222B16E26002AD939 /* InOrderToSupportSuperSponsorTag_ApplicationShould.swift in Sources */,
 				CA7A320522B16E26002AD939 /* WhenObservingDealersIndexThenSyncOccurs_ApplicationShould.swift in Sources */,
+				CA2AA30122CA8F3F00C0E1A1 /* UnsuccessfulRefreshCollaboration.swift in Sources */,
 				CA8A73DA22BD197C007A5201 /* StubCompanionAppURLRequestFactory.swift in Sources */,
 				CA7A31A322B16E26002AD939 /* KnowledgeGroupAssertion.swift in Sources */,
 				CA7A319F22B16E26002AD939 /* EventConferenceTracksRemoveAllBeforeInsertTests.swift in Sources */,
@@ -2645,6 +2664,7 @@
 				CAA10FD022C5655B00689A32 /* WhenToldToOpenNotification_ThatRepresentsMessage_NotDownloaded_DownloadSucceeds.swift in Sources */,
 				CA7A323322B16E26002AD939 /* WhenSyncFinishesForEventWithPoster_WhenImageAPIIsSlow_ApplicationShould.swift in Sources */,
 				CA7A31A622B16E26002AD939 /* WhenFetchingKnowledgeGroupsBeforeRefreshWhenStoreHasGroups.swift in Sources */,
+				CA2AA2FD22CA8E0B00C0E1A1 /* WhenPerfomingSync_WithUnsuccessfulCollaboration.swift in Sources */,
 				CA7A321122B16E26002AD939 /* WhenSyncCompletesWithConferenceDays_ApplicationShould.swift in Sources */,
 				CA7A31D822B16E26002AD939 /* SyncAPITests.swift in Sources */,
 				CA7A31D022B16E26002AD939 /* WhenMarkingMessageAsRead.swift in Sources */,
