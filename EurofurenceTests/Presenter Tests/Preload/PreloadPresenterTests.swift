@@ -136,5 +136,14 @@ class PreloadPresenterTests: XCTestCase {
         XCTAssertEqual(expected, context.preloadSceneFactory.splashScene.capturedProgress)
         XCTAssertEqual(localizedDescription, context.preloadSceneFactory.splashScene.capturedProgressDescription)
     }
+    
+    func testConventionIdentifierMismatchShowsStaleAppAlert() {
+        let context = PreloadPresenterTestContext().build()
+        context.preloadSceneFactory.splashScene.notifySceneWillAppear()
+        context.preloadingService.simulateOldAppError()
+        
+        XCTAssertTrue(context.preloadSceneFactory.splashScene.didShowStaleAppAlert)
+        XCTAssertTrue(context.delegate.notifiedPreloadCancelled)
+    }
 
 }

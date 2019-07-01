@@ -21,6 +21,11 @@ class CapturingSplashScene: UIViewController, SplashScene {
         capturedProgress = progress
         capturedProgressDescription = progressDescription
     }
+    
+    private(set) var didShowStaleAppAlert = false
+    func showStaleAppAlert() {
+        didShowStaleAppAlert = true
+    }
 
     func notifySceneWillAppear() {
         delegate?.splashSceneWillAppear(self)
