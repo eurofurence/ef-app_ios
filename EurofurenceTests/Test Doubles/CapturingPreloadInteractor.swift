@@ -19,6 +19,10 @@ class CapturingPreloadInteractor: PreloadInteractor {
     func notifySucceededPreload() {
         delegate?.preloadInteractorDidFinishPreloading()
     }
+    
+    func simulateOldAppError() {
+        delegate?.preloadInteractorFailedToLoadDueToOldAppDetected()
+    }
 
     func notifyProgressMade(current: Int, total: Int, localizedDescription: String) {
         delegate?.preloadInteractorDidProgress(currentUnitCount: current,

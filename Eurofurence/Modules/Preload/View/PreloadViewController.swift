@@ -28,5 +28,9 @@ class PreloadViewController: UIViewController, SplashScene {
     func showProgress(_ progress: Float, progressDescription: String) {
         progressDescriptionLabel.text = progressDescription
     }
+    
+    func showStaleAppAlert() {
+        
+    }
 
 }
