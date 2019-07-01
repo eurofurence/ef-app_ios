@@ -5,8 +5,19 @@ class RemotelyConfiguredConventionStartDateRepository: ConventionStartDateReposi
     private var consumers = [ConventionStartDateConsumer]()
     private var configuration: RemoteConfiguration?
     
+    private struct BlockBasedLoaderDelegate: RemoteConfigurationLoaderDelegate {
+        
+        var handler: (RemoteConfiguration) -> Void
+        
+        func remoteConfigurationLoaded(_ remoteConfiguration: RemoteConfiguration) {
+            handler(remoteConfiguration)
+        }
+        
+    }
+    
     init(remoteConfigurationLoader: RemoteConfigurationLoader) {
-        remoteConfigurationLoader.registerConfigurationLoadedHandler(remoteConfigurationLoaded)
+        let configurationLoaderDelegate = BlockBasedLoaderDelegate(handler: remoteConfigurationLoaded)
+        remoteConfigurationLoader.registerConfigurationLoadedDelegate(configurationLoaderDelegate)
     }
     
     func addConsumer(_ consumer: ConventionStartDateConsumer) {

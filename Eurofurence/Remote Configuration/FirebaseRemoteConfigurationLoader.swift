@@ -4,8 +4,8 @@ struct FirebaseRemoteConfigurationLoader: RemoteConfigurationLoader {
     
     private let remoteConfig = RemoteConfig.remoteConfig()
     
-    func registerConfigurationLoadedHandler(_ handler: @escaping (RemoteConfiguration) -> Void) {
-        ConfigFetchTask(remoteConfig: remoteConfig, completionHandler: handler).execute()
+    func registerConfigurationLoadedDelegate(_ delegate: RemoteConfigurationLoaderDelegate) {
+        ConfigFetchTask(remoteConfig: remoteConfig, completionHandler: delegate.remoteConfigurationLoaded).execute()
     }
     
     private struct ConfigFetchTask {
