@@ -33,15 +33,39 @@ struct ActivityResumer {
         }
         
         func visitIntent(_ intent: Any) {
-            if let intent = intent as? EventIntentDefinitionProviding, let intentDefinition = intent.eventIntentDefinition {
-                contentRouter.resumeViewingEvent(identifier: intentDefinition.identifier)
-                handledActivity = true
-            }
+            let intentHandler = IntentActivityHandler(contentRouter: contentRouter)
+            handledActivity = intentHandler.handle(intent: intent)
         }
         
         func visitURL(_ url: URL) {
             let urlHandler = URLActivityHandler(contentRouter: contentRouter, contentLinksService: contentLinksService)
             handledActivity = urlHandler.handle(url: url)
+        }
+        
+    }
+    
+    private class IntentActivityHandler {
+        
+        private let contentRouter: ContentRouter
+        
+        init(contentRouter: ContentRouter) {
+            self.contentRouter = contentRouter
+        }
+        
+        func handle(intent: Any) -> Bool {
+            var handledActivity = false
+            
+            if let intent = intent as? EventIntentDefinitionProviding, let intentDefinition = intent.eventIntentDefinition {
+                contentRouter.resumeViewingEvent(identifier: intentDefinition.identifier)
+                handledActivity = true
+            }
+            
+            if let intent = intent as? DealerIntentDefinitionProviding, let intentDefinition = intent.dealerIntentDefinition {
+                contentRouter.resumeViewingDealer(identifier: intentDefinition.identifier)
+                handledActivity = true
+            }
+            
+            return handledActivity
         }
         
     }

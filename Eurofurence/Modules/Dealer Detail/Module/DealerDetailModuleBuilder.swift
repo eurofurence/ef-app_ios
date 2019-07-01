@@ -4,9 +4,11 @@ class DealerDetailModuleBuilder {
 
     private var dealerDetailSceneFactory: DealerDetailSceneFactory
     private let dealerDetailInteractor: DealerDetailInteractor
+    private let dealerInteractionRecorder: DealerInteractionRecorder
 
-    init(dealerDetailInteractor: DealerDetailInteractor) {
+    init(dealerDetailInteractor: DealerDetailInteractor, dealerInteractionRecorder: DealerInteractionRecorder) {
         self.dealerDetailInteractor = dealerDetailInteractor
+        self.dealerInteractionRecorder = dealerInteractionRecorder
         dealerDetailSceneFactory = StoryboardDealerDetailSceneFactory()
     }
 
@@ -18,7 +20,8 @@ class DealerDetailModuleBuilder {
 
     func build() -> DealerDetailModuleProviding {
         return DealerDetailModule(dealerDetailSceneFactory: dealerDetailSceneFactory,
-                                  dealerDetailInteractor: dealerDetailInteractor)
+                                  dealerDetailInteractor: dealerDetailInteractor,
+                                  dealerInteractionRecorder: dealerInteractionRecorder)
     }
 
 }

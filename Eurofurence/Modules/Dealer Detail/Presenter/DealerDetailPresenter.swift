@@ -125,16 +125,20 @@ struct DealerDetailPresenter: DealerDetailSceneDelegate {
     private let scene: DealerDetailScene
     private let interactor: DealerDetailInteractor
     private let dealer: DealerIdentifier
+    private let dealerInteractionRecorder: DealerInteractionRecorder
 
-    init(scene: DealerDetailScene, interactor: DealerDetailInteractor, dealer: DealerIdentifier) {
+    init(scene: DealerDetailScene, interactor: DealerDetailInteractor, dealer: DealerIdentifier, dealerInteractionRecorder: DealerInteractionRecorder) {
         self.scene = scene
         self.interactor = interactor
         self.dealer = dealer
+        self.dealerInteractionRecorder = dealerInteractionRecorder
 
         scene.setDelegate(self)
     }
 
     func dealerDetailSceneDidLoad() {
+        dealerInteractionRecorder.recordInteraction(for: dealer)
+        
         interactor.makeDealerDetailViewModel(for: dealer) { (viewModel) in
             self.scene.bind(numberOfComponents: viewModel.numberOfComponents,
                             using: Binder(viewModel: viewModel))
