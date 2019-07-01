@@ -7,7 +7,7 @@ class FirebaseRemoteConfigurationLoader: RemoteConfigurationLoader {
     
     func registerConfigurationLoadedDelegate(_ delegate: RemoteConfigurationLoaderDelegate) {
         self.delegate = delegate
-        refresh() { (_) in }
+        refresh { (_) in }
     }
     
     func refresh(completionHandler: @escaping (Error?) -> Void) {
