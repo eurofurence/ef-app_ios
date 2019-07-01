@@ -58,6 +58,12 @@ public extension String {
     static let preloadFailureMessage = NSLocalizedString("preloadFailureMessage",
                                                          comment: "Description for the alert when the download fails")
     
+    static let updateRequiredAlertTitle = NSLocalizedString("UpdateRequiredAlertTitle",
+                                                            comment: "Title used for the alert telling the user they need to update their app")
+    
+    static let updateRequiredAlertMessage = NSLocalizedString("UpdateRequiredAlertMessage",
+                                                              comment: "Message body for the alert telling the user they need to update their app")
+    
     static let news = NSLocalizedString("News", comment: "The title shown for the News view")
     static let yourEurofurence = NSLocalizedString("YourEurofurence",
                                                    comment: "Heading for the messages widget in the News tab")

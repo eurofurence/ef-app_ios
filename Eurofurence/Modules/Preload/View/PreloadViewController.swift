@@ -30,7 +30,11 @@ class PreloadViewController: UIViewController, SplashScene {
     }
     
     func showStaleAppAlert() {
-        
+        let alert = UIAlertController(title: .updateRequiredAlertTitle,
+                                      message: .updateRequiredAlertMessage,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: .ok, style: .cancel))
+        present(alert, animated: true)
     }
 
 }
