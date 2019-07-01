@@ -14,6 +14,7 @@ class ConcreteRefreshService: RefreshService {
     private let imageCache: ImagesCache
     private let imageRepository: ImageRepository
     private let forceRefreshRequired: ForceRefreshRequired
+    private let refreshCollaboration: RefreshCollaboration
 
     init(conventionIdentifier: ConventionIdentifier,
          longRunningTaskManager: LongRunningTaskManager?,
@@ -25,7 +26,8 @@ class ConcreteRefreshService: RefreshService {
          imageCache: ImagesCache,
          imageRepository: ImageRepository,
          privateMessagesController: ConcretePrivateMessagesService,
-         forceRefreshRequired: ForceRefreshRequired) {
+         forceRefreshRequired: ForceRefreshRequired,
+         refreshCollaboration: RefreshCollaboration) {
         self.conventionIdentifier = conventionIdentifier
         self.longRunningTaskManager = longRunningTaskManager
         self.dataStore = dataStore
@@ -37,6 +39,7 @@ class ConcreteRefreshService: RefreshService {
         self.imageRepository = imageRepository
         self.privateMessagesController = privateMessagesController
         self.forceRefreshRequired = forceRefreshRequired
+        self.refreshCollaboration = refreshCollaboration
     }
 
     private var refreshObservers = [RefreshServiceObserver]()
@@ -84,8 +87,15 @@ class ConcreteRefreshService: RefreshService {
                 self.updateLocalStore(response: response, lastSyncTime: lastSyncTime)
                 
                 self.privateMessagesController.refreshMessages {
-                    completionHandler(nil)
-                    self.refreshTaskDidFinish()
+                    self.refreshCollaboration.executeCollaborativeRefreshTask(completionHandler: { (error) in
+                        if let error = error {
+                            completionHandler(.collaborationError(error))
+                        } else {                        
+                            completionHandler(nil)
+                        }
+                        
+                        self.refreshTaskDidFinish()
+                    })
                 }
             }
         }

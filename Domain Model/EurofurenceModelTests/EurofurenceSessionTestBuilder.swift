@@ -179,6 +179,7 @@ class EurofurenceSessionTestBuilder {
     private var forceUpgradeRequired: ForceRefreshRequired = StubForceRefreshRequired(isForceRefreshRequired: false)
     private var longRunningTaskManager: FakeLongRunningTaskManager = FakeLongRunningTaskManager()
     private var conventionStartDateRepository = StubConventionStartDateRepository()
+    private var refreshCollaboration: RefreshCollaboration?
 
     func with(_ currentDate: Date) -> EurofurenceSessionTestBuilder {
         clock = StubClock(currentDate: currentDate)
@@ -263,36 +264,28 @@ class EurofurenceSessionTestBuilder {
         self.conventionStartDateRepository = conventionStartDateRepository
         return self
     }
-
+    
+    @discardableResult
+    func with(_ refreshCollaboration: RefreshCollaboration) -> EurofurenceSessionTestBuilder {
+        self.refreshCollaboration = refreshCollaboration
+        return self
+    }
+    
     @discardableResult
     func build() -> Context {
-        let conventionIdentifier = ConventionIdentifier(identifier: ModelCharacteristics.testConventionIdentifier)
         let notificationTokenRegistration = CapturingRemoteNotificationsTokenRegistration()
         let significantTimeChangeAdapter = CapturingSignificantTimeChangeAdapter()
         let mapCoordinateRender = CapturingMapCoordinateRender()
         
-        let mandatory = EurofurenceSessionBuilder.Mandatory(
-            conventionIdentifier: conventionIdentifier,
-            conventionStartDateRepository: conventionStartDateRepository
-        )
-        
-        let session = EurofurenceSessionBuilder(mandatory: mandatory)
-            .with(api)
-            .with(clock)
-            .with(credentialStore)
-            .with(StubDataStoreFactory(conventionIdentifier: conventionIdentifier, dataStore: dataStore))
-            .with(notificationTokenRegistration)
-            .with(userPreferences)
+        let builder = makeSessionBuilder()
             .with(timeIntervalForUpcomingEventsSinceNow: timeIntervalForUpcomingEventsSinceNow)
-            .with(imageRepository)
             .with(significantTimeChangeAdapter)
-            .with(urlOpener)
-            .with(collectThemAllRequestFactory)
-            .with(longRunningTaskManager)
             .with(mapCoordinateRender)
-            .with(forceUpgradeRequired)
-            .with(companionAppURLRequestFactory)
-            .build()
+            .with(notificationTokenRegistration)
+        
+        includeRefreshCollaboration(builder)
+        
+        let session = builder.build()
         
         let refreshObserver = CapturingRefreshServiceObserver()
         session.services.refresh.add(refreshObserver)
@@ -310,6 +303,33 @@ class EurofurenceSessionTestBuilder {
                        longRunningTaskManager: longRunningTaskManager,
                        mapCoordinateRender: mapCoordinateRender,
                        refreshObserver: refreshObserver)
+    }
+    
+    private func makeSessionBuilder() -> EurofurenceSessionBuilder {
+        let conventionIdentifier = ConventionIdentifier(identifier: ModelCharacteristics.testConventionIdentifier)
+        let mandatory = EurofurenceSessionBuilder.Mandatory(
+            conventionIdentifier: conventionIdentifier,
+            conventionStartDateRepository: conventionStartDateRepository
+        )
+        
+        return EurofurenceSessionBuilder(mandatory: mandatory)
+            .with(api)
+            .with(clock)
+            .with(credentialStore)
+            .with(StubDataStoreFactory(conventionIdentifier: conventionIdentifier, dataStore: dataStore))
+            .with(userPreferences)
+            .with(imageRepository)
+            .with(urlOpener)
+            .with(collectThemAllRequestFactory)
+            .with(longRunningTaskManager)
+            .with(forceUpgradeRequired)
+            .with(companionAppURLRequestFactory)
+    }
+    
+    private func includeRefreshCollaboration(_ builder: EurofurenceSessionBuilder) {
+        if let refreshCollaboration = refreshCollaboration {
+            builder.with(refreshCollaboration)
+        }
     }
 
 }

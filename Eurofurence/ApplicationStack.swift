@@ -51,14 +51,6 @@ class ApplicationStack {
         
         let remoteConfigurationLoader = FirebaseRemoteConfigurationLoader()
         let conventionStartDateRepository = RemotelyConfiguredConventionStartDateRepository(remoteConfigurationLoader: remoteConfigurationLoader)
-
-        let significantTimeChangeAdapter = ApplicationSignificantTimeChangeAdapter()
-
-        let urlOpener = AppURLOpener()
-
-        let longRunningTaskManager = ApplicationLongRunningTaskManager()
-
-        let mapCoordinateRender = UIKitMapCoordinateRender()
         
         let mandatory = EurofurenceSessionBuilder.Mandatory(
             conventionIdentifier: ApplicationStack.CID,
@@ -67,10 +59,11 @@ class ApplicationStack {
         
         session = EurofurenceSessionBuilder(mandatory: mandatory)
             .with(remoteNotificationsTokenRegistration)
-            .with(significantTimeChangeAdapter)
-            .with(urlOpener)
-            .with(longRunningTaskManager)
-            .with(mapCoordinateRender)
+            .with(ApplicationSignificantTimeChangeAdapter())
+            .with(AppURLOpener())
+            .with(ApplicationLongRunningTaskManager())
+            .with(UIKitMapCoordinateRender())
+            .with(UpdateRemoteConfigRefreshCollaboration(remoteConfigurationLoader: remoteConfigurationLoader))
             .build()
 
         services = session.services
@@ -84,7 +77,8 @@ class ApplicationStack {
                                                                         hoursDateFormatter: FoundationHoursDateFormatter.shared,
                                                                         upcomingEventReminderInterval: upcomingEventReminderInterval)
         
-        director = DirectorBuilder(moduleRepository: ApplicationModuleRepository(services: services, repositories: session.repositories),
+        let moduleRepository = ApplicationModuleRepository(services: services, repositories: session.repositories)
+        director = DirectorBuilder(moduleRepository: moduleRepository,
                                    linkLookupService: services.contentLinks).build()
         
         let notificationHandler = NavigateToContentNotificationResponseHandler(director: director)

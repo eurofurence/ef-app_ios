@@ -32,6 +32,7 @@ public class EurofurenceSessionBuilder {
     private var mapCoordinateRender: MapCoordinateRender?
     private var forceRefreshRequired: ForceRefreshRequired
     private var companionAppURLRequestFactory: CompanionAppURLRequestFactory
+    private var refreshCollaboration: RefreshCollaboration = DoNothingRefreshCollaboration()
 
     public init(mandatory: Mandatory) {
         self.conventionIdentifier = mandatory.conventionIdentifier
@@ -142,6 +143,12 @@ public class EurofurenceSessionBuilder {
         self.companionAppURLRequestFactory = companionAppURLRequestFactory
         return self
     }
+    
+    @discardableResult
+    public func with(_ refreshCollaboration: RefreshCollaboration) -> EurofurenceSessionBuilder {
+        self.refreshCollaboration = refreshCollaboration
+        return self
+    }
 
     public func build() -> EurofurenceSession {
         return ConcreteSession(conventionIdentifier: conventionIdentifier,
@@ -160,7 +167,8 @@ public class EurofurenceSessionBuilder {
                                longRunningTaskManager: longRunningTaskManager,
                                mapCoordinateRender: mapCoordinateRender,
                                forceRefreshRequired: forceRefreshRequired,
-                               companionAppURLRequestFactory: companionAppURLRequestFactory)
+                               companionAppURLRequestFactory: companionAppURLRequestFactory,
+                               refreshCollaboration: refreshCollaboration)
     }
 
 }
