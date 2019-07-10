@@ -76,13 +76,13 @@ class CapturingEventActionBannerComponent: EventActionBannerComponent {
         capturedTitle = title
     }
     
-    private(set) var selectionHandler: (() -> Void)?
-    func setSelectionHandler(_ handler: @escaping () -> Void) {
+    private(set) var selectionHandler: ((Any) -> Void)?
+    func setSelectionHandler(_ handler: @escaping (Any) -> Void) {
         selectionHandler = handler
     }
     
-    func simulateSelected() {
-        selectionHandler?()
+    func simulateSelected(_ sender: Any) {
+        selectionHandler?(sender)
     }
     
 }

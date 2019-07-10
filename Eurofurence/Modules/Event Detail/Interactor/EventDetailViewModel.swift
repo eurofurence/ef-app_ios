@@ -101,7 +101,15 @@ struct EventPhotoshootMessageViewModel: Equatable {
 protocol EventActionViewModel {
     
     func describe(to visitor: EventActionViewModelVisitor)
-    func perform()
+    func perform(sender: Any?)
+    
+}
+
+extension EventActionViewModel {
+    
+    func perform() {
+        perform(sender: nil)
+    }
     
 }
 

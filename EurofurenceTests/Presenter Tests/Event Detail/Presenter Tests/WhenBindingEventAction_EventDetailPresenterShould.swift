@@ -21,6 +21,7 @@ final class FakeEventActionViewModel: EventActionViewModel {
     
     var title: String
     var performedAction: Bool
+    private(set) var capturedActionSender: Any?
     
     init(title: String, performedAction: Bool) {
         self.title = title
@@ -38,7 +39,8 @@ final class FakeEventActionViewModel: EventActionViewModel {
         visitor.visitActionTitle(title)
     }
     
-    func perform() {
+    func perform(sender: Any?) {
+        capturedActionSender = sender
         performedAction = true
     }
     
@@ -80,8 +82,11 @@ class WhenBindingEventAction_EventDetailPresenterShould: XCTestCase {
     }
     
     func testInvokeTheActionWhenBannerSelected() {
-        stubbedActionComponent.simulateSelected()
+        let sender = self
+        stubbedActionComponent.simulateSelected(sender)
+        
         XCTAssertTrue(actionViewModel.performedAction)
+        XCTAssertTrue(sender === (actionViewModel.capturedActionSender as AnyObject))
     }
     
     func testUpdateTheTextWhenTheActionChanges() {

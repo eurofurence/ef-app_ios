@@ -8,13 +8,13 @@ class EventActionBannerTableViewCell: UITableViewCell, EventActionBannerComponen
         bannerActionButton.setTitle(title, for: .normal)
     }
     
-    private var handler: (() -> Void)?
-    func setSelectionHandler(_ handler: @escaping () -> Void) {
+    private var handler: ((Any) -> Void)?
+    func setSelectionHandler(_ handler: @escaping (Any) -> Void) {
         self.handler = handler
     }
     
     @IBAction private func performBannerAction() {
-        handler?()
+        handler?(self)
     }
     
 }
