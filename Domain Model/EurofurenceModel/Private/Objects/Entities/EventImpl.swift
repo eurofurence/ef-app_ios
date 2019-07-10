@@ -113,6 +113,10 @@ class EventImpl: Event {
             return NotAcceptingEventFeedback()
         }
     }
+    
+    func resolveShareableURL(completionHandler: @escaping (URL) -> Void) {
+        
+    }
 
     private func notifyObserversFavouritedStateDidChange() {
         observers.forEach(provideFavouritedStateToObserver)

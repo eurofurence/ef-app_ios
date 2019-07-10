@@ -100,7 +100,8 @@ struct ApplicationModuleRepository: ModuleRepository {
         let eventInteractionRecorder = DonateIntentEventInteractionRecorder(eventsService: services.events, eventIntentDonor: eventIntentDonor)
         let eventDetailInteractor = DefaultEventDetailInteractor(dateRangeFormatter: FoundationDateRangeFormatter.shared,
                                                                  eventsService: services.events,
-                                                                 markdownRenderer: DefaultDownMarkdownRenderer())
+                                                                 markdownRenderer: DefaultDownMarkdownRenderer(),
+                                                                 shareService: ActivityShareService())
         eventDetailModuleProviding = EventDetailModuleBuilder(interactor: eventDetailInteractor, interactionRecorder: eventInteractionRecorder).build()
         
         let eventFeedbackPresenterFactory = EventFeedbackPresenterFactoryImpl(eventService: services.events,
