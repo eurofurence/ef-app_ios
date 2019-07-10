@@ -309,7 +309,8 @@ class EurofurenceSessionTestBuilder {
         let conventionIdentifier = ConventionIdentifier(identifier: ModelCharacteristics.testConventionIdentifier)
         let mandatory = EurofurenceSessionBuilder.Mandatory(
             conventionIdentifier: conventionIdentifier,
-            conventionStartDateRepository: conventionStartDateRepository
+            conventionStartDateRepository: conventionStartDateRepository,
+            shareableURLFactory: FakeShareableURLFactory()
         )
         
         return EurofurenceSessionBuilder(mandatory: mandatory)

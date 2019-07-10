@@ -58,6 +58,7 @@ class ConcreteEventsService: ClockDelegate, EventsService {
     private let clock: Clock
     private let timeIntervalForUpcomingEventsSinceNow: TimeInterval
     private let eventBus: EventBus
+    private let shareableURLFactory: ShareableURLFactory
 
     private(set) var events = [EventCharacteristics]()
     private(set) var rooms = [RoomCharacteristics]()
@@ -94,12 +95,14 @@ class ConcreteEventsService: ClockDelegate, EventsService {
          dataStore: DataStore,
          imageCache: ImagesCache,
          clock: Clock,
-         timeIntervalForUpcomingEventsSinceNow: TimeInterval) {
+         timeIntervalForUpcomingEventsSinceNow: TimeInterval,
+         shareableURLFactory: ShareableURLFactory) {
         self.dataStore = dataStore
         self.imageCache = imageCache
         self.clock = clock
         self.timeIntervalForUpcomingEventsSinceNow = timeIntervalForUpcomingEventsSinceNow
         self.eventBus = eventBus
+        self.shareableURLFactory = shareableURLFactory
 
         eventBus.subscribe(consumer: DataStoreChangedConsumer(handler: reconstituteEventsFromDataStore))
         eventBus.subscribe(consumer: FavouriteEventHandler(service: self))
@@ -222,6 +225,7 @@ class ConcreteEventsService: ClockDelegate, EventsService {
 
         return EventImpl(eventBus: eventBus,
                          imageCache: imageCache,
+                         shareableURLFactory: shareableURLFactory,
                          isFavourite: favouriteEventIdentifiers.contains(eventIdentifier),
                          identifier: eventIdentifier,
                          title: title,

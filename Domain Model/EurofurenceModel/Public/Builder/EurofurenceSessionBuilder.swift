@@ -6,16 +6,21 @@ public class EurofurenceSessionBuilder {
         
         public var conventionIdentifier: ConventionIdentifier
         public var conventionStartDateRepository: ConventionStartDateRepository
+        public var shareableURLFactory: ShareableURLFactory
 
-        public init(conventionIdentifier: ConventionIdentifier, conventionStartDateRepository: ConventionStartDateRepository) {
+        public init(conventionIdentifier: ConventionIdentifier,
+                    conventionStartDateRepository: ConventionStartDateRepository,
+                    shareableURLFactory: ShareableURLFactory) {
             self.conventionIdentifier = conventionIdentifier
             self.conventionStartDateRepository = conventionStartDateRepository
+            self.shareableURLFactory = shareableURLFactory
         }
         
     }
     
     private let conventionIdentifier: ConventionIdentifier
     private let conventionStartDateRepository: ConventionStartDateRepository
+    private let shareableURLFactory: ShareableURLFactory
 
     private var userPreferences: UserPreferences
     private var dataStoreFactory: DataStoreFactory
@@ -37,6 +42,7 @@ public class EurofurenceSessionBuilder {
     public init(mandatory: Mandatory) {
         self.conventionIdentifier = mandatory.conventionIdentifier
         self.conventionStartDateRepository = mandatory.conventionStartDateRepository
+        self.shareableURLFactory = mandatory.shareableURLFactory
         
         userPreferences = UserDefaultsPreferences()
         dataStoreFactory = CoreDataStoreFactory()
@@ -168,7 +174,8 @@ public class EurofurenceSessionBuilder {
                                mapCoordinateRender: mapCoordinateRender,
                                forceRefreshRequired: forceRefreshRequired,
                                companionAppURLRequestFactory: companionAppURLRequestFactory,
-                               refreshCollaboration: refreshCollaboration)
+                               refreshCollaboration: refreshCollaboration,
+                               shareableURLFactory: shareableURLFactory)
     }
 
 }
