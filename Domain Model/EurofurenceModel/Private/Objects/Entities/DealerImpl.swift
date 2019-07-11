@@ -8,6 +8,7 @@ struct DealerImpl: Dealer {
     private let imageCache: ImagesCache
     private let mapCoordinateRender: MapCoordinateRender?
     private let characteristics: DealerCharacteristics
+    private let shareableURLFactory: ShareableURLFactory
 
     var identifier: DealerIdentifier
 
@@ -34,12 +35,14 @@ struct DealerImpl: Dealer {
          dataStore: DataStore,
          imageCache: ImagesCache,
          mapCoordinateRender: MapCoordinateRender?,
-         characteristics: DealerCharacteristics) {
+         characteristics: DealerCharacteristics,
+         shareableURLFactory: ShareableURLFactory) {
         self.eventBus = eventBus
         self.dataStore = dataStore
         self.imageCache = imageCache
         self.mapCoordinateRender = mapCoordinateRender
         self.characteristics = characteristics
+        self.shareableURLFactory = shareableURLFactory
         
         self.identifier = DealerIdentifier(characteristics.identifier)
         self.isAttendingOnThursday = characteristics.attendsOnThursday
@@ -114,6 +117,10 @@ struct DealerImpl: Dealer {
         }
         
         completionHandler(iconData)
+    }
+    
+    func resolveShareableURL(completionHandler: @escaping (URL) -> Void) {
+        completionHandler(shareableURLFactory.makeURL(for: identifier))
     }
     
     private func fetchMapData() -> (map: MapCharacteristics, entry: MapCharacteristics.Entry)? {

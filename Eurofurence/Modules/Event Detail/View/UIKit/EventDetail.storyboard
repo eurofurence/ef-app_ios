@@ -253,9 +253,17 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gqx-3D-EeA">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="83.5"/>
                                                     <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kna-mA-8OE" userLabel="Popover Anchor">
+                                                            <rect key="frame" x="44" y="41.5" width="1" height="1"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="1" id="XLs-b4-dya"/>
+                                                                <constraint firstAttribute="height" constant="1" id="z7o-6x-Zdj"/>
+                                                            </constraints>
+                                                        </view>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LJ3-vs-ghM">
                                                             <rect key="frame" x="20" y="8" width="335" height="67.5"/>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                             <state key="normal" title="Button"/>
                                                             <connections>
                                                                 <action selector="performBannerAction" destination="DRN-9T-fcm" eventType="touchUpInside" id="Ufj-cm-P0Z"/>
@@ -265,9 +273,11 @@
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="LJ3-vs-ghM" firstAttribute="leading" secondItem="gqx-3D-EeA" secondAttribute="leading" constant="20" symbolic="YES" id="YKi-py-jFr"/>
+                                                        <constraint firstItem="Kna-mA-8OE" firstAttribute="leading" secondItem="LJ3-vs-ghM" secondAttribute="leading" constant="24" id="ZQ5-eM-uNs"/>
                                                         <constraint firstItem="LJ3-vs-ghM" firstAttribute="top" secondItem="gqx-3D-EeA" secondAttribute="topMargin" id="eKu-qk-4WQ"/>
                                                         <constraint firstAttribute="bottomMargin" secondItem="LJ3-vs-ghM" secondAttribute="bottom" id="iYT-Ca-p8A"/>
                                                         <constraint firstAttribute="trailing" secondItem="LJ3-vs-ghM" secondAttribute="trailing" constant="20" symbolic="YES" id="s6h-72-wsm"/>
+                                                        <constraint firstItem="Kna-mA-8OE" firstAttribute="centerY" secondItem="LJ3-vs-ghM" secondAttribute="centerY" id="si4-lm-Ah7"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -280,6 +290,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="bannerActionButton" destination="LJ3-vs-ghM" id="O1m-ub-pQ1"/>
+                                            <outlet property="popoverAnchorView" destination="Kna-mA-8OE" id="ZY5-GD-Ein"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EventDetailDescriptionTableViewCell" rowHeight="84" id="QyG-r2-Epy" customClass="EventDetailDescriptionTableViewCell" customModule="Eurofurence" customModuleProvider="target">

@@ -4,6 +4,7 @@ import Foundation
 struct DefaultDealerDetailInteractor: DealerDetailInteractor {
 
     var dealersService: DealersService
+    var shareService: ShareService
 
     func makeDealerDetailViewModel(for identifier: DealerIdentifier,
                                    completionHandler: @escaping (DealerDetailViewModel) -> Void) {
@@ -12,7 +13,8 @@ struct DefaultDealerDetailInteractor: DealerDetailInteractor {
             completionHandler(DefaultDealerDetailViewModel(dealer: dealer,
                                                            data: data,
                                                            dealerIdentifier: identifier,
-                                                           dealersService: self.dealersService))
+                                                           dealersService: self.dealersService,
+                                                           shareService: self.shareService))
         })
     }
 

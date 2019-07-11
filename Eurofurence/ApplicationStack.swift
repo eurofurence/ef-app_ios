@@ -54,7 +54,8 @@ class ApplicationStack {
         
         let mandatory = EurofurenceSessionBuilder.Mandatory(
             conventionIdentifier: ApplicationStack.CID,
-            conventionStartDateRepository: conventionStartDateRepository
+            conventionStartDateRepository: conventionStartDateRepository,
+            shareableURLFactory: CIDBasedShareableURLFactory(conventionIdentifier: ApplicationStack.CID)
         )
         
         session = EurofurenceSessionBuilder(mandatory: mandatory)

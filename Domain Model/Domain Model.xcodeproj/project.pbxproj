@@ -429,6 +429,10 @@
 		CA7A32F622B17217002AD939 /* EurofurenceModelTestDoubles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A326922B16E75002AD939 /* EurofurenceModelTestDoubles.framework */; };
 		CA7A32FE22B17A44002AD939 /* TestUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A32FD22B17A44002AD939 /* TestUtilities.framework */; };
 		CA7A32FF22B17B96002AD939 /* EurofurenceModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A2F2B22B16DA3002AD939 /* EurofurenceModel.framework */; };
+		CA82DB5B22D66B9400467C2F /* WhenRequestingShareableURL_EventShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82DB5A22D66B9400467C2F /* WhenRequestingShareableURL_EventShould.swift */; };
+		CA82DB5D22D66CD800467C2F /* ShareableURLFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82DB5C22D66CD800467C2F /* ShareableURLFactory.swift */; };
+		CA82DB5F22D66CF300467C2F /* FakeShareableURLFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82DB5E22D66CF300467C2F /* FakeShareableURLFactory.swift */; };
+		CA82DB6322D7BB9F00467C2F /* WhenRequestingShareableURL_DealerShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82DB6222D7BB9F00467C2F /* WhenRequestingShareableURL_DealerShould.swift */; };
 		CA8A73BF22BD0FC2007A5201 /* AdditionalServicesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73BE22BD0FC2007A5201 /* AdditionalServicesRepository.swift */; };
 		CA8A73C422BD0FFC007A5201 /* FakeAdditionalServicesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73C322BD0FFC007A5201 /* FakeAdditionalServicesRepository.swift */; };
 		CA8A73D322BD15E4007A5201 /* AddingAdditionalServicesConsumer_WhileLoggedOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73D222BD15E4007A5201 /* AddingAdditionalServicesConsumer_WhileLoggedOut.swift */; };
@@ -913,6 +917,10 @@
 		CA7A32F022B17023002AD939 /* TestUtilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TestUtilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA7A32F422B171AC002AD939 /* Unwrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unwrap.swift; sourceTree = "<group>"; };
 		CA7A32FD22B17A44002AD939 /* TestUtilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TestUtilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA82DB5A22D66B9400467C2F /* WhenRequestingShareableURL_EventShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenRequestingShareableURL_EventShould.swift; sourceTree = "<group>"; };
+		CA82DB5C22D66CD800467C2F /* ShareableURLFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareableURLFactory.swift; sourceTree = "<group>"; };
+		CA82DB5E22D66CF300467C2F /* FakeShareableURLFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeShareableURLFactory.swift; sourceTree = "<group>"; };
+		CA82DB6222D7BB9F00467C2F /* WhenRequestingShareableURL_DealerShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenRequestingShareableURL_DealerShould.swift; sourceTree = "<group>"; };
 		CA8A73BE22BD0FC2007A5201 /* AdditionalServicesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalServicesRepository.swift; sourceTree = "<group>"; };
 		CA8A73C322BD0FFC007A5201 /* FakeAdditionalServicesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeAdditionalServicesRepository.swift; sourceTree = "<group>"; };
 		CA8A73D222BD15E4007A5201 /* AddingAdditionalServicesConsumer_WhileLoggedOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingAdditionalServicesConsumer_WhileLoggedOut.swift; sourceTree = "<group>"; };
@@ -1278,6 +1286,7 @@
 				CA7A2F9322B16DE3002AD939 /* URLOpener.swift */,
 				CA7A2F8E22B16DE3002AD939 /* UserPreferences.swift */,
 				CA7A2F9622B16DE3002AD939 /* Data Store */,
+				CA82DB5C22D66CD800467C2F /* ShareableURLFactory.swift */,
 			);
 			path = "Configurable Dependencies";
 			sourceTree = "<group>";
@@ -1691,6 +1700,7 @@
 				CA7A310622B16E25002AD939 /* CapturingMapCoordinateRender.swift */,
 				CA7A310722B16E25002AD939 /* CapturingSignificantTimeChangeAdapter.swift */,
 				CA7A310B22B16E25002AD939 /* FakeLongRunningTaskManager.swift */,
+				CA82DB5E22D66CF300467C2F /* FakeShareableURLFactory.swift */,
 				CA7A310222B16E25002AD939 /* StubCollectThemAllRequestFactory.swift */,
 				CA8A73D922BD197C007A5201 /* StubCompanionAppURLRequestFactory.swift */,
 				CA7A310322B16E25002AD939 /* StubConventionStartDateRepository.swift */,
@@ -1761,6 +1771,7 @@
 				CA7A312A22B16E25002AD939 /* WhenObservingDealersIndexBeforeSyncOccurs_ApplicationShould.swift */,
 				CA7A312D22B16E25002AD939 /* WhenObservingDealersIndexThenSyncOccurs_ApplicationShould.swift */,
 				CA7A313722B16E25002AD939 /* WhenPreparingDealerMapGraphic_ApplicationShould.swift */,
+				CA82DB6222D7BB9F00467C2F /* WhenRequestingShareableURL_DealerShould.swift */,
 				CA7A312B22B16E25002AD939 /* WhenTellingDealersIndexToSearch_ApplicationShould.swift */,
 				CA7A312722B16E25002AD939 /* WhenToldToOpenDealersTelegram.swift */,
 				CA7A313622B16E25002AD939 /* WhenToldToOpenDealersTwitter.swift */,
@@ -1800,6 +1811,7 @@
 				CA7A314C22B16E25002AD939 /* EventAssertion.swift */,
 				CA7A314D22B16E25002AD939 /* WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift */,
 				CA7A316A22B16E25002AD939 /* WhenObservingEvent_ThatIsNotFavourite.swift */,
+				CA82DB5A22D66B9400467C2F /* WhenRequestingShareableURL_EventShould.swift */,
 				CA7A316822B16E25002AD939 /* WhenResolvingEventByIdentifier_ForEventThatDoesNotExist_ApplicationShould.swift */,
 				CA7A316F22B16E25002AD939 /* WhenResolvingEventByIdentifier_ForEventThatExists_ApplicationShould.swift */,
 				CA7A315722B16E25002AD939 /* WhenSearchingForEvents_ApplicationShould.swift */,
@@ -2422,6 +2434,7 @@
 				CA7A300522B16DE4002AD939 /* Link.swift in Sources */,
 				CA2AA2FF22CA8F1D00C0E1A1 /* RefreshCollaboration.swift in Sources */,
 				CA7A304F22B16DE4002AD939 /* APIURLProviding.swift in Sources */,
+				CA82DB5D22D66CD800467C2F /* ShareableURLFactory.swift in Sources */,
 				CA7A308322B16DE4002AD939 /* AnnouncementImpl.swift in Sources */,
 				CA7A304322B16DE4002AD939 /* RemoteNotificationsTokenRegistration.swift in Sources */,
 				CA7A300322B16DE4002AD939 /* Track.swift in Sources */,
@@ -2747,6 +2760,7 @@
 				CA7A31D522B16E26002AD939 /* CIDAPIURLProvidingTests.swift in Sources */,
 				CA7A323022B16E26002AD939 /* WhenFavouritingEvent_ApplicationShould.swift in Sources */,
 				CA7A324522B16E26002AD939 /* WhenAppLaunchesWhenClockDoesNotReadConferenceDay_ScheduleShould.swift in Sources */,
+				CA82DB5B22D66B9400467C2F /* WhenRequestingShareableURL_EventShould.swift in Sources */,
 				CA7A324F22B16E26002AD939 /* WhenLoggingOutUnsuccessfully.swift in Sources */,
 				CA7A323422B16E26002AD939 /* WhenSubmittingFeedback_AndFeedbackIsSuccessful.swift in Sources */,
 				CA7A31E722B16E26002AD939 /* CapturingImageRepository.swift in Sources */,
@@ -2755,6 +2769,7 @@
 				CA7A31C022B16E26002AD939 /* WhenSyncingWhileLoggedIn.swift in Sources */,
 				CA8A73E922BD3035007A5201 /* Credential+Random.swift in Sources */,
 				CA25A87522C15F4F00226478 /* WhenRequestingStoreRefresh_MultipleTimes.swift in Sources */,
+				CA82DB6322D7BB9F00467C2F /* WhenRequestingShareableURL_DealerShould.swift in Sources */,
 				CA7A31C922B16E26002AD939 /* WhenLookingUpMailToLinks.swift in Sources */,
 				CA7A321D22B16E26002AD939 /* WhenObservingRunningEvents_ThenLoadSucceeds.swift in Sources */,
 				CA7A324922B16E26002AD939 /* WhenRestrictingSearchResultsToFavourites_ScheduleShould.swift in Sources */,
@@ -2790,6 +2805,7 @@
 				CA7A324422B16E26002AD939 /* TheFirstTimeSyncFinishes_ApplicationShould.swift in Sources */,
 				CA7A323D22B16E26002AD939 /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift in Sources */,
 				CA7A31F322B16E26002AD939 /* CapturingMapsObserver.swift in Sources */,
+				CA82DB5F22D66CF300467C2F /* FakeShareableURLFactory.swift in Sources */,
 				CA7A319622B16E26002AD939 /* WhenDeletingTrack_AfterSuccessfulSync_ApplicationShould.swift in Sources */,
 				CA7A322122B16E26002AD939 /* WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift in Sources */,
 				CA7A31A022B16E26002AD939 /* KnowledgeEntryAssertion.swift in Sources */,

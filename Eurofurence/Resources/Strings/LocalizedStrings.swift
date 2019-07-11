@@ -239,6 +239,9 @@ public extension String {
     static let additionalServices = NSLocalizedString("AdditionalServices",
                                                       comment: "Navigation title used for the compainion app hybrid scene")
     
+    static let share = NSLocalizedString("Share",
+                                         comment: "Title for buttons used for share actions (e.g. events)")
+    
     private struct Formatters {
         static var numbers = NumberFormatter()
     }

@@ -13,7 +13,7 @@ class ToggleEventFavouriteStateViewModel: EventActionViewModel {
         stateMachine.describeCurrentState(to: visitor)
     }
     
-    func perform() {
+    func perform(sender: Any?) {
         stateMachine.perform()
     }
     

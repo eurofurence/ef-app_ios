@@ -5,6 +5,7 @@ class EventImpl: Event {
 
     private let eventBus: EventBus
     private let imageCache: ImagesCache
+    private let shareableURLFactory: ShareableURLFactory
     private let posterImageId: String?
     private let bannerImageId: String?
 
@@ -37,6 +38,7 @@ class EventImpl: Event {
 
     init(eventBus: EventBus,
          imageCache: ImagesCache,
+         shareableURLFactory: ShareableURLFactory,
          isFavourite: Bool,
          identifier: EventIdentifier,
          title: String,
@@ -60,6 +62,7 @@ class EventImpl: Event {
          isAcceptingFeedback: Bool) {
         self.eventBus = eventBus
         self.imageCache = imageCache
+        self.shareableURLFactory = shareableURLFactory
         self.isFavourite = isFavourite
 
         self.identifier = identifier
@@ -112,6 +115,10 @@ class EventImpl: Event {
         } else {
             return NotAcceptingEventFeedback()
         }
+    }
+    
+    func resolveShareableURL(completionHandler: @escaping (URL) -> Void) {
+        completionHandler(shareableURLFactory.makeURL(for: identifier))
     }
 
     private func notifyObserversFavouritedStateDidChange() {

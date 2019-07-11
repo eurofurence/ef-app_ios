@@ -58,6 +58,10 @@ extension CapturingDealerDetailScene {
     func bindComponent(at index: Int) -> Component? {
         return binder?.bindComponent(at: index, using: self)
     }
+    
+    func simulateShareButtonTapped(_ sender: Any) {
+        delegate?.dealerDetailSceneDidTapShareButton(sender)
+    }
 
 }
 

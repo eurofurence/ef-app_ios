@@ -42,7 +42,8 @@ class ConcreteSession: EurofurenceSession {
          mapCoordinateRender: MapCoordinateRender?,
          forceRefreshRequired: ForceRefreshRequired,
          companionAppURLRequestFactory: CompanionAppURLRequestFactory,
-         refreshCollaboration: RefreshCollaboration) {
+         refreshCollaboration: RefreshCollaboration,
+         shareableURLFactory: ShareableURLFactory) {
         
         let dataStore = dataStoreFactory.makeDataStore(for: conventionIdentifier)
 
@@ -83,7 +84,8 @@ class ConcreteSession: EurofurenceSession {
                                               dataStore: dataStore,
                                               imageCache: imageCache,
                                               clock: clock,
-                                              timeIntervalForUpcomingEventsSinceNow: timeIntervalForUpcomingEventsSinceNow)
+                                              timeIntervalForUpcomingEventsSinceNow: timeIntervalForUpcomingEventsSinceNow,
+                                              shareableURLFactory: shareableURLFactory)
 
         let imageDownloader = ImageDownloader(eventBus: eventBus,
                                               api: api,
@@ -94,7 +96,8 @@ class ConcreteSession: EurofurenceSession {
         dealersService = ConcreteDealersService(eventBus: eventBus,
                                                 dataStore: dataStore,
                                                 imageCache: imageCache,
-                                                mapCoordinateRender: mapCoordinateRender)
+                                                mapCoordinateRender: mapCoordinateRender,
+                                                shareableURLFactory: shareableURLFactory)
 
         collectThemAllService = ConcreteCollectThemAllService(eventBus: eventBus,
                                                               collectThemAllRequestFactory: collectThemAllRequestFactory,

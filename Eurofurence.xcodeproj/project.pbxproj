@@ -759,6 +759,14 @@
 		CA8276B3204EC013006A7419 /* ApplicationPreloadInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8276B2204EC013006A7419 /* ApplicationPreloadInteractor.swift */; };
 		CA8276B6204EC026006A7419 /* CapturingPreloadInteractorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8276B5204EC026006A7419 /* CapturingPreloadInteractorDelegate.swift */; };
 		CA8276BC204F25DF006A7419 /* InOrderToSupportSyncKnowledgeListLoading_KnowledgeListPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8276BB204F25DF006A7419 /* InOrderToSupportSyncKnowledgeListLoading_KnowledgeListPresenterShould.swift */; };
+		CA82DB4F22D661E200467C2F /* WhenInvokingShareEventCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82DB4E22D661E200467C2F /* WhenInvokingShareEventCommand.swift */; };
+		CA82DB5222D6630D00467C2F /* ShareService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82DB5122D6630D00467C2F /* ShareService.swift */; };
+		CA82DB5422D6631F00467C2F /* CapturingShareService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82DB5322D6631F00467C2F /* CapturingShareService.swift */; };
+		CA82DB5622D6636700467C2F /* ShareEventActionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82DB5522D6636700467C2F /* ShareEventActionViewModel.swift */; };
+		CA82DB5922D6639300467C2F /* ActivityShareService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82DB5822D6639300467C2F /* ActivityShareService.swift */; };
+		CA82DB6122D7B65F00467C2F /* WhenTappingShareButton_DealerDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82DB6022D7B65F00467C2F /* WhenTappingShareButton_DealerDetailPresenterShould.swift */; };
+		CA82DB6622D7BE4000467C2F /* CIDBasedShareableURLFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82DB6522D7BE4000467C2F /* CIDBasedShareableURLFactoryTests.swift */; };
+		CA82DB6922D7BE8600467C2F /* CIDBasedShareableURLFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82DB6822D7BE8600467C2F /* CIDBasedShareableURLFactory.swift */; };
 		CA8950F122B43CE300AF4875 /* EurofurenceModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A32F722B179D8002AD939 /* EurofurenceModel.framework */; };
 		CA8950F222B43CE300AF4875 /* EurofurenceModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A32F722B179D8002AD939 /* EurofurenceModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CA8950F322B43D0500AF4875 /* EventBus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A32F922B179D8002AD939 /* EventBus.framework */; };
@@ -1838,6 +1846,14 @@
 		CA8276B2204EC013006A7419 /* ApplicationPreloadInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationPreloadInteractor.swift; sourceTree = "<group>"; };
 		CA8276B5204EC026006A7419 /* CapturingPreloadInteractorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingPreloadInteractorDelegate.swift; sourceTree = "<group>"; };
 		CA8276BB204F25DF006A7419 /* InOrderToSupportSyncKnowledgeListLoading_KnowledgeListPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InOrderToSupportSyncKnowledgeListLoading_KnowledgeListPresenterShould.swift; sourceTree = "<group>"; };
+		CA82DB4E22D661E200467C2F /* WhenInvokingShareEventCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenInvokingShareEventCommand.swift; sourceTree = "<group>"; };
+		CA82DB5122D6630D00467C2F /* ShareService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareService.swift; sourceTree = "<group>"; };
+		CA82DB5322D6631F00467C2F /* CapturingShareService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingShareService.swift; sourceTree = "<group>"; };
+		CA82DB5522D6636700467C2F /* ShareEventActionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareEventActionViewModel.swift; sourceTree = "<group>"; };
+		CA82DB5822D6639300467C2F /* ActivityShareService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityShareService.swift; sourceTree = "<group>"; };
+		CA82DB6022D7B65F00467C2F /* WhenTappingShareButton_DealerDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenTappingShareButton_DealerDetailPresenterShould.swift; sourceTree = "<group>"; };
+		CA82DB6522D7BE4000467C2F /* CIDBasedShareableURLFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIDBasedShareableURLFactoryTests.swift; sourceTree = "<group>"; };
+		CA82DB6822D7BE8600467C2F /* CIDBasedShareableURLFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIDBasedShareableURLFactory.swift; sourceTree = "<group>"; };
 		CA89CBA5207F7F5400570D54 /* FakeNewsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeNewsInteractor.swift; sourceTree = "<group>"; };
 		CA89CBA8207F7F9A00570D54 /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
 		CA89CBAA207F7FE900570D54 /* NewsViewModel+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewsViewModel+RandomValueProviding.swift"; sourceTree = "<group>"; };
@@ -2296,6 +2312,7 @@
 				7820A6DA1F13F4DE004C0FB5 /* StubPresentationAssets.swift */,
 				CA79925022451DFE00DF1F84 /* Formatters */,
 				78C86D5E1F12384C003A20E6 /* Scenes */,
+				CA82DB5322D6631F00467C2F /* CapturingShareService.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -2518,6 +2535,7 @@
 				CAEA1045216E77DE00B0C7A6 /* Theme.swift */,
 				9ACF993E1EBE172D006FC958 /* Assets.xcassets */,
 				CA630BCA229F108900754C27 /* Activity */,
+				CA82DB5022D662F800467C2F /* App Services */,
 				CAF1A674211E4B3600513226 /* Application Adapter Implementations */,
 				CA1FE99C1FA0B3F2009C7DF3 /* Director */,
 				CABF03B22041BC770028BD62 /* Extensions */,
@@ -2551,6 +2569,7 @@
 				CAD5592E229AE3570068DD46 /* Notification Response Handler */,
 				CACEA06B2242824F00DFF26C /* Notification Scheduling */,
 				CA82409B212498E6007E4A70 /* Review Prompt */,
+				CA82DB6422D7BE2300467C2F /* Share URLs */,
 				6EF96CCD1F0EDB1300EE6134 /* Test Doubles */,
 				CAF9A94F1F558E6200628833 /* Test Utilities */,
 			);
@@ -2866,6 +2885,7 @@
 				CA1B6F3420DC171200ADF414 /* WhenBindingDealerSummaryWithMissingAttributes_DealerDetailPresenterShould.swift */,
 				CA1B6F0620DB805300ADF414 /* WhenBuildingDealerDetailModule.swift */,
 				CA1B6F1C20DB843E00ADF414 /* WhenDealerDetailSceneLoads_DealerDetailPresenterShould.swift */,
+				CA82DB6022D7B65F00467C2F /* WhenTappingShareButton_DealerDetailPresenterShould.swift */,
 			);
 			path = "Presenter Tests";
 			sourceTree = "<group>";
@@ -4740,6 +4760,39 @@
 			path = "Test Doubles";
 			sourceTree = "<group>";
 		};
+		CA82DB5022D662F800467C2F /* App Services */ = {
+			isa = PBXGroup;
+			children = (
+				CA82DB5722D6638A00467C2F /* Share */,
+			);
+			path = "App Services";
+			sourceTree = "<group>";
+		};
+		CA82DB5722D6638A00467C2F /* Share */ = {
+			isa = PBXGroup;
+			children = (
+				CA82DB5122D6630D00467C2F /* ShareService.swift */,
+				CA82DB5822D6639300467C2F /* ActivityShareService.swift */,
+			);
+			path = Share;
+			sourceTree = "<group>";
+		};
+		CA82DB6422D7BE2300467C2F /* Share URLs */ = {
+			isa = PBXGroup;
+			children = (
+				CA82DB6522D7BE4000467C2F /* CIDBasedShareableURLFactoryTests.swift */,
+			);
+			path = "Share URLs";
+			sourceTree = "<group>";
+		};
+		CA82DB6722D7BE7B00467C2F /* Shareable URLs */ = {
+			isa = PBXGroup;
+			children = (
+				CA82DB6822D7BE8600467C2F /* CIDBasedShareableURLFactory.swift */,
+			);
+			path = "Shareable URLs";
+			sourceTree = "<group>";
+		};
 		CA89CBA7207F7F8F00570D54 /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
@@ -5187,6 +5240,7 @@
 				CA152EFD2267B16E00212742 /* WhenPreparingViewModel_AndInvokingUnfavouriteEventCommand_EventDetailInteractorShould.swift */,
 				CAE8879022690139001464C1 /* WhenEventIsAcceptingFeedback_EventDetailInteractorShould.swift */,
 				CAE8879422690358001464C1 /* WhenEventIsNotAcceptingFeedback_EventDetailInteractorShould.swift */,
+				CA82DB4E22D661E200467C2F /* WhenInvokingShareEventCommand.swift */,
 			);
 			path = "Interactor Tests";
 			sourceTree = "<group>";
@@ -5194,10 +5248,11 @@
 		CACF1E8620B34F8200D904B5 /* Default */ = {
 			isa = PBXGroup;
 			children = (
-				CACF1E8720B34F8900D904B5 /* DefaultEventDetailInteractor.swift */,
 				CACF1E8920B351D400D904B5 /* DateRangeFormatter.swift */,
-				CACF1E8D20B352B800D904B5 /* FoundationDateRangeFormatter.swift */,
+				CACF1E8720B34F8900D904B5 /* DefaultEventDetailInteractor.swift */,
 				CA7D8B1F222DBC28003431A0 /* DefaultEventDetailViewModel.swift */,
+				CACF1E8D20B352B800D904B5 /* FoundationDateRangeFormatter.swift */,
+				CA82DB5522D6636700467C2F /* ShareEventActionViewModel.swift */,
 			);
 			path = Default;
 			sourceTree = "<group>";
@@ -5378,6 +5433,7 @@
 		CAF1A674211E4B3600513226 /* Application Adapter Implementations */ = {
 			isa = PBXGroup;
 			children = (
+				CA82DB6722D7BE7B00467C2F /* Shareable URLs */,
 				CA39851722C7A91000117249 /* Remote Configuration */,
 				CA283A5920E6E24300F7D195 /* ApplicationLongRunningTaskManager.swift */,
 				CA52C68020D597E1009D3A9E /* ApplicationSignificantTimeChangeAdapter.swift */,
@@ -6120,6 +6176,7 @@
 				CA6A9FF51FD5E7720092C6DB /* LoginViewControllerFactory.swift in Sources */,
 				CA152EC62263C5B900212742 /* EventFeedbackViewController.swift in Sources */,
 				CA29EF75203462E300672911 /* KnowledgeListEntryTableViewCell.swift in Sources */,
+				CA82DB5222D6630D00467C2F /* ShareService.swift in Sources */,
 				CA8A73C722BD101E007A5201 /* AdditionalServicesModuleProviding.swift in Sources */,
 				CA1B6F2020DB84E400ADF414 /* DealerDetailInteractor.swift in Sources */,
 				CA66C0202124CC6000F87AFE /* AppStateProviding.swift in Sources */,
@@ -6161,6 +6218,7 @@
 				CA6A8DE920E41DA5007536CD /* MapDetailViewModel.swift in Sources */,
 				CA6A8D8020E265BE007536CD /* StoryboardMapsScenefactory.swift in Sources */,
 				9ACF99381EBE172D006FC958 /* AppDelegate.swift in Sources */,
+				CA82DB5922D6639300467C2F /* ActivityShareService.swift in Sources */,
 				CA40106E210FAEC30056E16C /* KnowledgeGroupEntriesModuleProviding.swift in Sources */,
 				CA73AEE3201A0869004E77BF /* KnowledgeGroupsModuleBuilder.swift in Sources */,
 				CA7D8B20222DBC28003431A0 /* DefaultEventDetailViewModel.swift in Sources */,
@@ -6279,6 +6337,7 @@
 				CA17FE8520580144005A4C05 /* LinksBinder.swift in Sources */,
 				CA8A73B522BC2FE1007A5201 /* HybridWebSceneFactory.swift in Sources */,
 				CAF81C5720DD208100898C52 /* DealerDetailLocationAndAvailabilityTableViewCell.swift in Sources */,
+				CA82DB6922D7BE8600467C2F /* CIDBasedShareableURLFactory.swift in Sources */,
 				CACF1E7220B1CE9A00D904B5 /* EventDetailPresenter.swift in Sources */,
 				CAD3BDC2205AA7BE00C91E6E /* WebModuleProviding.swift in Sources */,
 				CA39852022C7A94F00117249 /* RemoteConfigurationLoader.swift in Sources */,
@@ -6360,6 +6419,7 @@
 				CA1B6F0B20DB816600ADF414 /* DealerDetailSceneFactory.swift in Sources */,
 				CA6A8D8520E2BB88007536CD /* MapsInteractor.swift in Sources */,
 				CA8E7EF61FB08E2500F0BF10 /* AppWindowWireframe.swift in Sources */,
+				CA82DB5622D6636700467C2F /* ShareEventActionViewModel.swift in Sources */,
 				CA637584208CDE3F00536BE2 /* ScheduleModuleBuilder.swift in Sources */,
 				CA0F761F203229CF009DA079 /* KnowledgeBaseViewModel.swift in Sources */,
 			);
@@ -6612,6 +6672,7 @@
 				CA8A73CE22BD130C007A5201 /* WhenAdditionalServicesSceneLoads_PresenterShould.swift in Sources */,
 				CACF1E5F20AE2EF400D904B5 /* StubEventDetailSceneFactory.swift in Sources */,
 				CA8240A521249A80007E4A70 /* CapturingReviewPromptAction.swift in Sources */,
+				CA82DB5422D6631F00467C2F /* CapturingShareService.swift in Sources */,
 				CAF3C74E1F9FC72C0008F027 /* StubNewsSceneFactory.swift in Sources */,
 				CAD3BDB72059500400C91E6E /* WhenUserSelectsKnowledgeLink.swift in Sources */,
 				CA27258421139A1D004C6D0A /* SchedulePresenterSponsorIconBindingTests.swift in Sources */,
@@ -6645,6 +6706,7 @@
 				CA283A7120E8DCD000F7D195 /* WhenToldToRefresh_DealersViewModelShould.swift in Sources */,
 				CA283AB020EAA19C00F7D195 /* StubAnnouncementsSceneFactory.swift in Sources */,
 				CA44C370211B77AC003C1C4E /* NewsPresenterKageIconBindingTests.swift in Sources */,
+				CA82DB6622D7BE4000467C2F /* CIDBasedShareableURLFactoryTests.swift in Sources */,
 				CA7D8B18222D4E63003431A0 /* FakeAnnouncementDateFormatter.swift in Sources */,
 				CAF9A9581F5601A700628833 /* WhenViewingMessagesWhileLoggedOut.swift in Sources */,
 				CAF81C7120DDA8EA00898C52 /* WhenProducingDealerViewModel_HappyPath_DealerDetailInteractorShould.swift in Sources */,
@@ -6750,6 +6812,7 @@
 				CA728441209D001B007D912A /* WhenNewsModuleSelectsAnnouncement_DirectorShould.swift in Sources */,
 				CA72846C209D1457007D912A /* AnnouncementViewModel+RandomValueProviding.swift in Sources */,
 				CAD68830208A144800B31F5F /* WhenBindingUserWithNoUnreadMessages_NewsPresenterShould.swift in Sources */,
+				CA82DB4F22D661E200467C2F /* WhenInvokingShareEventCommand.swift in Sources */,
 				7820A6E91F1415B0004C0FB5 /* StoryboardAlertRouterTests.swift in Sources */,
 				CA89CBBE208531FB00570D54 /* AnnouncementComponentViewModel+RandomValueProviding.swift in Sources */,
 				CA6EC4822051CBE600402894 /* CapturingKnowledgeDetailScene.swift in Sources */,
@@ -6834,6 +6897,7 @@
 				CA0F762520322E07009DA079 /* CapturingKnowledgeGroupHeaderScene.swift in Sources */,
 				CA44C36B211B70B2003C1C4E /* SchedulePresenterKageIconBindingTests.swift in Sources */,
 				CA65A881209B7E1000B72533 /* WhenLoggedInBeforeConvention_ThenPersonalMessageIsReceived_NewsInteractorShould.swift in Sources */,
+				CA82DB6122D7B65F00467C2F /* WhenTappingShareButton_DealerDetailPresenterShould.swift in Sources */,
 				CA44C33F211A2B60003C1C4E /* SchedulePresenterArtShowIconBindingTests.swift in Sources */,
 				CA6A8D8B20E2BBB1007536CD /* FakeMapsInteractor.swift in Sources */,
 				CA89CBBC2084CB4200570D54 /* WhenBindingAnnouncement_NewsPresenterShould.swift in Sources */,

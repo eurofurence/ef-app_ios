@@ -11,6 +11,7 @@ class DealerDetailInteractorTestBuilder {
         var dealerData: ExtendedDealerData
         var dealerIdentifier: DealerIdentifier
         var dealer: FakeDealer
+        var shareService: CapturingShareService
     }
 
     func build(data: ExtendedDealerData = .random) -> Context {
@@ -19,13 +20,15 @@ class DealerDetailInteractorTestBuilder {
         dealer.extendedData = data
         dealersService.add(dealer)
         
-        let interactor = DefaultDealerDetailInteractor(dealersService: dealersService)
+        let shareService = CapturingShareService()
+        let interactor = DefaultDealerDetailInteractor(dealersService: dealersService, shareService: shareService)
 
         return Context(interactor: interactor,
                        dealersService: dealersService,
                        dealerData: data,
                        dealerIdentifier: dealer.identifier,
-                       dealer: dealer)
+                       dealer: dealer,
+                       shareService: shareService)
     }
 
 }
@@ -296,6 +299,16 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailInteractorShould: XCTes
         viewModel?.openTelegram()
 
         XCTAssertTrue(context.dealer.telegramOpened)
+    }
+    
+    func testSharingDealer() {
+        let context = DealerDetailInteractorTestBuilder().build()
+        let viewModel = context.makeViewModel()
+        let sender = self
+        viewModel?.shareDealer(self)
+        
+        XCTAssertTrue(sender === (context.shareService.sharedItemSender as AnyObject))
+        XCTAssertEqual(context.dealer.shareableURL, (context.shareService.sharedItem as? URL))
     }
 
 }

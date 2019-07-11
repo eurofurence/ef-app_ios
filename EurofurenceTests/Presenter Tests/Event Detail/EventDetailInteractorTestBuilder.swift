@@ -11,6 +11,7 @@ class EventDetailInteractorTestBuilder {
         var viewModel: EventDetailViewModel
         var eventsService: FakeEventsService
 		var markdownRenderer: StubMarkdownRenderer
+        var shareService: CapturingShareService
     }
 
     private var eventsService: FakeEventsService
@@ -29,7 +30,11 @@ class EventDetailInteractorTestBuilder {
         let dateRangeFormatter = FakeDateRangeFormatter()
 		let markdownRenderer = StubMarkdownRenderer()
         eventsService.events = [event]
-		let interactor = DefaultEventDetailInteractor(dateRangeFormatter: dateRangeFormatter, eventsService: eventsService, markdownRenderer: markdownRenderer)
+        let shareService = CapturingShareService()
+		let interactor = DefaultEventDetailInteractor(dateRangeFormatter: dateRangeFormatter,
+                                                      eventsService: eventsService,
+                                                      markdownRenderer: markdownRenderer,
+                                                      shareService: shareService)
         var viewModel: EventDetailViewModel!
         interactor.makeViewModel(for: event.identifier) { viewModel = $0 }
         
@@ -40,7 +45,8 @@ class EventDetailInteractorTestBuilder {
                        interactor: interactor,
                        viewModel: viewModel,
                        eventsService: eventsService,
-					   markdownRenderer: markdownRenderer)
+					   markdownRenderer: markdownRenderer,
+                       shareService: shareService)
     }
 
 }
