@@ -96,7 +96,8 @@ class ConcreteSession: EurofurenceSession {
         dealersService = ConcreteDealersService(eventBus: eventBus,
                                                 dataStore: dataStore,
                                                 imageCache: imageCache,
-                                                mapCoordinateRender: mapCoordinateRender)
+                                                mapCoordinateRender: mapCoordinateRender,
+                                                shareableURLFactory: shareableURLFactory)
 
         collectThemAllService = ConcreteCollectThemAllService(eventBus: eventBus,
                                                               collectThemAllRequestFactory: collectThemAllRequestFactory,

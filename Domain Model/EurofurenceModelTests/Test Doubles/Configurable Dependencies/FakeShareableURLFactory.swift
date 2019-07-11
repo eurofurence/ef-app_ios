@@ -7,4 +7,8 @@ struct FakeShareableURLFactory: ShareableURLFactory {
         return unwrap(URL(string: "event://\(eventIdentifier.rawValue)"))
     }
     
+    func makeURL(for dealerIdentifier: DealerIdentifier) -> URL {
+        return unwrap(URL(string: "dealer://\(dealerIdentifier.rawValue)"))
+    }
+    
 }

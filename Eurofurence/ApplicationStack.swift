@@ -57,6 +57,11 @@ class ApplicationStack {
                 guard let url = URL(string: "https://app.eurofurence.org") else { fatalError() }
                 return url
             }
+            
+            func makeURL(for dealerIdentifier: DealerIdentifier) -> URL {
+                guard let url = URL(string: "https://app.eurofurence.org") else { fatalError() }
+                return url
+            }
         }
         
         let mandatory = EurofurenceSessionBuilder.Mandatory(

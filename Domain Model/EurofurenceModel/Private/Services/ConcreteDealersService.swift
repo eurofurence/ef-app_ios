@@ -71,15 +71,18 @@ class ConcreteDealersService: DealersService {
     private let dataStore: DataStore
     private let imageCache: ImagesCache
     private let mapCoordinateRender: MapCoordinateRender?
+    private let shareableURLFactory: ShareableURLFactory
 
     init(eventBus: EventBus,
          dataStore: DataStore,
          imageCache: ImagesCache,
-         mapCoordinateRender: MapCoordinateRender?) {
+         mapCoordinateRender: MapCoordinateRender?,
+         shareableURLFactory: ShareableURLFactory) {
         self.eventBus = eventBus
         self.dataStore = dataStore
         self.imageCache = imageCache
         self.mapCoordinateRender = mapCoordinateRender
+        self.shareableURLFactory = shareableURLFactory
 
         eventBus.subscribe(consumer: DataStoreChangedConsumer(handler: reloadDealersFromDataStore))
         reloadDealersFromDataStore()
@@ -105,7 +108,8 @@ class ConcreteDealersService: DealersService {
                           dataStore: dataStore,
                           imageCache: imageCache,
                           mapCoordinateRender: mapCoordinateRender,
-                          characteristics: characteristics)
+                          characteristics: characteristics,
+                          shareableURLFactory: shareableURLFactory)
     }
 
 }

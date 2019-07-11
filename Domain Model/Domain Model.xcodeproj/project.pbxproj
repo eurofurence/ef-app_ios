@@ -432,6 +432,7 @@
 		CA82DB5B22D66B9400467C2F /* WhenRequestingShareableURL_EventShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82DB5A22D66B9400467C2F /* WhenRequestingShareableURL_EventShould.swift */; };
 		CA82DB5D22D66CD800467C2F /* ShareableURLFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82DB5C22D66CD800467C2F /* ShareableURLFactory.swift */; };
 		CA82DB5F22D66CF300467C2F /* FakeShareableURLFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82DB5E22D66CF300467C2F /* FakeShareableURLFactory.swift */; };
+		CA82DB6322D7BB9F00467C2F /* WhenRequestingShareableURL_DealerShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82DB6222D7BB9F00467C2F /* WhenRequestingShareableURL_DealerShould.swift */; };
 		CA8A73BF22BD0FC2007A5201 /* AdditionalServicesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73BE22BD0FC2007A5201 /* AdditionalServicesRepository.swift */; };
 		CA8A73C422BD0FFC007A5201 /* FakeAdditionalServicesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73C322BD0FFC007A5201 /* FakeAdditionalServicesRepository.swift */; };
 		CA8A73D322BD15E4007A5201 /* AddingAdditionalServicesConsumer_WhileLoggedOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73D222BD15E4007A5201 /* AddingAdditionalServicesConsumer_WhileLoggedOut.swift */; };
@@ -919,6 +920,7 @@
 		CA82DB5A22D66B9400467C2F /* WhenRequestingShareableURL_EventShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenRequestingShareableURL_EventShould.swift; sourceTree = "<group>"; };
 		CA82DB5C22D66CD800467C2F /* ShareableURLFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareableURLFactory.swift; sourceTree = "<group>"; };
 		CA82DB5E22D66CF300467C2F /* FakeShareableURLFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeShareableURLFactory.swift; sourceTree = "<group>"; };
+		CA82DB6222D7BB9F00467C2F /* WhenRequestingShareableURL_DealerShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenRequestingShareableURL_DealerShould.swift; sourceTree = "<group>"; };
 		CA8A73BE22BD0FC2007A5201 /* AdditionalServicesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalServicesRepository.swift; sourceTree = "<group>"; };
 		CA8A73C322BD0FFC007A5201 /* FakeAdditionalServicesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeAdditionalServicesRepository.swift; sourceTree = "<group>"; };
 		CA8A73D222BD15E4007A5201 /* AddingAdditionalServicesConsumer_WhileLoggedOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingAdditionalServicesConsumer_WhileLoggedOut.swift; sourceTree = "<group>"; };
@@ -1769,6 +1771,7 @@
 				CA7A312A22B16E25002AD939 /* WhenObservingDealersIndexBeforeSyncOccurs_ApplicationShould.swift */,
 				CA7A312D22B16E25002AD939 /* WhenObservingDealersIndexThenSyncOccurs_ApplicationShould.swift */,
 				CA7A313722B16E25002AD939 /* WhenPreparingDealerMapGraphic_ApplicationShould.swift */,
+				CA82DB6222D7BB9F00467C2F /* WhenRequestingShareableURL_DealerShould.swift */,
 				CA7A312B22B16E25002AD939 /* WhenTellingDealersIndexToSearch_ApplicationShould.swift */,
 				CA7A312722B16E25002AD939 /* WhenToldToOpenDealersTelegram.swift */,
 				CA7A313622B16E25002AD939 /* WhenToldToOpenDealersTwitter.swift */,
@@ -2766,6 +2769,7 @@
 				CA7A31C022B16E26002AD939 /* WhenSyncingWhileLoggedIn.swift in Sources */,
 				CA8A73E922BD3035007A5201 /* Credential+Random.swift in Sources */,
 				CA25A87522C15F4F00226478 /* WhenRequestingStoreRefresh_MultipleTimes.swift in Sources */,
+				CA82DB6322D7BB9F00467C2F /* WhenRequestingShareableURL_DealerShould.swift in Sources */,
 				CA7A31C922B16E26002AD939 /* WhenLookingUpMailToLinks.swift in Sources */,
 				CA7A321D22B16E26002AD939 /* WhenObservingRunningEvents_ThenLoadSucceeds.swift in Sources */,
 				CA7A324922B16E26002AD939 /* WhenRestrictingSearchResultsToFavourites_ScheduleShould.swift in Sources */,
