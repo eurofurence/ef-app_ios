@@ -765,6 +765,8 @@
 		CA82DB5622D6636700467C2F /* ShareEventActionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82DB5522D6636700467C2F /* ShareEventActionViewModel.swift */; };
 		CA82DB5922D6639300467C2F /* ActivityShareService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82DB5822D6639300467C2F /* ActivityShareService.swift */; };
 		CA82DB6122D7B65F00467C2F /* WhenTappingShareButton_DealerDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82DB6022D7B65F00467C2F /* WhenTappingShareButton_DealerDetailPresenterShould.swift */; };
+		CA82DB6622D7BE4000467C2F /* CIDBasedShareableURLFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82DB6522D7BE4000467C2F /* CIDBasedShareableURLFactoryTests.swift */; };
+		CA82DB6922D7BE8600467C2F /* CIDBasedShareableURLFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82DB6822D7BE8600467C2F /* CIDBasedShareableURLFactory.swift */; };
 		CA8950F122B43CE300AF4875 /* EurofurenceModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A32F722B179D8002AD939 /* EurofurenceModel.framework */; };
 		CA8950F222B43CE300AF4875 /* EurofurenceModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A32F722B179D8002AD939 /* EurofurenceModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CA8950F322B43D0500AF4875 /* EventBus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A32F922B179D8002AD939 /* EventBus.framework */; };
@@ -1850,6 +1852,8 @@
 		CA82DB5522D6636700467C2F /* ShareEventActionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareEventActionViewModel.swift; sourceTree = "<group>"; };
 		CA82DB5822D6639300467C2F /* ActivityShareService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityShareService.swift; sourceTree = "<group>"; };
 		CA82DB6022D7B65F00467C2F /* WhenTappingShareButton_DealerDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenTappingShareButton_DealerDetailPresenterShould.swift; sourceTree = "<group>"; };
+		CA82DB6522D7BE4000467C2F /* CIDBasedShareableURLFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIDBasedShareableURLFactoryTests.swift; sourceTree = "<group>"; };
+		CA82DB6822D7BE8600467C2F /* CIDBasedShareableURLFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIDBasedShareableURLFactory.swift; sourceTree = "<group>"; };
 		CA89CBA5207F7F5400570D54 /* FakeNewsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeNewsInteractor.swift; sourceTree = "<group>"; };
 		CA89CBA8207F7F9A00570D54 /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
 		CA89CBAA207F7FE900570D54 /* NewsViewModel+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewsViewModel+RandomValueProviding.swift"; sourceTree = "<group>"; };
@@ -2565,6 +2569,7 @@
 				CAD5592E229AE3570068DD46 /* Notification Response Handler */,
 				CACEA06B2242824F00DFF26C /* Notification Scheduling */,
 				CA82409B212498E6007E4A70 /* Review Prompt */,
+				CA82DB6422D7BE2300467C2F /* Share URLs */,
 				6EF96CCD1F0EDB1300EE6134 /* Test Doubles */,
 				CAF9A94F1F558E6200628833 /* Test Utilities */,
 			);
@@ -4772,6 +4777,22 @@
 			path = Share;
 			sourceTree = "<group>";
 		};
+		CA82DB6422D7BE2300467C2F /* Share URLs */ = {
+			isa = PBXGroup;
+			children = (
+				CA82DB6522D7BE4000467C2F /* CIDBasedShareableURLFactoryTests.swift */,
+			);
+			path = "Share URLs";
+			sourceTree = "<group>";
+		};
+		CA82DB6722D7BE7B00467C2F /* Shareable URLs */ = {
+			isa = PBXGroup;
+			children = (
+				CA82DB6822D7BE8600467C2F /* CIDBasedShareableURLFactory.swift */,
+			);
+			path = "Shareable URLs";
+			sourceTree = "<group>";
+		};
 		CA89CBA7207F7F8F00570D54 /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
@@ -5412,6 +5433,7 @@
 		CAF1A674211E4B3600513226 /* Application Adapter Implementations */ = {
 			isa = PBXGroup;
 			children = (
+				CA82DB6722D7BE7B00467C2F /* Shareable URLs */,
 				CA39851722C7A91000117249 /* Remote Configuration */,
 				CA283A5920E6E24300F7D195 /* ApplicationLongRunningTaskManager.swift */,
 				CA52C68020D597E1009D3A9E /* ApplicationSignificantTimeChangeAdapter.swift */,
@@ -6315,6 +6337,7 @@
 				CA17FE8520580144005A4C05 /* LinksBinder.swift in Sources */,
 				CA8A73B522BC2FE1007A5201 /* HybridWebSceneFactory.swift in Sources */,
 				CAF81C5720DD208100898C52 /* DealerDetailLocationAndAvailabilityTableViewCell.swift in Sources */,
+				CA82DB6922D7BE8600467C2F /* CIDBasedShareableURLFactory.swift in Sources */,
 				CACF1E7220B1CE9A00D904B5 /* EventDetailPresenter.swift in Sources */,
 				CAD3BDC2205AA7BE00C91E6E /* WebModuleProviding.swift in Sources */,
 				CA39852022C7A94F00117249 /* RemoteConfigurationLoader.swift in Sources */,
@@ -6683,6 +6706,7 @@
 				CA283A7120E8DCD000F7D195 /* WhenToldToRefresh_DealersViewModelShould.swift in Sources */,
 				CA283AB020EAA19C00F7D195 /* StubAnnouncementsSceneFactory.swift in Sources */,
 				CA44C370211B77AC003C1C4E /* NewsPresenterKageIconBindingTests.swift in Sources */,
+				CA82DB6622D7BE4000467C2F /* CIDBasedShareableURLFactoryTests.swift in Sources */,
 				CA7D8B18222D4E63003431A0 /* FakeAnnouncementDateFormatter.swift in Sources */,
 				CAF9A9581F5601A700628833 /* WhenViewingMessagesWhileLoggedOut.swift in Sources */,
 				CAF81C7120DDA8EA00898C52 /* WhenProducingDealerViewModel_HappyPath_DealerDetailInteractorShould.swift in Sources */,

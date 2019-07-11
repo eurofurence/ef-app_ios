@@ -52,22 +52,10 @@ class ApplicationStack {
         let remoteConfigurationLoader = FirebaseRemoteConfigurationLoader()
         let conventionStartDateRepository = RemotelyConfiguredConventionStartDateRepository(remoteConfigurationLoader: remoteConfigurationLoader)
         
-        struct DummyShareableURLFactory: ShareableURLFactory {
-            func makeURL(for eventIdentifier: EventIdentifier) -> URL {
-                guard let url = URL(string: "https://app.eurofurence.org") else { fatalError() }
-                return url
-            }
-            
-            func makeURL(for dealerIdentifier: DealerIdentifier) -> URL {
-                guard let url = URL(string: "https://app.eurofurence.org") else { fatalError() }
-                return url
-            }
-        }
-        
         let mandatory = EurofurenceSessionBuilder.Mandatory(
             conventionIdentifier: ApplicationStack.CID,
             conventionStartDateRepository: conventionStartDateRepository,
-            shareableURLFactory: DummyShareableURLFactory()
+            shareableURLFactory: CIDBasedShareableURLFactory(conventionIdentifier: ApplicationStack.CID)
         )
         
         session = EurofurenceSessionBuilder(mandatory: mandatory)
