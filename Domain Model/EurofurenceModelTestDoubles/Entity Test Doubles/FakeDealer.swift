@@ -52,6 +52,11 @@ public final class FakeDealer: Dealer {
     public func fetchIconPNGData(completionHandler: @escaping (Data?) -> Void) {
         completionHandler(iconPNGData)
     }
+    
+    public let shareableURL = URL.random
+    public func resolveShareableURL(completionHandler: @escaping (URL) -> Void) {
+        completionHandler(shareableURL)
+    }
 
 }
 

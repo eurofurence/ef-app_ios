@@ -30,6 +30,7 @@ struct ApplicationModuleRepository: ModuleRepository {
     init(services: Services, repositories: Repositories) {
         let subtleMarkdownRenderer = SubtleDownMarkdownRenderer()
         let defaultMarkdownRenderer = DefaultDownMarkdownRenderer()
+        let shareService = ActivityShareService()
         
         rootModuleProviding = RootModuleBuilder(sessionStateService: services.sessionState).build()
         tutorialModuleProviding = TutorialModuleBuilder().build()
@@ -64,7 +65,7 @@ struct ApplicationModuleRepository: ModuleRepository {
         
         let dealerIntentDonor = ConcreteViewDealerIntentDonor()
         let dealerInteractionRecorder = DonateIntentDealerInteractionRecorder(dealersService: services.dealers, viewDealerIntentDonor: dealerIntentDonor)
-        let dealerDetailInteractor = DefaultDealerDetailInteractor(dealersService: services.dealers)
+        let dealerDetailInteractor = DefaultDealerDetailInteractor(dealersService: services.dealers, shareService: shareService)
         dealerDetailModuleProviding = DealerDetailModuleBuilder(dealerDetailInteractor: dealerDetailInteractor, dealerInteractionRecorder: dealerInteractionRecorder).build()
         
         collectThemAllModuleProviding = CollectThemAllModuleBuilder(service: services.collectThemAll).build()
@@ -101,7 +102,7 @@ struct ApplicationModuleRepository: ModuleRepository {
         let eventDetailInteractor = DefaultEventDetailInteractor(dateRangeFormatter: FoundationDateRangeFormatter.shared,
                                                                  eventsService: services.events,
                                                                  markdownRenderer: DefaultDownMarkdownRenderer(),
-                                                                 shareService: ActivityShareService())
+                                                                 shareService: shareService)
         eventDetailModuleProviding = EventDetailModuleBuilder(interactor: eventDetailInteractor, interactionRecorder: eventInteractionRecorder).build()
         
         let eventFeedbackPresenterFactory = EventFeedbackPresenterFactoryImpl(eventService: services.events,

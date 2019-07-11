@@ -116,6 +116,10 @@ struct DealerImpl: Dealer {
         completionHandler(iconData)
     }
     
+    func resolveShareableURL(completionHandler: @escaping (URL) -> Void) {
+        
+    }
+    
     private func fetchMapData() -> (map: MapCharacteristics, entry: MapCharacteristics.Entry)? {
         guard let maps = dataStore.fetchMaps() else { return nil }
         
