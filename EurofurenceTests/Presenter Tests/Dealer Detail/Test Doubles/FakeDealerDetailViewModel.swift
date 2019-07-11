@@ -26,6 +26,11 @@ class FakeDealerDetailViewModel: DealerDetailViewModel {
     func openTelegram() {
         toldToOpenTelegram = true
     }
+    
+    private(set) var shareCommandInvoked = false
+    func shareDealer() {
+        shareCommandInvoked = true
+    }
 
 }
 

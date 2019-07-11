@@ -176,5 +176,9 @@ struct DefaultDealerDetailViewModel: DealerDetailViewModel {
     func openTelegram() {
         dealer.openTelegram()
     }
+    
+    func shareDealer() {
+        
+    }
 
 }

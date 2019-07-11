@@ -1,7 +1,7 @@
 import EurofurenceModel
 import Foundation
 
-struct DealerDetailPresenter: DealerDetailSceneDelegate {
+class DealerDetailPresenter: DealerDetailSceneDelegate {
 
     private struct Binder: DealerDetailSceneBinder {
 
@@ -126,6 +126,7 @@ struct DealerDetailPresenter: DealerDetailSceneDelegate {
     private let interactor: DealerDetailInteractor
     private let dealer: DealerIdentifier
     private let dealerInteractionRecorder: DealerInteractionRecorder
+    private var viewModel: DealerDetailViewModel?
 
     init(scene: DealerDetailScene, interactor: DealerDetailInteractor, dealer: DealerIdentifier, dealerInteractionRecorder: DealerInteractionRecorder) {
         self.scene = scene
@@ -140,9 +141,14 @@ struct DealerDetailPresenter: DealerDetailSceneDelegate {
         dealerInteractionRecorder.recordInteraction(for: dealer)
         
         interactor.makeDealerDetailViewModel(for: dealer) { (viewModel) in
+            self.viewModel = viewModel
             self.scene.bind(numberOfComponents: viewModel.numberOfComponents,
                             using: Binder(viewModel: viewModel))
         }
+    }
+    
+    func dealerDetailSceneDidTapShareButton() {
+        viewModel?.shareDealer()
     }
 
 }

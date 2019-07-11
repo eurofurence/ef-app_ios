@@ -764,6 +764,7 @@
 		CA82DB5422D6631F00467C2F /* CapturingShareService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82DB5322D6631F00467C2F /* CapturingShareService.swift */; };
 		CA82DB5622D6636700467C2F /* ShareEventActionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82DB5522D6636700467C2F /* ShareEventActionViewModel.swift */; };
 		CA82DB5922D6639300467C2F /* ActivityShareService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82DB5822D6639300467C2F /* ActivityShareService.swift */; };
+		CA82DB6122D7B65F00467C2F /* WhenTappingShareButton_DealerDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82DB6022D7B65F00467C2F /* WhenTappingShareButton_DealerDetailPresenterShould.swift */; };
 		CA8950F122B43CE300AF4875 /* EurofurenceModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A32F722B179D8002AD939 /* EurofurenceModel.framework */; };
 		CA8950F222B43CE300AF4875 /* EurofurenceModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A32F722B179D8002AD939 /* EurofurenceModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CA8950F322B43D0500AF4875 /* EventBus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A32F922B179D8002AD939 /* EventBus.framework */; };
@@ -1848,6 +1849,7 @@
 		CA82DB5322D6631F00467C2F /* CapturingShareService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingShareService.swift; sourceTree = "<group>"; };
 		CA82DB5522D6636700467C2F /* ShareEventActionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareEventActionViewModel.swift; sourceTree = "<group>"; };
 		CA82DB5822D6639300467C2F /* ActivityShareService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityShareService.swift; sourceTree = "<group>"; };
+		CA82DB6022D7B65F00467C2F /* WhenTappingShareButton_DealerDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenTappingShareButton_DealerDetailPresenterShould.swift; sourceTree = "<group>"; };
 		CA89CBA5207F7F5400570D54 /* FakeNewsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeNewsInteractor.swift; sourceTree = "<group>"; };
 		CA89CBA8207F7F9A00570D54 /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
 		CA89CBAA207F7FE900570D54 /* NewsViewModel+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewsViewModel+RandomValueProviding.swift"; sourceTree = "<group>"; };
@@ -2878,6 +2880,7 @@
 				CA1B6F3420DC171200ADF414 /* WhenBindingDealerSummaryWithMissingAttributes_DealerDetailPresenterShould.swift */,
 				CA1B6F0620DB805300ADF414 /* WhenBuildingDealerDetailModule.swift */,
 				CA1B6F1C20DB843E00ADF414 /* WhenDealerDetailSceneLoads_DealerDetailPresenterShould.swift */,
+				CA82DB6022D7B65F00467C2F /* WhenTappingShareButton_DealerDetailPresenterShould.swift */,
 			);
 			path = "Presenter Tests";
 			sourceTree = "<group>";
@@ -6870,6 +6873,7 @@
 				CA0F762520322E07009DA079 /* CapturingKnowledgeGroupHeaderScene.swift in Sources */,
 				CA44C36B211B70B2003C1C4E /* SchedulePresenterKageIconBindingTests.swift in Sources */,
 				CA65A881209B7E1000B72533 /* WhenLoggedInBeforeConvention_ThenPersonalMessageIsReceived_NewsInteractorShould.swift in Sources */,
+				CA82DB6122D7B65F00467C2F /* WhenTappingShareButton_DealerDetailPresenterShould.swift in Sources */,
 				CA44C33F211A2B60003C1C4E /* SchedulePresenterArtShowIconBindingTests.swift in Sources */,
 				CA6A8D8B20E2BBB1007536CD /* FakeMapsInteractor.swift in Sources */,
 				CA89CBBC2084CB4200570D54 /* WhenBindingAnnouncement_NewsPresenterShould.swift in Sources */,
