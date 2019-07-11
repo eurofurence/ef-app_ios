@@ -22,7 +22,7 @@ class DealerDetailViewController: UIViewController, DealerDetailScene {
     // MARK: Actions
     
     @IBAction private func shareButtonTapped(_ sender: Any) {
-        delegate?.dealerDetailSceneDidTapShareButton()
+        delegate?.dealerDetailSceneDidTapShareButton(sender)
     }
     
     // MARK: DealerDetailScene

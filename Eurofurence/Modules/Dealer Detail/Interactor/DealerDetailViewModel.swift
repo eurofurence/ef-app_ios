@@ -8,7 +8,7 @@ protocol DealerDetailViewModel {
     func openWebsite()
     func openTwitter()
     func openTelegram()
-    func shareDealer()
+    func shareDealer(_ sender: Any)
 
 }
 

@@ -9,11 +9,10 @@ class WhenTappingShareButton_DealerDetailPresenterShould: XCTestCase {
         let context = DealerDetailPresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
         
-        XCTAssertFalse(viewModel.shareCommandInvoked)
+        let sender = self
+        context.scene.simulateShareButtonTapped(self)
         
-        context.scene.simulateShareButtonTapped()
-        
-        XCTAssertTrue(viewModel.shareCommandInvoked)
+        XCTAssertTrue(sender === (viewModel.shareCommandSender as AnyObject))
     }
 
 }

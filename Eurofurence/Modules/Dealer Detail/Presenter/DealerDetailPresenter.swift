@@ -147,8 +147,8 @@ class DealerDetailPresenter: DealerDetailSceneDelegate {
         }
     }
     
-    func dealerDetailSceneDidTapShareButton() {
-        viewModel?.shareDealer()
+    func dealerDetailSceneDidTapShareButton(_ sender: Any) {
+        viewModel?.shareDealer(sender)
     }
 
 }
