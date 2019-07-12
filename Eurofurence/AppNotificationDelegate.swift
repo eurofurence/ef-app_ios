@@ -7,6 +7,7 @@ class AppNotificationDelegate: NSObject, UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 willPresent notification: UNNotification,
                                 withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Swift.Void) {
+        ApplicationStack.handleRemoteNotification(notification.request.content.userInfo)
         completionHandler([.alert, .badge, .sound])
     }
     

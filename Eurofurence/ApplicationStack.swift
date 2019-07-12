@@ -24,7 +24,7 @@ class ApplicationStack {
     }
     
     static func handleRemoteNotification(_ payload: [AnyHashable: Any],
-                                         completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+                                         completionHandler: @escaping (UIBackgroundFetchResult) -> Void = { (_) in }) {
         instance.notificationFetchResultAdapter.handleRemoteNotification(payload, completionHandler: completionHandler)
     }
     
