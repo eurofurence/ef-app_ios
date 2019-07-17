@@ -48,6 +48,25 @@ class DealersIndexCategoriesShould: XCTestCase {
         XCTAssertEqual(categories.category(at: 2).name, "C")
     }
     
+    func testRestrictIndexToDealersWithActiveCategory() {
+        let context = EurofurenceSessionTestBuilder().build()
+        let firstDealer = makeDealer(categories: "A")
+        let secondDealer = makeDealer(categories: "B")
+        var characteristics = ModelCharacteristics.randomWithoutDeletions
+        characteristics.dealers.changed = [firstDealer, secondDealer]
+        context.refreshLocalStore()
+        context.simulateSyncSuccess(characteristics)
+        let index = context.dealersService.makeDealersIndex()
+        let categories = index.availableCategories
+        let aCategory = categories.category(at: 0)
+        let delegate = CapturingDealersIndexDelegate()
+        index.setDelegate(delegate)
+        aCategory.deactivate()
+        
+        DealerAssertion()
+            .assertDealers(delegate.capturedAlphabetisedDealerGroups.first?.dealers, characterisedBy: [secondDealer])
+    }
+    
     private func makeDealer(categories: String ...) -> DealerCharacteristics {
         var dealer = DealerCharacteristics.random
         dealer.categories = categories

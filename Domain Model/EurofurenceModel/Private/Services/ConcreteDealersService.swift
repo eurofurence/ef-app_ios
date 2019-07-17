@@ -3,14 +3,23 @@ import Foundation
 
 class ConcreteDealersService: DealersService {
     
-    private struct SimpleDealerCategory: DealerCategory {
+    private class SimpleDealerCategory: DealerCategory {
+        
+        private unowned let index: Index
         
         var name: String
         var isActive: Bool
         
-        init(name: String) {
+        init(index: Index, name: String) {
+            self.index = index
             self.name = name
+            
             isActive = true
+        }
+        
+        func deactivate() {
+            isActive = false
+            index.categoryStateDidChange(self)
         }
         
     }
@@ -19,6 +28,11 @@ class ConcreteDealersService: DealersService {
 
         private let dealers: ConcreteDealersService
         private var alphebetisedDealers = [AlphabetisedDealersGroup]()
+        private var categories: [DealerCategory] = [] {
+            didSet {
+                availableCategories = InMemoryDealerCategoriesCollection(categories: categories)
+            }
+        }
 
         init(dealers: ConcreteDealersService, eventBus: EventBus) {
             self.dealers = dealers
@@ -54,16 +68,18 @@ class ConcreteDealersService: DealersService {
         func setDelegate(_ delegate: DealersIndexDelegate) {
             self.delegate = delegate
             updateAlphebetisedDealers()
-            delegate.alphabetisedDealersDidChange(to: alphebetisedDealers)
         }
 
         func consume(event: ConcreteDealersService.UpdatedEvent) {
             updateAlphebetisedDealers()
-            delegate?.alphabetisedDealersDidChange(to: alphebetisedDealers)
         }
 
         private func updateAlphebetisedDealers() {
-            let grouped = Dictionary(grouping: dealers.dealerModels, by: { (dealer) -> String in
+            updateAlphebetisedDealers(dealers: dealers.dealerModels)
+        }
+        
+        private func updateAlphebetisedDealers(dealers: [Dealer]) {
+            let grouped = Dictionary(grouping: dealers, by: { (dealer) -> String in
                 guard let firstCharacterOfName = dealer.preferredName.first else { fatalError("Dealer does not have a name!") }
                 return String(firstCharacterOfName).uppercased()
             })
@@ -76,12 +92,23 @@ class ConcreteDealersService: DealersService {
                                                     return first.preferredName.lowercased() < second.preferredName.lowercased()
                                                 }))
             })
+            
+            delegate?.alphabetisedDealersDidChange(to: alphebetisedDealers)
         }
         
         private func updateCategories() {
             let categoryTitles = Set(dealers.dealerModels.flatMap({ $0.categories }))
-            let categories = categoryTitles.sorted().map(SimpleDealerCategory.init)
-            availableCategories = InMemoryDealerCategoriesCollection(categories: categories)
+            categories = categoryTitles.sorted().map({ SimpleDealerCategory(index: self, name: $0) })
+        }
+        
+        func categoryStateDidChange(_ category: DealerCategory) {
+            let activeCategories = Set(categories.filter({ $0.isActive }).map({ $0.name }))
+            let dealersWithCategory = dealers.dealerModels.filter({ (dealer) -> Bool in
+                let dealerCategories = Set(dealer.categories)
+                return dealerCategories.isDisjoint(with: activeCategories) == false
+            })
+            
+            updateAlphebetisedDealers(dealers: dealersWithCategory)
         }
 
     }

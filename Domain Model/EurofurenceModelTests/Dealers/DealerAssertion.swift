@@ -2,6 +2,23 @@ import EurofurenceModel
 import TestUtilities
 
 class DealerAssertion: Assertion {
+    
+    func assertDealers(_ dealers: [Dealer]?, characterisedBy characteristics: [DealerCharacteristics]) {
+        guard let dealers = dealers else {
+            fail(message: "Asserting against nil dealers")
+            return
+        }
+        
+        guard dealers.count == characteristics.count else {
+            fail(message: "Differing amount of expected/actual dealers")
+            return
+        }
+        
+        for (idx, dealer) in dealers.enumerated() {
+            let characteristic = characteristics[idx]
+            assertDealer(dealer, characterisedBy: characteristic)
+        }
+    }
 
     func assertDealer(_ dealer: Dealer?, characterisedBy characteristic: DealerCharacteristics) {
         guard let dealer = dealer else {
