@@ -26,6 +26,7 @@ public protocol DealerCategoriesCollection {
 public protocol DealerCategory {
     
     var name: String { get }
+    var isActive: Bool { get }
     
 }
 

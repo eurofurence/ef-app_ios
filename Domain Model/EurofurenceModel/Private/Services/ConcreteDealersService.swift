@@ -6,6 +6,12 @@ class ConcreteDealersService: DealersService {
     private struct SimpleDealerCategory: DealerCategory {
         
         var name: String
+        var isActive: Bool
+        
+        init(name: String) {
+            self.name = name
+            isActive = true
+        }
         
     }
 

@@ -14,7 +14,10 @@ class DealersIndexCategoriesShould: XCTestCase {
         let categories = index.availableCategories
         
         XCTAssertEqual(categories.numberOfCategories, 1)
-        XCTAssertEqual(categories.category(at: 0).name, "Test")
+        
+        let firstCategory = categories.category(at: 0)
+        XCTAssertEqual(firstCategory.name, "Test")
+        XCTAssertTrue(firstCategory.isActive)
     }
     
     func testBeConsolidatedByName() {
