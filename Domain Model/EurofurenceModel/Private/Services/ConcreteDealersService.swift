@@ -73,7 +73,7 @@ class ConcreteDealersService: DealersService {
         }
         
         private func updateCategories() {
-            let categoryTitles = dealers.dealerModels.flatMap({ $0.categories })
+            let categoryTitles = Set(dealers.dealerModels.flatMap({ $0.categories }))
             let categories = categoryTitles.map(SimpleDealerCategory.init)
             availableCategories = InMemoryDealerCategoriesCollection(categories: categories)
         }
