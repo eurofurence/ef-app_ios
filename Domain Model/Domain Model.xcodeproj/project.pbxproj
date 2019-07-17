@@ -460,6 +460,8 @@
 		CAB0FD5E22C9128800D4CB98 /* WhenDescribingAppLink_WithValidEventIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB0FD5D22C9128800D4CB98 /* WhenDescribingAppLink_WithValidEventIdentifier.swift */; };
 		CAB0FD6122C915BC00D4CB98 /* CapturingURLContentVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB0FD6022C915BC00D4CB98 /* CapturingURLContentVisitor.swift */; };
 		CAB0FD6322C915D400D4CB98 /* WhenDescribingAppLink_WithInvalidEventIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB0FD6222C915D400D4CB98 /* WhenDescribingAppLink_WithInvalidEventIdentifier.swift */; };
+		CAC4993A22DFA652003E1D77 /* DealersIndexCategoriesShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC4993922DFA652003E1D77 /* DealersIndexCategoriesShould.swift */; };
+		CAC4993C22DFA864003E1D77 /* InMemoryDealerCategoriesCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC4993B22DFA864003E1D77 /* InMemoryDealerCategoriesCollection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -948,6 +950,8 @@
 		CAB0FD5D22C9128800D4CB98 /* WhenDescribingAppLink_WithValidEventIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDescribingAppLink_WithValidEventIdentifier.swift; sourceTree = "<group>"; };
 		CAB0FD6022C915BC00D4CB98 /* CapturingURLContentVisitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingURLContentVisitor.swift; sourceTree = "<group>"; };
 		CAB0FD6222C915D400D4CB98 /* WhenDescribingAppLink_WithInvalidEventIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDescribingAppLink_WithInvalidEventIdentifier.swift; sourceTree = "<group>"; };
+		CAC4993922DFA652003E1D77 /* DealersIndexCategoriesShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersIndexCategoriesShould.swift; sourceTree = "<group>"; };
+		CAC4993B22DFA864003E1D77 /* InMemoryDealerCategoriesCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryDealerCategoriesCollection.swift; sourceTree = "<group>"; };
 		EC85896EECB18D7881B0665A /* Pods-EurofurenceModel-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-EurofurenceModel-metadata.plist"; sourceTree = "<group>"; };
 		FFE87D86E3ECE04913805820 /* Pods_EurofurenceModelTestDoubles.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EurofurenceModelTestDoubles.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -1151,6 +1155,7 @@
 				CA7A2F4822B16DE3002AD939 /* Track.swift */,
 				CA7A2F4B22B16DE3002AD939 /* User.swift */,
 				CA7A2F5222B16DE3002AD939 /* Entities */,
+				CAC4993B22DFA864003E1D77 /* InMemoryDealerCategoriesCollection.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -1758,6 +1763,7 @@
 		CA7A312522B16E25002AD939 /* Dealers */ = {
 			isa = PBXGroup;
 			children = (
+				CAC4993822DFA61C003E1D77 /* Categories */,
 				CA7A313122B16E25002AD939 /* AlphabetisedDealersGroupAssertion.swift */,
 				CA7A312622B16E25002AD939 /* DealerAssertion.swift */,
 				CA7A313522B16E25002AD939 /* WhenAdaptingDealersFromResponse_ApplicationShould.swift */,
@@ -2172,6 +2178,14 @@
 			path = Events;
 			sourceTree = "<group>";
 		};
+		CAC4993822DFA61C003E1D77 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				CAC4993922DFA652003E1D77 /* DealersIndexCategoriesShould.swift */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -2447,6 +2461,7 @@
 				CA7A306722B16DE4002AD939 /* MapsService.swift in Sources */,
 				CA7A303A22B16DE4002AD939 /* SignificantTimeChangeAdapter.swift in Sources */,
 				CA7A301522B16DE4002AD939 /* EventFeedback.swift in Sources */,
+				CAC4993C22DFA864003E1D77 /* InMemoryDealerCategoriesCollection.swift in Sources */,
 				CA7A307B22B16DE4002AD939 /* DomainEvent.swift in Sources */,
 				CA7A303322B16DE4002AD939 /* CoreDataStoreTransaction.swift in Sources */,
 				CA7A306E22B16DE4002AD939 /* DealersService.swift in Sources */,
@@ -2813,6 +2828,7 @@
 				CA7A323622B16E26002AD939 /* WhenCharacteristicsIndicatesEventAcceptsFeedback.swift in Sources */,
 				CAA10FCA22C5597C00689A32 /* WhenResolvingMessageByItsIdentifier.swift in Sources */,
 				CAB0FD6122C915BC00D4CB98 /* CapturingURLContentVisitor.swift in Sources */,
+				CAC4993A22DFA652003E1D77 /* DealersIndexCategoriesShould.swift in Sources */,
 				CA7A31B222B16E26002AD939 /* MapContent+Equatable.swift in Sources */,
 				CA7A31C122B16E26002AD939 /* WhenPerformingSync_BeforeImageDownload.swift in Sources */,
 				CA7A31CB22B16E26002AD939 /* WhenLoggingOut_ThenRequestingPrivateMessages.swift in Sources */,

@@ -5,9 +5,15 @@ public class FakeDealersIndex: DealersIndex {
 
     public let alphabetisedDealers: [AlphabetisedDealersGroup]
 
-    public init(alphabetisedDealers: [AlphabetisedDealersGroup] = .random) {
+    public init(
+        alphabetisedDealers: [AlphabetisedDealersGroup] = .random,
+        availableCategories: DealerCategoriesCollection = InMemoryDealerCategoriesCollection(categories: [DealerCategory]())
+    ) {
         self.alphabetisedDealers = alphabetisedDealers
+        self.availableCategories = availableCategories
     }
+    
+    public var availableCategories: DealerCategoriesCollection
 
     public let alphabetisedDealersSearchResult: [AlphabetisedDealersGroup] = .random
     public private(set) var capturedSearchTerm: String?

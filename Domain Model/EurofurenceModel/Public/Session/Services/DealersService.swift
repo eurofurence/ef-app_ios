@@ -8,10 +8,25 @@ public protocol DealersService {
 }
 
 public protocol DealersIndex {
+    
+    var availableCategories: DealerCategoriesCollection { get }
 
     func setDelegate(_ delegate: DealersIndexDelegate)
     func performSearch(term: String)
 
+}
+
+public protocol DealerCategoriesCollection {
+    
+    var numberOfCategories: Int { get }
+    func category(at index: Int) -> DealerCategory
+    
+}
+
+public protocol DealerCategory {
+    
+    var name: String { get }
+    
 }
 
 public protocol DealersIndexDelegate {

@@ -2,6 +2,12 @@ import EventBus
 import Foundation
 
 class ConcreteDealersService: DealersService {
+    
+    private struct SimpleDealerCategory: DealerCategory {
+        
+        var name: String
+        
+    }
 
     private class Index: DealersIndex, EventConsumer {
 
@@ -10,8 +16,12 @@ class ConcreteDealersService: DealersService {
 
         init(dealers: ConcreteDealersService, eventBus: EventBus) {
             self.dealers = dealers
+            availableCategories = InMemoryDealerCategoriesCollection(categories: [])
+            updateCategories()
             eventBus.subscribe(consumer: self)
         }
+        
+        private(set) var availableCategories: DealerCategoriesCollection
 
         func performSearch(term: String) {
             let matches = alphebetisedDealers.compactMap { (group) -> AlphabetisedDealersGroup? in
@@ -61,12 +71,18 @@ class ConcreteDealersService: DealersService {
                                                 }))
             })
         }
+        
+        private func updateCategories() {
+            let categoryTitles = dealers.dealerModels.flatMap({ $0.categories })
+            let categories = categoryTitles.map(SimpleDealerCategory.init)
+            availableCategories = InMemoryDealerCategoriesCollection(categories: categories)
+        }
 
     }
 
     private struct UpdatedEvent {}
 
-    private var dealerModels = [Dealer]()
+    private var dealerModels = [DealerImpl]()
     private let eventBus: EventBus
     private let dataStore: DataStore
     private let imageCache: ImagesCache
@@ -103,7 +119,7 @@ class ConcreteDealersService: DealersService {
         eventBus.post(ConcreteDealersService.UpdatedEvent())
     }
     
-    private func makeDealer(from characteristics: DealerCharacteristics) -> Dealer {
+    private func makeDealer(from characteristics: DealerCharacteristics) -> DealerImpl {
         return DealerImpl(eventBus: eventBus,
                           dataStore: dataStore,
                           imageCache: imageCache,
