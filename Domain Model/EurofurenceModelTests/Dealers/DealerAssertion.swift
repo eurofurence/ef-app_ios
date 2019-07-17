@@ -14,8 +14,10 @@ class DealerAssertion: Assertion {
             return
         }
         
+        let dealersShouldBeOrderedByName = characteristics.sorted(by: { $0.displayName < $1.displayName })
+        
         for (idx, dealer) in dealers.enumerated() {
-            let characteristic = characteristics[idx]
+            let characteristic = dealersShouldBeOrderedByName[idx]
             assertDealer(dealer, characterisedBy: characteristic)
         }
     }

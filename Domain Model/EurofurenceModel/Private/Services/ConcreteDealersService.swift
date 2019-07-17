@@ -8,7 +8,11 @@ class ConcreteDealersService: DealersService {
         private unowned let index: Index
         
         var name: String
-        var isActive: Bool
+        var isActive: Bool {
+            didSet {
+                index.categoryStateDidChange(self)
+            }
+        }
         
         init(index: Index, name: String) {
             self.index = index
@@ -17,9 +21,12 @@ class ConcreteDealersService: DealersService {
             isActive = true
         }
         
+        func activate() {
+            isActive = true
+        }
+        
         func deactivate() {
             isActive = false
-            index.categoryStateDidChange(self)
         }
         
     }
@@ -37,6 +44,7 @@ class ConcreteDealersService: DealersService {
         init(dealers: ConcreteDealersService, eventBus: EventBus) {
             self.dealers = dealers
             availableCategories = InMemoryDealerCategoriesCollection(categories: [])
+            updateCategories()
 
             eventBus.subscribe(consumer: self)
         }

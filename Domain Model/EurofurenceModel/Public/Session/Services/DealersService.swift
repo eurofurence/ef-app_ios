@@ -28,6 +28,7 @@ public protocol DealerCategory {
     var name: String { get }
     var isActive: Bool { get }
     
+    func activate()
     func deactivate()
     
 }
