@@ -17,6 +17,7 @@ struct Theme {
         styleTextFields()
         styleSegmentedControls()
         styleRefreshControls()
+        styleImages()
     }
     
     static func performUnsafeSearchControllerStyling(searchController: UISearchController) {
@@ -138,6 +139,11 @@ struct Theme {
     private static func styleRefreshControls() {
         let refreshControl = UIRefreshControl.appearance()
         refreshControl.tintColor = .pantone330U_13
+    }
+    
+    private static func styleImages() {
+        let image = UIImageView.appearance()
+        image.tintColor = .pantone330U
     }
 
 }
