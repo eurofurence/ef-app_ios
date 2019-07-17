@@ -37,7 +37,7 @@ class ConcreteDealersService: DealersService {
         init(dealers: ConcreteDealersService, eventBus: EventBus) {
             self.dealers = dealers
             availableCategories = InMemoryDealerCategoriesCollection(categories: [])
-            updateCategories()
+
             eventBus.subscribe(consumer: self)
         }
         
@@ -71,15 +71,18 @@ class ConcreteDealersService: DealersService {
         }
 
         func consume(event: ConcreteDealersService.UpdatedEvent) {
+            updateCategories()
             updateAlphebetisedDealers()
         }
-
-        private func updateAlphebetisedDealers() {
-            updateAlphebetisedDealers(dealers: dealers.dealerModels)
-        }
         
-        private func updateAlphebetisedDealers(dealers: [Dealer]) {
-            let grouped = Dictionary(grouping: dealers, by: { (dealer) -> String in
+        private func updateAlphebetisedDealers() {
+            let activeCategories = Set(categories.filter({ $0.isActive }).map({ $0.name }))
+            let dealersWithEnabledCategory = dealers.dealerModels.filter({ (dealer) -> Bool in
+                let dealerCategories = Set(dealer.categories)
+                return dealerCategories.isDisjoint(with: activeCategories) == false
+            })
+            
+            let grouped = Dictionary(grouping: dealersWithEnabledCategory, by: { (dealer) -> String in
                 guard let firstCharacterOfName = dealer.preferredName.first else { fatalError("Dealer does not have a name!") }
                 return String(firstCharacterOfName).uppercased()
             })
@@ -102,13 +105,7 @@ class ConcreteDealersService: DealersService {
         }
         
         func categoryStateDidChange(_ category: DealerCategory) {
-            let activeCategories = Set(categories.filter({ $0.isActive }).map({ $0.name }))
-            let dealersWithCategory = dealers.dealerModels.filter({ (dealer) -> Bool in
-                let dealerCategories = Set(dealer.categories)
-                return dealerCategories.isDisjoint(with: activeCategories) == false
-            })
-            
-            updateAlphebetisedDealers(dealers: dealersWithCategory)
+            updateAlphebetisedDealers()
         }
 
     }
