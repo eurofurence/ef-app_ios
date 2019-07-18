@@ -3,13 +3,16 @@ import EurofurenceModelTestDoubles
 import XCTest
 
 class DealersIndexCategoriesShould: XCTestCase {
+    
+    var context: EurofurenceSessionTestBuilder.Context!
+    
+    override func setUp() {
+        super.setUp()
+        context = EurofurenceSessionTestBuilder().build()
+    }
 
     func testBeAdaptedFromResponse() {
-        let context = EurofurenceSessionTestBuilder().build()
-        var characteristics = ModelCharacteristics.randomWithoutDeletions
-        characteristics.dealers.changed = [makeDealer(categories: "Test")]
-        context.refreshLocalStore()
-        context.simulateSyncSuccess(characteristics)
+        updateDealers([makeDealer(categories: "Test")])
         let index = context.dealersService.makeDealersIndex()
         let categories = index.availableCategories
         
@@ -20,11 +23,7 @@ class DealersIndexCategoriesShould: XCTestCase {
     }
     
     func testBeActiveByDefault() {
-        let context = EurofurenceSessionTestBuilder().build()
-        var characteristics = ModelCharacteristics.randomWithoutDeletions
-        characteristics.dealers.changed = [makeDealer(categories: "Test")]
-        context.refreshLocalStore()
-        context.simulateSyncSuccess(characteristics)
+        updateDealers([makeDealer(categories: "Test")])
         let index = context.dealersService.makeDealersIndex()
         let categories = index.availableCategories
         let category = categories.category(at: 0)
@@ -36,11 +35,7 @@ class DealersIndexCategoriesShould: XCTestCase {
     }
     
     func testBeConsolidatedByName() {
-        let context = EurofurenceSessionTestBuilder().build()
-        var characteristics = ModelCharacteristics.randomWithoutDeletions
-        characteristics.dealers.changed = [makeDealer(categories: "Test"), makeDealer(categories: "Test")]
-        context.refreshLocalStore()
-        context.simulateSyncSuccess(characteristics)
+        updateDealers([makeDealer(categories: "Test"), makeDealer(categories: "Test")])
         let index = context.dealersService.makeDealersIndex()
         let categories = index.availableCategories
         
@@ -49,11 +44,7 @@ class DealersIndexCategoriesShould: XCTestCase {
     }
     
     func testBeSortedAlphabetically() {
-        let context = EurofurenceSessionTestBuilder().build()
-        var characteristics = ModelCharacteristics.randomWithoutDeletions
-        characteristics.dealers.changed = [makeDealer(categories: "C"), makeDealer(categories: "B"), makeDealer(categories: "A")]
-        context.refreshLocalStore()
-        context.simulateSyncSuccess(characteristics)
+        updateDealers([makeDealer(categories: "C"), makeDealer(categories: "B"), makeDealer(categories: "A")])
         let index = context.dealersService.makeDealersIndex()
         let categories = index.availableCategories
         
@@ -64,13 +55,9 @@ class DealersIndexCategoriesShould: XCTestCase {
     }
     
     func testRestrictIndexToDealersWithActiveCategory() {
-        let context = EurofurenceSessionTestBuilder().build()
         let firstDealer = makeDealer(categories: "A")
         let secondDealer = makeDealer(categories: "B")
-        var characteristics = ModelCharacteristics.randomWithoutDeletions
-        characteristics.dealers.changed = [firstDealer, secondDealer]
-        context.refreshLocalStore()
-        context.simulateSyncSuccess(characteristics)
+        updateDealers([firstDealer, secondDealer])
         let index = context.dealersService.makeDealersIndex()
         let categories = index.availableCategories
         let aCategory = categories.category(at: 0)
@@ -83,13 +70,9 @@ class DealersIndexCategoriesShould: XCTestCase {
     }
     
     func testRestrictIndexToDealersWithActiveCategory_LateAddedDelegate() {
-        let context = EurofurenceSessionTestBuilder().build()
         let firstDealer = makeDealer(categories: "A")
         let secondDealer = makeDealer(categories: "B")
-        var characteristics = ModelCharacteristics.randomWithoutDeletions
-        characteristics.dealers.changed = [firstDealer, secondDealer]
-        context.refreshLocalStore()
-        context.simulateSyncSuccess(characteristics)
+        updateDealers([firstDealer, secondDealer])
         let index = context.dealersService.makeDealersIndex()
         let categories = index.availableCategories
         let aCategory = categories.category(at: 0)
@@ -102,13 +85,9 @@ class DealersIndexCategoriesShould: XCTestCase {
     }
     
     func testIncludeDealersInReactivatedCategories() {
-        let context = EurofurenceSessionTestBuilder().build()
         let firstDealer = makeDealer(categories: "A")
         let secondDealer = makeDealer(categories: "B")
-        var characteristics = ModelCharacteristics.randomWithoutDeletions
-        characteristics.dealers.changed = [firstDealer, secondDealer]
-        context.refreshLocalStore()
-        context.simulateSyncSuccess(characteristics)
+        updateDealers([firstDealer, secondDealer])
         let index = context.dealersService.makeDealersIndex()
         let categories = index.availableCategories
         let aCategory = categories.category(at: 0)
@@ -124,11 +103,7 @@ class DealersIndexCategoriesShould: XCTestCase {
     }
     
     func testNotifyObserverWhenDeactivated() {
-        let context = EurofurenceSessionTestBuilder().build()
-        var characteristics = ModelCharacteristics.randomWithoutDeletions
-        characteristics.dealers.changed = [makeDealer(categories: "Test")]
-        context.refreshLocalStore()
-        context.simulateSyncSuccess(characteristics)
+        updateDealers([makeDealer(categories: "Test")])
         let index = context.dealersService.makeDealersIndex()
         let categories = index.availableCategories
         let category = categories.category(at: 0)
@@ -141,11 +116,7 @@ class DealersIndexCategoriesShould: XCTestCase {
     }
     
     func testNotifyObserverWhenDeactivated_LateAddedObserver() {
-        let context = EurofurenceSessionTestBuilder().build()
-        var characteristics = ModelCharacteristics.randomWithoutDeletions
-        characteristics.dealers.changed = [makeDealer(categories: "Test")]
-        context.refreshLocalStore()
-        context.simulateSyncSuccess(characteristics)
+        updateDealers([makeDealer(categories: "Test")])
         let index = context.dealersService.makeDealersIndex()
         let categories = index.availableCategories
         let category = categories.category(at: 0)
@@ -158,11 +129,7 @@ class DealersIndexCategoriesShould: XCTestCase {
     }
     
     func testNotifyObserverWhenReactivated() {
-        let context = EurofurenceSessionTestBuilder().build()
-        var characteristics = ModelCharacteristics.randomWithoutDeletions
-        characteristics.dealers.changed = [makeDealer(categories: "Test")]
-        context.refreshLocalStore()
-        context.simulateSyncSuccess(characteristics)
+        updateDealers([makeDealer(categories: "Test")])
         let index = context.dealersService.makeDealersIndex()
         let categories = index.availableCategories
         let category = categories.category(at: 0)
@@ -173,6 +140,13 @@ class DealersIndexCategoriesShould: XCTestCase {
         category.activate()
         
         XCTAssertEqual(.active, categoryObserver.state)
+    }
+    
+    private func updateDealers(_ dealers: [DealerCharacteristics]) {
+        var characteristics = ModelCharacteristics.randomWithoutDeletions
+        characteristics.dealers.changed = dealers
+        context.refreshLocalStore()
+        context.simulateSyncSuccess(characteristics)
     }
     
     private func makeDealer(categories: String ...) -> DealerCharacteristics {
