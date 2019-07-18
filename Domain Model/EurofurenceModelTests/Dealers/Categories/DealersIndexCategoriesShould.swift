@@ -142,6 +142,23 @@ class DealersIndexCategoriesShould: XCTestCase {
         XCTAssertEqual(.active, categoryObserver.state)
     }
     
+    func testNotifyObserverWhenCategoriesChange() {
+        updateDealers([makeDealer(categories: "Test")])
+        let index = context.dealersService.makeDealersIndex()
+        let categories = index.availableCategories
+        let observer = CapturingDealerCategoriesCollectionObserver()
+        categories.add(observer)
+        
+        XCTAssertFalse(observer.toldCategoriesDidChange)
+
+        updateDealers([makeDealer(categories: "Test"), makeDealer(categories: "Test 2")])
+        
+        XCTAssertTrue(observer.toldCategoriesDidChange)
+        XCTAssertEqual(2, categories.numberOfCategories)
+        XCTAssertEqual("Test", categories.category(at: 0).name)
+        XCTAssertEqual("Test 2", categories.category(at: 1).name)
+    }
+    
     private func updateDealers(_ dealers: [DealerCharacteristics]) {
         var characteristics = ModelCharacteristics.randomWithoutDeletions
         characteristics.dealers.changed = dealers

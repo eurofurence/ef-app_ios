@@ -7,7 +7,7 @@ public class FakeDealersIndex: DealersIndex {
 
     public init(
         alphabetisedDealers: [AlphabetisedDealersGroup] = .random,
-        availableCategories: DealerCategoriesCollection = InMemoryDealerCategoriesCollection(categories: [DealerCategory]())
+        availableCategories: DealerCategoriesCollection = InMemoryDealerCategoriesCollection(categories: [FakeDealerCategory]())
     ) {
         self.alphabetisedDealers = alphabetisedDealers
         self.availableCategories = availableCategories
@@ -26,4 +26,22 @@ public class FakeDealersIndex: DealersIndex {
         delegate.indexDidProduceSearchResults(alphabetisedDealersSearchResult)
     }
 
+}
+
+public class FakeDealerCategory: DealerCategory {
+    
+    public var name: String = ""
+    
+    public func activate() {
+        
+    }
+    
+    public func deactivate() {
+        
+    }
+    
+    public func add(_ observer: DealerCategoryObserver) {
+        
+    }
+    
 }

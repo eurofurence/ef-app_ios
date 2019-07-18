@@ -51,22 +51,26 @@ class ConcreteDealersService: DealersService {
     private class Index: DealersIndex, EventConsumer {
 
         private let dealers: ConcreteDealersService
+        private let categoriesCollection = InMemoryDealerCategoriesCollection(categories: [SimpleDealerCategory]())
         private var alphebetisedDealers = [AlphabetisedDealersGroup]()
-        private var categories: [SimpleDealerCategory] = [] {
-            didSet {
-                availableCategories = InMemoryDealerCategoriesCollection(categories: categories)
+        private var categories: [SimpleDealerCategory] {
+            get {
+                return categoriesCollection.categories
+            } set {
+                categoriesCollection.categories = newValue
             }
         }
 
         init(dealers: ConcreteDealersService, eventBus: EventBus) {
             self.dealers = dealers
-            availableCategories = InMemoryDealerCategoriesCollection(categories: [])
             updateCategories()
 
             eventBus.subscribe(consumer: self)
         }
         
-        private(set) var availableCategories: DealerCategoriesCollection
+        var availableCategories: DealerCategoriesCollection {
+            return categoriesCollection
+        }
 
         func performSearch(term: String) {
             let matches = alphebetisedDealers.compactMap { (group) -> AlphabetisedDealersGroup? in
