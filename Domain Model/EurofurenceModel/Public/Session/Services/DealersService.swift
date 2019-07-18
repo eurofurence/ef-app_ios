@@ -29,6 +29,14 @@ public protocol DealerCategory {
     
     func activate()
     func deactivate()
+    func add(_ observer: DealerCategoryObserver)
+    
+}
+
+public protocol DealerCategoryObserver {
+    
+    func categoryDidActivate(_ category: DealerCategory)
+    func categoryDidDeactivate(_ category: DealerCategory)
     
 }
 

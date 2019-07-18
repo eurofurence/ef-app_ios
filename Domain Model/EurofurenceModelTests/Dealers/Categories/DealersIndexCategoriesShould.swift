@@ -19,6 +19,22 @@ class DealersIndexCategoriesShould: XCTestCase {
         XCTAssertEqual(firstCategory.name, "Test")
     }
     
+    func testBeActiveByDefault() {
+        let context = EurofurenceSessionTestBuilder().build()
+        var characteristics = ModelCharacteristics.randomWithoutDeletions
+        characteristics.dealers.changed = [makeDealer(categories: "Test")]
+        context.refreshLocalStore()
+        context.simulateSyncSuccess(characteristics)
+        let index = context.dealersService.makeDealersIndex()
+        let categories = index.availableCategories
+        let category = categories.category(at: 0)
+        
+        let categoryObserver = CapturingDealerCategoryObserver()
+        category.add(categoryObserver)
+        
+        XCTAssertEqual(.active, categoryObserver.state)
+    }
+    
     func testBeConsolidatedByName() {
         let context = EurofurenceSessionTestBuilder().build()
         var characteristics = ModelCharacteristics.randomWithoutDeletions
@@ -105,6 +121,58 @@ class DealersIndexCategoriesShould: XCTestCase {
         
         DealerAssertion()
             .assertDealers(allDealers, characterisedBy: [firstDealer, secondDealer])
+    }
+    
+    func testNotifyObserverWhenDeactivated() {
+        let context = EurofurenceSessionTestBuilder().build()
+        var characteristics = ModelCharacteristics.randomWithoutDeletions
+        characteristics.dealers.changed = [makeDealer(categories: "Test")]
+        context.refreshLocalStore()
+        context.simulateSyncSuccess(characteristics)
+        let index = context.dealersService.makeDealersIndex()
+        let categories = index.availableCategories
+        let category = categories.category(at: 0)
+        
+        let categoryObserver = CapturingDealerCategoryObserver()
+        category.add(categoryObserver)
+        category.deactivate()
+        
+        XCTAssertEqual(.inactive, categoryObserver.state)
+    }
+    
+    func testNotifyObserverWhenDeactivated_LateAddedObserver() {
+        let context = EurofurenceSessionTestBuilder().build()
+        var characteristics = ModelCharacteristics.randomWithoutDeletions
+        characteristics.dealers.changed = [makeDealer(categories: "Test")]
+        context.refreshLocalStore()
+        context.simulateSyncSuccess(characteristics)
+        let index = context.dealersService.makeDealersIndex()
+        let categories = index.availableCategories
+        let category = categories.category(at: 0)
+        
+        let categoryObserver = CapturingDealerCategoryObserver()
+        category.deactivate()
+        category.add(categoryObserver)
+        
+        XCTAssertEqual(.inactive, categoryObserver.state)
+    }
+    
+    func testNotifyObserverWhenReactivated() {
+        let context = EurofurenceSessionTestBuilder().build()
+        var characteristics = ModelCharacteristics.randomWithoutDeletions
+        characteristics.dealers.changed = [makeDealer(categories: "Test")]
+        context.refreshLocalStore()
+        context.simulateSyncSuccess(characteristics)
+        let index = context.dealersService.makeDealersIndex()
+        let categories = index.availableCategories
+        let category = categories.category(at: 0)
+        
+        let categoryObserver = CapturingDealerCategoryObserver()
+        category.add(categoryObserver)
+        category.deactivate()
+        category.activate()
+        
+        XCTAssertEqual(.active, categoryObserver.state)
     }
     
     private func makeDealer(categories: String ...) -> DealerCharacteristics {

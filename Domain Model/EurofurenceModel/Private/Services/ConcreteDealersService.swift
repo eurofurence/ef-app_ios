@@ -6,11 +6,13 @@ class ConcreteDealersService: DealersService {
     private class SimpleDealerCategory: DealerCategory {
         
         private unowned let index: Index
+        private var observers = [DealerCategoryObserver]()
         
         var name: String
         var isActive: Bool {
             didSet {
                 index.categoryStateDidChange(self)
+                observers.forEach(updateObserverWithCurrentState)
             }
         }
         
@@ -23,10 +25,25 @@ class ConcreteDealersService: DealersService {
         
         func activate() {
             isActive = true
+            observers.forEach({ $0.categoryDidActivate(self) })
         }
         
         func deactivate() {
             isActive = false
+            observers.forEach({ $0.categoryDidDeactivate(self) })
+        }
+        
+        func add(_ observer: DealerCategoryObserver) {
+            observers.append(observer)
+            updateObserverWithCurrentState(observer)
+        }
+        
+        private func updateObserverWithCurrentState(_ observer: DealerCategoryObserver) {
+            if isActive {
+                observer.categoryDidActivate(self)
+            } else {
+                observer.categoryDidDeactivate(self)
+            }
         }
         
     }
