@@ -14,15 +14,13 @@ class DealerCategoriesViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let cell = tableView.cellForRow(at: indexPath) {
-            cell.accessoryType = .checkmark
-        }
+        let cell: DealerCategoryTableViewCell = tableView.customCellForRow(at: indexPath)
+        cell.showCategoryActiveIndicator()
     }
     
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        if let cell = tableView.cellForRow(at: indexPath) {
-            cell.accessoryType = .none
-        }
+        let cell: DealerCategoryTableViewCell = tableView.customCellForRow(at: indexPath)
+        cell.hideCategoryActiveIndicator()
     }
 
 }
