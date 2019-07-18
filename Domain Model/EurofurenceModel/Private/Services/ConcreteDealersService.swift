@@ -130,7 +130,16 @@ class ConcreteDealersService: DealersService {
         
         private func updateCategories() {
             let categoryTitles = Set(dealers.dealerModels.flatMap({ $0.categories }))
-            categories = categoryTitles.sorted().map({ SimpleDealerCategory(index: self, name: $0) })
+            var categories = [SimpleDealerCategory]()
+            for title in categoryTitles {
+                if let existingCategory = self.categories.first(where: { $0.name == title }) {
+                    categories.append(existingCategory)
+                } else {
+                    categories.append(SimpleDealerCategory(index: self, name: title))
+                }
+            }
+            
+            self.categories = categories.sorted(by: { $0.name < $1.name })
         }
         
         func categoryStateDidChange(_ category: DealerCategory) {

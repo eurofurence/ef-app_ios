@@ -159,6 +159,20 @@ class DealersIndexCategoriesShould: XCTestCase {
         XCTAssertEqual("Test 2", categories.category(at: 1).name)
     }
     
+    func testMaintainActivationStateBetweenSyncs() {
+        updateDealers([makeDealer(categories: "Test")])
+        let index = context.dealersService.makeDealersIndex()
+        let categories = index.availableCategories
+        var testCategory = categories.category(at: 0)
+        testCategory.deactivate()
+        updateDealers([makeDealer(categories: "Test")])
+        testCategory = categories.category(at: 0)
+        let testCategoryObserver = CapturingDealerCategoryObserver()
+        testCategory.add(testCategoryObserver)
+        
+        XCTAssertEqual(testCategoryObserver.state, .inactive)
+    }
+    
     private func updateDealers(_ dealers: [DealerCharacteristics]) {
         var characteristics = ModelCharacteristics.randomWithoutDeletions
         characteristics.dealers.changed = dealers
