@@ -35,7 +35,7 @@ class ConcreteDealersService: DealersService {
 
         private let dealers: ConcreteDealersService
         private var alphebetisedDealers = [AlphabetisedDealersGroup]()
-        private var categories: [DealerCategory] = [] {
+        private var categories: [SimpleDealerCategory] = [] {
             didSet {
                 availableCategories = InMemoryDealerCategoriesCollection(categories: categories)
             }
