@@ -16,3 +16,15 @@ protocol DealersViewModelDelegate {
     func dealerGroupsDidChange(_ groups: [DealersGroupViewModel], indexTitles: [String])
 
 }
+
+protocol DealerCategoriesViewModel {
+    
+    var numberOfCategories: Int { get }
+    
+}
+
+protocol DealerCategoryViewModel {
+    
+    var title: String { get }
+    
+}

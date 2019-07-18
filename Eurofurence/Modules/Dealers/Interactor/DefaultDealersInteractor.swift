@@ -31,6 +31,10 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
     func makeDealersSearchViewModel(completionHandler: @escaping (DealersSearchViewModel) -> Void) {
         completionHandler(searchViewModel)
     }
+    
+    func makeDealerCategoriesViewModel(completionHandler: @escaping (DealerCategoriesViewModel) -> Void) {
+        
+    }
 
     func alphabetisedDealersDidChange(to alphabetisedGroups: [AlphabetisedDealersGroup]) {
         let (groups, indexTitles) = makeViewModels(from: alphabetisedGroups)

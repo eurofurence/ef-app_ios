@@ -19,5 +19,12 @@ protocol DealersSceneDelegate {
     func dealersSceneDidSelectDealer(at indexPath: IndexPath)
     func dealersSceneDidSelectDealerSearchResult(at indexPath: IndexPath)
     func dealersSceneDidPerformRefreshAction()
+    func dealersSceneDidRevealCategoryFiltersScene(_ filtersScene: DealerCategoriesFilterScene)
 
+}
+
+protocol DealerCategoriesFilterScene {
+    
+    func bind(_ numberOfCategories: Int)
+    
 }

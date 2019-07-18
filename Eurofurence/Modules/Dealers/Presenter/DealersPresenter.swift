@@ -108,6 +108,12 @@ class DealersPresenter: DealersSceneDelegate, DealersViewModelDelegate, DealersS
     func dealersSceneDidPerformRefreshAction() {
         viewModel?.refresh()
     }
+    
+    func dealersSceneDidRevealCategoryFiltersScene(_ filtersScene: DealerCategoriesFilterScene) {
+        interactor.makeDealerCategoriesViewModel { (viewModel) in
+            filtersScene.bind(viewModel.numberOfCategories)
+        }
+    }
 
     func dealersRefreshDidBegin() {
         scene.showRefreshIndicator()

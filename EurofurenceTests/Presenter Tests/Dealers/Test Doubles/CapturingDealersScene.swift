@@ -2,7 +2,18 @@
 import EurofurenceModel
 import UIKit.UIViewController
 
+class CapturingDealerCategoriesFilterScene: DealerCategoriesFilterScene {
+    
+    private(set) var boundNumberOfCategories: Int?
+    func bind(_ numberOfCategories: Int) {
+        boundNumberOfCategories = numberOfCategories
+    }
+    
+}
+
 class CapturingDealersScene: UIViewController, DealersScene {
+    
+    let filtersScene = CapturingDealerCategoriesFilterScene()
 
     private(set) var delegate: DealersSceneDelegate?
     func setDelegate(_ delegate: DealersSceneDelegate) {
