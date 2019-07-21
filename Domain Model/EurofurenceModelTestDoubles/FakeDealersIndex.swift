@@ -30,11 +30,11 @@ public class FakeDealersIndex: DealersIndex {
 
 public class FakeDealerCategory: DealerCategory {
     
-    public init() {
-        
+    public init(title: String = "") {
+        name = title
     }
     
-    public var name: String = ""
+    public var name: String
     
     public func activate() {
         

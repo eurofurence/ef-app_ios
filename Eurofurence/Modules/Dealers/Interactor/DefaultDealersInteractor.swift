@@ -208,25 +208,39 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
     private class CategoriesViewModel: DealerCategoriesViewModel {
         
         private let categoriesCollection: DealerCategoriesCollection
+        private var categoryViewModels = [CategoryViewModel]()
         
         init(categoriesCollection: DealerCategoriesCollection) {
             self.categoriesCollection = categoriesCollection
+            regenerateCategoryViewModels()
         }
         
         var numberOfCategories: Int {
-            return categoriesCollection.numberOfCategories
+            return categoryViewModels.count
         }
         
         func categoryViewModel(at index: Int) -> DealerCategoryViewModel {
-            return CategoryViewModel()
+            return categoryViewModels[index]
+        }
+        
+        private func regenerateCategoryViewModels() {
+            categoryViewModels = (0..<categoriesCollection.numberOfCategories)
+                .map(categoriesCollection.category(at:))
+                .map(CategoryViewModel.init)
         }
         
     }
     
     private class CategoryViewModel: DealerCategoryViewModel {
         
+        private let category: DealerCategory
+        
+        init(category: DealerCategory) {
+            self.category = category
+        }
+        
         var title: String {
-            return ""
+            return category.name
         }
         
         func add(_ observer: DealerCategoryViewModelObserver) {
