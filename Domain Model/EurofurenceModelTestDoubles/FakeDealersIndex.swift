@@ -35,6 +35,7 @@ public class FakeDealerCategory: DealerCategory {
     }
     
     public var name: String
+    private var isActive = false
     
     public func activate() {
         
@@ -45,7 +46,19 @@ public class FakeDealerCategory: DealerCategory {
     }
     
     public func add(_ observer: DealerCategoryObserver) {
-        
+        if isActive {
+            observer.categoryDidActivate(self)
+        } else {
+            observer.categoryDidDeactivate(self)
+        }
+    }
+    
+    public func transitionToActiveState() {
+        isActive = true
+    }
+    
+    public func transitionToInactiveState() {
+        isActive = false
     }
     
 }

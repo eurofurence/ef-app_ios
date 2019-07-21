@@ -87,11 +87,11 @@ class DealersPresenter: DealersSceneDelegate, DealersViewModelDelegate, DealersS
             viewModel.add(self)
         }
         
-        func categoryDidEnterActiveState(_ category: DealerCategoryViewModel) {
+        func categoryDidEnterActiveState() {
             component.showActiveCategoryIndicator()
         }
         
-        func categoryDidEnterInactiveState(_ category: DealerCategoryViewModel) {
+        func categoryDidEnterInactiveState() {
             component.hideActiveCategoryIndicator()
         }
         

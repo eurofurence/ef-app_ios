@@ -30,9 +30,9 @@ class FakeDealerCategoryViewModel: DealerCategoryViewModel {
     
     func add(_ observer: DealerCategoryViewModelObserver) {
         if isActive {
-            observer.categoryDidEnterActiveState(self)
+            observer.categoryDidEnterActiveState()
         } else {
-            observer.categoryDidEnterInactiveState(self)
+            observer.categoryDidEnterInactiveState()
         }
     }
     

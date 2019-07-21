@@ -231,12 +231,24 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
         
     }
     
-    private class CategoryViewModel: DealerCategoryViewModel {
+    private class CategoryViewModel: DealerCategoryViewModel, DealerCategoryObserver {
         
         private let category: DealerCategory
+        private var state: CategoryViewModelState
         
         init(category: DealerCategory) {
             self.category = category
+            state = CategoryViewModelState()
+            
+            category.add(self)
+        }
+        
+        func categoryDidActivate(_ category: DealerCategory) {
+            state = ActiveCategoryViewModelState()
+        }
+        
+        func categoryDidDeactivate(_ category: DealerCategory) {
+            state = InactiveCategoryViewModelState()
         }
         
         var title: String {
@@ -244,11 +256,35 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
         }
         
         func add(_ observer: DealerCategoryViewModelObserver) {
-            
+            state.add(observer)
         }
         
         func toggleCategoryActiveState() {
             
+        }
+        
+    }
+    
+    private class CategoryViewModelState {
+        
+        func add(_ observer: DealerCategoryViewModelObserver) {
+            
+        }
+        
+    }
+    
+    private class InactiveCategoryViewModelState: CategoryViewModelState {
+        
+        override func add(_ observer: DealerCategoryViewModelObserver) {
+            observer.categoryDidEnterInactiveState()
+        }
+        
+    }
+    
+    private class ActiveCategoryViewModelState: CategoryViewModelState {
+        
+        override func add(_ observer: DealerCategoryViewModelObserver) {
+            observer.categoryDidEnterActiveState()
         }
         
     }

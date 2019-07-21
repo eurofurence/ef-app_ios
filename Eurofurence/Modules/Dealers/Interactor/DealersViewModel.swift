@@ -35,7 +35,7 @@ protocol DealerCategoryViewModel {
 
 protocol DealerCategoryViewModelObserver {
     
-    func categoryDidEnterActiveState(_ category: DealerCategoryViewModel)
-    func categoryDidEnterInactiveState(_ category: DealerCategoryViewModel)
+    func categoryDidEnterActiveState()
+    func categoryDidEnterInactiveState()
     
 }

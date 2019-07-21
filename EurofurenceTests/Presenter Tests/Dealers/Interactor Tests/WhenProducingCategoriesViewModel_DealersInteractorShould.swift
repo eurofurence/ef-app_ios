@@ -29,5 +29,55 @@ class WhenProducingCategoriesViewModel_DealersInteractorShould: XCTestCase {
         XCTAssertEqual("Fursuit", viewModel?.categoryViewModel(at: 1).title)
         XCTAssertEqual("Zulu", viewModel?.categoryViewModel(at: 2).title)
     }
+    
+    func testAddingObserverToActiveCategoryTellsThemItsActive() {
+        let category = FakeDealerCategory()
+        category.transitionToActiveState()
+        let categoriesCollection = InMemoryDealerCategoriesCollection(categories: [category])
+        let index = FakeDealersIndex(availableCategories: categoriesCollection)
+        let service = FakeDealersService(index: index)
+        let context = DealerInteractorTestBuilder().with(service).build()
+        let viewModel = context.prepareCategoriesViewModel()
+        let categoryViewModel = viewModel?.categoryViewModel(at: 0)
+        let observer = CapturingDealerCategoryViewModelObserver()
+        categoryViewModel?.add(observer)
+        
+        XCTAssertEqual(.active, observer.state)
+    }
+    
+    func testAddingObserverToInactiveCategoryTellsThemItsInactive() {
+        let category = FakeDealerCategory()
+        category.transitionToInactiveState()
+        let categoriesCollection = InMemoryDealerCategoriesCollection(categories: [category])
+        let index = FakeDealersIndex(availableCategories: categoriesCollection)
+        let service = FakeDealersService(index: index)
+        let context = DealerInteractorTestBuilder().with(service).build()
+        let viewModel = context.prepareCategoriesViewModel()
+        let categoryViewModel = viewModel?.categoryViewModel(at: 0)
+        let observer = CapturingDealerCategoryViewModelObserver()
+        categoryViewModel?.add(observer)
+        
+        XCTAssertEqual(.inactive, observer.state)
+    }
 
+}
+
+class CapturingDealerCategoryViewModelObserver: DealerCategoryViewModelObserver {
+    
+    enum State {
+        case unset
+        case active
+        case inactive
+    }
+    
+    private(set) var state: State = .unset
+    
+    func categoryDidEnterActiveState() {
+        state = .active
+    }
+    
+    func categoryDidEnterInactiveState() {
+        state = .inactive
+    }
+    
 }
