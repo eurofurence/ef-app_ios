@@ -20,6 +20,7 @@ protocol DealersViewModelDelegate {
 protocol DealerCategoriesViewModel {
     
     var numberOfCategories: Int { get }
+    func categoryViewModel(at index: Int) -> DealerCategoryViewModel
     
 }
 

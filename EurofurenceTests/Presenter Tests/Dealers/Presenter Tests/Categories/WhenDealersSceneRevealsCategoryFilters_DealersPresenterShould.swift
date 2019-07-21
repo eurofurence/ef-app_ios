@@ -9,6 +9,10 @@ class FakeDealerCategoriesViewModel: DealerCategoriesViewModel {
         return categories.count
     }
     
+    func categoryViewModel(at index: Int) -> DealerCategoryViewModel {
+        return categories[index]
+    }
+    
     init(categories: [DealerCategoryViewModel] = []) {
         self.categories = categories
     }
@@ -37,7 +41,9 @@ class WhenDealersSceneRevealsCategoryFilters_DealersPresenterShould: XCTestCase 
         context.simulateSceneDidLoad()
         context.simulateSceneDidRevealCategoryFilters()
         
-        XCTAssertEqual(categoriesViewModel.numberOfCategories, context.scene.filtersScene.boundNumberOfCategories)
+        XCTAssertEqual("A", context.scene.filtersScene.boundFilterTitle(at: 0))
+        XCTAssertEqual("B", context.scene.filtersScene.boundFilterTitle(at: 1))
+        XCTAssertEqual("C", context.scene.filtersScene.boundFilterTitle(at: 2))
     }
 
 }

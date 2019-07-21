@@ -25,6 +25,18 @@ protocol DealersSceneDelegate {
 
 protocol DealerCategoriesFilterScene {
     
-    func bind(_ numberOfCategories: Int)
+    func bind(_ numberOfCategories: Int, using binder: DealerCategoriesBinder)
+    
+}
+
+protocol DealerCategoriesBinder {
+    
+    func bindCategoryComponent(_ component: DealerCategoryComponentScene, at index: Int)
+    
+}
+
+protocol DealerCategoryComponentScene {
+    
+    func setCategoryTitle(_ title: String)
     
 }

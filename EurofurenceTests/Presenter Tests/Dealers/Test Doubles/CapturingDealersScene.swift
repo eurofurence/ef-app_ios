@@ -4,9 +4,29 @@ import UIKit.UIViewController
 
 class CapturingDealerCategoriesFilterScene: DealerCategoriesFilterScene {
     
-    private(set) var boundNumberOfCategories: Int?
-    func bind(_ numberOfCategories: Int) {
-        boundNumberOfCategories = numberOfCategories
+    private var boundComponents = [CapturingDealerCategoryComponentScene]()
+    
+    func bind(_ numberOfCategories: Int, using binder: DealerCategoriesBinder) {
+        boundComponents = (0..<numberOfCategories).map({ (index) -> CapturingDealerCategoryComponentScene in
+            let component = CapturingDealerCategoryComponentScene()
+            binder.bindCategoryComponent(component, at: index)
+            
+            return component
+        })
+    }
+    
+    func boundFilterTitle(at index: Int) -> String? {
+        guard index <= boundComponents.count else { return nil }
+        return boundComponents[index].capturedTitle
+    }
+    
+}
+
+class CapturingDealerCategoryComponentScene: DealerCategoryComponentScene {
+    
+    private(set) var capturedTitle: String?
+    func setCategoryTitle(_ title: String) {
+        capturedTitle = title
     }
     
 }
