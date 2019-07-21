@@ -29,6 +29,7 @@ protocol DealerCategoryViewModel {
     var title: String { get }
 
     func add(_ observer: DealerCategoryViewModelObserver)
+    func toggleCategoryActiveState()
     
 }
 

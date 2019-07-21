@@ -25,6 +25,11 @@ class CapturingDealerCategoriesFilterScene: DealerCategoriesFilterScene {
         return boundComponents[index].activeIndicatorState
     }
     
+    func selectComponent(at index: Int) {
+        guard index <= boundComponents.count else { return }
+        boundComponents[index].simulateSelected()
+    }
+    
 }
 
 class CapturingDealerCategoryComponentScene: DealerCategoryComponentScene {
@@ -41,6 +46,15 @@ class CapturingDealerCategoryComponentScene: DealerCategoryComponentScene {
     
     func hideActiveCategoryIndicator() {
         activeIndicatorState = .hidden
+    }
+    
+    private var selectionHandler: (() -> Void)?
+    func setSelectionHandler(_ handler: @escaping () -> Void) {
+        selectionHandler = handler
+    }
+    
+    func simulateSelected() {
+        selectionHandler?()
     }
     
 }

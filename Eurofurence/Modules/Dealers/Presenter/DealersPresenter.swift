@@ -82,8 +82,9 @@ class DealersPresenter: DealersSceneDelegate, DealersViewModelDelegate, DealersS
             self.viewModel = viewModel
             self.component = component
             
-            viewModel.add(self)
             component.setCategoryTitle(viewModel.title)
+            component.setSelectionHandler(viewModel.toggleCategoryActiveState)
+            viewModel.add(self)
         }
         
         func categoryDidEnterActiveState(_ category: DealerCategoryViewModel) {

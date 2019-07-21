@@ -38,6 +38,7 @@ protocol DealerCategoriesBinder {
 protocol DealerCategoryComponentScene {
     
     func setCategoryTitle(_ title: String)
+    func setSelectionHandler(_ handler: @escaping () -> Void)
     func showActiveCategoryIndicator()
     func hideActiveCategoryIndicator()
     

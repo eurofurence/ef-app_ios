@@ -36,6 +36,11 @@ class FakeDealerCategoryViewModel: DealerCategoryViewModel {
         }
     }
     
+    private(set) var toldToToggleActiveState = false
+    func toggleCategoryActiveState() {
+        toldToToggleActiveState = true
+    }
+    
     func enterActiveState() {
         isActive = true
     }
@@ -61,6 +66,18 @@ class WhenDealersSceneRevealsCategoryFilters_DealersPresenterShould: XCTestCase 
         XCTAssertEqual("A", context.scene.filtersScene.boundFilterTitle(at: 0))
         XCTAssertEqual("B", context.scene.filtersScene.boundFilterTitle(at: 1))
         XCTAssertEqual("C", context.scene.filtersScene.boundFilterTitle(at: 2))
+    }
+    
+    func testToggleCategoryActiveStateWhenComponentSelected() {
+        let category = FakeDealerCategoryViewModel(title: "A")
+        let categoriesViewModel = FakeDealerCategoriesViewModel(categories: [category])
+        let interactor = FakeDealersInteractor(viewModel: CapturingDealersViewModel.random, categoriesViewModel: categoriesViewModel)
+        let context = DealersPresenterTestBuilder().with(interactor).build()
+        context.simulateSceneDidLoad()
+        context.simulateSceneDidRevealCategoryFilters()
+        context.scene.filtersScene.selectComponent(at: 0)
+        
+        XCTAssertTrue(category.toldToToggleActiveState)
     }
 
 }
