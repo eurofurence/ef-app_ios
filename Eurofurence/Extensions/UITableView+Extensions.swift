@@ -26,6 +26,15 @@ extension UITableView {
         return cell
     }
     
+    func customCellForRow<T>(at indexPath: IndexPath) -> T where T: UITableViewCell {
+        let cell = cellForRow(at: indexPath)
+        guard let castedCell = cellForRow(at: indexPath) as? T else {
+            fatalError("Expected to dequeue cell of type \(T.self), got \(type(of: cell))")
+        }
+        
+        return castedCell
+    }
+    
     func registerConventionBrandedHeader() {
         let headerType = ConventionBrandedTableViewHeaderFooterView.self
         register(headerType, forHeaderFooterViewReuseIdentifier: headerType.identifier)

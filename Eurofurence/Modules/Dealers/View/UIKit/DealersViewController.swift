@@ -22,6 +22,10 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
     @IBAction private func openSearch(_ sender: Any) {
         searchController?.isActive = true
     }
+    
+    @IBAction private func unwindToDealers(unwindSegue: UIStoryboardSegue) {
+        presentedViewController?.dismiss(animated: true)
+    }
 
     // MARK: Overrides
 
@@ -52,6 +56,15 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView?.adjustScrollIndicatorInsetsForSafeAreaCompensation()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "ShowCategories",
+              let navigationController = segue.destination as? UINavigationController,
+              let filtersScene = navigationController.topViewController as? DealerCategoriesFilterScene else { return }
+        
+        delegate?.dealersSceneDidRevealCategoryFiltersScene(filtersScene)
+        navigationController.popoverPresentationController?.backgroundColor = .pantone330U
     }
     
     private func prepareSearchController() {
@@ -122,6 +135,7 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
                                           binder: binder,
                                           onDidSelectRowAtIndexPath: didSelectDealer,
                                           onDidEndDragging: scrollViewDidEndDragging)
+        tableView.reloadData()
     }
 
     func bindSearchResults(numberOfDealersPerSection: [Int], sectionIndexTitles: [String], using binder: DealersSearchResultsBinder) {

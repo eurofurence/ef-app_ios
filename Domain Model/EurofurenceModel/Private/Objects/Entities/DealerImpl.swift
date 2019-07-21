@@ -9,6 +9,10 @@ struct DealerImpl: Dealer {
     private let mapCoordinateRender: MapCoordinateRender?
     private let characteristics: DealerCharacteristics
     private let shareableURLFactory: ShareableURLFactory
+    
+    var categories: [String] {
+        return characteristics.categories
+    }
 
     var identifier: DealerIdentifier
 

@@ -51,6 +51,10 @@ extension DealersPresenterTestBuilder.Context {
     func simulateSceneDidLoad() {
         scene.delegate?.dealersSceneDidLoad()
     }
+    
+    func simulateSceneDidRevealCategoryFilters() {
+        scene.delegate?.dealersSceneDidRevealCategoryFiltersScene(scene.filtersScene)
+    }
 
     func simulateSceneDidChangeSearchQuery(to query: String) {
         scene.delegate?.dealersSceneDidChangeSearchQuery(to: query)

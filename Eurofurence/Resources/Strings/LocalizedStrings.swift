@@ -242,6 +242,9 @@ public extension String {
     static let share = NSLocalizedString("Share",
                                          comment: "Title for buttons used for share actions (e.g. events)")
     
+    static let dealerCategoriesInformationalFooter = NSLocalizedString("DealerCategoriesInformationalFooter",
+                                                                       comment: "Footer text shown in the categories popover informing the user how categories behave")
+    
     private struct Formatters {
         static var numbers = NumberFormatter()
     }

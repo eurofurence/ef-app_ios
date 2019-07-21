@@ -10,6 +10,7 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
     private let refreshService: RefreshService
     private let viewModel: ViewModel
     private let searchViewModel: SearchViewModel
+    private let categoriesViewModel: CategoriesViewModel
     private let eventBus = EventBus()
 
     init(dealersService: DealersService, defaultIconData: Data, refreshService: RefreshService) {
@@ -20,6 +21,7 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
         let index = dealersService.makeDealersIndex()
         viewModel = ViewModel(eventBus: eventBus, refreshService: refreshService)
         searchViewModel = SearchViewModel(eventBus: eventBus, index: index)
+        categoriesViewModel = CategoriesViewModel(categoriesCollection: index.availableCategories)
 
         index.setDelegate(self)
     }
@@ -30,6 +32,10 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
 
     func makeDealersSearchViewModel(completionHandler: @escaping (DealersSearchViewModel) -> Void) {
         completionHandler(searchViewModel)
+    }
+    
+    func makeDealerCategoriesViewModel(completionHandler: @escaping (DealerCategoriesViewModel) -> Void) {
+        completionHandler(categoriesViewModel)
     }
 
     func alphabetisedDealersDidChange(to alphabetisedGroups: [AlphabetisedDealersGroup]) {
@@ -197,6 +203,122 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
             }
         }
 
+    }
+    
+    private class CategoriesViewModel: DealerCategoriesViewModel {
+        
+        private let categoriesCollection: DealerCategoriesCollection
+        private var categoryViewModels = [CategoryViewModel]()
+        
+        init(categoriesCollection: DealerCategoriesCollection) {
+            self.categoriesCollection = categoriesCollection
+            regenerateCategoryViewModels()
+        }
+        
+        var numberOfCategories: Int {
+            return categoryViewModels.count
+        }
+        
+        func categoryViewModel(at index: Int) -> DealerCategoryViewModel {
+            return categoryViewModels[index]
+        }
+        
+        private func regenerateCategoryViewModels() {
+            categoryViewModels = (0..<categoriesCollection.numberOfCategories)
+                .map(categoriesCollection.category(at:))
+                .map(CategoryViewModel.init)
+        }
+        
+    }
+    
+    private class CategoryViewModel: DealerCategoryViewModel, DealerCategoryObserver {
+        
+        private let category: DealerCategory
+        private var currentState: CategoryViewModelState
+        
+        init(category: DealerCategory) {
+            self.category = category
+            currentState = CategoryViewModelState()
+            
+            category.add(self)
+        }
+        
+        func categoryDidActivate(_ category: DealerCategory) {
+            currentState = ActiveCategoryViewModelState(state: currentState)
+        }
+        
+        func categoryDidDeactivate(_ category: DealerCategory) {
+            currentState = InactiveCategoryViewModelState(state: currentState)
+        }
+        
+        var title: String {
+            return category.name
+        }
+        
+        func add(_ observer: DealerCategoryViewModelObserver) {
+            currentState.add(observer)
+        }
+        
+        func toggleCategoryActiveState() {
+            currentState.toggleCategoryState(category: category)
+        }
+        
+    }
+    
+    private class CategoryViewModelState {
+        
+        private var observers: [DealerCategoryViewModelObserver]
+        
+        init() {
+            observers = []
+        }
+        
+        init(state: CategoryViewModelState) {
+            observers = state.observers
+            enterState()
+        }
+        
+        final func enterState() {
+            observers.forEach(provideCurrentStateContext)
+        }
+        
+        final func add(_ observer: DealerCategoryViewModelObserver) {
+            observers.append(observer)
+            provideCurrentStateContext(to: observer)
+        }
+        
+        func provideCurrentStateContext(to observer: DealerCategoryViewModelObserver) {
+            
+        }
+        
+        func toggleCategoryState(category: DealerCategory) {
+            
+        }
+        
+    }
+    
+    private class InactiveCategoryViewModelState: CategoryViewModelState {
+        
+        override func provideCurrentStateContext(to observer: DealerCategoryViewModelObserver) {
+            observer.categoryDidEnterInactiveState()
+        }
+        
+        override func toggleCategoryState(category: DealerCategory) {
+            category.activate()
+        }
+        
+    }
+    
+    private class ActiveCategoryViewModelState: CategoryViewModelState {
+        
+        override func provideCurrentStateContext(to observer: DealerCategoryViewModelObserver) {
+            observer.categoryDidEnterActiveState()
+        }
+        
+        override func toggleCategoryState(category: DealerCategory) {
+            category.deactivate()
+        }
+        
     }
 
 }
