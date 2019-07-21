@@ -35,7 +35,12 @@ public class FakeDealerCategory: DealerCategory {
     }
     
     public var name: String
-    private var isActive = false
+    private var observers: [DealerCategoryObserver] = []
+    private var isActive = false {
+        didSet {
+            observers.forEach(notifyObserver)
+        }
+    }
     
     public func activate() {
         
@@ -46,11 +51,8 @@ public class FakeDealerCategory: DealerCategory {
     }
     
     public func add(_ observer: DealerCategoryObserver) {
-        if isActive {
-            observer.categoryDidActivate(self)
-        } else {
-            observer.categoryDidDeactivate(self)
-        }
+        observers.append(observer)
+        notifyObserver(observer)
     }
     
     public func transitionToActiveState() {
@@ -59,6 +61,14 @@ public class FakeDealerCategory: DealerCategory {
     
     public func transitionToInactiveState() {
         isActive = false
+    }
+    
+    private func notifyObserver(_ observer: DealerCategoryObserver) {
+        if isActive {
+            observer.categoryDidActivate(self)
+        } else {
+            observer.categoryDidDeactivate(self)
+        }
     }
     
 }

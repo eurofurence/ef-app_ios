@@ -234,21 +234,21 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
     private class CategoryViewModel: DealerCategoryViewModel, DealerCategoryObserver {
         
         private let category: DealerCategory
-        private var state: CategoryViewModelState
+        private var currentState: CategoryViewModelState
         
         init(category: DealerCategory) {
             self.category = category
-            state = CategoryViewModelState()
+            currentState = CategoryViewModelState()
             
             category.add(self)
         }
         
         func categoryDidActivate(_ category: DealerCategory) {
-            state = ActiveCategoryViewModelState()
+            currentState = ActiveCategoryViewModelState(state: currentState)
         }
         
         func categoryDidDeactivate(_ category: DealerCategory) {
-            state = InactiveCategoryViewModelState()
+            currentState = InactiveCategoryViewModelState(state: currentState)
         }
         
         var title: String {
@@ -256,7 +256,7 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
         }
         
         func add(_ observer: DealerCategoryViewModelObserver) {
-            state.add(observer)
+            currentState.add(observer)
         }
         
         func toggleCategoryActiveState() {
@@ -267,15 +267,35 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
     
     private class CategoryViewModelState {
         
-        func add(_ observer: DealerCategoryViewModelObserver) {
+        private var observers: [DealerCategoryViewModelObserver]
+        
+        init() {
+            observers = []
+        }
+        
+        init(state: CategoryViewModelState) {
+            observers = state.observers
+            enterState()
+        }
+        
+        final func enterState() {
+            observers.forEach(provideCurrentStateContext)
+        }
+        
+        func provideCurrentStateContext(to observer: DealerCategoryViewModelObserver) {
             
+        }
+        
+        final func add(_ observer: DealerCategoryViewModelObserver) {
+            observers.append(observer)
+            provideCurrentStateContext(to: observer)
         }
         
     }
     
     private class InactiveCategoryViewModelState: CategoryViewModelState {
         
-        override func add(_ observer: DealerCategoryViewModelObserver) {
+        override func provideCurrentStateContext(to observer: DealerCategoryViewModelObserver) {
             observer.categoryDidEnterInactiveState()
         }
         
@@ -283,7 +303,7 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
     
     private class ActiveCategoryViewModelState: CategoryViewModelState {
         
-        override func add(_ observer: DealerCategoryViewModelObserver) {
+        override func provideCurrentStateContext(to observer: DealerCategoryViewModelObserver) {
             observer.categoryDidEnterActiveState()
         }
         
