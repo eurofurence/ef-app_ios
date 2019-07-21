@@ -135,6 +135,7 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
                                           binder: binder,
                                           onDidSelectRowAtIndexPath: didSelectDealer,
                                           onDidEndDragging: scrollViewDidEndDragging)
+        tableView.reloadData()
     }
 
     func bindSearchResults(numberOfDealersPerSection: [Int], sectionIndexTitles: [String], using binder: DealersSearchResultsBinder) {
