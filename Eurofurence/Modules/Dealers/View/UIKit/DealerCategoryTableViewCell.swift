@@ -1,12 +1,20 @@
 import UIKit
 
-class DealerCategoryTableViewCell: UITableViewCell {
+class DealerCategoryTableViewCell: UITableViewCell, DealerCategoryComponentScene {
     
-    func showCategoryActiveIndicator() {
+    func setCategoryTitle(_ title: String) {
+        textLabel?.text = title
+    }
+    
+    func setSelectionHandler(_ handler: @escaping () -> Void) {
+        
+    }
+    
+    func showActiveCategoryIndicator() {
         accessoryType = .checkmark
     }
     
-    func hideCategoryActiveIndicator() {
+    func hideActiveCategoryIndicator() {
         accessoryType = .none
     }
     

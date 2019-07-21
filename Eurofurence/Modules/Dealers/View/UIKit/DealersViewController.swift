@@ -60,8 +60,10 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "ShowCategories",
-              let navigationController = segue.destination as? UINavigationController else { return }
+              let navigationController = segue.destination as? UINavigationController,
+              let filtersScene = navigationController.topViewController as? DealerCategoriesFilterScene else { return }
         
+        delegate?.dealersSceneDidRevealCategoryFiltersScene(filtersScene)
         navigationController.popoverPresentationController?.backgroundColor = .pantone330U
     }
     
