@@ -6,8 +6,9 @@ class DealerCategoryTableViewCell: UITableViewCell, DealerCategoryComponentScene
         textLabel?.text = title
     }
     
+    private var selectionHandler: (() -> Void)?
     func setSelectionHandler(_ handler: @escaping () -> Void) {
-        
+        selectionHandler = handler
     }
     
     func showActiveCategoryIndicator() {
@@ -16,6 +17,10 @@ class DealerCategoryTableViewCell: UITableViewCell, DealerCategoryComponentScene
     
     func hideActiveCategoryIndicator() {
         accessoryType = .none
+    }
+    
+    func selected() {
+        selectionHandler?()
     }
     
 }
