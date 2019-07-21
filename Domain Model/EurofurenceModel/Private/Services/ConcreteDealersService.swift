@@ -5,22 +5,17 @@ class ConcreteDealersService: DealersService {
     
     private class SimpleDealerCategory: DealerCategory {
         
-        private unowned let index: Index
         private var observers = [DealerCategoryObserver]()
         
         var name: String
-        var isActive: Bool {
+        var isActive: Bool = true {
             didSet {
-                index.categoryStateDidChange(self)
                 observers.forEach(updateObserverWithCurrentState)
             }
         }
         
-        init(index: Index, name: String) {
-            self.index = index
+        init(name: String) {
             self.name = name
-            
-            isActive = true
         }
         
         func activate() {
@@ -48,7 +43,7 @@ class ConcreteDealersService: DealersService {
         
     }
 
-    private class Index: DealersIndex, EventConsumer {
+    private class Index: DealersIndex, EventConsumer, DealerCategoryObserver {
 
         private let dealers: ConcreteDealersService
         private let categoriesCollection = InMemoryDealerCategoriesCollection(categories: [SimpleDealerCategory]())
@@ -135,14 +130,20 @@ class ConcreteDealersService: DealersService {
                 if let existingCategory = self.categories.first(where: { $0.name == title }) {
                     categories.append(existingCategory)
                 } else {
-                    categories.append(SimpleDealerCategory(index: self, name: title))
+                    let category = SimpleDealerCategory(name: title)
+                    category.add(self)
+                    categories.append(category)
                 }
             }
             
             self.categories = categories.sorted(by: { $0.name < $1.name })
         }
         
-        func categoryStateDidChange(_ category: DealerCategory) {
+        func categoryDidActivate(_ category: DealerCategory) {
+            updateAlphebetisedDealers()
+        }
+        
+        func categoryDidDeactivate(_ category: DealerCategory) {
             updateAlphebetisedDealers()
         }
 
