@@ -27,5 +27,14 @@ protocol DealerCategoriesViewModel {
 protocol DealerCategoryViewModel {
     
     var title: String { get }
+
+    func add(_ observer: DealerCategoryViewModelObserver)
+    
+}
+
+protocol DealerCategoryViewModelObserver {
+    
+    func categoryDidEnterActiveState(_ category: DealerCategoryViewModel)
+    func categoryDidEnterInactiveState(_ category: DealerCategoryViewModel)
     
 }

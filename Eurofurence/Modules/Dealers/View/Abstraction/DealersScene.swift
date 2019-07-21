@@ -38,5 +38,7 @@ protocol DealerCategoriesBinder {
 protocol DealerCategoryComponentScene {
     
     func setCategoryTitle(_ title: String)
+    func showActiveCategoryIndicator()
+    func hideActiveCategoryIndicator()
     
 }

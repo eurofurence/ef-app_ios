@@ -20,6 +20,11 @@ class CapturingDealerCategoriesFilterScene: DealerCategoriesFilterScene {
         return boundComponents[index].capturedTitle
     }
     
+    func visibilityForCategoryActiveIndicator(at index: Int) -> VisibilityState? {
+        guard index <= boundComponents.count else { return nil }
+        return boundComponents[index].activeIndicatorState
+    }
+    
 }
 
 class CapturingDealerCategoryComponentScene: DealerCategoryComponentScene {
@@ -27,6 +32,15 @@ class CapturingDealerCategoryComponentScene: DealerCategoryComponentScene {
     private(set) var capturedTitle: String?
     func setCategoryTitle(_ title: String) {
         capturedTitle = title
+    }
+    
+    private(set) var activeIndicatorState: VisibilityState = .unset
+    func showActiveCategoryIndicator() {
+        activeIndicatorState = .visible
+    }
+    
+    func hideActiveCategoryIndicator() {
+        activeIndicatorState = .hidden
     }
     
 }

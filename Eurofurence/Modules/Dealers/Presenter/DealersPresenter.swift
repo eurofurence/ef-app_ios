@@ -62,13 +62,36 @@ class DealersPresenter: DealersSceneDelegate, DealersViewModelDelegate, DealersS
 
     }
     
-    private struct CategoryBinder: DealerCategoriesBinder {
+    private struct CategoriesBinder: DealerCategoriesBinder {
         
         var viewModel: DealerCategoriesViewModel
         
         func bindCategoryComponent(_ component: DealerCategoryComponentScene, at index: Int) {
             let categoryViewModel = viewModel.categoryViewModel(at: index)
-            component.setCategoryTitle(categoryViewModel.title)
+            categoryViewModel.add(CategoryBinder(viewModel: categoryViewModel, component: component))
+        }
+        
+    }
+    
+    private struct CategoryBinder: DealerCategoryViewModelObserver {
+        
+        private let viewModel: DealerCategoryViewModel
+        private let component: DealerCategoryComponentScene
+        
+        init(viewModel: DealerCategoryViewModel, component: DealerCategoryComponentScene) {
+            self.viewModel = viewModel
+            self.component = component
+            
+            viewModel.add(self)
+            component.setCategoryTitle(viewModel.title)
+        }
+        
+        func categoryDidEnterActiveState(_ category: DealerCategoryViewModel) {
+            component.showActiveCategoryIndicator()
+        }
+        
+        func categoryDidEnterInactiveState(_ category: DealerCategoryViewModel) {
+            component.hideActiveCategoryIndicator()
         }
         
     }
@@ -122,7 +145,7 @@ class DealersPresenter: DealersSceneDelegate, DealersViewModelDelegate, DealersS
     
     func dealersSceneDidRevealCategoryFiltersScene(_ filtersScene: DealerCategoriesFilterScene) {
         interactor.makeDealerCategoriesViewModel { (viewModel) in
-            filtersScene.bind(viewModel.numberOfCategories, using: CategoryBinder(viewModel: viewModel))
+            filtersScene.bind(viewModel.numberOfCategories, using: CategoriesBinder(viewModel: viewModel))
         }
     }
 
