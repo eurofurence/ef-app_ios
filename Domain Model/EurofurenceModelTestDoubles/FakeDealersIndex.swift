@@ -36,18 +36,18 @@ public class FakeDealerCategory: DealerCategory {
     
     public var name: String
     private var observers: [DealerCategoryObserver] = []
-    private var isActive = false {
+    public private(set) var isActive = false {
         didSet {
             observers.forEach(notifyObserver)
         }
     }
     
     public func activate() {
-        
+        isActive = true
     }
     
     public func deactivate() {
-        
+        isActive = false
     }
     
     public func add(_ observer: DealerCategoryObserver) {

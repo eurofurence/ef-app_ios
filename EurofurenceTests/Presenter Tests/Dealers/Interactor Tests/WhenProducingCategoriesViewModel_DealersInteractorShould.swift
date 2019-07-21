@@ -91,6 +91,34 @@ class WhenProducingCategoriesViewModel_DealersInteractorShould: XCTestCase {
         
         XCTAssertEqual(.inactive, observer.state)
     }
+    
+    func testTogglingActiveStateWhileInactiveTellsCategoryToBecomeActive() {
+        let category = FakeDealerCategory()
+        category.transitionToInactiveState()
+        let categoriesCollection = InMemoryDealerCategoriesCollection(categories: [category])
+        let index = FakeDealersIndex(availableCategories: categoriesCollection)
+        let service = FakeDealersService(index: index)
+        let context = DealerInteractorTestBuilder().with(service).build()
+        let viewModel = context.prepareCategoriesViewModel()
+        let categoryViewModel = viewModel?.categoryViewModel(at: 0)
+        categoryViewModel?.toggleCategoryActiveState()
+        
+        XCTAssertTrue(category.isActive)
+    }
+    
+    func testTogglingActiveStateWhileActiveTellsCategoryToBecomeInactive() {
+        let category = FakeDealerCategory()
+        category.transitionToActiveState()
+        let categoriesCollection = InMemoryDealerCategoriesCollection(categories: [category])
+        let index = FakeDealersIndex(availableCategories: categoriesCollection)
+        let service = FakeDealersService(index: index)
+        let context = DealerInteractorTestBuilder().with(service).build()
+        let viewModel = context.prepareCategoriesViewModel()
+        let categoryViewModel = viewModel?.categoryViewModel(at: 0)
+        categoryViewModel?.toggleCategoryActiveState()
+        
+        XCTAssertFalse(category.isActive)
+    }
 
 }
 
