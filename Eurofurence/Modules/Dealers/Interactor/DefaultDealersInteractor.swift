@@ -10,6 +10,7 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
     private let refreshService: RefreshService
     private let viewModel: ViewModel
     private let searchViewModel: SearchViewModel
+    private let categoriesViewModel: CategoriesViewModel
     private let eventBus = EventBus()
 
     init(dealersService: DealersService, defaultIconData: Data, refreshService: RefreshService) {
@@ -20,6 +21,7 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
         let index = dealersService.makeDealersIndex()
         viewModel = ViewModel(eventBus: eventBus, refreshService: refreshService)
         searchViewModel = SearchViewModel(eventBus: eventBus, index: index)
+        categoriesViewModel = CategoriesViewModel(categoriesCollection: index.availableCategories)
 
         index.setDelegate(self)
     }
@@ -33,7 +35,7 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
     }
     
     func makeDealerCategoriesViewModel(completionHandler: @escaping (DealerCategoriesViewModel) -> Void) {
-        
+        completionHandler(categoriesViewModel)
     }
 
     func alphabetisedDealersDidChange(to alphabetisedGroups: [AlphabetisedDealersGroup]) {
@@ -201,6 +203,40 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
             }
         }
 
+    }
+    
+    private class CategoriesViewModel: DealerCategoriesViewModel {
+        
+        private let categoriesCollection: DealerCategoriesCollection
+        
+        init(categoriesCollection: DealerCategoriesCollection) {
+            self.categoriesCollection = categoriesCollection
+        }
+        
+        var numberOfCategories: Int {
+            return categoriesCollection.numberOfCategories
+        }
+        
+        func categoryViewModel(at index: Int) -> DealerCategoryViewModel {
+            return CategoryViewModel()
+        }
+        
+    }
+    
+    private class CategoryViewModel: DealerCategoryViewModel {
+        
+        var title: String {
+            return ""
+        }
+        
+        func add(_ observer: DealerCategoryViewModelObserver) {
+            
+        }
+        
+        func toggleCategoryActiveState() {
+            
+        }
+        
     }
 
 }
