@@ -58,5 +58,9 @@ class DealerCategoriesViewController: UITableViewController, DealerCategoriesFil
         let cell: DealerCategoryTableViewCell = tableView.customCellForRow(at: indexPath)
         cell.selected()
     }
+    
+    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        return .dealerCategoriesInformationalFooter
+    }
 
 }
