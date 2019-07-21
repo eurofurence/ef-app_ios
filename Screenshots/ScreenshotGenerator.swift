@@ -62,7 +62,7 @@ class ScreenshotGenerator: XCTestCase {
         
         snapshot("04_Dealers")
         
-        app.tables.staticTexts["Eurofurence Convention Store"].tap()
+        app.tables.staticTexts["Eurofurence Shop"].tap()
         
         snapshot("05_DealerDetail")
         
