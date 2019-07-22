@@ -33,6 +33,7 @@ class WhenRecordingDealerInteraction: XCTestCase {
         let expectedTitle = String.localizedStringWithFormat(expectedTitleFormat, dealer.preferredName)
         XCTAssertEqual("org.eurofurence.activity.view-dealer", producedActivity?.activityType)
         XCTAssertEqual(expectedTitle, producedActivity?.title)
+        XCTAssertEqual(dealer.shareableURL, producedActivity?.url)
     }
     
     func testTogglingInteractionActivationChangesCurrentStateOfActivity() {

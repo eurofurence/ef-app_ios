@@ -13,7 +13,8 @@ struct DonateIntentDealerInteractionRecorder: DealerInteractionRecorder {
         viewDealerIntentDonor.donate(intentDefinition)
         
         let activityTitle = String.viewDealer(named: entity.preferredName)
-        let activity = activityFactory.makeActivity(type: "org.eurofurence.activity.view-dealer", title: activityTitle, url: nil)
+        let url = entity.makeContentURL()
+        let activity = activityFactory.makeActivity(type: "org.eurofurence.activity.view-dealer", title: activityTitle, url: url)
         
         return ActivityInteraction(activity: activity)
     }
