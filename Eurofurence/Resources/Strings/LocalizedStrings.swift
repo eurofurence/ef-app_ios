@@ -285,4 +285,9 @@ public extension String {
         return String.localizedStringWithFormat(format, name)
     }
     
+    static func viewDealer(named name: String) -> String {
+        let format = NSLocalizedString("ViewDealerFormatString", comment: "Format string used for handoff titles for dealers")
+        return String.localizedStringWithFormat(format, name)
+    }
+    
 }

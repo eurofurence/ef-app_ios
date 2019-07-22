@@ -2,13 +2,9 @@ import EurofurenceModel
 
 struct DonateIntentDealerInteractionRecorder: DealerInteractionRecorder {
     
-    private let viewDealerIntentDonor: ViewDealerIntentDonor
-    private let dealersService: DealersService
-    
-    init(dealersService: DealersService, viewDealerIntentDonor: ViewDealerIntentDonor) {
-        self.dealersService = dealersService
-        self.viewDealerIntentDonor = viewDealerIntentDonor
-    }
+    var viewDealerIntentDonor: ViewDealerIntentDonor
+    var dealersService: DealersService
+    var activityFactory: ActivityFactory
     
     func makeInteraction(for dealer: DealerIdentifier) -> Interaction? {
         guard let entity = dealersService.fetchDealer(for: dealer) else { return nil }
@@ -16,7 +12,10 @@ struct DonateIntentDealerInteractionRecorder: DealerInteractionRecorder {
         let intentDefinition = ViewDealerIntentDefinition(identifier: dealer, dealerName: entity.preferredName)
         viewDealerIntentDonor.donate(intentDefinition)
         
-        return nil
+        let activityTitle = String.viewDealer(named: entity.preferredName)
+        let activity = activityFactory.makeActivity(type: "org.eurofurence.activity.view-dealer", title: activityTitle, url: nil)
+        
+        return ActivityInteraction(activity: activity)
     }
     
 }
