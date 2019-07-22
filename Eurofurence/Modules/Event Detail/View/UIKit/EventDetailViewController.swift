@@ -13,6 +13,16 @@ class EventDetailViewController: UIViewController, EventDetailScene {
         super.viewDidLoad()
         delegate?.eventDetailSceneDidLoad()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        delegate?.eventDetailSceneDidAppear()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        delegate?.eventDetailSceneDidDisappear()
+    }
 
     // MARK: EventDetailScene
 
