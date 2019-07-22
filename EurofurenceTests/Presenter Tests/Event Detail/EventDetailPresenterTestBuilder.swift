@@ -28,7 +28,7 @@ class CapturingEventInteractionRecorder: EventInteractionRecorder {
     
     private(set) var witnessedEvent: EventIdentifier?
     private(set) var currentInteraction: CapturingInteraction?
-    func makeInteractionRecorder(for event: EventIdentifier) -> Interaction? {
+    func makeInteraction(for event: EventIdentifier) -> Interaction? {
         witnessedEvent = event
         
         let interaction = CapturingInteraction()

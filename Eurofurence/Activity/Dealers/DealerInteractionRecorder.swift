@@ -2,6 +2,6 @@ import EurofurenceModel
 
 protocol DealerInteractionRecorder {
     
-    func makeInteractionRecorder(for dealer: DealerIdentifier)
+    func makeInteraction(for dealer: DealerIdentifier)
     
 }

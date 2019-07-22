@@ -140,7 +140,7 @@ class EventDetailPresenter: EventDetailSceneDelegate, EventDetailViewModelDelega
     }
 
     func eventDetailSceneDidLoad() {
-        eventInteraction = interactionRecorder.makeInteractionRecorder(for: event)
+        eventInteraction = interactionRecorder.makeInteraction(for: event)
         interactor.makeViewModel(for: event, completionHandler: eventDetailViewModelReady)
     }
     

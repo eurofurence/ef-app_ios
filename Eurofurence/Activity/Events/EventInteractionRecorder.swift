@@ -9,6 +9,6 @@ protocol Interaction {
 
 protocol EventInteractionRecorder {
     
-    func makeInteractionRecorder(for event: EventIdentifier) -> Interaction?
+    func makeInteraction(for event: EventIdentifier) -> Interaction?
     
 }
