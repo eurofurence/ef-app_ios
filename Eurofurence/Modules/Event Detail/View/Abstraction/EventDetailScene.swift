@@ -8,5 +8,7 @@ protocol EventDetailScene {
 protocol EventDetailSceneDelegate {
 
     func eventDetailSceneDidLoad()
+    func eventDetailSceneDidAppear()
+    func eventDetailSceneDidDisappear()
 
 }

@@ -121,6 +121,7 @@ class EventDetailPresenter: EventDetailSceneDelegate, EventDetailViewModelDelega
     private let delegate: EventDetailModuleDelegate
     private var viewModel: EventDetailViewModel?
     private let interactionRecorder: EventInteractionRecorder
+    private var eventInteraction: Interaction?
 
     init(scene: EventDetailScene,
          interactor: EventDetailInteractor,
@@ -139,8 +140,16 @@ class EventDetailPresenter: EventDetailSceneDelegate, EventDetailViewModelDelega
     }
 
     func eventDetailSceneDidLoad() {
-        interactionRecorder.makeInteractionRecorder(for: event)
+        eventInteraction = interactionRecorder.makeInteractionRecorder(for: event)
         interactor.makeViewModel(for: event, completionHandler: eventDetailViewModelReady)
+    }
+    
+    func eventDetailSceneDidAppear() {
+        eventInteraction?.activate()
+    }
+    
+    func eventDetailSceneDidDisappear() {
+        eventInteraction?.deactivate()
     }
 
     func eventFavourited() {

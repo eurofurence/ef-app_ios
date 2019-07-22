@@ -427,7 +427,7 @@
 		CA3ABA06229C4B260045A35B /* AppNotificationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3ABA05229C4B260045A35B /* AppNotificationDelegate.swift */; };
 		CA3ABA07229C76BE0045A35B /* FakeModuleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA527E79227A4887000ED74B /* FakeModuleRepository.swift */; };
 		CA3ABA09229C7B6E0045A35B /* Dictionary+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3ABA08229C7B6E0045A35B /* Dictionary+Extensions.swift */; };
-		CA3ABA0B229DCB4A0045A35B /* WhenEventDetailSceneAppears_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3ABA0A229DCB4A0045A35B /* WhenEventDetailSceneAppears_EventDetailPresenterShould.swift */; };
+		CA3ABA0B229DCB4A0045A35B /* EventDetailPresenter_InteractionRecordingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3ABA0A229DCB4A0045A35B /* EventDetailPresenter_InteractionRecordingTests.swift */; };
 		CA3ABA0E229DCC350045A35B /* EventInteractionRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3ABA0D229DCC350045A35B /* EventInteractionRecorder.swift */; };
 		CA401066210FA8830056E16C /* WhenKnowledgeGroupEntriesSceneLoads.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA401065210FA8830056E16C /* WhenKnowledgeGroupEntriesSceneLoads.swift */; };
 		CA401069210FAE9D0056E16C /* KnowledgeGroupEntriesModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA401068210FAE9D0056E16C /* KnowledgeGroupEntriesModuleBuilder.swift */; };
@@ -1522,7 +1522,7 @@
 		CA3ABA01229C30E70045A35B /* ApplicationModuleRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationModuleRepository.swift; sourceTree = "<group>"; };
 		CA3ABA05229C4B260045A35B /* AppNotificationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNotificationDelegate.swift; sourceTree = "<group>"; };
 		CA3ABA08229C7B6E0045A35B /* Dictionary+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extensions.swift"; sourceTree = "<group>"; };
-		CA3ABA0A229DCB4A0045A35B /* WhenEventDetailSceneAppears_EventDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenEventDetailSceneAppears_EventDetailPresenterShould.swift; sourceTree = "<group>"; };
+		CA3ABA0A229DCB4A0045A35B /* EventDetailPresenter_InteractionRecordingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailPresenter_InteractionRecordingTests.swift; sourceTree = "<group>"; };
 		CA3ABA0D229DCC350045A35B /* EventInteractionRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInteractionRecorder.swift; sourceTree = "<group>"; };
 		CA401065210FA8830056E16C /* WhenKnowledgeGroupEntriesSceneLoads.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenKnowledgeGroupEntriesSceneLoads.swift; sourceTree = "<group>"; };
 		CA401068210FAE9D0056E16C /* KnowledgeGroupEntriesModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeGroupEntriesModuleBuilder.swift; sourceTree = "<group>"; };
@@ -4897,6 +4897,14 @@
 			path = "Password Autofill";
 			sourceTree = "<group>";
 		};
+		CA987FC522E6339C006338FB /* Interaction Recording */ = {
+			isa = PBXGroup;
+			children = (
+				CA3ABA0A229DCB4A0045A35B /* EventDetailPresenter_InteractionRecordingTests.swift */,
+			);
+			path = "Interaction Recording";
+			sourceTree = "<group>";
+		};
 		CAA6060820EEC01C00075A4E /* Debug */ = {
 			isa = PBXGroup;
 			children = (
@@ -5171,7 +5179,7 @@
 				CAD260A420C0357F007E3618 /* WhenViewModelPrepared_EventDetailPresenterShould.swift */,
 				CA8DDA1B2249045400ACD9BB /* WhenBindingEventAction_EventDetailPresenterShould.swift */,
 				CA6F652622690DB500483EE0 /* WhenToldToLeaveFeedback_EventDetailPresenterShould.swift */,
-				CA3ABA0A229DCB4A0045A35B /* WhenEventDetailSceneAppears_EventDetailPresenterShould.swift */,
+				CA987FC522E6339C006338FB /* Interaction Recording */,
 			);
 			path = "Presenter Tests";
 			sourceTree = "<group>";
@@ -6647,7 +6655,7 @@
 				CA152EE622651F6900212742 /* CapturingFailureHaptic.swift in Sources */,
 				CA2AA2E422C94C2F00C0E1A1 /* CapturingDealerInteractionRecorder.swift in Sources */,
 				CA00AE5E20D173C000C2FBB0 /* WhenBindingEvent_SchedulePresenterShould.swift in Sources */,
-				CA3ABA0B229DCB4A0045A35B /* WhenEventDetailSceneAppears_EventDetailPresenterShould.swift in Sources */,
+				CA3ABA0B229DCB4A0045A35B /* EventDetailPresenter_InteractionRecordingTests.swift in Sources */,
 				CA2D08061FE94BF000BFD785 /* RootModuleTestBuilder.swift in Sources */,
 				CACF1E4820AE29CB00D904B5 /* StubEventDetailModuleFactory.swift in Sources */,
 				CA00AE4B20D16BF300C2FBB0 /* StubScheduleViewModel+RandomValueProviding.swift in Sources */,
