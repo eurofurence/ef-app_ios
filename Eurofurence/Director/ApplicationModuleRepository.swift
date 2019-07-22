@@ -31,6 +31,7 @@ struct ApplicationModuleRepository: ModuleRepository {
         let subtleMarkdownRenderer = SubtleDownMarkdownRenderer()
         let defaultMarkdownRenderer = DefaultDownMarkdownRenderer()
         let shareService = ActivityShareService()
+        let activityFactory = PlatformActivityFactory()
         
         rootModuleProviding = RootModuleBuilder(sessionStateService: services.sessionState).build()
         tutorialModuleProviding = TutorialModuleBuilder().build()
@@ -64,7 +65,12 @@ struct ApplicationModuleRepository: ModuleRepository {
         dealersModuleProviding = DealersModuleBuilder(interactor: dealersInteractor).build()
         
         let dealerIntentDonor = ConcreteViewDealerIntentDonor()
-        let dealerInteractionRecorder = DonateIntentDealerInteractionRecorder(dealersService: services.dealers, viewDealerIntentDonor: dealerIntentDonor)
+        let dealerInteractionRecorder = DonateIntentDealerInteractionRecorder(
+            viewDealerIntentDonor: dealerIntentDonor,
+            dealersService: services.dealers,
+            activityFactory: activityFactory
+        )
+        
         let dealerDetailInteractor = DefaultDealerDetailInteractor(dealersService: services.dealers, shareService: shareService)
         dealerDetailModuleProviding = DealerDetailModuleBuilder(dealerDetailInteractor: dealerDetailInteractor, dealerInteractionRecorder: dealerInteractionRecorder).build()
         
@@ -98,7 +104,12 @@ struct ApplicationModuleRepository: ModuleRepository {
         announcementDetailModuleProviding = AnnouncementDetailModuleBuilder(announcementDetailInteractor: announcementDetailInteractor).build()
         
         let eventIntentDonor = ConcreteEventIntentDonor()
-        let eventInteractionRecorder = DonateIntentEventInteractionRecorder(eventsService: services.events, eventIntentDonor: eventIntentDonor)
+        let eventInteractionRecorder = SystemEventInteractionsRecorder(
+            eventsService: services.events,
+            eventIntentDonor: eventIntentDonor,
+            activityFactory: activityFactory
+        )
+        
         let eventDetailInteractor = DefaultEventDetailInteractor(dateRangeFormatter: FoundationDateRangeFormatter.shared,
                                                                  eventsService: services.events,
                                                                  markdownRenderer: DefaultDownMarkdownRenderer(),

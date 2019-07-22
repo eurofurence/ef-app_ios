@@ -223,6 +223,14 @@ extension CapturingEventDetailScene {
     func simulateSceneDidLoad() {
         delegate?.eventDetailSceneDidLoad()
     }
+    
+    func simulateSceneDidAppear() {
+        delegate?.eventDetailSceneDidAppear()
+    }
+    
+    func simulateSceneDidDisappear() {
+        delegate?.eventDetailSceneDidDisappear()
+    }
 
     @discardableResult
     func bindComponent(at indexPath: IndexPath) -> Any? {

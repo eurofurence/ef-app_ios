@@ -4,11 +4,37 @@ import EurofurenceModelTestDoubles
 import Foundation
 import UIKit.UIViewController
 
+class CapturingInteraction: Interaction {
+    
+    enum State {
+        case unset
+        case active
+        case inactive
+    }
+    
+    private(set) var state: State = .unset
+    
+    func activate() {
+        state = .active
+    }
+    
+    func deactivate() {
+        state = .inactive
+    }
+    
+}
+
 class CapturingEventInteractionRecorder: EventInteractionRecorder {
     
     private(set) var witnessedEvent: EventIdentifier?
-    func recordInteraction(for event: EventIdentifier) {
+    private(set) var currentInteraction: CapturingInteraction?
+    func makeInteraction(for event: EventIdentifier) -> Interaction? {
         witnessedEvent = event
+        
+        let interaction = CapturingInteraction()
+        currentInteraction = interaction
+        
+        return interaction
     }
     
 }
@@ -59,6 +85,14 @@ extension EventDetailPresenterTestBuilder.Context {
 
     func simulateSceneDidLoad() {
         scene.simulateSceneDidLoad()
+    }
+    
+    func simulateSceneDidAppear() {
+        scene.simulateSceneDidAppear()
+    }
+    
+    func simulateSceneDidDisappear() {
+        scene.simulateSceneDidDisappear()
     }
 
 }

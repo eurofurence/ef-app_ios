@@ -117,8 +117,8 @@ class EventImpl: Event {
         }
     }
     
-    func resolveShareableURL(completionHandler: @escaping (URL) -> Void) {
-        completionHandler(shareableURLFactory.makeURL(for: identifier))
+    func makeContentURL() -> URL {
+        return shareableURLFactory.makeURL(for: identifier)
     }
 
     private func notifyObserversFavouritedStateDidChange() {

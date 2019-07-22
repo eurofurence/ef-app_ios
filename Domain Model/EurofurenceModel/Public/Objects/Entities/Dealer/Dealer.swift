@@ -22,6 +22,6 @@ public protocol Dealer {
     func fetchExtendedDealerData(completionHandler: @escaping (ExtendedDealerData) -> Void)
     func fetchIconPNGData(completionHandler: @escaping (Data?) -> Void)
     
-    func resolveShareableURL(completionHandler: @escaping (URL) -> Void)
+    func makeContentURL() -> URL
 
 }

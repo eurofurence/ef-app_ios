@@ -102,8 +102,8 @@ public final class FakeEvent: Event {
     }
     
     public let shareableURL = URL.random
-    public func resolveShareableURL(completionHandler: @escaping (URL) -> Void) {
-        completionHandler(shareableURL)
+    public func makeContentURL() -> URL {
+        return shareableURL
     }
 
     private func notifyObserverOfCurrentFavouriteStateAsPerEventContract(_ observer: EventObserver) {

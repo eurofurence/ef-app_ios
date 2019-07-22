@@ -11,8 +11,7 @@ class WhenRequestingShareableURL_DealerShould: XCTestCase {
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let identifier = DealerIdentifier(dealer.identifier)
         let entity = context.dealersService.fetchDealer(for: identifier)
-        var url: URL?
-        entity?.resolveShareableURL(completionHandler: { url = $0 })
+        let url = entity?.makeContentURL()
         
         XCTAssertEqual(unwrap(URL(string: "dealer://\(identifier.rawValue)")), url)
     }

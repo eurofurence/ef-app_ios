@@ -2,6 +2,6 @@ import EurofurenceModel
 
 protocol EventInteractionRecorder {
     
-    func recordInteraction(for event: EventIdentifier)
+    func makeInteraction(for event: EventIdentifier) -> Interaction?
     
 }

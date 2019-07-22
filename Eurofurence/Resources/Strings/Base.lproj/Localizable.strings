@@ -113,3 +113,6 @@
 "Share" = "Share";
 
 "DealerCategoriesInformationalFooter" = "Active categories are taken into account when performing a search in the master dealers list";
+
+"ViewEventFormatString" = "View event '%@'";
+"ViewDealerFormatString" = "View dealer '%@'";

@@ -19,6 +19,16 @@ class DealerDetailViewController: UIViewController, DealerDetailScene {
         delegate?.dealerDetailSceneDidLoad()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        delegate?.dealerDetailSceneDidAppear()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        delegate?.dealerDetailSceneDidDisappear()
+    }
+    
     // MARK: Actions
     
     @IBAction private func shareButtonTapped(_ sender: Any) {
