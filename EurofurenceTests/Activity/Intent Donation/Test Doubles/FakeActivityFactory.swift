@@ -15,6 +15,14 @@ class FakeActivityFactory: ActivityFactory {
 
 class FakeActivity: Activity {
     
+    enum State {
+        case unset
+        case current
+        case resignedCurrent
+    }
+    
+    private(set) var state: State = .unset
+    
     let activityType: String
     let title: String
     let url: URL?
@@ -23,6 +31,14 @@ class FakeActivity: Activity {
         self.activityType = activityType
         self.title = title
         self.url = url
+    }
+    
+    func becomeCurrent() {
+        state = .current
+    }
+    
+    func resignCurrent() {
+        state = .resignedCurrent
     }
     
 }

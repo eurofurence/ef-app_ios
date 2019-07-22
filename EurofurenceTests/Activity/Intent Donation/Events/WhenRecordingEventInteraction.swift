@@ -36,4 +36,25 @@ class WhenRecordingEventInteraction: XCTestCase {
         XCTAssertEqual(event.shareableURL, producedActivity?.url)
     }
     
+    func testTogglingInteractionActivationChangesCurrentStateOfActivity() {
+        let event = FakeEvent.random
+        let eventsService = FakeEventsService()
+        eventsService.events = [event]
+        let eventIntentDonor = CapturingEventIntentDonor()
+        let activityFactory = FakeActivityFactory()
+        let tracer = SystemEventInteractionsRecorder(eventsService: eventsService, eventIntentDonor: eventIntentDonor, activityFactory: activityFactory)
+        let interaction = tracer.makeInteraction(for: event.identifier)
+        let producedActivity = activityFactory.producedActivity
+        
+        XCTAssertEqual(.unset, producedActivity?.state)
+        
+        interaction?.activate()
+        
+        XCTAssertEqual(.current, producedActivity?.state)
+        
+        interaction?.deactivate()
+        
+        XCTAssertEqual(.resignedCurrent, producedActivity?.state)
+    }
+    
 }

@@ -14,6 +14,14 @@ struct PlatformActivityFactory: ActivityFactory {
         
         var userActivity: NSUserActivity
         
+        func becomeCurrent() {
+            userActivity.becomeCurrent()
+        }
+        
+        func resignCurrent() {
+            userActivity.resignCurrent()
+        }
+        
     }
     
 }
