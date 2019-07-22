@@ -12,8 +12,12 @@ class ApplicationInfoPropertyListShould: XCTestCase {
         let calendarUsageDescription: String? = objectFromMainBundlePropertyList(forInfoDictionaryKey: "NSCalendarsUsageDescription")
         let expectedDescription = "Eurofurence uses your calendar to add events and alerts"
 
-        XCTAssertNotNil(calendarUsageDescription)
         XCTAssertEqual(expectedDescription, calendarUsageDescription)
+    }
+    
+    func testDesignateEventActivityType() {
+        let activityTypes: [String]? = objectFromMainBundlePropertyList(forInfoDictionaryKey: "NSUserActivityTypes")
+        XCTAssert(activityTypes?.contains("org.eurofurence.activity.view-event") == true)
     }
 
 }
