@@ -9,7 +9,7 @@ struct SystemActivityDescription: ActivityDescription {
             visitor.visitIntent(intent)
         }
         
-        if userActivity.activityType == NSUserActivityTypeBrowsingWeb, let url = userActivity.webpageURL {
+        if let url = userActivity.webpageURL {
             visitor.visitURL(url)
         }
     }
