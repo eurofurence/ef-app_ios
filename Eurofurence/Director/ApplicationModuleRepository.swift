@@ -97,18 +97,14 @@ struct ApplicationModuleRepository: ModuleRepository {
                                                                                markdownRenderer: defaultMarkdownRenderer)
         announcementDetailModuleProviding = AnnouncementDetailModuleBuilder(announcementDetailInteractor: announcementDetailInteractor).build()
         
-        struct DummyActivityFactory: ActivityFactory {
-            struct DummyActivity: Activity {
-                
-            }
-            
-            func makeActivity(type: String, title: String, url: URL?) -> Activity {
-                return DummyActivity()
-            }
-        }
-        
+        let activityFactory = PlatformActivityFactory()
         let eventIntentDonor = ConcreteEventIntentDonor()
-        let eventInteractionRecorder = SystemEventInteractionsRecorder(eventsService: services.events, eventIntentDonor: eventIntentDonor, activityFactory: DummyActivityFactory())
+        let eventInteractionRecorder = SystemEventInteractionsRecorder(
+            eventsService: services.events,
+            eventIntentDonor: eventIntentDonor,
+            activityFactory: activityFactory
+        )
+        
         let eventDetailInteractor = DefaultEventDetailInteractor(dateRangeFormatter: FoundationDateRangeFormatter.shared,
                                                                  eventsService: services.events,
                                                                  markdownRenderer: DefaultDownMarkdownRenderer(),
