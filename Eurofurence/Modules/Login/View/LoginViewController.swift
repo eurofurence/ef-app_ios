@@ -55,6 +55,10 @@ class LoginViewController: UITableViewController, UITextFieldDelegate, LoginScen
     func setLoginTitle(_ title: String) {
         super.title = title
     }
+    
+    func overrideRegistrationNumber(_ registrationNumber: String) {
+        registrationNumberTextField.text = registrationNumber
+    }
 
     func disableLoginButton() {
         loginButton.isEnabled = false
