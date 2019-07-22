@@ -29,6 +29,6 @@ public protocol Event {
     func favourite()
     func unfavourite()
     func prepareFeedback() -> EventFeedback
-    func makeContentURL(completionHandler: @escaping (URL) -> Void)
+    func makeContentURL() -> URL
 
 }

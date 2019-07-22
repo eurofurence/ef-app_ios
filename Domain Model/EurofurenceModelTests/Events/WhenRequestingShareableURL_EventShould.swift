@@ -11,8 +11,7 @@ class WhenRequestingShareableURL_EventShould: XCTestCase {
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let identifier = EventIdentifier(event.identifier)
         let entity = context.eventsService.fetchEvent(identifier: EventIdentifier(event.identifier))
-        var url: URL?
-        entity?.makeContentURL(completionHandler: { url = $0 })
+        let url = entity?.makeContentURL()
         
         XCTAssertEqual(unwrap(URL(string: "event://\(identifier.rawValue)")), url)
     }
