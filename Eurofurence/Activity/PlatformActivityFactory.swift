@@ -22,6 +22,14 @@ struct PlatformActivityFactory: ActivityFactory {
             userActivity.resignCurrent()
         }
         
+        func markEligibleForPublicIndexing() {
+            userActivity.isEligibleForPublicIndexing = true
+        }
+        
+        func markEligibleForLocalIndexing() {
+            userActivity.isEligibleForSearch = true
+        }
+        
     }
     
 }

@@ -26,6 +26,8 @@ class FakeActivity: Activity {
     let activityType: String
     let title: String
     let url: URL?
+    private(set) var supportsPublicIndexing = false
+    private(set) var supportsLocalIndexing = false
     
     init(activityType: String, title: String, url: URL?) {
         self.activityType = activityType
@@ -39,6 +41,14 @@ class FakeActivity: Activity {
     
     func resignCurrent() {
         state = .resignedCurrent
+    }
+    
+    func markEligibleForPublicIndexing() {
+        supportsPublicIndexing = true
+    }
+    
+    func markEligibleForLocalIndexing() {
+        supportsLocalIndexing = true
     }
     
 }

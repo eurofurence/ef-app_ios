@@ -34,6 +34,8 @@ class WhenRecordingEventInteraction: XCTestCase {
         XCTAssertEqual("org.eurofurence.activity.view-event", producedActivity?.activityType)
         XCTAssertEqual(expectedTitle, producedActivity?.title)
         XCTAssertEqual(event.shareableURL, producedActivity?.url)
+        XCTAssertEqual(true, producedActivity?.supportsPublicIndexing)
+        XCTAssertEqual(true, producedActivity?.supportsLocalIndexing)
     }
     
     func testTogglingInteractionActivationChangesCurrentStateOfActivity() {

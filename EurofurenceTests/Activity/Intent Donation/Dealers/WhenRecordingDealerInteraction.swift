@@ -34,6 +34,8 @@ class WhenRecordingDealerInteraction: XCTestCase {
         XCTAssertEqual("org.eurofurence.activity.view-dealer", producedActivity?.activityType)
         XCTAssertEqual(expectedTitle, producedActivity?.title)
         XCTAssertEqual(dealer.shareableURL, producedActivity?.url)
+        XCTAssertEqual(true, producedActivity?.supportsPublicIndexing)
+        XCTAssertEqual(true, producedActivity?.supportsLocalIndexing)
     }
     
     func testTogglingInteractionActivationChangesCurrentStateOfActivity() {
