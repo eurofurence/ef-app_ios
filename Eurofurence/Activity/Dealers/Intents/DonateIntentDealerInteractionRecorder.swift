@@ -10,7 +10,7 @@ struct DonateIntentDealerInteractionRecorder: DealerInteractionRecorder {
         self.viewDealerIntentDonor = viewDealerIntentDonor
     }
     
-    func recordInteraction(for dealer: DealerIdentifier) {
+    func makeInteractionRecorder(for dealer: DealerIdentifier) {
         guard let entity = dealersService.fetchDealer(for: dealer) else { return }
         
         let intentDefinition = ViewDealerIntentDefinition(identifier: dealer, dealerName: entity.preferredName)

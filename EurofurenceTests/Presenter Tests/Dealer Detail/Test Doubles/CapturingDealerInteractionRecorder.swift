@@ -4,7 +4,7 @@ import EurofurenceModel
 class CapturingDealerInteractionRecorder: DealerInteractionRecorder {
     
     private(set) var witnessedDealer: DealerIdentifier?
-    func recordInteraction(for dealer: DealerIdentifier) {
+    func makeInteractionRecorder(for dealer: DealerIdentifier) {
         witnessedDealer = dealer
     }
     

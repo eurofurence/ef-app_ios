@@ -11,7 +11,7 @@ class WhenRecordingEventInteraction: XCTestCase {
         eventsService.events = [event]
         let eventIntentDonor = CapturingEventIntentDonor()
         let tracer = DonateIntentEventInteractionRecorder(eventsService: eventsService, eventIntentDonor: eventIntentDonor)
-        tracer.recordInteraction(for: event.identifier)
+        tracer.makeInteractionRecorder(for: event.identifier)
         
         let expected = ViewEventIntentDefinition(identifier: event.identifier, eventName: event.title)
         XCTAssertEqual(expected, eventIntentDonor.donatedEventIntentDefinition)

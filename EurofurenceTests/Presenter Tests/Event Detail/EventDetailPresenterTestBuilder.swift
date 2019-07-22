@@ -7,7 +7,7 @@ import UIKit.UIViewController
 class CapturingEventInteractionRecorder: EventInteractionRecorder {
     
     private(set) var witnessedEvent: EventIdentifier?
-    func recordInteraction(for event: EventIdentifier) {
+    func makeInteractionRecorder(for event: EventIdentifier) {
         witnessedEvent = event
     }
     
