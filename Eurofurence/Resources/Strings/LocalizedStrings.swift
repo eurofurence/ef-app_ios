@@ -280,4 +280,9 @@ public extension String {
         return String.localizedStringWithFormat(eventReminderBodyFormat, timeString, roomName)
     }
     
+    static func viewEvent(named name: String) -> String {
+        let format = NSLocalizedString("ViewEventFormatString", comment: "Format string used for handoff titles for events")
+        return String.localizedStringWithFormat(format, name)
+    }
+    
 }

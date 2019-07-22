@@ -815,6 +815,11 @@
 		CA987FBC22E4B224006338FB /* WhenProducingCategoriesViewModel_DealersInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA987FBB22E4B224006338FB /* WhenProducingCategoriesViewModel_DealersInteractorShould.swift */; };
 		CA987FC122E5126D006338FB /* LoginPresenterTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA987FC022E5126D006338FB /* LoginPresenterTestBuilder.swift */; };
 		CA987FC422E512C9006338FB /* WhenAutofillingPassword_LoginPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA987FC322E512C9006338FB /* WhenAutofillingPassword_LoginPresenterShould.swift */; };
+		CA987FC822E6389E006338FB /* ActivityFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA987FC722E6389E006338FB /* ActivityFactory.swift */; };
+		CA987FCA22E638A8006338FB /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA987FC922E638A8006338FB /* Activity.swift */; };
+		CA987FCC22E63A2C006338FB /* Interaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA987FCB22E63A2C006338FB /* Interaction.swift */; };
+		CA987FCE22E63A4C006338FB /* ActivityInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA987FCD22E63A4C006338FB /* ActivityInteraction.swift */; };
+		CA987FD122E63AA3006338FB /* FakeActivityFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA987FD022E63AA3006338FB /* FakeActivityFactory.swift */; };
 		CA9AC16B208546530039C0C2 /* WhenBindingEvent_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9AC16A208546530039C0C2 /* WhenBindingEvent_NewsPresenterShould.swift */; };
 		CA9AC16D2085476E0039C0C2 /* EventComponentViewModel+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9AC16C2085476E0039C0C2 /* EventComponentViewModel+RandomValueProviding.swift */; };
 		CAA10FE222C5E29700689A32 /* WhenOpeningMessage_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA10FE122C5E29700689A32 /* WhenOpeningMessage_DirectorShould.swift */; };
@@ -1909,6 +1914,11 @@
 		CA987FBB22E4B224006338FB /* WhenProducingCategoriesViewModel_DealersInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenProducingCategoriesViewModel_DealersInteractorShould.swift; sourceTree = "<group>"; };
 		CA987FC022E5126D006338FB /* LoginPresenterTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenterTestBuilder.swift; sourceTree = "<group>"; };
 		CA987FC322E512C9006338FB /* WhenAutofillingPassword_LoginPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenAutofillingPassword_LoginPresenterShould.swift; sourceTree = "<group>"; };
+		CA987FC722E6389E006338FB /* ActivityFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityFactory.swift; sourceTree = "<group>"; };
+		CA987FC922E638A8006338FB /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		CA987FCB22E63A2C006338FB /* Interaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interaction.swift; sourceTree = "<group>"; };
+		CA987FCD22E63A4C006338FB /* ActivityInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityInteraction.swift; sourceTree = "<group>"; };
+		CA987FD022E63AA3006338FB /* FakeActivityFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeActivityFactory.swift; sourceTree = "<group>"; };
 		CA9AC16A208546530039C0C2 /* WhenBindingEvent_NewsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingEvent_NewsPresenterShould.swift; sourceTree = "<group>"; };
 		CA9AC16C2085476E0039C0C2 /* EventComponentViewModel+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventComponentViewModel+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CAA10FE122C5E29700689A32 /* WhenOpeningMessage_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenOpeningMessage_DirectorShould.swift; sourceTree = "<group>"; };
@@ -3286,6 +3296,7 @@
 			children = (
 				CA2AA2E522C94D7500C0E1A1 /* Dealers */,
 				CA630BCD229F10AF00754C27 /* Events */,
+				CA987FCF22E63A99006338FB /* Test Doubles */,
 			);
 			path = "Intent Donation";
 			sourceTree = "<group>";
@@ -3692,6 +3703,10 @@
 		CA630BCA229F108900754C27 /* Activity */ = {
 			isa = PBXGroup;
 			children = (
+				CA987FC922E638A8006338FB /* Activity.swift */,
+				CA987FC722E6389E006338FB /* ActivityFactory.swift */,
+				CA987FCD22E63A4C006338FB /* ActivityInteraction.swift */,
+				CA987FCB22E63A2C006338FB /* Interaction.swift */,
 				CA2AA2E022C94C0B00C0E1A1 /* Dealers */,
 				CA630BCB229F109600754C27 /* Events */,
 				CA630BFA22A0686A00754C27 /* Resuming */,
@@ -3761,8 +3776,8 @@
 		CA630BFA22A0686A00754C27 /* Resuming */ = {
 			isa = PBXGroup;
 			children = (
-				CAB0FD5722C90BCE00D4CB98 /* Activity State */,
 				CA630BFB22A068A200754C27 /* ActivityResumer.swift */,
+				CAB0FD5722C90BCE00D4CB98 /* Activity State */,
 				CAB0FD5822C90BD900D4CB98 /* Content Router */,
 				CAB0FD5922C90BE900D4CB98 /* Intent Interactions */,
 			);
@@ -4903,6 +4918,14 @@
 				CA3ABA0A229DCB4A0045A35B /* EventDetailPresenter_InteractionRecordingTests.swift */,
 			);
 			path = "Interaction Recording";
+			sourceTree = "<group>";
+		};
+		CA987FCF22E63A99006338FB /* Test Doubles */ = {
+			isa = PBXGroup;
+			children = (
+				CA987FD022E63AA3006338FB /* FakeActivityFactory.swift */,
+			);
+			path = "Test Doubles";
 			sourceTree = "<group>";
 		};
 		CAA6060820EEC01C00075A4E /* Debug */ = {
@@ -6161,6 +6184,7 @@
 				CA6A8D6320E26247007536CD /* MapsModuleProviding.swift in Sources */,
 				CA6A8DC620E41513007536CD /* MapDetailModuleProviding.swift in Sources */,
 				CA73AEF1201A08BA004E77BF /* KnowledgeGroupsListModuleProviding.swift in Sources */,
+				CA987FCE22E63A4C006338FB /* ActivityInteraction.swift in Sources */,
 				CA52C69920D6B87E009D3A9E /* HideNavigationBarShadowForSpecificViewControllerDelegate.swift in Sources */,
 				2020ECCD211CDBA50036E2CF /* NSMutableAttributedString+trim.swift in Sources */,
 				CACF1E9A20B437A500D904B5 /* EventDescriptionComponent.swift in Sources */,
@@ -6303,6 +6327,7 @@
 				CA283ABB20EAA45000F7D195 /* AnnouncementsInteractor.swift in Sources */,
 				CADABF042118E08D0023C3B6 /* MapContextualContentViewController.swift in Sources */,
 				CA00AE4E20D16CAE00C2FBB0 /* SchedulePresenter.swift in Sources */,
+				CA987FC822E6389E006338FB /* ActivityFactory.swift in Sources */,
 				CA65A877209A523400B72533 /* UIColor+Extensions.swift in Sources */,
 				CA8E7F031FB094A600F0BF10 /* PlatformTabModuleFactory.swift in Sources */,
 				CA283ADA20EB9CA600F7D195 /* AnnouncementsModuleDelegate.swift in Sources */,
@@ -6440,6 +6465,7 @@
 				CA630C0922A069AF00754C27 /* ViewEventIntent+Definition.swift in Sources */,
 				CA00AE6620D1784500C2FBB0 /* EventTableViewCell.swift in Sources */,
 				CA728455209D0576007D912A /* AnnouncementDetailSceneFactory.swift in Sources */,
+				CA987FCC22E63A2C006338FB /* Interaction.swift in Sources */,
 				CA1B6F2920DB89FE00ADF414 /* DealerDetailPresenter.swift in Sources */,
 				CABA438D1FBCDBDF009CB5B0 /* LoginPresenter.swift in Sources */,
 				CA6375A8208E011C00536BE2 /* DealersModuleBuilder.swift in Sources */,
@@ -6455,6 +6481,7 @@
 				CA3ABA09229C7B6E0045A35B /* Dictionary+Extensions.swift in Sources */,
 				CA152EF422665E7000212742 /* StoryboardEventFeedbackSceneFactory.swift in Sources */,
 				CA6A8D9220E2C554007536CD /* MapCollectionViewCell.swift in Sources */,
+				CA987FCA22E638A8006338FB /* Activity.swift in Sources */,
 				CADABEF021147D560023C3B6 /* EventInformationBannerTableViewCell.swift in Sources */,
 				CA6AA0011FD6C5FD0092C6DB /* LoginModuleBuilder.swift in Sources */,
 				CA8A73CC22BD10D2007A5201 /* AdditionalServicesPresenter.swift in Sources */,
@@ -6781,6 +6808,7 @@
 				CAF81C6220DD95BC00898C52 /* DealerDetailAboutTheArtistViewModel+RandomValueProviding.swift in Sources */,
 				CA7D8B1A222DB134003431A0 /* NewsViewModelValue+Equatable.swift in Sources */,
 				CA987FBC22E4B224006338FB /* WhenProducingCategoriesViewModel_DealersInteractorShould.swift in Sources */,
+				CA987FD122E63AA3006338FB /* FakeActivityFactory.swift in Sources */,
 				CACF1E9E20B4386B00D904B5 /* WhenBindingEventDescription_EventDetailPresenterShould.swift in Sources */,
 				CA283A8620E9483F00F7D195 /* WhenPreparingAnnouncementViewModel_ForReadAnnouncement_NewsInteractorShould.swift in Sources */,
 				CA62134B221F276000E88880 /* ScheduleEventGroupViewModelAssertion.swift in Sources */,

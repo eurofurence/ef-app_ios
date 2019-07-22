@@ -97,8 +97,18 @@ struct ApplicationModuleRepository: ModuleRepository {
                                                                                markdownRenderer: defaultMarkdownRenderer)
         announcementDetailModuleProviding = AnnouncementDetailModuleBuilder(announcementDetailInteractor: announcementDetailInteractor).build()
         
+        struct DummyActivityFactory: ActivityFactory {
+            struct DummyActivity: Activity {
+                
+            }
+            
+            func makeActivity(type: String, title: String) -> Activity {
+                return DummyActivity()
+            }
+        }
+        
         let eventIntentDonor = ConcreteEventIntentDonor()
-        let eventInteractionRecorder = SystemEventInteractionsRecorder(eventsService: services.events, eventIntentDonor: eventIntentDonor)
+        let eventInteractionRecorder = SystemEventInteractionsRecorder(eventsService: services.events, eventIntentDonor: eventIntentDonor, activityFactory: DummyActivityFactory())
         let eventDetailInteractor = DefaultEventDetailInteractor(dateRangeFormatter: FoundationDateRangeFormatter.shared,
                                                                  eventsService: services.events,
                                                                  markdownRenderer: DefaultDownMarkdownRenderer(),
