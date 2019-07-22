@@ -181,10 +181,8 @@ struct DefaultDealerDetailViewModel: DealerDetailViewModel {
     }
     
     func shareDealer(_ sender: Any) {
-        let service = shareService
-        dealer.resolveShareableURL { (url) in
-            service.share(url, sender: sender)
-        }
+        let url = dealer.makeContentURL()
+        shareService.share(url, sender: sender)
     }
 
 }

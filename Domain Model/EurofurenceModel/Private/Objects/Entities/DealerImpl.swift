@@ -123,8 +123,8 @@ struct DealerImpl: Dealer {
         completionHandler(iconData)
     }
     
-    func resolveShareableURL(completionHandler: @escaping (URL) -> Void) {
-        completionHandler(shareableURLFactory.makeURL(for: identifier))
+    func makeContentURL() -> URL {
+        return shareableURLFactory.makeURL(for: identifier)
     }
     
     private func fetchMapData() -> (map: MapCharacteristics, entry: MapCharacteristics.Entry)? {
