@@ -19,5 +19,10 @@ class ApplicationInfoPropertyListShould: XCTestCase {
         let activityTypes: [String]? = objectFromMainBundlePropertyList(forInfoDictionaryKey: "NSUserActivityTypes")
         XCTAssert(activityTypes?.contains("org.eurofurence.activity.view-event") == true)
     }
+    
+    func testDesignateDealerActivityType() {
+        let activityTypes: [String]? = objectFromMainBundlePropertyList(forInfoDictionaryKey: "NSUserActivityTypes")
+        XCTAssert(activityTypes?.contains("org.eurofurence.activity.view-dealer") == true)
+    }
 
 }
