@@ -1,7 +1,7 @@
 import EurofurenceIntentDefinitions
 import EurofurenceModel
 
-struct DonateIntentEventInteractionRecorder: EventInteractionRecorder {
+struct SystemEventInteractionsRecorder: EventInteractionRecorder {
     
     var eventsService: EventsService
     var eventIntentDonor: EventIntentDonor

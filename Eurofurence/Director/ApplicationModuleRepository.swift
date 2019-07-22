@@ -98,7 +98,7 @@ struct ApplicationModuleRepository: ModuleRepository {
         announcementDetailModuleProviding = AnnouncementDetailModuleBuilder(announcementDetailInteractor: announcementDetailInteractor).build()
         
         let eventIntentDonor = ConcreteEventIntentDonor()
-        let eventInteractionRecorder = DonateIntentEventInteractionRecorder(eventsService: services.events, eventIntentDonor: eventIntentDonor)
+        let eventInteractionRecorder = SystemEventInteractionsRecorder(eventsService: services.events, eventIntentDonor: eventIntentDonor)
         let eventDetailInteractor = DefaultEventDetailInteractor(dateRangeFormatter: FoundationDateRangeFormatter.shared,
                                                                  eventsService: services.events,
                                                                  markdownRenderer: DefaultDownMarkdownRenderer(),

@@ -10,7 +10,7 @@ class WhenRecordingEventInteraction: XCTestCase {
         let eventsService = FakeEventsService()
         eventsService.events = [event]
         let eventIntentDonor = CapturingEventIntentDonor()
-        let tracer = DonateIntentEventInteractionRecorder(eventsService: eventsService, eventIntentDonor: eventIntentDonor)
+        let tracer = SystemEventInteractionsRecorder(eventsService: eventsService, eventIntentDonor: eventIntentDonor)
         _ = tracer.makeInteraction(for: event.identifier)
         
         let expected = ViewEventIntentDefinition(identifier: event.identifier, eventName: event.title)

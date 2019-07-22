@@ -508,7 +508,7 @@
 		CA62134B221F276000E88880 /* ScheduleEventGroupViewModelAssertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA621347221F274000E88880 /* ScheduleEventGroupViewModelAssertion.swift */; };
 		CA62134C221F276000E88880 /* ScheduleEventViewModelAssertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA621349221F274F00E88880 /* ScheduleEventViewModelAssertion.swift */; };
 		CA630BCF229F10BF00754C27 /* WhenRecordingEventInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630BCE229F10BF00754C27 /* WhenRecordingEventInteraction.swift */; };
-		CA630BD1229F11CC00754C27 /* DonateIntentEventInteractionRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630BD0229F11CC00754C27 /* DonateIntentEventInteractionRecorder.swift */; };
+		CA630BD1229F11CC00754C27 /* SystemEventInteractionsRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630BD0229F11CC00754C27 /* SystemEventInteractionsRecorder.swift */; };
 		CA630BD3229F12D100754C27 /* CapturingEventIntentDonor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630BD2229F12D100754C27 /* CapturingEventIntentDonor.swift */; };
 		CA630BD6229F145E00754C27 /* EventIntentDonor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630BD5229F145E00754C27 /* EventIntentDonor.swift */; };
 		CA630BE0229F14F800754C27 /* EurofurenceIntentDefinitions.h in Headers */ = {isa = PBXBuildFile; fileRef = CA630BDE229F14F800754C27 /* EurofurenceIntentDefinitions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1606,7 +1606,7 @@
 		CA621347221F274000E88880 /* ScheduleEventGroupViewModelAssertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleEventGroupViewModelAssertion.swift; sourceTree = "<group>"; };
 		CA621349221F274F00E88880 /* ScheduleEventViewModelAssertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleEventViewModelAssertion.swift; sourceTree = "<group>"; };
 		CA630BCE229F10BF00754C27 /* WhenRecordingEventInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenRecordingEventInteraction.swift; sourceTree = "<group>"; };
-		CA630BD0229F11CC00754C27 /* DonateIntentEventInteractionRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateIntentEventInteractionRecorder.swift; sourceTree = "<group>"; };
+		CA630BD0229F11CC00754C27 /* SystemEventInteractionsRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemEventInteractionsRecorder.swift; sourceTree = "<group>"; };
 		CA630BD2229F12D100754C27 /* CapturingEventIntentDonor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingEventIntentDonor.swift; sourceTree = "<group>"; };
 		CA630BD5229F145E00754C27 /* EventIntentDonor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventIntentDonor.swift; sourceTree = "<group>"; };
 		CA630BDC229F14F800754C27 /* EurofurenceIntentDefinitions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EurofurenceIntentDefinitions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -3730,7 +3730,7 @@
 			isa = PBXGroup;
 			children = (
 				CA630BED229F16F400754C27 /* ConcreteEventIntentDonor.swift */,
-				CA630BD0229F11CC00754C27 /* DonateIntentEventInteractionRecorder.swift */,
+				CA630BD0229F11CC00754C27 /* SystemEventInteractionsRecorder.swift */,
 				CA630BD5229F145E00754C27 /* EventIntentDonor.swift */,
 				CA630C0822A069AF00754C27 /* ViewEventIntent+Definition.swift */,
 				CA630C0622A0696D00754C27 /* ViewEventIntentDefinition.swift */,
@@ -6174,7 +6174,7 @@
 				CAE27B4C1F855E0E005FDE39 /* TabModuleProviding.swift in Sources */,
 				CA2AA2D522C93EC300C0E1A1 /* TabBarDirector.swift in Sources */,
 				CA6A8D6F20E2648E007536CD /* MapsModuleBuilder.swift in Sources */,
-				CA630BD1229F11CC00754C27 /* DonateIntentEventInteractionRecorder.swift in Sources */,
+				CA630BD1229F11CC00754C27 /* SystemEventInteractionsRecorder.swift in Sources */,
 				CAD55938229AEFC50068DD46 /* NotificationResponseHandler.swift in Sources */,
 				CA8E17F51F817AE8003C348C /* PreloadPresenter.swift in Sources */,
 				CA72845D209D0627007D912A /* StoryboardAnnouncementDetailSceneFactory.swift in Sources */,
