@@ -33,6 +33,7 @@ class WhenRecordingEventInteraction: XCTestCase {
         let expectedTitle = String.localizedStringWithFormat(expectedTitleFormat, event.title)
         XCTAssertEqual("org.eurofurence.activity.view-event", producedActivity?.activityType)
         XCTAssertEqual(expectedTitle, producedActivity?.title)
+        XCTAssertEqual(event.shareableURL, producedActivity?.url)
     }
     
 }

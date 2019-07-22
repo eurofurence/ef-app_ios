@@ -14,7 +14,8 @@ struct SystemEventInteractionsRecorder: EventInteractionRecorder {
         eventIntentDonor.donateEventIntent(definition: intentDefinition)
         
         let activityTitle = String.viewEvent(named: entity.title)
-        let activity = activityFactory.makeActivity(type: "org.eurofurence.activity.view-event", title: activityTitle)
+        let url = entity.makeContentURL()
+        let activity = activityFactory.makeActivity(type: "org.eurofurence.activity.view-event", title: activityTitle, url: url)
         
         return ActivityInteraction(activity: activity)
     }
