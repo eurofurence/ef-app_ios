@@ -8,6 +8,7 @@
 	<array>
 		<string>applinks:app.eurofurence.org</string>
 		<string>webcredentials:reg.eurofurence.org</string>
+		<string>activitycontinuation:app.eurofurence.org</string>
 	</array>
 	<key>com.apple.security.application-groups</key>
 	<array>
