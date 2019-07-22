@@ -12,7 +12,7 @@ class WhenRequestingShareableURL_EventShould: XCTestCase {
         let identifier = EventIdentifier(event.identifier)
         let entity = context.eventsService.fetchEvent(identifier: EventIdentifier(event.identifier))
         var url: URL?
-        entity?.resolveShareableURL(completionHandler: { url = $0 })
+        entity?.makeContentURL(completionHandler: { url = $0 })
         
         XCTAssertEqual(unwrap(URL(string: "event://\(identifier.rawValue)")), url)
     }

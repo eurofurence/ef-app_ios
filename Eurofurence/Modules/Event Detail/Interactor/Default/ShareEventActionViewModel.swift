@@ -13,7 +13,7 @@ struct ShareEventActionViewModel: EventActionViewModel {
         guard let sender = sender else { return }
         
         let service = shareService
-        event.resolveShareableURL { (url) in
+        event.makeContentURL { (url) in
             service.share(url, sender: sender)
         }
     }

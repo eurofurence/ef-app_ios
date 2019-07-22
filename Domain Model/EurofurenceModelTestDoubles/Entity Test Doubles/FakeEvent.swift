@@ -102,7 +102,7 @@ public final class FakeEvent: Event {
     }
     
     public let shareableURL = URL.random
-    public func resolveShareableURL(completionHandler: @escaping (URL) -> Void) {
+    public func makeContentURL(completionHandler: @escaping (URL) -> Void) {
         completionHandler(shareableURL)
     }
 

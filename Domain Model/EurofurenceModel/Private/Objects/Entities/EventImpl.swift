@@ -117,7 +117,7 @@ class EventImpl: Event {
         }
     }
     
-    func resolveShareableURL(completionHandler: @escaping (URL) -> Void) {
+    func makeContentURL(completionHandler: @escaping (URL) -> Void) {
         completionHandler(shareableURLFactory.makeURL(for: identifier))
     }
 
