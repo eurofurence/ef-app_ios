@@ -119,6 +119,19 @@ class WhenProducingCategoriesViewModel_DealersInteractorShould: XCTestCase {
         
         XCTAssertFalse(category.isActive)
     }
+    
+    func testUpdateAvailableCategoriesWhenCollectionChanges() {
+        let categoriesCollection = InMemoryDealerCategoriesCollection(categories: [FakeDealerCategory]())
+        let index = FakeDealersIndex(availableCategories: categoriesCollection)
+        let service = FakeDealersService(index: index)
+        let context = DealerInteractorTestBuilder().with(service).build()
+        let viewModel = context.prepareCategoriesViewModel()
+        let category = FakeDealerCategory(title: "Updated Category")
+        categoriesCollection.categories = [category]
+        
+        XCTAssertEqual(1, viewModel?.numberOfCategories)
+        XCTAssertEqual("Updated Category", viewModel?.categoryViewModel(at: 0).title)
+    }
 
 }
 

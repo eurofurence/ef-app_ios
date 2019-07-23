@@ -4,7 +4,8 @@ public class InMemoryDealerCategoriesCollection<C>: DealerCategoriesCollection
     where C: RandomAccessCollection, C.Element: DealerCategory, C.Index == Int {
     
     private var observers = [DealerCategoriesCollectionObserver]()
-    var categories: C {
+    
+    public var categories: C {
         didSet {
             observers.forEach({ $0.categoriesCollectionDidChange(self) })
         }
