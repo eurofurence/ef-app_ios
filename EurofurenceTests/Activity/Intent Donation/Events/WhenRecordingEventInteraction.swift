@@ -35,7 +35,7 @@ class WhenRecordingEventInteraction: XCTestCase {
         XCTAssertEqual(expectedTitle, producedActivity?.title)
         XCTAssertEqual(event.shareableURL, producedActivity?.url)
         XCTAssertEqual(true, producedActivity?.supportsPublicIndexing)
-        XCTAssertEqual(true, producedActivity?.supportsLocalIndexing)
+        XCTAssertEqual(false, producedActivity?.supportsLocalIndexing)
     }
     
     func testTogglingInteractionActivationChangesCurrentStateOfActivity() {
