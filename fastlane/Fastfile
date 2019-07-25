@@ -1,4 +1,5 @@
 lane :screenshots do
+  reset_simulator_contents
   capture_screenshots(stop_after_first_error: true)
 end
 
