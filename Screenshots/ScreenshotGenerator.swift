@@ -30,11 +30,12 @@ class ScreenshotGenerator: XCTestCase {
         let beganWaitingAt = Date()
         var waitingForTabItemToAppear = true
         var totalWaitTimeSeconds: TimeInterval = 0
+        let threeMinutes: TimeInterval = 180
         repeat {
             RunLoop.current.run(until: Date(timeIntervalSinceNow: 1))
             waitingForTabItemToAppear = !newsTabBarItem.exists
             totalWaitTimeSeconds = Date().timeIntervalSince(beganWaitingAt)
-        } while waitingForTabItemToAppear && totalWaitTimeSeconds < 30
+        } while waitingForTabItemToAppear && totalWaitTimeSeconds < threeMinutes
     }
 
     func testScreenshots() {
