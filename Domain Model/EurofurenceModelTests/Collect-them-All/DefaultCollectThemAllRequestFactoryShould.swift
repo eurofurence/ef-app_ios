@@ -6,7 +6,7 @@ class DefaultCollectThemAllRequestFactoryShould: XCTestCase {
     func testProduceExpectedAnonymousRequest() {
         let factory = DefaultCollectThemAllRequestFactory()
         let anonymousRequest = factory.makeAnonymousGameURLRequest()
-        let expectedURL = unwrap(URL(string: "https://app.eurofurence.org/EF25/companion/#/login?embedded=true&returnPath=/collect"))
+        let expectedURL = unwrap(URL(string: "https://app.eurofurence.org/EF25/companion/#/login?embedded=true&returnPath=/collect&token=empty"))
 
         XCTAssertEqual(expectedURL, anonymousRequest.url)
     }
