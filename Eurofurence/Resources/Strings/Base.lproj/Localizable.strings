@@ -1,11 +1,3 @@
-/*
- Strings.strings
- Eurofurence
- 
- Created by Thomas Sherwood on 09/01/2018.
- Copyright © 2018 Eurofurence. All rights reserved.
- */
-
 "ok" = "OK";
 "cancel" = "Cancel";
 "tryAgain" = "Try Again";
@@ -35,6 +27,9 @@
 "downloadError" = "Download Error";
 "preloadFailureMessage" = "Failed to download data from server. Please try again.";
 
+"UpdateRequiredAlertTitle" = "Update Required";
+"UpdateRequiredAlertMessage" = "A newer version of the Eurofurence application is available. Open the App Store and update the app in order to continue.";
+
 "News" = "News";
 "YourEurofurence" = "Your Eurofurence";
 "Announcements" = "Announcements";
@@ -61,7 +56,6 @@
 
 "Dealers" = "Dealers";
 
-"ConventionInformation" = "Convention Information";
 "Information" = "Information";
 
 "AllAnnouncements" = "View all announcements";
@@ -112,3 +106,13 @@
 
 "ConfirmDiscardEventFeedbackTitle" = "Discard Feedback?";
 "Discard" = "Discard";
+
+"Services" = "Services";
+"AdditionalServices" = "Additional Services";
+
+"Share" = "Share";
+
+"DealerCategoriesInformationalFooter" = "Active categories are taken into account when performing a search in the master dealers list";
+
+"ViewEventFormatString" = "View event '%@'";
+"ViewDealerFormatString" = "View dealer '%@'";

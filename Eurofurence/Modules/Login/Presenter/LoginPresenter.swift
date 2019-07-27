@@ -128,6 +128,15 @@ class LoginPresenter: LoginSceneDelegate {
 
     func loginSceneDidUpdateRegistrationNumber(_ registrationNumberString: String) {
         validator.registrationNumber = registrationNumberString
+        
+        let allowedCharacters = CharacterSet(charactersIn: "0123456789")
+        let currentCharacters = CharacterSet(charactersIn: registrationNumberString)
+        
+        guard allowedCharacters.isSuperset(of: currentCharacters) == false else { return }
+        
+        let unacceptableCharacters = currentCharacters.subtracting(allowedCharacters)
+        let acceptableInput = registrationNumberString.trimmingCharacters(in: unacceptableCharacters)
+        scene.overrideRegistrationNumber(acceptableInput)
     }
 
     func loginSceneDidUpdateUsername(_ username: String) {

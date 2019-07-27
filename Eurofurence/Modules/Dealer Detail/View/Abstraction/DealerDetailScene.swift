@@ -10,6 +10,9 @@ protocol DealerDetailScene {
 protocol DealerDetailSceneDelegate {
 
     func dealerDetailSceneDidLoad()
+    func dealerDetailSceneDidAppear()
+    func dealerDetailSceneDidDisappear()
+    func dealerDetailSceneDidTapShareButton(_ sender: Any)
 
 }
 

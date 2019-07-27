@@ -3,6 +3,8 @@ protocol LoginScene: class {
     var delegate: LoginSceneDelegate? { get set }
 
     func setLoginTitle(_ title: String)
+    func overrideRegistrationNumber(_ registrationNumber: String)
+    
     func disableLoginButton()
     func enableLoginButton()
 

@@ -1,6 +1,0 @@
-framework module Pods_EurofurenceUITests {
-  umbrella header "Pods-EurofurenceUITests-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -61,6 +61,41 @@ class DealersPresenter: DealersSceneDelegate, DealersViewModelDelegate, DealersS
         }
 
     }
+    
+    private struct CategoriesBinder: DealerCategoriesBinder {
+        
+        var viewModel: DealerCategoriesViewModel
+        
+        func bindCategoryComponent(_ component: DealerCategoryComponentScene, at index: Int) {
+            let categoryViewModel = viewModel.categoryViewModel(at: index)
+            categoryViewModel.add(CategoryBinder(viewModel: categoryViewModel, component: component))
+        }
+        
+    }
+    
+    private struct CategoryBinder: DealerCategoryViewModelObserver {
+        
+        private let viewModel: DealerCategoryViewModel
+        private let component: DealerCategoryComponentScene
+        
+        init(viewModel: DealerCategoryViewModel, component: DealerCategoryComponentScene) {
+            self.viewModel = viewModel
+            self.component = component
+            
+            component.setCategoryTitle(viewModel.title)
+            component.setSelectionHandler(viewModel.toggleCategoryActiveState)
+            viewModel.add(self)
+        }
+        
+        func categoryDidEnterActiveState() {
+            component.showActiveCategoryIndicator()
+        }
+        
+        func categoryDidEnterInactiveState() {
+            component.hideActiveCategoryIndicator()
+        }
+        
+    }
 
     private let scene: DealersScene
     private let interactor: DealersInteractor
@@ -107,6 +142,12 @@ class DealersPresenter: DealersSceneDelegate, DealersViewModelDelegate, DealersS
 
     func dealersSceneDidPerformRefreshAction() {
         viewModel?.refresh()
+    }
+    
+    func dealersSceneDidRevealCategoryFiltersScene(_ filtersScene: DealerCategoriesFilterScene) {
+        interactor.makeDealerCategoriesViewModel { (viewModel) in
+            filtersScene.bind(viewModel.numberOfCategories, using: CategoriesBinder(viewModel: viewModel))
+        }
     }
 
     func dealersRefreshDidBegin() {

@@ -2,7 +2,66 @@
 import EurofurenceModel
 import UIKit.UIViewController
 
+class CapturingDealerCategoriesFilterScene: DealerCategoriesFilterScene {
+    
+    private var boundComponents = [CapturingDealerCategoryComponentScene]()
+    
+    func bind(_ numberOfCategories: Int, using binder: DealerCategoriesBinder) {
+        boundComponents = (0..<numberOfCategories).map({ (index) -> CapturingDealerCategoryComponentScene in
+            let component = CapturingDealerCategoryComponentScene()
+            binder.bindCategoryComponent(component, at: index)
+            
+            return component
+        })
+    }
+    
+    func boundFilterTitle(at index: Int) -> String? {
+        guard index <= boundComponents.count else { return nil }
+        return boundComponents[index].capturedTitle
+    }
+    
+    func visibilityForCategoryActiveIndicator(at index: Int) -> VisibilityState? {
+        guard index <= boundComponents.count else { return nil }
+        return boundComponents[index].activeIndicatorState
+    }
+    
+    func selectComponent(at index: Int) {
+        guard index <= boundComponents.count else { return }
+        boundComponents[index].simulateSelected()
+    }
+    
+}
+
+class CapturingDealerCategoryComponentScene: DealerCategoryComponentScene {
+    
+    private(set) var capturedTitle: String?
+    func setCategoryTitle(_ title: String) {
+        capturedTitle = title
+    }
+    
+    private(set) var activeIndicatorState: VisibilityState = .unset
+    func showActiveCategoryIndicator() {
+        activeIndicatorState = .visible
+    }
+    
+    func hideActiveCategoryIndicator() {
+        activeIndicatorState = .hidden
+    }
+    
+    private var selectionHandler: (() -> Void)?
+    func setSelectionHandler(_ handler: @escaping () -> Void) {
+        selectionHandler = handler
+    }
+    
+    func simulateSelected() {
+        selectionHandler?()
+    }
+    
+}
+
 class CapturingDealersScene: UIViewController, DealersScene {
+    
+    let filtersScene = CapturingDealerCategoriesFilterScene()
 
     private(set) var delegate: DealersSceneDelegate?
     func setDelegate(_ delegate: DealersSceneDelegate) {

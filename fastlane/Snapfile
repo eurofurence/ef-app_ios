@@ -1,18 +1,12 @@
 devices([
-   "iPhone 5s",
-   "iPhone 6",
-   "iPhone 6 Plus",
-   "iPhone X",
+   "iPhone 8 Plus",
    "iPhone XS Max",
    "iPad Pro (12.9-inch)",
-   "iPad Pro (9.7-inch)",
-   "iPad Pro (11-inch)",
    "iPad Pro (12.9-inch) (3rd generation)"
 ])
 
 languages([
-  "en-US",
-  "de-DE"
+  "en-US"
 ])
 
 workspace("Eurofurence.xcworkspace")

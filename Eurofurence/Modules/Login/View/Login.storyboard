@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -33,13 +33,14 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nickname" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HUP-nx-CWy">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nickname" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HUP-nx-CWy" customClass="MultiStepFormTextField" customModule="Eurofurence" customModuleProvider="target">
                                                     <rect key="frame" x="109" y="0.0" width="258" height="43.666666666666664"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES" textContentType="username"/>
                                                     <connections>
                                                         <action selector="usernameDidChange:" destination="P1u-PJ-I6i" eventType="editingChanged" id="akZ-RO-Jsr"/>
+                                                        <outlet property="nextField" destination="UqM-EL-ZS3" id="ioD-mV-Fvq"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -66,13 +67,14 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Registration No." textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UqM-EL-ZS3">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Registration No." textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UqM-EL-ZS3" customClass="MultiStepFormTextField" customModule="Eurofurence" customModuleProvider="target">
                                                     <rect key="frame" x="154.66666666666663" y="0.0" width="212.33333333333337" height="43.666666666666664"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next" enablesReturnKeyAutomatically="YES" textContentType="username"/>
                                                     <connections>
                                                         <action selector="registrationNumberDidChange:" destination="P1u-PJ-I6i" eventType="editingChanged" id="LhL-YF-iac"/>
+                                                        <outlet property="nextField" destination="LAL-gC-Mzh" id="9XS-wO-EuC"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -106,7 +108,7 @@
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" textContentType="password"/>
                                                     <connections>
                                                         <action selector="passwordDidChange:" destination="P1u-PJ-I6i" eventType="editingChanged" id="eyf-0j-pYX"/>
-                                                        <outlet property="delegate" destination="P1u-PJ-I6i" id="gAS-Xt-z2h"/>
+                                                        <action selector="passwordPrimaryActionTriggered:" destination="P1u-PJ-I6i" eventType="primaryActionTriggered" id="4mW-0e-t4F"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -154,7 +156,7 @@ If you do not have access to them, come to our registration desk or security off
                             </tableViewSection>
                         </sections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Title" id="dZI-xo-l39">
+                    <navigationItem key="navigationItem" title="Title" largeTitleDisplayMode="never" id="dZI-xo-l39">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="1CI-qH-Za0">
                             <connections>
                                 <action selector="cancelButtonTapped:" destination="P1u-PJ-I6i" id="Ymv-dX-Qgj"/>

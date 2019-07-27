@@ -11,10 +11,14 @@ class ApplicationPreloadInteractor: PreloadInteractor {
 
     func beginPreloading(delegate: PreloadInteractorDelegate) {
         let progress = refreshService.refreshLocalStore { (error) in
-            if error == nil {
-                delegate.preloadInteractorDidFinishPreloading()
+            if let error = error {
+                if error == .conventionIdentifierMismatch {
+                    delegate.preloadInteractorFailedToLoadDueToOldAppDetected()
+                } else {
+                    delegate.preloadInteractorDidFailToPreload()
+                }
             } else {
-                delegate.preloadInteractorDidFailToPreload()
+                delegate.preloadInteractorDidFinishPreloading()
             }
         }
 

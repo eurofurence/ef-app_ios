@@ -109,12 +109,21 @@ class StubEventFeedbackModuleProviding: EventFeedbackModuleProviding {
     
 }
 
+class StubAdditionalServicesModuleProviding: AdditionalServicesModuleProviding {
+    
+    let stubInterface = UIViewController()
+    func makeAdditionalServicesModule() -> UIViewController {
+        return stubInterface
+    }
+    
+}
+
 class ApplicationDirectorTestBuilder {
 
     struct Context {
 
         var director: ApplicationDirector
-        var moduleOrderingPolicy: FakeModuleOrderingPolicy
+        var moduleOrderingPolicy: ModuleOrderingPolicy
         var rootModule: StubRootModuleFactory
         var tutorialModule: StubTutorialModuleFactory
         var preloadModule: StubPreloadModuleFactory
@@ -137,13 +146,14 @@ class ApplicationDirectorTestBuilder {
         var announcementDetailModule: StubAnnouncementDetailModuleFactory
         var eventDetailModule: StubEventDetailModuleFactory
         var eventFeedbackModule: StubEventFeedbackModuleProviding
+        var additionalServicesModule: StubAdditionalServicesModuleProviding
         var linkRouter: StubContentLinksService
         var webModuleProviding: StubWebMobuleProviding
         var urlOpener: CapturingURLOpener
 
     }
 
-    private let moduleOrderingPolicy: FakeModuleOrderingPolicy
+    private var moduleOrderingPolicy: ModuleOrderingPolicy
     private let rootModule: StubRootModuleFactory
     private let tutorialModule: StubTutorialModuleFactory
     private let preloadModule: StubPreloadModuleFactory
@@ -166,12 +176,23 @@ class ApplicationDirectorTestBuilder {
     private let announcementDetailModule: StubAnnouncementDetailModuleFactory
     private let eventDetailModule: StubEventDetailModuleFactory
     private let eventFeedbackModule: StubEventFeedbackModuleProviding
+    private let additionalServicesModule: StubAdditionalServicesModuleProviding
     private let linkRouter: StubContentLinksService
     private let webModuleProviding: StubWebMobuleProviding
     private let urlOpener: CapturingURLOpener
+    
+    private struct DoNotChangeOrderPolicy: ModuleOrderingPolicy {
+        func order(modules: [UIViewController]) -> [UIViewController] {
+            return modules
+        }
+        
+        func saveOrder(_ modules: [UIViewController]) {
+            
+        }
+    }
 
     init() {
-        moduleOrderingPolicy = FakeModuleOrderingPolicy()
+        moduleOrderingPolicy = DoNotChangeOrderPolicy()
         rootModule = StubRootModuleFactory()
         tutorialModule = StubTutorialModuleFactory()
         preloadModule = StubPreloadModuleFactory()
@@ -194,9 +215,16 @@ class ApplicationDirectorTestBuilder {
         announcementDetailModule = StubAnnouncementDetailModuleFactory()
         eventDetailModule = StubEventDetailModuleFactory()
         eventFeedbackModule = StubEventFeedbackModuleProviding()
+        additionalServicesModule = StubAdditionalServicesModuleProviding()
         linkRouter = StubContentLinksService()
         webModuleProviding = StubWebMobuleProviding()
         urlOpener = CapturingURLOpener()
+    }
+    
+    @discardableResult
+    func with(_ orderingPolicy: ModuleOrderingPolicy) -> ApplicationDirectorTestBuilder {
+        self.moduleOrderingPolicy = orderingPolicy
+        return self
     }
 
     func build() -> Context {
@@ -226,6 +254,7 @@ class ApplicationDirectorTestBuilder {
                        announcementDetailModule: announcementDetailModule,
                        eventDetailModule: eventDetailModule,
                        eventFeedbackModule: eventFeedbackModule,
+                       additionalServicesModule: additionalServicesModule,
                        linkRouter: linkRouter,
                        webModuleProviding: webModuleProviding,
                        urlOpener: urlOpener)
@@ -252,7 +281,8 @@ class ApplicationDirectorTestBuilder {
                                                     announcementsModuleFactory: announcementsModule,
                                                     announcementDetailModuleProviding: announcementDetailModule,
                                                     eventDetailModuleProviding: eventDetailModule,
-                                                    eventFeedbackModuleProviding: eventFeedbackModule)
+                                                    eventFeedbackModuleProviding: eventFeedbackModule,
+                                                    additionalServicesModule: additionalServicesModule)
         
         let builder = DirectorBuilder(moduleRepository: moduleRepository, linkLookupService: linkRouter)
         builder.withAnimations(false)

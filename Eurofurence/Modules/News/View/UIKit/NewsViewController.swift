@@ -20,8 +20,13 @@ class NewsViewController: UIViewController, NewsScene {
         tableView.refreshControl = refreshControl
         tableView.register(AnnouncementTableViewCell.self)
         tableView.register(EventTableViewCell.self)
-        tableView.register(Header.self, forHeaderFooterViewReuseIdentifier: Header.identifier)
+        tableView.registerConventionBrandedHeader()
         delegate?.newsSceneDidLoad()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tableView?.adjustScrollIndicatorInsetsForSafeAreaCompensation()
     }
 
     // MARK: NewsScene
@@ -37,12 +42,13 @@ class NewsViewController: UIViewController, NewsScene {
     }
 
     func hideRefreshIndicator() {
-        refreshControl.perform(#selector(UIRefreshControl.endRefreshing), with: nil, afterDelay: 0.1)
+        refreshControl.endRefreshing()
     }
 
     func bind(numberOfItemsPerComponent: [Int], using binder: NewsComponentsBinder) {
         tableController = TableController(tableView: tableView, numberOfItemsPerComponent: numberOfItemsPerComponent, binder: binder)
         tableController?.onDidSelectRowAtIndexPath = tableViewDidSelectRow
+        tableController?.onDidEndDragging = scrollViewDidEndDragging
         tableView.dataSource = tableController
         tableView.delegate = tableController
         tableView.reloadData()
@@ -51,23 +57,23 @@ class NewsViewController: UIViewController, NewsScene {
     // MARK: Private
 
     @objc private func refreshControlDidChangeValue() {
+        if tableView.isDragging == false {        
+            notifyDidPerformRefreshAction()
+        }
+    }
+    
+    private func scrollViewDidEndDragging() {
+        if refreshControl.isRefreshing {
+            notifyDidPerformRefreshAction()
+        }
+    }
+    
+    private func notifyDidPerformRefreshAction() {
         delegate?.newsSceneDidPerformRefreshAction()
     }
 
-    func tableViewDidSelectRow(at indexPath: IndexPath) {
+    private func tableViewDidSelectRow(at indexPath: IndexPath) {
         delegate?.newsSceneDidSelectComponent(at: indexPath)
-    }
-
-    // MARK: Nested Types
-
-    private class Header: UITableViewHeaderFooterView, NewsComponentHeaderScene {
-
-        static let identifier = "Header"
-
-        func setComponentTitle(_ title: String?) {
-            textLabel?.text = title
-        }
-
     }
 
     private class TableController: NSObject, NewsComponentFactory, UITableViewDataSource, UITableViewDelegate {
@@ -76,6 +82,7 @@ class NewsViewController: UIViewController, NewsScene {
         private let numberOfItemsPerComponent: [Int]
         private let binder: NewsComponentsBinder
         var onDidSelectRowAtIndexPath: ((IndexPath) -> Void)?
+        var onDidEndDragging: (() -> Void)?
 
         init(tableView: UITableView, numberOfItemsPerComponent: [Int], binder: NewsComponentsBinder) {
             self.tableView = tableView
@@ -132,10 +139,13 @@ class NewsViewController: UIViewController, NewsScene {
         }
 
         func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-            guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: Header.identifier) as? Header else { fatalError() }
-            
+            let header = tableView.dequeueConventionBrandedHeader()
             binder.bindTitleForSection(at: section, scene: header)
             return header
+        }
+        
+        func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+            onDidEndDragging?()
         }
 
         // MARK: Functions
@@ -147,4 +157,12 @@ class NewsViewController: UIViewController, NewsScene {
 
     }
 
+}
+
+extension ConventionBrandedTableViewHeaderFooterView: NewsComponentHeaderScene {
+    
+    func setComponentTitle(_ title: String?) {
+        textLabel?.text = title
+    }
+    
 }

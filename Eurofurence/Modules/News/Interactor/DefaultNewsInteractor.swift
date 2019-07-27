@@ -22,7 +22,6 @@ class DefaultNewsInteractor: NewsInteractor,
     private var announcements = [Announcement]()
     private var readAnnouncements = [AnnouncementIdentifier]()
     private var currentUser: User?
-    private let dateDistanceCalculator: DateDistanceCalculator
     private let clock: Clock
     private let refreshService: RefreshService
     private let favouritesSchedule: EventsSchedule
@@ -40,14 +39,12 @@ class DefaultNewsInteractor: NewsInteractor,
          eventsService: EventsService,
          relativeTimeIntervalCountdownFormatter: RelativeTimeIntervalCountdownFormatter,
          hoursDateFormatter: HoursDateFormatter,
-         dateDistanceCalculator: DateDistanceCalculator,
          clock: Clock,
          refreshService: RefreshService,
          announcementsDateFormatter: AnnouncementDateFormatter,
          announcementsMarkdownRenderer: MarkdownRenderer) {
         self.relativeTimeIntervalCountdownFormatter = relativeTimeIntervalCountdownFormatter
         self.hoursDateFormatter = hoursDateFormatter
-        self.dateDistanceCalculator = dateDistanceCalculator
         self.clock = clock
         self.refreshService = refreshService
         self.announcementsDateFormatter = announcementsDateFormatter

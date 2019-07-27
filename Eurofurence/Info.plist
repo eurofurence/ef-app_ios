@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -15,9 +17,9 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>3.0.2</string>
+	<string>$(EF_APP_VERSION)</string>
 	<key>CFBundleVersion</key>
-	<string>24</string>
+	<string>DEV</string>
 	<key>FirebaseAppDelegateProxyEnabled</key>
 	<false/>
 	<key>LSApplicationQueriesSchemes</key>
@@ -34,6 +36,9 @@
 	<string>Eurofurence uses your calendar to add events and alerts</string>
 	<key>NSUserActivityTypes</key>
 	<array>
+		<string>org.eurofurence.activity.view-dealer</string>
+		<string>org.eurofurence.activity.view-event</string>
+		<string>ViewDealerIntent</string>
 		<string>ViewEventIntent</string>
 	</array>
 	<key>UIAppFonts</key>

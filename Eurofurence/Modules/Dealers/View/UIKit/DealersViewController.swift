@@ -5,6 +5,7 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
     // MARK: Properties
 
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var navigationBarExtension: NavigationBarViewExtensionContainer!
     private var tableController: TableController? {
         didSet {
             tableView.dataSource = tableController
@@ -21,6 +22,10 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
     @IBAction private func openSearch(_ sender: Any) {
         searchController?.isActive = true
     }
+    
+    @IBAction private func unwindToDealers(unwindSegue: UIStoryboardSegue) {
+        presentedViewController?.dismiss(animated: true)
+    }
 
     // MARK: Overrides
 
@@ -30,22 +35,67 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
         definesPresentationContext = true
         searchViewController = storyboard?.instantiate(DealersSearchTableViewController.self)
         searchViewController?.onDidSelectSearchResultAtIndexPath = didSelectSearchResult
-        searchController = UISearchController(searchResultsController: searchViewController)
-        searchController?.delegate = self
-        searchController?.searchResultsUpdater = self
 
-        tableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refreshControlValueDidChange), for: .valueChanged)
 
-        tableView.register(Header.self, forHeaderFooterViewReuseIdentifier: Header.identifier)
+        tableView.refreshControl = refreshControl
+        tableView.registerConventionBrandedHeader()
         tableView.register(DealerComponentTableViewCell.self)
+        
+        prepareSearchController()
+        
+        if #available(iOS 11.0, *) {
+            extendedLayoutIncludesOpaqueBars = true
+        } else {
+            extendedLayoutIncludesOpaqueBars = false
+        }
+        
         delegate?.dealersSceneDidLoad()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tableView?.adjustScrollIndicatorInsetsForSafeAreaCompensation()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "ShowCategories",
+              let navigationController = segue.destination as? UINavigationController,
+              let filtersScene = navigationController.topViewController as? DealerCategoriesFilterScene else { return }
+        
+        delegate?.dealersSceneDidRevealCategoryFiltersScene(filtersScene)
+        navigationController.popoverPresentationController?.backgroundColor = .pantone330U
+    }
+    
+    private func prepareSearchController() {
+        let searchController = UISearchController(searchResultsController: searchViewController)
+        searchController.delegate = self
+        searchController.searchResultsUpdater = self
+        
+        if #available(iOS 11.0, *) {
+            navigationItem.searchController = searchController
+            navigationItem.rightBarButtonItem = nil
+            Theme.performUnsafeSearchControllerStyling(searchController: searchController)
+        }
+        
+        self.searchController = searchController
     }
 
     // MARK: UISearchControllerDelegate
-
+    
     func presentSearchController(_ searchController: UISearchController) {
         present(searchController, animated: true)
+    }
+    
+    func willDismissSearchController(_ searchController: UISearchController) {
+        navigationBarExtension.isHidden = true
+        
+        if #available(iOS 11.0, *) { return }
+        adjustTableViewContentInsetsForiOS10LayoutProblems()
+    }
+    
+    func didDismissSearchController(_ searchController: UISearchController) {
+        navigationBarExtension.isHidden = false
     }
 
     // MARK: UISearchResultsUpdating
@@ -72,7 +122,7 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
     }
 
     func hideRefreshIndicator() {
-        refreshControl.perform(#selector(UIRefreshControl.endRefreshing), with: nil, afterDelay: 0.1)
+        refreshControl.endRefreshing()
     }
 
     func deselectDealer(at indexPath: IndexPath) {
@@ -83,7 +133,9 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
         tableController = TableController(numberOfDealersPerSection: numberOfDealersPerSection,
                                           sectionIndexTitles: sectionIndexTitles,
                                           binder: binder,
-                                          onDidSelectRowAtIndexPath: didSelectDealer)
+                                          onDidSelectRowAtIndexPath: didSelectDealer,
+                                          onDidEndDragging: scrollViewDidEndDragging)
+        tableView.reloadData()
     }
 
     func bindSearchResults(numberOfDealersPerSection: [Int], sectionIndexTitles: [String], using binder: DealersSearchResultsBinder) {
@@ -93,9 +145,21 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
     }
 
     // MARK: Private
+    
+    private func adjustTableViewContentInsetsForiOS10LayoutProblems() {
+        tableView.contentInset = .zero
+    }
 
     @objc private func refreshControlValueDidChange() {
-        delegate?.dealersSceneDidPerformRefreshAction()
+        if tableView.isDragging == false {        
+            delegate?.dealersSceneDidPerformRefreshAction()
+        }
+    }
+    
+    private func scrollViewDidEndDragging() {
+        if refreshControl.isRefreshing {
+            delegate?.dealersSceneDidPerformRefreshAction()
+        }
     }
 
     private func didSelectDealer(at indexPath: IndexPath) {
@@ -106,31 +170,24 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
         delegate?.dealersSceneDidSelectDealerSearchResult(at: indexPath)
     }
 
-    private class Header: UITableViewHeaderFooterView, DealerGroupHeader {
-
-        static let identifier = "Header"
-
-        func setDealersGroupTitle(_ title: String) {
-            textLabel?.text = title
-        }
-
-    }
-
     private class TableController: NSObject, UITableViewDataSource, UITableViewDelegate {
 
         private let numberOfDealersPerSection: [Int]
         private let sectionIndexTitles: [String]
         private let binder: DealersBinder
         private let onDidSelectRowAtIndexPath: (IndexPath) -> Void
+        private let onDidEndDragging: () -> Void
 
         init(numberOfDealersPerSection: [Int],
              sectionIndexTitles: [String],
              binder: DealersBinder,
-             onDidSelectRowAtIndexPath: @escaping (IndexPath) -> Void) {
+             onDidSelectRowAtIndexPath: @escaping (IndexPath) -> Void,
+             onDidEndDragging: @escaping () -> Void) {
             self.numberOfDealersPerSection = numberOfDealersPerSection
             self.sectionIndexTitles = sectionIndexTitles
             self.binder = binder
             self.onDidSelectRowAtIndexPath = onDidSelectRowAtIndexPath
+            self.onDidEndDragging = onDidEndDragging
         }
 
         func numberOfSections(in tableView: UITableView) -> Int {
@@ -148,7 +205,7 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
         }
 
         func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-            guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: Header.identifier) as? Header else { fatalError() }
+            let header = tableView.dequeueConventionBrandedHeader()
             
             binder.bind(header, toDealerGroupAt: section)
             return header
@@ -161,7 +218,19 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             onDidSelectRowAtIndexPath(indexPath)
         }
+        
+        func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+            onDidEndDragging()
+        }
 
     }
 
+}
+
+extension ConventionBrandedTableViewHeaderFooterView: DealerGroupHeader {
+    
+    func setDealersGroupTitle(_ title: String) {
+        textLabel?.text = title
+    }
+    
 }

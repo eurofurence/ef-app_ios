@@ -1,7 +1,7 @@
 import EurofurenceModel
 import Foundation
 
-struct DealerDetailPresenter: DealerDetailSceneDelegate {
+class DealerDetailPresenter: DealerDetailSceneDelegate {
 
     private struct Binder: DealerDetailSceneBinder {
 
@@ -125,20 +125,39 @@ struct DealerDetailPresenter: DealerDetailSceneDelegate {
     private let scene: DealerDetailScene
     private let interactor: DealerDetailInteractor
     private let dealer: DealerIdentifier
+    private let dealerInteractionRecorder: DealerInteractionRecorder
+    private var dealerInteraction: Interaction?
+    private var viewModel: DealerDetailViewModel?
 
-    init(scene: DealerDetailScene, interactor: DealerDetailInteractor, dealer: DealerIdentifier) {
+    init(scene: DealerDetailScene, interactor: DealerDetailInteractor, dealer: DealerIdentifier, dealerInteractionRecorder: DealerInteractionRecorder) {
         self.scene = scene
         self.interactor = interactor
         self.dealer = dealer
+        self.dealerInteractionRecorder = dealerInteractionRecorder
 
         scene.setDelegate(self)
     }
 
     func dealerDetailSceneDidLoad() {
+        dealerInteraction = dealerInteractionRecorder.makeInteraction(for: dealer)
+        
         interactor.makeDealerDetailViewModel(for: dealer) { (viewModel) in
+            self.viewModel = viewModel
             self.scene.bind(numberOfComponents: viewModel.numberOfComponents,
                             using: Binder(viewModel: viewModel))
         }
+    }
+    
+    func dealerDetailSceneDidAppear() {
+        dealerInteraction?.activate()
+    }
+    
+    func dealerDetailSceneDidDisappear() {
+        dealerInteraction?.deactivate()
+    }
+    
+    func dealerDetailSceneDidTapShareButton(_ sender: Any) {
+        viewModel?.shareDealer(sender)
     }
 
 }

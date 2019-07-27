@@ -19,5 +19,27 @@ protocol DealersSceneDelegate {
     func dealersSceneDidSelectDealer(at indexPath: IndexPath)
     func dealersSceneDidSelectDealerSearchResult(at indexPath: IndexPath)
     func dealersSceneDidPerformRefreshAction()
+    func dealersSceneDidRevealCategoryFiltersScene(_ filtersScene: DealerCategoriesFilterScene)
 
+}
+
+protocol DealerCategoriesFilterScene {
+    
+    func bind(_ numberOfCategories: Int, using binder: DealerCategoriesBinder)
+    
+}
+
+protocol DealerCategoriesBinder {
+    
+    func bindCategoryComponent(_ component: DealerCategoryComponentScene, at index: Int)
+    
+}
+
+protocol DealerCategoryComponentScene {
+    
+    func setCategoryTitle(_ title: String)
+    func setSelectionHandler(_ handler: @escaping () -> Void)
+    func showActiveCategoryIndicator()
+    func hideActiveCategoryIndicator()
+    
 }

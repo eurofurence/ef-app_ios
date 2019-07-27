@@ -3,6 +3,6 @@ import UIKit.UIViewController
 
 protocol MessageDetailModuleProviding {
 
-    func makeMessageDetailModule(message: Message) -> UIViewController
+    func makeMessageDetailModule(for message: MessageIdentifier) -> UIViewController
 
 }

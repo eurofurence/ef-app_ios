@@ -20,6 +20,11 @@ class CapturingLoginScene: UIViewController, LoginScene {
     func enableLoginButton() {
         loginButtonWasEnabled = true
     }
+    
+    private(set) var capturedOverriddenRegistrationNumber: String?
+    func overrideRegistrationNumber(_ registrationNumber: String) {
+        capturedOverriddenRegistrationNumber = registrationNumber
+    }
 
     func tapLoginButton() {
         delegate?.loginSceneDidTapLoginButton()

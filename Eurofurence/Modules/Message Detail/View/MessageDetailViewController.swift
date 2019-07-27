@@ -1,30 +1,17 @@
 import UIKit.UIViewController
 
-class MessageDetailViewController: UIViewController,
-                                   UICollectionViewDataSource,
-                                   MessageDetailScene {
+class MessageDetailViewController: UITableViewController, MessageDetailScene {
 
     // MARK: IBOutlets
 
-    @IBOutlet private weak var collectionView: UICollectionView!
-    private var messageCell: MessageBubbleCollectionViewCell?
-    private var binders = [CellBinder]()
+    @IBOutlet private weak var messageSubjectLabel: UILabel!
+    @IBOutlet private weak var messageContentsTextView: UITextView!
 
     // MARK: Overrides
 
     override func viewDidLoad() {
         super.viewDidLoad()
         delegate?.messageDetailSceneDidLoad()
-    }
-
-    // MARK: UICollectionViewDataSource
-
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return binders.count
-    }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return binders[indexPath.row].makeCell(from: collectionView, forItemAt: indexPath)
     }
 
     // MARK: MessageDetailScene
@@ -36,21 +23,40 @@ class MessageDetailViewController: UIViewController,
     }
 
     func addMessageComponent(with binder: MessageComponentBinder) {
-        binders.append(CellBinder(binder: binder))
-        collectionView.reloadData()
+        binder.bind(MessageBinder(subjectLabel: messageSubjectLabel, contentsTextView: messageContentsTextView))
+        tableView.beginUpdates()
+        tableView.endUpdates()
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 1
     }
 
     // MARK: Binding
 
-    private struct CellBinder {
+    private struct MessageBinder: MessageComponent {
 
-        var binder: MessageComponentBinder
+        var subjectLabel: UILabel
+        var contentsTextView: UITextView
 
-        func makeCell(from collectionView: UICollectionView, forItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            let cell = collectionView.dequeue(MessageBubbleCollectionViewCell.self, for: indexPath)
-            binder.bind(cell)
-
-            return cell
+        func setMessageSubject(_ subject: String) {
+            subjectLabel.text = subject
+        }
+        
+        func setMessageContents(_ contents: String) {
+            contentsTextView.text = contents
         }
 
     }

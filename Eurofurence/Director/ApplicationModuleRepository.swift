@@ -24,11 +24,14 @@ struct ApplicationModuleRepository: ModuleRepository {
     private let announcementDetailModuleProviding: AnnouncementDetailModuleProviding
     private let eventDetailModuleProviding: EventDetailModuleProviding
     private let eventFeedbackModuleProviding: EventFeedbackModuleProviding
+    private let additionalServicesModuleProviding: AdditionalServicesModuleProviding
     
     // swiftlint:disable function_body_length
-    init(services: Services) {
+    init(services: Services, repositories: Repositories) {
         let subtleMarkdownRenderer = SubtleDownMarkdownRenderer()
-        let defaultMarkdownRenderer = DefaultMarkdownRenderer()
+        let defaultMarkdownRenderer = DefaultDownMarkdownRenderer()
+        let shareService = ActivityShareService()
+        let activityFactory = PlatformActivityFactory()
         
         rootModuleProviding = RootModuleBuilder(sessionStateService: services.sessionState).build()
         tutorialModuleProviding = TutorialModuleBuilder().build()
@@ -43,7 +46,6 @@ struct ApplicationModuleRepository: ModuleRepository {
                                                    eventsService: services.events,
                                                    relativeTimeIntervalCountdownFormatter: FoundationRelativeTimeIntervalCountdownFormatter.shared,
                                                    hoursDateFormatter: FoundationHoursDateFormatter.shared,
-                                                   dateDistanceCalculator: FoundationDateDistanceCalculator(),
                                                    clock: SystemClock.shared,
                                                    refreshService: services.refresh,
                                                    announcementsDateFormatter: FoundationAnnouncementDateFormatter.shared,
@@ -62,8 +64,15 @@ struct ApplicationModuleRepository: ModuleRepository {
         let dealersInteractor = DefaultDealersInteractor(dealersService: services.dealers, defaultIconData: defaultDealerIconData, refreshService: services.refresh)
         dealersModuleProviding = DealersModuleBuilder(interactor: dealersInteractor).build()
         
-        let dealerDetailInteractor = DefaultDealerDetailInteractor(dealersService: services.dealers)
-        dealerDetailModuleProviding = DealerDetailModuleBuilder(dealerDetailInteractor: dealerDetailInteractor).build()
+        let dealerIntentDonor = ConcreteViewDealerIntentDonor()
+        let dealerInteractionRecorder = DonateIntentDealerInteractionRecorder(
+            viewDealerIntentDonor: dealerIntentDonor,
+            dealersService: services.dealers,
+            activityFactory: activityFactory
+        )
+        
+        let dealerDetailInteractor = DefaultDealerDetailInteractor(dealersService: services.dealers, shareService: shareService)
+        dealerDetailModuleProviding = DealerDetailModuleBuilder(dealerDetailInteractor: dealerDetailInteractor, dealerInteractionRecorder: dealerInteractionRecorder).build()
         
         collectThemAllModuleProviding = CollectThemAllModuleBuilder(service: services.collectThemAll).build()
         messagesModuleProviding = MessagesModuleBuilder(authenticationService: services.authentication, privateMessagesService: services.privateMessages).build()
@@ -95,10 +104,16 @@ struct ApplicationModuleRepository: ModuleRepository {
         announcementDetailModuleProviding = AnnouncementDetailModuleBuilder(announcementDetailInteractor: announcementDetailInteractor).build()
         
         let eventIntentDonor = ConcreteEventIntentDonor()
-        let eventInteractionRecorder = DonateIntentEventInteractionRecorder(eventsService: services.events, eventIntentDonor: eventIntentDonor)
+        let eventInteractionRecorder = SystemEventInteractionsRecorder(
+            eventsService: services.events,
+            eventIntentDonor: eventIntentDonor,
+            activityFactory: activityFactory
+        )
+        
         let eventDetailInteractor = DefaultEventDetailInteractor(dateRangeFormatter: FoundationDateRangeFormatter.shared,
                                                                  eventsService: services.events,
-                                                                 markdownRenderer: DefaultDownMarkdownRenderer())
+                                                                 markdownRenderer: DefaultDownMarkdownRenderer(),
+                                                                 shareService: shareService)
         eventDetailModuleProviding = EventDetailModuleBuilder(interactor: eventDetailInteractor, interactionRecorder: eventInteractionRecorder).build()
         
         let eventFeedbackPresenterFactory = EventFeedbackPresenterFactoryImpl(eventService: services.events,
@@ -112,6 +127,8 @@ struct ApplicationModuleRepository: ModuleRepository {
         eventFeedbackModuleProviding = EventFeedbackModuleProvidingImpl(presenterFactory: eventFeedbackPresenterFactory, sceneFactory: eventFeedbackSceneFactory)
         
         webModuleProviding = SafariWebModuleProviding()
+        
+        additionalServicesModuleProviding = AdditionalServicesModuleBuilder(repository: repositories.additionalServices).build()
     }
     
     func makeRootModule(_ delegate: RootModuleDelegate) {
@@ -158,8 +175,8 @@ struct ApplicationModuleRepository: ModuleRepository {
         return messagesModuleProviding.makeMessagesModule(delegate)
     }
     
-    func makeMessageDetailModule(message: Message) -> UIViewController {
-        return messageDetailModuleProviding.makeMessageDetailModule(message: message)
+    func makeMessageDetailModule(message: MessageIdentifier) -> UIViewController {
+        return messageDetailModuleProviding.makeMessageDetailModule(for: message)
     }
     
     func makeScheduleModule(_ delegate: ScheduleModuleDelegate) -> UIViewController {
@@ -196,6 +213,10 @@ struct ApplicationModuleRepository: ModuleRepository {
     
     func makeCollectThemAllModule() -> UIViewController {
         return collectThemAllModuleProviding.makeCollectThemAllModule()
+    }
+    
+    func makeAdditionalServicesModule() -> UIViewController {
+        return additionalServicesModuleProviding.makeAdditionalServicesModule()
     }
     
 }

@@ -6,10 +6,12 @@ struct FakeDealersInteractor: DealersInteractor {
 
     var viewModel: DealersViewModel
     var searchViewModel: DealersSearchViewModel
+    var categoriesViewModel: DealerCategoriesViewModel
 
     init(searchViewModel: DealersSearchViewModel) {
         self.searchViewModel = searchViewModel
         self.viewModel = CapturingDealersViewModel()
+        self.categoriesViewModel = FakeDealerCategoriesViewModel()
     }
 
     init(dealerViewModel: DealerViewModel) {
@@ -22,9 +24,12 @@ struct FakeDealersInteractor: DealersInteractor {
         self.init(viewModel: viewModel)
     }
 
-    init(viewModel: DealersViewModel) {
+    init(viewModel: DealersViewModel,
+         searchViewModel: DealersSearchViewModel = CapturingDealersSearchViewModel(),
+         categoriesViewModel: DealerCategoriesViewModel = FakeDealerCategoriesViewModel()) {
         self.viewModel = viewModel
-        self.searchViewModel = CapturingDealersSearchViewModel()
+        self.searchViewModel = searchViewModel
+        self.categoriesViewModel = categoriesViewModel
     }
 
     func makeDealersViewModel(completionHandler: @escaping (DealersViewModel) -> Void) {
@@ -33,6 +38,10 @@ struct FakeDealersInteractor: DealersInteractor {
 
     func makeDealersSearchViewModel(completionHandler: @escaping (DealersSearchViewModel) -> Void) {
         completionHandler(searchViewModel)
+    }
+    
+    func makeDealerCategoriesViewModel(completionHandler: @escaping (DealerCategoriesViewModel) -> Void) {
+        completionHandler(categoriesViewModel)
     }
 
 }

@@ -4,12 +4,19 @@ class ScheduleViewController: UIViewController,
                               UISearchControllerDelegate,
                               UISearchResultsUpdating,
                               UISearchBarDelegate,
+                              DaysHorizontalPickerViewDelegate,
                               ScheduleScene {
 
     // MARK: Properties
 
+    @IBOutlet private weak var daysPickerTopConstraint: NSLayoutConstraint!
     @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet private weak var daysCollectionView: UICollectionView!
+    @IBOutlet private weak var daysHorizontalPickerView: DaysHorizontalPickerView! {
+        didSet {
+            daysHorizontalPickerView.delegate = self
+        }
+    }
+    
     private let refreshControl = UIRefreshControl(frame: .zero)
     private lazy var navigationBarShadowDelegate = HideNavigationBarShadowForSpecificViewControllerDelegate(viewControllerToHideNavigationBarShadow: self)
 
@@ -18,13 +25,6 @@ class ScheduleViewController: UIViewController,
             tableView.dataSource = tableController
             tableView.delegate = tableController
             tableView.reloadData()
-        }
-    }
-
-    private var daysController: DaysController? {
-        didSet {
-            daysCollectionView.dataSource = daysController
-            daysCollectionView.delegate = daysController
         }
     }
 
@@ -43,18 +43,26 @@ class ScheduleViewController: UIViewController,
         definesPresentationContext = true
         searchViewController = storyboard?.instantiate(ScheduleSearchTableViewController.self)
         searchViewController?.onDidSelectSearchResultAtIndexPath = didSelectSearchResult
-        searchController = UISearchController(searchResultsController: searchViewController)
-        searchController?.delegate = self
-        searchController?.searchBar.delegate = self
-        searchController?.searchBar.scopeButtonTitles = [.allEvents, .favourites]
-        searchController?.searchResultsUpdater = self
-
+        
+        var insets = tableView.contentInset
+        insets.top = daysHorizontalPickerView.bounds.height
+        tableView.contentInset = insets
+        tableView.scrollIndicatorInsets = insets
+        
+        if #available(iOS 11.0, *) {
+            extendedLayoutIncludesOpaqueBars = true
+        } else {
+            extendedLayoutIncludesOpaqueBars = false
+        }
+        
         tableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refreshControlDidChangeValue), for: .valueChanged)
+        
+        prepareSearchController()
 
         navigationController?.delegate = navigationBarShadowDelegate
         tableView.register(EventTableViewCell.self)
-        tableView.register(Header.self, forHeaderFooterViewReuseIdentifier: Header.identifier)
+        tableView.registerConventionBrandedHeader()
         delegate?.scheduleSceneDidLoad()
     }
 
@@ -63,10 +71,31 @@ class ScheduleViewController: UIViewController,
         layoutDaysCollectionView()
         tableView?.setEditing(false, animated: false)
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tableView?.adjustScrollIndicatorInsetsForSafeAreaCompensation()
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         layoutDaysCollectionView()
+    }
+    
+    private func prepareSearchController() {
+        let searchController = UISearchController(searchResultsController: searchViewController)
+        searchController.delegate = self
+        searchController.searchBar.delegate = self
+        searchController.searchBar.scopeButtonTitles = [.allEvents, .favourites]
+        searchController.searchResultsUpdater = self
+        
+        if #available(iOS 11.0, *) {
+            navigationItem.searchController = searchController
+            navigationItem.rightBarButtonItem = nil
+            Theme.performUnsafeSearchControllerStyling(searchController: searchController)
+        }
+        
+        self.searchController = searchController
     }
 
     // MARK: UISearchBarDelegate
@@ -86,6 +115,11 @@ class ScheduleViewController: UIViewController,
     func presentSearchController(_ searchController: UISearchController) {
         resetSearchSceneForSearchingAllEvents()
         present(searchController, animated: true)
+    }
+    
+    func willDismissSearchController(_ searchController: UISearchController) {
+        if #available(iOS 11.0, *) { return }
+        adjustTableViewContentInsetsForiOS10LayoutProblems()
     }
 
     // MARK: UISearchResultsUpdating
@@ -112,17 +146,19 @@ class ScheduleViewController: UIViewController,
     }
 
     func hideRefreshIndicator() {
-        refreshControl.perform(#selector(UIRefreshControl.endRefreshing), with: nil, afterDelay: 0.1)
+        refreshControl.endRefreshing()
     }
 
     func bind(numberOfDays: Int, using binder: ScheduleDaysBinder) {
-        daysController = DaysController(numberOfDays: numberOfDays, binder: binder, onDaySelected: dayPickerDidSelectDay)
+        daysHorizontalPickerView.bind(numberOfDays: numberOfDays, using: binder)
     }
 
     func bind(numberOfItemsPerSection: [Int], using binder: ScheduleSceneBinder) {
         tableController = TableController(numberOfItemsPerSection: numberOfItemsPerSection,
                                           binder: binder,
-                                          onDidSelectRow: scheduleTableViewDidSelectRow)
+                                          onDidSelectRow: scheduleTableViewDidSelectRow,
+                                          onTableViewDidScroll: tableViewDidScroll,
+                                          onDidEndDragging: scrollViewDidEndDragging)
     }
 
     func bindSearchResults(numberOfItemsPerSection: [Int], using binder: ScheduleSceneBinder) {
@@ -138,9 +174,7 @@ class ScheduleViewController: UIViewController,
     }
 
     func selectDay(at index: Int) {
-        daysCollectionView.selectItem(at: IndexPath(item: index, section: 0),
-                                      animated: true,
-                                      scrollPosition: .centeredHorizontally)
+        daysHorizontalPickerView.selectDay(at: index)
     }
 
     func deselectEvent(at indexPath: IndexPath) {
@@ -150,10 +184,39 @@ class ScheduleViewController: UIViewController,
     func deselectSearchResult(at indexPath: IndexPath) {
         searchViewController?.deselectSearchResult(at: indexPath)
     }
+    
+    // MARK: DaysHorizontalPickerViewDelegate
+    
+    func daysHorizontalPickerView(_ pickerView: DaysHorizontalPickerView, didSelectDayAt index: Int) {
+        delegate?.scheduleSceneDidSelectDay(at: index)
+    }
 
     // MARK: Private
+    
+    private func adjustTableViewContentInsetsForiOS10LayoutProblems() {
+        var insets = tableView.contentInset
+        var topInsets = daysHorizontalPickerView.bounds.height
+        if let navigationBar = navigationController?.navigationBar {
+            topInsets += navigationBar.bounds.height
+        }
+        
+        insets.top = topInsets
+        tableView.contentInset = insets
+    }
 
     @objc private func refreshControlDidChangeValue() {
+        if tableView.isDragging == false {
+            notifyDidPerformRefreshAction()
+        }
+    }
+    
+    private func scrollViewDidEndDragging() {
+        if refreshControl.isRefreshing {
+            notifyDidPerformRefreshAction()
+        }
+    }
+    
+    private func notifyDidPerformRefreshAction() {
         delegate?.scheduleSceneDidPerformRefreshAction()
     }
 
@@ -169,27 +232,23 @@ class ScheduleViewController: UIViewController,
         delegate?.scheduleSceneDidSelectEvent(at: indexPath)
     }
 
-    private func dayPickerDidSelectDay(_ index: Int) {
-        delegate?.scheduleSceneDidSelectDay(at: index)
-    }
-
     private func layoutDaysCollectionView() {
-        daysCollectionView?.collectionViewLayout.invalidateLayout()
+        daysHorizontalPickerView?.forceLayout()
     }
 
     private func resetSearchSceneForSearchingAllEvents() {
         searchController?.searchBar.selectedScopeButtonIndex = 0
         delegate?.scheduleSceneDidChangeSearchScopeToAllEvents()
     }
-
-    private class Header: UITableViewHeaderFooterView, ScheduleEventGroupHeader {
-
-        static let identifier = "Header"
-
-        func setEventGroupTitle(_ title: String) {
-            textLabel?.text = title
+    
+    private func tableViewDidScroll(to offset: CGPoint) {
+        if #available(iOS 11.0, *) {
+            guard offset.y < 0 else { return }
+            
+            let safeAreaApplyingScrollViewContentInsets = view.safeAreaLayoutGuide.layoutFrame.origin.y + tableView.contentInset.top
+            let distance = max(0, abs(offset.y) - safeAreaApplyingScrollViewContentInsets)
+            daysPickerTopConstraint.constant = distance
         }
-
     }
 
     private class TableController: NSObject, UITableViewDataSource, UITableViewDelegate {
@@ -197,11 +256,19 @@ class ScheduleViewController: UIViewController,
         private let numberOfItemsPerSection: [Int]
         private let binder: ScheduleSceneBinder
         private let onDidSelectRow: (IndexPath) -> Void
+        private let onTableViewDidScroll: (CGPoint) -> Void
+        private let onDidEndDragging: () -> Void
 
-        init(numberOfItemsPerSection: [Int], binder: ScheduleSceneBinder, onDidSelectRow: @escaping (IndexPath) -> Void) {
+        init(numberOfItemsPerSection: [Int],
+             binder: ScheduleSceneBinder,
+             onDidSelectRow: @escaping (IndexPath) -> Void,
+             onTableViewDidScroll: @escaping (CGPoint) -> Void,
+             onDidEndDragging: @escaping () -> Void) {
             self.numberOfItemsPerSection = numberOfItemsPerSection
             self.binder = binder
             self.onDidSelectRow = onDidSelectRow
+            self.onTableViewDidScroll = onTableViewDidScroll
+            self.onDidEndDragging = onDidEndDragging
         }
 
         func numberOfSections(in tableView: UITableView) -> Int {
@@ -213,8 +280,7 @@ class ScheduleViewController: UIViewController,
         }
 
         func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-            guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: Header.identifier) as? Header else { fatalError() }
-            
+            let header = tableView.dequeueConventionBrandedHeader()
             binder.bind(header, forGroupAt: section)
             return header
         }
@@ -223,14 +289,6 @@ class ScheduleViewController: UIViewController,
             let cell = tableView.dequeue(EventTableViewCell.self)
             binder.bind(cell, forEventAt: indexPath)
             return cell
-        }
-        
-        func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-            return UIView()
-        }
-        
-        func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-            return 1
         }
 
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -247,50 +305,23 @@ class ScheduleViewController: UIViewController,
 
             return [rowAction]
         }
-
-    }
-
-    private class DaysController: NSObject, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-
-        private let numberOfDays: Int
-        private let binder: ScheduleDaysBinder
-        private let onDaySelected: (Int) -> Void
-
-        init(numberOfDays: Int, binder: ScheduleDaysBinder, onDaySelected: @escaping (Int) -> Void) {
-            self.numberOfDays = numberOfDays
-            self.binder = binder
-            self.onDaySelected = onDaySelected
+        
+        func scrollViewDidScroll(_ scrollView: UIScrollView) {
+            onTableViewDidScroll(scrollView.contentOffset)
         }
-
-        func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return numberOfDays
-        }
-
-        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            let cell = collectionView.dequeue(ScheduleDayCollectionViewCell.self, for: indexPath)
-            binder.bind(cell, forDayAt: indexPath.item)
-            return cell
-        }
-
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            let availableWidth: CGFloat
-            if #available(iOS 11.0, *) {
-                availableWidth = collectionView.safeAreaLayoutGuide.layoutFrame.width
-            } else {
-                availableWidth = collectionView.bounds.width
-            }
-
-            let sensibleMinimumWidth: CGFloat = 64
-            let numberOfItems = collectionView.numberOfItems(inSection: indexPath.section)
-            let itemWidth = max(sensibleMinimumWidth, availableWidth / CGFloat(numberOfItems))
-
-            return CGSize(width: itemWidth, height: collectionView.bounds.height)
-        }
-
-        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            onDaySelected(indexPath.item)
+        
+        func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+            onDidEndDragging()
         }
 
     }
 
+}
+
+extension ConventionBrandedTableViewHeaderFooterView: ScheduleEventGroupHeader {
+    
+    func setEventGroupTitle(_ title: String) {
+        textLabel?.text = title
+    }
+    
 }

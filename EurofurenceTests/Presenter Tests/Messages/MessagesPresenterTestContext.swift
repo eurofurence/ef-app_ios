@@ -11,8 +11,8 @@ class CapturingMessagesModuleDelegate: MessagesModuleDelegate {
         userResolutionCompletionHandler = completionHandler
     }
 
-    private(set) var messageToShow: Message?
-    func messagesModuleDidRequestPresentation(for message: Message) {
+    private(set) var messageToShow: MessageIdentifier?
+    func messagesModuleDidRequestPresentation(for message: MessageIdentifier) {
         messageToShow = message
     }
 

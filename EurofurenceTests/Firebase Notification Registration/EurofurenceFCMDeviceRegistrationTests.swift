@@ -25,7 +25,7 @@ class EurofurenceFCMDeviceRegistrationTests: XCTestCase {
 
     func testRegisteringTheFCMTokenSubmitsRequestToFCMRegistrationURL() {
         performRegistration()
-        let expectedURL = urlProviding.url + "PushNotifications/FcmDeviceRegistration"
+        let expectedURL = urlProviding.url + "/PushNotifications/FcmDeviceRegistration"
 
         XCTAssertEqual(expectedURL, capturingJSONSession.postedURL)
     }
@@ -41,24 +41,8 @@ class EurofurenceFCMDeviceRegistrationTests: XCTestCase {
         XCTAssertEqual(fcm, capturingJSONSession.postedJSONValue(forKey: "DeviceId"))
     }
 
-    func testRegisteringTheFCMTokenShouldSupplyTheLiveTopicWithinAnArrayUnderTheTopicsKey() {
-        let topic = FirebaseTopic.live
-        performRegistration(topics: [topic])
-        let expected: [String] = [topic.description]
-
-        XCTAssertEqual(expected, capturingJSONSession.postedJSONValue(forKey: "Topics") ?? [])
-    }
-
-    func testRegisteringTheFCMTokenShouldSupplyTheTestTopicWithinAnArrayUnderTheTopicsKey() {
-        let topic = FirebaseTopic.test
-        performRegistration(topics: [topic])
-        let expected: [String] = [topic.description]
-
-        XCTAssertEqual(expected, capturingJSONSession.postedJSONValue(forKey: "Topics") ?? [])
-    }
-
     func testRegisteringTheFCMTokenShouldSupplyAllTopicsWithinAnArrayUnderTheTopicsKey() {
-        let topics: [FirebaseTopic] = [.test, .live]
+        let topics: [FirebaseTopic] = [.debug, .ios]
         performRegistration(topics: topics)
         let expected: [String] = topics.map({ $0.description })
 

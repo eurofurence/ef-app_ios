@@ -185,7 +185,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JkE-QD-gKF"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Submit Feedback" id="411-YK-fMM">
+                    <navigationItem key="navigationItem" title="Submit Feedback" largeTitleDisplayMode="never" id="411-YK-fMM">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Mt0-1l-i5d">
                             <connections>
                                 <action selector="cancelFeedback:" destination="lSU-qy-7mX" id="PUP-AK-0fw"/>

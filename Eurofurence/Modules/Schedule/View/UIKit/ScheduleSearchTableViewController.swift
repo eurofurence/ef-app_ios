@@ -23,7 +23,7 @@ class ScheduleSearchTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.register(Header.self, forHeaderFooterViewReuseIdentifier: Header.identifier)
+        tableView.registerConventionBrandedHeader()
         tableView.register(EventTableViewCell.self)
     }
 
@@ -47,8 +47,7 @@ class ScheduleSearchTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: Header.identifier) as? Header else { fatalError() }
-        
+        let header = tableView.dequeueConventionBrandedHeader()
         binder?.bind(header, forGroupAt: section)
         return header
     }
@@ -66,18 +65,6 @@ class ScheduleSearchTableViewController: UITableViewController {
         rowAction.backgroundColor = .pantone330U
 
         return [rowAction]
-    }
-
-    // MARK: Private
-
-    private class Header: UITableViewHeaderFooterView, ScheduleEventGroupHeader {
-
-        static let identifier = "Header"
-
-        func setEventGroupTitle(_ title: String) {
-            textLabel?.text = title
-        }
-
     }
 
 }

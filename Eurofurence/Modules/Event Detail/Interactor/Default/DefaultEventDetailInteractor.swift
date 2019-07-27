@@ -6,17 +6,27 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
     private let dateRangeFormatter: DateRangeFormatter
     private let eventsService: EventsService
 	private let markdownRenderer: MarkdownRenderer
+    private let shareService: ShareService
 
-	init(dateRangeFormatter: DateRangeFormatter, eventsService: EventsService, markdownRenderer: MarkdownRenderer) {
+    init(dateRangeFormatter: DateRangeFormatter,
+         eventsService: EventsService,
+         markdownRenderer: MarkdownRenderer,
+         shareService: ShareService) {
         self.dateRangeFormatter = dateRangeFormatter
         self.eventsService = eventsService
 		self.markdownRenderer = markdownRenderer
+        self.shareService = shareService
     }
 
     func makeViewModel(for identifier: EventIdentifier, completionHandler: @escaping (EventDetailViewModel) -> Void) {
         guard let event = eventsService.fetchEvent(identifier: identifier) else { return }
 
-        let viewModel = ViewModelBuilder(dateRangeFormatter: dateRangeFormatter, event: event, markdownRenderer: markdownRenderer).build()
+        let viewModel = ViewModelBuilder(
+            dateRangeFormatter: dateRangeFormatter,
+            event: event,
+            markdownRenderer: markdownRenderer,
+            shareService: shareService
+        ).build()
         completionHandler(viewModel)
     }
     
@@ -25,19 +35,25 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
         private let dateRangeFormatter: DateRangeFormatter
         private let event: Event
         private let markdownRenderer: MarkdownRenderer
+        private let shareService: ShareService
         private var components = [EventDetailViewModelComponent]()
         private let actionBus = DefaultEventDetailViewModel.ActionBus()
 
-        init(dateRangeFormatter: DateRangeFormatter, event: Event, markdownRenderer: MarkdownRenderer) {
+        init(dateRangeFormatter: DateRangeFormatter,
+             event: Event,
+             markdownRenderer: MarkdownRenderer,
+             shareService: ShareService) {
             self.dateRangeFormatter = dateRangeFormatter
             self.event = event
             self.markdownRenderer = markdownRenderer
+            self.shareService = shareService
         }
         
         func build() -> DefaultEventDetailViewModel {
             buildGraphicComponent()
             buildSummaryComponent()
             buildToggleFavouriteStateCommandComponent()
+            buildShareComponent()
             buildLeaveFeedbackComponent()
             buildSupplementaryInformationBannerComponents()
             buildEventDescriptionComponent()
@@ -69,6 +85,12 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
             let toggleFavouriteStateCommand = ToggleEventFavouriteStateViewModel(event: event)
             let toggleFavouriteStateBanner = DefaultEventDetailViewModel.ActionComponent(actionViewModel: toggleFavouriteStateCommand)
             components.append(toggleFavouriteStateBanner)
+        }
+        
+        private func buildShareComponent() {
+            let command = ShareEventActionViewModel(event: event, shareService: shareService)
+            let banner = DefaultEventDetailViewModel.ActionComponent(actionViewModel: command)
+            components.append(banner)
         }
         
         private func buildLeaveFeedbackComponent() {

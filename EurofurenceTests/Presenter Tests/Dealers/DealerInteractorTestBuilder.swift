@@ -55,5 +55,12 @@ extension DealerInteractorTestBuilder.Context {
 
         return viewModel
     }
+    
+    func prepareCategoriesViewModel() -> DealerCategoriesViewModel? {
+        var viewModel: DealerCategoriesViewModel?
+        interactor.makeDealerCategoriesViewModel { viewModel = $0 }
+        
+        return viewModel
+    }
 
 }

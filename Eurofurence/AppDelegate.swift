@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         prepareNotificationDelegate()
         installDebugModule()
         showApplicationWindow()
+        requestRemoteNotificationsDeviceToken()
 
 		return true
 	}
@@ -31,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	}
     
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
-        return ApplicationStack.resumeInteraction(userActivity.interaction?.intent)
+        return ApplicationStack.resume(activity: userActivity)
     }
     
     // MARK: Private
@@ -45,6 +46,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ApplicationStack.assemble()
         Theme.apply()
         ReviewPromptController.initialize()
+    }
+    
+    private func requestRemoteNotificationsDeviceToken() {
+        UIApplication.shared.registerForRemoteNotifications()
     }
     
     private func prepareNotificationDelegate() {

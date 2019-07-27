@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -345,7 +343,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="168"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="13n-2n-1Zu">
-                                                            <rect key="frame" x="19.666666666666657" y="20" width="335" height="128"/>
+                                                            <rect key="frame" x="20" y="20" width="335" height="128"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ay6-6M-w8b">
                                                                     <rect key="frame" x="0.0" y="0.0" width="335" height="13.333333333333334"/>
@@ -402,14 +400,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="ilg-bP-0CX" firstAttribute="trailing" secondItem="TDA-6E-w2l" secondAttribute="trailing" id="4uv-6m-nrP"/>
+                            <constraint firstItem="TDA-6E-w2l" firstAttribute="trailing" secondItem="Vmb-tq-NAL" secondAttribute="trailing" id="4uv-6m-nrP"/>
                             <constraint firstAttribute="bottom" secondItem="TDA-6E-w2l" secondAttribute="bottom" id="HNG-6p-me4"/>
                             <constraint firstItem="TDA-6E-w2l" firstAttribute="top" secondItem="Vmb-tq-NAL" secondAttribute="top" id="uwg-wH-ELt"/>
-                            <constraint firstItem="TDA-6E-w2l" firstAttribute="leading" secondItem="ilg-bP-0CX" secondAttribute="leading" id="zHL-52-IZL"/>
+                            <constraint firstItem="TDA-6E-w2l" firstAttribute="leading" secondItem="Vmb-tq-NAL" secondAttribute="leading" id="zHL-52-IZL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ilg-bP-0CX"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Mv7-zR-ib7"/>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="Mv7-zR-ib7">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="GBe-PN-Gh6">
+                            <connections>
+                                <action selector="shareButtonTapped:" destination="iVZ-SE-SGE" id="3Yy-gz-gw2"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>

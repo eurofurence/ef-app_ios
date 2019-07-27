@@ -30,6 +30,9 @@ class NotificationResponseProcessor {
         case .invalidatedAnnouncement:
             contentRecipient.handleInvalidatedAnnouncement()
             
+        case .message(let message):
+            contentRecipient.handleMessage(message)
+            
         default:
             break
         }

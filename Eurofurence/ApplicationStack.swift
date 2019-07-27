@@ -13,7 +13,7 @@ class ApplicationStack {
     private let notificationFetchResultAdapter: NotificationServiceFetchResultAdapter
     let notificationScheduleController: NotificationScheduleController
     private let notificationResponseProcessor: NotificationResponseProcessor
-    private let interactionResumer: InteractionResumer
+    private let activityResumer: ActivityResumer
     
     static func assemble() {
         _ = instance
@@ -24,7 +24,7 @@ class ApplicationStack {
     }
     
     static func handleRemoteNotification(_ payload: [AnyHashable: Any],
-                                         completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+                                         completionHandler: @escaping (UIBackgroundFetchResult) -> Void = { (_) in }) {
         instance.notificationFetchResultAdapter.handleRemoteNotification(payload, completionHandler: completionHandler)
     }
     
@@ -32,9 +32,9 @@ class ApplicationStack {
         instance.notificationResponseProcessor.openNotification(userInfo, completionHandler: completionHandler)
     }
     
-    static func resumeInteraction(_ intent: Any?) -> Bool {
-//        let intentWrapperThanksToSwiftCastingIssues = IntentDefinitionProvidingFactory.intentDefinitionProvider(from: intent)
-        return instance.interactionResumer.resume(intent: intent)
+    static func resume(activity: NSUserActivity) -> Bool {
+        let activityDescription = SystemActivityDescription(userActivity: activity)
+        return instance.activityResumer.resume(activity: activityDescription)
     }
 
     private init() {
@@ -45,23 +45,26 @@ class ApplicationStack {
         let fcmRegistration = EurofurenceFCMDeviceRegistration(JSONSession: jsonSession, urlProviding: apiUrl)
         let remoteNotificationsTokenRegistration = FirebaseRemoteNotificationsTokenRegistration(buildConfiguration: buildConfiguration,
                                                                                                 appVersion: BundleAppVersionProviding.shared,
+                                                                                                conventionIdentifier: ApplicationStack.CID,
                                                                                                 firebaseAdapter: FirebaseMessagingAdapter(),
                                                                                                 fcmRegistration: fcmRegistration)
-
-        let significantTimeChangeAdapter = ApplicationSignificantTimeChangeAdapter()
-
-        let urlOpener = AppURLOpener()
-
-        let longRunningTaskManager = ApplicationLongRunningTaskManager()
-
-        let mapCoordinateRender = UIKitMapCoordinateRender()
         
-        session = EurofurenceSessionBuilder(conventionIdentifier: ApplicationStack.CID)
+        let remoteConfigurationLoader = FirebaseRemoteConfigurationLoader()
+        let conventionStartDateRepository = RemotelyConfiguredConventionStartDateRepository(remoteConfigurationLoader: remoteConfigurationLoader)
+        
+        let mandatory = EurofurenceSessionBuilder.Mandatory(
+            conventionIdentifier: ApplicationStack.CID,
+            conventionStartDateRepository: conventionStartDateRepository,
+            shareableURLFactory: CIDBasedShareableURLFactory(conventionIdentifier: ApplicationStack.CID)
+        )
+        
+        session = EurofurenceSessionBuilder(mandatory: mandatory)
             .with(remoteNotificationsTokenRegistration)
-            .with(significantTimeChangeAdapter)
-            .with(urlOpener)
-            .with(longRunningTaskManager)
-            .with(mapCoordinateRender)
+            .with(ApplicationSignificantTimeChangeAdapter())
+            .with(AppURLOpener())
+            .with(ApplicationLongRunningTaskManager())
+            .with(UIKitMapCoordinateRender())
+            .with(UpdateRemoteConfigRefreshCollaboration(remoteConfigurationLoader: remoteConfigurationLoader))
             .build()
 
         services = session.services
@@ -75,16 +78,16 @@ class ApplicationStack {
                                                                         hoursDateFormatter: FoundationHoursDateFormatter.shared,
                                                                         upcomingEventReminderInterval: upcomingEventReminderInterval)
         
-        director = DirectorBuilder(moduleRepository: ApplicationModuleRepository(services: services),
+        let moduleRepository = ApplicationModuleRepository(services: services, repositories: session.repositories)
+        director = DirectorBuilder(moduleRepository: moduleRepository,
                                    linkLookupService: services.contentLinks).build()
-        services.contentLinks.setExternalContentHandler(director)
         
         let notificationHandler = NavigateToContentNotificationResponseHandler(director: director)
         notificationResponseProcessor = NotificationResponseProcessor(notificationHandling: services.notifications,
                                                                       contentRecipient: notificationHandler)
         
-        let resumeInteractionResponseHandler = NavigateToContentResumeInteractionResponseHandler(director: director)
-        interactionResumer = InteractionResumer(resumeResponseHandler: resumeInteractionResponseHandler)
+        let directorContentRouter = DirectorContentRouter(director: director)
+        activityResumer = ActivityResumer(contentLinksService: services.contentLinks, contentRouter: directorContentRouter)
     }
 
 }

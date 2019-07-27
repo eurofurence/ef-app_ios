@@ -58,6 +58,12 @@ public extension String {
     static let preloadFailureMessage = NSLocalizedString("preloadFailureMessage",
                                                          comment: "Description for the alert when the download fails")
     
+    static let updateRequiredAlertTitle = NSLocalizedString("UpdateRequiredAlertTitle",
+                                                            comment: "Title used for the alert telling the user they need to update their app")
+    
+    static let updateRequiredAlertMessage = NSLocalizedString("UpdateRequiredAlertMessage",
+                                                              comment: "Message body for the alert telling the user they need to update their app")
+    
     static let news = NSLocalizedString("News", comment: "The title shown for the News view")
     static let yourEurofurence = NSLocalizedString("YourEurofurence",
                                                    comment: "Heading for the messages widget in the News tab")
@@ -128,11 +134,8 @@ public extension String {
     static let dealers = NSLocalizedString("Dealers",
                                            comment: "Title for the view that shows the dealers listed in the dealers den during the convention")
     
-    static let conventionInformation = NSLocalizedString("ConventionInformation",
-                                                         comment: "Title for the view showing all the categorised convention information")
-    
     static let information = NSLocalizedString("Information",
-                                               comment: "Tab bar item title for the view showing all the categoried convention information")
+                                               comment: "Title for the view showing all the categoried convention information")
     
     static let announcement = NSLocalizedString("Announcement",
                                                 comment: "Title for the view showing detailed information for an announcement")
@@ -230,6 +233,18 @@ public extension String {
     static let discard = NSLocalizedString("Discard",
                                            comment: "Text used to describe actions related to user input that will cause their input to be discarded")
     
+    static let services = NSLocalizedString("Services",
+                                            comment: "Tab bar title used for the companion app hybrid scene")
+    
+    static let additionalServices = NSLocalizedString("AdditionalServices",
+                                                      comment: "Navigation title used for the compainion app hybrid scene")
+    
+    static let share = NSLocalizedString("Share",
+                                         comment: "Title for buttons used for share actions (e.g. events)")
+    
+    static let dealerCategoriesInformationalFooter = NSLocalizedString("DealerCategoriesInformationalFooter",
+                                                                       comment: "Footer text shown in the categories popover informing the user how categories behave")
+    
     private struct Formatters {
         static var numbers = NumberFormatter()
     }
@@ -263,6 +278,16 @@ public extension String {
     
     static func eventReminderBody(timeString: String, roomName: String) -> String {
         return String.localizedStringWithFormat(eventReminderBodyFormat, timeString, roomName)
+    }
+    
+    static func viewEvent(named name: String) -> String {
+        let format = NSLocalizedString("ViewEventFormatString", comment: "Format string used for handoff titles for events")
+        return String.localizedStringWithFormat(format, name)
+    }
+    
+    static func viewDealer(named name: String) -> String {
+        let format = NSLocalizedString("ViewDealerFormatString", comment: "Format string used for handoff titles for dealers")
+        return String.localizedStringWithFormat(format, name)
     }
     
 }

@@ -5,7 +5,7 @@ class NewsUserWidgetTableViewCell: UITableViewCell, UserWidgetComponent {
     // MARK: Properties
 
     private let standardUserPromptColor = UIColor(white: 0.5, alpha: 1.0)
-    private let highlightedUserPromptColor = UIColor.eurofurenceGreen
+    private let highlightedUserPromptColor = UIColor.pantone330U
 
     // MARK: IBOutlets
 

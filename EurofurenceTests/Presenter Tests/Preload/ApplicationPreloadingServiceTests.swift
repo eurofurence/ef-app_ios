@@ -67,5 +67,12 @@ class ApplicationPreloadingServiceTests: XCTestCase {
         XCTAssertEqual(totalUnitCount, delegate.capturedProgressTotalUnitCount)
         XCTAssertNotNil(delegate.capturedProgressLocalizedDescription)
     }
+    
+    func testConventionIdentifierErrorAdaptsIntoDelegateCallback() {
+        beginPreload()
+        app.failLastRefresh(error: .conventionIdentifierMismatch)
+        
+        XCTAssertTrue(delegate.wasToldPreloadFailedDueToOldAppDetected)
+    }
 
 }

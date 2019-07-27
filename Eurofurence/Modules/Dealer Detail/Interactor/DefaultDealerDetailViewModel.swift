@@ -73,14 +73,17 @@ struct DefaultDealerDetailViewModel: DealerDetailViewModel {
     private let dealer: Dealer
     private let dealerIdentifier: DealerIdentifier
     private let dealersService: DealersService
+    private let shareService: ShareService
 
     init(dealer: Dealer,
          data: ExtendedDealerData,
          dealerIdentifier: DealerIdentifier,
-         dealersService: DealersService) {
+         dealersService: DealersService,
+         shareService: ShareService) {
         self.dealer = dealer
         self.dealerIdentifier = dealerIdentifier
         self.dealersService = dealersService
+        self.shareService = shareService
 
         let summary = DealerDetailSummaryViewModel(artistImagePNGData: data.artistImagePNGData,
                                                    title: data.preferredName,
@@ -175,6 +178,11 @@ struct DefaultDealerDetailViewModel: DealerDetailViewModel {
 
     func openTelegram() {
         dealer.openTelegram()
+    }
+    
+    func shareDealer(_ sender: Any) {
+        let url = dealer.makeContentURL()
+        shareService.share(url, sender: sender)
     }
 
 }

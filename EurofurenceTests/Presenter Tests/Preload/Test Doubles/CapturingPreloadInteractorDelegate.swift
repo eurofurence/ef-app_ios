@@ -12,6 +12,11 @@ class CapturingPreloadInteractorDelegate: PreloadInteractorDelegate {
     func preloadInteractorDidFinishPreloading() {
         wasToldpreloadInteractorDidFinishPreloading = true
     }
+    
+    private(set) var wasToldPreloadFailedDueToOldAppDetected = false
+    func preloadInteractorFailedToLoadDueToOldAppDetected() {
+        wasToldPreloadFailedDueToOldAppDetected = true
+    }
 
     private(set) var capturedProgressCurrentUnitCount: Int?
     private(set) var capturedProgressTotalUnitCount: Int?

@@ -1,0 +1,4 @@
+lane :screenshots do
+  capture_screenshots(stop_after_first_error: true)
+end
+

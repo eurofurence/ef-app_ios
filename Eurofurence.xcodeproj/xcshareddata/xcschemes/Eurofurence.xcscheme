@@ -49,26 +49,6 @@
                ReferencedContainer = "container:Eurofurence.xcodeproj">
             </BuildableReference>
          </TestableReference>
-         <TestableReference
-            skipped = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "78D7EEA01F17F40C005372A9"
-               BuildableName = "EurofurenceUITests.xctest"
-               BlueprintName = "EurofurenceUITests"
-               ReferencedContainer = "container:Eurofurence.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CAEA0B812165626900B0C7A6"
-               BuildableName = "EurofurenceModelTests.xctest"
-               BlueprintName = "EurofurenceModelTests"
-               ReferencedContainer = "container:Eurofurence.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

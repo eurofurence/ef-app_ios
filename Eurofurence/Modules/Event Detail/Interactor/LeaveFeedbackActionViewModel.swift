@@ -8,7 +8,7 @@ struct LeaveFeedbackActionViewModel: EventActionViewModel {
         visitor.visitActionTitle(.leaveFeedback)
     }
     
-    func perform() {
+    func perform(sender: Any?) {
         actionBus.leaveFeedbackAction?()
     }
     

@@ -6,8 +6,8 @@ import UIKit.UIViewController
 class StubMessageDetailModuleProviding: MessageDetailModuleProviding {
 
     let stubInterface = UIViewController()
-    private(set) var capturedMessage: Message?
-    func makeMessageDetailModule(message: Message) -> UIViewController {
+    private(set) var capturedMessage: MessageIdentifier?
+    func makeMessageDetailModule(for message: MessageIdentifier) -> UIViewController {
         capturedMessage = message
         return stubInterface
     }

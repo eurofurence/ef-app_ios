@@ -1,6 +1,8 @@
-# ef-app_ios
+# Eurofurence for iOS
 
-[![Build Status](https://travis-ci.org/eurofurence/ef-app_ios.svg?branch=master)](https://travis-ci.org/eurofurence/ef-app_ios)
+Master | 3.1.0
+------ | ------
+[![Build Status](https://app.bitrise.io/app/5b6b557ef37c13bc/status.svg?token=0LTkUzpKBZi3QWMWVyXTPA&branch=master)](https://app.bitrise.io/app/5b6b557ef37c13bc) | [![Build Status](https://app.bitrise.io/app/5b6b557ef37c13bc/status.svg?token=0LTkUzpKBZi3QWMWVyXTPA&branch=release/3.1.0)](https://app.bitrise.io/app/5b6b557ef37c13bc)
 
 Source code for the Eurofurence app for iOS.
 
@@ -10,18 +12,18 @@ This app uses the [Eurofurence API](https://app.eurofurence.org/swagger/v2/ui/) 
 
 ## Building From Source
 
-To build the app, you'll need:
+To build the app, you'll need the latest versions of:
 
 - Xcode 10
-- Cocoapods 1.5.3
+- Cocoapods
 
-Once you have the tools, to build the app from source you'll need to:
+Once you clone the repository, open the workspace (not the project!). You'll find a few schemes knocking around:
 
-- Clone this repository (duh)
-- Run `pod install` in the root of the directory to bring down the [Swiftlint](https://github.com/realm/SwiftLint) pod (providing automatic linting as you build)
-- Open `Eurofurence.xcworkspace`, activate the Eurofurence scheme if it isn't already
-- Build and run the scheme on the simulator of your choice
-- Sit back with a cold one 🍻
+- **Eurofurence** - Runs the iOS app and runs tests against the app and model
+- **Application** - Also runs the iOS app, but only runs the tests against the app
+- **Screenshots** - Used for generating screenshots using Fastlane
+- **EurofurenceModel** - Houses the services and repositories used by the app
+- **EurofurenceModelAdapterTests** - Contains tests for adapters from the model into system APIs (e.g. Core Data)
 
 ## Contributing
 
