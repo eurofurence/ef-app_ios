@@ -12,7 +12,7 @@ class MessagesModuleBuilder {
         self.authenticationService = authenticationService
         self.privateMessagesService = privateMessagesService
         sceneFactory = StoryboardMessagesSceneFactory()
-        dateFormatter = DateFormatter()
+        dateFormatter = EurofurenceDateFormatter()
     }
 
     func with(_ sceneFactory: MessagesSceneFactory) -> MessagesModuleBuilder {

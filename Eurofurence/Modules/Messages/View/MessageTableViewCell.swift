@@ -4,7 +4,7 @@ import UIKit
 class MessageTableViewCell: UITableViewCell, MessageItemScene {
 
     private static var dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
+        let formatter = EurofurenceDateFormatter()
         formatter.doesRelativeDateFormatting = true
         formatter.dateStyle = .medium
         formatter.timeStyle = .short

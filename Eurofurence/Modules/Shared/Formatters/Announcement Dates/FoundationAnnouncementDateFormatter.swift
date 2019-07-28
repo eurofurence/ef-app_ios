@@ -6,7 +6,7 @@ struct FoundationAnnouncementDateFormatter: AnnouncementDateFormatter {
     static let shared = FoundationAnnouncementDateFormatter()
 
     private init() {
-        formatter = DateFormatter()
+        formatter = EurofurenceDateFormatter()
         formatter.dateStyle = .medium
         formatter.timeStyle = .short
     }
