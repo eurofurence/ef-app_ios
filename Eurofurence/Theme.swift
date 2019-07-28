@@ -21,6 +21,8 @@ struct Theme {
     }
     
     static func performUnsafeSearchControllerStyling(searchController: UISearchController) {
+        styleSearchBar(searchController.searchBar)
+        
         guard let backgroundview = resolveStylableBackgroundFromPrivateViewHiearchy(searchBar: searchController.searchBar) else { return }
         
         backgroundview.backgroundColor = .white
@@ -144,6 +146,39 @@ struct Theme {
     private static func styleImages() {
         let image = UIImageView.appearance()
         image.tintColor = .pantone330U
+    }
+    
+    private static func styleSearchBar(_ searchBar: UISearchBar) {
+        let whitePixel = UIColor.white.makeColoredImage(size: CGSize(width: 1, height: 1))
+        searchBar.setScopeBarButtonBackgroundImage(whitePixel, for: .selected)
+        searchBar.setScopeBarButtonDividerImage(whitePixel, forLeftSegmentState: .normal, rightSegmentState: .normal)
+        searchBar.setScopeBarButtonDividerImage(whitePixel, forLeftSegmentState: .selected, rightSegmentState: .normal)
+        searchBar.setScopeBarButtonDividerImage(whitePixel, forLeftSegmentState: .normal, rightSegmentState: .selected)
+        
+        let pantoneTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.pantone330U]
+        searchBar.setScopeBarButtonTitleTextAttributes(pantoneTextAttributes, for: .selected)
+        searchBar.setScopeBarButtonTitleTextAttributes(whiteTextAttributes, for: .normal)
+        
+        let emptyBackground = makeSegmentBackground(color: .pantone330U_45)
+        searchBar.setScopeBarButtonBackgroundImage(emptyBackground, for: .normal)
+        
+        let filledBackground = makeSegmentBackground(color: .white)
+        searchBar.setScopeBarButtonBackgroundImage(filledBackground, for: .selected)
+    }
+    
+    private static func makeSegmentBackground(color: UIColor) -> UIImage {
+        let size = CGSize(width: 10, height: 10)
+        let renderer = UIGraphicsImageRenderer(size: size)
+        let data = renderer.pngData { (_) in
+            color.setFill()
+            
+            let path = UIBezierPath(roundedRect: CGRect(origin: .zero, size: size), cornerRadius: 3)
+            path.fill()
+        }
+        
+        guard let image = UIImage(data: data) else { fatalError() }
+        
+        return image
     }
 
 }
