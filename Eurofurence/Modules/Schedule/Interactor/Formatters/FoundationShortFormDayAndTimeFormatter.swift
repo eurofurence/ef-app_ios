@@ -6,7 +6,7 @@ struct FoundationShortFormDayAndTimeFormatter: ShortFormDayAndTimeFormatter {
     private let formatter: DateFormatter
 
     private init() {
-        formatter = DateFormatter()
+        formatter = EurofurenceDateFormatter()
         formatter.dateStyle = .medium
         formatter.timeStyle = .short
     }

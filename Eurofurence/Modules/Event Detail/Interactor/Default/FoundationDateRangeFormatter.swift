@@ -3,7 +3,7 @@ import Foundation
 struct FoundationDateRangeFormatter: DateRangeFormatter {
 
     static let shared = FoundationDateRangeFormatter()
-    private let formatter = DateIntervalFormatter()
+    private let formatter = EurofurenceDateIntervalFormatter()
 
     private init() {
         formatter.dateTemplate = "E, d MMM HH:mm"
