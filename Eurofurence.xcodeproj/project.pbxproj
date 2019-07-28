@@ -7180,6 +7180,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 557SGQG5H4;
+				EF_APP_VERSION = 3.1.1;
 				INFOPLIST_FILE = Eurofurence/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence;
@@ -7339,6 +7340,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 557SGQG5H4;
+				EF_APP_VERSION = 3.1.1;
 				INFOPLIST_FILE = Eurofurence/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) -D DEBUG";
@@ -7360,6 +7362,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 557SGQG5H4;
+				EF_APP_VERSION = 3.1.1;
 				INFOPLIST_FILE = Eurofurence/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence;
@@ -7599,6 +7602,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 557SGQG5H4;
+				EF_APP_VERSION = 3.1.1;
 				INFOPLIST_FILE = Eurofurence/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) -D DEBUG -D TAKING_SCREENSHOTS";
