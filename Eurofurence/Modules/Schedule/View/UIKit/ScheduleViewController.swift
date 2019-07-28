@@ -189,6 +189,7 @@ class ScheduleViewController: UIViewController,
     
     func daysHorizontalPickerView(_ pickerView: DaysHorizontalPickerView, didSelectDayAt index: Int) {
         delegate?.scheduleSceneDidSelectDay(at: index)
+        scrollToTableViewTop()
     }
 
     // MARK: Private
@@ -249,6 +250,17 @@ class ScheduleViewController: UIViewController,
             let distance = max(0, abs(offset.y) - safeAreaApplyingScrollViewContentInsets)
             daysPickerTopConstraint.constant = distance
         }
+    }
+    
+    private func scrollToTableViewTop() {
+        guard tableViewHasData() else { return }
+        
+        let firstIndex = IndexPath(row: 0, section: 0)
+        tableView.scrollToRow(at: firstIndex, at: .top, animated: true)
+    }
+    
+    private func tableViewHasData() -> Bool {
+        return tableView.numberOfSections > 0 && tableView.numberOfRows(inSection: 0) > 0
     }
 
     private class TableController: NSObject, UITableViewDataSource, UITableViewDelegate {
