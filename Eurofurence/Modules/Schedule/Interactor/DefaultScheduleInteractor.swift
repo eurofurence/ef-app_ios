@@ -114,19 +114,7 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
             eventGroupViewModels = rawModelGroups.map { (group) -> ScheduleEventGroupViewModel in
                 let title = hoursDateFormatter.hoursString(from: group.date)
                 let viewModels = group.events.map { (event) -> EventViewModel in
-                    return EventViewModel(title: event.title,
-                                          startTime: hoursDateFormatter.hoursString(from: event.startDate),
-                                          endTime: hoursDateFormatter.hoursString(from: event.endDate),
-                                          location: event.room.name,
-                                          bannerGraphicPNGData: event.bannerGraphicPNGData,
-                                          isFavourite: favouriteEvents.contains(event.identifier),
-                                          isSponsorOnly: event.isSponsorOnly,
-                                          isSuperSponsorOnly: event.isSuperSponsorOnly,
-                                          isArtShow: event.isArtShow,
-                                          isKageEvent: event.isKageEvent,
-                                          isDealersDenEvent: event.isDealersDen,
-                                          isMainStageEvent: event.isMainStage,
-                                          isPhotoshootEvent: event.isPhotoshoot)
+                    return EventViewModel(event: event, hoursFormatter: hoursDateFormatter, isFavourite: favouriteEvents.contains(event.identifier))
                 }
 
                 return ScheduleEventGroupViewModel(title: title, events: viewModels)
@@ -281,24 +269,34 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
         }
 
         private func makeEventViewModel(_ event: Event) -> EventViewModel {
-            return EventViewModel(title: event.title,
-                                  startTime: hoursDateFormatter.hoursString(from: event.startDate),
-                                  endTime: hoursDateFormatter.hoursString(from: event.endDate),
-                                  location: event.room.name,
-                                  bannerGraphicPNGData: event.bannerGraphicPNGData,
-                                  isFavourite: favouriteEvents.contains(event.identifier),
-                                  isSponsorOnly: event.isSponsorOnly,
-                                  isSuperSponsorOnly: event.isSuperSponsorOnly,
-                                  isArtShow: event.isArtShow,
-                                  isKageEvent: event.isKageEvent,
-                                  isDealersDenEvent: event.isDealersDen,
-                                  isMainStageEvent: event.isMainStage,
-                                  isPhotoshootEvent: event.isPhotoshoot)
+            return EventViewModel(event: event, hoursFormatter: hoursDateFormatter, isFavourite: favouriteEvents.contains(event.identifier))
         }
 
     }
 
     private struct EventViewModel: ScheduleEventViewModelProtocol {
+        
+        private let event: Event
+        private let hoursFormatter: HoursDateFormatter
+        
+        init(event: Event, hoursFormatter: HoursDateFormatter, isFavourite: Bool) {
+            self.event = event
+            self.hoursFormatter = hoursFormatter
+            
+            title = event.title
+            startTime = hoursFormatter.hoursString(from: event.startDate)
+            endTime = hoursFormatter.hoursString(from: event.endDate)
+            location = event.room.name
+            bannerGraphicPNGData = event.bannerGraphicPNGData
+            self.isFavourite = isFavourite
+            isSponsorOnly = event.isSponsorOnly
+            isSuperSponsorOnly = event.isSuperSponsorOnly
+            isArtShow = event.isArtShow
+            isKageEvent = event.isKageEvent
+            isDealersDenEvent = event.isDealersDen
+            isMainStageEvent = event.isMainStage
+            isPhotoshootEvent = event.isPhotoshoot
+        }
 
         var title: String
         var startTime: String
