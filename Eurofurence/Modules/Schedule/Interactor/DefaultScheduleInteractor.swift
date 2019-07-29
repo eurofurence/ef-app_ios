@@ -321,11 +321,11 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
         }
         
         func favourite() {
-            
+            event.favourite()
         }
         
         func unfavourite() {
-            
+            event.unfavourite()
         }
         
         func eventDidBecomeFavourite(_ event: Event) {

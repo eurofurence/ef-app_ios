@@ -123,6 +123,8 @@
 		CA08B10522EF6C4400FDAAA7 /* WhenEventTransitionsFromNonFavouriteToFavourite_EventViewModelShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08B10422EF6C4400FDAAA7 /* WhenEventTransitionsFromNonFavouriteToFavourite_EventViewModelShould.swift */; };
 		CA08B10722EF6E1700FDAAA7 /* CapturingScheduleEventViewModelObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08B10622EF6E1700FDAAA7 /* CapturingScheduleEventViewModelObserver.swift */; };
 		CA08B10922EF6E2F00FDAAA7 /* WhenEventTransitionsFromFavouriteToNonFavourite_EventViewModelShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08B10822EF6E2F00FDAAA7 /* WhenEventTransitionsFromFavouriteToNonFavourite_EventViewModelShould.swift */; };
+		CA08B10C22EF6EFC00FDAAA7 /* WhenFavouritingEvent_EventViewModelShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08B10B22EF6EFC00FDAAA7 /* WhenFavouritingEvent_EventViewModelShould.swift */; };
+		CA08B10E22EF6F8200FDAAA7 /* WhenUnfavouritingEvent_EventViewModelShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08B10D22EF6F8200FDAAA7 /* WhenUnfavouritingEvent_EventViewModelShould.swift */; };
 		CA0E5205208E6FE4005259FE /* StoryboardDealersSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5204208E6FE4005259FE /* StoryboardDealersSceneFactory.swift */; };
 		CA0E5207208E700E005259FE /* DealersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5206208E700E005259FE /* DealersViewController.swift */; };
 		CA0E5209208E7020005259FE /* Dealers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA0E5208208E7020005259FE /* Dealers.storyboard */; };
@@ -1233,6 +1235,8 @@
 		CA08B10422EF6C4400FDAAA7 /* WhenEventTransitionsFromNonFavouriteToFavourite_EventViewModelShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenEventTransitionsFromNonFavouriteToFavourite_EventViewModelShould.swift; sourceTree = "<group>"; };
 		CA08B10622EF6E1700FDAAA7 /* CapturingScheduleEventViewModelObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingScheduleEventViewModelObserver.swift; sourceTree = "<group>"; };
 		CA08B10822EF6E2F00FDAAA7 /* WhenEventTransitionsFromFavouriteToNonFavourite_EventViewModelShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenEventTransitionsFromFavouriteToNonFavourite_EventViewModelShould.swift; sourceTree = "<group>"; };
+		CA08B10B22EF6EFC00FDAAA7 /* WhenFavouritingEvent_EventViewModelShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFavouritingEvent_EventViewModelShould.swift; sourceTree = "<group>"; };
+		CA08B10D22EF6F8200FDAAA7 /* WhenUnfavouritingEvent_EventViewModelShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenUnfavouritingEvent_EventViewModelShould.swift; sourceTree = "<group>"; };
 		CA0E5204208E6FE4005259FE /* StoryboardDealersSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardDealersSceneFactory.swift; sourceTree = "<group>"; };
 		CA0E5206208E700E005259FE /* DealersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersViewController.swift; sourceTree = "<group>"; };
 		CA0E5208208E7020005259FE /* Dealers.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dealers.storyboard; sourceTree = "<group>"; };
@@ -2718,6 +2722,7 @@
 				CAC2338520FFE1BD00E73486 /* WhenToldToUnfavouriteEvent_ScheduleInteractorShould.swift */,
 				CA08159220D470F800F750D4 /* WhenViewModelIsToldToShowEventsForSpecificDay_ScheduleInteractorShould.swift */,
 				CA08B10322EF6C2D00FDAAA7 /* Favourite State Propogation */,
+				CA08B10A22EF6EE600FDAAA7 /* Toggling Favourite State */,
 			);
 			path = "Interactor Tests";
 			sourceTree = "<group>";
@@ -2768,6 +2773,15 @@
 				CA08B10822EF6E2F00FDAAA7 /* WhenEventTransitionsFromFavouriteToNonFavourite_EventViewModelShould.swift */,
 			);
 			path = "Favourite State Propogation";
+			sourceTree = "<group>";
+		};
+		CA08B10A22EF6EE600FDAAA7 /* Toggling Favourite State */ = {
+			isa = PBXGroup;
+			children = (
+				CA08B10B22EF6EFC00FDAAA7 /* WhenFavouritingEvent_EventViewModelShould.swift */,
+				CA08B10D22EF6F8200FDAAA7 /* WhenUnfavouritingEvent_EventViewModelShould.swift */,
+			);
+			path = "Toggling Favourite State";
 			sourceTree = "<group>";
 		};
 		CA0E5203208E6FCA005259FE /* UIKit */ = {
@@ -6757,6 +6771,7 @@
 				78C86D791F12ADF8003A20E6 /* CapturingSplashScene.swift in Sources */,
 				CA152ED022651A2100212742 /* WhenEventFeedbackSubmitsSuccessfully_EventFeedbackPresenterShould.swift in Sources */,
 				CA63756A208CCB5800536BE2 /* WhenStoreShouldBeRefreshed_DirectorShould.swift in Sources */,
+				CA08B10E22EF6F8200FDAAA7 /* WhenUnfavouritingEvent_EventViewModelShould.swift in Sources */,
 				CA728439209CEE97007D912A /* StubConventionCountdownService.swift in Sources */,
 				78455B3C1F116E24005BE2D7 /* UserDefaultsTutorialStateProvider.swift in Sources */,
 				CA1ECB3F1FE333090076083A /* WhenInitialMessageLoadFails.swift in Sources */,
@@ -6986,6 +7001,7 @@
 				CA39851622C7A51C00117249 /* RemotelyConfiguredConventionStartDateRepositoryTests.swift in Sources */,
 				CACF1EB020B5F86700D904B5 /* WhenBindingEventBanner_EventDetailPresenterShould.swift in Sources */,
 				CA728467209D1197007D912A /* WhenAnnouncementDetailSceneDidLoad_AnnouncementDetailPresenterShould.swift in Sources */,
+				CA08B10C22EF6EFC00FDAAA7 /* WhenFavouritingEvent_EventViewModelShould.swift in Sources */,
 				CA89CBA6207F7F5400570D54 /* FakeNewsInteractor.swift in Sources */,
 				CA637556208CBBCE00536BE2 /* StubMessageDetailModuleProviding.swift in Sources */,
 				CA73AEDD201A0823004E77BF /* CapturingKnowledgeListScene.swift in Sources */,
