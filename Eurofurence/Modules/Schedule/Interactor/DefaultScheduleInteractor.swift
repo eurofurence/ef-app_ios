@@ -114,7 +114,7 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
             eventGroupViewModels = rawModelGroups.map { (group) -> ScheduleEventGroupViewModel in
                 let title = hoursDateFormatter.hoursString(from: group.date)
                 let viewModels = group.events.map { (event) -> EventViewModel in
-                    return EventViewModel(event: event, hoursFormatter: hoursDateFormatter, isFavourite: favouriteEvents.contains(event.identifier))
+                    return EventViewModel(event: event, hoursFormatter: hoursDateFormatter)
                 }
 
                 return ScheduleEventGroupViewModel(title: title, events: viewModels)
@@ -269,17 +269,17 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
         }
 
         private func makeEventViewModel(_ event: Event) -> EventViewModel {
-            return EventViewModel(event: event, hoursFormatter: hoursDateFormatter, isFavourite: favouriteEvents.contains(event.identifier))
+            return EventViewModel(event: event, hoursFormatter: hoursDateFormatter)
         }
 
     }
 
-    private struct EventViewModel: ScheduleEventViewModelProtocol {
+    private class EventViewModel: ScheduleEventViewModelProtocol, EventObserver {
         
         private let event: Event
         private let hoursFormatter: HoursDateFormatter
         
-        init(event: Event, hoursFormatter: HoursDateFormatter, isFavourite: Bool) {
+        init(event: Event, hoursFormatter: HoursDateFormatter) {
             self.event = event
             self.hoursFormatter = hoursFormatter
             
@@ -288,7 +288,7 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
             endTime = hoursFormatter.hoursString(from: event.endDate)
             location = event.room.name
             bannerGraphicPNGData = event.bannerGraphicPNGData
-            self.isFavourite = isFavourite
+            isFavourite = false
             isSponsorOnly = event.isSponsorOnly
             isSuperSponsorOnly = event.isSuperSponsorOnly
             isArtShow = event.isArtShow
@@ -296,6 +296,8 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
             isDealersDenEvent = event.isDealersDen
             isMainStageEvent = event.isMainStage
             isPhotoshootEvent = event.isPhotoshoot
+            
+            event.add(self)
         }
 
         var title: String
@@ -311,6 +313,14 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
         var isDealersDenEvent: Bool
         var isMainStageEvent: Bool
         var isPhotoshootEvent: Bool
+        
+        func eventDidBecomeFavourite(_ event: Event) {
+            isFavourite = true
+        }
+        
+        func eventDidBecomeUnfavourite(_ event: Event) {
+            
+        }
 
     }
 
