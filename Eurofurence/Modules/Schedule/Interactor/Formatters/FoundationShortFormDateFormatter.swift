@@ -6,7 +6,7 @@ struct FoundationShortFormDateFormatter: ShortFormDateFormatter {
     private let formatter: DateFormatter
 
     private init() {
-        formatter = DateFormatter()
+        formatter = EurofurenceDateFormatter()
         formatter.dateFormat = "E d"
     }
 

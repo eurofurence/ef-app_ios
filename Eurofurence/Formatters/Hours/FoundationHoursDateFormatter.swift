@@ -6,7 +6,7 @@ struct FoundationHoursDateFormatter: HoursDateFormatter {
     private let formatter: DateFormatter
 
     private init() {
-        formatter = DateFormatter()
+        formatter = EurofurenceDateFormatter()
         formatter.dateFormat = "HH:mm"
     }
 
