@@ -844,6 +844,7 @@
 		CAA6060A20EEC02C00075A4E /* Debug.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAA6060920EEC02C00075A4E /* Debug.storyboard */; };
 		CAA6060C20EEC06500075A4E /* DebugTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA6060B20EEC06500075A4E /* DebugTableViewController.swift */; };
 		CAA6DD1120E1649600328C37 /* WhenMessagesSceneTapsLogoutButton_MessagesPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA6DD1020E1649600328C37 /* WhenMessagesSceneTapsLogoutButton_MessagesPresenterShould.swift */; };
+		CAA7DE3722EF900400A6984D /* WhenScheduleChanges_ScheduleViewModelShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA7DE3622EF900400A6984D /* WhenScheduleChanges_ScheduleViewModelShould.swift */; };
 		CAB0FD5222C90B1E00D4CB98 /* IntentActivityDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB0FD5122C90B1E00D4CB98 /* IntentActivityDescription.swift */; };
 		CAB0FD5422C90B3400D4CB98 /* ActivityDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB0FD5322C90B3400D4CB98 /* ActivityDescription.swift */; };
 		CAB0FD5622C90B4000D4CB98 /* SystemActivityDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB0FD5522C90B4000D4CB98 /* SystemActivityDescription.swift */; };
@@ -1950,6 +1951,7 @@
 		CAA6060920EEC02C00075A4E /* Debug.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Debug.storyboard; sourceTree = "<group>"; };
 		CAA6060B20EEC06500075A4E /* DebugTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugTableViewController.swift; sourceTree = "<group>"; };
 		CAA6DD1020E1649600328C37 /* WhenMessagesSceneTapsLogoutButton_MessagesPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenMessagesSceneTapsLogoutButton_MessagesPresenterShould.swift; sourceTree = "<group>"; };
+		CAA7DE3622EF900400A6984D /* WhenScheduleChanges_ScheduleViewModelShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenScheduleChanges_ScheduleViewModelShould.swift; sourceTree = "<group>"; };
 		CAB0FD5122C90B1E00D4CB98 /* IntentActivityDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentActivityDescription.swift; sourceTree = "<group>"; };
 		CAB0FD5322C90B3400D4CB98 /* ActivityDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDescription.swift; sourceTree = "<group>"; };
 		CAB0FD5522C90B4000D4CB98 /* SystemActivityDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemActivityDescription.swift; sourceTree = "<group>"; };
@@ -2711,6 +2713,7 @@
 				CA08159220D470F800F750D4 /* WhenViewModelIsToldToShowEventsForSpecificDay_ScheduleInteractorShould.swift */,
 				CA08B10322EF6C2D00FDAAA7 /* Favourite State Propogation */,
 				CA08B10A22EF6EE600FDAAA7 /* Toggling Favourite State */,
+				CAA7DE3622EF900400A6984D /* WhenScheduleChanges_ScheduleViewModelShould.swift */,
 			);
 			path = "Interactor Tests";
 			sourceTree = "<group>";
@@ -6787,6 +6790,7 @@
 				CA39851C22C7A93300117249 /* CapturingConventionStartDateConsumer.swift in Sources */,
 				CA60BFE62078E5F700697566 /* CapturingPrivateMessagesService.swift in Sources */,
 				CA6EC4792051CAFA00402894 /* WhenBuildingKnowledgeDetailModule.swift in Sources */,
+				CAA7DE3722EF900400A6984D /* WhenScheduleChanges_ScheduleViewModelShould.swift in Sources */,
 				CAC1E1311F50413500195513 /* CapturingNewsScene.swift in Sources */,
 				CA6A8D7820E264D6007536CD /* MapsPresenterTestBuilder.swift in Sources */,
 				CA250DD420D6E28B00E7513C /* WhenBindingEventFromSearchResult_SchedulePresenterShould.swift in Sources */,

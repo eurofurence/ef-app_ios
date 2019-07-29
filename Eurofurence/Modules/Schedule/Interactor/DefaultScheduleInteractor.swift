@@ -75,6 +75,12 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
         }
 
         var eventGroupViewModels: [ScheduleEventGroupViewModel] = [] {
+            willSet {
+                eventGroupViewModels
+                    .flatMap({ $0.events })
+                    .compactMap({ $0 as? EventViewModel })
+                    .forEach({ $0.unhookFromEventObservation() })
+            }
             didSet {
                 delegate?.scheduleViewModelDidUpdateEvents(eventGroupViewModels)
             }
@@ -314,6 +320,10 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
         func eventDidBecomeUnfavourite(_ event: Event) {
             isFavourite = false
             observer?.eventViewModelDidBecomeNonFavourite(self)
+        }
+        
+        func unhookFromEventObservation() {
+            event.remove(self)
         }
 
     }
