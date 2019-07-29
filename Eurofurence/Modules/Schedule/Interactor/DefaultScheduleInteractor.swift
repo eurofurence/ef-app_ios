@@ -162,16 +162,6 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
             return rawModelGroups[indexPath.section].events[indexPath.row].identifier
         }
 
-        func favouriteEvent(at indexPath: IndexPath) {
-            let event = rawModelGroups[indexPath.section].events[indexPath.item]
-            event.favourite()
-        }
-
-        func unfavouriteEvent(at indexPath: IndexPath) {
-            let event = rawModelGroups[indexPath.section].events[indexPath.item]
-            event.unfavourite()
-        }
-
         func refreshServiceDidBeginRefreshing() {
             delegate?.scheduleViewModelDidBeginRefreshing()
         }

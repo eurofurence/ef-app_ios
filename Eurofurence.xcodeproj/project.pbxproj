@@ -878,8 +878,6 @@
 		CAC1E12B1F5040E100195513 /* NewsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E12A1F5040E100195513 /* NewsScene.swift */; };
 		CAC1E1311F50413500195513 /* CapturingNewsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E1301F50413500195513 /* CapturingNewsScene.swift */; };
 		CAC1E1391F50431000195513 /* NewsPresenterTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E1381F50431000195513 /* NewsPresenterTestBuilder.swift */; };
-		CAC2338420FFDE0900E73486 /* WhenToldToFavouriteEvent_ScheduleInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC2338320FFDE0900E73486 /* WhenToldToFavouriteEvent_ScheduleInteractorShould.swift */; };
-		CAC2338620FFE1BD00E73486 /* WhenToldToUnfavouriteEvent_ScheduleInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC2338520FFE1BD00E73486 /* WhenToldToUnfavouriteEvent_ScheduleInteractorShould.swift */; };
 		CAC4993522DF98DF003E1D77 /* DealerCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC4993422DF98DF003E1D77 /* DealerCategoriesViewController.swift */; };
 		CAC4993722DF994A003E1D77 /* DealerCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC4993622DF994A003E1D77 /* DealerCategoryTableViewCell.swift */; };
 		CAC4994A22E106BF003E1D77 /* WhenDealersSceneRevealsCategoryFilters_DealersPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC4994922E106BF003E1D77 /* WhenDealersSceneRevealsCategoryFilters_DealersPresenterShould.swift */; };
@@ -1987,8 +1985,6 @@
 		CAC1E12A1F5040E100195513 /* NewsScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsScene.swift; sourceTree = "<group>"; };
 		CAC1E1301F50413500195513 /* CapturingNewsScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingNewsScene.swift; sourceTree = "<group>"; };
 		CAC1E1381F50431000195513 /* NewsPresenterTestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsPresenterTestBuilder.swift; sourceTree = "<group>"; };
-		CAC2338320FFDE0900E73486 /* WhenToldToFavouriteEvent_ScheduleInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToFavouriteEvent_ScheduleInteractorShould.swift; sourceTree = "<group>"; };
-		CAC2338520FFE1BD00E73486 /* WhenToldToUnfavouriteEvent_ScheduleInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToUnfavouriteEvent_ScheduleInteractorShould.swift; sourceTree = "<group>"; };
 		CAC4993422DF98DF003E1D77 /* DealerCategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerCategoriesViewController.swift; sourceTree = "<group>"; };
 		CAC4993622DF994A003E1D77 /* DealerCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		CAC4994922E106BF003E1D77 /* WhenDealersSceneRevealsCategoryFilters_DealersPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDealersSceneRevealsCategoryFilters_DealersPresenterShould.swift; sourceTree = "<group>"; };
@@ -2709,11 +2705,9 @@
 				CA283AE120EC05B700F7D195 /* WhenPreparingViewModelForFavouritedEvent_ScheduleInteractorShould.swift */,
 				CA250DE320D6F68700E7513C /* WhenSearchControllerProducesNewResults_ScheduleInteractorShould.swift */,
 				CA250DDB20D6E85700E7513C /* WhenSearching_ScheduleInteractorShould.swift */,
-				CAC2338320FFDE0900E73486 /* WhenToldToFavouriteEvent_ScheduleInteractorShould.swift */,
 				CACF26D220FE5D2C00EDE150 /* WhenToldToFilterToAllEvents_ScheduleInteractorShould.swift */,
 				CACF26D020FE5B8300EDE150 /* WhenToldToFilterToFavouriteEvents_ScheduleInteractorShould.swift */,
 				CA283A7B20E91F3600F7D195 /* WhenToldToRefresh_ScheduleViewModelShould.swift */,
-				CAC2338520FFE1BD00E73486 /* WhenToldToUnfavouriteEvent_ScheduleInteractorShould.swift */,
 				CA08159220D470F800F750D4 /* WhenViewModelIsToldToShowEventsForSpecificDay_ScheduleInteractorShould.swift */,
 				CA08B10322EF6C2D00FDAAA7 /* Favourite State Propogation */,
 				CA08B10A22EF6EE600FDAAA7 /* Toggling Favourite State */,
@@ -6744,7 +6738,6 @@
 				CA8DDA1C2249045400ACD9BB /* WhenBindingEventAction_EventDetailPresenterShould.swift in Sources */,
 				CA152EC22263C44600212742 /* BeforeEventFeedbackSceneLoads_EventFeedbackPresenterShould.swift in Sources */,
 				CA36A45120D773B300EE6537 /* WhenSceneSelectsEventFromSearchViewModel_SchedulePresenterShould.swift in Sources */,
-				CAC2338620FFE1BD00E73486 /* WhenToldToUnfavouriteEvent_ScheduleInteractorShould.swift in Sources */,
 				CA283AB220EAA1AB00F7D195 /* AnnouncementsPresenterTestBuilder.swift in Sources */,
 				CA283AD420EAC84300F7D195 /* WhenPreparingViewModel_AnnouncementsInteractorShould.swift in Sources */,
 				CA6EC4842051CBF600402894 /* StubKnowledgeDetailSceneFactory.swift in Sources */,
@@ -6860,7 +6853,6 @@
 				CAF9A9581F5601A700628833 /* WhenViewingMessagesWhileLoggedOut.swift in Sources */,
 				CAF81C7120DDA8EA00898C52 /* WhenProducingDealerViewModel_HappyPath_DealerDetailInteractorShould.swift in Sources */,
 				CA63756E208CCBD400536BE2 /* WhenPreloadCompletes_DirectorShould.swift in Sources */,
-				CAC2338420FFDE0900E73486 /* WhenToldToFavouriteEvent_ScheduleInteractorShould.swift in Sources */,
 				CA637576208CD96A00536BE2 /* WhenMessagesModuleRequestsUserResolution_DirectorShould.swift in Sources */,
 				CA0F761D2031C215009DA079 /* WhenKnowledgeListViewModelIsPrepared.swift in Sources */,
 				CA637558208CBC1D00536BE2 /* StubKnowledgeListModuleProviding.swift in Sources */,
