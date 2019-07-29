@@ -314,8 +314,10 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
         var isMainStageEvent: Bool
         var isPhotoshootEvent: Bool
         
+        private var observers = [ScheduleEventViewModelObserver]()
+        
         func add(_ observer: ScheduleEventViewModelObserver) {
-            
+            observers.append(observer)
         }
         
         func favourite() {
@@ -328,10 +330,12 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
         
         func eventDidBecomeFavourite(_ event: Event) {
             isFavourite = true
+            observers.forEach({ $0.eventViewModelDidBecomeFavourite(self) })
         }
         
         func eventDidBecomeUnfavourite(_ event: Event) {
-            
+            isFavourite = false
+            observers.forEach({ $0.eventViewModelDidBecomeNonFavourite(self) })
         }
 
     }

@@ -120,6 +120,9 @@
 		CA08B0FB22EDF6BE00FDAAA7 /* EurofurenceDateIntervalFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08B0FA22EDF6BE00FDAAA7 /* EurofurenceDateIntervalFormatter.swift */; };
 		CA08B10022EF64DF00FDAAA7 /* WhenNonFavouritedEventBecomesFavourited_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08B0FF22EF64DF00FDAAA7 /* WhenNonFavouritedEventBecomesFavourited_SchedulePresenterShould.swift */; };
 		CA08B10222EF67DF00FDAAA7 /* WhenFavouritedEventBecomesNonFavourite_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08B10122EF67DF00FDAAA7 /* WhenFavouritedEventBecomesNonFavourite_SchedulePresenterShould.swift */; };
+		CA08B10522EF6C4400FDAAA7 /* WhenEventTransitionsFromNonFavouriteToFavourite_EventViewModelShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08B10422EF6C4400FDAAA7 /* WhenEventTransitionsFromNonFavouriteToFavourite_EventViewModelShould.swift */; };
+		CA08B10722EF6E1700FDAAA7 /* CapturingScheduleEventViewModelObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08B10622EF6E1700FDAAA7 /* CapturingScheduleEventViewModelObserver.swift */; };
+		CA08B10922EF6E2F00FDAAA7 /* WhenEventTransitionsFromFavouriteToNonFavourite_EventViewModelShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08B10822EF6E2F00FDAAA7 /* WhenEventTransitionsFromFavouriteToNonFavourite_EventViewModelShould.swift */; };
 		CA0E5205208E6FE4005259FE /* StoryboardDealersSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5204208E6FE4005259FE /* StoryboardDealersSceneFactory.swift */; };
 		CA0E5207208E700E005259FE /* DealersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5206208E700E005259FE /* DealersViewController.swift */; };
 		CA0E5209208E7020005259FE /* Dealers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA0E5208208E7020005259FE /* Dealers.storyboard */; };
@@ -1227,6 +1230,9 @@
 		CA08B0FA22EDF6BE00FDAAA7 /* EurofurenceDateIntervalFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EurofurenceDateIntervalFormatter.swift; sourceTree = "<group>"; };
 		CA08B0FF22EF64DF00FDAAA7 /* WhenNonFavouritedEventBecomesFavourited_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenNonFavouritedEventBecomesFavourited_SchedulePresenterShould.swift; sourceTree = "<group>"; };
 		CA08B10122EF67DF00FDAAA7 /* WhenFavouritedEventBecomesNonFavourite_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFavouritedEventBecomesNonFavourite_SchedulePresenterShould.swift; sourceTree = "<group>"; };
+		CA08B10422EF6C4400FDAAA7 /* WhenEventTransitionsFromNonFavouriteToFavourite_EventViewModelShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenEventTransitionsFromNonFavouriteToFavourite_EventViewModelShould.swift; sourceTree = "<group>"; };
+		CA08B10622EF6E1700FDAAA7 /* CapturingScheduleEventViewModelObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingScheduleEventViewModelObserver.swift; sourceTree = "<group>"; };
+		CA08B10822EF6E2F00FDAAA7 /* WhenEventTransitionsFromFavouriteToNonFavourite_EventViewModelShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenEventTransitionsFromFavouriteToNonFavourite_EventViewModelShould.swift; sourceTree = "<group>"; };
 		CA0E5204208E6FE4005259FE /* StoryboardDealersSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardDealersSceneFactory.swift; sourceTree = "<group>"; };
 		CA0E5206208E700E005259FE /* DealersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersViewController.swift; sourceTree = "<group>"; };
 		CA0E5208208E7020005259FE /* Dealers.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dealers.storyboard; sourceTree = "<group>"; };
@@ -2711,6 +2717,7 @@
 				CAC233892100C4DA00E73486 /* WhenToldToUnfavouriteEvent_FromSearchViewModel_InteractorShould.swift */,
 				CAC2338520FFE1BD00E73486 /* WhenToldToUnfavouriteEvent_ScheduleInteractorShould.swift */,
 				CA08159220D470F800F750D4 /* WhenViewModelIsToldToShowEventsForSpecificDay_ScheduleInteractorShould.swift */,
+				CA08B10322EF6C2D00FDAAA7 /* Favourite State Propogation */,
 			);
 			path = "Interactor Tests";
 			sourceTree = "<group>";
@@ -2752,6 +2759,15 @@
 				CA08B10122EF67DF00FDAAA7 /* WhenFavouritedEventBecomesNonFavourite_SchedulePresenterShould.swift */,
 			);
 			path = "Favourite State Changes";
+			sourceTree = "<group>";
+		};
+		CA08B10322EF6C2D00FDAAA7 /* Favourite State Propogation */ = {
+			isa = PBXGroup;
+			children = (
+				CA08B10422EF6C4400FDAAA7 /* WhenEventTransitionsFromNonFavouriteToFavourite_EventViewModelShould.swift */,
+				CA08B10822EF6E2F00FDAAA7 /* WhenEventTransitionsFromFavouriteToNonFavourite_EventViewModelShould.swift */,
+			);
+			path = "Favourite State Propogation";
 			sourceTree = "<group>";
 		};
 		CA0E5203208E6FCA005259FE /* UIKit */ = {
@@ -3967,6 +3983,7 @@
 				CA08158C20D4556700F750D4 /* FakeShortFormDateFormatter.swift */,
 				CA637596208DFD4B00536BE2 /* StubScheduleSceneFactory.swift */,
 				CA00AE8420D2320700C2FBB0 /* StubScheduleViewModel.swift */,
+				CA08B10622EF6E1700FDAAA7 /* CapturingScheduleEventViewModelObserver.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -6553,6 +6570,7 @@
 				CA36A46720D84A9B00EE6537 /* CapturingDealersViewModel+RandomValueProviding.swift in Sources */,
 				CA6D7CC222368DA400AB816C /* VisibilityState.swift in Sources */,
 				CA250DDE20D6EA0500E7513C /* CapturingScheduleSearchViewModelDelegate.swift in Sources */,
+				CA08B10722EF6E1700FDAAA7 /* CapturingScheduleEventViewModelObserver.swift in Sources */,
 				CA65A87D209B2F6A00B72533 /* WhenLoggedOutBeforeConvention_ThenLogIn_NewsInteractorShould.swift in Sources */,
 				CACF1E5D20AE2EE100D904B5 /* EventDetailPresenterTestBuilder.swift in Sources */,
 				CA36A4E620DAFFB000EE6537 /* StubDealerDetailModuleFactory.swift in Sources */,
@@ -6682,6 +6700,7 @@
 				CA6A8DF320E425E2007536CD /* WhenPreparingViewModel_MapDetailInteractorShould.swift in Sources */,
 				CA08B10222EF67DF00FDAAA7 /* WhenFavouritedEventBecomesNonFavourite_SchedulePresenterShould.swift in Sources */,
 				78C86D601F123859003A20E6 /* CapturingTutorialScene.swift in Sources */,
+				CA08B10522EF6C4400FDAAA7 /* WhenEventTransitionsFromNonFavouriteToFavourite_EventViewModelShould.swift in Sources */,
 				CA2761AB20E0220A000E52AC /* StubHybridWebSceneFactory.swift in Sources */,
 				CAD260AB20C03D3E007E3618 /* WhenViewModelIndicatesEventIsNotFavourite_EventDetailPresenterShould.swift in Sources */,
 				CACF26CB20FE290000EDE150 /* WhenBindingNonFavouriteEvent_NewsPresenterShould.swift in Sources */,
@@ -6984,6 +7003,7 @@
 				CA0E5219208FC062005259FE /* WhenBindingConventionCountdown_NewsPresenterShould.swift in Sources */,
 				CA637540208CBB0E00536BE2 /* CapturingNavigationController.swift in Sources */,
 				CA27256F21137EED004C6D0A /* SchedulePresenterSuperSponsorIconBindingTests.swift in Sources */,
+				CA08B10922EF6E2F00FDAAA7 /* WhenEventTransitionsFromFavouriteToNonFavourite_EventViewModelShould.swift in Sources */,
 				CA89CBB42080031000570D54 /* CapturingNewsComponentHeaderScene.swift in Sources */,
 				CACF1E8520B34E7A00D904B5 /* WhenPreparingViewModel_EventDetailInteractorShould.swift in Sources */,
 				CA9AC16B208546530039C0C2 /* WhenBindingEvent_NewsPresenterShould.swift in Sources */,
