@@ -181,8 +181,7 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
         }
 
         func favouriteEventsDidChange(_ identifiers: [EventIdentifier]) {
-            favouriteEvents = identifiers
-            regenerateEventViewModels()
+            
         }
 
     }
@@ -236,8 +235,7 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
         }
 
         func favouriteEventsDidChange(_ identifiers: [EventIdentifier]) {
-            favouriteEvents = identifiers
-            regenerateViewModel()
+            
         }
 
         private func regenerateViewModel() {
