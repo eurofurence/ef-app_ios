@@ -2,7 +2,7 @@ import Foundation
 
 class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, ScheduleSearchViewModelDelegate {
 
-    private struct EventComponentBinder: ScheduleEventViewModelObserver {
+    private class EventComponentBinder: ScheduleEventViewModelObserver {
 
         private let component: ScheduleEventComponent
         private let viewModel: ScheduleEventViewModelProtocol

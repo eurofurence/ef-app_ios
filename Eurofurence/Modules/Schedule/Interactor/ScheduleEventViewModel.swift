@@ -22,7 +22,7 @@ protocol ScheduleEventViewModelProtocol {
 
 }
 
-protocol ScheduleEventViewModelObserver {
+protocol ScheduleEventViewModelObserver: class {
     
     func eventViewModelDidBecomeFavourite(_ viewModel: ScheduleEventViewModelProtocol)
     func eventViewModelDidBecomeNonFavourite(_ viewModel: ScheduleEventViewModelProtocol)
