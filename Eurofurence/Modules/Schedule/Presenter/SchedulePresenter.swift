@@ -125,16 +125,10 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
     private class EventsBinder: ScheduleSceneBinder {
 
         private let viewModels: [ScheduleEventGroupViewModel]
-        private let favouriteHandler: (IndexPath) -> Void
-        private let unfavouriteHandler: (IndexPath) -> Void
         private var eventBinders = [IndexPath: EventComponentBinder]()
 
-        init(viewModels: [ScheduleEventGroupViewModel],
-             favouriteHandler: @escaping (IndexPath) -> Void,
-             unfavouriteHandler: @escaping (IndexPath) -> Void) {
+        init(viewModels: [ScheduleEventGroupViewModel]) {
             self.viewModels = viewModels
-            self.favouriteHandler = favouriteHandler
-            self.unfavouriteHandler = unfavouriteHandler
         }
 
         func bind(_ header: ScheduleEventGroupHeader, forGroupAt index: Int) {
@@ -268,22 +262,14 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
     }
 
     func scheduleViewModelDidUpdateEvents(_ events: [ScheduleEventGroupViewModel]) {
-        guard let viewModel = viewModel else { return }
-        
         let numberOfItemsPerGroup = events.map { $0.events.count }
-        let binder = EventsBinder(viewModels: events,
-                                  favouriteHandler: viewModel.favouriteEvent,
-                                  unfavouriteHandler: viewModel.unfavouriteEvent)
+        let binder = EventsBinder(viewModels: events)
         scene.bind(numberOfItemsPerSection: numberOfItemsPerGroup, using: binder)
     }
 
     func scheduleSearchResultsUpdated(_ results: [ScheduleEventGroupViewModel]) {
-        guard let searchViewModel = searchViewModel else { return }
-        
         let numberOfItemsPerGroup = results.map { $0.events.count }
-        let binder = EventsBinder(viewModels: results,
-                                  favouriteHandler: searchViewModel.favouriteEvent,
-                                  unfavouriteHandler: searchViewModel.unfavouriteEvent)
+        let binder = EventsBinder(viewModels: results)
         scene.bindSearchResults(numberOfItemsPerSection: numberOfItemsPerGroup, using: binder)
     }
 

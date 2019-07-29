@@ -240,16 +240,6 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
             regenerateViewModel()
         }
 
-        func favouriteEvent(at indexPath: IndexPath) {
-            let event = rawModelGroups[indexPath.section].events[indexPath.item]
-            event.favourite()
-        }
-
-        func unfavouriteEvent(at indexPath: IndexPath) {
-            let event = rawModelGroups[indexPath.section].events[indexPath.item]
-            event.unfavourite()
-        }
-
         private func regenerateViewModel() {
             let groupedByDate = Dictionary(grouping: searchResults, by: { $0.startDate })
             rawModelGroups = groupedByDate.map(EventsGroupedByDate.init).sorted(by: { (first, second) -> Bool in
