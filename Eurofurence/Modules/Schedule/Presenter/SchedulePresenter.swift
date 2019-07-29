@@ -156,13 +156,9 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
             let event = group.events[indexPath.item]
 
             if event.isFavourite {
-                return ScheduleEventComponentAction(title: .unfavourite, run: {
-                    self.unfavouriteHandler(indexPath)
-                })
+                return ScheduleEventComponentAction(title: .unfavourite, run: event.unfavourite)
             } else {
-                return ScheduleEventComponentAction(title: .favourite, run: {
-                    self.favouriteHandler(indexPath)
-                })
+                return ScheduleEventComponentAction(title: .favourite, run: event.favourite)
             }
         }
 
