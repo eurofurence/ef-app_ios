@@ -23,6 +23,8 @@ struct Theme {
     static func performUnsafeSearchControllerStyling(searchController: UISearchController) {
         styleSearchBar(searchController.searchBar)
         
+        guard #available(iOS 11.0, *) else { return }
+        
         guard let backgroundview = resolveStylableBackgroundFromPrivateViewHiearchy(searchBar: searchController.searchBar) else { return }
         
         backgroundview.backgroundColor = .white
@@ -78,6 +80,9 @@ struct Theme {
         let buttonInsideTableView = UIButton.appearance(whenContainedInInstancesOf: [UITableViewCell.self])
         buttonInsideTableView.setTitleColor(.pantone330U, for: .normal)
         buttonInsideTableView.setTitleColor(.conferenceGrey, for: .disabled)
+        
+        let buttonInsideEventCell = UIButton.appearance(whenContainedInInstancesOf: [EventTableViewCell.self])
+        buttonInsideEventCell.setTitleColor(.white, for: .normal)
     }
 
     private static func styleButtonsWithinNavigationBars() {

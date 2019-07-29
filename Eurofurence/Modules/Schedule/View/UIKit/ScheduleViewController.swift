@@ -88,11 +88,11 @@ class ScheduleViewController: UIViewController,
         searchController.searchBar.delegate = self
         searchController.searchBar.scopeButtonTitles = [.allEvents, .favourites]
         searchController.searchResultsUpdater = self
+        Theme.performUnsafeSearchControllerStyling(searchController: searchController)
         
         if #available(iOS 11.0, *) {
             navigationItem.searchController = searchController
             navigationItem.rightBarButtonItem = nil
-            Theme.performUnsafeSearchControllerStyling(searchController: searchController)
         }
         
         self.searchController = searchController

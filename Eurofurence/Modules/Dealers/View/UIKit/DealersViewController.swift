@@ -71,11 +71,11 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
         let searchController = UISearchController(searchResultsController: searchViewController)
         searchController.delegate = self
         searchController.searchResultsUpdater = self
+        Theme.performUnsafeSearchControllerStyling(searchController: searchController)
         
         if #available(iOS 11.0, *) {
             navigationItem.searchController = searchController
             navigationItem.rightBarButtonItem = nil
-            Theme.performUnsafeSearchControllerStyling(searchController: searchController)
         }
         
         self.searchController = searchController
