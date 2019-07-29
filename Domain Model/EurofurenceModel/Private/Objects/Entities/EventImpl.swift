@@ -96,6 +96,10 @@ class EventImpl: Event {
         observers.append(observer)
         provideFavouritedStateToObserver(observer)
     }
+    
+    func remove(_ observer: EventObserver) {
+        observers.removeAll(where: { $0 === observer })
+    }
 
     private var isFavourite: Bool {
         didSet {

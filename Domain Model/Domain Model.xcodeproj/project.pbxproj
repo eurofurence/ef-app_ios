@@ -458,6 +458,7 @@
 		CAA10FDC22C5E13C00689A32 /* SyncBeforeContinuingNotificationPayloadDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA10FDB22C5E13C00689A32 /* SyncBeforeContinuingNotificationPayloadDecoder.swift */; };
 		CAA10FDE22C5E14600689A32 /* AnnouncementNotificationPayloadDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA10FDD22C5E14600689A32 /* AnnouncementNotificationPayloadDecoder.swift */; };
 		CAA10FE022C5E15000689A32 /* SuccessfulSyncNotificationPayloadDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA10FDF22C5E15000689A32 /* SuccessfulSyncNotificationPayloadDecoder.swift */; };
+		CAA7DE3522EF827100A6984D /* WhenUnhookingFromEventObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA7DE3422EF827100A6984D /* WhenUnhookingFromEventObservation.swift */; };
 		CAB0FD5E22C9128800D4CB98 /* WhenDescribingAppLink_WithValidEventIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB0FD5D22C9128800D4CB98 /* WhenDescribingAppLink_WithValidEventIdentifier.swift */; };
 		CAB0FD6122C915BC00D4CB98 /* CapturingURLContentVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB0FD6022C915BC00D4CB98 /* CapturingURLContentVisitor.swift */; };
 		CAB0FD6322C915D400D4CB98 /* WhenDescribingAppLink_WithInvalidEventIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB0FD6222C915D400D4CB98 /* WhenDescribingAppLink_WithInvalidEventIdentifier.swift */; };
@@ -954,6 +955,7 @@
 		CAA10FDB22C5E13C00689A32 /* SyncBeforeContinuingNotificationPayloadDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncBeforeContinuingNotificationPayloadDecoder.swift; sourceTree = "<group>"; };
 		CAA10FDD22C5E14600689A32 /* AnnouncementNotificationPayloadDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementNotificationPayloadDecoder.swift; sourceTree = "<group>"; };
 		CAA10FDF22C5E15000689A32 /* SuccessfulSyncNotificationPayloadDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessfulSyncNotificationPayloadDecoder.swift; sourceTree = "<group>"; };
+		CAA7DE3422EF827100A6984D /* WhenUnhookingFromEventObservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenUnhookingFromEventObservation.swift; sourceTree = "<group>"; };
 		CAB0FD5D22C9128800D4CB98 /* WhenDescribingAppLink_WithValidEventIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDescribingAppLink_WithValidEventIdentifier.swift; sourceTree = "<group>"; };
 		CAB0FD6022C915BC00D4CB98 /* CapturingURLContentVisitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingURLContentVisitor.swift; sourceTree = "<group>"; };
 		CAB0FD6222C915D400D4CB98 /* WhenDescribingAppLink_WithInvalidEventIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDescribingAppLink_WithInvalidEventIdentifier.swift; sourceTree = "<group>"; };
@@ -1840,6 +1842,7 @@
 				CA7A316122B16E25002AD939 /* WhenSyncFinishesForEventWithPoster_WhenImageAPIIsSlow_ApplicationShould.swift */,
 				CA7A315922B16E25002AD939 /* Favourites */,
 				CA7A316222B16E25002AD939 /* Feedback */,
+				CAA7DE3322EF825D00A6984D /* Observation */,
 				CA7A314822B16E25002AD939 /* Running */,
 				CA7A314E22B16E25002AD939 /* Tag Adaption */,
 				CA7A316B22B16E25002AD939 /* Upcoming */,
@@ -2173,6 +2176,14 @@
 				CAA10FDF22C5E15000689A32 /* SuccessfulSyncNotificationPayloadDecoder.swift */,
 			);
 			path = "Payload Decoding";
+			sourceTree = "<group>";
+		};
+		CAA7DE3322EF825D00A6984D /* Observation */ = {
+			isa = PBXGroup;
+			children = (
+				CAA7DE3422EF827100A6984D /* WhenUnhookingFromEventObservation.swift */,
+			);
+			path = Observation;
 			sourceTree = "<group>";
 		};
 		CAB0FD5C22C9126F00D4CB98 /* App Links */ = {
@@ -2857,6 +2868,7 @@
 				CA7A322122B16E26002AD939 /* WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift in Sources */,
 				CA7A31A022B16E26002AD939 /* KnowledgeEntryAssertion.swift in Sources */,
 				CA7A31E322B16E26002AD939 /* CapturingMapCoordinateRender.swift in Sources */,
+				CAA7DE3522EF827100A6984D /* WhenUnhookingFromEventObservation.swift in Sources */,
 				CA7A323622B16E26002AD939 /* WhenCharacteristicsIndicatesEventAcceptsFeedback.swift in Sources */,
 				CAA10FCA22C5597C00689A32 /* WhenResolvingMessageByItsIdentifier.swift in Sources */,
 				CAB0FD6122C915BC00D4CB98 /* CapturingURLContentVisitor.swift in Sources */,
