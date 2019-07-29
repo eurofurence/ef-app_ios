@@ -35,6 +35,7 @@ class EventImpl: Event {
     var isMainStage: Bool
     var isPhotoshoot: Bool
     var isAcceptingFeedback: Bool
+    var day: ConferenceDayCharacteristics
 
     init(eventBus: EventBus,
          imageCache: ImagesCache,
@@ -59,7 +60,8 @@ class EventImpl: Event {
          isDealersDen: Bool,
          isMainStage: Bool,
          isPhotoshoot: Bool,
-         isAcceptingFeedback: Bool) {
+         isAcceptingFeedback: Bool,
+         day: ConferenceDayCharacteristics) {
         self.eventBus = eventBus
         self.imageCache = imageCache
         self.shareableURLFactory = shareableURLFactory
@@ -85,6 +87,8 @@ class EventImpl: Event {
         self.isMainStage = isMainStage
         self.isPhotoshoot = isPhotoshoot
         self.isAcceptingFeedback = isAcceptingFeedback
+        
+        self.day = day
     }
 
     private var observers: [EventObserver] = []

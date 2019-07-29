@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA08B11022EF76D100FDAAA7 /* WhenFavouritingEvent_WithScheduleAndSearchControllerActive.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08B10F22EF76D100FDAAA7 /* WhenFavouritingEvent_WithScheduleAndSearchControllerActive.swift */; };
 		CA17015022B183880067BCDE /* EurofurenceModelTestDoubles-Swift.h in Headers */ = {isa = PBXBuildFile; fileRef = CA17014F22B183880067BCDE /* EurofurenceModelTestDoubles-Swift.h */; };
 		CA17015122B188290067BCDE /* EurofurenceModelTestDoubles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A326922B16E75002AD939 /* EurofurenceModelTestDoubles.framework */; };
 		CA25A87522C15F4F00226478 /* WhenRequestingStoreRefresh_MultipleTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA25A87422C15F4F00226478 /* WhenRequestingStoreRefresh_MultipleTimes.swift */; };
@@ -498,6 +499,7 @@
 		99A743451D3A54C8CD79721D /* Pods-EurofurenceModelTestDoubles.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EurofurenceModelTestDoubles.release.xcconfig"; path = "Target Support Files/Pods-EurofurenceModelTestDoubles/Pods-EurofurenceModelTestDoubles.release.xcconfig"; sourceTree = "<group>"; };
 		A3B0DDF6C8403F4E4C678F5B /* Pods_EurofurenceModelAdapterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EurofurenceModelAdapterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD2DE387F01CB519CFFD1718 /* Pods-EurofurenceModelTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EurofurenceModelTests.debug.xcconfig"; path = "Target Support Files/Pods-EurofurenceModelTests/Pods-EurofurenceModelTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CA08B10F22EF76D100FDAAA7 /* WhenFavouritingEvent_WithScheduleAndSearchControllerActive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFavouritingEvent_WithScheduleAndSearchControllerActive.swift; sourceTree = "<group>"; };
 		CA17014F22B183880067BCDE /* EurofurenceModelTestDoubles-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EurofurenceModelTestDoubles-Swift.h"; sourceTree = "<group>"; };
 		CA25A87422C15F4F00226478 /* WhenRequestingStoreRefresh_MultipleTimes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenRequestingStoreRefresh_MultipleTimes.swift; sourceTree = "<group>"; };
 		CA2AA2D922C941C200C0E1A1 /* WhenDescribingAppLink_WithValidDealerIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDescribingAppLink_WithValidDealerIdentifier.swift; sourceTree = "<group>"; };
@@ -1874,6 +1876,7 @@
 			isa = PBXGroup;
 			children = (
 				CA7A315E22B16E25002AD939 /* WhenFavouritingEvent_ApplicationShould.swift */,
+				CA08B10F22EF76D100FDAAA7 /* WhenFavouritingEvent_WithScheduleAndSearchControllerActive.swift */,
 				CA7A315A22B16E25002AD939 /* WhenFavouritingMultipleEvents_ApplicationShould.swift */,
 				CA7A315F22B16E25002AD939 /* WhenFavouritingThenUnfavouritingEvent.swift */,
 				CA7A315B22B16E25002AD939 /* WhenLaunchingApplicationWithPreexistingFavourites.swift */,
@@ -2827,6 +2830,7 @@
 				CA7A31B022B16E26002AD939 /* WhenDataStoreAlreadyContainsMaps_ApplicationShould.swift in Sources */,
 				CA7A319922B16E26002AD939 /* KnowledgeGroupsRemoveAllBeforeInsertTests.swift in Sources */,
 				CA8A73E522BD2429007A5201 /* HardcodedCompanionAppURLRequestFactoryTests.swift in Sources */,
+				CA08B11022EF76D100FDAAA7 /* WhenFavouritingEvent_WithScheduleAndSearchControllerActive.swift in Sources */,
 				CA7A322322B16E26002AD939 /* InOrderToSupportKageTag_ApplicationShould.swift in Sources */,
 				CA7A319C22B16E26002AD939 /* WhenDeletingKnowledgeGroup_AfterSuccessfulSync_ApplicationShould.swift in Sources */,
 				CA7A31C522B16E26002AD939 /* WhenPerformingSubsequentRefresh_WhereConventionIdentifierMismatchDetected.swift in Sources */,
