@@ -62,6 +62,21 @@ final class StubScheduleEventViewModel: ScheduleEventViewModelProtocol {
         self.isMainStageEvent = isMainStageEvent
         self.isPhotoshootEvent = isPhotoshootEvent
     }
+    
+    private var observers = [ScheduleEventViewModelObserver]()
+    func add(_ observer: ScheduleEventViewModelObserver) {
+        observers.append(observer)
+    }
+    
+    func favourite() {
+        isFavourite = true
+        observers.forEach({ $0.eventViewModelDidBecomeFavourite(self) })
+    }
+    
+    func unfavourite() {
+        isFavourite = false
+        observers.forEach({ $0.eventViewModelDidBecomeNonFavourite(self) })
+    }
 
 }
 

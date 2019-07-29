@@ -15,5 +15,16 @@ protocol ScheduleEventViewModelProtocol {
     var isDealersDenEvent: Bool { get }
     var isMainStageEvent: Bool { get }
     var isPhotoshootEvent: Bool { get }
+    
+    func add(_ observer: ScheduleEventViewModelObserver)
+    func favourite()
+    func unfavourite()
 
+}
+
+protocol ScheduleEventViewModelObserver {
+    
+    func eventViewModelDidBecomeFavourite(_ viewModel: ScheduleEventViewModelProtocol)
+    func eventViewModelDidBecomeNonFavourite(_ viewModel: ScheduleEventViewModelProtocol)
+    
 }

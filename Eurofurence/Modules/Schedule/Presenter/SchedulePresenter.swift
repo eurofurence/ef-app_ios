@@ -2,10 +2,25 @@ import Foundation
 
 class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, ScheduleSearchViewModelDelegate {
 
-    private struct EventComponentBinder {
+    private struct EventComponentBinder: ScheduleEventViewModelObserver {
 
-        var component: ScheduleEventComponent
-        var event: ScheduleEventViewModelProtocol
+        private let component: ScheduleEventComponent
+        private let viewModel: ScheduleEventViewModelProtocol
+
+        init(component: ScheduleEventComponent, viewModel: ScheduleEventViewModelProtocol) {
+            self.component = component
+            self.viewModel = viewModel
+            
+            viewModel.add(self)
+        }
+        
+        func eventViewModelDidBecomeFavourite(_ viewModel: ScheduleEventViewModelProtocol) {
+            component.showFavouriteEventIndicator()
+        }
+        
+        func eventViewModelDidBecomeNonFavourite(_ viewModel: ScheduleEventViewModelProtocol) {
+            component.hideFavouriteEventIndicator()
+        }
 
         func bind() {
             bindTextualAttributes()
@@ -14,16 +29,16 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
         }
 
         private func bindTextualAttributes() {
-            component.setEventName(event.title)
-            component.setEventStartTime(event.startTime)
-            component.setEventEndTime(event.endTime)
-            component.setLocation(event.location)
+            component.setEventName(viewModel.title)
+            component.setEventStartTime(viewModel.startTime)
+            component.setEventEndTime(viewModel.endTime)
+            component.setLocation(viewModel.location)
         }
 
         private func bindBannerGraphic() {
-            event.bannerGraphicPNGData.let(component.setBannerGraphicPNGData)
+            viewModel.bannerGraphicPNGData.let(component.setBannerGraphicPNGData)
 
-            if event.bannerGraphicPNGData != nil {
+            if viewModel.bannerGraphicPNGData != nil {
                 component.showBanner()
             } else {
                 component.hideBanner()
@@ -42,7 +57,7 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
         }
 
         private func bindSponsorOnlyIcon() {
-            if event.isSponsorOnly {
+            if viewModel.isSponsorOnly {
                 component.showSponsorEventIndicator()
             } else {
                 component.hideSponsorEventIndicator()
@@ -50,7 +65,7 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
         }
 
         private func bindSuperSponsorOnlyIcon() {
-            if event.isSuperSponsorOnly {
+            if viewModel.isSuperSponsorOnly {
                 component.showSuperSponsorOnlyEventIndicator()
             } else {
                 component.hideSuperSponsorOnlyEventIndicator()
@@ -58,7 +73,7 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
         }
 
         private func bindFavouriteIcon() {
-            if event.isFavourite {
+            if viewModel.isFavourite {
                 component.showFavouriteEventIndicator()
             } else {
                 component.hideFavouriteEventIndicator()
@@ -66,7 +81,7 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
         }
 
         private func bindArtShowIcon() {
-            if event.isArtShow {
+            if viewModel.isArtShow {
                 component.showArtShowEventIndicator()
             } else {
                 component.hideArtShowEventIndicator()
@@ -74,7 +89,7 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
         }
 
         private func bindKageIcon() {
-            if event.isKageEvent {
+            if viewModel.isKageEvent {
                 component.showKageEventIndicator()
             } else {
                 component.hideKageEventIndicator()
@@ -82,7 +97,7 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
         }
 
         private func bindDealersDenIcon() {
-            if event.isDealersDenEvent {
+            if viewModel.isDealersDenEvent {
                 component.showDealersDenEventIndicator()
             } else {
                 component.hideDealersDenEventIndicator()
@@ -90,7 +105,7 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
         }
 
         private func bindMainStageIcon() {
-            if event.isMainStageEvent {
+            if viewModel.isMainStageEvent {
                 component.showMainStageEventIndicator()
             } else {
                 component.hideMainStageEventIndicator()
@@ -98,7 +113,7 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
         }
 
         private func bindPhotoshootIcon() {
-            if event.isPhotoshootEvent {
+            if viewModel.isPhotoshootEvent {
                 component.showPhotoshootStageEventIndicator()
             } else {
                 component.hidePhotoshootStageEventIndicator()
@@ -107,11 +122,20 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
 
     }
 
-    private struct EventsBinder: ScheduleSceneBinder {
+    private class EventsBinder: ScheduleSceneBinder {
 
-        var viewModels: [ScheduleEventGroupViewModel]
-        var favouriteHandler: (IndexPath) -> Void
-        var unfavouriteHandler: (IndexPath) -> Void
+        private let viewModels: [ScheduleEventGroupViewModel]
+        private let favouriteHandler: (IndexPath) -> Void
+        private let unfavouriteHandler: (IndexPath) -> Void
+        private var eventBinders = [IndexPath: EventComponentBinder]()
+
+        init(viewModels: [ScheduleEventGroupViewModel],
+             favouriteHandler: @escaping (IndexPath) -> Void,
+             unfavouriteHandler: @escaping (IndexPath) -> Void) {
+            self.viewModels = viewModels
+            self.favouriteHandler = favouriteHandler
+            self.unfavouriteHandler = unfavouriteHandler
+        }
 
         func bind(_ header: ScheduleEventGroupHeader, forGroupAt index: Int) {
             let group = viewModels[index]
@@ -120,8 +144,11 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
 
         func bind(_ eventComponent: ScheduleEventComponent, forEventAt indexPath: IndexPath) {
             let group = viewModels[indexPath.section]
-            let event = group.events[indexPath.item]
-            EventComponentBinder(component: eventComponent, event: event).bind()
+            let eventViewModel = group.events[indexPath.item]
+            let binder = EventComponentBinder(component: eventComponent, viewModel: eventViewModel)
+            binder.bind()
+            
+            eventBinders[indexPath] = binder
         }
 
         func eventActionForComponent(at indexPath: IndexPath) -> ScheduleEventComponentAction {
