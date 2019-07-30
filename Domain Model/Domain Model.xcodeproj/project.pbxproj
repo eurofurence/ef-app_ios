@@ -459,6 +459,7 @@
 		CAA10FDE22C5E14600689A32 /* AnnouncementNotificationPayloadDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA10FDD22C5E14600689A32 /* AnnouncementNotificationPayloadDecoder.swift */; };
 		CAA10FE022C5E15000689A32 /* SuccessfulSyncNotificationPayloadDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA10FDF22C5E15000689A32 /* SuccessfulSyncNotificationPayloadDecoder.swift */; };
 		CAA7DE3522EF827100A6984D /* WhenUnhookingFromEventObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA7DE3422EF827100A6984D /* WhenUnhookingFromEventObservation.swift */; };
+		CAA7DE3922F0C75600A6984D /* WhenPerformingEventSearch_NotRestrictedToFavourites_ThenToggleEventFavouriteState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA7DE3822F0C75600A6984D /* WhenPerformingEventSearch_NotRestrictedToFavourites_ThenToggleEventFavouriteState.swift */; };
 		CAB0FD5E22C9128800D4CB98 /* WhenDescribingAppLink_WithValidEventIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB0FD5D22C9128800D4CB98 /* WhenDescribingAppLink_WithValidEventIdentifier.swift */; };
 		CAB0FD6122C915BC00D4CB98 /* CapturingURLContentVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB0FD6022C915BC00D4CB98 /* CapturingURLContentVisitor.swift */; };
 		CAB0FD6322C915D400D4CB98 /* WhenDescribingAppLink_WithInvalidEventIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB0FD6222C915D400D4CB98 /* WhenDescribingAppLink_WithInvalidEventIdentifier.swift */; };
@@ -956,6 +957,7 @@
 		CAA10FDD22C5E14600689A32 /* AnnouncementNotificationPayloadDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementNotificationPayloadDecoder.swift; sourceTree = "<group>"; };
 		CAA10FDF22C5E15000689A32 /* SuccessfulSyncNotificationPayloadDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessfulSyncNotificationPayloadDecoder.swift; sourceTree = "<group>"; };
 		CAA7DE3422EF827100A6984D /* WhenUnhookingFromEventObservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenUnhookingFromEventObservation.swift; sourceTree = "<group>"; };
+		CAA7DE3822F0C75600A6984D /* WhenPerformingEventSearch_NotRestrictedToFavourites_ThenToggleEventFavouriteState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPerformingEventSearch_NotRestrictedToFavourites_ThenToggleEventFavouriteState.swift; sourceTree = "<group>"; };
 		CAB0FD5D22C9128800D4CB98 /* WhenDescribingAppLink_WithValidEventIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDescribingAppLink_WithValidEventIdentifier.swift; sourceTree = "<group>"; };
 		CAB0FD6022C915BC00D4CB98 /* CapturingURLContentVisitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingURLContentVisitor.swift; sourceTree = "<group>"; };
 		CAB0FD6222C915D400D4CB98 /* WhenDescribingAppLink_WithInvalidEventIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDescribingAppLink_WithInvalidEventIdentifier.swift; sourceTree = "<group>"; };
@@ -1844,6 +1846,7 @@
 				CA7A316222B16E25002AD939 /* Feedback */,
 				CAA7DE3322EF825D00A6984D /* Observation */,
 				CA7A314822B16E25002AD939 /* Running */,
+				CAA7DE3A22F0C81400A6984D /* Searching */,
 				CA7A314E22B16E25002AD939 /* Tag Adaption */,
 				CA7A316B22B16E25002AD939 /* Upcoming */,
 			);
@@ -2184,6 +2187,14 @@
 				CAA7DE3422EF827100A6984D /* WhenUnhookingFromEventObservation.swift */,
 			);
 			path = Observation;
+			sourceTree = "<group>";
+		};
+		CAA7DE3A22F0C81400A6984D /* Searching */ = {
+			isa = PBXGroup;
+			children = (
+				CAA7DE3822F0C75600A6984D /* WhenPerformingEventSearch_NotRestrictedToFavourites_ThenToggleEventFavouriteState.swift */,
+			);
+			path = Searching;
 			sourceTree = "<group>";
 		};
 		CAB0FD5C22C9126F00D4CB98 /* App Links */ = {
@@ -2839,6 +2850,7 @@
 				CA7A321422B16E26002AD939 /* EurofurenceModelTestAssets.swift in Sources */,
 				CA7A31D122B16E26002AD939 /* WhenFullRefreshOccurs_YieldingOrphanedEntities.swift in Sources */,
 				CA7A31B022B16E26002AD939 /* WhenDataStoreAlreadyContainsMaps_ApplicationShould.swift in Sources */,
+				CAA7DE3922F0C75600A6984D /* WhenPerformingEventSearch_NotRestrictedToFavourites_ThenToggleEventFavouriteState.swift in Sources */,
 				CA7A319922B16E26002AD939 /* KnowledgeGroupsRemoveAllBeforeInsertTests.swift in Sources */,
 				CA8A73E522BD2429007A5201 /* HardcodedCompanionAppURLRequestFactoryTests.swift in Sources */,
 				CA08B11022EF76D100FDAAA7 /* WhenFavouritingEvent_WithScheduleAndSearchControllerActive.swift in Sources */,
