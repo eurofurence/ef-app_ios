@@ -1,7 +1,11 @@
 # Helper functions and variables
 
 def is_dir_modified(dir)
-    return !git.modified_files.grep(/#{Regexp.quote(dir)}\//).empty?
+    dir_regex = /#{Regexp.quote(dir)}\//
+    modified_dir = !git.modified_files.grep(dir_regex).empty?
+    added_to_dir = !git.added_files.grep(dir_regex).empty?
+    
+    return modified_dir || added_to_dir
 end
 
 declared_trivial = github.pr_title.include? "#trivial"
