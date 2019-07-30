@@ -71,6 +71,9 @@ class DefaultMapDetailInteractor: MapDetailInteractor, MapsObserver {
                 case .dealer(let dealer):
                     return dealer.preferredName
 
+                case .location(_, _, let name):
+                    return name
+
                 default:
                     return nil
                 }
