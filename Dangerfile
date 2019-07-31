@@ -1,15 +1,23 @@
 # Helper functions and variables
 
 def is_dir_modified(dir)
-    return !git.modified_files.grep(/#{Regexp.quote(dir)}\//).empty?
+    dir_regex = /#{Regexp.quote(dir)}\//
+    modified_dir = !git.modified_files.grep(dir_regex).empty?
+    added_to_dir = !git.added_files.grep(dir_regex).empty?
+    
+    return modified_dir || added_to_dir
 end
 
 declared_trivial = github.pr_title.include? "#trivial"
 
-# --- Branching Strategy
+# --- Git Hygine
 
-def catch_branching_strategy_violations
-    failure("Please rebase to get rid of the merge commits in this PR") unless github.branch_for_base.include? "release"
+def perform_git_hygiene_checks
+    # Prefer rebasing in-progress features onto the destination branch rather than polluting the history
+    
+    if git.commits.any? { |c| c.message =~ /^Merge branch '#{github.branch_for_base}'/ }
+        fail("Please rebase to get rid of the merge commits in this PR")
+    end
 end
 
 # --- Basic PR Checks
@@ -25,13 +33,10 @@ def perform_basic_pr_checks
     warn("This PR is pretty big. Consider breaking the change down into smaller slices") if git.lines_of_code > 500
     warn("Please add a short summary about the change you have made in the PR description") unless github.pr_body.length > 10
 
-    # Prefer rebasing in-progress features onto the destination branch rather than polluting the history
-    
-    if git.commits.any? { |c| c.message =~ /^Merge branch '#{github.branch_for_base}'/ }
-        fail("Please rebase to get rid of the merge commits in this PR")
-    end
-
-    ["Eurofurence.xcodeproj"].each do |project_file|
+    ["Eurofurence.xcodeproj",
+     "Domain Model/Domain Model.xcodeproj",
+     "Shared Kernel/Shared Kernel.xcodeproj"
+    ].each do |project_file|
         next unless File.file?(project_file)
 
         File.readlines(project_file).each_with_index do |line, index|
@@ -102,7 +107,7 @@ end
 
 # ---
 
-catch_branching_strategy_violations
+perform_git_hygiene_checks
 perform_basic_pr_checks
 catch_untested_code
 perform_swift_code_review

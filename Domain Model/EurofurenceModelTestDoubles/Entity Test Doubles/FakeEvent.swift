@@ -80,6 +80,10 @@ public final class FakeEvent: Event {
         observers.append(observer)
         notifyObserverOfCurrentFavouriteStateAsPerEventContract(observer)
     }
+    
+    public func remove(_ observer: EventObserver) {
+        observers.removeAll(where: { $0 === observer })
+    }
 
     public private(set) var favouritedState: FavouritedState
     public func favourite() {

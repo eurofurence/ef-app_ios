@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA08B11022EF76D100FDAAA7 /* WhenFavouritingEvent_WithScheduleAndSearchControllerActive.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08B10F22EF76D100FDAAA7 /* WhenFavouritingEvent_WithScheduleAndSearchControllerActive.swift */; };
 		CA17015022B183880067BCDE /* EurofurenceModelTestDoubles-Swift.h in Headers */ = {isa = PBXBuildFile; fileRef = CA17014F22B183880067BCDE /* EurofurenceModelTestDoubles-Swift.h */; };
 		CA17015122B188290067BCDE /* EurofurenceModelTestDoubles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A326922B16E75002AD939 /* EurofurenceModelTestDoubles.framework */; };
 		CA25A87522C15F4F00226478 /* WhenRequestingStoreRefresh_MultipleTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA25A87422C15F4F00226478 /* WhenRequestingStoreRefresh_MultipleTimes.swift */; };
@@ -457,6 +458,8 @@
 		CAA10FDC22C5E13C00689A32 /* SyncBeforeContinuingNotificationPayloadDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA10FDB22C5E13C00689A32 /* SyncBeforeContinuingNotificationPayloadDecoder.swift */; };
 		CAA10FDE22C5E14600689A32 /* AnnouncementNotificationPayloadDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA10FDD22C5E14600689A32 /* AnnouncementNotificationPayloadDecoder.swift */; };
 		CAA10FE022C5E15000689A32 /* SuccessfulSyncNotificationPayloadDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA10FDF22C5E15000689A32 /* SuccessfulSyncNotificationPayloadDecoder.swift */; };
+		CAA7DE3522EF827100A6984D /* WhenUnhookingFromEventObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA7DE3422EF827100A6984D /* WhenUnhookingFromEventObservation.swift */; };
+		CAA7DE3922F0C75600A6984D /* WhenPerformingEventSearch_NotRestrictedToFavourites_ThenToggleEventFavouriteState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA7DE3822F0C75600A6984D /* WhenPerformingEventSearch_NotRestrictedToFavourites_ThenToggleEventFavouriteState.swift */; };
 		CAB0FD5E22C9128800D4CB98 /* WhenDescribingAppLink_WithValidEventIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB0FD5D22C9128800D4CB98 /* WhenDescribingAppLink_WithValidEventIdentifier.swift */; };
 		CAB0FD6122C915BC00D4CB98 /* CapturingURLContentVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB0FD6022C915BC00D4CB98 /* CapturingURLContentVisitor.swift */; };
 		CAB0FD6322C915D400D4CB98 /* WhenDescribingAppLink_WithInvalidEventIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB0FD6222C915D400D4CB98 /* WhenDescribingAppLink_WithInvalidEventIdentifier.swift */; };
@@ -498,6 +501,7 @@
 		99A743451D3A54C8CD79721D /* Pods-EurofurenceModelTestDoubles.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EurofurenceModelTestDoubles.release.xcconfig"; path = "Target Support Files/Pods-EurofurenceModelTestDoubles/Pods-EurofurenceModelTestDoubles.release.xcconfig"; sourceTree = "<group>"; };
 		A3B0DDF6C8403F4E4C678F5B /* Pods_EurofurenceModelAdapterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EurofurenceModelAdapterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD2DE387F01CB519CFFD1718 /* Pods-EurofurenceModelTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EurofurenceModelTests.debug.xcconfig"; path = "Target Support Files/Pods-EurofurenceModelTests/Pods-EurofurenceModelTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CA08B10F22EF76D100FDAAA7 /* WhenFavouritingEvent_WithScheduleAndSearchControllerActive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFavouritingEvent_WithScheduleAndSearchControllerActive.swift; sourceTree = "<group>"; };
 		CA17014F22B183880067BCDE /* EurofurenceModelTestDoubles-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EurofurenceModelTestDoubles-Swift.h"; sourceTree = "<group>"; };
 		CA25A87422C15F4F00226478 /* WhenRequestingStoreRefresh_MultipleTimes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenRequestingStoreRefresh_MultipleTimes.swift; sourceTree = "<group>"; };
 		CA2AA2D922C941C200C0E1A1 /* WhenDescribingAppLink_WithValidDealerIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDescribingAppLink_WithValidDealerIdentifier.swift; sourceTree = "<group>"; };
@@ -952,6 +956,8 @@
 		CAA10FDB22C5E13C00689A32 /* SyncBeforeContinuingNotificationPayloadDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncBeforeContinuingNotificationPayloadDecoder.swift; sourceTree = "<group>"; };
 		CAA10FDD22C5E14600689A32 /* AnnouncementNotificationPayloadDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementNotificationPayloadDecoder.swift; sourceTree = "<group>"; };
 		CAA10FDF22C5E15000689A32 /* SuccessfulSyncNotificationPayloadDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessfulSyncNotificationPayloadDecoder.swift; sourceTree = "<group>"; };
+		CAA7DE3422EF827100A6984D /* WhenUnhookingFromEventObservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenUnhookingFromEventObservation.swift; sourceTree = "<group>"; };
+		CAA7DE3822F0C75600A6984D /* WhenPerformingEventSearch_NotRestrictedToFavourites_ThenToggleEventFavouriteState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPerformingEventSearch_NotRestrictedToFavourites_ThenToggleEventFavouriteState.swift; sourceTree = "<group>"; };
 		CAB0FD5D22C9128800D4CB98 /* WhenDescribingAppLink_WithValidEventIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDescribingAppLink_WithValidEventIdentifier.swift; sourceTree = "<group>"; };
 		CAB0FD6022C915BC00D4CB98 /* CapturingURLContentVisitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingURLContentVisitor.swift; sourceTree = "<group>"; };
 		CAB0FD6222C915D400D4CB98 /* WhenDescribingAppLink_WithInvalidEventIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDescribingAppLink_WithInvalidEventIdentifier.swift; sourceTree = "<group>"; };
@@ -1838,7 +1844,9 @@
 				CA7A316122B16E25002AD939 /* WhenSyncFinishesForEventWithPoster_WhenImageAPIIsSlow_ApplicationShould.swift */,
 				CA7A315922B16E25002AD939 /* Favourites */,
 				CA7A316222B16E25002AD939 /* Feedback */,
+				CAA7DE3322EF825D00A6984D /* Observation */,
 				CA7A314822B16E25002AD939 /* Running */,
+				CAA7DE3A22F0C81400A6984D /* Searching */,
 				CA7A314E22B16E25002AD939 /* Tag Adaption */,
 				CA7A316B22B16E25002AD939 /* Upcoming */,
 			);
@@ -1874,6 +1882,7 @@
 			isa = PBXGroup;
 			children = (
 				CA7A315E22B16E25002AD939 /* WhenFavouritingEvent_ApplicationShould.swift */,
+				CA08B10F22EF76D100FDAAA7 /* WhenFavouritingEvent_WithScheduleAndSearchControllerActive.swift */,
 				CA7A315A22B16E25002AD939 /* WhenFavouritingMultipleEvents_ApplicationShould.swift */,
 				CA7A315F22B16E25002AD939 /* WhenFavouritingThenUnfavouritingEvent.swift */,
 				CA7A315B22B16E25002AD939 /* WhenLaunchingApplicationWithPreexistingFavourites.swift */,
@@ -2170,6 +2179,22 @@
 				CAA10FDF22C5E15000689A32 /* SuccessfulSyncNotificationPayloadDecoder.swift */,
 			);
 			path = "Payload Decoding";
+			sourceTree = "<group>";
+		};
+		CAA7DE3322EF825D00A6984D /* Observation */ = {
+			isa = PBXGroup;
+			children = (
+				CAA7DE3422EF827100A6984D /* WhenUnhookingFromEventObservation.swift */,
+			);
+			path = Observation;
+			sourceTree = "<group>";
+		};
+		CAA7DE3A22F0C81400A6984D /* Searching */ = {
+			isa = PBXGroup;
+			children = (
+				CAA7DE3822F0C75600A6984D /* WhenPerformingEventSearch_NotRestrictedToFavourites_ThenToggleEventFavouriteState.swift */,
+			);
+			path = Searching;
 			sourceTree = "<group>";
 		};
 		CAB0FD5C22C9126F00D4CB98 /* App Links */ = {
@@ -2825,8 +2850,10 @@
 				CA7A321422B16E26002AD939 /* EurofurenceModelTestAssets.swift in Sources */,
 				CA7A31D122B16E26002AD939 /* WhenFullRefreshOccurs_YieldingOrphanedEntities.swift in Sources */,
 				CA7A31B022B16E26002AD939 /* WhenDataStoreAlreadyContainsMaps_ApplicationShould.swift in Sources */,
+				CAA7DE3922F0C75600A6984D /* WhenPerformingEventSearch_NotRestrictedToFavourites_ThenToggleEventFavouriteState.swift in Sources */,
 				CA7A319922B16E26002AD939 /* KnowledgeGroupsRemoveAllBeforeInsertTests.swift in Sources */,
 				CA8A73E522BD2429007A5201 /* HardcodedCompanionAppURLRequestFactoryTests.swift in Sources */,
+				CA08B11022EF76D100FDAAA7 /* WhenFavouritingEvent_WithScheduleAndSearchControllerActive.swift in Sources */,
 				CA7A322322B16E26002AD939 /* InOrderToSupportKageTag_ApplicationShould.swift in Sources */,
 				CA7A319C22B16E26002AD939 /* WhenDeletingKnowledgeGroup_AfterSuccessfulSync_ApplicationShould.swift in Sources */,
 				CA7A31C522B16E26002AD939 /* WhenPerformingSubsequentRefresh_WhereConventionIdentifierMismatchDetected.swift in Sources */,
@@ -2853,6 +2880,7 @@
 				CA7A322122B16E26002AD939 /* WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift in Sources */,
 				CA7A31A022B16E26002AD939 /* KnowledgeEntryAssertion.swift in Sources */,
 				CA7A31E322B16E26002AD939 /* CapturingMapCoordinateRender.swift in Sources */,
+				CAA7DE3522EF827100A6984D /* WhenUnhookingFromEventObservation.swift in Sources */,
 				CA7A323622B16E26002AD939 /* WhenCharacteristicsIndicatesEventAcceptsFeedback.swift in Sources */,
 				CAA10FCA22C5597C00689A32 /* WhenResolvingMessageByItsIdentifier.swift in Sources */,
 				CAB0FD6122C915BC00D4CB98 /* CapturingURLContentVisitor.swift in Sources */,

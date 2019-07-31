@@ -3,7 +3,7 @@ import Foundation
 
 private protocol EventFilter {
 
-    func shouldFilter(event: EventCharacteristics) -> Bool
+    func shouldFilter(event: EventImpl) -> Bool
 
 }
 
@@ -36,8 +36,8 @@ class EventsScheduleAdapter: EventsSchedule {
 
         var day: ConferenceDayCharacteristics
 
-        func shouldFilter(event: EventCharacteristics) -> Bool {
-            return event.dayIdentifier == day.identifier
+        func shouldFilter(event: EventImpl) -> Bool {
+            return event.day.identifier == day.identifier
         }
 
     }
@@ -123,12 +123,12 @@ class EventsScheduleAdapter: EventsSchedule {
     }
 
     private func regenerateSchedule() {
-        var allEvents = schedule.events
+        var allEvents = schedule.eventModels
         filters.forEach { (filter) in
             allEvents = allEvents.filter(filter.shouldFilter)
         }
 
-        events = allEvents.sorted(by: { $0.startDateTime < $1.startDateTime }).compactMap(schedule.makeEventModel)
+        events = allEvents.sorted(by: { $0.startDate < $1.startDate })
         delegate?.scheduleEventsDidChange(to: events)
     }
 

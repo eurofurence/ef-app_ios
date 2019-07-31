@@ -28,7 +28,7 @@ class WhenBindingFavouriteEvent_SchedulePresenterShould: XCTestCase {
         XCTAssertEqual(.unfavourite, action?.title)
     }
 
-    func testTellViewModelToUnfavouriteEventAtIndexPathWhenInvokingAction() {
+    func testTellViewModelToUnfavouriteEventWhenInvokingAction() {
         let eventViewModel = StubScheduleEventViewModel.random
         eventViewModel.isFavourite = true
         let eventGroupViewModel = ScheduleEventGroupViewModel(title: .random, events: [eventViewModel])
@@ -42,7 +42,7 @@ class WhenBindingFavouriteEvent_SchedulePresenterShould: XCTestCase {
         let action = context.scene.binder?.eventActionForComponent(at: indexPath)
         action?.run()
 
-        XCTAssertEqual(indexPath, viewModel.indexPathForUnfavouritedEvent)
+        XCTAssertFalse(eventViewModel.isFavourite, "Running the action should unfavourite the event")
     }
 
 }

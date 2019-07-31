@@ -75,6 +75,12 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
         }
 
         var eventGroupViewModels: [ScheduleEventGroupViewModel] = [] {
+            willSet {
+                eventGroupViewModels
+                    .flatMap({ $0.events })
+                    .compactMap({ $0 as? EventViewModel })
+                    .forEach({ $0.unhookFromEventObservation() })
+            }
             didSet {
                 delegate?.scheduleViewModelDidUpdateEvents(eventGroupViewModels)
             }
@@ -114,19 +120,7 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
             eventGroupViewModels = rawModelGroups.map { (group) -> ScheduleEventGroupViewModel in
                 let title = hoursDateFormatter.hoursString(from: group.date)
                 let viewModels = group.events.map { (event) -> EventViewModel in
-                    return EventViewModel(title: event.title,
-                                          startTime: hoursDateFormatter.hoursString(from: event.startDate),
-                                          endTime: hoursDateFormatter.hoursString(from: event.endDate),
-                                          location: event.room.name,
-                                          bannerGraphicPNGData: event.bannerGraphicPNGData,
-                                          isFavourite: favouriteEvents.contains(event.identifier),
-                                          isSponsorOnly: event.isSponsorOnly,
-                                          isSuperSponsorOnly: event.isSuperSponsorOnly,
-                                          isArtShow: event.isArtShow,
-                                          isKageEvent: event.isKageEvent,
-                                          isDealersDenEvent: event.isDealersDen,
-                                          isMainStageEvent: event.isMainStage,
-                                          isPhotoshootEvent: event.isPhotoshoot)
+                    return EventViewModel(event: event, hoursFormatter: hoursDateFormatter)
                 }
 
                 return ScheduleEventGroupViewModel(title: title, events: viewModels)
@@ -174,16 +168,6 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
             return rawModelGroups[indexPath.section].events[indexPath.row].identifier
         }
 
-        func favouriteEvent(at indexPath: IndexPath) {
-            let event = rawModelGroups[indexPath.section].events[indexPath.item]
-            event.favourite()
-        }
-
-        func unfavouriteEvent(at indexPath: IndexPath) {
-            let event = rawModelGroups[indexPath.section].events[indexPath.item]
-            event.unfavourite()
-        }
-
         func refreshServiceDidBeginRefreshing() {
             delegate?.scheduleViewModelDidBeginRefreshing()
         }
@@ -193,8 +177,7 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
         }
 
         func favouriteEventsDidChange(_ identifiers: [EventIdentifier]) {
-            favouriteEvents = identifiers
-            regenerateEventViewModels()
+            
         }
 
     }
@@ -248,18 +231,7 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
         }
 
         func favouriteEventsDidChange(_ identifiers: [EventIdentifier]) {
-            favouriteEvents = identifiers
-            regenerateViewModel()
-        }
-
-        func favouriteEvent(at indexPath: IndexPath) {
-            let event = rawModelGroups[indexPath.section].events[indexPath.item]
-            event.favourite()
-        }
-
-        func unfavouriteEvent(at indexPath: IndexPath) {
-            let event = rawModelGroups[indexPath.section].events[indexPath.item]
-            event.unfavourite()
+            
         }
 
         private func regenerateViewModel() {
@@ -281,24 +253,36 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
         }
 
         private func makeEventViewModel(_ event: Event) -> EventViewModel {
-            return EventViewModel(title: event.title,
-                                  startTime: hoursDateFormatter.hoursString(from: event.startDate),
-                                  endTime: hoursDateFormatter.hoursString(from: event.endDate),
-                                  location: event.room.name,
-                                  bannerGraphicPNGData: event.bannerGraphicPNGData,
-                                  isFavourite: favouriteEvents.contains(event.identifier),
-                                  isSponsorOnly: event.isSponsorOnly,
-                                  isSuperSponsorOnly: event.isSuperSponsorOnly,
-                                  isArtShow: event.isArtShow,
-                                  isKageEvent: event.isKageEvent,
-                                  isDealersDenEvent: event.isDealersDen,
-                                  isMainStageEvent: event.isMainStage,
-                                  isPhotoshootEvent: event.isPhotoshoot)
+            return EventViewModel(event: event, hoursFormatter: hoursDateFormatter)
         }
 
     }
 
-    private struct EventViewModel: ScheduleEventViewModelProtocol {
+    private class EventViewModel: ScheduleEventViewModelProtocol, EventObserver {
+        
+        private let event: Event
+        private let hoursFormatter: HoursDateFormatter
+        
+        init(event: Event, hoursFormatter: HoursDateFormatter) {
+            self.event = event
+            self.hoursFormatter = hoursFormatter
+            
+            title = event.title
+            startTime = hoursFormatter.hoursString(from: event.startDate)
+            endTime = hoursFormatter.hoursString(from: event.endDate)
+            location = event.room.name
+            bannerGraphicPNGData = event.bannerGraphicPNGData
+            isFavourite = false
+            isSponsorOnly = event.isSponsorOnly
+            isSuperSponsorOnly = event.isSuperSponsorOnly
+            isArtShow = event.isArtShow
+            isKageEvent = event.isKageEvent
+            isDealersDenEvent = event.isDealersDen
+            isMainStageEvent = event.isMainStage
+            isPhotoshootEvent = event.isPhotoshoot
+            
+            event.add(self)
+        }
 
         var title: String
         var startTime: String
@@ -313,6 +297,34 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
         var isDealersDenEvent: Bool
         var isMainStageEvent: Bool
         var isPhotoshootEvent: Bool
+        
+        private weak var observer: ScheduleEventViewModelObserver?
+        
+        func add(_ observer: ScheduleEventViewModelObserver) {
+            self.observer = observer
+        }
+        
+        func favourite() {
+            event.favourite()
+        }
+        
+        func unfavourite() {
+            event.unfavourite()
+        }
+        
+        func eventDidBecomeFavourite(_ event: Event) {
+            isFavourite = true
+            observer?.eventViewModelDidBecomeFavourite(self)
+        }
+        
+        func eventDidBecomeUnfavourite(_ event: Event) {
+            isFavourite = false
+            observer?.eventViewModelDidBecomeNonFavourite(self)
+        }
+        
+        func unhookFromEventObservation() {
+            event.remove(self)
+        }
 
     }
 
