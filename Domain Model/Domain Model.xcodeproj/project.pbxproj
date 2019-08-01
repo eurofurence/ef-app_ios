@@ -18,6 +18,7 @@
 		CA2AA2FF22CA8F1D00C0E1A1 /* RefreshCollaboration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2FE22CA8F1D00C0E1A1 /* RefreshCollaboration.swift */; };
 		CA2AA30122CA8F3F00C0E1A1 /* UnsuccessfulRefreshCollaboration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA30022CA8F3F00C0E1A1 /* UnsuccessfulRefreshCollaboration.swift */; };
 		CA2AA30522CA98BF00C0E1A1 /* DoNothingRefreshCollaboration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA30422CA98BF00C0E1A1 /* DoNothingRefreshCollaboration.swift */; };
+		CA30FB9C22F36456001C2EB3 /* KnowledgeGroupImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30FB9B22F36456001C2EB3 /* KnowledgeGroupImpl.swift */; };
 		CA7A2F3422B16DA3002AD939 /* EurofurenceModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A2F2B22B16DA3002AD939 /* EurofurenceModel.framework */; };
 		CA7A2FFF22B16DE4002AD939 /* EurofurenceSessionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F4322B16DE3002AD939 /* EurofurenceSessionState.swift */; };
 		CA7A300022B16DE4002AD939 /* ApplicationNotificationKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F4422B16DE3002AD939 /* ApplicationNotificationKey.swift */; };
@@ -511,6 +512,7 @@
 		CA2AA2FE22CA8F1D00C0E1A1 /* RefreshCollaboration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshCollaboration.swift; sourceTree = "<group>"; };
 		CA2AA30022CA8F3F00C0E1A1 /* UnsuccessfulRefreshCollaboration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsuccessfulRefreshCollaboration.swift; sourceTree = "<group>"; };
 		CA2AA30422CA98BF00C0E1A1 /* DoNothingRefreshCollaboration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoNothingRefreshCollaboration.swift; sourceTree = "<group>"; };
+		CA30FB9B22F36456001C2EB3 /* KnowledgeGroupImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeGroupImpl.swift; sourceTree = "<group>"; };
 		CA7A2F2B22B16DA3002AD939 /* EurofurenceModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EurofurenceModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA7A2F2E22B16DA3002AD939 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA7A2F3322B16DA3002AD939 /* EurofurenceModelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EurofurenceModelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1467,6 +1469,7 @@
 				CA7A2FDF22B16DE3002AD939 /* MapImpl.swift */,
 				CA7A2FE222B16DE3002AD939 /* MessageImpl.swift */,
 				CA7A2FE422B16DE3002AD939 /* NotAcceptingEventFeedback.swift */,
+				CA30FB9B22F36456001C2EB3 /* KnowledgeGroupImpl.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -2493,6 +2496,7 @@
 				CA7A300022B16DE4002AD939 /* ApplicationNotificationKey.swift in Sources */,
 				CA7A301A22B16DE4002AD939 /* SystemClock.swift in Sources */,
 				CA7A302A22B16DE4002AD939 /* DealerEntity+Adaptation.swift in Sources */,
+				CA30FB9C22F36456001C2EB3 /* KnowledgeGroupImpl.swift in Sources */,
 				CA7A300522B16DE4002AD939 /* Link.swift in Sources */,
 				CA2AA2FF22CA8F1D00C0E1A1 /* RefreshCollaboration.swift in Sources */,
 				CA7A304F22B16DE4002AD939 /* APIURLProviding.swift in Sources */,
