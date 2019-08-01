@@ -4,8 +4,14 @@ import UIKit.UIImage
 protocol KnowledgeGroupsListViewModel {
 
     func setDelegate(_ delegate: KnowledgeGroupsListViewModelDelegate)
-    func fetchIdentifierForGroup(at index: Int, completionHandler: @escaping (KnowledgeGroupIdentifier) -> Void)
+    func describeContentsOfKnowledgeItem(at index: Int, visitor: KnowledgeGroupsListViewModelVisitor)
 
+}
+
+protocol KnowledgeGroupsListViewModelVisitor {
+    
+    func visit(_ knowledgeGroup: KnowledgeGroupIdentifier)
+    
 }
 
 protocol KnowledgeGroupsListViewModelDelegate {

@@ -11,9 +11,9 @@ struct StubKnowledgeGroupsListViewModel: KnowledgeGroupsListViewModel {
     func setDelegate(_ delegate: KnowledgeGroupsListViewModelDelegate) {
         delegate.knowledgeGroupsViewModelsDidUpdate(to: knowledgeGroups)
     }
-
-    func fetchIdentifierForGroup(at index: Int, completionHandler: @escaping (KnowledgeGroupIdentifier) -> Void) {
-        completionHandler(stubbedGroupIdentifier(at: index))
+    
+    func describeContentsOfKnowledgeItem(at index: Int, visitor: KnowledgeGroupsListViewModelVisitor) {
+        visitor.visit(stubbedGroupIdentifier(at: index))
     }
 
 }
