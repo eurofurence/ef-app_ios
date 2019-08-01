@@ -8,5 +8,10 @@ class CapturingKnowledgeGroupsListModuleDelegate: KnowledgeGroupsListModuleDeleg
     func knowledgeListModuleDidSelectKnowledgeGroup(_ knowledgeGroup: KnowledgeGroupIdentifier) {
         capturedKnowledgeGroupToPresent = knowledgeGroup
     }
+    
+    private(set) var capturedKnowledgeEntryToPresent: KnowledgeEntryIdentifier?
+    func knowledgeListModuleDidSelectKnowledgeEntry(_ knowledgeEntry: KnowledgeEntryIdentifier) {
+        capturedKnowledgeEntryToPresent = knowledgeEntry
+    }
 
 }

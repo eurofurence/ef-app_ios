@@ -11,6 +11,7 @@ protocol KnowledgeGroupsListViewModel {
 protocol KnowledgeGroupsListViewModelVisitor {
     
     func visit(_ knowledgeGroup: KnowledgeGroupIdentifier)
+    func visit(_ knowledgeEntry: KnowledgeEntryIdentifier)
     
 }
 

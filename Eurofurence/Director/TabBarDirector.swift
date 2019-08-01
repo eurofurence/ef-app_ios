@@ -213,6 +213,10 @@ class TabBarDirector: NewsModuleDelegate, ScheduleModuleDelegate,
         knowledgeListController?.navigationController?.pushViewController(module, animated: animate)
     }
     
+    func knowledgeListModuleDidSelectKnowledgeEntry(_ knowledgeEntry: KnowledgeEntryIdentifier) {
+        
+    }
+    
     // MARK: KnowledgeGroupEntriesModuleDelegate
     
     func knowledgeGroupEntriesModuleDidSelectKnowledgeEntry(identifier: KnowledgeEntryIdentifier) {

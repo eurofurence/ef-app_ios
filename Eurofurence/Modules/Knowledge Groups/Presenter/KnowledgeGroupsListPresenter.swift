@@ -62,6 +62,10 @@ class KnowledgeGroupsListPresenter: KnowledgeListSceneDelegate, KnowledgeGroupsL
             delegate.knowledgeListModuleDidSelectKnowledgeGroup(knowledgeGroup)
         }
         
+        func visit(_ knowledgeEntry: KnowledgeEntryIdentifier) {
+            delegate.knowledgeListModuleDidSelectKnowledgeEntry(knowledgeEntry)
+        }
+        
     }
 
 }
