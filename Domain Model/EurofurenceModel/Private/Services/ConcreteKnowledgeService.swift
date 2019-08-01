@@ -59,7 +59,7 @@ class ConcreteKnowledgeService: KnowledgeService {
                 return
         }
 
-        models = KnowledgeGroup.fromServerModels(groups: groups, entries: entries)
+        models = KnowledgeGroupImpl.fromServerModels(groups: groups, entries: entries)
     }
 
 }

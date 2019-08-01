@@ -34,7 +34,7 @@ class DefaultKnowledgeGroupsInteractorTests: XCTestCase {
         let delegate = CapturingKnowledgeGroupsListViewModelDelegate()
         viewModel?.setDelegate(delegate)
 
-        let models: [KnowledgeGroup] = .random
+        let models: [FakeKnowledgeGroup] = .random
         let expected = models.map(expectedViewModelForGroup)
         service.simulateFetchSucceeded(models)
 
@@ -46,7 +46,7 @@ class DefaultKnowledgeGroupsInteractorTests: XCTestCase {
         let interactor = DefaultKnowledgeGroupsInteractor(service: service)
         var viewModel: KnowledgeGroupsListViewModel?
         interactor.prepareViewModel { viewModel = $0 }
-        let models: [KnowledgeGroup] = .random
+        let models: [FakeKnowledgeGroup] = .random
         let expected = models.map(expectedViewModelForGroup)
         service.simulateFetchSucceeded(models)
 
@@ -61,7 +61,7 @@ class DefaultKnowledgeGroupsInteractorTests: XCTestCase {
         let interactor = DefaultKnowledgeGroupsInteractor(service: service)
         var viewModel: KnowledgeGroupsListViewModel?
         interactor.prepareViewModel { viewModel = $0 }
-        let models: [KnowledgeGroup] = .random
+        let models: [FakeKnowledgeGroup] = .random
         service.simulateFetchSucceeded(models)
 
         let randomGroup = models.randomElement()
