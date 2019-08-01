@@ -8,8 +8,9 @@ class CapturingKnowledgeGroupsListViewModelVisitor: KnowledgeGroupsListViewModel
         visitedKnowledgeGroup = knowledgeGroup
     }
     
+    private(set) var visitedKnowledgeEntry: KnowledgeEntryIdentifier?
     func visit(_ knowledgeEntry: KnowledgeEntryIdentifier) {
-        
+        visitedKnowledgeEntry = knowledgeEntry
     }
     
 }

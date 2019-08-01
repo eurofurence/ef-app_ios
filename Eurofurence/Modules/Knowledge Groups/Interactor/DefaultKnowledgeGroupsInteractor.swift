@@ -31,7 +31,13 @@ struct DefaultKnowledgeGroupsInteractor: KnowledgeGroupsInteractor {
         }
 
         func describeContentsOfKnowledgeItem(at index: Int, visitor: KnowledgeGroupsListViewModelVisitor) {
-            visitor.visit(groups[index].identifier)
+            let group = groups[index]
+            if group.entries.count == 1 {
+                let entry = group.entries[0]
+                visitor.visit(entry.identifier)
+            } else {
+                visitor.visit(group.identifier)
+            }
         }
 
     }

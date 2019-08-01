@@ -70,6 +70,25 @@ class DefaultKnowledgeGroupsInteractorTests: XCTestCase {
         viewModel?.describeContentsOfKnowledgeItem(at: randomGroup.index, visitor: visitor)
 
         XCTAssertEqual(expected, visitor.visitedKnowledgeGroup)
+        XCTAssertNil(visitor.visitedKnowledgeEntry)
+    }
+    
+    func testGroupWithSingleEntryVisitsEntryInsteadOfGroup() {
+        let service = StubKnowledgeService()
+        let interactor = DefaultKnowledgeGroupsInteractor(service: service)
+        var viewModel: KnowledgeGroupsListViewModel?
+        interactor.prepareViewModel { viewModel = $0 }
+        let group = FakeKnowledgeGroup.random
+        let entry = FakeKnowledgeEntry.random
+        group.entries = [entry]
+        service.simulateFetchSucceeded([group])
+        let visitor = CapturingKnowledgeGroupsListViewModelVisitor()
+        viewModel?.describeContentsOfKnowledgeItem(at: 0, visitor: visitor)
+        
+        let expected = entry.identifier
+        
+        XCTAssertEqual(expected, visitor.visitedKnowledgeEntry)
+        XCTAssertNil(visitor.visitedKnowledgeGroup)
     }
 
 }
