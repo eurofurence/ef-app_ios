@@ -15,7 +15,7 @@ class ApplicationDirectorTests: XCTestCase {
 
     func testWhenKnowledgeEntrySelectsWebLinkTheWebModuleIsPresentedOntoTheTabInterface() {
         context.navigateToTabController()
-        let entry = KnowledgeEntry.random
+        let entry = FakeKnowledgeEntry.random
         context.knowledgeListModule.simulateKnowledgeGroupSelected(.random)
         context.knowledgeGroupEntriesModule.simulateKnowledgeEntrySelected(.random)
         let link = entry.links.randomElement().element
@@ -30,7 +30,7 @@ class ApplicationDirectorTests: XCTestCase {
 
     func testWhenKnowledgeEntrySelectsExternalAppLinkTheURLLauncherIsToldToHandleTheURL() {
         context.navigateToTabController()
-        let entry = KnowledgeEntry.random
+        let entry = FakeKnowledgeEntry.random
         context.knowledgeListModule.simulateKnowledgeGroupSelected(.random)
         context.knowledgeGroupEntriesModule.simulateKnowledgeEntrySelected(.random)
         let link = entry.links.randomElement().element

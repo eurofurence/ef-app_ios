@@ -37,7 +37,7 @@ extension FakeKnowledgeGroup: RandomValueProviding {
                                   groupDescription: .random,
                                   fontAwesomeCharacterAddress: .random,
                                   order: .random,
-                                  entries: .random)
+                                  entries: [FakeKnowledgeEntry].random)
     }
 
 }

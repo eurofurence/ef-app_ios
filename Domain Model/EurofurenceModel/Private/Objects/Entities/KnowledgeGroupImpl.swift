@@ -17,7 +17,7 @@ extension KnowledgeGroupImpl {
         return groups.map({ (group) -> KnowledgeGroup in
             let entries = entries
                 .filter({ $0.groupIdentifier == group.identifier })
-                .map(KnowledgeEntry.fromServerModel)
+                .map(KnowledgeEntryImpl.fromServerModel)
                 .sorted(by: { (first, second) in
                     return first.order < second.order
                 })
