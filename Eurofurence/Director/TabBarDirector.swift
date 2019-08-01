@@ -96,6 +96,11 @@ class TabBarDirector: NewsModuleDelegate, ScheduleModuleDelegate,
         openMessage(message, revealStyle: .replace)
     }
     
+    func openKnowledgeEntry(_ knowledgeEntry: KnowledgeEntryIdentifier) {
+        let knowledgeDetailModule = moduleRepository.makeKnowledgeDetailModule(knowledgeEntry, delegate: self)
+        knowledgeListController?.navigationController?.pushViewController(knowledgeDetailModule, animated: animate)
+    }
+    
     func showInvalidatedAnnouncementAlert() {
         let alert = UIAlertController(title: .invalidAnnouncementAlertTitle,
                                       message: .invalidAnnouncementAlertMessage,
@@ -214,14 +219,13 @@ class TabBarDirector: NewsModuleDelegate, ScheduleModuleDelegate,
     }
     
     func knowledgeListModuleDidSelectKnowledgeEntry(_ knowledgeEntry: KnowledgeEntryIdentifier) {
-        
+        openKnowledgeEntry(knowledgeEntry)
     }
     
     // MARK: KnowledgeGroupEntriesModuleDelegate
     
     func knowledgeGroupEntriesModuleDidSelectKnowledgeEntry(identifier: KnowledgeEntryIdentifier) {
-        let knowledgeDetailModule = moduleRepository.makeKnowledgeDetailModule(identifier, delegate: self)
-        knowledgeListController?.navigationController?.pushViewController(knowledgeDetailModule, animated: animate)
+        openKnowledgeEntry(identifier)
     }
     
     // MARK: KnowledgeDetailModuleDelegate
