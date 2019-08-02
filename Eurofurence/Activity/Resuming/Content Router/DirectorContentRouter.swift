@@ -13,7 +13,7 @@ struct DirectorContentRouter: ContentRouter {
     }
     
     func resumeViewingKnowledgeGroups() {
-        
+        director.openKnowledgeGroups()
     }
     
 }
