@@ -131,7 +131,7 @@ class TabBarDirector: NewsModuleDelegate, ScheduleModuleDelegate,
             let viewControllers = [knowledgeListController, knowledgeGroupModule, knowledgeEntryModule]
             makeSureViewControllersLoadTheirNavigationItems(viewControllers)
             
-            knowledgeNavigationController.setViewControllers(viewControllers, animated: animate)
+            knowledgeNavigationController.setViewControllers(viewControllers, animated: false)
         }
     }
     
