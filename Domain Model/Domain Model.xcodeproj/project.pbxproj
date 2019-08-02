@@ -21,6 +21,7 @@
 		CA30FB9C22F36456001C2EB3 /* KnowledgeGroupImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30FB9B22F36456001C2EB3 /* KnowledgeGroupImpl.swift */; };
 		CA30FB9E22F365E4001C2EB3 /* KnowledgeEntryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30FB9D22F365E4001C2EB3 /* KnowledgeEntryImpl.swift */; };
 		CA6EE99B22F401E900821E68 /* WhenDescribingKnowledgeGroupsLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EE99A22F401E900821E68 /* WhenDescribingKnowledgeGroupsLink.swift */; };
+		CA6EE9A122F4B65B00821E68 /* WhenDescribingKnowledgeEntryLink_GroupHasMoreThanOneEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EE9A022F4B65B00821E68 /* WhenDescribingKnowledgeEntryLink_GroupHasMoreThanOneEntry.swift */; };
 		CA7A2F3422B16DA3002AD939 /* EurofurenceModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A2F2B22B16DA3002AD939 /* EurofurenceModel.framework */; };
 		CA7A2FFF22B16DE4002AD939 /* EurofurenceSessionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F4322B16DE3002AD939 /* EurofurenceSessionState.swift */; };
 		CA7A300022B16DE4002AD939 /* ApplicationNotificationKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F4422B16DE3002AD939 /* ApplicationNotificationKey.swift */; };
@@ -517,6 +518,7 @@
 		CA30FB9B22F36456001C2EB3 /* KnowledgeGroupImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeGroupImpl.swift; sourceTree = "<group>"; };
 		CA30FB9D22F365E4001C2EB3 /* KnowledgeEntryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeEntryImpl.swift; sourceTree = "<group>"; };
 		CA6EE99A22F401E900821E68 /* WhenDescribingKnowledgeGroupsLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDescribingKnowledgeGroupsLink.swift; sourceTree = "<group>"; };
+		CA6EE9A022F4B65B00821E68 /* WhenDescribingKnowledgeEntryLink_GroupHasMoreThanOneEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDescribingKnowledgeEntryLink_GroupHasMoreThanOneEntry.swift; sourceTree = "<group>"; };
 		CA7A2F2B22B16DA3002AD939 /* EurofurenceModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EurofurenceModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA7A2F2E22B16DA3002AD939 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA7A2F3322B16DA3002AD939 /* EurofurenceModelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EurofurenceModelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1073,6 +1075,7 @@
 			isa = PBXGroup;
 			children = (
 				CA6EE99A22F401E900821E68 /* WhenDescribingKnowledgeGroupsLink.swift */,
+				CA6EE9A022F4B65B00821E68 /* WhenDescribingKnowledgeEntryLink_GroupHasMoreThanOneEntry.swift */,
 			);
 			path = Knowledge;
 			sourceTree = "<group>";
@@ -2870,6 +2873,7 @@
 				CA7A321422B16E26002AD939 /* EurofurenceModelTestAssets.swift in Sources */,
 				CA7A31D122B16E26002AD939 /* WhenFullRefreshOccurs_YieldingOrphanedEntities.swift in Sources */,
 				CA7A31B022B16E26002AD939 /* WhenDataStoreAlreadyContainsMaps_ApplicationShould.swift in Sources */,
+				CA6EE9A122F4B65B00821E68 /* WhenDescribingKnowledgeEntryLink_GroupHasMoreThanOneEntry.swift in Sources */,
 				CAA7DE3922F0C75600A6984D /* WhenPerformingEventSearch_NotRestrictedToFavourites_ThenToggleEventFavouriteState.swift in Sources */,
 				CA7A319922B16E26002AD939 /* KnowledgeGroupsRemoveAllBeforeInsertTests.swift in Sources */,
 				CA8A73E522BD2429007A5201 /* HardcodedCompanionAppURLRequestFactoryTests.swift in Sources */,

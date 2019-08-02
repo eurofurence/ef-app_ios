@@ -18,4 +18,12 @@ class CapturingURLContentVisitor: URLContentVisitor {
         didVisitKnowledgeGroups = true
     }
     
+    private(set) var visitedKnowledgePairing: (entry: KnowledgeEntryIdentifier, group: KnowledgeGroupIdentifier)?
+    func visitKnowledgeEntry(
+        _ knowledgeEntry: KnowledgeEntryIdentifier,
+        containedWithinGroup knowledgeGroup: KnowledgeGroupIdentifier
+    ) {
+        visitedKnowledgePairing = (entry: knowledgeEntry, group: knowledgeGroup)
+    }
+    
 }

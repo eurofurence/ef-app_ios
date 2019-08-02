@@ -4,6 +4,7 @@ struct URLEntityProcessor {
     
     var eventsService: EventsService
     var dealersService: DealersService
+    var dataStore: DataStore
     
     func process(_ url: URL, visitor: URLContentVisitor) {
         let identifierComponent = url.lastPathComponent
@@ -20,6 +21,14 @@ struct URLEntityProcessor {
         
         if url.absoluteString.localizedCaseInsensitiveContains("KnowledgeGroups") {
             visitor.visitKnowledgeGroups()
+        }
+        
+        if url.absoluteString.contains("KnowledgeEntries") {
+            guard let entry = dataStore.fetchKnowledgeEntries()?.first(where: { $0.identifier == identifierComponent }) else { return }
+            
+            let entryIdentifier = KnowledgeEntryIdentifier(entry.identifier)
+            let groupIdentifier = KnowledgeGroupIdentifier(entry.groupIdentifier)
+            visitor.visitKnowledgeEntry(entryIdentifier, containedWithinGroup: groupIdentifier)
         }
     }
     
