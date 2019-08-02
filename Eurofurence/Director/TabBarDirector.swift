@@ -129,8 +129,14 @@ class TabBarDirector: NewsModuleDelegate, ScheduleModuleDelegate,
             let knowledgeGroupModule = moduleRepository.makeKnowledgeGroupEntriesModule(parentGroup, delegate: self)
             let knowledgeEntryModule = moduleRepository.makeKnowledgeDetailModule(knowledgeEntry, delegate: self)
             let viewControllers = [knowledgeListController, knowledgeGroupModule, knowledgeEntryModule]
+            makeSureViewControllersLoadTheirNavigationItems(viewControllers)
+            
             knowledgeNavigationController.setViewControllers(viewControllers, animated: animate)
         }
+    }
+    
+    private func makeSureViewControllersLoadTheirNavigationItems(_ viewControllers: [UIViewController]) {
+        viewControllers.forEach({ $0.loadViewIfNeeded() })
     }
     
     // MARK: NewsModuleDelegate
