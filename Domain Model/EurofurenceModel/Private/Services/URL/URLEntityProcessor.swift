@@ -24,11 +24,21 @@ struct URLEntityProcessor {
         }
         
         if url.absoluteString.localizedCaseInsensitiveContains("KnowledgeEntries") {
-            guard let entry = dataStore.fetchKnowledgeEntries()?.first(where: { $0.identifier == identifierComponent }) else { return }
+            let entries = dataStore.fetchKnowledgeEntries()
+            let groups = dataStore.fetchKnowledgeGroups()
+            guard let entry = entries?.first(where: { $0.identifier == identifierComponent }),
+                  let group = groups?.first(where: { $0.identifier == entry.groupIdentifier }),
+                  let numberOfEntriesInGroup = entries?.filter({ $0.groupIdentifier == group.identifier }).count else {
+                    return
+            }
             
             let entryIdentifier = KnowledgeEntryIdentifier(entry.identifier)
-            let groupIdentifier = KnowledgeGroupIdentifier(entry.groupIdentifier)
-            visitor.visitKnowledgeEntry(entryIdentifier, containedWithinGroup: groupIdentifier)
+            if numberOfEntriesInGroup == 1 {
+                visitor.visitKnowledgeEntry(entryIdentifier)
+            } else {
+                let groupIdentifier = KnowledgeGroupIdentifier(entry.groupIdentifier)
+                visitor.visitKnowledgeEntry(entryIdentifier, containedWithinGroup: groupIdentifier)   
+            }
         }
     }
     
