@@ -119,6 +119,20 @@ class TabBarDirector: NewsModuleDelegate, ScheduleModuleDelegate,
         tabController?.present(alert, animated: performAnimations, completion: nil)
     }
     
+    func openKnowledgeEntry(_ knowledgeEntry: KnowledgeEntryIdentifier, parentGroup: KnowledgeGroupIdentifier) {
+        guard let knowledgeNavigationController = knowledgeListController?.navigationController else { return }
+        
+        if let index = tabController?.viewControllers?.firstIndex(of: knowledgeNavigationController),
+            let knowledgeListController = knowledgeListController {
+            tabController?.selectedIndex = index
+            
+            let knowledgeGroupModule = moduleRepository.makeKnowledgeGroupEntriesModule(parentGroup, delegate: self)
+            let knowledgeEntryModule = moduleRepository.makeKnowledgeDetailModule(knowledgeEntry, delegate: self)
+            let viewControllers = [knowledgeListController, knowledgeGroupModule, knowledgeEntryModule]
+            knowledgeNavigationController.setViewControllers(viewControllers, animated: animate)
+        }
+    }
+    
     // MARK: NewsModuleDelegate
     
     func newsModuleDidRequestShowingPrivateMessages() {

@@ -71,6 +71,10 @@ class ApplicationDirector: RootModuleDelegate, TutorialModuleDelegate, PreloadMo
     func showInvalidatedAnnouncementAlert() {
         tabBarDirector?.showInvalidatedAnnouncementAlert()
     }
+    
+    func openKnowledgeEntry(_ knowledgeEntry: KnowledgeEntryIdentifier, parentGroup: KnowledgeGroupIdentifier) {
+        tabBarDirector?.openKnowledgeEntry(knowledgeEntry, parentGroup: parentGroup)
+    }
 
     // MARK: RootModuleDelegate
 
