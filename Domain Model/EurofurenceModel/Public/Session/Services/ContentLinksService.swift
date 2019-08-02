@@ -19,6 +19,8 @@ public protocol URLContentVisitor {
     
     func visitKnowledgeGroups()
     
+    func visitKnowledgeEntry(_ knowledgeEntry: KnowledgeEntryIdentifier)
+    
     func visitKnowledgeEntry(
         _ knowledgeEntry: KnowledgeEntryIdentifier,
         containedWithinGroup knowledgeGroup: KnowledgeGroupIdentifier

@@ -696,6 +696,7 @@
 		CA6EE99D22F4036F00821E68 /* WhenOpeningKnowledgeEntries_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EE99C22F4036F00821E68 /* WhenOpeningKnowledgeEntries_DirectorShould.swift */; };
 		CA6EE99F22F4B49500821E68 /* WhenResumingKnowledgeEntryURL_WithParentGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EE99E22F4B49500821E68 /* WhenResumingKnowledgeEntryURL_WithParentGroup.swift */; };
 		CA6EE9A322F4C03200821E68 /* WhenOpeningKnowledgeEntry_WithParentGroup_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EE9A222F4C03200821E68 /* WhenOpeningKnowledgeEntry_WithParentGroup_DirectorShould.swift */; };
+		CA6EE9A522F4D2BD00821E68 /* WhenResumingKnowledgeEntry_WithoutParentGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EE9A422F4D2BD00821E68 /* WhenResumingKnowledgeEntry_WithoutParentGroup.swift */; };
 		CA6F652722690DB500483EE0 /* WhenToldToLeaveFeedback_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F652622690DB500483EE0 /* WhenToldToLeaveFeedback_EventDetailPresenterShould.swift */; };
 		CA6F652922690EF700483EE0 /* EventDetailModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F652822690EF700483EE0 /* EventDetailModuleDelegate.swift */; };
 		CA6F652B22690F0C00483EE0 /* CapturingEventDetailModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F652A22690F0C00483EE0 /* CapturingEventDetailModuleDelegate.swift */; };
@@ -1814,6 +1815,7 @@
 		CA6EE99C22F4036F00821E68 /* WhenOpeningKnowledgeEntries_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenOpeningKnowledgeEntries_DirectorShould.swift; sourceTree = "<group>"; };
 		CA6EE99E22F4B49500821E68 /* WhenResumingKnowledgeEntryURL_WithParentGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenResumingKnowledgeEntryURL_WithParentGroup.swift; sourceTree = "<group>"; };
 		CA6EE9A222F4C03200821E68 /* WhenOpeningKnowledgeEntry_WithParentGroup_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenOpeningKnowledgeEntry_WithParentGroup_DirectorShould.swift; sourceTree = "<group>"; };
+		CA6EE9A422F4D2BD00821E68 /* WhenResumingKnowledgeEntry_WithoutParentGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenResumingKnowledgeEntry_WithoutParentGroup.swift; sourceTree = "<group>"; };
 		CA6F652622690DB500483EE0 /* WhenToldToLeaveFeedback_EventDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToLeaveFeedback_EventDetailPresenterShould.swift; sourceTree = "<group>"; };
 		CA6F652822690EF700483EE0 /* EventDetailModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailModuleDelegate.swift; sourceTree = "<group>"; };
 		CA6F652A22690F0C00483EE0 /* CapturingEventDetailModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingEventDetailModuleDelegate.swift; sourceTree = "<group>"; };
@@ -5047,6 +5049,7 @@
 				CAB0FD5A22C90D8D00D4CB98 /* WhenResumingEventURL.swift */,
 				CA6EE99722F4007200821E68 /* WhenResumingKnowledgeGroupsURL.swift */,
 				CA6EE99E22F4B49500821E68 /* WhenResumingKnowledgeEntryURL_WithParentGroup.swift */,
+				CA6EE9A422F4D2BD00821E68 /* WhenResumingKnowledgeEntry_WithoutParentGroup.swift */,
 			);
 			path = URL;
 			sourceTree = "<group>";
@@ -6680,6 +6683,7 @@
 				CA08159720D475B500F750D4 /* FakeEventsService.swift in Sources */,
 				CA1B6F1020DB818A00ADF414 /* CapturingDealerDetailScene.swift in Sources */,
 				CA63754C208CBB7800536BE2 /* StubMessagesModuleFactory.swift in Sources */,
+				CA6EE9A522F4D2BD00821E68 /* WhenResumingKnowledgeEntry_WithoutParentGroup.swift in Sources */,
 				CA7D8B1C222DB19B003431A0 /* DefaultNewsInteractorTestBuilderContext.swift in Sources */,
 				CA6A8D7620E264C5007536CD /* StubMapsSceneFactory.swift in Sources */,
 				CA8A73D022BD14F3007A5201 /* BeforeAdditionalServicesSceneLoads_PresenterShould.swift in Sources */,
