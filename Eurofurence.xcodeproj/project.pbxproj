@@ -693,6 +693,7 @@
 		CA6EE99422F36B6900821E68 /* WhenSelectingItemInKnowledgeList_ThatRelatesToEntry_KnowledgeListPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EE99322F36B6900821E68 /* WhenSelectingItemInKnowledgeList_ThatRelatesToEntry_KnowledgeListPresenterShould.swift */; };
 		CA6EE99622F36D4800821E68 /* VisitsEntryFromKnowledgeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EE99522F36D4800821E68 /* VisitsEntryFromKnowledgeListViewModel.swift */; };
 		CA6EE99822F4007200821E68 /* WhenResumingKnowledgeGroupsURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EE99722F4007200821E68 /* WhenResumingKnowledgeGroupsURL.swift */; };
+		CA6EE99D22F4036F00821E68 /* WhenOpeningKnowledgeEntries_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EE99C22F4036F00821E68 /* WhenOpeningKnowledgeEntries_DirectorShould.swift */; };
 		CA6F652722690DB500483EE0 /* WhenToldToLeaveFeedback_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F652622690DB500483EE0 /* WhenToldToLeaveFeedback_EventDetailPresenterShould.swift */; };
 		CA6F652922690EF700483EE0 /* EventDetailModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F652822690EF700483EE0 /* EventDetailModuleDelegate.swift */; };
 		CA6F652B22690F0C00483EE0 /* CapturingEventDetailModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F652A22690F0C00483EE0 /* CapturingEventDetailModuleDelegate.swift */; };
@@ -1808,6 +1809,7 @@
 		CA6EE99322F36B6900821E68 /* WhenSelectingItemInKnowledgeList_ThatRelatesToEntry_KnowledgeListPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSelectingItemInKnowledgeList_ThatRelatesToEntry_KnowledgeListPresenterShould.swift; sourceTree = "<group>"; };
 		CA6EE99522F36D4800821E68 /* VisitsEntryFromKnowledgeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitsEntryFromKnowledgeListViewModel.swift; sourceTree = "<group>"; };
 		CA6EE99722F4007200821E68 /* WhenResumingKnowledgeGroupsURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenResumingKnowledgeGroupsURL.swift; sourceTree = "<group>"; };
+		CA6EE99C22F4036F00821E68 /* WhenOpeningKnowledgeEntries_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenOpeningKnowledgeEntries_DirectorShould.swift; sourceTree = "<group>"; };
 		CA6F652622690DB500483EE0 /* WhenToldToLeaveFeedback_EventDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToLeaveFeedback_EventDetailPresenterShould.swift; sourceTree = "<group>"; };
 		CA6F652822690EF700483EE0 /* EventDetailModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailModuleDelegate.swift; sourceTree = "<group>"; };
 		CA6F652A22690F0C00483EE0 /* CapturingEventDetailModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingEventDetailModuleDelegate.swift; sourceTree = "<group>"; };
@@ -5438,6 +5440,7 @@
 				CAD55942229AF6C30068DD46 /* WhenShowingInvalidatedAnnouncementAlert_DirectorShould.swift */,
 				CAA10FE122C5E29700689A32 /* WhenOpeningMessage_DirectorShould.swift */,
 				CA2AA2D622C93FBA00C0E1A1 /* WhenOpeningDealer_DirectorShould.swift */,
+				CA6EE99C22F4036F00821E68 /* WhenOpeningKnowledgeEntries_DirectorShould.swift */,
 			);
 			path = "Opening Content";
 			sourceTree = "<group>";
@@ -6598,6 +6601,7 @@
 				CABA83F420CE988B00DD0795 /* WhenFavouritingEventViewModel_EventDetailInteractorShould.swift in Sources */,
 				CAD260A720C03909007E3618 /* WhenViewModelIndicatesEventIsFavourite_EventDetailPresenterShould.swift in Sources */,
 				CA27255C2112525E004C6D0A /* CapturingKnowledgeEntryImageScene.swift in Sources */,
+				CA6EE99D22F4036F00821E68 /* WhenOpeningKnowledgeEntries_DirectorShould.swift in Sources */,
 				CA6A8E0320E5048A007536CD /* WhenSceneTapsMapPosition_ThatProvidesSimpleContextualDetail_MapsPresenterShould.swift in Sources */,
 				CA630BF722A0650E00754C27 /* WhenResumingUnknownIntent.swift in Sources */,
 				CA283A7C20E91F3600F7D195 /* WhenToldToRefresh_ScheduleViewModelShould.swift in Sources */,

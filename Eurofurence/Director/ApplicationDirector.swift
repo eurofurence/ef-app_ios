@@ -64,6 +64,10 @@ class ApplicationDirector: RootModuleDelegate, TutorialModuleDelegate, PreloadMo
         tabBarDirector?.openMessage(message)
     }
     
+    func openKnowledgeGroups() {
+        tabBarDirector?.openKnowledgeGroups()
+    }
+    
     func showInvalidatedAnnouncementAlert() {
         tabBarDirector?.showInvalidatedAnnouncementAlert()
     }
