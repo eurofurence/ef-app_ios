@@ -23,7 +23,7 @@ struct URLEntityProcessor {
             visitor.visitKnowledgeGroups()
         }
         
-        if url.absoluteString.contains("KnowledgeEntries") {
+        if url.absoluteString.localizedCaseInsensitiveContains("KnowledgeEntries") {
             guard let entry = dataStore.fetchKnowledgeEntries()?.first(where: { $0.identifier == identifierComponent }) else { return }
             
             let entryIdentifier = KnowledgeEntryIdentifier(entry.identifier)

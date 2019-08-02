@@ -11,7 +11,7 @@ class WhenDescribingKnowledgeEntryLink_GroupHasMoreThanOneEntry: XCTestCase {
         let dataStore = InMemoryDataStore(response: characteristics)
         let cid = ModelCharacteristics.testConventionIdentifier
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
-        let urlString = "https://this.bit.doesnt.matter/\(cid)/KnowledgeEntries/\(entry.identifier)"
+        let urlString = "https://this.bit.doesnt.matter/\(cid)/KnowleDGEEntRIes/\(entry.identifier)"
         guard let url = URL(string: urlString) else { fatalError("\(urlString) didn't make it into a URL") }
         
         let visitor = CapturingURLContentVisitor()
