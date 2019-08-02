@@ -17,7 +17,7 @@ struct DirectorContentRouter: ContentRouter {
     }
     
     func resumeViewingKnowledgeEntry(_ knowledgeEntry: KnowledgeEntryIdentifier, parentGroup: KnowledgeGroupIdentifier) {
-        
+        director.openKnowledgeEntry(knowledgeEntry, parentGroup: parentGroup)
     }
     
 }
