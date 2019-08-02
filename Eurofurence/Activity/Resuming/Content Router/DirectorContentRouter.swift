@@ -12,4 +12,8 @@ struct DirectorContentRouter: ContentRouter {
         director.openDealer(identifier)
     }
     
+    func resumeViewingKnowledgeGroups() {
+        
+    }
+    
 }

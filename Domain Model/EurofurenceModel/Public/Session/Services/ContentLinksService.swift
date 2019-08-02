@@ -15,6 +15,7 @@ public protocol URLContentVisitor {
     
     func visit(_ event: EventIdentifier)
     func visit(_ dealer: DealerIdentifier)
+    func visitKnowledgeGroups()
     
 }
 

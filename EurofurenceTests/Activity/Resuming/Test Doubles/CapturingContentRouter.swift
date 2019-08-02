@@ -13,4 +13,9 @@ class CapturingContentRouter: ContentRouter {
         resumedDealer = identifier
     }
     
+    private(set) var didResumeViewingKnowledgeGroups = false
+    func resumeViewingKnowledgeGroups() {
+        didResumeViewingKnowledgeGroups = true
+    }
+    
 }

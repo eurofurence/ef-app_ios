@@ -13,4 +13,8 @@ class CapturingURLContentVisitor: URLContentVisitor {
         visitedDealer = dealer
     }
     
+    func visitKnowledgeGroups() {
+        
+    }
+    
 }
