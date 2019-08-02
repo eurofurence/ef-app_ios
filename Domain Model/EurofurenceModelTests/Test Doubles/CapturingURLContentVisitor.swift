@@ -13,8 +13,9 @@ class CapturingURLContentVisitor: URLContentVisitor {
         visitedDealer = dealer
     }
     
+    private(set) var didVisitKnowledgeGroups = false
     func visitKnowledgeGroups() {
-        
+        didVisitKnowledgeGroups = true
     }
     
 }

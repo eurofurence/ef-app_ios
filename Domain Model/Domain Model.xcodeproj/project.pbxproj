@@ -20,6 +20,7 @@
 		CA2AA30522CA98BF00C0E1A1 /* DoNothingRefreshCollaboration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA30422CA98BF00C0E1A1 /* DoNothingRefreshCollaboration.swift */; };
 		CA30FB9C22F36456001C2EB3 /* KnowledgeGroupImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30FB9B22F36456001C2EB3 /* KnowledgeGroupImpl.swift */; };
 		CA30FB9E22F365E4001C2EB3 /* KnowledgeEntryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30FB9D22F365E4001C2EB3 /* KnowledgeEntryImpl.swift */; };
+		CA6EE99B22F401E900821E68 /* WhenDescribingKnowledgeGroupsLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EE99A22F401E900821E68 /* WhenDescribingKnowledgeGroupsLink.swift */; };
 		CA7A2F3422B16DA3002AD939 /* EurofurenceModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A2F2B22B16DA3002AD939 /* EurofurenceModel.framework */; };
 		CA7A2FFF22B16DE4002AD939 /* EurofurenceSessionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F4322B16DE3002AD939 /* EurofurenceSessionState.swift */; };
 		CA7A300022B16DE4002AD939 /* ApplicationNotificationKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F4422B16DE3002AD939 /* ApplicationNotificationKey.swift */; };
@@ -515,6 +516,7 @@
 		CA2AA30422CA98BF00C0E1A1 /* DoNothingRefreshCollaboration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoNothingRefreshCollaboration.swift; sourceTree = "<group>"; };
 		CA30FB9B22F36456001C2EB3 /* KnowledgeGroupImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeGroupImpl.swift; sourceTree = "<group>"; };
 		CA30FB9D22F365E4001C2EB3 /* KnowledgeEntryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeEntryImpl.swift; sourceTree = "<group>"; };
+		CA6EE99A22F401E900821E68 /* WhenDescribingKnowledgeGroupsLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDescribingKnowledgeGroupsLink.swift; sourceTree = "<group>"; };
 		CA7A2F2B22B16DA3002AD939 /* EurofurenceModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EurofurenceModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA7A2F2E22B16DA3002AD939 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA7A2F3322B16DA3002AD939 /* EurofurenceModelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EurofurenceModelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1065,6 +1067,14 @@
 				CA2AA2FC22CA8E0B00C0E1A1 /* WhenPerfomingSync_WithUnsuccessfulCollaboration.swift */,
 			);
 			path = Collaboration;
+			sourceTree = "<group>";
+		};
+		CA6EE99922F401D200821E68 /* Knowledge */ = {
+			isa = PBXGroup;
+			children = (
+				CA6EE99A22F401E900821E68 /* WhenDescribingKnowledgeGroupsLink.swift */,
+			);
+			path = Knowledge;
 			sourceTree = "<group>";
 		};
 		CA7A2F1122B16D70002AD939 = {
@@ -2208,6 +2218,7 @@
 			children = (
 				CA2AA2D822C941B100C0E1A1 /* Dealers */,
 				CAB0FD5F22C9128E00D4CB98 /* Events */,
+				CA6EE99922F401D200821E68 /* Knowledge */,
 			);
 			path = "App Links";
 			sourceTree = "<group>";
@@ -2781,6 +2792,7 @@
 				CA7A321922B16E26002AD939 /* WhenAddingAnnouncementsObserverBeforeLoadingAnything.swift in Sources */,
 				CA7A31B722B16E26002AD939 /* BeforeSyncInitiated_ApplicationShould.swift in Sources */,
 				CA7A31CA22B16E26002AD939 /* WhenRequestingPrivateMessagesWhileAuthenticated.swift in Sources */,
+				CA6EE99B22F401E900821E68 /* WhenDescribingKnowledgeGroupsLink.swift in Sources */,
 				CA7A31C422B16E26002AD939 /* WhenPerformingSync_AfterEnforcingFullStoreRefresh_WhenFullRefreshFailed.swift in Sources */,
 				CA7A324622B16E26002AD939 /* WhenSignificantTimeChanges_ScheduleShould.swift in Sources */,
 				CA7A31E022B16E26002AD939 /* StubConventionStartDateRepository.swift in Sources */,

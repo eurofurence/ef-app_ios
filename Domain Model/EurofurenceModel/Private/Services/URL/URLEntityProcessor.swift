@@ -17,6 +17,10 @@ struct URLEntityProcessor {
         if dealersService.fetchDealer(for: dealerIdentifier) != nil {
             visitor.visit(dealerIdentifier)
         }
+        
+        if url.absoluteString.localizedCaseInsensitiveContains("KnowledgeGroups") {
+            visitor.visitKnowledgeGroups()
+        }
     }
     
 }
