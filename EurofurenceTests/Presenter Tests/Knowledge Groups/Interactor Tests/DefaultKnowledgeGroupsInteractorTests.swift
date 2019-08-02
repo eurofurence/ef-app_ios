@@ -34,7 +34,7 @@ class DefaultKnowledgeGroupsInteractorTests: XCTestCase {
         let delegate = CapturingKnowledgeGroupsListViewModelDelegate()
         viewModel?.setDelegate(delegate)
 
-        let models: [KnowledgeGroup] = .random
+        let models: [FakeKnowledgeGroup] = .random
         let expected = models.map(expectedViewModelForGroup)
         service.simulateFetchSucceeded(models)
 
@@ -46,7 +46,7 @@ class DefaultKnowledgeGroupsInteractorTests: XCTestCase {
         let interactor = DefaultKnowledgeGroupsInteractor(service: service)
         var viewModel: KnowledgeGroupsListViewModel?
         interactor.prepareViewModel { viewModel = $0 }
-        let models: [KnowledgeGroup] = .random
+        let models: [FakeKnowledgeGroup] = .random
         let expected = models.map(expectedViewModelForGroup)
         service.simulateFetchSucceeded(models)
 
@@ -61,15 +61,34 @@ class DefaultKnowledgeGroupsInteractorTests: XCTestCase {
         let interactor = DefaultKnowledgeGroupsInteractor(service: service)
         var viewModel: KnowledgeGroupsListViewModel?
         interactor.prepareViewModel { viewModel = $0 }
-        let models: [KnowledgeGroup] = .random
+        let models: [FakeKnowledgeGroup] = .random
         service.simulateFetchSucceeded(models)
 
         let randomGroup = models.randomElement()
         let expected = randomGroup.element.identifier
-        var actual: KnowledgeGroupIdentifier?
-        viewModel?.fetchIdentifierForGroup(at: randomGroup.index) { actual = $0 }
+        let visitor = CapturingKnowledgeGroupsListViewModelVisitor()
+        viewModel?.describeContentsOfKnowledgeItem(at: randomGroup.index, visitor: visitor)
 
-        XCTAssertEqual(expected, actual)
+        XCTAssertEqual(expected, visitor.visitedKnowledgeGroup)
+        XCTAssertNil(visitor.visitedKnowledgeEntry)
+    }
+    
+    func testGroupWithSingleEntryVisitsEntryInsteadOfGroup() {
+        let service = StubKnowledgeService()
+        let interactor = DefaultKnowledgeGroupsInteractor(service: service)
+        var viewModel: KnowledgeGroupsListViewModel?
+        interactor.prepareViewModel { viewModel = $0 }
+        let group = FakeKnowledgeGroup.random
+        let entry = FakeKnowledgeEntry.random
+        group.entries = [entry]
+        service.simulateFetchSucceeded([group])
+        let visitor = CapturingKnowledgeGroupsListViewModelVisitor()
+        viewModel?.describeContentsOfKnowledgeItem(at: 0, visitor: visitor)
+        
+        let expected = entry.identifier
+        
+        XCTAssertEqual(expected, visitor.visitedKnowledgeEntry)
+        XCTAssertNil(visitor.visitedKnowledgeGroup)
     }
 
 }

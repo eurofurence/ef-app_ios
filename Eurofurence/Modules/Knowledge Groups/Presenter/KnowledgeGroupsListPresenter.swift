@@ -1,10 +1,11 @@
-import Foundation.NSIndexPath
+import EurofurenceModel
+import Foundation
 
 class KnowledgeGroupsListPresenter: KnowledgeListSceneDelegate, KnowledgeGroupsListViewModelDelegate {
 
     private let scene: KnowledgeListScene
     private let knowledgeListInteractor: KnowledgeGroupsInteractor
-    private let delegate: KnowledgeGroupsListModuleDelegate
+    private let viewModelContentVisitor: KnowledgeVisitor
     private var viewModel: KnowledgeGroupsListViewModel?
 
     init(scene: KnowledgeListScene,
@@ -12,7 +13,7 @@ class KnowledgeGroupsListPresenter: KnowledgeListSceneDelegate, KnowledgeGroupsL
          delegate: KnowledgeGroupsListModuleDelegate) {
         self.scene = scene
         self.knowledgeListInteractor = knowledgeListInteractor
-        self.delegate = delegate
+        viewModelContentVisitor = KnowledgeVisitor(delegate: delegate)
 
         scene.setKnowledgeListTitle(.information)
         scene.setKnowledgeListShortTitle(.information)
@@ -25,7 +26,7 @@ class KnowledgeGroupsListPresenter: KnowledgeListSceneDelegate, KnowledgeGroupsL
 
     func knowledgeListSceneDidSelectKnowledgeGroup(at groupIndex: Int) {
         scene.deselectKnowledgeEntry(at: IndexPath(item: groupIndex, section: 0))
-        viewModel?.fetchIdentifierForGroup(at: groupIndex, completionHandler: delegate.knowledgeListModuleDidSelectKnowledgeGroup)
+        viewModel?.describeContentsOfKnowledgeItem(at: groupIndex, visitor: viewModelContentVisitor)
     }
 
     func knowledgeGroupsViewModelsDidUpdate(to viewModels: [KnowledgeListGroupViewModel]) {
@@ -51,6 +52,20 @@ class KnowledgeGroupsListPresenter: KnowledgeListSceneDelegate, KnowledgeGroupsL
             header.setKnowledgeGroupDescription(group.groupDescription)
         }
 
+    }
+    
+    private struct KnowledgeVisitor: KnowledgeGroupsListViewModelVisitor {
+        
+        var delegate: KnowledgeGroupsListModuleDelegate
+        
+        func visit(_ knowledgeGroup: KnowledgeGroupIdentifier) {
+            delegate.knowledgeListModuleDidSelectKnowledgeGroup(knowledgeGroup)
+        }
+        
+        func visit(_ knowledgeEntry: KnowledgeEntryIdentifier) {
+            delegate.knowledgeListModuleDidSelectKnowledgeEntry(knowledgeEntry)
+        }
+        
     }
 
 }

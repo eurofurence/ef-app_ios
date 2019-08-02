@@ -30,8 +30,14 @@ struct DefaultKnowledgeGroupsInteractor: KnowledgeGroupsInteractor {
             delegate.knowledgeGroupsViewModelsDidUpdate(to: knowledgeGroups)
         }
 
-        func fetchIdentifierForGroup(at index: Int, completionHandler: @escaping (KnowledgeGroupIdentifier) -> Void) {
-            completionHandler(groups[index].identifier)
+        func describeContentsOfKnowledgeItem(at index: Int, visitor: KnowledgeGroupsListViewModelVisitor) {
+            let group = groups[index]
+            if group.entries.count == 1 {
+                let entry = group.entries[0]
+                visitor.visit(entry.identifier)
+            } else {
+                visitor.visit(group.identifier)
+            }
         }
 
     }

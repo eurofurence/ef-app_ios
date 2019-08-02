@@ -365,6 +365,7 @@
 		CA2D08121FE9540F00BFD785 /* WhenThePerformInitialDownloadPageAppears.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D08111FE9540F00BFD785 /* WhenThePerformInitialDownloadPageAppears.swift */; };
 		CA2D08141FE9549600BFD785 /* WhenThePerformInitialDownloadPageAppearsWithCellularNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D08131FE9549600BFD785 /* WhenThePerformInitialDownloadPageAppearsWithCellularNetwork.swift */; };
 		CA30EAD01F27D8620053DBF6 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EACF1F27D8620053DBF6 /* MessageTableViewCell.swift */; };
+		CA30FBA022F36A1D001C2EB3 /* CapturingKnowledgeGroupsListViewModelVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30FB9F22F36A1D001C2EB3 /* CapturingKnowledgeGroupsListViewModelVisitor.swift */; };
 		CA321F4E1F7BC7FD0050E489 /* StoryboardPreloadSceneFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA321F4D1F7BC7FD0050E489 /* StoryboardPreloadSceneFactoryTests.swift */; };
 		CA321F511F7BC8550050E489 /* PreloadSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA321F501F7BC8550050E489 /* PreloadSceneFactory.swift */; };
 		CA321F531F7BC88D0050E489 /* StoryboardPreloadSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA321F521F7BC88D0050E489 /* StoryboardPreloadSceneFactory.swift */; };
@@ -689,6 +690,8 @@
 		CA6EC4892051CD9C00402894 /* StoryboardKnowledgeDetailSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EC4882051CD9C00402894 /* StoryboardKnowledgeDetailSceneFactory.swift */; };
 		CA6EC48B2051CDC800402894 /* KnowledgeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EC48A2051CDC800402894 /* KnowledgeDetailViewController.swift */; };
 		CA6EC48E2051D97600402894 /* KnowledgeDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EC48D2051D97600402894 /* KnowledgeDetailPresenter.swift */; };
+		CA6EE99422F36B6900821E68 /* WhenSelectingItemInKnowledgeList_ThatRelatesToEntry_KnowledgeListPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EE99322F36B6900821E68 /* WhenSelectingItemInKnowledgeList_ThatRelatesToEntry_KnowledgeListPresenterShould.swift */; };
+		CA6EE99622F36D4800821E68 /* VisitsEntryFromKnowledgeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EE99522F36D4800821E68 /* VisitsEntryFromKnowledgeListViewModel.swift */; };
 		CA6F652722690DB500483EE0 /* WhenToldToLeaveFeedback_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F652622690DB500483EE0 /* WhenToldToLeaveFeedback_EventDetailPresenterShould.swift */; };
 		CA6F652922690EF700483EE0 /* EventDetailModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F652822690EF700483EE0 /* EventDetailModuleDelegate.swift */; };
 		CA6F652B22690F0C00483EE0 /* CapturingEventDetailModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F652A22690F0C00483EE0 /* CapturingEventDetailModuleDelegate.swift */; };
@@ -1473,6 +1476,7 @@
 		CA2D08111FE9540F00BFD785 /* WhenThePerformInitialDownloadPageAppears.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenThePerformInitialDownloadPageAppears.swift; sourceTree = "<group>"; };
 		CA2D08131FE9549600BFD785 /* WhenThePerformInitialDownloadPageAppearsWithCellularNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenThePerformInitialDownloadPageAppearsWithCellularNetwork.swift; sourceTree = "<group>"; };
 		CA30EACF1F27D8620053DBF6 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
+		CA30FB9F22F36A1D001C2EB3 /* CapturingKnowledgeGroupsListViewModelVisitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingKnowledgeGroupsListViewModelVisitor.swift; sourceTree = "<group>"; };
 		CA321F4D1F7BC7FD0050E489 /* StoryboardPreloadSceneFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardPreloadSceneFactoryTests.swift; sourceTree = "<group>"; };
 		CA321F501F7BC8550050E489 /* PreloadSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadSceneFactory.swift; sourceTree = "<group>"; };
 		CA321F521F7BC88D0050E489 /* StoryboardPreloadSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardPreloadSceneFactory.swift; sourceTree = "<group>"; };
@@ -1800,6 +1804,8 @@
 		CA6EC4882051CD9C00402894 /* StoryboardKnowledgeDetailSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardKnowledgeDetailSceneFactory.swift; sourceTree = "<group>"; };
 		CA6EC48A2051CDC800402894 /* KnowledgeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailViewController.swift; sourceTree = "<group>"; };
 		CA6EC48D2051D97600402894 /* KnowledgeDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailPresenter.swift; sourceTree = "<group>"; };
+		CA6EE99322F36B6900821E68 /* WhenSelectingItemInKnowledgeList_ThatRelatesToEntry_KnowledgeListPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSelectingItemInKnowledgeList_ThatRelatesToEntry_KnowledgeListPresenterShould.swift; sourceTree = "<group>"; };
+		CA6EE99522F36D4800821E68 /* VisitsEntryFromKnowledgeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitsEntryFromKnowledgeListViewModel.swift; sourceTree = "<group>"; };
 		CA6F652622690DB500483EE0 /* WhenToldToLeaveFeedback_EventDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToLeaveFeedback_EventDetailPresenterShould.swift; sourceTree = "<group>"; };
 		CA6F652822690EF700483EE0 /* EventDetailModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailModuleDelegate.swift; sourceTree = "<group>"; };
 		CA6F652A22690F0C00483EE0 /* CapturingEventDetailModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingEventDetailModuleDelegate.swift; sourceTree = "<group>"; };
@@ -4638,12 +4644,14 @@
 			children = (
 				CA0F7628203230E1009DA079 /* CapturingKnowledgeGroupEntryScene.swift */,
 				CA0F762420322E07009DA079 /* CapturingKnowledgeGroupHeaderScene.swift */,
+				CA30FB9F22F36A1D001C2EB3 /* CapturingKnowledgeGroupsListViewModelVisitor.swift */,
 				CA73AEDE201A0833004E77BF /* CapturingKnowledgeInteractor.swift */,
 				CA0F762E2033119B009DA079 /* CapturingKnowledgeListModuleDelegate.swift */,
 				CA73AEDC201A0823004E77BF /* CapturingKnowledgeListScene.swift */,
+				CA27254F2110F12F004C6D0A /* StubKnowledgeGroupsListViewModel.swift */,
 				CA73AEDA201A080F004E77BF /* StubKnowledgeListSceneFactory.swift */,
 				CABF03C62041C3270028BD62 /* StubKnowledgeService.swift */,
-				CA27254F2110F12F004C6D0A /* StubKnowledgeGroupsListViewModel.swift */,
+				CA6EE99522F36D4800821E68 /* VisitsEntryFromKnowledgeListViewModel.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -4717,6 +4725,7 @@
 				CA73AEF7201A0908004E77BF /* WhenBuildingKnowledgePresenter.swift */,
 				CA73AED3201A0413004E77BF /* WhenKnowledgeListSceneDidLoad.swift */,
 				CA0F761C2031C215009DA079 /* WhenKnowledgeListViewModelIsPrepared.swift */,
+				CA6EE99322F36B6900821E68 /* WhenSelectingItemInKnowledgeList_ThatRelatesToEntry_KnowledgeListPresenterShould.swift */,
 			);
 			path = "Presenter Tests";
 			sourceTree = "<group>";
@@ -6573,6 +6582,7 @@
 				CA131BD120C1851A00DB1036 /* WhenPreparingViewModel_ForEventThatIsFavourite_EventDetailInteractorShould.swift in Sources */,
 				CA8A73BD22BD0C91007A5201 /* WhenBuildingAdditionalServicesModule_PresenterShould.swift in Sources */,
 				CA36A46720D84A9B00EE6537 /* CapturingDealersViewModel+RandomValueProviding.swift in Sources */,
+				CA6EE99422F36B6900821E68 /* WhenSelectingItemInKnowledgeList_ThatRelatesToEntry_KnowledgeListPresenterShould.swift in Sources */,
 				CA6D7CC222368DA400AB816C /* VisibilityState.swift in Sources */,
 				CA250DDE20D6EA0500E7513C /* CapturingScheduleSearchViewModelDelegate.swift in Sources */,
 				CA08B10722EF6E1700FDAAA7 /* CapturingScheduleEventViewModelObserver.swift in Sources */,
@@ -6915,6 +6925,7 @@
 				CA73AED8201A07E7004E77BF /* KnowledgeGroupsPresenterTestBuilder.swift in Sources */,
 				CA39852222C7A95C00117249 /* FakeRemoteConfigurationLoader.swift in Sources */,
 				CAD68828208A0E7A00B31F5F /* WhenBindingUser_NewsPresenterShould.swift in Sources */,
+				CA30FBA022F36A1D001C2EB3 /* CapturingKnowledgeGroupsListViewModelVisitor.swift in Sources */,
 				CAD5593C229AF0C60068DD46 /* NotificationResponseProcessorTestBuilder.swift in Sources */,
 				CA00AE6220D1749200C2FBB0 /* CapturingScheduleEventComponent.swift in Sources */,
 				CA2761AD20E0221A000E52AC /* CollectThemAllPresenterTestBuilder.swift in Sources */,
@@ -7013,6 +7024,7 @@
 				CA9AC16B208546530039C0C2 /* WhenBindingEvent_NewsPresenterShould.swift in Sources */,
 				CA08158B20D4554900F750D4 /* WhenGroupingEventsByStartTime_ScheduleInteractorShould.swift in Sources */,
 				CA283AC620EAB85700F7D195 /* WhenBindingAnnouncement_AnnouncementsPresenterShould.swift in Sources */,
+				CA6EE99622F36D4800821E68 /* VisitsEntryFromKnowledgeListViewModel.swift in Sources */,
 				CAC4994C22E4A4B7003E1D77 /* WhenBindingActiveCategory_DealersSceneShould.swift in Sources */,
 				CA283A7820E8F53B00F7D195 /* WhenMakingWebModuleWithNonHTTPSchemedLinks.swift in Sources */,
 				CA283A6520E6F27200F7D195 /* WhenApplicationRefreshStateChanges_NewsInteractorShould.swift in Sources */,
