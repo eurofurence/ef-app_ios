@@ -107,6 +107,12 @@ class TabBarDirector: NewsModuleDelegate, ScheduleModuleDelegate,
     }
     
     func openKnowledgeEntry(_ knowledgeEntry: KnowledgeEntryIdentifier) {
+        guard let knowledgeNavigationController = knowledgeListController?.navigationController else { return }
+        
+        if let index = tabController?.viewControllers?.firstIndex(of: knowledgeNavigationController) {
+            tabController?.selectedIndex = index
+        }
+        
         let knowledgeDetailModule = moduleRepository.makeKnowledgeDetailModule(knowledgeEntry, delegate: self)
         knowledgeListController?.navigationController?.pushViewController(knowledgeDetailModule, animated: animate)
     }
