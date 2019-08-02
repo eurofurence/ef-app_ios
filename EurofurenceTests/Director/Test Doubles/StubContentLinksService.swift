@@ -17,6 +17,7 @@ class StubContentLinksService: ContentLinksService {
         case event(EventIdentifier)
         case dealer(DealerIdentifier)
         case knowledgeGroups
+        case knowledge(KnowledgeEntryIdentifier, KnowledgeGroupIdentifier)
     }
     
     private var urlContent = [URL: URLContent]()
@@ -36,6 +37,9 @@ class StubContentLinksService: ContentLinksService {
             
         case .knowledgeGroups:
             visitor.visitKnowledgeGroups()
+            
+        case .knowledge(let entry, let group):
+            visitor.visitKnowledgeEntry(entry, containedWithinGroup: group)
         }
     }
 

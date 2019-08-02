@@ -101,6 +101,14 @@ struct ActivityResumer {
             handledContent = true
         }
         
+        func visitKnowledgeEntry(
+            _ knowledgeEntry: KnowledgeEntryIdentifier,
+            containedWithinGroup knowledgeGroup: KnowledgeGroupIdentifier
+        ) {
+            contentRouter.resumeViewingKnowledgeEntry(knowledgeEntry, parentGroup: knowledgeGroup)
+            handledContent = true
+        }
+        
     }
     
 }

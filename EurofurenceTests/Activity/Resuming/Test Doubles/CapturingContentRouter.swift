@@ -18,4 +18,9 @@ class CapturingContentRouter: ContentRouter {
         didResumeViewingKnowledgeGroups = true
     }
     
+    private(set) var resumedKnowledgePairing: (entry: KnowledgeEntryIdentifier, group: KnowledgeGroupIdentifier)?
+    func resumeViewingKnowledgeEntry(_ knowledgeEntry: KnowledgeEntryIdentifier, parentGroup: KnowledgeGroupIdentifier) {
+        resumedKnowledgePairing = (entry: knowledgeEntry, group: parentGroup)
+    }
+    
 }
