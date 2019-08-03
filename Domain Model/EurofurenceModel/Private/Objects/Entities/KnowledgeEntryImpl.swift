@@ -7,23 +7,25 @@ struct KnowledgeEntryImpl: KnowledgeEntry {
     var order: Int
     var contents: String
     var links: [Link]
+    var shareableURLFactory: ShareableURLFactory
     
     func makeContentURL() -> URL {
-        return unwrap(URL(string: "https://app.eurofurence.org"))
+        return shareableURLFactory.makeURL(for: identifier)
     }
     
 }
 
 extension KnowledgeEntryImpl {
     
-    static func fromServerModel(_ entry: KnowledgeEntryCharacteristics) -> KnowledgeEntry {
+    static func fromServerModel(_ entry: KnowledgeEntryCharacteristics, shareableURLFactory: ShareableURLFactory) -> KnowledgeEntry {
         let links: [Link] = Link.fromServerModels(entry.links)
         
         return KnowledgeEntryImpl(identifier: KnowledgeEntryIdentifier(entry.identifier),
                                   title: entry.title,
                                   order: entry.order,
                                   contents: entry.text,
-                                  links: links)
+                                  links: links,
+                                  shareableURLFactory: shareableURLFactory)
     }
     
 }

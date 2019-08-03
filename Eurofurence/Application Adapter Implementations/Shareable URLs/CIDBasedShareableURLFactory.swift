@@ -22,4 +22,8 @@ struct CIDBasedShareableURLFactory: ShareableURLFactory {
         return baseURL.appendingPathComponent("Dealers/\(dealerIdentifier.rawValue)")
     }
     
+    func makeURL(for knowledgeEntryIdentifier: KnowledgeEntryIdentifier) -> URL {
+        return baseURL
+    }
+    
 }

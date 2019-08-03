@@ -75,7 +75,8 @@ class ConcreteSession: EurofurenceSession {
 
         knowledgeService = ConcreteKnowledgeService(eventBus: eventBus,
                                                     dataStore: dataStore,
-                                                    imageRepository: imageRepository)
+                                                    imageRepository: imageRepository,
+                                                    shareableURLFactory: shareableURLFactory)
 
         let imageCache = ImagesCache(eventBus: eventBus,
                                      imageRepository: imageRepository)
