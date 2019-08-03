@@ -4,7 +4,7 @@ import EurofurenceModelTestDoubles
 import Foundation
 import TestUtilities
 
-struct StubKnowledgeEntryDetailViewModel: KnowledgeEntryDetailViewModel {
+final class StubKnowledgeEntryDetailViewModel: KnowledgeEntryDetailViewModel {
 
     var title: String
     var contents: NSAttributedString
@@ -13,8 +13,25 @@ struct StubKnowledgeEntryDetailViewModel: KnowledgeEntryDetailViewModel {
 
     var modelLinks: [Link]
 
+    init(title: String,
+         contents: NSAttributedString,
+         links: [LinkViewModel],
+         images: [KnowledgeEntryImageViewModel],
+         modelLinks: [Link]) {
+        self.title = title
+        self.contents = contents
+        self.links = links
+        self.images = images
+        self.modelLinks = modelLinks
+    }
+
     func link(at index: Int) -> Link {
         return modelLinks[index]
+    }
+    
+    private(set) var shareSender: AnyObject?
+    func shareKnowledgeEntry(_ sender: AnyObject) {
+        shareSender = sender
     }
 
 }
@@ -32,7 +49,7 @@ extension StubKnowledgeEntryDetailViewModel: RandomValueProviding {
     }
 
     static var randomWithoutLinks: StubKnowledgeEntryDetailViewModel {
-        var viewModel = random
+        let viewModel = random
         viewModel.links = []
         viewModel.modelLinks = []
 

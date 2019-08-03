@@ -9,6 +9,7 @@ protocol KnowledgeEntryDetailViewModel {
     var images: [KnowledgeEntryImageViewModel] { get }
 
     func link(at index: Int) -> Link
+    func shareKnowledgeEntry(_ sender: AnyObject)
 
 }
 

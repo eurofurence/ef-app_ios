@@ -23,6 +23,10 @@ class KnowledgeDetailPresenter: KnowledgeDetailSceneDelegate {
     func knowledgeDetailSceneDidLoad() {
         knowledgeDetailSceneInteractor.makeViewModel(for: identifier, completionHandler: knowledgeDetailViewModelPrepared)
     }
+    
+    func knowledgeDetailSceneShareButtonTapped(_ sender: AnyObject) {
+        viewModel?.shareKnowledgeEntry(sender)
+    }
 
     private func knowledgeDetailViewModelPrepared(_ viewModel: KnowledgeEntryDetailViewModel) {
         self.viewModel = viewModel

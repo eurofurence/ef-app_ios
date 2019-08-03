@@ -22,6 +22,10 @@ struct DefaultKnowledgeDetailSceneInteractor: KnowledgeDetailSceneInteractor {
         func link(at index: Int) -> Link {
             return linkModels[index]
         }
+        
+        func shareKnowledgeEntry(_ sender: AnyObject) {
+            
+        }
 
     }
 
