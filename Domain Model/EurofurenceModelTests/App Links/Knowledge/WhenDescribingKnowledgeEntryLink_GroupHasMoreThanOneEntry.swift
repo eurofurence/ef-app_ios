@@ -5,9 +5,20 @@ import XCTest
 class WhenDescribingKnowledgeEntryLink_GroupHasMoreThanOneEntry: XCTestCase {
 
     func testTheEntryAndGroupIdentifiersAreProvided() {
-        let characteristics = ModelCharacteristics.randomWithoutDeletions
+        var characteristics = ModelCharacteristics.randomWithoutDeletions
         let group = characteristics.knowledgeGroups.changed.randomElement().element
-        let entry = characteristics.knowledgeEntries.changed.filter({ $0.groupIdentifier == group.identifier }).randomElement().element
+        let makeEntry: () -> KnowledgeEntryCharacteristics = {
+            var entry = KnowledgeEntryCharacteristics.random
+            entry.groupIdentifier = group.identifier
+            
+            return entry
+        }
+        
+        let entries: [KnowledgeEntryCharacteristics] = [makeEntry(), makeEntry(), makeEntry()]
+        characteristics.knowledgeEntries.changed = entries
+        
+        let entry = entries.randomElement().element
+        
         let dataStore = InMemoryDataStore(response: characteristics)
         let cid = ModelCharacteristics.testConventionIdentifier
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
