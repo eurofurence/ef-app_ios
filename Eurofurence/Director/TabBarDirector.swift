@@ -96,9 +96,26 @@ class TabBarDirector: NewsModuleDelegate, ScheduleModuleDelegate,
         openMessage(message, revealStyle: .replace)
     }
     
+    func openKnowledgeGroups() {
+        guard let knowledgeNavigationController = knowledgeListController?.navigationController else { return }
+        
+        if let index = tabController?.viewControllers?.firstIndex(of: knowledgeNavigationController),
+           let knowledgeListController = knowledgeListController {        
+            tabController?.selectedIndex = index
+            knowledgeNavigationController.setViewControllers([knowledgeListController], animated: false)
+        }
+    }
+    
     func openKnowledgeEntry(_ knowledgeEntry: KnowledgeEntryIdentifier) {
-        let knowledgeDetailModule = moduleRepository.makeKnowledgeDetailModule(knowledgeEntry, delegate: self)
-        knowledgeListController?.navigationController?.pushViewController(knowledgeDetailModule, animated: animate)
+        guard let knowledgeNavigationController = knowledgeListController?.navigationController else { return }
+        
+        if let index = tabController?.viewControllers?.firstIndex(of: knowledgeNavigationController),
+           let knowledgeListController = knowledgeListController {
+            tabController?.selectedIndex = index
+            
+            let knowledgeDetailModule = moduleRepository.makeKnowledgeDetailModule(knowledgeEntry, delegate: self)
+            knowledgeNavigationController.setViewControllers([knowledgeListController, knowledgeDetailModule], animated: animate)
+        }
     }
     
     func showInvalidatedAnnouncementAlert() {
@@ -107,6 +124,26 @@ class TabBarDirector: NewsModuleDelegate, ScheduleModuleDelegate,
                                       preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: .ok, style: .cancel))
         tabController?.present(alert, animated: performAnimations, completion: nil)
+    }
+    
+    func openKnowledgeEntry(_ knowledgeEntry: KnowledgeEntryIdentifier, parentGroup: KnowledgeGroupIdentifier) {
+        guard let knowledgeNavigationController = knowledgeListController?.navigationController else { return }
+        
+        if let index = tabController?.viewControllers?.firstIndex(of: knowledgeNavigationController),
+            let knowledgeListController = knowledgeListController {
+            tabController?.selectedIndex = index
+            
+            let knowledgeGroupModule = moduleRepository.makeKnowledgeGroupEntriesModule(parentGroup, delegate: self)
+            let knowledgeEntryModule = moduleRepository.makeKnowledgeDetailModule(knowledgeEntry, delegate: self)
+            let viewControllers = [knowledgeListController, knowledgeGroupModule, knowledgeEntryModule]
+            makeSureViewControllersLoadTheirNavigationItems(viewControllers)
+            
+            knowledgeNavigationController.setViewControllers(viewControllers, animated: false)
+        }
+    }
+    
+    private func makeSureViewControllersLoadTheirNavigationItems(_ viewControllers: [UIViewController]) {
+        viewControllers.forEach({ $0.loadViewIfNeeded() })
     }
     
     // MARK: NewsModuleDelegate

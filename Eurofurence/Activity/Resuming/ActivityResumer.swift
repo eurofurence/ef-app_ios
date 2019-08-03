@@ -96,6 +96,24 @@ struct ActivityResumer {
             handledContent = true
         }
         
+        func visitKnowledgeGroups() {
+            contentRouter.resumeViewingKnowledgeGroups()
+            handledContent = true
+        }
+        
+        func visitKnowledgeEntry(_ knowledgeEntry: KnowledgeEntryIdentifier) {
+            contentRouter.resumeViewingKnowledgeEntry(knowledgeEntry)
+            handledContent = true
+        }
+        
+        func visitKnowledgeEntry(
+            _ knowledgeEntry: KnowledgeEntryIdentifier,
+            containedWithinGroup knowledgeGroup: KnowledgeGroupIdentifier
+        ) {
+            contentRouter.resumeViewingKnowledgeEntry(knowledgeEntry, parentGroup: knowledgeGroup)
+            handledContent = true
+        }
+        
     }
     
 }

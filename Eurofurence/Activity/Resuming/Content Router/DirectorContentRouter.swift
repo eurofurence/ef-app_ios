@@ -12,4 +12,16 @@ struct DirectorContentRouter: ContentRouter {
         director.openDealer(identifier)
     }
     
+    func resumeViewingKnowledgeGroups() {
+        director.openKnowledgeGroups()
+    }
+    
+    func resumeViewingKnowledgeEntry(_ knowledgeEntry: KnowledgeEntryIdentifier) {
+        director.openKnowledgeEntry(knowledgeEntry)
+    }
+    
+    func resumeViewingKnowledgeEntry(_ knowledgeEntry: KnowledgeEntryIdentifier, parentGroup: KnowledgeGroupIdentifier) {
+        director.openKnowledgeEntry(knowledgeEntry, parentGroup: parentGroup)
+    }
+    
 }
