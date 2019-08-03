@@ -15,11 +15,19 @@ struct CIDBasedShareableURLFactory: ShareableURLFactory {
     }
     
     func makeURL(for eventIdentifier: EventIdentifier) -> URL {
-        return baseURL.appendingPathComponent("Events/\(eventIdentifier.rawValue)")
+        return makeURL(appendingPathComponent: "Events/\(eventIdentifier.rawValue)")
     }
     
     func makeURL(for dealerIdentifier: DealerIdentifier) -> URL {
-        return baseURL.appendingPathComponent("Dealers/\(dealerIdentifier.rawValue)")
+        return makeURL(appendingPathComponent: "Dealers/\(dealerIdentifier.rawValue)")
+    }
+    
+    func makeURL(for knowledgeEntryIdentifier: KnowledgeEntryIdentifier) -> URL {
+        return makeURL(appendingPathComponent: "KnowledgeEntries/\(knowledgeEntryIdentifier.rawValue)")
+    }
+    
+    private func makeURL(appendingPathComponent pathComponent: String) -> URL {
+        return baseURL.appendingPathComponent(pathComponent)
     }
     
 }

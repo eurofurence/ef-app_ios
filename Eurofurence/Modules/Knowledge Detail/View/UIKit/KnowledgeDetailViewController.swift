@@ -6,6 +6,12 @@ class KnowledgeDetailViewController: UIViewController, KnowledgeDetailScene {
 
     @IBOutlet private weak var tableView: UITableView!
     private lazy var tableController = TableController(tableView: self.tableView)
+    
+    // MARK: IBActions
+    
+    @IBAction private func shareEntry(_ sender: UIBarButtonItem) {
+        delegate?.knowledgeDetailSceneShareButtonTapped(sender)
+    }
 
     // MARK: Overrides
 

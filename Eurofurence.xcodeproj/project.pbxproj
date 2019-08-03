@@ -357,6 +357,7 @@
 		CA2AA2F822C9530900C0E1A1 /* DealerIntentDefinitionProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2F722C9530900C0E1A1 /* DealerIntentDefinitionProviding.swift */; };
 		CA2AA2FA22C9531900C0E1A1 /* StubDealerIntentDefinitionProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2F922C9531900C0E1A1 /* StubDealerIntentDefinitionProviding.swift */; };
 		CA2AA30322CA95BF00C0E1A1 /* UpdateRemoteConfigRefreshCollaboration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA30222CA95BF00C0E1A1 /* UpdateRemoteConfigRefreshCollaboration.swift */; };
+		CA2CB5AF22F5A26300D6707D /* WhenUserTapsShareButton_KnowledgeDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2CB5AE22F5A26300D6707D /* WhenUserTapsShareButton_KnowledgeDetailPresenterShould.swift */; };
 		CA2D08001FE94AF900BFD785 /* WhenTheAppLaunchesWithUninitializedSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D07FF1FE94AF900BFD785 /* WhenTheAppLaunchesWithUninitializedSession.swift */; };
 		CA2D08021FE94B5500BFD785 /* WhenTheAppLaunchesWithStaleSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D08011FE94B5500BFD785 /* WhenTheAppLaunchesWithStaleSession.swift */; };
 		CA2D08041FE94B9100BFD785 /* WhenTheAppLaunchesWithInitializedSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D08031FE94B9100BFD785 /* WhenTheAppLaunchesWithInitializedSession.swift */; };
@@ -1473,6 +1474,7 @@
 		CA2AA2F722C9530900C0E1A1 /* DealerIntentDefinitionProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerIntentDefinitionProviding.swift; sourceTree = "<group>"; };
 		CA2AA2F922C9531900C0E1A1 /* StubDealerIntentDefinitionProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubDealerIntentDefinitionProviding.swift; sourceTree = "<group>"; };
 		CA2AA30222CA95BF00C0E1A1 /* UpdateRemoteConfigRefreshCollaboration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateRemoteConfigRefreshCollaboration.swift; sourceTree = "<group>"; };
+		CA2CB5AE22F5A26300D6707D /* WhenUserTapsShareButton_KnowledgeDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenUserTapsShareButton_KnowledgeDetailPresenterShould.swift; sourceTree = "<group>"; };
 		CA2D04FD20EE910E00CF54E1 /* NotificationScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationScheduler.swift; sourceTree = "<group>"; };
 		CA2D07FF1FE94AF900BFD785 /* WhenTheAppLaunchesWithUninitializedSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenTheAppLaunchesWithUninitializedSession.swift; sourceTree = "<group>"; };
 		CA2D08011FE94B5500BFD785 /* WhenTheAppLaunchesWithStaleSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenTheAppLaunchesWithStaleSession.swift; sourceTree = "<group>"; };
@@ -4427,6 +4429,7 @@
 				CA17FE722056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift */,
 				CAD3BDB420587DD800C91E6E /* WhenShowingKnowledgeEntryWithoutLinks.swift */,
 				CAD3BDB62059500400C91E6E /* WhenUserSelectsKnowledgeLink.swift */,
+				CA2CB5AE22F5A26300D6707D /* WhenUserTapsShareButton_KnowledgeDetailPresenterShould.swift */,
 			);
 			path = "Presenter Tests";
 			sourceTree = "<group>";
@@ -7028,6 +7031,7 @@
 				CA73AEDD201A0823004E77BF /* CapturingKnowledgeListScene.swift in Sources */,
 				CA62134C221F276000E88880 /* ScheduleEventViewModelAssertion.swift in Sources */,
 				CA36A47520D84DD600EE6537 /* CapturingDealerComponent.swift in Sources */,
+				CA2CB5AF22F5A26300D6707D /* WhenUserTapsShareButton_KnowledgeDetailPresenterShould.swift in Sources */,
 				CA60C002207F7D2100697566 /* WhenNewsSceneDidLoad.swift in Sources */,
 				CA63758C208CE06100536BE2 /* WhenBuildingScheduleModule.swift in Sources */,
 				CA36A44D20D771C400EE6537 /* CapturingSelectionChangedHaptic.swift in Sources */,

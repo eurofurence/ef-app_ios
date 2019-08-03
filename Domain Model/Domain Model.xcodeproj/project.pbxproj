@@ -18,6 +18,7 @@
 		CA2AA2FF22CA8F1D00C0E1A1 /* RefreshCollaboration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2FE22CA8F1D00C0E1A1 /* RefreshCollaboration.swift */; };
 		CA2AA30122CA8F3F00C0E1A1 /* UnsuccessfulRefreshCollaboration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA30022CA8F3F00C0E1A1 /* UnsuccessfulRefreshCollaboration.swift */; };
 		CA2AA30522CA98BF00C0E1A1 /* DoNothingRefreshCollaboration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA30422CA98BF00C0E1A1 /* DoNothingRefreshCollaboration.swift */; };
+		CA2CB5B122F5A99800D6707D /* WhenMakingContentURL_KnowledgeEntryShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2CB5B022F5A99800D6707D /* WhenMakingContentURL_KnowledgeEntryShould.swift */; };
 		CA30FB9C22F36456001C2EB3 /* KnowledgeGroupImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30FB9B22F36456001C2EB3 /* KnowledgeGroupImpl.swift */; };
 		CA30FB9E22F365E4001C2EB3 /* KnowledgeEntryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30FB9D22F365E4001C2EB3 /* KnowledgeEntryImpl.swift */; };
 		CA6EE99B22F401E900821E68 /* WhenDescribingKnowledgeGroupsLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EE99A22F401E900821E68 /* WhenDescribingKnowledgeGroupsLink.swift */; };
@@ -516,6 +517,7 @@
 		CA2AA2FE22CA8F1D00C0E1A1 /* RefreshCollaboration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshCollaboration.swift; sourceTree = "<group>"; };
 		CA2AA30022CA8F3F00C0E1A1 /* UnsuccessfulRefreshCollaboration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsuccessfulRefreshCollaboration.swift; sourceTree = "<group>"; };
 		CA2AA30422CA98BF00C0E1A1 /* DoNothingRefreshCollaboration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoNothingRefreshCollaboration.swift; sourceTree = "<group>"; };
+		CA2CB5B022F5A99800D6707D /* WhenMakingContentURL_KnowledgeEntryShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenMakingContentURL_KnowledgeEntryShould.swift; sourceTree = "<group>"; };
 		CA30FB9B22F36456001C2EB3 /* KnowledgeGroupImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeGroupImpl.swift; sourceTree = "<group>"; };
 		CA30FB9D22F365E4001C2EB3 /* KnowledgeEntryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeEntryImpl.swift; sourceTree = "<group>"; };
 		CA6EE99A22F401E900821E68 /* WhenDescribingKnowledgeGroupsLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDescribingKnowledgeGroupsLink.swift; sourceTree = "<group>"; };
@@ -1585,6 +1587,7 @@
 				CA7A30BB22B16E24002AD939 /* WhenFetchingKnowledgeGroupsAfterSuccessfulRefresh.swift */,
 				CA7A30BD22B16E24002AD939 /* WhenFetchingKnowledgeGroupsBeforeRefreshWhenStoreHasGroups.swift */,
 				CA7A30B922B16E24002AD939 /* WhenFetchingKnowledgeGroupsWithoutLoadingAnything.swift */,
+				CA2CB5B022F5A99800D6707D /* WhenMakingContentURL_KnowledgeEntryShould.swift */,
 			);
 			path = Knowledge;
 			sourceTree = "<group>";
@@ -2808,6 +2811,7 @@
 				CA7A31DB22B16E26002AD939 /* WhenObservingCollectThemAllURLWhileLoggedOut_ApplicationShould.swift in Sources */,
 				CA7A31A922B16E26002AD939 /* WhenFetchingMapContents_TappingWithinRadiusOfMultipleEntries_ApplicationShould.swift in Sources */,
 				CAA10FCE22C562EA00689A32 /* WhenToldToOpenNotification_ThatRepresentsMessage_NotDownloaded_DownloadFails.swift in Sources */,
+				CA2CB5B122F5A99800D6707D /* WhenMakingContentURL_KnowledgeEntryShould.swift in Sources */,
 				CA7A31B822B16E26002AD939 /* WhenPerformingSubsequentSync_AndForceRefreshRequired.swift in Sources */,
 				CA7A31EB22B16E26002AD939 /* CapturingEventObserver.swift in Sources */,
 				CA7A31FF22B16E26002AD939 /* WhenToldToOpenDealersTelegram.swift in Sources */,
