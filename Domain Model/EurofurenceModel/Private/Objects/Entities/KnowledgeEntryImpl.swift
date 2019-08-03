@@ -8,6 +8,10 @@ struct KnowledgeEntryImpl: KnowledgeEntry {
     var contents: String
     var links: [Link]
     
+    func makeContentURL() -> URL {
+        return unwrap(URL(string: "https://app.eurofurence.org"))
+    }
+    
 }
 
 extension KnowledgeEntryImpl {

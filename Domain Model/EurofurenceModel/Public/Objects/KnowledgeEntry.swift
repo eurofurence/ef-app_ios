@@ -1,3 +1,5 @@
+import Foundation
+
 public typealias KnowledgeEntryIdentifier = Identifier<KnowledgeEntry>
 
 public protocol KnowledgeEntry {
@@ -7,5 +9,7 @@ public protocol KnowledgeEntry {
     var order: Int { get }
     var contents: String { get }
     var links: [Link] { get }
+    
+    func makeContentURL() -> URL
 
 }
