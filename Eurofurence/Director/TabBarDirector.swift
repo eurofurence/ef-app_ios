@@ -20,13 +20,12 @@ class TabBarDirector: NewsModuleDelegate, ScheduleModuleDelegate,
     private let orderingPolicy: ModuleOrderingPolicy
     private let windowWireframe: WindowWireframe
     
+    private var tabController: UITabBarController?
     private var newsController: UIViewController?
     private var scheduleViewController: UIViewController?
     private var knowledgeListController: UIViewController?
     private var dealersViewController: UIViewController?
     private var mapsModule: UIViewController?
-    
-    private var tabController: UITabBarController?
     
     private let saveTabOrder: SaveTabOrderWhenCustomizationFinishes
     
@@ -56,7 +55,6 @@ class TabBarDirector: NewsModuleDelegate, ScheduleModuleDelegate,
         let tabModule = tabModuleProviding.makeTabModule(orderedModules)
         tabController = tabModule
         tabModule.delegate = saveTabOrder
-        
         windowWireframe.setRoot(tabModule)
     }
     
@@ -256,13 +254,15 @@ class TabBarDirector: NewsModuleDelegate, ScheduleModuleDelegate,
     }
     
     func knowledgeListModuleDidSelectKnowledgeEntry(_ knowledgeEntry: KnowledgeEntryIdentifier) {
-        openKnowledgeEntry(knowledgeEntry)
+        let knowledgeEntryModule = moduleRepository.makeKnowledgeDetailModule(knowledgeEntry, delegate: self)
+        knowledgeListController?.navigationController?.pushViewController(knowledgeEntryModule, animated: animate)
     }
     
     // MARK: KnowledgeGroupEntriesModuleDelegate
     
     func knowledgeGroupEntriesModuleDidSelectKnowledgeEntry(identifier: KnowledgeEntryIdentifier) {
-        openKnowledgeEntry(identifier)
+        let knowledgeEntryModule = moduleRepository.makeKnowledgeDetailModule(identifier, delegate: self)
+        knowledgeListController?.navigationController?.pushViewController(knowledgeEntryModule, animated: animate)
     }
     
     // MARK: KnowledgeDetailModuleDelegate
