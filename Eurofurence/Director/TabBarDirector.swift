@@ -109,12 +109,13 @@ class TabBarDirector: NewsModuleDelegate, ScheduleModuleDelegate,
     func openKnowledgeEntry(_ knowledgeEntry: KnowledgeEntryIdentifier) {
         guard let knowledgeNavigationController = knowledgeListController?.navigationController else { return }
         
-        if let index = tabController?.viewControllers?.firstIndex(of: knowledgeNavigationController) {
+        if let index = tabController?.viewControllers?.firstIndex(of: knowledgeNavigationController),
+           let knowledgeListController = knowledgeListController {
             tabController?.selectedIndex = index
+            
+            let knowledgeDetailModule = moduleRepository.makeKnowledgeDetailModule(knowledgeEntry, delegate: self)
+            knowledgeNavigationController.setViewControllers([knowledgeListController, knowledgeDetailModule], animated: animate)
         }
-        
-        let knowledgeDetailModule = moduleRepository.makeKnowledgeDetailModule(knowledgeEntry, delegate: self)
-        knowledgeListController?.navigationController?.pushViewController(knowledgeDetailModule, animated: animate)
     }
     
     func showInvalidatedAnnouncementAlert() {
