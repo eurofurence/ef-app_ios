@@ -6,7 +6,10 @@ class HybridWebViewController: UIViewController, HybridWebScene {
     // MARK: Properties
 
     private var webView: WKWebView?
-
+    private var loadingObservation: NSKeyValueObservation?
+    
+    @IBOutlet private weak var loadingIndicator: UIActivityIndicatorView!
+    
     // MARK: Overrides
     
     override func viewDidLoad() {
@@ -54,6 +57,8 @@ class HybridWebViewController: UIViewController, HybridWebScene {
     // MARK: Private
     
     private func assembleWebView() {
+        loadingObservation = nil
+        
         let webConfiguration = WKWebViewConfiguration()
         webConfiguration.preferences.javaScriptEnabled = true
         webConfiguration.websiteDataStore = .nonPersistent()
@@ -64,6 +69,12 @@ class HybridWebViewController: UIViewController, HybridWebScene {
         view.addSubview(webView)
         
         self.webView = webView
+        
+        loadingObservation = webView.observe(\.isLoading, changeHandler: { [weak self] (webView, _) in
+            self?.loadingIndicator.isHidden = !webView.isLoading
+        })
+        
+        view.bringSubviewToFront(loadingIndicator)
     }
     
     private func scaleImageForTabBarPresentation(_ image: UIImage) -> UIImage {
