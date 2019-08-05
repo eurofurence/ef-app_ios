@@ -2,10 +2,39 @@ import EurofurenceModel
 import Foundation
 import TestUtilities
 
-extension KnowledgeEntry: RandomValueProviding {
+public final class FakeKnowledgeEntry: KnowledgeEntry {
+    
+    public var identifier: KnowledgeEntryIdentifier
+    public var title: String
+    public var order: Int
+    public var contents: String
+    public var links: [Link]
 
-    public static var random: KnowledgeEntry {
-        return KnowledgeEntry(identifier: .random, title: .random, order: .random, contents: .random, links: .random)
+    public init(
+        identifier: KnowledgeEntryIdentifier,
+        title: String,
+        order: Int,
+        contents: String,
+        links: [Link]
+    ) {
+        self.identifier = identifier
+        self.title = title
+        self.order = order
+        self.contents = contents
+        self.links = links
+    }
+    
+    public let contentURL = URL.random
+    public func makeContentURL() -> URL {
+        return contentURL
+    }
+    
+}
+
+extension FakeKnowledgeEntry: RandomValueProviding {
+
+    public static var random: FakeKnowledgeEntry {
+        return FakeKnowledgeEntry(identifier: .random, title: .random, order: .random, contents: .random, links: .random)
     }
 
 }

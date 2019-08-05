@@ -8,6 +8,8 @@ class ConcreteKnowledgeService: KnowledgeService {
     private let dataStore: DataStore
     private let imageRepository: ImageRepository
     private var observers = [KnowledgeServiceObserver]()
+    private let shareableURLFactory: ShareableURLFactory
+    
     var models = [KnowledgeGroup]() {
         didSet {
             observers.forEach { $0.knowledgeGroupsDidChange(to: models) }
@@ -16,9 +18,11 @@ class ConcreteKnowledgeService: KnowledgeService {
 
     // MARK: Initialization
 
-    init(eventBus: EventBus, dataStore: DataStore, imageRepository: ImageRepository) {
+    init(eventBus: EventBus, dataStore: DataStore, imageRepository: ImageRepository, shareableURLFactory: ShareableURLFactory) {
         self.dataStore = dataStore
         self.imageRepository = imageRepository
+        self.shareableURLFactory = shareableURLFactory
+        
         eventBus.subscribe(consumer: DataStoreChangedConsumer(handler: reloadKnowledgeBaseFromDataStore))
 
         reloadKnowledgeBaseFromDataStore()
@@ -59,7 +63,7 @@ class ConcreteKnowledgeService: KnowledgeService {
                 return
         }
 
-        models = KnowledgeGroup.fromServerModels(groups: groups, entries: entries)
+        models = KnowledgeGroupImpl.fromServerModels(groups: groups, entries: entries, shareableURLFactory: shareableURLFactory)
     }
 
 }

@@ -64,8 +64,20 @@ class ApplicationDirector: RootModuleDelegate, TutorialModuleDelegate, PreloadMo
         tabBarDirector?.openMessage(message)
     }
     
+    func openKnowledgeGroups() {
+        tabBarDirector?.openKnowledgeGroups()
+    }
+    
     func showInvalidatedAnnouncementAlert() {
         tabBarDirector?.showInvalidatedAnnouncementAlert()
+    }
+    
+    func openKnowledgeEntry(_ knowledgeEntry: KnowledgeEntryIdentifier) {
+        tabBarDirector?.openKnowledgeEntry(knowledgeEntry)
+    }
+    
+    func openKnowledgeEntry(_ knowledgeEntry: KnowledgeEntryIdentifier, parentGroup: KnowledgeGroupIdentifier) {
+        tabBarDirector?.openKnowledgeEntry(knowledgeEntry, parentGroup: parentGroup)
     }
 
     // MARK: RootModuleDelegate

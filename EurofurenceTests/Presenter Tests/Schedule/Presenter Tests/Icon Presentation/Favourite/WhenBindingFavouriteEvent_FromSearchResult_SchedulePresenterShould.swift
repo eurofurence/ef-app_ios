@@ -40,7 +40,7 @@ class WhenBindingFavouriteEvent_FromSearchResult_SchedulePresenterShould: XCTest
         let action = context.scene.searchResultsBinder?.eventActionForComponent(at: indexPath)
         action?.run()
 
-        XCTAssertEqual(indexPath, searchViewModel.indexPathForUnfavouritedEvent)
+        XCTAssertFalse(searchResult.isFavourite, "Running the action should unfavourite the event")
     }
 
 }

@@ -40,5 +40,9 @@ extension CapturingKnowledgeDetailScene {
     func simulateSceneDidLoad() {
         delegate?.knowledgeDetailSceneDidLoad()
     }
+    
+    func simulateShareButtonTapped(_ sender: AnyObject) {
+        delegate?.knowledgeDetailSceneShareButtonTapped(sender)
+    }
 
 }

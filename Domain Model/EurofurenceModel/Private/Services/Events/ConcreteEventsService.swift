@@ -208,6 +208,7 @@ class ConcreteEventsService: ClockDelegate, EventsService {
     func makeEventModel(from event: EventCharacteristics) -> EventImpl? {
         guard let room = rooms.first(where: { $0.identifier == event.roomIdentifier }) else { return nil }
         guard let track = tracks.first(where: { $0.identifier == event.trackIdentifier }) else { return nil }
+        guard let day = days.first(where: { $0.identifier == event.dayIdentifier }) else { return nil }
 
         let tags = event.tags
         let containsTag: (String) -> Bool = { tags?.contains($0) ?? false }
@@ -246,7 +247,8 @@ class ConcreteEventsService: ClockDelegate, EventsService {
                          isDealersDen: containsTag("dealers_den"),
                          isMainStage: containsTag("main_stage"),
                          isPhotoshoot: containsTag("photoshoot"),
-                         isAcceptingFeedback: event.isAcceptingFeedback)
+                         isAcceptingFeedback: event.isAcceptingFeedback,
+                         day: day)
     }
 
     private func reconstituteFavouritesFromDataStore() {

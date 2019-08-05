@@ -13,5 +13,6 @@ protocol KnowledgeDetailScene {
 protocol KnowledgeDetailSceneDelegate {
 
     func knowledgeDetailSceneDidLoad()
+    func knowledgeDetailSceneShareButtonTapped(_ sender: AnyObject)
 
 }

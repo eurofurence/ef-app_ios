@@ -13,4 +13,19 @@ class CapturingContentRouter: ContentRouter {
         resumedDealer = identifier
     }
     
+    private(set) var didResumeViewingKnowledgeGroups = false
+    func resumeViewingKnowledgeGroups() {
+        didResumeViewingKnowledgeGroups = true
+    }
+    
+    private(set) var resumedKnowledgeEntry: KnowledgeEntryIdentifier?
+    func resumeViewingKnowledgeEntry(_ knowledgeEntry: KnowledgeEntryIdentifier) {
+        resumedKnowledgeEntry = knowledgeEntry
+    }
+    
+    private(set) var resumedKnowledgePairing: (entry: KnowledgeEntryIdentifier, group: KnowledgeGroupIdentifier)?
+    func resumeViewingKnowledgeEntry(_ knowledgeEntry: KnowledgeEntryIdentifier, parentGroup: KnowledgeGroupIdentifier) {
+        resumedKnowledgePairing = (entry: knowledgeEntry, group: parentGroup)
+    }
+    
 }

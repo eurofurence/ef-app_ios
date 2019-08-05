@@ -3,9 +3,13 @@ import Foundation
 
 class NotificationScheduleController: EventsServiceObserver {
     
-    private struct ScheduleNotificationWhenEventFavourited: EventObserver {
+    private class ScheduleNotificationWhenEventFavourited: EventObserver {
         
-        unowned let controller: NotificationScheduleController
+        private unowned let controller: NotificationScheduleController
+        
+        init(controller: NotificationScheduleController) {
+            self.controller = controller
+        }
         
         func eventDidBecomeFavourite(_ event: Event) {
             controller.scheduleNotification(for: event)

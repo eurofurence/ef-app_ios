@@ -16,5 +16,16 @@ class WhenUserSelectsKnowledgeEntry_DirectorShould: XCTestCase {
         XCTAssertEqual(context.knowledgeDetailModule.stubInterface, knowledgeNavigationController?.topViewController)
         XCTAssertEqual(entry, context.knowledgeDetailModule.capturedModel)
     }
+    
+    func testShowTheKnowledgeEntryModuleForTheChosenEntry_FromGroupsList() {
+        let context = ApplicationDirectorTestBuilder().build()
+        context.navigateToTabController()
+        let knowledgeEntry = KnowledgeEntryIdentifier.random
+        context.knowledgeListModule.simulateKnowledgeEntrySelected(knowledgeEntry)
+        let knowledgeNavigationController = context.navigationController(for: context.knowledgeListModule.stubInterface)
+        
+        XCTAssertEqual(context.knowledgeDetailModule.stubInterface, knowledgeNavigationController?.topViewController)
+        XCTAssertEqual(knowledgeEntry, context.knowledgeDetailModule.capturedModel)
+    }
 
 }

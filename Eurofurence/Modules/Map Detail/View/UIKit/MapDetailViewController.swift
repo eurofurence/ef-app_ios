@@ -35,6 +35,10 @@ class MapDetailViewController: UIViewController, UIScrollViewDelegate, UIPopover
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return imageView
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        presentedViewController?.dismiss(animated: false)
+    }
 
     // MARK: UIPopoverPresentationControllerDelegate
 
@@ -78,12 +82,14 @@ class MapDetailViewController: UIViewController, UIScrollViewDelegate, UIPopover
         viewController.popoverPresentationController.let { (popover) in
             popover.delegate = self
             popover.backgroundColor = .white
+            popover.passthroughViews = [view]
             popover.sourceView = imageView
             popover.sourceRect = CGRect(x: CGFloat(contextualContent.coordinate.x),
                                         y: CGFloat(contextualContent.coordinate.y),
                                         width: 0,
                                         height: 0)
         }
+        
         present(viewController, animated: true)
     }
 

@@ -26,6 +26,8 @@ public protocol Event {
     var isAcceptingFeedback: Bool { get }
 
     func add(_ observer: EventObserver)
+    func remove(_ observer: EventObserver)
+    
     func favourite()
     func unfavourite()
     func prepareFeedback() -> EventFeedback

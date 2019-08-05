@@ -7,7 +7,7 @@ class DefaultKnowledgeGroupEntriesInteractorShould: XCTestCase {
 
     func testIndicateViewModelAsNumberOfEntriesAsInGroupFromService() {
         let service = FakeKnowledgeService()
-        let group = KnowledgeGroup.random
+        let group = FakeKnowledgeGroup.random
         service.stub(group)
         let interactor = DefaultKnowledgeGroupEntriesInteractor(service: service)
         var viewModel: KnowledgeGroupEntriesViewModel?
@@ -18,7 +18,7 @@ class DefaultKnowledgeGroupEntriesInteractorShould: XCTestCase {
 
     func testAdaptEntryTitlesIntoEachViewModel() {
         let service = FakeKnowledgeService()
-        let group = KnowledgeGroup.random
+        let group = FakeKnowledgeGroup.random
         service.stub(group)
         let interactor = DefaultKnowledgeGroupEntriesInteractor(service: service)
         var viewModel: KnowledgeGroupEntriesViewModel?
@@ -31,7 +31,7 @@ class DefaultKnowledgeGroupEntriesInteractorShould: XCTestCase {
 
     func testProvideEntryIdentifiersByIndex() {
         let service = FakeKnowledgeService()
-        let group = KnowledgeGroup.random
+        let group = FakeKnowledgeGroup.random
         service.stub(group)
         let interactor = DefaultKnowledgeGroupEntriesInteractor(service: service)
         var viewModel: KnowledgeGroupEntriesViewModel?
@@ -44,7 +44,7 @@ class DefaultKnowledgeGroupEntriesInteractorShould: XCTestCase {
 
     func testUseGroupNameAsViewModelTitle() {
         let service = FakeKnowledgeService()
-        let group = KnowledgeGroup.random
+        let group = FakeKnowledgeGroup.random
         service.stub(group)
         let interactor = DefaultKnowledgeGroupEntriesInteractor(service: service)
         var viewModel: KnowledgeGroupEntriesViewModel?
