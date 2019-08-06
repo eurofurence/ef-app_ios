@@ -84,6 +84,7 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
     // MARK: UISearchControllerDelegate
     
     func presentSearchController(_ searchController: UISearchController) {
+        ensureScrolledToTopToAvoidLargeTitlesPresentationIssue()
         present(searchController, animated: true)
     }
     
@@ -168,6 +169,22 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
 
     private func didSelectSearchResult(at indexPath: IndexPath) {
         delegate?.dealersSceneDidSelectDealerSearchResult(at: indexPath)
+    }
+    
+    private func scrollToTableViewTop() {
+        guard tableViewHasData() else { return }
+        
+        let firstIndex = IndexPath(row: 0, section: 0)
+        tableView.scrollToRow(at: firstIndex, at: .top, animated: true)
+    }
+    
+    private func tableViewHasData() -> Bool {
+        return tableView.numberOfSections > 0 && tableView.numberOfRows(inSection: 0) > 0
+    }
+    
+    private func ensureScrolledToTopToAvoidLargeTitlesPresentationIssue() {
+        guard #available(iOS 11.0, *) else { return }
+        scrollToTableViewTop()
     }
 
     private class TableController: NSObject, UITableViewDataSource, UITableViewDelegate {

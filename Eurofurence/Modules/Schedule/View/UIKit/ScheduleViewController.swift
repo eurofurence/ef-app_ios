@@ -111,9 +111,10 @@ class ScheduleViewController: UIViewController,
     }
 
     // MARK: UISearchControllerDelegate
-
+    
     func presentSearchController(_ searchController: UISearchController) {
         resetSearchSceneForSearchingAllEvents()
+        ensureScrolledToTopToAvoidLargeTitlesPresentationIssue()
         present(searchController, animated: true)
     }
     
@@ -261,6 +262,11 @@ class ScheduleViewController: UIViewController,
     
     private func tableViewHasData() -> Bool {
         return tableView.numberOfSections > 0 && tableView.numberOfRows(inSection: 0) > 0
+    }
+    
+    private func ensureScrolledToTopToAvoidLargeTitlesPresentationIssue() {
+        guard #available(iOS 11.0, *) else { return }
+        scrollToTableViewTop()
     }
 
     private class TableController: NSObject, UITableViewDataSource, UITableViewDelegate {
