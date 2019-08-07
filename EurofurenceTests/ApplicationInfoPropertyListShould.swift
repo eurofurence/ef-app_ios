@@ -27,7 +27,7 @@ class ApplicationInfoPropertyListShould: XCTestCase {
     
     func testContainTheCameraUsageKey() {
         let cameraUsageDescription: String? = objectFromMainBundlePropertyList(forInfoDictionaryKey: "NSCameraUsageDescription")
-        let expected = "Eurofurence uses your camera to capture photos you submit as part of Artist Alley table registrations"
+        let expected = "Eurofurence uses the camera to capture photos when submitting Artist Alley table registrations"
         
         XCTAssertEqual(expected, cameraUsageDescription)
     }

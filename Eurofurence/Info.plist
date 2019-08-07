@@ -75,6 +75,6 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>NSCameraUsageDescription</key>
-	<string>Eurofurence uses your camera to capture photos you submit as part of Artist Alley table registrations</string>
+	<string>Eurofurence uses the camera to capture photos when submitting Artist Alley table registrations</string>
 </dict>
 </plist>
