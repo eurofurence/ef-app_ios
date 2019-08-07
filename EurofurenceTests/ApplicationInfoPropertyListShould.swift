@@ -24,5 +24,12 @@ class ApplicationInfoPropertyListShould: XCTestCase {
         let activityTypes: [String]? = objectFromMainBundlePropertyList(forInfoDictionaryKey: "NSUserActivityTypes")
         XCTAssert(activityTypes?.contains("org.eurofurence.activity.view-dealer") == true)
     }
+    
+    func testContainTheCameraUsageKey() {
+        let cameraUsageDescription: String? = objectFromMainBundlePropertyList(forInfoDictionaryKey: "NSCameraUsageDescription")
+        let expected = "Eurofurence uses your camera to capture photos you submit as part of Artist Alley table registrations"
+        
+        XCTAssertEqual(expected, cameraUsageDescription)
+    }
 
 }
