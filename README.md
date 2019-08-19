@@ -1,8 +1,8 @@
 # Eurofurence for iOS
 
-Master | 3.1.2
+Master | 3.1.3
 ------ | ------
-[![Build Status](https://app.bitrise.io/app/5b6b557ef37c13bc/status.svg?token=0LTkUzpKBZi3QWMWVyXTPA&branch=master)](https://app.bitrise.io/app/5b6b557ef37c13bc) | [![Build Status](https://app.bitrise.io/app/5b6b557ef37c13bc/status.svg?token=0LTkUzpKBZi3QWMWVyXTPA&branch=release/3.1.2)](https://app.bitrise.io/app/5b6b557ef37c13bc)
+[![Build Status](https://app.bitrise.io/app/5b6b557ef37c13bc/status.svg?token=0LTkUzpKBZi3QWMWVyXTPA&branch=master)](https://app.bitrise.io/app/5b6b557ef37c13bc) | [![Build Status](https://app.bitrise.io/app/5b6b557ef37c13bc/status.svg?token=0LTkUzpKBZi3QWMWVyXTPA&branch=release/3.1.3)](https://app.bitrise.io/app/5b6b557ef37c13bc)
 
 Source code for the Eurofurence app for iOS.
 
