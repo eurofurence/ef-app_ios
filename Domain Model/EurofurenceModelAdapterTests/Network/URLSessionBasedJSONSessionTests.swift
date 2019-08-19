@@ -49,7 +49,7 @@ class URLSessionBasedJSONSessionTests: XCTestCase {
 
     func testPostingURLShouldProvideBodyWithRequest() {
         let expectedURL = "https://www.somewhere.co.uk"
-        let expectedData = unwrap("Body contents".data(using: .utf8))
+        let expectedData = "Body contents".data(using: .utf8).unsafelyUnwrapped
         JournallingURLRequestLogger.shared.makeExpectation(self, expectingURL: expectedURL) { request in
             guard let stream = request.httpBodyStream else { return false }
 
@@ -101,7 +101,7 @@ class URLSessionBasedJSONSessionTests: XCTestCase {
 
     func testLoadingCompletesSuppliesResponseDataToCompletionHandler() {
         let expectedURL = "https://www.somewhere.co.uk"
-        let expectedResponseData = unwrap("Response".data(using: .utf8))
+        let expectedResponseData = "Response".data(using: .utf8).unsafelyUnwrapped
         JournallingURLRequestLogger.shared.stubResponse(for: expectedURL, with: expectedResponseData)
 
         let matchingDataExpectation = expectation(description: "Returned data from response")
@@ -172,7 +172,7 @@ class URLSessionBasedJSONSessionTests: XCTestCase {
 
     func testGetRequestCompletesSuppliesResponseDataToCompletionHandler() {
         let expectedURL = "https://www.somewhere.co.uk"
-        let expectedResponseData = unwrap("Response".data(using: .utf8))
+        let expectedResponseData = "Response".data(using: .utf8).unsafelyUnwrapped
         JournallingURLRequestLogger.shared.stubResponse(for: expectedURL, with: expectedResponseData)
 
         let matchingDataExpectation = expectation(description: "Returned data from response")

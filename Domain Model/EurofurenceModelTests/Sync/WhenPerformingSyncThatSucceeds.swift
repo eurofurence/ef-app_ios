@@ -31,7 +31,7 @@ class WhenPerformingSyncThatSucceeds: XCTestCase {
         let expected = syncResponse.images.changed.map({ (image) -> ImageEntity in
             let imageData: Data? = context.api.stubbedImage(for: image.identifier, availableImages: syncResponse.images.changed)
             return ImageEntity(identifier: image.identifier,
-                               pngImageData: unwrap(imageData))
+                               pngImageData: imageData.unsafelyUnwrapped)
         })
 
         XCTAssertTrue(context.imageRepository.didSave(expected))

@@ -15,7 +15,7 @@ class WhenLoginStateChanges: XCTestCase {
 
     func testLoggingInShouldReregisterTheSamePushDeviceToken() {
         let context = EurofurenceSessionTestBuilder().build()
-        let deviceToken = unwrap("Token".data(using: .utf8))
+        let deviceToken = "Token".data(using: .utf8).unsafelyUnwrapped
         context.registerForRemoteNotifications(deviceToken)
 
         XCTAssertEqual(deviceToken, context.notificationTokenRegistration.capturedRemoteNotificationsDeviceToken)

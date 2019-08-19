@@ -23,7 +23,7 @@ class WhenLoggingOutSuccessfully: XCTestCase {
     }
 
     func testTheRemoteNotificationsTokenRegistrationShouldReRegisterTheDeviceTokenThatWasPreviouslyRegistered() {
-        let deviceToken = unwrap("Token time".data(using: .utf8))
+        let deviceToken = "Token time".data(using: .utf8).unsafelyUnwrapped
         context.session.services.notifications.storeRemoteNotificationsToken(deviceToken)
         context.authenticationService.logout { _ in }
 

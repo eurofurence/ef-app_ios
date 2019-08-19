@@ -8,7 +8,7 @@ class WhenOpeningKnowledgeEntries_DirectorShould: XCTestCase {
     func testSwapToTheCorrectTab() {
         let context = ApplicationDirectorTestBuilder().build()
         context.navigateToTabController()
-        let knowledgeNavigationController = unwrap(context.navigationController(for: context.knowledgeListModule.stubInterface))
+        let knowledgeNavigationController = context.navigationController(for: context.knowledgeListModule.stubInterface).unsafelyUnwrapped
         context.director.openKnowledgeGroups()
         
         let index = context.tabModule.capturedTabModules.firstIndex(of: knowledgeNavigationController)
@@ -23,7 +23,7 @@ class WhenOpeningKnowledgeEntries_DirectorShould: XCTestCase {
         context.knowledgeGroupEntriesModule.simulateKnowledgeEntrySelected(.random)
         context.director.openKnowledgeGroups()
         
-        let knowledgeNavigationController = unwrap(context.navigationController(for: context.knowledgeListModule.stubInterface))
+        let knowledgeNavigationController = context.navigationController(for: context.knowledgeListModule.stubInterface).unsafelyUnwrapped
         
         XCTAssertEqual(knowledgeNavigationController.viewControllers, [context.knowledgeListModule.stubInterface])
     }

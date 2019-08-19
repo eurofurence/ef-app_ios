@@ -13,7 +13,7 @@ class WhenToldToOpenDealersTelegram: XCTestCase {
         let dealerIdentifier = DealerIdentifier(dealer.identifier)
         let entity = context.dealersService.fetchDealer(for: dealerIdentifier)
         entity?.openTelegram()
-        let expected = unwrap(URL(string: "https://t.me/")).appendingPathComponent(dealer.twitterHandle)
+        let expected = URL(string: "https://t.me/").unsafelyUnwrapped.appendingPathComponent(dealer.twitterHandle)
 
         XCTAssertEqual(expected, urlOpener.capturedURLToOpen)
     }

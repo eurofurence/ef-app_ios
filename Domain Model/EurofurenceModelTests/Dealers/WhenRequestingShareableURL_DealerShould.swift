@@ -13,7 +13,7 @@ class WhenRequestingShareableURL_DealerShould: XCTestCase {
         let entity = context.dealersService.fetchDealer(for: identifier)
         let url = entity?.makeContentURL()
         
-        XCTAssertEqual(unwrap(URL(string: "dealer://\(identifier.rawValue)")), url)
+        XCTAssertEqual(URL(string: "dealer://\(identifier.rawValue)").unsafelyUnwrapped, url)
     }
 
 }

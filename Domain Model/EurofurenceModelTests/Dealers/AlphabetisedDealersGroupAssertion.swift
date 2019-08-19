@@ -39,7 +39,7 @@ class AlphabetisedDealersGroupAssertion: Assertion {
     }
 
     private func makeIndexTitlesFromCharacteristics() -> [String] {
-        let indexTitles: [String] = characteristics.map({ String(unwrap($0.displayName.first)) })
+        let indexTitles: [String] = characteristics.map({ String($0.displayName.first.unsafelyUnwrapped) })
         let titlesSet = Set(indexTitles)
 
         return titlesSet.sorted()

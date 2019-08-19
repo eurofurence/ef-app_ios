@@ -45,7 +45,7 @@ class FirebaseRemoteNotificationsTokenRegistrationTests: XCTestCase {
 
     func testSetTheTokenOntoTheNotificationsService() {
         let context = assembleApp(configuration: .debug)
-        let deviceToken = unwrap("I'm a token".data(using: .utf8))
+        let deviceToken = "I'm a token".data(using: .utf8).unsafelyUnwrapped
         context.registerDeviceToken(deviceToken: deviceToken)
 
         XCTAssertEqual(deviceToken, context.capturingFirebaseAdapter.registeredDeviceToken)

@@ -9,7 +9,7 @@ class WhenToldToOpenDealersWebsite: XCTestCase {
         dealer.links = [LinkCharacteristics(name: .random, fragmentType: .WebExternal, target: "https://www.eurofurence.org")]
         var syncResponse = ModelCharacteristics.randomWithoutDeletions
         syncResponse.dealers.changed = [dealer]
-        let expected = unwrap(URL(string: "https://www.eurofurence.org"))
+        let expected = URL(string: "https://www.eurofurence.org").unsafelyUnwrapped
         let urlOpener = CapturingURLOpener()
         let context = EurofurenceSessionTestBuilder().with(urlOpener).build()
         context.performSuccessfulSync(response: syncResponse)

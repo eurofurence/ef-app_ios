@@ -13,7 +13,7 @@ class WhenPreparingDealerMapGraphic_ApplicationShould: XCTestCase {
         syncResponse.maps.changed[randomMap.index] = randomMap.element
         let context = EurofurenceSessionTestBuilder().build()
         context.performSuccessfulSync(response: syncResponse)
-        let mapGraphic = unwrap(context.api.stubbedImage(for: randomMap.element.imageIdentifier, availableImages: syncResponse.images.changed))
+        let mapGraphic = context.api.stubbedImage(for: randomMap.element.imageIdentifier, availableImages: syncResponse.images.changed).unsafelyUnwrapped
         let renderedData = Data.random
         context.mapCoordinateRender.stub(renderedData, forGraphic: mapGraphic, atX: dealerMapEntry.x, y: dealerMapEntry.y, radius: dealerMapEntry.tapRadius)
         let dealerEntity = context.dealersService.fetchDealer(for: DealerIdentifier(randomDealer.element.identifier))

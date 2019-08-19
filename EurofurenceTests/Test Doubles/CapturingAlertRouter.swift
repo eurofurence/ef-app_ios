@@ -29,7 +29,7 @@ class CapturingAlertRouter: AlertRouter {
     }
 
     func completePendingPresentation() {
-        capturedPresentationCompletedHandler?(unwrap(lastAlert))
+        capturedPresentationCompletedHandler?(lastAlert.unsafelyUnwrapped)
     }
 
 }

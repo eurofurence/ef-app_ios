@@ -24,7 +24,7 @@ class WhenAppLaunchesWhenClockReadsConferenceDay_ScheduleShould: XCTestCase {
         randomDayComponents.hour = .random(upperLimit: 22)
         randomDayComponents.minute = .random(upperLimit: 58)
         randomDayComponents.second = .random(upperLimit: 58)
-        let sameDayAsRandomDayButDifferentTime = unwrap(randomDayComponents.date)
+        let sameDayAsRandomDayButDifferentTime = randomDayComponents.date.unsafelyUnwrapped
         let dataStore = InMemoryDataStore(response: syncResponse)
         let context = EurofurenceSessionTestBuilder().with(sameDayAsRandomDayButDifferentTime).with(dataStore).build()
         let schedule = context.eventsService.makeEventsSchedule()

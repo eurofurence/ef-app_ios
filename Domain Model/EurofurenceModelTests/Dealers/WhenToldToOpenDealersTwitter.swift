@@ -13,7 +13,7 @@ class WhenToldToOpenDealersTwitter: XCTestCase {
         let dealerIdentifier = DealerIdentifier(dealer.identifier)
         let entity = context.dealersService.fetchDealer(for: dealerIdentifier)
         entity?.openTwitter()
-        let expected = unwrap(URL(string: "https://twitter.com/")).appendingPathComponent(dealer.twitterHandle)
+        let expected = URL(string: "https://twitter.com/").unsafelyUnwrapped.appendingPathComponent(dealer.twitterHandle)
 
         XCTAssertEqual(expected, urlOpener.capturedURLToOpen)
     }

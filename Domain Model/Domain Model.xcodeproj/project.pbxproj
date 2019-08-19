@@ -432,7 +432,6 @@
 		CA7A32DD22B16EB5002AD939 /* CapturingURLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A32B222B16EB5002AD939 /* CapturingURLOpener.swift */; };
 		CA7A32EF22B17011002AD939 /* EventBus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A32EE22B17011002AD939 /* EventBus.framework */; };
 		CA7A32F122B17023002AD939 /* TestUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A32F022B17023002AD939 /* TestUtilities.framework */; };
-		CA7A32F522B171AC002AD939 /* Unwrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A32F422B171AC002AD939 /* Unwrap.swift */; };
 		CA7A32F622B17217002AD939 /* EurofurenceModelTestDoubles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A326922B16E75002AD939 /* EurofurenceModelTestDoubles.framework */; };
 		CA7A32FE22B17A44002AD939 /* TestUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A32FD22B17A44002AD939 /* TestUtilities.framework */; };
 		CA7A32FF22B17B96002AD939 /* EurofurenceModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A2F2B22B16DA3002AD939 /* EurofurenceModel.framework */; };
@@ -938,7 +937,6 @@
 		CA7A32B222B16EB5002AD939 /* CapturingURLOpener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingURLOpener.swift; sourceTree = "<group>"; };
 		CA7A32EE22B17011002AD939 /* EventBus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EventBus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA7A32F022B17023002AD939 /* TestUtilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TestUtilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CA7A32F422B171AC002AD939 /* Unwrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unwrap.swift; sourceTree = "<group>"; };
 		CA7A32FD22B17A44002AD939 /* TestUtilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TestUtilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA82DB5A22D66B9400467C2F /* WhenRequestingShareableURL_EventShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenRequestingShareableURL_EventShould.swift; sourceTree = "<group>"; };
 		CA82DB5C22D66CD800467C2F /* ShareableURLFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareableURLFactory.swift; sourceTree = "<group>"; };
@@ -1164,7 +1162,6 @@
 				CA7A2FA022B16DE3002AD939 /* LogoutResult.swift */,
 				CA7A2F8822B16DE3002AD939 /* Optional+Extensions.swift */,
 				CA7A2F8322B16DE3002AD939 /* String+Base64.swift */,
-				CA7A32F422B171AC002AD939 /* Unwrap.swift */,
 				CA7A2F8922B16DE3002AD939 /* Builder */,
 				CA7A2F6222B16DE3002AD939 /* Default Dependency Implementations */,
 				CA7A2F5E22B16DE3002AD939 /* Formatters */,
@@ -2549,7 +2546,6 @@
 				CA7A302D22B16DE4002AD939 /* LinkEntity+Adaptation.swift in Sources */,
 				CA7A304822B16DE4002AD939 /* LongRunningTaskManager.swift in Sources */,
 				CA7A300F22B16DE4002AD939 /* Message.swift in Sources */,
-				CA7A32F522B171AC002AD939 /* Unwrap.swift in Sources */,
 				CA7A305922B16DE4002AD939 /* RoomCharacteristics.swift in Sources */,
 				CA7A303922B16DE4002AD939 /* Optional+Extensions.swift in Sources */,
 				CA7A307C22B16DE4002AD939 /* SignificantTimePassedEvent.swift in Sources */,

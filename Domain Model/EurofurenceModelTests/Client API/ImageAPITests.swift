@@ -9,7 +9,7 @@ class ImageAPITests: XCTestCase {
         let identifier = String.random
         let hash = String.random
         let apiUrl = StubAPIURLProviding()
-        let expected = unwrap(URL(string: apiUrl.url + "Images/\(identifier)/Content/with-hash:\(hash)")).absoluteString
+        let expected = URL(string: apiUrl.url + "Images/\(identifier)/Content/with-hash:\(hash)").unsafelyUnwrapped.absoluteString
         let jsonSession = CapturingJSONSession()
         let api = JSONAPI(jsonSession: jsonSession, apiUrl: apiUrl)
         api.fetchImage(identifier: identifier, contentHashSha1: hash) { (_) in }

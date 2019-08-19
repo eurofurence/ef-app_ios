@@ -5,7 +5,7 @@ class WhenLookingUpMailToLinks: XCTestCase {
 
     func testTheAppProvidesTheExternalURL() {
         let context = EurofurenceSessionTestBuilder().build()
-        let expected = unwrap(URL(string: "mailto:someguy@somewhere.co.uk"))
+        let expected = URL(string: "mailto:someguy@somewhere.co.uk").unsafelyUnwrapped
         let link = Link(name: .random, type: .webExternal, contents: expected.absoluteString)
         let action = context.contentLinksService.lookupContent(for: link)
 

@@ -8,7 +8,7 @@ class WhenRemovingFavouritesRestrictionForEvents_WhileQueryActive_ScheduleShould
         let response = ModelCharacteristics.randomWithoutDeletions
         var favourites = response.events.changed.map({ EventIdentifier($0.identifier) })
         let notAFavourite = favourites.randomElement()
-        let nonFavouriteEvent = unwrap(response.events.changed.first(where: { $0.identifier == notAFavourite.element.rawValue }))
+        let nonFavouriteEvent = response.events.changed.first(where: { $0.identifier == notAFavourite.element.rawValue }).unsafelyUnwrapped
         favourites.remove(at: notAFavourite.index)
         let dataStore = InMemoryDataStore(response: response)
         dataStore.performTransaction { (transaction) in

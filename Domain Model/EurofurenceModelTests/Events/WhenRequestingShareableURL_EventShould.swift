@@ -13,7 +13,7 @@ class WhenRequestingShareableURL_EventShould: XCTestCase {
         let entity = context.eventsService.fetchEvent(identifier: EventIdentifier(event.identifier))
         let url = entity?.makeContentURL()
         
-        XCTAssertEqual(unwrap(URL(string: "event://\(identifier.rawValue)")), url)
+        XCTAssertEqual(URL(string: "event://\(identifier.rawValue)").unsafelyUnwrapped, url)
     }
 
 }

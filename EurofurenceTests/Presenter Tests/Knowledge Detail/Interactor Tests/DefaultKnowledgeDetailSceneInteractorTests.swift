@@ -44,7 +44,7 @@ extension FakeKnowledgeService {
     }
 
     func stubbedKnowledgeEntryImages(for identifier: KnowledgeEntryIdentifier) -> [Data] {
-        return [unwrap(identifier.rawValue.data(using: .utf8))]
+        return [identifier.rawValue.data(using: .utf8).unsafelyUnwrapped]
     }
 
 }

@@ -187,7 +187,7 @@ class LoginAPITests: XCTestCase {
         let desiredComponents: [Calendar.Component] = [.year, .month, .day, .hour, .minute, .second]
         if let receievedDate = receievedDate {
             var calendar = Calendar(identifier: .gregorian)
-            calendar.timeZone = unwrap(TimeZone(abbreviation: "GMT"))
+            calendar.timeZone = TimeZone(abbreviation: "GMT").unsafelyUnwrapped
             actualComponents = calendar.dateComponents(Set(desiredComponents), from: receievedDate)
         }
 

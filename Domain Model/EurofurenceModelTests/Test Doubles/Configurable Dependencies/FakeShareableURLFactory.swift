@@ -4,15 +4,15 @@ import Foundation
 struct FakeShareableURLFactory: ShareableURLFactory {
     
     func makeURL(for eventIdentifier: EventIdentifier) -> URL {
-        return unwrap(URL(string: "event://\(eventIdentifier.rawValue)"))
+        return URL(string: "event://\(eventIdentifier.rawValue)").unsafelyUnwrapped
     }
     
     func makeURL(for dealerIdentifier: DealerIdentifier) -> URL {
-        return unwrap(URL(string: "dealer://\(dealerIdentifier.rawValue)"))
+        return URL(string: "dealer://\(dealerIdentifier.rawValue)").unsafelyUnwrapped
     }
     
     func makeURL(for knowledgeEntryIdentifier: KnowledgeEntryIdentifier) -> URL {
-        return unwrap(URL(string: "knowledgeentry://\(knowledgeEntryIdentifier.rawValue)"))
+        return URL(string: "knowledgeentry://\(knowledgeEntryIdentifier.rawValue)").unsafelyUnwrapped
     }
     
 }

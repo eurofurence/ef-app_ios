@@ -140,7 +140,7 @@ class PrivateMessagesAPITests: XCTestCase {
         if let receievedDate = observer.capturedMessages?.first?.receivedDateTime {
             let desiredComponents: [Calendar.Component] = [.year, .month, .day, .hour, .minute, .second]
             var calendar = Calendar(identifier: .gregorian)
-            calendar.timeZone = unwrap(TimeZone(abbreviation: "GMT"))
+            calendar.timeZone = TimeZone(abbreviation: "GMT").unsafelyUnwrapped
             actualComponents = calendar.dateComponents(Set(desiredComponents), from: receievedDate)
         }
 
@@ -181,7 +181,7 @@ class PrivateMessagesAPITests: XCTestCase {
 
     // See issue #145
     func testMarkingAPIMessageAsReadSubmitsTrueWithinPOSTBodyToSupportSwaggerWorkaround() {
-        let expected = unwrap("true".data(using: .utf8))
+        let expected = "true".data(using: .utf8).unsafelyUnwrapped
         api.markMessageWithIdentifierAsRead("", authorizationToken: .random)
 
         XCTAssertEqual(expected, JSONSession.POSTData)

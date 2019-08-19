@@ -9,7 +9,7 @@ class StubCollectThemAllRequestFactory: CollectThemAllRequestFactory {
     }
 
     func makeAuthenticatedGameURLRequest(credential: Credential) -> URLRequest {
-        let url = unwrap(URL(string: "https://stub.\(credential.authenticationToken)"))
+        let url = URL(string: "https://stub.\(credential.authenticationToken)").unsafelyUnwrapped
         return URLRequest(url: url)
     }
 

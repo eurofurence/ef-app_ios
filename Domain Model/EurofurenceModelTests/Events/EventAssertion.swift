@@ -36,8 +36,8 @@ class EventAssertion: Assertion {
             return
         }
 
-        let expectedRoom = unwrap(modelCharacteristics.rooms.changed.first(where: { $0.identifier == characteristic.roomIdentifier }))
-        let expectedTrack = unwrap(modelCharacteristics.tracks.changed.first(where: { $0.identifier == characteristic.trackIdentifier }))
+        let expectedRoom = modelCharacteristics.rooms.changed.first(where: { $0.identifier == characteristic.roomIdentifier }).unsafelyUnwrapped
+        let expectedTrack = modelCharacteristics.tracks.changed.first(where: { $0.identifier == characteristic.trackIdentifier }).unsafelyUnwrapped
         let expectedPosterGraphic = context.api.stubbedImage(for: characteristic.posterImageId, availableImages: modelCharacteristics.images.changed)
         let expectedBannerGraphic = context.api.stubbedImage(for: characteristic.bannerImageId, availableImages: modelCharacteristics.images.changed)
         let tags = characteristic.tags.defaultingTo([])
