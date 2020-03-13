@@ -3,7 +3,7 @@ import XCTest
 
 class URLSessionBasedJSONSessionTests: XCTestCase {
 
-    private let testTimeout: TimeInterval = 1
+    private let testTimeout: TimeInterval = 5
 
     override func setUp() {
         super.setUp()

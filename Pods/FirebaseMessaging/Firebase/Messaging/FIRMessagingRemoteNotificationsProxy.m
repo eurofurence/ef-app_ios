@@ -14,25 +14,24 @@
  * limitations under the License.
  */
 
-#import "FIRMessagingRemoteNotificationsProxy.h"
+#import "Firebase/Messaging/FIRMessagingRemoteNotificationsProxy.h"
 
 #import <objc/runtime.h>
-#import <UIKit/UIKit.h>
 
-#import "FIRMessagingConstants.h"
-#import "FIRMessagingLogger.h"
-#import "FIRMessagingUtilities.h"
-#import "FIRMessaging_Private.h"
 #import <GoogleUtilities/GULAppDelegateSwizzler.h>
+#import "Firebase/Messaging/FIRMessagingConstants.h"
+#import "Firebase/Messaging/FIRMessagingLogger.h"
+#import "Firebase/Messaging/FIRMessagingUtilities.h"
+#import "Firebase/Messaging/FIRMessaging_Private.h"
 
-static void * UserNotificationObserverContext = &UserNotificationObserverContext;
+static void *UserNotificationObserverContext = &UserNotificationObserverContext;
 
 static NSString *kUserNotificationWillPresentSelectorString =
     @"userNotificationCenter:willPresentNotification:withCompletionHandler:";
 static NSString *kUserNotificationDidReceiveResponseSelectorString =
     @"userNotificationCenter:didReceiveNotificationResponse:withCompletionHandler:";
 
-@interface FIRMessagingRemoteNotificationsProxy () <UIApplicationDelegate>
+@interface FIRMessagingRemoteNotificationsProxy () <GULApplicationDelegate>
 
 @property(strong, nonatomic) NSMutableDictionary<NSString *, NSValue *> *originalAppDelegateImps;
 @property(strong, nonatomic) NSMutableDictionary<NSString *, NSArray *> *swizzledSelectorsByClass;
@@ -94,9 +93,8 @@ static NSString *kUserNotificationDidReceiveResponseSelectorString =
   Class notificationCenterClass = NSClassFromString(@"UNUserNotificationCenter");
   if (notificationCenterClass) {
     // We are linked against iOS 10 SDK or above
-    id notificationCenter = getNamedPropertyFromObject(notificationCenterClass,
-                                                       @"currentNotificationCenter",
-                                                       notificationCenterClass);
+    id notificationCenter = FIRMessagingPropertyNameFromObject(
+        notificationCenterClass, @"currentNotificationCenter", notificationCenterClass);
     if (notificationCenter) {
       [self listenForDelegateChangesInUserNotificationCenter:notificationCenter];
     }
@@ -126,7 +124,7 @@ static NSString *kUserNotificationDidReceiveResponseSelectorString =
   if (![notificationCenter isKindOfClass:notificationCenterClass]) {
     return;
   }
-  id delegate = getNamedPropertyFromObject(notificationCenter, @"delegate", nil);
+  id delegate = FIRMessagingPropertyNameFromObject(notificationCenter, @"delegate", nil);
   Protocol *delegateProtocol = NSProtocolFromString(@"UNUserNotificationCenterDelegate");
   if ([delegate conformsToProtocol:delegateProtocol]) {
     // Swizzle this object now, if available
@@ -156,17 +154,17 @@ static NSString *kUserNotificationDidReceiveResponseSelectorString =
     // "application:didReceiveRemoteNotification:fetchCompletionHandler:".
     if ([delegate respondsToSelector:willPresentNotificationSelector]) {
       [self swizzleSelector:willPresentNotificationSelector
-                    inClass:[delegate class]
-         withImplementation:(IMP)FCM_swizzle_willPresentNotificationWithHandler
-                 inProtocol:userNotificationCenterProtocol];
+                     inClass:[delegate class]
+          withImplementation:(IMP)FCMSwizzleWillPresentNotificationWithHandler
+                  inProtocol:userNotificationCenterProtocol];
     }
     SEL didReceiveNotificationResponseSelector =
         NSSelectorFromString(kUserNotificationDidReceiveResponseSelectorString);
     if ([delegate respondsToSelector:didReceiveNotificationResponseSelector]) {
       [self swizzleSelector:didReceiveNotificationResponseSelector
-                    inClass:[delegate class]
-         withImplementation:(IMP)FCM_swizzle_didReceiveNotificationResponseWithHandler
-                 inProtocol:userNotificationCenterProtocol];
+                     inClass:[delegate class]
+          withImplementation:(IMP)FCMSwizzleDidReceiveNotificationResponseWithHandler
+                  inProtocol:userNotificationCenterProtocol];
     }
     self.currentUserNotificationCenterDelegate = delegate;
     self.hasSwizzledUserNotificationDelegate = YES;
@@ -208,7 +206,6 @@ static NSString *kUserNotificationDidReceiveResponseSelectorString =
                             @"UNUserNotificationCenter's 'delegate' property: %@",
                             exception);
   } @finally {
-
   }
 }
 
@@ -218,8 +215,8 @@ static NSString *kUserNotificationDidReceiveResponseSelectorString =
   }
   @try {
     [self.userNotificationCenter removeObserver:self
-                                 forKeyPath:NSStringFromSelector(@selector(delegate))
-                                    context:UserNotificationObserverContext];
+                                     forKeyPath:NSStringFromSelector(@selector(delegate))
+                                        context:UserNotificationObserverContext];
     self.userNotificationCenter = nil;
     self.isObservingUserNotificationDelegateChanges = NO;
   } @catch (NSException *exception) {
@@ -228,7 +225,6 @@ static NSString *kUserNotificationDidReceiveResponseSelectorString =
                             @"UNUserNotificationCenter's 'delegate' property: %@",
                             exception);
   } @finally {
-
   }
 }
 
@@ -264,13 +260,13 @@ static NSString *kUserNotificationDidReceiveResponseSelectorString =
 
 - (IMP)originalImplementationForSelector:(SEL)selector {
   NSString *selectorString = NSStringFromSelector(selector);
-  NSValue *implementation_value = self.originalAppDelegateImps[selectorString];
-  if (!implementation_value) {
+  NSValue *implementationValue = self.originalAppDelegateImps[selectorString];
+  if (!implementationValue) {
     return nil;
   }
 
   IMP imp;
-  [implementation_value getValue:&imp];
+  [implementationValue getValue:&imp];
   return imp;
 }
 
@@ -281,7 +277,7 @@ static NSString *kUserNotificationDidReceiveResponseSelectorString =
   if (selectors) {
     selectors = [selectors arrayByAddingObject:selectorString];
   } else {
-    selectors = @[selectorString];
+    selectors = @[ selectorString ];
   }
   self.swizzledSelectorsByClass[className] = selectors;
 }
@@ -301,49 +297,44 @@ static NSString *kUserNotificationDidReceiveResponseSelectorString =
     // This class implements this method, so replace the original implementation
     // with our new implementation and save the old implementation.
 
-    IMP __original_method_implementation =
+    IMP originalMethodImplementation =
         method_setImplementation(originalMethod, swizzledImplementation);
 
-    IMP __nonexistant_method_implementation = [self nonExistantMethodImplementationForClass:klass];
+    IMP nonexistantMethodImplementation = [self nonExistantMethodImplementationForClass:klass];
 
-    if (__original_method_implementation &&
-        __original_method_implementation != __nonexistant_method_implementation &&
-        __original_method_implementation != swizzledImplementation) {
-      [self saveOriginalImplementation:__original_method_implementation
-                           forSelector:originalSelector];
+    if (originalMethodImplementation &&
+        originalMethodImplementation != nonexistantMethodImplementation &&
+        originalMethodImplementation != swizzledImplementation) {
+      [self saveOriginalImplementation:originalMethodImplementation forSelector:originalSelector];
     }
   } else {
     // The class doesn't have this method, so add our swizzled implementation as the
     // original implementation of the original method.
-    struct objc_method_description method_description =
+    struct objc_method_description methodDescription =
         protocol_getMethodDescription(protocol, originalSelector, NO, YES);
 
-    BOOL methodAdded = class_addMethod(klass,
-                                       originalSelector,
-                                       swizzledImplementation,
-                                       method_description.types);
+    BOOL methodAdded =
+        class_addMethod(klass, originalSelector, swizzledImplementation, methodDescription.types);
     if (!methodAdded) {
       FIRMessagingLoggerError(kFIRMessagingMessageCodeRemoteNotificationsProxyMethodNotAdded,
                               @"Could not add method for %@ to class %@",
-                              NSStringFromSelector(originalSelector),
-                              NSStringFromClass(klass));
+                              NSStringFromSelector(originalSelector), NSStringFromClass(klass));
     }
   }
   [self trackSwizzledSelector:originalSelector ofClass:klass];
 }
 
 - (void)unswizzleSelector:(SEL)selector inClass:(Class)klass {
-
   Method swizzledMethod = class_getInstanceMethod(klass, selector);
   if (!swizzledMethod) {
     // This class doesn't seem to have this selector as an instance method? Bail out.
     return;
   }
 
-  IMP original_imp = [self originalImplementationForSelector:selector];
-  if (original_imp) {
+  IMP originalImp = [self originalImplementationForSelector:selector];
+  if (originalImp) {
     // Restore the original implementation as the current implementation
-    method_setImplementation(swizzledMethod, original_imp);
+    method_setImplementation(swizzledMethod, originalImp);
     [self removeImplementationForSelector:selector];
   } else {
     // This class originally did not have an implementation for this selector.
@@ -370,7 +361,7 @@ static NSString *kUserNotificationDidReceiveResponseSelectorString =
 }
 
 // A safe, non-leaky way return a property object by its name
-id getNamedPropertyFromObject(id object, NSString *propertyName, Class klass) {
+id FIRMessagingPropertyNameFromObject(id object, NSString *propertyName, Class klass) {
   SEL selector = NSSelectorFromString(propertyName);
   if (![object respondsToSelector:selector]) {
     return nil;
@@ -392,34 +383,35 @@ id getNamedPropertyFromObject(id object, NSString *propertyName, Class klass) {
   return property;
 }
 
-#pragma mark - UIApplicationDelegate
-
-#if TARGET_OS_IOS
-- (void)application:(UIApplication *)application
-didReceiveRemoteNotification:(NSDictionary *)userInfo {
+#pragma mark - GULApplicationDelegate
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-implementations"
+- (void)application:(GULApplication *)application
+    didReceiveRemoteNotification:(NSDictionary *)userInfo {
   [[FIRMessaging messaging] appDidReceiveMessage:userInfo];
 }
-#endif // TARGET_OS_IOS
+#pragma clang diagnostic pop
 
+#if TARGET_OS_IOS || TARGET_OS_TV
 - (void)application:(UIApplication *)application
-didReceiveRemoteNotification:(NSDictionary *)userInfo
-fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    didReceiveRemoteNotification:(NSDictionary *)userInfo
+          fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
   [[FIRMessaging messaging] appDidReceiveMessage:userInfo];
 }
 
 - (void)application:(UIApplication *)application
-didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-  // Pass the APNSToken along to FIRMessaging (and auto-detect the token type)
-  [FIRMessaging messaging].APNSToken = deviceToken;
-}
-
-- (void)application:(UIApplication *)application
-didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
   // Log the fact that we failed to register for remote notifications
   FIRMessagingLoggerError(kFIRMessagingMessageCodeRemoteNotificationsProxyAPNSFailed,
                           @"Error in "
                           @"application:didFailToRegisterForRemoteNotificationsWithError: %@",
                           error.localizedDescription);
+}
+#endif
+
+- (void)application:(GULApplication *)application
+    didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+  [FIRMessaging messaging].APNSToken = deviceToken;
 }
 
 #pragma mark - Swizzled Methods
@@ -433,16 +425,15 @@ didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
  * In order to make FCM SDK compile and compatible with iOS SDKs before iOS 10, hide the
  * parameter types from the swizzling implementation.
  */
-void FCM_swizzle_willPresentNotificationWithHandler(
-    id self, SEL _cmd, id center, id notification, void (^handler)(NSUInteger)) {
-
+static void FCMSwizzleWillPresentNotificationWithHandler(
+    id self, SEL cmd, id center, id notification, void (^handler)(NSUInteger)) {
   FIRMessagingRemoteNotificationsProxy *proxy = [FIRMessagingRemoteNotificationsProxy sharedProxy];
-  IMP original_imp = [proxy originalImplementationForSelector:_cmd];
+  IMP originalImp = [proxy originalImplementationForSelector:cmd];
 
   void (^callOriginalMethodIfAvailable)(void) = ^{
-    if (original_imp) {
-      ((void (*)(id, SEL, id, id, void (^)(NSUInteger)))original_imp)(
-          self, _cmd, center, notification, handler);
+    if (originalImp) {
+      ((void (*)(id, SEL, id, id, void (^)(NSUInteger)))originalImp)(self, cmd, center,
+                                                                     notification, handler);
     }
     return;
   };
@@ -476,7 +467,7 @@ void FCM_swizzle_willPresentNotificationWithHandler(
   }
 
   // Attempt to access the user info
-  id notificationUserInfo = userInfoFromNotification(notification);
+  id notificationUserInfo = FIRMessagingUserInfoFromNotification(notification);
 
   if (!notificationUserInfo) {
     // Could not access notification.request.content.userInfo.
@@ -498,16 +489,15 @@ void FCM_swizzle_willPresentNotificationWithHandler(
  * In order to make FCM SDK compile and compatible with iOS SDKs before iOS 10, hide the
  * parameter types from the swizzling implementation.
  */
-void FCM_swizzle_didReceiveNotificationResponseWithHandler(
-    id self, SEL _cmd, id center, id response, void (^handler)(void)) {
-
+static void FCMSwizzleDidReceiveNotificationResponseWithHandler(
+    id self, SEL cmd, id center, id response, void (^handler)(void)) {
   FIRMessagingRemoteNotificationsProxy *proxy = [FIRMessagingRemoteNotificationsProxy sharedProxy];
-  IMP original_imp = [proxy originalImplementationForSelector:_cmd];
+  IMP originalImp = [proxy originalImplementationForSelector:cmd];
 
   void (^callOriginalMethodIfAvailable)(void) = ^{
-    if (original_imp) {
-      ((void (*)(id, SEL, id, id, void (^)(void)))original_imp)(
-          self, _cmd, center, response, handler);
+    if (originalImp) {
+      ((void (*)(id, SEL, id, id, void (^)(void)))originalImp)(self, cmd, center, response,
+                                                               handler);
     }
     return;
   };
@@ -543,11 +533,12 @@ void FCM_swizzle_didReceiveNotificationResponseWithHandler(
     return;
   }
   id notificationClass = NSClassFromString(@"UNNotification");
-  id notification = getNamedPropertyFromObject(response, @"notification", notificationClass);
+  id notification =
+      FIRMessagingPropertyNameFromObject(response, @"notification", notificationClass);
 
   // With a notification object, use the common code to reach deep into notification
   // (notification.request.content.userInfo)
-  id notificationUserInfo = userInfoFromNotification(notification);
+  id notificationUserInfo = FIRMessagingUserInfoFromNotification(notification);
   if (!notificationUserInfo) {
     // Could not access notification.request.content.userInfo.
     callOriginalMethodIfAvailable();
@@ -559,8 +550,7 @@ void FCM_swizzle_didReceiveNotificationResponseWithHandler(
   callOriginalMethodIfAvailable();
 }
 
-id userInfoFromNotification(id notification) {
-
+static id FIRMessagingUserInfoFromNotification(id notification) {
   // Select the userInfo field from UNNotification.request.content.userInfo.
   SEL requestSelector = NSSelectorFromString(@"request");
   if (![notification respondsToSelector:requestSelector]) {
@@ -568,28 +558,27 @@ id userInfoFromNotification(id notification) {
     return nil;
   }
   Class requestClass = NSClassFromString(@"UNNotificationRequest");
-  id notificationRequest = getNamedPropertyFromObject(notification, @"request", requestClass);
+  id notificationRequest =
+      FIRMessagingPropertyNameFromObject(notification, @"request", requestClass);
 
   SEL notificationContentSelector = NSSelectorFromString(@"content");
-  if (!notificationRequest
-      || ![notificationRequest respondsToSelector:notificationContentSelector]) {
+  if (!notificationRequest ||
+      ![notificationRequest respondsToSelector:notificationContentSelector]) {
     // Cannot access the content property.
     return nil;
   }
   Class contentClass = NSClassFromString(@"UNNotificationContent");
-  id notificationContent = getNamedPropertyFromObject(notificationRequest,
-                                                      @"content",
-                                                      contentClass);
+  id notificationContent =
+      FIRMessagingPropertyNameFromObject(notificationRequest, @"content", contentClass);
 
   SEL notificationUserInfoSelector = NSSelectorFromString(@"userInfo");
-  if (!notificationContent
-      || ![notificationContent respondsToSelector:notificationUserInfoSelector]) {
+  if (!notificationContent ||
+      ![notificationContent respondsToSelector:notificationUserInfoSelector]) {
     // Cannot access the userInfo property.
     return nil;
   }
-  id notificationUserInfo = getNamedPropertyFromObject(notificationContent,
-                                                       @"userInfo",
-                                                       [NSDictionary class]);
+  id notificationUserInfo =
+      FIRMessagingPropertyNameFromObject(notificationContent, @"userInfo", [NSDictionary class]);
 
   if (!notificationUserInfo) {
     // This is not the expected notification handler.
