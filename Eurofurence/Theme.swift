@@ -23,13 +23,19 @@ struct Theme {
     static func performUnsafeSearchControllerStyling(searchController: UISearchController) {
         styleSearchBar(searchController.searchBar)
         
-        guard #available(iOS 11.0, *) else { return }
-        
-        guard let backgroundview = resolveStylableBackgroundFromPrivateViewHiearchy(searchBar: searchController.searchBar) else { return }
-        
-        backgroundview.backgroundColor = .white
-        backgroundview.layer.cornerRadius = 10
-        backgroundview.clipsToBounds = true
+        if #available(iOS 13.0, *) {
+            searchController.searchBar.searchTextField.backgroundColor = .white
+            searchController.searchBar.searchTextField.layer.cornerRadius = 10
+            searchController.searchBar.searchTextField.clipsToBounds = true
+        } else {
+            guard #available(iOS 11.0, *) else { return }
+            
+            guard let backgroundview = resolveStylableBackgroundFromPrivateViewHiearchy(searchBar: searchController.searchBar) else { return }
+            
+            backgroundview.backgroundColor = .white
+            backgroundview.layer.cornerRadius = 10
+            backgroundview.clipsToBounds = true
+        }
     }
     
     private static func resolveStylableBackgroundFromPrivateViewHiearchy(searchBar: UISearchBar) -> UIView? {
@@ -55,7 +61,20 @@ struct Theme {
         
         if #available(iOS 11.0, *) {
             navigationBar.prefersLargeTitles = true
-            navigationBar.largeTitleTextAttributes = whiteTextAttributes
+            
+            if #available(iOS 13.0, *) {
+                let appearance = UINavigationBarAppearance()
+                appearance.backgroundColor = .pantone330U
+                appearance.backgroundImage = pantone330UColourImage
+                appearance.titleTextAttributes = whiteTextAttributes
+                appearance.largeTitleTextAttributes = whiteTextAttributes
+                
+                navigationBar.standardAppearance = appearance
+                navigationBar.compactAppearance = appearance
+                navigationBar.scrollEdgeAppearance = appearance
+            } else {
+                navigationBar.largeTitleTextAttributes = whiteTextAttributes
+            }
         } else {
             navigationBar.setBackgroundImage(pantone330UColourImage, for: .default)
         }

@@ -204,6 +204,11 @@ class TabBarDirector: NewsModuleDelegate, ScheduleModuleDelegate,
         
         let navigationController = UINavigationController(rootViewController: loginModule)
         navigationController.modalPresentationStyle = .formSheet
+        
+        if #available(iOS 13.0, *) {
+            navigationController.isModalInPresentation = true
+        }
+        
         tabController?.present(navigationController, animated: animate)
     }
     
