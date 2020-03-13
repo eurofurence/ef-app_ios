@@ -55,6 +55,15 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "CA7A325822B16E65002AD939"
+            BuildableName = "EurofurenceModelAdapterTests.xctest"
+            BlueprintName = "EurofurenceModelAdapterTests"
+            ReferencedContainer = "container:Domain Model/Domain Model.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <Testables>
          <TestableReference
             skipped = "NO">
@@ -86,28 +95,7 @@
                ReferencedContainer = "container:Eurofurence.xcodeproj">
             </BuildableReference>
          </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "78D7EEA01F17F40C005372A9"
-               BuildableName = "Screenshots.xctest"
-               BlueprintName = "Screenshots"
-               ReferencedContainer = "container:Eurofurence.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CA7A325822B16E65002AD939"
-            BuildableName = "EurofurenceModelAdapterTests.xctest"
-            BlueprintName = "EurofurenceModelAdapterTests"
-            ReferencedContainer = "container:Domain Model/Domain Model.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -128,8 +116,6 @@
             ReferencedContainer = "container:Domain Model/Domain Model.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
