@@ -36,6 +36,10 @@ class WhenShowingMessages_DirectorShould: XCTestCase {
 
         XCTAssertEqual(navController?.topViewController, context.loginModule.stubInterface)
         XCTAssertEqual(navController?.modalPresentationStyle, .formSheet)
+        
+        if #available(iOS 13.0, *) {
+            XCTAssertEqual(navController?.isModalInPresentation, true)
+        }
     }
 
     func testUseFormSheetPresentationWhenRequestingUserResolution() {
