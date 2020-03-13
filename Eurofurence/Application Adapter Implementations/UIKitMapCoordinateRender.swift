@@ -28,7 +28,7 @@ struct UIKitMapCoordinateRender: MapCoordinateRender {
                                   y: CGFloat(y) - viewportWindow / 2,
                                   width: viewportWindow,
                                   height: viewportWindow)
-        guard let croppedImage = highlightedImage.cropping(to: croppingRect) else { return Data () }
+        guard let croppedImage = highlightedImage.cropping(to: croppingRect) else { return Data() }
 
         let drawable = UIImage(cgImage: croppedImage)
         return drawable.pngData() ?? Data()

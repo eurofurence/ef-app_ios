@@ -28,7 +28,7 @@ class FirebaseRemoteConfigurationLoader: RemoteConfigurationLoader {
             defer { completionHandler(error) }
             
             guard result == .success else { return }
-            remoteConfig.activateFetched()
+            remoteConfig.activate()
             
             guard let conventionStartTime = remoteConfig.configValue(forKey: "nextConStart").numberValue else { return }
             

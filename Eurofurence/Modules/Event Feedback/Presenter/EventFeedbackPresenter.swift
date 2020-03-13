@@ -39,8 +39,8 @@ class EventFeedbackPresenter: EventFeedbackSceneDelegate, EventFeedbackDelegate 
     func eventFeedbackSceneDidLoad() {
         let viewModel = ViewModel(event: event,
                                   eventFeedback: eventFeedback,
-                                  submitFeedback: { [unowned self] in self.submitFeedback() },
-                                  cancelFeedback: { [unowned self] in self.cancelFeedback() },
+                                  submitFeedback: { [weak self] in self?.submitFeedback() },
+                                  cancelFeedback: { [weak self] in self?.cancelFeedback() },
                                   dayAndTimeFormatter: dayAndTimeFormatter)
         scene.bind(viewModel)
         scene.showFeedbackForm()
