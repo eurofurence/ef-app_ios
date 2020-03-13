@@ -3,9 +3,10 @@
 //  Down
 //
 //  Created by Rob Phillips on 6/1/16.
-//  Copyright © 2016-2019 Glazed Donut, LLC. All rights reserved.
+//  Copyright © 2016-2019 Down. All rights reserved.
 //
 
+#if !os(Linux)
 #if os(tvOS) || os(watchOS)
     // Sorry, not available for tvOS nor watchOS
 #else
@@ -95,7 +96,7 @@ open class DownView: WKWebView {
     private lazy var temporaryDirectoryURL: URL = {
         return try! FileManager.default.url(for: .itemReplacementDirectory,
                                             in: .userDomainMask,
-                                            appropriateFor: URL(fileURLWithPath: "/"),
+                                            appropriateFor: URL(fileURLWithPath: NSTemporaryDirectory()),
                                             create: true).appendingPathComponent("Down", isDirectory: true)
     }()
     #endif
@@ -205,3 +206,4 @@ private extension WKNavigationDelegate {
 }
 
 #endif
+#endif // !os(Linux)

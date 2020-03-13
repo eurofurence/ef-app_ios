@@ -14,16 +14,19 @@
  * limitations under the License.
  */
 
-#import "FIRMessagingDataMessageManager.h"
-#import "FIRMessaging.h"
+#import <FirebaseMessaging/FIRMessaging.h>
+#import "Firebase/Messaging/FIRMessagingDataMessageManager.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @class FIRMessagingReceiver;
 @protocol FIRMessagingReceiverDelegate <NSObject>
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 - (void)receiver:(FIRMessagingReceiver *)receiver
-      receivedRemoteMessage:(FIRMessagingRemoteMessage *)remoteMessage;
+    receivedRemoteMessage:(FIRMessagingRemoteMessage *)remoteMessage;
+#pragma clang diagnostic pop
 
 @end
 
