@@ -23,13 +23,19 @@ struct Theme {
     static func performUnsafeSearchControllerStyling(searchController: UISearchController) {
         styleSearchBar(searchController.searchBar)
         
-        guard #available(iOS 11.0, *) else { return }
-        
-        guard let backgroundview = resolveStylableBackgroundFromPrivateViewHiearchy(searchBar: searchController.searchBar) else { return }
-        
-        backgroundview.backgroundColor = .white
-        backgroundview.layer.cornerRadius = 10
-        backgroundview.clipsToBounds = true
+        if #available(iOS 13.0, *) {
+            searchController.searchBar.searchTextField.backgroundColor = .white
+            searchController.searchBar.searchTextField.layer.cornerRadius = 10
+            searchController.searchBar.searchTextField.clipsToBounds = true
+        } else {
+            guard #available(iOS 11.0, *) else { return }
+            
+            guard let backgroundview = resolveStylableBackgroundFromPrivateViewHiearchy(searchBar: searchController.searchBar) else { return }
+            
+            backgroundview.backgroundColor = .white
+            backgroundview.layer.cornerRadius = 10
+            backgroundview.clipsToBounds = true
+        }
     }
     
     private static func resolveStylableBackgroundFromPrivateViewHiearchy(searchBar: UISearchBar) -> UIView? {
