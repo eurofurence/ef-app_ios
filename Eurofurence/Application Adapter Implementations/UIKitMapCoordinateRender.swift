@@ -4,7 +4,7 @@ import UIKit
 struct UIKitMapCoordinateRender: MapCoordinateRender {
 
     func render(x: Int, y: Int, radius: Int, onto data: Data) -> Data {
-        guard let image = UIImage(data: data), let cgImage = image.cgImage else { return Data() }
+        guard let image = UIImage(data: data), image.cgImage != nil else { return Data() }
 
         UIGraphicsBeginImageContext(image.size)
         defer { UIGraphicsEndImageContext() }
