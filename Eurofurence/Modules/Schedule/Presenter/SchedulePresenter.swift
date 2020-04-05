@@ -262,13 +262,13 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
     }
 
     func scheduleViewModelDidUpdateEvents(_ events: [ScheduleEventGroupViewModel]) {
-        let numberOfItemsPerGroup = events.map { $0.events.count }
+        let numberOfItemsPerGroup = events.map(\.events.count)
         let binder = EventsBinder(viewModels: events)
         scene.bind(numberOfItemsPerSection: numberOfItemsPerGroup, using: binder)
     }
 
     func scheduleSearchResultsUpdated(_ results: [ScheduleEventGroupViewModel]) {
-        let numberOfItemsPerGroup = results.map { $0.events.count }
+        let numberOfItemsPerGroup = results.map(\.events.count)
         let binder = EventsBinder(viewModels: results)
         scene.bindSearchResults(numberOfItemsPerSection: numberOfItemsPerGroup, using: binder)
     }

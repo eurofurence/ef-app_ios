@@ -159,7 +159,7 @@ class DealersPresenter: DealersSceneDelegate, DealersViewModelDelegate, DealersS
     }
 
     func dealerGroupsDidChange(_ groups: [DealersGroupViewModel], indexTitles: [String]) {
-        let itemsPerSection = groups.map({ $0.dealers.count })
+        let itemsPerSection = groups.map(\.dealers.count)
         let binder = DealerGroupsBinder(viewModels: groups)
         scene.bind(numberOfDealersPerSection: itemsPerSection,
                    sectionIndexTitles: indexTitles,
@@ -167,7 +167,7 @@ class DealersPresenter: DealersSceneDelegate, DealersViewModelDelegate, DealersS
     }
 
     func dealerSearchResultsDidChange(_ groups: [DealersGroupViewModel], indexTitles: [String]) {
-        let itemsPerSection = groups.map({ $0.dealers.count })
+        let itemsPerSection = groups.map(\.dealers.count)
         let binder = DealerGroupsBinder(viewModels: groups)
         scene.bindSearchResults(numberOfDealersPerSection: itemsPerSection,
                                 sectionIndexTitles: indexTitles,

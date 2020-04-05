@@ -42,8 +42,8 @@ class WhenShowingTabModule_DirectorShould: XCTestCase {
         let rootNavigationTabControllers = context.tabModule.capturedTabModules.compactMap({ $0 as? UINavigationController })
         let expectedModuleControllers = moduleOrderingPolicy.producedModules
 
-        let expectedTabBarItems: [UITabBarItem] = expectedModuleControllers.map({ $0.tabBarItem })
-        let actualTabBarItems: [UITabBarItem] = rootNavigationTabControllers.compactMap({ $0.tabBarItem })
+        let expectedTabBarItems: [UITabBarItem] = expectedModuleControllers.map(\.tabBarItem)
+        let actualTabBarItems: [UITabBarItem] = rootNavigationTabControllers.compactMap(\.tabBarItem)
 
         let expectedRestorationIdentifiers = rootNavigationTabControllers.compactMap({ $0.topViewController?.restorationIdentifier }).map({ "NAV_" + $0 })
         let actualRestorationIdentifiers = rootNavigationTabControllers.compactMap({ $0.restorationIdentifier })

@@ -29,15 +29,15 @@ class WhenPreparingViewModel_DealersInteractorShould: XCTestCase {
 
     func testConvertIndexedDealersIntoExpectedGroupTitles() {
         let modelDealers = context.dealersService.index.alphabetisedDealers
-        let expected = modelDealers.map { $0.indexingString }
-        let actual = delegate.capturedGroups.map({ $0.title })
+        let expected = modelDealers.map(\.indexingString)
+        let actual = delegate.capturedGroups.map(\.title)
 
         XCTAssertEqual(expected, actual)
     }
 
     func testProduceIndexTitlesUsingGroupedIndicies() {
         let modelDealers = context.dealersService.index.alphabetisedDealers
-        let expected = modelDealers.map { $0.indexingString }
+        let expected = modelDealers.map(\.indexingString)
         let actual = delegate.capturedIndexTitles
 
         XCTAssertEqual(expected, actual)

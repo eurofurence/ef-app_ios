@@ -8,14 +8,14 @@ class WhenDealersIndexProducesNewSearchResults_DealersInteractorShould: XCTestCa
     func testConvertIndexedDealersIntoExpectedGroupTitles() {
         let index = FakeDealersIndex()
         let modelDealers = index.alphabetisedDealersSearchResult
-        let expected = modelDealers.map { $0.indexingString }
+        let expected = modelDealers.map(\.indexingString)
         let dealersService = FakeDealersService(index: index)
         let context = DealerInteractorTestBuilder().with(dealersService).build()
         var searchViewModel: DealersSearchViewModel?
         context.interactor.makeDealersSearchViewModel { searchViewModel = $0 }
         let delegate = CapturingDealersSearchViewModelDelegate()
         searchViewModel?.setSearchResultsDelegate(delegate)
-        let actual = delegate.capturedSearchResults.map({ $0.title })
+        let actual = delegate.capturedSearchResults.map(\.title)
 
         XCTAssertEqual(expected, actual)
     }

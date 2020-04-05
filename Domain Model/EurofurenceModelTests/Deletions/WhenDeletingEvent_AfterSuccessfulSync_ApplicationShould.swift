@@ -17,7 +17,7 @@ class WhenDeletingEvent_AfterSuccessfulSync_ApplicationShould: XCTestCase {
         response.events.deleted.append(eventToDelete.element.identifier)
         context.refreshLocalStore()
         context.api.simulateSuccessfulSync(response)
-        let actual = Set(delegate.allEvents.map({ $0.identifier.rawValue }))
+        let actual = Set(delegate.allEvents.map(\.identifier.rawValue))
 
         XCTAssertEqual(expected, actual,
                        "Should have removed event \(eventToDelete.element.identifier)")

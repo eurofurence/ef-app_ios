@@ -100,7 +100,7 @@ class ConcreteDealersService: DealersService {
         }
         
         private func updateAlphebetisedDealers() {
-            let activeCategories = Set(categories.filter({ $0.isActive }).map({ $0.name }))
+            let activeCategories = Set(categories.filter(\.isActive).map(\.name))
             let dealersWithEnabledCategory = dealers.dealerModels.filter({ (dealer) -> Bool in
                 let dealerCategories = Set(dealer.categories)
                 return dealerCategories.isDisjoint(with: activeCategories) == false

@@ -51,7 +51,7 @@ class ConcreteKnowledgeService: KnowledgeService {
             return entry.imageIdentifiers
         }()
 
-        let images = imageIdentifiers.compactMap(imageRepository.loadImage).map({ $0.pngImageData })
+        let images = imageIdentifiers.compactMap(imageRepository.loadImage).map(\.pngImageData)
         completionHandler(images)
     }
 

@@ -48,7 +48,7 @@ extension FakeEventsService {
 
     func stubSomeFavouriteEvents() {
         allEvents = [FakeEvent].random(minimum: 3)
-        favourites = Array(allEvents.dropFirst()).map({ $0.identifier })
+        favourites = Array(allEvents.dropFirst()).map(\.identifier)
     }
 
     func simulateEventFavourited(identifier: EventIdentifier) {

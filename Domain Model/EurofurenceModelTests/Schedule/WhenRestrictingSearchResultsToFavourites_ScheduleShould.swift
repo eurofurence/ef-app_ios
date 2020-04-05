@@ -18,7 +18,7 @@ class WhenRestrictingSearchResultsToFavourites_ScheduleShould: XCTestCase {
         let delegate = CapturingEventsSearchControllerDelegate()
         schedule.setResultsDelegate(delegate)
         schedule.restrictResultsToFavourites()
-        let searchResultIdentifiers = delegate.capturedSearchResults.map({ $0.identifier })
+        let searchResultIdentifiers = delegate.capturedSearchResults.map(\.identifier)
 
         XCTAssertEqual(Set(expected), Set(searchResultIdentifiers))
     }
@@ -62,7 +62,7 @@ class WhenRestrictingSearchResultsToFavourites_ScheduleShould: XCTestCase {
         event?.unfavourite()
         var expected = favourites
         expected.remove(at: randomFavourite.index)
-        let searchResultIdentifiers = delegate.capturedSearchResults.map({ $0.identifier })
+        let searchResultIdentifiers = delegate.capturedSearchResults.map(\.identifier)
 
         XCTAssertEqual(Set(expected), Set(searchResultIdentifiers))
     }

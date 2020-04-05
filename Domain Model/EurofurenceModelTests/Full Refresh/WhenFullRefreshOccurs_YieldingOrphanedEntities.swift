@@ -27,7 +27,7 @@ class WhenFullRefreshOccurs_YieldingOrphanedEntities: XCTestCase {
         let announcementsObserver = CapturingAnnouncementsServiceObserver()
         context.announcementsService.add(announcementsObserver)
         let originalAnnouncementIdentifiers = originalResponse.announcements.changed.identifiers
-        let announcementIdentifiers = announcementsObserver.allAnnouncements.map({ $0.identifier.rawValue })
+        let announcementIdentifiers = announcementsObserver.allAnnouncements.map(\.identifier.rawValue)
 
         XCTAssertFalse(announcementIdentifiers.contains(elementsFrom: originalAnnouncementIdentifiers))
     }
@@ -36,7 +36,7 @@ class WhenFullRefreshOccurs_YieldingOrphanedEntities: XCTestCase {
         let eventsObserver = CapturingEventsServiceObserver()
         context.eventsService.add(eventsObserver)
         let originalEventIdentifiers = originalResponse.events.changed.identifiers
-        let eventIdentifiers = eventsObserver.allEvents.map({ $0.identifier.rawValue })
+        let eventIdentifiers = eventsObserver.allEvents.map(\.identifier.rawValue)
 
         XCTAssertFalse(eventIdentifiers.contains(elementsFrom: originalEventIdentifiers))
     }
@@ -45,7 +45,7 @@ class WhenFullRefreshOccurs_YieldingOrphanedEntities: XCTestCase {
         let knowledgeObserver = CapturingKnowledgeServiceObserver()
         context.knowledgeService.add(knowledgeObserver)
         let originalGroupIdentifiers = originalResponse.knowledgeGroups.changed.identifiers
-        let groupIdentifiers = knowledgeObserver.capturedGroups.map({ $0.identifier.rawValue })
+        let groupIdentifiers = knowledgeObserver.capturedGroups.map(\.identifier.rawValue)
 
         XCTAssertFalse(groupIdentifiers.contains(elementsFrom: originalGroupIdentifiers))
     }
@@ -68,7 +68,7 @@ class WhenFullRefreshOccurs_YieldingOrphanedEntities: XCTestCase {
         let index = context.dealersService.makeDealersIndex()
         index.setDelegate(delegate)
         let originalDealerIdentifiers = originalResponse.dealers.changed.identifiers
-        let dealerIdentifiers = delegate.capturedAlphabetisedDealerGroups.reduce([], { $0 + $1.dealers }).map({ $0.identifier.rawValue })
+        let dealerIdentifiers = delegate.capturedAlphabetisedDealerGroups.reduce([], { $0 + $1.dealers }).map(\.identifier.rawValue)
 
         XCTAssertFalse(dealerIdentifiers.contains(elementsFrom: originalDealerIdentifiers))
     }
@@ -77,7 +77,7 @@ class WhenFullRefreshOccurs_YieldingOrphanedEntities: XCTestCase {
         let mapsObserver = CapturingMapsObserver()
         context.mapsService.add(mapsObserver)
         let originalMapsIdentifiers = originalResponse.maps.changed.identifiers
-        let mapsIdentifiers = mapsObserver.capturedMaps.map({ $0.identifier.rawValue })
+        let mapsIdentifiers = mapsObserver.capturedMaps.map(\.identifier.rawValue)
 
         XCTAssertFalse(mapsIdentifiers.contains(elementsFrom: originalMapsIdentifiers))
     }

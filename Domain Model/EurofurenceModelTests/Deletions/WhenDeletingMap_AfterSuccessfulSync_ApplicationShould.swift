@@ -17,7 +17,7 @@ class WhenDeletingMap_AfterSuccessfulSync_ApplicationShould: XCTestCase {
         response.maps.deleted.append(mapToDelete.element.identifier)
         context.refreshLocalStore()
         context.api.simulateSuccessfulSync(response)
-        let actual = Set(delegate.capturedMaps.map({ $0.identifier.rawValue }))
+        let actual = Set(delegate.capturedMaps.map(\.identifier.rawValue))
 
         XCTAssertEqual(expected, actual,
                        "Should have removed map \(mapToDelete.element.identifier)")

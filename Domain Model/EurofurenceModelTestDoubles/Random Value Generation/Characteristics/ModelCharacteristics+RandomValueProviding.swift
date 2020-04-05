@@ -42,7 +42,7 @@ public extension ModelCharacteristics {
         allImages.append(contentsOf: dealers.changed.compactMap({ $0.artistImageId }).map(makeImageFromIdentifier))
         allImages.append(contentsOf: dealers.changed.compactMap({ $0.artistThumbnailImageId }).map(makeImageFromIdentifier))
         allImages.append(contentsOf: dealers.changed.compactMap({ $0.artPreviewImageId }).map(makeImageFromIdentifier))
-        allImages.append(contentsOf: maps.changed.map({ $0.imageIdentifier }).map(makeImageFromIdentifier))
+        allImages.append(contentsOf: maps.changed.map(\.imageIdentifier).map(makeImageFromIdentifier))
         
         let knowledgeEntryImages = knowledge.entries.reduce([String](), { $0 + $1.imageIdentifiers })
         let knowledgeEntryAPIImages = knowledgeEntryImages.map(makeImageFromIdentifier)

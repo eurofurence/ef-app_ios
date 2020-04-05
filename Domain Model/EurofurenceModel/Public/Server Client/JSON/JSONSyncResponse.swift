@@ -23,7 +23,7 @@ struct JSONSyncResponse: Decodable {
         var RemoveAllBeforeInsert: Bool
 
         var delta: ModelCharacteristics.Update<T.ModelType> {
-            return ModelCharacteristics.Update(changed: ChangedEntities.map({ $0.modelValue }),
+            return ModelCharacteristics.Update(changed: ChangedEntities.map(\.modelValue),
                                                deleted: DeletedEntities,
                                                removeAllBeforeInsert: RemoveAllBeforeInsert)
         }
@@ -61,7 +61,7 @@ struct JSONSyncResponse: Decodable {
                                                  title: Title,
                                                  order: Order,
                                                  text: Text,
-                                                 links: Links.map({ $0.modelValue }),
+                                                 links: Links.map(\.modelValue),
                                                  imageIdentifiers: ImageIds)
         }
     }
@@ -211,7 +211,7 @@ struct JSONSyncResponse: Decodable {
                                          artPreviewImageId: ArtPreviewImageId,
                                          categories: Categories,
                                          shortDescription: ShortDescription,
-                                         links: Links?.map({ $0.modelValue }),
+                                         links: Links?.map(\.modelValue),
                                          twitterHandle: TwitterHandle,
                                          telegramHandle: TelegramHandle,
                                          aboutTheArtistText: AboutTheArtistText,
@@ -266,7 +266,7 @@ struct JSONSyncResponse: Decodable {
                                                 x: X,
                                                 y: Y,
                                                 tapRadius: TapRadius,
-                                                links: Links.map({ $0.modelValue }))
+                                                links: Links.map(\.modelValue))
             }
 
         }
@@ -280,7 +280,7 @@ struct JSONSyncResponse: Decodable {
             return MapCharacteristics(identifier: Id,
                                       imageIdentifier: ImageId,
                                       mapDescription: Description,
-                                      entries: Entries.map({ $0.modelValue }))
+                                      entries: Entries.map(\.modelValue))
         }
 
     }

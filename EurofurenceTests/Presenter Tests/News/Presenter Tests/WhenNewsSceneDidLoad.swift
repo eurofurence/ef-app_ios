@@ -22,7 +22,7 @@ class WhenNewsSceneDidLoad: XCTestCase {
 
     func testTheNewsSceneIsToldToBindExpectedSubcomponentItemCountsFromViewModel() {
         let viewModel = newsInteractor.lastCreatedViewModel
-        let expected = viewModel.components.map({ $0.numberOfItems })
+        let expected = viewModel.components.map(\.numberOfItems)
 
         XCTAssertEqual(expected, context.newsScene.capturedNumberOfItemsPerComponentToBind)
     }
