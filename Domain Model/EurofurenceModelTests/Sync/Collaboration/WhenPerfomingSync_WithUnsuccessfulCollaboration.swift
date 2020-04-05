@@ -11,7 +11,7 @@ class WhenPerfomingSync_WithUnsuccessfulCollaboration: XCTestCase {
         context.refreshLocalStore()
         context.simulateSyncSuccess(.randomWithoutDeletions)
         
-        XCTAssertEqual(.collaborationError(stubError), context.lastRefreshError)
+        XCTAssertEqual(.collaborationError, context.lastRefreshError)
         XCTAssertEqual(context.longRunningTaskManager.state, .ended)
     }
 
