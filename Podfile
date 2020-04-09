@@ -13,9 +13,7 @@ target :Eurofurence do
   pod 'Firebase/Core'
   pod 'Firebase/Messaging'
   pod 'Firebase/Performance'
-  
-  pod 'SimulatorStatusMagic', :configurations => ['Screenshots']
-  
+    
   target :EurofurenceTests do
     inherit! :search_paths
   end

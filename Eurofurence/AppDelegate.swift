@@ -39,7 +39,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private func prepareFrameworks() {
         FirebaseApp.configure()
-        ScreenshotAssistant.prepare()
     }
     
     private func prepareApplicationStack() {
