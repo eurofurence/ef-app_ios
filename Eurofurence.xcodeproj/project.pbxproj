@@ -991,7 +991,6 @@
 		CAE8879322690263001464C1 /* LeaveFeedbackActionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE8879222690263001464C1 /* LeaveFeedbackActionViewModel.swift */; };
 		CAE8879522690358001464C1 /* WhenEventIsNotAcceptingFeedback_EventDetailInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE8879422690358001464C1 /* WhenEventIsNotAcceptingFeedback_EventDetailInteractorShould.swift */; };
 		CAEA1042216E1FB400B0C7A6 /* CapturingSignificantTimeChangeAdapterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C68420D59A5B009D3A9E /* CapturingSignificantTimeChangeAdapterDelegate.swift */; };
-		CAEA1044216E775300B0C7A6 /* ScreenshotAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9845D91F29199E00E8821D /* ScreenshotAssistant.swift */; };
 		CAEA1046216E77DE00B0C7A6 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA1045216E77DE00B0C7A6 /* Theme.swift */; };
 		CAEAEBF51FDEB56000C0EE7C /* MessageDetailModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBF41FDEB56000C0EE7C /* MessageDetailModuleProviding.swift */; };
 		CAEAEBF71FDEB61100C0EE7C /* MessageDetailModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBF61FDEB61100C0EE7C /* MessageDetailModuleBuilder.swift */; };
@@ -1948,7 +1947,6 @@
 		CA957B5E1F705AF9004DFD5A /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		CA9845C91F2907A800E8821D /* ScreenshotGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotGenerator.swift; sourceTree = "<group>"; };
 		CA9845D21F2909DB00E8821D /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
-		CA9845D91F29199E00E8821D /* ScreenshotAssistant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenshotAssistant.swift; sourceTree = "<group>"; };
 		CA987FB922E4A9EA006338FB /* WhenBindingInactiveCategory_DealersSceneShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingInactiveCategory_DealersSceneShould.swift; sourceTree = "<group>"; };
 		CA987FBB22E4B224006338FB /* WhenProducingCategoriesViewModel_DealersInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenProducingCategoriesViewModel_DealersInteractorShould.swift; sourceTree = "<group>"; };
 		CA987FC022E5126D006338FB /* LoginPresenterTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenterTestBuilder.swift; sourceTree = "<group>"; };
@@ -2596,7 +2594,6 @@
 				CA02910121F4D6020007F350 /* AppDelegate+DebugWindow.swift */,
 				CA0F9D9321D53C6F0084886E /* ApplicationStack.swift */,
 				CA3ABA05229C4B260045A35B /* AppNotificationDelegate.swift */,
-				CA9845D91F29199E00E8821D /* ScreenshotAssistant.swift */,
 				CAEA1045216E77DE00B0C7A6 /* Theme.swift */,
 				9ACF993E1EBE172D006FC958 /* Assets.xcassets */,
 				CA630BCA229F108900754C27 /* Activity */,
@@ -5950,7 +5947,6 @@
 				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-				"${BUILT_PRODUCTS_DIR}/SimulatorStatusMagic/SimulatorStatusMagic.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -5961,7 +5957,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SimulatorStatusMagic.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -6040,7 +6035,6 @@
 				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-				"${BUILT_PRODUCTS_DIR}/SimulatorStatusMagic/SimulatorStatusMagic.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -6051,7 +6045,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SimulatorStatusMagic.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -6247,7 +6240,6 @@
 				CA8A73B322BC2F6A007A5201 /* HybridWebScene.swift in Sources */,
 				9A861EBF1F25551400B75A8C /* PresentationAssets.swift in Sources */,
 				CA52C68120D597E1009D3A9E /* ApplicationSignificantTimeChangeAdapter.swift in Sources */,
-				CAEA1044216E775300B0C7A6 /* ScreenshotAssistant.swift in Sources */,
 				CA7D8B27222EAB61003431A0 /* DefaultDealerDetailViewModel.swift in Sources */,
 				CA6F6531226A4D1700483EE0 /* EventFeedbackSuccessViewController.swift in Sources */,
 				CAF7056A1F82D15D00A9FEA2 /* PreloadModuleProviding.swift in Sources */,
@@ -7283,7 +7275,6 @@
 				PROVISIONING_PROFILE_SPECIFIER = EFDev;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
-				TAKING_SCREENSHOTS = 0;
 			};
 			name = Profiling;
 		};
@@ -7442,7 +7433,6 @@
 				PROVISIONING_PROFILE_SPECIFIER = EFDev;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
-				TAKING_SCREENSHOTS = 0;
 			};
 			name = Debug;
 		};
@@ -7463,7 +7453,6 @@
 				PROVISIONING_PROFILE_SPECIFIER = "Eurofurence App Store";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
-				TAKING_SCREENSHOTS = 0;
 			};
 			name = Release;
 		};
@@ -7697,13 +7686,12 @@
 				INFOPLIST_FILE = Eurofurence/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 3.1.4;
-				OTHER_SWIFT_FLAGS = "$(inherited) -D DEBUG -D TAKING_SCREENSHOTS";
+				OTHER_SWIFT_FLAGS = "$(inherited) -D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = EFDev;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
-				TAKING_SCREENSHOTS = 1;
 			};
 			name = Screenshots;
 		};
