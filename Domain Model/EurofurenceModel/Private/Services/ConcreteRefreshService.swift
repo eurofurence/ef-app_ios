@@ -88,8 +88,8 @@ class ConcreteRefreshService: RefreshService {
                 
                 self.privateMessagesController.refreshMessages {
                     self.refreshCollaboration.executeCollaborativeRefreshTask(completionHandler: { (error) in
-                        if let error = error {
-                            completionHandler(.collaborationError(error))
+                        if error != nil {
+                            completionHandler(.collaborationError)
                         } else {                        
                             completionHandler(nil)
                         }

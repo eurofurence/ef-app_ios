@@ -9,7 +9,7 @@ class MessageAssertion: Assertion {
             return
         }
 
-        var sortedCharacteristics = characteristics.sorted { (first, second) -> Bool in
+        let sortedCharacteristics = characteristics.sorted { (first, second) -> Bool in
             return first.receivedDateTime.compare(second.receivedDateTime) == .orderedDescending
         }
 

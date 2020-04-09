@@ -58,7 +58,7 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
                                          dealers: alphabetisedGroup.dealers.map(makeDealerViewModel))
         }
 
-        let indexTitles = alphabetisedGroups.map({ $0.indexingString })
+        let indexTitles = alphabetisedGroups.map(\.indexingString)
 
         return (groups: groups, titles: indexTitles)
     }

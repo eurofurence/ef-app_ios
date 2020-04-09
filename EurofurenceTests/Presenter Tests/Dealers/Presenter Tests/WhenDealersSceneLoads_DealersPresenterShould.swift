@@ -10,7 +10,7 @@ class WhenDealersSceneLoads_DealersPresenterShould: XCTestCase {
         let interactor = FakeDealersInteractor(viewModel: viewModel)
         let context = DealersPresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
-        let expected = dealerGroups.map { $0.dealers.count }
+        let expected = dealerGroups.map(\.dealers.count)
 
         XCTAssertEqual(expected, context.scene.capturedDealersPerSectionToBind)
     }

@@ -17,7 +17,7 @@ public struct EurofurenceFCMDeviceRegistration: FCMDeviceRegistration {
                             topics: [FirebaseTopic],
                             authenticationToken: String?,
                             completionHandler: @escaping (Error?) -> Void) {
-        let registrationRequest = Request(DeviceId: fcm, Topics: topics.map({ $0.description }))
+        let registrationRequest = Request(DeviceId: fcm, Topics: topics.map(\.description))
         guard let jsonData = try? jsonEncoder.encode(registrationRequest) else { return }
 
         let registrationURL = urlProviding.url + "/PushNotifications/FcmDeviceRegistration"

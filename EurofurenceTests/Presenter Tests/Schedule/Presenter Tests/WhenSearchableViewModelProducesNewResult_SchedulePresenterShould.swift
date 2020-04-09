@@ -10,7 +10,7 @@ class WhenSearchableViewModelProducesNewResult_SchedulePresenterShould: XCTestCa
         let context = SchedulePresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
         let results = [ScheduleEventGroupViewModel].random
-        let expected = results.map({ $0.events.count })
+        let expected = results.map(\.events.count)
         searchViewModel.simulateSearchResultsUpdated(results)
 
         XCTAssertEqual(expected, context.scene.boundSearchItemsPerSection)

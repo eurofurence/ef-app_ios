@@ -10,7 +10,7 @@ class AnnouncementAssertion: Assertion {
             return
         }
 
-        var orderedCharacteristics = orderAnnouncementsCharacteristicsByDate(characteristics)
+        let orderedCharacteristics = orderAnnouncementsCharacteristicsByDate(characteristics)
 
         for (idx, announcement) in announcements.enumerated() {
             let characteristic = orderedCharacteristics[idx]

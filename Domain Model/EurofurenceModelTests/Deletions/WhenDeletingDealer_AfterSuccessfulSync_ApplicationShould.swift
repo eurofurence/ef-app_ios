@@ -13,13 +13,13 @@ class WhenDeletingDealer_AfterSuccessfulSync_ApplicationShould: XCTestCase {
         context.api.simulateSuccessfulSync(response)
         let dealerToDelete = response.dealers.changed.randomElement()
         response.dealers.changed = response.dealers.changed.filter({ $0.identifier != dealerToDelete.element.identifier })
-        let expected = Set(response.dealers.changed.map({ $0.identifier }))
+        let expected = Set(response.dealers.changed.map(\.identifier))
         response.dealers.changed.removeAll()
         response.dealers.deleted.append(dealerToDelete.element.identifier)
         context.refreshLocalStore()
         context.api.simulateSuccessfulSync(response)
-        let allDealers = delegate.capturedAlphabetisedDealerGroups.map({ $0.dealers }).reduce([], +)
-        let actual = Set(allDealers.map({ $0.identifier.rawValue }))
+        let allDealers = delegate.capturedAlphabetisedDealerGroups.map(\.dealers).reduce([], +)
+        let actual = Set(allDealers.map(\.identifier.rawValue))
 
         XCTAssertEqual(expected, actual,
                        "Should have removed dealer \(dealerToDelete.element.identifier)")

@@ -99,9 +99,9 @@ class WhenRequestingPrivateMessagesWhileAuthenticated: XCTestCase {
         }
 
         let messages = (0...5).map({ (_) in makeRandomMessage() })
-        let expectedDateOrdering = Array(messages.map({ $0.receivedDateTime }).sorted().reversed())
+        let expectedDateOrdering = Array(messages.map(\.receivedDateTime).sorted().reversed())
         context.api.simulateMessagesResponse(response: messages)
-        let actualDateOrdering = capturingMessagesObserver.observedMessages.map({ $0.receivedDateTime })
+        let actualDateOrdering = capturingMessagesObserver.observedMessages.map(\.receivedDateTime)
 
         XCTAssertEqual(expectedDateOrdering, actualDateOrdering)
     }

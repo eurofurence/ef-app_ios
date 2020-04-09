@@ -16,7 +16,7 @@ class WhenDeletingAnnouncement_AfterSuccessfulSync_ApplicationShould: XCTestCase
         response.announcements.deleted.append(announcementToDelete.element.identifier)
         context.refreshLocalStore()
         context.api.simulateSuccessfulSync(response)
-        let actual = delegate.allAnnouncements.map({ $0.identifier.rawValue })
+        let actual = delegate.allAnnouncements.map(\.identifier.rawValue)
 
         XCTAssertFalse(actual.contains(announcementToDelete.element.identifier),
                        "Should have removed announcement \(announcementToDelete.element.identifier)")

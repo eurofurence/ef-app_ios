@@ -44,7 +44,7 @@ class EurofurenceFCMDeviceRegistrationTests: XCTestCase {
     func testRegisteringTheFCMTokenShouldSupplyAllTopicsWithinAnArrayUnderTheTopicsKey() {
         let topics: [FirebaseTopic] = [.debug, .ios]
         performRegistration(topics: topics)
-        let expected: [String] = topics.map({ $0.description })
+        let expected: [String] = topics.map(\.description)
 
         XCTAssertEqual(expected, capturingJSONSession.postedJSONValue(forKey: "Topics") ?? [])
     }

@@ -20,7 +20,7 @@ class CapturingDealersIndexDelegate: DealersIndexDelegate {
 extension CapturingDealersIndexDelegate {
 
     func capturedDealer(for identifier: DealerIdentifier) -> Dealer? {
-        return capturedAlphabetisedDealerGroups.map({ $0.dealers }).joined().first(where: { $0.identifier == identifier })
+        return capturedAlphabetisedDealerGroups.map(\.dealers).joined().first(where: { $0.identifier == identifier })
     }
 
 }

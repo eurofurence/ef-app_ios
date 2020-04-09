@@ -27,7 +27,7 @@ class AlphabetisedDealersGroupAssertion: Assertion {
         let expectedNumberOfGroupsPresent = indexTitles.count == groups.count
 
         if expectedNumberOfGroupsPresent == false {
-            let groupIndexTitles = groups.map({ $0.indexingString })
+            let groupIndexTitles = groups.map(\.indexingString)
             fail(message: "Expected \(indexTitles) groups, got \(groupIndexTitles)")
         }
 
