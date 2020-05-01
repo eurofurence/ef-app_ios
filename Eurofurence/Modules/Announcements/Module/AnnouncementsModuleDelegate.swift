@@ -1,7 +1,7 @@
 import EurofurenceModel
 import Foundation
 
-protocol AnnouncementsModuleDelegate {
+public protocol AnnouncementsModuleDelegate {
 
     func announcementsModuleDidSelectAnnouncement(_ announcement: AnnouncementIdentifier)
 

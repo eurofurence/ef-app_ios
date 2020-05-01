@@ -1,6 +1,6 @@
 import UIKit
 
-protocol AnnouncementsModuleProviding {
+public protocol AnnouncementsModuleProviding {
 
     func makeAnnouncementsModule(_ delegate: AnnouncementsModuleDelegate) -> UIViewController
 

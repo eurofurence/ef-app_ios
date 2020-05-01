@@ -4,7 +4,7 @@ import XCTest
 
 class DealerContentRouteTests: XCTestCase {
     
-    func testRevealsDetailContentController() {
+    func testShowsDetailContentController() {
         let identifier = DealerIdentifier.random
         let content = DealerContentRepresentation(identifier: identifier)
         let dealerModuleFactory = StubDealerDetailModuleProviding()

@@ -4,7 +4,7 @@ import XCTest
 
 class AnnouncementContentRouteTests: XCTestCase {
     
-    func testShowsContentControllerForAnnouncement() {
+    func testShowsDetailContentControllerForAnnouncement() {
         let identifier = AnnouncementIdentifier.random
         let content = AnnouncementContentRepresentation(identifier: identifier)
         let announcementModuleFactory = StubAnnouncementDetailModuleFactory()
