@@ -1,7 +1,15 @@
 import Foundation
 
-public protocol ContentRepresentation: Equatable {
+public protocol ContentRepresentation: ContentRepresentationDescribing, Equatable {
     
-    func describe(to recipient: ContentRepresentationRecipient)
+}
+
+// MARK: - Convenience self-describing implementation
+
+extension ContentRepresentation {
+    
+    public func describe(to recipient: ContentRepresentationRecipient) {
+        recipient.receive(self)
+    }
     
 }

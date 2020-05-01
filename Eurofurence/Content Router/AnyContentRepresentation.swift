@@ -17,6 +17,12 @@ public struct AnyContentRepresentation {
         }
     }
     
+}
+
+// MARK: - ContentRepresentationDescribing
+
+extension AnyContentRepresentation: ContentRepresentationDescribing {
+    
     public func describe(to recipient: ContentRepresentationRecipient) {
         descriptor(recipient)
     }

@@ -5508,6 +5508,7 @@
 		CAD4F73A245C36430036ADAF /* Content Router */ = {
 			isa = PBXGroup;
 			children = (
+				CAA2886F245C64940090B663 /* AnyContentRepresentation.swift */,
 				CAD4F741245C369D0036ADAF /* AnyContentRoute.swift */,
 				CAD4F73D245C365C0036ADAF /* ContentRepresentation.swift */,
 				CAD4F743245C36F40036ADAF /* ContentRepresentationRecipient.swift */,
@@ -5517,7 +5518,6 @@
 				CAD4F77D245C5CDE0036ADAF /* MutableContentRouter.swift */,
 				CAD4F750245C3D160036ADAF /* Route Presentation */,
 				CAD4F747245C3A3B0036ADAF /* Routes */,
-				CAA2886F245C64940090B663 /* AnyContentRepresentation.swift */,
 			);
 			path = "Content Router";
 			sourceTree = "<group>";

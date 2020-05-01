@@ -1,15 +1,13 @@
 import Foundation
 
-public protocol ContentRepresentationRecipient {
+public protocol ContentRepresentationDescribing {
     
-    func receive<Content>(_ content: Content) where Content: ContentRepresentation
+    func describe(to recipient: ContentRepresentationRecipient)
     
 }
 
-extension ContentRepresentation {
+public protocol ContentRepresentationRecipient {
     
-    public func describe(to recipient: ContentRepresentationRecipient) {
-        recipient.receive(self)
-    }
+    func receive<Content>(_ content: Content) where Content: ContentRepresentation
     
 }
