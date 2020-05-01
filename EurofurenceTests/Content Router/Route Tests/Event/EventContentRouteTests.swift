@@ -4,7 +4,7 @@ import XCTest
 
 class EventContentRouteTests: XCTestCase {
     
-    func testCurrentContextRevealsUsingShow() {
+    func testRevealsDetailContentController() {
         let identifier = EventIdentifier.random
         let content = EventContentRepresentation(identifier: identifier)
         let eventModuleFactory = StubEventDetailModuleFactory()

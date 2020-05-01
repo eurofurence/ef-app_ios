@@ -979,6 +979,9 @@
 		CAD4F759245C3EBC0036ADAF /* EventContentRouteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD4F758245C3EBB0036ADAF /* EventContentRouteTests.swift */; };
 		CAD4F75C245C41590036ADAF /* EventContentRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD4F75B245C41590036ADAF /* EventContentRepresentation.swift */; };
 		CAD4F75E245C41780036ADAF /* EventContentRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD4F75D245C41780036ADAF /* EventContentRoute.swift */; };
+		CAD4F761245C423F0036ADAF /* DealerContentRouteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD4F760245C423F0036ADAF /* DealerContentRouteTests.swift */; };
+		CAD4F764245C43C90036ADAF /* DealerContentRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD4F763245C43C90036ADAF /* DealerContentRepresentation.swift */; };
+		CAD4F766245C43E00036ADAF /* DealerContentRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD4F765245C43E00036ADAF /* DealerContentRoute.swift */; };
 		CAD55932229AEF760068DD46 /* NotificationResponseProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD55931229AEF760068DD46 /* NotificationResponseProcessor.swift */; };
 		CAD55936229AEFA80068DD46 /* CapturingNotificationResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD55935229AEFA80068DD46 /* CapturingNotificationResponseHandler.swift */; };
 		CAD55938229AEFC50068DD46 /* NotificationResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD55937229AEFC50068DD46 /* NotificationResponseHandler.swift */; };
@@ -2110,6 +2113,9 @@
 		CAD4F758245C3EBB0036ADAF /* EventContentRouteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventContentRouteTests.swift; sourceTree = "<group>"; };
 		CAD4F75B245C41590036ADAF /* EventContentRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventContentRepresentation.swift; sourceTree = "<group>"; };
 		CAD4F75D245C41780036ADAF /* EventContentRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventContentRoute.swift; sourceTree = "<group>"; };
+		CAD4F760245C423F0036ADAF /* DealerContentRouteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerContentRouteTests.swift; sourceTree = "<group>"; };
+		CAD4F763245C43C90036ADAF /* DealerContentRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerContentRepresentation.swift; sourceTree = "<group>"; };
+		CAD4F765245C43E00036ADAF /* DealerContentRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerContentRoute.swift; sourceTree = "<group>"; };
 		CAD55931229AEF760068DD46 /* NotificationResponseProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationResponseProcessor.swift; sourceTree = "<group>"; };
 		CAD55935229AEFA80068DD46 /* CapturingNotificationResponseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingNotificationResponseHandler.swift; sourceTree = "<group>"; };
 		CAD55937229AEFC50068DD46 /* NotificationResponseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationResponseHandler.swift; sourceTree = "<group>"; };
@@ -5492,8 +5498,9 @@
 		CAD4F747245C3A3B0036ADAF /* Routes */ = {
 			isa = PBXGroup;
 			children = (
-				CAD4F75A245C41510036ADAF /* Event */,
 				CAD4F748245C3A460036ADAF /* Announcement */,
+				CAD4F762245C43C20036ADAF /* Dealer */,
+				CAD4F75A245C41510036ADAF /* Event */,
 			);
 			path = Routes;
 			sourceTree = "<group>";
@@ -5507,12 +5514,12 @@
 			path = Announcement;
 			sourceTree = "<group>";
 		};
-		CAD4F749245C3A4C0036ADAF /* Announcements */ = {
+		CAD4F749245C3A4C0036ADAF /* Announcement */ = {
 			isa = PBXGroup;
 			children = (
 				CAD4F74A245C3A5B0036ADAF /* AnnouncementContentRouteTests.swift */,
 			);
-			path = Announcements;
+			path = Announcement;
 			sourceTree = "<group>";
 		};
 		CAD4F750245C3D160036ADAF /* Route Presentation */ = {
@@ -5526,8 +5533,9 @@
 		CAD4F753245C3D320036ADAF /* Route Tests */ = {
 			isa = PBXGroup;
 			children = (
-				CAD4F749245C3A4C0036ADAF /* Announcements */,
-				CAD4F757245C3E9C0036ADAF /* Events */,
+				CAD4F749245C3A4C0036ADAF /* Announcement */,
+				CAD4F75F245C422B0036ADAF /* Dealer */,
+				CAD4F757245C3E9C0036ADAF /* Event */,
 			);
 			path = "Route Tests";
 			sourceTree = "<group>";
@@ -5540,12 +5548,12 @@
 			path = "Test Doubles";
 			sourceTree = "<group>";
 		};
-		CAD4F757245C3E9C0036ADAF /* Events */ = {
+		CAD4F757245C3E9C0036ADAF /* Event */ = {
 			isa = PBXGroup;
 			children = (
 				CAD4F758245C3EBB0036ADAF /* EventContentRouteTests.swift */,
 			);
-			path = Events;
+			path = Event;
 			sourceTree = "<group>";
 		};
 		CAD4F75A245C41510036ADAF /* Event */ = {
@@ -5555,6 +5563,23 @@
 				CAD4F75D245C41780036ADAF /* EventContentRoute.swift */,
 			);
 			path = Event;
+			sourceTree = "<group>";
+		};
+		CAD4F75F245C422B0036ADAF /* Dealer */ = {
+			isa = PBXGroup;
+			children = (
+				CAD4F760245C423F0036ADAF /* DealerContentRouteTests.swift */,
+			);
+			path = Dealer;
+			sourceTree = "<group>";
+		};
+		CAD4F762245C43C20036ADAF /* Dealer */ = {
+			isa = PBXGroup;
+			children = (
+				CAD4F763245C43C90036ADAF /* DealerContentRepresentation.swift */,
+				CAD4F765245C43E00036ADAF /* DealerContentRoute.swift */,
+			);
+			path = Dealer;
 			sourceTree = "<group>";
 		};
 		CAD5592E229AE3570068DD46 /* Notification Response Handler */ = {
@@ -6469,6 +6494,7 @@
 				CA66C0202124CC6000F87AFE /* AppStateProviding.swift in Sources */,
 				CA6AA0041FD6C7B50092C6DB /* DirectorBuilder.swift in Sources */,
 				CACF1E8820B34F8900D904B5 /* DefaultEventDetailInteractor.swift in Sources */,
+				CAD4F766245C43E00036ADAF /* DealerContentRoute.swift in Sources */,
 				CAC4993722DF994A003E1D77 /* DealerCategoryTableViewCell.swift in Sources */,
 				CAF3C74C1F9F619C0008F027 /* NewsModule.swift in Sources */,
 				CA1B6F2F20DB8E0900ADF414 /* DealerDetailSceneBinder.swift in Sources */,
@@ -6476,6 +6502,7 @@
 				20516AC621121AE400C399C0 /* SubtleDownMarkdownRenderer.swift in Sources */,
 				CA36A4C220DA757B00EE6537 /* DealersSearchViewModel.swift in Sources */,
 				CA73AEF5201A08D1004E77BF /* KnowledgeGroupsListPresenter.swift in Sources */,
+				CAD4F764245C43C90036ADAF /* DealerContentRepresentation.swift in Sources */,
 				CA27255E21125393004C6D0A /* KnowledgeEntryImageScene.swift in Sources */,
 				CA2761AF20E022CB000E52AC /* CollectThemAllModule.swift in Sources */,
 				CA50B1AB226110B00091E425 /* EventFeedbackModuleProviding.swift in Sources */,
@@ -7173,6 +7200,7 @@
 				CA36A44D20D771C400EE6537 /* CapturingSelectionChangedHaptic.swift in Sources */,
 				CA82409D21249907007E4A70 /* ReviewPromptControllerTests.swift in Sources */,
 				CA63755C208CBC3C00536BE2 /* StubContentLinksService.swift in Sources */,
+				CAD4F761245C423F0036ADAF /* DealerContentRouteTests.swift in Sources */,
 				CA250DCC20D6D3BE00E7513C /* WhenSceneUpdatesSearchQuery_SchedulePresenterShould.swift in Sources */,
 				CA00AE8320D1C21900C2FBB0 /* CapturingScheduleDayComponent.swift in Sources */,
 				CA2547C11FEB1B2A0023F2CB /* WhenRefreshingMessages.swift in Sources */,
