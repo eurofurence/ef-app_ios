@@ -2,19 +2,18 @@ import Foundation
 
 public class ContentRouter {
     
-    private var routes = [ObjectIdentifier: AnyContentRoute]()
+    private var routeRegistry = ContentRouteRegistery()
     
     public init() {
         
     }
     
     public func add<Route>(_ route: Route) where Route: ContentRoute {
-        let routeIdentifier = ObjectIdentifier(Route.Content.self)
-        routes[routeIdentifier] = AnyContentRoute(route)
+        routeRegistry.add(route)
     }
     
     public func route<Content>(_ content: Content) throws where Content: ContentRepresentation {
-        let executor = ExecuteRoute(routes: routes)
+        let executor = ExecuteRoute(routeRegistry: routeRegistry)
         content.describe(to: executor)
         
         if let error = executor.error {
@@ -24,16 +23,15 @@ public class ContentRouter {
     
     private class ExecuteRoute: ContentRepresentationRecipient {
         
-        private let routes: [ObjectIdentifier: AnyContentRoute]
+        private let routeRegistry: ContentRouteRegistery
         private(set) var error: Error?
         
-        init(routes: [ObjectIdentifier: AnyContentRoute]) {
-            self.routes = routes
+        init(routeRegistry: ContentRouteRegistery) {
+            self.routeRegistry = routeRegistry
         }
         
         func receive<Content>(_ content: Content) where Content: ContentRepresentation {
-            let routeIdentifier = ObjectIdentifier(type(of: content))
-            if let route = routes[routeIdentifier] {
+            if let route = routeRegistry.route(for: content) {
                 route.route(content)
             } else {
                 error = RouteMissing(content: content)

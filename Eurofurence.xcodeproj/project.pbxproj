@@ -970,6 +970,7 @@
 		CAD4F740245C36830036ADAF /* ContentRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD4F73F245C36830036ADAF /* ContentRouter.swift */; };
 		CAD4F742245C369D0036ADAF /* AnyContentRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD4F741245C369D0036ADAF /* AnyContentRoute.swift */; };
 		CAD4F744245C36F40036ADAF /* ContentRepresentationRecipient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD4F743245C36F40036ADAF /* ContentRepresentationRecipient.swift */; };
+		CAD4F746245C38380036ADAF /* ContentRouteRegistery.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD4F745245C38380036ADAF /* ContentRouteRegistery.swift */; };
 		CAD55932229AEF760068DD46 /* NotificationResponseProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD55931229AEF760068DD46 /* NotificationResponseProcessor.swift */; };
 		CAD55936229AEFA80068DD46 /* CapturingNotificationResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD55935229AEFA80068DD46 /* CapturingNotificationResponseHandler.swift */; };
 		CAD55938229AEFC50068DD46 /* NotificationResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD55937229AEFC50068DD46 /* NotificationResponseHandler.swift */; };
@@ -2092,6 +2093,7 @@
 		CAD4F73F245C36830036ADAF /* ContentRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentRouter.swift; sourceTree = "<group>"; };
 		CAD4F741245C369D0036ADAF /* AnyContentRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyContentRoute.swift; sourceTree = "<group>"; };
 		CAD4F743245C36F40036ADAF /* ContentRepresentationRecipient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentRepresentationRecipient.swift; sourceTree = "<group>"; };
+		CAD4F745245C38380036ADAF /* ContentRouteRegistery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentRouteRegistery.swift; sourceTree = "<group>"; };
 		CAD55931229AEF760068DD46 /* NotificationResponseProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationResponseProcessor.swift; sourceTree = "<group>"; };
 		CAD55935229AEFA80068DD46 /* CapturingNotificationResponseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingNotificationResponseHandler.swift; sourceTree = "<group>"; };
 		CAD55937229AEFC50068DD46 /* NotificationResponseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationResponseHandler.swift; sourceTree = "<group>"; };
@@ -5462,6 +5464,7 @@
 				CAD4F743245C36F40036ADAF /* ContentRepresentationRecipient.swift */,
 				CAD4F73B245C364F0036ADAF /* ContentRoute.swift */,
 				CAD4F73F245C36830036ADAF /* ContentRouter.swift */,
+				CAD4F745245C38380036ADAF /* ContentRouteRegistery.swift */,
 			);
 			path = "Content Router";
 			sourceTree = "<group>";
@@ -6446,6 +6449,7 @@
 				CA2A586F20F7F137002C69B6 /* AnnouncementDateFormatter.swift in Sources */,
 				CA8A73C922BD1030007A5201 /* AdditionalServicesModule.swift in Sources */,
 				CAD3BDB92059539D00C91E6E /* KnowledgeDetailModuleDelegate.swift in Sources */,
+				CAD4F746245C38380036ADAF /* ContentRouteRegistery.swift in Sources */,
 				CAD55946229AF7DB0068DD46 /* NavigateToContentNotificationResponseHandler.swift in Sources */,
 				CA6EC48E2051D97600402894 /* KnowledgeDetailPresenter.swift in Sources */,
 				CA1FE9971F9FCCA4009C7DF3 /* MessagesModuleProviding.swift in Sources */,
