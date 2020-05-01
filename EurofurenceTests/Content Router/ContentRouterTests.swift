@@ -1,16 +1,37 @@
 import XCTest
 
-class ContentRouter {
+struct AnyContentRoute {
     
-    private var route: WellKnownContentRoute?
+    private let performRoute: (Any) -> Bool
     
-    func add(_ route: WellKnownContentRoute) {
-        self.route = route
+    init<Route>(_ route: Route) where Route: ContentRoute {
+        performRoute = { (content) in
+            if let content = content as? Route.Content {
+                route.route(content)
+                return true
+            } else {
+                return false
+            }
+        }
     }
     
-    func route(_ content: WellKnownContent) throws {
-        if let route = route {
-            route.route(content)
+    func route(_ content: Any) -> Bool {
+        performRoute(content)
+    }
+    
+}
+
+class ContentRouter {
+    
+    private var route: AnyContentRoute?
+    
+    func add<Route>(_ route: Route) where Route: ContentRoute {
+        self.route = AnyContentRoute(route)
+    }
+    
+    func route(_ content: Any) throws {
+        if let route = route, route.route(content) {
+            
         } else {
             throw RouteMissing(content: content)
         }
@@ -24,14 +45,39 @@ class ContentRouter {
     
 }
 
+protocol ContentRoute {
+    
+    associatedtype Content
+    
+    func route(_ content: Content)
+    
+}
+
 struct WellKnownContent: Equatable {
     
 }
 
-class WellKnownContentRoute {
+struct SomeOtherWellKnownContent: Equatable {
+    
+}
+
+class WellKnownContentRoute: ContentRoute {
+    
+    typealias Content = WellKnownContent
     
     private(set) var routedContent: WellKnownContent?
     func route(_ content: WellKnownContent) {
+        routedContent = content
+    }
+    
+}
+
+class SomeOtherWellKnownContentRoute: ContentRoute {
+    
+    typealias Content = SomeOtherWellKnownContent
+    
+    private(set) var routedContent: SomeOtherWellKnownContent?
+    func route(_ content: SomeOtherWellKnownContent) {
         routedContent = content
     }
     
@@ -55,6 +101,19 @@ class ContentRouterTests: XCTestCase {
         let router = ContentRouter()
         
         XCTAssertThrowsError(try router.route(content))
+    }
+    
+    func testTwoDifferentRoutes() {
+        let route = WellKnownContentRoute()
+        let anotherRoute = SomeOtherWellKnownContentRoute()
+        let anotherRouteContent = SomeOtherWellKnownContent()
+        let router = ContentRouter()
+        router.add(route)
+        router.add(anotherRoute)
+        
+        XCTAssertNoThrow(try router.route(anotherRouteContent))
+        
+        XCTAssertEqual(anotherRouteContent, anotherRoute.routedContent)
     }
 
 }
