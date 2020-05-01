@@ -73,46 +73,46 @@ class ContentRouterTests: XCTestCase {
         XCTAssertEqual(content, route.routedContent)
     }
     
-    // MARK: - Stub routes and content types for test
+}
+
+// MARK: - Stub routes and content types for test
+
+private struct WellKnownContent: ContentRepresentation {
     
-    struct WellKnownContent: ContentRepresentation {
-        
-    }
+}
 
-    struct SomeOtherWellKnownContent: ContentRepresentation {
-        
-    }
+private struct SomeOtherWellKnownContent: ContentRepresentation {
+    
+}
 
-    struct WrapperContent<Content>: ContentRepresentation where Content: ContentRepresentation {
-        
-        var inner: Content
-        
-        func describe(to recipient: ContentRepresentationRecipient) {
-            recipient.receive(inner)
-        }
-        
+private struct WrapperContent<Content>: ContentRepresentation where Content: ContentRepresentation {
+    
+    var inner: Content
+    
+    func describe(to recipient: ContentRepresentationRecipient) {
+        recipient.receive(inner)
     }
+    
+}
 
-    class WellKnownContentRoute: ContentRoute {
-        
-        typealias Content = WellKnownContent
-        
-        private(set) var routedContent: WellKnownContent?
-        func route(_ content: WellKnownContent) {
-            routedContent = content
-        }
-        
+private class WellKnownContentRoute: ContentRoute {
+    
+    typealias Content = WellKnownContent
+    
+    private(set) var routedContent: WellKnownContent?
+    func route(_ content: WellKnownContent) {
+        routedContent = content
     }
+    
+}
 
-    class SomeOtherWellKnownContentRoute: ContentRoute {
-        
-        typealias Content = SomeOtherWellKnownContent
-        
-        private(set) var routedContent: SomeOtherWellKnownContent?
-        func route(_ content: SomeOtherWellKnownContent) {
-            routedContent = content
-        }
-        
+private class SomeOtherWellKnownContentRoute: ContentRoute {
+    
+    typealias Content = SomeOtherWellKnownContent
+    
+    private(set) var routedContent: SomeOtherWellKnownContent?
+    func route(_ content: SomeOtherWellKnownContent) {
+        routedContent = content
     }
-
+    
 }
