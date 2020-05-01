@@ -858,6 +858,8 @@
 		CAA28883245C77C70090B663 /* MessageContentRouteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA28882245C77C70090B663 /* MessageContentRouteTests.swift */; };
 		CAA28886245C79390090B663 /* MessageContentRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA28885245C79390090B663 /* MessageContentRepresentation.swift */; };
 		CAA28888245C79490090B663 /* MessageContentRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA28887245C79490090B663 /* MessageContentRoute.swift */; };
+		CAA2888A245C7AB50090B663 /* NavigateFromMessagesToMessageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA28889245C7AB50090B663 /* NavigateFromMessagesToMessageTests.swift */; };
+		CAA2888C245C7C120090B663 /* NavigateFromMessagesToMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA2888B245C7C120090B663 /* NavigateFromMessagesToMessage.swift */; };
 		CAA39E0820051B5C00F2F3D3 /* LocalizedStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA39E0720051B5C00F2F3D3 /* LocalizedStrings.swift */; };
 		CAA39E0920051C6C00F2F3D3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CAA39E0B20051C6C00F2F3D3 /* Localizable.strings */; };
 		CAA4BA6721EE7AB600DE2C88 /* MessagesModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA4BA6621EE7AB600DE2C88 /* MessagesModule.swift */; };
@@ -2013,6 +2015,8 @@
 		CAA28882245C77C70090B663 /* MessageContentRouteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageContentRouteTests.swift; sourceTree = "<group>"; };
 		CAA28885245C79390090B663 /* MessageContentRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageContentRepresentation.swift; sourceTree = "<group>"; };
 		CAA28887245C79490090B663 /* MessageContentRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageContentRoute.swift; sourceTree = "<group>"; };
+		CAA28889245C7AB50090B663 /* NavigateFromMessagesToMessageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateFromMessagesToMessageTests.swift; sourceTree = "<group>"; };
+		CAA2888B245C7C120090B663 /* NavigateFromMessagesToMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateFromMessagesToMessage.swift; sourceTree = "<group>"; };
 		CAA39E0720051B5C00F2F3D3 /* LocalizedStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedStrings.swift; sourceTree = "<group>"; };
 		CAA4BA6621EE7AB600DE2C88 /* MessagesModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesModule.swift; sourceTree = "<group>"; };
 		CAA6060620EEB4F200075A4E /* UserNotificationsScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationsScheduler.swift; sourceTree = "<group>"; };
@@ -5092,6 +5096,7 @@
 			isa = PBXGroup;
 			children = (
 				CAA2887A245C6D190090B663 /* MessagesContentRouteTests.swift */,
+				CAA28889245C7AB50090B663 /* NavigateFromMessagesToMessageTests.swift */,
 			);
 			path = Messages;
 			sourceTree = "<group>";
@@ -5101,6 +5106,7 @@
 			children = (
 				CAA2887D245C72CA0090B663 /* MessagesContentRepresentation.swift */,
 				CAA2887F245C72D60090B663 /* MessagesContentRoute.swift */,
+				CAA2888B245C7C120090B663 /* NavigateFromMessagesToMessage.swift */,
 			);
 			path = Messages;
 			sourceTree = "<group>";
@@ -6620,6 +6626,7 @@
 				CA152EC62263C5B900212742 /* EventFeedbackViewController.swift in Sources */,
 				CA29EF75203462E300672911 /* KnowledgeListEntryTableViewCell.swift in Sources */,
 				CA82DB5222D6630D00467C2F /* ShareService.swift in Sources */,
+				CAA2888C245C7C120090B663 /* NavigateFromMessagesToMessage.swift in Sources */,
 				CA8A73C722BD101E007A5201 /* AdditionalServicesModuleProviding.swift in Sources */,
 				CA1B6F2020DB84E400ADF414 /* DealerDetailInteractor.swift in Sources */,
 				CA66C0202124CC6000F87AFE /* AppStateProviding.swift in Sources */,
@@ -7162,6 +7169,7 @@
 				CAF3C74E1F9FC72C0008F027 /* StubNewsSceneFactory.swift in Sources */,
 				CAD4F759245C3EBC0036ADAF /* EventContentRouteTests.swift in Sources */,
 				CAD3BDB72059500400C91E6E /* WhenUserSelectsKnowledgeLink.swift in Sources */,
+				CAA2888A245C7AB50090B663 /* NavigateFromMessagesToMessageTests.swift in Sources */,
 				CA27258421139A1D004C6D0A /* SchedulePresenterSponsorIconBindingTests.swift in Sources */,
 				CA00AE5620D1710300C2FBB0 /* WhenBindingEventGroup_SchedulePresenterShould.swift in Sources */,
 				CAD4F756245C3D400036ADAF /* CapturingContentWireframe.swift in Sources */,
