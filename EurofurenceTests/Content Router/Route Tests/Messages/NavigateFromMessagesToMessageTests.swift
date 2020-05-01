@@ -6,10 +6,10 @@ class NavigateFromMessagesToMessageTests: XCTestCase {
     
     func testRoutesToMessageContent() {
         let router = FakeContentRouter()
-        let presentingViewController = CapturingViewController()
+        let modalWireframe = CapturingModalWireframe()
         let navigator = NavigateFromMessagesToMessage(
             router: router,
-            presentingViewController: presentingViewController
+            modalWireframe: modalWireframe
         )
         
         let message = MessageIdentifier.random
@@ -22,17 +22,17 @@ class NavigateFromMessagesToMessageTests: XCTestCase {
     
     func testShowLogoutAlertWithExpectedText() {
         let router = FakeContentRouter()
-        let presentingViewController = CapturingViewController()
+        let modalWireframe = CapturingModalWireframe()
         let navigator = NavigateFromMessagesToMessage(
             router: router,
-            presentingViewController: presentingViewController
+            modalWireframe: modalWireframe
         )
         
         navigator.showLogoutAlert(presentedHandler: { (_) in
             
         })
 
-        let presentedAlertController = presentingViewController.capturedPresentedViewController as? UIAlertController
+        let presentedAlertController = modalWireframe.presentedModalContentController as? UIAlertController
 
         XCTAssertEqual(.loggingOut, presentedAlertController?.title)
         XCTAssertEqual(.loggingOutAlertDetail, presentedAlertController?.message)
@@ -40,15 +40,15 @@ class NavigateFromMessagesToMessageTests: XCTestCase {
 
     func testShowLogoutErrorAlertWithExpectedText() {
         let router = FakeContentRouter()
-        let presentingViewController = CapturingViewController()
+        let modalWireframe = CapturingModalWireframe()
         let navigator = NavigateFromMessagesToMessage(
             router: router,
-            presentingViewController: presentingViewController
+            modalWireframe: modalWireframe
         )
         
         navigator.showLogoutFailedAlert()
         
-        let presentedAlertController = presentingViewController.capturedPresentedViewController as? UIAlertController
+        let presentedAlertController = modalWireframe.presentedModalContentController as? UIAlertController
 
         XCTAssertEqual(.logoutFailed, presentedAlertController?.title)
         XCTAssertEqual(.logoutFailedAlertDetail, presentedAlertController?.message)

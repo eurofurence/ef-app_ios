@@ -38,8 +38,8 @@ class WindowModalWireframe: ModalWireframe {
         self.window = window
     }
     
-    func presentModalContentController(_ viewController: UIViewController) {
-        window.rootViewController?.present(viewController, animated: true)
+    func presentModalContentController(_ viewController: UIViewController, completion: (() -> Void)?) {
+        window.rootViewController?.present(viewController, animated: true, completion: completion)
     }
     
 }
@@ -141,6 +141,7 @@ class ApplicationStack {
         RouterConfigurator(
             router: router,
             contentWireframe: contentWireframe,
+            modalWireframe: modalWireframe,
             moduleRepository: moduleRepository
         ).configureRoutes()
     }
@@ -149,6 +150,7 @@ class ApplicationStack {
         
         var router: MutableContentRouter
         var contentWireframe: ContentWireframe
+        var modalWireframe: ModalWireframe
         var moduleRepository: ApplicationModuleRepository
         
         func configureRoutes() {
@@ -211,7 +213,7 @@ class ApplicationStack {
                 contentWireframe: contentWireframe,
                 delegate: NavigateFromMessagesToMessage(
                     router: router,
-                    presentingViewController: UIViewController() // TODO: Convert to use modal presentation
+                    modalWireframe: modalWireframe // TODO: Convert to use modal presentation
                 )
             ))
         }

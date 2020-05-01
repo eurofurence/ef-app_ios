@@ -4,11 +4,11 @@ import UIKit
 public struct NavigateFromMessagesToMessage: MessagesModuleDelegate {
     
     private let router: ContentRouter
-    private let presentingViewController: UIViewController
+    private let modalWireframe: ModalWireframe
     
-    public init(router: ContentRouter, presentingViewController: UIViewController) {
+    public init(router: ContentRouter, modalWireframe: ModalWireframe) {
         self.router = router
-        self.presentingViewController = presentingViewController
+        self.modalWireframe = modalWireframe
     }
     
     public func messagesModuleDidRequestResolutionForUser(completionHandler: @escaping (Bool) -> Void) {
@@ -25,9 +25,8 @@ public struct NavigateFromMessagesToMessage: MessagesModuleDelegate {
     
     public func showLogoutAlert(presentedHandler: @escaping (@escaping () -> Void) -> Void) {
         let alert = UIAlertController(title: .loggingOut, message: .loggingOutAlertDetail, preferredStyle: .alert)
-        presentingViewController.present(
+        modalWireframe.presentModalContentController(
             alert,
-            animated: true,
             completion: { presentedHandler({ alert.dismiss(animated: true) }) }
         )
     }
@@ -40,7 +39,7 @@ public struct NavigateFromMessagesToMessage: MessagesModuleDelegate {
         )
         
         alert.addAction(UIAlertAction(title: .ok, style: .cancel))
-        presentingViewController.present(alert, animated: true)
+        modalWireframe.presentModalContentController(alert)
     }
     
 }
