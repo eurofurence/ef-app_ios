@@ -964,6 +964,7 @@
 		CAD3BDC2205AA7BE00C91E6E /* WebModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDC1205AA7BE00C91E6E /* WebModuleProviding.swift */; };
 		CAD3BDC7205FE88900C91E6E /* SafariWebModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDC6205FE88900C91E6E /* SafariWebModuleProviding.swift */; };
 		CAD3BDCB2061394700C91E6E /* AppURLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDCA2061394700C91E6E /* AppURLOpener.swift */; };
+		CAD4F739245C2E670036ADAF /* ContentRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD4F738245C2E670036ADAF /* ContentRouterTests.swift */; };
 		CAD55932229AEF760068DD46 /* NotificationResponseProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD55931229AEF760068DD46 /* NotificationResponseProcessor.swift */; };
 		CAD55936229AEFA80068DD46 /* CapturingNotificationResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD55935229AEFA80068DD46 /* CapturingNotificationResponseHandler.swift */; };
 		CAD55938229AEFC50068DD46 /* NotificationResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD55937229AEFC50068DD46 /* NotificationResponseHandler.swift */; };
@@ -2080,6 +2081,7 @@
 		CAD3BDC1205AA7BE00C91E6E /* WebModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebModuleProviding.swift; sourceTree = "<group>"; };
 		CAD3BDC6205FE88900C91E6E /* SafariWebModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebModuleProviding.swift; sourceTree = "<group>"; };
 		CAD3BDCA2061394700C91E6E /* AppURLOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppURLOpener.swift; sourceTree = "<group>"; };
+		CAD4F738245C2E670036ADAF /* ContentRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentRouterTests.swift; sourceTree = "<group>"; };
 		CAD55931229AEF760068DD46 /* NotificationResponseProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationResponseProcessor.swift; sourceTree = "<group>"; };
 		CAD55935229AEFA80068DD46 /* CapturingNotificationResponseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingNotificationResponseHandler.swift; sourceTree = "<group>"; };
 		CAD55937229AEFC50068DD46 /* NotificationResponseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationResponseHandler.swift; sourceTree = "<group>"; };
@@ -2623,6 +2625,7 @@
 				78455B3B1F116E24005BE2D7 /* UserDefaultsTutorialStateProvider.swift */,
 				7820A6F51F16B123004C0FB5 /* UserDefaultsUserAcknowledgedPushPermissionsRequestStateProvidingTests.swift */,
 				CA630BCC229F10A900754C27 /* Activity */,
+				CAD4F737245C2E580036ADAF /* Content Router */,
 				CA39851422C7A50600117249 /* Convention Start Date Repository */,
 				CAF7055F1F82CBC800A9FEA2 /* Director */,
 				781A94441F1A1DCE002DE70F /* Firebase Notification Registration */,
@@ -5432,6 +5435,14 @@
 			path = Web;
 			sourceTree = "<group>";
 		};
+		CAD4F737245C2E580036ADAF /* Content Router */ = {
+			isa = PBXGroup;
+			children = (
+				CAD4F738245C2E670036ADAF /* ContentRouterTests.swift */,
+			);
+			path = "Content Router";
+			sourceTree = "<group>";
+		};
 		CAD5592E229AE3570068DD46 /* Notification Response Handler */ = {
 			isa = PBXGroup;
 			children = (
@@ -6827,6 +6838,7 @@
 				CA1B6F2620DB887100ADF414 /* FakeDealerDetailViewModel.swift in Sources */,
 				7820A6E51F140056004C0FB5 /* CapturingAlertRouter.swift in Sources */,
 				CA8276B0204EBF0E006A7419 /* ApplicationPreloadingServiceTests.swift in Sources */,
+				CAD4F739245C2E670036ADAF /* ContentRouterTests.swift in Sources */,
 				CAE8879522690358001464C1 /* WhenEventIsNotAcceptingFeedback_EventDetailInteractorShould.swift in Sources */,
 				CA36A4DA20DAE4CF00EE6537 /* WhenSceneSelectsSearchResult_DealersPresenterShould.swift in Sources */,
 				CA36A48520D9243E00EE6537 /* WhenBindingDealerGroupHeading_DealersPresenterShould.swift in Sources */,
