@@ -849,6 +849,9 @@
 		CAA10FE622C75CA800689A32 /* MultiStepFormTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA10FE522C75CA800689A32 /* MultiStepFormTextField.swift */; };
 		CAA28870245C64940090B663 /* AnyContentRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA2886F245C64940090B663 /* AnyContentRepresentation.swift */; };
 		CAA28872245C64B90090B663 /* CapturingContentRepresentationRecipient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA28871245C64B90090B663 /* CapturingContentRepresentationRecipient.swift */; };
+		CAA28874245C66ED0090B663 /* NavigateFromAnnouncementsToAnnouncementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA28873245C66ED0090B663 /* NavigateFromAnnouncementsToAnnouncementTests.swift */; };
+		CAA28876245C68F10090B663 /* NavigateFromAnnouncementsToAnnouncement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA28875245C68F10090B663 /* NavigateFromAnnouncementsToAnnouncement.swift */; };
+		CAA28878245C69040090B663 /* FakeContentRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA28877245C69040090B663 /* FakeContentRouter.swift */; };
 		CAA39E0820051B5C00F2F3D3 /* LocalizedStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA39E0720051B5C00F2F3D3 /* LocalizedStrings.swift */; };
 		CAA39E0920051C6C00F2F3D3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CAA39E0B20051C6C00F2F3D3 /* Localizable.strings */; };
 		CAA4BA6721EE7AB600DE2C88 /* MessagesModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA4BA6621EE7AB600DE2C88 /* MessagesModule.swift */; };
@@ -1995,6 +1998,9 @@
 		CAA10FE522C75CA800689A32 /* MultiStepFormTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiStepFormTextField.swift; sourceTree = "<group>"; };
 		CAA2886F245C64940090B663 /* AnyContentRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyContentRepresentation.swift; sourceTree = "<group>"; };
 		CAA28871245C64B90090B663 /* CapturingContentRepresentationRecipient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingContentRepresentationRecipient.swift; sourceTree = "<group>"; };
+		CAA28873245C66ED0090B663 /* NavigateFromAnnouncementsToAnnouncementTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateFromAnnouncementsToAnnouncementTests.swift; sourceTree = "<group>"; };
+		CAA28875245C68F10090B663 /* NavigateFromAnnouncementsToAnnouncement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateFromAnnouncementsToAnnouncement.swift; sourceTree = "<group>"; };
+		CAA28877245C69040090B663 /* FakeContentRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeContentRouter.swift; sourceTree = "<group>"; };
 		CAA39E0720051B5C00F2F3D3 /* LocalizedStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedStrings.swift; sourceTree = "<group>"; };
 		CAA4BA6621EE7AB600DE2C88 /* MessagesModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesModule.swift; sourceTree = "<group>"; };
 		CAA6060620EEB4F200075A4E /* UserNotificationsScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationsScheduler.swift; sourceTree = "<group>"; };
@@ -5578,6 +5584,7 @@
 				CAA28871245C64B90090B663 /* CapturingContentRepresentationRecipient.swift */,
 				CAD4F755245C3D400036ADAF /* CapturingContentWireframe.swift */,
 				CAD4F771245C476C0036ADAF /* CapturingModalWireframe.swift */,
+				CAA28877245C69040090B663 /* FakeContentRouter.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -5637,6 +5644,7 @@
 			isa = PBXGroup;
 			children = (
 				CAD4F774245C59930036ADAF /* AnnouncementsContentRouteTests.swift */,
+				CAA28873245C66ED0090B663 /* NavigateFromAnnouncementsToAnnouncementTests.swift */,
 			);
 			path = Announcements;
 			sourceTree = "<group>";
@@ -5646,6 +5654,7 @@
 			children = (
 				CAD4F779245C5BB40036ADAF /* AnnouncementsContentRepresentation.swift */,
 				CAD4F777245C5B9F0036ADAF /* AnnouncementsContentRoute.swift */,
+				CAA28875245C68F10090B663 /* NavigateFromAnnouncementsToAnnouncement.swift */,
 			);
 			path = Announcements;
 			sourceTree = "<group>";
@@ -6536,6 +6545,7 @@
 				CACF1E6620AE2F9800D904B5 /* EventDetailViewController.swift in Sources */,
 				CA1ECB491FE6E8100076083A /* MessageComponentBinder.swift in Sources */,
 				CA8E7EFC1FB0932700F0BF10 /* StoryboardNewsSceneFactory.swift in Sources */,
+				CAA28876245C68F10090B663 /* NavigateFromAnnouncementsToAnnouncement.swift in Sources */,
 				9A861EB71F25550700B75A8C /* SplashScene.swift in Sources */,
 				CAF81C7320DDA9D100898C52 /* DefaultDealerDetailInteractor.swift in Sources */,
 				CA6A8DB020E2CF97007536CD /* DefaultMapsInteractor.swift in Sources */,
@@ -7040,6 +7050,7 @@
 				CA7A298B22AD2CE8002AD939 /* WhenUserAcknowledgesTheyWantToDiscardFeedbackInput_EventFeedbackPresenterShould.swift in Sources */,
 				CA6A8E0520E56BAA007536CD /* WhenShowingMapContents_ForAlternativeMapPosition_MapDetailInteractorShould.swift in Sources */,
 				CA25A7FF20E6426C00875891 /* WhenMapsDetailModuleSelectsDealer_DirectorShould.swift in Sources */,
+				CAA28874245C66ED0090B663 /* NavigateFromAnnouncementsToAnnouncementTests.swift in Sources */,
 				CA987FC122E5126D006338FB /* LoginPresenterTestBuilder.swift in Sources */,
 				CA44C360211B1013003C1C4E /* WhenPreparingViewModel_ForDealersDenEvent_EventDetailInteractorShould.swift in Sources */,
 				CAF81C5E20DD91B700898C52 /* WhenBindingAboutTheArtistComponent_DealerDetailPresenterShould.swift in Sources */,
@@ -7274,6 +7285,7 @@
 				CA73AEDD201A0823004E77BF /* CapturingKnowledgeListScene.swift in Sources */,
 				CA62134C221F276000E88880 /* ScheduleEventViewModelAssertion.swift in Sources */,
 				CA36A47520D84DD600EE6537 /* CapturingDealerComponent.swift in Sources */,
+				CAA28878245C69040090B663 /* FakeContentRouter.swift in Sources */,
 				CA2CB5AF22F5A26300D6707D /* WhenUserTapsShareButton_KnowledgeDetailPresenterShould.swift in Sources */,
 				CA60C002207F7D2100697566 /* WhenNewsSceneDidLoad.swift in Sources */,
 				CA63758C208CE06100536BE2 /* WhenBuildingScheduleModule.swift in Sources */,
