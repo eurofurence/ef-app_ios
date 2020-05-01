@@ -860,6 +860,8 @@
 		CAA28888245C79490090B663 /* MessageContentRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA28887245C79490090B663 /* MessageContentRoute.swift */; };
 		CAA2888A245C7AB50090B663 /* NavigateFromMessagesToMessageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA28889245C7AB50090B663 /* NavigateFromMessagesToMessageTests.swift */; };
 		CAA2888C245C7C120090B663 /* NavigateFromMessagesToMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA2888B245C7C120090B663 /* NavigateFromMessagesToMessage.swift */; };
+		CAA28890245C9A7F0090B663 /* NewsSubrouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA2888F245C9A7F0090B663 /* NewsSubrouterTests.swift */; };
+		CAA28892245C9D570090B663 /* NewsSubrouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA28891245C9D570090B663 /* NewsSubrouter.swift */; };
 		CAA39E0820051B5C00F2F3D3 /* LocalizedStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA39E0720051B5C00F2F3D3 /* LocalizedStrings.swift */; };
 		CAA39E0920051C6C00F2F3D3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CAA39E0B20051C6C00F2F3D3 /* Localizable.strings */; };
 		CAA4BA6721EE7AB600DE2C88 /* MessagesModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA4BA6621EE7AB600DE2C88 /* MessagesModule.swift */; };
@@ -2017,6 +2019,8 @@
 		CAA28887245C79490090B663 /* MessageContentRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageContentRoute.swift; sourceTree = "<group>"; };
 		CAA28889245C7AB50090B663 /* NavigateFromMessagesToMessageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateFromMessagesToMessageTests.swift; sourceTree = "<group>"; };
 		CAA2888B245C7C120090B663 /* NavigateFromMessagesToMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateFromMessagesToMessage.swift; sourceTree = "<group>"; };
+		CAA2888F245C9A7F0090B663 /* NewsSubrouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSubrouterTests.swift; sourceTree = "<group>"; };
+		CAA28891245C9D570090B663 /* NewsSubrouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSubrouter.swift; sourceTree = "<group>"; };
 		CAA39E0720051B5C00F2F3D3 /* LocalizedStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedStrings.swift; sourceTree = "<group>"; };
 		CAA4BA6621EE7AB600DE2C88 /* MessagesModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesModule.swift; sourceTree = "<group>"; };
 		CAA6060620EEB4F200075A4E /* UserNotificationsScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationsScheduler.swift; sourceTree = "<group>"; };
@@ -5128,6 +5132,22 @@
 			path = Message;
 			sourceTree = "<group>";
 		};
+		CAA2888D245C9A630090B663 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				CAA28891245C9D570090B663 /* NewsSubrouter.swift */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
+		CAA2888E245C9A710090B663 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				CAA2888F245C9A7F0090B663 /* NewsSubrouterTests.swift */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
 		CAA6060820EEC01C00075A4E /* Debug */ = {
 			isa = PBXGroup;
 			children = (
@@ -5590,6 +5610,7 @@
 				CAD4F76A245C472B0036ADAF /* Event Feedback */,
 				CAA28884245C79320090B663 /* Message */,
 				CAA2887C245C72C20090B663 /* Messages */,
+				CAA2888D245C9A630090B663 /* News */,
 			);
 			path = Routes;
 			sourceTree = "<group>";
@@ -5630,6 +5651,7 @@
 				CAD4F767245C45A90036ADAF /* Event Feedback */,
 				CAA28881245C77B90090B663 /* Message */,
 				CAA28879245C6D090090B663 /* Messages */,
+				CAA2888E245C9A710090B663 /* News */,
 			);
 			path = "Route Tests";
 			sourceTree = "<group>";
@@ -6875,6 +6897,7 @@
 				CA27619A20E01D0F000E52AC /* CollectThemAllModuleProviding.swift in Sources */,
 				CA4010A12110854E0056E16C /* DefaultKnowledgeGroupEntriesInteractor.swift in Sources */,
 				CAE27B501F857A99005FDE39 /* PreloadModule.swift in Sources */,
+				CAA28892245C9D570090B663 /* NewsSubrouter.swift in Sources */,
 				CA3ABA09229C7B6E0045A35B /* Dictionary+Extensions.swift in Sources */,
 				CA152EF422665E7000212742 /* StoryboardEventFeedbackSceneFactory.swift in Sources */,
 				CA6A8D9220E2C554007536CD /* MapCollectionViewCell.swift in Sources */,
@@ -7133,6 +7156,7 @@
 				CA60BFE62078E5F700697566 /* CapturingPrivateMessagesService.swift in Sources */,
 				CA6EC4792051CAFA00402894 /* WhenBuildingKnowledgeDetailModule.swift in Sources */,
 				CAA7DE3722EF900400A6984D /* WhenScheduleChanges_ScheduleViewModelShould.swift in Sources */,
+				CAA28890245C9A7F0090B663 /* NewsSubrouterTests.swift in Sources */,
 				CAC1E1311F50413500195513 /* CapturingNewsScene.swift in Sources */,
 				CA6A8D7820E264D6007536CD /* MapsPresenterTestBuilder.swift in Sources */,
 				CA250DD420D6E28B00E7513C /* WhenBindingEventFromSearchResult_SchedulePresenterShould.swift in Sources */,
