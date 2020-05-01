@@ -1,3 +1,5 @@
+import UIKit.UIViewController
+
 public struct EventFeedbackContentRoute {
     
     private let eventFeedbackFactory: EventFeedbackModuleProviding
@@ -17,18 +19,23 @@ extension EventFeedbackContentRoute: ContentRoute {
     public typealias Content = EventFeedbackContentRepresentation
     
     public func route(_ content: EventFeedbackContentRepresentation) {
+        let delegate = DismissControllerWhenCancellingFeedback()
         let contentController = eventFeedbackFactory.makeEventFeedbackModule(
             for: content.identifier,
-            delegate: DummyDelegate()
+            delegate: delegate
         )
+        
+        delegate.viewController = contentController
         
         modalWireframe.presentModalContentController(contentController)
     }
     
-    private struct DummyDelegate: EventFeedbackModuleDelegate {
+    private class DismissControllerWhenCancellingFeedback: EventFeedbackModuleDelegate {
+        
+        var viewController: UIViewController?
         
         func eventFeedbackCancelled() {
-            
+            viewController?.dismiss(animated: true)
         }
         
     }

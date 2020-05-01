@@ -94,7 +94,7 @@ extension StubKnowledgeGroupEntriesModuleProviding {
 
 class StubEventFeedbackModuleProviding: EventFeedbackModuleProviding {
     
-    let stubInterface = UIViewController()
+    let stubInterface = CapturingViewController()
     private(set) var eventToLeaveFeedbackFor: EventIdentifier?
     private var delegate: EventFeedbackModuleDelegate?
     func makeEventFeedbackModule(for event: EventIdentifier, delegate: EventFeedbackModuleDelegate) -> UIViewController {
