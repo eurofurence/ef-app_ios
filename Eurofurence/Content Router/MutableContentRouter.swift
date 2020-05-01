@@ -12,7 +12,8 @@ public class MutableContentRouter: ContentRouter {
         routeRegistry.add(route)
     }
     
-    public func route<Content>(_ content: Content) throws where Content: ContentRepresentation {
+    public func route<Content>(_ content: Content) throws
+        where Content: ContentRepresentationDescribing {
         let executor = ExecuteRoute(routeRegistry: routeRegistry)
         content.describe(to: executor)
         
