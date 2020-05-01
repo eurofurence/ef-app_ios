@@ -1,6 +1,6 @@
 import EurofurenceModel
 
-protocol EventDetailModuleDelegate {
+public protocol EventDetailModuleDelegate {
     
     func eventDetailModuleDidRequestPresentationToLeaveFeedback(for event: EventIdentifier)
     

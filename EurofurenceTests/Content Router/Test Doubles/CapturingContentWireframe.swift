@@ -8,4 +8,9 @@ class CapturingContentWireframe: ContentWireframe {
         presentedNewsContentController = viewController
     }
     
+    private(set) var presentedDetailContentController: UIViewController?
+    func presentDetailContentController(_ viewController: UIViewController) {
+        presentedDetailContentController = viewController
+    }
+    
 }

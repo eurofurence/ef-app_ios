@@ -976,6 +976,9 @@
 		CAD4F74F245C3CD70036ADAF /* AnnouncementContentRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD4F74E245C3CD70036ADAF /* AnnouncementContentRoute.swift */; };
 		CAD4F752245C3D1D0036ADAF /* ContentWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD4F751245C3D1D0036ADAF /* ContentWireframe.swift */; };
 		CAD4F756245C3D400036ADAF /* CapturingContentWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD4F755245C3D400036ADAF /* CapturingContentWireframe.swift */; };
+		CAD4F759245C3EBC0036ADAF /* EventContentRouteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD4F758245C3EBB0036ADAF /* EventContentRouteTests.swift */; };
+		CAD4F75C245C41590036ADAF /* EventContentRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD4F75B245C41590036ADAF /* EventContentRepresentation.swift */; };
+		CAD4F75E245C41780036ADAF /* EventContentRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD4F75D245C41780036ADAF /* EventContentRoute.swift */; };
 		CAD55932229AEF760068DD46 /* NotificationResponseProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD55931229AEF760068DD46 /* NotificationResponseProcessor.swift */; };
 		CAD55936229AEFA80068DD46 /* CapturingNotificationResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD55935229AEFA80068DD46 /* CapturingNotificationResponseHandler.swift */; };
 		CAD55938229AEFC50068DD46 /* NotificationResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD55937229AEFC50068DD46 /* NotificationResponseHandler.swift */; };
@@ -2104,6 +2107,9 @@
 		CAD4F74E245C3CD70036ADAF /* AnnouncementContentRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementContentRoute.swift; sourceTree = "<group>"; };
 		CAD4F751245C3D1D0036ADAF /* ContentWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentWireframe.swift; sourceTree = "<group>"; };
 		CAD4F755245C3D400036ADAF /* CapturingContentWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingContentWireframe.swift; sourceTree = "<group>"; };
+		CAD4F758245C3EBB0036ADAF /* EventContentRouteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventContentRouteTests.swift; sourceTree = "<group>"; };
+		CAD4F75B245C41590036ADAF /* EventContentRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventContentRepresentation.swift; sourceTree = "<group>"; };
+		CAD4F75D245C41780036ADAF /* EventContentRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventContentRoute.swift; sourceTree = "<group>"; };
 		CAD55931229AEF760068DD46 /* NotificationResponseProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationResponseProcessor.swift; sourceTree = "<group>"; };
 		CAD55935229AEFA80068DD46 /* CapturingNotificationResponseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingNotificationResponseHandler.swift; sourceTree = "<group>"; };
 		CAD55937229AEFC50068DD46 /* NotificationResponseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationResponseHandler.swift; sourceTree = "<group>"; };
@@ -5486,6 +5492,7 @@
 		CAD4F747245C3A3B0036ADAF /* Routes */ = {
 			isa = PBXGroup;
 			children = (
+				CAD4F75A245C41510036ADAF /* Event */,
 				CAD4F748245C3A460036ADAF /* Announcement */,
 			);
 			path = Routes;
@@ -5520,6 +5527,7 @@
 			isa = PBXGroup;
 			children = (
 				CAD4F749245C3A4C0036ADAF /* Announcements */,
+				CAD4F757245C3E9C0036ADAF /* Events */,
 			);
 			path = "Route Tests";
 			sourceTree = "<group>";
@@ -5530,6 +5538,23 @@
 				CAD4F755245C3D400036ADAF /* CapturingContentWireframe.swift */,
 			);
 			path = "Test Doubles";
+			sourceTree = "<group>";
+		};
+		CAD4F757245C3E9C0036ADAF /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				CAD4F758245C3EBB0036ADAF /* EventContentRouteTests.swift */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		CAD4F75A245C41510036ADAF /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				CAD4F75B245C41590036ADAF /* EventContentRepresentation.swift */,
+				CAD4F75D245C41780036ADAF /* EventContentRoute.swift */,
+			);
+			path = Event;
 			sourceTree = "<group>";
 		};
 		CAD5592E229AE3570068DD46 /* Notification Response Handler */ = {
@@ -6568,6 +6593,7 @@
 				CA401079210FAF040056E16C /* KnowledgeGroupEntriesScene.swift in Sources */,
 				CAD55932229AEF760068DD46 /* NotificationResponseProcessor.swift in Sources */,
 				9A861EA91F2554BE00B75A8C /* InitiateDownloadTutorialPagePresenter.swift in Sources */,
+				CAD4F75C245C41590036ADAF /* EventContentRepresentation.swift in Sources */,
 				CAEAEBF71FDEB61100C0EE7C /* MessageDetailModuleBuilder.swift in Sources */,
 				CA79924722451A4800DF1F84 /* NotificationScheduler.swift in Sources */,
 				CA89CBAD207F802400570D54 /* NewsInteractor.swift in Sources */,
@@ -6662,6 +6688,7 @@
 				CA728455209D0576007D912A /* AnnouncementDetailSceneFactory.swift in Sources */,
 				CA987FCC22E63A2C006338FB /* Interaction.swift in Sources */,
 				CA1B6F2920DB89FE00ADF414 /* DealerDetailPresenter.swift in Sources */,
+				CAD4F75E245C41780036ADAF /* EventContentRoute.swift in Sources */,
 				CABA438D1FBCDBDF009CB5B0 /* LoginPresenter.swift in Sources */,
 				CA6375A8208E011C00536BE2 /* DealersModuleBuilder.swift in Sources */,
 				CA08B0FB22EDF6BE00FDAAA7 /* EurofurenceDateIntervalFormatter.swift in Sources */,
@@ -6961,6 +6988,7 @@
 				CA8240A521249A80007E4A70 /* CapturingReviewPromptAction.swift in Sources */,
 				CA82DB5422D6631F00467C2F /* CapturingShareService.swift in Sources */,
 				CAF3C74E1F9FC72C0008F027 /* StubNewsSceneFactory.swift in Sources */,
+				CAD4F759245C3EBC0036ADAF /* EventContentRouteTests.swift in Sources */,
 				CAD3BDB72059500400C91E6E /* WhenUserSelectsKnowledgeLink.swift in Sources */,
 				CA27258421139A1D004C6D0A /* SchedulePresenterSponsorIconBindingTests.swift in Sources */,
 				CA00AE5620D1710300C2FBB0 /* WhenBindingEventGroup_SchedulePresenterShould.swift in Sources */,
