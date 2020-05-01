@@ -24,17 +24,20 @@ struct AnyContentRoute {
 class ContentRouter {
     
     private var route: AnyContentRoute?
+    private var routes = [AnyContentRoute]()
     
     func add<Route>(_ route: Route) where Route: ContentRoute {
-        self.route = AnyContentRoute(route)
+        routes.append(AnyContentRoute(route))
     }
     
     func route(_ content: Any) throws {
-        if let route = route, route.route(content) {
-            
-        } else {
-            throw RouteMissing(content: content)
+        for route in routes {
+            if route.route(content) {
+                return
+            }
         }
+        
+        throw RouteMissing(content: content)
     }
     
     struct RouteMissing: Error {
@@ -114,6 +117,19 @@ class ContentRouterTests: XCTestCase {
         XCTAssertNoThrow(try router.route(anotherRouteContent))
         
         XCTAssertEqual(anotherRouteContent, anotherRoute.routedContent)
+    }
+    
+    func testTwoDifferentRoutes_InvokingFirstRoute() {
+        let route = WellKnownContentRoute()
+        let anotherRoute = SomeOtherWellKnownContentRoute()
+        let routeContent = WellKnownContent()
+        let router = ContentRouter()
+        router.add(route)
+        router.add(anotherRoute)
+        
+        XCTAssertNoThrow(try router.route(routeContent))
+        
+        XCTAssertEqual(routeContent, route.routedContent)
     }
 
 }
