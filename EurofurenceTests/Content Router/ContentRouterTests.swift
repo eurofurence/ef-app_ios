@@ -27,13 +27,33 @@ class ContentRouter {
         routes[routeIdentifier] = AnyContentRoute(route)
     }
     
-    func route(_ content: Any) throws {
-        let routeIdentifier = ObjectIdentifier(type(of: content))
-        if let route = routes[routeIdentifier] {
-            route.route(content)
-        } else {
-            throw RouteMissing(content: content)
+    func route<Content>(_ content: Content) throws where Content: ContentRepresentation {
+        let executor = ExecuteRoute(routes: routes)
+        content.describe(to: executor)
+        
+        if let error = executor.error {
+            throw error
         }
+    }
+    
+    class ExecuteRoute: ContentRepresentationRecipient {
+        
+        private let routes: [ObjectIdentifier: AnyContentRoute]
+        private(set) var error: Error?
+        
+        init(routes: [ObjectIdentifier: AnyContentRoute]) {
+            self.routes = routes
+        }
+        
+        func receive<Content>(_ content: Content) where Content: ContentRepresentation {
+            let routeIdentifier = ObjectIdentifier(type(of: content))
+            if let route = routes[routeIdentifier] {
+                route.route(content)
+            } else {
+                error = RouteMissing(content: content)
+            }
+        }
+        
     }
     
     struct RouteMissing: Error {
@@ -46,17 +66,47 @@ class ContentRouter {
 
 protocol ContentRoute {
     
-    associatedtype Content
+    associatedtype Content: ContentRepresentation
     
     func route(_ content: Content)
     
 }
 
-struct WellKnownContent: Equatable {
+protocol ContentRepresentation: Equatable {
+    
+    func describe(to recipient: ContentRepresentationRecipient)
     
 }
 
-struct SomeOtherWellKnownContent: Equatable {
+extension ContentRepresentation {
+    
+    func describe(to recipient: ContentRepresentationRecipient) {
+        recipient.receive(self)
+    }
+    
+}
+
+protocol ContentRepresentationRecipient {
+    
+    func receive<Content>(_ content: Content) where Content: ContentRepresentation
+    
+}
+
+struct WellKnownContent: ContentRepresentation {
+    
+}
+
+struct SomeOtherWellKnownContent: ContentRepresentation {
+    
+}
+
+struct WrapperContent<Content>: ContentRepresentation where Content: ContentRepresentation {
+    
+    var inner: Content
+    
+    func describe(to recipient: ContentRepresentationRecipient) {
+        recipient.receive(inner)
+    }
     
 }
 
@@ -140,6 +190,18 @@ class ContentRouterTests: XCTestCase {
         
         XCTAssertNil(firstRoute.routedContent)
         XCTAssertEqual(content, secondRoute.routedContent)
+    }
+    
+    func testComplexContentPassedToExpectedRoute() {
+        let content = WellKnownContent()
+        let complexContent = WrapperContent(inner: content)
+        let route = WellKnownContentRoute()
+        let router = ContentRouter()
+        router.add(route)
+        
+        XCTAssertNoThrow(try router.route(complexContent))
+        
+        XCTAssertEqual(content, route.routedContent)
     }
 
 }
