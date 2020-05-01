@@ -2,20 +2,17 @@ import XCTest
 
 struct AnyContentRoute {
     
-    private let performRoute: (Any) -> Bool
+    private let performRoute: (Any) -> Void
     
     init<Route>(_ route: Route) where Route: ContentRoute {
         performRoute = { (content) in
             if let content = content as? Route.Content {
                 route.route(content)
-                return true
-            } else {
-                return false
             }
         }
     }
     
-    func route(_ content: Any) -> Bool {
+    func route(_ content: Any) {
         performRoute(content)
     }
     
@@ -23,21 +20,20 @@ struct AnyContentRoute {
 
 class ContentRouter {
     
-    private var route: AnyContentRoute?
-    private var routes = [AnyContentRoute]()
+    private var routes = [ObjectIdentifier: AnyContentRoute]()
     
     func add<Route>(_ route: Route) where Route: ContentRoute {
-        routes.append(AnyContentRoute(route))
+        let routeIdentifier = ObjectIdentifier(Route.Content.self)
+        routes[routeIdentifier] = AnyContentRoute(route)
     }
     
     func route(_ content: Any) throws {
-        for route in routes {
-            if route.route(content) {
-                return
-            }
+        let routeIdentifier = ObjectIdentifier(type(of: content))
+        if let route = routes[routeIdentifier] {
+            route.route(content)
+        } else {
+            throw RouteMissing(content: content)
         }
-        
-        throw RouteMissing(content: content)
     }
     
     struct RouteMissing: Error {
@@ -130,6 +126,20 @@ class ContentRouterTests: XCTestCase {
         XCTAssertNoThrow(try router.route(routeContent))
         
         XCTAssertEqual(routeContent, route.routedContent)
+    }
+    
+    func testLastMostRegisteredRouteForSameContentTypeWins() {
+        let content = WellKnownContent()
+        let firstRoute = WellKnownContentRoute()
+        let secondRoute = WellKnownContentRoute()
+        let router = ContentRouter()
+        router.add(firstRoute)
+        router.add(secondRoute)
+        
+        XCTAssertNoThrow(try router.route(content))
+        
+        XCTAssertNil(firstRoute.routedContent)
+        XCTAssertEqual(content, secondRoute.routedContent)
     }
 
 }
