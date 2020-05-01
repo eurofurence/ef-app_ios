@@ -1,6 +1,6 @@
 import EurofurenceModel
 
-protocol ContentRouter {
+protocol LegacyContentRouter {
     
     func resumeViewingEvent(identifier: EventIdentifier)
     func resumeViewingDealer(identifier: DealerIdentifier)

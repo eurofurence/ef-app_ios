@@ -1,6 +1,6 @@
 import EurofurenceModel
 
-struct DirectorContentRouter: ContentRouter {
+struct DirectorContentRouter: LegacyContentRouter {
     
     let director: ApplicationDirector
     

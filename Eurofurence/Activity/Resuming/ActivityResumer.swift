@@ -3,10 +3,10 @@ import Foundation
 
 struct ActivityResumer {
     
-    private let contentRouter: ContentRouter
+    private let contentRouter: LegacyContentRouter
     private let contentLinksService: ContentLinksService
     
-    init(contentLinksService: ContentLinksService, contentRouter: ContentRouter) {
+    init(contentLinksService: ContentLinksService, contentRouter: LegacyContentRouter) {
         self.contentLinksService = contentLinksService
         self.contentRouter = contentRouter
     }
@@ -18,11 +18,11 @@ struct ActivityResumer {
     
     private class ActivityHandler: ActivityDescriptionVisitor {
         
-        private let contentRouter: ContentRouter
+        private let contentRouter: LegacyContentRouter
         private let contentLinksService: ContentLinksService
         private(set) var handledActivity = false
         
-        init(contentRouter: ContentRouter, contentLinksService: ContentLinksService) {
+        init(contentRouter: LegacyContentRouter, contentLinksService: ContentLinksService) {
             self.contentRouter = contentRouter
             self.contentLinksService = contentLinksService
         }
@@ -46,9 +46,9 @@ struct ActivityResumer {
     
     private class IntentActivityHandler {
         
-        private let contentRouter: ContentRouter
+        private let contentRouter: LegacyContentRouter
         
-        init(contentRouter: ContentRouter) {
+        init(contentRouter: LegacyContentRouter) {
             self.contentRouter = contentRouter
         }
         
@@ -72,11 +72,11 @@ struct ActivityResumer {
     
     private class URLActivityHandler: URLContentVisitor {
         
-        private let contentRouter: ContentRouter
+        private let contentRouter: LegacyContentRouter
         private let contentLinksService: ContentLinksService
         private var handledContent = false
         
-        init(contentRouter: ContentRouter, contentLinksService: ContentLinksService) {
+        init(contentRouter: LegacyContentRouter, contentLinksService: ContentLinksService) {
             self.contentRouter = contentRouter
             self.contentLinksService = contentLinksService
         }

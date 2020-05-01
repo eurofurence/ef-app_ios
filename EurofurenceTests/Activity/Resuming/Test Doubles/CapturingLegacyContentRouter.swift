@@ -1,7 +1,7 @@
 @testable import Eurofurence
 import EurofurenceModel
 
-class CapturingContentRouter: ContentRouter {
+class CapturingLegacyContentRouter: LegacyContentRouter {
     
     private(set) var resumedEvent: EventIdentifier?
     func resumeViewingEvent(identifier: EventIdentifier) {

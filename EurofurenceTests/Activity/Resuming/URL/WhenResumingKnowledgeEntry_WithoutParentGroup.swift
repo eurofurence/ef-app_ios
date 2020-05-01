@@ -7,7 +7,7 @@ class WhenResumingKnowledgeEntry_WithoutParentGroup: XCTestCase {
 
     func testTheActivityIsResumed() {
         let contentLinksService = StubContentLinksService()
-        let contentRouter = CapturingContentRouter()
+        let contentRouter = CapturingLegacyContentRouter()
         let intentResumer = ActivityResumer(contentLinksService: contentLinksService, contentRouter: contentRouter)
         let knowledgeEntry = KnowledgeEntryIdentifier.random
         let url = URL.random

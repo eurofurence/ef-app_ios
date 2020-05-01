@@ -7,7 +7,7 @@ class WhenResumingKnowledgeGroupsURL: XCTestCase {
 
     func testTheActivityIsResumed() {
         let contentLinksService = StubContentLinksService()
-        let contentRouter = CapturingContentRouter()
+        let contentRouter = CapturingLegacyContentRouter()
         let intentResumer = ActivityResumer(contentLinksService: contentLinksService, contentRouter: contentRouter)
         let url = URL.random
         contentLinksService.stub(.knowledgeGroups, for: url)

@@ -7,7 +7,7 @@ class WhenResumingDealerURL: XCTestCase {
 
     func testTheActivityIsResumed() {
         let contentLinksService = StubContentLinksService()
-        let contentRouter = CapturingContentRouter()
+        let contentRouter = CapturingLegacyContentRouter()
         let intentResumer = ActivityResumer(contentLinksService: contentLinksService, contentRouter: contentRouter)
         let url = URL.random
         let dealer = DealerIdentifier.random

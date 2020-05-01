@@ -5,7 +5,7 @@ import XCTest
 class WhenResumingViewDealerIntent: XCTestCase {
 
     func testTheIntentIsResumed() {
-        let contentRouter = CapturingContentRouter()
+        let contentRouter = CapturingLegacyContentRouter()
         let intentResumer = ActivityResumer(contentLinksService: StubContentLinksService(), contentRouter: contentRouter)
         let dealer = FakeDealer.random
         let dealerIntentDefinition = ViewDealerIntentDefinition(identifier: dealer.identifier, dealerName: dealer.preferredName)
