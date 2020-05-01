@@ -60,6 +60,14 @@ class DirectorBuilder {
         self.urlOpener = urlOpener
         return self
     }
+    
+    private var newsDelegate: NewsModuleDelegate?
+    
+    @discardableResult
+    func with(_ newsDelegate: NewsModuleDelegate) -> DirectorBuilder {
+        self.newsDelegate = newsDelegate
+        return self
+    }
 
     func build() -> ApplicationDirector {
         return ApplicationDirector(animate: animate,
@@ -69,7 +77,8 @@ class DirectorBuilder {
                                    orderingPolicy: orderingPolicy,
                                    windowWireframe: windowWireframe,
                                    navigationControllerFactory: navigationControllerFactory,
-                                   tabModuleProviding: tabModuleProviding)
+                                   tabModuleProviding: tabModuleProviding,
+                                   newsDelegate: newsDelegate)
     }
 
 }

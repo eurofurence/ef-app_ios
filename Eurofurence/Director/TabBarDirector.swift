@@ -19,6 +19,7 @@ class TabBarDirector: NewsModuleDelegate, ScheduleModuleDelegate,
     private let urlOpener: URLOpener
     private let orderingPolicy: ModuleOrderingPolicy
     private let windowWireframe: WindowWireframe
+    private let newsDelegate: NewsModuleDelegate?
     
     private var tabController: UITabBarController?
     private var newsController: UIViewController?
@@ -36,7 +37,8 @@ class TabBarDirector: NewsModuleDelegate, ScheduleModuleDelegate,
          orderingPolicy: ModuleOrderingPolicy,
          windowWireframe: WindowWireframe,
          navigationControllerFactory: NavigationControllerFactory,
-         tabModuleProviding: TabModuleProviding) {
+         tabModuleProviding: TabModuleProviding,
+         newsDelegate: NewsModuleDelegate?) {
         self.animate = animate
         self.moduleRepository = moduleRepository
         self.navigationControllerFactory = navigationControllerFactory
@@ -45,6 +47,7 @@ class TabBarDirector: NewsModuleDelegate, ScheduleModuleDelegate,
         self.urlOpener = urlOpener
         self.orderingPolicy = orderingPolicy
         self.windowWireframe = windowWireframe
+        self.newsDelegate = newsDelegate
         
         saveTabOrder = SaveTabOrderWhenCustomizationFinishes(orderingPolicy: orderingPolicy)
         
@@ -319,7 +322,7 @@ class TabBarDirector: NewsModuleDelegate, ScheduleModuleDelegate,
     }
     
     private func makeNewsNavigationController() -> UINavigationController {
-        let newsController = moduleRepository.makeNewsModule(self)
+        let newsController = moduleRepository.makeNewsModule(newsDelegate ?? self)
         self.newsController = newsController
         
         return makeRootNavigationController(forModuleViewController: newsController)

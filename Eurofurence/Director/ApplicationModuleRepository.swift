@@ -3,28 +3,28 @@ import UIKit
 
 struct ApplicationModuleRepository: ModuleRepository {
     
-    private let webModuleProviding: WebModuleProviding
-    private let rootModuleProviding: RootModuleProviding
-    private let tutorialModuleProviding: TutorialModuleProviding
-    private let preloadModuleProviding: PreloadModuleProviding
-    private let newsModuleProviding: NewsModuleProviding
-    private let scheduleModuleProviding: ScheduleModuleProviding
-    private let dealersModuleProviding: DealersModuleProviding
-    private let dealerDetailModuleProviding: DealerDetailModuleProviding
-    private let collectThemAllModuleProviding: CollectThemAllModuleProviding
-    private let messagesModuleProviding: MessagesModuleProviding
-    private let loginModuleProviding: LoginModuleProviding
-    private let messageDetailModuleProviding: MessageDetailModuleProviding
-    private let knowledgeListModuleProviding: KnowledgeGroupsListModuleProviding
-    private let knowledgeGroupEntriesModule: KnowledgeGroupEntriesModuleProviding
-    private let knowledgeDetailModuleProviding: KnowledgeDetailModuleProviding
-    private let mapsModuleProviding: MapsModuleProviding
-    private let mapDetailModuleProviding: MapDetailModuleProviding
-    private let announcementsModuleFactory: AnnouncementsModuleProviding
-    private let announcementDetailModuleProviding: AnnouncementDetailModuleProviding
-    private let eventDetailModuleProviding: EventDetailModuleProviding
-    private let eventFeedbackModuleProviding: EventFeedbackModuleProviding
-    private let additionalServicesModuleProviding: AdditionalServicesModuleProviding
+    let webModuleProviding: WebModuleProviding
+    let rootModuleProviding: RootModuleProviding
+    let tutorialModuleProviding: TutorialModuleProviding
+    let preloadModuleProviding: PreloadModuleProviding
+    let newsModuleProviding: NewsModuleProviding
+    let scheduleModuleProviding: ScheduleModuleProviding
+    let dealersModuleProviding: DealersModuleProviding
+    let dealerDetailModuleProviding: DealerDetailModuleProviding
+    let collectThemAllModuleProviding: CollectThemAllModuleProviding
+    let messagesModuleProviding: MessagesModuleProviding
+    let loginModuleProviding: LoginModuleProviding
+    let messageDetailModuleProviding: MessageDetailModuleProviding
+    let knowledgeListModuleProviding: KnowledgeGroupsListModuleProviding
+    let knowledgeGroupEntriesModule: KnowledgeGroupEntriesModuleProviding
+    let knowledgeDetailModuleProviding: KnowledgeDetailModuleProviding
+    let mapsModuleProviding: MapsModuleProviding
+    let mapDetailModuleProviding: MapDetailModuleProviding
+    let announcementsModuleFactory: AnnouncementsModuleProviding
+    let announcementDetailModuleProviding: AnnouncementDetailModuleProviding
+    let eventDetailModuleProviding: EventDetailModuleProviding
+    let eventFeedbackModuleProviding: EventFeedbackModuleProviding
+    let additionalServicesModuleProviding: AdditionalServicesModuleProviding
     
     // swiftlint:disable function_body_length
     init(services: Services, repositories: Repositories) {

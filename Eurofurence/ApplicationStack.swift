@@ -2,6 +2,48 @@ import EurofurenceModel
 import Foundation
 import UIKit
 
+class WindowContentWireframe: ContentWireframe {
+    
+    static var shared: WindowContentWireframe = {
+        guard let window = UIApplication.shared.delegate?.window, let unwrappedWindow = window else { fatalError("Application has no window") }
+        return WindowContentWireframe(window: unwrappedWindow)
+    }()
+    
+    private let window: UIWindow
+    
+    private init(window: UIWindow) {
+        self.window = window
+    }
+    
+    func presentMasterContentController(_ viewController: UIViewController) {
+        window.rootViewController?.show(viewController, sender: nil)
+    }
+    
+    func presentDetailContentController(_ viewController: UIViewController) {
+        window.rootViewController?.showDetailViewController(viewController, sender: nil)
+    }
+    
+}
+
+class WindowModalWireframe: ModalWireframe {
+    
+    static var shared: WindowModalWireframe = {
+        guard let window = UIApplication.shared.delegate?.window, let unwrappedWindow = window else { fatalError("Application has no window") }
+        return WindowModalWireframe(window: unwrappedWindow)
+    }()
+    
+    private let window: UIWindow
+    
+    private init(window: UIWindow) {
+        self.window = window
+    }
+    
+    func presentModalContentController(_ viewController: UIViewController) {
+        window.rootViewController?.present(viewController, animated: true)
+    }
+    
+}
+
 class ApplicationStack {
     
     private static let CID = ConventionIdentifier(identifier: "EF25")
@@ -78,9 +120,16 @@ class ApplicationStack {
                                                                         hoursDateFormatter: FoundationHoursDateFormatter.shared,
                                                                         upcomingEventReminderInterval: upcomingEventReminderInterval)
         
+        let contentWireframe = WindowContentWireframe.shared
+        let modalWireframe = WindowModalWireframe.shared
+        let router = MutableContentRouter()
+        
         let moduleRepository = ApplicationModuleRepository(services: services, repositories: session.repositories)
-        director = DirectorBuilder(moduleRepository: moduleRepository,
-                                   linkLookupService: services.contentLinks).build()
+        let newsSubrouter = NewsSubrouter(router: router)
+        
+        director = DirectorBuilder(moduleRepository: moduleRepository, linkLookupService: services.contentLinks)
+            .with(newsSubrouter)
+            .build()
         
         let notificationHandler = NavigateToContentNotificationResponseHandler(director: director)
         notificationResponseProcessor = NotificationResponseProcessor(notificationHandling: services.notifications,
@@ -88,6 +137,85 @@ class ApplicationStack {
         
         let directorContentRouter = DirectorContentRouter(director: director)
         activityResumer = ActivityResumer(contentLinksService: services.contentLinks, contentRouter: directorContentRouter)
+        
+        RouterConfigurator(
+            router: router,
+            contentWireframe: contentWireframe,
+            moduleRepository: moduleRepository
+        ).configureRoutes()
+    }
+    
+    struct RouterConfigurator {
+        
+        var router: MutableContentRouter
+        var contentWireframe: ContentWireframe
+        var moduleRepository: ApplicationModuleRepository
+        
+        func configureRoutes() {
+            configureAnnouncementsRoute()
+            configureAnnouncementRoute()
+            configureDealerRoute()
+            configureEventRoute()
+            configureMessageRoute()
+            configureMessagesRoute()
+        }
+        
+        private func configureAnnouncementsRoute() {
+            router.add(AnnouncementsContentRoute(
+                announcementsModuleProviding: moduleRepository.announcementsModuleFactory,
+                contentWireframe: contentWireframe,
+                delegate: NavigateFromAnnouncementsToAnnouncement(router: router)
+            ))
+        }
+        
+        private func configureAnnouncementRoute() {
+            router.add(AnnouncementContentRoute(
+                announcementModuleFactory: moduleRepository.announcementDetailModuleProviding,
+                contentWireframe: contentWireframe
+            ))
+        }
+        
+        private func configureDealerRoute() {
+            router.add(DealerContentRoute(
+                dealerModuleFactory: moduleRepository.dealerDetailModuleProviding,
+                contentWireframe: contentWireframe
+            ))
+        }
+        
+        private func configureEventRoute() {
+            struct DummyEventDetailModuleDelegate: EventDetailModuleDelegate {
+                
+                func eventDetailModuleDidRequestPresentationToLeaveFeedback(for event: EventIdentifier) {
+                    
+                }
+                
+            }
+            
+            router.add(EventContentRoute(
+                eventModuleFactory: moduleRepository.eventDetailModuleProviding,
+                eventDetailDelegate: DummyEventDetailModuleDelegate(),
+                contentWireframe: contentWireframe
+            ))
+        }
+        
+        private func configureMessageRoute() {
+            router.add(MessageContentRoute(
+                messageModuleFactory: moduleRepository.messageDetailModuleProviding,
+                contentWireframe: contentWireframe
+            ))
+        }
+        
+        private func configureMessagesRoute() {
+            router.add(MessagesContentRoute(
+                messagesModuleProviding: moduleRepository.messagesModuleProviding,
+                contentWireframe: contentWireframe,
+                delegate: NavigateFromMessagesToMessage(
+                    router: router,
+                    presentingViewController: UIViewController() // TODO: Convert to use modal presentation
+                )
+            ))
+        }
+        
     }
 
 }

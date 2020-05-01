@@ -15,6 +15,7 @@ class ApplicationDirector: RootModuleDelegate, TutorialModuleDelegate, PreloadMo
     private let urlOpener: URLOpener
     private let orderingPolicy: ModuleOrderingPolicy
     private let windowWireframe: WindowWireframe
+    private let newsDelegate: NewsModuleDelegate?
 
     private var newsController: UIViewController?
     private var scheduleViewController: UIViewController?
@@ -33,7 +34,8 @@ class ApplicationDirector: RootModuleDelegate, TutorialModuleDelegate, PreloadMo
          orderingPolicy: ModuleOrderingPolicy,
          windowWireframe: WindowWireframe,
          navigationControllerFactory: NavigationControllerFactory,
-         tabModuleProviding: TabModuleProviding) {
+         tabModuleProviding: TabModuleProviding,
+         newsDelegate: NewsModuleDelegate?) {
         self.animate = animate
         self.moduleRepository = moduleRepository
         self.navigationControllerFactory = navigationControllerFactory
@@ -42,6 +44,7 @@ class ApplicationDirector: RootModuleDelegate, TutorialModuleDelegate, PreloadMo
         self.urlOpener = urlOpener
         self.orderingPolicy = orderingPolicy
         self.windowWireframe = windowWireframe
+        self.newsDelegate = newsDelegate
 
         moduleRepository.makeRootModule(self)
     }
@@ -130,7 +133,8 @@ class ApplicationDirector: RootModuleDelegate, TutorialModuleDelegate, PreloadMo
                                         orderingPolicy: orderingPolicy,
                                         windowWireframe: windowWireframe,
                                         navigationControllerFactory: navigationControllerFactory,
-                                        tabModuleProviding: tabModuleProviding)
+                                        tabModuleProviding: tabModuleProviding,
+                                        newsDelegate: newsDelegate)
         
     }
 
