@@ -6,7 +6,7 @@ class ContentRouterTests: XCTestCase {
     func testWellKnownRoute() {
         let content = WellKnownContent()
         let route = WellKnownContentRoute()
-        let router = ContentRouter()
+        let router = MutableContentRouter()
         router.add(route)
         
         XCTAssertNoThrow(try router.route(content))
@@ -16,7 +16,7 @@ class ContentRouterTests: XCTestCase {
     
     func testRouteMissing() {
         let content = WellKnownContent()
-        let router = ContentRouter()
+        let router = MutableContentRouter()
         
         XCTAssertThrowsError(try router.route(content))
     }
@@ -25,7 +25,7 @@ class ContentRouterTests: XCTestCase {
         let route = WellKnownContentRoute()
         let anotherRoute = SomeOtherWellKnownContentRoute()
         let anotherRouteContent = SomeOtherWellKnownContent()
-        let router = ContentRouter()
+        let router = MutableContentRouter()
         router.add(route)
         router.add(anotherRoute)
         
@@ -38,7 +38,7 @@ class ContentRouterTests: XCTestCase {
         let route = WellKnownContentRoute()
         let anotherRoute = SomeOtherWellKnownContentRoute()
         let routeContent = WellKnownContent()
-        let router = ContentRouter()
+        let router = MutableContentRouter()
         router.add(route)
         router.add(anotherRoute)
         
@@ -51,7 +51,7 @@ class ContentRouterTests: XCTestCase {
         let content = WellKnownContent()
         let firstRoute = WellKnownContentRoute()
         let secondRoute = WellKnownContentRoute()
-        let router = ContentRouter()
+        let router = MutableContentRouter()
         router.add(firstRoute)
         router.add(secondRoute)
         
@@ -65,7 +65,7 @@ class ContentRouterTests: XCTestCase {
         let content = WellKnownContent()
         let complexContent = WrapperContent(inner: content)
         let route = WellKnownContentRoute()
-        let router = ContentRouter()
+        let router = MutableContentRouter()
         router.add(route)
         
         XCTAssertNoThrow(try router.route(complexContent))
