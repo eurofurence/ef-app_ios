@@ -26,7 +26,7 @@ extension AnnouncementContentRoute: ContentRoute {
             for: content.identifier
         )
         
-        contentWireframe.presentNewsContentController(announcementContentController)
+        contentWireframe.presentDetailContentController(announcementContentController)
     }
     
 }
