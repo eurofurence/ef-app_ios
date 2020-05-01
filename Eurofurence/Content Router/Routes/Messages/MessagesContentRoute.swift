@@ -4,13 +4,16 @@ public struct MessagesContentRoute {
     
     private let messagesModuleProviding: MessagesModuleProviding
     private let contentWireframe: ContentWireframe
+    private let delegate: MessagesModuleDelegate
     
     public init(
         messagesModuleProviding: MessagesModuleProviding,
-        contentWireframe: ContentWireframe
+        contentWireframe: ContentWireframe,
+        delegate: MessagesModuleDelegate
     ) {
         self.messagesModuleProviding = messagesModuleProviding
         self.contentWireframe = contentWireframe
+        self.delegate = delegate
     }
     
 }
@@ -22,32 +25,8 @@ extension MessagesContentRoute: ContentRoute {
     public typealias Content = MessagesContentRepresentation
     
     public func route(_ content: MessagesContentRepresentation) {
-        let contentController = messagesModuleProviding.makeMessagesModule(DummyDelegate())
+        let contentController = messagesModuleProviding.makeMessagesModule(delegate)
         contentWireframe.presentMasterContentController(contentController)
-    }
-    
-    private struct DummyDelegate: MessagesModuleDelegate {
-        
-        func messagesModuleDidRequestResolutionForUser(completionHandler: @escaping (Bool) -> Void) {
-            
-        }
-        
-        func messagesModuleDidRequestPresentation(for message: MessageIdentifier) {
-            
-        }
-        
-        func messagesModuleDidRequestDismissal() {
-            
-        }
-        
-        func showLogoutAlert(presentedHandler: @escaping (@escaping () -> Void) -> Void) {
-            
-        }
-        
-        func showLogoutFailedAlert() {
-            
-        }
-        
     }
     
 }
