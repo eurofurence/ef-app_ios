@@ -965,6 +965,11 @@
 		CAD3BDC7205FE88900C91E6E /* SafariWebModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDC6205FE88900C91E6E /* SafariWebModuleProviding.swift */; };
 		CAD3BDCB2061394700C91E6E /* AppURLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDCA2061394700C91E6E /* AppURLOpener.swift */; };
 		CAD4F739245C2E670036ADAF /* ContentRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD4F738245C2E670036ADAF /* ContentRouterTests.swift */; };
+		CAD4F73C245C364F0036ADAF /* ContentRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD4F73B245C364F0036ADAF /* ContentRoute.swift */; };
+		CAD4F73E245C365C0036ADAF /* ContentRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD4F73D245C365C0036ADAF /* ContentRepresentation.swift */; };
+		CAD4F740245C36830036ADAF /* ContentRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD4F73F245C36830036ADAF /* ContentRouter.swift */; };
+		CAD4F742245C369D0036ADAF /* AnyContentRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD4F741245C369D0036ADAF /* AnyContentRoute.swift */; };
+		CAD4F744245C36F40036ADAF /* ContentRepresentationRecipient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD4F743245C36F40036ADAF /* ContentRepresentationRecipient.swift */; };
 		CAD55932229AEF760068DD46 /* NotificationResponseProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD55931229AEF760068DD46 /* NotificationResponseProcessor.swift */; };
 		CAD55936229AEFA80068DD46 /* CapturingNotificationResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD55935229AEFA80068DD46 /* CapturingNotificationResponseHandler.swift */; };
 		CAD55938229AEFC50068DD46 /* NotificationResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD55937229AEFC50068DD46 /* NotificationResponseHandler.swift */; };
@@ -2082,6 +2087,11 @@
 		CAD3BDC6205FE88900C91E6E /* SafariWebModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebModuleProviding.swift; sourceTree = "<group>"; };
 		CAD3BDCA2061394700C91E6E /* AppURLOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppURLOpener.swift; sourceTree = "<group>"; };
 		CAD4F738245C2E670036ADAF /* ContentRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentRouterTests.swift; sourceTree = "<group>"; };
+		CAD4F73B245C364F0036ADAF /* ContentRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentRoute.swift; sourceTree = "<group>"; };
+		CAD4F73D245C365C0036ADAF /* ContentRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentRepresentation.swift; sourceTree = "<group>"; };
+		CAD4F73F245C36830036ADAF /* ContentRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentRouter.swift; sourceTree = "<group>"; };
+		CAD4F741245C369D0036ADAF /* AnyContentRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyContentRoute.swift; sourceTree = "<group>"; };
+		CAD4F743245C36F40036ADAF /* ContentRepresentationRecipient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentRepresentationRecipient.swift; sourceTree = "<group>"; };
 		CAD55931229AEF760068DD46 /* NotificationResponseProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationResponseProcessor.swift; sourceTree = "<group>"; };
 		CAD55935229AEFA80068DD46 /* CapturingNotificationResponseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingNotificationResponseHandler.swift; sourceTree = "<group>"; };
 		CAD55937229AEFC50068DD46 /* NotificationResponseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationResponseHandler.swift; sourceTree = "<group>"; };
@@ -2601,6 +2611,7 @@
 				CA630BCA229F108900754C27 /* Activity */,
 				CA82DB5022D662F800467C2F /* App Services */,
 				CAF1A674211E4B3600513226 /* Application Adapter Implementations */,
+				CAD4F73A245C36430036ADAF /* Content Router */,
 				CA1FE99C1FA0B3F2009C7DF3 /* Director */,
 				CABF03B22041BC770028BD62 /* Extensions */,
 				CA79924D22451DCE00DF1F84 /* Formatters */,
@@ -5443,6 +5454,18 @@
 			path = "Content Router";
 			sourceTree = "<group>";
 		};
+		CAD4F73A245C36430036ADAF /* Content Router */ = {
+			isa = PBXGroup;
+			children = (
+				CAD4F741245C369D0036ADAF /* AnyContentRoute.swift */,
+				CAD4F73D245C365C0036ADAF /* ContentRepresentation.swift */,
+				CAD4F743245C36F40036ADAF /* ContentRepresentationRecipient.swift */,
+				CAD4F73B245C364F0036ADAF /* ContentRoute.swift */,
+				CAD4F73F245C36830036ADAF /* ContentRouter.swift */,
+			);
+			path = "Content Router";
+			sourceTree = "<group>";
+		};
 		CAD5592E229AE3570068DD46 /* Notification Response Handler */ = {
 			isa = PBXGroup;
 			children = (
@@ -6189,6 +6212,7 @@
 				CA3ABA00229C2FF50045A35B /* ModuleRepository.swift in Sources */,
 				CA29EF772034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift in Sources */,
 				CA152EED22665B4400212742 /* CocoaTouchFailureHaptic.swift in Sources */,
+				CAD4F742245C369D0036ADAF /* AnyContentRoute.swift in Sources */,
 				CA0F762D2033118D009DA079 /* KnowledgeGroupsListModuleDelegate.swift in Sources */,
 				CAF3C7441F9F5C550008F027 /* NewsModuleProviding.swift in Sources */,
 				CA39852522C7ADBA00117249 /* FirebaseRemoteConfigurationLoader.swift in Sources */,
@@ -6237,6 +6261,7 @@
 				CA630BD6229F145E00754C27 /* EventIntentDonor.swift in Sources */,
 				CAD3BDC7205FE88900C91E6E /* SafariWebModuleProviding.swift in Sources */,
 				CACF1E8A20B351D400D904B5 /* DateRangeFormatter.swift in Sources */,
+				CAD4F73E245C365C0036ADAF /* ContentRepresentation.swift in Sources */,
 				CA321F531F7BC88D0050E489 /* StoryboardPreloadSceneFactory.swift in Sources */,
 				CA73AEEB201A0896004E77BF /* KnowledgeListSceneFactory.swift in Sources */,
 				CA2A586D20F76F03002C69B6 /* UIKitMapCoordinateRender.swift in Sources */,
@@ -6262,6 +6287,7 @@
 				CA283A9820EA9CB100F7D195 /* AnnouncementsModuleProviding.swift in Sources */,
 				CA2AA2F422C9518A00C0E1A1 /* ViewDealerIntent+Definition.swift in Sources */,
 				CA36A45E20D8487700EE6537 /* DealersGroupViewModel.swift in Sources */,
+				CAD4F73C245C364F0036ADAF /* ContentRoute.swift in Sources */,
 				CAF3C7501F9FC74C0008F027 /* NewsSceneFactory.swift in Sources */,
 				CA0E5207208E700E005259FE /* DealersViewController.swift in Sources */,
 				CA283ABE20EAA67B00F7D195 /* AnnouncementsPresenter.swift in Sources */,
@@ -6385,6 +6411,7 @@
 				CAEAEBFF1FE0044900C0EE7C /* MessageDetailScene.swift in Sources */,
 				CA8240A021249A5E007E4A70 /* ReviewPromptController.swift in Sources */,
 				CA27619C20E01E01000E52AC /* CollectThemAllModuleBuilder.swift in Sources */,
+				CAD4F744245C36F40036ADAF /* ContentRepresentationRecipient.swift in Sources */,
 				CA36A46120D8497400EE6537 /* DealersPresenter.swift in Sources */,
 				CA6A8DE920E41DA5007536CD /* MapDetailViewModel.swift in Sources */,
 				CA6A8D8020E265BE007536CD /* StoryboardMapsScenefactory.swift in Sources */,
@@ -6589,6 +6616,7 @@
 				CA283A5A20E6E24300F7D195 /* ApplicationLongRunningTaskManager.swift in Sources */,
 				CABA439F1FD578E1009CB5B0 /* NewsModuleBuilder.swift in Sources */,
 				CA6EC4892051CD9C00402894 /* StoryboardKnowledgeDetailSceneFactory.swift in Sources */,
+				CAD4F740245C36830036ADAF /* ContentRouter.swift in Sources */,
 				CA17015722B2E5C40067BCDE /* ConventionColorViews.swift in Sources */,
 				CA2AA2F822C9530900C0E1A1 /* DealerIntentDefinitionProviding.swift in Sources */,
 				CA73AEF3201A08C4004E77BF /* KnowledgeListModule.swift in Sources */,
