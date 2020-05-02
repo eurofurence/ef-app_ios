@@ -193,17 +193,9 @@ class ApplicationStack {
         }
         
         private func configureEventRoute() {
-            struct DummyEventDetailModuleDelegate: EventDetailModuleDelegate {
-                
-                func eventDetailModuleDidRequestPresentationToLeaveFeedback(for event: EventIdentifier) {
-                    
-                }
-                
-            }
-            
             router.add(EventContentRoute(
                 eventModuleFactory: moduleRepository.eventDetailModuleProviding,
-                eventDetailDelegate: DummyEventDetailModuleDelegate(),
+                eventDetailDelegate: LeaveFeedbackFromEventNavigator(router: router),
                 contentWireframe: contentWireframe
             ))
         }
