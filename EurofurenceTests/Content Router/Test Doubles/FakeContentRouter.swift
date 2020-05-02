@@ -3,7 +3,7 @@ import XCTest
 
 class FakeContentRouter: ContentRouter, ContentRepresentationRecipient {
     
-    private var erasedRoutedContent: AnyContentRepresentation?
+    private(set) var erasedRoutedContent: AnyContentRepresentation?
     func route<Content>(_ content: Content) throws
         where Content: ContentRepresentationDescribing {
         content.describe(to: self)

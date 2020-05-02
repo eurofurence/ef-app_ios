@@ -1,5 +1,3 @@
-import Eurofurence
-
 public class AuthenticatedRoute<Route>: ContentRoute where Route: ContentRoute {
     
     private let route: Route
