@@ -609,6 +609,8 @@
 		CA63A764245DCE7700E4B313 /* OpenLinkFromKnowledgeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63A763245DCE7700E4B313 /* OpenLinkFromKnowledgeEntry.swift */; };
 		CA63A767245DCF0F00E4B313 /* WebContentRouteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63A766245DCF0F00E4B313 /* WebContentRouteTests.swift */; };
 		CA63A769245DD0EA00E4B313 /* WebContentRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63A768245DD0EA00E4B313 /* WebContentRoute.swift */; };
+		CA63A76B245DD14D00E4B313 /* ExternalApplicationContentRouteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63A76A245DD14D00E4B313 /* ExternalApplicationContentRouteTests.swift */; };
+		CA63A76D245DD27D00E4B313 /* ExternalApplicationContentRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63A76C245DD27D00E4B313 /* ExternalApplicationContentRoute.swift */; };
 		CA65A877209A523400B72533 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA65A876209A523400B72533 /* UIColor+Extensions.swift */; };
 		CA65A879209A538600B72533 /* WhenLoggedInBeforeConvention_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA65A878209A538600B72533 /* WhenLoggedInBeforeConvention_NewsInteractorShould.swift */; };
 		CA65A87B209A5BDA00B72533 /* DefaultNewsInteractorTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA65A87A209A5BDA00B72533 /* DefaultNewsInteractorTestBuilder.swift */; };
@@ -1810,6 +1812,8 @@
 		CA63A763245DCE7700E4B313 /* OpenLinkFromKnowledgeEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenLinkFromKnowledgeEntry.swift; sourceTree = "<group>"; };
 		CA63A766245DCF0F00E4B313 /* WebContentRouteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebContentRouteTests.swift; sourceTree = "<group>"; };
 		CA63A768245DD0EA00E4B313 /* WebContentRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebContentRoute.swift; sourceTree = "<group>"; };
+		CA63A76A245DD14D00E4B313 /* ExternalApplicationContentRouteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalApplicationContentRouteTests.swift; sourceTree = "<group>"; };
+		CA63A76C245DD27D00E4B313 /* ExternalApplicationContentRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalApplicationContentRoute.swift; sourceTree = "<group>"; };
 		CA65A876209A523400B72533 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		CA65A878209A538600B72533 /* WhenLoggedInBeforeConvention_NewsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLoggedInBeforeConvention_NewsInteractorShould.swift; sourceTree = "<group>"; };
 		CA65A87A209A5BDA00B72533 /* DefaultNewsInteractorTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNewsInteractorTestBuilder.swift; sourceTree = "<group>"; };
@@ -4357,6 +4361,7 @@
 			isa = PBXGroup;
 			children = (
 				CA63A761245DCE6400E4B313 /* ExternalApplicationContentRepresentation.swift */,
+				CA63A76C245DD27D00E4B313 /* ExternalApplicationContentRoute.swift */,
 				CA63A75F245DCE5700E4B313 /* WebContentRepresentation.swift */,
 				CA63A768245DD0EA00E4B313 /* WebContentRoute.swift */,
 			);
@@ -4366,6 +4371,7 @@
 		CA63A765245DCEFC00E4B313 /* URL */ = {
 			isa = PBXGroup;
 			children = (
+				CA63A76A245DD14D00E4B313 /* ExternalApplicationContentRouteTests.swift */,
 				CA63A766245DCF0F00E4B313 /* WebContentRouteTests.swift */,
 			);
 			path = URL;
@@ -7039,6 +7045,7 @@
 				CAD04191245DA17400B86950 /* FormSheetEventFeedbackModuleProviding.swift in Sources */,
 				CA79924722451A4800DF1F84 /* NotificationScheduler.swift in Sources */,
 				CA89CBAD207F802400570D54 /* NewsInteractor.swift in Sources */,
+				CA63A76D245DD27D00E4B313 /* ExternalApplicationContentRoute.swift in Sources */,
 				CA6A8DE020E418EE007536CD /* MapDetailViewController.swift in Sources */,
 				CA0E5205208E6FE4005259FE /* StoryboardDealersSceneFactory.swift in Sources */,
 				781A94301F1A1972002DE70F /* FirebaseAdapter.swift in Sources */,
@@ -7381,6 +7388,7 @@
 				CA00AE4B20D16BF300C2FBB0 /* StubScheduleViewModel+RandomValueProviding.swift in Sources */,
 				CA1B6F1420DB81B800ADF414 /* DealerDetailPresenterTestBuilder.swift in Sources */,
 				CAD234351F5D719F004BB959 /* CapturingMessagesScene.swift in Sources */,
+				CA63A76B245DD14D00E4B313 /* ExternalApplicationContentRouteTests.swift in Sources */,
 				CA152EFE2267B16E00212742 /* WhenPreparingViewModel_AndInvokingUnfavouriteEventCommand_EventDetailInteractorShould.swift in Sources */,
 				CA52C68D20D6A9EB009D3A9E /* WhenSceneSelectsEvent_SchedulePresenterShould.swift in Sources */,
 				CA36A4A320D9834900EE6537 /* WhenFetchingIconDataForDealerWithoutAvatar_DealersInteractorShould.swift in Sources */,
