@@ -220,8 +220,12 @@ class ApplicationStack {
         }
         
         private func configureLoginRoute() {
+            let formSheetWrapper = FormSheetLoginModuleProviding(
+                loginModuleProviding: moduleRepository.loginModuleProviding
+            )
+            
             router.add(LoginContentRoute(
-                loginModuleFactory: moduleRepository.loginModuleProviding,
+                loginModuleFactory: formSheetWrapper,
                 modalWireframe: modalWireframe
             ))
         }

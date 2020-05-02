@@ -865,6 +865,7 @@
 		CAA28895245D6A060090B663 /* LoginRouteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA28894245D6A060090B663 /* LoginRouteTests.swift */; };
 		CAA28898245D6ECA0090B663 /* LoginContentRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA28897245D6ECA0090B663 /* LoginContentRoute.swift */; };
 		CAA2889A245D6EDF0090B663 /* LoginContentRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA28899245D6EDF0090B663 /* LoginContentRepresentation.swift */; };
+		CAA2889C245D71FD0090B663 /* FormSheetLoginModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA2889B245D71FD0090B663 /* FormSheetLoginModuleProviding.swift */; };
 		CAA39E0820051B5C00F2F3D3 /* LocalizedStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA39E0720051B5C00F2F3D3 /* LocalizedStrings.swift */; };
 		CAA39E0920051C6C00F2F3D3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CAA39E0B20051C6C00F2F3D3 /* Localizable.strings */; };
 		CAA4BA6721EE7AB600DE2C88 /* MessagesModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA4BA6621EE7AB600DE2C88 /* MessagesModule.swift */; };
@@ -2027,6 +2028,7 @@
 		CAA28894245D6A060090B663 /* LoginRouteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouteTests.swift; sourceTree = "<group>"; };
 		CAA28897245D6ECA0090B663 /* LoginContentRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginContentRoute.swift; sourceTree = "<group>"; };
 		CAA28899245D6EDF0090B663 /* LoginContentRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginContentRepresentation.swift; sourceTree = "<group>"; };
+		CAA2889B245D71FD0090B663 /* FormSheetLoginModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormSheetLoginModuleProviding.swift; sourceTree = "<group>"; };
 		CAA39E0720051B5C00F2F3D3 /* LocalizedStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedStrings.swift; sourceTree = "<group>"; };
 		CAA4BA6621EE7AB600DE2C88 /* MessagesModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesModule.swift; sourceTree = "<group>"; };
 		CAA6060620EEB4F200075A4E /* UserNotificationsScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationsScheduler.swift; sourceTree = "<group>"; };
@@ -5227,6 +5229,7 @@
 				CABA43AE1FD5DC96009CB5B0 /* Module */,
 				CABA43AA1FD5DB98009CB5B0 /* Presenter */,
 				CABA43AD1FD5DC7C009CB5B0 /* View */,
+				CAA2889B245D71FD0090B663 /* FormSheetLoginModuleProviding.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -6868,6 +6871,7 @@
 				CA7BA2382237FCFB00D34592 /* NetworkReachability.swift in Sources */,
 				20516AC821123E5500C399C0 /* DefaultDownMarkdownRenderer.swift in Sources */,
 				9A861ECD1F25555000B75A8C /* TutorialPageViewController.swift in Sources */,
+				CAA2889C245D71FD0090B663 /* FormSheetLoginModuleProviding.swift in Sources */,
 				CABA43861FBC6FE1009CB5B0 /* LoginModuleProviding.swift in Sources */,
 				CAC4993522DF98DF003E1D77 /* DealerCategoriesViewController.swift in Sources */,
 				CA72848E209F93A4007D912A /* MarkdownRenderer.swift in Sources */,
