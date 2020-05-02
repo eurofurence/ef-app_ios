@@ -1,7 +1,7 @@
 import EurofurenceModel
 import Foundation
 
-protocol KnowledgeGroupEntriesModuleDelegate {
+public protocol KnowledgeGroupEntriesModuleDelegate {
 
     func knowledgeGroupEntriesModuleDidSelectKnowledgeEntry(identifier: KnowledgeEntryIdentifier)
 
