@@ -21,6 +21,7 @@ class TabBarDirector: NewsModuleDelegate, ScheduleModuleDelegate,
     private let windowWireframe: WindowWireframe
     private let newsDelegate: NewsModuleDelegate?
     private let scheduleDelegate: ScheduleModuleDelegate?
+    private let dealersDelegate: DealersModuleDelegate?
     
     private var tabController: UITabBarController?
     private var newsController: UIViewController?
@@ -40,7 +41,8 @@ class TabBarDirector: NewsModuleDelegate, ScheduleModuleDelegate,
          navigationControllerFactory: NavigationControllerFactory,
          tabModuleProviding: TabModuleProviding,
          newsDelegate: NewsModuleDelegate?,
-         scheduleDelegate: ScheduleModuleDelegate?) {
+         scheduleDelegate: ScheduleModuleDelegate?,
+         dealersDelegate: DealersModuleDelegate?) {
         self.animate = animate
         self.moduleRepository = moduleRepository
         self.navigationControllerFactory = navigationControllerFactory
@@ -51,6 +53,7 @@ class TabBarDirector: NewsModuleDelegate, ScheduleModuleDelegate,
         self.windowWireframe = windowWireframe
         self.newsDelegate = newsDelegate
         self.scheduleDelegate = scheduleDelegate
+        self.dealersDelegate = dealersDelegate
         
         saveTabOrder = SaveTabOrderWhenCustomizationFinishes(orderingPolicy: orderingPolicy)
         
@@ -339,7 +342,7 @@ class TabBarDirector: NewsModuleDelegate, ScheduleModuleDelegate,
     }
     
     private func makeDealersNavigationController() -> UINavigationController {
-        let dealersViewController = moduleRepository.makeDealersModule(self)
+        let dealersViewController = moduleRepository.makeDealersModule(dealersDelegate ?? self)
         self.dealersViewController = dealersViewController
         
         return makeRootNavigationController(forModuleViewController: dealersViewController)

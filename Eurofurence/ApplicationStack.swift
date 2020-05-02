@@ -83,10 +83,12 @@ class ApplicationStack {
         let moduleRepository = ApplicationModuleRepository(services: services, repositories: session.repositories)
         let newsSubrouter = NewsSubrouter(router: router)
         let scheduleSubrouter = ShowEventFromSchedule(router: router)
+        let dealerSubrouter = ShowDealerFromDealers(router: router)
         
         director = DirectorBuilder(moduleRepository: moduleRepository, linkLookupService: services.contentLinks)
             .with(newsSubrouter)
             .with(scheduleSubrouter)
+            .with(dealerSubrouter)
             .build()
         
         let notificationHandler = NavigateToContentNotificationResponseHandler(director: director)
