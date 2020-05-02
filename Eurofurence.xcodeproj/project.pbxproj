@@ -603,6 +603,10 @@
 		CA63A757245DC49900E4B313 /* KnowledgeEntryContentRouteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63A756245DC49900E4B313 /* KnowledgeEntryContentRouteTests.swift */; };
 		CA63A759245DC71300E4B313 /* KnowledgeEntryContentRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63A758245DC71300E4B313 /* KnowledgeEntryContentRepresentation.swift */; };
 		CA63A75B245DC72100E4B313 /* KnowledgeEntryContentRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63A75A245DC72100E4B313 /* KnowledgeEntryContentRoute.swift */; };
+		CA63A75D245DC8B100E4B313 /* OpenLinkFromKnowledgeEntryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63A75C245DC8B100E4B313 /* OpenLinkFromKnowledgeEntryTests.swift */; };
+		CA63A760245DCE5700E4B313 /* WebContentRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63A75F245DCE5700E4B313 /* WebContentRepresentation.swift */; };
+		CA63A762245DCE6400E4B313 /* ExternalApplicationContentRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63A761245DCE6400E4B313 /* ExternalApplicationContentRepresentation.swift */; };
+		CA63A764245DCE7700E4B313 /* OpenLinkFromKnowledgeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63A763245DCE7700E4B313 /* OpenLinkFromKnowledgeEntry.swift */; };
 		CA65A877209A523400B72533 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA65A876209A523400B72533 /* UIColor+Extensions.swift */; };
 		CA65A879209A538600B72533 /* WhenLoggedInBeforeConvention_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA65A878209A538600B72533 /* WhenLoggedInBeforeConvention_NewsInteractorShould.swift */; };
 		CA65A87B209A5BDA00B72533 /* DefaultNewsInteractorTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA65A87A209A5BDA00B72533 /* DefaultNewsInteractorTestBuilder.swift */; };
@@ -1798,6 +1802,10 @@
 		CA63A756245DC49900E4B313 /* KnowledgeEntryContentRouteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeEntryContentRouteTests.swift; sourceTree = "<group>"; };
 		CA63A758245DC71300E4B313 /* KnowledgeEntryContentRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeEntryContentRepresentation.swift; sourceTree = "<group>"; };
 		CA63A75A245DC72100E4B313 /* KnowledgeEntryContentRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeEntryContentRoute.swift; sourceTree = "<group>"; };
+		CA63A75C245DC8B100E4B313 /* OpenLinkFromKnowledgeEntryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenLinkFromKnowledgeEntryTests.swift; sourceTree = "<group>"; };
+		CA63A75F245DCE5700E4B313 /* WebContentRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebContentRepresentation.swift; sourceTree = "<group>"; };
+		CA63A761245DCE6400E4B313 /* ExternalApplicationContentRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalApplicationContentRepresentation.swift; sourceTree = "<group>"; };
+		CA63A763245DCE7700E4B313 /* OpenLinkFromKnowledgeEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenLinkFromKnowledgeEntry.swift; sourceTree = "<group>"; };
 		CA65A876209A523400B72533 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		CA65A878209A538600B72533 /* WhenLoggedInBeforeConvention_NewsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLoggedInBeforeConvention_NewsInteractorShould.swift; sourceTree = "<group>"; };
 		CA65A87A209A5BDA00B72533 /* DefaultNewsInteractorTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNewsInteractorTestBuilder.swift; sourceTree = "<group>"; };
@@ -4322,8 +4330,9 @@
 		CA63A74E245DC12200E4B313 /* Knowledge */ = {
 			isa = PBXGroup;
 			children = (
-				CA63A74F245DC13800E4B313 /* KnowledgeGroupContentRouteTests.swift */,
 				CA63A756245DC49900E4B313 /* KnowledgeEntryContentRouteTests.swift */,
+				CA63A74F245DC13800E4B313 /* KnowledgeGroupContentRouteTests.swift */,
+				CA63A75C245DC8B100E4B313 /* OpenLinkFromKnowledgeEntryTests.swift */,
 			);
 			path = Knowledge;
 			sourceTree = "<group>";
@@ -4335,8 +4344,18 @@
 				CA63A75A245DC72100E4B313 /* KnowledgeEntryContentRoute.swift */,
 				CA63A754245DC3F100E4B313 /* KnowledgeGroupContentRepresentation.swift */,
 				CA63A752245DC3DF00E4B313 /* KnowledgeGroupContentRoute.swift */,
+				CA63A763245DCE7700E4B313 /* OpenLinkFromKnowledgeEntry.swift */,
 			);
 			path = Knowledge;
+			sourceTree = "<group>";
+		};
+		CA63A75E245DCE4D00E4B313 /* URL */ = {
+			isa = PBXGroup;
+			children = (
+				CA63A75F245DCE5700E4B313 /* WebContentRepresentation.swift */,
+				CA63A761245DCE6400E4B313 /* ExternalApplicationContentRepresentation.swift */,
+			);
+			path = URL;
 			sourceTree = "<group>";
 		};
 		CA6A8D6020E26233007536CD /* Maps */ = {
@@ -5804,6 +5823,7 @@
 				CAA2887C245C72C20090B663 /* Messages */,
 				CAA2888D245C9A630090B663 /* News */,
 				CA63A745245DBB3600E4B313 /* Schedule */,
+				CA63A75E245DCE4D00E4B313 /* URL */,
 			);
 			path = Routes;
 			sourceTree = "<group>";
@@ -6773,6 +6793,7 @@
 				9A861ECB1F25555000B75A8C /* UserCompletedTutorialStateProviding.swift in Sources */,
 				CA6F6535226B781900483EE0 /* EventFeedbackSuccessWaitingRule.swift in Sources */,
 				CAD4F770245C47590036ADAF /* ModalWireframe.swift in Sources */,
+				CA63A762245DCE6400E4B313 /* ExternalApplicationContentRepresentation.swift in Sources */,
 				CA36A4BE20DA70B000EE6537 /* DealersSearchTableViewController.swift in Sources */,
 				CA6A8DD220E417EE007536CD /* MapDetailSceneFactory.swift in Sources */,
 				CA6375B0208E02CC00536BE2 /* DealersSceneFactory.swift in Sources */,
@@ -6870,6 +6891,7 @@
 				CAD4F764245C43C90036ADAF /* DealerContentRepresentation.swift in Sources */,
 				CA27255E21125393004C6D0A /* KnowledgeEntryImageScene.swift in Sources */,
 				CA2761AF20E022CB000E52AC /* CollectThemAllModule.swift in Sources */,
+				CA63A764245DCE7700E4B313 /* OpenLinkFromKnowledgeEntry.swift in Sources */,
 				CA50B1AB226110B00091E425 /* EventFeedbackModuleProviding.swift in Sources */,
 				CABA43A31FD57C65009CB5B0 /* TutorialModuleBuilder.swift in Sources */,
 				CA63A741245DB7E000E4B313 /* RouterConfigurator.swift in Sources */,
@@ -7130,6 +7152,7 @@
 				CA283A5A20E6E24300F7D195 /* ApplicationLongRunningTaskManager.swift in Sources */,
 				CABA439F1FD578E1009CB5B0 /* NewsModuleBuilder.swift in Sources */,
 				CAD4F74D245C3CBB0036ADAF /* AnnouncementContentRepresentation.swift in Sources */,
+				CA63A760245DCE5700E4B313 /* WebContentRepresentation.swift in Sources */,
 				CA6EC4892051CD9C00402894 /* StoryboardKnowledgeDetailSceneFactory.swift in Sources */,
 				CA17015722B2E5C40067BCDE /* ConventionColorViews.swift in Sources */,
 				CA2AA2F822C9530900C0E1A1 /* DealerIntentDefinitionProviding.swift in Sources */,
@@ -7306,6 +7329,7 @@
 				CA401080210FAF4C0056E16C /* StubKnowledgeGroupEntriesSceneFactory.swift in Sources */,
 				CACF26CD20FE576C00EDE150 /* WhenSceneChangesSearchScopeToFavouriteEvents_SchedulePresenterShould.swift in Sources */,
 				CAD4F74B245C3A5B0036ADAF /* AnnouncementContentRouteTests.swift in Sources */,
+				CA63A75D245DC8B100E4B313 /* OpenLinkFromKnowledgeEntryTests.swift in Sources */,
 				CAF3C7481F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift in Sources */,
 				CA08158D20D4556700F750D4 /* FakeShortFormDateFormatter.swift in Sources */,
 				CA401066210FA8830056E16C /* WhenKnowledgeGroupEntriesSceneLoads.swift in Sources */,
