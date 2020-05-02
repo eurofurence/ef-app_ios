@@ -4,14 +4,22 @@ import XCTest
 
 class NavigateFromMessagesToMessageTests: XCTestCase {
     
-    func testRoutesToMessageContent() {
-        let router = FakeContentRouter()
-        let modalWireframe = CapturingModalWireframe()
-        let navigator = NavigateFromMessagesToMessage(
+    var router: FakeContentRouter!
+    var modalWireframe: CapturingModalWireframe!
+    var navigator: NavigateFromMessagesToMessage!
+    
+    override func setUp() {
+        super.setUp()
+        
+        router = FakeContentRouter()
+        modalWireframe = CapturingModalWireframe()
+        navigator = NavigateFromMessagesToMessage(
             router: router,
             modalWireframe: modalWireframe
         )
-        
+    }
+    
+    func testRoutesToMessageContent() {
         let message = MessageIdentifier.random
         
         navigator.messagesModuleDidRequestPresentation(for: message)
@@ -21,13 +29,6 @@ class NavigateFromMessagesToMessageTests: XCTestCase {
     }
     
     func testShowLogoutAlertWithExpectedText() {
-        let router = FakeContentRouter()
-        let modalWireframe = CapturingModalWireframe()
-        let navigator = NavigateFromMessagesToMessage(
-            router: router,
-            modalWireframe: modalWireframe
-        )
-        
         navigator.showLogoutAlert(presentedHandler: { (_) in
             
         })
@@ -39,19 +40,22 @@ class NavigateFromMessagesToMessageTests: XCTestCase {
     }
 
     func testShowLogoutErrorAlertWithExpectedText() {
-        let router = FakeContentRouter()
-        let modalWireframe = CapturingModalWireframe()
-        let navigator = NavigateFromMessagesToMessage(
-            router: router,
-            modalWireframe: modalWireframe
-        )
-        
         navigator.showLogoutFailedAlert()
         
         let presentedAlertController = modalWireframe.presentedModalContentController as? UIAlertController
 
         XCTAssertEqual(.logoutFailed, presentedAlertController?.title)
         XCTAssertEqual(.logoutFailedAlertDetail, presentedAlertController?.message)
+    }
+    
+    func testRequestsLoginRoute() throws {
+        var result: Bool?
+        navigator.messagesModuleDidRequestResolutionForUser(completionHandler: { result = $0 })
+        
+        let loginContent: LoginContentRepresentation = try router.unwrapRoutedContent()
+        loginContent.completionHandler(true)
+        
+        XCTAssertEqual(true, result)
     }
 
 }

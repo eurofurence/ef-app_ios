@@ -12,7 +12,7 @@ public struct NavigateFromMessagesToMessage: MessagesModuleDelegate {
     }
     
     public func messagesModuleDidRequestResolutionForUser(completionHandler: @escaping (Bool) -> Void) {
-        
+        try? router.route(LoginContentRepresentation(completionHandler: completionHandler))
     }
     
     public func messagesModuleDidRequestPresentation(for message: MessageIdentifier) {

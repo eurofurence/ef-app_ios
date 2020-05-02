@@ -160,6 +160,7 @@ class ApplicationStack {
             configureEventRoute()
             configureMessageRoute()
             configureMessagesRoute()
+            configureLoginRoute()
         }
         
         private func configureAnnouncementsRoute() {
@@ -213,8 +214,15 @@ class ApplicationStack {
                 contentWireframe: contentWireframe,
                 delegate: NavigateFromMessagesToMessage(
                     router: router,
-                    modalWireframe: modalWireframe // TODO: Convert to use modal presentation
+                    modalWireframe: modalWireframe
                 )
+            ))
+        }
+        
+        private func configureLoginRoute() {
+            router.add(LoginContentRoute(
+                loginModuleFactory: moduleRepository.loginModuleProviding,
+                modalWireframe: modalWireframe
             ))
         }
         
