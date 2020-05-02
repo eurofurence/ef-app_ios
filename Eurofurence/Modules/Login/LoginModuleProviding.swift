@@ -1,12 +1,12 @@
 import UIKit.UIViewController
 
-protocol LoginModuleProviding {
+public protocol LoginModuleProviding {
 
     func makeLoginModule(_ delegate: LoginModuleDelegate) -> UIViewController
 
 }
 
-protocol LoginModuleDelegate {
+public protocol LoginModuleDelegate {
 
     func loginModuleDidCancelLogin()
     func loginModuleDidLoginSuccessfully()
