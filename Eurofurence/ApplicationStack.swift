@@ -165,6 +165,7 @@ class ApplicationStack {
             configureAnnouncementRoute()
             configureDealerRoute()
             configureEventRoute()
+            configureEventFeedbackRoute()
             configureMessageRoute()
             configureMessagesRoute()
             configureLoginRoute()
@@ -197,6 +198,13 @@ class ApplicationStack {
                 eventModuleFactory: moduleRepository.eventDetailModuleProviding,
                 eventDetailDelegate: LeaveFeedbackFromEventNavigator(router: router),
                 contentWireframe: contentWireframe
+            ))
+        }
+        
+        private func configureEventFeedbackRoute() {
+            router.add(EventFeedbackContentRoute(
+                eventFeedbackFactory: moduleRepository.eventFeedbackModuleProviding,
+                modalWireframe: modalWireframe
             ))
         }
         
