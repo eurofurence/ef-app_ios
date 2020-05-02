@@ -19,6 +19,7 @@ class ApplicationDirector: RootModuleDelegate, TutorialModuleDelegate, PreloadMo
     private let scheduleDelegate: ScheduleModuleDelegate?
     private let dealersDelegate: DealersModuleDelegate?
     private let knowledgeDelegate: KnowledgeGroupsListModuleDelegate?
+    private let mapsDelegate: MapsModuleDelegate?
 
     private var newsController: UIViewController?
     private var scheduleViewController: UIViewController?
@@ -41,7 +42,8 @@ class ApplicationDirector: RootModuleDelegate, TutorialModuleDelegate, PreloadMo
          newsDelegate: NewsModuleDelegate?,
          scheduleDelegate: ScheduleModuleDelegate?,
          dealersDelegate: DealersModuleDelegate?,
-         knowledgeDelegate: KnowledgeGroupsListModuleDelegate?) {
+         knowledgeDelegate: KnowledgeGroupsListModuleDelegate?,
+         mapsDelegate: MapsModuleDelegate?) {
         self.animate = animate
         self.moduleRepository = moduleRepository
         self.navigationControllerFactory = navigationControllerFactory
@@ -54,6 +56,7 @@ class ApplicationDirector: RootModuleDelegate, TutorialModuleDelegate, PreloadMo
         self.scheduleDelegate = scheduleDelegate
         self.dealersDelegate = dealersDelegate
         self.knowledgeDelegate = knowledgeDelegate
+        self.mapsDelegate = mapsDelegate
 
         moduleRepository.makeRootModule(self)
     }
@@ -146,7 +149,8 @@ class ApplicationDirector: RootModuleDelegate, TutorialModuleDelegate, PreloadMo
                                         newsDelegate: newsDelegate,
                                         scheduleDelegate: scheduleDelegate,
                                         dealersDelegate: dealersDelegate,
-                                        knowledgeDelegate: knowledgeDelegate)
+                                        knowledgeDelegate: knowledgeDelegate,
+                                        mapsDelegate: mapsDelegate)
         
     }
 

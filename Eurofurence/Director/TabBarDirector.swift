@@ -23,6 +23,7 @@ class TabBarDirector: NewsModuleDelegate, ScheduleModuleDelegate,
     private let scheduleDelegate: ScheduleModuleDelegate?
     private let dealersDelegate: DealersModuleDelegate?
     private let knowledgeDelegate: KnowledgeGroupsListModuleDelegate?
+    private let mapsDelegate: MapsModuleDelegate?
     
     private var tabController: UITabBarController?
     private var newsController: UIViewController?
@@ -44,7 +45,8 @@ class TabBarDirector: NewsModuleDelegate, ScheduleModuleDelegate,
          newsDelegate: NewsModuleDelegate?,
          scheduleDelegate: ScheduleModuleDelegate?,
          dealersDelegate: DealersModuleDelegate?,
-         knowledgeDelegate: KnowledgeGroupsListModuleDelegate?) {
+         knowledgeDelegate: KnowledgeGroupsListModuleDelegate?,
+         mapsDelegate: MapsModuleDelegate?) {
         self.animate = animate
         self.moduleRepository = moduleRepository
         self.navigationControllerFactory = navigationControllerFactory
@@ -57,6 +59,7 @@ class TabBarDirector: NewsModuleDelegate, ScheduleModuleDelegate,
         self.scheduleDelegate = scheduleDelegate
         self.dealersDelegate = dealersDelegate
         self.knowledgeDelegate = knowledgeDelegate
+        self.mapsDelegate = mapsDelegate
         
         saveTabOrder = SaveTabOrderWhenCustomizationFinishes(orderingPolicy: orderingPolicy)
         
@@ -359,7 +362,7 @@ class TabBarDirector: NewsModuleDelegate, ScheduleModuleDelegate,
     }
     
     private func makeMapsNavigationController() -> UINavigationController {
-        let mapsModule = moduleRepository.makeMapsModule(self)
+        let mapsModule = moduleRepository.makeMapsModule(mapsDelegate ?? self)
         self.mapsModule = mapsModule
         
         return makeRootNavigationController(forModuleViewController: mapsModule)

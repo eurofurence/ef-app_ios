@@ -1,6 +1,6 @@
 import Foundation
 
-public struct MapContentRouter {
+public struct MapContentRoute {
     
     private let mapModuleProviding: MapDetailModuleProviding
     private let contentWireframe: ContentWireframe
@@ -18,7 +18,7 @@ public struct MapContentRouter {
     
 }
 
-extension MapContentRouter: ContentRoute {
+extension MapContentRoute: ContentRoute {
     
     public typealias Content = MapContentRepresentation
     

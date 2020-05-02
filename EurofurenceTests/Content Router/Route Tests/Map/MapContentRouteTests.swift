@@ -3,7 +3,7 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import XCTest
 
-class MapContentRouterTests: XCTestCase {
+class MapContentRouteTests: XCTestCase {
     
     func testShowsMapDetail() {
         let map = MapIdentifier.random
@@ -11,7 +11,7 @@ class MapContentRouterTests: XCTestCase {
         let mapModuleProviding = StubMapDetailModuleProviding()
         let contentWireframe = CapturingContentWireframe()
         let delegate = CapturingMapDetailModuleDelegate()
-        let route = MapContentRouter(
+        let route = MapContentRoute(
             mapModuleProviding: mapModuleProviding,
             contentWireframe: contentWireframe,
             delegate: delegate
@@ -29,7 +29,7 @@ class MapContentRouterTests: XCTestCase {
         let mapModuleProviding = StubMapDetailModuleProviding()
         let contentWireframe = CapturingContentWireframe()
         let delegate = CapturingMapDetailModuleDelegate()
-        let route = MapContentRouter(
+        let route = MapContentRoute(
             mapModuleProviding: mapModuleProviding,
             contentWireframe: contentWireframe,
             delegate: delegate

@@ -85,13 +85,15 @@ class ApplicationStack {
         let newsSubrouter = NewsSubrouter(router: router)
         let scheduleSubrouter = ShowEventFromSchedule(router: router)
         let dealerSubrouter = ShowDealerFromDealers(router: router)
-        let knowledgeSubroute = ShowKnowledgeContentFromListing(router: router)
+        let knowledgeSubrouter = ShowKnowledgeContentFromListing(router: router)
+        let mapSubrouter = ShowMapFromMaps(router: router)
         
         director = DirectorBuilder(moduleRepository: moduleRepository, linkLookupService: services.contentLinks)
             .with(newsSubrouter)
             .with(scheduleSubrouter)
             .with(dealerSubrouter)
-            .with(knowledgeSubroute)
+            .with(knowledgeSubrouter)
+            .with(mapSubrouter)
             .build()
         
         let notificationHandler = NavigateToContentNotificationResponseHandler(director: director)

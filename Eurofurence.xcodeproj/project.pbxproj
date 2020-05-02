@@ -1113,9 +1113,9 @@
 		CAFA06FA245DD64D00A807F5 /* ShowKnowledgeContentFromListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFA06F9245DD64C00A807F5 /* ShowKnowledgeContentFromListing.swift */; };
 		CAFA06FC245DD9F400A807F5 /* ShowKnowledgeContentFromGroupListingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFA06FB245DD9F400A807F5 /* ShowKnowledgeContentFromGroupListingTests.swift */; };
 		CAFA06FE245DDAD500A807F5 /* ShowKnowledgeContentFromGroupListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFA06FD245DDAD500A807F5 /* ShowKnowledgeContentFromGroupListing.swift */; };
-		CAFA0701245DEC3500A807F5 /* MapContentRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFA0700245DEC3500A807F5 /* MapContentRouterTests.swift */; };
+		CAFA0701245DEC3500A807F5 /* MapContentRouteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFA0700245DEC3500A807F5 /* MapContentRouteTests.swift */; };
 		CAFA0704245DEE2B00A807F5 /* MapContentRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFA0703245DEE2B00A807F5 /* MapContentRepresentation.swift */; };
-		CAFA0706245DEE3E00A807F5 /* MapContentRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFA0705245DEE3E00A807F5 /* MapContentRouter.swift */; };
+		CAFA0706245DEE3E00A807F5 /* MapContentRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFA0705245DEE3E00A807F5 /* MapContentRoute.swift */; };
 		CAFA0708245DEEC800A807F5 /* ShowMapFromMapsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFA0707245DEEC800A807F5 /* ShowMapFromMapsTests.swift */; };
 		CAFA070A245DEF6F00A807F5 /* ShowMapFromMaps.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFA0709245DEF6F00A807F5 /* ShowMapFromMaps.swift */; };
 		D0448F94EED4B9FB5C3B07CD /* Pods-Eurofurence-EurofurenceTests-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3394169A8659D343AAB772B2 /* Pods-Eurofurence-EurofurenceTests-settings-metadata.plist */; };
@@ -2321,9 +2321,9 @@
 		CAFA06F9245DD64C00A807F5 /* ShowKnowledgeContentFromListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowKnowledgeContentFromListing.swift; sourceTree = "<group>"; };
 		CAFA06FB245DD9F400A807F5 /* ShowKnowledgeContentFromGroupListingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowKnowledgeContentFromGroupListingTests.swift; sourceTree = "<group>"; };
 		CAFA06FD245DDAD500A807F5 /* ShowKnowledgeContentFromGroupListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowKnowledgeContentFromGroupListing.swift; sourceTree = "<group>"; };
-		CAFA0700245DEC3500A807F5 /* MapContentRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapContentRouterTests.swift; sourceTree = "<group>"; };
+		CAFA0700245DEC3500A807F5 /* MapContentRouteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapContentRouteTests.swift; sourceTree = "<group>"; };
 		CAFA0703245DEE2B00A807F5 /* MapContentRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapContentRepresentation.swift; sourceTree = "<group>"; };
-		CAFA0705245DEE3E00A807F5 /* MapContentRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapContentRouter.swift; sourceTree = "<group>"; };
+		CAFA0705245DEE3E00A807F5 /* MapContentRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapContentRoute.swift; sourceTree = "<group>"; };
 		CAFA0707245DEEC800A807F5 /* ShowMapFromMapsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMapFromMapsTests.swift; sourceTree = "<group>"; };
 		CAFA0709245DEF6F00A807F5 /* ShowMapFromMaps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMapFromMaps.swift; sourceTree = "<group>"; };
 		CE2BA268DF915CD181D6DD26 /* Pods-Eurofurence-EurofurenceUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eurofurence-EurofurenceUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Eurofurence-EurofurenceUITests/Pods-Eurofurence-EurofurenceUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -6259,7 +6259,7 @@
 		CAFA06FF245DEC2200A807F5 /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				CAFA0700245DEC3500A807F5 /* MapContentRouterTests.swift */,
+				CAFA0700245DEC3500A807F5 /* MapContentRouteTests.swift */,
 				CAFA0707245DEEC800A807F5 /* ShowMapFromMapsTests.swift */,
 			);
 			path = Map;
@@ -6269,7 +6269,7 @@
 			isa = PBXGroup;
 			children = (
 				CAFA0703245DEE2B00A807F5 /* MapContentRepresentation.swift */,
-				CAFA0705245DEE3E00A807F5 /* MapContentRouter.swift */,
+				CAFA0705245DEE3E00A807F5 /* MapContentRoute.swift */,
 				CAFA0709245DEF6F00A807F5 /* ShowMapFromMaps.swift */,
 			);
 			path = Map;
@@ -6879,7 +6879,7 @@
 				CA6EC47F2051CBC800402894 /* KnowledgeDetailScene.swift in Sources */,
 				CA73AEE9201A088C004E77BF /* KnowledgeListSceneDelegate.swift in Sources */,
 				CA36A45C20D8472E00EE6537 /* DealersViewModel.swift in Sources */,
-				CAFA0706245DEE3E00A807F5 /* MapContentRouter.swift in Sources */,
+				CAFA0706245DEE3E00A807F5 /* MapContentRoute.swift in Sources */,
 				CA50B1B6226111080091E425 /* EventFeedbackSceneDelegate.swift in Sources */,
 				CA630C0722A0696D00754C27 /* ViewEventIntentDefinition.swift in Sources */,
 				CA50B1BC2261112D0091E425 /* EventFeedbackSceneFactory.swift in Sources */,
@@ -7494,7 +7494,7 @@
 				CA27257F211394C4004C6D0A /* NewsPresenterSponsorIconBindingTests.swift in Sources */,
 				CACF1EA220B59C3A00D904B5 /* EventDescriptionViewModel+RandomValueProviding.swift in Sources */,
 				781A94381F1A19BD002DE70F /* CapturingFirebaseAdapter.swift in Sources */,
-				CAFA0701245DEC3500A807F5 /* MapContentRouterTests.swift in Sources */,
+				CAFA0701245DEC3500A807F5 /* MapContentRouteTests.swift in Sources */,
 				CA36A4C420DA759800EE6537 /* CapturingDealersSearchViewModel.swift in Sources */,
 				CA637550208CBBA000536BE2 /* StubTabModuleFactory.swift in Sources */,
 				CA44C37E211CAF29003C1C4E /* NewsPresenterPhotoshootIconBindingTests.swift in Sources */,

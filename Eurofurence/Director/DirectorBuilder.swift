@@ -92,6 +92,14 @@ class DirectorBuilder {
         self.knowledgeDelegate = knowledgeDelegate
         return self
     }
+    
+    private var mapsDelegate: MapsModuleDelegate?
+    
+    @discardableResult
+    func with(_ mapsDelegate: MapsModuleDelegate) -> Self {
+        self.mapsDelegate = mapsDelegate
+        return self
+    }
 
     func build() -> ApplicationDirector {
         return ApplicationDirector(animate: animate,
@@ -105,7 +113,8 @@ class DirectorBuilder {
                                    newsDelegate: newsDelegate,
                                    scheduleDelegate: scheduleDelegate,
                                    dealersDelegate: dealersDelegate,
-                                   knowledgeDelegate: knowledgeDelegate)
+                                   knowledgeDelegate: knowledgeDelegate,
+                                   mapsDelegate: mapsDelegate)
     }
 
 }
