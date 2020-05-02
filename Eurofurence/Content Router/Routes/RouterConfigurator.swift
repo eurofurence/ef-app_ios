@@ -108,18 +108,10 @@ struct RouterConfigurator {
     }
     
     private func configureKnowledgeEntriesRoute() {
-        struct DummyDelegate: KnowledgeGroupEntriesModuleDelegate {
-            
-            func knowledgeGroupEntriesModuleDidSelectKnowledgeEntry(identifier: KnowledgeEntryIdentifier) {
-                
-            }
-            
-        }
-        
         router.add(KnowledgeGroupContentRoute(
             knowledgeGroupModuleProviding: moduleRepository.knowledgeGroupEntriesModule,
             contentWireframe: contentWireframe,
-            delegate: DummyDelegate()
+            delegate: ShowKnowledgeContentFromGroupListing(router: router)
         ))
     }
     
