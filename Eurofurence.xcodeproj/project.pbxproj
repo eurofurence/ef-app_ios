@@ -1113,6 +1113,9 @@
 		CAFA06FA245DD64D00A807F5 /* ShowKnowledgeContentFromListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFA06F9245DD64C00A807F5 /* ShowKnowledgeContentFromListing.swift */; };
 		CAFA06FC245DD9F400A807F5 /* ShowKnowledgeContentFromGroupListingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFA06FB245DD9F400A807F5 /* ShowKnowledgeContentFromGroupListingTests.swift */; };
 		CAFA06FE245DDAD500A807F5 /* ShowKnowledgeContentFromGroupListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFA06FD245DDAD500A807F5 /* ShowKnowledgeContentFromGroupListing.swift */; };
+		CAFA0701245DEC3500A807F5 /* MapContentRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFA0700245DEC3500A807F5 /* MapContentRouterTests.swift */; };
+		CAFA0704245DEE2B00A807F5 /* MapContentRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFA0703245DEE2B00A807F5 /* MapContentRepresentation.swift */; };
+		CAFA0706245DEE3E00A807F5 /* MapContentRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFA0705245DEE3E00A807F5 /* MapContentRouter.swift */; };
 		D0448F94EED4B9FB5C3B07CD /* Pods-Eurofurence-EurofurenceTests-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3394169A8659D343AAB772B2 /* Pods-Eurofurence-EurofurenceTests-settings-metadata.plist */; };
 		F6AA212665A84829CF0EB371 /* Pods_Eurofurence_Screenshots.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0019020918F90989AA4BDE21 /* Pods_Eurofurence_Screenshots.framework */; };
 		FDA174B75DF6670FE6F9D0FE /* Pods-Eurofurence-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = FCB5D8F683D64BAB8D2FB3BF /* Pods-Eurofurence-settings-metadata.plist */; };
@@ -2316,6 +2319,9 @@
 		CAFA06F9245DD64C00A807F5 /* ShowKnowledgeContentFromListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowKnowledgeContentFromListing.swift; sourceTree = "<group>"; };
 		CAFA06FB245DD9F400A807F5 /* ShowKnowledgeContentFromGroupListingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowKnowledgeContentFromGroupListingTests.swift; sourceTree = "<group>"; };
 		CAFA06FD245DDAD500A807F5 /* ShowKnowledgeContentFromGroupListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowKnowledgeContentFromGroupListing.swift; sourceTree = "<group>"; };
+		CAFA0700245DEC3500A807F5 /* MapContentRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapContentRouterTests.swift; sourceTree = "<group>"; };
+		CAFA0703245DEE2B00A807F5 /* MapContentRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapContentRepresentation.swift; sourceTree = "<group>"; };
+		CAFA0705245DEE3E00A807F5 /* MapContentRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapContentRouter.swift; sourceTree = "<group>"; };
 		CE2BA268DF915CD181D6DD26 /* Pods-Eurofurence-EurofurenceUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eurofurence-EurofurenceUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Eurofurence-EurofurenceUITests/Pods-Eurofurence-EurofurenceUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D48DFBCB82C7548D555B2169 /* Pods-Eurofurence-ScreenshotGenerator-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Eurofurence-ScreenshotGenerator-metadata.plist"; path = "Pods/Pods-Eurofurence-ScreenshotGenerator-metadata.plist"; sourceTree = "<group>"; };
 		DAF82756531E9F6E398091C2 /* Pods-Eurofurence-ScreenshotGenerator-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Eurofurence-ScreenshotGenerator-settings-metadata.plist"; path = "Eurofurence/Settings.bundle/Pods-Eurofurence-ScreenshotGenerator-settings-metadata.plist"; sourceTree = "<group>"; };
@@ -5850,6 +5856,7 @@
 				CAD4F76A245C472B0036ADAF /* Event Feedback */,
 				CA63A751245DC3D900E4B313 /* Knowledge */,
 				CAA28896245D6EC20090B663 /* Login */,
+				CAFA0702245DEE2400A807F5 /* Map */,
 				CAA28884245C79320090B663 /* Message */,
 				CAA2887C245C72C20090B663 /* Messages */,
 				CAA2888D245C9A630090B663 /* News */,
@@ -5897,6 +5904,7 @@
 				CAD4F767245C45A90036ADAF /* Event Feedback */,
 				CA63A74E245DC12200E4B313 /* Knowledge */,
 				CAA28893245D69F00090B663 /* Login */,
+				CAFA06FF245DEC2200A807F5 /* Map */,
 				CAA28881245C77B90090B663 /* Message */,
 				CAA28879245C6D090090B663 /* Messages */,
 				CAA2888E245C9A710090B663 /* News */,
@@ -6242,6 +6250,23 @@
 				CA1ECB401FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift */,
 			);
 			path = Messages;
+			sourceTree = "<group>";
+		};
+		CAFA06FF245DEC2200A807F5 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				CAFA0700245DEC3500A807F5 /* MapContentRouterTests.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		CAFA0702245DEE2400A807F5 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				CAFA0703245DEE2B00A807F5 /* MapContentRepresentation.swift */,
+				CAFA0705245DEE3E00A807F5 /* MapContentRouter.swift */,
+			);
+			path = Map;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -6847,6 +6872,7 @@
 				CA6EC47F2051CBC800402894 /* KnowledgeDetailScene.swift in Sources */,
 				CA73AEE9201A088C004E77BF /* KnowledgeListSceneDelegate.swift in Sources */,
 				CA36A45C20D8472E00EE6537 /* DealersViewModel.swift in Sources */,
+				CAFA0706245DEE3E00A807F5 /* MapContentRouter.swift in Sources */,
 				CA50B1B6226111080091E425 /* EventFeedbackSceneDelegate.swift in Sources */,
 				CA630C0722A0696D00754C27 /* ViewEventIntentDefinition.swift in Sources */,
 				CA50B1BC2261112D0091E425 /* EventFeedbackSceneFactory.swift in Sources */,
@@ -7168,6 +7194,7 @@
 				CA08B0FB22EDF6BE00FDAAA7 /* EurofurenceDateIntervalFormatter.swift in Sources */,
 				CA637586208CDE5D00536BE2 /* ScheduleModule.swift in Sources */,
 				CAC1E12B1F5040E100195513 /* NewsScene.swift in Sources */,
+				CAFA0704245DEE2B00A807F5 /* MapContentRepresentation.swift in Sources */,
 				CA6A8D7120E2649C007536CD /* MapsModule.swift in Sources */,
 				CA8276B3204EC013006A7419 /* ApplicationPreloadInteractor.swift in Sources */,
 				CA30EAD01F27D8620053DBF6 /* MessageTableViewCell.swift in Sources */,
@@ -7460,6 +7487,7 @@
 				CA27257F211394C4004C6D0A /* NewsPresenterSponsorIconBindingTests.swift in Sources */,
 				CACF1EA220B59C3A00D904B5 /* EventDescriptionViewModel+RandomValueProviding.swift in Sources */,
 				781A94381F1A19BD002DE70F /* CapturingFirebaseAdapter.swift in Sources */,
+				CAFA0701245DEC3500A807F5 /* MapContentRouterTests.swift in Sources */,
 				CA36A4C420DA759800EE6537 /* CapturingDealersSearchViewModel.swift in Sources */,
 				CA637550208CBBA000536BE2 /* StubTabModuleFactory.swift in Sources */,
 				CA44C37E211CAF29003C1C4E /* NewsPresenterPhotoshootIconBindingTests.swift in Sources */,

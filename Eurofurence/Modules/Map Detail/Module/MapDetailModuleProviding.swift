@@ -1,8 +1,11 @@
 import EurofurenceModel
 import UIKit
 
-protocol MapDetailModuleProviding {
+public protocol MapDetailModuleProviding {
 
-    func makeMapDetailModule(for map: MapIdentifier, delegate: MapDetailModuleDelegate) -> UIViewController
+    func makeMapDetailModule(
+        for map: MapIdentifier,
+        delegate: MapDetailModuleDelegate
+    ) -> UIViewController
 
 }
