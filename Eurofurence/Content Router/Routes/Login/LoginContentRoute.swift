@@ -1,4 +1,5 @@
 import Foundation
+import UIKit.UIViewController
 
 public struct LoginContentRoute {
     
@@ -22,19 +23,25 @@ extension LoginContentRoute: ContentRoute {
     public typealias Content = LoginContentRepresentation
     
     public func route(_ content: LoginContentRepresentation) {
-        let contentController = loginModuleFactory.makeLoginModule(
-            MapResponseToBlock(completionHandler: content.completionHandler)
-        )
+        let delegate = MapResponseToBlock(completionHandler: content.completionHandler)
+        let contentController = loginModuleFactory.makeLoginModule(delegate)
+        delegate.viewController = contentController
         
         modalWireframe.presentModalContentController(contentController)
     }
     
-    private struct MapResponseToBlock: LoginModuleDelegate {
+    private class MapResponseToBlock: LoginModuleDelegate {
         
-        var completionHandler: (Bool) -> Void
+        private let completionHandler: (Bool) -> Void
+        var viewController: UIViewController?
+        
+        init(completionHandler: @escaping (Bool) -> Void) {
+            self.completionHandler = completionHandler
+        }
         
         func loginModuleDidCancelLogin() {
             completionHandler(false)
+            viewController?.dismiss(animated: true)
         }
         
         func loginModuleDidLoginSuccessfully() {

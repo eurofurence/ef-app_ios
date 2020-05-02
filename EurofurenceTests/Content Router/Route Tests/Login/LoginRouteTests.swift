@@ -29,9 +29,13 @@ class LoginRouteTests: XCTestCase {
         )
         
         route.route(content)
+        
+        XCTAssertFalse(loginModuleFactory.stubInterface.didDismissPresentedController)
+        
         loginModuleFactory.simulateLoginCancelled()
         
         XCTAssertEqual(false, didLogin)
+        XCTAssertTrue(loginModuleFactory.stubInterface.didDismissPresentedController)
     }
     
     func testPropogatesLoginSuccess() {
