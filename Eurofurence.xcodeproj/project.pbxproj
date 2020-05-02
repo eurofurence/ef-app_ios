@@ -965,6 +965,9 @@
 		CACF26CF20FE590600EDE150 /* WhenSceneChangesSearchScopeToAllEvents_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF26CE20FE590600EDE150 /* WhenSceneChangesSearchScopeToAllEvents_SchedulePresenterShould.swift */; };
 		CACF26D120FE5B8300EDE150 /* WhenToldToFilterToFavouriteEvents_ScheduleInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF26D020FE5B8300EDE150 /* WhenToldToFilterToFavouriteEvents_ScheduleInteractorShould.swift */; };
 		CACF26D320FE5D2C00EDE150 /* WhenToldToFilterToAllEvents_ScheduleInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF26D220FE5D2C00EDE150 /* WhenToldToFilterToAllEvents_ScheduleInteractorShould.swift */; };
+		CAD04181245D87FA00B86950 /* AuthenticatedRouteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD04180245D87FA00B86950 /* AuthenticatedRouteTests.swift */; };
+		CAD04182245D881900B86950 /* AuthenticatedRouteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD0417D245D82EE00B86950 /* AuthenticatedRouteTests.swift */; };
+		CAD04184245D884D00B86950 /* RouteAuthenticationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD04183245D884D00B86950 /* RouteAuthenticationHandler.swift */; };
 		CAD234311F5D7156004BB959 /* MessagesPresenterTestContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD234301F5D7156004BB959 /* MessagesPresenterTestContext.swift */; };
 		CAD234351F5D719F004BB959 /* CapturingMessagesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD234341F5D719F004BB959 /* CapturingMessagesScene.swift */; };
 		CAD2343C1F5D7203004BB959 /* MessagesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD2343B1F5D7203004BB959 /* MessagesScene.swift */; };
@@ -2128,6 +2131,9 @@
 		CACF26CE20FE590600EDE150 /* WhenSceneChangesSearchScopeToAllEvents_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSceneChangesSearchScopeToAllEvents_SchedulePresenterShould.swift; sourceTree = "<group>"; };
 		CACF26D020FE5B8300EDE150 /* WhenToldToFilterToFavouriteEvents_ScheduleInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToFilterToFavouriteEvents_ScheduleInteractorShould.swift; sourceTree = "<group>"; };
 		CACF26D220FE5D2C00EDE150 /* WhenToldToFilterToAllEvents_ScheduleInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToFilterToAllEvents_ScheduleInteractorShould.swift; sourceTree = "<group>"; };
+		CAD0417D245D82EE00B86950 /* AuthenticatedRouteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatedRouteTests.swift; sourceTree = "<group>"; };
+		CAD04180245D87FA00B86950 /* AuthenticatedRouteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatedRouteTests.swift; sourceTree = "<group>"; };
+		CAD04183245D884D00B86950 /* RouteAuthenticationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteAuthenticationHandler.swift; sourceTree = "<group>"; };
 		CAD234301F5D7156004BB959 /* MessagesPresenterTestContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesPresenterTestContext.swift; sourceTree = "<group>"; };
 		CAD234341F5D719F004BB959 /* CapturingMessagesScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingMessagesScene.swift; sourceTree = "<group>"; };
 		CAD2343B1F5D7203004BB959 /* MessagesScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesScene.swift; sourceTree = "<group>"; };
@@ -5577,6 +5583,23 @@
 			path = Default;
 			sourceTree = "<group>";
 		};
+		CAD0417C245D82E200B86950 /* Authenticated */ = {
+			isa = PBXGroup;
+			children = (
+				CAD0417D245D82EE00B86950 /* AuthenticatedRouteTests.swift */,
+				CAD04183245D884D00B86950 /* RouteAuthenticationHandler.swift */,
+			);
+			path = Authenticated;
+			sourceTree = "<group>";
+		};
+		CAD0417F245D87EF00B86950 /* Authenticated */ = {
+			isa = PBXGroup;
+			children = (
+				CAD04180245D87FA00B86950 /* AuthenticatedRouteTests.swift */,
+			);
+			path = Authenticated;
+			sourceTree = "<group>";
+		};
 		CAD234381F5D71D9004BB959 /* Messages */ = {
 			isa = PBXGroup;
 			children = (
@@ -5629,12 +5652,13 @@
 		CAD4F747245C3A3B0036ADAF /* Routes */ = {
 			isa = PBXGroup;
 			children = (
-				CAA28896245D6EC20090B663 /* Login */,
 				CAD4F748245C3A460036ADAF /* Announcement */,
 				CAD4F776245C5B980036ADAF /* Announcements */,
+				CAD0417C245D82E200B86950 /* Authenticated */,
 				CAD4F762245C43C20036ADAF /* Dealer */,
 				CAD4F75A245C41510036ADAF /* Event */,
 				CAD4F76A245C472B0036ADAF /* Event Feedback */,
+				CAA28896245D6EC20090B663 /* Login */,
 				CAA28884245C79320090B663 /* Message */,
 				CAA2887C245C72C20090B663 /* Messages */,
 				CAA2888D245C9A630090B663 /* News */,
@@ -5673,6 +5697,7 @@
 			children = (
 				CAD4F749245C3A4C0036ADAF /* Announcement */,
 				CAD4F773245C59820036ADAF /* Announcements */,
+				CAD0417F245D87EF00B86950 /* Authenticated */,
 				CAD4F75F245C422B0036ADAF /* Dealer */,
 				CAD4F757245C3E9C0036ADAF /* Event */,
 				CAD4F767245C45A90036ADAF /* Event Feedback */,
@@ -6810,6 +6835,7 @@
 				CAD4F778245C5B9F0036ADAF /* AnnouncementsContentRoute.swift in Sources */,
 				CA283AC820EAB9D100F7D195 /* AnnouncementsBinder.swift in Sources */,
 				CAA6060720EEB4F200075A4E /* UserNotificationsScheduler.swift in Sources */,
+				CAD04182245D881900B86950 /* AuthenticatedRouteTests.swift in Sources */,
 				CA401087210FB8010056E16C /* KnowledgeGroupEntriesPresenter.swift in Sources */,
 				CA36A4EA20DB007900EE6537 /* DealerDetailModule.swift in Sources */,
 				CA401079210FAF040056E16C /* KnowledgeGroupEntriesScene.swift in Sources */,
@@ -6834,6 +6860,7 @@
 				CA2761BF20E02B93000E52AC /* CollectThemAllPresenter.swift in Sources */,
 				CAEAEC0A1FE06FA500C0EE7C /* StoryboardMessageDetailSceneFactory.swift in Sources */,
 				CA063B4420F3862500241CC9 /* ModuleOrderingPolicy.swift in Sources */,
+				CAD04184245D884D00B86950 /* RouteAuthenticationHandler.swift in Sources */,
 				CA250DE620D6F72200E7513C /* ShortFormDayAndTimeFormatter.swift in Sources */,
 				CAD4F77A245C5BB40036ADAF /* AnnouncementsContentRepresentation.swift in Sources */,
 				CA6EC48B2051CDC800402894 /* KnowledgeDetailViewController.swift in Sources */,
@@ -7082,6 +7109,7 @@
 				CA6A8D9620E2C61B007536CD /* CapturingMapComponent.swift in Sources */,
 				CAC4994A22E106BF003E1D77 /* WhenDealersSceneRevealsCategoryFilters_DealersPresenterShould.swift in Sources */,
 				CACF1E5420AE2D2700D904B5 /* WhenBuildingEventDetailModule.swift in Sources */,
+				CAD04181245D87FA00B86950 /* AuthenticatedRouteTests.swift in Sources */,
 				CA36A49F20D97FAA00EE6537 /* WhenResolvingDealerAfterDarkContent_DealersInteractorShould.swift in Sources */,
 				CADABEF42114ACA50023C3B6 /* WhenPreparingViewModel_ForSuperSponsorsOnlyEvent_EventDetailInteractorShould.swift in Sources */,
 				CA40109321107F7C0056E16C /* CapturingKnowledgeGroupEntriesModuleDelegate.swift in Sources */,
