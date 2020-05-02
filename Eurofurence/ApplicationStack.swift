@@ -138,12 +138,17 @@ class ApplicationStack {
         let directorContentRouter = DirectorContentRouter(director: director)
         activityResumer = ActivityResumer(contentLinksService: services.contentLinks, contentRouter: directorContentRouter)
         
+        let routeAuthenticationHandler = AuthenticateOnDemandRouteAuthenticationHandler(
+            service: services.authentication,
+            router: router
+        )
+        
         RouterConfigurator(
             router: router,
             contentWireframe: contentWireframe,
             modalWireframe: modalWireframe,
             moduleRepository: moduleRepository,
-            services: services
+            routeAuthenticationHandler: routeAuthenticationHandler
         ).configureRoutes()
     }
     
@@ -153,7 +158,7 @@ class ApplicationStack {
         var contentWireframe: ContentWireframe
         var modalWireframe: ModalWireframe
         var moduleRepository: ApplicationModuleRepository
-        var services: Services
+        var routeAuthenticationHandler: RouteAuthenticationHandler
         
         func configureRoutes() {
             configureAnnouncementsRoute()
@@ -211,13 +216,18 @@ class ApplicationStack {
         }
         
         private func configureMessagesRoute() {
-            router.add(MessagesContentRoute(
+            let messagesRoute = MessagesContentRoute(
                 messagesModuleProviding: moduleRepository.messagesModuleProviding,
                 contentWireframe: contentWireframe,
                 delegate: NavigateFromMessagesToMessage(
                     router: router,
                     modalWireframe: modalWireframe
                 )
+            )
+            
+            router.add(AuthenticatedRoute(
+                route: messagesRoute,
+                routeAuthenticationHandler: routeAuthenticationHandler
             ))
         }
         
