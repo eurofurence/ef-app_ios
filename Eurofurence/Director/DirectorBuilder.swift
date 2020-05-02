@@ -68,6 +68,14 @@ class DirectorBuilder {
         self.newsDelegate = newsDelegate
         return self
     }
+    
+    private var scheduleDelegate: ScheduleModuleDelegate?
+    
+    @discardableResult
+    func with(_ scheduleDelegate: ScheduleModuleDelegate) -> Self {
+        self.scheduleDelegate = scheduleDelegate
+        return self
+    }
 
     func build() -> ApplicationDirector {
         return ApplicationDirector(animate: animate,
@@ -78,7 +86,8 @@ class DirectorBuilder {
                                    windowWireframe: windowWireframe,
                                    navigationControllerFactory: navigationControllerFactory,
                                    tabModuleProviding: tabModuleProviding,
-                                   newsDelegate: newsDelegate)
+                                   newsDelegate: newsDelegate,
+                                   scheduleDelegate: scheduleDelegate)
     }
 
 }
