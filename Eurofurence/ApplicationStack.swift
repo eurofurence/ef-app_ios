@@ -143,12 +143,16 @@ class ApplicationStack {
             router: router
         )
         
+        guard let appWindow = UIApplication.shared.delegate?.window,
+              let window = appWindow else { fatalError() }
+        
         RouterConfigurator(
             router: router,
             contentWireframe: contentWireframe,
             modalWireframe: modalWireframe,
             moduleRepository: moduleRepository,
-            routeAuthenticationHandler: routeAuthenticationHandler
+            routeAuthenticationHandler: routeAuthenticationHandler,
+            window: window
         ).configureRoutes()
     }
     
@@ -159,6 +163,7 @@ class ApplicationStack {
         var modalWireframe: ModalWireframe
         var moduleRepository: ApplicationModuleRepository
         var routeAuthenticationHandler: RouteAuthenticationHandler
+        var window: UIWindow
         
         func configureRoutes() {
             configureAnnouncementsRoute()
@@ -169,6 +174,7 @@ class ApplicationStack {
             configureMessageRoute()
             configureMessagesRoute()
             configureLoginRoute()
+            configureNewsRoute()
         }
         
         private func configureAnnouncementsRoute() {
@@ -241,6 +247,12 @@ class ApplicationStack {
             router.add(LoginContentRoute(
                 loginModuleFactory: formSheetWrapper,
                 modalWireframe: modalWireframe
+            ))
+        }
+        
+        private func configureNewsRoute() {
+            router.add(NewsContentRoute(
+                newsPresentation: ExplicitTabManipulationNewsPresentation(window: window)
             ))
         }
         
