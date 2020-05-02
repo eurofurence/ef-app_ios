@@ -58,10 +58,11 @@ class ApplicationStack {
             shareableURLFactory: CIDBasedShareableURLFactory(conventionIdentifier: ApplicationStack.CID)
         )
         
+        let urlOpener = AppURLOpener()
         session = EurofurenceSessionBuilder(mandatory: mandatory)
             .with(remoteNotificationsTokenRegistration)
             .with(ApplicationSignificantTimeChangeAdapter())
-            .with(AppURLOpener())
+            .with(urlOpener)
             .with(ApplicationLongRunningTaskManager())
             .with(UIKitMapCoordinateRender())
             .with(UpdateRemoteConfigRefreshCollaboration(remoteConfigurationLoader: remoteConfigurationLoader))
@@ -84,11 +85,13 @@ class ApplicationStack {
         let newsSubrouter = NewsSubrouter(router: router)
         let scheduleSubrouter = ShowEventFromSchedule(router: router)
         let dealerSubrouter = ShowDealerFromDealers(router: router)
+        let knowledgeSubroute = ShowKnowledgeContentFromListing(router: router)
         
         director = DirectorBuilder(moduleRepository: moduleRepository, linkLookupService: services.contentLinks)
             .with(newsSubrouter)
             .with(scheduleSubrouter)
             .with(dealerSubrouter)
+            .with(knowledgeSubroute)
             .build()
         
         let notificationHandler = NavigateToContentNotificationResponseHandler(director: director)
@@ -115,6 +118,8 @@ class ApplicationStack {
             modalWireframe: modalWireframe,
             moduleRepository: moduleRepository,
             routeAuthenticationHandler: routeAuthenticationHandler,
+            linksService: services.contentLinks,
+            urlOpener: urlOpener,
             window: window
         ).configureRoutes()
     }

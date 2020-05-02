@@ -22,6 +22,7 @@ class TabBarDirector: NewsModuleDelegate, ScheduleModuleDelegate,
     private let newsDelegate: NewsModuleDelegate?
     private let scheduleDelegate: ScheduleModuleDelegate?
     private let dealersDelegate: DealersModuleDelegate?
+    private let knowledgeDelegate: KnowledgeGroupsListModuleDelegate?
     
     private var tabController: UITabBarController?
     private var newsController: UIViewController?
@@ -42,7 +43,8 @@ class TabBarDirector: NewsModuleDelegate, ScheduleModuleDelegate,
          tabModuleProviding: TabModuleProviding,
          newsDelegate: NewsModuleDelegate?,
          scheduleDelegate: ScheduleModuleDelegate?,
-         dealersDelegate: DealersModuleDelegate?) {
+         dealersDelegate: DealersModuleDelegate?,
+         knowledgeDelegate: KnowledgeGroupsListModuleDelegate?) {
         self.animate = animate
         self.moduleRepository = moduleRepository
         self.navigationControllerFactory = navigationControllerFactory
@@ -54,6 +56,7 @@ class TabBarDirector: NewsModuleDelegate, ScheduleModuleDelegate,
         self.newsDelegate = newsDelegate
         self.scheduleDelegate = scheduleDelegate
         self.dealersDelegate = dealersDelegate
+        self.knowledgeDelegate = knowledgeDelegate
         
         saveTabOrder = SaveTabOrderWhenCustomizationFinishes(orderingPolicy: orderingPolicy)
         
@@ -349,7 +352,7 @@ class TabBarDirector: NewsModuleDelegate, ScheduleModuleDelegate,
     }
     
     private func makeKnowledgeNavigationController() -> UINavigationController {
-        let knowledgeListController = moduleRepository.makeKnowledgeListModule(self)
+        let knowledgeListController = moduleRepository.makeKnowledgeListModule(knowledgeDelegate ?? self)
         self.knowledgeListController = knowledgeListController
         
         return makeRootNavigationController(forModuleViewController: knowledgeListController)

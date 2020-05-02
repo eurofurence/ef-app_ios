@@ -8,6 +8,8 @@ struct RouterConfigurator {
     var modalWireframe: ModalWireframe
     var moduleRepository: ApplicationModuleRepository
     var routeAuthenticationHandler: RouteAuthenticationHandler
+    var linksService: ContentLinksService
+    var urlOpener: URLOpener
     var window: UIWindow
     
     func configureRoutes() {
@@ -16,10 +18,14 @@ struct RouterConfigurator {
         configureDealerRoute()
         configureEventRoute()
         configureEventFeedbackRoute()
+        configureKnowledgeEntriesRoute()
+        configureKnowledgeDetailRoute()
         configureMessageRoute()
         configureMessagesRoute()
         configureLoginRoute()
         configureNewsRoute()
+        configureWebContentRoute()
+        configureExternalApplicationContentRoute()
     }
     
     private func configureAnnouncementsRoute() {
@@ -99,6 +105,41 @@ struct RouterConfigurator {
         router.add(NewsContentRoute(
             newsPresentation: ExplicitTabManipulationNewsPresentation(window: window)
         ))
+    }
+    
+    private func configureKnowledgeEntriesRoute() {
+        struct DummyDelegate: KnowledgeGroupEntriesModuleDelegate {
+            
+            func knowledgeGroupEntriesModuleDidSelectKnowledgeEntry(identifier: KnowledgeEntryIdentifier) {
+                
+            }
+            
+        }
+        
+        router.add(KnowledgeGroupContentRoute(
+            knowledgeGroupModuleProviding: moduleRepository.knowledgeGroupEntriesModule,
+            contentWireframe: contentWireframe,
+            delegate: DummyDelegate()
+        ))
+    }
+    
+    private func configureKnowledgeDetailRoute() {
+        router.add(KnowledgeEntryContentRoute(
+            knowledgeDetailModuleProviding: moduleRepository.knowledgeDetailModuleProviding,
+            contentWireframe: contentWireframe,
+            delegate: OpenLinkFromKnowledgeEntry(router: router, linksService: linksService)
+        ))
+    }
+    
+    private func configureWebContentRoute() {
+        router.add(WebContentRoute(
+            webModuleProviding: moduleRepository.webModuleProviding,
+            modalWireframe: modalWireframe
+        ))
+    }
+    
+    private func configureExternalApplicationContentRoute() {
+        router.add(ExternalApplicationContentRoute(urlOpener: urlOpener))
     }
     
 }
