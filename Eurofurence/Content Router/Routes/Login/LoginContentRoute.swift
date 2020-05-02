@@ -33,7 +33,7 @@ extension LoginContentRoute: ContentRoute {
     private class MapResponseToBlock: LoginModuleDelegate {
         
         private let completionHandler: (Bool) -> Void
-        var viewController: UIViewController?
+        weak var viewController: UIViewController?
         
         init(completionHandler: @escaping (Bool) -> Void) {
             self.completionHandler = completionHandler
