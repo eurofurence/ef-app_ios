@@ -2,18 +2,9 @@ import EurofurenceModel
 import Foundation
 import UIKit
 
-class WindowContentWireframe: ContentWireframe {
+struct WindowContentWireframe: ContentWireframe {
     
-    static var shared: WindowContentWireframe = {
-        guard let window = UIApplication.shared.delegate?.window, let unwrappedWindow = window else { fatalError("Application has no window") }
-        return WindowContentWireframe(window: unwrappedWindow)
-    }()
-    
-    private let window: UIWindow
-    
-    private init(window: UIWindow) {
-        self.window = window
-    }
+    var window: UIWindow
     
     func presentMasterContentController(_ viewController: UIViewController) {
         window.rootViewController?.show(viewController, sender: nil)
@@ -25,18 +16,9 @@ class WindowContentWireframe: ContentWireframe {
     
 }
 
-class WindowModalWireframe: ModalWireframe {
+struct WindowModalWireframe: ModalWireframe {
     
-    static var shared: WindowModalWireframe = {
-        guard let window = UIApplication.shared.delegate?.window, let unwrappedWindow = window else { fatalError("Application has no window") }
-        return WindowModalWireframe(window: unwrappedWindow)
-    }()
-    
-    private let window: UIWindow
-    
-    private init(window: UIWindow) {
-        self.window = window
-    }
+    var window: UIWindow
     
     func presentModalContentController(_ viewController: UIViewController, completion: (() -> Void)?) {
         window.rootViewController?.present(viewController, animated: true, completion: completion)
@@ -120,8 +102,7 @@ class ApplicationStack {
                                                                         hoursDateFormatter: FoundationHoursDateFormatter.shared,
                                                                         upcomingEventReminderInterval: upcomingEventReminderInterval)
         
-        let contentWireframe = WindowContentWireframe.shared
-        let modalWireframe = WindowModalWireframe.shared
+        
         let router = MutableContentRouter()
         
         let moduleRepository = ApplicationModuleRepository(services: services, repositories: session.repositories)
@@ -145,6 +126,9 @@ class ApplicationStack {
         
         guard let appWindow = UIApplication.shared.delegate?.window,
               let window = appWindow else { fatalError() }
+        
+        let contentWireframe = WindowContentWireframe(window: window)
+        let modalWireframe = WindowModalWireframe(window: window)
         
         RouterConfigurator(
             router: router,
