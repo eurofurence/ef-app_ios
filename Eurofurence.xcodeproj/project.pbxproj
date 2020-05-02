@@ -973,6 +973,7 @@
 		CAD0418B245D907200B86950 /* RouteAuthenticationHandlerTestDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD0418A245D907200B86950 /* RouteAuthenticationHandlerTestDoubles.swift */; };
 		CAD0418D245D9AAE00B86950 /* LeaveFeedbackFromEventNavigatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD0418C245D9AAE00B86950 /* LeaveFeedbackFromEventNavigatorTests.swift */; };
 		CAD0418F245D9C4300B86950 /* LeaveFeedbackFromEventNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD0418E245D9C4300B86950 /* LeaveFeedbackFromEventNavigator.swift */; };
+		CAD04191245DA17400B86950 /* FormSheetEventFeedbackModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD04190245DA17400B86950 /* FormSheetEventFeedbackModuleProviding.swift */; };
 		CAD234311F5D7156004BB959 /* MessagesPresenterTestContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD234301F5D7156004BB959 /* MessagesPresenterTestContext.swift */; };
 		CAD234351F5D719F004BB959 /* CapturingMessagesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD234341F5D719F004BB959 /* CapturingMessagesScene.swift */; };
 		CAD2343C1F5D7203004BB959 /* MessagesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD2343B1F5D7203004BB959 /* MessagesScene.swift */; };
@@ -2144,6 +2145,7 @@
 		CAD0418A245D907200B86950 /* RouteAuthenticationHandlerTestDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteAuthenticationHandlerTestDoubles.swift; sourceTree = "<group>"; };
 		CAD0418C245D9AAE00B86950 /* LeaveFeedbackFromEventNavigatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveFeedbackFromEventNavigatorTests.swift; sourceTree = "<group>"; };
 		CAD0418E245D9C4300B86950 /* LeaveFeedbackFromEventNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveFeedbackFromEventNavigator.swift; sourceTree = "<group>"; };
+		CAD04190245DA17400B86950 /* FormSheetEventFeedbackModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormSheetEventFeedbackModuleProviding.swift; sourceTree = "<group>"; };
 		CAD234301F5D7156004BB959 /* MessagesPresenterTestContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesPresenterTestContext.swift; sourceTree = "<group>"; };
 		CAD234341F5D719F004BB959 /* CapturingMessagesScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingMessagesScene.swift; sourceTree = "<group>"; };
 		CAD2343B1F5D7203004BB959 /* MessagesScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesScene.swift; sourceTree = "<group>"; };
@@ -3790,11 +3792,12 @@
 		CA50B1A72261108C0091E425 /* Event Feedback */ = {
 			isa = PBXGroup;
 			children = (
+				CA152ECB2265129B00212742 /* EventFeedbackModuleDelegate.swift */,
 				CA50B1AA226110B00091E425 /* EventFeedbackModuleProviding.swift */,
 				CA50B1A92261109D0091E425 /* Module */,
 				CA50B1A8226110980091E425 /* Presenter */,
 				CA50B1B4226110FE0091E425 /* Scene */,
-				CA152ECB2265129B00212742 /* EventFeedbackModuleDelegate.swift */,
+				CAD04190245DA17400B86950 /* FormSheetEventFeedbackModuleProviding.swift */,
 			);
 			path = "Event Feedback";
 			sourceTree = "<group>";
@@ -5240,12 +5243,12 @@
 		CABA43841FBC6FD3009CB5B0 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				CAA2889B245D71FD0090B663 /* FormSheetLoginModuleProviding.swift */,
 				CA6AA0001FD6C5FD0092C6DB /* LoginModuleBuilder.swift */,
 				CABA43851FBC6FE1009CB5B0 /* LoginModuleProviding.swift */,
 				CABA43AE1FD5DC96009CB5B0 /* Module */,
 				CABA43AA1FD5DB98009CB5B0 /* Presenter */,
 				CABA43AD1FD5DC7C009CB5B0 /* View */,
-				CAA2889B245D71FD0090B663 /* FormSheetLoginModuleProviding.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -6868,6 +6871,7 @@
 				CAD4F76C245C47360036ADAF /* EventFeedbackContentRepresentation.swift in Sources */,
 				CAD4F75C245C41590036ADAF /* EventContentRepresentation.swift in Sources */,
 				CAEAEBF71FDEB61100C0EE7C /* MessageDetailModuleBuilder.swift in Sources */,
+				CAD04191245DA17400B86950 /* FormSheetEventFeedbackModuleProviding.swift in Sources */,
 				CA79924722451A4800DF1F84 /* NotificationScheduler.swift in Sources */,
 				CA89CBAD207F802400570D54 /* NewsInteractor.swift in Sources */,
 				CA6A8DE020E418EE007536CD /* MapDetailViewController.swift in Sources */,

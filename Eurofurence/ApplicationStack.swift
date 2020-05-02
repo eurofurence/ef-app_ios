@@ -203,7 +203,9 @@ class ApplicationStack {
         
         private func configureEventFeedbackRoute() {
             router.add(EventFeedbackContentRoute(
-                eventFeedbackFactory: moduleRepository.eventFeedbackModuleProviding,
+                eventFeedbackFactory: FormSheetEventFeedbackModuleProviding(
+                    eventFeedbackModuleProviding: moduleRepository.eventFeedbackModuleProviding
+                ),
                 modalWireframe: modalWireframe
             ))
         }
