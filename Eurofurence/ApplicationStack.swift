@@ -212,10 +212,8 @@ class ApplicationStack {
         
         private func configureMessagesRoute() {
             router.add(MessagesContentRoute(
-                router: router,
                 messagesModuleProviding: moduleRepository.messagesModuleProviding,
                 contentWireframe: contentWireframe,
-                authenticationService: services.authentication,
                 delegate: NavigateFromMessagesToMessage(
                     router: router,
                     modalWireframe: modalWireframe
