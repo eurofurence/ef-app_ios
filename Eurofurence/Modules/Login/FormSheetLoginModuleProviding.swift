@@ -9,10 +9,6 @@ struct FormSheetLoginModuleProviding: LoginModuleProviding {
         let navigationController = UINavigationController(rootViewController: contentController)
         navigationController.modalPresentationStyle = .formSheet
         
-        if #available(iOS 13.0, *) {
-            navigationController.isModalInPresentation = true
-        }
-        
         return navigationController
     }
     
