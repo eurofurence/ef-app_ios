@@ -40,12 +40,16 @@ extension LoginContentRoute: ContentRoute {
         }
         
         func loginModuleDidCancelLogin() {
-            completionHandler(false)
-            viewController?.dismiss(animated: true)
+            finalize(success: false)
         }
         
         func loginModuleDidLoginSuccessfully() {
-            completionHandler(true)
+            finalize(success: true)
+        }
+        
+        private func finalize(success: Bool) {
+            completionHandler(success)
+            viewController?.dismiss(animated: true)
         }
         
     }

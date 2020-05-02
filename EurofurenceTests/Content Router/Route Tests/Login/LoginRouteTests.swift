@@ -50,9 +50,13 @@ class LoginRouteTests: XCTestCase {
         )
         
         route.route(content)
+        
+        XCTAssertFalse(loginModuleFactory.stubInterface.didDismissPresentedController)
+        
         loginModuleFactory.simulateLoginSucceeded()
         
         XCTAssertEqual(true, didLogin)
+        XCTAssertTrue(loginModuleFactory.stubInterface.didDismissPresentedController)
     }
 
 }
