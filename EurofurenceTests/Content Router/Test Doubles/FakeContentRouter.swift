@@ -34,7 +34,7 @@ class FakeContentRouter: ContentRouter, ContentRepresentationRecipient {
         let unwrapper: Unwrapper<Target> = Unwrapper()
         erasedRoutedContent?.describe(to: unwrapper)
         
-        return try XCTUnwrap(unwrapper.unwrapped)
+        return try XCTUnwrap(unwrapper.unwrapped, file: file, line: line)
     }
     
     private class Unwrapper<Target>: ContentRepresentationRecipient where Target: ContentRepresentation {

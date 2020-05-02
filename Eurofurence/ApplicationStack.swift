@@ -142,7 +142,8 @@ class ApplicationStack {
             router: router,
             contentWireframe: contentWireframe,
             modalWireframe: modalWireframe,
-            moduleRepository: moduleRepository
+            moduleRepository: moduleRepository,
+            services: services
         ).configureRoutes()
     }
     
@@ -152,6 +153,7 @@ class ApplicationStack {
         var contentWireframe: ContentWireframe
         var modalWireframe: ModalWireframe
         var moduleRepository: ApplicationModuleRepository
+        var services: Services
         
         func configureRoutes() {
             configureAnnouncementsRoute()
@@ -210,8 +212,10 @@ class ApplicationStack {
         
         private func configureMessagesRoute() {
             router.add(MessagesContentRoute(
+                router: router,
                 messagesModuleProviding: moduleRepository.messagesModuleProviding,
                 contentWireframe: contentWireframe,
+                authenticationService: services.authentication,
                 delegate: NavigateFromMessagesToMessage(
                     router: router,
                     modalWireframe: modalWireframe
