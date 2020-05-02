@@ -607,6 +607,8 @@
 		CA63A760245DCE5700E4B313 /* WebContentRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63A75F245DCE5700E4B313 /* WebContentRepresentation.swift */; };
 		CA63A762245DCE6400E4B313 /* ExternalApplicationContentRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63A761245DCE6400E4B313 /* ExternalApplicationContentRepresentation.swift */; };
 		CA63A764245DCE7700E4B313 /* OpenLinkFromKnowledgeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63A763245DCE7700E4B313 /* OpenLinkFromKnowledgeEntry.swift */; };
+		CA63A767245DCF0F00E4B313 /* WebContentRouteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63A766245DCF0F00E4B313 /* WebContentRouteTests.swift */; };
+		CA63A769245DD0EA00E4B313 /* WebContentRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63A768245DD0EA00E4B313 /* WebContentRoute.swift */; };
 		CA65A877209A523400B72533 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA65A876209A523400B72533 /* UIColor+Extensions.swift */; };
 		CA65A879209A538600B72533 /* WhenLoggedInBeforeConvention_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA65A878209A538600B72533 /* WhenLoggedInBeforeConvention_NewsInteractorShould.swift */; };
 		CA65A87B209A5BDA00B72533 /* DefaultNewsInteractorTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA65A87A209A5BDA00B72533 /* DefaultNewsInteractorTestBuilder.swift */; };
@@ -1806,6 +1808,8 @@
 		CA63A75F245DCE5700E4B313 /* WebContentRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebContentRepresentation.swift; sourceTree = "<group>"; };
 		CA63A761245DCE6400E4B313 /* ExternalApplicationContentRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalApplicationContentRepresentation.swift; sourceTree = "<group>"; };
 		CA63A763245DCE7700E4B313 /* OpenLinkFromKnowledgeEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenLinkFromKnowledgeEntry.swift; sourceTree = "<group>"; };
+		CA63A766245DCF0F00E4B313 /* WebContentRouteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebContentRouteTests.swift; sourceTree = "<group>"; };
+		CA63A768245DD0EA00E4B313 /* WebContentRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebContentRoute.swift; sourceTree = "<group>"; };
 		CA65A876209A523400B72533 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		CA65A878209A538600B72533 /* WhenLoggedInBeforeConvention_NewsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLoggedInBeforeConvention_NewsInteractorShould.swift; sourceTree = "<group>"; };
 		CA65A87A209A5BDA00B72533 /* DefaultNewsInteractorTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNewsInteractorTestBuilder.swift; sourceTree = "<group>"; };
@@ -4352,8 +4356,17 @@
 		CA63A75E245DCE4D00E4B313 /* URL */ = {
 			isa = PBXGroup;
 			children = (
-				CA63A75F245DCE5700E4B313 /* WebContentRepresentation.swift */,
 				CA63A761245DCE6400E4B313 /* ExternalApplicationContentRepresentation.swift */,
+				CA63A75F245DCE5700E4B313 /* WebContentRepresentation.swift */,
+				CA63A768245DD0EA00E4B313 /* WebContentRoute.swift */,
+			);
+			path = URL;
+			sourceTree = "<group>";
+		};
+		CA63A765245DCEFC00E4B313 /* URL */ = {
+			isa = PBXGroup;
+			children = (
+				CA63A766245DCF0F00E4B313 /* WebContentRouteTests.swift */,
 			);
 			path = URL;
 			sourceTree = "<group>";
@@ -5870,6 +5883,7 @@
 				CAA28879245C6D090090B663 /* Messages */,
 				CAA2888E245C9A710090B663 /* News */,
 				CA63A742245DB93C00E4B313 /* Schedule */,
+				CA63A765245DCEFC00E4B313 /* URL */,
 			);
 			path = "Route Tests";
 			sourceTree = "<group>";
@@ -7063,6 +7077,7 @@
 				CA7992462245174800DF1F84 /* NotificationScheduleController.swift in Sources */,
 				CAA6060C20EEC06500075A4E /* DebugTableViewController.swift in Sources */,
 				CA63A753245DC3DF00E4B313 /* KnowledgeGroupContentRoute.swift in Sources */,
+				CA63A769245DD0EA00E4B313 /* WebContentRoute.swift in Sources */,
 				CA17FE8520580144005A4C05 /* LinksBinder.swift in Sources */,
 				CA8A73B522BC2FE1007A5201 /* HybridWebSceneFactory.swift in Sources */,
 				CAF81C5720DD208100898C52 /* DealerDetailLocationAndAvailabilityTableViewCell.swift in Sources */,
@@ -7587,6 +7602,7 @@
 				CA36A49720D92EF700EE6537 /* CapturingDealersViewModelDelegate.swift in Sources */,
 				CA2D080C1FE94F9900BFD785 /* TutorialModuleTestBuilder.swift in Sources */,
 				CA08B10022EF64DF00FDAAA7 /* WhenNonFavouritedEventBecomesFavourited_SchedulePresenterShould.swift in Sources */,
+				CA63A767245DCF0F00E4B313 /* WebContentRouteTests.swift in Sources */,
 				CA728441209D001B007D912A /* WhenNewsModuleSelectsAnnouncement_DirectorShould.swift in Sources */,
 				CA72846C209D1457007D912A /* AnnouncementViewModel+RandomValueProviding.swift in Sources */,
 				CAD68830208A144800B31F5F /* WhenBindingUserWithNoUnreadMessages_NewsPresenterShould.swift in Sources */,
