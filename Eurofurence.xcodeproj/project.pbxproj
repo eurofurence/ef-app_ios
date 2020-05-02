@@ -486,6 +486,8 @@
 		CA44C37A211CAD69003C1C4E /* NewsPresenterMainStageIconBindingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C379211CAD69003C1C4E /* NewsPresenterMainStageIconBindingTests.swift */; };
 		CA44C37C211CAE55003C1C4E /* SchedulePresenterPhotoshootIconBindingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C37B211CAE55003C1C4E /* SchedulePresenterPhotoshootIconBindingTests.swift */; };
 		CA44C37E211CAF29003C1C4E /* NewsPresenterPhotoshootIconBindingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C37D211CAF29003C1C4E /* NewsPresenterPhotoshootIconBindingTests.swift */; };
+		CA4908C4245DADA000DB032C /* WindowContentWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4908C3245DADA000DB032C /* WindowContentWireframe.swift */; };
+		CA4908C6245DADBA00DB032C /* WindowModalWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4908C5245DADBA00DB032C /* WindowModalWireframe.swift */; };
 		CA4C474A21DF88B9005231AD /* NotificationServiceFetchResultAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4C474921DF88B9005231AD /* NotificationServiceFetchResultAdapter.swift */; };
 		CA4FBE0E1F72FF2A00D29405 /* WhenBindingMessage_MessagesPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FBE0D1F72FF2A00D29405 /* WhenBindingMessage_MessagesPresenterShould.swift */; };
 		CA4FBE101F73047700D29405 /* CapturingDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FBE0F1F73047700D29405 /* CapturingDateFormatter.swift */; };
@@ -1666,6 +1668,8 @@
 		CA44C379211CAD69003C1C4E /* NewsPresenterMainStageIconBindingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsPresenterMainStageIconBindingTests.swift; sourceTree = "<group>"; };
 		CA44C37B211CAE55003C1C4E /* SchedulePresenterPhotoshootIconBindingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePresenterPhotoshootIconBindingTests.swift; sourceTree = "<group>"; };
 		CA44C37D211CAF29003C1C4E /* NewsPresenterPhotoshootIconBindingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsPresenterPhotoshootIconBindingTests.swift; sourceTree = "<group>"; };
+		CA4908C3245DADA000DB032C /* WindowContentWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowContentWireframe.swift; sourceTree = "<group>"; };
+		CA4908C5245DADBA00DB032C /* WindowModalWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowModalWireframe.swift; sourceTree = "<group>"; };
 		CA4C474921DF88B9005231AD /* NotificationServiceFetchResultAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationServiceFetchResultAdapter.swift; sourceTree = "<group>"; };
 		CA4FBE0D1F72FF2A00D29405 /* WhenBindingMessage_MessagesPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingMessage_MessagesPresenterShould.swift; sourceTree = "<group>"; };
 		CA4FBE0F1F73047700D29405 /* CapturingDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingDateFormatter.swift; sourceTree = "<group>"; };
@@ -3764,6 +3768,15 @@
 			path = "Interactor Tests";
 			sourceTree = "<group>";
 		};
+		CA4908C2245DACE500DB032C /* Wireframes */ = {
+			isa = PBXGroup;
+			children = (
+				CA4908C3245DADA000DB032C /* WindowContentWireframe.swift */,
+				CA4908C5245DADBA00DB032C /* WindowModalWireframe.swift */,
+			);
+			path = Wireframes;
+			sourceTree = "<group>";
+		};
 		CA50B19E22610D270091E425 /* Event Feedback */ = {
 			isa = PBXGroup;
 			children = (
@@ -5695,6 +5708,7 @@
 				CAD4F77D245C5CDE0036ADAF /* MutableContentRouter.swift */,
 				CAD4F750245C3D160036ADAF /* Route Presentation */,
 				CAD4F747245C3A3B0036ADAF /* Routes */,
+				CA4908C2245DACE500DB032C /* Wireframes */,
 			);
 			path = "Content Router";
 			sourceTree = "<group>";
@@ -6630,6 +6644,7 @@
 				CA8240A221249A69007E4A70 /* ReviewPromptAction.swift in Sources */,
 				CA283ACA20EAB9E600F7D195 /* AnnouncementComponent.swift in Sources */,
 				CA6A8DA220E2CB5C007536CD /* MapsModuleDelegate.swift in Sources */,
+				CA4908C4245DADA000DB032C /* WindowContentWireframe.swift in Sources */,
 				CA6A8D6B20E26478007536CD /* MapsScene.swift in Sources */,
 				CA17FE8B20585D9C005A4C05 /* LinkTableViewCell.swift in Sources */,
 				CA6A8D8720E2BB90007536CD /* MapsViewModel.swift in Sources */,
@@ -6759,6 +6774,7 @@
 				CA1B6F2020DB84E400ADF414 /* DealerDetailInteractor.swift in Sources */,
 				CA66C0202124CC6000F87AFE /* AppStateProviding.swift in Sources */,
 				CA6AA0041FD6C7B50092C6DB /* DirectorBuilder.swift in Sources */,
+				CA4908C6245DADBA00DB032C /* WindowModalWireframe.swift in Sources */,
 				CACF1E8820B34F8900D904B5 /* DefaultEventDetailInteractor.swift in Sources */,
 				CAD4F766245C43E00036ADAF /* DealerContentRoute.swift in Sources */,
 				CAC4993722DF994A003E1D77 /* DealerCategoryTableViewCell.swift in Sources */,

@@ -2,30 +2,6 @@ import EurofurenceModel
 import Foundation
 import UIKit
 
-struct WindowContentWireframe: ContentWireframe {
-    
-    var window: UIWindow
-    
-    func presentMasterContentController(_ viewController: UIViewController) {
-        window.rootViewController?.show(viewController, sender: nil)
-    }
-    
-    func presentDetailContentController(_ viewController: UIViewController) {
-        window.rootViewController?.showDetailViewController(viewController, sender: nil)
-    }
-    
-}
-
-struct WindowModalWireframe: ModalWireframe {
-    
-    var window: UIWindow
-    
-    func presentModalContentController(_ viewController: UIViewController, completion: (() -> Void)?) {
-        window.rootViewController?.present(viewController, animated: true, completion: completion)
-    }
-    
-}
-
 class ApplicationStack {
     
     private static let CID = ConventionIdentifier(identifier: "EF25")
