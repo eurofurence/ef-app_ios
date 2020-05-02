@@ -1,7 +1,7 @@
 import EurofurenceModel
 import Foundation
 
-protocol DealersModuleDelegate {
+public protocol DealersModuleDelegate {
 
     func dealersModuleDidSelectDealer(identifier: DealerIdentifier)
 
