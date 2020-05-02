@@ -57,5 +57,10 @@ class NavigateFromMessagesToMessageTests: XCTestCase {
         
         XCTAssertEqual(true, result)
     }
+    
+    func testRequestingDismissal() {
+        navigator.messagesModuleDidRequestDismissal()
+        router.assertRouted(to: NewsContentRepresentation())
+    }
 
 }

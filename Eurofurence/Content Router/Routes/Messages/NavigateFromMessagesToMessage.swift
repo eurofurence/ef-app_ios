@@ -20,7 +20,7 @@ public struct NavigateFromMessagesToMessage: MessagesModuleDelegate {
     }
     
     public func messagesModuleDidRequestDismissal() {
-        
+        try? router.route(NewsContentRepresentation())
     }
     
     public func showLogoutAlert(presentedHandler: @escaping (@escaping () -> Void) -> Void) {
