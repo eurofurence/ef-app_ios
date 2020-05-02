@@ -1116,6 +1116,8 @@
 		CAFA0701245DEC3500A807F5 /* MapContentRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFA0700245DEC3500A807F5 /* MapContentRouterTests.swift */; };
 		CAFA0704245DEE2B00A807F5 /* MapContentRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFA0703245DEE2B00A807F5 /* MapContentRepresentation.swift */; };
 		CAFA0706245DEE3E00A807F5 /* MapContentRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFA0705245DEE3E00A807F5 /* MapContentRouter.swift */; };
+		CAFA0708245DEEC800A807F5 /* ShowMapFromMapsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFA0707245DEEC800A807F5 /* ShowMapFromMapsTests.swift */; };
+		CAFA070A245DEF6F00A807F5 /* ShowMapFromMaps.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFA0709245DEF6F00A807F5 /* ShowMapFromMaps.swift */; };
 		D0448F94EED4B9FB5C3B07CD /* Pods-Eurofurence-EurofurenceTests-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3394169A8659D343AAB772B2 /* Pods-Eurofurence-EurofurenceTests-settings-metadata.plist */; };
 		F6AA212665A84829CF0EB371 /* Pods_Eurofurence_Screenshots.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0019020918F90989AA4BDE21 /* Pods_Eurofurence_Screenshots.framework */; };
 		FDA174B75DF6670FE6F9D0FE /* Pods-Eurofurence-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = FCB5D8F683D64BAB8D2FB3BF /* Pods-Eurofurence-settings-metadata.plist */; };
@@ -2322,6 +2324,8 @@
 		CAFA0700245DEC3500A807F5 /* MapContentRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapContentRouterTests.swift; sourceTree = "<group>"; };
 		CAFA0703245DEE2B00A807F5 /* MapContentRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapContentRepresentation.swift; sourceTree = "<group>"; };
 		CAFA0705245DEE3E00A807F5 /* MapContentRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapContentRouter.swift; sourceTree = "<group>"; };
+		CAFA0707245DEEC800A807F5 /* ShowMapFromMapsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMapFromMapsTests.swift; sourceTree = "<group>"; };
+		CAFA0709245DEF6F00A807F5 /* ShowMapFromMaps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMapFromMaps.swift; sourceTree = "<group>"; };
 		CE2BA268DF915CD181D6DD26 /* Pods-Eurofurence-EurofurenceUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eurofurence-EurofurenceUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Eurofurence-EurofurenceUITests/Pods-Eurofurence-EurofurenceUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D48DFBCB82C7548D555B2169 /* Pods-Eurofurence-ScreenshotGenerator-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Eurofurence-ScreenshotGenerator-metadata.plist"; path = "Pods/Pods-Eurofurence-ScreenshotGenerator-metadata.plist"; sourceTree = "<group>"; };
 		DAF82756531E9F6E398091C2 /* Pods-Eurofurence-ScreenshotGenerator-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Eurofurence-ScreenshotGenerator-settings-metadata.plist"; path = "Eurofurence/Settings.bundle/Pods-Eurofurence-ScreenshotGenerator-settings-metadata.plist"; sourceTree = "<group>"; };
@@ -6256,6 +6260,7 @@
 			isa = PBXGroup;
 			children = (
 				CAFA0700245DEC3500A807F5 /* MapContentRouterTests.swift */,
+				CAFA0707245DEEC800A807F5 /* ShowMapFromMapsTests.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -6265,6 +6270,7 @@
 			children = (
 				CAFA0703245DEE2B00A807F5 /* MapContentRepresentation.swift */,
 				CAFA0705245DEE3E00A807F5 /* MapContentRouter.swift */,
+				CAFA0709245DEF6F00A807F5 /* ShowMapFromMaps.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -6864,6 +6870,7 @@
 				CA6A8D6320E26247007536CD /* MapsModuleProviding.swift in Sources */,
 				CA6A8DC620E41513007536CD /* MapDetailModuleProviding.swift in Sources */,
 				CA73AEF1201A08BA004E77BF /* KnowledgeGroupsListModuleProviding.swift in Sources */,
+				CAFA070A245DEF6F00A807F5 /* ShowMapFromMaps.swift in Sources */,
 				CA987FCE22E63A4C006338FB /* ActivityInteraction.swift in Sources */,
 				CA52C69920D6B87E009D3A9E /* HideNavigationBarShadowForSpecificViewControllerDelegate.swift in Sources */,
 				2020ECCD211CDBA50036E2CF /* NSMutableAttributedString+trim.swift in Sources */,
@@ -7629,6 +7636,7 @@
 				CA8276BC204F25DF006A7419 /* InOrderToSupportSyncKnowledgeListLoading_KnowledgeListPresenterShould.swift in Sources */,
 				CA63753D208A6E4900536BE2 /* WhenLoggedOutBeforeConvention_NewsInteractorShould.swift in Sources */,
 				CA162E8B20A64352004AFED6 /* WhenLoggedOutDuringConvention_NewsInteractorShould.swift in Sources */,
+				CAFA0708245DEEC800A807F5 /* ShowMapFromMapsTests.swift in Sources */,
 				CA44C378211CAC8E003C1C4E /* SchedulePresenterMainStageIconBindingTests.swift in Sources */,
 				CA630C0522A068EA00754C27 /* CapturingLegacyContentRouter.swift in Sources */,
 				CA3ABA07229C76BE0045A35B /* FakeModuleRepository.swift in Sources */,
