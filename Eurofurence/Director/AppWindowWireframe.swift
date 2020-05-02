@@ -15,6 +15,13 @@ struct AppWindowWireframe: WindowWireframe {
     }
 
     func setRoot(_ viewController: UIViewController) {
+        let transition = CATransition()
+        transition.type = .fade
+        transition.subtype = nil
+        transition.duration = 0.25
+        transition.timingFunction = CAMediaTimingFunction(name: .linear)
+        
+        window.layer.add(transition, forKey: kCATransition)
         window.rootViewController = viewController
     }
 
