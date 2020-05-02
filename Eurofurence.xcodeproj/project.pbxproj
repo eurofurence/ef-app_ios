@@ -611,6 +611,7 @@
 		CA63A769245DD0EA00E4B313 /* WebContentRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63A768245DD0EA00E4B313 /* WebContentRoute.swift */; };
 		CA63A76B245DD14D00E4B313 /* ExternalApplicationContentRouteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63A76A245DD14D00E4B313 /* ExternalApplicationContentRouteTests.swift */; };
 		CA63A76D245DD27D00E4B313 /* ExternalApplicationContentRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63A76C245DD27D00E4B313 /* ExternalApplicationContentRoute.swift */; };
+		CA63A76F245DD41D00E4B313 /* ShowKnowledgeContentFromListingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63A76E245DD41D00E4B313 /* ShowKnowledgeContentFromListingTests.swift */; };
 		CA65A877209A523400B72533 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA65A876209A523400B72533 /* UIColor+Extensions.swift */; };
 		CA65A879209A538600B72533 /* WhenLoggedInBeforeConvention_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA65A878209A538600B72533 /* WhenLoggedInBeforeConvention_NewsInteractorShould.swift */; };
 		CA65A87B209A5BDA00B72533 /* DefaultNewsInteractorTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA65A87A209A5BDA00B72533 /* DefaultNewsInteractorTestBuilder.swift */; };
@@ -1109,6 +1110,7 @@
 		CAF81C7320DDA9D100898C52 /* DefaultDealerDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF81C7220DDA9D100898C52 /* DefaultDealerDetailInteractor.swift */; };
 		CAF81C7520DDAA9C00898C52 /* CapturingDealerDetailViewModelVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF81C7420DDAA9C00898C52 /* CapturingDealerDetailViewModelVisitor.swift */; };
 		CAF9A9581F5601A700628833 /* WhenViewingMessagesWhileLoggedOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A9571F5601A700628833 /* WhenViewingMessagesWhileLoggedOut.swift */; };
+		CAFA06FA245DD64D00A807F5 /* ShowKnowledgeContentFromListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFA06F9245DD64C00A807F5 /* ShowKnowledgeContentFromListing.swift */; };
 		D0448F94EED4B9FB5C3B07CD /* Pods-Eurofurence-EurofurenceTests-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3394169A8659D343AAB772B2 /* Pods-Eurofurence-EurofurenceTests-settings-metadata.plist */; };
 		F6AA212665A84829CF0EB371 /* Pods_Eurofurence_Screenshots.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0019020918F90989AA4BDE21 /* Pods_Eurofurence_Screenshots.framework */; };
 		FDA174B75DF6670FE6F9D0FE /* Pods-Eurofurence-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = FCB5D8F683D64BAB8D2FB3BF /* Pods-Eurofurence-settings-metadata.plist */; };
@@ -1814,6 +1816,7 @@
 		CA63A768245DD0EA00E4B313 /* WebContentRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebContentRoute.swift; sourceTree = "<group>"; };
 		CA63A76A245DD14D00E4B313 /* ExternalApplicationContentRouteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalApplicationContentRouteTests.swift; sourceTree = "<group>"; };
 		CA63A76C245DD27D00E4B313 /* ExternalApplicationContentRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalApplicationContentRoute.swift; sourceTree = "<group>"; };
+		CA63A76E245DD41D00E4B313 /* ShowKnowledgeContentFromListingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowKnowledgeContentFromListingTests.swift; sourceTree = "<group>"; };
 		CA65A876209A523400B72533 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		CA65A878209A538600B72533 /* WhenLoggedInBeforeConvention_NewsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLoggedInBeforeConvention_NewsInteractorShould.swift; sourceTree = "<group>"; };
 		CA65A87A209A5BDA00B72533 /* DefaultNewsInteractorTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNewsInteractorTestBuilder.swift; sourceTree = "<group>"; };
@@ -2308,6 +2311,7 @@
 		CAF81C7220DDA9D100898C52 /* DefaultDealerDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDealerDetailInteractor.swift; sourceTree = "<group>"; };
 		CAF81C7420DDAA9C00898C52 /* CapturingDealerDetailViewModelVisitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingDealerDetailViewModelVisitor.swift; sourceTree = "<group>"; };
 		CAF9A9571F5601A700628833 /* WhenViewingMessagesWhileLoggedOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenViewingMessagesWhileLoggedOut.swift; sourceTree = "<group>"; };
+		CAFA06F9245DD64C00A807F5 /* ShowKnowledgeContentFromListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowKnowledgeContentFromListing.swift; sourceTree = "<group>"; };
 		CE2BA268DF915CD181D6DD26 /* Pods-Eurofurence-EurofurenceUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eurofurence-EurofurenceUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Eurofurence-EurofurenceUITests/Pods-Eurofurence-EurofurenceUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D48DFBCB82C7548D555B2169 /* Pods-Eurofurence-ScreenshotGenerator-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Eurofurence-ScreenshotGenerator-metadata.plist"; path = "Pods/Pods-Eurofurence-ScreenshotGenerator-metadata.plist"; sourceTree = "<group>"; };
 		DAF82756531E9F6E398091C2 /* Pods-Eurofurence-ScreenshotGenerator-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Eurofurence-ScreenshotGenerator-settings-metadata.plist"; path = "Eurofurence/Settings.bundle/Pods-Eurofurence-ScreenshotGenerator-settings-metadata.plist"; sourceTree = "<group>"; };
@@ -4341,6 +4345,7 @@
 				CA63A756245DC49900E4B313 /* KnowledgeEntryContentRouteTests.swift */,
 				CA63A74F245DC13800E4B313 /* KnowledgeGroupContentRouteTests.swift */,
 				CA63A75C245DC8B100E4B313 /* OpenLinkFromKnowledgeEntryTests.swift */,
+				CA63A76E245DD41D00E4B313 /* ShowKnowledgeContentFromListingTests.swift */,
 			);
 			path = Knowledge;
 			sourceTree = "<group>";
@@ -4353,6 +4358,7 @@
 				CA63A754245DC3F100E4B313 /* KnowledgeGroupContentRepresentation.swift */,
 				CA63A752245DC3DF00E4B313 /* KnowledgeGroupContentRoute.swift */,
 				CA63A763245DCE7700E4B313 /* OpenLinkFromKnowledgeEntry.swift */,
+				CAFA06F9245DD64C00A807F5 /* ShowKnowledgeContentFromListing.swift */,
 			);
 			path = Knowledge;
 			sourceTree = "<group>";
@@ -6873,6 +6879,7 @@
 				9A861EB71F25550700B75A8C /* SplashScene.swift in Sources */,
 				CAF81C7320DDA9D100898C52 /* DefaultDealerDetailInteractor.swift in Sources */,
 				CA6A8DB020E2CF97007536CD /* DefaultMapsInteractor.swift in Sources */,
+				CAFA06FA245DD64D00A807F5 /* ShowKnowledgeContentFromListing.swift in Sources */,
 				CA2761B220E0234C000E52AC /* StoryboardHybridWebSceneFactory.swift in Sources */,
 				CA36A4D620DAE2C000EE6537 /* DealersModuleDelegate.swift in Sources */,
 				CA00AE8720D28A8B00C2FBB0 /* ShortFormDateFormatter.swift in Sources */,
@@ -7244,6 +7251,7 @@
 				CA6A8D9420E2C596007536CD /* WhenBindingMap_MapsPresenterShould.swift in Sources */,
 				CAB3B8F922611E260077B068 /* EventFeedbackPresenterTestBuilder.swift in Sources */,
 				CA8E17F11F817AA2003C348C /* CapturingPreloadModuleDelegate.swift in Sources */,
+				CA63A76F245DD41D00E4B313 /* ShowKnowledgeContentFromListingTests.swift in Sources */,
 				CA152ED822651B9600212742 /* CapturingSuccessHaptic.swift in Sources */,
 				CACF1EAC20B5C14F00D904B5 /* WhenPreparingViewModelForEventWithIdenticalAbstractAndDescription_EventDetailInteractorShould.swift in Sources */,
 				CA52C69520D6B001009D3A9E /* WhenScheduleModuleSelectsEvent_DirectorShould.swift in Sources */,
