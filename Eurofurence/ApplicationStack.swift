@@ -30,12 +30,13 @@ class ApplicationStack {
     }
     
     static func openNotification(_ userInfo: [AnyHashable: Any], completionHandler: @escaping () -> Void) {
-        instance.notificationResponseProcessor.openNotification(userInfo, completionHandler: completionHandler)
+        try? instance.router.route(NotificationContentRepresentation(userInfo: userInfo))
     }
     
-    static func resume(activity: NSUserActivity) -> Bool {
+    static func resume(activity: NSUserActivity) {
         let activityDescription = SystemActivityDescription(userActivity: activity)
-        return instance.activityResumer.resume(activity: activityDescription)
+        let contentRepresentation = UserActivityContentRepresentation(activity: activityDescription)
+        try? instance.router.route(contentRepresentation)
     }
 
     private init() {
