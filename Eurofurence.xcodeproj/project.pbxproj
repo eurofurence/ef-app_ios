@@ -507,6 +507,8 @@
 		CA4D9362245EF30F006FA832 /* ExpressibleBySingleParameterURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D9361245EF30F006FA832 /* ExpressibleBySingleParameterURL.swift */; };
 		CA4D9364245EF334006FA832 /* Identifier+ExpressibleByString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D9363245EF334006FA832 /* Identifier+ExpressibleByString.swift */; };
 		CA4D9366245EF346006FA832 /* NSRegularExpression+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D9365245EF346006FA832 /* NSRegularExpression+Extensions.swift */; };
+		CA4D9376245F17A3006FA832 /* ShowDealerFromMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D9375245F17A3006FA832 /* ShowDealerFromMapTests.swift */; };
+		CA4D9378245F1859006FA832 /* ShowDealerFromMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D9377245F1859006FA832 /* ShowDealerFromMap.swift */; };
 		CA4FBE0E1F72FF2A00D29405 /* WhenBindingMessage_MessagesPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FBE0D1F72FF2A00D29405 /* WhenBindingMessage_MessagesPresenterShould.swift */; };
 		CA4FBE101F73047700D29405 /* CapturingDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FBE0F1F73047700D29405 /* CapturingDateFormatter.swift */; };
 		CA4FBE121F7304B400D29405 /* DateFormatterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FBE111F7304B400D29405 /* DateFormatterProtocol.swift */; };
@@ -1735,6 +1737,8 @@
 		CA4D9361245EF30F006FA832 /* ExpressibleBySingleParameterURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressibleBySingleParameterURL.swift; sourceTree = "<group>"; };
 		CA4D9363245EF334006FA832 /* Identifier+ExpressibleByString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Identifier+ExpressibleByString.swift"; sourceTree = "<group>"; };
 		CA4D9365245EF346006FA832 /* NSRegularExpression+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSRegularExpression+Extensions.swift"; sourceTree = "<group>"; };
+		CA4D9375245F17A3006FA832 /* ShowDealerFromMapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDealerFromMapTests.swift; sourceTree = "<group>"; };
+		CA4D9377245F1859006FA832 /* ShowDealerFromMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDealerFromMap.swift; sourceTree = "<group>"; };
 		CA4FBE0D1F72FF2A00D29405 /* WhenBindingMessage_MessagesPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingMessage_MessagesPresenterShould.swift; sourceTree = "<group>"; };
 		CA4FBE0F1F73047700D29405 /* CapturingDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingDateFormatter.swift; sourceTree = "<group>"; };
 		CA4FBE111F7304B400D29405 /* DateFormatterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterProtocol.swift; sourceTree = "<group>"; };
@@ -6323,6 +6327,7 @@
 			children = (
 				CAFA0700245DEC3500A807F5 /* MapContentRouteTests.swift */,
 				CAFA0707245DEEC800A807F5 /* ShowMapFromMapsTests.swift */,
+				CA4D9375245F17A3006FA832 /* ShowDealerFromMapTests.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -6332,6 +6337,7 @@
 			children = (
 				CAFA0703245DEE2B00A807F5 /* MapContentRepresentation.swift */,
 				CAFA0705245DEE3E00A807F5 /* MapContentRoute.swift */,
+				CA4D9377245F1859006FA832 /* ShowDealerFromMap.swift */,
 				CAFA0709245DEF6F00A807F5 /* ShowMapFromMaps.swift */,
 			);
 			path = Map;
@@ -7126,6 +7132,7 @@
 				CAA28898245D6ECA0090B663 /* LoginContentRoute.swift in Sources */,
 				CA00AE7B20D1BF6D00C2FBB0 /* ScheduleDayViewModel.swift in Sources */,
 				CAEAEBFD1FE0043B00C0EE7C /* MessageDetailSceneFactory.swift in Sources */,
+				CA4D9378245F1859006FA832 /* ShowDealerFromMap.swift in Sources */,
 				CA6EC47D2051CBB800402894 /* KnowledgeDetailSceneFactory.swift in Sources */,
 				CABA43A11FD57A78009CB5B0 /* PreloadModuleBuilder.swift in Sources */,
 				CA1B6F0D20DB817400ADF414 /* DealerDetailScene.swift in Sources */,
@@ -7620,6 +7627,7 @@
 				CA6EE9A322F4C03200821E68 /* WhenOpeningKnowledgeEntry_WithParentGroup_DirectorShould.swift in Sources */,
 				CA63756C208CCB8900536BE2 /* WhenPreloadFails_DirectorShould.swift in Sources */,
 				CA6F652B22690F0C00483EE0 /* CapturingEventDetailModuleDelegate.swift in Sources */,
+				CA4D9376245F17A3006FA832 /* ShowDealerFromMapTests.swift in Sources */,
 				CA152EC82263CD2000212742 /* WhenEventFeedbackScenePreparesFeedback_EventFeedbackPresenterShould.swift in Sources */,
 				CA131BD520C186B300DB1036 /* WhenPreparingViewModel_ForEventThatIsNotFavourite_EventDetailInteractorShould.swift in Sources */,
 				CA36A46D20D84B5600EE6537 /* BeforeDealersSceneLoads_DealersPresenterShould.swift in Sources */,

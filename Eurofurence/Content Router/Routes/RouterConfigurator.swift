@@ -125,18 +125,10 @@ struct RouterConfigurator {
     }
     
     private func configureMapsRoute() {
-        struct DummyMapDetailModuleDelegate: MapDetailModuleDelegate {
-            
-            func mapDetailModuleDidSelectDealer(_ identifier: DealerIdentifier) {
-                
-            }
-            
-        }
-        
         router.add(MapContentRoute(
             mapModuleProviding: moduleRepository.mapDetailModuleProviding,
             contentWireframe: contentWireframe,
-            delegate: DummyMapDetailModuleDelegate()
+            delegate: ShowDealerFromMap(router: router)
         ))
     }
     
