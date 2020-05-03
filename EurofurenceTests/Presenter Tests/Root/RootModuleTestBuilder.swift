@@ -34,10 +34,6 @@ class RootModuleTestBuilder {
         func determineSessionState(completionHandler: @escaping (EurofurenceSessionState) -> Void) {
             completionHandler(state)
         }
-        
-        func add(_ observer: SessionStateServiceObserver) {
-            
-        }
 
     }
 

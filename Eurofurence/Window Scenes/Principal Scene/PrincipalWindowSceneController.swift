@@ -1,24 +1,20 @@
 import EurofurenceModel
 
-public struct PrincipalWindowSceneController: SessionStateServiceObserver {
-    
-    private let scene: PrincipalWindowScene
+public struct PrincipalWindowSceneController {
     
     public init(sessionState: SessionStateService, scene: PrincipalWindowScene) {
-        self.scene = scene
-        sessionState.add(self)
-    }
-    
-    public func modelDidEnterUninitializedState() {
-        scene.showTutorial()
-    }
-    
-    public func modelDidEnterStaleState() {
-        scene.showPreloading()
-    }
-    
-    public func modelDidEnterInitializedState() {
-        scene.showContent()
+        sessionState.determineSessionState(completionHandler: { (state) in
+            switch state {
+            case .uninitialized:
+                scene.showTutorial()
+                
+            case .stale:
+                scene.showPreloading()
+                
+            case .initialized:
+                scene.showContent()
+            }
+        })
     }
     
 }

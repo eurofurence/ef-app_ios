@@ -5,37 +5,29 @@ import XCTest
 
 class PrincipalWindowSceneControllerTests: XCTestCase {
     
-    func testDoesNotSetSceneBeforeEvents() {
-        let sessionState = ControllableSessionStateService()
-        let scene = CapturingPrincipalWindowScene()
-        _ = PrincipalWindowSceneController(sessionState: sessionState, scene: scene)
-        
-        XCTAssertEqual(.none, scene.visibleScene)
-    }
-    
     func testUninitializedStateShowsTutorial() {
         let sessionState = ControllableSessionStateService()
+        sessionState.simulatedState = .uninitialized
         let scene = CapturingPrincipalWindowScene()
         _ = PrincipalWindowSceneController(sessionState: sessionState, scene: scene)
-        sessionState.enterUninitializedState()
         
         XCTAssertEqual(.tutorial, scene.visibleScene)
     }
     
     func testStaleStateShowsPreloading() {
         let sessionState = ControllableSessionStateService()
+        sessionState.simulatedState = .stale
         let scene = CapturingPrincipalWindowScene()
         _ = PrincipalWindowSceneController(sessionState: sessionState, scene: scene)
-        sessionState.enterStaleState()
 
         XCTAssertEqual(.preloading, scene.visibleScene)
     }
 
     func testInitializedShowsContent() {
         let sessionState = ControllableSessionStateService()
+        sessionState.simulatedState = .initialized
         let scene = CapturingPrincipalWindowScene()
         _ = PrincipalWindowSceneController(sessionState: sessionState, scene: scene)
-        sessionState.enterInitializedState()
 
         XCTAssertEqual(.content, scene.visibleScene)
     }
