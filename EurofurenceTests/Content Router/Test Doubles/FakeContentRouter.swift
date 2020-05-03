@@ -1,16 +1,14 @@
 import Eurofurence
 import XCTest
 
-class FakeContentRouter: ContentRouter, ContentRepresentationRecipient {
+class FakeContentRouter: ContentRouter {
     
     private(set) var erasedRoutedContent: AnyContentRepresentation?
     func route<Content>(_ content: Content) throws
         where Content: ContentRepresentationDescribing {
-        content.describe(to: self)
-    }
-    
-    func receive<Content>(_ content: Content) where Content: ContentRepresentation {
-        erasedRoutedContent = content.eraseToAnyContentRepresentation()
+        let recipient = CapturingContentRepresentationRecipient()
+        content.describe(to: recipient)
+        erasedRoutedContent = recipient.erasedRoutedContent
     }
     
     func assertRouted<Content>(

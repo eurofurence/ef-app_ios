@@ -9,9 +9,7 @@ class AnyContentRepresentationTests: XCTestCase {
         let recipient = CapturingContentRepresentationRecipient()
         anyRepresentation.describe(to: recipient)
         
-        let unwrapped = try XCTUnwrap(recipient.receivedContent as? SomeContentRepresentation<Int>)
-        
-        XCTAssertEqual(representation, unwrapped)
+        XCTAssertEqual(representation.eraseToAnyContentRepresentation(), recipient.erasedRoutedContent)
     }
     
     func testEquality() {

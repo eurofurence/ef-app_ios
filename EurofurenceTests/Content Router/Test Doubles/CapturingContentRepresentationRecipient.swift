@@ -2,9 +2,9 @@ import Eurofurence
 
 class CapturingContentRepresentationRecipient: ContentRepresentationRecipient {
     
-    private(set) var receivedContent: Any?
+    private(set) var erasedRoutedContent: AnyContentRepresentation?
     func receive<Content>(_ content: Content) where Content: ContentRepresentation {
-        receivedContent = content
+        erasedRoutedContent = content.eraseToAnyContentRepresentation()
     }
     
 }
