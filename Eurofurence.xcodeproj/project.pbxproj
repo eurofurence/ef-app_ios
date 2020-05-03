@@ -497,6 +497,8 @@
 		CA4D934D245EE03E006FA832 /* URLContentRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D934C245EE03E006FA832 /* URLContentRepresentation.swift */; };
 		CA4D934F245EE0A9006FA832 /* IntentContentRepresentationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D934E245EE0A9006FA832 /* IntentContentRepresentationTests.swift */; };
 		CA4D9351245EE456006FA832 /* ContentRepresentationTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D9350245EE456006FA832 /* ContentRepresentationTestCase.swift */; };
+		CA4D9353245EE571006FA832 /* URLContentRepresentationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D9352245EE571006FA832 /* URLContentRepresentationTests.swift */; };
+		CA4D9355245EE961006FA832 /* KnowledgeGroupsContentRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D9354245EE961006FA832 /* KnowledgeGroupsContentRepresentation.swift */; };
 		CA4FBE0E1F72FF2A00D29405 /* WhenBindingMessage_MessagesPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FBE0D1F72FF2A00D29405 /* WhenBindingMessage_MessagesPresenterShould.swift */; };
 		CA4FBE101F73047700D29405 /* CapturingDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FBE0F1F73047700D29405 /* CapturingDateFormatter.swift */; };
 		CA4FBE121F7304B400D29405 /* DateFormatterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FBE111F7304B400D29405 /* DateFormatterProtocol.swift */; };
@@ -1715,6 +1717,8 @@
 		CA4D934C245EE03E006FA832 /* URLContentRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLContentRepresentation.swift; sourceTree = "<group>"; };
 		CA4D934E245EE0A9006FA832 /* IntentContentRepresentationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentContentRepresentationTests.swift; sourceTree = "<group>"; };
 		CA4D9350245EE456006FA832 /* ContentRepresentationTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentRepresentationTestCase.swift; sourceTree = "<group>"; };
+		CA4D9352245EE571006FA832 /* URLContentRepresentationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLContentRepresentationTests.swift; sourceTree = "<group>"; };
+		CA4D9354245EE961006FA832 /* KnowledgeGroupsContentRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeGroupsContentRepresentation.swift; sourceTree = "<group>"; };
 		CA4FBE0D1F72FF2A00D29405 /* WhenBindingMessage_MessagesPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingMessage_MessagesPresenterShould.swift; sourceTree = "<group>"; };
 		CA4FBE0F1F73047700D29405 /* CapturingDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingDateFormatter.swift; sourceTree = "<group>"; };
 		CA4FBE111F7304B400D29405 /* DateFormatterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterProtocol.swift; sourceTree = "<group>"; };
@@ -4391,6 +4395,7 @@
 				CA63A763245DCE7700E4B313 /* OpenLinkFromKnowledgeEntry.swift */,
 				CAFA06FD245DDAD500A807F5 /* ShowKnowledgeContentFromGroupListing.swift */,
 				CAFA06F9245DD64C00A807F5 /* ShowKnowledgeContentFromListing.swift */,
+				CA4D9354245EE961006FA832 /* KnowledgeGroupsContentRepresentation.swift */,
 			);
 			path = Knowledge;
 			sourceTree = "<group>";
@@ -5842,6 +5847,7 @@
 				CAD4F738245C2E670036ADAF /* ContentRouterTests.swift */,
 				CA4D934E245EE0A9006FA832 /* IntentContentRepresentationTests.swift */,
 				CA4D9342245ECA67006FA832 /* NotificationContentRepresentationTests.swift */,
+				CA4D9352245EE571006FA832 /* URLContentRepresentationTests.swift */,
 				CA4D9346245EDAD1006FA832 /* UserActivityContentRepresentationTests.swift */,
 				CAD4F753245C3D320036ADAF /* Route Tests */,
 				CAD4F754245C3D3A0036ADAF /* Test Doubles */,
@@ -6981,6 +6987,7 @@
 				CA36A4C220DA757B00EE6537 /* DealersSearchViewModel.swift in Sources */,
 				CA73AEF5201A08D1004E77BF /* KnowledgeGroupsListPresenter.swift in Sources */,
 				CAD4F764245C43C90036ADAF /* DealerContentRepresentation.swift in Sources */,
+				CA4D9355245EE961006FA832 /* KnowledgeGroupsContentRepresentation.swift in Sources */,
 				CA27255E21125393004C6D0A /* KnowledgeEntryImageScene.swift in Sources */,
 				CA2761AF20E022CB000E52AC /* CollectThemAllModule.swift in Sources */,
 				CA63A764245DCE7700E4B313 /* OpenLinkFromKnowledgeEntry.swift in Sources */,
@@ -7579,6 +7586,7 @@
 				CA2725542110FBAF004C6D0A /* WhenBuildingKnowledgeGroupEntriesModule.swift in Sources */,
 				CA283A7120E8DCD000F7D195 /* WhenToldToRefresh_DealersViewModelShould.swift in Sources */,
 				CA283AB020EAA19C00F7D195 /* StubAnnouncementsSceneFactory.swift in Sources */,
+				CA4D9353245EE571006FA832 /* URLContentRepresentationTests.swift in Sources */,
 				CA44C370211B77AC003C1C4E /* NewsPresenterKageIconBindingTests.swift in Sources */,
 				CA82DB6622D7BE4000467C2F /* CIDBasedShareableURLFactoryTests.swift in Sources */,
 				CA7D8B18222D4E63003431A0 /* FakeAnnouncementDateFormatter.swift in Sources */,

@@ -20,4 +20,19 @@ class ContentRepresentationTestCase: XCTestCase {
         )
     }
     
+    final func assertNoDescription<T>(
+        content: T,
+        file: StaticString = #file,
+        line: UInt = #line
+    ) where T: ContentRepresentationDescribing {
+        let recipient = CapturingContentRepresentationRecipient()
+        content.describe(to: recipient)
+        
+        XCTAssertNil(
+            recipient.erasedRoutedContent,
+            file: file,
+            line: line
+        )
+    }
+    
 }
