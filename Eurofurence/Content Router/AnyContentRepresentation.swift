@@ -19,6 +19,26 @@ public struct AnyContentRepresentation {
     
 }
 
+// MARK: - CustomStringConvertible
+
+extension AnyContentRepresentation: CustomStringConvertible {
+    
+    public var description: String {
+        String(describing: content)
+    }
+    
+}
+
+// MARK: - CustomReflectable
+
+extension AnyContentRepresentation: CustomReflectable {
+    
+    public var customMirror: Mirror {
+        Mirror(reflecting: content)
+    }
+    
+}
+
 // MARK: - ContentRepresentationDescribing
 
 extension AnyContentRepresentation: ContentRepresentationDescribing {
