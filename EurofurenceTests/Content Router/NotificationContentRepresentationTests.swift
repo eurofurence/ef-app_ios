@@ -25,23 +25,66 @@ public struct NotificationContentRepresentation: ContentRepresentation {
     }
     
     public func describe(to recipient: ContentRepresentationRecipient) {
-        if let rawEventIdentifier: String = payload.value(for: ApplicationNotificationKey.notificationContentIdentifier) {
-            let eventIdentifier = EventIdentifier(rawEventIdentifier)
-            let eventContent = EventContentRepresentation(identifier: eventIdentifier)
-            recipient.receive(eventContent)
+        var chain: PayloadDecoder = AnnouncementPayloadDecoder(next: nil)
+        chain = MessagePayloadDecoder(next: chain)
+        chain = EventPayloadDecoder(next: chain)
+        chain.describe(payload: payload, to: recipient)
+    }
+    
+    private class PayloadDecoder {
+        
+        private let next: PayloadDecoder?
+        
+        init(next: PayloadDecoder?) {
+            self.next = next
         }
         
-        if let rawMessageIdentifier: String = payload.value(for: "message_id") {
-            let messageIdentifier = MessageIdentifier(rawMessageIdentifier)
-            let messageContent = MessageContentRepresentation(identifier: messageIdentifier)
-            recipient.receive(messageContent)
+        func describe(payload: NotificationPayload, to recipient: ContentRepresentationRecipient) {
+            next?.describe(payload: payload, to: recipient)
         }
         
-        if let rawAnnouncementIdentifier: String = payload.value(for: "announcement_id") {
-            let announcementIdentifier = AnnouncementIdentifier(rawAnnouncementIdentifier)
-            let announcementContent = AnnouncementContentRepresentation(identifier: announcementIdentifier)
-            recipient.receive(announcementContent)
+    }
+    
+    private class EventPayloadDecoder: PayloadDecoder {
+        
+        override func describe(payload: NotificationPayload, to recipient: ContentRepresentationRecipient) {
+            if let rawEventIdentifier: String = payload.value(for: ApplicationNotificationKey.notificationContentIdentifier) {
+                let eventIdentifier = EventIdentifier(rawEventIdentifier)
+                let eventContent = EventContentRepresentation(identifier: eventIdentifier)
+                recipient.receive(eventContent)
+            } else {
+                super.describe(payload: payload, to: recipient)
+            }
         }
+        
+    }
+    
+    private class MessagePayloadDecoder: PayloadDecoder {
+        
+        override func describe(payload: NotificationPayload, to recipient: ContentRepresentationRecipient) {
+            if let rawMessageIdentifier: String = payload.value(for: "message_id") {
+                let messageIdentifier = MessageIdentifier(rawMessageIdentifier)
+                let messageContent = MessageContentRepresentation(identifier: messageIdentifier)
+                recipient.receive(messageContent)
+            } else {
+                super.describe(payload: payload, to: recipient)
+            }
+        }
+        
+    }
+    
+    private class AnnouncementPayloadDecoder: PayloadDecoder {
+        
+        override func describe(payload: NotificationPayload, to recipient: ContentRepresentationRecipient) {
+            if let rawAnnouncementIdentifier: String = payload.value(for: "announcement_id") {
+                let announcementIdentifier = AnnouncementIdentifier(rawAnnouncementIdentifier)
+                let announcementContent = AnnouncementContentRepresentation(identifier: announcementIdentifier)
+                recipient.receive(announcementContent)
+            } else {
+                super.describe(payload: payload, to: recipient)
+            }
+        }
+        
     }
     
 }
