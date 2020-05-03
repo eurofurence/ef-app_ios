@@ -468,6 +468,7 @@
 		CAB0FD5E22C9128800D4CB98 /* WhenDescribingAppLink_WithValidEventIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB0FD5D22C9128800D4CB98 /* WhenDescribingAppLink_WithValidEventIdentifier.swift */; };
 		CAB0FD6122C915BC00D4CB98 /* CapturingURLContentVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB0FD6022C915BC00D4CB98 /* CapturingURLContentVisitor.swift */; };
 		CAB0FD6322C915D400D4CB98 /* WhenDescribingAppLink_WithInvalidEventIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB0FD6222C915D400D4CB98 /* WhenDescribingAppLink_WithInvalidEventIdentifier.swift */; };
+		CAB63208245F270900DBF0A0 /* ControllableSessionStateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB63207245F270900DBF0A0 /* ControllableSessionStateService.swift */; };
 		CAC4993A22DFA652003E1D77 /* DealersIndexCategoriesShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC4993922DFA652003E1D77 /* DealersIndexCategoriesShould.swift */; };
 		CAC4993C22DFA864003E1D77 /* InMemoryDealerCategoriesCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC4993B22DFA864003E1D77 /* InMemoryDealerCategoriesCollection.swift */; };
 		CAC4993E22E04D11003E1D77 /* CapturingDealerCategoryObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC4993D22E04D11003E1D77 /* CapturingDealerCategoryObserver.swift */; };
@@ -971,6 +972,7 @@
 		CAB0FD5D22C9128800D4CB98 /* WhenDescribingAppLink_WithValidEventIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDescribingAppLink_WithValidEventIdentifier.swift; sourceTree = "<group>"; };
 		CAB0FD6022C915BC00D4CB98 /* CapturingURLContentVisitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingURLContentVisitor.swift; sourceTree = "<group>"; };
 		CAB0FD6222C915D400D4CB98 /* WhenDescribingAppLink_WithInvalidEventIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDescribingAppLink_WithInvalidEventIdentifier.swift; sourceTree = "<group>"; };
+		CAB63207245F270900DBF0A0 /* ControllableSessionStateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllableSessionStateService.swift; sourceTree = "<group>"; };
 		CAC4993922DFA652003E1D77 /* DealersIndexCategoriesShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersIndexCategoriesShould.swift; sourceTree = "<group>"; };
 		CAC4993B22DFA864003E1D77 /* InMemoryDealerCategoriesCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryDealerCategoriesCollection.swift; sourceTree = "<group>"; };
 		CAC4993D22E04D11003E1D77 /* CapturingDealerCategoryObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingDealerCategoryObserver.swift; sourceTree = "<group>"; };
@@ -2021,6 +2023,8 @@
 				CA7A32A422B16EB4002AD939 /* CapturingJSONSession.swift */,
 				CA7A32A322B16EB4002AD939 /* CapturingRefreshService.swift */,
 				CA7A32B222B16EB5002AD939 /* CapturingURLOpener.swift */,
+				CAB63207245F270900DBF0A0 /* ControllableSessionStateService.swift */,
+				CA8A73C322BD0FFC007A5201 /* FakeAdditionalServicesRepository.swift */,
 				CA7A329F22B16EB4002AD939 /* FakeAnnouncementsService.swift */,
 				CA7A32B022B16EB5002AD939 /* FakeDealersIndex.swift */,
 				CA7A32B122B16EB5002AD939 /* FakeDealersService.swift */,
@@ -2032,7 +2036,6 @@
 				CA7A32A922B16EB5002AD939 /* StubClock.swift */,
 				CA7A32AA22B16EB5002AD939 /* Entity Test Doubles */,
 				CA7A328422B16EB4002AD939 /* Random Value Generation */,
-				CA8A73C322BD0FFC007A5201 /* FakeAdditionalServicesRepository.swift */,
 			);
 			path = EurofurenceModelTestDoubles;
 			sourceTree = "<group>";
@@ -2961,6 +2964,7 @@
 				CA7A32BF22B16EB5002AD939 /* ConventionIdentifier+RandomValueProviding.swift in Sources */,
 				CA7A32D622B16EB5002AD939 /* StubMap.swift in Sources */,
 				CA7A32BC22B16EB5002AD939 /* ModelCharacteristics+RandomValueProviding.swift in Sources */,
+				CAB63208245F270900DBF0A0 /* ControllableSessionStateService.swift in Sources */,
 				CA7A32D922B16EB5002AD939 /* StubMessage.swift in Sources */,
 				CA7A32B322B16EB5002AD939 /* MapCharacteristics+RandomValueProviding.swift in Sources */,
 				CA7A32DC22B16EB5002AD939 /* FakeDealersService.swift in Sources */,

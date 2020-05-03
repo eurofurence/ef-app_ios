@@ -932,6 +932,10 @@
 		CAB631F6245F1B3300DBF0A0 /* ShowDealerFromMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D9377245F1859006FA832 /* ShowDealerFromMap.swift */; };
 		CAB631F8245F1C5800DBF0A0 /* KnowledgeGroupsContentRouteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB631F7245F1C5800DBF0A0 /* KnowledgeGroupsContentRouteTests.swift */; };
 		CAB631FA245F1D0300DBF0A0 /* KnowledgeGroupsContentRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB631F9245F1D0300DBF0A0 /* KnowledgeGroupsContentRoute.swift */; };
+		CAB631FE245F236000DBF0A0 /* PrincipalWindowSceneControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB631FD245F236000DBF0A0 /* PrincipalWindowSceneControllerTests.swift */; };
+		CAB63201245F26B500DBF0A0 /* PrincipalWindowSceneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB63200245F26B500DBF0A0 /* PrincipalWindowSceneController.swift */; };
+		CAB63203245F26E300DBF0A0 /* PrincipalWindowScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB63202245F26E300DBF0A0 /* PrincipalWindowScene.swift */; };
+		CAB63206245F26F500DBF0A0 /* CapturingPrincipalWindowScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB63205245F26F500DBF0A0 /* CapturingPrincipalWindowScene.swift */; };
 		CABA43831FB84834009CB5B0 /* StoryboardMessagesSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43821FB84834009CB5B0 /* StoryboardMessagesSceneFactory.swift */; };
 		CABA43861FBC6FE1009CB5B0 /* LoginModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43851FBC6FE1009CB5B0 /* LoginModuleProviding.swift */; };
 		CABA43891FBCD94E009CB5B0 /* LoginPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43881FBCD94E009CB5B0 /* LoginPresenterTests.swift */; };
@@ -2168,6 +2172,10 @@
 		CAB3B8F822611E260077B068 /* EventFeedbackPresenterTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFeedbackPresenterTestBuilder.swift; sourceTree = "<group>"; };
 		CAB631F7245F1C5800DBF0A0 /* KnowledgeGroupsContentRouteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeGroupsContentRouteTests.swift; sourceTree = "<group>"; };
 		CAB631F9245F1D0300DBF0A0 /* KnowledgeGroupsContentRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeGroupsContentRoute.swift; sourceTree = "<group>"; };
+		CAB631FD245F236000DBF0A0 /* PrincipalWindowSceneControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrincipalWindowSceneControllerTests.swift; sourceTree = "<group>"; };
+		CAB63200245F26B500DBF0A0 /* PrincipalWindowSceneController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrincipalWindowSceneController.swift; sourceTree = "<group>"; };
+		CAB63202245F26E300DBF0A0 /* PrincipalWindowScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrincipalWindowScene.swift; sourceTree = "<group>"; };
+		CAB63205245F26F500DBF0A0 /* CapturingPrincipalWindowScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingPrincipalWindowScene.swift; sourceTree = "<group>"; };
 		CABA43821FB84834009CB5B0 /* StoryboardMessagesSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardMessagesSceneFactory.swift; sourceTree = "<group>"; };
 		CABA43851FBC6FE1009CB5B0 /* LoginModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModuleProviding.swift; sourceTree = "<group>"; };
 		CABA43881FBCD94E009CB5B0 /* LoginPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenterTests.swift; sourceTree = "<group>"; };
@@ -2850,6 +2858,7 @@
 				9ACF999B1ECA259C006FC958 /* Resources */,
 				CA82409E21249A50007E4A70 /* Review Prompt */,
 				9ACF99591EBE32FE006FC958 /* Views */,
+				CAB631FF245F269400DBF0A0 /* Window Scenes */,
 			);
 			path = Eurofurence;
 			sourceTree = "<group>";
@@ -2877,6 +2886,7 @@
 				CA82DB6422D7BE2300467C2F /* Share URLs */,
 				6EF96CCD1F0EDB1300EE6134 /* Test Doubles */,
 				CAF9A94F1F558E6200628833 /* Test Utilities */,
+				CAB631FB245F233A00DBF0A0 /* Window Scene */,
 			);
 			path = EurofurenceTests;
 			sourceTree = "<group>";
@@ -4009,6 +4019,24 @@
 				CA8276B4204EC01F006A7419 /* Test Doubles */,
 			);
 			path = Preload;
+			sourceTree = "<group>";
+		};
+		CA5EB190245F5AAD0012C277 /* Principal Scene */ = {
+			isa = PBXGroup;
+			children = (
+				CAB631FD245F236000DBF0A0 /* PrincipalWindowSceneControllerTests.swift */,
+				CAB63204245F26EF00DBF0A0 /* Test Doubles */,
+			);
+			path = "Principal Scene";
+			sourceTree = "<group>";
+		};
+		CA5EB191245F5AB50012C277 /* Principal Scene */ = {
+			isa = PBXGroup;
+			children = (
+				CAB63200245F26B500DBF0A0 /* PrincipalWindowSceneController.swift */,
+				CAB63202245F26E300DBF0A0 /* PrincipalWindowScene.swift */,
+			);
+			path = "Principal Scene";
 			sourceTree = "<group>";
 		};
 		CA60BFE42078E5F000697566 /* Test Doubles */ = {
@@ -5485,6 +5513,30 @@
 			path = URL;
 			sourceTree = "<group>";
 		};
+		CAB631FB245F233A00DBF0A0 /* Window Scene */ = {
+			isa = PBXGroup;
+			children = (
+				CA5EB190245F5AAD0012C277 /* Principal Scene */,
+			);
+			path = "Window Scene";
+			sourceTree = "<group>";
+		};
+		CAB631FF245F269400DBF0A0 /* Window Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				CA5EB191245F5AB50012C277 /* Principal Scene */,
+			);
+			path = "Window Scenes";
+			sourceTree = "<group>";
+		};
+		CAB63204245F26EF00DBF0A0 /* Test Doubles */ = {
+			isa = PBXGroup;
+			children = (
+				CAB63205245F26F500DBF0A0 /* CapturingPrincipalWindowScene.swift */,
+			);
+			path = "Test Doubles";
+			sourceTree = "<group>";
+		};
 		CABA43841FBC6FD3009CB5B0 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -6944,6 +6996,7 @@
 				CA6AA0161FD883390092C6DB /* NewsViewController.swift in Sources */,
 				CA283AA220EAA04D00F7D195 /* AnnouncementsScene.swift in Sources */,
 				CA283A9820EA9CB100F7D195 /* AnnouncementsModuleProviding.swift in Sources */,
+				CAB63203245F26E300DBF0A0 /* PrincipalWindowScene.swift in Sources */,
 				CA2AA2F422C9518A00C0E1A1 /* ViewDealerIntent+Definition.swift in Sources */,
 				CA36A45E20D8487700EE6537 /* DealersGroupViewModel.swift in Sources */,
 				CAD4F73C245C364F0036ADAF /* ContentRoute.swift in Sources */,
@@ -7072,6 +7125,7 @@
 				CA63A759245DC71300E4B313 /* KnowledgeEntryContentRepresentation.swift in Sources */,
 				CA36A44920D76FA500EE6537 /* FoundationShortFormDayAndTimeFormatter.swift in Sources */,
 				CA250DCE20D6D4E500E7513C /* ScheduleSearchViewModel.swift in Sources */,
+				CAB63201245F26B500DBF0A0 /* PrincipalWindowSceneController.swift in Sources */,
 				CAEA1046216E77DE00B0C7A6 /* Theme.swift in Sources */,
 				CA36A4CA20DA7B1B00EE6537 /* DealersSearchResultsBinder.swift in Sources */,
 				CA00AE8120D1C15900C2FBB0 /* ScheduleDaysBinder.swift in Sources */,
@@ -7541,6 +7595,7 @@
 				CA8DDA1C2249045400ACD9BB /* WhenBindingEventAction_EventDetailPresenterShould.swift in Sources */,
 				CA152EC22263C44600212742 /* BeforeEventFeedbackSceneLoads_EventFeedbackPresenterShould.swift in Sources */,
 				CA36A45120D773B300EE6537 /* WhenSceneSelectsEventFromSearchViewModel_SchedulePresenterShould.swift in Sources */,
+				CAB63206245F26F500DBF0A0 /* CapturingPrincipalWindowScene.swift in Sources */,
 				CA283AB220EAA1AB00F7D195 /* AnnouncementsPresenterTestBuilder.swift in Sources */,
 				CA283AD420EAC84300F7D195 /* WhenPreparingViewModel_AnnouncementsInteractorShould.swift in Sources */,
 				CA6EC4842051CBF600402894 /* StubKnowledgeDetailSceneFactory.swift in Sources */,
@@ -7762,6 +7817,7 @@
 				CA630C0522A068EA00754C27 /* CapturingLegacyContentRouter.swift in Sources */,
 				CA3ABA07229C76BE0045A35B /* FakeModuleRepository.swift in Sources */,
 				CAC1E1391F50431000195513 /* NewsPresenterTestBuilder.swift in Sources */,
+				CAB631FE245F236000DBF0A0 /* PrincipalWindowSceneControllerTests.swift in Sources */,
 				CA6375B9208E03C000536BE2 /* CapturingDealersScene.swift in Sources */,
 				CA44C350211A3D43003C1C4E /* WhenPreparingViewModel_ForArtShowEvent_EventDetailInteractorShould.swift in Sources */,
 				CA6F652722690DB500483EE0 /* WhenToldToLeaveFeedback_EventDetailPresenterShould.swift in Sources */,

@@ -17,5 +17,9 @@ struct ConcreteSessionStateService: SessionStateService {
 
         completionHandler(state)
     }
+    
+    func add(_ observer: SessionStateServiceObserver) {
+        
+    }
 
 }
