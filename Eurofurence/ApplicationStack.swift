@@ -7,13 +7,10 @@ class ApplicationStack {
     private static let CID = ConventionIdentifier(identifier: "EF25")
 
     static let instance: ApplicationStack = ApplicationStack()
-    private let director: ApplicationDirector
     let session: EurofurenceSession
     let services: Services
     private let notificationFetchResultAdapter: NotificationServiceFetchResultAdapter
     let notificationScheduleController: NotificationScheduleController
-    private let notificationResponseProcessor: NotificationResponseProcessor
-    private let activityResumer: ActivityResumer
     private let router: ContentRouter
     
     static func assemble() {
@@ -91,21 +88,6 @@ class ApplicationStack {
         let knowledgeSubrouter = ShowKnowledgeContentFromListing(router: router)
         let mapSubrouter = ShowMapFromMaps(router: router)
         
-        director = DirectorBuilder(moduleRepository: moduleRepository, linkLookupService: services.contentLinks)
-            .with(newsSubrouter)
-            .with(scheduleSubrouter)
-            .with(dealerSubrouter)
-            .with(knowledgeSubrouter)
-            .with(mapSubrouter)
-            .build()
-        
-        let notificationHandler = NavigateToContentNotificationResponseHandler(director: director)
-        notificationResponseProcessor = NotificationResponseProcessor(notificationHandling: services.notifications,
-                                                                      contentRecipient: notificationHandler)
-        
-        let directorContentRouter = DirectorContentRouter(director: director)
-        activityResumer = ActivityResumer(contentLinksService: services.contentLinks, contentRouter: directorContentRouter)
-        
         let routeAuthenticationHandler = AuthenticateOnDemandRouteAuthenticationHandler(
             service: services.authentication,
             router: router
@@ -127,6 +109,58 @@ class ApplicationStack {
             urlOpener: urlOpener,
             window: window
         ).configureRoutes()
+        
+        let newsContentControllerFactory = NewsContentControllerFactory(
+            newsModuleProviding: moduleRepository.newsModuleProviding,
+            newsModuleDelegate: newsSubrouter
+        )
+        
+        let scheduleContentControllerFactory = ScheduleContentControllerFactory(
+            scheduleModuleProviding: moduleRepository.scheduleModuleProviding,
+            scheduleModuleDelegate: scheduleSubrouter
+        )
+        
+        let dealersContentControllerFactory = DealersContentControllerFactory(
+            dealersModuleProviding: moduleRepository.dealersModuleProviding,
+            dealersModuleDelegate: dealerSubrouter
+        )
+        
+        let knowledgeContentControllerFactory = KnowledgeContentControllerFactory(
+            knowledgeModuleProviding: moduleRepository.knowledgeListModuleProviding,
+            knowledgeModuleDelegate: knowledgeSubrouter
+        )
+        
+        let mapsContentControllerFactory = MapsContentControllerFactory(
+            mapsModuleProviding: moduleRepository.mapsModuleProviding,
+            mapsModuleDelegate: mapSubrouter
+        )
+        
+        let collectThemAllContentControllerFactory = CollectThemAllContentControllerFactory(
+            collectThemAllModuleProviding: moduleRepository.collectThemAllModuleProviding
+        )
+        
+        let additionalServicesContentControllerFactory = AdditionalServicesContentControllerFactory(
+            additionalServicesModuleProviding: moduleRepository.additionalServicesModuleProviding
+        )
+        
+        let contentControllerFactories: [ContentControllerFactory] = [
+            newsContentControllerFactory,
+            scheduleContentControllerFactory,
+            dealersContentControllerFactory,
+            knowledgeContentControllerFactory,
+            mapsContentControllerFactory,
+            collectThemAllContentControllerFactory,
+            additionalServicesContentControllerFactory
+        ]
+        
+        let principalWindowScene = ModuleSwappingPrincipalWindowScene(
+            windowWireframe: AppWindowWireframe.shared,
+            tutorialModule: moduleRepository.tutorialModuleProviding,
+            preloadModule: moduleRepository.preloadModuleProviding,
+            principalContentModule: PrincipalContentAggregator(contentControllerFactories: contentControllerFactories)
+        )
+        
+        _ = PrincipalWindowSceneController(sessionState: services.sessionState, scene: principalWindowScene)
     }
 
 }
