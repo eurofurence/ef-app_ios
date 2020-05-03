@@ -3,6 +3,16 @@ import Foundation
 
 public struct URLContentRepresentation: ContentRepresentation {
     
+    private static var decodingChain: URLDecodingChain = {
+        var chain = URLDecodingChain()
+        chain.add(DecodeContentFromURL<EventContentRepresentation>())
+        chain.add(DecodeContentFromURL<DealerContentRepresentation>())
+        chain.add(DecodeContentFromURL<KnowledgeEntryContentRepresentation>())
+        chain.add(DecodeContentFromURL<KnowledgeGroupsContentRepresentation>())
+        
+        return chain
+    }()
+    
     public var url: URL
     
     public init(url: URL) {
@@ -10,14 +20,44 @@ public struct URLContentRepresentation: ContentRepresentation {
     }
     
     public func describe(to recipient: ContentRepresentationRecipient) {
-        if let event = EventContentRepresentation(url: url) {
-            recipient.receive(event)
-        } else if let dealer = DealerContentRepresentation(url: url) {
-            recipient.receive(dealer)
-        } else if let knowledgeEntry = KnowledgeEntryContentRepresentation(url: url) {
-            recipient.receive(knowledgeEntry)
-        } else if let knowledgeGroups = KnowledgeGroupsContentRepresentation(url: url) {
-            recipient.receive(knowledgeGroups)
+        Self.decodingChain.describe(url: url, to: recipient)
+    }
+    
+}
+
+struct URLDecodingChain {
+    
+    private var decoders = [URLDecoder]()
+    
+    mutating func add(_ decoder: URLDecoder) {
+        decoders.append(decoder)
+    }
+    
+    func describe(url: URL, to recipient: ContentRepresentationRecipient) {
+        for decoder in decoders {
+            if decoder.describe(url: url, to: recipient) {
+                return
+            }
+        }
+    }
+    
+}
+
+protocol URLDecoder {
+    
+    func describe(url: URL, to recipient: ContentRepresentationRecipient) -> Bool
+    
+}
+
+struct DecodeContentFromURL<T>: URLDecoder
+    where T: ExpressibleByURL, T: ContentRepresentation {
+    
+    func describe(url: URL, to recipient: ContentRepresentationRecipient) -> Bool {
+        if let content = T(url: url) {
+            recipient.receive(content)
+            return true
+        } else {
+            return false
         }
     }
     
