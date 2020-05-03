@@ -1,6 +1,6 @@
 import EurofurenceModel
 
-struct ViewEventIntentDefinition: Equatable {
+struct ViewEventIntentDefinition: Hashable {
     
     var identifier: EventIdentifier
     var eventName: String

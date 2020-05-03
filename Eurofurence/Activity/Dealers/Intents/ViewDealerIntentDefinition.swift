@@ -1,7 +1,7 @@
 import EurofurenceModel
 import Foundation
 
-struct ViewDealerIntentDefinition: Equatable {
+struct ViewDealerIntentDefinition: Hashable {
     
     var identifier: DealerIdentifier
     var dealerName: String

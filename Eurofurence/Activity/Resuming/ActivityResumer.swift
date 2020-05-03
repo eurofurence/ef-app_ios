@@ -32,7 +32,7 @@ struct ActivityResumer {
             return handledActivity
         }
         
-        func visitIntent(_ intent: Any) {
+        func visitIntent(_ intent: AnyHashable) {
             let intentHandler = IntentActivityHandler(contentRouter: contentRouter)
             handledActivity = intentHandler.handle(intent: intent)
         }

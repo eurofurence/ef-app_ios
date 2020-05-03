@@ -491,6 +491,10 @@
 		CA4C474A21DF88B9005231AD /* NotificationServiceFetchResultAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4C474921DF88B9005231AD /* NotificationServiceFetchResultAdapter.swift */; };
 		CA4D9343245ECA67006FA832 /* NotificationContentRepresentationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D9342245ECA67006FA832 /* NotificationContentRepresentationTests.swift */; };
 		CA4D9345245ED9EB006FA832 /* NotificationContentRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D9344245ED9EB006FA832 /* NotificationContentRepresentation.swift */; };
+		CA4D9347245EDAD1006FA832 /* UserActivityContentRepresentationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D9346245EDAD1006FA832 /* UserActivityContentRepresentationTests.swift */; };
+		CA4D9349245EE01C006FA832 /* UserActivityContentRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D9348245EE01C006FA832 /* UserActivityContentRepresentation.swift */; };
+		CA4D934B245EE02F006FA832 /* IntentContentRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D934A245EE02F006FA832 /* IntentContentRepresentation.swift */; };
+		CA4D934D245EE03E006FA832 /* URLContentRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D934C245EE03E006FA832 /* URLContentRepresentation.swift */; };
 		CA4FBE0E1F72FF2A00D29405 /* WhenBindingMessage_MessagesPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FBE0D1F72FF2A00D29405 /* WhenBindingMessage_MessagesPresenterShould.swift */; };
 		CA4FBE101F73047700D29405 /* CapturingDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FBE0F1F73047700D29405 /* CapturingDateFormatter.swift */; };
 		CA4FBE121F7304B400D29405 /* DateFormatterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FBE111F7304B400D29405 /* DateFormatterProtocol.swift */; };
@@ -1703,6 +1707,10 @@
 		CA4C474921DF88B9005231AD /* NotificationServiceFetchResultAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationServiceFetchResultAdapter.swift; sourceTree = "<group>"; };
 		CA4D9342245ECA67006FA832 /* NotificationContentRepresentationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationContentRepresentationTests.swift; sourceTree = "<group>"; };
 		CA4D9344245ED9EB006FA832 /* NotificationContentRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationContentRepresentation.swift; sourceTree = "<group>"; };
+		CA4D9346245EDAD1006FA832 /* UserActivityContentRepresentationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserActivityContentRepresentationTests.swift; sourceTree = "<group>"; };
+		CA4D9348245EE01C006FA832 /* UserActivityContentRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserActivityContentRepresentation.swift; sourceTree = "<group>"; };
+		CA4D934A245EE02F006FA832 /* IntentContentRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentContentRepresentation.swift; sourceTree = "<group>"; };
+		CA4D934C245EE03E006FA832 /* URLContentRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLContentRepresentation.swift; sourceTree = "<group>"; };
 		CA4FBE0D1F72FF2A00D29405 /* WhenBindingMessage_MessagesPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingMessage_MessagesPresenterShould.swift; sourceTree = "<group>"; };
 		CA4FBE0F1F73047700D29405 /* CapturingDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingDateFormatter.swift; sourceTree = "<group>"; };
 		CA4FBE111F7304B400D29405 /* DateFormatterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterProtocol.swift; sourceTree = "<group>"; };
@@ -5828,6 +5836,7 @@
 				CAD4F783245C622F0036ADAF /* AnyContentRepresentationTests.swift */,
 				CAD4F738245C2E670036ADAF /* ContentRouterTests.swift */,
 				CA4D9342245ECA67006FA832 /* NotificationContentRepresentationTests.swift */,
+				CA4D9346245EDAD1006FA832 /* UserActivityContentRepresentationTests.swift */,
 				CAD4F753245C3D320036ADAF /* Route Tests */,
 				CAD4F754245C3D3A0036ADAF /* Test Doubles */,
 			);
@@ -5844,8 +5853,11 @@
 				CAD4F73B245C364F0036ADAF /* ContentRoute.swift */,
 				CAD4F77F245C5CE80036ADAF /* ContentRouter.swift */,
 				CAD4F745245C38380036ADAF /* ContentRouteRegistery.swift */,
+				CA4D934A245EE02F006FA832 /* IntentContentRepresentation.swift */,
 				CAD4F77D245C5CDE0036ADAF /* MutableContentRouter.swift */,
 				CA4D9344245ED9EB006FA832 /* NotificationContentRepresentation.swift */,
+				CA4D934C245EE03E006FA832 /* URLContentRepresentation.swift */,
+				CA4D9348245EE01C006FA832 /* UserActivityContentRepresentation.swift */,
 				CAD4F750245C3D160036ADAF /* Route Presentation */,
 				CAD4F747245C3A3B0036ADAF /* Routes */,
 				CA4908C2245DACE500DB032C /* Wireframes */,
@@ -7038,6 +7050,7 @@
 				CA1FE9971F9FCCA4009C7DF3 /* MessagesModuleProviding.swift in Sources */,
 				CA7D8B3822312CFB003431A0 /* DefaultNewsViewModel.swift in Sources */,
 				CA283ABB20EAA45000F7D195 /* AnnouncementsInteractor.swift in Sources */,
+				CA4D9349245EE01C006FA832 /* UserActivityContentRepresentation.swift in Sources */,
 				CADABF042118E08D0023C3B6 /* MapContextualContentViewController.swift in Sources */,
 				CA00AE4E20D16CAE00C2FBB0 /* SchedulePresenter.swift in Sources */,
 				CA987FC822E6389E006338FB /* ActivityFactory.swift in Sources */,
@@ -7081,6 +7094,7 @@
 				CA72846A209D1442007D912A /* AnnouncementViewModel.swift in Sources */,
 				CA40109521107FBB0056E16C /* KnowledgeGroupEntriesModuleDelegate.swift in Sources */,
 				CA6A9FF71FD5E7850092C6DB /* LoginViewController.swift in Sources */,
+				CA4D934D245EE03E006FA832 /* URLContentRepresentation.swift in Sources */,
 				CA08157A20D3877700F750D4 /* FoundationShortFormDateFormatter.swift in Sources */,
 				CA00AE6020D1746900C2FBB0 /* ScheduleEventComponent.swift in Sources */,
 				CAD4F778245C5B9F0036ADAF /* AnnouncementsContentRoute.swift in Sources */,
@@ -7195,6 +7209,7 @@
 				CAE8879322690263001464C1 /* LeaveFeedbackActionViewModel.swift in Sources */,
 				CAD4F752245C3D1D0036ADAF /* ContentWireframe.swift in Sources */,
 				CACF1E7E20B212B400D904B5 /* EventDetailComponentFactory.swift in Sources */,
+				CA4D934B245EE02F006FA832 /* IntentContentRepresentation.swift in Sources */,
 				CA00AE5420D16FD300C2FBB0 /* ScheduleEventViewModel.swift in Sources */,
 				CA152EE422651F5B00212742 /* FailureHaptic.swift in Sources */,
 				CA630C0922A069AF00754C27 /* ViewEventIntent+Definition.swift in Sources */,
@@ -7495,6 +7510,7 @@
 				CAD4F775245C59930036ADAF /* AnnouncementsContentRouteTests.swift in Sources */,
 				CAD4F739245C2E670036ADAF /* ContentRouterTests.swift in Sources */,
 				CAA28883245C77C70090B663 /* MessageContentRouteTests.swift in Sources */,
+				CA4D9347245EDAD1006FA832 /* UserActivityContentRepresentationTests.swift in Sources */,
 				CAE8879522690358001464C1 /* WhenEventIsNotAcceptingFeedback_EventDetailInteractorShould.swift in Sources */,
 				CA36A4DA20DAE4CF00EE6537 /* WhenSceneSelectsSearchResult_DealersPresenterShould.swift in Sources */,
 				CA36A48520D9243E00EE6537 /* WhenBindingDealerGroupHeading_DealersPresenterShould.swift in Sources */,

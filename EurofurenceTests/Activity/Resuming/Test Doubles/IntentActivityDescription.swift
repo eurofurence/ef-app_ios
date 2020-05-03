@@ -2,7 +2,7 @@
 
 struct IntentActivityDescription: ActivityDescription {
     
-    var intent: Any
+    var intent: AnyHashable
     
     func describe(to visitor: ActivityDescriptionVisitor) {
         visitor.visitIntent(intent)
