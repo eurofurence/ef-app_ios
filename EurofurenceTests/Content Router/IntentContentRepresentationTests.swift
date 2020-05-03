@@ -1,8 +1,7 @@
 import Eurofurence
-import EurofurenceIntentDefinitions
 import XCTest
 
-class IntentContentRepresentationTests: XCTestCase {
+class IntentContentRepresentationTests: ContentRepresentationTestCase {
 
     func testEvent() {
         let eventIntentDefinition = ViewEventIntentDefinition(identifier: .random, eventName: .random)
@@ -10,9 +9,7 @@ class IntentContentRepresentationTests: XCTestCase {
         let contentRepresentation = IntentContentRepresentation(intent: eventIntentDefinitionProviding)
         let expected = EventContentRepresentation(identifier: eventIntentDefinition.identifier)
         
-        let recipient = CapturingContentRepresentationRecipient()
-        contentRepresentation.describe(to: recipient)
-        XCTAssertEqual(expected.eraseToAnyContentRepresentation(), recipient.erasedRoutedContent)
+        assert(content: contentRepresentation, isDescribedAs: expected)
     }
     
     func testDealer() {
@@ -21,9 +18,7 @@ class IntentContentRepresentationTests: XCTestCase {
         let contentRepresentation = IntentContentRepresentation(intent: dealerIntentDefinitionProviding)
         let expected = DealerContentRepresentation(identifier: dealerIntentDefinition.identifier)
         
-        let recipient = CapturingContentRepresentationRecipient()
-        contentRepresentation.describe(to: recipient)
-        XCTAssertEqual(expected.eraseToAnyContentRepresentation(), recipient.erasedRoutedContent)
+        assert(content: contentRepresentation, isDescribedAs: expected)
     }
 
 }

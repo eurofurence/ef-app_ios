@@ -1,15 +1,15 @@
 import Eurofurence
 import XCTest
 
-class AnyContentRepresentationTests: XCTestCase {
+class AnyContentRepresentationTests: ContentRepresentationTestCase {
     
-    func testErasure() throws {
+    func testErasure() {
         let representation = SomeContentRepresentation(value: 42)
-        let anyRepresentation = representation.eraseToAnyContentRepresentation()
-        let recipient = CapturingContentRepresentationRecipient()
-        anyRepresentation.describe(to: recipient)
-        
-        XCTAssertEqual(representation.eraseToAnyContentRepresentation(), recipient.erasedRoutedContent)
+
+        assert(
+            content: representation.eraseToAnyContentRepresentation(),
+            isDescribedAs: representation
+        )
     }
     
     func testEquality() {

@@ -2,7 +2,7 @@ import Eurofurence
 import EurofurenceModel
 import XCTest
 
-class NotificationContentRepresentationTests: XCTestCase {
+class NotificationContentRepresentationTests: ContentRepresentationTestCase {
     
     func testEquality() {
         let firstPayload: [AnyHashable: Any] = ["A": 1, 2: "B"]
@@ -49,10 +49,7 @@ class NotificationContentRepresentationTests: XCTestCase {
         _ line: UInt = #line
     ) where Content: ContentRepresentation {
         let contentRepresentation = NotificationContentRepresentation(userInfo: userInfo)
-        let recipient = CapturingContentRepresentationRecipient()
-        contentRepresentation.describe(to: recipient)
-        
-        XCTAssertEqual(expected.eraseToAnyContentRepresentation(), recipient.erasedRoutedContent, line: line)
+        assert(content: contentRepresentation, isDescribedAs: expected, line: line)
     }
 
 }
