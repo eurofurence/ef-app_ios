@@ -1,6 +1,6 @@
 import UIKit.UIViewController
 
-protocol WindowWireframe {
+public protocol WindowWireframe {
 
     func setRoot(_ viewController: UIViewController)
 

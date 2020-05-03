@@ -2,7 +2,7 @@ import EurofurenceModel
 import Foundation
 import UIKit
 
-protocol TutorialModuleDelegate {
+public protocol TutorialModuleDelegate {
 
     func tutorialModuleDidFinishPresentingTutorial()
 
