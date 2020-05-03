@@ -18,8 +18,8 @@ class NotificationContentRepresentationTests: ContentRepresentationTestCase {
     func testEventNotification() {
         let eventIdentifierString = String.random
         assertUserInfo([
-            ApplicationNotificationKey.notificationContentKind: ApplicationNotificationContentKind.event,
-            ApplicationNotificationKey.notificationContentIdentifier: eventIdentifierString
+            ApplicationNotificationKey.notificationContentKind.rawValue: ApplicationNotificationContentKind.event,
+            ApplicationNotificationKey.notificationContentIdentifier.rawValue: eventIdentifierString
         ], isResolvedIntoContent: EventContentRepresentation(identifier: EventIdentifier(eventIdentifierString)))
     }
     

@@ -53,7 +53,8 @@ extension NotificationContentRepresentation: ContentRepresentationDescribing {
     private class EventPayloadDecoder: PayloadDecoder {
         
         override func describe(payload: NotificationPayload, to recipient: ContentRepresentationRecipient) {
-            if let rawEventIdentifier: String = payload.value(for: ApplicationNotificationKey.notificationContentIdentifier) {
+            let contentIdentiferKey = ApplicationNotificationKey.notificationContentIdentifier.rawValue
+            if let rawEventIdentifier: String = payload.value(for: contentIdentiferKey) {
                 let eventIdentifier = EventIdentifier(rawEventIdentifier)
                 let eventContent = EventContentRepresentation(identifier: eventIdentifier)
                 recipient.receive(eventContent)
