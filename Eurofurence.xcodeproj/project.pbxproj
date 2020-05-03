@@ -507,8 +507,13 @@
 		CA4D9362245EF30F006FA832 /* ExpressibleBySingleParameterURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D9361245EF30F006FA832 /* ExpressibleBySingleParameterURL.swift */; };
 		CA4D9364245EF334006FA832 /* Identifier+ExpressibleByString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D9363245EF334006FA832 /* Identifier+ExpressibleByString.swift */; };
 		CA4D9366245EF346006FA832 /* NSRegularExpression+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D9365245EF346006FA832 /* NSRegularExpression+Extensions.swift */; };
-		CA4D9376245F17A3006FA832 /* ShowDealerFromMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D9375245F17A3006FA832 /* ShowDealerFromMapTests.swift */; };
-		CA4D9378245F1859006FA832 /* ShowDealerFromMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D9377245F1859006FA832 /* ShowDealerFromMap.swift */; };
+		CA4D9368245F0E77006FA832 /* MoveToTabContentWireframeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D9367245F0E77006FA832 /* MoveToTabContentWireframeTests.swift */; };
+		CA4D936A245F0EB8006FA832 /* ContentWireframeDecoratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D9369245F0EB8006FA832 /* ContentWireframeDecoratorTests.swift */; };
+		CA4D936C245F14CB006FA832 /* ContentWireframeDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D936B245F14CB006FA832 /* ContentWireframeDecorator.swift */; };
+		CA4D936E245F14DB006FA832 /* MoveToTabContentWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D936D245F14DB006FA832 /* MoveToTabContentWireframe.swift */; };
+		CA4D9370245F14E9006FA832 /* TabNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D936F245F14E9006FA832 /* TabNavigator.swift */; };
+		CA4D9372245F1505006FA832 /* CapturingTabSwapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D9371245F1505006FA832 /* CapturingTabSwapper.swift */; };
+		CA4D9374245F157E006FA832 /* MoveToTabByViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D9373245F157E006FA832 /* MoveToTabByViewController.swift */; };
 		CA4FBE0E1F72FF2A00D29405 /* WhenBindingMessage_MessagesPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FBE0D1F72FF2A00D29405 /* WhenBindingMessage_MessagesPresenterShould.swift */; };
 		CA4FBE101F73047700D29405 /* CapturingDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FBE0F1F73047700D29405 /* CapturingDateFormatter.swift */; };
 		CA4FBE121F7304B400D29405 /* DateFormatterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FBE111F7304B400D29405 /* DateFormatterProtocol.swift */; };
@@ -924,6 +929,7 @@
 		CAB0FD6722C93A1400D4CB98 /* URLActivityDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB0FD6622C93A1400D4CB98 /* URLActivityDescription.swift */; };
 		CAB138131FE1555C00AD61FE /* MessagesCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB138121FE1555C00AD61FE /* MessagesCollectionViewFlowLayout.swift */; };
 		CAB3B8F922611E260077B068 /* EventFeedbackPresenterTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB3B8F822611E260077B068 /* EventFeedbackPresenterTestBuilder.swift */; };
+		CAB631F6245F1B3300DBF0A0 /* ShowDealerFromMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D9377245F1859006FA832 /* ShowDealerFromMap.swift */; };
 		CABA43831FB84834009CB5B0 /* StoryboardMessagesSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43821FB84834009CB5B0 /* StoryboardMessagesSceneFactory.swift */; };
 		CABA43861FBC6FE1009CB5B0 /* LoginModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43851FBC6FE1009CB5B0 /* LoginModuleProviding.swift */; };
 		CABA43891FBCD94E009CB5B0 /* LoginPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43881FBCD94E009CB5B0 /* LoginPresenterTests.swift */; };
@@ -1737,6 +1743,13 @@
 		CA4D9361245EF30F006FA832 /* ExpressibleBySingleParameterURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressibleBySingleParameterURL.swift; sourceTree = "<group>"; };
 		CA4D9363245EF334006FA832 /* Identifier+ExpressibleByString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Identifier+ExpressibleByString.swift"; sourceTree = "<group>"; };
 		CA4D9365245EF346006FA832 /* NSRegularExpression+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSRegularExpression+Extensions.swift"; sourceTree = "<group>"; };
+		CA4D9367245F0E77006FA832 /* MoveToTabContentWireframeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveToTabContentWireframeTests.swift; sourceTree = "<group>"; };
+		CA4D9369245F0EB8006FA832 /* ContentWireframeDecoratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentWireframeDecoratorTests.swift; sourceTree = "<group>"; };
+		CA4D936B245F14CB006FA832 /* ContentWireframeDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentWireframeDecorator.swift; sourceTree = "<group>"; };
+		CA4D936D245F14DB006FA832 /* MoveToTabContentWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveToTabContentWireframe.swift; sourceTree = "<group>"; };
+		CA4D936F245F14E9006FA832 /* TabNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabNavigator.swift; sourceTree = "<group>"; };
+		CA4D9371245F1505006FA832 /* CapturingTabSwapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingTabSwapper.swift; sourceTree = "<group>"; };
+		CA4D9373245F157E006FA832 /* MoveToTabByViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveToTabByViewController.swift; sourceTree = "<group>"; };
 		CA4D9375245F17A3006FA832 /* ShowDealerFromMapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDealerFromMapTests.swift; sourceTree = "<group>"; };
 		CA4D9377245F1859006FA832 /* ShowDealerFromMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDealerFromMap.swift; sourceTree = "<group>"; };
 		CA4FBE0D1F72FF2A00D29405 /* WhenBindingMessage_MessagesPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingMessage_MessagesPresenterShould.swift; sourceTree = "<group>"; };
@@ -3869,6 +3882,10 @@
 			children = (
 				CA4908C3245DADA000DB032C /* WindowContentWireframe.swift */,
 				CA4908C5245DADBA00DB032C /* WindowModalWireframe.swift */,
+				CA4D936B245F14CB006FA832 /* ContentWireframeDecorator.swift */,
+				CA4D936D245F14DB006FA832 /* MoveToTabContentWireframe.swift */,
+				CA4D936F245F14E9006FA832 /* TabNavigator.swift */,
+				CA4D9373245F157E006FA832 /* MoveToTabByViewController.swift */,
 			);
 			path = Wireframes;
 			sourceTree = "<group>";
@@ -5881,7 +5898,9 @@
 				CAD4F783245C622F0036ADAF /* AnyContentRepresentationTests.swift */,
 				CA4D9350245EE456006FA832 /* ContentRepresentationTestCase.swift */,
 				CAD4F738245C2E670036ADAF /* ContentRouterTests.swift */,
+				CA4D9369245F0EB8006FA832 /* ContentWireframeDecoratorTests.swift */,
 				CA4D934E245EE0A9006FA832 /* IntentContentRepresentationTests.swift */,
+				CA4D9367245F0E77006FA832 /* MoveToTabContentWireframeTests.swift */,
 				CA4D9342245ECA67006FA832 /* NotificationContentRepresentationTests.swift */,
 				CA4D9352245EE571006FA832 /* URLContentRepresentationTests.swift */,
 				CA4D9346245EDAD1006FA832 /* UserActivityContentRepresentationTests.swift */,
@@ -5990,6 +6009,7 @@
 				CAA28871245C64B90090B663 /* CapturingContentRepresentationRecipient.swift */,
 				CAD4F755245C3D400036ADAF /* CapturingContentWireframe.swift */,
 				CAD4F771245C476C0036ADAF /* CapturingModalWireframe.swift */,
+				CA4D9371245F1505006FA832 /* CapturingTabSwapper.swift */,
 				CAA28877245C69040090B663 /* FakeContentRouter.swift */,
 			);
 			path = "Test Doubles";
@@ -6862,6 +6882,7 @@
 				CA6A8DC820E415D3007536CD /* MapDetailModuleBuilder.swift in Sources */,
 				CA6A8D8E20E2BC6C007536CD /* MapsPresenter.swift in Sources */,
 				CA6A8D9A20E2C678007536CD /* MapsBinder.swift in Sources */,
+				CA4D936C245F14CB006FA832 /* ContentWireframeDecorator.swift in Sources */,
 				CA2AA30322CA95BF00C0E1A1 /* UpdateRemoteConfigRefreshCollaboration.swift in Sources */,
 				CA02910221F4D6020007F350 /* AppDelegate+DebugWindow.swift in Sources */,
 				CA2A587120F7F369002C69B6 /* FoundationAnnouncementDateFormatter.swift in Sources */,
@@ -6874,6 +6895,7 @@
 				CA272562211255DE004C6D0A /* KnowledgeDetailImageTableViewCell.swift in Sources */,
 				CACF1E5820AE2DED00D904B5 /* EventDetailSceneFactory.swift in Sources */,
 				CA3ABA06229C4B260045A35B /* AppNotificationDelegate.swift in Sources */,
+				CA4D9374245F157E006FA832 /* MoveToTabByViewController.swift in Sources */,
 				CA8240A221249A69007E4A70 /* ReviewPromptAction.swift in Sources */,
 				CA283ACA20EAB9E600F7D195 /* AnnouncementComponent.swift in Sources */,
 				CA6A8DA220E2CB5C007536CD /* MapsModuleDelegate.swift in Sources */,
@@ -7132,7 +7154,6 @@
 				CAA28898245D6ECA0090B663 /* LoginContentRoute.swift in Sources */,
 				CA00AE7B20D1BF6D00C2FBB0 /* ScheduleDayViewModel.swift in Sources */,
 				CAEAEBFD1FE0043B00C0EE7C /* MessageDetailSceneFactory.swift in Sources */,
-				CA4D9378245F1859006FA832 /* ShowDealerFromMap.swift in Sources */,
 				CA6EC47D2051CBB800402894 /* KnowledgeDetailSceneFactory.swift in Sources */,
 				CABA43A11FD57A78009CB5B0 /* PreloadModuleBuilder.swift in Sources */,
 				CA1B6F0D20DB817400ADF414 /* DealerDetailScene.swift in Sources */,
@@ -7189,6 +7210,7 @@
 				CA063B4420F3862500241CC9 /* ModuleOrderingPolicy.swift in Sources */,
 				CAD04184245D884D00B86950 /* RouteAuthenticationHandler.swift in Sources */,
 				CA250DE620D6F72200E7513C /* ShortFormDayAndTimeFormatter.swift in Sources */,
+				CA4D936E245F14DB006FA832 /* MoveToTabContentWireframe.swift in Sources */,
 				CAD4F77A245C5BB40036ADAF /* AnnouncementsContentRepresentation.swift in Sources */,
 				CA6EC48B2051CDC800402894 /* KnowledgeDetailViewController.swift in Sources */,
 				9A861EC91F25555000B75A8C /* UserDefaultsWitnessedTutorialPushPermissionsRequest.swift in Sources */,
@@ -7252,7 +7274,9 @@
 				CACF1E4E20AE2B3300D904B5 /* EventDetailModuleBuilder.swift in Sources */,
 				CA66C0242124CC9900F87AFE /* ApplicationAppStateProviding.swift in Sources */,
 				CABF03C52041C31A0028BD62 /* DefaultKnowledgeGroupsInteractor.swift in Sources */,
+				CA4D9370245F14E9006FA832 /* TabNavigator.swift in Sources */,
 				CA728449209D012D007D912A /* AnnouncementDetailModuleProviding.swift in Sources */,
+				CAB631F6245F1B3300DBF0A0 /* ShowDealerFromMap.swift in Sources */,
 				CACF1E4C20AE2A5A00D904B5 /* EventDetailModuleProviding.swift in Sources */,
 				9A861EA71F2554BE00B75A8C /* TutorialPage.swift in Sources */,
 				CAD04197245DA63C00B86950 /* NewsContentRoute.swift in Sources */,
@@ -7329,6 +7353,7 @@
 				CA36A46720D84A9B00EE6537 /* CapturingDealersViewModel+RandomValueProviding.swift in Sources */,
 				CA6EE99422F36B6900821E68 /* WhenSelectingItemInKnowledgeList_ThatRelatesToEntry_KnowledgeListPresenterShould.swift in Sources */,
 				CA6D7CC222368DA400AB816C /* VisibilityState.swift in Sources */,
+				CA4D9372245F1505006FA832 /* CapturingTabSwapper.swift in Sources */,
 				CA250DDE20D6EA0500E7513C /* CapturingScheduleSearchViewModelDelegate.swift in Sources */,
 				CA08B10722EF6E1700FDAAA7 /* CapturingScheduleEventViewModelObserver.swift in Sources */,
 				CA65A87D209B2F6A00B72533 /* WhenLoggedOutBeforeConvention_ThenLogIn_NewsInteractorShould.swift in Sources */,
@@ -7375,6 +7400,7 @@
 				CAB3B8F922611E260077B068 /* EventFeedbackPresenterTestBuilder.swift in Sources */,
 				CA8E17F11F817AA2003C348C /* CapturingPreloadModuleDelegate.swift in Sources */,
 				CA63A76F245DD41D00E4B313 /* ShowKnowledgeContentFromListingTests.swift in Sources */,
+				CA4D936A245F0EB8006FA832 /* ContentWireframeDecoratorTests.swift in Sources */,
 				CA152ED822651B9600212742 /* CapturingSuccessHaptic.swift in Sources */,
 				CACF1EAC20B5C14F00D904B5 /* WhenPreparingViewModelForEventWithIdenticalAbstractAndDescription_EventDetailInteractorShould.swift in Sources */,
 				CA52C69520D6B001009D3A9E /* WhenScheduleModuleSelectsEvent_DirectorShould.swift in Sources */,
@@ -7627,7 +7653,6 @@
 				CA6EE9A322F4C03200821E68 /* WhenOpeningKnowledgeEntry_WithParentGroup_DirectorShould.swift in Sources */,
 				CA63756C208CCB8900536BE2 /* WhenPreloadFails_DirectorShould.swift in Sources */,
 				CA6F652B22690F0C00483EE0 /* CapturingEventDetailModuleDelegate.swift in Sources */,
-				CA4D9376245F17A3006FA832 /* ShowDealerFromMapTests.swift in Sources */,
 				CA152EC82263CD2000212742 /* WhenEventFeedbackScenePreparesFeedback_EventFeedbackPresenterShould.swift in Sources */,
 				CA131BD520C186B300DB1036 /* WhenPreparingViewModel_ForEventThatIsNotFavourite_EventDetailInteractorShould.swift in Sources */,
 				CA36A46D20D84B5600EE6537 /* BeforeDealersSceneLoads_DealersPresenterShould.swift in Sources */,
@@ -7663,6 +7688,7 @@
 				CA283A8620E9483F00F7D195 /* WhenPreparingAnnouncementViewModel_ForReadAnnouncement_NewsInteractorShould.swift in Sources */,
 				CA62134B221F276000E88880 /* ScheduleEventGroupViewModelAssertion.swift in Sources */,
 				CAA28872245C64B90090B663 /* CapturingContentRepresentationRecipient.swift in Sources */,
+				CA4D9368245F0E77006FA832 /* MoveToTabContentWireframeTests.swift in Sources */,
 				CA8E17EF1F817A8C003C348C /* CapturingPreloadInteractor.swift in Sources */,
 				CA283AD820EB9A3C00F7D195 /* WhenSelectingAnnouncement_AnnouncementsPresenterShould.swift in Sources */,
 				CAD3BDBB205953AD00C91E6E /* CapturingKnowledgeDetailModuleDelegate.swift in Sources */,
