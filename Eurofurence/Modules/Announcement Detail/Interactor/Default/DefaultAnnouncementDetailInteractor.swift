@@ -1,12 +1,17 @@
 import EurofurenceModel
 import Foundation.NSAttributedString
 
-struct DefaultAnnouncementDetailInteractor: AnnouncementDetailInteractor {
+public struct DefaultAnnouncementDetailInteractor: AnnouncementDetailInteractor {
 
-    var announcementsService: AnnouncementsService
-    var markdownRenderer: MarkdownRenderer
+    private let announcementsService: AnnouncementsService
+    private let markdownRenderer: MarkdownRenderer
+    
+    public init(announcementsService: AnnouncementsService, markdownRenderer: MarkdownRenderer) {
+        self.announcementsService = announcementsService
+        self.markdownRenderer = markdownRenderer
+    }
 
-    func makeViewModel(for identifier: AnnouncementIdentifier, completionHandler: @escaping (AnnouncementViewModel) -> Void) {
+    public func makeViewModel(for identifier: AnnouncementIdentifier, completionHandler: @escaping (AnnouncementViewModel) -> Void) {
         guard let announcement = announcementsService.fetchAnnouncement(identifier: identifier) else { return }
         
         announcement.fetchAnnouncementImagePNGData { (imageData) in

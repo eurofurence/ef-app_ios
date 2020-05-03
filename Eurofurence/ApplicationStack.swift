@@ -14,6 +14,7 @@ class ApplicationStack {
     let notificationScheduleController: NotificationScheduleController
     private let notificationResponseProcessor: NotificationResponseProcessor
     private let activityResumer: ActivityResumer
+    private let router: ContentRouter
     
     static func assemble() {
         _ = instance
@@ -80,6 +81,7 @@ class ApplicationStack {
                                                                         upcomingEventReminderInterval: upcomingEventReminderInterval)
         
         let router = MutableContentRouter()
+        self.router = router
         
         let moduleRepository = ApplicationModuleRepository(services: services, repositories: session.repositories)
         let newsSubrouter = NewsSubrouter(router: router)

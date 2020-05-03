@@ -1,9 +1,15 @@
 import Foundation.NSAttributedString
 
-struct AnnouncementViewModel {
+public struct AnnouncementViewModel {
 
-    var heading: String
-    var contents: NSAttributedString
-    var imagePNGData: Data?
+    public var heading: String
+    public var contents: NSAttributedString
+    public var imagePNGData: Data?
+    
+    public init(heading: String, contents: NSAttributedString, imagePNGData: Data?) {
+        self.heading = heading
+        self.contents = contents
+        self.imagePNGData = imagePNGData
+    }
 
 }
