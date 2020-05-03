@@ -33,6 +33,18 @@ class AnnouncementDetailInteractorTestBuilder {
                        announcement: announcement,
                        announcementsService: announcementsService)
     }
+    
+    func buildForMissingAnnouncement() -> Context {
+        let announcementsService = FakeAnnouncementsService(announcements: [])
+        let markdownRenderer = StubMarkdownRenderer()
+        let interactor = DefaultAnnouncementDetailInteractor(announcementsService: announcementsService,
+                                                             markdownRenderer: markdownRenderer)
+
+        return Context(interactor: interactor,
+                       markdownRenderer: markdownRenderer,
+                       announcement: .random,
+                       announcementsService: announcementsService)
+    }
 
 }
 
