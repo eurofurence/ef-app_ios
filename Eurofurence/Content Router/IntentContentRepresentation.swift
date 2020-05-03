@@ -8,4 +8,18 @@ public struct IntentContentRepresentation: ContentRepresentation {
         self.intent = intent
     }
     
+    public func describe(to recipient: ContentRepresentationRecipient) {
+        if let eventDefinitionProviding = intent as? EventIntentDefinitionProviding,
+           let eventDefinition = eventDefinitionProviding.eventIntentDefinition {
+            let content = EventContentRepresentation(identifier: eventDefinition.identifier)
+            recipient.receive(content)
+        }
+        
+        if let dealerDefinitionProviding = intent as? DealerIntentDefinitionProviding,
+           let dealerDefinition = dealerDefinitionProviding.dealerIntentDefinition {
+            let content = DealerContentRepresentation(identifier: dealerDefinition.identifier)
+            recipient.receive(content)
+        }
+    }
+    
 }

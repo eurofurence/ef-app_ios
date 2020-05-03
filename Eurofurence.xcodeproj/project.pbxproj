@@ -495,6 +495,7 @@
 		CA4D9349245EE01C006FA832 /* UserActivityContentRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D9348245EE01C006FA832 /* UserActivityContentRepresentation.swift */; };
 		CA4D934B245EE02F006FA832 /* IntentContentRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D934A245EE02F006FA832 /* IntentContentRepresentation.swift */; };
 		CA4D934D245EE03E006FA832 /* URLContentRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D934C245EE03E006FA832 /* URLContentRepresentation.swift */; };
+		CA4D934F245EE0A9006FA832 /* IntentContentRepresentationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D934E245EE0A9006FA832 /* IntentContentRepresentationTests.swift */; };
 		CA4FBE0E1F72FF2A00D29405 /* WhenBindingMessage_MessagesPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FBE0D1F72FF2A00D29405 /* WhenBindingMessage_MessagesPresenterShould.swift */; };
 		CA4FBE101F73047700D29405 /* CapturingDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FBE0F1F73047700D29405 /* CapturingDateFormatter.swift */; };
 		CA4FBE121F7304B400D29405 /* DateFormatterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FBE111F7304B400D29405 /* DateFormatterProtocol.swift */; };
@@ -1711,6 +1712,7 @@
 		CA4D9348245EE01C006FA832 /* UserActivityContentRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserActivityContentRepresentation.swift; sourceTree = "<group>"; };
 		CA4D934A245EE02F006FA832 /* IntentContentRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentContentRepresentation.swift; sourceTree = "<group>"; };
 		CA4D934C245EE03E006FA832 /* URLContentRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLContentRepresentation.swift; sourceTree = "<group>"; };
+		CA4D934E245EE0A9006FA832 /* IntentContentRepresentationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentContentRepresentationTests.swift; sourceTree = "<group>"; };
 		CA4FBE0D1F72FF2A00D29405 /* WhenBindingMessage_MessagesPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingMessage_MessagesPresenterShould.swift; sourceTree = "<group>"; };
 		CA4FBE0F1F73047700D29405 /* CapturingDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingDateFormatter.swift; sourceTree = "<group>"; };
 		CA4FBE111F7304B400D29405 /* DateFormatterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterProtocol.swift; sourceTree = "<group>"; };
@@ -5839,6 +5841,7 @@
 				CA4D9346245EDAD1006FA832 /* UserActivityContentRepresentationTests.swift */,
 				CAD4F753245C3D320036ADAF /* Route Tests */,
 				CAD4F754245C3D3A0036ADAF /* Test Doubles */,
+				CA4D934E245EE0A9006FA832 /* IntentContentRepresentationTests.swift */,
 			);
 			path = "Content Router";
 			sourceTree = "<group>";
@@ -7773,6 +7776,7 @@
 				CA637542208CBB2400536BE2 /* StubNavigationControllerFactory.swift in Sources */,
 				CA6A8D7420E264B5007536CD /* CapturingMapsScene.swift in Sources */,
 				CA81D4901FE9A91000A52A2F /* WhenTheTutorialAppears.swift in Sources */,
+				CA4D934F245EE0A9006FA832 /* IntentContentRepresentationTests.swift in Sources */,
 				CABA43891FBCD94E009CB5B0 /* LoginPresenterTests.swift in Sources */,
 				CA1B6F2D20DB8BDC00ADF414 /* WhenBindingDealerSummaryComponent_DealerDetailPresenterShould.swift in Sources */,
 				CA36A4E020DAFE7500EE6537 /* WhenDealersModuleSelectsDealer_DirectorShould.swift in Sources */,

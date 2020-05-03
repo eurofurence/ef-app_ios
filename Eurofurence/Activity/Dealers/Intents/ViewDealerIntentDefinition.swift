@@ -1,12 +1,12 @@
 import EurofurenceModel
 import Foundation
 
-struct ViewDealerIntentDefinition: Hashable {
+public struct ViewDealerIntentDefinition: Hashable {
     
-    var identifier: DealerIdentifier
-    var dealerName: String
+    public var identifier: DealerIdentifier
+    public var dealerName: String
     
-    init(identifier: DealerIdentifier, dealerName: String) {
+    public init(identifier: DealerIdentifier, dealerName: String) {
         self.identifier = identifier
         self.dealerName = dealerName
     }
