@@ -8,6 +8,12 @@ public struct IntentContentRepresentation: ContentRepresentation {
         self.intent = intent
     }
     
+}
+
+// MARK: - ContentRepresentationDescribing
+
+extension IntentContentRepresentation: ContentRepresentationDescribing {
+    
     public func describe(to recipient: ContentRepresentationRecipient) {
         if let eventDefinitionProviding = intent as? EventIntentDefinitionProviding,
            let eventDefinition = eventDefinitionProviding.eventIntentDefinition {

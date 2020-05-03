@@ -19,6 +19,12 @@ public struct URLContentRepresentation: ContentRepresentation {
         self.url = url
     }
     
+}
+
+// MARK: - ContentRepresentationDescribing
+
+extension URLContentRepresentation: ContentRepresentationDescribing {
+    
     public func describe(to recipient: ContentRepresentationRecipient) {
         Self.decodingChain.describe(url: url, to: recipient)
     }

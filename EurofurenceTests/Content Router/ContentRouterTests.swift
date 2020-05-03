@@ -85,7 +85,8 @@ private struct SomeOtherWellKnownContent: ContentRepresentation {
     
 }
 
-private struct WrapperContent<Content>: ContentRepresentation where Content: ContentRepresentation {
+private struct WrapperContent<Content>: ContentRepresentation, ContentRepresentationDescribing
+    where Content: ContentRepresentation {
     
     var inner: Content
     

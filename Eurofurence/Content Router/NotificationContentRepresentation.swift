@@ -23,6 +23,12 @@ public struct NotificationContentRepresentation: ContentRepresentation {
         payload = NotificationPayload(userInfo: userInfo)
     }
     
+}
+
+// MARK: - ContentRepresentationDescribing
+
+extension NotificationContentRepresentation: ContentRepresentationDescribing {
+    
     public func describe(to recipient: ContentRepresentationRecipient) {
         var chain: PayloadDecoder = AnnouncementPayloadDecoder(next: nil)
         chain = MessagePayloadDecoder(next: chain)

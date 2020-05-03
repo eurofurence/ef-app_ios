@@ -12,8 +12,7 @@ public class MutableContentRouter: ContentRouter {
         routeRegistry.add(route)
     }
     
-    public func route<Content>(_ content: Content) throws
-        where Content: ContentRepresentationDescribing {
+    public func route(_ content: AnyContentRepresentation) throws {
         let executor = ExecuteRoute(routeRegistry: routeRegistry)
         content.describe(to: executor)
         
@@ -32,7 +31,9 @@ public class MutableContentRouter: ContentRouter {
         }
         
         func receive<Content>(_ content: Content) where Content: ContentRepresentation {
-            if let route = routeRegistry.route(for: content) {
+            if let descriptor = content as? ContentRepresentationDescribing {
+                descriptor.describe(to: self)
+            } else if let route = routeRegistry.route(for: content) {
                 route.route(content)
             } else {
                 error = RouteMissing(content: content)

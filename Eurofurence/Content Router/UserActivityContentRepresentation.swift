@@ -10,6 +10,12 @@ public struct UserActivityContentRepresentation: ContentRepresentation {
         descriptor = unwrapper.unwrapped
     }
     
+}
+
+// MARK: - ContentRepresentationDescribing
+
+extension UserActivityContentRepresentation: ContentRepresentationDescribing {
+    
     public func describe(to recipient: ContentRepresentationRecipient) {
         descriptor.describe(to: recipient)
     }

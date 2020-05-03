@@ -8,7 +8,7 @@ public protocol ContentRouter: AnyObject {
 
 extension ContentRouter {
     
-    func route<Content>(_ content: Content) throws where Content: ContentRepresentation {
+    public func route<Content>(_ content: Content) throws where Content: ContentRepresentation {
         try route(content.eraseToAnyContentRepresentation())
     }
     
