@@ -4,15 +4,15 @@ import XCTest
 public struct ModuleSwappingPrincipalWindowScene: PrincipalWindowScene, TutorialModuleDelegate, PreloadModuleDelegate {
     
     public func preloadModuleDidCancelPreloading() {
-        
+        showTutorial()
     }
     
     public func preloadModuleDidFinishPreloading() {
-        
+        showContent()
     }
     
     public func tutorialModuleDidFinishPresentingTutorial() {
-        
+        showPreloading()
     }
     
     private let windowWireframe: WindowWireframe
@@ -107,6 +107,29 @@ class ModuleSwappingPrincipalWindowSceneTests: XCTestCase {
         XCTAssertNil(windowWireframe.capturedRootInterface)
         
         windowScene.showContent()
+        
+        XCTAssertEqual(principalContentModule.stubInterface, windowWireframe.capturedRootInterface)
+    }
+    
+    func testMovingFromTutorialToPreload() {
+        windowScene.showTutorial()
+        tutorialModule.simulateTutorialFinished()
+        
+        XCTAssertEqual(preloadModule.stubInterface, windowWireframe.capturedRootInterface)
+    }
+    
+    func testMovingFromPreloadBackToTutorial() {
+        windowScene.showTutorial()
+        tutorialModule.simulateTutorialFinished()
+        preloadModule.simulatePreloadCancelled()
+        
+        XCTAssertEqual(tutorialModule.stubInterface, windowWireframe.capturedRootInterface)
+    }
+    
+    func testMovingFromPreloadToContent() {
+        windowScene.showTutorial()
+        tutorialModule.simulateTutorialFinished()
+        preloadModule.simulatePreloadFinished()
         
         XCTAssertEqual(principalContentModule.stubInterface, windowWireframe.capturedRootInterface)
     }
