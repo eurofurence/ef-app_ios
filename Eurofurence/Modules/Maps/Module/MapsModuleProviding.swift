@@ -1,6 +1,6 @@
 import UIKit
 
-protocol MapsModuleProviding {
+public protocol MapsModuleProviding {
 
     func makeMapsModule(_ delegate: MapsModuleDelegate) -> UIViewController
 

@@ -1,6 +1,6 @@
 import UIKit
 
-protocol CollectThemAllModuleProviding {
+public protocol CollectThemAllModuleProviding {
 
     func makeCollectThemAllModule() -> UIViewController
 
