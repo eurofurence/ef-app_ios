@@ -18,6 +18,7 @@ struct RouterConfigurator {
         configureDealerRoute()
         configureEventRoute()
         configureEventFeedbackRoute()
+        configureKnowledgeGroupsRoute()
         configureKnowledgeEntriesRoute()
         configureKnowledgeDetailRoute()
         configureMapsRoute()
@@ -105,6 +106,12 @@ struct RouterConfigurator {
     private func configureNewsRoute() {
         router.add(NewsContentRoute(
             newsPresentation: ExplicitTabManipulationNewsPresentation(window: window)
+        ))
+    }
+    
+    private func configureKnowledgeGroupsRoute() {
+        router.add(KnowledgeGroupsContentRoute(
+            tabNavigator: MoveToTabByViewController<KnowledgeListViewController>(window: window)
         ))
     }
     

@@ -930,6 +930,8 @@
 		CAB138131FE1555C00AD61FE /* MessagesCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB138121FE1555C00AD61FE /* MessagesCollectionViewFlowLayout.swift */; };
 		CAB3B8F922611E260077B068 /* EventFeedbackPresenterTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB3B8F822611E260077B068 /* EventFeedbackPresenterTestBuilder.swift */; };
 		CAB631F6245F1B3300DBF0A0 /* ShowDealerFromMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D9377245F1859006FA832 /* ShowDealerFromMap.swift */; };
+		CAB631F8245F1C5800DBF0A0 /* KnowledgeGroupsContentRouteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB631F7245F1C5800DBF0A0 /* KnowledgeGroupsContentRouteTests.swift */; };
+		CAB631FA245F1D0300DBF0A0 /* KnowledgeGroupsContentRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB631F9245F1D0300DBF0A0 /* KnowledgeGroupsContentRoute.swift */; };
 		CABA43831FB84834009CB5B0 /* StoryboardMessagesSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43821FB84834009CB5B0 /* StoryboardMessagesSceneFactory.swift */; };
 		CABA43861FBC6FE1009CB5B0 /* LoginModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43851FBC6FE1009CB5B0 /* LoginModuleProviding.swift */; };
 		CABA43891FBCD94E009CB5B0 /* LoginPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43881FBCD94E009CB5B0 /* LoginPresenterTests.swift */; };
@@ -2164,6 +2166,8 @@
 		CAB0FD6622C93A1400D4CB98 /* URLActivityDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLActivityDescription.swift; sourceTree = "<group>"; };
 		CAB138121FE1555C00AD61FE /* MessagesCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		CAB3B8F822611E260077B068 /* EventFeedbackPresenterTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFeedbackPresenterTestBuilder.swift; sourceTree = "<group>"; };
+		CAB631F7245F1C5800DBF0A0 /* KnowledgeGroupsContentRouteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeGroupsContentRouteTests.swift; sourceTree = "<group>"; };
+		CAB631F9245F1D0300DBF0A0 /* KnowledgeGroupsContentRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeGroupsContentRoute.swift; sourceTree = "<group>"; };
 		CABA43821FB84834009CB5B0 /* StoryboardMessagesSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardMessagesSceneFactory.swift; sourceTree = "<group>"; };
 		CABA43851FBC6FE1009CB5B0 /* LoginModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModuleProviding.swift; sourceTree = "<group>"; };
 		CABA43881FBCD94E009CB5B0 /* LoginPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenterTests.swift; sourceTree = "<group>"; };
@@ -4434,6 +4438,7 @@
 				CA63A75C245DC8B100E4B313 /* OpenLinkFromKnowledgeEntryTests.swift */,
 				CA63A76E245DD41D00E4B313 /* ShowKnowledgeContentFromListingTests.swift */,
 				CAFA06FB245DD9F400A807F5 /* ShowKnowledgeContentFromGroupListingTests.swift */,
+				CAB631F7245F1C5800DBF0A0 /* KnowledgeGroupsContentRouteTests.swift */,
 			);
 			path = Knowledge;
 			sourceTree = "<group>";
@@ -4446,6 +4451,7 @@
 				CA63A754245DC3F100E4B313 /* KnowledgeGroupContentRepresentation.swift */,
 				CA63A752245DC3DF00E4B313 /* KnowledgeGroupContentRoute.swift */,
 				CA4D9354245EE961006FA832 /* KnowledgeGroupsContentRepresentation.swift */,
+				CAB631F9245F1D0300DBF0A0 /* KnowledgeGroupsContentRoute.swift */,
 				CA63A763245DCE7700E4B313 /* OpenLinkFromKnowledgeEntry.swift */,
 				CAFA06FD245DDAD500A807F5 /* ShowKnowledgeContentFromGroupListing.swift */,
 				CAFA06F9245DD64C00A807F5 /* ShowKnowledgeContentFromListing.swift */,
@@ -6891,6 +6897,7 @@
 				CA6A8DF520E42731007536CD /* DefaultMapDetailInteractor.swift in Sources */,
 				CAB138131FE1555C00AD61FE /* MessagesCollectionViewFlowLayout.swift in Sources */,
 				CA6F652F2269DFAD00483EE0 /* FoundationDayOfWeekFormatter.swift in Sources */,
+				CAB631FA245F1D0300DBF0A0 /* KnowledgeGroupsContentRoute.swift in Sources */,
 				CA50B1AD226110C10091E425 /* EventFeedbackModuleProvidingImpl.swift in Sources */,
 				CA272562211255DE004C6D0A /* KnowledgeDetailImageTableViewCell.swift in Sources */,
 				CACF1E5820AE2DED00D904B5 /* EventDetailSceneFactory.swift in Sources */,
@@ -7633,6 +7640,7 @@
 				CA283A8820E9612900F7D195 /* AnnouncementDetailInteractorTestBuilder.swift in Sources */,
 				CA73AEF8201A0908004E77BF /* WhenBuildingKnowledgePresenter.swift in Sources */,
 				CA162EA620A9B18E004AFED6 /* WhenLoggedOutDuringConvention_WithNoUpcomingEvents_NewsInteractorShould.swift in Sources */,
+				CAB631F8245F1C5800DBF0A0 /* KnowledgeGroupsContentRouteTests.swift in Sources */,
 				CA637546208CBB4E00536BE2 /* StubTutorialModuleFactory.swift in Sources */,
 				78CA0D061F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift in Sources */,
 				CA65A87B209A5BDA00B72533 /* DefaultNewsInteractorTestBuilder.swift in Sources */,
