@@ -29,44 +29,98 @@ protocol ExpressibleByURL {
     
 }
 
-extension EventContentRepresentation: ExpressibleByURL {
+protocol ExpressibleByString {
+    
+    init?(stringValue: String)
+    
+}
+
+protocol ExpressibleBySingleParameterURL: ExpressibleByURL {
+    
+    static var regularExpression: NSRegularExpression { get }
+    
+    associatedtype CaptureGroupContents: ExpressibleByString
+    
+    init(singleParameterCaptureGroup: CaptureGroupContents)
+    
+}
+
+extension ExpressibleBySingleParameterURL {
     
     init?(url: URL) {
-        if url.path.contains("Events") {
-            let lastPathComponent = url.lastPathComponent
-            let eventIdentifier = EventIdentifier(lastPathComponent)
-            self.init(identifier: eventIdentifier)
-        } else {
+        let absoluteString = url.absoluteString
+        let range = NSRange(location: 0, length: absoluteString.count)
+        guard let match = Self.regularExpression.firstMatch(in: absoluteString, options: [], range: range) else {
             return nil
+        }
+        
+        let r = match.range(at: max(0, match.numberOfRanges - 1))
+        guard let captureGroupRange = Range(r, in: absoluteString) else {
+            return nil
+        }
+        
+        let captureGroupContents = String(absoluteString[captureGroupRange])
+        guard let captureGroupValue = CaptureGroupContents(stringValue: captureGroupContents) else {
+            return nil
+        }
+        
+        self.init(singleParameterCaptureGroup: captureGroupValue)
+    }
+    
+}
+
+extension Identifier: ExpressibleByString {
+    
+    init?(stringValue: String) {
+        self.init(stringValue)
+    }
+    
+}
+
+extension NSRegularExpression {
+    
+    convenience init(unsafePattern: String) {
+        do {
+            try self.init(pattern: unsafePattern, options: [])
+        } catch {
+            fatalError("Pattern \(unsafePattern) is not a valid regular expression")
         }
     }
     
 }
 
-extension DealerContentRepresentation: ExpressibleByURL {
+extension EventContentRepresentation: ExpressibleBySingleParameterURL {
     
-    init?(url: URL) {
-        if url.path.contains("Dealers") {
-            let lastPathComponent = url.lastPathComponent
-            let dealerIdentifier = DealerIdentifier(lastPathComponent)
-            self.init(identifier: dealerIdentifier)
-        } else {
-            return nil
-        }
+    static var regularExpression = NSRegularExpression(unsafePattern: #"Events/(.*)"#)
+    
+    typealias CaptureGroupContents = EventIdentifier
+    
+    init(singleParameterCaptureGroup: EventIdentifier) {
+        self.init(identifier: singleParameterCaptureGroup)
     }
     
 }
 
-extension KnowledgeEntryContentRepresentation: ExpressibleByURL {
+extension DealerContentRepresentation: ExpressibleBySingleParameterURL {
     
-    init?(url: URL) {
-        if url.path.contains("KnowledgeEntries") {
-            let lastPathComponent = url.lastPathComponent
-            let knowledgeEntryIdentifier = KnowledgeEntryIdentifier(lastPathComponent)
-            self.init(identifier: knowledgeEntryIdentifier)
-        } else {
-            return nil
-        }
+    static var regularExpression = NSRegularExpression(unsafePattern: #"Dealers/(.*)"#)
+    
+    typealias CaptureGroupContents = DealerIdentifier
+    
+    init(singleParameterCaptureGroup: DealerIdentifier) {
+        self.init(identifier: singleParameterCaptureGroup)
+    }
+    
+}
+
+extension KnowledgeEntryContentRepresentation: ExpressibleBySingleParameterURL {
+    
+    static var regularExpression = NSRegularExpression(unsafePattern: #"KnowledgeEntries/(.*)"#)
+    
+    typealias CaptureGroupContents = KnowledgeEntryIdentifier
+    
+    init(singleParameterCaptureGroup: KnowledgeEntryIdentifier) {
+        self.init(identifier: singleParameterCaptureGroup)
     }
     
 }
