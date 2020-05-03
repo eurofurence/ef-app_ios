@@ -10,24 +10,71 @@ public struct URLContentRepresentation: ContentRepresentation {
     }
     
     public func describe(to recipient: ContentRepresentationRecipient) {
+        if let event = EventContentRepresentation(url: url) {
+            recipient.receive(event)
+        } else if let dealer = DealerContentRepresentation(url: url) {
+            recipient.receive(dealer)
+        } else if let knowledgeEntry = KnowledgeEntryContentRepresentation(url: url) {
+            recipient.receive(knowledgeEntry)
+        } else if let knowledgeGroups = KnowledgeGroupsContentRepresentation(url: url) {
+            recipient.receive(knowledgeGroups)
+        }
+    }
+    
+}
+
+protocol ExpressibleByURL {
+    
+    init?(url: URL)
+    
+}
+
+extension EventContentRepresentation: ExpressibleByURL {
+    
+    init?(url: URL) {
         if url.path.contains("Events") {
             let lastPathComponent = url.lastPathComponent
             let eventIdentifier = EventIdentifier(lastPathComponent)
-            let contentRepresentation = EventContentRepresentation(identifier: eventIdentifier)
-            recipient.receive(contentRepresentation)
-        } else if url.path.contains("Dealers") {
+            self.init(identifier: eventIdentifier)
+        } else {
+            return nil
+        }
+    }
+    
+}
+
+extension DealerContentRepresentation: ExpressibleByURL {
+    
+    init?(url: URL) {
+        if url.path.contains("Dealers") {
             let lastPathComponent = url.lastPathComponent
             let dealerIdentifier = DealerIdentifier(lastPathComponent)
-            let contentRepresentation = DealerContentRepresentation(identifier: dealerIdentifier)
-            recipient.receive(contentRepresentation)
-        } else if url.path.contains("KnowledgeEntries") {
+            self.init(identifier: dealerIdentifier)
+        } else {
+            return nil
+        }
+    }
+    
+}
+
+extension KnowledgeEntryContentRepresentation: ExpressibleByURL {
+    
+    init?(url: URL) {
+        if url.path.contains("KnowledgeEntries") {
             let lastPathComponent = url.lastPathComponent
             let knowledgeEntryIdentifier = KnowledgeEntryIdentifier(lastPathComponent)
-            let contentRepresentation = KnowledgeEntryContentRepresentation(identifier: knowledgeEntryIdentifier)
-            recipient.receive(contentRepresentation)
-        } else if url.path.contains("KnowledgeGroups") {
-            recipient.receive(KnowledgeGroupsContentRepresentation())
+            self.init(identifier: knowledgeEntryIdentifier)
+        } else {
+            return nil
         }
+    }
+    
+}
+
+extension KnowledgeGroupsContentRepresentation: ExpressibleByURL {
+    
+    init?(url: URL) {
+        guard url.path.contains("KnowledgeGroups") else { return nil }
     }
     
 }
