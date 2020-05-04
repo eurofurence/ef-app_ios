@@ -24,7 +24,7 @@ struct Theme {
         styleSearchBar(searchController.searchBar)
         
         if #available(iOS 13.0, *) {
-            searchController.searchBar.searchTextField.backgroundColor = .white
+            searchController.searchBar.searchTextField.backgroundColor = .systemBackground
             searchController.searchBar.searchTextField.layer.cornerRadius = 10
             searchController.searchBar.searchTextField.clipsToBounds = true
         } else {
