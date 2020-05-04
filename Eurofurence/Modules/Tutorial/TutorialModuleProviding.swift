@@ -1,6 +1,6 @@
 import UIKit
 
-protocol TutorialModuleProviding {
+public protocol TutorialModuleProviding {
 
     func makeTutorialModule(_ delegate: TutorialModuleDelegate) -> UIViewController
 

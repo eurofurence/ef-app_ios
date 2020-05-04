@@ -1,4 +1,4 @@
-@testable import Eurofurence
+import Eurofurence
 import EurofurenceModel
 import XCTest
 
@@ -28,6 +28,16 @@ class DefaultAnnouncementDetailInteractorShould: XCTestCase {
     func testProduceViewModelWithAnnouncementImage() {
         let viewModel = context.makeViewModel()
         XCTAssertEqual(context.announcement.imagePNGData, viewModel?.imagePNGData)
+    }
+    
+    func testProduceInvalidAnnouncementViewModelWhenAnnouncementMissing() {
+        let context = AnnouncementDetailInteractorTestBuilder().buildForMissingAnnouncement()
+        let viewModel = context.makeViewModel()
+        
+        XCTAssertNotNil(viewModel)
+        XCTAssertNil(viewModel?.imagePNGData)
+        XCTAssertEqual(String.invalidAnnouncementAlertTitle, viewModel?.heading)
+        XCTAssertEqual(context.markdownRenderer.stubbedContents(for: .invalidAnnouncementAlertMessage), viewModel?.contents)
     }
 
 }

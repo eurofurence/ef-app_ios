@@ -1,7 +1,7 @@
 import EurofurenceModel
 import Foundation
 
-protocol MapsModuleDelegate {
+public protocol MapsModuleDelegate {
 
     func mapsModuleDidSelectMap(identifier: MapIdentifier)
 

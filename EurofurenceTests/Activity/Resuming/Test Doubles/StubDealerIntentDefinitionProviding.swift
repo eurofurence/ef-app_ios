@@ -1,6 +1,6 @@
 @testable import Eurofurence
 
-struct StubDealerIntentDefinitionProviding: DealerIntentDefinitionProviding {
+struct StubDealerIntentDefinitionProviding: Hashable, DealerIntentDefinitionProviding {
     
     var dealerIntentDefinition: ViewDealerIntentDefinition?
     

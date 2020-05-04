@@ -4,13 +4,13 @@ import Foundation
 class LoginPresenter: LoginSceneDelegate {
 
     private let delegate: LoginModuleDelegate
-    private let scene: LoginScene
+    private weak var scene: LoginScene?
     private let authenticationService: AuthenticationService
     private let alertRouter: AlertRouter
     private lazy var validator = LoginValidator(validationHandler: self.loginValidationStateDidChange)
     private lazy var validationActions: [LoginResult : () -> Void] = [
-        .valid: self.scene.enableLoginButton,
-        .invalid: self.scene.disableLoginButton
+        .valid: { self.scene?.enableLoginButton() },
+        .invalid: { self.scene?.disableLoginButton() }
     ]
 
     private enum LoginResult {
@@ -94,7 +94,7 @@ class LoginPresenter: LoginSceneDelegate {
     }
 
     func loginSceneWillAppear() {
-        scene.disableLoginButton()
+        scene?.disableLoginButton()
     }
 
     func loginSceneDidTapCancelButton() {
@@ -136,7 +136,7 @@ class LoginPresenter: LoginSceneDelegate {
         
         let unacceptableCharacters = currentCharacters.subtracting(allowedCharacters)
         let acceptableInput = registrationNumberString.trimmingCharacters(in: unacceptableCharacters)
-        scene.overrideRegistrationNumber(acceptableInput)
+        scene?.overrideRegistrationNumber(acceptableInput)
     }
 
     func loginSceneDidUpdateUsername(_ username: String) {

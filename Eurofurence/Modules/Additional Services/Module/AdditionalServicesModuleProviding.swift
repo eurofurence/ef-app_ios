@@ -1,6 +1,6 @@
 import UIKit.UIViewController
 
-protocol AdditionalServicesModuleProviding {
+public protocol AdditionalServicesModuleProviding {
     
     func makeAdditionalServicesModule() -> UIViewController
     

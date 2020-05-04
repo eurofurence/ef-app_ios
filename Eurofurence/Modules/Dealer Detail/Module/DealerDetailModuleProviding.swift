@@ -1,7 +1,7 @@
 import EurofurenceModel
 import UIKit
 
-protocol DealerDetailModuleProviding {
+public protocol DealerDetailModuleProviding {
 
     func makeDealerDetailModule(for dealer: DealerIdentifier) -> UIViewController
 

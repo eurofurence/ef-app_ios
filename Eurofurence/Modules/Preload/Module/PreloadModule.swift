@@ -1,6 +1,6 @@
 import UIKit
 
-protocol PreloadModuleDelegate {
+public protocol PreloadModuleDelegate {
 
     func preloadModuleDidCancelPreloading()
     func preloadModuleDidFinishPreloading()

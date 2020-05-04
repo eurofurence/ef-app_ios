@@ -1,13 +1,13 @@
 import EurofurenceModel
 import UIKit.UIViewController
 
-protocol MessagesModuleProviding {
+public protocol MessagesModuleProviding {
 
     func makeMessagesModule(_ delegate: MessagesModuleDelegate) -> UIViewController
 
 }
 
-protocol MessagesModuleDelegate {
+public protocol MessagesModuleDelegate {
 
     func messagesModuleDidRequestResolutionForUser(completionHandler: @escaping (Bool) -> Void)
     func messagesModuleDidRequestPresentation(for message: MessageIdentifier)

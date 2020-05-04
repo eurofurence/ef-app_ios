@@ -7,7 +7,7 @@ protocol NewsModuleProviding {
 
 }
 
-protocol NewsModuleDelegate {
+public protocol NewsModuleDelegate {
 
     func newsModuleDidRequestShowingPrivateMessages()
     func newsModuleDidSelectAnnouncement(_ announcement: AnnouncementIdentifier)

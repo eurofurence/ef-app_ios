@@ -1,6 +1,6 @@
 import UIKit
 
-protocol PreloadModuleProviding {
+public protocol PreloadModuleProviding {
 
     func makePreloadModule(_ delegate: PreloadModuleDelegate) -> UIViewController
 

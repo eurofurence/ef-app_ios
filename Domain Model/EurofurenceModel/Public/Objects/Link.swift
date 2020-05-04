@@ -1,4 +1,4 @@
-public struct Link {
+public struct Link: Equatable {
 
     public enum Kind: Int {
         case webExternal

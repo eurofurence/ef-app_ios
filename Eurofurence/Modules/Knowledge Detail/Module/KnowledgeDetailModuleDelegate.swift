@@ -1,6 +1,6 @@
 import EurofurenceModel
 
-protocol KnowledgeDetailModuleDelegate {
+public protocol KnowledgeDetailModuleDelegate {
 
     func knowledgeDetailModuleDidSelectLink(_ link: Link)
 

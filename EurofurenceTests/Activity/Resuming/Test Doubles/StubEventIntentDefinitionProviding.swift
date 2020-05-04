@@ -1,6 +1,6 @@
 @testable import Eurofurence
 
-struct StubEventIntentDefinitionProviding: EventIntentDefinitionProviding {
+struct StubEventIntentDefinitionProviding: Hashable, EventIntentDefinitionProviding {
     
     var eventIntentDefinition: ViewEventIntentDefinition?
     

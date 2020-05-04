@@ -4,7 +4,7 @@ import UIKit.UIViewController
 
 class StubLoginModuleFactory: LoginModuleProviding {
 
-    let stubInterface = UIViewController()
+    let stubInterface = CapturingViewController()
     private(set) var delegate: LoginModuleDelegate?
     func makeLoginModule(_ delegate: LoginModuleDelegate) -> UIViewController {
         self.delegate = delegate

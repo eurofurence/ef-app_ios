@@ -1,14 +1,14 @@
 import Foundation
 
-protocol ActivityDescription {
+public protocol ActivityDescription {
     
     func describe(to visitor: ActivityDescriptionVisitor)
     
 }
 
-protocol ActivityDescriptionVisitor {
+public protocol ActivityDescriptionVisitor {
     
-    func visitIntent(_ intent: Any)
+    func visitIntent(_ intent: AnyHashable)
     func visitURL(_ url: URL)
     
 }

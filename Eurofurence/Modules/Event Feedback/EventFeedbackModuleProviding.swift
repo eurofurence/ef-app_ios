@@ -1,7 +1,7 @@
 import EurofurenceModel
 import UIKit.UIViewController
 
-protocol EventFeedbackModuleProviding {
+public protocol EventFeedbackModuleProviding {
     
     func makeEventFeedbackModule(for event: EventIdentifier, delegate: EventFeedbackModuleDelegate) -> UIViewController
     

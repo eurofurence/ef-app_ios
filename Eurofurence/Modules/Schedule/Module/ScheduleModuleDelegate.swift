@@ -1,7 +1,7 @@
 import EurofurenceModel
 import Foundation
 
-protocol ScheduleModuleDelegate {
+public protocol ScheduleModuleDelegate {
 
     func scheduleModuleDidSelectEvent(identifier: EventIdentifier)
 

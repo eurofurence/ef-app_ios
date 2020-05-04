@@ -7,13 +7,11 @@ class ApplicationStack {
     private static let CID = ConventionIdentifier(identifier: "EF25")
 
     static let instance: ApplicationStack = ApplicationStack()
-    private let director: ApplicationDirector
     let session: EurofurenceSession
     let services: Services
     private let notificationFetchResultAdapter: NotificationServiceFetchResultAdapter
     let notificationScheduleController: NotificationScheduleController
-    private let notificationResponseProcessor: NotificationResponseProcessor
-    private let activityResumer: ActivityResumer
+    private let router: ContentRouter
     
     static func assemble() {
         _ = instance
@@ -29,12 +27,13 @@ class ApplicationStack {
     }
     
     static func openNotification(_ userInfo: [AnyHashable: Any], completionHandler: @escaping () -> Void) {
-        instance.notificationResponseProcessor.openNotification(userInfo, completionHandler: completionHandler)
+        try? instance.router.route(NotificationContentRepresentation(userInfo: userInfo))
     }
     
-    static func resume(activity: NSUserActivity) -> Bool {
+    static func resume(activity: NSUserActivity) {
         let activityDescription = SystemActivityDescription(userActivity: activity)
-        return instance.activityResumer.resume(activity: activityDescription)
+        let contentRepresentation = UserActivityContentRepresentation(activity: activityDescription)
+        try? instance.router.route(contentRepresentation)
     }
 
     private init() {
@@ -58,10 +57,11 @@ class ApplicationStack {
             shareableURLFactory: CIDBasedShareableURLFactory(conventionIdentifier: ApplicationStack.CID)
         )
         
+        let urlOpener = AppURLOpener()
         session = EurofurenceSessionBuilder(mandatory: mandatory)
             .with(remoteNotificationsTokenRegistration)
             .with(ApplicationSignificantTimeChangeAdapter())
-            .with(AppURLOpener())
+            .with(urlOpener)
             .with(ApplicationLongRunningTaskManager())
             .with(UIKitMapCoordinateRender())
             .with(UpdateRemoteConfigRefreshCollaboration(remoteConfigurationLoader: remoteConfigurationLoader))
@@ -78,16 +78,93 @@ class ApplicationStack {
                                                                         hoursDateFormatter: FoundationHoursDateFormatter.shared,
                                                                         upcomingEventReminderInterval: upcomingEventReminderInterval)
         
+        let router = MutableContentRouter()
+        self.router = router
+        
         let moduleRepository = ApplicationModuleRepository(services: services, repositories: session.repositories)
-        director = DirectorBuilder(moduleRepository: moduleRepository,
-                                   linkLookupService: services.contentLinks).build()
+        let newsSubrouter = NewsSubrouter(router: router)
+        let scheduleSubrouter = ShowEventFromSchedule(router: router)
+        let dealerSubrouter = ShowDealerFromDealers(router: router)
+        let knowledgeSubrouter = ShowKnowledgeContentFromListing(router: router)
+        let mapSubrouter = ShowMapFromMaps(router: router)
         
-        let notificationHandler = NavigateToContentNotificationResponseHandler(director: director)
-        notificationResponseProcessor = NotificationResponseProcessor(notificationHandling: services.notifications,
-                                                                      contentRecipient: notificationHandler)
+        let routeAuthenticationHandler = AuthenticateOnDemandRouteAuthenticationHandler(
+            service: services.authentication,
+            router: router
+        )
         
-        let directorContentRouter = DirectorContentRouter(director: director)
-        activityResumer = ActivityResumer(contentLinksService: services.contentLinks, contentRouter: directorContentRouter)
+        guard let appWindow = UIApplication.shared.delegate?.window,
+              let window = appWindow else { fatalError() }
+        
+        let contentWireframe = WindowContentWireframe(window: window)
+        let modalWireframe = WindowModalWireframe(window: window)
+        
+        RouterConfigurator(
+            router: router,
+            contentWireframe: contentWireframe,
+            modalWireframe: modalWireframe,
+            moduleRepository: moduleRepository,
+            routeAuthenticationHandler: routeAuthenticationHandler,
+            linksService: services.contentLinks,
+            urlOpener: urlOpener,
+            window: window
+        ).configureRoutes()
+        
+        let newsContentControllerFactory = NewsContentControllerFactory(
+            newsModuleProviding: moduleRepository.newsModuleProviding,
+            newsModuleDelegate: newsSubrouter
+        )
+        
+        let scheduleContentControllerFactory = ScheduleContentControllerFactory(
+            scheduleModuleProviding: moduleRepository.scheduleModuleProviding,
+            scheduleModuleDelegate: scheduleSubrouter
+        )
+        
+        let dealersContentControllerFactory = DealersContentControllerFactory(
+            dealersModuleProviding: moduleRepository.dealersModuleProviding,
+            dealersModuleDelegate: dealerSubrouter
+        )
+        
+        let knowledgeContentControllerFactory = KnowledgeContentControllerFactory(
+            knowledgeModuleProviding: moduleRepository.knowledgeListModuleProviding,
+            knowledgeModuleDelegate: knowledgeSubrouter
+        )
+        
+        let mapsContentControllerFactory = MapsContentControllerFactory(
+            mapsModuleProviding: moduleRepository.mapsModuleProviding,
+            mapsModuleDelegate: mapSubrouter
+        )
+        
+        let collectThemAllContentControllerFactory = CollectThemAllContentControllerFactory(
+            collectThemAllModuleProviding: moduleRepository.collectThemAllModuleProviding
+        )
+        
+        let additionalServicesContentControllerFactory = AdditionalServicesContentControllerFactory(
+            additionalServicesModuleProviding: moduleRepository.additionalServicesModuleProviding
+        )
+        
+        let moreContentControllerFactory = MoreContentControllerFactory(supplementaryContentControllerFactories: [
+            mapsContentControllerFactory,
+            collectThemAllContentControllerFactory,
+            additionalServicesContentControllerFactory
+        ])
+        
+        let contentControllerFactories: [ContentControllerFactory] = [
+            newsContentControllerFactory,
+            scheduleContentControllerFactory,
+            dealersContentControllerFactory,
+            knowledgeContentControllerFactory,
+            moreContentControllerFactory
+        ]
+        
+        let principalWindowScene = ModuleSwappingPrincipalWindowScene(
+            windowWireframe: AppWindowWireframe.shared,
+            tutorialModule: moduleRepository.tutorialModuleProviding,
+            preloadModule: moduleRepository.preloadModuleProviding,
+            principalContentModule: PrincipalContentAggregator(contentControllerFactories: contentControllerFactories)
+        )
+        
+        _ = PrincipalWindowSceneController(sessionState: services.sessionState, scene: principalWindowScene)
     }
 
 }
