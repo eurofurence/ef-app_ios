@@ -143,14 +143,18 @@ class ApplicationStack {
             additionalServicesModuleProviding: moduleRepository.additionalServicesModuleProviding
         )
         
+        let moreContentControllerFactory = MoreContentControllerFactory(supplementaryContentControllerFactories: [
+            mapsContentControllerFactory,
+            collectThemAllContentControllerFactory,
+            additionalServicesContentControllerFactory
+        ])
+        
         let contentControllerFactories: [ContentControllerFactory] = [
             newsContentControllerFactory,
             scheduleContentControllerFactory,
             dealersContentControllerFactory,
             knowledgeContentControllerFactory,
-            mapsContentControllerFactory,
-            collectThemAllContentControllerFactory,
-            additionalServicesContentControllerFactory
+            moreContentControllerFactory
         ]
         
         let principalWindowScene = ModuleSwappingPrincipalWindowScene(

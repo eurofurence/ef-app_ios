@@ -1,16 +1,17 @@
 {
   "images" : [
     {
+      "filename" : "More.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Map-51.png",
+      "filename" : "More@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Map-52.png",
+      "filename" : "More@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

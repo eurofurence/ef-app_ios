@@ -548,6 +548,8 @@
 		CA5EB1BF245F703F0012C277 /* StubKnowledgeGroupEntriesModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5EB1BE245F703F0012C277 /* StubKnowledgeGroupEntriesModuleProviding.swift */; };
 		CA5EB1C1245F70500012C277 /* StubEventFeedbackModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5EB1C0245F70500012C277 /* StubEventFeedbackModuleProviding.swift */; };
 		CA5EB1C3245F70610012C277 /* StubAdditionalServicesModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5EB1C2245F70610012C277 /* StubAdditionalServicesModuleProviding.swift */; };
+		CA5EB1C6246069380012C277 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5EB1C5246069380012C277 /* MoreViewController.swift */; };
+		CA5EB1C824606AC80012C277 /* MoreContentControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5EB1C724606AC80012C277 /* MoreContentControllerFactory.swift */; };
 		CA60BFE62078E5F700697566 /* CapturingPrivateMessagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFE52078E5F700697566 /* CapturingPrivateMessagesService.swift */; };
 		CA60BFE8207B88ED00697566 /* WhenBuildingNewsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFE7207B88ED00697566 /* WhenBuildingNewsPresenter.swift */; };
 		CA60BFFE207CDC1700697566 /* FakeAuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFFD207CDC1700697566 /* FakeAuthenticationService.swift */; };
@@ -1751,6 +1753,8 @@
 		CA5EB1BE245F703F0012C277 /* StubKnowledgeGroupEntriesModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubKnowledgeGroupEntriesModuleProviding.swift; sourceTree = "<group>"; };
 		CA5EB1C0245F70500012C277 /* StubEventFeedbackModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubEventFeedbackModuleProviding.swift; sourceTree = "<group>"; };
 		CA5EB1C2245F70610012C277 /* StubAdditionalServicesModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubAdditionalServicesModuleProviding.swift; sourceTree = "<group>"; };
+		CA5EB1C5246069380012C277 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
+		CA5EB1C724606AC80012C277 /* MoreContentControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreContentControllerFactory.swift; sourceTree = "<group>"; };
 		CA60BFE52078E5F700697566 /* CapturingPrivateMessagesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingPrivateMessagesService.swift; sourceTree = "<group>"; };
 		CA60BFE7207B88ED00697566 /* WhenBuildingNewsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBuildingNewsPresenter.swift; sourceTree = "<group>"; };
 		CA60BFFD207CDC1700697566 /* FakeAuthenticationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeAuthenticationService.swift; sourceTree = "<group>"; };
@@ -2545,8 +2549,8 @@
 		6EF96CE01F12688700EE6134 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				CA3AB9FF229C2FF50045A35B /* ModuleRepository.swift */,
 				CA3ABA01229C30E70045A35B /* ApplicationModuleRepository.swift */,
+				CA3AB9FF229C2FF50045A35B /* ModuleRepository.swift */,
 				CA8A73C022BD0FD6007A5201 /* Additional Services */,
 				CA728446209D0119007D912A /* Announcement Detail */,
 				CA283A9520EA9CA400F7D195 /* Announcements */,
@@ -2564,6 +2568,7 @@
 				CA6A8D6020E26233007536CD /* Maps */,
 				CAEAEBF21FDEB53800C0EE7C /* Message Detail */,
 				CAD234381F5D71D9004BB959 /* Messages */,
+				CA5EB1C4246069080012C277 /* More */,
 				CAC1E1251F50409800195513 /* News */,
 				CA321F4F1F7BC8490050E489 /* Preload */,
 				CA5EB196245F63680012C277 /* Principal Content */,
@@ -3938,6 +3943,15 @@
 				CA5EB1B4245F6E080012C277 /* AdditionalServicesContentControllerFactory.swift */,
 			);
 			path = "Module Adapters";
+			sourceTree = "<group>";
+		};
+		CA5EB1C4246069080012C277 /* More */ = {
+			isa = PBXGroup;
+			children = (
+				CA5EB1C724606AC80012C277 /* MoreContentControllerFactory.swift */,
+				CA5EB1C5246069380012C277 /* MoreViewController.swift */,
+			);
+			path = More;
 			sourceTree = "<group>";
 		};
 		CA60BFE42078E5F000697566 /* Test Doubles */ = {
@@ -6858,6 +6872,7 @@
 				2020ECCD211CDBA50036E2CF /* NSMutableAttributedString+trim.swift in Sources */,
 				CA5EB1B3245F6DFC0012C277 /* CollectThemAllContentControllerFactory.swift in Sources */,
 				CACF1E9A20B437A500D904B5 /* EventDescriptionComponent.swift in Sources */,
+				CA5EB1C6246069380012C277 /* MoreViewController.swift in Sources */,
 				CA4D9345245ED9EB006FA832 /* NotificationContentRepresentation.swift in Sources */,
 				CA6EC47F2051CBC800402894 /* KnowledgeDetailScene.swift in Sources */,
 				CA73AEE9201A088C004E77BF /* KnowledgeListSceneDelegate.swift in Sources */,
@@ -6898,6 +6913,7 @@
 				CACF1E6620AE2F9800D904B5 /* EventDetailViewController.swift in Sources */,
 				CA1ECB491FE6E8100076083A /* MessageComponentBinder.swift in Sources */,
 				CA8E7EFC1FB0932700F0BF10 /* StoryboardNewsSceneFactory.swift in Sources */,
+				CA5EB1C824606AC80012C277 /* MoreContentControllerFactory.swift in Sources */,
 				CA5EB1AF245F6DE60012C277 /* KnowledgeContentControllerFactory.swift in Sources */,
 				CAA28876245C68F10090B663 /* NavigateFromAnnouncementsToAnnouncement.swift in Sources */,
 				9A861EB71F25550700B75A8C /* SplashScene.swift in Sources */,
