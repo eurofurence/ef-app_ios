@@ -2,6 +2,23 @@ import UIKit
 
 extension UIColor {
     
+    static func adaptiveColor(lightColor: UIColor, darkColor: UIColor) -> UIColor {
+        if #available(iOS 13.0, *) {
+            return UIColor(dynamicProvider: { (traitCollection) in
+                if traitCollection.userInterfaceStyle == .light {
+                    return lightColor
+                } else {
+                    return darkColor
+                }
+            })
+        } else {
+            return lightColor
+        }
+    }
+    
+    static let navigationBar = adaptiveColor(lightColor: .pantone330U, darkColor: .black)
+    static let tabBar = adaptiveColor(lightColor: .pantone330U, darkColor: .black)
+    
     static let pantone330U = UIColor.named("Pantone 330U", defaultingToRed: 0, green: 89, blue: 83)
     
     static let pantone330U_45 = UIColor.named("Pantone 330U (45%)", defaultingToRed: 105, green: 163, blue: 162)
@@ -43,6 +60,10 @@ extension UIColor {
             setFill()
             context.fill(CGRect(origin: .zero, size: size))
         }
+    }
+    
+    func makePixel() -> UIImage {
+        makeColoredImage(size: CGSize(width: 1, height: 1))
     }
 
 }

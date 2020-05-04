@@ -55,6 +55,15 @@ class ScheduleViewController: UIViewController,
             extendedLayoutIncludesOpaqueBars = false
         }
         
+        if #available(iOS 13.0, *) {
+            if let navigationBarAppearance = navigationController?.navigationBar.standardAppearance {
+                navigationBarAppearance.shadowColor = .navigationBar
+                navigationController?.navigationBar.standardAppearance = navigationBarAppearance
+                navigationController?.navigationBar.compactAppearance = navigationBarAppearance
+                navigationController?.navigationBar.scrollEdgeAppearance = navigationBarAppearance
+            }
+        }
+        
         tableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refreshControlDidChangeValue), for: .valueChanged)
         

@@ -54,18 +54,18 @@ struct Theme {
     private static func styleNavigationBars() {
         let navigationBar = UINavigationBar.appearance()
         navigationBar.isTranslucent = false
-        navigationBar.barTintColor = .pantone330U
+        navigationBar.barTintColor = .navigationBar
         navigationBar.tintColor = .white
         navigationBar.titleTextAttributes = whiteTextAttributes
-        navigationBar.shadowImage = pantone330UColourImage
+        navigationBar.setBackgroundImage(UIColor.navigationBar.makePixel(), for: .default)
+        navigationBar.shadowImage = UIColor.navigationBar.makePixel()
         
         if #available(iOS 11.0, *) {
             navigationBar.prefersLargeTitles = true
             
             if #available(iOS 13.0, *) {
                 let appearance = UINavigationBarAppearance()
-                appearance.backgroundColor = .pantone330U
-                appearance.backgroundImage = pantone330UColourImage
+                appearance.backgroundColor = .navigationBar
                 appearance.titleTextAttributes = whiteTextAttributes
                 appearance.largeTitleTextAttributes = whiteTextAttributes
                 
@@ -83,10 +83,8 @@ struct Theme {
     private static func styleTabBars() {
         let tabBar = UITabBar.appearance()
         tabBar.isTranslucent = false
-        tabBar.barTintColor = .pantone330U
+        tabBar.barTintColor = .tabBar
         tabBar.tintColor = .white
-        tabBar.backgroundImage = pantone330UColourImage
-        tabBar.shadowImage = pantone330UColourImage
         tabBar.unselectedItemTintColor = .pantone330U_45
     }
 
@@ -129,7 +127,7 @@ struct Theme {
 
     private static func styleNavigationBarExtensions() {
         let navigationBarExtension = NavigationBarViewExtensionContainer.appearance()
-        navigationBarExtension.backgroundColor = .pantone330U
+        navigationBarExtension.backgroundColor = .navigationBar
 
         styleLabelsWithinNavigationBarExtensions()
     }
