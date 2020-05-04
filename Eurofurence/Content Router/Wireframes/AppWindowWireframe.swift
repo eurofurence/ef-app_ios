@@ -12,6 +12,7 @@ struct AppWindowWireframe: WindowWireframe {
 
     public init(window: UIWindow) {
         self.window = window
+        window.backgroundColor = .pantone330U
     }
 
     func setRoot(_ viewController: UIViewController) {
