@@ -24,6 +24,7 @@ extension UIColor {
     static let secondary = adaptiveColor(lightColor: .pantone330U_45, darkColor: .secondaryDarkColor)
     static let buttons = adaptiveColor(lightColor: .pantone330U, darkColor: .pantone330U_45)
     static let iconographicTint = adaptiveColor(lightColor: .pantone330U, darkColor: .pantone330U_45)
+    static let unreadIndicator = adaptiveColor(lightColor: .pantone330U, darkColor: .pantone330U_45)
     
     private static var secondaryDarkColor: UIColor = {
         if #available(iOS 13.0, *) {

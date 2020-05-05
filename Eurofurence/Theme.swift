@@ -19,6 +19,7 @@ struct Theme {
         styleRefreshControls()
         styleImages()
         styleAwesomeFontLabels()
+        styleUnreadIndicators()
     }
     
     static func performUnsafeSearchControllerStyling(searchController: UISearchController) {
@@ -172,6 +173,11 @@ struct Theme {
     private static func styleAwesomeFontLabels() {
         let appearance = AwesomeFontLabel.appearance()
         appearance.textColor = .iconographicTint
+    }
+    
+    private static func styleUnreadIndicators() {
+        let appearance = UnreadIndicatorView.appearance()
+        appearance.tintColor = .unreadIndicator
     }
     
     private static func styleSearchBar(_ searchBar: UISearchBar) {
