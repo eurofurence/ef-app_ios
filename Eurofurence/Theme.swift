@@ -48,7 +48,7 @@ struct Theme {
         primaryColorView.backgroundColor = .primary
         
         let secondaryColorView = ConventionSecondaryColorView.appearance()
-        secondaryColorView.backgroundColor = .pantone330U_45
+        secondaryColorView.backgroundColor = .secondary
     }
 
     private static func styleNavigationBars() {
