@@ -45,7 +45,7 @@ struct Theme {
     
     private static func styleConventionColorViews() {
         let primaryColorView = ConventionPrimaryColorView.appearance()
-        primaryColorView.backgroundColor = .pantone330U
+        primaryColorView.backgroundColor = .primary
         
         let secondaryColorView = ConventionSecondaryColorView.appearance()
         secondaryColorView.backgroundColor = .pantone330U_45

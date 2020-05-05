@@ -18,6 +18,7 @@ extension UIColor {
     
     static let navigationBar = adaptiveColor(lightColor: .pantone330U, darkColor: .black)
     static let tabBar = adaptiveColor(lightColor: .pantone330U, darkColor: .black)
+    static let primary = adaptiveColor(lightColor: .pantone330U, darkColor: .black)
     
     static let pantone330U = UIColor.named("Pantone 330U", defaultingToRed: 0, green: 89, blue: 83)
     
