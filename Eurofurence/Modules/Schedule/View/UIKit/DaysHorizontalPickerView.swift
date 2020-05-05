@@ -100,12 +100,7 @@ class DaysHorizontalPickerView: UIView {
         }
         
         func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            let availableWidth: CGFloat
-            if #available(iOS 11.0, *) {
-                availableWidth = collectionView.safeAreaLayoutGuide.layoutFrame.width
-            } else {
-                availableWidth = collectionView.bounds.width
-            }
+            let availableWidth = collectionView.safeAreaLayoutGuide.layoutFrame.width
             
             let sensibleMinimumWidth: CGFloat = 64
             let numberOfItems = collectionView.numberOfItems(inSection: indexPath.section)

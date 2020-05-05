@@ -49,11 +49,7 @@ class ScheduleViewController: UIViewController,
         tableView.contentInset = insets
         tableView.scrollIndicatorInsets = insets
         
-        if #available(iOS 11.0, *) {
-            extendedLayoutIncludesOpaqueBars = true
-        } else {
-            extendedLayoutIncludesOpaqueBars = false
-        }
+        extendedLayoutIncludesOpaqueBars = true
         
         if #available(iOS 13.0, *) {
             if let navigationBarAppearance = navigationController?.navigationBar.standardAppearance {
@@ -99,10 +95,8 @@ class ScheduleViewController: UIViewController,
         searchController.searchResultsUpdater = self
         Theme.performUnsafeSearchControllerStyling(searchController: searchController)
         
-        if #available(iOS 11.0, *) {
-            navigationItem.searchController = searchController
-            navigationItem.rightBarButtonItem = nil
-        }
+        navigationItem.searchController = searchController
+        navigationItem.rightBarButtonItem = nil
         
         self.searchController = searchController
     }
@@ -125,11 +119,6 @@ class ScheduleViewController: UIViewController,
         resetSearchSceneForSearchingAllEvents()
         ensureScrolledToTopToAvoidLargeTitlesPresentationIssue()
         present(searchController, animated: true)
-    }
-    
-    func willDismissSearchController(_ searchController: UISearchController) {
-        if #available(iOS 11.0, *) { return }
-        adjustTableViewContentInsetsForiOS10LayoutProblems()
     }
 
     // MARK: UISearchResultsUpdating
@@ -203,17 +192,6 @@ class ScheduleViewController: UIViewController,
     }
 
     // MARK: Private
-    
-    private func adjustTableViewContentInsetsForiOS10LayoutProblems() {
-        var insets = tableView.contentInset
-        var topInsets = daysHorizontalPickerView.bounds.height
-        if let navigationBar = navigationController?.navigationBar {
-            topInsets += navigationBar.bounds.height
-        }
-        
-        insets.top = topInsets
-        tableView.contentInset = insets
-    }
 
     @objc private func refreshControlDidChangeValue() {
         if tableView.isDragging == false {
@@ -253,13 +231,11 @@ class ScheduleViewController: UIViewController,
     }
     
     private func tableViewDidScroll(to offset: CGPoint) {
-        if #available(iOS 11.0, *) {
-            guard offset.y < 0 else { return }
-            
-            let safeAreaApplyingScrollViewContentInsets = view.safeAreaLayoutGuide.layoutFrame.origin.y + tableView.contentInset.top
-            let distance = max(0, abs(offset.y) - safeAreaApplyingScrollViewContentInsets)
-            daysPickerTopConstraint.constant = distance
-        }
+        guard offset.y < 0 else { return }
+        
+        let safeAreaApplyingScrollViewContentInsets = view.safeAreaLayoutGuide.layoutFrame.origin.y + tableView.contentInset.top
+        let distance = max(0, abs(offset.y) - safeAreaApplyingScrollViewContentInsets)
+        daysPickerTopConstraint.constant = distance
     }
     
     private func scrollToTableViewTop() {
@@ -274,7 +250,6 @@ class ScheduleViewController: UIViewController,
     }
     
     private func ensureScrolledToTopToAvoidLargeTitlesPresentationIssue() {
-        guard #available(iOS 11.0, *) else { return }
         scrollToTableViewTop()
     }
 

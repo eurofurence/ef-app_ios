@@ -30,8 +30,6 @@ struct Theme {
             searchController.searchBar.searchTextField.layer.cornerRadius = 10
             searchController.searchBar.searchTextField.clipsToBounds = true
         } else {
-            guard #available(iOS 11.0, *) else { return }
-            
             guard let backgroundview = resolveStylableBackgroundFromPrivateViewHiearchy(searchBar: searchController.searchBar) else { return }
             
             backgroundview.backgroundColor = .white
@@ -62,21 +60,17 @@ struct Theme {
         navigationBar.setBackgroundImage(UIColor.navigationBar.makePixel(), for: .default)
         navigationBar.shadowImage = UIColor.navigationBar.makePixel()
         
-        if #available(iOS 11.0, *) {
-            if #available(iOS 13.0, *) {
-                let appearance = UINavigationBarAppearance()
-                appearance.backgroundColor = .navigationBar
-                appearance.titleTextAttributes = whiteTextAttributes
-                appearance.largeTitleTextAttributes = whiteTextAttributes
-                
-                navigationBar.standardAppearance = appearance
-                navigationBar.compactAppearance = appearance
-                navigationBar.scrollEdgeAppearance = appearance
-            } else {
-                navigationBar.largeTitleTextAttributes = whiteTextAttributes
-            }
+        if #available(iOS 13.0, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.backgroundColor = .navigationBar
+            appearance.titleTextAttributes = whiteTextAttributes
+            appearance.largeTitleTextAttributes = whiteTextAttributes
+            
+            navigationBar.standardAppearance = appearance
+            navigationBar.compactAppearance = appearance
+            navigationBar.scrollEdgeAppearance = appearance
         } else {
-            navigationBar.setBackgroundImage(pantone330UColourImage, for: .default)
+            navigationBar.largeTitleTextAttributes = whiteTextAttributes
         }
     }
 
