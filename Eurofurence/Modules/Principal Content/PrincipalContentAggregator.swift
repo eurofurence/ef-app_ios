@@ -10,11 +10,20 @@ public struct PrincipalContentAggregator: PrincipalContentModuleProviding {
     
     public func makePrincipalContentModule() -> UIViewController {
         let contentControllers = contentControllerFactories.map({ $0.makeContentController() })
-        let navigationControllers = contentControllers.map(UINavigationController.init)
+        let navigationControllers = contentControllers.map(NavigationController.init)
         let tabBarController = TabBarController()
         tabBarController.viewControllers = navigationControllers
         
         return tabBarController
+    }
+    
+    private class NavigationController: UINavigationController {
+        
+        override func viewDidLoad() {
+            super.viewDidLoad()    
+            navigationBar.prefersLargeTitles = true
+        }
+        
     }
     
     private class TabBarController: UITabBarController {

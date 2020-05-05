@@ -27,11 +27,7 @@ class MessagesCollectionViewFlowLayout: UICollectionViewFlowLayout {
         guard let collectionView = collectionView else { return }
 
         var frame = attributes.frame
-        if #available(iOS 11.0, *) {
-            frame.origin.x = collectionView.safeAreaInsets.left + tipInset
-        } else {
-            frame.origin.x = tipInset
-        }
+        frame.origin.x = collectionView.safeAreaInsets.left + tipInset
 
         let availableWidth = collectionView.frame.width - collectionView.contentInset.left - collectionView.contentInset.right - sectionInset.left - sectionInset.right
         frame.size.width = availableWidth * 0.66

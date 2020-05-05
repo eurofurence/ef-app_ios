@@ -44,11 +44,7 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
         
         prepareSearchController()
         
-        if #available(iOS 11.0, *) {
-            extendedLayoutIncludesOpaqueBars = true
-        } else {
-            extendedLayoutIncludesOpaqueBars = false
-        }
+        extendedLayoutIncludesOpaqueBars = true
         
         delegate?.dealersSceneDidLoad()
     }
@@ -64,7 +60,6 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
               let filtersScene = navigationController.topViewController as? DealerCategoriesFilterScene else { return }
         
         delegate?.dealersSceneDidRevealCategoryFiltersScene(filtersScene)
-        navigationController.popoverPresentationController?.backgroundColor = .pantone330U
     }
     
     private func prepareSearchController() {
@@ -73,10 +68,8 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
         searchController.searchResultsUpdater = self
         Theme.performUnsafeSearchControllerStyling(searchController: searchController)
         
-        if #available(iOS 11.0, *) {
-            navigationItem.searchController = searchController
-            navigationItem.rightBarButtonItem = nil
-        }
+        navigationItem.searchController = searchController
+        navigationItem.rightBarButtonItem = nil
         
         self.searchController = searchController
     }
@@ -90,9 +83,6 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
     
     func willDismissSearchController(_ searchController: UISearchController) {
         navigationBarExtension.isHidden = true
-        
-        if #available(iOS 11.0, *) { return }
-        adjustTableViewContentInsetsForiOS10LayoutProblems()
     }
     
     func didDismissSearchController(_ searchController: UISearchController) {
@@ -146,10 +136,6 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
     }
 
     // MARK: Private
-    
-    private func adjustTableViewContentInsetsForiOS10LayoutProblems() {
-        tableView.contentInset = .zero
-    }
 
     @objc private func refreshControlValueDidChange() {
         if tableView.isDragging == false {        
@@ -183,7 +169,6 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
     }
     
     private func ensureScrolledToTopToAvoidLargeTitlesPresentationIssue() {
-        guard #available(iOS 11.0, *) else { return }
         scrollToTableViewTop()
     }
 

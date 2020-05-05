@@ -55,9 +55,7 @@ extension UITableView {
     }
     
     func adjustScrollIndicatorInsetsForSafeAreaCompensation() {
-        if #available(iOS 11.0, *) {        
-            scrollIndicatorInsets.right = -safeAreaInsets.right
-        }
+        scrollIndicatorInsets.right = -safeAreaInsets.right
     }
 
     private func abortDueToUnregisteredOrMissingCell<T>(_ type: T.Type, identifier: String) -> Never {

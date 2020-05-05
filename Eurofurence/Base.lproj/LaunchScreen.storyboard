@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Ckn-Ck-xoO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Ckn-Ck-xoO">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,11 +15,16 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="eWl-03-dEz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" red="0.0" green="0.34901960784313724" blue="0.32549019607843138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" name="Launch Screen Bar Item Tint"/>
+                        <color key="barTintColor" name="Launch Screen Bar Tint"/>
+                        <color key="selectedImageTintColor" name="Launch Screen Bar Item Tint"/>
                     </tabBar>
                     <connections>
                         <segue destination="ovJ-yz-wGF" kind="relationship" relationship="viewControllers" id="yly-c5-PuK"/>
+                        <segue destination="b0s-4q-K4F" kind="relationship" relationship="viewControllers" id="w8k-Dw-bp9"/>
+                        <segue destination="6G3-s6-zya" kind="relationship" relationship="viewControllers" id="cGX-jX-tBV"/>
+                        <segue destination="aUU-Bv-uEc" kind="relationship" relationship="viewControllers" id="Kso-xw-At7"/>
+                        <segue destination="bo9-WB-KbY" kind="relationship" relationship="viewControllers" id="vdr-iJ-Ppj"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MBc-4P-seo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -29,11 +35,11 @@
         <scene sceneID="8B1-dU-MgY">
             <objects>
                 <navigationController id="ovJ-yz-wGF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="Transparent Pixel" id="y9A-O4-eZg"/>
+                    <tabBarItem key="tabBarItem" title="" image="News" id="y9A-O4-eZg"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="Sp4-hh-8US">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.0" green="0.34901960780000002" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" name="Launch Screen Bar Tint"/>
                     </navigationBar>
                     <connections>
                         <segue destination="j1c-Fp-oMM" kind="relationship" relationship="rootViewController" id="mN0-KX-pYO"/>
@@ -41,7 +47,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GGl-Z9-azY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2" y="738"/>
+            <point key="canvasLocation" x="155" y="-690"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="FJJ-s4-i3J">
@@ -54,16 +60,174 @@
                     <view key="view" contentMode="scaleToFill" id="d7z-hY-ukC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="xgL-jW-8ZJ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3aK-8h-Ja8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="786" y="738"/>
+            <point key="canvasLocation" x="967" y="-690"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="5Ro-V3-gHf">
+            <objects>
+                <navigationController id="b0s-4q-K4F" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="Calendar" id="bcn-xz-giU"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="Uqz-19-4Cj">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" name="Launch Screen Bar Tint"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="37c-4A-bdR" kind="relationship" relationship="rootViewController" id="qxv-J6-3B3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TM5-4m-pZE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="154" y="24"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="MXc-u2-eif">
+            <objects>
+                <viewController id="37c-4A-bdR" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="C0I-OT-ILe"/>
+                        <viewControllerLayoutGuide type="bottom" id="hfS-FE-gMD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="AJ7-J5-eq0">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="h2I-bG-gzg"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tzd-7S-Rsk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="967" y="23"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="1gv-Yi-iOe">
+            <objects>
+                <navigationController id="6G3-s6-zya" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="dealers" id="Lgw-hD-eTh"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="PKc-5g-xIr">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" name="Launch Screen Bar Tint"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="LdC-iv-efo" kind="relationship" relationship="rootViewController" id="u5q-Q9-Lzn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IrX-Ts-zSS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="155" y="738"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="r8v-gx-L3O">
+            <objects>
+                <viewController id="LdC-iv-efo" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y1s-Ft-003"/>
+                        <viewControllerLayoutGuide type="bottom" id="KV4-Fj-BLI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="MST-dH-BH6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="V7s-VN-zsF"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r5h-46-IrF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="967" y="738"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="MUM-e3-A2j">
+            <objects>
+                <navigationController id="aUU-Bv-uEc" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="Info" id="ghd-VX-kNa"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="P1C-kk-B0c">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" name="Launch Screen Bar Tint"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="YJH-xL-GoU" kind="relationship" relationship="rootViewController" id="vAP-JZ-8iv"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eT3-zi-550" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="155" y="1469"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="L0o-gY-FNt">
+            <objects>
+                <viewController id="YJH-xL-GoU" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xzG-1K-byH"/>
+                        <viewControllerLayoutGuide type="bottom" id="VOY-k6-1AR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="u9W-Rg-4if">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="lGb-NZ-hDm"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ryQ-ff-ftp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="967" y="1469"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hp9-6v-vpb">
+            <objects>
+                <navigationController id="bo9-WB-KbY" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="More" id="AGa-gv-1cP"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="Tc1-WI-Ner">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" name="Launch Screen Bar Tint"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="nrS-KV-g3F" kind="relationship" relationship="rootViewController" id="ogt-MX-FNc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CZt-W3-PZp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-784" y="2154"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="QBg-Z1-3pQ">
+            <objects>
+                <viewController id="nrS-KV-g3F" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WVu-jB-qja"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZJp-Eo-xW1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xkn-RJ-yBF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="Ky6-3o-0N9"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bgK-TO-rpX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="154" y="2154"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Transparent Pixel" width="0.5" height="0.5"/>
+        <image name="Calendar" width="25" height="25"/>
+        <image name="Info" width="25" height="25"/>
+        <image name="More" width="29.5" height="29.5"/>
+        <image name="News" width="25" height="25"/>
+        <image name="dealers" width="25" height="25"/>
+        <namedColor name="Launch Screen Bar Item Tint">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Launch Screen Bar Tint">
+            <color red="0.0" green="0.34901960784313724" blue="0.32549019607843138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

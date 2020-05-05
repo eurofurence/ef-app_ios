@@ -24,10 +24,14 @@ class UnreadIndicatorView: UIView {
         super.init(coder: aDecoder)
         setUp()
     }
+    
+    override func tintColorDidChange() {
+        super.tintColorDidChange()
+        shapeLayer.fillColor = tintColor.cgColor
+    }
 
     private func setUp() {
         shapeLayer.lineWidth = 0
-        shapeLayer.fillColor = UIColor.pantone330U.cgColor
     }
 
     override func layoutSubviews() {

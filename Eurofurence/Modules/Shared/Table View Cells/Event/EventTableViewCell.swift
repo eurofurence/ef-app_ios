@@ -24,17 +24,6 @@ class EventTableViewCell: UITableViewCell, ScheduleEventComponent {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        let applyIconColour: (UILabel?) -> Void = { $0?.textColor = .pantone330U }
-        let nonFavouriteIndicators = [sponsorEventIndicator,
-                                      superSponsorEventIndicator,
-                                      artShowIndicatorView,
-                                      kageBugIndicatorView,
-                                      kageWineGlassIndicatorView,
-                                      dealersDenIndicatorView,
-                                      mainStageIndicatorView,
-                                      photoshootIndicatorView]
-        nonFavouriteIndicators.forEach(applyIconColour)
-
         artShowIndicatorView.text = "\u{f03e}"
         kageBugIndicatorView.text = "\u{f188}"
         kageWineGlassIndicatorView.text = "\u{f000}"

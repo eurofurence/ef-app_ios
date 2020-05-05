@@ -72,7 +72,6 @@ class MoreViewController: UITableViewController {
                     
                     let image = supplementaryContentController.tabBarItem.image
                     imageView?.image = image?.withRenderingMode(.alwaysTemplate)
-                    imageView?.tintColor = .pantone330U
                 }
             }
         }

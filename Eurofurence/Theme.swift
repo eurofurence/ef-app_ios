@@ -3,7 +3,6 @@ import UIKit
 struct Theme {
 
     private static let whiteTextAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.white]
-    private static let pantone330UColourImage = UIColor.pantone330U.makeColoredImage(size: CGSize(width: 1, height: 1))
 
     static func apply() {
         styleConventionColorViews()
@@ -18,18 +17,18 @@ struct Theme {
         styleSegmentedControls()
         styleRefreshControls()
         styleImages()
+        styleAwesomeFontLabels()
+        styleUnreadIndicators()
     }
     
     static func performUnsafeSearchControllerStyling(searchController: UISearchController) {
         styleSearchBar(searchController.searchBar)
         
         if #available(iOS 13.0, *) {
-            searchController.searchBar.searchTextField.backgroundColor = .white
+            searchController.searchBar.searchTextField.backgroundColor = .systemBackground
             searchController.searchBar.searchTextField.layer.cornerRadius = 10
             searchController.searchBar.searchTextField.clipsToBounds = true
         } else {
-            guard #available(iOS 11.0, *) else { return }
-            
             guard let backgroundview = resolveStylableBackgroundFromPrivateViewHiearchy(searchBar: searchController.searchBar) else { return }
             
             backgroundview.backgroundColor = .white
@@ -45,49 +44,41 @@ struct Theme {
     
     private static func styleConventionColorViews() {
         let primaryColorView = ConventionPrimaryColorView.appearance()
-        primaryColorView.backgroundColor = .pantone330U
+        primaryColorView.backgroundColor = .primary
         
         let secondaryColorView = ConventionSecondaryColorView.appearance()
-        secondaryColorView.backgroundColor = .pantone330U_45
+        secondaryColorView.backgroundColor = .secondary
     }
 
     private static func styleNavigationBars() {
         let navigationBar = UINavigationBar.appearance()
         navigationBar.isTranslucent = false
-        navigationBar.barTintColor = .pantone330U
+        navigationBar.barTintColor = .navigationBar
         navigationBar.tintColor = .white
         navigationBar.titleTextAttributes = whiteTextAttributes
-        navigationBar.shadowImage = pantone330UColourImage
+        navigationBar.setBackgroundImage(UIColor.navigationBar.makePixel(), for: .default)
+        navigationBar.shadowImage = UIColor.navigationBar.makePixel()
         
-        if #available(iOS 11.0, *) {
-            navigationBar.prefersLargeTitles = true
+        if #available(iOS 13.0, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.backgroundColor = .navigationBar
+            appearance.titleTextAttributes = whiteTextAttributes
+            appearance.largeTitleTextAttributes = whiteTextAttributes
             
-            if #available(iOS 13.0, *) {
-                let appearance = UINavigationBarAppearance()
-                appearance.backgroundColor = .pantone330U
-                appearance.backgroundImage = pantone330UColourImage
-                appearance.titleTextAttributes = whiteTextAttributes
-                appearance.largeTitleTextAttributes = whiteTextAttributes
-                
-                navigationBar.standardAppearance = appearance
-                navigationBar.compactAppearance = appearance
-                navigationBar.scrollEdgeAppearance = appearance
-            } else {
-                navigationBar.largeTitleTextAttributes = whiteTextAttributes
-            }
+            navigationBar.standardAppearance = appearance
+            navigationBar.compactAppearance = appearance
+            navigationBar.scrollEdgeAppearance = appearance
         } else {
-            navigationBar.setBackgroundImage(pantone330UColourImage, for: .default)
+            navigationBar.largeTitleTextAttributes = whiteTextAttributes
         }
     }
 
     private static func styleTabBars() {
         let tabBar = UITabBar.appearance()
         tabBar.isTranslucent = false
-        tabBar.barTintColor = .pantone330U
-        tabBar.tintColor = .white
-        tabBar.backgroundImage = pantone330UColourImage
-        tabBar.shadowImage = pantone330UColourImage
-        tabBar.unselectedItemTintColor = .pantone330U_45
+        tabBar.barTintColor = .tabBar
+        tabBar.tintColor = .selectedTabBarItem
+        tabBar.unselectedItemTintColor = .unselectedTabBarItem
     }
 
     private static func styleButtons() {
@@ -97,7 +88,7 @@ struct Theme {
 
     private static func styleButtonsWithinTableViewCells() {
         let buttonInsideTableView = UIButton.appearance(whenContainedInInstancesOf: [UITableViewCell.self])
-        buttonInsideTableView.setTitleColor(.pantone330U, for: .normal)
+        buttonInsideTableView.setTitleColor(.buttons, for: .normal)
         buttonInsideTableView.setTitleColor(.conferenceGrey, for: .disabled)
         
         let buttonInsideEventCell = UIButton.appearance(whenContainedInInstancesOf: [EventTableViewCell.self])
@@ -111,7 +102,7 @@ struct Theme {
     
     private static func styleTableViews() {
         let tableView = UITableView.appearance()
-        tableView.sectionIndexColor = .pantone330U
+        tableView.sectionIndexColor = .tableIndex
         tableView.sectionIndexBackgroundColor = .clear
         
         styleTableViewHeaders()
@@ -129,7 +120,7 @@ struct Theme {
 
     private static func styleNavigationBarExtensions() {
         let navigationBarExtension = NavigationBarViewExtensionContainer.appearance()
-        navigationBarExtension.backgroundColor = .pantone330U
+        navigationBarExtension.backgroundColor = .navigationBar
 
         styleLabelsWithinNavigationBarExtensions()
     }
@@ -141,7 +132,7 @@ struct Theme {
 
     private static func styleSearchBars() {
         let searchBar = UISearchBar.appearance()
-        searchBar.barTintColor = .pantone330U
+        searchBar.barTintColor = .searchBarTint
         searchBar.isTranslucent = false
 
         styleBarButtonItemsWithinSearchBars()
@@ -154,7 +145,7 @@ struct Theme {
 
     private static func styleTextFields() {
         let textField = UITextField.appearance()
-        textField.tintColor = .pantone330U
+        textField.tintColor = .tintColor
     }
 
     private static func styleSegmentedControls() {
@@ -164,29 +155,40 @@ struct Theme {
     
     private static func styleRefreshControls() {
         let refreshControl = UIRefreshControl.appearance()
-        refreshControl.tintColor = .pantone330U_13
+        refreshControl.tintColor = .refreshControl
     }
     
     private static func styleImages() {
         let image = UIImageView.appearance()
-        image.tintColor = .pantone330U
+        image.tintColor = .tintColor
+    }
+    
+    private static func styleAwesomeFontLabels() {
+        let appearance = AwesomeFontLabel.appearance()
+        appearance.textColor = .iconographicTint
+    }
+    
+    private static func styleUnreadIndicators() {
+        let appearance = UnreadIndicatorView.appearance()
+        appearance.tintColor = .unreadIndicator
     }
     
     private static func styleSearchBar(_ searchBar: UISearchBar) {
-        let whitePixel = UIColor.white.makeColoredImage(size: CGSize(width: 1, height: 1))
-        searchBar.setScopeBarButtonBackgroundImage(whitePixel, for: .selected)
-        searchBar.setScopeBarButtonDividerImage(whitePixel, forLeftSegmentState: .normal, rightSegmentState: .normal)
-        searchBar.setScopeBarButtonDividerImage(whitePixel, forLeftSegmentState: .selected, rightSegmentState: .normal)
-        searchBar.setScopeBarButtonDividerImage(whitePixel, forLeftSegmentState: .normal, rightSegmentState: .selected)
+        let dividerPixel = UIColor.segmentSeperator.makeColoredImage(size: CGSize(width: 1, height: 1))
+        searchBar.setScopeBarButtonBackgroundImage(dividerPixel, for: .selected)
+        searchBar.setScopeBarButtonDividerImage(dividerPixel, forLeftSegmentState: .normal, rightSegmentState: .normal)
+        searchBar.setScopeBarButtonDividerImage(dividerPixel, forLeftSegmentState: .selected, rightSegmentState: .normal)
+        searchBar.setScopeBarButtonDividerImage(dividerPixel, forLeftSegmentState: .normal, rightSegmentState: .selected)
         
-        let pantoneTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.pantone330U]
-        searchBar.setScopeBarButtonTitleTextAttributes(pantoneTextAttributes, for: .selected)
-        searchBar.setScopeBarButtonTitleTextAttributes(whiteTextAttributes, for: .normal)
+        let selectedText = [NSAttributedString.Key.foregroundColor: UIColor.selectedSegmentText]
+        let unselectedText = [NSAttributedString.Key.foregroundColor: UIColor.unselectedSegmentText]
+        searchBar.setScopeBarButtonTitleTextAttributes(selectedText, for: .selected)
+        searchBar.setScopeBarButtonTitleTextAttributes(unselectedText, for: .normal)
         
-        let emptyBackground = makeSegmentBackground(color: .pantone330U_45)
+        let emptyBackground = makeSegmentBackground(color: .unselectedSegmentBackground)
         searchBar.setScopeBarButtonBackgroundImage(emptyBackground, for: .normal)
         
-        let filledBackground = makeSegmentBackground(color: .white)
+        let filledBackground = makeSegmentBackground(color: .selectedSegmentBackground)
         searchBar.setScopeBarButtonBackgroundImage(filledBackground, for: .selected)
     }
     
