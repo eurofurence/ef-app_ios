@@ -26,6 +26,11 @@ extension UIColor {
     static let buttons = adaptiveColor(lightColor: .pantone330U, darkColor: .pantone330U_45)
     static let iconographicTint = adaptiveColor(lightColor: .pantone330U, darkColor: .pantone330U_45)
     static let unreadIndicator = adaptiveColor(lightColor: .pantone330U, darkColor: .pantone330U_45)
+    static let selectedSegmentText = adaptiveColor(lightColor: .pantone330U, darkColor: .white)
+    static let selectedSegmentBackground = adaptiveColor(lightColor: .white, darkColor: .safeSystemGray)
+    static let unselectedSegmentText = adaptiveColor(lightColor: .white, darkColor: .white)
+    static let unselectedSegmentBackground = adaptiveColor(lightColor: .pantone330U_45, darkColor: .safeSystemGray3)
+    static let segmentSeperator = adaptiveColor(lightColor: .white, darkColor: .safeSystemGray)
     
     private static var secondaryDarkColor: UIColor = {
         if #available(iOS 13.0, *) {
@@ -34,6 +39,22 @@ extension UIColor {
             return .black
         }
     }()
+    
+    private static var safeSystemGray: UIColor {
+        if #available(iOS 13.0, *) {
+            return .systemGray
+        } else {
+            return .lightGray
+        }
+    }
+    
+    private static var safeSystemGray3: UIColor {
+        if #available(iOS 13.0, *) {
+            return .systemGray3
+        } else {
+            return .darkGray
+        }
+    }
     
     static let pantone330U = UIColor.named("Pantone 330U", defaultingToRed: 0, green: 89, blue: 83)
     

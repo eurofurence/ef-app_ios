@@ -181,20 +181,21 @@ struct Theme {
     }
     
     private static func styleSearchBar(_ searchBar: UISearchBar) {
-        let whitePixel = UIColor.white.makeColoredImage(size: CGSize(width: 1, height: 1))
-        searchBar.setScopeBarButtonBackgroundImage(whitePixel, for: .selected)
-        searchBar.setScopeBarButtonDividerImage(whitePixel, forLeftSegmentState: .normal, rightSegmentState: .normal)
-        searchBar.setScopeBarButtonDividerImage(whitePixel, forLeftSegmentState: .selected, rightSegmentState: .normal)
-        searchBar.setScopeBarButtonDividerImage(whitePixel, forLeftSegmentState: .normal, rightSegmentState: .selected)
+        let dividerPixel = UIColor.segmentSeperator.makeColoredImage(size: CGSize(width: 1, height: 1))
+        searchBar.setScopeBarButtonBackgroundImage(dividerPixel, for: .selected)
+        searchBar.setScopeBarButtonDividerImage(dividerPixel, forLeftSegmentState: .normal, rightSegmentState: .normal)
+        searchBar.setScopeBarButtonDividerImage(dividerPixel, forLeftSegmentState: .selected, rightSegmentState: .normal)
+        searchBar.setScopeBarButtonDividerImage(dividerPixel, forLeftSegmentState: .normal, rightSegmentState: .selected)
         
-        let pantoneTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.pantone330U]
-        searchBar.setScopeBarButtonTitleTextAttributes(pantoneTextAttributes, for: .selected)
-        searchBar.setScopeBarButtonTitleTextAttributes(whiteTextAttributes, for: .normal)
+        let selectedText = [NSAttributedString.Key.foregroundColor: UIColor.selectedSegmentText]
+        let unselectedText = [NSAttributedString.Key.foregroundColor: UIColor.unselectedSegmentText]
+        searchBar.setScopeBarButtonTitleTextAttributes(selectedText, for: .selected)
+        searchBar.setScopeBarButtonTitleTextAttributes(unselectedText, for: .normal)
         
-        let emptyBackground = makeSegmentBackground(color: .pantone330U_45)
+        let emptyBackground = makeSegmentBackground(color: .unselectedSegmentBackground)
         searchBar.setScopeBarButtonBackgroundImage(emptyBackground, for: .normal)
         
-        let filledBackground = makeSegmentBackground(color: .white)
+        let filledBackground = makeSegmentBackground(color: .selectedSegmentBackground)
         searchBar.setScopeBarButtonBackgroundImage(filledBackground, for: .selected)
     }
     
