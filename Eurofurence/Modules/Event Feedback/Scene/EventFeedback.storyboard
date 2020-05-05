@@ -243,9 +243,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wRU-2d-9wZ"/>
                     </view>
-                    <connections>
-                        <outlet property="tickImageView" destination="pPw-Y5-5we" id="a3T-ix-Cdp"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gTu-WS-jeA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

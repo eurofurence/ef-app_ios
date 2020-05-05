@@ -123,7 +123,7 @@ class EventDetailViewController: UIViewController, EventDetailScene {
         private func makeBannerComponent(text: String, configuration: (EventInformationBannerComponent) -> Void) -> UITableViewCell {
             let cell = tableView.dequeue(EventInformationBannerTableViewCell.self)
             configuration(cell)
-            cell.configureIcon(text: text, textColor: .pantone330U)
+            cell.configureIcon(text: text)
 
             return cell
         }

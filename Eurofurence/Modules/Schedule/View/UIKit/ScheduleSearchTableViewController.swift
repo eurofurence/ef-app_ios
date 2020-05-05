@@ -62,8 +62,6 @@ class ScheduleSearchTableViewController: UITableViewController {
             action.run()
         })
 
-        rowAction.backgroundColor = .pantone330U
-
         return [rowAction]
     }
 

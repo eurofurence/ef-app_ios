@@ -20,13 +20,6 @@ class TutorialPageViewController: UIViewController, TutorialPageScene {
         tutorialPageSceneDelegate?.tutorialPageSceneDidTapSecondaryActionButton(self)
     }
 
-    // MARK: Overrides
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .pantone330U
-    }
-
     // MARK: TutorialPageScene
 
     var tutorialPageSceneDelegate: TutorialPageSceneDelegate?

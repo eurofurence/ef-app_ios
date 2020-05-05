@@ -303,8 +303,6 @@ class ScheduleViewController: UIViewController,
                 action.run()
             })
 
-            rowAction.backgroundColor = .pantone330U
-
             return [rowAction]
         }
         

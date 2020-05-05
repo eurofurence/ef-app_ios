@@ -60,7 +60,6 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
               let filtersScene = navigationController.topViewController as? DealerCategoriesFilterScene else { return }
         
         delegate?.dealersSceneDidRevealCategoryFiltersScene(filtersScene)
-        navigationController.popoverPresentationController?.backgroundColor = .pantone330U
     }
     
     private func prepareSearchController() {

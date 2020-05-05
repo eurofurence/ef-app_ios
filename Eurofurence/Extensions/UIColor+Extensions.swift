@@ -19,11 +19,14 @@ extension UIColor {
     static let tintColor = adaptiveColor(lightColor: .pantone330U, darkColor: .pantone330U_45)
     static let navigationBar = adaptiveColor(lightColor: .pantone330U, darkColor: .black)
     static let tabBar = adaptiveColor(lightColor: .pantone330U, darkColor: .black)
+    static let searchBarTint = UIColor.pantone330U
+    static let refreshControl = UIColor.pantone330U_13
     static let selectedTabBarItem = adaptiveColor(lightColor: .white, darkColor: .pantone330U_45)
     static let unselectedTabBarItem = adaptiveColor(lightColor: .pantone330U_45, darkColor: .darkGray)
     static let primary = adaptiveColor(lightColor: .pantone330U, darkColor: .black)
     static let secondary = adaptiveColor(lightColor: .pantone330U_45, darkColor: .secondaryDarkColor)
     static let buttons = adaptiveColor(lightColor: .pantone330U, darkColor: .pantone330U_45)
+    static let tableIndex = adaptiveColor(lightColor: .pantone330U, darkColor: .pantone330U_45)
     static let iconographicTint = adaptiveColor(lightColor: .pantone330U, darkColor: .pantone330U_45)
     static let unreadIndicator = adaptiveColor(lightColor: .pantone330U, darkColor: .pantone330U_45)
     static let selectedSegmentText = adaptiveColor(lightColor: .pantone330U, darkColor: .white)

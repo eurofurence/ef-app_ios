@@ -3,7 +3,6 @@ import UIKit
 struct Theme {
 
     private static let whiteTextAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.white]
-    private static let pantone330UColourImage = UIColor.pantone330U.makeColoredImage(size: CGSize(width: 1, height: 1))
 
     static func apply() {
         styleConventionColorViews()
@@ -103,7 +102,7 @@ struct Theme {
     
     private static func styleTableViews() {
         let tableView = UITableView.appearance()
-        tableView.sectionIndexColor = .pantone330U
+        tableView.sectionIndexColor = .tableIndex
         tableView.sectionIndexBackgroundColor = .clear
         
         styleTableViewHeaders()
@@ -133,7 +132,7 @@ struct Theme {
 
     private static func styleSearchBars() {
         let searchBar = UISearchBar.appearance()
-        searchBar.barTintColor = .pantone330U
+        searchBar.barTintColor = .searchBarTint
         searchBar.isTranslucent = false
 
         styleBarButtonItemsWithinSearchBars()
@@ -156,7 +155,7 @@ struct Theme {
     
     private static func styleRefreshControls() {
         let refreshControl = UIRefreshControl.appearance()
-        refreshControl.tintColor = .pantone330U_13
+        refreshControl.tintColor = .refreshControl
     }
     
     private static func styleImages() {

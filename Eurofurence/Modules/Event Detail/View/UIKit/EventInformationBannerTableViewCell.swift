@@ -15,9 +15,8 @@ class EventInformationBannerTableViewCell: UITableViewCell, EventInformationBann
     
     // MARK: Functions
     
-    func configureIcon(text: String, textColor: UIColor) {
+    func configureIcon(text: String) {
         iconLabel.text = text
-        iconLabel.textColor = textColor
     }
 
 }
