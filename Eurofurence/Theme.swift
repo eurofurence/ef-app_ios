@@ -152,7 +152,7 @@ struct Theme {
 
     private static func styleTextFields() {
         let textField = UITextField.appearance()
-        textField.tintColor = .pantone330U
+        textField.tintColor = .tintColor
     }
 
     private static func styleSegmentedControls() {

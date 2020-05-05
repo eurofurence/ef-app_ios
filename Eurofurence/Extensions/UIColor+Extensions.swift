@@ -16,6 +16,7 @@ extension UIColor {
         }
     }
     
+    static let tintColor = adaptiveColor(lightColor: .pantone330U, darkColor: .pantone330U_45)
     static let navigationBar = adaptiveColor(lightColor: .pantone330U, darkColor: .black)
     static let tabBar = adaptiveColor(lightColor: .pantone330U, darkColor: .black)
     static let selectedTabBarItem = adaptiveColor(lightColor: .white, darkColor: .pantone330U_45)
