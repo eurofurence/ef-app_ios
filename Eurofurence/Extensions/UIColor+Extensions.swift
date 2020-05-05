@@ -31,6 +31,8 @@ extension UIColor {
     static let unselectedSegmentText = adaptiveColor(lightColor: .white, darkColor: .white)
     static let unselectedSegmentBackground = adaptiveColor(lightColor: .pantone330U_45, darkColor: .safeSystemGray3)
     static let segmentSeperator = adaptiveColor(lightColor: .white, darkColor: .safeSystemGray)
+    static let safariBarTint = UIColor.navigationBar
+    static let safariControlTint = UIColor.white
     
     private static var secondaryDarkColor: UIColor = {
         if #available(iOS 13.0, *) {

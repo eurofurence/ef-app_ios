@@ -13,8 +13,8 @@ struct SafariWebModuleProviding: WebModuleProviding {
         }
 
         let module = SFSafariViewController(url: safeURL)
-        module.preferredBarTintColor = .pantone330U
-        module.preferredControlTintColor = .white
+        module.preferredBarTintColor = .safariBarTint
+        module.preferredControlTintColor = .safariControlTint
 
         return module
     }
