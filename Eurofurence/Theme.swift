@@ -167,7 +167,7 @@ struct Theme {
     
     private static func styleImages() {
         let image = UIImageView.appearance()
-        image.tintColor = .pantone330U
+        image.tintColor = .tintColor
     }
     
     private static func styleAwesomeFontLabels() {
