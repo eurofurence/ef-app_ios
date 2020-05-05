@@ -33,6 +33,12 @@ extension UIColor {
     static let segmentSeperator = adaptiveColor(lightColor: .white, darkColor: .safeSystemGray)
     static let safariBarTint = UIColor.navigationBar
     static let safariControlTint = UIColor.white
+    static let userPrompt = adaptiveColor(
+        lightColor: UIColor(white: 0.5, alpha: 1.0),
+        darkColor: .safeSystemGray
+    )
+    
+    static let userPromptWithUnreadMessages = adaptiveColor(lightColor: .pantone330U, darkColor: .pantone330U_45)
     
     private static var secondaryDarkColor: UIColor = {
         if #available(iOS 13.0, *) {
