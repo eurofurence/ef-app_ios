@@ -26,7 +26,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zp7-DI-JsL">
                         <rect key="frame" x="0.0" y="0.0" width="294" height="136"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HG9-wu-cBB">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HG9-wu-cBB" customClass="RoundImageView" customModule="Eurofurence" customModuleProvider="target">
                                 <rect key="frame" x="20" y="36" width="64" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="64" id="Tfv-NR-uAV"/>

@@ -551,6 +551,7 @@
 		CA5EB1C6246069380012C277 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5EB1C5246069380012C277 /* MoreViewController.swift */; };
 		CA5EB1C824606AC80012C277 /* MoreContentControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5EB1C724606AC80012C277 /* MoreContentControllerFactory.swift */; };
 		CA5EB1CA2461BE140012C277 /* AwesomeFontLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5EB1C92461BE140012C277 /* AwesomeFontLabel.swift */; };
+		CA5EB1CC24620D490012C277 /* RoundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5EB1CB24620D490012C277 /* RoundImageView.swift */; };
 		CA60BFE62078E5F700697566 /* CapturingPrivateMessagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFE52078E5F700697566 /* CapturingPrivateMessagesService.swift */; };
 		CA60BFE8207B88ED00697566 /* WhenBuildingNewsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFE7207B88ED00697566 /* WhenBuildingNewsPresenter.swift */; };
 		CA60BFFE207CDC1700697566 /* FakeAuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFFD207CDC1700697566 /* FakeAuthenticationService.swift */; };
@@ -1757,6 +1758,7 @@
 		CA5EB1C5246069380012C277 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		CA5EB1C724606AC80012C277 /* MoreContentControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreContentControllerFactory.swift; sourceTree = "<group>"; };
 		CA5EB1C92461BE140012C277 /* AwesomeFontLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwesomeFontLabel.swift; sourceTree = "<group>"; };
+		CA5EB1CB24620D490012C277 /* RoundImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundImageView.swift; sourceTree = "<group>"; };
 		CA60BFE52078E5F700697566 /* CapturingPrivateMessagesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingPrivateMessagesService.swift; sourceTree = "<group>"; };
 		CA60BFE7207B88ED00697566 /* WhenBuildingNewsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBuildingNewsPresenter.swift; sourceTree = "<group>"; };
 		CA60BFFD207CDC1700697566 /* FakeAuthenticationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeAuthenticationService.swift; sourceTree = "<group>"; };
@@ -2669,6 +2671,7 @@
 				78455B611F118699005BE2D7 /* RoundedCornerButton.swift */,
 				CA527E772278D397000ED74B /* StarRatingControl.swift */,
 				CAA10FE522C75CA800689A32 /* MultiStepFormTextField.swift */,
+				CA5EB1CB24620D490012C277 /* RoundImageView.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -6805,6 +6808,7 @@
 				CA8240A221249A69007E4A70 /* ReviewPromptAction.swift in Sources */,
 				CA283ACA20EAB9E600F7D195 /* AnnouncementComponent.swift in Sources */,
 				CA6A8DA220E2CB5C007536CD /* MapsModuleDelegate.swift in Sources */,
+				CA5EB1CC24620D490012C277 /* RoundImageView.swift in Sources */,
 				CA4908C4245DADA000DB032C /* WindowContentWireframe.swift in Sources */,
 				CA6A8D6B20E26478007536CD /* MapsScene.swift in Sources */,
 				CA17FE8B20585D9C005A4C05 /* LinkTableViewCell.swift in Sources */,
