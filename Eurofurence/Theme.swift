@@ -61,8 +61,6 @@ struct Theme {
         navigationBar.shadowImage = UIColor.navigationBar.makePixel()
         
         if #available(iOS 11.0, *) {
-            navigationBar.prefersLargeTitles = true
-            
             if #available(iOS 13.0, *) {
                 let appearance = UINavigationBarAppearance()
                 appearance.backgroundColor = .navigationBar
