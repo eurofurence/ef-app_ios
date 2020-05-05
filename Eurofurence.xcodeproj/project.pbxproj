@@ -550,6 +550,7 @@
 		CA5EB1C3245F70610012C277 /* StubAdditionalServicesModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5EB1C2245F70610012C277 /* StubAdditionalServicesModuleProviding.swift */; };
 		CA5EB1C6246069380012C277 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5EB1C5246069380012C277 /* MoreViewController.swift */; };
 		CA5EB1C824606AC80012C277 /* MoreContentControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5EB1C724606AC80012C277 /* MoreContentControllerFactory.swift */; };
+		CA5EB1CA2461BE140012C277 /* AwesomeFontLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5EB1C92461BE140012C277 /* AwesomeFontLabel.swift */; };
 		CA60BFE62078E5F700697566 /* CapturingPrivateMessagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFE52078E5F700697566 /* CapturingPrivateMessagesService.swift */; };
 		CA60BFE8207B88ED00697566 /* WhenBuildingNewsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFE7207B88ED00697566 /* WhenBuildingNewsPresenter.swift */; };
 		CA60BFFE207CDC1700697566 /* FakeAuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFFD207CDC1700697566 /* FakeAuthenticationService.swift */; };
@@ -1755,6 +1756,7 @@
 		CA5EB1C2245F70610012C277 /* StubAdditionalServicesModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubAdditionalServicesModuleProviding.swift; sourceTree = "<group>"; };
 		CA5EB1C5246069380012C277 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		CA5EB1C724606AC80012C277 /* MoreContentControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreContentControllerFactory.swift; sourceTree = "<group>"; };
+		CA5EB1C92461BE140012C277 /* AwesomeFontLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwesomeFontLabel.swift; sourceTree = "<group>"; };
 		CA60BFE52078E5F700697566 /* CapturingPrivateMessagesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingPrivateMessagesService.swift; sourceTree = "<group>"; };
 		CA60BFE7207B88ED00697566 /* WhenBuildingNewsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBuildingNewsPresenter.swift; sourceTree = "<group>"; };
 		CA60BFFD207CDC1700697566 /* FakeAuthenticationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeAuthenticationService.swift; sourceTree = "<group>"; };
@@ -2818,6 +2820,7 @@
 				78455B4E1F117843005BE2D7 /* Presenters */,
 				78455B431F11777D005BE2D7 /* Routers */,
 				CA17015822B2E5D40067BCDE /* Themeing */,
+				CA5EB1C92461BE140012C277 /* AwesomeFontLabel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -7150,6 +7153,7 @@
 				CAD2343C1F5D7203004BB959 /* MessagesScene.swift in Sources */,
 				CA0E520D208E759F005259FE /* DefaultNewsInteractor.swift in Sources */,
 				CA401077210FAEF60056E16C /* KnowledgeGroupEntriesSceneFactory.swift in Sources */,
+				CA5EB1CA2461BE140012C277 /* AwesomeFontLabel.swift in Sources */,
 				CA50B1B3226110F40091E425 /* EventFeedbackPresenter.swift in Sources */,
 				CA52C68F20D6AB47009D3A9E /* ScheduleModuleDelegate.swift in Sources */,
 				CA7BA2382237FCFB00D34592 /* NetworkReachability.swift in Sources */,

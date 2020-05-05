@@ -16,8 +16,6 @@ class DealerComponentTableViewCell: UITableViewCell, DealerComponent {
         super.awakeFromNib()
 
         applyFontAwesomeCharacters()
-        notAvailableForEntireConferenceWarningView.textColor = .pantone330U
-        containsAfterDarkContentWarningView.textColor = .pantone330U
     }
 
     // MARK: DealerComponent
