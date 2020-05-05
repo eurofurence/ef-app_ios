@@ -82,8 +82,8 @@ struct Theme {
         let tabBar = UITabBar.appearance()
         tabBar.isTranslucent = false
         tabBar.barTintColor = .tabBar
-        tabBar.tintColor = .white
-        tabBar.unselectedItemTintColor = .pantone330U_45
+        tabBar.tintColor = .selectedTabBarItem
+        tabBar.unselectedItemTintColor = .unselectedTabBarItem
     }
 
     private static func styleButtons() {
