@@ -33,9 +33,25 @@ struct MessageDetailPresenter2: MessageDetailSceneDelegate {
     func messageDetailSceneDidLoad() {
         scene.showLoadingIndicator()
         
-        messagesService.fetchMessage(identifiedBy: message) { (_) in
+        messagesService.fetchMessage(identifiedBy: message) { (result) in
             self.scene.hideLoadingIndicator()
+            
+            if case .success(let message) = result {
+                self.scene.setMessageDetailTitle(message.authorName)
+                self.scene.addMessageComponent(with: Binder(message: message))
+            }
         }
+    }
+    
+    private struct Binder: MessageComponentBinder {
+        
+        var message: Message
+        
+        func bind(_ component: MessageComponent) {
+            component.setMessageSubject(message.subject)
+            component.setMessageContents(message.contents)
+        }
+        
     }
     
 }

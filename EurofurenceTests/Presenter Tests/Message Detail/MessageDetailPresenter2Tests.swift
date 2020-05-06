@@ -53,7 +53,13 @@ class MessageDetailPresenter2Tests: XCTestCase {
         _ = module.makeMessageDetailModule(for: messageIdentifier)
         sceneFactory.scene.simulateSceneReady()
         
+        let component = CapturingMessageComponent()
+        sceneFactory.scene.capturedMessageBinder?.bind(component)
+        
         XCTAssertEqual(.hidden, sceneFactory.scene.loadingIndicatorVisibility)
+        XCTAssertEqual(message.authorName, sceneFactory.scene.capturedMessageDetailTitle)
+        XCTAssertEqual(message.subject, component.capturedMessageSubject)
+        XCTAssertEqual(message.contents, component.capturedMessageContents)
     }
     
     func testMessageLoadFailure() {
