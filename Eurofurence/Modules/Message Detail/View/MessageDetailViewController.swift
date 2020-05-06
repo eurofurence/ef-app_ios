@@ -29,6 +29,10 @@ class MessageDetailViewController: UITableViewController, MessageDetailScene {
     func setMessageDetailTitle(_ title: String) {
         super.title = title
     }
+    
+    func showMessage(viewModel: MessageDetailViewModel) {
+        
+    }
 
     func addMessageComponent(with binder: MessageComponentBinder) {
         binder.bind(MessageBinder(subjectLabel: messageSubjectLabel, contentsTextView: messageContentsTextView))

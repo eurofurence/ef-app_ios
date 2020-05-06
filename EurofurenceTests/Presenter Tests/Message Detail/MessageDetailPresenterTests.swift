@@ -18,6 +18,7 @@ class CapturingMessageDetailScene: UIViewController, MessageDetailScene {
     var delegate: MessageDetailSceneDelegate?
     
     private(set) var loadingIndicatorVisibility: VisibilityState = .unset
+    private(set) var viewModel: MessageDetailViewModel?
     
     func showLoadingIndicator() {
         loadingIndicatorVisibility = .visible
@@ -25,6 +26,10 @@ class CapturingMessageDetailScene: UIViewController, MessageDetailScene {
     
     func hideLoadingIndicator() {
         loadingIndicatorVisibility = .hidden
+    }
+    
+    func showMessage(viewModel: MessageDetailViewModel) {
+        self.viewModel = viewModel
     }
 
     private(set) var capturedMessageDetailTitle: String?

@@ -38,18 +38,25 @@ struct MessageDetailPresenter2: MessageDetailSceneDelegate {
             
             if case .success(let message) = result {
                 self.scene.setMessageDetailTitle(message.authorName)
-                self.scene.addMessageComponent(with: Binder(message: message))
+                self.scene.showMessage(viewModel: ViewModel(message: message))
             }
         }
     }
     
-    private struct Binder: MessageComponentBinder {
+    private struct ViewModel: MessageDetailViewModel {
         
-        var message: Message
+        private let message: Message
         
-        func bind(_ component: MessageComponent) {
-            component.setMessageSubject(message.subject)
-            component.setMessageContents(message.contents)
+        init(message: Message) {
+            self.message = message
+        }
+        
+        var subject: String {
+            message.subject
+        }
+        
+        var contents: String {
+            message.contents
         }
         
     }
