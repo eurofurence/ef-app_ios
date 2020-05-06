@@ -122,6 +122,7 @@
 		CA08B10922EF6E2F00FDAAA7 /* WhenEventTransitionsFromFavouriteToNonFavourite_EventViewModelShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08B10822EF6E2F00FDAAA7 /* WhenEventTransitionsFromFavouriteToNonFavourite_EventViewModelShould.swift */; };
 		CA08B10C22EF6EFC00FDAAA7 /* WhenFavouritingEvent_EventViewModelShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08B10B22EF6EFC00FDAAA7 /* WhenFavouritingEvent_EventViewModelShould.swift */; };
 		CA08B10E22EF6F8200FDAAA7 /* WhenUnfavouritingEvent_EventViewModelShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08B10D22EF6F8200FDAAA7 /* WhenUnfavouritingEvent_EventViewModelShould.swift */; };
+		CA09BE56246328EB00412B82 /* BackgroundFetchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA09BE55246328EB00412B82 /* BackgroundFetchService.swift */; };
 		CA0E5205208E6FE4005259FE /* StoryboardDealersSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5204208E6FE4005259FE /* StoryboardDealersSceneFactory.swift */; };
 		CA0E5207208E700E005259FE /* DealersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5206208E700E005259FE /* DealersViewController.swift */; };
 		CA0E5209208E7020005259FE /* Dealers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA0E5208208E7020005259FE /* Dealers.storyboard */; };
@@ -854,6 +855,7 @@
 		CA8E7EF81FB08ED700F0BF10 /* RootModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E7EF71FB08ED700F0BF10 /* RootModule.swift */; };
 		CA8E7EFA1FB0926E00F0BF10 /* StoryboardTutorialSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E7EF91FB0926E00F0BF10 /* StoryboardTutorialSceneFactory.swift */; };
 		CA8E7EFC1FB0932700F0BF10 /* StoryboardNewsSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E7EFB1FB0932700F0BF10 /* StoryboardNewsSceneFactory.swift */; };
+		CA91FEC12463269A0065CF86 /* BackgroundFetchServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA91FEC02463269A0065CF86 /* BackgroundFetchServiceTests.swift */; };
 		CA957B601F705AF9004DFD5A /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA957B5E1F705AF9004DFD5A /* MessagesViewController.swift */; };
 		CA987FBA22E4A9EA006338FB /* WhenBindingInactiveCategory_DealersSceneShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA987FB922E4A9EA006338FB /* WhenBindingInactiveCategory_DealersSceneShould.swift */; };
 		CA987FBC22E4B224006338FB /* WhenProducingCategoriesViewModel_DealersInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA987FBB22E4B224006338FB /* WhenProducingCategoriesViewModel_DealersInteractorShould.swift */; };
@@ -1325,6 +1327,7 @@
 		CA08B10822EF6E2F00FDAAA7 /* WhenEventTransitionsFromFavouriteToNonFavourite_EventViewModelShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenEventTransitionsFromFavouriteToNonFavourite_EventViewModelShould.swift; sourceTree = "<group>"; };
 		CA08B10B22EF6EFC00FDAAA7 /* WhenFavouritingEvent_EventViewModelShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFavouritingEvent_EventViewModelShould.swift; sourceTree = "<group>"; };
 		CA08B10D22EF6F8200FDAAA7 /* WhenUnfavouritingEvent_EventViewModelShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenUnfavouritingEvent_EventViewModelShould.swift; sourceTree = "<group>"; };
+		CA09BE55246328EB00412B82 /* BackgroundFetchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundFetchService.swift; sourceTree = "<group>"; };
 		CA0E5204208E6FE4005259FE /* StoryboardDealersSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardDealersSceneFactory.swift; sourceTree = "<group>"; };
 		CA0E5206208E700E005259FE /* DealersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersViewController.swift; sourceTree = "<group>"; };
 		CA0E5208208E7020005259FE /* Dealers.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dealers.storyboard; sourceTree = "<group>"; };
@@ -2055,6 +2058,7 @@
 		CA8E7EF71FB08ED700F0BF10 /* RootModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootModule.swift; sourceTree = "<group>"; };
 		CA8E7EF91FB0926E00F0BF10 /* StoryboardTutorialSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardTutorialSceneFactory.swift; sourceTree = "<group>"; };
 		CA8E7EFB1FB0932700F0BF10 /* StoryboardNewsSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardNewsSceneFactory.swift; sourceTree = "<group>"; };
+		CA91FEC02463269A0065CF86 /* BackgroundFetchServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundFetchServiceTests.swift; sourceTree = "<group>"; };
 		CA957B5E1F705AF9004DFD5A /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		CA9845C91F2907A800E8821D /* ScreenshotGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotGenerator.swift; sourceTree = "<group>"; };
 		CA9845D21F2909DB00E8821D /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
@@ -2774,6 +2778,7 @@
 				CA630BCA229F108900754C27 /* Activity */,
 				CA82DB5022D662F800467C2F /* App Services */,
 				CAF1A674211E4B3600513226 /* Application Adapter Implementations */,
+				CA09BE54246328DF00412B82 /* Background Refresh */,
 				CAD4F73A245C36430036ADAF /* Content Router */,
 				CABF03B22041BC770028BD62 /* Extensions */,
 				CA79924D22451DCE00DF1F84 /* Formatters */,
@@ -2799,6 +2804,7 @@
 				78455B3B1F116E24005BE2D7 /* UserDefaultsTutorialStateProvider.swift */,
 				7820A6F51F16B123004C0FB5 /* UserDefaultsUserAcknowledgedPushPermissionsRequestStateProvidingTests.swift */,
 				CA630BCC229F10A900754C27 /* Activity */,
+				CA91FEBF246326880065CF86 /* Background Refresh */,
 				CAD4F737245C2E580036ADAF /* Content Router */,
 				CA39851422C7A50600117249 /* Convention Start Date Repository */,
 				CAF7055F1F82CBC800A9FEA2 /* Director */,
@@ -2938,6 +2944,14 @@
 				CA08B10D22EF6F8200FDAAA7 /* WhenUnfavouritingEvent_EventViewModelShould.swift */,
 			);
 			path = "Toggling Favourite State";
+			sourceTree = "<group>";
+		};
+		CA09BE54246328DF00412B82 /* Background Refresh */ = {
+			isa = PBXGroup;
+			children = (
+				CA09BE55246328EB00412B82 /* BackgroundFetchService.swift */,
+			);
+			path = "Background Refresh";
 			sourceTree = "<group>";
 		};
 		CA0E5203208E6FCA005259FE /* UIKit */ = {
@@ -5271,6 +5285,14 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
+		CA91FEBF246326880065CF86 /* Background Refresh */ = {
+			isa = PBXGroup;
+			children = (
+				CA91FEC02463269A0065CF86 /* BackgroundFetchServiceTests.swift */,
+			);
+			path = "Background Refresh";
+			sourceTree = "<group>";
+		};
 		CA987FC222E512AF006338FB /* Password Autofill */ = {
 			isa = PBXGroup;
 			children = (
@@ -7237,6 +7259,7 @@
 				CA8A73CC22BD10D2007A5201 /* AdditionalServicesPresenter.swift in Sources */,
 				CACF1E6F20B1CDC300D904B5 /* EventDetailViewModel.swift in Sources */,
 				CA283A5A20E6E24300F7D195 /* ApplicationLongRunningTaskManager.swift in Sources */,
+				CA09BE56246328EB00412B82 /* BackgroundFetchService.swift in Sources */,
 				CABA439F1FD578E1009CB5B0 /* NewsModuleBuilder.swift in Sources */,
 				CAD4F74D245C3CBB0036ADAF /* AnnouncementContentRepresentation.swift in Sources */,
 				CA63A760245DCE5700E4B313 /* WebContentRepresentation.swift in Sources */,
@@ -7591,6 +7614,7 @@
 				CA89CBC02085383100570D54 /* StubNewsInteractor.swift in Sources */,
 				CA2AA2FA22C9531900C0E1A1 /* StubDealerIntentDefinitionProviding.swift in Sources */,
 				CA6375AC208E021A00536BE2 /* WhenBuildingDealersModule.swift in Sources */,
+				CA91FEC12463269A0065CF86 /* BackgroundFetchServiceTests.swift in Sources */,
 				CA728445209D00B7007D912A /* StubAnnouncementDetailModuleFactory.swift in Sources */,
 				CA36A4D020DAC08100EE6537 /* WhenDealersIndexProducesNewSearchResults_DealersInteractorShould.swift in Sources */,
 				CA1B6F3720DD1C2F00ADF414 /* WhenBindingDealerLocationAndAvailability_DealerDetailPresenterShould.swift in Sources */,
