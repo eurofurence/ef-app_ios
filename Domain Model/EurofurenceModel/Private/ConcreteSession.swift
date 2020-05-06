@@ -122,11 +122,7 @@ class ConcreteSession: EurofurenceSession {
                                                 forceRefreshRequired: forceRefreshRequired,
                                                 refreshCollaboration: refreshCollaboration)
 
-        notificationService = ConcreteNotificationService(eventBus: eventBus,
-                                                          eventsService: eventsService,
-                                                          announcementsService: announcementsService,
-                                                          refreshService: refreshService,
-                                                          privateMessagesService: privateMessagesService)
+        notificationService = ConcreteNotificationService(eventBus: eventBus)
 
         let urlEntityProcessor = URLEntityProcessor(eventsService: eventsService, dealersService: dealersService, dataStore: dataStore)
         contentLinksService = ConcreteContentLinksService(eventBus: eventBus, urlOpener: urlOpener, urlEntityProcessor: urlEntityProcessor)

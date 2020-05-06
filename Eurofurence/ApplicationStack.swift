@@ -9,7 +9,7 @@ class ApplicationStack {
     static let instance: ApplicationStack = ApplicationStack()
     let session: EurofurenceSession
     let services: Services
-    private let notificationFetchResultAdapter: NotificationServiceFetchResultAdapter
+    private let backgroundFetcher: BackgroundFetchService
     let notificationScheduleController: NotificationScheduleController
     private let router: ContentRouter
     
@@ -21,9 +21,10 @@ class ApplicationStack {
         instance.services.notifications.storeRemoteNotificationsToken(deviceToken)
     }
     
-    static func handleRemoteNotification(_ payload: [AnyHashable: Any],
-                                         completionHandler: @escaping (UIBackgroundFetchResult) -> Void = { (_) in }) {
-        instance.notificationFetchResultAdapter.handleRemoteNotification(payload, completionHandler: completionHandler)
+    static func executeBackgroundFetch(
+        completionHandler: @escaping (UIBackgroundFetchResult) -> Void
+    ) {
+        instance.backgroundFetcher.executeFetch(completionHandler: completionHandler)
     }
     
     static func openNotification(_ userInfo: [AnyHashable: Any], completionHandler: @escaping () -> Void) {
@@ -68,8 +69,8 @@ class ApplicationStack {
             .build()
 
         services = session.services
-
-        notificationFetchResultAdapter = NotificationServiceFetchResultAdapter(notificationService: services.notifications)
+        
+        backgroundFetcher = BackgroundFetchService(refreshService: services.refresh)
         
         // TODO: Source from preferences/Firebase
         let upcomingEventReminderInterval: TimeInterval = 900
