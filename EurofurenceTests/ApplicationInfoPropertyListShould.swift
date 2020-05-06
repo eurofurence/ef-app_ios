@@ -31,5 +31,11 @@ class ApplicationInfoPropertyListShould: XCTestCase {
         
         XCTAssertEqual(expected, cameraUsageDescription)
     }
+    
+    func testSpecifyNonExcemptEncryptionNotUsed() {
+        let nonStandardEncryptionUsed: Bool? = objectFromMainBundlePropertyList(forInfoDictionaryKey: "ITSAppUsesNonExemptEncryption")
+        
+        XCTAssertEqual(false, nonStandardEncryptionUsed)
+    }
 
 }
