@@ -476,7 +476,6 @@
 		CA44C37E211CAF29003C1C4E /* NewsPresenterPhotoshootIconBindingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C37D211CAF29003C1C4E /* NewsPresenterPhotoshootIconBindingTests.swift */; };
 		CA4908C4245DADA000DB032C /* WindowContentWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4908C3245DADA000DB032C /* WindowContentWireframe.swift */; };
 		CA4908C6245DADBA00DB032C /* WindowModalWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4908C5245DADBA00DB032C /* WindowModalWireframe.swift */; };
-		CA4C474A21DF88B9005231AD /* NotificationServiceFetchResultAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4C474921DF88B9005231AD /* NotificationServiceFetchResultAdapter.swift */; };
 		CA4D9343245ECA67006FA832 /* NotificationContentRepresentationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D9342245ECA67006FA832 /* NotificationContentRepresentationTests.swift */; };
 		CA4D9345245ED9EB006FA832 /* NotificationContentRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D9344245ED9EB006FA832 /* NotificationContentRepresentation.swift */; };
 		CA4D9347245EDAD1006FA832 /* UserActivityContentRepresentationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D9346245EDAD1006FA832 /* UserActivityContentRepresentationTests.swift */; };
@@ -941,7 +940,6 @@
 		CAC4993722DF994A003E1D77 /* DealerCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC4993622DF994A003E1D77 /* DealerCategoryTableViewCell.swift */; };
 		CAC4994A22E106BF003E1D77 /* WhenDealersSceneRevealsCategoryFilters_DealersPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC4994922E106BF003E1D77 /* WhenDealersSceneRevealsCategoryFilters_DealersPresenterShould.swift */; };
 		CAC4994C22E4A4B7003E1D77 /* WhenBindingActiveCategory_DealersSceneShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC4994B22E4A4B7003E1D77 /* WhenBindingActiveCategory_DealersSceneShould.swift */; };
-		CACD2F0D21DF832000BACD91 /* NotificationServiceFetchResultAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD2F0C21DF832000BACD91 /* NotificationServiceFetchResultAdapter.swift */; };
 		CACEA06A2241862400DFF26C /* WhenThePerformInitialDownloadPageAppearsWithNoNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACEA0692241862400DFF26C /* WhenThePerformInitialDownloadPageAppearsWithNoNetwork.swift */; };
 		CACEA06D2242827800DFF26C /* NotificationScheduleControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACEA06C2242827800DFF26C /* NotificationScheduleControllerTests.swift */; };
 		CACEA06F2242832F00DFF26C /* CapturingNotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACEA06E2242832F00DFF26C /* CapturingNotificationScheduler.swift */; };
@@ -1681,7 +1679,6 @@
 		CA44C37D211CAF29003C1C4E /* NewsPresenterPhotoshootIconBindingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsPresenterPhotoshootIconBindingTests.swift; sourceTree = "<group>"; };
 		CA4908C3245DADA000DB032C /* WindowContentWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowContentWireframe.swift; sourceTree = "<group>"; };
 		CA4908C5245DADBA00DB032C /* WindowModalWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowModalWireframe.swift; sourceTree = "<group>"; };
-		CA4C474921DF88B9005231AD /* NotificationServiceFetchResultAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationServiceFetchResultAdapter.swift; sourceTree = "<group>"; };
 		CA4D9342245ECA67006FA832 /* NotificationContentRepresentationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationContentRepresentationTests.swift; sourceTree = "<group>"; };
 		CA4D9344245ED9EB006FA832 /* NotificationContentRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationContentRepresentation.swift; sourceTree = "<group>"; };
 		CA4D9346245EDAD1006FA832 /* UserActivityContentRepresentationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserActivityContentRepresentationTests.swift; sourceTree = "<group>"; };
@@ -2145,7 +2142,6 @@
 		CAC4993622DF994A003E1D77 /* DealerCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		CAC4994922E106BF003E1D77 /* WhenDealersSceneRevealsCategoryFilters_DealersPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDealersSceneRevealsCategoryFilters_DealersPresenterShould.swift; sourceTree = "<group>"; };
 		CAC4994B22E4A4B7003E1D77 /* WhenBindingActiveCategory_DealersSceneShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingActiveCategory_DealersSceneShould.swift; sourceTree = "<group>"; };
-		CACD2F0C21DF832000BACD91 /* NotificationServiceFetchResultAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationServiceFetchResultAdapter.swift; sourceTree = "<group>"; };
 		CACEA0692241862400DFF26C /* WhenThePerformInitialDownloadPageAppearsWithNoNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenThePerformInitialDownloadPageAppearsWithNoNetwork.swift; sourceTree = "<group>"; };
 		CACEA06C2242827800DFF26C /* NotificationScheduleControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationScheduleControllerTests.swift; sourceTree = "<group>"; };
 		CACEA06E2242832F00DFF26C /* CapturingNotificationScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingNotificationScheduler.swift; sourceTree = "<group>"; };
@@ -2810,7 +2806,6 @@
 				CAF7055F1F82CBC800A9FEA2 /* Director */,
 				781A94441F1A1DCE002DE70F /* Firebase Notification Registration */,
 				78C86D5B1F12355C003A20E6 /* Module Tests */,
-				CACD2F0B21DF830300BACD91 /* Notification Content Adapter */,
 				CACEA06B2242824F00DFF26C /* Notification Scheduling */,
 				CA82409B212498E6007E4A70 /* Review Prompt */,
 				CA82DB6422D7BE2300467C2F /* Share URLs */,
@@ -5062,7 +5057,6 @@
 		CA7992442245173B00DF1F84 /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
-				CAD55944229AF7B30068DD46 /* Opening Notifications */,
 				781A94311F1A1981002DE70F /* Firebase Notification Registration */,
 				CA79925C22459E8A00DF1F84 /* Scheduling */,
 			);
@@ -5610,14 +5604,6 @@
 			path = Categories;
 			sourceTree = "<group>";
 		};
-		CACD2F0B21DF830300BACD91 /* Notification Content Adapter */ = {
-			isa = PBXGroup;
-			children = (
-				CACD2F0C21DF832000BACD91 /* NotificationServiceFetchResultAdapter.swift */,
-			);
-			path = "Notification Content Adapter";
-			sourceTree = "<group>";
-		};
 		CACEA06B2242824F00DFF26C /* Notification Scheduling */ = {
 			isa = PBXGroup;
 			children = (
@@ -6057,14 +6043,6 @@
 				CAA28875245C68F10090B663 /* NavigateFromAnnouncementsToAnnouncement.swift */,
 			);
 			path = Announcements;
-			sourceTree = "<group>";
-		};
-		CAD55944229AF7B30068DD46 /* Opening Notifications */ = {
-			isa = PBXGroup;
-			children = (
-				CA4C474921DF88B9005231AD /* NotificationServiceFetchResultAdapter.swift */,
-			);
-			path = "Opening Notifications";
 			sourceTree = "<group>";
 		};
 		CAD68823208A04B300B31F5F /* Presenter Tests */ = {
@@ -7071,7 +7049,6 @@
 				CA5EB198245F63710012C277 /* PrincipalContentModuleProviding.swift in Sources */,
 				CA5EB1AB245F6DD00012C277 /* ScheduleContentControllerFactory.swift in Sources */,
 				CA0F762320322DEF009DA079 /* KnowledgeListBinder.swift in Sources */,
-				CA4C474A21DF88B9005231AD /* NotificationServiceFetchResultAdapter.swift in Sources */,
 				CABA438F1FBCDBEE009CB5B0 /* LoginSceneFactory.swift in Sources */,
 				CA50B1BE226119F40091E425 /* DayOfWeekFormatter.swift in Sources */,
 				2020ECCB211CDB870036E2CF /* NSAttributedString+trim.swift in Sources */,
@@ -7556,7 +7533,6 @@
 				CACF26D320FE5D2C00EDE150 /* WhenToldToFilterToAllEvents_ScheduleInteractorShould.swift in Sources */,
 				CA401084210FAFB10056E16C /* BeforeKnowledgeGroupEntriesSceneLoads.swift in Sources */,
 				CA4FBE0E1F72FF2A00D29405 /* WhenBindingMessage_MessagesPresenterShould.swift in Sources */,
-				CACD2F0D21DF832000BACD91 /* NotificationServiceFetchResultAdapter.swift in Sources */,
 				CA36A46520D84A8100EE6537 /* FakeDealersInteractor.swift in Sources */,
 				CA283AD120EAC64A00F7D195 /* WhenAnnouncementsViewModelUpdatesAnnouncements_AnnouncementsPresenterShould.swift in Sources */,
 				CA36A47D20D85D4500EE6537 /* WhenBindingDealerComponent_ForDealerWithAfterDarkContent_DealersPresenterShould.swift in Sources */,
