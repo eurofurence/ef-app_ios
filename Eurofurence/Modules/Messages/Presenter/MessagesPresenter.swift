@@ -1,7 +1,7 @@
 import EurofurenceModel
 import Foundation.NSIndexPath
 
-class MessagesPresenter: MessagesSceneDelegate, AuthenticationStateObserver, PrivateMessagesObserver {
+class MessagesPresenter: MessagesSceneDelegate, PrivateMessagesObserver {
 
     // MARK: Properties
 
@@ -32,8 +32,8 @@ class MessagesPresenter: MessagesSceneDelegate, AuthenticationStateObserver, Pri
     // MARK: MessagesSceneDelegate
 
     func messagesSceneWillAppear() {
-        authenticationService.add(self)
         privateMessagesService.add(self)
+        reloadPrivateMessages()
     }
 
     func messagesSceneDidSelectMessage(at indexPath: IndexPath) {
@@ -59,20 +59,6 @@ class MessagesPresenter: MessagesSceneDelegate, AuthenticationStateObserver, Pri
                 }
             }
         }
-    }
-
-    // MARK: AuthenticationStateObserver
-
-    func userDidLogin(_ user: User) {
-        reloadPrivateMessages()
-    }
-
-    func userDidLogout() {
-        delegate.messagesModuleDidRequestResolutionForUser(completionHandler: userResolved)
-    }
-
-    func userDidFailToLogout() {
-
     }
 
     // MARK: PrivateMessagesServiceObserver
