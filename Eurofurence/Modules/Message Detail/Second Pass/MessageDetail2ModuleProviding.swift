@@ -4,11 +4,12 @@ import UIKit
 struct MessageDetail2ModuleProviding: MessageDetailModuleProviding {
     
     var sceneFactory: MessageDetailSceneFactory
+    var messagesService: PrivateMessagesService
     
     func makeMessageDetailModule(for message: MessageIdentifier) -> UIViewController {
         let scene = sceneFactory.makeMessageDetailScene()
         
-        _ = MessageDetailPresenter2(scene: scene)
+        _ = MessageDetailPresenter2(message: message, scene: scene, messagesService: messagesService)
         
         return UIViewController()
     }
@@ -17,15 +18,24 @@ struct MessageDetail2ModuleProviding: MessageDetailModuleProviding {
 
 struct MessageDetailPresenter2: MessageDetailSceneDelegate {
     
+    private let message: MessageIdentifier
     private let scene: MessageDetailScene
+    private let messagesService: PrivateMessagesService
     
-    init(scene: MessageDetailScene) {
+    init(message: MessageIdentifier, scene: MessageDetailScene, messagesService: PrivateMessagesService) {
+        self.message = message
         self.scene = scene
+        self.messagesService = messagesService
+        
         scene.delegate = self
     }
     
     func messageDetailSceneDidLoad() {
         scene.showLoadingIndicator()
+        
+        messagesService.fetchMessage(identifiedBy: message) { (_) in
+            self.scene.hideLoadingIndicator()
+        }
     }
     
 }
