@@ -102,7 +102,6 @@
 		CA00AE9120D293B800C2FBB0 /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE9020D293B800C2FBB0 /* UICollectionView+Extensions.swift */; };
 		CA02910221F4D6020007F350 /* AppDelegate+DebugWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA02910121F4D6020007F350 /* AppDelegate+DebugWindow.swift */; };
 		CA057A5B2088BDBB00504FA4 /* AnnouncementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA057A5A2088BDBA00504FA4 /* AnnouncementTableViewCell.swift */; };
-		CA063B3C20F25E5B00241CC9 /* FakeApplicationNotificationHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA063B3B20F25E5B00241CC9 /* FakeApplicationNotificationHandling.swift */; };
 		CA08157820D3865600F750D4 /* NavigationBarViewExtensionContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08157720D3865600F750D4 /* NavigationBarViewExtensionContainer.swift */; };
 		CA08157A20D3877700F750D4 /* FoundationShortFormDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08157920D3877700F750D4 /* FoundationShortFormDateFormatter.swift */; };
 		CA08158920D448DC00F750D4 /* WhenScheduleSceneSelectsDay_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08158820D448DC00F750D4 /* WhenScheduleSceneSelectsDay_SchedulePresenterShould.swift */; };
@@ -1305,7 +1304,6 @@
 		CA00AE9020D293B800C2FBB0 /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
 		CA02910121F4D6020007F350 /* AppDelegate+DebugWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+DebugWindow.swift"; sourceTree = "<group>"; };
 		CA057A5A2088BDBA00504FA4 /* AnnouncementTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnouncementTableViewCell.swift; sourceTree = "<group>"; };
-		CA063B3B20F25E5B00241CC9 /* FakeApplicationNotificationHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeApplicationNotificationHandling.swift; sourceTree = "<group>"; };
 		CA08157720D3865600F750D4 /* NavigationBarViewExtensionContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarViewExtensionContainer.swift; sourceTree = "<group>"; };
 		CA08157920D3877700F750D4 /* FoundationShortFormDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationShortFormDateFormatter.swift; sourceTree = "<group>"; };
 		CA08158820D448DC00F750D4 /* WhenScheduleSceneSelectsDay_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenScheduleSceneSelectsDay_SchedulePresenterShould.swift; sourceTree = "<group>"; };
@@ -4105,7 +4103,6 @@
 			isa = PBXGroup;
 			children = (
 				CA637553208CBBBF00536BE2 /* CapturingWindowWireframe.swift */,
-				CA063B3B20F25E5B00241CC9 /* FakeApplicationNotificationHandling.swift */,
 				CA527E79227A4887000ED74B /* FakeModuleRepository.swift */,
 				CA63754D208CBB8600536BE2 /* FakeViewController.swift */,
 				CA5EB1C2245F70610012C277 /* StubAdditionalServicesModuleProviding.swift */,
@@ -7797,7 +7794,6 @@
 				CA283AE620EC188E00F7D195 /* WhenBindingNonFavouriteEvent_FromSearchResult_SchedulePresenterShould.swift in Sources */,
 				CA0E5215208F52EE005259FE /* CapturingNewsInteractorDelegate.swift in Sources */,
 				CA637599208DFD5F00536BE2 /* SchedulePresenterTestBuilder.swift in Sources */,
-				CA063B3C20F25E5B00241CC9 /* FakeApplicationNotificationHandling.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
