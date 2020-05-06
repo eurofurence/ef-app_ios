@@ -3,8 +3,13 @@ import Foundation
 public protocol PrivateMessagesService {
 
     func add(_ observer: PrivateMessagesObserver)
+    
     func refreshMessages()
-    func fetchMessage(identifiedBy identifier: MessageIdentifier) -> Message?
+    
+    func fetchMessage(
+        identifiedBy identifier: MessageIdentifier,
+        completionHandler: @escaping (Result<Message, Error>) -> Void
+    )
 
 }
 

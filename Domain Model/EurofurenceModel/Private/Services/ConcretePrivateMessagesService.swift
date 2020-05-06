@@ -46,8 +46,13 @@ class ConcretePrivateMessagesService: PrivateMessagesService {
         refreshMessages(completionHandler: nil)
     }
     
-    func fetchMessage(identifiedBy identifier: MessageIdentifier) -> Message? {
-        return localMessages.first(where: { $0.identifier == identifier })
+    func fetchMessage(
+        identifiedBy identifier: MessageIdentifier,
+        completionHandler: @escaping (Result<Message, Error>) -> Void
+    ) {
+        if let message = localMessages.first(where: { $0.identifier == identifier }) {
+            completionHandler(.success(message))
+        }
     }
 
     func refreshMessages(completionHandler: (() -> Void)? = nil) {
