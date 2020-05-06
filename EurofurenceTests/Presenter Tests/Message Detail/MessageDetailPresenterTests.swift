@@ -16,6 +16,16 @@ struct StubMessageDetailSceneFactory: MessageDetailSceneFactory {
 class CapturingMessageDetailScene: UIViewController, MessageDetailScene {
 
     var delegate: MessageDetailSceneDelegate?
+    
+    private(set) var loadingIndicatorVisibility: VisibilityState = .unset
+    
+    func showLoadingIndicator() {
+        loadingIndicatorVisibility = .visible
+    }
+    
+    func hideLoadingIndicator() {
+        loadingIndicatorVisibility = .hidden
+    }
 
     private(set) var capturedMessageDetailTitle: String?
     func setMessageDetailTitle(_ title: String) {
@@ -27,6 +37,10 @@ class CapturingMessageDetailScene: UIViewController, MessageDetailScene {
     func addMessageComponent(with binder: MessageComponentBinder) {
         numberOfMessageComponentsAdded += 1
         capturedMessageBinder = binder
+    }
+    
+    func simulateSceneReady() {
+        delegate?.messageDetailSceneDidLoad()
     }
 
 }

@@ -17,6 +17,14 @@ class MessageDetailViewController: UITableViewController, MessageDetailScene {
     // MARK: MessageDetailScene
 
     var delegate: MessageDetailSceneDelegate?
+    
+    func showLoadingIndicator() {
+        
+    }
+    
+    func hideLoadingIndicator() {
+        
+    }
 
     func setMessageDetailTitle(_ title: String) {
         super.title = title

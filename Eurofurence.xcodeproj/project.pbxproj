@@ -122,6 +122,9 @@
 		CA08B10C22EF6EFC00FDAAA7 /* WhenFavouritingEvent_EventViewModelShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08B10B22EF6EFC00FDAAA7 /* WhenFavouritingEvent_EventViewModelShould.swift */; };
 		CA08B10E22EF6F8200FDAAA7 /* WhenUnfavouritingEvent_EventViewModelShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08B10D22EF6F8200FDAAA7 /* WhenUnfavouritingEvent_EventViewModelShould.swift */; };
 		CA09BE56246328EB00412B82 /* BackgroundFetchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA09BE55246328EB00412B82 /* BackgroundFetchService.swift */; };
+		CA09BE58246337CA00412B82 /* MessageDetailPresenter2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA09BE57246337CA00412B82 /* MessageDetailPresenter2Tests.swift */; };
+		CA09BE5B246339AB00412B82 /* MessageDetail2ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA09BE5A246339AB00412B82 /* MessageDetail2ModuleBuilder.swift */; };
+		CA09BE5D246339CC00412B82 /* MessageDetail2ModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA09BE5C246339CC00412B82 /* MessageDetail2ModuleProviding.swift */; };
 		CA0E5205208E6FE4005259FE /* StoryboardDealersSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5204208E6FE4005259FE /* StoryboardDealersSceneFactory.swift */; };
 		CA0E5207208E700E005259FE /* DealersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5206208E700E005259FE /* DealersViewController.swift */; };
 		CA0E5209208E7020005259FE /* Dealers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA0E5208208E7020005259FE /* Dealers.storyboard */; };
@@ -1323,6 +1326,9 @@
 		CA08B10B22EF6EFC00FDAAA7 /* WhenFavouritingEvent_EventViewModelShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFavouritingEvent_EventViewModelShould.swift; sourceTree = "<group>"; };
 		CA08B10D22EF6F8200FDAAA7 /* WhenUnfavouritingEvent_EventViewModelShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenUnfavouritingEvent_EventViewModelShould.swift; sourceTree = "<group>"; };
 		CA09BE55246328EB00412B82 /* BackgroundFetchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundFetchService.swift; sourceTree = "<group>"; };
+		CA09BE57246337CA00412B82 /* MessageDetailPresenter2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailPresenter2Tests.swift; sourceTree = "<group>"; };
+		CA09BE5A246339AB00412B82 /* MessageDetail2ModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetail2ModuleBuilder.swift; sourceTree = "<group>"; };
+		CA09BE5C246339CC00412B82 /* MessageDetail2ModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetail2ModuleProviding.swift; sourceTree = "<group>"; };
 		CA0E5204208E6FE4005259FE /* StoryboardDealersSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardDealersSceneFactory.swift; sourceTree = "<group>"; };
 		CA0E5206208E700E005259FE /* DealersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersViewController.swift; sourceTree = "<group>"; };
 		CA0E5208208E7020005259FE /* Dealers.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dealers.storyboard; sourceTree = "<group>"; };
@@ -2943,6 +2949,15 @@
 				CA09BE55246328EB00412B82 /* BackgroundFetchService.swift */,
 			);
 			path = "Background Refresh";
+			sourceTree = "<group>";
+		};
+		CA09BE59246339A500412B82 /* Second Pass */ = {
+			isa = PBXGroup;
+			children = (
+				CA09BE5A246339AB00412B82 /* MessageDetail2ModuleBuilder.swift */,
+				CA09BE5C246339CC00412B82 /* MessageDetail2ModuleProviding.swift */,
+			);
+			path = "Second Pass";
 			sourceTree = "<group>";
 		};
 		CA0E5203208E6FCA005259FE /* UIKit */ = {
@@ -6075,6 +6090,7 @@
 		CAEAEBF21FDEB53800C0EE7C /* Message Detail */ = {
 			isa = PBXGroup;
 			children = (
+				CA09BE59246339A500412B82 /* Second Pass */,
 				CAEAEBF61FDEB61100C0EE7C /* MessageDetailModuleBuilder.swift */,
 				CAEAEBF31FDEB55900C0EE7C /* Module */,
 				CAEAEC021FE0056A00C0EE7C /* Presenter */,
@@ -6096,6 +6112,7 @@
 			isa = PBXGroup;
 			children = (
 				CAEAEBF91FE0037700C0EE7C /* MessageDetailPresenterTests.swift */,
+				CA09BE57246337CA00412B82 /* MessageDetailPresenter2Tests.swift */,
 			);
 			path = "Message Detail";
 			sourceTree = "<group>";
@@ -7029,6 +7046,7 @@
 				CA2A586F20F7F137002C69B6 /* AnnouncementDateFormatter.swift in Sources */,
 				CA8A73C922BD1030007A5201 /* AdditionalServicesModule.swift in Sources */,
 				CAD3BDB92059539D00C91E6E /* KnowledgeDetailModuleDelegate.swift in Sources */,
+				CA09BE5B246339AB00412B82 /* MessageDetail2ModuleBuilder.swift in Sources */,
 				CAD4F746245C38380036ADAF /* ContentRouteRegistery.swift in Sources */,
 				CA6EC48E2051D97600402894 /* KnowledgeDetailPresenter.swift in Sources */,
 				CA1FE9971F9FCCA4009C7DF3 /* MessagesModuleProviding.swift in Sources */,
@@ -7230,6 +7248,7 @@
 				CA8A73CC22BD10D2007A5201 /* AdditionalServicesPresenter.swift in Sources */,
 				CACF1E6F20B1CDC300D904B5 /* EventDetailViewModel.swift in Sources */,
 				CA283A5A20E6E24300F7D195 /* ApplicationLongRunningTaskManager.swift in Sources */,
+				CA09BE5D246339CC00412B82 /* MessageDetail2ModuleProviding.swift in Sources */,
 				CA09BE56246328EB00412B82 /* BackgroundFetchService.swift in Sources */,
 				CABA439F1FD578E1009CB5B0 /* NewsModuleBuilder.swift in Sources */,
 				CAD4F74D245C3CBB0036ADAF /* AnnouncementContentRepresentation.swift in Sources */,
@@ -7504,6 +7523,7 @@
 				CAD4F784245C622F0036ADAF /* AnyContentRepresentationTests.swift in Sources */,
 				CA60BFE8207B88ED00697566 /* WhenBuildingNewsPresenter.swift in Sources */,
 				CA44C364211B55EB003C1C4E /* WhenPreparingViewModel_ForMainStageEvent_EventDetailInteractorShould.swift in Sources */,
+				CA09BE58246337CA00412B82 /* MessageDetailPresenter2Tests.swift in Sources */,
 				CA1ECB411FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift in Sources */,
 				CAD4F772245C476C0036ADAF /* CapturingModalWireframe.swift in Sources */,
 				CA8A73CE22BD130C007A5201 /* WhenAdditionalServicesSceneLoads_PresenterShould.swift in Sources */,
