@@ -23,12 +23,14 @@ class WhenRefreshingMessages: XCTestCase {
         context.privateMessagesService.succeedLastRefresh()
         XCTAssertEqual(.hidden, context.scene.refreshIndicatorVisibility)
         XCTAssertEqual(.visible, context.scene.noMessagesPlaceholderVisibility)
+        XCTAssertEqual(.hidden, context.scene.messagesListVisibility)
     }
 
     func testLoadingMessagesEntersViewingMessagesState() {
         context.privateMessagesService.succeedLastRefresh(messages: [StubMessage.random])
         XCTAssertEqual(.visible, context.scene.messagesListVisibility)
         XCTAssertEqual(.hidden, context.scene.noMessagesPlaceholderVisibility)
+        XCTAssertEqual(.hidden, context.scene.refreshIndicatorVisibility)
     }
 
     func testWhenRefreshActionCompletesWithMessagesTheSceneIsToldToBindWithTheNumberOfMessages() {

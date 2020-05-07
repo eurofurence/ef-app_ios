@@ -17,11 +17,6 @@ class WhenViewingMessageWhileLoggedInWithLocalMessage: XCTestCase {
         context.privateMessagesService.succeedLastRefresh(messages: [localMessage])
     }
 
-    func testEntersViewingMessagesState() {
-        XCTAssertEqual(.visible, context.scene.messagesListVisibility)
-        XCTAssertEqual(.hidden, context.scene.noMessagesPlaceholderVisibility)
-    }
-
     func testSelectingMessageTellsDelegateToShowTheMessage() {
         context.scene.tapMessage(at: 0)
         XCTAssertEqual(localMessage.identifier, context.delegate.messageToShow)
