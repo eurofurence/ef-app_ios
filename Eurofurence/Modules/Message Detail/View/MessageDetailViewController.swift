@@ -1,9 +1,11 @@
 import UIKit.UIViewController
 
-class MessageDetailViewController: UITableViewController, MessageDetailScene {
+class MessageDetailViewController: UIViewController, MessageDetailScene {
 
     // MARK: IBOutlets
 
+    @IBOutlet private weak var activityIndicatorView: UIActivityIndicatorView!
+    @IBOutlet private weak var messageDetailScrollView: UIScrollView!
     @IBOutlet private weak var messageSubjectLabel: UILabel!
     @IBOutlet private weak var messageContentsTextView: UITextView!
 
@@ -11,6 +13,8 @@ class MessageDetailViewController: UITableViewController, MessageDetailScene {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        messageContentsTextView.contentInset = .zero
         delegate?.messageDetailSceneDidLoad()
     }
 
@@ -19,11 +23,11 @@ class MessageDetailViewController: UITableViewController, MessageDetailScene {
     var delegate: MessageDetailSceneDelegate?
     
     func showLoadingIndicator() {
-        
+        activityIndicatorView.startAnimating()
     }
     
     func hideLoadingIndicator() {
-        
+        activityIndicatorView.stopAnimating()
     }
 
     func setMessageDetailTitle(_ title: String) {
@@ -31,7 +35,8 @@ class MessageDetailViewController: UITableViewController, MessageDetailScene {
     }
     
     func showMessage(viewModel: MessageDetailViewModel) {
-        
+        messageSubjectLabel.text = viewModel.subject
+        messageContentsTextView.text = viewModel.contents
     }
     
     func showError(viewModel: MessageDetailErrorViewModel) {
@@ -39,42 +44,7 @@ class MessageDetailViewController: UITableViewController, MessageDetailScene {
     }
 
     func addMessageComponent(with binder: MessageComponentBinder) {
-        binder.bind(MessageBinder(subjectLabel: messageSubjectLabel, contentsTextView: messageContentsTextView))
-        tableView.beginUpdates()
-        tableView.endUpdates()
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
-    }
-    
-    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
-    }
-    
-    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return UIView()
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 1
-    }
-
-    // MARK: Binding
-
-    private struct MessageBinder: MessageComponent {
-
-        var subjectLabel: UILabel
-        var contentsTextView: UITextView
-
-        func setMessageSubject(_ subject: String) {
-            subjectLabel.text = subject
-        }
         
-        func setMessageContents(_ contents: String) {
-            contentsTextView.text = contents
-        }
-
     }
 
 }

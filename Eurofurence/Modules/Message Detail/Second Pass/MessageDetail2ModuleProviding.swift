@@ -11,7 +11,7 @@ struct MessageDetail2ModuleProviding: MessageDetailModuleProviding {
         
         _ = MessageDetailPresenter2(message: message, scene: scene, messagesService: messagesService)
         
-        return UIViewController()
+        return scene
     }
     
 }
