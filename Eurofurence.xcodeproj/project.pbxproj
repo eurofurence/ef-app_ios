@@ -220,7 +220,7 @@
 		CA1B6F3720DD1C2F00ADF414 /* WhenBindingDealerLocationAndAvailability_DealerDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B6F3620DD1C2F00ADF414 /* WhenBindingDealerLocationAndAvailability_DealerDetailPresenterShould.swift */; };
 		CA1B6F3920DD1D9D00ADF414 /* DealerDetailLocationAndAvailabilityViewModel+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B6F3820DD1D9D00ADF414 /* DealerDetailLocationAndAvailabilityViewModel+RandomValueProviding.swift */; };
 		CA1ECB3F1FE333090076083A /* WhenInitialMessageLoadFails.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB3E1FE333090076083A /* WhenInitialMessageLoadFails.swift */; };
-		CA1ECB411FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB401FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift */; };
+		CA1ECB411FE333BF0076083A /* WhenSelectingMessage_MessagesPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB401FE333BF0076083A /* WhenSelectingMessage_MessagesPresenterShould.swift */; };
 		CA1ECB471FE6E7DA0076083A /* MessageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB461FE6E7DA0076083A /* MessageComponent.swift */; };
 		CA1ECB491FE6E8100076083A /* MessageComponentBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB481FE6E8100076083A /* MessageComponentBinder.swift */; };
 		CA1ECB4D1FE7F2A10076083A /* NewsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB4C1FE7F2A10076083A /* NewsPresenter.swift */; };
@@ -1416,7 +1416,7 @@
 		CA1B6F3620DD1C2F00ADF414 /* WhenBindingDealerLocationAndAvailability_DealerDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingDealerLocationAndAvailability_DealerDetailPresenterShould.swift; sourceTree = "<group>"; };
 		CA1B6F3820DD1D9D00ADF414 /* DealerDetailLocationAndAvailabilityViewModel+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DealerDetailLocationAndAvailabilityViewModel+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA1ECB3E1FE333090076083A /* WhenInitialMessageLoadFails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenInitialMessageLoadFails.swift; sourceTree = "<group>"; };
-		CA1ECB401FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenViewingMessageWhileLoggedInWithLocalMessage.swift; sourceTree = "<group>"; };
+		CA1ECB401FE333BF0076083A /* WhenSelectingMessage_MessagesPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSelectingMessage_MessagesPresenterShould.swift; sourceTree = "<group>"; };
 		CA1ECB461FE6E7DA0076083A /* MessageComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageComponent.swift; sourceTree = "<group>"; };
 		CA1ECB481FE6E8100076083A /* MessageComponentBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageComponentBinder.swift; sourceTree = "<group>"; };
 		CA1ECB4C1FE7F2A10076083A /* NewsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsPresenter.swift; sourceTree = "<group>"; };
@@ -6225,7 +6225,7 @@
 				CA1ECB3E1FE333090076083A /* WhenInitialMessageLoadFails.swift */,
 				CAA6DD1020E1649600328C37 /* WhenMessagesSceneTapsLogoutButton_MessagesPresenterShould.swift */,
 				CA2547C01FEB1B2A0023F2CB /* WhenRefreshingMessages.swift */,
-				CA1ECB401FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift */,
+				CA1ECB401FE333BF0076083A /* WhenSelectingMessage_MessagesPresenterShould.swift */,
 			);
 			path = Messages;
 			sourceTree = "<group>";
@@ -7487,7 +7487,7 @@
 				CA60BFE8207B88ED00697566 /* WhenBuildingNewsPresenter.swift in Sources */,
 				CA44C364211B55EB003C1C4E /* WhenPreparingViewModel_ForMainStageEvent_EventDetailInteractorShould.swift in Sources */,
 				CA09BE58246337CA00412B82 /* MessageDetailPresenterTests.swift in Sources */,
-				CA1ECB411FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift in Sources */,
+				CA1ECB411FE333BF0076083A /* WhenSelectingMessage_MessagesPresenterShould.swift in Sources */,
 				CAD4F772245C476C0036ADAF /* CapturingModalWireframe.swift in Sources */,
 				CA8A73CE22BD130C007A5201 /* WhenAdditionalServicesSceneLoads_PresenterShould.swift in Sources */,
 				CACF1E5F20AE2EF400D904B5 /* StubEventDetailSceneFactory.swift in Sources */,
