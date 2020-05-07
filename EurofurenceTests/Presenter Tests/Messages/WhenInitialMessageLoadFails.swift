@@ -6,10 +6,10 @@ class WhenInitialMessageLoadFails: XCTestCase {
 
     func testTheRefreshIndicatorIsHidden() {
         let context = MessagesPresenterTestContext.makeTestCaseForAuthenticatedUser()
-        context.scene.delegate?.messagesSceneWillAppear()
+        context.scene.delegate?.messagesSceneReady()
         context.privateMessagesService.failLastRefresh()
 
-        XCTAssertTrue(context.scene.wasToldToHideRefreshIndicator)
+        XCTAssertEqual(.hidden, context.scene.refreshIndicatorVisibility)
     }
 
 }

@@ -48,16 +48,6 @@ class NavigateFromMessagesToMessageTests: XCTestCase {
         XCTAssertEqual(.logoutFailedAlertDetail, presentedAlertController?.message)
     }
     
-    func testRequestsLoginRoute() throws {
-        var result: Bool?
-        navigator.messagesModuleDidRequestResolutionForUser(completionHandler: { result = $0 })
-        
-        let loginContent: LoginContentRepresentation = try router.unwrapRoutedContent()
-        loginContent.completionHandler(true)
-        
-        XCTAssertEqual(true, result)
-    }
-    
     func testRequestingDismissal() {
         navigator.messagesModuleDidRequestDismissal()
         router.assertRouted(to: NewsContentRepresentation())

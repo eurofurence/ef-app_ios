@@ -1,6 +1,6 @@
 import UIKit.UIViewController
 
-protocol MessageDetailSceneFactory {
+public protocol MessageDetailSceneFactory {
 
     func makeMessageDetailScene() -> UIViewController & MessageDetailScene
 

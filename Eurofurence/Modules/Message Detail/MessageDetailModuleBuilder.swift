@@ -1,24 +1,23 @@
 import EurofurenceModel
-import UIKit.UIViewController
 
-class MessageDetailModuleBuilder {
-
-    private var messageDetailSceneFactory: MessageDetailSceneFactory
-    private let privateMessagesService: PrivateMessagesService
-
-    init(privateMessagesService: PrivateMessagesService) {
-        self.privateMessagesService = privateMessagesService
-        messageDetailSceneFactory = StoryboardMessageDetailSceneFactory()
+public class MessageDetailModuleBuilder {
+    
+    private let messagesService: PrivateMessagesService
+    private var sceneFactory: MessageDetailSceneFactory
+    
+    public init(messagesService: PrivateMessagesService) {
+        self.messagesService = messagesService
+        sceneFactory = StoryboardMessageDetailSceneFactory()
     }
-
-    func with(_ messageDetailSceneFactory: MessageDetailSceneFactory) -> MessageDetailModuleBuilder {
-        self.messageDetailSceneFactory = messageDetailSceneFactory
+    
+    @discardableResult
+    public func with(_ sceneFactory: MessageDetailSceneFactory) -> Self {
+        self.sceneFactory = sceneFactory
         return self
     }
-
-    func build() -> MessageDetailModuleProviding {
-        return MessageDetailModuleFactory(messageDetailSceneFactory: messageDetailSceneFactory,
-                                          privateMessagesService: privateMessagesService)
+    
+    public func build() -> MessageDetailModuleProviding {
+        MessageDetailModule(sceneFactory: sceneFactory, messagesService: messagesService)
     }
-
+    
 }

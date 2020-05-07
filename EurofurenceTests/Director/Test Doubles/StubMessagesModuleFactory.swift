@@ -16,10 +16,6 @@ class StubMessagesModuleFactory: MessagesModuleProviding {
 
 extension StubMessagesModuleFactory {
 
-    func simulateResolutionForUser(_ handler: @escaping (Bool) -> Void) {
-        delegate?.messagesModuleDidRequestResolutionForUser(completionHandler: handler)
-    }
-
     func simulateMessagePresentationRequested(_ message: MessageIdentifier) {
         delegate?.messagesModuleDidRequestPresentation(for: message)
     }

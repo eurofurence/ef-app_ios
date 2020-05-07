@@ -4,13 +4,6 @@ import EurofurenceModelTestDoubles
 
 class CapturingMessagesModuleDelegate: MessagesModuleDelegate {
 
-    private(set) var wasToldToResolveUser = false
-    private var userResolutionCompletionHandler: ((Bool) -> Void)?
-    func messagesModuleDidRequestResolutionForUser(completionHandler: @escaping (Bool) -> Void) {
-        wasToldToResolveUser = true
-        userResolutionCompletionHandler = completionHandler
-    }
-
     private(set) var messageToShow: MessageIdentifier?
     func messagesModuleDidRequestPresentation(for message: MessageIdentifier) {
         messageToShow = message
@@ -31,14 +24,6 @@ class CapturingMessagesModuleDelegate: MessagesModuleDelegate {
     private(set) var wasToldToShowLogoutFailedAlert = false
     func showLogoutFailedAlert() {
         wasToldToShowLogoutFailedAlert = true
-    }
-
-    func resolveUser() {
-        userResolutionCompletionHandler?(true)
-    }
-
-    func failToResolveUser() {
-        userResolutionCompletionHandler?(false)
     }
 
 }

@@ -11,10 +11,6 @@ public struct NavigateFromMessagesToMessage: MessagesModuleDelegate {
         self.modalWireframe = modalWireframe
     }
     
-    public func messagesModuleDidRequestResolutionForUser(completionHandler: @escaping (Bool) -> Void) {
-        try? router.route(LoginContentRepresentation(completionHandler: completionHandler))
-    }
-    
     public func messagesModuleDidRequestPresentation(for message: MessageIdentifier) {
         try? router.route(MessageContentRepresentation(identifier: message))
     }

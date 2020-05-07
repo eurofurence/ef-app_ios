@@ -3,11 +3,11 @@ import XCTest
 
 class BeforeMessagesViewAppears_MessagesPresenterShould: XCTestCase {
 
-    func testNotTellTheSceneToPrepareMessagesForPresentation() {
+    func testNotPerformAnySceneMutations() {
         let context = MessagesPresenterTestContext.makeTestCaseForAuthenticatedUser()
-        context.privateMessagesService.succeedLastRefresh(messages: [StubMessage].random)
 
-        XCTAssertFalse(context.scene.didShowMessages)
+        XCTAssertEqual(.unset, context.scene.refreshIndicatorVisibility)
+        XCTAssertEqual(.unset, context.scene.messagesListVisibility)
     }
 
 }

@@ -46,11 +46,39 @@ class ConcretePrivateMessagesService: PrivateMessagesService {
         refreshMessages(completionHandler: nil)
     }
     
-    func fetchMessage(identifiedBy identifier: MessageIdentifier) -> Message? {
-        return localMessages.first(where: { $0.identifier == identifier })
+    func fetchMessage(
+        identifiedBy identifier: MessageIdentifier,
+        completionHandler: @escaping (Result<Message, PrivateMessageError>) -> Void
+    ) {
+        if let message = findMessage(identifiedBy: identifier) {
+            completionHandler(.success(message))
+        } else {
+            refreshMessagesWithIntentToAcquireMessage(identifiedBy: identifier, completionHandler: completionHandler)
+        }
+    }
+    
+    private func findMessage(identifiedBy identifier: MessageIdentifier) -> Message? {
+        localMessages.first(where: { $0.identifier == identifier })
+    }
+    
+    private func refreshMessagesWithIntentToAcquireMessage(
+        identifiedBy identifier: MessageIdentifier,
+        completionHandler: @escaping (Result<Message, PrivateMessageError>) -> Void
+    ) {
+        refreshMessages(completionHandler: { (result) in
+            if result == nil {
+                completionHandler(.failure(.loadingMessagesFailed))
+            } else {
+                if let message = self.findMessage(identifiedBy: identifier) {
+                    completionHandler(.success(message))
+                } else {
+                    completionHandler(.failure(.noMessageFound))
+                }
+            }
+        })
     }
 
-    func refreshMessages(completionHandler: (() -> Void)? = nil) {
+    func refreshMessages(completionHandler: (([MessageCharacteristics]?) -> Void)? = nil) {
         state.refreshMessages(completionHandler: completionHandler)
     }
     
@@ -95,16 +123,16 @@ class ConcretePrivateMessagesService: PrivateMessagesService {
             self.service = service
         }
         
-        func refreshMessages(completionHandler: (() -> Void)? = nil) { }
+        func refreshMessages(completionHandler: (([MessageCharacteristics]?) -> Void)? = nil) { }
         func markMessageAsRead(_ message: Message) { }
         
     }
     
     private class UnauthenticatedState: State {
         
-        override func refreshMessages(completionHandler: (() -> Void)?) {
+        override func refreshMessages(completionHandler: (([MessageCharacteristics]?) -> Void)?) {
             service.notifyDidFailToLoadMessages()
-            completionHandler?()
+            completionHandler?(nil)
         }
         
     }
@@ -118,7 +146,7 @@ class ConcretePrivateMessagesService: PrivateMessagesService {
             super.init(service: service)
         }
         
-        override func refreshMessages(completionHandler: (() -> Void)?) {
+        override func refreshMessages(completionHandler: (([MessageCharacteristics]?) -> Void)?) {
             service.api.loadPrivateMessages(authorizationToken: token) { (messages) in
                 if let messages = messages {
                     self.service.updateEntities(from: messages)
@@ -126,7 +154,7 @@ class ConcretePrivateMessagesService: PrivateMessagesService {
                     self.service.notifyDidFailToLoadMessages()
                 }
                 
-                completionHandler?()
+                completionHandler?(messages)
             }
         }
         

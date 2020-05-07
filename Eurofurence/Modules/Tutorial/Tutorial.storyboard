@@ -72,11 +72,6 @@
                                         <state key="normal" title="Primary Action">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="7"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="performPrimaryAction:" destination="Iys-fY-Grz" eventType="touchUpInside" id="9PS-UB-PcV"/>
                                         </connections>
@@ -88,11 +83,6 @@
                                         <state key="normal" title="Secondary Action">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="7"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="performSecondaryAction:" destination="Iys-fY-Grz" eventType="touchUpInside" id="rOt-U3-E2S"/>
                                         </connections>

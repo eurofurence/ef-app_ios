@@ -1,117 +1,76 @@
-@testable import Eurofurence
+import Eurofurence
 import EurofurenceModel
 import EurofurenceModelTestDoubles
-import UIKit.UIViewController
 import XCTest
 
-struct StubMessageDetailSceneFactory: MessageDetailSceneFactory {
-
-    let scene = CapturingMessageDetailScene()
-    func makeMessageDetailScene() -> UIViewController & MessageDetailScene {
-        return scene
-    }
-
-}
-
-class CapturingMessageDetailScene: UIViewController, MessageDetailScene {
-
-    var delegate: MessageDetailSceneDelegate?
-
-    private(set) var capturedMessageDetailTitle: String?
-    func setMessageDetailTitle(_ title: String) {
-        capturedMessageDetailTitle = title
-    }
-
-    private(set) var numberOfMessageComponentsAdded = 0
-    private(set) var capturedMessageBinder: MessageComponentBinder?
-    func addMessageComponent(with binder: MessageComponentBinder) {
-        numberOfMessageComponentsAdded += 1
-        capturedMessageBinder = binder
-    }
-
-}
-
-class CapturingMessageComponent: MessageComponent {
-
-    private(set) var capturedMessageSubject: String?
-    func setMessageSubject(_ subject: String) {
-        capturedMessageSubject = subject
-    }
-
-    private(set) var capturedMessageContents: String?
-    func setMessageContents(_ contents: String) {
-        capturedMessageContents = contents
-    }
-
-}
-
 class MessageDetailPresenterTests: XCTestCase {
-
-    var messageDetailSceneFactory: StubMessageDetailSceneFactory!
-    var message: StubMessage!
-    var viewController: UIViewController!
-    var messagesService: CapturingPrivateMessagesService!
-
-    override func setUp() {
-        super.setUp()
-
-        message = .random
-        message.authorName = "Author"
-        message.subject = "Subject"
-        message.contents = "Contents"
-        messageDetailSceneFactory = StubMessageDetailSceneFactory()
-        messagesService = CapturingPrivateMessagesService(localMessages: [message])
+    
+    func testLoadingMessage() {
+        let sceneFactory = StubMessageDetailSceneFactory()
+        let messagesService = CapturingPrivateMessagesService()
+        let module = MessageDetailModuleBuilder(messagesService: messagesService).with(sceneFactory).build()
+        _ = module.makeMessageDetailModule(for: .random)
         
-        viewController = MessageDetailModuleBuilder(privateMessagesService: messagesService)
-            .with(messageDetailSceneFactory)
-            .build()
-            .makeMessageDetailModule(for: message.identifier)
+        XCTAssertEqual(.unset, sceneFactory.scene.loadingIndicatorVisibility)
+        
+        sceneFactory.scene.simulateSceneReady()
+        
+        XCTAssertEqual(.visible, sceneFactory.scene.loadingIndicatorVisibility)
     }
-
-    private func simulateSceneDidLoad() {
-        messageDetailSceneFactory.scene.delegate?.messageDetailSceneDidLoad()
-    }
-
-    func testReturnTheSceneWhenBuildingTheModule() {
-        XCTAssertEqual(viewController, messageDetailSceneFactory.scene)
-    }
-
-    func testTheAuthorIsSetAsTheTitle() {
-        simulateSceneDidLoad()
-        XCTAssertEqual(message.authorName, messageDetailSceneFactory.scene.capturedMessageDetailTitle)
-    }
-
-    func testWaitForTheSceneToLoadBeforeSettingTitle() {
-        XCTAssertNotEqual(message.authorName, messageDetailSceneFactory.scene.capturedMessageDetailTitle)
-    }
-
-    func testTellTheSceneToAddMessageComponents() {
-        simulateSceneDidLoad()
-        XCTAssertEqual(1, messageDetailSceneFactory.scene.numberOfMessageComponentsAdded)
-    }
-
-    func testWaitsUntilTheSceneLoadsBeforeAddingMessageComponent() {
-        XCTAssertEqual(0, messageDetailSceneFactory.scene.numberOfMessageComponentsAdded)
-    }
-
-    func testBindTheSubjectOntoTheMessageComponent() {
-        simulateSceneDidLoad()
-        let component = CapturingMessageComponent()
-        messageDetailSceneFactory.scene.capturedMessageBinder?.bind(component)
-
-        XCTAssertEqual(message.subject, component.capturedMessageSubject)
-    }
-
-    func testBindTheContentsOfTheMessageOntoTheMessageComponent() {
-        simulateSceneDidLoad()
-        let component = CapturingMessageComponent()
-        messageDetailSceneFactory.scene.capturedMessageBinder?.bind(component)
-
-        XCTAssertEqual(message.contents, component.capturedMessageContents)
-    }
-
-    func testTellTheMessagesServiceToMarkTheMessageAsRead() {
+    
+    func testMessageLoaded() {
+        let messageIdentifier = MessageIdentifier.random
+        let message = StubMessage.random
+        let sceneFactory = StubMessageDetailSceneFactory()
+        let messagesService = SuccessfulPrivateMessagesService(successfulForMessage: messageIdentifier, providingMessage: message)
+        let module = MessageDetailModuleBuilder(messagesService: messagesService).with(sceneFactory).build()
+        _ = module.makeMessageDetailModule(for: messageIdentifier)
+        
+        XCTAssertFalse(message.markedRead)
+        
+        sceneFactory.scene.simulateSceneReady()
+        
         XCTAssertTrue(message.markedRead)
+        XCTAssertEqual(.hidden, sceneFactory.scene.loadingIndicatorVisibility)
+        XCTAssertEqual(message.authorName, sceneFactory.scene.capturedMessageDetailTitle)
+        XCTAssertEqual(message.subject, sceneFactory.scene.viewModel?.subject)
+        XCTAssertEqual(message.contents, sceneFactory.scene.viewModel?.contents)
+    }
+    
+    func testMessageLoadFailure() throws {
+        let messageIdentifier = MessageIdentifier.random
+        let sceneFactory = StubMessageDetailSceneFactory()
+        let error = PrivateMessageError.noMessageFound
+        let messagesService = FailingPrivateMessagesService(unsuccessfulForMessage: messageIdentifier, providingError: error)
+        let module = MessageDetailModuleBuilder(messagesService: messagesService).with(sceneFactory).build()
+        _ = module.makeMessageDetailModule(for: messageIdentifier)
+        sceneFactory.scene.simulateSceneReady()
+        
+        let boundErrorDescription = try XCTUnwrap(sceneFactory.scene.errorViewModel?.errorDescription)
+        
+        XCTAssertEqual(.hidden, sceneFactory.scene.loadingIndicatorVisibility)
+        XCTAssertTrue(error.errorDescription == boundErrorDescription)
+    }
+    
+    func testRetryingAfterFailure() {
+        let messageIdentifier = MessageIdentifier.random
+        let sceneFactory = StubMessageDetailSceneFactory()
+        let messagesService = ControllablePrivateMessagesService()
+        let module = MessageDetailModuleBuilder(messagesService: messagesService).with(sceneFactory).build()
+        _ = module.makeMessageDetailModule(for: messageIdentifier)
+        sceneFactory.scene.simulateSceneReady()
+        messagesService.failNow(error: .loadingMessagesFailed)
+        sceneFactory.scene.errorViewModel?.retry()
+        
+        XCTAssertEqual(.visible, sceneFactory.scene.loadingIndicatorVisibility)
+        
+        let message = StubMessage.random
+        messagesService.succeedNow(message: message)
+        
+        XCTAssertEqual(.hidden, sceneFactory.scene.loadingIndicatorVisibility)
+        XCTAssertEqual(message.authorName, sceneFactory.scene.capturedMessageDetailTitle)
+        XCTAssertEqual(message.subject, sceneFactory.scene.viewModel?.subject)
+        XCTAssertEqual(message.contents, sceneFactory.scene.viewModel?.contents)
     }
 
 }

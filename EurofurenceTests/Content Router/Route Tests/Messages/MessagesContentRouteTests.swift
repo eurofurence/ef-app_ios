@@ -29,14 +29,6 @@ class MessagesContentRouteTests: XCTestCase {
         XCTAssertEqual(messagesModuleProviding.stubInterface, contentWireframe.presentedMasterContentController)
     }
     
-    func testPropogatesUserResolutionDelegateEvent() {
-        var success = false
-        messagesModuleProviding.simulateResolutionForUser({ success = $0 })
-        delegate.resolveUser()
-        
-        XCTAssertTrue(success)
-    }
-    
     func testPropogatesMessageSelectionDelegateEvent() {
         let message = MessageIdentifier.random
         messagesModuleProviding.simulateMessagePresentationRequested(message)

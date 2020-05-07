@@ -73,6 +73,7 @@ extension UIColor {
     static let pantone330U_13 = UIColor.unsafelyNamed("Pantone 330U (13%)")
     static let pantone330U_5 = UIColor.unsafelyNamed("Pantone 330U (5%)")
     static let conferenceGrey = UIColor.unsafelyNamed("Conference Grey")
+    static let largeActionButton = UIColor.unsafelyNamed("Large Action Button")
     
     private static func scaled(red: CGFloat, green: CGFloat, blue: CGFloat) -> UIColor {
         let scale: (CGFloat) -> CGFloat = { $0 / 255.0 }
