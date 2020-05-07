@@ -13,10 +13,28 @@ public protocol PrivateMessagesService {
 
 }
 
-public enum PrivateMessageError: Error {
+public enum PrivateMessageError: Error, LocalizedError {
     
     case loadingMessagesFailed
     case noMessageFound
+    
+    public var localizedDescription: String {
+        switch self {
+        case .loadingMessagesFailed:
+            return NSLocalizedString(
+                "Loading Messages Failed Error Description",
+                bundle: .eurofurenceModel,
+                comment: "Error description when unable to load private messages due to network conditions"
+            )
+            
+        case .noMessageFound:
+            return NSLocalizedString(
+                "No Message Found Error Description",
+                bundle: .eurofurenceModel,
+                comment: "Error description when unable to find a specific private message"
+            )
+        }
+    }
     
 }
 
