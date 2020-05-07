@@ -33,6 +33,10 @@ class MessageDetailViewController: UITableViewController, MessageDetailScene {
     func showMessage(viewModel: MessageDetailViewModel) {
         
     }
+    
+    func showError(viewModel: MessageDetailErrorViewModel) {
+        
+    }
 
     func addMessageComponent(with binder: MessageComponentBinder) {
         binder.bind(MessageBinder(subjectLabel: messageSubjectLabel, contentsTextView: messageContentsTextView))

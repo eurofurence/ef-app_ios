@@ -36,14 +36,18 @@ struct MessageDetailPresenter2: MessageDetailSceneDelegate {
         messagesService.fetchMessage(identifiedBy: message) { (result) in
             self.scene.hideLoadingIndicator()
             
-            if case .success(let message) = result {
+            switch result {
+            case .success(let message):
                 self.scene.setMessageDetailTitle(message.authorName)
-                self.scene.showMessage(viewModel: ViewModel(message: message))
+                self.scene.showMessage(viewModel: MessageViewModel(message: message))
+                
+            case .failure(let error):
+                self.scene.showError(viewModel: ErrorViewModel(error: error))
             }
         }
     }
     
-    private struct ViewModel: MessageDetailViewModel {
+    private struct MessageViewModel: MessageDetailViewModel {
         
         private let message: Message
         
@@ -57,6 +61,20 @@ struct MessageDetailPresenter2: MessageDetailSceneDelegate {
         
         var contents: String {
             message.contents
+        }
+        
+    }
+    
+    private struct ErrorViewModel: MessageDetailErrorViewModel {
+        
+        private let error: Error
+        
+        init(error: Error) {
+            self.error = error
+        }
+        
+        var errorDescription: String {
+            error.localizedDescription
         }
         
     }

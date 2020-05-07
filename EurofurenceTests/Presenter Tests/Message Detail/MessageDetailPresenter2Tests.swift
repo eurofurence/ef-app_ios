@@ -29,6 +29,32 @@ class SuccessfulPrivateMessagesService: PrivateMessagesService {
     
 }
 
+class FailingPrivateMessagesService: PrivateMessagesService {
+    
+    private let expected: MessageIdentifier
+    private let response: Result<Message, Error>
+    
+    init(unsuccessfulForMessage expected: MessageIdentifier, providingError returnValue: Error) {
+        self.expected = expected
+        self.response = .failure(returnValue)
+    }
+    
+    func add(_ observer: PrivateMessagesObserver) {
+        
+    }
+    
+    func refreshMessages() {
+        
+    }
+    
+    func fetchMessage(identifiedBy identifier: MessageIdentifier, completionHandler: @escaping (Result<Message, Error>) -> Void) {
+        if identifier == expected {
+            completionHandler(response)
+        }
+    }
+    
+}
+
 class MessageDetailPresenter2Tests: XCTestCase {
     
     func testLoadingMessage() {
@@ -60,7 +86,30 @@ class MessageDetailPresenter2Tests: XCTestCase {
     }
     
     func testMessageLoadFailure() {
+        struct SomeError: LocalizedError, Error {
+            
+            private let description: String
+            
+            init(description: String) {
+                self.description = description
+            }
+            
+            var errorDescription: String? {
+                description
+            }
+            
+        }
         
+        let messageIdentifier = MessageIdentifier.random
+        let sceneFactory = StubMessageDetailSceneFactory()
+        let error = SomeError(description: .random)
+        let messagesService = FailingPrivateMessagesService(unsuccessfulForMessage: messageIdentifier, providingError: error)
+        let module = MessageDetail2ModuleBuilder(messagesService: messagesService).with(sceneFactory).build()
+        _ = module.makeMessageDetailModule(for: messageIdentifier)
+        sceneFactory.scene.simulateSceneReady()
+        
+        XCTAssertEqual(.hidden, sceneFactory.scene.loadingIndicatorVisibility)
+        XCTAssertEqual(error.localizedDescription, sceneFactory.scene.errorViewModel?.errorDescription)
     }
     
     func testRetryingAfterFailure() {
