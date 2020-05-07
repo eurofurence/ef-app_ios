@@ -9,7 +9,7 @@ class CapturingPrivateMessagesService: PrivateMessagesService {
         privateMessageObservers.append(observer)
     }
     
-    func fetchMessage(identifiedBy identifier: MessageIdentifier, completionHandler: @escaping (Result<Message, Error>) -> Void) {
+    func fetchMessage(identifiedBy identifier: MessageIdentifier, completionHandler: @escaping (Result<Message, PrivateMessageError>) -> Void) {
         if let message = localMessages.first(where: { $0.identifier == identifier }) {
             completionHandler(.success(message))
         }

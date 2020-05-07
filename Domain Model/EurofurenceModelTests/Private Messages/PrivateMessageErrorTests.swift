@@ -22,7 +22,7 @@ class PrivateMessageErrorTests: XCTestCase {
         forError error: PrivateMessageError,
         _ line: UInt = #line
     ) {
-        XCTAssertEqual(expected, error.localizedDescription, line: line)
+        XCTAssertEqual(expected, error.errorDescription, line: line)
     }
 
 }

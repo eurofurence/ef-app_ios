@@ -8,7 +8,7 @@ public protocol PrivateMessagesService {
     
     func fetchMessage(
         identifiedBy identifier: MessageIdentifier,
-        completionHandler: @escaping (Result<Message, Error>) -> Void
+        completionHandler: @escaping (Result<Message, PrivateMessageError>) -> Void
     )
 
 }
@@ -18,7 +18,7 @@ public enum PrivateMessageError: Error, LocalizedError {
     case loadingMessagesFailed
     case noMessageFound
     
-    public var localizedDescription: String {
+    public var errorDescription: String {
         switch self {
         case .loadingMessagesFailed:
             return NSLocalizedString(

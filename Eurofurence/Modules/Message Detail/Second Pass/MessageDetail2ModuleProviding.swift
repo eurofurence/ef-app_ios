@@ -71,16 +71,16 @@ struct MessageDetailPresenter2: MessageDetailSceneDelegate {
     
     private struct ErrorViewModel: MessageDetailErrorViewModel {
         
-        private let error: Error
+        private let error: PrivateMessageError
         private let retryHandler: () -> Void
         
-        init(error: Error, retryHandler: @escaping () -> Void) {
+        init(error: PrivateMessageError, retryHandler: @escaping () -> Void) {
             self.error = error
             self.retryHandler = retryHandler
         }
         
         var errorDescription: String {
-            error.localizedDescription
+            error.errorDescription
         }
         
         func retry() {

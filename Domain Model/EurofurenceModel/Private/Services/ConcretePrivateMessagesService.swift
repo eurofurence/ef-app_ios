@@ -48,7 +48,7 @@ class ConcretePrivateMessagesService: PrivateMessagesService {
     
     func fetchMessage(
         identifiedBy identifier: MessageIdentifier,
-        completionHandler: @escaping (Result<Message, Error>) -> Void
+        completionHandler: @escaping (Result<Message, PrivateMessageError>) -> Void
     ) {
         if let message = findMessage(identifiedBy: identifier) {
             completionHandler(.success(message))
@@ -63,16 +63,16 @@ class ConcretePrivateMessagesService: PrivateMessagesService {
     
     private func refreshMessagesWithIntentToAcquireMessage(
         identifiedBy identifier: MessageIdentifier,
-        completionHandler: @escaping (Result<Message, Error>) -> Void
+        completionHandler: @escaping (Result<Message, PrivateMessageError>) -> Void
     ) {
         refreshMessages(completionHandler: { (result) in
             if result == nil {
-                completionHandler(.failure(PrivateMessageError.loadingMessagesFailed))
+                completionHandler(.failure(.loadingMessagesFailed))
             } else {
                 if let message = self.findMessage(identifiedBy: identifier) {
                     completionHandler(.success(message))
                 } else {
-                    completionHandler(.failure(PrivateMessageError.noMessageFound))
+                    completionHandler(.failure(.noMessageFound))
                 }
             }
         })
