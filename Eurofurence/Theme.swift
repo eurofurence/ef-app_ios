@@ -84,6 +84,7 @@ struct Theme {
     private static func styleButtons() {
         styleButtonsWithinTableViewCells()
         styleButtonsWithinNavigationBars()
+        styleLargeActionButton()
     }
 
     private static func styleButtonsWithinTableViewCells() {
@@ -98,6 +99,12 @@ struct Theme {
     private static func styleButtonsWithinNavigationBars() {
         let buttonsInsideNavigationBar = UIButton.appearance(whenContainedInInstancesOf: [UINavigationBar.self])
         buttonsInsideNavigationBar.tintColor = .white
+    }
+    
+    private static func styleLargeActionButton() {
+        let appearance = RoundedCornerButton.appearance()
+        appearance.backgroundColor = .largeActionButton
+        appearance.tintColor = .white
     }
     
     private static func styleTableViews() {

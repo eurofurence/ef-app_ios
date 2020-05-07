@@ -2,6 +2,8 @@ import UIKit
 
 @IBDesignable
 class RoundedCornerButton: UIButton {
+    
+    private static let standardCornerRadius: CGFloat = 7
 
     @IBInspectable
     var cornerRadius: CGFloat = 0 {
@@ -9,9 +11,27 @@ class RoundedCornerButton: UIButton {
             layer.cornerRadius = cornerRadius
         }
     }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setUp()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setUp()
+    }
+    
+    private func setUp() {
+        cornerRadius = Self.standardCornerRadius
+    }
 
     override var intrinsicContentSize: CGSize {
-        return CGSize(width: UIView.noIntrinsicMetric, height: 45)
+        let defaultIntrinsicContentSize = super.intrinsicContentSize
+        return CGSize(
+            width: max(120, defaultIntrinsicContentSize.width),
+            height: max(44, defaultIntrinsicContentSize.height)
+        )
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

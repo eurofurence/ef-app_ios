@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -62,12 +63,59 @@
                                 <viewLayoutGuide key="contentLayoutGuide" id="lMl-d7-QcJ"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="5Pq-QS-yp8"/>
                             </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U0D-r9-eAS">
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Au0-cq-Nyd">
+                                        <rect key="frame" x="67.666666666666686" y="320" width="240" height="94.333333333333314"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2or-Cd-ULd">
+                                                <rect key="frame" x="98.999999999999986" y="0.0" width="41.666666666666671" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xrl-cx-DOh">
+                                                <rect key="frame" x="0.0" y="28.333333333333314" width="240" height="14"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="14" id="EFo-oA-8AS"/>
+                                                </constraints>
+                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8vU-UD-XPh" customClass="RoundedCornerButton" customModule="Eurofurence" customModuleProvider="target">
+                                                <rect key="frame" x="60" y="50.333333333333314" width="120" height="44"/>
+                                                <state key="normal" title="Button"/>
+                                                <connections>
+                                                    <action selector="tryLoadingMessageAgain:" destination="8l9-eO-7S5" eventType="touchUpInside" id="vrZ-qH-Ueu"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="420" id="4It-je-Sxv"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="180" id="sxU-dK-0p2"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Au0-cq-Nyd" secondAttribute="trailing" constant="20" symbolic="YES" id="ZxE-bE-d7h"/>
+                                    <constraint firstItem="Au0-cq-Nyd" firstAttribute="centerX" secondItem="U0D-r9-eAS" secondAttribute="centerX" id="bwU-t6-mS0"/>
+                                    <constraint firstItem="Au0-cq-Nyd" firstAttribute="centerY" secondItem="U0D-r9-eAS" secondAttribute="centerY" id="dUv-Du-76t"/>
+                                    <constraint firstItem="Au0-cq-Nyd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="U0D-r9-eAS" secondAttribute="leading" constant="20" symbolic="YES" id="dxz-hc-Lnl"/>
+                                    <constraint firstItem="Au0-cq-Nyd" firstAttribute="top" relation="greaterThanOrEqual" secondItem="U0D-r9-eAS" secondAttribute="top" constant="20" symbolic="YES" id="odh-Aj-Vac"/>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Au0-cq-Nyd" secondAttribute="bottom" constant="20" symbolic="YES" id="yiU-y3-lHP"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="3ao-KN-LNg" firstAttribute="leading" secondItem="HUv-hh-pfl" secondAttribute="leading" id="2M0-s4-uuW"/>
+                            <constraint firstItem="HUv-hh-pfl" firstAttribute="bottom" secondItem="U0D-r9-eAS" secondAttribute="bottom" id="9sM-bW-l8i"/>
                             <constraint firstItem="22H-ey-Bn6" firstAttribute="centerX" secondItem="91y-KT-ccX" secondAttribute="centerX" id="OdC-6i-mfJ"/>
+                            <constraint firstItem="U0D-r9-eAS" firstAttribute="top" secondItem="HUv-hh-pfl" secondAttribute="top" id="Oh7-KB-7cg"/>
+                            <constraint firstItem="U0D-r9-eAS" firstAttribute="leading" secondItem="HUv-hh-pfl" secondAttribute="leading" id="ahJ-ob-jGa"/>
                             <constraint firstItem="3ao-KN-LNg" firstAttribute="top" secondItem="HUv-hh-pfl" secondAttribute="top" id="dvs-5C-Tfs"/>
+                            <constraint firstItem="HUv-hh-pfl" firstAttribute="trailing" secondItem="U0D-r9-eAS" secondAttribute="trailing" id="fXA-wb-eoo"/>
                             <constraint firstItem="3ao-KN-LNg" firstAttribute="trailing" secondItem="HUv-hh-pfl" secondAttribute="trailing" id="lRh-nm-coQ"/>
                             <constraint firstItem="22H-ey-Bn6" firstAttribute="centerY" secondItem="91y-KT-ccX" secondAttribute="centerY" id="pS2-D8-UWw"/>
                             <constraint firstItem="HUv-hh-pfl" firstAttribute="bottom" secondItem="3ao-KN-LNg" secondAttribute="bottom" id="ubs-X2-B9V"/>
@@ -76,9 +124,12 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicatorView" destination="22H-ey-Bn6" id="mV9-dF-u0x"/>
+                        <outlet property="errorContainerView" destination="U0D-r9-eAS" id="xL4-cD-6yy"/>
+                        <outlet property="errorDescriptionLabel" destination="2or-Cd-ULd" id="tnS-1Q-Ipm"/>
                         <outlet property="messageContentsTextView" destination="DF7-Xx-9ya" id="mMf-du-ekJ"/>
                         <outlet property="messageDetailScrollView" destination="3ao-KN-LNg" id="O38-af-BRg"/>
                         <outlet property="messageSubjectLabel" destination="yWm-9F-LGv" id="gFX-bv-P6y"/>
+                        <outlet property="tryAgainButton" destination="8vU-UD-XPh" id="OnS-H3-pKo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eFe-z2-PRl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
