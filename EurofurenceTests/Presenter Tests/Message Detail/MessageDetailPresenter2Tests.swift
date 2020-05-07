@@ -112,7 +112,7 @@ class MessageDetailPresenter2Tests: XCTestCase {
         XCTAssertEqual(message.contents, sceneFactory.scene.viewModel?.contents)
     }
     
-    func testMessageLoadFailure() {
+    func testMessageLoadFailure() throws {
         let messageIdentifier = MessageIdentifier.random
         let sceneFactory = StubMessageDetailSceneFactory()
         let error = PrivateMessageError.noMessageFound
@@ -121,8 +121,10 @@ class MessageDetailPresenter2Tests: XCTestCase {
         _ = module.makeMessageDetailModule(for: messageIdentifier)
         sceneFactory.scene.simulateSceneReady()
         
+        let boundErrorDescription = try XCTUnwrap(sceneFactory.scene.errorViewModel?.errorDescription)
+        
         XCTAssertEqual(.hidden, sceneFactory.scene.loadingIndicatorVisibility)
-        XCTAssertEqual(error.localizedDescription, sceneFactory.scene.errorViewModel?.errorDescription)
+        XCTAssertTrue(error.errorDescription == boundErrorDescription)
     }
     
     func testRetryingAfterFailure() {
