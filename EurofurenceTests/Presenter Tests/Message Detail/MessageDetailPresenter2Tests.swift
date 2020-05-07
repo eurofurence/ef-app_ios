@@ -104,8 +104,12 @@ class MessageDetailPresenter2Tests: XCTestCase {
         let messagesService = SuccessfulPrivateMessagesService(successfulForMessage: messageIdentifier, providingMessage: message)
         let module = MessageDetail2ModuleBuilder(messagesService: messagesService).with(sceneFactory).build()
         _ = module.makeMessageDetailModule(for: messageIdentifier)
+        
+        XCTAssertFalse(message.markedRead)
+        
         sceneFactory.scene.simulateSceneReady()
         
+        XCTAssertTrue(message.markedRead)
         XCTAssertEqual(.hidden, sceneFactory.scene.loadingIndicatorVisibility)
         XCTAssertEqual(message.authorName, sceneFactory.scene.capturedMessageDetailTitle)
         XCTAssertEqual(message.subject, sceneFactory.scene.viewModel?.subject)

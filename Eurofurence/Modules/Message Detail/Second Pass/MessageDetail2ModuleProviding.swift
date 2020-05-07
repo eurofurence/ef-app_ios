@@ -42,6 +42,7 @@ struct MessageDetailPresenter2: MessageDetailSceneDelegate {
             
             switch result {
             case .success(let message):
+                message.markAsRead()
                 self.scene.setMessageDetailTitle(message.authorName)
                 self.scene.showMessage(viewModel: MessageViewModel(message: message))
                 
