@@ -50,21 +50,32 @@ class ConcretePrivateMessagesService: PrivateMessagesService {
         identifiedBy identifier: MessageIdentifier,
         completionHandler: @escaping (Result<Message, Error>) -> Void
     ) {
-        if let message = localMessages.first(where: { $0.identifier == identifier }) {
+        if let message = findMessage(identifiedBy: identifier) {
             completionHandler(.success(message))
         } else {
-            refreshMessages(completionHandler: { (result) in
-                if let message = self.localMessages.first(where: { $0.identifier == identifier }) {
+            refreshMessagesWithIntentToAcquireMessage(identifiedBy: identifier, completionHandler: completionHandler)
+        }
+    }
+    
+    private func findMessage(identifiedBy identifier: MessageIdentifier) -> Message? {
+        localMessages.first(where: { $0.identifier == identifier })
+    }
+    
+    private func refreshMessagesWithIntentToAcquireMessage(
+        identifiedBy identifier: MessageIdentifier,
+        completionHandler: @escaping (Result<Message, Error>) -> Void
+    ) {
+        refreshMessages(completionHandler: { (result) in
+            if result == nil {
+                completionHandler(.failure(PrivateMessageError.loadingMessagesFailed))
+            } else {
+                if let message = self.findMessage(identifiedBy: identifier) {
                     completionHandler(.success(message))
                 } else {
                     completionHandler(.failure(PrivateMessageError.noMessageFound))
                 }
-                
-                if result == nil {
-                    completionHandler(.failure(PrivateMessageError.loadingMessagesFailed))
-                }
-            })
-        }
+            }
+        })
     }
 
     func refreshMessages(completionHandler: (([MessageCharacteristics]?) -> Void)? = nil) {
