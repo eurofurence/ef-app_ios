@@ -715,7 +715,6 @@
 		CA6AA01E1FD88F6B0092C6DB /* Messages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA6AA01D1FD88F6B0092C6DB /* Messages.storyboard */; };
 		CA6D7CC222368DA400AB816C /* VisibilityState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6D7CC122368DA300AB816C /* VisibilityState.swift */; };
 		CA6D7CC422368EC500AB816C /* WhenBindingUnreadMessage_MessagesPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6D7CC322368EC500AB816C /* WhenBindingUnreadMessage_MessagesPresenterShould.swift */; };
-		CA6D7CC622368F4F00AB816C /* WhenBindingReadMessage_MessagesPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6D7CC522368F4F00AB816C /* WhenBindingReadMessage_MessagesPresenterShould.swift */; };
 		CA6EC4712051656C00402894 /* KnowledgeDetailModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EC4702051656C00402894 /* KnowledgeDetailModuleProviding.swift */; };
 		CA6EC4732051662B00402894 /* KnowledgeDetailModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EC4722051662B00402894 /* KnowledgeDetailModule.swift */; };
 		CA6EC4752051664D00402894 /* KnowledgeDetailModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EC4742051664D00402894 /* KnowledgeDetailModuleBuilder.swift */; };
@@ -1923,7 +1922,6 @@
 		CA6AA01D1FD88F6B0092C6DB /* Messages.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Messages.storyboard; sourceTree = "<group>"; };
 		CA6D7CC122368DA300AB816C /* VisibilityState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisibilityState.swift; sourceTree = "<group>"; };
 		CA6D7CC322368EC500AB816C /* WhenBindingUnreadMessage_MessagesPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingUnreadMessage_MessagesPresenterShould.swift; sourceTree = "<group>"; };
-		CA6D7CC522368F4F00AB816C /* WhenBindingReadMessage_MessagesPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingReadMessage_MessagesPresenterShould.swift; sourceTree = "<group>"; };
 		CA6EC4702051656C00402894 /* KnowledgeDetailModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailModuleProviding.swift; sourceTree = "<group>"; };
 		CA6EC4722051662B00402894 /* KnowledgeDetailModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailModule.swift; sourceTree = "<group>"; };
 		CA6EC4742051664D00402894 /* KnowledgeDetailModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailModuleBuilder.swift; sourceTree = "<group>"; };
@@ -6248,7 +6246,6 @@
 				CA240F3E21E3A4DE002DB747 /* BeforeMessagesViewAppears_MessagesPresenterShould.swift */,
 				CAD234301F5D7156004BB959 /* MessagesPresenterTestContext.swift */,
 				CA4FBE0D1F72FF2A00D29405 /* WhenBindingMessage_MessagesPresenterShould.swift */,
-				CA6D7CC522368F4F00AB816C /* WhenBindingReadMessage_MessagesPresenterShould.swift */,
 				CA6D7CC322368EC500AB816C /* WhenBindingUnreadMessage_MessagesPresenterShould.swift */,
 				CA1ECB441FE3A2880076083A /* WhenInitialMessageLoadCompletesWithMessages.swift */,
 				CA1ECB3E1FE333090076083A /* WhenInitialMessageLoadFails.swift */,
@@ -7623,7 +7620,6 @@
 				CA152EDB22651CE800212742 /* WhenEventFeedbackSubmitsUnsuccessfully_EventFeedbackPresenterShould.swift in Sources */,
 				CA72844D209D0358007D912A /* WhenBuildingAnnouncementDetailPresenter.swift in Sources */,
 				78455B4D1F1177CF005BE2D7 /* StubFirstTimeLaunchStateProvider.swift in Sources */,
-				CA6D7CC622368F4F00AB816C /* WhenBindingReadMessage_MessagesPresenterShould.swift in Sources */,
 				CA63755A208CBC2C00536BE2 /* StubKnowledgeDetailModuleProviding.swift in Sources */,
 				CA52C69120D6AB53009D3A9E /* CapturingScheduleModuleDelegate.swift in Sources */,
 				CA6A8DCE20E41735007536CD /* WhenBuildingMapDetailModule.swift in Sources */,

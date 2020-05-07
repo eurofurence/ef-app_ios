@@ -1,7 +1,7 @@
 import Foundation
 import UIKit.UIViewController
 
-protocol MessagesSceneDelegate {
+public protocol MessagesSceneDelegate {
 
     func messagesSceneWillAppear()
     func messagesSceneDidSelectMessage(at indexPath: IndexPath)
@@ -35,13 +35,13 @@ protocol MessagesScene: class {
 
 }
 
-protocol MessageItemBinder {
+public protocol MessageItemBinder {
 
     func bind(_ scene: MessageItemScene, toMessageAt indexPath: IndexPath)
 
 }
 
-protocol MessageItemScene {
+public protocol MessageItemScene {
 
     func setAuthor(_ author: String)
     func setSubject(_ subject: String)
