@@ -27,6 +27,14 @@ class MessagesViewController: UIViewController,
         navigationItem.rightBarButtonItem = logoutBarButtonItem
         delegate?.messagesSceneReady()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let selectedIndexPath = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: selectedIndexPath, animated: true)
+        }
+    }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.messagesSceneDidSelectMessage(at: indexPath)
