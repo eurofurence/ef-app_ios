@@ -27,8 +27,8 @@ class MessageDetailViewController: UIViewController, MessageDetailScene {
         
         tryAgainButton.setTitle(.tryAgain, for: .normal)
         
-        messageDetailScrollView.isHidden = true
-        errorContainerView.isHidden = true
+        hideDetail()
+        hideError()
         delegate?.messageDetailSceneDidLoad()
     }
 
@@ -38,6 +38,11 @@ class MessageDetailViewController: UIViewController, MessageDetailScene {
     
     func showLoadingIndicator() {
         activityIndicatorView.startAnimating()
+        
+        animate {
+            self.hideDetail()
+            self.hideError()
+        }
     }
     
     func hideLoadingIndicator() {
@@ -45,25 +50,56 @@ class MessageDetailViewController: UIViewController, MessageDetailScene {
     }
 
     func setMessageDetailTitle(_ title: String) {
-        super.title = title
+        self.title = title
     }
     
     func showMessage(viewModel: MessageDetailViewModel) {
-        errorContainerView.isHidden = true
-        messageDetailScrollView.isHidden = false
-        messageSubjectLabel.text = viewModel.subject
-        messageContentsTextView.text = viewModel.contents
+        animate {
+            self.hideError()
+            self.showDetail()
+            self.messageSubjectLabel.text = viewModel.subject
+            self.messageContentsTextView.text = viewModel.contents
+        }
     }
     
     func showError(viewModel: MessageDetailErrorViewModel) {
         errorViewModel = viewModel
-        errorContainerView.isHidden = false
-        messageDetailScrollView.isHidden = true
-        errorDescriptionLabel.text = viewModel.errorDescription
+        
+        animate {
+            self.showError()
+            self.hideDetail()
+            self.errorDescriptionLabel.text = viewModel.errorDescription
+        }
     }
 
     func addMessageComponent(with binder: MessageComponentBinder) {
         
+    }
+    
+    // MARK: Updating view state
+    
+    private func hideDetail() {
+        messageDetailScrollView.alpha = 0
+    }
+    
+    private func showDetail() {
+        messageDetailScrollView.alpha = 1
+    }
+    
+    private func hideError() {
+        errorContainerView.alpha = 0
+    }
+    
+    private func showError() {
+        errorContainerView.alpha = 1
+    }
+    
+    private func animate(_ changes: @escaping () -> Void) {
+        if UIView.areAnimationsEnabled {
+            UIView.animate(withDuration: 0.2, animations: changes)
+        } else {
+            changes()
+        }
     }
 
 }
