@@ -19,44 +19,16 @@ class WhenRefreshingMessages: XCTestCase {
         XCTAssertEqual(2, context.privateMessagesService.refreshMessagesCount)
     }
 
-    func testTheSceneIsToldToHideTheRefreshIndicatorWhenRefreshFinishes() {
+    func testLoadingNoMessagesEntersNoMessagesPlaceholderState() {
         context.privateMessagesService.succeedLastRefresh()
         XCTAssertEqual(.hidden, context.scene.refreshIndicatorVisibility)
+        XCTAssertEqual(.visible, context.scene.noMessagesPlaceholderVisibility)
     }
 
-    func testWhenRefreshActionCompletesWithNoMessagesTheSceneIsToldToHideTheMessagesList() {
-        context.privateMessagesService.succeedLastRefresh()
-        XCTAssertEqual(.hidden, context.scene.messagesListVisibility)
-    }
-
-    func testWhenRefreshActionCompletesWithNoMessagesTheSceneIsNotToldToShowTheMessagesList() {
-        context.privateMessagesService.succeedLastRefresh()
-        XCTAssertEqual(.hidden, context.scene.messagesListVisibility)
-    }
-
-    func testWhenRefreshActionCompletesWithMessagesTheSceneIsToldToShowTheMessagesList() {
+    func testLoadingMessagesEntersViewingMessagesState() {
         context.privateMessagesService.succeedLastRefresh(messages: [StubMessage.random])
         XCTAssertEqual(.visible, context.scene.messagesListVisibility)
-    }
-
-    func testWhenRefreshActionCompletesWithNoMessagesTheSceneIsToldShowTheNoMessagesPlaceholder() {
-        context.privateMessagesService.succeedLastRefresh()
-        XCTAssertEqual(.visible, context.scene.noMessagesPlaceholderVisibility)
-    }
-
-    func testWhenRefreshActionCompletesWithMessagesTheSceneIsNotToldShowTheNoMessagesPlaceholder() {
-        context.privateMessagesService.succeedLastRefresh(messages: [StubMessage.random])
         XCTAssertEqual(.hidden, context.scene.noMessagesPlaceholderVisibility)
-    }
-
-    func testWhenRefreshActionCompletesWithMessageTheSceneIsToldHideTheNoMessagesPlaceholder() {
-        context.privateMessagesService.succeedLastRefresh(messages: [StubMessage.random])
-        XCTAssertEqual(.hidden, context.scene.noMessagesPlaceholderVisibility)
-    }
-
-    func testWhenRefreshActionCompletesWithNoMessagesTheSceneIsNotToldHideTheNoMessagesPlaceholder() {
-        context.privateMessagesService.succeedLastRefresh()
-        XCTAssertEqual(.visible, context.scene.noMessagesPlaceholderVisibility)
     }
 
     func testWhenRefreshActionCompletesWithMessagesTheSceneIsToldToBindWithTheNumberOfMessages() {
