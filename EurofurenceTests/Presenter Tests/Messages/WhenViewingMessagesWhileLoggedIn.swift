@@ -13,10 +13,6 @@ class WhenViewingMessagesAndLoggedIn: XCTestCase {
         context.scene.delegate?.messagesSceneWillAppear()
     }
 
-    func testTheDelegateIsNotToldToResolveUserAuthentication() {
-        XCTAssertFalse(context.delegate.wasToldToResolveUser)
-    }
-
     func testTheSceneIsToldToShowRefreshIndicator() {
         XCTAssertTrue(context.scene.wasToldToShowRefreshIndicator)
     }
