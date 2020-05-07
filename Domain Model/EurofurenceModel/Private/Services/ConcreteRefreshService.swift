@@ -86,7 +86,7 @@ class ConcreteRefreshService: RefreshService {
             self.imageDownloader.downloadImages(requests: imageDownloadRequests, parentProgress: progress) {
                 self.updateLocalStore(response: response, lastSyncTime: lastSyncTime)
                 
-                self.privateMessagesController.refreshMessages {
+                self.privateMessagesController.refreshMessages { (_) in
                     self.refreshCollaboration.executeCollaborativeRefreshTask(completionHandler: { (error) in
                         if error != nil {
                             completionHandler(.collaborationError)

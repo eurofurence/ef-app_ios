@@ -13,6 +13,13 @@ public protocol PrivateMessagesService {
 
 }
 
+public enum PrivateMessageError: Error {
+    
+    case loadingMessagesFailed
+    case noMessageFound
+    
+}
+
 public protocol PrivateMessagesObserver {
 
     func privateMessagesServiceDidFinishRefreshingMessages(messages: [Message])
