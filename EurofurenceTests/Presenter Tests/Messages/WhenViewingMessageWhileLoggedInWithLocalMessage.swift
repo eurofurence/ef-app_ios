@@ -17,19 +17,10 @@ class WhenViewingMessageWhileLoggedInWithLocalMessage: XCTestCase {
         context.privateMessagesService.succeedLastRefresh(messages: [localMessage])
     }
 
-    func testTheMessagesListAppears() {
+    func testEntersViewingMessagesState() {
         XCTAssertTrue(context.scene.didShowMessages)
-    }
-
-    func testTheMessagesListIsNotHidden() {
         XCTAssertFalse(context.scene.didHideMessages)
-    }
-
-    func testTheNoMessagesPlaceholderIsHidden() {
         XCTAssertTrue(context.scene.didHideNoMessagesPlaceholder)
-    }
-
-    func testTheNoMessagesPlaceholderDoesNotAppear() {
         XCTAssertFalse(context.scene.didShowNoMessagesPlaceholder)
     }
 
