@@ -3,7 +3,7 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import XCTest
 
-class MessageDetailPresenter2Tests: XCTestCase {
+class MessageDetailPresenterTests: XCTestCase {
     
     func testLoadingMessage() {
         let sceneFactory = StubMessageDetailSceneFactory()
