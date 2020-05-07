@@ -70,9 +70,14 @@ struct RouterConfigurator {
     }
     
     private func configureMessageRoute() {
-        router.add(MessageContentRoute(
+        let messageContentRoute = MessageContentRoute(
             messageModuleFactory: moduleRepository.messageDetailModuleProviding,
             contentWireframe: contentWireframe
+        )
+        
+        router.add(AuthenticatedRoute(
+            route: messageContentRoute,
+            routeAuthenticationHandler: routeAuthenticationHandler
         ))
     }
     
