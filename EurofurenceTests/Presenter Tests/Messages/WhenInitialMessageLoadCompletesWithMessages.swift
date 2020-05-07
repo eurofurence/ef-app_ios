@@ -6,12 +6,14 @@ import XCTest
 class WhenInitialMessageLoadCompletesWithMessages: XCTestCase {
 
     func testEntersViewingMessagesState() {
-        super.setUp()
-
         let message = StubMessage.random
         let context = MessagesPresenterTestContext.makeTestCaseForAuthenticatedUser()
         context.scene.delegate?.messagesSceneWillAppear()
-        context.scene.reset()
+        
+        XCTAssertTrue(context.scene.wasToldToShowRefreshIndicator)
+        XCTAssertFalse(context.scene.wasToldToHideRefreshIndicator)
+        XCTAssertTrue(context.privateMessagesService.wasToldToRefreshMessages)
+        
         context.privateMessagesService.succeedLastRefresh(messages: [message])
         
         XCTAssertTrue(context.scene.wasToldToHideRefreshIndicator)
