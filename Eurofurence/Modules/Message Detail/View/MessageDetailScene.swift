@@ -8,9 +8,6 @@ public protocol MessageDetailScene: class {
     func showMessage(viewModel: MessageDetailViewModel)
     func showError(viewModel: MessageDetailErrorViewModel)
 
-    // OLD
-    func addMessageComponent(with binder: MessageComponentBinder)
-
 }
 
 public protocol MessageDetailViewModel {

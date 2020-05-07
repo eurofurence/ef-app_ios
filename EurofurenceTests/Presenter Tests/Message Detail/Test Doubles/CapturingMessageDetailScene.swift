@@ -29,13 +29,6 @@ class CapturingMessageDetailScene: UIViewController, MessageDetailScene {
     func setMessageDetailTitle(_ title: String) {
         capturedMessageDetailTitle = title
     }
-
-    private(set) var numberOfMessageComponentsAdded = 0
-    private(set) var capturedMessageBinder: MessageComponentBinder?
-    func addMessageComponent(with binder: MessageComponentBinder) {
-        numberOfMessageComponentsAdded += 1
-        capturedMessageBinder = binder
-    }
     
     func simulateSceneReady() {
         delegate?.messageDetailSceneDidLoad()

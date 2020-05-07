@@ -71,10 +71,6 @@ class MessageDetailViewController: UIViewController, MessageDetailScene {
             self.errorDescriptionLabel.text = viewModel.errorDescription
         }
     }
-
-    func addMessageComponent(with binder: MessageComponentBinder) {
-        
-    }
     
     // MARK: Updating view state
     
