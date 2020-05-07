@@ -25,10 +25,6 @@ class MessagesViewController: UIViewController,
         tableView.delegate = self
         tableView.addSubview(refreshIndicator)
         navigationItem.rightBarButtonItem = logoutBarButtonItem
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         delegate?.messagesSceneReady()
     }
 
