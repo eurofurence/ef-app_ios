@@ -9,7 +9,6 @@ public protocol MessagesModuleProviding {
 
 public protocol MessagesModuleDelegate {
 
-    func messagesModuleDidRequestResolutionForUser(completionHandler: @escaping (Bool) -> Void)
     func messagesModuleDidRequestPresentation(for message: MessageIdentifier)
     func messagesModuleDidRequestDismissal()
     func showLogoutAlert(presentedHandler: @escaping (@escaping () -> Void) -> Void)
