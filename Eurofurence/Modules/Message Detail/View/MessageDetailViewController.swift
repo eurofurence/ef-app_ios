@@ -13,8 +13,6 @@ class MessageDetailViewController: UIViewController, MessageDetailScene {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        messageContentsTextView.contentInset = .zero
         delegate?.messageDetailSceneDidLoad()
     }
 
