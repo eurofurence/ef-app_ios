@@ -24,6 +24,8 @@ public protocol MessageDetailErrorViewModel {
     
     var errorDescription: String { get }
     
+    func retry()
+    
 }
 
 public protocol MessageDetailSceneDelegate {

@@ -55,6 +55,33 @@ class FailingPrivateMessagesService: PrivateMessagesService {
     
 }
 
+class ControllablePrivateMessagesService: PrivateMessagesService {
+    
+    func add(_ observer: PrivateMessagesObserver) {
+        
+    }
+    
+    func refreshMessages() {
+        
+    }
+    
+    private var currentCompletionHandler: ((Result<Message, Error>) -> Void)?
+    func fetchMessage(identifiedBy identifier: MessageIdentifier, completionHandler: @escaping (Result<Message, Error>) -> Void) {
+        currentCompletionHandler = completionHandler
+    }
+    
+    func succeedNow(message: Message) {
+        currentCompletionHandler?(.success(message))
+        currentCompletionHandler = nil
+    }
+    
+    func failNow(error: Error) {
+        currentCompletionHandler?(.failure(error))
+        currentCompletionHandler = nil
+    }
+    
+}
+
 class MessageDetailPresenter2Tests: XCTestCase {
     
     func testLoadingMessage() {
@@ -85,21 +112,21 @@ class MessageDetailPresenter2Tests: XCTestCase {
         XCTAssertEqual(message.contents, sceneFactory.scene.viewModel?.contents)
     }
     
-    func testMessageLoadFailure() {
-        struct SomeError: LocalizedError, Error {
-            
-            private let description: String
-            
-            init(description: String) {
-                self.description = description
-            }
-            
-            var errorDescription: String? {
-                description
-            }
-            
+    struct SomeError: LocalizedError, Error {
+        
+        private let description: String
+        
+        init(description: String) {
+            self.description = description
         }
         
+        var errorDescription: String? {
+            description
+        }
+        
+    }
+    
+    func testMessageLoadFailure() {
         let messageIdentifier = MessageIdentifier.random
         let sceneFactory = StubMessageDetailSceneFactory()
         let error = SomeError(description: .random)
@@ -113,7 +140,25 @@ class MessageDetailPresenter2Tests: XCTestCase {
     }
     
     func testRetryingAfterFailure() {
+        let messageIdentifier = MessageIdentifier.random
+        let sceneFactory = StubMessageDetailSceneFactory()
+        let error = SomeError(description: .random)
+        let messagesService = ControllablePrivateMessagesService()
+        let module = MessageDetail2ModuleBuilder(messagesService: messagesService).with(sceneFactory).build()
+        _ = module.makeMessageDetailModule(for: messageIdentifier)
+        sceneFactory.scene.simulateSceneReady()
+        messagesService.failNow(error: SomeError(description: ""))
+        sceneFactory.scene.errorViewModel?.retry()
         
+        XCTAssertEqual(.visible, sceneFactory.scene.loadingIndicatorVisibility)
+        
+        let message = StubMessage.random
+        messagesService.succeedNow(message: message)
+        
+        XCTAssertEqual(.hidden, sceneFactory.scene.loadingIndicatorVisibility)
+        XCTAssertEqual(message.authorName, sceneFactory.scene.capturedMessageDetailTitle)
+        XCTAssertEqual(message.subject, sceneFactory.scene.viewModel?.subject)
+        XCTAssertEqual(message.contents, sceneFactory.scene.viewModel?.contents)
     }
 
 }

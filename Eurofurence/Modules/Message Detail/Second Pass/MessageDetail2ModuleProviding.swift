@@ -31,6 +31,10 @@ struct MessageDetailPresenter2: MessageDetailSceneDelegate {
     }
     
     func messageDetailSceneDidLoad() {
+        loadMessageForPresentation()
+    }
+    
+    private func loadMessageForPresentation() {
         scene.showLoadingIndicator()
         
         messagesService.fetchMessage(identifiedBy: message) { (result) in
@@ -42,7 +46,7 @@ struct MessageDetailPresenter2: MessageDetailSceneDelegate {
                 self.scene.showMessage(viewModel: MessageViewModel(message: message))
                 
             case .failure(let error):
-                self.scene.showError(viewModel: ErrorViewModel(error: error))
+                self.scene.showError(viewModel: ErrorViewModel(error: error, retryHandler: self.loadMessageForPresentation))
             }
         }
     }
@@ -68,13 +72,19 @@ struct MessageDetailPresenter2: MessageDetailSceneDelegate {
     private struct ErrorViewModel: MessageDetailErrorViewModel {
         
         private let error: Error
+        private let retryHandler: () -> Void
         
-        init(error: Error) {
+        init(error: Error, retryHandler: @escaping () -> Void) {
             self.error = error
+            self.retryHandler = retryHandler
         }
         
         var errorDescription: String {
             error.localizedDescription
+        }
+        
+        func retry() {
+            retryHandler()
         }
         
     }
