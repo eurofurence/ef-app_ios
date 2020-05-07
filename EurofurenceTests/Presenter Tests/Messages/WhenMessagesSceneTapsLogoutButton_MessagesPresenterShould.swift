@@ -6,7 +6,7 @@ class WhenMessagesSceneTapsLogoutButton_MessagesPresenterShould: XCTestCase {
 
     func testTellTheDelegateToShowTheLoggingOutAlert() {
         let context = MessagesPresenterTestContext.makeTestCaseForAuthenticatedUser()
-        context.scene.delegate?.messagesSceneWillAppear()
+        context.scene.delegate?.messagesSceneReady()
         context.scene.delegate?.messagesSceneDidTapLogoutButton()
 
         XCTAssertTrue(context.delegate.wasToldToShowLoggingOutAlert)
@@ -14,7 +14,7 @@ class WhenMessagesSceneTapsLogoutButton_MessagesPresenterShould: XCTestCase {
 
     func testTellTheAuthenticationServiceToLogoutWhenTheLoginAlertIsPresented() {
         let context = MessagesPresenterTestContext.makeTestCaseForAuthenticatedUser()
-        context.scene.delegate?.messagesSceneWillAppear()
+        context.scene.delegate?.messagesSceneReady()
         context.scene.delegate?.messagesSceneDidTapLogoutButton()
         context.delegate.capturedAlertPresentedBlock?({})
 
@@ -23,7 +23,7 @@ class WhenMessagesSceneTapsLogoutButton_MessagesPresenterShould: XCTestCase {
 
     func testInvokeTheAlertDismissalBlockWhenAuthenticationServiceFinishes() {
         let context = MessagesPresenterTestContext.makeTestCaseForAuthenticatedUser()
-        context.scene.delegate?.messagesSceneWillAppear()
+        context.scene.delegate?.messagesSceneReady()
         context.scene.delegate?.messagesSceneDidTapLogoutButton()
         var didInvokeDismissalHandlerForPresentedLogoutAlert = false
         context.delegate.capturedAlertPresentedBlock?({ didInvokeDismissalHandlerForPresentedLogoutAlert = true })
@@ -34,7 +34,7 @@ class WhenMessagesSceneTapsLogoutButton_MessagesPresenterShould: XCTestCase {
 
     func testTellTheDelegateToDismissTheMessagesModuleWhenLogoutSucceeds() {
         let context = MessagesPresenterTestContext.makeTestCaseForAuthenticatedUser()
-        context.scene.delegate?.messagesSceneWillAppear()
+        context.scene.delegate?.messagesSceneReady()
         context.scene.delegate?.messagesSceneDidTapLogoutButton()
         context.delegate.capturedAlertPresentedBlock?({})
         context.authenticationService.capturedLogoutHandler?(.success)
@@ -44,7 +44,7 @@ class WhenMessagesSceneTapsLogoutButton_MessagesPresenterShould: XCTestCase {
 
     func testTellTheDelegateToShowTheLogoutFailedAlertWhenLogoutSucceeds() {
         let context = MessagesPresenterTestContext.makeTestCaseForAuthenticatedUser()
-        context.scene.delegate?.messagesSceneWillAppear()
+        context.scene.delegate?.messagesSceneReady()
         context.scene.delegate?.messagesSceneDidTapLogoutButton()
         context.delegate.capturedAlertPresentedBlock?({})
         context.authenticationService.capturedLogoutHandler?(.failure)

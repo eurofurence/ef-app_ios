@@ -31,7 +31,7 @@ class MessagesPresenter: MessagesSceneDelegate, PrivateMessagesObserver {
 
     // MARK: MessagesSceneDelegate
 
-    func messagesSceneWillAppear() {
+    func messagesSceneReady() {
         privateMessagesService.add(self)
         reloadPrivateMessages()
     }

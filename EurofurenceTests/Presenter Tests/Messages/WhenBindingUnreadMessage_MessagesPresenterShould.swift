@@ -24,7 +24,7 @@ class WhenBindingUnreadMessage_MessagesPresenterShould: XCTestCase {
         
         let service = CapturingPrivateMessagesService(localMessages: allMessages)
         let context = MessagesPresenterTestContext.makeTestCaseForAuthenticatedUser(privateMessagesService: service)
-        context.scene.delegate?.messagesSceneWillAppear()
+        context.scene.delegate?.messagesSceneReady()
         context.privateMessagesService.succeedLastRefresh(messages: allMessages)
         let capturingMessageScene = CapturingMessageItemScene()
         context.scene.capturedMessageItemBinder?.bind(capturingMessageScene, toMessageAt: randomIndexPath)

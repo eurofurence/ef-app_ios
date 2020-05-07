@@ -11,7 +11,7 @@ class WhenRefreshingMessages: XCTestCase {
         super.setUp()
 
         context = MessagesPresenterTestContext.makeTestCaseForAuthenticatedUser()
-        context.scene.delegate?.messagesSceneWillAppear()
+        context.scene.delegate?.messagesSceneReady()
         context.scene.delegate?.messagesSceneDidPerformRefreshAction()
     }
 

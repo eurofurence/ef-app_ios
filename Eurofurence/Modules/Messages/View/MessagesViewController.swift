@@ -29,7 +29,7 @@ class MessagesViewController: UIViewController,
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        delegate?.messagesSceneWillAppear()
+        delegate?.messagesSceneReady()
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

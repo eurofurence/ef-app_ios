@@ -94,25 +94,3 @@ class CapturingMessageItemScene: MessageItemScene {
     }
 
 }
-
-class CapturingMessagesSceneDelegate: MessagesSceneDelegate {
-    func messagesSceneDidTapLogoutButton() {
-
-    }
-
-    private(set) var toldMessagesSceneWillAppear = false
-    func messagesSceneWillAppear() {
-        toldMessagesSceneWillAppear = true
-    }
-
-    private(set) var capturedSelectedMessageIndexPath: IndexPath?
-    func messagesSceneDidSelectMessage(at indexPath: IndexPath) {
-        capturedSelectedMessageIndexPath = indexPath
-    }
-
-    private(set) var didPerformRefreshAction = false
-    func messagesSceneDidPerformRefreshAction() {
-        didPerformRefreshAction = true
-    }
-
-}

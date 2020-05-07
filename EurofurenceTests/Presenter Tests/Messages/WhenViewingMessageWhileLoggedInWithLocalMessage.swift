@@ -13,7 +13,7 @@ class WhenViewingMessageWhileLoggedInWithLocalMessage: XCTestCase {
 
         localMessage = .random
         context = MessagesPresenterTestContext.makeTestCaseForUserWithMessages([localMessage])
-        context.scene.delegate?.messagesSceneWillAppear()
+        context.scene.delegate?.messagesSceneReady()
         context.privateMessagesService.succeedLastRefresh(messages: [localMessage])
     }
 

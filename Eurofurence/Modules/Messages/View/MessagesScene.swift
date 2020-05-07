@@ -3,7 +3,7 @@ import UIKit.UIViewController
 
 public protocol MessagesSceneDelegate {
 
-    func messagesSceneWillAppear()
+    func messagesSceneReady()
     func messagesSceneDidSelectMessage(at indexPath: IndexPath)
     func messagesSceneDidPerformRefreshAction()
     func messagesSceneDidTapLogoutButton()

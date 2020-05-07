@@ -8,7 +8,7 @@ class WhenInitialMessageLoadCompletesWithMessages: XCTestCase {
     func testEntersViewingMessagesState() {
         let message = StubMessage.random
         let context = MessagesPresenterTestContext.makeTestCaseForAuthenticatedUser()
-        context.scene.delegate?.messagesSceneWillAppear()
+        context.scene.delegate?.messagesSceneReady()
         
         XCTAssertEqual(.visible, context.scene.refreshIndicatorVisibility)
         XCTAssertTrue(context.privateMessagesService.wasToldToRefreshMessages)

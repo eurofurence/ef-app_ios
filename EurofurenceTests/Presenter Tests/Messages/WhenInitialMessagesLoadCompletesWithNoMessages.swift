@@ -6,7 +6,7 @@ class WhenInitialMessagesLoadCompletesWithNoMessages: XCTestCase {
 
     func testEntersViewingPlaceholderState() {
         let context = MessagesPresenterTestContext.makeTestCaseForAuthenticatedUser()
-        context.scene.delegate?.messagesSceneWillAppear()
+        context.scene.delegate?.messagesSceneReady()
         context.privateMessagesService.succeedLastRefresh()
         
         XCTAssertEqual(.hidden, context.scene.refreshIndicatorVisibility)
