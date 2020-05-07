@@ -9,11 +9,9 @@ class WhenInitialMessagesLoadCompletesWithNoMessages: XCTestCase {
         context.scene.delegate?.messagesSceneWillAppear()
         context.privateMessagesService.succeedLastRefresh()
         
-        XCTAssertTrue(context.scene.wasToldToHideRefreshIndicator)
-        XCTAssertTrue(context.scene.didHideMessages)
-        XCTAssertFalse(context.scene.didShowMessages)
-        XCTAssertTrue(context.scene.didShowNoMessagesPlaceholder)
-        XCTAssertFalse(context.scene.didHideNoMessagesPlaceholder)
+        XCTAssertEqual(.hidden, context.scene.refreshIndicatorVisibility)
+        XCTAssertEqual(.hidden, context.scene.messagesListVisibility)
+        XCTAssertEqual(.visible, context.scene.noMessagesPlaceholderVisibility)
     }
 
 }

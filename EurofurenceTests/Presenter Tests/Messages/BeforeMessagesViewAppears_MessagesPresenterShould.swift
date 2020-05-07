@@ -7,7 +7,7 @@ class BeforeMessagesViewAppears_MessagesPresenterShould: XCTestCase {
         let context = MessagesPresenterTestContext.makeTestCaseForAuthenticatedUser()
         context.privateMessagesService.succeedLastRefresh(messages: [StubMessage].random)
 
-        XCTAssertFalse(context.scene.didShowMessages)
+        XCTAssertEqual(.unset, context.scene.messagesListVisibility)
     }
 
 }

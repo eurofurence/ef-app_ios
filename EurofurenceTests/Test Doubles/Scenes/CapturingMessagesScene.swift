@@ -15,20 +15,22 @@ class StubMessagesSceneFactory: MessagesSceneFactory {
 class CapturingMessagesScene: UIViewController, MessagesScene {
 
     var delegate: MessagesSceneDelegate?
+    
+    private(set) var refreshIndicatorVisibility: VisibilityState = .unset
+    private(set) var messagesListVisibility: VisibilityState = .unset
+    private(set) var noMessagesPlaceholderVisibility: VisibilityState = .unset
 
     private(set) var capturedTitle: String?
     func setMessagesTitle(_ title: String) {
         capturedTitle = title
     }
 
-    private(set) var wasToldToShowRefreshIndicator = false
     func showRefreshIndicator() {
-        wasToldToShowRefreshIndicator = true
+        refreshIndicatorVisibility = .visible
     }
 
-    private(set) var wasToldToHideRefreshIndicator = false
     func hideRefreshIndicator() {
-        wasToldToHideRefreshIndicator = true
+        refreshIndicatorVisibility = .hidden
     }
 
     private(set) var boundMessageCount: Int?
@@ -38,38 +40,24 @@ class CapturingMessagesScene: UIViewController, MessagesScene {
         capturedMessageItemBinder = binder
     }
 
-    private(set) var didShowMessages = false
     func showMessagesList() {
-        didShowMessages = true
+        messagesListVisibility = .visible
     }
 
-    private(set) var didHideMessages = false
     func hideMessagesList() {
-        didHideMessages = true
+        messagesListVisibility = .hidden
     }
 
-    var didShowNoMessagesPlaceholder = false
     func showNoMessagesPlaceholder() {
-        didShowNoMessagesPlaceholder = true
+        noMessagesPlaceholderVisibility = .visible
     }
 
-    private(set) var didHideNoMessagesPlaceholder = false
     func hideNoMessagesPlaceholder() {
-        didHideNoMessagesPlaceholder = true
+        noMessagesPlaceholderVisibility = .hidden
     }
 
     func tapMessage(at index: Int) {
         delegate?.messagesSceneDidSelectMessage(at: IndexPath(indexes: [0, index]))
-    }
-
-    func reset() {
-        wasToldToShowRefreshIndicator = false
-        wasToldToHideRefreshIndicator = false
-        capturedMessageItemBinder = nil
-        didShowMessages = false
-        didHideMessages = false
-        didShowNoMessagesPlaceholder = false
-        didHideNoMessagesPlaceholder = false
     }
 
 }

@@ -9,7 +9,7 @@ class WhenInitialMessageLoadFails: XCTestCase {
         context.scene.delegate?.messagesSceneWillAppear()
         context.privateMessagesService.failLastRefresh()
 
-        XCTAssertTrue(context.scene.wasToldToHideRefreshIndicator)
+        XCTAssertEqual(.hidden, context.scene.refreshIndicatorVisibility)
     }
 
 }

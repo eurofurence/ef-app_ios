@@ -18,10 +18,8 @@ class WhenViewingMessageWhileLoggedInWithLocalMessage: XCTestCase {
     }
 
     func testEntersViewingMessagesState() {
-        XCTAssertTrue(context.scene.didShowMessages)
-        XCTAssertFalse(context.scene.didHideMessages)
-        XCTAssertTrue(context.scene.didHideNoMessagesPlaceholder)
-        XCTAssertFalse(context.scene.didShowNoMessagesPlaceholder)
+        XCTAssertEqual(.visible, context.scene.messagesListVisibility)
+        XCTAssertEqual(.hidden, context.scene.noMessagesPlaceholderVisibility)
     }
 
     func testSelectingMessageTellsDelegateToShowTheMessage() {

@@ -10,17 +10,14 @@ class WhenInitialMessageLoadCompletesWithMessages: XCTestCase {
         let context = MessagesPresenterTestContext.makeTestCaseForAuthenticatedUser()
         context.scene.delegate?.messagesSceneWillAppear()
         
-        XCTAssertTrue(context.scene.wasToldToShowRefreshIndicator)
-        XCTAssertFalse(context.scene.wasToldToHideRefreshIndicator)
+        XCTAssertEqual(.visible, context.scene.refreshIndicatorVisibility)
         XCTAssertTrue(context.privateMessagesService.wasToldToRefreshMessages)
         
         context.privateMessagesService.succeedLastRefresh(messages: [message])
         
-        XCTAssertTrue(context.scene.wasToldToHideRefreshIndicator)
-        XCTAssertTrue(context.scene.didShowMessages)
-        XCTAssertFalse(context.scene.didHideMessages)
-        XCTAssertTrue(context.scene.didHideNoMessagesPlaceholder)
-        XCTAssertFalse(context.scene.didShowNoMessagesPlaceholder)
+        XCTAssertEqual(.hidden, context.scene.refreshIndicatorVisibility)
+        XCTAssertEqual(.visible, context.scene.messagesListVisibility)
+        XCTAssertEqual(.hidden, context.scene.noMessagesPlaceholderVisibility)
     }
 
 }
