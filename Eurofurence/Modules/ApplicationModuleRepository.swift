@@ -1,7 +1,7 @@
 import EurofurenceModel
 import UIKit
 
-struct ApplicationModuleRepository: ModuleRepository {
+struct ApplicationModuleRepository {
     
     let webModuleProviding: WebModuleProviding
     let rootModuleProviding: RootModuleProviding

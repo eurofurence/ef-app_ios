@@ -420,7 +420,6 @@
 		CA39852022C7A94F00117249 /* RemoteConfigurationLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA39851F22C7A94F00117249 /* RemoteConfigurationLoader.swift */; };
 		CA39852222C7A95C00117249 /* FakeRemoteConfigurationLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA39852122C7A95C00117249 /* FakeRemoteConfigurationLoader.swift */; };
 		CA39852522C7ADBA00117249 /* FirebaseRemoteConfigurationLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA39852422C7ADBA00117249 /* FirebaseRemoteConfigurationLoader.swift */; };
-		CA3ABA00229C2FF50045A35B /* ModuleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3AB9FF229C2FF50045A35B /* ModuleRepository.swift */; };
 		CA3ABA02229C30E70045A35B /* ApplicationModuleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3ABA01229C30E70045A35B /* ApplicationModuleRepository.swift */; };
 		CA3ABA06229C4B260045A35B /* AppNotificationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3ABA05229C4B260045A35B /* AppNotificationDelegate.swift */; };
 		CA3ABA09229C7B6E0045A35B /* Dictionary+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3ABA08229C7B6E0045A35B /* Dictionary+Extensions.swift */; };
@@ -1616,7 +1615,6 @@
 		CA39852422C7ADBA00117249 /* FirebaseRemoteConfigurationLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseRemoteConfigurationLoader.swift; sourceTree = "<group>"; };
 		CA3990EC20ACD35C001E3F1A /* HoursDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoursDateFormatter.swift; sourceTree = "<group>"; };
 		CA3990EE20ACD559001E3F1A /* FoundationHoursDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationHoursDateFormatter.swift; sourceTree = "<group>"; };
-		CA3AB9FF229C2FF50045A35B /* ModuleRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleRepository.swift; sourceTree = "<group>"; };
 		CA3ABA01229C30E70045A35B /* ApplicationModuleRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationModuleRepository.swift; sourceTree = "<group>"; };
 		CA3ABA05229C4B260045A35B /* AppNotificationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNotificationDelegate.swift; sourceTree = "<group>"; };
 		CA3ABA08229C7B6E0045A35B /* Dictionary+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extensions.swift"; sourceTree = "<group>"; };
@@ -2538,7 +2536,6 @@
 			isa = PBXGroup;
 			children = (
 				CA3ABA01229C30E70045A35B /* ApplicationModuleRepository.swift */,
-				CA3AB9FF229C2FF50045A35B /* ModuleRepository.swift */,
 				CA8A73C022BD0FD6007A5201 /* Additional Services */,
 				CA728446209D0119007D912A /* Announcement Detail */,
 				CA283A9520EA9CA400F7D195 /* Announcements */,
@@ -6743,7 +6740,6 @@
 				CA00AE7F20D1C11400C2FBB0 /* ScheduleDayComponent.swift in Sources */,
 				9A861EA31F2554AB00B75A8C /* CompleteTutorial.swift in Sources */,
 				CACF1E5020AE2B6100D904B5 /* EventDetailModule.swift in Sources */,
-				CA3ABA00229C2FF50045A35B /* ModuleRepository.swift in Sources */,
 				CA29EF772034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift in Sources */,
 				CA5EB1A9245F6DC40012C277 /* NewsContentControllerFactory.swift in Sources */,
 				CA152EED22665B4400212742 /* CocoaTouchFailureHaptic.swift in Sources */,
