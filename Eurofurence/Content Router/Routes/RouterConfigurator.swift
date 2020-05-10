@@ -98,8 +98,8 @@ struct RouterConfigurator {
     }
     
     private func configureLoginRoute() {
-        let formSheetWrapper = FormSheetLoginModuleProviding(
-            loginModuleProviding: moduleRepository.loginModuleProviding
+        let formSheetWrapper = FormSheetLoginComponentFactory(
+            loginComponentFactory: moduleRepository.loginComponentFactory
         )
         
         router.add(LoginContentRoute(

@@ -12,7 +12,7 @@ struct ApplicationModuleRepository {
     let dealerDetailModuleProviding: DealerDetailComponentFactory
     let collectThemAllComponentFactory: CollectThemAllComponentFactory
     let messagesModuleProviding: MessagesModuleProviding
-    let loginModuleProviding: LoginModuleProviding
+    let loginComponentFactory: LoginComponentFactory
     let messageDetailModuleProviding: MessageDetailModuleProviding
     let knowledgeListModuleProviding: KnowledgeGroupsListComponentFactory
     let knowledgeGroupEntriesModule: KnowledgeGroupEntriesComponentFactory
@@ -79,7 +79,7 @@ struct ApplicationModuleRepository {
         collectThemAllComponentFactory = CollectThemAllComponentBuilder(service: services.collectThemAll).build()
         messagesModuleProviding = MessagesModuleBuilder(authenticationService: services.authentication, privateMessagesService: services.privateMessages).build()
         
-        loginModuleProviding = LoginModuleBuilder(
+        loginComponentFactory = LoginComponentBuilder(
             authenticationService: services.authentication,
             alertRouter: alertRouter
         ).build()

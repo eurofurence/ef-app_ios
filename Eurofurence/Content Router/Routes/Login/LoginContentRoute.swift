@@ -3,11 +3,11 @@ import UIKit.UIViewController
 
 public struct LoginContentRoute {
     
-    private let loginModuleFactory: LoginModuleProviding
+    private let loginModuleFactory: LoginComponentFactory
     private let modalWireframe: ModalWireframe
     
     public init(
-        loginModuleFactory: LoginModuleProviding,
+        loginModuleFactory: LoginComponentFactory,
         modalWireframe: ModalWireframe
     ) {
         self.loginModuleFactory = loginModuleFactory
@@ -30,7 +30,7 @@ extension LoginContentRoute: ContentRoute {
         modalWireframe.presentModalContentController(contentController)
     }
     
-    private class MapResponseToBlock: LoginModuleDelegate {
+    private class MapResponseToBlock: LoginComponentDelegate {
         
         private let completionHandler: (Bool) -> Void
         weak var viewController: UIViewController?

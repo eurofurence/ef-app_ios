@@ -7,7 +7,7 @@ class LoginPresenterTestBuilder {
         var loginSceneFactory: StubLoginSceneFactory
         var authenticationService: FakeAuthenticationService
         var scene: UIViewController
-        var delegate: CapturingLoginModuleDelegate
+        var delegate: CapturingLoginComponentDelegate
         var alertRouter: CapturingAlertRouter
     }
     
@@ -16,8 +16,8 @@ class LoginPresenterTestBuilder {
         let authenticationService = FakeAuthenticationService(authState: .loggedOut)
         let alertRouter = CapturingAlertRouter()
         alertRouter.automaticallyPresentAlerts = true
-        let delegate = CapturingLoginModuleDelegate()
-        let scene = LoginModuleBuilder(authenticationService: authenticationService, alertRouter: alertRouter)
+        let delegate = CapturingLoginComponentDelegate()
+        let scene = LoginComponentBuilder(authenticationService: authenticationService, alertRouter: alertRouter)
             .with(loginSceneFactory)
             .build()
             .makeLoginModule(delegate)

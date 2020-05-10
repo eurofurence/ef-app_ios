@@ -698,7 +698,7 @@
 		CA6A9FF51FD5E7720092C6DB /* LoginViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF41FD5E7720092C6DB /* LoginViewControllerFactory.swift */; };
 		CA6A9FF71FD5E7850092C6DB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF61FD5E7850092C6DB /* LoginViewController.swift */; };
 		CA6A9FF91FD5E79F0092C6DB /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA6A9FF81FD5E79F0092C6DB /* Login.storyboard */; };
-		CA6AA0011FD6C5FD0092C6DB /* LoginModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6AA0001FD6C5FD0092C6DB /* LoginModuleBuilder.swift */; };
+		CA6AA0011FD6C5FD0092C6DB /* LoginComponentBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6AA0001FD6C5FD0092C6DB /* LoginComponentBuilder.swift */; };
 		CA6AA0081FD731640092C6DB /* Preload.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA6AA0071FD731640092C6DB /* Preload.storyboard */; };
 		CA6AA00A1FD731930092C6DB /* PreloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6AA0091FD731930092C6DB /* PreloadViewController.swift */; };
 		CA6AA0161FD883390092C6DB /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6AA0151FD883390092C6DB /* NewsViewController.swift */; };
@@ -904,9 +904,9 @@
 		CAB6CDF82464AE1D00A92194 /* CapturingMessageDetailScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB6CDF72464AE1D00A92194 /* CapturingMessageDetailScene.swift */; };
 		CAB6CDFA2464AE3500A92194 /* StubMessageDetailSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB6CDF92464AE3500A92194 /* StubMessageDetailSceneFactory.swift */; };
 		CABA43831FB84834009CB5B0 /* StoryboardMessagesSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43821FB84834009CB5B0 /* StoryboardMessagesSceneFactory.swift */; };
-		CABA43861FBC6FE1009CB5B0 /* LoginModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43851FBC6FE1009CB5B0 /* LoginModuleProviding.swift */; };
+		CABA43861FBC6FE1009CB5B0 /* LoginComponentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43851FBC6FE1009CB5B0 /* LoginComponentFactory.swift */; };
 		CABA43891FBCD94E009CB5B0 /* LoginPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43881FBCD94E009CB5B0 /* LoginPresenterTests.swift */; };
-		CABA438B1FBCDBBA009CB5B0 /* LoginModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA438A1FBCDBBA009CB5B0 /* LoginModule.swift */; };
+		CABA438B1FBCDBBA009CB5B0 /* LoginComponentFactoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA438A1FBCDBBA009CB5B0 /* LoginComponentFactoryImpl.swift */; };
 		CABA438D1FBCDBDF009CB5B0 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA438C1FBCDBDF009CB5B0 /* LoginPresenter.swift */; };
 		CABA438F1FBCDBEE009CB5B0 /* LoginSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA438E1FBCDBEE009CB5B0 /* LoginSceneFactory.swift */; };
 		CABA43931FCE0A2D009CB5B0 /* CapturingLoginModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43921FCE0A2D009CB5B0 /* CapturingLoginModuleDelegate.swift */; };
@@ -1891,7 +1891,7 @@
 		CA6A9FF41FD5E7720092C6DB /* LoginViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerFactory.swift; sourceTree = "<group>"; };
 		CA6A9FF61FD5E7850092C6DB /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CA6A9FF81FD5E79F0092C6DB /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
-		CA6AA0001FD6C5FD0092C6DB /* LoginModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModuleBuilder.swift; sourceTree = "<group>"; };
+		CA6AA0001FD6C5FD0092C6DB /* LoginComponentBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginComponentBuilder.swift; sourceTree = "<group>"; };
 		CA6AA0071FD731640092C6DB /* Preload.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preload.storyboard; sourceTree = "<group>"; };
 		CA6AA0091FD731930092C6DB /* PreloadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadViewController.swift; sourceTree = "<group>"; };
 		CA6AA0151FD883390092C6DB /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
@@ -2091,9 +2091,9 @@
 		CAB6CDF72464AE1D00A92194 /* CapturingMessageDetailScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingMessageDetailScene.swift; sourceTree = "<group>"; };
 		CAB6CDF92464AE3500A92194 /* StubMessageDetailSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubMessageDetailSceneFactory.swift; sourceTree = "<group>"; };
 		CABA43821FB84834009CB5B0 /* StoryboardMessagesSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardMessagesSceneFactory.swift; sourceTree = "<group>"; };
-		CABA43851FBC6FE1009CB5B0 /* LoginModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModuleProviding.swift; sourceTree = "<group>"; };
+		CABA43851FBC6FE1009CB5B0 /* LoginComponentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginComponentFactory.swift; sourceTree = "<group>"; };
 		CABA43881FBCD94E009CB5B0 /* LoginPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenterTests.swift; sourceTree = "<group>"; };
-		CABA438A1FBCDBBA009CB5B0 /* LoginModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModule.swift; sourceTree = "<group>"; };
+		CABA438A1FBCDBBA009CB5B0 /* LoginComponentFactoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginComponentFactoryImpl.swift; sourceTree = "<group>"; };
 		CABA438C1FBCDBDF009CB5B0 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		CABA438E1FBCDBEE009CB5B0 /* LoginSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSceneFactory.swift; sourceTree = "<group>"; };
 		CABA43921FCE0A2D009CB5B0 /* CapturingLoginModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingLoginModuleDelegate.swift; sourceTree = "<group>"; };
@@ -5442,10 +5442,7 @@
 		CABA43841FBC6FD3009CB5B0 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				CAA2889B245D71FD0090B663 /* FormSheetLoginModuleProviding.swift */,
-				CA6AA0001FD6C5FD0092C6DB /* LoginModuleBuilder.swift */,
-				CABA43851FBC6FE1009CB5B0 /* LoginModuleProviding.swift */,
-				CABA43AE1FD5DC96009CB5B0 /* Module */,
+				CABA43AE1FD5DC96009CB5B0 /* Component */,
 				CABA43AA1FD5DB98009CB5B0 /* Presenter */,
 				CABA43AD1FD5DC7C009CB5B0 /* View */,
 			);
@@ -5455,9 +5452,9 @@
 		CABA43871FBCD930009CB5B0 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				CA987FC222E512AF006338FB /* Password Autofill */,
-				CABA43881FBCD94E009CB5B0 /* LoginPresenterTests.swift */,
 				CA987FC022E5126D006338FB /* LoginPresenterTestBuilder.swift */,
+				CABA43881FBCD94E009CB5B0 /* LoginPresenterTests.swift */,
+				CA987FC222E512AF006338FB /* Password Autofill */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -5536,12 +5533,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		CABA43AE1FD5DC96009CB5B0 /* Module */ = {
+		CABA43AE1FD5DC96009CB5B0 /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				CABA438A1FBCDBBA009CB5B0 /* LoginModule.swift */,
+				CAA2889B245D71FD0090B663 /* FormSheetLoginModuleProviding.swift */,
+				CA6AA0001FD6C5FD0092C6DB /* LoginComponentBuilder.swift */,
+				CABA43851FBC6FE1009CB5B0 /* LoginComponentFactory.swift */,
+				CABA438A1FBCDBBA009CB5B0 /* LoginComponentFactoryImpl.swift */,
 			);
-			path = Module;
+			path = Component;
 			sourceTree = "<group>";
 		};
 		CABF03B22041BC770028BD62 /* Extensions */ = {
@@ -7166,7 +7166,7 @@
 				20516AC821123E5500C399C0 /* DefaultDownMarkdownRenderer.swift in Sources */,
 				9A861ECD1F25555000B75A8C /* TutorialPageViewController.swift in Sources */,
 				CAA2889C245D71FD0090B663 /* FormSheetLoginModuleProviding.swift in Sources */,
-				CABA43861FBC6FE1009CB5B0 /* LoginModuleProviding.swift in Sources */,
+				CABA43861FBC6FE1009CB5B0 /* LoginComponentFactory.swift in Sources */,
 				CAC4993522DF98DF003E1D77 /* DealerCategoriesViewController.swift in Sources */,
 				CA72848E209F93A4007D912A /* MarkdownRenderer.swift in Sources */,
 				CA057A5B2088BDBB00504FA4 /* AnnouncementTableViewCell.swift in Sources */,
@@ -7181,7 +7181,7 @@
 				CA40108F21107D020056E16C /* KnowledgeGroupEntriesBinder.swift in Sources */,
 				CA283AB920EAA44500F7D195 /* AnnouncementsListViewModel.swift in Sources */,
 				CA79924B22451D9A00DF1F84 /* FoundationHoursDateFormatter.swift in Sources */,
-				CABA438B1FBCDBBA009CB5B0 /* LoginModule.swift in Sources */,
+				CABA438B1FBCDBBA009CB5B0 /* LoginComponentFactoryImpl.swift in Sources */,
 				CAD4F74F245C3CD70036ADAF /* AnnouncementContentRoute.swift in Sources */,
 				CACF1E4E20AE2B3300D904B5 /* EventDetailComponentBuilder.swift in Sources */,
 				CA66C0242124CC9900F87AFE /* ApplicationAppStateProviding.swift in Sources */,
@@ -7234,7 +7234,7 @@
 				CA4D935C245EF2E5006FA832 /* DecodeContentFromURL.swift in Sources */,
 				CA987FCA22E638A8006338FB /* Activity.swift in Sources */,
 				CADABEF021147D560023C3B6 /* EventInformationBannerTableViewCell.swift in Sources */,
-				CA6AA0011FD6C5FD0092C6DB /* LoginModuleBuilder.swift in Sources */,
+				CA6AA0011FD6C5FD0092C6DB /* LoginComponentBuilder.swift in Sources */,
 				CA8A73CC22BD10D2007A5201 /* AdditionalServicesPresenter.swift in Sources */,
 				CACF1E6F20B1CDC300D904B5 /* EventDetailViewModel.swift in Sources */,
 				CA283A5A20E6E24300F7D195 /* ApplicationLongRunningTaskManager.swift in Sources */,

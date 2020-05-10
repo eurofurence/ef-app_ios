@@ -1,7 +1,7 @@
 @testable import Eurofurence
 import EurofurenceModel
 
-class CapturingLoginModuleDelegate: LoginModuleDelegate {
+class CapturingLoginComponentDelegate: LoginComponentDelegate {
 
     private(set) var loginCancelled = false
     func loginModuleDidCancelLogin() {

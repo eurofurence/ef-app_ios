@@ -3,7 +3,7 @@ import Foundation
 
 class LoginPresenter: LoginSceneDelegate {
 
-    private let delegate: LoginModuleDelegate
+    private let delegate: LoginComponentDelegate
     private weak var scene: LoginScene?
     private let authenticationService: AuthenticationService
     private let alertRouter: AlertRouter
@@ -80,7 +80,7 @@ class LoginPresenter: LoginSceneDelegate {
         }
     }
 
-    init(delegate: LoginModuleDelegate,
+    init(delegate: LoginComponentDelegate,
          scene: LoginScene,
          authenticationService: AuthenticationService,
          alertRouter: AlertRouter) {

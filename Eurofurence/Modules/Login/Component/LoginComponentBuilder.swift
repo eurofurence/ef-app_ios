@@ -1,6 +1,6 @@
 import EurofurenceModel
 
-class LoginModuleBuilder {
+class LoginComponentBuilder {
 
     private let authenticationService: AuthenticationService
     private let alertRouter: AlertRouter
@@ -13,15 +13,17 @@ class LoginModuleBuilder {
         sceneFactory = LoginViewControllerFactory()
     }
 
-    func with(_ sceneFactory: LoginSceneFactory) -> LoginModuleBuilder {
+    func with(_ sceneFactory: LoginSceneFactory) -> Self {
         self.sceneFactory = sceneFactory
         return self
     }
 
-    func build() -> LoginModuleProviding {
-        return LoginModule(sceneFactory: sceneFactory,
-                           authenticationService: authenticationService,
-                           alertRouter: alertRouter)
+    func build() -> LoginComponentFactory {
+        LoginComponentFactoryImpl(
+            sceneFactory: sceneFactory,
+            authenticationService: authenticationService,
+            alertRouter: alertRouter
+        )
     }
 
 }

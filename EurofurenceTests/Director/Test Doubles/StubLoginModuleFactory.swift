@@ -2,11 +2,11 @@
 import EurofurenceModel
 import UIKit.UIViewController
 
-class StubLoginModuleFactory: LoginModuleProviding {
+class StubLoginModuleFactory: LoginComponentFactory {
 
     let stubInterface = CapturingViewController()
-    private(set) var delegate: LoginModuleDelegate?
-    func makeLoginModule(_ delegate: LoginModuleDelegate) -> UIViewController {
+    private(set) var delegate: LoginComponentDelegate?
+    func makeLoginModule(_ delegate: LoginComponentDelegate) -> UIViewController {
         self.delegate = delegate
         return stubInterface
     }
