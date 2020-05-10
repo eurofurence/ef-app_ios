@@ -1,6 +1,6 @@
 import Foundation
 
-protocol EventIntentDefinitionProviding {
+public protocol EventIntentDefinitionProviding {
     
     var eventIntentDefinition: ViewEventIntentDefinition? { get }
     
