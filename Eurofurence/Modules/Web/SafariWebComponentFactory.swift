@@ -1,6 +1,6 @@
 import SafariServices
 
-struct SafariWebModuleProviding: WebModuleProviding {
+struct SafariWebComponentFactory: WebComponentFactory {
 
     func makeWebModule(for url: URL) -> UIViewController {
         var safeURL = url

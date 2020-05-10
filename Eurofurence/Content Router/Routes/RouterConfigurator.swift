@@ -146,7 +146,7 @@ struct RouterConfigurator {
     
     private func configureWebContentRoute() {
         router.add(WebContentRoute(
-            webModuleProviding: moduleRepository.webModuleProviding,
+            webComponentFactory: moduleRepository.webComponentFactory,
             modalWireframe: modalWireframe
         ))
     }

@@ -1010,8 +1010,8 @@
 		CAD3BDB72059500400C91E6E /* WhenUserSelectsKnowledgeLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDB62059500400C91E6E /* WhenUserSelectsKnowledgeLink.swift */; };
 		CAD3BDB92059539D00C91E6E /* KnowledgeDetailModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDB82059539D00C91E6E /* KnowledgeDetailModuleDelegate.swift */; };
 		CAD3BDBB205953AD00C91E6E /* CapturingKnowledgeDetailModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDBA205953AD00C91E6E /* CapturingKnowledgeDetailModuleDelegate.swift */; };
-		CAD3BDC2205AA7BE00C91E6E /* WebModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDC1205AA7BE00C91E6E /* WebModuleProviding.swift */; };
-		CAD3BDC7205FE88900C91E6E /* SafariWebModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDC6205FE88900C91E6E /* SafariWebModuleProviding.swift */; };
+		CAD3BDC2205AA7BE00C91E6E /* WebComponentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDC1205AA7BE00C91E6E /* WebComponentFactory.swift */; };
+		CAD3BDC7205FE88900C91E6E /* SafariWebComponentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDC6205FE88900C91E6E /* SafariWebComponentFactory.swift */; };
 		CAD3BDCB2061394700C91E6E /* AppURLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDCA2061394700C91E6E /* AppURLOpener.swift */; };
 		CAD4F739245C2E670036ADAF /* ContentRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD4F738245C2E670036ADAF /* ContentRouterTests.swift */; };
 		CAD4F73C245C364F0036ADAF /* ContentRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD4F73B245C364F0036ADAF /* ContentRoute.swift */; };
@@ -2196,8 +2196,8 @@
 		CAD3BDB62059500400C91E6E /* WhenUserSelectsKnowledgeLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenUserSelectsKnowledgeLink.swift; sourceTree = "<group>"; };
 		CAD3BDB82059539D00C91E6E /* KnowledgeDetailModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailModuleDelegate.swift; sourceTree = "<group>"; };
 		CAD3BDBA205953AD00C91E6E /* CapturingKnowledgeDetailModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingKnowledgeDetailModuleDelegate.swift; sourceTree = "<group>"; };
-		CAD3BDC1205AA7BE00C91E6E /* WebModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebModuleProviding.swift; sourceTree = "<group>"; };
-		CAD3BDC6205FE88900C91E6E /* SafariWebModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebModuleProviding.swift; sourceTree = "<group>"; };
+		CAD3BDC1205AA7BE00C91E6E /* WebComponentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebComponentFactory.swift; sourceTree = "<group>"; };
+		CAD3BDC6205FE88900C91E6E /* SafariWebComponentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebComponentFactory.swift; sourceTree = "<group>"; };
 		CAD3BDCA2061394700C91E6E /* AppURLOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppURLOpener.swift; sourceTree = "<group>"; };
 		CAD4F738245C2E670036ADAF /* ContentRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentRouterTests.swift; sourceTree = "<group>"; };
 		CAD4F73B245C364F0036ADAF /* ContentRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentRoute.swift; sourceTree = "<group>"; };
@@ -5818,8 +5818,8 @@
 		CAD3BDC0205AA7B800C91E6E /* Web */ = {
 			isa = PBXGroup;
 			children = (
-				CAD3BDC1205AA7BE00C91E6E /* WebModuleProviding.swift */,
-				CAD3BDC6205FE88900C91E6E /* SafariWebModuleProviding.swift */,
+				CAD3BDC6205FE88900C91E6E /* SafariWebComponentFactory.swift */,
+				CAD3BDC1205AA7BE00C91E6E /* WebComponentFactory.swift */,
 			);
 			path = Web;
 			sourceTree = "<group>";
@@ -6831,7 +6831,7 @@
 				CA63A747245DBB3D00E4B313 /* ShowEventFromSchedule.swift in Sources */,
 				CA50B1BA226111220091E425 /* EventFeedbackViewModel.swift in Sources */,
 				CA630BD6229F145E00754C27 /* EventIntentDonor.swift in Sources */,
-				CAD3BDC7205FE88900C91E6E /* SafariWebModuleProviding.swift in Sources */,
+				CAD3BDC7205FE88900C91E6E /* SafariWebComponentFactory.swift in Sources */,
 				CACF1E8A20B351D400D904B5 /* DateRangeFormatter.swift in Sources */,
 				CAD4F73E245C365C0036ADAF /* ContentRepresentation.swift in Sources */,
 				CA321F531F7BC88D0050E489 /* StoryboardPreloadSceneFactory.swift in Sources */,
@@ -7161,7 +7161,7 @@
 				CA38C35524680C4900A20921 /* PrincipalWindowSceneDelegate.swift in Sources */,
 				CA82DB6922D7BE8600467C2F /* CIDBasedShareableURLFactory.swift in Sources */,
 				CACF1E7220B1CE9A00D904B5 /* EventDetailPresenter.swift in Sources */,
-				CAD3BDC2205AA7BE00C91E6E /* WebModuleProviding.swift in Sources */,
+				CAD3BDC2205AA7BE00C91E6E /* WebComponentFactory.swift in Sources */,
 				CA39852022C7A94F00117249 /* RemoteConfigurationLoader.swift in Sources */,
 				7820A6E71F1400A8004C0FB5 /* AlertRouter.swift in Sources */,
 				CA728451209D0557007D912A /* AnnouncementDetailComponentFactoryImpl.swift in Sources */,

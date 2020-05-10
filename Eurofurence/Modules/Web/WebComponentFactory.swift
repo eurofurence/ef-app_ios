@@ -1,7 +1,7 @@
 import Foundation
 import UIKit.UIViewController
 
-public protocol WebModuleProviding {
+public protocol WebComponentFactory {
 
     func makeWebModule(for url: URL) -> UIViewController
 

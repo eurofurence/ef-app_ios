@@ -3,7 +3,7 @@ import UIKit
 
 struct ApplicationModuleRepository {
     
-    let webModuleProviding: WebModuleProviding
+    let webComponentFactory: WebComponentFactory
     let tutorialModuleProviding: TutorialModuleProviding
     let preloadComponentFactory: PreloadComponentFactory
     let newsComponentFactory: NewsComponentFactory
@@ -145,7 +145,7 @@ struct ApplicationModuleRepository {
         let eventFeedbackSceneFactory = StoryboardEventFeedbackSceneFactory()
         eventFeedbackComponentFactory = EventFeedbackComponentFactoryImpl(presenterFactory: eventFeedbackPresenterFactory, sceneFactory: eventFeedbackSceneFactory)
         
-        webModuleProviding = SafariWebModuleProviding()
+        webComponentFactory = SafariWebComponentFactory()
         
         additionalServicesComponentFactory = AdditionalServicesComponentBuilder(repository: repositories.additionalServices).build()
     }

@@ -5,7 +5,7 @@ import XCTest
 class WhenMakingWebModuleWithNonHTTPSchemedLinks: XCTestCase {
 
     func testItShouldNotImplode_BUG() {
-        let module = SafariWebModuleProviding()
+        let module = SafariWebComponentFactory()
         let url = URL(string: "www.eurofurence.de").unsafelyUnwrapped
 
         // Crashes on the following line when bug is present.
