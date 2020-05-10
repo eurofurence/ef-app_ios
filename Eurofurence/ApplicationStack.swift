@@ -7,10 +7,11 @@ class ApplicationStack {
     private static let CID = ConventionIdentifier(identifier: "EF25")
 
     static let instance: ApplicationStack = ApplicationStack()
-    let session: EurofurenceSession
-    let services: Services
+    private let session: EurofurenceSession
+    private let services: Services
     private let backgroundFetcher: BackgroundFetchService
-    let notificationScheduleController: NotificationScheduleController
+    private let notificationScheduleController: NotificationScheduleController
+    private let reviewPromptController: ReviewPromptController
     private let router: ContentRouter
     
     static func assemble() {
@@ -78,6 +79,15 @@ class ApplicationStack {
                                                                         notificationScheduler: UserNotificationsScheduler(),
                                                                         hoursDateFormatter: FoundationHoursDateFormatter.shared,
                                                                         upcomingEventReminderInterval: upcomingEventReminderInterval)
+        
+        reviewPromptController = ReviewPromptController(
+            config: .default,
+            reviewPromptAction: StoreKitReviewPromptAction(),
+            versionProviding: BundleAppVersionProviding.shared,
+            reviewPromptAppVersionRepository: UserDefaultsReviewPromptAppVersionRepository(),
+            appStateProviding: ApplicationAppStateProviding(),
+            eventsService: services.events
+        )
         
         let router = MutableContentRouter()
         self.router = router

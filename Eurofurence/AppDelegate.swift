@@ -55,7 +55,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func prepareApplicationStack() {
         ApplicationStack.assemble()
         Theme.apply()
-        ReviewPromptController.initialize()
     }
     
     private func requestRemoteNotificationsDeviceToken() {
