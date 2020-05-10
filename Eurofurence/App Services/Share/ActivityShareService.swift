@@ -2,11 +2,10 @@ import UIKit
 
 struct ActivityShareService: ShareService {
     
+    var window: UIWindow
+    
     func share(_ item: Any, sender: Any) {
-        let app = UIApplication.shared
-        guard let optionalWindow = app.delegate?.window,
-              let window = optionalWindow,
-              let rootViewController = window.rootViewController else { return }
+        guard let rootViewController = window.rootViewController else { return }
         
         let activityViewController = UIActivityViewController(activityItems: [item], applicationActivities: nil)
         

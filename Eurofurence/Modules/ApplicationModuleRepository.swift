@@ -29,7 +29,7 @@ struct ApplicationModuleRepository {
     init(services: Services, repositories: Repositories, window: UIWindow) {
         let subtleMarkdownRenderer = SubtleDownMarkdownRenderer()
         let defaultMarkdownRenderer = DefaultDownMarkdownRenderer()
-        let shareService = ActivityShareService()
+        let shareService = ActivityShareService(window: window)
         let activityFactory = PlatformActivityFactory()
         let alertRouter = WindowAlertRouter(window: window)
         
