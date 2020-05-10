@@ -30,7 +30,7 @@ def perform_basic_pr_checks
         warn("PR is classed as Work in Progress")
     end
 
-    warn("This PR is pretty big. Consider breaking the change down into smaller slices") if git.lines_of_code > 500
+    warn("This PR is pretty big. Consider breaking the change down into smaller slices") if git.lines_of_code > 1000
     warn("Please add a short summary about the change you have made in the PR description") unless github.pr_body.length > 10
 
     ["Eurofurence.xcodeproj",
