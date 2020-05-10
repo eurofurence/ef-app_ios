@@ -3,7 +3,7 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import XCTest
 
-class WhenShowingMapContents_ForAlternativeMapPosition_MapDetailInteractorShould: XCTestCase {
+class WhenShowingMapContents_ForAlternativeMapPosition_MapDetailViewModelFactoryShould: XCTestCase {
 
     func testConvertTheLocationIntoMapCoordinate() {
         let mapsService = FakeMapsService()
@@ -11,7 +11,7 @@ class WhenShowingMapContents_ForAlternativeMapPosition_MapDetailInteractorShould
         let (x, y) = (Float.random, Float.random)
         let (expectedX, expectedY) = (Float.random, Float.random)
         randomMap.element.stub(content: .location(x: expectedX, y: expectedY, name: nil), atX: Int(x), y: Int(y))
-        let interactor = DefaultMapDetailInteractor(mapsService: mapsService)
+        let interactor = DefaultMapDetailViewModelFactory(mapsService: mapsService)
         
         var viewModel: MapDetailViewModel?
         interactor.makeViewModelForMap(identifier: randomMap.element.identifier) { viewModel = $0 }
@@ -30,7 +30,7 @@ class WhenShowingMapContents_ForAlternativeMapPosition_MapDetailInteractorShould
         let expectedName = String.random
         let expectedMapCoordinate = MapCoordinate(x: expectedX, y: expectedY)
         randomMap.element.stub(content: .location(x: expectedX, y: expectedY, name: expectedName), atX: Int(x), y: Int(y))
-        let interactor = DefaultMapDetailInteractor(mapsService: mapsService)
+        let interactor = DefaultMapDetailViewModelFactory(mapsService: mapsService)
         
         var viewModel: MapDetailViewModel?
         interactor.makeViewModelForMap(identifier: randomMap.element.identifier) { viewModel = $0 }
@@ -47,7 +47,7 @@ class WhenShowingMapContents_ForAlternativeMapPosition_MapDetailInteractorShould
         let (x, y) = (Float.random, Float.random)
         let room = Room.random
         randomMap.element.stub(content: .room(room), atX: Int(x), y: Int(y))
-        let interactor = DefaultMapDetailInteractor(mapsService: mapsService)
+        let interactor = DefaultMapDetailViewModelFactory(mapsService: mapsService)
         
         var viewModel: MapDetailViewModel?
         interactor.makeViewModelForMap(identifier: randomMap.element.identifier) { viewModel = $0 }
@@ -65,7 +65,7 @@ class WhenShowingMapContents_ForAlternativeMapPosition_MapDetailInteractorShould
         let visitor = CapturingMapContentVisitor()
         let expected = FakeDealer.random
         randomMap.element.stub(content: .dealer(expected), atX: Int(x), y: Int(y))
-        let interactor = DefaultMapDetailInteractor(mapsService: mapsService)
+        let interactor = DefaultMapDetailViewModelFactory(mapsService: mapsService)
         
         var viewModel: MapDetailViewModel?
         interactor.makeViewModelForMap(identifier: randomMap.element.identifier) { viewModel = $0 }

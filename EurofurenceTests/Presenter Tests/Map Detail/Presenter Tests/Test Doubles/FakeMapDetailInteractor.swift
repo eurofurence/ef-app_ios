@@ -3,7 +3,7 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import Foundation
 
-class FakeMapDetailInteractor: MapDetailInteractor {
+class FakeMapDetailViewModelFactory: MapDetailViewModelFactory {
 
     private let expectedMapIdentifier: MapIdentifier
 

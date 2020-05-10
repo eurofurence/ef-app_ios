@@ -7,7 +7,7 @@ class WhenSceneTapsMapPosition_ThatHasMultipleOptions_MapsPresenterShould: XCTes
 
     func testTellTheSceneToShowTheOptions() {
         let identifier = MapIdentifier.random
-        let interactor = FakeMapDetailInteractor(expectedMapIdentifier: identifier)
+        let interactor = FakeMapDetailViewModelFactory(expectedMapIdentifier: identifier)
         let context = MapDetailPresenterTestBuilder().with(interactor).build(for: identifier)
         context.simulateSceneDidLoad()
         let x = Float.random
@@ -25,7 +25,7 @@ class WhenSceneTapsMapPosition_ThatHasMultipleOptions_MapsPresenterShould: XCTes
 
     func testTellTheViewModelWhichOptionIsSelected() {
         let identifier = MapIdentifier.random
-        let interactor = FakeMapDetailInteractor(expectedMapIdentifier: identifier)
+        let interactor = FakeMapDetailViewModelFactory(expectedMapIdentifier: identifier)
         let context = MapDetailPresenterTestBuilder().with(interactor).build(for: identifier)
         context.simulateSceneDidLoad()
         let randomLocation = MapCoordinate(x: .random, y: .random)

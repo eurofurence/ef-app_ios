@@ -7,7 +7,7 @@ class WhenSceneTapsMapPosition_MapsDetailPresenterShould: XCTestCase {
 
     func testTellTheViewModelToShowTheMapContentsAtTheTappedLocation() {
         let identifier = MapIdentifier.random
-        let interactor = FakeMapDetailInteractor(expectedMapIdentifier: identifier)
+        let interactor = FakeMapDetailViewModelFactory(expectedMapIdentifier: identifier)
         let context = MapDetailPresenterTestBuilder().with(interactor).build(for: identifier)
         context.simulateSceneDidLoad()
         let randomLocation = MapCoordinate(x: Float.random, y: Float.random)

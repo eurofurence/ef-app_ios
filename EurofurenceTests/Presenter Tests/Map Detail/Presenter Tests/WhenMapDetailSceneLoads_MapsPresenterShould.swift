@@ -7,7 +7,7 @@ class WhenMapDetailSceneLoads_MapsPresenterShould: XCTestCase {
 
     func testBindTheMapFromTheViewModelOntoTheScene() {
         let identifier = MapIdentifier.random
-        let interactor = FakeMapDetailInteractor(expectedMapIdentifier: identifier)
+        let interactor = FakeMapDetailViewModelFactory(expectedMapIdentifier: identifier)
         let context = MapDetailPresenterTestBuilder().with(interactor).build(for: identifier)
         context.simulateSceneDidLoad()
 
@@ -16,7 +16,7 @@ class WhenMapDetailSceneLoads_MapsPresenterShould: XCTestCase {
 
     func testBindTheNameOfTheMapAsTheTitleOntoTheScene() {
         let identifier = MapIdentifier.random
-        let interactor = FakeMapDetailInteractor(expectedMapIdentifier: identifier)
+        let interactor = FakeMapDetailViewModelFactory(expectedMapIdentifier: identifier)
         let context = MapDetailPresenterTestBuilder().with(interactor).build(for: identifier)
         context.simulateSceneDidLoad()
 

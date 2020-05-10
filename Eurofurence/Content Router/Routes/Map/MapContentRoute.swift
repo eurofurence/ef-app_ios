@@ -2,14 +2,14 @@ import Foundation
 
 public struct MapContentRoute {
     
-    private let mapModuleProviding: MapDetailModuleProviding
+    private let mapModuleProviding: MapDetailComponentFactory
     private let contentWireframe: ContentWireframe
-    private let delegate: MapDetailModuleDelegate
+    private let delegate: MapDetailComponentDelegate
     
     public init(
-        mapModuleProviding: MapDetailModuleProviding,
+        mapModuleProviding: MapDetailComponentFactory,
         contentWireframe: ContentWireframe,
-        delegate: MapDetailModuleDelegate
+        delegate: MapDetailComponentDelegate
     ) {
         self.mapModuleProviding = mapModuleProviding
         self.contentWireframe = contentWireframe
@@ -23,7 +23,7 @@ extension MapContentRoute: ContentRoute {
     public typealias Content = MapContentRepresentation
     
     public func route(_ content: MapContentRepresentation) {
-        let contentController = mapModuleProviding.makeMapDetailModule(
+        let contentController = mapModuleProviding.makeMapDetailComponent(
             for: content.identifier,
             delegate: delegate
         )

@@ -1,7 +1,7 @@
 import EurofurenceModel
 import Foundation
 
-public protocol MapDetailModuleDelegate {
+public protocol MapDetailComponentDelegate {
 
     func mapDetailModuleDidSelectDealer(_ identifier: DealerIdentifier)
 

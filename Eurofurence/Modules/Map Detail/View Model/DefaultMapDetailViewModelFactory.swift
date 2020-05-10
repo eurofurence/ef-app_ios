@@ -1,7 +1,7 @@
 import EurofurenceModel
 import Foundation
 
-class DefaultMapDetailInteractor: MapDetailInteractor, MapsObserver {
+class DefaultMapDetailViewModelFactory: MapDetailViewModelFactory, MapsObserver {
 
     private struct ViewModel: MapDetailViewModel {
 

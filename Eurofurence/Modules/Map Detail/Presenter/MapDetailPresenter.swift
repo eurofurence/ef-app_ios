@@ -4,15 +4,15 @@ import Foundation
 class MapDetailPresenter: MapDetailSceneDelegate {
 
     private let scene: MapDetailScene
-    private let interactor: MapDetailInteractor
+    private let interactor: MapDetailViewModelFactory
     private let identifier: MapIdentifier
-    private let delegate: MapDetailModuleDelegate
+    private let delegate: MapDetailComponentDelegate
     private var viewModel: MapDetailViewModel?
 
     init(scene: MapDetailScene,
-         interactor: MapDetailInteractor,
+         interactor: MapDetailViewModelFactory,
          identifier: MapIdentifier,
-         delegate: MapDetailModuleDelegate) {
+         delegate: MapDetailComponentDelegate) {
         self.scene = scene
         self.interactor = interactor
         self.identifier = identifier
@@ -41,7 +41,7 @@ class MapDetailPresenter: MapDetailSceneDelegate {
     private struct ContentsVisitor: MapContentVisitor {
 
         var scene: MapDetailScene
-        var delegate: MapDetailModuleDelegate
+        var delegate: MapDetailComponentDelegate
         var x: Float
         var y: Float
 

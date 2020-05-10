@@ -18,7 +18,7 @@ struct ApplicationModuleRepository {
     let knowledgeGroupEntriesModule: KnowledgeGroupEntriesComponentFactory
     let knowledgeDetailComponentFactory: KnowledgeDetailComponentFactory
     let mapsModuleProviding: MapsModuleProviding
-    let mapDetailModuleProviding: MapDetailModuleProviding
+    let mapDetailModuleProviding: MapDetailComponentFactory
     let announcementsModuleFactory: AnnouncementsComponentFactory
     let announcementDetailComponentFactory: AnnouncementDetailComponentFactory
     let eventDetailComponentFactory: EventDetailComponentFactory
@@ -105,8 +105,8 @@ struct ApplicationModuleRepository {
         let mapsInteractor = DefaultMapsInteractor(mapsService: services.maps)
         mapsModuleProviding = MapsModuleBuilder(interactor: mapsInteractor).build()
         
-        let mapDetailInteractor = DefaultMapDetailInteractor(mapsService: services.maps)
-        mapDetailModuleProviding = MapDetailModuleBuilder(interactor: mapDetailInteractor).build()
+        let mapDetailViewModelFactory = DefaultMapDetailViewModelFactory(mapsService: services.maps)
+        mapDetailModuleProviding = MapDetailComponentBuilder(interactor: mapDetailViewModelFactory).build()
         
         let announcementsViewModelFactory = DefaultAnnouncementsViewModelFactory(announcementsService: services.announcements,
                                                                      announcementDateFormatter: FoundationAnnouncementDateFormatter.shared,

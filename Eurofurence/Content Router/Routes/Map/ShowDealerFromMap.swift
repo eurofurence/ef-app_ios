@@ -1,6 +1,6 @@
 import EurofurenceModel
 
-public struct ShowDealerFromMap: MapDetailModuleDelegate {
+public struct ShowDealerFromMap: MapDetailComponentDelegate {
     
     private let router: ContentRouter
     

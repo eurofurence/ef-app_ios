@@ -2,7 +2,7 @@
 import EurofurenceModel
 import XCTest
 
-class WhenBuildingMapDetailModule: XCTestCase {
+class WhenBuildingMapDetailComponent: XCTestCase {
 
     func testTheSceneFromTheFactoryIsReturned() {
         let context = MapDetailPresenterTestBuilder().build()

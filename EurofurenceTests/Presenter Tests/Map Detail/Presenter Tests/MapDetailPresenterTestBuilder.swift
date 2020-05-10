@@ -3,7 +3,7 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import UIKit
 
-class CapturingMapDetailModuleDelegate: MapDetailModuleDelegate {
+class CapturingMapDetailComponentDelegate: MapDetailComponentDelegate {
 
     private(set) var capturedDealerToShow: DealerIdentifier?
     func mapDetailModuleDidSelectDealer(_ identifier: DealerIdentifier) {
@@ -17,28 +17,28 @@ class MapDetailPresenterTestBuilder {
     struct Context {
         var scene: CapturingMapDetailScene
         var producedViewController: UIViewController
-        var delegate: CapturingMapDetailModuleDelegate
+        var delegate: CapturingMapDetailComponentDelegate
     }
 
-    private var interactor: MapDetailInteractor
+    private var interactor: MapDetailViewModelFactory
 
     init() {
-        interactor = FakeMapDetailInteractor()
+        interactor = FakeMapDetailViewModelFactory()
     }
 
     @discardableResult
-    func with(_ interactor: MapDetailInteractor) -> MapDetailPresenterTestBuilder {
+    func with(_ interactor: MapDetailViewModelFactory) -> MapDetailPresenterTestBuilder {
         self.interactor = interactor
         return self
     }
 
     func build(for identifier: MapIdentifier = .random) -> Context {
         let sceneFactory = StubMapDetailSceneFactory()
-        let delegate = CapturingMapDetailModuleDelegate()
-        let module = MapDetailModuleBuilder(interactor: interactor)
+        let delegate = CapturingMapDetailComponentDelegate()
+        let module = MapDetailComponentBuilder(interactor: interactor)
             .with(sceneFactory)
             .build()
-            .makeMapDetailModule(for: identifier, delegate: delegate)
+            .makeMapDetailComponent(for: identifier, delegate: delegate)
 
         return Context(scene: sceneFactory.scene, producedViewController: module, delegate: delegate)
     }

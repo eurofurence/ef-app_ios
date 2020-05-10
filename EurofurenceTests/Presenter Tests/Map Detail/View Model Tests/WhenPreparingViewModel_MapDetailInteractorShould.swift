@@ -3,12 +3,12 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import XCTest
 
-class WhenPreparingViewModel_MapDetailInteractorShould: XCTestCase {
+class WhenPreparingViewModel_MapDetailViewModelFactoryShould: XCTestCase {
 
     func testPrepareViewModelWithTitleForSpecifiedMap() {
         let mapsService = FakeMapsService()
         let randomMap = mapsService.maps.randomElement()
-        let interactor = DefaultMapDetailInteractor(mapsService: mapsService)
+        let interactor = DefaultMapDetailViewModelFactory(mapsService: mapsService)
         var viewModel: MapDetailViewModel?
         interactor.makeViewModelForMap(identifier: randomMap.element.identifier) { viewModel = $0 }
 
@@ -18,7 +18,7 @@ class WhenPreparingViewModel_MapDetailInteractorShould: XCTestCase {
     func testPrepareViewModelWithMapGraphicData() {
         let mapsService = FakeMapsService()
         let randomMap = mapsService.maps.randomElement()
-        let interactor = DefaultMapDetailInteractor(mapsService: mapsService)
+        let interactor = DefaultMapDetailViewModelFactory(mapsService: mapsService)
         var viewModel: MapDetailViewModel?
         interactor.makeViewModelForMap(identifier: randomMap.element.identifier) { viewModel = $0 }
 
