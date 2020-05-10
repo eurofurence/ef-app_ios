@@ -798,7 +798,6 @@
 		CAF1972F24688EAA005DFBBE /* DefaultKnowledgeDetailViewModelFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF1956924688EA9005DFBBE /* DefaultKnowledgeDetailViewModelFactoryTests.swift */; };
 		CAF1973124688EAA005DFBBE /* CollectThemAllPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF1956D24688EA9005DFBBE /* CollectThemAllPresenterTests.swift */; };
 		CAF1973324688EAA005DFBBE /* CollectThemAllPresenterTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF1956F24688EA9005DFBBE /* CollectThemAllPresenterTestBuilder.swift */; };
-		CAF1973424688EAA005DFBBE /* FakeCollectThemAllService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF1957124688EA9005DFBBE /* FakeCollectThemAllService.swift */; };
 		CAF1973524688EAA005DFBBE /* CapturingHybridWebScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF1957224688EA9005DFBBE /* CapturingHybridWebScene.swift */; };
 		CAF1973624688EAA005DFBBE /* StubHybridWebSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF1957324688EA9005DFBBE /* StubHybridWebSceneFactory.swift */; };
 		CAF1973724688EAA005DFBBE /* WhenMakingWebModuleWithNonHTTPSchemedLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF1957524688EA9005DFBBE /* WhenMakingWebModuleWithNonHTTPSchemedLinks.swift */; };
@@ -1974,7 +1973,6 @@
 		CAF1956924688EA9005DFBBE /* DefaultKnowledgeDetailViewModelFactoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultKnowledgeDetailViewModelFactoryTests.swift; sourceTree = "<group>"; };
 		CAF1956D24688EA9005DFBBE /* CollectThemAllPresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectThemAllPresenterTests.swift; sourceTree = "<group>"; };
 		CAF1956F24688EA9005DFBBE /* CollectThemAllPresenterTestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectThemAllPresenterTestBuilder.swift; sourceTree = "<group>"; };
-		CAF1957124688EA9005DFBBE /* FakeCollectThemAllService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeCollectThemAllService.swift; sourceTree = "<group>"; };
 		CAF1957224688EA9005DFBBE /* CapturingHybridWebScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingHybridWebScene.swift; sourceTree = "<group>"; };
 		CAF1957324688EA9005DFBBE /* StubHybridWebSceneFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubHybridWebSceneFactory.swift; sourceTree = "<group>"; };
 		CAF1957524688EA9005DFBBE /* WhenMakingWebModuleWithNonHTTPSchemedLinks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenMakingWebModuleWithNonHTTPSchemedLinks.swift; sourceTree = "<group>"; };
@@ -5379,7 +5377,6 @@
 			isa = PBXGroup;
 			children = (
 				CAF1957224688EA9005DFBBE /* CapturingHybridWebScene.swift */,
-				CAF1957124688EA9005DFBBE /* FakeCollectThemAllService.swift */,
 				CAF1957324688EA9005DFBBE /* StubHybridWebSceneFactory.swift */,
 			);
 			path = "Test Doubles";
@@ -7691,7 +7688,6 @@
 				CA2AA2FA22C9531900C0E1A1 /* StubDealerIntentDefinitionProviding.swift in Sources */,
 				CAF196C624688EAA005DFBBE /* FakeMapsViewModel.swift in Sources */,
 				CA91FEC12463269A0065CF86 /* BackgroundFetchServiceTests.swift in Sources */,
-				CAF1973424688EAA005DFBBE /* FakeCollectThemAllService.swift in Sources */,
 				CA728445209D00B7007D912A /* StubAnnouncementDetailComponentFactory.swift in Sources */,
 				CAF1983924688EAB005DFBBE /* WhenProducingCategoriesViewModel_DealersViewModelFactoryShould.swift in Sources */,
 				CAF1974E24688EAA005DFBBE /* WhenSceneTapsMapDetail_ThatRepresentsDealer_MapsPresenterShould.swift in Sources */,

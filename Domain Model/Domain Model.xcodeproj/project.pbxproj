@@ -472,6 +472,7 @@
 		CAF194C924687839005DFBBE /* CapturingPrivateMessagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF194C824687839005DFBBE /* CapturingPrivateMessagesService.swift */; };
 		CAF194CB2468785B005DFBBE /* StubConventionCountdownService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF194CA2468785B005DFBBE /* StubConventionCountdownService.swift */; };
 		CAF198452468968E005DFBBE /* StubContentLinksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF198442468968E005DFBBE /* StubContentLinksService.swift */; };
+		CAF1984B2468AD63005DFBBE /* FakeCollectThemAllService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF1984A2468AD63005DFBBE /* FakeCollectThemAllService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -972,6 +973,7 @@
 		CAF194C824687839005DFBBE /* CapturingPrivateMessagesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingPrivateMessagesService.swift; sourceTree = "<group>"; };
 		CAF194CA2468785B005DFBBE /* StubConventionCountdownService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubConventionCountdownService.swift; sourceTree = "<group>"; };
 		CAF198442468968E005DFBBE /* StubContentLinksService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubContentLinksService.swift; sourceTree = "<group>"; };
+		CAF1984A2468AD63005DFBBE /* FakeCollectThemAllService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeCollectThemAllService.swift; sourceTree = "<group>"; };
 		EC85896EECB18D7881B0665A /* Pods-EurofurenceModel-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-EurofurenceModel-metadata.plist"; sourceTree = "<group>"; };
 		FFE87D86E3ECE04913805820 /* Pods_EurofurenceModelTestDoubles.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EurofurenceModelTestDoubles.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -2015,6 +2017,7 @@
 				CAB63207245F270900DBF0A0 /* ControllableSessionStateService.swift */,
 				CA8A73C322BD0FFC007A5201 /* FakeAdditionalServicesRepository.swift */,
 				CA7A329F22B16EB4002AD939 /* FakeAnnouncementsService.swift */,
+				CAF1984A2468AD63005DFBBE /* FakeCollectThemAllService.swift */,
 				CA7A32B022B16EB5002AD939 /* FakeDealersIndex.swift */,
 				CA7A32B122B16EB5002AD939 /* FakeDealersService.swift */,
 				CA38C35824683D9000A20921 /* FakeEventsSchedule.swift */,
@@ -2969,6 +2972,7 @@
 				CAF194BF24686E8B005DFBBE /* FakeKnowledgeService.swift in Sources */,
 				CA8A73C422BD0FFC007A5201 /* FakeAdditionalServicesRepository.swift in Sources */,
 				CA7A32C122B16EB5002AD939 /* Room+RandomValueProviding.swift in Sources */,
+				CAF1984B2468AD63005DFBBE /* FakeCollectThemAllService.swift in Sources */,
 				CA7A32BA22B16EB5002AD939 /* KnowledgeGroupCharacteristics+RandomValueProviding.swift in Sources */,
 				CA7A32D722B16EB5002AD939 /* FakeEvent.swift in Sources */,
 			);
