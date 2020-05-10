@@ -2,11 +2,11 @@ import UIKit
 
 struct MapsContentControllerFactory: ApplicationModuleFactory {
     
-    var mapsModuleProviding: MapsModuleProviding
-    var mapsModuleDelegate: MapsModuleDelegate
+    var mapsComponentFactory: MapsComponentFactory
+    var mapsComponentDelegate: MapsComponentDelegate
     
     func makeApplicationModuleController() -> UIViewController {
-        mapsModuleProviding.makeMapsModule(mapsModuleDelegate)
+        mapsComponentFactory.makeMapsModule(mapsComponentDelegate)
     }
     
 }

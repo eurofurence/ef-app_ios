@@ -641,11 +641,11 @@
 		CA66C0202124CC6000F87AFE /* AppStateProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA66C01F2124CC6000F87AFE /* AppStateProviding.swift */; };
 		CA66C0222124CC6E00F87AFE /* FakeAppStateProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA66C0212124CC6E00F87AFE /* FakeAppStateProviding.swift */; };
 		CA66C0242124CC9900F87AFE /* ApplicationAppStateProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA66C0232124CC9900F87AFE /* ApplicationAppStateProviding.swift */; };
-		CA6A8D6320E26247007536CD /* MapsModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8D6220E26247007536CD /* MapsModuleProviding.swift */; };
+		CA6A8D6320E26247007536CD /* MapsComponentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8D6220E26247007536CD /* MapsComponentFactory.swift */; };
 		CA6A8D6720E263A0007536CD /* WhenBuildingMapsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8D6620E263A0007536CD /* WhenBuildingMapsModule.swift */; };
 		CA6A8D6B20E26478007536CD /* MapsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8D6A20E26478007536CD /* MapsScene.swift */; };
 		CA6A8D6D20E26482007536CD /* MapsSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8D6C20E26482007536CD /* MapsSceneFactory.swift */; };
-		CA6A8D6F20E2648E007536CD /* MapsModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8D6E20E2648E007536CD /* MapsModuleBuilder.swift */; };
+		CA6A8D6F20E2648E007536CD /* MapsComponentBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8D6E20E2648E007536CD /* MapsComponentBuilder.swift */; };
 		CA6A8D7120E2649C007536CD /* MapsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8D7020E2649C007536CD /* MapsModule.swift */; };
 		CA6A8D7420E264B5007536CD /* CapturingMapsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8D7320E264B5007536CD /* CapturingMapsScene.swift */; };
 		CA6A8D7620E264C5007536CD /* StubMapsSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8D7520E264C5007536CD /* StubMapsSceneFactory.swift */; };
@@ -654,7 +654,7 @@
 		CA6A8D7D20E265B0007536CD /* MapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8D7C20E265B0007536CD /* MapsViewController.swift */; };
 		CA6A8D8020E265BE007536CD /* StoryboardMapsScenefactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8D7F20E265BE007536CD /* StoryboardMapsScenefactory.swift */; };
 		CA6A8D8220E2BA6C007536CD /* WhenMapsSceneLoads_MapsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8D8120E2BA6C007536CD /* WhenMapsSceneLoads_MapsPresenterShould.swift */; };
-		CA6A8D8520E2BB88007536CD /* MapsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8D8420E2BB88007536CD /* MapsInteractor.swift */; };
+		CA6A8D8520E2BB88007536CD /* MapsViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8D8420E2BB88007536CD /* MapsViewModelFactory.swift */; };
 		CA6A8D8720E2BB90007536CD /* MapsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8D8620E2BB90007536CD /* MapsViewModel.swift */; };
 		CA6A8D8920E2BBA4007536CD /* FakeMapsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8D8820E2BBA4007536CD /* FakeMapsViewModel.swift */; };
 		CA6A8D8B20E2BBB1007536CD /* FakeMapsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8D8A20E2BBB1007536CD /* FakeMapsInteractor.swift */; };
@@ -669,7 +669,7 @@
 		CA6A8DA220E2CB5C007536CD /* MapsModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DA120E2CB5C007536CD /* MapsModuleDelegate.swift */; };
 		CA6A8DA420E2CB66007536CD /* CapturingMapsModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DA320E2CB66007536CD /* CapturingMapsModuleDelegate.swift */; };
 		CA6A8DA720E2CD6E007536CD /* WhenPreparingViewModel_MapsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DA620E2CD6E007536CD /* WhenPreparingViewModel_MapsInteractorShould.swift */; };
-		CA6A8DB020E2CF97007536CD /* DefaultMapsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DAF20E2CF97007536CD /* DefaultMapsInteractor.swift */; };
+		CA6A8DB020E2CF97007536CD /* DefaultMapsViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DAF20E2CF97007536CD /* DefaultMapsViewModelFactory.swift */; };
 		CA6A8DC620E41513007536CD /* MapDetailComponentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DC520E41513007536CD /* MapDetailComponentFactory.swift */; };
 		CA6A8DC820E415D3007536CD /* MapDetailModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DC720E415D3007536CD /* MapDetailModuleBuilder.swift */; };
 		CA6A8DCA20E415EF007536CD /* MapDetailComponentFactoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DC920E415EF007536CD /* MapDetailComponentFactoryImpl.swift */; };
@@ -1834,11 +1834,11 @@
 		CA66C01F2124CC6000F87AFE /* AppStateProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateProviding.swift; sourceTree = "<group>"; };
 		CA66C0212124CC6E00F87AFE /* FakeAppStateProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeAppStateProviding.swift; sourceTree = "<group>"; };
 		CA66C0232124CC9900F87AFE /* ApplicationAppStateProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationAppStateProviding.swift; sourceTree = "<group>"; };
-		CA6A8D6220E26247007536CD /* MapsModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsModuleProviding.swift; sourceTree = "<group>"; };
+		CA6A8D6220E26247007536CD /* MapsComponentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsComponentFactory.swift; sourceTree = "<group>"; };
 		CA6A8D6620E263A0007536CD /* WhenBuildingMapsModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBuildingMapsModule.swift; sourceTree = "<group>"; };
 		CA6A8D6A20E26478007536CD /* MapsScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsScene.swift; sourceTree = "<group>"; };
 		CA6A8D6C20E26482007536CD /* MapsSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsSceneFactory.swift; sourceTree = "<group>"; };
-		CA6A8D6E20E2648E007536CD /* MapsModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsModuleBuilder.swift; sourceTree = "<group>"; };
+		CA6A8D6E20E2648E007536CD /* MapsComponentBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsComponentBuilder.swift; sourceTree = "<group>"; };
 		CA6A8D7020E2649C007536CD /* MapsModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsModule.swift; sourceTree = "<group>"; };
 		CA6A8D7320E264B5007536CD /* CapturingMapsScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingMapsScene.swift; sourceTree = "<group>"; };
 		CA6A8D7520E264C5007536CD /* StubMapsSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubMapsSceneFactory.swift; sourceTree = "<group>"; };
@@ -1847,7 +1847,7 @@
 		CA6A8D7C20E265B0007536CD /* MapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsViewController.swift; sourceTree = "<group>"; };
 		CA6A8D7F20E265BE007536CD /* StoryboardMapsScenefactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardMapsScenefactory.swift; sourceTree = "<group>"; };
 		CA6A8D8120E2BA6C007536CD /* WhenMapsSceneLoads_MapsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenMapsSceneLoads_MapsPresenterShould.swift; sourceTree = "<group>"; };
-		CA6A8D8420E2BB88007536CD /* MapsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsInteractor.swift; sourceTree = "<group>"; };
+		CA6A8D8420E2BB88007536CD /* MapsViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsViewModelFactory.swift; sourceTree = "<group>"; };
 		CA6A8D8620E2BB90007536CD /* MapsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsViewModel.swift; sourceTree = "<group>"; };
 		CA6A8D8820E2BBA4007536CD /* FakeMapsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeMapsViewModel.swift; sourceTree = "<group>"; };
 		CA6A8D8A20E2BBB1007536CD /* FakeMapsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeMapsInteractor.swift; sourceTree = "<group>"; };
@@ -1862,7 +1862,7 @@
 		CA6A8DA120E2CB5C007536CD /* MapsModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsModuleDelegate.swift; sourceTree = "<group>"; };
 		CA6A8DA320E2CB66007536CD /* CapturingMapsModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingMapsModuleDelegate.swift; sourceTree = "<group>"; };
 		CA6A8DA620E2CD6E007536CD /* WhenPreparingViewModel_MapsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPreparingViewModel_MapsInteractorShould.swift; sourceTree = "<group>"; };
-		CA6A8DAF20E2CF97007536CD /* DefaultMapsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMapsInteractor.swift; sourceTree = "<group>"; };
+		CA6A8DAF20E2CF97007536CD /* DefaultMapsViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMapsViewModelFactory.swift; sourceTree = "<group>"; };
 		CA6A8DC520E41513007536CD /* MapDetailComponentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailComponentFactory.swift; sourceTree = "<group>"; };
 		CA6A8DC720E415D3007536CD /* MapDetailModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailModuleBuilder.swift; sourceTree = "<group>"; };
 		CA6A8DC920E415EF007536CD /* MapDetailComponentFactoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailComponentFactoryImpl.swift; sourceTree = "<group>"; };
@@ -4427,32 +4427,30 @@
 		CA6A8D6020E26233007536CD /* Maps */ = {
 			isa = PBXGroup;
 			children = (
-				CA6A8D6E20E2648E007536CD /* MapsModuleBuilder.swift */,
-				CA6A8D8320E2BB7D007536CD /* Interactor */,
-				CA6A8D6120E2623F007536CD /* Module */,
+				CA6A8D6120E2623F007536CD /* Component */,
 				CA6A8D8C20E2BC63007536CD /* Presenter */,
 				CA6A8D6820E26468007536CD /* View */,
+				CA6A8D8320E2BB7D007536CD /* View Model */,
 			);
 			path = Maps;
 			sourceTree = "<group>";
 		};
-		CA6A8D6120E2623F007536CD /* Module */ = {
+		CA6A8D6120E2623F007536CD /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				CA6A8D6220E26247007536CD /* MapsModuleProviding.swift */,
+				CA6A8D6E20E2648E007536CD /* MapsComponentBuilder.swift */,
+				CA6A8D6220E26247007536CD /* MapsComponentFactory.swift */,
 				CA6A8D7020E2649C007536CD /* MapsModule.swift */,
 				CA6A8DA120E2CB5C007536CD /* MapsModuleDelegate.swift */,
 			);
-			path = Module;
+			path = Component;
 			sourceTree = "<group>";
 		};
 		CA6A8D6420E26387007536CD /* Maps */ = {
 			isa = PBXGroup;
 			children = (
-				CA6A8D7720E264D6007536CD /* MapsPresenterTestBuilder.swift */,
-				CA6A8DA520E2CD48007536CD /* Interactor Tests */,
 				CA6A8D6520E26390007536CD /* Presenter Tests */,
-				CA6A8D7220E264AB007536CD /* Test Doubles */,
+				CA6A8DA520E2CD48007536CD /* View Model Tests */,
 			);
 			path = Maps;
 			sourceTree = "<group>";
@@ -4461,10 +4459,12 @@
 			isa = PBXGroup;
 			children = (
 				CA6A8D8F20E2C2C8007536CD /* BeforeMapsSceneLoads_MapsPresenterShould.swift */,
+				CA6A8D7720E264D6007536CD /* MapsPresenterTestBuilder.swift */,
 				CA6A8D9320E2C596007536CD /* WhenBindingMap_MapsPresenterShould.swift */,
 				CA6A8D6620E263A0007536CD /* WhenBuildingMapsModule.swift */,
 				CA6A8D8120E2BA6C007536CD /* WhenMapsSceneLoads_MapsPresenterShould.swift */,
 				CA6A8D9D20E2CA58007536CD /* WhenSelectingMap_MapsPresenterShould.swift */,
+				CA6A8D7220E264AB007536CD /* Test Doubles */,
 			);
 			path = "Presenter Tests";
 			sourceTree = "<group>";
@@ -4513,14 +4513,14 @@
 			path = UIKit;
 			sourceTree = "<group>";
 		};
-		CA6A8D8320E2BB7D007536CD /* Interactor */ = {
+		CA6A8D8320E2BB7D007536CD /* View Model */ = {
 			isa = PBXGroup;
 			children = (
-				CA6A8D8420E2BB88007536CD /* MapsInteractor.swift */,
+				CA6A8DAF20E2CF97007536CD /* DefaultMapsViewModelFactory.swift */,
 				CA6A8D8620E2BB90007536CD /* MapsViewModel.swift */,
-				CA6A8DAF20E2CF97007536CD /* DefaultMapsInteractor.swift */,
+				CA6A8D8420E2BB88007536CD /* MapsViewModelFactory.swift */,
 			);
-			path = Interactor;
+			path = "View Model";
 			sourceTree = "<group>";
 		};
 		CA6A8D8C20E2BC63007536CD /* Presenter */ = {
@@ -4531,12 +4531,12 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
-		CA6A8DA520E2CD48007536CD /* Interactor Tests */ = {
+		CA6A8DA520E2CD48007536CD /* View Model Tests */ = {
 			isa = PBXGroup;
 			children = (
 				CA6A8DA620E2CD6E007536CD /* WhenPreparingViewModel_MapsInteractorShould.swift */,
 			);
-			path = "Interactor Tests";
+			path = "View Model Tests";
 			sourceTree = "<group>";
 		};
 		CA6A8DC320E41504007536CD /* Map Detail */ = {
@@ -6882,7 +6882,7 @@
 				CA2AA2EC22C94F6300C0E1A1 /* ViewDealerIntentDefinition.swift in Sources */,
 				CA17FE9420586A3C005A4C05 /* DefaultKnowledgeDetailViewModelFactory.swift in Sources */,
 				CACF1E6D20B1CDB800D904B5 /* EventDetailViewModelFactory.swift in Sources */,
-				CA6A8D6320E26247007536CD /* MapsModuleProviding.swift in Sources */,
+				CA6A8D6320E26247007536CD /* MapsComponentFactory.swift in Sources */,
 				CA6A8DC620E41513007536CD /* MapDetailComponentFactory.swift in Sources */,
 				CA73AEF1201A08BA004E77BF /* KnowledgeGroupsListComponentFactory.swift in Sources */,
 				CAFA070A245DEF6F00A807F5 /* ShowMapFromMaps.swift in Sources */,
@@ -6900,7 +6900,7 @@
 				CA50B1B6226111080091E425 /* EventFeedbackSceneDelegate.swift in Sources */,
 				CA630C0722A0696D00754C27 /* ViewEventIntentDefinition.swift in Sources */,
 				CA50B1BC2261112D0091E425 /* EventFeedbackSceneFactory.swift in Sources */,
-				CA6A8D6F20E2648E007536CD /* MapsModuleBuilder.swift in Sources */,
+				CA6A8D6F20E2648E007536CD /* MapsComponentBuilder.swift in Sources */,
 				CA630BD1229F11CC00754C27 /* SystemEventInteractionsRecorder.swift in Sources */,
 				CA8E17F51F817AE8003C348C /* PreloadPresenter.swift in Sources */,
 				CA72845D209D0627007D912A /* StoryboardAnnouncementDetailSceneFactory.swift in Sources */,
@@ -6936,7 +6936,7 @@
 				CAA28876245C68F10090B663 /* NavigateFromAnnouncementsToAnnouncement.swift in Sources */,
 				9A861EB71F25550700B75A8C /* SplashScene.swift in Sources */,
 				CAF81C7320DDA9D100898C52 /* DefaultDealerDetailViewModelFactory.swift in Sources */,
-				CA6A8DB020E2CF97007536CD /* DefaultMapsInteractor.swift in Sources */,
+				CA6A8DB020E2CF97007536CD /* DefaultMapsViewModelFactory.swift in Sources */,
 				CAFA06FA245DD64D00A807F5 /* ShowKnowledgeContentFromListing.swift in Sources */,
 				CA2761B220E0234C000E52AC /* StoryboardHybridWebSceneFactory.swift in Sources */,
 				CA36A4D620DAE2C000EE6537 /* DealersComponentDelegate.swift in Sources */,
@@ -7257,7 +7257,7 @@
 				CA73AEF3201A08C4004E77BF /* KnowledgeGroupsListComponentFactoryImpl.swift in Sources */,
 				CA1B6F3320DB9B4F00ADF414 /* DealerDetailSummaryTableViewCell.swift in Sources */,
 				CA1B6F0B20DB816600ADF414 /* DealerDetailSceneFactory.swift in Sources */,
-				CA6A8D8520E2BB88007536CD /* MapsInteractor.swift in Sources */,
+				CA6A8D8520E2BB88007536CD /* MapsViewModelFactory.swift in Sources */,
 				CA8E7EF61FB08E2500F0BF10 /* AppWindowWireframe.swift in Sources */,
 				CA82DB5622D6636700467C2F /* ShareEventActionViewModel.swift in Sources */,
 				CA637584208CDE3F00536BE2 /* ScheduleComponentBuilder.swift in Sources */,

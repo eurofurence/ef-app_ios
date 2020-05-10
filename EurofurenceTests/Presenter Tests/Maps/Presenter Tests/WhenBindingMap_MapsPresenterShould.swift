@@ -6,7 +6,7 @@ class WhenBindingMap_MapsPresenterShould: XCTestCase {
 
     func testBindTheNameOfTheMapOntoTheComponent() {
         let viewModel = FakeMapsViewModel()
-        let interactor = FakeMapsInteractor(viewModel: viewModel)
+        let interactor = FakeMapsViewModelFactory(viewModel: viewModel)
         let context = MapsPresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
         let mapViewModel = viewModel.maps.randomElement()
@@ -17,7 +17,7 @@ class WhenBindingMap_MapsPresenterShould: XCTestCase {
 
     func testBindTheMapPreviewOntoTheComponent() {
         let viewModel = FakeMapsViewModel()
-        let interactor = FakeMapsInteractor(viewModel: viewModel)
+        let interactor = FakeMapsViewModelFactory(viewModel: viewModel)
         let context = MapsPresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
         let mapViewModel = viewModel.maps.randomElement()

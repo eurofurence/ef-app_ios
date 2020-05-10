@@ -16,11 +16,11 @@ class MapsPresenter: MapsSceneDelegate {
     }
 
     private let scene: MapsScene
-    private let interactor: MapsInteractor
-    private let delegate: MapsModuleDelegate
+    private let interactor: MapsViewModelFactory
+    private let delegate: MapsComponentDelegate
     private var viewModel: MapsViewModel?
 
-    init(scene: MapsScene, interactor: MapsInteractor, delegate: MapsModuleDelegate) {
+    init(scene: MapsScene, interactor: MapsViewModelFactory, delegate: MapsComponentDelegate) {
         self.scene = scene
         self.interactor = interactor
         self.delegate = delegate
@@ -38,7 +38,7 @@ class MapsPresenter: MapsSceneDelegate {
 
     func simulateSceneDidSelectMap(at index: Int) {
         guard let identifier = viewModel?.identifierForMap(at: index) else { return }
-        delegate.mapsModuleDidSelectMap(identifier: identifier)
+        delegate.mapsComponentDidSelectMap(identifier: identifier)
     }
 
 }

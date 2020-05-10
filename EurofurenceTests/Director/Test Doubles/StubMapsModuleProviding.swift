@@ -2,21 +2,21 @@ import Eurofurence
 import EurofurenceModel
 import UIKit
 
-class StubMapsModuleProviding: MapsModuleProviding {
+class StubMapsComponentFactory: MapsComponentFactory {
 
     let stubInterface = FakeViewController()
-    private(set) var delegate: MapsModuleDelegate?
-    func makeMapsModule(_ delegate: MapsModuleDelegate) -> UIViewController {
+    private(set) var delegate: MapsComponentDelegate?
+    func makeMapsModule(_ delegate: MapsComponentDelegate) -> UIViewController {
         self.delegate = delegate
         return stubInterface
     }
 
 }
 
-extension StubMapsModuleProviding {
+extension StubMapsComponentFactory {
 
     func simulateDidSelectMap(_ map: MapIdentifier) {
-        delegate?.mapsModuleDidSelectMap(identifier: map)
+        delegate?.mapsComponentDidSelectMap(identifier: map)
     }
 
 }

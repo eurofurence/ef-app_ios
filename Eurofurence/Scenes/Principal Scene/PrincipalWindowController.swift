@@ -70,8 +70,8 @@ struct PrincipalWindowController {
         )
         
         let mapsContentControllerFactory = MapsContentControllerFactory(
-            mapsModuleProviding: moduleRepository.mapsModuleProviding,
-            mapsModuleDelegate: mapSubrouter
+            mapsComponentFactory: moduleRepository.mapsComponentFactory,
+            mapsComponentDelegate: mapSubrouter
         )
         
         let collectThemAllContentControllerFactory = CollectThemAllContentControllerFactory(

@@ -4,7 +4,7 @@ class WhenSelectingMap_MapsPresenterShould: XCTestCase {
 
     func testTellTheDelegateToShowDetailsForMapWithItsIdentifier() {
         let viewModel = FakeMapsViewModel()
-        let interactor = FakeMapsInteractor(viewModel: viewModel)
+        let interactor = FakeMapsViewModelFactory(viewModel: viewModel)
         let context = MapsPresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
         let mapViewModel = viewModel.maps.randomElement()

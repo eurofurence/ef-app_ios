@@ -3,10 +3,10 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import Foundation
 
-class CapturingMapsModuleDelegate: MapsModuleDelegate {
+class CapturingMapsComponentDelegate: MapsComponentDelegate {
 
     private(set) var capturedMapIdentifierToPresent: MapIdentifier?
-    func mapsModuleDidSelectMap(identifier: MapIdentifier) {
+    func mapsComponentDidSelectMap(identifier: MapIdentifier) {
         capturedMapIdentifierToPresent = identifier
     }
 

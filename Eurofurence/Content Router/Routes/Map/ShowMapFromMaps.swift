@@ -1,6 +1,6 @@
 import EurofurenceModel
 
-public struct ShowMapFromMaps: MapsModuleDelegate {
+public struct ShowMapFromMaps: MapsComponentDelegate {
     
     private let router: ContentRouter
     
@@ -8,7 +8,7 @@ public struct ShowMapFromMaps: MapsModuleDelegate {
         self.router = router
     }
     
-    public func mapsModuleDidSelectMap(identifier: MapIdentifier) {
+    public func mapsComponentDidSelectMap(identifier: MapIdentifier) {
         try? router.route(MapContentRepresentation(identifier: identifier))
     }
     

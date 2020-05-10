@@ -2,7 +2,7 @@
 import EurofurenceModel
 import Foundation
 
-struct FakeMapsInteractor: MapsInteractor {
+struct FakeMapsViewModelFactory: MapsViewModelFactory {
 
     var viewModel: MapsViewModel
 

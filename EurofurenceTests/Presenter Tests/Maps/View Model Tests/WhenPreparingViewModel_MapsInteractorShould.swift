@@ -3,11 +3,11 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import XCTest
 
-class WhenPreparingViewModel_MapsInteractorShould: XCTestCase {
+class WhenPreparingViewModel_MapsViewModelFactoryShould: XCTestCase {
 
     func testAdaptNumberOfMapsFromServiceIntoMapsCount() {
         let mapsService = FakeMapsService()
-        let interactor = DefaultMapsInteractor(mapsService: mapsService)
+        let interactor = DefaultMapsViewModelFactory(mapsService: mapsService)
         var viewModel: MapsViewModel?
         interactor.makeMapsViewModel { viewModel = $0 }
 
@@ -16,7 +16,7 @@ class WhenPreparingViewModel_MapsInteractorShould: XCTestCase {
 
     func testAdaptMapNamesIntoMapViewModel() {
         let mapsService = FakeMapsService()
-        let interactor = DefaultMapsInteractor(mapsService: mapsService)
+        let interactor = DefaultMapsViewModelFactory(mapsService: mapsService)
         var viewModel: MapsViewModel?
         interactor.makeMapsViewModel { viewModel = $0 }
         let randomMap = mapsService.maps.randomElement()
@@ -27,7 +27,7 @@ class WhenPreparingViewModel_MapsInteractorShould: XCTestCase {
 
     func testAdaptMapDataIntoPreview() {
         let mapsService = FakeMapsService()
-        let interactor = DefaultMapsInteractor(mapsService: mapsService)
+        let interactor = DefaultMapsViewModelFactory(mapsService: mapsService)
         var viewModel: MapsViewModel?
         interactor.makeMapsViewModel { viewModel = $0 }
         let randomMap = mapsService.maps.randomElement()
@@ -40,7 +40,7 @@ class WhenPreparingViewModel_MapsInteractorShould: XCTestCase {
 
     func testExposeIdentifierForSpecifiedMap() {
         let mapsService = FakeMapsService()
-        let interactor = DefaultMapsInteractor(mapsService: mapsService)
+        let interactor = DefaultMapsViewModelFactory(mapsService: mapsService)
         var viewModel: MapsViewModel?
         interactor.makeMapsViewModel { viewModel = $0 }
         let randomMap = mapsService.maps.randomElement()

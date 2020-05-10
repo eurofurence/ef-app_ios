@@ -1,11 +1,11 @@
 import UIKit
 
-struct MapsModule: MapsModuleProviding {
+struct MapsComponentFactoryImpl: MapsComponentFactory {
 
     var sceneFactory: MapsSceneFactory
-    var interactor: MapsInteractor
+    var interactor: MapsViewModelFactory
 
-    func makeMapsModule(_ delegate: MapsModuleDelegate) -> UIViewController {
+    func makeMapsModule(_ delegate: MapsComponentDelegate) -> UIViewController {
         let scene = sceneFactory.makeMapsScene()
         _ = MapsPresenter(scene: scene, interactor: interactor, delegate: delegate)
 

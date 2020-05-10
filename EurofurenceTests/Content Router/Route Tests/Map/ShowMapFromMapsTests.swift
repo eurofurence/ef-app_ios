@@ -8,7 +8,7 @@ class ShowMapFromMapsTests: XCTestCase {
         let router = FakeContentRouter()
         let navigator = ShowMapFromMaps(router: router)
         let map = MapIdentifier.random
-        navigator.mapsModuleDidSelectMap(identifier: map)
+        navigator.mapsComponentDidSelectMap(identifier: map)
         
         router.assertRouted(to: MapContentRepresentation(identifier: map))
     }
