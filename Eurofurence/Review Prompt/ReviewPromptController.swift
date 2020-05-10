@@ -16,15 +16,6 @@ struct ReviewPromptController: EventsServiceObserver {
     private var appStateProviding: AppStateProviding
     private var reviewPromptAppVersionRepository: ReviewPromptAppVersionRepository
 
-    static func initialize() {
-        _ = ReviewPromptController(config: .default,
-                                   reviewPromptAction: StoreKitReviewPromptAction(),
-                                   versionProviding: BundleAppVersionProviding.shared,
-                                   reviewPromptAppVersionRepository: UserDefaultsReviewPromptAppVersionRepository(),
-                                   appStateProviding: ApplicationAppStateProviding(),
-                                   eventsService: ApplicationStack.instance.services.events)
-    }
-
     init(config: ReviewPromptController.Config,
          reviewPromptAction: ReviewPromptAction,
          versionProviding: AppVersionProviding,

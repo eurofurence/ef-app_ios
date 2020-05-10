@@ -6,14 +6,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: UIApplicationDelegate
 
-	var window: UIWindow? = UIWindow()
+	var window: UIWindow?
 
     func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
         prepareFrameworks()
-        prepareApplicationStack()
+        prepareApplication()
         prepareNotificationDelegate()
         installDebugModule()
         showApplicationWindow()
@@ -21,12 +21,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 		return true
 	}
+    
+    @available(iOS 13.0, *)
+    func application(
+        _ application: UIApplication,
+        configurationForConnecting connectingSceneSession: UISceneSession,
+        options: UIScene.ConnectionOptions
+    ) -> UISceneConfiguration {
+        UISceneConfiguration(name: "Principal Window Scene", sessionRole: connectingSceneSession.role)
+    }
 
     func application(
         _ application: UIApplication,
         didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
     ) {
-        ApplicationStack.storeRemoteNotificationsToken(deviceToken)
+        Application.storeRemoteNotificationsToken(deviceToken)
     }
 
     func application(
@@ -34,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didReceiveRemoteNotification userInfo: [AnyHashable: Any],
         fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void
     ) {
-        ApplicationStack.executeBackgroundFetch(completionHandler: completionHandler)
+        Application.executeBackgroundFetch(completionHandler: completionHandler)
 	}
     
     func application(
@@ -42,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         continue userActivity: NSUserActivity,
         restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void
     ) -> Bool {
-        ApplicationStack.resume(activity: userActivity)
+        Application.resume(activity: userActivity)
         return true
     }
     
@@ -52,10 +61,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
     }
     
-    private func prepareApplicationStack() {
-        ApplicationStack.assemble()
+    private func prepareApplication() {
+        Application.assemble()
         Theme.apply()
-        ReviewPromptController.initialize()
     }
     
     private func requestRemoteNotificationsDeviceToken() {
@@ -67,7 +75,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     private func showApplicationWindow() {
-        window?.makeKeyAndVisible()
+        if #available(iOS 13.0, *) {
+            
+        } else {
+            let window = UIWindow()
+            Application.instance.configurePrincipalScene(window: window)
+            window.makeKeyAndVisible()
+            
+            self.window = window
+        }
     }
 
 }

@@ -37,10 +37,9 @@ class TutorialModuleTestBuilder {
     }
 
     func build() -> TutorialModuleTestBuilder.Context {
-        let vc = TutorialModuleBuilder()
+        let vc = TutorialModuleBuilder(alertRouter: alertRouter)
             .with(tutorialSceneFactory)
             .with(presentationAssets)
-            .with(alertRouter)
             .with(stateProviding)
             .with(networkReachability)
             .with(pushPermissionsRequestStateProviding)
