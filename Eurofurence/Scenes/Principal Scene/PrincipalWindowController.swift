@@ -75,7 +75,7 @@ struct PrincipalWindowController {
         )
         
         let collectThemAllContentControllerFactory = CollectThemAllContentControllerFactory(
-            collectThemAllModuleProviding: moduleRepository.collectThemAllModuleProviding
+            collectThemAllComponentFactory: moduleRepository.collectThemAllComponentFactory
         )
         
         let additionalServicesContentControllerFactory = AdditionalServicesContentControllerFactory(

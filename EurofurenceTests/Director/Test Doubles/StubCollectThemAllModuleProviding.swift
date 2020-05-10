@@ -1,10 +1,10 @@
 import Eurofurence
 import UIKit
 
-class StubCollectThemAllModuleProviding: CollectThemAllModuleProviding {
+class StubCollectThemAllComponentFactory: CollectThemAllComponentFactory {
 
     let stubInterface = FakeViewController()
-    func makeCollectThemAllModule() -> UIViewController {
+    func makeCollectThemAllComponent() -> UIViewController {
         return stubInterface
     }
 

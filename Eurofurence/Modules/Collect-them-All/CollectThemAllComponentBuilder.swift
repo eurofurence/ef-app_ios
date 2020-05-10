@@ -1,7 +1,7 @@
 import EurofurenceModel
 import UIKit
 
-class CollectThemAllModuleBuilder {
+class CollectThemAllComponentBuilder {
 
     private var sceneFactory: HybridWebSceneFactory
     private let service: CollectThemAllService
@@ -12,13 +12,13 @@ class CollectThemAllModuleBuilder {
     }
 
     @discardableResult
-    func with(_ sceneFactory: HybridWebSceneFactory) -> CollectThemAllModuleBuilder {
+    func with(_ sceneFactory: HybridWebSceneFactory) -> CollectThemAllComponentBuilder {
         self.sceneFactory = sceneFactory
         return self
     }
 
-    func build() -> CollectThemAllModuleProviding {
-        return CollectThemAllModule(sceneFactory: sceneFactory, service: service)
+    func build() -> CollectThemAllComponentFactory {
+        CollectThemAllComponentFactoryImpl(sceneFactory: sceneFactory, service: service)
     }
 
 }

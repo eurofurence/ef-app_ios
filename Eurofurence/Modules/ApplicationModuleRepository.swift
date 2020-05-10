@@ -10,7 +10,7 @@ struct ApplicationModuleRepository {
     let scheduleComponentFactory: ScheduleComponentFactory
     let dealersModuleProviding: DealersModuleProviding
     let dealerDetailModuleProviding: DealerDetailModuleProviding
-    let collectThemAllModuleProviding: CollectThemAllModuleProviding
+    let collectThemAllComponentFactory: CollectThemAllComponentFactory
     let messagesModuleProviding: MessagesModuleProviding
     let loginModuleProviding: LoginModuleProviding
     let messageDetailModuleProviding: MessageDetailModuleProviding
@@ -76,7 +76,7 @@ struct ApplicationModuleRepository {
         let dealerDetailInteractor = DefaultDealerDetailInteractor(dealersService: services.dealers, shareService: shareService)
         dealerDetailModuleProviding = DealerDetailModuleBuilder(dealerDetailInteractor: dealerDetailInteractor, dealerInteractionRecorder: dealerInteractionRecorder).build()
         
-        collectThemAllModuleProviding = CollectThemAllModuleBuilder(service: services.collectThemAll).build()
+        collectThemAllComponentFactory = CollectThemAllComponentBuilder(service: services.collectThemAll).build()
         messagesModuleProviding = MessagesModuleBuilder(authenticationService: services.authentication, privateMessagesService: services.privateMessages).build()
         
         loginModuleProviding = LoginModuleBuilder(

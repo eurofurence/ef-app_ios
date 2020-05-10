@@ -1,12 +1,12 @@
 import EurofurenceModel
 import UIKit
 
-struct CollectThemAllModule: CollectThemAllModuleProviding {
+struct CollectThemAllComponentFactoryImpl: CollectThemAllComponentFactory {
 
     var sceneFactory: HybridWebSceneFactory
     var service: CollectThemAllService
 
-    func makeCollectThemAllModule() -> UIViewController {
+    func makeCollectThemAllComponent() -> UIViewController {
         let scene = sceneFactory.makeHybridWebScene()
         _ = CollectThemAllPresenter(scene: scene, service: service)
 

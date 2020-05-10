@@ -13,10 +13,10 @@ class CollectThemAllPresenterTestBuilder {
     func build() -> Context {
         let sceneFactory = StubHybridWebSceneFactory()
         let service = FakeCollectThemAllService()
-        let module = CollectThemAllModuleBuilder(service: service)
+        let module = CollectThemAllComponentBuilder(service: service)
             .with(sceneFactory)
             .build()
-            .makeCollectThemAllModule()
+            .makeCollectThemAllComponent()
 
         return Context(producedViewController: module,
                        scene: sceneFactory.interface,
