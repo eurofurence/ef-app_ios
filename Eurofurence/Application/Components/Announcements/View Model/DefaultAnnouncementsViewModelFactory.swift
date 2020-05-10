@@ -1,13 +1,23 @@
 import EurofurenceModel
 import Foundation
 
-struct DefaultAnnouncementsViewModelFactory: AnnouncementsViewModelFactory {
+public struct DefaultAnnouncementsViewModelFactory: AnnouncementsViewModelFactory {
 
     var announcementsService: AnnouncementsService
     var announcementDateFormatter: AnnouncementDateFormatter
 	var markdownRenderer: MarkdownRenderer
+    
+    public init(
+        announcementsService: AnnouncementsService,
+        announcementDateFormatter: AnnouncementDateFormatter,
+        markdownRenderer: MarkdownRenderer
+    ) {
+        self.announcementsService = announcementsService
+        self.announcementDateFormatter = announcementDateFormatter
+        self.markdownRenderer = markdownRenderer
+    }
 
-    func makeViewModel(completionHandler: @escaping (AnnouncementsListViewModel) -> Void) {
+    public func makeViewModel(completionHandler: @escaping (AnnouncementsListViewModel) -> Void) {
         completionHandler(ViewModel(
             announcementsService: announcementsService,
             announcementDateFormatter: announcementDateFormatter,
