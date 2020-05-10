@@ -8,18 +8,17 @@ class Application {
 
     static let instance: Application = Application()
     private let session: EurofurenceSession
-    private let services: Services
     private let backgroundFetcher: BackgroundFetchService
     private let notificationScheduleController: NotificationScheduleController
     private let reviewPromptController: ReviewPromptController
-    private let router: ContentRouter
+    private let principalWindowController: PrincipalWindowController
     
     static func assemble() {
         _ = instance
     }
     
     static func storeRemoteNotificationsToken(_ deviceToken: Data) {
-        instance.services.notifications.storeRemoteNotificationsToken(deviceToken)
+        instance.session.services.notifications.storeRemoteNotificationsToken(deviceToken)
     }
     
     static func executeBackgroundFetch(
@@ -29,13 +28,13 @@ class Application {
     }
     
     static func openNotification(_ userInfo: [AnyHashable: Any], completionHandler: @escaping () -> Void) {
-        try? instance.router.route(NotificationContentRepresentation(userInfo: userInfo))
+        instance.principalWindowController.route(NotificationContentRepresentation(userInfo: userInfo))
     }
     
     static func resume(activity: NSUserActivity) {
         let activityDescription = SystemActivityDescription(userActivity: activity)
         let contentRepresentation = UserActivityContentRepresentation(activity: activityDescription)
-        try? instance.router.route(contentRepresentation)
+        instance.principalWindowController.route(contentRepresentation)
     }
 
     private init() {
@@ -68,10 +67,8 @@ class Application {
             .with(UIKitMapCoordinateRender())
             .with(UpdateRemoteConfigRefreshCollaboration(remoteConfigurationLoader: remoteConfigurationLoader))
             .build()
-
-        services = session.services
         
-        backgroundFetcher = BackgroundFetchService(refreshService: services.refresh)
+        backgroundFetcher = BackgroundFetchService(refreshService: session.services.refresh)
         
         // TODO: Source from preferences/Firebase
         let upcomingEventReminderInterval: TimeInterval = 900
@@ -86,13 +83,40 @@ class Application {
             versionProviding: BundleAppVersionProviding.shared,
             reviewPromptAppVersionRepository: UserDefaultsReviewPromptAppVersionRepository(),
             appStateProviding: ApplicationAppStateProviding(),
-            eventsService: services.events
+            eventsService: session.services.events
         )
         
+        guard let appWindow = UIApplication.shared.delegate?.window,
+              let window = appWindow else { fatalError() }
+        
+        principalWindowController = PrincipalWindowController(
+            window: window,
+            services: session.services,
+            repositories: session.repositories,
+            urlOpener: urlOpener
+        )
+    }
+
+}
+
+struct PrincipalWindowController {
+    
+    private let router: ContentRouter
+    
+    func route<T>(_ content: T) where T: ContentRepresentation {
+        try? router.route(content)
+    }
+    
+    init(
+        window: UIWindow,
+        services: Services,
+        repositories: Repositories,
+        urlOpener: URLOpener
+    ) {
         let router = MutableContentRouter()
         self.router = router
         
-        let moduleRepository = ApplicationModuleRepository(services: services, repositories: session.repositories)
+        let moduleRepository = ApplicationModuleRepository(services: services, repositories: repositories)
         let newsSubrouter = NewsSubrouter(router: router)
         let scheduleSubrouter = ShowEventFromSchedule(router: router)
         let dealerSubrouter = ShowDealerFromDealers(router: router)
@@ -103,9 +127,6 @@ class Application {
             service: services.authentication,
             router: router
         )
-        
-        guard let appWindow = UIApplication.shared.delegate?.window,
-              let window = appWindow else { fatalError() }
         
         let contentWireframe = WindowContentWireframe(window: window)
         let modalWireframe = WindowModalWireframe(window: window)
@@ -177,5 +198,5 @@ class Application {
         
         _ = PrincipalWindowSceneController(sessionState: services.sessionState, scene: principalWindowScene)
     }
-
+    
 }
