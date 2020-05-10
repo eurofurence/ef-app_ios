@@ -1,6 +1,6 @@
 import UIKit
 
-protocol AnnouncementsSceneFactory {
+public protocol AnnouncementsSceneFactory {
 
     func makeAnnouncementsScene() -> UIViewController & AnnouncementsScene
 

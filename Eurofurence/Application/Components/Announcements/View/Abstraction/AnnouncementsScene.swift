@@ -1,6 +1,6 @@
 import Foundation
 
-protocol AnnouncementsScene {
+public protocol AnnouncementsScene {
 
     func setDelegate(_ delegate: AnnouncementsSceneDelegate)
     func setAnnouncementsTitle(_ title: String)
@@ -9,7 +9,7 @@ protocol AnnouncementsScene {
 
 }
 
-protocol AnnouncementsSceneDelegate {
+public protocol AnnouncementsSceneDelegate {
 
     func announcementsSceneDidLoad()
     func announcementsSceneDidSelectAnnouncement(at index: Int)
