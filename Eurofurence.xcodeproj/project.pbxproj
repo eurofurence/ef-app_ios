@@ -3070,7 +3070,7 @@
 			isa = PBXGroup;
 			children = (
 				CA2AA2E622C94D8200C0E1A1 /* WhenRecordingDealerInteraction.swift */,
-				CA2AA2E822C94F4400C0E1A1 /* CapturingViewDealerIntentDonor.swift */,
+				CAF198462468A08B005DFBBE /* Test Doubles */,
 			);
 			path = Dealers;
 			sourceTree = "<group>";
@@ -3437,8 +3437,8 @@
 		CA630BCD229F10AF00754C27 /* Events */ = {
 			isa = PBXGroup;
 			children = (
-				CA630BD2229F12D100754C27 /* CapturingEventIntentDonor.swift */,
 				CA630BCE229F10BF00754C27 /* WhenRecordingEventInteraction.swift */,
+				CAF198472468A181005DFBBE /* Test Doubles */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -3485,10 +3485,10 @@
 		CA630C0122A068D300754C27 /* Test Doubles */ = {
 			isa = PBXGroup;
 			children = (
-				CA630C0222A068DC00754C27 /* StubEventIntentDefinitionProviding.swift */,
 				CAB0FD5122C90B1E00D4CB98 /* IntentActivityDescription.swift */,
-				CAB0FD6622C93A1400D4CB98 /* URLActivityDescription.swift */,
 				CA2AA2F922C9531900C0E1A1 /* StubDealerIntentDefinitionProviding.swift */,
+				CA630C0222A068DC00754C27 /* StubEventIntentDefinitionProviding.swift */,
+				CAB0FD6622C93A1400D4CB98 /* URLActivityDescription.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -6242,6 +6242,22 @@
 			isa = PBXGroup;
 			children = (
 				CACEA06E2242832F00DFF26C /* CapturingNotificationScheduler.swift */,
+			);
+			path = "Test Doubles";
+			sourceTree = "<group>";
+		};
+		CAF198462468A08B005DFBBE /* Test Doubles */ = {
+			isa = PBXGroup;
+			children = (
+				CA2AA2E822C94F4400C0E1A1 /* CapturingViewDealerIntentDonor.swift */,
+			);
+			path = "Test Doubles";
+			sourceTree = "<group>";
+		};
+		CAF198472468A181005DFBBE /* Test Doubles */ = {
+			isa = PBXGroup;
+			children = (
+				CA630BD2229F12D100754C27 /* CapturingEventIntentDonor.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
