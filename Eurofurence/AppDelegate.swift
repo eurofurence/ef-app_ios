@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
         prepareFrameworks()
-        prepareApplicationStack()
+        prepareApplication()
         prepareNotificationDelegate()
         installDebugModule()
         showApplicationWindow()
@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
     ) {
-        ApplicationStack.storeRemoteNotificationsToken(deviceToken)
+        Application.storeRemoteNotificationsToken(deviceToken)
     }
 
     func application(
@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didReceiveRemoteNotification userInfo: [AnyHashable: Any],
         fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void
     ) {
-        ApplicationStack.executeBackgroundFetch(completionHandler: completionHandler)
+        Application.executeBackgroundFetch(completionHandler: completionHandler)
 	}
     
     func application(
@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         continue userActivity: NSUserActivity,
         restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void
     ) -> Bool {
-        ApplicationStack.resume(activity: userActivity)
+        Application.resume(activity: userActivity)
         return true
     }
     
@@ -52,8 +52,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
     }
     
-    private func prepareApplicationStack() {
-        ApplicationStack.assemble()
+    private func prepareApplication() {
+        Application.assemble()
         Theme.apply()
     }
     

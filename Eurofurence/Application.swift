@@ -2,11 +2,11 @@ import EurofurenceModel
 import Foundation
 import UIKit
 
-class ApplicationStack {
+class Application {
     
     private static let CID = ConventionIdentifier(identifier: "EF25")
 
-    static let instance: ApplicationStack = ApplicationStack()
+    static let instance: Application = Application()
     private let session: EurofurenceSession
     private let services: Services
     private let backgroundFetcher: BackgroundFetchService
@@ -42,11 +42,11 @@ class ApplicationStack {
         let jsonSession = URLSessionBasedJSONSession.shared
         let buildConfiguration = PreprocessorBuildConfigurationProviding()
         
-        let apiUrl = CIDAPIURLProviding(conventionIdentifier: ApplicationStack.CID)
+        let apiUrl = CIDAPIURLProviding(conventionIdentifier: Application.CID)
         let fcmRegistration = EurofurenceFCMDeviceRegistration(JSONSession: jsonSession, urlProviding: apiUrl)
         let remoteNotificationsTokenRegistration = FirebaseRemoteNotificationsTokenRegistration(buildConfiguration: buildConfiguration,
                                                                                                 appVersion: BundleAppVersionProviding.shared,
-                                                                                                conventionIdentifier: ApplicationStack.CID,
+                                                                                                conventionIdentifier: Application.CID,
                                                                                                 firebaseAdapter: FirebaseMessagingAdapter(),
                                                                                                 fcmRegistration: fcmRegistration)
         
@@ -54,9 +54,9 @@ class ApplicationStack {
         let conventionStartDateRepository = RemotelyConfiguredConventionStartDateRepository(remoteConfigurationLoader: remoteConfigurationLoader)
         
         let mandatory = EurofurenceSessionBuilder.Mandatory(
-            conventionIdentifier: ApplicationStack.CID,
+            conventionIdentifier: Application.CID,
             conventionStartDateRepository: conventionStartDateRepository,
-            shareableURLFactory: CIDBasedShareableURLFactory(conventionIdentifier: ApplicationStack.CID)
+            shareableURLFactory: CIDBasedShareableURLFactory(conventionIdentifier: Application.CID)
         )
         
         let urlOpener = AppURLOpener()

@@ -17,7 +17,7 @@ class AppNotificationDelegate: NSObject, UNUserNotificationCenterDelegate {
         didReceive response: UNNotificationResponse,
         withCompletionHandler completionHandler: @escaping () -> Void
     ) {
-        ApplicationStack.openNotification(
+        Application.openNotification(
             response.notification.request.content.userInfo,
             completionHandler: completionHandler
         )
