@@ -27,36 +27,17 @@ class WhenPreparingViewModel_AnnouncementsViewModelFactoryShould: XCTestCase {
         )
     }
 
-    func testIndicateTheTotalNumberOfAnnouncements() {
+    func testAdaptAnnouncementsAndTheirAttributes() {
         var viewModel: AnnouncementsListViewModel?
         viewModelFactory.makeViewModel { viewModel = $0 }
+        let announcementViewModel = viewModel?.announcementViewModel(at: announcement.index)
 
         XCTAssertEqual(announcements.count, viewModel?.numberOfAnnouncements)
-    }
-
-    func testAdaptAnnouncementTitles() {
-        var viewModel: AnnouncementsListViewModel?
-        viewModelFactory.makeViewModel { viewModel = $0 }
-        let announcementViewModel = viewModel?.announcementViewModel(at: announcement.index)
-
         XCTAssertEqual(announcement.element.title, announcementViewModel?.title)
-    }
-
-    func testAdaptAnnouncementContents() {
-        var viewModel: AnnouncementsListViewModel?
-        viewModelFactory.makeViewModel { viewModel = $0 }
-        let announcementViewModel = viewModel?.announcementViewModel(at: announcement.index)
-
-		XCTAssertEqual(markdownRenderer.stubbedContents(for: announcement.element.content), announcementViewModel?.detail)
-    }
-
-    func testAdaptAnnouncementDate() {
-        var viewModel: AnnouncementsListViewModel?
-        viewModelFactory.makeViewModel { viewModel = $0 }
-        let announcementViewModel = viewModel?.announcementViewModel(at: announcement.index)
-        let expected = announcementDateFormatter.string(from: announcement.element.date)
-
-        XCTAssertEqual(expected, announcementViewModel?.receivedDateTime)
+        XCTAssertEqual(markdownRenderer.stubbedContents(for: announcement.element.content), announcementViewModel?.detail)
+        XCTAssertEqual(announcementDateFormatter.string(from: announcement.element.date), announcementViewModel?.receivedDateTime)
+        XCTAssertEqual(false, announcementViewModel?.isRead)
+        XCTAssertEqual(announcement.element.identifier, viewModel?.identifierForAnnouncement(at: announcement.index))
     }
 
     func testAdaptReadAnnouncements() {
@@ -66,22 +47,6 @@ class WhenPreparingViewModel_AnnouncementsViewModelFactoryShould: XCTestCase {
         let announcementViewModel = viewModel?.announcementViewModel(at: announcement.index)
 
         XCTAssertEqual(true, announcementViewModel?.isRead)
-    }
-
-    func testAdaptUnreadAnnouncements() {
-        var viewModel: AnnouncementsListViewModel?
-        viewModelFactory.makeViewModel { viewModel = $0 }
-        let announcementViewModel = viewModel?.announcementViewModel(at: announcement.index)
-
-        XCTAssertEqual(false, announcementViewModel?.isRead)
-    }
-
-    func testProvideTheExpectedIdentifier() {
-        var viewModel: AnnouncementsListViewModel?
-        viewModelFactory.makeViewModel { viewModel = $0 }
-        let actual = viewModel?.identifierForAnnouncement(at: announcement.index)
-
-        XCTAssertEqual(announcement.element.identifier, actual)
     }
 
     func testUpdateTheAvailableViewModelsWhenAnnouncementsChange() {
