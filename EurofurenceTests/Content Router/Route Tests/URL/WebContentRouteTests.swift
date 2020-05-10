@@ -4,7 +4,7 @@ import XCTest
 class WebContentRouteTests: XCTestCase {
     
     func testShowsModalWebModule() {
-        let webComponentFactory = StubWebMobuleProviding()
+        let webComponentFactory = StubWebComponentFactory()
         let modalWireframe = CapturingModalWireframe()
         let route = WebContentRoute(
             webComponentFactory: webComponentFactory,

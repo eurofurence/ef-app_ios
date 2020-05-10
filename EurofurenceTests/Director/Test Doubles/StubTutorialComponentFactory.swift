@@ -2,7 +2,7 @@
 import EurofurenceModel
 import UIKit.UIViewController
 
-class StubTutorialModuleFactory: TutorialComponentFactory {
+class StubTutorialComponentFactory: TutorialComponentFactory {
 
     let stubInterface = UIViewController()
     private(set) var delegate: TutorialComponentDelegate?
@@ -13,7 +13,7 @@ class StubTutorialModuleFactory: TutorialComponentFactory {
 
 }
 
-extension StubTutorialModuleFactory {
+extension StubTutorialComponentFactory {
 
     func simulateTutorialFinished() {
         delegate?.tutorialModuleDidFinishPresentingTutorial()

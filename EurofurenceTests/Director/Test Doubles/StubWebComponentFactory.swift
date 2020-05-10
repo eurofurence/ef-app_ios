@@ -3,7 +3,7 @@ import EurofurenceModel
 import Foundation.NSURL
 import UIKit.UIViewController
 
-class StubWebMobuleProviding: WebComponentFactory {
+class StubWebComponentFactory: WebComponentFactory {
 
     var producedWebModules = [URL: UIViewController]()
     func makeWebModule(for url: URL) -> UIViewController {

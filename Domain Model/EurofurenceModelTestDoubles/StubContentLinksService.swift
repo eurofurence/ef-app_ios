@@ -1,19 +1,23 @@
 import EurofurenceModel
 import Foundation
 
-class StubContentLinksService: ContentLinksService {
+public class StubContentLinksService: ContentLinksService {
 
     private var stubbedLinkActions = [String: LinkContentLookupResult]()
+    
+    public init() {
+        
+    }
 
-    func stubContent(_ content: LinkContentLookupResult, for link: Link) {
+    public func stubContent(_ content: LinkContentLookupResult, for link: Link) {
         stubbedLinkActions[link.name] = content
     }
 
-    func lookupContent(for link: Link) -> LinkContentLookupResult? {
+    public func lookupContent(for link: Link) -> LinkContentLookupResult? {
         return stubbedLinkActions[link.name]
     }
     
-    enum URLContent {
+    public enum URLContent {
         case event(EventIdentifier)
         case dealer(DealerIdentifier)
         case knowledgeGroups
@@ -22,11 +26,11 @@ class StubContentLinksService: ContentLinksService {
     }
     
     private var urlContent = [URL: URLContent]()
-    func stub(_ content: URLContent, for url: URL) {
+    public func stub(_ content: URLContent, for url: URL) {
         urlContent[url] = content
     }
     
-    func describeContent(in url: URL, toVisitor visitor: URLContentVisitor) {
+    public func describeContent(in url: URL, toVisitor visitor: URLContentVisitor) {
         guard let content = urlContent[url] else { return }
         
         switch content {

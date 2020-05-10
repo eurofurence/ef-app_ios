@@ -7,7 +7,7 @@ class EventContentRouteTests: XCTestCase {
     func testShowsDetailContentController() {
         let identifier = EventIdentifier.random
         let content = EventContentRepresentation(identifier: identifier)
-        let eventModuleFactory = StubEventDetailModuleFactory()
+        let eventModuleFactory = StubEventDetailComponentFactory()
         let contentWireframe = CapturingContentWireframe()
         let route = EventContentRoute(
             eventModuleFactory: eventModuleFactory,
@@ -24,7 +24,7 @@ class EventContentRouteTests: XCTestCase {
     func testPropogatesHandlingForReviewRequest() {
         let identifier = EventIdentifier.random
         let content = EventContentRepresentation(identifier: identifier)
-        let eventModuleFactory = StubEventDetailModuleFactory()
+        let eventModuleFactory = StubEventDetailComponentFactory()
         let contentWireframe = CapturingContentWireframe()
         let eventDetailDelegate = CapturingEventDetailComponentDelegate()
         let route = EventContentRoute(

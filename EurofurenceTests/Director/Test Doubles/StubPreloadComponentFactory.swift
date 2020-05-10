@@ -2,7 +2,7 @@
 import EurofurenceModel
 import UIKit.UIViewController
 
-class StubPreloadComponentFactoryImplFactory: PreloadComponentFactory {
+class StubPreloadComponentFactory: PreloadComponentFactory {
 
     let stubInterface = UIViewController()
     private(set) var delegate: PreloadComponentDelegate?
@@ -13,7 +13,7 @@ class StubPreloadComponentFactoryImplFactory: PreloadComponentFactory {
 
 }
 
-extension StubPreloadComponentFactoryImplFactory {
+extension StubPreloadComponentFactory {
 
     func simulatePreloadFinished() {
         delegate?.preloadModuleDidFinishPreloading()

@@ -3,7 +3,7 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import UIKit.UIViewController
 
-class StubMessagesModuleFactory: MessagesComponentFactory {
+class StubMessagesComponentFactory: MessagesComponentFactory {
 
     let stubInterface = UIViewController()
     private(set) var delegate: MessagesComponentDelegate?
@@ -14,7 +14,7 @@ class StubMessagesModuleFactory: MessagesComponentFactory {
 
 }
 
-extension StubMessagesModuleFactory {
+extension StubMessagesComponentFactory {
 
     func simulateMessagePresentationRequested(_ message: MessageIdentifier) {
         delegate?.messagesModuleDidRequestPresentation(for: message)

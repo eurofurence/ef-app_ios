@@ -5,7 +5,7 @@ class LoginRouteTests: XCTestCase {
     
     func testModallyShowsLoginContentController() {
         let content = LoginContentRepresentation(completionHandler: { (_) in })
-        let loginModuleFactory = StubLoginModuleFactory()
+        let loginModuleFactory = StubLoginComponentFactory()
         let modalWireframe = CapturingModalWireframe()
         let route = LoginContentRoute(
             loginModuleFactory: loginModuleFactory,
@@ -21,7 +21,7 @@ class LoginRouteTests: XCTestCase {
         var didLogin: Bool?
         let content = LoginContentRepresentation(completionHandler: { didLogin = $0 })
         
-        let loginModuleFactory = StubLoginModuleFactory()
+        let loginModuleFactory = StubLoginComponentFactory()
         let modalWireframe = CapturingModalWireframe()
         let route = LoginContentRoute(
             loginModuleFactory: loginModuleFactory,
@@ -42,7 +42,7 @@ class LoginRouteTests: XCTestCase {
         var didLogin: Bool?
         let content = LoginContentRepresentation(completionHandler: { didLogin = $0 })
         
-        let loginModuleFactory = StubLoginModuleFactory()
+        let loginModuleFactory = StubLoginComponentFactory()
         let modalWireframe = CapturingModalWireframe()
         let route = LoginContentRoute(
             loginModuleFactory: loginModuleFactory,

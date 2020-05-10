@@ -7,7 +7,7 @@ class AnnouncementContentRouteTests: XCTestCase {
     func testShowsDetailContentControllerForAnnouncement() {
         let identifier = AnnouncementIdentifier.random
         let content = AnnouncementContentRepresentation(identifier: identifier)
-        let announcementModuleFactory = StubAnnouncementDetailModuleFactory()
+        let announcementModuleFactory = StubAnnouncementDetailComponentFactory()
         let contentWireframe = CapturingContentWireframe()
         let route = AnnouncementContentRoute(
             announcementModuleFactory: announcementModuleFactory,

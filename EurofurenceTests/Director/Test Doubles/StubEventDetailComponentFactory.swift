@@ -3,7 +3,7 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import UIKit
 
-class StubEventDetailModuleFactory: EventDetailComponentFactory {
+class StubEventDetailComponentFactory: EventDetailComponentFactory {
 
     let stubInterface = UIViewController()
     private(set) var capturedModel: EventIdentifier?

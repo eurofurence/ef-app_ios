@@ -87,7 +87,7 @@ class CapturingEventActionBannerComponent: EventActionBannerComponent {
     
 }
 
-class StubEventDetailComponentFactory: EventDetailItemComponentFactory {
+class StubEventDetailItemComponentFactory: EventDetailItemComponentFactory {
 
     let stubbedEventSummaryComponent = CapturingEventSummaryComponent()
     func makeEventSummaryComponent(configuringUsing block: (EventSummaryComponent) -> Void) -> Any {
@@ -164,7 +164,7 @@ class CapturingEventDetailScene: UIViewController, EventDetailScene {
         self.delegate = delegate
     }
 
-    fileprivate let componentFactory = StubEventDetailComponentFactory()
+    fileprivate let componentFactory = StubEventDetailItemComponentFactory()
     fileprivate var binder: EventDetailBinder?
     private(set) var numberOfBoundsComponents: Int?
     func bind(numberOfComponents: Int, using binder: EventDetailBinder) {

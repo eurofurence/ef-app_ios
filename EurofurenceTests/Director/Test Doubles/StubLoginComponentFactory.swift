@@ -2,7 +2,7 @@
 import EurofurenceModel
 import UIKit.UIViewController
 
-class StubLoginModuleFactory: LoginComponentFactory {
+class StubLoginComponentFactory: LoginComponentFactory {
 
     let stubInterface = CapturingViewController()
     private(set) var delegate: LoginComponentDelegate?
@@ -13,7 +13,7 @@ class StubLoginModuleFactory: LoginComponentFactory {
 
 }
 
-extension StubLoginModuleFactory {
+extension StubLoginComponentFactory {
 
     func simulateLoginCancelled() {
         delegate?.loginModuleDidCancelLogin()

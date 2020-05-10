@@ -5,7 +5,7 @@ import XCTest
 
 class MessagesContentRouteTests: XCTestCase {
     
-    var messagesComponentFactory: StubMessagesModuleFactory!
+    var messagesComponentFactory: StubMessagesComponentFactory!
     var contentWireframe: CapturingContentWireframe!
     var delegate: CapturingMessagesComponentDelegate!
     var route: MessagesContentRoute!
@@ -13,7 +13,7 @@ class MessagesContentRouteTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        messagesComponentFactory = StubMessagesModuleFactory()
+        messagesComponentFactory = StubMessagesComponentFactory()
         contentWireframe = CapturingContentWireframe()
         delegate = CapturingMessagesComponentDelegate()
         route = MessagesContentRoute(

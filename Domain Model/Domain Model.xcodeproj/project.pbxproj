@@ -471,6 +471,7 @@
 		CAF194C524687198005DFBBE /* StubKnowledgeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF194C424687198005DFBBE /* StubKnowledgeService.swift */; };
 		CAF194C924687839005DFBBE /* CapturingPrivateMessagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF194C824687839005DFBBE /* CapturingPrivateMessagesService.swift */; };
 		CAF194CB2468785B005DFBBE /* StubConventionCountdownService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF194CA2468785B005DFBBE /* StubConventionCountdownService.swift */; };
+		CAF198452468968E005DFBBE /* StubContentLinksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF198442468968E005DFBBE /* StubContentLinksService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -970,6 +971,7 @@
 		CAF194C424687198005DFBBE /* StubKnowledgeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubKnowledgeService.swift; sourceTree = "<group>"; };
 		CAF194C824687839005DFBBE /* CapturingPrivateMessagesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingPrivateMessagesService.swift; sourceTree = "<group>"; };
 		CAF194CA2468785B005DFBBE /* StubConventionCountdownService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubConventionCountdownService.swift; sourceTree = "<group>"; };
+		CAF198442468968E005DFBBE /* StubContentLinksService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubContentLinksService.swift; sourceTree = "<group>"; };
 		EC85896EECB18D7881B0665A /* Pods-EurofurenceModel-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-EurofurenceModel-metadata.plist"; sourceTree = "<group>"; };
 		FFE87D86E3ECE04913805820 /* Pods_EurofurenceModelTestDoubles.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EurofurenceModelTestDoubles.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -2024,6 +2026,7 @@
 				CA7A32A222B16EB4002AD939 /* StubAppVersionProviding.swift */,
 				CA7A32A722B16EB4002AD939 /* StubBuildConfigurationProviding.swift */,
 				CA7A32A922B16EB5002AD939 /* StubClock.swift */,
+				CAF198442468968E005DFBBE /* StubContentLinksService.swift */,
 				CAF194CA2468785B005DFBBE /* StubConventionCountdownService.swift */,
 				CAF194C424687198005DFBBE /* StubKnowledgeService.swift */,
 				CA7A32AA22B16EB5002AD939 /* Entity Test Doubles */,
@@ -2943,6 +2946,7 @@
 				CA7A32BE22B16EB5002AD939 /* ConferenceDayCharacteristics+RandomValueProviding.swift in Sources */,
 				CA7A32D022B16EB5002AD939 /* CapturingJSONSession.swift in Sources */,
 				CAF194CB2468785B005DFBBE /* StubConventionCountdownService.swift in Sources */,
+				CAF198452468968E005DFBBE /* StubContentLinksService.swift in Sources */,
 				CA7A32C822B16EB5002AD939 /* KnowledgeEntry+RandomValueProviding.swift in Sources */,
 				CA7A32B722B16EB5002AD939 /* ImageCharacteristics+RandomValueProviding.swift in Sources */,
 				CA7A32D522B16EB5002AD939 /* StubClock.swift in Sources */,
