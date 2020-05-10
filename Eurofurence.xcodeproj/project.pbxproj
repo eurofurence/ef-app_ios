@@ -1064,6 +1064,7 @@
 		CAF1983924688EAB005DFBBE /* WhenProducingCategoriesViewModel_DealersViewModelFactoryShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF196B824688EA9005DFBBE /* WhenProducingCategoriesViewModel_DealersViewModelFactoryShould.swift */; };
 		CAF1983A24688EAB005DFBBE /* AdditionalServicesPresenterTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF196BB24688EAA005DFBBE /* AdditionalServicesPresenterTestBuilder.swift */; };
 		CAF1983B24688EAB005DFBBE /* AdditionalServicesPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF196BC24688EAA005DFBBE /* AdditionalServicesPresenterTests.swift */; };
+		CAF198492468A8E3005DFBBE /* CapturingAnnouncementsComponentDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF198482468A8E3005DFBBE /* CapturingAnnouncementsComponentDelegate.swift */; };
 		CAF3C7441F9F5C550008F027 /* NewsComponentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C7431F9F5C550008F027 /* NewsComponentFactory.swift */; };
 		CAF3C7481F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C7471F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift */; };
 		CAF3C74C1F9F619C0008F027 /* NewsComponentFactoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C74B1F9F619C0008F027 /* NewsComponentFactoryImpl.swift */; };
@@ -2242,6 +2243,7 @@
 		CAF196B824688EA9005DFBBE /* WhenProducingCategoriesViewModel_DealersViewModelFactoryShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenProducingCategoriesViewModel_DealersViewModelFactoryShould.swift; sourceTree = "<group>"; };
 		CAF196BB24688EAA005DFBBE /* AdditionalServicesPresenterTestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdditionalServicesPresenterTestBuilder.swift; sourceTree = "<group>"; };
 		CAF196BC24688EAA005DFBBE /* AdditionalServicesPresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdditionalServicesPresenterTests.swift; sourceTree = "<group>"; };
+		CAF198482468A8E3005DFBBE /* CapturingAnnouncementsComponentDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingAnnouncementsComponentDelegate.swift; sourceTree = "<group>"; };
 		CAF3C7431F9F5C550008F027 /* NewsComponentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsComponentFactory.swift; sourceTree = "<group>"; };
 		CAF3C7471F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingNewsModuleDelegate.swift; sourceTree = "<group>"; };
 		CAF3C74B1F9F619C0008F027 /* NewsComponentFactoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsComponentFactoryImpl.swift; sourceTree = "<group>"; };
@@ -5526,6 +5528,7 @@
 			isa = PBXGroup;
 			children = (
 				CAF195A724688EA9005DFBBE /* CapturingAnnouncementComponent.swift */,
+				CAF198482468A8E3005DFBBE /* CapturingAnnouncementsComponentDelegate.swift */,
 				CAF195A824688EA9005DFBBE /* CapturingAnnouncementsScene.swift */,
 				CAF195A524688EA9005DFBBE /* FakeAnnouncementsListViewModel.swift */,
 				CAF195A424688EA9005DFBBE /* FakeAnnouncementsViewModelFactory.swift */,
@@ -7543,6 +7546,7 @@
 				CAF1975624688EAA005DFBBE /* WhenAnnouncementsSceneLoads_AnnouncementsPresenterShould.swift in Sources */,
 				CA52C68320D5980C009D3A9E /* ApplicationSignificantTimeChangeAdapterTests.swift in Sources */,
 				CAF197CA24688EAA005DFBBE /* CapturingNewsInteractorDelegate.swift in Sources */,
+				CAF198492468A8E3005DFBBE /* CapturingAnnouncementsComponentDelegate.swift in Sources */,
 				CAF1983724688EAB005DFBBE /* WhenToldToRefresh_DealersViewModelShould.swift in Sources */,
 				CAF1980C24688EAB005DFBBE /* VisibilityState.swift in Sources */,
 				CAF197C424688EAA005DFBBE /* WhenLoggedOutBeforeConvention_NewsViewModelProducerShould.swift in Sources */,
