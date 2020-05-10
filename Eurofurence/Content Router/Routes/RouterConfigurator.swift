@@ -40,7 +40,7 @@ struct RouterConfigurator {
     
     private func configureAnnouncementRoute() {
         router.add(AnnouncementContentRoute(
-            announcementModuleFactory: moduleRepository.announcementDetailModuleProviding,
+            announcementModuleFactory: moduleRepository.announcementDetailComponentFactory,
             contentWireframe: contentWireframe
         ))
     }

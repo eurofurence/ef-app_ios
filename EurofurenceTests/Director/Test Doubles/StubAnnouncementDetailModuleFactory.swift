@@ -3,7 +3,7 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import UIKit.UIViewController
 
-class StubAnnouncementDetailModuleFactory: AnnouncementDetailModuleProviding {
+class StubAnnouncementDetailModuleFactory: AnnouncementDetailComponentFactory {
 
     let stubInterface = UIViewController()
     private(set) var capturedModel: AnnouncementIdentifier?

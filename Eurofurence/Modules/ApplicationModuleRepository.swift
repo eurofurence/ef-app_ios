@@ -20,7 +20,7 @@ struct ApplicationModuleRepository {
     let mapsModuleProviding: MapsModuleProviding
     let mapDetailModuleProviding: MapDetailModuleProviding
     let announcementsModuleFactory: AnnouncementsModuleProviding
-    let announcementDetailModuleProviding: AnnouncementDetailModuleProviding
+    let announcementDetailComponentFactory: AnnouncementDetailComponentFactory
     let eventDetailModuleProviding: EventDetailModuleProviding
     let eventFeedbackModuleProviding: EventFeedbackModuleProviding
     let additionalServicesComponentFactory: AdditionalServicesComponentFactory
@@ -113,7 +113,7 @@ struct ApplicationModuleRepository {
         
         let announcementDetailInteractor = DefaultAnnouncementDetailInteractor(announcementsService: services.announcements,
                                                                                markdownRenderer: defaultMarkdownRenderer)
-        announcementDetailModuleProviding = AnnouncementDetailModuleBuilder(announcementDetailInteractor: announcementDetailInteractor).build()
+        announcementDetailComponentFactory = AnnouncementDetailComponentBuilder(announcementDetailInteractor: announcementDetailInteractor).build()
         
         let eventIntentDonor = ConcreteEventIntentDonor()
         let eventInteractionRecorder = SystemEventInteractionsRecorder(

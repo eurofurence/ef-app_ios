@@ -1,4 +1,4 @@
-class AnnouncementDetailModuleBuilder {
+class AnnouncementDetailComponentBuilder {
 
     private var sceneFactory: AnnouncementDetailSceneFactory
     private var announcementDetailInteractor: AnnouncementDetailInteractor
@@ -9,14 +9,16 @@ class AnnouncementDetailModuleBuilder {
     }
 
     @discardableResult
-    func with(_ sceneFactory: AnnouncementDetailSceneFactory) -> AnnouncementDetailModuleBuilder {
+    func with(_ sceneFactory: AnnouncementDetailSceneFactory) -> AnnouncementDetailComponentBuilder {
         self.sceneFactory = sceneFactory
         return self
     }
 
-    func build() -> AnnouncementDetailModuleProviding {
-        return AnnouncementDetailModule(sceneFactory: sceneFactory,
-                                        announcementDetailInteractor: announcementDetailInteractor)
+    func build() -> AnnouncementDetailComponentFactory {
+        AnnouncementDetailComponentFactoryImpl(
+            sceneFactory: sceneFactory,
+            announcementDetailInteractor: announcementDetailInteractor
+        )
     }
 
 }
