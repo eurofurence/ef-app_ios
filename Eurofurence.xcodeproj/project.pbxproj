@@ -109,7 +109,6 @@
 		CA08158D20D4556700F750D4 /* FakeShortFormDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08158C20D4556700F750D4 /* FakeShortFormDateFormatter.swift */; };
 		CA08158F20D4557400F750D4 /* ScheduleInteractorTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08158E20D4557400F750D4 /* ScheduleInteractorTestBuilder.swift */; };
 		CA08159320D470F800F750D4 /* WhenViewModelIsToldToShowEventsForSpecificDay_ScheduleInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08159220D470F800F750D4 /* WhenViewModelIsToldToShowEventsForSpecificDay_ScheduleInteractorShould.swift */; };
-		CA08159520D472B700F750D4 /* FakeEventsSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08159420D472B700F750D4 /* FakeEventsSchedule.swift */; };
 		CA08159720D475B500F750D4 /* FakeEventsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08159620D475B500F750D4 /* FakeEventsService.swift */; };
 		CA08B0F722EDD41A00FDAAA7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = CA08B0F622EDD41900FDAAA7 /* README.md */; };
 		CA08B0F922EDF4C600FDAAA7 /* EurofurenceDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08B0F822EDF4C600FDAAA7 /* EurofurenceDateFormatter.swift */; };
@@ -1297,7 +1296,6 @@
 		CA08158C20D4556700F750D4 /* FakeShortFormDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeShortFormDateFormatter.swift; sourceTree = "<group>"; };
 		CA08158E20D4557400F750D4 /* ScheduleInteractorTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleInteractorTestBuilder.swift; sourceTree = "<group>"; };
 		CA08159220D470F800F750D4 /* WhenViewModelIsToldToShowEventsForSpecificDay_ScheduleInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenViewModelIsToldToShowEventsForSpecificDay_ScheduleInteractorShould.swift; sourceTree = "<group>"; };
-		CA08159420D472B700F750D4 /* FakeEventsSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeEventsSchedule.swift; sourceTree = "<group>"; };
 		CA08159620D475B500F750D4 /* FakeEventsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeEventsService.swift; sourceTree = "<group>"; };
 		CA08B0F622EDD41900FDAAA7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CA08B0F822EDF4C600FDAAA7 /* EurofurenceDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EurofurenceDateFormatter.swift; sourceTree = "<group>"; };
@@ -4203,7 +4201,6 @@
 				CA250DDD20D6EA0500E7513C /* CapturingScheduleSearchViewModelDelegate.swift */,
 				CA00AE7620D1AA2000C2FBB0 /* CapturingScheduleViewModelDelegate.swift */,
 				CA36A44C20D771C400EE6537 /* CapturingSelectionChangedHaptic.swift */,
-				CA08159420D472B700F750D4 /* FakeEventsSchedule.swift */,
 				CA00AE4820D16BD900C2FBB0 /* FakeScheduleInteractor.swift */,
 				CA08158C20D4556700F750D4 /* FakeShortFormDateFormatter.swift */,
 				CA637596208DFD4B00536BE2 /* StubScheduleSceneFactory.swift */,
@@ -7290,7 +7287,6 @@
 				CA637595208DFD3700536BE2 /* CapturingScheduleScene.swift in Sources */,
 				CA6A8DA720E2CD6E007536CD /* WhenPreparingViewModel_MapsInteractorShould.swift in Sources */,
 				CA50B1A122610D580091E425 /* WhenEventFeedbackSceneLoads_EventFeedbackPresenterShould.swift in Sources */,
-				CA08159520D472B700F750D4 /* FakeEventsSchedule.swift in Sources */,
 				CA6A8DD720E4181A007536CD /* StubMapDetailSceneFactory.swift in Sources */,
 				CA40108B21107BC30056E16C /* KnowledgeGroupEntriesPresenterTestBuilder.swift in Sources */,
 				CA36A4DE20DAFB1C00EE6537 /* WhenFetchingIdentifierForSearchResult_DealersInteractorShould.swift in Sources */,

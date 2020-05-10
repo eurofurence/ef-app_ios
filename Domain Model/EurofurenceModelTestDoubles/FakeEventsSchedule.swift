@@ -1,26 +1,24 @@
 import EurofurenceModel
-import EurofurenceModelTestDoubles
-import Foundation
 
-class FakeEventsSchedule: EventsSchedule {
+public class FakeEventsSchedule: EventsSchedule {
 
-    var events: [Event]
-    var currentDay: Day?
+    public var events: [Event]
+    public var currentDay: Day?
 
-    init(events: [Event] = [FakeEvent].random, currentDay: Day? = .random) {
+    public init(events: [Event] = [FakeEvent].random, currentDay: Day? = .random) {
         self.events = events
         self.currentDay = currentDay
     }
 
     fileprivate var delegate: EventsScheduleDelegate?
-    func setDelegate(_ delegate: EventsScheduleDelegate) {
+    public func setDelegate(_ delegate: EventsScheduleDelegate) {
         self.delegate = delegate
         delegate.scheduleEventsDidChange(to: events)
         delegate.currentEventDayDidChange(to: currentDay)
     }
 
-    private(set) var dayUsedToRestrictEvents: Day?
-    func restrictEvents(to day: Day) {
+    public private(set) var dayUsedToRestrictEvents: Day?
+    public func restrictEvents(to day: Day) {
         dayUsedToRestrictEvents = day
     }
 
@@ -28,15 +26,15 @@ class FakeEventsSchedule: EventsSchedule {
 
 extension FakeEventsSchedule {
 
-    func simulateEventsChanged(_ events: [Event]) {
+    public func simulateEventsChanged(_ events: [Event]) {
         delegate?.scheduleEventsDidChange(to: events)
     }
 
-    func simulateDaysChanged(_ days: [Day]) {
+    public func simulateDaysChanged(_ days: [Day]) {
         delegate?.eventDaysDidChange(to: days)
     }
 
-    func simulateDayChanged(to day: Day?) {
+    public func simulateDayChanged(to day: Day?) {
         delegate?.currentEventDayDidChange(to: day)
     }
 
