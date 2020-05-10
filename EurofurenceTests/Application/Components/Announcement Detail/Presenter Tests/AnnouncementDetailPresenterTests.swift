@@ -1,16 +1,16 @@
-@testable import Eurofurence
+import Eurofurence
 import EurofurenceModel
 import XCTest
 
-class WhenBuildingAnnouncementDetailPresenter: XCTestCase {
-
+class AnnouncementDetailPresenterTests: XCTestCase {
+    
     var context: AnnouncementDetailPresenterTestBuilder.Context!
 
     override func setUp() {
         super.setUp()
         context = AnnouncementDetailPresenterTestBuilder().build()
     }
-
+    
     func testTheSceneIsReturnedFromTheModuleFactory() {
         XCTAssertEqual(context.announcementDetailScene, context.sceneFactory.stubbedScene)
     }
@@ -19,12 +19,16 @@ class WhenBuildingAnnouncementDetailPresenter: XCTestCase {
         XCTAssertEqual(.announcement, context.scene.capturedTitle)
     }
 
-    func testTheSceneIsNotToldToShowAnnouncementHeading() {
+    func testAnnouncementFieldsBoundAfterSceneDidLoad() {
         XCTAssertNil(context.scene.capturedAnnouncementHeading)
-    }
-
-    func testTheSceneIsNotToldToShowAnnouncementContents() {
         XCTAssertNil(context.scene.capturedAnnouncementContents)
+        XCTAssertNil(context.scene.capturedAnnouncementImagePNGData)
+        
+        context.simulateAnnouncementDetailSceneDidLoad()
+        
+        XCTAssertEqual(context.announcementViewModel.heading, context.scene.capturedAnnouncementHeading)
+        XCTAssertEqual(context.announcementViewModel.contents, context.scene.capturedAnnouncementContents)
+        XCTAssertEqual(context.announcementViewModel.imagePNGData, context.scene.capturedAnnouncementImagePNGData)
     }
 
 }
