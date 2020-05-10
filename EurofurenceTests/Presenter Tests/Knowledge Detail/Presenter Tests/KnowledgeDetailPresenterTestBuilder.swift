@@ -29,7 +29,7 @@ class KnowledgeDetailPresenterTestBuilder {
         let moduleBuilder = KnowledgeDetailComponentBuilder(knowledgeDetailViewModelFactory: interactor)
             .with(knowledgeDetailSceneFactory)
             .build()
-        let module = moduleBuilder.makeKnowledgeListModule(knowledgeEntryIdentifier, delegate: delegate)
+        let module = moduleBuilder.makeKnowledgeListComponent(knowledgeEntryIdentifier, delegate: delegate)
 
         return Context(knowledgeEntryIdentifier: knowledgeEntryIdentifier,
                        knowledgeDetailScene: knowledgeDetailScene,

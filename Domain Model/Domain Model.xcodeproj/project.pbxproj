@@ -468,6 +468,7 @@
 		CAC4994522E0FF1C003E1D77 /* DealerCategoriesCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC4994422E0FF1C003E1D77 /* DealerCategoriesCollection.swift */; };
 		CAC4994722E0FF33003E1D77 /* DealersIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC4994622E0FF33003E1D77 /* DealersIndex.swift */; };
 		CAF194BF24686E8B005DFBBE /* FakeKnowledgeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF194BE24686E8B005DFBBE /* FakeKnowledgeService.swift */; };
+		CAF194C524687198005DFBBE /* StubKnowledgeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF194C424687198005DFBBE /* StubKnowledgeService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -964,6 +965,7 @@
 		CAC4994422E0FF1C003E1D77 /* DealerCategoriesCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerCategoriesCollection.swift; sourceTree = "<group>"; };
 		CAC4994622E0FF33003E1D77 /* DealersIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersIndex.swift; sourceTree = "<group>"; };
 		CAF194BE24686E8B005DFBBE /* FakeKnowledgeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeKnowledgeService.swift; sourceTree = "<group>"; };
+		CAF194C424687198005DFBBE /* StubKnowledgeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubKnowledgeService.swift; sourceTree = "<group>"; };
 		EC85896EECB18D7881B0665A /* Pods-EurofurenceModel-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-EurofurenceModel-metadata.plist"; sourceTree = "<group>"; };
 		FFE87D86E3ECE04913805820 /* Pods_EurofurenceModelTestDoubles.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EurofurenceModelTestDoubles.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -2017,6 +2019,7 @@
 				CA7A32A222B16EB4002AD939 /* StubAppVersionProviding.swift */,
 				CA7A32A722B16EB4002AD939 /* StubBuildConfigurationProviding.swift */,
 				CA7A32A922B16EB5002AD939 /* StubClock.swift */,
+				CAF194C424687198005DFBBE /* StubKnowledgeService.swift */,
 				CA7A32AA22B16EB5002AD939 /* Entity Test Doubles */,
 				CA7A328422B16EB4002AD939 /* Random Value Generation */,
 			);
@@ -2926,6 +2929,7 @@
 				CA7A32D922B16EB5002AD939 /* StubMessage.swift in Sources */,
 				CA7A32B322B16EB5002AD939 /* MapCharacteristics+RandomValueProviding.swift in Sources */,
 				CA7A32DC22B16EB5002AD939 /* FakeDealersService.swift in Sources */,
+				CAF194C524687198005DFBBE /* StubKnowledgeService.swift in Sources */,
 				CA7A32B822B16EB5002AD939 /* TrackCharacteristics+RandomValueProviding.swift in Sources */,
 				CA7A32C422B16EB5002AD939 /* AlphabetisedDealersGroup+RandomValueProviding.swift in Sources */,
 				CA7A32B422B16EB5002AD939 /* DealerCharacteristics+RandomValueProviding.swift in Sources */,

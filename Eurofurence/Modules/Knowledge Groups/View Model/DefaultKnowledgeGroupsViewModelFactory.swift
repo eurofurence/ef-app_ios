@@ -1,7 +1,7 @@
 import EurofurenceModel
 import UIKit.UIImage
 
-struct DefaultKnowledgeGroupsInteractor: KnowledgeGroupsInteractor {
+struct DefaultKnowledgeGroupsViewModelFactory: KnowledgeGroupsViewModelFactory {
 
     private class ViewModel: KnowledgeGroupsListViewModel, KnowledgeServiceObserver {
 

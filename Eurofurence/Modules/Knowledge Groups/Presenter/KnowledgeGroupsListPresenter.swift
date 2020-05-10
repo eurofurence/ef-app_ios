@@ -4,13 +4,13 @@ import Foundation
 class KnowledgeGroupsListPresenter: KnowledgeListSceneDelegate, KnowledgeGroupsListViewModelDelegate {
 
     private let scene: KnowledgeListScene
-    private let knowledgeListInteractor: KnowledgeGroupsInteractor
+    private let knowledgeListInteractor: KnowledgeGroupsViewModelFactory
     private let viewModelContentVisitor: KnowledgeVisitor
     private var viewModel: KnowledgeGroupsListViewModel?
 
     init(scene: KnowledgeListScene,
-         knowledgeListInteractor: KnowledgeGroupsInteractor,
-         delegate: KnowledgeGroupsListModuleDelegate) {
+         knowledgeListInteractor: KnowledgeGroupsViewModelFactory,
+         delegate: KnowledgeGroupsListComponentDelegate) {
         self.scene = scene
         self.knowledgeListInteractor = knowledgeListInteractor
         viewModelContentVisitor = KnowledgeVisitor(delegate: delegate)
@@ -56,7 +56,7 @@ class KnowledgeGroupsListPresenter: KnowledgeListSceneDelegate, KnowledgeGroupsL
     
     private struct KnowledgeVisitor: KnowledgeGroupsListViewModelVisitor {
         
-        var delegate: KnowledgeGroupsListModuleDelegate
+        var delegate: KnowledgeGroupsListComponentDelegate
         
         func visit(_ knowledgeGroup: KnowledgeGroupIdentifier) {
             delegate.knowledgeListModuleDidSelectKnowledgeGroup(knowledgeGroup)

@@ -2,7 +2,7 @@
 import EurofurenceModel
 import Foundation.NSIndexPath
 
-class CapturingKnowledgeGroupsInteractor: KnowledgeGroupsInteractor {
+class CapturingKnowledgeGroupsViewModelFactory: KnowledgeGroupsViewModelFactory {
 
     var prepareViewModelInvokedHandler: (() -> Void)?
     private(set) var toldToPrepareViewModel = false
@@ -15,7 +15,7 @@ class CapturingKnowledgeGroupsInteractor: KnowledgeGroupsInteractor {
 
 }
 
-extension CapturingKnowledgeGroupsInteractor {
+extension CapturingKnowledgeGroupsViewModelFactory {
 
     func simulateViewModelPrepared(_ viewModel: KnowledgeGroupsListViewModel) {
         completionHandler?(viewModel)

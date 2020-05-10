@@ -5,20 +5,20 @@ import UIKit.UIViewController
 class KnowledgeGroupsPresenterTestBuilder {
 
     struct Context {
-        var knowledgeInteractor: CapturingKnowledgeGroupsInteractor
+        var knowledgeInteractor: CapturingKnowledgeGroupsViewModelFactory
         var scene: CapturingKnowledgeListScene
-        var delegate: CapturingKnowledgeGroupsListModuleDelegate
+        var delegate: CapturingKnowledgeGroupsListComponentDelegate
         var producedViewController: UIViewController
     }
 
     func build() -> Context {
-        let knowledgeInteractor = CapturingKnowledgeGroupsInteractor()
+        let knowledgeInteractor = CapturingKnowledgeGroupsViewModelFactory()
         let sceneFactory = StubKnowledgeListSceneFactory()
-        let delegate = CapturingKnowledgeGroupsListModuleDelegate()
-        let producedViewController = KnowledgeGroupsModuleBuilder(knowledgeListInteractor: knowledgeInteractor)
+        let delegate = CapturingKnowledgeGroupsListComponentDelegate()
+        let producedViewController = KnowledgeGroupsComponentBuilder(knowledgeListInteractor: knowledgeInteractor)
             .with(sceneFactory)
             .build()
-            .makeKnowledgeListModule(delegate)
+            .makeKnowledgeListComponent(delegate)
 
         return Context(knowledgeInteractor: knowledgeInteractor,
                        scene: sceneFactory.scene,

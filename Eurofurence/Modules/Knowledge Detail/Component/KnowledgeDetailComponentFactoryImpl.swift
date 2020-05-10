@@ -6,7 +6,7 @@ struct KnowledgeDetailComponentFactoryImpl: KnowledgeDetailComponentFactory {
     var knowledgeDetailSceneFactory: KnowledgeDetailSceneFactory
     var knowledgeDetailViewModelFactory: KnowledgeDetailViewModelFactory
 
-    func makeKnowledgeListModule(
+    func makeKnowledgeListComponent(
         _ identifier: KnowledgeEntryIdentifier,
         delegate: KnowledgeDetailComponentDelegate
     ) -> UIViewController {

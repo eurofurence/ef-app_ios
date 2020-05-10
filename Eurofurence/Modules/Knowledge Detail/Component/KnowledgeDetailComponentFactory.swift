@@ -3,7 +3,7 @@ import UIKit.UIViewController
 
 public protocol KnowledgeDetailComponentFactory {
 
-    func makeKnowledgeListModule(
+    func makeKnowledgeListComponent(
         _ identifier: KnowledgeEntryIdentifier,
         delegate: KnowledgeDetailComponentDelegate
     ) -> UIViewController

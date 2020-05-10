@@ -23,7 +23,7 @@ extension KnowledgeEntryContentRoute: ContentRoute {
     public typealias Content = KnowledgeEntryContentRepresentation
     
     public func route(_ content: KnowledgeEntryContentRepresentation) {
-        let contentController = knowledgeDetailComponentFactory.makeKnowledgeListModule(
+        let contentController = knowledgeDetailComponentFactory.makeKnowledgeListComponent(
             content.identifier,
             delegate: delegate
         )
