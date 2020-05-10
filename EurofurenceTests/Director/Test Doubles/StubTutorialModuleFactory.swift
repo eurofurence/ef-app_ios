@@ -2,11 +2,11 @@
 import EurofurenceModel
 import UIKit.UIViewController
 
-class StubTutorialModuleFactory: TutorialModuleProviding {
+class StubTutorialModuleFactory: TutorialComponentFactory {
 
     let stubInterface = UIViewController()
-    private(set) var delegate: TutorialModuleDelegate?
-    func makeTutorialModule(_ delegate: TutorialModuleDelegate) -> UIViewController {
+    private(set) var delegate: TutorialComponentDelegate?
+    func makeTutorialModule(_ delegate: TutorialComponentDelegate) -> UIViewController {
         self.delegate = delegate
         return stubInterface
     }

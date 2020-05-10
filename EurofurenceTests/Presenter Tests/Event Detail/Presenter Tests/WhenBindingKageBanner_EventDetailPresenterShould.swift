@@ -23,8 +23,8 @@ class WhenBindingKageBanner_EventDetailPresenterShould: XCTestCase {
         let message = String.random
         let kageMessageViewModel = EventKageMessageViewModel(message: message)
         let viewModel = StubKageEventViewModel(kageMessageViewModel: kageMessageViewModel)
-        let interactor = FakeEventDetailViewModelFactory(viewModel: viewModel, for: event)
-        let context = EventDetailPresenterTestBuilder().with(interactor).build(for: event)
+        let viewModelFactory = FakeEventDetailViewModelFactory(viewModel: viewModel, for: event)
+        let context = EventDetailPresenterTestBuilder().with(viewModelFactory).build(for: event)
         context.simulateSceneDidLoad()
         context.scene.bindComponent(at: IndexPath(item: 0, section: 0))
 

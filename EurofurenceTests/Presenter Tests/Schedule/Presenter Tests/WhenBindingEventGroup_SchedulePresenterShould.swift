@@ -6,8 +6,8 @@ class WhenBindingEventGroup_SchedulePresenterShould: XCTestCase {
 
     func testBindTheGroupTitleOntoTheHeader() {
         let viewModel = CapturingScheduleViewModel.random
-        let interactor = FakeScheduleViewModelFactory(viewModel: viewModel)
-        let context = SchedulePresenterTestBuilder().with(interactor).build()
+        let viewModelFactory = FakeScheduleViewModelFactory(viewModel: viewModel)
+        let context = SchedulePresenterTestBuilder().with(viewModelFactory).build()
         context.simulateSceneDidLoad()
         let randomGroup = viewModel.events.randomElement()
         let header = CapturingScheduleEventGroupHeader()

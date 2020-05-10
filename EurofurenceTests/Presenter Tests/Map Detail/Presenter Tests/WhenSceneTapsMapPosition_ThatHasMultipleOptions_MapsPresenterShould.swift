@@ -7,15 +7,15 @@ class WhenSceneTapsMapPosition_ThatHasMultipleOptions_MapsPresenterShould: XCTes
 
     func testTellTheSceneToShowTheOptions() {
         let identifier = MapIdentifier.random
-        let interactor = FakeMapDetailViewModelFactory(expectedMapIdentifier: identifier)
-        let context = MapDetailPresenterTestBuilder().with(interactor).build(for: identifier)
+        let viewModelFactory = FakeMapDetailViewModelFactory(expectedMapIdentifier: identifier)
+        let context = MapDetailPresenterTestBuilder().with(viewModelFactory).build(for: identifier)
         context.simulateSceneDidLoad()
         let x = Float.random
         let y = Float.random
         let randomLocation = MapCoordinate(x: x, y: y)
         context.simulateSceneDidDidTapMap(at: randomLocation)
         let contentOptions = StubMapContentOptionsViewModel.random
-        interactor.viewModel.resolvePositionalContent(with: contentOptions)
+        viewModelFactory.viewModel.resolvePositionalContent(with: contentOptions)
 
         XCTAssertEqual(contentOptions.optionsHeading, context.scene.capturedOptionsHeading)
         XCTAssertEqual(contentOptions.options, context.scene.capturedOptionsToShow)
@@ -25,13 +25,13 @@ class WhenSceneTapsMapPosition_ThatHasMultipleOptions_MapsPresenterShould: XCTes
 
     func testTellTheViewModelWhichOptionIsSelected() {
         let identifier = MapIdentifier.random
-        let interactor = FakeMapDetailViewModelFactory(expectedMapIdentifier: identifier)
-        let context = MapDetailPresenterTestBuilder().with(interactor).build(for: identifier)
+        let viewModelFactory = FakeMapDetailViewModelFactory(expectedMapIdentifier: identifier)
+        let context = MapDetailPresenterTestBuilder().with(viewModelFactory).build(for: identifier)
         context.simulateSceneDidLoad()
         let randomLocation = MapCoordinate(x: .random, y: .random)
         context.simulateSceneDidDidTapMap(at: randomLocation)
         let contentOptions = StubMapContentOptionsViewModel.random
-        interactor.viewModel.resolvePositionalContent(with: contentOptions)
+        viewModelFactory.viewModel.resolvePositionalContent(with: contentOptions)
         let selectedOptionIndex = contentOptions.options.randomElement().index
         context.simulateSceneTappedMapOption(at: selectedOptionIndex)
 

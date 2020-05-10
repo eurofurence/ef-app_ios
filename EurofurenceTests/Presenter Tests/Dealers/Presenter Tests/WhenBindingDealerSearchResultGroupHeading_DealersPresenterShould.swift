@@ -9,8 +9,8 @@ class WhenBindingDealerSearchResultGroupHeading_DealersPresenterShould: XCTestCa
         let randomGroup = groups.randomElement()
         let expected = randomGroup.element.title
         let searchViewModel = CapturingDealersSearchViewModel(dealerGroups: groups)
-        let interactor = FakeDealersViewModelFactory(searchViewModel: searchViewModel)
-        let context = DealersPresenterTestBuilder().with(interactor).build()
+        let viewModelFactory = FakeDealersViewModelFactory(searchViewModel: searchViewModel)
+        let context = DealersPresenterTestBuilder().with(viewModelFactory).build()
         context.simulateSceneDidLoad()
         let component = context.makeAndBindComponentHeader(forSearchResultGroupAt: randomGroup.index)
 

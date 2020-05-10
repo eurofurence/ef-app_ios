@@ -6,8 +6,8 @@ class WhenAnnouncementsSceneLoads_AnnouncementsPresenterShould: XCTestCase {
 
     func testBindTheNumberOfAnnouncementsFromTheViewModelOntoTheScene() {
         let viewModel = FakeAnnouncementsListViewModel()
-        let interactor = FakeAnnouncementsViewModelFactory(viewModel: viewModel)
-        let context = AnnouncementsPresenterTestBuilder().with(interactor).build()
+        let viewModelFactory = FakeAnnouncementsViewModelFactory(viewModel: viewModel)
+        let context = AnnouncementsPresenterTestBuilder().with(viewModelFactory).build()
         context.simulateSceneDidLoad()
 
         XCTAssertEqual(viewModel.announcements.count, context.scene.capturedAnnouncementsToBind)

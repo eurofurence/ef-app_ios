@@ -8,7 +8,7 @@ class DefaultKnowledgeDetailViewModelFactoryTests: XCTestCase {
     var knowledgeService: FakeKnowledgeService!
     var renderer: StubMarkdownRenderer!
     var shareService: CapturingShareService!
-    var interactor: DefaultKnowledgeDetailViewModelFactory!
+    var viewModelFactory: DefaultKnowledgeDetailViewModelFactory!
 
     override func setUp() {
         super.setUp()
@@ -16,7 +16,7 @@ class DefaultKnowledgeDetailViewModelFactoryTests: XCTestCase {
         renderer = StubMarkdownRenderer()
         knowledgeService = FakeKnowledgeService()
         shareService = CapturingShareService()
-        interactor = DefaultKnowledgeDetailViewModelFactory(knowledgeService: knowledgeService,
+        viewModelFactory = DefaultKnowledgeDetailViewModelFactory(knowledgeService: knowledgeService,
                                                            renderer: renderer,
                                                            shareService: shareService)
     }
@@ -24,7 +24,7 @@ class DefaultKnowledgeDetailViewModelFactoryTests: XCTestCase {
     func testProducingViewModelConvertsKnowledgeEntryContentsViaWikiRenderer() {
         let entry = FakeKnowledgeEntry.random
         var viewModel: KnowledgeEntryDetailViewModel?
-        interactor.makeViewModel(for: entry.identifier) { viewModel = $0 }
+        viewModelFactory.makeViewModel(for: entry.identifier) { viewModel = $0 }
         let randomizedEntry = knowledgeService.stubbedKnowledgeEntry(for: entry.identifier)
 		let expected = renderer.stubbedContents(for: randomizedEntry.contents)
 
@@ -34,7 +34,7 @@ class DefaultKnowledgeDetailViewModelFactoryTests: XCTestCase {
     func testProducingViewModelConvertsLinksIntoViewModels() {
         let entry = FakeKnowledgeEntry.random
         var viewModel: KnowledgeEntryDetailViewModel?
-        interactor.makeViewModel(for: entry.identifier) { viewModel = $0 }
+        viewModelFactory.makeViewModel(for: entry.identifier) { viewModel = $0 }
         let randomizedEntry = knowledgeService.stubbedKnowledgeEntry(for: entry.identifier)
         let expected = randomizedEntry.links.map { (link) in return LinkViewModel(name: link.name) }
 
@@ -44,7 +44,7 @@ class DefaultKnowledgeDetailViewModelFactoryTests: XCTestCase {
     func testRequestingLinkAtIndexReturnsExpectedLink() {
         let entry = FakeKnowledgeEntry.random
         var viewModel: KnowledgeEntryDetailViewModel?
-        interactor.makeViewModel(for: entry.identifier) { viewModel = $0 }
+        viewModelFactory.makeViewModel(for: entry.identifier) { viewModel = $0 }
         let randomizedEntry = knowledgeService.stubbedKnowledgeEntry(for: entry.identifier)
         let randomLink = randomizedEntry.links.randomElement()
         let expected = randomLink.element
@@ -56,7 +56,7 @@ class DefaultKnowledgeDetailViewModelFactoryTests: XCTestCase {
     func testUsesTitlesOfEntryAsTitle() {
         let entry = FakeKnowledgeEntry.random
         var viewModel: KnowledgeEntryDetailViewModel?
-        interactor.makeViewModel(for: entry.identifier) { viewModel = $0 }
+        viewModelFactory.makeViewModel(for: entry.identifier) { viewModel = $0 }
         let randomizedEntry = knowledgeService.stubbedKnowledgeEntry(for: entry.identifier)
 
         XCTAssertEqual(randomizedEntry.title, viewModel?.title)
@@ -65,7 +65,7 @@ class DefaultKnowledgeDetailViewModelFactoryTests: XCTestCase {
     func testAdaptsImagesFromService() {
         let entry = FakeKnowledgeEntry.random
         var viewModel: KnowledgeEntryDetailViewModel?
-        interactor.makeViewModel(for: entry.identifier) { viewModel = $0 }
+        viewModelFactory.makeViewModel(for: entry.identifier) { viewModel = $0 }
         let expected = knowledgeService.stubbedKnowledgeEntryImages(for: entry.identifier).map(KnowledgeEntryImageViewModel.init)
 
         XCTAssertEqual(expected, viewModel?.images)
@@ -75,7 +75,7 @@ class DefaultKnowledgeDetailViewModelFactoryTests: XCTestCase {
         let identifier = KnowledgeEntryIdentifier.random
         let entry = knowledgeService.stubbedKnowledgeEntry(for: identifier)
         var viewModel: KnowledgeEntryDetailViewModel?
-        interactor.makeViewModel(for: entry.identifier) { viewModel = $0 }
+        viewModelFactory.makeViewModel(for: entry.identifier) { viewModel = $0 }
         let sender = self
         viewModel?.shareKnowledgeEntry(sender)
         

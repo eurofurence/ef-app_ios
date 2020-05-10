@@ -6,8 +6,8 @@ class WhenBindingNonFavouriteEvent_FromSearchResult_SchedulePresenterShould: XCT
 
     func testPrepareTheComponentToShowFavouriteEventAction() {
         let searchViewModel = CapturingScheduleSearchViewModel()
-        let interactor = FakeScheduleViewModelFactory(searchViewModel: searchViewModel)
-        let context = SchedulePresenterTestBuilder().with(interactor).build()
+        let viewModelFactory = FakeScheduleViewModelFactory(searchViewModel: searchViewModel)
+        let context = SchedulePresenterTestBuilder().with(viewModelFactory).build()
         context.simulateSceneDidLoad()
         let searchResult = StubScheduleEventViewModel.random
         searchResult.isFavourite = false

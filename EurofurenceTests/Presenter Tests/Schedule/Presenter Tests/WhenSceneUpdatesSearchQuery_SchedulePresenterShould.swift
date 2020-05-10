@@ -6,8 +6,8 @@ class WhenSceneUpdatesSearchQuery_SchedulePresenterShould: XCTestCase {
 
     func testTellTheSearchableViewModelToUpdateItsResults() {
         let searchViewModel = CapturingScheduleSearchViewModel()
-        let interactor = FakeScheduleViewModelFactory(searchViewModel: searchViewModel)
-        let context = SchedulePresenterTestBuilder().with(interactor).build()
+        let viewModelFactory = FakeScheduleViewModelFactory(searchViewModel: searchViewModel)
+        let context = SchedulePresenterTestBuilder().with(viewModelFactory).build()
         context.simulateSceneDidLoad()
         let expected = String.random
         context.simulateSceneDidUpdateSearchQuery(expected)

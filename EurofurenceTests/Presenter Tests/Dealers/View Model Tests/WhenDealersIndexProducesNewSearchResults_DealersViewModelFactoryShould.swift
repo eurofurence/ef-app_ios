@@ -12,7 +12,7 @@ class WhenDealersIndexProducesNewSearchResults_DealersViewModelFactoryShould: XC
         let dealersService = FakeDealersService(index: index)
         let context = DealersViewModelTestBuilder().with(dealersService).build()
         var searchViewModel: DealersSearchViewModel?
-        context.interactor.makeDealersSearchViewModel { searchViewModel = $0 }
+        context.viewModelFactory.makeDealersSearchViewModel { searchViewModel = $0 }
         let delegate = CapturingDealersSearchViewModelDelegate()
         searchViewModel?.setSearchResultsDelegate(delegate)
         let actual = delegate.capturedSearchResults.map(\.title)

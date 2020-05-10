@@ -10,22 +10,22 @@ class MapsPresenterTestBuilder {
         var delegate: CapturingMapsComponentDelegate
     }
 
-    private var interactor: MapsViewModelFactory
+    private var viewModelFactory: MapsViewModelFactory
 
     init() {
-        interactor = FakeMapsViewModelFactory()
+        viewModelFactory = FakeMapsViewModelFactory()
     }
 
     @discardableResult
-    func with(_ interactor: MapsViewModelFactory) -> MapsPresenterTestBuilder {
-        self.interactor = interactor
+    func with(_ viewModelFactory: MapsViewModelFactory) -> MapsPresenterTestBuilder {
+        self.viewModelFactory = viewModelFactory
         return self
     }
 
     func build() -> Context {
         let sceneFactory = StubMapsSceneFactory()
         let delegate = CapturingMapsComponentDelegate()
-        let module = MapsComponentBuilder(mapsViewModelFactory: interactor)
+        let module = MapsComponentBuilder(mapsViewModelFactory: viewModelFactory)
             .with(sceneFactory)
             .build()
             .makeMapsModule(delegate)

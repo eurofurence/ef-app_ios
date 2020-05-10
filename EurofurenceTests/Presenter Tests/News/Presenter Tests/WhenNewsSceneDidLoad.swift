@@ -5,30 +5,30 @@ import XCTest
 class WhenNewsSceneDidLoad: XCTestCase {
 
     var context: NewsPresenterTestBuilder.Context!
-    var newsInteractor: FakeNewsViewModelProducer!
+    var newsViewModelFactory: FakeNewsViewModelProducer!
 
     override func setUp() {
         super.setUp()
 
-        newsInteractor = FakeNewsViewModelProducer()
-        context = NewsPresenterTestBuilder().with(newsInteractor).build()
+        newsViewModelFactory = FakeNewsViewModelProducer()
+        context = NewsPresenterTestBuilder().with(newsViewModelFactory).build()
         context.simulateNewsSceneDidLoad()
     }
 
     func testTheNewsSceneIsToldToBindExpectedNumberOfComponentsFromViewModel() {
-        let viewModel = newsInteractor.lastCreatedViewModel
+        let viewModel = newsViewModelFactory.lastCreatedViewModel
         XCTAssertEqual(viewModel.components.count, context.newsScene.capturedComponentsToBind)
     }
 
     func testTheNewsSceneIsToldToBindExpectedSubcomponentItemCountsFromViewModel() {
-        let viewModel = newsInteractor.lastCreatedViewModel
+        let viewModel = newsViewModelFactory.lastCreatedViewModel
         let expected = viewModel.components.map(\.numberOfItems)
 
         XCTAssertEqual(expected, context.newsScene.capturedNumberOfItemsPerComponentToBind)
     }
 
     func testBindingTitleForSectionAppliesTitleFromViewModelOntoScene() {
-        let viewModel = newsInteractor.lastCreatedViewModel
+        let viewModel = newsViewModelFactory.lastCreatedViewModel
         let component = viewModel.components.randomElement()
         let titleScene = CapturingNewsComponentHeaderScene()
         context.newsScene.capturedBinder?.bindTitleForSection(at: component.index, scene: titleScene)

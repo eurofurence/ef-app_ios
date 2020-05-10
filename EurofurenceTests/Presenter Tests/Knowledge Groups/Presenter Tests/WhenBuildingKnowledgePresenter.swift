@@ -9,8 +9,8 @@ class WhenBuildingKnowledgePresenter: XCTestCase {
         context = KnowledgeGroupsPresenterTestBuilder().build()
     }
 
-    func testItShouldNotTellInteractorToPrepareViewModel() {
-        XCTAssertFalse(context.knowledgeInteractor.toldToPrepareViewModel)
+    func testItShouldNotTellViewModelFactoryToPrepareViewModel() {
+        XCTAssertFalse(context.knowledgeViewModelFactory.toldToPrepareViewModel)
     }
 
     func testItShouldNotTellTheSceneToShowTheLoadingIndicator() {

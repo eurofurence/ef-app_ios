@@ -6,8 +6,8 @@ class WhenScheduleSceneSelectsDay_SchedulePresenterShould: XCTestCase {
 
     func testTellViewModelToUpdateForEventsOnDayAtIndex() {
         let viewModel = CapturingScheduleViewModel.random
-        let interactor = FakeScheduleViewModelFactory(viewModel: viewModel)
-        let context = SchedulePresenterTestBuilder().with(interactor).build()
+        let viewModelFactory = FakeScheduleViewModelFactory(viewModel: viewModel)
+        let context = SchedulePresenterTestBuilder().with(viewModelFactory).build()
         context.simulateSceneDidLoad()
         let randomDay = viewModel.days.randomElement()
         context.simulateSceneDidSelectDay(at: randomDay.index)
@@ -17,8 +17,8 @@ class WhenScheduleSceneSelectsDay_SchedulePresenterShould: XCTestCase {
 
     func testTellTheHapticEngineToPlaySelectionHaptic() {
         let viewModel = CapturingScheduleViewModel.random
-        let interactor = FakeScheduleViewModelFactory(viewModel: viewModel)
-        let context = SchedulePresenterTestBuilder().with(interactor).build()
+        let viewModelFactory = FakeScheduleViewModelFactory(viewModel: viewModel)
+        let context = SchedulePresenterTestBuilder().with(viewModelFactory).build()
         context.simulateSceneDidLoad()
         let randomDay = viewModel.days.randomElement()
         context.simulateSceneDidSelectDay(at: randomDay.index)

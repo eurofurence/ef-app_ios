@@ -4,11 +4,11 @@ import XCTest
 
 class WhenBuildingNewsModule: XCTestCase {
 
-    func testTheInteractorDoesNotPrepareViewModel() {
-        let newsInteractor = FakeNewsViewModelProducer()
-        _ = NewsPresenterTestBuilder().with(newsInteractor).build()
+    func testTheViewModelFactoryDoesNotPrepareViewModel() {
+        let newsViewModelFactory = FakeNewsViewModelProducer()
+        _ = NewsPresenterTestBuilder().with(newsViewModelFactory).build()
 
-        XCTAssertFalse(newsInteractor.didPrepareViewModel)
+        XCTAssertFalse(newsViewModelFactory.didPrepareViewModel)
     }
 
 }

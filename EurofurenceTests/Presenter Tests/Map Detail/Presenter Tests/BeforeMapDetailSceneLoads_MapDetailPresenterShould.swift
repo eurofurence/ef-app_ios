@@ -7,8 +7,8 @@ class BeforeMapDetailSceneLoads_MapDetailPresenterShould: XCTestCase {
 
     func testNotBindAnySceneComponents() {
         let identifier = MapIdentifier.random
-        let interactor = FakeMapDetailViewModelFactory(expectedMapIdentifier: identifier)
-        let context = MapDetailPresenterTestBuilder().with(interactor).build(for: identifier)
+        let viewModelFactory = FakeMapDetailViewModelFactory(expectedMapIdentifier: identifier)
+        let context = MapDetailPresenterTestBuilder().with(viewModelFactory).build(for: identifier)
 
         XCTAssertNil(context.scene.capturedTitle)
     }

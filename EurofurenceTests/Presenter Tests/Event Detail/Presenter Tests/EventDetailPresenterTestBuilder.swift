@@ -49,15 +49,15 @@ class EventDetailPresenterTestBuilder {
         var eventInteractionRecorder: CapturingEventInteractionRecorder
     }
 
-    private var interactor: EventDetailViewModelFactory
+    private var viewModelFactory: EventDetailViewModelFactory
 
     init() {
-        interactor = DummyEventDetailViewModelFactory()
+        viewModelFactory = DummyEventDetailViewModelFactory()
     }
 
     @discardableResult
-    func with(_ interactor: EventDetailViewModelFactory) -> EventDetailPresenterTestBuilder {
-        self.interactor = interactor
+    func with(_ viewModelFactory: EventDetailViewModelFactory) -> EventDetailPresenterTestBuilder {
+        self.viewModelFactory = viewModelFactory
         return self
     }
 
@@ -66,7 +66,7 @@ class EventDetailPresenterTestBuilder {
         let hapticEngine = CapturingSelectionChangedHaptic()
         let delegate = CapturingEventDetailComponentDelegate()
         let interactionRecorder = CapturingEventInteractionRecorder()
-        let module = EventDetailComponentBuilder(eventDetailViewModelFactory: interactor, interactionRecorder: interactionRecorder)
+        let module = EventDetailComponentBuilder(eventDetailViewModelFactory: viewModelFactory, interactionRecorder: interactionRecorder)
             .with(sceneFactory)
             .with(hapticEngine)
             .build()

@@ -4,12 +4,12 @@ class TutorialPresenter {
 
     // MARK: Properties
 
-    private let delegate: TutorialModuleDelegate
+    private let delegate: TutorialComponentDelegate
     private var context: TutorialPresentationContext
 
     // MARK: Initialization
 
-    init(delegate: TutorialModuleDelegate,
+    init(delegate: TutorialComponentDelegate,
          context: TutorialPresentationContext) {
         self.delegate = delegate
         self.context = context

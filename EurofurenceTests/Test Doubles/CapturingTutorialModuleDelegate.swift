@@ -1,7 +1,7 @@
 @testable import Eurofurence
 import EurofurenceModel
 
-class CapturingTutorialModuleDelegate: TutorialModuleDelegate {
+class CapturingTutorialComponentDelegate: TutorialComponentDelegate {
 
     private(set) var wasToldTutorialFinished = false
     func tutorialModuleDidFinishPresentingTutorial() {

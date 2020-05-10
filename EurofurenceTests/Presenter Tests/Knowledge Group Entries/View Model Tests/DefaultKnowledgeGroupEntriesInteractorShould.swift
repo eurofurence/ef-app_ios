@@ -9,9 +9,9 @@ class DefaultKnowledgeGroupViewModelFactoryShould: XCTestCase {
         let service = FakeKnowledgeService()
         let group = FakeKnowledgeGroup.random
         service.stub(group)
-        let interactor = DefaultKnowledgeGroupViewModelFactory(service: service)
+        let viewModelFactory = DefaultKnowledgeGroupViewModelFactory(service: service)
         var viewModel: KnowledgeGroupEntriesViewModel?
-        interactor.makeViewModelForGroup(identifier: group.identifier) { viewModel = $0 }
+        viewModelFactory.makeViewModelForGroup(identifier: group.identifier) { viewModel = $0 }
 
         XCTAssertEqual(group.entries.count, viewModel?.numberOfEntries)
     }
@@ -20,9 +20,9 @@ class DefaultKnowledgeGroupViewModelFactoryShould: XCTestCase {
         let service = FakeKnowledgeService()
         let group = FakeKnowledgeGroup.random
         service.stub(group)
-        let interactor = DefaultKnowledgeGroupViewModelFactory(service: service)
+        let viewModelFactory = DefaultKnowledgeGroupViewModelFactory(service: service)
         var viewModel: KnowledgeGroupEntriesViewModel?
-        interactor.makeViewModelForGroup(identifier: group.identifier) { viewModel = $0 }
+        viewModelFactory.makeViewModelForGroup(identifier: group.identifier) { viewModel = $0 }
         let entry = group.entries.randomElement()
         let entryViewModel = viewModel?.knowledgeEntry(at: entry.index)
 
@@ -33,9 +33,9 @@ class DefaultKnowledgeGroupViewModelFactoryShould: XCTestCase {
         let service = FakeKnowledgeService()
         let group = FakeKnowledgeGroup.random
         service.stub(group)
-        let interactor = DefaultKnowledgeGroupViewModelFactory(service: service)
+        let viewModelFactory = DefaultKnowledgeGroupViewModelFactory(service: service)
         var viewModel: KnowledgeGroupEntriesViewModel?
-        interactor.makeViewModelForGroup(identifier: group.identifier) { viewModel = $0 }
+        viewModelFactory.makeViewModelForGroup(identifier: group.identifier) { viewModel = $0 }
         let entry = group.entries.randomElement()
         let entryIdentifier = viewModel?.identifierForKnowledgeEntry(at: entry.index)
 
@@ -46,9 +46,9 @@ class DefaultKnowledgeGroupViewModelFactoryShould: XCTestCase {
         let service = FakeKnowledgeService()
         let group = FakeKnowledgeGroup.random
         service.stub(group)
-        let interactor = DefaultKnowledgeGroupViewModelFactory(service: service)
+        let viewModelFactory = DefaultKnowledgeGroupViewModelFactory(service: service)
         var viewModel: KnowledgeGroupEntriesViewModel?
-        interactor.makeViewModelForGroup(identifier: group.identifier) { viewModel = $0 }
+        viewModelFactory.makeViewModelForGroup(identifier: group.identifier) { viewModel = $0 }
 
         XCTAssertEqual(group.title, viewModel?.title)
     }

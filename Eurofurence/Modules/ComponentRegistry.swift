@@ -4,7 +4,7 @@ import UIKit
 struct ComponentRegistry {
     
     let webComponentFactory: WebComponentFactory
-    let tutorialModuleProviding: TutorialModuleProviding
+    let tutorialComponentFactory: TutorialComponentFactory
     let preloadComponentFactory: PreloadComponentFactory
     let newsComponentFactory: NewsComponentFactory
     let scheduleComponentFactory: ScheduleComponentFactory
@@ -33,7 +33,7 @@ struct ComponentRegistry {
         let activityFactory = PlatformActivityFactory()
         let alertRouter = WindowAlertRouter(window: window)
         
-        tutorialModuleProviding = TutorialModuleBuilder(alertRouter: alertRouter).build()
+        tutorialComponentFactory = TutorialModuleBuilder(alertRouter: alertRouter).build()
         
         let preloadInteractor = ApplicationPreloadInteractor(refreshService: services.refresh)
         preloadComponentFactory = PreloadComponentBuilder(
@@ -67,7 +67,9 @@ struct ComponentRegistry {
             refreshService: services.refresh
         )
         
-        scheduleComponentFactory = ScheduleModuleBuilder(interactor: scheduleViewModelFactory).build()
+        scheduleComponentFactory = ScheduleModuleBuilder(
+            scheduleViewModelFactory: scheduleViewModelFactory
+        ).build()
         
         let defaultDealerIcon = #imageLiteral(resourceName: "defaultAvatar")
         guard let defaultDealerIconData = defaultDealerIcon.pngData() else { fatalError("Default dealer icon is not a PNG") }

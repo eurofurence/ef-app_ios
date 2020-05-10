@@ -4,30 +4,30 @@ import XCTest
 
 class WhenSceneInstigatesPullToRefresh_NewsPresenterShould: XCTestCase {
 
-    func testTellTheInteractorToRefresh() {
-        let newsInteractor = FakeNewsViewModelProducer()
-        let context = NewsPresenterTestBuilder().with(newsInteractor).build()
+    func testTellTheViewModelFactoryToRefresh() {
+        let newsViewModelFactory = FakeNewsViewModelProducer()
+        let context = NewsPresenterTestBuilder().with(newsViewModelFactory).build()
         context.simulateNewsSceneDidLoad()
         context.simulateNewsSceneDidPerformRefreshAction()
 
-        XCTAssertTrue(newsInteractor.didRefresh)
+        XCTAssertTrue(newsViewModelFactory.didRefresh)
     }
 
     func testTellTheSceneToHideTheRefreshIndicatorWhenRefreshFinishes() {
-        let newsInteractor = FakeNewsViewModelProducer()
-        let context = NewsPresenterTestBuilder().with(newsInteractor).build()
+        let newsViewModelFactory = FakeNewsViewModelProducer()
+        let context = NewsPresenterTestBuilder().with(newsViewModelFactory).build()
         context.simulateNewsSceneDidLoad()
         context.simulateNewsSceneDidPerformRefreshAction()
-        newsInteractor.simulateRefreshFinished()
+        newsViewModelFactory.simulateRefreshFinished()
 
         XCTAssertTrue(context.newsScene.didHideRefreshIndicator)
     }
 
     func testTellTheSceneToShowTheRefreshIndicatorWhenRefreshBegins() {
-        let newsInteractor = FakeNewsViewModelProducer()
-        let context = NewsPresenterTestBuilder().with(newsInteractor).build()
+        let newsViewModelFactory = FakeNewsViewModelProducer()
+        let context = NewsPresenterTestBuilder().with(newsViewModelFactory).build()
         context.simulateNewsSceneDidLoad()
-        newsInteractor.simulateRefreshBegan()
+        newsViewModelFactory.simulateRefreshBegan()
 
         XCTAssertTrue(context.newsScene.didShowRefreshIndicator)
     }

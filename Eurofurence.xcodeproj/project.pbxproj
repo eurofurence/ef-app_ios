@@ -1071,7 +1071,7 @@
 		CAF3C74C1F9F619C0008F027 /* NewsComponentFactoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C74B1F9F619C0008F027 /* NewsComponentFactoryImpl.swift */; };
 		CAF3C74E1F9FC72C0008F027 /* StubNewsSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C74D1F9FC72C0008F027 /* StubNewsSceneFactory.swift */; };
 		CAF3C7501F9FC74C0008F027 /* NewsSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C74F1F9FC74C0008F027 /* NewsSceneFactory.swift */; };
-		CAF705681F82D13F00A9FEA2 /* TutorialModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF705671F82D13F00A9FEA2 /* TutorialModuleProviding.swift */; };
+		CAF705681F82D13F00A9FEA2 /* TutorialComponentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF705671F82D13F00A9FEA2 /* TutorialComponentFactory.swift */; };
 		CAF7056A1F82D15D00A9FEA2 /* PreloadComponentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF705691F82D15D00A9FEA2 /* PreloadComponentFactory.swift */; };
 		CAF81C5720DD208100898C52 /* DealerDetailLocationAndAvailabilityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF81C5620DD208100898C52 /* DealerDetailLocationAndAvailabilityTableViewCell.swift */; };
 		CAF81C5920DD23AC00898C52 /* WhenBindingDealerLocationAndAvailabilityWithMissingAttributes_DealerDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF81C5820DD23AC00898C52 /* WhenBindingDealerLocationAndAvailabilityWithMissingAttributes_DealerDetailPresenterShould.swift */; };
@@ -2257,7 +2257,7 @@
 		CAF3C74B1F9F619C0008F027 /* NewsComponentFactoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsComponentFactoryImpl.swift; sourceTree = "<group>"; };
 		CAF3C74D1F9FC72C0008F027 /* StubNewsSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubNewsSceneFactory.swift; sourceTree = "<group>"; };
 		CAF3C74F1F9FC74C0008F027 /* NewsSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSceneFactory.swift; sourceTree = "<group>"; };
-		CAF705671F82D13F00A9FEA2 /* TutorialModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialModuleProviding.swift; sourceTree = "<group>"; };
+		CAF705671F82D13F00A9FEA2 /* TutorialComponentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialComponentFactory.swift; sourceTree = "<group>"; };
 		CAF705691F82D15D00A9FEA2 /* PreloadComponentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadComponentFactory.swift; sourceTree = "<group>"; };
 		CAF81C5620DD208100898C52 /* DealerDetailLocationAndAvailabilityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailLocationAndAvailabilityTableViewCell.swift; sourceTree = "<group>"; };
 		CAF81C5820DD23AC00898C52 /* WhenBindingDealerLocationAndAvailabilityWithMissingAttributes_DealerDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingDealerLocationAndAvailabilityWithMissingAttributes_DealerDetailPresenterShould.swift; sourceTree = "<group>"; };
@@ -2558,7 +2558,7 @@
 				CAE27B4D1F85611C005FDE39 /* PhoneTutorialModuleFactory.swift */,
 				CA8E7EF91FB0926E00F0BF10 /* StoryboardTutorialSceneFactory.swift */,
 				CABA43A21FD57C65009CB5B0 /* TutorialModuleBuilder.swift */,
-				CAF705671F82D13F00A9FEA2 /* TutorialModuleProviding.swift */,
+				CAF705671F82D13F00A9FEA2 /* TutorialComponentFactory.swift */,
 				9A861EB31F25550700B75A8C /* TutorialPageScene.swift */,
 				9A861EC71F25555000B75A8C /* TutorialPageViewController.swift */,
 				9A861EAD1F2554F900B75A8C /* TutorialPresentationContext.swift */,
@@ -7140,7 +7140,7 @@
 				CA283A8420E9461800F7D195 /* UnreadIndicatorView.swift in Sources */,
 				CAD04188245D8FAA00B86950 /* AuthenticateOnDemandRouteAuthenticationHandler.swift in Sources */,
 				CA00AE5820D171D600C2FBB0 /* ScheduleSceneBinder.swift in Sources */,
-				CAF705681F82D13F00A9FEA2 /* TutorialModuleProviding.swift in Sources */,
+				CAF705681F82D13F00A9FEA2 /* TutorialComponentFactory.swift in Sources */,
 				CAD4F780245C5CE80036ADAF /* ContentRouter.swift in Sources */,
 				CA8A73B722BC3173007A5201 /* HybridWebViewController.swift in Sources */,
 				CA36A48220D8C89700EE6537 /* DealerComponentTableViewCell.swift in Sources */,

@@ -12,8 +12,8 @@ class WhenBindingEvent_SchedulePresenterShould: XCTestCase {
         super.setUp()
 
         let viewModel = CapturingScheduleViewModel.random
-        let interactor = FakeScheduleViewModelFactory(viewModel: viewModel)
-        context = SchedulePresenterTestBuilder().with(interactor).build()
+        let viewModelFactory = FakeScheduleViewModelFactory(viewModel: viewModel)
+        context = SchedulePresenterTestBuilder().with(viewModelFactory).build()
         context.simulateSceneDidLoad()
         let randomGroup = viewModel.events.randomElement()
         let randomEvent = randomGroup.element.events.randomElement()

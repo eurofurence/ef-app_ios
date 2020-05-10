@@ -33,28 +33,28 @@ class ApplicationPreloadingServiceTests: XCTestCase {
         beginPreload()
         simulateRefreshFailure()
 
-        XCTAssertTrue(delegate.wasToldpreloadInteractorDidFailToPreload)
+        XCTAssertTrue(delegate.wasToldPreloadInteractorDidFailToPreload)
     }
 
     func testSuccessfulRefreshesDoNotTellDelegatePreloadServiceSucceeded() {
         beginPreload()
         simulateRefreshSuccess()
 
-        XCTAssertFalse(delegate.wasToldpreloadInteractorDidFailToPreload)
+        XCTAssertFalse(delegate.wasToldPreloadInteractorDidFailToPreload)
     }
 
     func testSuccessfulRefreshTellsDelegatePreloadServiceSucceeded() {
         beginPreload()
         simulateRefreshSuccess()
 
-        XCTAssertTrue(delegate.wasToldpreloadInteractorDidFinishPreloading)
+        XCTAssertTrue(delegate.wasToldPreloadInteractorDidFinishPreloading)
     }
 
     func testFailedRefreshDoesNotTellDelegatePreloadServiceSucceeded() {
         beginPreload()
         simulateRefreshFailure()
 
-        XCTAssertFalse(delegate.wasToldpreloadInteractorDidFinishPreloading)
+        XCTAssertFalse(delegate.wasToldPreloadInteractorDidFinishPreloading)
     }
 
     func testProgressUpdatesFromTheRefreshAreEmittedToTheDelegate() {

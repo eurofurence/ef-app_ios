@@ -6,7 +6,7 @@ import XCTest
 class WhenPreparingViewModel_AnnouncementsViewModelFactoryShould: XCTestCase {
 
     var announcementsService: FakeAnnouncementsService!
-    var interactor: DefaultAnnouncementsViewModelFactory!
+    var viewModelFactory: DefaultAnnouncementsViewModelFactory!
     var announcementDateFormatter: FakeAnnouncementDateFormatter!
 	var markdownRenderer: StubMarkdownRenderer!
     var announcements: [Announcement]!
@@ -20,7 +20,7 @@ class WhenPreparingViewModel_AnnouncementsViewModelFactoryShould: XCTestCase {
         announcementsService = FakeAnnouncementsService(announcements: announcements)
         announcementDateFormatter = FakeAnnouncementDateFormatter()
 		markdownRenderer = StubMarkdownRenderer()
-		interactor = DefaultAnnouncementsViewModelFactory(
+		viewModelFactory = DefaultAnnouncementsViewModelFactory(
             announcementsService: announcementsService,
             announcementDateFormatter: announcementDateFormatter,
             markdownRenderer: markdownRenderer
@@ -29,14 +29,14 @@ class WhenPreparingViewModel_AnnouncementsViewModelFactoryShould: XCTestCase {
 
     func testIndicateTheTotalNumberOfAnnouncements() {
         var viewModel: AnnouncementsListViewModel?
-        interactor.makeViewModel { viewModel = $0 }
+        viewModelFactory.makeViewModel { viewModel = $0 }
 
         XCTAssertEqual(announcements.count, viewModel?.numberOfAnnouncements)
     }
 
     func testAdaptAnnouncementTitles() {
         var viewModel: AnnouncementsListViewModel?
-        interactor.makeViewModel { viewModel = $0 }
+        viewModelFactory.makeViewModel { viewModel = $0 }
         let announcementViewModel = viewModel?.announcementViewModel(at: announcement.index)
 
         XCTAssertEqual(announcement.element.title, announcementViewModel?.title)
@@ -44,7 +44,7 @@ class WhenPreparingViewModel_AnnouncementsViewModelFactoryShould: XCTestCase {
 
     func testAdaptAnnouncementContents() {
         var viewModel: AnnouncementsListViewModel?
-        interactor.makeViewModel { viewModel = $0 }
+        viewModelFactory.makeViewModel { viewModel = $0 }
         let announcementViewModel = viewModel?.announcementViewModel(at: announcement.index)
 
 		XCTAssertEqual(markdownRenderer.stubbedContents(for: announcement.element.content), announcementViewModel?.detail)
@@ -52,7 +52,7 @@ class WhenPreparingViewModel_AnnouncementsViewModelFactoryShould: XCTestCase {
 
     func testAdaptAnnouncementDate() {
         var viewModel: AnnouncementsListViewModel?
-        interactor.makeViewModel { viewModel = $0 }
+        viewModelFactory.makeViewModel { viewModel = $0 }
         let announcementViewModel = viewModel?.announcementViewModel(at: announcement.index)
         let expected = announcementDateFormatter.string(from: announcement.element.date)
 
@@ -62,7 +62,7 @@ class WhenPreparingViewModel_AnnouncementsViewModelFactoryShould: XCTestCase {
     func testAdaptReadAnnouncements() {
         var viewModel: AnnouncementsListViewModel?
         announcementsService.stubbedReadAnnouncements = [announcement.element.identifier]
-        interactor.makeViewModel { viewModel = $0 }
+        viewModelFactory.makeViewModel { viewModel = $0 }
         let announcementViewModel = viewModel?.announcementViewModel(at: announcement.index)
 
         XCTAssertEqual(true, announcementViewModel?.isRead)
@@ -70,7 +70,7 @@ class WhenPreparingViewModel_AnnouncementsViewModelFactoryShould: XCTestCase {
 
     func testAdaptUnreadAnnouncements() {
         var viewModel: AnnouncementsListViewModel?
-        interactor.makeViewModel { viewModel = $0 }
+        viewModelFactory.makeViewModel { viewModel = $0 }
         let announcementViewModel = viewModel?.announcementViewModel(at: announcement.index)
 
         XCTAssertEqual(false, announcementViewModel?.isRead)
@@ -78,7 +78,7 @@ class WhenPreparingViewModel_AnnouncementsViewModelFactoryShould: XCTestCase {
 
     func testProvideTheExpectedIdentifier() {
         var viewModel: AnnouncementsListViewModel?
-        interactor.makeViewModel { viewModel = $0 }
+        viewModelFactory.makeViewModel { viewModel = $0 }
         let actual = viewModel?.identifierForAnnouncement(at: announcement.index)
 
         XCTAssertEqual(announcement.element.identifier, actual)
@@ -86,7 +86,7 @@ class WhenPreparingViewModel_AnnouncementsViewModelFactoryShould: XCTestCase {
 
     func testUpdateTheAvailableViewModelsWhenAnnouncementsChange() {
         var viewModel: AnnouncementsListViewModel?
-        interactor.makeViewModel { viewModel = $0 }
+        viewModelFactory.makeViewModel { viewModel = $0 }
         let newAnnouncements = [StubAnnouncement].random(upperLimit: announcements.count)
         let delegate = CapturingAnnouncementsListViewModelDelegate()
         viewModel?.setDelegate(delegate)
@@ -100,7 +100,7 @@ class WhenPreparingViewModel_AnnouncementsViewModelFactoryShould: XCTestCase {
 
     func testUpdateTheAvailableViewModelsWhenReadAnnouncementsChange() {
         var viewModel: AnnouncementsListViewModel?
-        interactor.makeViewModel { viewModel = $0 }
+        viewModelFactory.makeViewModel { viewModel = $0 }
         let delegate = CapturingAnnouncementsListViewModelDelegate()
         viewModel?.setDelegate(delegate)
         announcementsService.updateReadAnnouncements(.random)

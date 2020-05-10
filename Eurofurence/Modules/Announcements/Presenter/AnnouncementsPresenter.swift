@@ -23,13 +23,17 @@ class AnnouncementsPresenter: AnnouncementsSceneDelegate, AnnouncementsListViewM
     }
 
     private let scene: AnnouncementsScene
-    private let interactor: AnnouncementsViewModelFactory
+    private let announcementsViewModelFactory: AnnouncementsViewModelFactory
     private let delegate: AnnouncementsComponentDelegate
     private var viewModel: AnnouncementsListViewModel?
 
-    init(scene: AnnouncementsScene, interactor: AnnouncementsViewModelFactory, delegate: AnnouncementsComponentDelegate) {
+    init(
+        scene: AnnouncementsScene,
+        announcementsViewModelFactory: AnnouncementsViewModelFactory,
+        delegate: AnnouncementsComponentDelegate
+    ) {
         self.scene = scene
-        self.interactor = interactor
+        self.announcementsViewModelFactory = announcementsViewModelFactory
         self.delegate = delegate
 
         scene.setAnnouncementsTitle(.announcements)
@@ -37,7 +41,7 @@ class AnnouncementsPresenter: AnnouncementsSceneDelegate, AnnouncementsListViewM
     }
 
     func announcementsSceneDidLoad() {
-        interactor.makeViewModel(completionHandler: viewModelPrepared)
+        announcementsViewModelFactory.makeViewModel(completionHandler: viewModelPrepared)
     }
 
     func announcementsSceneDidSelectAnnouncement(at index: Int) {

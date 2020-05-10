@@ -12,8 +12,8 @@ class WhenBindingAboutTheArtComponentWithMissingAttributes_DealerDetailPresenter
 
         aboutTheArtViewModel = DealerDetailAboutTheArtViewModel.random
         let viewModel = FakeDealerDetailAboutTheArtViewModel(aboutTheArt: aboutTheArtViewModel)
-        let interactor = FakeDealerDetailViewModelFactory(viewModel: viewModel)
-        context = DealerDetailPresenterTestBuilder().with(interactor).build()
+        let viewModelFactory = FakeDealerDetailViewModelFactory(viewModel: viewModel)
+        context = DealerDetailPresenterTestBuilder().with(viewModelFactory).build()
         context.simulateSceneDidLoad()
         context.bindComponent(at: 0)
     }

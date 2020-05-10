@@ -6,7 +6,7 @@ import Foundation
 class DealersViewModelTestBuilder {
 
     struct Context {
-        var interactor: DefaultDealersViewModelFactory
+        var viewModelFactory: DefaultDealersViewModelFactory
         var dealersService: FakeDealersService
         var defaultIconData: Data
         var refreshService: CapturingRefreshService
@@ -34,11 +34,11 @@ class DealersViewModelTestBuilder {
 
     func build() -> Context {
         let refreshService = CapturingRefreshService()
-        let interactor = DefaultDealersViewModelFactory(dealersService: dealersService,
+        let viewModelFactory = DefaultDealersViewModelFactory(dealersService: dealersService,
                                                   defaultIconData: defaultIconData,
                                                   refreshService: refreshService)
 
-        return Context(interactor: interactor,
+        return Context(viewModelFactory: viewModelFactory,
                        dealersService: dealersService,
                        defaultIconData: defaultIconData,
                        refreshService: refreshService)
@@ -51,14 +51,14 @@ extension DealersViewModelTestBuilder.Context {
     @discardableResult
     func prepareViewModel() -> DealersViewModel? {
         var viewModel: DealersViewModel?
-        interactor.makeDealersViewModel { viewModel = $0 }
+        viewModelFactory.makeDealersViewModel { viewModel = $0 }
 
         return viewModel
     }
     
     func prepareCategoriesViewModel() -> DealerCategoriesViewModel? {
         var viewModel: DealerCategoriesViewModel?
-        interactor.makeDealerCategoriesViewModel { viewModel = $0 }
+        viewModelFactory.makeDealerCategoriesViewModel { viewModel = $0 }
         
         return viewModel
     }

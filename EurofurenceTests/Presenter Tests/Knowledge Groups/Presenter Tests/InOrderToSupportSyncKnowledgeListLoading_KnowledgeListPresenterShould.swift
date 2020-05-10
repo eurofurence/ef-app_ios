@@ -6,7 +6,7 @@ class InOrderToSupportSyncKnowledgeListLoading_KnowledgeGroupsListPresenterShoul
 
     func testShowTheLoadingIndicatorBeforeRequestingViewModelToBePrepared() {
         let context = KnowledgeGroupsPresenterTestBuilder().build()
-        context.knowledgeInteractor.prepareViewModelInvokedHandler = {
+        context.knowledgeViewModelFactory.prepareViewModelInvokedHandler = {
             XCTAssertTrue(context.scene.didShowLoadingIndicator)
         }
 

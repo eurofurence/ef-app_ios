@@ -5,7 +5,7 @@ import EurofurenceModelTestDoubles
 class DealerDetailViewModelFactoryTestBuilder {
 
     struct Context {
-        var interactor: DefaultDealerDetailViewModelFactory
+        var viewModelFactory: DefaultDealerDetailViewModelFactory
         var dealersService: FakeDealersService
         var dealerData: ExtendedDealerData
         var dealerIdentifier: DealerIdentifier
@@ -20,9 +20,9 @@ class DealerDetailViewModelFactoryTestBuilder {
         dealersService.add(dealer)
         
         let shareService = CapturingShareService()
-        let interactor = DefaultDealerDetailViewModelFactory(dealersService: dealersService, shareService: shareService)
+        let viewModelFactory = DefaultDealerDetailViewModelFactory(dealersService: dealersService, shareService: shareService)
 
-        return Context(interactor: interactor,
+        return Context(viewModelFactory: viewModelFactory,
                        dealersService: dealersService,
                        dealerData: data,
                        dealerIdentifier: dealer.identifier,
@@ -36,7 +36,7 @@ extension DealerDetailViewModelFactoryTestBuilder.Context {
 
     func makeViewModel() -> DealerDetailViewModel? {
         var viewModel: DealerDetailViewModel?
-        interactor.makeDealerDetailViewModel(for: dealerIdentifier) { viewModel = $0 }
+        viewModelFactory.makeDealerDetailViewModel(for: dealerIdentifier) { viewModel = $0 }
 
         return viewModel
     }

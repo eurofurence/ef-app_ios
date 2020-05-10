@@ -10,28 +10,28 @@ class NewsPresenterTestBuilder {
         var sceneFactory: StubNewsSceneFactory
         var newsScene: CapturingNewsScene
         var delegate: CapturingNewsComponentDelegate
-        var newsInteractor: NewsViewModelProducer
+        var newsViewModelFactory: NewsViewModelProducer
 
     }
 
     private var sceneFactory: StubNewsSceneFactory
     private var delegate: CapturingNewsComponentDelegate
-    private var newsInteractor: NewsViewModelProducer
+    private var newsViewModelFactory: NewsViewModelProducer
 
     init() {
         sceneFactory = StubNewsSceneFactory()
         delegate = CapturingNewsComponentDelegate()
-        newsInteractor = FakeNewsViewModelProducer()
+        newsViewModelFactory = FakeNewsViewModelProducer()
     }
 
     @discardableResult
-    func with(_ newsInteractor: NewsViewModelProducer) -> NewsPresenterTestBuilder {
-        self.newsInteractor = newsInteractor
+    func with(_ newsViewModelFactory: NewsViewModelProducer) -> NewsPresenterTestBuilder {
+        self.newsViewModelFactory = newsViewModelFactory
         return self
     }
 
     func build() -> Context {
-        let module = NewsComponentBuilder(newsViewModelProduer: newsInteractor)
+        let module = NewsComponentBuilder(newsViewModelProduer: newsViewModelFactory)
             .with(sceneFactory)
             .build()
             .makeNewsComponent(delegate)
@@ -40,7 +40,7 @@ class NewsPresenterTestBuilder {
                        sceneFactory: sceneFactory,
                        newsScene: sceneFactory.stubbedScene,
                        delegate: delegate,
-                       newsInteractor: newsInteractor)
+                       newsViewModelFactory: newsViewModelFactory)
     }
 
 }
@@ -50,8 +50,8 @@ extension NewsPresenterTestBuilder {
     static func buildForAssertingAgainstEventComponent(eventViewModel: EventComponentViewModel) -> CapturingScheduleEventComponent {
         let viewModel = SingleEventNewsViewModel(event: eventViewModel)
         let indexPath = IndexPath(item: 0, section: 0)
-        let newsInteractor = StubNewsViewModelProducer(viewModel: viewModel)
-        let context = NewsPresenterTestBuilder().with(newsInteractor).build()
+        let newsViewModelFactory = StubNewsViewModelProducer(viewModel: viewModel)
+        let context = NewsPresenterTestBuilder().with(newsViewModelFactory).build()
         context.simulateNewsSceneDidLoad()
         context.bindSceneComponent(at: indexPath)
 

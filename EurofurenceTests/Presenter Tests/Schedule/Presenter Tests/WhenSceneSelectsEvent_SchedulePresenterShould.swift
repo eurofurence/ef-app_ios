@@ -7,8 +7,8 @@ class WhenSceneSelectsEvent_SchedulePresenterShould: XCTestCase {
 
     func testTellModuleEventWithResolvedIdentifierSelected() {
         let viewModel = CapturingScheduleViewModel.random
-        let interactor = FakeScheduleViewModelFactory(viewModel: viewModel)
-        let context = SchedulePresenterTestBuilder().with(interactor).build()
+        let viewModelFactory = FakeScheduleViewModelFactory(viewModel: viewModel)
+        let context = SchedulePresenterTestBuilder().with(viewModelFactory).build()
         context.simulateSceneDidLoad()
         let randomGroup = viewModel.events.randomElement()
         let randomEvent = randomGroup.element.events.randomElement()

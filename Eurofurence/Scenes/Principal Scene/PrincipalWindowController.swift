@@ -98,7 +98,7 @@ struct PrincipalWindowController {
         
         let principalWindowScene = ModuleSwappingPrincipalWindowScene(
             windowWireframe: AppWindowWireframe(window: window),
-            tutorialModule: moduleRepository.tutorialModuleProviding,
+            tutorialModule: moduleRepository.tutorialComponentFactory,
             preloadModule: moduleRepository.preloadComponentFactory,
             principalContentModule: PrincipalContentAggregator(applicationModuleFactories: applicationModuleFactories)
         )

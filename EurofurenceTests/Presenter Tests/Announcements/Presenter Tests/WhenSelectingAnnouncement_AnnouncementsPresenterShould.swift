@@ -6,8 +6,8 @@ class WhenSelectingAnnouncement_AnnouncementsPresenterShould: XCTestCase {
 
     func testTellTheModuleDelegateWhichAnnouncementWasSelected() {
         let viewModel = FakeAnnouncementsListViewModel()
-        let interactor = FakeAnnouncementsViewModelFactory(viewModel: viewModel)
-        let context = AnnouncementsPresenterTestBuilder().with(interactor).build()
+        let viewModelFactory = FakeAnnouncementsViewModelFactory(viewModel: viewModel)
+        let context = AnnouncementsPresenterTestBuilder().with(viewModelFactory).build()
         context.simulateSceneDidLoad()
         let randomAnnouncement = viewModel.announcements.randomElement()
         context.simulateSceneDidSelectAnnouncement(at: randomAnnouncement.index)
@@ -18,8 +18,8 @@ class WhenSelectingAnnouncement_AnnouncementsPresenterShould: XCTestCase {
 
     func testTellTheSceneToDeselectTheSelectedAnnouncement() {
         let viewModel = FakeAnnouncementsListViewModel()
-        let interactor = FakeAnnouncementsViewModelFactory(viewModel: viewModel)
-        let context = AnnouncementsPresenterTestBuilder().with(interactor).build()
+        let viewModelFactory = FakeAnnouncementsViewModelFactory(viewModel: viewModel)
+        let context = AnnouncementsPresenterTestBuilder().with(viewModelFactory).build()
         context.simulateSceneDidLoad()
         let randomAnnouncement = viewModel.announcements.randomElement()
         context.simulateSceneDidSelectAnnouncement(at: randomAnnouncement.index)

@@ -7,20 +7,20 @@ class WhenMapDetailSceneLoads_MapsPresenterShould: XCTestCase {
 
     func testBindTheMapFromTheViewModelOntoTheScene() {
         let identifier = MapIdentifier.random
-        let interactor = FakeMapDetailViewModelFactory(expectedMapIdentifier: identifier)
-        let context = MapDetailPresenterTestBuilder().with(interactor).build(for: identifier)
+        let viewModelFactory = FakeMapDetailViewModelFactory(expectedMapIdentifier: identifier)
+        let context = MapDetailPresenterTestBuilder().with(viewModelFactory).build(for: identifier)
         context.simulateSceneDidLoad()
 
-        XCTAssertEqual(interactor.viewModel.mapImagePNGData, context.scene.capturedMapImagePNGData)
+        XCTAssertEqual(viewModelFactory.viewModel.mapImagePNGData, context.scene.capturedMapImagePNGData)
     }
 
     func testBindTheNameOfTheMapAsTheTitleOntoTheScene() {
         let identifier = MapIdentifier.random
-        let interactor = FakeMapDetailViewModelFactory(expectedMapIdentifier: identifier)
-        let context = MapDetailPresenterTestBuilder().with(interactor).build(for: identifier)
+        let viewModelFactory = FakeMapDetailViewModelFactory(expectedMapIdentifier: identifier)
+        let context = MapDetailPresenterTestBuilder().with(viewModelFactory).build(for: identifier)
         context.simulateSceneDidLoad()
 
-        XCTAssertEqual(interactor.viewModel.mapName, context.scene.capturedTitle)
+        XCTAssertEqual(viewModelFactory.viewModel.mapName, context.scene.capturedTitle)
     }
 
 }

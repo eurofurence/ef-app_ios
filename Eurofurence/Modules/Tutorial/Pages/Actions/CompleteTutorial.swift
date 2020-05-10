@@ -1,6 +1,6 @@
 struct CompleteTutorial: TutorialPageDelegate {
 
-    var delegate: TutorialModuleDelegate
+    var delegate: TutorialComponentDelegate
     var tutorialStateProviding: UserCompletedTutorialStateProviding
 
     func tutorialPageCompletedByUser(_ tutorialPage: TutorialPage) {

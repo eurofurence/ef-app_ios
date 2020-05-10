@@ -9,7 +9,7 @@ class WhenFetchingIdentifierForDealer_DealersViewModelFactoryShould: XCTestCase 
         let dealersService = FakeDealersService()
         let context = DealersViewModelTestBuilder().with(dealersService).build()
         var viewModel: DealersViewModel?
-        context.interactor.makeDealersViewModel { viewModel = $0 }
+        context.viewModelFactory.makeDealersViewModel { viewModel = $0 }
         let modelDealers = dealersService.index.alphabetisedDealers
         let randomGroup = modelDealers.randomElement()
         let randomDealer = randomGroup.element.dealers.randomElement()

@@ -10,7 +10,7 @@ struct AnnouncementDetailComponentFactoryImpl: AnnouncementDetailComponentFactor
         let scene = sceneFactory.makeAnnouncementDetailScene()
         _ = AnnouncementDetailPresenter(
             scene: scene,
-            interactor: announcementDetailViewModelFactory,
+            announcementDetailViewModelFactory: announcementDetailViewModelFactory,
             announcement: announcement
         )
 

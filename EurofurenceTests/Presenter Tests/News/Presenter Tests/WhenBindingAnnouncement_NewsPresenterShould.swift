@@ -8,7 +8,7 @@ class WhenBindingAnnouncement_NewsPresenterShould: XCTestCase {
     var viewModel: AnnouncementsViewModel!
     var announcementViewModel: AnnouncementItemViewModel!
     var indexPath: IndexPath!
-    var newsInteractor: StubNewsViewModelProducer!
+    var newsViewModelFactory: StubNewsViewModelProducer!
     var context: NewsPresenterTestBuilder.Context!
 
     override func setUp() {
@@ -20,8 +20,8 @@ class WhenBindingAnnouncement_NewsPresenterShould: XCTestCase {
         announcementViewModel = announcement.element
         indexPath = IndexPath(row: announcement.index, section: component.index)
 
-        newsInteractor = StubNewsViewModelProducer(viewModel: viewModel)
-        context = NewsPresenterTestBuilder().with(newsInteractor).build()
+        newsViewModelFactory = StubNewsViewModelProducer(viewModel: viewModel)
+        context = NewsPresenterTestBuilder().with(newsViewModelFactory).build()
         context.simulateNewsSceneDidLoad()
         context.bindSceneComponent(at: indexPath)
     }

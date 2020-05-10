@@ -2,13 +2,13 @@ import EurofurenceModel
 import Foundation
 import UIKit
 
-public protocol TutorialModuleDelegate {
+public protocol TutorialComponentDelegate {
 
     func tutorialModuleDidFinishPresentingTutorial()
 
 }
 
-struct TutorialModule: TutorialModuleProviding {
+struct TutorialModule: TutorialComponentFactory {
 
     var tutorialSceneFactory: TutorialSceneFactory
     var presentationAssets: PresentationAssets
@@ -17,7 +17,7 @@ struct TutorialModule: TutorialModuleProviding {
     var networkReachability: NetworkReachability
     var witnessedTutorialPushPermissionsRequest: WitnessedTutorialPushPermissionsRequest
 
-    func makeTutorialModule(_ delegate: TutorialModuleDelegate) -> UIViewController {
+    func makeTutorialModule(_ delegate: TutorialComponentDelegate) -> UIViewController {
         let tutorialScene = tutorialSceneFactory.makeTutorialScene()
         let tutorialContext = TutorialPresentationContext(
             tutorialScene: tutorialScene,

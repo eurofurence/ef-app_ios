@@ -3,12 +3,16 @@ import EurofurenceModel
 struct AnnouncementDetailPresenter: AnnouncementDetailSceneDelegate {
 
     private let scene: AnnouncementDetailScene
-    private let interactor: AnnouncementDetailViewModelFactory
+    private let announcementDetailViewModelFactory: AnnouncementDetailViewModelFactory
     private let announcement: AnnouncementIdentifier
 
-    init(scene: AnnouncementDetailScene, interactor: AnnouncementDetailViewModelFactory, announcement: AnnouncementIdentifier) {
+    init(
+        scene: AnnouncementDetailScene,
+        announcementDetailViewModelFactory: AnnouncementDetailViewModelFactory,
+        announcement: AnnouncementIdentifier
+    ) {
         self.scene = scene
-        self.interactor = interactor
+        self.announcementDetailViewModelFactory = announcementDetailViewModelFactory
         self.announcement = announcement
 
         scene.setDelegate(self)
@@ -16,7 +20,10 @@ struct AnnouncementDetailPresenter: AnnouncementDetailSceneDelegate {
     }
 
     func announcementDetailSceneDidLoad() {
-        interactor.makeViewModel(for: announcement, completionHandler: announcementViewModelPrepared)
+        announcementDetailViewModelFactory.makeViewModel(
+            for: announcement,
+            completionHandler: announcementViewModelPrepared
+        )
     }
 
     private func announcementViewModelPrepared(_ viewModel: AnnouncementDetailViewModel) {

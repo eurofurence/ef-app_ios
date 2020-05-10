@@ -40,8 +40,8 @@ class WhenBindingEventBanner_EventDetailPresenterShould: XCTestCase {
         let graphic = EventGraphicViewModel.random
         let index = Int.random
         let viewModel = StubEventGraphicViewModel(graphic: graphic, at: index)
-        let interactor = FakeEventDetailViewModelFactory(viewModel: viewModel, for: event)
-        let context = EventDetailPresenterTestBuilder().with(interactor).build(for: event)
+        let viewModelFactory = FakeEventDetailViewModelFactory(viewModel: viewModel, for: event)
+        let context = EventDetailPresenterTestBuilder().with(viewModelFactory).build(for: event)
         context.simulateSceneDidLoad()
         _ = context.scene.bindComponent(at: IndexPath(item: index, section: 0))
 
@@ -53,8 +53,8 @@ class WhenBindingEventBanner_EventDetailPresenterShould: XCTestCase {
         let graphic = EventGraphicViewModel.random
         let index = Int.random
         let viewModel = StubEventGraphicViewModel(graphic: graphic, at: index)
-        let interactor = FakeEventDetailViewModelFactory(viewModel: viewModel, for: event)
-        let context = EventDetailPresenterTestBuilder().with(interactor).build(for: event)
+        let viewModelFactory = FakeEventDetailViewModelFactory(viewModel: viewModel, for: event)
+        let context = EventDetailPresenterTestBuilder().with(viewModelFactory).build(for: event)
         context.simulateSceneDidLoad()
         let boundComponent = context.scene.bindComponent(at: IndexPath(item: index, section: 0))
 

@@ -7,8 +7,8 @@ class WhenViewModelUpdatesSearchResults_DealersPresenterShould: XCTestCase {
     func testBindTheCountOfDealersPerGroupFromTheViewModelOntoTheScene() {
         let dealerGroups = [DealersGroupViewModel].random
         let searchViewModel = CapturingDealersSearchViewModel(dealerGroups: dealerGroups)
-        let interactor = FakeDealersViewModelFactory(searchViewModel: searchViewModel)
-        let context = DealersPresenterTestBuilder().with(interactor).build()
+        let viewModelFactory = FakeDealersViewModelFactory(searchViewModel: searchViewModel)
+        let context = DealersPresenterTestBuilder().with(viewModelFactory).build()
         context.simulateSceneDidLoad()
         let expected = dealerGroups.map(\.dealers.count)
 
@@ -17,8 +17,8 @@ class WhenViewModelUpdatesSearchResults_DealersPresenterShould: XCTestCase {
 
     func testBindTheSectionIndexTitlesFromTheViewModelOntoTheScene() {
         let searchViewModel = CapturingDealersSearchViewModel()
-        let interactor = FakeDealersViewModelFactory(searchViewModel: searchViewModel)
-        let context = DealersPresenterTestBuilder().with(interactor).build()
+        let viewModelFactory = FakeDealersViewModelFactory(searchViewModel: searchViewModel)
+        let context = DealersPresenterTestBuilder().with(viewModelFactory).build()
         context.simulateSceneDidLoad()
 
         XCTAssertEqual(searchViewModel.sectionIndexTitles, context.scene.capturedSectionIndexTitlesToBindToSearchResults)

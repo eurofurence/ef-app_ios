@@ -7,13 +7,13 @@ class WhenSceneTapsMapPosition_ThatProvidesSimpleContextualDetail_MapsPresenterS
 
     func testTellTheSceneToShowTheDetailAtTheSpecifiedLocation() {
         let identifier = MapIdentifier.random
-        let interactor = FakeMapDetailViewModelFactory(expectedMapIdentifier: identifier)
-        let context = MapDetailPresenterTestBuilder().with(interactor).build(for: identifier)
+        let viewModelFactory = FakeMapDetailViewModelFactory(expectedMapIdentifier: identifier)
+        let context = MapDetailPresenterTestBuilder().with(viewModelFactory).build(for: identifier)
         context.simulateSceneDidLoad()
         let randomLocation = MapCoordinate(x: Float.random, y: Float.random)
         context.simulateSceneDidDidTapMap(at: randomLocation)
         let expected = MapInformationContextualContent(coordinate: randomLocation, content: .random)
-        interactor.viewModel.resolvePositionalContent(with: expected)
+        viewModelFactory.viewModel.resolvePositionalContent(with: expected)
 
         XCTAssertEqual(expected, context.scene.presentedContextualContext)
     }

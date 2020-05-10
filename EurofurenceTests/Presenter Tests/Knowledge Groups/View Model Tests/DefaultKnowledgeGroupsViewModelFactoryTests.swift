@@ -19,9 +19,9 @@ class DefaultKnowledgeGroupsViewModelFactoryTests: XCTestCase {
 
     func testKnowledgeGroupsFromServiceAreTurnedIntoExpectedViewModels() {
         let service = StubKnowledgeService()
-        let interactor = DefaultKnowledgeGroupsViewModelFactory(service: service)
+        let viewModelFactory = DefaultKnowledgeGroupsViewModelFactory(service: service)
         var viewModel: KnowledgeGroupsListViewModel?
-        interactor.prepareViewModel { viewModel = $0 }
+        viewModelFactory.prepareViewModel { viewModel = $0 }
         let delegate = CapturingKnowledgeGroupsListViewModelDelegate()
         viewModel?.setDelegate(delegate)
 
@@ -34,9 +34,9 @@ class DefaultKnowledgeGroupsViewModelFactoryTests: XCTestCase {
 
     func testLateBoundViewModelDelegateProvidedWithExpectedViewModels() {
         let service = StubKnowledgeService()
-        let interactor = DefaultKnowledgeGroupsViewModelFactory(service: service)
+        let viewModelFactory = DefaultKnowledgeGroupsViewModelFactory(service: service)
         var viewModel: KnowledgeGroupsListViewModel?
-        interactor.prepareViewModel { viewModel = $0 }
+        viewModelFactory.prepareViewModel { viewModel = $0 }
         let models: [FakeKnowledgeGroup] = .random
         let expected = models.map(expectedViewModelForGroup)
         service.simulateFetchSucceeded(models)
@@ -49,9 +49,9 @@ class DefaultKnowledgeGroupsViewModelFactoryTests: XCTestCase {
 
     func testProvideExpectedKnowledgeGroupByIndex() {
         let service = StubKnowledgeService()
-        let interactor = DefaultKnowledgeGroupsViewModelFactory(service: service)
+        let viewModelFactory = DefaultKnowledgeGroupsViewModelFactory(service: service)
         var viewModel: KnowledgeGroupsListViewModel?
-        interactor.prepareViewModel { viewModel = $0 }
+        viewModelFactory.prepareViewModel { viewModel = $0 }
         let models: [FakeKnowledgeGroup] = .random
         service.simulateFetchSucceeded(models)
 
@@ -66,9 +66,9 @@ class DefaultKnowledgeGroupsViewModelFactoryTests: XCTestCase {
     
     func testGroupWithSingleEntryVisitsEntryInsteadOfGroup() {
         let service = StubKnowledgeService()
-        let interactor = DefaultKnowledgeGroupsViewModelFactory(service: service)
+        let viewModelFactory = DefaultKnowledgeGroupsViewModelFactory(service: service)
         var viewModel: KnowledgeGroupsListViewModel?
-        interactor.prepareViewModel { viewModel = $0 }
+        viewModelFactory.prepareViewModel { viewModel = $0 }
         let group = FakeKnowledgeGroup.random
         let entry = FakeKnowledgeEntry.random
         group.entries = [entry]

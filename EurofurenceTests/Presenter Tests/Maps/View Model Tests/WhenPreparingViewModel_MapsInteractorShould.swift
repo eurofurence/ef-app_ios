@@ -7,18 +7,18 @@ class WhenPreparingViewModel_MapsViewModelFactoryShould: XCTestCase {
 
     func testAdaptNumberOfMapsFromServiceIntoMapsCount() {
         let mapsService = FakeMapsService()
-        let interactor = DefaultMapsViewModelFactory(mapsService: mapsService)
+        let viewModelFactory = DefaultMapsViewModelFactory(mapsService: mapsService)
         var viewModel: MapsViewModel?
-        interactor.makeMapsViewModel { viewModel = $0 }
+        viewModelFactory.makeMapsViewModel { viewModel = $0 }
 
         XCTAssertEqual(mapsService.maps.count, viewModel?.numberOfMaps)
     }
 
     func testAdaptMapNamesIntoMapViewModel() {
         let mapsService = FakeMapsService()
-        let interactor = DefaultMapsViewModelFactory(mapsService: mapsService)
+        let viewModelFactory = DefaultMapsViewModelFactory(mapsService: mapsService)
         var viewModel: MapsViewModel?
-        interactor.makeMapsViewModel { viewModel = $0 }
+        viewModelFactory.makeMapsViewModel { viewModel = $0 }
         let randomMap = mapsService.maps.randomElement()
         let mapViewModel = viewModel?.mapViewModel(at: randomMap.index)
 
@@ -27,9 +27,9 @@ class WhenPreparingViewModel_MapsViewModelFactoryShould: XCTestCase {
 
     func testAdaptMapDataIntoPreview() {
         let mapsService = FakeMapsService()
-        let interactor = DefaultMapsViewModelFactory(mapsService: mapsService)
+        let viewModelFactory = DefaultMapsViewModelFactory(mapsService: mapsService)
         var viewModel: MapsViewModel?
-        interactor.makeMapsViewModel { viewModel = $0 }
+        viewModelFactory.makeMapsViewModel { viewModel = $0 }
         let randomMap = mapsService.maps.randomElement()
         let mapViewModel = viewModel?.mapViewModel(at: randomMap.index)
         var previewData: Data?
@@ -40,9 +40,9 @@ class WhenPreparingViewModel_MapsViewModelFactoryShould: XCTestCase {
 
     func testExposeIdentifierForSpecifiedMap() {
         let mapsService = FakeMapsService()
-        let interactor = DefaultMapsViewModelFactory(mapsService: mapsService)
+        let viewModelFactory = DefaultMapsViewModelFactory(mapsService: mapsService)
         var viewModel: MapsViewModel?
-        interactor.makeMapsViewModel { viewModel = $0 }
+        viewModelFactory.makeMapsViewModel { viewModel = $0 }
         let randomMap = mapsService.maps.randomElement()
         let identifier = viewModel?.identifierForMap(at: randomMap.index)
 

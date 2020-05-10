@@ -170,18 +170,18 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
     }
 
     private let scene: ScheduleScene
-    private let interactor: ScheduleViewModelFactory
+    private let scheduleViewModelFactory: ScheduleViewModelFactory
     private let delegate: ScheduleComponentDelegate
     private let hapticEngine: SelectionChangedHaptic
     private var viewModel: ScheduleViewModel?
     private var searchViewModel: ScheduleSearchViewModel?
 
     init(scene: ScheduleScene,
-         interactor: ScheduleViewModelFactory,
+         scheduleViewModelFactory: ScheduleViewModelFactory,
          delegate: ScheduleComponentDelegate,
          hapticEngine: SelectionChangedHaptic) {
         self.scene = scene
-        self.interactor = interactor
+        self.scheduleViewModelFactory = scheduleViewModelFactory
         self.delegate = delegate
         self.hapticEngine = hapticEngine
 
@@ -189,12 +189,12 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
     }
 
     func scheduleSceneDidLoad() {
-        interactor.makeViewModel { (viewModel) in
+        scheduleViewModelFactory.makeViewModel { (viewModel) in
             self.viewModel = viewModel
             viewModel.setDelegate(self)
         }
 
-        interactor.makeSearchViewModel { (viewModel) in
+        scheduleViewModelFactory.makeSearchViewModel { (viewModel) in
             self.searchViewModel = viewModel
             viewModel.setDelegate(self)
         }

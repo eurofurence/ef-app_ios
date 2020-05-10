@@ -6,8 +6,8 @@ class WhenScheduleSceneLoads_SchedulePresenterShould: XCTestCase {
 
     func testBindNumberOfConferenceDaysOntoTheScene() {
         let viewModel = CapturingScheduleViewModel.random
-        let interactor = FakeScheduleViewModelFactory(viewModel: viewModel)
-        let context = SchedulePresenterTestBuilder().with(interactor).build()
+        let viewModelFactory = FakeScheduleViewModelFactory(viewModel: viewModel)
+        let context = SchedulePresenterTestBuilder().with(viewModelFactory).build()
         context.simulateSceneDidLoad()
         let expected = viewModel.days.count
 
@@ -16,8 +16,8 @@ class WhenScheduleSceneLoads_SchedulePresenterShould: XCTestCase {
 
     func testBindNumberOfGroupsOntoScheduleScene() {
         let viewModel = CapturingScheduleViewModel.random
-        let interactor = FakeScheduleViewModelFactory(viewModel: viewModel)
-        let context = SchedulePresenterTestBuilder().with(interactor).build()
+        let viewModelFactory = FakeScheduleViewModelFactory(viewModel: viewModel)
+        let context = SchedulePresenterTestBuilder().with(viewModelFactory).build()
         context.simulateSceneDidLoad()
         let expected = viewModel.events.map(\.events.count)
 
@@ -26,8 +26,8 @@ class WhenScheduleSceneLoads_SchedulePresenterShould: XCTestCase {
 
     func testTellTheSceneToSelectTheCurrentDayUsingIndexFromViewModel() {
         let viewModel = CapturingScheduleViewModel.random
-        let interactor = FakeScheduleViewModelFactory(viewModel: viewModel)
-        let context = SchedulePresenterTestBuilder().with(interactor).build()
+        let viewModelFactory = FakeScheduleViewModelFactory(viewModel: viewModel)
+        let context = SchedulePresenterTestBuilder().with(viewModelFactory).build()
         context.simulateSceneDidLoad()
 
         XCTAssertEqual(viewModel.currentDay, context.scene.selectedDayIndex)

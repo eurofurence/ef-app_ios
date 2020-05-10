@@ -6,8 +6,8 @@ class WhenSceneInstigatesPullToRefresh_DealersPresenterShould: XCTestCase {
 
     func testTellTheViewModelToRefresh() {
         let viewModel = CapturingDealersViewModel()
-        let interactor = FakeDealersViewModelFactory(viewModel: viewModel)
-        let context = DealersPresenterTestBuilder().with(interactor).build()
+        let viewModelFactory = FakeDealersViewModelFactory(viewModel: viewModel)
+        let context = DealersPresenterTestBuilder().with(viewModelFactory).build()
         context.simulateSceneDidLoad()
         context.simulateSceneDidPerformRefreshAction()
 

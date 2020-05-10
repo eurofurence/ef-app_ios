@@ -7,7 +7,7 @@ class WhenBindingUserWithNoUnreadMessages_NewsPresenterShould: XCTestCase {
     var viewModel: StubbedUserViewModel!
     var userWidgetViewModel: UserWidgetComponentViewModel!
     var indexPath: IndexPath!
-    var newsInteractor: StubNewsViewModelProducer!
+    var newsViewModelFactory: StubNewsViewModelProducer!
     var context: NewsPresenterTestBuilder.Context!
 
     override func setUp() {
@@ -18,8 +18,8 @@ class WhenBindingUserWithNoUnreadMessages_NewsPresenterShould: XCTestCase {
         viewModel = StubbedUserViewModel(viewModel: userWidgetViewModel)
         indexPath = IndexPath(row: 0, section: 0)
 
-        newsInteractor = StubNewsViewModelProducer(viewModel: viewModel)
-        context = NewsPresenterTestBuilder().with(newsInteractor).build()
+        newsViewModelFactory = StubNewsViewModelProducer(viewModel: viewModel)
+        context = NewsPresenterTestBuilder().with(newsViewModelFactory).build()
         context.simulateNewsSceneDidLoad()
         context.bindSceneComponent(at: indexPath)
     }

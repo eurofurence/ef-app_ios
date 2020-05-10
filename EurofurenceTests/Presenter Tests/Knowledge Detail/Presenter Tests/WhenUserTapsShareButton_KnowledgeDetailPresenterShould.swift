@@ -6,12 +6,12 @@ class WhenUserTapsShareButton_KnowledgeDetailPresenterShould: XCTestCase {
         let context = KnowledgeDetailPresenterTestBuilder().build()
         context.knowledgeDetailScene.simulateSceneDidLoad()
         
-        XCTAssertNil(context.interactor.viewModel.shareSender)
+        XCTAssertNil(context.viewModelFactory.viewModel.shareSender)
         
         let sender = self
         context.knowledgeDetailScene.simulateShareButtonTapped(sender)
         
-        XCTAssertTrue(sender === context.interactor.viewModel.shareSender)
+        XCTAssertTrue(sender === context.viewModelFactory.viewModel.shareSender)
     }
 
 }

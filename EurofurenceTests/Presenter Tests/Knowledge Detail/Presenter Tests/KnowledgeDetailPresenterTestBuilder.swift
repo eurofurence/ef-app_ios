@@ -8,16 +8,16 @@ class KnowledgeDetailPresenterTestBuilder {
     struct Context {
         var knowledgeEntryIdentifier: KnowledgeEntryIdentifier
         var knowledgeDetailScene: CapturingKnowledgeDetailScene
-        var interactor: StubKnowledgeDetailViewModelFactory
+        var viewModelFactory: StubKnowledgeDetailViewModelFactory
         var module: UIViewController
         var delegate: CapturingKnowledgeDetailComponentDelegate
     }
 
-    private var interactor = StubKnowledgeDetailViewModelFactory()
+    private var viewModelFactory = StubKnowledgeDetailViewModelFactory()
 
     @discardableResult
-    func with(_ interactor: StubKnowledgeDetailViewModelFactory) -> KnowledgeDetailPresenterTestBuilder {
-        self.interactor = interactor
+    func with(_ viewModelFactory: StubKnowledgeDetailViewModelFactory) -> KnowledgeDetailPresenterTestBuilder {
+        self.viewModelFactory = viewModelFactory
         return self
     }
 
@@ -26,14 +26,14 @@ class KnowledgeDetailPresenterTestBuilder {
         let knowledgeDetailSceneFactory = StubKnowledgeDetailSceneFactory()
         let knowledgeDetailScene = knowledgeDetailSceneFactory.interface
         let delegate = CapturingKnowledgeDetailComponentDelegate()
-        let moduleBuilder = KnowledgeDetailComponentBuilder(knowledgeDetailViewModelFactory: interactor)
+        let moduleBuilder = KnowledgeDetailComponentBuilder(knowledgeDetailViewModelFactory: viewModelFactory)
             .with(knowledgeDetailSceneFactory)
             .build()
         let module = moduleBuilder.makeKnowledgeListComponent(knowledgeEntryIdentifier, delegate: delegate)
 
         return Context(knowledgeEntryIdentifier: knowledgeEntryIdentifier,
                        knowledgeDetailScene: knowledgeDetailScene,
-                       interactor: interactor,
+                       viewModelFactory: viewModelFactory,
                        module: module,
                        delegate: delegate)
     }

@@ -1,13 +1,13 @@
 public struct ModuleSwappingPrincipalWindowScene: PrincipalWindowScene {
     
     private let windowWireframe: WindowWireframe
-    private let tutorialModule: TutorialModuleProviding
+    private let tutorialModule: TutorialComponentFactory
     private let preloadModule: PreloadComponentFactory
     private let principalContentModule: PrincipalContentModuleProviding
     
     public init(
         windowWireframe: WindowWireframe,
-        tutorialModule: TutorialModuleProviding,
+        tutorialModule: TutorialComponentFactory,
         preloadModule: PreloadComponentFactory,
         principalContentModule: PrincipalContentModuleProviding
     ) {
@@ -38,7 +38,7 @@ public struct ModuleSwappingPrincipalWindowScene: PrincipalWindowScene {
         windowWireframe.setRoot(contentController)
     }
     
-    private struct ShowPreloadingWhenTutorialFinishes: TutorialModuleDelegate {
+    private struct ShowPreloadingWhenTutorialFinishes: TutorialComponentDelegate {
         
         let scene: ModuleSwappingPrincipalWindowScene
         

@@ -7,7 +7,7 @@ class EventDetailViewModelFactoryTestBuilder {
     struct Context {
         var event: Event
         var dateRangeFormatter: FakeDateRangeFormatter
-        var interactor: DefaultEventDetailViewModelFactory
+        var viewModelFactory: DefaultEventDetailViewModelFactory
         var viewModel: EventDetailViewModel
         var eventsService: FakeEventsService
 		var markdownRenderer: StubMarkdownRenderer
@@ -31,18 +31,18 @@ class EventDetailViewModelFactoryTestBuilder {
 		let markdownRenderer = StubMarkdownRenderer()
         eventsService.events = [event]
         let shareService = CapturingShareService()
-		let interactor = DefaultEventDetailViewModelFactory(dateRangeFormatter: dateRangeFormatter,
+		let viewModelFactory = DefaultEventDetailViewModelFactory(dateRangeFormatter: dateRangeFormatter,
                                                       eventsService: eventsService,
                                                       markdownRenderer: markdownRenderer,
                                                       shareService: shareService)
         var viewModel: EventDetailViewModel!
-        interactor.makeViewModel(for: event.identifier) { viewModel = $0 }
+        viewModelFactory.makeViewModel(for: event.identifier) { viewModel = $0 }
         
         assert(viewModel != nil)
 
         return Context(event: event,
                        dateRangeFormatter: dateRangeFormatter,
-                       interactor: interactor,
+                       viewModelFactory: viewModelFactory,
                        viewModel: viewModel,
                        eventsService: eventsService,
 					   markdownRenderer: markdownRenderer,

@@ -13,8 +13,8 @@ class WhenBindingDealerSearchResult_DealersPresenterShould: XCTestCase {
 
         let dealerGroups = [DealersGroupViewModel].random
         let searchViewModel = CapturingDealersSearchViewModel(dealerGroups: dealerGroups)
-        let interactor = FakeDealersViewModelFactory(searchViewModel: searchViewModel)
-        context = DealersPresenterTestBuilder().with(interactor).build()
+        let viewModelFactory = FakeDealersViewModelFactory(searchViewModel: searchViewModel)
+        context = DealersPresenterTestBuilder().with(viewModelFactory).build()
         context.simulateSceneDidLoad()
         let randomGroup = dealerGroups.randomElement()
         let randomDealer = randomGroup.element.dealers.randomElement()

@@ -6,8 +6,8 @@ class WhenBindingAnnouncement_AnnouncementsPresenterShould: XCTestCase {
 
     func testBindTheTitleOntoTheComponent() {
         let viewModel = FakeAnnouncementsListViewModel()
-        let interactor = FakeAnnouncementsViewModelFactory(viewModel: viewModel)
-        let context = AnnouncementsPresenterTestBuilder().with(interactor).build()
+        let viewModelFactory = FakeAnnouncementsViewModelFactory(viewModel: viewModel)
+        let context = AnnouncementsPresenterTestBuilder().with(viewModelFactory).build()
         let randomAnnouncement = viewModel.announcements.randomElement()
         context.simulateSceneDidLoad()
         let boundComponent = context.bindAnnouncement(at: randomAnnouncement.index)
@@ -17,8 +17,8 @@ class WhenBindingAnnouncement_AnnouncementsPresenterShould: XCTestCase {
 
     func testBindTheSubtitleOntoTheComponent() {
         let viewModel = FakeAnnouncementsListViewModel()
-        let interactor = FakeAnnouncementsViewModelFactory(viewModel: viewModel)
-        let context = AnnouncementsPresenterTestBuilder().with(interactor).build()
+        let viewModelFactory = FakeAnnouncementsViewModelFactory(viewModel: viewModel)
+        let context = AnnouncementsPresenterTestBuilder().with(viewModelFactory).build()
         let randomAnnouncement = viewModel.announcements.randomElement()
         context.simulateSceneDidLoad()
         let boundComponent = context.bindAnnouncement(at: randomAnnouncement.index)
@@ -28,8 +28,8 @@ class WhenBindingAnnouncement_AnnouncementsPresenterShould: XCTestCase {
 
     func testBindTheAnnouncementDateTimeOntoTheComponent() {
         let viewModel = FakeAnnouncementsListViewModel()
-        let interactor = FakeAnnouncementsViewModelFactory(viewModel: viewModel)
-        let context = AnnouncementsPresenterTestBuilder().with(interactor).build()
+        let viewModelFactory = FakeAnnouncementsViewModelFactory(viewModel: viewModel)
+        let context = AnnouncementsPresenterTestBuilder().with(viewModelFactory).build()
         let randomAnnouncement = viewModel.announcements.randomElement()
         context.simulateSceneDidLoad()
         let boundComponent = context.bindAnnouncement(at: randomAnnouncement.index)
@@ -41,8 +41,8 @@ class WhenBindingAnnouncement_AnnouncementsPresenterShould: XCTestCase {
         var announcement = AnnouncementItemViewModel.random
         announcement.isRead = true
         let viewModel = FakeAnnouncementsListViewModel(announcements: [announcement])
-        let interactor = FakeAnnouncementsViewModelFactory(viewModel: viewModel)
-        let context = AnnouncementsPresenterTestBuilder().with(interactor).build()
+        let viewModelFactory = FakeAnnouncementsViewModelFactory(viewModel: viewModel)
+        let context = AnnouncementsPresenterTestBuilder().with(viewModelFactory).build()
         context.simulateSceneDidLoad()
         let boundComponent = context.bindAnnouncement(at: 0)
 
@@ -53,8 +53,8 @@ class WhenBindingAnnouncement_AnnouncementsPresenterShould: XCTestCase {
         var announcement = AnnouncementItemViewModel.random
         announcement.isRead = false
         let viewModel = FakeAnnouncementsListViewModel(announcements: [announcement])
-        let interactor = FakeAnnouncementsViewModelFactory(viewModel: viewModel)
-        let context = AnnouncementsPresenterTestBuilder().with(interactor).build()
+        let viewModelFactory = FakeAnnouncementsViewModelFactory(viewModel: viewModel)
+        let context = AnnouncementsPresenterTestBuilder().with(viewModelFactory).build()
         context.simulateSceneDidLoad()
         let boundComponent = context.bindAnnouncement(at: 0)
 
@@ -65,8 +65,8 @@ class WhenBindingAnnouncement_AnnouncementsPresenterShould: XCTestCase {
         var announcement = AnnouncementItemViewModel.random
         announcement.isRead = false
         let viewModel = FakeAnnouncementsListViewModel(announcements: [announcement])
-        let interactor = FakeAnnouncementsViewModelFactory(viewModel: viewModel)
-        let context = AnnouncementsPresenterTestBuilder().with(interactor).build()
+        let viewModelFactory = FakeAnnouncementsViewModelFactory(viewModel: viewModel)
+        let context = AnnouncementsPresenterTestBuilder().with(viewModelFactory).build()
         context.simulateSceneDidLoad()
         let boundComponent = context.bindAnnouncement(at: 0)
 
@@ -77,8 +77,8 @@ class WhenBindingAnnouncement_AnnouncementsPresenterShould: XCTestCase {
         var announcement = AnnouncementItemViewModel.random
         announcement.isRead = true
         let viewModel = FakeAnnouncementsListViewModel(announcements: [announcement])
-        let interactor = FakeAnnouncementsViewModelFactory(viewModel: viewModel)
-        let context = AnnouncementsPresenterTestBuilder().with(interactor).build()
+        let viewModelFactory = FakeAnnouncementsViewModelFactory(viewModel: viewModel)
+        let context = AnnouncementsPresenterTestBuilder().with(viewModelFactory).build()
         context.simulateSceneDidLoad()
         let boundComponent = context.bindAnnouncement(at: 0)
 

@@ -6,7 +6,7 @@ import Foundation
 class DefaultNewsViewModelProducerTestBuilder {
 
     struct Context {
-        var interactor: DefaultNewsViewModelProducer
+        var viewModelFactory: DefaultNewsViewModelProducer
         var delegate: CapturingNewsViewModelRecipient
         var relativeTimeFormatter: FakeRelativeTimeIntervalCountdownFormatter
         var hoursDateFormatter: FakeHoursDateFormatter
@@ -72,7 +72,7 @@ class DefaultNewsViewModelProducerTestBuilder {
         let refreshService = CapturingRefreshService()
         let announcementsDateFormatter = FakeAnnouncementDateFormatter()
 		let markdownRenderer = StubMarkdownRenderer()
-        let interactor = DefaultNewsViewModelProducer(announcementsService: announcementsService,
+        let viewModelFactory = DefaultNewsViewModelProducer(announcementsService: announcementsService,
                                                authenticationService: authenticationService,
                                                privateMessagesService: privateMessagesService,
                                                daysUntilConventionService: daysUntilConventionService,
@@ -85,7 +85,7 @@ class DefaultNewsViewModelProducerTestBuilder {
 											   announcementsMarkdownRenderer: markdownRenderer)
         let delegate = CapturingNewsViewModelRecipient()
 
-        return Context(interactor: interactor,
+        return Context(viewModelFactory: viewModelFactory,
                        delegate: delegate,
                        relativeTimeFormatter: relativeTimeFormatter,
                        hoursDateFormatter: hoursDateFormatter,

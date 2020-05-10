@@ -33,8 +33,8 @@ class WhenBindingConventionCountdown_NewsPresenterShould: XCTestCase {
     func testSetTheTimeRemainingOntoTheCountdownWidgetScene() {
         let countdownComponentViewModel = ConventionCountdownComponentViewModel.random
         let viewModel = CountdownViewModel(countdownViewModel: countdownComponentViewModel)
-        let newsInteractor = StubNewsViewModelProducer(viewModel: viewModel)
-        let context = NewsPresenterTestBuilder().with(newsInteractor).build()
+        let newsViewModelFactory = StubNewsViewModelProducer(viewModel: viewModel)
+        let context = NewsPresenterTestBuilder().with(newsViewModelFactory).build()
         context.simulateNewsSceneDidLoad()
         context.bindSceneComponent(at: IndexPath(item: 0, section: 0))
 

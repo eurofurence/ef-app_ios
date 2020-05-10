@@ -3,14 +3,14 @@ import EurofurenceModel
 
 class CapturingPreloadInteractorDelegate: PreloadInteractorDelegate {
 
-    private(set) var wasToldpreloadInteractorDidFailToPreload = false
+    private(set) var wasToldPreloadInteractorDidFailToPreload = false
     func preloadInteractorDidFailToPreload() {
-        wasToldpreloadInteractorDidFailToPreload = true
+        wasToldPreloadInteractorDidFailToPreload = true
     }
 
-    private(set) var wasToldpreloadInteractorDidFinishPreloading = false
+    private(set) var wasToldPreloadInteractorDidFinishPreloading = false
     func preloadInteractorDidFinishPreloading() {
-        wasToldpreloadInteractorDidFinishPreloading = true
+        wasToldPreloadInteractorDidFinishPreloading = true
     }
     
     private(set) var wasToldPreloadFailedDueToOldAppDetected = false

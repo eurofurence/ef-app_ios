@@ -14,8 +14,8 @@ class WhenBindingDealerSummaryComponent_DealerDetailPresenterShould: XCTestCase 
 
         summaryViewModel = DealerDetailSummaryViewModel.random
         viewModel = FakeDealerDetailSummaryViewModel(summary: summaryViewModel)
-        let interactor = FakeDealerDetailViewModelFactory(viewModel: viewModel)
-        context = DealerDetailPresenterTestBuilder().with(interactor).build()
+        let viewModelFactory = FakeDealerDetailViewModelFactory(viewModel: viewModel)
+        context = DealerDetailPresenterTestBuilder().with(viewModelFactory).build()
         context.simulateSceneDidLoad()
         boundComponent = context.bindComponent(at: 0)
     }

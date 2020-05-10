@@ -9,33 +9,33 @@ class DealerDetailPresenterTestBuilder {
     struct Context {
         var producedModuleViewController: UIViewController
         var scene: CapturingDealerDetailScene
-        var interactor: FakeDealerDetailViewModelFactory
+        var viewModelFactory: FakeDealerDetailViewModelFactory
         var dealerInteractionRecorder: CapturingDealerInteractionRecorder
     }
 
-    private var interactor: FakeDealerDetailViewModelFactory
+    private var viewModelFactory: FakeDealerDetailViewModelFactory
 
     init() {
-        interactor = FakeDealerDetailViewModelFactory()
+        viewModelFactory = FakeDealerDetailViewModelFactory()
     }
 
     @discardableResult
-    func with(_ interactor: FakeDealerDetailViewModelFactory) -> DealerDetailPresenterTestBuilder {
-        self.interactor = interactor
+    func with(_ viewModelFactory: FakeDealerDetailViewModelFactory) -> DealerDetailPresenterTestBuilder {
+        self.viewModelFactory = viewModelFactory
         return self
     }
 
     func build(for identifier: DealerIdentifier = .random) -> Context {
         let sceneFactory = StubDealerDetailSceneFactory()
         let dealerInteractionRecorder = CapturingDealerInteractionRecorder()
-        let module = DealerDetailComponentBuilder(dealerDetailViewModelFactory: interactor, dealerInteractionRecorder: dealerInteractionRecorder)
+        let module = DealerDetailComponentBuilder(dealerDetailViewModelFactory: viewModelFactory, dealerInteractionRecorder: dealerInteractionRecorder)
             .with(sceneFactory)
             .build()
             .makeDealerDetailComponent(for: identifier)
 
         return Context(producedModuleViewController: module,
                        scene: sceneFactory.scene,
-                       interactor: interactor,
+                       viewModelFactory: viewModelFactory,
                        dealerInteractionRecorder: dealerInteractionRecorder)
     }
 

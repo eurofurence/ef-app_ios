@@ -11,15 +11,15 @@ class SchedulePresenterTestBuilder {
         var hapticEngine: CapturingSelectionChangedHaptic
     }
 
-    private var interactor: ScheduleViewModelFactory
+    private var viewModelFactory: ScheduleViewModelFactory
 
     init() {
-        interactor = FakeScheduleViewModelFactory()
+        viewModelFactory = FakeScheduleViewModelFactory()
     }
 
     @discardableResult
-    func with(_ interactor: ScheduleViewModelFactory) -> SchedulePresenterTestBuilder {
-        self.interactor = interactor
+    func with(_ viewModelFactory: ScheduleViewModelFactory) -> SchedulePresenterTestBuilder {
+        self.viewModelFactory = viewModelFactory
         return self
     }
 
@@ -27,7 +27,7 @@ class SchedulePresenterTestBuilder {
         let sceneFactory = StubScheduleSceneFactory()
         let delegate = CapturingScheduleComponentDelegate()
         let hapticEngine = CapturingSelectionChangedHaptic()
-        let viewController = ScheduleModuleBuilder(interactor: interactor)
+        let viewController = ScheduleModuleBuilder(scheduleViewModelFactory: viewModelFactory)
             .with(sceneFactory)
             .with(hapticEngine)
             .build()
@@ -46,8 +46,8 @@ extension SchedulePresenterTestBuilder {
     static func buildForTestingBindingOfEvent(_ event: ScheduleEventViewModelProtocol) -> CapturingScheduleEventComponent {
         let eventGroupViewModel = ScheduleEventGroupViewModel(title: .random, events: [event])
         let viewModel = CapturingScheduleViewModel(days: .random, events: [eventGroupViewModel], currentDay: 0)
-        let interactor = FakeScheduleViewModelFactory(viewModel: viewModel)
-        let context = SchedulePresenterTestBuilder().with(interactor).build()
+        let viewModelFactory = FakeScheduleViewModelFactory(viewModel: viewModel)
+        let context = SchedulePresenterTestBuilder().with(viewModelFactory).build()
         context.simulateSceneDidLoad()
         let indexPath = IndexPath(item: 0, section: 0)
         let component = CapturingScheduleEventComponent()
@@ -62,8 +62,8 @@ extension SchedulePresenterTestBuilder {
 
     static func buildForTestingBindingOfSearchResult(_ event: ScheduleEventViewModelProtocol) -> CapturingScheduleEventComponent {
         let searchViewModel = CapturingScheduleSearchViewModel()
-        let interactor = FakeScheduleViewModelFactory(searchViewModel: searchViewModel)
-        let context = SchedulePresenterTestBuilder().with(interactor).build()
+        let viewModelFactory = FakeScheduleViewModelFactory(searchViewModel: searchViewModel)
+        let context = SchedulePresenterTestBuilder().with(viewModelFactory).build()
         context.simulateSceneDidLoad()
         let results = [ScheduleEventGroupViewModel(title: .random, events: [event])]
         searchViewModel.simulateSearchResultsUpdated(results)

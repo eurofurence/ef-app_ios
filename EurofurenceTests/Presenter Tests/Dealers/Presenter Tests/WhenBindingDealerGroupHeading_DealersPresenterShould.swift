@@ -8,8 +8,8 @@ class WhenBindingDealerGroupHeading_DealersPresenterShould: XCTestCase {
         let groups = [DealersGroupViewModel].random
         let randomGroup = groups.randomElement()
         let expected = randomGroup.element.title
-        let interactor = FakeDealersViewModelFactory(dealerGroupViewModels: groups)
-        let context = DealersPresenterTestBuilder().with(interactor).build()
+        let viewModelFactory = FakeDealersViewModelFactory(dealerGroupViewModels: groups)
+        let context = DealersPresenterTestBuilder().with(viewModelFactory).build()
         context.simulateSceneDidLoad()
         let component = context.makeAndBindComponentHeader(at: randomGroup.index)
 

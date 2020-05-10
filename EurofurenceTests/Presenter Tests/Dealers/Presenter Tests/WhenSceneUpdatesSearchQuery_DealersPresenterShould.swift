@@ -6,8 +6,8 @@ class WhenSceneUpdatesSearchQuery_DealersPresenterShould: XCTestCase {
 
     func testTellTheSearchableViewModelToUpdateItsResults() {
         let searchViewModel = CapturingDealersSearchViewModel()
-        let interactor = FakeDealersViewModelFactory(searchViewModel: searchViewModel)
-        let context = DealersPresenterTestBuilder().with(interactor).build()
+        let viewModelFactory = FakeDealersViewModelFactory(searchViewModel: searchViewModel)
+        let context = DealersPresenterTestBuilder().with(viewModelFactory).build()
         context.simulateSceneDidLoad()
         let query = String.random
         context.simulateSceneDidChangeSearchQuery(to: query)

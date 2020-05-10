@@ -23,7 +23,7 @@ class FakeShortFormDayAndTimeFormatter: ShortFormDayAndTimeFormatter {
 class ScheduleViewModelFactoryTestBuilder {
 
     struct Context {
-        var interactor: DefaultScheduleViewModelFactory
+        var viewModelFactory: DefaultScheduleViewModelFactory
         var eventsService: FakeEventsService
         var hoursFormatter: FakeHoursDateFormatter
         var shortFormDateFormatter: FakeShortFormDateFormatter
@@ -50,13 +50,13 @@ class ScheduleViewModelFactoryTestBuilder {
         let shortFormDateFormatter = FakeShortFormDateFormatter()
         let shortFormDayAndTimeFormatter = FakeShortFormDayAndTimeFormatter()
         let refreshService = CapturingRefreshService()
-        let interactor = DefaultScheduleViewModelFactory(eventsService: eventsService,
+        let viewModelFactory = DefaultScheduleViewModelFactory(eventsService: eventsService,
                                                    hoursDateFormatter: hoursFormatter,
                                                    shortFormDateFormatter: shortFormDateFormatter,
                                                    shortFormDayAndTimeFormatter: shortFormDayAndTimeFormatter,
                                                    refreshService: refreshService)
 
-        return Context(interactor: interactor,
+        return Context(viewModelFactory: viewModelFactory,
                        eventsService: eventsService,
                        hoursFormatter: hoursFormatter,
                        shortFormDateFormatter: shortFormDateFormatter,
@@ -83,7 +83,7 @@ extension ScheduleViewModelFactoryTestBuilder.Context {
     @discardableResult
     func makeViewModel() -> ScheduleViewModel? {
         var viewModel: ScheduleViewModel?
-        interactor.makeViewModel { (vm) in
+        viewModelFactory.makeViewModel { (vm) in
             viewModel = vm
             vm.setDelegate(self.viewModelDelegate)
         }
@@ -94,7 +94,7 @@ extension ScheduleViewModelFactoryTestBuilder.Context {
     @discardableResult
     func makeSearchViewModel() -> ScheduleSearchViewModel? {
         var searchViewModel: ScheduleSearchViewModel?
-        interactor.makeSearchViewModel { (viewModel) in
+        viewModelFactory.makeSearchViewModel { (viewModel) in
             searchViewModel = viewModel
             viewModel.setDelegate(self.searchViewModelDelegate)
         }

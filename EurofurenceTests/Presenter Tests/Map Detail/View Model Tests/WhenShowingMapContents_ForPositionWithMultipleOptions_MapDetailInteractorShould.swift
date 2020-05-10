@@ -15,9 +15,9 @@ class WhenShowingMapContents_ForPositionWithMultipleOptions_MapDetailViewModelFa
         let content: MapContent = .multiple([.dealer(dealer), .room(room), .location(x: .random, y: .random, name: locationName)])
         randomMap.element.stub(content: content, atX: Int(x), y: Int(y))
         
-        let interactor = DefaultMapDetailViewModelFactory(mapsService: mapsService)
+        let viewModelFactory = DefaultMapDetailViewModelFactory(mapsService: mapsService)
         var viewModel: MapDetailViewModel?
-        interactor.makeViewModelForMap(identifier: randomMap.element.identifier) { viewModel = $0 }
+        viewModelFactory.makeViewModelForMap(identifier: randomMap.element.identifier) { viewModel = $0 }
         let visitor = CapturingMapContentVisitor()
         viewModel?.showContentsAtPosition(x: x, y: y, describingTo: visitor)
         let expectedOptions = [dealer.preferredName, room.name, locationName]
@@ -34,9 +34,9 @@ class WhenShowingMapContents_ForPositionWithMultipleOptions_MapDetailViewModelFa
         let locationName = String.random
         let content: MapContent = .multiple([.dealer(dealer), .room(room), .location(x: .random, y: .random, name: locationName)])
         randomMap.element.stub(content: content, atX: Int(x), y: Int(y))
-        let interactor = DefaultMapDetailViewModelFactory(mapsService: mapsService)
+        let viewModelFactory = DefaultMapDetailViewModelFactory(mapsService: mapsService)
         var viewModel: MapDetailViewModel?
-        interactor.makeViewModelForMap(identifier: randomMap.element.identifier) { viewModel = $0 }
+        viewModelFactory.makeViewModelForMap(identifier: randomMap.element.identifier) { viewModel = $0 }
 
         let visitor = CapturingMapContentVisitor()
         viewModel?.showContentsAtPosition(x: x, y: y, describingTo: visitor)
@@ -54,9 +54,9 @@ class WhenShowingMapContents_ForPositionWithMultipleOptions_MapDetailViewModelFa
         let contents: [MapContent] = [.dealer(dealer), .room(room), .location(x: .random, y: .random, name: locationName)]
         let content: MapContent = .multiple(contents)
         randomMap.element.stub(content: content, atX: Int(x), y: Int(y))
-        let interactor = DefaultMapDetailViewModelFactory(mapsService: mapsService)
+        let viewModelFactory = DefaultMapDetailViewModelFactory(mapsService: mapsService)
         var viewModel: MapDetailViewModel?
-        interactor.makeViewModelForMap(identifier: randomMap.element.identifier) { viewModel = $0 }
+        viewModelFactory.makeViewModelForMap(identifier: randomMap.element.identifier) { viewModel = $0 }
 
         let visitor = CapturingMapContentVisitor()
         viewModel?.showContentsAtPosition(x: x, y: y, describingTo: visitor)

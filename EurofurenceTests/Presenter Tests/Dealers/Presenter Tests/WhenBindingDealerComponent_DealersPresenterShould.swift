@@ -13,8 +13,8 @@ class WhenBindingDealerComponent_DealersPresenterShould: XCTestCase {
 
         let dealerGroups = [DealersGroupViewModel].random
         let viewModel = CapturingDealersViewModel(dealerGroups: dealerGroups)
-        let interactor = FakeDealersViewModelFactory(viewModel: viewModel)
-        context = DealersPresenterTestBuilder().with(interactor).build()
+        let viewModelFactory = FakeDealersViewModelFactory(viewModel: viewModel)
+        context = DealersPresenterTestBuilder().with(viewModelFactory).build()
         context.simulateSceneDidLoad()
         let randomGroup = dealerGroups.randomElement()
         let randomDealer = randomGroup.element.dealers.randomElement()

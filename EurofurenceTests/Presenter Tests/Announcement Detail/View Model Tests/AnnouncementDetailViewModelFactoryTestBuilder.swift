@@ -6,7 +6,7 @@ import Foundation
 class AnnouncementDetailViewModelFactoryTestBuilder {
 
     struct Context {
-        var interactor: AnnouncementDetailViewModelFactory
+        var viewModelFactory: AnnouncementDetailViewModelFactory
         var markdownRenderer: StubMarkdownRenderer
         var announcement: StubAnnouncement
         var announcementsService: FakeAnnouncementsService
@@ -25,10 +25,10 @@ class AnnouncementDetailViewModelFactoryTestBuilder {
         announcement.imagePNGData = imagePNGData
         let announcementsService = FakeAnnouncementsService(announcements: [announcement])
         let markdownRenderer = StubMarkdownRenderer()
-        let interactor = DefaultAnnouncementDetailViewModelFactory(announcementsService: announcementsService,
+        let viewModelFactory = DefaultAnnouncementDetailViewModelFactory(announcementsService: announcementsService,
                                                              markdownRenderer: markdownRenderer)
 
-        return Context(interactor: interactor,
+        return Context(viewModelFactory: viewModelFactory,
                        markdownRenderer: markdownRenderer,
                        announcement: announcement,
                        announcementsService: announcementsService)
@@ -37,10 +37,10 @@ class AnnouncementDetailViewModelFactoryTestBuilder {
     func buildForMissingAnnouncement() -> Context {
         let announcementsService = FakeAnnouncementsService(announcements: [])
         let markdownRenderer = StubMarkdownRenderer()
-        let interactor = DefaultAnnouncementDetailViewModelFactory(announcementsService: announcementsService,
+        let viewModelFactory = DefaultAnnouncementDetailViewModelFactory(announcementsService: announcementsService,
                                                              markdownRenderer: markdownRenderer)
 
-        return Context(interactor: interactor,
+        return Context(viewModelFactory: viewModelFactory,
                        markdownRenderer: markdownRenderer,
                        announcement: .random,
                        announcementsService: announcementsService)
@@ -52,7 +52,7 @@ extension AnnouncementDetailViewModelFactoryTestBuilder.Context {
 
     func makeViewModel() -> AnnouncementDetailViewModel? {
         var viewModel: AnnouncementDetailViewModel?
-        interactor.makeViewModel(for: announcement.identifier) { viewModel = $0 }
+        viewModelFactory.makeViewModel(for: announcement.identifier) { viewModel = $0 }
 
         return viewModel
     }

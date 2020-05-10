@@ -7,8 +7,8 @@ class WhenBindingDealerLocationAndAvailability_DealerDetailPresenterShould: XCTe
     func testBindTheProducedMapGraphicFromTheViewModelOntoTheComponent() {
         let locationAndAvailabilityViewModel = DealerDetailLocationAndAvailabilityViewModel.random
         let viewModel = FakeDealerDetailLocationAndAvailabilityViewModel(location: locationAndAvailabilityViewModel)
-        let interactor = FakeDealerDetailViewModelFactory(viewModel: viewModel)
-        let context = DealerDetailPresenterTestBuilder().with(interactor).build()
+        let viewModelFactory = FakeDealerDetailViewModelFactory(viewModel: viewModel)
+        let context = DealerDetailPresenterTestBuilder().with(viewModelFactory).build()
         context.simulateSceneDidLoad()
         context.bindComponent(at: 0)
 
@@ -18,8 +18,8 @@ class WhenBindingDealerLocationAndAvailability_DealerDetailPresenterShould: XCTe
     func testBindTheLimitedAvailabilityWarningFromTheViewModelOntoTheComponent() {
         let locationAndAvailabilityViewModel = DealerDetailLocationAndAvailabilityViewModel.random
         let viewModel = FakeDealerDetailLocationAndAvailabilityViewModel(location: locationAndAvailabilityViewModel)
-        let interactor = FakeDealerDetailViewModelFactory(viewModel: viewModel)
-        let context = DealerDetailPresenterTestBuilder().with(interactor).build()
+        let viewModelFactory = FakeDealerDetailViewModelFactory(viewModel: viewModel)
+        let context = DealerDetailPresenterTestBuilder().with(viewModelFactory).build()
         context.simulateSceneDidLoad()
         context.bindComponent(at: 0)
 
@@ -29,8 +29,8 @@ class WhenBindingDealerLocationAndAvailability_DealerDetailPresenterShould: XCTe
     func testBindTheLocatedInAfterDarkDealersDenNoticeOntoTheComponent() {
         let locationAndAvailabilityViewModel = DealerDetailLocationAndAvailabilityViewModel.random
         let viewModel = FakeDealerDetailLocationAndAvailabilityViewModel(location: locationAndAvailabilityViewModel)
-        let interactor = FakeDealerDetailViewModelFactory(viewModel: viewModel)
-        let context = DealerDetailPresenterTestBuilder().with(interactor).build()
+        let viewModelFactory = FakeDealerDetailViewModelFactory(viewModel: viewModel)
+        let context = DealerDetailPresenterTestBuilder().with(viewModelFactory).build()
         context.simulateSceneDidLoad()
         context.bindComponent(at: 0)
 
@@ -42,8 +42,8 @@ class WhenBindingDealerLocationAndAvailability_DealerDetailPresenterShould: XCTe
     func testBindTheLocationAndAvailabilityTitleOntoTheComponent() {
         let locationAndAvailabilityViewModel = DealerDetailLocationAndAvailabilityViewModel.random
         let viewModel = FakeDealerDetailLocationAndAvailabilityViewModel(location: locationAndAvailabilityViewModel)
-        let interactor = FakeDealerDetailViewModelFactory(viewModel: viewModel)
-        let context = DealerDetailPresenterTestBuilder().with(interactor).build()
+        let viewModelFactory = FakeDealerDetailViewModelFactory(viewModel: viewModel)
+        let context = DealerDetailPresenterTestBuilder().with(viewModelFactory).build()
         context.simulateSceneDidLoad()
         context.bindComponent(at: 0)
 

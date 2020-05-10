@@ -5,22 +5,22 @@ import UIKit.UIViewController
 class KnowledgeGroupsPresenterTestBuilder {
 
     struct Context {
-        var knowledgeInteractor: CapturingKnowledgeGroupsViewModelFactory
+        var knowledgeViewModelFactory: CapturingKnowledgeGroupsViewModelFactory
         var scene: CapturingKnowledgeListScene
         var delegate: CapturingKnowledgeGroupsListComponentDelegate
         var producedViewController: UIViewController
     }
 
     func build() -> Context {
-        let knowledgeInteractor = CapturingKnowledgeGroupsViewModelFactory()
+        let knowledgeViewModelFactory = CapturingKnowledgeGroupsViewModelFactory()
         let sceneFactory = StubKnowledgeListSceneFactory()
         let delegate = CapturingKnowledgeGroupsListComponentDelegate()
-        let producedViewController = KnowledgeGroupsComponentBuilder(knowledgeGroupsViewModelFactory: knowledgeInteractor)
+        let producedViewController = KnowledgeGroupsComponentBuilder(knowledgeGroupsViewModelFactory: knowledgeViewModelFactory)
             .with(sceneFactory)
             .build()
             .makeKnowledgeListComponent(delegate)
 
-        return Context(knowledgeInteractor: knowledgeInteractor,
+        return Context(knowledgeViewModelFactory: knowledgeViewModelFactory,
                        scene: sceneFactory.scene,
                        delegate: delegate,
                        producedViewController: producedViewController)
@@ -31,7 +31,7 @@ class KnowledgeGroupsPresenterTestBuilder {
 extension KnowledgeGroupsPresenterTestBuilder.Context {
 
     func simulateLoadingViewModel(_ viewModel: KnowledgeGroupsListViewModel = StubKnowledgeGroupsListViewModel.random) {
-        knowledgeInteractor.simulateViewModelPrepared(viewModel)
+        knowledgeViewModelFactory.simulateViewModelPrepared(viewModel)
     }
 
 }

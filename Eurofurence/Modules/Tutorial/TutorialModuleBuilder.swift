@@ -44,7 +44,7 @@ class TutorialModuleBuilder {
         return self
     }
 
-    func build() -> TutorialModuleProviding {
+    func build() -> TutorialComponentFactory {
         return TutorialModule(tutorialSceneFactory: tutorialSceneFactory,
                                           presentationAssets: presentationAssets,
                                           alertRouter: alertRouter,

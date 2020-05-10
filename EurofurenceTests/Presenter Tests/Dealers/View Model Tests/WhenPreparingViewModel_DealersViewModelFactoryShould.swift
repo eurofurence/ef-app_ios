@@ -13,7 +13,7 @@ class WhenPreparingViewModel_DealersViewModelFactoryShould: XCTestCase {
 
         context = DealersViewModelTestBuilder().build()
         var viewModel: DealersViewModel?
-        context.interactor.makeDealersViewModel { viewModel = $0 }
+        context.viewModelFactory.makeDealersViewModel { viewModel = $0 }
         delegate = CapturingDealersViewModelDelegate()
         viewModel?.setDelegate(delegate)
     }

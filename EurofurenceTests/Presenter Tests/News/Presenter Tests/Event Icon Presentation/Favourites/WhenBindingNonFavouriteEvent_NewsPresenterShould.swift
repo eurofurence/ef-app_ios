@@ -10,8 +10,8 @@ class WhenBindingNonFavouriteEvent_NewsPresenterShould: XCTestCase {
         let viewModel = FavouriteEventNewsViewModel(eventViewModel: eventViewModel)
         let indexPath = IndexPath(item: 0, section: 0)
         
-        let newsInteractor = StubNewsViewModelProducer(viewModel: viewModel)
-        let context = NewsPresenterTestBuilder().with(newsInteractor).build()
+        let newsViewModelFactory = StubNewsViewModelProducer(viewModel: viewModel)
+        let context = NewsPresenterTestBuilder().with(newsViewModelFactory).build()
         context.simulateNewsSceneDidLoad()
         context.bindSceneComponent(at: indexPath)
         

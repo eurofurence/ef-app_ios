@@ -6,8 +6,8 @@ class WhenViewModelRefreshStateChanges_DealersPresenterShould: XCTestCase {
 
     func testTellTheSceneToShowTheRefreshingIndicatorWhenRefreshBegins() {
         let viewModel = CapturingDealersViewModel()
-        let interactor = FakeDealersViewModelFactory(viewModel: viewModel)
-        let context = DealersPresenterTestBuilder().with(interactor).build()
+        let viewModelFactory = FakeDealersViewModelFactory(viewModel: viewModel)
+        let context = DealersPresenterTestBuilder().with(viewModelFactory).build()
         context.simulateSceneDidLoad()
         viewModel.delegate?.dealersRefreshDidBegin()
 
@@ -16,8 +16,8 @@ class WhenViewModelRefreshStateChanges_DealersPresenterShould: XCTestCase {
 
     func testTellTheSceneToHideTheRefreshingIndicatorWhenRefreshFinishes() {
         let viewModel = CapturingDealersViewModel()
-        let interactor = FakeDealersViewModelFactory(viewModel: viewModel)
-        let context = DealersPresenterTestBuilder().with(interactor).build()
+        let viewModelFactory = FakeDealersViewModelFactory(viewModel: viewModel)
+        let context = DealersPresenterTestBuilder().with(viewModelFactory).build()
         context.simulateSceneDidLoad()
         viewModel.delegate?.dealersRefreshDidFinish()
 

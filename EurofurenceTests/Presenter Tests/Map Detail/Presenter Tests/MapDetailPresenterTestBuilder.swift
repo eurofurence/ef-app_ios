@@ -20,22 +20,22 @@ class MapDetailPresenterTestBuilder {
         var delegate: CapturingMapDetailComponentDelegate
     }
 
-    private var interactor: MapDetailViewModelFactory
+    private var viewModelFactory: MapDetailViewModelFactory
 
     init() {
-        interactor = FakeMapDetailViewModelFactory()
+        viewModelFactory = FakeMapDetailViewModelFactory()
     }
 
     @discardableResult
-    func with(_ interactor: MapDetailViewModelFactory) -> MapDetailPresenterTestBuilder {
-        self.interactor = interactor
+    func with(_ viewModelFactory: MapDetailViewModelFactory) -> MapDetailPresenterTestBuilder {
+        self.viewModelFactory = viewModelFactory
         return self
     }
 
     func build(for identifier: MapIdentifier = .random) -> Context {
         let sceneFactory = StubMapDetailSceneFactory()
         let delegate = CapturingMapDetailComponentDelegate()
-        let module = MapDetailComponentBuilder(mapDetailViewModelFactory: interactor)
+        let module = MapDetailComponentBuilder(mapDetailViewModelFactory: viewModelFactory)
             .with(sceneFactory)
             .build()
             .makeMapDetailComponent(for: identifier, delegate: delegate)

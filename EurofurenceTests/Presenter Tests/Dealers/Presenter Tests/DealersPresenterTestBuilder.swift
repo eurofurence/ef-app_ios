@@ -10,22 +10,22 @@ class DealersPresenterTestBuilder {
         var delegate: CapturingDealersComponentDelegate
     }
 
-    private var interactor: DealersViewModelFactory
+    private var viewModelFactory: DealersViewModelFactory
 
     init() {
-        interactor = FakeDealersViewModelFactory(viewModel: CapturingDealersViewModel.random)
+        viewModelFactory = FakeDealersViewModelFactory(viewModel: CapturingDealersViewModel.random)
     }
 
     @discardableResult
-    func with(_ interactor: DealersViewModelFactory) -> DealersPresenterTestBuilder {
-        self.interactor = interactor
+    func with(_ viewModelFactory: DealersViewModelFactory) -> DealersPresenterTestBuilder {
+        self.viewModelFactory = viewModelFactory
         return self
     }
 
     func build() -> Context {
         let sceneFactory = StubDealersSceneFactory()
         let delegate = CapturingDealersComponentDelegate()
-        let viewController = DealersComponentBuilder(dealersViewModelFactory: interactor)
+        let viewController = DealersComponentBuilder(dealersViewModelFactory: viewModelFactory)
             .with(sceneFactory)
             .build()
             .makeDealersComponent(delegate)

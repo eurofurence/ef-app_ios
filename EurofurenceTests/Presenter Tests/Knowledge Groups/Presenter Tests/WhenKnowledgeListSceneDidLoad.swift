@@ -13,8 +13,8 @@ class WhenKnowledgeListSceneDidLoad: XCTestCase {
         context.scene.delegate?.knowledgeListSceneDidLoad()
     }
 
-    func testWhenTheViewWillAppearTheInteractorIsToldToPrepareKnowledgeGroupsListViewModel() {
-        XCTAssertTrue(context.knowledgeInteractor.toldToPrepareViewModel)
+    func testWhenTheViewWillAppearTheViewModelFactoryIsToldToPrepareKnowledgeGroupsListViewModel() {
+        XCTAssertTrue(context.knowledgeViewModelFactory.toldToPrepareViewModel)
     }
 
     func testTheSceneIsToldToShowTheLoadingIndicator() {

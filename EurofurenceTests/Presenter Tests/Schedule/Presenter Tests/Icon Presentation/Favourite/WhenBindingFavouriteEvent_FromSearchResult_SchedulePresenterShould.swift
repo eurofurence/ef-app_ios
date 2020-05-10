@@ -14,8 +14,8 @@ class WhenBindingFavouriteEvent_FromSearchResult_SchedulePresenterShould: XCTest
 
     func testSupplyUnfavouriteActionInformation() {
         let searchViewModel = CapturingScheduleSearchViewModel()
-        let interactor = FakeScheduleViewModelFactory(searchViewModel: searchViewModel)
-        let context = SchedulePresenterTestBuilder().with(interactor).build()
+        let viewModelFactory = FakeScheduleViewModelFactory(searchViewModel: searchViewModel)
+        let context = SchedulePresenterTestBuilder().with(viewModelFactory).build()
         context.simulateSceneDidLoad()
         let searchResult = StubScheduleEventViewModel.random
         searchResult.isFavourite = true
@@ -29,8 +29,8 @@ class WhenBindingFavouriteEvent_FromSearchResult_SchedulePresenterShould: XCTest
 
     func testTellViewModelToUnfavouriteEventAtIndexPathWhenInvokingAction() {
         let searchViewModel = CapturingScheduleSearchViewModel()
-        let interactor = FakeScheduleViewModelFactory(searchViewModel: searchViewModel)
-        let context = SchedulePresenterTestBuilder().with(interactor).build()
+        let viewModelFactory = FakeScheduleViewModelFactory(searchViewModel: searchViewModel)
+        let context = SchedulePresenterTestBuilder().with(viewModelFactory).build()
         context.simulateSceneDidLoad()
         let searchResult = StubScheduleEventViewModel.random
         searchResult.isFavourite = true

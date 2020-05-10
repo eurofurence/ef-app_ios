@@ -17,8 +17,8 @@ class WhenBindingFavouriteEvent_SchedulePresenterShould: XCTestCase {
         eventViewModel.isFavourite = true
         let eventGroupViewModel = ScheduleEventGroupViewModel(title: .random, events: [eventViewModel])
         let viewModel = CapturingScheduleViewModel(days: .random, events: [eventGroupViewModel], currentDay: 0)
-        let interactor = FakeScheduleViewModelFactory(viewModel: viewModel)
-        let context = SchedulePresenterTestBuilder().with(interactor).build()
+        let viewModelFactory = FakeScheduleViewModelFactory(viewModel: viewModel)
+        let context = SchedulePresenterTestBuilder().with(viewModelFactory).build()
         context.simulateSceneDidLoad()
         let searchResult = StubScheduleEventViewModel.random
         searchResult.isFavourite = false
@@ -33,8 +33,8 @@ class WhenBindingFavouriteEvent_SchedulePresenterShould: XCTestCase {
         eventViewModel.isFavourite = true
         let eventGroupViewModel = ScheduleEventGroupViewModel(title: .random, events: [eventViewModel])
         let viewModel = CapturingScheduleViewModel(days: .random, events: [eventGroupViewModel], currentDay: 0)
-        let interactor = FakeScheduleViewModelFactory(viewModel: viewModel)
-        let context = SchedulePresenterTestBuilder().with(interactor).build()
+        let viewModelFactory = FakeScheduleViewModelFactory(viewModel: viewModel)
+        let context = SchedulePresenterTestBuilder().with(viewModelFactory).build()
         context.simulateSceneDidLoad()
         let searchResult = StubScheduleEventViewModel.random
         searchResult.isFavourite = false

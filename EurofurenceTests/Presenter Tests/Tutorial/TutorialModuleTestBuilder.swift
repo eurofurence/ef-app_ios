@@ -8,7 +8,7 @@ class TutorialModuleTestBuilder {
     struct Context {
         var tutorialViewController: UIViewController
         var tutorialSceneFactory: StubTutorialSceneFactory
-        var delegate: CapturingTutorialModuleDelegate
+        var delegate: CapturingTutorialComponentDelegate
         var tutorial: CapturingTutorialScene
         var page: CapturingTutorialPageScene
         var assets: PresentationAssets
@@ -20,7 +20,7 @@ class TutorialModuleTestBuilder {
     let stateProviding = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: false)
     let presentationAssets = StubPresentationAssets()
     let tutorialSceneFactory = StubTutorialSceneFactory()
-    let delegate = CapturingTutorialModuleDelegate()
+    let delegate = CapturingTutorialComponentDelegate()
     var networkReachability: NetworkReachability = WiFiNetwork()
     var pushPermissionsRequestStateProviding: WitnessedTutorialPushPermissionsRequest = UserNotAcknowledgedPushPermissions()
 

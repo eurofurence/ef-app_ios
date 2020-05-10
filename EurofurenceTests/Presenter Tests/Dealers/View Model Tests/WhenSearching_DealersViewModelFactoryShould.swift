@@ -10,7 +10,7 @@ class WhenSearching_DealersViewModelFactoryShould: XCTestCase {
         let dealersService = FakeDealersService(index: index)
         let context = DealersViewModelTestBuilder().with(dealersService).build()
         var searchViewModel: DealersSearchViewModel?
-        context.interactor.makeDealersSearchViewModel { searchViewModel = $0 }
+        context.viewModelFactory.makeDealersSearchViewModel { searchViewModel = $0 }
         let searchTerm = String.random
         searchViewModel?.updateSearchResults(with: searchTerm)
 

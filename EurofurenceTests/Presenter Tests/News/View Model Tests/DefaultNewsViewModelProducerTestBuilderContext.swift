@@ -7,7 +7,7 @@ import XCTest
 extension DefaultNewsViewModelProducerTestBuilder.Context {
 
     func subscribeViewModelUpdates() {
-        interactor.subscribeViewModelUpdates(delegate)
+        viewModelFactory.subscribeViewModelUpdates(delegate)
     }
 
     var announcements: [Announcement] {

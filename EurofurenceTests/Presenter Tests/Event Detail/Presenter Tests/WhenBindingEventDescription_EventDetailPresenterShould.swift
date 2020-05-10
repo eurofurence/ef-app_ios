@@ -46,8 +46,8 @@ class WhenBindingEventDescription_EventDetailPresenterShould: XCTestCase {
         eventDescription = .random
         let index = Int.random
         let viewModel = StubEventDescriptionViewModel(eventDescription: eventDescription, at: index)
-        let interactor = FakeEventDetailViewModelFactory(viewModel: viewModel, for: event)
-        context = EventDetailPresenterTestBuilder().with(interactor).build(for: event)
+        let viewModelFactory = FakeEventDetailViewModelFactory(viewModel: viewModel, for: event)
+        context = EventDetailPresenterTestBuilder().with(viewModelFactory).build(for: event)
         context.simulateSceneDidLoad()
         boundComponent = context.scene.bindComponent(at: IndexPath(item: index, section: 0))
     }
