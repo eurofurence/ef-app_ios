@@ -19,9 +19,11 @@ class CollectThemAllPresenterTestBuilder {
             .build()
             .makeCollectThemAllComponent()
 
-        return Context(producedViewController: module,
-                       scene: sceneFactory.interface,
-                       service: service)
+        return Context(
+            producedViewController: module,
+            scene: sceneFactory.interface,
+            service: service
+        )
     }
 
 }
