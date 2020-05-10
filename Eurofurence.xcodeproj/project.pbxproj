@@ -414,6 +414,7 @@
 		CA36A4E820DB006300EE6537 /* DealerDetailModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4E720DB006300EE6537 /* DealerDetailModuleBuilder.swift */; };
 		CA36A4EA20DB007900EE6537 /* DealerDetailModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4E920DB007900EE6537 /* DealerDetailModule.swift */; };
 		CA38C35524680C4900A20921 /* PrincipalWindowSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA38C35424680C4900A20921 /* PrincipalWindowSceneDelegate.swift */; };
+		CA38C3572468115800A20921 /* PrincipalWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA38C3562468115800A20921 /* PrincipalWindowController.swift */; };
 		CA39851622C7A51C00117249 /* RemotelyConfiguredConventionStartDateRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA39851522C7A51C00117249 /* RemotelyConfiguredConventionStartDateRepositoryTests.swift */; };
 		CA39851922C7A91800117249 /* RemotelyConfiguredConventionStartDateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA39851822C7A91800117249 /* RemotelyConfiguredConventionStartDateRepository.swift */; };
 		CA39851C22C7A93300117249 /* CapturingConventionStartDateConsumer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA39851B22C7A93300117249 /* CapturingConventionStartDateConsumer.swift */; };
@@ -1608,6 +1609,7 @@
 		CA36A4E720DB006300EE6537 /* DealerDetailModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailModuleBuilder.swift; sourceTree = "<group>"; };
 		CA36A4E920DB007900EE6537 /* DealerDetailModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailModule.swift; sourceTree = "<group>"; };
 		CA38C35424680C4900A20921 /* PrincipalWindowSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrincipalWindowSceneDelegate.swift; sourceTree = "<group>"; };
+		CA38C3562468115800A20921 /* PrincipalWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrincipalWindowController.swift; sourceTree = "<group>"; };
 		CA39851522C7A51C00117249 /* RemotelyConfiguredConventionStartDateRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemotelyConfiguredConventionStartDateRepositoryTests.swift; sourceTree = "<group>"; };
 		CA39851822C7A91800117249 /* RemotelyConfiguredConventionStartDateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemotelyConfiguredConventionStartDateRepository.swift; sourceTree = "<group>"; };
 		CA39851B22C7A93300117249 /* CapturingConventionStartDateConsumer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingConventionStartDateConsumer.swift; sourceTree = "<group>"; };
@@ -3612,6 +3614,7 @@
 		CA38C35324680C3600A20921 /* Principal Scene */ = {
 			isa = PBXGroup;
 			children = (
+				CA38C3562468115800A20921 /* PrincipalWindowController.swift */,
 				CA38C35424680C4900A20921 /* PrincipalWindowSceneDelegate.swift */,
 			);
 			path = "Principal Scene";
@@ -6843,6 +6846,7 @@
 				CAD2343E1F5D7211004BB959 /* MessagesPresenter.swift in Sources */,
 				CA6AA0161FD883390092C6DB /* NewsViewController.swift in Sources */,
 				CA283AA220EAA04D00F7D195 /* AnnouncementsScene.swift in Sources */,
+				CA38C3572468115800A20921 /* PrincipalWindowController.swift in Sources */,
 				CA283A9820EA9CB100F7D195 /* AnnouncementsModuleProviding.swift in Sources */,
 				CAB63203245F26E300DBF0A0 /* PrincipalWindowScene.swift in Sources */,
 				CA2AA2F422C9518A00C0E1A1 /* ViewDealerIntent+Definition.swift in Sources */,
