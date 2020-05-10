@@ -9,7 +9,7 @@ class LeaveFeedbackFromEventNavigatorTests: XCTestCase {
         let router = FakeContentRouter()
         let navigator = LeaveFeedbackFromEventNavigator(router: router)
         let event = EventIdentifier.random
-        navigator.eventDetailModuleDidRequestPresentationToLeaveFeedback(for: event)
+        navigator.eventDetailComponentDidRequestPresentationToLeaveFeedback(for: event)
         
         router.assertRouted(to: EventFeedbackContentRepresentation(identifier: event))
     }

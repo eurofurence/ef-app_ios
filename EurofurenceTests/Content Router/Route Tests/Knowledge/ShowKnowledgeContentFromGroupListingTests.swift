@@ -9,7 +9,7 @@ class ShowKnowledgeContentFromGroupListingTests: XCTestCase {
         let knowledgeEntry = KnowledgeEntryIdentifier.random
         let router = FakeContentRouter()
         let navigator = ShowKnowledgeContentFromGroupListing(router: router)
-        navigator.knowledgeGroupEntriesModuleDidSelectKnowledgeEntry(identifier: knowledgeEntry)
+        navigator.knowledgeGroupEntriesComponentDidSelectKnowledgeEntry(identifier: knowledgeEntry)
         
         router.assertRouted(to: KnowledgeEntryContentRepresentation(identifier: knowledgeEntry))
     }

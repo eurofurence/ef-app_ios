@@ -8,9 +8,9 @@ class MapContentRouteTests: XCTestCase {
     func testShowsMapDetail() {
         let map = MapIdentifier.random
         let content = MapContentRepresentation(identifier: map)
-        let mapModuleProviding = StubMapDetailModuleProviding()
+        let mapModuleProviding = StubMapDetailComponentFactory()
         let contentWireframe = CapturingContentWireframe()
-        let delegate = CapturingMapDetailModuleDelegate()
+        let delegate = CapturingMapDetailComponentDelegate()
         let route = MapContentRoute(
             mapModuleProviding: mapModuleProviding,
             contentWireframe: contentWireframe,
@@ -26,9 +26,9 @@ class MapContentRouteTests: XCTestCase {
     func testPropogatesDealerSelectedEvents() {
         let map = MapIdentifier.random
         let content = MapContentRepresentation(identifier: map)
-        let mapModuleProviding = StubMapDetailModuleProviding()
+        let mapModuleProviding = StubMapDetailComponentFactory()
         let contentWireframe = CapturingContentWireframe()
-        let delegate = CapturingMapDetailModuleDelegate()
+        let delegate = CapturingMapDetailComponentDelegate()
         let route = MapContentRoute(
             mapModuleProviding: mapModuleProviding,
             contentWireframe: contentWireframe,

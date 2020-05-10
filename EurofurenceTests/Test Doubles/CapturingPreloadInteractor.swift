@@ -25,9 +25,11 @@ class CapturingPreloadInteractor: PreloadInteractor {
     }
 
     func notifyProgressMade(current: Int, total: Int, localizedDescription: String) {
-        delegate?.preloadInteractorDidProgress(currentUnitCount: current,
-                                               totalUnitCount: total,
-                                               localizedDescription: localizedDescription)
+        delegate?.preloadInteractorDidProgress(
+            currentUnitCount: current,
+            totalUnitCount: total,
+            localizedDescription: localizedDescription
+        )
     }
 
 }

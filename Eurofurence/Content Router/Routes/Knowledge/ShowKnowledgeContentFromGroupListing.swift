@@ -1,6 +1,6 @@
 import EurofurenceModel
 
-public struct ShowKnowledgeContentFromGroupListing: KnowledgeGroupEntriesModuleDelegate {
+public struct ShowKnowledgeContentFromGroupListing: KnowledgeGroupEntriesComponentDelegate {
     
     private let router: ContentRouter
     
@@ -8,7 +8,7 @@ public struct ShowKnowledgeContentFromGroupListing: KnowledgeGroupEntriesModuleD
         self.router = router
     }
     
-    public func knowledgeGroupEntriesModuleDidSelectKnowledgeEntry(identifier: KnowledgeEntryIdentifier) {
+    public func knowledgeGroupEntriesComponentDidSelectKnowledgeEntry(identifier: KnowledgeEntryIdentifier) {
         try? router.route(KnowledgeEntryContentRepresentation(identifier: identifier))
     }
     

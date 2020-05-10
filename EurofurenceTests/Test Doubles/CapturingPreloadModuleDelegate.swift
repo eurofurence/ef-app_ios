@@ -1,7 +1,7 @@
 @testable import Eurofurence
 import EurofurenceModel
 
-class CapturingPreloadModuleDelegate: PreloadModuleDelegate {
+class CapturingPreloadComponentDelegate: PreloadComponentDelegate {
 
     private(set) var notifiedPreloadCancelled = false
     func preloadModuleDidCancelPreloading() {

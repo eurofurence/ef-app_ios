@@ -1,6 +1,6 @@
 import EurofurenceModel
 
-public struct NewsSubrouter: NewsModuleDelegate {
+public struct NewsSubrouter: NewsComponentDelegate {
     
     private let router: ContentRouter
     

@@ -2,16 +2,16 @@ import Foundation
 
 public struct AnnouncementsContentRoute {
     
-    private let announcementsModuleProviding: AnnouncementsModuleProviding
+    private let announcementsComponentFactory: AnnouncementsComponentFactory
     private let contentWireframe: ContentWireframe
-    private let delegate: AnnouncementsModuleDelegate
+    private let delegate: AnnouncementsComponentDelegate
     
     public init(
-        announcementsModuleProviding: AnnouncementsModuleProviding,
+        announcementsComponentFactory: AnnouncementsComponentFactory,
         contentWireframe: ContentWireframe,
-        delegate: AnnouncementsModuleDelegate
+        delegate: AnnouncementsComponentDelegate
     ) {
-        self.announcementsModuleProviding = announcementsModuleProviding
+        self.announcementsComponentFactory = announcementsComponentFactory
         self.contentWireframe = contentWireframe
         self.delegate = delegate
     }
@@ -25,7 +25,7 @@ extension AnnouncementsContentRoute: ContentRoute {
     public typealias Content = AnnouncementsContentRepresentation
     
     public func route(_ content: AnnouncementsContentRepresentation) {
-        let contentController = announcementsModuleProviding.makeAnnouncementsModule(delegate)
+        let contentController = announcementsComponentFactory.makeAnnouncementsComponent(delegate)
         contentWireframe.presentMasterContentController(contentController)
     }
     

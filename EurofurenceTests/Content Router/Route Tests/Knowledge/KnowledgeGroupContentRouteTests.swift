@@ -9,11 +9,11 @@ class KnowledgeGroupContentRouteTests: XCTestCase {
         let identifier = KnowledgeGroupIdentifier.random
         let content = KnowledgeGroupContentRepresentation(identifier: identifier)
         let contentWireframe = CapturingContentWireframe()
-        let knowledgeGroupModuleProviding = StubKnowledgeGroupEntriesModuleProviding()
+        let knowledgeGroupModuleProviding = StubKnowledgeGroupEntriesComponentFactory()
         let route = KnowledgeGroupContentRoute(
             knowledgeGroupModuleProviding: knowledgeGroupModuleProviding,
             contentWireframe: contentWireframe,
-            delegate: CapturingKnowledgeGroupEntriesModuleDelegate()
+            delegate: CapturingKnowledgeGroupEntriesComponentDelegate()
         )
         
         route.route(content)
@@ -26,8 +26,8 @@ class KnowledgeGroupContentRouteTests: XCTestCase {
         let identifier = KnowledgeGroupIdentifier.random
         let content = KnowledgeGroupContentRepresentation(identifier: identifier)
         let contentWireframe = CapturingContentWireframe()
-        let knowledgeGroupModuleProviding = StubKnowledgeGroupEntriesModuleProviding()
-        let delegate = CapturingKnowledgeGroupEntriesModuleDelegate()
+        let knowledgeGroupModuleProviding = StubKnowledgeGroupEntriesComponentFactory()
+        let delegate = CapturingKnowledgeGroupEntriesComponentDelegate()
         let route = KnowledgeGroupContentRoute(
             knowledgeGroupModuleProviding: knowledgeGroupModuleProviding,
             contentWireframe: contentWireframe,

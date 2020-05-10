@@ -8,7 +8,7 @@ class NavigateFromAnnouncementsToAnnouncementTests: XCTestCase {
         let router = FakeContentRouter()
         let navigator = NavigateFromAnnouncementsToAnnouncement(router: router)
         let announcement = AnnouncementIdentifier.random
-        navigator.announcementsModuleDidSelectAnnouncement(announcement)
+        navigator.announcementsComponentDidSelectAnnouncement(announcement)
         
         let expected = AnnouncementContentRepresentation(identifier: announcement)
         router.assertRouted(to: expected)

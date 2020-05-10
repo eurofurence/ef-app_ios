@@ -5,19 +5,19 @@ import XCTest
 
 class MessagesContentRouteTests: XCTestCase {
     
-    var messagesModuleProviding: StubMessagesModuleFactory!
+    var messagesComponentFactory: StubMessagesComponentFactory!
     var contentWireframe: CapturingContentWireframe!
-    var delegate: CapturingMessagesModuleDelegate!
+    var delegate: CapturingMessagesComponentDelegate!
     var route: MessagesContentRoute!
     
     override func setUp() {
         super.setUp()
         
-        messagesModuleProviding = StubMessagesModuleFactory()
+        messagesComponentFactory = StubMessagesComponentFactory()
         contentWireframe = CapturingContentWireframe()
-        delegate = CapturingMessagesModuleDelegate()
+        delegate = CapturingMessagesComponentDelegate()
         route = MessagesContentRoute(
-            messagesModuleProviding: messagesModuleProviding,
+            messagesComponentFactory: messagesComponentFactory,
             contentWireframe: contentWireframe,
             delegate: delegate
         )
@@ -26,18 +26,18 @@ class MessagesContentRouteTests: XCTestCase {
     }
     
     func testShowsMessagesContentController() {
-        XCTAssertEqual(messagesModuleProviding.stubInterface, contentWireframe.presentedMasterContentController)
+        XCTAssertEqual(messagesComponentFactory.stubInterface, contentWireframe.presentedMasterContentController)
     }
     
     func testPropogatesMessageSelectionDelegateEvent() {
         let message = MessageIdentifier.random
-        messagesModuleProviding.simulateMessagePresentationRequested(message)
+        messagesComponentFactory.simulateMessagePresentationRequested(message)
         
         XCTAssertEqual(message, delegate.messageToShow)
     }
     
     func testPropogatesDismissalDelegateEvent() {
-        messagesModuleProviding.simulateDismissalRequested()
+        messagesComponentFactory.simulateDismissalRequested()
         XCTAssertTrue(delegate.dismissed)
     }
 

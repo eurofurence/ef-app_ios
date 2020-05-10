@@ -1,6 +1,6 @@
 import EurofurenceModel
 
-public struct ShowDealerFromDealers: DealersModuleDelegate {
+public struct ShowDealerFromDealers: DealersComponentDelegate {
     
     private let router: ContentRouter
     

@@ -7,7 +7,7 @@ class MessageContentRouteTests: XCTestCase {
     func testShowsDetailContentController() {
         let message = MessageIdentifier.random
         let content = MessageContentRepresentation(identifier: message)
-        let messageModuleFactory = StubMessageDetailModuleProviding()
+        let messageModuleFactory = StubMessageDetailComponentFactory()
         let contentWireframe = CapturingContentWireframe()
         let route = MessageContentRoute(
             messageModuleFactory: messageModuleFactory,

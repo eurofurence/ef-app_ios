@@ -4,10 +4,10 @@ import XCTest
 class WebContentRouteTests: XCTestCase {
     
     func testShowsModalWebModule() {
-        let webModuleProviding = StubWebMobuleProviding()
+        let webComponentFactory = StubWebComponentFactory()
         let modalWireframe = CapturingModalWireframe()
         let route = WebContentRoute(
-            webModuleProviding: webModuleProviding,
+            webComponentFactory: webComponentFactory,
             modalWireframe: modalWireframe
         )
         
@@ -15,7 +15,7 @@ class WebContentRouteTests: XCTestCase {
         let content = WebContentRepresentation(url: url)
         route.route(content)
         
-        let presentedWebModule = webModuleProviding.producedWebModules[url]
+        let presentedWebModule = webComponentFactory.producedWebModules[url]
         
         XCTAssertNotNil(presentedWebModule)
         XCTAssertEqual(presentedWebModule, modalWireframe.presentedModalContentController)

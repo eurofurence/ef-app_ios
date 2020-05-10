@@ -1,5 +1,6 @@
 @testable import Eurofurence
 import EurofurenceModel
+import EurofurenceModelTestDoubles
 import UIKit.UIViewController
 
 class CapturingNewsScene: UIViewController, NewsScene {
@@ -33,7 +34,7 @@ class CapturingNewsScene: UIViewController, NewsScene {
 
 }
 
-class StubNewsComponentFactory: NewsComponentFactory {
+class StubNewsComponentFactory: NewsItemComponentFactory {
 
     typealias Component = AnyObject
 
@@ -44,7 +45,7 @@ class StubNewsComponentFactory: NewsComponentFactory {
     }
 
     let stubbedAnnouncementComponent = CapturingAnnouncementComponent()
-    func makeAnnouncementComponent(configuringUsing block: (AnnouncementComponent) -> Void) -> StubNewsComponentFactory.Component {
+    func makeAnnouncementComponent(configuringUsing block: (AnnouncementItemComponent) -> Void) -> StubNewsComponentFactory.Component {
         block(stubbedAnnouncementComponent)
         return stubbedAnnouncementComponent
     }

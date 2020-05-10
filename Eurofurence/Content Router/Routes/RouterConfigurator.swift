@@ -6,7 +6,7 @@ struct RouterConfigurator {
     var router: MutableContentRouter
     var contentWireframe: ContentWireframe
     var modalWireframe: ModalWireframe
-    var moduleRepository: ApplicationModuleRepository
+    var moduleRepository: ComponentRegistry
     var routeAuthenticationHandler: RouteAuthenticationHandler
     var linksService: ContentLinksService
     var urlOpener: URLOpener
@@ -32,7 +32,7 @@ struct RouterConfigurator {
     
     private func configureAnnouncementsRoute() {
         router.add(AnnouncementsContentRoute(
-            announcementsModuleProviding: moduleRepository.announcementsModuleFactory,
+            announcementsComponentFactory: moduleRepository.announcementsModuleFactory,
             contentWireframe: contentWireframe,
             delegate: NavigateFromAnnouncementsToAnnouncement(router: router)
         ))
@@ -40,7 +40,7 @@ struct RouterConfigurator {
     
     private func configureAnnouncementRoute() {
         router.add(AnnouncementContentRoute(
-            announcementModuleFactory: moduleRepository.announcementDetailModuleProviding,
+            announcementModuleFactory: moduleRepository.announcementDetailComponentFactory,
             contentWireframe: contentWireframe
         ))
     }
@@ -54,7 +54,7 @@ struct RouterConfigurator {
     
     private func configureEventRoute() {
         router.add(EventContentRoute(
-            eventModuleFactory: moduleRepository.eventDetailModuleProviding,
+            eventModuleFactory: moduleRepository.eventDetailComponentFactory,
             eventDetailDelegate: LeaveFeedbackFromEventNavigator(router: router),
             contentWireframe: contentWireframe
         ))
@@ -62,8 +62,8 @@ struct RouterConfigurator {
     
     private func configureEventFeedbackRoute() {
         router.add(EventFeedbackContentRoute(
-            eventFeedbackFactory: FormSheetEventFeedbackModuleProviding(
-                eventFeedbackModuleProviding: moduleRepository.eventFeedbackModuleProviding
+            eventFeedbackFactory: FormSheetEventFeedbackComponentFactory(
+                eventFeedbackComponentFactory: moduleRepository.eventFeedbackComponentFactory
             ),
             modalWireframe: modalWireframe
         ))
@@ -71,7 +71,7 @@ struct RouterConfigurator {
     
     private func configureMessageRoute() {
         let messageContentRoute = MessageContentRoute(
-            messageModuleFactory: moduleRepository.messageDetailModuleProviding,
+            messageModuleFactory: moduleRepository.messageDetailComponentFactory,
             contentWireframe: contentWireframe
         )
         
@@ -83,7 +83,7 @@ struct RouterConfigurator {
     
     private func configureMessagesRoute() {
         let messagesRoute = MessagesContentRoute(
-            messagesModuleProviding: moduleRepository.messagesModuleProviding,
+            messagesComponentFactory: moduleRepository.messagesComponentFactory,
             contentWireframe: contentWireframe,
             delegate: NavigateFromMessagesToMessage(
                 router: router,
@@ -98,8 +98,8 @@ struct RouterConfigurator {
     }
     
     private func configureLoginRoute() {
-        let formSheetWrapper = FormSheetLoginModuleProviding(
-            loginModuleProviding: moduleRepository.loginModuleProviding
+        let formSheetWrapper = FormSheetLoginComponentFactory(
+            loginComponentFactory: moduleRepository.loginComponentFactory
         )
         
         router.add(LoginContentRoute(
@@ -122,7 +122,7 @@ struct RouterConfigurator {
     
     private func configureKnowledgeEntriesRoute() {
         router.add(KnowledgeGroupContentRoute(
-            knowledgeGroupModuleProviding: moduleRepository.knowledgeGroupEntriesModule,
+            knowledgeGroupModuleProviding: moduleRepository.knowledgeGroupComponentFactory,
             contentWireframe: contentWireframe,
             delegate: ShowKnowledgeContentFromGroupListing(router: router)
         ))
@@ -130,7 +130,7 @@ struct RouterConfigurator {
     
     private func configureKnowledgeDetailRoute() {
         router.add(KnowledgeEntryContentRoute(
-            knowledgeDetailModuleProviding: moduleRepository.knowledgeDetailModuleProviding,
+            knowledgeDetailComponentFactory: moduleRepository.knowledgeDetailComponentFactory,
             contentWireframe: contentWireframe,
             delegate: OpenLinkFromKnowledgeEntry(router: router, linksService: linksService)
         ))
@@ -138,7 +138,7 @@ struct RouterConfigurator {
     
     private func configureMapsRoute() {
         router.add(MapContentRoute(
-            mapModuleProviding: moduleRepository.mapDetailModuleProviding,
+            mapModuleProviding: moduleRepository.mapDetailComponentFactory,
             contentWireframe: contentWireframe,
             delegate: ShowDealerFromMap(router: router)
         ))
@@ -146,7 +146,7 @@ struct RouterConfigurator {
     
     private func configureWebContentRoute() {
         router.add(WebContentRoute(
-            webModuleProviding: moduleRepository.webModuleProviding,
+            webComponentFactory: moduleRepository.webComponentFactory,
             modalWireframe: modalWireframe
         ))
     }

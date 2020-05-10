@@ -2,11 +2,11 @@ import Foundation
 
 public struct AnnouncementContentRoute {
     
-    private let announcementModuleFactory: AnnouncementDetailModuleProviding
+    private let announcementModuleFactory: AnnouncementDetailComponentFactory
     private let contentWireframe: ContentWireframe
     
     public init(
-        announcementModuleFactory: AnnouncementDetailModuleProviding,
+        announcementModuleFactory: AnnouncementDetailComponentFactory,
         contentWireframe: ContentWireframe
     ) {
         self.announcementModuleFactory = announcementModuleFactory

@@ -1,6 +1,6 @@
 import EurofurenceModel
 
-public struct NavigateFromAnnouncementsToAnnouncement: AnnouncementsModuleDelegate {
+public struct NavigateFromAnnouncementsToAnnouncement: AnnouncementsComponentDelegate {
     
     private let router: ContentRouter
     
@@ -8,7 +8,7 @@ public struct NavigateFromAnnouncementsToAnnouncement: AnnouncementsModuleDelega
         self.router = router
     }
     
-    public func announcementsModuleDidSelectAnnouncement(_ announcement: AnnouncementIdentifier) {
+    public func announcementsComponentDidSelectAnnouncement(_ announcement: AnnouncementIdentifier) {
         try? router.route(AnnouncementContentRepresentation(identifier: announcement))
     }
     

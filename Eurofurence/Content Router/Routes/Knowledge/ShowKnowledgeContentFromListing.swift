@@ -1,6 +1,6 @@
 import EurofurenceModel
 
-public struct ShowKnowledgeContentFromListing: KnowledgeGroupsListModuleDelegate {
+public struct ShowKnowledgeContentFromListing: KnowledgeGroupsListComponentDelegate {
     
     private let router: ContentRouter
     

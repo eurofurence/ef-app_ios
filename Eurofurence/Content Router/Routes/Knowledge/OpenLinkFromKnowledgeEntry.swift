@@ -1,6 +1,6 @@
 import EurofurenceModel
 
-public struct OpenLinkFromKnowledgeEntry: KnowledgeDetailModuleDelegate {
+public struct OpenLinkFromKnowledgeEntry: KnowledgeDetailComponentDelegate {
     
     private let router: ContentRouter
     private let linksService: ContentLinksService
@@ -13,7 +13,7 @@ public struct OpenLinkFromKnowledgeEntry: KnowledgeDetailModuleDelegate {
         self.linksService = linksService
     }
     
-    public func knowledgeDetailModuleDidSelectLink(_ link: Link) {
+    public func knowledgeComponentModuleDidSelectLink(_ link: Link) {
         guard let content = linksService.lookupContent(for: link) else { return }
         
         switch content {

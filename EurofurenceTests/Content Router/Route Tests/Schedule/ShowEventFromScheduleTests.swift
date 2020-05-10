@@ -9,7 +9,7 @@ class ShowEventFromScheduleTests: XCTestCase {
         let router = FakeContentRouter()
         let navigator = ShowEventFromSchedule(router: router)
         let event = EventIdentifier.random
-        navigator.scheduleModuleDidSelectEvent(identifier: event)
+        navigator.scheduleComponentDidSelectEvent(identifier: event)
         
         router.assertRouted(to: EventContentRepresentation(identifier: event))
     }

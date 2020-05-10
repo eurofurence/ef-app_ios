@@ -24,6 +24,7 @@
 		CA2CB5B122F5A99800D6707D /* WhenMakingContentURL_KnowledgeEntryShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2CB5B022F5A99800D6707D /* WhenMakingContentURL_KnowledgeEntryShould.swift */; };
 		CA30FB9C22F36456001C2EB3 /* KnowledgeGroupImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30FB9B22F36456001C2EB3 /* KnowledgeGroupImpl.swift */; };
 		CA30FB9E22F365E4001C2EB3 /* KnowledgeEntryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30FB9D22F365E4001C2EB3 /* KnowledgeEntryImpl.swift */; };
+		CA38C35924683D9000A20921 /* FakeEventsSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA38C35824683D9000A20921 /* FakeEventsSchedule.swift */; };
 		CA6EE99B22F401E900821E68 /* WhenDescribingKnowledgeGroupsLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EE99A22F401E900821E68 /* WhenDescribingKnowledgeGroupsLink.swift */; };
 		CA6EE9A122F4B65B00821E68 /* WhenDescribingKnowledgeEntryLink_GroupHasMoreThanOneEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EE9A022F4B65B00821E68 /* WhenDescribingKnowledgeEntryLink_GroupHasMoreThanOneEntry.swift */; };
 		CA6EE9A722F4D41300821E68 /* WhenDescribingKnowledgeEntryLink_GroupHasOneEntryExactly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EE9A622F4D41300821E68 /* WhenDescribingKnowledgeEntryLink_GroupHasOneEntryExactly.swift */; };
@@ -466,6 +467,11 @@
 		CAC4994322E0FF0B003E1D77 /* DealerCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC4994222E0FF0B003E1D77 /* DealerCategory.swift */; };
 		CAC4994522E0FF1C003E1D77 /* DealerCategoriesCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC4994422E0FF1C003E1D77 /* DealerCategoriesCollection.swift */; };
 		CAC4994722E0FF33003E1D77 /* DealersIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC4994622E0FF33003E1D77 /* DealersIndex.swift */; };
+		CAF194BF24686E8B005DFBBE /* FakeKnowledgeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF194BE24686E8B005DFBBE /* FakeKnowledgeService.swift */; };
+		CAF194C524687198005DFBBE /* StubKnowledgeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF194C424687198005DFBBE /* StubKnowledgeService.swift */; };
+		CAF194C924687839005DFBBE /* CapturingPrivateMessagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF194C824687839005DFBBE /* CapturingPrivateMessagesService.swift */; };
+		CAF194CB2468785B005DFBBE /* StubConventionCountdownService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF194CA2468785B005DFBBE /* StubConventionCountdownService.swift */; };
+		CAF198452468968E005DFBBE /* StubContentLinksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF198442468968E005DFBBE /* StubContentLinksService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -513,6 +519,7 @@
 		CA2CB5B022F5A99800D6707D /* WhenMakingContentURL_KnowledgeEntryShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenMakingContentURL_KnowledgeEntryShould.swift; sourceTree = "<group>"; };
 		CA30FB9B22F36456001C2EB3 /* KnowledgeGroupImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeGroupImpl.swift; sourceTree = "<group>"; };
 		CA30FB9D22F365E4001C2EB3 /* KnowledgeEntryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeEntryImpl.swift; sourceTree = "<group>"; };
+		CA38C35824683D9000A20921 /* FakeEventsSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeEventsSchedule.swift; sourceTree = "<group>"; };
 		CA6EE99A22F401E900821E68 /* WhenDescribingKnowledgeGroupsLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDescribingKnowledgeGroupsLink.swift; sourceTree = "<group>"; };
 		CA6EE9A022F4B65B00821E68 /* WhenDescribingKnowledgeEntryLink_GroupHasMoreThanOneEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDescribingKnowledgeEntryLink_GroupHasMoreThanOneEntry.swift; sourceTree = "<group>"; };
 		CA6EE9A622F4D41300821E68 /* WhenDescribingKnowledgeEntryLink_GroupHasOneEntryExactly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDescribingKnowledgeEntryLink_GroupHasOneEntryExactly.swift; sourceTree = "<group>"; };
@@ -960,6 +967,11 @@
 		CAC4994222E0FF0B003E1D77 /* DealerCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerCategory.swift; sourceTree = "<group>"; };
 		CAC4994422E0FF1C003E1D77 /* DealerCategoriesCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerCategoriesCollection.swift; sourceTree = "<group>"; };
 		CAC4994622E0FF33003E1D77 /* DealersIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersIndex.swift; sourceTree = "<group>"; };
+		CAF194BE24686E8B005DFBBE /* FakeKnowledgeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeKnowledgeService.swift; sourceTree = "<group>"; };
+		CAF194C424687198005DFBBE /* StubKnowledgeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubKnowledgeService.swift; sourceTree = "<group>"; };
+		CAF194C824687839005DFBBE /* CapturingPrivateMessagesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingPrivateMessagesService.swift; sourceTree = "<group>"; };
+		CAF194CA2468785B005DFBBE /* StubConventionCountdownService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubConventionCountdownService.swift; sourceTree = "<group>"; };
+		CAF198442468968E005DFBBE /* StubContentLinksService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubContentLinksService.swift; sourceTree = "<group>"; };
 		EC85896EECB18D7881B0665A /* Pods-EurofurenceModel-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-EurofurenceModel-metadata.plist"; sourceTree = "<group>"; };
 		FFE87D86E3ECE04913805820 /* Pods_EurofurenceModelTestDoubles.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EurofurenceModelTestDoubles.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -1997,6 +2009,7 @@
 				CA17014F22B183880067BCDE /* EurofurenceModelTestDoubles-Swift.h */,
 				CA7A326C22B16E75002AD939 /* Info.plist */,
 				CA7A32A422B16EB4002AD939 /* CapturingJSONSession.swift */,
+				CAF194C824687839005DFBBE /* CapturingPrivateMessagesService.swift */,
 				CA7A32A322B16EB4002AD939 /* CapturingRefreshService.swift */,
 				CA7A32B222B16EB5002AD939 /* CapturingURLOpener.swift */,
 				CAB63207245F270900DBF0A0 /* ControllableSessionStateService.swift */,
@@ -2004,6 +2017,8 @@
 				CA7A329F22B16EB4002AD939 /* FakeAnnouncementsService.swift */,
 				CA7A32B022B16EB5002AD939 /* FakeDealersIndex.swift */,
 				CA7A32B122B16EB5002AD939 /* FakeDealersService.swift */,
+				CA38C35824683D9000A20921 /* FakeEventsSchedule.swift */,
+				CAF194BE24686E8B005DFBBE /* FakeKnowledgeService.swift */,
 				CA7A32A122B16EB4002AD939 /* FakeMapsService.swift */,
 				CA7A32A622B16EB4002AD939 /* InMemoryDataStore.swift */,
 				CAB6CDF42464ADA500A92194 /* PrivateMessagesServiceTestDoubles.swift */,
@@ -2011,6 +2026,9 @@
 				CA7A32A222B16EB4002AD939 /* StubAppVersionProviding.swift */,
 				CA7A32A722B16EB4002AD939 /* StubBuildConfigurationProviding.swift */,
 				CA7A32A922B16EB5002AD939 /* StubClock.swift */,
+				CAF198442468968E005DFBBE /* StubContentLinksService.swift */,
+				CAF194CA2468785B005DFBBE /* StubConventionCountdownService.swift */,
+				CAF194C424687198005DFBBE /* StubKnowledgeService.swift */,
 				CA7A32AA22B16EB5002AD939 /* Entity Test Doubles */,
 				CA7A328422B16EB4002AD939 /* Random Value Generation */,
 			);
@@ -2904,6 +2922,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA7A32DB22B16EB5002AD939 /* FakeDealersIndex.swift in Sources */,
+				CAF194C924687839005DFBBE /* CapturingPrivateMessagesService.swift in Sources */,
 				CA7A32C722B16EB5002AD939 /* KnowledgeGroup+RandomValueProviding.swift in Sources */,
 				CA7A32D122B16EB5002AD939 /* StubAPIURLProviding.swift in Sources */,
 				CA7A32CA22B16EB5002AD939 /* Message+RandomValueProviding.swift in Sources */,
@@ -2914,16 +2933,20 @@
 				CA7A32BD22B16EB5002AD939 /* LinkCharacteristics+RandomValueProviding.swift in Sources */,
 				CA7A32BF22B16EB5002AD939 /* ConventionIdentifier+RandomValueProviding.swift in Sources */,
 				CA7A32D622B16EB5002AD939 /* StubMap.swift in Sources */,
+				CA38C35924683D9000A20921 /* FakeEventsSchedule.swift in Sources */,
 				CA7A32BC22B16EB5002AD939 /* ModelCharacteristics+RandomValueProviding.swift in Sources */,
 				CAB63208245F270900DBF0A0 /* ControllableSessionStateService.swift in Sources */,
 				CA7A32D922B16EB5002AD939 /* StubMessage.swift in Sources */,
 				CA7A32B322B16EB5002AD939 /* MapCharacteristics+RandomValueProviding.swift in Sources */,
 				CA7A32DC22B16EB5002AD939 /* FakeDealersService.swift in Sources */,
+				CAF194C524687198005DFBBE /* StubKnowledgeService.swift in Sources */,
 				CA7A32B822B16EB5002AD939 /* TrackCharacteristics+RandomValueProviding.swift in Sources */,
 				CA7A32C422B16EB5002AD939 /* AlphabetisedDealersGroup+RandomValueProviding.swift in Sources */,
 				CA7A32B422B16EB5002AD939 /* DealerCharacteristics+RandomValueProviding.swift in Sources */,
 				CA7A32BE22B16EB5002AD939 /* ConferenceDayCharacteristics+RandomValueProviding.swift in Sources */,
 				CA7A32D022B16EB5002AD939 /* CapturingJSONSession.swift in Sources */,
+				CAF194CB2468785B005DFBBE /* StubConventionCountdownService.swift in Sources */,
+				CAF198452468968E005DFBBE /* StubContentLinksService.swift in Sources */,
 				CA7A32C822B16EB5002AD939 /* KnowledgeEntry+RandomValueProviding.swift in Sources */,
 				CA7A32B722B16EB5002AD939 /* ImageCharacteristics+RandomValueProviding.swift in Sources */,
 				CA7A32D522B16EB5002AD939 /* StubClock.swift in Sources */,
@@ -2943,6 +2966,7 @@
 				CA7A32CB22B16EB5002AD939 /* FakeAnnouncementsService.swift in Sources */,
 				CA7A32B622B16EB5002AD939 /* AnnouncementCharacteristics+RandomValueProviding.swift in Sources */,
 				CA7A32CF22B16EB5002AD939 /* CapturingRefreshService.swift in Sources */,
+				CAF194BF24686E8B005DFBBE /* FakeKnowledgeService.swift in Sources */,
 				CA8A73C422BD0FFC007A5201 /* FakeAdditionalServicesRepository.swift in Sources */,
 				CA7A32C122B16EB5002AD939 /* Room+RandomValueProviding.swift in Sources */,
 				CA7A32BA22B16EB5002AD939 /* KnowledgeGroupCharacteristics+RandomValueProviding.swift in Sources */,

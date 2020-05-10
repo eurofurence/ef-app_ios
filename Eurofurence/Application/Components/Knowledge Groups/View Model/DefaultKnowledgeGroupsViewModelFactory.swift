@@ -1,0 +1,57 @@
+import EurofurenceModel
+import UIKit.UIImage
+
+struct DefaultKnowledgeGroupsViewModelFactory: KnowledgeGroupsViewModelFactory {
+
+    private class ViewModel: KnowledgeGroupsListViewModel, KnowledgeServiceObserver {
+
+        private var groups = [KnowledgeGroup]()
+        private var knowledgeGroups: [KnowledgeListGroupViewModel] = []
+        private var delegate: KnowledgeGroupsListViewModelDelegate?
+
+        func knowledgeGroupsDidChange(to groups: [KnowledgeGroup]) {
+            self.groups = groups
+            knowledgeGroups = groups.map { (group) -> KnowledgeListGroupViewModel in
+                let entries = group.entries.map { (entry) -> KnowledgeListEntryViewModel in
+                    return KnowledgeListEntryViewModel(title: entry.title)
+                }
+
+                return KnowledgeListGroupViewModel(title: group.title,
+                                                   fontAwesomeCharacter: group.fontAwesomeCharacterAddress,
+                                                   groupDescription: group.groupDescription,
+                                                   knowledgeEntries: entries)
+            }
+
+            delegate?.knowledgeGroupsViewModelsDidUpdate(to: knowledgeGroups)
+        }
+
+        func setDelegate(_ delegate: KnowledgeGroupsListViewModelDelegate) {
+            self.delegate = delegate
+            delegate.knowledgeGroupsViewModelsDidUpdate(to: knowledgeGroups)
+        }
+
+        func describeContentsOfKnowledgeItem(at index: Int, visitor: KnowledgeGroupsListViewModelVisitor) {
+            let group = groups[index]
+            if group.entries.count == 1 {
+                let entry = group.entries[0]
+                visitor.visit(entry.identifier)
+            } else {
+                visitor.visit(group.identifier)
+            }
+        }
+
+    }
+
+    var service: KnowledgeService
+
+    init(service: KnowledgeService) {
+        self.service = service
+    }
+
+    func prepareViewModel(completionHandler: @escaping (KnowledgeGroupsListViewModel) -> Void) {
+        let viewModel = ViewModel()
+        service.add(viewModel)
+        completionHandler(viewModel)
+    }
+
+}
