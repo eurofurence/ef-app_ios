@@ -2,10 +2,10 @@
 import EurofurenceModel
 import EurofurenceModelTestDoubles
 
-class CapturingKnowledgeDetailModuleDelegate: KnowledgeDetailModuleDelegate {
+class CapturingKnowledgeDetailComponentDelegate: KnowledgeDetailComponentDelegate {
 
     private(set) var capturedLinkToOpen: Link?
-    func knowledgeDetailModuleDidSelectLink(_ link: Link) {
+    func knowledgeComponentModuleDidSelectLink(_ link: Link) {
         capturedLinkToOpen = link
     }
 

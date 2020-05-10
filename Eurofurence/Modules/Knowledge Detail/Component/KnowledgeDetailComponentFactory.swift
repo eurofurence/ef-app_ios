@@ -1,11 +1,11 @@
 import EurofurenceModel
 import UIKit.UIViewController
 
-public protocol KnowledgeDetailModuleProviding {
+public protocol KnowledgeDetailComponentFactory {
 
     func makeKnowledgeListModule(
         _ identifier: KnowledgeEntryIdentifier,
-        delegate: KnowledgeDetailModuleDelegate
+        delegate: KnowledgeDetailComponentDelegate
     ) -> UIViewController
 
 }

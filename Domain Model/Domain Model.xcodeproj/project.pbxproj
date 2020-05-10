@@ -467,6 +467,7 @@
 		CAC4994322E0FF0B003E1D77 /* DealerCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC4994222E0FF0B003E1D77 /* DealerCategory.swift */; };
 		CAC4994522E0FF1C003E1D77 /* DealerCategoriesCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC4994422E0FF1C003E1D77 /* DealerCategoriesCollection.swift */; };
 		CAC4994722E0FF33003E1D77 /* DealersIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC4994622E0FF33003E1D77 /* DealersIndex.swift */; };
+		CAF194BF24686E8B005DFBBE /* FakeKnowledgeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF194BE24686E8B005DFBBE /* FakeKnowledgeService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -962,6 +963,7 @@
 		CAC4994222E0FF0B003E1D77 /* DealerCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerCategory.swift; sourceTree = "<group>"; };
 		CAC4994422E0FF1C003E1D77 /* DealerCategoriesCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerCategoriesCollection.swift; sourceTree = "<group>"; };
 		CAC4994622E0FF33003E1D77 /* DealersIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersIndex.swift; sourceTree = "<group>"; };
+		CAF194BE24686E8B005DFBBE /* FakeKnowledgeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeKnowledgeService.swift; sourceTree = "<group>"; };
 		EC85896EECB18D7881B0665A /* Pods-EurofurenceModel-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-EurofurenceModel-metadata.plist"; sourceTree = "<group>"; };
 		FFE87D86E3ECE04913805820 /* Pods_EurofurenceModelTestDoubles.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EurofurenceModelTestDoubles.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -2007,6 +2009,7 @@
 				CA7A32B022B16EB5002AD939 /* FakeDealersIndex.swift */,
 				CA7A32B122B16EB5002AD939 /* FakeDealersService.swift */,
 				CA38C35824683D9000A20921 /* FakeEventsSchedule.swift */,
+				CAF194BE24686E8B005DFBBE /* FakeKnowledgeService.swift */,
 				CA7A32A122B16EB4002AD939 /* FakeMapsService.swift */,
 				CA7A32A622B16EB4002AD939 /* InMemoryDataStore.swift */,
 				CAB6CDF42464ADA500A92194 /* PrivateMessagesServiceTestDoubles.swift */,
@@ -2947,6 +2950,7 @@
 				CA7A32CB22B16EB5002AD939 /* FakeAnnouncementsService.swift in Sources */,
 				CA7A32B622B16EB5002AD939 /* AnnouncementCharacteristics+RandomValueProviding.swift in Sources */,
 				CA7A32CF22B16EB5002AD939 /* CapturingRefreshService.swift in Sources */,
+				CAF194BF24686E8B005DFBBE /* FakeKnowledgeService.swift in Sources */,
 				CA8A73C422BD0FFC007A5201 /* FakeAdditionalServicesRepository.swift in Sources */,
 				CA7A32C122B16EB5002AD939 /* Room+RandomValueProviding.swift in Sources */,
 				CA7A32BA22B16EB5002AD939 /* KnowledgeGroupCharacteristics+RandomValueProviding.swift in Sources */,

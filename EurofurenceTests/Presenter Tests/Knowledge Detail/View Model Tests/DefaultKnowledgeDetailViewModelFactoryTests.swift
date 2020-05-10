@@ -3,58 +3,12 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import XCTest
 
-class FakeKnowledgeService: KnowledgeService {
-
-    func add(_ observer: KnowledgeServiceObserver) {
-
-    }
-
-    private var stubbedKnowledgeEntries = [KnowledgeEntryIdentifier: FakeKnowledgeEntry]()
-    func fetchKnowledgeEntry(for identifier: KnowledgeEntryIdentifier, completionHandler: @escaping (KnowledgeEntry) -> Void) {
-        completionHandler(stubbedKnowledgeEntry(for: identifier))
-    }
-
-    func fetchImagesForKnowledgeEntry(identifier: KnowledgeEntryIdentifier, completionHandler: @escaping ([Data]) -> Void) {
-        completionHandler(stubbedKnowledgeEntryImages(for: identifier))
-    }
-
-    private var stubbedGroups = [KnowledgeGroup]()
-    func fetchKnowledgeGroup(identifier: KnowledgeGroupIdentifier, completionHandler: @escaping (KnowledgeGroup) -> Void) {
-        stubbedGroups.first(where: { $0.identifier == identifier }).let(completionHandler)
-    }
-
-}
-
-extension FakeKnowledgeService {
-
-    func stubbedKnowledgeEntry(for identifier: KnowledgeEntryIdentifier) -> FakeKnowledgeEntry {
-        if let entry = stubbedKnowledgeEntries[identifier] {
-            return entry
-        }
-
-        let randomEntry = FakeKnowledgeEntry.random
-        randomEntry.identifier = identifier
-        stubbedKnowledgeEntries[identifier] = randomEntry
-
-        return randomEntry
-    }
-
-    func stub(_ group: KnowledgeGroup) {
-        stubbedGroups.append(group)
-    }
-
-    func stubbedKnowledgeEntryImages(for identifier: KnowledgeEntryIdentifier) -> [Data] {
-        return [identifier.rawValue.data(using: .utf8).unsafelyUnwrapped]
-    }
-
-}
-
-class DefaultKnowledgeDetailSceneInteractorTests: XCTestCase {
+class DefaultKnowledgeDetailViewModelFactoryTests: XCTestCase {
 
     var knowledgeService: FakeKnowledgeService!
     var renderer: StubMarkdownRenderer!
     var shareService: CapturingShareService!
-    var interactor: DefaultKnowledgeDetailSceneInteractor!
+    var interactor: DefaultKnowledgeDetailViewModelFactory!
 
     override func setUp() {
         super.setUp()
@@ -62,7 +16,7 @@ class DefaultKnowledgeDetailSceneInteractorTests: XCTestCase {
         renderer = StubMarkdownRenderer()
         knowledgeService = FakeKnowledgeService()
         shareService = CapturingShareService()
-        interactor = DefaultKnowledgeDetailSceneInteractor(knowledgeService: knowledgeService,
+        interactor = DefaultKnowledgeDetailViewModelFactory(knowledgeService: knowledgeService,
                                                            renderer: renderer,
                                                            shareService: shareService)
     }

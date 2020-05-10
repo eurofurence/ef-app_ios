@@ -8,28 +8,28 @@ class KnowledgeEntryContentRouteTests: XCTestCase {
     func testShowsDetailContentController() {
         let identifier = KnowledgeEntryIdentifier.random
         let content = KnowledgeEntryContentRepresentation(identifier: identifier)
-        let knowledgeDetailModuleProviding = StubKnowledgeDetailModuleProviding()
+        let knowledgeDetailComponentFactory = StubKnowledgeDetailComponentFactory()
         let contentWireframe = CapturingContentWireframe()
         let route = KnowledgeEntryContentRoute(
-            knowledgeDetailModuleProviding: knowledgeDetailModuleProviding,
+            knowledgeDetailComponentFactory: knowledgeDetailComponentFactory,
             contentWireframe: contentWireframe,
-            delegate: CapturingKnowledgeDetailModuleDelegate()
+            delegate: CapturingKnowledgeDetailComponentDelegate()
         )
         
         route.route(content)
         
-        XCTAssertEqual(identifier, knowledgeDetailModuleProviding.capturedModel)
-        XCTAssertEqual(contentWireframe.presentedDetailContentController, knowledgeDetailModuleProviding.stubInterface)
+        XCTAssertEqual(identifier, knowledgeDetailComponentFactory.capturedModel)
+        XCTAssertEqual(contentWireframe.presentedDetailContentController, knowledgeDetailComponentFactory.stubInterface)
     }
     
     func testPropogatesLinkSelectionDelegateEvents() {
         let identifier = KnowledgeEntryIdentifier.random
         let content = KnowledgeEntryContentRepresentation(identifier: identifier)
-        let knowledgeDetailModuleProviding = StubKnowledgeDetailModuleProviding()
+        let knowledgeDetailComponentFactory = StubKnowledgeDetailComponentFactory()
         let contentWireframe = CapturingContentWireframe()
-        let delegate = CapturingKnowledgeDetailModuleDelegate()
+        let delegate = CapturingKnowledgeDetailComponentDelegate()
         let route = KnowledgeEntryContentRoute(
-            knowledgeDetailModuleProviding: knowledgeDetailModuleProviding,
+            knowledgeDetailComponentFactory: knowledgeDetailComponentFactory,
             contentWireframe: contentWireframe,
             delegate: delegate
         )
@@ -37,7 +37,7 @@ class KnowledgeEntryContentRouteTests: XCTestCase {
         route.route(content)
         
         let link = Link.random
-        knowledgeDetailModuleProviding.simulateLinkSelected(link)
+        knowledgeDetailComponentFactory.simulateLinkSelected(link)
         
         XCTAssertEqual(link, delegate.capturedLinkToOpen)
     }

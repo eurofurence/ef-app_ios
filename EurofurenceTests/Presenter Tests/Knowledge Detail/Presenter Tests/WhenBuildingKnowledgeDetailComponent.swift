@@ -2,7 +2,7 @@
 import EurofurenceModel
 import XCTest
 
-class WhenBuildingKnowledgeDetailModule: XCTestCase {
+class WhenBuildingKnowledgeDetailComponent: XCTestCase {
 
     func testTheSceneFromTheFactoryIsReturned() {
         let context = KnowledgeDetailPresenterTestBuilder().build()

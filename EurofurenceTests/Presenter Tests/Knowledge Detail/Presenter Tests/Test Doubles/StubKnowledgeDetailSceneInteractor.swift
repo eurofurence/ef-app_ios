@@ -82,7 +82,7 @@ extension NSAttributedString {
 
 }
 
-class StubKnowledgeDetailSceneInteractor: KnowledgeDetailSceneInteractor {
+class StubKnowledgeDetailViewModelFactory: KnowledgeDetailViewModelFactory {
 
     var viewModel = StubKnowledgeEntryDetailViewModel.random
     func makeViewModel(for entry: KnowledgeEntryIdentifier, completionHandler: @escaping (KnowledgeEntryDetailViewModel) -> Void) {

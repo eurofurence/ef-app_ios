@@ -1,7 +1,7 @@
 import EurofurenceModel
 import Foundation
 
-struct DefaultKnowledgeDetailSceneInteractor: KnowledgeDetailSceneInteractor {
+struct DefaultKnowledgeDetailViewModelFactory: KnowledgeDetailViewModelFactory {
 
     private struct ViewModel: KnowledgeEntryDetailViewModel {
         

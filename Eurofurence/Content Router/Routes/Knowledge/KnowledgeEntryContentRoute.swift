@@ -1,15 +1,15 @@
 public struct KnowledgeEntryContentRoute {
     
-    private let knowledgeDetailModuleProviding: KnowledgeDetailModuleProviding
+    private let knowledgeDetailComponentFactory: KnowledgeDetailComponentFactory
     private let contentWireframe: ContentWireframe
-    private let delegate: KnowledgeDetailModuleDelegate
+    private let delegate: KnowledgeDetailComponentDelegate
     
     public init(
-        knowledgeDetailModuleProviding: KnowledgeDetailModuleProviding,
+        knowledgeDetailComponentFactory: KnowledgeDetailComponentFactory,
         contentWireframe: ContentWireframe,
-        delegate: KnowledgeDetailModuleDelegate
+        delegate: KnowledgeDetailComponentDelegate
     ) {
-        self.knowledgeDetailModuleProviding = knowledgeDetailModuleProviding
+        self.knowledgeDetailComponentFactory = knowledgeDetailComponentFactory
         self.contentWireframe = contentWireframe
         self.delegate = delegate
     }
@@ -23,7 +23,7 @@ extension KnowledgeEntryContentRoute: ContentRoute {
     public typealias Content = KnowledgeEntryContentRepresentation
     
     public func route(_ content: KnowledgeEntryContentRepresentation) {
-        let contentController = knowledgeDetailModuleProviding.makeKnowledgeListModule(
+        let contentController = knowledgeDetailComponentFactory.makeKnowledgeListModule(
             content.identifier,
             delegate: delegate
         )

@@ -3,12 +3,12 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import UIKit.UIViewController
 
-class StubKnowledgeDetailModuleProviding: KnowledgeDetailModuleProviding {
+class StubKnowledgeDetailComponentFactory: KnowledgeDetailComponentFactory {
 
     let stubInterface = UIViewController()
     private(set) var capturedModel: KnowledgeEntryIdentifier?
-    private(set) var delegate: KnowledgeDetailModuleDelegate?
-    func makeKnowledgeListModule(_ knowledgeEntry: KnowledgeEntryIdentifier, delegate: KnowledgeDetailModuleDelegate) -> UIViewController {
+    private(set) var delegate: KnowledgeDetailComponentDelegate?
+    func makeKnowledgeListModule(_ knowledgeEntry: KnowledgeEntryIdentifier, delegate: KnowledgeDetailComponentDelegate) -> UIViewController {
         capturedModel = knowledgeEntry
         self.delegate = delegate
         return stubInterface
@@ -16,10 +16,10 @@ class StubKnowledgeDetailModuleProviding: KnowledgeDetailModuleProviding {
 
 }
 
-extension StubKnowledgeDetailModuleProviding {
+extension StubKnowledgeDetailComponentFactory {
 
     func simulateLinkSelected(_ link: Link) {
-        delegate?.knowledgeDetailModuleDidSelectLink(link)
+        delegate?.knowledgeComponentModuleDidSelectLink(link)
     }
 
 }

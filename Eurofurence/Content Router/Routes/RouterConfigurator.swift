@@ -130,7 +130,7 @@ struct RouterConfigurator {
     
     private func configureKnowledgeDetailRoute() {
         router.add(KnowledgeEntryContentRoute(
-            knowledgeDetailModuleProviding: moduleRepository.knowledgeDetailModuleProviding,
+            knowledgeDetailComponentFactory: moduleRepository.knowledgeDetailComponentFactory,
             contentWireframe: contentWireframe,
             delegate: OpenLinkFromKnowledgeEntry(router: router, linksService: linksService)
         ))

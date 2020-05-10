@@ -2,26 +2,26 @@ import EurofurenceModel
 
 class KnowledgeDetailPresenter: KnowledgeDetailSceneDelegate {
 
-    private let delegate: KnowledgeDetailModuleDelegate
+    private let delegate: KnowledgeDetailComponentDelegate
     private let knowledgeDetailScene: KnowledgeDetailScene
     private let identifier: KnowledgeEntryIdentifier
-    private let knowledgeDetailSceneInteractor: KnowledgeDetailSceneInteractor
+    private let knowledgeDetailViewModelFactory: KnowledgeDetailViewModelFactory
     private var viewModel: KnowledgeEntryDetailViewModel?
 
-    init(delegate: KnowledgeDetailModuleDelegate,
+    init(delegate: KnowledgeDetailComponentDelegate,
          knowledgeDetailScene: KnowledgeDetailScene,
          identifier: KnowledgeEntryIdentifier,
-         knowledgeDetailSceneInteractor: KnowledgeDetailSceneInteractor) {
+         knowledgeDetailViewModelFactory: KnowledgeDetailViewModelFactory) {
         self.delegate = delegate
         self.knowledgeDetailScene = knowledgeDetailScene
         self.identifier = identifier
-        self.knowledgeDetailSceneInteractor = knowledgeDetailSceneInteractor
+        self.knowledgeDetailViewModelFactory = knowledgeDetailViewModelFactory
 
         knowledgeDetailScene.setKnowledgeDetailSceneDelegate(self)
     }
 
     func knowledgeDetailSceneDidLoad() {
-        knowledgeDetailSceneInteractor.makeViewModel(for: identifier, completionHandler: knowledgeDetailViewModelPrepared)
+        knowledgeDetailViewModelFactory.makeViewModel(for: identifier, completionHandler: knowledgeDetailViewModelPrepared)
     }
     
     func knowledgeDetailSceneShareButtonTapped(_ sender: AnyObject) {
@@ -59,7 +59,7 @@ class KnowledgeDetailPresenter: KnowledgeDetailSceneDelegate {
 
     private struct ViewModelLinksBinder: LinksBinder {
 
-        var delegate: KnowledgeDetailModuleDelegate
+        var delegate: KnowledgeDetailComponentDelegate
         var viewModel: KnowledgeEntryDetailViewModel
         var viewModels: [LinkViewModel]
 
@@ -68,7 +68,7 @@ class KnowledgeDetailPresenter: KnowledgeDetailSceneDelegate {
             scene.setLinkName(viewModel.name)
             scene.setTapHandler {
                 let link = self.viewModel.link(at: index)
-                self.delegate.knowledgeDetailModuleDidSelectLink(link)
+                self.delegate.knowledgeComponentModuleDidSelectLink(link)
             }
         }
 

@@ -5,7 +5,7 @@ import XCTest
 class WhenShowingKnowledgeEntryWithoutLinks: XCTestCase {
 
     func testTheSceneIsNotToldToShowLinks() {
-        let interactor = StubKnowledgeDetailSceneInteractor()
+        let interactor = StubKnowledgeDetailViewModelFactory()
         interactor.viewModel = .randomWithoutLinks
         let context = KnowledgeDetailPresenterTestBuilder().with(interactor).build()
         context.knowledgeDetailScene.simulateSceneDidLoad()

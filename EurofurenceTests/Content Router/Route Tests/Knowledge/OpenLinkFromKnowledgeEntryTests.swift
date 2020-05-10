@@ -31,7 +31,7 @@ class OpenLinkFromKnowledgeEntryTests: XCTestCase {
         linksService.stubContent(linkContent, for: link)
         let router = FakeContentRouter()
         let navigator = OpenLinkFromKnowledgeEntry(router: router, linksService: linksService)
-        navigator.knowledgeDetailModuleDidSelectLink(link)
+        navigator.knowledgeComponentModuleDidSelectLink(link)
         
         router.assertRouted(to: expected, line: line)
     }
