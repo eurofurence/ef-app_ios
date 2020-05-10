@@ -19,7 +19,7 @@ class KnowledgeGroupEntriesPresenterTestBuilder {
         let interactor = FakeKnowledgeGroupViewModelFactory(for: groupIdentifier, viewModel: viewModel)
         let sceneFactory = StubKnowledgeGroupEntriesSceneFactory()
         let delegate = CapturingKnowledgeGroupEntriesComponentDelegate()
-        let module = KnowledgeGroupEntriesComponentBuilder(interactor: interactor)
+        let module = KnowledgeGroupEntriesComponentBuilder(knowledgeGroupViewModelFactory: interactor)
             .with(sceneFactory)
             .build()
             .makeKnowledgeGroupEntriesModule(groupIdentifier, delegate: delegate)

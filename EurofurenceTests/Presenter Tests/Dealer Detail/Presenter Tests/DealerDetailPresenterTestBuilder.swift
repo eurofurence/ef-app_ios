@@ -28,7 +28,7 @@ class DealerDetailPresenterTestBuilder {
     func build(for identifier: DealerIdentifier = .random) -> Context {
         let sceneFactory = StubDealerDetailSceneFactory()
         let dealerInteractionRecorder = CapturingDealerInteractionRecorder()
-        let module = DealerDetailComponentBuilder(dealerDetailInteractor: interactor, dealerInteractionRecorder: dealerInteractionRecorder)
+        let module = DealerDetailComponentBuilder(dealerDetailViewModelFactory: interactor, dealerInteractionRecorder: dealerInteractionRecorder)
             .with(sceneFactory)
             .build()
             .makeDealerDetailComponent(for: identifier)

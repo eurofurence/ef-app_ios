@@ -35,7 +35,7 @@ class MapDetailPresenterTestBuilder {
     func build(for identifier: MapIdentifier = .random) -> Context {
         let sceneFactory = StubMapDetailSceneFactory()
         let delegate = CapturingMapDetailComponentDelegate()
-        let module = MapDetailComponentBuilder(interactor: interactor)
+        let module = MapDetailComponentBuilder(mapDetailViewModelFactory: interactor)
             .with(sceneFactory)
             .build()
             .makeMapDetailComponent(for: identifier, delegate: delegate)

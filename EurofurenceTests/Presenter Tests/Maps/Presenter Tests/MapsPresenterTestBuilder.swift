@@ -25,7 +25,7 @@ class MapsPresenterTestBuilder {
     func build() -> Context {
         let sceneFactory = StubMapsSceneFactory()
         let delegate = CapturingMapsComponentDelegate()
-        let module = MapsComponentBuilder(interactor: interactor)
+        let module = MapsComponentBuilder(mapsViewModelFactory: interactor)
             .with(sceneFactory)
             .build()
             .makeMapsModule(delegate)

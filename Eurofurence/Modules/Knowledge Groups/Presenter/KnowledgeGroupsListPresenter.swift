@@ -4,15 +4,15 @@ import Foundation
 class KnowledgeGroupsListPresenter: KnowledgeListSceneDelegate, KnowledgeGroupsListViewModelDelegate {
 
     private let scene: KnowledgeListScene
-    private let knowledgeListInteractor: KnowledgeGroupsViewModelFactory
+    private let knowledgeGroupsViewModelFactory: KnowledgeGroupsViewModelFactory
     private let viewModelContentVisitor: KnowledgeVisitor
     private var viewModel: KnowledgeGroupsListViewModel?
 
     init(scene: KnowledgeListScene,
-         knowledgeListInteractor: KnowledgeGroupsViewModelFactory,
+         knowledgeGroupsViewModelFactory: KnowledgeGroupsViewModelFactory,
          delegate: KnowledgeGroupsListComponentDelegate) {
         self.scene = scene
-        self.knowledgeListInteractor = knowledgeListInteractor
+        self.knowledgeGroupsViewModelFactory = knowledgeGroupsViewModelFactory
         viewModelContentVisitor = KnowledgeVisitor(delegate: delegate)
 
         scene.setKnowledgeListTitle(.information)
@@ -21,7 +21,7 @@ class KnowledgeGroupsListPresenter: KnowledgeListSceneDelegate, KnowledgeGroupsL
 
     func knowledgeListSceneDidLoad() {
         scene.showLoadingIndicator()
-        knowledgeListInteractor.prepareViewModel(completionHandler: viewModelPrepared)
+        knowledgeGroupsViewModelFactory.prepareViewModel(completionHandler: viewModelPrepared)
     }
 
     func knowledgeListSceneDidSelectKnowledgeGroup(at groupIndex: Int) {

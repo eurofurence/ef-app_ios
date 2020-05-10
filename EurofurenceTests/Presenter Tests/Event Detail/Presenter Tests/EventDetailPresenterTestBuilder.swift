@@ -66,7 +66,7 @@ class EventDetailPresenterTestBuilder {
         let hapticEngine = CapturingSelectionChangedHaptic()
         let delegate = CapturingEventDetailComponentDelegate()
         let interactionRecorder = CapturingEventInteractionRecorder()
-        let module = EventDetailComponentBuilder(interactor: interactor, interactionRecorder: interactionRecorder)
+        let module = EventDetailComponentBuilder(eventDetailViewModelFactory: interactor, interactionRecorder: interactionRecorder)
             .with(sceneFactory)
             .with(hapticEngine)
             .build()

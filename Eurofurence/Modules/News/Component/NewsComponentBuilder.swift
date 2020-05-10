@@ -1,10 +1,10 @@
 class NewsComponentBuilder {
 
     private var newsSceneFactory: NewsSceneFactory
-    private let newsInteractor: NewsViewModelProducer
+    private let newsViewModelProducer: NewsViewModelProducer
 
-    init(newsInteractor: NewsViewModelProducer) {
-        self.newsInteractor = newsInteractor
+    init(newsViewModelProduer: NewsViewModelProducer) {
+        self.newsViewModelProducer = newsViewModelProduer
         newsSceneFactory = StoryboardNewsSceneFactory()
     }
 
@@ -16,7 +16,7 @@ class NewsComponentBuilder {
     func build() -> NewsComponentFactory {
         NewsComponentFactoryImpl(
             newsSceneFactory: newsSceneFactory,
-            newsInteractor: newsInteractor
+            newsViewModelProducer: newsViewModelProducer
         )
     }
 

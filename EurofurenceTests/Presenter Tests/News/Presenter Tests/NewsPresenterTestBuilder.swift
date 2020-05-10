@@ -31,7 +31,7 @@ class NewsPresenterTestBuilder {
     }
 
     func build() -> Context {
-        let module = NewsComponentBuilder(newsInteractor: newsInteractor)
+        let module = NewsComponentBuilder(newsViewModelProduer: newsInteractor)
             .with(sceneFactory)
             .build()
             .makeNewsComponent(delegate)

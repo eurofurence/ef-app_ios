@@ -2,11 +2,11 @@ import Foundation
 
 class MapsComponentBuilder {
 
-    private let interactor: MapsViewModelFactory
+    private let mapsViewModelFactory: MapsViewModelFactory
     private var sceneFactory: MapsSceneFactory
 
-    init(interactor: MapsViewModelFactory) {
-        self.interactor = interactor
+    init(mapsViewModelFactory: MapsViewModelFactory) {
+        self.mapsViewModelFactory = mapsViewModelFactory
         sceneFactory = StoryboardMapsScenefactory()
     }
 
@@ -19,7 +19,7 @@ class MapsComponentBuilder {
     func build() -> MapsComponentFactory {
         MapsComponentFactoryImpl(
             sceneFactory: sceneFactory,
-            interactor: interactor
+            mapsViewModelFactory: mapsViewModelFactory
         )
     }
 

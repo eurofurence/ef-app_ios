@@ -5,7 +5,7 @@ import UIKit.UIViewController
 struct EventDetailComponentFactoryImpl: EventDetailComponentFactory {
 
     var sceneFactory: EventDetailSceneFactory
-    var interactor: EventDetailViewModelFactory
+    var eventDetailViewModelFactory: EventDetailViewModelFactory
     var hapticEngine: SelectionChangedHaptic
     var interactionRecorder: EventInteractionRecorder
 
@@ -13,7 +13,7 @@ struct EventDetailComponentFactoryImpl: EventDetailComponentFactory {
         let scene = sceneFactory.makeEventDetailScene()
         _ = EventDetailPresenter(
             scene: scene,
-            interactor: interactor,
+            eventDetailViewModelFactory: eventDetailViewModelFactory,
             hapticEngine: hapticEngine,
             event: event,
             delegate: delegate,

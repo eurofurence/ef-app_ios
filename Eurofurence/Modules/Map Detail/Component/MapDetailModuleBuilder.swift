@@ -3,10 +3,10 @@ import Foundation
 class MapDetailComponentBuilder {
 
     private var sceneFactory: MapDetailSceneFactory
-    private let interactor: MapDetailViewModelFactory
+    private let mapDetailViewModelFactory: MapDetailViewModelFactory
 
-    init(interactor: MapDetailViewModelFactory) {
-        self.interactor = interactor
+    init(mapDetailViewModelFactory: MapDetailViewModelFactory) {
+        self.mapDetailViewModelFactory = mapDetailViewModelFactory
         sceneFactory = StoryboardMapDetailSceneFactory()
     }
 
@@ -19,7 +19,7 @@ class MapDetailComponentBuilder {
     func build() -> MapDetailComponentFactory {
         MapDetailComponentFactoryImpl(
             sceneFactory: sceneFactory,
-            interactor: interactor
+            mapDetailViewModelFactory: mapDetailViewModelFactory
         )
     }
 

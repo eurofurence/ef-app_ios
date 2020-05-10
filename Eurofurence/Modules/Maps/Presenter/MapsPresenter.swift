@@ -16,13 +16,17 @@ class MapsPresenter: MapsSceneDelegate {
     }
 
     private let scene: MapsScene
-    private let interactor: MapsViewModelFactory
+    private let mapsViewModelFactory: MapsViewModelFactory
     private let delegate: MapsComponentDelegate
     private var viewModel: MapsViewModel?
 
-    init(scene: MapsScene, interactor: MapsViewModelFactory, delegate: MapsComponentDelegate) {
+    init(
+        scene: MapsScene,
+        mapsViewModelFactory: MapsViewModelFactory,
+        delegate: MapsComponentDelegate
+    ) {
         self.scene = scene
-        self.interactor = interactor
+        self.mapsViewModelFactory = mapsViewModelFactory
         self.delegate = delegate
 
         scene.setMapsTitle(.maps)
@@ -30,7 +34,7 @@ class MapsPresenter: MapsSceneDelegate {
     }
 
     func mapsSceneDidLoad() {
-        interactor.makeMapsViewModel { (viewModel) in
+        mapsViewModelFactory.makeMapsViewModel { (viewModel) in
             self.viewModel = viewModel
             self.scene.bind(numberOfMaps: viewModel.numberOfMaps, using: Binder(viewModel: viewModel))
         }

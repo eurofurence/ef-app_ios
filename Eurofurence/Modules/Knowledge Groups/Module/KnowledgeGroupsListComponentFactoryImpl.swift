@@ -3,13 +3,13 @@ import UIKit.UIViewController
 struct KnowledgeGroupsListComponentFactoryImpl: KnowledgeGroupsListComponentFactory {
 
     var knowledgeSceneFactory: KnowledgeListSceneFactory
-    var knowledgeListInteractor: KnowledgeGroupsViewModelFactory
+    var knowledgeGroupsViewModelFactory: KnowledgeGroupsViewModelFactory
 
     func makeKnowledgeListComponent(_ delegate: KnowledgeGroupsListComponentDelegate) -> UIViewController {
         let scene = knowledgeSceneFactory.makeKnowledgeListScene()
         let presenter = KnowledgeGroupsListPresenter(
             scene: scene,
-            knowledgeListInteractor: knowledgeListInteractor,
+            knowledgeGroupsViewModelFactory: knowledgeGroupsViewModelFactory,
             delegate: delegate
         )
         

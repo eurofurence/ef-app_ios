@@ -25,7 +25,7 @@ class DealersPresenterTestBuilder {
     func build() -> Context {
         let sceneFactory = StubDealersSceneFactory()
         let delegate = CapturingDealersComponentDelegate()
-        let viewController = DealersComponentBuilder(interactor: interactor)
+        let viewController = DealersComponentBuilder(dealersViewModelFactory: interactor)
             .with(sceneFactory)
             .build()
             .makeDealersComponent(delegate)

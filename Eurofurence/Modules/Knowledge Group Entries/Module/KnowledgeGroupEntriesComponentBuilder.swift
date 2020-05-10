@@ -2,11 +2,11 @@ import Foundation
 
 class KnowledgeGroupEntriesComponentBuilder {
 
-    private let interactor: KnowledgeGroupViewModelFactory
+    private let knowledgeGroupViewModelFactory: KnowledgeGroupViewModelFactory
     private var sceneFactory: KnowledgeGroupEntriesSceneFactory
 
-    init(interactor: KnowledgeGroupViewModelFactory) {
-        self.interactor = interactor
+    init(knowledgeGroupViewModelFactory: KnowledgeGroupViewModelFactory) {
+        self.knowledgeGroupViewModelFactory = knowledgeGroupViewModelFactory
         sceneFactory = StoryboardKnowledgeGroupEntriesSceneFactory()
     }
 
@@ -18,7 +18,7 @@ class KnowledgeGroupEntriesComponentBuilder {
 
     func build() -> KnowledgeGroupEntriesComponentFactory {
         KnowledgeGroupEntriesComponentFactoryImpl(
-            interactor: interactor,
+            knowledgeGroupViewModelFactory: knowledgeGroupViewModelFactory,
             sceneFactory: sceneFactory
         )
     }

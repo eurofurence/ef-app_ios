@@ -2,11 +2,11 @@ import EurofurenceModel
 
 class KnowledgeGroupsComponentBuilder {
 
-    private let knowledgeListInteractor: KnowledgeGroupsViewModelFactory
+    private let knowledgeGroupsViewModelFactory: KnowledgeGroupsViewModelFactory
     private var knowledgeSceneFactory: KnowledgeListSceneFactory
 
-    init(knowledgeListInteractor: KnowledgeGroupsViewModelFactory) {
-        self.knowledgeListInteractor = knowledgeListInteractor
+    init(knowledgeGroupsViewModelFactory: KnowledgeGroupsViewModelFactory) {
+        self.knowledgeGroupsViewModelFactory = knowledgeGroupsViewModelFactory
         knowledgeSceneFactory = StoryboardKnowledgeListSceneFactory()
     }
 
@@ -19,7 +19,7 @@ class KnowledgeGroupsComponentBuilder {
     func build() -> KnowledgeGroupsListComponentFactory {
         KnowledgeGroupsListComponentFactoryImpl(
             knowledgeSceneFactory: knowledgeSceneFactory,
-            knowledgeListInteractor: knowledgeListInteractor
+            knowledgeGroupsViewModelFactory: knowledgeGroupsViewModelFactory
         )
     }
 

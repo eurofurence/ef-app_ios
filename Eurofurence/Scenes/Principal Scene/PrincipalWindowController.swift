@@ -18,7 +18,7 @@ struct PrincipalWindowController {
         let router = MutableContentRouter()
         self.router = router
         
-        let moduleRepository = ApplicationModuleRepository(
+        let moduleRepository = ComponentRegistry(
             services: services,
             repositories: repositories,
             window: window
@@ -65,7 +65,7 @@ struct PrincipalWindowController {
         )
         
         let knowledgeContentControllerFactory = KnowledgeContentControllerFactory(
-            knowledgeModuleProviding: moduleRepository.knowledgeListModuleProviding,
+            knowledgeModuleProviding: moduleRepository.knowledgeListComponentFactory,
             knowledgeModuleDelegate: knowledgeSubrouter
         )
         

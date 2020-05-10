@@ -4,7 +4,7 @@ import UIKit
 
 struct KnowledgeGroupEntriesComponentFactoryImpl: KnowledgeGroupEntriesComponentFactory {
 
-    var interactor: KnowledgeGroupViewModelFactory
+    var knowledgeGroupViewModelFactory: KnowledgeGroupViewModelFactory
     var sceneFactory: KnowledgeGroupEntriesSceneFactory
 
     func makeKnowledgeGroupEntriesModule(
@@ -14,7 +14,7 @@ struct KnowledgeGroupEntriesComponentFactoryImpl: KnowledgeGroupEntriesComponent
         let scene = sceneFactory.makeKnowledgeGroupEntriesScene()
         _ = KnowledgeGroupEntriesPresenter(
             scene: scene,
-            interactor: interactor,
+            knowledgeGroupViewModelFactory: knowledgeGroupViewModelFactory,
             groupIdentifier: groupIdentifier,
             delegate: delegate
         )

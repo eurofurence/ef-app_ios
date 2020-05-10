@@ -4,17 +4,17 @@ import Foundation
 class MapDetailPresenter: MapDetailSceneDelegate {
 
     private let scene: MapDetailScene
-    private let interactor: MapDetailViewModelFactory
+    private let mapDetailViewModelFactory: MapDetailViewModelFactory
     private let identifier: MapIdentifier
     private let delegate: MapDetailComponentDelegate
     private var viewModel: MapDetailViewModel?
 
     init(scene: MapDetailScene,
-         interactor: MapDetailViewModelFactory,
+         mapDetailViewModelFactory: MapDetailViewModelFactory,
          identifier: MapIdentifier,
          delegate: MapDetailComponentDelegate) {
         self.scene = scene
-        self.interactor = interactor
+        self.mapDetailViewModelFactory = mapDetailViewModelFactory
         self.identifier = identifier
         self.delegate = delegate
 
@@ -22,7 +22,10 @@ class MapDetailPresenter: MapDetailSceneDelegate {
     }
 
     func mapDetailSceneDidLoad() {
-        interactor.makeViewModelForMap(identifier: identifier, completionHandler: viewModelReady)
+        mapDetailViewModelFactory.makeViewModelForMap(
+            identifier: identifier,
+            completionHandler: viewModelReady
+        )
     }
 
     func mapDetailSceneDidTapMap(at position: MapCoordinate) {

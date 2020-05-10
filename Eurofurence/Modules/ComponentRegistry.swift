@@ -1,7 +1,7 @@
 import EurofurenceModel
 import UIKit
 
-struct ApplicationModuleRepository {
+struct ComponentRegistry {
     
     let webComponentFactory: WebComponentFactory
     let tutorialModuleProviding: TutorialModuleProviding
@@ -14,11 +14,11 @@ struct ApplicationModuleRepository {
     let messagesComponentFactory: MessagesComponentFactory
     let loginComponentFactory: LoginComponentFactory
     let messageDetailComponentFactory: MessageDetailComponentFactory
-    let knowledgeListModuleProviding: KnowledgeGroupsListComponentFactory
-    let knowledgeGroupEntriesModule: KnowledgeGroupEntriesComponentFactory
+    let knowledgeListComponentFactory: KnowledgeGroupsListComponentFactory
+    let knowledgeGroupComponentFactory: KnowledgeGroupEntriesComponentFactory
     let knowledgeDetailComponentFactory: KnowledgeDetailComponentFactory
     let mapsComponentFactory: MapsComponentFactory
-    let mapDetailModuleProviding: MapDetailComponentFactory
+    let mapDetailComponentFactory: MapDetailComponentFactory
     let announcementsModuleFactory: AnnouncementsComponentFactory
     let announcementDetailComponentFactory: AnnouncementDetailComponentFactory
     let eventDetailComponentFactory: EventDetailComponentFactory
@@ -41,7 +41,7 @@ struct ApplicationModuleRepository {
             alertRouter: alertRouter
         ).build()
         
-        let newsInteractor = DefaultNewsViewModelProducer(
+        let newsViewModelProducer = DefaultNewsViewModelProducer(
             announcementsService: services.announcements,
             authenticationService: services.authentication,
             privateMessagesService: services.privateMessages,
@@ -55,7 +55,9 @@ struct ApplicationModuleRepository {
             announcementsMarkdownRenderer: subtleMarkdownRenderer
         )
         
-        newsComponentFactory = NewsComponentBuilder(newsInteractor: newsInteractor).build()
+        newsComponentFactory = NewsComponentBuilder(
+            newsViewModelProduer: newsViewModelProducer
+        ).build()
         
         let scheduleViewModelFactory = DefaultScheduleViewModelFactory(
             eventsService: services.events,
@@ -70,13 +72,15 @@ struct ApplicationModuleRepository {
         let defaultDealerIcon = #imageLiteral(resourceName: "defaultAvatar")
         guard let defaultDealerIconData = defaultDealerIcon.pngData() else { fatalError("Default dealer icon is not a PNG") }
         
-        let dealersInteractor = DefaultDealersViewModelFactory(
+        let dealersViewModelFactory = DefaultDealersViewModelFactory(
             dealersService: services.dealers,
             defaultIconData: defaultDealerIconData,
             refreshService: services.refresh
         )
         
-        dealersComponentFactory = DealersComponentBuilder(interactor: dealersInteractor).build()
+        dealersComponentFactory = DealersComponentBuilder(
+            dealersViewModelFactory: dealersViewModelFactory
+        ).build()
         
         let dealerIntentDonor = ConcreteViewDealerIntentDonor()
         
@@ -86,13 +90,13 @@ struct ApplicationModuleRepository {
             activityFactory: activityFactory
         )
         
-        let dealerDetailInteractor = DefaultDealerDetailViewModelFactory(
+        let dealerDetailViewModelFactory = DefaultDealerDetailViewModelFactory(
             dealersService: services.dealers,
             shareService: shareService
         )
 
         dealerDetailModuleProviding = DealerDetailComponentBuilder(
-            dealerDetailInteractor: dealerDetailInteractor,
+            dealerDetailViewModelFactory: dealerDetailViewModelFactory,
             dealerInteractionRecorder: dealerInteractionRecorder
         ).build()
         
@@ -114,20 +118,20 @@ struct ApplicationModuleRepository {
             messagesService: services.privateMessages
         ).build()
         
-        let knowledgeListInteractor = DefaultKnowledgeGroupsViewModelFactory(
+        let knowledgeGroupsViewModelFactory = DefaultKnowledgeGroupsViewModelFactory(
             service: services.knowledge
         )
         
-        knowledgeListModuleProviding = KnowledgeGroupsComponentBuilder(
-            knowledgeListInteractor: knowledgeListInteractor
+        knowledgeListComponentFactory = KnowledgeGroupsComponentBuilder(
+            knowledgeGroupsViewModelFactory: knowledgeGroupsViewModelFactory
         ).build()
         
-        let knowledgeGroupEntriesInteractor = DefaultKnowledgeGroupViewModelFactory(
+        let knowledgeGroupViewModelFactory = DefaultKnowledgeGroupViewModelFactory(
             service: services.knowledge
         )
         
-        knowledgeGroupEntriesModule = KnowledgeGroupEntriesComponentBuilder(
-            interactor: knowledgeGroupEntriesInteractor
+        knowledgeGroupComponentFactory = KnowledgeGroupEntriesComponentBuilder(
+            knowledgeGroupViewModelFactory: knowledgeGroupViewModelFactory
         ).build()
         
         let knowledgeDetailViewModelFactory = DefaultKnowledgeDetailViewModelFactory(
@@ -140,11 +144,17 @@ struct ApplicationModuleRepository {
             knowledgeDetailViewModelFactory: knowledgeDetailViewModelFactory
         ).build()
         
-        let mapsInteractor = DefaultMapsViewModelFactory(mapsService: services.maps)
-        mapsComponentFactory = MapsComponentBuilder(interactor: mapsInteractor).build()
+        let mapsViewModelFactory = DefaultMapsViewModelFactory(mapsService: services.maps)
+        
+        mapsComponentFactory = MapsComponentBuilder(
+            mapsViewModelFactory: mapsViewModelFactory
+        ).build()
         
         let mapDetailViewModelFactory = DefaultMapDetailViewModelFactory(mapsService: services.maps)
-        mapDetailModuleProviding = MapDetailComponentBuilder(interactor: mapDetailViewModelFactory).build()
+        
+        mapDetailComponentFactory = MapDetailComponentBuilder(
+            mapDetailViewModelFactory: mapDetailViewModelFactory
+        ).build()
         
         let announcementsViewModelFactory = DefaultAnnouncementsViewModelFactory(
             announcementsService: services.announcements,
@@ -180,7 +190,7 @@ struct ApplicationModuleRepository {
         )
         
         eventDetailComponentFactory = EventDetailComponentBuilder(
-            interactor: eventDetailViewModelFactory,
+            eventDetailViewModelFactory: eventDetailViewModelFactory,
             interactionRecorder: eventInteractionRecorder
         ).build()
         
@@ -195,6 +205,7 @@ struct ApplicationModuleRepository {
         )
         
         let eventFeedbackSceneFactory = StoryboardEventFeedbackSceneFactory()
+        
         eventFeedbackComponentFactory = EventFeedbackComponentFactoryImpl(
             presenterFactory: eventFeedbackPresenterFactory,
             sceneFactory: eventFeedbackSceneFactory

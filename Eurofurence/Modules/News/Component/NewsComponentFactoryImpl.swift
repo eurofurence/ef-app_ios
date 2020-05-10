@@ -3,14 +3,14 @@ import UIKit.UIViewController
 struct NewsComponentFactoryImpl: NewsComponentFactory {
 
     var newsSceneFactory: NewsSceneFactory
-    var newsInteractor: NewsViewModelProducer
+    var newsViewModelProducer: NewsViewModelProducer
 
     func makeNewsComponent(_ delegate: NewsComponentDelegate) -> UIViewController {
         let scene = newsSceneFactory.makeNewsScene()
         _ = NewsPresenter(
             delegate: delegate,
             newsScene: scene,
-            newsInteractor: newsInteractor
+            newsViewModelProducer: newsViewModelProducer
         )
 
         return scene

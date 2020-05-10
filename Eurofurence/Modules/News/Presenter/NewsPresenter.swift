@@ -141,17 +141,17 @@ class NewsPresenter: NewsSceneDelegate, NewsViewModelRecipient {
 
     private let delegate: NewsComponentDelegate
     private let newsScene: NewsScene
-    private let newsInteractor: NewsViewModelProducer
+    private let newsViewModelProducer: NewsViewModelProducer
     private var viewModel: NewsViewModel?
 
     // MARK: Initialization
 
     init(delegate: NewsComponentDelegate,
          newsScene: NewsScene,
-         newsInteractor: NewsViewModelProducer) {
+         newsViewModelProducer: NewsViewModelProducer) {
         self.delegate = delegate
         self.newsScene = newsScene
-        self.newsInteractor = newsInteractor
+        self.newsViewModelProducer = newsViewModelProducer
 
         newsScene.delegate = self
         newsScene.showNewsTitle(.news)
@@ -160,7 +160,7 @@ class NewsPresenter: NewsSceneDelegate, NewsViewModelRecipient {
     // MARK: NewsSceneDelegate
 
     func newsSceneDidLoad() {
-        newsInteractor.subscribeViewModelUpdates(self)
+        newsViewModelProducer.subscribeViewModelUpdates(self)
     }
 
     func newsSceneDidSelectComponent(at indexPath: IndexPath) {
@@ -182,7 +182,7 @@ class NewsPresenter: NewsSceneDelegate, NewsViewModelRecipient {
     }
 
     func newsSceneDidPerformRefreshAction() {
-        newsInteractor.refresh()
+        newsViewModelProducer.refresh()
     }
 
     // MARK: NewsViewModelRecipient

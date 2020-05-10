@@ -4,15 +4,14 @@ import UIKit
 struct DealerDetailComponentFactoryImpl: DealerDetailComponentFactory {
 
     var dealerDetailSceneFactory: DealerDetailSceneFactory
-    var dealerDetailInteractor: DealerDetailViewModelFactory
+    var dealerDetailViewModelFactory: DealerDetailViewModelFactory
     var dealerInteractionRecorder: DealerInteractionRecorder
 
     func makeDealerDetailComponent(for dealer: DealerIdentifier) -> UIViewController {
-        dealerDetailInteractor.makeDealerDetailViewModel(for: dealer) { (_) in }
         let scene = dealerDetailSceneFactory.makeDealerDetailScene()
         _ = DealerDetailPresenter(
             scene: scene,
-            interactor: dealerDetailInteractor,
+            dealerDetailViewModelFactory: dealerDetailViewModelFactory,
             dealer: dealer,
             dealerInteractionRecorder: dealerInteractionRecorder
         )

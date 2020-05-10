@@ -6,7 +6,7 @@ struct RouterConfigurator {
     var router: MutableContentRouter
     var contentWireframe: ContentWireframe
     var modalWireframe: ModalWireframe
-    var moduleRepository: ApplicationModuleRepository
+    var moduleRepository: ComponentRegistry
     var routeAuthenticationHandler: RouteAuthenticationHandler
     var linksService: ContentLinksService
     var urlOpener: URLOpener
@@ -122,7 +122,7 @@ struct RouterConfigurator {
     
     private func configureKnowledgeEntriesRoute() {
         router.add(KnowledgeGroupContentRoute(
-            knowledgeGroupModuleProviding: moduleRepository.knowledgeGroupEntriesModule,
+            knowledgeGroupModuleProviding: moduleRepository.knowledgeGroupComponentFactory,
             contentWireframe: contentWireframe,
             delegate: ShowKnowledgeContentFromGroupListing(router: router)
         ))
@@ -138,7 +138,7 @@ struct RouterConfigurator {
     
     private func configureMapsRoute() {
         router.add(MapContentRoute(
-            mapModuleProviding: moduleRepository.mapDetailModuleProviding,
+            mapModuleProviding: moduleRepository.mapDetailComponentFactory,
             contentWireframe: contentWireframe,
             delegate: ShowDealerFromMap(router: router)
         ))

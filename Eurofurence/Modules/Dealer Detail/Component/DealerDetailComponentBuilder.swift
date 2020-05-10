@@ -3,11 +3,14 @@ import Foundation
 class DealerDetailComponentBuilder {
 
     private var dealerDetailSceneFactory: DealerDetailSceneFactory
-    private let dealerDetailInteractor: DealerDetailViewModelFactory
+    private let dealerDetailViewModelFactory: DealerDetailViewModelFactory
     private let dealerInteractionRecorder: DealerInteractionRecorder
 
-    init(dealerDetailInteractor: DealerDetailViewModelFactory, dealerInteractionRecorder: DealerInteractionRecorder) {
-        self.dealerDetailInteractor = dealerDetailInteractor
+    init(
+        dealerDetailViewModelFactory: DealerDetailViewModelFactory,
+        dealerInteractionRecorder: DealerInteractionRecorder
+    ) {
+        self.dealerDetailViewModelFactory = dealerDetailViewModelFactory
         self.dealerInteractionRecorder = dealerInteractionRecorder
         dealerDetailSceneFactory = StoryboardDealerDetailSceneFactory()
     }
@@ -21,7 +24,7 @@ class DealerDetailComponentBuilder {
     func build() -> DealerDetailComponentFactory {
         DealerDetailComponentFactoryImpl(
             dealerDetailSceneFactory: dealerDetailSceneFactory,
-            dealerDetailInteractor: dealerDetailInteractor,
+            dealerDetailViewModelFactory: dealerDetailViewModelFactory,
             dealerInteractionRecorder: dealerInteractionRecorder
         )
     }

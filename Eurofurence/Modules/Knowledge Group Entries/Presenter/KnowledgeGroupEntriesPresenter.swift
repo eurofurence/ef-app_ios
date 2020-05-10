@@ -15,17 +15,17 @@ class KnowledgeGroupEntriesPresenter: KnowledgeGroupEntriesSceneDelegate {
     }
 
     private let scene: KnowledgeGroupEntriesScene
-    private let interactor: KnowledgeGroupViewModelFactory
+    private let knowledgeGroupViewModelFactory: KnowledgeGroupViewModelFactory
     private let groupIdentifier: KnowledgeGroupIdentifier
     private let delegate: KnowledgeGroupEntriesComponentDelegate
     private var viewModel: KnowledgeGroupEntriesViewModel?
 
     init(scene: KnowledgeGroupEntriesScene,
-         interactor: KnowledgeGroupViewModelFactory,
+         knowledgeGroupViewModelFactory: KnowledgeGroupViewModelFactory,
          groupIdentifier: KnowledgeGroupIdentifier,
          delegate: KnowledgeGroupEntriesComponentDelegate) {
         self.scene = scene
-        self.interactor = interactor
+        self.knowledgeGroupViewModelFactory = knowledgeGroupViewModelFactory
         self.groupIdentifier = groupIdentifier
         self.delegate = delegate
 
@@ -33,7 +33,10 @@ class KnowledgeGroupEntriesPresenter: KnowledgeGroupEntriesSceneDelegate {
     }
 
     func knowledgeGroupEntriesSceneDidLoad() {
-        interactor.makeViewModelForGroup(identifier: groupIdentifier, completionHandler: viewModelReady)
+        knowledgeGroupViewModelFactory.makeViewModelForGroup(
+            identifier: groupIdentifier,
+            completionHandler: viewModelReady
+        )
     }
 
     func knowledgeGroupEntriesSceneDidSelectEntry(at index: Int) {

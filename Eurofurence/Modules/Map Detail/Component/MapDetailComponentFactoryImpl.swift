@@ -4,13 +4,13 @@ import UIKit
 struct MapDetailComponentFactoryImpl: MapDetailComponentFactory {
 
     var sceneFactory: MapDetailSceneFactory
-    var interactor: MapDetailViewModelFactory
+    var mapDetailViewModelFactory: MapDetailViewModelFactory
 
     func makeMapDetailComponent(for map: MapIdentifier, delegate: MapDetailComponentDelegate) -> UIViewController {
         let scene = sceneFactory.makeMapDetailScene()
         _ = MapDetailPresenter(
             scene: scene,
-            interactor: interactor,
+            mapDetailViewModelFactory: mapDetailViewModelFactory,
             identifier: map,
             delegate: delegate
         )

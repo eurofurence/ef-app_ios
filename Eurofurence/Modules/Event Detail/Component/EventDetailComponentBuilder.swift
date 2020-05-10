@@ -3,13 +3,13 @@ import UIKit.UIViewController
 
 class EventDetailComponentBuilder {
 
-    private let interactor: EventDetailViewModelFactory
+    private let eventDetailViewModelFactory: EventDetailViewModelFactory
     private let interactionRecorder: EventInteractionRecorder
     private var sceneFactory: EventDetailSceneFactory
     private var hapticEngine: SelectionChangedHaptic
 
-    init(interactor: EventDetailViewModelFactory, interactionRecorder: EventInteractionRecorder) {
-        self.interactor = interactor
+    init(eventDetailViewModelFactory: EventDetailViewModelFactory, interactionRecorder: EventInteractionRecorder) {
+        self.eventDetailViewModelFactory = eventDetailViewModelFactory
         self.interactionRecorder = interactionRecorder
         
         sceneFactory = StoryboardEventDetailSceneFactory()
@@ -31,7 +31,7 @@ class EventDetailComponentBuilder {
     func build() -> EventDetailComponentFactory {
         EventDetailComponentFactoryImpl(
             sceneFactory: sceneFactory,
-            interactor: interactor,
+            eventDetailViewModelFactory: eventDetailViewModelFactory,
             hapticEngine: hapticEngine,
             interactionRecorder: interactionRecorder
         )

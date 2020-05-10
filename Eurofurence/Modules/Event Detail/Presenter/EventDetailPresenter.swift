@@ -118,7 +118,7 @@ class EventDetailPresenter: EventDetailSceneDelegate, EventDetailViewModelDelega
     }
 
     private let scene: EventDetailScene
-    private let interactor: EventDetailViewModelFactory
+    private let eventDetailViewModelFactory: EventDetailViewModelFactory
     private let hapticEngine: SelectionChangedHaptic
     private let event: EventIdentifier
     private let delegate: EventDetailComponentDelegate
@@ -127,13 +127,13 @@ class EventDetailPresenter: EventDetailSceneDelegate, EventDetailViewModelDelega
     private var eventInteraction: Interaction?
 
     init(scene: EventDetailScene,
-         interactor: EventDetailViewModelFactory,
+         eventDetailViewModelFactory: EventDetailViewModelFactory,
          hapticEngine: SelectionChangedHaptic,
          event: EventIdentifier,
          delegate: EventDetailComponentDelegate,
          interactionRecorder: EventInteractionRecorder) {
         self.scene = scene
-        self.interactor = interactor
+        self.eventDetailViewModelFactory = eventDetailViewModelFactory
         self.hapticEngine = hapticEngine
         self.event = event
         self.delegate = delegate
@@ -144,7 +144,7 @@ class EventDetailPresenter: EventDetailSceneDelegate, EventDetailViewModelDelega
 
     func eventDetailSceneDidLoad() {
         eventInteraction = interactionRecorder.makeInteraction(for: event)
-        interactor.makeViewModel(for: event, completionHandler: eventDetailViewModelReady)
+        eventDetailViewModelFactory.makeViewModel(for: event, completionHandler: eventDetailViewModelReady)
     }
     
     func eventDetailSceneDidAppear() {

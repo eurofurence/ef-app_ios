@@ -1,10 +1,10 @@
 class DealersComponentBuilder {
 
     private var dealersSceneFactory: DealersSceneFactory
-    private var interactor: DealersViewModelFactory
+    private var dealersViewModelFactory: DealersViewModelFactory
 
-    init(interactor: DealersViewModelFactory) {
-        self.interactor = interactor
+    init(dealersViewModelFactory: DealersViewModelFactory) {
+        self.dealersViewModelFactory = dealersViewModelFactory
         dealersSceneFactory = StoryboardDealersSceneFactory()
     }
 
@@ -17,7 +17,7 @@ class DealersComponentBuilder {
     func build() -> DealersComponentFactory {
         DealersComponentFactoryImpl(
             dealersSceneFactory: dealersSceneFactory,
-            interactor: interactor
+            dealersViewModelFactory: dealersViewModelFactory
         )
     }
 

@@ -126,15 +126,20 @@ class DealerDetailPresenter: DealerDetailSceneDelegate {
     }
 
     private let scene: DealerDetailScene
-    private let interactor: DealerDetailViewModelFactory
+    private let dealerDetailViewModelFactory: DealerDetailViewModelFactory
     private let dealer: DealerIdentifier
     private let dealerInteractionRecorder: DealerInteractionRecorder
     private var dealerInteraction: Interaction?
     private var viewModel: DealerDetailViewModel?
 
-    init(scene: DealerDetailScene, interactor: DealerDetailViewModelFactory, dealer: DealerIdentifier, dealerInteractionRecorder: DealerInteractionRecorder) {
+    init(
+        scene: DealerDetailScene,
+        dealerDetailViewModelFactory: DealerDetailViewModelFactory,
+        dealer: DealerIdentifier,
+        dealerInteractionRecorder: DealerInteractionRecorder
+    ) {
         self.scene = scene
-        self.interactor = interactor
+        self.dealerDetailViewModelFactory = dealerDetailViewModelFactory
         self.dealer = dealer
         self.dealerInteractionRecorder = dealerInteractionRecorder
 
@@ -144,7 +149,7 @@ class DealerDetailPresenter: DealerDetailSceneDelegate {
     func dealerDetailSceneDidLoad() {
         dealerInteraction = dealerInteractionRecorder.makeInteraction(for: dealer)
         
-        interactor.makeDealerDetailViewModel(for: dealer) { (viewModel) in
+        dealerDetailViewModelFactory.makeDealerDetailViewModel(for: dealer) { (viewModel) in
             self.viewModel = viewModel
             self.scene.bind(numberOfComponents: viewModel.numberOfComponents,
                             using: Binder(viewModel: viewModel))

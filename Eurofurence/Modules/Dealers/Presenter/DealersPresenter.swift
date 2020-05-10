@@ -98,14 +98,18 @@ class DealersPresenter: DealersSceneDelegate, DealersViewModelDelegate, DealersS
     }
 
     private let scene: DealersScene
-    private let interactor: DealersViewModelFactory
+    private let dealersViewModelFactory: DealersViewModelFactory
     private let delegate: DealersComponentDelegate
     private var viewModel: DealersViewModel?
     private var searchViewModel: DealersSearchViewModel?
 
-    init(scene: DealersScene, interactor: DealersViewModelFactory, delegate: DealersComponentDelegate) {
+    init(
+        scene: DealersScene,
+        dealersViewModelFactory: DealersViewModelFactory,
+        delegate: DealersComponentDelegate
+    ) {
         self.scene = scene
-        self.interactor = interactor
+        self.dealersViewModelFactory = dealersViewModelFactory
         self.delegate = delegate
 
         scene.setDelegate(self)
@@ -113,12 +117,12 @@ class DealersPresenter: DealersSceneDelegate, DealersViewModelDelegate, DealersS
     }
 
     func dealersSceneDidLoad() {
-        interactor.makeDealersViewModel { (viewModel) in
+        dealersViewModelFactory.makeDealersViewModel { (viewModel) in
             self.viewModel = viewModel
             viewModel.setDelegate(self)
         }
 
-        interactor.makeDealersSearchViewModel { (viewModel) in
+        dealersViewModelFactory.makeDealersSearchViewModel { (viewModel) in
             self.searchViewModel = viewModel
             viewModel.setSearchResultsDelegate(self)
         }
@@ -145,7 +149,7 @@ class DealersPresenter: DealersSceneDelegate, DealersViewModelDelegate, DealersS
     }
     
     func dealersSceneDidRevealCategoryFiltersScene(_ filtersScene: DealerCategoriesFilterScene) {
-        interactor.makeDealerCategoriesViewModel { (viewModel) in
+        dealersViewModelFactory.makeDealerCategoriesViewModel { (viewModel) in
             filtersScene.bind(viewModel.numberOfCategories, using: CategoriesBinder(viewModel: viewModel))
         }
     }

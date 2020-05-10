@@ -15,7 +15,7 @@ class KnowledgeGroupsPresenterTestBuilder {
         let knowledgeInteractor = CapturingKnowledgeGroupsViewModelFactory()
         let sceneFactory = StubKnowledgeListSceneFactory()
         let delegate = CapturingKnowledgeGroupsListComponentDelegate()
-        let producedViewController = KnowledgeGroupsComponentBuilder(knowledgeListInteractor: knowledgeInteractor)
+        let producedViewController = KnowledgeGroupsComponentBuilder(knowledgeGroupsViewModelFactory: knowledgeInteractor)
             .with(sceneFactory)
             .build()
             .makeKnowledgeListComponent(delegate)
