@@ -3,10 +3,10 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import Foundation
 
-class CapturingKnowledgeGroupEntriesModuleDelegate: KnowledgeGroupEntriesModuleDelegate {
+class CapturingKnowledgeGroupEntriesComponentDelegate: KnowledgeGroupEntriesComponentDelegate {
 
     private(set) var selectedKnowledgeEntryIdentifier: KnowledgeEntryIdentifier?
-    func knowledgeGroupEntriesModuleDidSelectKnowledgeEntry(identifier: KnowledgeEntryIdentifier) {
+    func knowledgeGroupEntriesComponentDidSelectKnowledgeEntry(identifier: KnowledgeEntryIdentifier) {
         selectedKnowledgeEntryIdentifier = identifier
     }
 

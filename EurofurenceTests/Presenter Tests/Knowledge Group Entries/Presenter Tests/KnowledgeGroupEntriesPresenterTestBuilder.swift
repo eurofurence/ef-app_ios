@@ -10,16 +10,16 @@ class KnowledgeGroupEntriesPresenterTestBuilder {
         var viewController: UIViewController
         var viewModel: StubKnowledgeGroupEntriesViewModel
         var sceneFactory: StubKnowledgeGroupEntriesSceneFactory
-        var delegate: CapturingKnowledgeGroupEntriesModuleDelegate
+        var delegate: CapturingKnowledgeGroupEntriesComponentDelegate
     }
 
     func build() -> Context {
         let viewModel = StubKnowledgeGroupEntriesViewModel.random
         let groupIdentifier = KnowledgeGroupIdentifier.random
-        let interactor = FakeKnowledgeGroupEntriesInteractor(for: groupIdentifier, viewModel: viewModel)
+        let interactor = FakeKnowledgeGroupViewModelFactory(for: groupIdentifier, viewModel: viewModel)
         let sceneFactory = StubKnowledgeGroupEntriesSceneFactory()
-        let delegate = CapturingKnowledgeGroupEntriesModuleDelegate()
-        let module = KnowledgeGroupEntriesModuleBuilder(interactor: interactor)
+        let delegate = CapturingKnowledgeGroupEntriesComponentDelegate()
+        let module = KnowledgeGroupEntriesComponentBuilder(interactor: interactor)
             .with(sceneFactory)
             .build()
             .makeKnowledgeGroupEntriesModule(groupIdentifier, delegate: delegate)

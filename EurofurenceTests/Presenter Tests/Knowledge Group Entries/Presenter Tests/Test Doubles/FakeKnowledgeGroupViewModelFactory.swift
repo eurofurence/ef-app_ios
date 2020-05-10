@@ -3,7 +3,7 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import Foundation
 
-struct FakeKnowledgeGroupEntriesInteractor: KnowledgeGroupEntriesInteractor {
+struct FakeKnowledgeGroupViewModelFactory: KnowledgeGroupViewModelFactory {
 
     private let groupIdentifier: KnowledgeGroupIdentifier
     private let viewModel: KnowledgeGroupEntriesViewModel

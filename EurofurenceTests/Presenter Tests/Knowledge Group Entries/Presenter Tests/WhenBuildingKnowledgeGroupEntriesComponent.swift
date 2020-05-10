@@ -2,7 +2,7 @@
 import EurofurenceModel
 import XCTest
 
-class WhenBuildingKnowledgeGroupEntriesModule: XCTestCase {
+class WhenBuildingKnowledgeGroupEntriesComponent: XCTestCase {
 
     func testTheSceneFromTheFactoryIsReturned() {
         let context = KnowledgeGroupEntriesPresenterTestBuilder().build()

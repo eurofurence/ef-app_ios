@@ -1,7 +1,7 @@
 import EurofurenceModel
 import Foundation
 
-struct DefaultKnowledgeGroupEntriesInteractor: KnowledgeGroupEntriesInteractor {
+struct DefaultKnowledgeGroupViewModelFactory: KnowledgeGroupViewModelFactory {
 
     private struct ViewModel: KnowledgeGroupEntriesViewModel {
 

@@ -3,13 +3,13 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import XCTest
 
-class DefaultKnowledgeGroupEntriesInteractorShould: XCTestCase {
+class DefaultKnowledgeGroupViewModelFactoryShould: XCTestCase {
 
     func testIndicateViewModelAsNumberOfEntriesAsInGroupFromService() {
         let service = FakeKnowledgeService()
         let group = FakeKnowledgeGroup.random
         service.stub(group)
-        let interactor = DefaultKnowledgeGroupEntriesInteractor(service: service)
+        let interactor = DefaultKnowledgeGroupViewModelFactory(service: service)
         var viewModel: KnowledgeGroupEntriesViewModel?
         interactor.makeViewModelForGroup(identifier: group.identifier) { viewModel = $0 }
 
@@ -20,7 +20,7 @@ class DefaultKnowledgeGroupEntriesInteractorShould: XCTestCase {
         let service = FakeKnowledgeService()
         let group = FakeKnowledgeGroup.random
         service.stub(group)
-        let interactor = DefaultKnowledgeGroupEntriesInteractor(service: service)
+        let interactor = DefaultKnowledgeGroupViewModelFactory(service: service)
         var viewModel: KnowledgeGroupEntriesViewModel?
         interactor.makeViewModelForGroup(identifier: group.identifier) { viewModel = $0 }
         let entry = group.entries.randomElement()
@@ -33,7 +33,7 @@ class DefaultKnowledgeGroupEntriesInteractorShould: XCTestCase {
         let service = FakeKnowledgeService()
         let group = FakeKnowledgeGroup.random
         service.stub(group)
-        let interactor = DefaultKnowledgeGroupEntriesInteractor(service: service)
+        let interactor = DefaultKnowledgeGroupViewModelFactory(service: service)
         var viewModel: KnowledgeGroupEntriesViewModel?
         interactor.makeViewModelForGroup(identifier: group.identifier) { viewModel = $0 }
         let entry = group.entries.randomElement()
@@ -46,7 +46,7 @@ class DefaultKnowledgeGroupEntriesInteractorShould: XCTestCase {
         let service = FakeKnowledgeService()
         let group = FakeKnowledgeGroup.random
         service.stub(group)
-        let interactor = DefaultKnowledgeGroupEntriesInteractor(service: service)
+        let interactor = DefaultKnowledgeGroupViewModelFactory(service: service)
         var viewModel: KnowledgeGroupEntriesViewModel?
         interactor.makeViewModelForGroup(identifier: group.identifier) { viewModel = $0 }
 

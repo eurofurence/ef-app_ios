@@ -2,11 +2,11 @@ import EurofurenceModel
 import Foundation
 import UIKit
 
-public protocol KnowledgeGroupEntriesModuleProviding {
+public protocol KnowledgeGroupEntriesComponentFactory {
 
     func makeKnowledgeGroupEntriesModule(
         _ groupIdentifier: KnowledgeGroupIdentifier,
-        delegate: KnowledgeGroupEntriesModuleDelegate
+        delegate: KnowledgeGroupEntriesComponentDelegate
     ) -> UIViewController
 
 }

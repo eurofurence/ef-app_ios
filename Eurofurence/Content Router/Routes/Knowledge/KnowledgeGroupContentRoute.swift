@@ -1,13 +1,13 @@
 public struct KnowledgeGroupContentRoute {
     
-    private let knowledgeGroupModuleProviding: KnowledgeGroupEntriesModuleProviding
+    private let knowledgeGroupModuleProviding: KnowledgeGroupEntriesComponentFactory
     private let contentWireframe: ContentWireframe
-    private let delegate: KnowledgeGroupEntriesModuleDelegate
+    private let delegate: KnowledgeGroupEntriesComponentDelegate
     
     public init(
-        knowledgeGroupModuleProviding: KnowledgeGroupEntriesModuleProviding,
+        knowledgeGroupModuleProviding: KnowledgeGroupEntriesComponentFactory,
         contentWireframe: ContentWireframe,
-        delegate: KnowledgeGroupEntriesModuleDelegate
+        delegate: KnowledgeGroupEntriesComponentDelegate
     ) {
         self.knowledgeGroupModuleProviding = knowledgeGroupModuleProviding
         self.contentWireframe = contentWireframe
