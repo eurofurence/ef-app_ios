@@ -1,6 +1,6 @@
 import UIKit.UIViewController
 
-protocol KnowledgeGroupsListComponentFactory {
+public protocol KnowledgeGroupsListComponentFactory {
 
     func makeKnowledgeListComponent(
         _ delegate: KnowledgeGroupsListComponentDelegate
