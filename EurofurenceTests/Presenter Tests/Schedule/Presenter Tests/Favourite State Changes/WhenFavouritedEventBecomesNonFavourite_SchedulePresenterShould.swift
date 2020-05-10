@@ -9,7 +9,7 @@ class WhenFavouritedEventBecomesNonFavourite_SchedulePresenterShould: XCTestCase
         eventViewModel.isFavourite = true
         let scheduleViewModel = CapturingScheduleViewModel.random
         scheduleViewModel.events = [ScheduleEventGroupViewModel(title: "", events: [eventViewModel])]
-        let interactor = FakeScheduleInteractor(viewModel: scheduleViewModel)
+        let interactor = FakeScheduleViewModelFactory(viewModel: scheduleViewModel)
         let context = SchedulePresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
         let indexPath = IndexPath(item: 0, section: 0)

@@ -17,7 +17,7 @@ class WhenBindingNonFavouriteEvent_SchedulePresenterShould: XCTestCase {
         eventViewModel.isFavourite = false
         let eventGroupViewModel = ScheduleEventGroupViewModel(title: .random, events: [eventViewModel])
         let viewModel = CapturingScheduleViewModel(days: .random, events: [eventGroupViewModel], currentDay: 0)
-        let interactor = FakeScheduleInteractor(viewModel: viewModel)
+        let interactor = FakeScheduleViewModelFactory(viewModel: viewModel)
         let context = SchedulePresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
         let searchResult = StubScheduleEventViewModel.random
@@ -33,7 +33,7 @@ class WhenBindingNonFavouriteEvent_SchedulePresenterShould: XCTestCase {
         eventViewModel.isFavourite = false
         let eventGroupViewModel = ScheduleEventGroupViewModel(title: .random, events: [eventViewModel])
         let viewModel = CapturingScheduleViewModel(days: .random, events: [eventGroupViewModel], currentDay: 0)
-        let interactor = FakeScheduleInteractor(viewModel: viewModel)
+        let interactor = FakeScheduleViewModelFactory(viewModel: viewModel)
         let context = SchedulePresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
         let indexPath = IndexPath(item: 0, section: 0)

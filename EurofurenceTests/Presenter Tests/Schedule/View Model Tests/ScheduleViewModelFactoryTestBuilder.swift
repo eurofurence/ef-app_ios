@@ -20,10 +20,10 @@ class FakeShortFormDayAndTimeFormatter: ShortFormDayAndTimeFormatter {
 
 }
 
-class ScheduleInteractorTestBuilder {
+class ScheduleViewModelFactoryTestBuilder {
 
     struct Context {
-        var interactor: DefaultScheduleInteractor
+        var interactor: DefaultScheduleViewModelFactory
         var eventsService: FakeEventsService
         var hoursFormatter: FakeHoursDateFormatter
         var shortFormDateFormatter: FakeShortFormDateFormatter
@@ -40,7 +40,7 @@ class ScheduleInteractorTestBuilder {
     }
 
     @discardableResult
-    func with(_ eventsService: FakeEventsService) -> ScheduleInteractorTestBuilder {
+    func with(_ eventsService: FakeEventsService) -> ScheduleViewModelFactoryTestBuilder {
         self.eventsService = eventsService
         return self
     }
@@ -50,7 +50,7 @@ class ScheduleInteractorTestBuilder {
         let shortFormDateFormatter = FakeShortFormDateFormatter()
         let shortFormDayAndTimeFormatter = FakeShortFormDayAndTimeFormatter()
         let refreshService = CapturingRefreshService()
-        let interactor = DefaultScheduleInteractor(eventsService: eventsService,
+        let interactor = DefaultScheduleViewModelFactory(eventsService: eventsService,
                                                    hoursDateFormatter: hoursFormatter,
                                                    shortFormDateFormatter: shortFormDateFormatter,
                                                    shortFormDayAndTimeFormatter: shortFormDayAndTimeFormatter,
@@ -66,7 +66,7 @@ class ScheduleInteractorTestBuilder {
 
 }
 
-extension ScheduleInteractorTestBuilder.Context {
+extension ScheduleViewModelFactoryTestBuilder.Context {
 
     var eventsViewModels: [ScheduleEventGroupViewModel] {
         return viewModelDelegate.eventsViewModels

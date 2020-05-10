@@ -7,7 +7,7 @@ class WhenSceneSelectsEventFromSearchViewModel_SchedulePresenterShould: XCTestCa
 
     func testTellModuleEventWithResolvedIdentifierSelected() {
         let searchViewModel = CapturingScheduleSearchViewModel()
-        let interactor = FakeScheduleInteractor(searchViewModel: searchViewModel)
+        let interactor = FakeScheduleViewModelFactory(searchViewModel: searchViewModel)
         let context = SchedulePresenterTestBuilder().with(interactor).build()
         let results = [ScheduleEventGroupViewModel].random
         context.simulateSceneDidLoad()

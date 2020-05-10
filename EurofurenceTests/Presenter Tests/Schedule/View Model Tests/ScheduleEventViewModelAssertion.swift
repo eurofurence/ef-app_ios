@@ -4,9 +4,9 @@ import TestUtilities
 
 class ScheduleEventViewModelAssertion: Assertion {
 
-    private let context: ScheduleInteractorTestBuilder.Context
+    private let context: ScheduleViewModelFactoryTestBuilder.Context
 
-    init(context: ScheduleInteractorTestBuilder.Context, file: StaticString = #file, line: UInt = #line) {
+    init(context: ScheduleViewModelFactoryTestBuilder.Context, file: StaticString = #file, line: UInt = #line) {
         self.context = context
         super.init(file: file, line: line)
     }

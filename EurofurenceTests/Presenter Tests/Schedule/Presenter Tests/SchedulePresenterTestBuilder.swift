@@ -11,14 +11,14 @@ class SchedulePresenterTestBuilder {
         var hapticEngine: CapturingSelectionChangedHaptic
     }
 
-    private var interactor: ScheduleInteractor
+    private var interactor: ScheduleViewModelFactory
 
     init() {
-        interactor = FakeScheduleInteractor()
+        interactor = FakeScheduleViewModelFactory()
     }
 
     @discardableResult
-    func with(_ interactor: ScheduleInteractor) -> SchedulePresenterTestBuilder {
+    func with(_ interactor: ScheduleViewModelFactory) -> SchedulePresenterTestBuilder {
         self.interactor = interactor
         return self
     }
@@ -46,7 +46,7 @@ extension SchedulePresenterTestBuilder {
     static func buildForTestingBindingOfEvent(_ event: ScheduleEventViewModelProtocol) -> CapturingScheduleEventComponent {
         let eventGroupViewModel = ScheduleEventGroupViewModel(title: .random, events: [event])
         let viewModel = CapturingScheduleViewModel(days: .random, events: [eventGroupViewModel], currentDay: 0)
-        let interactor = FakeScheduleInteractor(viewModel: viewModel)
+        let interactor = FakeScheduleViewModelFactory(viewModel: viewModel)
         let context = SchedulePresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
         let indexPath = IndexPath(item: 0, section: 0)
@@ -62,7 +62,7 @@ extension SchedulePresenterTestBuilder {
 
     static func buildForTestingBindingOfSearchResult(_ event: ScheduleEventViewModelProtocol) -> CapturingScheduleEventComponent {
         let searchViewModel = CapturingScheduleSearchViewModel()
-        let interactor = FakeScheduleInteractor(searchViewModel: searchViewModel)
+        let interactor = FakeScheduleViewModelFactory(searchViewModel: searchViewModel)
         let context = SchedulePresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
         let results = [ScheduleEventGroupViewModel(title: .random, events: [event])]

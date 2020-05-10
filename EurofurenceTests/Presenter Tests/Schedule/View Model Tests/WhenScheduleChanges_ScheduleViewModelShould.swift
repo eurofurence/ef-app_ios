@@ -9,7 +9,7 @@ class WhenScheduleChanges_ScheduleViewModelShould: XCTestCase {
         let oldEvent = FakeEvent.random
         let eventsService = FakeEventsService()
         eventsService.allEvents = [oldEvent]
-        let context = ScheduleInteractorTestBuilder().with(eventsService).build()
+        let context = ScheduleViewModelFactoryTestBuilder().with(eventsService).build()
         context.makeViewModel()
         eventsService.lastProducedSchedule?.simulateEventsChanged([oldEvent])
         let oldViewModel = context.viewModelDelegate.eventsViewModels[0].events[0]

@@ -11,7 +11,7 @@ class WhenInstigatingPullToRefreshAction_SchedulePresenterShould: XCTestCase {
         super.setUp()
 
         viewModel = CapturingScheduleViewModel.random
-        let interactor = FakeScheduleInteractor(viewModel: viewModel)
+        let interactor = FakeScheduleViewModelFactory(viewModel: viewModel)
         context = SchedulePresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
         context.simulateSceneDidPerformRefreshAction()

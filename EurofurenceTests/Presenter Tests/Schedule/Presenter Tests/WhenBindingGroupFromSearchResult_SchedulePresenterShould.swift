@@ -6,7 +6,7 @@ class WhenBindingGroupFromSearchResult_SchedulePresenterShould: XCTestCase {
 
     func testBindTheGroupTitleOntoTheHeader() {
         let searchViewModel = CapturingScheduleSearchViewModel()
-        let interactor = FakeScheduleInteractor(searchViewModel: searchViewModel)
+        let interactor = FakeScheduleViewModelFactory(searchViewModel: searchViewModel)
         let context = SchedulePresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
         let results = [ScheduleEventGroupViewModel].random

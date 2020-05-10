@@ -5,7 +5,7 @@ import XCTest
 class WhenToldToRefresh_ScheduleViewModelShould: XCTestCase {
 
     func testTellTheRefreshServiceToRefresh() {
-        let context = ScheduleInteractorTestBuilder().build()
+        let context = ScheduleViewModelFactoryTestBuilder().build()
         let viewModel = context.makeViewModel()
         viewModel?.refresh()
 

@@ -9,7 +9,7 @@ class WhenEventTransitionsFromNonFavouriteToFavourite_EventViewModelShould: XCTe
         let eventsService = FakeEventsService()
         let event = FakeEvent.random
         eventsService.allEvents = [event]
-        let context = ScheduleInteractorTestBuilder().with(eventsService).build()
+        let context = ScheduleViewModelFactoryTestBuilder().with(eventsService).build()
         context.makeViewModel()
         let eventViewModel = context.eventsViewModels.first?.events.first
         let observer = CapturingScheduleEventViewModelObserver()

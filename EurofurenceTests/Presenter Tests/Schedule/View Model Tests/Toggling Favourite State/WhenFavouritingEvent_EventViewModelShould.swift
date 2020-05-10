@@ -3,19 +3,18 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import XCTest
 
-class WhenUnfavouritingEvent_EventViewModelShould: XCTestCase {
+class WhenFavouritingEvent_EventViewModelShould: XCTestCase {
 
-    func testUnfavouriteTheEvent() {
+    func testFavouriteTheEvent() {
         let eventsService = FakeEventsService()
         let event = FakeEvent.random
-        event.favourite()
         eventsService.allEvents = [event]
-        let context = ScheduleInteractorTestBuilder().with(eventsService).build()
+        let context = ScheduleViewModelFactoryTestBuilder().with(eventsService).build()
         context.makeViewModel()
         let eventViewModel = context.eventsViewModels.first?.events.first
-        eventViewModel?.unfavourite()
+        eventViewModel?.favourite()
         
-        XCTAssertEqual(.unfavourited, event.favouritedState)
+        XCTAssertEqual(.favourited, event.favouritedState)
     }
 
 }

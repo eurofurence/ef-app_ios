@@ -11,7 +11,7 @@ class WhenBindingEvent_WithNoPoster_SchedulePresenterShould: XCTestCase {
         let stubbedEventViewModel = viewModel.eventViewModel(inGroup: group.index, at: event.index)
         stubbedEventViewModel.bannerGraphicPNGData = nil
 
-        let interactor = FakeScheduleInteractor(viewModel: viewModel)
+        let interactor = FakeScheduleViewModelFactory(viewModel: viewModel)
         let context = SchedulePresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
         let indexPath = IndexPath(item: event.index, section: group.index)

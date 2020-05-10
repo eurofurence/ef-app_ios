@@ -3,7 +3,7 @@ import UIKit.UIViewController
 struct ScheduleComponentFactoryImpl: ScheduleComponentFactory {
 
     var eventsSceneFactory: ScheduleSceneFactory
-    var interactor: ScheduleInteractor
+    var interactor: ScheduleViewModelFactory
     var hapticEngine: SelectionChangedHaptic
 
     func makeScheduleComponent(_ delegate: ScheduleComponentDelegate) -> UIViewController {

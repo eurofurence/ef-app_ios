@@ -54,12 +54,12 @@ struct ApplicationModuleRepository {
                                                    announcementsMarkdownRenderer: subtleMarkdownRenderer)
         newsComponentFactory = NewsComponentBuilder(newsInteractor: newsInteractor).build()
         
-        let scheduleInteractor = DefaultScheduleInteractor(eventsService: services.events,
+        let scheduleViewModelFactory = DefaultScheduleViewModelFactory(eventsService: services.events,
                                                            hoursDateFormatter: FoundationHoursDateFormatter.shared,
                                                            shortFormDateFormatter: FoundationShortFormDateFormatter.shared,
                                                            shortFormDayAndTimeFormatter: FoundationShortFormDayAndTimeFormatter.shared,
                                                            refreshService: services.refresh)
-        scheduleComponentFactory = ScheduleModuleBuilder(interactor: scheduleInteractor).build()
+        scheduleComponentFactory = ScheduleModuleBuilder(interactor: scheduleViewModelFactory).build()
         
         let defaultDealerIcon = #imageLiteral(resourceName: "defaultAvatar")
         guard let defaultDealerIconData = defaultDealerIcon.pngData() else { fatalError("Default dealer icon is not a PNG") }

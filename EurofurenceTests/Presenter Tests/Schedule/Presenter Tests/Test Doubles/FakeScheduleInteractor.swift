@@ -2,7 +2,7 @@
 import EurofurenceModel
 import Foundation
 
-class FakeScheduleInteractor: ScheduleInteractor {
+class FakeScheduleViewModelFactory: ScheduleViewModelFactory {
 
     private let viewModel: ScheduleViewModel
     private let searchViewModel: ScheduleSearchViewModel

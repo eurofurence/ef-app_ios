@@ -3,9 +3,9 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import XCTest
 
-class WhenPreparingViewModel_ScheduleInteractorShould: XCTestCase {
+class WhenPreparingViewModel_ScheduleViewModelFactoryShould: XCTestCase {
 
-    var context: ScheduleInteractorTestBuilder.Context!
+    var context: ScheduleViewModelFactoryTestBuilder.Context!
     var days: [Day]!
     var eventsService: FakeEventsService!
 
@@ -14,7 +14,7 @@ class WhenPreparingViewModel_ScheduleInteractorShould: XCTestCase {
 
         days = .random
         eventsService = FakeEventsService()
-        context = ScheduleInteractorTestBuilder().with(eventsService).build()
+        context = ScheduleViewModelFactoryTestBuilder().with(eventsService).build()
     }
 
     func testAdaptDaysIntoViewModelsWithFriendlyDateTitles() {
@@ -37,7 +37,7 @@ class WhenPreparingViewModel_ScheduleInteractorShould: XCTestCase {
 
     func testProvideCurrentDayIndex() {
         let currentDay = days.randomElement()
-        let context = ScheduleInteractorTestBuilder().with(eventsService).build()
+        let context = ScheduleViewModelFactoryTestBuilder().with(eventsService).build()
         eventsService.simulateDaysChanged(days)
         eventsService.simulateDayChanged(to: currentDay.element)
         context.makeViewModel()
@@ -46,7 +46,7 @@ class WhenPreparingViewModel_ScheduleInteractorShould: XCTestCase {
     }
 
     func testProvideZeroIndexWhenCurrentDayIsNotAvailable() {
-        let context = ScheduleInteractorTestBuilder().build()
+        let context = ScheduleViewModelFactoryTestBuilder().build()
         context.makeViewModel()
 
         XCTAssertEqual(0, context.currentDayIndex)

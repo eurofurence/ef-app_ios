@@ -2,11 +2,11 @@
 import EurofurenceModel
 import XCTest
 
-class WhenToldToFilterToAllEvents_ScheduleInteractorShould: XCTestCase {
+class WhenToldToFilterToAllEvents_ScheduleViewModelFactoryShould: XCTestCase {
 
     func testTellTheSearchControllerToLifeTheFavouritesRestriction() {
         let eventsService = FakeEventsService()
-        let context = ScheduleInteractorTestBuilder().with(eventsService).build()
+        let context = ScheduleViewModelFactoryTestBuilder().with(eventsService).build()
         let searchViewModel = context.makeSearchViewModel()
         searchViewModel?.filterToAllEvents()
 

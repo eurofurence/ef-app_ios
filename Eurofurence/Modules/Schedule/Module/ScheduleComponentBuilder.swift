@@ -4,10 +4,10 @@ import UIKit.UIViewController
 class ScheduleModuleBuilder {
 
     private var eventsSceneFactory: ScheduleSceneFactory
-    private let interactor: ScheduleInteractor
+    private let interactor: ScheduleViewModelFactory
     private var hapticEngine: SelectionChangedHaptic
 
-    init(interactor: ScheduleInteractor) {
+    init(interactor: ScheduleViewModelFactory) {
         self.interactor = interactor
         eventsSceneFactory = StoryboardScheduleSceneFactory()
         hapticEngine = CocoaTouchHapticEngine()

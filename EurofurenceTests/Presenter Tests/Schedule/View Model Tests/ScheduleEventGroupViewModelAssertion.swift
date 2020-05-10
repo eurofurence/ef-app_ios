@@ -4,10 +4,10 @@ import TestUtilities
 
 class ScheduleEventGroupViewModelAssertion: Assertion {
 
-    private let context: ScheduleInteractorTestBuilder.Context
+    private let context: ScheduleViewModelFactoryTestBuilder.Context
     private let groupDateFormatter: (Date) -> String
 
-    class func assertionForEventViewModels(context: ScheduleInteractorTestBuilder.Context,
+    class func assertionForEventViewModels(context: ScheduleViewModelFactoryTestBuilder.Context,
                                            file: StaticString = #file,
                                            line: UInt = #line) -> ScheduleEventGroupViewModelAssertion {
         return ScheduleEventGroupViewModelAssertion(context: context,
@@ -16,7 +16,7 @@ class ScheduleEventGroupViewModelAssertion: Assertion {
                                                     line: line)
     }
 
-    class func assertionForSearchEventViewModels(context: ScheduleInteractorTestBuilder.Context,
+    class func assertionForSearchEventViewModels(context: ScheduleViewModelFactoryTestBuilder.Context,
                                                  file: StaticString = #file,
                                                  line: UInt = #line) -> ScheduleEventGroupViewModelAssertion {
         return ScheduleEventGroupViewModelAssertion(context: context,
@@ -25,7 +25,7 @@ class ScheduleEventGroupViewModelAssertion: Assertion {
                                                     line: line)
     }
 
-    private init(context: ScheduleInteractorTestBuilder.Context, groupDateFormatter: @escaping (Date) -> String, file: StaticString = #file, line: UInt = #line) {
+    private init(context: ScheduleViewModelFactoryTestBuilder.Context, groupDateFormatter: @escaping (Date) -> String, file: StaticString = #file, line: UInt = #line) {
         self.context = context
         self.groupDateFormatter = groupDateFormatter
 

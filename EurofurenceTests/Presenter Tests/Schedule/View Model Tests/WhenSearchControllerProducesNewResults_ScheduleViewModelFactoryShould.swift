@@ -3,7 +3,7 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import XCTest
 
-class WhenSearchControllerProducesNewResults_ScheduleInteractorShould: XCTestCase {
+class WhenSearchControllerProducesNewResults_ScheduleViewModelFactoryShould: XCTestCase {
 
     func testGroupTheResultsByStartTimeWithDayAndTimeGroupTitle() {
         let firstGroupDate = Date.random
@@ -29,7 +29,7 @@ class WhenSearchControllerProducesNewResults_ScheduleInteractorShould: XCTestCas
         eventsService.allEvents = [a, b, c, d, e]
         eventsService.events = [a, b, c, d, e]
 
-        let context = ScheduleInteractorTestBuilder().with(eventsService).build()
+        let context = ScheduleViewModelFactoryTestBuilder().with(eventsService).build()
         context.makeSearchViewModel()
 
         eventsService.lastProducedSearchController?.simulateSearchResultsChanged(results)
@@ -61,7 +61,7 @@ class WhenSearchControllerProducesNewResults_ScheduleInteractorShould: XCTestCas
         let results = firstGroupEvents + secondGroupEvents
         let eventsService = FakeEventsService()
 
-        let context = ScheduleInteractorTestBuilder().with(eventsService).build()
+        let context = ScheduleViewModelFactoryTestBuilder().with(eventsService).build()
         let viewModel = context.makeSearchViewModel()
 
         eventsService.lastProducedSearchController?.simulateSearchResultsChanged(results)

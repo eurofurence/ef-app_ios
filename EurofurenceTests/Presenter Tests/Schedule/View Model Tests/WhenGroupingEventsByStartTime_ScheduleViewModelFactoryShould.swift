@@ -3,11 +3,11 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import XCTest
 
-class WhenGroupingEventsByStartTime_ScheduleInteractorShould: XCTestCase {
+class WhenGroupingEventsByStartTime_ScheduleViewModelFactoryShould: XCTestCase {
 
     var events: [Event]!
     var eventsService: FakeEventsService!
-    var context: ScheduleInteractorTestBuilder.Context!
+    var context: ScheduleViewModelFactoryTestBuilder.Context!
     var expectedGroups: [ScheduleEventGroupViewModelAssertion.Group]!
 
     override func setUp() {
@@ -32,7 +32,7 @@ class WhenGroupingEventsByStartTime_ScheduleInteractorShould: XCTestCase {
         events = firstGroupEvents + secondGroupEvents
         eventsService = FakeEventsService()
 
-        context = ScheduleInteractorTestBuilder().with(eventsService).build()
+        context = ScheduleViewModelFactoryTestBuilder().with(eventsService).build()
 
         expectedGroups = [ScheduleEventGroupViewModelAssertion.Group(date: firstGroupDate, events: firstGroupEvents),
                           ScheduleEventGroupViewModelAssertion.Group(date: secondGroupDate, events: secondGroupEvents)]

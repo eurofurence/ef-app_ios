@@ -6,7 +6,7 @@ class WhenSearchableViewModelProducesNewResult_SchedulePresenterShould: XCTestCa
 
     func testTellTheSceneToBindExpectedNumberOfResultsPerSection() {
         let searchViewModel = CapturingScheduleSearchViewModel()
-        let interactor = FakeScheduleInteractor(searchViewModel: searchViewModel)
+        let interactor = FakeScheduleViewModelFactory(searchViewModel: searchViewModel)
         let context = SchedulePresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
         let results = [ScheduleEventGroupViewModel].random

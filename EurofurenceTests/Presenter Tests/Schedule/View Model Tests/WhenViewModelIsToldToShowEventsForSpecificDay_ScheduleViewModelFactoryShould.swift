@@ -3,12 +3,12 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import XCTest
 
-class WhenViewModelIsToldToShowEventsForSpecificDay_ScheduleInteractorShould: XCTestCase {
+class WhenViewModelIsToldToShowEventsForSpecificDay_ScheduleViewModelFactoryShould: XCTestCase {
 
     func testTellTheScheduleToRestrictEventsToSpecifiedDay() {
         let days: [Day] = .random
         let eventsService = FakeEventsService()
-        let context = ScheduleInteractorTestBuilder().with(eventsService).build()
+        let context = ScheduleViewModelFactoryTestBuilder().with(eventsService).build()
         eventsService.simulateDaysChanged(days)
         let viewModel = context.makeViewModel()
         let randomDay = days.randomElement()

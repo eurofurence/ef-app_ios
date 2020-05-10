@@ -1,7 +1,7 @@
 import EurofurenceModel
 import Foundation
 
-class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
+class DefaultScheduleViewModelFactory: ScheduleViewModelFactory, EventsServiceObserver {
 
     // MARK: Properties
 
@@ -30,7 +30,7 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
         eventsService.add(self)
     }
 
-    // MARK: ScheduleInteractor
+    // MARK: ScheduleViewModelFactory
 
     func makeViewModel(completionHandler: @escaping (ScheduleViewModel) -> Void) {
         completionHandler(viewModel)

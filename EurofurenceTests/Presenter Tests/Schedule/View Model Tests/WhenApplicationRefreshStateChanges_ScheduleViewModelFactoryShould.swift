@@ -2,10 +2,10 @@
 import EurofurenceModel
 import XCTest
 
-class WhenApplicationRefreshStateChanges_ScheduleInteractorShould: XCTestCase {
+class WhenApplicationRefreshStateChanges_ScheduleViewModelFactoryShould: XCTestCase {
 
     func testTellTheViewModelDelegateWhenRefreshStarts() {
-        let context = ScheduleInteractorTestBuilder().build()
+        let context = ScheduleViewModelFactoryTestBuilder().build()
         let viewModel = context.makeViewModel()
         viewModel?.refresh()
         let delegate = CapturingScheduleViewModelDelegate()
@@ -16,7 +16,7 @@ class WhenApplicationRefreshStateChanges_ScheduleInteractorShould: XCTestCase {
     }
 
     func testTellTheViewModelDelegateWhenRefreshFinishes() {
-        let context = ScheduleInteractorTestBuilder().build()
+        let context = ScheduleViewModelFactoryTestBuilder().build()
         let viewModel = context.makeViewModel()
         viewModel?.refresh()
         let delegate = CapturingScheduleViewModelDelegate()

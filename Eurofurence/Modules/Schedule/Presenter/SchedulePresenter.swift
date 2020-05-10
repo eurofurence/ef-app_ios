@@ -170,14 +170,14 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
     }
 
     private let scene: ScheduleScene
-    private let interactor: ScheduleInteractor
+    private let interactor: ScheduleViewModelFactory
     private let delegate: ScheduleComponentDelegate
     private let hapticEngine: SelectionChangedHaptic
     private var viewModel: ScheduleViewModel?
     private var searchViewModel: ScheduleSearchViewModel?
 
     init(scene: ScheduleScene,
-         interactor: ScheduleInteractor,
+         interactor: ScheduleViewModelFactory,
          delegate: ScheduleComponentDelegate,
          hapticEngine: SelectionChangedHaptic) {
         self.scene = scene
