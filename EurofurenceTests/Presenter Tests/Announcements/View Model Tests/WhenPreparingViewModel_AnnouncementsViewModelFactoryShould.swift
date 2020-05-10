@@ -20,7 +20,11 @@ class WhenPreparingViewModel_AnnouncementsViewModelFactoryShould: XCTestCase {
         announcementsService = FakeAnnouncementsService(announcements: announcements)
         announcementDateFormatter = FakeAnnouncementDateFormatter()
 		markdownRenderer = StubMarkdownRenderer()
-		interactor = DefaultAnnouncementsViewModelFactory(announcementsService: announcementsService, announcementDateFormatter: announcementDateFormatter, markdownRenderer: markdownRenderer)
+		interactor = DefaultAnnouncementsViewModelFactory(
+            announcementsService: announcementsService,
+            announcementDateFormatter: announcementDateFormatter,
+            markdownRenderer: markdownRenderer
+        )
     }
 
     func testIndicateTheTotalNumberOfAnnouncements() {

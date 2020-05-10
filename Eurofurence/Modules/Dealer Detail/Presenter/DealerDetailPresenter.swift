@@ -7,7 +7,10 @@ class DealerDetailPresenter: DealerDetailSceneDelegate {
 
         var viewModel: DealerDetailViewModel
 
-        func bindComponent<T>(at index: Int, using componentFactory: T) -> T.Component where T: DealerDetailComponentFactory {
+        func bindComponent<T>(
+            at index: Int,
+            using componentFactory: T
+        ) -> T.Component where T: DealerDetailItemComponentFactory {
             let visitor = BindingDealerDetailVisitor(componentFactory, viewModel: viewModel)
             viewModel.describeComponent(at: index, to: visitor)
 
@@ -20,7 +23,7 @@ class DealerDetailPresenter: DealerDetailSceneDelegate {
 
     }
 
-    class BindingDealerDetailVisitor<T>: DealerDetailViewModelVisitor where T: DealerDetailComponentFactory {
+    class BindingDealerDetailVisitor<T>: DealerDetailViewModelVisitor where T: DealerDetailItemComponentFactory {
 
         private let componentFactory: T
         private let viewModel: DealerDetailViewModel
@@ -123,13 +126,13 @@ class DealerDetailPresenter: DealerDetailSceneDelegate {
     }
 
     private let scene: DealerDetailScene
-    private let interactor: DealerDetailInteractor
+    private let interactor: DealerDetailViewModelFactory
     private let dealer: DealerIdentifier
     private let dealerInteractionRecorder: DealerInteractionRecorder
     private var dealerInteraction: Interaction?
     private var viewModel: DealerDetailViewModel?
 
-    init(scene: DealerDetailScene, interactor: DealerDetailInteractor, dealer: DealerIdentifier, dealerInteractionRecorder: DealerInteractionRecorder) {
+    init(scene: DealerDetailScene, interactor: DealerDetailViewModelFactory, dealer: DealerIdentifier, dealerInteractionRecorder: DealerInteractionRecorder) {
         self.scene = scene
         self.interactor = interactor
         self.dealer = dealer

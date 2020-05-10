@@ -50,7 +50,7 @@ class DealerDetailViewController: UIViewController, DealerDetailScene {
 
     // MARK: Private
 
-    private class TableController: NSObject, UITableViewDataSource, UITableViewDelegate, DealerDetailComponentFactory {
+    private class TableController: NSObject, UITableViewDataSource, UITableViewDelegate, DealerDetailItemComponentFactory {
 
         private let tableView: UITableView
         private let numberOfComponents: Int

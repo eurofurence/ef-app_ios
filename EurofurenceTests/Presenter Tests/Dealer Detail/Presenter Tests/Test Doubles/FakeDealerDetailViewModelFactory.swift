@@ -3,7 +3,7 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import Foundation
 
-class FakeDealerDetailInteractor: DealerDetailInteractor {
+class FakeDealerDetailViewModelFactory: DealerDetailViewModelFactory {
 
     private let viewModel: FakeDealerDetailViewModel
 

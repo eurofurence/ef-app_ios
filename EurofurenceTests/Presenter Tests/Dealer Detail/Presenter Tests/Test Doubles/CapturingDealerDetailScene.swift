@@ -2,7 +2,7 @@
 import EurofurenceModel
 import UIKit
 
-class CapturingDealerDetailScene: UIViewController, DealerDetailScene, DealerDetailComponentFactory {
+class CapturingDealerDetailScene: UIViewController, DealerDetailScene, DealerDetailItemComponentFactory {
 
     private(set) var delegate: DealerDetailSceneDelegate?
     func setDelegate(_ delegate: DealerDetailSceneDelegate) {

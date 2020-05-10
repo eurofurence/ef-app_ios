@@ -9,7 +9,7 @@ struct ApplicationModuleRepository {
     let newsModuleProviding: NewsModuleProviding
     let scheduleComponentFactory: ScheduleComponentFactory
     let dealersModuleProviding: DealersModuleProviding
-    let dealerDetailModuleProviding: DealerDetailModuleProviding
+    let dealerDetailModuleProviding: DealerDetailComponentFactory
     let collectThemAllComponentFactory: CollectThemAllComponentFactory
     let messagesModuleProviding: MessagesModuleProviding
     let loginModuleProviding: LoginModuleProviding
@@ -73,8 +73,8 @@ struct ApplicationModuleRepository {
             activityFactory: activityFactory
         )
         
-        let dealerDetailInteractor = DefaultDealerDetailInteractor(dealersService: services.dealers, shareService: shareService)
-        dealerDetailModuleProviding = DealerDetailModuleBuilder(dealerDetailInteractor: dealerDetailInteractor, dealerInteractionRecorder: dealerInteractionRecorder).build()
+        let dealerDetailInteractor = DefaultDealerDetailViewModelFactory(dealersService: services.dealers, shareService: shareService)
+        dealerDetailModuleProviding = DealerDetailComponentBuilder(dealerDetailInteractor: dealerDetailInteractor, dealerInteractionRecorder: dealerInteractionRecorder).build()
         
         collectThemAllComponentFactory = CollectThemAllComponentBuilder(service: services.collectThemAll).build()
         messagesModuleProviding = MessagesModuleBuilder(authenticationService: services.authentication, privateMessagesService: services.privateMessages).build()

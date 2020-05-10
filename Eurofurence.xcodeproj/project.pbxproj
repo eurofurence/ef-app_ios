@@ -205,8 +205,8 @@
 		CA1B6F1920DB81F400ADF414 /* DealerDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA1B6F1820DB81F400ADF414 /* DealerDetail.storyboard */; };
 		CA1B6F1B20DB820100ADF414 /* DealerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B6F1A20DB820100ADF414 /* DealerDetailViewController.swift */; };
 		CA1B6F1D20DB843E00ADF414 /* WhenDealerDetailSceneLoads_DealerDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B6F1C20DB843E00ADF414 /* WhenDealerDetailSceneLoads_DealerDetailPresenterShould.swift */; };
-		CA1B6F2020DB84E400ADF414 /* DealerDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B6F1F20DB84E400ADF414 /* DealerDetailInteractor.swift */; };
-		CA1B6F2220DB84F400ADF414 /* FakeDealerDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B6F2120DB84F400ADF414 /* FakeDealerDetailInteractor.swift */; };
+		CA1B6F2020DB84E400ADF414 /* DealerDetailViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B6F1F20DB84E400ADF414 /* DealerDetailViewModelFactory.swift */; };
+		CA1B6F2220DB84F400ADF414 /* FakeDealerDetailViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B6F2120DB84F400ADF414 /* FakeDealerDetailViewModelFactory.swift */; };
 		CA1B6F2420DB886300ADF414 /* DealerDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B6F2320DB886300ADF414 /* DealerDetailViewModel.swift */; };
 		CA1B6F2620DB887100ADF414 /* FakeDealerDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B6F2520DB887100ADF414 /* FakeDealerDetailViewModel.swift */; };
 		CA1B6F2920DB89FE00ADF414 /* DealerDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B6F2820DB89FE00ADF414 /* DealerDetailPresenter.swift */; };
@@ -404,13 +404,14 @@
 		CA36A4DA20DAE4CF00EE6537 /* WhenSceneSelectsSearchResult_DealersPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4D920DAE4CF00EE6537 /* WhenSceneSelectsSearchResult_DealersPresenterShould.swift */; };
 		CA36A4DC20DAF9E800EE6537 /* WhenFetchingIdentifierForDealer_DealersInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4DB20DAF9E800EE6537 /* WhenFetchingIdentifierForDealer_DealersInteractorShould.swift */; };
 		CA36A4DE20DAFB1C00EE6537 /* WhenFetchingIdentifierForSearchResult_DealersInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4DD20DAFB1C00EE6537 /* WhenFetchingIdentifierForSearchResult_DealersInteractorShould.swift */; };
-		CA36A4E420DAFF7E00EE6537 /* DealerDetailModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4E320DAFF7E00EE6537 /* DealerDetailModuleProviding.swift */; };
+		CA36A4E420DAFF7E00EE6537 /* DealerDetailComponentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4E320DAFF7E00EE6537 /* DealerDetailComponentFactory.swift */; };
 		CA36A4E620DAFFB000EE6537 /* StubDealerDetailModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4E520DAFFB000EE6537 /* StubDealerDetailModuleFactory.swift */; };
-		CA36A4E820DB006300EE6537 /* DealerDetailModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4E720DB006300EE6537 /* DealerDetailModuleBuilder.swift */; };
-		CA36A4EA20DB007900EE6537 /* DealerDetailModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4E920DB007900EE6537 /* DealerDetailModule.swift */; };
+		CA36A4E820DB006300EE6537 /* DealerDetailComponentBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4E720DB006300EE6537 /* DealerDetailComponentBuilder.swift */; };
+		CA36A4EA20DB007900EE6537 /* DealerDetailComponentFactoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4E920DB007900EE6537 /* DealerDetailComponentFactoryImpl.swift */; };
 		CA38C35524680C4900A20921 /* PrincipalWindowSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA38C35424680C4900A20921 /* PrincipalWindowSceneDelegate.swift */; };
 		CA38C3572468115800A20921 /* PrincipalWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA38C3562468115800A20921 /* PrincipalWindowController.swift */; };
 		CA38C35C246846DA00A20921 /* CapturingAnnouncementsListViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA38C35B246846DA00A20921 /* CapturingAnnouncementsListViewModelDelegate.swift */; };
+		CA38C360246848F100A20921 /* DealerDetailViewModelFactoryTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA38C35F246848F100A20921 /* DealerDetailViewModelFactoryTestBuilder.swift */; };
 		CA39851622C7A51C00117249 /* RemotelyConfiguredConventionStartDateRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA39851522C7A51C00117249 /* RemotelyConfiguredConventionStartDateRepositoryTests.swift */; };
 		CA39851922C7A91800117249 /* RemotelyConfiguredConventionStartDateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA39851822C7A91800117249 /* RemotelyConfiguredConventionStartDateRepository.swift */; };
 		CA39851C22C7A93300117249 /* CapturingConventionStartDateConsumer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA39851B22C7A93300117249 /* CapturingConventionStartDateConsumer.swift */; };
@@ -1085,8 +1086,8 @@
 		CAF81C6A20DDA10C00898C52 /* DealerDetailAboutTheArtViewModel+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF81C6920DDA10C00898C52 /* DealerDetailAboutTheArtViewModel+RandomValueProviding.swift */; };
 		CAF81C6C20DDA5B800898C52 /* WhenBindingAboutTheArtComponentWithMissingAttributes_DealerDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF81C6B20DDA5B800898C52 /* WhenBindingAboutTheArtComponentWithMissingAttributes_DealerDetailPresenterShould.swift */; };
 		CAF81C6E20DDA70D00898C52 /* AboutTheArtTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF81C6D20DDA70D00898C52 /* AboutTheArtTableViewCell.swift */; };
-		CAF81C7120DDA8EA00898C52 /* WhenProducingDealerViewModel_HappyPath_DealerDetailInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF81C7020DDA8EA00898C52 /* WhenProducingDealerViewModel_HappyPath_DealerDetailInteractorShould.swift */; };
-		CAF81C7320DDA9D100898C52 /* DefaultDealerDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF81C7220DDA9D100898C52 /* DefaultDealerDetailInteractor.swift */; };
+		CAF81C7120DDA8EA00898C52 /* WhenProducingDealerViewModel_HappyPath_DealerDetailViewModelFactoryShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF81C7020DDA8EA00898C52 /* WhenProducingDealerViewModel_HappyPath_DealerDetailViewModelFactoryShould.swift */; };
+		CAF81C7320DDA9D100898C52 /* DefaultDealerDetailViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF81C7220DDA9D100898C52 /* DefaultDealerDetailViewModelFactory.swift */; };
 		CAF81C7520DDAA9C00898C52 /* CapturingDealerDetailViewModelVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF81C7420DDAA9C00898C52 /* CapturingDealerDetailViewModelVisitor.swift */; };
 		CAFA06FA245DD64D00A807F5 /* ShowKnowledgeContentFromListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFA06F9245DD64C00A807F5 /* ShowKnowledgeContentFromListing.swift */; };
 		CAFA06FC245DD9F400A807F5 /* ShowKnowledgeContentFromGroupListingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFA06FB245DD9F400A807F5 /* ShowKnowledgeContentFromGroupListingTests.swift */; };
@@ -1393,8 +1394,8 @@
 		CA1B6F1820DB81F400ADF414 /* DealerDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DealerDetail.storyboard; sourceTree = "<group>"; };
 		CA1B6F1A20DB820100ADF414 /* DealerDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailViewController.swift; sourceTree = "<group>"; };
 		CA1B6F1C20DB843E00ADF414 /* WhenDealerDetailSceneLoads_DealerDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDealerDetailSceneLoads_DealerDetailPresenterShould.swift; sourceTree = "<group>"; };
-		CA1B6F1F20DB84E400ADF414 /* DealerDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailInteractor.swift; sourceTree = "<group>"; };
-		CA1B6F2120DB84F400ADF414 /* FakeDealerDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeDealerDetailInteractor.swift; sourceTree = "<group>"; };
+		CA1B6F1F20DB84E400ADF414 /* DealerDetailViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailViewModelFactory.swift; sourceTree = "<group>"; };
+		CA1B6F2120DB84F400ADF414 /* FakeDealerDetailViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeDealerDetailViewModelFactory.swift; sourceTree = "<group>"; };
 		CA1B6F2320DB886300ADF414 /* DealerDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailViewModel.swift; sourceTree = "<group>"; };
 		CA1B6F2520DB887100ADF414 /* FakeDealerDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeDealerDetailViewModel.swift; sourceTree = "<group>"; };
 		CA1B6F2820DB89FE00ADF414 /* DealerDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailPresenter.swift; sourceTree = "<group>"; };
@@ -1591,13 +1592,14 @@
 		CA36A4D920DAE4CF00EE6537 /* WhenSceneSelectsSearchResult_DealersPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSceneSelectsSearchResult_DealersPresenterShould.swift; sourceTree = "<group>"; };
 		CA36A4DB20DAF9E800EE6537 /* WhenFetchingIdentifierForDealer_DealersInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingIdentifierForDealer_DealersInteractorShould.swift; sourceTree = "<group>"; };
 		CA36A4DD20DAFB1C00EE6537 /* WhenFetchingIdentifierForSearchResult_DealersInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingIdentifierForSearchResult_DealersInteractorShould.swift; sourceTree = "<group>"; };
-		CA36A4E320DAFF7E00EE6537 /* DealerDetailModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailModuleProviding.swift; sourceTree = "<group>"; };
+		CA36A4E320DAFF7E00EE6537 /* DealerDetailComponentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailComponentFactory.swift; sourceTree = "<group>"; };
 		CA36A4E520DAFFB000EE6537 /* StubDealerDetailModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubDealerDetailModuleFactory.swift; sourceTree = "<group>"; };
-		CA36A4E720DB006300EE6537 /* DealerDetailModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailModuleBuilder.swift; sourceTree = "<group>"; };
-		CA36A4E920DB007900EE6537 /* DealerDetailModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailModule.swift; sourceTree = "<group>"; };
+		CA36A4E720DB006300EE6537 /* DealerDetailComponentBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailComponentBuilder.swift; sourceTree = "<group>"; };
+		CA36A4E920DB007900EE6537 /* DealerDetailComponentFactoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailComponentFactoryImpl.swift; sourceTree = "<group>"; };
 		CA38C35424680C4900A20921 /* PrincipalWindowSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrincipalWindowSceneDelegate.swift; sourceTree = "<group>"; };
 		CA38C3562468115800A20921 /* PrincipalWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrincipalWindowController.swift; sourceTree = "<group>"; };
 		CA38C35B246846DA00A20921 /* CapturingAnnouncementsListViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingAnnouncementsListViewModelDelegate.swift; sourceTree = "<group>"; };
+		CA38C35F246848F100A20921 /* DealerDetailViewModelFactoryTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailViewModelFactoryTestBuilder.swift; sourceTree = "<group>"; };
 		CA39851522C7A51C00117249 /* RemotelyConfiguredConventionStartDateRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemotelyConfiguredConventionStartDateRepositoryTests.swift; sourceTree = "<group>"; };
 		CA39851822C7A91800117249 /* RemotelyConfiguredConventionStartDateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemotelyConfiguredConventionStartDateRepository.swift; sourceTree = "<group>"; };
 		CA39851B22C7A93300117249 /* CapturingConventionStartDateConsumer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingConventionStartDateConsumer.swift; sourceTree = "<group>"; };
@@ -2272,8 +2274,8 @@
 		CAF81C6920DDA10C00898C52 /* DealerDetailAboutTheArtViewModel+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DealerDetailAboutTheArtViewModel+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CAF81C6B20DDA5B800898C52 /* WhenBindingAboutTheArtComponentWithMissingAttributes_DealerDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingAboutTheArtComponentWithMissingAttributes_DealerDetailPresenterShould.swift; sourceTree = "<group>"; };
 		CAF81C6D20DDA70D00898C52 /* AboutTheArtTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTheArtTableViewCell.swift; sourceTree = "<group>"; };
-		CAF81C7020DDA8EA00898C52 /* WhenProducingDealerViewModel_HappyPath_DealerDetailInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenProducingDealerViewModel_HappyPath_DealerDetailInteractorShould.swift; sourceTree = "<group>"; };
-		CAF81C7220DDA9D100898C52 /* DefaultDealerDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDealerDetailInteractor.swift; sourceTree = "<group>"; };
+		CAF81C7020DDA8EA00898C52 /* WhenProducingDealerViewModel_HappyPath_DealerDetailViewModelFactoryShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenProducingDealerViewModel_HappyPath_DealerDetailViewModelFactoryShould.swift; sourceTree = "<group>"; };
+		CAF81C7220DDA9D100898C52 /* DefaultDealerDetailViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDealerDetailViewModelFactory.swift; sourceTree = "<group>"; };
 		CAF81C7420DDAA9C00898C52 /* CapturingDealerDetailViewModelVisitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingDealerDetailViewModelVisitor.swift; sourceTree = "<group>"; };
 		CAFA06F9245DD64C00A807F5 /* ShowKnowledgeContentFromListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowKnowledgeContentFromListing.swift; sourceTree = "<group>"; };
 		CAFA06FB245DD9F400A807F5 /* ShowKnowledgeContentFromGroupListingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowKnowledgeContentFromGroupListingTests.swift; sourceTree = "<group>"; };
@@ -3079,10 +3081,8 @@
 		CA1B6F0420DB803000ADF414 /* Dealer Detail */ = {
 			isa = PBXGroup;
 			children = (
-				CA1B6F1320DB81B800ADF414 /* DealerDetailPresenterTestBuilder.swift */,
-				CAF81C6F20DDA8C700898C52 /* Interactor Tests */,
 				CA1B6F0520DB804400ADF414 /* Presenter Tests */,
-				CA1B6F0E20DB818300ADF414 /* Test Doubles */,
+				CAF81C6F20DDA8C700898C52 /* View Model Tests */,
 			);
 			path = "Dealer Detail";
 			sourceTree = "<group>";
@@ -3091,6 +3091,7 @@
 			isa = PBXGroup;
 			children = (
 				CA1B6F2A20DB8A9C00ADF414 /* BeforeDealerDetailSceneLoads_DealerDetailPresenterShould.swift */,
+				CA1B6F1320DB81B800ADF414 /* DealerDetailPresenterTestBuilder.swift */,
 				CAF81C6520DD9FB400898C52 /* WhenBindingAboutTheArtComponent_DealerDetailPresenterShould.swift */,
 				CAF81C6B20DDA5B800898C52 /* WhenBindingAboutTheArtComponentWithMissingAttributes_DealerDetailPresenterShould.swift */,
 				CAF81C5D20DD91B700898C52 /* WhenBindingAboutTheArtistComponent_DealerDetailPresenterShould.swift */,
@@ -3101,6 +3102,7 @@
 				CA1B6F0620DB805300ADF414 /* WhenBuildingDealerDetailModule.swift */,
 				CA1B6F1C20DB843E00ADF414 /* WhenDealerDetailSceneLoads_DealerDetailPresenterShould.swift */,
 				CA82DB6022D7B65F00467C2F /* WhenTappingShareButton_DealerDetailPresenterShould.swift */,
+				CA38C35D246848C000A20921 /* Test Doubles */,
 			);
 			path = "Presenter Tests";
 			sourceTree = "<group>";
@@ -3126,19 +3128,6 @@
 			path = Abstraction;
 			sourceTree = "<group>";
 		};
-		CA1B6F0E20DB818300ADF414 /* Test Doubles */ = {
-			isa = PBXGroup;
-			children = (
-				CA1B6F0F20DB818A00ADF414 /* CapturingDealerDetailScene.swift */,
-				CA1B6F2120DB84F400ADF414 /* FakeDealerDetailInteractor.swift */,
-				CA1B6F1120DB819A00ADF414 /* StubDealerDetailSceneFactory.swift */,
-				CA1B6F2520DB887100ADF414 /* FakeDealerDetailViewModel.swift */,
-				CAF81C7420DDAA9C00898C52 /* CapturingDealerDetailViewModelVisitor.swift */,
-				CA2AA2E322C94C2F00C0E1A1 /* CapturingDealerInteractionRecorder.swift */,
-			);
-			path = "Test Doubles";
-			sourceTree = "<group>";
-		};
 		CA1B6F1520DB81D600ADF414 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -3153,15 +3142,15 @@
 			path = UIKit;
 			sourceTree = "<group>";
 		};
-		CA1B6F1E20DB84DE00ADF414 /* Interactor */ = {
+		CA1B6F1E20DB84DE00ADF414 /* View Model */ = {
 			isa = PBXGroup;
 			children = (
-				CA1B6F1F20DB84E400ADF414 /* DealerDetailInteractor.swift */,
+				CA1B6F1F20DB84E400ADF414 /* DealerDetailViewModelFactory.swift */,
 				CA1B6F2320DB886300ADF414 /* DealerDetailViewModel.swift */,
-				CAF81C7220DDA9D100898C52 /* DefaultDealerDetailInteractor.swift */,
+				CAF81C7220DDA9D100898C52 /* DefaultDealerDetailViewModelFactory.swift */,
 				CA7D8B26222EAB61003431A0 /* DefaultDealerDetailViewModel.swift */,
 			);
-			path = Interactor;
+			path = "View Model";
 			sourceTree = "<group>";
 		};
 		CA1B6F2720DB89F500ADF414 /* Presenter */ = {
@@ -3557,22 +3546,22 @@
 		CA36A4E120DAFF6D00EE6537 /* Dealer Detail */ = {
 			isa = PBXGroup;
 			children = (
+				CA36A4E220DAFF7600EE6537 /* Component */,
 				CA1B6F2720DB89F500ADF414 /* Presenter */,
-				CA1B6F1E20DB84DE00ADF414 /* Interactor */,
 				CA1B6F0820DB815B00ADF414 /* View */,
-				CA36A4E220DAFF7600EE6537 /* Module */,
+				CA1B6F1E20DB84DE00ADF414 /* View Model */,
 			);
 			path = "Dealer Detail";
 			sourceTree = "<group>";
 		};
-		CA36A4E220DAFF7600EE6537 /* Module */ = {
+		CA36A4E220DAFF7600EE6537 /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				CA36A4E320DAFF7E00EE6537 /* DealerDetailModuleProviding.swift */,
-				CA36A4E720DB006300EE6537 /* DealerDetailModuleBuilder.swift */,
-				CA36A4E920DB007900EE6537 /* DealerDetailModule.swift */,
+				CA36A4E720DB006300EE6537 /* DealerDetailComponentBuilder.swift */,
+				CA36A4E320DAFF7E00EE6537 /* DealerDetailComponentFactory.swift */,
+				CA36A4E920DB007900EE6537 /* DealerDetailComponentFactoryImpl.swift */,
 			);
-			path = Module;
+			path = Component;
 			sourceTree = "<group>";
 		};
 		CA38C35224680C2E00A20921 /* Scenes */ = {
@@ -3596,6 +3585,26 @@
 			isa = PBXGroup;
 			children = (
 				CA38C35B246846DA00A20921 /* CapturingAnnouncementsListViewModelDelegate.swift */,
+			);
+			path = "Test Doubles";
+			sourceTree = "<group>";
+		};
+		CA38C35D246848C000A20921 /* Test Doubles */ = {
+			isa = PBXGroup;
+			children = (
+				CA1B6F0F20DB818A00ADF414 /* CapturingDealerDetailScene.swift */,
+				CA1B6F2120DB84F400ADF414 /* FakeDealerDetailViewModelFactory.swift */,
+				CA1B6F1120DB819A00ADF414 /* StubDealerDetailSceneFactory.swift */,
+				CA1B6F2520DB887100ADF414 /* FakeDealerDetailViewModel.swift */,
+				CA2AA2E322C94C2F00C0E1A1 /* CapturingDealerInteractionRecorder.swift */,
+			);
+			path = "Test Doubles";
+			sourceTree = "<group>";
+		};
+		CA38C35E246848D400A20921 /* Test Doubles */ = {
+			isa = PBXGroup;
+			children = (
+				CAF81C7420DDAA9C00898C52 /* CapturingDealerDetailViewModelVisitor.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -6192,12 +6201,14 @@
 			path = Director;
 			sourceTree = "<group>";
 		};
-		CAF81C6F20DDA8C700898C52 /* Interactor Tests */ = {
+		CAF81C6F20DDA8C700898C52 /* View Model Tests */ = {
 			isa = PBXGroup;
 			children = (
-				CAF81C7020DDA8EA00898C52 /* WhenProducingDealerViewModel_HappyPath_DealerDetailInteractorShould.swift */,
+				CA38C35F246848F100A20921 /* DealerDetailViewModelFactoryTestBuilder.swift */,
+				CAF81C7020DDA8EA00898C52 /* WhenProducingDealerViewModel_HappyPath_DealerDetailViewModelFactoryShould.swift */,
+				CA38C35E246848D400A20921 /* Test Doubles */,
 			);
-			path = "Interactor Tests";
+			path = "View Model Tests";
 			sourceTree = "<group>";
 		};
 		CAF9A94F1F558E6200628833 /* Test Utilities */ = {
@@ -6796,7 +6807,7 @@
 				CA27618220DF932C000E52AC /* AspectRatioConstrainedImageView.swift in Sources */,
 				CA6375B2208E02E300536BE2 /* DealersScene.swift in Sources */,
 				CA987FD322E63E3E006338FB /* PlatformActivityFactory.swift in Sources */,
-				CA36A4E420DAFF7E00EE6537 /* DealerDetailModuleProviding.swift in Sources */,
+				CA36A4E420DAFF7E00EE6537 /* DealerDetailComponentFactory.swift in Sources */,
 				CAFA06FE245DDAD500A807F5 /* ShowKnowledgeContentFromGroupListing.swift in Sources */,
 				CA283AB420EAA1CE00F7D195 /* AnnouncementsComponentFactoryImpl.swift in Sources */,
 				CA36A45A20D8472300EE6537 /* DealersInteractor.swift in Sources */,
@@ -6892,7 +6903,7 @@
 				CA5EB1AF245F6DE60012C277 /* KnowledgeContentControllerFactory.swift in Sources */,
 				CAA28876245C68F10090B663 /* NavigateFromAnnouncementsToAnnouncement.swift in Sources */,
 				9A861EB71F25550700B75A8C /* SplashScene.swift in Sources */,
-				CAF81C7320DDA9D100898C52 /* DefaultDealerDetailInteractor.swift in Sources */,
+				CAF81C7320DDA9D100898C52 /* DefaultDealerDetailViewModelFactory.swift in Sources */,
 				CA6A8DB020E2CF97007536CD /* DefaultMapsInteractor.swift in Sources */,
 				CAFA06FA245DD64D00A807F5 /* ShowKnowledgeContentFromListing.swift in Sources */,
 				CA2761B220E0234C000E52AC /* StoryboardHybridWebSceneFactory.swift in Sources */,
@@ -6918,7 +6929,7 @@
 				CA82DB5222D6630D00467C2F /* ShareService.swift in Sources */,
 				CAA2888C245C7C120090B663 /* NavigateFromMessagesToMessage.swift in Sources */,
 				CA8A73C722BD101E007A5201 /* AdditionalServicesComponentFactory.swift in Sources */,
-				CA1B6F2020DB84E400ADF414 /* DealerDetailInteractor.swift in Sources */,
+				CA1B6F2020DB84E400ADF414 /* DealerDetailViewModelFactory.swift in Sources */,
 				CA66C0202124CC6000F87AFE /* AppStateProviding.swift in Sources */,
 				CA4908C6245DADBA00DB032C /* WindowModalWireframe.swift in Sources */,
 				CACF1E8820B34F8900D904B5 /* DefaultEventDetailInteractor.swift in Sources */,
@@ -7029,7 +7040,7 @@
 				CA728461209D0642007D912A /* AnnouncementDetailViewController.swift in Sources */,
 				781A94401F1A1A72002DE70F /* FirebaseMessagingAdapter.swift in Sources */,
 				CA72848C209F9288007D912A /* DefaultAnnouncementDetailViewModelFactory.swift in Sources */,
-				CA36A4E820DB006300EE6537 /* DealerDetailModuleBuilder.swift in Sources */,
+				CA36A4E820DB006300EE6537 /* DealerDetailComponentBuilder.swift in Sources */,
 				CAA28898245D6ECA0090B663 /* LoginContentRoute.swift in Sources */,
 				CA00AE7B20D1BF6D00C2FBB0 /* ScheduleDayViewModel.swift in Sources */,
 				CAEAEBFD1FE0043B00C0EE7C /* MessageDetailSceneFactory.swift in Sources */,
@@ -7061,7 +7072,7 @@
 				CAD04182245D881900B86950 /* AuthenticatedRoute.swift in Sources */,
 				CAD04199245DA64900B86950 /* NewsPresentation.swift in Sources */,
 				CA401087210FB8010056E16C /* KnowledgeGroupEntriesPresenter.swift in Sources */,
-				CA36A4EA20DB007900EE6537 /* DealerDetailModule.swift in Sources */,
+				CA36A4EA20DB007900EE6537 /* DealerDetailComponentFactoryImpl.swift in Sources */,
 				CA401079210FAF040056E16C /* KnowledgeGroupEntriesScene.swift in Sources */,
 				9A861EA91F2554BE00B75A8C /* InitiateDownloadTutorialPagePresenter.swift in Sources */,
 				CAD4F76C245C47360036ADAF /* EventFeedbackContentRepresentation.swift in Sources */,
@@ -7515,7 +7526,7 @@
 				CA44C370211B77AC003C1C4E /* NewsPresenterKageIconBindingTests.swift in Sources */,
 				CA82DB6622D7BE4000467C2F /* CIDBasedShareableURLFactoryTests.swift in Sources */,
 				CA7D8B18222D4E63003431A0 /* FakeAnnouncementDateFormatter.swift in Sources */,
-				CAF81C7120DDA8EA00898C52 /* WhenProducingDealerViewModel_HappyPath_DealerDetailInteractorShould.swift in Sources */,
+				CAF81C7120DDA8EA00898C52 /* WhenProducingDealerViewModel_HappyPath_DealerDetailViewModelFactoryShould.swift in Sources */,
 				CA0F761D2031C215009DA079 /* WhenKnowledgeListViewModelIsPrepared.swift in Sources */,
 				CA637558208CBC1D00536BE2 /* StubKnowledgeListModuleProviding.swift in Sources */,
 				CA4FBE101F73047700D29405 /* CapturingDateFormatter.swift in Sources */,
@@ -7558,8 +7569,9 @@
 				CA5EB193245F5DF40012C277 /* ModuleSwappingPrincipalWindowSceneTests.swift in Sources */,
 				CA00AE7D20D1C08B00C2FBB0 /* WhenBindingDay_SchedulePresenterShould.swift in Sources */,
 				CA728458209D058A007D912A /* StubAnnouncementDetailSceneFactory.swift in Sources */,
-				CA1B6F2220DB84F400ADF414 /* FakeDealerDetailInteractor.swift in Sources */,
+				CA1B6F2220DB84F400ADF414 /* FakeDealerDetailViewModelFactory.swift in Sources */,
 				CA40107E210FAF410056E16C /* FakeKnowledgeGroupEntriesInteractor.swift in Sources */,
+				CA38C360246848F100A20921 /* DealerDetailViewModelFactoryTestBuilder.swift in Sources */,
 				CAD260A520C0357F007E3618 /* WhenViewModelPrepared_EventDetailPresenterShould.swift in Sources */,
 				CA283AB620EAA39800F7D195 /* WhenAnnouncementsSceneLoads_AnnouncementsPresenterShould.swift in Sources */,
 				CA4D9343245ECA67006FA832 /* NotificationContentRepresentationTests.swift in Sources */,

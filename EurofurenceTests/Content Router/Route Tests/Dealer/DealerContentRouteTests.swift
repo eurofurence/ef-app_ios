@@ -7,7 +7,7 @@ class DealerContentRouteTests: XCTestCase {
     func testShowsDetailContentController() {
         let identifier = DealerIdentifier.random
         let content = DealerContentRepresentation(identifier: identifier)
-        let dealerModuleFactory = StubDealerDetailModuleProviding()
+        let dealerModuleFactory = StubDealerDetailComponentFactory()
         let contentWireframe = CapturingContentWireframe()
         let route = DealerContentRoute(
             dealerModuleFactory: dealerModuleFactory,

@@ -3,11 +3,11 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import UIKit
 
-class StubDealerDetailModuleProviding: DealerDetailModuleProviding {
+class StubDealerDetailComponentFactory: DealerDetailComponentFactory {
 
     let stubInterface = UIViewController()
     private(set) var capturedModel: DealerIdentifier?
-    func makeDealerDetailModule(for dealer: DealerIdentifier) -> UIViewController {
+    func makeDealerDetailComponent(for dealer: DealerIdentifier) -> UIViewController {
         capturedModel = dealer
         return stubInterface
     }

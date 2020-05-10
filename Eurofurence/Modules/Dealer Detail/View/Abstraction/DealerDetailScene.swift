@@ -16,7 +16,7 @@ protocol DealerDetailSceneDelegate {
 
 }
 
-protocol DealerDetailComponentFactory {
+protocol DealerDetailItemComponentFactory {
 
     associatedtype Component
 

@@ -10,7 +10,7 @@ class WhenBindingDealerLocationAndAvailabilityWithMissingAttributes_DealerDetail
         locationAndAvailabilityViewModel.limitedAvailabilityWarning = nil
         locationAndAvailabilityViewModel.locatedInAfterDarkDealersDenMessage = nil
         let viewModel = FakeDealerDetailLocationAndAvailabilityViewModel(location: locationAndAvailabilityViewModel)
-        let interactor = FakeDealerDetailInteractor(viewModel: viewModel)
+        let interactor = FakeDealerDetailViewModelFactory(viewModel: viewModel)
         let context = DealerDetailPresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
         context.bindComponent(at: 0)
@@ -24,7 +24,7 @@ class WhenBindingDealerLocationAndAvailabilityWithMissingAttributes_DealerDetail
         locationAndAvailabilityViewModel.limitedAvailabilityWarning = nil
         locationAndAvailabilityViewModel.locatedInAfterDarkDealersDenMessage = nil
         let viewModel = FakeDealerDetailLocationAndAvailabilityViewModel(location: locationAndAvailabilityViewModel)
-        let interactor = FakeDealerDetailInteractor(viewModel: viewModel)
+        let interactor = FakeDealerDetailViewModelFactory(viewModel: viewModel)
         let context = DealerDetailPresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
         context.bindComponent(at: 0)
@@ -38,7 +38,7 @@ class WhenBindingDealerLocationAndAvailabilityWithMissingAttributes_DealerDetail
         locationAndAvailabilityViewModel.limitedAvailabilityWarning = nil
         locationAndAvailabilityViewModel.locatedInAfterDarkDealersDenMessage = nil
         let viewModel = FakeDealerDetailLocationAndAvailabilityViewModel(location: locationAndAvailabilityViewModel)
-        let interactor = FakeDealerDetailInteractor(viewModel: viewModel)
+        let interactor = FakeDealerDetailViewModelFactory(viewModel: viewModel)
         let context = DealerDetailPresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
         context.bindComponent(at: 0)

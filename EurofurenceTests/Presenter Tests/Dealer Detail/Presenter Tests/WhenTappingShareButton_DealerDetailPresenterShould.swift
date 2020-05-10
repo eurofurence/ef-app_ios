@@ -5,7 +5,7 @@ class WhenTappingShareButton_DealerDetailPresenterShould: XCTestCase {
 
     func testPerformTheShareCommand() {
         let viewModel = FakeDealerDetailViewModel(numberOfComponents: .random)
-        let interactor = FakeDealerDetailInteractor(viewModel: viewModel)
+        let interactor = FakeDealerDetailViewModelFactory(viewModel: viewModel)
         let context = DealerDetailPresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
         

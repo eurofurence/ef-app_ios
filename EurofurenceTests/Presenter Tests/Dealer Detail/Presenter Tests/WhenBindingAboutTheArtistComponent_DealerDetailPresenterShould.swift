@@ -7,7 +7,7 @@ class WhenBindingAboutTheArtistComponent_DealerDetailPresenterShould: XCTestCase
     func testBindTheArtistDescriptionOntoTheComponent() {
         let aboutTheArtistViewModel = DealerDetailAboutTheArtistViewModel.random
         let viewModel = FakeDealerDetailAboutTheArtistViewModel(aboutTheArtist: aboutTheArtistViewModel)
-        let interactor = FakeDealerDetailInteractor(viewModel: viewModel)
+        let interactor = FakeDealerDetailViewModelFactory(viewModel: viewModel)
         let context = DealerDetailPresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
         context.bindComponent(at: 0)
@@ -18,7 +18,7 @@ class WhenBindingAboutTheArtistComponent_DealerDetailPresenterShould: XCTestCase
     func testBindTheTitleOntoTheComponent() {
         let aboutTheArtistViewModel = DealerDetailAboutTheArtistViewModel.random
         let viewModel = FakeDealerDetailAboutTheArtistViewModel(aboutTheArtist: aboutTheArtistViewModel)
-        let interactor = FakeDealerDetailInteractor(viewModel: viewModel)
+        let interactor = FakeDealerDetailViewModelFactory(viewModel: viewModel)
         let context = DealerDetailPresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
         context.bindComponent(at: 0)
