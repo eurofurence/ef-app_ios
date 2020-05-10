@@ -1,6 +1,6 @@
 import EurofurenceModel
 
-public class MessageDetailModuleBuilder {
+public class MessageDetailComponentBuilder {
     
     private let messagesService: PrivateMessagesService
     private var sceneFactory: MessageDetailSceneFactory
@@ -16,8 +16,11 @@ public class MessageDetailModuleBuilder {
         return self
     }
     
-    public func build() -> MessageDetailModuleProviding {
-        MessageDetailModule(sceneFactory: sceneFactory, messagesService: messagesService)
+    public func build() -> MessageDetailComponentFactory {
+        MessageDetailComponentFactoryImpl(
+            sceneFactory: sceneFactory,
+            messagesService: messagesService
+        )
     }
     
 }

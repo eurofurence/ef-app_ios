@@ -8,8 +8,8 @@ class MessageDetailPresenterTests: XCTestCase {
     func testLoadingMessage() {
         let sceneFactory = StubMessageDetailSceneFactory()
         let messagesService = CapturingPrivateMessagesService()
-        let module = MessageDetailModuleBuilder(messagesService: messagesService).with(sceneFactory).build()
-        _ = module.makeMessageDetailModule(for: .random)
+        let module = MessageDetailComponentBuilder(messagesService: messagesService).with(sceneFactory).build()
+        _ = module.makeMessageDetailComponent(for: .random)
         
         XCTAssertEqual(.unset, sceneFactory.scene.loadingIndicatorVisibility)
         
@@ -23,8 +23,8 @@ class MessageDetailPresenterTests: XCTestCase {
         let message = StubMessage.random
         let sceneFactory = StubMessageDetailSceneFactory()
         let messagesService = SuccessfulPrivateMessagesService(successfulForMessage: messageIdentifier, providingMessage: message)
-        let module = MessageDetailModuleBuilder(messagesService: messagesService).with(sceneFactory).build()
-        _ = module.makeMessageDetailModule(for: messageIdentifier)
+        let module = MessageDetailComponentBuilder(messagesService: messagesService).with(sceneFactory).build()
+        _ = module.makeMessageDetailComponent(for: messageIdentifier)
         
         XCTAssertFalse(message.markedRead)
         
@@ -42,8 +42,8 @@ class MessageDetailPresenterTests: XCTestCase {
         let sceneFactory = StubMessageDetailSceneFactory()
         let error = PrivateMessageError.noMessageFound
         let messagesService = FailingPrivateMessagesService(unsuccessfulForMessage: messageIdentifier, providingError: error)
-        let module = MessageDetailModuleBuilder(messagesService: messagesService).with(sceneFactory).build()
-        _ = module.makeMessageDetailModule(for: messageIdentifier)
+        let module = MessageDetailComponentBuilder(messagesService: messagesService).with(sceneFactory).build()
+        _ = module.makeMessageDetailComponent(for: messageIdentifier)
         sceneFactory.scene.simulateSceneReady()
         
         let boundErrorDescription = try XCTUnwrap(sceneFactory.scene.errorViewModel?.errorDescription)
@@ -56,8 +56,8 @@ class MessageDetailPresenterTests: XCTestCase {
         let messageIdentifier = MessageIdentifier.random
         let sceneFactory = StubMessageDetailSceneFactory()
         let messagesService = ControllablePrivateMessagesService()
-        let module = MessageDetailModuleBuilder(messagesService: messagesService).with(sceneFactory).build()
-        _ = module.makeMessageDetailModule(for: messageIdentifier)
+        let module = MessageDetailComponentBuilder(messagesService: messagesService).with(sceneFactory).build()
+        _ = module.makeMessageDetailComponent(for: messageIdentifier)
         sceneFactory.scene.simulateSceneReady()
         messagesService.failNow(error: .loadingMessagesFailed)
         sceneFactory.scene.errorViewModel?.retry()

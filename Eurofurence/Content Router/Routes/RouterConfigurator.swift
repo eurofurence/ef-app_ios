@@ -71,7 +71,7 @@ struct RouterConfigurator {
     
     private func configureMessageRoute() {
         let messageContentRoute = MessageContentRoute(
-            messageModuleFactory: moduleRepository.messageDetailModuleProviding,
+            messageModuleFactory: moduleRepository.messageDetailComponentFactory,
             contentWireframe: contentWireframe
         )
         

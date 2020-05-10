@@ -13,7 +13,7 @@ struct ApplicationModuleRepository {
     let collectThemAllComponentFactory: CollectThemAllComponentFactory
     let messagesModuleProviding: MessagesModuleProviding
     let loginComponentFactory: LoginComponentFactory
-    let messageDetailModuleProviding: MessageDetailModuleProviding
+    let messageDetailComponentFactory: MessageDetailComponentFactory
     let knowledgeListModuleProviding: KnowledgeGroupsListComponentFactory
     let knowledgeGroupEntriesModule: KnowledgeGroupEntriesComponentFactory
     let knowledgeDetailComponentFactory: KnowledgeDetailComponentFactory
@@ -84,7 +84,7 @@ struct ApplicationModuleRepository {
             alertRouter: alertRouter
         ).build()
         
-        messageDetailModuleProviding = MessageDetailModuleBuilder(messagesService: services.privateMessages).build()
+        messageDetailComponentFactory = MessageDetailComponentBuilder(messagesService: services.privateMessages).build()
         
         let knowledgeListInteractor = DefaultKnowledgeGroupsViewModelFactory(service: services.knowledge)
         knowledgeListModuleProviding = KnowledgeGroupsComponentBuilder(knowledgeListInteractor: knowledgeListInteractor).build()
