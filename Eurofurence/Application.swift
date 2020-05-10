@@ -11,7 +11,7 @@ class Application {
     private let backgroundFetcher: BackgroundFetchService
     private let notificationScheduleController: NotificationScheduleController
     private let reviewPromptController: ReviewPromptController
-    private var principalWindowController: PrincipalWindowController?
+    private var principalWindowController: PrincipalWindowAssembler?
     private let urlOpener: URLOpener
     
     static func assemble() {
@@ -89,7 +89,7 @@ class Application {
     }
     
     func configurePrincipalScene(window: UIWindow) {
-        principalWindowController = PrincipalWindowController(
+        principalWindowController = PrincipalWindowAssembler(
             window: window,
             services: session.services,
             repositories: session.repositories,

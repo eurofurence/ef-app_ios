@@ -1,7 +1,7 @@
 import EurofurenceModel
 import UIKit
 
-struct PrincipalWindowController {
+struct PrincipalWindowAssembler {
     
     private let router: ContentRouter
     
