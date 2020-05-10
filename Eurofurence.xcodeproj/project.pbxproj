@@ -3224,21 +3224,21 @@
 		CA27619720E01CF3000E52AC /* Collect-them-All */ = {
 			isa = PBXGroup;
 			children = (
-				CA27619B20E01E01000E52AC /* CollectThemAllComponentBuilder.swift */,
-				CA27619820E01D08000E52AC /* Module */,
+				CA27619820E01D08000E52AC /* Component */,
 				CA2761BD20E02B86000E52AC /* Presenter */,
 				CA2761A120E021C1000E52AC /* View */,
 			);
 			path = "Collect-them-All";
 			sourceTree = "<group>";
 		};
-		CA27619820E01D08000E52AC /* Module */ = {
+		CA27619820E01D08000E52AC /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				CA27619B20E01E01000E52AC /* CollectThemAllComponentBuilder.swift */,
 				CA27619920E01D0F000E52AC /* CollectThemAllComponentFactory.swift */,
 				CA2761AE20E022CB000E52AC /* CollectThemAllComponentFactoryImpl.swift */,
 			);
-			path = Module;
+			path = Component;
 			sourceTree = "<group>";
 		};
 		CA27619D20E01F82000E52AC /* Collect-them-All */ = {
@@ -3318,8 +3318,7 @@
 		CA283A9520EA9CA400F7D195 /* Announcements */ = {
 			isa = PBXGroup;
 			children = (
-				CA283A9920EA9D9200F7D195 /* AnnouncementsComponentBuilder.swift */,
-				CA283A9620EA9CAB00F7D195 /* Module */,
+				CA283A9620EA9CAB00F7D195 /* Component */,
 				CA283ABC20EAA66A00F7D195 /* Presenter */,
 				CA283A9F20EAA03D00F7D195 /* View */,
 				CA283AB720EAA43E00F7D195 /* View Model */,
@@ -3327,14 +3326,15 @@
 			path = Announcements;
 			sourceTree = "<group>";
 		};
-		CA283A9620EA9CAB00F7D195 /* Module */ = {
+		CA283A9620EA9CAB00F7D195 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				CA283A9920EA9D9200F7D195 /* AnnouncementsComponentBuilder.swift */,
 				CA283AD920EB9CA600F7D195 /* AnnouncementsComponentDelegate.swift */,
 				CA283A9720EA9CB100F7D195 /* AnnouncementsComponentFactory.swift */,
 				CA283AB320EAA1CE00F7D195 /* AnnouncementsComponentFactoryImpl.swift */,
 			);
-			path = Module;
+			path = Component;
 			sourceTree = "<group>";
 		};
 		CA283A9B20EA9F9400F7D195 /* Announcements */ = {
@@ -4815,8 +4815,7 @@
 		CA728446209D0119007D912A /* Announcement Detail */ = {
 			isa = PBXGroup;
 			children = (
-				CA72844E209D04D3007D912A /* AnnouncementDetailComponentBuilder.swift */,
-				CA728447209D0127007D912A /* Module */,
+				CA728447209D0127007D912A /* Component */,
 				CA72846F209D15B8007D912A /* Presenter */,
 				CA728452209D0569007D912A /* View */,
 				CA728468209D1436007D912A /* View Model */,
@@ -4824,13 +4823,14 @@
 			path = "Announcement Detail";
 			sourceTree = "<group>";
 		};
-		CA728447209D0127007D912A /* Module */ = {
+		CA728447209D0127007D912A /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				CA72844E209D04D3007D912A /* AnnouncementDetailComponentBuilder.swift */,
 				CA728448209D012D007D912A /* AnnouncementDetailComponentFactory.swift */,
 				CA728450209D0557007D912A /* AnnouncementDetailComponentFactoryImpl.swift */,
 			);
-			path = Module;
+			path = Component;
 			sourceTree = "<group>";
 		};
 		CA72844A209D0338007D912A /* Announcement Detail */ = {
@@ -5243,20 +5243,20 @@
 		CA8A73C022BD0FD6007A5201 /* Additional Services */ = {
 			isa = PBXGroup;
 			children = (
-				CA8A73C122BD0FE5007A5201 /* AdditionalServicesComponentBuilder.swift */,
-				CA8A73C522BD1017007A5201 /* Module */,
+				CA8A73C522BD1017007A5201 /* Component */,
 				CA8A73CA22BD10CC007A5201 /* Presenter */,
 			);
 			path = "Additional Services";
 			sourceTree = "<group>";
 		};
-		CA8A73C522BD1017007A5201 /* Module */ = {
+		CA8A73C522BD1017007A5201 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				CA8A73C122BD0FE5007A5201 /* AdditionalServicesComponentBuilder.swift */,
 				CA8A73C622BD101E007A5201 /* AdditionalServicesComponentFactory.swift */,
 				CA8A73C822BD1030007A5201 /* AdditionalServicesComponentFactoryImpl.swift */,
 			);
-			path = Module;
+			path = Component;
 			sourceTree = "<group>";
 		};
 		CA8A73CA22BD10CC007A5201 /* Presenter */ = {
