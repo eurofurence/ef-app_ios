@@ -5360,9 +5360,7 @@
 		CAF1956A24688EA9005DFBBE /* Collect-them-All */ = {
 			isa = PBXGroup;
 			children = (
-				CAF1956F24688EA9005DFBBE /* CollectThemAllPresenterTestBuilder.swift */,
 				CAF1956B24688EA9005DFBBE /* Presenter Tests */,
-				CAF1957024688EA9005DFBBE /* Test Doubles */,
 			);
 			path = "Collect-them-All";
 			sourceTree = "<group>";
@@ -5370,7 +5368,9 @@
 		CAF1956B24688EA9005DFBBE /* Presenter Tests */ = {
 			isa = PBXGroup;
 			children = (
+				CAF1956F24688EA9005DFBBE /* CollectThemAllPresenterTestBuilder.swift */,
 				CAF1956D24688EA9005DFBBE /* CollectThemAllPresenterTests.swift */,
+				CAF1957024688EA9005DFBBE /* Test Doubles */,
 			);
 			path = "Presenter Tests";
 			sourceTree = "<group>";
