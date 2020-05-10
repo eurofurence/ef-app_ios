@@ -1,10 +1,10 @@
 import UIKit
 
-struct AdditionalServicesContentControllerFactory: ContentControllerFactory {
+struct AdditionalServicesContentControllerFactory: ApplicationModuleFactory {
     
     var additionalServicesModuleProviding: AdditionalServicesModuleProviding
     
-    func makeContentController() -> UIViewController {
+    func makeApplicationModuleController() -> UIViewController {
         additionalServicesModuleProviding.makeAdditionalServicesModule()
     }
     

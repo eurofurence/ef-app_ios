@@ -5,7 +5,7 @@ class PrincipalContentAggregatorTests: XCTestCase {
     
     func testWrapsInputControllersInsideNavigationAndTabControllers() throws {
         let (first, second) = (StubContentControllerFactory(), StubContentControllerFactory())
-        let aggregator = PrincipalContentAggregator(contentControllerFactories: [first, second])
+        let aggregator = PrincipalContentAggregator(applicationModuleFactories: [first, second])
         let principalModule = aggregator.makePrincipalContentModule()
         
         let tabController = try XCTUnwrap(principalModule as? UITabBarController)

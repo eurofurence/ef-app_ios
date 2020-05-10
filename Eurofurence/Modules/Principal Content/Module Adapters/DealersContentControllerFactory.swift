@@ -1,11 +1,11 @@
 import UIKit
 
-struct DealersContentControllerFactory: ContentControllerFactory {
+struct DealersContentControllerFactory: ApplicationModuleFactory {
     
     var dealersModuleProviding: DealersModuleProviding
     var dealersModuleDelegate: DealersModuleDelegate
     
-    func makeContentController() -> UIViewController {
+    func makeApplicationModuleController() -> UIViewController {
         dealersModuleProviding.makeDealersModule(dealersModuleDelegate)
     }
     

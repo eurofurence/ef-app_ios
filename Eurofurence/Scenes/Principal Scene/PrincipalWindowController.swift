@@ -88,7 +88,7 @@ struct PrincipalWindowController {
             additionalServicesContentControllerFactory
         ])
         
-        let contentControllerFactories: [ContentControllerFactory] = [
+        let applicationModuleFactories: [ApplicationModuleFactory] = [
             newsContentControllerFactory,
             scheduleContentControllerFactory,
             dealersContentControllerFactory,
@@ -100,7 +100,7 @@ struct PrincipalWindowController {
             windowWireframe: AppWindowWireframe(window: window),
             tutorialModule: moduleRepository.tutorialModuleProviding,
             preloadModule: moduleRepository.preloadModuleProviding,
-            principalContentModule: PrincipalContentAggregator(contentControllerFactories: contentControllerFactories)
+            principalContentModule: PrincipalContentAggregator(applicationModuleFactories: applicationModuleFactories)
         )
         
         _ = PrincipalWindowSceneController(sessionState: services.sessionState, scene: principalWindowScene)

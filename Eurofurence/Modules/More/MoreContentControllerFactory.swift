@@ -1,11 +1,11 @@
 import UIKit
 
-struct MoreContentControllerFactory: ContentControllerFactory {
+struct MoreContentControllerFactory: ApplicationModuleFactory {
     
-    var supplementaryContentControllerFactories: [ContentControllerFactory]
+    var supplementaryContentControllerFactories: [ApplicationModuleFactory]
     
-    func makeContentController() -> UIViewController {
-        MoreViewController(supplementaryContentControllerFactories: supplementaryContentControllerFactories)
+    func makeApplicationModuleController() -> UIViewController {
+        MoreViewController(supplementaryApplicationModuleFactories: supplementaryContentControllerFactories)
     }
     
 }

@@ -1,11 +1,11 @@
 import UIKit
 
-struct KnowledgeContentControllerFactory: ContentControllerFactory {
+struct KnowledgeContentControllerFactory: ApplicationModuleFactory {
     
     var knowledgeModuleProviding: KnowledgeGroupsListModuleProviding
     var knowledgeModuleDelegate: KnowledgeGroupsListModuleDelegate
     
-    func makeContentController() -> UIViewController {
+    func makeApplicationModuleController() -> UIViewController {
         knowledgeModuleProviding.makeKnowledgeListModule(knowledgeModuleDelegate)
     }
     

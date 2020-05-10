@@ -2,15 +2,15 @@ import UIKit
 
 public struct PrincipalContentAggregator: PrincipalContentModuleProviding {
     
-    private let contentControllerFactories: [ContentControllerFactory]
+    private let applicationModuleFactories: [ApplicationModuleFactory]
     
-    public init(contentControllerFactories: [ContentControllerFactory]) {
-        self.contentControllerFactories = contentControllerFactories
+    public init(applicationModuleFactories: [ApplicationModuleFactory]) {
+        self.applicationModuleFactories = applicationModuleFactories
     }
     
     public func makePrincipalContentModule() -> UIViewController {
-        let contentControllers = contentControllerFactories.map({ $0.makeContentController() })
-        let navigationControllers = contentControllers.map(NavigationController.init)
+        let applicationModules = applicationModuleFactories.map({ $0.makeApplicationModuleController() })
+        let navigationControllers = applicationModules.map(NavigationController.init)
         let tabBarController = TabBarController()
         tabBarController.viewControllers = navigationControllers
         

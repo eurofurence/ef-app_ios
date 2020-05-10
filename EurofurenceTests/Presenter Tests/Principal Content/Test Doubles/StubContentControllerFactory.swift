@@ -1,10 +1,10 @@
 import Eurofurence
 import UIKit
 
-struct StubContentControllerFactory: ContentControllerFactory {
+struct StubContentControllerFactory: ApplicationModuleFactory {
     
     let stubInterface = UIViewController()
-    func makeContentController() -> UIViewController {
+    func makeApplicationModuleController() -> UIViewController {
         stubInterface
     }
     

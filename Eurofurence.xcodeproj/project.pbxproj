@@ -530,7 +530,7 @@
 		CA5EB19A245F639E0012C277 /* StubPrincipalContentModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5EB199245F639E0012C277 /* StubPrincipalContentModuleProviding.swift */; };
 		CA5EB19D245F649D0012C277 /* PrincipalContentAggregatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5EB19C245F649D0012C277 /* PrincipalContentAggregatorTests.swift */; };
 		CA5EB1A0245F665E0012C277 /* StubContentControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5EB19F245F665E0012C277 /* StubContentControllerFactory.swift */; };
-		CA5EB1A2245F66710012C277 /* ContentControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5EB1A1245F66710012C277 /* ContentControllerFactory.swift */; };
+		CA5EB1A2245F66710012C277 /* ApplicationModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5EB1A1245F66710012C277 /* ApplicationModuleFactory.swift */; };
 		CA5EB1A4245F667F0012C277 /* PrincipalContentAggregator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5EB1A3245F667F0012C277 /* PrincipalContentAggregator.swift */; };
 		CA5EB1A9245F6DC40012C277 /* NewsContentControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5EB1A8245F6DC40012C277 /* NewsContentControllerFactory.swift */; };
 		CA5EB1AB245F6DD00012C277 /* ScheduleContentControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5EB1AA245F6DD00012C277 /* ScheduleContentControllerFactory.swift */; };
@@ -1730,7 +1730,7 @@
 		CA5EB199245F639E0012C277 /* StubPrincipalContentModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubPrincipalContentModuleProviding.swift; sourceTree = "<group>"; };
 		CA5EB19C245F649D0012C277 /* PrincipalContentAggregatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrincipalContentAggregatorTests.swift; sourceTree = "<group>"; };
 		CA5EB19F245F665E0012C277 /* StubContentControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubContentControllerFactory.swift; sourceTree = "<group>"; };
-		CA5EB1A1245F66710012C277 /* ContentControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentControllerFactory.swift; sourceTree = "<group>"; };
+		CA5EB1A1245F66710012C277 /* ApplicationModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationModuleFactory.swift; sourceTree = "<group>"; };
 		CA5EB1A3245F667F0012C277 /* PrincipalContentAggregator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrincipalContentAggregator.swift; sourceTree = "<group>"; };
 		CA5EB1A8245F6DC40012C277 /* NewsContentControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsContentControllerFactory.swift; sourceTree = "<group>"; };
 		CA5EB1AA245F6DD00012C277 /* ScheduleContentControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleContentControllerFactory.swift; sourceTree = "<group>"; };
@@ -3924,7 +3924,7 @@
 		CA5EB196245F63680012C277 /* Principal Content */ = {
 			isa = PBXGroup;
 			children = (
-				CA5EB1A1245F66710012C277 /* ContentControllerFactory.swift */,
+				CA5EB1A1245F66710012C277 /* ApplicationModuleFactory.swift */,
 				CA5EB1A3245F667F0012C277 /* PrincipalContentAggregator.swift */,
 				CA5EB197245F63700012C277 /* PrincipalContentModuleProviding.swift */,
 				CA5EB1A7245F6DBB0012C277 /* Module Adapters */,
@@ -6823,7 +6823,7 @@
 				CACF1E8A20B351D400D904B5 /* DateRangeFormatter.swift in Sources */,
 				CAD4F73E245C365C0036ADAF /* ContentRepresentation.swift in Sources */,
 				CA321F531F7BC88D0050E489 /* StoryboardPreloadSceneFactory.swift in Sources */,
-				CA5EB1A2245F66710012C277 /* ContentControllerFactory.swift in Sources */,
+				CA5EB1A2245F66710012C277 /* ApplicationModuleFactory.swift in Sources */,
 				CA73AEEB201A0896004E77BF /* KnowledgeListSceneFactory.swift in Sources */,
 				CA2A586D20F76F03002C69B6 /* UIKitMapCoordinateRender.swift in Sources */,
 				CA27618220DF932C000E52AC /* AspectRatioConstrainedImageView.swift in Sources */,

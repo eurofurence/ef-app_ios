@@ -2,11 +2,11 @@ import UIKit
 
 class MoreViewController: UITableViewController {
     
-    private let supplementaryContentControllerFactories: [ContentControllerFactory]
-    private var supplementaryContentControllers: [UIViewController] = []
+    private let supplementaryApplicationModuleFactories: [ApplicationModuleFactory]
+    private var supplementaryApplicationModules: [UIViewController] = []
 
-    init(supplementaryContentControllerFactories: [ContentControllerFactory]) {
-        self.supplementaryContentControllerFactories = supplementaryContentControllerFactories
+    init(supplementaryApplicationModuleFactories: [ApplicationModuleFactory]) {
+        self.supplementaryApplicationModuleFactories = supplementaryApplicationModuleFactories
         super.init(style: .plain)
         
         let moreTitle = NSLocalizedString(
@@ -26,8 +26,8 @@ class MoreViewController: UITableViewController {
     override func loadView() {
         super.loadView()
         
-        supplementaryContentControllers = supplementaryContentControllerFactories
-            .map({ $0.makeContentController() })
+        supplementaryApplicationModules = supplementaryApplicationModuleFactories
+            .map({ $0.makeApplicationModuleController() })
     }
     
     override func viewDidLoad() {
@@ -37,19 +37,19 @@ class MoreViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        supplementaryContentControllers.count
+        supplementaryApplicationModules.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(SupplementaryContentControllerTableViewCell.self)
-        let contentController = supplementaryContentControllers[indexPath.row]
-        cell.supplementaryContentController = contentController
+        let contentController = supplementaryApplicationModules[indexPath.row]
+        cell.applicationModuleController = contentController
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let contentController = supplementaryContentControllers[indexPath.row]
+        let contentController = supplementaryApplicationModules[indexPath.row]
         show(contentController, sender: self)
     }
     
@@ -65,9 +65,9 @@ class MoreViewController: UITableViewController {
             fatalError("init(coder:) has not been implemented")
         }
         
-        var supplementaryContentController: UIViewController? {
+        var applicationModuleController: UIViewController? {
             didSet {
-                if let supplementaryContentController = supplementaryContentController {
+                if let supplementaryContentController = applicationModuleController {
                     textLabel?.text = supplementaryContentController.tabBarItem.title
                     
                     let image = supplementaryContentController.tabBarItem.image

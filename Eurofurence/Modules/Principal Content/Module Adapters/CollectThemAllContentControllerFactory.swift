@@ -1,10 +1,10 @@
 import UIKit
 
-struct CollectThemAllContentControllerFactory: ContentControllerFactory {
+struct CollectThemAllContentControllerFactory: ApplicationModuleFactory {
     
     var collectThemAllModuleProviding: CollectThemAllModuleProviding
     
-    func makeContentController() -> UIViewController {
+    func makeApplicationModuleController() -> UIViewController {
         collectThemAllModuleProviding.makeCollectThemAllModule()
     }
     
