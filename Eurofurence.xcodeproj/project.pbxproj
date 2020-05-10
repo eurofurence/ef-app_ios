@@ -2677,7 +2677,6 @@
 				CAF1983E24688FBD005DFBBE /* Application Model Adapters */,
 				CAD4F737245C2E580036ADAF /* Content Router */,
 				CAF1984124689082005DFBBE /* Controllers */,
-				CAF7055F1F82CBC800A9FEA2 /* Director */,
 				CAB631FB245F233A00DBF0A0 /* Scenes */,
 				6EF96CCD1F0EDB1300EE6134 /* Test Doubles */,
 				CAF9A94F1F558E6200628833 /* Test Utilities */,
@@ -3494,7 +3493,7 @@
 			path = "Test Doubles";
 			sourceTree = "<group>";
 		};
-		CA63753E208CBAFF00536BE2 /* Test Doubles */ = {
+		CA63753E208CBAFF00536BE2 /* Component Test Doubles */ = {
 			isa = PBXGroup;
 			children = (
 				CA637553208CBBBF00536BE2 /* CapturingWindowWireframe.swift */,
@@ -3519,7 +3518,7 @@
 				CA637545208CBB4E00536BE2 /* StubTutorialComponentFactory.swift */,
 				CA63755D208CBC4E00536BE2 /* StubWebComponentFactory.swift */,
 			);
-			path = "Test Doubles";
+			path = "Component Test Doubles";
 			sourceTree = "<group>";
 		};
 		CA63757F208CDE1000536BE2 /* Schedule */ = {
@@ -5019,6 +5018,7 @@
 		CAF194DD24688EA9005DFBBE /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				CA63753E208CBAFF00536BE2 /* Component Test Doubles */,
 				CAF194DE24688EA9005DFBBE /* Components */,
 				CAF195AF24688EA9005DFBBE /* Shared */,
 			);
@@ -6315,14 +6315,6 @@
 				CA250DE520D6F72200E7513C /* ShortFormDayAndTimeFormatter.swift */,
 			);
 			path = Formatters;
-			sourceTree = "<group>";
-		};
-		CAF7055F1F82CBC800A9FEA2 /* Director */ = {
-			isa = PBXGroup;
-			children = (
-				CA63753E208CBAFF00536BE2 /* Test Doubles */,
-			);
-			path = Director;
 			sourceTree = "<group>";
 		};
 		CAF9A94F1F558E6200628833 /* Test Utilities */ = {
