@@ -1,6 +1,6 @@
 import EurofurenceModel
 
-class AdditionalServicesModuleBuilder {
+class AdditionalServicesComponentBuilder {
     
     private let repository: AdditionalServicesRepository
     private var sceneFactory: HybridWebSceneFactory
@@ -11,13 +11,16 @@ class AdditionalServicesModuleBuilder {
     }
     
     @discardableResult
-    func with(_ sceneFactory: HybridWebSceneFactory) -> AdditionalServicesModuleBuilder {
+    func with(_ sceneFactory: HybridWebSceneFactory) -> AdditionalServicesComponentBuilder {
         self.sceneFactory = sceneFactory
         return self
     }
     
-    func build() -> AdditionalServicesModule {
-        return AdditionalServicesModule(repository: repository, sceneFactory: sceneFactory)
+    func build() -> AdditionalServicesComponentFactoryImpl {
+        AdditionalServicesComponentFactoryImpl(
+            repository: repository,
+            sceneFactory: sceneFactory
+        )
     }
     
 }

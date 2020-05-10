@@ -23,7 +23,7 @@ struct ApplicationModuleRepository {
     let announcementDetailModuleProviding: AnnouncementDetailModuleProviding
     let eventDetailModuleProviding: EventDetailModuleProviding
     let eventFeedbackModuleProviding: EventFeedbackModuleProviding
-    let additionalServicesModuleProviding: AdditionalServicesModuleProviding
+    let additionalServicesComponentFactory: AdditionalServicesComponentFactory
     
     // swiftlint:disable function_body_length
     init(services: Services, repositories: Repositories, window: UIWindow) {
@@ -140,7 +140,7 @@ struct ApplicationModuleRepository {
         
         webModuleProviding = SafariWebModuleProviding()
         
-        additionalServicesModuleProviding = AdditionalServicesModuleBuilder(repository: repositories.additionalServices).build()
+        additionalServicesComponentFactory = AdditionalServicesComponentBuilder(repository: repositories.additionalServices).build()
     }
     
 }

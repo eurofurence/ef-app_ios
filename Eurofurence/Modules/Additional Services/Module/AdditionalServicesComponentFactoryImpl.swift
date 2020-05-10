@@ -1,12 +1,12 @@
 import EurofurenceModel
 import UIKit.UIViewController
 
-struct AdditionalServicesModule: AdditionalServicesModuleProviding {
+struct AdditionalServicesComponentFactoryImpl: AdditionalServicesComponentFactory {
     
     var repository: AdditionalServicesRepository
     var sceneFactory: HybridWebSceneFactory
     
-    func makeAdditionalServicesModule() -> UIViewController {
+    func makeAdditionalServicesComponent() -> UIViewController {
         let scene = sceneFactory.makeHybridWebScene()
         _ = AdditionalServicesPresenter(scene: scene, repository: repository)
         

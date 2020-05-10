@@ -1,10 +1,10 @@
 import Eurofurence
 import UIKit
 
-class StubAdditionalServicesModuleProviding: AdditionalServicesModuleProviding {
+class StubAdditionalServicesComponentFactory: AdditionalServicesComponentFactory {
     
     let stubInterface = UIViewController()
-    func makeAdditionalServicesModule() -> UIViewController {
+    func makeAdditionalServicesComponent() -> UIViewController {
         return stubInterface
     }
     

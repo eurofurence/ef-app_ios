@@ -79,7 +79,7 @@ struct PrincipalWindowController {
         )
         
         let additionalServicesContentControllerFactory = AdditionalServicesContentControllerFactory(
-            additionalServicesModuleProviding: moduleRepository.additionalServicesModuleProviding
+            additionalServicesComponentFactory: moduleRepository.additionalServicesComponentFactory
         )
         
         let moreContentControllerFactory = MoreContentControllerFactory(supplementaryContentControllerFactories: [

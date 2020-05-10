@@ -824,9 +824,9 @@
 		CA8A73B722BC3173007A5201 /* HybridWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73B622BC3173007A5201 /* HybridWebViewController.swift */; };
 		CA8A73BB22BD0BBD007A5201 /* AdditionalServicesPresenterTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73BA22BD0BBD007A5201 /* AdditionalServicesPresenterTestBuilder.swift */; };
 		CA8A73BD22BD0C91007A5201 /* WhenBuildingAdditionalServicesModule_PresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73BC22BD0C91007A5201 /* WhenBuildingAdditionalServicesModule_PresenterShould.swift */; };
-		CA8A73C222BD0FE5007A5201 /* AdditionalServicesModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73C122BD0FE5007A5201 /* AdditionalServicesModuleBuilder.swift */; };
-		CA8A73C722BD101E007A5201 /* AdditionalServicesModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73C622BD101E007A5201 /* AdditionalServicesModuleProviding.swift */; };
-		CA8A73C922BD1030007A5201 /* AdditionalServicesModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73C822BD1030007A5201 /* AdditionalServicesModule.swift */; };
+		CA8A73C222BD0FE5007A5201 /* AdditionalServicesComponentBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73C122BD0FE5007A5201 /* AdditionalServicesComponentBuilder.swift */; };
+		CA8A73C722BD101E007A5201 /* AdditionalServicesComponentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73C622BD101E007A5201 /* AdditionalServicesComponentFactory.swift */; };
+		CA8A73C922BD1030007A5201 /* AdditionalServicesComponentFactoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73C822BD1030007A5201 /* AdditionalServicesComponentFactoryImpl.swift */; };
 		CA8A73CC22BD10D2007A5201 /* AdditionalServicesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73CB22BD10D2007A5201 /* AdditionalServicesPresenter.swift */; };
 		CA8A73CE22BD130C007A5201 /* WhenAdditionalServicesSceneLoads_PresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73CD22BD130C007A5201 /* WhenAdditionalServicesSceneLoads_PresenterShould.swift */; };
 		CA8A73D022BD14F3007A5201 /* BeforeAdditionalServicesSceneLoads_PresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A73CF22BD14F3007A5201 /* BeforeAdditionalServicesSceneLoads_PresenterShould.swift */; };
@@ -2009,9 +2009,9 @@
 		CA8A73B622BC3173007A5201 /* HybridWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HybridWebViewController.swift; sourceTree = "<group>"; };
 		CA8A73BA22BD0BBD007A5201 /* AdditionalServicesPresenterTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalServicesPresenterTestBuilder.swift; sourceTree = "<group>"; };
 		CA8A73BC22BD0C91007A5201 /* WhenBuildingAdditionalServicesModule_PresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBuildingAdditionalServicesModule_PresenterShould.swift; sourceTree = "<group>"; };
-		CA8A73C122BD0FE5007A5201 /* AdditionalServicesModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalServicesModuleBuilder.swift; sourceTree = "<group>"; };
-		CA8A73C622BD101E007A5201 /* AdditionalServicesModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalServicesModuleProviding.swift; sourceTree = "<group>"; };
-		CA8A73C822BD1030007A5201 /* AdditionalServicesModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalServicesModule.swift; sourceTree = "<group>"; };
+		CA8A73C122BD0FE5007A5201 /* AdditionalServicesComponentBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalServicesComponentBuilder.swift; sourceTree = "<group>"; };
+		CA8A73C622BD101E007A5201 /* AdditionalServicesComponentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalServicesComponentFactory.swift; sourceTree = "<group>"; };
+		CA8A73C822BD1030007A5201 /* AdditionalServicesComponentFactoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalServicesComponentFactoryImpl.swift; sourceTree = "<group>"; };
 		CA8A73CB22BD10D2007A5201 /* AdditionalServicesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalServicesPresenter.swift; sourceTree = "<group>"; };
 		CA8A73CD22BD130C007A5201 /* WhenAdditionalServicesSceneLoads_PresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenAdditionalServicesSceneLoads_PresenterShould.swift; sourceTree = "<group>"; };
 		CA8A73CF22BD14F3007A5201 /* BeforeAdditionalServicesSceneLoads_PresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeforeAdditionalServicesSceneLoads_PresenterShould.swift; sourceTree = "<group>"; };
@@ -5214,8 +5214,8 @@
 			children = (
 				CA8A73BA22BD0BBD007A5201 /* AdditionalServicesPresenterTestBuilder.swift */,
 				CA8A73CF22BD14F3007A5201 /* BeforeAdditionalServicesSceneLoads_PresenterShould.swift */,
-				CA8A73BC22BD0C91007A5201 /* WhenBuildingAdditionalServicesModule_PresenterShould.swift */,
 				CA8A73CD22BD130C007A5201 /* WhenAdditionalServicesSceneLoads_PresenterShould.swift */,
+				CA8A73BC22BD0C91007A5201 /* WhenBuildingAdditionalServicesModule_PresenterShould.swift */,
 			);
 			path = "Presenter Tests";
 			sourceTree = "<group>";
@@ -5223,7 +5223,7 @@
 		CA8A73C022BD0FD6007A5201 /* Additional Services */ = {
 			isa = PBXGroup;
 			children = (
-				CA8A73C122BD0FE5007A5201 /* AdditionalServicesModuleBuilder.swift */,
+				CA8A73C122BD0FE5007A5201 /* AdditionalServicesComponentBuilder.swift */,
 				CA8A73C522BD1017007A5201 /* Module */,
 				CA8A73CA22BD10CC007A5201 /* Presenter */,
 			);
@@ -5233,8 +5233,8 @@
 		CA8A73C522BD1017007A5201 /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				CA8A73C822BD1030007A5201 /* AdditionalServicesModule.swift */,
-				CA8A73C622BD101E007A5201 /* AdditionalServicesModuleProviding.swift */,
+				CA8A73C622BD101E007A5201 /* AdditionalServicesComponentFactory.swift */,
+				CA8A73C822BD1030007A5201 /* AdditionalServicesComponentFactoryImpl.swift */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -6906,7 +6906,7 @@
 				CA29EF75203462E300672911 /* KnowledgeListEntryTableViewCell.swift in Sources */,
 				CA82DB5222D6630D00467C2F /* ShareService.swift in Sources */,
 				CAA2888C245C7C120090B663 /* NavigateFromMessagesToMessage.swift in Sources */,
-				CA8A73C722BD101E007A5201 /* AdditionalServicesModuleProviding.swift in Sources */,
+				CA8A73C722BD101E007A5201 /* AdditionalServicesComponentFactory.swift in Sources */,
 				CA1B6F2020DB84E400ADF414 /* DealerDetailInteractor.swift in Sources */,
 				CA66C0202124CC6000F87AFE /* AppStateProviding.swift in Sources */,
 				CA4908C6245DADBA00DB032C /* WindowModalWireframe.swift in Sources */,
@@ -6985,12 +6985,12 @@
 				CA0E521E208FC796005259FE /* NewsConventionCountdownTableViewCell.swift in Sources */,
 				CA50B1B8226111170091E425 /* EventFeedbackScene.swift in Sources */,
 				CAD4F76E245C47460036ADAF /* EventFeedbackContentRoute.swift in Sources */,
-				CA8A73C222BD0FE5007A5201 /* AdditionalServicesModuleBuilder.swift in Sources */,
+				CA8A73C222BD0FE5007A5201 /* AdditionalServicesComponentBuilder.swift in Sources */,
 				CA6375A6208E009D00536BE2 /* DealersModuleProviding.swift in Sources */,
 				CA5EB1B5245F6E080012C277 /* AdditionalServicesContentControllerFactory.swift in Sources */,
 				CA6EC4712051656C00402894 /* KnowledgeDetailModuleProviding.swift in Sources */,
 				CA2A586F20F7F137002C69B6 /* AnnouncementDateFormatter.swift in Sources */,
-				CA8A73C922BD1030007A5201 /* AdditionalServicesModule.swift in Sources */,
+				CA8A73C922BD1030007A5201 /* AdditionalServicesComponentFactoryImpl.swift in Sources */,
 				CAD3BDB92059539D00C91E6E /* KnowledgeDetailModuleDelegate.swift in Sources */,
 				CA09BE5B246339AB00412B82 /* MessageDetailModuleBuilder.swift in Sources */,
 				CAD4F746245C38380036ADAF /* ContentRouteRegistery.swift in Sources */,
