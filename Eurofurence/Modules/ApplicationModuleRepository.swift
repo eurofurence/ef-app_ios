@@ -4,7 +4,6 @@ import UIKit
 struct ApplicationModuleRepository {
     
     let webModuleProviding: WebModuleProviding
-    let rootModuleProviding: RootModuleProviding
     let tutorialModuleProviding: TutorialModuleProviding
     let preloadModuleProviding: PreloadModuleProviding
     let newsModuleProviding: NewsModuleProviding
@@ -34,7 +33,6 @@ struct ApplicationModuleRepository {
         let activityFactory = PlatformActivityFactory()
         let alertRouter = WindowAlertRouter(window: window)
         
-        rootModuleProviding = RootModuleBuilder(sessionStateService: services.sessionState).build()
         tutorialModuleProviding = TutorialModuleBuilder(alertRouter: alertRouter).build()
         
         let preloadInteractor = ApplicationPreloadInteractor(refreshService: services.refresh)
