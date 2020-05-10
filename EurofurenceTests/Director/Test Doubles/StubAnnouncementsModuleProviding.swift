@@ -2,21 +2,21 @@ import Eurofurence
 import EurofurenceModel
 import UIKit
 
-class StubAnnouncementsModuleProviding: AnnouncementsModuleProviding {
+class StubAnnouncementsComponentFactory: AnnouncementsComponentFactory {
 
     let stubInterface = UIViewController()
-    private(set) var delegate: AnnouncementsModuleDelegate?
-    func makeAnnouncementsModule(_ delegate: AnnouncementsModuleDelegate) -> UIViewController {
+    private(set) var delegate: AnnouncementsComponentDelegate?
+    func makeAnnouncementsComponent(_ delegate: AnnouncementsComponentDelegate) -> UIViewController {
         self.delegate = delegate
         return stubInterface
     }
 
 }
 
-extension StubAnnouncementsModuleProviding {
+extension StubAnnouncementsComponentFactory {
 
     func simulateDidSelectAnnouncement(_ announcement: AnnouncementIdentifier) {
-        delegate?.announcementsModuleDidSelectAnnouncement(announcement)
+        delegate?.announcementsComponentDidSelectAnnouncement(announcement)
     }
 
 }

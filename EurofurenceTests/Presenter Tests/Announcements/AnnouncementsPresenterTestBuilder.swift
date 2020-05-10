@@ -3,10 +3,10 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import UIKit
 
-class CapturingAnnouncementsModuleDelegate: AnnouncementsModuleDelegate {
+class CapturingAnnouncementsComponentDelegate: AnnouncementsComponentDelegate {
 
     private(set) var capturedSelectedAnnouncement: AnnouncementIdentifier?
-    func announcementsModuleDidSelectAnnouncement(_ announcement: AnnouncementIdentifier) {
+    func announcementsComponentDidSelectAnnouncement(_ announcement: AnnouncementIdentifier) {
         capturedSelectedAnnouncement = announcement
     }
 
@@ -17,7 +17,7 @@ class AnnouncementsPresenterTestBuilder {
     struct Context {
         var scene: CapturingAnnouncementsScene
         var producedViewController: UIViewController
-        var delegate: CapturingAnnouncementsModuleDelegate
+        var delegate: CapturingAnnouncementsComponentDelegate
     }
 
     private var announcementsInteractor: AnnouncementsInteractor
@@ -34,11 +34,11 @@ class AnnouncementsPresenterTestBuilder {
 
     func build() -> Context {
         let sceneFactory = StubAnnouncementsSceneFactory()
-        let delegate = CapturingAnnouncementsModuleDelegate()
-        let module = AnnouncementsModuleBuilder(announcementsInteractor: announcementsInteractor)
+        let delegate = CapturingAnnouncementsComponentDelegate()
+        let module = AnnouncementsComponentBuilder(announcementsInteractor: announcementsInteractor)
             .with(sceneFactory)
             .build()
-            .makeAnnouncementsModule(delegate)
+            .makeAnnouncementsComponent(delegate)
 
         return Context(scene: sceneFactory.scene, producedViewController: module, delegate: delegate)
     }

@@ -1,6 +1,6 @@
 import Foundation
 
-protocol AnnouncementComponent {
+protocol AnnouncementItemComponent {
 
     func setAnnouncementTitle(_ title: String)
     func setAnnouncementDetail(_ detail: NSAttributedString)

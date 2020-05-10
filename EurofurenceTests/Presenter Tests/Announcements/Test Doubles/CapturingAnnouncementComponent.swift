@@ -2,7 +2,7 @@
 import EurofurenceModel
 import Foundation
 
-class CapturingAnnouncementComponent: AnnouncementComponent {
+class CapturingAnnouncementComponent: AnnouncementItemComponent {
 
     private(set) var capturedTitle: String?
     func setAnnouncementTitle(_ title: String) {

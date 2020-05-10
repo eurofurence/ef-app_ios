@@ -10,16 +10,18 @@ class AnnouncementsComponentBuilder {
         self.announcementsInteractor = announcementsInteractor
         announcementsSceneFactory = StoryboardAnnouncementsSceneFactory()
     }
-
-    func build() -> AnnouncementsModuleProviding {
-        return AnnouncementsModule(announcementsSceneFactory: announcementsSceneFactory,
-                                   announcementsInteractor: announcementsInteractor)
-    }
-
+    
     @discardableResult
     func with(_ announcementsSceneFactory: AnnouncementsSceneFactory) -> AnnouncementsComponentBuilder {
         self.announcementsSceneFactory = announcementsSceneFactory
         return self
+    }
+
+    func build() -> AnnouncementsComponentFactory {
+        AnnouncementsComponentFactoryImpl(
+            announcementsSceneFactory: announcementsSceneFactory,
+            announcementsInteractor: announcementsInteractor
+        )
     }
 
 }

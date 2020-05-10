@@ -6,7 +6,7 @@ class AnnouncementsPresenter: AnnouncementsSceneDelegate, AnnouncementsListViewM
 
         var viewModel: AnnouncementsListViewModel
 
-        func bind(_ component: AnnouncementComponent, at index: Int) {
+        func bind(_ component: AnnouncementItemComponent, at index: Int) {
             let announcement = viewModel.announcementViewModel(at: index)
 
             component.setAnnouncementTitle(announcement.title)
@@ -24,10 +24,10 @@ class AnnouncementsPresenter: AnnouncementsSceneDelegate, AnnouncementsListViewM
 
     private let scene: AnnouncementsScene
     private let interactor: AnnouncementsInteractor
-    private let delegate: AnnouncementsModuleDelegate
+    private let delegate: AnnouncementsComponentDelegate
     private var viewModel: AnnouncementsListViewModel?
 
-    init(scene: AnnouncementsScene, interactor: AnnouncementsInteractor, delegate: AnnouncementsModuleDelegate) {
+    init(scene: AnnouncementsScene, interactor: AnnouncementsInteractor, delegate: AnnouncementsComponentDelegate) {
         self.scene = scene
         self.interactor = interactor
         self.delegate = delegate
@@ -44,7 +44,7 @@ class AnnouncementsPresenter: AnnouncementsSceneDelegate, AnnouncementsListViewM
         scene.deselectAnnouncement(at: index)
 
         guard let identifier = viewModel?.identifierForAnnouncement(at: index) else { return }
-        delegate.announcementsModuleDidSelectAnnouncement(identifier)
+        delegate.announcementsComponentDidSelectAnnouncement(identifier)
     }
 
     func announcementsViewModelDidChangeAnnouncements() {

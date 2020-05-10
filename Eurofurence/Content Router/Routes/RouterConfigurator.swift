@@ -32,7 +32,7 @@ struct RouterConfigurator {
     
     private func configureAnnouncementsRoute() {
         router.add(AnnouncementsContentRoute(
-            announcementsModuleProviding: moduleRepository.announcementsModuleFactory,
+            announcementsComponentFactory: moduleRepository.announcementsModuleFactory,
             contentWireframe: contentWireframe,
             delegate: NavigateFromAnnouncementsToAnnouncement(router: router)
         ))

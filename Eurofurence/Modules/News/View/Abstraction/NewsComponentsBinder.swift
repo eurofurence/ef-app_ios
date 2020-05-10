@@ -13,7 +13,7 @@ protocol NewsComponentFactory {
 
     func makeConventionCountdownComponent(configuringUsing block: (ConventionCountdownComponent) -> Void) -> Component
     func makeUserWidgetComponent(configuringUsing block: (UserWidgetComponent) -> Void) -> Component
-    func makeAnnouncementComponent(configuringUsing block: (AnnouncementComponent) -> Void) -> Component
+    func makeAnnouncementComponent(configuringUsing block: (AnnouncementItemComponent) -> Void) -> Component
     func makeAllAnnouncementsComponent(configuringUsing block: (AllAnnouncementsComponent) -> Void) -> Component
     func makeEventComponent(configuringUsing block: (ScheduleEventComponent) -> Void) -> Component
 

@@ -2,6 +2,6 @@ import Foundation
 
 protocol AnnouncementsBinder {
 
-    func bind(_ component: AnnouncementComponent, at index: Int)
+    func bind(_ component: AnnouncementItemComponent, at index: Int)
 
 }

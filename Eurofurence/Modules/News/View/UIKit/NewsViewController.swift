@@ -100,7 +100,7 @@ class NewsViewController: UIViewController, NewsScene {
             return manufacture(NewsUserWidgetTableViewCell.self, configuration: block)
         }
 
-        func makeAnnouncementComponent(configuringUsing block: (AnnouncementComponent) -> Void) -> UITableViewCell {
+        func makeAnnouncementComponent(configuringUsing block: (AnnouncementItemComponent) -> Void) -> UITableViewCell {
             return manufacture(AnnouncementTableViewCell.self, configuration: block)
         }
 

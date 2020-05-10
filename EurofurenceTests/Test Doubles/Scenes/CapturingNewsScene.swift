@@ -44,7 +44,7 @@ class StubNewsComponentFactory: NewsComponentFactory {
     }
 
     let stubbedAnnouncementComponent = CapturingAnnouncementComponent()
-    func makeAnnouncementComponent(configuringUsing block: (AnnouncementComponent) -> Void) -> StubNewsComponentFactory.Component {
+    func makeAnnouncementComponent(configuringUsing block: (AnnouncementItemComponent) -> Void) -> StubNewsComponentFactory.Component {
         block(stubbedAnnouncementComponent)
         return stubbedAnnouncementComponent
     }

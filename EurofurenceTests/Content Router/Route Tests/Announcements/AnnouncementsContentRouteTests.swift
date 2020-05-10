@@ -6,26 +6,26 @@ class AnnouncementsContentRouteTests: XCTestCase {
     
     func testShowsContentController() {
         let content = AnnouncementsContentRepresentation()
-        let announcementsModuleProviding = StubAnnouncementsModuleProviding()
+        let announcementsComponentFactory = StubAnnouncementsComponentFactory()
         let contentWireframe = CapturingContentWireframe()
         let route = AnnouncementsContentRoute(
-            announcementsModuleProviding: announcementsModuleProviding,
+            announcementsComponentFactory: announcementsComponentFactory,
             contentWireframe: contentWireframe,
-            delegate: CapturingAnnouncementsModuleDelegate()
+            delegate: CapturingAnnouncementsComponentDelegate()
         )
         
         route.route(content)
         
-        XCTAssertEqual(announcementsModuleProviding.stubInterface, contentWireframe.presentedMasterContentController)
+        XCTAssertEqual(announcementsComponentFactory.stubInterface, contentWireframe.presentedMasterContentController)
     }
     
     func testPropogatesDelegateEvents() {
         let content = AnnouncementsContentRepresentation()
-        let announcementsModuleProviding = StubAnnouncementsModuleProviding()
+        let announcementsComponentFactory = StubAnnouncementsComponentFactory()
         let contentWireframe = CapturingContentWireframe()
-        let delegate = CapturingAnnouncementsModuleDelegate()
+        let delegate = CapturingAnnouncementsComponentDelegate()
         let route = AnnouncementsContentRoute(
-            announcementsModuleProviding: announcementsModuleProviding,
+            announcementsComponentFactory: announcementsComponentFactory,
             contentWireframe: contentWireframe,
             delegate: delegate
         )
@@ -33,7 +33,7 @@ class AnnouncementsContentRouteTests: XCTestCase {
         route.route(content)
         
         let selectedAnnouncement = AnnouncementIdentifier.random
-        announcementsModuleProviding.simulateDidSelectAnnouncement(selectedAnnouncement)
+        announcementsComponentFactory.simulateDidSelectAnnouncement(selectedAnnouncement)
         
         XCTAssertEqual(selectedAnnouncement, delegate.capturedSelectedAnnouncement)
     }
