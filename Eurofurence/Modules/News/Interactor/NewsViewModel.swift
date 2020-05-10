@@ -36,12 +36,24 @@ struct ConventionCountdownComponentViewModel: Hashable {
 
 }
 
-struct AnnouncementItemViewModel: Hashable {
+public struct AnnouncementItemViewModel: Hashable {
 
-    var title: String
-    var detail: NSAttributedString
-    var receivedDateTime: String
-    var isRead: Bool
+    public var title: String
+    public var detail: NSAttributedString
+    public var receivedDateTime: String
+    public var isRead: Bool
+    
+    public init(
+        title: String,
+        detail: NSAttributedString, 
+        receivedDateTime: String,
+        isRead: Bool
+    ) {
+        self.title = title
+        self.detail = detail
+        self.receivedDateTime = receivedDateTime
+        self.isRead = isRead
+    }
 
 }
 

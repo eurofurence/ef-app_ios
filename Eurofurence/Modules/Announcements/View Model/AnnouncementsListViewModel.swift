@@ -1,7 +1,7 @@
 import EurofurenceModel
 import Foundation
 
-protocol AnnouncementsListViewModel {
+public protocol AnnouncementsListViewModel {
 
     var numberOfAnnouncements: Int { get }
 
@@ -11,7 +11,7 @@ protocol AnnouncementsListViewModel {
 
 }
 
-protocol AnnouncementsListViewModelDelegate {
+public protocol AnnouncementsListViewModelDelegate {
 
     func announcementsViewModelDidChangeAnnouncements()
 

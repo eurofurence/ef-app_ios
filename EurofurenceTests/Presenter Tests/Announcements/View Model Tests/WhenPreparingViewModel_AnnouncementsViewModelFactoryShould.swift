@@ -3,15 +3,6 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import XCTest
 
-class CapturingAnnouncementsListViewModelDelegate: AnnouncementsListViewModelDelegate {
-
-    private(set) var toldAnnouncementsDidChange = false
-    func announcementsViewModelDidChangeAnnouncements() {
-        toldAnnouncementsDidChange = true
-    }
-
-}
-
 class WhenPreparingViewModel_AnnouncementsViewModelFactoryShould: XCTestCase {
 
     var announcementsService: FakeAnnouncementsService!
