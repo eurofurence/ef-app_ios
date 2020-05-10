@@ -833,11 +833,10 @@
 		CAF1975224688EAA005DFBBE /* WhenShowingMapContents_ForPositionWithMultipleOptions_MapDetailInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF1959824688EA9005DFBBE /* WhenShowingMapContents_ForPositionWithMultipleOptions_MapDetailInteractorShould.swift */; };
 		CAF1975324688EAA005DFBBE /* CapturingMapContentVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF1959A24688EA9005DFBBE /* CapturingMapContentVisitor.swift */; };
 		CAF1975424688EAA005DFBBE /* WhenPreparingViewModel_MapDetailInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF1959B24688EA9005DFBBE /* WhenPreparingViewModel_MapDetailInteractorShould.swift */; };
-		CAF1975524688EAA005DFBBE /* WhenBuildingAnnouncementsModule_AnnouncementsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF1959E24688EA9005DFBBE /* WhenBuildingAnnouncementsModule_AnnouncementsPresenterShould.swift */; };
 		CAF1975624688EAA005DFBBE /* WhenAnnouncementsSceneLoads_AnnouncementsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF1959F24688EA9005DFBBE /* WhenAnnouncementsSceneLoads_AnnouncementsPresenterShould.swift */; };
 		CAF1975724688EAA005DFBBE /* AnnouncementsPresenterTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF195A024688EA9005DFBBE /* AnnouncementsPresenterTestBuilder.swift */; };
 		CAF1975824688EAA005DFBBE /* WhenAnnouncementsViewModelUpdatesAnnouncements_AnnouncementsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF195A124688EA9005DFBBE /* WhenAnnouncementsViewModelUpdatesAnnouncements_AnnouncementsPresenterShould.swift */; };
-		CAF1975924688EAA005DFBBE /* BeforeAnnouncementsDetailSceneLoads_AnnouncementsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF195A224688EA9005DFBBE /* BeforeAnnouncementsDetailSceneLoads_AnnouncementsPresenterShould.swift */; };
+		CAF1975924688EAA005DFBBE /* AnnouncementsPresenterBuildingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF195A224688EA9005DFBBE /* AnnouncementsPresenterBuildingTests.swift */; };
 		CAF1975A24688EAA005DFBBE /* FakeAnnouncementsViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF195A424688EA9005DFBBE /* FakeAnnouncementsViewModelFactory.swift */; };
 		CAF1975B24688EAA005DFBBE /* FakeAnnouncementsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF195A524688EA9005DFBBE /* FakeAnnouncementsListViewModel.swift */; };
 		CAF1975C24688EAA005DFBBE /* StubAnnouncementsSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF195A624688EA9005DFBBE /* StubAnnouncementsSceneFactory.swift */; };
@@ -2012,11 +2011,10 @@
 		CAF1959824688EA9005DFBBE /* WhenShowingMapContents_ForPositionWithMultipleOptions_MapDetailInteractorShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenShowingMapContents_ForPositionWithMultipleOptions_MapDetailInteractorShould.swift; sourceTree = "<group>"; };
 		CAF1959A24688EA9005DFBBE /* CapturingMapContentVisitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingMapContentVisitor.swift; sourceTree = "<group>"; };
 		CAF1959B24688EA9005DFBBE /* WhenPreparingViewModel_MapDetailInteractorShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenPreparingViewModel_MapDetailInteractorShould.swift; sourceTree = "<group>"; };
-		CAF1959E24688EA9005DFBBE /* WhenBuildingAnnouncementsModule_AnnouncementsPresenterShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenBuildingAnnouncementsModule_AnnouncementsPresenterShould.swift; sourceTree = "<group>"; };
 		CAF1959F24688EA9005DFBBE /* WhenAnnouncementsSceneLoads_AnnouncementsPresenterShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenAnnouncementsSceneLoads_AnnouncementsPresenterShould.swift; sourceTree = "<group>"; };
 		CAF195A024688EA9005DFBBE /* AnnouncementsPresenterTestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnouncementsPresenterTestBuilder.swift; sourceTree = "<group>"; };
 		CAF195A124688EA9005DFBBE /* WhenAnnouncementsViewModelUpdatesAnnouncements_AnnouncementsPresenterShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenAnnouncementsViewModelUpdatesAnnouncements_AnnouncementsPresenterShould.swift; sourceTree = "<group>"; };
-		CAF195A224688EA9005DFBBE /* BeforeAnnouncementsDetailSceneLoads_AnnouncementsPresenterShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeforeAnnouncementsDetailSceneLoads_AnnouncementsPresenterShould.swift; sourceTree = "<group>"; };
+		CAF195A224688EA9005DFBBE /* AnnouncementsPresenterBuildingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnouncementsPresenterBuildingTests.swift; sourceTree = "<group>"; };
 		CAF195A424688EA9005DFBBE /* FakeAnnouncementsViewModelFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeAnnouncementsViewModelFactory.swift; sourceTree = "<group>"; };
 		CAF195A524688EA9005DFBBE /* FakeAnnouncementsListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeAnnouncementsListViewModel.swift; sourceTree = "<group>"; };
 		CAF195A624688EA9005DFBBE /* StubAnnouncementsSceneFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubAnnouncementsSceneFactory.swift; sourceTree = "<group>"; };
@@ -5513,11 +5511,10 @@
 			isa = PBXGroup;
 			children = (
 				CAF195A024688EA9005DFBBE /* AnnouncementsPresenterTestBuilder.swift */,
-				CAF195A224688EA9005DFBBE /* BeforeAnnouncementsDetailSceneLoads_AnnouncementsPresenterShould.swift */,
+				CAF195A224688EA9005DFBBE /* AnnouncementsPresenterBuildingTests.swift */,
 				CAF1959F24688EA9005DFBBE /* WhenAnnouncementsSceneLoads_AnnouncementsPresenterShould.swift */,
 				CAF195A124688EA9005DFBBE /* WhenAnnouncementsViewModelUpdatesAnnouncements_AnnouncementsPresenterShould.swift */,
 				CAF195AA24688EA9005DFBBE /* WhenBindingAnnouncement_AnnouncementsPresenterShould.swift */,
-				CAF1959E24688EA9005DFBBE /* WhenBuildingAnnouncementsModule_AnnouncementsPresenterShould.swift */,
 				CAF195A924688EA9005DFBBE /* WhenSelectingAnnouncement_AnnouncementsPresenterShould.swift */,
 				CAF195A324688EA9005DFBBE /* Test Doubles */,
 			);
@@ -7754,7 +7751,6 @@
 				CAF1983424688EAB005DFBBE /* CapturingDealersSearchViewModelDelegate.swift in Sources */,
 				CA72846C209D1457007D912A /* AnnouncementViewModel+RandomValueProviding.swift in Sources */,
 				CAF1977D24688EAA005DFBBE /* WhenBindingEventDescription_EventDetailPresenterShould.swift in Sources */,
-				CAF1975524688EAA005DFBBE /* WhenBuildingAnnouncementsModule_AnnouncementsPresenterShould.swift in Sources */,
 				CAF196CC24688EAA005DFBBE /* AnnouncementDetailPresenterTestBuilder.swift in Sources */,
 				CAF196E224688EAA005DFBBE /* WhenBindingEventGroup_SchedulePresenterShould.swift in Sources */,
 				CAF196DD24688EAA005DFBBE /* WhenBindingDay_SchedulePresenterShould.swift in Sources */,
@@ -7837,7 +7833,7 @@
 				CAF1981824688EAB005DFBBE /* BeforeDealersSceneLoads_DealersPresenterShould.swift in Sources */,
 				CAF197BE24688EAA005DFBBE /* WhenLoggedOutDuringConvention_WithNoUpcomingEvents_NewsViewModelProducerShould.swift in Sources */,
 				CAF1974724688EAA005DFBBE /* WhenSceneTapsMapPosition_ThatProvidesSimpleContextualDetail_MapsPresenterShould.swift in Sources */,
-				CAF1975924688EAA005DFBBE /* BeforeAnnouncementsDetailSceneLoads_AnnouncementsPresenterShould.swift in Sources */,
+				CAF1975924688EAA005DFBBE /* AnnouncementsPresenterBuildingTests.swift in Sources */,
 				CAF1974624688EAA005DFBBE /* WhenMapDetailSceneLoads_MapsPresenterShould.swift in Sources */,
 				CAF1979724688EAA005DFBBE /* WhenPreparingViewModel_ForEventWithKage_EventDetailViewModelFactoryShould.swift in Sources */,
 				7820A6E11F13FC7F004C0FB5 /* NetworkReachabilityTestDoubles.swift in Sources */,

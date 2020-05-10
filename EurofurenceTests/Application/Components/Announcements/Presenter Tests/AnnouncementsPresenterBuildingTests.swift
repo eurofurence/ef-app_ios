@@ -2,8 +2,13 @@
 import EurofurenceModel
 import XCTest
 
-class WhenBuildingAnnouncementsModule_AnnouncementsPresenterShould: XCTestCase {
+class AnnouncementsPresenterBuildingTests: XCTestCase {
 
+    func testNotBindOntoTheScene() {
+        let context = AnnouncementsPresenterTestBuilder().build()
+        XCTAssertNil(context.scene.capturedAnnouncementsToBind)
+    }
+    
     func testReturnTheSceneFromTheFactory() {
         let context = AnnouncementsPresenterTestBuilder().build()
         XCTAssertEqual(context.scene, context.producedViewController)
