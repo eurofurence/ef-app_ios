@@ -516,8 +516,8 @@
 		CA52C68120D597E1009D3A9E /* ApplicationSignificantTimeChangeAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C68020D597E1009D3A9E /* ApplicationSignificantTimeChangeAdapter.swift */; };
 		CA52C68320D5980C009D3A9E /* ApplicationSignificantTimeChangeAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C68220D5980C009D3A9E /* ApplicationSignificantTimeChangeAdapterTests.swift */; };
 		CA52C68D20D6A9EB009D3A9E /* WhenSceneSelectsEvent_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C68C20D6A9EB009D3A9E /* WhenSceneSelectsEvent_SchedulePresenterShould.swift */; };
-		CA52C68F20D6AB47009D3A9E /* ScheduleModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C68E20D6AB47009D3A9E /* ScheduleModuleDelegate.swift */; };
-		CA52C69120D6AB53009D3A9E /* CapturingScheduleModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C69020D6AB53009D3A9E /* CapturingScheduleModuleDelegate.swift */; };
+		CA52C68F20D6AB47009D3A9E /* ScheduleComponentDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C68E20D6AB47009D3A9E /* ScheduleComponentDelegate.swift */; };
+		CA52C69120D6AB53009D3A9E /* CapturingScheduleComponentDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C69020D6AB53009D3A9E /* CapturingScheduleComponentDelegate.swift */; };
 		CA52C69920D6B87E009D3A9E /* HideNavigationBarShadowForSpecificViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C69820D6B87E009D3A9E /* HideNavigationBarShadowForSpecificViewControllerDelegate.swift */; };
 		CA5BF9D51F7AF9160045DBC0 /* PreloadPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5BF9D41F7AF9160045DBC0 /* PreloadPresenterTests.swift */; };
 		CA5EB193245F5DF40012C277 /* ModuleSwappingPrincipalWindowSceneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5EB192245F5DF40012C277 /* ModuleSwappingPrincipalWindowSceneTests.swift */; };
@@ -579,9 +579,9 @@
 		CA63755A208CBC2C00536BE2 /* StubKnowledgeDetailModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637559208CBC2C00536BE2 /* StubKnowledgeDetailModuleProviding.swift */; };
 		CA63755C208CBC3C00536BE2 /* StubContentLinksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63755B208CBC3C00536BE2 /* StubContentLinksService.swift */; };
 		CA63755E208CBC4E00536BE2 /* StubWebMobuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63755D208CBC4E00536BE2 /* StubWebMobuleProviding.swift */; };
-		CA637582208CDE2000536BE2 /* ScheduleModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637581208CDE2000536BE2 /* ScheduleModuleProviding.swift */; };
-		CA637584208CDE3F00536BE2 /* ScheduleModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637583208CDE3F00536BE2 /* ScheduleModuleBuilder.swift */; };
-		CA637586208CDE5D00536BE2 /* ScheduleModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637585208CDE5D00536BE2 /* ScheduleModule.swift */; };
+		CA637582208CDE2000536BE2 /* ScheduleComponentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637581208CDE2000536BE2 /* ScheduleComponentFactory.swift */; };
+		CA637584208CDE3F00536BE2 /* ScheduleComponentBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637583208CDE3F00536BE2 /* ScheduleComponentBuilder.swift */; };
+		CA637586208CDE5D00536BE2 /* ScheduleComponentFactoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637585208CDE5D00536BE2 /* ScheduleComponentFactoryImpl.swift */; };
 		CA637588208CDE9000536BE2 /* StubScheduleModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637587208CDE9000536BE2 /* StubScheduleModuleFactory.swift */; };
 		CA63758C208CE06100536BE2 /* WhenBuildingScheduleModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63758B208CE06100536BE2 /* WhenBuildingScheduleModule.swift */; };
 		CA637590208CE4E100536BE2 /* ScheduleSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63758F208CE4E100536BE2 /* ScheduleSceneFactory.swift */; };
@@ -1708,8 +1708,8 @@
 		CA52C68220D5980C009D3A9E /* ApplicationSignificantTimeChangeAdapterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationSignificantTimeChangeAdapterTests.swift; sourceTree = "<group>"; };
 		CA52C68420D59A5B009D3A9E /* CapturingSignificantTimeChangeAdapterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingSignificantTimeChangeAdapterDelegate.swift; sourceTree = "<group>"; };
 		CA52C68C20D6A9EB009D3A9E /* WhenSceneSelectsEvent_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSceneSelectsEvent_SchedulePresenterShould.swift; sourceTree = "<group>"; };
-		CA52C68E20D6AB47009D3A9E /* ScheduleModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleModuleDelegate.swift; sourceTree = "<group>"; };
-		CA52C69020D6AB53009D3A9E /* CapturingScheduleModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingScheduleModuleDelegate.swift; sourceTree = "<group>"; };
+		CA52C68E20D6AB47009D3A9E /* ScheduleComponentDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleComponentDelegate.swift; sourceTree = "<group>"; };
+		CA52C69020D6AB53009D3A9E /* CapturingScheduleComponentDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingScheduleComponentDelegate.swift; sourceTree = "<group>"; };
 		CA52C69820D6B87E009D3A9E /* HideNavigationBarShadowForSpecificViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideNavigationBarShadowForSpecificViewControllerDelegate.swift; sourceTree = "<group>"; };
 		CA5BF9D41F7AF9160045DBC0 /* PreloadPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadPresenterTests.swift; sourceTree = "<group>"; };
 		CA5EB192245F5DF40012C277 /* ModuleSwappingPrincipalWindowSceneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleSwappingPrincipalWindowSceneTests.swift; sourceTree = "<group>"; };
@@ -1771,9 +1771,9 @@
 		CA637559208CBC2C00536BE2 /* StubKnowledgeDetailModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubKnowledgeDetailModuleProviding.swift; sourceTree = "<group>"; };
 		CA63755B208CBC3C00536BE2 /* StubContentLinksService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubContentLinksService.swift; sourceTree = "<group>"; };
 		CA63755D208CBC4E00536BE2 /* StubWebMobuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubWebMobuleProviding.swift; sourceTree = "<group>"; };
-		CA637581208CDE2000536BE2 /* ScheduleModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleModuleProviding.swift; sourceTree = "<group>"; };
-		CA637583208CDE3F00536BE2 /* ScheduleModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleModuleBuilder.swift; sourceTree = "<group>"; };
-		CA637585208CDE5D00536BE2 /* ScheduleModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleModule.swift; sourceTree = "<group>"; };
+		CA637581208CDE2000536BE2 /* ScheduleComponentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleComponentFactory.swift; sourceTree = "<group>"; };
+		CA637583208CDE3F00536BE2 /* ScheduleComponentBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleComponentBuilder.swift; sourceTree = "<group>"; };
+		CA637585208CDE5D00536BE2 /* ScheduleComponentFactoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleComponentFactoryImpl.swift; sourceTree = "<group>"; };
 		CA637587208CDE9000536BE2 /* StubScheduleModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubScheduleModuleFactory.swift; sourceTree = "<group>"; };
 		CA63758B208CE06100536BE2 /* WhenBuildingScheduleModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBuildingScheduleModule.swift; sourceTree = "<group>"; };
 		CA63758F208CE4E100536BE2 /* ScheduleSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleSceneFactory.swift; sourceTree = "<group>"; };
@@ -2869,6 +2869,7 @@
 				CA08158A20D4554900F750D4 /* WhenGroupingEventsByStartTime_ScheduleInteractorShould.swift */,
 				CA00AE7220D18D1E00C2FBB0 /* WhenPreparingViewModel_ScheduleInteractorShould.swift */,
 				CA283AE120EC05B700F7D195 /* WhenPreparingViewModelForFavouritedEvent_ScheduleInteractorShould.swift */,
+				CAA7DE3622EF900400A6984D /* WhenScheduleChanges_ScheduleViewModelShould.swift */,
 				CA250DE320D6F68700E7513C /* WhenSearchControllerProducesNewResults_ScheduleInteractorShould.swift */,
 				CA250DDB20D6E85700E7513C /* WhenSearching_ScheduleInteractorShould.swift */,
 				CACF26D220FE5D2C00EDE150 /* WhenToldToFilterToAllEvents_ScheduleInteractorShould.swift */,
@@ -2877,7 +2878,6 @@
 				CA08159220D470F800F750D4 /* WhenViewModelIsToldToShowEventsForSpecificDay_ScheduleInteractorShould.swift */,
 				CA08B10322EF6C2D00FDAAA7 /* Favourite State Propogation */,
 				CA08B10A22EF6EE600FDAAA7 /* Toggling Favourite State */,
-				CAA7DE3622EF900400A6984D /* WhenScheduleChanges_ScheduleViewModelShould.swift */,
 			);
 			path = "Interactor Tests";
 			sourceTree = "<group>";
@@ -2894,8 +2894,8 @@
 		CA08B10322EF6C2D00FDAAA7 /* Favourite State Propogation */ = {
 			isa = PBXGroup;
 			children = (
-				CA08B10422EF6C4400FDAAA7 /* WhenEventTransitionsFromNonFavouriteToFavourite_EventViewModelShould.swift */,
 				CA08B10822EF6E2F00FDAAA7 /* WhenEventTransitionsFromFavouriteToNonFavourite_EventViewModelShould.swift */,
+				CA08B10422EF6C4400FDAAA7 /* WhenEventTransitionsFromNonFavouriteToFavourite_EventViewModelShould.swift */,
 			);
 			path = "Favourite State Propogation";
 			sourceTree = "<group>";
@@ -4121,10 +4121,10 @@
 		CA637580208CDE1A00536BE2 /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				CA637581208CDE2000536BE2 /* ScheduleModuleProviding.swift */,
-				CA637583208CDE3F00536BE2 /* ScheduleModuleBuilder.swift */,
-				CA637585208CDE5D00536BE2 /* ScheduleModule.swift */,
-				CA52C68E20D6AB47009D3A9E /* ScheduleModuleDelegate.swift */,
+				CA637581208CDE2000536BE2 /* ScheduleComponentFactory.swift */,
+				CA637583208CDE3F00536BE2 /* ScheduleComponentBuilder.swift */,
+				CA637585208CDE5D00536BE2 /* ScheduleComponentFactoryImpl.swift */,
+				CA52C68E20D6AB47009D3A9E /* ScheduleComponentDelegate.swift */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -4193,21 +4193,21 @@
 		CA637593208DFD2B00536BE2 /* Test Doubles */ = {
 			isa = PBXGroup;
 			children = (
-				CA36A44C20D771C400EE6537 /* CapturingSelectionChangedHaptic.swift */,
+				CA52C69020D6AB53009D3A9E /* CapturingScheduleComponentDelegate.swift */,
 				CA00AE8220D1C21900C2FBB0 /* CapturingScheduleDayComponent.swift */,
 				CA00AE6120D1749200C2FBB0 /* CapturingScheduleEventComponent.swift */,
 				CA00AE5B20D171F200C2FBB0 /* CapturingScheduleEventGroupHeader.swift */,
-				CA52C69020D6AB53009D3A9E /* CapturingScheduleModuleDelegate.swift */,
+				CA08B10622EF6E1700FDAAA7 /* CapturingScheduleEventViewModelObserver.swift */,
 				CA637594208DFD3700536BE2 /* CapturingScheduleScene.swift */,
 				CA250DCF20D6D4F500E7513C /* CapturingScheduleSearchViewModel.swift */,
 				CA250DDD20D6EA0500E7513C /* CapturingScheduleSearchViewModelDelegate.swift */,
 				CA00AE7620D1AA2000C2FBB0 /* CapturingScheduleViewModelDelegate.swift */,
+				CA36A44C20D771C400EE6537 /* CapturingSelectionChangedHaptic.swift */,
 				CA08159420D472B700F750D4 /* FakeEventsSchedule.swift */,
 				CA00AE4820D16BD900C2FBB0 /* FakeScheduleInteractor.swift */,
 				CA08158C20D4556700F750D4 /* FakeShortFormDateFormatter.swift */,
 				CA637596208DFD4B00536BE2 /* StubScheduleSceneFactory.swift */,
 				CA00AE8420D2320700C2FBB0 /* StubScheduleViewModel.swift */,
-				CA08B10622EF6E1700FDAAA7 /* CapturingScheduleEventViewModelObserver.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -6739,7 +6739,7 @@
 				CA401071210FAED50056E16C /* KnowledgeGroupEntriesInteractor.swift in Sources */,
 				9A861EB01F2554F900B75A8C /* TutorialPresentationContext.swift in Sources */,
 				CA0E5220208FC994005259FE /* NewsUserWidgetTableViewCell.swift in Sources */,
-				CA637582208CDE2000536BE2 /* ScheduleModuleProviding.swift in Sources */,
+				CA637582208CDE2000536BE2 /* ScheduleComponentFactory.swift in Sources */,
 				CACF1E5A20AE2DFB00D904B5 /* EventDetailScene.swift in Sources */,
 				CACF1E7C20B212A800D904B5 /* EventDetailBinder.swift in Sources */,
 				CA6660A022B5A8DE0050A04E /* DaysHorizontalPickerView.swift in Sources */,
@@ -7118,7 +7118,7 @@
 				CA401077210FAEF60056E16C /* KnowledgeGroupEntriesSceneFactory.swift in Sources */,
 				CA5EB1CA2461BE140012C277 /* AwesomeFontLabel.swift in Sources */,
 				CA50B1B3226110F40091E425 /* EventFeedbackPresenter.swift in Sources */,
-				CA52C68F20D6AB47009D3A9E /* ScheduleModuleDelegate.swift in Sources */,
+				CA52C68F20D6AB47009D3A9E /* ScheduleComponentDelegate.swift in Sources */,
 				CA7BA2382237FCFB00D34592 /* NetworkReachability.swift in Sources */,
 				20516AC821123E5500C399C0 /* DefaultDownMarkdownRenderer.swift in Sources */,
 				9A861ECD1F25555000B75A8C /* TutorialPageViewController.swift in Sources */,
@@ -7173,7 +7173,7 @@
 				CABA438D1FBCDBDF009CB5B0 /* LoginPresenter.swift in Sources */,
 				CA6375A8208E011C00536BE2 /* DealersModuleBuilder.swift in Sources */,
 				CA08B0FB22EDF6BE00FDAAA7 /* EurofurenceDateIntervalFormatter.swift in Sources */,
-				CA637586208CDE5D00536BE2 /* ScheduleModule.swift in Sources */,
+				CA637586208CDE5D00536BE2 /* ScheduleComponentFactoryImpl.swift in Sources */,
 				CAC1E12B1F5040E100195513 /* NewsScene.swift in Sources */,
 				CAFA0704245DEE2B00A807F5 /* MapContentRepresentation.swift in Sources */,
 				CA6A8D7120E2649C007536CD /* MapsModule.swift in Sources */,
@@ -7209,7 +7209,7 @@
 				CA6A8D8520E2BB88007536CD /* MapsInteractor.swift in Sources */,
 				CA8E7EF61FB08E2500F0BF10 /* AppWindowWireframe.swift in Sources */,
 				CA82DB5622D6636700467C2F /* ShareEventActionViewModel.swift in Sources */,
-				CA637584208CDE3F00536BE2 /* ScheduleModuleBuilder.swift in Sources */,
+				CA637584208CDE3F00536BE2 /* ScheduleComponentBuilder.swift in Sources */,
 				CA0F761F203229CF009DA079 /* KnowledgeBaseViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -7563,7 +7563,7 @@
 				CA72844D209D0358007D912A /* WhenBuildingAnnouncementDetailPresenter.swift in Sources */,
 				78455B4D1F1177CF005BE2D7 /* StubFirstTimeLaunchStateProvider.swift in Sources */,
 				CA63755A208CBC2C00536BE2 /* StubKnowledgeDetailModuleProviding.swift in Sources */,
-				CA52C69120D6AB53009D3A9E /* CapturingScheduleModuleDelegate.swift in Sources */,
+				CA52C69120D6AB53009D3A9E /* CapturingScheduleComponentDelegate.swift in Sources */,
 				CAB6CDFA2464AE3500A92194 /* StubMessageDetailSceneFactory.swift in Sources */,
 				CA6A8DCE20E41735007536CD /* WhenBuildingMapDetailModule.swift in Sources */,
 				CA73AED8201A07E7004E77BF /* KnowledgeGroupsPresenterTestBuilder.swift in Sources */,

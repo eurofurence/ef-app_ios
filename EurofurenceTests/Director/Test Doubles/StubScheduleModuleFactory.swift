@@ -3,11 +3,11 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import UIKit.UIViewController
 
-class StubScheduleModuleFactory: ScheduleModuleProviding {
+class StubScheduleModuleFactory: ScheduleComponentFactory {
 
     let stubInterface = FakeViewController()
-    fileprivate var delegate: ScheduleModuleDelegate?
-    func makeScheduleModule(_ delegate: ScheduleModuleDelegate) -> UIViewController {
+    fileprivate var delegate: ScheduleComponentDelegate?
+    func makeScheduleComponent(_ delegate: ScheduleComponentDelegate) -> UIViewController {
         self.delegate = delegate
         return stubInterface
     }
@@ -17,7 +17,7 @@ class StubScheduleModuleFactory: ScheduleModuleProviding {
 extension StubScheduleModuleFactory {
 
     func simulateDidSelectEvent(_ identifier: EventIdentifier) {
-        delegate?.scheduleModuleDidSelectEvent(identifier: identifier)
+        delegate?.scheduleComponentDidSelectEvent(identifier: identifier)
     }
 
 }

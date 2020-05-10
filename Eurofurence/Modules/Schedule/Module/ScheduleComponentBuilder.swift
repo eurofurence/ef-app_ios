@@ -25,10 +25,12 @@ class ScheduleModuleBuilder {
         return self
     }
 
-    func build() -> ScheduleModuleProviding {
-        return ScheduleModule(eventsSceneFactory: eventsSceneFactory,
-                              interactor: interactor,
-                              hapticEngine: hapticEngine)
+    func build() -> ScheduleComponentFactory {
+        ScheduleComponentFactoryImpl(
+            eventsSceneFactory: eventsSceneFactory,
+            interactor: interactor,
+            hapticEngine: hapticEngine
+        )
     }
 
 }

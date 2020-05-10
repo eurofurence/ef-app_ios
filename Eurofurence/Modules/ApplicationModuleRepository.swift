@@ -7,7 +7,7 @@ struct ApplicationModuleRepository {
     let tutorialModuleProviding: TutorialModuleProviding
     let preloadModuleProviding: PreloadModuleProviding
     let newsModuleProviding: NewsModuleProviding
-    let scheduleModuleProviding: ScheduleModuleProviding
+    let scheduleComponentFactory: ScheduleComponentFactory
     let dealersModuleProviding: DealersModuleProviding
     let dealerDetailModuleProviding: DealerDetailModuleProviding
     let collectThemAllModuleProviding: CollectThemAllModuleProviding
@@ -59,7 +59,7 @@ struct ApplicationModuleRepository {
                                                            shortFormDateFormatter: FoundationShortFormDateFormatter.shared,
                                                            shortFormDayAndTimeFormatter: FoundationShortFormDayAndTimeFormatter.shared,
                                                            refreshService: services.refresh)
-        scheduleModuleProviding = ScheduleModuleBuilder(interactor: scheduleInteractor).build()
+        scheduleComponentFactory = ScheduleModuleBuilder(interactor: scheduleInteractor).build()
         
         let defaultDealerIcon = #imageLiteral(resourceName: "defaultAvatar")
         guard let defaultDealerIconData = defaultDealerIcon.pngData() else { fatalError("Default dealer icon is not a PNG") }

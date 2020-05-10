@@ -55,8 +55,8 @@ struct PrincipalWindowController {
         )
         
         let scheduleContentControllerFactory = ScheduleContentControllerFactory(
-            scheduleModuleProviding: moduleRepository.scheduleModuleProviding,
-            scheduleModuleDelegate: scheduleSubrouter
+            scheduleComponentFactory: moduleRepository.scheduleComponentFactory,
+            scheduleComponentDelegate: scheduleSubrouter
         )
         
         let dealersContentControllerFactory = DealersContentControllerFactory(

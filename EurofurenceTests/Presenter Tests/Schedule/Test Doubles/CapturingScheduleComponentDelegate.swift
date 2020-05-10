@@ -3,10 +3,10 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import Foundation
 
-class CapturingScheduleModuleDelegate: ScheduleModuleDelegate {
+class CapturingScheduleComponentDelegate: ScheduleComponentDelegate {
 
     private(set) var capturedEventIdentifier: EventIdentifier?
-    func scheduleModuleDidSelectEvent(identifier: EventIdentifier) {
+    func scheduleComponentDidSelectEvent(identifier: EventIdentifier) {
         capturedEventIdentifier = identifier
     }
 

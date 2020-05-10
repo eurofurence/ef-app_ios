@@ -2,11 +2,11 @@ import UIKit
 
 struct ScheduleContentControllerFactory: ApplicationModuleFactory {
     
-    var scheduleModuleProviding: ScheduleModuleProviding
-    var scheduleModuleDelegate: ScheduleModuleDelegate
+    var scheduleComponentFactory: ScheduleComponentFactory
+    var scheduleComponentDelegate: ScheduleComponentDelegate
     
     func makeApplicationModuleController() -> UIViewController {
-        scheduleModuleProviding.makeScheduleModule(scheduleModuleDelegate)
+        scheduleComponentFactory.makeScheduleComponent(scheduleComponentDelegate)
     }
     
 }

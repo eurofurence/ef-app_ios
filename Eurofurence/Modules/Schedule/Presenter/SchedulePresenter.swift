@@ -171,14 +171,14 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
 
     private let scene: ScheduleScene
     private let interactor: ScheduleInteractor
-    private let delegate: ScheduleModuleDelegate
+    private let delegate: ScheduleComponentDelegate
     private let hapticEngine: SelectionChangedHaptic
     private var viewModel: ScheduleViewModel?
     private var searchViewModel: ScheduleSearchViewModel?
 
     init(scene: ScheduleScene,
          interactor: ScheduleInteractor,
-         delegate: ScheduleModuleDelegate,
+         delegate: ScheduleComponentDelegate,
          hapticEngine: SelectionChangedHaptic) {
         self.scene = scene
         self.interactor = interactor
@@ -211,12 +211,12 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
 
     func scheduleSceneDidSelectEvent(at indexPath: IndexPath) {
         scene.deselectEvent(at: indexPath)
-        viewModel?.identifierForEvent(at: indexPath).let(delegate.scheduleModuleDidSelectEvent)
+        viewModel?.identifierForEvent(at: indexPath).let(delegate.scheduleComponentDidSelectEvent)
     }
 
     func scheduleSceneDidSelectSearchResult(at indexPath: IndexPath) {
         scene.deselectSearchResult(at: indexPath)
-        searchViewModel?.identifierForEvent(at: indexPath).let(delegate.scheduleModuleDidSelectEvent)
+        searchViewModel?.identifierForEvent(at: indexPath).let(delegate.scheduleComponentDidSelectEvent)
     }
 
     private var currentSearchQuery: String = ""
