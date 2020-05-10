@@ -998,7 +998,6 @@
 		CAF197FB24688EAB005DFBBE /* WhenBindingDealerSummaryComponent_DealerDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF1966B24688EA9005DFBBE /* WhenBindingDealerSummaryComponent_DealerDetailPresenterShould.swift */; };
 		CAF197FC24688EAB005DFBBE /* WhenBindingDealerSummaryWithMissingAttributes_DealerDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF1966C24688EA9005DFBBE /* WhenBindingDealerSummaryWithMissingAttributes_DealerDetailPresenterShould.swift */; };
 		CAF197FD24688EAB005DFBBE /* WhenBuildingDealerDetailModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF1966D24688EA9005DFBBE /* WhenBuildingDealerDetailModule.swift */; };
-		CAF197FE24688EAB005DFBBE /* BeforeDealerDetailSceneLoads_DealerDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF1966E24688EA9005DFBBE /* BeforeDealerDetailSceneLoads_DealerDetailPresenterShould.swift */; };
 		CAF197FF24688EAB005DFBBE /* WhenBindingDealerLocationAndAvailabilityWithMissingAttributes_DealerDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF1966F24688EA9005DFBBE /* WhenBindingDealerLocationAndAvailabilityWithMissingAttributes_DealerDetailPresenterShould.swift */; };
 		CAF1980024688EAB005DFBBE /* DealerDetailViewModelFactoryTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF1967124688EA9005DFBBE /* DealerDetailViewModelFactoryTestBuilder.swift */; };
 		CAF1980124688EAB005DFBBE /* WhenProducingDealerViewModel_HappyPath_DealerDetailViewModelFactoryShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF1967224688EA9005DFBBE /* WhenProducingDealerViewModel_HappyPath_DealerDetailViewModelFactoryShould.swift */; };
@@ -2173,7 +2172,6 @@
 		CAF1966B24688EA9005DFBBE /* WhenBindingDealerSummaryComponent_DealerDetailPresenterShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenBindingDealerSummaryComponent_DealerDetailPresenterShould.swift; sourceTree = "<group>"; };
 		CAF1966C24688EA9005DFBBE /* WhenBindingDealerSummaryWithMissingAttributes_DealerDetailPresenterShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenBindingDealerSummaryWithMissingAttributes_DealerDetailPresenterShould.swift; sourceTree = "<group>"; };
 		CAF1966D24688EA9005DFBBE /* WhenBuildingDealerDetailModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenBuildingDealerDetailModule.swift; sourceTree = "<group>"; };
-		CAF1966E24688EA9005DFBBE /* BeforeDealerDetailSceneLoads_DealerDetailPresenterShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeforeDealerDetailSceneLoads_DealerDetailPresenterShould.swift; sourceTree = "<group>"; };
 		CAF1966F24688EA9005DFBBE /* WhenBindingDealerLocationAndAvailabilityWithMissingAttributes_DealerDetailPresenterShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenBindingDealerLocationAndAvailabilityWithMissingAttributes_DealerDetailPresenterShould.swift; sourceTree = "<group>"; };
 		CAF1967124688EA9005DFBBE /* DealerDetailViewModelFactoryTestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealerDetailViewModelFactoryTestBuilder.swift; sourceTree = "<group>"; };
 		CAF1967224688EA9005DFBBE /* WhenProducingDealerViewModel_HappyPath_DealerDetailViewModelFactoryShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenProducingDealerViewModel_HappyPath_DealerDetailViewModelFactoryShould.swift; sourceTree = "<group>"; };
@@ -5954,7 +5952,6 @@
 		CAF1965D24688EA9005DFBBE /* Presenter Tests */ = {
 			isa = PBXGroup;
 			children = (
-				CAF1966E24688EA9005DFBBE /* BeforeDealerDetailSceneLoads_DealerDetailPresenterShould.swift */,
 				CAF1965F24688EA9005DFBBE /* DealerDetailPresenterTestBuilder.swift */,
 				CAF1966A24688EA9005DFBBE /* WhenBindingAboutTheArtComponent_DealerDetailPresenterShould.swift */,
 				CAF1966124688EA9005DFBBE /* WhenBindingAboutTheArtComponentWithMissingAttributes_DealerDetailPresenterShould.swift */,
@@ -7759,7 +7756,6 @@
 				CAF197A624688EAA005DFBBE /* NewsPresenterPhotoshootIconBindingTests.swift in Sources */,
 				CAEA1042216E1FB400B0C7A6 /* CapturingSignificantTimeChangeAdapterDelegate.swift in Sources */,
 				CAF197B924688EAA005DFBBE /* FakeRelativeTimeIntervalCountdownFormatter.swift in Sources */,
-				CAF197FE24688EAB005DFBBE /* BeforeDealerDetailSceneLoads_DealerDetailPresenterShould.swift in Sources */,
 				CA0F7621203229E4009DA079 /* KnowledgeListViewModel+RandomValueProviding.swift in Sources */,
 				CAF197E024688EAA005DFBBE /* WhenKnowledgeListViewModelIsPrepared.swift in Sources */,
 				CAF197D824688EAA005DFBBE /* CapturingFailureHaptic.swift in Sources */,

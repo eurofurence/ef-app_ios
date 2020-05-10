@@ -8,5 +8,10 @@ class WhenBuildingDealerDetailModule: XCTestCase {
         let context = DealerDetailPresenterTestBuilder().build()
         XCTAssertEqual(context.scene, context.producedModuleViewController)
     }
+    
+    func testNoBindingsOccur() {
+        let context = DealerDetailPresenterTestBuilder().build()
+        XCTAssertNil(context.scene.boundNumberOfComponents)
+    }
 
 }
