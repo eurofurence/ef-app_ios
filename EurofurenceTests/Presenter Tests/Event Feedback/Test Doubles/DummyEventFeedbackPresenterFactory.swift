@@ -5,7 +5,7 @@ class DummyEventFeedbackPresenterFactory: EventFeedbackPresenterFactory {
     
     func makeEventFeedbackPresenter(for event: EventIdentifier,
                                     scene: EventFeedbackScene,
-                                    delegate: EventFeedbackModuleDelegate) {
+                                    delegate: EventFeedbackComponentDelegate) {
         
     }
     

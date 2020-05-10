@@ -1,6 +1,6 @@
 @testable import Eurofurence
 
-class CapturingEventFeedbackModuleDelegate: EventFeedbackModuleDelegate {
+class CapturingEventFeedbackComponentDelegate: EventFeedbackComponentDelegate {
     
     private(set) var dismissed = false
     func eventFeedbackCancelled() {

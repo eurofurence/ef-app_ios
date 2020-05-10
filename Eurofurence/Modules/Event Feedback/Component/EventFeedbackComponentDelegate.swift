@@ -1,6 +1,6 @@
 import Foundation
 
-public protocol EventFeedbackModuleDelegate {
+public protocol EventFeedbackComponentDelegate {
     
     func eventFeedbackCancelled()
     

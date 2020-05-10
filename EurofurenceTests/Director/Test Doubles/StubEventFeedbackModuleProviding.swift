@@ -2,12 +2,12 @@ import Eurofurence
 import EurofurenceModel
 import UIKit
 
-class StubEventFeedbackModuleProviding: EventFeedbackModuleProviding {
+class StubEventFeedbackComponentFactory: EventFeedbackComponentFactory {
     
     let stubInterface = CapturingViewController()
     private(set) var eventToLeaveFeedbackFor: EventIdentifier?
-    private var delegate: EventFeedbackModuleDelegate?
-    func makeEventFeedbackModule(for event: EventIdentifier, delegate: EventFeedbackModuleDelegate) -> UIViewController {
+    private var delegate: EventFeedbackComponentDelegate?
+    func makeEventFeedbackModule(for event: EventIdentifier, delegate: EventFeedbackComponentDelegate) -> UIViewController {
         eventToLeaveFeedbackFor = event
         self.delegate = delegate
         return stubInterface

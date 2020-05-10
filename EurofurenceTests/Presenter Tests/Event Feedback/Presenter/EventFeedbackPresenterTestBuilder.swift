@@ -20,7 +20,7 @@ class EventFeedbackPresenterTestBuilder {
     struct Context {
         var event: FakeEvent
         var scene: CapturingEventFeedbackScene
-        var delegate: CapturingEventFeedbackModuleDelegate
+        var delegate: CapturingEventFeedbackComponentDelegate
         var successHaptic: CapturingSuccessHaptic
         var failureHaptic: CapturingFailureHaptic
         var successWaitingRule: CapturingEventFeedbackSuccessWaitingRule
@@ -71,8 +71,8 @@ class EventFeedbackPresenterTestBuilder {
                                                                  failureHaptic: failureHaptic,
                                                                  successWaitingRule: successWaitingRule)
         
-        let delegate = CapturingEventFeedbackModuleDelegate()
-        let moduleFactory = EventFeedbackModuleProvidingImpl(presenterFactory: presenterFactory, sceneFactory: sceneFactory)
+        let delegate = CapturingEventFeedbackComponentDelegate()
+        let moduleFactory = EventFeedbackComponentFactoryImpl(presenterFactory: presenterFactory, sceneFactory: sceneFactory)
         _ = moduleFactory.makeEventFeedbackModule(for: event.identifier, delegate: delegate)
         let scene = sceneFactory.scene
         

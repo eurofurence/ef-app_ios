@@ -1,15 +1,15 @@
 import EurofurenceModel
 import UIKit
 
-struct FormSheetEventFeedbackModuleProviding: EventFeedbackModuleProviding {
+struct FormSheetEventFeedbackComponentFactory: EventFeedbackComponentFactory {
     
-    var eventFeedbackModuleProviding: EventFeedbackModuleProviding
+    var eventFeedbackComponentFactory: EventFeedbackComponentFactory
     
     func makeEventFeedbackModule(
         for event: EventIdentifier,
-        delegate: EventFeedbackModuleDelegate
+        delegate: EventFeedbackComponentDelegate
     ) -> UIViewController {
-        let contentController = eventFeedbackModuleProviding.makeEventFeedbackModule(for: event, delegate: delegate)
+        let contentController = eventFeedbackComponentFactory.makeEventFeedbackModule(for: event, delegate: delegate)
         let navigationController = UINavigationController(rootViewController: contentController)
         navigationController.modalPresentationStyle = .formSheet
         

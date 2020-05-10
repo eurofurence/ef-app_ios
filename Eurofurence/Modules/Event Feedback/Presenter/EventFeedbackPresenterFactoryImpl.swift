@@ -28,7 +28,7 @@ struct EventFeedbackPresenterFactoryImpl: EventFeedbackPresenterFactory {
     
     func makeEventFeedbackPresenter(for event: EventIdentifier,
                                     scene: EventFeedbackScene,
-                                    delegate: EventFeedbackModuleDelegate) {
+                                    delegate: EventFeedbackComponentDelegate) {
         guard let event = eventService.fetchEvent(identifier: event) else { return }
         
         _ = EventFeedbackPresenter(event: event,

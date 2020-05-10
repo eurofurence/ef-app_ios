@@ -22,7 +22,7 @@ struct ApplicationModuleRepository {
     let announcementsModuleFactory: AnnouncementsComponentFactory
     let announcementDetailComponentFactory: AnnouncementDetailComponentFactory
     let eventDetailComponentFactory: EventDetailComponentFactory
-    let eventFeedbackModuleProviding: EventFeedbackModuleProviding
+    let eventFeedbackComponentFactory: EventFeedbackComponentFactory
     let additionalServicesComponentFactory: AdditionalServicesComponentFactory
     
     // swiftlint:disable function_body_length
@@ -141,7 +141,7 @@ struct ApplicationModuleRepository {
                                                                               failureHaptic: CocoaTouchFailureHaptic(),
                                                                               successWaitingRule: ShortDelayEventFeedbackSuccessWaitingRule())
         let eventFeedbackSceneFactory = StoryboardEventFeedbackSceneFactory()
-        eventFeedbackModuleProviding = EventFeedbackModuleProvidingImpl(presenterFactory: eventFeedbackPresenterFactory, sceneFactory: eventFeedbackSceneFactory)
+        eventFeedbackComponentFactory = EventFeedbackComponentFactoryImpl(presenterFactory: eventFeedbackPresenterFactory, sceneFactory: eventFeedbackSceneFactory)
         
         webModuleProviding = SafariWebModuleProviding()
         

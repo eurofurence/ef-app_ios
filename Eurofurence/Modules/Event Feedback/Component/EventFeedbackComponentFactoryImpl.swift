@@ -1,12 +1,15 @@
 import EurofurenceModel
 import UIKit.UIViewController
 
-struct EventFeedbackModuleProvidingImpl: EventFeedbackModuleProviding {
+struct EventFeedbackComponentFactoryImpl: EventFeedbackComponentFactory {
     
     var presenterFactory: EventFeedbackPresenterFactory
     var sceneFactory: EventFeedbackSceneFactory
     
-    func makeEventFeedbackModule(for event: EventIdentifier, delegate: EventFeedbackModuleDelegate) -> UIViewController {
+    func makeEventFeedbackModule(
+        for event: EventIdentifier,
+        delegate: EventFeedbackComponentDelegate
+    ) -> UIViewController {
         let scene = sceneFactory.makeEventFeedbackScene()
         presenterFactory.makeEventFeedbackPresenter(for: event, scene: scene, delegate: delegate)
         

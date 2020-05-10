@@ -7,7 +7,7 @@ class EventFeedbackContentRouteTests: XCTestCase {
     func testModallyPresentsEventFeedback() {
         let identifier = EventIdentifier.random
         let content = EventFeedbackContentRepresentation(identifier: identifier)
-        let eventFeedbackFactory = StubEventFeedbackModuleProviding()
+        let eventFeedbackFactory = StubEventFeedbackComponentFactory()
         let modalWireframe = CapturingModalWireframe()
         let route = EventFeedbackContentRoute(
             eventFeedbackFactory: eventFeedbackFactory,
@@ -23,7 +23,7 @@ class EventFeedbackContentRouteTests: XCTestCase {
     func testDismissesControllerWhenCancellingFeedback() {
         let identifier = EventIdentifier.random
         let content = EventFeedbackContentRepresentation(identifier: identifier)
-        let eventFeedbackFactory = StubEventFeedbackModuleProviding()
+        let eventFeedbackFactory = StubEventFeedbackComponentFactory()
         let modalWireframe = CapturingModalWireframe()
         let route = EventFeedbackContentRoute(
             eventFeedbackFactory: eventFeedbackFactory,

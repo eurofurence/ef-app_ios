@@ -62,8 +62,8 @@ struct RouterConfigurator {
     
     private func configureEventFeedbackRoute() {
         router.add(EventFeedbackContentRoute(
-            eventFeedbackFactory: FormSheetEventFeedbackModuleProviding(
-                eventFeedbackModuleProviding: moduleRepository.eventFeedbackModuleProviding
+            eventFeedbackFactory: FormSheetEventFeedbackComponentFactory(
+                eventFeedbackComponentFactory: moduleRepository.eventFeedbackComponentFactory
             ),
             modalWireframe: modalWireframe
         ))

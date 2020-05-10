@@ -2,10 +2,10 @@ import UIKit.UIViewController
 
 public struct EventFeedbackContentRoute {
     
-    private let eventFeedbackFactory: EventFeedbackModuleProviding
+    private let eventFeedbackFactory: EventFeedbackComponentFactory
     private let modalWireframe: ModalWireframe
     
-    public init(eventFeedbackFactory: EventFeedbackModuleProviding, modalWireframe: ModalWireframe) {
+    public init(eventFeedbackFactory: EventFeedbackComponentFactory, modalWireframe: ModalWireframe) {
         self.eventFeedbackFactory = eventFeedbackFactory
         self.modalWireframe = modalWireframe
     }
@@ -30,7 +30,7 @@ extension EventFeedbackContentRoute: ContentRoute {
         modalWireframe.presentModalContentController(contentController)
     }
     
-    private class DismissControllerWhenCancellingFeedback: EventFeedbackModuleDelegate {
+    private class DismissControllerWhenCancellingFeedback: EventFeedbackComponentDelegate {
         
         var viewController: UIViewController?
         

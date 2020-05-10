@@ -4,7 +4,7 @@ class EventFeedbackPresenter: EventFeedbackSceneDelegate, EventFeedbackDelegate 
     
     private let event: Event
     private let scene: EventFeedbackScene
-    private let delegate: EventFeedbackModuleDelegate
+    private let delegate: EventFeedbackComponentDelegate
     private let dayAndTimeFormatter: EventDayAndTimeFormatter
     private let successHaptic: SuccessHaptic
     private let failureHaptic: FailureHaptic
@@ -14,7 +14,7 @@ class EventFeedbackPresenter: EventFeedbackSceneDelegate, EventFeedbackDelegate 
     
     init(event: Event,
          scene: EventFeedbackScene,
-         delegate: EventFeedbackModuleDelegate,
+         delegate: EventFeedbackComponentDelegate,
          dayOfWeekFormatter: DayOfWeekFormatter,
          startTimeFormatter: HoursDateFormatter,
          endTimeFormatter: HoursDateFormatter,
