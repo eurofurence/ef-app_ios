@@ -1,7 +1,7 @@
 import EurofurenceModel
 import Foundation
 
-struct DefaultKnowledgeDetailViewModelFactory: KnowledgeDetailViewModelFactory {
+public struct DefaultKnowledgeDetailViewModelFactory: KnowledgeDetailViewModelFactory {
 
     private struct ViewModel: KnowledgeEntryDetailViewModel {
         
@@ -35,11 +35,24 @@ struct DefaultKnowledgeDetailViewModelFactory: KnowledgeDetailViewModelFactory {
 
     }
 
-    var knowledgeService: KnowledgeService
-    var renderer: MarkdownRenderer
-    var shareService: ShareService
+    private let knowledgeService: KnowledgeService
+    private let renderer: MarkdownRenderer
+    private let shareService: ShareService
+    
+    public init(
+        knowledgeService: KnowledgeService,
+        renderer: MarkdownRenderer,
+        shareService: ShareService
+    ) {
+        self.knowledgeService = knowledgeService
+        self.renderer = renderer
+        self.shareService = shareService
+    }
 
-    func makeViewModel(for identifier: KnowledgeEntryIdentifier, completionHandler: @escaping (KnowledgeEntryDetailViewModel) -> Void) {
+    public func makeViewModel(
+        for identifier: KnowledgeEntryIdentifier,
+        completionHandler: @escaping (KnowledgeEntryDetailViewModel) -> Void
+    ) {
         let service = knowledgeService
         service.fetchKnowledgeEntry(for: identifier) { (entry) in
             service.fetchImagesForKnowledgeEntry(identifier: identifier) { (images) in
