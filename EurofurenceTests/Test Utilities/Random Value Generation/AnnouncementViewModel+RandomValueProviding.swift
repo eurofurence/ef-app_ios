@@ -2,10 +2,10 @@
 import EurofurenceModel
 import TestUtilities
 
-extension AnnouncementViewModel: RandomValueProviding {
+extension AnnouncementDetailViewModel: RandomValueProviding {
 
-    public static var random: AnnouncementViewModel {
-        return AnnouncementViewModel(heading: .random, contents: .random, imagePNGData: .random)
+    public static var random: AnnouncementDetailViewModel {
+        return AnnouncementDetailViewModel(heading: .random, contents: .random, imagePNGData: .random)
     }
 
 }

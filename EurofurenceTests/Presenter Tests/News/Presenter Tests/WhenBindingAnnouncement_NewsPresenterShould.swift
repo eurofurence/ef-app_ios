@@ -6,7 +6,7 @@ import XCTest
 class WhenBindingAnnouncement_NewsPresenterShould: XCTestCase {
 
     var viewModel: AnnouncementsViewModel!
-    var announcementViewModel: AnnouncementComponentViewModel!
+    var announcementViewModel: AnnouncementItemViewModel!
     var indexPath: IndexPath!
     var newsInteractor: StubNewsInteractor!
     var context: NewsPresenterTestBuilder.Context!

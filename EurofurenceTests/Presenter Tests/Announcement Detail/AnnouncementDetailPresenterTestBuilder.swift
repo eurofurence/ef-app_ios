@@ -9,14 +9,14 @@ class AnnouncementDetailPresenterTestBuilder {
         var announcementDetailScene: UIViewController
         var sceneFactory: StubAnnouncementDetailSceneFactory
         var scene: CapturingAnnouncementDetailScene
-        var announcementViewModel: AnnouncementViewModel
+        var announcementViewModel: AnnouncementDetailViewModel
     }
 
     func build() -> Context {
         let sceneFactory = StubAnnouncementDetailSceneFactory()
         let announcement: StubAnnouncement = .random
-        let announcementDetailInteractor = StubAnnouncementDetailInteractor(for: announcement.identifier)
-        let module = AnnouncementDetailComponentBuilder(announcementDetailInteractor: announcementDetailInteractor)
+        let announcementDetailViewModelFactory = StubAnnouncementDetailViewModelFactory(for: announcement.identifier)
+        let module = AnnouncementDetailComponentBuilder(announcementDetailViewModelFactory: announcementDetailViewModelFactory)
             .with(sceneFactory)
             .build()
             .makeAnnouncementDetailModule(for: announcement.identifier)
@@ -24,7 +24,7 @@ class AnnouncementDetailPresenterTestBuilder {
         return Context(announcementDetailScene: module,
                        sceneFactory: sceneFactory,
                        scene: sceneFactory.stubbedScene,
-                       announcementViewModel: announcementDetailInteractor.viewModel)
+                       announcementViewModel: announcementDetailViewModelFactory.viewModel)
     }
 
 }

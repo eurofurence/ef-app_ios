@@ -24,7 +24,7 @@ protocol NewsViewModelVisitor {
 
     func visit(_ userWidget: UserWidgetComponentViewModel)
     func visit(_ countdown: ConventionCountdownComponentViewModel)
-    func visit(_ announcement: AnnouncementComponentViewModel)
+    func visit(_ announcement: AnnouncementItemViewModel)
     func visit(_ viewAllAnnouncements: ViewAllAnnouncementsComponentViewModel)
     func visit(_ event: EventComponentViewModel)
 
@@ -36,7 +36,7 @@ struct ConventionCountdownComponentViewModel: Hashable {
 
 }
 
-struct AnnouncementComponentViewModel: Hashable {
+struct AnnouncementItemViewModel: Hashable {
 
     var title: String
     var detail: NSAttributedString

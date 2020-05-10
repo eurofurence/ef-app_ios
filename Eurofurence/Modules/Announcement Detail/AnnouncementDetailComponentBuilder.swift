@@ -1,10 +1,10 @@
 class AnnouncementDetailComponentBuilder {
 
     private var sceneFactory: AnnouncementDetailSceneFactory
-    private var announcementDetailInteractor: AnnouncementDetailInteractor
+    private var announcementDetailViewModelFactory: AnnouncementDetailViewModelFactory
 
-    init(announcementDetailInteractor: AnnouncementDetailInteractor) {
-        self.announcementDetailInteractor = announcementDetailInteractor
+    init(announcementDetailViewModelFactory: AnnouncementDetailViewModelFactory) {
+        self.announcementDetailViewModelFactory = announcementDetailViewModelFactory
         sceneFactory = StoryboardAnnouncementDetailSceneFactory()
     }
 
@@ -17,7 +17,7 @@ class AnnouncementDetailComponentBuilder {
     func build() -> AnnouncementDetailComponentFactory {
         AnnouncementDetailComponentFactoryImpl(
             sceneFactory: sceneFactory,
-            announcementDetailInteractor: announcementDetailInteractor
+            announcementDetailViewModelFactory: announcementDetailViewModelFactory
         )
     }
 

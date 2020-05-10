@@ -55,7 +55,7 @@ class NewsPresenter: NewsSceneDelegate, NewsInteractorDelegate {
             }
         }
 
-        func visit(_ announcement: AnnouncementComponentViewModel) {
+        func visit(_ announcement: AnnouncementItemViewModel) {
             boundComponent = componentFactory.makeAnnouncementComponent { (component) in
                 component.setAnnouncementTitle(announcement.title)
                 component.setAnnouncementDetail(announcement.detail)

@@ -6,10 +6,10 @@ class WhenAnnouncementsViewModelUpdatesAnnouncements_AnnouncementsPresenterShoul
 
     func testRebindTheNewAnnouncements() {
         let viewModel = FakeAnnouncementsListViewModel()
-        let interactor = FakeAnnouncementsInteractor(viewModel: viewModel)
+        let interactor = FakeAnnouncementsViewModelFactory(viewModel: viewModel)
         let context = AnnouncementsPresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
-        let newAnnouncements = [AnnouncementComponentViewModel].random
+        let newAnnouncements = [AnnouncementItemViewModel].random
         viewModel.simulateUpdatedAnnouncements(newAnnouncements)
 
         XCTAssertEqual(newAnnouncements.count, context.scene.capturedAnnouncementsToBind)

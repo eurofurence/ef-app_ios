@@ -3,10 +3,10 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import Foundation
 
-class AnnouncementDetailInteractorTestBuilder {
+class AnnouncementDetailViewModelFactoryTestBuilder {
 
     struct Context {
-        var interactor: AnnouncementDetailInteractor
+        var interactor: AnnouncementDetailViewModelFactory
         var markdownRenderer: StubMarkdownRenderer
         var announcement: StubAnnouncement
         var announcementsService: FakeAnnouncementsService
@@ -14,7 +14,7 @@ class AnnouncementDetailInteractorTestBuilder {
     
     private var imagePNGData: Data?
     
-    func with(imagePNGData: Data) -> AnnouncementDetailInteractorTestBuilder {
+    func with(imagePNGData: Data) -> AnnouncementDetailViewModelFactoryTestBuilder {
         self.imagePNGData = imagePNGData
         return self
     }
@@ -25,7 +25,7 @@ class AnnouncementDetailInteractorTestBuilder {
         announcement.imagePNGData = imagePNGData
         let announcementsService = FakeAnnouncementsService(announcements: [announcement])
         let markdownRenderer = StubMarkdownRenderer()
-        let interactor = DefaultAnnouncementDetailInteractor(announcementsService: announcementsService,
+        let interactor = DefaultAnnouncementDetailViewModelFactory(announcementsService: announcementsService,
                                                              markdownRenderer: markdownRenderer)
 
         return Context(interactor: interactor,
@@ -37,7 +37,7 @@ class AnnouncementDetailInteractorTestBuilder {
     func buildForMissingAnnouncement() -> Context {
         let announcementsService = FakeAnnouncementsService(announcements: [])
         let markdownRenderer = StubMarkdownRenderer()
-        let interactor = DefaultAnnouncementDetailInteractor(announcementsService: announcementsService,
+        let interactor = DefaultAnnouncementDetailViewModelFactory(announcementsService: announcementsService,
                                                              markdownRenderer: markdownRenderer)
 
         return Context(interactor: interactor,
@@ -48,10 +48,10 @@ class AnnouncementDetailInteractorTestBuilder {
 
 }
 
-extension AnnouncementDetailInteractorTestBuilder.Context {
+extension AnnouncementDetailViewModelFactoryTestBuilder.Context {
 
-    func makeViewModel() -> AnnouncementViewModel? {
-        var viewModel: AnnouncementViewModel?
+    func makeViewModel() -> AnnouncementDetailViewModel? {
+        var viewModel: AnnouncementDetailViewModel?
         interactor.makeViewModel(for: announcement.identifier) { viewModel = $0 }
 
         return viewModel

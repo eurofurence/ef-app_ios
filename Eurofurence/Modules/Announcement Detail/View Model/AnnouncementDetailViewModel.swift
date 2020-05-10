@@ -1,6 +1,6 @@
 import Foundation.NSAttributedString
 
-public struct AnnouncementViewModel {
+public struct AnnouncementDetailViewModel {
 
     public var heading: String
     public var contents: NSAttributedString

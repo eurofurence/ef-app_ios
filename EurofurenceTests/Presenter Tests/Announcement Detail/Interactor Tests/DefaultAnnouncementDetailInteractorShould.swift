@@ -2,15 +2,15 @@ import Eurofurence
 import EurofurenceModel
 import XCTest
 
-class DefaultAnnouncementDetailInteractorShould: XCTestCase {
+class DefaultAnnouncementDetailViewModelFactoryShould: XCTestCase {
 
-    var context: AnnouncementDetailInteractorTestBuilder.Context!
+    var context: AnnouncementDetailViewModelFactoryTestBuilder.Context!
 
     override func setUp() {
         super.setUp()
         
         let imagePNGData = "Strike a poke".data(using: .utf8).unsafelyUnwrapped
-        context = AnnouncementDetailInteractorTestBuilder()
+        context = AnnouncementDetailViewModelFactoryTestBuilder()
             .with(imagePNGData: imagePNGData)
             .build()
     }
@@ -31,7 +31,7 @@ class DefaultAnnouncementDetailInteractorShould: XCTestCase {
     }
     
     func testProduceInvalidAnnouncementViewModelWhenAnnouncementMissing() {
-        let context = AnnouncementDetailInteractorTestBuilder().buildForMissingAnnouncement()
+        let context = AnnouncementDetailViewModelFactoryTestBuilder().buildForMissingAnnouncement()
         let viewModel = context.makeViewModel()
         
         XCTAssertNotNil(viewModel)

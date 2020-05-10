@@ -4,13 +4,13 @@ import UIKit
 struct AnnouncementsComponentFactoryImpl: AnnouncementsComponentFactory {
 
     var announcementsSceneFactory: AnnouncementsSceneFactory
-    var announcementsInteractor: AnnouncementsInteractor
+    var announcementsViewModelFactory: AnnouncementsViewModelFactory
 
     func makeAnnouncementsComponent(_ delegate: AnnouncementsComponentDelegate) -> UIViewController {
         let scene = announcementsSceneFactory.makeAnnouncementsScene()
         _ = AnnouncementsPresenter(
             scene: scene,
-            interactor: announcementsInteractor,
+            interactor: announcementsViewModelFactory,
             delegate: delegate
         )
 

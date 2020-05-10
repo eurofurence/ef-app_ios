@@ -5,9 +5,9 @@ import Foundation
 
 class FakeAnnouncementsListViewModel: AnnouncementsListViewModel {
 
-    private(set) var announcements: [AnnouncementComponentViewModel]
+    private(set) var announcements: [AnnouncementItemViewModel]
 
-    init(announcements: [AnnouncementComponentViewModel] = .random) {
+    init(announcements: [AnnouncementItemViewModel] = .random) {
         self.announcements = announcements
     }
 
@@ -20,7 +20,7 @@ class FakeAnnouncementsListViewModel: AnnouncementsListViewModel {
         self.delegate = delegate
     }
 
-    func announcementViewModel(at index: Int) -> AnnouncementComponentViewModel {
+    func announcementViewModel(at index: Int) -> AnnouncementItemViewModel {
         return announcements[index]
     }
 
@@ -32,7 +32,7 @@ class FakeAnnouncementsListViewModel: AnnouncementsListViewModel {
 
 extension FakeAnnouncementsListViewModel {
 
-    func simulateUpdatedAnnouncements(_ newAnnouncements: [AnnouncementComponentViewModel]) {
+    func simulateUpdatedAnnouncements(_ newAnnouncements: [AnnouncementItemViewModel]) {
         self.announcements = newAnnouncements
         delegate?.announcementsViewModelDidChangeAnnouncements()
     }

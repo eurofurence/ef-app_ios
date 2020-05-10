@@ -113,7 +113,7 @@ extension DefaultNewsInteractorTestBuilder.Context {
         }
 
         private func makeExpectedAnnouncementViewModel(from announcement: Announcement) -> AnyHashable {
-            return AnnouncementComponentViewModel(title: announcement.title,
+            return AnnouncementItemViewModel(title: announcement.title,
                                                   detail: context.markdownRenderer.stubbedContents(for: announcement.content),
                                                   receivedDateTime: context.announcementDateFormatter.string(from: announcement.date),
                                                   isRead: context.announcementsService.stubbedReadAnnouncements.contains(announcement.identifier))
@@ -217,7 +217,7 @@ fileprivate extension DefaultNewsInteractorTestBuilder.Context {
             components.append(AnyHashable(userWidget))
         }
 
-        func visit(_ announcement: AnnouncementComponentViewModel) {
+        func visit(_ announcement: AnnouncementItemViewModel) {
             components.append(AnyHashable(announcement))
         }
 

@@ -1,18 +1,18 @@
 import EurofurenceModel
 import Foundation
 
-struct DefaultAnnouncementsInteractor: AnnouncementsInteractor {
+struct DefaultAnnouncementsViewModelFactory: AnnouncementsViewModelFactory {
 
     var announcementsService: AnnouncementsService
     var announcementDateFormatter: AnnouncementDateFormatter
 	var markdownRenderer: MarkdownRenderer
 
     func makeViewModel(completionHandler: @escaping (AnnouncementsListViewModel) -> Void) {
-        let viewModel = ViewModel(
-			announcementsService: announcementsService,
-			announcementDateFormatter: announcementDateFormatter,
-			markdownRenderer: markdownRenderer)
-        completionHandler(viewModel)
+        completionHandler(ViewModel(
+            announcementsService: announcementsService,
+            announcementDateFormatter: announcementDateFormatter,
+            markdownRenderer: markdownRenderer
+        ))
     }
 
     private class ViewModel: AnnouncementsListViewModel, AnnouncementsServiceObserver {
@@ -39,16 +39,18 @@ struct DefaultAnnouncementsInteractor: AnnouncementsInteractor {
             self.delegate = delegate
         }
 
-        func announcementViewModel(at index: Int) -> AnnouncementComponentViewModel {
+        func announcementViewModel(at index: Int) -> AnnouncementItemViewModel {
             let announcement = announcements[index]
             let isRead = readAnnouncements.contains(announcement.identifier)
 			let detail = markdownRenderer.render(announcement.content)
 			let receivedDateTime = announcementDateFormatter.string(from: announcement.date)
 
-            return AnnouncementComponentViewModel(title: announcement.title,
-                                                  detail: detail,
-                                                  receivedDateTime: receivedDateTime,
-                                                  isRead: isRead)
+            return AnnouncementItemViewModel(
+                title: announcement.title,
+                detail: detail,
+                receivedDateTime: receivedDateTime,
+                isRead: isRead
+            )
         }
 
         func identifierForAnnouncement(at index: Int) -> AnnouncementIdentifier {

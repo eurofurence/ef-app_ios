@@ -12,10 +12,10 @@ class CapturingAnnouncementsListViewModelDelegate: AnnouncementsListViewModelDel
 
 }
 
-class WhenPreparingViewModel_AnnouncementsInteractorShould: XCTestCase {
+class WhenPreparingViewModel_AnnouncementsViewModelFactoryShould: XCTestCase {
 
     var announcementsService: FakeAnnouncementsService!
-    var interactor: DefaultAnnouncementsInteractor!
+    var interactor: DefaultAnnouncementsViewModelFactory!
     var announcementDateFormatter: FakeAnnouncementDateFormatter!
 	var markdownRenderer: StubMarkdownRenderer!
     var announcements: [Announcement]!
@@ -29,7 +29,7 @@ class WhenPreparingViewModel_AnnouncementsInteractorShould: XCTestCase {
         announcementsService = FakeAnnouncementsService(announcements: announcements)
         announcementDateFormatter = FakeAnnouncementDateFormatter()
 		markdownRenderer = StubMarkdownRenderer()
-		interactor = DefaultAnnouncementsInteractor(announcementsService: announcementsService, announcementDateFormatter: announcementDateFormatter, markdownRenderer: markdownRenderer)
+		interactor = DefaultAnnouncementsViewModelFactory(announcementsService: announcementsService, announcementDateFormatter: announcementDateFormatter, markdownRenderer: markdownRenderer)
     }
 
     func testIndicateTheTotalNumberOfAnnouncements() {

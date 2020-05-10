@@ -4,17 +4,17 @@ import Foundation.NSIndexPath
 
 class AnnouncementsViewModel: NewsViewModel {
 
-    var announcements: [[AnnouncementComponentViewModel]]
+    var announcements: [[AnnouncementItemViewModel]]
 
     convenience init() {
-        let announcements = (0...Int.random(upperLimit: 5) + 1).map { (_) -> [AnnouncementComponentViewModel] in
-            return [AnnouncementComponentViewModel].random
+        let announcements = (0...Int.random(upperLimit: 5) + 1).map { (_) -> [AnnouncementItemViewModel] in
+            return [AnnouncementItemViewModel].random
         }
 
         self.init(announcements: announcements)
     }
 
-    init(announcements: [[AnnouncementComponentViewModel]]) {
+    init(announcements: [[AnnouncementItemViewModel]]) {
         self.announcements = announcements
     }
 

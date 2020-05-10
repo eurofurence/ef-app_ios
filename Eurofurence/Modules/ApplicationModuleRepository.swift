@@ -106,14 +106,19 @@ struct ApplicationModuleRepository {
         let mapDetailInteractor = DefaultMapDetailInteractor(mapsService: services.maps)
         mapDetailModuleProviding = MapDetailModuleBuilder(interactor: mapDetailInteractor).build()
         
-        let announcementsInteractor = DefaultAnnouncementsInteractor(announcementsService: services.announcements,
+        let announcementsViewModelFactory = DefaultAnnouncementsViewModelFactory(announcementsService: services.announcements,
                                                                      announcementDateFormatter: FoundationAnnouncementDateFormatter.shared,
                                                                      markdownRenderer: subtleMarkdownRenderer)
-        announcementsModuleFactory = AnnouncementsComponentBuilder(announcementsInteractor: announcementsInteractor).build()
+        announcementsModuleFactory = AnnouncementsComponentBuilder(announcementsViewModelFactory: announcementsViewModelFactory).build()
         
-        let announcementDetailInteractor = DefaultAnnouncementDetailInteractor(announcementsService: services.announcements,
-                                                                               markdownRenderer: defaultMarkdownRenderer)
-        announcementDetailComponentFactory = AnnouncementDetailComponentBuilder(announcementDetailInteractor: announcementDetailInteractor).build()
+        let announcementDetailViewModelFactory = DefaultAnnouncementDetailViewModelFactory(
+            announcementsService: services.announcements,
+            markdownRenderer: defaultMarkdownRenderer
+        )
+        
+        announcementDetailComponentFactory = AnnouncementDetailComponentBuilder(
+            announcementDetailViewModelFactory: announcementDetailViewModelFactory
+        ).build()
         
         let eventIntentDonor = ConcreteEventIntentDonor()
         let eventInteractionRecorder = SystemEventInteractionsRecorder(

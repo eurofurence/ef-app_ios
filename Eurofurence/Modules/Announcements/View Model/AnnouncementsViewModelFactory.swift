@@ -1,6 +1,6 @@
 import Foundation
 
-protocol AnnouncementsInteractor {
+protocol AnnouncementsViewModelFactory {
 
     func makeViewModel(completionHandler: @escaping (AnnouncementsListViewModel) -> Void)
 

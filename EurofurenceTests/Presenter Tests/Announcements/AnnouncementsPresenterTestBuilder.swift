@@ -20,22 +20,22 @@ class AnnouncementsPresenterTestBuilder {
         var delegate: CapturingAnnouncementsComponentDelegate
     }
 
-    private var announcementsInteractor: AnnouncementsInteractor
+    private var announcementsViewModelFactory: AnnouncementsViewModelFactory
 
     init() {
-        announcementsInteractor = FakeAnnouncementsInteractor()
+        announcementsViewModelFactory = FakeAnnouncementsViewModelFactory()
     }
 
     @discardableResult
-    func with(_ announcementsInteractor: AnnouncementsInteractor) -> AnnouncementsPresenterTestBuilder {
-        self.announcementsInteractor = announcementsInteractor
+    func with(_ announcementsViewModelFactory: AnnouncementsViewModelFactory) -> AnnouncementsPresenterTestBuilder {
+        self.announcementsViewModelFactory = announcementsViewModelFactory
         return self
     }
 
     func build() -> Context {
         let sceneFactory = StubAnnouncementsSceneFactory()
         let delegate = CapturingAnnouncementsComponentDelegate()
-        let module = AnnouncementsComponentBuilder(announcementsInteractor: announcementsInteractor)
+        let module = AnnouncementsComponentBuilder(announcementsViewModelFactory: announcementsViewModelFactory)
             .with(sceneFactory)
             .build()
             .makeAnnouncementsComponent(delegate)

@@ -4,10 +4,10 @@ import UIKit
 class AnnouncementsComponentBuilder {
 
     private var announcementsSceneFactory: AnnouncementsSceneFactory
-    private var announcementsInteractor: AnnouncementsInteractor
+    private var announcementsViewModelFactory: AnnouncementsViewModelFactory
 
-    init(announcementsInteractor: AnnouncementsInteractor) {
-        self.announcementsInteractor = announcementsInteractor
+    init(announcementsViewModelFactory: AnnouncementsViewModelFactory) {
+        self.announcementsViewModelFactory = announcementsViewModelFactory
         announcementsSceneFactory = StoryboardAnnouncementsSceneFactory()
     }
     
@@ -20,7 +20,7 @@ class AnnouncementsComponentBuilder {
     func build() -> AnnouncementsComponentFactory {
         AnnouncementsComponentFactoryImpl(
             announcementsSceneFactory: announcementsSceneFactory,
-            announcementsInteractor: announcementsInteractor
+            announcementsViewModelFactory: announcementsViewModelFactory
         )
     }
 

@@ -23,11 +23,11 @@ class AnnouncementsPresenter: AnnouncementsSceneDelegate, AnnouncementsListViewM
     }
 
     private let scene: AnnouncementsScene
-    private let interactor: AnnouncementsInteractor
+    private let interactor: AnnouncementsViewModelFactory
     private let delegate: AnnouncementsComponentDelegate
     private var viewModel: AnnouncementsListViewModel?
 
-    init(scene: AnnouncementsScene, interactor: AnnouncementsInteractor, delegate: AnnouncementsComponentDelegate) {
+    init(scene: AnnouncementsScene, interactor: AnnouncementsViewModelFactory, delegate: AnnouncementsComponentDelegate) {
         self.scene = scene
         self.interactor = interactor
         self.delegate = delegate

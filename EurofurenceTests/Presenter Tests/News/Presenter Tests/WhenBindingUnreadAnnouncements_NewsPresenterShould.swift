@@ -5,7 +5,7 @@ import XCTest
 class WhenBindingUnreadAnnouncements_NewsPresenterShould: XCTestCase {
 
     func testTellTheBoundAnnouncementComponentToShowTheUnreadIndicator() {
-        var announcement = AnnouncementComponentViewModel.random
+        var announcement = AnnouncementItemViewModel.random
         announcement.isRead = false
         let announcements = [announcement]
         let viewModel = AnnouncementsViewModel(announcements: [announcements])
@@ -20,7 +20,7 @@ class WhenBindingUnreadAnnouncements_NewsPresenterShould: XCTestCase {
     }
 
     func testNotTellTheBoundAnnouncementComponentToHideTheUnreadIndicator() {
-        var announcement = AnnouncementComponentViewModel.random
+        var announcement = AnnouncementItemViewModel.random
         announcement.isRead = false
         let announcements = [announcement]
         let viewModel = AnnouncementsViewModel(announcements: [announcements])

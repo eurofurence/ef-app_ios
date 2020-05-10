@@ -2,7 +2,7 @@
 import EurofurenceModel
 import Foundation
 
-struct FakeAnnouncementsInteractor: AnnouncementsInteractor {
+struct FakeAnnouncementsViewModelFactory: AnnouncementsViewModelFactory {
 
     private let viewModel: AnnouncementsListViewModel
 
