@@ -1065,9 +1065,7 @@
 		CAF1983824688EAB005DFBBE /* WhenFetchingIdentifierForSearchResult_DealersViewModelFactoryShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF196B724688EA9005DFBBE /* WhenFetchingIdentifierForSearchResult_DealersViewModelFactoryShould.swift */; };
 		CAF1983924688EAB005DFBBE /* WhenProducingCategoriesViewModel_DealersViewModelFactoryShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF196B824688EA9005DFBBE /* WhenProducingCategoriesViewModel_DealersViewModelFactoryShould.swift */; };
 		CAF1983A24688EAB005DFBBE /* AdditionalServicesPresenterTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF196BB24688EAA005DFBBE /* AdditionalServicesPresenterTestBuilder.swift */; };
-		CAF1983B24688EAB005DFBBE /* WhenBuildingAdditionalServicesModule_PresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF196BC24688EAA005DFBBE /* WhenBuildingAdditionalServicesModule_PresenterShould.swift */; };
-		CAF1983C24688EAB005DFBBE /* BeforeAdditionalServicesSceneLoads_PresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF196BD24688EAA005DFBBE /* BeforeAdditionalServicesSceneLoads_PresenterShould.swift */; };
-		CAF1983D24688EAB005DFBBE /* WhenAdditionalServicesSceneLoads_PresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF196BE24688EAA005DFBBE /* WhenAdditionalServicesSceneLoads_PresenterShould.swift */; };
+		CAF1983B24688EAB005DFBBE /* AdditionalServicesPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF196BC24688EAA005DFBBE /* AdditionalServicesPresenterTests.swift */; };
 		CAF3C7441F9F5C550008F027 /* NewsComponentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C7431F9F5C550008F027 /* NewsComponentFactory.swift */; };
 		CAF3C7481F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C7471F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift */; };
 		CAF3C74C1F9F619C0008F027 /* NewsComponentFactoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C74B1F9F619C0008F027 /* NewsComponentFactoryImpl.swift */; };
@@ -2247,9 +2245,7 @@
 		CAF196B724688EA9005DFBBE /* WhenFetchingIdentifierForSearchResult_DealersViewModelFactoryShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenFetchingIdentifierForSearchResult_DealersViewModelFactoryShould.swift; sourceTree = "<group>"; };
 		CAF196B824688EA9005DFBBE /* WhenProducingCategoriesViewModel_DealersViewModelFactoryShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenProducingCategoriesViewModel_DealersViewModelFactoryShould.swift; sourceTree = "<group>"; };
 		CAF196BB24688EAA005DFBBE /* AdditionalServicesPresenterTestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdditionalServicesPresenterTestBuilder.swift; sourceTree = "<group>"; };
-		CAF196BC24688EAA005DFBBE /* WhenBuildingAdditionalServicesModule_PresenterShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenBuildingAdditionalServicesModule_PresenterShould.swift; sourceTree = "<group>"; };
-		CAF196BD24688EAA005DFBBE /* BeforeAdditionalServicesSceneLoads_PresenterShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeforeAdditionalServicesSceneLoads_PresenterShould.swift; sourceTree = "<group>"; };
-		CAF196BE24688EAA005DFBBE /* WhenAdditionalServicesSceneLoads_PresenterShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenAdditionalServicesSceneLoads_PresenterShould.swift; sourceTree = "<group>"; };
+		CAF196BC24688EAA005DFBBE /* AdditionalServicesPresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdditionalServicesPresenterTests.swift; sourceTree = "<group>"; };
 		CAF3C7431F9F5C550008F027 /* NewsComponentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsComponentFactory.swift; sourceTree = "<group>"; };
 		CAF3C7471F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingNewsModuleDelegate.swift; sourceTree = "<group>"; };
 		CAF3C74B1F9F619C0008F027 /* NewsComponentFactoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsComponentFactoryImpl.swift; sourceTree = "<group>"; };
@@ -6186,9 +6182,7 @@
 			isa = PBXGroup;
 			children = (
 				CAF196BB24688EAA005DFBBE /* AdditionalServicesPresenterTestBuilder.swift */,
-				CAF196BD24688EAA005DFBBE /* BeforeAdditionalServicesSceneLoads_PresenterShould.swift */,
-				CAF196BE24688EAA005DFBBE /* WhenAdditionalServicesSceneLoads_PresenterShould.swift */,
-				CAF196BC24688EAA005DFBBE /* WhenBuildingAdditionalServicesModule_PresenterShould.swift */,
+				CAF196BC24688EAA005DFBBE /* AdditionalServicesPresenterTests.swift */,
 			);
 			path = "Presenter Tests";
 			sourceTree = "<group>";
@@ -7394,7 +7388,6 @@
 				CAF196F624688EAA005DFBBE /* CapturingScheduleSearchViewModel.swift in Sources */,
 				CAF197AE24688EAA005DFBBE /* WhenNewsSceneDidLoad.swift in Sources */,
 				CA630C0322A068DC00754C27 /* StubEventIntentDefinitionProviding.swift in Sources */,
-				CAF1983C24688EAB005DFBBE /* BeforeAdditionalServicesSceneLoads_PresenterShould.swift in Sources */,
 				CAF81C6A20DDA10C00898C52 /* DealerDetailAboutTheArtViewModel+RandomValueProviding.swift in Sources */,
 				CAF197EE24688EAB005DFBBE /* DefaultKnowledgeGroupsViewModelFactoryTests.swift in Sources */,
 				CAF196DB24688EAA005DFBBE /* WhenFavouritedEventBecomesNonFavourite_SchedulePresenterShould.swift in Sources */,
@@ -7687,7 +7680,7 @@
 				CAF197C124688EAA005DFBBE /* WhenPreparingAnnouncementViewModel_ForReadAnnouncement_NewsViewModelProducerShould.swift in Sources */,
 				CAF196C724688EAA005DFBBE /* CapturingMapComponent.swift in Sources */,
 				CAF1976424688EAA005DFBBE /* DownMarkdownRendererTest.swift in Sources */,
-				CAF1983B24688EAB005DFBBE /* WhenBuildingAdditionalServicesModule_PresenterShould.swift in Sources */,
+				CAF1983B24688EAB005DFBBE /* AdditionalServicesPresenterTests.swift in Sources */,
 				CAF197B024688EAA005DFBBE /* WhenBindingUserWithUnreadMessages_NewsPresenterShould.swift in Sources */,
 				CAF197DB24688EAA005DFBBE /* FakeDayOfWeekFormatter.swift in Sources */,
 				CAF1975D24688EAA005DFBBE /* CapturingAnnouncementComponent.swift in Sources */,
@@ -7814,7 +7807,6 @@
 				CAF1973824688EAA005DFBBE /* KnowledgeGroupEntriesPresenterTestBuilder.swift in Sources */,
 				CAA28895245D6A060090B663 /* LoginRouteTests.swift in Sources */,
 				CAF197A324688EAA005DFBBE /* WhenBindingUnreadAnnouncements_NewsPresenterShould.swift in Sources */,
-				CAF1983D24688EAB005DFBBE /* WhenAdditionalServicesSceneLoads_PresenterShould.swift in Sources */,
 				CAF1981324688EAB005DFBBE /* WhenBindingDealerComponent_ForDealerWithAfterDarkContent_DealersPresenterShould.swift in Sources */,
 				CAF196FC24688EAA005DFBBE /* StubScheduleSceneFactory.swift in Sources */,
 				CAF196E324688EAA005DFBBE /* SchedulePresenterTestBuilder.swift in Sources */,
