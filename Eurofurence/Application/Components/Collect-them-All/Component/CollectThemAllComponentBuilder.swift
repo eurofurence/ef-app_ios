@@ -1,23 +1,23 @@
 import EurofurenceModel
 import UIKit
 
-class CollectThemAllComponentBuilder {
+public class CollectThemAllComponentBuilder {
 
     private var sceneFactory: HybridWebSceneFactory
     private let service: CollectThemAllService
 
-    init(service: CollectThemAllService) {
+    public init(service: CollectThemAllService) {
         self.service = service
         sceneFactory = StoryboardHybridWebSceneFactory()
     }
 
     @discardableResult
-    func with(_ sceneFactory: HybridWebSceneFactory) -> CollectThemAllComponentBuilder {
+    public func with(_ sceneFactory: HybridWebSceneFactory) -> Self {
         self.sceneFactory = sceneFactory
         return self
     }
 
-    func build() -> CollectThemAllComponentFactory {
+    public func build() -> CollectThemAllComponentFactory {
         CollectThemAllComponentFactoryImpl(sceneFactory: sceneFactory, service: service)
     }
 
