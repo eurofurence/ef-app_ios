@@ -5,7 +5,7 @@ class ModuleSwappingPrincipalWindowSceneTests: XCTestCase {
     
     var windowWireframe: CapturingWindowWireframe!
     var tutorialModule: StubTutorialModuleFactory!
-    var preloadModule: StubPreloadModuleFactory!
+    var preloadModule: StubPreloadComponentFactoryImplFactory!
     var principalContentModule: StubPrincipalContentModuleProviding!
     var windowScene: ModuleSwappingPrincipalWindowScene!
     
@@ -14,7 +14,7 @@ class ModuleSwappingPrincipalWindowSceneTests: XCTestCase {
         
         windowWireframe = CapturingWindowWireframe()
         tutorialModule = StubTutorialModuleFactory()
-        preloadModule = StubPreloadModuleFactory()
+        preloadModule = StubPreloadComponentFactoryImplFactory()
         principalContentModule = StubPrincipalContentModuleProviding()
         windowScene = ModuleSwappingPrincipalWindowScene(
             windowWireframe: windowWireframe,

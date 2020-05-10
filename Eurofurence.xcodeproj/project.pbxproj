@@ -912,7 +912,7 @@
 		CABA43971FCE0A5C009CB5B0 /* StubLoginSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43961FCE0A5C009CB5B0 /* StubLoginSceneFactory.swift */; };
 		CABA439D1FD576D0009CB5B0 /* MessagesComponentBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA439C1FD576D0009CB5B0 /* MessagesComponentBuilder.swift */; };
 		CABA439F1FD578E1009CB5B0 /* NewsComponentBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA439E1FD578E1009CB5B0 /* NewsComponentBuilder.swift */; };
-		CABA43A11FD57A78009CB5B0 /* PreloadModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43A01FD57A78009CB5B0 /* PreloadModuleBuilder.swift */; };
+		CABA43A11FD57A78009CB5B0 /* PreloadComponentBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43A01FD57A78009CB5B0 /* PreloadComponentBuilder.swift */; };
 		CABA43A31FD57C65009CB5B0 /* TutorialModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43A21FD57C65009CB5B0 /* TutorialModuleBuilder.swift */; };
 		CABA43AC1FD5DC68009CB5B0 /* LoginScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43AB1FD5DC68009CB5B0 /* LoginScene.swift */; };
 		CABA83F420CE988B00DD0795 /* WhenFavouritingEventViewModel_EventDetailViewModelFactoryShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA83F320CE988B00DD0795 /* WhenFavouritingEventViewModel_EventDetailViewModelFactoryShould.swift */; };
@@ -1053,7 +1053,7 @@
 		CADABEFA211504310023C3B6 /* WhenShowingMapContents_ForPositionWithMultipleOptions_MapDetailInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADABEF9211504310023C3B6 /* WhenShowingMapContents_ForPositionWithMultipleOptions_MapDetailInteractorShould.swift */; };
 		CADABF042118E08D0023C3B6 /* MapContextualContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADABF032118E08D0023C3B6 /* MapContextualContentViewController.swift */; };
 		CAE27B4E1F85611C005FDE39 /* PhoneTutorialModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE27B4D1F85611C005FDE39 /* PhoneTutorialModuleFactory.swift */; };
-		CAE27B501F857A99005FDE39 /* PreloadModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE27B4F1F857A99005FDE39 /* PreloadModule.swift */; };
+		CAE27B501F857A99005FDE39 /* PreloadComponentFactoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE27B4F1F857A99005FDE39 /* PreloadComponentFactoryImpl.swift */; };
 		CAE8879122690139001464C1 /* WhenEventIsAcceptingFeedback_EventDetailViewModelFactoryShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE8879022690139001464C1 /* WhenEventIsAcceptingFeedback_EventDetailViewModelFactoryShould.swift */; };
 		CAE8879322690263001464C1 /* LeaveFeedbackActionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE8879222690263001464C1 /* LeaveFeedbackActionViewModel.swift */; };
 		CAE8879522690358001464C1 /* WhenEventIsNotAcceptingFeedback_EventDetailViewModelFactoryShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE8879422690358001464C1 /* WhenEventIsNotAcceptingFeedback_EventDetailViewModelFactoryShould.swift */; };
@@ -1072,7 +1072,7 @@
 		CAF3C74E1F9FC72C0008F027 /* StubNewsSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C74D1F9FC72C0008F027 /* StubNewsSceneFactory.swift */; };
 		CAF3C7501F9FC74C0008F027 /* NewsSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C74F1F9FC74C0008F027 /* NewsSceneFactory.swift */; };
 		CAF705681F82D13F00A9FEA2 /* TutorialModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF705671F82D13F00A9FEA2 /* TutorialModuleProviding.swift */; };
-		CAF7056A1F82D15D00A9FEA2 /* PreloadModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF705691F82D15D00A9FEA2 /* PreloadModuleProviding.swift */; };
+		CAF7056A1F82D15D00A9FEA2 /* PreloadComponentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF705691F82D15D00A9FEA2 /* PreloadComponentFactory.swift */; };
 		CAF81C5720DD208100898C52 /* DealerDetailLocationAndAvailabilityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF81C5620DD208100898C52 /* DealerDetailLocationAndAvailabilityTableViewCell.swift */; };
 		CAF81C5920DD23AC00898C52 /* WhenBindingDealerLocationAndAvailabilityWithMissingAttributes_DealerDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF81C5820DD23AC00898C52 /* WhenBindingDealerLocationAndAvailabilityWithMissingAttributes_DealerDetailPresenterShould.swift */; };
 		CAF81C5E20DD91B700898C52 /* WhenBindingAboutTheArtistComponent_DealerDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF81C5D20DD91B700898C52 /* WhenBindingAboutTheArtistComponent_DealerDetailPresenterShould.swift */; };
@@ -2097,7 +2097,7 @@
 		CABA43961FCE0A5C009CB5B0 /* StubLoginSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubLoginSceneFactory.swift; sourceTree = "<group>"; };
 		CABA439C1FD576D0009CB5B0 /* MessagesComponentBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesComponentBuilder.swift; sourceTree = "<group>"; };
 		CABA439E1FD578E1009CB5B0 /* NewsComponentBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsComponentBuilder.swift; sourceTree = "<group>"; };
-		CABA43A01FD57A78009CB5B0 /* PreloadModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadModuleBuilder.swift; sourceTree = "<group>"; };
+		CABA43A01FD57A78009CB5B0 /* PreloadComponentBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadComponentBuilder.swift; sourceTree = "<group>"; };
 		CABA43A21FD57C65009CB5B0 /* TutorialModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialModuleBuilder.swift; sourceTree = "<group>"; };
 		CABA43AB1FD5DC68009CB5B0 /* LoginScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScene.swift; sourceTree = "<group>"; };
 		CABA83F320CE988B00DD0795 /* WhenFavouritingEventViewModel_EventDetailViewModelFactoryShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFavouritingEventViewModel_EventDetailViewModelFactoryShould.swift; sourceTree = "<group>"; };
@@ -2239,7 +2239,7 @@
 		CADABEF9211504310023C3B6 /* WhenShowingMapContents_ForPositionWithMultipleOptions_MapDetailInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenShowingMapContents_ForPositionWithMultipleOptions_MapDetailInteractorShould.swift; sourceTree = "<group>"; };
 		CADABF032118E08D0023C3B6 /* MapContextualContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapContextualContentViewController.swift; sourceTree = "<group>"; };
 		CAE27B4D1F85611C005FDE39 /* PhoneTutorialModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneTutorialModuleFactory.swift; sourceTree = "<group>"; };
-		CAE27B4F1F857A99005FDE39 /* PreloadModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadModule.swift; sourceTree = "<group>"; };
+		CAE27B4F1F857A99005FDE39 /* PreloadComponentFactoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadComponentFactoryImpl.swift; sourceTree = "<group>"; };
 		CAE8879022690139001464C1 /* WhenEventIsAcceptingFeedback_EventDetailViewModelFactoryShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenEventIsAcceptingFeedback_EventDetailViewModelFactoryShould.swift; sourceTree = "<group>"; };
 		CAE8879222690263001464C1 /* LeaveFeedbackActionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveFeedbackActionViewModel.swift; sourceTree = "<group>"; };
 		CAE8879422690358001464C1 /* WhenEventIsNotAcceptingFeedback_EventDetailViewModelFactoryShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenEventIsNotAcceptingFeedback_EventDetailViewModelFactoryShould.swift; sourceTree = "<group>"; };
@@ -2258,7 +2258,7 @@
 		CAF3C74D1F9FC72C0008F027 /* StubNewsSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubNewsSceneFactory.swift; sourceTree = "<group>"; };
 		CAF3C74F1F9FC74C0008F027 /* NewsSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSceneFactory.swift; sourceTree = "<group>"; };
 		CAF705671F82D13F00A9FEA2 /* TutorialModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialModuleProviding.swift; sourceTree = "<group>"; };
-		CAF705691F82D15D00A9FEA2 /* PreloadModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadModuleProviding.swift; sourceTree = "<group>"; };
+		CAF705691F82D15D00A9FEA2 /* PreloadComponentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadComponentFactory.swift; sourceTree = "<group>"; };
 		CAF81C5620DD208100898C52 /* DealerDetailLocationAndAvailabilityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailLocationAndAvailabilityTableViewCell.swift; sourceTree = "<group>"; };
 		CAF81C5820DD23AC00898C52 /* WhenBindingDealerLocationAndAvailabilityWithMissingAttributes_DealerDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingDealerLocationAndAvailabilityWithMissingAttributes_DealerDetailPresenterShould.swift; sourceTree = "<group>"; };
 		CAF81C5D20DD91B700898C52 /* WhenBindingAboutTheArtistComponent_DealerDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingAboutTheArtistComponent_DealerDetailPresenterShould.swift; sourceTree = "<group>"; };
@@ -3490,8 +3490,6 @@
 		CA321F4F1F7BC8490050E489 /* Preload */ = {
 			isa = PBXGroup;
 			children = (
-				CABA43A01FD57A78009CB5B0 /* PreloadModuleBuilder.swift */,
-				CAF705691F82D15D00A9FEA2 /* PreloadModuleProviding.swift */,
 				CA8276B1204EC002006A7419 /* Interactor */,
 				CABA43A61FD5DB42009CB5B0 /* Module */,
 				CABA43A51FD5DB23009CB5B0 /* Presenter */,
@@ -5451,11 +5449,11 @@
 		CABA43A41FD5DB1B009CB5B0 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9A861EB41F25550700B75A8C /* SplashScene.swift */,
-				CA321F501F7BC8550050E489 /* PreloadSceneFactory.swift */,
-				CA321F521F7BC88D0050E489 /* StoryboardPreloadSceneFactory.swift */,
-				CA6AA0091FD731930092C6DB /* PreloadViewController.swift */,
 				CA6AA0071FD731640092C6DB /* Preload.storyboard */,
+				CA321F501F7BC8550050E489 /* PreloadSceneFactory.swift */,
+				CA6AA0091FD731930092C6DB /* PreloadViewController.swift */,
+				9A861EB41F25550700B75A8C /* SplashScene.swift */,
+				CA321F521F7BC88D0050E489 /* StoryboardPreloadSceneFactory.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -5471,7 +5469,9 @@
 		CABA43A61FD5DB42009CB5B0 /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				CAE27B4F1F857A99005FDE39 /* PreloadModule.swift */,
+				CABA43A01FD57A78009CB5B0 /* PreloadComponentBuilder.swift */,
+				CAF705691F82D15D00A9FEA2 /* PreloadComponentFactory.swift */,
+				CAE27B4F1F857A99005FDE39 /* PreloadComponentFactoryImpl.swift */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -6843,7 +6843,7 @@
 				CA4D9358245EF2C4006FA832 /* URLDecodingChain.swift in Sources */,
 				CA7D8B27222EAB61003431A0 /* DefaultDealerDetailViewModel.swift in Sources */,
 				CA6F6531226A4D1700483EE0 /* EventFeedbackSuccessViewController.swift in Sources */,
-				CAF7056A1F82D15D00A9FEA2 /* PreloadModuleProviding.swift in Sources */,
+				CAF7056A1F82D15D00A9FEA2 /* PreloadComponentFactory.swift in Sources */,
 				CA36A47320D84DC900EE6537 /* DealerComponent.swift in Sources */,
 				CA2AA2F222C9514500C0E1A1 /* ConcreteViewDealerIntentDonor.swift in Sources */,
 				CA4D935E245EF2F3006FA832 /* ExpressibleByURL.swift in Sources */,
@@ -7071,7 +7071,7 @@
 				CA00AE7B20D1BF6D00C2FBB0 /* ScheduleDayViewModel.swift in Sources */,
 				CAEAEBFD1FE0043B00C0EE7C /* MessageDetailSceneFactory.swift in Sources */,
 				CA6EC47D2051CBB800402894 /* KnowledgeDetailSceneFactory.swift in Sources */,
-				CABA43A11FD57A78009CB5B0 /* PreloadModuleBuilder.swift in Sources */,
+				CABA43A11FD57A78009CB5B0 /* PreloadComponentBuilder.swift in Sources */,
 				CA1B6F0D20DB817400ADF414 /* DealerDetailScene.swift in Sources */,
 				CA2AA2EE22C94F7400C0E1A1 /* ViewDealerIntentDonor.swift in Sources */,
 				CACF1E8E20B352B800D904B5 /* FoundationDateRangeFormatter.swift in Sources */,
@@ -7228,7 +7228,7 @@
 				CA27619A20E01D0F000E52AC /* CollectThemAllComponentFactory.swift in Sources */,
 				CA4010A12110854E0056E16C /* DefaultKnowledgeGroupViewModelFactory.swift in Sources */,
 				CA63A755245DC3F100E4B313 /* KnowledgeGroupContentRepresentation.swift in Sources */,
-				CAE27B501F857A99005FDE39 /* PreloadModule.swift in Sources */,
+				CAE27B501F857A99005FDE39 /* PreloadComponentFactoryImpl.swift in Sources */,
 				CAA28892245C9D570090B663 /* NewsSubrouter.swift in Sources */,
 				CA3ABA09229C7B6E0045A35B /* Dictionary+Extensions.swift in Sources */,
 				CA152EF422665E7000212742 /* StoryboardEventFeedbackSceneFactory.swift in Sources */,

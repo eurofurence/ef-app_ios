@@ -1,11 +1,11 @@
 struct PreloadPresenter: SplashSceneDelegate, PreloadInteractorDelegate {
 
-    private let delegate: PreloadModuleDelegate
+    private let delegate: PreloadComponentDelegate
     private let preloadScene: SplashScene
     private let preloadService: PreloadInteractor
     private let alertRouter: AlertRouter
 
-    init(delegate: PreloadModuleDelegate,
+    init(delegate: PreloadComponentDelegate,
          preloadScene: SplashScene,
          preloadService: PreloadInteractor,
          alertRouter: AlertRouter) {

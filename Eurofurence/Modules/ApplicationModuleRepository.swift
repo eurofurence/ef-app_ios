@@ -5,7 +5,7 @@ struct ApplicationModuleRepository {
     
     let webModuleProviding: WebModuleProviding
     let tutorialModuleProviding: TutorialModuleProviding
-    let preloadModuleProviding: PreloadModuleProviding
+    let preloadComponentFactory: PreloadComponentFactory
     let newsComponentFactory: NewsComponentFactory
     let scheduleComponentFactory: ScheduleComponentFactory
     let dealersComponentFactory: DealersComponentFactory
@@ -36,7 +36,7 @@ struct ApplicationModuleRepository {
         tutorialModuleProviding = TutorialModuleBuilder(alertRouter: alertRouter).build()
         
         let preloadInteractor = ApplicationPreloadInteractor(refreshService: services.refresh)
-        preloadModuleProviding = PreloadModuleBuilder(
+        preloadComponentFactory = PreloadComponentBuilder(
             preloadInteractor: preloadInteractor,
             alertRouter: alertRouter
         ).build()

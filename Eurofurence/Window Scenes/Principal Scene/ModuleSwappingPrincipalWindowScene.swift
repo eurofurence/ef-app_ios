@@ -2,13 +2,13 @@ public struct ModuleSwappingPrincipalWindowScene: PrincipalWindowScene {
     
     private let windowWireframe: WindowWireframe
     private let tutorialModule: TutorialModuleProviding
-    private let preloadModule: PreloadModuleProviding
+    private let preloadModule: PreloadComponentFactory
     private let principalContentModule: PrincipalContentModuleProviding
     
     public init(
         windowWireframe: WindowWireframe,
         tutorialModule: TutorialModuleProviding,
-        preloadModule: PreloadModuleProviding,
+        preloadModule: PreloadComponentFactory,
         principalContentModule: PrincipalContentModuleProviding
     ) {
         self.windowWireframe = windowWireframe
@@ -26,7 +26,7 @@ public struct ModuleSwappingPrincipalWindowScene: PrincipalWindowScene {
     }
     
     public func showPreloading() {
-        let preloadController = preloadModule.makePreloadModule(
+        let preloadController = preloadModule.makePreloadComponent(
             NavigateToAppropriateModuleWhenPreloadConcludes(scene: self)
         )
         
@@ -48,7 +48,7 @@ public struct ModuleSwappingPrincipalWindowScene: PrincipalWindowScene {
         
     }
     
-    private struct NavigateToAppropriateModuleWhenPreloadConcludes: PreloadModuleDelegate {
+    private struct NavigateToAppropriateModuleWhenPreloadConcludes: PreloadComponentDelegate {
         
         let scene: ModuleSwappingPrincipalWindowScene
         
