@@ -54,7 +54,7 @@ struct RouterConfigurator {
     
     private func configureEventRoute() {
         router.add(EventContentRoute(
-            eventModuleFactory: moduleRepository.eventDetailModuleProviding,
+            eventModuleFactory: moduleRepository.eventDetailComponentFactory,
             eventDetailDelegate: LeaveFeedbackFromEventNavigator(router: router),
             contentWireframe: contentWireframe
         ))

@@ -10,7 +10,7 @@ class BeforeEventDetailSceneLoads_EventDetailPresenterShould: XCTestCase {
         let summary = EventSummaryViewModel.random
         let index = Int.random
         let viewModel = StubEventSummaryViewModel(summary: summary, at: index)
-        let interactor = FakeEventDetailInteractor(viewModel: viewModel, for: event)
+        let interactor = FakeEventDetailViewModelFactory(viewModel: viewModel, for: event)
         let context = EventDetailPresenterTestBuilder().with(interactor).build(for: event)
 
         XCTAssertNil(context.scene.stubbedEventSummaryComponent.capturedTitle)

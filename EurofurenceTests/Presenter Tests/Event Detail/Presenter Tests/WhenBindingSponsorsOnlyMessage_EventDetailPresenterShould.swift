@@ -23,7 +23,7 @@ class WhenBindingSponsorsOnlyMessage_EventDetailPresenterShould: XCTestCase {
         let message = String.random
         let sponsorsOnlyViewModel = EventSponsorsOnlyWarningViewModel(message: message)
         let viewModel = StubSponsorsOnlyEventViewModel(sponsorsOnlyWarningViewModel: sponsorsOnlyViewModel)
-        let interactor = FakeEventDetailInteractor(viewModel: viewModel, for: event)
+        let interactor = FakeEventDetailViewModelFactory(viewModel: viewModel, for: event)
         let context = EventDetailPresenterTestBuilder().with(interactor).build(for: event)
         context.simulateSceneDidLoad()
         context.scene.bindComponent(at: IndexPath(item: 0, section: 0))

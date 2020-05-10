@@ -39,7 +39,7 @@ class EventDetailViewController: UIViewController, EventDetailScene {
 
     // MARK: Private
 
-    private class TableController: NSObject, UITableViewDataSource, EventDetailComponentFactory {
+    private class TableController: NSObject, UITableViewDataSource, EventDetailItemComponentFactory {
 
         private let tableView: UITableView
         private let numberOfComponents: Int

@@ -3,12 +3,12 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import UIKit
 
-class StubEventDetailModuleFactory: EventDetailModuleProviding {
+class StubEventDetailModuleFactory: EventDetailComponentFactory {
 
     let stubInterface = UIViewController()
     private(set) var capturedModel: EventIdentifier?
-    private var delegate: EventDetailModuleDelegate?
-    func makeEventDetailModule(for event: EventIdentifier, delegate: EventDetailModuleDelegate) -> UIViewController {
+    private var delegate: EventDetailComponentDelegate?
+    func makeEventDetailComponent(for event: EventIdentifier, delegate: EventDetailComponentDelegate) -> UIViewController {
         capturedModel = event
         self.delegate = delegate
         
@@ -17,7 +17,7 @@ class StubEventDetailModuleFactory: EventDetailModuleProviding {
     
     func simulateLeaveFeedback() {
         guard let capturedModel = capturedModel else { return }
-        delegate?.eventDetailModuleDidRequestPresentationToLeaveFeedback(for: capturedModel)
+        delegate?.eventDetailComponentDidRequestPresentationToLeaveFeedback(for: capturedModel)
     }
 
 }

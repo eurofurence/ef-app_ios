@@ -2,13 +2,13 @@ import EurofurenceModel
 
 public struct EventContentRoute {
     
-    private let eventModuleFactory: EventDetailModuleProviding
-    private let eventDetailDelegate: EventDetailModuleDelegate
+    private let eventModuleFactory: EventDetailComponentFactory
+    private let eventDetailDelegate: EventDetailComponentDelegate
     private let contentWireframe: ContentWireframe
     
     public init(
-        eventModuleFactory: EventDetailModuleProviding,
-        eventDetailDelegate: EventDetailModuleDelegate,
+        eventModuleFactory: EventDetailComponentFactory,
+        eventDetailDelegate: EventDetailComponentDelegate,
         contentWireframe: ContentWireframe
     ) {
         self.eventModuleFactory = eventModuleFactory
@@ -25,7 +25,7 @@ extension EventContentRoute: ContentRoute {
     public typealias Content = EventContentRepresentation
     
     public func route(_ content: EventContentRepresentation) {
-        let contentController = eventModuleFactory.makeEventDetailModule(
+        let contentController = eventModuleFactory.makeEventDetailComponent(
             for: content.identifier,
             delegate: eventDetailDelegate
         )

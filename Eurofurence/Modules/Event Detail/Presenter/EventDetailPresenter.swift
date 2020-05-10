@@ -7,7 +7,10 @@ class EventDetailPresenter: EventDetailSceneDelegate, EventDetailViewModelDelega
 
         var viewModel: EventDetailViewModel
 
-        func bindComponent<T>(at indexPath: IndexPath, using componentFactory: T) -> T.Component where T: EventDetailComponentFactory {
+        func bindComponent<T>(
+            at indexPath: IndexPath,
+            using componentFactory: T
+        ) -> T.Component where T: EventDetailItemComponentFactory {
             let visitor = ViewModelVisitor(componentFactory: componentFactory)
             viewModel.describe(componentAt: indexPath.item, to: visitor)
 
@@ -20,7 +23,7 @@ class EventDetailPresenter: EventDetailSceneDelegate, EventDetailViewModelDelega
 
     }
 
-    private class ViewModelVisitor<T>: EventDetailViewModelVisitor where T: EventDetailComponentFactory {
+    private class ViewModelVisitor<T>: EventDetailViewModelVisitor where T: EventDetailItemComponentFactory {
 
         private let componentFactory: T
         private(set) var boundComponent: T.Component?
@@ -115,19 +118,19 @@ class EventDetailPresenter: EventDetailSceneDelegate, EventDetailViewModelDelega
     }
 
     private let scene: EventDetailScene
-    private let interactor: EventDetailInteractor
+    private let interactor: EventDetailViewModelFactory
     private let hapticEngine: SelectionChangedHaptic
     private let event: EventIdentifier
-    private let delegate: EventDetailModuleDelegate
+    private let delegate: EventDetailComponentDelegate
     private var viewModel: EventDetailViewModel?
     private let interactionRecorder: EventInteractionRecorder
     private var eventInteraction: Interaction?
 
     init(scene: EventDetailScene,
-         interactor: EventDetailInteractor,
+         interactor: EventDetailViewModelFactory,
          hapticEngine: SelectionChangedHaptic,
          event: EventIdentifier,
-         delegate: EventDetailModuleDelegate,
+         delegate: EventDetailComponentDelegate,
          interactionRecorder: EventInteractionRecorder) {
         self.scene = scene
         self.interactor = interactor
@@ -161,7 +164,7 @@ class EventDetailPresenter: EventDetailSceneDelegate, EventDetailViewModelDelega
     }
     
     func leaveFeedback() {
-        delegate.eventDetailModuleDidRequestPresentationToLeaveFeedback(for: event)
+        delegate.eventDetailComponentDidRequestPresentationToLeaveFeedback(for: event)
     }
 
     private func eventDetailViewModelReady(_ viewModel: EventDetailViewModel) {

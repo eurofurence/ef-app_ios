@@ -8,7 +8,7 @@ class WhenViewModelPrepared_EventDetailPresenterShould: XCTestCase {
     func testNotFavouriteTheViewModel() {
         let event = FakeEvent.random
         let viewModel = CapturingEventDetailViewModel()
-        let interactor = FakeEventDetailInteractor(viewModel: viewModel, for: event)
+        let interactor = FakeEventDetailViewModelFactory(viewModel: viewModel, for: event)
         let context = EventDetailPresenterTestBuilder().with(interactor).build(for: event)
         context.simulateSceneDidLoad()
 
@@ -18,7 +18,7 @@ class WhenViewModelPrepared_EventDetailPresenterShould: XCTestCase {
     func testNotUnfavouriteTheViewModel() {
         let event = FakeEvent.random
         let viewModel = CapturingEventDetailViewModel()
-        let interactor = FakeEventDetailInteractor(viewModel: viewModel, for: event)
+        let interactor = FakeEventDetailViewModelFactory(viewModel: viewModel, for: event)
         let context = EventDetailPresenterTestBuilder().with(interactor).build(for: event)
         context.simulateSceneDidLoad()
 

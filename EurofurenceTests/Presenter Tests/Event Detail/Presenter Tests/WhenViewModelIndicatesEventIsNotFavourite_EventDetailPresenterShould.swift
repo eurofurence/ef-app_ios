@@ -8,7 +8,7 @@ class WhenViewModelIndicatesEventIsNotFavourite_EventDetailPresenterShould: XCTe
     func testPlaySelectionChangedHaptic() {
         let event = FakeEvent.random
         let viewModel = CapturingEventDetailViewModel()
-        let interactor = FakeEventDetailInteractor(viewModel: viewModel, for: event)
+        let interactor = FakeEventDetailViewModelFactory(viewModel: viewModel, for: event)
         let context = EventDetailPresenterTestBuilder().with(interactor).build(for: event)
         context.simulateSceneDidLoad()
         viewModel.simulateUnfavourited()

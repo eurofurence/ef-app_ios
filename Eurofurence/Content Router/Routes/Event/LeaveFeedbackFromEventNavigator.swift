@@ -1,6 +1,6 @@
 import EurofurenceModel
 
-public struct LeaveFeedbackFromEventNavigator: EventDetailModuleDelegate {
+public struct LeaveFeedbackFromEventNavigator: EventDetailComponentDelegate {
     
     private let router: ContentRouter
     
@@ -8,7 +8,7 @@ public struct LeaveFeedbackFromEventNavigator: EventDetailModuleDelegate {
         self.router = router
     }
     
-    public func eventDetailModuleDidRequestPresentationToLeaveFeedback(for event: EventIdentifier) {
+    public func eventDetailComponentDidRequestPresentationToLeaveFeedback(for event: EventIdentifier) {
         try? router.route(EventFeedbackContentRepresentation(identifier: event))
     }
     

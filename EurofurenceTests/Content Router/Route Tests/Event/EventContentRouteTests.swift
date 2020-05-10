@@ -11,7 +11,7 @@ class EventContentRouteTests: XCTestCase {
         let contentWireframe = CapturingContentWireframe()
         let route = EventContentRoute(
             eventModuleFactory: eventModuleFactory,
-            eventDetailDelegate: CapturingEventDetailModuleDelegate(),
+            eventDetailDelegate: CapturingEventDetailComponentDelegate(),
             contentWireframe: contentWireframe
         )
         
@@ -26,7 +26,7 @@ class EventContentRouteTests: XCTestCase {
         let content = EventContentRepresentation(identifier: identifier)
         let eventModuleFactory = StubEventDetailModuleFactory()
         let contentWireframe = CapturingContentWireframe()
-        let eventDetailDelegate = CapturingEventDetailModuleDelegate()
+        let eventDetailDelegate = CapturingEventDetailComponentDelegate()
         let route = EventContentRoute(
             eventModuleFactory: eventModuleFactory,
             eventDetailDelegate: eventDetailDelegate,

@@ -70,7 +70,7 @@ class WhenBindingEventAction_EventDetailPresenterShould: XCTestCase {
         actionViewModel = FakeEventActionViewModel.random
         let viewModel = StubActionEventViewModel(actionViewModel: actionViewModel)
         let event = FakeEvent.random
-        let interactor = FakeEventDetailInteractor(viewModel: viewModel, for: event)
+        let interactor = FakeEventDetailViewModelFactory(viewModel: viewModel, for: event)
         let context = EventDetailPresenterTestBuilder().with(interactor).build(for: event)
         stubbedActionComponent = context.scene.stubbedActionComponent
         context.simulateSceneDidLoad()

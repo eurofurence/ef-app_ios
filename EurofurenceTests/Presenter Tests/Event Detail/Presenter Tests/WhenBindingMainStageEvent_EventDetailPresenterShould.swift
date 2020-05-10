@@ -23,7 +23,7 @@ class WhenBindingMainStageEvent_EventDetailPresenterShould: XCTestCase {
         let message = String.random
         let kageMessageViewModel = EventMainStageMessageViewModel(message: message)
         let viewModel = StubMainStageEventViewModel(mainStageMessageViewModel: kageMessageViewModel)
-        let interactor = FakeEventDetailInteractor(viewModel: viewModel, for: event)
+        let interactor = FakeEventDetailViewModelFactory(viewModel: viewModel, for: event)
         let context = EventDetailPresenterTestBuilder().with(interactor).build(for: event)
         context.simulateSceneDidLoad()
         context.scene.bindComponent(at: IndexPath(item: 0, section: 0))

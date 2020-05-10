@@ -21,7 +21,7 @@ struct ApplicationModuleRepository {
     let mapDetailModuleProviding: MapDetailModuleProviding
     let announcementsModuleFactory: AnnouncementsComponentFactory
     let announcementDetailComponentFactory: AnnouncementDetailComponentFactory
-    let eventDetailModuleProviding: EventDetailModuleProviding
+    let eventDetailComponentFactory: EventDetailComponentFactory
     let eventFeedbackModuleProviding: EventFeedbackModuleProviding
     let additionalServicesComponentFactory: AdditionalServicesComponentFactory
     
@@ -127,11 +127,11 @@ struct ApplicationModuleRepository {
             activityFactory: activityFactory
         )
         
-        let eventDetailInteractor = DefaultEventDetailInteractor(dateRangeFormatter: FoundationDateRangeFormatter.shared,
+        let eventDetailViewModelFactory = DefaultEventDetailViewModelFactory(dateRangeFormatter: FoundationDateRangeFormatter.shared,
                                                                  eventsService: services.events,
                                                                  markdownRenderer: DefaultDownMarkdownRenderer(),
                                                                  shareService: shareService)
-        eventDetailModuleProviding = EventDetailModuleBuilder(interactor: eventDetailInteractor, interactionRecorder: eventInteractionRecorder).build()
+        eventDetailComponentFactory = EventDetailComponentBuilder(interactor: eventDetailViewModelFactory, interactionRecorder: eventInteractionRecorder).build()
         
         let eventFeedbackPresenterFactory = EventFeedbackPresenterFactoryImpl(eventService: services.events,
                                                                               dayOfWeekFormatter: FoundationDayOfWeekFormatter.shared,
