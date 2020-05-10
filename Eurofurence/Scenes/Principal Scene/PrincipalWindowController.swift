@@ -50,8 +50,8 @@ struct PrincipalWindowController {
         ).configureRoutes()
         
         let newsContentControllerFactory = NewsContentControllerFactory(
-            newsModuleProviding: moduleRepository.newsModuleProviding,
-            newsModuleDelegate: newsSubrouter
+            newsComponentFactory: moduleRepository.newsComponentFactory,
+            newsComponentDelegate: newsSubrouter
         )
         
         let scheduleContentControllerFactory = ScheduleContentControllerFactory(

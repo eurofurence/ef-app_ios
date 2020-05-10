@@ -3,7 +3,7 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import Foundation
 
-class CapturingNewsModuleDelegate: NewsModuleDelegate {
+class CapturingNewsComponentDelegate: NewsComponentDelegate {
 
     private(set) var showPrivateMessagesRequested = false
     func newsModuleDidRequestShowingPrivateMessages() {

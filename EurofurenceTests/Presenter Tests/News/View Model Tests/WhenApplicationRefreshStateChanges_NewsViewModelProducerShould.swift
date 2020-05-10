@@ -1,9 +1,9 @@
 import XCTest
 
-class WhenApplicationRefreshStateChanges_NewsInteractorShould: XCTestCase {
+class WhenApplicationRefreshStateChanges_NewsViewModelProducerShould: XCTestCase {
 
     func testTellTheDelegateWhenTheAppBeginsRefreshing() {
-        let context = DefaultNewsInteractorTestBuilder().build()
+        let context = DefaultNewsViewModelProducerTestBuilder().build()
         context.subscribeViewModelUpdates()
         context.refreshService.simulateRefreshBegan()
 
@@ -11,7 +11,7 @@ class WhenApplicationRefreshStateChanges_NewsInteractorShould: XCTestCase {
     }
 
     func testTellTheDelegateWhenTheAppFinishesRefreshing() {
-        let context = DefaultNewsInteractorTestBuilder().build()
+        let context = DefaultNewsViewModelProducerTestBuilder().build()
         context.subscribeViewModelUpdates()
         context.refreshService.simulateRefreshFinished()
 

@@ -3,11 +3,11 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import UIKit.UIViewController
 
-class StubNewsModuleFactory: NewsModuleProviding {
+class StubNewsModuleFactory: NewsComponentFactory {
 
     let stubInterface = FakeViewController()
-    private(set) var delegate: NewsModuleDelegate?
-    func makeNewsModule(_ delegate: NewsModuleDelegate) -> UIViewController {
+    private(set) var delegate: NewsComponentDelegate?
+    func makeNewsComponent(_ delegate: NewsComponentDelegate) -> UIViewController {
         self.delegate = delegate
         return stubInterface
     }

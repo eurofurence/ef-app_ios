@@ -5,12 +5,12 @@ import XCTest
 class WhenNewsSceneDidLoad: XCTestCase {
 
     var context: NewsPresenterTestBuilder.Context!
-    var newsInteractor: FakeNewsInteractor!
+    var newsInteractor: FakeNewsViewModelProducer!
 
     override func setUp() {
         super.setUp()
 
-        newsInteractor = FakeNewsInteractor()
+        newsInteractor = FakeNewsViewModelProducer()
         context = NewsPresenterTestBuilder().with(newsInteractor).build()
         context.simulateNewsSceneDidLoad()
     }

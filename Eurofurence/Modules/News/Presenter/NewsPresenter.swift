@@ -1,6 +1,6 @@
 import Foundation
 
-class NewsPresenter: NewsSceneDelegate, NewsInteractorDelegate {
+class NewsPresenter: NewsSceneDelegate, NewsViewModelRecipient {
 
     // MARK: Nested Types
 
@@ -12,7 +12,10 @@ class NewsPresenter: NewsSceneDelegate, NewsInteractorDelegate {
             scene.setComponentTitle(viewModel.titleForComponent(at: index))
         }
 
-        func bindComponent<T>(at indexPath: IndexPath, using componentFactory: T) -> T.Component where T: NewsComponentFactory {
+        func bindComponent<T>(
+            at indexPath: IndexPath,
+            using componentFactory: T
+        ) -> T.Component where T: NewsItemComponentFactory {
             let visitor = Visitor(componentFactory: componentFactory)
             viewModel.describeComponent(at: indexPath, to: visitor)
 
@@ -25,7 +28,7 @@ class NewsPresenter: NewsSceneDelegate, NewsInteractorDelegate {
 
     }
 
-    private class Visitor<T>: NewsViewModelVisitor where T: NewsComponentFactory {
+    private class Visitor<T>: NewsViewModelVisitor where T: NewsItemComponentFactory {
 
         private let componentFactory: T
         private(set) var boundComponent: T.Component!
@@ -136,16 +139,16 @@ class NewsPresenter: NewsSceneDelegate, NewsInteractorDelegate {
 
     // MARK: Properties
 
-    private let delegate: NewsModuleDelegate
+    private let delegate: NewsComponentDelegate
     private let newsScene: NewsScene
-    private let newsInteractor: NewsInteractor
+    private let newsInteractor: NewsViewModelProducer
     private var viewModel: NewsViewModel?
 
     // MARK: Initialization
 
-    init(delegate: NewsModuleDelegate,
+    init(delegate: NewsComponentDelegate,
          newsScene: NewsScene,
-         newsInteractor: NewsInteractor) {
+         newsInteractor: NewsViewModelProducer) {
         self.delegate = delegate
         self.newsScene = newsScene
         self.newsInteractor = newsInteractor
@@ -182,7 +185,7 @@ class NewsPresenter: NewsSceneDelegate, NewsInteractorDelegate {
         newsInteractor.refresh()
     }
 
-    // MARK: NewsInteractorDelegate
+    // MARK: NewsViewModelRecipient
 
     func viewModelDidUpdate(_ viewModel: NewsViewModel) {
         self.viewModel = viewModel

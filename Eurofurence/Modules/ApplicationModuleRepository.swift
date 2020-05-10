@@ -6,7 +6,7 @@ struct ApplicationModuleRepository {
     let webModuleProviding: WebModuleProviding
     let tutorialModuleProviding: TutorialModuleProviding
     let preloadModuleProviding: PreloadModuleProviding
-    let newsModuleProviding: NewsModuleProviding
+    let newsComponentFactory: NewsComponentFactory
     let scheduleComponentFactory: ScheduleComponentFactory
     let dealersComponentFactory: DealersComponentFactory
     let dealerDetailModuleProviding: DealerDetailComponentFactory
@@ -41,7 +41,7 @@ struct ApplicationModuleRepository {
             alertRouter: alertRouter
         ).build()
         
-        let newsInteractor = DefaultNewsInteractor(announcementsService: services.announcements,
+        let newsInteractor = DefaultNewsViewModelProducer(announcementsService: services.announcements,
                                                    authenticationService: services.authentication,
                                                    privateMessagesService: services.privateMessages,
                                                    daysUntilConventionService: services.conventionCountdown,
@@ -52,7 +52,7 @@ struct ApplicationModuleRepository {
                                                    refreshService: services.refresh,
                                                    announcementsDateFormatter: FoundationAnnouncementDateFormatter.shared,
                                                    announcementsMarkdownRenderer: subtleMarkdownRenderer)
-        newsModuleProviding = NewsModuleBuilder(newsInteractor: newsInteractor).build()
+        newsComponentFactory = NewsComponentBuilder(newsInteractor: newsInteractor).build()
         
         let scheduleInteractor = DefaultScheduleInteractor(eventsService: services.events,
                                                            hoursDateFormatter: FoundationHoursDateFormatter.shared,

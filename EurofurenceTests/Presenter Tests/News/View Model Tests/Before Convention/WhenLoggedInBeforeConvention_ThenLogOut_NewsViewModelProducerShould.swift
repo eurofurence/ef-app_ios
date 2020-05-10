@@ -3,11 +3,11 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import XCTest
 
-class WhenLoggedInBeforeConvention_ThenLogOut_NewsInteractorShould: XCTestCase {
+class WhenLoggedInBeforeConvention_ThenLogOut_NewsViewModelProducerShould: XCTestCase {
 
     func testUpdateTheDelegateWithLoggedOutUserWidget() {
         let authenticationService = FakeAuthenticationService.loggedInService()
-        let context = DefaultNewsInteractorTestBuilder()
+        let context = DefaultNewsViewModelProducerTestBuilder()
             .with(FakeAnnouncementsService(announcements: [StubAnnouncement].random))
             .with(authenticationService)
             .build()

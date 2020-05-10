@@ -3,7 +3,7 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import XCTest
 
-class WhenLoggedOutDuringConvention_WithNoRunningEvents_NewsInteractorShould: XCTestCase {
+class WhenLoggedOutDuringConvention_WithNoRunningEvents_NewsViewModelProducerShould: XCTestCase {
 
     func testProduceViewModelWithMessagesPrompt_Announcements_UpcomingEvents_AndFavouriteEvents() {
         let eventsService = FakeEventsService()
@@ -11,7 +11,7 @@ class WhenLoggedOutDuringConvention_WithNoRunningEvents_NewsInteractorShould: XC
         eventsService.runningEvents = runningEvents
         eventsService.upcomingEvents = [FakeEvent].random(minimum: 1)
         eventsService.stubSomeFavouriteEvents()
-        let context = DefaultNewsInteractorTestBuilder()
+        let context = DefaultNewsViewModelProducerTestBuilder()
             .with(FakeAuthenticationService.loggedOutService())
             .with(FakeAnnouncementsService(announcements: [StubAnnouncement].random))
             .with(StubConventionCountdownService(countdownState: .countdownElapsed))

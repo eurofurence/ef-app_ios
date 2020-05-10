@@ -1,13 +1,13 @@
 import EurofurenceModel
 import UIKit.UIViewController
 
-protocol NewsModuleProviding {
+protocol NewsComponentFactory {
 
-    func makeNewsModule(_ delegate: NewsModuleDelegate) -> UIViewController
+    func makeNewsComponent(_ delegate: NewsComponentDelegate) -> UIViewController
 
 }
 
-public protocol NewsModuleDelegate {
+public protocol NewsComponentDelegate {
 
     func newsModuleDidRequestShowingPrivateMessages()
     func newsModuleDidSelectAnnouncement(_ announcement: AnnouncementIdentifier)

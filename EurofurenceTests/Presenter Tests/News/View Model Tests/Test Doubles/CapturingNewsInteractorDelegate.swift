@@ -2,7 +2,7 @@
 import EurofurenceModel
 import Foundation.NSIndexPath
 
-class CapturingNewsInteractorDelegate: NewsInteractorDelegate {
+class CapturingNewsViewModelRecipient: NewsViewModelRecipient {
 
     private(set) var viewModel: NewsViewModel?
     func viewModelDidUpdate(_ viewModel: NewsViewModel) {

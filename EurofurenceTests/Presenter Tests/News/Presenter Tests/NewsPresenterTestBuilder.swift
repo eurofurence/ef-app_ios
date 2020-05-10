@@ -9,32 +9,32 @@ class NewsPresenterTestBuilder {
         var module: UIViewController
         var sceneFactory: StubNewsSceneFactory
         var newsScene: CapturingNewsScene
-        var delegate: CapturingNewsModuleDelegate
-        var newsInteractor: NewsInteractor
+        var delegate: CapturingNewsComponentDelegate
+        var newsInteractor: NewsViewModelProducer
 
     }
 
     private var sceneFactory: StubNewsSceneFactory
-    private var delegate: CapturingNewsModuleDelegate
-    private var newsInteractor: NewsInteractor
+    private var delegate: CapturingNewsComponentDelegate
+    private var newsInteractor: NewsViewModelProducer
 
     init() {
         sceneFactory = StubNewsSceneFactory()
-        delegate = CapturingNewsModuleDelegate()
-        newsInteractor = FakeNewsInteractor()
+        delegate = CapturingNewsComponentDelegate()
+        newsInteractor = FakeNewsViewModelProducer()
     }
 
     @discardableResult
-    func with(_ newsInteractor: NewsInteractor) -> NewsPresenterTestBuilder {
+    func with(_ newsInteractor: NewsViewModelProducer) -> NewsPresenterTestBuilder {
         self.newsInteractor = newsInteractor
         return self
     }
 
     func build() -> Context {
-        let module = NewsModuleBuilder(newsInteractor: newsInteractor)
+        let module = NewsComponentBuilder(newsInteractor: newsInteractor)
             .with(sceneFactory)
             .build()
-            .makeNewsModule(delegate)
+            .makeNewsComponent(delegate)
 
         return Context(module: module,
                        sceneFactory: sceneFactory,
@@ -50,7 +50,7 @@ extension NewsPresenterTestBuilder {
     static func buildForAssertingAgainstEventComponent(eventViewModel: EventComponentViewModel) -> CapturingScheduleEventComponent {
         let viewModel = SingleEventNewsViewModel(event: eventViewModel)
         let indexPath = IndexPath(item: 0, section: 0)
-        let newsInteractor = StubNewsInteractor(viewModel: viewModel)
+        let newsInteractor = StubNewsViewModelProducer(viewModel: viewModel)
         let context = NewsPresenterTestBuilder().with(newsInteractor).build()
         context.simulateNewsSceneDidLoad()
         context.bindSceneComponent(at: indexPath)

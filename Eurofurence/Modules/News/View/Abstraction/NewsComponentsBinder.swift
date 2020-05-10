@@ -3,11 +3,14 @@ import Foundation.NSIndexPath
 protocol NewsComponentsBinder {
 
     func bindTitleForSection(at index: Int, scene: NewsComponentHeaderScene)
-    func bindComponent<T>(at indexPath: IndexPath, using componentFactory: T) -> T.Component where T: NewsComponentFactory
+    func bindComponent<T>(
+        at indexPath: IndexPath,
+        using componentFactory: T
+    ) -> T.Component where T: NewsItemComponentFactory
 
 }
 
-protocol NewsComponentFactory {
+protocol NewsItemComponentFactory {
 
     associatedtype Component
 

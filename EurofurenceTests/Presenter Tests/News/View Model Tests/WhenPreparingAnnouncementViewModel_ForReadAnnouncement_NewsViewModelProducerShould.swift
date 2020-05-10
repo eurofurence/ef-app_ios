@@ -3,13 +3,13 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import XCTest
 
-class WhenPreparingAnnouncementViewModel_ForReadAnnouncement_NewsInteractorShould: XCTestCase {
+class WhenPreparingAnnouncementViewModel_ForReadAnnouncement_NewsViewModelProducerShould: XCTestCase {
 
     func testPrepareViewModelWithReadStatus() {
         let announcement = StubAnnouncement.random
         let announcementsService = FakeAnnouncementsService(announcements: [announcement],
                                                             stubbedReadAnnouncements: [announcement.identifier])
-        let context = DefaultNewsInteractorTestBuilder().with(announcementsService).build()
+        let context = DefaultNewsViewModelProducerTestBuilder().with(announcementsService).build()
         context.subscribeViewModelUpdates()
 
         context

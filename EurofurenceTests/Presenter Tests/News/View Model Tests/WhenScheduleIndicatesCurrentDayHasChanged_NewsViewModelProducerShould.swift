@@ -3,11 +3,11 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import XCTest
 
-class WhenScheduleIndicatesCurrentDayHasChanged_NewsInteractorShould: XCTestCase {
+class WhenScheduleIndicatesCurrentDayHasChanged_NewsViewModelProducerShould: XCTestCase {
 
     func testRestrictTheEventsToTheCurrentDay() {
         let eventsService = FakeEventsService()
-        let context = DefaultNewsInteractorTestBuilder().with(eventsService).build()
+        let context = DefaultNewsViewModelProducerTestBuilder().with(eventsService).build()
         context.subscribeViewModelUpdates()
         let day = Day.random
         eventsService.lastProducedSchedule?.simulateDayChanged(to: day)
@@ -17,7 +17,7 @@ class WhenScheduleIndicatesCurrentDayHasChanged_NewsInteractorShould: XCTestCase
 
     func testNotIncludeFavouritesSectionWhenDayIsNil() {
         let eventsService = FakeEventsService()
-        let context = DefaultNewsInteractorTestBuilder().with(eventsService).build()
+        let context = DefaultNewsViewModelProducerTestBuilder().with(eventsService).build()
         context.subscribeViewModelUpdates()
         eventsService.lastProducedSchedule?.simulateDayChanged(to: nil)
 

@@ -3,11 +3,11 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import Foundation
 
-class DefaultNewsInteractorTestBuilder {
+class DefaultNewsViewModelProducerTestBuilder {
 
     struct Context {
-        var interactor: DefaultNewsInteractor
-        var delegate: CapturingNewsInteractorDelegate
+        var interactor: DefaultNewsViewModelProducer
+        var delegate: CapturingNewsViewModelRecipient
         var relativeTimeFormatter: FakeRelativeTimeIntervalCountdownFormatter
         var hoursDateFormatter: FakeHoursDateFormatter
         var authenticationService: FakeAuthenticationService
@@ -36,31 +36,31 @@ class DefaultNewsInteractorTestBuilder {
     }
 
     @discardableResult
-    func with(_ announcementsService: FakeAnnouncementsService) -> DefaultNewsInteractorTestBuilder {
+    func with(_ announcementsService: FakeAnnouncementsService) -> DefaultNewsViewModelProducerTestBuilder {
         self.announcementsService = announcementsService
         return self
     }
 
     @discardableResult
-    func with(_ authService: FakeAuthenticationService) -> DefaultNewsInteractorTestBuilder {
+    func with(_ authService: FakeAuthenticationService) -> DefaultNewsViewModelProducerTestBuilder {
         self.authenticationService = authService
         return self
     }
 
     @discardableResult
-    func with(_ privateMessagesService: CapturingPrivateMessagesService) -> DefaultNewsInteractorTestBuilder {
+    func with(_ privateMessagesService: CapturingPrivateMessagesService) -> DefaultNewsViewModelProducerTestBuilder {
         self.privateMessagesService = privateMessagesService
         return self
     }
 
     @discardableResult
-    func with(_ daysUntilConventionService: StubConventionCountdownService) -> DefaultNewsInteractorTestBuilder {
+    func with(_ daysUntilConventionService: StubConventionCountdownService) -> DefaultNewsViewModelProducerTestBuilder {
         self.daysUntilConventionService = daysUntilConventionService
         return self
     }
 
     @discardableResult
-    func with(_ eventsService: FakeEventsService) -> DefaultNewsInteractorTestBuilder {
+    func with(_ eventsService: FakeEventsService) -> DefaultNewsViewModelProducerTestBuilder {
         self.eventsService = eventsService
         return self
     }
@@ -72,7 +72,7 @@ class DefaultNewsInteractorTestBuilder {
         let refreshService = CapturingRefreshService()
         let announcementsDateFormatter = FakeAnnouncementDateFormatter()
 		let markdownRenderer = StubMarkdownRenderer()
-        let interactor = DefaultNewsInteractor(announcementsService: announcementsService,
+        let interactor = DefaultNewsViewModelProducer(announcementsService: announcementsService,
                                                authenticationService: authenticationService,
                                                privateMessagesService: privateMessagesService,
                                                daysUntilConventionService: daysUntilConventionService,
@@ -83,7 +83,7 @@ class DefaultNewsInteractorTestBuilder {
                                                refreshService: refreshService,
                                                announcementsDateFormatter: announcementsDateFormatter,
 											   announcementsMarkdownRenderer: markdownRenderer)
-        let delegate = CapturingNewsInteractorDelegate()
+        let delegate = CapturingNewsViewModelRecipient()
 
         return Context(interactor: interactor,
                        delegate: delegate,

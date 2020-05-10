@@ -76,7 +76,7 @@ class NewsViewController: UIViewController, NewsScene {
         delegate?.newsSceneDidSelectComponent(at: indexPath)
     }
 
-    private class TableController: NSObject, NewsComponentFactory, UITableViewDataSource, UITableViewDelegate {
+    private class TableController: NSObject, NewsItemComponentFactory, UITableViewDataSource, UITableViewDelegate {
 
         private let tableView: UITableView
         private let numberOfItemsPerComponent: [Int]

@@ -1,20 +1,20 @@
 import EurofurenceModel
 import Foundation
 
-class DefaultNewsInteractor: NewsInteractor,
-                             AnnouncementsServiceObserver,
-                             AuthenticationStateObserver,
-                             PrivateMessagesObserver,
-                             ConventionCountdownServiceObserver,
-                             EventsServiceObserver,
-                             RefreshServiceObserver,
-                             EventsScheduleDelegate {
+class DefaultNewsViewModelProducer: NewsViewModelProducer,
+                                    AnnouncementsServiceObserver,
+                                    AuthenticationStateObserver,
+                                    PrivateMessagesObserver,
+                                    ConventionCountdownServiceObserver,
+                                    EventsServiceObserver,
+                                    RefreshServiceObserver,
+                                    EventsScheduleDelegate {
 
     // MARK: Properties
 
     private let relativeTimeIntervalCountdownFormatter: RelativeTimeIntervalCountdownFormatter
     private let hoursDateFormatter: HoursDateFormatter
-    private var delegate: NewsInteractorDelegate?
+    private var delegate: NewsViewModelRecipient?
     private var unreadMessagesCount = 0
     private var daysUntilConvention: Int?
     private var runningEvents = [Event]()
@@ -60,9 +60,9 @@ class DefaultNewsInteractor: NewsInteractor,
         refreshService.add(self)
     }
 
-    // MARK: NewsInteractor
+    // MARK: NewsViewModelProducer
 
-    func subscribeViewModelUpdates(_ delegate: NewsInteractorDelegate) {
+    func subscribeViewModelUpdates(_ delegate: NewsViewModelRecipient) {
         self.delegate = delegate
         regenerateViewModel()
     }

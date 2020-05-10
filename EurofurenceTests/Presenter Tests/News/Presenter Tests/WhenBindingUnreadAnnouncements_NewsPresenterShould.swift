@@ -11,7 +11,7 @@ class WhenBindingUnreadAnnouncements_NewsPresenterShould: XCTestCase {
         let viewModel = AnnouncementsViewModel(announcements: [announcements])
 
         let indexPath = IndexPath(row: 0, section: 0)
-        let newsInteractor = StubNewsInteractor(viewModel: viewModel)
+        let newsInteractor = StubNewsViewModelProducer(viewModel: viewModel)
         let context = NewsPresenterTestBuilder().with(newsInteractor).build()
         context.simulateNewsSceneDidLoad()
         context.bindSceneComponent(at: indexPath)
@@ -26,7 +26,7 @@ class WhenBindingUnreadAnnouncements_NewsPresenterShould: XCTestCase {
         let viewModel = AnnouncementsViewModel(announcements: [announcements])
 
         let indexPath = IndexPath(row: 0, section: 0)
-        let newsInteractor = StubNewsInteractor(viewModel: viewModel)
+        let newsInteractor = StubNewsViewModelProducer(viewModel: viewModel)
         let context = NewsPresenterTestBuilder().with(newsInteractor).build()
         context.simulateNewsSceneDidLoad()
         context.bindSceneComponent(at: indexPath)

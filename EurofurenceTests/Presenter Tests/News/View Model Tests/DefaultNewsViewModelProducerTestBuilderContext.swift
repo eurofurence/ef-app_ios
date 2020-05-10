@@ -4,7 +4,7 @@ import EurofurenceModelTestDoubles
 import Foundation
 import XCTest
 
-extension DefaultNewsInteractorTestBuilder.Context {
+extension DefaultNewsViewModelProducerTestBuilder.Context {
 
     func subscribeViewModelUpdates() {
         interactor.subscribeViewModelUpdates(delegate)
@@ -38,9 +38,9 @@ extension DefaultNewsInteractorTestBuilder.Context {
     class ViewModelAssertionBuilder {
 
         private var components = [Component]()
-        private let context: DefaultNewsInteractorTestBuilder.Context
+        private let context: DefaultNewsViewModelProducerTestBuilder.Context
 
-        fileprivate init(context: DefaultNewsInteractorTestBuilder.Context) {
+        fileprivate init(context: DefaultNewsViewModelProducerTestBuilder.Context) {
             self.context = context
         }
 
@@ -167,7 +167,7 @@ extension DefaultNewsInteractorTestBuilder.Context {
 
     struct ModelAssertionBuilder {
 
-        var context: DefaultNewsInteractorTestBuilder.Context
+        var context: DefaultNewsViewModelProducerTestBuilder.Context
 
         func at(indexPath: IndexPath, is expected: NewsViewModelValue, file: StaticString = #file, line: UInt = #line) {
             guard let viewModel = context.delegate.viewModel else {
@@ -190,9 +190,9 @@ extension DefaultNewsInteractorTestBuilder.Context {
 
     class AssertionBuilder {
 
-        private let context: DefaultNewsInteractorTestBuilder.Context
+        private let context: DefaultNewsViewModelProducerTestBuilder.Context
 
-        fileprivate init(context: DefaultNewsInteractorTestBuilder.Context) {
+        fileprivate init(context: DefaultNewsViewModelProducerTestBuilder.Context) {
             self.context = context
         }
 
@@ -208,7 +208,7 @@ extension DefaultNewsInteractorTestBuilder.Context {
 
 }
 
-fileprivate extension DefaultNewsInteractorTestBuilder.Context {
+fileprivate extension DefaultNewsViewModelProducerTestBuilder.Context {
 
     private class Visitor: NewsViewModelVisitor {
         var components = [AnyHashable]()

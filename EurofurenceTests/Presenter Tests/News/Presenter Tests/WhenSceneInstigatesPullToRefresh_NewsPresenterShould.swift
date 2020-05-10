@@ -5,7 +5,7 @@ import XCTest
 class WhenSceneInstigatesPullToRefresh_NewsPresenterShould: XCTestCase {
 
     func testTellTheInteractorToRefresh() {
-        let newsInteractor = FakeNewsInteractor()
+        let newsInteractor = FakeNewsViewModelProducer()
         let context = NewsPresenterTestBuilder().with(newsInteractor).build()
         context.simulateNewsSceneDidLoad()
         context.simulateNewsSceneDidPerformRefreshAction()
@@ -14,7 +14,7 @@ class WhenSceneInstigatesPullToRefresh_NewsPresenterShould: XCTestCase {
     }
 
     func testTellTheSceneToHideTheRefreshIndicatorWhenRefreshFinishes() {
-        let newsInteractor = FakeNewsInteractor()
+        let newsInteractor = FakeNewsViewModelProducer()
         let context = NewsPresenterTestBuilder().with(newsInteractor).build()
         context.simulateNewsSceneDidLoad()
         context.simulateNewsSceneDidPerformRefreshAction()
@@ -24,7 +24,7 @@ class WhenSceneInstigatesPullToRefresh_NewsPresenterShould: XCTestCase {
     }
 
     func testTellTheSceneToShowTheRefreshIndicatorWhenRefreshBegins() {
-        let newsInteractor = FakeNewsInteractor()
+        let newsInteractor = FakeNewsViewModelProducer()
         let context = NewsPresenterTestBuilder().with(newsInteractor).build()
         context.simulateNewsSceneDidLoad()
         newsInteractor.simulateRefreshBegan()

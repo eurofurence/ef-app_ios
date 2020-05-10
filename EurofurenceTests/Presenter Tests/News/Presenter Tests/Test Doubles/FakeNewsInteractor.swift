@@ -2,12 +2,12 @@
 import EurofurenceModel
 import Foundation
 
-class FakeNewsInteractor: NewsInteractor {
+class FakeNewsViewModelProducer: NewsViewModelProducer {
 
     var lastCreatedViewModel: StubNewsViewModel = .random
     private(set) var didPrepareViewModel = false
-    fileprivate var delegate: NewsInteractorDelegate?
-    func subscribeViewModelUpdates(_ delegate: NewsInteractorDelegate) {
+    fileprivate var delegate: NewsViewModelRecipient?
+    func subscribeViewModelUpdates(_ delegate: NewsViewModelRecipient) {
         self.delegate = delegate
 
         didPrepareViewModel = true
@@ -23,7 +23,7 @@ class FakeNewsInteractor: NewsInteractor {
 
 }
 
-extension FakeNewsInteractor {
+extension FakeNewsViewModelProducer {
 
     func simulateRefreshBegan() {
         delegate?.refreshDidBegin()

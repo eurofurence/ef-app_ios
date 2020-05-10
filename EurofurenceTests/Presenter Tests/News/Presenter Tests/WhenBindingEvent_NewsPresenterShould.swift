@@ -48,7 +48,7 @@ class WhenBindingEvent_NewsPresenterShould: XCTestCase {
     var viewModel: EventsViewModel!
     var eventViewModel: EventComponentViewModel!
     var indexPath: IndexPath!
-    var newsInteractor: StubNewsInteractor!
+    var newsInteractor: StubNewsViewModelProducer!
     var context: NewsPresenterTestBuilder.Context!
     var boundComponent: Any?
 
@@ -61,7 +61,7 @@ class WhenBindingEvent_NewsPresenterShould: XCTestCase {
         eventViewModel = event.element
         indexPath = IndexPath(row: event.index, section: component.index)
 
-        newsInteractor = StubNewsInteractor(viewModel: viewModel)
+        newsInteractor = StubNewsViewModelProducer(viewModel: viewModel)
         context = NewsPresenterTestBuilder().with(newsInteractor).build()
         context.simulateNewsSceneDidLoad()
         boundComponent = context.bindSceneComponent(at: indexPath)

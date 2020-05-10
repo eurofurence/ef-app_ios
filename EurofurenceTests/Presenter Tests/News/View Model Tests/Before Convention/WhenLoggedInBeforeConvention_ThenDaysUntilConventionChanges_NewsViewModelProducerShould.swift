@@ -1,12 +1,13 @@
 @testable import Eurofurence
 import EurofurenceModel
+import EurofurenceModelTestDoubles
 import XCTest
 
-class WhenLoggedInBeforeConvention_ThenDaysUntilConventionChanges_NewsInteractorShould: XCTestCase {
+class WhenLoggedInBeforeConvention_ThenDaysUntilConventionChanges_NewsViewModelProducerShould: XCTestCase {
 
     func testUpdateTheCountdownWidget() {
         let countdownService = StubConventionCountdownService()
-        let context = DefaultNewsInteractorTestBuilder()
+        let context = DefaultNewsViewModelProducerTestBuilder()
             .with(FakeAuthenticationService.loggedInService())
             .with(countdownService)
             .build()

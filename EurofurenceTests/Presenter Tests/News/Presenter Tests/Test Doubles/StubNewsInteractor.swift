@@ -1,11 +1,11 @@
 @testable import Eurofurence
 import EurofurenceModel
 
-struct StubNewsInteractor: NewsInteractor {
+struct StubNewsViewModelProducer: NewsViewModelProducer {
 
     var viewModel: NewsViewModel
 
-    func subscribeViewModelUpdates(_ delegate: NewsInteractorDelegate) {
+    func subscribeViewModelUpdates(_ delegate: NewsViewModelRecipient) {
         delegate.viewModelDidUpdate(viewModel)
     }
 

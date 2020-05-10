@@ -2,10 +2,10 @@
 import EurofurenceModel
 import XCTest
 
-class WhenToldToRefresh_NewsInteractorShould: XCTestCase {
+class WhenToldToRefresh_NewsViewModelProducerShould: XCTestCase {
 
     func testTellRefreshServiceToRefresh() {
-        let context = DefaultNewsInteractorTestBuilder().build()
+        let context = DefaultNewsViewModelProducerTestBuilder().build()
         context.interactor.refresh()
 
         XCTAssertTrue(context.refreshService.toldToRefresh)

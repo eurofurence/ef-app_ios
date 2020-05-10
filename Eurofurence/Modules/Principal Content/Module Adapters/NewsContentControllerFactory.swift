@@ -2,11 +2,11 @@ import UIKit
 
 struct NewsContentControllerFactory: ApplicationModuleFactory {
     
-    var newsModuleProviding: NewsModuleProviding
-    var newsModuleDelegate: NewsModuleDelegate
+    var newsComponentFactory: NewsComponentFactory
+    var newsComponentDelegate: NewsComponentDelegate
     
     func makeApplicationModuleController() -> UIViewController {
-        newsModuleProviding.makeNewsModule(newsModuleDelegate)
+        newsComponentFactory.makeNewsComponent(newsComponentDelegate)
     }
     
 }

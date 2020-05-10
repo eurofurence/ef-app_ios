@@ -469,6 +469,8 @@
 		CAC4994722E0FF33003E1D77 /* DealersIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC4994622E0FF33003E1D77 /* DealersIndex.swift */; };
 		CAF194BF24686E8B005DFBBE /* FakeKnowledgeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF194BE24686E8B005DFBBE /* FakeKnowledgeService.swift */; };
 		CAF194C524687198005DFBBE /* StubKnowledgeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF194C424687198005DFBBE /* StubKnowledgeService.swift */; };
+		CAF194C924687839005DFBBE /* CapturingPrivateMessagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF194C824687839005DFBBE /* CapturingPrivateMessagesService.swift */; };
+		CAF194CB2468785B005DFBBE /* StubConventionCountdownService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF194CA2468785B005DFBBE /* StubConventionCountdownService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -966,6 +968,8 @@
 		CAC4994622E0FF33003E1D77 /* DealersIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersIndex.swift; sourceTree = "<group>"; };
 		CAF194BE24686E8B005DFBBE /* FakeKnowledgeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeKnowledgeService.swift; sourceTree = "<group>"; };
 		CAF194C424687198005DFBBE /* StubKnowledgeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubKnowledgeService.swift; sourceTree = "<group>"; };
+		CAF194C824687839005DFBBE /* CapturingPrivateMessagesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingPrivateMessagesService.swift; sourceTree = "<group>"; };
+		CAF194CA2468785B005DFBBE /* StubConventionCountdownService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubConventionCountdownService.swift; sourceTree = "<group>"; };
 		EC85896EECB18D7881B0665A /* Pods-EurofurenceModel-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-EurofurenceModel-metadata.plist"; sourceTree = "<group>"; };
 		FFE87D86E3ECE04913805820 /* Pods_EurofurenceModelTestDoubles.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EurofurenceModelTestDoubles.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -2003,6 +2007,7 @@
 				CA17014F22B183880067BCDE /* EurofurenceModelTestDoubles-Swift.h */,
 				CA7A326C22B16E75002AD939 /* Info.plist */,
 				CA7A32A422B16EB4002AD939 /* CapturingJSONSession.swift */,
+				CAF194C824687839005DFBBE /* CapturingPrivateMessagesService.swift */,
 				CA7A32A322B16EB4002AD939 /* CapturingRefreshService.swift */,
 				CA7A32B222B16EB5002AD939 /* CapturingURLOpener.swift */,
 				CAB63207245F270900DBF0A0 /* ControllableSessionStateService.swift */,
@@ -2019,6 +2024,7 @@
 				CA7A32A222B16EB4002AD939 /* StubAppVersionProviding.swift */,
 				CA7A32A722B16EB4002AD939 /* StubBuildConfigurationProviding.swift */,
 				CA7A32A922B16EB5002AD939 /* StubClock.swift */,
+				CAF194CA2468785B005DFBBE /* StubConventionCountdownService.swift */,
 				CAF194C424687198005DFBBE /* StubKnowledgeService.swift */,
 				CA7A32AA22B16EB5002AD939 /* Entity Test Doubles */,
 				CA7A328422B16EB4002AD939 /* Random Value Generation */,
@@ -2913,6 +2919,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA7A32DB22B16EB5002AD939 /* FakeDealersIndex.swift in Sources */,
+				CAF194C924687839005DFBBE /* CapturingPrivateMessagesService.swift in Sources */,
 				CA7A32C722B16EB5002AD939 /* KnowledgeGroup+RandomValueProviding.swift in Sources */,
 				CA7A32D122B16EB5002AD939 /* StubAPIURLProviding.swift in Sources */,
 				CA7A32CA22B16EB5002AD939 /* Message+RandomValueProviding.swift in Sources */,
@@ -2935,6 +2942,7 @@
 				CA7A32B422B16EB5002AD939 /* DealerCharacteristics+RandomValueProviding.swift in Sources */,
 				CA7A32BE22B16EB5002AD939 /* ConferenceDayCharacteristics+RandomValueProviding.swift in Sources */,
 				CA7A32D022B16EB5002AD939 /* CapturingJSONSession.swift in Sources */,
+				CAF194CB2468785B005DFBBE /* StubConventionCountdownService.swift in Sources */,
 				CA7A32C822B16EB5002AD939 /* KnowledgeEntry+RandomValueProviding.swift in Sources */,
 				CA7A32B722B16EB5002AD939 /* ImageCharacteristics+RandomValueProviding.swift in Sources */,
 				CA7A32D522B16EB5002AD939 /* StubClock.swift in Sources */,
