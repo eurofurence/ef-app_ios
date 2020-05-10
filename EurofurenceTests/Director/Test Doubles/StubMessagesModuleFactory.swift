@@ -3,11 +3,11 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import UIKit.UIViewController
 
-class StubMessagesModuleFactory: MessagesModuleProviding {
+class StubMessagesModuleFactory: MessagesComponentFactory {
 
     let stubInterface = UIViewController()
-    private(set) var delegate: MessagesModuleDelegate?
-    func makeMessagesModule(_ delegate: MessagesModuleDelegate) -> UIViewController {
+    private(set) var delegate: MessagesComponentDelegate?
+    func makeMessagesModule(_ delegate: MessagesComponentDelegate) -> UIViewController {
         self.delegate = delegate
         return stubInterface
     }

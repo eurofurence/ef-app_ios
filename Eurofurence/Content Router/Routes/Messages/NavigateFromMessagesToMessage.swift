@@ -1,7 +1,7 @@
 import EurofurenceModel
 import UIKit
 
-public struct NavigateFromMessagesToMessage: MessagesModuleDelegate {
+public struct NavigateFromMessagesToMessage: MessagesComponentDelegate {
     
     private let router: ContentRouter
     private let modalWireframe: ModalWireframe

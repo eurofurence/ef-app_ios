@@ -9,7 +9,7 @@ class MessagesPresenter: MessagesSceneDelegate, PrivateMessagesObserver {
     private let authenticationService: AuthenticationService
     private let privateMessagesService: PrivateMessagesService
     private let dateFormatter: DateFormatterProtocol
-    private let delegate: MessagesModuleDelegate
+    private let delegate: MessagesComponentDelegate
     private var presentedMessages = [Message]()
 
     // MARK: Initialization
@@ -18,7 +18,7 @@ class MessagesPresenter: MessagesSceneDelegate, PrivateMessagesObserver {
          authenticationService: AuthenticationService,
          privateMessagesService: PrivateMessagesService,
          dateFormatter: DateFormatterProtocol,
-         delegate: MessagesModuleDelegate) {
+         delegate: MessagesComponentDelegate) {
         self.scene = scene
         self.authenticationService = authenticationService
         self.privateMessagesService = privateMessagesService

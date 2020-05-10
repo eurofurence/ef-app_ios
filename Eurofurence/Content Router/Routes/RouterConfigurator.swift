@@ -83,7 +83,7 @@ struct RouterConfigurator {
     
     private func configureMessagesRoute() {
         let messagesRoute = MessagesContentRoute(
-            messagesModuleProviding: moduleRepository.messagesModuleProviding,
+            messagesComponentFactory: moduleRepository.messagesComponentFactory,
             contentWireframe: contentWireframe,
             delegate: NavigateFromMessagesToMessage(
                 router: router,

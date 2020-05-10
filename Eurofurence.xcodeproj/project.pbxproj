@@ -222,7 +222,7 @@
 		CA1ECB411FE333BF0076083A /* WhenSelectingMessage_MessagesPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB401FE333BF0076083A /* WhenSelectingMessage_MessagesPresenterShould.swift */; };
 		CA1ECB471FE6E7DA0076083A /* MessageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB461FE6E7DA0076083A /* MessageComponent.swift */; };
 		CA1ECB4D1FE7F2A10076083A /* NewsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB4C1FE7F2A10076083A /* NewsPresenter.swift */; };
-		CA1FE9971F9FCCA4009C7DF3 /* MessagesModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1FE9961F9FCCA4009C7DF3 /* MessagesModuleProviding.swift */; };
+		CA1FE9971F9FCCA4009C7DF3 /* MessagesComponentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1FE9961F9FCCA4009C7DF3 /* MessagesComponentFactory.swift */; };
 		CA1FE99B1FA0B3EB009C7DF3 /* WindowWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1FE99A1FA0B3EB009C7DF3 /* WindowWireframe.swift */; };
 		CA240F3F21E3A4DE002DB747 /* BeforeMessagesViewAppears_MessagesPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA240F3E21E3A4DE002DB747 /* BeforeMessagesViewAppears_MessagesPresenterShould.swift */; };
 		CA250DCC20D6D3BE00E7513C /* WhenSceneUpdatesSearchQuery_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA250DCB20D6D3BE00E7513C /* WhenSceneUpdatesSearchQuery_SchedulePresenterShould.swift */; };
@@ -881,7 +881,7 @@
 		CAA2889C245D71FD0090B663 /* FormSheetLoginModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA2889B245D71FD0090B663 /* FormSheetLoginModuleProviding.swift */; };
 		CAA39E0820051B5C00F2F3D3 /* LocalizedStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA39E0720051B5C00F2F3D3 /* LocalizedStrings.swift */; };
 		CAA39E0920051C6C00F2F3D3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CAA39E0B20051C6C00F2F3D3 /* Localizable.strings */; };
-		CAA4BA6721EE7AB600DE2C88 /* MessagesModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA4BA6621EE7AB600DE2C88 /* MessagesModule.swift */; };
+		CAA4BA6721EE7AB600DE2C88 /* MessagesComponentFactoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA4BA6621EE7AB600DE2C88 /* MessagesComponentFactoryImpl.swift */; };
 		CAA6060720EEB4F200075A4E /* UserNotificationsScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA6060620EEB4F200075A4E /* UserNotificationsScheduler.swift */; };
 		CAA6060A20EEC02C00075A4E /* Debug.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAA6060920EEC02C00075A4E /* Debug.storyboard */; };
 		CAA6060C20EEC06500075A4E /* DebugTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA6060B20EEC06500075A4E /* DebugTableViewController.swift */; };
@@ -912,7 +912,7 @@
 		CABA43931FCE0A2D009CB5B0 /* CapturingLoginModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43921FCE0A2D009CB5B0 /* CapturingLoginModuleDelegate.swift */; };
 		CABA43951FCE0A49009CB5B0 /* CapturingLoginScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43941FCE0A49009CB5B0 /* CapturingLoginScene.swift */; };
 		CABA43971FCE0A5C009CB5B0 /* StubLoginSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43961FCE0A5C009CB5B0 /* StubLoginSceneFactory.swift */; };
-		CABA439D1FD576D0009CB5B0 /* MessagesModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA439C1FD576D0009CB5B0 /* MessagesModuleBuilder.swift */; };
+		CABA439D1FD576D0009CB5B0 /* MessagesComponentBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA439C1FD576D0009CB5B0 /* MessagesComponentBuilder.swift */; };
 		CABA439F1FD578E1009CB5B0 /* NewsModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA439E1FD578E1009CB5B0 /* NewsModuleBuilder.swift */; };
 		CABA43A11FD57A78009CB5B0 /* PreloadModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43A01FD57A78009CB5B0 /* PreloadModuleBuilder.swift */; };
 		CABA43A31FD57C65009CB5B0 /* TutorialModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43A21FD57C65009CB5B0 /* TutorialModuleBuilder.swift */; };
@@ -1411,7 +1411,7 @@
 		CA1ECB401FE333BF0076083A /* WhenSelectingMessage_MessagesPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSelectingMessage_MessagesPresenterShould.swift; sourceTree = "<group>"; };
 		CA1ECB461FE6E7DA0076083A /* MessageComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageComponent.swift; sourceTree = "<group>"; };
 		CA1ECB4C1FE7F2A10076083A /* NewsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsPresenter.swift; sourceTree = "<group>"; };
-		CA1FE9961F9FCCA4009C7DF3 /* MessagesModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesModuleProviding.swift; sourceTree = "<group>"; };
+		CA1FE9961F9FCCA4009C7DF3 /* MessagesComponentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesComponentFactory.swift; sourceTree = "<group>"; };
 		CA1FE99A1FA0B3EB009C7DF3 /* WindowWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowWireframe.swift; sourceTree = "<group>"; };
 		CA240F3E21E3A4DE002DB747 /* BeforeMessagesViewAppears_MessagesPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeforeMessagesViewAppears_MessagesPresenterShould.swift; sourceTree = "<group>"; };
 		CA250DCB20D6D3BE00E7513C /* WhenSceneUpdatesSearchQuery_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSceneUpdatesSearchQuery_SchedulePresenterShould.swift; sourceTree = "<group>"; };
@@ -2069,7 +2069,7 @@
 		CAA28899245D6EDF0090B663 /* LoginContentRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginContentRepresentation.swift; sourceTree = "<group>"; };
 		CAA2889B245D71FD0090B663 /* FormSheetLoginModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormSheetLoginModuleProviding.swift; sourceTree = "<group>"; };
 		CAA39E0720051B5C00F2F3D3 /* LocalizedStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedStrings.swift; sourceTree = "<group>"; };
-		CAA4BA6621EE7AB600DE2C88 /* MessagesModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesModule.swift; sourceTree = "<group>"; };
+		CAA4BA6621EE7AB600DE2C88 /* MessagesComponentFactoryImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesComponentFactoryImpl.swift; sourceTree = "<group>"; };
 		CAA6060620EEB4F200075A4E /* UserNotificationsScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationsScheduler.swift; sourceTree = "<group>"; };
 		CAA6060920EEC02C00075A4E /* Debug.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Debug.storyboard; sourceTree = "<group>"; };
 		CAA6060B20EEC06500075A4E /* DebugTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugTableViewController.swift; sourceTree = "<group>"; };
@@ -2099,7 +2099,7 @@
 		CABA43921FCE0A2D009CB5B0 /* CapturingLoginModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingLoginModuleDelegate.swift; sourceTree = "<group>"; };
 		CABA43941FCE0A49009CB5B0 /* CapturingLoginScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingLoginScene.swift; sourceTree = "<group>"; };
 		CABA43961FCE0A5C009CB5B0 /* StubLoginSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubLoginSceneFactory.swift; sourceTree = "<group>"; };
-		CABA439C1FD576D0009CB5B0 /* MessagesModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesModuleBuilder.swift; sourceTree = "<group>"; };
+		CABA439C1FD576D0009CB5B0 /* MessagesComponentBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesComponentBuilder.swift; sourceTree = "<group>"; };
 		CABA439E1FD578E1009CB5B0 /* NewsModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsModuleBuilder.swift; sourceTree = "<group>"; };
 		CABA43A01FD57A78009CB5B0 /* PreloadModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadModuleBuilder.swift; sourceTree = "<group>"; };
 		CABA43A21FD57C65009CB5B0 /* TutorialModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialModuleBuilder.swift; sourceTree = "<group>"; };
@@ -4671,18 +4671,20 @@
 		CA6A9FF01FD5DE130092C6DB /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				CA4FBE111F7304B400D29405 /* DateFormatterProtocol.swift */,
 				CAD2343D1F5D7211004BB959 /* MessagesPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
 		};
-		CA6A9FF11FD5DE1A0092C6DB /* Module */ = {
+		CA6A9FF11FD5DE1A0092C6DB /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				CAA4BA6621EE7AB600DE2C88 /* MessagesModule.swift */,
-				CA1FE9961F9FCCA4009C7DF3 /* MessagesModuleProviding.swift */,
+				CABA439C1FD576D0009CB5B0 /* MessagesComponentBuilder.swift */,
+				CAA4BA6621EE7AB600DE2C88 /* MessagesComponentFactoryImpl.swift */,
+				CA1FE9961F9FCCA4009C7DF3 /* MessagesComponentFactory.swift */,
 			);
-			path = Module;
+			path = Component;
 			sourceTree = "<group>";
 		};
 		CA6EC46E2051655600402894 /* Knowledge Detail */ = {
@@ -5822,9 +5824,7 @@
 		CAD234381F5D71D9004BB959 /* Messages */ = {
 			isa = PBXGroup;
 			children = (
-				CA4FBE111F7304B400D29405 /* DateFormatterProtocol.swift */,
-				CABA439C1FD576D0009CB5B0 /* MessagesModuleBuilder.swift */,
-				CA6A9FF11FD5DE1A0092C6DB /* Module */,
+				CA6A9FF11FD5DE1A0092C6DB /* Component */,
 				CA6A9FF01FD5DE130092C6DB /* Presenter */,
 				CA6A9FEF1FD5DE0E0092C6DB /* View */,
 			);
@@ -7025,7 +7025,7 @@
 				CA0F762720322E36009DA079 /* KnowledgeGroupScene.swift in Sources */,
 				CA08157820D3865600F750D4 /* NavigationBarViewExtensionContainer.swift in Sources */,
 				CABF03B42041BC870028BD62 /* UITableView+Extensions.swift in Sources */,
-				CABA439D1FD576D0009CB5B0 /* MessagesModuleBuilder.swift in Sources */,
+				CABA439D1FD576D0009CB5B0 /* MessagesComponentBuilder.swift in Sources */,
 				CA00AE5220D16FC000C2FBB0 /* ScheduleEventGroupViewModel.swift in Sources */,
 				CABA43AC1FD5DC68009CB5B0 /* LoginScene.swift in Sources */,
 				CAD04195245DA62B00B86950 /* NewsContentRepresentation.swift in Sources */,
@@ -7049,7 +7049,7 @@
 				CA09BE5B246339AB00412B82 /* MessageDetailComponentBuilder.swift in Sources */,
 				CAD4F746245C38380036ADAF /* ContentRouteRegistery.swift in Sources */,
 				CA6EC48E2051D97600402894 /* KnowledgeDetailPresenter.swift in Sources */,
-				CA1FE9971F9FCCA4009C7DF3 /* MessagesModuleProviding.swift in Sources */,
+				CA1FE9971F9FCCA4009C7DF3 /* MessagesComponentFactory.swift in Sources */,
 				CA7D8B3822312CFB003431A0 /* DefaultNewsViewModel.swift in Sources */,
 				CA283ABB20EAA45000F7D195 /* AnnouncementsViewModelFactory.swift in Sources */,
 				CA4D9349245EE01C006FA832 /* UserActivityContentRepresentation.swift in Sources */,
@@ -7201,7 +7201,7 @@
 				9A861EA71F2554BE00B75A8C /* TutorialPage.swift in Sources */,
 				CAD04197245DA63C00B86950 /* NewsContentRoute.swift in Sources */,
 				CA39851E22C7A94500117249 /* RemoteConfiguration.swift in Sources */,
-				CAA4BA6721EE7AB600DE2C88 /* MessagesModule.swift in Sources */,
+				CAA4BA6721EE7AB600DE2C88 /* MessagesComponentFactoryImpl.swift in Sources */,
 				CA89CBB62080032000570D54 /* NewsComponentHeaderScene.swift in Sources */,
 				CA6375B4208E039100536BE2 /* DealersComponentFactoryImpl.swift in Sources */,
 				CA66C0142124A24900F87AFE /* ReviewPromptAppVersionRepository.swift in Sources */,

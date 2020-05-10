@@ -2,16 +2,16 @@ import EurofurenceModel
 
 public class MessagesContentRoute {
     
-    private let messagesModuleProviding: MessagesModuleProviding
+    private let messagesComponentFactory: MessagesComponentFactory
     private let contentWireframe: ContentWireframe
-    private let delegate: MessagesModuleDelegate
+    private let delegate: MessagesComponentDelegate
     
     public init(
-        messagesModuleProviding: MessagesModuleProviding,
+        messagesComponentFactory: MessagesComponentFactory,
         contentWireframe: ContentWireframe,
-        delegate: MessagesModuleDelegate
+        delegate: MessagesComponentDelegate
     ) {
-        self.messagesModuleProviding = messagesModuleProviding
+        self.messagesComponentFactory = messagesComponentFactory
         self.contentWireframe = contentWireframe
         self.delegate = delegate
     }
@@ -25,7 +25,7 @@ extension MessagesContentRoute: ContentRoute {
     public typealias Content = MessagesContentRepresentation
     
     public func route(_ content: MessagesContentRepresentation) {
-        let contentController = messagesModuleProviding.makeMessagesModule(delegate)
+        let contentController = messagesComponentFactory.makeMessagesModule(delegate)
         contentWireframe.presentMasterContentController(contentController)
     }
     

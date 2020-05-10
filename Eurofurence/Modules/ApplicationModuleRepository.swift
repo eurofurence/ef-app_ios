@@ -11,7 +11,7 @@ struct ApplicationModuleRepository {
     let dealersComponentFactory: DealersComponentFactory
     let dealerDetailModuleProviding: DealerDetailComponentFactory
     let collectThemAllComponentFactory: CollectThemAllComponentFactory
-    let messagesModuleProviding: MessagesModuleProviding
+    let messagesComponentFactory: MessagesComponentFactory
     let loginComponentFactory: LoginComponentFactory
     let messageDetailComponentFactory: MessageDetailComponentFactory
     let knowledgeListModuleProviding: KnowledgeGroupsListComponentFactory
@@ -77,7 +77,7 @@ struct ApplicationModuleRepository {
         dealerDetailModuleProviding = DealerDetailComponentBuilder(dealerDetailInteractor: dealerDetailInteractor, dealerInteractionRecorder: dealerInteractionRecorder).build()
         
         collectThemAllComponentFactory = CollectThemAllComponentBuilder(service: services.collectThemAll).build()
-        messagesModuleProviding = MessagesModuleBuilder(authenticationService: services.authentication, privateMessagesService: services.privateMessages).build()
+        messagesComponentFactory = MessagesComponentBuilder(authenticationService: services.authentication, privateMessagesService: services.privateMessages).build()
         
         loginComponentFactory = LoginComponentBuilder(
             authenticationService: services.authentication,

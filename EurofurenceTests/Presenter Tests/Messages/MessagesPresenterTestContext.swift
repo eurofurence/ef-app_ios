@@ -2,7 +2,7 @@
 import EurofurenceModel
 import EurofurenceModelTestDoubles
 
-class CapturingMessagesModuleDelegate: MessagesModuleDelegate {
+class CapturingMessagesComponentDelegate: MessagesComponentDelegate {
 
     private(set) var messageToShow: MessageIdentifier?
     func messagesModuleDidRequestPresentation(for message: MessageIdentifier) {
@@ -31,7 +31,7 @@ class CapturingMessagesModuleDelegate: MessagesModuleDelegate {
 struct MessagesPresenterTestContext {
 
     let sceneFactory = StubMessagesSceneFactory()
-    let delegate = CapturingMessagesModuleDelegate()
+    let delegate = CapturingMessagesComponentDelegate()
     var privateMessagesService = CapturingPrivateMessagesService()
     let dateFormatter = CapturingDateFormatter()
     let authenticationService: FakeAuthenticationService
@@ -59,7 +59,7 @@ struct MessagesPresenterTestContext {
                  privateMessagesService: CapturingPrivateMessagesService = CapturingPrivateMessagesService()) {
         self.privateMessagesService = privateMessagesService
         authenticationService = FakeAuthenticationService(authState: authState)
-        _ = MessagesModuleBuilder(authenticationService: authenticationService, privateMessagesService: privateMessagesService)
+        _ = MessagesComponentBuilder(authenticationService: authenticationService, privateMessagesService: privateMessagesService)
             .with(sceneFactory)
             .with(dateFormatter)
             .build()
