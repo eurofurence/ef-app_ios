@@ -27,17 +27,21 @@ struct ApplicationModuleRepository {
     let additionalServicesModuleProviding: AdditionalServicesModuleProviding
     
     // swiftlint:disable function_body_length
-    init(services: Services, repositories: Repositories) {
+    init(services: Services, repositories: Repositories, window: UIWindow) {
         let subtleMarkdownRenderer = SubtleDownMarkdownRenderer()
         let defaultMarkdownRenderer = DefaultDownMarkdownRenderer()
         let shareService = ActivityShareService()
         let activityFactory = PlatformActivityFactory()
+        let alertRouter = WindowAlertRouter(window: window)
         
         rootModuleProviding = RootModuleBuilder(sessionStateService: services.sessionState).build()
-        tutorialModuleProviding = TutorialModuleBuilder().build()
+        tutorialModuleProviding = TutorialModuleBuilder(alertRouter: alertRouter).build()
         
         let preloadInteractor = ApplicationPreloadInteractor(refreshService: services.refresh)
-        preloadModuleProviding = PreloadModuleBuilder(preloadInteractor: preloadInteractor).build()
+        preloadModuleProviding = PreloadModuleBuilder(
+            preloadInteractor: preloadInteractor,
+            alertRouter: alertRouter
+        ).build()
         
         let newsInteractor = DefaultNewsInteractor(announcementsService: services.announcements,
                                                    authenticationService: services.authentication,
@@ -76,7 +80,12 @@ struct ApplicationModuleRepository {
         
         collectThemAllModuleProviding = CollectThemAllModuleBuilder(service: services.collectThemAll).build()
         messagesModuleProviding = MessagesModuleBuilder(authenticationService: services.authentication, privateMessagesService: services.privateMessages).build()
-        loginModuleProviding = LoginModuleBuilder(authenticationService: services.authentication).build()
+        
+        loginModuleProviding = LoginModuleBuilder(
+            authenticationService: services.authentication,
+            alertRouter: alertRouter
+        ).build()
+        
         messageDetailModuleProviding = MessageDetailModuleBuilder(messagesService: services.privateMessages).build()
         
         let knowledgeListInteractor = DefaultKnowledgeGroupsInteractor(service: services.knowledge)

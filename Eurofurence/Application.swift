@@ -11,7 +11,8 @@ class Application {
     private let backgroundFetcher: BackgroundFetchService
     private let notificationScheduleController: NotificationScheduleController
     private let reviewPromptController: ReviewPromptController
-    private let principalWindowController: PrincipalWindowController
+    private var principalWindowController: PrincipalWindowController?
+    private let urlOpener: URLOpener
     
     static func assemble() {
         _ = instance
@@ -28,13 +29,13 @@ class Application {
     }
     
     static func openNotification(_ userInfo: [AnyHashable: Any], completionHandler: @escaping () -> Void) {
-        instance.principalWindowController.route(NotificationContentRepresentation(userInfo: userInfo))
+        instance.principalWindowController?.route(NotificationContentRepresentation(userInfo: userInfo))
     }
     
     static func resume(activity: NSUserActivity) {
         let activityDescription = SystemActivityDescription(userActivity: activity)
         let contentRepresentation = UserActivityContentRepresentation(activity: activityDescription)
-        instance.principalWindowController.route(contentRepresentation)
+        instance.principalWindowController?.route(contentRepresentation)
     }
 
     private init() {
@@ -58,7 +59,7 @@ class Application {
             shareableURLFactory: CIDBasedShareableURLFactory(conventionIdentifier: Application.CID)
         )
         
-        let urlOpener = AppURLOpener()
+        urlOpener = AppURLOpener()
         session = EurofurenceSessionBuilder(mandatory: mandatory)
             .with(remoteNotificationsTokenRegistration)
             .with(ApplicationSignificantTimeChangeAdapter())
@@ -85,10 +86,9 @@ class Application {
             appStateProviding: ApplicationAppStateProviding(),
             eventsService: session.services.events
         )
-        
-        guard let appWindow = UIApplication.shared.delegate?.window,
-              let window = appWindow else { fatalError() }
-        
+    }
+    
+    func configurePrincipalScene(window: UIWindow) {
         principalWindowController = PrincipalWindowController(
             window: window,
             services: session.services,
@@ -116,7 +116,12 @@ struct PrincipalWindowController {
         let router = MutableContentRouter()
         self.router = router
         
-        let moduleRepository = ApplicationModuleRepository(services: services, repositories: repositories)
+        let moduleRepository = ApplicationModuleRepository(
+            services: services,
+            repositories: repositories,
+            window: window
+        )
+        
         let newsSubrouter = NewsSubrouter(router: router)
         let scheduleSubrouter = ShowEventFromSchedule(router: router)
         let dealerSubrouter = ShowDealerFromDealers(router: router)
@@ -190,7 +195,7 @@ struct PrincipalWindowController {
         ]
         
         let principalWindowScene = ModuleSwappingPrincipalWindowScene(
-            windowWireframe: AppWindowWireframe.shared,
+            windowWireframe: AppWindowWireframe(window: window),
             tutorialModule: moduleRepository.tutorialModuleProviding,
             preloadModule: moduleRepository.preloadModuleProviding,
             principalContentModule: PrincipalContentAggregator(contentControllerFactories: contentControllerFactories)

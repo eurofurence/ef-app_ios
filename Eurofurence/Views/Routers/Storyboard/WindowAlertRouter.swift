@@ -2,11 +2,6 @@ import UIKit
 
 struct WindowAlertRouter: AlertRouter {
 
-    static var shared: WindowAlertRouter = {
-        guard let window = UIApplication.shared.delegate?.window, let unwrappedWindow = window else { fatalError("No application window available") }
-        return WindowAlertRouter(window: unwrappedWindow)
-    }()
-
     var window: UIWindow
 
     func show(_ alert: Alert) {

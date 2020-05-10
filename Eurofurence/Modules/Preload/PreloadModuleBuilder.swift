@@ -2,23 +2,19 @@ import UIKit.UIApplication
 
 class PreloadModuleBuilder {
 
-    private var preloadSceneFactory: PreloadSceneFactory
     private let preloadInteractor: PreloadInteractor
-    private var alertRouter: AlertRouter
+    private let alertRouter: AlertRouter
+    private var preloadSceneFactory: PreloadSceneFactory
 
-    init(preloadInteractor: PreloadInteractor) {
+    init(preloadInteractor: PreloadInteractor, alertRouter: AlertRouter) {
         self.preloadInteractor = preloadInteractor
+        self.alertRouter = alertRouter
+        
         preloadSceneFactory = StoryboardPreloadSceneFactory()
-        alertRouter = WindowAlertRouter.shared
     }
 
     func with(_ preloadSceneFactory: PreloadSceneFactory) -> PreloadModuleBuilder {
         self.preloadSceneFactory = preloadSceneFactory
-        return self
-    }
-
-    func with(_ alertRouter: AlertRouter) -> PreloadModuleBuilder {
-        self.alertRouter = alertRouter
         return self
     }
 

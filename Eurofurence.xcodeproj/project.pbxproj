@@ -413,6 +413,7 @@
 		CA36A4E620DAFFB000EE6537 /* StubDealerDetailModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4E520DAFFB000EE6537 /* StubDealerDetailModuleFactory.swift */; };
 		CA36A4E820DB006300EE6537 /* DealerDetailModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4E720DB006300EE6537 /* DealerDetailModuleBuilder.swift */; };
 		CA36A4EA20DB007900EE6537 /* DealerDetailModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4E920DB007900EE6537 /* DealerDetailModule.swift */; };
+		CA38C35524680C4900A20921 /* PrincipalWindowSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA38C35424680C4900A20921 /* PrincipalWindowSceneDelegate.swift */; };
 		CA39851622C7A51C00117249 /* RemotelyConfiguredConventionStartDateRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA39851522C7A51C00117249 /* RemotelyConfiguredConventionStartDateRepositoryTests.swift */; };
 		CA39851922C7A91800117249 /* RemotelyConfiguredConventionStartDateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA39851822C7A91800117249 /* RemotelyConfiguredConventionStartDateRepository.swift */; };
 		CA39851C22C7A93300117249 /* CapturingConventionStartDateConsumer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA39851B22C7A93300117249 /* CapturingConventionStartDateConsumer.swift */; };
@@ -1606,6 +1607,7 @@
 		CA36A4E520DAFFB000EE6537 /* StubDealerDetailModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubDealerDetailModuleFactory.swift; sourceTree = "<group>"; };
 		CA36A4E720DB006300EE6537 /* DealerDetailModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailModuleBuilder.swift; sourceTree = "<group>"; };
 		CA36A4E920DB007900EE6537 /* DealerDetailModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailModule.swift; sourceTree = "<group>"; };
+		CA38C35424680C4900A20921 /* PrincipalWindowSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrincipalWindowSceneDelegate.swift; sourceTree = "<group>"; };
 		CA39851522C7A51C00117249 /* RemotelyConfiguredConventionStartDateRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemotelyConfiguredConventionStartDateRepositoryTests.swift; sourceTree = "<group>"; };
 		CA39851822C7A91800117249 /* RemotelyConfiguredConventionStartDateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemotelyConfiguredConventionStartDateRepository.swift; sourceTree = "<group>"; };
 		CA39851B22C7A93300117249 /* CapturingConventionStartDateConsumer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingConventionStartDateConsumer.swift; sourceTree = "<group>"; };
@@ -2764,6 +2766,7 @@
 				CA39852322C7AD6D00117249 /* Remote Configuration */,
 				9ACF999B1ECA259C006FC958 /* Resources */,
 				CA82409E21249A50007E4A70 /* Review Prompt */,
+				CA38C35224680C2E00A20921 /* Scenes */,
 				9ACF99591EBE32FE006FC958 /* Views */,
 				CAB631FF245F269400DBF0A0 /* Window Scenes */,
 			);
@@ -3596,6 +3599,22 @@
 				CA36A4E920DB007900EE6537 /* DealerDetailModule.swift */,
 			);
 			path = Module;
+			sourceTree = "<group>";
+		};
+		CA38C35224680C2E00A20921 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				CA38C35324680C3600A20921 /* Principal Scene */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		CA38C35324680C3600A20921 /* Principal Scene */ = {
+			isa = PBXGroup;
+			children = (
+				CA38C35424680C4900A20921 /* PrincipalWindowSceneDelegate.swift */,
+			);
+			path = "Principal Scene";
 			sourceTree = "<group>";
 		};
 		CA39851422C7A50600117249 /* Convention Start Date Repository */ = {
@@ -7125,6 +7144,7 @@
 				CA8A73B522BC2FE1007A5201 /* HybridWebSceneFactory.swift in Sources */,
 				CA5EB1AD245F6DDB0012C277 /* DealersContentControllerFactory.swift in Sources */,
 				CAF81C5720DD208100898C52 /* DealerDetailLocationAndAvailabilityTableViewCell.swift in Sources */,
+				CA38C35524680C4900A20921 /* PrincipalWindowSceneDelegate.swift in Sources */,
 				CA82DB6922D7BE8600467C2F /* CIDBasedShareableURLFactory.swift in Sources */,
 				CACF1E7220B1CE9A00D904B5 /* EventDetailPresenter.swift in Sources */,
 				CAD3BDC2205AA7BE00C91E6E /* WebModuleProviding.swift in Sources */,

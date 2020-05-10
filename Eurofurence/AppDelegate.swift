@@ -6,7 +6,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: UIApplicationDelegate
 
-	var window: UIWindow? = UIWindow()
+	var window: UIWindow?
 
     func application(
         _ application: UIApplication,
@@ -21,6 +21,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 		return true
 	}
+    
+    @available(iOS 13.0, *)
+    func application(
+        _ application: UIApplication,
+        configurationForConnecting connectingSceneSession: UISceneSession,
+        options: UIScene.ConnectionOptions
+    ) -> UISceneConfiguration {
+        UISceneConfiguration(name: "Principal Window Scene", sessionRole: connectingSceneSession.role)
+    }
 
     func application(
         _ application: UIApplication,
@@ -66,7 +75,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     private func showApplicationWindow() {
-        window?.makeKeyAndVisible()
+        if #available(iOS 13.0, *) {
+            
+        } else {
+            let window = UIWindow()
+            Application.instance.configurePrincipalScene(window: window)
+            window.makeKeyAndVisible()
+            
+            self.window = window
+        }
     }
 
 }

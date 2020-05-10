@@ -2,17 +2,18 @@ import EurofurenceModel
 
 class TutorialModuleBuilder {
 
+    private let alertRouter: AlertRouter
     private var tutorialSceneFactory: TutorialSceneFactory
     private var presentationAssets: PresentationAssets
-    private var alertRouter: AlertRouter
     private var tutorialStateProviding: UserCompletedTutorialStateProviding
     private var networkReachability: NetworkReachability
     private var witnessedTutorialPushPermissionsRequest: WitnessedTutorialPushPermissionsRequest
 
-    init() {
+    init(alertRouter: AlertRouter) {
+        self.alertRouter = alertRouter
+        
         tutorialSceneFactory = StoryboardTutorialSceneFactory()
         presentationAssets = ApplicationPresentationAssets()
-        alertRouter = WindowAlertRouter.shared
         tutorialStateProviding = UserDefaultsTutorialStateProvider(userDefaults: .standard)
         networkReachability = SystemConfigurationNetworkReachability()
         witnessedTutorialPushPermissionsRequest = UserDefaultsWitnessedTutorialPushPermissionsRequest(userDefaults: .standard)
@@ -25,11 +26,6 @@ class TutorialModuleBuilder {
 
     func with(_ presentationAssets: PresentationAssets) -> TutorialModuleBuilder {
         self.presentationAssets = presentationAssets
-        return self
-    }
-
-    func with(_ alertRouter: AlertRouter) -> TutorialModuleBuilder {
-        self.alertRouter = alertRouter
         return self
     }
 

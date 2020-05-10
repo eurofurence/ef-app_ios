@@ -17,9 +17,8 @@ class LoginPresenterTestBuilder {
         let alertRouter = CapturingAlertRouter()
         alertRouter.automaticallyPresentAlerts = true
         let delegate = CapturingLoginModuleDelegate()
-        let scene = LoginModuleBuilder(authenticationService: authenticationService)
+        let scene = LoginModuleBuilder(authenticationService: authenticationService, alertRouter: alertRouter)
             .with(loginSceneFactory)
-            .with(alertRouter)
             .build()
             .makeLoginModule(delegate)
         
