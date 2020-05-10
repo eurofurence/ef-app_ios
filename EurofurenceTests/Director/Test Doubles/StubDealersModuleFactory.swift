@@ -3,11 +3,11 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import UIKit.UIViewController
 
-class StubDealersModuleFactory: DealersModuleProviding {
+class StubDealersModuleFactory: DealersComponentFactory {
 
     let stubInterface = FakeViewController()
-    fileprivate var delegate: DealersModuleDelegate?
-    func makeDealersModule(_ delegate: DealersModuleDelegate) -> UIViewController {
+    fileprivate var delegate: DealersComponentDelegate?
+    func makeDealersComponent(_ delegate: DealersComponentDelegate) -> UIViewController {
         self.delegate = delegate
         return stubInterface
     }

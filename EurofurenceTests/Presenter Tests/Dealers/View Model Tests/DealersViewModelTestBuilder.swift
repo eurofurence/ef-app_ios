@@ -3,10 +3,10 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import Foundation
 
-class DealerInteractorTestBuilder {
+class DealersViewModelTestBuilder {
 
     struct Context {
-        var interactor: DefaultDealersInteractor
+        var interactor: DefaultDealersViewModelFactory
         var dealersService: FakeDealersService
         var defaultIconData: Data
         var refreshService: CapturingRefreshService
@@ -21,20 +21,20 @@ class DealerInteractorTestBuilder {
     }
 
     @discardableResult
-    func with(_ dealersService: FakeDealersService) -> DealerInteractorTestBuilder {
+    func with(_ dealersService: FakeDealersService) -> DealersViewModelTestBuilder {
         self.dealersService = dealersService
         return self
     }
 
     @discardableResult
-    func with(_ defaultIconData: Data) -> DealerInteractorTestBuilder {
+    func with(_ defaultIconData: Data) -> DealersViewModelTestBuilder {
         self.defaultIconData = defaultIconData
         return self
     }
 
     func build() -> Context {
         let refreshService = CapturingRefreshService()
-        let interactor = DefaultDealersInteractor(dealersService: dealersService,
+        let interactor = DefaultDealersViewModelFactory(dealersService: dealersService,
                                                   defaultIconData: defaultIconData,
                                                   refreshService: refreshService)
 
@@ -46,7 +46,7 @@ class DealerInteractorTestBuilder {
 
 }
 
-extension DealerInteractorTestBuilder.Context {
+extension DealersViewModelTestBuilder.Context {
 
     @discardableResult
     func prepareViewModel() -> DealersViewModel? {

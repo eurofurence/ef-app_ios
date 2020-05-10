@@ -7,7 +7,7 @@ class WhenDealersSceneLoads_DealersPresenterShould: XCTestCase {
     func testBindTheCountOfDealersPerGroupFromTheViewModelOntoTheScene() {
         let dealerGroups = [DealersGroupViewModel].random
         let viewModel = CapturingDealersViewModel(dealerGroups: dealerGroups)
-        let interactor = FakeDealersInteractor(viewModel: viewModel)
+        let interactor = FakeDealersViewModelFactory(viewModel: viewModel)
         let context = DealersPresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
         let expected = dealerGroups.map(\.dealers.count)
@@ -17,7 +17,7 @@ class WhenDealersSceneLoads_DealersPresenterShould: XCTestCase {
 
     func testBindTheSectionIndexTitlesFromTheViewModelOntoTheScene() {
         let viewModel = CapturingDealersViewModel()
-        let interactor = FakeDealersInteractor(viewModel: viewModel)
+        let interactor = FakeDealersViewModelFactory(viewModel: viewModel)
         let context = DealersPresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
 

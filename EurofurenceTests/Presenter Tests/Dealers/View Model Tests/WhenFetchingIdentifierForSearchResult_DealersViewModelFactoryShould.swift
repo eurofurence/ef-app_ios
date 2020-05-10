@@ -3,14 +3,14 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import XCTest
 
-class WhenFetchingIdentifierForDealer_DealersInteractorShould: XCTestCase {
+class WhenFetchingIdentifierForSearchResult_DealersViewModelFactoryShould: XCTestCase {
 
     func testProvideTheIdentifierForTheDealer() {
         let dealersService = FakeDealersService()
-        let context = DealerInteractorTestBuilder().with(dealersService).build()
-        var viewModel: DealersViewModel?
-        context.interactor.makeDealersViewModel { viewModel = $0 }
-        let modelDealers = dealersService.index.alphabetisedDealers
+        let context = DealersViewModelTestBuilder().with(dealersService).build()
+        var viewModel: DealersSearchViewModel?
+        context.interactor.makeDealersSearchViewModel { viewModel = $0 }
+        let modelDealers = dealersService.index.alphabetisedDealersSearchResult
         let randomGroup = modelDealers.randomElement()
         let randomDealer = randomGroup.element.dealers.randomElement()
         let expected = randomDealer.element.identifier

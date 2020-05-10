@@ -3,7 +3,7 @@ import EventBus
 import Foundation
 import UIKit
 
-struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
+struct DefaultDealersViewModelFactory: DealersViewModelFactory, DealersIndexDelegate {
 
     private let dealersService: DealersService
     private let defaultIconData: Data

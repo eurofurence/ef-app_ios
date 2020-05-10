@@ -10,7 +10,7 @@ class WhenSceneSelectsDealer_DealersPresenterShould: XCTestCase {
         let identifier = DealerIdentifier.random
         let indexPath = IndexPath.random
         viewModel.stub(identifier, forDealerAt: indexPath)
-        let interactor = FakeDealersInteractor(viewModel: viewModel)
+        let interactor = FakeDealersViewModelFactory(viewModel: viewModel)
         let context = DealersPresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
         context.simulateSceneDidSelectDealer(at: indexPath)

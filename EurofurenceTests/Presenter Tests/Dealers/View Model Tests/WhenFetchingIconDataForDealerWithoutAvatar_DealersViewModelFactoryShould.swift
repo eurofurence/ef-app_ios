@@ -3,16 +3,15 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import XCTest
 
-class WhenFetchingIconDataForDealerWithAvatar_DealersInteractorShould: XCTestCase {
+class WhenFetchingIconDataForDealerWithoutAvatar_DealersViewModelFactoryShould: XCTestCase {
 
-    func testSupplyTheAvatarFromTheDealersService() {
+    func testSupplyTheStockIconData() {
         let dealer = FakeDealer.random
-        let expected = Data.random
-        dealer.iconPNGData = expected
         let group = AlphabetisedDealersGroup(indexingString: .random, dealers: [dealer])
         let index = FakeDealersIndex(alphabetisedDealers: [group])
         let dealersService = FakeDealersService(index: index)
-        let context = DealerInteractorTestBuilder().with(dealersService).build()
+        let defaultIconData = Data.random
+        let context = DealersViewModelTestBuilder().with(dealersService).with(defaultIconData).build()
         var viewModel: DealersViewModel?
         context.interactor.makeDealersViewModel { viewModel = $0 }
         let delegate = CapturingDealersViewModelDelegate()
@@ -21,7 +20,7 @@ class WhenFetchingIconDataForDealerWithAvatar_DealersInteractorShould: XCTestCas
         var actual: Data?
         dealerViewModel?.fetchIconPNGData { actual = $0 }
 
-        XCTAssertEqual(expected, actual)
+        XCTAssertEqual(defaultIconData, actual)
     }
 
 }

@@ -3,14 +3,14 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import XCTest
 
-class WhenResolvingDealerAfterDarkContent_DealersInteractorShould: XCTestCase {
+class WhenResolvingDealerAfterDarkContent_DealersViewModelFactoryShould: XCTestCase {
 
     func testIdentifyWhetherDealerContainsAfterDarkContentFromModel() {
         let dealer = FakeDealer.random
         let group = AlphabetisedDealersGroup(indexingString: .random, dealers: [dealer])
         let index = FakeDealersIndex(alphabetisedDealers: [group])
         let dealersService = FakeDealersService(index: index)
-        let context = DealerInteractorTestBuilder().with(dealersService).build()
+        let context = DealersViewModelTestBuilder().with(dealersService).build()
         var viewModel: DealersViewModel?
         context.interactor.makeDealersViewModel { viewModel = $0 }
         let delegate = CapturingDealersViewModelDelegate()

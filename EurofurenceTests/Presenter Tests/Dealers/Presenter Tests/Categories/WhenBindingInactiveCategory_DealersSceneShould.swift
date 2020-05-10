@@ -7,7 +7,7 @@ class WhenBindingInactiveCategory_DealersSceneShould: XCTestCase {
         let activeCategory = FakeDealerCategoryViewModel(title: "A")
         activeCategory.enterInactiveState()
         let categoriesViewModel = FakeDealerCategoriesViewModel(categories: [activeCategory])
-        let interactor = FakeDealersInteractor(viewModel: CapturingDealersViewModel.random, categoriesViewModel: categoriesViewModel)
+        let interactor = FakeDealersViewModelFactory(viewModel: CapturingDealersViewModel.random, categoriesViewModel: categoriesViewModel)
         let context = DealersPresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
         context.simulateSceneDidRevealCategoryFilters()

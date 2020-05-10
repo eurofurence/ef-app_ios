@@ -3,7 +3,7 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import Foundation
 
-class CapturingDealersModuleDelegate: DealersModuleDelegate {
+class CapturingDealersComponentDelegate: DealersComponentDelegate {
 
     private(set) var capturedSelectedDealerIdentifier: DealerIdentifier?
     func dealersModuleDidSelectDealer(identifier: DealerIdentifier) {

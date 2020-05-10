@@ -3,7 +3,7 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import XCTest
 
-class WhenResolvingDealerAvailability_DealersInteractorShould: XCTestCase {
+class WhenResolvingDealerAvailability_DealersViewModelFactoryShould: XCTestCase {
 
     func testIndicateDealerIsPresentForAllDaysWhenAttendingOnAllDays() {
         let dealer = FakeDealer.random
@@ -13,7 +13,7 @@ class WhenResolvingDealerAvailability_DealersInteractorShould: XCTestCase {
         let group = AlphabetisedDealersGroup(indexingString: .random, dealers: [dealer])
         let index = FakeDealersIndex(alphabetisedDealers: [group])
         let dealersService = FakeDealersService(index: index)
-        let context = DealerInteractorTestBuilder().with(dealersService).build()
+        let context = DealersViewModelTestBuilder().with(dealersService).build()
         var viewModel: DealersViewModel?
         context.interactor.makeDealersViewModel { viewModel = $0 }
         let delegate = CapturingDealersViewModelDelegate()
@@ -31,7 +31,7 @@ class WhenResolvingDealerAvailability_DealersInteractorShould: XCTestCase {
         let group = AlphabetisedDealersGroup(indexingString: .random, dealers: [dealer])
         let index = FakeDealersIndex(alphabetisedDealers: [group])
         let dealersService = FakeDealersService(index: index)
-        let context = DealerInteractorTestBuilder().with(dealersService).build()
+        let context = DealersViewModelTestBuilder().with(dealersService).build()
         var viewModel: DealersViewModel?
         context.interactor.makeDealersViewModel { viewModel = $0 }
         let delegate = CapturingDealersViewModelDelegate()
@@ -49,7 +49,7 @@ class WhenResolvingDealerAvailability_DealersInteractorShould: XCTestCase {
         let group = AlphabetisedDealersGroup(indexingString: .random, dealers: [dealer])
         let index = FakeDealersIndex(alphabetisedDealers: [group])
         let dealersService = FakeDealersService(index: index)
-        let context = DealerInteractorTestBuilder().with(dealersService).build()
+        let context = DealersViewModelTestBuilder().with(dealersService).build()
         var viewModel: DealersViewModel?
         context.interactor.makeDealersViewModel { viewModel = $0 }
         let delegate = CapturingDealersViewModelDelegate()
@@ -67,7 +67,7 @@ class WhenResolvingDealerAvailability_DealersInteractorShould: XCTestCase {
         let group = AlphabetisedDealersGroup(indexingString: .random, dealers: [dealer])
         let index = FakeDealersIndex(alphabetisedDealers: [group])
         let dealersService = FakeDealersService(index: index)
-        let context = DealerInteractorTestBuilder().with(dealersService).build()
+        let context = DealersViewModelTestBuilder().with(dealersService).build()
         var viewModel: DealersViewModel?
         context.interactor.makeDealersViewModel { viewModel = $0 }
         let delegate = CapturingDealersViewModelDelegate()

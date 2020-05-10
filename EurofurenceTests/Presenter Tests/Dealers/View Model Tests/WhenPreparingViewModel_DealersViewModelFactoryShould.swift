@@ -3,15 +3,15 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import XCTest
 
-class WhenPreparingViewModel_DealersInteractorShould: XCTestCase {
+class WhenPreparingViewModel_DealersViewModelFactoryShould: XCTestCase {
 
-    var context: DealerInteractorTestBuilder.Context!
+    var context: DealersViewModelTestBuilder.Context!
     var delegate: CapturingDealersViewModelDelegate!
 
     override func setUp() {
         super.setUp()
 
-        context = DealerInteractorTestBuilder().build()
+        context = DealersViewModelTestBuilder().build()
         var viewModel: DealersViewModel?
         context.interactor.makeDealersViewModel { viewModel = $0 }
         delegate = CapturingDealersViewModelDelegate()

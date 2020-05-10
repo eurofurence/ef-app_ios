@@ -7,7 +7,7 @@ class WhenBindingDealerComponent_ForDealerNotPresentOnAllDays_DealersPresenterSh
     func testTellTheSceneToShowTheNotPresentOnAllDaysWarning() {
         let dealerViewModel = StubDealerViewModel.random
         dealerViewModel.isPresentForAllDays = false
-        let interactor = FakeDealersInteractor(dealerViewModel: dealerViewModel)
+        let interactor = FakeDealersViewModelFactory(dealerViewModel: dealerViewModel)
         let context = DealersPresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
         let component = context.makeAndBindDealer(at: IndexPath(item: 0, section: 0))
@@ -18,7 +18,7 @@ class WhenBindingDealerComponent_ForDealerNotPresentOnAllDays_DealersPresenterSh
     func testNotTellTheSceneToHideTheWarningIndicatingTheyAreNotPresentOnAllDays() {
         let dealerViewModel = StubDealerViewModel.random
         dealerViewModel.isPresentForAllDays = false
-        let interactor = FakeDealersInteractor(dealerViewModel: dealerViewModel)
+        let interactor = FakeDealersViewModelFactory(dealerViewModel: dealerViewModel)
         let context = DealersPresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
         let component = context.makeAndBindDealer(at: IndexPath(item: 0, section: 0))

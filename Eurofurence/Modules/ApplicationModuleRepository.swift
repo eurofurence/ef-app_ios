@@ -8,7 +8,7 @@ struct ApplicationModuleRepository {
     let preloadModuleProviding: PreloadModuleProviding
     let newsModuleProviding: NewsModuleProviding
     let scheduleComponentFactory: ScheduleComponentFactory
-    let dealersModuleProviding: DealersModuleProviding
+    let dealersComponentFactory: DealersComponentFactory
     let dealerDetailModuleProviding: DealerDetailComponentFactory
     let collectThemAllComponentFactory: CollectThemAllComponentFactory
     let messagesModuleProviding: MessagesModuleProviding
@@ -63,8 +63,8 @@ struct ApplicationModuleRepository {
         
         let defaultDealerIcon = #imageLiteral(resourceName: "defaultAvatar")
         guard let defaultDealerIconData = defaultDealerIcon.pngData() else { fatalError("Default dealer icon is not a PNG") }
-        let dealersInteractor = DefaultDealersInteractor(dealersService: services.dealers, defaultIconData: defaultDealerIconData, refreshService: services.refresh)
-        dealersModuleProviding = DealersModuleBuilder(interactor: dealersInteractor).build()
+        let dealersInteractor = DefaultDealersViewModelFactory(dealersService: services.dealers, defaultIconData: defaultDealerIconData, refreshService: services.refresh)
+        dealersComponentFactory = DealersComponentBuilder(interactor: dealersInteractor).build()
         
         let dealerIntentDonor = ConcreteViewDealerIntentDonor()
         let dealerInteractionRecorder = DonateIntentDealerInteractionRecorder(

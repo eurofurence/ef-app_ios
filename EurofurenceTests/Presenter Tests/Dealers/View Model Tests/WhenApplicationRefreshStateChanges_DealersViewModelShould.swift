@@ -5,7 +5,7 @@ import XCTest
 class WhenApplicationRefreshStateChanges_DealersViewModelShould: XCTestCase {
 
     func testTellTheDelegateRefreshDidBegin() {
-        let context = DealerInteractorTestBuilder().build()
+        let context = DealersViewModelTestBuilder().build()
         let viewModel = context.prepareViewModel()
         let delegate = CapturingDealersViewModelDelegate()
         viewModel?.setDelegate(delegate)
@@ -15,7 +15,7 @@ class WhenApplicationRefreshStateChanges_DealersViewModelShould: XCTestCase {
     }
 
     func testTellTheDelegateRefreshDidFinish() {
-        let context = DealerInteractorTestBuilder().build()
+        let context = DealersViewModelTestBuilder().build()
         let viewModel = context.prepareViewModel()
         let delegate = CapturingDealersViewModelDelegate()
         viewModel?.setDelegate(delegate)

@@ -98,12 +98,12 @@ class DealersPresenter: DealersSceneDelegate, DealersViewModelDelegate, DealersS
     }
 
     private let scene: DealersScene
-    private let interactor: DealersInteractor
-    private let delegate: DealersModuleDelegate
+    private let interactor: DealersViewModelFactory
+    private let delegate: DealersComponentDelegate
     private var viewModel: DealersViewModel?
     private var searchViewModel: DealersSearchViewModel?
 
-    init(scene: DealersScene, interactor: DealersInteractor, delegate: DealersModuleDelegate) {
+    init(scene: DealersScene, interactor: DealersViewModelFactory, delegate: DealersComponentDelegate) {
         self.scene = scene
         self.interactor = interactor
         self.delegate = delegate

@@ -10,7 +10,7 @@ class WhenSceneSelectsSearchResult_DealersPresenterShould: XCTestCase {
         let identifier = DealerIdentifier.random
         let indexPath = IndexPath.random
         searchViewModel.stub(identifier, forDealerAt: indexPath)
-        let interactor = FakeDealersInteractor(searchViewModel: searchViewModel)
+        let interactor = FakeDealersViewModelFactory(searchViewModel: searchViewModel)
         let context = DealersPresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
         context.simulateSceneDidSelectSearchResult(at: indexPath)

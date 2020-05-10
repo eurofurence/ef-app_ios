@@ -3,14 +3,14 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import XCTest
 
-class WhenProducingCategoriesViewModel_DealersInteractorShould: XCTestCase {
+class WhenProducingCategoriesViewModel_DealersViewModelFactoryShould: XCTestCase {
 
     func testContainSameNumberOfCategoriesFromIndex() {
         let categories = [FakeDealerCategory(), FakeDealerCategory(), FakeDealerCategory()]
         let categoriesCollection = InMemoryDealerCategoriesCollection(categories: categories)
         let index = FakeDealersIndex(availableCategories: categoriesCollection)
         let service = FakeDealersService(index: index)
-        let context = DealerInteractorTestBuilder().with(service).build()
+        let context = DealersViewModelTestBuilder().with(service).build()
         let viewModel = context.prepareCategoriesViewModel()
         
         XCTAssertEqual(3, viewModel?.numberOfCategories)
@@ -22,7 +22,7 @@ class WhenProducingCategoriesViewModel_DealersInteractorShould: XCTestCase {
         let categoriesCollection = InMemoryDealerCategoriesCollection(categories: categories)
         let index = FakeDealersIndex(availableCategories: categoriesCollection)
         let service = FakeDealersService(index: index)
-        let context = DealerInteractorTestBuilder().with(service).build()
+        let context = DealersViewModelTestBuilder().with(service).build()
         let viewModel = context.prepareCategoriesViewModel()
         
         XCTAssertEqual("Artwork", viewModel?.categoryViewModel(at: 0).title)
@@ -36,7 +36,7 @@ class WhenProducingCategoriesViewModel_DealersInteractorShould: XCTestCase {
         let categoriesCollection = InMemoryDealerCategoriesCollection(categories: [category])
         let index = FakeDealersIndex(availableCategories: categoriesCollection)
         let service = FakeDealersService(index: index)
-        let context = DealerInteractorTestBuilder().with(service).build()
+        let context = DealersViewModelTestBuilder().with(service).build()
         let viewModel = context.prepareCategoriesViewModel()
         let categoryViewModel = viewModel?.categoryViewModel(at: 0)
         let observer = CapturingDealerCategoryViewModelObserver()
@@ -51,7 +51,7 @@ class WhenProducingCategoriesViewModel_DealersInteractorShould: XCTestCase {
         let categoriesCollection = InMemoryDealerCategoriesCollection(categories: [category])
         let index = FakeDealersIndex(availableCategories: categoriesCollection)
         let service = FakeDealersService(index: index)
-        let context = DealerInteractorTestBuilder().with(service).build()
+        let context = DealersViewModelTestBuilder().with(service).build()
         let viewModel = context.prepareCategoriesViewModel()
         let categoryViewModel = viewModel?.categoryViewModel(at: 0)
         let observer = CapturingDealerCategoryViewModelObserver()
@@ -66,7 +66,7 @@ class WhenProducingCategoriesViewModel_DealersInteractorShould: XCTestCase {
         let categoriesCollection = InMemoryDealerCategoriesCollection(categories: [category])
         let index = FakeDealersIndex(availableCategories: categoriesCollection)
         let service = FakeDealersService(index: index)
-        let context = DealerInteractorTestBuilder().with(service).build()
+        let context = DealersViewModelTestBuilder().with(service).build()
         let viewModel = context.prepareCategoriesViewModel()
         let categoryViewModel = viewModel?.categoryViewModel(at: 0)
         let observer = CapturingDealerCategoryViewModelObserver()
@@ -82,7 +82,7 @@ class WhenProducingCategoriesViewModel_DealersInteractorShould: XCTestCase {
         let categoriesCollection = InMemoryDealerCategoriesCollection(categories: [category])
         let index = FakeDealersIndex(availableCategories: categoriesCollection)
         let service = FakeDealersService(index: index)
-        let context = DealerInteractorTestBuilder().with(service).build()
+        let context = DealersViewModelTestBuilder().with(service).build()
         let viewModel = context.prepareCategoriesViewModel()
         let categoryViewModel = viewModel?.categoryViewModel(at: 0)
         let observer = CapturingDealerCategoryViewModelObserver()
@@ -98,7 +98,7 @@ class WhenProducingCategoriesViewModel_DealersInteractorShould: XCTestCase {
         let categoriesCollection = InMemoryDealerCategoriesCollection(categories: [category])
         let index = FakeDealersIndex(availableCategories: categoriesCollection)
         let service = FakeDealersService(index: index)
-        let context = DealerInteractorTestBuilder().with(service).build()
+        let context = DealersViewModelTestBuilder().with(service).build()
         let viewModel = context.prepareCategoriesViewModel()
         let categoryViewModel = viewModel?.categoryViewModel(at: 0)
         categoryViewModel?.toggleCategoryActiveState()
@@ -112,7 +112,7 @@ class WhenProducingCategoriesViewModel_DealersInteractorShould: XCTestCase {
         let categoriesCollection = InMemoryDealerCategoriesCollection(categories: [category])
         let index = FakeDealersIndex(availableCategories: categoriesCollection)
         let service = FakeDealersService(index: index)
-        let context = DealerInteractorTestBuilder().with(service).build()
+        let context = DealersViewModelTestBuilder().with(service).build()
         let viewModel = context.prepareCategoriesViewModel()
         let categoryViewModel = viewModel?.categoryViewModel(at: 0)
         categoryViewModel?.toggleCategoryActiveState()
@@ -124,7 +124,7 @@ class WhenProducingCategoriesViewModel_DealersInteractorShould: XCTestCase {
         let categoriesCollection = InMemoryDealerCategoriesCollection(categories: [FakeDealerCategory]())
         let index = FakeDealersIndex(availableCategories: categoriesCollection)
         let service = FakeDealersService(index: index)
-        let context = DealerInteractorTestBuilder().with(service).build()
+        let context = DealersViewModelTestBuilder().with(service).build()
         let viewModel = context.prepareCategoriesViewModel()
         let category = FakeDealerCategory(title: "Updated Category")
         categoriesCollection.categories = [category]

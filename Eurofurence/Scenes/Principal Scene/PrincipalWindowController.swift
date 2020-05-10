@@ -60,8 +60,8 @@ struct PrincipalWindowController {
         )
         
         let dealersContentControllerFactory = DealersContentControllerFactory(
-            dealersModuleProviding: moduleRepository.dealersModuleProviding,
-            dealersModuleDelegate: dealerSubrouter
+            dealersComponentFactory: moduleRepository.dealersComponentFactory,
+            dealersComponentDelegate: dealerSubrouter
         )
         
         let knowledgeContentControllerFactory = KnowledgeContentControllerFactory(

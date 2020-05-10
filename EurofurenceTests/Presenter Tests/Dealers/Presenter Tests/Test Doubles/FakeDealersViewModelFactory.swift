@@ -2,7 +2,7 @@
 import EurofurenceModel
 import Foundation
 
-struct FakeDealersInteractor: DealersInteractor {
+struct FakeDealersViewModelFactory: DealersViewModelFactory {
 
     var viewModel: DealersViewModel
     var searchViewModel: DealersSearchViewModel

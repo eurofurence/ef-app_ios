@@ -7,7 +7,7 @@ class WhenBindingDealerComponent_ForDealerWithoutAfterDarkContent_DealersPresent
     func testHideTheAfterDarkWarning() {
         let dealerViewModel = StubDealerViewModel.random
         dealerViewModel.isAfterDarkContentPresent = false
-        let interactor = FakeDealersInteractor(dealerViewModel: dealerViewModel)
+        let interactor = FakeDealersViewModelFactory(dealerViewModel: dealerViewModel)
         let context = DealersPresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
         let component = context.makeAndBindDealer(at: IndexPath(item: 0, section: 0))
@@ -18,7 +18,7 @@ class WhenBindingDealerComponent_ForDealerWithoutAfterDarkContent_DealersPresent
     func testNotShowTheAfterDarkWarning() {
         let dealerViewModel = StubDealerViewModel.random
         dealerViewModel.isAfterDarkContentPresent = false
-        let interactor = FakeDealersInteractor(dealerViewModel: dealerViewModel)
+        let interactor = FakeDealersViewModelFactory(dealerViewModel: dealerViewModel)
         let context = DealersPresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
         let component = context.makeAndBindDealer(at: IndexPath(item: 0, section: 0))

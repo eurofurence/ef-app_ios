@@ -3,14 +3,14 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import XCTest
 
-class WhenDealersIndexProducesNewSearchResults_DealersInteractorShould: XCTestCase {
+class WhenDealersIndexProducesNewSearchResults_DealersViewModelFactoryShould: XCTestCase {
 
     func testConvertIndexedDealersIntoExpectedGroupTitles() {
         let index = FakeDealersIndex()
         let modelDealers = index.alphabetisedDealersSearchResult
         let expected = modelDealers.map(\.indexingString)
         let dealersService = FakeDealersService(index: index)
-        let context = DealerInteractorTestBuilder().with(dealersService).build()
+        let context = DealersViewModelTestBuilder().with(dealersService).build()
         var searchViewModel: DealersSearchViewModel?
         context.interactor.makeDealersSearchViewModel { searchViewModel = $0 }
         let delegate = CapturingDealersSearchViewModelDelegate()
