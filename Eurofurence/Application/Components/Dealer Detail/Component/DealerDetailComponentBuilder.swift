@@ -1,12 +1,12 @@
 import Foundation
 
-class DealerDetailComponentBuilder {
+public class DealerDetailComponentBuilder {
 
     private var dealerDetailSceneFactory: DealerDetailSceneFactory
     private let dealerDetailViewModelFactory: DealerDetailViewModelFactory
     private let dealerInteractionRecorder: DealerInteractionRecorder
 
-    init(
+    public init(
         dealerDetailViewModelFactory: DealerDetailViewModelFactory,
         dealerInteractionRecorder: DealerInteractionRecorder
     ) {
@@ -16,12 +16,12 @@ class DealerDetailComponentBuilder {
     }
 
     @discardableResult
-    func with(_ dealerDetailSceneFactory: DealerDetailSceneFactory) -> Self {
+    public func with(_ dealerDetailSceneFactory: DealerDetailSceneFactory) -> Self {
         self.dealerDetailSceneFactory = dealerDetailSceneFactory
         return self
     }
 
-    func build() -> DealerDetailComponentFactory {
+    public func build() -> DealerDetailComponentFactory {
         DealerDetailComponentFactoryImpl(
             dealerDetailSceneFactory: dealerDetailSceneFactory,
             dealerDetailViewModelFactory: dealerDetailViewModelFactory,

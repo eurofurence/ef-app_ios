@@ -1,7 +1,7 @@
 import EurofurenceModel
 import Foundation
 
-protocol DealerDetailViewModelFactory {
+public protocol DealerDetailViewModelFactory {
 
     func makeDealerDetailViewModel(
         for identifier: DealerIdentifier,

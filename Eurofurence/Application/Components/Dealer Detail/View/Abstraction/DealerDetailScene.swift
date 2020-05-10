@@ -1,13 +1,13 @@
 import Foundation
 
-protocol DealerDetailScene {
+public protocol DealerDetailScene {
 
     func setDelegate(_ delegate: DealerDetailSceneDelegate)
     func bind(numberOfComponents: Int, using binder: DealerDetailSceneBinder)
 
 }
 
-protocol DealerDetailSceneDelegate {
+public protocol DealerDetailSceneDelegate {
 
     func dealerDetailSceneDidLoad()
     func dealerDetailSceneDidAppear()
@@ -16,7 +16,7 @@ protocol DealerDetailSceneDelegate {
 
 }
 
-protocol DealerDetailItemComponentFactory {
+public protocol DealerDetailItemComponentFactory {
 
     associatedtype Component
 
@@ -27,7 +27,7 @@ protocol DealerDetailItemComponentFactory {
 
 }
 
-protocol DealerDetailSummaryComponent {
+public protocol DealerDetailSummaryComponent {
 
     func setDealerTitle(_ title: String)
     func setDealerCategories(_ categories: String)
@@ -50,7 +50,7 @@ protocol DealerDetailSummaryComponent {
 
 }
 
-protocol DealerLocationAndAvailabilityComponent {
+public protocol DealerLocationAndAvailabilityComponent {
 
     func setComponentTitle(_ title: String)
     func showMapPNGGraphicData(_ data: Data)

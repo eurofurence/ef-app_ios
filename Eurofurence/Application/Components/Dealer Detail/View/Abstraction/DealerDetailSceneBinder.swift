@@ -1,6 +1,6 @@
 import Foundation
 
-protocol DealerDetailSceneBinder {
+public protocol DealerDetailSceneBinder {
 
     func bindComponent<T>(
         at index: Int,
