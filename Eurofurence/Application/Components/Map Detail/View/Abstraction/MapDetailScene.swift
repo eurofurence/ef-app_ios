@@ -1,6 +1,6 @@
 import Foundation
 
-protocol MapDetailScene {
+public protocol MapDetailScene {
 
     func setDelegate(_ delegate: MapDetailSceneDelegate)
     func setMapImagePNGData(_ data: Data)
@@ -15,24 +15,38 @@ protocol MapDetailScene {
 
 }
 
-protocol MapDetailSceneDelegate {
+public protocol MapDetailSceneDelegate {
 
     func mapDetailSceneDidLoad()
     func mapDetailSceneDidTapMap(at position: MapCoordinate)
 
 }
 
-struct MapCoordinate: Equatable {
-    var x: Float
-    var y: Float
+public struct MapCoordinate: Equatable {
+    
+    public var x: Float
+    public var y: Float
+    
+    public init(x: Float, y: Float) {
+        self.x = x
+        self.y = y
+    }
+    
 }
 
-struct MapInformationContextualContent: Equatable {
-    var coordinate: MapCoordinate
-    var content: String
+public struct MapInformationContextualContent: Equatable {
+    
+    public var coordinate: MapCoordinate
+    public var content: String
+    
+    public init(coordinate: MapCoordinate, content: String) {
+        self.coordinate = coordinate
+        self.content = content
+    }
+    
 }
 
-protocol MapContentOptionsViewModel {
+public protocol MapContentOptionsViewModel {
 
     var optionsHeading: String { get }
     var options: [String] { get }

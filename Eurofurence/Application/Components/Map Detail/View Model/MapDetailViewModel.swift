@@ -1,7 +1,7 @@
 import EurofurenceModel
 import Foundation
 
-protocol MapDetailViewModel {
+public protocol MapDetailViewModel {
 
     var mapImagePNGData: Data { get }
     var mapName: String { get }
@@ -10,7 +10,7 @@ protocol MapDetailViewModel {
 
 }
 
-protocol MapContentVisitor {
+public protocol MapContentVisitor {
 
     func visit(_ mapPosition: MapCoordinate)
     func visit(_ content: MapInformationContextualContent)

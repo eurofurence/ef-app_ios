@@ -1,7 +1,7 @@
 import EurofurenceModel
 import Foundation
 
-class DefaultMapDetailViewModelFactory: MapDetailViewModelFactory, MapsObserver {
+public class DefaultMapDetailViewModelFactory: MapDetailViewModelFactory, MapsObserver {
 
     private struct ViewModel: MapDetailViewModel {
 
@@ -93,12 +93,12 @@ class DefaultMapDetailViewModelFactory: MapDetailViewModelFactory, MapsObserver 
     private let mapsService: MapsService
     private var maps = [Map]()
 
-    init(mapsService: MapsService) {
+    public init(mapsService: MapsService) {
         self.mapsService = mapsService
         mapsService.add(self)
     }
 
-    func makeViewModelForMap(identifier: MapIdentifier, completionHandler: @escaping (MapDetailViewModel) -> Void) {
+    public func makeViewModelForMap(identifier: MapIdentifier, completionHandler: @escaping (MapDetailViewModel) -> Void) {
         guard let map = maps.first(where: { $0.identifier == identifier }) else { return }
         
         map.fetchImagePNGData { (mapGraphicData) in
@@ -107,7 +107,7 @@ class DefaultMapDetailViewModelFactory: MapDetailViewModelFactory, MapsObserver 
         }
     }
 
-    func mapsServiceDidChangeMaps(_ maps: [Map]) {
+    public func mapsServiceDidChangeMaps(_ maps: [Map]) {
         self.maps = maps
     }
 
