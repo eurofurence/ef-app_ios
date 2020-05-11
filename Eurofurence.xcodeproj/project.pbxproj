@@ -707,7 +707,7 @@
 		CAF196C224688EAA005DFBBE /* WhenSelectingMap_MapsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF194E424688EA9005DFBBE /* WhenSelectingMap_MapsPresenterShould.swift */; };
 		CAF196C324688EAA005DFBBE /* WhenBindingMap_MapsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF194E524688EA9005DFBBE /* WhenBindingMap_MapsPresenterShould.swift */; };
 		CAF196C424688EAA005DFBBE /* CapturingMapsModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF194E724688EA9005DFBBE /* CapturingMapsModuleDelegate.swift */; };
-		CAF196C524688EAA005DFBBE /* FakeMapsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF194E824688EA9005DFBBE /* FakeMapsInteractor.swift */; };
+		CAF196C524688EAA005DFBBE /* FakeMapsViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF194E824688EA9005DFBBE /* FakeMapsViewModelFactory.swift */; };
 		CAF196C624688EAA005DFBBE /* FakeMapsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF194E924688EA9005DFBBE /* FakeMapsViewModel.swift */; };
 		CAF196C724688EAA005DFBBE /* CapturingMapComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF194EA24688EA9005DFBBE /* CapturingMapComponent.swift */; };
 		CAF196C824688EAA005DFBBE /* CapturingMapsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF194EB24688EA9005DFBBE /* CapturingMapsScene.swift */; };
@@ -1885,7 +1885,7 @@
 		CAF194E424688EA9005DFBBE /* WhenSelectingMap_MapsPresenterShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenSelectingMap_MapsPresenterShould.swift; sourceTree = "<group>"; };
 		CAF194E524688EA9005DFBBE /* WhenBindingMap_MapsPresenterShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenBindingMap_MapsPresenterShould.swift; sourceTree = "<group>"; };
 		CAF194E724688EA9005DFBBE /* CapturingMapsModuleDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingMapsModuleDelegate.swift; sourceTree = "<group>"; };
-		CAF194E824688EA9005DFBBE /* FakeMapsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeMapsInteractor.swift; sourceTree = "<group>"; };
+		CAF194E824688EA9005DFBBE /* FakeMapsViewModelFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeMapsViewModelFactory.swift; sourceTree = "<group>"; };
 		CAF194E924688EA9005DFBBE /* FakeMapsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeMapsViewModel.swift; sourceTree = "<group>"; };
 		CAF194EA24688EA9005DFBBE /* CapturingMapComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingMapComponent.swift; sourceTree = "<group>"; };
 		CAF194EB24688EA9005DFBBE /* CapturingMapsScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingMapsScene.swift; sourceTree = "<group>"; };
@@ -5098,8 +5098,8 @@
 				CAF194EA24688EA9005DFBBE /* CapturingMapComponent.swift */,
 				CAF194E724688EA9005DFBBE /* CapturingMapsModuleDelegate.swift */,
 				CAF194EB24688EA9005DFBBE /* CapturingMapsScene.swift */,
-				CAF194E824688EA9005DFBBE /* FakeMapsInteractor.swift */,
 				CAF194E924688EA9005DFBBE /* FakeMapsViewModel.swift */,
+				CAF194E824688EA9005DFBBE /* FakeMapsViewModelFactory.swift */,
 				CAF194EC24688EA9005DFBBE /* StubMapsSceneFactory.swift */,
 			);
 			path = "Test Doubles";
@@ -7439,7 +7439,7 @@
 				CAF1974D24688EAA005DFBBE /* StubMapDetailSceneFactory.swift in Sources */,
 				CAF1978B24688EAA005DFBBE /* WhenPreparingViewModel_ForSponsorsOnlyEvent_EventDetailViewModelFactoryShould.swift in Sources */,
 				CAF1972824688EAA005DFBBE /* StubKnowledgeDetailSceneFactory.swift in Sources */,
-				CAF196C524688EAA005DFBBE /* FakeMapsInteractor.swift in Sources */,
+				CAF196C524688EAA005DFBBE /* FakeMapsViewModelFactory.swift in Sources */,
 				7820A6DB1F13F4DE004C0FB5 /* StubPresentationAssets.swift in Sources */,
 				CAF197E324688EAA005DFBBE /* CapturingKnowledgeGroupEntryScene.swift in Sources */,
 				CAF1975E24688EAA005DFBBE /* CapturingAnnouncementsScene.swift in Sources */,
