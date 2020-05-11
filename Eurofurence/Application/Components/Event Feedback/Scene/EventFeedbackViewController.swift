@@ -18,7 +18,7 @@ public class EventFeedbackViewController: UIViewController, EventFeedbackScene {
         viewModel?.submitFeedback()
     }
     
-    public override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         delegate?.eventFeedbackSceneDidLoad()
     }

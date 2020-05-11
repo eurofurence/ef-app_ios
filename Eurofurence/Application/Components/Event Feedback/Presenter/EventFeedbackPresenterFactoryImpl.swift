@@ -10,13 +10,15 @@ public struct EventFeedbackPresenterFactoryImpl: EventFeedbackPresenterFactory {
     private let failureHaptic: FailureHaptic
     private let successWaitingRule: EventFeedbackSuccessWaitingRule
     
-    public init(eventService: EventsService,
-         dayOfWeekFormatter: DayOfWeekFormatter,
-         startTimeFormatter: HoursDateFormatter,
-         endTimeFormatter: HoursDateFormatter,
-         successHaptic: SuccessHaptic,
-         failureHaptic: FailureHaptic,
-         successWaitingRule: EventFeedbackSuccessWaitingRule) {
+    public init(
+        eventService: EventsService,
+        dayOfWeekFormatter: DayOfWeekFormatter,
+        startTimeFormatter: HoursDateFormatter,
+        endTimeFormatter: HoursDateFormatter,
+        successHaptic: SuccessHaptic,
+        failureHaptic: FailureHaptic,
+        successWaitingRule: EventFeedbackSuccessWaitingRule
+    ) {
         self.eventService = eventService
         self.dayOfWeekFormatter = dayOfWeekFormatter
         self.startTimeFormatter = startTimeFormatter
