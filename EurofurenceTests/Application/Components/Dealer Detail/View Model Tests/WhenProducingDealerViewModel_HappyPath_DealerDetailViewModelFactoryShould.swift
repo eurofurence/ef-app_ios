@@ -6,12 +6,9 @@ import XCTest
 class WhenProducingDealerViewModel_HappyPath_DealerDetailViewModelFactoryShould: XCTestCase {
 
     func testProduceExpectedNumberOfComponentsInOrder() {
-        let context = DealerDetailViewModelFactoryTestBuilder().build()
-        let viewModel = context.makeViewModel()
-        let visitor = CapturingDealerDetailViewModelVisitor()
-        describeAllComponents(in: viewModel, to: visitor)
+        let visitor = visitViewModel()
 
-        XCTAssertEqual(4, viewModel?.numberOfComponents)
+        XCTAssertEqual(4, visitor.visitedComponents.count)
         XCTAssertTrue(visitor.visitedComponents[0] is DealerDetailSummaryViewModel)
         XCTAssertTrue(visitor.visitedComponents[1] is DealerDetailLocationAndAvailabilityViewModel)
         XCTAssertTrue(visitor.visitedComponents[2] is DealerDetailAboutTheArtistViewModel)
@@ -19,19 +16,18 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailViewModelFactoryShould:
     }
     
     func testProduceExpectedSummaryAtIndexZero() {
-        let context = DealerDetailViewModelFactoryTestBuilder().build()
-        let dealerData = context.dealerData
-        let viewModel = context.makeViewModel()
-        let expected = DealerDetailSummaryViewModel(artistImagePNGData: dealerData.artistImagePNGData,
-                                                    title: dealerData.preferredName,
-                                                    subtitle: dealerData.alternateName,
-                                                    categories: dealerData.categories.joined(separator: ", "),
-                                                    shortDescription: dealerData.dealerShortDescription,
-                                                    website: dealerData.websiteName,
-                                                    twitterHandle: dealerData.twitterUsername,
-                                                    telegramHandle: dealerData.telegramUsername)
-        let visitor = CapturingDealerDetailViewModelVisitor()
-        describeAllComponents(in: viewModel, to: visitor)
+        let dealerData = ExtendedDealerData.random
+        let visitor = visitViewModel(dealerData: dealerData)
+        let expected = DealerDetailSummaryViewModel(
+            artistImagePNGData: dealerData.artistImagePNGData,
+            title: dealerData.preferredName,
+            subtitle: dealerData.alternateName,
+            categories: dealerData.categories.joined(separator: ", "),
+            shortDescription: dealerData.dealerShortDescription,
+            website: dealerData.websiteName,
+            twitterHandle: dealerData.twitterUsername,
+            telegramHandle: dealerData.telegramUsername
+        )
 
         XCTAssertEqual(expected, visitor.visitedSummary)
     }
@@ -176,22 +172,18 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailViewModelFactoryShould:
         extendedDealerData.isAttendingOnSaturday = true
         extendedDealerData.isAfterDark = false
         
-        let context = DealerDetailViewModelFactoryTestBuilder().build(data: extendedDealerData)
-        let viewModel = context.makeViewModel()
-        let visitor = CapturingDealerDetailViewModelVisitor()
-        describeAllComponents(in: viewModel, to: visitor)
+        let visitor = visitViewModel(dealerData: extendedDealerData)
 
         XCTAssertNil(visitor.visitedLocationAndAvailability)
     }
 
     func testProduceExpectedAboutTheArtistComponentAtIndexTwo() {
-        let context = DealerDetailViewModelFactoryTestBuilder().build()
-        let dealerData = context.dealerData
-        let viewModel = context.makeViewModel()
-        let expected = DealerDetailAboutTheArtistViewModel(title: .aboutTheArtist,
-                                                           artistDescription: dealerData.aboutTheArtist.unsafelyUnwrapped)
-        let visitor = CapturingDealerDetailViewModelVisitor()
-        describeAllComponents(in: viewModel, to: visitor)
+        let dealerData = ExtendedDealerData.random
+        let visitor = visitViewModel(dealerData: dealerData)
+        let expected = DealerDetailAboutTheArtistViewModel(
+            title: .aboutTheArtist,
+            artistDescription: dealerData.aboutTheArtist.unsafelyUnwrapped
+        )
 
         XCTAssertEqual(expected, visitor.visitedAboutTheArtist)
     }
@@ -199,26 +191,24 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailViewModelFactoryShould:
     func testProduceAboutTheArtistComponentWithPlaceholderTextWhenCustomDescriptionMissingAtIndexTwo() {
         var extendedDealerData = ExtendedDealerData.random
         extendedDealerData.aboutTheArtist = nil
-        let context = DealerDetailViewModelFactoryTestBuilder().build(data: extendedDealerData)
-        let viewModel = context.makeViewModel()
-        let expected = DealerDetailAboutTheArtistViewModel(title: .aboutTheArtist,
-                                                           artistDescription: .aboutTheArtistPlaceholder)
-        let visitor = CapturingDealerDetailViewModelVisitor()
-        describeAllComponents(in: viewModel, to: visitor)
+        let visitor = visitViewModel(dealerData: extendedDealerData)
+        let expected = DealerDetailAboutTheArtistViewModel(
+            title: .aboutTheArtist,
+            artistDescription: .aboutTheArtistPlaceholder
+        )
 
         XCTAssertEqual(expected, visitor.visitedAboutTheArtist)
     }
 
     func testProduceExpectedAboutTheAboutTheArtComponentAtIndexThree() {
-        let context = DealerDetailViewModelFactoryTestBuilder().build()
-        let dealerData = context.dealerData
-        let viewModel = context.makeViewModel()
-        let expected = DealerDetailAboutTheArtViewModel(title: .aboutTheArt,
-                                                        aboutTheArt: dealerData.aboutTheArt,
-                                                        artPreviewImagePNGData: dealerData.artPreviewImagePNGData,
-                                                        artPreviewCaption: dealerData.artPreviewCaption)
-        let visitor = CapturingDealerDetailViewModelVisitor()
-        describeAllComponents(in: viewModel, to: visitor)
+        let dealerData = ExtendedDealerData.random
+        let visitor = visitViewModel(dealerData: dealerData)
+        let expected = DealerDetailAboutTheArtViewModel(
+            title: .aboutTheArt,
+            aboutTheArt: dealerData.aboutTheArt,
+            artPreviewImagePNGData: dealerData.artPreviewImagePNGData,
+            artPreviewCaption: dealerData.artPreviewCaption
+        )
 
         XCTAssertEqual(expected, visitor.visitedAboutTheArt)
     }
@@ -228,13 +218,10 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailViewModelFactoryShould:
         extendedDealerData.aboutTheArt = nil
         extendedDealerData.artPreviewImagePNGData = nil
         extendedDealerData.artPreviewCaption = nil
-        let context = DealerDetailViewModelFactoryTestBuilder().build(data: extendedDealerData)
-        let viewModel = context.makeViewModel()
-        let visitor = CapturingDealerDetailViewModelVisitor()
-        describeAllComponents(in: viewModel, to: visitor)
-
+        
+        let visitor = visitViewModel(dealerData: extendedDealerData)
+        
         XCTAssertNil(visitor.visitedAboutTheArt)
-        XCTAssertEqual(3, viewModel?.numberOfComponents)
     }
 
     func testTellTheDealerServiceToOpenWebsiteForDealerWhenViewModelIsToldToOpenWebsite() {
@@ -271,6 +258,15 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailViewModelFactoryShould:
         XCTAssertEqual(context.dealer.shareableURL, (context.shareService.sharedItem as? URL))
     }
     
+    private func visitViewModel(dealerData: ExtendedDealerData = .random) -> CapturingDealerDetailViewModelVisitor {
+        let context = DealerDetailViewModelFactoryTestBuilder().build(data: dealerData)
+        let viewModel = context.makeViewModel()
+        let visitor = CapturingDealerDetailViewModelVisitor()
+        describeAllComponents(in: viewModel, to: visitor)
+        
+        return visitor
+    }
+    
     private func describeAllComponents(
         in viewModel: DealerDetailViewModel?,
         to visitor: DealerDetailViewModelVisitor
@@ -287,11 +283,7 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailViewModelFactoryShould:
         produces expected: DealerDetailLocationAndAvailabilityViewModel,
         _ line: UInt = #line
     ) {
-        let context = DealerDetailViewModelFactoryTestBuilder().build(data: dealerData)
-        let viewModel = context.makeViewModel()
-        let visitor = CapturingDealerDetailViewModelVisitor()
-        viewModel?.describeComponent(at: 1, to: visitor)
-
+        let visitor = visitViewModel(dealerData: dealerData)
         XCTAssertEqual(expected, visitor.visitedLocationAndAvailability, line: line)
     }
 
