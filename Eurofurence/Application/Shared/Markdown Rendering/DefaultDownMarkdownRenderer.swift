@@ -1,11 +1,15 @@
 import Foundation
 import UIKit
 
-struct DefaultDownMarkdownRenderer: DownMarkdownRenderer {
+public struct DefaultDownMarkdownRenderer: DownMarkdownRenderer {
+    
+    public init() {
+        
+    }
     
     // TODO: Use Swift's """ format for making this a pretty stylesheet.
     // swiftlint:disable line_length
-    var stylesheet: String? {
+    public var stylesheet: String? {
         let darkModeAccessor = UIView()
         
         let textColorName: String
