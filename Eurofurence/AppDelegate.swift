@@ -2,13 +2,13 @@ import Firebase
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+public class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: UIApplicationDelegate
 
-	var window: UIWindow?
+	public var window: UIWindow?
 
-    func application(
+    public func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	}
     
     @available(iOS 13.0, *)
-    func application(
+    public func application(
         _ application: UIApplication,
         configurationForConnecting connectingSceneSession: UISceneSession,
         options: UIScene.ConnectionOptions
@@ -31,14 +31,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UISceneConfiguration(name: "Principal Window Scene", sessionRole: connectingSceneSession.role)
     }
 
-    func application(
+    public func application(
         _ application: UIApplication,
         didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
     ) {
         Application.storeRemoteNotificationsToken(deviceToken)
     }
 
-    func application(
+    public func application(
         _ application: UIApplication,
         didReceiveRemoteNotification userInfo: [AnyHashable: Any],
         fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void
@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Application.executeBackgroundFetch(completionHandler: completionHandler)
 	}
     
-    func application(
+    public func application(
         _ application: UIApplication,
         continue userActivity: NSUserActivity,
         restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void

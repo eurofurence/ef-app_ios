@@ -1,12 +1,22 @@
 import EurofurenceModel
 
-struct DonateIntentDealerInteractionRecorder: DealerInteractionRecorder {
+public struct DonateIntentDealerInteractionRecorder: DealerInteractionRecorder {
     
-    var viewDealerIntentDonor: ViewDealerIntentDonor
-    var dealersService: DealersService
-    var activityFactory: ActivityFactory
+    private let viewDealerIntentDonor: ViewDealerIntentDonor
+    private let dealersService: DealersService
+    private let activityFactory: ActivityFactory
     
-    func makeInteraction(for dealer: DealerIdentifier) -> Interaction? {
+    public init(
+        viewDealerIntentDonor: ViewDealerIntentDonor,
+        dealersService: DealersService,
+        activityFactory: ActivityFactory
+    ) {
+        self.viewDealerIntentDonor = viewDealerIntentDonor
+        self.dealersService = dealersService
+        self.activityFactory = activityFactory
+    }
+    
+    public func makeInteraction(for dealer: DealerIdentifier) -> Interaction? {
         guard let entity = dealersService.fetchDealer(for: dealer) else { return nil }
         
         let intentDefinition = ViewDealerIntentDefinition(identifier: dealer, dealerName: entity.preferredName)

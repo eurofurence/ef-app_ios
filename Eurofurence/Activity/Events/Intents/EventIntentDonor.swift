@@ -1,4 +1,4 @@
-protocol EventIntentDonor {
+public protocol EventIntentDonor {
     
     func donateEventIntent(definition: ViewEventIntentDefinition)
     

@@ -1,18 +1,22 @@
 import Foundation
 
-struct UserDefaultsReviewPromptAppVersionRepository: ReviewPromptAppVersionRepository {
+public struct UserDefaultsReviewPromptAppVersionRepository: ReviewPromptAppVersionRepository {
 
     private struct Keys {
         static let lastPromptedAppVersionKey = "EFLastAppVersionUserWitnessedReviewPrompt"
     }
 
-    var userDefaults: UserDefaults = .standard
+    private let userDefaults: UserDefaults
+    
+    public init(userDefaults: UserDefaults = .standard) {
+        self.userDefaults = userDefaults
+    }
 
-    var lastPromptedAppVersion: String? {
+    public var lastPromptedAppVersion: String? {
         return userDefaults.string(forKey: Keys.lastPromptedAppVersionKey)
     }
 
-    func setLastPromptedAppVersion(_ lastPromptedAppVersion: String) {
+    public func setLastPromptedAppVersion(_ lastPromptedAppVersion: String) {
         userDefaults.set(lastPromptedAppVersion, forKey: Keys.lastPromptedAppVersionKey)
     }
 

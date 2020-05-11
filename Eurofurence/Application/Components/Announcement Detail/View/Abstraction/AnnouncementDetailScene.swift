@@ -1,6 +1,6 @@
 import Foundation.NSAttributedString
 
-protocol AnnouncementDetailScene {
+public protocol AnnouncementDetailScene {
 
     func setDelegate(_ delegate: AnnouncementDetailSceneDelegate)
     func setAnnouncementTitle(_ title: String)
@@ -10,7 +10,7 @@ protocol AnnouncementDetailScene {
 
 }
 
-protocol AnnouncementDetailSceneDelegate {
+public protocol AnnouncementDetailSceneDelegate {
 
     func announcementDetailSceneDidLoad()
 

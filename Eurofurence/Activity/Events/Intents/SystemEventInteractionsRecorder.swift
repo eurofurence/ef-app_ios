@@ -1,13 +1,23 @@
 import EurofurenceIntentDefinitions
 import EurofurenceModel
 
-struct SystemEventInteractionsRecorder: EventInteractionRecorder {
+public struct SystemEventInteractionsRecorder: EventInteractionRecorder {
     
-    var eventsService: EventsService
-    var eventIntentDonor: EventIntentDonor
-    var activityFactory: ActivityFactory
+    private let eventsService: EventsService
+    private let eventIntentDonor: EventIntentDonor
+    private let activityFactory: ActivityFactory
     
-    func makeInteraction(for event: EventIdentifier) -> Interaction? {
+    public init(
+        eventsService: EventsService,
+        eventIntentDonor: EventIntentDonor,
+        activityFactory: ActivityFactory
+    ) {
+        self.eventsService = eventsService
+        self.eventIntentDonor = eventIntentDonor
+        self.activityFactory = activityFactory
+    }
+    
+    public func makeInteraction(for event: EventIdentifier) -> Interaction? {
         guard let entity = eventsService.fetchEvent(identifier: event) else { return nil }
         
         let intentDefinition = ViewEventIntentDefinition(identifier: event, eventName: entity.title)

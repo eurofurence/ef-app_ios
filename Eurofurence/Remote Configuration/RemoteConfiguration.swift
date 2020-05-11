@@ -1,10 +1,10 @@
 import Foundation
 
-struct RemoteConfiguration {
+public struct RemoteConfiguration {
     
-    var conventionStartDate: Date
+    public var conventionStartDate: Date
     
-    init(conventionStartDate: Date) {
+    public init(conventionStartDate: Date) {
         self.conventionStartDate = conventionStartDate
     }
     

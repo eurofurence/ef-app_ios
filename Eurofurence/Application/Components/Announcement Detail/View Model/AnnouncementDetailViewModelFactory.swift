@@ -1,6 +1,6 @@
 import EurofurenceModel
 
-protocol AnnouncementDetailViewModelFactory {
+public protocol AnnouncementDetailViewModelFactory {
 
     func makeViewModel(
         for announcement: AnnouncementIdentifier,
