@@ -449,6 +449,8 @@
 		CA6F6533226A4D5F00483EE0 /* EventFeedbackProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F6532226A4D5F00483EE0 /* EventFeedbackProgressViewController.swift */; };
 		CA6F6535226B781900483EE0 /* EventFeedbackSuccessWaitingRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F6534226B781900483EE0 /* EventFeedbackSuccessWaitingRule.swift */; };
 		CA6F6537226B785700483EE0 /* ShortDelayEventFeedbackSuccessWaitingRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F6536226B785700483EE0 /* ShortDelayEventFeedbackSuccessWaitingRule.swift */; };
+		CA6F75BC24694ACB001FFB74 /* FakeDealerCategoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F75BB24694ACB001FFB74 /* FakeDealerCategoriesViewModel.swift */; };
+		CA6F75BE24694AD9001FFB74 /* FakeDealerCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F75BD24694AD9001FFB74 /* FakeDealerCategoryViewModel.swift */; };
 		CA728437209C7DE1007D912A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CA728436209C7DE1007D912A /* Settings.bundle */; };
 		CA72843D209CF07A007D912A /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = CA72843C209CF07A007D912A /* Localizable.stringsdict */; };
 		CA728445209D00B7007D912A /* StubAnnouncementDetailComponentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA728444209D00B7007D912A /* StubAnnouncementDetailComponentFactory.swift */; };
@@ -1626,6 +1628,8 @@
 		CA6F6532226A4D5F00483EE0 /* EventFeedbackProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFeedbackProgressViewController.swift; sourceTree = "<group>"; };
 		CA6F6534226B781900483EE0 /* EventFeedbackSuccessWaitingRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFeedbackSuccessWaitingRule.swift; sourceTree = "<group>"; };
 		CA6F6536226B785700483EE0 /* ShortDelayEventFeedbackSuccessWaitingRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortDelayEventFeedbackSuccessWaitingRule.swift; sourceTree = "<group>"; };
+		CA6F75BB24694ACB001FFB74 /* FakeDealerCategoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeDealerCategoriesViewModel.swift; sourceTree = "<group>"; };
+		CA6F75BD24694AD9001FFB74 /* FakeDealerCategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeDealerCategoryViewModel.swift; sourceTree = "<group>"; };
 		CA728436209C7DE1007D912A /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		CA72843C209CF07A007D912A /* Localizable.stringsdict */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = Localizable.stringsdict; path = Base.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		CA728444209D00B7007D912A /* StubAnnouncementDetailComponentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubAnnouncementDetailComponentFactory.swift; sourceTree = "<group>"; };
@@ -6099,6 +6103,8 @@
 				CAF1969A24688EA9005DFBBE /* CapturingDealersScene.swift */,
 				CAF1969D24688EA9005DFBBE /* CapturingDealersSearchViewModel.swift */,
 				CAF1969E24688EA9005DFBBE /* CapturingDealersViewModel.swift */,
+				CA6F75BB24694ACB001FFB74 /* FakeDealerCategoriesViewModel.swift */,
+				CA6F75BD24694AD9001FFB74 /* FakeDealerCategoryViewModel.swift */,
 				CAF196A124688EA9005DFBBE /* FakeDealersViewModelFactory.swift */,
 				CAF1969B24688EA9005DFBBE /* StubDealersSceneFactory.swift */,
 				CAF196A024688EA9005DFBBE /* StubDealerViewModel.swift */,
@@ -7633,6 +7639,7 @@
 				CAF1982524688EAB005DFBBE /* FakeDealersViewModelFactory.swift in Sources */,
 				CAF196F524688EAA005DFBBE /* CapturingSelectionChangedHaptic.swift in Sources */,
 				CAF196D424688EAA005DFBBE /* AnnouncementDetailViewModelFactoryTestBuilder.swift in Sources */,
+				CA6F75BE24694AD9001FFB74 /* FakeDealerCategoryViewModel.swift in Sources */,
 				CA637558208CBC1D00536BE2 /* StubKnowledgeGroupsListComponentFactory.swift in Sources */,
 				CA4FBE101F73047700D29405 /* CapturingDateFormatter.swift in Sources */,
 				CAF197FB24688EAB005DFBBE /* WhenBindingDealerSummaryComponent_DealerDetailPresenterShould.swift in Sources */,
@@ -7796,6 +7803,7 @@
 				CACEA06F2242832F00DFF26C /* CapturingNotificationScheduler.swift in Sources */,
 				CAF1973C24688EAA005DFBBE /* WhenKnowledgeGroupEntriesSceneLoads.swift in Sources */,
 				CAF197A724688EAA005DFBBE /* NewsPresenterKageIconBindingTests.swift in Sources */,
+				CA6F75BC24694ACB001FFB74 /* FakeDealerCategoriesViewModel.swift in Sources */,
 				CAF196F224688EAA005DFBBE /* SchedulePresenterMainStageIconBindingTests.swift in Sources */,
 				CAF1973624688EAA005DFBBE /* StubHybridWebSceneFactory.swift in Sources */,
 				CAF197D624688EAA005DFBBE /* CapturingEventFeedbackModuleDelegate.swift in Sources */,
