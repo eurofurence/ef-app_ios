@@ -6,28 +6,17 @@ import XCTest
 
 class WhenBindingEventDescription_EventDetailPresenterShould: XCTestCase {
 
-    var context: EventDetailPresenterTestBuilder.Context!
-    var eventDescription: EventDescriptionViewModel!
-    var boundComponent: Any?
-
-    override func setUp() {
-        super.setUp()
-
+    func testBindTheEventDescription() {
         let event = FakeEvent.random
-        eventDescription = .random
+        let eventDescription = EventDescriptionViewModel.random
         let index = Int.random
         let viewModel = StubEventDescriptionViewModel(eventDescription: eventDescription, at: index)
         let viewModelFactory = FakeEventDetailViewModelFactory(viewModel: viewModel, for: event)
-        context = EventDetailPresenterTestBuilder().with(viewModelFactory).build(for: event)
+        let context = EventDetailPresenterTestBuilder().with(viewModelFactory).build(for: event)
         context.simulateSceneDidLoad()
-        boundComponent = context.scene.bindComponent(at: IndexPath(item: index, section: 0))
-    }
-
-    func testApplyTheEventDescriptionOntoTheScene() {
+        let boundComponent = context.scene.bindComponent(at: IndexPath(item: index, section: 0))
+        
         XCTAssertEqual(eventDescription.contents, context.scene.stubbedEventDescriptionComponent.capturedEventDescription)
-    }
-
-    func testReturnTheDescriptionComponent() {
         XCTAssertTrue((boundComponent as? CapturingEventDescriptionComponent) === context.scene.stubbedEventDescriptionComponent)
     }
 

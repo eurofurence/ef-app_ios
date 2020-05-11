@@ -20,7 +20,9 @@ struct StubEventSummaryViewModel: EventDetailViewModel {
     }
 
     func describe(componentAt index: Int, to visitor: EventDetailViewModelVisitor) {
-        visitor.visit(summary.randomized(ifFalse: index == expectedIndex))
+        if expectedIndex == index {        
+            visitor.visit(summary)
+        }
     }
 
     func favourite() {
