@@ -6,11 +6,9 @@ import TestUtilities
 struct StubEventSummaryViewModel: EventDetailViewModel {
 
     let summary: EventSummaryViewModel
-    private let expectedIndex: Int
 
-    init(summary: EventSummaryViewModel, at index: Int) {
+    init(summary: EventSummaryViewModel) {
         self.summary = summary
-        expectedIndex = index
     }
 
     var numberOfComponents: Int = .random
@@ -20,9 +18,7 @@ struct StubEventSummaryViewModel: EventDetailViewModel {
     }
 
     func describe(componentAt index: Int, to visitor: EventDetailViewModelVisitor) {
-        if expectedIndex == index {        
-            visitor.visit(summary)
-        }
+        visitor.visit(summary)
     }
 
     func favourite() {

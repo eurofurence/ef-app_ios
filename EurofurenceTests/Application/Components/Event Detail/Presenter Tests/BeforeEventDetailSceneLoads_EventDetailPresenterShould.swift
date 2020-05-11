@@ -8,8 +8,7 @@ class BeforeEventDetailSceneLoads_EventDetailPresenterShould: XCTestCase {
     func testNotApplyTheEventTitleFromTheViewModel() {
         let event = FakeEvent.random
         let summary = EventSummaryViewModel.random
-        let index = Int.random
-        let viewModel = StubEventSummaryViewModel(summary: summary, at: index)
+        let viewModel = StubEventSummaryViewModel(summary: summary)
         let viewModelFactory = FakeEventDetailViewModelFactory(viewModel: viewModel, for: event)
         let context = EventDetailPresenterTestBuilder().with(viewModelFactory).build(for: event)
 

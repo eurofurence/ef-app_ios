@@ -862,21 +862,12 @@
 		CAF1976324688EAA005DFBBE /* StubMarkdownRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF195B124688EA9005DFBBE /* StubMarkdownRenderer.swift */; };
 		CAF1976424688EAA005DFBBE /* DownMarkdownRendererTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF195B424688EA9005DFBBE /* DownMarkdownRendererTest.swift */; };
 		CAF1976524688EAA005DFBBE /* BeforeEventDetailSceneLoads_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF195B724688EA9005DFBBE /* BeforeEventDetailSceneLoads_EventDetailPresenterShould.swift */; };
-		CAF1976624688EAA005DFBBE /* WhenBindingSuperSponsorsOnlyMessage_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF195B824688EA9005DFBBE /* WhenBindingSuperSponsorsOnlyMessage_EventDetailPresenterShould.swift */; };
 		CAF1976724688EAA005DFBBE /* WhenBuildingEventDetailModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF195B924688EA9005DFBBE /* WhenBuildingEventDetailModule.swift */; };
-		CAF1976824688EAA005DFBBE /* WhenBindingArtShowMessage_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF195BA24688EA9005DFBBE /* WhenBindingArtShowMessage_EventDetailPresenterShould.swift */; };
 		CAF1976924688EAA005DFBBE /* EventDetailPresenter_InteractionRecordingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF195BC24688EA9005DFBBE /* EventDetailPresenter_InteractionRecordingTests.swift */; };
 		CAF1976A24688EAA005DFBBE /* WhenViewModelIndicatesEventIsNotFavourite_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF195BD24688EA9005DFBBE /* WhenViewModelIndicatesEventIsNotFavourite_EventDetailPresenterShould.swift */; };
 		CAF1976B24688EAA005DFBBE /* EventDetailPresenterTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF195BE24688EA9005DFBBE /* EventDetailPresenterTestBuilder.swift */; };
-		CAF1976C24688EAA005DFBBE /* WhenBindingKageBanner_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF195BF24688EA9005DFBBE /* WhenBindingKageBanner_EventDetailPresenterShould.swift */; };
-		CAF1976D24688EAA005DFBBE /* WhenBindingEventSummary_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF195C024688EA9005DFBBE /* WhenBindingEventSummary_EventDetailPresenterShould.swift */; };
-		CAF1976E24688EAA005DFBBE /* WhenBindingEventBanner_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF195C124688EA9005DFBBE /* WhenBindingEventBanner_EventDetailPresenterShould.swift */; };
-		CAF1976F24688EAA005DFBBE /* WhenBindingPhotoshootBanner_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF195C224688EA9005DFBBE /* WhenBindingPhotoshootBanner_EventDetailPresenterShould.swift */; };
-		CAF1977024688EAA005DFBBE /* WhenBindingDealersDenBanner_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF195C324688EA9005DFBBE /* WhenBindingDealersDenBanner_EventDetailPresenterShould.swift */; };
 		CAF1977124688EAA005DFBBE /* WhenViewModelPrepared_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF195C424688EA9005DFBBE /* WhenViewModelPrepared_EventDetailPresenterShould.swift */; };
 		CAF1977224688EAA005DFBBE /* WhenToldToLeaveFeedback_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF195C524688EA9005DFBBE /* WhenToldToLeaveFeedback_EventDetailPresenterShould.swift */; };
-		CAF1977324688EAA005DFBBE /* WhenBindingMainStageEvent_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF195C624688EA9005DFBBE /* WhenBindingMainStageEvent_EventDetailPresenterShould.swift */; };
-		CAF1977424688EAA005DFBBE /* WhenBindingSponsorsOnlyMessage_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF195C724688EA9005DFBBE /* WhenBindingSponsorsOnlyMessage_EventDetailPresenterShould.swift */; };
 		CAF1977524688EAA005DFBBE /* StubEventDetailSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF195C924688EA9005DFBBE /* StubEventDetailSceneFactory.swift */; };
 		CAF1977624688EAA005DFBBE /* FakeEventDetailViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF195CA24688EA9005DFBBE /* FakeEventDetailViewModelFactory.swift */; };
 		CAF1977724688EAA005DFBBE /* DummyEventDetailViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF195CB24688EA9005DFBBE /* DummyEventDetailViewModelFactory.swift */; };
@@ -885,7 +876,7 @@
 		CAF1977A24688EAA005DFBBE /* StubEventSummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF195CE24688EA9005DFBBE /* StubEventSummaryViewModel.swift */; };
 		CAF1977B24688EAA005DFBBE /* CapturingEventDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF195CF24688EA9005DFBBE /* CapturingEventDetailViewModel.swift */; };
 		CAF1977C24688EAA005DFBBE /* WhenBindingEventAction_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF195D024688EA9005DFBBE /* WhenBindingEventAction_EventDetailPresenterShould.swift */; };
-		CAF1977D24688EAA005DFBBE /* WhenBindingEventDescription_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF195D124688EA9005DFBBE /* WhenBindingEventDescription_EventDetailPresenterShould.swift */; };
+		CAF1977D24688EAA005DFBBE /* EventDetailPresenterBindingComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF195D124688EA9005DFBBE /* EventDetailPresenterBindingComponentTests.swift */; };
 		CAF1977E24688EAA005DFBBE /* WhenViewModelIndicatesEventIsFavourite_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF195D224688EA9005DFBBE /* WhenViewModelIndicatesEventIsFavourite_EventDetailPresenterShould.swift */; };
 		CAF1977F24688EAA005DFBBE /* WhenEventIsNotAcceptingFeedback_EventDetailViewModelFactoryShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF195D424688EA9005DFBBE /* WhenEventIsNotAcceptingFeedback_EventDetailViewModelFactoryShould.swift */; };
 		CAF1978024688EAA005DFBBE /* WhenServiceIndicatesEventIsFavourited_EventDetailViewModelFactoryShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF195D524688EA9005DFBBE /* WhenServiceIndicatesEventIsFavourited_EventDetailViewModelFactoryShould.swift */; };
@@ -2049,21 +2040,12 @@
 		CAF195B124688EA9005DFBBE /* StubMarkdownRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubMarkdownRenderer.swift; sourceTree = "<group>"; };
 		CAF195B424688EA9005DFBBE /* DownMarkdownRendererTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownMarkdownRendererTest.swift; sourceTree = "<group>"; };
 		CAF195B724688EA9005DFBBE /* BeforeEventDetailSceneLoads_EventDetailPresenterShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeforeEventDetailSceneLoads_EventDetailPresenterShould.swift; sourceTree = "<group>"; };
-		CAF195B824688EA9005DFBBE /* WhenBindingSuperSponsorsOnlyMessage_EventDetailPresenterShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenBindingSuperSponsorsOnlyMessage_EventDetailPresenterShould.swift; sourceTree = "<group>"; };
 		CAF195B924688EA9005DFBBE /* WhenBuildingEventDetailModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenBuildingEventDetailModule.swift; sourceTree = "<group>"; };
-		CAF195BA24688EA9005DFBBE /* WhenBindingArtShowMessage_EventDetailPresenterShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenBindingArtShowMessage_EventDetailPresenterShould.swift; sourceTree = "<group>"; };
 		CAF195BC24688EA9005DFBBE /* EventDetailPresenter_InteractionRecordingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailPresenter_InteractionRecordingTests.swift; sourceTree = "<group>"; };
 		CAF195BD24688EA9005DFBBE /* WhenViewModelIndicatesEventIsNotFavourite_EventDetailPresenterShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenViewModelIndicatesEventIsNotFavourite_EventDetailPresenterShould.swift; sourceTree = "<group>"; };
 		CAF195BE24688EA9005DFBBE /* EventDetailPresenterTestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailPresenterTestBuilder.swift; sourceTree = "<group>"; };
-		CAF195BF24688EA9005DFBBE /* WhenBindingKageBanner_EventDetailPresenterShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenBindingKageBanner_EventDetailPresenterShould.swift; sourceTree = "<group>"; };
-		CAF195C024688EA9005DFBBE /* WhenBindingEventSummary_EventDetailPresenterShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenBindingEventSummary_EventDetailPresenterShould.swift; sourceTree = "<group>"; };
-		CAF195C124688EA9005DFBBE /* WhenBindingEventBanner_EventDetailPresenterShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenBindingEventBanner_EventDetailPresenterShould.swift; sourceTree = "<group>"; };
-		CAF195C224688EA9005DFBBE /* WhenBindingPhotoshootBanner_EventDetailPresenterShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenBindingPhotoshootBanner_EventDetailPresenterShould.swift; sourceTree = "<group>"; };
-		CAF195C324688EA9005DFBBE /* WhenBindingDealersDenBanner_EventDetailPresenterShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenBindingDealersDenBanner_EventDetailPresenterShould.swift; sourceTree = "<group>"; };
 		CAF195C424688EA9005DFBBE /* WhenViewModelPrepared_EventDetailPresenterShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenViewModelPrepared_EventDetailPresenterShould.swift; sourceTree = "<group>"; };
 		CAF195C524688EA9005DFBBE /* WhenToldToLeaveFeedback_EventDetailPresenterShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenToldToLeaveFeedback_EventDetailPresenterShould.swift; sourceTree = "<group>"; };
-		CAF195C624688EA9005DFBBE /* WhenBindingMainStageEvent_EventDetailPresenterShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenBindingMainStageEvent_EventDetailPresenterShould.swift; sourceTree = "<group>"; };
-		CAF195C724688EA9005DFBBE /* WhenBindingSponsorsOnlyMessage_EventDetailPresenterShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenBindingSponsorsOnlyMessage_EventDetailPresenterShould.swift; sourceTree = "<group>"; };
 		CAF195C924688EA9005DFBBE /* StubEventDetailSceneFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubEventDetailSceneFactory.swift; sourceTree = "<group>"; };
 		CAF195CA24688EA9005DFBBE /* FakeEventDetailViewModelFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeEventDetailViewModelFactory.swift; sourceTree = "<group>"; };
 		CAF195CB24688EA9005DFBBE /* DummyEventDetailViewModelFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyEventDetailViewModelFactory.swift; sourceTree = "<group>"; };
@@ -2072,7 +2054,7 @@
 		CAF195CE24688EA9005DFBBE /* StubEventSummaryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubEventSummaryViewModel.swift; sourceTree = "<group>"; };
 		CAF195CF24688EA9005DFBBE /* CapturingEventDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingEventDetailViewModel.swift; sourceTree = "<group>"; };
 		CAF195D024688EA9005DFBBE /* WhenBindingEventAction_EventDetailPresenterShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenBindingEventAction_EventDetailPresenterShould.swift; sourceTree = "<group>"; };
-		CAF195D124688EA9005DFBBE /* WhenBindingEventDescription_EventDetailPresenterShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenBindingEventDescription_EventDetailPresenterShould.swift; sourceTree = "<group>"; };
+		CAF195D124688EA9005DFBBE /* EventDetailPresenterBindingComponentTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailPresenterBindingComponentTests.swift; sourceTree = "<group>"; };
 		CAF195D224688EA9005DFBBE /* WhenViewModelIndicatesEventIsFavourite_EventDetailPresenterShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenViewModelIndicatesEventIsFavourite_EventDetailPresenterShould.swift; sourceTree = "<group>"; };
 		CAF195D424688EA9005DFBBE /* WhenEventIsNotAcceptingFeedback_EventDetailViewModelFactoryShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenEventIsNotAcceptingFeedback_EventDetailViewModelFactoryShould.swift; sourceTree = "<group>"; };
 		CAF195D524688EA9005DFBBE /* WhenServiceIndicatesEventIsFavourited_EventDetailViewModelFactoryShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenServiceIndicatesEventIsFavourited_EventDetailViewModelFactoryShould.swift; sourceTree = "<group>"; };
@@ -5636,18 +5618,9 @@
 			isa = PBXGroup;
 			children = (
 				CAF195B724688EA9005DFBBE /* BeforeEventDetailSceneLoads_EventDetailPresenterShould.swift */,
+				CAF195D124688EA9005DFBBE /* EventDetailPresenterBindingComponentTests.swift */,
 				CAF195BE24688EA9005DFBBE /* EventDetailPresenterTestBuilder.swift */,
-				CAF195BA24688EA9005DFBBE /* WhenBindingArtShowMessage_EventDetailPresenterShould.swift */,
-				CAF195C324688EA9005DFBBE /* WhenBindingDealersDenBanner_EventDetailPresenterShould.swift */,
 				CAF195D024688EA9005DFBBE /* WhenBindingEventAction_EventDetailPresenterShould.swift */,
-				CAF195C124688EA9005DFBBE /* WhenBindingEventBanner_EventDetailPresenterShould.swift */,
-				CAF195D124688EA9005DFBBE /* WhenBindingEventDescription_EventDetailPresenterShould.swift */,
-				CAF195C024688EA9005DFBBE /* WhenBindingEventSummary_EventDetailPresenterShould.swift */,
-				CAF195BF24688EA9005DFBBE /* WhenBindingKageBanner_EventDetailPresenterShould.swift */,
-				CAF195C624688EA9005DFBBE /* WhenBindingMainStageEvent_EventDetailPresenterShould.swift */,
-				CAF195C224688EA9005DFBBE /* WhenBindingPhotoshootBanner_EventDetailPresenterShould.swift */,
-				CAF195C724688EA9005DFBBE /* WhenBindingSponsorsOnlyMessage_EventDetailPresenterShould.swift */,
-				CAF195B824688EA9005DFBBE /* WhenBindingSuperSponsorsOnlyMessage_EventDetailPresenterShould.swift */,
 				CAF195B924688EA9005DFBBE /* WhenBuildingEventDetailModule.swift */,
 				CAF195C524688EA9005DFBBE /* WhenToldToLeaveFeedback_EventDetailPresenterShould.swift */,
 				CAF195D224688EA9005DFBBE /* WhenViewModelIndicatesEventIsFavourite_EventDetailPresenterShould.swift */,
@@ -7543,7 +7516,6 @@
 				CA63A76B245DD14D00E4B313 /* ExternalApplicationContentRouteTests.swift in Sources */,
 				CAF1981C24688EAB005DFBBE /* WhenViewModelRefreshStateChanges_DealersPresenterShould.swift in Sources */,
 				CAF196D724688EAA005DFBBE /* StubMessageDetailSceneFactory.swift in Sources */,
-				CAF1976F24688EAA005DFBBE /* WhenBindingPhotoshootBanner_EventDetailPresenterShould.swift in Sources */,
 				CAF1979D24688EAA005DFBBE /* WhenBindingUser_NewsPresenterShould.swift in Sources */,
 				CAF196DA24688EAA005DFBBE /* WhenSceneChangesSearchScopeToFavouriteEvents_SchedulePresenterShould.swift in Sources */,
 				CAF197B824688EAA005DFBBE /* FakeNewsInteractor.swift in Sources */,
@@ -7636,7 +7608,6 @@
 				CAF197E424688EAA005DFBBE /* CapturingKnowledgeListModuleDelegate.swift in Sources */,
 				CAF197F524688EAB005DFBBE /* FakeDealerDetailViewModel.swift in Sources */,
 				CAF1970F24688EAA005DFBBE /* WhenScheduleChanges_ScheduleViewModelShould.swift in Sources */,
-				CAF1976D24688EAA005DFBBE /* WhenBindingEventSummary_EventDetailPresenterShould.swift in Sources */,
 				CAF196CA24688EAA005DFBBE /* WhenBuildingMapsModule.swift in Sources */,
 				CAF1981B24688EAB005DFBBE /* DealersPresenterTestBuilder.swift in Sources */,
 				CAF1975424688EAA005DFBBE /* WhenPreparingViewModel_MapDetailInteractorShould.swift in Sources */,
@@ -7644,7 +7615,6 @@
 				CA8240A521249A80007E4A70 /* CapturingReviewPromptAction.swift in Sources */,
 				CA82DB5422D6631F00467C2F /* CapturingShareService.swift in Sources */,
 				CAF1979424688EAA005DFBBE /* CapturingEventDetailViewModelVisitor.swift in Sources */,
-				CAF1976624688EAA005DFBBE /* WhenBindingSuperSponsorsOnlyMessage_EventDetailPresenterShould.swift in Sources */,
 				CAF3C74E1F9FC72C0008F027 /* StubNewsSceneFactory.swift in Sources */,
 				CAF196C324688EAA005DFBBE /* WhenBindingMap_MapsPresenterShould.swift in Sources */,
 				CAF1979F24688EAA005DFBBE /* WhenBindingConventionCountdown_NewsPresenterShould.swift in Sources */,
@@ -7720,7 +7690,6 @@
 				CAF197DB24688EAA005DFBBE /* FakeDayOfWeekFormatter.swift in Sources */,
 				CAF1975D24688EAA005DFBBE /* CapturingAnnouncementComponent.swift in Sources */,
 				CAA28872245C64B90090B663 /* CapturingContentRepresentationRecipient.swift in Sources */,
-				CAF1977324688EAA005DFBBE /* WhenBindingMainStageEvent_EventDetailPresenterShould.swift in Sources */,
 				CA4D9368245F0E77006FA832 /* MoveToTabContentWireframeTests.swift in Sources */,
 				CAF196D624688EAA005DFBBE /* CapturingMessageDetailScene.swift in Sources */,
 				CAF1982A24688EAB005DFBBE /* WhenDealersSceneRevealsCategoryFilters_DealersPresenterShould.swift in Sources */,
@@ -7765,7 +7734,6 @@
 				CAF196F724688EAA005DFBBE /* CapturingScheduleEventComponent.swift in Sources */,
 				CAF1981F24688EAB005DFBBE /* StubDealersSceneFactory.swift in Sources */,
 				CAF196D924688EAA005DFBBE /* WhenInstigatingPullToRefreshAction_SchedulePresenterShould.swift in Sources */,
-				CAF1977024688EAA005DFBBE /* WhenBindingDealersDenBanner_EventDetailPresenterShould.swift in Sources */,
 				CAF197E524688EAA005DFBBE /* VisitsEntryFromKnowledgeListViewModel.swift in Sources */,
 				CAD4F769245C45B90036ADAF /* EventFeedbackContentRouteTests.swift in Sources */,
 				CAF1973B24688EAA005DFBBE /* WhenSceneSelectsKnowledgeEntry_KnowledgeGroupEntriesPresenterShould.swift in Sources */,
@@ -7794,7 +7762,7 @@
 				CA63A767245DCF0F00E4B313 /* WebContentRouteTests.swift in Sources */,
 				CAF1983424688EAB005DFBBE /* CapturingDealersSearchViewModelDelegate.swift in Sources */,
 				CA72846C209D1457007D912A /* AnnouncementViewModel+RandomValueProviding.swift in Sources */,
-				CAF1977D24688EAA005DFBBE /* WhenBindingEventDescription_EventDetailPresenterShould.swift in Sources */,
+				CAF1977D24688EAA005DFBBE /* EventDetailPresenterBindingComponentTests.swift in Sources */,
 				CAF196CC24688EAA005DFBBE /* AnnouncementDetailPresenterTestBuilder.swift in Sources */,
 				CAF196E224688EAA005DFBBE /* WhenBindingEventGroup_SchedulePresenterShould.swift in Sources */,
 				CAF196DD24688EAA005DFBBE /* WhenBindingDay_SchedulePresenterShould.swift in Sources */,
@@ -7819,8 +7787,6 @@
 				CAF197E024688EAA005DFBBE /* WhenKnowledgeListViewModelIsPrepared.swift in Sources */,
 				CAF197D824688EAA005DFBBE /* CapturingFailureHaptic.swift in Sources */,
 				CAF1978A24688EAA005DFBBE /* EventDetailViewModelFactoryTestBuilder.swift in Sources */,
-				CAF1976C24688EAA005DFBBE /* WhenBindingKageBanner_EventDetailPresenterShould.swift in Sources */,
-				CAF1976E24688EAA005DFBBE /* WhenBindingEventBanner_EventDetailPresenterShould.swift in Sources */,
 				CA2AA2E722C94D8200C0E1A1 /* WhenRecordingDealerInteraction.swift in Sources */,
 				CAF1976524688EAA005DFBBE /* BeforeEventDetailSceneLoads_EventDetailPresenterShould.swift in Sources */,
 				CA39851622C7A51C00117249 /* RemotelyConfiguredConventionStartDateRepositoryTests.swift in Sources */,
@@ -7854,7 +7820,6 @@
 				CAF197B424688EAA005DFBBE /* StubNewsInteractor.swift in Sources */,
 				781A943A1F1A19D8002DE70F /* CapturingFCMDeviceRegistration.swift in Sources */,
 				CAF1971824688EAA005DFBBE /* TutorialModuleTestBuilder.swift in Sources */,
-				CAF1977424688EAA005DFBBE /* WhenBindingSponsorsOnlyMessage_EventDetailPresenterShould.swift in Sources */,
 				CAF1979824688EAA005DFBBE /* WhenPreparingViewModel_ForEventWithNoPoster_EventDetailViewModelFactoryShould.swift in Sources */,
 				CAF1978824688EAA005DFBBE /* WhenPreparingViewModel_ForSuperSponsorsOnlyEvent_EventDetailViewModelFactoryShould.swift in Sources */,
 				CAF1975C24688EAA005DFBBE /* StubAnnouncementsSceneFactory.swift in Sources */,
@@ -7868,7 +7833,6 @@
 				CAF197D624688EAA005DFBBE /* CapturingEventFeedbackModuleDelegate.swift in Sources */,
 				CA63A757245DC49900E4B313 /* KnowledgeEntryContentRouteTests.swift in Sources */,
 				CAF1980B24688EAB005DFBBE /* LoginPresenterTests.swift in Sources */,
-				CAF1976824688EAA005DFBBE /* WhenBindingArtShowMessage_EventDetailPresenterShould.swift in Sources */,
 				CAF197FC24688EAB005DFBBE /* WhenBindingDealerSummaryWithMissingAttributes_DealerDetailPresenterShould.swift in Sources */,
 				CAFA06FC245DD9F400A807F5 /* ShowKnowledgeContentFromGroupListingTests.swift in Sources */,
 				CAF1974024688EAA005DFBBE /* StubKnowledgeGroupEntriesSceneFactory.swift in Sources */,
