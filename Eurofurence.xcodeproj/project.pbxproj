@@ -1039,7 +1039,6 @@
 		CAF1982524688EAB005DFBBE /* FakeDealersViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF196A124688EA9005DFBBE /* FakeDealersViewModelFactory.swift */; };
 		CAF1982624688EAB005DFBBE /* WhenBindingDealerAfterDarkStatus_DealersPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF196A224688EA9005DFBBE /* WhenBindingDealerAfterDarkStatus_DealersPresenterShould.swift */; };
 		CAF1982724688EAB005DFBBE /* WhenBuildingDealersModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF196A324688EA9005DFBBE /* WhenBuildingDealersModule.swift */; };
-		CAF1982824688EAB005DFBBE /* WhenBindingActiveCategory_DealersSceneShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF196A524688EA9005DFBBE /* WhenBindingActiveCategory_DealersSceneShould.swift */; };
 		CAF1982924688EAB005DFBBE /* WhenBindingInactiveCategory_DealersSceneShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF196A624688EA9005DFBBE /* WhenBindingInactiveCategory_DealersSceneShould.swift */; };
 		CAF1982A24688EAB005DFBBE /* WhenDealersSceneRevealsCategoryFilters_DealersPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF196A724688EA9005DFBBE /* WhenDealersSceneRevealsCategoryFilters_DealersPresenterShould.swift */; };
 		CAF1982B24688EAB005DFBBE /* WhenFetchingIdentifierForDealer_DealersViewModelFactoryShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF196A924688EA9005DFBBE /* WhenFetchingIdentifierForDealer_DealersViewModelFactoryShould.swift */; };
@@ -2213,7 +2212,6 @@
 		CAF196A124688EA9005DFBBE /* FakeDealersViewModelFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeDealersViewModelFactory.swift; sourceTree = "<group>"; };
 		CAF196A224688EA9005DFBBE /* WhenBindingDealerAfterDarkStatus_DealersPresenterShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenBindingDealerAfterDarkStatus_DealersPresenterShould.swift; sourceTree = "<group>"; };
 		CAF196A324688EA9005DFBBE /* WhenBuildingDealersModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenBuildingDealersModule.swift; sourceTree = "<group>"; };
-		CAF196A524688EA9005DFBBE /* WhenBindingActiveCategory_DealersSceneShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenBindingActiveCategory_DealersSceneShould.swift; sourceTree = "<group>"; };
 		CAF196A624688EA9005DFBBE /* WhenBindingInactiveCategory_DealersSceneShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenBindingInactiveCategory_DealersSceneShould.swift; sourceTree = "<group>"; };
 		CAF196A724688EA9005DFBBE /* WhenDealersSceneRevealsCategoryFilters_DealersPresenterShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenDealersSceneRevealsCategoryFilters_DealersPresenterShould.swift; sourceTree = "<group>"; };
 		CAF196A924688EA9005DFBBE /* WhenFetchingIdentifierForDealer_DealersViewModelFactoryShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenFetchingIdentifierForDealer_DealersViewModelFactoryShould.swift; sourceTree = "<group>"; };
@@ -6115,7 +6113,6 @@
 		CAF196A424688EA9005DFBBE /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				CAF196A524688EA9005DFBBE /* WhenBindingActiveCategory_DealersSceneShould.swift */,
 				CAF196A624688EA9005DFBBE /* WhenBindingInactiveCategory_DealersSceneShould.swift */,
 				CAF196A724688EA9005DFBBE /* WhenDealersSceneRevealsCategoryFilters_DealersPresenterShould.swift */,
 			);
@@ -7701,7 +7698,6 @@
 				CA39852222C7A95C00117249 /* FakeRemoteConfigurationLoader.swift in Sources */,
 				CACF1EB220B5FF9900D904B5 /* EventGraphicViewModel+RandomValueProviding.swift in Sources */,
 				CAF1973724688EAA005DFBBE /* WhenMakingWebModuleWithNonHTTPSchemedLinks.swift in Sources */,
-				CAF1982824688EAB005DFBBE /* WhenBindingActiveCategory_DealersSceneShould.swift in Sources */,
 				CAD0419C245DA65A00B86950 /* CapturingNewsPresentation.swift in Sources */,
 				CA5EB1B9245F700E0012C277 /* StubMapsComponentFactory.swift in Sources */,
 				CAF197AD24688EAA005DFBBE /* NewsPresenterSponsorIconBindingTests.swift in Sources */,
