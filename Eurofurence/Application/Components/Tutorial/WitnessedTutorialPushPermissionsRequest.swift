@@ -1,6 +1,6 @@
 import Foundation
 
-protocol WitnessedTutorialPushPermissionsRequest {
+public protocol WitnessedTutorialPushPermissionsRequest {
 
     var witnessedTutorialPushPermissionsRequest: Bool { get }
 

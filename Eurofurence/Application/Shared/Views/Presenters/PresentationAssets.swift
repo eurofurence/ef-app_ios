@@ -1,6 +1,6 @@
 import UIKit
 
-protocol PresentationAssets {
+public protocol PresentationAssets {
 
     var initialLoadInformationAsset: UIImage { get }
 

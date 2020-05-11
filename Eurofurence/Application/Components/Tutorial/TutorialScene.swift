@@ -1,12 +1,12 @@
 import UIKit.UIViewController
 
-protocol TutorialSceneFactory {
+public protocol TutorialSceneFactory {
 
     func makeTutorialScene() -> UIViewController & TutorialScene
 
 }
 
-protocol TutorialScene: class {
+public protocol TutorialScene: class {
 
     func showTutorialPage() -> TutorialPageScene
 
