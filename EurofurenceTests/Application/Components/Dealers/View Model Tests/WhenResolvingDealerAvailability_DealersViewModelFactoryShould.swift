@@ -5,29 +5,47 @@ import XCTest
 
 class WhenResolvingDealerAvailability_DealersViewModelFactoryShould: XCTestCase {
 
-    func testIndicateDealerIsPresentForAllDaysWhenAttendingOnAllDays() {
-        let dealer = FakeDealer.random
-        dealer.isAttendingOnThursday = true
-        dealer.isAttendingOnFriday = true
-        dealer.isAttendingOnSaturday = true
-        let group = AlphabetisedDealersGroup(indexingString: .random, dealers: [dealer])
-        let index = FakeDealersIndex(alphabetisedDealers: [group])
-        let dealersService = FakeDealersService(index: index)
-        let context = DealersViewModelTestBuilder().with(dealersService).build()
-        var viewModel: DealersViewModel?
-        context.viewModelFactory.makeDealersViewModel { viewModel = $0 }
-        let delegate = CapturingDealersViewModelDelegate()
-        viewModel?.setDelegate(delegate)
-        let dealerViewModel = delegate.capturedDealerViewModel(at: IndexPath(item: 0, section: 0))
-
-        XCTAssertEqual(true, dealerViewModel?.isPresentForAllDays)
+    func testInferAllDaysAvailabilityWhenAttendingOnAllThreeDaysOnly() {
+        assertIsPresentForAllDays(
+            true,
+            isAttendingOnThursday: true,
+            isAttendingOnFriday: true,
+            isAttendingOnSaturday: true
+        )
+        
+        assertIsPresentForAllDays(
+            false,
+            isAttendingOnThursday: false,
+            isAttendingOnFriday: true,
+            isAttendingOnSaturday: true
+        )
+        
+        assertIsPresentForAllDays(
+            false,
+            isAttendingOnThursday: true,
+            isAttendingOnFriday: false,
+            isAttendingOnSaturday: true
+        )
+        
+        assertIsPresentForAllDays(
+            false,
+            isAttendingOnThursday: true,
+            isAttendingOnFriday: true,
+            isAttendingOnSaturday: false
+        )
     }
-
-    func testIndicateDealerIsNotPresentForAllDaysWhenNotAttendingOnThursday() {
+    
+    private func assertIsPresentForAllDays(
+        _ expected: Bool,
+        isAttendingOnThursday: Bool,
+        isAttendingOnFriday: Bool,
+        isAttendingOnSaturday: Bool,
+        _ line: UInt = #line
+    ) {
         let dealer = FakeDealer.random
-        dealer.isAttendingOnThursday = false
-        dealer.isAttendingOnFriday = true
-        dealer.isAttendingOnSaturday = true
+        dealer.isAttendingOnThursday = isAttendingOnThursday
+        dealer.isAttendingOnFriday = isAttendingOnFriday
+        dealer.isAttendingOnSaturday = isAttendingOnSaturday
         let group = AlphabetisedDealersGroup(indexingString: .random, dealers: [dealer])
         let index = FakeDealersIndex(alphabetisedDealers: [group])
         let dealersService = FakeDealersService(index: index)
@@ -38,43 +56,7 @@ class WhenResolvingDealerAvailability_DealersViewModelFactoryShould: XCTestCase 
         viewModel?.setDelegate(delegate)
         let dealerViewModel = delegate.capturedDealerViewModel(at: IndexPath(item: 0, section: 0))
 
-        XCTAssertEqual(false, dealerViewModel?.isPresentForAllDays)
-    }
-
-    func testIndicateDealerIsNotPresentForAllDaysWhenNotAttendingOnFriday() {
-        let dealer = FakeDealer.random
-        dealer.isAttendingOnThursday = true
-        dealer.isAttendingOnFriday = false
-        dealer.isAttendingOnSaturday = true
-        let group = AlphabetisedDealersGroup(indexingString: .random, dealers: [dealer])
-        let index = FakeDealersIndex(alphabetisedDealers: [group])
-        let dealersService = FakeDealersService(index: index)
-        let context = DealersViewModelTestBuilder().with(dealersService).build()
-        var viewModel: DealersViewModel?
-        context.viewModelFactory.makeDealersViewModel { viewModel = $0 }
-        let delegate = CapturingDealersViewModelDelegate()
-        viewModel?.setDelegate(delegate)
-        let dealerViewModel = delegate.capturedDealerViewModel(at: IndexPath(item: 0, section: 0))
-
-        XCTAssertEqual(false, dealerViewModel?.isPresentForAllDays)
-    }
-
-    func testIndicateDealerIsNotPresentForAllDaysWhenNotAttendingOnSaturday() {
-        let dealer = FakeDealer.random
-        dealer.isAttendingOnThursday = true
-        dealer.isAttendingOnFriday = true
-        dealer.isAttendingOnSaturday = false
-        let group = AlphabetisedDealersGroup(indexingString: .random, dealers: [dealer])
-        let index = FakeDealersIndex(alphabetisedDealers: [group])
-        let dealersService = FakeDealersService(index: index)
-        let context = DealersViewModelTestBuilder().with(dealersService).build()
-        var viewModel: DealersViewModel?
-        context.viewModelFactory.makeDealersViewModel { viewModel = $0 }
-        let delegate = CapturingDealersViewModelDelegate()
-        viewModel?.setDelegate(delegate)
-        let dealerViewModel = delegate.capturedDealerViewModel(at: IndexPath(item: 0, section: 0))
-
-        XCTAssertEqual(false, dealerViewModel?.isPresentForAllDays)
+        XCTAssertEqual(expected, dealerViewModel?.isPresentForAllDays)
     }
 
 }
