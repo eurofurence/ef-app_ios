@@ -3,7 +3,7 @@ import EventBus
 import Foundation
 import UIKit
 
-struct DefaultDealersViewModelFactory: DealersViewModelFactory, DealersIndexDelegate {
+public struct DefaultDealersViewModelFactory: DealersViewModelFactory, DealersIndexDelegate {
 
     private let dealersService: DealersService
     private let defaultIconData: Data
@@ -13,7 +13,11 @@ struct DefaultDealersViewModelFactory: DealersViewModelFactory, DealersIndexDele
     private let categoriesViewModel: CategoriesViewModel
     private let eventBus = EventBus()
 
-    init(dealersService: DealersService, defaultIconData: Data, refreshService: RefreshService) {
+    public init(
+        dealersService: DealersService,
+        defaultIconData: Data,
+        refreshService: RefreshService
+    ) {
         self.dealersService = dealersService
         self.defaultIconData = defaultIconData
         self.refreshService = refreshService
@@ -26,26 +30,26 @@ struct DefaultDealersViewModelFactory: DealersViewModelFactory, DealersIndexDele
         index.setDelegate(self)
     }
 
-    func makeDealersViewModel(completionHandler: @escaping (DealersViewModel) -> Void) {
+    public func makeDealersViewModel(completionHandler: @escaping (DealersViewModel) -> Void) {
         completionHandler(viewModel)
     }
 
-    func makeDealersSearchViewModel(completionHandler: @escaping (DealersSearchViewModel) -> Void) {
+    public func makeDealersSearchViewModel(completionHandler: @escaping (DealersSearchViewModel) -> Void) {
         completionHandler(searchViewModel)
     }
     
-    func makeDealerCategoriesViewModel(completionHandler: @escaping (DealerCategoriesViewModel) -> Void) {
+    public func makeDealerCategoriesViewModel(completionHandler: @escaping (DealerCategoriesViewModel) -> Void) {
         completionHandler(categoriesViewModel)
     }
 
-    func alphabetisedDealersDidChange(to alphabetisedGroups: [AlphabetisedDealersGroup]) {
+    public func alphabetisedDealersDidChange(to alphabetisedGroups: [AlphabetisedDealersGroup]) {
         let (groups, indexTitles) = makeViewModels(from: alphabetisedGroups)
         eventBus.post(AllDealersChangedEvent(rawGroups: alphabetisedGroups,
                                              alphabetisedGroups: groups,
                                              indexTitles: indexTitles))
     }
 
-    func indexDidProduceSearchResults(_ searchResults: [AlphabetisedDealersGroup]) {
+    public func indexDidProduceSearchResults(_ searchResults: [AlphabetisedDealersGroup]) {
         let (groups, indexTitles) = makeViewModels(from: searchResults)
         eventBus.post(SearchResultsDidChangeEvent(rawGroups: searchResults,
                                                   alphabetisedGroups: groups,
