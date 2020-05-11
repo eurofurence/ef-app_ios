@@ -4,36 +4,21 @@ import XCTest
 
 class WhenBindingDealerSearchResult_DealersPresenterShould: XCTestCase {
 
-    var context: DealersPresenterTestBuilder.Context!
-    var dealer: StubDealerViewModel!
-    var component: CapturingDealerComponent!
-
-    override func setUp() {
-        super.setUp()
-
+    func testBindTheDealerAttributesOntoTheComponent() throws {
         let dealerGroups = [DealersGroupViewModel].random
         let searchViewModel = CapturingDealersSearchViewModel(dealerGroups: dealerGroups)
         let viewModelFactory = FakeDealersViewModelFactory(searchViewModel: searchViewModel)
-        context = DealersPresenterTestBuilder().with(viewModelFactory).build()
+        let context = DealersPresenterTestBuilder().with(viewModelFactory).build()
         context.simulateSceneDidLoad()
         let randomGroup = dealerGroups.randomElement()
         let randomDealer = randomGroup.element.dealers.randomElement()
-        precondition(randomDealer.element is StubDealerViewModel)
-        dealer = randomDealer.element as? StubDealerViewModel
+        let dealer = try XCTUnwrap(randomDealer.element as? StubDealerViewModel)
         let indexPath = IndexPath(item: randomDealer.index, section: randomGroup.index)
-        component = CapturingDealerComponent()
+        let component = CapturingDealerComponent()
         context.bind(component, toDealerSearchResultAt: indexPath)
-    }
-
-    func testBindTheDealerTitleOntoTheComponent() {
+        
         XCTAssertEqual(dealer.title, component.capturedDealerTitle)
-    }
-
-    func testBindTheDealerSubtitleOntoTheComponent() {
         XCTAssertEqual(dealer.subtitle, component.capturedDealerSubtitle)
-    }
-
-    func testBindTheDealerIconPNGDataOntoTheComponent() {
         XCTAssertEqual(dealer.iconPNGData, component.capturedDealerPNGData)
     }
 
