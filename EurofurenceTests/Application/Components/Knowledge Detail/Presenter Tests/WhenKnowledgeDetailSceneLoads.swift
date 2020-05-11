@@ -3,17 +3,22 @@ import EurofurenceModel
 import XCTest
 
 class WhenKnowledgeDetailSceneLoads: XCTestCase {
-
-    func testTheKnowledgeEntryFormattedTextIsAppliedOntoScene() {
-        let context = KnowledgeDetailPresenterTestBuilder().build()
+    
+    var context: KnowledgeDetailPresenterTestBuilder.Context!
+    
+    override func setUp() {
+        super.setUp()
+        
+        context = KnowledgeDetailPresenterTestBuilder().build()
         context.knowledgeDetailScene.simulateSceneDidLoad()
+    }
 
+    func testTheKnowledgeEntryisBoundToTheScene() {
+        XCTAssertEqual(context.viewModelFactory.viewModel.title, context.knowledgeDetailScene.capturedTitle)
         XCTAssertEqual(context.viewModelFactory.viewModel.contents, context.knowledgeDetailScene.capturedKnowledgeAttributedText)
     }
 
-    func testLinksFromTheKnowledgeEntryAreBoundOntoScene() {
-        let context = KnowledgeDetailPresenterTestBuilder().build()
-        context.knowledgeDetailScene.simulateSceneDidLoad()
+    func testLinksAreBoundOntoScene() {
         let randomLink = context.viewModelFactory.viewModel.links.randomElement()
         let linkScene = CapturingLinkScene()
         context.knowledgeDetailScene.linksBinder?.bind(linkScene, at: randomLink.index)
@@ -22,17 +27,7 @@ class WhenKnowledgeDetailSceneLoads: XCTestCase {
         XCTAssertEqual(randomLink.element.name, linkScene.capturedLinkName)
     }
 
-    func testTheTitleFromTheViewModelIsBoundOntoTheScene() {
-        let context = KnowledgeDetailPresenterTestBuilder().build()
-        context.knowledgeDetailScene.simulateSceneDidLoad()
-        let expected = context.viewModelFactory.viewModel.title
-
-        XCTAssertEqual(expected, context.knowledgeDetailScene.capturedTitle)
-    }
-
-    func testBindTheImagesFromTheViewModelOntoTheScene() {
-        let context = KnowledgeDetailPresenterTestBuilder().build()
-        context.knowledgeDetailScene.simulateSceneDidLoad()
+    func testImagesAreBoundOntoTheScene() {
         let randomImage = context.viewModelFactory.viewModel.images.randomElement()
         let imageScene = CapturingKnowledgeEntryImageScene()
         context.knowledgeDetailScene.imagesBinder?.bind(imageScene, at: randomImage.index)
