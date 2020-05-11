@@ -1,6 +1,6 @@
 import Foundation
 
-protocol DateRangeFormatter {
+public protocol DateRangeFormatter {
 
     func string(from startDate: Date, to endDate: Date) -> String
 
