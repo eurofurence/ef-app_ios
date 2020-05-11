@@ -3,19 +3,6 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import XCTest
 
-struct StubSponsorsOnlyEventViewModel: EventDetailViewModel {
-
-    var sponsorsOnlyWarningViewModel: EventSponsorsOnlyWarningViewModel
-
-    var numberOfComponents: Int { return 1 }
-    func setDelegate(_ delegate: EventDetailViewModelDelegate) { }
-    func describe(componentAt index: Int, to visitor: EventDetailViewModelVisitor) { visitor.visit(sponsorsOnlyWarningViewModel
-        ) }
-    func favourite() { }
-    func unfavourite() { }
-
-}
-
 class WhenBindingSponsorsOnlyMessage_EventDetailPresenterShould: XCTestCase {
 
     func testBindTheMessageOntoTheComponent() {

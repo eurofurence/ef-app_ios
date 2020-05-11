@@ -3,19 +3,6 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import XCTest
 
-struct StubKageEventViewModel: EventDetailViewModel {
-
-    var kageMessageViewModel: EventKageMessageViewModel
-
-    var numberOfComponents: Int { return 1 }
-    func setDelegate(_ delegate: EventDetailViewModelDelegate) { }
-    func describe(componentAt index: Int, to visitor: EventDetailViewModelVisitor) { visitor.visit(kageMessageViewModel
-        ) }
-    func favourite() { }
-    func unfavourite() { }
-
-}
-
 class WhenBindingKageBanner_EventDetailPresenterShould: XCTestCase {
 
     func testBindTheMessageOntoTheComponent() {
