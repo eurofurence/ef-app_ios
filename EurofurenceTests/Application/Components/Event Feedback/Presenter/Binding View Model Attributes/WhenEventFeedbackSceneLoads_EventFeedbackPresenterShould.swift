@@ -15,6 +15,7 @@ class WhenEventFeedbackSceneLoads_EventFeedbackPresenterShould: XCTestCase {
     func testBindHeadingAttributes() {
         assertTitleBound()
         assertEventTimeBound()
+        assertEventLocationBound()
         assertEventHostBound()
     }
     
