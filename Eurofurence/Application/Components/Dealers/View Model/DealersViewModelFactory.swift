@@ -1,6 +1,6 @@
 import Foundation
 
-protocol DealersViewModelFactory {
+public protocol DealersViewModelFactory {
 
     func makeDealersViewModel(completionHandler: @escaping (DealersViewModel) -> Void)
     func makeDealersSearchViewModel(completionHandler: @escaping (DealersSearchViewModel) -> Void)

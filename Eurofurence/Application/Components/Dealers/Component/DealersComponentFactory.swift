@@ -1,6 +1,6 @@
 import UIKit.UIViewController
 
-protocol DealersComponentFactory {
+public protocol DealersComponentFactory {
 
     func makeDealersComponent(_ delegate: DealersComponentDelegate) -> UIViewController
 

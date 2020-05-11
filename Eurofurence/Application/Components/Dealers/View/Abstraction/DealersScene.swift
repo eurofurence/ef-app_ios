@@ -1,6 +1,6 @@
 import Foundation
 
-protocol DealersScene {
+public protocol DealersScene {
 
     func setDelegate(_ delegate: DealersSceneDelegate)
     func setDealersTitle(_ title: String)
@@ -12,7 +12,7 @@ protocol DealersScene {
 
 }
 
-protocol DealersSceneDelegate {
+public protocol DealersSceneDelegate {
 
     func dealersSceneDidLoad()
     func dealersSceneDidChangeSearchQuery(to query: String)
@@ -23,19 +23,19 @@ protocol DealersSceneDelegate {
 
 }
 
-protocol DealerCategoriesFilterScene {
+public protocol DealerCategoriesFilterScene {
     
     func bind(_ numberOfCategories: Int, using binder: DealerCategoriesBinder)
     
 }
 
-protocol DealerCategoriesBinder {
+public protocol DealerCategoriesBinder {
     
     func bindCategoryComponent(_ component: DealerCategoryComponentScene, at index: Int)
     
 }
 
-protocol DealerCategoryComponentScene {
+public protocol DealerCategoryComponentScene {
     
     func setCategoryTitle(_ title: String)
     func setSelectionHandler(_ handler: @escaping () -> Void)

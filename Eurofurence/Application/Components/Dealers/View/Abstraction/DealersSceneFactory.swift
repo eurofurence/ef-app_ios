@@ -1,6 +1,6 @@
 import UIKit.UIViewController
 
-protocol DealersSceneFactory {
+public protocol DealersSceneFactory {
 
     func makeDealersScene() -> UIViewController & DealersScene
 

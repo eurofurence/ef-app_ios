@@ -1,6 +1,6 @@
 import Foundation
 
-protocol DealerGroupHeader {
+public protocol DealerGroupHeader {
 
     func setDealersGroupTitle(_ title: String)
 

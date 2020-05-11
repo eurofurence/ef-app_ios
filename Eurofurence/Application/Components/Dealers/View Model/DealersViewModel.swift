@@ -1,7 +1,7 @@
 import EurofurenceModel
 import Foundation
 
-protocol DealersViewModel {
+public protocol DealersViewModel {
 
     func setDelegate(_ delegate: DealersViewModelDelegate)
     func identifierForDealer(at indexPath: IndexPath) -> DealerIdentifier?
@@ -9,7 +9,7 @@ protocol DealersViewModel {
 
 }
 
-protocol DealersViewModelDelegate {
+public protocol DealersViewModelDelegate {
 
     func dealersRefreshDidBegin()
     func dealersRefreshDidFinish()
@@ -17,14 +17,14 @@ protocol DealersViewModelDelegate {
 
 }
 
-protocol DealerCategoriesViewModel {
+public protocol DealerCategoriesViewModel {
     
     var numberOfCategories: Int { get }
     func categoryViewModel(at index: Int) -> DealerCategoryViewModel
     
 }
 
-protocol DealerCategoryViewModel {
+public protocol DealerCategoryViewModel {
     
     var title: String { get }
 
@@ -33,7 +33,7 @@ protocol DealerCategoryViewModel {
     
 }
 
-protocol DealerCategoryViewModelObserver {
+public protocol DealerCategoryViewModelObserver {
     
     func categoryDidEnterActiveState()
     func categoryDidEnterInactiveState()

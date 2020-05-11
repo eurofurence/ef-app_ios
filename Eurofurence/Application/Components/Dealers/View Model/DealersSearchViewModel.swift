@@ -1,7 +1,7 @@
 import EurofurenceModel
 import Foundation
 
-protocol DealersSearchViewModel {
+public protocol DealersSearchViewModel {
 
     func setSearchResultsDelegate(_ delegate: DealersSearchViewModelDelegate)
     func updateSearchResults(with query: String)
@@ -9,7 +9,7 @@ protocol DealersSearchViewModel {
 
 }
 
-protocol DealersSearchViewModelDelegate {
+public protocol DealersSearchViewModelDelegate {
 
     func dealerSearchResultsDidChange(_ groups: [DealersGroupViewModel], indexTitles: [String])
 
