@@ -1,6 +1,6 @@
 import UIKit
 
-class EventFeedbackViewController: UIViewController, EventFeedbackScene {
+public class EventFeedbackViewController: UIViewController, EventFeedbackScene {
     
     // MARK: UIKit Stuff
     
@@ -18,7 +18,7 @@ class EventFeedbackViewController: UIViewController, EventFeedbackScene {
         viewModel?.submitFeedback()
     }
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         delegate?.eventFeedbackSceneDidLoad()
     }
@@ -76,35 +76,35 @@ class EventFeedbackViewController: UIViewController, EventFeedbackScene {
     // MARK: EventFeedbackScene
     
     private var delegate: EventFeedbackSceneDelegate?
-    func setDelegate(_ delegate: EventFeedbackSceneDelegate) {
+    public func setDelegate(_ delegate: EventFeedbackSceneDelegate) {
         self.delegate = delegate
     }
     
     private var viewModel: EventFeedbackViewModel?
-    func bind(_ viewModel: EventFeedbackViewModel) {
+    public func bind(_ viewModel: EventFeedbackViewModel) {
         self.viewModel = viewModel
         
         eventTitleLabel.text = viewModel.eventTitle
         eventSubtitleLabel.text = [viewModel.eventDayAndTime, viewModel.eventLocation, viewModel.eventHosts].joined(separator: "\n")
     }
     
-    func showFeedbackForm() {
+    public func showFeedbackForm() {
         let feedbackForm = initialiseStoryboardViewController(EventFeedbackFormViewController.self)
         feedbackForm.viewModel = viewModel
         swapEmbeddedViewController(to: feedbackForm)
     }
     
-    func showFeedbackSubmissionInProgress() {
+    public func showFeedbackSubmissionInProgress() {
         let feedbackProgress = initialiseStoryboardViewController(EventFeedbackProgressViewController.self)
         swapEmbeddedViewController(to: feedbackProgress)
     }
     
-    func showFeedbackSubmissionSuccessful() {
+    public func showFeedbackSubmissionSuccessful() {
         let successViewController = initialiseStoryboardViewController(EventFeedbackSuccessViewController.self)
         swapEmbeddedViewController(to: successViewController)
     }
     
-    func showFeedbackSubmissionFailedPrompt() {
+    public func showFeedbackSubmissionFailedPrompt() {
         let alert = UIAlertController(title: .feedbackErrorTitle,
                                       message: .feedbackErrorMessage,
                                       preferredStyle: .alert)
@@ -113,15 +113,15 @@ class EventFeedbackViewController: UIViewController, EventFeedbackScene {
         present(alert, animated: true)
     }
     
-    func disableNavigationControls() {
+    public func disableNavigationControls() {
         barButtonItems.forEach({ $0.isEnabled = false })
     }
     
-    func enableNavigationControls() {
+    public func enableNavigationControls() {
         barButtonItems.forEach({ $0.isEnabled = true })
     }
     
-    func showDiscardFeedbackPrompt(discardHandler: @escaping () -> Void) {
+    public func showDiscardFeedbackPrompt(discardHandler: @escaping () -> Void) {
         let alert = UIAlertController(title: .confirmDiscardEventFeedbackTitle, message: "", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: .cancel, style: .cancel)
         alert.addAction(cancelAction)

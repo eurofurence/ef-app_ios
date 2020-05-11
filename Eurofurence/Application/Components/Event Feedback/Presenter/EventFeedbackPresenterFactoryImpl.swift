@@ -1,6 +1,6 @@
 import EurofurenceModel
 
-struct EventFeedbackPresenterFactoryImpl: EventFeedbackPresenterFactory {
+public struct EventFeedbackPresenterFactoryImpl: EventFeedbackPresenterFactory {
     
     private let eventService: EventsService
     private let dayOfWeekFormatter: DayOfWeekFormatter
@@ -10,7 +10,7 @@ struct EventFeedbackPresenterFactoryImpl: EventFeedbackPresenterFactory {
     private let failureHaptic: FailureHaptic
     private let successWaitingRule: EventFeedbackSuccessWaitingRule
     
-    init(eventService: EventsService,
+    public init(eventService: EventsService,
          dayOfWeekFormatter: DayOfWeekFormatter,
          startTimeFormatter: HoursDateFormatter,
          endTimeFormatter: HoursDateFormatter,
@@ -26,9 +26,11 @@ struct EventFeedbackPresenterFactoryImpl: EventFeedbackPresenterFactory {
         self.successWaitingRule = successWaitingRule
     }
     
-    func makeEventFeedbackPresenter(for event: EventIdentifier,
-                                    scene: EventFeedbackScene,
-                                    delegate: EventFeedbackComponentDelegate) {
+    public func makeEventFeedbackPresenter(
+        for event: EventIdentifier,
+        scene: EventFeedbackScene,
+        delegate: EventFeedbackComponentDelegate
+    ) {
         guard let event = eventService.fetchEvent(identifier: event) else { return }
         
         _ = EventFeedbackPresenter(event: event,

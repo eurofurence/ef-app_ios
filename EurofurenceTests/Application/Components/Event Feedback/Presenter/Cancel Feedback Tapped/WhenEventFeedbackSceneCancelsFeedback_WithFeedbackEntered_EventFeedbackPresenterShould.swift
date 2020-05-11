@@ -1,4 +1,4 @@
-@testable import Eurofurence
+import Eurofurence
 import XCTest
 
 class WhenEventFeedbackSceneCancelsFeedback_WithFeedbackEntered_EventFeedbackPresenterShould: XCTestCase {
