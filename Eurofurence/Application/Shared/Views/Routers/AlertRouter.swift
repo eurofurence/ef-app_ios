@@ -1,12 +1,12 @@
 import Foundation
 
-protocol AlertRouter {
+public protocol AlertRouter {
 
     func show(_ alert: Alert)
 
 }
 
-protocol AlertDismissable {
+public protocol AlertDismissable {
 
     func dismiss(_ completionHandler: (() -> Void)?)
 
@@ -14,20 +14,20 @@ protocol AlertDismissable {
 
 extension AlertDismissable {
 
-    func dismiss() {
+    public func dismiss() {
         dismiss(nil)
     }
 
 }
 
-struct Alert {
+public struct Alert {
 
-    var title: String
-    var message: String
-    var actions: [AlertAction]
-    var onCompletedPresentation: ((AlertDismissable) -> Void)?
+    public var title: String
+    public var message: String
+    public var actions: [AlertAction]
+    public var onCompletedPresentation: ((AlertDismissable) -> Void)?
 
-    init(title: String, message: String, actions: [AlertAction] = []) {
+    public init(title: String, message: String, actions: [AlertAction] = []) {
         self.title = title
         self.message = message
         self.actions = actions
@@ -35,17 +35,17 @@ struct Alert {
 
 }
 
-struct AlertAction {
+public struct AlertAction {
 
-    var title: String
+    public var title: String
     private var action: (() -> Void)?
 
-    init(title: String, action: (() -> Void)? = nil) {
+    public init(title: String, action: (() -> Void)? = nil) {
         self.title = title
         self.action = action
     }
 
-    func invoke() {
+    public func invoke() {
         action?()
     }
 
