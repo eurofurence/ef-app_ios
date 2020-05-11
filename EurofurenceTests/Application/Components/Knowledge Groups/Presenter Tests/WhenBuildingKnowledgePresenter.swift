@@ -9,28 +9,16 @@ class WhenBuildingKnowledgePresenter: XCTestCase {
         context = KnowledgeGroupsPresenterTestBuilder().build()
     }
 
-    func testItShouldNotTellViewModelFactoryToPrepareViewModel() {
+    func testItRemainsInTheDefaultState() {
+        XCTAssertEqual(.information, context.scene.capturedTitle)
+        XCTAssertEqual(.information, context.scene.capturedShortTitle)
         XCTAssertFalse(context.knowledgeViewModelFactory.toldToPrepareViewModel)
-    }
-
-    func testItShouldNotTellTheSceneToShowTheLoadingIndicator() {
         XCTAssertFalse(context.scene.didShowLoadingIndicator)
-    }
-
-    func testTheLoadingIndicatorShouldNotBeHidden() {
         XCTAssertFalse(context.scene.didHideLoadingIndicator)
     }
 
     func testTheSceneFromTheFactoryIsReturnedFromTheModule() {
         XCTAssertTrue(context.scene === context.producedViewController)
-    }
-
-    func testTheSceneIsToldToShowTheConventionInformationTitle() {
-        XCTAssertEqual(.information, context.scene.capturedTitle)
-    }
-
-    func testTheSceneIsToldToShowTheConventionShortTitle() {
-        XCTAssertEqual(.information, context.scene.capturedShortTitle)
     }
 
 }
