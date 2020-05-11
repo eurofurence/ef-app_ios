@@ -1,6 +1,6 @@
 import UIKit.UIViewController
 
-protocol NewsSceneFactory {
+public protocol NewsSceneFactory {
 
     func makeNewsScene() -> UIViewController & NewsScene
 

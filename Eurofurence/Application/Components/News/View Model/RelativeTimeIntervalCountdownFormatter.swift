@@ -1,6 +1,6 @@
 import Foundation
 
-protocol RelativeTimeIntervalCountdownFormatter {
+public protocol RelativeTimeIntervalCountdownFormatter {
 
     func relativeString(from timeInterval: TimeInterval) -> String
 
