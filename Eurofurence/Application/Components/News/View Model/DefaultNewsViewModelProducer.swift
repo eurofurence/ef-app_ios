@@ -1,14 +1,14 @@
 import EurofurenceModel
 import Foundation
 
-class DefaultNewsViewModelProducer: NewsViewModelProducer,
-                                    AnnouncementsServiceObserver,
-                                    AuthenticationStateObserver,
-                                    PrivateMessagesObserver,
-                                    ConventionCountdownServiceObserver,
-                                    EventsServiceObserver,
-                                    RefreshServiceObserver,
-                                    EventsScheduleDelegate {
+public class DefaultNewsViewModelProducer: NewsViewModelProducer,
+                                           AnnouncementsServiceObserver,
+                                           AuthenticationStateObserver,
+                                           PrivateMessagesObserver,
+                                           ConventionCountdownServiceObserver,
+                                           EventsServiceObserver,
+                                           RefreshServiceObserver,
+                                           EventsScheduleDelegate {
 
     // MARK: Properties
 
@@ -32,17 +32,19 @@ class DefaultNewsViewModelProducer: NewsViewModelProducer,
 
     // MARK: Initialization
 
-    init(announcementsService: AnnouncementsService,
-         authenticationService: AuthenticationService,
-         privateMessagesService: PrivateMessagesService,
-         daysUntilConventionService: ConventionCountdownService,
-         eventsService: EventsService,
-         relativeTimeIntervalCountdownFormatter: RelativeTimeIntervalCountdownFormatter,
-         hoursDateFormatter: HoursDateFormatter,
-         clock: Clock,
-         refreshService: RefreshService,
-         announcementsDateFormatter: AnnouncementDateFormatter,
-         announcementsMarkdownRenderer: MarkdownRenderer) {
+    public init(
+        announcementsService: AnnouncementsService,
+        authenticationService: AuthenticationService,
+        privateMessagesService: PrivateMessagesService,
+        daysUntilConventionService: ConventionCountdownService,
+        eventsService: EventsService,
+        relativeTimeIntervalCountdownFormatter: RelativeTimeIntervalCountdownFormatter,
+        hoursDateFormatter: HoursDateFormatter,
+        clock: Clock,
+        refreshService: RefreshService,
+        announcementsDateFormatter: AnnouncementDateFormatter,
+        announcementsMarkdownRenderer: MarkdownRenderer
+    ) {
         self.relativeTimeIntervalCountdownFormatter = relativeTimeIntervalCountdownFormatter
         self.hoursDateFormatter = hoursDateFormatter
         self.clock = clock
@@ -62,61 +64,61 @@ class DefaultNewsViewModelProducer: NewsViewModelProducer,
 
     // MARK: NewsViewModelProducer
 
-    func subscribeViewModelUpdates(_ delegate: NewsViewModelRecipient) {
+    public func subscribeViewModelUpdates(_ delegate: NewsViewModelRecipient) {
         self.delegate = delegate
         regenerateViewModel()
     }
 
-    func refresh() {
+    public func refresh() {
         refreshService.refreshLocalStore { (_) in }
     }
 
     // MARK: AnnouncementsServiceObserver
 
-    func announcementsServiceDidChangeAnnouncements(_ announcements: [Announcement]) {
+    public func announcementsServiceDidChangeAnnouncements(_ announcements: [Announcement]) {
         self.announcements = Array(announcements.prefix(3))
         regenerateViewModel()
     }
 
-    func announcementsServiceDidUpdateReadAnnouncements(_ readAnnouncements: [AnnouncementIdentifier]) {
+    public func announcementsServiceDidUpdateReadAnnouncements(_ readAnnouncements: [AnnouncementIdentifier]) {
         self.readAnnouncements = readAnnouncements
         regenerateViewModel()
     }
 
     // MARK: AuthenticationStateObserver
 
-    func userDidLogin(_ user: User) {
+    public func userDidLogin(_ user: User) {
         currentUser = user
         regenerateViewModel()
     }
 
-    func userDidLogout() {
+    public func userDidLogout() {
         currentUser = nil
         regenerateViewModel()
     }
 
-    func userDidFailToLogout() {
+    public func userDidFailToLogout() {
 
     }
 
     // MARK: PrivateMessagesServiceObserver
 
-    func privateMessagesServiceDidUpdateUnreadMessageCount(to unreadCount: Int) {
+    public func privateMessagesServiceDidUpdateUnreadMessageCount(to unreadCount: Int) {
         unreadMessagesCount = unreadCount
         regenerateViewModel()
     }
 
-    func privateMessagesServiceDidFinishRefreshingMessages(messages: [Message]) {
+    public func privateMessagesServiceDidFinishRefreshingMessages(messages: [Message]) {
 
     }
 
-    func privateMessagesServiceDidFailToLoadMessages() {
+    public func privateMessagesServiceDidFailToLoadMessages() {
 
     }
 
     // MARK: DaysUntilConventionServiceObserver
 
-    func conventionCountdownStateDidChange(to state: ConventionCountdownState) {
+    public func conventionCountdownStateDidChange(to state: ConventionCountdownState) {
         switch state {
         case .countingDown(let daysRemaining):
             daysUntilConvention = daysRemaining
@@ -133,38 +135,38 @@ class DefaultNewsViewModelProducer: NewsViewModelProducer,
     private var allEvents = [Event]()
     private var favouriteEvents = [Event]()
     private var favouriteEventIdentifiers = [EventIdentifier]()
-    func eventsDidChange(to events: [Event]) {
+    public func eventsDidChange(to events: [Event]) {
         allEvents = events
         regenerateFavouriteEvents()
     }
 
-    func runningEventsDidChange(to events: [Event]) {
+    public func runningEventsDidChange(to events: [Event]) {
         runningEvents = events
         regenerateViewModel()
     }
 
-    func upcomingEventsDidChange(to events: [Event]) {
+    public func upcomingEventsDidChange(to events: [Event]) {
         upcomingEvents = events
         regenerateViewModel()
     }
 
-    func favouriteEventsDidChange(_ identifiers: [EventIdentifier]) {
+    public func favouriteEventsDidChange(_ identifiers: [EventIdentifier]) {
         favouriteEventIdentifiers = identifiers
         regenerateFavouriteEvents()
     }
 
     // MARK: EventsScheduleDelegate
 
-    func scheduleEventsDidChange(to events: [Event]) {
+    public func scheduleEventsDidChange(to events: [Event]) {
         todaysEvents = events
         regenerateViewModel()
     }
 
-    func eventDaysDidChange(to days: [Day]) {
+    public func eventDaysDidChange(to days: [Day]) {
 
     }
 
-    func currentEventDayDidChange(to day: Day?) {
+    public func currentEventDayDidChange(to day: Day?) {
         currentDay = day
         if let day = day {
             favouritesSchedule.restrictEvents(to: day)
@@ -173,11 +175,11 @@ class DefaultNewsViewModelProducer: NewsViewModelProducer,
 
     // MARK: RefreshServiceObserver
 
-    func refreshServiceDidBeginRefreshing() {
+    public func refreshServiceDidBeginRefreshing() {
         delegate?.refreshDidBegin()
     }
 
-    func refreshServiceDidFinishRefreshing() {
+    public func refreshServiceDidFinishRefreshing() {
         delegate?.refreshDidFinish()
     }
 
