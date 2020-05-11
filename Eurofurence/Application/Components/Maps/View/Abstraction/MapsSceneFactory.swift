@@ -1,6 +1,6 @@
 import UIKit
 
-protocol MapsSceneFactory {
+public protocol MapsSceneFactory {
 
     func makeMapsScene() -> UIViewController & MapsScene
 

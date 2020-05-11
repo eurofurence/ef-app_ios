@@ -1,6 +1,6 @@
 import Foundation
 
-protocol MapsViewModelFactory {
+public protocol MapsViewModelFactory {
 
     func makeMapsViewModel(completionHandler: @escaping (MapsViewModel) -> Void)
 

@@ -1,7 +1,7 @@
 import EurofurenceModel
 import Foundation
 
-protocol MapsViewModel {
+public protocol MapsViewModel {
 
     var numberOfMaps: Int { get }
     func mapViewModel(at index: Int) -> MapViewModel
@@ -9,7 +9,7 @@ protocol MapsViewModel {
 
 }
 
-protocol MapViewModel {
+public protocol MapViewModel {
 
     var mapName: String { get }
     func fetchMapPreviewPNGData(completionHandler: @escaping (Data) -> Void)
