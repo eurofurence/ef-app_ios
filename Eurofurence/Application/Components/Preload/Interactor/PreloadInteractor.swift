@@ -1,12 +1,12 @@
 import Foundation
 
-protocol PreloadInteractor {
+public protocol PreloadInteractor {
 
     func beginPreloading(delegate: PreloadInteractorDelegate)
 
 }
 
-protocol PreloadInteractorDelegate {
+public protocol PreloadInteractorDelegate {
 
     func preloadInteractorDidFailToPreload()
     func preloadInteractorDidFinishPreloading()

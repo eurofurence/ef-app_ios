@@ -1,6 +1,6 @@
 import Foundation
 
-protocol SplashScene: class {
+public protocol SplashScene: class {
 
     var delegate: SplashSceneDelegate? { get set }
 
@@ -9,7 +9,7 @@ protocol SplashScene: class {
 
 }
 
-protocol SplashSceneDelegate {
+public protocol SplashSceneDelegate {
 
     func splashSceneWillAppear(_ splashScene: SplashScene)
 

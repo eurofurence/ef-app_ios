@@ -1,6 +1,6 @@
 import UIKit.UIViewController
 
-protocol PreloadSceneFactory {
+public protocol PreloadSceneFactory {
 
     func makePreloadScene() -> UIViewController & SplashScene
 
