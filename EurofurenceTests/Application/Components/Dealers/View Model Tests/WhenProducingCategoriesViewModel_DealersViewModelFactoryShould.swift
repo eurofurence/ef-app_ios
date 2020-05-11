@@ -30,7 +30,7 @@ class WhenProducingCategoriesViewModel_DealersViewModelFactoryShould: XCTestCase
         XCTAssertEqual("Zulu", viewModel?.categoryViewModel(at: 2).title)
     }
     
-    func testAddingObserverToActiveCategoryTellsThemItsActive() {
+    func testPropogateCategoryActiveToInactiveState() {
         let category = FakeDealerCategory()
         category.transitionToActiveState()
         let categoriesCollection = InMemoryDealerCategoriesCollection(categories: [category])
@@ -43,9 +43,13 @@ class WhenProducingCategoriesViewModel_DealersViewModelFactoryShould: XCTestCase
         categoryViewModel?.add(observer)
         
         XCTAssertEqual(.active, observer.state)
+        
+        category.transitionToInactiveState()
+        
+        XCTAssertEqual(.inactive, observer.state)
     }
     
-    func testAddingObserverToInactiveCategoryTellsThemItsInactive() {
+    func testPropogateCategoryInactiveToActiveState() {
         let category = FakeDealerCategory()
         category.transitionToInactiveState()
         let categoriesCollection = InMemoryDealerCategoriesCollection(categories: [category])
@@ -58,38 +62,10 @@ class WhenProducingCategoriesViewModel_DealersViewModelFactoryShould: XCTestCase
         categoryViewModel?.add(observer)
         
         XCTAssertEqual(.inactive, observer.state)
-    }
-    
-    func testTellObserversWhenTransitioningFromInactiveToActiveStates() {
-        let category = FakeDealerCategory()
-        category.transitionToInactiveState()
-        let categoriesCollection = InMemoryDealerCategoriesCollection(categories: [category])
-        let index = FakeDealersIndex(availableCategories: categoriesCollection)
-        let service = FakeDealersService(index: index)
-        let context = DealersViewModelTestBuilder().with(service).build()
-        let viewModel = context.prepareCategoriesViewModel()
-        let categoryViewModel = viewModel?.categoryViewModel(at: 0)
-        let observer = CapturingDealerCategoryViewModelObserver()
-        categoryViewModel?.add(observer)
+        
         category.transitionToActiveState()
         
         XCTAssertEqual(.active, observer.state)
-    }
-    
-    func testTellObserversWhenTransitioningFromActiveToInactiveStates() {
-        let category = FakeDealerCategory()
-        category.transitionToActiveState()
-        let categoriesCollection = InMemoryDealerCategoriesCollection(categories: [category])
-        let index = FakeDealersIndex(availableCategories: categoriesCollection)
-        let service = FakeDealersService(index: index)
-        let context = DealersViewModelTestBuilder().with(service).build()
-        let viewModel = context.prepareCategoriesViewModel()
-        let categoryViewModel = viewModel?.categoryViewModel(at: 0)
-        let observer = CapturingDealerCategoryViewModelObserver()
-        categoryViewModel?.add(observer)
-        category.transitionToInactiveState()
-        
-        XCTAssertEqual(.inactive, observer.state)
     }
     
     func testTogglingActiveStateWhileInactiveTellsCategoryToBecomeActive() {

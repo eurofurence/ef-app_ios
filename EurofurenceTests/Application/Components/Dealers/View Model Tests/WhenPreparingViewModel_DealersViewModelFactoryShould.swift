@@ -18,39 +18,23 @@ class WhenPreparingViewModel_DealersViewModelFactoryShould: XCTestCase {
         viewModel?.setDelegate(delegate)
     }
 
-    private func fetchRandomDealerAndAssociatedViewModel() -> (dealer: Dealer, viewModel: DealerViewModel?) {
+    func testUseIndexingStringForGroupsAndIndexTitles() {
+        let modelDealers = context.dealersService.index.alphabetisedDealers
+        let indexingStrings = modelDealers.map(\.indexingString)
+
+        XCTAssertEqual(indexingStrings, delegate.capturedGroups.map(\.title))
+        XCTAssertEqual(indexingStrings, delegate.capturedIndexTitles)
+    }
+
+    func testBindDealerNamesOntoViewModel() {
         let modelDealers = context.dealersService.index.alphabetisedDealers
         let randomGroup = modelDealers.randomElement()
         let randomDealer = randomGroup.element.dealers.randomElement()
-        let dealerViewModel = delegate.capturedDealerViewModel(at: IndexPath(item: randomDealer.index, section: randomGroup.index))
-
-        return (dealer: randomDealer.element, viewModel: dealerViewModel)
-    }
-
-    func testConvertIndexedDealersIntoExpectedGroupTitles() {
-        let modelDealers = context.dealersService.index.alphabetisedDealers
-        let expected = modelDealers.map(\.indexingString)
-        let actual = delegate.capturedGroups.map(\.title)
-
-        XCTAssertEqual(expected, actual)
-    }
-
-    func testProduceIndexTitlesUsingGroupedIndicies() {
-        let modelDealers = context.dealersService.index.alphabetisedDealers
-        let expected = modelDealers.map(\.indexingString)
-        let actual = delegate.capturedIndexTitles
-
-        XCTAssertEqual(expected, actual)
-    }
-
-    func testBindPreferredDealerNameOntoDealerViewModelTitle() {
-        let context = fetchRandomDealerAndAssociatedViewModel()
-        XCTAssertEqual(context.dealer.preferredName, context.viewModel?.title)
-    }
-
-    func testBindAlternateDealerNameOntoDealerViewModelSubtitle() {
-        let context = fetchRandomDealerAndAssociatedViewModel()
-        XCTAssertEqual(context.dealer.alternateName, context.viewModel?.subtitle)
+        let randomDealerIndexPath = IndexPath(item: randomDealer.index, section: randomGroup.index)
+        let dealerViewModel = delegate.capturedDealerViewModel(at: randomDealerIndexPath)
+        
+        XCTAssertEqual(randomDealer.element.preferredName, dealerViewModel?.title)
+        XCTAssertEqual(randomDealer.element.alternateName, dealerViewModel?.subtitle)
     }
 
 }
