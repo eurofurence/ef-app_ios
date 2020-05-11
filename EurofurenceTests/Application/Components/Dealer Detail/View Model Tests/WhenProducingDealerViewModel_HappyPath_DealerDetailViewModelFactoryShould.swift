@@ -11,7 +11,7 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailViewModelFactoryShould:
 
         XCTAssertEqual(4, viewModel?.numberOfComponents)
     }
-
+    
     func testProduceExpectedSummaryAtIndexZero() {
         let context = DealerDetailViewModelFactoryTestBuilder().build()
         let dealerData = context.dealerData
@@ -36,16 +36,16 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailViewModelFactoryShould:
         extendedDealerData.isAttendingOnFriday = true
         extendedDealerData.isAttendingOnSaturday = true
         extendedDealerData.isAfterDark = true
-        let context = DealerDetailViewModelFactoryTestBuilder().build(data: extendedDealerData)
-        let viewModel = context.makeViewModel()
-        let expected = DealerDetailLocationAndAvailabilityViewModel(title: .locationAndAvailability,
-                                                                    mapPNGGraphicData: extendedDealerData.dealersDenMapLocationGraphicPNGData,
-                                                                    limitedAvailabilityWarning: nil,
-                                                                    locatedInAfterDarkDealersDenMessage: .locatedWithinAfterDarkDen)
-        let visitor = CapturingDealerDetailViewModelVisitor()
-        viewModel?.describeComponent(at: 1, to: visitor)
-
-        XCTAssertEqual(expected, visitor.visitedLocationAndAvailability)
+        
+        assertDealerData(
+            extendedDealerData,
+            produces: DealerDetailLocationAndAvailabilityViewModel(
+                title: .locationAndAvailability,
+                mapPNGGraphicData: extendedDealerData.dealersDenMapLocationGraphicPNGData,
+                limitedAvailabilityWarning: nil,
+                locatedInAfterDarkDealersDenMessage: .locatedWithinAfterDarkDen
+            )
+        )
     }
 
     func testProduceExpectedLocationAndAvailability_WhenNotAvailableOnThursday_AndNotInAfterDarkDen_AtIndexOne() {
@@ -54,18 +54,17 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailViewModelFactoryShould:
         extendedDealerData.isAttendingOnFriday = true
         extendedDealerData.isAttendingOnSaturday = true
         extendedDealerData.isAfterDark = false
-        let context = DealerDetailViewModelFactoryTestBuilder().build(data: extendedDealerData)
-        let viewModel = context.makeViewModel()
-
+        
         let limitedAvailabilityWarning = String.formattedOnlyPresentOnDaysString(["Friday", "Saturday"])
-        let expected = DealerDetailLocationAndAvailabilityViewModel(title: .locationAndAvailability,
-                                                                    mapPNGGraphicData: extendedDealerData.dealersDenMapLocationGraphicPNGData,
-                                                                    limitedAvailabilityWarning: limitedAvailabilityWarning,
-                                                                    locatedInAfterDarkDealersDenMessage: nil)
-        let visitor = CapturingDealerDetailViewModelVisitor()
-        viewModel?.describeComponent(at: 1, to: visitor)
-
-        XCTAssertEqual(expected, visitor.visitedLocationAndAvailability)
+        assertDealerData(
+            extendedDealerData,
+            produces: DealerDetailLocationAndAvailabilityViewModel(
+                title: .locationAndAvailability,
+                mapPNGGraphicData: extendedDealerData.dealersDenMapLocationGraphicPNGData,
+                limitedAvailabilityWarning: limitedAvailabilityWarning,
+                locatedInAfterDarkDealersDenMessage: nil
+            )
+        )
     }
 
     func testProduceExpectedLocationAndAvailability_WhenNotAvailableOnFriday_AndNotInAfterDarkDen_AtIndexOne() {
@@ -74,18 +73,17 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailViewModelFactoryShould:
         extendedDealerData.isAttendingOnFriday = false
         extendedDealerData.isAttendingOnSaturday = true
         extendedDealerData.isAfterDark = false
-        let context = DealerDetailViewModelFactoryTestBuilder().build(data: extendedDealerData)
-        let viewModel = context.makeViewModel()
-
+        
         let limitedAvailabilityWarning = String.formattedOnlyPresentOnDaysString(["Thursday", "Saturday"])
-        let expected = DealerDetailLocationAndAvailabilityViewModel(title: .locationAndAvailability,
-                                                                    mapPNGGraphicData: extendedDealerData.dealersDenMapLocationGraphicPNGData,
-                                                                    limitedAvailabilityWarning: limitedAvailabilityWarning,
-                                                                    locatedInAfterDarkDealersDenMessage: nil)
-        let visitor = CapturingDealerDetailViewModelVisitor()
-        viewModel?.describeComponent(at: 1, to: visitor)
-
-        XCTAssertEqual(expected, visitor.visitedLocationAndAvailability)
+        assertDealerData(
+            extendedDealerData,
+            produces: DealerDetailLocationAndAvailabilityViewModel(
+                title: .locationAndAvailability,
+                mapPNGGraphicData: extendedDealerData.dealersDenMapLocationGraphicPNGData,
+                limitedAvailabilityWarning: limitedAvailabilityWarning,
+                locatedInAfterDarkDealersDenMessage: nil
+            )
+        )
     }
 
     func testProduceExpectedLocationAndAvailability_WhenNotAvailableOnSaturday_AndNotInAfterDarkDen_AtIndexOne() {
@@ -94,18 +92,17 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailViewModelFactoryShould:
         extendedDealerData.isAttendingOnFriday = true
         extendedDealerData.isAttendingOnSaturday = false
         extendedDealerData.isAfterDark = false
-        let context = DealerDetailViewModelFactoryTestBuilder().build(data: extendedDealerData)
-        let viewModel = context.makeViewModel()
-
+        
         let limitedAvailabilityWarning = String.formattedOnlyPresentOnDaysString(["Thursday", "Friday"])
-        let expected = DealerDetailLocationAndAvailabilityViewModel(title: .locationAndAvailability,
-                                                                    mapPNGGraphicData: extendedDealerData.dealersDenMapLocationGraphicPNGData,
-                                                                    limitedAvailabilityWarning: limitedAvailabilityWarning,
-                                                                    locatedInAfterDarkDealersDenMessage: nil)
-        let visitor = CapturingDealerDetailViewModelVisitor()
-        viewModel?.describeComponent(at: 1, to: visitor)
-
-        XCTAssertEqual(expected, visitor.visitedLocationAndAvailability)
+        assertDealerData(
+            extendedDealerData,
+            produces: DealerDetailLocationAndAvailabilityViewModel(
+                title: .locationAndAvailability,
+                mapPNGGraphicData: extendedDealerData.dealersDenMapLocationGraphicPNGData,
+                limitedAvailabilityWarning: limitedAvailabilityWarning,
+                locatedInAfterDarkDealersDenMessage: nil
+            )
+        )
     }
 
     func testProduceExpectedLocationAndAvailability_WhenNotAvailableOnFridayAndSaturdaySaturday_AndNotInAfterDarkDen_AtIndexOne() {
@@ -114,18 +111,17 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailViewModelFactoryShould:
         extendedDealerData.isAttendingOnFriday = false
         extendedDealerData.isAttendingOnSaturday = false
         extendedDealerData.isAfterDark = false
-        let context = DealerDetailViewModelFactoryTestBuilder().build(data: extendedDealerData)
-        let viewModel = context.makeViewModel()
-
+        
         let limitedAvailabilityWarning = String.formattedOnlyPresentOnDaysString(["Thursday"])
-        let expected = DealerDetailLocationAndAvailabilityViewModel(title: .locationAndAvailability,
-                                                                    mapPNGGraphicData: extendedDealerData.dealersDenMapLocationGraphicPNGData,
-                                                                    limitedAvailabilityWarning: limitedAvailabilityWarning,
-                                                                    locatedInAfterDarkDealersDenMessage: nil)
-        let visitor = CapturingDealerDetailViewModelVisitor()
-        viewModel?.describeComponent(at: 1, to: visitor)
-
-        XCTAssertEqual(expected, visitor.visitedLocationAndAvailability)
+        assertDealerData(
+            extendedDealerData,
+            produces: DealerDetailLocationAndAvailabilityViewModel(
+                title: .locationAndAvailability,
+                mapPNGGraphicData: extendedDealerData.dealersDenMapLocationGraphicPNGData,
+                limitedAvailabilityWarning: limitedAvailabilityWarning,
+                locatedInAfterDarkDealersDenMessage: nil
+            )
+        )
     }
 
     func testProduceExpectedLocationAndAvailability_WhenNotAvailableOnThursdayAndSaturday_AndNotInAfterDarkDen_AtIndexOne() {
@@ -134,18 +130,17 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailViewModelFactoryShould:
         extendedDealerData.isAttendingOnFriday = true
         extendedDealerData.isAttendingOnSaturday = false
         extendedDealerData.isAfterDark = false
-        let context = DealerDetailViewModelFactoryTestBuilder().build(data: extendedDealerData)
-        let viewModel = context.makeViewModel()
-
+        
         let limitedAvailabilityWarning = String.formattedOnlyPresentOnDaysString(["Friday"])
-        let expected = DealerDetailLocationAndAvailabilityViewModel(title: .locationAndAvailability,
-                                                                    mapPNGGraphicData: extendedDealerData.dealersDenMapLocationGraphicPNGData,
-                                                                    limitedAvailabilityWarning: limitedAvailabilityWarning,
-                                                                    locatedInAfterDarkDealersDenMessage: nil)
-        let visitor = CapturingDealerDetailViewModelVisitor()
-        viewModel?.describeComponent(at: 1, to: visitor)
-
-        XCTAssertEqual(expected, visitor.visitedLocationAndAvailability)
+        assertDealerData(
+            extendedDealerData,
+            produces: DealerDetailLocationAndAvailabilityViewModel(
+                title: .locationAndAvailability,
+                mapPNGGraphicData: extendedDealerData.dealersDenMapLocationGraphicPNGData,
+                limitedAvailabilityWarning: limitedAvailabilityWarning,
+                locatedInAfterDarkDealersDenMessage: nil
+            )
+        )
     }
 
     func testProduceExpectedLocationAndAvailability_WhenNotAvailableOnThursdayAndFriday_AndNotInAfterDarkDen_AtIndexOne() {
@@ -154,18 +149,17 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailViewModelFactoryShould:
         extendedDealerData.isAttendingOnFriday = false
         extendedDealerData.isAttendingOnSaturday = true
         extendedDealerData.isAfterDark = false
-        let context = DealerDetailViewModelFactoryTestBuilder().build(data: extendedDealerData)
-        let viewModel = context.makeViewModel()
-
+        
         let limitedAvailabilityWarning = String.formattedOnlyPresentOnDaysString(["Saturday"])
-        let expected = DealerDetailLocationAndAvailabilityViewModel(title: .locationAndAvailability,
-                                                                    mapPNGGraphicData: extendedDealerData.dealersDenMapLocationGraphicPNGData,
-                                                                    limitedAvailabilityWarning: limitedAvailabilityWarning,
-                                                                    locatedInAfterDarkDealersDenMessage: nil)
-        let visitor = CapturingDealerDetailViewModelVisitor()
-        viewModel?.describeComponent(at: 1, to: visitor)
-
-        XCTAssertEqual(expected, visitor.visitedLocationAndAvailability)
+        assertDealerData(
+            extendedDealerData,
+            produces: DealerDetailLocationAndAvailabilityViewModel(
+                title: .locationAndAvailability,
+                mapPNGGraphicData: extendedDealerData.dealersDenMapLocationGraphicPNGData,
+                limitedAvailabilityWarning: limitedAvailabilityWarning,
+                locatedInAfterDarkDealersDenMessage: nil
+            )
+        )
     }
 
     func testNotProduceLocationAndAvailabilityViewModelAtIndexOneWhenNoInformationAvailable() {
@@ -175,6 +169,7 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailViewModelFactoryShould:
         extendedDealerData.isAttendingOnFriday = true
         extendedDealerData.isAttendingOnSaturday = true
         extendedDealerData.isAfterDark = false
+        
         let context = DealerDetailViewModelFactoryTestBuilder().build(data: extendedDealerData)
         let viewModel = context.makeViewModel()
         let visitor = CapturingDealerDetailViewModelVisitor()
@@ -268,6 +263,19 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailViewModelFactoryShould:
         
         XCTAssertTrue(sender === (context.shareService.sharedItemSender as AnyObject))
         XCTAssertEqual(context.dealer.shareableURL, (context.shareService.sharedItem as? URL))
+    }
+    
+    private func assertDealerData(
+        _ dealerData: ExtendedDealerData,
+        produces expected: DealerDetailLocationAndAvailabilityViewModel,
+        _ line: UInt = #line
+    ) {
+        let context = DealerDetailViewModelFactoryTestBuilder().build(data: dealerData)
+        let viewModel = context.makeViewModel()
+        let visitor = CapturingDealerDetailViewModelVisitor()
+        viewModel?.describeComponent(at: 1, to: visitor)
+
+        XCTAssertEqual(expected, visitor.visitedLocationAndAvailability, line: line)
     }
 
 }
