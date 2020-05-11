@@ -1,6 +1,6 @@
 import Foundation
 
-protocol DateFormatterProtocol {
+public protocol DateFormatterProtocol {
 
     func string(from date: Date) -> String
 

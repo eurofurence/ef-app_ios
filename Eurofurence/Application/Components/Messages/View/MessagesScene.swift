@@ -10,13 +10,13 @@ public protocol MessagesSceneDelegate {
 
 }
 
-protocol MessagesSceneFactory {
+public protocol MessagesSceneFactory {
 
     func makeMessagesScene() -> UIViewController & MessagesScene
 
 }
 
-protocol MessagesScene: class {
+public protocol MessagesScene: class {
 
     var delegate: MessagesSceneDelegate? { get set }
 
