@@ -1,36 +1,51 @@
-@testable import Eurofurence
+import Eurofurence
 import EurofurenceModel
 import EurofurenceModelTestDoubles
 import XCTest
 
 class WhenRecordingEventInteraction: XCTestCase {
     
-    func testTheEventInteractionIsRecordedWithBriefSummary() {
-        let event = FakeEvent.random
+    var event: FakeEvent!
+    
+    var interaction: Interaction?
+    var donatedIntent: ViewEventIntentDefinition?
+    var producedActivity: FakeActivity?
+    
+    override func setUp() {
+        super.setUp()
+        
+        event = FakeEvent.random
         let eventsService = FakeEventsService()
         eventsService.events = [event]
         let eventIntentDonor = CapturingEventIntentDonor()
         let activityFactory = FakeActivityFactory()
-        let tracer = SystemEventInteractionsRecorder(eventsService: eventsService, eventIntentDonor: eventIntentDonor, activityFactory: activityFactory)
-        _ = tracer.makeInteraction(for: event.identifier)
+        let tracer = SystemEventInteractionsRecorder(
+            eventsService: eventsService,
+            eventIntentDonor: eventIntentDonor,
+            activityFactory: activityFactory
+        )
         
-        let expected = ViewEventIntentDefinition(identifier: event.identifier, eventName: event.title)
-        XCTAssertEqual(expected, eventIntentDonor.donatedEventIntentDefinition)
+        interaction = tracer.makeInteraction(for: event.identifier)
+        donatedIntent = eventIntentDonor.donatedEventIntentDefinition
+        producedActivity = activityFactory.producedActivity
+    }
+    
+    func testTheEventInteractionIsRecordedWithBriefSummary() {
+        XCTAssertEqual(
+            ViewEventIntentDefinition(identifier: event.identifier, eventName: event.title),
+            donatedIntent
+        )
     }
     
     func testEventActivityIsMade() {
-        let event = FakeEvent.random
-        let eventsService = FakeEventsService()
-        eventsService.events = [event]
-        let eventIntentDonor = CapturingEventIntentDonor()
-        let activityFactory = FakeActivityFactory()
-        let tracer = SystemEventInteractionsRecorder(eventsService: eventsService, eventIntentDonor: eventIntentDonor, activityFactory: activityFactory)
-        _ = tracer.makeInteraction(for: event.identifier)
-        
-        let producedActivity = activityFactory.producedActivity
-        
         let expectedTitleFormat = NSLocalizedString("ViewEventFormatString", comment: "")
         let expectedTitle = String.localizedStringWithFormat(expectedTitleFormat, event.title)
+        
+        XCTAssertEqual(
+            ViewEventIntentDefinition(identifier: event.identifier, eventName: event.title),
+            donatedIntent
+        )
+        
         XCTAssertEqual("org.eurofurence.activity.view-event", producedActivity?.activityType)
         XCTAssertEqual(expectedTitle, producedActivity?.title)
         XCTAssertEqual(event.shareableURL, producedActivity?.url)
@@ -39,15 +54,6 @@ class WhenRecordingEventInteraction: XCTestCase {
     }
     
     func testTogglingInteractionActivationChangesCurrentStateOfActivity() {
-        let event = FakeEvent.random
-        let eventsService = FakeEventsService()
-        eventsService.events = [event]
-        let eventIntentDonor = CapturingEventIntentDonor()
-        let activityFactory = FakeActivityFactory()
-        let tracer = SystemEventInteractionsRecorder(eventsService: eventsService, eventIntentDonor: eventIntentDonor, activityFactory: activityFactory)
-        let interaction = tracer.makeInteraction(for: event.identifier)
-        let producedActivity = activityFactory.producedActivity
-        
         XCTAssertEqual(.unset, producedActivity?.state)
         
         interaction?.activate()

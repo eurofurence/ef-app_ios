@@ -1,29 +1,31 @@
-@testable import Eurofurence
+import Eurofurence
 import EurofurenceModel
 import XCTest
 
 class WhenBindingDealerComponent_ForDealerNotPresentOnAllDays_DealersPresenterShould: XCTestCase {
 
     func testTellTheSceneToShowTheNotPresentOnAllDaysWarning() {
-        let dealerViewModel = StubDealerViewModel.random
-        dealerViewModel.isPresentForAllDays = false
-        let viewModelFactory = FakeDealersViewModelFactory(dealerViewModel: dealerViewModel)
-        let context = DealersPresenterTestBuilder().with(viewModelFactory).build()
-        context.simulateSceneDidLoad()
-        let component = context.makeAndBindDealer(at: IndexPath(item: 0, section: 0))
+        let component = prepareDealerComponent(isPresentForAllDays: false)
 
         XCTAssertTrue(component.didShowNotPresentOnAllDaysWarning)
+        XCTAssertFalse(component.didHideNotPresentOnAllDaysWarning)
     }
+    
+    func testNotShowTheWarningIndicatingTheyAreNotPresentOnAllDays() {
+        let component = prepareDealerComponent(isPresentForAllDays: true)
 
-    func testNotTellTheSceneToHideTheWarningIndicatingTheyAreNotPresentOnAllDays() {
+        XCTAssertFalse(component.didShowNotPresentOnAllDaysWarning)
+        XCTAssertTrue(component.didHideNotPresentOnAllDaysWarning)
+    }
+    
+    private func prepareDealerComponent(isPresentForAllDays: Bool) -> CapturingDealerComponent {
         let dealerViewModel = StubDealerViewModel.random
-        dealerViewModel.isPresentForAllDays = false
+        dealerViewModel.isPresentForAllDays = isPresentForAllDays
         let viewModelFactory = FakeDealersViewModelFactory(dealerViewModel: dealerViewModel)
         let context = DealersPresenterTestBuilder().with(viewModelFactory).build()
         context.simulateSceneDidLoad()
-        let component = context.makeAndBindDealer(at: IndexPath(item: 0, section: 0))
-
-        XCTAssertFalse(component.didHideNotPresentOnAllDaysWarning)
+        
+        return context.makeAndBindDealer(at: IndexPath(item: 0, section: 0))
     }
 
 }

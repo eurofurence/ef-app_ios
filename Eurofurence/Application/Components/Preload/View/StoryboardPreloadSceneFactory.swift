@@ -1,11 +1,15 @@
 import UIKit.UIStoryboard
 import UIKit.UIViewController
 
-struct StoryboardPreloadSceneFactory: PreloadSceneFactory {
+public struct StoryboardPreloadSceneFactory: PreloadSceneFactory {
 
     private let storyboard = UIStoryboard(name: "Preload", bundle: .main)
+    
+    public init() {
+        
+    }
 
-    func makePreloadScene() -> UIViewController & SplashScene {
+    public func makePreloadScene() -> UIViewController & SplashScene {
         return storyboard.instantiate(PreloadViewController.self)
     }
 

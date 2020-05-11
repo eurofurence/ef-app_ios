@@ -8,13 +8,6 @@ class WhenEventFeedbackSceneCancelsFeedback_WithNoInputEntered_EventFeedbackPres
         context.scene.simulateCancelFeedbackTapped()
         
         XCTAssertTrue(context.delegate.dismissed)
-    }
-    
-    func testNotShowTheConfirmCancelFeedbackPrompt() {
-        let context = EventFeedbackPresenterTestBuilder().build()
-        context.simulateSceneDidLoad()
-        context.scene.simulateCancelFeedbackTapped()
-        
         XCTAssertFalse(context.scene.confirmCancellationAlertPresented)
     }
 

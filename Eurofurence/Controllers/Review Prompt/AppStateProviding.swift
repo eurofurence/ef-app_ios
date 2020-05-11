@@ -1,6 +1,6 @@
 import Foundation
 
-protocol AppStateProviding {
+public protocol AppStateProviding {
 
     var isAppActive: Bool { get }
 

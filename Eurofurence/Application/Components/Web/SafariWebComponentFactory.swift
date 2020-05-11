@@ -1,8 +1,12 @@
 import SafariServices
 
-struct SafariWebComponentFactory: WebComponentFactory {
+public struct SafariWebComponentFactory: WebComponentFactory {
+    
+    public init() {
+        
+    }
 
-    func makeWebModule(for url: URL) -> UIViewController {
+    public func makeWebModule(for url: URL) -> UIViewController {
         var safeURL = url
         if var components = URLComponents(url: url, resolvingAgainstBaseURL: false), components.scheme != "https" {
             components.scheme = "https"

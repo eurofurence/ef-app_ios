@@ -1,4 +1,4 @@
-@testable import Eurofurence
+import Eurofurence
 import EurofurenceModel
 import XCTest
 
@@ -19,41 +19,21 @@ class WhenBindingDealerSummaryComponent_DealerDetailPresenterShould: XCTestCase 
         context.simulateSceneDidLoad()
         boundComponent = context.bindComponent(at: 0)
     }
-
-    func testSetTheArtistImageOntoTheComponent() {
-        XCTAssertEqual(summaryViewModel.artistImagePNGData, context.boundDealerSummaryComponent?.capturedArtistImagePNGData)
-    }
-
+    
     func testReturnTheBoundComponentBackToTheScene() {
         XCTAssertTrue(boundComponent === context.boundDealerSummaryComponent)
     }
 
-    func testSetTheDealerTitleOntoTheComponent() {
-        XCTAssertEqual(summaryViewModel.title, context.boundDealerSummaryComponent?.capturedDealerTitle)
-    }
-
-    func testSetTheDealerSubtitleOntoTheComponent() {
-        XCTAssertEqual(summaryViewModel.subtitle, context.boundDealerSummaryComponent?.capturedDealerSubtitle)
-    }
-
-    func testSetTheDealerCategoriesOntoTheComponent() {
-        XCTAssertEqual(summaryViewModel.categories, context.boundDealerSummaryComponent?.capturedDealerCategories)
-    }
-
-    func testSetTheDealerShortDescriptionOntoTheComponent() {
-        XCTAssertEqual(summaryViewModel.shortDescription, context.boundDealerSummaryComponent?.capturedDealerShortDescription)
-    }
-
-    func testSetTheDealerWebsiteOntoTheComponent() {
-        XCTAssertEqual(summaryViewModel.website, context.boundDealerSummaryComponent?.capturedDealerWebsite)
-    }
-
-    func testSetTheDealerTwitterHandleOntoTheComponent() {
-        XCTAssertEqual(summaryViewModel.twitterHandle, context.boundDealerSummaryComponent?.capturedDealerTwitterHandle)
-    }
-
-    func testSetTheDealerTelegramHandleOntoTheComponent() {
-        XCTAssertEqual(summaryViewModel.telegramHandle, context.boundDealerSummaryComponent?.capturedDealerTelegramHandle)
+    func testBindTheSummaryInformation() {
+        let component = context.boundDealerSummaryComponent
+        XCTAssertEqual(summaryViewModel.artistImagePNGData, component?.capturedArtistImagePNGData)
+        XCTAssertEqual(summaryViewModel.title, component?.capturedDealerTitle)
+        XCTAssertEqual(summaryViewModel.subtitle, component?.capturedDealerSubtitle)
+        XCTAssertEqual(summaryViewModel.categories, component?.capturedDealerCategories)
+        XCTAssertEqual(summaryViewModel.shortDescription, component?.capturedDealerShortDescription)
+        XCTAssertEqual(summaryViewModel.website, component?.capturedDealerWebsite)
+        XCTAssertEqual(summaryViewModel.twitterHandle, component?.capturedDealerTwitterHandle)
+        XCTAssertEqual(summaryViewModel.telegramHandle, component?.capturedDealerTelegramHandle)
     }
 
     func testTellTheViewModelToOpenTheWebsiteLinkWhenItIsSelected() {

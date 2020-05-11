@@ -1,6 +1,6 @@
 import Foundation
 
-protocol ScheduleSceneBinder {
+public protocol ScheduleSceneBinder {
 
     func bind(_ header: ScheduleEventGroupHeader, forGroupAt index: Int)
     func bind(_ eventComponent: ScheduleEventComponent, forEventAt indexPath: IndexPath)
@@ -8,7 +8,14 @@ protocol ScheduleSceneBinder {
 
 }
 
-struct ScheduleEventComponentAction {
-    var title: String
-    var run: () -> Void
+public struct ScheduleEventComponentAction {
+    
+    public var title: String
+    public var run: () -> Void
+    
+    public init(title: String, run: @escaping () -> Void) {
+        self.title = title
+        self.run = run
+    }
+    
 }

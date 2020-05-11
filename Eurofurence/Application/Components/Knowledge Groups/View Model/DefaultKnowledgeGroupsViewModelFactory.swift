@@ -1,7 +1,7 @@
 import EurofurenceModel
 import UIKit.UIImage
 
-struct DefaultKnowledgeGroupsViewModelFactory: KnowledgeGroupsViewModelFactory {
+public struct DefaultKnowledgeGroupsViewModelFactory: KnowledgeGroupsViewModelFactory {
 
     private class ViewModel: KnowledgeGroupsListViewModel, KnowledgeServiceObserver {
 
@@ -42,13 +42,13 @@ struct DefaultKnowledgeGroupsViewModelFactory: KnowledgeGroupsViewModelFactory {
 
     }
 
-    var service: KnowledgeService
+    private let service: KnowledgeService
 
-    init(service: KnowledgeService) {
+    public init(service: KnowledgeService) {
         self.service = service
     }
 
-    func prepareViewModel(completionHandler: @escaping (KnowledgeGroupsListViewModel) -> Void) {
+    public func prepareViewModel(completionHandler: @escaping (KnowledgeGroupsListViewModel) -> Void) {
         let viewModel = ViewModel()
         service.add(viewModel)
         completionHandler(viewModel)

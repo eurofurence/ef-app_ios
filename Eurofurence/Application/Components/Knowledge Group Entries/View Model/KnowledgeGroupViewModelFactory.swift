@@ -1,8 +1,11 @@
 import EurofurenceModel
 import Foundation
 
-protocol KnowledgeGroupViewModelFactory {
+public protocol KnowledgeGroupViewModelFactory {
 
-    func makeViewModelForGroup(identifier: KnowledgeGroupIdentifier, completionHandler: @escaping (KnowledgeGroupEntriesViewModel) -> Void)
+    func makeViewModelForGroup(
+        identifier: KnowledgeGroupIdentifier,
+        completionHandler: @escaping (KnowledgeGroupEntriesViewModel) -> Void
+    )
 
 }

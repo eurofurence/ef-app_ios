@@ -1,14 +1,14 @@
 import EurofurenceModel
 
-struct LeaveFeedbackActionViewModel: EventActionViewModel {
+public struct LeaveFeedbackActionViewModel: EventActionViewModel {
     
     var actionBus: DefaultEventDetailViewModel.ActionBus
     
-    func describe(to visitor: EventActionViewModelVisitor) {
+    public func describe(to visitor: EventActionViewModelVisitor) {
         visitor.visitActionTitle(.leaveFeedback)
     }
     
-    func perform(sender: Any?) {
+    public func perform(sender: Any?) {
         actionBus.leaveFeedbackAction?()
     }
     

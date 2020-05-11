@@ -1,6 +1,6 @@
 import UIKit.UIViewController
 
-protocol KnowledgeListSceneFactory {
+public protocol KnowledgeListSceneFactory {
 
     func makeKnowledgeListScene() -> UIViewController & KnowledgeListScene
 

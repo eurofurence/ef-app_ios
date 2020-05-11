@@ -1,7 +1,7 @@
 import EurofurenceModel
 import Foundation
 
-protocol KnowledgeGroupEntriesViewModel {
+public protocol KnowledgeGroupEntriesViewModel {
 
     var title: String { get }
     var numberOfEntries: Int { get }

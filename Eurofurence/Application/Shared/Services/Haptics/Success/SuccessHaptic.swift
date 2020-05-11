@@ -1,6 +1,6 @@
 import Foundation
 
-protocol SuccessHaptic {
+public protocol SuccessHaptic {
     
     func play()
     

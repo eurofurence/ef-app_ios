@@ -1,6 +1,6 @@
 import UIKit
 
-protocol HybridWebSceneFactory {
+public protocol HybridWebSceneFactory {
 
     func makeHybridWebScene() -> UIViewController & HybridWebScene
 

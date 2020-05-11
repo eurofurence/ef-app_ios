@@ -1,6 +1,6 @@
 import Foundation
 
-protocol EventDetailViewModel {
+public protocol EventDetailViewModel {
 
     var numberOfComponents: Int { get }
     func setDelegate(_ delegate: EventDetailViewModelDelegate)
@@ -8,7 +8,7 @@ protocol EventDetailViewModel {
 
 }
 
-protocol EventDetailViewModelDelegate {
+public protocol EventDetailViewModelDelegate {
 
     func eventFavourited()
     func eventUnfavourited()
@@ -16,7 +16,7 @@ protocol EventDetailViewModelDelegate {
 
 }
 
-protocol EventDetailViewModelVisitor {
+public protocol EventDetailViewModelVisitor {
 
     func visit(_ summary: EventSummaryViewModel)
     func visit(_ description: EventDescriptionViewModel)
@@ -32,73 +32,127 @@ protocol EventDetailViewModelVisitor {
 
 }
 
-struct EventSummaryViewModel: Equatable {
+public struct EventSummaryViewModel: Equatable {
 
-    var title: String
-    var subtitle: String
-    var abstract: NSAttributedString
-    var eventStartEndTime: String
-    var location: String
-    var trackName: String
-    var eventHosts: String
-
-}
-
-struct EventDescriptionViewModel: Equatable {
-
-    var contents: NSAttributedString
-
-}
-
-struct EventGraphicViewModel: Equatable {
-
-    var pngGraphicData: Data
-
-}
-
-struct EventSponsorsOnlyWarningViewModel: Equatable {
-
-    var message: String
-
-}
-
-struct EventSuperSponsorsOnlyWarningViewModel: Equatable {
-
-    var message: String
+    public var title: String
+    public var subtitle: String
+    public var abstract: NSAttributedString
+    public var eventStartEndTime: String
+    public var location: String
+    public var trackName: String
+    public var eventHosts: String
+    
+    public init(
+        title: String,
+        subtitle: String,
+        abstract: NSAttributedString,
+        eventStartEndTime: String,
+        location: String,
+        trackName: String,
+        eventHosts: String
+    ) {
+        self.title = title
+        self.subtitle = subtitle
+        self.abstract = abstract
+        self.eventStartEndTime = eventStartEndTime
+        self.location = location
+        self.trackName = trackName
+        self.eventHosts = eventHosts
+    }
 
 }
 
-struct EventArtShowMessageViewModel: Equatable {
+public struct EventDescriptionViewModel: Equatable {
 
-    var message: String
-
-}
-
-struct EventKageMessageViewModel: Equatable {
-
-    var message: String
+    public var contents: NSAttributedString
+    
+    public init(contents: NSAttributedString) {
+        self.contents = contents
+    }
 
 }
 
-struct EventDealersDenMessageViewModel: Equatable {
+public struct EventGraphicViewModel: Equatable {
 
-    var message: String
-
-}
-
-struct EventMainStageMessageViewModel: Equatable {
-
-    var message: String
+    public var pngGraphicData: Data
+    
+    public init(pngGraphicData: Data) {
+        self.pngGraphicData = pngGraphicData
+    }
 
 }
 
-struct EventPhotoshootMessageViewModel: Equatable {
+public struct EventSponsorsOnlyWarningViewModel: Equatable {
 
-    var message: String
+    public var message: String
+    
+    public init(message: String) {
+        self.message = message
+    }
 
 }
 
-protocol EventActionViewModel {
+public struct EventSuperSponsorsOnlyWarningViewModel: Equatable {
+
+    public var message: String
+    
+    public init(message: String) {
+        self.message = message
+    }
+
+}
+
+public struct EventArtShowMessageViewModel: Equatable {
+
+    public var message: String
+    
+    public init(message: String) {
+        self.message = message
+    }
+
+}
+
+public struct EventKageMessageViewModel: Equatable {
+
+    public var message: String
+    
+    public init(message: String) {
+        self.message = message
+    }
+
+}
+
+public struct EventDealersDenMessageViewModel: Equatable {
+
+    public var message: String
+    
+    public init(message: String) {
+        self.message = message
+    }
+
+}
+
+public struct EventMainStageMessageViewModel: Equatable {
+
+    public var message: String
+    
+    public init(message: String) {
+        self.message = message
+    }
+
+}
+
+public struct EventPhotoshootMessageViewModel: Equatable {
+
+    public var message: String
+    
+    public init(message: String) {
+        self.message = message
+    }
+
+}
+
+public protocol EventActionViewModel {
     
     func describe(to visitor: EventActionViewModelVisitor)
     func perform(sender: Any?)
@@ -107,13 +161,13 @@ protocol EventActionViewModel {
 
 extension EventActionViewModel {
     
-    func perform() {
+    public func perform() {
         perform(sender: nil)
     }
     
 }
 
-protocol EventActionViewModelVisitor {
+public protocol EventActionViewModelVisitor {
     
     func visitActionTitle(_ actionTitle: String)
     

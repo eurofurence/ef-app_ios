@@ -1,20 +1,20 @@
 import Foundation
 
-struct UserDefaultsTutorialStateProvider: UserCompletedTutorialStateProviding {
+public struct UserDefaultsTutorialStateProvider: UserCompletedTutorialStateProviding {
 
-    static let FinishedTutorialKey = "Eurofurence.UserHasFinishedTutorial"
+    public static let FinishedTutorialKey = "Eurofurence.UserHasFinishedTutorial"
 
-    var userDefaults: UserDefaults
+    private let userDefaults: UserDefaults
 
-    init(userDefaults: UserDefaults) {
+    public init(userDefaults: UserDefaults) {
         self.userDefaults = userDefaults
     }
 
-    var userHasCompletedTutorial: Bool {
+    public var userHasCompletedTutorial: Bool {
         return userDefaults.bool(forKey: UserDefaultsTutorialStateProvider.FinishedTutorialKey)
     }
 
-    func markTutorialAsComplete() {
+    public func markTutorialAsComplete() {
         userDefaults.set(true, forKey: UserDefaultsTutorialStateProvider.FinishedTutorialKey)
     }
 

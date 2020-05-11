@@ -1,6 +1,6 @@
 import UIKit
 
-protocol MapDetailSceneFactory {
+public protocol MapDetailSceneFactory {
 
     func makeMapDetailScene() -> UIViewController & MapDetailScene
 

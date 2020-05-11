@@ -1,6 +1,6 @@
 import EurofurenceModel
 
-protocol EventFeedbackPresenterFactory {
+public protocol EventFeedbackPresenterFactory {
     
     func makeEventFeedbackPresenter(for event: EventIdentifier,
                                     scene: EventFeedbackScene,

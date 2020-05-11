@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-protocol TutorialPageScene {
+public protocol TutorialPageScene {
 
     var tutorialPageSceneDelegate: TutorialPageSceneDelegate? { get set }
 
@@ -17,7 +17,7 @@ protocol TutorialPageScene {
 
 }
 
-protocol TutorialPageSceneDelegate {
+public protocol TutorialPageSceneDelegate {
 
     func tutorialPageSceneDidTapPrimaryActionButton(_ tutorialPageScene: TutorialPageScene)
     func tutorialPageSceneDidTapSecondaryActionButton(_ tutorialPageScene: TutorialPageScene)

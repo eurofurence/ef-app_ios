@@ -1,22 +1,22 @@
 import Foundation
 
-class MapsComponentBuilder {
+public class MapsComponentBuilder {
 
     private let mapsViewModelFactory: MapsViewModelFactory
     private var sceneFactory: MapsSceneFactory
 
-    init(mapsViewModelFactory: MapsViewModelFactory) {
+    public init(mapsViewModelFactory: MapsViewModelFactory) {
         self.mapsViewModelFactory = mapsViewModelFactory
         sceneFactory = StoryboardMapsScenefactory()
     }
 
     @discardableResult
-    func with(_ sceneFactory: MapsSceneFactory) -> Self {
+    public func with(_ sceneFactory: MapsSceneFactory) -> Self {
         self.sceneFactory = sceneFactory
         return self
     }
 
-    func build() -> MapsComponentFactory {
+    public func build() -> MapsComponentFactory {
         MapsComponentFactoryImpl(
             sceneFactory: sceneFactory,
             mapsViewModelFactory: mapsViewModelFactory

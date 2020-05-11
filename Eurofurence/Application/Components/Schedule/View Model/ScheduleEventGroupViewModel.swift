@@ -1,8 +1,13 @@
 import Foundation
 
-struct ScheduleEventGroupViewModel {
+public struct ScheduleEventGroupViewModel {
 
-    var title: String
-    var events: [ScheduleEventViewModelProtocol]
+    public var title: String
+    public var events: [ScheduleEventViewModelProtocol]
+    
+    public init(title: String, events: [ScheduleEventViewModelProtocol]) {
+        self.title = title
+        self.events = events
+    }
 
 }

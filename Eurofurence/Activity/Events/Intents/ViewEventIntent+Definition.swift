@@ -16,7 +16,7 @@ extension ViewEventIntent {
 @available(iOS 12.0, *)
 extension ViewEventIntent: EventIntentDefinitionProviding {
     
-    var eventIntentDefinition: ViewEventIntentDefinition? {
+    public var eventIntentDefinition: ViewEventIntentDefinition? {
         guard let identifier = eventIdentifier, let name = eventName else { return nil }
         return ViewEventIntentDefinition(identifier: EventIdentifier(identifier), eventName: name)
     }

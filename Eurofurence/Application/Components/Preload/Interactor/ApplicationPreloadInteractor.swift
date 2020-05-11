@@ -1,15 +1,15 @@
 import EurofurenceModel
 
-class ApplicationPreloadInteractor: PreloadInteractor {
+public class ApplicationPreloadInteractor: PreloadInteractor {
 
     private let refreshService: RefreshService
     private var observations = [Any]()
 
-    init(refreshService: RefreshService) {
+    public init(refreshService: RefreshService) {
         self.refreshService = refreshService
     }
 
-    func beginPreloading(delegate: PreloadInteractorDelegate) {
+    public func beginPreloading(delegate: PreloadInteractorDelegate) {
         let progress = refreshService.refreshLocalStore { (error) in
             if let error = error {
                 if error == .conventionIdentifierMismatch {

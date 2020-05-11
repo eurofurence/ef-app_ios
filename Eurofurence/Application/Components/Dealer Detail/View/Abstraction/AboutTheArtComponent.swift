@@ -1,6 +1,6 @@
 import Foundation
 
-protocol AboutTheArtComponent {
+public protocol AboutTheArtComponent {
 
     func setComponentTitle(_ title: String)
     func showAboutTheArtDescription(_ aboutTheArt: String)

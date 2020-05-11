@@ -1,6 +1,6 @@
 import Foundation
 
-protocol EventFeedbackScene {
+public protocol EventFeedbackScene {
     
     func setDelegate(_ delegate: EventFeedbackSceneDelegate)
     func bind(_ viewModel: EventFeedbackViewModel)

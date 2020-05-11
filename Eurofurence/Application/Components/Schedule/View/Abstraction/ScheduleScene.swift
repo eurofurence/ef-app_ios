@@ -1,6 +1,6 @@
 import Foundation
 
-protocol ScheduleScene {
+public protocol ScheduleScene {
 
     func setDelegate(_ delegate: ScheduleSceneDelegate)
     func setScheduleTitle(_ title: String)
@@ -17,7 +17,7 @@ protocol ScheduleScene {
 
 }
 
-protocol ScheduleSceneDelegate {
+public protocol ScheduleSceneDelegate {
 
     func scheduleSceneDidLoad()
     func scheduleSceneDidPerformRefreshAction()

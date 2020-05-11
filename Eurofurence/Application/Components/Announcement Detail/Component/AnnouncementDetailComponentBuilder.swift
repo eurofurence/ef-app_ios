@@ -1,20 +1,20 @@
-class AnnouncementDetailComponentBuilder {
+public class AnnouncementDetailComponentBuilder {
 
     private var sceneFactory: AnnouncementDetailSceneFactory
     private var announcementDetailViewModelFactory: AnnouncementDetailViewModelFactory
 
-    init(announcementDetailViewModelFactory: AnnouncementDetailViewModelFactory) {
+    public init(announcementDetailViewModelFactory: AnnouncementDetailViewModelFactory) {
         self.announcementDetailViewModelFactory = announcementDetailViewModelFactory
         sceneFactory = StoryboardAnnouncementDetailSceneFactory()
     }
 
     @discardableResult
-    func with(_ sceneFactory: AnnouncementDetailSceneFactory) -> AnnouncementDetailComponentBuilder {
+    public func with(_ sceneFactory: AnnouncementDetailSceneFactory) -> Self {
         self.sceneFactory = sceneFactory
         return self
     }
 
-    func build() -> AnnouncementDetailComponentFactory {
+    public func build() -> AnnouncementDetailComponentFactory {
         AnnouncementDetailComponentFactoryImpl(
             sceneFactory: sceneFactory,
             announcementDetailViewModelFactory: announcementDetailViewModelFactory

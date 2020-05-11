@@ -1,4 +1,4 @@
-protocol ViewDealerIntentDonor {
+public protocol ViewDealerIntentDonor {
     
     func donate(_ viewDealerIntent: ViewDealerIntentDefinition)
     

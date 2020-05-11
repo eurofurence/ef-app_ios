@@ -1,10 +1,14 @@
 import UIKit
 
-struct WindowAlertRouter: AlertRouter {
+public struct WindowAlertRouter: AlertRouter {
 
-    var window: UIWindow
+    private let window: UIWindow
+    
+    public init(window: UIWindow) {
+        self.window = window
+    }
 
-    func show(_ alert: Alert) {
+    public func show(_ alert: Alert) {
         let alertController = UIAlertController(title: alert.title, message: alert.message, preferredStyle: .alert)
         for action in alert.actions {
             alertController.addAction(UIAlertAction(title: action.title, style: .default, handler: { (_) in

@@ -1,16 +1,7 @@
-@testable import Eurofurence
+import Eurofurence
 import EurofurenceModel
 import EurofurenceModelTestDoubles
 import UIKit
-
-class CapturingAnnouncementsComponentDelegate: AnnouncementsComponentDelegate {
-
-    private(set) var capturedSelectedAnnouncement: AnnouncementIdentifier?
-    func announcementsComponentDidSelectAnnouncement(_ announcement: AnnouncementIdentifier) {
-        capturedSelectedAnnouncement = announcement
-    }
-
-}
 
 class AnnouncementsPresenterTestBuilder {
 

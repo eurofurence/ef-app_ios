@@ -1,6 +1,6 @@
 import UIKit
 
-protocol KnowledgeGroupEntriesSceneFactory {
+public protocol KnowledgeGroupEntriesSceneFactory {
 
     func makeKnowledgeGroupEntriesScene() -> UIViewController & KnowledgeGroupEntriesScene
 

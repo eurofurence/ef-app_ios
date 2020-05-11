@@ -2,7 +2,7 @@ import EurofurenceModel
 import Foundation.NSIndexPath
 import UIKit.UIImage
 
-protocol NewsViewModel {
+public protocol NewsViewModel {
 
     var numberOfComponents: Int { get }
 
@@ -13,14 +13,14 @@ protocol NewsViewModel {
 
 }
 
-enum NewsViewModelValue {
+public enum NewsViewModelValue {
     case messages
     case announcement(AnnouncementIdentifier)
     case allAnnouncements
     case event(Event)
 }
 
-protocol NewsViewModelVisitor {
+public protocol NewsViewModelVisitor {
 
     func visit(_ userWidget: UserWidgetComponentViewModel)
     func visit(_ countdown: ConventionCountdownComponentViewModel)
@@ -30,9 +30,13 @@ protocol NewsViewModelVisitor {
 
 }
 
-struct ConventionCountdownComponentViewModel: Hashable {
+public struct ConventionCountdownComponentViewModel: Hashable {
 
-    var timeUntilConvention: String
+    public var timeUntilConvention: String
+    
+    public init(timeUntilConvention: String) {
+        self.timeUntilConvention = timeUntilConvention
+    }
 
 }
 
@@ -57,33 +61,75 @@ public struct AnnouncementItemViewModel: Hashable {
 
 }
 
-struct ViewAllAnnouncementsComponentViewModel: Hashable {
+public struct ViewAllAnnouncementsComponentViewModel: Hashable {
 
-    var caption: String
-
-}
-
-struct EventComponentViewModel: Hashable {
-
-    var startTime: String
-    var endTime: String
-    var eventName: String
-    var location: String
-    var isSponsorEvent: Bool
-    var isSuperSponsorEvent: Bool
-    var isFavourite: Bool
-    var isArtShowEvent: Bool
-    var isKageEvent: Bool
-    var isDealersDenEvent: Bool
-    var isMainStageEvent: Bool
-    var isPhotoshootEvent: Bool
+    public var caption: String
+    
+    public init(caption: String) {
+        self.caption = caption
+    }
 
 }
 
-struct UserWidgetComponentViewModel: Hashable {
+public struct EventComponentViewModel: Hashable {
 
-    var prompt: String
-    var detailedPrompt: String
-    var hasUnreadMessages: Bool
+    public var startTime: String
+    public var endTime: String
+    public var eventName: String
+    public var location: String
+    public var isSponsorEvent: Bool
+    public var isSuperSponsorEvent: Bool
+    public var isFavourite: Bool
+    public var isArtShowEvent: Bool
+    public var isKageEvent: Bool
+    public var isDealersDenEvent: Bool
+    public var isMainStageEvent: Bool
+    public var isPhotoshootEvent: Bool
+    
+    public init(
+        startTime: String,
+        endTime: String,
+        eventName: String,
+        location: String,
+        isSponsorEvent: Bool,
+        isSuperSponsorEvent: Bool,
+        isFavourite: Bool,
+        isArtShowEvent: Bool,
+        isKageEvent: Bool,
+        isDealersDenEvent: Bool,
+        isMainStageEvent: Bool,
+        isPhotoshootEvent: Bool
+    ) {
+        self.startTime = startTime
+        self.endTime = endTime
+        self.eventName = eventName
+        self.location = location
+        self.isSponsorEvent = isSponsorEvent
+        self.isSuperSponsorEvent = isSuperSponsorEvent
+        self.isFavourite = isFavourite
+        self.isArtShowEvent = isArtShowEvent
+        self.isKageEvent = isKageEvent
+        self.isDealersDenEvent = isDealersDenEvent
+        self.isMainStageEvent = isMainStageEvent
+        self.isPhotoshootEvent = isPhotoshootEvent
+    }
+
+}
+
+public struct UserWidgetComponentViewModel: Hashable {
+
+    public var prompt: String
+    public var detailedPrompt: String
+    public var hasUnreadMessages: Bool
+    
+    public init(
+        prompt: String,
+        detailedPrompt: String,
+        hasUnreadMessages: Bool
+    ) {
+        self.prompt = prompt
+        self.detailedPrompt = detailedPrompt
+        self.hasUnreadMessages = hasUnreadMessages
+    }
 
 }

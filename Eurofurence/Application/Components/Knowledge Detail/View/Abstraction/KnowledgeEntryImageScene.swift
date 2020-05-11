@@ -1,6 +1,6 @@
 import Foundation
 
-protocol KnowledgeEntryImageScene {
+public protocol KnowledgeEntryImageScene {
 
     func showImagePNGData(_ data: Data)
 

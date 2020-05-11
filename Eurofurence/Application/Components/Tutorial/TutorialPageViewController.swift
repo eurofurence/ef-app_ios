@@ -1,6 +1,6 @@
 import UIKit
 
-class TutorialPageViewController: UIViewController, TutorialPageScene {
+public class TutorialPageViewController: UIViewController, TutorialPageScene {
 
     // MARK: IBOutlets
 
@@ -22,33 +22,33 @@ class TutorialPageViewController: UIViewController, TutorialPageScene {
 
     // MARK: TutorialPageScene
 
-    var tutorialPageSceneDelegate: TutorialPageSceneDelegate?
+    public var tutorialPageSceneDelegate: TutorialPageSceneDelegate?
 
-    func showPageTitle(_ title: String?) {
+    public func showPageTitle(_ title: String?) {
         tutorialPageTitleLabel.text = title
     }
 
-    func showPageDescription(_ description: String?) {
+    public func showPageDescription(_ description: String?) {
         tutorialPageDescriptionLabel.text = description
     }
 
-    func showPageImage(_ image: UIImage?) {
+    public func showPageImage(_ image: UIImage?) {
         tutorialPageImageView.image = image
     }
 
-    func showPrimaryActionButton() {
+    public func showPrimaryActionButton() {
         primaryActionButton.isHidden = false
     }
 
-    func showPrimaryActionDescription(_ primaryActionDescription: String) {
+    public func showPrimaryActionDescription(_ primaryActionDescription: String) {
         primaryActionButton.setTitle(primaryActionDescription, for: .normal)
     }
 
-    func showSecondaryActionButton() {
+    public func showSecondaryActionButton() {
         secondaryActionButton.isHidden = false
     }
 
-    func showSecondaryActionDescription(_ secondaryActionDescription: String) {
+    public func showSecondaryActionDescription(_ secondaryActionDescription: String) {
         secondaryActionButton.setTitle(secondaryActionDescription, for: .normal)
     }
 

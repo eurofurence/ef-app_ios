@@ -1,13 +1,18 @@
 import Foundation
 
-struct DealersGroupViewModel {
+public struct DealersGroupViewModel {
 
-    var title: String
-    var dealers: [DealerViewModel]
+    public var title: String
+    public var dealers: [DealerViewModel]
+    
+    public init(title: String, dealers: [DealerViewModel]) {
+        self.title = title
+        self.dealers = dealers
+    }
 
 }
 
-protocol DealerViewModel {
+public protocol DealerViewModel {
 
     var title: String { get }
     var subtitle: String? { get }

@@ -44,7 +44,7 @@ class KnowledgeDetailViewController: UIViewController, KnowledgeDetailScene {
         linkItems.forEach(tableController.add)
     }
 
-    func bindImages(count: Int, using binder: KnowledgentryImagesBinder) {
+    func bindImages(count: Int, using binder: KnowledgEntryImagesBinder) {
         (0..<count).map({ ImageItem(binder: binder, index: $0) }).forEach(tableController.add)
     }
 
@@ -64,7 +64,7 @@ class KnowledgeDetailViewController: UIViewController, KnowledgeDetailScene {
 
     private struct ImageItem: TableViewDataItem {
 
-        var binder: KnowledgentryImagesBinder
+        var binder: KnowledgEntryImagesBinder
         var index: Int
         
         func makeCell(for tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell {

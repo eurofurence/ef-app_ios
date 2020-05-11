@@ -1,6 +1,6 @@
 import Foundation
 
-protocol KnowledgeGroupScene {
+public protocol KnowledgeGroupScene {
 
     func setKnowledgeGroupTitle(_ title: String)
     func setKnowledgeGroupFontAwesomeCharacter(_ character: Character)

@@ -1,6 +1,6 @@
 import EurofurenceModel
 
-class ToggleEventFavouriteStateViewModel: EventActionViewModel {
+public class ToggleEventFavouriteStateViewModel: EventActionViewModel {
     
     private var stateMachine: StateMachine
     
@@ -9,11 +9,11 @@ class ToggleEventFavouriteStateViewModel: EventActionViewModel {
     }
     
     private var visitor: EventActionViewModelVisitor?
-    func describe(to visitor: EventActionViewModelVisitor) {
+    public func describe(to visitor: EventActionViewModelVisitor) {
         stateMachine.describeCurrentState(to: visitor)
     }
     
-    func perform(sender: Any?) {
+    public func perform(sender: Any?) {
         stateMachine.perform()
     }
     

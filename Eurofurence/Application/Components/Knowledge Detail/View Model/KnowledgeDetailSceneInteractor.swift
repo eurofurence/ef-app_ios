@@ -1,7 +1,7 @@
 import EurofurenceModel
 import Foundation
 
-protocol KnowledgeDetailViewModelFactory {
+public protocol KnowledgeDetailViewModelFactory {
 
     func makeViewModel(
         for identifier: KnowledgeEntryIdentifier,

@@ -1,5 +1,5 @@
 import Darwin
-@testable import Eurofurence
+import Eurofurence
 import EurofurenceModel
 import TestUtilities
 import UIKit.UIImage

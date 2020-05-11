@@ -1,22 +1,22 @@
 import Foundation
 
-class KnowledgeGroupEntriesComponentBuilder {
+public class KnowledgeGroupEntriesComponentBuilder {
 
     private let knowledgeGroupViewModelFactory: KnowledgeGroupViewModelFactory
     private var sceneFactory: KnowledgeGroupEntriesSceneFactory
 
-    init(knowledgeGroupViewModelFactory: KnowledgeGroupViewModelFactory) {
+    public init(knowledgeGroupViewModelFactory: KnowledgeGroupViewModelFactory) {
         self.knowledgeGroupViewModelFactory = knowledgeGroupViewModelFactory
         sceneFactory = StoryboardKnowledgeGroupEntriesSceneFactory()
     }
 
     @discardableResult
-    func with(_ sceneFactory: KnowledgeGroupEntriesSceneFactory) -> Self {
+    public func with(_ sceneFactory: KnowledgeGroupEntriesSceneFactory) -> Self {
         self.sceneFactory = sceneFactory
         return self
     }
 
-    func build() -> KnowledgeGroupEntriesComponentFactory {
+    public func build() -> KnowledgeGroupEntriesComponentFactory {
         KnowledgeGroupEntriesComponentFactoryImpl(
             knowledgeGroupViewModelFactory: knowledgeGroupViewModelFactory,
             sceneFactory: sceneFactory

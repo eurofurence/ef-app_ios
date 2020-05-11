@@ -1,52 +1,47 @@
-@testable import Eurofurence
+import Eurofurence
 import EurofurenceModel
 import EurofurenceModelTestDoubles
 import XCTest
 
 class DefaultKnowledgeDetailViewModelFactoryTests: XCTestCase {
 
+    var entry: FakeKnowledgeEntry!
     var knowledgeService: FakeKnowledgeService!
     var renderer: StubMarkdownRenderer!
     var shareService: CapturingShareService!
-    var viewModelFactory: DefaultKnowledgeDetailViewModelFactory!
+    var viewModel: KnowledgeEntryDetailViewModel?
 
     override func setUp() {
         super.setUp()
 
-        renderer = StubMarkdownRenderer()
+        entry = FakeKnowledgeEntry.random
         knowledgeService = FakeKnowledgeService()
+        knowledgeService.stub(entry)
+        
+        renderer = StubMarkdownRenderer()
         shareService = CapturingShareService()
-        viewModelFactory = DefaultKnowledgeDetailViewModelFactory(knowledgeService: knowledgeService,
-                                                           renderer: renderer,
-                                                           shareService: shareService)
+        
+        let viewModelFactory = DefaultKnowledgeDetailViewModelFactory(
+            knowledgeService: knowledgeService,
+            renderer: renderer,
+            shareService: shareService
+        )
+        
+        viewModelFactory.makeViewModel(for: entry.identifier) { self.viewModel = $0 }
     }
 
     func testProducingViewModelConvertsKnowledgeEntryContentsViaWikiRenderer() {
-        let entry = FakeKnowledgeEntry.random
-        var viewModel: KnowledgeEntryDetailViewModel?
-        viewModelFactory.makeViewModel(for: entry.identifier) { viewModel = $0 }
-        let randomizedEntry = knowledgeService.stubbedKnowledgeEntry(for: entry.identifier)
-		let expected = renderer.stubbedContents(for: randomizedEntry.contents)
-
+		let expected = renderer.stubbedContents(for: entry.contents)
         XCTAssertEqual(expected, viewModel?.contents)
     }
 
     func testProducingViewModelConvertsLinksIntoViewModels() {
-        let entry = FakeKnowledgeEntry.random
-        var viewModel: KnowledgeEntryDetailViewModel?
-        viewModelFactory.makeViewModel(for: entry.identifier) { viewModel = $0 }
-        let randomizedEntry = knowledgeService.stubbedKnowledgeEntry(for: entry.identifier)
-        let expected = randomizedEntry.links.map { (link) in return LinkViewModel(name: link.name) }
-
+        let expected = entry.links.map { (link) in return LinkViewModel(name: link.name) }
         XCTAssertEqual(expected, viewModel?.links)
     }
 
     func testRequestingLinkAtIndexReturnsExpectedLink() {
-        let entry = FakeKnowledgeEntry.random
-        var viewModel: KnowledgeEntryDetailViewModel?
-        viewModelFactory.makeViewModel(for: entry.identifier) { viewModel = $0 }
-        let randomizedEntry = knowledgeService.stubbedKnowledgeEntry(for: entry.identifier)
-        let randomLink = randomizedEntry.links.randomElement()
+        let randomLink = entry.links.randomElement()
         let expected = randomLink.element
         let actual = viewModel?.link(at: randomLink.index)
 
@@ -54,28 +49,16 @@ class DefaultKnowledgeDetailViewModelFactoryTests: XCTestCase {
     }
 
     func testUsesTitlesOfEntryAsTitle() {
-        let entry = FakeKnowledgeEntry.random
-        var viewModel: KnowledgeEntryDetailViewModel?
-        viewModelFactory.makeViewModel(for: entry.identifier) { viewModel = $0 }
-        let randomizedEntry = knowledgeService.stubbedKnowledgeEntry(for: entry.identifier)
-
-        XCTAssertEqual(randomizedEntry.title, viewModel?.title)
+        XCTAssertEqual(entry.title, viewModel?.title)
     }
 
     func testAdaptsImagesFromService() {
-        let entry = FakeKnowledgeEntry.random
-        var viewModel: KnowledgeEntryDetailViewModel?
-        viewModelFactory.makeViewModel(for: entry.identifier) { viewModel = $0 }
         let expected = knowledgeService.stubbedKnowledgeEntryImages(for: entry.identifier).map(KnowledgeEntryImageViewModel.init)
 
         XCTAssertEqual(expected, viewModel?.images)
     }
     
     func testSharingEntrySubmitsURLAndSenderToShareService() {
-        let identifier = KnowledgeEntryIdentifier.random
-        let entry = knowledgeService.stubbedKnowledgeEntry(for: identifier)
-        var viewModel: KnowledgeEntryDetailViewModel?
-        viewModelFactory.makeViewModel(for: entry.identifier) { viewModel = $0 }
         let sender = self
         viewModel?.shareKnowledgeEntry(sender)
         

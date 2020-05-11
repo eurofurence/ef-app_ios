@@ -1,4 +1,4 @@
-@testable import Eurofurence
+import Eurofurence
 import XCTest
 
 class WhenEventFeedbackSceneLoads_EventFeedbackPresenterShould: XCTestCase {
@@ -15,6 +15,7 @@ class WhenEventFeedbackSceneLoads_EventFeedbackPresenterShould: XCTestCase {
     func testBindHeadingAttributes() {
         assertTitleBound()
         assertEventTimeBound()
+        assertEventLocationBound()
         assertEventHostBound()
     }
     

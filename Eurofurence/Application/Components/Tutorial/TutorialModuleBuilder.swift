@@ -1,6 +1,6 @@
 import EurofurenceModel
 
-class TutorialModuleBuilder {
+public class TutorialModuleBuilder {
 
     private let alertRouter: AlertRouter
     private var tutorialSceneFactory: TutorialSceneFactory
@@ -9,7 +9,7 @@ class TutorialModuleBuilder {
     private var networkReachability: NetworkReachability
     private var witnessedTutorialPushPermissionsRequest: WitnessedTutorialPushPermissionsRequest
 
-    init(alertRouter: AlertRouter) {
+    public init(alertRouter: AlertRouter) {
         self.alertRouter = alertRouter
         
         tutorialSceneFactory = StoryboardTutorialSceneFactory()
@@ -19,32 +19,32 @@ class TutorialModuleBuilder {
         witnessedTutorialPushPermissionsRequest = UserDefaultsWitnessedTutorialPushPermissionsRequest(userDefaults: .standard)
     }
 
-    func with(_ tutorialSceneFactory: TutorialSceneFactory) -> TutorialModuleBuilder {
+    public func with(_ tutorialSceneFactory: TutorialSceneFactory) -> Self {
         self.tutorialSceneFactory = tutorialSceneFactory
         return self
     }
 
-    func with(_ presentationAssets: PresentationAssets) -> TutorialModuleBuilder {
+    public func with(_ presentationAssets: PresentationAssets) -> Self {
         self.presentationAssets = presentationAssets
         return self
     }
 
-    func with(_ tutorialStateProviding: UserCompletedTutorialStateProviding) -> TutorialModuleBuilder {
+    public func with(_ tutorialStateProviding: UserCompletedTutorialStateProviding) -> Self {
         self.tutorialStateProviding = tutorialStateProviding
         return self
     }
 
-    func with(_ networkReachability: NetworkReachability) -> TutorialModuleBuilder {
+    public func with(_ networkReachability: NetworkReachability) -> Self {
         self.networkReachability = networkReachability
         return self
     }
 
-    func with(_ witnessedTutorialPushPermissionsRequest: WitnessedTutorialPushPermissionsRequest) -> TutorialModuleBuilder {
+    public func with(_ witnessedTutorialPushPermissionsRequest: WitnessedTutorialPushPermissionsRequest) -> Self {
         self.witnessedTutorialPushPermissionsRequest = witnessedTutorialPushPermissionsRequest
         return self
     }
 
-    func build() -> TutorialComponentFactory {
+    public func build() -> TutorialComponentFactory {
         return TutorialModule(tutorialSceneFactory: tutorialSceneFactory,
                                           presentationAssets: presentationAssets,
                                           alertRouter: alertRouter,

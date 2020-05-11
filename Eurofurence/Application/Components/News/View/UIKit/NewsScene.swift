@@ -1,6 +1,6 @@
 import Foundation
 
-protocol NewsSceneDelegate {
+public protocol NewsSceneDelegate {
 
     func newsSceneDidLoad()
     func newsSceneDidSelectComponent(at indexPath: IndexPath)
@@ -8,7 +8,7 @@ protocol NewsSceneDelegate {
 
 }
 
-protocol NewsScene: class {
+public protocol NewsScene: class {
 
     var delegate: NewsSceneDelegate? { get set }
 

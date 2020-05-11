@@ -1,6 +1,6 @@
 import Foundation
 
-protocol KnowledgeGroupEntriesScene {
+public protocol KnowledgeGroupEntriesScene {
 
     func setDelegate(_ delegate: KnowledgeGroupEntriesSceneDelegate)
     func setKnowledgeGroupTitle(_ title: String)
@@ -8,7 +8,7 @@ protocol KnowledgeGroupEntriesScene {
 
 }
 
-protocol KnowledgeGroupEntriesSceneDelegate {
+public protocol KnowledgeGroupEntriesSceneDelegate {
 
     func knowledgeGroupEntriesSceneDidLoad()
     func knowledgeGroupEntriesSceneDidSelectEntry(at index: Int)

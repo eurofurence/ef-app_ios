@@ -1,4 +1,4 @@
-protocol LoginScene: class {
+public protocol LoginScene: class {
 
     var delegate: LoginSceneDelegate? { get set }
 
@@ -10,7 +10,7 @@ protocol LoginScene: class {
 
 }
 
-protocol LoginSceneDelegate {
+public protocol LoginSceneDelegate {
 
     func loginSceneWillAppear()
     func loginSceneDidTapCancelButton()

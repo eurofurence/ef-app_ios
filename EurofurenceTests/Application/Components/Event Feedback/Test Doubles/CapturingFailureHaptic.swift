@@ -1,4 +1,4 @@
-@testable import Eurofurence
+import Eurofurence
 
 class CapturingFailureHaptic: FailureHaptic {
     

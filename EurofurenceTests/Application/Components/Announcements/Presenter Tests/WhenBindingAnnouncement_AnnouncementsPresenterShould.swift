@@ -1,10 +1,10 @@
-@testable import Eurofurence
+import Eurofurence
 import EurofurenceModel
 import XCTest
 
 class WhenBindingAnnouncement_AnnouncementsPresenterShould: XCTestCase {
 
-    func testBindTheTitleOntoTheComponent() {
+    func testBindTheAnnouncementAttributesOntoTheComponent() {
         let viewModel = FakeAnnouncementsListViewModel()
         let viewModelFactory = FakeAnnouncementsViewModelFactory(viewModel: viewModel)
         let context = AnnouncementsPresenterTestBuilder().with(viewModelFactory).build()
@@ -13,27 +13,7 @@ class WhenBindingAnnouncement_AnnouncementsPresenterShould: XCTestCase {
         let boundComponent = context.bindAnnouncement(at: randomAnnouncement.index)
 
         XCTAssertEqual(randomAnnouncement.element.title, boundComponent.capturedTitle)
-    }
-
-    func testBindTheSubtitleOntoTheComponent() {
-        let viewModel = FakeAnnouncementsListViewModel()
-        let viewModelFactory = FakeAnnouncementsViewModelFactory(viewModel: viewModel)
-        let context = AnnouncementsPresenterTestBuilder().with(viewModelFactory).build()
-        let randomAnnouncement = viewModel.announcements.randomElement()
-        context.simulateSceneDidLoad()
-        let boundComponent = context.bindAnnouncement(at: randomAnnouncement.index)
-
         XCTAssertEqual(randomAnnouncement.element.detail, boundComponent.capturedDetail)
-    }
-
-    func testBindTheAnnouncementDateTimeOntoTheComponent() {
-        let viewModel = FakeAnnouncementsListViewModel()
-        let viewModelFactory = FakeAnnouncementsViewModelFactory(viewModel: viewModel)
-        let context = AnnouncementsPresenterTestBuilder().with(viewModelFactory).build()
-        let randomAnnouncement = viewModel.announcements.randomElement()
-        context.simulateSceneDidLoad()
-        let boundComponent = context.bindAnnouncement(at: randomAnnouncement.index)
-
         XCTAssertEqual(randomAnnouncement.element.receivedDateTime, boundComponent.capturedReceivedDateTime)
     }
 
@@ -47,6 +27,7 @@ class WhenBindingAnnouncement_AnnouncementsPresenterShould: XCTestCase {
         let boundComponent = context.bindAnnouncement(at: 0)
 
         XCTAssertTrue(boundComponent.didHideUnreadIndicator)
+        XCTAssertFalse(boundComponent.didShowUnreadIndicator)
     }
 
     func testNotTellTheSceneToHideTheUnreadIndicatorForUnreadAnnouncements() {
@@ -59,30 +40,7 @@ class WhenBindingAnnouncement_AnnouncementsPresenterShould: XCTestCase {
         let boundComponent = context.bindAnnouncement(at: 0)
 
         XCTAssertFalse(boundComponent.didHideUnreadIndicator)
-    }
-
-    func testTellTheSceneToShowTheUnreadIndicatorForUnreadAnnouncements() {
-        var announcement = AnnouncementItemViewModel.random
-        announcement.isRead = false
-        let viewModel = FakeAnnouncementsListViewModel(announcements: [announcement])
-        let viewModelFactory = FakeAnnouncementsViewModelFactory(viewModel: viewModel)
-        let context = AnnouncementsPresenterTestBuilder().with(viewModelFactory).build()
-        context.simulateSceneDidLoad()
-        let boundComponent = context.bindAnnouncement(at: 0)
-
         XCTAssertTrue(boundComponent.didShowUnreadIndicator)
-    }
-
-    func testNotTellTheSceneToShowTheUnreadIndicatorForReadAnnouncements() {
-        var announcement = AnnouncementItemViewModel.random
-        announcement.isRead = true
-        let viewModel = FakeAnnouncementsListViewModel(announcements: [announcement])
-        let viewModelFactory = FakeAnnouncementsViewModelFactory(viewModel: viewModel)
-        let context = AnnouncementsPresenterTestBuilder().with(viewModelFactory).build()
-        context.simulateSceneDidLoad()
-        let boundComponent = context.bindAnnouncement(at: 0)
-
-        XCTAssertFalse(boundComponent.didShowUnreadIndicator)
     }
 
 }

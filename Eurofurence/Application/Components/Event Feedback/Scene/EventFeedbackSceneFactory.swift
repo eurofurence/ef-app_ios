@@ -1,6 +1,6 @@
 import UIKit.UIViewController
 
-protocol EventFeedbackSceneFactory {
+public protocol EventFeedbackSceneFactory {
     
     func makeEventFeedbackScene() -> UIViewController & EventFeedbackScene
     

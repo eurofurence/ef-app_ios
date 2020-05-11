@@ -6,7 +6,7 @@ protocol DownMarkdownRenderer: MarkdownRenderer {
 }
 
 extension DownMarkdownRenderer {
-	func render(_ contents: String) -> NSAttributedString {
+	public func render(_ contents: String) -> NSAttributedString {
 		let down = Down(markdownString: contents)
 		do {
 			let attributedString = try down.toAttributedString(DownOptions.smart, stylesheet: stylesheet)

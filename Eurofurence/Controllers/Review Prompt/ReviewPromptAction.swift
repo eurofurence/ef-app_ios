@@ -1,6 +1,6 @@
 import Foundation
 
-protocol ReviewPromptAction {
+public protocol ReviewPromptAction {
 
     func showReviewPrompt()
 

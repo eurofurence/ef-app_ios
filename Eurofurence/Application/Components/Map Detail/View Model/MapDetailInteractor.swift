@@ -1,7 +1,7 @@
 import EurofurenceModel
 import Foundation
 
-protocol MapDetailViewModelFactory {
+public protocol MapDetailViewModelFactory {
 
     func makeViewModelForMap(
         identifier: MapIdentifier,

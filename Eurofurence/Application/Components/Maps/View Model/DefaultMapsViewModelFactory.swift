@@ -1,7 +1,7 @@
 import EurofurenceModel
 import Foundation
 
-class DefaultMapsViewModelFactory: MapsViewModelFactory, MapsObserver {
+public class DefaultMapsViewModelFactory: MapsViewModelFactory, MapsObserver {
 
     private struct ViewModel: MapsViewModel {
 
@@ -41,15 +41,15 @@ class DefaultMapsViewModelFactory: MapsViewModelFactory, MapsObserver {
 
     private var maps = [Map]()
 
-    init(mapsService: MapsService) {
+    public init(mapsService: MapsService) {
         mapsService.add(self)
     }
 
-    func mapsServiceDidChangeMaps(_ maps: [Map]) {
+    public func mapsServiceDidChangeMaps(_ maps: [Map]) {
         self.maps = maps
     }
 
-    func makeMapsViewModel(completionHandler: @escaping (MapsViewModel) -> Void) {
+    public func makeMapsViewModel(completionHandler: @escaping (MapsViewModel) -> Void) {
         completionHandler(ViewModel(maps: maps))
     }
 

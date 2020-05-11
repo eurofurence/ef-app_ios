@@ -1,7 +1,7 @@
 import EurofurenceModel
 import UIKit.UIViewController
 
-protocol NewsComponentFactory {
+public protocol NewsComponentFactory {
 
     func makeNewsComponent(_ delegate: NewsComponentDelegate) -> UIViewController
 

@@ -1,12 +1,12 @@
 import EurofurenceModel
 import Foundation
 
-struct ReviewPromptController: EventsServiceObserver {
+public struct ReviewPromptController: EventsServiceObserver {
 
-    struct Config {
-        static let `default` = Config(requiredNumberOfFavouriteEvents: 3)
+    public struct Config {
+        public static let `default` = Config(requiredNumberOfFavouriteEvents: 3)
 
-        var requiredNumberOfFavouriteEvents: Int
+        public var requiredNumberOfFavouriteEvents: Int
     }
 
     private var config: ReviewPromptController.Config
@@ -16,12 +16,14 @@ struct ReviewPromptController: EventsServiceObserver {
     private var appStateProviding: AppStateProviding
     private var reviewPromptAppVersionRepository: ReviewPromptAppVersionRepository
 
-    init(config: ReviewPromptController.Config,
-         reviewPromptAction: ReviewPromptAction,
-         versionProviding: AppVersionProviding,
-         reviewPromptAppVersionRepository: ReviewPromptAppVersionRepository,
-         appStateProviding: AppStateProviding,
-         eventsService: EventsService) {
+    public init(
+        config: ReviewPromptController.Config,
+        reviewPromptAction: ReviewPromptAction,
+        versionProviding: AppVersionProviding,
+        reviewPromptAppVersionRepository: ReviewPromptAppVersionRepository,
+        appStateProviding: AppStateProviding,
+        eventsService: EventsService
+    ) {
         self.config = config
         self.reviewPromptAction = reviewPromptAction
         self.versionProviding = versionProviding
@@ -32,7 +34,7 @@ struct ReviewPromptController: EventsServiceObserver {
         eventsService.add(self)
     }
 
-    func favouriteEventsDidChange(_ identifiers: [EventIdentifier]) {
+    public func favouriteEventsDidChange(_ identifiers: [EventIdentifier]) {
         let minimumNumberOfEventsFavourited: Bool = identifiers.count >= config.requiredNumberOfFavouriteEvents
         let runningDifferentAppVersionSinceLastPrompt: Bool = versionProviding.version != reviewPromptAppVersionRepository.lastPromptedAppVersion
 
@@ -42,8 +44,8 @@ struct ReviewPromptController: EventsServiceObserver {
         }
     }
 
-    func eventsDidChange(to events: [Event]) { }
-    func runningEventsDidChange(to events: [Event]) { }
-    func upcomingEventsDidChange(to events: [Event]) { }
+    public func eventsDidChange(to events: [Event]) { }
+    public func runningEventsDidChange(to events: [Event]) { }
+    public func upcomingEventsDidChange(to events: [Event]) { }
 
 }

@@ -1,14 +1,14 @@
 import EurofurenceModel
 import Foundation
 
-class DefaultEventDetailViewModelFactory: EventDetailViewModelFactory {
+public class DefaultEventDetailViewModelFactory: EventDetailViewModelFactory {
 
     private let dateRangeFormatter: DateRangeFormatter
     private let eventsService: EventsService
 	private let markdownRenderer: MarkdownRenderer
     private let shareService: ShareService
 
-    init(
+    public init(
         dateRangeFormatter: DateRangeFormatter,
         eventsService: EventsService,
         markdownRenderer: MarkdownRenderer,
@@ -20,7 +20,7 @@ class DefaultEventDetailViewModelFactory: EventDetailViewModelFactory {
         self.shareService = shareService
     }
 
-    func makeViewModel(
+    public func makeViewModel(
         for identifier: EventIdentifier,
         completionHandler: @escaping (EventDetailViewModel) -> Void
     ) {
@@ -32,6 +32,7 @@ class DefaultEventDetailViewModelFactory: EventDetailViewModelFactory {
             markdownRenderer: markdownRenderer,
             shareService: shareService
         ).build()
+        
         completionHandler(viewModel)
     }
     

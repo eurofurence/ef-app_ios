@@ -1,6 +1,6 @@
 import UIKit.UIViewController
 
-protocol EventDetailSceneFactory {
+public protocol EventDetailSceneFactory {
 
     func makeEventDetailScene() -> UIViewController & EventDetailScene
 

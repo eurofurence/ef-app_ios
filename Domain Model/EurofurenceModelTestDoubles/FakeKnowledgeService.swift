@@ -35,10 +35,13 @@ extension FakeKnowledgeService {
         }
 
         let randomEntry = FakeKnowledgeEntry.random
-        randomEntry.identifier = identifier
-        stubbedKnowledgeEntries[identifier] = randomEntry
+        stub(randomEntry)
 
         return randomEntry
+    }
+    
+    public func stub(_ entry: FakeKnowledgeEntry) {
+        stubbedKnowledgeEntries[entry.identifier] = entry
     }
 
     public func stub(_ group: KnowledgeGroup) {

@@ -1,11 +1,11 @@
-protocol NewsViewModelProducer {
+public protocol NewsViewModelProducer {
 
     func subscribeViewModelUpdates(_ delegate: NewsViewModelRecipient)
     func refresh()
 
 }
 
-protocol NewsViewModelRecipient {
+public protocol NewsViewModelRecipient {
 
     func viewModelDidUpdate(_ viewModel: NewsViewModel)
     func refreshDidBegin()

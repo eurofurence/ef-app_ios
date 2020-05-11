@@ -1,7 +1,11 @@
 import Foundation
 
-struct ScheduleDayViewModel: Equatable {
+public struct ScheduleDayViewModel: Equatable {
 
-    var title: String
+    public var title: String
+    
+    public init(title: String) {
+        self.title = title
+    }
 
 }

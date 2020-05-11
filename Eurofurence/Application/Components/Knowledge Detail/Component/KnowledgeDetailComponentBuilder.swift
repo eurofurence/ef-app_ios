@@ -1,22 +1,22 @@
 import Foundation
 
-class KnowledgeDetailComponentBuilder {
+public class KnowledgeDetailComponentBuilder {
 
     private var knowledgeDetailSceneFactory: KnowledgeDetailSceneFactory
     private let knowledgeDetailViewModelFactory: KnowledgeDetailViewModelFactory
 
-    init(knowledgeDetailViewModelFactory: KnowledgeDetailViewModelFactory) {
+    public init(knowledgeDetailViewModelFactory: KnowledgeDetailViewModelFactory) {
         self.knowledgeDetailViewModelFactory = knowledgeDetailViewModelFactory
         knowledgeDetailSceneFactory = StoryboardKnowledgeDetailSceneFactory()
     }
 
     @discardableResult
-    func with(_ knowledgeDetailSceneFactory: KnowledgeDetailSceneFactory) -> Self {
+    public func with(_ knowledgeDetailSceneFactory: KnowledgeDetailSceneFactory) -> Self {
         self.knowledgeDetailSceneFactory = knowledgeDetailSceneFactory
         return self
     }
 
-    func build() -> KnowledgeDetailComponentFactory {
+    public func build() -> KnowledgeDetailComponentFactory {
         KnowledgeDetailComponentFactoryImpl(
             knowledgeDetailSceneFactory: knowledgeDetailSceneFactory,
             knowledgeDetailViewModelFactory: knowledgeDetailViewModelFactory

@@ -1,31 +1,31 @@
 import EurofurenceModel
 import Foundation.NSDateFormatter
 
-class MessagesComponentBuilder {
+public class MessagesComponentBuilder {
 
     private var sceneFactory: MessagesSceneFactory
     private let authenticationService: AuthenticationService
     private let privateMessagesService: PrivateMessagesService
     private var dateFormatter: DateFormatterProtocol
 
-    init(authenticationService: AuthenticationService, privateMessagesService: PrivateMessagesService) {
+    public init(authenticationService: AuthenticationService, privateMessagesService: PrivateMessagesService) {
         self.authenticationService = authenticationService
         self.privateMessagesService = privateMessagesService
         sceneFactory = StoryboardMessagesSceneFactory()
         dateFormatter = EurofurenceDateFormatter()
     }
 
-    func with(_ sceneFactory: MessagesSceneFactory) -> Self {
+    public func with(_ sceneFactory: MessagesSceneFactory) -> Self {
         self.sceneFactory = sceneFactory
         return self
     }
 
-    func with(_ dateFormatter: DateFormatterProtocol) -> Self {
+    public func with(_ dateFormatter: DateFormatterProtocol) -> Self {
         self.dateFormatter = dateFormatter
         return self
     }
 
-    func build() -> MessagesComponentFactory {
+    public func build() -> MessagesComponentFactory {
         MessagesComponentFactoryImpl(
             sceneFactory: sceneFactory,
             authenticationService: authenticationService,

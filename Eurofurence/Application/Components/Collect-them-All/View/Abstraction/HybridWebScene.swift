@@ -1,6 +1,6 @@
 import Foundation
 
-protocol HybridWebScene {
+public protocol HybridWebScene {
 
     func setDelegate(_ delegate: HybridWebSceneDelegate)
     func setSceneShortTitle(_ shortTitle: String)
@@ -10,7 +10,7 @@ protocol HybridWebScene {
 
 }
 
-protocol HybridWebSceneDelegate {
+public protocol HybridWebSceneDelegate {
 
     func hybridWebSceneDidLoad()
 

@@ -1,6 +1,6 @@
 import Foundation
 
-protocol UserCompletedTutorialStateProviding {
+public protocol UserCompletedTutorialStateProviding {
 
     var userHasCompletedTutorial: Bool { get }
 

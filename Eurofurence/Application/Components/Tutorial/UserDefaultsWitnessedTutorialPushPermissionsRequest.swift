@@ -1,20 +1,20 @@
 import Foundation
 
-struct UserDefaultsWitnessedTutorialPushPermissionsRequest: WitnessedTutorialPushPermissionsRequest {
+public struct UserDefaultsWitnessedTutorialPushPermissionsRequest: WitnessedTutorialPushPermissionsRequest {
 
-    static let WitnessedTutorialPushPermissionsRequestKey = "Eurofurence.WitnessedTutorialPushPermissionsRequest"
+    public static let WitnessedTutorialPushPermissionsRequestKey = "Eurofurence.WitnessedTutorialPushPermissionsRequest"
 
-    var userDefaults: UserDefaults
+    private let userDefaults: UserDefaults
 
-    init(userDefaults: UserDefaults) {
+    public init(userDefaults: UserDefaults) {
         self.userDefaults = userDefaults
     }
 
-    var witnessedTutorialPushPermissionsRequest: Bool {
+    public var witnessedTutorialPushPermissionsRequest: Bool {
         return userDefaults.bool(forKey: UserDefaultsWitnessedTutorialPushPermissionsRequest.WitnessedTutorialPushPermissionsRequestKey)
     }
 
-    func markWitnessedTutorialPushPermissionsRequest() {
+    public func markWitnessedTutorialPushPermissionsRequest() {
         userDefaults.set(true, forKey: UserDefaultsWitnessedTutorialPushPermissionsRequest.WitnessedTutorialPushPermissionsRequestKey)
     }
 

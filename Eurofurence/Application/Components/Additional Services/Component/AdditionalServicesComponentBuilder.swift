@@ -1,22 +1,22 @@
 import EurofurenceModel
 
-class AdditionalServicesComponentBuilder {
+public class AdditionalServicesComponentBuilder {
     
     private let repository: AdditionalServicesRepository
     private var sceneFactory: HybridWebSceneFactory
     
-    init(repository: AdditionalServicesRepository) {
+    public init(repository: AdditionalServicesRepository) {
         self.repository = repository
         sceneFactory = StoryboardHybridWebSceneFactory()
     }
     
     @discardableResult
-    func with(_ sceneFactory: HybridWebSceneFactory) -> AdditionalServicesComponentBuilder {
+    public func with(_ sceneFactory: HybridWebSceneFactory) -> Self {
         self.sceneFactory = sceneFactory
         return self
     }
     
-    func build() -> AdditionalServicesComponentFactoryImpl {
+    public func build() -> AdditionalServicesComponentFactory {
         AdditionalServicesComponentFactoryImpl(
             repository: repository,
             sceneFactory: sceneFactory

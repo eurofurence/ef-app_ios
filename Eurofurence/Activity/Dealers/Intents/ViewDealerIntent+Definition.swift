@@ -16,7 +16,7 @@ extension ViewDealerIntent {
 @available(iOS 12.0, *)
 extension ViewDealerIntent: DealerIntentDefinitionProviding {
     
-    var dealerIntentDefinition: ViewDealerIntentDefinition? {
+    public var dealerIntentDefinition: ViewDealerIntentDefinition? {
         guard let identifier = dealerIdentifier, let dealerName = dealerName else { return nil }
         return ViewDealerIntentDefinition(identifier: DealerIdentifier(identifier), dealerName: dealerName)
     }

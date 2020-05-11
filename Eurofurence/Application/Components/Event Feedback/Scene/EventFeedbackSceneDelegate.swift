@@ -1,6 +1,6 @@
 import Foundation
 
-protocol EventFeedbackSceneDelegate {
+public protocol EventFeedbackSceneDelegate {
     
     func eventFeedbackSceneDidLoad()
     

@@ -46,7 +46,7 @@ class KnowledgeDetailPresenter: KnowledgeDetailSceneDelegate {
         }
     }
 
-    private struct ViewModelImagesBinder: KnowledgentryImagesBinder {
+    private struct ViewModelImagesBinder: KnowledgEntryImagesBinder {
 
         var viewModels: [KnowledgeEntryImageViewModel]
 

@@ -1,6 +1,6 @@
 import Foundation.NSIndexPath
 
-protocol NewsComponentsBinder {
+public protocol NewsComponentsBinder {
 
     func bindTitleForSection(at index: Int, scene: NewsComponentHeaderScene)
     func bindComponent<T>(
@@ -10,7 +10,7 @@ protocol NewsComponentsBinder {
 
 }
 
-protocol NewsItemComponentFactory {
+public protocol NewsItemComponentFactory {
 
     associatedtype Component
 
@@ -22,13 +22,13 @@ protocol NewsItemComponentFactory {
 
 }
 
-protocol ConventionCountdownComponent {
+public protocol ConventionCountdownComponent {
 
     func setTimeUntilConvention(_ timeUntilConvention: String)
 
 }
 
-protocol UserWidgetComponent {
+public protocol UserWidgetComponent {
 
     func setPrompt(_ prompt: String)
     func setDetailedPrompt(_ detailedPrompt: String)
@@ -39,7 +39,7 @@ protocol UserWidgetComponent {
 
 }
 
-protocol AllAnnouncementsComponent {
+public protocol AllAnnouncementsComponent {
 
     func showCaption(_ caption: String)
 

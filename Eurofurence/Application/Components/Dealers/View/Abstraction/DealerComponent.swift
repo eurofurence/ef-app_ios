@@ -1,6 +1,6 @@
 import Foundation
 
-protocol DealerComponent {
+public protocol DealerComponent {
 
     func setDealerTitle(_ title: String)
     func setDealerSubtitle(_ subtitle: String?)

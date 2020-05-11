@@ -1,6 +1,6 @@
 import Foundation
 
-protocol MapsScene {
+public protocol MapsScene {
 
     func setDelegate(_ delegate: MapsSceneDelegate)
     func setMapsTitle(_ title: String)
@@ -8,7 +8,7 @@ protocol MapsScene {
 
 }
 
-protocol MapsSceneDelegate {
+public protocol MapsSceneDelegate {
 
     func mapsSceneDidLoad()
     func simulateSceneDidSelectMap(at index: Int)

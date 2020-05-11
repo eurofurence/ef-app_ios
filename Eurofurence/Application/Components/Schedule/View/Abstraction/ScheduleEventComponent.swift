@@ -1,6 +1,6 @@
 import Foundation
 
-protocol ScheduleEventComponent {
+public protocol ScheduleEventComponent {
 
     func setEventName(_ title: String)
     func setEventStartTime(_ startTime: String)

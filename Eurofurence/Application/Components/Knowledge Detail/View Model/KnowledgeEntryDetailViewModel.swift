@@ -1,7 +1,7 @@
 import EurofurenceModel
 import Foundation
 
-protocol KnowledgeEntryDetailViewModel {
+public protocol KnowledgeEntryDetailViewModel {
 
     var title: String { get }
     var contents: NSAttributedString { get }
@@ -13,8 +13,12 @@ protocol KnowledgeEntryDetailViewModel {
 
 }
 
-struct KnowledgeEntryImageViewModel: Equatable {
+public struct KnowledgeEntryImageViewModel: Equatable {
 
-    var imagePNGData: Data
+    public var imagePNGData: Data
+    
+    public init(imagePNGData: Data) {
+        self.imagePNGData = imagePNGData
+    }
 
 }

@@ -1,14 +1,14 @@
 import Foundation
 import UIKit.UIViewController
 
-class EventDetailComponentBuilder {
+public class EventDetailComponentBuilder {
 
     private let eventDetailViewModelFactory: EventDetailViewModelFactory
     private let interactionRecorder: EventInteractionRecorder
     private var sceneFactory: EventDetailSceneFactory
     private var hapticEngine: SelectionChangedHaptic
 
-    init(eventDetailViewModelFactory: EventDetailViewModelFactory, interactionRecorder: EventInteractionRecorder) {
+    public init(eventDetailViewModelFactory: EventDetailViewModelFactory, interactionRecorder: EventInteractionRecorder) {
         self.eventDetailViewModelFactory = eventDetailViewModelFactory
         self.interactionRecorder = interactionRecorder
         
@@ -17,18 +17,18 @@ class EventDetailComponentBuilder {
     }
 
     @discardableResult
-    func with(_ sceneFactory: EventDetailSceneFactory) -> Self {
+    public func with(_ sceneFactory: EventDetailSceneFactory) -> Self {
         self.sceneFactory = sceneFactory
         return self
     }
 
     @discardableResult
-    func with(_ hapticEngine: SelectionChangedHaptic) -> Self {
+    public func with(_ hapticEngine: SelectionChangedHaptic) -> Self {
         self.hapticEngine = hapticEngine
         return self
     }
 
-    func build() -> EventDetailComponentFactory {
+    public func build() -> EventDetailComponentFactory {
         EventDetailComponentFactoryImpl(
             sceneFactory: sceneFactory,
             eventDetailViewModelFactory: eventDetailViewModelFactory,

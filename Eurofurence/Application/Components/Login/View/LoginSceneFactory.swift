@@ -1,6 +1,6 @@
 import UIKit.UIViewController
 
-protocol LoginSceneFactory {
+public protocol LoginSceneFactory {
 
     func makeLoginScene() -> UIViewController & LoginScene
 

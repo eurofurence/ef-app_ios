@@ -1,7 +1,7 @@
 import EurofurenceModel
 import Foundation
 
-class NotificationScheduleController: EventsServiceObserver {
+public class NotificationScheduleController: EventsServiceObserver {
     
     private class ScheduleNotificationWhenEventFavourited: EventObserver {
         
@@ -26,10 +26,12 @@ class NotificationScheduleController: EventsServiceObserver {
     private let hoursDateFormatter: HoursDateFormatter
     private let upcomingEventReminderInterval: TimeInterval
     
-    init(eventsService: EventsService,
-         notificationScheduler: NotificationScheduler,
-         hoursDateFormatter: HoursDateFormatter,
-         upcomingEventReminderInterval: TimeInterval) {
+    public init(
+        eventsService: EventsService,
+        notificationScheduler: NotificationScheduler,
+        hoursDateFormatter: HoursDateFormatter,
+        upcomingEventReminderInterval: TimeInterval
+    ) {
         self.notificationScheduler = notificationScheduler
         self.hoursDateFormatter = hoursDateFormatter
         self.upcomingEventReminderInterval = upcomingEventReminderInterval
@@ -37,13 +39,13 @@ class NotificationScheduleController: EventsServiceObserver {
         eventsService.add(self)
     }
     
-    func eventsDidChange(to events: [Event]) {
+    public func eventsDidChange(to events: [Event]) {
         events.forEach({ $0.add(favouritesObserver) })
     }
     
-    func runningEventsDidChange(to events: [Event]) { }
-    func upcomingEventsDidChange(to events: [Event]) { }
-    func favouriteEventsDidChange(_ identifiers: [EventIdentifier]) { }
+    public func runningEventsDidChange(to events: [Event]) { }
+    public func upcomingEventsDidChange(to events: [Event]) { }
+    public func favouriteEventsDidChange(_ identifiers: [EventIdentifier]) { }
     
     private func scheduleNotification(for event: Event) {
         let waitInterval = upcomingEventReminderInterval * -1

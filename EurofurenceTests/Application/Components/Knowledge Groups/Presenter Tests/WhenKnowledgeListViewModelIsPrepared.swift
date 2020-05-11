@@ -1,4 +1,4 @@
-@testable import Eurofurence
+import Eurofurence
 import EurofurenceModel
 import XCTest
 
@@ -16,56 +16,29 @@ class WhenKnowledgeGroupsListViewModelIsPrepared: XCTestCase {
         context.simulateLoadingViewModel(viewModel)
     }
 
-    func testTheSceneIsToldToHideTheLoadingIndicator() {
+    func testTheKnowledgeGroupsAreBound() {
+        let expected = viewModel.knowledgeGroups.count
+        
+        XCTAssertEqual(expected, context.scene.capturedEntriesPerGroup)
         XCTAssertTrue(context.scene.didHideLoadingIndicator)
     }
 
-    func testTheSceneIsToldToDisplayKnowledgeGroups() {
-        let expected = viewModel.knowledgeGroups.count
-        XCTAssertEqual(expected, context.scene.capturedEntriesPerGroup)
-    }
-
-    func testBindingKnowledgeGroupHeadingSetsTitleOntoScene() {
+    func testBindingKnowledgeGroup() {
         let randomGroup = viewModel.knowledgeGroups.randomElement()
-        let expected = randomGroup.element.title
         let scene = CapturingKnowledgeGroupHeaderScene()
         context.scene.bind(scene, toGroupAt: randomGroup.index)
 
-        XCTAssertEqual(expected, scene.capturedTitle)
+        XCTAssertEqual(randomGroup.element.title, scene.capturedTitle)
+        XCTAssertEqual(randomGroup.element.fontAwesomeCharacter, scene.capturedFontAwesomeCharacter)
+        XCTAssertEqual(randomGroup.element.groupDescription, scene.capturedGroupDescription)
     }
 
-    func testBindingKnowledgeGroupHeadingSetsFontAwesomeCharacterOntoScene() {
-        let randomGroup = viewModel.knowledgeGroups.randomElement()
-        let expected = randomGroup.element.fontAwesomeCharacter
-        let scene = CapturingKnowledgeGroupHeaderScene()
-        context.scene.bind(scene, toGroupAt: randomGroup.index)
-
-        XCTAssertEqual(expected, scene.capturedFontAwesomeCharacter)
-    }
-
-    func testBindingKnowledgeGroupHeadingSetsDescriptionOntoScene() {
-        let randomGroup = viewModel.knowledgeGroups.randomElement()
-        let expected = randomGroup.element.groupDescription
-        let scene = CapturingKnowledgeGroupHeaderScene()
-        context.scene.bind(scene, toGroupAt: randomGroup.index)
-
-        XCTAssertEqual(expected, scene.capturedGroupDescription)
-    }
-
-    func testSelectingKnowledgeGroupTellsSceneToDeselectSelectedItem() {
+    func testSelectingKnowledgeGroup() {
         let randomGroup = viewModel.knowledgeGroups.randomElement()
         context.scene.simulateSelectingKnowledgeGroup(at: randomGroup.index)
-        let expected = IndexPath(item: randomGroup.index, section: 0)
 
-        XCTAssertEqual(expected, context.scene.deselectedIndexPath)
-    }
-
-    func testSelectingKnowledgeGroupTellsDelegateTheIndexedGroupIdentifierWasChosen() {
-        let randomGroup = viewModel.knowledgeGroups.randomElement()
-        context.scene.simulateSelectingKnowledgeGroup(at: randomGroup.index)
-        let expected = viewModel.stubbedGroupIdentifier(at: randomGroup.index)
-
-        XCTAssertEqual(expected, context.delegate.capturedKnowledgeGroupToPresent)
+        XCTAssertEqual(IndexPath(item: randomGroup.index, section: 0), context.scene.deselectedIndexPath)
+        XCTAssertEqual(viewModel.stubbedGroupIdentifier(at: randomGroup.index), context.delegate.capturedKnowledgeGroupToPresent)
     }
 
 }

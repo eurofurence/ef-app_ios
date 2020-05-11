@@ -1,41 +1,45 @@
-@testable import Eurofurence
+import Eurofurence
 import XCTest
 
 class ApplicationInfoPropertyListShould: XCTestCase {
 
-    private func objectFromMainBundlePropertyList<T>(forInfoDictionaryKey key: String) -> T? {
+    func testContainTheCalendarUsageKey() throws {
+        try assertValue(
+            "Eurofurence uses your calendar to add events and alerts",
+            forInfoPlistKey: "NSCalendarsUsageDescription"
+        )
+    }
+    
+    func testDesignateActivityTypes() throws {
+        try assertValue([
+            "org.eurofurence.activity.view-dealer",
+            "org.eurofurence.activity.view-event",
+            "ViewDealerIntent",
+            "ViewEventIntent"
+        ], forInfoPlistKey: "NSUserActivityTypes")
+    }
+    
+    func testContainTheCameraUsageKey() throws {
+        try assertValue(
+            "Eurofurence uses the camera to capture photos when submitting Artist Alley table registrations",
+            forInfoPlistKey: "NSCameraUsageDescription"
+        )
+    }
+    
+    func testSpecifyNonExcemptEncryptionNotUsed() throws {
+        try assertValue(false, forInfoPlistKey: "ITSAppUsesNonExemptEncryption")
+    }
+    
+    private func assertValue<T>(
+        _ expected: T,
+        forInfoPlistKey key: String,
+        _ line: UInt = #line
+    ) throws where T: Equatable {
         let bundle = Bundle(for: AppDelegate.self)
-        return bundle.object(forInfoDictionaryKey: key) as? T
-    }
-
-    func testContainTheCalendarUsageKey() {
-        let calendarUsageDescription: String? = objectFromMainBundlePropertyList(forInfoDictionaryKey: "NSCalendarsUsageDescription")
-        let expectedDescription = "Eurofurence uses your calendar to add events and alerts"
-
-        XCTAssertEqual(expectedDescription, calendarUsageDescription)
-    }
-    
-    func testDesignateEventActivityType() {
-        let activityTypes: [String]? = objectFromMainBundlePropertyList(forInfoDictionaryKey: "NSUserActivityTypes")
-        XCTAssert(activityTypes?.contains("org.eurofurence.activity.view-event") == true)
-    }
-    
-    func testDesignateDealerActivityType() {
-        let activityTypes: [String]? = objectFromMainBundlePropertyList(forInfoDictionaryKey: "NSUserActivityTypes")
-        XCTAssert(activityTypes?.contains("org.eurofurence.activity.view-dealer") == true)
-    }
-    
-    func testContainTheCameraUsageKey() {
-        let cameraUsageDescription: String? = objectFromMainBundlePropertyList(forInfoDictionaryKey: "NSCameraUsageDescription")
-        let expected = "Eurofurence uses the camera to capture photos when submitting Artist Alley table registrations"
+        let objectForKey = bundle.object(forInfoDictionaryKey: key)
+        let value = try XCTUnwrap(objectForKey as? T, line: line)
         
-        XCTAssertEqual(expected, cameraUsageDescription)
-    }
-    
-    func testSpecifyNonExcemptEncryptionNotUsed() {
-        let nonStandardEncryptionUsed: Bool? = objectFromMainBundlePropertyList(forInfoDictionaryKey: "ITSAppUsesNonExemptEncryption")
-        
-        XCTAssertEqual(false, nonStandardEncryptionUsed)
+        XCTAssertEqual(expected, value, line: line)
     }
 
 }

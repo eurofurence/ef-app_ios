@@ -1,14 +1,14 @@
 import EurofurenceModel
 import UIKit.UIImage
 
-protocol KnowledgeGroupsListViewModel {
+public protocol KnowledgeGroupsListViewModel {
 
     func setDelegate(_ delegate: KnowledgeGroupsListViewModelDelegate)
     func describeContentsOfKnowledgeItem(at index: Int, visitor: KnowledgeGroupsListViewModelVisitor)
 
 }
 
-protocol KnowledgeGroupsListViewModelVisitor {
+public protocol KnowledgeGroupsListViewModelVisitor {
     
     func visit(_ knowledgeGroup: KnowledgeGroupIdentifier)
     func visit(_ knowledgeEntry: KnowledgeEntryIdentifier)

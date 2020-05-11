@@ -1,6 +1,6 @@
 import EurofurenceModel
 
-class RemotelyConfiguredConventionStartDateRepository: ConventionStartDateRepository {
+public class RemotelyConfiguredConventionStartDateRepository: ConventionStartDateRepository {
     
     private var consumers = [ConventionStartDateConsumer]()
     private var configuration: RemoteConfiguration?
@@ -15,12 +15,12 @@ class RemotelyConfiguredConventionStartDateRepository: ConventionStartDateReposi
         
     }
     
-    init(remoteConfigurationLoader: RemoteConfigurationLoader) {
+    public init(remoteConfigurationLoader: RemoteConfigurationLoader) {
         let configurationLoaderDelegate = BlockBasedLoaderDelegate(handler: remoteConfigurationLoaded)
         remoteConfigurationLoader.registerConfigurationLoadedDelegate(configurationLoaderDelegate)
     }
     
-    func addConsumer(_ consumer: ConventionStartDateConsumer) {
+    public func addConsumer(_ consumer: ConventionStartDateConsumer) {
         consumers.append(consumer)
         
         if let configuration = configuration {
