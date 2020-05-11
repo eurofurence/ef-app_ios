@@ -1,7 +1,7 @@
 import EurofurenceModel
 import Foundation
 
-struct DefaultKnowledgeGroupViewModelFactory: KnowledgeGroupViewModelFactory {
+public struct DefaultKnowledgeGroupViewModelFactory: KnowledgeGroupViewModelFactory {
 
     private struct ViewModel: KnowledgeGroupEntriesViewModel {
 
@@ -21,9 +21,16 @@ struct DefaultKnowledgeGroupViewModelFactory: KnowledgeGroupViewModelFactory {
 
     }
 
-    var service: KnowledgeService
+    private let service: KnowledgeService
+    
+    public init(service: KnowledgeService) {
+        self.service = service
+    }
 
-    func makeViewModelForGroup(identifier: KnowledgeGroupIdentifier, completionHandler: @escaping (KnowledgeGroupEntriesViewModel) -> Void) {
+    public func makeViewModelForGroup(
+        identifier: KnowledgeGroupIdentifier,
+        completionHandler: @escaping (KnowledgeGroupEntriesViewModel) -> Void
+    ) {
         service.fetchKnowledgeGroup(identifier: identifier) { (group) in
             let viewModel = ViewModel(title: group.title, entries: group.entries)
             completionHandler(viewModel)

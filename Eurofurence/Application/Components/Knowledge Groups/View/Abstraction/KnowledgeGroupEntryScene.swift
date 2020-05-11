@@ -1,4 +1,4 @@
-protocol KnowledgeGroupEntryScene {
+public protocol KnowledgeGroupEntryScene {
 
     func setKnowledgeEntryTitle(_ title: String)
 
