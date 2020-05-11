@@ -1,6 +1,6 @@
 import Foundation
 
-protocol ScheduleDaysBinder {
+public protocol ScheduleDaysBinder {
 
     func bind(_ dayComponent: ScheduleDayComponent, forDayAt index: Int)
 

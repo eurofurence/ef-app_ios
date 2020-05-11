@@ -1,7 +1,7 @@
 import EurofurenceModel
 import Foundation
 
-protocol ScheduleViewModel {
+public protocol ScheduleViewModel {
 
     func setDelegate(_ delegate: ScheduleViewModelDelegate)
     func refresh()
@@ -10,7 +10,7 @@ protocol ScheduleViewModel {
 
 }
 
-protocol ScheduleViewModelDelegate {
+public protocol ScheduleViewModelDelegate {
 
     func scheduleViewModelDidBeginRefreshing()
     func scheduleViewModelDidFinishRefreshing()

@@ -1,6 +1,6 @@
 import Foundation
 
-protocol ShortFormDateFormatter {
+public protocol ShortFormDateFormatter {
 
     func dateString(from date: Date) -> String
 

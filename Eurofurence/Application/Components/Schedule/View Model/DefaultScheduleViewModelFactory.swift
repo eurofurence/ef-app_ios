@@ -1,7 +1,7 @@
 import EurofurenceModel
 import Foundation
 
-class DefaultScheduleViewModelFactory: ScheduleViewModelFactory, EventsServiceObserver {
+public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory, EventsServiceObserver {
 
     // MARK: Properties
 
@@ -10,11 +10,13 @@ class DefaultScheduleViewModelFactory: ScheduleViewModelFactory, EventsServiceOb
 
     // MARK: Initialization
 
-    init(eventsService: EventsService,
-         hoursDateFormatter: HoursDateFormatter,
-         shortFormDateFormatter: ShortFormDateFormatter,
-         shortFormDayAndTimeFormatter: ShortFormDayAndTimeFormatter,
-         refreshService: RefreshService) {
+    public init(
+        eventsService: EventsService,
+        hoursDateFormatter: HoursDateFormatter,
+        shortFormDateFormatter: ShortFormDateFormatter,
+        shortFormDayAndTimeFormatter: ShortFormDayAndTimeFormatter,
+        refreshService: RefreshService
+    ) {
         let schedule = eventsService.makeEventsSchedule()
         let searchController = eventsService.makeEventsSearchController()
         viewModel = ViewModel(schedule: schedule,
@@ -32,24 +34,24 @@ class DefaultScheduleViewModelFactory: ScheduleViewModelFactory, EventsServiceOb
 
     // MARK: ScheduleViewModelFactory
 
-    func makeViewModel(completionHandler: @escaping (ScheduleViewModel) -> Void) {
+    public func makeViewModel(completionHandler: @escaping (ScheduleViewModel) -> Void) {
         completionHandler(viewModel)
     }
 
-    func makeSearchViewModel(completionHandler: @escaping (ScheduleSearchViewModel) -> Void) {
+    public func makeSearchViewModel(completionHandler: @escaping (ScheduleSearchViewModel) -> Void) {
         completionHandler(searchViewModel)
     }
 
     // MARK: EventsServiceObserver
 
-    func favouriteEventsDidChange(_ identifiers: [EventIdentifier]) {
+    public func favouriteEventsDidChange(_ identifiers: [EventIdentifier]) {
         viewModel.favouriteEventsDidChange(identifiers)
         searchViewModel.favouriteEventsDidChange(identifiers)
     }
 
-    func eventsDidChange(to events: [Event]) {}
-    func runningEventsDidChange(to events: [Event]) {}
-    func upcomingEventsDidChange(to events: [Event]) {}
+    public func eventsDidChange(to events: [Event]) {}
+    public func runningEventsDidChange(to events: [Event]) {}
+    public func upcomingEventsDidChange(to events: [Event]) {}
 
     // MARK: Private
 

@@ -1,6 +1,6 @@
 import Foundation
 
-protocol ScheduleEventGroupHeader {
+public protocol ScheduleEventGroupHeader {
 
     func setEventGroupTitle(_ title: String)
 

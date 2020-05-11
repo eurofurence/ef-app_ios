@@ -1,7 +1,7 @@
 import EurofurenceModel
 import Foundation
 
-protocol ScheduleSearchViewModel {
+public protocol ScheduleSearchViewModel {
 
     func setDelegate(_ delegate: ScheduleSearchViewModelDelegate)
     func updateSearchResults(input: String)
@@ -11,7 +11,7 @@ protocol ScheduleSearchViewModel {
 
 }
 
-protocol ScheduleSearchViewModelDelegate {
+public protocol ScheduleSearchViewModelDelegate {
 
     func scheduleSearchResultsUpdated(_ results: [ScheduleEventGroupViewModel])
 

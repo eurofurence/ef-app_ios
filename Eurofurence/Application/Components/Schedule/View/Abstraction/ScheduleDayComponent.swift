@@ -1,6 +1,6 @@
 import Foundation
 
-protocol ScheduleDayComponent {
+public protocol ScheduleDayComponent {
 
     func setDayTitle(_ title: String)
 

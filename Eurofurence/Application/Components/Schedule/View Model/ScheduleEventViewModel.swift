@@ -1,6 +1,6 @@
 import Foundation
 
-protocol ScheduleEventViewModelProtocol {
+public protocol ScheduleEventViewModelProtocol {
 
     var title: String { get }
     var startTime: String { get }
@@ -22,7 +22,7 @@ protocol ScheduleEventViewModelProtocol {
 
 }
 
-protocol ScheduleEventViewModelObserver: class {
+public protocol ScheduleEventViewModelObserver: class {
     
     func eventViewModelDidBecomeFavourite(_ viewModel: ScheduleEventViewModelProtocol)
     func eventViewModelDidBecomeNonFavourite(_ viewModel: ScheduleEventViewModelProtocol)

@@ -1,6 +1,6 @@
 import UIKit.UIViewController
 
-protocol ScheduleSceneFactory {
+public protocol ScheduleSceneFactory {
 
     func makeEventsScene() -> UIViewController & ScheduleScene
 
