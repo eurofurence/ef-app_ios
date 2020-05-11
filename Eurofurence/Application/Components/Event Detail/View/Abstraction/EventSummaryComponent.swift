@@ -1,6 +1,6 @@
 import Foundation
 
-protocol EventSummaryComponent {
+public protocol EventSummaryComponent {
 
     func setEventTitle(_ title: String)
     func setEventSubtitle(_ subtitle: String)

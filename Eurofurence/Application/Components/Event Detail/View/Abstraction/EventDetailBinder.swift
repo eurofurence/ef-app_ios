@@ -1,6 +1,6 @@
 import Foundation
 
-protocol EventDetailBinder {
+public protocol EventDetailBinder {
 
     func bindComponent<T>(
         at indexPath: IndexPath,

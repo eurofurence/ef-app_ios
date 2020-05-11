@@ -1,6 +1,6 @@
 import Foundation
 
-protocol EventDetailItemComponentFactory {
+public protocol EventDetailItemComponentFactory {
 
     associatedtype Component
 

@@ -1,6 +1,6 @@
 import Foundation
 
-protocol EventDescriptionComponent {
+public protocol EventDescriptionComponent {
 
     func setEventDescription(_ eventDescription: NSAttributedString)
 

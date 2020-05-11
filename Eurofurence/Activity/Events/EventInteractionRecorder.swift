@@ -1,6 +1,6 @@
 import EurofurenceModel
 
-protocol EventInteractionRecorder {
+public protocol EventInteractionRecorder {
     
     func makeInteraction(for event: EventIdentifier) -> Interaction?
     

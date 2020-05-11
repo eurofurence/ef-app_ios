@@ -1,6 +1,6 @@
 import Foundation
 
-protocol SelectionChangedHaptic {
+public protocol SelectionChangedHaptic {
 
     func play()
 

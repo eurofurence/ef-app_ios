@@ -1,6 +1,6 @@
 import Foundation
 
-protocol EventGraphicComponent {
+public protocol EventGraphicComponent {
 
     func setPNGGraphicData(_ pngGraphicData: Data)
 

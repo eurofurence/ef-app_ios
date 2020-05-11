@@ -1,11 +1,11 @@
-protocol EventDetailScene {
+public protocol EventDetailScene {
 
     func setDelegate(_ delegate: EventDetailSceneDelegate)
     func bind(numberOfComponents: Int, using binder: EventDetailBinder)
 
 }
 
-protocol EventDetailSceneDelegate {
+public protocol EventDetailSceneDelegate {
 
     func eventDetailSceneDidLoad()
     func eventDetailSceneDidAppear()

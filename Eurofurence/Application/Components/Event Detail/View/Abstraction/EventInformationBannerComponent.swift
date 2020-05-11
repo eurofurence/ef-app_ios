@@ -1,6 +1,6 @@
 import Foundation
 
-protocol EventInformationBannerComponent {
+public protocol EventInformationBannerComponent {
 
     func setBannerMessage(_ message: String)
 

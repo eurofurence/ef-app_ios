@@ -1,7 +1,7 @@
 import EurofurenceModel
 import Foundation
 
-protocol EventDetailViewModelFactory {
+public protocol EventDetailViewModelFactory {
 
     func makeViewModel(
         for event: EventIdentifier,

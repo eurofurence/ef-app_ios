@@ -1,4 +1,4 @@
-@testable import Eurofurence
+import Eurofurence
 import EurofurenceModel
 
 class CapturingEventDetailComponentDelegate: EventDetailComponentDelegate {
