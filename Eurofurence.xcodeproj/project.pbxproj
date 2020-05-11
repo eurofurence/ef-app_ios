@@ -159,7 +159,7 @@
 		CA25A89C22C4101D00226478 /* ScreenshotGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9845C91F2907A800E8821D /* ScreenshotGenerator.swift */; };
 		CA25A89D22C4101D00226478 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9845D21F2909DB00E8821D /* SnapshotHelper.swift */; };
 		CA27255E21125393004C6D0A /* KnowledgeEntryImageScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27255D21125393004C6D0A /* KnowledgeEntryImageScene.swift */; };
-		CA2725602112542D004C6D0A /* KnowledgentryImagesBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27255F2112542D004C6D0A /* KnowledgentryImagesBinder.swift */; };
+		CA2725602112542D004C6D0A /* KnowledgEntryImagesBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27255F2112542D004C6D0A /* KnowledgEntryImagesBinder.swift */; };
 		CA272562211255DE004C6D0A /* KnowledgeDetailImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA272561211255DE004C6D0A /* KnowledgeDetailImageTableViewCell.swift */; };
 		CA2725952113BFD9004C6D0A /* EventInformationBannerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2725942113BFD9004C6D0A /* EventInformationBannerComponent.swift */; };
 		CA27618220DF932C000E52AC /* AspectRatioConstrainedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27618120DF932C000E52AC /* AspectRatioConstrainedImageView.swift */; };
@@ -1336,7 +1336,7 @@
 		CA250DE520D6F72200E7513C /* ShortFormDayAndTimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortFormDayAndTimeFormatter.swift; sourceTree = "<group>"; };
 		CA25A7FA20E63E9E00875891 /* MapDetailComponentDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailComponentDelegate.swift; sourceTree = "<group>"; };
 		CA27255D21125393004C6D0A /* KnowledgeEntryImageScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeEntryImageScene.swift; sourceTree = "<group>"; };
-		CA27255F2112542D004C6D0A /* KnowledgentryImagesBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgentryImagesBinder.swift; sourceTree = "<group>"; };
+		CA27255F2112542D004C6D0A /* KnowledgEntryImagesBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgEntryImagesBinder.swift; sourceTree = "<group>"; };
 		CA272561211255DE004C6D0A /* KnowledgeDetailImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailImageTableViewCell.swift; sourceTree = "<group>"; };
 		CA2725942113BFD9004C6D0A /* EventInformationBannerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInformationBannerComponent.swift; sourceTree = "<group>"; };
 		CA27618120DF932C000E52AC /* AspectRatioConstrainedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectRatioConstrainedImageView.swift; sourceTree = "<group>"; };
@@ -3907,7 +3907,7 @@
 				CA6EC47E2051CBC800402894 /* KnowledgeDetailScene.swift */,
 				CA6EC47C2051CBB800402894 /* KnowledgeDetailSceneFactory.swift */,
 				CA27255D21125393004C6D0A /* KnowledgeEntryImageScene.swift */,
-				CA27255F2112542D004C6D0A /* KnowledgentryImagesBinder.swift */,
+				CA27255F2112542D004C6D0A /* KnowledgEntryImagesBinder.swift */,
 				CA17FE8420580144005A4C05 /* LinksBinder.swift */,
 				CA17FE8020580082005A4C05 /* LinkScene.swift */,
 			);
@@ -6834,7 +6834,7 @@
 				CA1B6F1B20DB820100ADF414 /* DealerDetailViewController.swift in Sources */,
 				CA6EC4752051664D00402894 /* KnowledgeDetailComponentBuilder.swift in Sources */,
 				781A94331F1A1994002DE70F /* FCMDeviceRegistration.swift in Sources */,
-				CA2725602112542D004C6D0A /* KnowledgentryImagesBinder.swift in Sources */,
+				CA2725602112542D004C6D0A /* KnowledgEntryImagesBinder.swift in Sources */,
 				CA6F6533226A4D5F00483EE0 /* EventFeedbackProgressViewController.swift in Sources */,
 				9A861EAF1F2554F900B75A8C /* TutorialPresenter.swift in Sources */,
 				9A861EC81F25555000B75A8C /* WitnessedTutorialPushPermissionsRequest.swift in Sources */,

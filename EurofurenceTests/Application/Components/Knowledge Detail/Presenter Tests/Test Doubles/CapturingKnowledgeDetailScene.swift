@@ -1,4 +1,4 @@
-@testable import Eurofurence
+import Eurofurence
 import EurofurenceModel
 import UIKit.UIViewController
 
@@ -27,8 +27,8 @@ class CapturingKnowledgeDetailScene: UIViewController, KnowledgeDetailScene {
     }
 
     private(set) var boundImagesCount: Int?
-    private(set) var imagesBinder: KnowledgentryImagesBinder?
-    func bindImages(count: Int, using binder: KnowledgentryImagesBinder) {
+    private(set) var imagesBinder: KnowledgEntryImagesBinder?
+    func bindImages(count: Int, using binder: KnowledgEntryImagesBinder) {
         boundImagesCount = count
         imagesBinder = binder
     }
