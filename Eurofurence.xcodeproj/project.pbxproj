@@ -451,6 +451,7 @@
 		CA6F6537226B785700483EE0 /* ShortDelayEventFeedbackSuccessWaitingRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F6536226B785700483EE0 /* ShortDelayEventFeedbackSuccessWaitingRule.swift */; };
 		CA6F75BC24694ACB001FFB74 /* FakeDealerCategoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F75BB24694ACB001FFB74 /* FakeDealerCategoriesViewModel.swift */; };
 		CA6F75BE24694AD9001FFB74 /* FakeDealerCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F75BD24694AD9001FFB74 /* FakeDealerCategoryViewModel.swift */; };
+		CA6F75C024694F6B001FFB74 /* CapturingDealerCategoryViewModelObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F75BF24694F6B001FFB74 /* CapturingDealerCategoryViewModelObserver.swift */; };
 		CA728437209C7DE1007D912A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CA728436209C7DE1007D912A /* Settings.bundle */; };
 		CA72843D209CF07A007D912A /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = CA72843C209CF07A007D912A /* Localizable.stringsdict */; };
 		CA728445209D00B7007D912A /* StubAnnouncementDetailComponentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA728444209D00B7007D912A /* StubAnnouncementDetailComponentFactory.swift */; };
@@ -1629,6 +1630,7 @@
 		CA6F6536226B785700483EE0 /* ShortDelayEventFeedbackSuccessWaitingRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortDelayEventFeedbackSuccessWaitingRule.swift; sourceTree = "<group>"; };
 		CA6F75BB24694ACB001FFB74 /* FakeDealerCategoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeDealerCategoriesViewModel.swift; sourceTree = "<group>"; };
 		CA6F75BD24694AD9001FFB74 /* FakeDealerCategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeDealerCategoryViewModel.swift; sourceTree = "<group>"; };
+		CA6F75BF24694F6B001FFB74 /* CapturingDealerCategoryViewModelObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingDealerCategoryViewModelObserver.swift; sourceTree = "<group>"; };
 		CA728436209C7DE1007D912A /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		CA72843C209CF07A007D912A /* Localizable.stringsdict */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = Localizable.stringsdict; path = Base.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		CA728444209D00B7007D912A /* StubAnnouncementDetailComponentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubAnnouncementDetailComponentFactory.swift; sourceTree = "<group>"; };
@@ -6145,6 +6147,7 @@
 			children = (
 				CAF196B324688EA9005DFBBE /* CapturingDealersSearchViewModelDelegate.swift */,
 				CAF196B424688EA9005DFBBE /* CapturingDealersViewModelDelegate.swift */,
+				CA6F75BF24694F6B001FFB74 /* CapturingDealerCategoryViewModelObserver.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -7671,6 +7674,7 @@
 				CAF196C224688EAA005DFBBE /* WhenSelectingMap_MapsPresenterShould.swift in Sources */,
 				CAF1977824688EAA005DFBBE /* CapturingEventDetailComponentDelegate.swift in Sources */,
 				CA8E17EF1F817A8C003C348C /* CapturingPreloadInteractor.swift in Sources */,
+				CA6F75C024694F6B001FFB74 /* CapturingDealerCategoryViewModelObserver.swift in Sources */,
 				CAF196F124688EAA005DFBBE /* WhenBindingFavouriteEvent_FromSearchResult_SchedulePresenterShould.swift in Sources */,
 				6EEC6DA11F1BF79F00205F2D /* FirebaseTopicTests.swift in Sources */,
 				CAF1971224688EAA005DFBBE /* CapturingScheduleViewModelDelegate.swift in Sources */,
