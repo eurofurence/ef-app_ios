@@ -1,6 +1,6 @@
 import Foundation.NSIndexPath
 
-protocol KnowledgeListScene {
+public protocol KnowledgeListScene {
 
     func setDelegate(_ delegate: KnowledgeListSceneDelegate)
     func setKnowledgeListTitle(_ title: String)
