@@ -83,9 +83,18 @@ struct PrincipalWindowAssembler {
         )
         
         let moreContentControllerFactory = MoreContentControllerFactory(supplementaryContentControllerFactories: [
-            mapsContentControllerFactory,
-            collectThemAllContentControllerFactory,
-            additionalServicesContentControllerFactory
+            SupplementaryContentController(
+                contentControllerFactory: mapsContentControllerFactory,
+                presentationHandler: contentWireframe.presentMasterContentController(_:)
+            ),
+            SupplementaryContentController(
+                contentControllerFactory: collectThemAllContentControllerFactory,
+                presentationHandler: contentWireframe.presentDetailContentController(_:)
+            ),
+            SupplementaryContentController(
+                contentControllerFactory: additionalServicesContentControllerFactory,
+                presentationHandler: contentWireframe.presentDetailContentController(_:)
+            )
         ])
         
         let applicationModuleFactories: [ApplicationModuleFactory] = [
