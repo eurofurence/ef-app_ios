@@ -51,6 +51,8 @@ public struct PrincipalContentAggregator: PrincipalContentModuleProviding {
         
         override func viewDidLoad() {
             super.viewDidLoad()
+            
+            extendedLayoutIncludesOpaqueBars = true
             preferredDisplayMode = .allVisible
         }
         
