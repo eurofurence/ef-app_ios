@@ -11,8 +11,15 @@ public struct PrincipalContentAggregator: PrincipalContentModuleProviding {
     public func makePrincipalContentModule() -> UIViewController {
         let applicationModules = applicationModuleFactories.map({ $0.makeApplicationModuleController() })
         let navigationControllers = applicationModules.map(NavigationController.init)
+        let splitViewControllers = navigationControllers.map { (navigationController) -> UISplitViewController in
+            let splitViewController = SplitViewController()
+            splitViewController.viewControllers = [navigationController]
+            
+            return splitViewController
+        }
+        
         let tabBarController = TabBarController()
-        tabBarController.viewControllers = navigationControllers
+        tabBarController.viewControllers = splitViewControllers
         
         return tabBarController
     }
@@ -33,7 +40,19 @@ public struct PrincipalContentAggregator: PrincipalContentModuleProviding {
         }
         
         override func showDetailViewController(_ vc: UIViewController, sender: Any?) {
-            show(vc, sender: sender)
+            selectedViewController?.showDetailViewController(vc, sender: sender)
+        }
+        
+    }
+    
+    private class SplitViewController: UISplitViewController {
+        
+        override func show(_ vc: UIViewController, sender: Any?) {
+            if let masterNavigation = viewControllers.first as? UINavigationController {
+                masterNavigation.pushViewController(vc, animated: UIView.areAnimationsEnabled)
+            } else {
+                super.show(vc, sender: sender)
+            }
         }
         
     }
