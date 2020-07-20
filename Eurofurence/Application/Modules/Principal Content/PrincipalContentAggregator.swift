@@ -49,6 +49,11 @@ public struct PrincipalContentAggregator: PrincipalContentModuleProviding {
     
     private class SplitViewController: UISplitViewController {
         
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            preferredDisplayMode = .allVisible
+        }
+        
         override func show(_ vc: UIViewController, sender: Any?) {
             if let masterNavigation = viewControllers.first as? UINavigationController {
                 masterNavigation.pushViewController(vc, animated: UIView.areAnimationsEnabled)
