@@ -65,6 +65,15 @@ public struct PrincipalContentAggregator: PrincipalContentModuleProviding {
             }
         }
         
+        override func showDetailViewController(_ vc: UIViewController, sender: Any?) {
+            if let detailNavigationController = viewControllers.last as? UINavigationController {
+                detailNavigationController.pushViewController(vc, animated: UIView.areAnimationsEnabled)
+            } else {
+                let navigationController = NavigationController(rootViewController: vc)
+                super.showDetailViewController(navigationController, sender: self)
+            }
+        }
+        
     }
     
 }
