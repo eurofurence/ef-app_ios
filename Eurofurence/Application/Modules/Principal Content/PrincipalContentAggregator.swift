@@ -16,6 +16,7 @@ public struct PrincipalContentAggregator: PrincipalContentModuleProviding {
             let splitViewController = SplitViewController()
             let noContentPlaceholder = noContentStoryboard.instantiateInitialViewController().unsafelyUnwrapped
             splitViewController.viewControllers = [navigationController, noContentPlaceholder]
+            splitViewController.tabBarItem = navigationController.tabBarItem
             
             return splitViewController
         }
