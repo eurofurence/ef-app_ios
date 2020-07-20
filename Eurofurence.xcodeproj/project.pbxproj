@@ -207,6 +207,8 @@
 		CA30EAD01F27D8620053DBF6 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EACF1F27D8620053DBF6 /* MessageTableViewCell.swift */; };
 		CA321F511F7BC8550050E489 /* PreloadSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA321F501F7BC8550050E489 /* PreloadSceneFactory.swift */; };
 		CA321F531F7BC88D0050E489 /* StoryboardPreloadSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA321F521F7BC88D0050E489 /* StoryboardPreloadSceneFactory.swift */; };
+		CA33A92C24C5ECD600377DFB /* NoContentPlaceholderViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA33A92B24C5ECD600377DFB /* NoContentPlaceholderViewController.storyboard */; };
+		CA33A92E24C5ED8E00377DFB /* NoContentPlaceholderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA33A92D24C5ED8E00377DFB /* NoContentPlaceholderViewController.swift */; };
 		CA36A44920D76FA500EE6537 /* FoundationShortFormDayAndTimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A44820D76FA500EE6537 /* FoundationShortFormDayAndTimeFormatter.swift */; };
 		CA36A44B20D771B500EE6537 /* SelectionChangedHaptic.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A44A20D771B500EE6537 /* SelectionChangedHaptic.swift */; };
 		CA36A44F20D772F300EE6537 /* CocoaTouchHapticEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A44E20D772F300EE6537 /* CocoaTouchHapticEngine.swift */; };
@@ -1385,6 +1387,8 @@
 		CA30EACF1F27D8620053DBF6 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		CA321F501F7BC8550050E489 /* PreloadSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadSceneFactory.swift; sourceTree = "<group>"; };
 		CA321F521F7BC88D0050E489 /* StoryboardPreloadSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardPreloadSceneFactory.swift; sourceTree = "<group>"; };
+		CA33A92B24C5ECD600377DFB /* NoContentPlaceholderViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NoContentPlaceholderViewController.storyboard; sourceTree = "<group>"; };
+		CA33A92D24C5ED8E00377DFB /* NoContentPlaceholderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoContentPlaceholderViewController.swift; sourceTree = "<group>"; };
 		CA36A44820D76FA500EE6537 /* FoundationShortFormDayAndTimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationShortFormDayAndTimeFormatter.swift; sourceTree = "<group>"; };
 		CA36A44A20D771B500EE6537 /* SelectionChangedHaptic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionChangedHaptic.swift; sourceTree = "<group>"; };
 		CA36A44E20D772F300EE6537 /* CocoaTouchHapticEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocoaTouchHapticEngine.swift; sourceTree = "<group>"; };
@@ -2484,6 +2488,7 @@
 				CAD234381F5D71D9004BB959 /* Messages */,
 				CA5EB1C4246069080012C277 /* More */,
 				CAC1E1251F50409800195513 /* News */,
+				CA33A92A24C5ECC300377DFB /* No Content */,
 				CA321F4F1F7BC8490050E489 /* Preload */,
 				CA63757F208CDE1000536BE2 /* Schedule */,
 				6EF96CE31F1268BA00EE6134 /* Tutorial */,
@@ -3088,6 +3093,15 @@
 				CABA43A41FD5DB1B009CB5B0 /* View */,
 			);
 			path = Preload;
+			sourceTree = "<group>";
+		};
+		CA33A92A24C5ECC300377DFB /* No Content */ = {
+			isa = PBXGroup;
+			children = (
+				CA33A92B24C5ECD600377DFB /* NoContentPlaceholderViewController.storyboard */,
+				CA33A92D24C5ED8E00377DFB /* NoContentPlaceholderViewController.swift */,
+			);
+			path = "No Content";
 			sourceTree = "<group>";
 		};
 		CA36A45820D8471500EE6537 /* View Model */ = {
@@ -6548,6 +6562,7 @@
 			files = (
 				9A8ECA1E1F2BB46000351A83 /* generic_notification.caf in Resources */,
 				9A8ECA201F2BB46000351A83 /* personal_notification.caf in Resources */,
+				CA33A92C24C5ECD600377DFB /* NoContentPlaceholderViewController.storyboard in Resources */,
 				CA2761B420E0236A000E52AC /* HybridWeb.storyboard in Resources */,
 				CAA6060A20EEC02C00075A4E /* Debug.storyboard in Resources */,
 				CA63759C208DFDF900536BE2 /* Schedule.storyboard in Resources */,
@@ -6933,6 +6948,7 @@
 				CA283A9820EA9CB100F7D195 /* AnnouncementsComponentFactory.swift in Sources */,
 				CAB63203245F26E300DBF0A0 /* PrincipalWindowScene.swift in Sources */,
 				CA2AA2F422C9518A00C0E1A1 /* ViewDealerIntent+Definition.swift in Sources */,
+				CA33A92E24C5ED8E00377DFB /* NoContentPlaceholderViewController.swift in Sources */,
 				CA36A45E20D8487700EE6537 /* DealersGroupViewModel.swift in Sources */,
 				CAD4F73C245C364F0036ADAF /* ContentRoute.swift in Sources */,
 				CAF3C7501F9FC74C0008F027 /* NewsSceneFactory.swift in Sources */,
