@@ -47,9 +47,10 @@ struct RouterConfigurator {
     }
     
     private func configureDealerRoute() {
+        let tabSwapper = MoveToTabByViewController<DealersViewController>(window: window)
         router.add(DealerContentRoute(
             dealerModuleFactory: componentRegistry.dealerDetailModuleProviding,
-            contentWireframe: contentWireframe
+            contentWireframe: MoveToTabContentWireframe(decoratedWireframe: contentWireframe, tabSwapper: tabSwapper)
         ))
     }
     
