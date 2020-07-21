@@ -67,13 +67,30 @@ public struct PrincipalContentAggregator: PrincipalContentModuleProviding {
         
         override func showDetailViewController(_ vc: UIViewController, sender: Any?) {
             if let detailNavigationController = viewControllers.last as? UINavigationController {
-                detailNavigationController.pushViewController(vc, animated: UIView.areAnimationsEnabled)
+                let context = (sender as? DetailPresentationContext) ?? .show
+                context.reveal(vc, in: detailNavigationController)
             } else {
                 let navigationController = NavigationController(rootViewController: vc)
                 super.showDetailViewController(navigationController, sender: self)
             }
         }
         
+    }
+    
+}
+
+// MARK: - DetailPresentationContext Revealing
+
+extension DetailPresentationContext {
+    
+    func reveal(_ viewController: UIViewController, in navigationController: UINavigationController) {
+        switch self {
+        case .show:
+            navigationController.pushViewController(viewController, animated: UIView.areAnimationsEnabled)
+            
+        case .replace:
+            navigationController.setViewControllers([viewController], animated: false)
+        }
     }
     
 }
