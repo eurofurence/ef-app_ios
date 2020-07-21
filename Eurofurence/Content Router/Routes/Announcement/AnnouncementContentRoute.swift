@@ -3,16 +3,13 @@ import Foundation
 public struct AnnouncementContentRoute {
     
     private let announcementModuleFactory: AnnouncementDetailComponentFactory
-    private let announcementsTabNavigator: TabNavigator
     private let contentWireframe: ContentWireframe
     
     public init(
         announcementModuleFactory: AnnouncementDetailComponentFactory,
-        announcementsTabNavigator: TabNavigator,
         contentWireframe: ContentWireframe
     ) {
         self.announcementModuleFactory = announcementModuleFactory
-        self.announcementsTabNavigator = announcementsTabNavigator
         self.contentWireframe = contentWireframe
     }
     
@@ -29,7 +26,6 @@ extension AnnouncementContentRoute: ContentRoute {
             for: content.identifier
         )
         
-        announcementsTabNavigator.moveToTab()
         contentWireframe.replaceDetailContentController(announcementContentController)
     }
     

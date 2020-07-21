@@ -39,10 +39,10 @@ struct RouterConfigurator {
     }
     
     private func configureAnnouncementRoute() {
+        let tabSwapper = MoveToTabByViewController<NewsViewController>(window: window)
         router.add(AnnouncementContentRoute(
             announcementModuleFactory: componentRegistry.announcementDetailComponentFactory,
-            announcementsTabNavigator: MoveToTabByViewController<NewsViewController>(window: window),
-            contentWireframe: contentWireframe
+            contentWireframe: MoveToTabContentWireframe(decoratedWireframe: contentWireframe, tabSwapper: tabSwapper)
         ))
     }
     
