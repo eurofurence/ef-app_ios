@@ -41,6 +41,7 @@ struct RouterConfigurator {
     private func configureAnnouncementRoute() {
         router.add(AnnouncementContentRoute(
             announcementModuleFactory: componentRegistry.announcementDetailComponentFactory,
+            announcementsTabNavigator: MoveToTabByViewController<NewsViewController>(window: window),
             contentWireframe: contentWireframe
         ))
     }
