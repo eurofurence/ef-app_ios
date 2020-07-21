@@ -23,7 +23,7 @@ struct PrincipalWindowAssembler {
         contentWireframe = WindowContentWireframe(window: window)
         modalWireframe = WindowModalWireframe(window: window)
         
-        let moduleRepository = ComponentRegistry(
+        let componentRegistry = ComponentRegistry(
             services: services,
             repositories: repositories,
             window: window
@@ -31,18 +31,18 @@ struct PrincipalWindowAssembler {
         
         configureGlobalRoutes(
             router: router,
-            moduleRepository: moduleRepository,
+            componentRegistry: componentRegistry,
             services: services,
             urlOpener: urlOpener,
             window: window
         )
         
-        configureComponents(moduleRepository: moduleRepository, window: window, services: services)
+        configureComponents(componentRegistry: componentRegistry, window: window, services: services)
     }
     
     private func configureGlobalRoutes(
         router: MutableContentRouter,
-        moduleRepository: ComponentRegistry,
+        componentRegistry: ComponentRegistry,
         services: Services,
         urlOpener: URLOpener,
         window: UIWindow
@@ -56,7 +56,7 @@ struct PrincipalWindowAssembler {
             router: router,
             contentWireframe: contentWireframe,
             modalWireframe: modalWireframe,
-            moduleRepository: moduleRepository,
+            componentRegistry: componentRegistry,
             routeAuthenticationHandler: routeAuthenticationHandler,
             linksService: services.contentLinks,
             urlOpener: urlOpener,
@@ -64,17 +64,17 @@ struct PrincipalWindowAssembler {
         ).configureRoutes()
     }
     
-    private func configureComponents(moduleRepository: ComponentRegistry, window: UIWindow, services: Services) {
+    private func configureComponents(componentRegistry: ComponentRegistry, window: UIWindow, services: Services) {
         let applicationModuleFactories = makePrincipalWindowComponents(
-            moduleRepository: moduleRepository,
+            componentRegistry: componentRegistry,
             window: window,
             services: services
         )
         
         let principalWindowScene = ModuleSwappingPrincipalWindowScene(
             windowWireframe: AppWindowWireframe(window: window),
-            tutorialModule: moduleRepository.tutorialComponentFactory,
-            preloadModule: moduleRepository.preloadComponentFactory,
+            tutorialModule: componentRegistry.tutorialComponentFactory,
+            preloadModule: componentRegistry.preloadComponentFactory,
             principalContentModule: PrincipalContentAggregator(applicationModuleFactories: applicationModuleFactories)
         )
         
@@ -82,41 +82,41 @@ struct PrincipalWindowAssembler {
     }
     
     private func makePrincipalWindowComponents(
-        moduleRepository: ComponentRegistry,
+        componentRegistry: ComponentRegistry,
         window: UIWindow,
         services: Services
     ) -> [ApplicationModuleFactory] {
         let newsContentControllerFactory = NewsContentControllerFactory(
-            newsComponentFactory: moduleRepository.newsComponentFactory,
+            newsComponentFactory: componentRegistry.newsComponentFactory,
             newsComponentDelegate: NewsSubrouter(router: router)
         )
         
         let scheduleContentControllerFactory = ScheduleContentControllerFactory(
-            scheduleComponentFactory: moduleRepository.scheduleComponentFactory,
+            scheduleComponentFactory: componentRegistry.scheduleComponentFactory,
             scheduleComponentDelegate: ShowEventFromSchedule(router: router)
         )
         
         let dealersContentControllerFactory = DealersContentControllerFactory(
-            dealersComponentFactory: moduleRepository.dealersComponentFactory,
+            dealersComponentFactory: componentRegistry.dealersComponentFactory,
             dealersComponentDelegate: ShowDealerFromDealers(router: router)
         )
         
         let knowledgeContentControllerFactory = KnowledgeContentControllerFactory(
-            knowledgeModuleProviding: moduleRepository.knowledgeListComponentFactory,
+            knowledgeModuleProviding: componentRegistry.knowledgeListComponentFactory,
             knowledgeModuleDelegate: ShowKnowledgeContentFromListing(router: router)
         )
         
         let mapsContentControllerFactory = MapsContentControllerFactory(
-            mapsComponentFactory: moduleRepository.mapsComponentFactory,
+            mapsComponentFactory: componentRegistry.mapsComponentFactory,
             mapsComponentDelegate: ShowMapFromMaps(router: router)
         )
         
         let collectThemAllContentControllerFactory = CollectThemAllContentControllerFactory(
-            collectThemAllComponentFactory: moduleRepository.collectThemAllComponentFactory
+            collectThemAllComponentFactory: componentRegistry.collectThemAllComponentFactory
         )
         
         let additionalServicesContentControllerFactory = AdditionalServicesContentControllerFactory(
-            additionalServicesComponentFactory: moduleRepository.additionalServicesComponentFactory
+            additionalServicesComponentFactory: componentRegistry.additionalServicesComponentFactory
         )
         
         let moreContentControllerFactory = MoreContentControllerFactory(supplementaryContentControllerFactories: [
