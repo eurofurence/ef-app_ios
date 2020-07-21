@@ -28,7 +28,9 @@ struct ResetNewsAfterLogout: NewsPresentation {
         
         if let detailNavigation = newsSplitViewController.viewControllers.last as? UINavigationController {
             let navigationStack = detailNavigation.viewControllers
-            let nonMessageControllers = navigationStack.filter({ $0 is MessageDetailViewController == false })
+            let nonMessageControllers = navigationStack.filter({ (viewController) in
+                (viewController is MessageDetailViewController || viewController is MessagesViewController) == false
+            })
             
             if nonMessageControllers.isEmpty {
                 let placeholderViewController = NoContentPlaceholderViewController.fromStoryboard()
