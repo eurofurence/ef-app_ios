@@ -126,11 +126,11 @@ struct PrincipalWindowAssembler {
             ),
             SupplementaryContentController(
                 contentControllerFactory: collectThemAllContentControllerFactory,
-                presentationHandler: contentWireframe.presentDetailContentController(_:)
+                presentationHandler: contentWireframe.replaceDetailContentController(_:)
             ),
             SupplementaryContentController(
                 contentControllerFactory: additionalServicesContentControllerFactory,
-                presentationHandler: contentWireframe.presentDetailContentController(_:)
+                presentationHandler: contentWireframe.replaceDetailContentController(_:)
             )
         ])
         
