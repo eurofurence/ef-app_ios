@@ -17,7 +17,7 @@ class DealerContentRouteTests: XCTestCase {
         route.route(content)
         
         XCTAssertEqual(identifier, dealerModuleFactory.capturedModel)
-        XCTAssertEqual(contentWireframe.presentedDetailContentController, dealerModuleFactory.stubInterface)
+        XCTAssertEqual(contentWireframe.replacedDetailContentController, dealerModuleFactory.stubInterface)
     }
 
 }
