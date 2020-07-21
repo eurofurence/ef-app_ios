@@ -5,7 +5,7 @@ class KnowledgeGroupEntriesViewController: UITableViewController, KnowledgeGroup
     // MARK: Overrides
 
     override func viewDidLoad() {
-        super.viewDidLoad()
+        super.viewDidLoad()        
         knowledgeGroupEntriesSceneDelegate?.knowledgeGroupEntriesSceneDidLoad()
     }
 

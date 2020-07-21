@@ -56,6 +56,11 @@ class KnowledgeListViewController: UIViewController, KnowledgeListScene {
         delegate?.knowledgeListSceneDidLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.deselectSelectedRow()
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView?.adjustScrollIndicatorInsetsForSafeAreaCompensation()

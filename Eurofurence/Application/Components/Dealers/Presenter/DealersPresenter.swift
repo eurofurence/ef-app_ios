@@ -133,8 +133,6 @@ class DealersPresenter: DealersSceneDelegate, DealersViewModelDelegate, DealersS
     }
 
     func dealersSceneDidSelectDealer(at indexPath: IndexPath) {
-        scene.deselectDealer(at: indexPath)
-
         guard let identifier = viewModel?.identifierForDealer(at: indexPath) else { return }
         delegate.dealersModuleDidSelectDealer(identifier: identifier)
     }

@@ -6,7 +6,6 @@ public protocol DealersScene {
     func setDealersTitle(_ title: String)
     func showRefreshIndicator()
     func hideRefreshIndicator()
-    func deselectDealer(at indexPath: IndexPath)
     func bind(numberOfDealersPerSection: [Int], sectionIndexTitles: [String], using binder: DealersBinder)
     func bindSearchResults(numberOfDealersPerSection: [Int], sectionIndexTitles: [String], using binder: DealersSearchResultsBinder)
 

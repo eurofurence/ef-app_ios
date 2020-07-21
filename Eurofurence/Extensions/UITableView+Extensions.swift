@@ -57,6 +57,12 @@ extension UITableView {
     func adjustScrollIndicatorInsetsForSafeAreaCompensation() {
         scrollIndicatorInsets.right = -safeAreaInsets.right
     }
+    
+    func deselectSelectedRow(animated: Bool = false) {
+        if let indexPathForSelectedRow = indexPathForSelectedRow {
+            deselectRow(at: indexPathForSelectedRow, animated: animated)
+        }
+    }
 
     private func abortDueToUnregisteredOrMissingCell<T>(_ type: T.Type, identifier: String) -> Never {
         fatalError("Cell registered with identifier \"\(identifier)\" not present, or not an instance of \(type)")

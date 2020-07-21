@@ -49,6 +49,11 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
         delegate?.dealersSceneDidLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.deselectSelectedRow()
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView?.adjustScrollIndicatorInsetsForSafeAreaCompensation()
@@ -114,10 +119,6 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
 
     func hideRefreshIndicator() {
         refreshControl.endRefreshing()
-    }
-
-    func deselectDealer(at indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
     }
 
     func bind(numberOfDealersPerSection: [Int], sectionIndexTitles: [String], using binder: DealersBinder) {
