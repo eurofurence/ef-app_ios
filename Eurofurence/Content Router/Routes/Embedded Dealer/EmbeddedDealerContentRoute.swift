@@ -18,7 +18,7 @@ extension EmbeddedDealerContentRoute: ContentRoute {
     
     public func route(_ content: EmbeddedDealerContentRepresentation) {
         let contentController = dealerModuleFactory.makeDealerDetailComponent(for: content.identifier)
-        contentWireframe.replaceDetailContentController(contentController)
+        contentWireframe.presentDetailContentController(contentController)
     }
     
 }
