@@ -17,7 +17,7 @@ public class ContentWireframeDecorator: ContentWireframe {
     }
     
     public func replaceDetailContentController(_ viewController: UIViewController) {
-        
+        decoratedWireframe.replaceDetailContentController(viewController)
     }
     
 }

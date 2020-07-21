@@ -14,4 +14,9 @@ public class MoveToTabContentWireframe: ContentWireframeDecorator {
         super.presentDetailContentController(viewController)
     }
     
+    override public func replaceDetailContentController(_ viewController: UIViewController) {
+        tabSwapper.moveToTab()
+        super.replaceDetailContentController(viewController)
+    }
+    
 }

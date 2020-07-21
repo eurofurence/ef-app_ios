@@ -11,10 +11,18 @@ class MoveToTabContentWireframeTests: ContentWireframeDecoratorTests {
         tabSwapper = CapturingTabSwapper()
     }
     
-    func testSwapsTabThenRoutesToDealer() {
+    func testShowingDetailSwapsTab() {
         let wireframe = makeContentWireframe()
         let viewController = UIViewController()
         wireframe.presentDetailContentController(viewController)
+        
+        XCTAssertTrue(tabSwapper.didMoveToTab)
+    }
+    
+    func testReplacingDetailSwapsTab() {
+        let wireframe = makeContentWireframe()
+        let viewController = UIViewController()
+        wireframe.replaceDetailContentController(viewController)
         
         XCTAssertTrue(tabSwapper.didMoveToTab)
     }
