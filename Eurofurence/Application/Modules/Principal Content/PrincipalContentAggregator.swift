@@ -48,11 +48,12 @@ public struct PrincipalContentAggregator: PrincipalContentModuleProviding {
         
     }
     
-    private class SplitViewController: UISplitViewController {
+    private class SplitViewController: UISplitViewController, UISplitViewControllerDelegate {
         
         override func viewDidLoad() {
             super.viewDidLoad()
             
+            delegate = self
             extendedLayoutIncludesOpaqueBars = true
             preferredDisplayMode = .allVisible
         }
@@ -77,6 +78,14 @@ public struct PrincipalContentAggregator: PrincipalContentModuleProviding {
                 let navigationController = NavigationController(rootViewController: vc)
                 super.showDetailViewController(navigationController, sender: self)
             }
+        }
+        
+        func splitViewController(
+            _ splitViewController: UISplitViewController,
+            collapseSecondary secondaryViewController: UIViewController,
+            onto primaryViewController: UIViewController
+        ) -> Bool {
+            secondaryViewController is NoContentPlaceholderViewController
         }
         
     }
