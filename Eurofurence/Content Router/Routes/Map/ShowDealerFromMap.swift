@@ -9,7 +9,7 @@ public struct ShowDealerFromMap: MapDetailComponentDelegate {
     }
     
     public func mapDetailModuleDidSelectDealer(_ identifier: DealerIdentifier) {
-        try? router.route(DealerContentRepresentation(identifier: identifier))
+        try? router.route(EmbeddedDealerContentRepresentation(identifier: identifier))
     }
     
 }

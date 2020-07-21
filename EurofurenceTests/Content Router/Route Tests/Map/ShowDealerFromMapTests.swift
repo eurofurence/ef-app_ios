@@ -10,7 +10,7 @@ class ShowDealerFromMapTests: XCTestCase {
         let dealer = DealerIdentifier.random
         route.mapDetailModuleDidSelectDealer(dealer)
         
-        router.assertRouted(to: DealerContentRepresentation(identifier: dealer))
+        router.assertRouted(to: EmbeddedDealerContentRepresentation(identifier: dealer))
     }
 
 }

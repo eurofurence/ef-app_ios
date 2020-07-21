@@ -305,6 +305,10 @@
 		CA52C68F20D6AB47009D3A9E /* ScheduleComponentDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C68E20D6AB47009D3A9E /* ScheduleComponentDelegate.swift */; };
 		CA52C69920D6B87E009D3A9E /* HideNavigationBarShadowForSpecificViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C69820D6B87E009D3A9E /* HideNavigationBarShadowForSpecificViewControllerDelegate.swift */; };
 		CA5DCC7D24C74602001F20F8 /* DetailPresentationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5DCC7C24C74602001F20F8 /* DetailPresentationContext.swift */; };
+		CA5DCC8024C76995001F20F8 /* EmbeddedDealerContentRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5DCC7F24C76995001F20F8 /* EmbeddedDealerContentRepresentation.swift */; };
+		CA5DCC8224C769B5001F20F8 /* EmbeddedDealerContentRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5DCC8124C769B5001F20F8 /* EmbeddedDealerContentRoute.swift */; };
+		CA5DCC8524C769DE001F20F8 /* EmbeddedDealerContentRouteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5DCC8424C769DE001F20F8 /* EmbeddedDealerContentRouteTests.swift */; };
+		CA5DCC8624C76A2C001F20F8 /* ShowDealerFromMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D9375245F17A3006FA832 /* ShowDealerFromMapTests.swift */; };
 		CA5EB193245F5DF40012C277 /* ModuleSwappingPrincipalWindowSceneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5EB192245F5DF40012C277 /* ModuleSwappingPrincipalWindowSceneTests.swift */; };
 		CA5EB195245F63570012C277 /* ModuleSwappingPrincipalWindowScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5EB194245F63570012C277 /* ModuleSwappingPrincipalWindowScene.swift */; };
 		CA5EB198245F63710012C277 /* PrincipalContentModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5EB197245F63700012C277 /* PrincipalContentModuleProviding.swift */; };
@@ -1491,6 +1495,9 @@
 		CA52C68E20D6AB47009D3A9E /* ScheduleComponentDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleComponentDelegate.swift; sourceTree = "<group>"; };
 		CA52C69820D6B87E009D3A9E /* HideNavigationBarShadowForSpecificViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideNavigationBarShadowForSpecificViewControllerDelegate.swift; sourceTree = "<group>"; };
 		CA5DCC7C24C74602001F20F8 /* DetailPresentationContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresentationContext.swift; sourceTree = "<group>"; };
+		CA5DCC7F24C76995001F20F8 /* EmbeddedDealerContentRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedDealerContentRepresentation.swift; sourceTree = "<group>"; };
+		CA5DCC8124C769B5001F20F8 /* EmbeddedDealerContentRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedDealerContentRoute.swift; sourceTree = "<group>"; };
+		CA5DCC8424C769DE001F20F8 /* EmbeddedDealerContentRouteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedDealerContentRouteTests.swift; sourceTree = "<group>"; };
 		CA5EB192245F5DF40012C277 /* ModuleSwappingPrincipalWindowSceneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleSwappingPrincipalWindowSceneTests.swift; sourceTree = "<group>"; };
 		CA5EB194245F63570012C277 /* ModuleSwappingPrincipalWindowScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleSwappingPrincipalWindowScene.swift; sourceTree = "<group>"; };
 		CA5EB197245F63700012C277 /* PrincipalContentModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrincipalContentModuleProviding.swift; sourceTree = "<group>"; };
@@ -3356,6 +3363,23 @@
 			path = Scene;
 			sourceTree = "<group>";
 		};
+		CA5DCC7E24C7697B001F20F8 /* Embedded Dealer */ = {
+			isa = PBXGroup;
+			children = (
+				CA5DCC7F24C76995001F20F8 /* EmbeddedDealerContentRepresentation.swift */,
+				CA5DCC8124C769B5001F20F8 /* EmbeddedDealerContentRoute.swift */,
+			);
+			path = "Embedded Dealer";
+			sourceTree = "<group>";
+		};
+		CA5DCC8324C769CB001F20F8 /* Embedded Dealer */ = {
+			isa = PBXGroup;
+			children = (
+				CA5DCC8424C769DE001F20F8 /* EmbeddedDealerContentRouteTests.swift */,
+			);
+			path = "Embedded Dealer";
+			sourceTree = "<group>";
+		};
 		CA5EB190245F5AAD0012C277 /* Principal Scene */ = {
 			isa = PBXGroup;
 			children = (
@@ -4789,6 +4813,7 @@
 				CAD0417C245D82E200B86950 /* Authenticated */,
 				CAD4F762245C43C20036ADAF /* Dealer */,
 				CA63A74B245DBE3F00E4B313 /* Dealers */,
+				CA5DCC7E24C7697B001F20F8 /* Embedded Dealer */,
 				CAD4F75A245C41510036ADAF /* Event */,
 				CAD4F76A245C472B0036ADAF /* Event Feedback */,
 				CA63A751245DC3D900E4B313 /* Knowledge */,
@@ -4837,6 +4862,7 @@
 				CAD0417F245D87EF00B86950 /* Authenticated */,
 				CAD4F75F245C422B0036ADAF /* Dealer */,
 				CA63A748245DBD3C00E4B313 /* Dealers */,
+				CA5DCC8324C769CB001F20F8 /* Embedded Dealer */,
 				CAD4F757245C3E9C0036ADAF /* Event */,
 				CAD4F767245C45A90036ADAF /* Event Feedback */,
 				CA63A74E245DC12200E4B313 /* Knowledge */,
@@ -7074,6 +7100,7 @@
 				CA63A764245DCE7700E4B313 /* OpenLinkFromKnowledgeEntry.swift in Sources */,
 				CA50B1AB226110B00091E425 /* EventFeedbackComponentFactory.swift in Sources */,
 				CABA43A31FD57C65009CB5B0 /* TutorialModuleBuilder.swift in Sources */,
+				CA5DCC8224C769B5001F20F8 /* EmbeddedDealerContentRoute.swift in Sources */,
 				CA63A741245DB7E000E4B313 /* RouterConfigurator.swift in Sources */,
 				CA7EB7D51F799991002674A6 /* TutorialScene.swift in Sources */,
 				CA6A8D7D20E265B0007536CD /* MapsViewController.swift in Sources */,
@@ -7273,6 +7300,7 @@
 				CA057A5B2088BDBB00504FA4 /* AnnouncementTableViewCell.swift in Sources */,
 				CA7BA2372237FCFB00D34592 /* SystemNetworkReachability.swift in Sources */,
 				CA1FE99B1FA0B3EB009C7DF3 /* WindowWireframe.swift in Sources */,
+				CA5DCC8024C76995001F20F8 /* EmbeddedDealerContentRepresentation.swift in Sources */,
 				CA283AAB20EAA0C800F7D195 /* AnnouncementsViewController.swift in Sources */,
 				CA79924C22451DC400DF1F84 /* HoursDateFormatter.swift in Sources */,
 				CA283AA420EAA05900F7D195 /* AnnouncementsSceneFactory.swift in Sources */,
@@ -7382,6 +7410,7 @@
 				CA66C0162124A25400F87AFE /* FakeReviewPromptAppVersionRepository.swift in Sources */,
 				CA2AA2E922C94F4400C0E1A1 /* CapturingViewDealerIntentDonor.swift in Sources */,
 				CAF197CC24688EAA005DFBBE /* WhenUserAcknowledgesTheyWantToDiscardFeedbackInput_EventFeedbackPresenterShould.swift in Sources */,
+				CA5DCC8524C769DE001F20F8 /* EmbeddedDealerContentRouteTests.swift in Sources */,
 				CAF1983024688EAB005DFBBE /* WhenPreparingViewModel_DealersViewModelFactoryShould.swift in Sources */,
 				CAF196E724688EAA005DFBBE /* WhenBuildingScheduleModule.swift in Sources */,
 				CAF197FA24688EAB005DFBBE /* WhenBindingAboutTheArtComponent_DealerDetailPresenterShould.swift in Sources */,
@@ -7404,6 +7433,7 @@
 				CA4D936A245F0EB8006FA832 /* ContentWireframeDecoratorTests.swift in Sources */,
 				CAF196E524688EAA005DFBBE /* WhenBindingEvent_WithNoPoster_SchedulePresenterShould.swift in Sources */,
 				CA63A750245DC13800E4B313 /* KnowledgeGroupContentRouteTests.swift in Sources */,
+				CA5DCC8624C76A2C001F20F8 /* ShowDealerFromMapTests.swift in Sources */,
 				CA630BCF229F10BF00754C27 /* WhenRecordingEventInteraction.swift in Sources */,
 				CAF1975024688EAA005DFBBE /* BeforeMapDetailSceneLoads_MapDetailPresenterShould.swift in Sources */,
 				CAF1980624688EAB005DFBBE /* ApplicationPreloadingServiceTests.swift in Sources */,

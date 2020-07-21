@@ -15,7 +15,7 @@ struct RouterConfigurator {
     func configureRoutes() {
         configureAnnouncementsRoute()
         configureAnnouncementRoute()
-        configureDealerRoute()
+        configureDealerRoutes()
         configureEventRoute()
         configureEventFeedbackRoute()
         configureKnowledgeGroupsRoute()
@@ -46,11 +46,15 @@ struct RouterConfigurator {
         ))
     }
     
-    private func configureDealerRoute() {
+    private func configureDealerRoutes() {
         let tabSwapper = MoveToTabByViewController<DealersViewController>(window: window)
         router.add(DealerContentRoute(
             dealerModuleFactory: componentRegistry.dealerDetailModuleProviding,
             contentWireframe: MoveToTabContentWireframe(decoratedWireframe: contentWireframe, tabSwapper: tabSwapper)
+        ))
+        
+        router.add(EmbeddedDealerContentRoute(
+            dealerModuleFactory: componentRegistry.dealerDetailModuleProviding, contentWireframe: contentWireframe
         ))
     }
     
