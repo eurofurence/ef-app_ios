@@ -71,9 +71,11 @@ struct RouterConfigurator {
     }
     
     private func configureMessageRoute() {
+        let tabSwapper = MoveToTabByViewController<NewsViewController>(window: window)
+        
         let messageContentRoute = MessageContentRoute(
             messageModuleFactory: componentRegistry.messageDetailComponentFactory,
-            contentWireframe: contentWireframe
+            contentWireframe: MoveToTabContentWireframe(decoratedWireframe: contentWireframe, tabSwapper: tabSwapper)
         )
         
         router.add(AuthenticatedRoute(
