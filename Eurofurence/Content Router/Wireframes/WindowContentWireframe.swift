@@ -9,7 +9,11 @@ struct WindowContentWireframe: ContentWireframe {
     }
     
     func presentDetailContentController(_ viewController: UIViewController) {
-        window.rootViewController?.showDetailViewController(viewController, sender: nil)
+        window.rootViewController?.showDetailViewController(viewController, sender: DetailPresentationContext.show)
+    }
+    
+    func replaceDetailContentController(_ viewController: UIViewController) {
+        window.rootViewController?.showDetailViewController(viewController, sender: DetailPresentationContext.replace)
     }
     
 }

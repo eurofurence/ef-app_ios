@@ -304,6 +304,7 @@
 		CA52C68320D5980C009D3A9E /* ApplicationSignificantTimeChangeAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C68220D5980C009D3A9E /* ApplicationSignificantTimeChangeAdapterTests.swift */; };
 		CA52C68F20D6AB47009D3A9E /* ScheduleComponentDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C68E20D6AB47009D3A9E /* ScheduleComponentDelegate.swift */; };
 		CA52C69920D6B87E009D3A9E /* HideNavigationBarShadowForSpecificViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C69820D6B87E009D3A9E /* HideNavigationBarShadowForSpecificViewControllerDelegate.swift */; };
+		CA5DCC7D24C74602001F20F8 /* DetailPresentationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5DCC7C24C74602001F20F8 /* DetailPresentationContext.swift */; };
 		CA5EB193245F5DF40012C277 /* ModuleSwappingPrincipalWindowSceneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5EB192245F5DF40012C277 /* ModuleSwappingPrincipalWindowSceneTests.swift */; };
 		CA5EB195245F63570012C277 /* ModuleSwappingPrincipalWindowScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5EB194245F63570012C277 /* ModuleSwappingPrincipalWindowScene.swift */; };
 		CA5EB198245F63710012C277 /* PrincipalContentModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5EB197245F63700012C277 /* PrincipalContentModuleProviding.swift */; };
@@ -1489,6 +1490,7 @@
 		CA52C68420D59A5B009D3A9E /* CapturingSignificantTimeChangeAdapterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingSignificantTimeChangeAdapterDelegate.swift; sourceTree = "<group>"; };
 		CA52C68E20D6AB47009D3A9E /* ScheduleComponentDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleComponentDelegate.swift; sourceTree = "<group>"; };
 		CA52C69820D6B87E009D3A9E /* HideNavigationBarShadowForSpecificViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideNavigationBarShadowForSpecificViewControllerDelegate.swift; sourceTree = "<group>"; };
+		CA5DCC7C24C74602001F20F8 /* DetailPresentationContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresentationContext.swift; sourceTree = "<group>"; };
 		CA5EB192245F5DF40012C277 /* ModuleSwappingPrincipalWindowSceneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleSwappingPrincipalWindowSceneTests.swift; sourceTree = "<group>"; };
 		CA5EB194245F63570012C277 /* ModuleSwappingPrincipalWindowScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleSwappingPrincipalWindowScene.swift; sourceTree = "<group>"; };
 		CA5EB197245F63700012C277 /* PrincipalContentModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrincipalContentModuleProviding.swift; sourceTree = "<group>"; };
@@ -3272,13 +3274,14 @@
 		CA4908C2245DACE500DB032C /* Wireframes */ = {
 			isa = PBXGroup;
 			children = (
-				CA4908C3245DADA000DB032C /* WindowContentWireframe.swift */,
-				CA4908C5245DADBA00DB032C /* WindowModalWireframe.swift */,
+				CA8E7EF51FB08E2500F0BF10 /* AppWindowWireframe.swift */,
 				CA4D936B245F14CB006FA832 /* ContentWireframeDecorator.swift */,
+				CA5DCC7C24C74602001F20F8 /* DetailPresentationContext.swift */,
+				CA4D9373245F157E006FA832 /* MoveToTabByViewController.swift */,
 				CA4D936D245F14DB006FA832 /* MoveToTabContentWireframe.swift */,
 				CA4D936F245F14E9006FA832 /* TabNavigator.swift */,
-				CA4D9373245F157E006FA832 /* MoveToTabByViewController.swift */,
-				CA8E7EF51FB08E2500F0BF10 /* AppWindowWireframe.swift */,
+				CA4908C3245DADA000DB032C /* WindowContentWireframe.swift */,
+				CA4908C5245DADBA00DB032C /* WindowModalWireframe.swift */,
 				CA1FE99A1FA0B3EB009C7DF3 /* WindowWireframe.swift */,
 			);
 			path = Wireframes;
@@ -7057,6 +7060,7 @@
 				CAD4F766245C43E00036ADAF /* DealerContentRoute.swift in Sources */,
 				CAC4993722DF994A003E1D77 /* DealerCategoryTableViewCell.swift in Sources */,
 				CAF3C74C1F9F619C0008F027 /* NewsComponentFactoryImpl.swift in Sources */,
+				CA5DCC7D24C74602001F20F8 /* DetailPresentationContext.swift in Sources */,
 				CA1B6F2F20DB8E0900ADF414 /* DealerDetailSceneBinder.swift in Sources */,
 				CA36A47120D84D9D00EE6537 /* DealersBinder.swift in Sources */,
 				20516AC621121AE400C399C0 /* SubtleDownMarkdownRenderer.swift in Sources */,

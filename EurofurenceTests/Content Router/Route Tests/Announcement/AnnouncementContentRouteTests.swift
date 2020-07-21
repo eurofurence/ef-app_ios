@@ -20,7 +20,7 @@ class AnnouncementContentRouteTests: XCTestCase {
         
         XCTAssertEqual(identifier, announcementModuleFactory.capturedModel)
         XCTAssertTrue(tabNavigator.didMoveToTab)
-        XCTAssertEqual(contentWireframe.presentedDetailContentController, announcementModuleFactory.stubInterface)
+        XCTAssertEqual(contentWireframe.replacedDetailContentController, announcementModuleFactory.stubInterface)
     }
 
 }

@@ -13,4 +13,9 @@ class CapturingContentWireframe: ContentWireframe {
         presentedDetailContentController = viewController
     }
     
+    private(set) var replacedDetailContentController: UIViewController?
+    func replaceDetailContentController(_ viewController: UIViewController) {
+        replacedDetailContentController = viewController
+    }
+    
 }

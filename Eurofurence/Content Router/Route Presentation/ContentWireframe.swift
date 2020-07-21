@@ -4,5 +4,6 @@ public protocol ContentWireframe {
     
     func presentMasterContentController(_ viewController: UIViewController)
     func presentDetailContentController(_ viewController: UIViewController)
+    func replaceDetailContentController(_ viewController: UIViewController)
     
 }

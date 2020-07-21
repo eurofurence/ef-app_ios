@@ -30,7 +30,7 @@ extension AnnouncementContentRoute: ContentRoute {
         )
         
         announcementsTabNavigator.moveToTab()
-        contentWireframe.presentDetailContentController(announcementContentController)
+        contentWireframe.replaceDetailContentController(announcementContentController)
     }
     
 }
