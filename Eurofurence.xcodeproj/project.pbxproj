@@ -656,7 +656,7 @@
 		CAD04197245DA63C00B86950 /* NewsContentRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD04196245DA63C00B86950 /* NewsContentRoute.swift */; };
 		CAD04199245DA64900B86950 /* NewsPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD04198245DA64900B86950 /* NewsPresentation.swift */; };
 		CAD0419C245DA65A00B86950 /* CapturingNewsPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD0419B245DA65A00B86950 /* CapturingNewsPresentation.swift */; };
-		CAD0419E245DA70600B86950 /* ExplicitTabManipulationNewsPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD0419D245DA70600B86950 /* ExplicitTabManipulationNewsPresentation.swift */; };
+		CAD0419E245DA70600B86950 /* ResetNewsAfterLogout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD0419D245DA70600B86950 /* ResetNewsAfterLogout.swift */; };
 		CAD234351F5D719F004BB959 /* CapturingMessagesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD234341F5D719F004BB959 /* CapturingMessagesScene.swift */; };
 		CAD2343C1F5D7203004BB959 /* MessagesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD2343B1F5D7203004BB959 /* MessagesScene.swift */; };
 		CAD2343E1F5D7211004BB959 /* MessagesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD2343D1F5D7211004BB959 /* MessagesPresenter.swift */; };
@@ -1840,7 +1840,7 @@
 		CAD04196245DA63C00B86950 /* NewsContentRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsContentRoute.swift; sourceTree = "<group>"; };
 		CAD04198245DA64900B86950 /* NewsPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsPresentation.swift; sourceTree = "<group>"; };
 		CAD0419B245DA65A00B86950 /* CapturingNewsPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingNewsPresentation.swift; sourceTree = "<group>"; };
-		CAD0419D245DA70600B86950 /* ExplicitTabManipulationNewsPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplicitTabManipulationNewsPresentation.swift; sourceTree = "<group>"; };
+		CAD0419D245DA70600B86950 /* ResetNewsAfterLogout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetNewsAfterLogout.swift; sourceTree = "<group>"; };
 		CAD234341F5D719F004BB959 /* CapturingMessagesScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingMessagesScene.swift; sourceTree = "<group>"; };
 		CAD2343B1F5D7203004BB959 /* MessagesScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesScene.swift; sourceTree = "<group>"; };
 		CAD2343D1F5D7211004BB959 /* MessagesPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesPresenter.swift; sourceTree = "<group>"; };
@@ -4404,7 +4404,7 @@
 		CAA2888D245C9A630090B663 /* News */ = {
 			isa = PBXGroup;
 			children = (
-				CAD0419D245DA70600B86950 /* ExplicitTabManipulationNewsPresentation.swift */,
+				CAD0419D245DA70600B86950 /* ResetNewsAfterLogout.swift */,
 				CAD04194245DA62B00B86950 /* NewsContentRepresentation.swift */,
 				CAD04196245DA63C00B86950 /* NewsContentRoute.swift */,
 				CAD04198245DA64900B86950 /* NewsPresentation.swift */,
@@ -7265,7 +7265,7 @@
 				CA152ED622651B7F00212742 /* SuccessHaptic.swift in Sources */,
 				CA17FE7D2057FCCB005A4C05 /* KnowledgeEntryDetailViewModel.swift in Sources */,
 				CAD4F77E245C5CDE0036ADAF /* MutableContentRouter.swift in Sources */,
-				CAD0419E245DA70600B86950 /* ExplicitTabManipulationNewsPresentation.swift in Sources */,
+				CAD0419E245DA70600B86950 /* ResetNewsAfterLogout.swift in Sources */,
 				CA8D087922AC55B8003E42CA /* PlaceholderTextView.swift in Sources */,
 				CA3ABA0E229DCC350045A35B /* EventInteractionRecorder.swift in Sources */,
 				CA7992462245174800DF1F84 /* NotificationScheduleController.swift in Sources */,

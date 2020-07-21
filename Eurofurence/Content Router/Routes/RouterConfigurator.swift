@@ -118,7 +118,7 @@ struct RouterConfigurator {
     
     private func configureNewsRoute() {
         router.add(NewsContentRoute(
-            newsPresentation: ExplicitTabManipulationNewsPresentation(window: window)
+            newsPresentation: ResetNewsAfterLogout(window: window)
         ))
     }
     
