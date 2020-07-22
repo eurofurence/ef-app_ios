@@ -20,13 +20,4 @@ class WhenSceneSelectsEvent_SchedulePresenterShould: XCTestCase {
         XCTAssertEqual(selectedIdentifier, context.delegate.capturedEventIdentifier)
     }
 
-    func testTellTheSceneToDeselectTheSelectedEvent() {
-        let context = SchedulePresenterTestBuilder().build()
-        context.simulateSceneDidLoad()
-        let indexPath = IndexPath.random
-        context.simulateSceneDidSelectEvent(at: indexPath)
-
-        XCTAssertEqual(indexPath, context.scene.deselectedEventIndexPath)
-    }
-
 }

@@ -17,7 +17,7 @@ class MessageContentRouteTests: XCTestCase {
         route.route(content)
         
         XCTAssertEqual(message, messageModuleFactory.capturedMessage)
-        XCTAssertEqual(messageModuleFactory.stubInterface, contentWireframe.presentedDetailContentController)
+        XCTAssertEqual(messageModuleFactory.stubInterface, contentWireframe.replacedDetailContentController)
     }
 
 }

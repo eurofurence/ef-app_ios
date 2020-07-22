@@ -16,7 +16,6 @@ class WhenSceneSelectsDealer_DealersPresenterShould: XCTestCase {
         context.simulateSceneDidSelectDealer(at: indexPath)
 
         XCTAssertEqual(identifier, context.delegate.capturedSelectedDealerIdentifier)
-        XCTAssertEqual(indexPath, context.scene.capturedIndexPathToDeselect)
     }
 
 }

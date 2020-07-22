@@ -210,12 +210,10 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
     }
 
     func scheduleSceneDidSelectEvent(at indexPath: IndexPath) {
-        scene.deselectEvent(at: indexPath)
         viewModel?.identifierForEvent(at: indexPath).let(delegate.scheduleComponentDidSelectEvent)
     }
 
     func scheduleSceneDidSelectSearchResult(at indexPath: IndexPath) {
-        scene.deselectSearchResult(at: indexPath)
         searchViewModel?.identifierForEvent(at: indexPath).let(delegate.scheduleComponentDidSelectEvent)
     }
 

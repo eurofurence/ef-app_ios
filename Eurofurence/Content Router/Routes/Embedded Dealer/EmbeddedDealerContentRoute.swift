@@ -1,4 +1,4 @@
-public struct DealerContentRoute {
+public struct EmbeddedDealerContentRoute {
     
     private let dealerModuleFactory: DealerDetailComponentFactory
     private let contentWireframe: ContentWireframe
@@ -12,13 +12,13 @@ public struct DealerContentRoute {
 
 // MARK: - ContentRoute
 
-extension DealerContentRoute: ContentRoute {
+extension EmbeddedDealerContentRoute: ContentRoute {
     
-    public typealias Content = DealerContentRepresentation
+    public typealias Content = EmbeddedDealerContentRepresentation
     
-    public func route(_ content: DealerContentRepresentation) {
+    public func route(_ content: EmbeddedDealerContentRepresentation) {
         let contentController = dealerModuleFactory.makeDealerDetailComponent(for: content.identifier)
-        contentWireframe.replaceDetailContentController(contentController)
+        contentWireframe.presentDetailContentController(contentController)
     }
     
 }

@@ -37,11 +37,13 @@ class ConcreteAnnouncementsService: AnnouncementsService {
     
     func fetchAnnouncement(identifier: AnnouncementIdentifier) -> Announcement? {
         if let model = models.first(where: { $0.identifier == identifier }) {
-            readAnnouncementIdentifiers.append(identifier)
-            announcementsObservers.forEach({ $0.announcementsServiceDidUpdateReadAnnouncements(readAnnouncementIdentifiers) })
-            
-            dataStore.performTransaction { (transaction) in
-                transaction.saveReadAnnouncements(self.readAnnouncementIdentifiers)
+            if readAnnouncementIdentifiers.contains(identifier) == false {
+                readAnnouncementIdentifiers.append(identifier)
+                announcementsObservers.forEach({ $0.announcementsServiceDidUpdateReadAnnouncements(readAnnouncementIdentifiers) })
+                
+                dataStore.performTransaction { (transaction) in
+                    transaction.saveReadAnnouncements(self.readAnnouncementIdentifiers)
+                }
             }
             
             return model

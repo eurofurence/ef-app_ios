@@ -84,6 +84,8 @@ class ScheduleViewController: UIViewController,
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        tableView.deselectSelectedRow()
         layoutDaysCollectionView()
     }
     
@@ -174,14 +176,6 @@ class ScheduleViewController: UIViewController,
 
     func selectDay(at index: Int) {
         daysHorizontalPickerView.selectDay(at: index)
-    }
-
-    func deselectEvent(at indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-
-    func deselectSearchResult(at indexPath: IndexPath) {
-        searchViewController?.deselectSearchResult(at: indexPath)
     }
     
     // MARK: DaysHorizontalPickerViewDelegate

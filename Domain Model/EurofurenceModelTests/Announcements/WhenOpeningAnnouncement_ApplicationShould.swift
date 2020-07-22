@@ -106,5 +106,17 @@ class WhenOpeningAnnouncement_ApplicationShould: XCTestCase {
 
         XCTAssertTrue(observer.readAnnouncementIdentifiers.contains(elementsFrom: identifiers))
     }
+    
+    func testOpeningTheSameAnnouncementMultipleTimesDoesNotDuplicateItsReadState() throws {
+        let announcements = syncResponse.announcements.changed
+        let announcement = announcements.randomElement().element
+        let identifier = announcement.identifier
+        let entityIdentifier = AnnouncementIdentifier(identifier)
+        openAnnouncement(AnnouncementIdentifier(identifier))
+        openAnnouncement(AnnouncementIdentifier(identifier))
+        
+        let readAnnouncements = try XCTUnwrap(context.dataStore.fetchReadAnnouncementIdentifiers())
+        XCTAssertEqual([entityIdentifier], readAnnouncements)
+    }
 
 }

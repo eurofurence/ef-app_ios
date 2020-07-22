@@ -2,11 +2,27 @@ import UIKit
 
 class MoreViewController: UITableViewController {
     
-    private let supplementaryApplicationModuleFactories: [ApplicationModuleFactory]
-    private var supplementaryApplicationModules: [UIViewController] = []
+    private struct ControllerInstance {
+        
+        var viewController: UIViewController
+        var presentationHandler: (UIViewController) -> Void
+        
+        init(controller: SupplementaryContentController) {
+            viewController = controller.contentControllerFactory.makeApplicationModuleController()
+            presentationHandler = controller.presentationHandler
+        }
+        
+        func reveal() {
+            presentationHandler(viewController)
+        }
+        
+    }
 
-    init(supplementaryApplicationModuleFactories: [ApplicationModuleFactory]) {
-        self.supplementaryApplicationModuleFactories = supplementaryApplicationModuleFactories
+    private let supplementaryContentControllers: [SupplementaryContentController]
+    private var controllerInstances: [ControllerInstance] = []
+
+    init(supplementaryApplicationModuleFactories: [SupplementaryContentController]) {
+        self.supplementaryContentControllers = supplementaryApplicationModuleFactories
         super.init(style: .plain)
         
         let moreTitle = NSLocalizedString(
@@ -26,8 +42,8 @@ class MoreViewController: UITableViewController {
     override func loadView() {
         super.loadView()
         
-        supplementaryApplicationModules = supplementaryApplicationModuleFactories
-            .map({ $0.makeApplicationModuleController() })
+        controllerInstances = supplementaryContentControllers
+            .map(ControllerInstance.init)
     }
     
     override func viewDidLoad() {
@@ -37,20 +53,20 @@ class MoreViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        supplementaryApplicationModules.count
+        supplementaryContentControllers.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(SupplementaryContentControllerTableViewCell.self)
-        let contentController = supplementaryApplicationModules[indexPath.row]
-        cell.applicationModuleController = contentController
+        let contentController = controllerInstances[indexPath.row]
+        cell.applicationModuleController = contentController.viewController
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let contentController = supplementaryApplicationModules[indexPath.row]
-        show(contentController, sender: self)
+        let contentController = controllerInstances[indexPath.row]
+        contentController.reveal()
     }
     
     private class SupplementaryContentControllerTableViewCell: UITableViewCell {

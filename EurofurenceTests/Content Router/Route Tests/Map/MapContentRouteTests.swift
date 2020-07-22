@@ -20,7 +20,7 @@ class MapContentRouteTests: XCTestCase {
         route.route(content)
         
         XCTAssertEqual(map, mapModuleProviding.capturedModel)
-        XCTAssertEqual(mapModuleProviding.stubInterface, contentWireframe.presentedDetailContentController)
+        XCTAssertEqual(mapModuleProviding.stubInterface, contentWireframe.replacedDetailContentController)
     }
     
     func testPropogatesDealerSelectedEvents() {

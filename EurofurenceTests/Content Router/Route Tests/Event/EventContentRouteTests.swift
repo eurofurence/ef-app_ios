@@ -18,7 +18,7 @@ class EventContentRouteTests: XCTestCase {
         route.route(content)
         
         XCTAssertEqual(identifier, eventModuleFactory.capturedModel)
-        XCTAssertEqual(contentWireframe.presentedDetailContentController, eventModuleFactory.stubInterface)
+        XCTAssertEqual(contentWireframe.replacedDetailContentController, eventModuleFactory.stubInterface)
     }
     
     func testPropogatesHandlingForReviewRequest() {

@@ -4,6 +4,8 @@ import UIKit
 struct PrincipalWindowAssembler {
     
     private let router: ContentRouter
+    private let contentWireframe: WindowContentWireframe
+    private let modalWireframe: WindowModalWireframe
     
     func route<T>(_ content: T) where T: ContentRepresentation {
         try? router.route(content)
@@ -18,92 +20,127 @@ struct PrincipalWindowAssembler {
         let router = MutableContentRouter()
         self.router = router
         
-        let moduleRepository = ComponentRegistry(
+        contentWireframe = WindowContentWireframe(window: window)
+        modalWireframe = WindowModalWireframe(window: window)
+        
+        let componentRegistry = ComponentRegistry(
             services: services,
             repositories: repositories,
             window: window
         )
         
-        let newsSubrouter = NewsSubrouter(router: router)
-        let scheduleSubrouter = ShowEventFromSchedule(router: router)
-        let dealerSubrouter = ShowDealerFromDealers(router: router)
-        let knowledgeSubrouter = ShowKnowledgeContentFromListing(router: router)
-        let mapSubrouter = ShowMapFromMaps(router: router)
+        configureGlobalRoutes(
+            router: router,
+            componentRegistry: componentRegistry,
+            services: services,
+            urlOpener: urlOpener,
+            window: window
+        )
         
+        configureComponents(componentRegistry: componentRegistry, window: window, services: services)
+    }
+    
+    private func configureGlobalRoutes(
+        router: MutableContentRouter,
+        componentRegistry: ComponentRegistry,
+        services: Services,
+        urlOpener: URLOpener,
+        window: UIWindow
+    ) {
         let routeAuthenticationHandler = AuthenticateOnDemandRouteAuthenticationHandler(
             service: services.authentication,
             router: router
         )
         
-        let contentWireframe = WindowContentWireframe(window: window)
-        let modalWireframe = WindowModalWireframe(window: window)
-        
         RouterConfigurator(
             router: router,
             contentWireframe: contentWireframe,
             modalWireframe: modalWireframe,
-            moduleRepository: moduleRepository,
+            componentRegistry: componentRegistry,
             routeAuthenticationHandler: routeAuthenticationHandler,
             linksService: services.contentLinks,
             urlOpener: urlOpener,
             window: window
         ).configureRoutes()
+    }
+    
+    private func configureComponents(componentRegistry: ComponentRegistry, window: UIWindow, services: Services) {
+        let applicationModuleFactories = makePrincipalWindowComponents(
+            componentRegistry: componentRegistry,
+            window: window,
+            services: services
+        )
         
+        let principalWindowScene = ModuleSwappingPrincipalWindowScene(
+            windowWireframe: AppWindowWireframe(window: window),
+            tutorialModule: componentRegistry.tutorialComponentFactory,
+            preloadModule: componentRegistry.preloadComponentFactory,
+            principalContentModule: PrincipalContentAggregator(applicationModuleFactories: applicationModuleFactories)
+        )
+        
+        _ = PrincipalWindowSceneController(sessionState: services.sessionState, scene: principalWindowScene)
+    }
+    
+    private func makePrincipalWindowComponents(
+        componentRegistry: ComponentRegistry,
+        window: UIWindow,
+        services: Services
+    ) -> [ApplicationModuleFactory] {
         let newsContentControllerFactory = NewsContentControllerFactory(
-            newsComponentFactory: moduleRepository.newsComponentFactory,
-            newsComponentDelegate: newsSubrouter
+            newsComponentFactory: componentRegistry.newsComponentFactory,
+            newsComponentDelegate: NewsSubrouter(router: router)
         )
         
         let scheduleContentControllerFactory = ScheduleContentControllerFactory(
-            scheduleComponentFactory: moduleRepository.scheduleComponentFactory,
-            scheduleComponentDelegate: scheduleSubrouter
+            scheduleComponentFactory: componentRegistry.scheduleComponentFactory,
+            scheduleComponentDelegate: ShowEventFromSchedule(router: router)
         )
         
         let dealersContentControllerFactory = DealersContentControllerFactory(
-            dealersComponentFactory: moduleRepository.dealersComponentFactory,
-            dealersComponentDelegate: dealerSubrouter
+            dealersComponentFactory: componentRegistry.dealersComponentFactory,
+            dealersComponentDelegate: ShowDealerFromDealers(router: router)
         )
         
         let knowledgeContentControllerFactory = KnowledgeContentControllerFactory(
-            knowledgeModuleProviding: moduleRepository.knowledgeListComponentFactory,
-            knowledgeModuleDelegate: knowledgeSubrouter
+            knowledgeModuleProviding: componentRegistry.knowledgeListComponentFactory,
+            knowledgeModuleDelegate: ShowKnowledgeContentFromListing(router: router)
         )
         
         let mapsContentControllerFactory = MapsContentControllerFactory(
-            mapsComponentFactory: moduleRepository.mapsComponentFactory,
-            mapsComponentDelegate: mapSubrouter
+            mapsComponentFactory: componentRegistry.mapsComponentFactory,
+            mapsComponentDelegate: ShowMapFromMaps(router: router)
         )
         
         let collectThemAllContentControllerFactory = CollectThemAllContentControllerFactory(
-            collectThemAllComponentFactory: moduleRepository.collectThemAllComponentFactory
+            collectThemAllComponentFactory: componentRegistry.collectThemAllComponentFactory
         )
         
         let additionalServicesContentControllerFactory = AdditionalServicesContentControllerFactory(
-            additionalServicesComponentFactory: moduleRepository.additionalServicesComponentFactory
+            additionalServicesComponentFactory: componentRegistry.additionalServicesComponentFactory
         )
         
         let moreContentControllerFactory = MoreContentControllerFactory(supplementaryContentControllerFactories: [
-            mapsContentControllerFactory,
-            collectThemAllContentControllerFactory,
-            additionalServicesContentControllerFactory
+            SupplementaryContentController(
+                contentControllerFactory: mapsContentControllerFactory,
+                presentationHandler: contentWireframe.presentMasterContentController(_:)
+            ),
+            SupplementaryContentController(
+                contentControllerFactory: collectThemAllContentControllerFactory,
+                presentationHandler: contentWireframe.replaceDetailContentController(_:)
+            ),
+            SupplementaryContentController(
+                contentControllerFactory: additionalServicesContentControllerFactory,
+                presentationHandler: contentWireframe.replaceDetailContentController(_:)
+            )
         ])
         
-        let applicationModuleFactories: [ApplicationModuleFactory] = [
+        return [
             newsContentControllerFactory,
             scheduleContentControllerFactory,
             dealersContentControllerFactory,
             knowledgeContentControllerFactory,
             moreContentControllerFactory
         ]
-        
-        let principalWindowScene = ModuleSwappingPrincipalWindowScene(
-            windowWireframe: AppWindowWireframe(window: window),
-            tutorialModule: moduleRepository.tutorialComponentFactory,
-            preloadModule: moduleRepository.preloadComponentFactory,
-            principalContentModule: PrincipalContentAggregator(applicationModuleFactories: applicationModuleFactories)
-        )
-        
-        _ = PrincipalWindowSceneController(sessionState: services.sessionState, scene: principalWindowScene)
     }
     
 }

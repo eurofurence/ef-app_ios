@@ -23,7 +23,7 @@ extension MessageContentRoute: ContentRoute {
     
     public func route(_ content: MessageContentRepresentation) {
         let contentController = messageModuleFactory.makeMessageDetailComponent(for: content.identifier)
-        contentWireframe.presentDetailContentController(contentController)
+        contentWireframe.replaceDetailContentController(contentController)
     }
     
 }

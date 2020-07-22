@@ -2,14 +2,14 @@ import Eurofurence
 import EurofurenceModel
 import XCTest
 
-class DealerContentRouteTests: XCTestCase {
+class EmbeddedDealerContentRouteTests: XCTestCase {
     
     func testShowsDetailContentController() {
         let identifier = DealerIdentifier.random
-        let content = DealerContentRepresentation(identifier: identifier)
+        let content = EmbeddedDealerContentRepresentation(identifier: identifier)
         let dealerModuleFactory = StubDealerDetailComponentFactory()
         let contentWireframe = CapturingContentWireframe()
-        let route = DealerContentRoute(
+        let route = EmbeddedDealerContentRoute(
             dealerModuleFactory: dealerModuleFactory,
             contentWireframe: contentWireframe
         )
@@ -17,7 +17,7 @@ class DealerContentRouteTests: XCTestCase {
         route.route(content)
         
         XCTAssertEqual(identifier, dealerModuleFactory.capturedModel)
-        XCTAssertEqual(contentWireframe.replacedDetailContentController, dealerModuleFactory.stubInterface)
+        XCTAssertEqual(contentWireframe.presentedDetailContentController, dealerModuleFactory.stubInterface)
     }
 
 }

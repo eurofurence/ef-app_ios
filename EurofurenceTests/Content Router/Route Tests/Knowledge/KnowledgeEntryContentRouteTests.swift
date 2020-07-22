@@ -19,7 +19,7 @@ class KnowledgeEntryContentRouteTests: XCTestCase {
         route.route(content)
         
         XCTAssertEqual(identifier, knowledgeDetailComponentFactory.capturedModel)
-        XCTAssertEqual(contentWireframe.presentedDetailContentController, knowledgeDetailComponentFactory.stubInterface)
+        XCTAssertEqual(contentWireframe.replacedDetailContentController, knowledgeDetailComponentFactory.stubInterface)
     }
     
     func testPropogatesLinkSelectionDelegateEvents() {

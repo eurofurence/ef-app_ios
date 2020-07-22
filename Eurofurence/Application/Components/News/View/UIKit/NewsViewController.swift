@@ -24,6 +24,11 @@ class NewsViewController: UIViewController, NewsScene {
         delegate?.newsSceneDidLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.deselectSelectedRow()
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView?.adjustScrollIndicatorInsetsForSafeAreaCompensation()
@@ -152,7 +157,6 @@ class NewsViewController: UIViewController, NewsScene {
 
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             onDidSelectRowAtIndexPath?(indexPath)
-            tableView.deselectRow(at: indexPath, animated: true)
         }
 
     }

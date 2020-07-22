@@ -30,7 +30,7 @@ extension EventContentRoute: ContentRoute {
             delegate: eventDetailDelegate
         )
         
-        contentWireframe.presentDetailContentController(contentController)
+        contentWireframe.replaceDetailContentController(contentController)
     }
     
 }

@@ -27,6 +27,14 @@ class ContentWireframeDecoratorTests: XCTestCase {
         XCTAssertEqual(viewController, spyingWireframe.presentedDetailContentController)
     }
     
+    func testReplacingDetail() {
+        let decorator = makeContentWireframe()
+        let viewController = UIViewController()
+        decorator.replaceDetailContentController(viewController)
+        
+        XCTAssertEqual(viewController, spyingWireframe.replacedDetailContentController)
+    }
+    
     func makeContentWireframe() -> ContentWireframe {
         ContentWireframeDecorator(decoratedWireframe: spyingWireframe)
     }

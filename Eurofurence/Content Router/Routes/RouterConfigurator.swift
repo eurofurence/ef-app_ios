@@ -6,7 +6,7 @@ struct RouterConfigurator {
     var router: MutableContentRouter
     var contentWireframe: ContentWireframe
     var modalWireframe: ModalWireframe
-    var moduleRepository: ComponentRegistry
+    var componentRegistry: ComponentRegistry
     var routeAuthenticationHandler: RouteAuthenticationHandler
     var linksService: ContentLinksService
     var urlOpener: URLOpener
@@ -15,7 +15,7 @@ struct RouterConfigurator {
     func configureRoutes() {
         configureAnnouncementsRoute()
         configureAnnouncementRoute()
-        configureDealerRoute()
+        configureDealerRoutes()
         configureEventRoute()
         configureEventFeedbackRoute()
         configureKnowledgeGroupsRoute()
@@ -32,29 +32,35 @@ struct RouterConfigurator {
     
     private func configureAnnouncementsRoute() {
         router.add(AnnouncementsContentRoute(
-            announcementsComponentFactory: moduleRepository.announcementsModuleFactory,
+            announcementsComponentFactory: componentRegistry.announcementsModuleFactory,
             contentWireframe: contentWireframe,
             delegate: NavigateFromAnnouncementsToAnnouncement(router: router)
         ))
     }
     
     private func configureAnnouncementRoute() {
+        let tabSwapper = MoveToTabByViewController<NewsViewController>(window: window)
         router.add(AnnouncementContentRoute(
-            announcementModuleFactory: moduleRepository.announcementDetailComponentFactory,
-            contentWireframe: contentWireframe
+            announcementModuleFactory: componentRegistry.announcementDetailComponentFactory,
+            contentWireframe: MoveToTabContentWireframe(decoratedWireframe: contentWireframe, tabSwapper: tabSwapper)
         ))
     }
     
-    private func configureDealerRoute() {
+    private func configureDealerRoutes() {
+        let tabSwapper = MoveToTabByViewController<DealersViewController>(window: window)
         router.add(DealerContentRoute(
-            dealerModuleFactory: moduleRepository.dealerDetailModuleProviding,
-            contentWireframe: contentWireframe
+            dealerModuleFactory: componentRegistry.dealerDetailModuleProviding,
+            contentWireframe: MoveToTabContentWireframe(decoratedWireframe: contentWireframe, tabSwapper: tabSwapper)
+        ))
+        
+        router.add(EmbeddedDealerContentRoute(
+            dealerModuleFactory: componentRegistry.dealerDetailModuleProviding, contentWireframe: contentWireframe
         ))
     }
     
     private func configureEventRoute() {
         router.add(EventContentRoute(
-            eventModuleFactory: moduleRepository.eventDetailComponentFactory,
+            eventModuleFactory: componentRegistry.eventDetailComponentFactory,
             eventDetailDelegate: LeaveFeedbackFromEventNavigator(router: router),
             contentWireframe: contentWireframe
         ))
@@ -63,16 +69,18 @@ struct RouterConfigurator {
     private func configureEventFeedbackRoute() {
         router.add(EventFeedbackContentRoute(
             eventFeedbackFactory: FormSheetEventFeedbackComponentFactory(
-                eventFeedbackComponentFactory: moduleRepository.eventFeedbackComponentFactory
+                eventFeedbackComponentFactory: componentRegistry.eventFeedbackComponentFactory
             ),
             modalWireframe: modalWireframe
         ))
     }
     
     private func configureMessageRoute() {
+        let tabSwapper = MoveToTabByViewController<NewsViewController>(window: window)
+        
         let messageContentRoute = MessageContentRoute(
-            messageModuleFactory: moduleRepository.messageDetailComponentFactory,
-            contentWireframe: contentWireframe
+            messageModuleFactory: componentRegistry.messageDetailComponentFactory,
+            contentWireframe: MoveToTabContentWireframe(decoratedWireframe: contentWireframe, tabSwapper: tabSwapper)
         )
         
         router.add(AuthenticatedRoute(
@@ -83,7 +91,7 @@ struct RouterConfigurator {
     
     private func configureMessagesRoute() {
         let messagesRoute = MessagesContentRoute(
-            messagesComponentFactory: moduleRepository.messagesComponentFactory,
+            messagesComponentFactory: componentRegistry.messagesComponentFactory,
             contentWireframe: contentWireframe,
             delegate: NavigateFromMessagesToMessage(
                 router: router,
@@ -99,7 +107,7 @@ struct RouterConfigurator {
     
     private func configureLoginRoute() {
         let formSheetWrapper = FormSheetLoginComponentFactory(
-            loginComponentFactory: moduleRepository.loginComponentFactory
+            loginComponentFactory: componentRegistry.loginComponentFactory
         )
         
         router.add(LoginContentRoute(
@@ -110,7 +118,7 @@ struct RouterConfigurator {
     
     private func configureNewsRoute() {
         router.add(NewsContentRoute(
-            newsPresentation: ExplicitTabManipulationNewsPresentation(window: window)
+            newsPresentation: ResetNewsAfterLogout(window: window)
         ))
     }
     
@@ -122,7 +130,7 @@ struct RouterConfigurator {
     
     private func configureKnowledgeEntriesRoute() {
         router.add(KnowledgeGroupContentRoute(
-            knowledgeGroupModuleProviding: moduleRepository.knowledgeGroupComponentFactory,
+            knowledgeGroupModuleProviding: componentRegistry.knowledgeGroupComponentFactory,
             contentWireframe: contentWireframe,
             delegate: ShowKnowledgeContentFromGroupListing(router: router)
         ))
@@ -130,7 +138,7 @@ struct RouterConfigurator {
     
     private func configureKnowledgeDetailRoute() {
         router.add(KnowledgeEntryContentRoute(
-            knowledgeDetailComponentFactory: moduleRepository.knowledgeDetailComponentFactory,
+            knowledgeDetailComponentFactory: componentRegistry.knowledgeDetailComponentFactory,
             contentWireframe: contentWireframe,
             delegate: OpenLinkFromKnowledgeEntry(router: router, linksService: linksService)
         ))
@@ -138,7 +146,7 @@ struct RouterConfigurator {
     
     private func configureMapsRoute() {
         router.add(MapContentRoute(
-            mapModuleProviding: moduleRepository.mapDetailComponentFactory,
+            mapModuleProviding: componentRegistry.mapDetailComponentFactory,
             contentWireframe: contentWireframe,
             delegate: ShowDealerFromMap(router: router)
         ))
@@ -146,7 +154,7 @@ struct RouterConfigurator {
     
     private func configureWebContentRoute() {
         router.add(WebContentRoute(
-            webComponentFactory: moduleRepository.webComponentFactory,
+            webComponentFactory: componentRegistry.webComponentFactory,
             modalWireframe: modalWireframe
         ))
     }

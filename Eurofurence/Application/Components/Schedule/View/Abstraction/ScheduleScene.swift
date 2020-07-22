@@ -10,8 +10,6 @@ public protocol ScheduleScene {
     func bind(numberOfItemsPerSection: [Int], using binder: ScheduleSceneBinder)
     func bindSearchResults(numberOfItemsPerSection: [Int], using binder: ScheduleSceneBinder)
     func selectDay(at index: Int)
-    func deselectEvent(at indexPath: IndexPath)
-    func deselectSearchResult(at indexPath: IndexPath)
     func showSearchResults()
     func hideSearchResults()
 

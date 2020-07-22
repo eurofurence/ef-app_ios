@@ -28,7 +28,7 @@ extension KnowledgeEntryContentRoute: ContentRoute {
             delegate: delegate
         )
         
-        contentWireframe.presentDetailContentController(contentController)
+        contentWireframe.replaceDetailContentController(contentController)
     }
     
 }

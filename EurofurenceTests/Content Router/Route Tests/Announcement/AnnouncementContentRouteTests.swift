@@ -17,7 +17,7 @@ class AnnouncementContentRouteTests: XCTestCase {
         route.route(content)
         
         XCTAssertEqual(identifier, announcementModuleFactory.capturedModel)
-        XCTAssertEqual(contentWireframe.presentedDetailContentController, announcementModuleFactory.stubInterface)
+        XCTAssertEqual(contentWireframe.replacedDetailContentController, announcementModuleFactory.stubInterface)
     }
 
 }
