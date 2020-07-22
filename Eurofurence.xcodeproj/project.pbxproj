@@ -6780,7 +6780,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\n\n\"${PODS_ROOT}/Fabric/run\"\n";
+			shellScript = "#!/bin/bash\n\n\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
 		};
 		CA8950F522B4452F00AF4875 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;

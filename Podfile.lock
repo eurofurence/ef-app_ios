@@ -1,13 +1,13 @@
 PODS:
-  - Crashlytics (3.14.0):
-    - Fabric (~> 1.10.2)
   - Down (0.9.3)
-  - Fabric (1.10.2)
   - Firebase/Core (6.28.1):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 6.6.2)
   - Firebase/CoreOnly (6.28.1):
     - FirebaseCore (= 6.9.1)
+  - Firebase/Crashlytics (6.28.1):
+    - Firebase/CoreOnly
+    - FirebaseCrashlytics (~> 4.3.0)
   - Firebase/Messaging (6.28.1):
     - Firebase/CoreOnly
     - FirebaseMessaging (~> 4.6.0)
@@ -34,6 +34,12 @@ PODS:
     - GoogleUtilities/Environment (~> 6.7)
     - GoogleUtilities/Logger (~> 6.7)
     - nanopb (~> 1.30905.0)
+  - FirebaseCrashlytics (4.3.0):
+    - FirebaseCore (~> 6.8)
+    - FirebaseInstallations (~> 1.1)
+    - GoogleDataTransport (~> 7.0)
+    - nanopb (~> 1.30905.0)
+    - PromisesObjC (~> 1.2)
   - FirebaseInstallations (1.5.0):
     - FirebaseCore (~> 6.8)
     - GoogleUtilities/Environment (~> 6.7)
@@ -112,23 +118,21 @@ PODS:
   - Protobuf (3.12.0)
 
 DEPENDENCIES:
-  - Crashlytics
   - Down
-  - Fabric
   - Firebase/Core
+  - Firebase/Crashlytics
   - Firebase/Messaging
   - Firebase/Performance
 
 SPEC REPOS:
   trunk:
-    - Crashlytics
     - Down
-    - Fabric
     - Firebase
     - FirebaseABTesting
     - FirebaseAnalytics
     - FirebaseCore
     - FirebaseCoreDiagnostics
+    - FirebaseCrashlytics
     - FirebaseInstallations
     - FirebaseInstanceID
     - FirebaseMessaging
@@ -144,14 +148,13 @@ SPEC REPOS:
     - Protobuf
 
 SPEC CHECKSUMS:
-  Crashlytics: 540b7e5f5da5a042647227a5e3ac51d85eed06df
   Down: 4553b984236807e384fa0ef7c7e360ef9f7c425d
-  Fabric: 706c8b8098fff96c33c0db69cbf81f9c551d0d74
   Firebase: ed042590caa0029392257529a8003c25ee82bc18
   FirebaseABTesting: dc041951b2d9d9279c300222647b0cba48022d1f
   FirebaseAnalytics: 5fa308e1b13f838d0f6dc74719ac2a72e8c5afc4
   FirebaseCore: 687b8e6a0a4337b898a6326d68254c2f80c143af
   FirebaseCoreDiagnostics: 7535fe695737f8c5b350584292a70b7f8ff0357b
+  FirebaseCrashlytics: f6ae039fdaf07980425f2ae9f49131fc94009c58
   FirebaseInstallations: 3c520c951305cbf9ca54eb891ff9e6d1fd384881
   FirebaseInstanceID: 358d5cb393d2750a745569ede06827c35aea530b
   FirebaseMessaging: bdd4d573eab37ebee29bad4e7c4b0ef18fa1a952
@@ -166,6 +169,6 @@ SPEC CHECKSUMS:
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
   Protobuf: 2793fcd0622a00b546c60e7cbbcc493e043e9bb9
 
-PODFILE CHECKSUM: a08c1a5a4252cb8f70fe892394460ca1c0f9a94a
+PODFILE CHECKSUM: 668ae979de6ba041980043a063ec3bc4691e7044
 
 COCOAPODS: 1.9.3
