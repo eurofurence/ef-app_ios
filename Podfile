@@ -8,10 +8,10 @@ target :Eurofurence do
   plugin 'cocoapods-acknowledgements', :settings_bundle => true
   
   pod 'Down'
-  pod 'Firebase/Core'
-  pod 'Firebase/Crashlytics'
-  pod 'Firebase/Messaging'
-  pod 'Firebase/Performance'
+  pod 'FirebaseCore'
+  pod 'FirebaseCrashlytics'
+  pod 'FirebaseMessaging'
+  pod 'FirebaseRemoteConfig'
     
   target :EurofurenceTests do
     inherit! :search_paths
