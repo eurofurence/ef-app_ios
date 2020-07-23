@@ -310,7 +310,7 @@ class ScheduleViewController: UIViewController,
             let actions = binder.eventActionsForComponent(at: indexPath)
             
             let menuActions = actions.map { (action) in
-                UIAction(title: action.title, handler: { (_) in
+                UIAction(title: action.title, image: UIImage(systemName: action.sfSymbol ?? ""), handler: { (_) in
                     action.run()
                 })
             }
