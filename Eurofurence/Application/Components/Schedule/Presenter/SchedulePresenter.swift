@@ -165,6 +165,12 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
                 ))
             }
             
+            commands.append(ContextualCommand(
+                title: .share,
+                sfSymbol: "square.and.arrow.up",
+                run: event.share(_:)
+            ))
+            
             return ContextualCommands(commands: commands)
         }
 

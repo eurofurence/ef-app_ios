@@ -77,6 +77,11 @@ final class StubScheduleEventViewModel: ScheduleEventViewModelProtocol {
         isFavourite = false
         observers.forEach({ $0.eventViewModelDidBecomeNonFavourite(self) })
     }
+    
+    private(set) var sharedSender: Any?
+    func share(_ sender: Any) {
+        sharedSender = sender
+    }
 
 }
 

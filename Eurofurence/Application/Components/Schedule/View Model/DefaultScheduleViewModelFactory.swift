@@ -314,6 +314,10 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory, EventsSe
             event.unfavourite()
         }
         
+        func share(_ sender: Any) {
+            
+        }
+        
         func eventDidBecomeFavourite(_ event: Event) {
             isFavourite = true
             observer?.eventViewModelDidBecomeFavourite(self)

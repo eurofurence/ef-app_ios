@@ -19,6 +19,7 @@ public protocol ScheduleEventViewModelProtocol {
     func add(_ observer: ScheduleEventViewModelObserver)
     func favourite()
     func unfavourite()
+    func share(_ sender: Any)
 
 }
 
