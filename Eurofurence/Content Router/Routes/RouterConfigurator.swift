@@ -59,10 +59,11 @@ struct RouterConfigurator {
     }
     
     private func configureEventRoute() {
+        let tabSwapper = MoveToTabByViewController<ScheduleViewController>(window: window)
         router.add(EventContentRoute(
             eventModuleFactory: componentRegistry.eventDetailComponentFactory,
             eventDetailDelegate: LeaveFeedbackFromEventNavigator(router: router),
-            contentWireframe: contentWireframe
+            contentWireframe: MoveToTabContentWireframe(decoratedWireframe: contentWireframe, tabSwapper: tabSwapper)
         ))
     }
     
