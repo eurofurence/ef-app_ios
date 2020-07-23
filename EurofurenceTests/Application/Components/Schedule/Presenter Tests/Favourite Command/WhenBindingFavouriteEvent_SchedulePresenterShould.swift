@@ -12,7 +12,7 @@ class WhenBindingFavouriteEvent_SchedulePresenterShould: XCTestCase {
         XCTAssertEqual(component.favouriteIconVisibility, .visible)
     }
 
-    func testSupplyUnfavouriteAction() {
+    func testSupplyUnfavouriteAction() throws {
         let eventViewModel = StubScheduleEventViewModel.random
         eventViewModel.isFavourite = true
         let eventGroupViewModel = ScheduleEventGroupViewModel(title: .random, events: [eventViewModel])
@@ -23,12 +23,13 @@ class WhenBindingFavouriteEvent_SchedulePresenterShould: XCTestCase {
         let searchResult = StubScheduleEventViewModel.random
         searchResult.isFavourite = false
         let indexPath = IndexPath(item: 0, section: 0)
-        let action = context.scene.binder?.eventActionsForComponent(at: indexPath).first
-
-        XCTAssertEqual(.unfavourite, action?.title)
-        XCTAssertEqual("heart.slash.fill", action?.sfSymbol)
+        let commands = context.scene.binder?.eventActionsForComponent(at: indexPath)
         
-        action?.run(nil)
+        let action = try XCTUnwrap(commands?.command(titled: .unfavourite))
+
+        XCTAssertEqual("heart.slash.fill", action.sfSymbol)
+        
+        action.run(nil)
 
         XCTAssertFalse(eventViewModel.isFavourite, "Running the action should unfavourite the event")
     }

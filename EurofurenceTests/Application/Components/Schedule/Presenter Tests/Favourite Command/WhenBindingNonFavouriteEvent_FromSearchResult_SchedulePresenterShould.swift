@@ -4,7 +4,7 @@ import XCTest
 
 class WhenBindingNonFavouriteEvent_FromSearchResult_SchedulePresenterShould: XCTestCase {
 
-    func testPrepareTheComponentToShowFavouriteEventAction() {
+    func testPrepareTheComponentToShowFavouriteEventAction() throws {
         let searchViewModel = CapturingScheduleSearchViewModel()
         let viewModelFactory = FakeScheduleViewModelFactory(searchViewModel: searchViewModel)
         let context = SchedulePresenterTestBuilder().with(viewModelFactory).build()
@@ -16,13 +16,14 @@ class WhenBindingNonFavouriteEvent_FromSearchResult_SchedulePresenterShould: XCT
         let indexPath = IndexPath(item: 0, section: 0)
         let component = CapturingScheduleEventComponent()
         context.bindSearchResultComponent(component, forSearchResultAt: indexPath)
-        let action = context.scene.searchResultsBinder?.eventActionsForComponent(at: indexPath).first
+        let commands = context.scene.searchResultsBinder?.eventActionsForComponent(at: indexPath)
+        
+        let action = try XCTUnwrap(commands?.command(titled: .favourite))
         
         XCTAssertEqual(component.favouriteIconVisibility, .hidden)
         
-        action?.run(nil)
+        action.run(nil)
 
-        XCTAssertEqual(.favourite, action?.title)
         XCTAssertTrue(searchResult.isFavourite, "Running the action should favourite the event")
     }
 

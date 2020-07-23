@@ -12,7 +12,7 @@ class WhenBindingFavouriteEvent_FromSearchResult_SchedulePresenterShould: XCTest
         XCTAssertEqual(component.favouriteIconVisibility, .visible)
     }
 
-    func testSupplyUnfavouriteAction() {
+    func testSupplyUnfavouriteAction() throws {
         let searchViewModel = CapturingScheduleSearchViewModel()
         let viewModelFactory = FakeScheduleViewModelFactory(searchViewModel: searchViewModel)
         let context = SchedulePresenterTestBuilder().with(viewModelFactory).build()
@@ -22,11 +22,10 @@ class WhenBindingFavouriteEvent_FromSearchResult_SchedulePresenterShould: XCTest
         let results = [ScheduleEventGroupViewModel(title: .random, events: [searchResult])]
         searchViewModel.simulateSearchResultsUpdated(results)
         let indexPath = IndexPath(item: 0, section: 0)
-        let action = context.scene.searchResultsBinder?.eventActionsForComponent(at: indexPath).first
-
-        XCTAssertEqual(.unfavourite, action?.title)
+        let commands = context.scene.searchResultsBinder?.eventActionsForComponent(at: indexPath)
         
-        action?.run(nil)
+        let action = try XCTUnwrap(commands?.command(titled: .unfavourite))
+        action.run(nil)
 
         XCTAssertFalse(searchResult.isFavourite, "Running the action should unfavourite the event")
     }

@@ -145,27 +145,27 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
             eventBinders[indexPath] = binder
         }
 
-        func eventActionsForComponent(at indexPath: IndexPath) -> [ContextualCommand] {
+        func eventActionsForComponent(at indexPath: IndexPath) -> ContextualCommands {
             let group = viewModels[indexPath.section]
             let event = group.events[indexPath.item]
             
-            var actions = [ContextualCommand]()
+            var commands = [ContextualCommand]()
 
             if event.isFavourite {
-                actions.append(ContextualCommand(
+                commands.append(ContextualCommand(
                     title: .unfavourite,
                     sfSymbol: "heart.slash.fill",
                     run: { (_) in event.unfavourite() }
                 ))
             } else {
-                actions.append(ContextualCommand(
+                commands.append(ContextualCommand(
                     title: .favourite,
                     sfSymbol: "heart.fill",
                     run: { (_) in event.favourite() }
                 ))
             }
             
-            return actions
+            return ContextualCommands(commands: commands)
         }
 
     }
