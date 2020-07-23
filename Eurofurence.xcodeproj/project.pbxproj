@@ -4607,6 +4607,19 @@
 			path = Commands;
 			sourceTree = "<group>";
 		};
+		CABCDE7024C9D88200500F6B /* Searching */ = {
+			isa = PBXGroup;
+			children = (
+				CAF1951124688EA9005DFBBE /* WhenBindingEventFromSearchResult_SchedulePresenterShould.swift */,
+				CAF1953024688EA9005DFBBE /* WhenBindingGroupFromSearchResult_SchedulePresenterShould.swift */,
+				CAF1952224688EA9005DFBBE /* WhenSceneChangesSearchScopeToAllEvents_SchedulePresenterShould.swift */,
+				CAF1950624688EA9005DFBBE /* WhenSceneChangesSearchScopeToFavouriteEvents_SchedulePresenterShould.swift */,
+				CAF1950C24688EA9005DFBBE /* WhenSceneSelectsEventFromSearchViewModel_SchedulePresenterShould.swift */,
+				CAF1950E24688EA9005DFBBE /* WhenSceneUpdatesSearchQuery_SchedulePresenterShould.swift */,
+			);
+			path = Searching;
+			sourceTree = "<group>";
+		};
 		CABF03B22041BC770028BD62 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -5256,22 +5269,18 @@
 				CAF1950A24688EA9005DFBBE /* WhenBindingDay_SchedulePresenterShould.swift */,
 				CAF1950424688EA9005DFBBE /* WhenBindingEvent_SchedulePresenterShould.swift */,
 				CAF1951224688EA9005DFBBE /* WhenBindingEvent_WithNoPoster_SchedulePresenterShould.swift */,
-				CAF1951124688EA9005DFBBE /* WhenBindingEventFromSearchResult_SchedulePresenterShould.swift */,
 				CAF1950F24688EA9005DFBBE /* WhenBindingEventGroup_SchedulePresenterShould.swift */,
-				CAF1953024688EA9005DFBBE /* WhenBindingGroupFromSearchResult_SchedulePresenterShould.swift */,
 				CAF1951424688EA9005DFBBE /* WhenBuildingScheduleModule.swift */,
 				CAF1950524688EA9005DFBBE /* WhenInstigatingPullToRefreshAction_SchedulePresenterShould.swift */,
-				CAF1952224688EA9005DFBBE /* WhenSceneChangesSearchScopeToAllEvents_SchedulePresenterShould.swift */,
-				CAF1950624688EA9005DFBBE /* WhenSceneChangesSearchScopeToFavouriteEvents_SchedulePresenterShould.swift */,
 				CAF1952F24688EA9005DFBBE /* WhenSceneSelectsEvent_SchedulePresenterShould.swift */,
-				CAF1950C24688EA9005DFBBE /* WhenSceneSelectsEventFromSearchViewModel_SchedulePresenterShould.swift */,
-				CAF1950E24688EA9005DFBBE /* WhenSceneUpdatesSearchQuery_SchedulePresenterShould.swift */,
 				CAF1950B24688EA9005DFBBE /* WhenScheduleSceneHasNotLoaded_SchedulePresenterShould.swift */,
 				CAF1951324688EA9005DFBBE /* WhenScheduleSceneLoads_SchedulePresenterShould.swift */,
 				CAF1950D24688EA9005DFBBE /* WhenScheduleSceneSelectsDay_SchedulePresenterShould.swift */,
 				CAF1953124688EA9005DFBBE /* WhenSearchableViewModelProducesNewResult_SchedulePresenterShould.swift */,
+				CAF1951C24688EA9005DFBBE /* Favourite Command */,
 				CAF1950724688EA9005DFBBE /* Favourite State Changes */,
 				CAF1951524688EA9005DFBBE /* Icon Presentation */,
+				CABCDE7024C9D88200500F6B /* Searching */,
 				CAF1952324688EA9005DFBBE /* Test Doubles */,
 			);
 			path = "Presenter Tests";
@@ -5296,12 +5305,11 @@
 				CAF1951A24688EA9005DFBBE /* SchedulePresenterPhotoshootIconBindingTests.swift */,
 				CAF1951724688EA9005DFBBE /* SchedulePresenterSponsorIconBindingTests.swift */,
 				CAF1951824688EA9005DFBBE /* SchedulePresenterSuperSponsorIconBindingTests.swift */,
-				CAF1951C24688EA9005DFBBE /* Favourite */,
 			);
 			path = "Icon Presentation";
 			sourceTree = "<group>";
 		};
-		CAF1951C24688EA9005DFBBE /* Favourite */ = {
+		CAF1951C24688EA9005DFBBE /* Favourite Command */ = {
 			isa = PBXGroup;
 			children = (
 				CAF1952024688EA9005DFBBE /* WhenBindingFavouriteEvent_FromSearchResult_SchedulePresenterShould.swift */,
@@ -5309,7 +5317,7 @@
 				CAF1951E24688EA9005DFBBE /* WhenBindingNonFavouriteEvent_FromSearchResult_SchedulePresenterShould.swift */,
 				CAF1951D24688EA9005DFBBE /* WhenBindingNonFavouriteEvent_SchedulePresenterShould.swift */,
 			);
-			path = Favourite;
+			path = "Favourite Command";
 			sourceTree = "<group>";
 		};
 		CAF1952324688EA9005DFBBE /* Test Doubles */ = {
