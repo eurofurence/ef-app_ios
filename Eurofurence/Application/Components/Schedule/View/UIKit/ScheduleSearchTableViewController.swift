@@ -57,12 +57,13 @@ class ScheduleSearchTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        guard let action = binder?.eventActionForComponent(at: indexPath) else { return nil }
-        let rowAction: UITableViewRowAction = UITableViewRowAction(style: .normal, title: action.title, handler: { (_, _) in
-            action.run()
-        })
-
-        return [rowAction]
+        guard let actions = binder?.eventActionsForComponent(at: indexPath) else { return nil }
+        
+        return actions.map { (action) in
+            UITableViewRowAction(style: .normal, title: action.title, handler: { (_, _) in
+                action.run()
+            })
+        }
     }
 
 }

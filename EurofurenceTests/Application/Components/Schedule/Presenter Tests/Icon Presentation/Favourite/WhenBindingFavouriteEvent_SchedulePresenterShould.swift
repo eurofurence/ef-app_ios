@@ -23,7 +23,7 @@ class WhenBindingFavouriteEvent_SchedulePresenterShould: XCTestCase {
         let searchResult = StubScheduleEventViewModel.random
         searchResult.isFavourite = false
         let indexPath = IndexPath(item: 0, section: 0)
-        let action = context.scene.binder?.eventActionForComponent(at: indexPath)
+        let action = context.scene.binder?.eventActionsForComponent(at: indexPath).first
 
         XCTAssertEqual(.unfavourite, action?.title)
     }
@@ -39,7 +39,7 @@ class WhenBindingFavouriteEvent_SchedulePresenterShould: XCTestCase {
         let searchResult = StubScheduleEventViewModel.random
         searchResult.isFavourite = false
         let indexPath = IndexPath(item: 0, section: 0)
-        let action = context.scene.binder?.eventActionForComponent(at: indexPath)
+        let action = context.scene.binder?.eventActionsForComponent(at: indexPath).first
         action?.run()
 
         XCTAssertFalse(eventViewModel.isFavourite, "Running the action should unfavourite the event")

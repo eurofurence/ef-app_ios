@@ -16,7 +16,7 @@ class WhenBindingNonFavouriteEvent_FromSearchResult_SchedulePresenterShould: XCT
         let indexPath = IndexPath(item: 0, section: 0)
         let component = CapturingScheduleEventComponent()
         context.bindSearchResultComponent(component, forSearchResultAt: indexPath)
-        let action = context.scene.searchResultsBinder?.eventActionForComponent(at: indexPath)
+        let action = context.scene.searchResultsBinder?.eventActionsForComponent(at: indexPath).first
         
         XCTAssertEqual(component.favouriteIconVisibility, .hidden)
         

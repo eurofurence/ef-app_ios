@@ -145,14 +145,14 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
             eventBinders[indexPath] = binder
         }
 
-        func eventActionForComponent(at indexPath: IndexPath) -> ScheduleEventComponentAction {
+        func eventActionsForComponent(at indexPath: IndexPath) -> [ScheduleEventComponentAction] {
             let group = viewModels[indexPath.section]
             let event = group.events[indexPath.item]
 
             if event.isFavourite {
-                return ScheduleEventComponentAction(title: .unfavourite, run: event.unfavourite)
+                return [ScheduleEventComponentAction(title: .unfavourite, run: event.unfavourite)]
             } else {
-                return ScheduleEventComponentAction(title: .favourite, run: event.favourite)
+                return [ScheduleEventComponentAction(title: .favourite, run: event.favourite)]
             }
         }
 

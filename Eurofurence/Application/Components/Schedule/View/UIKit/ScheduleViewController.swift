@@ -292,12 +292,13 @@ class ScheduleViewController: UIViewController,
         }
 
         func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-            let action = binder.eventActionForComponent(at: indexPath)
-            let rowAction: UITableViewRowAction = UITableViewRowAction(style: .normal, title: action.title, handler: { (_, _) in
-                action.run()
-            })
-
-            return [rowAction]
+            let actions = binder.eventActionsForComponent(at: indexPath)
+            
+            return actions.map { (action) in
+                UITableViewRowAction(style: .normal, title: action.title, handler: { (_, _) in
+                    action.run()
+                })
+            }
         }
         
         @available(iOS 13.0, *)
@@ -306,14 +307,16 @@ class ScheduleViewController: UIViewController,
             contextMenuConfigurationForRowAt indexPath: IndexPath,
             point: CGPoint
         ) -> UIContextMenuConfiguration? {
-            let action = binder.eventActionForComponent(at: indexPath)
+            let actions = binder.eventActionsForComponent(at: indexPath)
+            
+            let menuActions = actions.map { (action) in
+                UIAction(title: action.title, handler: { (_) in
+                    action.run()
+                })
+            }
             
             return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { (_) in
-                UIMenu(title: "", image: nil, identifier: nil, options: .displayInline, children: [
-                    UIAction(title: action.title, handler: { (_) in
-                        action.run()
-                    })
-                ])
+                UIMenu(title: "", image: nil, identifier: nil, options: .displayInline, children: menuActions)
             }
         }
         
