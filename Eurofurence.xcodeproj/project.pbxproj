@@ -372,8 +372,8 @@
 		CA6375B2208E02E300536BE2 /* DealersScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6375B1208E02E300536BE2 /* DealersScene.swift */; };
 		CA6375B4208E039100536BE2 /* DealersComponentFactoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6375B3208E039100536BE2 /* DealersComponentFactoryImpl.swift */; };
 		CA63A741245DB7E000E4B313 /* RouterConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63A740245DB7E000E4B313 /* RouterConfigurator.swift */; };
-		CA63A744245DB94F00E4B313 /* ShowEventFromScheduleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63A743245DB94F00E4B313 /* ShowEventFromScheduleTests.swift */; };
-		CA63A747245DBB3D00E4B313 /* ShowEventFromSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63A746245DBB3D00E4B313 /* ShowEventFromSchedule.swift */; };
+		CA63A744245DB94F00E4B313 /* ScheduleSubrouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63A743245DB94F00E4B313 /* ScheduleSubrouterTests.swift */; };
+		CA63A747245DBB3D00E4B313 /* ScheduleSubrouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63A746245DBB3D00E4B313 /* ScheduleSubrouter.swift */; };
 		CA63A74A245DBD5100E4B313 /* ShowDealerFromDealersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63A749245DBD5100E4B313 /* ShowDealerFromDealersTests.swift */; };
 		CA63A74D245DBE4500E4B313 /* ShowDealerFromDealers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63A74C245DBE4500E4B313 /* ShowDealerFromDealers.swift */; };
 		CA63A750245DC13800E4B313 /* KnowledgeGroupContentRouteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63A74F245DC13800E4B313 /* KnowledgeGroupContentRouteTests.swift */; };
@@ -1569,8 +1569,8 @@
 		CA6375B1208E02E300536BE2 /* DealersScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersScene.swift; sourceTree = "<group>"; };
 		CA6375B3208E039100536BE2 /* DealersComponentFactoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersComponentFactoryImpl.swift; sourceTree = "<group>"; };
 		CA63A740245DB7E000E4B313 /* RouterConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterConfigurator.swift; sourceTree = "<group>"; };
-		CA63A743245DB94F00E4B313 /* ShowEventFromScheduleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEventFromScheduleTests.swift; sourceTree = "<group>"; };
-		CA63A746245DBB3D00E4B313 /* ShowEventFromSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEventFromSchedule.swift; sourceTree = "<group>"; };
+		CA63A743245DB94F00E4B313 /* ScheduleSubrouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleSubrouterTests.swift; sourceTree = "<group>"; };
+		CA63A746245DBB3D00E4B313 /* ScheduleSubrouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleSubrouter.swift; sourceTree = "<group>"; };
 		CA63A749245DBD5100E4B313 /* ShowDealerFromDealersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDealerFromDealersTests.swift; sourceTree = "<group>"; };
 		CA63A74C245DBE4500E4B313 /* ShowDealerFromDealers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDealerFromDealers.swift; sourceTree = "<group>"; };
 		CA63A74F245DC13800E4B313 /* KnowledgeGroupContentRouteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeGroupContentRouteTests.swift; sourceTree = "<group>"; };
@@ -3679,7 +3679,7 @@
 		CA63A742245DB93C00E4B313 /* Schedule */ = {
 			isa = PBXGroup;
 			children = (
-				CA63A743245DB94F00E4B313 /* ShowEventFromScheduleTests.swift */,
+				CA63A743245DB94F00E4B313 /* ScheduleSubrouterTests.swift */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -3687,7 +3687,7 @@
 		CA63A745245DBB3600E4B313 /* Schedule */ = {
 			isa = PBXGroup;
 			children = (
-				CA63A746245DBB3D00E4B313 /* ShowEventFromSchedule.swift */,
+				CA63A746245DBB3D00E4B313 /* ScheduleSubrouter.swift */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -7016,7 +7016,7 @@
 				CA6A8D8720E2BB90007536CD /* MapsViewModel.swift in Sources */,
 				CAA2887E245C72CA0090B663 /* MessagesContentRepresentation.swift in Sources */,
 				CA728465209D0FAF007D912A /* AnnouncementDetailScene.swift in Sources */,
-				CA63A747245DBB3D00E4B313 /* ShowEventFromSchedule.swift in Sources */,
+				CA63A747245DBB3D00E4B313 /* ScheduleSubrouter.swift in Sources */,
 				CA50B1BA226111220091E425 /* EventFeedbackViewModel.swift in Sources */,
 				CA630BD6229F145E00754C27 /* EventIntentDonor.swift in Sources */,
 				CAD3BDC7205FE88900C91E6E /* SafariWebComponentFactory.swift in Sources */,
@@ -7580,7 +7580,7 @@
 				CAF197DF24688EAA005DFBBE /* WhenBuildingKnowledgePresenter.swift in Sources */,
 				CAF1978524688EAA005DFBBE /* WhenPreparingViewModel_ForEventWithBannerButNoPoster_EventDetailViewModelFactoryShould.swift in Sources */,
 				CAF1974224688EAA005DFBBE /* StubKnowledgeGroupEntriesViewModel.swift in Sources */,
-				CA63A744245DB94F00E4B313 /* ShowEventFromScheduleTests.swift in Sources */,
+				CA63A744245DB94F00E4B313 /* ScheduleSubrouterTests.swift in Sources */,
 				CA6F75D8246956DB001FFB74 /* StubSponsorsOnlyEventViewModel.swift in Sources */,
 				CAF1974A24688EAA005DFBBE /* FakeMapDetailInteractor.swift in Sources */,
 				CAF1976224688EAA005DFBBE /* CapturingAnnouncementsListViewModelDelegate.swift in Sources */,

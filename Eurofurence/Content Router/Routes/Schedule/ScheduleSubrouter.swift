@@ -1,6 +1,6 @@
 import EurofurenceModel
 
-public struct ShowEventFromSchedule: ScheduleComponentDelegate {
+public struct ScheduleSubrouter: ScheduleComponentDelegate {
     
     private let router: ContentRouter
     
