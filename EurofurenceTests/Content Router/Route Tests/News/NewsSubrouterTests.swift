@@ -31,7 +31,7 @@ class NewsSubrouterTests: XCTestCase {
         let event = FakeEvent.random
         subrouter.newsModuleDidSelectEvent(event)
         
-        router.assertRouted(to: EventContentRepresentation(identifier: event.identifier))
+        router.assertRouted(to: EmbeddedEventContentRepresentation(identifier: event.identifier))
     }
     
     func testShowingAnnouncements() {

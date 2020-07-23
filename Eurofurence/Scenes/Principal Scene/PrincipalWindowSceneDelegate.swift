@@ -10,13 +10,22 @@ class PrincipalWindowSceneDelegate: NSObject, UIWindowSceneDelegate {
         willConnectTo session: UISceneSession,
         options connectionOptions: UIScene.ConnectionOptions
     ) {
-        if let windowScene = scene as? UIWindowScene {
-            let window = UIWindow(windowScene: windowScene)
-            self.window = window
-            
-            Application.instance.configurePrincipalScene(window: window)
-            window.makeKeyAndVisible()
+        guard let windowScene = scene as? UIWindowScene else { return }
+        
+        let window = UIWindow(windowScene: windowScene)
+        self.window = window
+        
+        Application.instance.configurePrincipalScene(window: window)
+        
+        if let userActivity = connectionOptions.userActivities.first {
+            Application.resume(activity: userActivity)
         }
+        
+        window.makeKeyAndVisible()
+    }
+    
+    func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
+        Application.resume(activity: userActivity)
     }
     
 }

@@ -17,7 +17,7 @@ public struct NewsSubrouter: NewsComponentDelegate {
     }
     
     public func newsModuleDidSelectEvent(_ event: Event) {
-        try? router.route(EventContentRepresentation(identifier: event.identifier))
+        try? router.route(EmbeddedEventContentRepresentation(identifier: event.identifier))
     }
     
     public func newsModuleDidRequestShowingAllAnnouncements() {
