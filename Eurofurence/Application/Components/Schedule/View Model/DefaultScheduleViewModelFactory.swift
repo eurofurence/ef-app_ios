@@ -303,7 +303,7 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory, EventsSe
             isDealersDenEvent = event.isDealersDen
             isMainStageEvent = event.isMainStage
             isPhotoshootEvent = event.isPhotoshoot
-            isAcceptingFeedback = false
+            isAcceptingFeedback = event.isAcceptingFeedback
             
             event.add(self)
         }
