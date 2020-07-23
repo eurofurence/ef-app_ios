@@ -615,6 +615,7 @@
 		CABCDE6F24C9D58500500F6B /* ContextualCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABCDE6E24C9D58500500F6B /* ContextualCommand.swift */; };
 		CABCDE7224C9D98B00500F6B /* ContextualCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABCDE7124C9D98B00500F6B /* ContextualCommands.swift */; };
 		CABCDE7524C9DB1D00500F6B /* SchedulePresenterShareCommandTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABCDE7424C9DB1D00500F6B /* SchedulePresenterShareCommandTests.swift */; };
+		CABCDE7824C9DD5900500F6B /* ScheduleEventViewModelSharingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABCDE7724C9DD5900500F6B /* ScheduleEventViewModelSharingTests.swift */; };
 		CABF03B42041BC870028BD62 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF03B32041BC870028BD62 /* UITableView+Extensions.swift */; };
 		CABF03C52041C31A0028BD62 /* DefaultKnowledgeGroupsViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF03C42041C31A0028BD62 /* DefaultKnowledgeGroupsViewModelFactory.swift */; };
 		CAC1E12B1F5040E100195513 /* NewsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E12A1F5040E100195513 /* NewsScene.swift */; };
@@ -1804,6 +1805,7 @@
 		CABCDE6E24C9D58500500F6B /* ContextualCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextualCommand.swift; sourceTree = "<group>"; };
 		CABCDE7124C9D98B00500F6B /* ContextualCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextualCommands.swift; sourceTree = "<group>"; };
 		CABCDE7424C9DB1D00500F6B /* SchedulePresenterShareCommandTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePresenterShareCommandTests.swift; sourceTree = "<group>"; };
+		CABCDE7724C9DD5900500F6B /* ScheduleEventViewModelSharingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleEventViewModelSharingTests.swift; sourceTree = "<group>"; };
 		CABF03B32041BC870028BD62 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		CABF03C42041C31A0028BD62 /* DefaultKnowledgeGroupsViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultKnowledgeGroupsViewModelFactory.swift; sourceTree = "<group>"; };
 		CAC1B3842014E93C00ED8B06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -4633,6 +4635,14 @@
 			path = "Share Command";
 			sourceTree = "<group>";
 		};
+		CABCDE7624C9DD4300500F6B /* Sharing Event */ = {
+			isa = PBXGroup;
+			children = (
+				CABCDE7724C9DD5900500F6B /* ScheduleEventViewModelSharingTests.swift */,
+			);
+			path = "Sharing Event";
+			sourceTree = "<group>";
+		};
 		CABF03B22041BC770028BD62 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -5370,6 +5380,7 @@
 				CAF1953924688EA9005DFBBE /* WhenToldToRefresh_ScheduleViewModelShould.swift */,
 				CAF1953624688EA9005DFBBE /* WhenViewModelIsToldToShowEventsForSpecificDay_ScheduleViewModelFactoryShould.swift */,
 				CAF1954824688EA9005DFBBE /* Favourite State Propogation */,
+				CABCDE7624C9DD4300500F6B /* Sharing Event */,
 				CAF1954324688EA9005DFBBE /* Test Doubles */,
 				CAF1953C24688EA9005DFBBE /* Toggling Favourite State */,
 			);
@@ -7637,6 +7648,7 @@
 				CAF197CD24688EAA005DFBBE /* WhenEventFeedbackSceneCancelsFeedback_WithFeedbackEntered_EventFeedbackPresenterShould.swift in Sources */,
 				CAF1980A24688EAB005DFBBE /* WhenAutofillingPassword_LoginPresenterShould.swift in Sources */,
 				CAF1970D24688EAA005DFBBE /* WhenPreparingViewModel_ScheduleViewModelFactoryShould.swift in Sources */,
+				CABCDE7824C9DD5900500F6B /* ScheduleEventViewModelSharingTests.swift in Sources */,
 				CAF1972024688EAA005DFBBE /* WhenRefreshingMessages.swift in Sources */,
 				78C86D791F12ADF8003A20E6 /* CapturingSplashScene.swift in Sources */,
 				CAF1979324688EAA005DFBBE /* CapturingEventActionViewModelVisitor.swift in Sources */,
