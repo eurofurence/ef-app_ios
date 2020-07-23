@@ -21,6 +21,13 @@ class PrincipalWindowSceneDelegate: NSObject, UIWindowSceneDelegate {
             Application.resume(activity: userActivity)
         }
         
+#if targetEnvironment(macCatalyst)
+        if let titlebar = windowScene.titlebar {
+            titlebar.titleVisibility = .hidden
+            titlebar.toolbar = nil
+        }
+#endif
+        
         window.makeKeyAndVisible()
     }
     
