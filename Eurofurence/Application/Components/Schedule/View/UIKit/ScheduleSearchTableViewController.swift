@@ -65,5 +65,20 @@ class ScheduleSearchTableViewController: UITableViewController {
             })
         }
     }
+    
+    @available(iOS 13.0, *)
+    override func tableView(
+        _ tableView: UITableView,
+        contextMenuConfigurationForRowAt indexPath: IndexPath,
+        point: CGPoint
+    ) -> UIContextMenuConfiguration? {
+        guard let actions = binder?.eventActionsForComponent(at: indexPath) else { return nil }
+        
+        let menuActions = actions.map(\.uiAction)
+        
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { (_) in
+            UIMenu(title: "", image: nil, identifier: nil, options: .displayInline, children: menuActions)
+        }
+    }
 
 }

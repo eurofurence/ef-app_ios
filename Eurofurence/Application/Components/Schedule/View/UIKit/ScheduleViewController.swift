@@ -309,11 +309,7 @@ class ScheduleViewController: UIViewController,
         ) -> UIContextMenuConfiguration? {
             let actions = binder.eventActionsForComponent(at: indexPath)
             
-            let menuActions = actions.map { (action) in
-                UIAction(title: action.title, image: UIImage(systemName: action.sfSymbol ?? ""), handler: { (_) in
-                    action.run()
-                })
-            }
+            let menuActions = actions.map(\.uiAction)
             
             return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { (_) in
                 UIMenu(title: "", image: nil, identifier: nil, options: .displayInline, children: menuActions)
