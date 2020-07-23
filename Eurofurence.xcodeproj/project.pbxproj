@@ -616,6 +616,7 @@
 		CABCDE7224C9D98B00500F6B /* ContextualCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABCDE7124C9D98B00500F6B /* ContextualCommands.swift */; };
 		CABCDE7524C9DB1D00500F6B /* SchedulePresenterShareCommandTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABCDE7424C9DB1D00500F6B /* SchedulePresenterShareCommandTests.swift */; };
 		CABCDE7824C9DD5900500F6B /* ScheduleEventViewModelSharingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABCDE7724C9DD5900500F6B /* ScheduleEventViewModelSharingTests.swift */; };
+		CABCDE7B24C9E2B900500F6B /* SchedulePresenterLeaveFeedbackCommandTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABCDE7A24C9E2B900500F6B /* SchedulePresenterLeaveFeedbackCommandTests.swift */; };
 		CABF03B42041BC870028BD62 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF03B32041BC870028BD62 /* UITableView+Extensions.swift */; };
 		CABF03C52041C31A0028BD62 /* DefaultKnowledgeGroupsViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF03C42041C31A0028BD62 /* DefaultKnowledgeGroupsViewModelFactory.swift */; };
 		CAC1E12B1F5040E100195513 /* NewsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E12A1F5040E100195513 /* NewsScene.swift */; };
@@ -1806,6 +1807,7 @@
 		CABCDE7124C9D98B00500F6B /* ContextualCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextualCommands.swift; sourceTree = "<group>"; };
 		CABCDE7424C9DB1D00500F6B /* SchedulePresenterShareCommandTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePresenterShareCommandTests.swift; sourceTree = "<group>"; };
 		CABCDE7724C9DD5900500F6B /* ScheduleEventViewModelSharingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleEventViewModelSharingTests.swift; sourceTree = "<group>"; };
+		CABCDE7A24C9E2B900500F6B /* SchedulePresenterLeaveFeedbackCommandTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePresenterLeaveFeedbackCommandTests.swift; sourceTree = "<group>"; };
 		CABF03B32041BC870028BD62 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		CABF03C42041C31A0028BD62 /* DefaultKnowledgeGroupsViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultKnowledgeGroupsViewModelFactory.swift; sourceTree = "<group>"; };
 		CAC1B3842014E93C00ED8B06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -4643,6 +4645,14 @@
 			path = "Sharing Event";
 			sourceTree = "<group>";
 		};
+		CABCDE7924C9E29F00500F6B /* Leave Feedback Command */ = {
+			isa = PBXGroup;
+			children = (
+				CABCDE7A24C9E2B900500F6B /* SchedulePresenterLeaveFeedbackCommandTests.swift */,
+			);
+			path = "Leave Feedback Command";
+			sourceTree = "<group>";
+		};
 		CABF03B22041BC770028BD62 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -5303,6 +5313,7 @@
 				CAF1951C24688EA9005DFBBE /* Favourite Command */,
 				CAF1950724688EA9005DFBBE /* Favourite State Changes */,
 				CAF1951524688EA9005DFBBE /* Icon Presentation */,
+				CABCDE7924C9E29F00500F6B /* Leave Feedback Command */,
 				CABCDE7024C9D88200500F6B /* Searching */,
 				CABCDE7324C9DB0400500F6B /* Share Command */,
 				CAF1952324688EA9005DFBBE /* Test Doubles */,
@@ -7531,6 +7542,7 @@
 				CAD6882A208A107500B31F5F /* UserWidgetComponentViewModel+RandomValueProviding.swift in Sources */,
 				CAF1980D24688EAB005DFBBE /* WhenSceneSelectsDealer_DealersPresenterShould.swift in Sources */,
 				CAF196DE24688EAA005DFBBE /* WhenScheduleSceneHasNotLoaded_SchedulePresenterShould.swift in Sources */,
+				CABCDE7B24C9E2B900500F6B /* SchedulePresenterLeaveFeedbackCommandTests.swift in Sources */,
 				CAF196CE24688EAA005DFBBE /* CapturingAnnouncementDetailScene.swift in Sources */,
 				CAF1983A24688EAB005DFBBE /* AdditionalServicesPresenterTestBuilder.swift in Sources */,
 				CAF1972924688EAA005DFBBE /* CapturingKnowledgeDetailScene.swift in Sources */,

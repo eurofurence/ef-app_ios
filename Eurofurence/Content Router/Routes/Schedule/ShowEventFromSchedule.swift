@@ -12,4 +12,8 @@ public struct ShowEventFromSchedule: ScheduleComponentDelegate {
         try? router.route(EventContentRepresentation(identifier: identifier))
     }
     
+    public func scheduleComponentDidRequestPresentationToLeaveFeedback(for event: EventIdentifier) {
+        
+    }
+    
 }

@@ -303,6 +303,7 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory, EventsSe
             isDealersDenEvent = event.isDealersDen
             isMainStageEvent = event.isMainStage
             isPhotoshootEvent = event.isPhotoshoot
+            isAcceptingFeedback = false
             
             event.add(self)
         }
@@ -320,6 +321,7 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory, EventsSe
         var isDealersDenEvent: Bool
         var isMainStageEvent: Bool
         var isPhotoshootEvent: Bool
+        var isAcceptingFeedback: Bool
         
         private weak var observer: ScheduleEventViewModelObserver?
         

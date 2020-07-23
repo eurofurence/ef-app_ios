@@ -34,20 +34,24 @@ final class StubScheduleEventViewModel: ScheduleEventViewModelProtocol {
     var isDealersDenEvent: Bool
     var isMainStageEvent: Bool
     var isPhotoshootEvent: Bool
+    var isAcceptingFeedback: Bool
 
-    init(title: String,
-         startTime: String,
-         endTime: String,
-         location: String,
-         bannerGraphicPNGData: Data?,
-         isFavourite: Bool,
-         isSponsorOnly: Bool,
-         isSuperSponsorOnly: Bool,
-         isArtShow: Bool,
-         isKageEvent: Bool,
-         isDealersDenEvent: Bool,
-         isMainStageEvent: Bool,
-         isPhotoshootEvent: Bool) {
+    init(
+        title: String,
+        startTime: String,
+        endTime: String,
+        location: String,
+        bannerGraphicPNGData: Data?,
+        isFavourite: Bool,
+        isSponsorOnly: Bool,
+        isSuperSponsorOnly: Bool,
+        isArtShow: Bool,
+        isKageEvent: Bool,
+        isDealersDenEvent: Bool,
+        isMainStageEvent: Bool,
+        isPhotoshootEvent: Bool,
+        isAcceptingFeedback: Bool
+    ) {
         self.title = title
         self.startTime = startTime
         self.endTime = endTime
@@ -61,6 +65,7 @@ final class StubScheduleEventViewModel: ScheduleEventViewModelProtocol {
         self.isDealersDenEvent = isDealersDenEvent
         self.isMainStageEvent = isMainStageEvent
         self.isPhotoshootEvent = isPhotoshootEvent
+        self.isAcceptingFeedback = isAcceptingFeedback
     }
     
     private var observers = [ScheduleEventViewModelObserver]()
@@ -88,19 +93,22 @@ final class StubScheduleEventViewModel: ScheduleEventViewModelProtocol {
 extension StubScheduleEventViewModel: RandomValueProviding {
 
     static var random: StubScheduleEventViewModel {
-        return StubScheduleEventViewModel(title: .random,
-                                          startTime: .random,
-                                          endTime: .random,
-                                          location: .random,
-                                          bannerGraphicPNGData: .random,
-                                          isFavourite: .random,
-                                          isSponsorOnly: .random,
-                                          isSuperSponsorOnly: .random,
-                                          isArtShow: .random,
-                                          isKageEvent: .random,
-                                          isDealersDenEvent: .random,
-                                          isMainStageEvent: .random,
-                                          isPhotoshootEvent: .random)
+        return StubScheduleEventViewModel(
+            title: .random,
+            startTime: .random,
+            endTime: .random,
+            location: .random,
+            bannerGraphicPNGData: .random,
+            isFavourite: .random,
+            isSponsorOnly: .random,
+            isSuperSponsorOnly: .random,
+            isArtShow: .random,
+            isKageEvent: .random,
+            isDealersDenEvent: .random,
+            isMainStageEvent: .random,
+            isPhotoshootEvent: .random,
+            isAcceptingFeedback: .random
+        )
     }
 
 }

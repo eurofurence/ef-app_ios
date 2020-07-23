@@ -125,10 +125,12 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
     private class EventsBinder: ScheduleSceneBinder {
 
         private let viewModels: [ScheduleEventGroupViewModel]
+        private let leaveFeedbackAction: (IndexPath) -> Void
         private var eventBinders = [IndexPath: EventComponentBinder]()
 
-        init(viewModels: [ScheduleEventGroupViewModel]) {
+        init(viewModels: [ScheduleEventGroupViewModel], leaveFeedbackAction: @escaping (IndexPath) -> Void) {
             self.viewModels = viewModels
+            self.leaveFeedbackAction = leaveFeedbackAction
         }
 
         func bind(_ header: ScheduleEventGroupHeader, forGroupAt index: Int) {
@@ -170,6 +172,16 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
                 sfSymbol: "square.and.arrow.up",
                 run: event.share(_:)
             ))
+            
+            if event.isAcceptingFeedback {
+                commands.append(ContextualCommand(
+                    title: .leaveFeedback,
+                    sfSymbol: "square.and.pencil",
+                    run: { (_) in
+                        self.leaveFeedbackAction(indexPath)
+                    }
+                ))
+            }
             
             return ContextualCommands(commands: commands)
         }
@@ -279,14 +291,19 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
 
     func scheduleViewModelDidUpdateEvents(_ events: [ScheduleEventGroupViewModel]) {
         let numberOfItemsPerGroup = events.map(\.events.count)
-        let binder = EventsBinder(viewModels: events)
+        let binder = EventsBinder(viewModels: events, leaveFeedbackAction: leaveFeedbackForEvent(at:))
         scene.bind(numberOfItemsPerSection: numberOfItemsPerGroup, using: binder)
     }
 
     func scheduleSearchResultsUpdated(_ results: [ScheduleEventGroupViewModel]) {
         let numberOfItemsPerGroup = results.map(\.events.count)
-        let binder = EventsBinder(viewModels: results)
+        let binder = EventsBinder(viewModels: results, leaveFeedbackAction: leaveFeedbackForEvent(at:))
         scene.bindSearchResults(numberOfItemsPerSection: numberOfItemsPerGroup, using: binder)
+    }
+    
+    private func leaveFeedbackForEvent(at indexPath: IndexPath) {
+        guard let identifier = viewModel?.identifierForEvent(at: indexPath) else { return }
+        delegate.scheduleComponentDidRequestPresentationToLeaveFeedback(for: identifier)
     }
 
 }
