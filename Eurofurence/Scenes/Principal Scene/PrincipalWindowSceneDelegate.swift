@@ -19,4 +19,8 @@ class PrincipalWindowSceneDelegate: NSObject, UIWindowSceneDelegate {
         }
     }
     
+    func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
+        Application.resume(activity: userActivity)
+    }
+    
 }
