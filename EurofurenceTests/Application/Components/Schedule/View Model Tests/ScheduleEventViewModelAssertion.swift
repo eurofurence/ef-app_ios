@@ -29,6 +29,7 @@ class ScheduleEventViewModelAssertion: Assertion {
         assert(viewModel.isDealersDenEvent, isEqualTo: event.isDealersDen)
         assert(viewModel.isMainStageEvent, isEqualTo: event.isMainStage)
         assert(viewModel.isPhotoshootEvent, isEqualTo: event.isPhotoshoot)
+        assert(viewModel.isAcceptingFeedback, isEqualTo: event.isAcceptingFeedback)
     }
 
 }

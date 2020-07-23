@@ -372,8 +372,8 @@
 		CA6375B2208E02E300536BE2 /* DealersScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6375B1208E02E300536BE2 /* DealersScene.swift */; };
 		CA6375B4208E039100536BE2 /* DealersComponentFactoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6375B3208E039100536BE2 /* DealersComponentFactoryImpl.swift */; };
 		CA63A741245DB7E000E4B313 /* RouterConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63A740245DB7E000E4B313 /* RouterConfigurator.swift */; };
-		CA63A744245DB94F00E4B313 /* ShowEventFromScheduleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63A743245DB94F00E4B313 /* ShowEventFromScheduleTests.swift */; };
-		CA63A747245DBB3D00E4B313 /* ShowEventFromSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63A746245DBB3D00E4B313 /* ShowEventFromSchedule.swift */; };
+		CA63A744245DB94F00E4B313 /* ScheduleSubrouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63A743245DB94F00E4B313 /* ScheduleSubrouterTests.swift */; };
+		CA63A747245DBB3D00E4B313 /* ScheduleSubrouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63A746245DBB3D00E4B313 /* ScheduleSubrouter.swift */; };
 		CA63A74A245DBD5100E4B313 /* ShowDealerFromDealersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63A749245DBD5100E4B313 /* ShowDealerFromDealersTests.swift */; };
 		CA63A74D245DBE4500E4B313 /* ShowDealerFromDealers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63A74C245DBE4500E4B313 /* ShowDealerFromDealers.swift */; };
 		CA63A750245DC13800E4B313 /* KnowledgeGroupContentRouteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63A74F245DC13800E4B313 /* KnowledgeGroupContentRouteTests.swift */; };
@@ -612,6 +612,11 @@
 		CABCDE6824C9C78000500F6B /* EmbeddedEventContentRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABCDE6724C9C78000500F6B /* EmbeddedEventContentRepresentation.swift */; };
 		CABCDE6A24C9C79300500F6B /* EmbeddedEventContentRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABCDE6924C9C79300500F6B /* EmbeddedEventContentRoute.swift */; };
 		CABCDE6C24C9C7BD00500F6B /* EmbeddedEventContentRouteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABCDE6B24C9C7BD00500F6B /* EmbeddedEventContentRouteTests.swift */; };
+		CABCDE6F24C9D58500500F6B /* ContextualCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABCDE6E24C9D58500500F6B /* ContextualCommand.swift */; };
+		CABCDE7224C9D98B00500F6B /* ContextualCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABCDE7124C9D98B00500F6B /* ContextualCommands.swift */; };
+		CABCDE7524C9DB1D00500F6B /* SchedulePresenterShareCommandTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABCDE7424C9DB1D00500F6B /* SchedulePresenterShareCommandTests.swift */; };
+		CABCDE7824C9DD5900500F6B /* ScheduleEventViewModelSharingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABCDE7724C9DD5900500F6B /* ScheduleEventViewModelSharingTests.swift */; };
+		CABCDE7B24C9E2B900500F6B /* SchedulePresenterLeaveFeedbackCommandTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABCDE7A24C9E2B900500F6B /* SchedulePresenterLeaveFeedbackCommandTests.swift */; };
 		CABF03B42041BC870028BD62 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF03B32041BC870028BD62 /* UITableView+Extensions.swift */; };
 		CABF03C52041C31A0028BD62 /* DefaultKnowledgeGroupsViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF03C42041C31A0028BD62 /* DefaultKnowledgeGroupsViewModelFactory.swift */; };
 		CAC1E12B1F5040E100195513 /* NewsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E12A1F5040E100195513 /* NewsScene.swift */; };
@@ -1564,8 +1569,8 @@
 		CA6375B1208E02E300536BE2 /* DealersScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersScene.swift; sourceTree = "<group>"; };
 		CA6375B3208E039100536BE2 /* DealersComponentFactoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersComponentFactoryImpl.swift; sourceTree = "<group>"; };
 		CA63A740245DB7E000E4B313 /* RouterConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterConfigurator.swift; sourceTree = "<group>"; };
-		CA63A743245DB94F00E4B313 /* ShowEventFromScheduleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEventFromScheduleTests.swift; sourceTree = "<group>"; };
-		CA63A746245DBB3D00E4B313 /* ShowEventFromSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEventFromSchedule.swift; sourceTree = "<group>"; };
+		CA63A743245DB94F00E4B313 /* ScheduleSubrouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleSubrouterTests.swift; sourceTree = "<group>"; };
+		CA63A746245DBB3D00E4B313 /* ScheduleSubrouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleSubrouter.swift; sourceTree = "<group>"; };
 		CA63A749245DBD5100E4B313 /* ShowDealerFromDealersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDealerFromDealersTests.swift; sourceTree = "<group>"; };
 		CA63A74C245DBE4500E4B313 /* ShowDealerFromDealers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDealerFromDealers.swift; sourceTree = "<group>"; };
 		CA63A74F245DC13800E4B313 /* KnowledgeGroupContentRouteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeGroupContentRouteTests.swift; sourceTree = "<group>"; };
@@ -1798,6 +1803,11 @@
 		CABCDE6724C9C78000500F6B /* EmbeddedEventContentRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedEventContentRepresentation.swift; sourceTree = "<group>"; };
 		CABCDE6924C9C79300500F6B /* EmbeddedEventContentRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedEventContentRoute.swift; sourceTree = "<group>"; };
 		CABCDE6B24C9C7BD00500F6B /* EmbeddedEventContentRouteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedEventContentRouteTests.swift; sourceTree = "<group>"; };
+		CABCDE6E24C9D58500500F6B /* ContextualCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextualCommand.swift; sourceTree = "<group>"; };
+		CABCDE7124C9D98B00500F6B /* ContextualCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextualCommands.swift; sourceTree = "<group>"; };
+		CABCDE7424C9DB1D00500F6B /* SchedulePresenterShareCommandTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePresenterShareCommandTests.swift; sourceTree = "<group>"; };
+		CABCDE7724C9DD5900500F6B /* ScheduleEventViewModelSharingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleEventViewModelSharingTests.swift; sourceTree = "<group>"; };
+		CABCDE7A24C9E2B900500F6B /* SchedulePresenterLeaveFeedbackCommandTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePresenterLeaveFeedbackCommandTests.swift; sourceTree = "<group>"; };
 		CABF03B32041BC870028BD62 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		CABF03C42041C31A0028BD62 /* DefaultKnowledgeGroupsViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultKnowledgeGroupsViewModelFactory.swift; sourceTree = "<group>"; };
 		CAC1B3842014E93C00ED8B06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -2732,6 +2742,7 @@
 		CA00AE6320D1782600C2FBB0 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				CABCDE6D24C9D57A00500F6B /* Commands */,
 				CAF1A675211E4BF400513226 /* Formatters */,
 				20597CF6210CDDE80003D6C3 /* Markdown Rendering */,
 				CAF1A673211E4B0700513226 /* Services */,
@@ -3668,7 +3679,7 @@
 		CA63A742245DB93C00E4B313 /* Schedule */ = {
 			isa = PBXGroup;
 			children = (
-				CA63A743245DB94F00E4B313 /* ShowEventFromScheduleTests.swift */,
+				CA63A743245DB94F00E4B313 /* ScheduleSubrouterTests.swift */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -3676,7 +3687,7 @@
 		CA63A745245DBB3600E4B313 /* Schedule */ = {
 			isa = PBXGroup;
 			children = (
-				CA63A746245DBB3D00E4B313 /* ShowEventFromSchedule.swift */,
+				CA63A746245DBB3D00E4B313 /* ScheduleSubrouter.swift */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -4596,6 +4607,52 @@
 			path = "Embedded Event";
 			sourceTree = "<group>";
 		};
+		CABCDE6D24C9D57A00500F6B /* Commands */ = {
+			isa = PBXGroup;
+			children = (
+				CABCDE6E24C9D58500500F6B /* ContextualCommand.swift */,
+				CABCDE7124C9D98B00500F6B /* ContextualCommands.swift */,
+			);
+			path = Commands;
+			sourceTree = "<group>";
+		};
+		CABCDE7024C9D88200500F6B /* Searching */ = {
+			isa = PBXGroup;
+			children = (
+				CAF1951124688EA9005DFBBE /* WhenBindingEventFromSearchResult_SchedulePresenterShould.swift */,
+				CAF1953024688EA9005DFBBE /* WhenBindingGroupFromSearchResult_SchedulePresenterShould.swift */,
+				CAF1952224688EA9005DFBBE /* WhenSceneChangesSearchScopeToAllEvents_SchedulePresenterShould.swift */,
+				CAF1950624688EA9005DFBBE /* WhenSceneChangesSearchScopeToFavouriteEvents_SchedulePresenterShould.swift */,
+				CAF1950C24688EA9005DFBBE /* WhenSceneSelectsEventFromSearchViewModel_SchedulePresenterShould.swift */,
+				CAF1950E24688EA9005DFBBE /* WhenSceneUpdatesSearchQuery_SchedulePresenterShould.swift */,
+			);
+			path = Searching;
+			sourceTree = "<group>";
+		};
+		CABCDE7324C9DB0400500F6B /* Share Command */ = {
+			isa = PBXGroup;
+			children = (
+				CABCDE7424C9DB1D00500F6B /* SchedulePresenterShareCommandTests.swift */,
+			);
+			path = "Share Command";
+			sourceTree = "<group>";
+		};
+		CABCDE7624C9DD4300500F6B /* Sharing Event */ = {
+			isa = PBXGroup;
+			children = (
+				CABCDE7724C9DD5900500F6B /* ScheduleEventViewModelSharingTests.swift */,
+			);
+			path = "Sharing Event";
+			sourceTree = "<group>";
+		};
+		CABCDE7924C9E29F00500F6B /* Leave Feedback Command */ = {
+			isa = PBXGroup;
+			children = (
+				CABCDE7A24C9E2B900500F6B /* SchedulePresenterLeaveFeedbackCommandTests.swift */,
+			);
+			path = "Leave Feedback Command";
+			sourceTree = "<group>";
+		};
 		CABF03B22041BC770028BD62 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -5245,22 +5302,20 @@
 				CAF1950A24688EA9005DFBBE /* WhenBindingDay_SchedulePresenterShould.swift */,
 				CAF1950424688EA9005DFBBE /* WhenBindingEvent_SchedulePresenterShould.swift */,
 				CAF1951224688EA9005DFBBE /* WhenBindingEvent_WithNoPoster_SchedulePresenterShould.swift */,
-				CAF1951124688EA9005DFBBE /* WhenBindingEventFromSearchResult_SchedulePresenterShould.swift */,
 				CAF1950F24688EA9005DFBBE /* WhenBindingEventGroup_SchedulePresenterShould.swift */,
-				CAF1953024688EA9005DFBBE /* WhenBindingGroupFromSearchResult_SchedulePresenterShould.swift */,
 				CAF1951424688EA9005DFBBE /* WhenBuildingScheduleModule.swift */,
 				CAF1950524688EA9005DFBBE /* WhenInstigatingPullToRefreshAction_SchedulePresenterShould.swift */,
-				CAF1952224688EA9005DFBBE /* WhenSceneChangesSearchScopeToAllEvents_SchedulePresenterShould.swift */,
-				CAF1950624688EA9005DFBBE /* WhenSceneChangesSearchScopeToFavouriteEvents_SchedulePresenterShould.swift */,
 				CAF1952F24688EA9005DFBBE /* WhenSceneSelectsEvent_SchedulePresenterShould.swift */,
-				CAF1950C24688EA9005DFBBE /* WhenSceneSelectsEventFromSearchViewModel_SchedulePresenterShould.swift */,
-				CAF1950E24688EA9005DFBBE /* WhenSceneUpdatesSearchQuery_SchedulePresenterShould.swift */,
 				CAF1950B24688EA9005DFBBE /* WhenScheduleSceneHasNotLoaded_SchedulePresenterShould.swift */,
 				CAF1951324688EA9005DFBBE /* WhenScheduleSceneLoads_SchedulePresenterShould.swift */,
 				CAF1950D24688EA9005DFBBE /* WhenScheduleSceneSelectsDay_SchedulePresenterShould.swift */,
 				CAF1953124688EA9005DFBBE /* WhenSearchableViewModelProducesNewResult_SchedulePresenterShould.swift */,
+				CAF1951C24688EA9005DFBBE /* Favourite Command */,
 				CAF1950724688EA9005DFBBE /* Favourite State Changes */,
 				CAF1951524688EA9005DFBBE /* Icon Presentation */,
+				CABCDE7924C9E29F00500F6B /* Leave Feedback Command */,
+				CABCDE7024C9D88200500F6B /* Searching */,
+				CABCDE7324C9DB0400500F6B /* Share Command */,
 				CAF1952324688EA9005DFBBE /* Test Doubles */,
 			);
 			path = "Presenter Tests";
@@ -5285,12 +5340,11 @@
 				CAF1951A24688EA9005DFBBE /* SchedulePresenterPhotoshootIconBindingTests.swift */,
 				CAF1951724688EA9005DFBBE /* SchedulePresenterSponsorIconBindingTests.swift */,
 				CAF1951824688EA9005DFBBE /* SchedulePresenterSuperSponsorIconBindingTests.swift */,
-				CAF1951C24688EA9005DFBBE /* Favourite */,
 			);
 			path = "Icon Presentation";
 			sourceTree = "<group>";
 		};
-		CAF1951C24688EA9005DFBBE /* Favourite */ = {
+		CAF1951C24688EA9005DFBBE /* Favourite Command */ = {
 			isa = PBXGroup;
 			children = (
 				CAF1952024688EA9005DFBBE /* WhenBindingFavouriteEvent_FromSearchResult_SchedulePresenterShould.swift */,
@@ -5298,7 +5352,7 @@
 				CAF1951E24688EA9005DFBBE /* WhenBindingNonFavouriteEvent_FromSearchResult_SchedulePresenterShould.swift */,
 				CAF1951D24688EA9005DFBBE /* WhenBindingNonFavouriteEvent_SchedulePresenterShould.swift */,
 			);
-			path = Favourite;
+			path = "Favourite Command";
 			sourceTree = "<group>";
 		};
 		CAF1952324688EA9005DFBBE /* Test Doubles */ = {
@@ -5337,6 +5391,7 @@
 				CAF1953924688EA9005DFBBE /* WhenToldToRefresh_ScheduleViewModelShould.swift */,
 				CAF1953624688EA9005DFBBE /* WhenViewModelIsToldToShowEventsForSpecificDay_ScheduleViewModelFactoryShould.swift */,
 				CAF1954824688EA9005DFBBE /* Favourite State Propogation */,
+				CABCDE7624C9DD4300500F6B /* Sharing Event */,
 				CAF1954324688EA9005DFBBE /* Test Doubles */,
 				CAF1953C24688EA9005DFBBE /* Toggling Favourite State */,
 			);
@@ -6961,7 +7016,7 @@
 				CA6A8D8720E2BB90007536CD /* MapsViewModel.swift in Sources */,
 				CAA2887E245C72CA0090B663 /* MessagesContentRepresentation.swift in Sources */,
 				CA728465209D0FAF007D912A /* AnnouncementDetailScene.swift in Sources */,
-				CA63A747245DBB3D00E4B313 /* ShowEventFromSchedule.swift in Sources */,
+				CA63A747245DBB3D00E4B313 /* ScheduleSubrouter.swift in Sources */,
 				CA50B1BA226111220091E425 /* EventFeedbackViewModel.swift in Sources */,
 				CA630BD6229F145E00754C27 /* EventIntentDonor.swift in Sources */,
 				CAD3BDC7205FE88900C91E6E /* SafariWebComponentFactory.swift in Sources */,
@@ -7222,6 +7277,7 @@
 				CACF1E8E20B352B800D904B5 /* FoundationDateRangeFormatter.swift in Sources */,
 				CA36A48C20D92E9000EE6537 /* DefaultDealersViewModelFactory.swift in Sources */,
 				CA4010982110818C0056E16C /* StoryboardKnowledgeGroupEntriesSceneFactory.swift in Sources */,
+				CABCDE7224C9D98B00500F6B /* ContextualCommands.swift in Sources */,
 				CAA28880245C72D60090B663 /* MessagesContentRoute.swift in Sources */,
 				CACF1E8020B212BE00D904B5 /* EventSummaryComponent.swift in Sources */,
 				20E87E17210A34D800B55A04 /* DownMarkdownRenderer.swift in Sources */,
@@ -7235,6 +7291,7 @@
 				CA40109521107FBB0056E16C /* KnowledgeGroupEntriesComponentDelegate.swift in Sources */,
 				CA6A9FF71FD5E7850092C6DB /* LoginViewController.swift in Sources */,
 				CA4D934D245EE03E006FA832 /* URLContentRepresentation.swift in Sources */,
+				CABCDE6F24C9D58500500F6B /* ContextualCommand.swift in Sources */,
 				CA08157A20D3877700F750D4 /* FoundationShortFormDateFormatter.swift in Sources */,
 				CA00AE6020D1746900C2FBB0 /* ScheduleEventComponent.swift in Sources */,
 				CAD4F778245C5B9F0036ADAF /* AnnouncementsContentRoute.swift in Sources */,
@@ -7485,6 +7542,7 @@
 				CAD6882A208A107500B31F5F /* UserWidgetComponentViewModel+RandomValueProviding.swift in Sources */,
 				CAF1980D24688EAB005DFBBE /* WhenSceneSelectsDealer_DealersPresenterShould.swift in Sources */,
 				CAF196DE24688EAA005DFBBE /* WhenScheduleSceneHasNotLoaded_SchedulePresenterShould.swift in Sources */,
+				CABCDE7B24C9E2B900500F6B /* SchedulePresenterLeaveFeedbackCommandTests.swift in Sources */,
 				CAF196CE24688EAA005DFBBE /* CapturingAnnouncementDetailScene.swift in Sources */,
 				CAF1983A24688EAB005DFBBE /* AdditionalServicesPresenterTestBuilder.swift in Sources */,
 				CAF1972924688EAA005DFBBE /* CapturingKnowledgeDetailScene.swift in Sources */,
@@ -7522,7 +7580,7 @@
 				CAF197DF24688EAA005DFBBE /* WhenBuildingKnowledgePresenter.swift in Sources */,
 				CAF1978524688EAA005DFBBE /* WhenPreparingViewModel_ForEventWithBannerButNoPoster_EventDetailViewModelFactoryShould.swift in Sources */,
 				CAF1974224688EAA005DFBBE /* StubKnowledgeGroupEntriesViewModel.swift in Sources */,
-				CA63A744245DB94F00E4B313 /* ShowEventFromScheduleTests.swift in Sources */,
+				CA63A744245DB94F00E4B313 /* ScheduleSubrouterTests.swift in Sources */,
 				CA6F75D8246956DB001FFB74 /* StubSponsorsOnlyEventViewModel.swift in Sources */,
 				CAF1974A24688EAA005DFBBE /* FakeMapDetailInteractor.swift in Sources */,
 				CAF1976224688EAA005DFBBE /* CapturingAnnouncementsListViewModelDelegate.swift in Sources */,
@@ -7602,6 +7660,7 @@
 				CAF197CD24688EAA005DFBBE /* WhenEventFeedbackSceneCancelsFeedback_WithFeedbackEntered_EventFeedbackPresenterShould.swift in Sources */,
 				CAF1980A24688EAB005DFBBE /* WhenAutofillingPassword_LoginPresenterShould.swift in Sources */,
 				CAF1970D24688EAA005DFBBE /* WhenPreparingViewModel_ScheduleViewModelFactoryShould.swift in Sources */,
+				CABCDE7824C9DD5900500F6B /* ScheduleEventViewModelSharingTests.swift in Sources */,
 				CAF1972024688EAA005DFBBE /* WhenRefreshingMessages.swift in Sources */,
 				78C86D791F12ADF8003A20E6 /* CapturingSplashScene.swift in Sources */,
 				CAF1979324688EAA005DFBBE /* CapturingEventActionViewModelVisitor.swift in Sources */,
@@ -7686,6 +7745,7 @@
 				CA82DB5422D6631F00467C2F /* CapturingShareService.swift in Sources */,
 				CAF1979424688EAA005DFBBE /* CapturingEventDetailViewModelVisitor.swift in Sources */,
 				CAF3C74E1F9FC72C0008F027 /* StubNewsSceneFactory.swift in Sources */,
+				CABCDE7524C9DB1D00500F6B /* SchedulePresenterShareCommandTests.swift in Sources */,
 				CAF196C324688EAA005DFBBE /* WhenBindingMap_MapsPresenterShould.swift in Sources */,
 				CAF1979F24688EAA005DFBBE /* WhenBindingConventionCountdown_NewsPresenterShould.swift in Sources */,
 				CAF1979024688EAA005DFBBE /* WhenInvokingShareEventCommand.swift in Sources */,

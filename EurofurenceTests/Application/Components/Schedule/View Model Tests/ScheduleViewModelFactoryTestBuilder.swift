@@ -31,6 +31,7 @@ class ScheduleViewModelFactoryTestBuilder {
         let viewModelDelegate = CapturingScheduleViewModelDelegate()
         let searchViewModelDelegate = CapturingScheduleSearchViewModelDelegate()
         var refreshService: CapturingRefreshService
+        var shareService: CapturingShareService
     }
 
     private var eventsService: FakeEventsService
@@ -50,18 +51,25 @@ class ScheduleViewModelFactoryTestBuilder {
         let shortFormDateFormatter = FakeShortFormDateFormatter()
         let shortFormDayAndTimeFormatter = FakeShortFormDayAndTimeFormatter()
         let refreshService = CapturingRefreshService()
-        let viewModelFactory = DefaultScheduleViewModelFactory(eventsService: eventsService,
-                                                   hoursDateFormatter: hoursFormatter,
-                                                   shortFormDateFormatter: shortFormDateFormatter,
-                                                   shortFormDayAndTimeFormatter: shortFormDayAndTimeFormatter,
-                                                   refreshService: refreshService)
+        let shareService = CapturingShareService()
+        let viewModelFactory = DefaultScheduleViewModelFactory(
+            eventsService: eventsService,
+            hoursDateFormatter: hoursFormatter,
+            shortFormDateFormatter: shortFormDateFormatter,
+            shortFormDayAndTimeFormatter: shortFormDayAndTimeFormatter,
+            refreshService: refreshService,
+            shareService: shareService
+        )
 
-        return Context(viewModelFactory: viewModelFactory,
-                       eventsService: eventsService,
-                       hoursFormatter: hoursFormatter,
-                       shortFormDateFormatter: shortFormDateFormatter,
-                       shortFormDayAndTimeFormatter: shortFormDayAndTimeFormatter,
-                       refreshService: refreshService)
+        return Context(
+            viewModelFactory: viewModelFactory,
+            eventsService: eventsService,
+            hoursFormatter: hoursFormatter,
+            shortFormDateFormatter: shortFormDateFormatter,
+            shortFormDayAndTimeFormatter: shortFormDayAndTimeFormatter,
+            refreshService: refreshService,
+            shareService: shareService
+        )
     }
 
 }

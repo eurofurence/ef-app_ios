@@ -1,6 +1,6 @@
 import EurofurenceModel
 
-public struct ShowEventFromSchedule: ScheduleComponentDelegate {
+public struct ScheduleSubrouter: ScheduleComponentDelegate {
     
     private let router: ContentRouter
     
@@ -10,6 +10,10 @@ public struct ShowEventFromSchedule: ScheduleComponentDelegate {
     
     public func scheduleComponentDidSelectEvent(identifier: EventIdentifier) {
         try? router.route(EventContentRepresentation(identifier: identifier))
+    }
+    
+    public func scheduleComponentDidRequestPresentationToLeaveFeedback(for event: EventIdentifier) {
+        try? router.route(EventFeedbackContentRepresentation(identifier: event))
     }
     
 }

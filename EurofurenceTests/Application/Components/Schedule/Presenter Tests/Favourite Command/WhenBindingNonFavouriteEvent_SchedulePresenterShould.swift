@@ -12,7 +12,7 @@ class WhenBindingNonFavouriteEvent_SchedulePresenterShould: XCTestCase {
         XCTAssertEqual(component.favouriteIconVisibility, .hidden)
     }
 
-    func testSupplyFavouriteActionInformation() {
+    func testSupplyFavouriteAction() throws {
         let eventViewModel = StubScheduleEventViewModel.random
         eventViewModel.isFavourite = false
         let eventGroupViewModel = ScheduleEventGroupViewModel(title: .random, events: [eventViewModel])
@@ -23,22 +23,13 @@ class WhenBindingNonFavouriteEvent_SchedulePresenterShould: XCTestCase {
         let searchResult = StubScheduleEventViewModel.random
         searchResult.isFavourite = false
         let indexPath = IndexPath(item: 0, section: 0)
-        let action = context.scene.binder?.eventActionForComponent(at: indexPath)
+        let commands = context.scene.binder?.eventActionsForComponent(at: indexPath)
+        
+        let action = try XCTUnwrap(commands?.command(titled: .favourite))
 
-        XCTAssertEqual(.favourite, action?.title)
-    }
-
-    func testTellViewModelToFavouriteEventAtIndexPathWhenInvokingAction() {
-        let eventViewModel = StubScheduleEventViewModel.random
-        eventViewModel.isFavourite = false
-        let eventGroupViewModel = ScheduleEventGroupViewModel(title: .random, events: [eventViewModel])
-        let viewModel = CapturingScheduleViewModel(days: .random, events: [eventGroupViewModel], currentDay: 0)
-        let viewModelFactory = FakeScheduleViewModelFactory(viewModel: viewModel)
-        let context = SchedulePresenterTestBuilder().with(viewModelFactory).build()
-        context.simulateSceneDidLoad()
-        let indexPath = IndexPath(item: 0, section: 0)
-        let action = context.scene.binder?.eventActionForComponent(at: indexPath)
-        action?.run()
+        XCTAssertEqual("heart.fill", action.sfSymbol)
+        
+        action.run(nil)
 
         XCTAssertTrue(eventViewModel.isFavourite, "Running the action should favourite the event")
     }

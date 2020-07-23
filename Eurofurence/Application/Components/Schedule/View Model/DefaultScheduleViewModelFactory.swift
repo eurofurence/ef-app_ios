@@ -15,19 +15,28 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory, EventsSe
         hoursDateFormatter: HoursDateFormatter,
         shortFormDateFormatter: ShortFormDateFormatter,
         shortFormDayAndTimeFormatter: ShortFormDayAndTimeFormatter,
-        refreshService: RefreshService
+        refreshService: RefreshService,
+        shareService: ShareService
     ) {
         let schedule = eventsService.makeEventsSchedule()
         let searchController = eventsService.makeEventsSearchController()
-        viewModel = ViewModel(schedule: schedule,
-                              eventsService: eventsService,
-                              hoursDateFormatter: hoursDateFormatter,
-                              shortFormDateFormatter: shortFormDateFormatter,
-                              refreshService: refreshService)
-        searchViewModel = SearchViewModel(searchController: searchController,
-                                          eventsService: eventsService,
-                                          shortFormDayAndTimeFormatter: shortFormDayAndTimeFormatter,
-                                          hoursDateFormatter: hoursDateFormatter)
+        
+        viewModel = ViewModel(
+            schedule: schedule,
+            eventsService: eventsService,
+            hoursDateFormatter: hoursDateFormatter,
+            shortFormDateFormatter: shortFormDateFormatter,
+            refreshService: refreshService,
+            shareService: shareService
+        )
+        
+        searchViewModel = SearchViewModel(
+            searchController: searchController,
+            eventsService: eventsService,
+            shortFormDayAndTimeFormatter: shortFormDayAndTimeFormatter,
+            hoursDateFormatter: hoursDateFormatter,
+            shareService: shareService
+        )
 
         eventsService.add(self)
     }
@@ -93,19 +102,24 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory, EventsSe
         private let hoursDateFormatter: HoursDateFormatter
         private let shortFormDateFormatter: ShortFormDateFormatter
         private let refreshService: RefreshService
+        private let shareService: ShareService
         private var events = [Event]()
         private var favouriteEvents = [EventIdentifier]()
 
-        init(schedule: EventsSchedule,
-             eventsService: EventsService,
-             hoursDateFormatter: HoursDateFormatter,
-             shortFormDateFormatter: ShortFormDateFormatter,
-             refreshService: RefreshService) {
+        init(
+            schedule: EventsSchedule,
+            eventsService: EventsService,
+            hoursDateFormatter: HoursDateFormatter,
+            shortFormDateFormatter: ShortFormDateFormatter,
+            refreshService: RefreshService,
+            shareService: ShareService
+        ) {
             self.schedule = schedule
             self.eventsService = eventsService
             self.hoursDateFormatter = hoursDateFormatter
             self.shortFormDateFormatter = shortFormDateFormatter
             self.refreshService = refreshService
+            self.shareService = shareService
 
             refreshService.add(self)
             schedule.setDelegate(self)
@@ -122,7 +136,7 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory, EventsSe
             eventGroupViewModels = rawModelGroups.map { (group) -> ScheduleEventGroupViewModel in
                 let title = hoursDateFormatter.hoursString(from: group.date)
                 let viewModels = group.events.map { (event) -> EventViewModel in
-                    return EventViewModel(event: event, hoursFormatter: hoursDateFormatter)
+                    return EventViewModel(event: event, hoursFormatter: hoursDateFormatter, shareService: shareService)
                 }
 
                 return ScheduleEventGroupViewModel(title: title, events: viewModels)
@@ -190,18 +204,23 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory, EventsSe
         private let eventsService: EventsService
         private let shortFormDayAndTimeFormatter: ShortFormDayAndTimeFormatter
         private let hoursDateFormatter: HoursDateFormatter
+        private let shareService: ShareService
         private var rawModelGroups = [EventsGroupedByDate]()
         private var searchResults = [Event]()
         private var favouriteEvents = [EventIdentifier]()
 
-        init(searchController: EventsSearchController,
-             eventsService: EventsService,
-             shortFormDayAndTimeFormatter: ShortFormDayAndTimeFormatter,
-             hoursDateFormatter: HoursDateFormatter) {
+        init(
+            searchController: EventsSearchController,
+            eventsService: EventsService,
+            shortFormDayAndTimeFormatter: ShortFormDayAndTimeFormatter,
+            hoursDateFormatter: HoursDateFormatter,
+            shareService: ShareService
+        ) {
             self.eventsService = eventsService
             self.searchController = searchController
             self.hoursDateFormatter = hoursDateFormatter
             self.shortFormDayAndTimeFormatter = shortFormDayAndTimeFormatter
+            self.shareService = shareService
 
             searchController.setResultsDelegate(self)
         }
@@ -255,7 +274,7 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory, EventsSe
         }
 
         private func makeEventViewModel(_ event: Event) -> EventViewModel {
-            return EventViewModel(event: event, hoursFormatter: hoursDateFormatter)
+            return EventViewModel(event: event, hoursFormatter: hoursDateFormatter, shareService: shareService)
         }
 
     }
@@ -264,10 +283,12 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory, EventsSe
         
         private let event: Event
         private let hoursFormatter: HoursDateFormatter
+        private let shareService: ShareService
         
-        init(event: Event, hoursFormatter: HoursDateFormatter) {
+        init(event: Event, hoursFormatter: HoursDateFormatter, shareService: ShareService) {
             self.event = event
             self.hoursFormatter = hoursFormatter
+            self.shareService = shareService
             
             title = event.title
             startTime = hoursFormatter.hoursString(from: event.startDate)
@@ -282,6 +303,7 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory, EventsSe
             isDealersDenEvent = event.isDealersDen
             isMainStageEvent = event.isMainStage
             isPhotoshootEvent = event.isPhotoshoot
+            isAcceptingFeedback = event.isAcceptingFeedback
             
             event.add(self)
         }
@@ -299,6 +321,7 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory, EventsSe
         var isDealersDenEvent: Bool
         var isMainStageEvent: Bool
         var isPhotoshootEvent: Bool
+        var isAcceptingFeedback: Bool
         
         private weak var observer: ScheduleEventViewModelObserver?
         
@@ -312,6 +335,11 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory, EventsSe
         
         func unfavourite() {
             event.unfavourite()
+        }
+        
+        func share(_ sender: Any) {
+            let eventURL = event.makeContentURL()
+            shareService.share(eventURL, sender: sender)
         }
         
         func eventDidBecomeFavourite(_ event: Event) {

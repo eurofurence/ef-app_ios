@@ -15,10 +15,12 @@ public protocol ScheduleEventViewModelProtocol {
     var isDealersDenEvent: Bool { get }
     var isMainStageEvent: Bool { get }
     var isPhotoshootEvent: Bool { get }
+    var isAcceptingFeedback: Bool { get }
     
     func add(_ observer: ScheduleEventViewModelObserver)
     func favourite()
     func unfavourite()
+    func share(_ sender: Any)
 
 }
 

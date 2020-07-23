@@ -93,7 +93,7 @@ struct PrincipalWindowAssembler {
         
         let scheduleContentControllerFactory = ScheduleContentControllerFactory(
             scheduleComponentFactory: componentRegistry.scheduleComponentFactory,
-            scheduleComponentDelegate: ShowEventFromSchedule(router: router)
+            scheduleComponentDelegate: ScheduleSubrouter(router: router)
         )
         
         let dealersContentControllerFactory = DealersContentControllerFactory(

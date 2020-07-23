@@ -64,7 +64,8 @@ struct ComponentRegistry {
             hoursDateFormatter: FoundationHoursDateFormatter.shared,
             shortFormDateFormatter: FoundationShortFormDateFormatter.shared,
             shortFormDayAndTimeFormatter: FoundationShortFormDayAndTimeFormatter.shared,
-            refreshService: services.refresh
+            refreshService: services.refresh,
+            shareService: shareService
         )
         
         scheduleComponentFactory = ScheduleModuleBuilder(
