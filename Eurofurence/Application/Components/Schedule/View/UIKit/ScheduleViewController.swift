@@ -290,7 +290,8 @@ class ScheduleViewController: UIViewController,
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             onDidSelectRow(indexPath)
         }
-
+        
+#if !targetEnvironment(macCatalyst)
         func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
             guard let sender = tableView.cellForRow(at: indexPath) else { return nil }
             let actions = binder.eventActionsForComponent(at: indexPath)
@@ -301,6 +302,7 @@ class ScheduleViewController: UIViewController,
                 })
             }
         }
+#endif
         
         @available(iOS 13.0, *)
         func tableView(
