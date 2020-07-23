@@ -300,6 +300,23 @@ class ScheduleViewController: UIViewController,
             return [rowAction]
         }
         
+        @available(iOS 13.0, *)
+        func tableView(
+            _ tableView: UITableView,
+            contextMenuConfigurationForRowAt indexPath: IndexPath,
+            point: CGPoint
+        ) -> UIContextMenuConfiguration? {
+            let action = binder.eventActionForComponent(at: indexPath)
+            
+            return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { (_) in
+                UIMenu(title: "", image: nil, identifier: nil, options: .displayInline, children: [
+                    UIAction(title: action.title, handler: { (_) in
+                        action.run()
+                    })
+                ])
+            }
+        }
+        
         func scrollViewDidScroll(_ scrollView: UIScrollView) {
             onTableViewDidScroll(scrollView.contentOffset)
         }
