@@ -41,7 +41,7 @@ class WhenBindingFavouriteEvent_SchedulePresenterShould: XCTestCase {
         searchResult.isFavourite = false
         let indexPath = IndexPath(item: 0, section: 0)
         let action = context.scene.binder?.eventActionsForComponent(at: indexPath).first
-        action?.run()
+        action?.run(nil)
 
         XCTAssertFalse(eventViewModel.isFavourite, "Running the action should unfavourite the event")
     }

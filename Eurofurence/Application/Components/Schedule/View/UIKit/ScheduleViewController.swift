@@ -292,11 +292,12 @@ class ScheduleViewController: UIViewController,
         }
 
         func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+            guard let sender = tableView.cellForRow(at: indexPath) else { return nil }
             let actions = binder.eventActionsForComponent(at: indexPath)
             
             return actions.map { (action) in
                 UITableViewRowAction(style: .normal, title: action.title, handler: { (_, _) in
-                    action.run()
+                    action.run(sender)
                 })
             }
         }
@@ -307,9 +308,10 @@ class ScheduleViewController: UIViewController,
             contextMenuConfigurationForRowAt indexPath: IndexPath,
             point: CGPoint
         ) -> UIContextMenuConfiguration? {
+            guard let sender = tableView.cellForRow(at: indexPath) else { return nil }
             let actions = binder.eventActionsForComponent(at: indexPath)
             
-            let menuActions = actions.map(\.uiAction)
+            let menuActions = actions.map { $0.makeUIAction(sender: sender) }
             
             return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { (_) in
                 UIMenu(title: "", image: nil, identifier: nil, options: .displayInline, children: menuActions)

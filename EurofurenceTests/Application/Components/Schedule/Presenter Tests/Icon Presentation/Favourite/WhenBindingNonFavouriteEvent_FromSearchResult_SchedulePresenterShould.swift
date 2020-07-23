@@ -20,7 +20,7 @@ class WhenBindingNonFavouriteEvent_FromSearchResult_SchedulePresenterShould: XCT
         
         XCTAssertEqual(component.favouriteIconVisibility, .hidden)
         
-        action?.run()
+        action?.run(nil)
 
         XCTAssertEqual(.favourite, action?.title)
         XCTAssertTrue(searchResult.isFavourite, "Running the action should favourite the event")

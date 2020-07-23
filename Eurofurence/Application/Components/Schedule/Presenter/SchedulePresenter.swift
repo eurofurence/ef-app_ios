@@ -155,13 +155,13 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
                 actions.append(ContextualCommand(
                     title: .unfavourite,
                     sfSymbol: "heart.slash.fill",
-                    run: event.unfavourite
+                    run: { (_) in event.unfavourite() }
                 ))
             } else {
                 actions.append(ContextualCommand(
                     title: .favourite,
                     sfSymbol: "heart.fill",
-                    run: event.favourite
+                    run: { (_) in event.favourite() }
                 ))
             }
             

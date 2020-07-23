@@ -58,10 +58,11 @@ class ScheduleSearchTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         guard let actions = binder?.eventActionsForComponent(at: indexPath) else { return nil }
+        guard let sender = tableView.cellForRow(at: indexPath) else { return nil }
         
         return actions.map { (action) in
             UITableViewRowAction(style: .normal, title: action.title, handler: { (_, _) in
-                action.run()
+                action.run(sender)
             })
         }
     }
@@ -73,8 +74,9 @@ class ScheduleSearchTableViewController: UITableViewController {
         point: CGPoint
     ) -> UIContextMenuConfiguration? {
         guard let actions = binder?.eventActionsForComponent(at: indexPath) else { return nil }
+        guard let sender = tableView.cellForRow(at: indexPath) else { return nil }
         
-        let menuActions = actions.map(\.uiAction)
+        let menuActions = actions.map { $0.makeUIAction(sender: sender) }
         
         return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { (_) in
             UIMenu(title: "", image: nil, identifier: nil, options: .displayInline, children: menuActions)

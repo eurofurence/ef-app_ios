@@ -38,7 +38,7 @@ class WhenBindingFavouriteEvent_FromSearchResult_SchedulePresenterShould: XCTest
         searchViewModel.simulateSearchResultsUpdated(results)
         let indexPath = IndexPath(item: 0, section: 0)
         let action = context.scene.searchResultsBinder?.eventActionsForComponent(at: indexPath).first
-        action?.run()
+        action?.run(nil)
 
         XCTAssertFalse(searchResult.isFavourite, "Running the action should unfavourite the event")
     }
