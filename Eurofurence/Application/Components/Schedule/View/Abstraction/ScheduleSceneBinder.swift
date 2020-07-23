@@ -11,10 +11,12 @@ public protocol ScheduleSceneBinder {
 public struct ScheduleEventComponentAction {
     
     public var title: String
+    public var sfSymbol: String?
     public var run: () -> Void
     
-    public init(title: String, run: @escaping () -> Void) {
+    public init(title: String, sfSymbol: String? = nil, run: @escaping () -> Void) {
         self.title = title
+        self.sfSymbol = sfSymbol
         self.run = run
     }
     

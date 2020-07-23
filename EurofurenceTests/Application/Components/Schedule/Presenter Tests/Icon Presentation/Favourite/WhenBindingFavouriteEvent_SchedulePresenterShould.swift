@@ -26,6 +26,7 @@ class WhenBindingFavouriteEvent_SchedulePresenterShould: XCTestCase {
         let action = context.scene.binder?.eventActionsForComponent(at: indexPath).first
 
         XCTAssertEqual(.unfavourite, action?.title)
+        XCTAssertEqual("heart.slash.fill", action?.sfSymbol)
     }
 
     func testTellViewModelToUnfavouriteEventWhenInvokingAction() {
