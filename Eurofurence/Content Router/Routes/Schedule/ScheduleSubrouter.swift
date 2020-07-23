@@ -13,7 +13,7 @@ public struct ScheduleSubrouter: ScheduleComponentDelegate {
     }
     
     public func scheduleComponentDidRequestPresentationToLeaveFeedback(for event: EventIdentifier) {
-        
+        try? router.route(EventFeedbackContentRepresentation(identifier: event))
     }
     
 }

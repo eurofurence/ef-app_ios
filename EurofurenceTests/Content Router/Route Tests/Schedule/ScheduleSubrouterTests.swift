@@ -13,5 +13,14 @@ class ScheduleSubrouterTests: XCTestCase {
         
         router.assertRouted(to: EventContentRepresentation(identifier: event))
     }
+    
+    func testLeavingEventFeedback() {
+        let router = FakeContentRouter()
+        let navigator = ScheduleSubrouter(router: router)
+        let event = EventIdentifier.random
+        navigator.scheduleComponentDidRequestPresentationToLeaveFeedback(for: event)
+        
+        router.assertRouted(to: EventFeedbackContentRepresentation(identifier: event))
+    }
 
 }
