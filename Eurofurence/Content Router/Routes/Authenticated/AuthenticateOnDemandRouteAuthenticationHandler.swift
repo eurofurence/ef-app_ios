@@ -26,7 +26,7 @@ public class AuthenticateOnDemandRouteAuthenticationHandler: RouteAuthentication
         
         var handler: AuthenticateOnDemandRouteAuthenticationHandler
         
-        func userDidLogin(_ user: User) {
+        func userAuthenticated(_ user: User) {
             handler.enterAuthenticatedState()
         }
         
