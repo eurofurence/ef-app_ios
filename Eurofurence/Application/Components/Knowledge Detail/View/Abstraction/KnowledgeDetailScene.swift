@@ -1,6 +1,6 @@
 import Foundation
 
-public protocol KnowledgeDetailScene {
+public protocol KnowledgeDetailScene: AnyObject {
 
     func setKnowledgeDetailSceneDelegate(_ delegate: KnowledgeDetailSceneDelegate)
     func setKnowledgeDetailTitle(_ title: String)
