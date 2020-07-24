@@ -14,7 +14,7 @@ class KnowledgeGroupEntriesPresenter: KnowledgeGroupEntriesSceneDelegate {
 
     }
 
-    private let scene: KnowledgeGroupEntriesScene
+    private weak var scene: KnowledgeGroupEntriesScene?
     private let knowledgeGroupViewModelFactory: KnowledgeGroupViewModelFactory
     private let groupIdentifier: KnowledgeGroupIdentifier
     private let delegate: KnowledgeGroupEntriesComponentDelegate
@@ -46,8 +46,8 @@ class KnowledgeGroupEntriesPresenter: KnowledgeGroupEntriesSceneDelegate {
 
     private func viewModelReady(_ viewModel: KnowledgeGroupEntriesViewModel) {
         self.viewModel = viewModel
-        scene.setKnowledgeGroupTitle(viewModel.title)
-        scene.bind(numberOfEntries: viewModel.numberOfEntries, using: Binder(viewModel: viewModel))
+        scene?.setKnowledgeGroupTitle(viewModel.title)
+        scene?.bind(numberOfEntries: viewModel.numberOfEntries, using: Binder(viewModel: viewModel))
     }
 
 }
