@@ -3,6 +3,7 @@ import Foundation
 public protocol PrivateMessagesService {
 
     func add(_ observer: PrivateMessagesObserver)
+    func removeObserver(_ observer: PrivateMessagesObserver)
     
     func refreshMessages()
     
@@ -38,7 +39,7 @@ public enum PrivateMessageError: Error, LocalizedError {
     
 }
 
-public protocol PrivateMessagesObserver {
+public protocol PrivateMessagesObserver: AnyObject {
 
     func privateMessagesServiceDidFinishRefreshingMessages(messages: [Message])
     func privateMessagesServiceDidUpdateUnreadMessageCount(to unreadCount: Int)

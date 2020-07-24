@@ -1,8 +1,10 @@
 import UIKit
 
-class MessagesViewController: UIViewController,
-                              UITableViewDelegate,
-                              MessagesScene {
+class MessagesViewController: UIViewController, UITableViewDelegate, MessagesScene {
+    
+    deinit {
+        delegate?.messagesSceneFinalizing()
+    }
 
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var noMessagesPlaceholder: UIView!

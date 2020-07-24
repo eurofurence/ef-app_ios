@@ -5,7 +5,7 @@ class MessagesPresenter: MessagesSceneDelegate, PrivateMessagesObserver {
 
     // MARK: Properties
 
-    private let scene: MessagesScene
+    private weak var scene: MessagesScene?
     private let authenticationService: AuthenticationService
     private let privateMessagesService: PrivateMessagesService
     private let dateFormatter: DateFormatterProtocol
@@ -35,6 +35,10 @@ class MessagesPresenter: MessagesSceneDelegate, PrivateMessagesObserver {
         privateMessagesService.add(self)
         reloadPrivateMessages()
     }
+    
+    func messagesSceneFinalizing() {
+        privateMessagesService.removeObserver(self)
+    }
 
     func messagesSceneDidSelectMessage(at indexPath: IndexPath) {
         let message = presentedMessages[indexPath[1]]
@@ -46,16 +50,16 @@ class MessagesPresenter: MessagesSceneDelegate, PrivateMessagesObserver {
     }
 
     func messagesSceneDidTapLogoutButton() {
-        delegate.showLogoutAlert { (dismissAlert) in
-            self.authenticationService.logout { (result) in
+        delegate.showLogoutAlert { [weak self] (dismissAlert) in
+            self?.authenticationService.logout { (result) in
                 dismissAlert()
 
                 switch result {
                 case .success:
-                    self.delegate.messagesModuleDidRequestDismissal()
+                    self?.delegate.messagesModuleDidRequestDismissal()
 
                 case .failure:
-                    self.delegate.showLogoutFailedAlert()
+                    self?.delegate.showLogoutFailedAlert()
                 }
             }
         }
@@ -68,12 +72,12 @@ class MessagesPresenter: MessagesSceneDelegate, PrivateMessagesObserver {
     }
 
     func privateMessagesServiceDidFinishRefreshingMessages(messages: [Message]) {
-        scene.hideRefreshIndicator()
+        scene?.hideRefreshIndicator()
         presentMessages(messages)
     }
 
     func privateMessagesServiceDidFailToLoadMessages() {
-        scene.hideRefreshIndicator()
+        scene?.hideRefreshIndicator()
     }
 
     // MARK: Private
@@ -87,7 +91,7 @@ class MessagesPresenter: MessagesSceneDelegate, PrivateMessagesObserver {
     }
 
     private func reloadPrivateMessages() {
-        scene.showRefreshIndicator()
+        scene?.showRefreshIndicator()
         privateMessagesService.refreshMessages()
     }
 
@@ -95,14 +99,14 @@ class MessagesPresenter: MessagesSceneDelegate, PrivateMessagesObserver {
         presentedMessages = messages
 
         let binder = MessageBinder(messages: messages, dateFormatter: dateFormatter)
-        scene.bindMessages(count: messages.count, with: binder)
+        scene?.bindMessages(count: messages.count, with: binder)
 
         if messages.isEmpty {
-            scene.hideMessagesList()
-            scene.showNoMessagesPlaceholder()
+            scene?.hideMessagesList()
+            scene?.showNoMessagesPlaceholder()
         } else {
-            scene.showMessagesList()
-            scene.hideNoMessagesPlaceholder()
+            scene?.showMessagesList()
+            scene?.hideNoMessagesPlaceholder()
         }
     }
 

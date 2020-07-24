@@ -1,6 +1,6 @@
 import Foundation
 
-public protocol KnowledgeGroupEntriesScene {
+public protocol KnowledgeGroupEntriesScene: AnyObject {
 
     func setDelegate(_ delegate: KnowledgeGroupEntriesSceneDelegate)
     func setKnowledgeGroupTitle(_ title: String)

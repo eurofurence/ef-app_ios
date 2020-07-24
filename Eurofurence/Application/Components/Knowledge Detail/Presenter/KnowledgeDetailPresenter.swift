@@ -3,7 +3,7 @@ import EurofurenceModel
 class KnowledgeDetailPresenter: KnowledgeDetailSceneDelegate {
 
     private let delegate: KnowledgeDetailComponentDelegate
-    private let knowledgeDetailScene: KnowledgeDetailScene
+    private weak var knowledgeDetailScene: KnowledgeDetailScene?
     private let identifier: KnowledgeEntryIdentifier
     private let knowledgeDetailViewModelFactory: KnowledgeDetailViewModelFactory
     private var viewModel: KnowledgeEntryDetailViewModel?
@@ -33,16 +33,16 @@ class KnowledgeDetailPresenter: KnowledgeDetailSceneDelegate {
 
         let images: [KnowledgeEntryImageViewModel] = viewModel.images
         let imagesBinder = ViewModelImagesBinder(viewModels: images)
-        knowledgeDetailScene.bindImages(count: images.count, using: imagesBinder)
+        knowledgeDetailScene?.bindImages(count: images.count, using: imagesBinder)
 
-        knowledgeDetailScene.setKnowledgeDetailTitle(viewModel.title)
-        knowledgeDetailScene.setAttributedKnowledgeEntryContents(viewModel.contents)
+        knowledgeDetailScene?.setKnowledgeDetailTitle(viewModel.title)
+        knowledgeDetailScene?.setAttributedKnowledgeEntryContents(viewModel.contents)
 
         let links = viewModel.links
 
         if links.isEmpty == false {
             let binder = ViewModelLinksBinder(delegate: delegate, viewModel: viewModel, viewModels: links)
-            knowledgeDetailScene.presentLinks(count: links.count, using: binder)
+            knowledgeDetailScene?.presentLinks(count: links.count, using: binder)
         }
     }
 

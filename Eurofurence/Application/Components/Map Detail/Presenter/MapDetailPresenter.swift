@@ -3,7 +3,7 @@ import Foundation
 
 class MapDetailPresenter: MapDetailSceneDelegate {
 
-    private let scene: MapDetailScene
+    private weak var scene: MapDetailScene?
     private let mapDetailViewModelFactory: MapDetailViewModelFactory
     private let identifier: MapIdentifier
     private let delegate: MapDetailComponentDelegate
@@ -37,23 +37,23 @@ class MapDetailPresenter: MapDetailSceneDelegate {
     private func viewModelReady(_ viewModel: MapDetailViewModel) {
         self.viewModel = viewModel
 
-        scene.setMapImagePNGData(viewModel.mapImagePNGData)
-        scene.setMapTitle(viewModel.mapName)
+        scene?.setMapImagePNGData(viewModel.mapImagePNGData)
+        scene?.setMapTitle(viewModel.mapName)
     }
 
     private struct ContentsVisitor: MapContentVisitor {
 
-        var scene: MapDetailScene
+        var scene: MapDetailScene?
         var delegate: MapDetailComponentDelegate
         var x: Float
         var y: Float
 
         func visit(_ mapPosition: MapCoordinate) {
-            scene.focusMapPosition(mapPosition)
+            scene?.focusMapPosition(mapPosition)
         }
 
         func visit(_ content: MapInformationContextualContent) {
-            scene.show(contextualContent: content)
+            scene?.show(contextualContent: content)
         }
 
         func visit(_ dealer: DealerIdentifier) {
@@ -61,7 +61,7 @@ class MapDetailPresenter: MapDetailSceneDelegate {
         }
 
         func visit(_ mapContents: MapContentOptionsViewModel) {
-            scene.showMapOptions(heading: mapContents.optionsHeading,
+            scene?.showMapOptions(heading: mapContents.optionsHeading,
                                  options: mapContents.options,
                                  atX: x,
                                  y: y,

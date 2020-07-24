@@ -117,7 +117,7 @@ class EventDetailPresenter: EventDetailSceneDelegate, EventDetailViewModelDelega
         
     }
 
-    private let scene: EventDetailScene
+    private weak var scene: EventDetailScene?
     private let eventDetailViewModelFactory: EventDetailViewModelFactory
     private let hapticEngine: SelectionChangedHaptic
     private let event: EventIdentifier
@@ -171,8 +171,7 @@ class EventDetailPresenter: EventDetailSceneDelegate, EventDetailViewModelDelega
         self.viewModel = viewModel
 
         viewModel.setDelegate(self)
-        scene.bind(numberOfComponents: viewModel.numberOfComponents,
-                   using: Binder(viewModel: viewModel))
+        scene?.bind(numberOfComponents: viewModel.numberOfComponents, using: Binder(viewModel: viewModel))
     }
 
 }

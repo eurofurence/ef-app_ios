@@ -1,4 +1,4 @@
-public protocol MessageDetailScene: class {
+public protocol MessageDetailScene: AnyObject {
 
     var delegate: MessageDetailSceneDelegate? { get set }
     

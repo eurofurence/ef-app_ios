@@ -3,7 +3,7 @@ import EurofurenceModel
 class EventFeedbackPresenter: EventFeedbackSceneDelegate, EventFeedbackDelegate {
     
     private let event: Event
-    private let scene: EventFeedbackScene
+    private weak var scene: EventFeedbackScene?
     private let delegate: EventFeedbackComponentDelegate
     private let dayAndTimeFormatter: EventDayAndTimeFormatter
     private let successHaptic: SuccessHaptic
@@ -42,27 +42,27 @@ class EventFeedbackPresenter: EventFeedbackSceneDelegate, EventFeedbackDelegate 
                                   submitFeedback: { [weak self] in self?.submitFeedback() },
                                   cancelFeedback: { [weak self] in self?.cancelFeedback() },
                                   dayAndTimeFormatter: dayAndTimeFormatter)
-        scene.bind(viewModel)
-        scene.showFeedbackForm()
+        scene?.bind(viewModel)
+        scene?.showFeedbackForm()
     }
     
     func eventFeedbackSubmissionDidFinish(_ feedback: EventFeedback) {
-        scene.showFeedbackSubmissionSuccessful()
+        scene?.showFeedbackSubmissionSuccessful()
         successHaptic.play()
         successWaitingRule.evaluateRule(handler: delegate.eventFeedbackCancelled)
     }
     
     func eventFeedbackSubmissionDidFail(_ feedback: EventFeedback) {
-        scene.showFeedbackForm()
-        scene.showFeedbackSubmissionFailedPrompt()
-        scene.enableNavigationControls()
+        scene?.showFeedbackForm()
+        scene?.showFeedbackSubmissionFailedPrompt()
+        scene?.enableNavigationControls()
         failureHaptic.play()
     }
     
     private func submitFeedback() {
         eventFeedback.submit(self)
-        scene.showFeedbackSubmissionInProgress()
-        scene.disableNavigationControls()
+        scene?.showFeedbackSubmissionInProgress()
+        scene?.disableNavigationControls()
     }
     
     private var userHasEnteredFeedback: Bool {
@@ -78,7 +78,7 @@ class EventFeedbackPresenter: EventFeedbackSceneDelegate, EventFeedbackDelegate 
     }
     
     private func requestCancellationConfirmation() {
-        scene.showDiscardFeedbackPrompt(discardHandler: abandonFeedbackEntry)
+        scene?.showDiscardFeedbackPrompt(discardHandler: abandonFeedbackEntry)
     }
     
     private func abandonFeedbackEntry() {

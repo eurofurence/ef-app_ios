@@ -26,6 +26,11 @@ public class CapturingPrivateMessagesService: PrivateMessagesService {
         wasToldToRefreshMessages = true
         refreshMessagesCount += 1
     }
+    
+    public private(set) var removedObserver: Any?
+    public func removeObserver(_ observer: PrivateMessagesObserver) {
+        removedObserver = observer
+    }
 
     public func failLastRefresh() {
         privateMessageObservers.forEach({ $0.privateMessagesServiceDidFailToLoadMessages() })

@@ -1,9 +1,9 @@
 import EurofurenceModel
 
-struct MessageDetailPresenter: MessageDetailSceneDelegate {
+class MessageDetailPresenter: MessageDetailSceneDelegate {
     
     private let message: MessageIdentifier
-    private let scene: MessageDetailScene
+    private weak var scene: MessageDetailScene?
     private let messagesService: PrivateMessagesService
     
     init(message: MessageIdentifier, scene: MessageDetailScene, messagesService: PrivateMessagesService) {
@@ -19,19 +19,21 @@ struct MessageDetailPresenter: MessageDetailSceneDelegate {
     }
     
     private func loadMessageForPresentation() {
-        scene.showLoadingIndicator()
+        scene?.showLoadingIndicator()
         
         messagesService.fetchMessage(identifiedBy: message) { (result) in
-            self.scene.hideLoadingIndicator()
+            self.scene?.hideLoadingIndicator()
             
             switch result {
             case .success(let message):
                 message.markAsRead()
-                self.scene.setMessageDetailTitle(message.authorName)
-                self.scene.showMessage(viewModel: MessageViewModel(message: message))
+                self.scene?.setMessageDetailTitle(message.authorName)
+                self.scene?.showMessage(viewModel: MessageViewModel(message: message))
                 
             case .failure(let error):
-                self.scene.showError(viewModel: ErrorViewModel(error: error, retryHandler: self.loadMessageForPresentation))
+                self.scene?.showError(
+                    viewModel: ErrorViewModel(error: error, retryHandler: self.loadMessageForPresentation)
+                )
             }
         }
     }

@@ -4,6 +4,7 @@ import UIKit.UIViewController
 public protocol MessagesSceneDelegate {
 
     func messagesSceneReady()
+    func messagesSceneFinalizing()
     func messagesSceneDidSelectMessage(at indexPath: IndexPath)
     func messagesSceneDidPerformRefreshAction()
     func messagesSceneDidTapLogoutButton()

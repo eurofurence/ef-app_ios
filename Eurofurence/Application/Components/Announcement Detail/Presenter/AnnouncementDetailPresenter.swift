@@ -1,8 +1,8 @@
 import EurofurenceModel
 
-struct AnnouncementDetailPresenter: AnnouncementDetailSceneDelegate {
+class AnnouncementDetailPresenter: AnnouncementDetailSceneDelegate {
 
-    private let scene: AnnouncementDetailScene
+    private weak var scene: AnnouncementDetailScene?
     private let announcementDetailViewModelFactory: AnnouncementDetailViewModelFactory
     private let announcement: AnnouncementIdentifier
 
@@ -27,9 +27,12 @@ struct AnnouncementDetailPresenter: AnnouncementDetailSceneDelegate {
     }
 
     private func announcementViewModelPrepared(_ viewModel: AnnouncementDetailViewModel) {
-        scene.setAnnouncementContents(viewModel.contents)
-        scene.setAnnouncementHeading(viewModel.heading)
-        viewModel.imagePNGData.let(scene.setAnnouncementImagePNGData)
+        scene?.setAnnouncementContents(viewModel.contents)
+        scene?.setAnnouncementHeading(viewModel.heading)
+        
+        if let imageData = viewModel.imagePNGData {
+            scene?.setAnnouncementImagePNGData(imageData)
+        }
     }
 
 }

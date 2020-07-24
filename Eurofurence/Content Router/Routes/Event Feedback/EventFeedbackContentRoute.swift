@@ -32,7 +32,7 @@ extension EventFeedbackContentRoute: ContentRoute {
     
     private class DismissControllerWhenCancellingFeedback: EventFeedbackComponentDelegate {
         
-        var viewController: UIViewController?
+        weak var viewController: UIViewController?
         
         func eventFeedbackCancelled() {
             viewController?.dismiss(animated: true)

@@ -617,6 +617,7 @@
 		CABCDE7824C9DD5900500F6B /* ScheduleEventViewModelSharingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABCDE7724C9DD5900500F6B /* ScheduleEventViewModelSharingTests.swift */; };
 		CABCDE7B24C9E2B900500F6B /* SchedulePresenterLeaveFeedbackCommandTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABCDE7A24C9E2B900500F6B /* SchedulePresenterLeaveFeedbackCommandTests.swift */; };
 		CABCDE7D24CAF5A300500F6B /* DownProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABCDE7C24CAF5A300500F6B /* DownProcessor.swift */; };
+		CABCDE8424CB620E00500F6B /* WhenMessagesSceneFinalizes_MessagesPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABCDE8324CB620E00500F6B /* WhenMessagesSceneFinalizes_MessagesPresenterShould.swift */; };
 		CABF03B42041BC870028BD62 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF03B32041BC870028BD62 /* UITableView+Extensions.swift */; };
 		CABF03C52041C31A0028BD62 /* DefaultKnowledgeGroupsViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF03C42041C31A0028BD62 /* DefaultKnowledgeGroupsViewModelFactory.swift */; };
 		CAC1E12B1F5040E100195513 /* NewsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E12A1F5040E100195513 /* NewsScene.swift */; };
@@ -1808,6 +1809,7 @@
 		CABCDE7724C9DD5900500F6B /* ScheduleEventViewModelSharingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleEventViewModelSharingTests.swift; sourceTree = "<group>"; };
 		CABCDE7A24C9E2B900500F6B /* SchedulePresenterLeaveFeedbackCommandTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePresenterLeaveFeedbackCommandTests.swift; sourceTree = "<group>"; };
 		CABCDE7C24CAF5A300500F6B /* DownProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownProcessor.swift; sourceTree = "<group>"; };
+		CABCDE8324CB620E00500F6B /* WhenMessagesSceneFinalizes_MessagesPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenMessagesSceneFinalizes_MessagesPresenterShould.swift; sourceTree = "<group>"; };
 		CABF03B32041BC870028BD62 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		CABF03C42041C31A0028BD62 /* DefaultKnowledgeGroupsViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultKnowledgeGroupsViewModelFactory.swift; sourceTree = "<group>"; };
 		CAC1B3842014E93C00ED8B06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -5456,6 +5458,7 @@
 				CAF1955424688EA9005DFBBE /* MessagesPresenterTestContext.swift */,
 				CAF1955824688EA9005DFBBE /* WhenBindingMessage_MessagesPresenterShould.swift */,
 				CAF1955224688EA9005DFBBE /* WhenInitialMessageLoadFails.swift */,
+				CABCDE8324CB620E00500F6B /* WhenMessagesSceneFinalizes_MessagesPresenterShould.swift */,
 				CAF1955324688EA9005DFBBE /* WhenMessagesSceneTapsLogoutButton_MessagesPresenterShould.swift */,
 				CAF1955624688EA9005DFBBE /* WhenRefreshingMessages.swift */,
 				CAF1955724688EA9005DFBBE /* WhenSelectingMessage_MessagesPresenterShould.swift */,
@@ -7792,6 +7795,7 @@
 				CAF197AA24688EAA005DFBBE /* NewsPresenterDealersDenIconBindingTests.swift in Sources */,
 				CAF1982524688EAB005DFBBE /* FakeDealersViewModelFactory.swift in Sources */,
 				CAF196F524688EAA005DFBBE /* CapturingSelectionChangedHaptic.swift in Sources */,
+				CABCDE8424CB620E00500F6B /* WhenMessagesSceneFinalizes_MessagesPresenterShould.swift in Sources */,
 				CAF196D424688EAA005DFBBE /* AnnouncementDetailViewModelFactoryTestBuilder.swift in Sources */,
 				CA6F75BE24694AD9001FFB74 /* FakeDealerCategoryViewModel.swift in Sources */,
 				CA637558208CBC1D00536BE2 /* StubKnowledgeGroupsListComponentFactory.swift in Sources */,
