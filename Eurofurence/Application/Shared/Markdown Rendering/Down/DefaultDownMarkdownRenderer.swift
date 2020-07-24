@@ -6,10 +6,14 @@ struct DefaultDownMarkdownRenderer: MarkdownRenderer {
     
     private let processor: DownProcessor
     
-    init() {
+    private static var fonts: FontCollection {
         var fontCollection = StaticFontCollection()
         fontCollection.body = UIFont.preferredFont(forTextStyle: .body)
         
+        return fontCollection
+    }
+    
+    private static var colors: ColorCollection {
         var colorCollection = StaticColorCollection()
         
         let textColor: UIColor
@@ -28,16 +32,24 @@ struct DefaultDownMarkdownRenderer: MarkdownRenderer {
         colorCollection.body = textColor
         colorCollection.listItemPrefix = textColor
         
+        return colorCollection
+    }
+    
+    private static var paragraphStyles: ParagraphStyleCollection {
         var paragraphStyles = StaticParagraphStyleCollection()
         let bodyStyle = NSMutableParagraphStyle()
         bodyStyle.paragraphSpacingBefore = 8
         bodyStyle.paragraphSpacing = 8
         paragraphStyles.body = bodyStyle
         
+        return paragraphStyles
+    }
+    
+    init() {
         let styler = DownStyler(configuration: DownStylerConfiguration(
-            fonts: fontCollection,
-            colors: colorCollection,
-            paragraphStyles: paragraphStyles,
+            fonts: Self.fonts,
+            colors: Self.colors,
+            paragraphStyles: Self.paragraphStyles,
             listItemOptions: ListItemOptions(),
             quoteStripeOptions: QuoteStripeOptions(),
             thematicBreakOptions: ThematicBreakOptions(),
