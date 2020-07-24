@@ -55,7 +55,7 @@ extension UITableView {
     }
     
     func adjustScrollIndicatorInsetsForSafeAreaCompensation() {
-        scrollIndicatorInsets.right = -safeAreaInsets.right
+        horizontalScrollIndicatorInsets.right = -safeAreaInsets.right
     }
     
     func deselectSelectedRow(animated: Bool = false) {

@@ -76,7 +76,9 @@ class KnowledgeDetailViewController: UIViewController, KnowledgeDetailScene {
         }
         
         fileprivate func hideSeperator(_ cell: KnowledgeDetailImageTableViewCell, _ tableView: UITableView) {
+#if !targetEnvironment(macCatalyst)
             cell.separatorInset = UIEdgeInsets(top: 0, left: .greatestFiniteMagnitude, bottom: 0, right: 0)
+#endif
         }
 
     }

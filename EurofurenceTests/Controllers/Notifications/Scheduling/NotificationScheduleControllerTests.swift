@@ -10,6 +10,7 @@ class NotificationScheduleControllerTests: XCTestCase {
     var upcomingEventReminderInterval: TimeInterval!
     var hoursDateFormatter: FakeHoursDateFormatter!
     var eventToFavourite: Event!
+    var clock: StubClock!
     
     override func setUp() {
         super.setUp()
@@ -20,10 +21,14 @@ class NotificationScheduleControllerTests: XCTestCase {
         notificationScheduler = CapturingNotificationScheduler()
         hoursDateFormatter = FakeHoursDateFormatter()
         upcomingEventReminderInterval = TimeInterval.random
-        controller = NotificationScheduleController(eventsService: eventsService,
-                                                    notificationScheduler: notificationScheduler,
-                                                    hoursDateFormatter: hoursDateFormatter,
-                                                    upcomingEventReminderInterval: upcomingEventReminderInterval)
+        clock = StubClock(currentDate: .distantPast)
+        controller = NotificationScheduleController(
+            eventsService: eventsService,
+            notificationScheduler: notificationScheduler,
+            hoursDateFormatter: hoursDateFormatter,
+            upcomingEventReminderInterval: upcomingEventReminderInterval,
+            clock: clock
+        )
         
         eventToFavourite = events.randomElement().element
     }
@@ -61,6 +66,15 @@ class NotificationScheduleControllerTests: XCTestCase {
         eventToFavourite.unfavourite()
         
         XCTAssertEqual(eventToFavourite.identifier, notificationScheduler.capturedEventIdentifierToRemoveNotification)
+    }
+    
+    func testFavouritingEventThatHasAlreadyHappenedDoesNotScheduleNotification() {
+        let eventStartTime = eventToFavourite.startDate
+        let someTimeAfterStartTime = eventStartTime.addingTimeInterval(60)
+        clock.tickTime(to: someTimeAfterStartTime)
+        eventToFavourite.favourite()
+        
+        XCTAssertNil(notificationScheduler.capturedEventIdentifier)
     }
 
 }
