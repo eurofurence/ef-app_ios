@@ -1,6 +1,6 @@
 import Foundation
 
-public protocol MapDetailScene {
+public protocol MapDetailScene: AnyObject {
 
     func setDelegate(_ delegate: MapDetailSceneDelegate)
     func setMapImagePNGData(_ data: Data)
