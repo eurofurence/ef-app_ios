@@ -460,6 +460,7 @@
 		CAB0FD6322C915D400D4CB98 /* WhenDescribingAppLink_WithInvalidEventIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB0FD6222C915D400D4CB98 /* WhenDescribingAppLink_WithInvalidEventIdentifier.swift */; };
 		CAB63208245F270900DBF0A0 /* ControllableSessionStateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB63207245F270900DBF0A0 /* ControllableSessionStateService.swift */; };
 		CAB6CDF52464ADA500A92194 /* PrivateMessagesServiceTestDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB6CDF42464ADA500A92194 /* PrivateMessagesServiceTestDoubles.swift */; };
+		CABCDE8624CB637500500F6B /* WhenRemovingObserver_PrivateMessagesServiceShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABCDE8524CB637500500F6B /* WhenRemovingObserver_PrivateMessagesServiceShould.swift */; };
 		CAC4993A22DFA652003E1D77 /* DealersIndexCategoriesShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC4993922DFA652003E1D77 /* DealersIndexCategoriesShould.swift */; };
 		CAC4993C22DFA864003E1D77 /* InMemoryDealerCategoriesCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC4993B22DFA864003E1D77 /* InMemoryDealerCategoriesCollection.swift */; };
 		CAC4993E22E04D11003E1D77 /* CapturingDealerCategoryObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC4993D22E04D11003E1D77 /* CapturingDealerCategoryObserver.swift */; };
@@ -961,6 +962,7 @@
 		CAB0FD6222C915D400D4CB98 /* WhenDescribingAppLink_WithInvalidEventIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDescribingAppLink_WithInvalidEventIdentifier.swift; sourceTree = "<group>"; };
 		CAB63207245F270900DBF0A0 /* ControllableSessionStateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllableSessionStateService.swift; sourceTree = "<group>"; };
 		CAB6CDF42464ADA500A92194 /* PrivateMessagesServiceTestDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateMessagesServiceTestDoubles.swift; sourceTree = "<group>"; };
+		CABCDE8524CB637500500F6B /* WhenRemovingObserver_PrivateMessagesServiceShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenRemovingObserver_PrivateMessagesServiceShould.swift; sourceTree = "<group>"; };
 		CAC4993922DFA652003E1D77 /* DealersIndexCategoriesShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersIndexCategoriesShould.swift; sourceTree = "<group>"; };
 		CAC4993B22DFA864003E1D77 /* InMemoryDealerCategoriesCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryDealerCategoriesCollection.swift; sourceTree = "<group>"; };
 		CAC4993D22E04D11003E1D77 /* CapturingDealerCategoryObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingDealerCategoryObserver.swift; sourceTree = "<group>"; };
@@ -1639,14 +1641,15 @@
 			isa = PBXGroup;
 			children = (
 				CA7A30E722B16E24002AD939 /* MessageAssertion.swift */,
+				CA09BE5E2464856900412B82 /* PrivateMessageErrorTests.swift */,
 				CA7A30E922B16E24002AD939 /* WhenLaunchingApplication_PrivateMessagesShould.swift */,
 				CA7A30EA22B16E24002AD939 /* WhenLoggingOut_PrivateMessagesShould.swift */,
 				CA7A30E622B16E24002AD939 /* WhenLoggingOut_ThenRequestingPrivateMessages.swift */,
 				CA7A30EB22B16E24002AD939 /* WhenMarkingMessageAsRead.swift */,
+				CABCDE8524CB637500500F6B /* WhenRemovingObserver_PrivateMessagesServiceShould.swift */,
 				CA7A30E522B16E24002AD939 /* WhenRequestingPrivateMessagesWhileAuthenticated.swift */,
 				CA7A30E822B16E24002AD939 /* WhenRequestingPrivateMessagesWhileNotAuthenticated.swift */,
 				CAA10FC922C5597C00689A32 /* WhenResolvingMessageByItsIdentifier.swift */,
-				CA09BE5E2464856900412B82 /* PrivateMessageErrorTests.swift */,
 			);
 			path = "Private Messages";
 			sourceTree = "<group>";
@@ -2785,6 +2788,7 @@
 				CA7A318F22B16E26002AD939 /* WhenDeletingEvent_AfterSuccessfulSync_ApplicationShould.swift in Sources */,
 				CA7A320322B16E26002AD939 /* WhenTellingDealersIndexToSearch_ApplicationShould.swift in Sources */,
 				CA7A323F22B16E26002AD939 /* WhenResolvingEventByIdentifier_ForEventThatExists_ApplicationShould.swift in Sources */,
+				CABCDE8624CB637500500F6B /* WhenRemovingObserver_PrivateMessagesServiceShould.swift in Sources */,
 				CA7A31DB22B16E26002AD939 /* WhenObservingCollectThemAllURLWhileLoggedOut_ApplicationShould.swift in Sources */,
 				CA7A31A922B16E26002AD939 /* WhenFetchingMapContents_TappingWithinRadiusOfMultipleEntries_ApplicationShould.swift in Sources */,
 				CA2CB5B122F5A99800D6707D /* WhenMakingContentURL_KnowledgeEntryShould.swift in Sources */,

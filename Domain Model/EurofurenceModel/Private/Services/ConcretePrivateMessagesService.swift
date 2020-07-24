@@ -43,7 +43,9 @@ class ConcretePrivateMessagesService: PrivateMessagesService {
     }
     
     func removeObserver(_ observer: PrivateMessagesObserver) {
-        
+        if let index = observers.firstIndex(where: { $0 === observer }) {
+            observers.remove(at: index)
+        }
     }
 
     func refreshMessages() {

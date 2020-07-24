@@ -39,7 +39,7 @@ public enum PrivateMessageError: Error, LocalizedError {
     
 }
 
-public protocol PrivateMessagesObserver {
+public protocol PrivateMessagesObserver: AnyObject {
 
     func privateMessagesServiceDidFinishRefreshingMessages(messages: [Message])
     func privateMessagesServiceDidUpdateUnreadMessageCount(to unreadCount: Int)
