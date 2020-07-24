@@ -4,7 +4,7 @@ import UIKit
 
 struct DefaultDownMarkdownRenderer: MarkdownRenderer {
     
-    private let styler: Styler
+    private let processor: DownProcessor
     
     init() {
         var fontCollection = StaticFontCollection()
@@ -28,7 +28,7 @@ struct DefaultDownMarkdownRenderer: MarkdownRenderer {
         bodyStyle.paragraphSpacing = 8
         paragraphStyles.body = bodyStyle
         
-        styler = DownStyler(configuration: DownStylerConfiguration(
+        let styler = DownStyler(configuration: DownStylerConfiguration(
             fonts: fontCollection,
             colors: colorCollection,
             paragraphStyles: paragraphStyles,
@@ -37,16 +37,12 @@ struct DefaultDownMarkdownRenderer: MarkdownRenderer {
             thematicBreakOptions: ThematicBreakOptions(),
             codeBlockOptions: CodeBlockOptions()
         ))
+        
+        processor = DownProcessor(styler: styler)
     }
     
     func render(_ contents: String) -> NSAttributedString {
-        let down = Down(markdownString: contents)
-        do {
-            let attributedString = try down.toAttributedString(DownOptions.smart, styler: styler)
-            return attributedString.attributedStringByTrimming(with: CharacterSet.whitespacesAndNewlines)
-        } catch {
-            return NSAttributedString(string: contents)
-        }
+        processor.convertMarkdownToAttributedString(markdown: contents)
     }
 
 }

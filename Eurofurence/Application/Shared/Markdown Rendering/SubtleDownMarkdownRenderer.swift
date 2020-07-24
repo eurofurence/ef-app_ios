@@ -3,7 +3,7 @@ import Foundation
 
 struct SubtleDownMarkdownRenderer: MarkdownRenderer {
     
-    private let styler: Styler
+    private let processor: DownProcessor
     
     init() {
         var fontCollection = StaticFontCollection()
@@ -18,7 +18,7 @@ struct SubtleDownMarkdownRenderer: MarkdownRenderer {
         bodyParagraphStyle.paragraphSpacing = 0
         paragraphStyles.body = bodyParagraphStyle
         
-        styler = DownStyler(configuration: DownStylerConfiguration(
+        let styler = DownStyler(configuration: DownStylerConfiguration(
             fonts: fontCollection,
             colors: colorCollection,
             paragraphStyles: paragraphStyles,
@@ -27,16 +27,12 @@ struct SubtleDownMarkdownRenderer: MarkdownRenderer {
             thematicBreakOptions: ThematicBreakOptions(),
             codeBlockOptions: CodeBlockOptions()
         ))
+        
+        processor = DownProcessor(styler: styler)
     }
     
     func render(_ contents: String) -> NSAttributedString {
-        let down = Down(markdownString: contents)
-        do {
-            let attributedString = try down.toAttributedString(DownOptions.smart, styler: styler)
-            return attributedString.attributedStringByTrimming(with: CharacterSet.whitespacesAndNewlines)
-        } catch {
-            return NSAttributedString(string: contents)
-        }
+        processor.convertMarkdownToAttributedString(markdown: contents)
     }
 
 }
