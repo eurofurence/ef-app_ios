@@ -5,24 +5,58 @@ struct SubtleDownMarkdownRenderer: MarkdownRenderer {
     
     private let processor: DownProcessor
     
-    init() {
+    private static var fonts: FontCollection {
         var fontCollection = StaticFontCollection()
-        fontCollection.body = UIFont.preferredFont(forTextStyle: .caption1)
+        let sharedFont = UIFont.preferredFont(forTextStyle: .caption1)
+        fontCollection.body = sharedFont
+        fontCollection.heading1 = sharedFont
+        fontCollection.heading2 = sharedFont
+        fontCollection.heading3 = sharedFont
+        fontCollection.heading4 = sharedFont
+        fontCollection.heading5 = sharedFont
+        fontCollection.heading6 = sharedFont
         
+        return fontCollection
+    }
+    
+    private static var colors: ColorCollection {
         var colorCollection = StaticColorCollection()
-        colorCollection.body = UIColor(red: 0.498, green: 0.498, blue: 0.498, alpha: 1)
+        let sharedColor = UIColor(red: 0.498, green: 0.498, blue: 0.498, alpha: 1)
+        colorCollection.body = sharedColor
+        colorCollection.heading1 = sharedColor
+        colorCollection.heading2 = sharedColor
+        colorCollection.heading3 = sharedColor
+        colorCollection.heading4 = sharedColor
+        colorCollection.heading5 = sharedColor
+        colorCollection.heading6 = sharedColor
+        colorCollection.quote = sharedColor
+        colorCollection.quoteStripe = sharedColor
         
+        return colorCollection
+    }
+    
+    private static var paragraphStyles: ParagraphStyleCollection {
         var paragraphStyles = StaticParagraphStyleCollection()
-        let bodyParagraphStyle = (paragraphStyles.body.mutableCopy() as? NSMutableParagraphStyle).unsafelyUnwrapped
-        bodyParagraphStyle.paragraphSpacingBefore = 0
-        bodyParagraphStyle.paragraphSpacing = 0
-        bodyParagraphStyle.lineSpacing = 3
-        paragraphStyles.body = bodyParagraphStyle
+        let sharedParagraphStyle = (paragraphStyles.body.mutableCopy() as? NSMutableParagraphStyle).unsafelyUnwrapped
+        sharedParagraphStyle.paragraphSpacingBefore = 0
+        sharedParagraphStyle.paragraphSpacing = 0
+        sharedParagraphStyle.lineSpacing = 3
+        paragraphStyles.body = sharedParagraphStyle
+        paragraphStyles.heading1 = sharedParagraphStyle
+        paragraphStyles.heading2 = sharedParagraphStyle
+        paragraphStyles.heading3 = sharedParagraphStyle
+        paragraphStyles.heading4 = sharedParagraphStyle
+        paragraphStyles.heading5 = sharedParagraphStyle
+        paragraphStyles.heading6 = sharedParagraphStyle
         
+        return paragraphStyles
+    }
+    
+    init() {
         let styler = DownStyler(configuration: DownStylerConfiguration(
-            fonts: fontCollection,
-            colors: colorCollection,
-            paragraphStyles: paragraphStyles,
+            fonts: Self.fonts,
+            colors: Self.colors,
+            paragraphStyles: Self.paragraphStyles,
             listItemOptions: ListItemOptions(),
             quoteStripeOptions: QuoteStripeOptions(),
             thematicBreakOptions: ThematicBreakOptions(),
