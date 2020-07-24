@@ -25,16 +25,19 @@ public class NotificationScheduleController: EventsServiceObserver {
     private let notificationScheduler: NotificationScheduler
     private let hoursDateFormatter: HoursDateFormatter
     private let upcomingEventReminderInterval: TimeInterval
+    private let clock: Clock
     
     public init(
         eventsService: EventsService,
         notificationScheduler: NotificationScheduler,
         hoursDateFormatter: HoursDateFormatter,
-        upcomingEventReminderInterval: TimeInterval
+        upcomingEventReminderInterval: TimeInterval,
+        clock: Clock
     ) {
         self.notificationScheduler = notificationScheduler
         self.hoursDateFormatter = hoursDateFormatter
         self.upcomingEventReminderInterval = upcomingEventReminderInterval
+        self.clock = clock
         
         eventsService.add(self)
     }
@@ -48,9 +51,12 @@ public class NotificationScheduleController: EventsServiceObserver {
     public func favouriteEventsDidChange(_ identifiers: [EventIdentifier]) { }
     
     private func scheduleNotification(for event: Event) {
+        let eventStartTime = event.startDate
+        guard eventStartTime > clock.currentDate else { return }
+        
         let waitInterval = upcomingEventReminderInterval * -1
-        let reminderDate = event.startDate.addingTimeInterval(waitInterval)
-        let startTimeString = hoursDateFormatter.hoursString(from: event.startDate)
+        let reminderDate = eventStartTime.addingTimeInterval(waitInterval)
+        let startTimeString = hoursDateFormatter.hoursString(from: eventStartTime)
         let body = String.eventReminderBody(timeString: startTimeString, roomName: event.room.name)
         
         let eventIdentifier = event.identifier

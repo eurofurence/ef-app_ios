@@ -73,10 +73,13 @@ class Application {
         
         // TODO: Source from preferences/Firebase
         let upcomingEventReminderInterval: TimeInterval = 900
-        notificationScheduleController = NotificationScheduleController(eventsService: session.services.events,
-                                                                        notificationScheduler: UserNotificationsScheduler(),
-                                                                        hoursDateFormatter: FoundationHoursDateFormatter.shared,
-                                                                        upcomingEventReminderInterval: upcomingEventReminderInterval)
+        notificationScheduleController = NotificationScheduleController(
+            eventsService: session.services.events,
+            notificationScheduler: UserNotificationsScheduler(),
+            hoursDateFormatter: FoundationHoursDateFormatter.shared,
+            upcomingEventReminderInterval: upcomingEventReminderInterval,
+            clock: SystemClock.shared
+        )
         
         reviewPromptController = ReviewPromptController(
             config: .default,
