@@ -30,7 +30,7 @@ public class AuthenticateOnDemandRouteAuthenticationHandler: RouteAuthentication
             handler.enterAuthenticatedState()
         }
         
-        func userDidLogout() {
+        func userUnauthenticated() {
             handler.enterUnauthenticatedState()
         }
         

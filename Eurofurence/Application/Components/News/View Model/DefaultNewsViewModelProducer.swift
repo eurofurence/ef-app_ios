@@ -92,7 +92,7 @@ public class DefaultNewsViewModelProducer: NewsViewModelProducer,
         regenerateViewModel()
     }
 
-    public func userDidLogout() {
+    public func userUnauthenticated() {
         currentUser = nil
         regenerateViewModel()
     }

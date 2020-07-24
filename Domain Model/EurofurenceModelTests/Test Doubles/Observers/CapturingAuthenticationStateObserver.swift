@@ -9,7 +9,7 @@ class CapturingAuthenticationStateObserver: AuthenticationStateObserver {
     }
 
     var loggedOut = false
-    func userDidLogout() {
+    func userUnauthenticated() {
         loggedOut = true
     }
 

@@ -54,7 +54,7 @@ class ConcreteAuthenticationService: AuthenticationService {
                 self.credentialStore.deletePersistedToken()
                 self.loggedInUser = nil
                 self.userAuthenticationToken = nil
-                self.observers.forEach({ $0.userDidLogout() })
+                self.observers.forEach({ $0.userUnauthenticated() })
                 self.eventBus.post(DomainEvent.LoggedOut())
                 completionHandler(.success)
             }
@@ -67,7 +67,7 @@ class ConcreteAuthenticationService: AuthenticationService {
         if let user = loggedInUser {
             observer.userAuthenticated(user)
         } else {
-            observer.userDidLogout()
+            observer.userUnauthenticated()
         }
     }
 

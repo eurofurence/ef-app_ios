@@ -30,7 +30,7 @@ class FakeAuthenticationService: AuthenticationService {
             observer.userAuthenticated(user)
 
         case .loggedOut:
-            observer.userDidLogout()
+            observer.userUnauthenticated()
         }
     }
 
@@ -73,7 +73,7 @@ extension FakeAuthenticationService {
 
     func notifyObserversUserDidLogout() {
         authState = .loggedOut
-        observers.forEach { $0.userDidLogout() }
+        observers.forEach { $0.userUnauthenticated() }
     }
 
 }

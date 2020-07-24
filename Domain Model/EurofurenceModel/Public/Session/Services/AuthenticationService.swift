@@ -14,7 +14,7 @@ public enum LoginResult {
 public protocol AuthenticationStateObserver {
 
     func userAuthenticated(_ user: User)
-    func userDidLogout()
+    func userUnauthenticated()
     func userDidFailToLogout()
 
 }
