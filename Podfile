@@ -1,4 +1,4 @@
-platform :ios, '11.0'
+platform :ios, '11.1'
 inhibit_all_warnings!
 use_frameworks!
 workspace 'Eurofurence.xcworkspace'
