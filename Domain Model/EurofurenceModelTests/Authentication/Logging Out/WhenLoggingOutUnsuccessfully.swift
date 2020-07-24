@@ -21,7 +21,6 @@ class WhenLoggingOutUnsuccessfully: XCTestCase {
         context.notificationTokenRegistration.failLastRequest()
 
         XCTAssertTrue(logoutObserver.didFailToLogout)
-        XCTAssertTrue(observer.logoutDidFail)
     }
 
     func testFailingToUnregisterAuthTokenWithRemoteTokenRegistrationShouldNotDeletePersistedCredential() {
@@ -30,7 +29,6 @@ class WhenLoggingOutUnsuccessfully: XCTestCase {
 
         XCTAssertFalse(context.credentialStore.didDeletePersistedToken)
         XCTAssertFalse(observer.loggedOut)
-        XCTAssertTrue(observer.logoutDidFail)
     }
 
     func testFailingToUnregisterAuthTokenWithRemoteTokenRegistrationShouldNotNotifyLogoutObserversUserLoggedOut() {
@@ -40,7 +38,6 @@ class WhenLoggingOutUnsuccessfully: XCTestCase {
 
         XCTAssertFalse(logoutObserver.didLogout)
         XCTAssertFalse(observer.loggedOut)
-        XCTAssertTrue(observer.logoutDidFail)
     }
 
 }

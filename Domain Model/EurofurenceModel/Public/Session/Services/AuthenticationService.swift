@@ -15,6 +15,5 @@ public protocol AuthenticationStateObserver {
 
     func userAuthenticated(_ user: User)
     func userUnauthenticated()
-    func userDidFailToLogout()
 
 }

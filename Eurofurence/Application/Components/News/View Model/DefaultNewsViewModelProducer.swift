@@ -97,10 +97,6 @@ public class DefaultNewsViewModelProducer: NewsViewModelProducer,
         regenerateViewModel()
     }
 
-    public func userDidFailToLogout() {
-
-    }
-
     // MARK: PrivateMessagesServiceObserver
 
     public func privateMessagesServiceDidUpdateUnreadMessageCount(to unreadCount: Int) {

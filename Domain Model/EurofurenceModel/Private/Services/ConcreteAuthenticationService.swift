@@ -48,7 +48,6 @@ class ConcreteAuthenticationService: AuthenticationService {
         remoteNotificationsTokenRegistration?.registerRemoteNotificationsDeviceToken(registeredDeviceToken,
                                                                                     userAuthenticationToken: nil) { error in
             if error != nil {
-                self.observers.forEach({ $0.userDidFailToLogout() })
                 completionHandler(.failure)
             } else {
                 self.credentialStore.deletePersistedToken()

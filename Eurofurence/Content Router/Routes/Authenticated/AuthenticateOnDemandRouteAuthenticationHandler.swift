@@ -34,10 +34,6 @@ public class AuthenticateOnDemandRouteAuthenticationHandler: RouteAuthentication
             handler.enterUnauthenticatedState()
         }
         
-        func userDidFailToLogout() {
-            
-        }
-        
     }
     
     private class State {

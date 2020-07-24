@@ -13,9 +13,4 @@ class CapturingAuthenticationStateObserver: AuthenticationStateObserver {
         loggedOut = true
     }
 
-    private(set) var logoutDidFail = false
-    func userDidFailToLogout() {
-        logoutDidFail = true
-    }
-
 }
