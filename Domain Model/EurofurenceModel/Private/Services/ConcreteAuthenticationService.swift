@@ -48,13 +48,12 @@ class ConcreteAuthenticationService: AuthenticationService {
         remoteNotificationsTokenRegistration?.registerRemoteNotificationsDeviceToken(registeredDeviceToken,
                                                                                     userAuthenticationToken: nil) { error in
             if error != nil {
-                self.observers.forEach({ $0.userDidFailToLogout() })
                 completionHandler(.failure)
             } else {
                 self.credentialStore.deletePersistedToken()
                 self.loggedInUser = nil
                 self.userAuthenticationToken = nil
-                self.observers.forEach({ $0.userDidLogout() })
+                self.observers.forEach({ $0.userUnauthenticated() })
                 self.eventBus.post(DomainEvent.LoggedOut())
                 completionHandler(.success)
             }
@@ -65,9 +64,9 @@ class ConcreteAuthenticationService: AuthenticationService {
         observers.append(observer)
 
         if let user = loggedInUser {
-            observer.userDidLogin(user)
+            observer.userAuthenticated(user)
         } else {
-            observer.userDidLogout()
+            observer.userUnauthenticated()
         }
     }
 
@@ -103,7 +102,7 @@ class ConcreteAuthenticationService: AuthenticationService {
         let user = User(registrationNumber: credential.registrationNumber, username: credential.username)
         loggedInUser = user
         eventBus.post(DomainEvent.LoggedIn(user: user, authenticationToken: credential.authenticationToken))
-        observers.forEach({ $0.userDidLogin(user) })
+        observers.forEach({ $0.userAuthenticated(user) })
     }
 
 }

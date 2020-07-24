@@ -87,18 +87,14 @@ public class DefaultNewsViewModelProducer: NewsViewModelProducer,
 
     // MARK: AuthenticationStateObserver
 
-    public func userDidLogin(_ user: User) {
+    public func userAuthenticated(_ user: User) {
         currentUser = user
         regenerateViewModel()
     }
 
-    public func userDidLogout() {
+    public func userUnauthenticated() {
         currentUser = nil
         regenerateViewModel()
-    }
-
-    public func userDidFailToLogout() {
-
     }
 
     // MARK: PrivateMessagesServiceObserver

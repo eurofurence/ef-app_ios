@@ -4,18 +4,13 @@ import Foundation
 class CapturingAuthenticationStateObserver: AuthenticationStateObserver {
 
     private(set) var capturedLoggedInUser: User?
-    func userDidLogin(_ user: User) {
+    func userAuthenticated(_ user: User) {
         capturedLoggedInUser = user
     }
 
     var loggedOut = false
-    func userDidLogout() {
+    func userUnauthenticated() {
         loggedOut = true
-    }
-
-    private(set) var logoutDidFail = false
-    func userDidFailToLogout() {
-        logoutDidFail = true
     }
 
 }
