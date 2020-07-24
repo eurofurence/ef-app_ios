@@ -4,7 +4,7 @@ import XCTest
 
 class WhenDescribingKnowledgeEntryLink_GroupHasMoreThanOneEntry: XCTestCase {
 
-    func testTheEntryAndGroupIdentifiersAreProvided() {
+    func testTheEntryAndGroupIdentifiersAreProvided() throws {
         var characteristics = ModelCharacteristics.randomWithoutDeletions
         let group = characteristics.knowledgeGroups.changed.randomElement().element
         let makeEntry: () -> KnowledgeEntryCharacteristics = {
@@ -23,7 +23,7 @@ class WhenDescribingKnowledgeEntryLink_GroupHasMoreThanOneEntry: XCTestCase {
         let cid = ModelCharacteristics.testConventionIdentifier
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let urlString = "https://this.bit.doesnt.matter/\(cid)/KnowleDGEEntRIes/\(entry.identifier)"
-        guard let url = URL(string: urlString) else { fatalError("\(urlString) didn't make it into a URL") }
+        let url = try XCTUnwrap(URL(string: urlString))
         
         let visitor = CapturingURLContentVisitor()
         context.contentLinksService.describeContent(in: url, toVisitor: visitor)

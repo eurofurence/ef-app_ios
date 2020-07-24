@@ -17,8 +17,8 @@ class WhenLoggedOutBeforeConvention_NewsViewModelProducerShould: XCTestCase {
         context.subscribeViewModelUpdates()
     }
 
-    func testProduceViewModelWithLoginPrompt_DaysUntilConvention_AndAnnouncements() {
-        context.assert()
+    func testProduceViewModelWithLoginPrompt_DaysUntilConvention_AndAnnouncements() throws {
+        try context.assert()
             .thatViewModel()
             .hasYourEurofurence()
             .hasConventionCountdown()
@@ -26,20 +26,20 @@ class WhenLoggedOutBeforeConvention_NewsViewModelProducerShould: XCTestCase {
             .verify()
     }
 
-    func testFetchMessagesModuleValueWhenAskingForModelInFirstSection() {
-        context.assert().thatModel().at(indexPath: IndexPath(item: 0, section: 0), is: .messages)
+    func testFetchMessagesModuleValueWhenAskingForModelInFirstSection() throws {
+        try context.assert().thatModel().at(indexPath: IndexPath(item: 0, section: 0), is: .messages)
     }
 
-    func testFetchAnnouncementModuleValueWhenAskingForModelInSecondSection() {
+    func testFetchAnnouncementModuleValueWhenAskingForModelInSecondSection() throws {
         let randomAnnouncement = context.displayedAnnouncements.randomElement()
         let announcementIndexPath = IndexPath(item: randomAnnouncement.index + 1, section: 2)
 
-        context.assert().thatModel().at(indexPath: announcementIndexPath, is: .announcement(randomAnnouncement.element.identifier))
+        try context.assert().thatModel().at(indexPath: announcementIndexPath, is: .announcement(randomAnnouncement.element.identifier))
     }
 
-    func testFetchAllAnnouncementsModuleValueWhenAskingForAllAnnouncementsIndex() {
+    func testFetchAllAnnouncementsModuleValueWhenAskingForAllAnnouncementsIndex() throws {
         let allAnnouncementsComponentIndexPath = IndexPath(item: 0, section: 2)
-        context.assert().thatModel().at(indexPath: allAnnouncementsComponentIndexPath, is: .allAnnouncements)
+        try context.assert().thatModel().at(indexPath: allAnnouncementsComponentIndexPath, is: .allAnnouncements)
     }
 
 }

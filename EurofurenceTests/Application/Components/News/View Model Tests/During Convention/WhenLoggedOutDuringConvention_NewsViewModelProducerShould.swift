@@ -5,7 +5,7 @@ import XCTest
 
 class WhenLoggedOutDuringConvention_NewsViewModelProducerShould: XCTestCase {
 
-    func testProduceViewModelWithMessagesPrompt_Announcements_RunningEvents_UpcomingEvents_AndFavouriteEvents() {
+    func testProduceViewModelWithMessagesPrompt_Announcements_RunningEvents_UpcomingEvents_AndFavouriteEvents() throws {
         let eventsService = FakeEventsService()
         let runningEvents = [FakeEvent].random(minimum: 3)
         let upcomingEvents = [FakeEvent].random(minimum: 3)
@@ -20,7 +20,7 @@ class WhenLoggedOutDuringConvention_NewsViewModelProducerShould: XCTestCase {
             .build()
         context.subscribeViewModelUpdates()
 
-        context.assert()
+        try context.assert()
             .thatViewModel()
             .hasYourEurofurence()
             .hasAnnouncements()
@@ -30,7 +30,7 @@ class WhenLoggedOutDuringConvention_NewsViewModelProducerShould: XCTestCase {
             .verify()
     }
 
-    func testFetchTheUpcomingEventAtTheSpecifiedIndexPath() {
+    func testFetchTheUpcomingEventAtTheSpecifiedIndexPath() throws {
         let eventsService = FakeEventsService()
         let upcomingEvents = [FakeEvent].random
         eventsService.upcomingEvents = upcomingEvents
@@ -44,7 +44,7 @@ class WhenLoggedOutDuringConvention_NewsViewModelProducerShould: XCTestCase {
 
         let randomEvent = upcomingEvents.randomElement()
         let indexPath = IndexPath(item: randomEvent.index, section: 2)
-        context.assert().thatModel().at(indexPath: indexPath, is: .event(randomEvent.element))
+        try context.assert().thatModel().at(indexPath: indexPath, is: .event(randomEvent.element))
     }
 
 }

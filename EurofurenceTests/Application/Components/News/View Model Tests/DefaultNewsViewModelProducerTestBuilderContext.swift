@@ -44,8 +44,8 @@ extension DefaultNewsViewModelProducerTestBuilder.Context {
             self.context = context
         }
 
-        func verify(file: StaticString = #file, line: UInt = #line) {
-            Assertion(file: file, line: line, components: components, viewModel: context.delegate.viewModel).verify()
+        func verify(file: StaticString = #file, line: UInt = #line) throws {
+            try Assertion(file: file, line: line, components: components, viewModel: context.delegate.viewModel).verify()
         }
 
         private var shouldSimulateUserHasUnreadMessages: Bool {
@@ -169,21 +169,18 @@ extension DefaultNewsViewModelProducerTestBuilder.Context {
 
         var context: DefaultNewsViewModelProducerTestBuilder.Context
 
-        func at(indexPath: IndexPath, is expected: NewsViewModelValue, file: StaticString = #file, line: UInt = #line) {
-            guard let viewModel = context.delegate.viewModel else {
-                XCTFail("Did not witness a view model", file: file, line: line)
-                return
-            }
+        func at(
+            indexPath: IndexPath,
+            is expected: NewsViewModelValue,
+            file: StaticString = #file,
+            line: UInt = #line
+        ) throws {
+            let viewModel = try XCTUnwrap(context.delegate.viewModel, file: file, line: line)
 
             var fetchedValue: NewsViewModelValue?
             viewModel.fetchModelValue(at: indexPath) { fetchedValue = $0 }
 
-            guard let actual = fetchedValue else {
-                XCTFail("Failed to fetch a model at index path \(indexPath)", file: file, line: line)
-                return
-            }
-
-            XCTAssertEqual(expected, actual, file: file, line: line)
+            XCTAssertEqual(expected, fetchedValue, file: file, line: line)
         }
 
     }
@@ -241,13 +238,8 @@ fileprivate extension DefaultNewsViewModelProducerTestBuilder.Context {
         var components: [Component]
         var viewModel: NewsViewModel?
 
-        func verify() {
-            guard let viewModel = viewModel else {
-                XCTFail("Delegate did not witness a view model",
-                        file: file,
-                        line: line)
-                return
-            }
+        func verify() throws {
+            let viewModel = try XCTUnwrap(self.viewModel, file: file, line: line)
 
             let actual = traverse(through: viewModel)
 
