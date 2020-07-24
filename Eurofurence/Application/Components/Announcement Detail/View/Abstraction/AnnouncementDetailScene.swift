@@ -1,6 +1,6 @@
 import Foundation.NSAttributedString
 
-public protocol AnnouncementDetailScene {
+public protocol AnnouncementDetailScene: AnyObject {
 
     func setDelegate(_ delegate: AnnouncementDetailSceneDelegate)
     func setAnnouncementTitle(_ title: String)
