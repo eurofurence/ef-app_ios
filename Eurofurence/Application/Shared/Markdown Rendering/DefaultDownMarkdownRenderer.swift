@@ -1,25 +1,52 @@
+import Down
 import Foundation
 import UIKit
 
-public struct DefaultDownMarkdownRenderer: DownMarkdownRenderer {
+struct DefaultDownMarkdownRenderer: MarkdownRenderer {
     
-    public init() {
-        
-    }
+    private let styler: Styler
     
-    // TODO: Use Swift's """ format for making this a pretty stylesheet.
-    // swiftlint:disable line_length
-    public var stylesheet: String? {
-        let darkModeAccessor = UIView()
+    init() {
+        var fontCollection = StaticFontCollection()
+        fontCollection.body = UIFont.preferredFont(forTextStyle: .body)
         
-        let textColorName: String
-        if #available(iOS 12.0, *), darkModeAccessor.traitCollection.userInterfaceStyle == .dark {
-            textColorName = "white"
+        var colorCollection = StaticColorCollection()
+        
+        let textColor: UIColor
+        if #available(iOS 13.0, *) {
+            textColor = .label
         } else {
-            textColorName = "black"
+            textColor = .black
         }
         
-        return "* { font: -apple-system-body; color: \(textColorName); } h1, h2, h3, h4, h5, h6, strong { font-weight: bold; } em { font-style: italic; } h1 { font-size: 175%; } h2 { font-size: 150%; } h3 { font-size: 130%; } h4 { font-size: 115%; } h5 { font-style: italic; }"
+        colorCollection.body = textColor
+        colorCollection.listItemPrefix = textColor
+        
+        var paragraphStyles = StaticParagraphStyleCollection()
+        let bodyStyle = NSMutableParagraphStyle()
+        bodyStyle.paragraphSpacingBefore = 8
+        bodyStyle.paragraphSpacing = 8
+        paragraphStyles.body = bodyStyle
+        
+        styler = DownStyler(configuration: DownStylerConfiguration(
+            fonts: fontCollection,
+            colors: colorCollection,
+            paragraphStyles: paragraphStyles,
+            listItemOptions: ListItemOptions(),
+            quoteStripeOptions: QuoteStripeOptions(),
+            thematicBreakOptions: ThematicBreakOptions(),
+            codeBlockOptions: CodeBlockOptions()
+        ))
+    }
+    
+    func render(_ contents: String) -> NSAttributedString {
+        let down = Down(markdownString: contents)
+        do {
+            let attributedString = try down.toAttributedString(DownOptions.smart, styler: styler)
+            return attributedString.attributedStringByTrimming(with: CharacterSet.whitespacesAndNewlines)
+        } catch {
+            return NSAttributedString(string: contents)
+        }
     }
 
 }
