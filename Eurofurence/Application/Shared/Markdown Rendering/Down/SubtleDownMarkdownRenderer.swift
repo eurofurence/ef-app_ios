@@ -16,6 +16,7 @@ struct SubtleDownMarkdownRenderer: MarkdownRenderer {
         let bodyParagraphStyle = (paragraphStyles.body.mutableCopy() as? NSMutableParagraphStyle).unsafelyUnwrapped
         bodyParagraphStyle.paragraphSpacingBefore = 0
         bodyParagraphStyle.paragraphSpacing = 0
+        bodyParagraphStyle.lineSpacing = 3
         paragraphStyles.body = bodyParagraphStyle
         
         let styler = DownStyler(configuration: DownStylerConfiguration(
