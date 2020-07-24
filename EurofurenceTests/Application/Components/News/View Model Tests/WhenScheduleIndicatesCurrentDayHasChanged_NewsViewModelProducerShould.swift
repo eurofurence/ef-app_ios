@@ -15,13 +15,13 @@ class WhenScheduleIndicatesCurrentDayHasChanged_NewsViewModelProducerShould: XCT
         XCTAssertEqual(day, eventsService.lastProducedSchedule?.dayUsedToRestrictEvents)
     }
 
-    func testNotIncludeFavouritesSectionWhenDayIsNil() {
+    func testNotIncludeFavouritesSectionWhenDayIsNil() throws {
         let eventsService = FakeEventsService()
         let context = DefaultNewsViewModelProducerTestBuilder().with(eventsService).build()
         context.subscribeViewModelUpdates()
         eventsService.lastProducedSchedule?.simulateDayChanged(to: nil)
 
-        context
+        try context
             .assert()
             .thatViewModel()
             .hasYourEurofurence()

@@ -5,7 +5,7 @@ import XCTest
 
 class WhenLoggedOutDuringConvention_WithNoRunningEvents_NewsViewModelProducerShould: XCTestCase {
 
-    func testProduceViewModelWithMessagesPrompt_Announcements_UpcomingEvents_AndFavouriteEvents() {
+    func testProduceViewModelWithMessagesPrompt_Announcements_UpcomingEvents_AndFavouriteEvents() throws {
         let eventsService = FakeEventsService()
         let runningEvents = [Event]()
         eventsService.runningEvents = runningEvents
@@ -19,7 +19,7 @@ class WhenLoggedOutDuringConvention_WithNoRunningEvents_NewsViewModelProducerSho
             .build()
         context.subscribeViewModelUpdates()
 
-        context.assert()
+        try context.assert()
             .thatViewModel()
             .hasYourEurofurence()
             .hasAnnouncements()

@@ -5,7 +5,7 @@ import XCTest
 
 class WhenLoggedInBeforeConvention_ThenDaysUntilConventionChanges_NewsViewModelProducerShould: XCTestCase {
 
-    func testUpdateTheCountdownWidget() {
+    func testUpdateTheCountdownWidget() throws {
         let countdownService = StubConventionCountdownService()
         let context = DefaultNewsViewModelProducerTestBuilder()
             .with(FakeAuthenticationService.loggedInService())
@@ -15,7 +15,7 @@ class WhenLoggedInBeforeConvention_ThenDaysUntilConventionChanges_NewsViewModelP
         let daysUntilConvention = Int.random
         countdownService.changeDaysUntilConvention(to: daysUntilConvention)
 
-        context.assert()
+        try context.assert()
             .thatViewModel()
             .hasYourEurofurence()
             .hasConventionCountdown()

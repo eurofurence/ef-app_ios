@@ -5,7 +5,7 @@ import XCTest
 
 class WhenLoggedInBeforeConvention_ThenLogOut_NewsViewModelProducerShould: XCTestCase {
 
-    func testUpdateTheDelegateWithLoggedOutUserWidget() {
+    func testUpdateTheDelegateWithLoggedOutUserWidget() throws {
         let authenticationService = FakeAuthenticationService.loggedInService()
         let context = DefaultNewsViewModelProducerTestBuilder()
             .with(FakeAnnouncementsService(announcements: [StubAnnouncement].random))
@@ -14,7 +14,7 @@ class WhenLoggedInBeforeConvention_ThenLogOut_NewsViewModelProducerShould: XCTes
         context.subscribeViewModelUpdates()
         authenticationService.notifyObserversUserDidLogout()
 
-        context.assert()
+        try context.assert()
             .thatViewModel()
             .hasYourEurofurence()
             .hasConventionCountdown()

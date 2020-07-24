@@ -5,7 +5,7 @@ import XCTest
 
 class WhenLoggedInBeforeConvention_ThenPersonalMessageIsReceived_NewsViewModelProducerShould: XCTestCase {
 
-    func testProduceViewModelWithMessagesPrompt_DaysUntilConvention_AndAnnouncements() {
+    func testProduceViewModelWithMessagesPrompt_DaysUntilConvention_AndAnnouncements() throws {
         let privateMessagesService = CapturingPrivateMessagesService()
         let context = DefaultNewsViewModelProducerTestBuilder()
             .with(FakeAuthenticationService.loggedInService())
@@ -16,7 +16,7 @@ class WhenLoggedInBeforeConvention_ThenPersonalMessageIsReceived_NewsViewModelPr
         let unreadCount = Int.random
         privateMessagesService.notifyUnreadCountDidChange(to: unreadCount)
 
-        context.assert()
+        try context.assert()
             .thatViewModel()
             .hasYourEurofurence()
             .hasConventionCountdown()
