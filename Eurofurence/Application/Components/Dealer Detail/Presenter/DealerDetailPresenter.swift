@@ -125,7 +125,7 @@ class DealerDetailPresenter: DealerDetailSceneDelegate {
 
     }
 
-    private let scene: DealerDetailScene
+    private weak var scene: DealerDetailScene?
     private let dealerDetailViewModelFactory: DealerDetailViewModelFactory
     private let dealer: DealerIdentifier
     private let dealerInteractionRecorder: DealerInteractionRecorder
@@ -151,8 +151,7 @@ class DealerDetailPresenter: DealerDetailSceneDelegate {
         
         dealerDetailViewModelFactory.makeDealerDetailViewModel(for: dealer) { (viewModel) in
             self.viewModel = viewModel
-            self.scene.bind(numberOfComponents: viewModel.numberOfComponents,
-                            using: Binder(viewModel: viewModel))
+            self.scene?.bind(numberOfComponents: viewModel.numberOfComponents, using: Binder(viewModel: viewModel))
         }
     }
     
