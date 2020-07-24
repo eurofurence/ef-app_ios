@@ -3,12 +3,12 @@ import XCTest
 
 class WhenFavouritingEvent_WithScheduleAndSearchControllerActive: XCTestCase {
 
-    func testFavouritingEventInScheduleUpdatesCorrespondingEventInSearchController_BUG() {
+    func testFavouritingEventInScheduleUpdatesCorrespondingEventInSearchController_BUG() throws {
         let context = EurofurenceSessionTestBuilder().build()
         var characteristics = ModelCharacteristics.randomWithoutDeletions
         let event = characteristics.events.changed.randomElement().element
         characteristics.events.changed = [event]
-        guard let dayForEvent = characteristics.conferenceDays.changed.first(where: { $0.identifier == event.dayIdentifier }) else { fatalError() }
+        let dayForEvent = try XCTUnwrap(characteristics.conferenceDays.changed.first(where: { $0.identifier == event.dayIdentifier }))
         characteristics.conferenceDays.changed = [dayForEvent]
         context.performSuccessfulSync(response: characteristics)
         let schedule = context.eventsService.makeEventsSchedule()

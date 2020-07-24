@@ -4,7 +4,7 @@ import XCTest
 
 class WhenDescribingKnowledgeEntryLink_GroupHasOneEntryExactly: XCTestCase {
 
-    func testOnlyTheEntryIdentifierIsProvided() {
+    func testOnlyTheEntryIdentifierIsProvided() throws {
         var characteristics = ModelCharacteristics.randomWithoutDeletions
         var entry = KnowledgeEntryCharacteristics.random
         let group = KnowledgeGroupCharacteristics.random
@@ -16,7 +16,7 @@ class WhenDescribingKnowledgeEntryLink_GroupHasOneEntryExactly: XCTestCase {
         let cid = ModelCharacteristics.testConventionIdentifier
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let urlString = "https://this.bit.doesnt.matter/\(cid)/KnowleDGEEntRIes/\(entry.identifier)"
-        guard let url = URL(string: urlString) else { fatalError("\(urlString) didn't make it into a URL") }
+        let url = try XCTUnwrap(URL(string: urlString))
         
         let visitor = CapturingURLContentVisitor()
         context.contentLinksService.describeContent(in: url, toVisitor: visitor)
