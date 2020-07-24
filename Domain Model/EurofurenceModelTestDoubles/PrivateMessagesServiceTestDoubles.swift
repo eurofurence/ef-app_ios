@@ -14,6 +14,10 @@ public class SuccessfulPrivateMessagesService: PrivateMessagesService {
         
     }
     
+    public func removeObserver(_ observer: PrivateMessagesObserver) {
+        
+    }
+    
     public func refreshMessages() {
         
     }
@@ -40,6 +44,10 @@ public class FailingPrivateMessagesService: PrivateMessagesService {
         
     }
     
+    public func removeObserver(_ observer: PrivateMessagesObserver) {
+        
+    }
+    
     public func refreshMessages() {
         
     }
@@ -59,6 +67,10 @@ public class ControllablePrivateMessagesService: PrivateMessagesService {
     }
     
     public func add(_ observer: PrivateMessagesObserver) {
+        
+    }
+    
+    public func removeObserver(_ observer: PrivateMessagesObserver) {
         
     }
     

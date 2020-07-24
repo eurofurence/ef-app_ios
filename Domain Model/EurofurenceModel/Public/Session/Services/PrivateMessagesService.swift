@@ -3,6 +3,7 @@ import Foundation
 public protocol PrivateMessagesService {
 
     func add(_ observer: PrivateMessagesObserver)
+    func removeObserver(_ observer: PrivateMessagesObserver)
     
     func refreshMessages()
     

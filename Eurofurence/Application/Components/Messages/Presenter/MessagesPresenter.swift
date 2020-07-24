@@ -35,6 +35,10 @@ class MessagesPresenter: MessagesSceneDelegate, PrivateMessagesObserver {
         privateMessagesService.add(self)
         reloadPrivateMessages()
     }
+    
+    func messagesSceneFinalizing() {
+        privateMessagesService.removeObserver(self)
+    }
 
     func messagesSceneDidSelectMessage(at indexPath: IndexPath) {
         let message = presentedMessages[indexPath[1]]

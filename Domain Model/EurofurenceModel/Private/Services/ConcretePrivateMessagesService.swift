@@ -41,6 +41,10 @@ class ConcretePrivateMessagesService: PrivateMessagesService {
         observer.privateMessagesServiceDidUpdateUnreadMessageCount(to: determineUnreadMessageCount())
         observer.privateMessagesServiceDidFinishRefreshingMessages(messages: localMessages)
     }
+    
+    func removeObserver(_ observer: PrivateMessagesObserver) {
+        
+    }
 
     func refreshMessages() {
         refreshMessages(completionHandler: nil)
