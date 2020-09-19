@@ -206,11 +206,11 @@ class URLSessionBasedJSONSessionTests: XCTestCase {
 
         let errorExpectation = expectation(description: "Completion handler should be provided with error")
         get(expectedURL, completionHandler: { _, error in
-            guard let error = error else { return }
-
-            if (error as NSError) == expectedError {
-                errorExpectation.fulfill()
-            }
+            guard let error = error as NSError? else { return }
+            guard error.domain == "Test" else { return }
+            guard error.code == 0 else { return }
+            
+            errorExpectation.fulfill()
         })
 
         waitForExpectations(timeout: testTimeout)
