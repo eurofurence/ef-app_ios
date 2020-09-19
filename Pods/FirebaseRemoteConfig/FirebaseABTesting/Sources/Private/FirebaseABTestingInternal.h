@@ -1,4 +1,4 @@
-// Copyright 2019 Google
+// Copyright 2020 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,17 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#import "Crashlytics/Crashlytics/FIRCLSURLSession/FIRCLSURLSessionAvailability.h"
+// An umbrella header, for any other libraries in this repo to access Firebase Public and Private
+// headers. Any package manager complexity should be handled here.
 
-#if FIRCLSURLSESSION_REQUIRED
-#import "Crashlytics/Crashlytics/FIRCLSURLSession/Tasks/FIRCLSURLSessionUploadTask.h"
+#import <FirebaseABTesting/FirebaseABTesting.h>
 
-@implementation FIRCLSURLSessionUploadTask
-
-@end
-
-#else
-
-INJECT_STRIP_SYMBOL(clsurlsessionuploadtask)
-
-#endif
+#import "FirebaseABTesting/Sources/Private/ABTExperimentPayload.h"

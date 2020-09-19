@@ -12,18 +12,19 @@ This app uses the [Eurofurence API](https://app.eurofurence.org/swagger/v2/ui/) 
 
 ## Building From Source
 
-To build the app, you'll need the latest versions of:
-
-- Xcode 10
-- Cocoapods
-
-Once you clone the repository, open the workspace (not the project!). You'll find a few schemes knocking around:
+To build the app, you'll need the latest version of Xcode 12. Once you clone the repository, open the workspace (not the project!). You'll find a few schemes knocking around:
 
 - **Eurofurence** - Runs the iOS app and runs tests against the app and model
 - **Application** - Also runs the iOS app, but only runs the tests against the app
 - **Screenshots** - Used for generating screenshots using Fastlane
 - **EurofurenceModel** - Houses the services and repositories used by the app
 - **EurofurenceModelAdapterTests** - Contains tests for adapters from the model into system APIs (e.g. Core Data)
+
+## Updating Dependencies
+
+The Eurofurence app commits its dependencies to source (as seen under the _Pods_ directory). This guarantees consistency between dev environments as there's no change of differing versions of the Cocoapods gem configuring the project differently machines - specifically useful for CI.
+
+When required, a *pod install* or *pod update* should be done using Bundler to keep everyone on the same version of Cocoapods, i.e. instead of executing **pod (install|update)** please us **bundle exec pod (install|update)**.
 
 ## Contributing
 

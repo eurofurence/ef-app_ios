@@ -10,7 +10,7 @@ class WhenPreparingViewModel_AnnouncementsViewModelFactoryShould: XCTestCase {
     var announcementDateFormatter: FakeAnnouncementDateFormatter!
 	var markdownRenderer: StubMarkdownRenderer!
     var announcements: [Announcement]!
-    var announcement: (element: Announcement, index: Int)!
+    var announcement: (index: Int, element: Announcement)!
 
     override func setUp() {
         super.setUp()
