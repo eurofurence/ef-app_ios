@@ -77,7 +77,8 @@ workflows:
         inputs:
         - project_path: "$BITRISE_PROJECT_PATH"
         - simulator_device: iPhone 8
-        - scheme: "$TESTS_SCHEME"
+        - xcodebuild_test_options: -testPlan "All Tests"
+        - scheme: "$APPLICATION_SCHEME"
         title: Run All Tests
     after_run: []
   PR:
@@ -101,9 +102,6 @@ app:
   - opts:
       is_expand: false
     BITRISE_EXPORT_METHOD: app-store
-  - opts:
-      is_expand: false
-    TESTS_SCHEME: All Tests
   - opts:
       is_expand: false
     APPLE_DEVELOPER_TEAM_ID: 557SGQG5H4
