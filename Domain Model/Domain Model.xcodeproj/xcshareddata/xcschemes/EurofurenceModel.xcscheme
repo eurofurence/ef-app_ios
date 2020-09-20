@@ -41,6 +41,9 @@
             reference = "container:Test Plans/Model Tests.xctestplan"
             default = "YES">
          </TestPlanReference>
+         <TestPlanReference
+            reference = "container:Test Plans/Model Adapter Tests.xctestplan">
+         </TestPlanReference>
       </TestPlans>
       <Testables>
          <TestableReference
