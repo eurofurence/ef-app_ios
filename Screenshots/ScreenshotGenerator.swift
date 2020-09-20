@@ -52,6 +52,13 @@ class ScreenshotGenerator: XCTestCase {
         } while waitingForTabItemToAppear && totalWaitTimeSeconds < threeMinutes
     }
 
+    private func hideKeyboard() {
+        let hideKeyboardButton = app.buttons["Hide keyboard"]
+        if hideKeyboardButton.exists {
+            hideKeyboardButton.tap()
+        }
+    }
+    
     func testScreenshots() {
         navigateToRootTabController()
         
@@ -73,6 +80,9 @@ class ScreenshotGenerator: XCTestCase {
         
         snapshot("03_EventDetail")
         
+        hideKeyboard()
+        app.tabBars["Tab Bar"].buttons["Dealers"].tap()
+
         app.tabBars.buttons["Dealers"].tap()
         
         snapshot("04_Dealers")
