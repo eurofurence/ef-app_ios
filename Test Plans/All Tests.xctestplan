@@ -1,0 +1,46 @@
+{
+  "configurations" : [
+    {
+      "id" : "46E1013C-1115-40FA-8200-3C770A3EDAD0",
+      "name" : "en-US (US)",
+      "options" : {
+        "language" : "en-GB",
+        "region" : "US"
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Domain Model\/Domain Model.xcodeproj",
+        "identifier" : "CA7A325822B16E65002AD939",
+        "name" : "EurofurenceModelAdapterTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Domain Model\/Domain Model.xcodeproj",
+        "identifier" : "CA7A2F3222B16DA3002AD939",
+        "name" : "EurofurenceModelTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Eurofurence.xcodeproj",
+        "identifier" : "9ACF99471EBE172D006FC958",
+        "name" : "EurofurenceTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Eurofurence.xcodeproj",
+        "identifier" : "78D7EEA01F17F40C005372A9",
+        "name" : "Screenshots"
+      }
+    }
+  ],
+  "version" : 1
+}
