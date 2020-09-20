@@ -1081,6 +1081,8 @@
 		CAF1983B24688EAB005DFBBE /* AdditionalServicesPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF196BC24688EAA005DFBBE /* AdditionalServicesPresenterTests.swift */; };
 		CAF198492468A8E3005DFBBE /* CapturingAnnouncementsComponentDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF198482468A8E3005DFBBE /* CapturingAnnouncementsComponentDelegate.swift */; };
 		CAF254AD2517F983008892ED /* EurofurenceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF254AC2517F983008892ED /* EurofurenceUITests.swift */; };
+		CAF254FF2517FB65008892ED /* AutomationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF254FE2517FB65008892ED /* AutomationController.swift */; };
+		CAF255082517FB92008892ED /* AutomationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF254FE2517FB65008892ED /* AutomationController.swift */; };
 		CAF3C7441F9F5C550008F027 /* NewsComponentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C7431F9F5C550008F027 /* NewsComponentFactory.swift */; };
 		CAF3C7481F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C7471F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift */; };
 		CAF3C74C1F9F619C0008F027 /* NewsComponentFactoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C74B1F9F619C0008F027 /* NewsComponentFactoryImpl.swift */; };
@@ -2287,6 +2289,7 @@
 		CAF254AA2517F983008892ED /* EurofurenceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EurofurenceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAF254AC2517F983008892ED /* EurofurenceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EurofurenceUITests.swift; sourceTree = "<group>"; };
 		CAF254AE2517F983008892ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CAF254FE2517FB65008892ED /* AutomationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomationController.swift; sourceTree = "<group>"; };
 		CAF3C7431F9F5C550008F027 /* NewsComponentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsComponentFactory.swift; sourceTree = "<group>"; };
 		CAF3C7471F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingNewsModuleDelegate.swift; sourceTree = "<group>"; };
 		CAF3C74B1F9F619C0008F027 /* NewsComponentFactoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsComponentFactoryImpl.swift; sourceTree = "<group>"; };
@@ -6492,10 +6495,19 @@
 		CAF254AB2517F983008892ED /* EurofurenceUITests */ = {
 			isa = PBXGroup;
 			children = (
-				CAF254AC2517F983008892ED /* EurofurenceUITests.swift */,
 				CAF254AE2517F983008892ED /* Info.plist */,
+				CAF254AC2517F983008892ED /* EurofurenceUITests.swift */,
+				CAF254FD2517FB47008892ED /* UI Automation */,
 			);
 			path = EurofurenceUITests;
+			sourceTree = "<group>";
+		};
+		CAF254FD2517FB47008892ED /* UI Automation */ = {
+			isa = PBXGroup;
+			children = (
+				CAF254FE2517FB65008892ED /* AutomationController.swift */,
+			);
+			path = "UI Automation";
 			sourceTree = "<group>";
 		};
 		CAF9A94F1F558E6200628833 /* Test Utilities */ = {
@@ -7016,6 +7028,7 @@
 			files = (
 				CA25A89C22C4101D00226478 /* ScreenshotGenerator.swift in Sources */,
 				CA25A89D22C4101D00226478 /* SnapshotHelper.swift in Sources */,
+				CAF255082517FB92008892ED /* AutomationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8084,6 +8097,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAF254FF2517FB65008892ED /* AutomationController.swift in Sources */,
 				CAF254AD2517F983008892ED /* EurofurenceUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

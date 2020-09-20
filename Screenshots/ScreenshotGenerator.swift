@@ -3,11 +3,12 @@ import XCTest
 class ScreenshotGenerator: XCTestCase {
 
     var app: XCUIApplication!
+    let automationController = AutomationController()
 
     override func setUp() {
         super.setUp()
 
-        app = XCUIApplication()
+        app = automationController.app
         setupSnapshot(app)
         
         enforceCorrectDeviceOrientation()
@@ -26,32 +27,6 @@ class ScreenshotGenerator: XCTestCase {
         }
     }
 
-    private func navigateToRootTabController() {
-        let newsTabBarItem = app.tabBars.buttons["News"]
-        guard !newsTabBarItem.exists else {
-            return
-        }
-
-        if app.alerts.element.collectionViews.buttons["Allow"].exists {
-            app.tap()
-        }
-
-        let beginDownloadButton = app.buttons["Begin Download"]
-        if beginDownloadButton.exists {
-            beginDownloadButton.tap()
-        }
-
-        let beganWaitingAt = Date()
-        var waitingForTabItemToAppear = true
-        var totalWaitTimeSeconds: TimeInterval = 0
-        let threeMinutes: TimeInterval = 180
-        repeat {
-            RunLoop.current.run(until: Date(timeIntervalSinceNow: 1))
-            waitingForTabItemToAppear = !newsTabBarItem.exists
-            totalWaitTimeSeconds = Date().timeIntervalSince(beganWaitingAt)
-        } while waitingForTabItemToAppear && totalWaitTimeSeconds < threeMinutes
-    }
-
     private func hideKeyboard() {
         let hideKeyboardButton = app.buttons["Hide keyboard"]
         if hideKeyboardButton.exists {
@@ -60,7 +35,7 @@ class ScreenshotGenerator: XCTestCase {
     }
     
     func testScreenshots() {
-        navigateToRootTabController()
+        automationController.navigateToRootTabController()
         
         snapshot("01_News")
 
