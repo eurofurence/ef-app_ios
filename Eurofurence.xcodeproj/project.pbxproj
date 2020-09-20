@@ -1704,6 +1704,7 @@
 		CA7D8B26222EAB61003431A0 /* DefaultDealerDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDealerDetailViewModel.swift; sourceTree = "<group>"; };
 		CA7D8B3722312CFB003431A0 /* DefaultNewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNewsViewModel.swift; sourceTree = "<group>"; };
 		CA7EB7D41F799991002674A6 /* TutorialScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScene.swift; sourceTree = "<group>"; };
+		CA8124FE2517BDE500A7F717 /* iOS Application Tests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "iOS Application Tests.xctestplan"; sourceTree = "<group>"; };
 		CA81D48D1FE9A8DB00A52A2F /* CapturingTutorialModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingTutorialModuleDelegate.swift; sourceTree = "<group>"; };
 		CA82409C21249907007E4A70 /* ReviewPromptControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPromptControllerTests.swift; sourceTree = "<group>"; };
 		CA82409F21249A5E007E4A70 /* ReviewPromptController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPromptController.swift; sourceTree = "<group>"; };
@@ -2639,16 +2640,17 @@
 		9ACF992B1EBE172D006FC958 = {
 			isa = PBXGroup;
 			children = (
-				CA08B0F622EDD41900FDAAA7 /* README.md */,
 				CA7A299322B02B46002AD939 /* Dangerfile */,
+				CA08B0F622EDD41900FDAAA7 /* README.md */,
 				78CA0D0E1F0E57D5006DFD64 /* GoogleService-Info.plist */,
 				9ACF99361EBE172D006FC958 /* Eurofurence */,
-				9ACF994B1EBE172D006FC958 /* EurofurenceTests */,
-				78D7EEA21F17F40C005372A9 /* Screenshots */,
 				CA630BDD229F14F800754C27 /* EurofurenceIntentDefinitions */,
+				9ACF994B1EBE172D006FC958 /* EurofurenceTests */,
 				164F3A1C0E53F6ADD4C20674 /* Frameworks */,
 				2A4A738C931BBD9059F30151 /* Pods */,
 				9ACF99351EBE172D006FC958 /* Products */,
+				78D7EEA21F17F40C005372A9 /* Screenshots */,
+				CA8124FA2517BDAC00A7F717 /* Test Plans */,
 			);
 			sourceTree = "<group>";
 		};
@@ -4239,6 +4241,14 @@
 				CAA6060620EEB4F200075A4E /* UserNotificationsScheduler.swift */,
 			);
 			path = Scheduling;
+			sourceTree = "<group>";
+		};
+		CA8124FA2517BDAC00A7F717 /* Test Plans */ = {
+			isa = PBXGroup;
+			children = (
+				CA8124FE2517BDE500A7F717 /* iOS Application Tests.xctestplan */,
+			);
+			path = "Test Plans";
 			sourceTree = "<group>";
 		};
 		CA82409B212498E6007E4A70 /* Review Prompt */ = {
