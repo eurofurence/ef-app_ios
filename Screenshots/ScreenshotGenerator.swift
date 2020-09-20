@@ -35,7 +35,7 @@ class ScreenshotGenerator: XCTestCase {
     }
     
     func testScreenshots() {
-        automationController.navigateToRootTabController()
+        automationController.transitionToContent()
         
         snapshot("01_News")
 

@@ -11,7 +11,7 @@ struct AutomationController {
 
 extension AutomationController {
     
-    func navigateToRootTabController() {
+    func transitionToContent() {
         let newsTabBarItem = app.tabBars.buttons["News"]
         guard !newsTabBarItem.exists else {
             return
