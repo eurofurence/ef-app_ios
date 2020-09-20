@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "94A00FE2-FF27-4991-927C-99F47C80681E",
+      "name" : "Configuration",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Domain Model.xcodeproj",
+      "identifier" : "CA7A2F2A22B16DA3002AD939",
+      "name" : "EurofurenceModel"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Domain Model.xcodeproj",
+        "identifier" : "CA7A2F3222B16DA3002AD939",
+        "name" : "EurofurenceModelTests"
+      }
+    }
+  ],
+  "version" : 1
+}
