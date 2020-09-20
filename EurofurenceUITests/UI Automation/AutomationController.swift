@@ -4,6 +4,13 @@ struct AutomationController {
     
     let app = XCUIApplication()
     
+}
+
+
+// MARK: - Bootstrap
+
+extension AutomationController {
+    
     func navigateToRootTabController() {
         let newsTabBarItem = app.tabBars.buttons["News"]
         guard !newsTabBarItem.exists else {
@@ -29,6 +36,40 @@ struct AutomationController {
             waitingForTabItemToAppear = !newsTabBarItem.exists
             totalWaitTimeSeconds = Date().timeIntervalSince(beganWaitingAt)
         } while waitingForTabItemToAppear && totalWaitTimeSeconds < threeMinutes
+    }
+    
+}
+
+
+// MARK: - Selecting Tabs
+
+extension AutomationController {
+    
+    enum Tab {
+        
+        case schedule
+        case dealers
+        case information
+        
+        fileprivate func tap(in application: XCUIApplication) {
+            application.tabBars.buttons[identifier].tap()
+        }
+        
+        private var identifier: String {
+            switch self {
+            case .schedule:
+                return "Schedule"
+            case .dealers:
+                return "Dealers"
+            case .information:
+                return "Information"
+            }
+        }
+        
+    }
+    
+    func tapTab(_ tab: Tab) {
+        tab.tap(in: app)
     }
     
 }

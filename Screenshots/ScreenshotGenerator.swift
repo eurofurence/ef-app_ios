@@ -39,7 +39,7 @@ class ScreenshotGenerator: XCTestCase {
         
         snapshot("01_News")
 
-        app.tabBars.buttons["Schedule"].tap()
+        automationController.tapTab(.schedule)
         app.tables.firstMatch.swipeDown()
         
         snapshot("02_Schedule")
@@ -56,9 +56,7 @@ class ScreenshotGenerator: XCTestCase {
         snapshot("03_EventDetail")
         
         hideKeyboard()
-        app.tabBars["Tab Bar"].buttons["Dealers"].tap()
-
-        app.tabBars.buttons["Dealers"].tap()
+        automationController.tapTab(.dealers)
         
         snapshot("04_Dealers")
         
@@ -66,7 +64,7 @@ class ScreenshotGenerator: XCTestCase {
         
         snapshot("05_DealerDetail")
         
-        app.tabBars.buttons["Information"].tap()
+        automationController.tapTab(.information)
         
         snapshot("06_Information")
     }
