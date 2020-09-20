@@ -63,6 +63,12 @@
             </ActionContent>
          </ExecutionAction>
       </PostActions>
+      <TestPlans>
+         <TestPlanReference
+            reference = "container:Test Plans/Screenshots.xctestplan"
+            default = "YES">
+         </TestPlanReference>
+      </TestPlans>
       <Testables>
          <TestableReference
             skipped = "NO">
@@ -102,15 +108,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "78D7EEA01F17F40C005372A9"
-            BuildableName = "Screenshots.xctest"
-            BlueprintName = "Screenshots"
-            ReferencedContainer = "container:Eurofurence.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
