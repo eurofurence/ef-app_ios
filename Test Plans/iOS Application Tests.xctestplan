@@ -1,0 +1,43 @@
+{
+  "configurations" : [
+    {
+      "id" : "5F661140-55A9-43E3-BB9B-730FD94B2CC3",
+      "name" : "Configuration",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:Eurofurence.xcodeproj",
+          "identifier" : "9ACF99331EBE172D006FC958",
+          "name" : "Eurofurence"
+        }
+      ]
+    },
+    "environmentVariableEntries" : [
+      {
+        "key" : "OS_ACTIVITY_MODE",
+        "value" : "disable"
+      }
+    ],
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Eurofurence.xcodeproj",
+      "identifier" : "9ACF99331EBE172D006FC958",
+      "name" : "Eurofurence"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Eurofurence.xcodeproj",
+        "identifier" : "9ACF99471EBE172D006FC958",
+        "name" : "EurofurenceTests"
+      }
+    }
+  ],
+  "version" : 1
+}

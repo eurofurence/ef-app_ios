@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "B125F799-7154-4C37-9BD3-10E21F6AEB9A",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Domain Model.xcodeproj",
+        "identifier" : "CA7A325822B16E65002AD939",
+        "name" : "EurofurenceModelAdapterTests"
+      }
+    }
+  ],
+  "version" : 1
+}

@@ -14,11 +14,8 @@ This app uses the [Eurofurence API](https://app.eurofurence.org/swagger/v2/ui/) 
 
 To build the app, you'll need the latest version of Xcode 12. Once you clone the repository, open the workspace (not the project!). You'll find a few schemes knocking around:
 
-- **Eurofurence** - Runs the iOS app and runs tests against the app and model
-- **Application** - Also runs the iOS app, but only runs the tests against the app
-- **Screenshots** - Used for generating screenshots using Fastlane
+- **Eurofurence** - Houses the iOS app, Intent definitions and test plans
 - **EurofurenceModel** - Houses the services and repositories used by the app
-- **EurofurenceModelAdapterTests** - Contains tests for adapters from the model into system APIs (e.g. Core Data)
 
 ## Updating Dependencies
 

@@ -937,6 +937,8 @@
 		CA7A32EE22B17011002AD939 /* EventBus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EventBus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA7A32F022B17023002AD939 /* TestUtilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TestUtilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA7A32FD22B17A44002AD939 /* TestUtilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TestUtilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA8125072517BFB300A7F717 /* Model Tests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Model Tests.xctestplan"; sourceTree = "<group>"; };
+		CA81250C2517C03E00A7F717 /* Model Adapter Tests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Model Adapter Tests.xctestplan"; sourceTree = "<group>"; };
 		CA82DB5A22D66B9400467C2F /* WhenRequestingShareableURL_EventShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenRequestingShareableURL_EventShould.swift; sourceTree = "<group>"; };
 		CA82DB5C22D66CD800467C2F /* ShareableURLFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareableURLFactory.swift; sourceTree = "<group>"; };
 		CA82DB5E22D66CF300467C2F /* FakeShareableURLFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeShareableURLFactory.swift; sourceTree = "<group>"; };
@@ -1093,12 +1095,13 @@
 			isa = PBXGroup;
 			children = (
 				CA7A2F2C22B16DA3002AD939 /* EurofurenceModel */,
-				CA7A2F3722B16DA3002AD939 /* EurofurenceModelTests */,
 				CA7A325A22B16E65002AD939 /* EurofurenceModelAdapterTests */,
 				CA7A326A22B16E75002AD939 /* EurofurenceModelTestDoubles */,
-				CA7A2F1C22B16D70002AD939 /* Products */,
+				CA7A2F3722B16DA3002AD939 /* EurofurenceModelTests */,
 				CA7A32ED22B17011002AD939 /* Frameworks */,
 				7027AC0A7F600F7EEF57C6CA /* Pods */,
+				CA7A2F1C22B16D70002AD939 /* Products */,
+				CA8125062517BF9F00A7F717 /* Test Plans */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2155,6 +2158,15 @@
 				26657B2D5254404DBC47C53C /* Pods_EurofurenceModelTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CA8125062517BF9F00A7F717 /* Test Plans */ = {
+			isa = PBXGroup;
+			children = (
+				CA8125072517BFB300A7F717 /* Model Tests.xctestplan */,
+				CA81250C2517C03E00A7F717 /* Model Adapter Tests.xctestplan */,
+			);
+			path = "Test Plans";
 			sourceTree = "<group>";
 		};
 		CA8A73D122BD15CB007A5201 /* Additional Services */ = {

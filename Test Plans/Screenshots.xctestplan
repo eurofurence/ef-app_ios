@@ -1,0 +1,30 @@
+{
+  "configurations" : [
+    {
+      "id" : "C167E177-8508-44B5-90A7-BCA917999C73",
+      "name" : "en-US (US)",
+      "options" : {
+        "language" : "en",
+        "region" : "US"
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Eurofurence.xcodeproj",
+      "identifier" : "78D7EEA01F17F40C005372A9",
+      "name" : "Screenshots"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Eurofurence.xcodeproj",
+        "identifier" : "78D7EEA01F17F40C005372A9",
+        "name" : "Screenshots"
+      }
+    }
+  ],
+  "version" : 1
+}
