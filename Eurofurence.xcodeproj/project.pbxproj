@@ -1080,6 +1080,7 @@
 		CAF1983A24688EAB005DFBBE /* AdditionalServicesPresenterTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF196BB24688EAA005DFBBE /* AdditionalServicesPresenterTestBuilder.swift */; };
 		CAF1983B24688EAB005DFBBE /* AdditionalServicesPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF196BC24688EAA005DFBBE /* AdditionalServicesPresenterTests.swift */; };
 		CAF198492468A8E3005DFBBE /* CapturingAnnouncementsComponentDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF198482468A8E3005DFBBE /* CapturingAnnouncementsComponentDelegate.swift */; };
+		CAF254AD2517F983008892ED /* EurofurenceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF254AC2517F983008892ED /* EurofurenceUITests.swift */; };
 		CAF3C7441F9F5C550008F027 /* NewsComponentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C7431F9F5C550008F027 /* NewsComponentFactory.swift */; };
 		CAF3C7481F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C7471F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift */; };
 		CAF3C74C1F9F619C0008F027 /* NewsComponentFactoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C74B1F9F619C0008F027 /* NewsComponentFactoryImpl.swift */; };
@@ -1129,6 +1130,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = CA630BDB229F14F800754C27;
 			remoteInfo = EurofurenceIntentDefinitions;
+		};
+		CAF254AF2517F983008892ED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9ACF992C1EBE172D006FC958 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9ACF99331EBE172D006FC958;
+			remoteInfo = Eurofurence;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -2276,6 +2284,9 @@
 		CAF196BB24688EAA005DFBBE /* AdditionalServicesPresenterTestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdditionalServicesPresenterTestBuilder.swift; sourceTree = "<group>"; };
 		CAF196BC24688EAA005DFBBE /* AdditionalServicesPresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdditionalServicesPresenterTests.swift; sourceTree = "<group>"; };
 		CAF198482468A8E3005DFBBE /* CapturingAnnouncementsComponentDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingAnnouncementsComponentDelegate.swift; sourceTree = "<group>"; };
+		CAF254AA2517F983008892ED /* EurofurenceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EurofurenceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CAF254AC2517F983008892ED /* EurofurenceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EurofurenceUITests.swift; sourceTree = "<group>"; };
+		CAF254AE2517F983008892ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CAF3C7431F9F5C550008F027 /* NewsComponentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsComponentFactory.swift; sourceTree = "<group>"; };
 		CAF3C7471F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingNewsModuleDelegate.swift; sourceTree = "<group>"; };
 		CAF3C74B1F9F619C0008F027 /* NewsComponentFactoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsComponentFactoryImpl.swift; sourceTree = "<group>"; };
@@ -2349,6 +2360,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		CA630BD9229F14F800754C27 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CAF254A72517F983008892ED /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2648,6 +2666,7 @@
 				9ACF99361EBE172D006FC958 /* Eurofurence */,
 				CA630BDD229F14F800754C27 /* EurofurenceIntentDefinitions */,
 				9ACF994B1EBE172D006FC958 /* EurofurenceTests */,
+				CAF254AB2517F983008892ED /* EurofurenceUITests */,
 				164F3A1C0E53F6ADD4C20674 /* Frameworks */,
 				2A4A738C931BBD9059F30151 /* Pods */,
 				9ACF99351EBE172D006FC958 /* Products */,
@@ -2663,6 +2682,7 @@
 				9ACF99481EBE172D006FC958 /* EurofurenceTests.xctest */,
 				78D7EEA11F17F40C005372A9 /* Screenshots.xctest */,
 				CA630BDC229F14F800754C27 /* EurofurenceIntentDefinitions.framework */,
+				CAF254AA2517F983008892ED /* EurofurenceUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -6469,6 +6489,15 @@
 			path = Formatters;
 			sourceTree = "<group>";
 		};
+		CAF254AB2517F983008892ED /* EurofurenceUITests */ = {
+			isa = PBXGroup;
+			children = (
+				CAF254AC2517F983008892ED /* EurofurenceUITests.swift */,
+				CAF254AE2517F983008892ED /* Info.plist */,
+			);
+			path = EurofurenceUITests;
+			sourceTree = "<group>";
+		};
 		CAF9A94F1F558E6200628833 /* Test Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -6596,6 +6625,24 @@
 			productReference = CA630BDC229F14F800754C27 /* EurofurenceIntentDefinitions.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		CAF254A92517F983008892ED /* EurofurenceUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CAF254B52517F983008892ED /* Build configuration list for PBXNativeTarget "EurofurenceUITests" */;
+			buildPhases = (
+				CAF254A62517F983008892ED /* Sources */,
+				CAF254A72517F983008892ED /* Frameworks */,
+				CAF254A82517F983008892ED /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CAF254B02517F983008892ED /* PBXTargetDependency */,
+			);
+			name = EurofurenceUITests;
+			productName = EurofurenceUITests;
+			productReference = CAF254AA2517F983008892ED /* EurofurenceUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -6603,7 +6650,7 @@
 			isa = PBXProject;
 			attributes = {
 				DefaultBuildSystemTypeForWorkspace = Latest;
-				LastSwiftUpdateCheck = 1020;
+				LastSwiftUpdateCheck = 1200;
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = Eurofurence;
 				TargetAttributes = {
@@ -6646,6 +6693,11 @@
 						DevelopmentTeam = 557SGQG5H4;
 						ProvisioningStyle = Automatic;
 					};
+					CAF254A92517F983008892ED = {
+						CreatedOnToolsVersion = 12.0;
+						DevelopmentTeam = 557SGQG5H4;
+						TestTargetID = 9ACF99331EBE172D006FC958;
+					};
 				};
 			};
 			buildConfigurationList = 9ACF992F1EBE172D006FC958 /* Build configuration list for PBXProject "Eurofurence" */;
@@ -6663,6 +6715,7 @@
 			targets = (
 				9ACF99331EBE172D006FC958 /* Eurofurence */,
 				9ACF99471EBE172D006FC958 /* EurofurenceTests */,
+				CAF254A92517F983008892ED /* EurofurenceUITests */,
 				78D7EEA01F17F40C005372A9 /* Screenshots */,
 				CA630BDB229F14F800754C27 /* EurofurenceIntentDefinitions */,
 			);
@@ -6737,6 +6790,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		CA630BDA229F14F800754C27 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CAF254A82517F983008892ED /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -8020,6 +8080,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CAF254A62517F983008892ED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CAF254AD2517F983008892ED /* EurofurenceUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -8037,6 +8105,11 @@
 			isa = PBXTargetDependency;
 			target = CA630BDB229F14F800754C27 /* EurofurenceIntentDefinitions */;
 			targetProxy = CA630BE1229F14F800754C27 /* PBXContainerItemProxy */;
+		};
+		CAF254B02517F983008892ED /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9ACF99331EBE172D006FC958 /* Eurofurence */;
+			targetProxy = CAF254AF2517F983008892ED /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -8064,7 +8137,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6C88209150186B7EFBA9C8CC /* Pods-Eurofurence-Screenshots.debug.xcconfig */;
 			buildSettings = {
-				DEVELOPMENT_TEAM = 557SGQG5H4;
 				INFOPLIST_FILE = Screenshots/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceUITests;
@@ -8078,7 +8150,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 66CD88822E2E9BDD59043711 /* Pods-Eurofurence-Screenshots.release.xcconfig */;
 			buildSettings = {
-				DEVELOPMENT_TEAM = 557SGQG5H4;
 				INFOPLIST_FILE = Screenshots/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceUITests;
@@ -8117,6 +8188,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = 557SGQG5H4;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -8146,7 +8218,6 @@
 				CODE_SIGN_ENTITLEMENTS = Eurofurence/Eurofurence.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 557SGQG5H4;
 				INFOPLIST_FILE = Eurofurence/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 3.1.4;
@@ -8164,7 +8235,6 @@
 			baseConfigurationReference = 76BA1C12243EF90AE630527A /* Pods-EurofurenceTests.profiling.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 557SGQG5H4;
 				INFOPLIST_FILE = EurofurenceTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceTests;
@@ -8178,7 +8248,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9836F4BC0F20EFAEC87DC002 /* Pods-Eurofurence-Screenshots.profiling.xcconfig */;
 			buildSettings = {
-				DEVELOPMENT_TEAM = 557SGQG5H4;
 				INFOPLIST_FILE = Screenshots/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceUITests;
@@ -8217,6 +8286,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = 557SGQG5H4;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -8274,6 +8344,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = 557SGQG5H4;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -8303,7 +8374,6 @@
 				CODE_SIGN_ENTITLEMENTS = Eurofurence/Eurofurence.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 557SGQG5H4;
 				INFOPLIST_FILE = Eurofurence/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 3.1.4;
@@ -8325,7 +8395,6 @@
 				CODE_SIGN_ENTITLEMENTS = Eurofurence/Eurofurence.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 557SGQG5H4;
 				INFOPLIST_FILE = Eurofurence/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 3.1.4;
@@ -8343,7 +8412,6 @@
 			baseConfigurationReference = F2149010773618CC5183A177 /* Pods-EurofurenceTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 557SGQG5H4;
 				INFOPLIST_FILE = EurofurenceTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceTests;
@@ -8358,7 +8426,6 @@
 			baseConfigurationReference = 12E3A700B2E0C6F95FBA562D /* Pods-EurofurenceTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 557SGQG5H4;
 				INFOPLIST_FILE = EurofurenceTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceTests;
@@ -8380,7 +8447,6 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 557SGQG5H4;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -8412,7 +8478,6 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 557SGQG5H4;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -8444,7 +8509,6 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 557SGQG5H4;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -8475,7 +8539,6 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 557SGQG5H4;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -8523,6 +8586,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = 557SGQG5H4;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -8559,7 +8623,6 @@
 				CODE_SIGN_ENTITLEMENTS = Eurofurence/Eurofurence.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 557SGQG5H4;
 				INFOPLIST_FILE = Eurofurence/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 3.1.4;
@@ -8578,7 +8641,6 @@
 			baseConfigurationReference = 33EF333E8436FABD4F263F92 /* Pods-EurofurenceTests.screenshots.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 557SGQG5H4;
 				INFOPLIST_FILE = EurofurenceTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceTests;
@@ -8592,7 +8654,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 670F5123C04FA36A59E36715 /* Pods-Eurofurence-Screenshots.screenshots.xcconfig */;
 			buildSettings = {
-				DEVELOPMENT_TEAM = 557SGQG5H4;
 				INFOPLIST_FILE = Screenshots/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceUITests;
@@ -8601,6 +8662,100 @@
 				TEST_TARGET_NAME = Eurofurence;
 			};
 			name = Screenshots;
+		};
+		CAF254B12517F983008892ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = EurofurenceUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Eurofurence;
+			};
+			name = Debug;
+		};
+		CAF254B22517F983008892ED /* Screenshots */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = EurofurenceUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Eurofurence;
+			};
+			name = Screenshots;
+		};
+		CAF254B32517F983008892ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = EurofurenceUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Eurofurence;
+			};
+			name = Release;
+		};
+		CAF254B42517F983008892ED /* Profiling */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = EurofurenceUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Eurofurence;
+			};
+			name = Profiling;
 		};
 /* End XCBuildConfiguration section */
 
@@ -8656,6 +8811,17 @@
 				CA630BE7229F14F800754C27 /* Screenshots */,
 				CA630BE8229F14F800754C27 /* Release */,
 				CA630BE9229F14F800754C27 /* Profiling */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CAF254B52517F983008892ED /* Build configuration list for PBXNativeTarget "EurofurenceUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CAF254B12517F983008892ED /* Debug */,
+				CAF254B22517F983008892ED /* Screenshots */,
+				CAF254B32517F983008892ED /* Release */,
+				CAF254B42517F983008892ED /* Profiling */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

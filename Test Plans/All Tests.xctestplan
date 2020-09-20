@@ -40,6 +40,13 @@
         "identifier" : "78D7EEA01F17F40C005372A9",
         "name" : "Screenshots"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Eurofurence.xcodeproj",
+        "identifier" : "CAF254A92517F983008892ED",
+        "name" : "EurofurenceUITests"
+      }
     }
   ],
   "version" : 1
