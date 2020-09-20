@@ -52,6 +52,9 @@
             reference = "container:Test Plans/iOS Application Tests.xctestplan"
             default = "YES">
          </TestPlanReference>
+         <TestPlanReference
+            reference = "container:Test Plans/Screenshots.xctestplan">
+         </TestPlanReference>
       </TestPlans>
       <Testables>
          <TestableReference
