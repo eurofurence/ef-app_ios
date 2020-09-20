@@ -9,7 +9,21 @@ class ScreenshotGenerator: XCTestCase {
 
         app = XCUIApplication()
         setupSnapshot(app)
+        
+        enforceCorrectDeviceOrientation()
+        
         app.launch()
+    }
+    
+    private func enforceCorrectDeviceOrientation() {
+        let isTablet = UIDevice.current.userInterfaceIdiom == .pad
+        
+        let device = XCUIDevice.shared
+        if isTablet {
+            device.orientation = .landscapeLeft
+        } else {
+            device.orientation = .portrait
+        }
     }
 
     private func navigateToRootTabController() {
