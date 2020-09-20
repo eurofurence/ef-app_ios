@@ -938,6 +938,7 @@
 		CA7A32F022B17023002AD939 /* TestUtilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TestUtilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA7A32FD22B17A44002AD939 /* TestUtilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TestUtilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA8125072517BFB300A7F717 /* Model Tests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Model Tests.xctestplan"; sourceTree = "<group>"; };
+		CA81250C2517C03E00A7F717 /* Model Adapter Tests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Model Adapter Tests.xctestplan"; sourceTree = "<group>"; };
 		CA82DB5A22D66B9400467C2F /* WhenRequestingShareableURL_EventShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenRequestingShareableURL_EventShould.swift; sourceTree = "<group>"; };
 		CA82DB5C22D66CD800467C2F /* ShareableURLFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareableURLFactory.swift; sourceTree = "<group>"; };
 		CA82DB5E22D66CF300467C2F /* FakeShareableURLFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeShareableURLFactory.swift; sourceTree = "<group>"; };
@@ -2163,6 +2164,7 @@
 			isa = PBXGroup;
 			children = (
 				CA8125072517BFB300A7F717 /* Model Tests.xctestplan */,
+				CA81250C2517C03E00A7F717 /* Model Adapter Tests.xctestplan */,
 			);
 			path = "Test Plans";
 			sourceTree = "<group>";
