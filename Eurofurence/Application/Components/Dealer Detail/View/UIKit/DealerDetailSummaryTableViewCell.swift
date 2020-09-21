@@ -5,7 +5,7 @@ class DealerDetailSummaryTableViewCell: UITableViewCell, DealerDetailSummaryComp
     // MARK: Properties
 
     @IBOutlet private weak var artistImageView: UIImageView!
-    @IBOutlet private weak var dealerTitleLabel: UILabel!
+    @IBOutlet weak var dealerTitleLabel: UILabel!
     @IBOutlet private weak var dealerSubtitleLabel: UILabel!
     @IBOutlet private weak var dealerCategoriesLabel: UILabel!
     @IBOutlet private weak var dealerShortDescriptionLabel: UILabel!

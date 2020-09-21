@@ -15,7 +15,7 @@ class DealerDetailTests: XCTestCase {
     }
     
     func testNavigationTitle() {
-        let navigationTitle = controller.app.navigationBars["Eurofurence Shop"]
+        let navigationTitle = controller.app.staticTexts.matching(identifier: "org.eurofurence.dealer.navigationTitle").firstMatch
         
         XCTAssertFalse(navigationTitle.exists)
         
