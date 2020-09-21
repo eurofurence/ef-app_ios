@@ -57,10 +57,12 @@ class DealerDetailViewController: UIViewController, DealerDetailScene {
         let titleLabelFrame = titleLabelForScrollingTitleUpdates.frame
         let titleLabelTop = titleLabelFrame.origin.y - contentOffset.y
         let navigationTitleFrame = titleView.frame
-        let navigationTitleBottom = navigationTitleFrame.origin.y + navigationTitleFrame.size.height
+        let additionalPaddingForAnimation: CGFloat = 20
+        let navigationTitleBottom = navigationTitleFrame.origin.y + navigationTitleFrame.size.height + additionalPaddingForAnimation
         
         if titleLabelTop < navigationTitleBottom {
-            return .visible(opacity: 1)
+            let opacity = max(0, 1 - (titleLabelTop / navigationTitleBottom))
+            return .visible(opacity: opacity)
         } else {
             return .hidden
         }
