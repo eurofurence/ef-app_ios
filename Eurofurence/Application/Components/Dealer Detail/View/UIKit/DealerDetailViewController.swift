@@ -39,30 +39,41 @@ class DealerDetailViewController: UIViewController, DealerDetailScene {
     }
     
     private func updateNavigationTitle(contentOffset: CGPoint) {
-        if shouldShowNavigationTitle(contentOffset: contentOffset) {
-            showTitle()
+        if case .visible(let opacity) = shouldShowNavigationTitle(contentOffset: contentOffset) {
+            showTitle(opacity: opacity)
         } else {
             hideTitle()
         }
     }
     
-    private func shouldShowNavigationTitle(contentOffset: CGPoint) -> Bool {
-        guard let titleLabelForScrollingTitleUpdates = titleLabelForScrollingTitleUpdates else { return false }
+    private enum TitleState {
+        case visible(opacity: CGFloat)
+        case hidden
+    }
+    
+    private func shouldShowNavigationTitle(contentOffset: CGPoint) -> TitleState {
+        guard let titleLabelForScrollingTitleUpdates = titleLabelForScrollingTitleUpdates else { return .hidden }
         
         let titleLabelFrame = titleLabelForScrollingTitleUpdates.frame
         let titleLabelTop = titleLabelFrame.origin.y - contentOffset.y
         let navigationTitleFrame = titleView.frame
         let navigationTitleBottom = navigationTitleFrame.origin.y + navigationTitleFrame.size.height
         
-        return titleLabelTop < navigationTitleBottom
+        if titleLabelTop < navigationTitleBottom {
+            return .visible(opacity: 1)
+        } else {
+            return .hidden
+        }
     }
     
     private func hideTitle() {
         titleView.isHidden = true
+        titleView.alpha = 0
     }
     
-    private func showTitle() {
+    private func showTitle(opacity: CGFloat) {
         titleView.isHidden = false
+        titleView.alpha = opacity
     }
     
     override func viewDidAppear(_ animated: Bool) {
