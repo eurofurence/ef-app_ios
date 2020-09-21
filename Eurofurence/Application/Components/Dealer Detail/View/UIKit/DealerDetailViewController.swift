@@ -26,6 +26,9 @@ class DealerDetailViewController: UIViewController, DealerDetailScene {
         super.viewDidLoad()
         
         titleView.accessibilityIdentifier = "org.eurofurence.dealer.navigationTitle"
+        titleView.accessibilityTraits.formUnion(.header)
+        titleView.font = .preferredFont(forTextStyle: .headline)
+        titleView.textColor = UINavigationBar.appearance().tintColor
         navigationItem.titleView = titleView
         
         delegate?.dealerDetailSceneDidLoad()
