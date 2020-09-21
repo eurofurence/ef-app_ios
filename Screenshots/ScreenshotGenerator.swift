@@ -9,7 +9,21 @@ class ScreenshotGenerator: XCTestCase {
 
         app = XCUIApplication()
         setupSnapshot(app)
+        
+        enforceCorrectDeviceOrientation()
+        
         app.launch()
+    }
+    
+    private func enforceCorrectDeviceOrientation() {
+        let isTablet = UIDevice.current.userInterfaceIdiom == .pad
+        
+        let device = XCUIDevice.shared
+        if isTablet {
+            device.orientation = .landscapeLeft
+        } else {
+            device.orientation = .portrait
+        }
     }
 
     private func navigateToRootTabController() {
@@ -38,6 +52,13 @@ class ScreenshotGenerator: XCTestCase {
         } while waitingForTabItemToAppear && totalWaitTimeSeconds < threeMinutes
     }
 
+    private func hideKeyboard() {
+        let hideKeyboardButton = app.buttons["Hide keyboard"]
+        if hideKeyboardButton.exists {
+            hideKeyboardButton.tap()
+        }
+    }
+    
     func testScreenshots() {
         navigateToRootTabController()
         
@@ -59,6 +80,9 @@ class ScreenshotGenerator: XCTestCase {
         
         snapshot("03_EventDetail")
         
+        hideKeyboard()
+        app.tabBars["Tab Bar"].buttons["Dealers"].tap()
+
         app.tabBars.buttons["Dealers"].tap()
         
         snapshot("04_Dealers")
