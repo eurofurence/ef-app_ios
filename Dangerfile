@@ -50,7 +50,7 @@ end
 # --- Test Quality
 
 def catch_untested_code
-    if is_dir_modified("Eurofurence") && !is_dir_modified("EurofurenceTests")
+    if is_dir_modified("Eurofurence") && !(is_dir_modified("EurofurenceTests") || is_dir_modified("EurofurenceUITests"))
         warn("The app was modified but no tests were changed")
     end
 
