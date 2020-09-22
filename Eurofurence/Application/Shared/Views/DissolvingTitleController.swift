@@ -7,11 +7,13 @@ struct DissolvingTitleController {
         case hidden
     }
     
+    private let scrollView: UIScrollView
     private let titleLabel: UILabel
     private let titleView = DissolvingTitleLabel(frame: .zero)
     private var contentOffsetObservation: NSKeyValueObservation?
     
     init(scrollView: UIScrollView, navigationItem: UINavigationItem, titleLabel: UILabel, accessibilityIdentifier: String) {
+        self.scrollView = scrollView
         self.titleLabel = titleLabel
         
         titleView.accessibilityIdentifier = accessibilityIdentifier
@@ -34,9 +36,10 @@ struct DissolvingTitleController {
     }
     
     private func shouldShowNavigationTitle(contentOffset: CGPoint) -> TitleState {
-        let titleLabelFrame = titleLabel.frame
-        let titleLabelTop = titleLabelFrame.origin.y - contentOffset.y
-        let navigationTitleFrame = titleView.frame
+        let titleLabelFrame = titleLabel.convert(titleLabel.frame, to: nil)
+        let titleLabelTop = titleLabelFrame.origin.y
+        
+        let navigationTitleFrame = titleView.convert(titleView.frame, to: nil)
         let additionalPaddingForAnimation: CGFloat = 20
         let navigationTitleBottom = navigationTitleFrame.origin.y + navigationTitleFrame.size.height + additionalPaddingForAnimation
         
