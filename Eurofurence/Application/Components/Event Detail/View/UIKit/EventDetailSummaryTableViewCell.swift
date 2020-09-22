@@ -23,6 +23,12 @@ class EventDetailSummaryTableViewCell: UITableViewCell, EventSummaryComponent {
                                  eventHostsLabel as Any,
                                  eventAbstractLabel as Any]
     }
+    
+    // MARK: Functions
+    
+    func yieldTitleLabel(to block: ((UILabel) -> Void)?) {
+        block?(eventTitleLabel)
+    }
 
     // MARK: EventSummaryComponent
 
