@@ -1086,6 +1086,7 @@
 		CAF255122517FE81008892ED /* DealerDetailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF255112517FE81008892ED /* DealerDetailTests.swift */; };
 		CAF2552F251A6DC4008892ED /* EventDetailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF2552E251A6DC4008892ED /* EventDetailTests.swift */; };
 		CAF25554251A7648008892ED /* DissolvingTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF25553251A7648008892ED /* DissolvingTitleLabel.swift */; };
+		CAF2555E251A80BB008892ED /* DissolvingTitleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF2555D251A80BB008892ED /* DissolvingTitleController.swift */; };
 		CAF3C7441F9F5C550008F027 /* NewsComponentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C7431F9F5C550008F027 /* NewsComponentFactory.swift */; };
 		CAF3C7481F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C7471F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift */; };
 		CAF3C74C1F9F619C0008F027 /* NewsComponentFactoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C74B1F9F619C0008F027 /* NewsComponentFactoryImpl.swift */; };
@@ -2296,6 +2297,7 @@
 		CAF255112517FE81008892ED /* DealerDetailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailTests.swift; sourceTree = "<group>"; };
 		CAF2552E251A6DC4008892ED /* EventDetailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailTests.swift; sourceTree = "<group>"; };
 		CAF25553251A7648008892ED /* DissolvingTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DissolvingTitleLabel.swift; sourceTree = "<group>"; };
+		CAF2555D251A80BB008892ED /* DissolvingTitleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DissolvingTitleController.swift; sourceTree = "<group>"; };
 		CAF3C7431F9F5C550008F027 /* NewsComponentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsComponentFactory.swift; sourceTree = "<group>"; };
 		CAF3C7471F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingNewsModuleDelegate.swift; sourceTree = "<group>"; };
 		CAF3C74B1F9F619C0008F027 /* NewsComponentFactoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsComponentFactoryImpl.swift; sourceTree = "<group>"; };
@@ -2959,6 +2961,7 @@
 			children = (
 				CA27618120DF932C000E52AC /* AspectRatioConstrainedImageView.swift */,
 				CA5EB1C92461BE140012C277 /* AwesomeFontLabel.swift */,
+				CAF2555D251A80BB008892ED /* DissolvingTitleController.swift */,
 				CAF25553251A7648008892ED /* DissolvingTitleLabel.swift */,
 				CA283A8320E9461800F7D195 /* UnreadIndicatorView.swift */,
 				78455B601F118685005BE2D7 /* Controls */,
@@ -7084,6 +7087,7 @@
 				CACF1E7C20B212A800D904B5 /* EventDetailBinder.swift in Sources */,
 				CA6660A022B5A8DE0050A04E /* DaysHorizontalPickerView.swift in Sources */,
 				CA630C5122A079E100754C27 /* Intents.intentdefinition in Sources */,
+				CAF2555E251A80BB008892ED /* DissolvingTitleController.swift in Sources */,
 				9A861ECA1F25555000B75A8C /* UserDefaultsTutorialStateProvider.swift in Sources */,
 				CA6A8DD420E417FF007536CD /* MapDetailScene.swift in Sources */,
 				CA630BEE229F16F400754C27 /* ConcreteEventIntentDonor.swift in Sources */,

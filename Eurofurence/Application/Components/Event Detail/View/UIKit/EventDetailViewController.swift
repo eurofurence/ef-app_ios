@@ -3,29 +3,23 @@ import UIKit
 class EventDetailViewController: UIViewController, EventDetailScene {
 
     // MARK: Properties
-
-    private lazy var titleView = DissolvingTitleLabel(frame: .zero)
-    private var titleLabelForScrollingTitleUpdates: UILabel?
+    
+    private var titleController: DissolvingTitleController?
+    
     @IBOutlet private weak var tableView: UITableView!
     private var tableController: TableController?
-    
-    private var contentOffsetObservation: NSKeyValueObservation?
 
     // MARK: Overrides
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        titleView.accessibilityIdentifier = "org.eurofurence.event.navigationTitle"
-        navigationItem.titleView = titleView
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: UIView(frame: .zero))
-        
-        contentOffsetObservation = tableView.observe(\.contentOffset, changeHandler: { [weak self] (_, _) in
-            guard let newValue = self?.tableView.contentOffset else { return }
-            self?.updateNavigationTitle(contentOffset: newValue)
-        })
-        
+        addEmptyBarItemToFixCustomTitleViewsNotAppearing()
         delegate?.eventDetailSceneDidLoad()
+    }
+    
+    private func addEmptyBarItemToFixCustomTitleViewsNotAppearing() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: UIView(frame: .zero))
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -36,48 +30,6 @@ class EventDetailViewController: UIViewController, EventDetailScene {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         delegate?.eventDetailSceneDidDisappear()
-    }
-    
-    // MARK: Title management
-    
-    private func updateNavigationTitle(contentOffset: CGPoint) {
-        if case .visible(let opacity) = shouldShowNavigationTitle(contentOffset: contentOffset) {
-            showTitle(opacity: opacity)
-        } else {
-            hideTitle()
-        }
-    }
-    
-    private enum TitleState {
-        case visible(opacity: CGFloat)
-        case hidden
-    }
-    
-    private func shouldShowNavigationTitle(contentOffset: CGPoint) -> TitleState {
-        guard let titleLabelForScrollingTitleUpdates = titleLabelForScrollingTitleUpdates else { return .hidden }
-        
-        let titleLabelFrame = titleLabelForScrollingTitleUpdates.frame
-        let titleLabelTop = titleLabelFrame.origin.y - contentOffset.y
-        let navigationTitleFrame = titleView.frame
-        let additionalPaddingForAnimation: CGFloat = 20
-        let navigationTitleBottom = navigationTitleFrame.origin.y + navigationTitleFrame.size.height + additionalPaddingForAnimation
-        
-        if titleLabelTop < navigationTitleBottom {
-            let opacity = max(0, 1 - (titleLabelTop / navigationTitleBottom))
-            return .visible(opacity: opacity)
-        } else {
-            return .hidden
-        }
-    }
-    
-    private func hideTitle() {
-        titleView.isHidden = true
-        titleView.alpha = 0
-    }
-    
-    private func showTitle(opacity: CGFloat) {
-        titleView.isHidden = false
-        titleView.alpha = opacity
     }
 
     // MARK: EventDetailScene
@@ -93,8 +45,14 @@ class EventDetailViewController: UIViewController, EventDetailScene {
                                           binder: binder)
         
         tableController?.titleAvailable = { [weak self] (titleLabel) in
-            self?.titleLabelForScrollingTitleUpdates = titleLabel
-            self?.titleView.text = titleLabel.text
+            guard let self = self else { return }
+            
+            self.titleController = DissolvingTitleController(
+                scrollView: self.tableView,
+                navigationItem: self.navigationItem,
+                titleLabel: titleLabel,
+                accessibilityIdentifier: "org.eurofurence.event.navigationTitle"
+            )
         }
     }
 
