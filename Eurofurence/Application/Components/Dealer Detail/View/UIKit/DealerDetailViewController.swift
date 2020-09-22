@@ -8,6 +8,7 @@ class DealerDetailViewController: UIViewController, DealerDetailScene {
     private unowned var titleLabelForScrollingTitleUpdates: UILabel?
 
     @IBOutlet private weak var tableView: UITableView!
+    
     private var tableController: TableController? {
         didSet {
             tableView.dataSource = tableController
@@ -33,6 +34,18 @@ class DealerDetailViewController: UIViewController, DealerDetailScene {
         
         delegate?.dealerDetailSceneDidLoad()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        delegate?.dealerDetailSceneDidAppear()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        delegate?.dealerDetailSceneDidDisappear()
+    }
+    
+    // MARK: Title management
     
     private func scrollViewDidScroll(_ scrollView: UIScrollView) {
         updateNavigationTitle(contentOffset: scrollView.contentOffset)
@@ -76,16 +89,6 @@ class DealerDetailViewController: UIViewController, DealerDetailScene {
     private func showTitle(opacity: CGFloat) {
         titleView.isHidden = false
         titleView.alpha = opacity
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        delegate?.dealerDetailSceneDidAppear()
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        delegate?.dealerDetailSceneDidDisappear()
     }
     
     // MARK: Actions
