@@ -5,7 +5,7 @@ class DealerDetailSummaryTableViewCell: UITableViewCell, DealerDetailSummaryComp
     // MARK: Properties
 
     @IBOutlet private weak var artistImageView: UIImageView!
-    @IBOutlet weak var dealerTitleLabel: UILabel!
+    @IBOutlet private weak var dealerTitleLabel: UILabel!
     @IBOutlet private weak var dealerSubtitleLabel: UILabel!
     @IBOutlet private weak var dealerCategoriesLabel: UILabel!
     @IBOutlet private weak var dealerShortDescriptionLabel: UILabel!
@@ -57,6 +57,12 @@ class DealerDetailSummaryTableViewCell: UITableViewCell, DealerDetailSummaryComp
 
         let telegramTappedGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(telegramTapped))
         dealerTelegramContainer.addGestureRecognizer(telegramTappedGestureRecognizer)
+    }
+    
+    // MARK: Functions
+    
+    func yieldTitleLabel(to block: ((UILabel) -> Void)?) {
+        block?(dealerTitleLabel)
     }
 
     // MARK: DealerDetailSummaryComponent

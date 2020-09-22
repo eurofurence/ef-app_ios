@@ -144,7 +144,7 @@ class DealerDetailViewController: UIViewController, DealerDetailScene {
             let cell = tableView.dequeue(DealerDetailSummaryTableViewCell.self)
             block(cell)
             
-            titleAvailable?(cell.dealerTitleLabel)
+            cell.yieldTitleLabel(to: titleAvailable)
             
             return cell
         }
