@@ -1087,6 +1087,8 @@
 		CAF2552F251A6DC4008892ED /* EventDetailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF2552E251A6DC4008892ED /* EventDetailTests.swift */; };
 		CAF25554251A7648008892ED /* DissolvingTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF25553251A7648008892ED /* DissolvingTitleLabel.swift */; };
 		CAF2555E251A80BB008892ED /* DissolvingTitleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF2555D251A80BB008892ED /* DissolvingTitleController.swift */; };
+		CAF25568251A8774008892ED /* UIAutomationTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF25567251A8774008892ED /* UIAutomationTestCase.swift */; };
+		CAF2556D251A877A008892ED /* UIAutomationTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF25567251A8774008892ED /* UIAutomationTestCase.swift */; };
 		CAF3C7441F9F5C550008F027 /* NewsComponentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C7431F9F5C550008F027 /* NewsComponentFactory.swift */; };
 		CAF3C7481F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C7471F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift */; };
 		CAF3C74C1F9F619C0008F027 /* NewsComponentFactoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C74B1F9F619C0008F027 /* NewsComponentFactoryImpl.swift */; };
@@ -2298,6 +2300,7 @@
 		CAF2552E251A6DC4008892ED /* EventDetailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailTests.swift; sourceTree = "<group>"; };
 		CAF25553251A7648008892ED /* DissolvingTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DissolvingTitleLabel.swift; sourceTree = "<group>"; };
 		CAF2555D251A80BB008892ED /* DissolvingTitleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DissolvingTitleController.swift; sourceTree = "<group>"; };
+		CAF25567251A8774008892ED /* UIAutomationTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAutomationTestCase.swift; sourceTree = "<group>"; };
 		CAF3C7431F9F5C550008F027 /* NewsComponentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsComponentFactory.swift; sourceTree = "<group>"; };
 		CAF3C7471F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingNewsModuleDelegate.swift; sourceTree = "<group>"; };
 		CAF3C74B1F9F619C0008F027 /* NewsComponentFactoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsComponentFactoryImpl.swift; sourceTree = "<group>"; };
@@ -6518,6 +6521,7 @@
 			isa = PBXGroup;
 			children = (
 				CAF254FE2517FB65008892ED /* AutomationController.swift */,
+				CAF25567251A8774008892ED /* UIAutomationTestCase.swift */,
 			);
 			path = "UI Automation";
 			sourceTree = "<group>";
@@ -7038,6 +7042,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAF2556D251A877A008892ED /* UIAutomationTestCase.swift in Sources */,
 				CA25A89C22C4101D00226478 /* ScreenshotGenerator.swift in Sources */,
 				CA25A89D22C4101D00226478 /* SnapshotHelper.swift in Sources */,
 				CAF255082517FB92008892ED /* AutomationController.swift in Sources */,
@@ -8112,6 +8117,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAF254FF2517FB65008892ED /* AutomationController.swift in Sources */,
+				CAF25568251A8774008892ED /* UIAutomationTestCase.swift in Sources */,
 				CAF2552F251A6DC4008892ED /* EventDetailTests.swift in Sources */,
 				CAF254AD2517F983008892ED /* LaunchPerformanceTest.swift in Sources */,
 				CAF255122517FE81008892ED /* DealerDetailTests.swift in Sources */,

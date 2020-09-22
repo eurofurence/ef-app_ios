@@ -1,13 +1,10 @@
 import XCTest
 
-class EventDetailTests: XCTestCase {
-    
-    private let controller = AutomationController()
+class EventDetailTests: UIAutomationTestCase {
     
     override func setUpWithError() throws {
         try super.setUpWithError()
         
-        continueAfterFailure = false
         controller.app.launch()
         controller.transitionToContent()
         controller.tapTab(.schedule)

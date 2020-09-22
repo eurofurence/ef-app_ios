@@ -1,13 +1,10 @@
 import XCTest
 
-class DealerDetailTests: XCTestCase {
-    
-    private let controller = AutomationController()
+class DealerDetailTests: UIAutomationTestCase {
     
     override func setUpWithError() throws {
         try super.setUpWithError()
         
-        continueAfterFailure = false
         controller.app.launch()
         controller.transitionToContent()
         controller.tapTab(.dealers)
