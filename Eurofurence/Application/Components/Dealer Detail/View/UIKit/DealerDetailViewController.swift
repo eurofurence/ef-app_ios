@@ -4,7 +4,7 @@ class DealerDetailViewController: UIViewController, DealerDetailScene {
 
     // MARK: Properties
     
-    private lazy var titleView = UILabel(frame: .zero)
+    private lazy var titleView = DissolvingTitleLabel(frame: .zero)
     private unowned var titleLabelForScrollingTitleUpdates: UILabel?
 
     @IBOutlet private weak var tableView: UITableView!
@@ -27,9 +27,6 @@ class DealerDetailViewController: UIViewController, DealerDetailScene {
         super.viewDidLoad()
         
         titleView.accessibilityIdentifier = "org.eurofurence.dealer.navigationTitle"
-        titleView.accessibilityTraits.formUnion(.header)
-        titleView.font = .preferredFont(forTextStyle: .headline)
-        titleView.textColor = UINavigationBar.appearance().tintColor
         navigationItem.titleView = titleView
         
         delegate?.dealerDetailSceneDidLoad()

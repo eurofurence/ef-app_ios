@@ -4,7 +4,7 @@ class EventDetailViewController: UIViewController, EventDetailScene {
 
     // MARK: Properties
 
-    private lazy var titleView = UILabel(frame: .zero)
+    private lazy var titleView = DissolvingTitleLabel(frame: .zero)
     private var titleLabelForScrollingTitleUpdates: UILabel?
     @IBOutlet private weak var tableView: UITableView!
     private var tableController: TableController?
@@ -15,9 +15,6 @@ class EventDetailViewController: UIViewController, EventDetailScene {
         super.viewDidLoad()
         
         titleView.accessibilityIdentifier = "org.eurofurence.event.navigationTitle"
-        titleView.accessibilityTraits.formUnion(.header)
-        titleView.font = .preferredFont(forTextStyle: .headline)
-        titleView.textColor = UINavigationBar.appearance().tintColor
         navigationItem.titleView = titleView
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: UIView(frame: .zero))
         
