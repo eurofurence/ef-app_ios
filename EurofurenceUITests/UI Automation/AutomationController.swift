@@ -6,7 +6,6 @@ struct AutomationController {
     
 }
 
-
 // MARK: - Bootstrap
 
 extension AutomationController {
@@ -39,7 +38,6 @@ extension AutomationController {
     }
     
 }
-
 
 // MARK: - Selecting Tabs
 
