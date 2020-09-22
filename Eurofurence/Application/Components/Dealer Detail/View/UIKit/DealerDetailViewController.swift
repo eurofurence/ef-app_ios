@@ -9,11 +9,11 @@ class DealerDetailViewController: UIViewController, DealerDetailScene {
 
     @IBOutlet private weak var tableView: UITableView!
     
+    private var contentOffsetObservation: NSKeyValueObservation?
+    
     private var tableController: TableController? {
         didSet {
             tableView.dataSource = tableController
-            tableView.delegate = tableController
-            tableController?.scrollViewScrolled = scrollViewDidScroll(_:)
             tableController?.titleAvailable = { [weak self] (titleLabel) in
                 self?.titleLabelForScrollingTitleUpdates = titleLabel
                 self?.titleView.text = titleLabel.text
@@ -29,6 +29,11 @@ class DealerDetailViewController: UIViewController, DealerDetailScene {
         titleView.accessibilityIdentifier = "org.eurofurence.dealer.navigationTitle"
         navigationItem.titleView = titleView
         
+        contentOffsetObservation = tableView.observe(\.contentOffset, changeHandler: { [weak self] (_, _) in
+            guard let newValue = self?.tableView.contentOffset else { return }
+            self?.updateNavigationTitle(contentOffset: newValue)
+        })
+        
         delegate?.dealerDetailSceneDidLoad()
     }
     
@@ -43,10 +48,6 @@ class DealerDetailViewController: UIViewController, DealerDetailScene {
     }
     
     // MARK: Title management
-    
-    private func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        updateNavigationTitle(contentOffset: scrollView.contentOffset)
-    }
     
     private func updateNavigationTitle(contentOffset: CGPoint) {
         if case .visible(let opacity) = shouldShowNavigationTitle(contentOffset: contentOffset) {
@@ -111,13 +112,12 @@ class DealerDetailViewController: UIViewController, DealerDetailScene {
 
     // MARK: Private
 
-    private class TableController: NSObject, UITableViewDataSource, UITableViewDelegate, DealerDetailItemComponentFactory {
+    private class TableController: NSObject, UITableViewDataSource, DealerDetailItemComponentFactory {
 
         private let tableView: UITableView
         private let numberOfComponents: Int
         private let binder: DealerDetailSceneBinder
         var titleAvailable: ((UILabel) -> Void)?
-        var scrollViewScrolled: ((UIScrollView) -> Void)?
 
         init(tableView: UITableView, numberOfComponents: Int, binder: DealerDetailSceneBinder) {
             self.tableView = tableView
@@ -131,10 +131,6 @@ class DealerDetailViewController: UIViewController, DealerDetailScene {
 
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             return binder.bindComponent(at: indexPath.row, using: self)
-        }
-        
-        func scrollViewDidScroll(_ scrollView: UIScrollView) {
-            scrollViewScrolled?(scrollView)
         }
 
         func makeDealerSummaryComponent(configureUsing block: (DealerDetailSummaryComponent) -> Void) -> UITableViewCell {

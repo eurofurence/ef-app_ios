@@ -8,6 +8,8 @@ class EventDetailViewController: UIViewController, EventDetailScene {
     private var titleLabelForScrollingTitleUpdates: UILabel?
     @IBOutlet private weak var tableView: UITableView!
     private var tableController: TableController?
+    
+    private var contentOffsetObservation: NSKeyValueObservation?
 
     // MARK: Overrides
 
@@ -17,6 +19,11 @@ class EventDetailViewController: UIViewController, EventDetailScene {
         titleView.accessibilityIdentifier = "org.eurofurence.event.navigationTitle"
         navigationItem.titleView = titleView
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: UIView(frame: .zero))
+        
+        contentOffsetObservation = tableView.observe(\.contentOffset, changeHandler: { [weak self] (_, _) in
+            guard let newValue = self?.tableView.contentOffset else { return }
+            self?.updateNavigationTitle(contentOffset: newValue)
+        })
         
         delegate?.eventDetailSceneDidLoad()
     }
@@ -32,10 +39,6 @@ class EventDetailViewController: UIViewController, EventDetailScene {
     }
     
     // MARK: Title management
-    
-    private func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        updateNavigationTitle(contentOffset: scrollView.contentOffset)
-    }
     
     private func updateNavigationTitle(contentOffset: CGPoint) {
         if case .visible(let opacity) = shouldShowNavigationTitle(contentOffset: contentOffset) {
@@ -89,7 +92,6 @@ class EventDetailViewController: UIViewController, EventDetailScene {
                                           numberOfComponents: numberOfComponents,
                                           binder: binder)
         
-        tableController?.scrollViewScrolled = scrollViewDidScroll(_:)
         tableController?.titleAvailable = { [weak self] (titleLabel) in
             self?.titleLabelForScrollingTitleUpdates = titleLabel
             self?.titleView.text = titleLabel.text
@@ -98,13 +100,12 @@ class EventDetailViewController: UIViewController, EventDetailScene {
 
     // MARK: Private
 
-    private class TableController: NSObject, UITableViewDataSource, UITableViewDelegate, EventDetailItemComponentFactory {
+    private class TableController: NSObject, UITableViewDataSource, EventDetailItemComponentFactory {
 
         private let tableView: UITableView
         private let numberOfComponents: Int
         private let binder: EventDetailBinder
         var titleAvailable: ((UILabel) -> Void)?
-        var scrollViewScrolled: ((UIScrollView) -> Void)?
 
         init(tableView: UITableView, numberOfComponents: Int, binder: EventDetailBinder) {
             self.tableView = tableView
@@ -113,7 +114,6 @@ class EventDetailViewController: UIViewController, EventDetailScene {
             super.init()
 
             tableView.dataSource = self
-            tableView.delegate = self
         }
 
         // MARK: EventDetailComponentFactory
@@ -171,12 +171,6 @@ class EventDetailViewController: UIViewController, EventDetailScene {
             let cell = tableView.dequeue(EventActionBannerTableViewCell.self)
             block(cell)
             return cell
-        }
-        
-        // MARK: UIScrollViewDelegate
-        
-        func scrollViewDidScroll(_ scrollView: UIScrollView) {
-            scrollViewScrolled?(scrollView)
         }
 
         // MARK: UITableViewDataSource
