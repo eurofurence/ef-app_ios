@@ -3,11 +3,12 @@ import XCTest
 class ScreenshotGenerator: XCTestCase {
 
     var app: XCUIApplication!
+    let automationController = AutomationController()
 
     override func setUp() {
         super.setUp()
 
-        app = XCUIApplication()
+        app = automationController.app
         setupSnapshot(app)
         
         enforceCorrectDeviceOrientation()
@@ -26,32 +27,6 @@ class ScreenshotGenerator: XCTestCase {
         }
     }
 
-    private func navigateToRootTabController() {
-        let newsTabBarItem = app.tabBars.buttons["News"]
-        guard !newsTabBarItem.exists else {
-            return
-        }
-
-        if app.alerts.element.collectionViews.buttons["Allow"].exists {
-            app.tap()
-        }
-
-        let beginDownloadButton = app.buttons["Begin Download"]
-        if beginDownloadButton.exists {
-            beginDownloadButton.tap()
-        }
-
-        let beganWaitingAt = Date()
-        var waitingForTabItemToAppear = true
-        var totalWaitTimeSeconds: TimeInterval = 0
-        let threeMinutes: TimeInterval = 180
-        repeat {
-            RunLoop.current.run(until: Date(timeIntervalSinceNow: 1))
-            waitingForTabItemToAppear = !newsTabBarItem.exists
-            totalWaitTimeSeconds = Date().timeIntervalSince(beganWaitingAt)
-        } while waitingForTabItemToAppear && totalWaitTimeSeconds < threeMinutes
-    }
-
     private func hideKeyboard() {
         let hideKeyboardButton = app.buttons["Hide keyboard"]
         if hideKeyboardButton.exists {
@@ -60,11 +35,11 @@ class ScreenshotGenerator: XCTestCase {
     }
     
     func testScreenshots() {
-        navigateToRootTabController()
+        automationController.transitionToContent()
         
         snapshot("01_News")
 
-        app.tabBars.buttons["Schedule"].tap()
+        automationController.tapTab(.schedule)
         app.tables.firstMatch.swipeDown()
         
         snapshot("02_Schedule")
@@ -81,9 +56,7 @@ class ScreenshotGenerator: XCTestCase {
         snapshot("03_EventDetail")
         
         hideKeyboard()
-        app.tabBars["Tab Bar"].buttons["Dealers"].tap()
-
-        app.tabBars.buttons["Dealers"].tap()
+        automationController.tapTab(.dealers)
         
         snapshot("04_Dealers")
         
@@ -91,7 +64,7 @@ class ScreenshotGenerator: XCTestCase {
         
         snapshot("05_DealerDetail")
         
-        app.tabBars.buttons["Information"].tap()
+        automationController.tapTab(.information)
         
         snapshot("06_Information")
     }

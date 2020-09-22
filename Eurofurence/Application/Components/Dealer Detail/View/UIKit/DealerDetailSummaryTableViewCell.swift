@@ -58,6 +58,12 @@ class DealerDetailSummaryTableViewCell: UITableViewCell, DealerDetailSummaryComp
         let telegramTappedGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(telegramTapped))
         dealerTelegramContainer.addGestureRecognizer(telegramTappedGestureRecognizer)
     }
+    
+    // MARK: Functions
+    
+    func yieldTitleLabel(to block: ((UILabel) -> Void)?) {
+        block?(dealerTitleLabel)
+    }
 
     // MARK: DealerDetailSummaryComponent
 
