@@ -474,6 +474,8 @@
 		CAF194CB2468785B005DFBBE /* StubConventionCountdownService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF194CA2468785B005DFBBE /* StubConventionCountdownService.swift */; };
 		CAF198452468968E005DFBBE /* StubContentLinksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF198442468968E005DFBBE /* StubContentLinksService.swift */; };
 		CAF1984B2468AD63005DFBBE /* FakeCollectThemAllService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF1984A2468AD63005DFBBE /* FakeCollectThemAllService.swift */; };
+		CAF25590251D1625008892ED /* WhenObservingUnreadMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF2558F251D1625008892ED /* WhenObservingUnreadMessage.swift */; };
+		CAF2559A251D1731008892ED /* CapturingPrivateMessageObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF25599251D1731008892ED /* CapturingPrivateMessageObserver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -978,6 +980,8 @@
 		CAF194CA2468785B005DFBBE /* StubConventionCountdownService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubConventionCountdownService.swift; sourceTree = "<group>"; };
 		CAF198442468968E005DFBBE /* StubContentLinksService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubContentLinksService.swift; sourceTree = "<group>"; };
 		CAF1984A2468AD63005DFBBE /* FakeCollectThemAllService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeCollectThemAllService.swift; sourceTree = "<group>"; };
+		CAF2558F251D1625008892ED /* WhenObservingUnreadMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingUnreadMessage.swift; sourceTree = "<group>"; };
+		CAF25599251D1731008892ED /* CapturingPrivateMessageObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingPrivateMessageObserver.swift; sourceTree = "<group>"; };
 		EC85896EECB18D7881B0665A /* Pods-EurofurenceModel-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-EurofurenceModel-metadata.plist"; sourceTree = "<group>"; };
 		FFE87D86E3ECE04913805820 /* Pods_EurofurenceModelTestDoubles.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EurofurenceModelTestDoubles.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -1649,6 +1653,7 @@
 				CA7A30EA22B16E24002AD939 /* WhenLoggingOut_PrivateMessagesShould.swift */,
 				CA7A30E622B16E24002AD939 /* WhenLoggingOut_ThenRequestingPrivateMessages.swift */,
 				CA7A30EB22B16E24002AD939 /* WhenMarkingMessageAsRead.swift */,
+				CAF2558F251D1625008892ED /* WhenObservingUnreadMessage.swift */,
 				CABCDE8524CB637500500F6B /* WhenRemovingObserver_PrivateMessagesServiceShould.swift */,
 				CA7A30E522B16E24002AD939 /* WhenRequestingPrivateMessagesWhileAuthenticated.swift */,
 				CA7A30E822B16E24002AD939 /* WhenRequestingPrivateMessagesWhileNotAuthenticated.swift */,
@@ -1764,19 +1769,20 @@
 		CA7A311322B16E25002AD939 /* Observers */ = {
 			isa = PBXGroup;
 			children = (
+				CA8A73DB22BD198F007A5201 /* CapturingAdditionalServicesURLConsumer.swift */,
 				CA7A311622B16E25002AD939 /* CapturingAnnouncementsServiceObserver.swift */,
 				CA7A311422B16E25002AD939 /* CapturingAuthenticationStateObserver.swift */,
 				CA7A311C22B16E25002AD939 /* CapturingCollectThemAllURLObserver.swift */,
 				CA7A311A22B16E25002AD939 /* CapturingConventionCountdownServiceObserver.swift */,
+				CAC4993F22E0F6B6003E1D77 /* CapturingDealerCategoriesCollectionObserver.swift */,
+				CAC4993D22E04D11003E1D77 /* CapturingDealerCategoryObserver.swift */,
 				CA7A311B22B16E25002AD939 /* CapturingEventsServiceObserver.swift */,
 				CA7A311D22B16E25002AD939 /* CapturingKnowledgeServiceObserver.swift */,
 				CA7A311922B16E25002AD939 /* CapturingLoginObserver.swift */,
 				CA7A311722B16E25002AD939 /* CapturingLogoutObserver.swift */,
 				CA7A311822B16E25002AD939 /* CapturingMapsObserver.swift */,
+				CAF25599251D1731008892ED /* CapturingPrivateMessageObserver.swift */,
 				CA7A311522B16E25002AD939 /* CapturingPrivateMessagesObserver.swift */,
-				CA8A73DB22BD198F007A5201 /* CapturingAdditionalServicesURLConsumer.swift */,
-				CAC4993D22E04D11003E1D77 /* CapturingDealerCategoryObserver.swift */,
-				CAC4993F22E0F6B6003E1D77 /* CapturingDealerCategoriesCollectionObserver.swift */,
 			);
 			path = Observers;
 			sourceTree = "<group>";
@@ -2726,6 +2732,7 @@
 				CA7A31CC22B16E26002AD939 /* MessageAssertion.swift in Sources */,
 				CA7A31F622B16E26002AD939 /* CapturingEventsServiceObserver.swift in Sources */,
 				CA7A323C22B16E26002AD939 /* WhenSyncSuceeds_ThenObservingUpcomingEvents.swift in Sources */,
+				CAF25590251D1625008892ED /* WhenObservingUnreadMessage.swift in Sources */,
 				CA7A320022B16E26002AD939 /* WhenFetchingIconDataForDealerWithoutArtwork_ApplicationShould.swift in Sources */,
 				CA7A322822B16E26002AD939 /* InOrderToSupportMainStageTag_ApplicationShould.swift in Sources */,
 				CA7A31DF22B16E26002AD939 /* StubCollectThemAllRequestFactory.swift in Sources */,
@@ -2813,6 +2820,7 @@
 				CA7A31A422B16E26002AD939 /* WhenFetchingKnowledgeGroupsAfterSuccessfulRefresh.swift in Sources */,
 				CA7A322522B16E26002AD939 /* InOrderToSupportSponsorTag_ApplicationShould.swift in Sources */,
 				CA7A31DD22B16E26002AD939 /* Array+Equality.swift in Sources */,
+				CAF2559A251D1731008892ED /* CapturingPrivateMessageObserver.swift in Sources */,
 				CA7A319522B16E26002AD939 /* WhenDeletingKnowledgeEntry_AfterSuccessfulSync_ApplicationShould.swift in Sources */,
 				CA7A31AE22B16E26002AD939 /* WhenFetchingMapImageData_ApplicationShould.swift in Sources */,
 				CA7A325422B16E26002AD939 /* WhenObservingCountdownUntilConvention_EurofurenceApplicationShould.swift in Sources */,

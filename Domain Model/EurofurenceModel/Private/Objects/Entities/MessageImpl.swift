@@ -35,6 +35,10 @@ class MessageImpl: Message, Comparable {
         self.isRead = characteristics.isRead
     }
     
+    func add(_ observer: PrivateMessageObserver) {
+        observer.messageMarkedUnread()
+    }
+    
     func markAsRead() {
         isRead = true
         eventBus.post(ReadEvent(message: self))
