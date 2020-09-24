@@ -17,8 +17,8 @@ class DealerDetailViewController: UIViewController, DealerDetailScene {
                 self.titleController = DissolvingTitleController(
                     scrollView: self.tableView,
                     navigationItem: self.navigationItem,
-                    titleLabel: titleLabel,
-                    accessibilityIdentifier: "org.eurofurence.dealer.navigationTitle"
+                    accessibilityIdentifier: "org.eurofurence.dealer.navigationTitle",
+                    context: DissolvingTitleLabelContext(label: titleLabel)
                 )
             }
         }

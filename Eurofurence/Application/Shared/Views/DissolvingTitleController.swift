@@ -1,5 +1,26 @@
 import UIKit
 
+protocol DissolvingTitleContext {
+    
+    var title: String? { get }
+    var contextualViewFrame: CGRect { get }
+    
+}
+
+struct DissolvingTitleLabelContext: DissolvingTitleContext {
+    
+    let label: UILabel
+    
+    var title: String? {
+        label.text
+    }
+    
+    var contextualViewFrame: CGRect {
+        label.convert(label.frame, to: nil)
+    }
+    
+}
+
 struct DissolvingTitleController {
     
     private enum TitleState {
@@ -8,16 +29,16 @@ struct DissolvingTitleController {
     }
     
     private let scrollView: UIScrollView
-    private let titleLabel: UILabel
+    private let context: DissolvingTitleContext
     private let titleView = DissolvingTitleLabel(frame: .zero)
     private var contentOffsetObservation: NSKeyValueObservation?
     
-    init(scrollView: UIScrollView, navigationItem: UINavigationItem, titleLabel: UILabel, accessibilityIdentifier: String) {
+    init(scrollView: UIScrollView, navigationItem: UINavigationItem, accessibilityIdentifier: String, context: DissolvingTitleContext) {
         self.scrollView = scrollView
-        self.titleLabel = titleLabel
+        self.context = context
         
         titleView.accessibilityIdentifier = accessibilityIdentifier
-        titleView.text = titleLabel.text
+        titleView.text = context.title
         navigationItem.titleView = titleView
         
         contentOffsetObservation = scrollView.observe(\.contentOffset, changeHandler: scrollViewContentOffetChanged)
@@ -36,7 +57,7 @@ struct DissolvingTitleController {
     }
     
     private func shouldShowNavigationTitle(contentOffset: CGPoint) -> TitleState {
-        let titleLabelFrame = titleLabel.convert(titleLabel.frame, to: nil)
+        let titleLabelFrame = context.contextualViewFrame
         let titleLabelTop = titleLabelFrame.origin.y
         
         let navigationTitleFrame = titleView.convert(titleView.frame, to: nil)

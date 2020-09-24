@@ -50,8 +50,8 @@ class EventDetailViewController: UIViewController, EventDetailScene {
             self.titleController = DissolvingTitleController(
                 scrollView: self.tableView,
                 navigationItem: self.navigationItem,
-                titleLabel: titleLabel,
-                accessibilityIdentifier: "org.eurofurence.event.navigationTitle"
+                accessibilityIdentifier: "org.eurofurence.event.navigationTitle",
+                context: DissolvingTitleLabelContext(label: titleLabel)
             )
         }
     }
