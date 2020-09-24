@@ -16,7 +16,7 @@ class DealerDetailTests: UIAutomationTestCase {
         
         XCTAssertFalse(navigationTitle.exists)
         
-        controller.app.tables.cells.containing(.staticText, identifier: "Eurofurence Shop").element.swipeUp()
+        controller.app.tables.cells.containing(.staticText, identifier: "The Official Eurofurence Shop").element.swipeUp()
         
         XCTAssertTrue(navigationTitle.exists)
     }
