@@ -28,6 +28,12 @@ public final class StubMessage: Message {
     
     public func add(_ observer: PrivateMessageObserver) {
         observers.append(observer)
+        
+        if isRead {
+            observer.messageMarkedRead()
+        } else {
+            observer.messageMarkedUnread()
+        }
     }
     
     public private(set) var markedRead = false

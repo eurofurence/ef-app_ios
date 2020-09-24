@@ -144,12 +144,6 @@ class MessagesPresenter: MessagesSceneDelegate, PrivateMessagesObserver {
             scene.setSubject(message.subject)
             scene.setContents(message.contents)
 
-            if message.isRead {
-                scene.hideUnreadIndicator()
-            } else {
-                scene.showUnreadIndicator()
-            }
-
             let formattedDateTime = dateFormatter.string(from: message.receivedDateTime)
             scene.setReceivedDateTime(formattedDateTime)
             
@@ -157,7 +151,7 @@ class MessagesPresenter: MessagesSceneDelegate, PrivateMessagesObserver {
         }
         
         func messageMarkedUnread() {
-            
+            scene.showUnreadIndicator()
         }
         
         func messageMarkedRead() {
