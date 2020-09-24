@@ -98,7 +98,7 @@ class MessagesPresenter: MessagesSceneDelegate, PrivateMessagesObserver {
     private func presentMessages(_ messages: [Message]) {
         presentedMessages = messages
 
-        let binder = MessageBinder(messages: messages, dateFormatter: dateFormatter)
+        let binder = MessagesBinder(messages: messages, dateFormatter: dateFormatter)
         scene?.bindMessages(count: messages.count, with: binder)
 
         if messages.isEmpty {
@@ -110,14 +110,36 @@ class MessagesPresenter: MessagesSceneDelegate, PrivateMessagesObserver {
         }
     }
 
-    private struct MessageBinder: MessageItemBinder {
+    private class MessagesBinder: MessageItemBinder {
 
-        var messages: [Message]
-        var dateFormatter: DateFormatterProtocol
+        private let messages: [Message]
+        private let dateFormatter: DateFormatterProtocol
+        private var messageBinders = [IndexPath: MessageBinder]()
+        
+        init(messages: [Message], dateFormatter: DateFormatterProtocol) {
+            self.messages = messages
+            self.dateFormatter = dateFormatter
+        }
 
         func bind(_ scene: MessageItemScene, toMessageAt indexPath: IndexPath) {
             let message = messages[indexPath[1]]
+            let binder = MessageBinder(message: message, scene: scene, dateFormatter: dateFormatter)
+            messageBinders[indexPath] = binder
+        }
 
+    }
+    
+    private struct MessageBinder: PrivateMessageObserver {
+        
+        private let message: Message
+        private let scene: MessageItemScene
+        private let dateFormatter: DateFormatterProtocol
+        
+        init(message: Message, scene: MessageItemScene, dateFormatter: DateFormatterProtocol) {
+            self.message = message
+            self.scene = scene
+            self.dateFormatter = dateFormatter
+            
             scene.setAuthor(message.authorName)
             scene.setSubject(message.subject)
             scene.setContents(message.contents)
@@ -130,8 +152,18 @@ class MessagesPresenter: MessagesSceneDelegate, PrivateMessagesObserver {
 
             let formattedDateTime = dateFormatter.string(from: message.receivedDateTime)
             scene.setReceivedDateTime(formattedDateTime)
+            
+            message.add(self)
         }
-
+        
+        func messageMarkedUnread() {
+            
+        }
+        
+        func messageMarkedRead() {
+            scene.hideUnreadIndicator()
+        }
+        
     }
 
 }
