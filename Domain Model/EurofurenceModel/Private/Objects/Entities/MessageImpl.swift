@@ -36,7 +36,11 @@ class MessageImpl: Message, Comparable {
     }
     
     func add(_ observer: PrivateMessageObserver) {
-        observer.messageMarkedUnread()
+        if isRead {
+            observer.messageMarkedRead()
+        } else {
+            observer.messageMarkedUnread()
+        }
     }
     
     func markAsRead() {

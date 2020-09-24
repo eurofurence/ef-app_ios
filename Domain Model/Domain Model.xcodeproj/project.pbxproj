@@ -476,6 +476,7 @@
 		CAF1984B2468AD63005DFBBE /* FakeCollectThemAllService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF1984A2468AD63005DFBBE /* FakeCollectThemAllService.swift */; };
 		CAF25590251D1625008892ED /* WhenObservingUnreadMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF2558F251D1625008892ED /* WhenObservingUnreadMessage.swift */; };
 		CAF2559A251D1731008892ED /* CapturingPrivateMessageObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF25599251D1731008892ED /* CapturingPrivateMessageObserver.swift */; };
+		CAF255A4251D175B008892ED /* WhenObservingReadMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF255A3251D175B008892ED /* WhenObservingReadMessage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -982,6 +983,7 @@
 		CAF1984A2468AD63005DFBBE /* FakeCollectThemAllService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeCollectThemAllService.swift; sourceTree = "<group>"; };
 		CAF2558F251D1625008892ED /* WhenObservingUnreadMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingUnreadMessage.swift; sourceTree = "<group>"; };
 		CAF25599251D1731008892ED /* CapturingPrivateMessageObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingPrivateMessageObserver.swift; sourceTree = "<group>"; };
+		CAF255A3251D175B008892ED /* WhenObservingReadMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingReadMessage.swift; sourceTree = "<group>"; };
 		EC85896EECB18D7881B0665A /* Pods-EurofurenceModel-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-EurofurenceModel-metadata.plist"; sourceTree = "<group>"; };
 		FFE87D86E3ECE04913805820 /* Pods_EurofurenceModelTestDoubles.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EurofurenceModelTestDoubles.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -1658,6 +1660,7 @@
 				CA7A30E522B16E24002AD939 /* WhenRequestingPrivateMessagesWhileAuthenticated.swift */,
 				CA7A30E822B16E24002AD939 /* WhenRequestingPrivateMessagesWhileNotAuthenticated.swift */,
 				CAA10FC922C5597C00689A32 /* WhenResolvingMessageByItsIdentifier.swift */,
+				CAF255A3251D175B008892ED /* WhenObservingReadMessage.swift */,
 			);
 			path = "Private Messages";
 			sourceTree = "<group>";
@@ -2804,6 +2807,7 @@
 				CA7A31C422B16E26002AD939 /* WhenPerformingSync_AfterEnforcingFullStoreRefresh_WhenFullRefreshFailed.swift in Sources */,
 				CA7A324622B16E26002AD939 /* WhenSignificantTimeChanges_ScheduleShould.swift in Sources */,
 				CA7A31E022B16E26002AD939 /* StubConventionStartDateRepository.swift in Sources */,
+				CAF255A4251D175B008892ED /* WhenObservingReadMessage.swift in Sources */,
 				CA7A318F22B16E26002AD939 /* WhenDeletingEvent_AfterSuccessfulSync_ApplicationShould.swift in Sources */,
 				CA7A320322B16E26002AD939 /* WhenTellingDealersIndexToSearch_ApplicationShould.swift in Sources */,
 				CA7A323F22B16E26002AD939 /* WhenResolvingEventByIdentifier_ForEventThatExists_ApplicationShould.swift in Sources */,

@@ -20,5 +20,6 @@ public protocol Message {
 public protocol PrivateMessageObserver {
     
     func messageMarkedUnread()
+    func messageMarkedRead()
     
 }
