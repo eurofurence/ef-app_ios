@@ -16,6 +16,7 @@ class MessageImpl: Message, Comparable {
     }
     
     private let eventBus: EventBus
+    private var observers: [PrivateMessageObserver] = []
 
     var identifier: MessageIdentifier
     var authorName: String
@@ -36,6 +37,8 @@ class MessageImpl: Message, Comparable {
     }
     
     func add(_ observer: PrivateMessageObserver) {
+        observers.append(observer)
+        
         if isRead {
             observer.messageMarkedRead()
         } else {
@@ -46,6 +49,10 @@ class MessageImpl: Message, Comparable {
     func markAsRead() {
         isRead = true
         eventBus.post(ReadEvent(message: self))
+        
+        for observer in observers {
+            observer.messageMarkedRead()
+        }
     }
 
 }
