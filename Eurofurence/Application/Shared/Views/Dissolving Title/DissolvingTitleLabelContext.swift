@@ -8,7 +8,7 @@ struct DissolvingTitleLabelContext: DissolvingTitleContext {
         label.text
     }
     
-    var contextualViewFrame: CGRect {
+    var contextualViewFrameRelativeToWindow: CGRect {
         label.convert(label.frame, to: nil)
     }
     

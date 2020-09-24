@@ -36,7 +36,7 @@ struct DissolvingTitleController {
     }
     
     private func shouldShowNavigationTitle(contentOffset: CGPoint) -> TitleState {
-        let titleLabelFrame = context.contextualViewFrame
+        let titleLabelFrame = context.contextualViewFrameRelativeToWindow
         let titleLabelTop = titleLabelFrame.origin.y
         
         let navigationTitleFrame = titleView.convert(titleView.frame, to: nil)

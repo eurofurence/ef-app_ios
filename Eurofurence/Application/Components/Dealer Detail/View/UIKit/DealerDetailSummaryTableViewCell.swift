@@ -14,7 +14,7 @@ class DealerDetailSummaryTableViewCell: UITableViewCell, DealerDetailSummaryComp
             cell.dealerTitleLabel.text
         }
         
-        var contextualViewFrame: CGRect {
+        var contextualViewFrameRelativeToWindow: CGRect {
             let label = cell.dealerTitleLabel.unsafelyUnwrapped
             var labelFrame = label.frame
             let imageHeight = cell.artistImageView.frame.height
