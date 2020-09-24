@@ -11,14 +11,14 @@ class DealerDetailViewController: UIViewController, DealerDetailScene {
     private var tableController: TableController? {
         didSet {
             tableView.dataSource = tableController
-            tableController?.titleAvailable = { [weak self] (titleLabel) in
+            tableController?.titleContextAvailable = { [weak self] (titleContext) in
                 guard let self = self else { return }
                 
                 self.titleController = DissolvingTitleController(
                     scrollView: self.tableView,
                     navigationItem: self.navigationItem,
                     accessibilityIdentifier: "org.eurofurence.dealer.navigationTitle",
-                    context: DissolvingTitleLabelContext(label: titleLabel)
+                    context: titleContext
                 )
             }
         }
@@ -69,7 +69,7 @@ class DealerDetailViewController: UIViewController, DealerDetailScene {
         private let tableView: UITableView
         private let numberOfComponents: Int
         private let binder: DealerDetailSceneBinder
-        var titleAvailable: ((UILabel) -> Void)?
+        var titleContextAvailable: ((DissolvingTitleContext) -> Void)?
 
         init(tableView: UITableView, numberOfComponents: Int, binder: DealerDetailSceneBinder) {
             self.tableView = tableView
@@ -89,7 +89,7 @@ class DealerDetailViewController: UIViewController, DealerDetailScene {
             let cell = tableView.dequeue(DealerDetailSummaryTableViewCell.self)
             block(cell)
             
-            cell.yieldTitleLabel(to: titleAvailable)
+            titleContextAvailable?(cell.dissolvingTitleContext)
             
             return cell
         }
