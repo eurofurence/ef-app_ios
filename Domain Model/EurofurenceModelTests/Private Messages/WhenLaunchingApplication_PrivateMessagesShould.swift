@@ -15,7 +15,6 @@ class WhenLaunchingApplication_PrivateMessagesShould: XCTestCase {
         XCTAssertEqual(message.receivedDateTime, observedMessage?.receivedDateTime)
         XCTAssertEqual(message.subject, observedMessage?.subject)
         XCTAssertEqual(message.contents, observedMessage?.contents)
-        XCTAssertEqual(message.isRead, observedMessage?.isRead)
     }
 
     func testProvideZeroCountForNumberOfUnreadPrivateMessages() {
