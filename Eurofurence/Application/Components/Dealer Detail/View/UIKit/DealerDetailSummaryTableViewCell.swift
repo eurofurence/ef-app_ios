@@ -1,6 +1,29 @@
 import UIKit
 
 class DealerDetailSummaryTableViewCell: UITableViewCell, DealerDetailSummaryComponent {
+    
+    // MARK: Dissolving title context
+    
+    lazy var dissolvingTitleContext: DissolvingTitleContext = TitleContext(cell: self)
+    
+    private struct TitleContext: DissolvingTitleContext {
+        
+        unowned let cell: DealerDetailSummaryTableViewCell
+        
+        var title: String? {
+            cell.dealerTitleLabel.text
+        }
+        
+        var contextualViewFrameRelativeToWindow: CGRect {
+            let label = cell.dealerTitleLabel.unsafelyUnwrapped
+            var labelFrame = label.frame
+            let imageHeight = cell.artistImageView.frame.height
+            labelFrame.size.height -= imageHeight
+            
+            return label.convert(labelFrame, to: nil)
+        }
+        
+    }
 
     // MARK: Properties
 
@@ -57,12 +80,6 @@ class DealerDetailSummaryTableViewCell: UITableViewCell, DealerDetailSummaryComp
 
         let telegramTappedGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(telegramTapped))
         dealerTelegramContainer.addGestureRecognizer(telegramTappedGestureRecognizer)
-    }
-    
-    // MARK: Functions
-    
-    func yieldTitleLabel(to block: ((UILabel) -> Void)?) {
-        block?(dealerTitleLabel)
     }
 
     // MARK: DealerDetailSummaryComponent

@@ -1084,6 +1084,13 @@
 		CAF254FF2517FB65008892ED /* AutomationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF254FE2517FB65008892ED /* AutomationController.swift */; };
 		CAF255082517FB92008892ED /* AutomationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF254FE2517FB65008892ED /* AutomationController.swift */; };
 		CAF255122517FE81008892ED /* DealerDetailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF255112517FE81008892ED /* DealerDetailTests.swift */; };
+		CAF2552F251A6DC4008892ED /* EventDetailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF2552E251A6DC4008892ED /* EventDetailTests.swift */; };
+		CAF25554251A7648008892ED /* DissolvingTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF25553251A7648008892ED /* DissolvingTitleLabel.swift */; };
+		CAF2555E251A80BB008892ED /* DissolvingTitleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF2555D251A80BB008892ED /* DissolvingTitleController.swift */; };
+		CAF25568251A8774008892ED /* UIAutomationTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF25567251A8774008892ED /* UIAutomationTestCase.swift */; };
+		CAF2556D251A877A008892ED /* UIAutomationTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF25567251A8774008892ED /* UIAutomationTestCase.swift */; };
+		CAF25574251D10B6008892ED /* DissolvingTitleLabelContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF25573251D10B6008892ED /* DissolvingTitleLabelContext.swift */; };
+		CAF2557E251D10CB008892ED /* DissolvingTitleContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF2557D251D10CB008892ED /* DissolvingTitleContext.swift */; };
 		CAF3C7441F9F5C550008F027 /* NewsComponentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C7431F9F5C550008F027 /* NewsComponentFactory.swift */; };
 		CAF3C7481F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C7471F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift */; };
 		CAF3C74C1F9F619C0008F027 /* NewsComponentFactoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C74B1F9F619C0008F027 /* NewsComponentFactoryImpl.swift */; };
@@ -2292,6 +2299,12 @@
 		CAF254AE2517F983008892ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CAF254FE2517FB65008892ED /* AutomationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomationController.swift; sourceTree = "<group>"; };
 		CAF255112517FE81008892ED /* DealerDetailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailTests.swift; sourceTree = "<group>"; };
+		CAF2552E251A6DC4008892ED /* EventDetailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailTests.swift; sourceTree = "<group>"; };
+		CAF25553251A7648008892ED /* DissolvingTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DissolvingTitleLabel.swift; sourceTree = "<group>"; };
+		CAF2555D251A80BB008892ED /* DissolvingTitleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DissolvingTitleController.swift; sourceTree = "<group>"; };
+		CAF25567251A8774008892ED /* UIAutomationTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAutomationTestCase.swift; sourceTree = "<group>"; };
+		CAF25573251D10B6008892ED /* DissolvingTitleLabelContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DissolvingTitleLabelContext.swift; sourceTree = "<group>"; };
+		CAF2557D251D10CB008892ED /* DissolvingTitleContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DissolvingTitleContext.swift; sourceTree = "<group>"; };
 		CAF3C7431F9F5C550008F027 /* NewsComponentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsComponentFactory.swift; sourceTree = "<group>"; };
 		CAF3C7471F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingNewsModuleDelegate.swift; sourceTree = "<group>"; };
 		CAF3C74B1F9F619C0008F027 /* NewsComponentFactoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsComponentFactoryImpl.swift; sourceTree = "<group>"; };
@@ -2954,9 +2967,10 @@
 			isa = PBXGroup;
 			children = (
 				CA27618120DF932C000E52AC /* AspectRatioConstrainedImageView.swift */,
-				CA283A8320E9461800F7D195 /* UnreadIndicatorView.swift */,
 				CA5EB1C92461BE140012C277 /* AwesomeFontLabel.swift */,
+				CA283A8320E9461800F7D195 /* UnreadIndicatorView.swift */,
 				78455B601F118685005BE2D7 /* Controls */,
+				CAF25572251D10AD008892ED /* Dissolving Title */,
 				78455B4E1F117843005BE2D7 /* Presenters */,
 				78455B431F11777D005BE2D7 /* Routers */,
 				CA17015822B2E5D40067BCDE /* Themeing */,
@@ -6499,6 +6513,7 @@
 			children = (
 				CAF254AE2517F983008892ED /* Info.plist */,
 				CAF255112517FE81008892ED /* DealerDetailTests.swift */,
+				CAF2552E251A6DC4008892ED /* EventDetailTests.swift */,
 				CAF254AC2517F983008892ED /* LaunchPerformanceTest.swift */,
 				CAF254FD2517FB47008892ED /* UI Automation */,
 			);
@@ -6509,8 +6524,20 @@
 			isa = PBXGroup;
 			children = (
 				CAF254FE2517FB65008892ED /* AutomationController.swift */,
+				CAF25567251A8774008892ED /* UIAutomationTestCase.swift */,
 			);
 			path = "UI Automation";
+			sourceTree = "<group>";
+		};
+		CAF25572251D10AD008892ED /* Dissolving Title */ = {
+			isa = PBXGroup;
+			children = (
+				CAF2557D251D10CB008892ED /* DissolvingTitleContext.swift */,
+				CAF2555D251A80BB008892ED /* DissolvingTitleController.swift */,
+				CAF25553251A7648008892ED /* DissolvingTitleLabel.swift */,
+				CAF25573251D10B6008892ED /* DissolvingTitleLabelContext.swift */,
+			);
+			path = "Dissolving Title";
 			sourceTree = "<group>";
 		};
 		CAF9A94F1F558E6200628833 /* Test Utilities */ = {
@@ -7029,6 +7056,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAF2556D251A877A008892ED /* UIAutomationTestCase.swift in Sources */,
 				CA25A89C22C4101D00226478 /* ScreenshotGenerator.swift in Sources */,
 				CA25A89D22C4101D00226478 /* SnapshotHelper.swift in Sources */,
 				CAF255082517FB92008892ED /* AutomationController.swift in Sources */,
@@ -7078,6 +7106,7 @@
 				CACF1E7C20B212A800D904B5 /* EventDetailBinder.swift in Sources */,
 				CA6660A022B5A8DE0050A04E /* DaysHorizontalPickerView.swift in Sources */,
 				CA630C5122A079E100754C27 /* Intents.intentdefinition in Sources */,
+				CAF2555E251A80BB008892ED /* DissolvingTitleController.swift in Sources */,
 				9A861ECA1F25555000B75A8C /* UserDefaultsTutorialStateProvider.swift in Sources */,
 				CA6A8DD420E417FF007536CD /* MapDetailScene.swift in Sources */,
 				CA630BEE229F16F400754C27 /* ConcreteEventIntentDonor.swift in Sources */,
@@ -7345,8 +7374,10 @@
 				CA987FC822E6389E006338FB /* ActivityFactory.swift in Sources */,
 				CA65A877209A523400B72533 /* UIColor+Extensions.swift in Sources */,
 				CA283ADA20EB9CA600F7D195 /* AnnouncementsComponentDelegate.swift in Sources */,
+				CAF25574251D10B6008892ED /* DissolvingTitleLabelContext.swift in Sources */,
 				CA5EB198245F63710012C277 /* PrincipalContentModuleProviding.swift in Sources */,
 				CA5EB1AB245F6DD00012C277 /* ScheduleContentControllerFactory.swift in Sources */,
+				CAF2557E251D10CB008892ED /* DissolvingTitleContext.swift in Sources */,
 				CA0F762320322DEF009DA079 /* KnowledgeListBinder.swift in Sources */,
 				CABA438F1FBCDBEE009CB5B0 /* LoginSceneFactory.swift in Sources */,
 				CA50B1BE226119F40091E425 /* DayOfWeekFormatter.swift in Sources */,
@@ -7438,6 +7469,7 @@
 				CA8D087922AC55B8003E42CA /* PlaceholderTextView.swift in Sources */,
 				CA3ABA0E229DCC350045A35B /* EventInteractionRecorder.swift in Sources */,
 				CA7992462245174800DF1F84 /* NotificationScheduleController.swift in Sources */,
+				CAF25554251A7648008892ED /* DissolvingTitleLabel.swift in Sources */,
 				CAA6060C20EEC06500075A4E /* DebugTableViewController.swift in Sources */,
 				CA63A753245DC3DF00E4B313 /* KnowledgeGroupContentRoute.swift in Sources */,
 				CA63A769245DD0EA00E4B313 /* WebContentRoute.swift in Sources */,
@@ -8101,6 +8133,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAF254FF2517FB65008892ED /* AutomationController.swift in Sources */,
+				CAF25568251A8774008892ED /* UIAutomationTestCase.swift in Sources */,
+				CAF2552F251A6DC4008892ED /* EventDetailTests.swift in Sources */,
 				CAF254AD2517F983008892ED /* LaunchPerformanceTest.swift in Sources */,
 				CAF255122517FE81008892ED /* DealerDetailTests.swift in Sources */,
 			);

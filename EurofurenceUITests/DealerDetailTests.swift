@@ -1,13 +1,10 @@
 import XCTest
 
-class DealerDetailTests: XCTestCase {
-    
-    private let controller = AutomationController()
+class DealerDetailTests: UIAutomationTestCase {
     
     override func setUpWithError() throws {
         try super.setUpWithError()
         
-        continueAfterFailure = false
         controller.app.launch()
         controller.transitionToContent()
         controller.tapTab(.dealers)
@@ -19,7 +16,7 @@ class DealerDetailTests: XCTestCase {
         
         XCTAssertFalse(navigationTitle.exists)
         
-        controller.app.tables.cells.containing(.staticText, identifier: "Eurofurence Shop").element.swipeUp()
+        controller.app.tables.cells.containing(.staticText, identifier: "The Official Eurofurence Shop").element.swipeUp()
         
         XCTAssertTrue(navigationTitle.exists)
     }

@@ -3,7 +3,9 @@ import UIKit
 class EventDetailViewController: UIViewController, EventDetailScene {
 
     // MARK: Properties
-
+    
+    private var titleController: DissolvingTitleController?
+    
     @IBOutlet private weak var tableView: UITableView!
     private var tableController: TableController?
 
@@ -11,7 +13,13 @@ class EventDetailViewController: UIViewController, EventDetailScene {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        addEmptyBarItemToFixCustomTitleViewsNotAppearing()
         delegate?.eventDetailSceneDidLoad()
+    }
+    
+    private func addEmptyBarItemToFixCustomTitleViewsNotAppearing() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: UIView(frame: .zero))
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -35,6 +43,17 @@ class EventDetailViewController: UIViewController, EventDetailScene {
         tableController = TableController(tableView: tableView,
                                           numberOfComponents: numberOfComponents,
                                           binder: binder)
+        
+        tableController?.titleAvailable = { [weak self] (titleLabel) in
+            guard let self = self else { return }
+            
+            self.titleController = DissolvingTitleController(
+                scrollView: self.tableView,
+                navigationItem: self.navigationItem,
+                accessibilityIdentifier: "org.eurofurence.event.navigationTitle",
+                context: DissolvingTitleLabelContext(label: titleLabel)
+            )
+        }
     }
 
     // MARK: Private
@@ -44,6 +63,7 @@ class EventDetailViewController: UIViewController, EventDetailScene {
         private let tableView: UITableView
         private let numberOfComponents: Int
         private let binder: EventDetailBinder
+        var titleAvailable: ((UILabel) -> Void)?
 
         init(tableView: UITableView, numberOfComponents: Int, binder: EventDetailBinder) {
             self.tableView = tableView
@@ -59,6 +79,9 @@ class EventDetailViewController: UIViewController, EventDetailScene {
         func makeEventSummaryComponent(configuringUsing block: (EventSummaryComponent) -> Void) -> UITableViewCell {
             let cell = tableView.dequeue(EventDetailSummaryTableViewCell.self)
             block(cell)
+            
+            cell.yieldTitleLabel(to: titleAvailable)
+            
             return cell
         }
 
