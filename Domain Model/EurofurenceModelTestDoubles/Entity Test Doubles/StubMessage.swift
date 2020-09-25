@@ -36,6 +36,10 @@ public final class StubMessage: Message {
         }
     }
     
+    public func remove(_ observer: PrivateMessageObserver) {
+        observers.removeAll(where: { $0 === observer })
+    }
+    
     public private(set) var markedRead = false
     public func markAsRead() {
         markedRead = true

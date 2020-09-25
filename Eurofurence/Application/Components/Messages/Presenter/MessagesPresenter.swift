@@ -129,7 +129,7 @@ class MessagesPresenter: MessagesSceneDelegate, PrivateMessagesObserver {
 
     }
     
-    private struct MessageBinder: PrivateMessageObserver {
+    private class MessageBinder: PrivateMessageObserver {
         
         private let message: Message
         private let scene: MessageItemScene

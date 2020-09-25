@@ -46,6 +46,10 @@ class MessageImpl: Message, Comparable {
         }
     }
     
+    func remove(_ observer: PrivateMessageObserver) {
+        observers.removeAll(where: { $0 === observer })
+    }
+    
     func markAsRead() {
         isRead = true
         eventBus.post(ReadEvent(message: self))

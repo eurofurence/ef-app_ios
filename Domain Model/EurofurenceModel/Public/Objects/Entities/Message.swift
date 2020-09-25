@@ -11,12 +11,13 @@ public protocol Message {
     var contents: String { get }
     
     func add(_ observer: PrivateMessageObserver)
+    func remove(_ observer: PrivateMessageObserver)
     
     func markAsRead()
 
 }
 
-public protocol PrivateMessageObserver {
+public protocol PrivateMessageObserver: AnyObject {
     
     func messageMarkedUnread()
     func messageMarkedRead()
