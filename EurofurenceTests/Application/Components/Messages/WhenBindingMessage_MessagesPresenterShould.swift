@@ -53,6 +53,27 @@ class MessagesPresenterTestsWhenBindingMessages: XCTestCase {
         XCTAssertEqual(.hidden, capturingMessageScene.unreadIndicatorVisibility)
     }
     
+    func testStopUpdatingSceneAfterUnbinding() {
+        let allMessages = [StubMessage].random
+        let randomIndex = Int.random(upperLimit: UInt32(allMessages.count))
+        let randomIndexPath = IndexPath(row: randomIndex, section: 0)
+        let message = allMessages[randomIndex]
+        message.transitionToUnreadState()
+        
+        let service = CapturingPrivateMessagesService(localMessages: allMessages)
+        let context = MessagesPresenterTestContext.makeTestCaseForAuthenticatedUser(privateMessagesService: service)
+        context.scene.delegate?.messagesSceneReady()
+        context.privateMessagesService.succeedLastRefresh(messages: allMessages)
+        
+        let capturingMessageScene = CapturingMessageItemScene()
+        context.scene.capturedMessageItemBinder?.bind(capturingMessageScene, toMessageAt: randomIndexPath)
+        
+        context.scene.delegate?.messagesSceneFinalizing()
+        message.transitionToReadState()
+        
+        XCTAssertEqual(.visible, capturingMessageScene.unreadIndicatorVisibility)
+    }
+    
     private func assertBindingMessage(
         isRead: Bool,
         setsUnreadIndicatorVisibilityTo expected: VisibilityState,

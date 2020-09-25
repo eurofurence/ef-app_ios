@@ -11,6 +11,7 @@ class MessagesPresenter: MessagesSceneDelegate, PrivateMessagesObserver {
     private let dateFormatter: DateFormatterProtocol
     private let delegate: MessagesComponentDelegate
     private var presentedMessages = [Message]()
+    private var currentBinder: MessagesBinder?
 
     // MARK: Initialization
 
@@ -38,6 +39,7 @@ class MessagesPresenter: MessagesSceneDelegate, PrivateMessagesObserver {
     
     func messagesSceneFinalizing() {
         privateMessagesService.removeObserver(self)
+        currentBinder?.teardown()
     }
 
     func messagesSceneDidSelectMessage(at indexPath: IndexPath) {
@@ -99,6 +101,7 @@ class MessagesPresenter: MessagesSceneDelegate, PrivateMessagesObserver {
         presentedMessages = messages
 
         let binder = MessagesBinder(messages: messages, dateFormatter: dateFormatter)
+        currentBinder = binder
         scene?.bindMessages(count: messages.count, with: binder)
 
         if messages.isEmpty {
@@ -125,6 +128,12 @@ class MessagesPresenter: MessagesSceneDelegate, PrivateMessagesObserver {
             let message = messages[indexPath[1]]
             let binder = MessageBinder(message: message, scene: scene, dateFormatter: dateFormatter)
             messageBinders[indexPath] = binder
+        }
+        
+        func teardown() {
+            for binder in messageBinders.values {
+                binder.teardown()
+            }
         }
 
     }
@@ -156,6 +165,10 @@ class MessagesPresenter: MessagesSceneDelegate, PrivateMessagesObserver {
         
         func messageMarkedRead() {
             scene.hideUnreadIndicator()
+        }
+        
+        func teardown() {
+            message.remove(self)
         }
         
     }
