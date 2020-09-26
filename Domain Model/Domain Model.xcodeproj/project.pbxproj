@@ -477,6 +477,7 @@
 		CAF25590251D1625008892ED /* WhenObservingUnreadMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF2558F251D1625008892ED /* WhenObservingUnreadMessage.swift */; };
 		CAF2559A251D1731008892ED /* CapturingPrivateMessageObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF25599251D1731008892ED /* CapturingPrivateMessageObserver.swift */; };
 		CAF255A4251D175B008892ED /* WhenObservingReadMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF255A3251D175B008892ED /* WhenObservingReadMessage.swift */; };
+		CAF255B2251F772F008892ED /* WhenObservingMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF255B1251F772F008892ED /* WhenObservingMessage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -984,6 +985,7 @@
 		CAF2558F251D1625008892ED /* WhenObservingUnreadMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingUnreadMessage.swift; sourceTree = "<group>"; };
 		CAF25599251D1731008892ED /* CapturingPrivateMessageObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingPrivateMessageObserver.swift; sourceTree = "<group>"; };
 		CAF255A3251D175B008892ED /* WhenObservingReadMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingReadMessage.swift; sourceTree = "<group>"; };
+		CAF255B1251F772F008892ED /* WhenObservingMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingMessage.swift; sourceTree = "<group>"; };
 		EC85896EECB18D7881B0665A /* Pods-EurofurenceModel-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-EurofurenceModel-metadata.plist"; sourceTree = "<group>"; };
 		FFE87D86E3ECE04913805820 /* Pods_EurofurenceModelTestDoubles.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EurofurenceModelTestDoubles.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -1655,12 +1657,13 @@
 				CA7A30EA22B16E24002AD939 /* WhenLoggingOut_PrivateMessagesShould.swift */,
 				CA7A30E622B16E24002AD939 /* WhenLoggingOut_ThenRequestingPrivateMessages.swift */,
 				CA7A30EB22B16E24002AD939 /* WhenMarkingMessageAsRead.swift */,
+				CAF255B1251F772F008892ED /* WhenObservingMessage.swift */,
+				CAF255A3251D175B008892ED /* WhenObservingReadMessage.swift */,
 				CAF2558F251D1625008892ED /* WhenObservingUnreadMessage.swift */,
 				CABCDE8524CB637500500F6B /* WhenRemovingObserver_PrivateMessagesServiceShould.swift */,
 				CA7A30E522B16E24002AD939 /* WhenRequestingPrivateMessagesWhileAuthenticated.swift */,
 				CA7A30E822B16E24002AD939 /* WhenRequestingPrivateMessagesWhileNotAuthenticated.swift */,
 				CAA10FC922C5597C00689A32 /* WhenResolvingMessageByItsIdentifier.swift */,
-				CAF255A3251D175B008892ED /* WhenObservingReadMessage.swift */,
 			);
 			path = "Private Messages";
 			sourceTree = "<group>";
@@ -2721,6 +2724,7 @@
 				CA7A31FC22B16E26002AD939 /* UserDefaultsForceRefreshRequired.swift in Sources */,
 				CA2AA2DC22C942AB00C0E1A1 /* WhenDescribingAppLink_WithInvalidDealerIdentifier.swift in Sources */,
 				CA7A31D422B16E26002AD939 /* ImageAPITests.swift in Sources */,
+				CAF255B2251F772F008892ED /* WhenObservingMessage.swift in Sources */,
 				CAC4993E22E04D11003E1D77 /* CapturingDealerCategoryObserver.swift in Sources */,
 				CA7A323722B16E26002AD939 /* WhenSubmittingFeedback_ForEventNotAcceptingFeedback.swift in Sources */,
 				CA7A319822B16E26002AD939 /* DealersRemoveAllBeforeInsertTests.swift in Sources */,

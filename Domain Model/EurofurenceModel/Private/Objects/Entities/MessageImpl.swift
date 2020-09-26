@@ -16,7 +16,7 @@ class MessageImpl: Message, Comparable {
     }
     
     private let eventBus: EventBus
-    private var observers: [PrivateMessageObserver] = []
+    private var observers: [WeakObserver] = []
 
     var identifier: MessageIdentifier
     var authorName: String
@@ -37,7 +37,7 @@ class MessageImpl: Message, Comparable {
     }
     
     func add(_ observer: PrivateMessageObserver) {
-        observers.append(observer)
+        observers.append(WeakObserver(observer))
         
         if isRead {
             observer.messageMarkedRead()
@@ -47,7 +47,7 @@ class MessageImpl: Message, Comparable {
     }
     
     func remove(_ observer: PrivateMessageObserver) {
-        observers.removeAll(where: { $0 === observer })
+        observers.removeAll(where: { $0.isReferencing(observer) })
     }
     
     func markAsRead() {
@@ -55,8 +55,22 @@ class MessageImpl: Message, Comparable {
         eventBus.post(ReadEvent(message: self))
         
         for observer in observers {
-            observer.messageMarkedRead()
+            observer.reference?.messageMarkedRead()
         }
+    }
+    
+    private class WeakObserver {
+        
+        private(set) weak var reference: PrivateMessageObserver?
+        
+        init(_ reference: PrivateMessageObserver) {
+            self.reference = reference
+        }
+        
+        func isReferencing(_ instance: PrivateMessageObserver) -> Bool {
+            reference === instance
+        }
+        
     }
 
 }
