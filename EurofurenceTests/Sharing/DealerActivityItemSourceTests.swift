@@ -14,5 +14,25 @@ class DealerActivityItemSourceTests: XCTestCase {
         XCTAssertEqual(second, second)
         XCTAssertNotEqual(first, second)
     }
+    
+    func testPlaceholderItemUsesURL() {
+        let dealer = FakeDealer.random
+        let activityItem = DealerActivityItemSource(dealer: dealer)
+        let expected = dealer.makeContentURL()
+        let activityController = UIActivityViewController(activityItems: [], applicationActivities: nil)
+        let actual = activityItem.activityViewControllerPlaceholderItem(activityController)
+        
+        XCTAssertEqual(expected, actual as? URL)
+    }
+    
+    func testItemUsesURL() {
+        let dealer = FakeDealer.random
+        let activityItem = DealerActivityItemSource(dealer: dealer)
+        let expected = dealer.makeContentURL()
+        let activityController = UIActivityViewController(activityItems: [], applicationActivities: nil)
+        let actual = activityItem.activityViewController(activityController, itemForActivityType: nil)
+        
+        XCTAssertEqual(expected, actual as? URL)
+    }
 
 }
