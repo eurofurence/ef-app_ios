@@ -29,8 +29,7 @@ public struct DefaultKnowledgeDetailViewModelFactory: KnowledgeDetailViewModelFa
         }
         
         func shareKnowledgeEntry(_ sender: AnyObject) {
-            let contentURL = entry.makeContentURL()
-            shareService.share(contentURL, sender: sender)
+            shareService.share(KnowledgeEntryActivityItemSource(knowledgeEntry: entry), sender: sender)
         }
 
     }
