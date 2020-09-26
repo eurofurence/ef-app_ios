@@ -15,7 +15,7 @@ class ScheduleEventViewModelSharingTests: XCTestCase {
         let sender = "Sender"
         eventViewModel?.share(sender)
         
-        XCTAssertEqual(event.makeContentURL(), context.shareService.sharedItem as? URL)
+        XCTAssertTrue(event === context.shareService.sharedItem as? FakeEvent)
         XCTAssertEqual(sender, context.shareService.sharedItemSender as? String)
     }
 
