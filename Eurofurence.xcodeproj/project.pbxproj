@@ -1095,6 +1095,8 @@
 		CAF255CC251F852B008892ED /* EventActivityItemSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF255CB251F852B008892ED /* EventActivityItemSource.swift */; };
 		CAF255DA251F8664008892ED /* DealerActivityItemSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF255D9251F8664008892ED /* DealerActivityItemSource.swift */; };
 		CAF255E4251F8690008892ED /* DealerActivityItemSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF255E3251F8690008892ED /* DealerActivityItemSourceTests.swift */; };
+		CAF255EE251F8801008892ED /* KnowledgeEntryActivityItemSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF255ED251F8801008892ED /* KnowledgeEntryActivityItemSource.swift */; };
+		CAF255F4251F880C008892ED /* KnowledgeEntryActivityItemSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF255F3251F880C008892ED /* KnowledgeEntryActivityItemSourceTests.swift */; };
 		CAF3C7441F9F5C550008F027 /* NewsComponentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C7431F9F5C550008F027 /* NewsComponentFactory.swift */; };
 		CAF3C7481F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C7471F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift */; };
 		CAF3C74C1F9F619C0008F027 /* NewsComponentFactoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C74B1F9F619C0008F027 /* NewsComponentFactoryImpl.swift */; };
@@ -2313,6 +2315,8 @@
 		CAF255CB251F852B008892ED /* EventActivityItemSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventActivityItemSource.swift; sourceTree = "<group>"; };
 		CAF255D9251F8664008892ED /* DealerActivityItemSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerActivityItemSource.swift; sourceTree = "<group>"; };
 		CAF255E3251F8690008892ED /* DealerActivityItemSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerActivityItemSourceTests.swift; sourceTree = "<group>"; };
+		CAF255ED251F8801008892ED /* KnowledgeEntryActivityItemSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeEntryActivityItemSource.swift; sourceTree = "<group>"; };
+		CAF255F3251F880C008892ED /* KnowledgeEntryActivityItemSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeEntryActivityItemSourceTests.swift; sourceTree = "<group>"; };
 		CAF3C7431F9F5C550008F027 /* NewsComponentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsComponentFactory.swift; sourceTree = "<group>"; };
 		CAF3C7471F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingNewsModuleDelegate.swift; sourceTree = "<group>"; };
 		CAF3C74B1F9F619C0008F027 /* NewsComponentFactoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsComponentFactoryImpl.swift; sourceTree = "<group>"; };
@@ -6555,6 +6559,7 @@
 			children = (
 				CAF255C0251F84A3008892ED /* EventActivityItemTests.swift */,
 				CAF255E3251F8690008892ED /* DealerActivityItemSourceTests.swift */,
+				CAF255F3251F880C008892ED /* KnowledgeEntryActivityItemSourceTests.swift */,
 			);
 			path = Sharing;
 			sourceTree = "<group>";
@@ -6564,6 +6569,7 @@
 			children = (
 				CAF255D9251F8664008892ED /* DealerActivityItemSource.swift */,
 				CAF255CB251F852B008892ED /* EventActivityItemSource.swift */,
+				CAF255ED251F8801008892ED /* KnowledgeEntryActivityItemSource.swift */,
 			);
 			path = Sharing;
 			sourceTree = "<group>";
@@ -7143,6 +7149,7 @@
 				CA6A8D9A20E2C678007536CD /* MapsBinder.swift in Sources */,
 				CA5EB195245F63570012C277 /* ModuleSwappingPrincipalWindowScene.swift in Sources */,
 				CA4D936C245F14CB006FA832 /* ContentWireframeDecorator.swift in Sources */,
+				CAF255EE251F8801008892ED /* KnowledgeEntryActivityItemSource.swift in Sources */,
 				CA2AA30322CA95BF00C0E1A1 /* UpdateRemoteConfigRefreshCollaboration.swift in Sources */,
 				CA02910221F4D6020007F350 /* AppDelegate+DebugWindow.swift in Sources */,
 				CA2A587120F7F369002C69B6 /* FoundationAnnouncementDateFormatter.swift in Sources */,
@@ -7848,6 +7855,7 @@
 				CA5EB1BF245F703F0012C277 /* StubKnowledgeGroupEntriesComponentFactory.swift in Sources */,
 				CAF196C824688EAA005DFBBE /* CapturingMapsScene.swift in Sources */,
 				CAF1970024688EAA005DFBBE /* WhenBindingGroupFromSearchResult_SchedulePresenterShould.swift in Sources */,
+				CAF255F4251F880C008892ED /* KnowledgeEntryActivityItemSourceTests.swift in Sources */,
 				CAF196C124688EAA005DFBBE /* MapsPresenterTestBuilder.swift in Sources */,
 				CAF196E124688EAA005DFBBE /* WhenSceneUpdatesSearchQuery_SchedulePresenterShould.swift in Sources */,
 				CAF1971F24688EAA005DFBBE /* BeforeMessagesViewAppears_MessagesPresenterShould.swift in Sources */,
