@@ -1091,6 +1091,10 @@
 		CAF2556D251A877A008892ED /* UIAutomationTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF25567251A8774008892ED /* UIAutomationTestCase.swift */; };
 		CAF25574251D10B6008892ED /* DissolvingTitleLabelContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF25573251D10B6008892ED /* DissolvingTitleLabelContext.swift */; };
 		CAF2557E251D10CB008892ED /* DissolvingTitleContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF2557D251D10CB008892ED /* DissolvingTitleContext.swift */; };
+		CAF255C1251F84A3008892ED /* EventActivityItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF255C0251F84A3008892ED /* EventActivityItemTests.swift */; };
+		CAF255CC251F852B008892ED /* EventActivityItemSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF255CB251F852B008892ED /* EventActivityItemSource.swift */; };
+		CAF255DA251F8664008892ED /* DealerActivityItemSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF255D9251F8664008892ED /* DealerActivityItemSource.swift */; };
+		CAF255E4251F8690008892ED /* DealerActivityItemSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF255E3251F8690008892ED /* DealerActivityItemSourceTests.swift */; };
 		CAF3C7441F9F5C550008F027 /* NewsComponentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C7431F9F5C550008F027 /* NewsComponentFactory.swift */; };
 		CAF3C7481F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C7471F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift */; };
 		CAF3C74C1F9F619C0008F027 /* NewsComponentFactoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C74B1F9F619C0008F027 /* NewsComponentFactoryImpl.swift */; };
@@ -2305,6 +2309,10 @@
 		CAF25567251A8774008892ED /* UIAutomationTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAutomationTestCase.swift; sourceTree = "<group>"; };
 		CAF25573251D10B6008892ED /* DissolvingTitleLabelContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DissolvingTitleLabelContext.swift; sourceTree = "<group>"; };
 		CAF2557D251D10CB008892ED /* DissolvingTitleContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DissolvingTitleContext.swift; sourceTree = "<group>"; };
+		CAF255C0251F84A3008892ED /* EventActivityItemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventActivityItemTests.swift; sourceTree = "<group>"; };
+		CAF255CB251F852B008892ED /* EventActivityItemSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventActivityItemSource.swift; sourceTree = "<group>"; };
+		CAF255D9251F8664008892ED /* DealerActivityItemSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerActivityItemSource.swift; sourceTree = "<group>"; };
+		CAF255E3251F8690008892ED /* DealerActivityItemSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerActivityItemSourceTests.swift; sourceTree = "<group>"; };
 		CAF3C7431F9F5C550008F027 /* NewsComponentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsComponentFactory.swift; sourceTree = "<group>"; };
 		CAF3C7471F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingNewsModuleDelegate.swift; sourceTree = "<group>"; };
 		CAF3C74B1F9F619C0008F027 /* NewsComponentFactoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsComponentFactoryImpl.swift; sourceTree = "<group>"; };
@@ -2727,6 +2735,7 @@
 				CA39852322C7AD6D00117249 /* Remote Configuration */,
 				9ACF999B1ECA259C006FC958 /* Resources */,
 				CA38C35224680C2E00A20921 /* Scenes */,
+				CAF255CA251F851F008892ED /* Sharing */,
 			);
 			path = Eurofurence;
 			sourceTree = "<group>";
@@ -2742,6 +2751,7 @@
 				CAD4F737245C2E580036ADAF /* Content Router */,
 				CAF1984124689082005DFBBE /* Controllers */,
 				CAB631FB245F233A00DBF0A0 /* Scenes */,
+				CAF255BF251F8490008892ED /* Sharing */,
 				6EF96CCD1F0EDB1300EE6134 /* Test Doubles */,
 				CAF9A94F1F558E6200628833 /* Test Utilities */,
 			);
@@ -6540,6 +6550,24 @@
 			path = "Dissolving Title";
 			sourceTree = "<group>";
 		};
+		CAF255BF251F8490008892ED /* Sharing */ = {
+			isa = PBXGroup;
+			children = (
+				CAF255C0251F84A3008892ED /* EventActivityItemTests.swift */,
+				CAF255E3251F8690008892ED /* DealerActivityItemSourceTests.swift */,
+			);
+			path = Sharing;
+			sourceTree = "<group>";
+		};
+		CAF255CA251F851F008892ED /* Sharing */ = {
+			isa = PBXGroup;
+			children = (
+				CAF255D9251F8664008892ED /* DealerActivityItemSource.swift */,
+				CAF255CB251F852B008892ED /* EventActivityItemSource.swift */,
+			);
+			path = Sharing;
+			sourceTree = "<group>";
+		};
 		CAF9A94F1F558E6200628833 /* Test Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -7297,6 +7325,7 @@
 				CA50B1AB226110B00091E425 /* EventFeedbackComponentFactory.swift in Sources */,
 				CABA43A31FD57C65009CB5B0 /* TutorialModuleBuilder.swift in Sources */,
 				CA5DCC8224C769B5001F20F8 /* EmbeddedDealerContentRoute.swift in Sources */,
+				CAF255CC251F852B008892ED /* EventActivityItemSource.swift in Sources */,
 				CA63A741245DB7E000E4B313 /* RouterConfigurator.swift in Sources */,
 				CA7EB7D51F799991002674A6 /* TutorialScene.swift in Sources */,
 				CA6A8D7D20E265B0007536CD /* MapsViewController.swift in Sources */,
@@ -7343,6 +7372,7 @@
 				CABF03B42041BC870028BD62 /* UITableView+Extensions.swift in Sources */,
 				CABA439D1FD576D0009CB5B0 /* MessagesComponentBuilder.swift in Sources */,
 				CA00AE5220D16FC000C2FBB0 /* ScheduleEventGroupViewModel.swift in Sources */,
+				CAF255DA251F8664008892ED /* DealerActivityItemSource.swift in Sources */,
 				CABA43AC1FD5DC68009CB5B0 /* LoginScene.swift in Sources */,
 				CAD04195245DA62B00B86950 /* NewsContentRepresentation.swift in Sources */,
 				CACF1E8220B2E6B400D904B5 /* EventDetailSummaryTableViewCell.swift in Sources */,
@@ -7706,6 +7736,7 @@
 				CAF1978524688EAA005DFBBE /* WhenPreparingViewModel_ForEventWithBannerButNoPoster_EventDetailViewModelFactoryShould.swift in Sources */,
 				CAF1974224688EAA005DFBBE /* StubKnowledgeGroupEntriesViewModel.swift in Sources */,
 				CA63A744245DB94F00E4B313 /* ScheduleSubrouterTests.swift in Sources */,
+				CAF255C1251F84A3008892ED /* EventActivityItemTests.swift in Sources */,
 				CA6F75D8246956DB001FFB74 /* StubSponsorsOnlyEventViewModel.swift in Sources */,
 				CAF1974A24688EAA005DFBBE /* FakeMapDetailInteractor.swift in Sources */,
 				CAF1976224688EAA005DFBBE /* CapturingAnnouncementsListViewModelDelegate.swift in Sources */,
@@ -7993,6 +8024,7 @@
 				CAF197E524688EAA005DFBBE /* VisitsEntryFromKnowledgeListViewModel.swift in Sources */,
 				CAD4F769245C45B90036ADAF /* EventFeedbackContentRouteTests.swift in Sources */,
 				CAF1973B24688EAA005DFBBE /* WhenSceneSelectsKnowledgeEntry_KnowledgeGroupEntriesPresenterShould.swift in Sources */,
+				CAF255E4251F8690008892ED /* DealerActivityItemSourceTests.swift in Sources */,
 				CAF1980524688EAB005DFBBE /* PreloadPresenterTests.swift in Sources */,
 				CAF1983224688EAB005DFBBE /* DealersViewModelTestBuilder.swift in Sources */,
 				CAF197BD24688EAA005DFBBE /* DefaultNewsViewModelProducerTestBuilderContext.swift in Sources */,
