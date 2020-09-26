@@ -11,7 +11,7 @@ public struct ShareEventActionViewModel: EventActionViewModel {
     
     public func perform(sender: Any?) {
         guard let sender = sender else { return }
-        shareService.share(event, sender: sender)
+        shareService.share(EventActivityItemSource(event: event), sender: sender)
     }
     
 }

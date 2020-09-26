@@ -181,7 +181,7 @@ struct DefaultDealerDetailViewModel: DealerDetailViewModel {
     }
     
     func shareDealer(_ sender: Any) {
-        shareService.share(dealer, sender: sender)
+        shareService.share(DealerActivityItemSource(dealer: dealer), sender: sender)
     }
 
 }
