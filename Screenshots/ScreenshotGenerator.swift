@@ -26,13 +26,6 @@ class ScreenshotGenerator: XCTestCase {
             device.orientation = .portrait
         }
     }
-
-    private func hideKeyboard() {
-        let hideKeyboardButton = app.buttons["Hide keyboard"]
-        if hideKeyboardButton.exists {
-            hideKeyboardButton.tap()
-        }
-    }
     
     func testScreenshots() {
         automationController.transitionToContent()
@@ -40,22 +33,15 @@ class ScreenshotGenerator: XCTestCase {
         snapshot("01_News")
 
         automationController.tapTab(.schedule)
+        
         app.tables.firstMatch.swipeDown()
         
         snapshot("02_Schedule")
         
-        let searchField = app.searchFields["Search"]
-        searchField.tap()
-        searchField.typeText("comic")
-        app.tables["Search results"].staticTexts["ECC Room 4"].tap()
-        
-        if app.tables.buttons["Add to Favourites"].exists {
-            app.tables.buttons["Add to Favourites"].tap()
-        }
+        app.tables.staticTexts["Artists' Lounge"].tap()
         
         snapshot("03_EventDetail")
         
-        hideKeyboard()
         automationController.tapTab(.dealers)
         
         snapshot("04_Dealers")
