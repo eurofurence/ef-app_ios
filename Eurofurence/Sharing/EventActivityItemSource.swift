@@ -8,7 +8,7 @@ public class EventActivityItemSource: URLBasedActivityItem {
     
     public init(event: Event) {
         self.event = event
-        super.init(url: event.makeContentURL())
+        super.init(url: event.contentURL)
     }
     
     override public func isEqual(_ object: Any?) -> Bool {

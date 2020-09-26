@@ -90,6 +90,10 @@ class EventImpl: Event {
         
         self.day = day
     }
+    
+    var contentURL: URL {
+        return shareableURLFactory.makeURL(for: identifier)
+    }
 
     private var observers: [EventObserver] = []
     func add(_ observer: EventObserver) {
@@ -123,10 +127,6 @@ class EventImpl: Event {
         } else {
             return NotAcceptingEventFeedback()
         }
-    }
-    
-    func makeContentURL() -> URL {
-        return shareableURLFactory.makeURL(for: identifier)
     }
 
     private func notifyObserversFavouritedStateDidChange() {

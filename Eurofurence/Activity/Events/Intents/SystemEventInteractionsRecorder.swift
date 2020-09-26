@@ -24,7 +24,7 @@ public struct SystemEventInteractionsRecorder: EventInteractionRecorder {
         eventIntentDonor.donateEventIntent(definition: intentDefinition)
         
         let activityTitle = String.viewEvent(named: entity.title)
-        let url = entity.makeContentURL()
+        let url = entity.contentURL
         let activity = activityFactory.makeActivity(type: "org.eurofurence.activity.view-event", title: activityTitle, url: url)
         activity.markEligibleForPublicIndexing()
         

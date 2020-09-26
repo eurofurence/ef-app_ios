@@ -12,7 +12,7 @@ class WhenMakingContentURL_KnowledgeEntryShould: XCTestCase {
         let identifier = KnowledgeEntryIdentifier(knowledgeEntry.identifier)
         var entity: KnowledgeEntry?
         context.knowledgeService.fetchKnowledgeEntry(for: identifier, completionHandler: { entity = $0 })
-        let url = entity?.makeContentURL()
+        let url = entity?.contentURL
         
         XCTAssertEqual(URL(string: "knowledgeentry://\(identifier.rawValue)").unsafelyUnwrapped, url)
     }

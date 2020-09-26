@@ -24,10 +24,7 @@ public final class FakeKnowledgeEntry: KnowledgeEntry {
         self.links = links
     }
     
-    public let contentURL = URL.random
-    public func makeContentURL() -> URL {
-        return contentURL
-    }
+    public let contentURL: URL = .random
     
 }
 

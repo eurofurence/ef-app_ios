@@ -54,7 +54,7 @@ public final class FakeDealer: Dealer {
     }
     
     public let shareableURL = URL.random
-    public func makeContentURL() -> URL {
+    public var contentURL: URL {
         return shareableURL
     }
 

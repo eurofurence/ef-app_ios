@@ -9,7 +9,7 @@ struct KnowledgeEntryImpl: KnowledgeEntry {
     var links: [Link]
     var shareableURLFactory: ShareableURLFactory
     
-    func makeContentURL() -> URL {
+    var contentURL: URL {
         return shareableURLFactory.makeURL(for: identifier)
     }
     

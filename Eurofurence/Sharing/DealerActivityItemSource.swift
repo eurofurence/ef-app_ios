@@ -8,7 +8,7 @@ public class DealerActivityItemSource: URLBasedActivityItem {
     
     public init(dealer: Dealer) {
         self.dealer = dealer
-        super.init(url: dealer.makeContentURL())
+        super.init(url: dealer.contentURL)
     }
     
     override public func isEqual(_ object: Any?) -> Bool {

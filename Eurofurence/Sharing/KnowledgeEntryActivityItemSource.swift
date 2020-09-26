@@ -8,7 +8,7 @@ public class KnowledgeEntryActivityItemSource: URLBasedActivityItem {
     
     public init(knowledgeEntry: KnowledgeEntry) {
         self.knowledgeEntry = knowledgeEntry
-        super.init(url: knowledgeEntry.makeContentURL())
+        super.init(url: knowledgeEntry.contentURL)
     }
     
     override public func isEqual(_ object: Any?) -> Bool {
