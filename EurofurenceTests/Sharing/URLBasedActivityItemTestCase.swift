@@ -32,5 +32,13 @@ class URLBasedActivityItemTestCase: XCTestCase {
         
         XCTAssertEqual(expected, actual as? URL)
     }
+    
+    @available(iOS 13.0, *)
+    func testPreparingLinkMetadata() throws {
+        let activityItem = try makeActivityItem()
+        let linkMetadata = try XCTUnwrap(activityItem.activityViewControllerLinkMetadata(activityViewController))
+        
+        XCTAssertEqual(activityItem.url, linkMetadata.url)
+    }
 
 }
