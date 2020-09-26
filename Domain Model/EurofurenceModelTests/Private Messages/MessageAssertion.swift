@@ -25,12 +25,17 @@ class MessageAssertion: Assertion {
             return
         }
         
+        let observer = CapturingPrivateMessageObserver()
+        message.add(observer)
+        
+        let expectedReadState: CapturingPrivateMessageObserver.ReadState = characteristic.isRead ? .read : .unread
+        
         assert(message.identifier.rawValue, isEqualTo: characteristic.identifier)
         assert(message.authorName, isEqualTo: characteristic.authorName)
         assert(message.receivedDateTime, isEqualTo: characteristic.receivedDateTime)
         assert(message.subject, isEqualTo: characteristic.subject)
         assert(message.contents, isEqualTo: characteristic.contents)
-        assert(message.isRead, isEqualTo: characteristic.isRead)
+        assert(expectedReadState, isEqualTo: observer.currentReadState)
     }
 
 }

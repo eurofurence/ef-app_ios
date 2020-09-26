@@ -9,8 +9,17 @@ public protocol Message {
     var receivedDateTime: Date { get }
     var subject: String { get }
     var contents: String { get }
-    var isRead: Bool { get }
+    
+    func add(_ observer: PrivateMessageObserver)
+    func remove(_ observer: PrivateMessageObserver)
     
     func markAsRead()
 
+}
+
+public protocol PrivateMessageObserver: AnyObject {
+    
+    func messageMarkedUnread()
+    func messageMarkedRead()
+    
 }
