@@ -21,6 +21,11 @@ public class URLBasedActivityItem: NSObject, UIActivityItemSource {
     public func activityViewControllerLinkMetadata(_ activityViewController: UIActivityViewController) -> LPLinkMetadata? {
         let metadata = LPLinkMetadata()
         metadata.url = url
+        
+        if let appIcon = UIImage(named: "Eurofurence Link Metadata Share Icon") {
+            metadata.iconProvider = NSItemProvider(object: appIcon)
+        }
+        
         supplementLinkMetadata(metadata)
         
         return metadata

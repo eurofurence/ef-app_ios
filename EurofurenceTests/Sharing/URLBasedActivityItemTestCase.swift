@@ -46,6 +46,7 @@ class URLBasedActivityItemTestCase: XCTestCase {
     @available(iOS 13.0, *)
     func assertAgainstLinkMetadata(_ metadata: LPLinkMetadata, activityItem: URLBasedActivityItem) {
         XCTAssertEqual(activityItem.url, metadata.url)
+        XCTAssertNotNil(metadata.iconProvider)
     }
 
 }
