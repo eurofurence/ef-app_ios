@@ -9,7 +9,6 @@ public protocol KnowledgeEntry {
     var order: Int { get }
     var contents: String { get }
     var links: [Link] { get }
-    
-    func makeContentURL() -> URL
+    var contentURL: URL { get }
 
 }

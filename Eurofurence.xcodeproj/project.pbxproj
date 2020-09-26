@@ -471,6 +471,9 @@
 		CA6F75D6246956C0001FFB74 /* StubPhotoshootEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F75D5246956C0001FFB74 /* StubPhotoshootEventViewModel.swift */; };
 		CA6F75D8246956DB001FFB74 /* StubSponsorsOnlyEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F75D7246956DB001FFB74 /* StubSponsorsOnlyEventViewModel.swift */; };
 		CA6F75DA246956EE001FFB74 /* StubSuperSponsorsOnlyEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F75D9246956EE001FFB74 /* StubSuperSponsorsOnlyEventViewModel.swift */; };
+		CA724F31251F8DEB00CD5D00 /* URLBasedActivityItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA724F30251F8DEB00CD5D00 /* URLBasedActivityItem.swift */; };
+		CA724F3F251F8E8D00CD5D00 /* URLBasedActivityItemTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA724F3E251F8E8D00CD5D00 /* URLBasedActivityItemTestCase.swift */; };
+		CA724F45251FC4FD00CD5D00 /* Test Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA724F44251FC4FD00CD5D00 /* Test Assets.xcassets */; };
 		CA728437209C7DE1007D912A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CA728436209C7DE1007D912A /* Settings.bundle */; };
 		CA72843D209CF07A007D912A /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = CA72843C209CF07A007D912A /* Localizable.stringsdict */; };
 		CA728445209D00B7007D912A /* StubAnnouncementDetailComponentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA728444209D00B7007D912A /* StubAnnouncementDetailComponentFactory.swift */; };
@@ -1091,6 +1094,12 @@
 		CAF2556D251A877A008892ED /* UIAutomationTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF25567251A8774008892ED /* UIAutomationTestCase.swift */; };
 		CAF25574251D10B6008892ED /* DissolvingTitleLabelContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF25573251D10B6008892ED /* DissolvingTitleLabelContext.swift */; };
 		CAF2557E251D10CB008892ED /* DissolvingTitleContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF2557D251D10CB008892ED /* DissolvingTitleContext.swift */; };
+		CAF255C1251F84A3008892ED /* EventActivityItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF255C0251F84A3008892ED /* EventActivityItemTests.swift */; };
+		CAF255CC251F852B008892ED /* EventActivityItemSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF255CB251F852B008892ED /* EventActivityItemSource.swift */; };
+		CAF255DA251F8664008892ED /* DealerActivityItemSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF255D9251F8664008892ED /* DealerActivityItemSource.swift */; };
+		CAF255E4251F8690008892ED /* DealerActivityItemSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF255E3251F8690008892ED /* DealerActivityItemSourceTests.swift */; };
+		CAF255EE251F8801008892ED /* KnowledgeEntryActivityItemSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF255ED251F8801008892ED /* KnowledgeEntryActivityItemSource.swift */; };
+		CAF255F4251F880C008892ED /* KnowledgeEntryActivityItemSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF255F3251F880C008892ED /* KnowledgeEntryActivityItemSourceTests.swift */; };
 		CAF3C7441F9F5C550008F027 /* NewsComponentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C7431F9F5C550008F027 /* NewsComponentFactory.swift */; };
 		CAF3C7481F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C7471F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift */; };
 		CAF3C74C1F9F619C0008F027 /* NewsComponentFactoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C74B1F9F619C0008F027 /* NewsComponentFactoryImpl.swift */; };
@@ -1687,6 +1696,9 @@
 		CA6F75D5246956C0001FFB74 /* StubPhotoshootEventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubPhotoshootEventViewModel.swift; sourceTree = "<group>"; };
 		CA6F75D7246956DB001FFB74 /* StubSponsorsOnlyEventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubSponsorsOnlyEventViewModel.swift; sourceTree = "<group>"; };
 		CA6F75D9246956EE001FFB74 /* StubSuperSponsorsOnlyEventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubSuperSponsorsOnlyEventViewModel.swift; sourceTree = "<group>"; };
+		CA724F30251F8DEB00CD5D00 /* URLBasedActivityItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLBasedActivityItem.swift; sourceTree = "<group>"; };
+		CA724F3E251F8E8D00CD5D00 /* URLBasedActivityItemTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLBasedActivityItemTestCase.swift; sourceTree = "<group>"; };
+		CA724F44251FC4FD00CD5D00 /* Test Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Test Assets.xcassets"; sourceTree = "<group>"; };
 		CA728436209C7DE1007D912A /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		CA72843C209CF07A007D912A /* Localizable.stringsdict */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = Localizable.stringsdict; path = Base.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		CA728444209D00B7007D912A /* StubAnnouncementDetailComponentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubAnnouncementDetailComponentFactory.swift; sourceTree = "<group>"; };
@@ -2305,6 +2317,12 @@
 		CAF25567251A8774008892ED /* UIAutomationTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAutomationTestCase.swift; sourceTree = "<group>"; };
 		CAF25573251D10B6008892ED /* DissolvingTitleLabelContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DissolvingTitleLabelContext.swift; sourceTree = "<group>"; };
 		CAF2557D251D10CB008892ED /* DissolvingTitleContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DissolvingTitleContext.swift; sourceTree = "<group>"; };
+		CAF255C0251F84A3008892ED /* EventActivityItemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventActivityItemTests.swift; sourceTree = "<group>"; };
+		CAF255CB251F852B008892ED /* EventActivityItemSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventActivityItemSource.swift; sourceTree = "<group>"; };
+		CAF255D9251F8664008892ED /* DealerActivityItemSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerActivityItemSource.swift; sourceTree = "<group>"; };
+		CAF255E3251F8690008892ED /* DealerActivityItemSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerActivityItemSourceTests.swift; sourceTree = "<group>"; };
+		CAF255ED251F8801008892ED /* KnowledgeEntryActivityItemSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeEntryActivityItemSource.swift; sourceTree = "<group>"; };
+		CAF255F3251F880C008892ED /* KnowledgeEntryActivityItemSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeEntryActivityItemSourceTests.swift; sourceTree = "<group>"; };
 		CAF3C7431F9F5C550008F027 /* NewsComponentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsComponentFactory.swift; sourceTree = "<group>"; };
 		CAF3C7471F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingNewsModuleDelegate.swift; sourceTree = "<group>"; };
 		CAF3C74B1F9F619C0008F027 /* NewsComponentFactoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsComponentFactoryImpl.swift; sourceTree = "<group>"; };
@@ -2727,6 +2745,7 @@
 				CA39852322C7AD6D00117249 /* Remote Configuration */,
 				9ACF999B1ECA259C006FC958 /* Resources */,
 				CA38C35224680C2E00A20921 /* Scenes */,
+				CAF255CA251F851F008892ED /* Sharing */,
 			);
 			path = Eurofurence;
 			sourceTree = "<group>";
@@ -2736,12 +2755,14 @@
 			children = (
 				9ACF994E1EBE172D006FC958 /* Info.plist */,
 				78CA0D051F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift */,
+				CA724F44251FC4FD00CD5D00 /* Test Assets.xcassets */,
 				CA630BCC229F10A900754C27 /* Activity */,
 				CAF194DD24688EA9005DFBBE /* Application */,
 				CAF1983E24688FBD005DFBBE /* Application Model Adapters */,
 				CAD4F737245C2E580036ADAF /* Content Router */,
 				CAF1984124689082005DFBBE /* Controllers */,
 				CAB631FB245F233A00DBF0A0 /* Scenes */,
+				CAF255BF251F8490008892ED /* Sharing */,
 				6EF96CCD1F0EDB1300EE6134 /* Test Doubles */,
 				CAF9A94F1F558E6200628833 /* Test Utilities */,
 			);
@@ -6540,6 +6561,28 @@
 			path = "Dissolving Title";
 			sourceTree = "<group>";
 		};
+		CAF255BF251F8490008892ED /* Sharing */ = {
+			isa = PBXGroup;
+			children = (
+				CAF255E3251F8690008892ED /* DealerActivityItemSourceTests.swift */,
+				CAF255C0251F84A3008892ED /* EventActivityItemTests.swift */,
+				CAF255F3251F880C008892ED /* KnowledgeEntryActivityItemSourceTests.swift */,
+				CA724F3E251F8E8D00CD5D00 /* URLBasedActivityItemTestCase.swift */,
+			);
+			path = Sharing;
+			sourceTree = "<group>";
+		};
+		CAF255CA251F851F008892ED /* Sharing */ = {
+			isa = PBXGroup;
+			children = (
+				CAF255D9251F8664008892ED /* DealerActivityItemSource.swift */,
+				CAF255CB251F852B008892ED /* EventActivityItemSource.swift */,
+				CAF255ED251F8801008892ED /* KnowledgeEntryActivityItemSource.swift */,
+				CA724F30251F8DEB00CD5D00 /* URLBasedActivityItem.swift */,
+			);
+			path = Sharing;
+			sourceTree = "<group>";
+		};
 		CAF9A94F1F558E6200628833 /* Test Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -6828,6 +6871,7 @@
 				09CCA668D5E112B61A53B5E6 /* Pods-EurofurenceTests-settings-metadata.plist in Resources */,
 				0ED80F2096CECEDC8C602F06 /* Pods-Eurofurence-EurofurenceTests-metadata.plist in Resources */,
 				D0448F94EED4B9FB5C3B07CD /* Pods-Eurofurence-EurofurenceTests-settings-metadata.plist in Resources */,
+				CA724F45251FC4FD00CD5D00 /* Test Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7115,6 +7159,7 @@
 				CA6A8D9A20E2C678007536CD /* MapsBinder.swift in Sources */,
 				CA5EB195245F63570012C277 /* ModuleSwappingPrincipalWindowScene.swift in Sources */,
 				CA4D936C245F14CB006FA832 /* ContentWireframeDecorator.swift in Sources */,
+				CAF255EE251F8801008892ED /* KnowledgeEntryActivityItemSource.swift in Sources */,
 				CA2AA30322CA95BF00C0E1A1 /* UpdateRemoteConfigRefreshCollaboration.swift in Sources */,
 				CA02910221F4D6020007F350 /* AppDelegate+DebugWindow.swift in Sources */,
 				CA2A587120F7F369002C69B6 /* FoundationAnnouncementDateFormatter.swift in Sources */,
@@ -7297,6 +7342,7 @@
 				CA50B1AB226110B00091E425 /* EventFeedbackComponentFactory.swift in Sources */,
 				CABA43A31FD57C65009CB5B0 /* TutorialModuleBuilder.swift in Sources */,
 				CA5DCC8224C769B5001F20F8 /* EmbeddedDealerContentRoute.swift in Sources */,
+				CAF255CC251F852B008892ED /* EventActivityItemSource.swift in Sources */,
 				CA63A741245DB7E000E4B313 /* RouterConfigurator.swift in Sources */,
 				CA7EB7D51F799991002674A6 /* TutorialScene.swift in Sources */,
 				CA6A8D7D20E265B0007536CD /* MapsViewController.swift in Sources */,
@@ -7323,6 +7369,7 @@
 				CAA2889A245D6EDF0090B663 /* LoginContentRepresentation.swift in Sources */,
 				CA8240A021249A5E007E4A70 /* ReviewPromptController.swift in Sources */,
 				CA27619C20E01E01000E52AC /* CollectThemAllComponentBuilder.swift in Sources */,
+				CA724F31251F8DEB00CD5D00 /* URLBasedActivityItem.swift in Sources */,
 				CAD4F744245C36F40036ADAF /* ContentRepresentationRecipient.swift in Sources */,
 				CA36A46120D8497400EE6537 /* DealersPresenter.swift in Sources */,
 				CA6A8DE920E41DA5007536CD /* MapDetailViewModel.swift in Sources */,
@@ -7343,6 +7390,7 @@
 				CABF03B42041BC870028BD62 /* UITableView+Extensions.swift in Sources */,
 				CABA439D1FD576D0009CB5B0 /* MessagesComponentBuilder.swift in Sources */,
 				CA00AE5220D16FC000C2FBB0 /* ScheduleEventGroupViewModel.swift in Sources */,
+				CAF255DA251F8664008892ED /* DealerActivityItemSource.swift in Sources */,
 				CABA43AC1FD5DC68009CB5B0 /* LoginScene.swift in Sources */,
 				CAD04195245DA62B00B86950 /* NewsContentRepresentation.swift in Sources */,
 				CACF1E8220B2E6B400D904B5 /* EventDetailSummaryTableViewCell.swift in Sources */,
@@ -7706,6 +7754,7 @@
 				CAF1978524688EAA005DFBBE /* WhenPreparingViewModel_ForEventWithBannerButNoPoster_EventDetailViewModelFactoryShould.swift in Sources */,
 				CAF1974224688EAA005DFBBE /* StubKnowledgeGroupEntriesViewModel.swift in Sources */,
 				CA63A744245DB94F00E4B313 /* ScheduleSubrouterTests.swift in Sources */,
+				CAF255C1251F84A3008892ED /* EventActivityItemTests.swift in Sources */,
 				CA6F75D8246956DB001FFB74 /* StubSponsorsOnlyEventViewModel.swift in Sources */,
 				CAF1974A24688EAA005DFBBE /* FakeMapDetailInteractor.swift in Sources */,
 				CAF1976224688EAA005DFBBE /* CapturingAnnouncementsListViewModelDelegate.swift in Sources */,
@@ -7817,6 +7866,7 @@
 				CA5EB1BF245F703F0012C277 /* StubKnowledgeGroupEntriesComponentFactory.swift in Sources */,
 				CAF196C824688EAA005DFBBE /* CapturingMapsScene.swift in Sources */,
 				CAF1970024688EAA005DFBBE /* WhenBindingGroupFromSearchResult_SchedulePresenterShould.swift in Sources */,
+				CAF255F4251F880C008892ED /* KnowledgeEntryActivityItemSourceTests.swift in Sources */,
 				CAF196C124688EAA005DFBBE /* MapsPresenterTestBuilder.swift in Sources */,
 				CAF196E124688EAA005DFBBE /* WhenSceneUpdatesSearchQuery_SchedulePresenterShould.swift in Sources */,
 				CAF1971F24688EAA005DFBBE /* BeforeMessagesViewAppears_MessagesPresenterShould.swift in Sources */,
@@ -7993,6 +8043,7 @@
 				CAF197E524688EAA005DFBBE /* VisitsEntryFromKnowledgeListViewModel.swift in Sources */,
 				CAD4F769245C45B90036ADAF /* EventFeedbackContentRouteTests.swift in Sources */,
 				CAF1973B24688EAA005DFBBE /* WhenSceneSelectsKnowledgeEntry_KnowledgeGroupEntriesPresenterShould.swift in Sources */,
+				CAF255E4251F8690008892ED /* DealerActivityItemSourceTests.swift in Sources */,
 				CAF1980524688EAB005DFBBE /* PreloadPresenterTests.swift in Sources */,
 				CAF1983224688EAB005DFBBE /* DealersViewModelTestBuilder.swift in Sources */,
 				CAF197BD24688EAA005DFBBE /* DefaultNewsViewModelProducerTestBuilderContext.swift in Sources */,
@@ -8113,6 +8164,7 @@
 				CAF1980824688EAB005DFBBE /* CapturingPreloadInteractorDelegate.swift in Sources */,
 				CAF1981624688EAB005DFBBE /* WhenSceneSelectsSearchResult_DealersPresenterShould.swift in Sources */,
 				CAF1971B24688EAA005DFBBE /* WhenTheTutorialAppears.swift in Sources */,
+				CA724F3F251F8E8D00CD5D00 /* URLBasedActivityItemTestCase.swift in Sources */,
 				CAF1980F24688EAB005DFBBE /* WhenBindingDealerGroupHeading_DealersPresenterShould.swift in Sources */,
 				CA36A46920D84AA900EE6537 /* DealersGroupViewModel+RandomValueProviding.swift in Sources */,
 				CAF197F424688EAB005DFBBE /* CapturingDealerDetailScene.swift in Sources */,

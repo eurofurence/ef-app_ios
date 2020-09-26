@@ -106,7 +106,7 @@ public final class FakeEvent: Event {
     }
     
     public let shareableURL = URL.random
-    public func makeContentURL() -> URL {
+    public var contentURL: URL {
         return shareableURL
     }
 

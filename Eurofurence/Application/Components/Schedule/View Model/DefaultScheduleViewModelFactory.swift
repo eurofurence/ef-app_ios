@@ -338,8 +338,7 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory, EventsSe
         }
         
         func share(_ sender: Any) {
-            let eventURL = event.makeContentURL()
-            shareService.share(eventURL, sender: sender)
+            shareService.share(EventActivityItemSource(event: event), sender: sender)
         }
         
         func eventDidBecomeFavourite(_ event: Event) {

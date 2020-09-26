@@ -55,6 +55,10 @@ struct DealerImpl: Dealer {
         self.isAfterDark = characteristics.isAfterDark
     }
     
+    var contentURL: URL {
+        return shareableURLFactory.makeURL(for: identifier)
+    }
+    
     func openWebsite() {
         guard let externalLink = characteristics.links?.first(where: { $0.fragmentType == .WebExternal }) else { return }
         guard let url = URL(string: externalLink.target) else { return }
@@ -121,10 +125,6 @@ struct DealerImpl: Dealer {
         }
         
         completionHandler(iconData)
-    }
-    
-    func makeContentURL() -> URL {
-        return shareableURLFactory.makeURL(for: identifier)
     }
     
     private func fetchMapData() -> (map: MapCharacteristics, entry: MapCharacteristics.Entry)? {

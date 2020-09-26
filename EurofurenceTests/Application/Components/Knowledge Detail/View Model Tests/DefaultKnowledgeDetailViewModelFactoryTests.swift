@@ -62,7 +62,7 @@ class DefaultKnowledgeDetailViewModelFactoryTests: XCTestCase {
         let sender = self
         viewModel?.shareKnowledgeEntry(sender)
         
-        XCTAssertEqual(entry.contentURL, shareService.sharedItem as? URL)
+        XCTAssertEqual(KnowledgeEntryActivityItemSource(knowledgeEntry: entry), shareService.sharedItem as? KnowledgeEntryActivityItemSource)
         XCTAssertTrue(sender === (shareService.sharedItemSender as AnyObject))
     }
 

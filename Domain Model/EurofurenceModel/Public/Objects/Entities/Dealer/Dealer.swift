@@ -15,13 +15,13 @@ public protocol Dealer {
 
     var isAfterDark: Bool { get }
     
+    var contentURL: URL { get }
+    
     func openWebsite()
     func openTwitter()
     func openTelegram()
     
     func fetchExtendedDealerData(completionHandler: @escaping (ExtendedDealerData) -> Void)
     func fetchIconPNGData(completionHandler: @escaping (Data?) -> Void)
-    
-    func makeContentURL() -> URL
 
 }

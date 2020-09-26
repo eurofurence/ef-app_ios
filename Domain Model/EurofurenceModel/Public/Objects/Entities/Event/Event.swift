@@ -24,6 +24,7 @@ public protocol Event {
     var isMainStage: Bool { get }
     var isPhotoshoot: Bool { get }
     var isAcceptingFeedback: Bool { get }
+    var contentURL: URL { get }
 
     func add(_ observer: EventObserver)
     func remove(_ observer: EventObserver)
@@ -31,6 +32,5 @@ public protocol Event {
     func favourite()
     func unfavourite()
     func prepareFeedback() -> EventFeedback
-    func makeContentURL() -> URL
 
 }

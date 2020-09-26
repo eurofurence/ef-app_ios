@@ -255,7 +255,7 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailViewModelFactoryShould:
         viewModel?.shareDealer(self)
         
         XCTAssertTrue(sender === (context.shareService.sharedItemSender as AnyObject))
-        XCTAssertEqual(context.dealer.shareableURL, (context.shareService.sharedItem as? URL))
+        XCTAssertEqual(DealerActivityItemSource(dealer: context.dealer), context.shareService.sharedItem as? DealerActivityItemSource)
     }
     
     private func visitViewModel(dealerData: ExtendedDealerData = .random) -> CapturingDealerDetailViewModelVisitor {

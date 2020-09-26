@@ -23,7 +23,7 @@ public struct DonateIntentDealerInteractionRecorder: DealerInteractionRecorder {
         viewDealerIntentDonor.donate(intentDefinition)
         
         let activityTitle = String.viewDealer(named: entity.preferredName)
-        let url = entity.makeContentURL()
+        let url = entity.contentURL
         let activity = activityFactory.makeActivity(type: "org.eurofurence.activity.view-dealer", title: activityTitle, url: url)
         activity.markEligibleForPublicIndexing()
         
