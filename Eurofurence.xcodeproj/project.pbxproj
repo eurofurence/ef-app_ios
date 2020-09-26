@@ -473,6 +473,7 @@
 		CA6F75DA246956EE001FFB74 /* StubSuperSponsorsOnlyEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F75D9246956EE001FFB74 /* StubSuperSponsorsOnlyEventViewModel.swift */; };
 		CA724F31251F8DEB00CD5D00 /* URLBasedActivityItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA724F30251F8DEB00CD5D00 /* URLBasedActivityItem.swift */; };
 		CA724F3F251F8E8D00CD5D00 /* URLBasedActivityItemTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA724F3E251F8E8D00CD5D00 /* URLBasedActivityItemTestCase.swift */; };
+		CA724F45251FC4FD00CD5D00 /* Test Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA724F44251FC4FD00CD5D00 /* Test Assets.xcassets */; };
 		CA728437209C7DE1007D912A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CA728436209C7DE1007D912A /* Settings.bundle */; };
 		CA72843D209CF07A007D912A /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = CA72843C209CF07A007D912A /* Localizable.stringsdict */; };
 		CA728445209D00B7007D912A /* StubAnnouncementDetailComponentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA728444209D00B7007D912A /* StubAnnouncementDetailComponentFactory.swift */; };
@@ -1697,6 +1698,7 @@
 		CA6F75D9246956EE001FFB74 /* StubSuperSponsorsOnlyEventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubSuperSponsorsOnlyEventViewModel.swift; sourceTree = "<group>"; };
 		CA724F30251F8DEB00CD5D00 /* URLBasedActivityItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLBasedActivityItem.swift; sourceTree = "<group>"; };
 		CA724F3E251F8E8D00CD5D00 /* URLBasedActivityItemTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLBasedActivityItemTestCase.swift; sourceTree = "<group>"; };
+		CA724F44251FC4FD00CD5D00 /* Test Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Test Assets.xcassets"; sourceTree = "<group>"; };
 		CA728436209C7DE1007D912A /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		CA72843C209CF07A007D912A /* Localizable.stringsdict */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = Localizable.stringsdict; path = Base.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		CA728444209D00B7007D912A /* StubAnnouncementDetailComponentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubAnnouncementDetailComponentFactory.swift; sourceTree = "<group>"; };
@@ -2753,6 +2755,7 @@
 			children = (
 				9ACF994E1EBE172D006FC958 /* Info.plist */,
 				78CA0D051F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift */,
+				CA724F44251FC4FD00CD5D00 /* Test Assets.xcassets */,
 				CA630BCC229F10A900754C27 /* Activity */,
 				CAF194DD24688EA9005DFBBE /* Application */,
 				CAF1983E24688FBD005DFBBE /* Application Model Adapters */,
@@ -6868,6 +6871,7 @@
 				09CCA668D5E112B61A53B5E6 /* Pods-EurofurenceTests-settings-metadata.plist in Resources */,
 				0ED80F2096CECEDC8C602F06 /* Pods-Eurofurence-EurofurenceTests-metadata.plist in Resources */,
 				D0448F94EED4B9FB5C3B07CD /* Pods-Eurofurence-EurofurenceTests-settings-metadata.plist in Resources */,
+				CA724F45251FC4FD00CD5D00 /* Test Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

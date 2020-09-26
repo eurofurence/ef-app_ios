@@ -19,6 +19,10 @@ public class EventActivityItemSource: URLBasedActivityItem {
     @available(iOS 13.0, *)
     override func supplementLinkMetadata(_ metadata: LPLinkMetadata) {
         metadata.title = event.title
+        
+        if let bannerData = event.bannerGraphicPNGData, let bannerImage = UIImage(data: bannerData) {
+            metadata.imageProvider = NSItemProvider(object: bannerImage)
+        }
     }
     
 }

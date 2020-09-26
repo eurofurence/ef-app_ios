@@ -17,6 +17,11 @@ class URLBasedActivityItemTestCase: XCTestCase {
         return URLBasedActivityItem(url: url)
     }
     
+    @available(iOS 13.0, *)
+    func linkMetadata(from activityItem: UIActivityItemSource) -> LPLinkMetadata? {
+        activityItem.activityViewControllerLinkMetadata?(activityViewController)
+    }
+    
     func testUsesURLForPlaceholderItem() throws {
         activityItem = try makeActivityItem()
         let expected = activityItem.url
@@ -38,7 +43,7 @@ class URLBasedActivityItemTestCase: XCTestCase {
     @available(iOS 13.0, *)
     func testPreparingLinkMetadata() throws {
         activityItem = try makeActivityItem()
-        let linkMetadata = try XCTUnwrap(activityItem.activityViewControllerLinkMetadata(activityViewController))
+        let linkMetadata = try XCTUnwrap(self.linkMetadata(from: activityItem))
         
         assertAgainstLinkMetadata(linkMetadata, activityItem: activityItem)
     }
