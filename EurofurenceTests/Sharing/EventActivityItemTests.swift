@@ -14,5 +14,25 @@ class EventActivityItemTests: XCTestCase {
         XCTAssertEqual(second, second)
         XCTAssertNotEqual(first, second)
     }
+    
+    func testPlaceholderItemUsesURL() {
+        let event = FakeEvent.random
+        let activityItem = EventActivityItemSource(event: event)
+        let expected = event.makeContentURL()
+        let activityController = UIActivityViewController(activityItems: [], applicationActivities: nil)
+        let actual = activityItem.activityViewControllerPlaceholderItem(activityController)
+        
+        XCTAssertEqual(expected, actual as? URL)
+    }
+    
+    func testItemUsesURL() {
+        let event = FakeEvent.random
+        let activityItem = EventActivityItemSource(event: event)
+        let expected = event.makeContentURL()
+        let activityController = UIActivityViewController(activityItems: [], applicationActivities: nil)
+        let actual = activityItem.activityViewController(activityController, itemForActivityType: nil)
+        
+        XCTAssertEqual(expected, actual as? URL)
+    }
 
 }
