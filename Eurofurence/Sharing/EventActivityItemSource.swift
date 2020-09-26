@@ -1,4 +1,5 @@
 import EurofurenceModel
+import LinkPresentation
 import UIKit
 
 public class EventActivityItemSource: URLBasedActivityItem {
@@ -13,6 +14,11 @@ public class EventActivityItemSource: URLBasedActivityItem {
     override public func isEqual(_ object: Any?) -> Bool {
         guard let other = object as? EventActivityItemSource else { return false }
         return event.identifier == other.event.identifier
+    }
+    
+    @available(iOS 13.0, *)
+    override func supplementLinkMetadata(_ metadata: LPLinkMetadata) {
+        metadata.title = event.title
     }
     
 }

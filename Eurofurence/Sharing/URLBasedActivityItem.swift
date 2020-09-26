@@ -21,8 +21,14 @@ public class URLBasedActivityItem: NSObject, UIActivityItemSource {
     public func activityViewControllerLinkMetadata(_ activityViewController: UIActivityViewController) -> LPLinkMetadata? {
         let metadata = LPLinkMetadata()
         metadata.url = url
+        supplementLinkMetadata(metadata)
         
         return metadata
+    }
+    
+    @available(iOS 13.0, *)
+    func supplementLinkMetadata(_ metadata: LPLinkMetadata) {
+        
     }
     
 }

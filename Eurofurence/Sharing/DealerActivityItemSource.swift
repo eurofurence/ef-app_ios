@@ -1,4 +1,5 @@
 import EurofurenceModel
+import LinkPresentation
 import UIKit
 
 public class DealerActivityItemSource: URLBasedActivityItem {
@@ -13,6 +14,11 @@ public class DealerActivityItemSource: URLBasedActivityItem {
     override public func isEqual(_ object: Any?) -> Bool {
         guard let other = object as? DealerActivityItemSource else { return false }
         return dealer.identifier == other.dealer.identifier
+    }
+    
+    @available(iOS 13.0, *)
+    override func supplementLinkMetadata(_ metadata: LPLinkMetadata) {
+        metadata.title = dealer.preferredName
     }
     
 }

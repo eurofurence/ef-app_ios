@@ -1,4 +1,5 @@
 import EurofurenceModel
+import LinkPresentation
 import UIKit
 
 public class KnowledgeEntryActivityItemSource: URLBasedActivityItem {
@@ -13,6 +14,11 @@ public class KnowledgeEntryActivityItemSource: URLBasedActivityItem {
     override public func isEqual(_ object: Any?) -> Bool {
         guard let other = object as? KnowledgeEntryActivityItemSource else { return false }
         return knowledgeEntry.identifier == other.knowledgeEntry.identifier
+    }
+    
+    @available(iOS 13.0, *)
+    override func supplementLinkMetadata(_ metadata: LPLinkMetadata) {
+        metadata.title = knowledgeEntry.title
     }
     
 }

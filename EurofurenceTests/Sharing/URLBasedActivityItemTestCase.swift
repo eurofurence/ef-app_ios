@@ -1,9 +1,11 @@
 import Eurofurence
+import LinkPresentation
 import XCTest
 
 class URLBasedActivityItemTestCase: XCTestCase {
     
-    private(set) var activityViewController: UIActivityViewController!
+    private var activityViewController: UIActivityViewController!
+    private var activityItem: URLBasedActivityItem!
     
     override func setUp() {
         super.setUp()
@@ -16,7 +18,7 @@ class URLBasedActivityItemTestCase: XCTestCase {
     }
     
     func testUsesURLForPlaceholderItem() throws {
-        let activityItem = try makeActivityItem()
+        activityItem = try makeActivityItem()
         let expected = activityItem.url
         let activityController = UIActivityViewController(activityItems: [], applicationActivities: nil)
         let actual = activityItem.activityViewController(activityController, itemForActivityType: nil)
@@ -25,7 +27,7 @@ class URLBasedActivityItemTestCase: XCTestCase {
     }
     
     func testItemUsesURL() throws {
-        let activityItem = try makeActivityItem()
+        activityItem = try makeActivityItem()
         let expected = activityItem.url
         let activityController = UIActivityViewController(activityItems: [], applicationActivities: nil)
         let actual = activityItem.activityViewController(activityController, itemForActivityType: nil)
@@ -35,10 +37,15 @@ class URLBasedActivityItemTestCase: XCTestCase {
     
     @available(iOS 13.0, *)
     func testPreparingLinkMetadata() throws {
-        let activityItem = try makeActivityItem()
+        activityItem = try makeActivityItem()
         let linkMetadata = try XCTUnwrap(activityItem.activityViewControllerLinkMetadata(activityViewController))
         
-        XCTAssertEqual(activityItem.url, linkMetadata.url)
+        assertAgainstLinkMetadata(linkMetadata, activityItem: activityItem)
+    }
+    
+    @available(iOS 13.0, *)
+    func assertAgainstLinkMetadata(_ metadata: LPLinkMetadata, activityItem: URLBasedActivityItem) {
+        XCTAssertEqual(activityItem.url, metadata.url)
     }
 
 }
