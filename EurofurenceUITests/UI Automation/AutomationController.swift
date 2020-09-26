@@ -4,6 +4,10 @@ struct AutomationController {
     
     let app = XCUIApplication()
     
+    var isTablet: Bool {
+        UIDevice.current.userInterfaceIdiom == .pad
+    }
+    
 }
 
 // MARK: - Bootstrap

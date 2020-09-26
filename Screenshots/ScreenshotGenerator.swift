@@ -17,45 +17,37 @@ class ScreenshotGenerator: XCTestCase {
     }
     
     private func enforceCorrectDeviceOrientation() {
-        let isTablet = UIDevice.current.userInterfaceIdiom == .pad
-        
         let device = XCUIDevice.shared
-        if isTablet {
+        if automationController.isTablet {
             device.orientation = .landscapeLeft
         } else {
             device.orientation = .portrait
-        }
-    }
-
-    private func hideKeyboard() {
-        let hideKeyboardButton = app.buttons["Hide keyboard"]
-        if hideKeyboardButton.exists {
-            hideKeyboardButton.tap()
         }
     }
     
     func testScreenshots() {
         automationController.transitionToContent()
         
+        if automationController.isTablet {
+            takeTabletScreenshots()
+        } else {
+            takePhoneScreenshots()
+        }
+    }
+    
+    private func takePhoneScreenshots() {
         snapshot("01_News")
 
         automationController.tapTab(.schedule)
+        
         app.tables.firstMatch.swipeDown()
         
         snapshot("02_Schedule")
         
-        let searchField = app.searchFields["Search"]
-        searchField.tap()
-        searchField.typeText("comic")
-        app.tables["Search results"].staticTexts["ECC Room 4"].tap()
-        
-        if app.tables.buttons["Add to Favourites"].exists {
-            app.tables.buttons["Add to Favourites"].tap()
-        }
+        app.tables.staticTexts["Artists' Lounge"].tap()
         
         snapshot("03_EventDetail")
         
-        hideKeyboard()
         automationController.tapTab(.dealers)
         
         snapshot("04_Dealers")
@@ -67,6 +59,30 @@ class ScreenshotGenerator: XCTestCase {
         automationController.tapTab(.information)
         
         snapshot("06_Information")
+    }
+    
+    private func takeTabletScreenshots() {
+        snapshot("01_News")
+
+        automationController.tapTab(.schedule)
+        
+        app.tables.firstMatch.swipeDown()
+        
+        app.tables.staticTexts["Artists' Lounge"].tap()
+        
+        snapshot("02_Schedule")
+        
+        automationController.tapTab(.dealers)
+        
+        app.tables.staticTexts["Eurofurence Shop"].tap()
+        
+        snapshot("03_Dealers")
+        
+        automationController.tapTab(.information)
+        
+        app.tables.staticTexts["Guest of Honor"].tap()
+        
+        snapshot("04_Information")
     }
 
 }
