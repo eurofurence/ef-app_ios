@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,24 +19,16 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dHW-vm-Gc3">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6mj-pw-eS0" customClass="NavigationBarViewExtensionContainer" customModule="Eurofurence" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="3wZ-bx-MNt"/>
                         <constraints>
                             <constraint firstItem="dHW-vm-Gc3" firstAttribute="top" secondItem="6ea-Oq-lts" secondAttribute="top" id="Bgh-Fb-rdp"/>
-                            <constraint firstItem="3wZ-bx-MNt" firstAttribute="trailing" secondItem="6mj-pw-eS0" secondAttribute="trailing" id="JAU-Yg-8wD"/>
                             <constraint firstItem="dHW-vm-Gc3" firstAttribute="trailing" secondItem="6ea-Oq-lts" secondAttribute="trailing" id="SvV-kT-fLY"/>
                             <constraint firstItem="3wZ-bx-MNt" firstAttribute="bottom" secondItem="dHW-vm-Gc3" secondAttribute="bottom" id="Tdj-Tt-7gL"/>
                             <constraint firstItem="dHW-vm-Gc3" firstAttribute="leading" secondItem="6ea-Oq-lts" secondAttribute="leading" id="Un9-UV-ycv"/>
-                            <constraint firstItem="6mj-pw-eS0" firstAttribute="leading" secondItem="3wZ-bx-MNt" secondAttribute="leading" id="V3N-kl-xnC"/>
-                            <constraint firstItem="3wZ-bx-MNt" firstAttribute="top" secondItem="6mj-pw-eS0" secondAttribute="bottom" id="lNw-Tf-NUa"/>
-                            <constraint firstItem="6mj-pw-eS0" firstAttribute="top" secondItem="6ea-Oq-lts" secondAttribute="top" id="m8O-vV-5su"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="3wZ-bx-MNt"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <tabBarItem key="tabBarItem" title="Item" image="dealers" id="PPC-cq-ywk"/>
@@ -56,7 +49,6 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="navigationBarExtension" destination="6mj-pw-eS0" id="MEY-1A-Lj6"/>
                         <outlet property="tableView" destination="dHW-vm-Gc3" id="Syc-pg-Xns"/>
                     </connections>
                 </viewController>
@@ -87,7 +79,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="ZrY-Ls-9Ut">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="DealerCategoryTableViewCell" editingAccessoryType="checkmark" textLabel="Vz5-Jk-iyu" style="IBUITableViewCellStyleDefault" id="nLA-i8-FW5" customClass="DealerCategoryTableViewCell" customModule="Eurofurence" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="375" height="43.5"/>
@@ -132,7 +124,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="bQR-C7-7g0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <connections>
                             <outlet property="dataSource" destination="CFe-9I-8ah" id="Um9-6N-F6H"/>
                             <outlet property="delegate" destination="CFe-9I-8ah" id="D9U-xW-IdH"/>
@@ -147,5 +139,11 @@
     <resources>
         <image name="Filter" width="25" height="25"/>
         <image name="dealers" width="25" height="25"/>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

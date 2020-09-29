@@ -69,6 +69,7 @@ struct Theme {
             navigationBar.compactAppearance = appearance
             navigationBar.scrollEdgeAppearance = appearance
         } else {
+            navigationBar.backgroundColor = .navigationBar
             navigationBar.largeTitleTextAttributes = whiteTextAttributes
         }
     }
