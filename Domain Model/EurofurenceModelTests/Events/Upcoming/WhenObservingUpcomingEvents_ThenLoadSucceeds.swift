@@ -19,18 +19,13 @@ class WhenObservingUpcomingEvents_ThenLoadSucceeds: XCTestCase {
     func testTheObserverIsNotProvidedWithEventsThatHaveBegan() {
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let randomEvent = syncResponse.events.changed.randomElement().element
-        let simulatedTime = randomEvent.startDateTime.addingTimeInterval(-1)
+        let simulatedTime = randomEvent.startDateTime.addingTimeInterval(1)
         let context = EurofurenceSessionTestBuilder().with(simulatedTime).build()
         let observer = CapturingEventsServiceObserver()
         context.eventsService.add(observer)
         context.performSuccessfulSync(response: syncResponse)
-
-        let expectedEvents = syncResponse.events.changed.filter { (event) -> Bool in
-            return event.startDateTime > simulatedTime
-        }
-
-        EventAssertion(context: context, modelCharacteristics: syncResponse)
-            .assertEvents(observer.upcomingEvents, characterisedBy: expectedEvents)
+        
+        XCTAssertFalse(observer.upcomingEvents.contains(where: { $0.identifier.rawValue == randomEvent.identifier }))
     }
 
     func testTheObserverIsNotProvidedWithEventsTooFarIntoTheFuture() {

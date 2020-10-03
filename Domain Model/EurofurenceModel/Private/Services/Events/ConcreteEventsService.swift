@@ -160,9 +160,15 @@ class ConcreteEventsService: ClockDelegate, EventsService {
     private func refreshUpcomingEvents() {
         let now = clock.currentDate
         let range = DateInterval(start: now, end: now.addingTimeInterval(timeIntervalForUpcomingEventsSinceNow))
-        upcomingEvents = eventModels.filter { (event) -> Bool in
+        upcomingEvents = eventModels.filter({ (event) -> Bool in
             return event.startDate > now && range.contains(event.startDate)
-        }
+        }).sorted(by: { (first, second) -> Bool in
+            if first.startDate == second.startDate {
+                return first.title.localizedCompare(second.title) == .orderedAscending
+            } else {
+                return first.startDate < second.startDate
+            }
+        })
     }
 
     private func updateObserversWithLatestScheduleInformation() {
