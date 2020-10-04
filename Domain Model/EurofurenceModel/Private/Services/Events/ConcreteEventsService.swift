@@ -152,9 +152,9 @@ class ConcreteEventsService: ClockDelegate, EventsService {
 
     private func refreshRunningEvents() {
         let now = clock.currentDate
-        runningEvents = eventModels.filter { (event) -> Bool in
+        runningEvents = eventModels.filter({ (event) -> Bool in
             event.isRunning(currentTime: now)
-        }.sorted()
+        }).sorted()
     }
 
     private func refreshUpcomingEvents() {

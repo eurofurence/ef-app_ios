@@ -173,11 +173,7 @@ extension EventImpl {
 extension EventImpl: Comparable {
     
     static func < (lhs: EventImpl, rhs: EventImpl) -> Bool {
-        if lhs.startDate == rhs.startDate {
-            return lhs.title.localizedCompare(rhs.title) == .orderedAscending
-        } else {
-            return lhs.startDate < rhs.startDate
-        }
+        lhs.title.localizedCompare(rhs.title) == .orderedAscending
     }
     
     static func == (lhs: EventImpl, rhs: EventImpl) -> Bool {
