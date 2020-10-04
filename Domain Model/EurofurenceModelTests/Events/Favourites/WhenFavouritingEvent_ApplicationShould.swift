@@ -56,7 +56,7 @@ class WhenFavouritingEvent_ApplicationShould: XCTestCase {
         XCTAssertEqual(observer.eventFavouriteState, .favourite)
     }
 
-    func testOrganiseTheFavouritesInStartTimeOrder() {
+    func testOrganiseTheFavouritesInTitleOrder() {
         let identifier = EventIdentifier(events.randomElement().element.identifier)
         let storedFavourites = events.map({ EventIdentifier($0.identifier) })
         storedFavourites.filter({ $0 != identifier }).compactMap(context.eventsService.fetchEvent).forEach { (event) in
@@ -67,7 +67,7 @@ class WhenFavouritingEvent_ApplicationShould: XCTestCase {
         context.eventsService.add(observer)
         let event = context.eventsService.fetchEvent(identifier: identifier)
         event?.favourite()
-        let expected = events.sorted(by: { $0.startDateTime < $1.startDateTime }).map({ EventIdentifier($0.identifier) })
+        let expected = events.sorted(by: { $0.title < $1.title }).map({ EventIdentifier($0.identifier) })
 
         XCTAssertEqual(expected, observer.capturedFavouriteEventIdentifiers)
     }

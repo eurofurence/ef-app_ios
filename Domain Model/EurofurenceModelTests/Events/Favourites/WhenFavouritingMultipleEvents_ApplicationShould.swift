@@ -9,9 +9,14 @@ class WhenFavouritingMultipleEvents_ApplicationShould: XCTestCase {
         events.forEach({ $0.favourite() })
     }
 
-    func testTellEventsObserversTheEventsAreNowFavourited() {
-        let response = ModelCharacteristics.randomWithoutDeletions
-        let events = response.events.changed
+    func testTellEventsObserversTheEventsAreNowFavouritedInTitleOrder() {
+        var response = ModelCharacteristics.randomWithoutDeletions
+        var firstEvent = response.events.changed[0]
+        firstEvent.title = "Z"
+        var secondEvent = response.events.changed[1]
+        secondEvent.title = "A"
+        let events = [firstEvent, secondEvent]
+        response.events = .init(changed: events, deleted: [], removeAllBeforeInsert: false)
         let dataStore = InMemoryDataStore(response: response)
 
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
@@ -19,8 +24,10 @@ class WhenFavouritingMultipleEvents_ApplicationShould: XCTestCase {
         let observer = CapturingEventsServiceObserver()
         context.eventsService.add(observer)
         favouriteEvents(identifiers, service: context.eventsService)
+        
+        let expected = [secondEvent.identifier, firstEvent.identifier].map(EventIdentifier.init)
 
-        XCTAssertTrue(identifiers.contains(elementsFrom: observer.capturedFavouriteEventIdentifiers))
+        XCTAssertEqual(expected, observer.capturedFavouriteEventIdentifiers)
     }
 
     func testTellEventsObserversWhenOnlyOneEventHasBeenUnfavourited() {
@@ -39,7 +46,7 @@ class WhenFavouritingMultipleEvents_ApplicationShould: XCTestCase {
         var expected = identifiers
         expected.remove(at: randomIdentifier.index)
 
-        XCTAssertTrue(expected.contains(elementsFrom: observer.capturedFavouriteEventIdentifiers))
+        XCTAssertEqual(Set(expected), Set(observer.capturedFavouriteEventIdentifiers))
     }
 
     func testSortTheFavouriteIdentifiersByEventStartTime() {
@@ -58,7 +65,7 @@ class WhenFavouritingMultipleEvents_ApplicationShould: XCTestCase {
 
         let expected = events.sorted(by: { $0.startDateTime < $1.startDateTime }).map({ EventIdentifier($0.identifier) })
 
-        XCTAssertTrue(expected.contains(elementsFrom: observer.capturedFavouriteEventIdentifiers))
+        XCTAssertEqual(Set(expected), Set(observer.capturedFavouriteEventIdentifiers))
     }
 
 }

@@ -19,7 +19,7 @@ class WhenLaunchingApplicationWithPreexistingFavourites: XCTestCase {
         XCTAssertTrue(expected.contains(elementsFrom: observer.capturedFavouriteEventIdentifiers))
     }
 
-    func testTheFavouritesAreSortedByEventStartTime() {
+    func testTheFavouritesAreSortedByTitle() {
         let response = ModelCharacteristics.randomWithoutDeletions
         let events = response.events.changed
         let dataStore = InMemoryDataStore(response: response)
@@ -31,7 +31,7 @@ class WhenLaunchingApplicationWithPreexistingFavourites: XCTestCase {
         let observer = CapturingEventsServiceObserver()
         context.eventsService.add(observer)
 
-        let expected = events.sorted(by: { $0.startDateTime < $1.startDateTime }).map({ EventIdentifier($0.identifier) })
+        let expected = events.sorted(by: { $0.title < $1.title }).map({ EventIdentifier($0.identifier) })
 
         XCTAssertEqual(expected, observer.capturedFavouriteEventIdentifiers)
     }

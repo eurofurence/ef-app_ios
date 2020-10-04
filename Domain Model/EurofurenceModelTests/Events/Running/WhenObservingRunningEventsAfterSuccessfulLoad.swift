@@ -13,12 +13,13 @@ class WhenObservingRunningEventsAfterSuccessfulLoad: XCTestCase {
         let observer = CapturingEventsServiceObserver()
         context.eventsService.add(observer)
 
-        let expectedEvents = syncResponse.events.changed.filter { (event) -> Bool in
+        let expectedEventIdentifiers = syncResponse.events.changed.filter { (event) -> Bool in
             return simulatedTime >= event.startDateTime && simulatedTime < event.endDateTime
-        }
+        }.map(\.identifier)
+        
+        let actualEventIdentifiers = observer.runningEvents.map(\.identifier.rawValue)
 
-        EventAssertion(context: context, modelCharacteristics: syncResponse)
-            .assertEvents(observer.runningEvents, characterisedBy: expectedEvents)
+        XCTAssertEqual(Set(expectedEventIdentifiers), Set(actualEventIdentifiers))
     }
 
     func testEventsThatHaveNotStartedAreNotProvidedToTheObserver() {

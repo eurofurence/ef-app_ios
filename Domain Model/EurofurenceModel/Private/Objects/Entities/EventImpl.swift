@@ -153,3 +153,31 @@ class EventImpl: Event {
     }
 
 }
+
+// MARK: - Filtering
+
+extension EventImpl {
+    
+    func isRunning(currentTime: Date) -> Bool {
+        DateInterval(start: startDate, end: endDate).contains(currentTime)
+    }
+    
+    func isUpcoming(upcomingEventInterval: DateInterval) -> Bool {
+        startDate > upcomingEventInterval.start && upcomingEventInterval.contains(startDate)
+    }
+    
+}
+
+// MARK: - Sorting
+
+extension EventImpl: Comparable {
+    
+    static func < (lhs: EventImpl, rhs: EventImpl) -> Bool {
+        lhs.title.localizedCompare(rhs.title) == .orderedAscending
+    }
+    
+    static func == (lhs: EventImpl, rhs: EventImpl) -> Bool {
+        lhs.identifier == rhs.identifier
+    }
+    
+}

@@ -21,8 +21,7 @@ class ConcreteEventsService: ClockDelegate, EventsService {
 
         func consume(event: DomainEvent.FavouriteEvent) {
             let identifier = event.identifier
-            service.persistFavouritedEvent(identifier: identifier)
-            service.favouriteEventIdentifiers.append(identifier)
+            service.favouriteEvent(identifier: identifier)
         }
 
     }
@@ -37,17 +36,21 @@ class ConcreteEventsService: ClockDelegate, EventsService {
 
         func consume(event: DomainEvent.UnfavouriteEvent) {
             let identifier = event.identifier
-
-            service.dataStore.performTransaction { (transaction) in
-                transaction.deleteFavouriteEventIdentifier(identifier)
-            }
-
-            service.favouriteEventIdentifiers.firstIndex(of: identifier).let({ service.favouriteEventIdentifiers.remove(at: $0) })
-
-            let event = EventUnfavouritedEvent(identifier: identifier)
-            service.eventBus.post(event)
+            service.unfavouriteEvent(identifier: identifier)
         }
 
+    }
+    
+    private func unfavouriteEvent(identifier: EventIdentifier) {
+        dataStore.performTransaction { (transaction) in
+            transaction.deleteFavouriteEventIdentifier(identifier)
+        }
+
+        favouriteEventIdentifiers.firstIndex(of: identifier).let({ favouriteEventIdentifiers.remove(at: $0) })
+        provideFavouritesInformationToObservers()
+
+        let event = EventUnfavouritedEvent(identifier: identifier)
+        eventBus.post(event)
     }
 
     // MARK: Properties
@@ -76,18 +79,7 @@ class ConcreteEventsService: ClockDelegate, EventsService {
 
     private(set) var dayModels = [Day]()
 
-    private(set) var favouriteEventIdentifiers = [EventIdentifier]() {
-        didSet {
-            favouriteEventIdentifiers.sort { (first, second) -> Bool in
-                guard let firstEvent = eventModels.first(where: { $0.identifier == first }) else { return false }
-                guard let secondEvent = eventModels.first(where: { $0.identifier == second }) else { return false }
-
-                return firstEvent.startDate < secondEvent.startDate
-            }
-
-            provideFavouritesInformationToObservers()
-        }
-    }
+    private(set) var favouriteEventIdentifiers = [EventIdentifier]()
 
     // MARK: Initialization
 
@@ -108,9 +100,18 @@ class ConcreteEventsService: ClockDelegate, EventsService {
         eventBus.subscribe(consumer: FavouriteEventHandler(service: self))
         eventBus.subscribe(consumer: UnfavouriteEventHandler(service: self))
 
-        reconstituteEventsFromDataStore()
         reconstituteFavouritesFromDataStore()
+        reconstituteEventsFromDataStore()
+        sortFavourites()
+        
         clock.setDelegate(self)
+    }
+    
+    private func sortFavourites() {
+        favouriteEventIdentifiers = eventModels
+            .filter({ favouriteEventIdentifiers.contains($0.identifier) })
+            .sorted()
+            .map(\.identifier)
     }
 
     func clockDidTick(to time: Date) {
@@ -152,17 +153,17 @@ class ConcreteEventsService: ClockDelegate, EventsService {
 
     private func refreshRunningEvents() {
         let now = clock.currentDate
-        runningEvents = eventModels.filter { (event) -> Bool in
-            return DateInterval(start: event.startDate, end: event.endDate).contains(now)
-        }
+        runningEvents = eventModels.filter({ (event) -> Bool in
+            event.isRunning(currentTime: now)
+        }).sorted()
     }
 
     private func refreshUpcomingEvents() {
         let now = clock.currentDate
         let range = DateInterval(start: now, end: now.addingTimeInterval(timeIntervalForUpcomingEventsSinceNow))
-        upcomingEvents = eventModels.filter { (event) -> Bool in
-            return event.startDate > now && range.contains(event.startDate)
-        }
+        upcomingEvents = eventModels.filter({ (event) -> Bool in
+            event.isUpcoming(upcomingEventInterval: range)
+        }).sorted()
     }
 
     private func updateObserversWithLatestScheduleInformation() {
@@ -222,7 +223,6 @@ class ConcreteEventsService: ClockDelegate, EventsService {
         }()
 
         let eventIdentifier = EventIdentifier(event.identifier)
-        let favouriteEventIdentifiers = dataStore.fetchFavouriteEventIdentifiers().defaultingTo([])
 
         return EventImpl(eventBus: eventBus,
                          imageCache: imageCache,
@@ -263,10 +263,14 @@ class ConcreteEventsService: ClockDelegate, EventsService {
         return Day(date: model.date)
     }
 
-    private func persistFavouritedEvent(identifier: EventIdentifier) {
+    private func favouriteEvent(identifier: EventIdentifier) {
         dataStore.performTransaction { (transaction) in
             transaction.saveFavouriteEventIdentifier(identifier)
         }
+        
+        favouriteEventIdentifiers.append(identifier)
+        sortFavourites()
+        provideFavouritesInformationToObservers()
     }
 
 }
