@@ -154,7 +154,13 @@ class ConcreteEventsService: ClockDelegate, EventsService {
         let now = clock.currentDate
         runningEvents = eventModels.filter { (event) -> Bool in
             return DateInterval(start: event.startDate, end: event.endDate).contains(now)
-        }
+        }.sorted(by: { (first, second) -> Bool in
+            if first.startDate == second.startDate {
+                return first.title.localizedCompare(second.title) == .orderedAscending
+            } else {
+                return first.startDate < second.startDate
+            }
+        })
     }
 
     private func refreshUpcomingEvents() {
