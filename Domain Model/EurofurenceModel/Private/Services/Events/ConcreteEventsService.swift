@@ -211,50 +211,25 @@ class ConcreteEventsService: ClockDelegate, EventsService {
         guard let track = tracks.first(where: { $0.identifier == event.trackIdentifier }) else { return nil }
         guard let day = days.first(where: { $0.identifier == event.dayIdentifier }) else { return nil }
 
-        let tags = event.tags
-        let containsTag: (String) -> Bool = { tags?.contains($0) ?? false }
-
-        let title: String = {
-            if containsTag("essential_subtitle") {
-                return event.title.appending(" - ").appending(event.subtitle)
-            } else {
-                return event.title
-            }
-        }()
-
         let eventIdentifier = EventIdentifier(event.identifier)
 
-        return EventImpl(eventBus: eventBus,
-                         imageCache: imageCache,
-                         shareableURLFactory: shareableURLFactory,
-                         isFavourite: favouriteEventIdentifiers.contains(eventIdentifier),
-                         identifier: eventIdentifier,
-                         title: title,
-                         subtitle: event.subtitle,
-                         abstract: event.abstract,
-                         room: Room(name: room.name),
-                         track: Track(name: track.name),
-                         hosts: event.panelHosts,
-                         startDate: event.startDateTime,
-                         endDate: event.endDateTime,
-                         eventDescription: event.eventDescription,
-                         posterImageId: event.posterImageId,
-                         bannerImageId: event.bannerImageId,
-                         isSponsorOnly: containsTag("sponsors_only"),
-                         isSuperSponsorOnly: containsTag("supersponsors_only"),
-                         isArtShow: containsTag("art_show"),
-                         isKageEvent: containsTag("kage"),
-                         isDealersDen: containsTag("dealers_den"),
-                         isMainStage: containsTag("main_stage"),
-                         isPhotoshoot: containsTag("photoshoot"),
-                         isAcceptingFeedback: event.isAcceptingFeedback,
-                         day: day)
+        return EventImpl(
+            characteristics: event,
+            eventBus: eventBus,
+            imageCache: imageCache,
+            shareableURLFactory: shareableURLFactory,
+            isFavourite: favouriteEventIdentifiers.contains(eventIdentifier),
+            identifier: eventIdentifier,
+            room: Room(name: room.name),
+            track: Track(name: track.name),
+            day: day
+        )
     }
-
+    
     private func reconstituteFavouritesFromDataStore() {
         favouriteEventIdentifiers = dataStore.fetchFavouriteEventIdentifiers().defaultingTo(.empty)
     }
-
+    
     private func makeDays(from models: [ConferenceDayCharacteristics]) -> [Day] {
         return models.map(makeDay).sorted()
     }

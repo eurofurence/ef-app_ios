@@ -3,90 +3,118 @@ import Foundation
 
 class EventImpl: Event {
 
+    private let characteristics: EventCharacteristics
     private let eventBus: EventBus
     private let imageCache: ImagesCache
     private let shareableURLFactory: ShareableURLFactory
-    private let posterImageId: String?
-    private let bannerImageId: String?
+    
+    private var tags: [String]? {
+        characteristics.tags
+    }
+    
+    private func containsTag(_ tag: String) -> Bool {
+        tags?.contains(tag) ?? false
+    }
 
     var posterGraphicPNGData: Data? {
-        return posterImageId.let(imageCache.cachedImageData)
+        return characteristics.posterImageId.let(imageCache.cachedImageData)
     }
     
     var bannerGraphicPNGData: Data? {
-        return bannerImageId.let(imageCache.cachedImageData)
+        return characteristics.bannerImageId.let(imageCache.cachedImageData)
     }
     
     var identifier: EventIdentifier
-    var title: String
-    var subtitle: String
-    var abstract: String
+    
+    var title: String {
+        if containsTag("essential_subtitle") {
+            return characteristics.title.appending(" - ").appending(subtitle)
+        } else {
+            return characteristics.title
+        }
+    }
+    
+    var subtitle: String {
+        characteristics.subtitle
+    }
+    
+    var abstract: String {
+        characteristics.abstract
+    }
+    
     var room: Room
     var track: Track
-    var hosts: String
-    var startDate: Date
-    var endDate: Date
-    var eventDescription: String
-    var isSponsorOnly: Bool
-    var isSuperSponsorOnly: Bool
-    var isArtShow: Bool
-    var isKageEvent: Bool
-    var isDealersDen: Bool
-    var isMainStage: Bool
-    var isPhotoshoot: Bool
-    var isAcceptingFeedback: Bool
+    
+    var hosts: String {
+        characteristics.panelHosts
+    }
+    
+    var startDate: Date {
+        characteristics.startDateTime
+    }
+    
+    var endDate: Date {
+        characteristics.endDateTime
+    }
+    
+    var eventDescription: String {
+        characteristics.eventDescription
+    }
+    
+    var isSponsorOnly: Bool {
+        containsTag("sponsors_only")
+    }
+    
+    var isSuperSponsorOnly: Bool {
+        containsTag("supersponsors_only")
+    }
+    
+    var isArtShow: Bool {
+        containsTag("art_show")
+    }
+    
+    var isKageEvent: Bool {
+        containsTag("kage")
+    }
+    
+    var isDealersDen: Bool {
+        containsTag("dealers_den")
+    }
+    
+    var isMainStage: Bool {
+        containsTag("main_stage")
+    }
+    
+    var isPhotoshoot: Bool {
+        containsTag("photoshoot")
+    }
+    
+    var isAcceptingFeedback: Bool {
+        characteristics.isAcceptingFeedback
+    }
+    
     var day: ConferenceDayCharacteristics
 
-    init(eventBus: EventBus,
-         imageCache: ImagesCache,
-         shareableURLFactory: ShareableURLFactory,
-         isFavourite: Bool,
-         identifier: EventIdentifier,
-         title: String,
-         subtitle: String,
-         abstract: String,
-         room: Room,
-         track: Track,
-         hosts: String,
-         startDate: Date,
-         endDate: Date,
-         eventDescription: String,
-         posterImageId: String?,
-         bannerImageId: String?,
-         isSponsorOnly: Bool,
-         isSuperSponsorOnly: Bool,
-         isArtShow: Bool,
-         isKageEvent: Bool,
-         isDealersDen: Bool,
-         isMainStage: Bool,
-         isPhotoshoot: Bool,
-         isAcceptingFeedback: Bool,
-         day: ConferenceDayCharacteristics) {
+    init(
+        characteristics: EventCharacteristics,
+        eventBus: EventBus,
+        imageCache: ImagesCache,
+        shareableURLFactory: ShareableURLFactory,
+        isFavourite: Bool,
+        identifier: EventIdentifier,
+        room: Room,
+        track: Track,
+        day: ConferenceDayCharacteristics
+    ) {
+        self.characteristics = characteristics
         self.eventBus = eventBus
         self.imageCache = imageCache
         self.shareableURLFactory = shareableURLFactory
         self.isFavourite = isFavourite
 
         self.identifier = identifier
-        self.title = title
-        self.subtitle = subtitle
-        self.abstract = abstract
         self.room = room
         self.track = track
-        self.hosts = hosts
-        self.startDate = startDate
-        self.endDate = endDate
-        self.eventDescription = eventDescription
-        self.posterImageId = posterImageId
-        self.bannerImageId = bannerImageId
-        self.isSponsorOnly = isSponsorOnly
-        self.isSuperSponsorOnly = isSuperSponsorOnly
-        self.isArtShow = isArtShow
-        self.isKageEvent = isKageEvent
-        self.isDealersDen = isDealersDen
-        self.isMainStage = isMainStage
-        self.isPhotoshoot = isPhotoshoot
-        self.isAcceptingFeedback = isAcceptingFeedback
         
         self.day = day
     }
