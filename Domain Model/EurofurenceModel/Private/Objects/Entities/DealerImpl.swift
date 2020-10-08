@@ -28,19 +28,31 @@ struct DealerImpl: Dealer {
             return characteristics.attendeeNickname
         }
     }
-
-    var isAttendingOnThursday: Bool
-    var isAttendingOnFriday: Bool
-    var isAttendingOnSaturday: Bool
-
-    var isAfterDark: Bool
-
-    init(eventBus: EventBus,
-         dataStore: DataStore,
-         imageCache: ImagesCache,
-         mapCoordinateRender: MapCoordinateRender?,
-         characteristics: DealerCharacteristics,
-         shareableURLFactory: ShareableURLFactory) {
+    
+    var isAttendingOnThursday: Bool {
+        characteristics.attendsOnThursday
+    }
+    
+    var isAttendingOnFriday: Bool {
+        characteristics.attendsOnFriday
+    }
+    
+    var isAttendingOnSaturday: Bool {
+        characteristics.attendsOnSaturday
+    }
+    
+    var isAfterDark: Bool {
+        characteristics.isAfterDark
+    }
+    
+    init(
+        eventBus: EventBus,
+        dataStore: DataStore,
+        imageCache: ImagesCache,
+        mapCoordinateRender: MapCoordinateRender?,
+        characteristics: DealerCharacteristics,
+        shareableURLFactory: ShareableURLFactory
+    ) {
         self.eventBus = eventBus
         self.dataStore = dataStore
         self.imageCache = imageCache
@@ -49,10 +61,6 @@ struct DealerImpl: Dealer {
         self.shareableURLFactory = shareableURLFactory
         
         self.identifier = DealerIdentifier(characteristics.identifier)
-        self.isAttendingOnThursday = characteristics.attendsOnThursday
-        self.isAttendingOnFriday = characteristics.attendsOnFriday
-        self.isAttendingOnSaturday = characteristics.attendsOnSaturday
-        self.isAfterDark = characteristics.isAfterDark
     }
     
     var contentURL: URL {
