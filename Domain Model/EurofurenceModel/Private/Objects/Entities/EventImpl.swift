@@ -15,6 +15,11 @@ class EventImpl: Event {
     private func containsTag(_ tag: String) -> Bool {
         tags?.contains(tag) ?? false
     }
+    
+    let identifier: EventIdentifier
+    let day: ConferenceDayCharacteristics
+    let room: Room
+    let track: Track
 
     var posterGraphicPNGData: Data? {
         return characteristics.posterImageId.let(imageCache.cachedImageData)
@@ -23,8 +28,6 @@ class EventImpl: Event {
     var bannerGraphicPNGData: Data? {
         return characteristics.bannerImageId.let(imageCache.cachedImageData)
     }
-    
-    var identifier: EventIdentifier
     
     var title: String {
         if containsTag("essential_subtitle") {
@@ -41,9 +44,6 @@ class EventImpl: Event {
     var abstract: String {
         characteristics.abstract
     }
-    
-    var room: Room
-    var track: Track
     
     var hosts: String {
         characteristics.panelHosts
@@ -93,8 +93,6 @@ class EventImpl: Event {
         characteristics.isAcceptingFeedback
     }
     
-    var day: ConferenceDayCharacteristics
-
     init(
         characteristics: EventCharacteristics,
         eventBus: EventBus,

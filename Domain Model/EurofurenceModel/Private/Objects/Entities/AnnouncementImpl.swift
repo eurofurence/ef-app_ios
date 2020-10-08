@@ -10,10 +10,12 @@ struct AnnouncementImpl: Announcement {
     var title: String
     var content: String
     var date: Date
-
-    init(dataStore: DataStore,
-         imageRepository: ImageRepository,
-         characteristics: AnnouncementCharacteristics) {
+    
+    init(
+        dataStore: DataStore,
+        imageRepository: ImageRepository,
+        characteristics: AnnouncementCharacteristics
+    ) {
         self.dataStore = dataStore
         self.imageRepository = imageRepository
         self.characteristics = characteristics

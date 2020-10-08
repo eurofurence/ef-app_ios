@@ -10,10 +10,12 @@ struct MapImpl: Map {
     var identifier: MapIdentifier
     var location: String
 
-    init(imageRepository: ImageRepository,
-         dataStore: DataStore,
-         characteristics: MapCharacteristics,
-         dealers: ConcreteDealersService) {
+    init(
+        imageRepository: ImageRepository,
+        dataStore: DataStore,
+        characteristics: MapCharacteristics,
+        dealers: ConcreteDealersService
+    ) {
         self.imageRepository = imageRepository
         self.dataStore = dataStore
         self.characteristics = characteristics
