@@ -18,7 +18,12 @@ class AcceptingEventFeedback: EventFeedback {
     }
     
     func submit(_ delegate: EventFeedbackDelegate) {
-        let submitFeedbackEvent = DomainEvent.EventFeedbackReady(identifier: eventIdentifier, feedback: self, delegate: delegate)
+        let submitFeedbackEvent = DomainEvent.EventFeedbackReady(
+            identifier: eventIdentifier,
+            feedback: self,
+            delegate: delegate
+        )
+        
         eventBus.post(submitFeedbackEvent)
     }
     

@@ -11,7 +11,15 @@ public struct KnowledgeEntryCharacteristics: Comparable, Equatable, Identifyable
     public var links: [LinkCharacteristics]
     public var imageIdentifiers: [String]
 
-    public init(identifier: String, groupIdentifier: String, title: String, order: Int, text: String, links: [LinkCharacteristics], imageIdentifiers: [String]) {
+    public init(
+        identifier: String,
+        groupIdentifier: String,
+        title: String,
+        order: Int,
+        text: String,
+        links: [LinkCharacteristics],
+        imageIdentifiers: [String]
+    ) {
         self.identifier = identifier
         self.groupIdentifier = groupIdentifier
         self.title = title

@@ -17,15 +17,20 @@ struct KnowledgeEntryImpl: KnowledgeEntry {
 
 extension KnowledgeEntryImpl {
     
-    static func fromServerModel(_ entry: KnowledgeEntryCharacteristics, shareableURLFactory: ShareableURLFactory) -> KnowledgeEntry {
+    static func fromServerModel(
+        _ entry: KnowledgeEntryCharacteristics,
+        shareableURLFactory: ShareableURLFactory
+    ) -> KnowledgeEntry {
         let links: [Link] = Link.fromServerModels(entry.links)
         
-        return KnowledgeEntryImpl(identifier: KnowledgeEntryIdentifier(entry.identifier),
-                                  title: entry.title,
-                                  order: entry.order,
-                                  contents: entry.text,
-                                  links: links,
-                                  shareableURLFactory: shareableURLFactory)
+        return KnowledgeEntryImpl(
+            identifier: KnowledgeEntryIdentifier(entry.identifier),
+            title: entry.title,
+            order: entry.order,
+            contents: entry.text,
+            links: links,
+            shareableURLFactory: shareableURLFactory
+        )
     }
     
 }

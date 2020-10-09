@@ -23,7 +23,11 @@ class ImageDownloader {
         }
     }
 
-    func downloadImages(requests: [DownloadRequest], parentProgress: Progress, completionHandler: @escaping () -> Void) {
+    func downloadImages(
+        requests: [DownloadRequest],
+        parentProgress: Progress,
+        completionHandler: @escaping () -> Void
+    ) {
         guard !requests.isEmpty else {
             completionHandler()
             return
@@ -40,7 +44,10 @@ class ImageDownloader {
         }
 
         imagesToDownload.forEach { (request) in
-            api.fetchImage(identifier: request.imageIdentifier, contentHashSha1: request.imageContentHashSha1) { (data) in
+            let identifier = request.imageIdentifier
+            let sha1 = request.imageContentHashSha1
+            
+            api.fetchImage(identifier: identifier, contentHashSha1: sha1) { (data) in
                 guard let idx = pendingImageIdentifiers.firstIndex(of: request) else { return }
                 pendingImageIdentifiers.remove(at: idx)
 

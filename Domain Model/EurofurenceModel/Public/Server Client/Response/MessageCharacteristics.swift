@@ -10,7 +10,14 @@ public struct MessageCharacteristics: Identifyable {
     public var contents: String
     public var isRead: Bool
 
-    public init(identifier: String, authorName: String, receivedDateTime: Date, subject: String, contents: String, isRead: Bool) {
+    public init(
+        identifier: String, 
+        authorName: String,
+        receivedDateTime: Date,
+        subject: String, 
+        contents: String, 
+        isRead: Bool
+    ) {
         self.identifier = identifier
         self.authorName = authorName
         self.receivedDateTime = receivedDateTime

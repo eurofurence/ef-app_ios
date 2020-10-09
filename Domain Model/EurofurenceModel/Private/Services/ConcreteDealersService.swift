@@ -107,17 +107,22 @@ class ConcreteDealersService: DealersService {
             })
             
             let grouped = Dictionary(grouping: dealersWithEnabledCategory, by: { (dealer) -> String in
-                guard let firstCharacterOfName = dealer.preferredName.first else { fatalError("Dealer does not have a name!") }
+                guard let firstCharacterOfName = dealer.preferredName.first else {
+                    fatalError("Dealer does not have a name!")
+                }
+                
                 return String(firstCharacterOfName).uppercased()
             })
             
             let sortedGroups = grouped.sorted(by: { $0.key < $1.key })
             alphebetisedDealers = sortedGroups.map({ (arg) -> AlphabetisedDealersGroup in
                 let (index, dealers) = arg
-                return AlphabetisedDealersGroup(indexingString: index,
-                                                dealers: dealers.sorted(by: { (first, second) -> Bool in
-                                                    return first.preferredName.lowercased() < second.preferredName.lowercased()
-                                                }))
+                return AlphabetisedDealersGroup(
+                    indexingString: index,
+                    dealers: dealers.sorted(by: { (first, second) -> Bool in
+                        return first.preferredName.lowercased() < second.preferredName.lowercased()
+                    })
+                )
             })
             
             delegate?.alphabetisedDealersDidChange(to: alphebetisedDealers)
@@ -189,12 +194,14 @@ class ConcreteDealersService: DealersService {
     }
     
     private func makeDealer(from characteristics: DealerCharacteristics) -> DealerImpl {
-        return DealerImpl(eventBus: eventBus,
-                          dataStore: dataStore,
-                          imageCache: imageCache,
-                          mapCoordinateRender: mapCoordinateRender,
-                          characteristics: characteristics,
-                          shareableURLFactory: shareableURLFactory)
+        return DealerImpl(
+            eventBus: eventBus,
+            dataStore: dataStore,
+            imageCache: imageCache,
+            mapCoordinateRender: mapCoordinateRender,
+            characteristics: characteristics,
+            shareableURLFactory: shareableURLFactory
+        )
     }
-
+    
 }

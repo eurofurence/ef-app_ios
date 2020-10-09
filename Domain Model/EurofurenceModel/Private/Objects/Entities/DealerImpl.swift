@@ -68,7 +68,8 @@ struct DealerImpl: Dealer {
     }
     
     func openWebsite() {
-        guard let externalLink = characteristics.links?.first(where: { $0.fragmentType == .WebExternal }) else { return }
+        let links = characteristics.links
+        guard let externalLink = links?.first(where: { $0.fragmentType == .WebExternal }) else { return }
         guard let url = URL(string: externalLink.target) else { return }
         
         eventBus.post(DomainEvent.OpenURL(url: url))
@@ -76,22 +77,27 @@ struct DealerImpl: Dealer {
     
     func openTwitter() {
         guard characteristics.twitterHandle.isEmpty == false else { return }
-        guard let url = URL(string: "https://twitter.com/")?.appendingPathComponent(characteristics.twitterHandle) else { return }
+        guard let url = URL(string: "https://twitter.com/") else { return }
         
-        eventBus.post(DomainEvent.OpenURL(url: url))
+        eventBus.post(DomainEvent.OpenURL(url: url.appendingPathComponent(characteristics.twitterHandle)))
     }
     
     func openTelegram() {
         guard characteristics.telegramHandle.isEmpty == false else { return }
-        guard let url = URL(string: "https://t.me/")?.appendingPathComponent(characteristics.twitterHandle) else { return }
+        guard let url = URL(string: "https://t.me/") else { return }
         
-        eventBus.post(DomainEvent.OpenURL(url: url))
+        eventBus.post(DomainEvent.OpenURL(url: url.appendingPathComponent(characteristics.twitterHandle)))
     }
     
     func fetchExtendedDealerData(completionHandler: @escaping (ExtendedDealerData) -> Void) {
         var dealerMapLocationData: Data?
         if let (map, entry) = fetchMapData(), let mapData = imageCache.cachedImageData(for: map.imageIdentifier) {
-            dealerMapLocationData = mapCoordinateRender?.render(x: entry.x, y: entry.y, radius: entry.tapRadius, onto: mapData)
+            dealerMapLocationData = mapCoordinateRender?.render(
+                x: entry.x,
+                y: entry.y,
+                radius: entry.tapRadius,
+                onto: mapData
+            )
         }
         
         var artistImagePNGData: Data?
@@ -106,23 +112,26 @@ struct DealerImpl: Dealer {
         
         let convertEmptyStringsIntoNil: (String) -> String? = { $0.isEmpty ? nil : $0 }
         
-        let extendedData = ExtendedDealerData(artistImagePNGData: artistImagePNGData,
-                                              dealersDenMapLocationGraphicPNGData: dealerMapLocationData,
-                                              preferredName: preferredName,
-                                              alternateName: alternateName,
-                                              categories: characteristics.categories.sorted(),
-                                              dealerShortDescription: characteristics.shortDescription,
-                                              isAttendingOnThursday: isAttendingOnThursday,
-                                              isAttendingOnFriday: isAttendingOnFriday,
-                                              isAttendingOnSaturday: isAttendingOnSaturday,
-                                              isAfterDark: characteristics.isAfterDark,
-                                              websiteName: characteristics.links?.first(where: { $0.fragmentType == .WebExternal })?.target,
-                                              twitterUsername: convertEmptyStringsIntoNil(characteristics.twitterHandle),
-                                              telegramUsername: convertEmptyStringsIntoNil(characteristics.telegramHandle),
-                                              aboutTheArtist: convertEmptyStringsIntoNil(characteristics.aboutTheArtistText),
-                                              aboutTheArt: convertEmptyStringsIntoNil(characteristics.aboutTheArtText),
-                                              artPreviewImagePNGData: artPreviewImagePNGData,
-                                              artPreviewCaption: convertEmptyStringsIntoNil(characteristics.artPreviewCaption))
+        let extendedData = ExtendedDealerData(
+            artistImagePNGData: artistImagePNGData,
+            dealersDenMapLocationGraphicPNGData: dealerMapLocationData,
+            preferredName: preferredName,
+            alternateName: alternateName,
+            categories: characteristics.categories.sorted(),
+            dealerShortDescription: characteristics.shortDescription,
+            isAttendingOnThursday: isAttendingOnThursday,
+            isAttendingOnFriday: isAttendingOnFriday,
+            isAttendingOnSaturday: isAttendingOnSaturday,
+            isAfterDark: characteristics.isAfterDark,
+            websiteName: characteristics.links?.first(where: { $0.fragmentType == .WebExternal })?.target,
+            twitterUsername: convertEmptyStringsIntoNil(characteristics.twitterHandle),
+            telegramUsername: convertEmptyStringsIntoNil(characteristics.telegramHandle),
+            aboutTheArtist: convertEmptyStringsIntoNil(characteristics.aboutTheArtistText),
+            aboutTheArt: convertEmptyStringsIntoNil(characteristics.aboutTheArtText),
+            artPreviewImagePNGData: artPreviewImagePNGData,
+            artPreviewCaption: convertEmptyStringsIntoNil(characteristics.artPreviewCaption)
+        )
+        
         completionHandler(extendedData)
     }
     

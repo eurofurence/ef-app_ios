@@ -162,7 +162,11 @@ class ConcreteRefreshService: RefreshService {
         response.announcements.deleted.forEach(transaction.deleteAnnouncement)
     }
     
-    private func deleteOrphanedRecords(response: ModelCharacteristics, transaction: DataStoreTransaction, lastSyncTime: Any?) {
+    private func deleteOrphanedRecords(
+        response: ModelCharacteristics,
+        transaction: DataStoreTransaction,
+        lastSyncTime: Any?
+    ) {
         let isFullStoreRefresh: Bool = lastSyncTime == nil
         if isFullStoreRefresh {
             deleteOrphanedEntities(response: response, transaction: transaction)
@@ -194,27 +198,51 @@ class ConcreteRefreshService: RefreshService {
     }
     
     private func deleteOrphanedAnnouncements(_ response: ModelCharacteristics, _ transaction: DataStoreTransaction) {
-        deleteOrphans(existing: dataStore.fetchAnnouncements(), changed: response.announcements.changed, delete: transaction.deleteAnnouncement)
+        deleteOrphans(
+            existing: dataStore.fetchAnnouncements(),
+            changed: response.announcements.changed,
+            delete: transaction.deleteAnnouncement
+        )
     }
     
     private func deleteOrphanedEvents(_ response: ModelCharacteristics, _ transaction: DataStoreTransaction) {
-        deleteOrphans(existing: dataStore.fetchEvents(), changed: response.events.changed, delete: transaction.deleteEvent)
+        deleteOrphans(
+            existing: dataStore.fetchEvents(),
+            changed: response.events.changed,
+            delete: transaction.deleteEvent
+        )
     }
     
     private func deleteOrphanedKnowledgeGroups(_ response: ModelCharacteristics, _ transaction: DataStoreTransaction) {
-        deleteOrphans(existing: dataStore.fetchKnowledgeGroups(), changed: response.knowledgeGroups.changed, delete: transaction.deleteKnowledgeGroup)
+        deleteOrphans(
+            existing: dataStore.fetchKnowledgeGroups(),
+            changed: response.knowledgeGroups.changed,
+            delete: transaction.deleteKnowledgeGroup
+        )
     }
     
     private func deleteOrphanedKnowledgeEntries(_ response: ModelCharacteristics, _ transaction: DataStoreTransaction) {
-        deleteOrphans(existing: dataStore.fetchKnowledgeEntries(), changed: response.knowledgeEntries.changed, delete: transaction.deleteKnowledgeEntry)
+        deleteOrphans(
+            existing: dataStore.fetchKnowledgeEntries(),
+            changed: response.knowledgeEntries.changed,
+            delete: transaction.deleteKnowledgeEntry
+        )
     }
     
     private func deleteOrphanedImages(_ response: ModelCharacteristics) {
-        deleteOrphans(existing: dataStore.fetchImages(), changed: response.images.changed, delete: imageRepository.deleteEntity)
+        deleteOrphans(
+            existing: dataStore.fetchImages(),
+            changed: response.images.changed,
+            delete: imageRepository.deleteEntity
+        )
     }
     
     private func deleteOrphanedDealers(_ response: ModelCharacteristics, _ transaction: DataStoreTransaction) {
-        deleteOrphans(existing: dataStore.fetchDealers(), changed: response.dealers.changed, delete: transaction.deleteDealer)
+        deleteOrphans(
+            existing: dataStore.fetchDealers(),
+            changed: response.dealers.changed,
+            delete: transaction.deleteDealer
+        )
     }
     
     private func deleteOrphanedMaps(_ response: ModelCharacteristics, _ transaction: DataStoreTransaction) {
