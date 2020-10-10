@@ -3,19 +3,25 @@ import XCTest
 
 class HardcodedCompanionAppURLRequestFactoryTests: XCTestCase {
 
-    func testReturnUnauthenticatedURLRequest() {
+    func testReturnUnauthenticatedURLRequest() throws {
         let requestFactory = HardcodedCompanionAppURLRequestFactory()
-        let expected = URLRequest(url: URL(string: "https://app.eurofurence.org/EF25/companion/#/login?embedded=true&returnPath=/&token=").unsafelyUnwrapped)
+        let urlString = "https://app.eurofurence.org/EF25/companion/#/login?embedded=true&returnPath=/&token="
+        let url = try XCTUnwrap(URL(string: urlString))
+        let expected = URLRequest(url: url)
         
         XCTAssertEqual(expected, requestFactory.makeAdditionalServicesRequest(authenticationToken: nil))
     }
     
-    func testReturnAuthenticatedURLRequest() {
+    func testReturnAuthenticatedURLRequest() throws {
         let requestFactory = HardcodedCompanionAppURLRequestFactory()
-        let expected = URLRequest(url: URL(string: "https://app.eurofurence.org/EF25/companion/#/login?embedded=true&returnPath=/&token=Hello").unsafelyUnwrapped)
-        let authenticationTokenInURL = "Hello"
+        let urlString = "https://app.eurofurence.org/EF25/companion/#/login?embedded=true&returnPath=/&token=Hello"
+        let url = try XCTUnwrap(URL(string: urlString))
+        let expected = URLRequest(url: url)
         
-        XCTAssertEqual(expected, requestFactory.makeAdditionalServicesRequest(authenticationToken: authenticationTokenInURL))
+        XCTAssertEqual(
+            expected,
+            requestFactory.makeAdditionalServicesRequest(authenticationToken: "Hello")
+        )
     }
 
 }

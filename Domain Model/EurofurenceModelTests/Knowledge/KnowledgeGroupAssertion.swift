@@ -39,7 +39,9 @@ class KnowledgeGroupAssertion: Assertion {
 
         let entriesForGroup = entries.filter({ $0.groupIdentifier == groupCharacteristics.identifier })
         guard entriesForGroup.count == group.entries.count else {
-            fail(message: "Expected \(entriesForGroup.count) entries for group \(group.identifier), got \(group.entries.count)")
+            let message = "Expected \(entriesForGroup.count) entries for group \(group.identifier), " +
+                          "got \(group.entries.count)"
+            fail(message: message)
             return
         }
 

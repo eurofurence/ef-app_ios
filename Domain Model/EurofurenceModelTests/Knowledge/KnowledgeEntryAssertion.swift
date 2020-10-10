@@ -32,7 +32,10 @@ class KnowledgeEntryAssertion: Assertion {
         assertTrue(isLinkKind(link.type, equalToFragmentType: characteristics.fragmentType))
     }
 
-    private func isLinkKind(_ type: Link.Kind, equalToFragmentType fragmentType: LinkCharacteristics.FragmentType) -> Bool {
+    private func isLinkKind(
+        _ type: Link.Kind,
+        equalToFragmentType fragmentType: LinkCharacteristics.FragmentType
+    ) -> Bool {
         switch (type, fragmentType) {
         case (.webExternal, .WebExternal):
             return true

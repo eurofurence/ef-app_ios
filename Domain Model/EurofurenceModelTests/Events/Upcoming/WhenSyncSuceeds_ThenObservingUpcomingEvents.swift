@@ -3,7 +3,7 @@ import XCTest
 
 class WhenSyncSuceeds_ThenObservingUpcomingEvents: XCTestCase {
 
-    func testTheObserverIsProvidedWithTheUpcomingEvents() {
+    func testTheObserverIsProvidedWithTheUpcomingEvents() throws {
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let randomEvent = syncResponse.events.changed.randomElement().element
         let simulatedTime = randomEvent.startDateTime.addingTimeInterval(-1)
@@ -12,7 +12,7 @@ class WhenSyncSuceeds_ThenObservingUpcomingEvents: XCTestCase {
         let observer = CapturingEventsServiceObserver()
         context.eventsService.add(observer)
 
-        EventAssertion(context: context, modelCharacteristics: syncResponse)
+        try EventAssertion(context: context, modelCharacteristics: syncResponse)
             .assertCollection(observer.upcomingEvents, containsEventCharacterisedBy: randomEvent)
     }
     

@@ -10,16 +10,19 @@ class WhenDeletingAnnouncement_AfterSuccessfulSync_ApplicationShould: XCTestCase
         context.announcementsService.add(delegate)
         context.refreshLocalStore()
         context.api.simulateSuccessfulSync(response)
-        let announcementToDelete = response.announcements.changed.randomElement()
-        response.announcements.changed = response.announcements.changed.filter({ $0.identifier != announcementToDelete.element.identifier })
+        let announcementToDelete = response.announcements.changed.randomElement().element
+        let announcements = response.announcements.changed
+        response.announcements.changed = announcements.filter({ $0.identifier != announcementToDelete.identifier })
         response.announcements.changed.removeAll()
-        response.announcements.deleted.append(announcementToDelete.element.identifier)
+        response.announcements.deleted.append(announcementToDelete.identifier)
         context.refreshLocalStore()
         context.api.simulateSuccessfulSync(response)
         let actual = delegate.allAnnouncements.map(\.identifier.rawValue)
-
-        XCTAssertFalse(actual.contains(announcementToDelete.element.identifier),
-                       "Should have removed announcement \(announcementToDelete.element.identifier)")
+        
+        XCTAssertFalse(
+            actual.contains(announcementToDelete.identifier),
+            "Should have removed announcement \(announcementToDelete.identifier)"
+        )
     }
 
 }

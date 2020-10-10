@@ -1,7 +1,14 @@
 import EurofurenceModel
 import TestUtilities
+import XCTest
 
 class EventAssertion: Assertion {
+    
+    private struct Error: Swift.Error {
+        
+        var description: String
+        
+    }
 
     private let context: EurofurenceSessionTestBuilder.Context
     private let modelCharacteristics: ModelCharacteristics
@@ -16,7 +23,7 @@ class EventAssertion: Assertion {
         super.init(file: file, line: line)
     }
 
-    func assertEvents(_ events: [Event], characterisedBy characteristics: [EventCharacteristics]) {
+    func assertEvents(_ events: [Event], characterisedBy characteristics: [EventCharacteristics]) throws {
         guard events.count == characteristics.count else {
             fail(message: "Differing amount of expected/actual events")
             return
@@ -26,20 +33,36 @@ class EventAssertion: Assertion {
 
         for (idx, event) in events.enumerated() {
             let characteristic = eventsShouldBeOrderedByStartTime[idx]
-            assertEvent(event, characterisedBy: characteristic)
+            try assertEvent(event, characterisedBy: characteristic)
         }
     }
 
-    func assertEvent(_ event: Event?, characterisedBy characteristic: EventCharacteristics) {
+    func assertEvent(_ event: Event?, characterisedBy characteristic: EventCharacteristics) throws {
         guard let event = event else {
             fail(message: "Event not present - expected event \(characteristic.identifier)")
             return
         }
 
-        let expectedRoom = modelCharacteristics.rooms.changed.first(where: { $0.identifier == characteristic.roomIdentifier }).unsafelyUnwrapped
-        let expectedTrack = modelCharacteristics.tracks.changed.first(where: { $0.identifier == characteristic.trackIdentifier }).unsafelyUnwrapped
-        let expectedPosterGraphic = context.api.stubbedImage(for: characteristic.posterImageId, availableImages: modelCharacteristics.images.changed)
-        let expectedBannerGraphic = context.api.stubbedImage(for: characteristic.bannerImageId, availableImages: modelCharacteristics.images.changed)
+        let rooms = modelCharacteristics.rooms.changed
+        guard let expectedRoom = rooms.first(where: { $0.identifier == characteristic.roomIdentifier }) else {
+            throw Error(description: "Missing room with ID \(characteristic.roomIdentifier)")
+        }
+        
+        let tracks = modelCharacteristics.tracks.changed
+        guard let expectedTrack = tracks.first(where: { $0.identifier == characteristic.trackIdentifier }) else {
+            throw Error(description: "Missing track with ID \(characteristic.trackIdentifier)")
+        }
+        
+        let expectedPosterGraphic = context.api.stubbedImage(
+            for: characteristic.posterImageId,
+            availableImages: modelCharacteristics.images.changed
+        )
+        
+        let expectedBannerGraphic = context.api.stubbedImage(
+            for: characteristic.bannerImageId,
+            availableImages: modelCharacteristics.images.changed
+        )
+        
         let tags = characteristic.tags.defaultingTo([])
 
         assert(event.identifier, isEqualTo: EventIdentifier(characteristic.identifier))
@@ -65,13 +88,16 @@ class EventAssertion: Assertion {
         assert(event.bannerGraphicPNGData, isEqualTo: expectedBannerGraphic)
     }
 
-    func assertCollection<C>(_ collection: C, containsEventCharacterisedBy characteristic: EventCharacteristics) where C: Collection, C.Element == Event {
+    func assertCollection<C>(
+        _ collection: C,
+        containsEventCharacterisedBy characteristic: EventCharacteristics
+    ) throws where C: Collection, C.Element == Event {
         guard let event = collection.first(where: { $0.identifier.rawValue == characteristic.identifier }) else {
             fail(message: "Collection did not contain event")
             return
         }
 
-        assertEvent(event, characterisedBy: characteristic)
+        try assertEvent(event, characterisedBy: characteristic)
     }
 
 }

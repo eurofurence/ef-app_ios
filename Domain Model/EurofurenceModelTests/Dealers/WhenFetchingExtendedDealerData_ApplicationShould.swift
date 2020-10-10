@@ -36,12 +36,19 @@ class WhenFetchingExtendedDealerData_ApplicationShould: XCTestCase {
     }
 
     func testProvideTheArtistImageData() {
-        let expected = context.api.stubbedImage(for: randomDealer.artistImageId, availableImages: response.images.changed)
+        let expected = context.api.stubbedImage(
+            for: randomDealer.artistImageId,
+            availableImages: response.images.changed
+        )
+        
         XCTAssertEqual(expected, dealerData?.artistImagePNGData)
     }
 
     func testProvideTheArtPreviewImageData() {
-        let expected = context.api.stubbedImage(for: randomDealer.artPreviewImageId, availableImages: response.images.changed)
+        let expected = context.api.stubbedImage(
+            for: randomDealer.artPreviewImageId,
+            availableImages: response.images.changed)
+        
         XCTAssertEqual(expected, dealerData?.artPreviewImagePNGData)
     }
 
@@ -54,7 +61,10 @@ class WhenFetchingExtendedDealerData_ApplicationShould: XCTestCase {
     }
 
     func testProvideTheNameOfTheFirstExternalLinkAsTheWebsiteName() {
-        XCTAssertEqual(randomDealer.links?.first(where: { $0.fragmentType == .WebExternal })?.target, dealerData.websiteName)
+        XCTAssertEqual(
+            randomDealer.links?.first(where: { $0.fragmentType == .WebExternal })?.target,
+            dealerData.websiteName
+        )
     }
 
     func testProvideTheTwitterUsername() {

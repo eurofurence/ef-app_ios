@@ -38,7 +38,12 @@ class WhenSubmittingFeedback_AndFeedbackIsSuccessful: XCTestCase {
         feedback?.submit(delegate)
         
         let defaultEventFeedbackValue = 3
-        let feedbackRequest = EventFeedbackRequest(id: event.identifier, rating: defaultEventFeedbackValue, feedback: "")
+        let feedbackRequest = EventFeedbackRequest(
+            id: event.identifier,
+            rating: defaultEventFeedbackValue,
+            feedback: ""
+        )
+        
         context.api.simulateSuccessfulFeedbackResponse(for: feedbackRequest)
         
         XCTAssertEqual(delegate.feedbackState, .success)

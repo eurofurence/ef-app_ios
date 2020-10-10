@@ -3,7 +3,7 @@ import XCTest
 
 class WhenSearchingForEvents_ApplicationShould: XCTestCase {
 
-    func testReturnExactMatchesOnTitles() {
+    func testReturnExactMatchesOnTitles() throws {
         let context = EurofurenceSessionTestBuilder().build()
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
         context.performSuccessfulSync(response: syncResponse)
@@ -13,11 +13,11 @@ class WhenSearchingForEvents_ApplicationShould: XCTestCase {
         eventsSearchController.setResultsDelegate(delegate)
         eventsSearchController.changeSearchTerm(randomEvent.title)
 
-        EventAssertion(context: context, modelCharacteristics: syncResponse)
+        try EventAssertion(context: context, modelCharacteristics: syncResponse)
             .assertEvents(delegate.capturedSearchResults, characterisedBy: [randomEvent])
     }
 
-    func testReturnFuzzyMatchesOnTitles() {
+    func testReturnFuzzyMatchesOnTitles() throws {
         let context = EurofurenceSessionTestBuilder().build()
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
         context.performSuccessfulSync(response: syncResponse)
@@ -28,11 +28,11 @@ class WhenSearchingForEvents_ApplicationShould: XCTestCase {
         let partialTitle = String(randomEvent.title.dropLast())
         eventsSearchController.changeSearchTerm(partialTitle)
 
-        EventAssertion(context: context, modelCharacteristics: syncResponse)
+        try EventAssertion(context: context, modelCharacteristics: syncResponse)
             .assertEvents(delegate.capturedSearchResults, characterisedBy: [randomEvent])
     }
 
-    func testBeCaseInsensitive() {
+    func testBeCaseInsensitive() throws {
         let context = EurofurenceSessionTestBuilder().build()
         var syncResponse = ModelCharacteristics.randomWithoutDeletions
         let randomEvent = syncResponse.events.changed.randomElement()
@@ -45,7 +45,7 @@ class WhenSearchingForEvents_ApplicationShould: XCTestCase {
         eventsSearchController.setResultsDelegate(delegate)
         eventsSearchController.changeSearchTerm("random")
 
-        EventAssertion(context: context, modelCharacteristics: syncResponse)
+        try EventAssertion(context: context, modelCharacteristics: syncResponse)
             .assertEvents(delegate.capturedSearchResults, characterisedBy: [event])
     }
 

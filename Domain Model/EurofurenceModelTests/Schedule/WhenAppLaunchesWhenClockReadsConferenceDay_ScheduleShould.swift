@@ -35,7 +35,7 @@ class WhenAppLaunchesWhenClockReadsConferenceDay_ScheduleShould: XCTestCase {
             .assertDay(delegate.capturedCurrentDay, characterisedBy: randomDay)
     }
 
-    func testProvideEventsForThatDay() {
+    func testProvideEventsForThatDay() throws {
         let response = ModelCharacteristics.randomWithoutDeletions
         let randomDay = response.conferenceDays.changed.randomElement().element
         let dataStore = InMemoryDataStore(response: response)
@@ -45,7 +45,7 @@ class WhenAppLaunchesWhenClockReadsConferenceDay_ScheduleShould: XCTestCase {
         schedule.setDelegate(delegate)
         let expectedEvents = response.events.changed.filter({ $0.dayIdentifier == randomDay.identifier })
 
-        EventAssertion(context: context, modelCharacteristics: response)
+        try EventAssertion(context: context, modelCharacteristics: response)
             .assertEvents(delegate.events, characterisedBy: expectedEvents)
     }
 

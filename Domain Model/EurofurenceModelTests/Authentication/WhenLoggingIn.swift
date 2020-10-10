@@ -3,15 +3,17 @@ import XCTest
 
 class WhenLoggingIn: XCTestCase {
 
-    private func makeLoginResponse(uid: String = "",
-                                   username: String = "",
-                                   token: String = "",
-                                   tokenValidUntil: Date = Date()) -> LoginResponse {
+    private func makeLoginResponse(
+        uid: String = "",
+        username: String = "",
+        token: String = "",
+        tokenValidUntil: Date = Date()
+    ) -> LoginResponse {
         return LoginResponse(userIdentifier: uid, username: username, token: token, tokenValidUntil: tokenValidUntil)
     }
-
+    
     var context: EurofurenceSessionTestBuilder.Context!
-
+    
     override func setUp() {
         super.setUp()
 
@@ -138,7 +140,7 @@ class WhenLoggingIn: XCTestCase {
         let observer = CapturingAuthenticationStateObserver()
         context.authenticationService.add(observer)
         let user = User(registrationNumber: .random, username: .random)
-        context.login(registrationNumber: user.registrationNumber, username: user.username, completionHandler: { (_) in })
+        context.login(registrationNumber: user.registrationNumber, username: user.username)
         context.api.simulateLoginResponse(makeLoginResponse())
         context.authenticationService.logout(completionHandler: { (_) in })
         context.notificationTokenRegistration.succeedLastRequest()
@@ -151,7 +153,7 @@ class WhenLoggingIn: XCTestCase {
         context.authenticationService.add(observer)
         observer.loggedOut = false
         let user = User(registrationNumber: .random, username: .random)
-        context.login(registrationNumber: user.registrationNumber, username: user.username, completionHandler: { (_) in })
+        context.login(registrationNumber: user.registrationNumber, username: user.username)
         context.api.simulateLoginResponse(makeLoginResponse())
         context.authenticationService.logout(completionHandler: { (_) in })
 
@@ -163,7 +165,7 @@ class WhenLoggingIn: XCTestCase {
         context.authenticationService.add(observer)
         observer.loggedOut = false
         let user = User(registrationNumber: .random, username: .random)
-        context.login(registrationNumber: user.registrationNumber, username: user.username, completionHandler: { (_) in })
+        context.login(registrationNumber: user.registrationNumber, username: user.username)
         context.api.simulateLoginResponse(makeLoginResponse())
         context.authenticationService.logout(completionHandler: { (_) in })
         context.notificationTokenRegistration.failLastRequest()

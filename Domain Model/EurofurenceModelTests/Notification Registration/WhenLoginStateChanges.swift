@@ -23,7 +23,11 @@ class WhenLoginStateChanges: XCTestCase {
 
     func testLoggingInWhenWeHaveTokenStoredShouldUseTheTokenWhenPushTokenRegistrationOccurs() {
         let authenticationToken = "JWT Token"
-        let existingCredential = makeCredential(authenticationToken: authenticationToken, tokenExpiryDate: .distantFuture)
+        let existingCredential = makeCredential(
+            authenticationToken: authenticationToken,
+            tokenExpiryDate: .distantFuture
+        )
+        
         let context = EurofurenceSessionTestBuilder().with(existingCredential).build()
         context.registerForRemoteNotifications()
 

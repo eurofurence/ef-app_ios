@@ -3,7 +3,13 @@ import XCTest
 
 class WhenLoggingOutSuccessfully: XCTestCase {
 
-    let credential = Credential(username: "", registrationNumber: 0, authenticationToken: "Token", tokenExpiryDate: .distantFuture)
+    let credential = Credential(
+        username: "",
+        registrationNumber: 0,
+        authenticationToken: "Token",
+        tokenExpiryDate: .distantFuture
+    )
+    
     var context: EurofurenceSessionTestBuilder.Context!
     var observer: CapturingAuthenticationStateObserver!
 

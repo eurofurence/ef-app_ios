@@ -53,11 +53,16 @@ class AlphabetisedDealersGroupAssertion: Assertion {
 
     func doesGroupContainExpectedNumberOfDealers(_ group: AlphabetisedDealersGroup) -> Bool {
         let groupIndexTitle = group.indexingString.lowercased()
-        let dealersWithIndexingPrefix = characteristics.filter({ $0.displayName.lowercased().starts(with: groupIndexTitle) })
+        let dealersWithIndexingPrefix = characteristics.filter({ (dealer) in
+            dealer.displayName.lowercased().starts(with: groupIndexTitle)
+        })
+        
         let isExpectedNumberOfDealersPresent = dealersWithIndexingPrefix.count == group.dealers.count
 
         if isExpectedNumberOfDealersPresent == false {
-            fail(message: "Expected \(dealersWithIndexingPrefix.count) dealers in group \(groupIndexTitle), got \(group.dealers)")
+            let message = "Expected \(dealersWithIndexingPrefix.count) dealers in group \(groupIndexTitle), " +
+                          "got \(group.dealers)"
+            fail(message: message)
         }
 
         return isExpectedNumberOfDealersPresent
@@ -87,7 +92,7 @@ class AlphabetisedDealersGroupAssertion: Assertion {
         }
     }
 
-    private func assertDealersMatchCharacteristics(_ dealersAndCharacteristics: [AlphabetisedDealersGroupAssertion.DealerAndCharacteristics]) {
+    private func assertDealersMatchCharacteristics(_ dealersAndCharacteristics: [DealerAndCharacteristics]) {
         let dealerAssertion = DealerAssertion()
         for (dealer, characteristic) in dealersAndCharacteristics {
             dealerAssertion.assertDealer(dealer, characterisedBy: characteristic)

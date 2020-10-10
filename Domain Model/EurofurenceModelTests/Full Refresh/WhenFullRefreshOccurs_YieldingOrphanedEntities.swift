@@ -68,7 +68,10 @@ class WhenFullRefreshOccurs_YieldingOrphanedEntities: XCTestCase {
         let index = context.dealersService.makeDealersIndex()
         index.setDelegate(delegate)
         let originalDealerIdentifiers = originalResponse.dealers.changed.identifiers
-        let dealerIdentifiers = delegate.capturedAlphabetisedDealerGroups.reduce([], { $0 + $1.dealers }).map(\.identifier.rawValue)
+        let dealerIdentifiers = delegate
+            .capturedAlphabetisedDealerGroups
+            .reduce([], { $0 + $1.dealers })
+            .map(\.identifier.rawValue)
 
         XCTAssertFalse(dealerIdentifiers.contains(elementsFrom: originalDealerIdentifiers))
     }

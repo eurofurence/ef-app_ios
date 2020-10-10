@@ -8,7 +8,8 @@ class WhenFavouritingEvent_WithScheduleAndSearchControllerActive: XCTestCase {
         var characteristics = ModelCharacteristics.randomWithoutDeletions
         let event = characteristics.events.changed.randomElement().element
         characteristics.events.changed = [event]
-        let dayForEvent = try XCTUnwrap(characteristics.conferenceDays.changed.first(where: { $0.identifier == event.dayIdentifier }))
+        let days = characteristics.conferenceDays.changed
+        let dayForEvent = try XCTUnwrap(days.first(where: { $0.identifier == event.dayIdentifier }))
         characteristics.conferenceDays.changed = [dayForEvent]
         context.performSuccessfulSync(response: characteristics)
         let schedule = context.eventsService.makeEventsSchedule()
@@ -21,7 +22,9 @@ class WhenFavouritingEvent_WithScheduleAndSearchControllerActive: XCTestCase {
         let searchControllerDelegate = CapturingEventsSearchControllerDelegate()
         searchController.setResultsDelegate(searchControllerDelegate)
         searchController.changeSearchTerm(event.title)
-        let searchControllerEvent = searchControllerDelegate.capturedSearchResults.first(where: { $0.identifier == EventIdentifier(event.identifier) })
+        let searchControllerEvent = searchControllerDelegate.capturedSearchResults.first(
+            where: { $0.identifier == EventIdentifier(event.identifier) }
+        )
         
         XCTAssertEqual(scheduleEvent?.identifier, searchControllerEvent?.identifier)
         

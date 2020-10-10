@@ -4,7 +4,7 @@ import XCTest
 
 class WhenToldToOpenDealersTwitter: XCTestCase {
 
-    func testTellTheApplicationToOpenTheTwitterURLWithTheDealersHandle() {
+    func testTellTheApplicationToOpenTheTwitterURLWithTheDealersHandle() throws {
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let dealer = syncResponse.dealers.changed.randomElement().element
         let urlOpener = CapturingURLOpener()
@@ -13,7 +13,8 @@ class WhenToldToOpenDealersTwitter: XCTestCase {
         let dealerIdentifier = DealerIdentifier(dealer.identifier)
         let entity = context.dealersService.fetchDealer(for: dealerIdentifier)
         entity?.openTwitter()
-        let expected = URL(string: "https://twitter.com/").unsafelyUnwrapped.appendingPathComponent(dealer.twitterHandle)
+        let twitterBaseURL = try XCTUnwrap(URL(string: "https://twitter.com/"))
+        let expected = twitterBaseURL.appendingPathComponent(dealer.twitterHandle)
 
         XCTAssertEqual(expected, urlOpener.capturedURLToOpen)
     }

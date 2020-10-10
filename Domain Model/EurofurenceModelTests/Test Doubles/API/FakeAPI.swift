@@ -120,9 +120,17 @@ class SlowFakeImageAPI: FakeAPI {
         return pendingFetches.count
     }
 
-    override func fetchImage(identifier: String, contentHashSha1: String, completionHandler: @escaping (Data?) -> Void) {
+    override func fetchImage(
+        identifier: String,
+        contentHashSha1: String, 
+        completionHandler: @escaping (Data?) -> Void
+    ) {
         pendingFetches.append {
-            super.fetchImage(identifier: identifier, contentHashSha1: contentHashSha1, completionHandler: completionHandler)
+            super.fetchImage(
+                identifier: identifier,
+                contentHashSha1: contentHashSha1,
+                completionHandler: completionHandler
+            )
         }
     }
 

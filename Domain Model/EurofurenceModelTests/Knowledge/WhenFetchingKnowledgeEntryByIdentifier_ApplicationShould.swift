@@ -9,7 +9,10 @@ class WhenFetchingKnowledgeEntryByIdentifier_ApplicationShould: XCTestCase {
         context.performSuccessfulSync(response: syncResponse)
         let randomEntry = syncResponse.knowledgeEntries.changed.randomElement().element
         var actual: KnowledgeEntry?
-        context.knowledgeService.fetchKnowledgeEntry(for: KnowledgeEntryIdentifier(randomEntry.identifier)) { actual = $0 }
+        context.knowledgeService.fetchKnowledgeEntry(
+            for: KnowledgeEntryIdentifier(randomEntry.identifier),
+            completionHandler: { actual = $0 }
+        )
 
         KnowledgeEntryAssertion().assertEntry(actual, characteristics: randomEntry)
     }

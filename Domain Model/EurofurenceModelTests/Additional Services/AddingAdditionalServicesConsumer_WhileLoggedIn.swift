@@ -10,8 +10,15 @@ class AddingAdditionalServicesConsumer_WhileLoggedIn: XCTestCase {
         let consumer = CapturingAdditionalServicesURLConsumer()
         context.additionalServicesRepository.add(consumer)
         
-        XCTAssertEqual(consumer.consumedAdditionalServicesURLRequest, additionalServicesRequestFactory.authenticatedAdditionalServicesRequest)
-        XCTAssertEqual(credential.authenticationToken, additionalServicesRequestFactory.additionalServicesAuthenticationToken)
+        XCTAssertEqual(
+            consumer.consumedAdditionalServicesURLRequest,
+            additionalServicesRequestFactory.authenticatedAdditionalServicesRequest
+        )
+        
+        XCTAssertEqual(
+            credential.authenticationToken,
+            additionalServicesRequestFactory.additionalServicesAuthenticationToken
+        )
     }
     
     func testLoggingOutUpdatesConsumerWithUnauthenticatedURL() {
@@ -22,7 +29,10 @@ class AddingAdditionalServicesConsumer_WhileLoggedIn: XCTestCase {
         context.additionalServicesRepository.add(consumer)
         context.logoutSuccessfully()
         
-        XCTAssertEqual(consumer.consumedAdditionalServicesURLRequest, additionalServicesRequestFactory.unauthenticatedAdditionalServicesRequest)
+        XCTAssertEqual(
+            consumer.consumedAdditionalServicesURLRequest,
+            additionalServicesRequestFactory.unauthenticatedAdditionalServicesRequest
+        )
     }
 
 }
