@@ -12,16 +12,25 @@ public class FakeKnowledgeService: KnowledgeService {
     }
 
     private var stubbedKnowledgeEntries = [KnowledgeEntryIdentifier: FakeKnowledgeEntry]()
-    public func fetchKnowledgeEntry(for identifier: KnowledgeEntryIdentifier, completionHandler: @escaping (KnowledgeEntry) -> Void) {
+    public func fetchKnowledgeEntry(
+        for identifier: KnowledgeEntryIdentifier,
+        completionHandler: @escaping (KnowledgeEntry) -> Void
+    ) {
         completionHandler(stubbedKnowledgeEntry(for: identifier))
     }
 
-    public func fetchImagesForKnowledgeEntry(identifier: KnowledgeEntryIdentifier, completionHandler: @escaping ([Data]) -> Void) {
+    public func fetchImagesForKnowledgeEntry(
+        identifier: KnowledgeEntryIdentifier,
+        completionHandler: @escaping ([Data]) -> Void
+    ) {
         completionHandler(stubbedKnowledgeEntryImages(for: identifier))
     }
 
     private var stubbedGroups = [KnowledgeGroup]()
-    public func fetchKnowledgeGroup(identifier: KnowledgeGroupIdentifier, completionHandler: @escaping (KnowledgeGroup) -> Void) {
+    public func fetchKnowledgeGroup(
+        identifier: KnowledgeGroupIdentifier,
+        completionHandler: @escaping (KnowledgeGroup) -> Void
+    ) {
         stubbedGroups.first(where: { $0.identifier == identifier }).let(completionHandler)
     }
 

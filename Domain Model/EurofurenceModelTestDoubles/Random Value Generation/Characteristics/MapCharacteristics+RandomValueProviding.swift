@@ -5,7 +5,7 @@ import TestUtilities
 extension MapCharacteristics: RandomValueProviding {
     
     public static var random: MapCharacteristics {
-        return MapCharacteristics(identifier: .random, imageIdentifier: .random, mapDescription: .random, entries: .random)
+        MapCharacteristics(identifier: .random, imageIdentifier: .random, mapDescription: .random, entries: .random)
     }
     
 }
@@ -13,7 +13,7 @@ extension MapCharacteristics: RandomValueProviding {
 extension MapCharacteristics.Entry: RandomValueProviding {
     
     public static var random: MapCharacteristics.Entry {
-        return MapCharacteristics.Entry(identifier: .random, x: .random, y: .random, tapRadius: .random, links: .random)
+        MapCharacteristics.Entry(identifier: .random, x: .random, y: .random, tapRadius: .random, links: .random)
     }
     
 }
@@ -21,7 +21,7 @@ extension MapCharacteristics.Entry: RandomValueProviding {
 extension MapCharacteristics.Entry.Link: RandomValueProviding {
     
     public static var random: MapCharacteristics.Entry.Link {
-        return MapCharacteristics.Entry.Link(type: .random, name: .random, target: .random)
+        MapCharacteristics.Entry.Link(type: .random, name: .random, target: .random)
     }
     
 }

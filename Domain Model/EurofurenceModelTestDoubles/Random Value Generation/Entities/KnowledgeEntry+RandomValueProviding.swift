@@ -31,7 +31,7 @@ public final class FakeKnowledgeEntry: KnowledgeEntry {
 extension FakeKnowledgeEntry: RandomValueProviding {
 
     public static var random: FakeKnowledgeEntry {
-        return FakeKnowledgeEntry(identifier: .random, title: .random, order: .random, contents: .random, links: .random)
+        FakeKnowledgeEntry(identifier: .random, title: .random, order: .random, contents: .random, links: .random)
     }
 
 }

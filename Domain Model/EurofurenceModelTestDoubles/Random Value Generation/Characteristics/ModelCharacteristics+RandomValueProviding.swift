@@ -39,9 +39,9 @@ public extension ModelCharacteristics {
         
         var allImages: [ImageCharacteristics] = events.compactMap({ $0.bannerImageId }).map(makeImageFromIdentifier)
         allImages.append(contentsOf: events.compactMap({ $0.posterImageId }).map(makeImageFromIdentifier))
-        allImages.append(contentsOf: dealers.changed.compactMap({ $0.artistImageId }).map(makeImageFromIdentifier))
-        allImages.append(contentsOf: dealers.changed.compactMap({ $0.artistThumbnailImageId }).map(makeImageFromIdentifier))
-        allImages.append(contentsOf: dealers.changed.compactMap({ $0.artPreviewImageId }).map(makeImageFromIdentifier))
+        allImages.append(contentsOf: dealers.changed.compactMap(\.artistImageId).map(makeImageFromIdentifier))
+        allImages.append(contentsOf: dealers.changed.compactMap(\.artistThumbnailImageId).map(makeImageFromIdentifier))
+        allImages.append(contentsOf: dealers.changed.compactMap(\.artPreviewImageId).map(makeImageFromIdentifier))
         allImages.append(contentsOf: maps.changed.map(\.imageIdentifier).map(makeImageFromIdentifier))
         
         let knowledgeEntryImages = knowledge.entries.reduce([String](), { $0 + $1.imageIdentifiers })
@@ -52,17 +52,19 @@ public extension ModelCharacteristics {
         let announcementImages = announcements.compactMap({ $0.imageIdentifier }).map(makeImageFromIdentifier)
         allImages.append(contentsOf: announcementImages)
         
-        return ModelCharacteristics(conventionIdentifier: testConventionIdentifier,
-                                    knowledgeGroups: ModelCharacteristics.Update(changed: knowledge.groups),
-                                    knowledgeEntries: ModelCharacteristics.Update(changed: knowledge.entries),
-                                    announcements: ModelCharacteristics.Update(changed: announcements),
-                                    events: ModelCharacteristics.Update(changed: events),
-                                    rooms: ModelCharacteristics.Update(changed: rooms),
-                                    tracks: ModelCharacteristics.Update(changed: tracks),
-                                    conferenceDays: ModelCharacteristics.Update(changed: days),
-                                    dealers: dealers,
-                                    maps: maps,
-                                    images: ModelCharacteristics.Update(changed: allImages))
+        return ModelCharacteristics(
+            conventionIdentifier: testConventionIdentifier,
+            knowledgeGroups: ModelCharacteristics.Update(changed: knowledge.groups),
+            knowledgeEntries: ModelCharacteristics.Update(changed: knowledge.entries),
+            announcements: ModelCharacteristics.Update(changed: announcements),
+            events: ModelCharacteristics.Update(changed: events),
+            rooms: ModelCharacteristics.Update(changed: rooms),
+            tracks: ModelCharacteristics.Update(changed: tracks),
+            conferenceDays: ModelCharacteristics.Update(changed: days),
+            dealers: dealers,
+            maps: maps,
+            images: ModelCharacteristics.Update(changed: allImages)
+        )
     }
     
 }
