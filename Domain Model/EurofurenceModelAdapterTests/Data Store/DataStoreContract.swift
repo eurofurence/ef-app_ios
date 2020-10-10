@@ -490,7 +490,12 @@ class DataStoreContract: XCTestCase {
         XCTAssertEqual([T](), elements, file: file, line: line)
     }
     
-    private func assertThat<T>(_ expected: [T], isEqualTo actual: [T]?, file: StaticString = #file, line: UInt = #line) where T: Equatable {
+    private func assertThat<T>(
+        _ expected: [T],
+        isEqualTo actual: [T]?,
+        file: StaticString = #file,
+        line: UInt = #line
+    ) where T: Equatable {
         guard let actual = actual else {
             XCTFail("Expected actual values, but got nil", file: file, line: line)
             return

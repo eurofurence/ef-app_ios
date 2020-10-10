@@ -90,8 +90,16 @@ class CoreDataStoreShould: DataStoreContract {
         let link = entry.links.randomElement().element
         
         let linksFetchRequest: NSFetchRequest<LinkEntity> = LinkEntity.fetchRequest()
-        let preidcateFormat = "\(#keyPath(LinkEntity.name)) == %@ AND \(#keyPath(LinkEntity.target)) == %@ AND \(#keyPath(LinkEntity.fragmentType)) == %li"
-        linksFetchRequest.predicate = NSPredicate(format: preidcateFormat, link.name, link.target, link.fragmentType.rawValue)
+        let predicateFormat = "\(#keyPath(LinkEntity.name)) == %@ AND " +
+                              "\(#keyPath(LinkEntity.target)) == %@ AND " +
+                              "\(#keyPath(LinkEntity.fragmentType)) == %li"
+        
+        linksFetchRequest.predicate = NSPredicate(
+            format: predicateFormat,
+            link.name,
+            link.target,
+            link.fragmentType.rawValue
+        )
         
         coreDataStore.container.viewContext.performAndWait {
             do {
