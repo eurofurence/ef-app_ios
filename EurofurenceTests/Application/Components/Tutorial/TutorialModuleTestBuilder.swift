@@ -22,7 +22,7 @@ class TutorialModuleTestBuilder {
     let tutorialSceneFactory = StubTutorialSceneFactory()
     let delegate = CapturingTutorialComponentDelegate()
     var networkReachability: NetworkReachability = WiFiNetwork()
-    var pushPermissionsRequestStateProviding: WitnessedTutorialPushPermissionsRequest = UserNotAcknowledgedPushPermissions()
+    var pushPermissionsRequestState: WitnessedTutorialPushPermissionsRequest = UserNotAcknowledgedPushPermissions()
 
     @discardableResult
     func with(_ networkReachability: NetworkReachability) -> TutorialModuleTestBuilder {
@@ -31,8 +31,10 @@ class TutorialModuleTestBuilder {
     }
 
     @discardableResult
-    func with(_ pushPermissionsRequestStateProviding: WitnessedTutorialPushPermissionsRequest) -> TutorialModuleTestBuilder {
-        self.pushPermissionsRequestStateProviding = pushPermissionsRequestStateProviding
+    func with(
+        _ pushPermissionsRequestStateProviding: WitnessedTutorialPushPermissionsRequest
+    ) -> TutorialModuleTestBuilder {
+        self.pushPermissionsRequestState = pushPermissionsRequestStateProviding
         return self
     }
 
@@ -42,7 +44,7 @@ class TutorialModuleTestBuilder {
             .with(presentationAssets)
             .with(stateProviding)
             .with(networkReachability)
-            .with(pushPermissionsRequestStateProviding)
+            .with(pushPermissionsRequestState)
             .build()
             .makeTutorialModule(delegate)
 

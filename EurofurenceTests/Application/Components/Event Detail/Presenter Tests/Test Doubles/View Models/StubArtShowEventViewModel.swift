@@ -7,7 +7,8 @@ struct StubArtShowEventViewModel: EventDetailViewModel {
     var numberOfComponents: Int { return 1 }
     func setDelegate(_ delegate: EventDetailViewModelDelegate) { }
     
-    func describe(componentAt index: Int, to visitor: EventDetailViewModelVisitor) { visitor.visit(artShowMessageViewModel)
+    func describe(componentAt index: Int, to visitor: EventDetailViewModelVisitor) {
+        visitor.visit(artShowMessageViewModel)
     }
     
     func favourite() { }

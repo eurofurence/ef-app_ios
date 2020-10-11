@@ -14,7 +14,9 @@ class RemotelyConfiguredConventionStartDateRepositoryTests: XCTestCase {
         configuredStartDate = .random
         consumer = CapturingConventionStartDateConsumer()
         remoteConfigurationLoader = FakeRemoteConfigurationLoader()
-        repository = RemotelyConfiguredConventionStartDateRepository(remoteConfigurationLoader: remoteConfigurationLoader)
+        repository = RemotelyConfiguredConventionStartDateRepository(
+            remoteConfigurationLoader: remoteConfigurationLoader
+        )
     }
     
     private func simulateConfigurationLoaded() {

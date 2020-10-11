@@ -26,7 +26,10 @@ class WhenPreparingViewModel_EventDetailViewModelFactoryShould: XCTestCase {
     }
 
     func testProduceExpectedDescriptionViewModelAfterSummary() {
-        XCTAssertEqual(context.makeExpectedEventDescriptionViewModel(), visitor.visited(ofKind: EventDescriptionViewModel.self))
+        XCTAssertEqual(
+            context.makeExpectedEventDescriptionViewModel(),
+            visitor.visited(ofKind: EventDescriptionViewModel.self)
+        )
     }
 
 }

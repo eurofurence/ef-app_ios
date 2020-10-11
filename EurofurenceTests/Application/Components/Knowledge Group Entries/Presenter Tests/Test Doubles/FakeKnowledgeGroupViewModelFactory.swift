@@ -13,7 +13,10 @@ struct FakeKnowledgeGroupViewModelFactory: KnowledgeGroupViewModelFactory {
         self.viewModel = viewModel
     }
 
-    func makeViewModelForGroup(identifier: KnowledgeGroupIdentifier, completionHandler: @escaping (KnowledgeGroupEntriesViewModel) -> Void) {
+    func makeViewModelForGroup(
+        identifier: KnowledgeGroupIdentifier, 
+        completionHandler: @escaping (KnowledgeGroupEntriesViewModel) -> Void
+    ) {
         guard identifier == groupIdentifier else { return }
         completionHandler(viewModel)
     }

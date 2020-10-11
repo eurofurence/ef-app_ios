@@ -54,15 +54,17 @@ class EventDetailViewModelFactoryTestBuilder {
 extension EventDetailViewModelFactoryTestBuilder.Context {
 
     func makeExpectedEventSummaryViewModel() -> EventSummaryViewModel {
-        return EventSummaryViewModel(title: event.title,
-                                     subtitle: event.subtitle,
-                                     abstract: markdownRenderer.stubbedContents(for: event.abstract),
-                                     eventStartEndTime: dateRangeFormatter.string(from: event.startDate, to: event.endDate),
-                                     location: event.room.name,
-                                     trackName: event.track.name,
-                                     eventHosts: event.hosts)
+        EventSummaryViewModel(
+            title: event.title,
+            subtitle: event.subtitle,
+            abstract: markdownRenderer.stubbedContents(for: event.abstract),
+            eventStartEndTime: dateRangeFormatter.string(from: event.startDate, to: event.endDate),
+            location: event.room.name,
+            trackName: event.track.name,
+            eventHosts: event.hosts
+        )
     }
-
+    
     func makeExpectedEventGraphicViewModel() -> EventGraphicViewModel {
         guard let data = event.posterGraphicPNGData ?? event.bannerGraphicPNGData else {
             fatalError("Event used in test isn't stubbed with image data")

@@ -114,7 +114,9 @@ class StubEventDetailItemComponentFactory: EventDetailItemComponentFactory {
     }
 
     let stubbedSuperSponsorsOnlyComponent = CapturingEventInformationBannerComponent()
-    func makeSuperSponsorsOnlyBannerComponent(configuringUsing block: (EventInformationBannerComponent) -> Void) -> Any {
+    func makeSuperSponsorsOnlyBannerComponent(
+        configuringUsing block: (EventInformationBannerComponent) -> Void
+    ) -> Any {
         block(stubbedSuperSponsorsOnlyComponent)
         return stubbedSponsorsOnlyComponent
     }

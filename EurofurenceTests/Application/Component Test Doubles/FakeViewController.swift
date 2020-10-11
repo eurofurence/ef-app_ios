@@ -12,7 +12,11 @@ class FakeViewController: UIViewController {
     }
 
     private(set) var capturedPresentedViewController: UIViewController?
-    override func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
+    override func present(
+        _ viewControllerToPresent: UIViewController,
+        animated flag: Bool, 
+        completion: (() -> Void)? = nil
+    ) {
         capturedPresentedViewController = viewControllerToPresent
         super.present(viewControllerToPresent, animated: flag, completion: completion)
     }

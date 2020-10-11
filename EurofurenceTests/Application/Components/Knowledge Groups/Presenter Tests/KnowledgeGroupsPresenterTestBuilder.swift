@@ -15,15 +15,19 @@ class KnowledgeGroupsPresenterTestBuilder {
         let knowledgeViewModelFactory = CapturingKnowledgeGroupsViewModelFactory()
         let sceneFactory = StubKnowledgeListSceneFactory()
         let delegate = CapturingKnowledgeGroupsListComponentDelegate()
-        let producedViewController = KnowledgeGroupsComponentBuilder(knowledgeGroupsViewModelFactory: knowledgeViewModelFactory)
-            .with(sceneFactory)
-            .build()
-            .makeKnowledgeListComponent(delegate)
-
-        return Context(knowledgeViewModelFactory: knowledgeViewModelFactory,
-                       scene: sceneFactory.scene,
-                       delegate: delegate,
-                       producedViewController: producedViewController)
+        let producedViewController = KnowledgeGroupsComponentBuilder(
+            knowledgeGroupsViewModelFactory: knowledgeViewModelFactory
+        )
+        .with(sceneFactory)
+        .build()
+        .makeKnowledgeListComponent(delegate)
+        
+        return Context(
+            knowledgeViewModelFactory: knowledgeViewModelFactory,
+            scene: sceneFactory.scene,
+            delegate: delegate,
+            producedViewController: producedViewController
+        )
     }
 
 }

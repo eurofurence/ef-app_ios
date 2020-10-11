@@ -95,7 +95,11 @@ class CapturingDealersScene: UIViewController, DealersScene {
     private(set) var capturedDealersPerSectionToBindToSearchResults = [Int]()
     private(set) var capturedSectionIndexTitlesToBindToSearchResults = [String]()
     private(set) var searchResultsBinder: DealersSearchResultsBinder?
-    func bindSearchResults(numberOfDealersPerSection: [Int], sectionIndexTitles: [String], using binder: DealersSearchResultsBinder) {
+    func bindSearchResults(
+        numberOfDealersPerSection: [Int],
+        sectionIndexTitles: [String],
+        using binder: DealersSearchResultsBinder
+    ) {
         capturedDealersPerSectionToBindToSearchResults = numberOfDealersPerSection
         capturedSectionIndexTitlesToBindToSearchResults = sectionIndexTitles
         searchResultsBinder = binder

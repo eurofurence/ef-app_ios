@@ -34,7 +34,10 @@ class WhenLoggedOutBeforeConvention_NewsViewModelProducerShould: XCTestCase {
         let randomAnnouncement = context.displayedAnnouncements.randomElement()
         let announcementIndexPath = IndexPath(item: randomAnnouncement.index + 1, section: 2)
 
-        try context.assert().thatModel().at(indexPath: announcementIndexPath, is: .announcement(randomAnnouncement.element.identifier))
+        try context
+            .assert()
+            .thatModel()
+            .at(indexPath: announcementIndexPath, is: .announcement(randomAnnouncement.element.identifier))
     }
 
     func testFetchAllAnnouncementsModuleValueWhenAskingForAllAnnouncementsIndex() throws {

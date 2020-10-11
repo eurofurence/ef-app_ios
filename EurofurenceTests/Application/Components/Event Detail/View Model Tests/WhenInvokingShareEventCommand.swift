@@ -14,9 +14,10 @@ class WhenInvokingShareEventCommand: XCTestCase {
         let sender = self
         command?.describe(to: actionVisitor)
         command?.perform(sender: sender)
+        let sharedItem = context.shareService.sharedItem as? EventActivityItemSource
         
         XCTAssertEqual(actionVisitor.actionTitle, .share)
-        XCTAssertEqual(EventActivityItemSource(event: event), context.shareService.sharedItem as? EventActivityItemSource)
+        XCTAssertEqual(EventActivityItemSource(event: event), sharedItem)
         XCTAssertTrue(sender === (context.shareService.sharedItemSender as AnyObject))
     }
 

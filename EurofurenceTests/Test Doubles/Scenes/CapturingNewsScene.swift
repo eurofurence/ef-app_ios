@@ -39,19 +39,25 @@ class StubNewsComponentFactory: NewsItemComponentFactory {
     typealias Component = AnyObject
 
     let stubbedCountdownComponent = CapturingConventionCountdownComponent()
-    func makeConventionCountdownComponent(configuringUsing block: (ConventionCountdownComponent) -> Void) -> StubNewsComponentFactory.Component {
+    func makeConventionCountdownComponent(
+        configuringUsing block: (ConventionCountdownComponent) -> Void
+    ) -> StubNewsComponentFactory.Component {
         block(stubbedCountdownComponent)
         return stubbedCountdownComponent
     }
 
     let stubbedAnnouncementComponent = CapturingAnnouncementComponent()
-    func makeAnnouncementComponent(configuringUsing block: (AnnouncementItemComponent) -> Void) -> StubNewsComponentFactory.Component {
+    func makeAnnouncementComponent(
+        configuringUsing block: (AnnouncementItemComponent) -> Void
+    ) -> StubNewsComponentFactory.Component {
         block(stubbedAnnouncementComponent)
         return stubbedAnnouncementComponent
     }
 
     let stubbedAllAnnouncementsComponent = CapturingAllAnnouncementsComponent()
-    func makeAllAnnouncementsComponent(configuringUsing block: (AllAnnouncementsComponent) -> Void) -> StubNewsComponentFactory.Component {
+    func makeAllAnnouncementsComponent(
+        configuringUsing block: (AllAnnouncementsComponent) -> Void
+    ) -> StubNewsComponentFactory.Component {
         block(stubbedAllAnnouncementsComponent)
         return stubbedAllAnnouncementsComponent
     }

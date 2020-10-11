@@ -23,7 +23,11 @@ class WhenBindingInactiveCategory_DealersSceneShould: XCTestCase {
         _ line: UInt = #line
     ) {
         let categoriesViewModel = FakeDealerCategoriesViewModel(categories: [category])
-        let viewModelFactory = FakeDealersViewModelFactory(viewModel: CapturingDealersViewModel.random, categoriesViewModel: categoriesViewModel)
+        let viewModelFactory = FakeDealersViewModelFactory(
+            viewModel: CapturingDealersViewModel.random,
+            categoriesViewModel: categoriesViewModel
+        )
+        
         let context = DealersPresenterTestBuilder().with(viewModelFactory).build()
         context.simulateSceneDidLoad()
         context.simulateSceneDidRevealCategoryFilters()

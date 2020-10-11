@@ -36,9 +36,10 @@ class WhenKnowledgeGroupsListViewModelIsPrepared: XCTestCase {
     func testSelectingKnowledgeGroup() {
         let randomGroup = viewModel.knowledgeGroups.randomElement()
         context.scene.simulateSelectingKnowledgeGroup(at: randomGroup.index)
+        let expectedIdentifier = viewModel.stubbedGroupIdentifier(at: randomGroup.index)
 
         XCTAssertEqual(IndexPath(item: randomGroup.index, section: 0), context.scene.deselectedIndexPath)
-        XCTAssertEqual(viewModel.stubbedGroupIdentifier(at: randomGroup.index), context.delegate.capturedKnowledgeGroupToPresent)
+        XCTAssertEqual(expectedIdentifier, context.delegate.capturedKnowledgeGroupToPresent)
     }
 
 }

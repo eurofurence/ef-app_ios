@@ -20,16 +20,21 @@ class DealerDetailViewModelFactoryTestBuilder {
         dealersService.add(dealer)
         
         let shareService = CapturingShareService()
-        let viewModelFactory = DefaultDealerDetailViewModelFactory(dealersService: dealersService, shareService: shareService)
+        let viewModelFactory = DefaultDealerDetailViewModelFactory(
+            dealersService: dealersService, 
+            shareService: shareService
+        )
 
-        return Context(viewModelFactory: viewModelFactory,
-                       dealersService: dealersService,
-                       dealerData: data,
-                       dealerIdentifier: dealer.identifier,
-                       dealer: dealer,
-                       shareService: shareService)
+        return Context(
+            viewModelFactory: viewModelFactory,
+            dealersService: dealersService,
+            dealerData: data,
+            dealerIdentifier: dealer.identifier,
+            dealer: dealer,
+            shareService: shareService
+        )
     }
-
+    
 }
 
 extension DealerDetailViewModelFactoryTestBuilder.Context {

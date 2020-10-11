@@ -85,7 +85,10 @@ extension NSAttributedString {
 class StubKnowledgeDetailViewModelFactory: KnowledgeDetailViewModelFactory {
 
     var viewModel = StubKnowledgeEntryDetailViewModel.random
-    func makeViewModel(for entry: KnowledgeEntryIdentifier, completionHandler: @escaping (KnowledgeEntryDetailViewModel) -> Void) {
+    func makeViewModel(
+        for entry: KnowledgeEntryIdentifier,
+        completionHandler: @escaping (KnowledgeEntryDetailViewModel) -> Void
+    ) {
         completionHandler(viewModel)
     }
 

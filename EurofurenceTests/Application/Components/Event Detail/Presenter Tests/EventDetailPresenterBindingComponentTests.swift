@@ -15,8 +15,9 @@ class EventDetailPresenterBindingComponentTests: XCTestCase {
         let context = EventDetailPresenterTestBuilder().with(viewModelFactory).build(for: event)
         context.simulateSceneDidLoad()
         let boundComponent = context.scene.bindComponent(at: IndexPath(item: index, section: 0))
+        let eventGraphicComponent = boundComponent as? CapturingEventGraphicComponent
 
-        XCTAssertTrue((boundComponent as? CapturingEventGraphicComponent) === context.scene.stubbedEventGraphicComponent)
+        XCTAssertTrue(eventGraphicComponent === context.scene.stubbedEventGraphicComponent)
         XCTAssertEqual(graphic.pngGraphicData, context.scene.stubbedEventGraphicComponent.capturedPNGGraphicData)
     }
 
@@ -29,9 +30,11 @@ class EventDetailPresenterBindingComponentTests: XCTestCase {
         let context = EventDetailPresenterTestBuilder().with(viewModelFactory).build(for: event)
         context.simulateSceneDidLoad()
         let boundComponent = context.scene.bindComponent(at: IndexPath(item: index, section: 0))
+        let eventDescriptionComponent = boundComponent as? CapturingEventDescriptionComponent
+        let stubbedComponent = context.scene.stubbedEventDescriptionComponent
         
-        XCTAssertEqual(eventDescription.contents, context.scene.stubbedEventDescriptionComponent.capturedEventDescription)
-        XCTAssertTrue((boundComponent as? CapturingEventDescriptionComponent) === context.scene.stubbedEventDescriptionComponent)
+        XCTAssertTrue(eventDescriptionComponent === stubbedComponent)
+        XCTAssertEqual(eventDescription.contents, stubbedComponent.capturedEventDescription)
     }
     
     func testBindingSummaryComponent() {
@@ -89,7 +92,10 @@ class EventDetailPresenterBindingComponentTests: XCTestCase {
     func testBindingSuperSponsorsOnly() {
         let message = String.random
         let superSponsorsOnlyWarningViewModel = EventSuperSponsorsOnlyWarningViewModel(message: message)
-        let viewModel = StubSuperSponsorsOnlyEventViewModel(superSponsorsOnlyWarningViewModel: superSponsorsOnlyWarningViewModel)
+        let viewModel = StubSuperSponsorsOnlyEventViewModel(
+            superSponsorsOnlyWarningViewModel: superSponsorsOnlyWarningViewModel
+        )
+        
         let scene = prepareSceneForBindingComponent(viewModel: viewModel)
 
         XCTAssertEqual(message, scene.stubbedSuperSponsorsOnlyComponent.capturedMessage)

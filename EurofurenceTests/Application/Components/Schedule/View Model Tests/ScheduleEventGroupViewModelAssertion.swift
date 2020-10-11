@@ -10,25 +10,34 @@ class ScheduleEventGroupViewModelAssertion: Assertion {
     class func assertionForEventViewModels(context: ScheduleViewModelFactoryTestBuilder.Context,
                                            file: StaticString = #file,
                                            line: UInt = #line) -> ScheduleEventGroupViewModelAssertion {
-        return ScheduleEventGroupViewModelAssertion(context: context,
-                                                    groupDateFormatter: context.hoursFormatter.hoursString,
-                                                    file: file,
-                                                    line: line)
+        return ScheduleEventGroupViewModelAssertion(
+            context: context,
+            groupDateFormatter: context.hoursFormatter.hoursString,
+            file: file,
+            line: line
+        )
     }
-
+    
     class func assertionForSearchEventViewModels(context: ScheduleViewModelFactoryTestBuilder.Context,
                                                  file: StaticString = #file,
                                                  line: UInt = #line) -> ScheduleEventGroupViewModelAssertion {
-        return ScheduleEventGroupViewModelAssertion(context: context,
-                                                    groupDateFormatter: context.shortFormDayAndTimeFormatter.dayAndHoursString,
-                                                    file: file,
-                                                    line: line)
+        return ScheduleEventGroupViewModelAssertion(
+            context: context,
+            groupDateFormatter: context.shortFormDayAndTimeFormatter.dayAndHoursString,
+            file: file,
+            line: line
+        )
     }
-
-    private init(context: ScheduleViewModelFactoryTestBuilder.Context, groupDateFormatter: @escaping (Date) -> String, file: StaticString = #file, line: UInt = #line) {
+    
+    private init(
+        context: ScheduleViewModelFactoryTestBuilder.Context,
+        groupDateFormatter: @escaping (Date) -> String,
+        file: StaticString = #file,
+        line: UInt = #line
+    ) {
         self.context = context
         self.groupDateFormatter = groupDateFormatter
-
+        
         super.init(file: file, line: line)
     }
 

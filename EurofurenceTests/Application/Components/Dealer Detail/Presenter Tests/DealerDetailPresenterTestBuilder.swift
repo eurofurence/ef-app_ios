@@ -24,21 +24,26 @@ class DealerDetailPresenterTestBuilder {
         self.viewModelFactory = viewModelFactory
         return self
     }
-
+    
     func build(for identifier: DealerIdentifier = .random) -> Context {
         let sceneFactory = StubDealerDetailSceneFactory()
         let dealerInteractionRecorder = CapturingDealerInteractionRecorder()
-        let module = DealerDetailComponentBuilder(dealerDetailViewModelFactory: viewModelFactory, dealerInteractionRecorder: dealerInteractionRecorder)
-            .with(sceneFactory)
-            .build()
-            .makeDealerDetailComponent(for: identifier)
-
-        return Context(producedModuleViewController: module,
-                       scene: sceneFactory.scene,
-                       viewModelFactory: viewModelFactory,
-                       dealerInteractionRecorder: dealerInteractionRecorder)
+        let module = DealerDetailComponentBuilder(
+            dealerDetailViewModelFactory: viewModelFactory,
+            dealerInteractionRecorder: dealerInteractionRecorder
+        )
+        .with(sceneFactory)
+        .build()
+        .makeDealerDetailComponent(for: identifier)
+        
+        return Context(
+            producedModuleViewController: module,
+            scene: sceneFactory.scene,
+            viewModelFactory: viewModelFactory,
+            dealerInteractionRecorder: dealerInteractionRecorder
+        )
     }
-
+    
 }
 
 extension DealerDetailPresenterTestBuilder.Context {

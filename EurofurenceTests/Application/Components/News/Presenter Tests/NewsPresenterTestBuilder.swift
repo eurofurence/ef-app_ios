@@ -47,7 +47,9 @@ class NewsPresenterTestBuilder {
 
 extension NewsPresenterTestBuilder {
 
-    static func buildForAssertingAgainstEventComponent(eventViewModel: EventComponentViewModel) -> CapturingScheduleEventComponent {
+    static func buildForAssertingAgainstEventComponent(
+        eventViewModel: EventComponentViewModel
+    ) -> CapturingScheduleEventComponent {
         let viewModel = SingleEventNewsViewModel(event: eventViewModel)
         let indexPath = IndexPath(item: 0, section: 0)
         let newsViewModelFactory = StubNewsViewModelProducer(viewModel: viewModel)

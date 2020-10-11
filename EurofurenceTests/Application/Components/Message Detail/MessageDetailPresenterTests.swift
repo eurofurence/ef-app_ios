@@ -22,7 +22,11 @@ class MessageDetailPresenterTests: XCTestCase {
         let messageIdentifier = MessageIdentifier.random
         let message = StubMessage.random
         let sceneFactory = StubMessageDetailSceneFactory()
-        let messagesService = SuccessfulPrivateMessagesService(successfulForMessage: messageIdentifier, providingMessage: message)
+        let messagesService = SuccessfulPrivateMessagesService(
+            successfulForMessage: messageIdentifier,
+            providingMessage: message
+        )
+        
         let module = MessageDetailComponentBuilder(messagesService: messagesService).with(sceneFactory).build()
         _ = module.makeMessageDetailComponent(for: messageIdentifier)
         
@@ -41,7 +45,11 @@ class MessageDetailPresenterTests: XCTestCase {
         let messageIdentifier = MessageIdentifier.random
         let sceneFactory = StubMessageDetailSceneFactory()
         let error = PrivateMessageError.noMessageFound
-        let messagesService = FailingPrivateMessagesService(unsuccessfulForMessage: messageIdentifier, providingError: error)
+        let messagesService = FailingPrivateMessagesService(
+            unsuccessfulForMessage: messageIdentifier,
+            providingError: error
+        )
+        
         let module = MessageDetailComponentBuilder(messagesService: messagesService).with(sceneFactory).build()
         _ = module.makeMessageDetailComponent(for: messageIdentifier)
         sceneFactory.scene.simulateSceneReady()

@@ -8,7 +8,11 @@ class WhenDealersSceneRevealsCategoryFilters_DealersPresenterShould: XCTestCase 
         let bCategory = FakeDealerCategoryViewModel(title: "B")
         let cCategory = FakeDealerCategoryViewModel(title: "C")
         let categoriesViewModel = FakeDealerCategoriesViewModel(categories: [aCategory, bCategory, cCategory])
-        let viewModelFactory = FakeDealersViewModelFactory(viewModel: CapturingDealersViewModel.random, categoriesViewModel: categoriesViewModel)
+        let viewModelFactory = FakeDealersViewModelFactory(
+            viewModel: CapturingDealersViewModel.random,
+            categoriesViewModel: categoriesViewModel
+        )
+        
         let context = DealersPresenterTestBuilder().with(viewModelFactory).build()
         context.simulateSceneDidLoad()
         context.simulateSceneDidRevealCategoryFilters()
@@ -21,7 +25,11 @@ class WhenDealersSceneRevealsCategoryFilters_DealersPresenterShould: XCTestCase 
     func testToggleCategoryActiveStateWhenComponentSelected() {
         let category = FakeDealerCategoryViewModel(title: "A")
         let categoriesViewModel = FakeDealerCategoriesViewModel(categories: [category])
-        let viewModelFactory = FakeDealersViewModelFactory(viewModel: CapturingDealersViewModel.random, categoriesViewModel: categoriesViewModel)
+        let viewModelFactory = FakeDealersViewModelFactory(
+            viewModel: CapturingDealersViewModel.random,
+            categoriesViewModel: categoriesViewModel
+        )
+        
         let context = DealersPresenterTestBuilder().with(viewModelFactory).build()
         context.simulateSceneDidLoad()
         context.simulateSceneDidRevealCategoryFilters()

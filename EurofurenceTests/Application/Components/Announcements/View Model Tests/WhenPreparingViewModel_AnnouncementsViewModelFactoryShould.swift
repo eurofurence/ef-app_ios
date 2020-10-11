@@ -31,11 +31,13 @@ class WhenPreparingViewModel_AnnouncementsViewModelFactoryShould: XCTestCase {
         var viewModel: AnnouncementsListViewModel?
         viewModelFactory.makeViewModel { viewModel = $0 }
         let announcementViewModel = viewModel?.announcementViewModel(at: announcement.index)
+        let expectedDetail = markdownRenderer.stubbedContents(for: announcement.element.content)
+        let expectedFormattedDate = announcementDateFormatter.string(from: announcement.element.date)
 
         XCTAssertEqual(announcements.count, viewModel?.numberOfAnnouncements)
         XCTAssertEqual(announcement.element.title, announcementViewModel?.title)
-        XCTAssertEqual(markdownRenderer.stubbedContents(for: announcement.element.content), announcementViewModel?.detail)
-        XCTAssertEqual(announcementDateFormatter.string(from: announcement.element.date), announcementViewModel?.receivedDateTime)
+        XCTAssertEqual(expectedDetail, announcementViewModel?.detail)
+        XCTAssertEqual(expectedFormattedDate, announcementViewModel?.receivedDateTime)
         XCTAssertEqual(false, announcementViewModel?.isRead)
         XCTAssertEqual(announcement.element.identifier, viewModel?.identifierForAnnouncement(at: announcement.index))
     }

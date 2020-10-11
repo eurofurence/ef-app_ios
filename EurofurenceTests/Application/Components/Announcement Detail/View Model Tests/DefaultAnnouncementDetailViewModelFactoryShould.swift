@@ -20,11 +20,12 @@ class DefaultAnnouncementDetailViewModelFactoryShould: XCTestCase {
     func testProduceInvalidAnnouncementViewModelWhenAnnouncementMissing() {
         let context = AnnouncementDetailViewModelFactoryTestBuilder().buildForMissingAnnouncement()
         let viewModel = context.makeViewModel()
+        let expectedContents = context.markdownRenderer.stubbedContents(for: .invalidAnnouncementAlertMessage)
         
         XCTAssertNotNil(viewModel)
         XCTAssertNil(viewModel?.imagePNGData)
         XCTAssertEqual(String.invalidAnnouncementAlertTitle, viewModel?.heading)
-        XCTAssertEqual(context.markdownRenderer.stubbedContents(for: .invalidAnnouncementAlertMessage), viewModel?.contents)
+        XCTAssertEqual(expectedContents, viewModel?.contents)
     }
 
 }

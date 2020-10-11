@@ -29,7 +29,12 @@ class WhenShowingMapContents_ForAlternativeMapPosition_MapDetailViewModelFactory
         let (expectedX, expectedY) = (Float.random, Float.random)
         let expectedName = String.random
         let expectedMapCoordinate = MapCoordinate(x: expectedX, y: expectedY)
-        randomMap.element.stub(content: .location(x: expectedX, y: expectedY, name: expectedName), atX: Int(x), y: Int(y))
+        randomMap.element.stub(
+            content: .location(x: expectedX, y: expectedY, name: expectedName),
+            atX: Int(x),
+            y: Int(y)
+        )
+        
         let viewModelFactory = DefaultMapDetailViewModelFactory(mapsService: mapsService)
         
         var viewModel: MapDetailViewModel?
