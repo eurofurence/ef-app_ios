@@ -73,7 +73,7 @@ struct ComponentRegistry {
         ).build()
         
         let defaultDealerIcon = #imageLiteral(resourceName: "defaultAvatar")
-        guard let defaultDealerIconData = defaultDealerIcon.pngData() else { fatalError("Default dealer icon is not a PNG") }
+        let defaultDealerIconData = defaultDealerIcon.pngData().unsafelyUnwrapped
         
         let dealersViewModelFactory = DefaultDealersViewModelFactory(
             dealersService: services.dealers,

@@ -1,6 +1,7 @@
 extension DomainEvent {
     
     struct EventFeedbackReady {
+        
         var identifier: EventIdentifier
         var feedback: EventFeedback
         var delegate: EventFeedbackDelegate
@@ -12,6 +13,7 @@ extension DomainEvent {
         var eventFeedback: String {
             return feedback.feedback
         }
+        
     }
     
 }

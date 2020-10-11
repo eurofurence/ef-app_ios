@@ -18,7 +18,9 @@ class ScheduleViewController: UIViewController,
     }
     
     private let refreshControl = UIRefreshControl(frame: .zero)
-    private lazy var navigationBarShadowDelegate = HideNavigationBarShadowForSpecificViewControllerDelegate(viewControllerToHideNavigationBarShadow: self)
+    private lazy var navigationBarShadowDelegate = HideNavigationBarShadowForSpecificViewControllerDelegate(
+        viewControllerToHideNavigationBarShadow: self
+    )
 
     private var tableController: TableController? {
         didSet {
@@ -227,7 +229,8 @@ class ScheduleViewController: UIViewController,
     private func tableViewDidScroll(to offset: CGPoint) {
         guard offset.y < 0 else { return }
         
-        let safeAreaApplyingScrollViewContentInsets = view.safeAreaLayoutGuide.layoutFrame.origin.y + tableView.contentInset.top
+        let safeAreaTop = view.safeAreaLayoutGuide.layoutFrame.origin.y
+        let safeAreaApplyingScrollViewContentInsets = safeAreaTop + tableView.contentInset.top
         let distance = max(0, abs(offset.y) - safeAreaApplyingScrollViewContentInsets)
         daysPickerTopConstraint.constant = distance
     }

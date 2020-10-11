@@ -9,7 +9,12 @@ class StubCompanionAppURLRequestFactory: CompanionAppURLRequestFactory {
     private(set) var additionalServicesAuthenticationToken: String?
     func makeAdditionalServicesRequest(authenticationToken: String?) -> URLRequest {
         additionalServicesAuthenticationToken = authenticationToken
-        return authenticationToken == nil ? unauthenticatedAdditionalServicesRequest : authenticatedAdditionalServicesRequest
+        
+        if authenticationToken == nil {
+            return unauthenticatedAdditionalServicesRequest
+        } else {
+            return authenticatedAdditionalServicesRequest
+        }
     }
     
 }

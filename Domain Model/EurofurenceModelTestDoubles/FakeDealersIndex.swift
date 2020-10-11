@@ -7,7 +7,9 @@ public class FakeDealersIndex: DealersIndex {
 
     public init(
         alphabetisedDealers: [AlphabetisedDealersGroup] = .random,
-        availableCategories: DealerCategoriesCollection = InMemoryDealerCategoriesCollection(categories: [FakeDealerCategory]())
+        availableCategories: DealerCategoriesCollection = InMemoryDealerCategoriesCollection(
+            categories: [FakeDealerCategory]()
+        )
     ) {
         self.alphabetisedDealers = alphabetisedDealers
         self.availableCategories = availableCategories

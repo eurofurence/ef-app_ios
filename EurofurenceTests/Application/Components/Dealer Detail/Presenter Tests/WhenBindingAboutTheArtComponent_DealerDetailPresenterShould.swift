@@ -5,17 +5,20 @@ import XCTest
 class WhenBindingAboutTheArtComponent_DealerDetailPresenterShould: XCTestCase {
 
     func testBindTheArtistInformation() {
-        let aboutTheArtViewModel = DealerDetailAboutTheArtViewModel.random
-        let viewModel = FakeDealerDetailAboutTheArtViewModel(aboutTheArt: aboutTheArtViewModel)
-        let viewModelFactory = FakeDealerDetailViewModelFactory(viewModel: viewModel)
+        let viewModel = DealerDetailAboutTheArtViewModel.random
+        let viewModelWrapper = FakeDealerDetailAboutTheArtViewModel(aboutTheArt: viewModel)
+        let viewModelFactory = FakeDealerDetailViewModelFactory(viewModel: viewModelWrapper)
         let context = DealerDetailPresenterTestBuilder().with(viewModelFactory).build()
         context.simulateSceneDidLoad()
         context.bindComponent(at: 0)
         
-        XCTAssertEqual(aboutTheArtViewModel.title, context.boundAboutTheArtComponent?.capturedTitle)
-        XCTAssertEqual(aboutTheArtViewModel.aboutTheArt, context.boundAboutTheArtComponent?.capturedAboutTheArt)
-        XCTAssertEqual(aboutTheArtViewModel.artPreviewImagePNGData, context.boundAboutTheArtComponent?.capturedArtPreviewImagePNGData)
-        XCTAssertEqual(aboutTheArtViewModel.artPreviewCaption, context.boundAboutTheArtComponent?.capturedArtPreviewCaption)
+        XCTAssertEqual(viewModel.title, context.boundAboutTheArtComponent?.capturedTitle)
+        XCTAssertEqual(viewModel.aboutTheArt, context.boundAboutTheArtComponent?.capturedAboutTheArt)
+        XCTAssertEqual(viewModel.artPreviewCaption, context.boundAboutTheArtComponent?.capturedArtPreviewCaption)
+        XCTAssertEqual(
+            viewModel.artPreviewImagePNGData,
+            context.boundAboutTheArtComponent?.capturedArtPreviewImagePNGData
+        )
     }
 
 }

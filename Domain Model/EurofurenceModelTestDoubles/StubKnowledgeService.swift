@@ -7,7 +7,10 @@ public class StubKnowledgeService: KnowledgeService {
         
     }
 
-    public func fetchKnowledgeGroup(identifier: KnowledgeGroupIdentifier, completionHandler: @escaping (KnowledgeGroup) -> Void) {
+    public func fetchKnowledgeGroup(
+        identifier: KnowledgeGroupIdentifier,
+        completionHandler: @escaping (KnowledgeGroup) -> Void
+    ) {
 
     }
 
@@ -16,15 +19,24 @@ public class StubKnowledgeService: KnowledgeService {
         observers.append(observer)
     }
 
-    public func fetchKnowledgeEntry(for identifier: KnowledgeEntryIdentifier, completionHandler: @escaping (KnowledgeEntry) -> Void) {
+    public func fetchKnowledgeEntry(
+        for identifier: KnowledgeEntryIdentifier,
+        completionHandler: @escaping (KnowledgeEntry) -> Void
+    ) {
 
     }
 
-    public func fetchKnowledgeGroup(identifier: KnowledgeGroupIdentifier, completionHandler: @escaping ([KnowledgeEntry]) -> Void) {
+    public func fetchKnowledgeGroup(
+        identifier: KnowledgeGroupIdentifier,
+        completionHandler: @escaping ([KnowledgeEntry]) -> Void
+    ) {
 
     }
 
-    public func fetchImagesForKnowledgeEntry(identifier: KnowledgeEntryIdentifier, completionHandler: @escaping ([Data]) -> Void) {
+    public func fetchImagesForKnowledgeEntry(
+        identifier: KnowledgeEntryIdentifier,
+        completionHandler: @escaping ([Data]) -> Void
+    ) {
 
     }
 

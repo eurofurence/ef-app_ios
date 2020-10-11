@@ -28,7 +28,12 @@ class DealerAssertion: Assertion {
             return
         }
 
-        let alternateName: String? = characteristic.attendeeNickname == characteristic.displayName ? nil : characteristic.attendeeNickname
+        let alternateName: String?
+        if characteristic.attendeeNickname == characteristic.displayName {
+            alternateName = nil
+        } else {
+            alternateName = characteristic.attendeeNickname
+        }
 
         assert(dealer.identifier, isEqualTo: DealerIdentifier(rawValue: characteristic.identifier))
         assert(dealer.preferredName, isEqualTo: characteristic.displayName)

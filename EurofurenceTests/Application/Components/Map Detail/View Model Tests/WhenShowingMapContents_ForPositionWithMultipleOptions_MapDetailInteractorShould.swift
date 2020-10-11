@@ -12,7 +12,12 @@ class WhenShowingMapContents_ForPositionWithMultipleOptions_MapDetailViewModelFa
         let dealer = FakeDealer.random
         let room = Room.random
 		let locationName = String.random
-        let content: MapContent = .multiple([.dealer(dealer), .room(room), .location(x: .random, y: .random, name: locationName)])
+        let content: MapContent = .multiple([
+            .dealer(dealer),
+            .room(room),
+            .location(x: .random, y: .random, name: locationName)
+        ])
+        
         randomMap.element.stub(content: content, atX: Int(x), y: Int(y))
         
         let viewModelFactory = DefaultMapDetailViewModelFactory(mapsService: mapsService)
@@ -32,7 +37,12 @@ class WhenShowingMapContents_ForPositionWithMultipleOptions_MapDetailViewModelFa
         let dealer = FakeDealer.random
         let room = Room.random
         let locationName = String.random
-        let content: MapContent = .multiple([.dealer(dealer), .room(room), .location(x: .random, y: .random, name: locationName)])
+        let content: MapContent = .multiple([
+            .dealer(dealer),
+            .room(room),
+            .location(x: .random, y: .random, name: locationName)
+        ])
+        
         randomMap.element.stub(content: content, atX: Int(x), y: Int(y))
         let viewModelFactory = DefaultMapDetailViewModelFactory(mapsService: mapsService)
         var viewModel: MapDetailViewModel?
@@ -51,7 +61,12 @@ class WhenShowingMapContents_ForPositionWithMultipleOptions_MapDetailViewModelFa
         let dealer = FakeDealer.random
         let room = Room.random
         let locationName = String.random
-        let contents: [MapContent] = [.dealer(dealer), .room(room), .location(x: .random, y: .random, name: locationName)]
+        let contents: [MapContent] = [
+            .dealer(dealer),
+            .room(room),
+            .location(x: .random, y: .random, name: locationName)
+        ]
+        
         let content: MapContent = .multiple(contents)
         randomMap.element.stub(content: content, atX: Int(x), y: Int(y))
         let viewModelFactory = DefaultMapDetailViewModelFactory(mapsService: mapsService)

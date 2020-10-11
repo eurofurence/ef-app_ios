@@ -10,7 +10,10 @@ class WhenFetchingKnowledgeGroup_ApplicationShould: XCTestCase {
         let randomGroup = syncResponse.knowledgeGroups.changed.randomElement()
 
         var actual: KnowledgeGroup?
-        context.knowledgeService.fetchKnowledgeGroup(identifier: KnowledgeGroupIdentifier(randomGroup.element.identifier)) { actual = $0 }
+        context.knowledgeService.fetchKnowledgeGroup(
+            identifier: KnowledgeGroupIdentifier(randomGroup.element.identifier),
+            completionHandler: { actual = $0 }
+        )
 
         KnowledgeGroupAssertion().assertGroup(actual,
                                               characterisedByGroup: randomGroup.element,

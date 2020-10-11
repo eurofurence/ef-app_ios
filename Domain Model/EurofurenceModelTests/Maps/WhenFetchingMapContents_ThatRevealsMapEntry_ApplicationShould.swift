@@ -6,7 +6,14 @@ class WhenFetchingMapContents_ThatRevealsMapEntry_ApplicationShould: XCTestCase 
 	func testProvideTheDealer() {
 		let context = EurofurenceSessionTestBuilder().build()
 		var syncResponse = ModelCharacteristics.randomWithoutDeletions
-		let expectedMapEntry = MapCharacteristics.Entry(identifier: .random, x: Int.random, y: Int.random, tapRadius: Int.random, links: [])
+		let expectedMapEntry = MapCharacteristics.Entry(
+            identifier: .random,
+            x: Int.random,
+            y: Int.random,
+            tapRadius: Int.random,
+            links: []
+        )
+        
 		var map = MapCharacteristics.random
 		let link = MapCharacteristics.Entry.Link(type: .mapEntry, name: .random, target: expectedMapEntry.identifier)
 		let (x, y, tapRadius) = (Int.random, Int.random, Int.random)

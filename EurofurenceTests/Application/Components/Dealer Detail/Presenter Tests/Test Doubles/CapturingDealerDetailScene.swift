@@ -27,7 +27,9 @@ class CapturingDealerDetailScene: UIViewController, DealerDetailScene, DealerDet
     }
 
     private(set) var boundLocationAndAvailabilityComponent: CapturingDealerLocationAndAvailabilityComponent?
-    func makeDealerLocationAndAvailabilityComponent(configureUsing block: (DealerLocationAndAvailabilityComponent) -> Void) -> Component {
+    func makeDealerLocationAndAvailabilityComponent(
+        configureUsing block: (DealerLocationAndAvailabilityComponent) -> Void
+    ) -> Component {
         let component = CapturingDealerLocationAndAvailabilityComponent()
         block(component)
         boundLocationAndAvailabilityComponent = component

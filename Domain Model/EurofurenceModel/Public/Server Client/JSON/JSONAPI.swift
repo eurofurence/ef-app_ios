@@ -34,7 +34,7 @@ public struct JSONAPI: API {
 
     public func performLogin(request: LoginRequest, completionHandler: @escaping (LoginResponse?) -> Void) {
         let url = urlStringByAppending(pathComponent: "Tokens/RegSys")
-        let request: Request.Login = Request.Login(RegNo: request.regNo, Username: request.username, Password: request.password)
+        let request = Request.Login(RegNo: request.regNo, Username: request.username, Password: request.password)
         guard let jsonData = try? encoder.encode(request) else { return }
         let jsonRequest = JSONRequest(url: url, body: jsonData)
 

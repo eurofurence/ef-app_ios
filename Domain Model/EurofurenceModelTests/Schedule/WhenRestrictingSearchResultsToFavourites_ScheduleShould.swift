@@ -23,12 +23,13 @@ class WhenRestrictingSearchResultsToFavourites_ScheduleShould: XCTestCase {
         XCTAssertEqual(Set(expected), Set(searchResultIdentifiers))
     }
 
-    func testNotIncludeQueryResultsThatAreNotFavourites() {
+    func testNotIncludeQueryResultsThatAreNotFavourites() throws {
         let response = ModelCharacteristics.randomWithoutDeletions
+        let changedEvents = response.events.changed
         var favouriteEventIdentifiers = response.events.changed.map({ EventIdentifier($0.identifier) })
-        let notAFavourite = favouriteEventIdentifiers.randomElement()
-        let nonFavouriteEvent = response.events.changed.first(where: { $0.identifier == notAFavourite.element.rawValue }).unsafelyUnwrapped
-        favouriteEventIdentifiers.remove(at: notAFavourite.index)
+        let (index, event) = favouriteEventIdentifiers.randomElement()
+        let nonFavouriteEvent = try XCTUnwrap(changedEvents.first(where: { $0.identifier == event.rawValue }))
+        favouriteEventIdentifiers.remove(at: index)
         let dataStore = InMemoryDataStore(response: response)
         dataStore.performTransaction { (transaction) in
             favouriteEventIdentifiers.forEach(transaction.saveFavouriteEventIdentifier)
@@ -41,7 +42,7 @@ class WhenRestrictingSearchResultsToFavourites_ScheduleShould: XCTestCase {
         schedule.restrictResultsToFavourites()
         schedule.changeSearchTerm(nonFavouriteEvent.title)
 
-        XCTAssertFalse(delegate.capturedSearchResults.contains(where: { $0.identifier == notAFavourite.element }))
+        XCTAssertFalse(delegate.capturedSearchResults.contains(where: { $0.identifier == event }))
     }
 
     func testUpdateDelegateWhenUnfavouritingEvent() {

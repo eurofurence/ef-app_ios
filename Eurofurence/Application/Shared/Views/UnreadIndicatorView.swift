@@ -9,7 +9,7 @@ class UnreadIndicatorView: UIView {
 
     private var shapeLayer: CAShapeLayer {
         guard let underlyingLayer = layer as? CAShapeLayer else {
-            fatalError("The underlying layer for the \(UnreadIndicatorView.self) has since changed from using \(CAShapeLayer.self)")
+            fatalError("The layer for \(UnreadIndicatorView.self) changed since using \(CAShapeLayer.self)")
         }
         
         return underlyingLayer

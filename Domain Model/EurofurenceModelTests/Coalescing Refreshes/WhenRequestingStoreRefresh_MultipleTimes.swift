@@ -18,7 +18,11 @@ class WhenRequestingStoreRefresh_MultipleTimes: XCTestCase {
         context.refreshLocalStore()
         context.refreshLocalStore()
         
-        XCTAssertEqual(1, longRunningTaskManager.longRunningTaskCount, "Only one task should start when coalescing multiple refreshes")
+        XCTAssertEqual(
+            1,
+            longRunningTaskManager.longRunningTaskCount,
+            "Only one task should start when coalescing multiple refreshes"
+        )
     }
     
     func testObserversAreOnlyToldAboutTheRefreshStartingOnce() {
@@ -28,7 +32,11 @@ class WhenRequestingStoreRefresh_MultipleTimes: XCTestCase {
         context.refreshLocalStore()
         context.refreshLocalStore()
         
-        XCTAssertEqual(1, observer.numberOfTimesToldDidBeginRefreshing, "Observers should not be told about refreshes that are coalesced")
+        XCTAssertEqual(
+            1,
+            observer.numberOfTimesToldDidBeginRefreshing,
+            "Observers should not be told about refreshes that are coalesced"
+        )
     }
     
     func testTheAPIIsOnlyHitOnce() {
@@ -37,7 +45,10 @@ class WhenRequestingStoreRefresh_MultipleTimes: XCTestCase {
         context.refreshLocalStore()
         context.refreshLocalStore()
         
-        XCTAssertTrue(api.toldToRefreshOnlyOnce, "Trying to refresh while already refreshing should coalesce the requests")
+        XCTAssertTrue(
+            api.toldToRefreshOnlyOnce,
+            "Trying to refresh while already refreshing should coalesce the requests"
+        )
     }
     
     func testEncounteringAPIErrorShouldPermitNewRequests() {
@@ -46,7 +57,10 @@ class WhenRequestingStoreRefresh_MultipleTimes: XCTestCase {
         context.simulateSyncAPIError()
         let secondProgress = context.refreshLocalStore()
         
-        XCTAssertFalse(firstProgress === secondProgress, "API errors during a sync should stop coalescing sync requests")
+        XCTAssertFalse(
+            firstProgress === secondProgress,
+            "API errors during a sync should stop coalescing sync requests"
+        )
     }
     
     func testConventionIdentifierMismatchesShouldPermitNewRequests() {

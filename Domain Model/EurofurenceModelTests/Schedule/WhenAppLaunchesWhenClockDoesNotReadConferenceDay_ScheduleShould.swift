@@ -15,7 +15,7 @@ class WhenAppLaunchesWhenClockDoesNotReadConferenceDay_ScheduleShould: XCTestCas
         XCTAssertTrue(delegate.toldChangedToNilDay)
     }
 
-    func testRestrictEventsToTheFirstConferenceDay() {
+    func testRestrictEventsToTheFirstConferenceDay() throws {
         let response = ModelCharacteristics.randomWithoutDeletions
         let firstDay = response.conferenceDays.changed.min(by: { $0.date < $1.date }).unsafelyUnwrapped
         let dataStore = InMemoryDataStore(response: response)
@@ -25,7 +25,7 @@ class WhenAppLaunchesWhenClockDoesNotReadConferenceDay_ScheduleShould: XCTestCas
         schedule.setDelegate(delegate)
         let expectedEvents = response.events.changed.filter({ $0.dayIdentifier == firstDay.identifier })
 
-        EventAssertion(context: context, modelCharacteristics: response)
+        try EventAssertion(context: context, modelCharacteristics: response)
             .assertEvents(delegate.events, characterisedBy: expectedEvents)
     }
 

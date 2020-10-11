@@ -1,6 +1,9 @@
 import UIKit
 
-class MapDetailViewController: UIViewController, UIScrollViewDelegate, UIPopoverPresentationControllerDelegate, MapDetailScene {
+class MapDetailViewController: UIViewController,
+                               UIScrollViewDelegate,
+                               UIPopoverPresentationControllerDelegate,
+                               MapDetailScene {
 
     // MARK: Nested Types
 
@@ -100,7 +103,8 @@ class MapDetailViewController: UIViewController, UIScrollViewDelegate, UIPopover
                         selectionHandler: @escaping (Int) -> Void) {
         let alertController = UIAlertController(title: heading, message: nil, preferredStyle: .actionSheet)
         for (idx, option) in options.enumerated() {
-            alertController.addAction(UIAlertAction(title: option, style: .default, handler: { (_) in selectionHandler(idx) }))
+            let action = UIAlertAction(title: option, style: .default, handler: { (_) in selectionHandler(idx) })
+            alertController.addAction(action)
         }
 
         alertController.addAction(UIAlertAction(title: .cancel, style: .cancel))

@@ -10,7 +10,10 @@ class WhenSelectingMap_MapsPresenterShould: XCTestCase {
         let mapViewModel = viewModel.maps.randomElement()
         context.simulateSceneDidSelectMap(at: mapViewModel.index)
 
-        XCTAssertEqual(viewModel.identifierForMap(at: mapViewModel.index), context.delegate.capturedMapIdentifierToPresent)
+        let expectedIdentifier = viewModel.identifierForMap(at: mapViewModel.index)
+        let actualIdentifier = context.delegate.capturedMapIdentifierToPresent
+        
+        XCTAssertEqual(expectedIdentifier, actualIdentifier)
     }
 
 }

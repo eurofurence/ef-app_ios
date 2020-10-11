@@ -44,26 +44,33 @@ struct MessagesPresenterTestContext {
         return MessagesPresenterTestContext(authState: .loggedOut)
     }
 
-    static func makeTestCaseForAuthenticatedUser(_ user: User = User(registrationNumber: 42, username: ""),
-                                                 privateMessagesService: CapturingPrivateMessagesService = CapturingPrivateMessagesService()) -> MessagesPresenterTestContext {
+    static func makeTestCaseForAuthenticatedUser(
+        _ user: User = User(registrationNumber: 42, username: ""),
+        privateMessagesService: CapturingPrivateMessagesService = CapturingPrivateMessagesService()
+    ) -> MessagesPresenterTestContext {
         return MessagesPresenterTestContext(authState: .loggedIn(user),
                                             privateMessagesService: privateMessagesService)
     }
-
+    
     static func makeTestCaseForUserWithMessages(_ messages: [Message]) -> MessagesPresenterTestContext {
         let service = CapturingPrivateMessagesService(localMessages: messages)
         return makeTestCaseForAuthenticatedUser(privateMessagesService: service)
     }
-
-    private init(authState: FakeAuthenticationService.AuthState,
-                 privateMessagesService: CapturingPrivateMessagesService = CapturingPrivateMessagesService()) {
+    
+    private init(
+        authState: FakeAuthenticationService.AuthState,
+        privateMessagesService: CapturingPrivateMessagesService = CapturingPrivateMessagesService()
+    ) {
         self.privateMessagesService = privateMessagesService
         authenticationService = FakeAuthenticationService(authState: authState)
-        _ = MessagesComponentBuilder(authenticationService: authenticationService, privateMessagesService: privateMessagesService)
-            .with(sceneFactory)
-            .with(dateFormatter)
-            .build()
-            .makeMessagesModule(delegate)
+        _ = MessagesComponentBuilder(
+            authenticationService: authenticationService,
+            privateMessagesService: privateMessagesService
+        )
+        .with(sceneFactory)
+        .with(dateFormatter)
+        .build()
+        .makeMessagesModule(delegate)
     }
 
 }

@@ -10,7 +10,9 @@ extension MapEntity: EntityAdapting {
 
     func asAdaptedType() -> MapCharacteristics {
         let entries = ((self.entries as? Set<MapEntryEntity>) ?? Set())
-        guard let identifier = identifier, let imageIdentifier = imageIdentifier, let mapDescription = mapDescription else {
+        guard let identifier = identifier,
+              let imageIdentifier = imageIdentifier,
+              let mapDescription = mapDescription else {
             abandonDueToInconsistentState()
         }
         

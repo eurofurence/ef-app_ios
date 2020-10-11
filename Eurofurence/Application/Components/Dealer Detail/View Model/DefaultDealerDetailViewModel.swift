@@ -100,14 +100,19 @@ struct DefaultDealerDetailViewModel: DealerDetailViewModel {
         if data.isAfterDark {
             afterDarkMessage = .locatedWithinAfterDarkDen
         }
-
+        
         let limitedAvailabilityMessage = prepareLimitedAvailabilityMessage(data)
-
-        let locationAndAvailability = DealerDetailLocationAndAvailabilityViewModel(title: .locationAndAvailability,
-                                                                                   mapPNGGraphicData: data.dealersDenMapLocationGraphicPNGData,
-                                                                                   limitedAvailabilityWarning: limitedAvailabilityMessage,
-                                                                                   locatedInAfterDarkDealersDenMessage: afterDarkMessage)
-        if let locationAndAvailabilityComponent = LocationAndAvailabilityComponent(locationAndAvailability: locationAndAvailability) {
+        
+        let locationAndAvailability = DealerDetailLocationAndAvailabilityViewModel(
+            title: .locationAndAvailability,
+            mapPNGGraphicData: data.dealersDenMapLocationGraphicPNGData,
+            limitedAvailabilityWarning: limitedAvailabilityMessage,
+            locatedInAfterDarkDealersDenMessage: afterDarkMessage
+        )
+        
+        if let locationAndAvailabilityComponent = LocationAndAvailabilityComponent(
+            locationAndAvailability: locationAndAvailability
+        ) {
             components.append(locationAndAvailabilityComponent)
         }
 

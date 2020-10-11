@@ -3,7 +3,7 @@ import XCTest
 
 class WhenSyncFinishesForEventWithPoster_WhenImageAPIIsSlow_ApplicationShould: XCTestCase {
 
-    func testStillAdaptTheFetchedDataIntoTheEvent() {
+    func testStillAdaptTheFetchedDataIntoTheEvent() throws {
         let imageAPI = SlowFakeImageAPI()
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let randomEvent = syncResponse.events.changed.randomElement().element
@@ -14,7 +14,7 @@ class WhenSyncFinishesForEventWithPoster_WhenImageAPIIsSlow_ApplicationShould: X
         context.performSuccessfulSync(response: syncResponse)
         imageAPI.resolvePendingFetches()
 
-        EventAssertion(context: context, modelCharacteristics: syncResponse)
+        try EventAssertion(context: context, modelCharacteristics: syncResponse)
             .assertCollection(observer.runningEvents, containsEventCharacterisedBy: randomEvent)
     }
 

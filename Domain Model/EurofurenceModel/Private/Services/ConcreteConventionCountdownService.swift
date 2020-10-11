@@ -28,9 +28,11 @@ class ConcreteConventionCountdownService: ConventionCountdownService, Convention
         
     }
 
-    init(eventBus: EventBus,
-         conventionStartDateRepository: ConventionStartDateRepository,
-         clock: Clock) {
+    init(
+        eventBus: EventBus,
+        conventionStartDateRepository: ConventionStartDateRepository,
+        clock: Clock
+    ) {
         self.conventionStartDateRepository = conventionStartDateRepository
         self.clock = clock
 

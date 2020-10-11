@@ -4,7 +4,7 @@ import XCTest
 
 class WhenRestrictingEventsToSpecificDay_ScheduleShould: XCTestCase {
 
-    func testOnlyIncludeEventsRunningOnThatDay() {
+    func testOnlyIncludeEventsRunningOnThatDay() throws {
         let response = ModelCharacteristics.randomWithoutDeletions
         let dataStore = InMemoryDataStore(response: response)
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
@@ -15,11 +15,11 @@ class WhenRestrictingEventsToSpecificDay_ScheduleShould: XCTestCase {
         let expectedEvents = response.events.changed.filter({ $0.dayIdentifier == randomDay.element.identifier })
         schedule.restrictEvents(to: Day(date: randomDay.element.date))
 
-        EventAssertion(context: context, modelCharacteristics: response)
+        try EventAssertion(context: context, modelCharacteristics: response)
             .assertEvents(delegate.events, characterisedBy: expectedEvents)
     }
 
-    func testUpdateRestrictedScheduleWhenLaterSyncCompletes() {
+    func testUpdateRestrictedScheduleWhenLaterSyncCompletes() throws {
         let response = ModelCharacteristics.randomWithoutDeletions
         let dataStore = InMemoryDataStore(response: response)
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
@@ -32,11 +32,11 @@ class WhenRestrictingEventsToSpecificDay_ScheduleShould: XCTestCase {
         context.api.simulateSuccessfulSync(response)
         schedule.setDelegate(delegate)
 
-        EventAssertion(context: context, modelCharacteristics: response)
+        try EventAssertion(context: context, modelCharacteristics: response)
             .assertEvents(delegate.events, characterisedBy: expectedEvents)
     }
 
-    func testRestrictEventsOnlyToTheLastSpecifiedRestrictedDay() {
+    func testRestrictEventsOnlyToTheLastSpecifiedRestrictedDay() throws {
         let response = ModelCharacteristics.randomWithoutDeletions
         let dataStore = InMemoryDataStore(response: response)
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
@@ -49,7 +49,7 @@ class WhenRestrictingEventsToSpecificDay_ScheduleShould: XCTestCase {
         schedule.restrictEvents(to: Day(date: anotherRandomDay.element.date))
         schedule.restrictEvents(to: Day(date: randomDay.element.date))
 
-        EventAssertion(context: context, modelCharacteristics: response)
+        try EventAssertion(context: context, modelCharacteristics: response)
             .assertEvents(delegate.events, characterisedBy: expectedEvents)
     }
 

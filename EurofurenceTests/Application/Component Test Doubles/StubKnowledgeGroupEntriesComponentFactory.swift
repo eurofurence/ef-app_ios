@@ -7,7 +7,10 @@ class StubKnowledgeGroupEntriesComponentFactory: KnowledgeGroupEntriesComponentF
     let stubInterface = UIViewController()
     private(set) var delegate: KnowledgeGroupEntriesComponentDelegate?
     private(set) var capturedModel: KnowledgeGroupIdentifier?
-    func makeKnowledgeGroupEntriesModule(_ groupIdentifier: KnowledgeGroupIdentifier, delegate: KnowledgeGroupEntriesComponentDelegate) -> UIViewController {
+    func makeKnowledgeGroupEntriesModule(
+        _ groupIdentifier: KnowledgeGroupIdentifier,
+        delegate: KnowledgeGroupEntriesComponentDelegate
+    ) -> UIViewController {
         capturedModel = groupIdentifier
         self.delegate = delegate
         return stubInterface

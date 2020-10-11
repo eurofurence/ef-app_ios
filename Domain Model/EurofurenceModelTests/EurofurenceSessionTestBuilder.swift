@@ -120,18 +120,32 @@ class EurofurenceSessionTestBuilder {
         func registerForRemoteNotifications(_ deviceToken: Data = Data()) {
             notificationsService.storeRemoteNotificationsToken(deviceToken)
         }
-
-        func login(registrationNumber: Int = 0,
-                   username: String = "",
-                   password: String = "",
-                   completionHandler: @escaping (LoginResult) -> Void = { _ in }) {
-            let arguments = LoginArguments(registrationNumber: registrationNumber, username: username, password: password)
+        
+        func login(
+            registrationNumber: Int = 0,
+            username: String = "",
+            password: String = "",
+            completionHandler: @escaping (LoginResult) -> Void = { _ in }
+        ) {
+            let arguments = LoginArguments(
+                registrationNumber: registrationNumber,
+                username: username,
+                password: password
+            )
+            
             authenticationService.login(arguments, completionHandler: completionHandler)
         }
-
+        
         func loginSuccessfully() {
             login()
-            api.simulateLoginResponse(LoginResponse(userIdentifier: .random, username: .random, token: .random, tokenValidUntil: Date(timeIntervalSinceNow: 1)))
+            api.simulateLoginResponse(
+                LoginResponse(
+                    userIdentifier: .random,
+                    username: .random,
+                    token: .random,
+                    tokenValidUntil: Date(timeIntervalSinceNow: 1)
+                )
+            )
         }
         
         func logoutSuccessfully() {

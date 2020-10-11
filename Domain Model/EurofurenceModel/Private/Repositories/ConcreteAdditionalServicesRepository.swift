@@ -8,7 +8,9 @@ class ConcreteAdditionalServicesRepository: AdditionalServicesRepository {
     
     init(eventBus: EventBus, companionAppURLRequestFactory: CompanionAppURLRequestFactory) {
         self.companionAppURLRequestFactory = companionAppURLRequestFactory
-        currentAdditionalServicesRequest = companionAppURLRequestFactory.makeAdditionalServicesRequest(authenticationToken: nil)
+        currentAdditionalServicesRequest = companionAppURLRequestFactory.makeAdditionalServicesRequest(
+            authenticationToken: nil
+        )
         
         eventBus.subscribe(loggedIn)
         eventBus.subscribe(loggedOut)
@@ -20,12 +22,18 @@ class ConcreteAdditionalServicesRepository: AdditionalServicesRepository {
     }
     
     private func loggedOut(_ event: DomainEvent.LoggedOut) {
-        currentAdditionalServicesRequest = companionAppURLRequestFactory.makeAdditionalServicesRequest(authenticationToken: nil)
+        currentAdditionalServicesRequest = companionAppURLRequestFactory.makeAdditionalServicesRequest(
+            authenticationToken: nil
+        )
+        
         updateConsumersWithChangedServicesRequest()
     }
     
     private func loggedIn(_ event: DomainEvent.LoggedIn) {
-        currentAdditionalServicesRequest = companionAppURLRequestFactory.makeAdditionalServicesRequest(authenticationToken: event.authenticationToken)
+        currentAdditionalServicesRequest = companionAppURLRequestFactory.makeAdditionalServicesRequest(
+            authenticationToken: event.authenticationToken
+        )
+        
         updateConsumersWithChangedServicesRequest()
     }
     

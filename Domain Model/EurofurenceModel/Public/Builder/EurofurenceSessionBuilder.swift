@@ -73,7 +73,9 @@ public class EurofurenceSessionBuilder {
     }
 
     @discardableResult
-    public func with(_ remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration) -> EurofurenceSessionBuilder {
+    public func with(
+        _ remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration
+    ) -> EurofurenceSessionBuilder {
         self.remoteNotificationsTokenRegistration = remoteNotificationsTokenRegistration
         return self
     }

@@ -10,10 +10,12 @@ struct MapImpl: Map {
     var identifier: MapIdentifier
     var location: String
 
-    init(imageRepository: ImageRepository,
-         dataStore: DataStore,
-         characteristics: MapCharacteristics,
-         dealers: ConcreteDealersService) {
+    init(
+        imageRepository: ImageRepository,
+        dataStore: DataStore,
+        characteristics: MapCharacteristics,
+        dealers: ConcreteDealersService
+    ) {
         self.imageRepository = imageRepository
         self.dataStore = dataStore
         self.characteristics = characteristics
@@ -29,16 +31,22 @@ struct MapImpl: Map {
         }
     }
     
-    private struct MapEntryDisplacementResult {
+    private struct MapEntryDisplacementResult: Comparable {
+        
+        static func < (lhs: MapImpl.MapEntryDisplacementResult, rhs: MapImpl.MapEntryDisplacementResult) -> Bool {
+            lhs.displacement < rhs.displacement
+        }
+        
         var entry: MapCharacteristics.Entry
         var displacement: Double
+        
     }
     
     func fetchContentAt(x: Int, y: Int, completionHandler: @escaping (MapContent) -> Void) {
         var content: MapContent = .none
         defer { completionHandler(content) }
         
-        let tappedWithinEntry: (MapCharacteristics.Entry) -> MapEntryDisplacementResult? = { (entry) -> MapEntryDisplacementResult? in
+        let tappedWithinEntry: (MapCharacteristics.Entry) -> MapEntryDisplacementResult? = { (entry) in
             let tapRadius = entry.tapRadius
             let horizontalDelta = abs(entry.x - x)
             let verticalDelta = abs(entry.y - y)
@@ -49,7 +57,7 @@ struct MapImpl: Map {
             return MapEntryDisplacementResult(entry: entry, displacement: delta)
         }
         
-        guard let entry = characteristics.entries.compactMap(tappedWithinEntry).min(by: { $0.displacement < $1.displacement })?.entry else { return }
+        guard let entry = characteristics.entries.compactMap(tappedWithinEntry).min()?.entry else { return }
         
         let contentFromLink: (MapCharacteristics.Entry.Link) -> MapContent? = { (link) in
             if let room = self.dataStore.fetchRooms()?.first(where: { $0.identifier == link.target }) {
@@ -60,7 +68,9 @@ struct MapImpl: Map {
                 return .dealer(dealer)
             }
             
-            if link.type == .mapEntry, let linkedEntry = self.characteristics.entries.first(where: { $0.identifier == link.target }), let name = link.name {
+            if link.type == .mapEntry,
+               let linkedEntry = self.characteristics.entries.first(where: { $0.identifier == link.target }),
+               let name = link.name {
                 return .location(x: Float(linkedEntry.x), y: Float(linkedEntry.y), name: name)
             }
             

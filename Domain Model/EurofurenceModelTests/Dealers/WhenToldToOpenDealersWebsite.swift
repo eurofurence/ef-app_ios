@@ -6,7 +6,10 @@ class WhenToldToOpenDealersWebsite: XCTestCase {
 
     func testTellTheApplicationToOpenTheURL() {
         var dealer = DealerCharacteristics.random
-        dealer.links = [LinkCharacteristics(name: .random, fragmentType: .WebExternal, target: "https://www.eurofurence.org")]
+        dealer.links = [
+            LinkCharacteristics(name: .random, fragmentType: .WebExternal, target: "https://www.eurofurence.org")
+        ]
+        
         var syncResponse = ModelCharacteristics.randomWithoutDeletions
         syncResponse.dealers.changed = [dealer]
         let expected = URL(string: "https://www.eurofurence.org").unsafelyUnwrapped

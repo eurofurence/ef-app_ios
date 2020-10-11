@@ -27,22 +27,30 @@ class LoginAPITests: XCTestCase {
         api = JSONAPI(jsonSession: jsonSession, apiUrl: apiUrl)
     }
 
-    private func makeSuccessfulLoginPayload(username: String = "",
-                                            userID: String = "0",
-                                            authToken: String = "",
-                                            validUntil: String = "2017-07-17T19:45:22.666Z") -> [String: String] {
+    private func makeSuccessfulLoginPayload(
+        username: String = "",
+        userID: String = "0",
+        authToken: String = "",
+        validUntil: String = "2017-07-17T19:45:22.666Z"
+    ) -> [String: String] {
         return ["Username": username,
                 "Uid": userID,
                 "Token": authToken,
                 "TokenValidUntil": validUntil]
     }
 
-    private func makeSuccessfulLoginData(username: String = "",
-                                         userID: String = "0",
-                                         authToken: String = "",
-                                         validUntil: String = "2017-07-17T19:45:22.666Z") -> Data {
-        let payload = makeSuccessfulLoginPayload(username: username, userID: userID, authToken: authToken, validUntil: validUntil)
-        return serializeJSONObjectIntoData(payload)
+    private func makeSuccessfulLoginData(
+        username: String = "",
+        userID: String = "0",
+        authToken: String = "",
+        validUntil: String = "2017-07-17T19:45:22.666Z"
+    ) -> Data {
+        serializeJSONObjectIntoData(makeSuccessfulLoginPayload(
+            username: username,
+            userID: userID,
+            authToken: authToken,
+            validUntil: validUntil
+        ))
     }
 
     private func makeObserverForVerifyingLoginResponse(missingKey: String) -> CapturingV2LoginObserver {
@@ -63,14 +71,19 @@ class LoginAPITests: XCTestCase {
 
         return loginResponseObserver
     }
-
-    private func makeLoginParameters(regNo: Int = 0,
-                                     username: String = "Username",
-                                     password: String = "Password") -> LoginRequest {
+    
+    private func makeLoginParameters(
+        regNo: Int = 0,
+        username: String = "Username",
+        password: String = "Password"
+    ) -> LoginRequest {
         return LoginRequest(regNo: regNo, username: username, password: password)
     }
 
-    private func performLogin(_ request: LoginRequest, completionHandler: @escaping (LoginResponse?) -> Void = { _ in }) {
+    private func performLogin(
+        _ request: LoginRequest,
+        completionHandler: @escaping (LoginResponse?) -> Void = { _ in }
+    ) {
         api.performLogin(request: request, completionHandler: completionHandler)
     }
     

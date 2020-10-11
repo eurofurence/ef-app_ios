@@ -13,10 +13,13 @@ class PreloadPresenterTests: XCTestCase {
         let delegate = CapturingPreloadComponentDelegate()
 
         func build() -> PreloadPresenterTestContext {
-            preloadViewController = PreloadComponentBuilder(preloadInteractor: preloadingService, alertRouter: alertRouter)
-                .with(preloadSceneFactory)
-                .build()
-                .makePreloadComponent(delegate)
+            preloadViewController = PreloadComponentBuilder(
+                preloadInteractor: preloadingService,
+                alertRouter: alertRouter
+            )
+            .with(preloadSceneFactory)
+            .build()
+            .makePreloadComponent(delegate)
 
             return self
         }

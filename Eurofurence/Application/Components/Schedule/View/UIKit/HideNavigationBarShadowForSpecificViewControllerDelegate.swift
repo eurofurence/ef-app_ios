@@ -8,15 +8,26 @@ class HideNavigationBarShadowForSpecificViewControllerDelegate: NSObject, UINavi
         self.viewController = viewController
     }
 
-    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+    func navigationController(
+        _ navigationController: UINavigationController,
+        willShow viewController: UIViewController,
+        animated: Bool
+    ) {
         updateNavigationBarShadow(viewController, navigationController)
     }
 
-    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
+    func navigationController(
+        _ navigationController: UINavigationController,
+        didShow viewController: UIViewController,
+        animated: Bool
+    ) {
         updateNavigationBarShadow(viewController, navigationController)
     }
 
-    private func updateNavigationBarShadow(_ presentedViewController: UIViewController, _ navigationController: UINavigationController) {
+    private func updateNavigationBarShadow(
+        _ presentedViewController: UIViewController,
+        _ navigationController: UINavigationController
+    ) {
         if presentedViewController == self.viewController {
             navigationController.navigationBar.shadowImage = UIImage(named: "Transparent Pixel")
         } else {

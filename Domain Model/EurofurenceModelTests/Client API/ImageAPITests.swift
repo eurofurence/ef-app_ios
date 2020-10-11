@@ -5,11 +5,12 @@ import XCTest
 
 class ImageAPITests: XCTestCase {
 
-    func testSubmitsExpectedURL() {
+    func testSubmitsExpectedURL() throws {
         let identifier = String.random
         let hash = String.random
         let apiUrl = StubAPIURLProviding()
-        let expected = URL(string: apiUrl.url + "Images/\(identifier)/Content/with-hash:\(hash)").unsafelyUnwrapped.absoluteString
+        let urlString = "\(apiUrl.url)Images/\(identifier)/Content/with-hash:\(hash)"
+        let expected = try XCTUnwrap(URL(string: urlString)).absoluteString
         let jsonSession = CapturingJSONSession()
         let api = JSONAPI(jsonSession: jsonSession, apiUrl: apiUrl)
         api.fetchImage(identifier: identifier, contentHashSha1: hash) { (_) in }

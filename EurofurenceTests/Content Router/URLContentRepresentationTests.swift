@@ -7,14 +7,18 @@ class URLContentRepresentationTests: ContentRepresentationTestCase {
     func testEvent() throws {
         try assertURL(
             "https://app.eurofurence.org/EF25/Web/Events/799d48ce-673e-43fe-8ab1-ca6593fee324",
-            isDescribedAs: EventContentRepresentation(identifier: EventIdentifier("799d48ce-673e-43fe-8ab1-ca6593fee324"))
+            isDescribedAs: EventContentRepresentation(
+                identifier: EventIdentifier("799d48ce-673e-43fe-8ab1-ca6593fee324")
+            )
         )
     }
     
     func testDealer() throws {
         try assertURL(
             "https://app.eurofurence.org/EF25/Web/Dealers/7cc35353-f9ae-4115-b5ec-3fe55ef228f8",
-            isDescribedAs: DealerContentRepresentation(identifier: DealerIdentifier("7cc35353-f9ae-4115-b5ec-3fe55ef228f8"))
+            isDescribedAs: DealerContentRepresentation(
+                identifier: DealerIdentifier("7cc35353-f9ae-4115-b5ec-3fe55ef228f8")
+            )
         )
     }
     

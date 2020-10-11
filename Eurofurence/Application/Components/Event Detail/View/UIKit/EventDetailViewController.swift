@@ -85,7 +85,9 @@ class EventDetailViewController: UIViewController, EventDetailScene {
             return cell
         }
 
-        func makeEventDescriptionComponent(configuringUsing block: (EventDescriptionComponent) -> Void) -> UITableViewCell {
+        func makeEventDescriptionComponent(
+            configuringUsing block: (EventDescriptionComponent) -> Void
+        ) -> UITableViewCell {
             let cell = tableView.dequeue(EventDetailDescriptionTableViewCell.self)
             block(cell)
             return cell
@@ -97,35 +99,51 @@ class EventDetailViewController: UIViewController, EventDetailScene {
             return cell
         }
 
-        func makeSponsorsOnlyBannerComponent(configuringUsing block: (EventInformationBannerComponent) -> Void) -> UITableViewCell {
+        func makeSponsorsOnlyBannerComponent(
+            configuringUsing block: (EventInformationBannerComponent) -> Void
+        ) -> UITableViewCell {
             return makeBannerComponent(text: "", configuration: block)
         }
 
-        func makeSuperSponsorsOnlyBannerComponent(configuringUsing block: (EventInformationBannerComponent) -> Void) -> UITableViewCell {
+        func makeSuperSponsorsOnlyBannerComponent(
+            configuringUsing block: (EventInformationBannerComponent) -> Void
+        ) -> UITableViewCell {
             return makeBannerComponent(text: "", configuration: block)
         }
 
-        func makeArtShowBannerComponent(configuringUsing block: (EventInformationBannerComponent) -> Void) -> UITableViewCell {
+        func makeArtShowBannerComponent(
+            configuringUsing block: (EventInformationBannerComponent) -> Void
+        ) -> UITableViewCell {
             return makeBannerComponent(text: "\u{f03e}", configuration: block)
         }
 
-        func makeKageBannerComponent(configuringUsing block: (EventInformationBannerComponent) -> Void) -> UITableViewCell {
+        func makeKageBannerComponent(
+            configuringUsing block: (EventInformationBannerComponent) -> Void
+        ) -> UITableViewCell {
             return makeBannerComponent(text: "\u{f000}\u{f188}", configuration: block)
         }
 
-        func makeDealersDenBannerComponent(configuringUsing block: (EventInformationBannerComponent) -> Void) -> UITableViewCell {
+        func makeDealersDenBannerComponent(
+            configuringUsing block: (EventInformationBannerComponent) -> Void
+        ) -> UITableViewCell {
             return makeBannerComponent(text: "\u{f07a}", configuration: block)
         }
 
-        func makeMainStageBannerComponent(configuringUsing block: (EventInformationBannerComponent) -> Void) -> UITableViewCell {
+        func makeMainStageBannerComponent(
+            configuringUsing block: (EventInformationBannerComponent) -> Void
+        ) -> UITableViewCell {
             return makeBannerComponent(text: "\u{f069}", configuration: block)
         }
 
-        func makePhotoshootBannerComponent(configuringUsing block: (EventInformationBannerComponent) -> Void) -> UITableViewCell {
+        func makePhotoshootBannerComponent(
+            configuringUsing block: (EventInformationBannerComponent) -> Void
+        ) -> UITableViewCell {
             return makeBannerComponent(text: "\u{f030}", configuration: block)
         }
         
-        func makeEventActionBannerComponent(configuringUsing block: (EventActionBannerComponent) -> Void) -> UITableViewCell {
+        func makeEventActionBannerComponent(
+            configuringUsing block: (EventActionBannerComponent) -> Void
+        ) -> UITableViewCell {
             let cell = tableView.dequeue(EventActionBannerTableViewCell.self)
             block(cell)
             return cell
@@ -143,7 +161,10 @@ class EventDetailViewController: UIViewController, EventDetailScene {
 
         // MARK: Private
 
-        private func makeBannerComponent(text: String, configuration: (EventInformationBannerComponent) -> Void) -> UITableViewCell {
+        private func makeBannerComponent(
+            text: String,
+            configuration: (EventInformationBannerComponent) -> Void
+        ) -> UITableViewCell {
             let cell = tableView.dequeue(EventInformationBannerTableViewCell.self)
             configuration(cell)
             cell.configureIcon(text: text)

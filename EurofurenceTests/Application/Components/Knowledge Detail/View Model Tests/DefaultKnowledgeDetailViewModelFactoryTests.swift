@@ -53,7 +53,8 @@ class DefaultKnowledgeDetailViewModelFactoryTests: XCTestCase {
     }
 
     func testAdaptsImagesFromService() {
-        let expected = knowledgeService.stubbedKnowledgeEntryImages(for: entry.identifier).map(KnowledgeEntryImageViewModel.init)
+        let imagesData = knowledgeService.stubbedKnowledgeEntryImages(for: entry.identifier)
+        let expected = imagesData.map(KnowledgeEntryImageViewModel.init)
 
         XCTAssertEqual(expected, viewModel?.images)
     }
@@ -61,8 +62,9 @@ class DefaultKnowledgeDetailViewModelFactoryTests: XCTestCase {
     func testSharingEntrySubmitsURLAndSenderToShareService() {
         let sender = self
         viewModel?.shareKnowledgeEntry(sender)
+        let sharedItem = shareService.sharedItem as? KnowledgeEntryActivityItemSource
         
-        XCTAssertEqual(KnowledgeEntryActivityItemSource(knowledgeEntry: entry), shareService.sharedItem as? KnowledgeEntryActivityItemSource)
+        XCTAssertEqual(KnowledgeEntryActivityItemSource(knowledgeEntry: entry), sharedItem)
         XCTAssertTrue(sender === (shareService.sharedItemSender as AnyObject))
     }
 

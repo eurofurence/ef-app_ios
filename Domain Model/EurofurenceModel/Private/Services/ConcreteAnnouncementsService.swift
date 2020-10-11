@@ -39,7 +39,9 @@ class ConcreteAnnouncementsService: AnnouncementsService {
         if let model = models.first(where: { $0.identifier == identifier }) {
             if readAnnouncementIdentifiers.contains(identifier) == false {
                 readAnnouncementIdentifiers.append(identifier)
-                announcementsObservers.forEach({ $0.announcementsServiceDidUpdateReadAnnouncements(readAnnouncementIdentifiers) })
+                announcementsObservers.forEach({ (observer) in
+                    observer.announcementsServiceDidUpdateReadAnnouncements(readAnnouncementIdentifiers)
+                })
                 
                 dataStore.performTransaction { (transaction) in
                     transaction.saveReadAnnouncements(self.readAnnouncementIdentifiers)
@@ -65,7 +67,10 @@ class ConcreteAnnouncementsService: AnnouncementsService {
                                 characteristics: characteristics)
     }
 
-    private func isLastEditTimeAscending(_ first: AnnouncementCharacteristics, _ second: AnnouncementCharacteristics) -> Bool {
+    private func isLastEditTimeAscending(
+        _ first: AnnouncementCharacteristics,
+        _ second: AnnouncementCharacteristics
+    ) -> Bool {
         return first.lastChangedDateTime.compare(second.lastChangedDateTime) == .orderedDescending
     }
 

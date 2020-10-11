@@ -11,7 +11,10 @@ class AddingAdditionalServicesConsumer_AfterLoggingOut: XCTestCase {
         let consumer = CapturingAdditionalServicesURLConsumer()
         context.additionalServicesRepository.add(consumer)
         
-        XCTAssertEqual(consumer.consumedAdditionalServicesURLRequest, additionalServicesRequestFactory.unauthenticatedAdditionalServicesRequest)
+        XCTAssertEqual(
+            consumer.consumedAdditionalServicesURLRequest,
+            additionalServicesRequestFactory.unauthenticatedAdditionalServicesRequest
+        )
     }
 
 }

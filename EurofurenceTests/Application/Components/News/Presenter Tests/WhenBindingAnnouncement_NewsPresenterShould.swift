@@ -35,7 +35,10 @@ class WhenBindingAnnouncement_NewsPresenterShould: XCTestCase {
     }
 
     func testSetTheAnnouncementDateTimeOntoTheAnnouncementScene() {
-        XCTAssertEqual(announcementViewModel.receivedDateTime, context.newsScene.stubbedAnnouncementComponent.capturedReceivedDateTime)
+        XCTAssertEqual(
+            announcementViewModel.receivedDateTime,
+            context.newsScene.stubbedAnnouncementComponent.capturedReceivedDateTime
+        )
     }
 
     func testTellTheDelegateAnnouncementSelectedWhenSceneSelectsComponentAtIndexPath() {

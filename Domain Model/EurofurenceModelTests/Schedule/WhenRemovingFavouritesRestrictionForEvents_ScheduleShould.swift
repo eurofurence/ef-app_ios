@@ -22,11 +22,13 @@ class WhenRemovingFavouritesRestrictionForEvents_ScheduleShould: XCTestCase {
         XCTAssertTrue(delegate.capturedSearchResults.isEmpty)
     }
 
-    func testIncludeNonFavouritesInSearchResultsWhenQueryChanges() {
+    func testIncludeNonFavouritesInSearchResultsWhenQueryChanges() throws {
         let response = ModelCharacteristics.randomWithoutDeletions
+        let changedEvents = response.events.changed
         var favourites = response.events.changed.map({ EventIdentifier($0.identifier) })
         let notAFavourite = favourites.randomElement()
-        let nonFavouriteEvent = response.events.changed.first(where: { $0.identifier == notAFavourite.element.rawValue }).unsafelyUnwrapped
+        let notAFavouriteIdentifier = notAFavourite.element.rawValue
+        let nonFavouriteEvent = try XCTUnwrap(changedEvents.first(where: { $0.identifier == notAFavouriteIdentifier }))
         favourites.remove(at: notAFavourite.index)
         let dataStore = InMemoryDataStore(response: response)
         dataStore.performTransaction { (transaction) in

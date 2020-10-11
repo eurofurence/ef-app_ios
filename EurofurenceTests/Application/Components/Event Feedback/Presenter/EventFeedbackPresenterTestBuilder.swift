@@ -63,28 +63,36 @@ class EventFeedbackPresenterTestBuilder {
         let sceneFactory = StubEventFeedbackSceneFactory()
         let successHaptic = CapturingSuccessHaptic()
         let failureHaptic = CapturingFailureHaptic()
-        let presenterFactory = EventFeedbackPresenterFactoryImpl(eventService: eventService,
-                                                                 dayOfWeekFormatter: dayOfWeekFormatter,
-                                                                 startTimeFormatter: startTimeFormatter,
-                                                                 endTimeFormatter: endTimeFormatter,
-                                                                 successHaptic: successHaptic,
-                                                                 failureHaptic: failureHaptic,
-                                                                 successWaitingRule: successWaitingRule)
+        let presenterFactory = EventFeedbackPresenterFactoryImpl(
+            eventService: eventService,
+            dayOfWeekFormatter: dayOfWeekFormatter,
+            startTimeFormatter: startTimeFormatter,
+            endTimeFormatter: endTimeFormatter,
+            successHaptic: successHaptic,
+            failureHaptic: failureHaptic,
+            successWaitingRule: successWaitingRule
+        )
         
         let delegate = CapturingEventFeedbackComponentDelegate()
-        let moduleFactory = EventFeedbackComponentFactoryImpl(presenterFactory: presenterFactory, sceneFactory: sceneFactory)
+        let moduleFactory = EventFeedbackComponentFactoryImpl(
+            presenterFactory: presenterFactory,
+            sceneFactory: sceneFactory
+        )
+        
         _ = moduleFactory.makeEventFeedbackModule(for: event.identifier, delegate: delegate)
         let scene = sceneFactory.scene
         
-        return Context(event: event,
-                       scene: scene,
-                       delegate: delegate,
-                       successHaptic: successHaptic,
-                       failureHaptic: failureHaptic,
-                       successWaitingRule: successWaitingRule,
-                       stubbedDayOfWeekString: stubbedDayOfWeekString,
-                       stubbedStartTimeString: stubbedStartTimeString,
-                       stubbedEndTimeString: stubbedEndTimeString)
+        return Context(
+            event: event,
+            scene: scene,
+            delegate: delegate,
+            successHaptic: successHaptic,
+            failureHaptic: failureHaptic,
+            successWaitingRule: successWaitingRule,
+            stubbedDayOfWeekString: stubbedDayOfWeekString,
+            stubbedStartTimeString: stubbedStartTimeString,
+            stubbedEndTimeString: stubbedEndTimeString
+        )
     }
     
 }

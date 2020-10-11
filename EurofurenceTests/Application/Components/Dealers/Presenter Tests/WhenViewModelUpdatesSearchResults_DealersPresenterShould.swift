@@ -21,7 +21,10 @@ class WhenViewModelUpdatesSearchResults_DealersPresenterShould: XCTestCase {
         let context = DealersPresenterTestBuilder().with(viewModelFactory).build()
         context.simulateSceneDidLoad()
 
-        XCTAssertEqual(searchViewModel.sectionIndexTitles, context.scene.capturedSectionIndexTitlesToBindToSearchResults)
+        XCTAssertEqual(
+            searchViewModel.sectionIndexTitles, 
+            context.scene.capturedSectionIndexTitlesToBindToSearchResults
+        )
     }
 
 }

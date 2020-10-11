@@ -58,7 +58,10 @@ class WhenBindingUser_NewsPresenterShould: XCTestCase {
     }
 
     func testSetTheDetailedPromptOntoTheUserWidgetComponent() {
-        XCTAssertEqual(userWidgetViewModel.detailedPrompt, context.newsScene.stubbedUserWidgetComponent.capturedDetailedPrompt)
+        XCTAssertEqual(
+            userWidgetViewModel.detailedPrompt,
+            context.newsScene.stubbedUserWidgetComponent.capturedDetailedPrompt
+        )
     }
 
     func testTellTheModuleDelegateToShowPrivateMessagesWhenSceneSelectsMessagesComponent() {

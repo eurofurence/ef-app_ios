@@ -65,7 +65,10 @@ class MapsViewController: UIViewController, MapsScene {
             return numberOfMaps
         }
 
-        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        func collectionView(
+            _ collectionView: UICollectionView, 
+            cellForItemAt indexPath: IndexPath
+        ) -> UICollectionViewCell {
             let cell = collectionView.dequeue(MapCollectionViewCell.self, for: indexPath)
             binder.bind(cell, at: indexPath.item)
             return cell

@@ -12,7 +12,10 @@ extension KnowledgeGroupCharacteristics: RandomValueProviding {
                                              fontAwesomeCharacterAddress: "\(Int.random(upperLimit: 100))")
     }
     
-    static func makeRandomGroupsAndEntries() -> (groups: [KnowledgeGroupCharacteristics], entries: [KnowledgeEntryCharacteristics]) {
+    static func makeRandomGroupsAndEntries() -> (
+        groups: [KnowledgeGroupCharacteristics],
+        entries: [KnowledgeEntryCharacteristics]
+    ) {
         let knowledgeGroups = [KnowledgeGroupCharacteristics].random
         var knowledgeEntries = [KnowledgeEntryCharacteristics]()
         for group in knowledgeGroups {

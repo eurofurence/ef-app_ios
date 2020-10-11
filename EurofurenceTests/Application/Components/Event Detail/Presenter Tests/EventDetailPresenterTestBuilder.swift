@@ -31,17 +31,22 @@ class EventDetailPresenterTestBuilder {
         let hapticEngine = CapturingSelectionChangedHaptic()
         let delegate = CapturingEventDetailComponentDelegate()
         let interactionRecorder = CapturingEventInteractionRecorder()
-        let module = EventDetailComponentBuilder(eventDetailViewModelFactory: viewModelFactory, interactionRecorder: interactionRecorder)
-            .with(sceneFactory)
-            .with(hapticEngine)
-            .build()
-            .makeEventDetailComponent(for: event.identifier, delegate: delegate)
-
-        return Context(producedViewController: module,
-                       scene: sceneFactory.interface,
-                       hapticEngine: hapticEngine,
-                       delegate: delegate,
-                       eventInteractionRecorder: interactionRecorder)
+        let module = EventDetailComponentBuilder(
+            eventDetailViewModelFactory: viewModelFactory,
+            interactionRecorder: interactionRecorder
+        )
+        .with(sceneFactory)
+        .with(hapticEngine)
+        .build()
+        .makeEventDetailComponent(for: event.identifier, delegate: delegate)
+        
+        return Context(
+            producedViewController: module,
+            scene: sceneFactory.interface,
+            hapticEngine: hapticEngine,
+            delegate: delegate,
+            eventInteractionRecorder: interactionRecorder
+        )
     }
 
 }

@@ -13,7 +13,10 @@ struct StubAnnouncementDetailViewModelFactory: AnnouncementDetailViewModelFactor
         self.identifier = identifier
     }
 
-    func makeViewModel(for announcement: AnnouncementIdentifier, completionHandler: @escaping (AnnouncementDetailViewModel) -> Void) {
+    func makeViewModel(
+        for announcement: AnnouncementIdentifier, 
+        completionHandler: @escaping (AnnouncementDetailViewModel) -> Void
+    ) {
         guard identifier == announcement else { return }
         completionHandler(viewModel)
     }

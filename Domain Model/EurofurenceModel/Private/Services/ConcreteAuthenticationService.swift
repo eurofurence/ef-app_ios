@@ -13,11 +13,13 @@ class ConcreteAuthenticationService: AuthenticationService {
     private var loggedInUser: User?
     private var observers = [AuthenticationStateObserver]()
 
-    init(eventBus: EventBus,
-         clock: Clock,
-         credentialStore: CredentialStore,
-         remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration?,
-         api: API) {
+    init(
+        eventBus: EventBus,
+        clock: Clock,
+        credentialStore: CredentialStore,
+        remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration?,
+        api: API
+    ) {
         self.eventBus = eventBus
         self.clock = clock
         self.credentialStore = credentialStore
@@ -43,21 +45,24 @@ class ConcreteAuthenticationService: AuthenticationService {
             }
         }
     }
-
+    
     func logout(completionHandler: @escaping (LogoutResult) -> Void) {
-        remoteNotificationsTokenRegistration?.registerRemoteNotificationsDeviceToken(registeredDeviceToken,
-                                                                                    userAuthenticationToken: nil) { error in
-            if error != nil {
-                completionHandler(.failure)
-            } else {
-                self.credentialStore.deletePersistedToken()
-                self.loggedInUser = nil
-                self.userAuthenticationToken = nil
-                self.observers.forEach({ $0.userUnauthenticated() })
-                self.eventBus.post(DomainEvent.LoggedOut())
-                completionHandler(.success)
+        remoteNotificationsTokenRegistration?.registerRemoteNotificationsDeviceToken(
+            registeredDeviceToken,
+            userAuthenticationToken: nil,
+            completionHandler: { error in
+                if error != nil {
+                    completionHandler(.failure)
+                } else {
+                    self.credentialStore.deletePersistedToken()
+                    self.loggedInUser = nil
+                    self.userAuthenticationToken = nil
+                    self.observers.forEach({ $0.userUnauthenticated() })
+                    self.eventBus.post(DomainEvent.LoggedOut())
+                    completionHandler(.success)
+                }
             }
-        }
+        )
     }
 
     func add(_ observer: AuthenticationStateObserver) {

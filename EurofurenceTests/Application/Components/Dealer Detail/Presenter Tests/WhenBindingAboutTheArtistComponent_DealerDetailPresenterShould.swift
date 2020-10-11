@@ -12,7 +12,9 @@ class WhenBindingAboutTheArtistComponent_DealerDetailPresenterShould: XCTestCase
         context.simulateSceneDidLoad()
         context.bindComponent(at: 0)
 
-        XCTAssertEqual(aboutTheArtistViewModel.artistDescription, context.boundAboutTheArtistComponent?.capturedArtistDescription)
+        let expectedDescription = aboutTheArtistViewModel.artistDescription
+        
+        XCTAssertEqual(expectedDescription, context.boundAboutTheArtistComponent?.capturedArtistDescription)
         XCTAssertEqual(aboutTheArtistViewModel.title, context.boundAboutTheArtistComponent?.capturedTitle)
     }
 

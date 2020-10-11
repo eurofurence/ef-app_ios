@@ -13,7 +13,14 @@ class UserDefaultsForceRefreshRequiredTests: XCTestCase {
 
         versionProviding = StubAppVersionProviding(version: .random)
         userDefaults = UserDefaults(suiteName: .random).unsafelyUnwrapped
-        forceRefreshRequired = UserDefaultsForceRefreshRequired(userDefaults: userDefaults, versionProviding: versionProviding)
+        prepareSystemUnderTest()
+    }
+    
+    private func prepareSystemUnderTest() {
+        forceRefreshRequired = UserDefaultsForceRefreshRequired(
+            userDefaults: userDefaults,
+            versionProviding: versionProviding
+        )
     }
 
     func testNoSavedAppVersionRequiresForceRefresh() {
@@ -22,14 +29,14 @@ class UserDefaultsForceRefreshRequiredTests: XCTestCase {
 
     func testLaunchingSameAppVersionDoesNotRequireForceRefresh() {
         XCTAssertTrue(forceRefreshRequired.isForceRefreshRequired)
-        forceRefreshRequired = UserDefaultsForceRefreshRequired(userDefaults: userDefaults, versionProviding: versionProviding)
+        prepareSystemUnderTest()
         XCTAssertFalse(forceRefreshRequired.isForceRefreshRequired)
     }
 
     func testLaunchingDifferentAppVersionsRequiresForceRefresh() {
         XCTAssertTrue(forceRefreshRequired.isForceRefreshRequired)
         versionProviding.version = .random
-        forceRefreshRequired = UserDefaultsForceRefreshRequired(userDefaults: userDefaults, versionProviding: versionProviding)
+        prepareSystemUnderTest()
         XCTAssertTrue(forceRefreshRequired.isForceRefreshRequired)
     }
 

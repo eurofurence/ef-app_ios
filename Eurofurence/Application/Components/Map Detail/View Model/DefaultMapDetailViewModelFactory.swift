@@ -98,7 +98,10 @@ public class DefaultMapDetailViewModelFactory: MapDetailViewModelFactory, MapsOb
         mapsService.add(self)
     }
 
-    public func makeViewModelForMap(identifier: MapIdentifier, completionHandler: @escaping (MapDetailViewModel) -> Void) {
+    public func makeViewModelForMap(
+        identifier: MapIdentifier,
+        completionHandler: @escaping (MapDetailViewModel) -> Void
+    ) {
         guard let map = maps.first(where: { $0.identifier == identifier }) else { return }
         
         map.fetchImagePNGData { (mapGraphicData) in

@@ -5,19 +5,22 @@ import XCTest
 class WhenBindingDealerLocationAndAvailability_DealerDetailPresenterShould: XCTestCase {
 
     func testBindTheArtistLocationAndAvailabilityInformation() {
-        let locationAndAvailabilityViewModel = DealerDetailLocationAndAvailabilityViewModel.random
-        let viewModel = FakeDealerDetailLocationAndAvailabilityViewModel(location: locationAndAvailabilityViewModel)
-        let viewModelFactory = FakeDealerDetailViewModelFactory(viewModel: viewModel)
+        let viewModel = DealerDetailLocationAndAvailabilityViewModel.random
+        let viewModelWrapper = FakeDealerDetailLocationAndAvailabilityViewModel(location: viewModel)
+        let viewModelFactory = FakeDealerDetailViewModelFactory(viewModel: viewModelWrapper)
         let context = DealerDetailPresenterTestBuilder().with(viewModelFactory).build()
         context.simulateSceneDidLoad()
         context.bindComponent(at: 0)
 
         let component = context.boundLocationAndAvailabilityComponent
         
-        XCTAssertEqual(locationAndAvailabilityViewModel.mapPNGGraphicData, component?.capturedMapPNGGraphicData)
-        XCTAssertEqual(locationAndAvailabilityViewModel.limitedAvailabilityWarning, component?.capturedLimitedAvailabilityWarning)
-        XCTAssertEqual(locationAndAvailabilityViewModel.title, component?.capturedTitle)
-        XCTAssertEqual(locationAndAvailabilityViewModel.locatedInAfterDarkDealersDenMessage, component?.capturedLocatedInAfterDarkDealersDenMessage)
+        XCTAssertEqual(viewModel.mapPNGGraphicData, component?.capturedMapPNGGraphicData)
+        XCTAssertEqual(viewModel.limitedAvailabilityWarning, component?.capturedLimitedAvailabilityWarning)
+        XCTAssertEqual(viewModel.title, component?.capturedTitle)
+        XCTAssertEqual(
+            viewModel.locatedInAfterDarkDealersDenMessage,
+            component?.capturedLocatedInAfterDarkDealersDenMessage
+        )
     }
 
 }

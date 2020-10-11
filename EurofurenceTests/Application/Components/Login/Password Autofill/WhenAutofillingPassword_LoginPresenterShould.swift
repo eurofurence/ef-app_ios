@@ -22,7 +22,11 @@ class WhenAutofillingPassword_LoginPresenterShould: XCTestCase {
         let context = LoginPresenterTestBuilder().build()
         context.updateRegistrationNumber(registrationNumber)
         
-        XCTAssertEqual(overriddenString, context.loginSceneFactory.stubScene.capturedOverriddenRegistrationNumber, line: line)
+        XCTAssertEqual(
+            overriddenString,
+            context.loginSceneFactory.stubScene.capturedOverriddenRegistrationNumber,
+            line: line
+        )
     }
 
 }

@@ -13,25 +13,36 @@ class FirebaseRemoteNotificationsTokenRegistrationTests: XCTestCase {
         func registerDeviceToken(deviceToken: Data = Data(),
                                  userAuthenticationToken: String = "",
                                  completionHandler: ((Error?) -> Void)? = nil) {
-            tokenRegistration.registerRemoteNotificationsDeviceToken(deviceToken,
-                                                                     userAuthenticationToken: userAuthenticationToken) { completionHandler?($0) }
+            tokenRegistration.registerRemoteNotificationsDeviceToken(
+                deviceToken,
+                userAuthenticationToken: userAuthenticationToken,
+                completionHandler: { completionHandler?($0) }
+            )
         }
     }
 
-    private func assembleApp(configuration: BuildConfiguration, version: String = "", cid: ConventionIdentifier = ConventionIdentifier(identifier: "")) -> Context {
+    private func assembleApp(
+        configuration: BuildConfiguration,
+        version: String = "",
+        cid: ConventionIdentifier = ConventionIdentifier(identifier: "")
+    ) -> Context {
         let buildConfigurationProviding = StubBuildConfigurationProviding(configuration: configuration)
         let appVersionProviding = StubAppVersionProviding(version: version)
         let capturingFirebaseAdapter = CapturingFirebaseAdapter()
         let capturingFCMDeviceRegister = CapturingFCMDeviceRegistration()
-        let tokenRegistration = FirebaseRemoteNotificationsTokenRegistration(buildConfiguration: buildConfigurationProviding,
-                                                                             appVersion: appVersionProviding,
-                                                                             conventionIdentifier: cid,
-                                                                             firebaseAdapter: capturingFirebaseAdapter,
-                                                                             fcmRegistration: capturingFCMDeviceRegister)
-
-        return Context(tokenRegistration: tokenRegistration,
-                       capturingFirebaseAdapter: capturingFirebaseAdapter,
-                       capturingFCMDeviceRegister: capturingFCMDeviceRegister)
+        let tokenRegistration = FirebaseRemoteNotificationsTokenRegistration(
+            buildConfiguration: buildConfigurationProviding,
+            appVersion: appVersionProviding,
+            conventionIdentifier: cid,
+            firebaseAdapter: capturingFirebaseAdapter,
+            fcmRegistration: capturingFCMDeviceRegister
+        )
+        
+        return Context(
+            tokenRegistration: tokenRegistration,
+            capturingFirebaseAdapter: capturingFirebaseAdapter,
+            capturingFCMDeviceRegister: capturingFCMDeviceRegister
+        )
     }
     
     func testSubscribesToCIDTopics() {

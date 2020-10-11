@@ -7,7 +7,12 @@ public protocol DealersScene {
     func showRefreshIndicator()
     func hideRefreshIndicator()
     func bind(numberOfDealersPerSection: [Int], sectionIndexTitles: [String], using binder: DealersBinder)
-    func bindSearchResults(numberOfDealersPerSection: [Int], sectionIndexTitles: [String], using binder: DealersSearchResultsBinder)
+    
+    func bindSearchResults(
+        numberOfDealersPerSection: [Int],
+        sectionIndexTitles: [String],
+        using binder: DealersSearchResultsBinder
+    )
 
 }
 

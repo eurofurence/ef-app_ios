@@ -16,11 +16,18 @@ class EurofurenceFCMDeviceRegistrationTests: XCTestCase {
         registration = EurofurenceFCMDeviceRegistration(JSONSession: capturingJSONSession, urlProviding: urlProviding)
     }
 
-    private func performRegistration(_ fcm: String = "",
-                                     topics: [FirebaseTopic] = [],
-                                     authenticationToken: String? = "",
-                                     completionHandler: ((Error?) -> Void)? = nil) {
-        registration.registerFCM(fcm, topics: topics, authenticationToken: authenticationToken) { completionHandler?($0) }
+    private func performRegistration(
+        _ fcm: String = "",
+        topics: [FirebaseTopic] = [],
+        authenticationToken: String? = "",
+        completionHandler: ((Error?) -> Void)? = nil
+    ) {
+        registration.registerFCM(
+            fcm,
+            topics: topics,
+            authenticationToken: authenticationToken,
+            completionHandler: { completionHandler?($0) }
+        )
     }
 
     func testRegisteringTheFCMTokenSubmitsRequestToFCMRegistrationURL() {
@@ -53,7 +60,10 @@ class EurofurenceFCMDeviceRegistrationTests: XCTestCase {
         let authenticationToken = "Token"
         performRegistration(authenticationToken: authenticationToken)
 
-        XCTAssertEqual("Bearer \(authenticationToken)", capturingJSONSession.capturedAdditionalPOSTHeaders?["Authorization"])
+        XCTAssertEqual(
+            "Bearer \(authenticationToken)",
+            capturingJSONSession.capturedAdditionalPOSTHeaders?["Authorization"]
+        )
     }
 
     func testRegisteringTheFCMTokenWithoutUserAuthenticationTokenDoesNotSupplyAuthHeader() {

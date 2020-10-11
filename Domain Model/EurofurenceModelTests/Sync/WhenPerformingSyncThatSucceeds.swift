@@ -15,7 +15,9 @@ class WhenPerformingSyncThatSucceeds: XCTestCase {
     func testTheLongRunningTaskManagerIsToldToEndTaskBeganAtStartOfSync_AfterCompletionHandlerInvoked() {
         let context = EurofurenceSessionTestBuilder().build()
         var didFinishTaskBeforeCompletionHandlerReturned = false
-        context.refreshLocalStore { (_) in didFinishTaskBeforeCompletionHandlerReturned = context.longRunningTaskManager.state == .ended }
+        context.refreshLocalStore { (_) in
+            didFinishTaskBeforeCompletionHandlerReturned = context.longRunningTaskManager.state == .ended
+        }
 
         XCTAssertEqual(context.longRunningTaskManager.state, .running)
 
@@ -29,7 +31,11 @@ class WhenPerformingSyncThatSucceeds: XCTestCase {
         let context = EurofurenceSessionTestBuilder().build()
         context.performSuccessfulSync(response: syncResponse)
         let expected = syncResponse.images.changed.map({ (image) -> ImageEntity in
-            let imageData: Data? = context.api.stubbedImage(for: image.identifier, availableImages: syncResponse.images.changed)
+            let imageData = context.api.stubbedImage(
+                for: image.identifier,
+                availableImages: syncResponse.images.changed
+            )
+            
             return ImageEntity(identifier: image.identifier,
                                pngImageData: imageData.unsafelyUnwrapped)
         })

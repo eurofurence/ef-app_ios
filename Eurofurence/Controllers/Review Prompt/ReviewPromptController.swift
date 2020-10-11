@@ -35,10 +35,12 @@ public struct ReviewPromptController: EventsServiceObserver {
     }
 
     public func favouriteEventsDidChange(_ identifiers: [EventIdentifier]) {
-        let minimumNumberOfEventsFavourited: Bool = identifiers.count >= config.requiredNumberOfFavouriteEvents
-        let runningDifferentAppVersionSinceLastPrompt: Bool = versionProviding.version != reviewPromptAppVersionRepository.lastPromptedAppVersion
+        let minNumberOfEventsFavourited: Bool = identifiers.count >= config.requiredNumberOfFavouriteEvents
+        let currentVersion = versionProviding.version
+        let lastPromptedAppVersion = reviewPromptAppVersionRepository.lastPromptedAppVersion
+        let runningDifferentAppVersionSinceLastPrompt = currentVersion != lastPromptedAppVersion
 
-        if minimumNumberOfEventsFavourited && runningDifferentAppVersionSinceLastPrompt && appStateProviding.isAppActive {
+        if minNumberOfEventsFavourited && runningDifferentAppVersionSinceLastPrompt && appStateProviding.isAppActive {
             reviewPromptAction.showReviewPrompt()
             reviewPromptAppVersionRepository.setLastPromptedAppVersion(versionProviding.version)
         }

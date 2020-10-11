@@ -30,12 +30,14 @@ extension KnowledgeGroupImpl {
                 .let(Character.init)
                 .defaultingTo(defaultFontAwesomeBackupCharacter)
             
-            return KnowledgeGroupImpl(identifier: KnowledgeGroupIdentifier(group.identifier),
-                                      title: group.groupName,
-                                      groupDescription: group.groupDescription,
-                                      fontAwesomeCharacterAddress: fontAwesomeCharacter,
-                                      order: group.order,
-                                      entries: entries)
+            return KnowledgeGroupImpl(
+                identifier: KnowledgeGroupIdentifier(group.identifier),
+                title: group.groupName,
+                groupDescription: group.groupDescription,
+                fontAwesomeCharacterAddress: fontAwesomeCharacter,
+                order: group.order,
+                entries: entries
+            )
         }).sorted(by: { (first, second) in
             return first.order < second.order
         })

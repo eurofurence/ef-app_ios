@@ -18,7 +18,8 @@ class WhenPerformingEventSearch_NotRestrictedToFavourites_ThenToggleEventFavouri
         
         XCTAssertTrue(
             searchControllerDelegate.capturedSearchResults.isEmpty,
-            "Favouriting an event in the search controller without restricting to the favourites should not regenerate the results"
+            "Favouriting an event in the search controller without restricting to the favourites should not " +
+            "regenerate the results"
         )
     }
 

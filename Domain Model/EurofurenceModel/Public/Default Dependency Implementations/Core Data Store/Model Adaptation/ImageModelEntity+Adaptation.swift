@@ -9,7 +9,9 @@ extension ImageModelEntity: EntityAdapting {
     }
 
     func asAdaptedType() -> ImageCharacteristics {
-        guard let identifier = identifier, let internalReference = internalReference, let contentHashSha1 = contentHashSha1 else {
+        guard let identifier = identifier,
+              let internalReference = internalReference,
+              let contentHashSha1 = contentHashSha1 else {
             abandonDueToInconsistentState()
         }
         

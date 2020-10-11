@@ -22,7 +22,10 @@ public class SuccessfulPrivateMessagesService: PrivateMessagesService {
         
     }
     
-    public func fetchMessage(identifiedBy identifier: MessageIdentifier, completionHandler: @escaping (Result<Message, PrivateMessageError>) -> Void) {
+    public func fetchMessage(
+        identifiedBy identifier: MessageIdentifier,
+        completionHandler: @escaping (Result<Message, PrivateMessageError>) -> Void
+    ) {
         if identifier == expected {
             completionHandler(response)
         }
@@ -52,7 +55,10 @@ public class FailingPrivateMessagesService: PrivateMessagesService {
         
     }
     
-    public func fetchMessage(identifiedBy identifier: MessageIdentifier, completionHandler: @escaping (Result<Message, PrivateMessageError>) -> Void) {
+    public func fetchMessage(
+        identifiedBy identifier: MessageIdentifier,
+        completionHandler: @escaping (Result<Message, PrivateMessageError>) -> Void
+    ) {
         if identifier == expected {
             completionHandler(response)
         }
@@ -79,7 +85,10 @@ public class ControllablePrivateMessagesService: PrivateMessagesService {
     }
     
     private var currentCompletionHandler: ((Result<Message, PrivateMessageError>) -> Void)?
-    public func fetchMessage(identifiedBy identifier: MessageIdentifier, completionHandler: @escaping (Result<Message, PrivateMessageError>) -> Void) {
+    public func fetchMessage(
+        identifiedBy identifier: MessageIdentifier,
+        completionHandler: @escaping (Result<Message, PrivateMessageError>) -> Void
+    ) {
         currentCompletionHandler = completionHandler
     }
     

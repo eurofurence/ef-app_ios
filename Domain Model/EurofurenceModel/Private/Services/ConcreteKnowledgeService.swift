@@ -18,7 +18,12 @@ class ConcreteKnowledgeService: KnowledgeService {
 
     // MARK: Initialization
 
-    init(eventBus: EventBus, dataStore: DataStore, imageRepository: ImageRepository, shareableURLFactory: ShareableURLFactory) {
+    init(
+        eventBus: EventBus,
+        dataStore: DataStore,
+        imageRepository: ImageRepository,
+        shareableURLFactory: ShareableURLFactory
+    ) {
         self.dataStore = dataStore
         self.imageRepository = imageRepository
         self.shareableURLFactory = shareableURLFactory
@@ -35,15 +40,24 @@ class ConcreteKnowledgeService: KnowledgeService {
         observer.knowledgeGroupsDidChange(to: models)
     }
 
-    func fetchKnowledgeEntry(for identifier: KnowledgeEntryIdentifier, completionHandler: @escaping (KnowledgeEntry) -> Void) {
+    func fetchKnowledgeEntry(
+        for identifier: KnowledgeEntryIdentifier,
+        completionHandler: @escaping (KnowledgeEntry) -> Void
+    ) {
         models.reduce(.empty, { $0 + $1.entries }).first(where: { $0.identifier == identifier }).let(completionHandler)
     }
 
-    func fetchKnowledgeGroup(identifier: KnowledgeGroupIdentifier, completionHandler: @escaping (KnowledgeGroup) -> Void) {
+    func fetchKnowledgeGroup(
+        identifier: KnowledgeGroupIdentifier,
+        completionHandler: @escaping (KnowledgeGroup) -> Void
+    ) {
         models.first(where: { $0.identifier == identifier }).let(completionHandler)
     }
 
-    func fetchImagesForKnowledgeEntry(identifier: KnowledgeEntryIdentifier, completionHandler: @escaping ([Data]) -> Void) {
+    func fetchImagesForKnowledgeEntry(
+        identifier: KnowledgeEntryIdentifier,
+        completionHandler: @escaping ([Data]) -> Void
+    ) {
         let imageIdentifiers: [String] = {
             guard let entries = dataStore.fetchKnowledgeEntries() else { return .empty }
             guard let entry = entries.first(where: { $0.identifier == identifier.rawValue }) else { return .empty }
@@ -63,7 +77,11 @@ class ConcreteKnowledgeService: KnowledgeService {
                 return
         }
 
-        models = KnowledgeGroupImpl.fromServerModels(groups: groups, entries: entries, shareableURLFactory: shareableURLFactory)
+        models = KnowledgeGroupImpl.fromServerModels(
+            groups: groups,
+            entries: entries,
+            shareableURLFactory: shareableURLFactory
+        )
     }
 
 }

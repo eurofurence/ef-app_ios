@@ -21,7 +21,11 @@ public protocol DealerDetailItemComponentFactory {
     associatedtype Component
 
     func makeDealerSummaryComponent(configureUsing block: (DealerDetailSummaryComponent) -> Void) -> Component
-    func makeDealerLocationAndAvailabilityComponent(configureUsing block: (DealerLocationAndAvailabilityComponent) -> Void) -> Component
+    
+    func makeDealerLocationAndAvailabilityComponent(
+        configureUsing block: (DealerLocationAndAvailabilityComponent) -> Void
+    ) -> Component
+    
     func makeAboutTheArtistComponent(configureUsing block: (DealerAboutTheArtistComponent) -> Void) -> Component
     func makeAboutTheArtComponent(configureUsing block: (AboutTheArtComponent) -> Void) -> Component
 

@@ -57,7 +57,10 @@ class ScheduleSearchTableViewController: UITableViewController {
     }
 
 #if !targetEnvironment(macCatalyst)
-    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+    override func tableView(
+        _ tableView: UITableView,
+        editActionsForRowAt indexPath: IndexPath
+    ) -> [UITableViewRowAction]? {
         guard let actions = binder?.eventActionsForComponent(at: indexPath) else { return nil }
         guard let sender = tableView.cellForRow(at: indexPath) else { return nil }
         

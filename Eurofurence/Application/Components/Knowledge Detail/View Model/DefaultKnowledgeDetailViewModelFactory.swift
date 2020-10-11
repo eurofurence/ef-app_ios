@@ -56,7 +56,13 @@ public struct DefaultKnowledgeDetailViewModelFactory: KnowledgeDetailViewModelFa
         service.fetchKnowledgeEntry(for: identifier) { (entry) in
             service.fetchImagesForKnowledgeEntry(identifier: identifier) { (images) in
                 let renderedContents = self.renderer.render(entry.contents)
-                let viewModel = ViewModel(entry: entry, contents: renderedContents, images: images, shareService: self.shareService)
+                let viewModel = ViewModel(
+                    entry: entry,
+                    contents: renderedContents,
+                    images: images,
+                    shareService: self.shareService
+                )
+                
                 completionHandler(viewModel)
             }
         }

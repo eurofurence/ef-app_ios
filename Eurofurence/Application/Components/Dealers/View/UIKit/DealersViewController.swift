@@ -130,10 +130,16 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
         tableView.reloadData()
     }
 
-    func bindSearchResults(numberOfDealersPerSection: [Int], sectionIndexTitles: [String], using binder: DealersSearchResultsBinder) {
-        searchViewController?.bindSearchResults(numberOfDealersPerSection: numberOfDealersPerSection,
-                                                sectionIndexTitles: sectionIndexTitles,
-                                                using: binder)
+    func bindSearchResults(
+        numberOfDealersPerSection: [Int],
+        sectionIndexTitles: [String],
+        using binder: DealersSearchResultsBinder
+    ) {
+        searchViewController?.bindSearchResults(
+            numberOfDealersPerSection: numberOfDealersPerSection,
+            sectionIndexTitles: sectionIndexTitles,
+            using: binder
+        )
     }
 
     // MARK: Private

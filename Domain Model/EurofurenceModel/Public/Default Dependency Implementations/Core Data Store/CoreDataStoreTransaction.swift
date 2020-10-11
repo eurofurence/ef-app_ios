@@ -45,8 +45,17 @@ class CoreDataStoreTransaction: DataStoreTransaction {
                 entity.links.let(entity.removeFromLinks)
 
                 let links = entry.links.map { (link) -> LinkEntity in
-                    let predicateFormat = "\(#keyPath(LinkEntity.name)) == %@ AND \(#keyPath(LinkEntity.target)) == %@ AND \(#keyPath(LinkEntity.fragmentType)) == %li"
-                    let predicate = NSPredicate(format: predicateFormat, link.name, link.target, link.fragmentType.rawValue)
+                    let namePredicate = NSPredicate(format: "\(#keyPath(LinkEntity.name)) == %@", link.name)
+                    let targetPredicate = NSPredicate(format: "\(#keyPath(LinkEntity.target)) == %@", link.target)
+                    let fragmentPredicate = NSPredicate(
+                        format: "\(#keyPath(LinkEntity.fragmentType)) == %li",
+                        link.fragmentType.rawValue
+                    )
+                    
+                    let predicate = NSCompoundPredicate(
+                        andPredicateWithSubpredicates: [namePredicate, targetPredicate, fragmentPredicate]
+                    )
+                    
                     let entity: LinkEntity = context.makeEntity(uniquelyIdentifiedBy: predicate)
                     entity.consumeAttributes(from: link)
 
@@ -91,8 +100,17 @@ class CoreDataStoreTransaction: DataStoreTransaction {
                 entity.consumeAttributes(from: dealer)
 
                 let links = dealer.links?.map { (link) -> LinkEntity in
-                    let predicateFormat = "\(#keyPath(LinkEntity.name)) == %@ AND \(#keyPath(LinkEntity.target)) == %@ AND \(#keyPath(LinkEntity.fragmentType)) == %li"
-                    let predicate = NSPredicate(format: predicateFormat, link.name, link.target, link.fragmentType.rawValue)
+                    let namePredicate = NSPredicate(format: "\(#keyPath(LinkEntity.name)) == %@", link.name)
+                    let targetPredicate = NSPredicate(format: "\(#keyPath(LinkEntity.target)) == %@", link.target)
+                    let fragmentPredicate = NSPredicate(
+                        format: "\(#keyPath(LinkEntity.fragmentType)) == %li",
+                        link.fragmentType.rawValue
+                    )
+                    
+                    let predicate = NSCompoundPredicate(
+                        andPredicateWithSubpredicates: [namePredicate, targetPredicate, fragmentPredicate]
+                    )
+                    
                     let entity: LinkEntity = context.makeEntity(uniquelyIdentifiedBy: predicate)
                     entity.consumeAttributes(from: link)
 
@@ -186,7 +204,10 @@ class CoreDataStoreTransaction: DataStoreTransaction {
 
     // MARK: Private
 
-    private func updateEntities<E: NSManagedObject & EntityAdapting>(ofKind entityType: E.Type, using models: [E.AdaptedType]) {
+    private func updateEntities<E: NSManagedObject & EntityAdapting>(
+        ofKind entityType: E.Type,
+        using models: [E.AdaptedType]
+    ) {
         mutations.append { (context) in
             models.forEach { (model) in
                 let entity: E = context.makeEntity(uniquelyIdentifiedBy: E.makeIdentifyingPredicate(for: model))

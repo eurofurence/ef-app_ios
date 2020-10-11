@@ -22,7 +22,11 @@ class DaysHorizontalPickerView: UIView {
     weak var delegate: DaysHorizontalPickerViewDelegate?
     
     func bind(numberOfDays: Int, using binder: ScheduleDaysBinder) {
-        daysController = DaysController(numberOfDays: numberOfDays, binder: binder, onDaySelected: dayPickerDidSelectDay)
+        daysController = DaysController(
+            numberOfDays: numberOfDays,
+            binder: binder,
+            onDaySelected: dayPickerDidSelectDay
+        )
     }
     
     func selectDay(at index: Int) {
@@ -93,13 +97,20 @@ class DaysHorizontalPickerView: UIView {
             return numberOfDays
         }
         
-        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        func collectionView(
+            _ collectionView: UICollectionView,
+            cellForItemAt indexPath: IndexPath
+        ) -> UICollectionViewCell {
             let cell = collectionView.dequeue(ScheduleDayCollectionViewCell.self, for: indexPath)
             binder.bind(cell, forDayAt: indexPath.item)
             return cell
         }
         
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        func collectionView(
+            _ collectionView: UICollectionView,
+            layout collectionViewLayout: UICollectionViewLayout, 
+            sizeForItemAt indexPath: IndexPath
+        ) -> CGSize {
             let availableWidth = collectionView.safeAreaLayoutGuide.layoutFrame.width
             
             let sensibleMinimumWidth: CGFloat = 64

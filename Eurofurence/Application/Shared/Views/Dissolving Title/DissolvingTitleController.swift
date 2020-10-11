@@ -12,7 +12,12 @@ struct DissolvingTitleController {
     private let titleView = DissolvingTitleLabel(frame: .zero)
     private var contentOffsetObservation: NSKeyValueObservation?
     
-    init(scrollView: UIScrollView, navigationItem: UINavigationItem, accessibilityIdentifier: String, context: DissolvingTitleContext) {
+    init(
+        scrollView: UIScrollView,
+        navigationItem: UINavigationItem,
+        accessibilityIdentifier: String,
+        context: DissolvingTitleContext
+    ) {
         self.scrollView = scrollView
         self.context = context
         
@@ -23,7 +28,10 @@ struct DissolvingTitleController {
         contentOffsetObservation = scrollView.observe(\.contentOffset, changeHandler: scrollViewContentOffetChanged)
     }
     
-    private func scrollViewContentOffetChanged(_ scrollView: UIScrollView, _ change: NSKeyValueObservedChange<CGPoint>) {
+    private func scrollViewContentOffetChanged(
+        _ scrollView: UIScrollView,
+        _ change: NSKeyValueObservedChange<CGPoint>
+    ) {
         updateNavigationTitle(contentOffset: scrollView.contentOffset)
     }
     
@@ -41,7 +49,8 @@ struct DissolvingTitleController {
         
         let navigationTitleFrame = titleView.convert(titleView.frame, to: nil)
         let additionalPaddingForAnimation: CGFloat = 20
-        let navigationTitleBottom = navigationTitleFrame.origin.y + navigationTitleFrame.size.height + additionalPaddingForAnimation
+        let navTitleMaxY = navigationTitleFrame.origin.y + navigationTitleFrame.size.height
+        let navigationTitleBottom = navTitleMaxY + additionalPaddingForAnimation
         
         if titleLabelTop < navigationTitleBottom {
             let opacity = max(0, 1 - (titleLabelTop / navigationTitleBottom))

@@ -112,7 +112,9 @@ public struct CoreDataStore: DataStore {
 
     // MARK: Private
 
-    private func getModels<Entity>(fetchRequest: NSFetchRequest<Entity>) -> [Entity.AdaptedType]? where Entity: EntityAdapting {
+    private func getModels<Entity>(
+        fetchRequest: NSFetchRequest<Entity>
+    ) -> [Entity.AdaptedType]? where Entity: EntityAdapting {
         var models: [Entity.AdaptedType]?
         let context = container.viewContext
         context.performAndWait {

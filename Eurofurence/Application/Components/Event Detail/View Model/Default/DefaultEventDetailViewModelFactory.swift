@@ -89,7 +89,10 @@ public class DefaultEventDetailViewModelFactory: EventDetailViewModelFactory {
         
         private func buildToggleFavouriteStateCommandComponent() {
             let toggleFavouriteStateCommand = ToggleEventFavouriteStateViewModel(event: event)
-            let toggleFavouriteStateBanner = DefaultEventDetailViewModel.ActionComponent(actionViewModel: toggleFavouriteStateCommand)
+            let toggleFavouriteStateBanner = DefaultEventDetailViewModel.ActionComponent(
+                actionViewModel: toggleFavouriteStateCommand
+            )
+            
             components.append(toggleFavouriteStateBanner)
         }
         
@@ -102,7 +105,10 @@ public class DefaultEventDetailViewModelFactory: EventDetailViewModelFactory {
         private func buildLeaveFeedbackComponent() {
             if event.isAcceptingFeedback {
                 let leaveFeedbackCommand = LeaveFeedbackActionViewModel(actionBus: actionBus)
-                let leaveFeedbackBanner = DefaultEventDetailViewModel.ActionComponent(actionViewModel: leaveFeedbackCommand)
+                let leaveFeedbackBanner = DefaultEventDetailViewModel.ActionComponent(
+                    actionViewModel: leaveFeedbackCommand
+                )
+                
                 components.append(leaveFeedbackBanner)
             }
         }

@@ -11,7 +11,14 @@ class WhenFetchingMapContents_ThatRevealsRoom_ContentsSavedInDataStore_Applicati
         var map = MapCharacteristics.random
         let link = MapCharacteristics.Entry.Link(type: .conferenceRoom, name: .random, target: room.identifier)
         let entry = MapCharacteristics.Entry(identifier: .random, x: x, y: y, tapRadius: tapRadius, links: [link])
-        let unrelatedEntry = MapCharacteristics.Entry(identifier: .random, x: .random, y: .random, tapRadius: 0, links: .random)
+        let unrelatedEntry = MapCharacteristics.Entry(
+            identifier: .random,
+            x: .random,
+            y: .random,
+            tapRadius: 0,
+            links: .random
+        )
+        
         map.entries = [entry, unrelatedEntry]
         syncResponse.maps.changed = [map]
         syncResponse.rooms.changed = [room]

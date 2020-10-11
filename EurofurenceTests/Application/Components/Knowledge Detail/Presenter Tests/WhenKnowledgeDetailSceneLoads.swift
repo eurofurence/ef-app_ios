@@ -14,8 +14,10 @@ class WhenKnowledgeDetailSceneLoads: XCTestCase {
     }
 
     func testTheKnowledgeEntryisBoundToTheScene() {
-        XCTAssertEqual(context.viewModelFactory.viewModel.title, context.knowledgeDetailScene.capturedTitle)
-        XCTAssertEqual(context.viewModelFactory.viewModel.contents, context.knowledgeDetailScene.capturedKnowledgeAttributedText)
+        let viewModel = context.viewModelFactory.viewModel
+        
+        XCTAssertEqual(viewModel.title, context.knowledgeDetailScene.capturedTitle)
+        XCTAssertEqual(viewModel.contents, context.knowledgeDetailScene.capturedKnowledgeAttributedText)
     }
 
     func testLinksAreBoundOntoScene() {

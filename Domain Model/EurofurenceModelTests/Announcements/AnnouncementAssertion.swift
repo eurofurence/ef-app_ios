@@ -26,7 +26,9 @@ class AnnouncementAssertion: Assertion {
         assert(announcement?.date, isEqualTo: characteristic.lastChangedDateTime)
     }
 
-    private func orderAnnouncementsCharacteristicsByDate(_ characteristics: [AnnouncementCharacteristics]) -> [AnnouncementCharacteristics] {
+    private func orderAnnouncementsCharacteristicsByDate(
+        _ characteristics: [AnnouncementCharacteristics]
+    ) -> [AnnouncementCharacteristics] {
         return characteristics.sorted { (first, second) -> Bool in
             return first.lastChangedDateTime.compare(second.lastChangedDateTime) == .orderedDescending
         }

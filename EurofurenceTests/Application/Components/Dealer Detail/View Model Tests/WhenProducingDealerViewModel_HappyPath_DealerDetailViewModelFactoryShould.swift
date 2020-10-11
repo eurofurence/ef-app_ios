@@ -107,7 +107,7 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailViewModelFactoryShould:
         )
     }
 
-    func testProduceExpectedLocationAndAvailability_WhenNotAvailableOnFridayAndSaturdaySaturday_AndNotInAfterDarkDen_AtIndexOne() {
+    func testProduceExpectedLocationAndAvailability_WhenNotAvailableOnFridayAndSaturdaySaturday_AndNotInAfterDarkDen() {
         var extendedDealerData = ExtendedDealerData.random
         extendedDealerData.isAttendingOnThursday = true
         extendedDealerData.isAttendingOnFriday = false
@@ -126,7 +126,7 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailViewModelFactoryShould:
         )
     }
 
-    func testProduceExpectedLocationAndAvailability_WhenNotAvailableOnThursdayAndSaturday_AndNotInAfterDarkDen_AtIndexOne() {
+    func testProduceExpectedLocationAndAvailability_WhenNotAvailableOnThursdayAndSaturday_AndNotInAfterDarkDen() {
         var extendedDealerData = ExtendedDealerData.random
         extendedDealerData.isAttendingOnThursday = false
         extendedDealerData.isAttendingOnFriday = true
@@ -145,7 +145,7 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailViewModelFactoryShould:
         )
     }
 
-    func testProduceExpectedLocationAndAvailability_WhenNotAvailableOnThursdayAndFriday_AndNotInAfterDarkDen_AtIndexOne() {
+    func testProduceExpectedLocationAndAvailability_WhenNotAvailableOnThursdayAndFriday_AndNotInAfterDarkDen() {
         var extendedDealerData = ExtendedDealerData.random
         extendedDealerData.isAttendingOnThursday = false
         extendedDealerData.isAttendingOnFriday = false
@@ -253,9 +253,10 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailViewModelFactoryShould:
         let viewModel = context.makeViewModel()
         let sender = self
         viewModel?.shareDealer(self)
+        let sharedItem = context.shareService.sharedItem as? DealerActivityItemSource
         
         XCTAssertTrue(sender === (context.shareService.sharedItemSender as AnyObject))
-        XCTAssertEqual(DealerActivityItemSource(dealer: context.dealer), context.shareService.sharedItem as? DealerActivityItemSource)
+        XCTAssertEqual(DealerActivityItemSource(dealer: context.dealer), sharedItem)
     }
     
     private func visitViewModel(dealerData: ExtendedDealerData = .random) -> CapturingDealerDetailViewModelVisitor {

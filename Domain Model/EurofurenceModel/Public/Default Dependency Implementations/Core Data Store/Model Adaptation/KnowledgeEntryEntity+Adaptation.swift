@@ -10,7 +10,10 @@ extension KnowledgeEntryEntity: EntityAdapting {
 
     func asAdaptedType() -> KnowledgeEntryCharacteristics {
         let links = Array((self.links as? Set<LinkEntity>) ?? Set<LinkEntity>())
-        guard let identifier = identifier, let groupIdentifier = groupIdentifier, let title = title, let text = text else {
+        guard let identifier = identifier,
+              let groupIdentifier = groupIdentifier,
+              let title = title,
+              let text = text else {
             abandonDueToInconsistentState()
         }
 
