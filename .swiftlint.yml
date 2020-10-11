@@ -3,6 +3,7 @@ reporter: "xcode"
 excluded:
   - DerivedData
   - Pods
+  - SnapshotHelper.swift
 
 disabled_rules:
   - identifier_name
@@ -43,7 +44,7 @@ force_unwrapping:
   severity: error
 
 line_length:
-  warning: 180
+  warning: 120
   ignores_comments: true
 
 type_body_length:
