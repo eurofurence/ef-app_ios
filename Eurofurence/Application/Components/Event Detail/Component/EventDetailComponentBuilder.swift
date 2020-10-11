@@ -8,7 +8,10 @@ public class EventDetailComponentBuilder {
     private var sceneFactory: EventDetailSceneFactory
     private var hapticEngine: SelectionChangedHaptic
 
-    public init(eventDetailViewModelFactory: EventDetailViewModelFactory, interactionRecorder: EventInteractionRecorder) {
+    public init(
+        eventDetailViewModelFactory: EventDetailViewModelFactory,
+        interactionRecorder: EventInteractionRecorder
+    ) {
         self.eventDetailViewModelFactory = eventDetailViewModelFactory
         self.interactionRecorder = interactionRecorder
         

@@ -30,7 +30,7 @@ struct InitiateDownloadTutorialPagePresenter: TutorialPage,
         if networkReachability.wifiReachable {
             delegate.tutorialPageCompletedByUser(self)
         } else if networkReachability.cellularReachable {
-            let allowDownloadOverCellular = AlertAction(title: .cellularDownloadAlertContinueOverCellularTitle, action: {
+            let allowCellularDownloads = AlertAction(title: .cellularDownloadAlertContinueOverCellularTitle, action: {
                 self.delegate.tutorialPageCompletedByUser(self)
             })
             
@@ -38,7 +38,7 @@ struct InitiateDownloadTutorialPagePresenter: TutorialPage,
 
             let alert = Alert(title: .cellularDownloadAlertTitle,
                               message: .cellularDownloadAlertMessage,
-                              actions: [allowDownloadOverCellular, cancel])
+                              actions: [allowCellularDownloads, cancel])
             
             alertRouter.show(alert)
         } else {

@@ -101,10 +101,12 @@ struct NewsViewModelAnnouncementsComponent: NewsViewModelComponent {
          markdownRenderer: MarkdownRenderer) {
         self.announcements = announcements
         viewModels = announcements.map({ (announcement) -> AnnouncementItemViewModel in
-            return AnnouncementItemViewModel(title: announcement.title,
-                                                  detail: markdownRenderer.render(announcement.content),
-                                                  receivedDateTime: announcementsDateFormatter.string(from: announcement.date),
-                                                  isRead: readAnnouncements.contains(announcement.identifier))
+            AnnouncementItemViewModel(
+                title: announcement.title,
+                detail: markdownRenderer.render(announcement.content),
+                receivedDateTime: announcementsDateFormatter.string(from: announcement.date),
+                isRead: readAnnouncements.contains(announcement.identifier)
+            )
         })
     }
     

@@ -25,7 +25,12 @@ public struct SystemEventInteractionsRecorder: EventInteractionRecorder {
         
         let activityTitle = String.viewEvent(named: entity.title)
         let url = entity.contentURL
-        let activity = activityFactory.makeActivity(type: "org.eurofurence.activity.view-event", title: activityTitle, url: url)
+        let activity = activityFactory.makeActivity(
+            type: "org.eurofurence.activity.view-event",
+            title: activityTitle,
+            url: url
+        )
+        
         activity.markEligibleForPublicIndexing()
         
         return ActivityInteraction(activity: activity)

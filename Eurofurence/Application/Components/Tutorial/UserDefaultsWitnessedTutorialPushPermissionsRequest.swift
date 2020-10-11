@@ -6,16 +6,21 @@ public struct UserDefaultsWitnessedTutorialPushPermissionsRequest: WitnessedTuto
 
     private let userDefaults: UserDefaults
 
-    public init(userDefaults: UserDefaults) {
+    public init(userDefaults: UserDefaults = .standard) {
         self.userDefaults = userDefaults
     }
 
     public var witnessedTutorialPushPermissionsRequest: Bool {
-        return userDefaults.bool(forKey: UserDefaultsWitnessedTutorialPushPermissionsRequest.WitnessedTutorialPushPermissionsRequestKey)
+        userDefaults.bool(
+            forKey: UserDefaultsWitnessedTutorialPushPermissionsRequest.WitnessedTutorialPushPermissionsRequestKey
+        )
     }
 
     public func markWitnessedTutorialPushPermissionsRequest() {
-        userDefaults.set(true, forKey: UserDefaultsWitnessedTutorialPushPermissionsRequest.WitnessedTutorialPushPermissionsRequestKey)
+        userDefaults.set(
+            true,
+            forKey: UserDefaultsWitnessedTutorialPushPermissionsRequest.WitnessedTutorialPushPermissionsRequestKey
+        )
     }
 
 }

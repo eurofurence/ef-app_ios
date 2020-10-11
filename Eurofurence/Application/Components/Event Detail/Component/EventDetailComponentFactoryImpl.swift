@@ -9,7 +9,10 @@ struct EventDetailComponentFactoryImpl: EventDetailComponentFactory {
     var hapticEngine: SelectionChangedHaptic
     var interactionRecorder: EventInteractionRecorder
 
-    func makeEventDetailComponent(for event: EventIdentifier, delegate: EventDetailComponentDelegate) -> UIViewController {
+    func makeEventDetailComponent(
+        for event: EventIdentifier,
+        delegate: EventDetailComponentDelegate
+    ) -> UIViewController {
         let scene = sceneFactory.makeEventDetailScene()
         _ = EventDetailPresenter(
             scene: scene,

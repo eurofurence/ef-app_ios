@@ -37,21 +37,26 @@ class Application {
         let contentRepresentation = UserActivityContentRepresentation(activity: activityDescription)
         instance.principalWindowController?.route(contentRepresentation)
     }
-
+    
+    // swiftlint:disable function_body_length
     private init() {
         let jsonSession = URLSessionBasedJSONSession.shared
         let buildConfiguration = PreprocessorBuildConfigurationProviding()
         
         let apiUrl = CIDAPIURLProviding(conventionIdentifier: Application.CID)
         let fcmRegistration = EurofurenceFCMDeviceRegistration(JSONSession: jsonSession, urlProviding: apiUrl)
-        let remoteNotificationsTokenRegistration = FirebaseRemoteNotificationsTokenRegistration(buildConfiguration: buildConfiguration,
-                                                                                                appVersion: BundleAppVersionProviding.shared,
-                                                                                                conventionIdentifier: Application.CID,
-                                                                                                firebaseAdapter: FirebaseMessagingAdapter(),
-                                                                                                fcmRegistration: fcmRegistration)
+        let remoteNotificationsTokenRegistration = FirebaseRemoteNotificationsTokenRegistration(
+            buildConfiguration: buildConfiguration,
+            appVersion: BundleAppVersionProviding.shared,
+            conventionIdentifier: Application.CID,
+            firebaseAdapter: FirebaseMessagingAdapter(),
+            fcmRegistration: fcmRegistration
+        )
         
         let remoteConfigurationLoader = FirebaseRemoteConfigurationLoader()
-        let conventionStartDateRepository = RemotelyConfiguredConventionStartDateRepository(remoteConfigurationLoader: remoteConfigurationLoader)
+        let conventionStartDateRepository = RemotelyConfiguredConventionStartDateRepository(
+            remoteConfigurationLoader: remoteConfigurationLoader
+        )
         
         let mandatory = EurofurenceSessionBuilder.Mandatory(
             conventionIdentifier: Application.CID,

@@ -130,9 +130,12 @@ class PlaceholderTextView: UITextView {
         
         placeholderLabel.preferredMaxLayoutWidth = textContainer.size.width - lineFragmentPadding * 2.0
         
+        let leadingPadding = lineInsets.left + lineFragmentPadding
+        let trailingPadding = lineInsets.right + lineFragmentPadding
+        
         let placeholderConstraints: [NSLayoutConstraint] = [
-            placeholderLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: lineInsets.left + lineFragmentPadding),
-            placeholderLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: lineInsets.right + lineFragmentPadding),
+            placeholderLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: leadingPadding),
+            placeholderLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: trailingPadding),
             placeholderLabel.topAnchor.constraint(equalTo: topAnchor, constant: textContainerInset.top),
             placeholderLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: textContainerInset.bottom),
             placeholderLabel.widthAnchor.constraint(equalTo: widthAnchor, constant: -sumOfHorizontalInsets)

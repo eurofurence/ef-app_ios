@@ -56,7 +56,9 @@ public struct DefaultDealersViewModelFactory: DealersViewModelFactory, DealersIn
                                                   indexTitles: indexTitles))
     }
 
-    private func makeViewModels(from alphabetisedGroups: [AlphabetisedDealersGroup]) -> (groups: [DealersGroupViewModel], titles: [String]) {
+    private func makeViewModels(
+        from alphabetisedGroups: [AlphabetisedDealersGroup]
+    ) -> (groups: [DealersGroupViewModel], titles: [String]) {
         let groups = alphabetisedGroups.map { (alphabetisedGroup) -> DealersGroupViewModel in
             return DealersGroupViewModel(title: alphabetisedGroup.indexingString,
                                          dealers: alphabetisedGroup.dealers.map(makeDealerViewModel))
@@ -77,7 +79,11 @@ public struct DefaultDealersViewModelFactory: DealersViewModelFactory, DealersIn
         private(set) var alphabetisedGroups: [DealersGroupViewModel]
         private(set) var indexTitles: [String]
 
-        init(rawGroups: [AlphabetisedDealersGroup], alphabetisedGroups: [DealersGroupViewModel], indexTitles: [String]) {
+        init(
+            rawGroups: [AlphabetisedDealersGroup],
+            alphabetisedGroups: [DealersGroupViewModel],
+            indexTitles: [String]
+        ) {
             self.rawGroups = rawGroups
             self.alphabetisedGroups = alphabetisedGroups
             self.indexTitles = indexTitles
@@ -91,7 +97,11 @@ public struct DefaultDealersViewModelFactory: DealersViewModelFactory, DealersIn
         private(set) var alphabetisedGroups: [DealersGroupViewModel]
         private(set) var indexTitles: [String]
 
-        init(rawGroups: [AlphabetisedDealersGroup], alphabetisedGroups: [DealersGroupViewModel], indexTitles: [String]) {
+        init(
+            rawGroups: [AlphabetisedDealersGroup],
+            alphabetisedGroups: [DealersGroupViewModel],
+            indexTitles: [String]
+        ) {
             self.rawGroups = rawGroups
             self.alphabetisedGroups = alphabetisedGroups
             self.indexTitles = indexTitles
@@ -192,7 +202,9 @@ public struct DefaultDealersViewModelFactory: DealersViewModelFactory, DealersIn
 
             title = dealer.preferredName
             subtitle = dealer.alternateName
-            isPresentForAllDays = dealer.isAttendingOnThursday && dealer.isAttendingOnFriday && dealer.isAttendingOnSaturday
+            isPresentForAllDays = dealer.isAttendingOnThursday &&
+                                  dealer.isAttendingOnFriday &&
+                                  dealer.isAttendingOnSaturday
             isAfterDarkContentPresent = dealer.isAfterDark
         }
 

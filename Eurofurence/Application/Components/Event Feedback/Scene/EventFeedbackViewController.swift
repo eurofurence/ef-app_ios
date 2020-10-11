@@ -85,7 +85,11 @@ public class EventFeedbackViewController: UIViewController, EventFeedbackScene {
         self.viewModel = viewModel
         
         eventTitleLabel.text = viewModel.eventTitle
-        eventSubtitleLabel.text = [viewModel.eventDayAndTime, viewModel.eventLocation, viewModel.eventHosts].joined(separator: "\n")
+        eventSubtitleLabel.text = [
+            viewModel.eventDayAndTime,
+            viewModel.eventLocation,
+            viewModel.eventHosts
+        ].joined(separator: "\n")
     }
     
     public func showFeedbackForm() {

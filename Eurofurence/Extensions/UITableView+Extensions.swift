@@ -47,7 +47,9 @@ extension UITableView {
     
     func dequeueConventionBrandedHeader() -> ConventionBrandedTableViewHeaderFooterView {
         let identifier = ConventionBrandedTableViewHeaderFooterView.identifier
-        guard let header = dequeueReusableHeaderFooterView(withIdentifier: identifier) as? ConventionBrandedTableViewHeaderFooterView else {
+        let headerFooterView = dequeueReusableHeaderFooterView(withIdentifier: identifier)
+        
+        guard let header = headerFooterView as? ConventionBrandedTableViewHeaderFooterView else {
             fatalError("\(ConventionBrandedTableViewHeaderFooterView.self) is not registered in this table view!")
         }
         

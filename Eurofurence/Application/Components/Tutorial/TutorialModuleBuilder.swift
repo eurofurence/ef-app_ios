@@ -16,7 +16,7 @@ public class TutorialModuleBuilder {
         presentationAssets = ApplicationPresentationAssets()
         tutorialStateProviding = UserDefaultsTutorialStateProvider(userDefaults: .standard)
         networkReachability = SystemConfigurationNetworkReachability()
-        witnessedTutorialPushPermissionsRequest = UserDefaultsWitnessedTutorialPushPermissionsRequest(userDefaults: .standard)
+        witnessedTutorialPushPermissionsRequest = UserDefaultsWitnessedTutorialPushPermissionsRequest()
     }
 
     public func with(_ tutorialSceneFactory: TutorialSceneFactory) -> Self {
@@ -43,14 +43,16 @@ public class TutorialModuleBuilder {
         self.witnessedTutorialPushPermissionsRequest = witnessedTutorialPushPermissionsRequest
         return self
     }
-
+    
     public func build() -> TutorialComponentFactory {
-        return TutorialModule(tutorialSceneFactory: tutorialSceneFactory,
-                                          presentationAssets: presentationAssets,
-                                          alertRouter: alertRouter,
-                                          tutorialStateProviding: tutorialStateProviding,
-                                          networkReachability: networkReachability,
-                                          witnessedTutorialPushPermissionsRequest: witnessedTutorialPushPermissionsRequest)
+        TutorialModule(
+            tutorialSceneFactory: tutorialSceneFactory,
+            presentationAssets: presentationAssets,
+            alertRouter: alertRouter,
+            tutorialStateProviding: tutorialStateProviding,
+            networkReachability: networkReachability,
+            witnessedTutorialPushPermissionsRequest: witnessedTutorialPushPermissionsRequest
+        )
     }
-
+    
 }

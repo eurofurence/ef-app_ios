@@ -51,7 +51,12 @@ class NewsViewController: UIViewController, NewsScene {
     }
 
     func bind(numberOfItemsPerComponent: [Int], using binder: NewsComponentsBinder) {
-        tableController = TableController(tableView: tableView, numberOfItemsPerComponent: numberOfItemsPerComponent, binder: binder)
+        tableController = TableController(
+            tableView: tableView,
+            numberOfItemsPerComponent: numberOfItemsPerComponent,
+            binder: binder
+        )
+        
         tableController?.onDidSelectRowAtIndexPath = tableViewDidSelectRow
         tableController?.onDidEndDragging = scrollViewDidEndDragging
         tableView.dataSource = tableController
@@ -97,7 +102,9 @@ class NewsViewController: UIViewController, NewsScene {
 
         // MARK: NewsComponentFactory
 
-        func makeConventionCountdownComponent(configuringUsing block: (ConventionCountdownComponent) -> Void) -> UITableViewCell {
+        func makeConventionCountdownComponent(
+            configuringUsing block: (ConventionCountdownComponent) -> Void
+        ) -> UITableViewCell {
             return manufacture(NewsConventionCountdownTableViewCell.self, configuration: block)
         }
 
@@ -109,7 +116,9 @@ class NewsViewController: UIViewController, NewsScene {
             return manufacture(AnnouncementTableViewCell.self, configuration: block)
         }
 
-        func makeAllAnnouncementsComponent(configuringUsing block: (AllAnnouncementsComponent) -> Void) -> UITableViewCell {
+        func makeAllAnnouncementsComponent(
+            configuringUsing block: (AllAnnouncementsComponent) -> Void
+        ) -> UITableViewCell {
             return manufacture(ViewAllAnnouncementsTableViewCell.self, configuration: block)
         }
 

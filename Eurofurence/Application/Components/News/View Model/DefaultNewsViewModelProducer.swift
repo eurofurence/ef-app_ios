@@ -207,16 +207,21 @@ public class DefaultNewsViewModelProducer: NewsViewModelProducer,
         components.append(announcementsComponent)
 
         if !upcomingEvents.isEmpty {
-            components.append(NewsViewModelEventsComponent(title: .upcomingEvents,
-                                              events: upcomingEvents,
-                                              favouriteEventIdentifiers: favouriteEventIdentifiers,
-                                              startTimeFormatter: { (event) -> String in
-                                                let now = clock.currentDate
-                                                let difference = event.startDate.timeIntervalSince1970 - now.timeIntervalSince1970
-                                                return self.relativeTimeIntervalCountdownFormatter.relativeString(from: difference)
-            }, hoursDateFormatter: hoursDateFormatter))
+            components.append(
+                NewsViewModelEventsComponent(
+                    title: .upcomingEvents,
+                    events: upcomingEvents,
+                    favouriteEventIdentifiers: favouriteEventIdentifiers,
+                    startTimeFormatter: { (event) -> String in
+                        let now = clock.currentDate
+                        let difference = event.startDate.timeIntervalSince1970 - now.timeIntervalSince1970
+                        return self.relativeTimeIntervalCountdownFormatter.relativeString(from: difference)
+                    },
+                    hoursDateFormatter: hoursDateFormatter
+                )
+            )
         }
-
+        
         if !runningEvents.isEmpty {
             components.append(NewsViewModelEventsComponent(title: .runningEvents,
                                               events: runningEvents,

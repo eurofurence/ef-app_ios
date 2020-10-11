@@ -29,7 +29,9 @@ struct Theme {
             searchController.searchBar.searchTextField.layer.cornerRadius = 10
             searchController.searchBar.searchTextField.clipsToBounds = true
         } else {
-            guard let backgroundview = resolveStylableBackgroundFromPrivateViewHiearchy(searchBar: searchController.searchBar) else { return }
+            guard let backgroundview = findBackgroundFromViewHiearchy(searchBar: searchController.searchBar) else {
+                return
+            }
             
             backgroundview.backgroundColor = .white
             backgroundview.layer.cornerRadius = 10
@@ -37,7 +39,7 @@ struct Theme {
         }
     }
     
-    private static func resolveStylableBackgroundFromPrivateViewHiearchy(searchBar: UISearchBar) -> UIView? {
+    private static func findBackgroundFromViewHiearchy(searchBar: UISearchBar) -> UIView? {
         let textfield = searchBar.value(forKey: "searchField") as? UITextField
         return textfield?.subviews.first
     }
@@ -117,7 +119,10 @@ struct Theme {
     }
     
     private static func styleTableViewHeaders() {
-        let conventionTableViewHeaderLabel = UILabel.appearance(whenContainedInInstancesOf: [ConventionBrandedTableViewHeaderFooterView.self])
+        let conventionTableViewHeaderLabel = UILabel.appearance(
+            whenContainedInInstancesOf: [ConventionBrandedTableViewHeaderFooterView.self]
+        )
+        
         conventionTableViewHeaderLabel.textColor = .white
     }
 
@@ -134,7 +139,10 @@ struct Theme {
     }
 
     private static func styleLabelsWithinNavigationBarExtensions() {
-        let labelsInsideNavigationBarExtension = UILabel.appearance(whenContainedInInstancesOf: [NavigationBarViewExtensionContainer.self])
+        let labelsInsideNavigationBarExtension = UILabel.appearance(
+            whenContainedInInstancesOf: [NavigationBarViewExtensionContainer.self]
+        )
+        
         labelsInsideNavigationBarExtension.textColor = .white
     }
 
@@ -185,8 +193,18 @@ struct Theme {
         let dividerPixel = UIColor.segmentSeperator.makeColoredImage(size: CGSize(width: 1, height: 1))
         searchBar.setScopeBarButtonBackgroundImage(dividerPixel, for: .selected)
         searchBar.setScopeBarButtonDividerImage(dividerPixel, forLeftSegmentState: .normal, rightSegmentState: .normal)
-        searchBar.setScopeBarButtonDividerImage(dividerPixel, forLeftSegmentState: .selected, rightSegmentState: .normal)
-        searchBar.setScopeBarButtonDividerImage(dividerPixel, forLeftSegmentState: .normal, rightSegmentState: .selected)
+        
+        searchBar.setScopeBarButtonDividerImage(
+            dividerPixel,
+            forLeftSegmentState: .selected,
+            rightSegmentState: .normal
+        )
+        
+        searchBar.setScopeBarButtonDividerImage(
+            dividerPixel,
+            forLeftSegmentState: .normal,
+            rightSegmentState: .selected
+        )
         
         let selectedText = [NSAttributedString.Key.foregroundColor: UIColor.selectedSegmentText]
         let unselectedText = [NSAttributedString.Key.foregroundColor: UIColor.unselectedSegmentText]

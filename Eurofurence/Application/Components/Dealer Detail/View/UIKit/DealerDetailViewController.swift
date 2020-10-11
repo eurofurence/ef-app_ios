@@ -85,7 +85,9 @@ class DealerDetailViewController: UIViewController, DealerDetailScene {
             return binder.bindComponent(at: indexPath.row, using: self)
         }
 
-        func makeDealerSummaryComponent(configureUsing block: (DealerDetailSummaryComponent) -> Void) -> UITableViewCell {
+        func makeDealerSummaryComponent(
+            configureUsing block: (DealerDetailSummaryComponent) -> Void
+        ) -> UITableViewCell {
             let cell = tableView.dequeue(DealerDetailSummaryTableViewCell.self)
             block(cell)
             
@@ -94,13 +96,17 @@ class DealerDetailViewController: UIViewController, DealerDetailScene {
             return cell
         }
 
-        func makeDealerLocationAndAvailabilityComponent(configureUsing block: (DealerLocationAndAvailabilityComponent) -> Void) -> UITableViewCell {
+        func makeDealerLocationAndAvailabilityComponent(
+            configureUsing block: (DealerLocationAndAvailabilityComponent) -> Void
+        ) -> UITableViewCell {
             let cell = tableView.dequeue(DealerDetailLocationAndAvailabilityTableViewCell.self)
             block(cell)
             return cell
         }
 
-        func makeAboutTheArtistComponent(configureUsing block: (DealerAboutTheArtistComponent) -> Void) -> UITableViewCell {
+        func makeAboutTheArtistComponent(
+            configureUsing block: (DealerAboutTheArtistComponent) -> Void
+        ) -> UITableViewCell {
             let cell = tableView.dequeue(DealerAboutTheArtistTableViewCell.self)
             block(cell)
             return cell

@@ -6,9 +6,13 @@ public class ApplicationSignificantTimeChangeAdapter: SignificantTimeChangeAdapt
     private var notificationRegistration: NSObjectProtocol?
 
     public init() {
-        notificationRegistration = NotificationCenter.default.addObserver(forName: UIApplication.significantTimeChangeNotification, object: nil, queue: .main) { (_) in
+        notificationRegistration = NotificationCenter.default.addObserver(
+            forName: UIApplication.significantTimeChangeNotification,
+            object: nil,
+            queue: .main,
+            using: { (_) in
             self.delegate?.significantTimeChangeDidOccur()
-        }
+        })
     }
 
     private var delegate: SignificantTimeChangeAdapterDelegate?
