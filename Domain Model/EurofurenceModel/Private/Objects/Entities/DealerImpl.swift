@@ -86,7 +86,7 @@ struct DealerImpl: Dealer {
         guard characteristics.telegramHandle.isEmpty == false else { return }
         guard let url = URL(string: "https://t.me/") else { return }
         
-        eventBus.post(DomainEvent.OpenURL(url: url.appendingPathComponent(characteristics.twitterHandle)))
+        eventBus.post(DomainEvent.OpenURL(url: url.appendingPathComponent(characteristics.telegramHandle)))
     }
     
     func fetchExtendedDealerData(completionHandler: @escaping (ExtendedDealerData) -> Void) {
