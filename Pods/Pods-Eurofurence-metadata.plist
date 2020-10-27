@@ -242,7 +242,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</string>
 			<key>summary</key>
 			<string>Blazing fast Markdown rendering in Swift, built upon cmark.</string>
 			<key>version</key>
-			<string>0.9.3</string>
+			<string>0.9.4</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -472,7 +472,7 @@ Firebase Cloud Messaging and Firebase Remote Config in your app.&lt;/p&gt;
 			<key>summary</key>
 			<string>Firebase ABTesting</string>
 			<key>version</key>
-			<string>4.2.0</string>
+			<string>7.0.0</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -698,7 +698,7 @@ Firebase Cloud Messaging and Firebase Remote Config in your app.&lt;/p&gt;
 			<key>summary</key>
 			<string>Firebase Core</string>
 			<key>version</key>
-			<string>6.10.2</string>
+			<string>7.0.0</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -926,7 +926,7 @@ non-Cocoapod integration. This library also respects the Firebase global data co
 			<key>summary</key>
 			<string>Firebase Core Diagnostics</string>
 			<key>version</key>
-			<string>1.6.0</string>
+			<string>7.0.0</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -1180,7 +1180,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 			<key>summary</key>
 			<string>Best and lightest-weight crash reporting for mobile, desktop and tvOS.</string>
 			<key>version</key>
-			<string>4.6.0</string>
+			<string>7.0.0</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -1406,7 +1406,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 			<key>summary</key>
 			<string>Firebase Installations</string>
 			<key>version</key>
-			<string>1.7.0</string>
+			<string>7.0.0</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -1634,7 +1634,7 @@ services.&lt;/p&gt;
 			<key>summary</key>
 			<string>Firebase InstanceID</string>
 			<key>version</key>
-			<string>4.6.0</string>
+			<string>7.0.0</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -1863,7 +1863,7 @@ device, and it is completely free.&lt;/p&gt;
 			<key>summary</key>
 			<string>Firebase Messaging</string>
 			<key>version</key>
-			<string>4.6.2</string>
+			<string>7.0.0</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -2091,7 +2091,7 @@ app update.&lt;/p&gt;
 			<key>summary</key>
 			<string>Firebase Remote Config</string>
 			<key>version</key>
-			<string>4.9.0</string>
+			<string>7.0.0</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -2317,7 +2317,7 @@ app update.&lt;/p&gt;
 			<key>summary</key>
 			<string>Google iOS SDK data transport.</string>
 			<key>version</key>
-			<string>7.3.0</string>
+			<string>8.0.0</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -2589,7 +2589,7 @@ Fuller's blog&lt;/a&gt;
 			<key>summary</key>
 			<string>Google Utilities for iOS (plus community support for macOS and tvOS)</string>
 			<key>version</key>
-			<string>6.7.2</string>
+			<string>7.0.0</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -2816,62 +2816,7 @@ Objective-C to facilitate writing asynchronous code.&lt;/p&gt;
 			<key>summary</key>
 			<string>Synchronization construct for Objective-C</string>
 			<key>version</key>
-			<string>1.2.10</string>
-		</dict>
-		<dict>
-			<key>authors</key>
-			<dict>
-				<key>The Protocol Buffers contributors</key>
-				<string>protobuf@googlegroups.com</string>
-			</dict>
-			<key>description</key>
-			<string></string>
-			<key>homepage</key>
-			<string>https://github.com/protocolbuffers/protobuf</string>
-			<key>licenseText</key>
-			<string>Copyright 2008 Google Inc.  All rights reserved.
-
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are
-met:
-
-    * Redistributions of source code must retain the above copyright
-notice, this list of conditions and the following disclaimer.
-    * Redistributions in binary form must reproduce the above
-copyright notice, this list of conditions and the following disclaimer
-in the documentation and/or other materials provided with the
-distribution.
-    * Neither the name of Google Inc. nor the names of its
-contributors may be used to endorse or promote products derived from
-this software without specific prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
-OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
-THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-Code generated by the Protocol Buffer compiler is owned by the owner
-of the input file used when generating it.  This code is not
-standalone and requires a support library to be linked with it.  This
-support library is itself covered by the above license.
-</string>
-			<key>licenseType</key>
-			<string>3-Clause BSD License</string>
-			<key>name</key>
-			<string>Protobuf</string>
-			<key>socialMediaURL</key>
-			<string></string>
-			<key>summary</key>
-			<string>Protocol Buffers v.3 runtime library for Objective-C.</string>
-			<key>version</key>
-			<string>3.13.0</string>
+			<string>1.2.11</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -2917,7 +2862,7 @@ redistribute it freely, subject to the following restrictions:
 			<key>summary</key>
 			<string>Protocol buffers with small code size.</string>
 			<key>version</key>
-			<string>1.30906.0</string>
+			<string>2.30906.0</string>
 		</dict>
 	</array>
 </dict>

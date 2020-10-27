@@ -30,8 +30,7 @@ class FirebaseRemoteConfigurationLoader: RemoteConfigurationLoader {
             guard result == .success else { return }
             remoteConfig.activate(completion: nil)
             
-            guard let conventionStartTime = remoteConfig.configValue(forKey: "nextConStart").numberValue else { return }
-            
+            let conventionStartTime = remoteConfig.configValue(forKey: "nextConStart").numberValue
             let millisToSeconds = conventionStartTime.doubleValue / 1E3
             
             let absoluteConventionStartTime = Date(timeIntervalSince1970: millisToSeconds)
