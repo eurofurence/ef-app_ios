@@ -14,7 +14,8 @@ public struct PrincipalContentAggregator: PrincipalContentModuleProviding {
         let splitViewControllers = navigationControllers.map { (navigationController) -> UISplitViewController in
             let splitViewController = SplitViewController()
             let noContentPlaceholder = NoContentPlaceholderViewController.fromStoryboard()
-            splitViewController.viewControllers = [navigationController, noContentPlaceholder]
+            let noContentNavigation = UINavigationController(rootViewController: noContentPlaceholder)
+            splitViewController.viewControllers = [navigationController, noContentNavigation]
             splitViewController.tabBarItem = navigationController.tabBarItem
             
             return splitViewController
@@ -61,8 +62,10 @@ public struct PrincipalContentAggregator: PrincipalContentModuleProviding {
         }
         
         override func show(_ vc: UIViewController, sender: Any?) {
-            if let masterNavigation = viewControllers.first as? UINavigationController {
-                masterNavigation.pushViewController(vc, animated: UIView.areAnimationsEnabled)
+            let master = viewControllers.first
+            
+            if let masterNav = master as? UINavigationController, isOnlyShowingPlaceholderContent(masterNav) == false {
+                masterNav.pushViewController(vc, animated: UIView.areAnimationsEnabled)
             } else {
                 super.show(vc, sender: sender)
             }
@@ -87,7 +90,19 @@ public struct PrincipalContentAggregator: PrincipalContentModuleProviding {
             collapseSecondary secondaryViewController: UIViewController,
             onto primaryViewController: UIViewController
         ) -> Bool {
-            secondaryViewController is NoContentPlaceholderViewController
+            isPlaceholderContentController(secondaryViewController)
+        }
+        
+        private func isPlaceholderContentController(_ viewController: UIViewController) -> Bool {
+            guard let navigationController = viewController as? UINavigationController else { return false }
+            return navigationController.viewControllers.first is NoContentPlaceholderViewController
+        }
+        
+        private func isOnlyShowingPlaceholderContent(_ navigationController: UINavigationController) -> Bool {
+            let onlyOneController = navigationController.viewControllers.count == 1
+            let topControllerIsNoContent = navigationController.topViewController is NoContentPlaceholderViewController
+            
+            return onlyOneController && topControllerIsNoContent
         }
         
     }
