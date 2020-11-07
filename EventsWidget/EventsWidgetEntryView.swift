@@ -6,10 +6,11 @@ struct EventsWidgetEntryView: View {
     var entry: EventsTimelineEntry
 
     var body: some View {
-        ZStack {
+        ZStack(alignment: .top) {
             Color.widgetBackground
             WidgetContents(entry: entry)
                 .foregroundColor(.white)
+                .padding()
         }
     }
     
@@ -81,8 +82,9 @@ private struct LargeWidgetContents: View {
         VStack(alignment: .filterTitle) {
             EventFilterText(filter: entry.filter)
                 .alignmentGuide(.filterTitle) { d in d[.leading] }
+                .padding([.bottom])
             
-            VStack(alignment: .leading, spacing: 0) {
+            VStack(alignment: .leading, spacing: 14) {
                 let events: [EventViewModel] = entry.events
                 EventsList(events: events)
             }
@@ -140,7 +142,6 @@ private struct EventRow: View {
                     .foregroundColor(.secondaryText)
             }
         }
-        .padding()
     }
     
 }
