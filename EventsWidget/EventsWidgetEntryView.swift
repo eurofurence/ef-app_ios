@@ -83,41 +83,64 @@ private struct LargeWidgetContents: View {
                 .alignmentGuide(.filterTitle) { d in d[.leading] }
             
             VStack(alignment: .leading, spacing: 0) {
-                ForEach(entry.events) { (event) in
-                    HStack(alignment: .top) {
-                        VStack(alignment: .leading) {
-                            HStack {
-                                Text(event.formattedStartTime)
-                                    .font(.callout)
-                                    .alignmentGuide(.filterTitle) { d in d[.leading] }
-                                
-                                Spacer()
-                            }
-                            
-                            Text(event.formattedEndTime)
-                                .font(.callout)
-                                .foregroundColor(.secondaryText)
-                                .alignmentGuide(.leading) { h in -18 }
-                        }
-                        .frame(minWidth: 100, idealWidth: 100, maxWidth: 100)
-                        
-                        VStack(alignment: .leading) {
-                            Text(event.eventTitle)
-                                .font(.callout)
-                            
-                            Text(event.eventLocation)
-                                .font(.callout)
-                                .lineLimit(3)
-                                .foregroundColor(.secondaryText)
-                        }
-                    }
-                    .padding()
-                    
-                    Divider()
-                        .padding([.leading, .trailing])
-                }
+                let events: [EventViewModel] = entry.events
+                EventsList(events: events)
             }
         }
+    }
+    
+}
+
+private struct EventsList: View {
+    
+    var events: [EventViewModel]
+    
+    var body: some View {
+        ForEach(events) { (event) in
+            EventRow(event: event)
+            
+            if event.id != events.last?.id {
+                Divider()
+                    .padding([.leading, .trailing])
+            }
+        }
+    }
+    
+}
+
+private struct EventRow: View {
+    
+    var event: EventViewModel
+    
+    var body: some View {
+        HStack(alignment: .top) {
+            VStack(alignment: .leading) {
+                HStack {
+                    Text(event.formattedStartTime)
+                        .font(.callout)
+                        .alignmentGuide(.filterTitle) { d in d[.leading] }
+                    
+                    Spacer()
+                }
+                
+                Text(event.formattedEndTime)
+                    .font(.callout)
+                    .foregroundColor(.secondaryText)
+                    .alignmentGuide(.leading) { h in -18 }
+            }
+            .frame(minWidth: 100, idealWidth: 100, maxWidth: 100)
+            
+            VStack(alignment: .leading) {
+                Text(event.eventTitle)
+                    .font(.callout)
+                
+                Text(event.eventLocation)
+                    .font(.callout)
+                    .lineLimit(3)
+                    .foregroundColor(.secondaryText)
+            }
+        }
+        .padding()
     }
     
 }
