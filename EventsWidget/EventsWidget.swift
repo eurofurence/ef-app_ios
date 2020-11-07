@@ -7,7 +7,7 @@ struct EventsWidget: Widget {
     let kind: String = "EventsWidget"
 
     var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: EventsTimelineProvider()) { entry in
+        IntentConfiguration(kind: kind, intent: ViewEventsIntent.self, provider: EventsTimelineProvider()) { entry in
             EventsWidgetEntryView(entry: entry)
         }
         .configurationDisplayName("My Widget")

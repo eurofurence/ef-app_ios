@@ -14,7 +14,7 @@ struct EventsWidgetEntryView : View {
 struct EventsWidget_Previews: PreviewProvider {
     
     static var previews: some View {
-        EventsWidgetEntryView(entry: EventsTimelineEntry(date: Date(), configuration: ConfigurationIntent()))
+        EventsWidgetEntryView(entry: EventsTimelineEntry(date: Date(), configuration: ViewEventsIntent()))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
     

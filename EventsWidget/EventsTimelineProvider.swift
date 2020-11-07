@@ -3,11 +3,11 @@ import WidgetKit
 struct EventsTimelineProvider: IntentTimelineProvider {
     
     func placeholder(in context: Context) -> EventsTimelineEntry {
-        EventsTimelineEntry(date: Date(), configuration: ConfigurationIntent())
+        EventsTimelineEntry(date: Date(), configuration: ViewEventsIntent())
     }
 
     func getSnapshot(
-        for configuration: ConfigurationIntent,
+        for configuration: ViewEventsIntent,
         in context: Context,
         completion: @escaping (EventsTimelineEntry) -> ()
     ) {
@@ -16,7 +16,7 @@ struct EventsTimelineProvider: IntentTimelineProvider {
     }
 
     func getTimeline(
-        for configuration: ConfigurationIntent,
+        for configuration: ViewEventsIntent,
         in context: Context,
         completion: @escaping (Timeline<EventsTimelineEntry>) -> ()
     ) {

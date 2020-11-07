@@ -42,10 +42,11 @@
 	<string>Eurofurence uses the camera to capture photos when submitting Artist Alley table registrations</string>
 	<key>NSUserActivityTypes</key>
 	<array>
-		<string>org.eurofurence.activity.view-dealer</string>
-		<string>org.eurofurence.activity.view-event</string>
 		<string>ViewDealerIntent</string>
 		<string>ViewEventIntent</string>
+		<string>ViewEventsIntent</string>
+		<string>org.eurofurence.activity.view-dealer</string>
+		<string>org.eurofurence.activity.view-event</string>
 	</array>
 	<key>UIAppFonts</key>
 	<array>
