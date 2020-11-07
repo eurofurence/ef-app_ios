@@ -10,7 +10,7 @@ struct EventsWidgetEntryView: View {
             Color.widgetBackground
             WidgetContents(entry: entry)
                 .foregroundColor(.white)
-                .padding()
+                .padding(20)
         }
     }
     

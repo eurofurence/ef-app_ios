@@ -328,6 +328,7 @@
 		CA5F26FE2556F4DE00CED97A /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5F26FD2556F4DE00CED97A /* EventViewModel.swift */; };
 		CA5F270A25570CE600CED97A /* Color+Catalogue.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5F270925570CE600CED97A /* Color+Catalogue.swift */; };
 		CA5F2716255711C700CED97A /* EventFilterText.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5F2715255711C700CED97A /* EventFilterText.swift */; };
+		CA5F273D25572BD500CED97A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA5F273C25572BD500CED97A /* Localizable.strings */; };
 		CA60BFFE207CDC1700697566 /* FakeAuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFFD207CDC1700697566 /* FakeAuthenticationService.swift */; };
 		CA624743532703E5C422FA37 /* Pods_EurofurenceApplicationSessionTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5121CB0BD290F505DEE03BDA /* Pods_EurofurenceApplicationSessionTests.framework */; };
 		CA630BCF229F10BF00754C27 /* WhenRecordingEventInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630BCE229F10BF00754C27 /* WhenRecordingEventInteraction.swift */; };
@@ -1652,6 +1653,7 @@
 		CA5F26FD2556F4DE00CED97A /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
 		CA5F270925570CE600CED97A /* Color+Catalogue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Catalogue.swift"; sourceTree = "<group>"; };
 		CA5F2715255711C700CED97A /* EventFilterText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFilterText.swift; sourceTree = "<group>"; };
+		CA5F273C25572BD500CED97A /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		CA60BFFD207CDC1700697566 /* FakeAuthenticationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeAuthenticationService.swift; sourceTree = "<group>"; };
 		CA621345221EFDD800E88880 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		CA630BCE229F10BF00754C27 /* WhenRecordingEventInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenRecordingEventInteraction.swift; sourceTree = "<group>"; };
@@ -3686,6 +3688,7 @@
 				CA5F26C72556F0E800CED97A /* EventsWidgetEntryView.swift */,
 				CA5F26FD2556F4DE00CED97A /* EventViewModel.swift */,
 				CA5F26A52556F04D00CED97A /* Assets.xcassets */,
+				CA5F273C25572BD500CED97A /* Localizable.strings */,
 			);
 			path = EventsWidget;
 			sourceTree = "<group>";
@@ -7155,6 +7158,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA5F26A62556F04D00CED97A /* Assets.xcassets in Resources */,
+				CA5F273D25572BD500CED97A /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,13 +13,13 @@ struct EventFilterText: View {
     private var text: some View {
         switch filter {
         case .upcoming:
-            Text("Upcoming")
+            Text(NSLocalizedString("Upcoming", comment: "Upcoming").localizedCapitalized)
             
         case .favourites:
-            Text("Favourites")
+            Text(NSLocalizedString("Favourites", comment: "Favourites").localizedCapitalized)
             
         case .running:
-            Text("Running")
+            Text(NSLocalizedString("Running", comment: "Running").localizedCapitalized)
             
         case .unknown:
             Text("")
