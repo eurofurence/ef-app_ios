@@ -1,9 +1,9 @@
 import SwiftUI
 import WidgetKit
 
-struct EventsWidgetEntryView : View {
+struct EventsWidgetEntryView: View {
     
-    var entry: EventsTimelineProvider.Entry
+    var entry: EventsTimelineEntry
 
     var body: some View {
         Text(entry.date, style: .time)
@@ -14,8 +14,16 @@ struct EventsWidgetEntryView : View {
 struct EventsWidget_Previews: PreviewProvider {
     
     static var previews: some View {
-        EventsWidgetEntryView(entry: EventsTimelineEntry(date: Date(), configuration: ViewEventsIntent()))
+        let entry = EventsTimelineEntry(date: Date())
+        
+        EventsWidgetEntryView(entry: entry)
             .previewContext(WidgetPreviewContext(family: .systemSmall))
+        
+        EventsWidgetEntryView(entry: entry)
+            .previewContext(WidgetPreviewContext(family: .systemMedium))
+        
+        EventsWidgetEntryView(entry: entry)
+            .previewContext(WidgetPreviewContext(family: .systemLarge))
     }
     
 }
