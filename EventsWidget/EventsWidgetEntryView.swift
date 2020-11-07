@@ -9,6 +9,7 @@ struct EventsWidgetEntryView: View {
         ZStack {
             Color("WidgetBackground")
             WidgetContents(entry: entry)
+                .foregroundColor(.white)
         }
     }
     
@@ -63,7 +64,34 @@ private struct LargeWidgetContents: View {
     var entry: EventsTimelineEntry
     
     var body: some View {
-        Text("Large")
+        VStack(alignment: .leading) {
+            ForEach(entry.events) { (event) in
+                HStack(alignment: .top) {
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Text(event.formattedStartTime)
+                                .font(.callout)
+                            Spacer()
+                        }
+                        
+                        Text(event.formattedEndTime)
+                            .font(.callout)
+                            .alignmentGuide(.leading) { h in -18 }
+                    }
+                    .frame(minWidth: 100, idealWidth: 100, maxWidth: 100)
+                    
+                    VStack(alignment: .leading) {
+                        Text(event.eventTitle)
+                            .font(.callout)
+                        
+                        Text(event.eventLocation)
+                            .font(.callout)
+                            .lineLimit(3)
+                    }
+                }
+                .padding()
+            }
+        }
     }
     
 }
