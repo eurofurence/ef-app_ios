@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Ckn-Ck-xoO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Ckn-Ck-xoO">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,36 +21,18 @@
                         <color key="selectedImageTintColor" name="Launch Screen Bar Item Tint"/>
                     </tabBar>
                     <connections>
-                        <segue destination="b90-6P-alf" kind="relationship" relationship="viewControllers" id="aGc-km-7En"/>
-                        <segue destination="b0s-4q-K4F" kind="relationship" relationship="viewControllers" id="kq0-ep-x4U"/>
-                        <segue destination="6G3-s6-zya" kind="relationship" relationship="viewControllers" id="Ypu-xi-NHq"/>
-                        <segue destination="aUU-Bv-uEc" kind="relationship" relationship="viewControllers" id="hn9-MQ-Q39"/>
-                        <segue destination="bo9-WB-KbY" kind="relationship" relationship="viewControllers" id="vnt-wN-cZV"/>
+                        <segue destination="ovJ-yz-wGF" kind="relationship" relationship="viewControllers" id="GsE-jJ-Iti"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MBc-4P-seo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1396" y="738"/>
         </scene>
-        <!--Split View Controller-->
-        <scene sceneID="cep-9t-mnv">
-            <objects>
-                <splitViewController extendedLayoutIncludesOpaqueBars="YES" id="b90-6P-alf" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="News" selectedImage="News" id="bXO-Xo-0mQ"/>
-                    <connections>
-                        <segue destination="ovJ-yz-wGF" kind="relationship" relationship="masterViewController" id="ihb-Uo-3wX"/>
-                        <segue destination="o0I-nm-ecK" kind="relationship" relationship="detailViewController" id="7sQ-4v-HlJ"/>
-                    </connections>
-                </splitViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sVN-nV-erQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-659" y="-1390"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="8B1-dU-MgY">
             <objects>
                 <navigationController id="ovJ-yz-wGF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="News" id="y9A-O4-eZg"/>
+                    <tabBarItem key="tabBarItem" title="" id="y9A-O4-eZg"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="Sp4-hh-8US">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -62,135 +44,37 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GGl-Z9-azY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="154" y="-1390"/>
+            <point key="canvasLocation" x="-559" y="738"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="FJJ-s4-i3J">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3aK-8h-Ja8" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="j1c-Fp-oMM" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gVf-mZ-Mmg"/>
                         <viewControllerLayoutGuide type="bottom" id="0qG-Yf-tbq"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="d7z-hY-ukC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="642"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="xgL-jW-8ZJ"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3aK-8h-Ja8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="967" y="-1390"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="5Ro-V3-gHf">
-            <objects>
-                <navigationController id="b0s-4q-K4F" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="Calendar" id="bcn-xz-giU"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="Uqz-19-4Cj">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" name="Launch Screen Bar Tint"/>
-                    </navigationBar>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TM5-4m-pZE" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="154" y="24"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="1gv-Yi-iOe">
-            <objects>
-                <navigationController id="6G3-s6-zya" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="dealers" id="Lgw-hD-eTh"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="PKc-5g-xIr">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" name="Launch Screen Bar Tint"/>
-                    </navigationBar>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="IrX-Ts-zSS" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="155" y="738"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="MUM-e3-A2j">
-            <objects>
-                <navigationController id="aUU-Bv-uEc" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="Info" id="ghd-VX-kNa"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="P1C-kk-B0c">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" name="Launch Screen Bar Tint"/>
-                    </navigationBar>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eT3-zi-550" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="155" y="1469"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="hp9-6v-vpb">
-            <objects>
-                <navigationController id="bo9-WB-KbY" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="More" id="AGa-gv-1cP"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="Tc1-WI-Ner">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" name="Launch Screen Bar Tint"/>
-                    </navigationBar>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CZt-W3-PZp" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-784" y="2154"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="Ssp-eQ-2iw">
-            <objects>
-                <viewController extendedLayoutIncludesOpaqueBars="YES" id="o0I-nm-ecK" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="3YU-vZ-bCE">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="No Content Placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="qal-Ta-Xe1">
-                                <rect key="frame" x="87" y="232.5" width="240" height="431"/>
-                                <color key="tintColor" name="No Content Fill"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="240" id="8tW-Zs-QBH"/>
-                                    <constraint firstAttribute="width" secondItem="qal-Ta-Xe1" secondAttribute="height" multiplier="386:693" id="dfp-we-YSL"/>
-                                </constraints>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="qal-Ta-Xe1" firstAttribute="centerX" secondItem="3YU-vZ-bCE" secondAttribute="centerX" id="CPb-Rg-9dH"/>
-                            <constraint firstItem="TJ3-sI-G0K" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qal-Ta-Xe1" secondAttribute="trailing" constant="14" id="flx-pt-OOX"/>
-                            <constraint firstItem="qal-Ta-Xe1" firstAttribute="centerY" secondItem="3YU-vZ-bCE" secondAttribute="centerY" id="h3z-vk-1N6"/>
-                            <constraint firstItem="qal-Ta-Xe1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="TJ3-sI-G0K" secondAttribute="leading" constant="14" id="nJP-IT-YX9"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="TJ3-sI-G0K"/>
-                    </view>
-                    <nil key="simulatedTopBarMetrics"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YQD-Yd-OIT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="154" y="-661"/>
+            <point key="canvasLocation" x="255" y="738"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Calendar" width="25" height="25"/>
-        <image name="Info" width="25" height="25"/>
-        <image name="More" width="29.5" height="29.5"/>
-        <image name="News" width="25" height="25"/>
-        <image name="No Content Placeholder" width="367" height="693"/>
-        <image name="dealers" width="25" height="25"/>
         <namedColor name="Launch Screen Bar Item Tint">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Launch Screen Bar Tint">
             <color red="0.0" green="0.34900000691413879" blue="0.32499998807907104" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="No Content Fill">
-            <color red="0.0" green="0.34901960784313724" blue="0.32549019607843138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
