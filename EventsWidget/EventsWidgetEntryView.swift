@@ -14,7 +14,30 @@ struct EventsWidgetEntryView: View {
 struct EventsWidget_Previews: PreviewProvider {
     
     static var previews: some View {
-        let entry = EventsTimelineEntry(date: Date())
+        let events: [EventViewModel] = [
+            EventViewModel(
+                formattedStartTime: "13:00",
+                formattedEndTime: "14:30",
+                eventTitle: "Trans Meet-Up",
+                eventLocation: "Nizza"
+            ),
+            
+            EventViewModel(
+                formattedStartTime: "13:30",
+                formattedEndTime: "15:00",
+                eventTitle: "Dealer's Den",
+                eventLocation: "Dealer's Den - Convention Center Foyer 3"
+            ),
+            
+            EventViewModel(
+                formattedStartTime: "17:30",
+                formattedEndTime: "18:30",
+                eventTitle: "Funny Animals and Amerimanga in Sonic the Hedgehog Archie Series",
+                eventLocation: "Nizza"
+            )
+        ]
+        
+        let entry = EventsTimelineEntry(date: Date(), events: events)
         
         EventsWidgetEntryView(entry: entry)
             .previewContext(WidgetPreviewContext(family: .systemSmall))

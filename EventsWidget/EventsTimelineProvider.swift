@@ -3,7 +3,7 @@ import WidgetKit
 struct EventsTimelineProvider: IntentTimelineProvider {
     
     func placeholder(in context: Context) -> EventsTimelineEntry {
-        EventsTimelineEntry(date: Date())
+        EventsTimelineEntry(date: Date(), events: [])
     }
 
     func getSnapshot(
@@ -11,7 +11,7 @@ struct EventsTimelineProvider: IntentTimelineProvider {
         in context: Context,
         completion: @escaping (EventsTimelineEntry) -> ()
     ) {
-        let entry = EventsTimelineEntry(date: Date())
+        let entry = EventsTimelineEntry(date: Date(), events: [])
         completion(entry)
     }
 
@@ -26,7 +26,7 @@ struct EventsTimelineProvider: IntentTimelineProvider {
         let currentDate = Date()
         for hourOffset in 0 ..< 5 {
             let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = EventsTimelineEntry(date: entryDate)
+            let entry = EventsTimelineEntry(date: entryDate, events: [])
             entries.append(entry)
         }
 
