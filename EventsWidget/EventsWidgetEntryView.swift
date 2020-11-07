@@ -112,6 +112,9 @@ private struct LargeWidgetContents: View {
                         }
                     }
                     .padding()
+                    
+                    Divider()
+                        .padding([.leading, .trailing])
                 }
             }
         }
