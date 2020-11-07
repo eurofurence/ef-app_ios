@@ -7,7 +7,7 @@ struct EventsWidgetEntryView: View {
 
     var body: some View {
         ZStack {
-            Color("WidgetBackground")
+            Color.widgetBackground
             WidgetContents(entry: entry)
                 .foregroundColor(.white)
         }
@@ -76,6 +76,7 @@ private struct LargeWidgetContents: View {
                         
                         Text(event.formattedEndTime)
                             .font(.callout)
+                            .foregroundColor(.secondaryText)
                             .alignmentGuide(.leading) { h in -18 }
                     }
                     .frame(minWidth: 100, idealWidth: 100, maxWidth: 100)
@@ -87,6 +88,7 @@ private struct LargeWidgetContents: View {
                         Text(event.eventLocation)
                             .font(.callout)
                             .lineLimit(3)
+                            .foregroundColor(.secondaryText)
                     }
                 }
                 .padding()
