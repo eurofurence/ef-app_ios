@@ -8,8 +8,62 @@ struct EventsWidgetEntryView: View {
     var body: some View {
         ZStack {
             Color("WidgetBackground")
-            Text(entry.date, style: .time)
+            WidgetContents(entry: entry)
         }
+    }
+    
+}
+
+private struct WidgetContents: View {
+    
+    @Environment(\.widgetFamily) private var family: WidgetFamily
+    
+    var entry: EventsTimelineEntry
+    
+    var body: some View {
+        switch family {
+        case .systemSmall:
+            SmallWidgetContents(entry: entry)
+            
+        case .systemMedium:
+            MediumWidgetContents(entry: entry)
+            
+        case .systemLarge:
+            LargeWidgetContents(entry: entry)
+            
+        @unknown default:
+            MediumWidgetContents(entry: entry)
+        }
+    }
+    
+}
+
+private struct SmallWidgetContents: View {
+    
+    var entry: EventsTimelineEntry
+    
+    var body: some View {
+        Text("Small")
+    }
+    
+}
+
+private struct MediumWidgetContents: View {
+    
+    var entry: EventsTimelineEntry
+    
+    var body: some View {
+        Text("Medium")
+    }
+    
+}
+
+private struct LargeWidgetContents: View {
+    
+    var entry: EventsTimelineEntry
+    
+    var body: some View {
+        Text("Large")
     }
     
 }
