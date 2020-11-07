@@ -59,39 +59,60 @@ private struct MediumWidgetContents: View {
     
 }
 
+private extension HorizontalAlignment {
+    
+    private enum FilterTitleAlignmentID: AlignmentID {
+        
+        static func defaultValue(in context: ViewDimensions) -> CGFloat {
+            context[.leading]
+        }
+        
+    }
+    
+    static let filterTitle = HorizontalAlignment(FilterTitleAlignmentID.self)
+    
+}
+
 private struct LargeWidgetContents: View {
     
     var entry: EventsTimelineEntry
     
     var body: some View {
-        VStack(alignment: .leading) {
-            ForEach(entry.events) { (event) in
-                HStack(alignment: .top) {
-                    VStack(alignment: .leading) {
-                        HStack {
-                            Text(event.formattedStartTime)
+        VStack(alignment: .filterTitle) {
+            EventFilterText(filter: entry.filter)
+                .alignmentGuide(.filterTitle) { d in d[.leading] }
+            
+            VStack(alignment: .leading, spacing: 0) {
+                ForEach(entry.events) { (event) in
+                    HStack(alignment: .top) {
+                        VStack(alignment: .leading) {
+                            HStack {
+                                Text(event.formattedStartTime)
+                                    .font(.callout)
+                                    .alignmentGuide(.filterTitle) { d in d[.leading] }
+                                
+                                Spacer()
+                            }
+                            
+                            Text(event.formattedEndTime)
                                 .font(.callout)
-                            Spacer()
+                                .foregroundColor(.secondaryText)
+                                .alignmentGuide(.leading) { h in -18 }
                         }
+                        .frame(minWidth: 100, idealWidth: 100, maxWidth: 100)
                         
-                        Text(event.formattedEndTime)
-                            .font(.callout)
-                            .foregroundColor(.secondaryText)
-                            .alignmentGuide(.leading) { h in -18 }
+                        VStack(alignment: .leading) {
+                            Text(event.eventTitle)
+                                .font(.callout)
+                            
+                            Text(event.eventLocation)
+                                .font(.callout)
+                                .lineLimit(3)
+                                .foregroundColor(.secondaryText)
+                        }
                     }
-                    .frame(minWidth: 100, idealWidth: 100, maxWidth: 100)
-                    
-                    VStack(alignment: .leading) {
-                        Text(event.eventTitle)
-                            .font(.callout)
-                        
-                        Text(event.eventLocation)
-                            .font(.callout)
-                            .lineLimit(3)
-                            .foregroundColor(.secondaryText)
-                    }
+                    .padding()
                 }
-                .padding()
             }
         }
     }
@@ -124,7 +145,11 @@ struct EventsWidget_Previews: PreviewProvider {
             )
         ]
         
-        let entry = EventsTimelineEntry(date: Date(), events: events)
+        let entry = EventsTimelineEntry(
+            date: Date(),
+            filter: .upcoming,
+            events: events
+        )
         
         Group {
             EventsWidgetEntryView(entry: entry)
