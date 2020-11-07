@@ -322,6 +322,9 @@
 		CA5F26A82556F04D00CED97A /* EventsWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CA5F26A42556F04C00CED97A /* EventsWidget.intentdefinition */; };
 		CA5F26A92556F04D00CED97A /* EventsWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CA5F26A42556F04C00CED97A /* EventsWidget.intentdefinition */; };
 		CA5F26AC2556F04D00CED97A /* EventsWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CA5F269C2556F04C00CED97A /* EventsWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CA5F26BA2556F0C400CED97A /* EventsTimelineProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5F26B92556F0C400CED97A /* EventsTimelineProvider.swift */; };
+		CA5F26C12556F0D700CED97A /* EventsTimelineEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5F26C02556F0D700CED97A /* EventsTimelineEntry.swift */; };
+		CA5F26C82556F0E800CED97A /* EventsWidgetEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5F26C72556F0E800CED97A /* EventsWidgetEntryView.swift */; };
 		CA60BFFE207CDC1700697566 /* FakeAuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFFD207CDC1700697566 /* FakeAuthenticationService.swift */; };
 		CA624743532703E5C422FA37 /* Pods_EurofurenceApplicationSessionTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5121CB0BD290F505DEE03BDA /* Pods_EurofurenceApplicationSessionTests.framework */; };
 		CA630BCF229F10BF00754C27 /* WhenRecordingEventInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630BCE229F10BF00754C27 /* WhenRecordingEventInteraction.swift */; };
@@ -1640,6 +1643,9 @@
 		CA5F26A52556F04D00CED97A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CA5F26A72556F04D00CED97A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA5F26AD2556F04D00CED97A /* EventsWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EventsWidgetExtension.entitlements; sourceTree = "<group>"; };
+		CA5F26B92556F0C400CED97A /* EventsTimelineProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTimelineProvider.swift; sourceTree = "<group>"; };
+		CA5F26C02556F0D700CED97A /* EventsTimelineEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTimelineEntry.swift; sourceTree = "<group>"; };
+		CA5F26C72556F0E800CED97A /* EventsWidgetEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsWidgetEntryView.swift; sourceTree = "<group>"; };
 		CA60BFFD207CDC1700697566 /* FakeAuthenticationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeAuthenticationService.swift; sourceTree = "<group>"; };
 		CA621345221EFDD800E88880 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		CA630BCE229F10BF00754C27 /* WhenRecordingEventInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenRecordingEventInteraction.swift; sourceTree = "<group>"; };
@@ -3664,10 +3670,13 @@
 		CA5F26A12556F04C00CED97A /* EventsWidget */ = {
 			isa = PBXGroup;
 			children = (
-				CA5F26A22556F04C00CED97A /* EventsWidget.swift */,
 				CA5F26A42556F04C00CED97A /* EventsWidget.intentdefinition */,
-				CA5F26A52556F04D00CED97A /* Assets.xcassets */,
 				CA5F26A72556F04D00CED97A /* Info.plist */,
+				CA5F26C02556F0D700CED97A /* EventsTimelineEntry.swift */,
+				CA5F26B92556F0C400CED97A /* EventsTimelineProvider.swift */,
+				CA5F26A22556F04C00CED97A /* EventsWidget.swift */,
+				CA5F26C72556F0E800CED97A /* EventsWidgetEntryView.swift */,
+				CA5F26A52556F04D00CED97A /* Assets.xcassets */,
 			);
 			path = EventsWidget;
 			sourceTree = "<group>";
@@ -8497,6 +8506,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA5F26A32556F04C00CED97A /* EventsWidget.swift in Sources */,
+				CA5F26BA2556F0C400CED97A /* EventsTimelineProvider.swift in Sources */,
+				CA5F26C12556F0D700CED97A /* EventsTimelineEntry.swift in Sources */,
+				CA5F26C82556F0E800CED97A /* EventsWidgetEntryView.swift in Sources */,
 				CA5F26A82556F04D00CED97A /* EventsWidget.intentdefinition in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
