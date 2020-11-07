@@ -6,7 +6,10 @@ struct EventsWidgetEntryView: View {
     var entry: EventsTimelineEntry
 
     var body: some View {
-        Text(entry.date, style: .time)
+        ZStack {
+            Color("WidgetBackground")
+            Text(entry.date, style: .time)
+        }
     }
     
 }
@@ -39,14 +42,29 @@ struct EventsWidget_Previews: PreviewProvider {
         
         let entry = EventsTimelineEntry(date: Date(), events: events)
         
-        EventsWidgetEntryView(entry: entry)
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
+        Group {
+            EventsWidgetEntryView(entry: entry)
+                .previewContext(WidgetPreviewContext(family: .systemSmall))
+            
+            EventsWidgetEntryView(entry: entry)
+                .previewContext(WidgetPreviewContext(family: .systemMedium))
+            
+            EventsWidgetEntryView(entry: entry)
+                .previewContext(WidgetPreviewContext(family: .systemLarge))
+        }
+        .environment(\.colorScheme, .light)
         
-        EventsWidgetEntryView(entry: entry)
-            .previewContext(WidgetPreviewContext(family: .systemMedium))
-        
-        EventsWidgetEntryView(entry: entry)
-            .previewContext(WidgetPreviewContext(family: .systemLarge))
+        Group {
+            EventsWidgetEntryView(entry: entry)
+                .previewContext(WidgetPreviewContext(family: .systemSmall))
+            
+            EventsWidgetEntryView(entry: entry)
+                .previewContext(WidgetPreviewContext(family: .systemMedium))
+            
+            EventsWidgetEntryView(entry: entry)
+                .previewContext(WidgetPreviewContext(family: .systemLarge))
+        }
+        .environment(\.colorScheme, .dark)
     }
     
 }
