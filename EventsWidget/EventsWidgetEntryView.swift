@@ -85,8 +85,7 @@ private struct LargeWidgetContents: View {
                 .padding([.bottom])
             
             VStack(alignment: .leading, spacing: 14) {
-                let events: [EventViewModel] = entry.events
-                EventsList(events: events)
+                EventsList(events: entry.events.take(maximum: 3))
             }
         }
     }
@@ -175,7 +174,7 @@ struct EventsWidget_Previews: PreviewProvider {
         let entry = EventsTimelineEntry(
             date: Date(),
             filter: .upcoming,
-            events: events
+            events: EventsCollection(viewModels: events)
         )
         
         Group {

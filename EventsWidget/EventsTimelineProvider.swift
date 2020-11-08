@@ -3,7 +3,7 @@ import WidgetKit
 struct EventsTimelineProvider: IntentTimelineProvider {
     
     func placeholder(in context: Context) -> EventsTimelineEntry {
-        EventsTimelineEntry(date: Date(), filter: .upcoming, events: [])
+        EventsTimelineEntry(date: Date(), filter: .upcoming, events: EventsCollection(viewModels: []))
     }
 
     func getSnapshot(
@@ -11,7 +11,7 @@ struct EventsTimelineProvider: IntentTimelineProvider {
         in context: Context,
         completion: @escaping (EventsTimelineEntry) -> ()
     ) {
-        let entry = EventsTimelineEntry(date: Date(), filter: .upcoming, events: [])
+        let entry = EventsTimelineEntry(date: Date(), filter: .upcoming, events: EventsCollection(viewModels: []))
         completion(entry)
     }
 
@@ -43,10 +43,12 @@ struct EventsTimelineProvider: IntentTimelineProvider {
             )
         ]
         
+        let collection = EventsCollection(viewModels: events)
+        
         let entry = EventsTimelineEntry(
             date: Date(),
             filter: .upcoming,
-            events: events
+            events: collection
         )
 
         let timeline = Timeline(entries: [entry], policy: .atEnd)
