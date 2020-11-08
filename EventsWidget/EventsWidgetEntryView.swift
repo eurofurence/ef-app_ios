@@ -119,14 +119,14 @@ private struct EventRow: View {
             VStack(alignment: .leading) {
                 HStack {
                     Text(event.formattedStartTime)
-                        .font(.callout)
+                        .font(.footnote)
                         .alignmentGuide(.filterTitle) { d in d[.leading] }
                     
                     Spacer()
                 }
                 
                 Text(event.formattedEndTime)
-                    .font(.callout)
+                    .font(.footnote)
                     .foregroundColor(.secondaryText)
                     .alignmentGuide(.leading) { h in -18 }
             }
@@ -134,10 +134,10 @@ private struct EventRow: View {
             
             VStack(alignment: .leading) {
                 Text(event.eventTitle)
-                    .font(.callout)
+                    .font(.footnote)
                 
                 Text(event.eventLocation)
-                    .font(.callout)
+                    .font(.footnote)
                     .lineLimit(3)
                     .foregroundColor(.secondaryText)
             }
