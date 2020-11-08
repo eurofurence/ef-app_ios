@@ -168,6 +168,27 @@ struct EventsWidget_Previews: PreviewProvider {
                 formattedEndTime: "18:30",
                 eventTitle: "Funny Animals and Amerimanga in Sonic the Hedgehog Archie Series",
                 eventLocation: "Nizza"
+            ),
+            
+            EventViewModel(
+                formattedStartTime: "19:00",
+                formattedEndTime: "20:30",
+                eventTitle: "Fursuit Photoshoot Registration",
+                eventLocation: "Fursuit Photoshoot Registration - Estrel Hall B"
+            ),
+            
+            EventViewModel(
+                formattedStartTime: "22:00",
+                formattedEndTime: "00:30",
+                eventTitle: "International Snack Exchange",
+                eventLocation: "ECC Room 3"
+            ),
+            
+            EventViewModel(
+                formattedStartTime: "23:00",
+                formattedEndTime: "03:00",
+                eventTitle: "Games Corner",
+                eventLocation: "Estrel Hall A"
             )
         ]
         
