@@ -88,18 +88,22 @@ private struct LargeWidgetContents: View {
             Divider()
                 .padding([.bottom])
             
-            VStack(alignment: .leading, spacing: 24) {
-                EventsList(events: entry.events.take(maximum: maximumNumberOfEvents))
-            }
-            
-            if let remaining = entry.events.remaining(afterTaking: maximumNumberOfEvents) {
-                Spacer()
+            if entry.events.isEmpty {
+                Text("Empty")
+            } else {
+                VStack(alignment: .leading, spacing: 24) {
+                    EventsList(events: entry.events.take(maximum: maximumNumberOfEvents))
+                }
                 
-                HStack {
+                if let remaining = entry.events.remaining(afterTaking: maximumNumberOfEvents) {
                     Spacer()
                     
-                    Text(verbatim: .additionalEventsFooter(remaining: remaining))
-                        .font(.footnote)
+                    HStack {
+                        Spacer()
+                        
+                        Text(verbatim: .additionalEventsFooter(remaining: remaining))
+                            .font(.footnote)
+                    }
                 }
             }
         }

@@ -6,6 +6,10 @@ struct EventsCollection {
         self.viewModels = viewModels
     }
     
+    var isEmpty: Bool {
+        viewModels.isEmpty
+    }
+    
     func take(maximum: Int) -> [EventViewModel] {
         Array(viewModels.prefix(maximum))
     }
