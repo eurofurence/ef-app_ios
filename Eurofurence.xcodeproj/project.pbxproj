@@ -243,6 +243,8 @@
 		CA40109C211081C80056E16C /* KnowledgeGroupEntriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40109B211081C80056E16C /* KnowledgeGroupEntriesViewController.swift */; };
 		CA4010A12110854E0056E16C /* DefaultKnowledgeGroupViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4010A02110854E0056E16C /* DefaultKnowledgeGroupViewModelFactory.swift */; };
 		CA47B1A525580F8000050890 /* EventsCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA47B1A425580F8000050890 /* EventsCollection.swift */; };
+		CA47B1B1255812D600050890 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = CA47B1B0255812D600050890 /* Localizable.stringsdict */; };
+		CA47B1B82558189D00050890 /* EventsWidgetStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA47B1B72558189D00050890 /* EventsWidgetStrings.swift */; };
 		CA4908C4245DADA000DB032C /* WindowContentWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4908C3245DADA000DB032C /* WindowContentWireframe.swift */; };
 		CA4908C6245DADBA00DB032C /* WindowModalWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4908C5245DADBA00DB032C /* WindowModalWireframe.swift */; };
 		CA4D9343245ECA67006FA832 /* NotificationContentRepresentationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D9342245ECA67006FA832 /* NotificationContentRepresentationTests.swift */; };
@@ -1566,6 +1568,8 @@
 		CA40109B211081C80056E16C /* KnowledgeGroupEntriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeGroupEntriesViewController.swift; sourceTree = "<group>"; };
 		CA4010A02110854E0056E16C /* DefaultKnowledgeGroupViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultKnowledgeGroupViewModelFactory.swift; sourceTree = "<group>"; };
 		CA47B1A425580F8000050890 /* EventsCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCollection.swift; sourceTree = "<group>"; };
+		CA47B1B0255812D600050890 /* Localizable.stringsdict */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; path = Localizable.stringsdict; sourceTree = "<group>"; };
+		CA47B1B72558189D00050890 /* EventsWidgetStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsWidgetStrings.swift; sourceTree = "<group>"; };
 		CA4908C3245DADA000DB032C /* WindowContentWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowContentWireframe.swift; sourceTree = "<group>"; };
 		CA4908C5245DADBA00DB032C /* WindowModalWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowModalWireframe.swift; sourceTree = "<group>"; };
 		CA4D9342245ECA67006FA832 /* NotificationContentRepresentationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationContentRepresentationTests.swift; sourceTree = "<group>"; };
@@ -3683,6 +3687,7 @@
 				CA5F26A42556F04C00CED97A /* EventsWidget.intentdefinition */,
 				CA5F26A72556F04D00CED97A /* Info.plist */,
 				CA5F273C25572BD500CED97A /* Localizable.strings */,
+				CA47B1B0255812D600050890 /* Localizable.stringsdict */,
 				CA5F270925570CE600CED97A /* Color+Catalogue.swift */,
 				CA5F2715255711C700CED97A /* EventFilterText.swift */,
 				CA47B1A425580F8000050890 /* EventsCollection.swift */,
@@ -3690,6 +3695,7 @@
 				CA5F26B92556F0C400CED97A /* EventsTimelineProvider.swift */,
 				CA5F26A22556F04C00CED97A /* EventsWidget.swift */,
 				CA5F26C72556F0E800CED97A /* EventsWidgetEntryView.swift */,
+				CA47B1B72558189D00050890 /* EventsWidgetStrings.swift */,
 				CA5F26FD2556F4DE00CED97A /* EventViewModel.swift */,
 				CA5F26A52556F04D00CED97A /* Assets.xcassets */,
 			);
@@ -7162,6 +7168,7 @@
 			files = (
 				CA5F26A62556F04D00CED97A /* Assets.xcassets in Resources */,
 				CA5F273D25572BD500CED97A /* Localizable.strings in Resources */,
+				CA47B1B1255812D600050890 /* Localizable.stringsdict in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8530,6 +8537,7 @@
 				CA5F2716255711C700CED97A /* EventFilterText.swift in Sources */,
 				CA5F26C82556F0E800CED97A /* EventsWidgetEntryView.swift in Sources */,
 				CA5F26A82556F04D00CED97A /* EventsWidget.intentdefinition in Sources */,
+				CA47B1B82558189D00050890 /* EventsWidgetStrings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

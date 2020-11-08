@@ -76,6 +76,8 @@ private extension HorizontalAlignment {
 
 private struct LargeWidgetContents: View {
     
+    private let maximumNumberOfEvents = 4
+    
     var entry: EventsTimelineEntry
     
     var body: some View {
@@ -87,7 +89,18 @@ private struct LargeWidgetContents: View {
                 .padding([.bottom])
             
             VStack(alignment: .leading, spacing: 24) {
-                EventsList(events: entry.events.take(maximum: 3))
+                EventsList(events: entry.events.take(maximum: maximumNumberOfEvents))
+            }
+            
+            if let remaining = entry.events.remaining(afterTaking: maximumNumberOfEvents) {
+                Spacer()
+                
+                HStack {
+                    Spacer()
+                    
+                    Text(verbatim: .additionalEventsFooter(remaining: remaining))
+                        .font(.footnote)
+                }
             }
         }
     }
