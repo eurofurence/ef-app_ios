@@ -82,9 +82,11 @@ private struct LargeWidgetContents: View {
         VStack(alignment: .filterTitle) {
             EventFilterText(filter: entry.filter)
                 .alignmentGuide(.filterTitle) { d in d[.leading] }
+            
+            Divider()
                 .padding([.bottom])
             
-            VStack(alignment: .leading, spacing: 14) {
+            VStack(alignment: .leading, spacing: 24) {
                 EventsList(events: entry.events.take(maximum: 3))
             }
         }
@@ -99,11 +101,6 @@ private struct EventsList: View {
     var body: some View {
         ForEach(events) { (event) in
             EventRow(event: event)
-            
-            if event.id != events.last?.id {
-                Divider()
-                    .padding([.leading, .trailing])
-            }
         }
     }
     
