@@ -105,7 +105,7 @@ struct EventsWidgetEntryView: View {
         
         var body: some View {
             VStack(alignment: .filterTitle) {
-                EventFilterText(filter: filter)
+                FilterTextHeadline(filter: filter)
                     .alignmentGuide(.filterTitle) { d in d[.leading] }
                 
                 Divider()

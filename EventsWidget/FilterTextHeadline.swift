@@ -1,7 +1,7 @@
 import SwiftUI
 import WidgetKit
 
-struct EventFilterText: View {
+struct FilterTextHeadline: View {
     
     var filter: Filter
     
