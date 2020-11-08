@@ -14,48 +14,168 @@ struct EventsWidgetEntryView: View {
         }
     }
     
-}
+    private struct WidgetContents: View {
+        
+        @Environment(\.widgetFamily) private var family: WidgetFamily
+        
+        var entry: EventsTimelineEntry
+        
+        var body: some View {
+            switch family {
+            case .systemSmall:
+                SmallWidgetContents(entry: entry)
+                
+            case .systemMedium:
+                MediumWidgetContents(entry: entry)
+                
+            case .systemLarge:
+                LargeWidgetContents(entry: entry)
+                
+            @unknown default:
+                MediumWidgetContents(entry: entry)
+            }
+        }
+        
+    }
 
-private struct WidgetContents: View {
-    
-    @Environment(\.widgetFamily) private var family: WidgetFamily
-    
-    var entry: EventsTimelineEntry
-    
-    var body: some View {
-        switch family {
-        case .systemSmall:
-            SmallWidgetContents(entry: entry)
-            
-        case .systemMedium:
-            MediumWidgetContents(entry: entry)
-            
-        case .systemLarge:
-            LargeWidgetContents(entry: entry)
-            
-        @unknown default:
-            MediumWidgetContents(entry: entry)
+    private struct SmallWidgetContents: View {
+        
+        var entry: EventsTimelineEntry
+        
+        var body: some View {
+            Text("Small")
+        }
+        
+    }
+
+    private struct MediumWidgetContents: View {
+        
+        var entry: EventsTimelineEntry
+        
+        var body: some View {
+            Text("Medium")
+        }
+        
+    }
+
+    private struct LargeWidgetContents: View {
+        
+        var entry: EventsTimelineEntry
+        
+        var body: some View {
+            if entry.events.isEmpty {
+                PlaceholderView()
+            } else {
+                VerticalEventsCollectionView(
+                    filter: entry.filter,
+                    events: entry.events,
+                    maximumNumberOfEvents: 4
+                )
+            }
         }
     }
-    
-}
 
-private struct SmallWidgetContents: View {
-    
-    var entry: EventsTimelineEntry
-    
-    var body: some View {
-        Text("Small")
+    private struct PlaceholderView: View {
+        
+        var body: some View {
+            VStack(spacing: 17) {
+                Spacer()
+                
+                Image("No Content Placeholder")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(maxHeight: 250)
+                    .foregroundColor(.secondaryText)
+                
+                Text("No upcoming events today")
+                    .font(.footnote)
+                    .foregroundColor(.secondaryText)
+                
+                Spacer()
+            }
+        }
+        
     }
     
-}
+    private struct VerticalEventsCollectionView: View {
+        
+        var filter: Filter
+        var events: EventsCollection
+        var maximumNumberOfEvents: Int
+        
+        var body: some View {
+            VStack(alignment: .filterTitle) {
+                EventFilterText(filter: filter)
+                    .alignmentGuide(.filterTitle) { d in d[.leading] }
+                
+                Divider()
+                    .padding([.bottom])
+                
+                VStack(alignment: .leading, spacing: 24) {
+                    EventsList(events: events.take(maximum: maximumNumberOfEvents))
+                }
+                
+                if let remaining = events.remaining(afterTaking: maximumNumberOfEvents) {
+                    Spacer()
+                    
+                    HStack {
+                        Spacer()
+                        
+                        Text(verbatim: .additionalEventsFooter(remaining: remaining))
+                            .font(.footnote)
+                    }
+                }
+            }
+        }
+        
+    }
 
-private struct MediumWidgetContents: View {
-    
-    var entry: EventsTimelineEntry
-    
-    var body: some View {
-        Text("Medium")
+    private struct EventsList: View {
+        
+        var events: [EventViewModel]
+        
+        var body: some View {
+            ForEach(events) { (event) in
+                EventRow(event: event)
+            }
+        }
+        
+    }
+
+    private struct EventRow: View {
+        
+        var event: EventViewModel
+        
+        var body: some View {
+            HStack(alignment: .top) {
+                VStack(alignment: .leading) {
+                    HStack {
+                        Text(event.formattedStartTime)
+                            .font(.footnote)
+                            .alignmentGuide(.filterTitle) { d in d[.leading] }
+                        
+                        Spacer()
+                    }
+                    
+                    Text(event.formattedEndTime)
+                        .font(.footnote)
+                        .foregroundColor(.secondaryText)
+                        .alignmentGuide(.leading) { h in -18 }
+                }
+                .frame(minWidth: 100, idealWidth: 100, maxWidth: 100)
+                
+                VStack(alignment: .leading) {
+                    Text(event.eventTitle)
+                        .font(.footnote)
+                    
+                    Text(event.eventLocation)
+                        .font(.footnote)
+                        .lineLimit(3)
+                        .foregroundColor(.secondaryText)
+                }
+            }
+        }
+        
     }
     
 }
@@ -71,105 +191,6 @@ private extension HorizontalAlignment {
     }
     
     static let filterTitle = HorizontalAlignment(FilterTitleAlignmentID.self)
-    
-}
-
-private struct LargeWidgetContents: View {
-    
-    private let maximumNumberOfEvents = 4
-    
-    var entry: EventsTimelineEntry
-    
-    var body: some View {
-        VStack(alignment: .filterTitle) {
-            if entry.events.isEmpty {
-                VStack(spacing: 17) {
-                    Spacer()
-                    
-                    Image("No Content Placeholder")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(maxHeight: 250)
-                        .foregroundColor(.secondaryText)
-                    
-                    Text("No upcoming events today")
-                        .font(.footnote)
-                        .foregroundColor(.secondaryText)
-                    
-                    Spacer()
-                }
-            } else {
-                EventFilterText(filter: entry.filter)
-                    .alignmentGuide(.filterTitle) { d in d[.leading] }
-                
-                Divider()
-                    .padding([.bottom])
-                
-                VStack(alignment: .leading, spacing: 24) {
-                    EventsList(events: entry.events.take(maximum: maximumNumberOfEvents))
-                }
-                
-                if let remaining = entry.events.remaining(afterTaking: maximumNumberOfEvents) {
-                    Spacer()
-                    
-                    HStack {
-                        Spacer()
-                        
-                        Text(verbatim: .additionalEventsFooter(remaining: remaining))
-                            .font(.footnote)
-                    }
-                }
-            }
-        }
-    }
-    
-}
-
-private struct EventsList: View {
-    
-    var events: [EventViewModel]
-    
-    var body: some View {
-        ForEach(events) { (event) in
-            EventRow(event: event)
-        }
-    }
-    
-}
-
-private struct EventRow: View {
-    
-    var event: EventViewModel
-    
-    var body: some View {
-        HStack(alignment: .top) {
-            VStack(alignment: .leading) {
-                HStack {
-                    Text(event.formattedStartTime)
-                        .font(.footnote)
-                        .alignmentGuide(.filterTitle) { d in d[.leading] }
-                    
-                    Spacer()
-                }
-                
-                Text(event.formattedEndTime)
-                    .font(.footnote)
-                    .foregroundColor(.secondaryText)
-                    .alignmentGuide(.leading) { h in -18 }
-            }
-            .frame(minWidth: 100, idealWidth: 100, maxWidth: 100)
-            
-            VStack(alignment: .leading) {
-                Text(event.eventTitle)
-                    .font(.footnote)
-                
-                Text(event.eventLocation)
-                    .font(.footnote)
-                    .lineLimit(3)
-                    .foregroundColor(.secondaryText)
-            }
-        }
-    }
     
 }
 
