@@ -82,15 +82,29 @@ private struct LargeWidgetContents: View {
     
     var body: some View {
         VStack(alignment: .filterTitle) {
-            EventFilterText(filter: entry.filter)
-                .alignmentGuide(.filterTitle) { d in d[.leading] }
-            
-            Divider()
-                .padding([.bottom])
-            
             if entry.events.isEmpty {
-                Text("Empty")
+                VStack(spacing: 17) {
+                    Spacer()
+                    
+                    Image("No Content Placeholder")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(maxHeight: 250)
+                        .foregroundColor(.secondaryText)
+                    
+                    Text("No upcoming events today")
+                        .font(.footnote)
+                        .foregroundColor(.secondaryText)
+                    
+                    Spacer()
+                }
             } else {
+                EventFilterText(filter: entry.filter)
+                    .alignmentGuide(.filterTitle) { d in d[.leading] }
+                
+                Divider()
+                    .padding([.bottom])
+                
                 VStack(alignment: .leading, spacing: 24) {
                     EventsList(events: entry.events.take(maximum: maximumNumberOfEvents))
                 }
