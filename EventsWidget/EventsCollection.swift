@@ -12,7 +12,7 @@ struct EventsCollection {
     
     func remaining(afterTaking maximum: Int) -> Int? {
         let remainder = viewModels.count - maximum
-        return remainder == 0 ? nil : remainder
+        return remainder < 0 ? nil : remainder
     }
     
 }

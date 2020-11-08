@@ -202,32 +202,57 @@ struct EventsWidget_Previews: PreviewProvider {
             )
         ]
         
-        let entry = EventsTimelineEntry(
+        let manyEvents = EventsTimelineEntry(
             date: Date(),
             filter: .upcoming,
             events: EventsCollection(viewModels: events)
         )
         
+        let noEvents = EventsTimelineEntry(
+            date: Date(),
+            filter: .upcoming,
+            events: EventsCollection(viewModels: [])
+        )
+        
         Group {
-            EventsWidgetEntryView(entry: entry)
+            EventsWidgetEntryView(entry: manyEvents)
                 .previewContext(WidgetPreviewContext(family: .systemSmall))
             
-            EventsWidgetEntryView(entry: entry)
+            EventsWidgetEntryView(entry: noEvents)
+                .previewContext(WidgetPreviewContext(family: .systemSmall))
+            
+            EventsWidgetEntryView(entry: manyEvents)
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
             
-            EventsWidgetEntryView(entry: entry)
+            EventsWidgetEntryView(entry: noEvents)
+                .previewContext(WidgetPreviewContext(family: .systemMedium))
+            
+            EventsWidgetEntryView(entry: manyEvents)
+                .previewContext(WidgetPreviewContext(family: .systemLarge))
+            
+            EventsWidgetEntryView(entry: noEvents)
                 .previewContext(WidgetPreviewContext(family: .systemLarge))
         }
+        .previewDisplayName("Light")
         .environment(\.colorScheme, .light)
         
         Group {
-            EventsWidgetEntryView(entry: entry)
+            EventsWidgetEntryView(entry: manyEvents)
                 .previewContext(WidgetPreviewContext(family: .systemSmall))
             
-            EventsWidgetEntryView(entry: entry)
+            EventsWidgetEntryView(entry: noEvents)
+                .previewContext(WidgetPreviewContext(family: .systemSmall))
+            
+            EventsWidgetEntryView(entry: manyEvents)
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
             
-            EventsWidgetEntryView(entry: entry)
+            EventsWidgetEntryView(entry: noEvents)
+                .previewContext(WidgetPreviewContext(family: .systemMedium))
+            
+            EventsWidgetEntryView(entry: manyEvents)
+                .previewContext(WidgetPreviewContext(family: .systemLarge))
+            
+            EventsWidgetEntryView(entry: noEvents)
                 .previewContext(WidgetPreviewContext(family: .systemLarge))
         }
         .environment(\.colorScheme, .dark)
