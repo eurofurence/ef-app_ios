@@ -2,6 +2,13 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Packages/EventsWidgetLogic">
+   </FileRef>
+   <Group
+      location = "container:"
+      name = "Packages">
+   </Group>
+   <FileRef
       location = "group:Eurofurence.xcodeproj">
    </FileRef>
    <FileRef
