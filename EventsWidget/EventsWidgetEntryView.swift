@@ -64,7 +64,7 @@ struct EventsWidgetEntryView: View {
         
         var body: some View {
             if entry.events.isEmpty {
-                PlaceholderView()
+                PlaceholderView(filter: entry.filter)
             } else {
                 VerticalEventsCollectionView(
                     filter: entry.filter,
@@ -77,6 +77,8 @@ struct EventsWidgetEntryView: View {
 
     private struct PlaceholderView: View {
         
+        var filter: Filter
+        
         var body: some View {
             VStack(spacing: 17) {
                 Spacer()
@@ -87,11 +89,38 @@ struct EventsWidgetEntryView: View {
                     .frame(maxHeight: 250)
                     .foregroundColor(.secondaryText)
                 
-                Text("No upcoming events today")
-                    .font(.footnote)
-                    .foregroundColor(.secondaryText)
+                FilterPlaceholderText(filter: filter)
                 
                 Spacer()
+            }
+        }
+        
+    }
+    
+    private struct FilterPlaceholderText: View {
+        
+        var filter: Filter
+        
+        var body: some View {
+            text
+                .font(.footnote)
+                .foregroundColor(.secondaryText)
+        }
+        
+        @ViewBuilder
+        private var text: some View {
+            switch filter {
+            case .upcoming:
+                Text("No upcoming events")
+                
+            case .favourites:
+                Text("No upcoming favourites")
+                
+            case .running:
+                Text("No running events")
+                
+            case .unknown:
+                Text("")
             }
         }
         
