@@ -4,13 +4,18 @@ import Intents
 
 @main
 struct EventsWidget: Widget {
-    let kind: String = "EventsWidget"
-
+    
+    let kind = "org.eurofurence.EventsWidget"
+    
     var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: ViewEventsIntent.self, provider: EventsTimelineProvider()) { entry in
-            EventsWidgetEntryView(entry: entry)
-        }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        IntentConfiguration(
+            kind: kind,
+            intent: ViewEventsIntent.self,
+            provider: EventsTimelineProvider(),
+            content: EventsWidgetEntryView.init
+        )
+        .configurationDisplayName("EventsWidgetDisplayName")
+        .description("EventsWidgetDescription")
     }
+    
 }
