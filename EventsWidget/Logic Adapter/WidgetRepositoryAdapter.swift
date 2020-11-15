@@ -49,6 +49,7 @@ struct WidgetRepositoryAdapter: EventsWidgetLogic.EventRepository {
     private class EventsAdapter: EurofurenceModel.EventsServiceObserver {
         
         let favouritesOnly: Bool
+        private var hasCompleted = false
         private let completionHandler: ([EventsWidgetLogic.Event]) -> Void
         
         required init(favouritesOnly: Bool, completionHandler: @escaping ([EventsWidgetLogic.Event]) -> Void) {
@@ -57,6 +58,10 @@ struct WidgetRepositoryAdapter: EventsWidgetLogic.EventRepository {
         }
         
         func completeLoad(events: [EurofurenceModel.Event]) {
+            guard !hasCompleted else { return }
+            
+            hasCompleted = true
+            
             let widgetEvents = events.map(WidgetEventAdapter.init(event:))
             completionHandler(widgetEvents)
         }
