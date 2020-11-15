@@ -4,7 +4,17 @@ public struct EventsTimelineController {
     
     private let repository: EventRepository
     
-    public init(context: EventWidgetContext, repository: EventRepository) {
+    public struct Options {
+        
+        public let maximumEventsPerEntry: Int
+        
+        public init(maximumEventsPerEntry: Int) {
+            self.maximumEventsPerEntry = maximumEventsPerEntry
+        }
+        
+    }
+    
+    public init(repository: EventRepository, options: Options) {
         self.repository = repository
     }
     
