@@ -3,7 +3,6 @@ import Foundation.NSDate
 public struct EventsTimelineController {
     
     private let repository: EventRepository
-    private let options: Options
     
     public struct Options {
         
@@ -17,12 +16,11 @@ public struct EventsTimelineController {
         
     }
     
-    public init(repository: EventRepository, options: Options) {
+    public init(repository: EventRepository) {
         self.repository = repository
-        self.options = options
     }
     
-    public func makeEntries(completionHandler: @escaping ([EventTimelineEntry]) -> Void) {
+    public func makeEntries(options: Options, completionHandler: @escaping ([EventTimelineEntry]) -> Void) {
         ClusterEventsIntoEntriesTask(
             repository: repository,
             maximumEventsPerEntry: options.maximumEventsPerEntry,

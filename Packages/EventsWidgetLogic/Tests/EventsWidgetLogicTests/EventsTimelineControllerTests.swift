@@ -7,13 +7,13 @@ class EventsTimelineControllerTests: XCTestCase {
         let now = Date()
         let event = StubEvent(id: "some_event", title: "Some Event", startTime: now)
         let repository = StubEventsRepository(events: [event])
-        let controller = EventsTimelineController(
-            repository: repository,
-            options: .init(maximumEventsPerEntry: 3, timelineStartDate: now)
-        )
+        let controller = EventsTimelineController(repository: repository)
         
         var actual: [EventTimelineEntry]?
-        controller.makeEntries(completionHandler: { actual = $0 })
+        controller.makeEntries(
+            options: .init(maximumEventsPerEntry: 3, timelineStartDate: now),
+            completionHandler: { actual = $0 }
+        )
         
         let expected: [EventTimelineEntry] = [
             EventTimelineEntry(
@@ -34,13 +34,13 @@ class EventsTimelineControllerTests: XCTestCase {
         let earlierEvent = StubEvent(id: "some_event", title: "Some Event", startTime: now)
         let laterEvent = StubEvent(id: "some_other_event", title: "Some Other Event", startTime: inHalfAnHour)
         let repository = StubEventsRepository(events: [earlierEvent, laterEvent])
-        let controller = EventsTimelineController(
-            repository: repository,
-            options: .init(maximumEventsPerEntry: 3, timelineStartDate: now)
-        )
+        let controller = EventsTimelineController(repository: repository)
         
         var actual: [EventTimelineEntry]?
-        controller.makeEntries(completionHandler: { actual = $0 })
+        controller.makeEntries(
+            options: .init(maximumEventsPerEntry: 3, timelineStartDate: now),
+            completionHandler: { actual = $0 }
+        )
         
         let expected: [EventTimelineEntry] = [
             EventTimelineEntry(
@@ -68,13 +68,13 @@ class EventsTimelineControllerTests: XCTestCase {
         let earlierEvent = StubEvent(id: "some_event", title: "Some Event", startTime: now)
         let laterEvent = StubEvent(id: "some_other_event", title: "Some Other Event", startTime: inHalfAnHour)
         let repository = StubEventsRepository(events: [earlierEvent, laterEvent])
-        let controller = EventsTimelineController(
-            repository: repository,
-            options: .init(maximumEventsPerEntry: 3, timelineStartDate: inHalfAnHour)
-        )
+        let controller = EventsTimelineController(repository: repository)
         
         var actual: [EventTimelineEntry]?
-        controller.makeEntries(completionHandler: { actual = $0 })
+        controller.makeEntries(
+            options: .init(maximumEventsPerEntry: 3, timelineStartDate: inHalfAnHour),
+            completionHandler: { actual = $0 }
+        )
         
         let expected: [EventTimelineEntry] = [
             EventTimelineEntry(
@@ -97,13 +97,13 @@ class EventsTimelineControllerTests: XCTestCase {
         ]
         
         let repository = StubEventsRepository(events: events)
-        let controller = EventsTimelineController(
-            repository: repository,
-            options: .init(maximumEventsPerEntry: 3, timelineStartDate: now)
-        )
+        let controller = EventsTimelineController(repository: repository)
         
         var actual: [EventTimelineEntry]?
-        controller.makeEntries(completionHandler: { actual = $0 })
+        controller.makeEntries(
+            options: .init(maximumEventsPerEntry: 3, timelineStartDate: now),
+            completionHandler: { actual = $0 }
+        )
         
         let expected: [EventTimelineEntry] = [
             EventTimelineEntry(
@@ -130,13 +130,13 @@ class EventsTimelineControllerTests: XCTestCase {
         ]
         
         let repository = StubEventsRepository(events: events)
-        let controller = EventsTimelineController(
-            repository: repository,
-            options: .init(maximumEventsPerEntry: 3, timelineStartDate: now)
-        )
+        let controller = EventsTimelineController(repository: repository)
         
         var actual: [EventTimelineEntry]?
-        controller.makeEntries(completionHandler: { actual = $0 })
+        controller.makeEntries(
+            options: .init(maximumEventsPerEntry: 3, timelineStartDate: now),
+            completionHandler: { actual = $0 }
+        )
         
         let expected: [EventTimelineEntry] = [
             EventTimelineEntry(

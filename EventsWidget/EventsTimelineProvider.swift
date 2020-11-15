@@ -57,15 +57,14 @@ struct EventsTimelineProvider: IntentTimelineProvider {
         completion: @escaping (Timeline<EventTimelineEntry>) -> ()
     ) {
         let repository = WidgetRepositoryAdapter(intent: configuration)
-        let controller = EventsTimelineController(
-            repository: repository,
-            options: EventsTimelineController.Options(
-                maximumEventsPerEntry: 3,
-                timelineStartDate: Date()
-            )
+        let controller = EventsTimelineController(repository: repository)
+        
+        let options = EventsTimelineController.Options(
+            maximumEventsPerEntry: 3,
+            timelineStartDate: Date()
         )
         
-        controller.makeEntries { (entries) in
+        controller.makeEntries(options: options) { (entries) in
             let timeline = Timeline(entries: entries, policy: .atEnd)
             completion(timeline)
         }
