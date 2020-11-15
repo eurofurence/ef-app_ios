@@ -14,13 +14,13 @@ struct FilterTextHeadline: View {
     private var text: some View {
         switch filter {
         case .upcoming:
-            Text(NSLocalizedString("Upcoming", comment: "Upcoming").localizedCapitalized)
+            Text("Upcoming", comment: "Upcoming")
             
         case .favourites:
-            Text(NSLocalizedString("Favourites", comment: "Favourites").localizedCapitalized)
+            Text("Favourites", comment: "Favourites")
             
         case .running:
-            Text(NSLocalizedString("Running", comment: "Running").localizedCapitalized)
+            Text("Running", comment: "Running")
             
         case .unknown:
             Text("")
