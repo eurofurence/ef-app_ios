@@ -10,14 +10,11 @@ public struct EventsTimelineController {
     
     public func makeEntries(completionHandler: @escaping ([EventTimelineEntry]) -> Void) {
         repository.loadEvents { (events) in
-            let groups = Dictionary(grouping: events, by: \.startTime)
-            let groupsSortedByTime = groups.sorted(by: { (first, second) -> Bool in
-                first.key < second.key
-            })
+            let distinctStartTimes = Set(events.map(\.startTime)).sorted()
             
             var eventClusters = [[Event]]()
-            for (groupStartTime, _) in groupsSortedByTime {
-                let eventsOnOrAfterTime = events.filter({ $0.startTime >= groupStartTime })
+            for startTime in distinctStartTimes {
+                let eventsOnOrAfterTime = events.filter({ $0.startTime >= startTime })
                 eventClusters.append(eventsOnOrAfterTime)
             }
             
