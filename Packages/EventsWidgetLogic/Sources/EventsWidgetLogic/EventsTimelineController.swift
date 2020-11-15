@@ -28,7 +28,7 @@ extension EventsTimelineController {
     
     public func makeSnapshotEntry(options: SnapshotOptions, completionHandler: @escaping (EventTimelineEntry) -> Void) {
         repository.loadEvents { (events) in
-            let onlyEventsRelevantForSnapshot = events.filter({ $0.startTime >= options.snapshottingAtTime })
+            let onlyEventsRelevantForSnapshot = events.filter({ $0.startTime >= options.snapshottingAtTime }).sorted(by: \.title)
             let viewModels = onlyEventsRelevantForSnapshot.map(EventViewModel.init(event:))
             let entry = EventTimelineEntry(date: options.snapshottingAtTime, events: viewModels, additionalEventsCount: 0)
             completionHandler(entry)

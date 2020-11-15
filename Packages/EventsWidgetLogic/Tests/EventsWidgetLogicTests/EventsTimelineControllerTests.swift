@@ -228,4 +228,33 @@ class EventsTimelineControllerTests: XCTestCase {
         XCTAssertEqual(expected, actual)
     }
     
+    func testSnapshot_SortsEventsWithinEntryByName() {
+        let now = Date()
+        let events = [
+            StubEvent(id: "2", title: "B Event", startTime: now),
+            StubEvent(id: "3", title: "C Event", startTime: now),
+            StubEvent(id: "1", title: "A Event", startTime: now)
+        ]
+        
+        let repository = StubEventsRepository(events: events)
+        let controller = EventsTimelineController(repository: repository)
+        
+        var actual: EventTimelineEntry?
+        controller.makeSnapshotEntry(
+            options: .init(maximumEventsPerEntry: 3, snapshottingAtTime: now),
+            completionHandler: { actual = $0 }
+        )
+        
+        let expected = EventTimelineEntry(
+            date: now,
+            events: [
+                EventViewModel(id: "1", title: "A Event"),
+                EventViewModel(id: "2", title: "B Event"),
+                EventViewModel(id: "3", title: "C Event")
+            ], additionalEventsCount: 0
+        )
+        
+        XCTAssertEqual(expected, actual)
+    }
+    
 }
