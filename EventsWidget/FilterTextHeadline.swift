@@ -16,9 +16,6 @@ struct FilterTextHeadline: View {
         case .upcoming:
             Text("Upcoming", comment: "Upcoming")
             
-        case .favourites:
-            Text("Favourites", comment: "Favourites")
-            
         case .running:
             Text("Running", comment: "Running")
             

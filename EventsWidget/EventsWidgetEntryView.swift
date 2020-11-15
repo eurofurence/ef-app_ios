@@ -113,9 +113,6 @@ struct EventsWidgetEntryView: View {
             case .upcoming:
                 Text("No upcoming events")
                 
-            case .favourites:
-                Text("No upcoming favourites")
-                
             case .running:
                 Text("No running events")
                 

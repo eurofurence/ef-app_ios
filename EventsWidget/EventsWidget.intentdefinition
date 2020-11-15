@@ -37,16 +37,6 @@
 				</dict>
 				<dict>
 					<key>INEnumValueDisplayName</key>
-					<string>Favourites</string>
-					<key>INEnumValueDisplayNameID</key>
-					<string>1Xg3Vl</string>
-					<key>INEnumValueIndex</key>
-					<integer>3</integer>
-					<key>INEnumValueName</key>
-					<string>favourites</string>
-				</dict>
-				<dict>
-					<key>INEnumValueDisplayName</key>
 					<string>Running</string>
 					<key>INEnumValueDisplayNameID</key>
 					<string>LnW2Az</string>
@@ -80,7 +70,7 @@
 			<key>INIntentIneligibleForSuggestions</key>
 			<true/>
 			<key>INIntentLastParameterTag</key>
-			<integer>2</integer>
+			<integer>4</integer>
 			<key>INIntentName</key>
 			<string>ViewEvents</string>
 			<key>INIntentParameters</key>
@@ -148,6 +138,54 @@
 					<integer>2</integer>
 					<key>INIntentParameterType</key>
 					<string>Integer</string>
+				</dict>
+				<dict>
+					<key>INIntentParameterConfigurable</key>
+					<true/>
+					<key>INIntentParameterDisplayName</key>
+					<string>Favourites Only</string>
+					<key>INIntentParameterDisplayNameID</key>
+					<string>D5Mvg1</string>
+					<key>INIntentParameterDisplayPriority</key>
+					<integer>2</integer>
+					<key>INIntentParameterMetadata</key>
+					<dict>
+						<key>INIntentParameterMetadataFalseDisplayName</key>
+						<string>false</string>
+						<key>INIntentParameterMetadataFalseDisplayNameID</key>
+						<string>WyRSNg</string>
+						<key>INIntentParameterMetadataTrueDisplayName</key>
+						<string>true</string>
+						<key>INIntentParameterMetadataTrueDisplayNameID</key>
+						<string>9FW5Sr</string>
+					</dict>
+					<key>INIntentParameterName</key>
+					<string>favouritesOnly</string>
+					<key>INIntentParameterPromptDialogs</key>
+					<array>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Configuration</string>
+						</dict>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogFormatString</key>
+							<string>Favourites only?</string>
+							<key>INIntentParameterPromptDialogFormatStringID</key>
+							<string>ev3sPB</string>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Primary</string>
+						</dict>
+					</array>
+					<key>INIntentParameterSupportsResolution</key>
+					<true/>
+					<key>INIntentParameterTag</key>
+					<integer>4</integer>
+					<key>INIntentParameterType</key>
+					<string>Boolean</string>
 				</dict>
 			</array>
 			<key>INIntentResponse</key>
