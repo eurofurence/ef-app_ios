@@ -1,7 +1,10 @@
 import CoreData
 import Foundation
+import os
 
 public struct CoreDataStore: DataStore {
+    
+    private static let log = OSLog(subsystem: "org.eurofurence.EurofurenceModel", category: "Core Data")
 
     private class EurofurencePersistentContainer: NSPersistentContainer {
         override class func defaultDirectoryURL() -> URL {
@@ -25,7 +28,16 @@ public struct CoreDataStore: DataStore {
         description.shouldMigrateStoreAutomatically = true
         description.shouldInferMappingModelAutomatically = true
         container.persistentStoreDescriptions = [description]
-        container.loadPersistentStores { (_, _) in }
+        container.loadPersistentStores { (_, error) in
+            if let error = error {
+                os_log(
+                    "Failed to load persistent stores: %{public}s",
+                    log: Self.log,
+                    type: .error,
+                    String(describing: error)
+                )
+            }
+        }
     }
 
     // MARK: DataStore
