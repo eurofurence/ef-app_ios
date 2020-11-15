@@ -1,9 +1,10 @@
+import EventsWidgetLogic
 import SwiftUI
 import WidgetKit
 
 struct EventsWidgetEntryView: View {
     
-    var entry: EventsTimelineEntry
+    var entry: EventTimelineEntry
 
     var body: some View {
         ZStack(alignment: .top) {
@@ -18,7 +19,7 @@ struct EventsWidgetEntryView: View {
         
         @Environment(\.widgetFamily) private var family: WidgetFamily
         
-        var entry: EventsTimelineEntry
+        var entry: EventTimelineEntry
         
         var body: some View {
             switch family {
@@ -40,7 +41,7 @@ struct EventsWidgetEntryView: View {
 
     private struct SmallWidgetContents: View {
         
-        var entry: EventsTimelineEntry
+        var entry: EventTimelineEntry
         
         var body: some View {
             Text("Small")
@@ -50,7 +51,7 @@ struct EventsWidgetEntryView: View {
 
     private struct MediumWidgetContents: View {
         
-        var entry: EventsTimelineEntry
+        var entry: EventTimelineEntry
         
         var body: some View {
             Text("Medium")
@@ -60,16 +61,16 @@ struct EventsWidgetEntryView: View {
 
     private struct LargeWidgetContents: View {
         
-        var entry: EventsTimelineEntry
+        var entry: EventTimelineEntry
         
         var body: some View {
             if entry.events.isEmpty {
-                PlaceholderView(filter: entry.filter)
+                PlaceholderView(filter: .upcoming)
             } else {
                 VerticalEventsCollectionView(
-                    filter: entry.filter,
+                    filter: .upcoming,
                     events: entry.events,
-                    maximumNumberOfEvents: 4
+                    remainingEvents: 4
                 )
             }
         }
@@ -126,8 +127,8 @@ struct EventsWidgetEntryView: View {
     private struct VerticalEventsCollectionView: View {
         
         var filter: EventFilter
-        var events: EventsCollection
-        var maximumNumberOfEvents: Int
+        var events: [EventViewModel]
+        var remainingEvents: Int
         
         var body: some View {
             VStack(alignment: .leading) {
@@ -137,16 +138,16 @@ struct EventsWidgetEntryView: View {
                     .padding([.bottom])
                 
                 VStack(alignment: .leading, spacing: 24) {
-                    EventsList(events: events.take(maximum: maximumNumberOfEvents))
+                    EventsList(events: events)
                 }
                 
-                if let remaining = events.remaining(afterTaking: maximumNumberOfEvents) {
+                if remainingEvents > 0 {
                     Spacer()
                     
                     HStack {
                         Spacer()
                         
-                        Text(verbatim: .additionalEventsFooter(remaining: remaining))
+                        Text(verbatim: .additionalEventsFooter(remaining: remainingEvents))
                             .font(.footnote)
                     }
                 }
@@ -189,10 +190,10 @@ struct EventsWidgetEntryView: View {
                 .frame(minWidth: 100, idealWidth: 100, maxWidth: 100)
                 
                 VStack(alignment: .leading) {
-                    Text(event.eventTitle)
+                    Text(event.title)
                         .font(.footnote)
                     
-                    Text(event.eventLocation)
+                    Text(event.location)
                         .font(.footnote)
                         .lineLimit(3)
                         .foregroundColor(.secondaryText)
@@ -209,58 +210,64 @@ struct EventsWidget_Previews: PreviewProvider {
     static var previews: some View {
         let events: [EventViewModel] = [
             EventViewModel(
+                id: UUID().uuidString,
+                title: "Trans Meet-Up",
+                location: "Nizza",
                 formattedStartTime: "13:00",
-                formattedEndTime: "14:30",
-                eventTitle: "Trans Meet-Up",
-                eventLocation: "Nizza"
+                formattedEndTime: "14:30"
             ),
             
             EventViewModel(
+                id: UUID().uuidString,
+                title: "Dealer's Den",
+                location: "Dealer's Den - Convention Center Foyer 3",
                 formattedStartTime: "13:30",
-                formattedEndTime: "15:00",
-                eventTitle: "Dealer's Den",
-                eventLocation: "Dealer's Den - Convention Center Foyer 3"
+                formattedEndTime: "15:00"
             ),
             
             EventViewModel(
+                id: UUID().uuidString,
+                title: "Funny Animals and Amerimanga in Sonic the Hedgehog Archie Series",
+                location: "Nizza",
                 formattedStartTime: "17:30",
-                formattedEndTime: "18:30",
-                eventTitle: "Funny Animals and Amerimanga in Sonic the Hedgehog Archie Series",
-                eventLocation: "Nizza"
+                formattedEndTime: "18:30"
             ),
             
             EventViewModel(
+                id: UUID().uuidString,
+                title: "Fursuit Photoshoot Registration",
+                location: "Fursuit Photoshoot Registration - Estrel Hall B",
                 formattedStartTime: "19:00",
-                formattedEndTime: "20:30",
-                eventTitle: "Fursuit Photoshoot Registration",
-                eventLocation: "Fursuit Photoshoot Registration - Estrel Hall B"
+                formattedEndTime: "20:30"
             ),
             
             EventViewModel(
+                id: UUID().uuidString,
+                title: "International Snack Exchange",
+                location: "ECC Room 3",
                 formattedStartTime: "22:00",
-                formattedEndTime: "00:30",
-                eventTitle: "International Snack Exchange",
-                eventLocation: "ECC Room 3"
+                formattedEndTime: "00:30"
             ),
             
             EventViewModel(
+                id: UUID().uuidString,
+                title: "Games Corner",
+                location: "Estrel Hall A",
                 formattedStartTime: "23:00",
-                formattedEndTime: "03:00",
-                eventTitle: "Games Corner",
-                eventLocation: "Estrel Hall A"
+                formattedEndTime: "03:00"
             )
         ]
         
-        let manyEvents = EventsTimelineEntry(
+        let manyEvents = EventTimelineEntry(
             date: Date(),
-            filter: .upcoming,
-            events: EventsCollection(viewModels: events)
+            events: events,
+            additionalEventsCount: 3
         )
         
-        let noEvents = EventsTimelineEntry(
+        let noEvents = EventTimelineEntry(
             date: Date(),
-            filter: .upcoming,
-            events: EventsCollection(viewModels: [])
+            events: [],
+            additionalEventsCount: 0
         )
         
         Group {

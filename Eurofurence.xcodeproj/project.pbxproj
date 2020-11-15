@@ -243,7 +243,6 @@
 		CA40109A211081A40056E16C /* KnowledgeGroupEntries.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA401099211081A40056E16C /* KnowledgeGroupEntries.storyboard */; };
 		CA40109C211081C80056E16C /* KnowledgeGroupEntriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40109B211081C80056E16C /* KnowledgeGroupEntriesViewController.swift */; };
 		CA4010A12110854E0056E16C /* DefaultKnowledgeGroupViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4010A02110854E0056E16C /* DefaultKnowledgeGroupViewModelFactory.swift */; };
-		CA47B1A525580F8000050890 /* EventsCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA47B1A425580F8000050890 /* EventsCollection.swift */; };
 		CA47B1B1255812D600050890 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = CA47B1B0255812D600050890 /* Localizable.stringsdict */; };
 		CA47B1B82558189D00050890 /* EventsWidgetStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA47B1B72558189D00050890 /* EventsWidgetStrings.swift */; };
 		CA4908C4245DADA000DB032C /* WindowContentWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4908C3245DADA000DB032C /* WindowContentWireframe.swift */; };
@@ -327,9 +326,7 @@
 		CA5F26A92556F04D00CED97A /* EventsWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CA5F26A42556F04C00CED97A /* EventsWidget.intentdefinition */; };
 		CA5F26AC2556F04D00CED97A /* EventsWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CA5F269C2556F04C00CED97A /* EventsWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CA5F26BA2556F0C400CED97A /* EventsTimelineProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5F26B92556F0C400CED97A /* EventsTimelineProvider.swift */; };
-		CA5F26C12556F0D700CED97A /* EventsTimelineEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5F26C02556F0D700CED97A /* EventsTimelineEntry.swift */; };
 		CA5F26C82556F0E800CED97A /* EventsWidgetEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5F26C72556F0E800CED97A /* EventsWidgetEntryView.swift */; };
-		CA5F26FE2556F4DE00CED97A /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5F26FD2556F4DE00CED97A /* EventViewModel.swift */; };
 		CA5F270A25570CE600CED97A /* Color+Catalogue.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5F270925570CE600CED97A /* Color+Catalogue.swift */; };
 		CA5F2716255711C700CED97A /* FilterTextHeadline.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5F2715255711C700CED97A /* FilterTextHeadline.swift */; };
 		CA5F273D25572BD500CED97A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA5F273C25572BD500CED97A /* Localizable.strings */; };
@@ -550,6 +547,8 @@
 		CA8E7EF61FB08E2500F0BF10 /* AppWindowWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E7EF51FB08E2500F0BF10 /* AppWindowWireframe.swift */; };
 		CA8E7EFA1FB0926E00F0BF10 /* StoryboardTutorialSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E7EF91FB0926E00F0BF10 /* StoryboardTutorialSceneFactory.swift */; };
 		CA8E7EFC1FB0932700F0BF10 /* StoryboardNewsSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E7EFB1FB0932700F0BF10 /* StoryboardNewsSceneFactory.swift */; };
+		CA8F7D19256173470096E206 /* WidgetRepositoryAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8F7D18256173470096E206 /* WidgetRepositoryAdapter.swift */; };
+		CA8F7D2F256182EF0096E206 /* WidgetKitConformances.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8F7D2E256182EF0096E206 /* WidgetKitConformances.swift */; };
 		CA91FEC12463269A0065CF86 /* BackgroundFetchServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA91FEC02463269A0065CF86 /* BackgroundFetchServiceTests.swift */; };
 		CA957B601F705AF9004DFD5A /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA957B5E1F705AF9004DFD5A /* MessagesViewController.swift */; };
 		CA987FC822E6389E006338FB /* ActivityFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA987FC722E6389E006338FB /* ActivityFactory.swift */; };
@@ -661,6 +660,8 @@
 		CACD381A256518B100C23041 /* BuildConfigurationProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD3819256518B100C23041 /* BuildConfigurationProviding.swift */; };
 		CACD3825256518CF00C23041 /* PreprocessorBuildConfigurationProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD3824256518CF00C23041 /* PreprocessorBuildConfigurationProviding.swift */; };
 		CACD3830256518F100C23041 /* StubBuildConfigurationProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD382F256518F100C23041 /* StubBuildConfigurationProviding.swift */; };
+		CACD38BC2565247400C23041 /* EurofurenceApplicationSession.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CACD36A225650A9600C23041 /* EurofurenceApplicationSession.framework */; };
+		CACD38BD2565247400C23041 /* EurofurenceApplicationSession.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CACD36A225650A9600C23041 /* EurofurenceApplicationSession.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CACEA06D2242827800DFF26C /* NotificationScheduleControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACEA06C2242827800DFF26C /* NotificationScheduleControllerTests.swift */; };
 		CACEA06F2242832F00DFF26C /* CapturingNotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACEA06E2242832F00DFF26C /* CapturingNotificationScheduler.swift */; };
 		CACF1E4820AE29CB00D904B5 /* StubEventDetailComponentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E4720AE29CB00D904B5 /* StubEventDetailComponentFactory.swift */; };
@@ -1214,6 +1215,13 @@
 			remoteGlobalIDString = CACD36A125650A9600C23041;
 			remoteInfo = EurofurenceApplicationSession;
 		};
+		CACD38BE2565247400C23041 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9ACF992C1EBE172D006FC958 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CACD36A125650A9600C23041;
+			remoteInfo = EurofurenceApplicationSession;
+		};
 		CAF254AF2517F983008892ED /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9ACF992C1EBE172D006FC958 /* Project object */;
@@ -1233,6 +1241,17 @@
 				CA5F26AC2556F04D00CED97A /* EventsWidgetExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA8F7D122561731B0096E206 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CACD38BD2565247400C23041 /* EurofurenceApplicationSession.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		CAEA0B9A2165626900B0C7A6 /* Embed Frameworks */ = {
@@ -1568,7 +1587,6 @@
 		CA401099211081A40056E16C /* KnowledgeGroupEntries.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = KnowledgeGroupEntries.storyboard; sourceTree = "<group>"; };
 		CA40109B211081C80056E16C /* KnowledgeGroupEntriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeGroupEntriesViewController.swift; sourceTree = "<group>"; };
 		CA4010A02110854E0056E16C /* DefaultKnowledgeGroupViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultKnowledgeGroupViewModelFactory.swift; sourceTree = "<group>"; };
-		CA47B1A425580F8000050890 /* EventsCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCollection.swift; sourceTree = "<group>"; };
 		CA47B1B0255812D600050890 /* Localizable.stringsdict */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; path = Localizable.stringsdict; sourceTree = "<group>"; };
 		CA47B1B72558189D00050890 /* EventsWidgetStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsWidgetStrings.swift; sourceTree = "<group>"; };
 		CA4908C3245DADA000DB032C /* WindowContentWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowContentWireframe.swift; sourceTree = "<group>"; };
@@ -1655,9 +1673,7 @@
 		CA5F26A72556F04D00CED97A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA5F26AD2556F04D00CED97A /* EventsWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EventsWidgetExtension.entitlements; sourceTree = "<group>"; };
 		CA5F26B92556F0C400CED97A /* EventsTimelineProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTimelineProvider.swift; sourceTree = "<group>"; };
-		CA5F26C02556F0D700CED97A /* EventsTimelineEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTimelineEntry.swift; sourceTree = "<group>"; };
 		CA5F26C72556F0E800CED97A /* EventsWidgetEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsWidgetEntryView.swift; sourceTree = "<group>"; };
-		CA5F26FD2556F4DE00CED97A /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
 		CA5F270925570CE600CED97A /* Color+Catalogue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Catalogue.swift"; sourceTree = "<group>"; };
 		CA5F2715255711C700CED97A /* FilterTextHeadline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTextHeadline.swift; sourceTree = "<group>"; };
 		CA5F273C25572BD500CED97A /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -1876,6 +1892,9 @@
 		CA8E7EF51FB08E2500F0BF10 /* AppWindowWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppWindowWireframe.swift; sourceTree = "<group>"; };
 		CA8E7EF91FB0926E00F0BF10 /* StoryboardTutorialSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardTutorialSceneFactory.swift; sourceTree = "<group>"; };
 		CA8E7EFB1FB0932700F0BF10 /* StoryboardNewsSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardNewsSceneFactory.swift; sourceTree = "<group>"; };
+		CA8F7D0F2561731B0096E206 /* EurofurenceModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EurofurenceModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA8F7D18256173470096E206 /* WidgetRepositoryAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetRepositoryAdapter.swift; sourceTree = "<group>"; };
+		CA8F7D2E256182EF0096E206 /* WidgetKitConformances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetKitConformances.swift; sourceTree = "<group>"; };
 		CA91FEC02463269A0065CF86 /* BackgroundFetchServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundFetchServiceTests.swift; sourceTree = "<group>"; };
 		CA957B5E1F705AF9004DFD5A /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		CA9845C91F2907A800E8821D /* ScreenshotGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotGenerator.swift; sourceTree = "<group>"; };
@@ -2522,6 +2541,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CACD38BC2565247400C23041 /* EurofurenceApplicationSession.framework in Frameworks */,
 				CA3FBF4B2558426B005E1F53 /* EventsWidgetLogic in Frameworks */,
 				CA5F26A02556F04C00CED97A /* SwiftUI.framework in Frameworks */,
 				CA5F269E2556F04C00CED97A /* WidgetKit.framework in Frameworks */,
@@ -2570,6 +2590,7 @@
 				CACD376925650C1200C23041 /* EurofurenceModelTestDoubles.framework */,
 				CACD372825650BD800C23041 /* EurofurenceModel.framework */,
 				CACD371F25650BC400C23041 /* EurofurenceModel.framework */,
+				CA8F7D0F2561731B0096E206 /* EurofurenceModel.framework */,
 				CA7A32FB22B17A21002AD939 /* EurofurenceModelTestDoubles.framework */,
 				CA7A32F722B179D8002AD939 /* EurofurenceModel.framework */,
 				CA7A32F922B179D8002AD939 /* EventBus.framework */,
@@ -3686,18 +3707,16 @@
 		CA5F26A12556F04C00CED97A /* EventsWidget */ = {
 			isa = PBXGroup;
 			children = (
+				CA8F7D17256173290096E206 /* Logic Adapter */,
 				CA5F26A42556F04C00CED97A /* EventsWidget.intentdefinition */,
 				CA5F26A72556F04D00CED97A /* Info.plist */,
 				CA5F273C25572BD500CED97A /* Localizable.strings */,
 				CA47B1B0255812D600050890 /* Localizable.stringsdict */,
 				CA5F270925570CE600CED97A /* Color+Catalogue.swift */,
-				CA47B1A425580F8000050890 /* EventsCollection.swift */,
-				CA5F26C02556F0D700CED97A /* EventsTimelineEntry.swift */,
 				CA5F26B92556F0C400CED97A /* EventsTimelineProvider.swift */,
 				CA5F26A22556F04C00CED97A /* EventsWidget.swift */,
 				CA5F26C72556F0E800CED97A /* EventsWidgetEntryView.swift */,
 				CA47B1B72558189D00050890 /* EventsWidgetStrings.swift */,
-				CA5F26FD2556F4DE00CED97A /* EventViewModel.swift */,
 				CA5F2715255711C700CED97A /* FilterTextHeadline.swift */,
 				CA5F26A52556F04D00CED97A /* Assets.xcassets */,
 			);
@@ -4610,6 +4629,15 @@
 				CA8A73CB22BD10D2007A5201 /* AdditionalServicesPresenter.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		CA8F7D17256173290096E206 /* Logic Adapter */ = {
+			isa = PBXGroup;
+			children = (
+				CA8F7D18256173470096E206 /* WidgetRepositoryAdapter.swift */,
+				CA8F7D2E256182EF0096E206 /* WidgetKitConformances.swift */,
+			);
+			path = "Logic Adapter";
 			sourceTree = "<group>";
 		};
 		CA91FEBF246326880065CF86 /* Background Refresh */ = {
@@ -6915,10 +6943,12 @@
 				CA5F26982556F04C00CED97A /* Sources */,
 				CA5F26992556F04C00CED97A /* Frameworks */,
 				CA5F269A2556F04C00CED97A /* Resources */,
+				CA8F7D122561731B0096E206 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				CACD38BF2565247400C23041 /* PBXTargetDependency */,
 			);
 			name = EventsWidgetExtension;
 			packageProductDependencies = (
@@ -8533,14 +8563,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA8F7D19256173470096E206 /* WidgetRepositoryAdapter.swift in Sources */,
 				CA5F26A32556F04C00CED97A /* EventsWidget.swift in Sources */,
-				CA5F26FE2556F4DE00CED97A /* EventViewModel.swift in Sources */,
-				CA47B1A525580F8000050890 /* EventsCollection.swift in Sources */,
 				CA5F26BA2556F0C400CED97A /* EventsTimelineProvider.swift in Sources */,
-				CA5F26C12556F0D700CED97A /* EventsTimelineEntry.swift in Sources */,
 				CA5F270A25570CE600CED97A /* Color+Catalogue.swift in Sources */,
 				CA5F2716255711C700CED97A /* FilterTextHeadline.swift in Sources */,
 				CA5F26C82556F0E800CED97A /* EventsWidgetEntryView.swift in Sources */,
+				CA8F7D2F256182EF0096E206 /* WidgetKitConformances.swift in Sources */,
 				CA5F26A82556F04D00CED97A /* EventsWidget.intentdefinition in Sources */,
 				CA47B1B82558189D00050890 /* EventsWidgetStrings.swift in Sources */,
 			);
@@ -8645,6 +8674,11 @@
 			isa = PBXTargetDependency;
 			target = CACD36A125650A9600C23041 /* EurofurenceApplicationSession */;
 			targetProxy = CACD36B525650A9600C23041 /* PBXContainerItemProxy */;
+		};
+		CACD38BF2565247400C23041 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CACD36A125650A9600C23041 /* EurofurenceApplicationSession */;
+			targetProxy = CACD38BE2565247400C23041 /* PBXContainerItemProxy */;
 		};
 		CAF254B02517F983008892ED /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -9419,7 +9453,11 @@
 				INFOPLIST_FILE = EurofurenceApplicationSession/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceApplicationSession;
@@ -9451,7 +9489,11 @@
 				INFOPLIST_FILE = EurofurenceApplicationSession/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceApplicationSession;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -9483,7 +9525,11 @@
 				INFOPLIST_FILE = EurofurenceApplicationSession/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceApplicationSession;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -9514,7 +9560,11 @@
 				INFOPLIST_FILE = EurofurenceApplicationSession/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceApplicationSession;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -9540,7 +9590,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = EurofurenceApplicationSessionTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -9565,7 +9619,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = EurofurenceApplicationSessionTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceApplicationSessionTests;
@@ -9589,7 +9647,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = EurofurenceApplicationSessionTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceApplicationSessionTests;
@@ -9613,7 +9675,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = EurofurenceApplicationSessionTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceApplicationSessionTests;

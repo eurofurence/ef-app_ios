@@ -1,47 +1,51 @@
+import EventsWidgetLogic
 import WidgetKit
 
 struct EventsTimelineProvider: IntentTimelineProvider {
     
     private let sampleEvents: [EventViewModel] = [
         EventViewModel(
+            id: UUID().uuidString,
+            title: "Trans Meet-Up",
+            location: "Nizza",
             formattedStartTime: "13:00",
-            formattedEndTime: "14:30",
-            eventTitle: "Trans Meet-Up",
-            eventLocation: "Nizza"
+            formattedEndTime: "14:30"
         ),
         
         EventViewModel(
+            id: UUID().uuidString,
+            title: "Dealer's Den",
+            location: "Dealer's Den - Convention Center Foyer 3",
             formattedStartTime: "13:30",
-            formattedEndTime: "15:00",
-            eventTitle: "Dealer's Den",
-            eventLocation: "Dealer's Den - Convention Center Foyer 3"
+            formattedEndTime: "15:00"
         ),
         
         EventViewModel(
+            id: UUID().uuidString,
+            title: "Funny Animals and Amerimanga in Sonic the Hedgehog Archie Series",
+            location: "Nizza",
             formattedStartTime: "17:30",
-            formattedEndTime: "18:30",
-            eventTitle: "Funny Animals and Amerimanga in Sonic the Hedgehog Archie Series",
-            eventLocation: "Nizza"
+            formattedEndTime: "18:30"
         )
     ]
     
-    func placeholder(in context: Context) -> EventsTimelineEntry {
-        EventsTimelineEntry(
+    func placeholder(in context: Context) -> EventTimelineEntry {
+        EventTimelineEntry(
             date: Date(),
-            filter: .upcoming,
-            events: EventsCollection(viewModels: sampleEvents)
+            events: sampleEvents,
+            additionalEventsCount: 1
         )
     }
 
     func getSnapshot(
         for configuration: ViewEventsIntent,
         in context: Context,
-        completion: @escaping (EventsTimelineEntry) -> ()
+        completion: @escaping (EventTimelineEntry) -> ()
     ) {
-        let entry = EventsTimelineEntry(
+        let entry = EventTimelineEntry(
             date: Date(),
-            filter: .upcoming,
-            events: EventsCollection(viewModels: [])
+            events: [],
+            additionalEventsCount: 0
         )
         
         completion(entry)
@@ -50,18 +54,21 @@ struct EventsTimelineProvider: IntentTimelineProvider {
     func getTimeline(
         for configuration: ViewEventsIntent,
         in context: Context,
-        completion: @escaping (Timeline<EventsTimelineEntry>) -> ()
+        completion: @escaping (Timeline<EventTimelineEntry>) -> ()
     ) {
-        let collection = EventsCollection(viewModels: sampleEvents)
-        
-        let entry = EventsTimelineEntry(
-            date: Date(),
-            filter: .upcoming,
-            events: collection
+        let repository = WidgetRepositoryAdapter(intent: configuration)
+        let controller = EventsTimelineController(
+            repository: repository,
+            options: EventsTimelineController.Options(
+                maximumEventsPerEntry: 3,
+                timelineStartDate: Date()
+            )
         )
-
-        let timeline = Timeline(entries: [entry], policy: .atEnd)
-        completion(timeline)
+        
+        controller.makeEntries { (entries) in
+            let timeline = Timeline(entries: entries, policy: .atEnd)
+            completion(timeline)
+        }
     }
     
 }

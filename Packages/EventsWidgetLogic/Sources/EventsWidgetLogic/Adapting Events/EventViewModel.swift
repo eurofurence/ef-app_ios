@@ -2,10 +2,22 @@ public struct EventViewModel: Equatable {
     
     public var id: String
     public var title: String
+    public var location: String
+    public var formattedStartTime: String
+    public var formattedEndTime: String
     
-    public init(id: String, title: String) {
+    public init(
+        id: String,
+        title: String,
+        location: String = "",
+        formattedStartTime: String = "",
+        formattedEndTime: String = ""
+    ) {
         self.id = id
         self.title = title
+        self.location = location
+        self.formattedStartTime = formattedStartTime
+        self.formattedEndTime = formattedEndTime
     }
     
     init(event: Event) {
