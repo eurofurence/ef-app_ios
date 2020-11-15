@@ -82,7 +82,7 @@ struct WidgetRepositoryAdapter: EventsWidgetLogic.EventRepository {
     private class UpcomingEventsAdapter: EventsAdapter {
         
         override func upcomingEventsDidChange(to events: [EurofurenceModel.Event]) {
-            
+            completeLoad(events: events)
         }
         
     }
@@ -90,7 +90,7 @@ struct WidgetRepositoryAdapter: EventsWidgetLogic.EventRepository {
     private class RunningEventsAdapter: EventsAdapter {
         
         override func runningEventsDidChange(to events: [EurofurenceModel.Event]) {
-            
+            completeLoad(events: events)
         }
         
     }
