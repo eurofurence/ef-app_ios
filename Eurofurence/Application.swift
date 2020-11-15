@@ -65,6 +65,8 @@ class Application {
             appStateProviding: ApplicationAppStateProviding(),
             eventsService: session.services.events
         )
+        
+        _ = EventWidgetUpdater(widgetService: SystemWidgetService(), refreshService: session.services.refresh)
     }
     
     func configurePrincipalScene(window: UIWindow) {
