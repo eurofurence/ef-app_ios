@@ -19,18 +19,7 @@ struct EventClusterFactory {
     }
     
     private func makeEventCluster(startTime: Date) -> EventCluster {
-        let eventsOnOrAfterTime = events.filter({ $0.startTime >= startTime }).sorted(by: \.title)
-        let eventsToTake = min(maximumEventsPerCluster, eventsOnOrAfterTime.count)
-        let clusterEvents = Array(eventsOnOrAfterTime[0..<eventsToTake])
-        let remainingEvents = eventsOnOrAfterTime.count - eventsToTake
-        
-        let cluster = EventCluster(
-            clusterStartTime: startTime,
-            events: clusterEvents,
-            additionalEventCount: remainingEvents
-        )
-        
-        return cluster
+        EventCluster.clusterEvents(events, startingAt: startTime, maximumEventsPerCluster: maximumEventsPerCluster)
     }
     
 }
