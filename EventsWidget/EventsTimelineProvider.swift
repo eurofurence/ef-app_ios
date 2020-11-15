@@ -59,7 +59,7 @@ struct EventsTimelineProvider: IntentTimelineProvider {
         let repository = WidgetRepositoryAdapter(intent: configuration)
         let controller = EventsTimelineController(repository: repository)
         
-        let options = EventsTimelineController.Options(
+        let options = EventsTimelineController.TimelineOptions(
             maximumEventsPerEntry: 3,
             timelineStartDate: Date()
         )
