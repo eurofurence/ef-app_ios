@@ -133,9 +133,8 @@ struct EventsWidgetEntryView: View {
         var maximumNumberOfEvents: Int
         
         var body: some View {
-            VStack(alignment: .filterTitle) {
+            VStack(alignment: .leading) {
                 FilterTextHeadline(filter: filter)
-                    .alignmentGuide(.filterTitle) { d in d[.leading] }
                 
                 Divider()
                     .padding([.bottom])
@@ -181,7 +180,6 @@ struct EventsWidgetEntryView: View {
                     HStack {
                         Text(event.formattedStartTime)
                             .font(.footnote)
-                            .alignmentGuide(.filterTitle) { d in d[.leading] }
                         
                         Spacer()
                     }
@@ -206,20 +204,6 @@ struct EventsWidgetEntryView: View {
         }
         
     }
-    
-}
-
-private extension HorizontalAlignment {
-    
-    private enum FilterTitleAlignmentID: AlignmentID {
-        
-        static func defaultValue(in context: ViewDimensions) -> CGFloat {
-            context[.leading]
-        }
-        
-    }
-    
-    static let filterTitle = HorizontalAlignment(FilterTitleAlignmentID.self)
     
 }
 
