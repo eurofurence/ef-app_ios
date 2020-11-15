@@ -77,7 +77,7 @@ struct EventsWidgetEntryView: View {
 
     private struct PlaceholderView: View {
         
-        var filter: Filter
+        var filter: EventFilter
         
         var body: some View {
             VStack(spacing: 17) {
@@ -99,7 +99,7 @@ struct EventsWidgetEntryView: View {
     
     private struct FilterPlaceholderText: View {
         
-        var filter: Filter
+        var filter: EventFilter
         
         var body: some View {
             text
@@ -128,7 +128,7 @@ struct EventsWidgetEntryView: View {
     
     private struct VerticalEventsCollectionView: View {
         
-        var filter: Filter
+        var filter: EventFilter
         var events: EventsCollection
         var maximumNumberOfEvents: Int
         

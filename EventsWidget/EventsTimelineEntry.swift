@@ -3,7 +3,7 @@ import WidgetKit
 struct EventsTimelineEntry: TimelineEntry {
     
     let date: Date
-    let filter: Filter
+    let filter: EventFilter
     let events: EventsCollection
     
 }

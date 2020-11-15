@@ -3,7 +3,7 @@ import WidgetKit
 
 struct FilterTextHeadline: View {
     
-    var filter: Filter
+    var filter: EventFilter
     
     var body: some View {
         text.font(.headline)
