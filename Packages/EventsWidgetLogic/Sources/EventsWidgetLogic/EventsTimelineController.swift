@@ -1,4 +1,4 @@
-import Foundation
+import Foundation.NSDate
 
 public struct EventsTimelineController {
     
@@ -30,21 +30,10 @@ public struct EventsTimelineController {
                 maximumEventsPerCluster: options.maximumEventsPerEntry
             ).makeClusters()
             
-            let entries = eventClusters.map(makeTimelineEntry(cluster:))
+            let entries = eventClusters.map(EventTimelineEntry.init(cluster:))
             
             completionHandler(entries)
         }
-    }
-    
-    private func makeTimelineEntry(cluster: EventCluster) -> EventTimelineEntry {
-        let viewModels = cluster.events.map(EventViewModel.init)
-        let entry = EventTimelineEntry(
-            date: cluster.clusterStartTime,
-            events: viewModels,
-            additionalEventsCount: cluster.additionalEventCount
-        )
-        
-        return entry
     }
     
     private struct EventClusterFactory {
@@ -79,14 +68,6 @@ public struct EventsTimelineController {
             
             return cluster
         }
-        
-    }
-    
-    private struct EventCluster {
-        
-        var clusterStartTime: Date
-        var events: [Event]
-        var additionalEventCount: Int
         
     }
     
