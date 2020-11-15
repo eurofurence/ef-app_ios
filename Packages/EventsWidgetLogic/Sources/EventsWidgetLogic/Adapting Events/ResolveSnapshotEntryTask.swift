@@ -1,13 +1,13 @@
 import Foundation.NSDate
 
-struct ResolveSnapshotClusterTask {
+struct ResolveSnapshotEntryTask {
     
     var repository: EventRepository
     var maximumEventsPerEntry: Int
     var snapshotDate: Date
     var completionHandler: (EventTimelineEntry) -> Void
     
-    func beginClustering() {
+    func resolveEntry() {
         repository.loadEvents { (events) in
             let cluster = EventCluster.clusterEvents(events, startingAt: snapshotDate, maximumEventsPerCluster: maximumEventsPerEntry)
             let viewModels = cluster.events.map(EventViewModel.init(event:))

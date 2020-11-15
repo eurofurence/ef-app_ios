@@ -27,12 +27,12 @@ extension EventsTimelineController {
     }
     
     public func makeSnapshotEntry(options: SnapshotOptions, completionHandler: @escaping (EventTimelineEntry) -> Void) {
-        ResolveSnapshotClusterTask(
+        ResolveSnapshotEntryTask(
             repository: repository,
             maximumEventsPerEntry: options.maximumEventsPerEntry,
             snapshotDate: options.snapshottingAtTime,
             completionHandler: completionHandler
-        ).beginClustering()
+        ).resolveEntry()
     }
     
 }
@@ -54,12 +54,12 @@ extension EventsTimelineController {
     }
     
     public func makeEntries(options: TimelineOptions, completionHandler: @escaping ([EventTimelineEntry]) -> Void) {
-        ClusterEventsIntoEntriesTask(
+        ResolveTimelineEntriesTask(
             repository: repository,
             maximumEventsPerEntry: options.maximumEventsPerEntry,
             timelineStartDate: options.timelineStartDate,
             completionHandler: completionHandler
-        ).beginClustering()
+        ).resolveEntries()
     }
     
 }

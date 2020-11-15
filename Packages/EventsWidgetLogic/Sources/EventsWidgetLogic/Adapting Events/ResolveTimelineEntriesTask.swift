@@ -1,13 +1,13 @@
 import Foundation.NSDate
 
-struct ClusterEventsIntoEntriesTask {
+struct ResolveTimelineEntriesTask {
     
     var repository: EventRepository
     var maximumEventsPerEntry: Int
     var timelineStartDate: Date
     var completionHandler: ([EventTimelineEntry]) -> Void
     
-    func beginClustering() {
+    func resolveEntries() {
         repository.loadEvents(completionHandler: clusterEventsIntoEntries(_:))
     }
     
