@@ -553,6 +553,7 @@
 		CA8F7D412561AABD0096E206 /* WidgetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8F7D402561AABD0096E206 /* WidgetService.swift */; };
 		CA8F7D472561AAC70096E206 /* EventWidgetUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8F7D462561AAC70096E206 /* EventWidgetUpdater.swift */; };
 		CA8F7D4D2561AAD70096E206 /* CapturingWidgetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8F7D4C2561AAD70096E206 /* CapturingWidgetService.swift */; };
+		CA8F7D572561AB780096E206 /* SystemWidgetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8F7D562561AB780096E206 /* SystemWidgetService.swift */; };
 		CA91FEC12463269A0065CF86 /* BackgroundFetchServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA91FEC02463269A0065CF86 /* BackgroundFetchServiceTests.swift */; };
 		CA957B601F705AF9004DFD5A /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA957B5E1F705AF9004DFD5A /* MessagesViewController.swift */; };
 		CA987FC822E6389E006338FB /* ActivityFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA987FC722E6389E006338FB /* ActivityFactory.swift */; };
@@ -1903,6 +1904,7 @@
 		CA8F7D402561AABD0096E206 /* WidgetService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetService.swift; sourceTree = "<group>"; };
 		CA8F7D462561AAC70096E206 /* EventWidgetUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventWidgetUpdater.swift; sourceTree = "<group>"; };
 		CA8F7D4C2561AAD70096E206 /* CapturingWidgetService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingWidgetService.swift; sourceTree = "<group>"; };
+		CA8F7D562561AB780096E206 /* SystemWidgetService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemWidgetService.swift; sourceTree = "<group>"; };
 		CA91FEC02463269A0065CF86 /* BackgroundFetchServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundFetchServiceTests.swift; sourceTree = "<group>"; };
 		CA957B5E1F705AF9004DFD5A /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		CA9845C91F2907A800E8821D /* ScreenshotGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotGenerator.swift; sourceTree = "<group>"; };
@@ -4662,8 +4664,9 @@
 		CA8F7D3F2561AAB00096E206 /* Widget Updaters */ = {
 			isa = PBXGroup;
 			children = (
-				CA8F7D402561AABD0096E206 /* WidgetService.swift */,
 				CA8F7D462561AAC70096E206 /* EventWidgetUpdater.swift */,
+				CA8F7D562561AB780096E206 /* SystemWidgetService.swift */,
+				CA8F7D402561AABD0096E206 /* WidgetService.swift */,
 			);
 			path = "Widget Updaters";
 			sourceTree = "<group>";
@@ -7962,6 +7965,7 @@
 				CA6A8DCA20E415EF007536CD /* MapDetailComponentFactoryImpl.swift in Sources */,
 				CAD2343C1F5D7203004BB959 /* MessagesScene.swift in Sources */,
 				CA0E520D208E759F005259FE /* DefaultNewsViewModelProducer.swift in Sources */,
+				CA8F7D572561AB780096E206 /* SystemWidgetService.swift in Sources */,
 				CA401077210FAEF60056E16C /* KnowledgeGroupEntriesSceneFactory.swift in Sources */,
 				CA5EB1CA2461BE140012C277 /* AwesomeFontLabel.swift in Sources */,
 				CA50B1B3226110F40091E425 /* EventFeedbackPresenter.swift in Sources */,
