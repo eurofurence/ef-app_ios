@@ -4,6 +4,16 @@ public struct EventsTimelineController {
     
     private let repository: EventRepository
     
+    public init(repository: EventRepository) {
+        self.repository = repository
+    }
+    
+}
+
+// MARK: - Timeline
+
+extension EventsTimelineController {
+    
     public struct TimelineOptions {
         
         let maximumEventsPerEntry: Int
@@ -14,10 +24,6 @@ public struct EventsTimelineController {
             self.timelineStartDate = timelineStartDate
         }
         
-    }
-    
-    public init(repository: EventRepository) {
-        self.repository = repository
     }
     
     public func makeEntries(options: TimelineOptions, completionHandler: @escaping ([EventTimelineEntry]) -> Void) {
