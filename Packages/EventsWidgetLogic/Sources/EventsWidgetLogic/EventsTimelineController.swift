@@ -6,10 +6,12 @@ public struct EventsTimelineController {
     
     public struct Options {
         
-        public let maximumEventsPerEntry: Int
+        let maximumEventsPerEntry: Int
+        let timelineStartDate: Date
         
-        public init(maximumEventsPerEntry: Int) {
+        public init(maximumEventsPerEntry: Int, timelineStartDate: Date) {
             self.maximumEventsPerEntry = maximumEventsPerEntry
+            self.timelineStartDate = timelineStartDate
         }
         
     }
