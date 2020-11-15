@@ -7,7 +7,7 @@ struct FilterTextHeadline: View {
     
     var body: some View {
         text
-            .font(.title2)
+            .font(.caption)
     }
     
     @ViewBuilder
