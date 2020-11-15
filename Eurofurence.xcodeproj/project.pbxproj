@@ -549,6 +549,10 @@
 		CA8E7EFC1FB0932700F0BF10 /* StoryboardNewsSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E7EFB1FB0932700F0BF10 /* StoryboardNewsSceneFactory.swift */; };
 		CA8F7D19256173470096E206 /* WidgetRepositoryAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8F7D18256173470096E206 /* WidgetRepositoryAdapter.swift */; };
 		CA8F7D2F256182EF0096E206 /* WidgetKitConformances.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8F7D2E256182EF0096E206 /* WidgetKitConformances.swift */; };
+		CA8F7D362561A2D80096E206 /* EventWidgetUpdaterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8F7D352561A2D80096E206 /* EventWidgetUpdaterTests.swift */; };
+		CA8F7D412561AABD0096E206 /* WidgetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8F7D402561AABD0096E206 /* WidgetService.swift */; };
+		CA8F7D472561AAC70096E206 /* EventWidgetUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8F7D462561AAC70096E206 /* EventWidgetUpdater.swift */; };
+		CA8F7D4D2561AAD70096E206 /* CapturingWidgetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8F7D4C2561AAD70096E206 /* CapturingWidgetService.swift */; };
 		CA91FEC12463269A0065CF86 /* BackgroundFetchServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA91FEC02463269A0065CF86 /* BackgroundFetchServiceTests.swift */; };
 		CA957B601F705AF9004DFD5A /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA957B5E1F705AF9004DFD5A /* MessagesViewController.swift */; };
 		CA987FC822E6389E006338FB /* ActivityFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA987FC722E6389E006338FB /* ActivityFactory.swift */; };
@@ -1895,6 +1899,10 @@
 		CA8F7D0F2561731B0096E206 /* EurofurenceModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EurofurenceModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA8F7D18256173470096E206 /* WidgetRepositoryAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetRepositoryAdapter.swift; sourceTree = "<group>"; };
 		CA8F7D2E256182EF0096E206 /* WidgetKitConformances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetKitConformances.swift; sourceTree = "<group>"; };
+		CA8F7D352561A2D80096E206 /* EventWidgetUpdaterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventWidgetUpdaterTests.swift; sourceTree = "<group>"; };
+		CA8F7D402561AABD0096E206 /* WidgetService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetService.swift; sourceTree = "<group>"; };
+		CA8F7D462561AAC70096E206 /* EventWidgetUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventWidgetUpdater.swift; sourceTree = "<group>"; };
+		CA8F7D4C2561AAD70096E206 /* CapturingWidgetService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingWidgetService.swift; sourceTree = "<group>"; };
 		CA91FEC02463269A0065CF86 /* BackgroundFetchServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundFetchServiceTests.swift; sourceTree = "<group>"; };
 		CA957B5E1F705AF9004DFD5A /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		CA9845C91F2907A800E8821D /* ScreenshotGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotGenerator.swift; sourceTree = "<group>"; };
@@ -2942,6 +2950,7 @@
 				9ACF999B1ECA259C006FC958 /* Resources */,
 				CA38C35224680C2E00A20921 /* Scenes */,
 				CAF255CA251F851F008892ED /* Sharing */,
+				CA8F7D3F2561AAB00096E206 /* Widget Updaters */,
 			);
 			path = Eurofurence;
 			sourceTree = "<group>";
@@ -2961,6 +2970,7 @@
 				CAF255BF251F8490008892ED /* Sharing */,
 				6EF96CCD1F0EDB1300EE6134 /* Test Doubles */,
 				CAF9A94F1F558E6200628833 /* Test Utilities */,
+				CA8F7D342561A2C60096E206 /* Widget Updaters */,
 			);
 			path = EurofurenceTests;
 			sourceTree = "<group>";
@@ -4638,6 +4648,24 @@
 				CA8F7D2E256182EF0096E206 /* WidgetKitConformances.swift */,
 			);
 			path = "Logic Adapter";
+			sourceTree = "<group>";
+		};
+		CA8F7D342561A2C60096E206 /* Widget Updaters */ = {
+			isa = PBXGroup;
+			children = (
+				CA8F7D4C2561AAD70096E206 /* CapturingWidgetService.swift */,
+				CA8F7D352561A2D80096E206 /* EventWidgetUpdaterTests.swift */,
+			);
+			path = "Widget Updaters";
+			sourceTree = "<group>";
+		};
+		CA8F7D3F2561AAB00096E206 /* Widget Updaters */ = {
+			isa = PBXGroup;
+			children = (
+				CA8F7D402561AABD0096E206 /* WidgetService.swift */,
+				CA8F7D462561AAC70096E206 /* EventWidgetUpdater.swift */,
+			);
+			path = "Widget Updaters";
 			sourceTree = "<group>";
 		};
 		CA91FEBF246326880065CF86 /* Background Refresh */ = {
@@ -7583,6 +7611,7 @@
 				CA6A8D6B20E26478007536CD /* MapsScene.swift in Sources */,
 				CA17FE8B20585D9C005A4C05 /* LinkTableViewCell.swift in Sources */,
 				CA6A8D8720E2BB90007536CD /* MapsViewModel.swift in Sources */,
+				CA8F7D472561AAC70096E206 /* EventWidgetUpdater.swift in Sources */,
 				CAA2887E245C72CA0090B663 /* MessagesContentRepresentation.swift in Sources */,
 				CA728465209D0FAF007D912A /* AnnouncementDetailScene.swift in Sources */,
 				CA63A747245DBB3D00E4B313 /* ScheduleSubrouter.swift in Sources */,
@@ -7778,6 +7807,7 @@
 				9ACF99381EBE172D006FC958 /* AppDelegate.swift in Sources */,
 				CA82DB5922D6639300467C2F /* ActivityShareService.swift in Sources */,
 				CA08B0F922EDF4C600FDAAA7 /* EurofurenceDateFormatter.swift in Sources */,
+				CA8F7D412561AABD0096E206 /* WidgetService.swift in Sources */,
 				CA40106E210FAEC30056E16C /* KnowledgeGroupEntriesComponentFactory.swift in Sources */,
 				CA73AEE3201A0869004E77BF /* KnowledgeGroupsComponentBuilder.swift in Sources */,
 				CA7D8B20222DBC28003431A0 /* DefaultEventDetailViewModel.swift in Sources */,
@@ -8106,6 +8136,7 @@
 				CAF197E924688EAB005DFBBE /* StubKnowledgeListSceneFactory.swift in Sources */,
 				CAF1978424688EAA005DFBBE /* WhenPreparingViewModel_ForDealersDenEvent_EventDetailViewModelFactoryShould.swift in Sources */,
 				CAF197BB24688EAA005DFBBE /* WhenToldToRefresh_NewsViewModelProducerShould.swift in Sources */,
+				CA8F7D362561A2D80096E206 /* EventWidgetUpdaterTests.swift in Sources */,
 				CAF1972624688EAA005DFBBE /* WhenBuildingKnowledgeDetailComponent.swift in Sources */,
 				CA60BFFE207CDC1700697566 /* FakeAuthenticationService.swift in Sources */,
 				CAD6882A208A107500B31F5F /* UserWidgetComponentViewModel+RandomValueProviding.swift in Sources */,
@@ -8139,6 +8170,7 @@
 				7820A6DB1F13F4DE004C0FB5 /* StubPresentationAssets.swift in Sources */,
 				CAF197E324688EAA005DFBBE /* CapturingKnowledgeGroupEntryScene.swift in Sources */,
 				CAF1975E24688EAA005DFBBE /* CapturingAnnouncementsScene.swift in Sources */,
+				CA8F7D4D2561AAD70096E206 /* CapturingWidgetService.swift in Sources */,
 				CAF1970224688EAA005DFBBE /* WhenGroupingEventsByStartTime_ScheduleViewModelFactoryShould.swift in Sources */,
 				CAF197ED24688EAB005DFBBE /* CapturingKnowledgeGroupsListViewModelVisitor.swift in Sources */,
 				CAF1980424688EAB005DFBBE /* StubContentControllerFactory.swift in Sources */,
