@@ -26,7 +26,8 @@ public struct EventsTimelineController {
         repository.loadEvents { (events) in
             let eventClusters = EventClusterFactory(
                 events: events,
-                timelineStartDate: options.timelineStartDate
+                timelineStartDate: options.timelineStartDate,
+                maximumEventsPerCluster: options.maximumEventsPerEntry
             ).makeClusters()
             
             let entries = eventClusters.map(makeTimelineEntry(cluster:))
@@ -37,7 +38,11 @@ public struct EventsTimelineController {
     
     private func makeTimelineEntry(cluster: EventCluster) -> EventTimelineEntry {
         let viewModels = cluster.events.map(EventViewModel.init)
-        let entry = EventTimelineEntry(date: cluster.clusterStartTime, events: viewModels, additionalEventsCount: 0)
+        let entry = EventTimelineEntry(
+            date: cluster.clusterStartTime,
+            events: viewModels,
+            additionalEventsCount: cluster.additionalEventCount
+        )
         
         return entry
     }
@@ -46,6 +51,7 @@ public struct EventsTimelineController {
         
         var events: [Event]
         var timelineStartDate: Date
+        var maximumEventsPerCluster: Int
         
         func makeClusters() -> [EventCluster] {
             let distinctStartTimes = resolveClusteringDates()
@@ -61,7 +67,15 @@ public struct EventsTimelineController {
         
         private func makeEventCluster(startTime: Date) -> EventCluster {
             let eventsOnOrAfterTime = events.filter({ $0.startTime >= startTime }).sorted(by: \.title)
-            let cluster = EventCluster(clusterStartTime: startTime, events: eventsOnOrAfterTime)
+            let eventsToTake = min(maximumEventsPerCluster, eventsOnOrAfterTime.count)
+            let clusterEvents = Array(eventsOnOrAfterTime[0..<eventsToTake])
+            let remainingEvents = eventsOnOrAfterTime.count - eventsToTake
+            
+            let cluster = EventCluster(
+                clusterStartTime: startTime,
+                events: clusterEvents,
+                additionalEventCount: remainingEvents
+            )
             
             return cluster
         }
@@ -72,6 +86,7 @@ public struct EventsTimelineController {
         
         var clusterStartTime: Date
         var events: [Event]
+        var additionalEventCount: Int
         
     }
     
