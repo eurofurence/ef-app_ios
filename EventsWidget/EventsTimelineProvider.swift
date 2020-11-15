@@ -42,13 +42,14 @@ struct EventsTimelineProvider: IntentTimelineProvider {
         in context: Context,
         completion: @escaping (EventTimelineEntry) -> ()
     ) {
-        let entry = EventTimelineEntry(
-            date: Date(),
-            events: [],
-            additionalEventsCount: 0
-        )
+        let repository = WidgetRepositoryAdapter(intent: configuration)
+        let controller = EventsTimelineController(repository: repository)
         
-        completion(entry)
+        let options = EventsTimelineController.SnapshotOptions(maximumEventsPerEntry: 3, snapshottingAtTime: Date())
+        
+        controller.makeSnapshotEntry(options: options) { (entry) in
+            completion(entry)
+        }
     }
 
     func getTimeline(
