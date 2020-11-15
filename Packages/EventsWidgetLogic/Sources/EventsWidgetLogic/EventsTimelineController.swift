@@ -23,17 +23,12 @@ public struct EventsTimelineController {
     }
     
     public func makeEntries(completionHandler: @escaping ([EventTimelineEntry]) -> Void) {
-        repository.loadEvents { (events) in
-            let eventClusters = EventClusterFactory(
-                events: events,
-                timelineStartDate: options.timelineStartDate,
-                maximumEventsPerCluster: options.maximumEventsPerEntry
-            ).makeClusters()
-            
-            let entries = eventClusters.map(EventTimelineEntry.init(cluster:))
-            
-            completionHandler(entries)
-        }
+        ClusterEventsIntoEntriesTask(
+            repository: repository,
+            maximumEventsPerEntry: options.maximumEventsPerEntry,
+            timelineStartDate: options.timelineStartDate,
+            completionHandler: completionHandler
+        ).beginClustering()
     }
     
 }
