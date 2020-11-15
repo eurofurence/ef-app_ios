@@ -60,7 +60,7 @@ public struct EventsTimelineController {
         }
         
         private func makeEventCluster(startTime: Date) -> EventCluster {
-            let eventsOnOrAfterTime = events.filter({ $0.startTime >= startTime })
+            let eventsOnOrAfterTime = events.filter({ $0.startTime >= startTime }).sorted(by: \.title)
             let cluster = EventCluster(clusterStartTime: startTime, events: eventsOnOrAfterTime)
             
             return cluster
