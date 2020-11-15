@@ -62,4 +62,30 @@ class EventsTimelineControllerTests: XCTestCase {
         XCTAssertEqual(expected, actual)
     }
     
+    func testTwoEvents_StartingTimelineFromLaterDate() {
+        let now = Date()
+        let inHalfAnHour = now.addingTimeInterval(3600 / 2)
+        let earlierEvent = StubEvent(id: "some_event", title: "Some Event", startTime: now)
+        let laterEvent = StubEvent(id: "some_other_event", title: "Some Other Event", startTime: inHalfAnHour)
+        let repository = StubEventsRepository(events: [earlierEvent, laterEvent])
+        let controller = EventsTimelineController(
+            repository: repository,
+            options: .init(maximumEventsPerEntry: 3, timelineStartDate: inHalfAnHour)
+        )
+        
+        var actual: [EventTimelineEntry]?
+        controller.makeEntries(completionHandler: { actual = $0 })
+        
+        let expected: [EventTimelineEntry] = [
+            EventTimelineEntry(
+                date: inHalfAnHour,
+                events: [
+                    EventViewModel(id: "some_other_event", title: "Some Other Event")
+                ], additionalEventsCount: 0
+            )
+        ]
+        
+        XCTAssertEqual(expected, actual)
+    }
+    
 }

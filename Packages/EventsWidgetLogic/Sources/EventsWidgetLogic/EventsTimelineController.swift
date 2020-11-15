@@ -3,6 +3,7 @@ import Foundation
 public struct EventsTimelineController {
     
     private let repository: EventRepository
+    private let options: Options
     
     public struct Options {
         
@@ -18,6 +19,7 @@ public struct EventsTimelineController {
     
     public init(repository: EventRepository, options: Options) {
         self.repository = repository
+        self.options = options
     }
     
     public func makeEntries(completionHandler: @escaping ([EventTimelineEntry]) -> Void) {
@@ -30,7 +32,7 @@ public struct EventsTimelineController {
     }
     
     private func clusterEventsByStartTime(_ events: [Event]) -> [EventCluster] {
-        let distinctStartTimes = Set(events.map(\.startTime)).sorted()
+        let distinctStartTimes = Set(events.map(\.startTime)).sorted().filter({ $0 >= options.timelineStartDate })
         
         var eventClusters = [EventCluster]()
         for startTime in distinctStartTimes {
