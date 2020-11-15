@@ -24,24 +24,15 @@ public struct EventsTimelineController {
     
     public func makeEntries(completionHandler: @escaping ([EventTimelineEntry]) -> Void) {
         repository.loadEvents { (events) in
-            let eventClusters = clusterEventsByStartTime(events)
+            let eventClusters = EventClusterFactory(
+                events: events,
+                timelineStartDate: options.timelineStartDate
+            ).makeClusters()
+            
             let entries = eventClusters.map(makeTimelineEntry(cluster:))
             
             completionHandler(entries)
         }
-    }
-    
-    private func clusterEventsByStartTime(_ events: [Event]) -> [EventCluster] {
-        let distinctStartTimes = Set(events.map(\.startTime)).sorted().filter({ $0 >= options.timelineStartDate })
-        
-        var eventClusters = [EventCluster]()
-        for startTime in distinctStartTimes {
-            let eventsOnOrAfterTime = events.filter({ $0.startTime >= startTime })
-            let cluster = EventCluster(clusterStartTime: startTime, events: eventsOnOrAfterTime)
-            eventClusters.append(cluster)
-        }
-        
-        return eventClusters
     }
     
     private func makeTimelineEntry(cluster: EventCluster) -> EventTimelineEntry {
@@ -49,6 +40,32 @@ public struct EventsTimelineController {
         let entry = EventTimelineEntry(date: cluster.clusterStartTime, events: viewModels, additionalEventsCount: 0)
         
         return entry
+    }
+    
+    private struct EventClusterFactory {
+        
+        var events: [Event]
+        var timelineStartDate: Date
+        
+        func makeClusters() -> [EventCluster] {
+            let distinctStartTimes = resolveClusteringDates()
+            let eventClusters = distinctStartTimes.map(makeEventCluster(startTime:))
+            return eventClusters
+        }
+        
+        private func resolveClusteringDates() -> [Date] {
+            let eligibleClusterDates = events.map(\.startTime).filter({ $0 >= timelineStartDate })
+            let distinctClusterDates = Set(eligibleClusterDates)
+            return distinctClusterDates.sorted()
+        }
+        
+        private func makeEventCluster(startTime: Date) -> EventCluster {
+            let eventsOnOrAfterTime = events.filter({ $0.startTime >= startTime })
+            let cluster = EventCluster(clusterStartTime: startTime, events: eventsOnOrAfterTime)
+            
+            return cluster
+        }
+        
     }
     
     private struct EventCluster {
