@@ -6,7 +6,8 @@ struct FilterTextHeadline: View {
     var filter: EventFilter
     
     var body: some View {
-        text.font(.headline)
+        text
+            .font(.title2)
     }
     
     @ViewBuilder
