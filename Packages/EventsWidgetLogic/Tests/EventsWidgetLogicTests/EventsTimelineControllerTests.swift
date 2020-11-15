@@ -3,7 +3,9 @@ import XCTest
 
 class EventsTimelineControllerTests: XCTestCase {
     
-    func testOneEvent() throws {
+    // MARK: - Timeline Tests
+    
+    func testTimeline_OneEvent() throws {
         let now = Date()
         let event = StubEvent(id: "some_event", title: "Some Event", startTime: now)
         let repository = StubEventsRepository(events: [event])
@@ -28,7 +30,7 @@ class EventsTimelineControllerTests: XCTestCase {
         XCTAssertEqual(expected, actual)
     }
     
-    func testTwoEvents_StaggeredStartTimesYieldsTwoEntries() {
+    func testTimeline_TwoEvents_StaggeredStartTimesYieldsTwoEntries() {
         let now = Date()
         let inHalfAnHour = now.addingTimeInterval(3600 / 2)
         let earlierEvent = StubEvent(id: "some_event", title: "Some Event", startTime: now)
@@ -62,7 +64,7 @@ class EventsTimelineControllerTests: XCTestCase {
         XCTAssertEqual(expected, actual)
     }
     
-    func testTwoEvents_StartingTimelineFromLaterDate() {
+    func testTimeline_TwoEvents_StartingTimelineFromLaterDate() {
         let now = Date()
         let inHalfAnHour = now.addingTimeInterval(3600 / 2)
         let earlierEvent = StubEvent(id: "some_event", title: "Some Event", startTime: now)
@@ -88,7 +90,7 @@ class EventsTimelineControllerTests: XCTestCase {
         XCTAssertEqual(expected, actual)
     }
     
-    func testSortsEventsWithinEntryByName() {
+    func testTimeline_SortsEventsWithinEntryByName() {
         let now = Date()
         let events = [
             StubEvent(id: "2", title: "B Event", startTime: now),
@@ -119,7 +121,7 @@ class EventsTimelineControllerTests: XCTestCase {
         XCTAssertEqual(expected, actual)
     }
     
-    func testExceedingEventsWithinGroupDropsLastEvents() {
+    func testTimeline_ExceedingEventsWithinGroupDropsLastEvents() {
         let now = Date()
         let events = [
             StubEvent(id: "2", title: "B Event", startTime: now),
@@ -148,6 +150,80 @@ class EventsTimelineControllerTests: XCTestCase {
                 ], additionalEventsCount: 2
             )
         ]
+        
+        XCTAssertEqual(expected, actual)
+    }
+    
+    // MARK: - Snapshot Tests
+    
+    func testSnapshot_OneEvent() {
+        let now = Date()
+        let event = StubEvent(id: "some_event", title: "Some Event", startTime: now)
+        let repository = StubEventsRepository(events: [event])
+        let controller = EventsTimelineController(repository: repository)
+        
+        var actual: EventTimelineEntry?
+        controller.makeSnapshotEntry(
+            options: .init(maximumEventsPerEntry: 3, snapshottingAtTime: now),
+            completionHandler: { actual = $0 }
+        )
+        
+        let expected = EventTimelineEntry(
+            date: now,
+            events: [
+                EventViewModel(id: "some_event", title: "Some Event")
+            ],
+            additionalEventsCount: 0
+        )
+        
+        XCTAssertEqual(expected, actual)
+    }
+    
+    func testSnapshot_TwoEvents() {
+        let now = Date()
+        let inHalfAnHour = now.addingTimeInterval(3600 / 2)
+        let earlierEvent = StubEvent(id: "some_event", title: "Some Event", startTime: now)
+        let laterEvent = StubEvent(id: "some_other_event", title: "Some Other Event", startTime: inHalfAnHour)
+        let repository = StubEventsRepository(events: [earlierEvent, laterEvent])
+        let controller = EventsTimelineController(repository: repository)
+        
+        var actual: EventTimelineEntry?
+        controller.makeSnapshotEntry(
+            options: .init(maximumEventsPerEntry: 3, snapshottingAtTime: now),
+            completionHandler: { actual = $0 }
+        )
+        
+        let expected = EventTimelineEntry(
+            date: now,
+            events: [
+                EventViewModel(id: "some_event", title: "Some Event"),
+                EventViewModel(id: "some_other_event", title: "Some Other Event")
+            ], additionalEventsCount: 0
+        )
+        
+        XCTAssertEqual(expected, actual)
+    }
+    
+    func testSnapshot_TwoEvents_StartingTimelineFromLaterDate() {
+        let now = Date()
+        let inHalfAnHour = now.addingTimeInterval(3600 / 2)
+        let earlierEvent = StubEvent(id: "some_event", title: "Some Event", startTime: now)
+        let laterEvent = StubEvent(id: "some_other_event", title: "Some Other Event", startTime: inHalfAnHour)
+        let repository = StubEventsRepository(events: [earlierEvent, laterEvent])
+        let controller = EventsTimelineController(repository: repository)
+        
+        var actual: EventTimelineEntry?
+        controller.makeSnapshotEntry(
+            options: .init(maximumEventsPerEntry: 3, snapshottingAtTime: inHalfAnHour),
+            completionHandler: { actual = $0 }
+        )
+        
+        let expected = EventTimelineEntry(
+            date: inHalfAnHour,
+            events: [
+                EventViewModel(id: "some_other_event", title: "Some Other Event")
+            ], additionalEventsCount: 0
+        )
         
         XCTAssertEqual(expected, actual)
     }

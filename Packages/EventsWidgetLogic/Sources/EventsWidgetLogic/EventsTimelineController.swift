@@ -10,6 +10,33 @@ public struct EventsTimelineController {
     
 }
 
+// MARK: - Snapshot
+
+extension EventsTimelineController {
+    
+    public struct SnapshotOptions {
+        
+        let maximumEventsPerEntry: Int
+        let snapshottingAtTime: Date
+        
+        public init(maximumEventsPerEntry: Int, snapshottingAtTime: Date) {
+            self.maximumEventsPerEntry = maximumEventsPerEntry
+            self.snapshottingAtTime = snapshottingAtTime
+        }
+        
+    }
+    
+    public func makeSnapshotEntry(options: SnapshotOptions, completionHandler: @escaping (EventTimelineEntry) -> Void) {
+        repository.loadEvents { (events) in
+            let onlyEventsRelevantForSnapshot = events.filter({ $0.startTime >= options.snapshottingAtTime })
+            let viewModels = onlyEventsRelevantForSnapshot.map(EventViewModel.init(event:))
+            let entry = EventTimelineEntry(date: options.snapshottingAtTime, events: viewModels, additionalEventsCount: 0)
+            completionHandler(entry)
+        }
+    }
+    
+}
+
 // MARK: - Timeline
 
 extension EventsTimelineController {
