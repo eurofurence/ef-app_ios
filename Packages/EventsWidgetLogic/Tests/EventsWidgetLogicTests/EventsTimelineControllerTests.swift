@@ -7,6 +7,7 @@ class EventsTimelineControllerTests: XCTestCase {
     private var controller: EventsTimelineController!
     private var now: Date!
     private var inHalfAnHour: Date!
+    private var inOneHour: Date!
     
     override func setUpWithError() throws {
         try super.setUpWithError()
@@ -14,6 +15,7 @@ class EventsTimelineControllerTests: XCTestCase {
         formatter = FakeEventTimeFormatter()
         now = Date()
         inHalfAnHour = now.addingTimeInterval(3600 / 2)
+        inOneHour = now.addingTimeInterval(3600)
     }
     
     private func setUpController(repository: EventRepository) {
@@ -27,7 +29,7 @@ class EventsTimelineControllerTests: XCTestCase {
     // MARK: - Timeline Tests
     
     func testTimeline_OneEvent() throws {
-        let event = StubEvent(id: "some_event", title: "Some Event", startTime: now)
+        let event = StubEvent(id: "some_event", title: "Some Event", startTime: now, endTime: inHalfAnHour)
         let repository = StubEventsRepository(events: [event])
         setUpController(repository: repository)
         
@@ -51,8 +53,14 @@ class EventsTimelineControllerTests: XCTestCase {
     }
     
     func testTimeline_TwoEvents_StaggeredStartTimesYieldsTwoEntries() {
-        let earlierEvent = StubEvent(id: "some_event", title: "Some Event", startTime: now)
-        let laterEvent = StubEvent(id: "some_other_event", title: "Some Other Event", startTime: inHalfAnHour)
+        let earlierEvent = StubEvent(id: "some_event", title: "Some Event", startTime: now, endTime: inHalfAnHour)
+        let laterEvent = StubEvent(
+            id: "some_other_event",
+            title: "Some Other Event",
+            startTime: inHalfAnHour,
+            endTime: inOneHour
+        )
+        
         let repository = StubEventsRepository(events: [earlierEvent, laterEvent])
         setUpController(repository: repository)
         
@@ -96,8 +104,14 @@ class EventsTimelineControllerTests: XCTestCase {
     }
     
     func testTimeline_TwoEvents_StartingTimelineFromLaterDate() {
-        let earlierEvent = StubEvent(id: "some_event", title: "Some Event", startTime: now)
-        let laterEvent = StubEvent(id: "some_other_event", title: "Some Other Event", startTime: inHalfAnHour)
+        let earlierEvent = StubEvent(id: "some_event", title: "Some Event", startTime: now, endTime: inHalfAnHour)
+        let laterEvent = StubEvent(
+            id: "some_other_event",
+            title: "Some Other Event",
+            startTime: inHalfAnHour,
+            endTime: inOneHour
+        )
+        
         let repository = StubEventsRepository(events: [earlierEvent, laterEvent])
         setUpController(repository: repository)
         
@@ -125,9 +139,9 @@ class EventsTimelineControllerTests: XCTestCase {
     
     func testTimeline_SortsEventsWithinEntryByName() {
         let events = [
-            StubEvent(id: "2", title: "B Event", startTime: now),
-            StubEvent(id: "3", title: "C Event", startTime: now),
-            StubEvent(id: "1", title: "A Event", startTime: now)
+            StubEvent(id: "2", title: "B Event", startTime: now, endTime: inHalfAnHour),
+            StubEvent(id: "3", title: "C Event", startTime: now, endTime: inHalfAnHour),
+            StubEvent(id: "1", title: "A Event", startTime: now, endTime: inHalfAnHour)
         ]
         
         let repository = StubEventsRepository(events: events)
@@ -155,11 +169,11 @@ class EventsTimelineControllerTests: XCTestCase {
     
     func testTimeline_ExceedingEventsWithinGroupDropsLastEvents() {
         let events = [
-            StubEvent(id: "2", title: "B Event", startTime: now),
-            StubEvent(id: "3", title: "C Event", startTime: now),
-            StubEvent(id: "1", title: "A Event", startTime: now),
-            StubEvent(id: "5", title: "E Event", startTime: now),
-            StubEvent(id: "4", title: "D Event", startTime: now)
+            StubEvent(id: "2", title: "B Event", startTime: now, endTime: inHalfAnHour),
+            StubEvent(id: "3", title: "C Event", startTime: now, endTime: inHalfAnHour),
+            StubEvent(id: "1", title: "A Event", startTime: now, endTime: inHalfAnHour),
+            StubEvent(id: "5", title: "E Event", startTime: now, endTime: inHalfAnHour),
+            StubEvent(id: "4", title: "D Event", startTime: now, endTime: inHalfAnHour)
         ]
         
         let repository = StubEventsRepository(events: events)
@@ -188,7 +202,7 @@ class EventsTimelineControllerTests: XCTestCase {
     // MARK: - Snapshot Tests
     
     func testSnapshot_OneEvent() {
-        let event = StubEvent(id: "some_event", title: "Some Event", startTime: now)
+        let event = StubEvent(id: "some_event", title: "Some Event", startTime: now, endTime: inHalfAnHour)
         let repository = StubEventsRepository(events: [event])
         setUpController(repository: repository)
         
@@ -210,8 +224,14 @@ class EventsTimelineControllerTests: XCTestCase {
     }
     
     func testSnapshot_TwoEvents() {
-        let earlierEvent = StubEvent(id: "some_event", title: "Some Event", startTime: now)
-        let laterEvent = StubEvent(id: "some_other_event", title: "Some Other Event", startTime: inHalfAnHour)
+        let earlierEvent = StubEvent(id: "some_event", title: "Some Event", startTime: now, endTime: inHalfAnHour)
+        let laterEvent = StubEvent(
+            id: "some_other_event",
+            title: "Some Other Event",
+            startTime: inHalfAnHour,
+            endTime: inOneHour
+        )
+        
         let repository = StubEventsRepository(events: [earlierEvent, laterEvent])
         setUpController(repository: repository)
         
@@ -242,8 +262,14 @@ class EventsTimelineControllerTests: XCTestCase {
     }
     
     func testSnapshot_TwoEvents_StartingTimelineFromLaterDate() {
-        let earlierEvent = StubEvent(id: "some_event", title: "Some Event", startTime: now)
-        let laterEvent = StubEvent(id: "some_other_event", title: "Some Other Event", startTime: inHalfAnHour)
+        let earlierEvent = StubEvent(id: "some_event", title: "Some Event", startTime: now, endTime: inHalfAnHour)
+        let laterEvent = StubEvent(
+            id: "some_other_event",
+            title: "Some Other Event",
+            startTime: inHalfAnHour,
+            endTime: inOneHour
+        )
+        
         let repository = StubEventsRepository(events: [earlierEvent, laterEvent])
         setUpController(repository: repository)
         
@@ -269,9 +295,9 @@ class EventsTimelineControllerTests: XCTestCase {
     
     func testSnapshot_SortsEventsWithinEntryByName() {
         let events = [
-            StubEvent(id: "2", title: "B Event", startTime: now),
-            StubEvent(id: "3", title: "C Event", startTime: now),
-            StubEvent(id: "1", title: "A Event", startTime: now)
+            StubEvent(id: "2", title: "B Event", startTime: now, endTime: inHalfAnHour),
+            StubEvent(id: "3", title: "C Event", startTime: now, endTime: inHalfAnHour),
+            StubEvent(id: "1", title: "A Event", startTime: now, endTime: inHalfAnHour)
         ]
         
         let repository = StubEventsRepository(events: events)
@@ -297,11 +323,11 @@ class EventsTimelineControllerTests: XCTestCase {
     
     func testSnaphot_ExceedingEventsWithinGroupDropsLastEvents() {
         let events = [
-            StubEvent(id: "2", title: "B Event", startTime: now),
-            StubEvent(id: "3", title: "C Event", startTime: now),
-            StubEvent(id: "1", title: "A Event", startTime: now),
-            StubEvent(id: "5", title: "E Event", startTime: now),
-            StubEvent(id: "4", title: "D Event", startTime: now)
+            StubEvent(id: "2", title: "B Event", startTime: now, endTime: inHalfAnHour),
+            StubEvent(id: "3", title: "C Event", startTime: now, endTime: inHalfAnHour),
+            StubEvent(id: "1", title: "A Event", startTime: now, endTime: inHalfAnHour),
+            StubEvent(id: "5", title: "E Event", startTime: now, endTime: inHalfAnHour),
+            StubEvent(id: "4", title: "D Event", startTime: now, endTime: inHalfAnHour)
         ]
         
         let repository = StubEventsRepository(events: events)

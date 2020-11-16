@@ -44,6 +44,10 @@ struct WidgetRepositoryAdapter: EventsWidgetLogic.EventRepository {
             event.startDate
         }
         
+        var endTime: Date {
+            event.endDate
+        }
+        
     }
     
     private class EventsAdapter: EurofurenceModel.EventsServiceObserver {
