@@ -51,7 +51,11 @@ struct EventsTimelineProvider: IntentTimelineProvider {
         let components = DateComponents(calendar: .current, timeZone: .current, year: 2018, month: 8, day: 15, hour: 14)
         let date = Calendar.current.date(from: components)!
         
-        let options = EventsTimelineController.SnapshotOptions(maximumEventsPerEntry: 3, snapshottingAtTime: date)
+        let widgetContext = EventWidgetContext(timelineContext: context)
+        let options = EventsTimelineController.SnapshotOptions(
+            maximumEventsPerEntry: widgetContext.recommendedNumberOfEvents,
+            snapshottingAtTime: date
+        )
         
         controller.makeSnapshotEntry(options: options) { (entry) in
             completion(entry)
@@ -72,8 +76,9 @@ struct EventsTimelineProvider: IntentTimelineProvider {
         let components = DateComponents(calendar: .current, timeZone: .current, year: 2019, month: 8, day: 15, hour: 14)
         let date = Calendar.current.date(from: components)!
         
+        let widgetContext = EventWidgetContext(timelineContext: context)
         let options = EventsTimelineController.TimelineOptions(
-            maximumEventsPerEntry: 3,
+            maximumEventsPerEntry: widgetContext.recommendedNumberOfEvents,
             timelineStartDate: date
         )
         
