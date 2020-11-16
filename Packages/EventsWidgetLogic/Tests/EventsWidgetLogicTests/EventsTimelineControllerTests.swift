@@ -43,7 +43,12 @@ class EventsTimelineControllerTests: XCTestCase {
             EventTimelineEntry(
                 date: now,
                 events: [
-                    EventViewModel(id: "some_event", title: "Some Event", formattedStartTime: string(from: now))
+                    EventViewModel(
+                        id: "some_event",
+                        title: "Some Event",
+                        formattedStartTime: string(from: now),
+                        formattedEndTime: string(from: inHalfAnHour)
+                    )
                 ],
                 additionalEventsCount: 0
             )
@@ -77,13 +82,15 @@ class EventsTimelineControllerTests: XCTestCase {
                     EventViewModel(
                         id: "some_event",
                         title: "Some Event",
-                        formattedStartTime: string(from: now)
+                        formattedStartTime: string(from: now),
+                        formattedEndTime: string(from: inHalfAnHour)
                     ),
                     
                     EventViewModel(
                         id: "some_other_event",
                         title: "Some Other Event",
-                        formattedStartTime: string(from: inHalfAnHour)
+                        formattedStartTime: string(from: inHalfAnHour),
+                        formattedEndTime: string(from: inOneHour)
                     )
                 ], additionalEventsCount: 0
             ),
@@ -94,7 +101,8 @@ class EventsTimelineControllerTests: XCTestCase {
                     EventViewModel(
                         id: "some_other_event",
                         title: "Some Other Event",
-                        formattedStartTime: string(from: inHalfAnHour)
+                        formattedStartTime: string(from: inHalfAnHour),
+                        formattedEndTime: string(from: inOneHour)
                     )
                 ], additionalEventsCount: 0
             )
@@ -128,7 +136,8 @@ class EventsTimelineControllerTests: XCTestCase {
                     EventViewModel(
                         id: "some_other_event",
                         title: "Some Other Event",
-                        formattedStartTime: string(from: inHalfAnHour)
+                        formattedStartTime: string(from: inHalfAnHour),
+                        formattedEndTime: string(from: inOneHour)
                     )
                 ], additionalEventsCount: 0
             )
@@ -157,9 +166,24 @@ class EventsTimelineControllerTests: XCTestCase {
             EventTimelineEntry(
                 date: now,
                 events: [
-                    EventViewModel(id: "1", title: "A Event", formattedStartTime: string(from: now)),
-                    EventViewModel(id: "2", title: "B Event", formattedStartTime: string(from: now)),
-                    EventViewModel(id: "3", title: "C Event", formattedStartTime: string(from: now))
+                    EventViewModel(
+                        id: "1",
+                        title: "A Event",
+                        formattedStartTime: string(from: now),
+                        formattedEndTime: string(from: inHalfAnHour)
+                    ),
+                    EventViewModel(
+                        id: "2",
+                        title: "B Event",
+                        formattedStartTime: string(from: now),
+                        formattedEndTime: string(from: inHalfAnHour)
+                    ),
+                    EventViewModel(
+                        id: "3",
+                        title: "C Event",
+                        formattedStartTime: string(from: now),
+                        formattedEndTime: string(from: inHalfAnHour)
+                    )
                 ], additionalEventsCount: 0
             )
         ]
@@ -189,9 +213,24 @@ class EventsTimelineControllerTests: XCTestCase {
             EventTimelineEntry(
                 date: now,
                 events: [
-                    EventViewModel(id: "1", title: "A Event", formattedStartTime: string(from: now)),
-                    EventViewModel(id: "2", title: "B Event", formattedStartTime: string(from: now)),
-                    EventViewModel(id: "3", title: "C Event", formattedStartTime: string(from: now))
+                    EventViewModel(
+                        id: "1",
+                        title: "A Event",
+                        formattedStartTime: string(from: now),
+                        formattedEndTime: string(from: inHalfAnHour)
+                    ),
+                    EventViewModel(
+                        id: "2",
+                        title: "B Event",
+                        formattedStartTime: string(from: now),
+                        formattedEndTime: string(from: inHalfAnHour)
+                    ),
+                    EventViewModel(
+                        id: "3",
+                        title: "C Event",
+                        formattedStartTime: string(from: now),
+                        formattedEndTime: string(from: inHalfAnHour)
+                    )
                 ], additionalEventsCount: 2
             )
         ]
@@ -215,7 +254,12 @@ class EventsTimelineControllerTests: XCTestCase {
         let expected = EventTimelineEntry(
             date: now,
             events: [
-                EventViewModel(id: "some_event", title: "Some Event", formattedStartTime: string(from: now)),
+                EventViewModel(
+                    id: "some_event",
+                    title: "Some Event",
+                    formattedStartTime: string(from: now),
+                    formattedEndTime: string(from: inHalfAnHour)
+                ),
             ],
             additionalEventsCount: 0
         )
@@ -247,13 +291,15 @@ class EventsTimelineControllerTests: XCTestCase {
                 EventViewModel(
                     id: "some_event",
                     title: "Some Event",
-                    formattedStartTime: string(from: now)
+                    formattedStartTime: string(from: now),
+                    formattedEndTime: string(from: inHalfAnHour)
                 ),
                 
                 EventViewModel(
                     id: "some_other_event",
                     title: "Some Other Event",
-                    formattedStartTime: string(from: inHalfAnHour)
+                    formattedStartTime: string(from: inHalfAnHour),
+                    formattedEndTime: string(from: inOneHour)
                 )
             ], additionalEventsCount: 0
         )
@@ -285,7 +331,8 @@ class EventsTimelineControllerTests: XCTestCase {
                 EventViewModel(
                     id: "some_other_event",
                     title: "Some Other Event",
-                    formattedStartTime: string(from: inHalfAnHour)
+                    formattedStartTime: string(from: inHalfAnHour),
+                    formattedEndTime: string(from: inOneHour)
                 )
             ], additionalEventsCount: 0
         )
@@ -312,9 +359,24 @@ class EventsTimelineControllerTests: XCTestCase {
         let expected = EventTimelineEntry(
             date: now,
             events: [
-                EventViewModel(id: "1", title: "A Event", formattedStartTime: string(from: now)),
-                EventViewModel(id: "2", title: "B Event", formattedStartTime: string(from: now)),
-                EventViewModel(id: "3", title: "C Event", formattedStartTime: string(from: now))
+                EventViewModel(
+                    id: "1",
+                    title: "A Event",
+                    formattedStartTime: string(from: now),
+                    formattedEndTime: string(from: inHalfAnHour)
+                ),
+                EventViewModel(
+                    id: "2",
+                    title: "B Event",
+                    formattedStartTime: string(from: now),
+                    formattedEndTime: string(from: inHalfAnHour)
+                ),
+                EventViewModel(
+                    id: "3",
+                    title: "C Event",
+                    formattedStartTime: string(from: now),
+                    formattedEndTime: string(from: inHalfAnHour)
+                )
             ], additionalEventsCount: 0
         )
         
@@ -342,9 +404,24 @@ class EventsTimelineControllerTests: XCTestCase {
         let expected = EventTimelineEntry(
             date: now,
             events: [
-                EventViewModel(id: "1", title: "A Event", formattedStartTime: string(from: now)),
-                EventViewModel(id: "2", title: "B Event", formattedStartTime: string(from: now)),
-                EventViewModel(id: "3", title: "C Event", formattedStartTime: string(from: now))
+                EventViewModel(
+                    id: "1",
+                    title: "A Event",
+                    formattedStartTime: string(from: now),
+                    formattedEndTime: string(from: inHalfAnHour)
+                ),
+                EventViewModel(
+                    id: "2",
+                    title: "B Event",
+                    formattedStartTime: string(from: now),
+                    formattedEndTime: string(from: inHalfAnHour)
+                ),
+                EventViewModel(
+                    id: "3",
+                    title: "C Event",
+                    formattedStartTime: string(from: now),
+                    formattedEndTime: string(from: inHalfAnHour)
+                )
             ], additionalEventsCount: 2
         )
         
