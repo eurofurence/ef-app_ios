@@ -10,8 +10,7 @@ struct EventsWidgetEntryView: View {
         ZStack(alignment: .top) {
             Color.widgetBackground
             WidgetContents(entry: entry)
-                .foregroundColor(.white)
-                .padding()
+                .foregroundColor(.primary)
         }
     }
     
@@ -67,11 +66,11 @@ struct EventsWidgetEntryView: View {
             if entry.events.isEmpty {
                 PlaceholderView(filter: .upcoming)
             } else {
-                VerticalEventsCollectionView(
-                    filter: .upcoming,
-                    events: entry.events,
-                    remainingEvents: 4
-                )
+                WidgetContent {
+                    FilterTextHeadline(filter: .upcoming)
+                } content: {
+                    EventsList(events: entry.events, remainingEvents: entry.additionalEventsCount)
+                }
             }
         }
     }
@@ -88,7 +87,7 @@ struct EventsWidgetEntryView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(maxHeight: 250)
-                    .foregroundColor(.secondaryText)
+                    .foregroundColor(.white)
                 
                 FilterPlaceholderText(filter: filter)
                 
@@ -105,7 +104,7 @@ struct EventsWidgetEntryView: View {
         var body: some View {
             text
                 .font(.footnote)
-                .foregroundColor(.secondaryText)
+                .foregroundColor(.white)
         }
         
         @ViewBuilder
@@ -123,36 +122,28 @@ struct EventsWidgetEntryView: View {
         }
         
     }
-    
-    private struct VerticalEventsCollectionView: View {
+
+    private struct EventsList: View {
         
-        var filter: EventFilter
+        @ScaledMetric private var dividerPadding: CGFloat = 5
+        
         var events: [EventViewModel]
         var remainingEvents: Int
         
         var body: some View {
             VStack(alignment: .leading) {
-                FilterTextHeadline(filter: filter)
-                EventsList(events: events, remainingEvents: remainingEvents)
-            }
-        }
-        
-    }
-
-    private struct EventsList: View {
-        
-        var events: [EventViewModel]
-        var remainingEvents: Int
-        
-        var body: some View {
-            VStack(alignment: .leading, spacing: 12) {
                 ForEach(events) { (event) in
+                    if event != events.first {
+                        Divider()
+                            .padding([.top, .bottom], dividerPadding)
+                    }
+                    
                     EventRow(event: event)
                 }
                 
                 if remainingEvents > 0 {
                     Divider()
-                        .padding(.bottom, 6)
+                        .padding(.bottom, dividerPadding)
                     
                     Text(verbatim: .additionalEventsFooter(remaining: remainingEvents))
                         .font(.caption2)
@@ -167,35 +158,30 @@ struct EventsWidgetEntryView: View {
         var event: EventViewModel
         
         var body: some View {
-            VStack {
-                Divider()
-                    .padding(.bottom, 6)
+            HStack(alignment: .top) {
+                VStack(alignment: .leading) {
+                    Text(event.title)
+                        .font(.caption)
+                        .fontWeight(.semibold)
+                        .lineLimit(1)
+                    
+                    Text(event.location)
+                        .lineLimit(1)
+                        .font(.caption2)
+                        .foregroundColor(.secondary)
+                }
                 
-                HStack(alignment: .top) {
-                    VStack(alignment: .leading) {
-                        Text(event.title)
-                            .font(.caption)
-                            .fontWeight(.semibold)
-                            .lineLimit(1)
-                        
-                        Text(event.location)
-                            .lineLimit(1)
-                            .font(.caption2)
-                            .foregroundColor(.secondaryText)
-                    }
+                Spacer()
+                
+                VStack(alignment: .trailing) {
+                    Text(event.formattedStartTime)
+                        .lineLimit(1)
+                        .font(.caption2)
                     
-                    Spacer()
-                    
-                    VStack(alignment: .trailing) {
-                        Text(event.formattedStartTime)
-                            .lineLimit(1)
-                            .font(.caption2)
-                        
-                        Text(event.formattedEndTime)
-                            .lineLimit(1)
-                            .font(.caption2)
-                            .foregroundColor(.secondaryText)
-                    }
+                    Text(event.formattedEndTime)
+                        .lineLimit(1)
+                        .font(.caption2)
+                        .foregroundColor(.secondary)
                 }
             }
         }

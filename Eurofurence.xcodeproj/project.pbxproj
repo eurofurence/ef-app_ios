@@ -511,6 +511,7 @@
 		CA7D8B27222EAB61003431A0 /* DefaultDealerDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D8B26222EAB61003431A0 /* DefaultDealerDetailViewModel.swift */; };
 		CA7D8B3822312CFB003431A0 /* DefaultNewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D8B3722312CFB003431A0 /* DefaultNewsViewModel.swift */; };
 		CA7DA65F2563018F00F1316F /* EventWidgetContext+TimelineContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7DA65E2563018F00F1316F /* EventWidgetContext+TimelineContext.swift */; };
+		CA7DA66925630B3100F1316F /* WidgetContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7DA66825630B3100F1316F /* WidgetContent.swift */; };
 		CA7EB7D51F799991002674A6 /* TutorialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7EB7D41F799991002674A6 /* TutorialScene.swift */; };
 		CA81D48E1FE9A8DB00A52A2F /* CapturingTutorialModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA81D48D1FE9A8DB00A52A2F /* CapturingTutorialModuleDelegate.swift */; };
 		CA82409D21249907007E4A70 /* ReviewPromptControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82409C21249907007E4A70 /* ReviewPromptControllerTests.swift */; };
@@ -1862,6 +1863,7 @@
 		CA7D8B26222EAB61003431A0 /* DefaultDealerDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDealerDetailViewModel.swift; sourceTree = "<group>"; };
 		CA7D8B3722312CFB003431A0 /* DefaultNewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNewsViewModel.swift; sourceTree = "<group>"; };
 		CA7DA65E2563018F00F1316F /* EventWidgetContext+TimelineContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventWidgetContext+TimelineContext.swift"; sourceTree = "<group>"; };
+		CA7DA66825630B3100F1316F /* WidgetContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetContent.swift; sourceTree = "<group>"; };
 		CA7EB7D41F799991002674A6 /* TutorialScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScene.swift; sourceTree = "<group>"; };
 		CA8124FE2517BDE500A7F717 /* iOS Application Tests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "iOS Application Tests.xctestplan"; sourceTree = "<group>"; };
 		CA8125022517BE9000A7F717 /* Screenshots.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Screenshots.xctestplan; sourceTree = "<group>"; };
@@ -3732,6 +3734,7 @@
 				CA5F26B92556F0C400CED97A /* EventsTimelineProvider.swift */,
 				CA5F26A22556F04C00CED97A /* EventsWidget.swift */,
 				CA5F26C72556F0E800CED97A /* EventsWidgetEntryView.swift */,
+				CA7DA66825630B3100F1316F /* WidgetContent.swift */,
 				CA47B1B72558189D00050890 /* EventsWidgetStrings.swift */,
 				CA5F2715255711C700CED97A /* FilterTextHeadline.swift */,
 				CA5F26A52556F04D00CED97A /* Assets.xcassets */,
@@ -8614,6 +8617,7 @@
 				CA5891E02562F2E800FC9BC1 /* HoursAndMinutesEventTimeFormatter.swift in Sources */,
 				CA7DA65F2563018F00F1316F /* EventWidgetContext+TimelineContext.swift in Sources */,
 				CA8F7D2F256182EF0096E206 /* WidgetKitConformances.swift in Sources */,
+				CA7DA66925630B3100F1316F /* WidgetContent.swift in Sources */,
 				CA5F26A82556F04D00CED97A /* EventsWidget.intentdefinition in Sources */,
 				CA47B1B82558189D00050890 /* EventsWidgetStrings.swift in Sources */,
 			);
