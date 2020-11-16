@@ -43,7 +43,10 @@ struct EventsTimelineProvider: IntentTimelineProvider {
         completion: @escaping (EventTimelineEntry) -> ()
     ) {
         let repository = WidgetRepositoryAdapter(intent: configuration)
-        let controller = EventsTimelineController(repository: repository)
+        let controller = EventsTimelineController(
+            repository: repository,
+            eventTimeFormatter: HoursAndMinutesEventTimeFormatter.shared
+        )
         
         let components = DateComponents(calendar: .current, timeZone: .current, year: 2018, month: 8, day: 15, hour: 14)
         let date = Calendar.current.date(from: components)!
@@ -61,7 +64,10 @@ struct EventsTimelineProvider: IntentTimelineProvider {
         completion: @escaping (Timeline<EventTimelineEntry>) -> ()
     ) {
         let repository = WidgetRepositoryAdapter(intent: configuration)
-        let controller = EventsTimelineController(repository: repository)
+        let controller = EventsTimelineController(
+            repository: repository,
+            eventTimeFormatter: HoursAndMinutesEventTimeFormatter.shared
+        )
         
         let components = DateComponents(calendar: .current, timeZone: .current, year: 2019, month: 8, day: 15, hour: 14)
         let date = Calendar.current.date(from: components)!
