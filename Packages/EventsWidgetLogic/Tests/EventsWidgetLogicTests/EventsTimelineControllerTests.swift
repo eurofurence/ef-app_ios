@@ -3,13 +3,29 @@ import XCTest
 
 class EventsTimelineControllerTests: XCTestCase {
     
+    private var formatter: FakeEventTimeFormatter!
+    private var controller: EventsTimelineController!
+    
+    override func setUpWithError() throws {
+        try super.setUpWithError()
+        formatter = FakeEventTimeFormatter()
+    }
+    
+    private func setUpController(repository: EventRepository) {
+        controller = EventsTimelineController(repository: repository, eventTimeFormatter: formatter)
+    }
+    
+    private func string(from date: Date) -> String {
+        formatter.string(from: date)
+    }
+    
     // MARK: - Timeline Tests
     
     func testTimeline_OneEvent() throws {
         let now = Date()
         let event = StubEvent(id: "some_event", title: "Some Event", startTime: now)
         let repository = StubEventsRepository(events: [event])
-        let controller = EventsTimelineController(repository: repository)
+        setUpController(repository: repository)
         
         var actual: [EventTimelineEntry]?
         controller.makeEntries(
@@ -21,7 +37,7 @@ class EventsTimelineControllerTests: XCTestCase {
             EventTimelineEntry(
                 date: now,
                 events: [
-                    EventViewModel(id: "some_event", title: "Some Event")
+                    EventViewModel(id: "some_event", title: "Some Event", formattedStartTime: string(from: now))
                 ],
                 additionalEventsCount: 0
             )
@@ -36,7 +52,7 @@ class EventsTimelineControllerTests: XCTestCase {
         let earlierEvent = StubEvent(id: "some_event", title: "Some Event", startTime: now)
         let laterEvent = StubEvent(id: "some_other_event", title: "Some Other Event", startTime: inHalfAnHour)
         let repository = StubEventsRepository(events: [earlierEvent, laterEvent])
-        let controller = EventsTimelineController(repository: repository)
+        setUpController(repository: repository)
         
         var actual: [EventTimelineEntry]?
         controller.makeEntries(
@@ -48,15 +64,28 @@ class EventsTimelineControllerTests: XCTestCase {
             EventTimelineEntry(
                 date: now,
                 events: [
-                    EventViewModel(id: "some_event", title: "Some Event"),
-                    EventViewModel(id: "some_other_event", title: "Some Other Event")
+                    EventViewModel(
+                        id: "some_event",
+                        title: "Some Event",
+                        formattedStartTime: string(from: now)
+                    ),
+                    
+                    EventViewModel(
+                        id: "some_other_event",
+                        title: "Some Other Event",
+                        formattedStartTime: string(from: inHalfAnHour)
+                    )
                 ], additionalEventsCount: 0
             ),
             
             EventTimelineEntry(
                 date: inHalfAnHour,
                 events: [
-                    EventViewModel(id: "some_other_event", title: "Some Other Event")
+                    EventViewModel(
+                        id: "some_other_event",
+                        title: "Some Other Event",
+                        formattedStartTime: string(from: inHalfAnHour)
+                    )
                 ], additionalEventsCount: 0
             )
         ]
@@ -70,7 +99,7 @@ class EventsTimelineControllerTests: XCTestCase {
         let earlierEvent = StubEvent(id: "some_event", title: "Some Event", startTime: now)
         let laterEvent = StubEvent(id: "some_other_event", title: "Some Other Event", startTime: inHalfAnHour)
         let repository = StubEventsRepository(events: [earlierEvent, laterEvent])
-        let controller = EventsTimelineController(repository: repository)
+        setUpController(repository: repository)
         
         var actual: [EventTimelineEntry]?
         controller.makeEntries(
@@ -82,7 +111,11 @@ class EventsTimelineControllerTests: XCTestCase {
             EventTimelineEntry(
                 date: inHalfAnHour,
                 events: [
-                    EventViewModel(id: "some_other_event", title: "Some Other Event")
+                    EventViewModel(
+                        id: "some_other_event",
+                        title: "Some Other Event",
+                        formattedStartTime: string(from: inHalfAnHour)
+                    )
                 ], additionalEventsCount: 0
             )
         ]
@@ -99,7 +132,7 @@ class EventsTimelineControllerTests: XCTestCase {
         ]
         
         let repository = StubEventsRepository(events: events)
-        let controller = EventsTimelineController(repository: repository)
+        setUpController(repository: repository)
         
         var actual: [EventTimelineEntry]?
         controller.makeEntries(
@@ -111,9 +144,9 @@ class EventsTimelineControllerTests: XCTestCase {
             EventTimelineEntry(
                 date: now,
                 events: [
-                    EventViewModel(id: "1", title: "A Event"),
-                    EventViewModel(id: "2", title: "B Event"),
-                    EventViewModel(id: "3", title: "C Event")
+                    EventViewModel(id: "1", title: "A Event", formattedStartTime: string(from: now)),
+                    EventViewModel(id: "2", title: "B Event", formattedStartTime: string(from: now)),
+                    EventViewModel(id: "3", title: "C Event", formattedStartTime: string(from: now))
                 ], additionalEventsCount: 0
             )
         ]
@@ -132,7 +165,7 @@ class EventsTimelineControllerTests: XCTestCase {
         ]
         
         let repository = StubEventsRepository(events: events)
-        let controller = EventsTimelineController(repository: repository)
+        setUpController(repository: repository)
         
         var actual: [EventTimelineEntry]?
         controller.makeEntries(
@@ -144,9 +177,9 @@ class EventsTimelineControllerTests: XCTestCase {
             EventTimelineEntry(
                 date: now,
                 events: [
-                    EventViewModel(id: "1", title: "A Event"),
-                    EventViewModel(id: "2", title: "B Event"),
-                    EventViewModel(id: "3", title: "C Event")
+                    EventViewModel(id: "1", title: "A Event", formattedStartTime: string(from: now)),
+                    EventViewModel(id: "2", title: "B Event", formattedStartTime: string(from: now)),
+                    EventViewModel(id: "3", title: "C Event", formattedStartTime: string(from: now))
                 ], additionalEventsCount: 2
             )
         ]
@@ -160,7 +193,7 @@ class EventsTimelineControllerTests: XCTestCase {
         let now = Date()
         let event = StubEvent(id: "some_event", title: "Some Event", startTime: now)
         let repository = StubEventsRepository(events: [event])
-        let controller = EventsTimelineController(repository: repository)
+        setUpController(repository: repository)
         
         var actual: EventTimelineEntry?
         controller.makeSnapshotEntry(
@@ -171,7 +204,7 @@ class EventsTimelineControllerTests: XCTestCase {
         let expected = EventTimelineEntry(
             date: now,
             events: [
-                EventViewModel(id: "some_event", title: "Some Event")
+                EventViewModel(id: "some_event", title: "Some Event", formattedStartTime: string(from: now)),
             ],
             additionalEventsCount: 0
         )
@@ -185,7 +218,7 @@ class EventsTimelineControllerTests: XCTestCase {
         let earlierEvent = StubEvent(id: "some_event", title: "Some Event", startTime: now)
         let laterEvent = StubEvent(id: "some_other_event", title: "Some Other Event", startTime: inHalfAnHour)
         let repository = StubEventsRepository(events: [earlierEvent, laterEvent])
-        let controller = EventsTimelineController(repository: repository)
+        setUpController(repository: repository)
         
         var actual: EventTimelineEntry?
         controller.makeSnapshotEntry(
@@ -196,8 +229,17 @@ class EventsTimelineControllerTests: XCTestCase {
         let expected = EventTimelineEntry(
             date: now,
             events: [
-                EventViewModel(id: "some_event", title: "Some Event"),
-                EventViewModel(id: "some_other_event", title: "Some Other Event")
+                EventViewModel(
+                    id: "some_event",
+                    title: "Some Event",
+                    formattedStartTime: string(from: now)
+                ),
+                
+                EventViewModel(
+                    id: "some_other_event",
+                    title: "Some Other Event",
+                    formattedStartTime: string(from: inHalfAnHour)
+                )
             ], additionalEventsCount: 0
         )
         
@@ -210,7 +252,7 @@ class EventsTimelineControllerTests: XCTestCase {
         let earlierEvent = StubEvent(id: "some_event", title: "Some Event", startTime: now)
         let laterEvent = StubEvent(id: "some_other_event", title: "Some Other Event", startTime: inHalfAnHour)
         let repository = StubEventsRepository(events: [earlierEvent, laterEvent])
-        let controller = EventsTimelineController(repository: repository)
+        setUpController(repository: repository)
         
         var actual: EventTimelineEntry?
         controller.makeSnapshotEntry(
@@ -221,7 +263,11 @@ class EventsTimelineControllerTests: XCTestCase {
         let expected = EventTimelineEntry(
             date: inHalfAnHour,
             events: [
-                EventViewModel(id: "some_other_event", title: "Some Other Event")
+                EventViewModel(
+                    id: "some_other_event",
+                    title: "Some Other Event",
+                    formattedStartTime: string(from: inHalfAnHour)
+                )
             ], additionalEventsCount: 0
         )
         
@@ -237,7 +283,7 @@ class EventsTimelineControllerTests: XCTestCase {
         ]
         
         let repository = StubEventsRepository(events: events)
-        let controller = EventsTimelineController(repository: repository)
+        setUpController(repository: repository)
         
         var actual: EventTimelineEntry?
         controller.makeSnapshotEntry(
@@ -248,9 +294,9 @@ class EventsTimelineControllerTests: XCTestCase {
         let expected = EventTimelineEntry(
             date: now,
             events: [
-                EventViewModel(id: "1", title: "A Event"),
-                EventViewModel(id: "2", title: "B Event"),
-                EventViewModel(id: "3", title: "C Event")
+                EventViewModel(id: "1", title: "A Event", formattedStartTime: string(from: now)),
+                EventViewModel(id: "2", title: "B Event", formattedStartTime: string(from: now)),
+                EventViewModel(id: "3", title: "C Event", formattedStartTime: string(from: now))
             ], additionalEventsCount: 0
         )
         
@@ -268,7 +314,7 @@ class EventsTimelineControllerTests: XCTestCase {
         ]
         
         let repository = StubEventsRepository(events: events)
-        let controller = EventsTimelineController(repository: repository)
+        setUpController(repository: repository)
         
         var actual: EventTimelineEntry?
         controller.makeSnapshotEntry(
@@ -279,9 +325,9 @@ class EventsTimelineControllerTests: XCTestCase {
         let expected = EventTimelineEntry(
             date: now,
             events: [
-                EventViewModel(id: "1", title: "A Event"),
-                EventViewModel(id: "2", title: "B Event"),
-                EventViewModel(id: "3", title: "C Event")
+                EventViewModel(id: "1", title: "A Event", formattedStartTime: string(from: now)),
+                EventViewModel(id: "2", title: "B Event", formattedStartTime: string(from: now)),
+                EventViewModel(id: "3", title: "C Event", formattedStartTime: string(from: now))
             ], additionalEventsCount: 2
         )
         

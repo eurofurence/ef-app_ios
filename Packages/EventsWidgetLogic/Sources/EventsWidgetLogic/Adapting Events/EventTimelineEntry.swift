@@ -12,13 +12,4 @@ public struct EventTimelineEntry: Equatable {
         self.additionalEventsCount = additionalEventsCount
     }
     
-    init(cluster: EventCluster) {
-        let viewModels = cluster.events.map(EventViewModel.init)
-        self.init(
-            date: cluster.clusterStartTime,
-            events: viewModels,
-            additionalEventsCount: cluster.additionalEventCount
-        )
-    }
-    
 }

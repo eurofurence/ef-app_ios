@@ -45,7 +45,10 @@ struct EventsTimelineProvider: IntentTimelineProvider {
         let repository = WidgetRepositoryAdapter(intent: configuration)
         let controller = EventsTimelineController(repository: repository)
         
-        let options = EventsTimelineController.SnapshotOptions(maximumEventsPerEntry: 3, snapshottingAtTime: Date())
+        let components = DateComponents(calendar: .current, timeZone: .current, year: 2018, month: 8, day: 15, hour: 14)
+        let date = Calendar.current.date(from: components)!
+        
+        let options = EventsTimelineController.SnapshotOptions(maximumEventsPerEntry: 3, snapshottingAtTime: date)
         
         controller.makeSnapshotEntry(options: options) { (entry) in
             completion(entry)
@@ -60,9 +63,12 @@ struct EventsTimelineProvider: IntentTimelineProvider {
         let repository = WidgetRepositoryAdapter(intent: configuration)
         let controller = EventsTimelineController(repository: repository)
         
+        let components = DateComponents(calendar: .current, timeZone: .current, year: 2019, month: 8, day: 15, hour: 14)
+        let date = Calendar.current.date(from: components)!
+        
         let options = EventsTimelineController.TimelineOptions(
             maximumEventsPerEntry: 3,
-            timelineStartDate: Date()
+            timelineStartDate: date
         )
         
         controller.makeEntries(options: options) { (entries) in

@@ -3,9 +3,11 @@ import Foundation.NSDate
 public struct EventsTimelineController {
     
     private let repository: EventRepository
+    private let viewModelFactory: EventViewModelFactory
     
-    public init(repository: EventRepository) {
+    public init(repository: EventRepository, eventTimeFormatter: EventTimeFormatter) {
         self.repository = repository
+        viewModelFactory = EventViewModelFactory(eventTimeFormatter: eventTimeFormatter)
     }
     
 }
@@ -31,6 +33,7 @@ extension EventsTimelineController {
             repository: repository,
             maximumEventsPerEntry: options.maximumEventsPerEntry,
             snapshotDate: options.snapshottingAtTime,
+            viewModelFactory: viewModelFactory,
             completionHandler: completionHandler
         ).resolveEntry()
     }
@@ -58,6 +61,7 @@ extension EventsTimelineController {
             repository: repository,
             maximumEventsPerEntry: options.maximumEventsPerEntry,
             timelineStartDate: options.timelineStartDate,
+            viewModelFactory: viewModelFactory,
             completionHandler: completionHandler
         ).resolveEntries()
     }
