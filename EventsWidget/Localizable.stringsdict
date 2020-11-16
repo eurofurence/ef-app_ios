@@ -13,9 +13,9 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>li</string>
 			<key>one</key>
-			<string>... and %li more event</string>
+			<string>1 more event</string>
 			<key>other</key>
-			<string>... and %li more events</string>
+			<string>%li more events</string>
 		</dict>
 	</dict>
 </dict>

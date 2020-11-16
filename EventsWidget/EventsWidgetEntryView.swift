@@ -11,7 +11,7 @@ struct EventsWidgetEntryView: View {
             Color.widgetBackground
             WidgetContents(entry: entry)
                 .foregroundColor(.white)
-                .padding(20)
+                .padding()
         }
     }
     
@@ -133,24 +133,7 @@ struct EventsWidgetEntryView: View {
         var body: some View {
             VStack(alignment: .leading) {
                 FilterTextHeadline(filter: filter)
-                
-                Divider()
-                    .padding([.bottom])
-                
-                VStack(alignment: .leading, spacing: 24) {
-                    EventsList(events: events)
-                }
-                
-                if remainingEvents > 0 {
-                    Spacer()
-                    
-                    HStack {
-                        Spacer()
-                        
-                        Text(verbatim: .additionalEventsFooter(remaining: remainingEvents))
-                            .font(.footnote)
-                    }
-                }
+                EventsList(events: events, remainingEvents: remainingEvents)
             }
         }
         
@@ -159,10 +142,21 @@ struct EventsWidgetEntryView: View {
     private struct EventsList: View {
         
         var events: [EventViewModel]
+        var remainingEvents: Int
         
         var body: some View {
-            ForEach(events) { (event) in
-                EventRow(event: event)
+            VStack(alignment: .leading, spacing: 12) {
+                ForEach(events) { (event) in
+                    EventRow(event: event)
+                }
+                
+                if remainingEvents > 0 {
+                    Divider()
+                        .padding(.bottom, 6)
+                    
+                    Text(verbatim: .additionalEventsFooter(remaining: remainingEvents))
+                        .font(.caption2)
+                }
             }
         }
         
@@ -173,30 +167,35 @@ struct EventsWidgetEntryView: View {
         var event: EventViewModel
         
         var body: some View {
-            HStack(alignment: .top) {
-                VStack(alignment: .leading) {
-                    HStack {
-                        Text(event.formattedStartTime)
-                            .font(.footnote)
+            VStack {
+                Divider()
+                    .padding(.bottom, 6)
+                
+                HStack(alignment: .top) {
+                    VStack(alignment: .leading) {
+                        Text(event.title)
+                            .font(.caption)
+                            .fontWeight(.semibold)
+                            .lineLimit(1)
                         
-                        Spacer()
+                        Text(event.location)
+                            .lineLimit(1)
+                            .font(.caption2)
+                            .foregroundColor(.secondaryText)
                     }
                     
-                    Text(event.formattedEndTime)
-                        .font(.footnote)
-                        .foregroundColor(.secondaryText)
-                        .alignmentGuide(.leading) { h in -18 }
-                }
-                .frame(minWidth: 100, idealWidth: 100, maxWidth: 100)
-                
-                VStack(alignment: .leading) {
-                    Text(event.title)
-                        .font(.footnote)
+                    Spacer()
                     
-                    Text(event.location)
-                        .font(.footnote)
-                        .lineLimit(3)
-                        .foregroundColor(.secondaryText)
+                    VStack(alignment: .trailing) {
+                        Text(event.formattedStartTime)
+                            .lineLimit(1)
+                            .font(.caption2)
+                        
+                        Text(event.formattedEndTime)
+                            .lineLimit(1)
+                            .font(.caption2)
+                            .foregroundColor(.secondaryText)
+                    }
                 }
             }
         }
@@ -247,14 +246,6 @@ struct EventsWidget_Previews: PreviewProvider {
                 location: "ECC Room 3",
                 formattedStartTime: "22:00",
                 formattedEndTime: "00:30"
-            ),
-            
-            EventViewModel(
-                id: UUID().uuidString,
-                title: "Games Corner",
-                location: "Estrel Hall A",
-                formattedStartTime: "23:00",
-                formattedEndTime: "03:00"
             )
         ]
         

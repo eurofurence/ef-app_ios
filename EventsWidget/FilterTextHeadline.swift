@@ -7,20 +7,20 @@ struct FilterTextHeadline: View {
     
     var body: some View {
         text
+            .fontWeight(.heavy)
             .font(.caption)
     }
     
-    @ViewBuilder
-    private var text: some View {
+    private var text: Text {
         switch filter {
         case .upcoming:
-            Text("Upcoming", comment: "Upcoming")
+            return Text("Upcoming", comment: "Upcoming")
             
         case .running:
-            Text("Running", comment: "Running")
+            return Text("Running", comment: "Running")
             
         case .unknown:
-            Text("")
+            return Text("")
         }
     }
     
