@@ -28,6 +28,7 @@ public struct EventViewModel: Equatable {
         self.init(
             id: event.id,
             title: event.title,
+            location: event.location,
             formattedStartTime: eventTimeFormatter.string(from: event.startTime),
             formattedEndTime: eventTimeFormatter.string(from: event.endTime)
         )

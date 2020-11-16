@@ -40,6 +40,10 @@ struct WidgetRepositoryAdapter: EventsWidgetLogic.EventRepository {
             event.title
         }
         
+        var location: String {
+            event.room.name
+        }
+        
         var startTime: Date {
             event.startDate
         }
