@@ -43,7 +43,15 @@ struct EventsWidgetEntryView: View {
         var entry: EventTimelineEntry
         
         var body: some View {
-            Text("Small")
+            if entry.events.isEmpty {
+                VerticalPlaceholderWithPrompt(filter: .upcoming)
+            } else {
+                WidgetContent {
+                    FilterTextHeadline(filter: .upcoming)
+                } content: {
+                    EventsList(events: entry.events, remainingEvents: entry.additionalEventsCount)
+                }
+            }
         }
         
     }
@@ -53,7 +61,15 @@ struct EventsWidgetEntryView: View {
         var entry: EventTimelineEntry
         
         var body: some View {
-            Text("Medium")
+            if entry.events.isEmpty {
+                HorizontalPlaceholderWithPrompt(filter: .upcoming)
+            } else {
+                WidgetContent {
+                    FilterTextHeadline(filter: .upcoming)
+                } content: {
+                    EventsList(events: entry.events, remainingEvents: entry.additionalEventsCount)
+                }
+            }
         }
         
     }
@@ -64,7 +80,7 @@ struct EventsWidgetEntryView: View {
         
         var body: some View {
             if entry.events.isEmpty {
-                PlaceholderView(filter: .upcoming)
+                VerticalPlaceholderWithPrompt(filter: .upcoming)
             } else {
                 WidgetContent {
                     FilterTextHeadline(filter: .upcoming)
@@ -75,7 +91,7 @@ struct EventsWidgetEntryView: View {
         }
     }
 
-    private struct PlaceholderView: View {
+    private struct VerticalPlaceholderWithPrompt: View {
         
         var filter: EventFilter
         
@@ -88,6 +104,31 @@ struct EventsWidgetEntryView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(maxHeight: 250)
                     .foregroundColor(.white)
+                
+                FilterPlaceholderText(filter: filter)
+                
+                Spacer()
+            }
+        }
+        
+    }
+    
+    private struct HorizontalPlaceholderWithPrompt: View {
+        
+        var filter: EventFilter
+        
+        var body: some View {
+            HStack(spacing: 17) {
+                Spacer()
+                
+                Image("No Content Placeholder")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(maxHeight: 250)
+                    .foregroundColor(.white)
+                    .padding()
+                
+                Spacer()
                 
                 FilterPlaceholderText(filter: filter)
                 
