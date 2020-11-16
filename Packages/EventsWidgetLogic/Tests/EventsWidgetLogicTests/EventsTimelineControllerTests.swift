@@ -5,10 +5,15 @@ class EventsTimelineControllerTests: XCTestCase {
     
     private var formatter: FakeEventTimeFormatter!
     private var controller: EventsTimelineController!
+    private var now: Date!
+    private var inHalfAnHour: Date!
     
     override func setUpWithError() throws {
         try super.setUpWithError()
+        
         formatter = FakeEventTimeFormatter()
+        now = Date()
+        inHalfAnHour = now.addingTimeInterval(3600 / 2)
     }
     
     private func setUpController(repository: EventRepository) {
@@ -22,7 +27,6 @@ class EventsTimelineControllerTests: XCTestCase {
     // MARK: - Timeline Tests
     
     func testTimeline_OneEvent() throws {
-        let now = Date()
         let event = StubEvent(id: "some_event", title: "Some Event", startTime: now)
         let repository = StubEventsRepository(events: [event])
         setUpController(repository: repository)
@@ -47,8 +51,6 @@ class EventsTimelineControllerTests: XCTestCase {
     }
     
     func testTimeline_TwoEvents_StaggeredStartTimesYieldsTwoEntries() {
-        let now = Date()
-        let inHalfAnHour = now.addingTimeInterval(3600 / 2)
         let earlierEvent = StubEvent(id: "some_event", title: "Some Event", startTime: now)
         let laterEvent = StubEvent(id: "some_other_event", title: "Some Other Event", startTime: inHalfAnHour)
         let repository = StubEventsRepository(events: [earlierEvent, laterEvent])
@@ -94,8 +96,6 @@ class EventsTimelineControllerTests: XCTestCase {
     }
     
     func testTimeline_TwoEvents_StartingTimelineFromLaterDate() {
-        let now = Date()
-        let inHalfAnHour = now.addingTimeInterval(3600 / 2)
         let earlierEvent = StubEvent(id: "some_event", title: "Some Event", startTime: now)
         let laterEvent = StubEvent(id: "some_other_event", title: "Some Other Event", startTime: inHalfAnHour)
         let repository = StubEventsRepository(events: [earlierEvent, laterEvent])
@@ -124,7 +124,6 @@ class EventsTimelineControllerTests: XCTestCase {
     }
     
     func testTimeline_SortsEventsWithinEntryByName() {
-        let now = Date()
         let events = [
             StubEvent(id: "2", title: "B Event", startTime: now),
             StubEvent(id: "3", title: "C Event", startTime: now),
@@ -155,7 +154,6 @@ class EventsTimelineControllerTests: XCTestCase {
     }
     
     func testTimeline_ExceedingEventsWithinGroupDropsLastEvents() {
-        let now = Date()
         let events = [
             StubEvent(id: "2", title: "B Event", startTime: now),
             StubEvent(id: "3", title: "C Event", startTime: now),
@@ -190,7 +188,6 @@ class EventsTimelineControllerTests: XCTestCase {
     // MARK: - Snapshot Tests
     
     func testSnapshot_OneEvent() {
-        let now = Date()
         let event = StubEvent(id: "some_event", title: "Some Event", startTime: now)
         let repository = StubEventsRepository(events: [event])
         setUpController(repository: repository)
@@ -213,8 +210,6 @@ class EventsTimelineControllerTests: XCTestCase {
     }
     
     func testSnapshot_TwoEvents() {
-        let now = Date()
-        let inHalfAnHour = now.addingTimeInterval(3600 / 2)
         let earlierEvent = StubEvent(id: "some_event", title: "Some Event", startTime: now)
         let laterEvent = StubEvent(id: "some_other_event", title: "Some Other Event", startTime: inHalfAnHour)
         let repository = StubEventsRepository(events: [earlierEvent, laterEvent])
@@ -247,8 +242,6 @@ class EventsTimelineControllerTests: XCTestCase {
     }
     
     func testSnapshot_TwoEvents_StartingTimelineFromLaterDate() {
-        let now = Date()
-        let inHalfAnHour = now.addingTimeInterval(3600 / 2)
         let earlierEvent = StubEvent(id: "some_event", title: "Some Event", startTime: now)
         let laterEvent = StubEvent(id: "some_other_event", title: "Some Other Event", startTime: inHalfAnHour)
         let repository = StubEventsRepository(events: [earlierEvent, laterEvent])
@@ -275,7 +268,6 @@ class EventsTimelineControllerTests: XCTestCase {
     }
     
     func testSnapshot_SortsEventsWithinEntryByName() {
-        let now = Date()
         let events = [
             StubEvent(id: "2", title: "B Event", startTime: now),
             StubEvent(id: "3", title: "C Event", startTime: now),
@@ -304,7 +296,6 @@ class EventsTimelineControllerTests: XCTestCase {
     }
     
     func testSnaphot_ExceedingEventsWithinGroupDropsLastEvents() {
-        let now = Date()
         let events = [
             StubEvent(id: "2", title: "B Event", startTime: now),
             StubEvent(id: "3", title: "C Event", startTime: now),
