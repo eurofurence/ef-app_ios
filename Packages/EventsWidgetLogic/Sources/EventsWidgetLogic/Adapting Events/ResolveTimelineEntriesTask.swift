@@ -20,7 +20,8 @@ struct ResolveTimelineEntriesTask {
         ).makeClusters()
         
         let entries = eventClusters.map(makeTimelineEntry(from:))
-        let timeline = EventsTimeline(entries: entries)
+        let snapshot = entries.first ?? EventTimelineEntry(date: Date(), events: [], additionalEventsCount: 0)
+        let timeline = EventsTimeline(snapshot: snapshot, entries: entries)
         
         completionHandler(timeline)
     }

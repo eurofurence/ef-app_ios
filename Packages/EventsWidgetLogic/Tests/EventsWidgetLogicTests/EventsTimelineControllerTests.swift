@@ -61,6 +61,7 @@ class EventsTimelineControllerTests: XCTestCase {
         )
         
         let expected = EventsTimeline(
+            snapshot: expectedSnapshotEntry,
             entries: [
                 expectedSnapshotEntry
             ]
@@ -118,6 +119,7 @@ class EventsTimelineControllerTests: XCTestCase {
         )
         
         let expected = EventsTimeline(
+            snapshot: expectedSnapshotEntry,
             entries: [
                 expectedSnapshotEntry,
                 
@@ -180,6 +182,7 @@ class EventsTimelineControllerTests: XCTestCase {
         )
         
         let expected = EventsTimeline(
+            snapshot: expectedSnapshotEntry,
             entries: [
                 expectedSnapshotEntry
             ]
@@ -233,6 +236,7 @@ class EventsTimelineControllerTests: XCTestCase {
         )
         
         let expected = EventsTimeline(
+            snapshot: expectedSnapshotEntry,
             entries: [
                 expectedSnapshotEntry
             ]
@@ -288,6 +292,7 @@ class EventsTimelineControllerTests: XCTestCase {
         )
         
         let expected = EventsTimeline(
+            snapshot: expectedSnapshotEntry,
             entries: [
                 expectedSnapshotEntry
             ]

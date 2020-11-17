@@ -1,14 +1,10 @@
-import Foundation.NSDate
-
 public struct EventsTimeline: Equatable {
     
+    public var snapshot: EventTimelineEntry
     public var entries: [EventTimelineEntry]
     
-    public var snapshot: EventTimelineEntry {
-        entries.first ?? EventTimelineEntry(date: Date(), events: [], additionalEventsCount: 0)
-    }
-    
-    public init(entries: [EventTimelineEntry]) {
+    public init(snapshot: EventTimelineEntry, entries: [EventTimelineEntry]) {
+        self.snapshot = snapshot
         self.entries = entries
     }
     
