@@ -12,34 +12,6 @@ public struct EventsTimelineController {
     
 }
 
-// MARK: - Snapshot
-
-extension EventsTimelineController {
-    
-    public struct SnapshotOptions {
-        
-        let maximumEventsPerEntry: Int
-        let snapshottingAtTime: Date
-        
-        public init(maximumEventsPerEntry: Int, snapshottingAtTime: Date) {
-            self.maximumEventsPerEntry = maximumEventsPerEntry
-            self.snapshottingAtTime = snapshottingAtTime
-        }
-        
-    }
-    
-    public func makeSnapshotEntry(options: SnapshotOptions, completionHandler: @escaping (EventTimelineEntry) -> Void) {
-        ResolveSnapshotEntryTask(
-            repository: repository,
-            maximumEventsPerEntry: options.maximumEventsPerEntry,
-            snapshotDate: options.snapshottingAtTime,
-            viewModelFactory: viewModelFactory,
-            completionHandler: completionHandler
-        ).resolveEntry()
-    }
-    
-}
-
 // MARK: - Timeline
 
 public struct EventsTimeline: Equatable {

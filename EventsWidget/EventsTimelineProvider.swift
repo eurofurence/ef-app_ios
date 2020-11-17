@@ -42,23 +42,8 @@ struct EventsTimelineProvider: IntentTimelineProvider {
         in context: Context,
         completion: @escaping (EventTimelineEntry) -> ()
     ) {
-        let repository = WidgetRepositoryAdapter(intent: configuration)
-        let controller = EventsTimelineController(
-            repository: repository,
-            eventTimeFormatter: HoursAndMinutesEventTimeFormatter.shared
-        )
-        
-        let components = DateComponents(calendar: .current, timeZone: .current, year: 2018, month: 8, day: 15, hour: 14)
-        let date = Calendar.current.date(from: components)!
-        
-        let widgetContext = EventWidgetContext(timelineContext: context)
-        let options = EventsTimelineController.SnapshotOptions(
-            maximumEventsPerEntry: widgetContext.recommendedNumberOfEvents,
-            snapshottingAtTime: date
-        )
-        
-        controller.makeSnapshotEntry(options: options) { (entry) in
-            completion(entry)
+        fetchEventsTimeline(configuration: configuration, context: context) { (eventsTimeline) in
+            completion(eventsTimeline.snapshot)
         }
     }
 
@@ -66,6 +51,17 @@ struct EventsTimelineProvider: IntentTimelineProvider {
         for configuration: ViewEventsIntent,
         in context: Context,
         completion: @escaping (Timeline<EventTimelineEntry>) -> ()
+    ) {
+        fetchEventsTimeline(configuration: configuration, context: context) { (eventsTimeline) in
+            let timeline = Timeline(entries: eventsTimeline.entries, policy: .atEnd)
+            completion(timeline)
+        }
+    }
+    
+    private func fetchEventsTimeline(
+        configuration: ViewEventsIntent,
+        context: Context,
+        completionHandler: @escaping (EventsTimeline) -> Void
     ) {
         let repository = WidgetRepositoryAdapter(intent: configuration)
         let controller = EventsTimelineController(
@@ -82,10 +78,7 @@ struct EventsTimelineProvider: IntentTimelineProvider {
             timelineStartDate: date
         )
         
-        controller.makeTimeline(options: options) { (eventsTimeline) in
-            let timeline = Timeline(entries: eventsTimeline.entries, policy: .atEnd)
-            completion(timeline)
-        }
+        controller.makeTimeline(options: options, completionHandler: completionHandler)
     }
     
 }
