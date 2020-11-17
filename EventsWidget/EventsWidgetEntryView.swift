@@ -62,11 +62,13 @@ struct EventsWidgetEntryView: View {
                                     
                                     Text(event.formattedStartTime)
                                         .font(.caption2)
+                                        .foregroundColor(.secondary)
                                 }
                                 
                                 
                                 Text(event.location)
                                     .font(.caption2)
+                                    .foregroundColor(.secondary)
                             }
                         }
                         
@@ -113,6 +115,7 @@ struct EventsWidgetEntryView: View {
                                     Text(event.formattedStartTime)
                                         .lineLimit(1)
                                         .font(.caption2)
+                                        .foregroundColor(.secondary)
                                     
                                     Text(event.formattedEndTime)
                                         .lineLimit(1)
@@ -144,7 +147,49 @@ struct EventsWidgetEntryView: View {
                 WidgetContent {
                     FilterTextHeadline(filter: .upcoming)
                 } content: {
-                    EventsList(events: entry.events, remainingEvents: entry.additionalEventsCount)
+                    VStack(alignment: .leading) {
+                        ForEach(entry.events) { (event) in
+                            if event != entry.events.first {
+                                Divider()
+                                    .padding([.top, .bottom], 7)
+                            }
+                            
+                            HStack(alignment: .top) {
+                                VStack(alignment: .leading) {
+                                    Text(event.title)
+                                        .font(.caption)
+                                        .fontWeight(.semibold)
+                                        .lineLimit(1)
+                                    
+                                    Text(event.location)
+                                        .lineLimit(1)
+                                        .font(.caption2)
+                                        .foregroundColor(.secondary)
+                                }
+                                
+                                Spacer()
+                                
+                                VStack(alignment: .trailing) {
+                                    Text(event.formattedStartTime)
+                                        .lineLimit(1)
+                                        .font(.caption2)
+                                    
+                                    Text(event.formattedEndTime)
+                                        .lineLimit(1)
+                                        .font(.caption2)
+                                        .foregroundColor(.secondary)
+                                }
+                            }
+                        }
+                        
+                        if entry.additionalEventsCount > 0 {
+                            Divider()
+                                .padding(.bottom, 7)
+                            
+                            Text(verbatim: .additionalEventsFooter(remaining: entry.additionalEventsCount))
+                                .font(.caption2)
+                        }
+                    }
                 }
             }
         }
@@ -218,71 +263,6 @@ struct EventsWidgetEntryView: View {
                 
             case .unknown:
                 Text("")
-            }
-        }
-        
-    }
-
-    private struct EventsList: View {
-        
-        @ScaledMetric private var dividerPadding: CGFloat = 5
-        
-        var events: [EventViewModel]
-        var remainingEvents: Int
-        
-        var body: some View {
-            VStack(alignment: .leading) {
-                ForEach(events) { (event) in
-                    if event != events.first {
-                        Divider()
-                            .padding([.top, .bottom], dividerPadding)
-                    }
-                    
-                    EventRow(event: event)
-                }
-                
-                if remainingEvents > 0 {
-                    Divider()
-                        .padding(.bottom, dividerPadding)
-                    
-                    Text(verbatim: .additionalEventsFooter(remaining: remainingEvents))
-                        .font(.caption2)
-                }
-            }
-        }
-        
-    }
-
-    private struct EventRow: View {
-        
-        var event: EventViewModel
-        
-        var body: some View {
-            HStack(alignment: .top) {
-                VStack(alignment: .leading) {
-                    Text(event.title)
-                        .font(.caption)
-                        .fontWeight(.semibold)
-                        .lineLimit(1)
-                    
-                    Text(event.location)
-                        .lineLimit(1)
-                        .font(.caption2)
-                        .foregroundColor(.secondary)
-                }
-                
-                Spacer()
-                
-                VStack(alignment: .trailing) {
-                    Text(event.formattedStartTime)
-                        .lineLimit(1)
-                        .font(.caption2)
-                    
-                    Text(event.formattedEndTime)
-                        .lineLimit(1)
-                        .font(.caption2)
-                        .foregroundColor(.secondary)
-                }
             }
         }
         
