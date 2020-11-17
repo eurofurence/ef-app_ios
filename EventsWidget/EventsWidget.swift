@@ -1,6 +1,7 @@
-import WidgetKit
-import SwiftUI
+import EurofurenceIntentDefinitions
 import Intents
+import SwiftUI
+import WidgetKit
 
 @main
 struct EventsWidget: Widget {

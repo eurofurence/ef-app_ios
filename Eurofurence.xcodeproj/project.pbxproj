@@ -326,8 +326,6 @@
 		CA5F26A02556F04C00CED97A /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA5F269F2556F04C00CED97A /* SwiftUI.framework */; };
 		CA5F26A32556F04C00CED97A /* EventsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5F26A22556F04C00CED97A /* EventsWidget.swift */; };
 		CA5F26A62556F04D00CED97A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA5F26A52556F04D00CED97A /* Assets.xcassets */; };
-		CA5F26A82556F04D00CED97A /* EventsWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CA5F26A42556F04C00CED97A /* EventsWidget.intentdefinition */; };
-		CA5F26A92556F04D00CED97A /* EventsWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CA5F26A42556F04C00CED97A /* EventsWidget.intentdefinition */; };
 		CA5F26AC2556F04D00CED97A /* EventsWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CA5F269C2556F04C00CED97A /* EventsWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CA5F26BA2556F0C400CED97A /* EventsTimelineProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5F26B92556F0C400CED97A /* EventsTimelineProvider.swift */; };
 		CA5F26C82556F0E800CED97A /* EventsWidgetEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5F26C72556F0E800CED97A /* EventsWidgetEntryView.swift */; };
@@ -1174,6 +1172,8 @@
 		CAFC4A72256458FA00499A47 /* EventEndTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFC4A71256458FA00499A47 /* EventEndTime.swift */; };
 		CAFC4A7D25645D7800499A47 /* NoContentPlaceholderImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFC4A7C25645D7800499A47 /* NoContentPlaceholderImage.swift */; };
 		CAFC4A8725645E8F00499A47 /* WidgetColoredBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFC4A8625645E8F00499A47 /* WidgetColoredBackground.swift */; };
+		CAFC4A8C256463A400499A47 /* EurofurenceIntentDefinitions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA630BDC229F14F800754C27 /* EurofurenceIntentDefinitions.framework */; };
+		CAFC4A8D256463A400499A47 /* EurofurenceIntentDefinitions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA630BDC229F14F800754C27 /* EurofurenceIntentDefinitions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D0448F94EED4B9FB5C3B07CD /* Pods-Eurofurence-EurofurenceTests-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3394169A8659D343AAB772B2 /* Pods-Eurofurence-EurofurenceTests-settings-metadata.plist */; };
 		D852CF7D315C7733028AE8F3 /* Pods-EurofurenceApplicationSession-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = B3749D5DCFE8F12C64627A54 /* Pods-EurofurenceApplicationSession-metadata.plist */; };
 		F6AA212665A84829CF0EB371 /* Pods_Eurofurence_Screenshots.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0019020918F90989AA4BDE21 /* Pods_Eurofurence_Screenshots.framework */; };
@@ -1244,6 +1244,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 9ACF99331EBE172D006FC958;
 			remoteInfo = Eurofurence;
+		};
+		CAFC4A8E256463A400499A47 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9ACF992C1EBE172D006FC958 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CA630BDB229F14F800754C27;
+			remoteInfo = EurofurenceIntentDefinitions;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -1688,7 +1695,6 @@
 		CA5F269D2556F04C00CED97A /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		CA5F269F2556F04C00CED97A /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		CA5F26A22556F04C00CED97A /* EventsWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsWidget.swift; sourceTree = "<group>"; };
-		CA5F26A42556F04C00CED97A /* EventsWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = EventsWidget.intentdefinition; sourceTree = "<group>"; };
 		CA5F26A52556F04D00CED97A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CA5F26A72556F04D00CED97A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA5F26AD2556F04D00CED97A /* EventsWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EventsWidgetExtension.entitlements; sourceTree = "<group>"; };
@@ -2575,6 +2581,7 @@
 			files = (
 				CACD38BC2565247400C23041 /* EurofurenceApplicationSession.framework in Frameworks */,
 				CA3FBF4B2558426B005E1F53 /* EventsWidgetLogic in Frameworks */,
+				CAFC4A8C256463A400499A47 /* EurofurenceIntentDefinitions.framework in Frameworks */,
 				CA5F26A02556F04C00CED97A /* SwiftUI.framework in Frameworks */,
 				CA5F269E2556F04C00CED97A /* WidgetKit.framework in Frameworks */,
 			);
@@ -3760,7 +3767,6 @@
 		CA5F26A12556F04C00CED97A /* EventsWidget */ = {
 			isa = PBXGroup;
 			children = (
-				CA5F26A42556F04C00CED97A /* EventsWidget.intentdefinition */,
 				CA5F26A72556F04D00CED97A /* Info.plist */,
 				CA5F273C25572BD500CED97A /* Localizable.strings */,
 				CA47B1B0255812D600050890 /* Localizable.stringsdict */,
@@ -7045,6 +7051,7 @@
 			);
 			dependencies = (
 				CACD38BF2565247400C23041 /* PBXTargetDependency */,
+				CAFC4A8F256463A400499A47 /* PBXTargetDependency */,
 			);
 			name = EventsWidgetExtension;
 			packageProductDependencies = (
@@ -7966,7 +7973,6 @@
 				CA00AE6020D1746900C2FBB0 /* ScheduleEventComponent.swift in Sources */,
 				CAD4F778245C5B9F0036ADAF /* AnnouncementsContentRoute.swift in Sources */,
 				CA283AC820EAB9D100F7D195 /* AnnouncementsBinder.swift in Sources */,
-				CA5F26A92556F04D00CED97A /* EventsWidget.intentdefinition in Sources */,
 				CAA6060720EEB4F200075A4E /* UserNotificationsScheduler.swift in Sources */,
 				CAD04182245D881900B86950 /* AuthenticatedRoute.swift in Sources */,
 				CAD04199245DA64900B86950 /* NewsPresentation.swift in Sources */,
@@ -8679,7 +8685,6 @@
 				CA7DA65F2563018F00F1316F /* EventWidgetContext+TimelineContext.swift in Sources */,
 				CA8F7D2F256182EF0096E206 /* WidgetKitConformances.swift in Sources */,
 				CA7DA66925630B3100F1316F /* WidgetLayout.swift in Sources */,
-				CA5F26A82556F04D00CED97A /* EventsWidget.intentdefinition in Sources */,
 				CAFC4A8725645E8F00499A47 /* WidgetColoredBackground.swift in Sources */,
 				CA526F892564569600BDD7BB /* FilterPlaceholderText.swift in Sources */,
 				CA47B1B82558189D00050890 /* EventsWidgetStrings.swift in Sources */,
@@ -8796,6 +8801,11 @@
 			isa = PBXTargetDependency;
 			target = 9ACF99331EBE172D006FC958 /* Eurofurence */;
 			targetProxy = CAF254AF2517F983008892ED /* PBXContainerItemProxy */;
+		};
+		CAFC4A8F256463A400499A47 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CA630BDB229F14F800754C27 /* EurofurenceIntentDefinitions */;
+			targetProxy = CAFC4A8E256463A400499A47 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

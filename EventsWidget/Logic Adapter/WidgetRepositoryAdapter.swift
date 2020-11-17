@@ -1,4 +1,5 @@
 import EurofurenceApplicationSession
+import EurofurenceIntentDefinitions
 import EurofurenceModel
 import EventsWidgetLogic
 import Foundation.NSURL

@@ -1,3 +1,4 @@
+import EurofurenceIntentDefinitions
 import SwiftUI
 import WidgetKit
 
@@ -20,6 +21,8 @@ struct FilterTextHeadline: View {
             return Text("Running", comment: "Running")
             
         case .unknown:
+            fallthrough
+        @unknown default:
             return Text("")
         }
     }

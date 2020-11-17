@@ -1,3 +1,4 @@
+import EurofurenceIntentDefinitions
 import SwiftUI
 
 struct FilterPlaceholderText: View {
@@ -44,6 +45,9 @@ struct FilterPlaceholderText: View {
             Text("No running events")
             
         case .unknown:
+            Text("")
+            
+        @unknown default:
             Text("")
         }
     }
