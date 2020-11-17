@@ -62,7 +62,7 @@ struct EventsWidgetEntryView: View {
                                     
                                     Text(event.formattedStartTime)
                                         .font(.caption2)
-                                        .foregroundColor(.secondary)
+                                        .foregroundColor(.primary)
                                 }
                                 
                                 
@@ -115,7 +115,7 @@ struct EventsWidgetEntryView: View {
                                     Text(event.formattedStartTime)
                                         .lineLimit(1)
                                         .font(.caption2)
-                                        .foregroundColor(.secondary)
+                                        .foregroundColor(.primary)
                                     
                                     Text(event.formattedEndTime)
                                         .lineLimit(1)
