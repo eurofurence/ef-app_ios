@@ -8,5 +8,6 @@ struct StubEvent: Event {
     var location: String
     var startTime: Date
     var endTime: Date
+    var deepLinkingContentURL: URL = URL(string: "https://\(Int.random(in: 0...100))")!
     
 }

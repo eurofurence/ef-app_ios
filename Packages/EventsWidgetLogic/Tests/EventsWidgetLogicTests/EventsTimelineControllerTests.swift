@@ -54,7 +54,8 @@ class EventsTimelineControllerTests: XCTestCase {
                     title: "Some Event",
                     location: "Location",
                     formattedStartTime: string(from: now),
-                    formattedEndTime: string(from: inHalfAnHour)
+                    formattedEndTime: string(from: inHalfAnHour),
+                    widgetURL: event.deepLinkingContentURL
                 )
             ],
             additionalEventsCount: 0
@@ -105,7 +106,8 @@ class EventsTimelineControllerTests: XCTestCase {
                     title: "Some Event",
                     location: "Location",
                     formattedStartTime: string(from: now),
-                    formattedEndTime: string(from: inHalfAnHour)
+                    formattedEndTime: string(from: inHalfAnHour),
+                    widgetURL: earlierEvent.deepLinkingContentURL
                 ),
                 
                 EventViewModel(
@@ -113,7 +115,8 @@ class EventsTimelineControllerTests: XCTestCase {
                     title: "Some Other Event",
                     location: "Other Location",
                     formattedStartTime: string(from: inHalfAnHour),
-                    formattedEndTime: string(from: inOneHour)
+                    formattedEndTime: string(from: inOneHour),
+                    widgetURL: laterEvent.deepLinkingContentURL
                 )
             ], additionalEventsCount: 0
         )
@@ -131,7 +134,8 @@ class EventsTimelineControllerTests: XCTestCase {
                             title: "Some Other Event",
                             location: "Other Location",
                             formattedStartTime: string(from: inHalfAnHour),
-                            formattedEndTime: string(from: inOneHour)
+                            formattedEndTime: string(from: inOneHour),
+                            widgetURL: laterEvent.deepLinkingContentURL
                         )
                     ], additionalEventsCount: 0
                 )
@@ -176,7 +180,8 @@ class EventsTimelineControllerTests: XCTestCase {
                     title: "Some Other Event",
                     location: "Other Location",
                     formattedStartTime: string(from: inHalfAnHour),
-                    formattedEndTime: string(from: inOneHour)
+                    formattedEndTime: string(from: inOneHour),
+                    widgetURL: laterEvent.deepLinkingContentURL
                 )
             ], additionalEventsCount: 0
         )
@@ -216,21 +221,24 @@ class EventsTimelineControllerTests: XCTestCase {
                     title: "A Event",
                     location: "Location",
                     formattedStartTime: string(from: now),
-                    formattedEndTime: string(from: inHalfAnHour)
+                    formattedEndTime: string(from: inHalfAnHour),
+                    widgetURL: events[2].deepLinkingContentURL
                 ),
                 EventViewModel(
                     id: "2",
                     title: "B Event",
                     location: "Location",
                     formattedStartTime: string(from: now),
-                    formattedEndTime: string(from: inHalfAnHour)
+                    formattedEndTime: string(from: inHalfAnHour),
+                    widgetURL: events[0].deepLinkingContentURL
                 ),
                 EventViewModel(
                     id: "3",
                     title: "C Event",
                     location: "Location",
                     formattedStartTime: string(from: now),
-                    formattedEndTime: string(from: inHalfAnHour)
+                    formattedEndTime: string(from: inHalfAnHour),
+                    widgetURL: events[1].deepLinkingContentURL
                 )
             ], additionalEventsCount: 0
         )
@@ -272,21 +280,24 @@ class EventsTimelineControllerTests: XCTestCase {
                     title: "A Event",
                     location: "Location",
                     formattedStartTime: string(from: now),
-                    formattedEndTime: string(from: inHalfAnHour)
+                    formattedEndTime: string(from: inHalfAnHour),
+                    widgetURL: events[2].deepLinkingContentURL
                 ),
                 EventViewModel(
                     id: "2",
                     title: "B Event",
                     location: "Location",
                     formattedStartTime: string(from: now),
-                    formattedEndTime: string(from: inHalfAnHour)
+                    formattedEndTime: string(from: inHalfAnHour),
+                    widgetURL: events[0].deepLinkingContentURL
                 ),
                 EventViewModel(
                     id: "3",
                     title: "C Event",
                     location: "Location",
                     formattedStartTime: string(from: now),
-                    formattedEndTime: string(from: inHalfAnHour)
+                    formattedEndTime: string(from: inHalfAnHour),
+                    widgetURL: events[1].deepLinkingContentURL
                 )
             ], additionalEventsCount: 2
         )

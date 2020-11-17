@@ -7,5 +7,6 @@ public protocol Event {
     var location: String { get }
     var startTime: Date { get }
     var endTime: Date { get }
+    var deepLinkingContentURL: URL { get }
     
 }

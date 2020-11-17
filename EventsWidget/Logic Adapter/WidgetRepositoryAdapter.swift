@@ -53,6 +53,10 @@ struct WidgetRepositoryAdapter: EventsWidgetLogic.EventRepository {
             event.endDate
         }
         
+        var deepLinkingContentURL: URL {
+            event.contentURL
+        }
+        
     }
     
     private class EventsAdapter: EurofurenceModel.EventsServiceObserver {
