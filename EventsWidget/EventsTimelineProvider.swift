@@ -82,8 +82,8 @@ struct EventsTimelineProvider: IntentTimelineProvider {
             timelineStartDate: date
         )
         
-        controller.makeEntries(options: options) { (entries) in
-            let timeline = Timeline(entries: entries, policy: .atEnd)
+        controller.makeTimeline(options: options) { (eventsTimeline) in
+            let timeline = Timeline(entries: eventsTimeline.entries, policy: .atEnd)
             completion(timeline)
         }
     }

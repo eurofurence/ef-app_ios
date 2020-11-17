@@ -40,27 +40,29 @@ class EventsTimelineControllerTests: XCTestCase {
         let repository = StubEventsRepository(events: [event])
         setUpController(repository: repository)
         
-        var actual: [EventTimelineEntry]?
-        controller.makeEntries(
+        var actual: EventsTimeline?
+        controller.makeTimeline(
             options: .init(maximumEventsPerEntry: 3, timelineStartDate: now),
             completionHandler: { actual = $0 }
         )
         
-        let expected: [EventTimelineEntry] = [
-            EventTimelineEntry(
-                date: now,
-                events: [
-                    EventViewModel(
-                        id: "some_event",
-                        title: "Some Event",
-                        location: "Location",
-                        formattedStartTime: string(from: now),
-                        formattedEndTime: string(from: inHalfAnHour)
-                    )
-                ],
-                additionalEventsCount: 0
-            )
-        ]
+        let expected = EventsTimeline(
+            entries: [
+                EventTimelineEntry(
+                    date: now,
+                    events: [
+                        EventViewModel(
+                            id: "some_event",
+                            title: "Some Event",
+                            location: "Location",
+                            formattedStartTime: string(from: now),
+                            formattedEndTime: string(from: inHalfAnHour)
+                        )
+                    ],
+                    additionalEventsCount: 0
+                )
+            ]
+        )
         
         XCTAssertEqual(expected, actual)
     }
@@ -85,47 +87,49 @@ class EventsTimelineControllerTests: XCTestCase {
         let repository = StubEventsRepository(events: [earlierEvent, laterEvent])
         setUpController(repository: repository)
         
-        var actual: [EventTimelineEntry]?
-        controller.makeEntries(
+        var actual: EventsTimeline?
+        controller.makeTimeline(
             options: .init(maximumEventsPerEntry: 3, timelineStartDate: now),
             completionHandler: { actual = $0 }
         )
         
-        let expected: [EventTimelineEntry] = [
-            EventTimelineEntry(
-                date: now,
-                events: [
-                    EventViewModel(
-                        id: "some_event",
-                        title: "Some Event",
-                        location: "Location",
-                        formattedStartTime: string(from: now),
-                        formattedEndTime: string(from: inHalfAnHour)
-                    ),
-                    
-                    EventViewModel(
-                        id: "some_other_event",
-                        title: "Some Other Event",
-                        location: "Other Location",
-                        formattedStartTime: string(from: inHalfAnHour),
-                        formattedEndTime: string(from: inOneHour)
-                    )
-                ], additionalEventsCount: 0
-            ),
-            
-            EventTimelineEntry(
-                date: inHalfAnHour,
-                events: [
-                    EventViewModel(
-                        id: "some_other_event",
-                        title: "Some Other Event",
-                        location: "Other Location",
-                        formattedStartTime: string(from: inHalfAnHour),
-                        formattedEndTime: string(from: inOneHour)
-                    )
-                ], additionalEventsCount: 0
-            )
-        ]
+        let expected = EventsTimeline(
+            entries: [
+                EventTimelineEntry(
+                    date: now,
+                    events: [
+                        EventViewModel(
+                            id: "some_event",
+                            title: "Some Event",
+                            location: "Location",
+                            formattedStartTime: string(from: now),
+                            formattedEndTime: string(from: inHalfAnHour)
+                        ),
+                        
+                        EventViewModel(
+                            id: "some_other_event",
+                            title: "Some Other Event",
+                            location: "Other Location",
+                            formattedStartTime: string(from: inHalfAnHour),
+                            formattedEndTime: string(from: inOneHour)
+                        )
+                    ], additionalEventsCount: 0
+                ),
+                
+                EventTimelineEntry(
+                    date: inHalfAnHour,
+                    events: [
+                        EventViewModel(
+                            id: "some_other_event",
+                            title: "Some Other Event",
+                            location: "Other Location",
+                            formattedStartTime: string(from: inHalfAnHour),
+                            formattedEndTime: string(from: inOneHour)
+                        )
+                    ], additionalEventsCount: 0
+                )
+            ]
+        )
         
         XCTAssertEqual(expected, actual)
     }
@@ -150,26 +154,28 @@ class EventsTimelineControllerTests: XCTestCase {
         let repository = StubEventsRepository(events: [earlierEvent, laterEvent])
         setUpController(repository: repository)
         
-        var actual: [EventTimelineEntry]?
-        controller.makeEntries(
+        var actual: EventsTimeline?
+        controller.makeTimeline(
             options: .init(maximumEventsPerEntry: 3, timelineStartDate: inHalfAnHour),
             completionHandler: { actual = $0 }
         )
         
-        let expected: [EventTimelineEntry] = [
-            EventTimelineEntry(
-                date: inHalfAnHour,
-                events: [
-                    EventViewModel(
-                        id: "some_other_event",
-                        title: "Some Other Event",
-                        location: "Other Location",
-                        formattedStartTime: string(from: inHalfAnHour),
-                        formattedEndTime: string(from: inOneHour)
-                    )
-                ], additionalEventsCount: 0
-            )
-        ]
+        let expected = EventsTimeline(
+            entries: [
+                EventTimelineEntry(
+                    date: inHalfAnHour,
+                    events: [
+                        EventViewModel(
+                            id: "some_other_event",
+                            title: "Some Other Event",
+                            location: "Other Location",
+                            formattedStartTime: string(from: inHalfAnHour),
+                            formattedEndTime: string(from: inOneHour)
+                        )
+                    ], additionalEventsCount: 0
+                )
+            ]
+        )
         
         XCTAssertEqual(expected, actual)
     }
@@ -184,40 +190,42 @@ class EventsTimelineControllerTests: XCTestCase {
         let repository = StubEventsRepository(events: events)
         setUpController(repository: repository)
         
-        var actual: [EventTimelineEntry]?
-        controller.makeEntries(
+        var actual: EventsTimeline?
+        controller.makeTimeline(
             options: .init(maximumEventsPerEntry: 3, timelineStartDate: now),
             completionHandler: { actual = $0 }
         )
         
-        let expected: [EventTimelineEntry] = [
-            EventTimelineEntry(
-                date: now,
-                events: [
-                    EventViewModel(
-                        id: "1",
-                        title: "A Event",
-                        location: "Location",
-                        formattedStartTime: string(from: now),
-                        formattedEndTime: string(from: inHalfAnHour)
-                    ),
-                    EventViewModel(
-                        id: "2",
-                        title: "B Event",
-                        location: "Location",
-                        formattedStartTime: string(from: now),
-                        formattedEndTime: string(from: inHalfAnHour)
-                    ),
-                    EventViewModel(
-                        id: "3",
-                        title: "C Event",
-                        location: "Location",
-                        formattedStartTime: string(from: now),
-                        formattedEndTime: string(from: inHalfAnHour)
-                    )
-                ], additionalEventsCount: 0
-            )
-        ]
+        let expected = EventsTimeline(
+            entries: [
+                EventTimelineEntry(
+                    date: now,
+                    events: [
+                        EventViewModel(
+                            id: "1",
+                            title: "A Event",
+                            location: "Location",
+                            formattedStartTime: string(from: now),
+                            formattedEndTime: string(from: inHalfAnHour)
+                        ),
+                        EventViewModel(
+                            id: "2",
+                            title: "B Event",
+                            location: "Location",
+                            formattedStartTime: string(from: now),
+                            formattedEndTime: string(from: inHalfAnHour)
+                        ),
+                        EventViewModel(
+                            id: "3",
+                            title: "C Event",
+                            location: "Location",
+                            formattedStartTime: string(from: now),
+                            formattedEndTime: string(from: inHalfAnHour)
+                        )
+                    ], additionalEventsCount: 0
+                )
+            ]
+        )
         
         XCTAssertEqual(expected, actual)
     }
@@ -234,40 +242,42 @@ class EventsTimelineControllerTests: XCTestCase {
         let repository = StubEventsRepository(events: events)
         setUpController(repository: repository)
         
-        var actual: [EventTimelineEntry]?
-        controller.makeEntries(
+        var actual: EventsTimeline?
+        controller.makeTimeline(
             options: .init(maximumEventsPerEntry: 3, timelineStartDate: now),
             completionHandler: { actual = $0 }
         )
         
-        let expected: [EventTimelineEntry] = [
-            EventTimelineEntry(
-                date: now,
-                events: [
-                    EventViewModel(
-                        id: "1",
-                        title: "A Event",
-                        location: "Location",
-                        formattedStartTime: string(from: now),
-                        formattedEndTime: string(from: inHalfAnHour)
-                    ),
-                    EventViewModel(
-                        id: "2",
-                        title: "B Event",
-                        location: "Location",
-                        formattedStartTime: string(from: now),
-                        formattedEndTime: string(from: inHalfAnHour)
-                    ),
-                    EventViewModel(
-                        id: "3",
-                        title: "C Event",
-                        location: "Location",
-                        formattedStartTime: string(from: now),
-                        formattedEndTime: string(from: inHalfAnHour)
-                    )
-                ], additionalEventsCount: 2
-            )
-        ]
+        let expected = EventsTimeline(
+            entries: [
+                EventTimelineEntry(
+                    date: now,
+                    events: [
+                        EventViewModel(
+                            id: "1",
+                            title: "A Event",
+                            location: "Location",
+                            formattedStartTime: string(from: now),
+                            formattedEndTime: string(from: inHalfAnHour)
+                        ),
+                        EventViewModel(
+                            id: "2",
+                            title: "B Event",
+                            location: "Location",
+                            formattedStartTime: string(from: now),
+                            formattedEndTime: string(from: inHalfAnHour)
+                        ),
+                        EventViewModel(
+                            id: "3",
+                            title: "C Event",
+                            location: "Location",
+                            formattedStartTime: string(from: now),
+                            formattedEndTime: string(from: inHalfAnHour)
+                        )
+                    ], additionalEventsCount: 2
+                )
+            ]
+        )
         
         XCTAssertEqual(expected, actual)
     }

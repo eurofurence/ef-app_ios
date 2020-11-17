@@ -42,6 +42,16 @@ extension EventsTimelineController {
 
 // MARK: - Timeline
 
+public struct EventsTimeline: Equatable {
+    
+    public var entries: [EventTimelineEntry]
+    
+    public init(entries: [EventTimelineEntry]) {
+        self.entries = entries
+    }
+    
+}
+
 extension EventsTimelineController {
     
     public struct TimelineOptions {
@@ -56,7 +66,7 @@ extension EventsTimelineController {
         
     }
     
-    public func makeEntries(options: TimelineOptions, completionHandler: @escaping ([EventTimelineEntry]) -> Void) {
+    public func makeTimeline(options: TimelineOptions, completionHandler: @escaping (EventsTimeline) -> Void) {
         ResolveTimelineEntriesTask(
             repository: repository,
             maximumEventsPerEntry: options.maximumEventsPerEntry,

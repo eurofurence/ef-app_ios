@@ -6,7 +6,7 @@ struct ResolveTimelineEntriesTask {
     var maximumEventsPerEntry: Int
     var timelineStartDate: Date
     var viewModelFactory: EventViewModelFactory
-    var completionHandler: ([EventTimelineEntry]) -> Void
+    var completionHandler: (EventsTimeline) -> Void
     
     func resolveEntries() {
         repository.loadEvents(completionHandler: clusterEventsIntoEntries(_:))
@@ -20,8 +20,9 @@ struct ResolveTimelineEntriesTask {
         ).makeClusters()
         
         let entries = eventClusters.map(makeTimelineEntry(from:))
+        let timeline = EventsTimeline(entries: entries)
         
-        completionHandler(entries)
+        completionHandler(timeline)
     }
     
     private func makeTimelineEntry(from cluster: EventCluster) -> EventTimelineEntry {
