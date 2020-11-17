@@ -38,14 +38,16 @@ struct EventsWidgetEntryView: View {
                 } content: {
                     VStack(alignment: .leading, spacing: 10) {
                         ForEach(entry.events) { (event) in
-                            VStack(alignment: .leading) {
-                                HStack {
-                                    EventTitle(event.title)
-                                    Spacer()
-                                    EventStartTime(event.formattedStartTime)
+                            Link(destination: event.widgetURL) {                            
+                                VStack(alignment: .leading) {
+                                    HStack {
+                                        EventTitle(event.title)
+                                        Spacer()
+                                        EventStartTime(event.formattedStartTime)
+                                    }
+                                    
+                                    EventLocation(event.location)
                                 }
-                                
-                                EventLocation(event.location)
                             }
                         }
                         
@@ -70,17 +72,19 @@ struct EventsWidgetEntryView: View {
                 } content: {
                     VStack(alignment: .leading, spacing: 5) {
                         ForEach(entry.events) { (event) in
-                            HStack(alignment: .top) {
-                                VStack(alignment: .leading) {
-                                    EventTitle(event.title)
-                                    EventLocation(event.location)
-                                }
-                                
-                                Spacer()
-                                
-                                HStack {
-                                    EventStartTime(event.formattedStartTime)
-                                    EventEndTime(event.formattedEndTime)
+                            Link(destination: event.widgetURL) {
+                                HStack(alignment: .top) {
+                                    VStack(alignment: .leading) {
+                                        EventTitle(event.title)
+                                        EventLocation(event.location)
+                                    }
+                                    
+                                    Spacer()
+                                    
+                                    HStack {
+                                        EventStartTime(event.formattedStartTime)
+                                        EventEndTime(event.formattedEndTime)
+                                    }
                                 }
                             }
                         }
@@ -107,25 +111,27 @@ struct EventsWidgetEntryView: View {
                 } content: {
                     VStack(alignment: .leading) {
                         ForEach(entry.events) { (event) in
-                            if event == entry.events.first {
-                                Divider()
-                                    .hidden()
-                            } else {
-                                Divider()
-                                    .padding([.top, .bottom], interRowSpacing)
-                            }
-                            
-                            HStack(alignment: .top) {
-                                VStack(alignment: .leading) {
-                                    EventTitle(event.title)
-                                    EventLocation(event.location)
+                            Link(destination: event.widgetURL) {
+                                if event == entry.events.first {
+                                    Divider()
+                                        .hidden()
+                                } else {
+                                    Divider()
+                                        .padding([.top, .bottom], interRowSpacing)
                                 }
                                 
-                                Spacer()
-                                
-                                VStack(alignment: .trailing) {
-                                    EventStartTime(event.formattedStartTime)
-                                    EventEndTime(event.formattedEndTime)
+                                HStack(alignment: .top) {
+                                    VStack(alignment: .leading) {
+                                        EventTitle(event.title)
+                                        EventLocation(event.location)
+                                    }
+                                    
+                                    Spacer()
+                                    
+                                    VStack(alignment: .trailing) {
+                                        EventStartTime(event.formattedStartTime)
+                                        EventEndTime(event.formattedEndTime)
+                                    }
                                 }
                             }
                         }
