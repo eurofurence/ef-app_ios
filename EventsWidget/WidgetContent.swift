@@ -17,18 +17,20 @@ struct WidgetContent<Header, Content>: View where Header: View, Content: View {
         VStack(alignment: .leading, spacing: 0) {
             header
                 .foregroundColor(.white)
-                .padding()
+                .padding([.leading])
+                .padding([.top, .bottom], 10)
                 .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                 .background(Color.widgetBackground)
             
             content
-                .padding()
+                .padding([.leading, .trailing])
+                .padding([.top, .bottom], 10)
                 .frame(
                     minWidth: 0,
                     maxWidth: .infinity,
                     minHeight: 0,
                     maxHeight: .infinity,
-                    alignment: .top
+                    alignment: .center
                 )
                 .background(Color(colorScheme == .dark ? .black : .white))
         }

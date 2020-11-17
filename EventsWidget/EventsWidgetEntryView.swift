@@ -49,7 +49,32 @@ struct EventsWidgetEntryView: View {
                 WidgetContent {
                     FilterTextHeadline(filter: .upcoming)
                 } content: {
-                    EventsList(events: entry.events, remainingEvents: entry.additionalEventsCount)
+                    VStack(alignment: .leading, spacing: 5) {
+                        ForEach(entry.events.prefix(2)) { (event) in
+                            VStack(alignment: .leading) {
+                                HStack {
+                                    Text(event.title)
+                                        .font(.caption2)
+                                        .fontWeight(.semibold)
+                                        .lineLimit(1)
+                                    
+                                    Spacer()
+                                    
+                                    Text(event.formattedStartTime)
+                                        .font(.caption2)
+                                }
+                                
+                                
+                                Text(event.location)
+                                    .font(.caption2)
+                            }
+                        }
+                        
+                        if entry.additionalEventsCount > 0 {
+                            Text(verbatim: .additionalEventsFooter(remaining: entry.additionalEventsCount))
+                                .font(.caption2)
+                        }
+                    }
                 }
             }
         }
@@ -67,7 +92,41 @@ struct EventsWidgetEntryView: View {
                 WidgetContent {
                     FilterTextHeadline(filter: .upcoming)
                 } content: {
-                    EventsList(events: entry.events, remainingEvents: entry.additionalEventsCount)
+                    VStack(alignment: .leading, spacing: 5) {
+                        ForEach(entry.events.prefix(3)) { (event) in
+                            HStack(alignment: .top) {
+                                VStack(alignment: .leading) {
+                                    Text(event.title)
+                                        .font(.caption2)
+                                        .fontWeight(.semibold)
+                                        .lineLimit(1)
+                                    
+                                    Text(event.location)
+                                        .lineLimit(1)
+                                        .font(.caption2)
+                                        .foregroundColor(.secondary)
+                                }
+                                
+                                Spacer()
+                                
+                                HStack {
+                                    Text(event.formattedStartTime)
+                                        .lineLimit(1)
+                                        .font(.caption2)
+                                    
+                                    Text(event.formattedEndTime)
+                                        .lineLimit(1)
+                                        .font(.caption2)
+                                        .foregroundColor(.secondary)
+                                }
+                            }
+                        }
+                        
+                        if entry.additionalEventsCount > 0 {
+                            Text(verbatim: .additionalEventsFooter(remaining: entry.additionalEventsCount))
+                                .font(.caption2)
+                        }
+                    }
                 }
             }
         }
