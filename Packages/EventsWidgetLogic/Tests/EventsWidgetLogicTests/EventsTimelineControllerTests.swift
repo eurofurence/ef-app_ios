@@ -297,9 +297,9 @@ class EventsTimelineControllerTests: XCTestCase {
         setUpController(repository: repository)
         
         var actual: EventTimelineEntry?
-        controller.makeSnapshotEntry(
-            options: .init(maximumEventsPerEntry: 3, snapshottingAtTime: now),
-            completionHandler: { actual = $0 }
+        controller.makeTimeline(
+            options: .init(maximumEventsPerEntry: 3, timelineStartDate: now),
+            completionHandler: { actual = $0.snapshot }
         )
         
         let expected = EventTimelineEntry(
@@ -340,9 +340,9 @@ class EventsTimelineControllerTests: XCTestCase {
         setUpController(repository: repository)
         
         var actual: EventTimelineEntry?
-        controller.makeSnapshotEntry(
-            options: .init(maximumEventsPerEntry: 3, snapshottingAtTime: now),
-            completionHandler: { actual = $0 }
+        controller.makeTimeline(
+            options: .init(maximumEventsPerEntry: 3, timelineStartDate: now),
+            completionHandler: { actual = $0.snapshot }
         )
         
         let expected = EventTimelineEntry(
@@ -390,9 +390,9 @@ class EventsTimelineControllerTests: XCTestCase {
         setUpController(repository: repository)
         
         var actual: EventTimelineEntry?
-        controller.makeSnapshotEntry(
-            options: .init(maximumEventsPerEntry: 3, snapshottingAtTime: inHalfAnHour),
-            completionHandler: { actual = $0 }
+        controller.makeTimeline(
+            options: .init(maximumEventsPerEntry: 3, timelineStartDate: inHalfAnHour),
+            completionHandler: { actual = $0.snapshot }
         )
         
         let expected = EventTimelineEntry(
@@ -422,9 +422,9 @@ class EventsTimelineControllerTests: XCTestCase {
         setUpController(repository: repository)
         
         var actual: EventTimelineEntry?
-        controller.makeSnapshotEntry(
-            options: .init(maximumEventsPerEntry: 3, snapshottingAtTime: now),
-            completionHandler: { actual = $0 }
+        controller.makeTimeline(
+            options: .init(maximumEventsPerEntry: 3, timelineStartDate: now),
+            completionHandler: { actual = $0.snapshot }
         )
         
         let expected = EventTimelineEntry(
@@ -470,9 +470,9 @@ class EventsTimelineControllerTests: XCTestCase {
         setUpController(repository: repository)
         
         var actual: EventTimelineEntry?
-        controller.makeSnapshotEntry(
-            options: .init(maximumEventsPerEntry: 3, snapshottingAtTime: now),
-            completionHandler: { actual = $0 }
+        controller.makeTimeline(
+            options: .init(maximumEventsPerEntry: 3, timelineStartDate: now),
+            completionHandler: { actual = $0.snapshot }
         )
         
         let expected = EventTimelineEntry(
