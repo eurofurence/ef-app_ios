@@ -46,25 +46,28 @@ class EventsTimelineControllerTests: XCTestCase {
             completionHandler: { actual = $0 }
         )
         
+        let expectedSnapshotEntry = EventTimelineEntry(
+            date: now,
+            events: [
+                EventViewModel(
+                    id: "some_event",
+                    title: "Some Event",
+                    location: "Location",
+                    formattedStartTime: string(from: now),
+                    formattedEndTime: string(from: inHalfAnHour)
+                )
+            ],
+            additionalEventsCount: 0
+        )
+        
         let expected = EventsTimeline(
             entries: [
-                EventTimelineEntry(
-                    date: now,
-                    events: [
-                        EventViewModel(
-                            id: "some_event",
-                            title: "Some Event",
-                            location: "Location",
-                            formattedStartTime: string(from: now),
-                            formattedEndTime: string(from: inHalfAnHour)
-                        )
-                    ],
-                    additionalEventsCount: 0
-                )
+                expectedSnapshotEntry
             ]
         )
         
         XCTAssertEqual(expected, actual)
+        XCTAssertEqual(expectedSnapshotEntry, actual?.snapshot)
     }
     
     func testTimeline_TwoEvents_StaggeredStartTimesYieldsTwoEntries() {
@@ -93,28 +96,30 @@ class EventsTimelineControllerTests: XCTestCase {
             completionHandler: { actual = $0 }
         )
         
+        let expectedSnapshotEntry = EventTimelineEntry(
+            date: now,
+            events: [
+                EventViewModel(
+                    id: "some_event",
+                    title: "Some Event",
+                    location: "Location",
+                    formattedStartTime: string(from: now),
+                    formattedEndTime: string(from: inHalfAnHour)
+                ),
+                
+                EventViewModel(
+                    id: "some_other_event",
+                    title: "Some Other Event",
+                    location: "Other Location",
+                    formattedStartTime: string(from: inHalfAnHour),
+                    formattedEndTime: string(from: inOneHour)
+                )
+            ], additionalEventsCount: 0
+        )
+        
         let expected = EventsTimeline(
             entries: [
-                EventTimelineEntry(
-                    date: now,
-                    events: [
-                        EventViewModel(
-                            id: "some_event",
-                            title: "Some Event",
-                            location: "Location",
-                            formattedStartTime: string(from: now),
-                            formattedEndTime: string(from: inHalfAnHour)
-                        ),
-                        
-                        EventViewModel(
-                            id: "some_other_event",
-                            title: "Some Other Event",
-                            location: "Other Location",
-                            formattedStartTime: string(from: inHalfAnHour),
-                            formattedEndTime: string(from: inOneHour)
-                        )
-                    ], additionalEventsCount: 0
-                ),
+                expectedSnapshotEntry,
                 
                 EventTimelineEntry(
                     date: inHalfAnHour,
@@ -132,6 +137,7 @@ class EventsTimelineControllerTests: XCTestCase {
         )
         
         XCTAssertEqual(expected, actual)
+        XCTAssertEqual(expectedSnapshotEntry, actual?.snapshot)
     }
     
     func testTimeline_TwoEvents_StartingTimelineFromLaterDate() {
@@ -160,24 +166,27 @@ class EventsTimelineControllerTests: XCTestCase {
             completionHandler: { actual = $0 }
         )
         
+        let expectedSnapshotEntry = EventTimelineEntry(
+            date: inHalfAnHour,
+            events: [
+                EventViewModel(
+                    id: "some_other_event",
+                    title: "Some Other Event",
+                    location: "Other Location",
+                    formattedStartTime: string(from: inHalfAnHour),
+                    formattedEndTime: string(from: inOneHour)
+                )
+            ], additionalEventsCount: 0
+        )
+        
         let expected = EventsTimeline(
             entries: [
-                EventTimelineEntry(
-                    date: inHalfAnHour,
-                    events: [
-                        EventViewModel(
-                            id: "some_other_event",
-                            title: "Some Other Event",
-                            location: "Other Location",
-                            formattedStartTime: string(from: inHalfAnHour),
-                            formattedEndTime: string(from: inOneHour)
-                        )
-                    ], additionalEventsCount: 0
-                )
+                expectedSnapshotEntry
             ]
         )
         
         XCTAssertEqual(expected, actual)
+        XCTAssertEqual(expectedSnapshotEntry, actual?.snapshot)
     }
     
     func testTimeline_SortsEventsWithinEntryByName() {
@@ -196,38 +205,41 @@ class EventsTimelineControllerTests: XCTestCase {
             completionHandler: { actual = $0 }
         )
         
+        let expectedSnapshotEntry = EventTimelineEntry(
+            date: now,
+            events: [
+                EventViewModel(
+                    id: "1",
+                    title: "A Event",
+                    location: "Location",
+                    formattedStartTime: string(from: now),
+                    formattedEndTime: string(from: inHalfAnHour)
+                ),
+                EventViewModel(
+                    id: "2",
+                    title: "B Event",
+                    location: "Location",
+                    formattedStartTime: string(from: now),
+                    formattedEndTime: string(from: inHalfAnHour)
+                ),
+                EventViewModel(
+                    id: "3",
+                    title: "C Event",
+                    location: "Location",
+                    formattedStartTime: string(from: now),
+                    formattedEndTime: string(from: inHalfAnHour)
+                )
+            ], additionalEventsCount: 0
+        )
+        
         let expected = EventsTimeline(
             entries: [
-                EventTimelineEntry(
-                    date: now,
-                    events: [
-                        EventViewModel(
-                            id: "1",
-                            title: "A Event",
-                            location: "Location",
-                            formattedStartTime: string(from: now),
-                            formattedEndTime: string(from: inHalfAnHour)
-                        ),
-                        EventViewModel(
-                            id: "2",
-                            title: "B Event",
-                            location: "Location",
-                            formattedStartTime: string(from: now),
-                            formattedEndTime: string(from: inHalfAnHour)
-                        ),
-                        EventViewModel(
-                            id: "3",
-                            title: "C Event",
-                            location: "Location",
-                            formattedStartTime: string(from: now),
-                            formattedEndTime: string(from: inHalfAnHour)
-                        )
-                    ], additionalEventsCount: 0
-                )
+                expectedSnapshotEntry
             ]
         )
         
         XCTAssertEqual(expected, actual)
+        XCTAssertEqual(expectedSnapshotEntry, actual?.snapshot)
     }
     
     func testTimeline_ExceedingEventsWithinGroupDropsLastEvents() {
@@ -248,38 +260,41 @@ class EventsTimelineControllerTests: XCTestCase {
             completionHandler: { actual = $0 }
         )
         
+        let expectedSnapshotEntry = EventTimelineEntry(
+            date: now,
+            events: [
+                EventViewModel(
+                    id: "1",
+                    title: "A Event",
+                    location: "Location",
+                    formattedStartTime: string(from: now),
+                    formattedEndTime: string(from: inHalfAnHour)
+                ),
+                EventViewModel(
+                    id: "2",
+                    title: "B Event",
+                    location: "Location",
+                    formattedStartTime: string(from: now),
+                    formattedEndTime: string(from: inHalfAnHour)
+                ),
+                EventViewModel(
+                    id: "3",
+                    title: "C Event",
+                    location: "Location",
+                    formattedStartTime: string(from: now),
+                    formattedEndTime: string(from: inHalfAnHour)
+                )
+            ], additionalEventsCount: 2
+        )
+        
         let expected = EventsTimeline(
             entries: [
-                EventTimelineEntry(
-                    date: now,
-                    events: [
-                        EventViewModel(
-                            id: "1",
-                            title: "A Event",
-                            location: "Location",
-                            formattedStartTime: string(from: now),
-                            formattedEndTime: string(from: inHalfAnHour)
-                        ),
-                        EventViewModel(
-                            id: "2",
-                            title: "B Event",
-                            location: "Location",
-                            formattedStartTime: string(from: now),
-                            formattedEndTime: string(from: inHalfAnHour)
-                        ),
-                        EventViewModel(
-                            id: "3",
-                            title: "C Event",
-                            location: "Location",
-                            formattedStartTime: string(from: now),
-                            formattedEndTime: string(from: inHalfAnHour)
-                        )
-                    ], additionalEventsCount: 2
-                )
+                expectedSnapshotEntry
             ]
         )
         
         XCTAssertEqual(expected, actual)
+        XCTAssertEqual(expectedSnapshotEntry, actual?.snapshot)
     }
     
     // MARK: - Snapshot Tests
