@@ -30,7 +30,7 @@ struct WidgetLayout<Header, Content>: View where Header: View, Content: View {
                     maxWidth: .infinity,
                     minHeight: 0,
                     maxHeight: .infinity,
-                    alignment: .center
+                    alignment: .top
                 )
                 .background(Color(colorScheme == .dark ? .black : .white))
         }

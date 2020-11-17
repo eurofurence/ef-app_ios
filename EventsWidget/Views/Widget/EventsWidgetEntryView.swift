@@ -4,38 +4,24 @@ import WidgetKit
 
 struct EventsWidgetEntryView: View {
     
+    @Environment(\.widgetFamily) private var family: WidgetFamily
+    
     var entry: EventTimelineEntry
 
     var body: some View {
-        ZStack(alignment: .top) {
-            Color.widgetBackground
-            WidgetContents(entry: entry)
-                .foregroundColor(.primary)
+        switch family {
+        case .systemSmall:
+            SmallWidgetContents(entry: entry)
+            
+        case .systemMedium:
+            MediumWidgetContents(entry: entry)
+            
+        case .systemLarge:
+            LargeWidgetContents(entry: entry)
+            
+        @unknown default:
+            MediumWidgetContents(entry: entry)
         }
-    }
-    
-    private struct WidgetContents: View {
-        
-        @Environment(\.widgetFamily) private var family: WidgetFamily
-        
-        var entry: EventTimelineEntry
-        
-        var body: some View {
-            switch family {
-            case .systemSmall:
-                SmallWidgetContents(entry: entry)
-                
-            case .systemMedium:
-                MediumWidgetContents(entry: entry)
-                
-            case .systemLarge:
-                LargeWidgetContents(entry: entry)
-                
-            @unknown default:
-                MediumWidgetContents(entry: entry)
-            }
-        }
-        
     }
 
     private struct SmallWidgetContents: View {
@@ -44,38 +30,25 @@ struct EventsWidgetEntryView: View {
         
         var body: some View {
             if entry.events.isEmpty {
-                VerticalPlaceholderWithPrompt(filter: .upcoming)
+                VerticalPlaceholderWithPrompt(filter: .upcoming, textSize: .small)
             } else {
                 WidgetLayout {
                     FilterTextHeadline(filter: .upcoming)
                 } content: {
-                    VStack(alignment: .leading, spacing: 5) {
+                    VStack(alignment: .leading, spacing: 10) {
                         ForEach(entry.events) { (event) in
                             VStack(alignment: .leading) {
                                 HStack {
-                                    Text(event.title)
-                                        .font(.caption2)
-                                        .fontWeight(.semibold)
-                                        .lineLimit(1)
-                                    
+                                    EventTitle(event.title)
                                     Spacer()
-                                    
-                                    Text(event.formattedStartTime)
-                                        .font(.caption2)
-                                        .foregroundColor(.primary)
+                                    EventStartTime(event.formattedStartTime)
                                 }
                                 
-                                
-                                Text(event.location)
-                                    .font(.caption2)
-                                    .foregroundColor(.secondary)
+                                EventLocation(event.location)
                             }
                         }
                         
-                        if entry.additionalEventsCount > 0 {
-                            Text(verbatim: .additionalEventsFooter(remaining: entry.additionalEventsCount))
-                                .font(.caption2)
-                        }
+                        AdditionalEventsFooter(additionalEventsCount: entry.additionalEventsCount)
                     }
                 }
             }
@@ -98,37 +71,20 @@ struct EventsWidgetEntryView: View {
                         ForEach(entry.events) { (event) in
                             HStack(alignment: .top) {
                                 VStack(alignment: .leading) {
-                                    Text(event.title)
-                                        .font(.caption2)
-                                        .fontWeight(.semibold)
-                                        .lineLimit(1)
-                                    
-                                    Text(event.location)
-                                        .lineLimit(1)
-                                        .font(.caption2)
-                                        .foregroundColor(.secondary)
+                                    EventTitle(event.title)
+                                    EventLocation(event.location)
                                 }
                                 
                                 Spacer()
                                 
                                 HStack {
-                                    Text(event.formattedStartTime)
-                                        .lineLimit(1)
-                                        .font(.caption2)
-                                        .foregroundColor(.primary)
-                                    
-                                    Text(event.formattedEndTime)
-                                        .lineLimit(1)
-                                        .font(.caption2)
-                                        .foregroundColor(.secondary)
+                                    EventStartTime(event.formattedStartTime)
+                                    EventEndTime(event.formattedEndTime)
                                 }
                             }
                         }
                         
-                        if entry.additionalEventsCount > 0 {
-                            Text(verbatim: .additionalEventsFooter(remaining: entry.additionalEventsCount))
-                                .font(.caption2)
-                        }
+                        AdditionalEventsFooter(additionalEventsCount: entry.additionalEventsCount)
                     }
                 }
             }
@@ -138,56 +94,46 @@ struct EventsWidgetEntryView: View {
 
     private struct LargeWidgetContents: View {
         
+        @ScaledMetric private var interRowSpacing: CGFloat = 7
         var entry: EventTimelineEntry
         
         var body: some View {
             if entry.events.isEmpty {
-                VerticalPlaceholderWithPrompt(filter: .upcoming)
+                VerticalPlaceholderWithPrompt(filter: .upcoming, textSize: .large)
             } else {
                 WidgetLayout {
                     FilterTextHeadline(filter: .upcoming)
                 } content: {
                     VStack(alignment: .leading) {
                         ForEach(entry.events) { (event) in
-                            if event != entry.events.first {
+                            if event == entry.events.first {
                                 Divider()
-                                    .padding([.top, .bottom], 7)
+                                    .hidden()
+                            } else {
+                                Divider()
+                                    .padding([.top, .bottom], interRowSpacing)
                             }
                             
                             HStack(alignment: .top) {
                                 VStack(alignment: .leading) {
-                                    Text(event.title)
-                                        .font(.caption)
-                                        .fontWeight(.semibold)
-                                        .lineLimit(1)
-                                    
-                                    Text(event.location)
-                                        .lineLimit(1)
-                                        .font(.caption2)
-                                        .foregroundColor(.secondary)
+                                    EventTitle(event.title)
+                                    EventLocation(event.location)
                                 }
                                 
                                 Spacer()
                                 
                                 VStack(alignment: .trailing) {
-                                    Text(event.formattedStartTime)
-                                        .lineLimit(1)
-                                        .font(.caption2)
-                                    
-                                    Text(event.formattedEndTime)
-                                        .lineLimit(1)
-                                        .font(.caption2)
-                                        .foregroundColor(.secondary)
+                                    EventStartTime(event.formattedStartTime)
+                                    EventEndTime(event.formattedEndTime)
                                 }
                             }
                         }
                         
                         if entry.additionalEventsCount > 0 {
                             Divider()
-                                .padding(.bottom, 7)
+                                .padding([.top, .bottom], interRowSpacing)
                             
-                            Text(verbatim: .additionalEventsFooter(remaining: entry.additionalEventsCount))
-                                .font(.caption2)
+                            AdditionalEventsFooter(additionalEventsCount: entry.additionalEventsCount)
                         }
                     }
                 }
@@ -198,20 +144,20 @@ struct EventsWidgetEntryView: View {
     private struct VerticalPlaceholderWithPrompt: View {
         
         var filter: EventFilter
+        var textSize: FilterPlaceholderText.Size
         
         var body: some View {
-            VStack(spacing: 17) {
-                Spacer()
-                
-                Image("No Content Placeholder")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(maxHeight: 250)
-                    .foregroundColor(.white)
-                
-                FilterPlaceholderText(filter: filter)
-                
-                Spacer()
+            WidgetColoredBackground {
+                VStack {
+                    Spacer()
+                    
+                    NoContentPlaceholderImage()
+                        .frame(maxHeight: 250)
+                    
+                    FilterPlaceholderText(filter: filter, size: textSize)
+                    
+                    Spacer()
+                }
             }
         }
         
@@ -222,47 +168,20 @@ struct EventsWidgetEntryView: View {
         var filter: EventFilter
         
         var body: some View {
-            HStack(spacing: 17) {
-                Spacer()
-                
-                Image("No Content Placeholder")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(maxHeight: 250)
-                    .foregroundColor(.white)
-                    .padding()
-                
-                Spacer()
-                
-                FilterPlaceholderText(filter: filter)
-                
-                Spacer()
-            }
-        }
-        
-    }
-    
-    private struct FilterPlaceholderText: View {
-        
-        var filter: EventFilter
-        
-        var body: some View {
-            text
-                .font(.footnote)
-                .foregroundColor(.white)
-        }
-        
-        @ViewBuilder
-        private var text: some View {
-            switch filter {
-            case .upcoming:
-                Text("No upcoming events")
-                
-            case .running:
-                Text("No running events")
-                
-            case .unknown:
-                Text("")
+            WidgetColoredBackground {
+                HStack(spacing: 17) {
+                    Spacer()
+                    
+                    NoContentPlaceholderImage()
+                        .frame(maxHeight: 250)
+                        .padding()
+                    
+                    Spacer()
+                    
+                    FilterPlaceholderText(filter: filter, size: .large)
+                    
+                    Spacer()
+                }
             }
         }
         
