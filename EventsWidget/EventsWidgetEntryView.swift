@@ -46,7 +46,7 @@ struct EventsWidgetEntryView: View {
             if entry.events.isEmpty {
                 VerticalPlaceholderWithPrompt(filter: .upcoming)
             } else {
-                WidgetContent {
+                WidgetLayout {
                     FilterTextHeadline(filter: .upcoming)
                 } content: {
                     VStack(alignment: .leading, spacing: 5) {
@@ -91,7 +91,7 @@ struct EventsWidgetEntryView: View {
             if entry.events.isEmpty {
                 HorizontalPlaceholderWithPrompt(filter: .upcoming)
             } else {
-                WidgetContent {
+                WidgetLayout {
                     FilterTextHeadline(filter: .upcoming)
                 } content: {
                     VStack(alignment: .leading, spacing: 5) {
@@ -144,7 +144,7 @@ struct EventsWidgetEntryView: View {
             if entry.events.isEmpty {
                 VerticalPlaceholderWithPrompt(filter: .upcoming)
             } else {
-                WidgetContent {
+                WidgetLayout {
                     FilterTextHeadline(filter: .upcoming)
                 } content: {
                     VStack(alignment: .leading) {

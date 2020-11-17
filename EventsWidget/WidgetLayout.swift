@@ -1,7 +1,7 @@
 import SwiftUI
 import WidgetKit
 
-struct WidgetContent<Header, Content>: View where Header: View, Content: View {
+struct WidgetLayout<Header, Content>: View where Header: View, Content: View {
     
     @Environment(\.colorScheme) private var colorScheme
     
@@ -41,14 +41,14 @@ struct WidgetContent<Header, Content>: View where Header: View, Content: View {
 struct WidgetContent_Previews: PreviewProvider {
     
     static var previews: some View {
-        WidgetContent {
+        WidgetLayout {
             Text("Heading")
         } content: {
             Text("Content")
         }
         .previewContext(WidgetPreviewContext(family: .systemLarge))
         
-        WidgetContent {
+        WidgetLayout {
             Text("Heading")
         } content: {
             Text("Content")
