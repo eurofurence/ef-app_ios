@@ -50,7 +50,7 @@ struct EventsWidgetEntryView: View {
                     FilterTextHeadline(filter: .upcoming)
                 } content: {
                     VStack(alignment: .leading, spacing: 5) {
-                        ForEach(entry.events.prefix(2)) { (event) in
+                        ForEach(entry.events) { (event) in
                             VStack(alignment: .leading) {
                                 HStack {
                                     Text(event.title)
@@ -95,7 +95,7 @@ struct EventsWidgetEntryView: View {
                     FilterTextHeadline(filter: .upcoming)
                 } content: {
                     VStack(alignment: .leading, spacing: 5) {
-                        ForEach(entry.events.prefix(3)) { (event) in
+                        ForEach(entry.events) { (event) in
                             HStack(alignment: .top) {
                                 VStack(alignment: .leading) {
                                     Text(event.title)
@@ -315,10 +315,22 @@ struct EventsWidget_Previews: PreviewProvider {
             )
         ]
         
-        let manyEvents = EventTimelineEntry(
+        let smallEntry = EventTimelineEntry(
+            date: Date(),
+            events: Array(events.prefix(2)),
+            additionalEventsCount: 7
+        )
+        
+        let mediumEntry = EventTimelineEntry(
+            date: Date(),
+            events: Array(events.prefix(3)),
+            additionalEventsCount: 6
+        )
+        
+        let largeEntry = EventTimelineEntry(
             date: Date(),
             events: events,
-            additionalEventsCount: 3
+            additionalEventsCount: 4
         )
         
         let noEvents = EventTimelineEntry(
@@ -328,19 +340,19 @@ struct EventsWidget_Previews: PreviewProvider {
         )
         
         Group {
-            EventsWidgetEntryView(entry: manyEvents)
+            EventsWidgetEntryView(entry: smallEntry)
                 .previewContext(WidgetPreviewContext(family: .systemSmall))
             
             EventsWidgetEntryView(entry: noEvents)
                 .previewContext(WidgetPreviewContext(family: .systemSmall))
             
-            EventsWidgetEntryView(entry: manyEvents)
+            EventsWidgetEntryView(entry: mediumEntry)
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
             
             EventsWidgetEntryView(entry: noEvents)
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
             
-            EventsWidgetEntryView(entry: manyEvents)
+            EventsWidgetEntryView(entry: largeEntry)
                 .previewContext(WidgetPreviewContext(family: .systemLarge))
             
             EventsWidgetEntryView(entry: noEvents)
@@ -350,19 +362,19 @@ struct EventsWidget_Previews: PreviewProvider {
         .environment(\.colorScheme, .light)
         
         Group {
-            EventsWidgetEntryView(entry: manyEvents)
+            EventsWidgetEntryView(entry: smallEntry)
                 .previewContext(WidgetPreviewContext(family: .systemSmall))
             
             EventsWidgetEntryView(entry: noEvents)
                 .previewContext(WidgetPreviewContext(family: .systemSmall))
             
-            EventsWidgetEntryView(entry: manyEvents)
+            EventsWidgetEntryView(entry: mediumEntry)
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
             
             EventsWidgetEntryView(entry: noEvents)
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
             
-            EventsWidgetEntryView(entry: manyEvents)
+            EventsWidgetEntryView(entry: largeEntry)
                 .previewContext(WidgetPreviewContext(family: .systemLarge))
             
             EventsWidgetEntryView(entry: noEvents)
