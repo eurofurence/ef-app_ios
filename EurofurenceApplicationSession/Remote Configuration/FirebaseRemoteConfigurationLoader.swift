@@ -1,16 +1,20 @@
 import FirebaseRemoteConfig
 
-class FirebaseRemoteConfigurationLoader: RemoteConfigurationLoader {
+public class FirebaseRemoteConfigurationLoader: RemoteConfigurationLoader {
     
     private let remoteConfig = RemoteConfig.remoteConfig()
     private var delegate: RemoteConfigurationLoaderDelegate?
     
-    func registerConfigurationLoadedDelegate(_ delegate: RemoteConfigurationLoaderDelegate) {
+    public init() {
+        
+    }
+    
+    public func registerConfigurationLoadedDelegate(_ delegate: RemoteConfigurationLoaderDelegate) {
         self.delegate = delegate
         refresh { (_) in }
     }
     
-    func refresh(completionHandler: @escaping (Error?) -> Void) {
+    public func refresh(completionHandler: @escaping (Error?) -> Void) {
         ConfigFetchTask(remoteConfig: remoteConfig, delegate: delegate, completionHandler: completionHandler).execute()
     }
     

@@ -1,4 +1,4 @@
-import Eurofurence
+import EurofurenceApplicationSession
 import XCTest
 
 class RemotelyConfiguredConventionStartDateRepositoryTests: XCTestCase {

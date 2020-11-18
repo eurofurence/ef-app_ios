@@ -1,4 +1,4 @@
-import Eurofurence
+import EurofurenceApplicationSession
 
 class FakeRemoteConfigurationLoader: RemoteConfigurationLoader {
     
