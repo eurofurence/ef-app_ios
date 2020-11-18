@@ -75,7 +75,12 @@ struct WidgetRepositoryAdapter: EventsWidgetLogic.EventRepository {
             
             hasCompleted = true
             
-            let widgetEvents = events.map(WidgetEventAdapter.init(event:))
+            var eventsForWidget = events
+            if favouritesOnly {
+                eventsForWidget = eventsForWidget.filter({ $0.isFavourite })
+            }
+            
+            let widgetEvents = eventsForWidget.map(WidgetEventAdapter.init(event:))
             completionHandler(widgetEvents)
         }
         
