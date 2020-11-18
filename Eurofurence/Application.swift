@@ -11,7 +11,7 @@ class Application {
     private let notificationScheduleController: NotificationScheduleController
     private let reviewPromptController: ReviewPromptController
     private var principalWindowController: PrincipalWindowAssembler?
-    private let urlOpener: URLOpener
+    private let urlOpener = AppURLOpener()
     
     static func assemble() {
         _ = instance
@@ -37,24 +37,8 @@ class Application {
         instance.principalWindowController?.route(contentRepresentation)
     }
     
-    // swiftlint:disable function_body_length
     private init() {
-        let jsonSession = URLSessionBasedJSONSession.shared
-        let buildConfiguration = PreprocessorBuildConfigurationProviding()
-        
-        let apiUrl = CIDAPIURLProviding(conventionIdentifier: .currentConvention)
-        let fcmRegistration = EurofurenceFCMDeviceRegistration(JSONSession: jsonSession, urlProviding: apiUrl)
-        let remoteNotificationsTokenRegistration = FirebaseRemoteNotificationsTokenRegistration(
-            buildConfiguration: buildConfiguration,
-            appVersion: BundleAppVersionProviding.shared,
-            conventionIdentifier: .currentConvention,
-            firebaseAdapter: FirebaseMessagingAdapter(),
-            fcmRegistration: fcmRegistration
-        )
-        
-        urlOpener = AppURLOpener()
         session = EurofurenceSessionBuilder.buildingForEurofurenceApplication()
-            .with(remoteNotificationsTokenRegistration)
             .with(ApplicationSignificantTimeChangeAdapter())
             .with(urlOpener)
             .with(ApplicationLongRunningTaskManager())
