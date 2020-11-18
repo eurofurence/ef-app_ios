@@ -6,6 +6,7 @@ class WhenUnfavouritingEvent_ApplicationShould: XCTestCase {
     var context: EurofurenceSessionTestBuilder.Context!
     var identifier: EventIdentifier!
     var observer: CapturingEventsServiceObserver!
+    var event: Event!
 
     override func setUp() {
         super.setUp()
@@ -18,9 +19,9 @@ class WhenUnfavouritingEvent_ApplicationShould: XCTestCase {
         context.performSuccessfulSync(response: modelCharacteristics)
 
         identifier = EventIdentifier(randomEvent.identifier)
-        let event = context.eventsService.fetchEvent(identifier: identifier)
-        event?.favourite()
-        event?.unfavourite()
+        event = context.eventsService.fetchEvent(identifier: identifier)
+        event.favourite()
+        event.unfavourite()
     }
 
     func testTellTheDataStoreToDeleteTheEventIdentifier() {
@@ -29,6 +30,7 @@ class WhenUnfavouritingEvent_ApplicationShould: XCTestCase {
 
     func testTellObserversTheEventHasBeenUnfavourited() {
         XCTAssertFalse(observer.capturedFavouriteEventIdentifiers.contains(identifier))
+        XCTAssertFalse(event.isFavourite)
     }
 
 }
