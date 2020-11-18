@@ -52,25 +52,13 @@ class Application {
             fcmRegistration: fcmRegistration
         )
         
-        let remoteConfigurationLoader = FirebaseRemoteConfigurationLoader()
-        let conventionStartDateRepository = RemotelyConfiguredConventionStartDateRepository(
-            remoteConfigurationLoader: remoteConfigurationLoader
-        )
-        
-        let mandatory = EurofurenceSessionBuilder.Mandatory(
-            conventionIdentifier: .currentConvention,
-            conventionStartDateRepository: conventionStartDateRepository,
-            shareableURLFactory: CIDBasedShareableURLFactory(conventionIdentifier: .currentConvention)
-        )
-        
         urlOpener = AppURLOpener()
-        session = EurofurenceSessionBuilder(mandatory: mandatory)
+        session = EurofurenceSessionBuilder.buildingForEurofurenceApplication()
             .with(remoteNotificationsTokenRegistration)
             .with(ApplicationSignificantTimeChangeAdapter())
             .with(urlOpener)
             .with(ApplicationLongRunningTaskManager())
             .with(UIKitMapCoordinateRender())
-            .with(UpdateRemoteConfigRefreshCollaboration(remoteConfigurationLoader: remoteConfigurationLoader))
             .build()
         
         backgroundFetcher = BackgroundFetchService(refreshService: session.services.refresh)
