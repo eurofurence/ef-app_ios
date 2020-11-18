@@ -1,7 +1,7 @@
 import EurofurenceModel
 import Foundation
 
-public struct CIDBasedShareableURLFactory: ShareableURLFactory {
+public struct EurofurenceShareableURLFactory: ShareableURLFactory {
     
     private let baseURL: URL
     

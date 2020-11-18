@@ -6,7 +6,7 @@ extension EurofurenceSessionBuilder {
         let jsonSession = URLSessionBasedJSONSession.shared
         let buildConfiguration = PreprocessorBuildConfigurationProviding()
         
-        let apiUrl = CIDAPIURLProviding(conventionIdentifier: .currentConvention)
+        let apiUrl = EFAPIURLProviding(conventionIdentifier: .currentConvention)
         let fcmRegistration = EurofurenceFCMDeviceRegistration(JSONSession: jsonSession, urlProviding: apiUrl)
         let remoteNotificationsTokenRegistration = FirebaseRemoteNotificationsTokenRegistration(
             buildConfiguration: buildConfiguration,
@@ -21,13 +21,13 @@ extension EurofurenceSessionBuilder {
             remoteConfigurationLoader: remoteConfigurationLoader
         )
         
-        let apiURL = CIDAPIURLProviding(conventionIdentifier: .currentConvention)
+        let apiURL = EFAPIURLProviding(conventionIdentifier: .currentConvention)
         
         let mandatory = EurofurenceSessionBuilder.Mandatory(
             conventionIdentifier: .currentConvention,
             apiURL: apiURL,
             conventionStartDateRepository: conventionStartDateRepository,
-            shareableURLFactory: CIDBasedShareableURLFactory(conventionIdentifier: .currentConvention)
+            shareableURLFactory: EurofurenceShareableURLFactory(conventionIdentifier: .currentConvention)
         )
         
         return EurofurenceSessionBuilder(mandatory: mandatory)

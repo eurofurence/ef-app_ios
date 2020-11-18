@@ -613,8 +613,8 @@
 		CACD36B425650A9600C23041 /* EurofurenceApplicationSession.h in Headers */ = {isa = PBXBuildFile; fileRef = CACD36A425650A9600C23041 /* EurofurenceApplicationSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CACD36B725650A9600C23041 /* EurofurenceApplicationSession.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CACD36A225650A9600C23041 /* EurofurenceApplicationSession.framework */; };
 		CACD36B825650A9600C23041 /* EurofurenceApplicationSession.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CACD36A225650A9600C23041 /* EurofurenceApplicationSession.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		CACD36F325650B3F00C23041 /* CIDBasedShareableURLFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82DB6822D7BE8600467C2F /* CIDBasedShareableURLFactory.swift */; };
-		CACD370025650B4B00C23041 /* CIDBasedShareableURLFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82DB6522D7BE4000467C2F /* CIDBasedShareableURLFactoryTests.swift */; };
+		CACD36F325650B3F00C23041 /* EurofurenceShareableURLFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82DB6822D7BE8600467C2F /* EurofurenceShareableURLFactory.swift */; };
+		CACD370025650B4B00C23041 /* EurofurenceShareableURLFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82DB6522D7BE4000467C2F /* EurofurenceShareableURLFactoryTests.swift */; };
 		CACD372025650BC400C23041 /* EurofurenceModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CACD371F25650BC400C23041 /* EurofurenceModel.framework */; };
 		CACD372125650BC400C23041 /* EurofurenceModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CACD371F25650BC400C23041 /* EurofurenceModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CACD376A25650C1200C23041 /* EurofurenceModelTestDoubles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CACD376925650C1200C23041 /* EurofurenceModelTestDoubles.framework */; };
@@ -628,8 +628,8 @@
 		CACD37AE25650D2A00C23041 /* RemoteConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA39851D22C7A94500117249 /* RemoteConfiguration.swift */; };
 		CACD37B52565112000C23041 /* ConventionIdentifier+CurrentConvention.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD37B42565112000C23041 /* ConventionIdentifier+CurrentConvention.swift */; };
 		CACD37C22565124B00C23041 /* EurofurenceSessionBuilder+ApplicationSessionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD37C12565124B00C23041 /* EurofurenceSessionBuilder+ApplicationSessionBuilder.swift */; };
-		CACD37E12565134300C23041 /* CIDAPIURLProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD37E02565134300C23041 /* CIDAPIURLProviding.swift */; };
-		CACD37EC256513BB00C23041 /* CIDAPIURLProvidingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD37EB256513BB00C23041 /* CIDAPIURLProvidingTests.swift */; };
+		CACD37E12565134300C23041 /* EFAPIURLProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD37E02565134300C23041 /* EFAPIURLProviding.swift */; };
+		CACD37EC256513BB00C23041 /* EFAPIURLProvidingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD37EB256513BB00C23041 /* EFAPIURLProvidingTests.swift */; };
 		CACD3800256516E200C23041 /* FirebaseMessagingAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781A943F1F1A1A72002DE70F /* FirebaseMessagingAdapter.swift */; };
 		CACD3801256516E200C23041 /* FirebaseRemoteNotificationsTokenRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781A943D1F1A1A13002DE70F /* FirebaseRemoteNotificationsTokenRegistration.swift */; };
 		CACD3802256516E200C23041 /* FCMDeviceRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781A94321F1A1994002DE70F /* FCMDeviceRegistration.swift */; };
@@ -1808,8 +1808,8 @@
 		CA82DB5322D6631F00467C2F /* CapturingShareService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingShareService.swift; sourceTree = "<group>"; };
 		CA82DB5522D6636700467C2F /* ShareEventActionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareEventActionViewModel.swift; sourceTree = "<group>"; };
 		CA82DB5822D6639300467C2F /* ActivityShareService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityShareService.swift; sourceTree = "<group>"; };
-		CA82DB6522D7BE4000467C2F /* CIDBasedShareableURLFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIDBasedShareableURLFactoryTests.swift; sourceTree = "<group>"; };
-		CA82DB6822D7BE8600467C2F /* CIDBasedShareableURLFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIDBasedShareableURLFactory.swift; sourceTree = "<group>"; };
+		CA82DB6522D7BE4000467C2F /* EurofurenceShareableURLFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EurofurenceShareableURLFactoryTests.swift; sourceTree = "<group>"; };
+		CA82DB6822D7BE8600467C2F /* EurofurenceShareableURLFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EurofurenceShareableURLFactory.swift; sourceTree = "<group>"; };
 		CA89CBA8207F7F9A00570D54 /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
 		CA89CBAA207F7FE900570D54 /* NewsViewModel+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewsViewModel+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA89CBAC207F802400570D54 /* NewsViewModelProducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModelProducer.swift; sourceTree = "<group>"; };
@@ -1921,8 +1921,8 @@
 		CACD376925650C1200C23041 /* EurofurenceModelTestDoubles.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EurofurenceModelTestDoubles.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CACD37B42565112000C23041 /* ConventionIdentifier+CurrentConvention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConventionIdentifier+CurrentConvention.swift"; sourceTree = "<group>"; };
 		CACD37C12565124B00C23041 /* EurofurenceSessionBuilder+ApplicationSessionBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EurofurenceSessionBuilder+ApplicationSessionBuilder.swift"; sourceTree = "<group>"; };
-		CACD37E02565134300C23041 /* CIDAPIURLProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIDAPIURLProviding.swift; sourceTree = "<group>"; };
-		CACD37EB256513BB00C23041 /* CIDAPIURLProvidingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIDAPIURLProvidingTests.swift; sourceTree = "<group>"; };
+		CACD37E02565134300C23041 /* EFAPIURLProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EFAPIURLProviding.swift; sourceTree = "<group>"; };
+		CACD37EB256513BB00C23041 /* EFAPIURLProvidingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EFAPIURLProvidingTests.swift; sourceTree = "<group>"; };
 		CACD3819256518B100C23041 /* BuildConfigurationProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildConfigurationProviding.swift; sourceTree = "<group>"; };
 		CACD3824256518CF00C23041 /* PreprocessorBuildConfigurationProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreprocessorBuildConfigurationProviding.swift; sourceTree = "<group>"; };
 		CACD382F256518F100C23041 /* StubBuildConfigurationProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubBuildConfigurationProviding.swift; sourceTree = "<group>"; };
@@ -4859,14 +4859,14 @@
 			children = (
 				CACD36A425650A9600C23041 /* EurofurenceApplicationSession.h */,
 				CACD36A525650A9600C23041 /* Info.plist */,
+				CACD3819256518B100C23041 /* BuildConfigurationProviding.swift */,
+				CACD37E02565134300C23041 /* EFAPIURLProviding.swift */,
 				CACD37B42565112000C23041 /* ConventionIdentifier+CurrentConvention.swift */,
 				CACD37C12565124B00C23041 /* EurofurenceSessionBuilder+ApplicationSessionBuilder.swift */,
+				CACD3824256518CF00C23041 /* PreprocessorBuildConfigurationProviding.swift */,
 				781A94311F1A1981002DE70F /* Firebase Notification Registration */,
 				CA39851722C7A91000117249 /* Remote Configuration */,
 				CACD37BB256511D300C23041 /* Shareable URLs */,
-				CACD37E02565134300C23041 /* CIDAPIURLProviding.swift */,
-				CACD3819256518B100C23041 /* BuildConfigurationProviding.swift */,
-				CACD3824256518CF00C23041 /* PreprocessorBuildConfigurationProviding.swift */,
 			);
 			path = EurofurenceApplicationSession;
 			sourceTree = "<group>";
@@ -4875,11 +4875,11 @@
 			isa = PBXGroup;
 			children = (
 				CACD36B325650A9600C23041 /* Info.plist */,
-				CACD37EB256513BB00C23041 /* CIDAPIURLProvidingTests.swift */,
-				CA82DB6522D7BE4000467C2F /* CIDBasedShareableURLFactoryTests.swift */,
+				CACD37EB256513BB00C23041 /* EFAPIURLProvidingTests.swift */,
+				CA82DB6522D7BE4000467C2F /* EurofurenceShareableURLFactoryTests.swift */,
+				CACD382F256518F100C23041 /* StubBuildConfigurationProviding.swift */,
 				781A94441F1A1DCE002DE70F /* Firebase Notification Registration */,
 				CA39851422C7A50600117249 /* Remote Configuration */,
-				CACD382F256518F100C23041 /* StubBuildConfigurationProviding.swift */,
 			);
 			path = EurofurenceApplicationSessionTests;
 			sourceTree = "<group>";
@@ -4887,7 +4887,7 @@
 		CACD37BB256511D300C23041 /* Shareable URLs */ = {
 			isa = PBXGroup;
 			children = (
-				CA82DB6822D7BE8600467C2F /* CIDBasedShareableURLFactory.swift */,
+				CA82DB6822D7BE8600467C2F /* EurofurenceShareableURLFactory.swift */,
 			);
 			path = "Shareable URLs";
 			sourceTree = "<group>";
@@ -8444,13 +8444,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				CACD3803256516E200C23041 /* FirebaseAdapter.swift in Sources */,
-				CACD37E12565134300C23041 /* CIDAPIURLProviding.swift in Sources */,
+				CACD37E12565134300C23041 /* EFAPIURLProviding.swift in Sources */,
 				CACD3801256516E200C23041 /* FirebaseRemoteNotificationsTokenRegistration.swift in Sources */,
 				CACD37AA25650D2A00C23041 /* FirebaseRemoteConfigurationLoader.swift in Sources */,
 				CACD37AD25650D2A00C23041 /* UpdateRemoteConfigRefreshCollaboration.swift in Sources */,
 				CACD381A256518B100C23041 /* BuildConfigurationProviding.swift in Sources */,
 				CACD3800256516E200C23041 /* FirebaseMessagingAdapter.swift in Sources */,
-				CACD36F325650B3F00C23041 /* CIDBasedShareableURLFactory.swift in Sources */,
+				CACD36F325650B3F00C23041 /* EurofurenceShareableURLFactory.swift in Sources */,
 				CACD37AC25650D2A00C23041 /* RemotelyConfiguredConventionStartDateRepository.swift in Sources */,
 				CACD3825256518CF00C23041 /* PreprocessorBuildConfigurationProviding.swift in Sources */,
 				CACD3802256516E200C23041 /* FCMDeviceRegistration.swift in Sources */,
@@ -8468,11 +8468,11 @@
 			files = (
 				CACD3810256516EB00C23041 /* FirebaseTopicTests.swift in Sources */,
 				CACD3830256518F100C23041 /* StubBuildConfigurationProviding.swift in Sources */,
-				CACD37EC256513BB00C23041 /* CIDAPIURLProvidingTests.swift in Sources */,
+				CACD37EC256513BB00C23041 /* EFAPIURLProvidingTests.swift in Sources */,
 				CACD377B25650C8900C23041 /* FakeRemoteConfigurationLoader.swift in Sources */,
 				CACD380F256516EB00C23041 /* FirebaseNotificationsTokenRegistrationTests.swift in Sources */,
 				CACD3812256516EB00C23041 /* CapturingFCMDeviceRegistration.swift in Sources */,
-				CACD370025650B4B00C23041 /* CIDBasedShareableURLFactoryTests.swift in Sources */,
+				CACD370025650B4B00C23041 /* EurofurenceShareableURLFactoryTests.swift in Sources */,
 				CACD3813256516EB00C23041 /* CapturingFirebaseAdapter.swift in Sources */,
 				CACD3811256516EB00C23041 /* EurofurenceFCMDeviceRegistrationTests.swift in Sources */,
 				CACD377C25650C8900C23041 /* RemotelyConfiguredConventionStartDateRepositoryTests.swift in Sources */,

@@ -1,10 +1,6 @@
-public struct PreprocessorBuildConfigurationProviding: BuildConfigurationProviding {
+struct PreprocessorBuildConfigurationProviding: BuildConfigurationProviding {
 
-    public init() {
-
-    }
-
-    public var configuration: BuildConfiguration {
+    var configuration: BuildConfiguration {
 #if DEBUG
         return .debug
 #else
