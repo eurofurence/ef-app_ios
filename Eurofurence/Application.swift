@@ -1,10 +1,9 @@
+import EurofurenceApplicationSession
 import EurofurenceModel
 import Foundation
 import UIKit
 
 class Application {
-    
-    private static let CID = ConventionIdentifier(identifier: "EF25")
 
     static let instance: Application = Application()
     private let session: EurofurenceSession
@@ -12,7 +11,7 @@ class Application {
     private let notificationScheduleController: NotificationScheduleController
     private let reviewPromptController: ReviewPromptController
     private var principalWindowController: PrincipalWindowAssembler?
-    private let urlOpener: URLOpener
+    private let urlOpener = AppURLOpener()
     
     static func assemble() {
         _ = instance
@@ -38,40 +37,12 @@ class Application {
         instance.principalWindowController?.route(contentRepresentation)
     }
     
-    // swiftlint:disable function_body_length
     private init() {
-        let jsonSession = URLSessionBasedJSONSession.shared
-        let buildConfiguration = PreprocessorBuildConfigurationProviding()
-        
-        let apiUrl = CIDAPIURLProviding(conventionIdentifier: Application.CID)
-        let fcmRegistration = EurofurenceFCMDeviceRegistration(JSONSession: jsonSession, urlProviding: apiUrl)
-        let remoteNotificationsTokenRegistration = FirebaseRemoteNotificationsTokenRegistration(
-            buildConfiguration: buildConfiguration,
-            appVersion: BundleAppVersionProviding.shared,
-            conventionIdentifier: Application.CID,
-            firebaseAdapter: FirebaseMessagingAdapter(),
-            fcmRegistration: fcmRegistration
-        )
-        
-        let remoteConfigurationLoader = FirebaseRemoteConfigurationLoader()
-        let conventionStartDateRepository = RemotelyConfiguredConventionStartDateRepository(
-            remoteConfigurationLoader: remoteConfigurationLoader
-        )
-        
-        let mandatory = EurofurenceSessionBuilder.Mandatory(
-            conventionIdentifier: Application.CID,
-            conventionStartDateRepository: conventionStartDateRepository,
-            shareableURLFactory: CIDBasedShareableURLFactory(conventionIdentifier: Application.CID)
-        )
-        
-        urlOpener = AppURLOpener()
-        session = EurofurenceSessionBuilder(mandatory: mandatory)
-            .with(remoteNotificationsTokenRegistration)
+        session = EurofurenceSessionBuilder.buildingForEurofurenceApplication()
             .with(ApplicationSignificantTimeChangeAdapter())
             .with(urlOpener)
             .with(ApplicationLongRunningTaskManager())
             .with(UIKitMapCoordinateRender())
-            .with(UpdateRemoteConfigRefreshCollaboration(remoteConfigurationLoader: remoteConfigurationLoader))
             .build()
         
         backgroundFetcher = BackgroundFetchService(refreshService: session.services.refresh)

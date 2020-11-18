@@ -1,0 +1,6 @@
+framework module Pods_EurofurenceApplicationSessionTests {
+  umbrella header "Pods-EurofurenceApplicationSessionTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
