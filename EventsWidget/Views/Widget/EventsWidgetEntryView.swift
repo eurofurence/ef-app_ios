@@ -31,10 +31,10 @@ struct EventsWidgetEntryView: View {
         
         var body: some View {
             if entry.events.isEmpty {
-                VerticalPlaceholderWithPrompt(filter: .upcoming, textSize: .small)
+                VerticalPlaceholderWithPrompt(category: entry.eventCategory, textSize: .small)
             } else {
                 WidgetLayout {
-                    FilterTextHeadline(filter: .upcoming)
+                    CategoryTextHeadline(category: entry.eventCategory)
                 } content: {
                     VStack(alignment: .leading, spacing: 10) {
                         ForEach(entry.events) { (event) in
@@ -65,10 +65,10 @@ struct EventsWidgetEntryView: View {
         
         var body: some View {
             if entry.events.isEmpty {
-                HorizontalPlaceholderWithPrompt(filter: .upcoming)
+                HorizontalPlaceholderWithPrompt(filter: entry.eventCategory)
             } else {
                 WidgetLayout {
-                    FilterTextHeadline(filter: .upcoming)
+                    CategoryTextHeadline(category: entry.eventCategory)
                 } content: {
                     VStack(alignment: .leading, spacing: 5) {
                         ForEach(entry.events) { (event) in
@@ -104,10 +104,10 @@ struct EventsWidgetEntryView: View {
         
         var body: some View {
             if entry.events.isEmpty {
-                VerticalPlaceholderWithPrompt(filter: .upcoming, textSize: .large)
+                VerticalPlaceholderWithPrompt(category: entry.eventCategory, textSize: .large)
             } else {
                 WidgetLayout {
-                    FilterTextHeadline(filter: .upcoming)
+                    CategoryTextHeadline(category: entry.eventCategory)
                 } content: {
                     VStack(alignment: .leading) {
                         ForEach(entry.events) { (event) in
@@ -150,8 +150,8 @@ struct EventsWidgetEntryView: View {
 
     private struct VerticalPlaceholderWithPrompt: View {
         
-        var filter: EventFilter
-        var textSize: FilterPlaceholderText.Size
+        var category: EventCategory
+        var textSize: CategoryPlaceholderText.Size
         
         var body: some View {
             WidgetColoredBackground {
@@ -161,7 +161,7 @@ struct EventsWidgetEntryView: View {
                     NoContentPlaceholderImage()
                         .frame(maxHeight: 250)
                     
-                    FilterPlaceholderText(filter: filter, size: textSize)
+                    CategoryPlaceholderText(category: category, size: textSize)
                     
                     Spacer()
                 }
@@ -172,7 +172,7 @@ struct EventsWidgetEntryView: View {
     
     private struct HorizontalPlaceholderWithPrompt: View {
         
-        var filter: EventFilter
+        var filter: EventCategory
         
         var body: some View {
             WidgetColoredBackground {
@@ -185,7 +185,7 @@ struct EventsWidgetEntryView: View {
                     
                     Spacer()
                     
-                    FilterPlaceholderText(filter: filter, size: .large)
+                    CategoryPlaceholderText(category: filter, size: .large)
                     
                     Spacer()
                 }
@@ -243,24 +243,28 @@ struct EventsWidget_Previews: PreviewProvider {
         
         let smallEntry = EventTimelineEntry(
             date: Date(),
+            eventCategory: .upcoming,
             events: Array(events.prefix(2)),
             additionalEventsCount: 7
         )
         
         let mediumEntry = EventTimelineEntry(
             date: Date(),
+            eventCategory: .upcoming,
             events: Array(events.prefix(3)),
             additionalEventsCount: 6
         )
         
         let largeEntry = EventTimelineEntry(
             date: Date(),
+            eventCategory: .upcoming,
             events: events,
             additionalEventsCount: 4
         )
         
         let noEvents = EventTimelineEntry(
             date: Date(),
+            eventCategory: .upcoming,
             events: [],
             additionalEventsCount: 0
         )

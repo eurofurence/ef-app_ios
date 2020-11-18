@@ -52,6 +52,7 @@ struct EventsTimelineProvider: IntentTimelineProvider {
         
         return EventTimelineEntry(
             date: Date(),
+            eventCategory: .upcoming,
             events: Array(placeholderEvents),
             additionalEventsCount: 1
         )
@@ -95,7 +96,8 @@ struct EventsTimelineProvider: IntentTimelineProvider {
         let widgetContext = EventWidgetContext(timelineContext: context)
         let options = EventsTimelineController.TimelineOptions(
             maximumEventsPerEntry: widgetContext.recommendedNumberOfEvents,
-            timelineStartDate: date
+            timelineStartDate: date,
+            eventCategory: EventCategory(filter: configuration.filter)
         )
         
         controller.makeTimeline(options: options, completionHandler: completionHandler)

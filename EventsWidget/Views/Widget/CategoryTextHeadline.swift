@@ -1,10 +1,10 @@
-import EurofurenceIntentDefinitions
+import EventsWidgetLogic
 import SwiftUI
 import WidgetKit
 
-struct FilterTextHeadline: View {
+struct CategoryTextHeadline: View {
     
-    var filter: EventFilter
+    var category: EventCategory
     
     var body: some View {
         text
@@ -13,17 +13,12 @@ struct FilterTextHeadline: View {
     }
     
     private var text: Text {
-        switch filter {
+        switch category {
         case .upcoming:
             return Text("Upcoming", comment: "Upcoming")
             
         case .running:
             return Text("Running", comment: "Running")
-            
-        case .unknown:
-            fallthrough
-        @unknown default:
-            return Text("")
         }
     }
     

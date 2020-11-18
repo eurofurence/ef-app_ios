@@ -1,7 +1,7 @@
-import EurofurenceIntentDefinitions
+import EventsWidgetLogic
 import SwiftUI
 
-struct FilterPlaceholderText: View {
+struct CategoryPlaceholderText: View {
     
     enum Size {
         
@@ -26,7 +26,7 @@ struct FilterPlaceholderText: View {
         
     }
     
-    var filter: EventFilter
+    var category: EventCategory
     var size: Size
     
     var body: some View {
@@ -37,18 +37,12 @@ struct FilterPlaceholderText: View {
     
     @ViewBuilder
     private var text: some View {
-        switch filter {
+        switch category {
         case .upcoming:
             Text("No upcoming events")
             
         case .running:
             Text("No running events")
-            
-        case .unknown:
-            Text("")
-            
-        @unknown default:
-            Text("")
         }
     }
     
