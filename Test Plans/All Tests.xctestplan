@@ -47,6 +47,13 @@
         "identifier" : "CAF254A92517F983008892ED",
         "name" : "EurofurenceUITests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Eurofurence.xcodeproj",
+        "identifier" : "CACD36A925650A9600C23041",
+        "name" : "EurofurenceApplicationSessionTests"
+      }
     }
   ],
   "version" : 1
