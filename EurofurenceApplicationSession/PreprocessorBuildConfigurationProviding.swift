@@ -1,5 +1,3 @@
-import Foundation
-
 public struct PreprocessorBuildConfigurationProviding: BuildConfigurationProviding {
 
     public init() {

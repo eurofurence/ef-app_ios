@@ -1,4 +1,4 @@
-import EurofurenceModel
+import EurofurenceApplicationSession
 
 public struct StubBuildConfigurationProviding: BuildConfigurationProviding {
 

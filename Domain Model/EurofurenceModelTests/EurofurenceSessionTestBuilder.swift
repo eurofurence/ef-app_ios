@@ -323,6 +323,7 @@ class EurofurenceSessionTestBuilder {
         let conventionIdentifier = ConventionIdentifier(identifier: ModelCharacteristics.testConventionIdentifier)
         let mandatory = EurofurenceSessionBuilder.Mandatory(
             conventionIdentifier: conventionIdentifier,
+            apiURL: StubAPIURLProviding(),
             conventionStartDateRepository: conventionStartDateRepository,
             shareableURLFactory: FakeShareableURLFactory()
         )
