@@ -38,16 +38,14 @@ struct EventsWidgetEntryView: View {
                 } content: {
                     VStack(alignment: .leading, spacing: 10) {
                         ForEach(entry.events) { (event) in
-                            Link(destination: event.widgetURL) {                            
-                                VStack(alignment: .leading) {
-                                    HStack {
-                                        EventTitle(event.title)
-                                        Spacer()
-                                        EventStartTime(event.formattedStartTime)
-                                    }
-                                    
-                                    EventLocation(event.location)
+                            VStack(alignment: .leading) {
+                                HStack {
+                                    EventTitle(event.title)
+                                    Spacer()
+                                    EventStartTime(event.formattedStartTime)
                                 }
+                                
+                                EventLocation(event.location)
                             }
                         }
                         
