@@ -616,7 +616,6 @@
 		CACD36F325650B3F00C23041 /* EurofurenceShareableURLFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82DB6822D7BE8600467C2F /* EurofurenceShareableURLFactory.swift */; };
 		CACD370025650B4B00C23041 /* EurofurenceShareableURLFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82DB6522D7BE4000467C2F /* EurofurenceShareableURLFactoryTests.swift */; };
 		CACD372025650BC400C23041 /* EurofurenceModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CACD371F25650BC400C23041 /* EurofurenceModel.framework */; };
-		CACD372125650BC400C23041 /* EurofurenceModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CACD371F25650BC400C23041 /* EurofurenceModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CACD376A25650C1200C23041 /* EurofurenceModelTestDoubles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CACD376925650C1200C23041 /* EurofurenceModelTestDoubles.framework */; };
 		CACD377A25650C8900C23041 /* CapturingConventionStartDateConsumer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA39851B22C7A93300117249 /* CapturingConventionStartDateConsumer.swift */; };
 		CACD377B25650C8900C23041 /* FakeRemoteConfigurationLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA39852122C7A95C00117249 /* FakeRemoteConfigurationLoader.swift */; };
@@ -1199,17 +1198,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		CACD372225650BC400C23041 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				CACD372125650BC400C23041 /* EurofurenceModel.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		CAEA0B9A2165626900B0C7A6 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -6853,7 +6841,6 @@
 				CACD369E25650A9600C23041 /* Sources */,
 				CACD369F25650A9600C23041 /* Frameworks */,
 				CACD36A025650A9600C23041 /* Resources */,
-				CACD372225650BC400C23041 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
