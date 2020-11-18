@@ -5,13 +5,18 @@ public class EurofurenceSessionBuilder {
     public struct Mandatory {
         
         public var conventionIdentifier: ConventionIdentifier
+        public var apiURL: APIURLProviding
         public var conventionStartDateRepository: ConventionStartDateRepository
         public var shareableURLFactory: ShareableURLFactory
 
-        public init(conventionIdentifier: ConventionIdentifier,
-                    conventionStartDateRepository: ConventionStartDateRepository,
-                    shareableURLFactory: ShareableURLFactory) {
+        public init(
+            conventionIdentifier: ConventionIdentifier,
+            apiURL: APIURLProviding,
+            conventionStartDateRepository: ConventionStartDateRepository,
+            shareableURLFactory: ShareableURLFactory
+        ) {
             self.conventionIdentifier = conventionIdentifier
+            self.apiURL = apiURL
             self.conventionStartDateRepository = conventionStartDateRepository
             self.shareableURLFactory = shareableURLFactory
         }
@@ -48,8 +53,7 @@ public class EurofurenceSessionBuilder {
         dataStoreFactory = CoreDataStoreFactory()
 
         let jsonSession = URLSessionBasedJSONSession.shared
-        let apiUrl = CIDAPIURLProviding(conventionIdentifier: conventionIdentifier)
-        api = JSONAPI(jsonSession: jsonSession, apiUrl: apiUrl)
+        api = JSONAPI(jsonSession: jsonSession, apiUrl: mandatory.apiURL)
 
         clock = SystemClock.shared
         credentialStore = KeychainCredentialStore()

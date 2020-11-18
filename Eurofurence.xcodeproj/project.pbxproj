@@ -638,6 +638,8 @@
 		CACD37AE25650D2A00C23041 /* RemoteConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA39851D22C7A94500117249 /* RemoteConfiguration.swift */; };
 		CACD37B52565112000C23041 /* ConventionIdentifier+CurrentConvention.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD37B42565112000C23041 /* ConventionIdentifier+CurrentConvention.swift */; };
 		CACD37C22565124B00C23041 /* EurofurenceSessionBuilder+ApplicationSessionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD37C12565124B00C23041 /* EurofurenceSessionBuilder+ApplicationSessionBuilder.swift */; };
+		CACD37E12565134300C23041 /* CIDAPIURLProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD37E02565134300C23041 /* CIDAPIURLProviding.swift */; };
+		CACD37EC256513BB00C23041 /* CIDAPIURLProvidingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD37EB256513BB00C23041 /* CIDAPIURLProvidingTests.swift */; };
 		CACEA06D2242827800DFF26C /* NotificationScheduleControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACEA06C2242827800DFF26C /* NotificationScheduleControllerTests.swift */; };
 		CACEA06F2242832F00DFF26C /* CapturingNotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACEA06E2242832F00DFF26C /* CapturingNotificationScheduler.swift */; };
 		CACF1E4820AE29CB00D904B5 /* StubEventDetailComponentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E4720AE29CB00D904B5 /* StubEventDetailComponentFactory.swift */; };
@@ -1916,6 +1918,8 @@
 		CACD376925650C1200C23041 /* EurofurenceModelTestDoubles.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EurofurenceModelTestDoubles.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CACD37B42565112000C23041 /* ConventionIdentifier+CurrentConvention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConventionIdentifier+CurrentConvention.swift"; sourceTree = "<group>"; };
 		CACD37C12565124B00C23041 /* EurofurenceSessionBuilder+ApplicationSessionBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EurofurenceSessionBuilder+ApplicationSessionBuilder.swift"; sourceTree = "<group>"; };
+		CACD37E02565134300C23041 /* CIDAPIURLProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIDAPIURLProviding.swift; sourceTree = "<group>"; };
+		CACD37EB256513BB00C23041 /* CIDAPIURLProvidingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIDAPIURLProvidingTests.swift; sourceTree = "<group>"; };
 		CACEA06C2242827800DFF26C /* NotificationScheduleControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationScheduleControllerTests.swift; sourceTree = "<group>"; };
 		CACEA06E2242832F00DFF26C /* CapturingNotificationScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingNotificationScheduler.swift; sourceTree = "<group>"; };
 		CACF1E4720AE29CB00D904B5 /* StubEventDetailComponentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubEventDetailComponentFactory.swift; sourceTree = "<group>"; };
@@ -4854,6 +4858,7 @@
 				CACD37C12565124B00C23041 /* EurofurenceSessionBuilder+ApplicationSessionBuilder.swift */,
 				CA39851722C7A91000117249 /* Remote Configuration */,
 				CACD37BB256511D300C23041 /* Shareable URLs */,
+				CACD37E02565134300C23041 /* CIDAPIURLProviding.swift */,
 			);
 			path = EurofurenceApplicationSession;
 			sourceTree = "<group>";
@@ -4864,6 +4869,7 @@
 				CACD36B325650A9600C23041 /* Info.plist */,
 				CA82DB6522D7BE4000467C2F /* CIDBasedShareableURLFactoryTests.swift */,
 				CA39851422C7A50600117249 /* Remote Configuration */,
+				CACD37EB256513BB00C23041 /* CIDAPIURLProvidingTests.swift */,
 			);
 			path = EurofurenceApplicationSessionTests;
 			sourceTree = "<group>";
@@ -8438,6 +8444,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CACD37E12565134300C23041 /* CIDAPIURLProviding.swift in Sources */,
 				CACD37AA25650D2A00C23041 /* FirebaseRemoteConfigurationLoader.swift in Sources */,
 				CACD37AD25650D2A00C23041 /* UpdateRemoteConfigRefreshCollaboration.swift in Sources */,
 				CACD36F325650B3F00C23041 /* CIDBasedShareableURLFactory.swift in Sources */,
@@ -8453,6 +8460,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CACD37EC256513BB00C23041 /* CIDAPIURLProvidingTests.swift in Sources */,
 				CACD377B25650C8900C23041 /* FakeRemoteConfigurationLoader.swift in Sources */,
 				CACD370025650B4B00C23041 /* CIDBasedShareableURLFactoryTests.swift in Sources */,
 				CACD377C25650C8900C23041 /* RemotelyConfiguredConventionStartDateRepositoryTests.swift in Sources */,

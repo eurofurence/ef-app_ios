@@ -1,3 +1,4 @@
+import EurofurenceApplicationSession
 import EurofurenceModel
 import XCTest
 

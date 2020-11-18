@@ -1,4 +1,4 @@
-import Foundation
+import EurofurenceModel
 
 public struct CIDAPIURLProviding: APIURLProviding {
     

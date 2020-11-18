@@ -8,8 +8,11 @@ extension EurofurenceSessionBuilder {
             remoteConfigurationLoader: remoteConfigurationLoader
         )
         
+        let apiURL = CIDAPIURLProviding(conventionIdentifier: .currentConvention)
+        
         let mandatory = EurofurenceSessionBuilder.Mandatory(
             conventionIdentifier: .currentConvention,
+            apiURL: apiURL,
             conventionStartDateRepository: conventionStartDateRepository,
             shareableURLFactory: CIDBasedShareableURLFactory(conventionIdentifier: .currentConvention)
         )
