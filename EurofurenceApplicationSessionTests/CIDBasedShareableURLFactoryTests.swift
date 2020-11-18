@@ -1,4 +1,4 @@
-import Eurofurence
+import EurofurenceApplicationSession
 import EurofurenceModel
 import EurofurenceModelTestDoubles
 import XCTest

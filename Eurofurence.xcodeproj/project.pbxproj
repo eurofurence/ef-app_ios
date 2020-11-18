@@ -523,8 +523,6 @@
 		CA82DB5422D6631F00467C2F /* CapturingShareService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82DB5322D6631F00467C2F /* CapturingShareService.swift */; };
 		CA82DB5622D6636700467C2F /* ShareEventActionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82DB5522D6636700467C2F /* ShareEventActionViewModel.swift */; };
 		CA82DB5922D6639300467C2F /* ActivityShareService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82DB5822D6639300467C2F /* ActivityShareService.swift */; };
-		CA82DB6622D7BE4000467C2F /* CIDBasedShareableURLFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82DB6522D7BE4000467C2F /* CIDBasedShareableURLFactoryTests.swift */; };
-		CA82DB6922D7BE8600467C2F /* CIDBasedShareableURLFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82DB6822D7BE8600467C2F /* CIDBasedShareableURLFactory.swift */; };
 		CA8950F122B43CE300AF4875 /* EurofurenceModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A32F722B179D8002AD939 /* EurofurenceModel.framework */; };
 		CA8950F222B43CE300AF4875 /* EurofurenceModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A32F722B179D8002AD939 /* EurofurenceModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CA8950F322B43D0500AF4875 /* EventBus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A32F922B179D8002AD939 /* EventBus.framework */; };
@@ -630,10 +628,14 @@
 		CAC4993522DF98DF003E1D77 /* DealerCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC4993422DF98DF003E1D77 /* DealerCategoriesViewController.swift */; };
 		CAC4993722DF994A003E1D77 /* DealerCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC4993622DF994A003E1D77 /* DealerCategoryTableViewCell.swift */; };
 		CACD36AB25650A9600C23041 /* EurofurenceApplicationSession.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CACD36A225650A9600C23041 /* EurofurenceApplicationSession.framework */; };
-		CACD36B225650A9600C23041 /* EurofurenceApplicationSessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD36B125650A9600C23041 /* EurofurenceApplicationSessionTests.swift */; };
 		CACD36B425650A9600C23041 /* EurofurenceApplicationSession.h in Headers */ = {isa = PBXBuildFile; fileRef = CACD36A425650A9600C23041 /* EurofurenceApplicationSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CACD36B725650A9600C23041 /* EurofurenceApplicationSession.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CACD36A225650A9600C23041 /* EurofurenceApplicationSession.framework */; };
 		CACD36B825650A9600C23041 /* EurofurenceApplicationSession.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CACD36A225650A9600C23041 /* EurofurenceApplicationSession.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CACD36F325650B3F00C23041 /* CIDBasedShareableURLFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82DB6822D7BE8600467C2F /* CIDBasedShareableURLFactory.swift */; };
+		CACD370025650B4B00C23041 /* CIDBasedShareableURLFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82DB6522D7BE4000467C2F /* CIDBasedShareableURLFactoryTests.swift */; };
+		CACD372025650BC400C23041 /* EurofurenceModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CACD371F25650BC400C23041 /* EurofurenceModel.framework */; };
+		CACD372125650BC400C23041 /* EurofurenceModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CACD371F25650BC400C23041 /* EurofurenceModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CACD376A25650C1200C23041 /* EurofurenceModelTestDoubles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CACD376925650C1200C23041 /* EurofurenceModelTestDoubles.framework */; };
 		CACEA06D2242827800DFF26C /* NotificationScheduleControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACEA06C2242827800DFF26C /* NotificationScheduleControllerTests.swift */; };
 		CACEA06F2242832F00DFF26C /* CapturingNotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACEA06E2242832F00DFF26C /* CapturingNotificationScheduler.swift */; };
 		CACF1E4820AE29CB00D904B5 /* StubEventDetailComponentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E4720AE29CB00D904B5 /* StubEventDetailComponentFactory.swift */; };
@@ -1190,6 +1192,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		CACD372225650BC400C23041 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CACD372125650BC400C23041 /* EurofurenceModel.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CAEA0B9A2165626900B0C7A6 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1895,8 +1908,10 @@
 		CACD36A425650A9600C23041 /* EurofurenceApplicationSession.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EurofurenceApplicationSession.h; sourceTree = "<group>"; };
 		CACD36A525650A9600C23041 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CACD36AA25650A9600C23041 /* EurofurenceApplicationSessionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EurofurenceApplicationSessionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CACD36B125650A9600C23041 /* EurofurenceApplicationSessionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EurofurenceApplicationSessionTests.swift; sourceTree = "<group>"; };
 		CACD36B325650A9600C23041 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CACD371F25650BC400C23041 /* EurofurenceModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EurofurenceModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CACD372825650BD800C23041 /* EurofurenceModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EurofurenceModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CACD376925650C1200C23041 /* EurofurenceModelTestDoubles.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EurofurenceModelTestDoubles.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CACEA06C2242827800DFF26C /* NotificationScheduleControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationScheduleControllerTests.swift; sourceTree = "<group>"; };
 		CACEA06E2242832F00DFF26C /* CapturingNotificationScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingNotificationScheduler.swift; sourceTree = "<group>"; };
 		CACF1E4720AE29CB00D904B5 /* StubEventDetailComponentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubEventDetailComponentFactory.swift; sourceTree = "<group>"; };
@@ -2456,6 +2471,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CACD372025650BC400C23041 /* EurofurenceModel.framework in Frameworks */,
 				91C0C25CC1584B56C4A81D5D /* Pods_EurofurenceApplicationSession.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2464,6 +2480,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CACD376A25650C1200C23041 /* EurofurenceModelTestDoubles.framework in Frameworks */,
 				CACD36AB25650A9600C23041 /* EurofurenceApplicationSession.framework in Frameworks */,
 				CA624743532703E5C422FA37 /* Pods_EurofurenceApplicationSessionTests.framework in Frameworks */,
 			);
@@ -2482,6 +2499,9 @@
 		164F3A1C0E53F6ADD4C20674 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CACD376925650C1200C23041 /* EurofurenceModelTestDoubles.framework */,
+				CACD372825650BD800C23041 /* EurofurenceModel.framework */,
+				CACD371F25650BC400C23041 /* EurofurenceModel.framework */,
 				CA7A32FB22B17A21002AD939 /* EurofurenceModelTestDoubles.framework */,
 				CA7A32F722B179D8002AD939 /* EurofurenceModel.framework */,
 				CA7A32F922B179D8002AD939 /* EventBus.framework */,
@@ -4458,22 +4478,6 @@
 			path = Share;
 			sourceTree = "<group>";
 		};
-		CA82DB6422D7BE2300467C2F /* Shareable URLs */ = {
-			isa = PBXGroup;
-			children = (
-				CA82DB6522D7BE4000467C2F /* CIDBasedShareableURLFactoryTests.swift */,
-			);
-			path = "Shareable URLs";
-			sourceTree = "<group>";
-		};
-		CA82DB6722D7BE7B00467C2F /* Shareable URLs */ = {
-			isa = PBXGroup;
-			children = (
-				CA82DB6822D7BE8600467C2F /* CIDBasedShareableURLFactory.swift */,
-			);
-			path = "Shareable URLs";
-			sourceTree = "<group>";
-		};
 		CA89CBA7207F7F8F00570D54 /* View Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -4850,6 +4854,7 @@
 			children = (
 				CACD36A425650A9600C23041 /* EurofurenceApplicationSession.h */,
 				CACD36A525650A9600C23041 /* Info.plist */,
+				CA82DB6822D7BE8600467C2F /* CIDBasedShareableURLFactory.swift */,
 			);
 			path = EurofurenceApplicationSession;
 			sourceTree = "<group>";
@@ -4857,8 +4862,8 @@
 		CACD36B025650A9600C23041 /* EurofurenceApplicationSessionTests */ = {
 			isa = PBXGroup;
 			children = (
-				CACD36B125650A9600C23041 /* EurofurenceApplicationSessionTests.swift */,
 				CACD36B325650A9600C23041 /* Info.plist */,
+				CA82DB6522D7BE4000467C2F /* CIDBasedShareableURLFactoryTests.swift */,
 			);
 			path = EurofurenceApplicationSessionTests;
 			sourceTree = "<group>";
@@ -6495,7 +6500,6 @@
 			children = (
 				CA52C68220D5980C009D3A9E /* ApplicationSignificantTimeChangeAdapterTests.swift */,
 				CA39851422C7A50600117249 /* Remote Configuration */,
-				CA82DB6422D7BE2300467C2F /* Shareable URLs */,
 			);
 			path = "Application Model Adapters";
 			sourceTree = "<group>";
@@ -6593,7 +6597,6 @@
 				CAF194D324688CB6005DFBBE /* Opening URLs */,
 				CA39851722C7A91000117249 /* Remote Configuration */,
 				CAF194D424688CBC005DFBBE /* Rendering Map Coordinates */,
-				CA82DB6722D7BE7B00467C2F /* Shareable URLs */,
 				CAF194D224688CAD005DFBBE /* Significant Time Changes */,
 			);
 			path = "Application Model Adapters";
@@ -6829,6 +6832,7 @@
 				CACD369E25650A9600C23041 /* Sources */,
 				CACD369F25650A9600C23041 /* Frameworks */,
 				CACD36A025650A9600C23041 /* Resources */,
+				CACD372225650BC400C23041 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -7780,7 +7784,6 @@
 				CA5EB1AD245F6DDB0012C277 /* DealersContentControllerFactory.swift in Sources */,
 				CAF81C5720DD208100898C52 /* DealerDetailLocationAndAvailabilityTableViewCell.swift in Sources */,
 				CA38C35524680C4900A20921 /* PrincipalWindowSceneDelegate.swift in Sources */,
-				CA82DB6922D7BE8600467C2F /* CIDBasedShareableURLFactory.swift in Sources */,
 				CACF1E7220B1CE9A00D904B5 /* EventDetailPresenter.swift in Sources */,
 				CAD3BDC2205AA7BE00C91E6E /* WebComponentFactory.swift in Sources */,
 				CA39852022C7A94F00117249 /* RemoteConfigurationLoader.swift in Sources */,
@@ -8215,7 +8218,6 @@
 				CAF1981224688EAB005DFBBE /* WhenBindingDealerSearchResult_DealersPresenterShould.swift in Sources */,
 				CA4D9353245EE571006FA832 /* URLContentRepresentationTests.swift in Sources */,
 				CAF1977924688EAA005DFBBE /* CapturingEventDetailScene.swift in Sources */,
-				CA82DB6622D7BE4000467C2F /* CIDBasedShareableURLFactoryTests.swift in Sources */,
 				CAF1979624688EAA005DFBBE /* FakeEventsService.swift in Sources */,
 				CAF197B324688EAA005DFBBE /* StubNewsViewModel.swift in Sources */,
 				CAF197AA24688EAA005DFBBE /* NewsPresenterDealersDenIconBindingTests.swift in Sources */,
@@ -8438,6 +8440,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CACD36F325650B3F00C23041 /* CIDBasedShareableURLFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8445,7 +8448,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CACD36B225650A9600C23041 /* EurofurenceApplicationSessionTests.swift in Sources */,
+				CACD370025650B4B00C23041 /* CIDBasedShareableURLFactoryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8604,6 +8607,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C9F9CDBEE9438C5761DD0B15 /* Pods-Eurofurence.profiling.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Eurofurence/Eurofurence.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -8764,6 +8768,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DD04FF21E88A87DB7F4133E3 /* Pods-Eurofurence.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Eurofurence/Eurofurence.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -8785,6 +8790,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 19EC28FCBC430E4045696BAF /* Pods-Eurofurence.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Eurofurence/Eurofurence.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
@@ -9015,6 +9021,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5CC062D36892B13F2A83180C /* Pods-Eurofurence.screenshots.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Eurofurence/Eurofurence.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
