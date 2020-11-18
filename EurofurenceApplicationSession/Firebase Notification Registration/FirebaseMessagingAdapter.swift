@@ -4,6 +4,10 @@ import Foundation
 public struct FirebaseMessagingAdapter: FirebaseAdapter {
 
     private let messaging = Messaging.messaging()
+    
+    public init() {
+        
+    }
 
     public var fcmToken: String {
         return messaging.fcmToken ?? ""

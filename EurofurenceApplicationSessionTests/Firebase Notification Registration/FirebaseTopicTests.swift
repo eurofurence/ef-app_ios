@@ -1,4 +1,4 @@
-import Eurofurence
+import EurofurenceApplicationSession
 import XCTest
 
 class FirebaseTopicTests: XCTestCase {
