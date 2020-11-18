@@ -4,8 +4,6 @@ import Foundation
 import UIKit
 
 class Application {
-    
-    private static let CID = ConventionIdentifier(identifier: "EF25")
 
     static let instance: Application = Application()
     private let session: EurofurenceSession
@@ -44,12 +42,12 @@ class Application {
         let jsonSession = URLSessionBasedJSONSession.shared
         let buildConfiguration = PreprocessorBuildConfigurationProviding()
         
-        let apiUrl = CIDAPIURLProviding(conventionIdentifier: Application.CID)
+        let apiUrl = CIDAPIURLProviding(conventionIdentifier: .currentConvention)
         let fcmRegistration = EurofurenceFCMDeviceRegistration(JSONSession: jsonSession, urlProviding: apiUrl)
         let remoteNotificationsTokenRegistration = FirebaseRemoteNotificationsTokenRegistration(
             buildConfiguration: buildConfiguration,
             appVersion: BundleAppVersionProviding.shared,
-            conventionIdentifier: Application.CID,
+            conventionIdentifier: .currentConvention,
             firebaseAdapter: FirebaseMessagingAdapter(),
             fcmRegistration: fcmRegistration
         )
@@ -60,9 +58,9 @@ class Application {
         )
         
         let mandatory = EurofurenceSessionBuilder.Mandatory(
-            conventionIdentifier: Application.CID,
+            conventionIdentifier: .currentConvention,
             conventionStartDateRepository: conventionStartDateRepository,
-            shareableURLFactory: CIDBasedShareableURLFactory(conventionIdentifier: Application.CID)
+            shareableURLFactory: CIDBasedShareableURLFactory(conventionIdentifier: .currentConvention)
         )
         
         urlOpener = AppURLOpener()

@@ -25,7 +25,6 @@ target :EurofurenceApplicationSession do
   project 'Eurofurence.xcodeproj'
   
   pod 'FirebaseCore'
-  pod 'FirebaseCrashlytics'
   pod 'FirebaseMessaging'
   pod 'FirebaseRemoteConfig'
   

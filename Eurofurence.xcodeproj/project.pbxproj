@@ -636,6 +636,7 @@
 		CACD37AC25650D2A00C23041 /* RemotelyConfiguredConventionStartDateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA39851822C7A91800117249 /* RemotelyConfiguredConventionStartDateRepository.swift */; };
 		CACD37AD25650D2A00C23041 /* UpdateRemoteConfigRefreshCollaboration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA30222CA95BF00C0E1A1 /* UpdateRemoteConfigRefreshCollaboration.swift */; };
 		CACD37AE25650D2A00C23041 /* RemoteConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA39851D22C7A94500117249 /* RemoteConfiguration.swift */; };
+		CACD37B52565112000C23041 /* ConventionIdentifier+CurrentConvention.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD37B42565112000C23041 /* ConventionIdentifier+CurrentConvention.swift */; };
 		CACEA06D2242827800DFF26C /* NotificationScheduleControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACEA06C2242827800DFF26C /* NotificationScheduleControllerTests.swift */; };
 		CACEA06F2242832F00DFF26C /* CapturingNotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACEA06E2242832F00DFF26C /* CapturingNotificationScheduler.swift */; };
 		CACF1E4820AE29CB00D904B5 /* StubEventDetailComponentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E4720AE29CB00D904B5 /* StubEventDetailComponentFactory.swift */; };
@@ -1912,6 +1913,7 @@
 		CACD371F25650BC400C23041 /* EurofurenceModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EurofurenceModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CACD372825650BD800C23041 /* EurofurenceModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EurofurenceModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CACD376925650C1200C23041 /* EurofurenceModelTestDoubles.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EurofurenceModelTestDoubles.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CACD37B42565112000C23041 /* ConventionIdentifier+CurrentConvention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConventionIdentifier+CurrentConvention.swift"; sourceTree = "<group>"; };
 		CACEA06C2242827800DFF26C /* NotificationScheduleControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationScheduleControllerTests.swift; sourceTree = "<group>"; };
 		CACEA06E2242832F00DFF26C /* CapturingNotificationScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingNotificationScheduler.swift; sourceTree = "<group>"; };
 		CACF1E4720AE29CB00D904B5 /* StubEventDetailComponentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubEventDetailComponentFactory.swift; sourceTree = "<group>"; };
@@ -4848,6 +4850,7 @@
 				CACD36A525650A9600C23041 /* Info.plist */,
 				CA82DB6822D7BE8600467C2F /* CIDBasedShareableURLFactory.swift */,
 				CA39851722C7A91000117249 /* Remote Configuration */,
+				CACD37B42565112000C23041 /* ConventionIdentifier+CurrentConvention.swift */,
 			);
 			path = EurofurenceApplicationSession;
 			sourceTree = "<group>";
@@ -8428,6 +8431,7 @@
 				CACD37AD25650D2A00C23041 /* UpdateRemoteConfigRefreshCollaboration.swift in Sources */,
 				CACD36F325650B3F00C23041 /* CIDBasedShareableURLFactory.swift in Sources */,
 				CACD37AC25650D2A00C23041 /* RemotelyConfiguredConventionStartDateRepository.swift in Sources */,
+				CACD37B52565112000C23041 /* ConventionIdentifier+CurrentConvention.swift in Sources */,
 				CACD37AE25650D2A00C23041 /* RemoteConfiguration.swift in Sources */,
 				CACD37AB25650D2A00C23041 /* RemoteConfigurationLoader.swift in Sources */,
 			);
