@@ -3,6 +3,7 @@ import Foundation.NSDate
 struct ResolveTimelineEntriesTask {
     
     var repository: EventRepository
+    var eventCategory: EventCategory
     var maximumEventsPerEntry: Int
     var timelineStartDate: Date
     var viewModelFactory: EventViewModelFactory
@@ -31,7 +32,12 @@ struct ResolveTimelineEntriesTask {
             let remainingEntries = clusters.suffix(from: 1).map(makeTimelineEntry(from:))
             timelineEntries = [snapshotEntry] + remainingEntries
         } else {
-            snapshotEntry = EventTimelineEntry(date: timelineStartDate, events: [], additionalEventsCount: 0)
+            snapshotEntry = EventTimelineEntry(
+                date: timelineStartDate,
+                eventCategory: eventCategory,
+                events: [],
+                additionalEventsCount: 0
+            )
             timelineEntries = [snapshotEntry]
         }
         
@@ -43,6 +49,7 @@ struct ResolveTimelineEntriesTask {
         let viewModels = cluster.events.map(viewModelFactory.makeViewModel(for:))
         return EventTimelineEntry(
             date: cluster.clusterStartTime,
+            eventCategory: eventCategory,
             events: viewModels,
             additionalEventsCount: cluster.additionalEventCount
         )

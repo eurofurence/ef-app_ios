@@ -20,10 +20,12 @@ extension EventsTimelineController {
         
         let maximumEventsPerEntry: Int
         let timelineStartDate: Date
+        let eventCategory: EventCategory
         
-        public init(maximumEventsPerEntry: Int, timelineStartDate: Date) {
+        public init(maximumEventsPerEntry: Int, timelineStartDate: Date, eventCategory: EventCategory) {
             self.maximumEventsPerEntry = maximumEventsPerEntry
             self.timelineStartDate = timelineStartDate
+            self.eventCategory = eventCategory
         }
         
     }
@@ -31,6 +33,7 @@ extension EventsTimelineController {
     public func makeTimeline(options: TimelineOptions, completionHandler: @escaping (EventsTimeline) -> Void) {
         ResolveTimelineEntriesTask(
             repository: repository,
+            eventCategory: options.eventCategory,
             maximumEventsPerEntry: options.maximumEventsPerEntry,
             timelineStartDate: options.timelineStartDate,
             viewModelFactory: viewModelFactory,

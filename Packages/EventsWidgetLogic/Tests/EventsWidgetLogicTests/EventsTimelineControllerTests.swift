@@ -42,12 +42,13 @@ class EventsTimelineControllerTests: XCTestCase {
         
         var actual: EventsTimeline?
         controller.makeTimeline(
-            options: .init(maximumEventsPerEntry: 3, timelineStartDate: now),
+            options: .init(maximumEventsPerEntry: 3, timelineStartDate: now, eventCategory: .upcoming),
             completionHandler: { actual = $0 }
         )
         
         let expectedSnapshotEntry = EventTimelineEntry(
             date: now,
+            eventCategory: .upcoming,
             events: [
                 EventViewModel(
                     id: "some_event",
@@ -94,12 +95,13 @@ class EventsTimelineControllerTests: XCTestCase {
         
         var actual: EventsTimeline?
         controller.makeTimeline(
-            options: .init(maximumEventsPerEntry: 3, timelineStartDate: now),
+            options: .init(maximumEventsPerEntry: 3, timelineStartDate: now, eventCategory: .upcoming),
             completionHandler: { actual = $0 }
         )
         
         let expectedSnapshotEntry = EventTimelineEntry(
             date: now,
+            eventCategory: .upcoming,
             events: [
                 EventViewModel(
                     id: "some_event",
@@ -128,6 +130,7 @@ class EventsTimelineControllerTests: XCTestCase {
                 
                 EventTimelineEntry(
                     date: inHalfAnHour,
+                    eventCategory: .upcoming,
                     events: [
                         EventViewModel(
                             id: "some_other_event",
@@ -168,12 +171,13 @@ class EventsTimelineControllerTests: XCTestCase {
         
         var actual: EventsTimeline?
         controller.makeTimeline(
-            options: .init(maximumEventsPerEntry: 3, timelineStartDate: inHalfAnHour),
+            options: .init(maximumEventsPerEntry: 3, timelineStartDate: inHalfAnHour, eventCategory: .upcoming),
             completionHandler: { actual = $0 }
         )
         
         let expectedSnapshotEntry = EventTimelineEntry(
             date: inHalfAnHour,
+            eventCategory: .upcoming,
             events: [
                 EventViewModel(
                     id: "some_other_event",
@@ -209,12 +213,13 @@ class EventsTimelineControllerTests: XCTestCase {
         
         var actual: EventsTimeline?
         controller.makeTimeline(
-            options: .init(maximumEventsPerEntry: 3, timelineStartDate: now),
+            options: .init(maximumEventsPerEntry: 3, timelineStartDate: now, eventCategory: .upcoming),
             completionHandler: { actual = $0 }
         )
         
         let expectedSnapshotEntry = EventTimelineEntry(
             date: now,
+            eventCategory: .upcoming,
             events: [
                 EventViewModel(
                     id: "1",
@@ -268,12 +273,13 @@ class EventsTimelineControllerTests: XCTestCase {
         
         var actual: EventsTimeline?
         controller.makeTimeline(
-            options: .init(maximumEventsPerEntry: 3, timelineStartDate: now),
+            options: .init(maximumEventsPerEntry: 3, timelineStartDate: now, eventCategory: .upcoming),
             completionHandler: { actual = $0 }
         )
         
         let expectedSnapshotEntry = EventTimelineEntry(
             date: now,
+            eventCategory: .upcoming,
             events: [
                 EventViewModel(
                     id: "1",
@@ -319,12 +325,13 @@ class EventsTimelineControllerTests: XCTestCase {
         
         var actual: EventsTimeline?
         controller.makeTimeline(
-            options: .init(maximumEventsPerEntry: 3, timelineStartDate: now),
+            options: .init(maximumEventsPerEntry: 3, timelineStartDate: now, eventCategory: .upcoming),
             completionHandler: { actual = $0 }
         )
         
         let expectedSnapshotEntry = EventTimelineEntry(
             date: now,
+            eventCategory: .upcoming,
             events: [],
             additionalEventsCount: 0
         )
