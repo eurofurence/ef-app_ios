@@ -19,11 +19,24 @@ struct ResolveTimelineEntriesTask {
             maximumEventsPerCluster: maximumEventsPerEntry
         ).makeClusters()
         
-        let entries = eventClusters.map(makeTimelineEntry(from:))
-        let snapshot = entries.first ?? EventTimelineEntry(date: Date(), events: [], additionalEventsCount: 0)
-        let timeline = EventsTimeline(snapshot: snapshot, entries: entries)
-        
+        let timeline = makeTimeline(from: eventClusters)
         completionHandler(timeline)
+    }
+    
+    private func makeTimeline(from clusters: [EventCluster]) -> EventsTimeline {
+        let snapshotEntry: EventTimelineEntry
+        let timelineEntries: [EventTimelineEntry]
+        if let first = clusters.first {
+            snapshotEntry = makeTimelineEntry(from: first)
+            let remainingEntries = clusters.suffix(from: 1).map(makeTimelineEntry(from:))
+            timelineEntries = [snapshotEntry] + remainingEntries
+        } else {
+            snapshotEntry = EventTimelineEntry(date: timelineStartDate, events: [], additionalEventsCount: 0)
+            timelineEntries = [snapshotEntry]
+        }
+        
+        let timeline = EventsTimeline(snapshot: snapshotEntry, entries: timelineEntries)
+        return timeline
     }
     
     private func makeTimelineEntry(from cluster: EventCluster) -> EventTimelineEntry {

@@ -313,4 +313,31 @@ class EventsTimelineControllerTests: XCTestCase {
         XCTAssertEqual(expectedSnapshotEntry, actual?.snapshot)
     }
     
+    func testYieldsEmptyEntryWhenNoEventsAvailable() {
+        let repository = StubEventsRepository(events: [])
+        setUpController(repository: repository)
+        
+        var actual: EventsTimeline?
+        controller.makeTimeline(
+            options: .init(maximumEventsPerEntry: 3, timelineStartDate: now),
+            completionHandler: { actual = $0 }
+        )
+        
+        let expectedSnapshotEntry = EventTimelineEntry(
+            date: now,
+            events: [],
+            additionalEventsCount: 0
+        )
+        
+        let expected = EventsTimeline(
+            snapshot: expectedSnapshotEntry,
+            entries: [
+                expectedSnapshotEntry
+            ]
+        )
+        
+        XCTAssertEqual(expected, actual)
+        XCTAssertEqual(expectedSnapshotEntry, actual?.snapshot)
+    }
+    
 }
