@@ -21,6 +21,19 @@ target :Eurofurence do
   
 end
 
+target :EurofurenceApplicationSession do
+  project 'Eurofurence.xcodeproj'
+  
+  pod 'FirebaseCore'
+  pod 'FirebaseCrashlytics'
+  pod 'FirebaseMessaging'
+  pod 'FirebaseRemoteConfig'
+  
+  target :EurofurenceApplicationSessionTests do
+    inherit! :search_paths
+  end
+end
+
 post_install do |pi|
     pi.pods_project.targets.each do |target|
       target.build_configurations.each do |config|
