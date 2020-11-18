@@ -30,27 +30,31 @@ public final class FakeEvent: Event {
     public var isMainStage: Bool
     public var isPhotoshoot: Bool
     public var isAcceptingFeedback: Bool
+    public var isFavourite: Bool
 
-    public init(identifier: EventIdentifier,
-                title: String,
-                subtitle: String,
-                abstract: String,
-                room: Room,
-                track: Track,
-                hosts: String,
-                startDate: Date,
-                endDate: Date,
-                eventDescription: String,
-                posterGraphicPNGData: Data?,
-                bannerGraphicPNGData: Data?,
-                isSponsorOnly: Bool,
-                isSuperSponsorOnly: Bool,
-                isArtShow: Bool,
-                isKageEvent: Bool,
-                isDealersDen: Bool,
-                isMainStage: Bool,
-                isPhotoshoot: Bool,
-                isAcceptingFeedback: Bool) {
+    public init(
+        identifier: EventIdentifier,
+        title: String,
+        subtitle: String,
+        abstract: String,
+        room: Room,
+        track: Track,
+        hosts: String,
+        startDate: Date,
+        endDate: Date,
+        eventDescription: String,
+        posterGraphicPNGData: Data?,
+        bannerGraphicPNGData: Data?,
+        isSponsorOnly: Bool,
+        isSuperSponsorOnly: Bool,
+        isArtShow: Bool,
+        isKageEvent: Bool,
+        isDealersDen: Bool,
+        isMainStage: Bool,
+        isPhotoshoot: Bool,
+        isAcceptingFeedback: Bool,
+        isFavourite: Bool
+    ) {
         self.identifier = identifier
         self.title = title
         self.subtitle = subtitle
@@ -71,6 +75,7 @@ public final class FakeEvent: Event {
         self.isMainStage = isMainStage
         self.isPhotoshoot = isPhotoshoot
         self.isAcceptingFeedback = isAcceptingFeedback
+        self.isFavourite = isFavourite
 
         favouritedState = .unset
     }
@@ -157,28 +162,31 @@ extension FakeEvent: RandomValueProviding {
 
     public static var random: FakeEvent {
         let startDate = Date.random
-        return FakeEvent(identifier: .random,
-                         title: .random,
-                         subtitle: .random,
-                         abstract: .random,
-                         room: .random,
-                         track: .random,
-                         hosts: .random,
-                         startDate: startDate,
-                         endDate: startDate.addingTimeInterval(.random),
-                         eventDescription: .random,
-                         posterGraphicPNGData: .random,
-                         bannerGraphicPNGData: .random,
-                         isSponsorOnly: .random,
-                         isSuperSponsorOnly: .random,
-                         isArtShow: .random,
-                         isKageEvent: .random,
-                         isDealersDen: .random,
-                         isMainStage: .random,
-                         isPhotoshoot: .random,
-                         isAcceptingFeedback: .random)
+        return FakeEvent(
+            identifier: .random,
+            title: .random,
+            subtitle: .random,
+            abstract: .random,
+            room: .random,
+            track: .random,
+            hosts: .random,
+            startDate: startDate,
+            endDate: startDate.addingTimeInterval(.random),
+            eventDescription: .random,
+            posterGraphicPNGData: .random,
+            bannerGraphicPNGData: .random,
+            isSponsorOnly: .random,
+            isSuperSponsorOnly: .random,
+            isArtShow: .random,
+            isKageEvent: .random,
+            isDealersDen: .random,
+            isMainStage: .random,
+            isPhotoshoot: .random,
+            isAcceptingFeedback: .random,
+            isFavourite: .random
+        )
     }
-
+    
     public static var randomStandardEvent: FakeEvent {
         let event = FakeEvent.random
         event.isSponsorOnly = false

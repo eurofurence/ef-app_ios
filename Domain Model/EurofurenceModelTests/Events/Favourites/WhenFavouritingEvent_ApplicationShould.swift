@@ -71,5 +71,16 @@ class WhenFavouritingEvent_ApplicationShould: XCTestCase {
 
         XCTAssertEqual(expected, observer.capturedFavouriteEventIdentifiers)
     }
+    
+    func testIndicateTheEventIsAFavourite() throws {
+        let identifier = EventIdentifier(events.randomElement().element.identifier)
+        let event = try XCTUnwrap(context.eventsService.fetchEvent(identifier: identifier))
+        
+        XCTAssertFalse(event.isFavourite)
+        
+        event.favourite()
+        
+        XCTAssertTrue(event.isFavourite)
+    }
 
 }

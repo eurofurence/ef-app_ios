@@ -24,6 +24,7 @@ public protocol Event {
     var isMainStage: Bool { get }
     var isPhotoshoot: Bool { get }
     var isAcceptingFeedback: Bool { get }
+    var isFavourite: Bool { get }
     var contentURL: URL { get }
 
     func add(_ observer: EventObserver)

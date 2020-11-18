@@ -131,7 +131,7 @@ class EventImpl: Event {
         observers.removeAll(where: { $0 === observer })
     }
 
-    private var isFavourite: Bool {
+    var isFavourite: Bool {
         didSet {
             postFavouriteStateChangedEvent()
         }
