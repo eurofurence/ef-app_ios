@@ -671,6 +671,7 @@
 		CACD3830256518F100C23041 /* StubBuildConfigurationProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD382F256518F100C23041 /* StubBuildConfigurationProviding.swift */; };
 		CACD38BC2565247400C23041 /* EurofurenceApplicationSession.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CACD36A225650A9600C23041 /* EurofurenceApplicationSession.framework */; };
 		CACD38BD2565247400C23041 /* EurofurenceApplicationSession.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CACD36A225650A9600C23041 /* EurofurenceApplicationSession.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CACD394625653D8F00C23041 /* URLContextActivityDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD394525653D8F00C23041 /* URLContextActivityDescription.swift */; };
 		CACEA06D2242827800DFF26C /* NotificationScheduleControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACEA06C2242827800DFF26C /* NotificationScheduleControllerTests.swift */; };
 		CACEA06F2242832F00DFF26C /* CapturingNotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACEA06E2242832F00DFF26C /* CapturingNotificationScheduler.swift */; };
 		CACF1E4820AE29CB00D904B5 /* StubEventDetailComponentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E4720AE29CB00D904B5 /* StubEventDetailComponentFactory.swift */; };
@@ -1173,7 +1174,6 @@
 		CAFC4A7D25645D7800499A47 /* NoContentPlaceholderImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFC4A7C25645D7800499A47 /* NoContentPlaceholderImage.swift */; };
 		CAFC4A8725645E8F00499A47 /* WidgetColoredBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFC4A8625645E8F00499A47 /* WidgetColoredBackground.swift */; };
 		CAFC4A8C256463A400499A47 /* EurofurenceIntentDefinitions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA630BDC229F14F800754C27 /* EurofurenceIntentDefinitions.framework */; };
-		CAFC4A8D256463A400499A47 /* EurofurenceIntentDefinitions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA630BDC229F14F800754C27 /* EurofurenceIntentDefinitions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D0448F94EED4B9FB5C3B07CD /* Pods-Eurofurence-EurofurenceTests-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3394169A8659D343AAB772B2 /* Pods-Eurofurence-EurofurenceTests-settings-metadata.plist */; };
 		D852CF7D315C7733028AE8F3 /* Pods-EurofurenceApplicationSession-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = B3749D5DCFE8F12C64627A54 /* Pods-EurofurenceApplicationSession-metadata.plist */; };
 		F6AA212665A84829CF0EB371 /* Pods_Eurofurence_Screenshots.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0019020918F90989AA4BDE21 /* Pods_Eurofurence_Screenshots.framework */; };
@@ -2022,6 +2022,7 @@
 		CACD3819256518B100C23041 /* BuildConfigurationProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildConfigurationProviding.swift; sourceTree = "<group>"; };
 		CACD3824256518CF00C23041 /* PreprocessorBuildConfigurationProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreprocessorBuildConfigurationProviding.swift; sourceTree = "<group>"; };
 		CACD382F256518F100C23041 /* StubBuildConfigurationProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubBuildConfigurationProviding.swift; sourceTree = "<group>"; };
+		CACD394525653D8F00C23041 /* URLContextActivityDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLContextActivityDescription.swift; sourceTree = "<group>"; };
 		CACEA06C2242827800DFF26C /* NotificationScheduleControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationScheduleControllerTests.swift; sourceTree = "<group>"; };
 		CACEA06E2242832F00DFF26C /* CapturingNotificationScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingNotificationScheduler.swift; sourceTree = "<group>"; };
 		CACF1E4720AE29CB00D904B5 /* StubEventDetailComponentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubEventDetailComponentFactory.swift; sourceTree = "<group>"; };
@@ -4823,6 +4824,7 @@
 			children = (
 				CAB0FD5322C90B3400D4CB98 /* ActivityDescription.swift */,
 				CAB0FD5522C90B4000D4CB98 /* SystemActivityDescription.swift */,
+				CACD394525653D8F00C23041 /* URLContextActivityDescription.swift */,
 			);
 			path = "Activity State";
 			sourceTree = "<group>";
@@ -8101,6 +8103,7 @@
 				CA6A8D7120E2649C007536CD /* MapsModule.swift in Sources */,
 				CA8276B3204EC013006A7419 /* ApplicationPreloadInteractor.swift in Sources */,
 				CA30EAD01F27D8620053DBF6 /* MessageTableViewCell.swift in Sources */,
+				CACD394625653D8F00C23041 /* URLContextActivityDescription.swift in Sources */,
 				CA25A7FB20E63E9E00875891 /* MapDetailComponentDelegate.swift in Sources */,
 				CA27619A20E01D0F000E52AC /* CollectThemAllComponentFactory.swift in Sources */,
 				CA4010A12110854E0056E16C /* DefaultKnowledgeGroupViewModelFactory.swift in Sources */,

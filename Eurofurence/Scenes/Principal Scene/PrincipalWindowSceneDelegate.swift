@@ -21,6 +21,11 @@ class PrincipalWindowSceneDelegate: NSObject, UIWindowSceneDelegate {
             Application.resume(activity: userActivity)
         }
         
+        let URLContexts = connectionOptions.urlContexts
+        if URLContexts.isEmpty == false {
+            Application.open(URLContexts: URLContexts)
+        }
+        
 #if targetEnvironment(macCatalyst)
         if let titlebar = windowScene.titlebar {
             titlebar.titleVisibility = .hidden
@@ -29,6 +34,10 @@ class PrincipalWindowSceneDelegate: NSObject, UIWindowSceneDelegate {
 #endif
         
         window.makeKeyAndVisible()
+    }
+    
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        Application.open(URLContexts: URLContexts)
     }
     
     func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
