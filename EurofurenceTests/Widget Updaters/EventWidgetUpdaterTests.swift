@@ -4,93 +4,74 @@ import EurofurenceModelTestDoubles
 import XCTest
 
 class EventWidgetUpdaterTests: XCTestCase {
+    
+    private var widgetService: CapturingWidgetService!
+    private var refreshService: CapturingRefreshService!
+    private var eventsService: FakeEventsService!
+    
+    override func setUpWithError() throws {
+        try super.setUpWithError()
+        
+        widgetService = CapturingWidgetService()
+        refreshService = CapturingRefreshService()
+        eventsService = FakeEventsService()
+    }
 
-    func testRequestsUpdateWhenContentIsRefreshed() {
-        let widgetService = CapturingWidgetService()
-        let refreshService = CapturingRefreshService()
-        let eventsService = FakeEventsService()
+    private func setupUpdater() {
         _ = EventWidgetUpdater(
             widgetService: widgetService,
             refreshService: refreshService,
             eventsService: eventsService
         )
+    }
+    
+    func testRequestsUpdateWhenContentIsRefreshed() {
+        setupUpdater()
         
         XCTAssertEqual(.unset, widgetService.reloadState, "No widgets should be refreshed when no events have occurred")
         
         refreshService.simulateRefreshBegan()
         
-        XCTAssertEqual(.unset, widgetService.reloadState, "No widgets should be refreshed until a refresh concludes")
-        
-        refreshService.simulateRefreshFinished()
-        
-        let expectedWidgetsToBeRefreshed = Set(arrayLiteral: "org.eurofurence.EventsWidget")
-        
-        XCTAssertEqual(
-            .reloadRequested(widgets: expectedWidgetsToBeRefreshed),
-            widgetService.reloadState,
-            "Refreshing content should reload the events widget"
-        )
+        assertReloadsEventsWidget(afterAction: { refreshService.simulateRefreshFinished() })
     }
     
     func testRequestsUpdateWhenAnyEventTransitionsFromUnfavouriteToFavourite() {
-        let widgetService = CapturingWidgetService()
-        let refreshService = CapturingRefreshService()
-        let eventsService = FakeEventsService()
         let event = FakeEvent.random
         event.unfavourite()
         eventsService.allEvents = [event]
         
-        _ = EventWidgetUpdater(
-            widgetService: widgetService,
-            refreshService: refreshService,
-            eventsService: eventsService
-        )
+        setupUpdater()
         
-        XCTAssertEqual(
-            .unset,
-            widgetService.reloadState,
-            "No widgets should be refreshed when initially subscribing to events"
-        )
-        
-        event.favourite()
-        
-        let expectedWidgetsToBeRefreshed = Set(arrayLiteral: "org.eurofurence.EventsWidget")
-        
-        XCTAssertEqual(
-            .reloadRequested(widgets: expectedWidgetsToBeRefreshed),
-            widgetService.reloadState,
-            "An event changing favourite state should induce a widget refresh"
-        )
+        assertReloadsEventsWidget(afterAction: { event.favourite() })
     }
     
     func testRequestsUpdateWhenAnyEventTransitionsFromFavouriteToUnfavourite() {
-        let widgetService = CapturingWidgetService()
-        let refreshService = CapturingRefreshService()
-        let eventsService = FakeEventsService()
         let event = FakeEvent.random
         event.favourite()
         eventsService.allEvents = [event]
         
-        _ = EventWidgetUpdater(
-            widgetService: widgetService,
-            refreshService: refreshService,
-            eventsService: eventsService
-        )
+        setupUpdater()
         
+        assertReloadsEventsWidget(afterAction: { event.unfavourite() })
+    }
+    
+    private func assertReloadsEventsWidget(afterAction action: () -> Void, line: UInt = #line) {
         XCTAssertEqual(
             .unset,
             widgetService.reloadState,
-            "No widgets should be refreshed when initially subscribing to events"
+            "No widgets should be refreshed before performing the action",
+            line: line
         )
         
-        event.unfavourite()
+        action()
         
         let expectedWidgetsToBeRefreshed = Set(arrayLiteral: "org.eurofurence.EventsWidget")
         
         XCTAssertEqual(
             .reloadRequested(widgets: expectedWidgetsToBeRefreshed),
             widgetService.reloadState,
-            "An event changing favourite state should induce a widget refresh"
+            "Widgets should be refreshed after performing the action",
+            line: line
         )
     }
 
