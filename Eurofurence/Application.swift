@@ -76,7 +76,11 @@ class Application {
             eventsService: session.services.events
         )
         
-        _ = EventWidgetUpdater(widgetService: SystemWidgetService(), refreshService: session.services.refresh)
+        _ = EventWidgetUpdater(
+            widgetService: SystemWidgetService(), 
+            refreshService: session.services.refresh, 
+            eventsService: session.services.events
+        )
     }
     
     func configurePrincipalScene(window: UIWindow) {
