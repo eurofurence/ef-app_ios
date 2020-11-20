@@ -34,9 +34,9 @@ struct ResolveTimelineEntriesTask {
         } else {
             snapshotEntry = EventTimelineEntry(
                 date: timelineStartDate,
-                eventCategory: eventCategory,
                 events: [],
-                additionalEventsCount: 0
+                additionalEventsCount: 0,
+                context: EventTimelineEntry.Context(category: eventCategory)
             )
             timelineEntries = [snapshotEntry]
         }
@@ -49,9 +49,9 @@ struct ResolveTimelineEntriesTask {
         let viewModels = cluster.events.map(viewModelFactory.makeViewModel(for:))
         return EventTimelineEntry(
             date: cluster.clusterStartTime,
-            eventCategory: eventCategory,
             events: viewModels,
-            additionalEventsCount: cluster.additionalEventCount
+            additionalEventsCount: cluster.additionalEventCount,
+            context: EventTimelineEntry.Context(category: eventCategory)
         )
     }
     

@@ -53,9 +53,9 @@ struct EventsTimelineProvider: IntentTimelineProvider {
         
         return EventTimelineEntry(
             date: Date(),
-            eventCategory: .upcoming,
             events: Array(placeholderEvents),
-            additionalEventsCount: 1
+            additionalEventsCount: 1,
+            context: EventTimelineEntry.Context(category: .upcoming)
         )
     }
 

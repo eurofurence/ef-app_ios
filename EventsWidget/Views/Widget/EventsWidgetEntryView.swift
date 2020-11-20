@@ -31,10 +31,10 @@ struct EventsWidgetEntryView: View {
         
         var body: some View {
             if entry.events.isEmpty {
-                VerticalPlaceholderWithPrompt(category: entry.eventCategory, textSize: .small)
+                VerticalPlaceholderWithPrompt(category: entry.context.category, textSize: .small)
             } else {
                 WidgetLayout {
-                    CategoryTextHeadline(category: entry.eventCategory)
+                    CategoryTextHeadline(category: entry.context.category)
                 } content: {
                     VStack(alignment: .leading, spacing: 10) {
                         ForEach(entry.events) { (event) in
@@ -63,10 +63,10 @@ struct EventsWidgetEntryView: View {
         
         var body: some View {
             if entry.events.isEmpty {
-                HorizontalPlaceholderWithPrompt(filter: entry.eventCategory)
+                HorizontalPlaceholderWithPrompt(filter: entry.context.category)
             } else {
                 WidgetLayout {
-                    CategoryTextHeadline(category: entry.eventCategory)
+                    CategoryTextHeadline(category: entry.context.category)
                 } content: {
                     VStack(alignment: .leading, spacing: 5) {
                         ForEach(entry.events) { (event) in
@@ -102,10 +102,10 @@ struct EventsWidgetEntryView: View {
         
         var body: some View {
             if entry.events.isEmpty {
-                VerticalPlaceholderWithPrompt(category: entry.eventCategory, textSize: .large)
+                VerticalPlaceholderWithPrompt(category: entry.context.category, textSize: .large)
             } else {
                 WidgetLayout {
-                    CategoryTextHeadline(category: entry.eventCategory)
+                    CategoryTextHeadline(category: entry.context.category)
                 } content: {
                     VStack(alignment: .leading) {
                         ForEach(entry.events) { (event) in
@@ -241,30 +241,30 @@ struct EventsWidget_Previews: PreviewProvider {
         
         let smallEntry = EventTimelineEntry(
             date: Date(),
-            eventCategory: .upcoming,
             events: Array(events.prefix(2)),
-            additionalEventsCount: 7
+            additionalEventsCount: 7,
+            context: EventTimelineEntry.Context(category: .upcoming)
         )
         
         let mediumEntry = EventTimelineEntry(
             date: Date(),
-            eventCategory: .upcoming,
             events: Array(events.prefix(3)),
-            additionalEventsCount: 6
+            additionalEventsCount: 6,
+            context: EventTimelineEntry.Context(category: .upcoming)
         )
         
         let largeEntry = EventTimelineEntry(
             date: Date(),
-            eventCategory: .upcoming,
             events: events,
-            additionalEventsCount: 4
+            additionalEventsCount: 4,
+            context: EventTimelineEntry.Context(category: .upcoming)
         )
         
         let noEvents = EventTimelineEntry(
             date: Date(),
-            eventCategory: .upcoming,
             events: [],
-            additionalEventsCount: 0
+            additionalEventsCount: 0,
+            context: EventTimelineEntry.Context(category: .upcoming)
         )
         
         Group {

@@ -48,7 +48,6 @@ class EventsTimelineControllerTests: XCTestCase {
         
         let expectedSnapshotEntry = EventTimelineEntry(
             date: now,
-            eventCategory: .upcoming,
             events: [
                 EventViewModel(
                     id: "some_event",
@@ -59,7 +58,8 @@ class EventsTimelineControllerTests: XCTestCase {
                     widgetURL: event.deepLinkingContentURL
                 )
             ],
-            additionalEventsCount: 0
+            additionalEventsCount: 0,
+            context: EventTimelineEntry.Context(category: .upcoming)
         )
         
         let expected = EventsTimeline(
@@ -101,7 +101,6 @@ class EventsTimelineControllerTests: XCTestCase {
         
         let expectedSnapshotEntry = EventTimelineEntry(
             date: now,
-            eventCategory: .upcoming,
             events: [
                 EventViewModel(
                     id: "some_event",
@@ -120,7 +119,9 @@ class EventsTimelineControllerTests: XCTestCase {
                     formattedEndTime: string(from: inOneHour),
                     widgetURL: laterEvent.deepLinkingContentURL
                 )
-            ], additionalEventsCount: 0
+            ],
+            additionalEventsCount: 0,
+            context: EventTimelineEntry.Context(category: .upcoming)
         )
         
         let expected = EventsTimeline(
@@ -130,7 +131,6 @@ class EventsTimelineControllerTests: XCTestCase {
                 
                 EventTimelineEntry(
                     date: inHalfAnHour,
-                    eventCategory: .upcoming,
                     events: [
                         EventViewModel(
                             id: "some_other_event",
@@ -140,7 +140,9 @@ class EventsTimelineControllerTests: XCTestCase {
                             formattedEndTime: string(from: inOneHour),
                             widgetURL: laterEvent.deepLinkingContentURL
                         )
-                    ], additionalEventsCount: 0
+                    ],
+                    additionalEventsCount: 0,
+                    context: EventTimelineEntry.Context(category: .upcoming)
                 )
             ]
         )
@@ -177,7 +179,6 @@ class EventsTimelineControllerTests: XCTestCase {
         
         let expectedSnapshotEntry = EventTimelineEntry(
             date: inHalfAnHour,
-            eventCategory: .upcoming,
             events: [
                 EventViewModel(
                     id: "some_other_event",
@@ -187,7 +188,9 @@ class EventsTimelineControllerTests: XCTestCase {
                     formattedEndTime: string(from: inOneHour),
                     widgetURL: laterEvent.deepLinkingContentURL
                 )
-            ], additionalEventsCount: 0
+            ],
+            additionalEventsCount: 0,
+            context: EventTimelineEntry.Context(category: .upcoming)
         )
         
         let expected = EventsTimeline(
@@ -219,7 +222,6 @@ class EventsTimelineControllerTests: XCTestCase {
         
         let expectedSnapshotEntry = EventTimelineEntry(
             date: now,
-            eventCategory: .upcoming,
             events: [
                 EventViewModel(
                     id: "1",
@@ -245,7 +247,9 @@ class EventsTimelineControllerTests: XCTestCase {
                     formattedEndTime: string(from: inHalfAnHour),
                     widgetURL: events[1].deepLinkingContentURL
                 )
-            ], additionalEventsCount: 0
+            ],
+            additionalEventsCount: 0,
+            context: EventTimelineEntry.Context(category: .upcoming)
         )
         
         let expected = EventsTimeline(
@@ -279,7 +283,6 @@ class EventsTimelineControllerTests: XCTestCase {
         
         let expectedSnapshotEntry = EventTimelineEntry(
             date: now,
-            eventCategory: .upcoming,
             events: [
                 EventViewModel(
                     id: "1",
@@ -305,7 +308,9 @@ class EventsTimelineControllerTests: XCTestCase {
                     formattedEndTime: string(from: inHalfAnHour),
                     widgetURL: events[1].deepLinkingContentURL
                 )
-            ], additionalEventsCount: 2
+            ],
+            additionalEventsCount: 2,
+            context: EventTimelineEntry.Context(category: .upcoming)
         )
         
         let expected = EventsTimeline(
@@ -331,9 +336,9 @@ class EventsTimelineControllerTests: XCTestCase {
         
         let expectedSnapshotEntry = EventTimelineEntry(
             date: now,
-            eventCategory: .upcoming,
             events: [],
-            additionalEventsCount: 0
+            additionalEventsCount: 0,
+            context: EventTimelineEntry.Context(category: .upcoming)
         )
         
         let expected = EventsTimeline(
