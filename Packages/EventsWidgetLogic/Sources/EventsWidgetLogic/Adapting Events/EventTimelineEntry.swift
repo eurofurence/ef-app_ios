@@ -5,9 +5,11 @@ public struct EventTimelineEntry: Equatable {
     public struct Context: Equatable {
         
         public let category: EventCategory
+        public let isFavouritesOnly: Bool
         
-        public init(category: EventCategory) {
+        public init(category: EventCategory, isFavouritesOnly: Bool) {
             self.category = category
+            self.isFavouritesOnly = isFavouritesOnly
         }
         
     }

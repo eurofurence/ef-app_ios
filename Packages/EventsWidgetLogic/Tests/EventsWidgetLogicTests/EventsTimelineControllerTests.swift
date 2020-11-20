@@ -42,7 +42,12 @@ class EventsTimelineControllerTests: XCTestCase {
         
         var actual: EventsTimeline?
         controller.makeTimeline(
-            options: .init(maximumEventsPerEntry: 3, timelineStartDate: now, eventCategory: .upcoming),
+            options: .init(
+                maximumEventsPerEntry: 3,
+                timelineStartDate: now,
+                eventCategory: .upcoming,
+                isFavouritesOnly: true
+            ),
             completionHandler: { actual = $0 }
         )
         
@@ -59,7 +64,7 @@ class EventsTimelineControllerTests: XCTestCase {
                 )
             ],
             additionalEventsCount: 0,
-            context: EventTimelineEntry.Context(category: .upcoming)
+            context: EventTimelineEntry.Context(category: .upcoming, isFavouritesOnly: true)
         )
         
         let expected = EventsTimeline(
@@ -95,7 +100,12 @@ class EventsTimelineControllerTests: XCTestCase {
         
         var actual: EventsTimeline?
         controller.makeTimeline(
-            options: .init(maximumEventsPerEntry: 3, timelineStartDate: now, eventCategory: .upcoming),
+            options: .init(
+                maximumEventsPerEntry: 3,
+                timelineStartDate: now,
+                eventCategory: .upcoming,
+                isFavouritesOnly: false
+            ),
             completionHandler: { actual = $0 }
         )
         
@@ -121,7 +131,7 @@ class EventsTimelineControllerTests: XCTestCase {
                 )
             ],
             additionalEventsCount: 0,
-            context: EventTimelineEntry.Context(category: .upcoming)
+            context: EventTimelineEntry.Context(category: .upcoming, isFavouritesOnly: false)
         )
         
         let expected = EventsTimeline(
@@ -142,7 +152,7 @@ class EventsTimelineControllerTests: XCTestCase {
                         )
                     ],
                     additionalEventsCount: 0,
-                    context: EventTimelineEntry.Context(category: .upcoming)
+                    context: EventTimelineEntry.Context(category: .upcoming, isFavouritesOnly: false)
                 )
             ]
         )
@@ -173,7 +183,12 @@ class EventsTimelineControllerTests: XCTestCase {
         
         var actual: EventsTimeline?
         controller.makeTimeline(
-            options: .init(maximumEventsPerEntry: 3, timelineStartDate: inHalfAnHour, eventCategory: .upcoming),
+            options: .init(
+                maximumEventsPerEntry: 3,
+                timelineStartDate: inHalfAnHour,
+                eventCategory: .upcoming,
+                isFavouritesOnly: false
+            ),
             completionHandler: { actual = $0 }
         )
         
@@ -190,7 +205,7 @@ class EventsTimelineControllerTests: XCTestCase {
                 )
             ],
             additionalEventsCount: 0,
-            context: EventTimelineEntry.Context(category: .upcoming)
+            context: EventTimelineEntry.Context(category: .upcoming, isFavouritesOnly: false)
         )
         
         let expected = EventsTimeline(
@@ -216,7 +231,12 @@ class EventsTimelineControllerTests: XCTestCase {
         
         var actual: EventsTimeline?
         controller.makeTimeline(
-            options: .init(maximumEventsPerEntry: 3, timelineStartDate: now, eventCategory: .upcoming),
+            options: .init(
+                maximumEventsPerEntry: 3,
+                timelineStartDate: now,
+                eventCategory: .upcoming,
+                isFavouritesOnly: false
+            ),
             completionHandler: { actual = $0 }
         )
         
@@ -249,7 +269,7 @@ class EventsTimelineControllerTests: XCTestCase {
                 )
             ],
             additionalEventsCount: 0,
-            context: EventTimelineEntry.Context(category: .upcoming)
+            context: EventTimelineEntry.Context(category: .upcoming, isFavouritesOnly: false)
         )
         
         let expected = EventsTimeline(
@@ -277,7 +297,12 @@ class EventsTimelineControllerTests: XCTestCase {
         
         var actual: EventsTimeline?
         controller.makeTimeline(
-            options: .init(maximumEventsPerEntry: 3, timelineStartDate: now, eventCategory: .upcoming),
+            options: .init(
+                maximumEventsPerEntry: 3,
+                timelineStartDate: now,
+                eventCategory: .upcoming,
+                isFavouritesOnly: false
+            ),
             completionHandler: { actual = $0 }
         )
         
@@ -310,7 +335,7 @@ class EventsTimelineControllerTests: XCTestCase {
                 )
             ],
             additionalEventsCount: 2,
-            context: EventTimelineEntry.Context(category: .upcoming)
+            context: EventTimelineEntry.Context(category: .upcoming, isFavouritesOnly: false)
         )
         
         let expected = EventsTimeline(
@@ -330,7 +355,12 @@ class EventsTimelineControllerTests: XCTestCase {
         
         var actual: EventsTimeline?
         controller.makeTimeline(
-            options: .init(maximumEventsPerEntry: 3, timelineStartDate: now, eventCategory: .upcoming),
+            options: .init(
+                maximumEventsPerEntry: 3,
+                timelineStartDate: now,
+                eventCategory: .upcoming,
+                isFavouritesOnly: false
+            ),
             completionHandler: { actual = $0 }
         )
         
@@ -338,7 +368,7 @@ class EventsTimelineControllerTests: XCTestCase {
             date: now,
             events: [],
             additionalEventsCount: 0,
-            context: EventTimelineEntry.Context(category: .upcoming)
+            context: EventTimelineEntry.Context(category: .upcoming, isFavouritesOnly: false)
         )
         
         let expected = EventsTimeline(

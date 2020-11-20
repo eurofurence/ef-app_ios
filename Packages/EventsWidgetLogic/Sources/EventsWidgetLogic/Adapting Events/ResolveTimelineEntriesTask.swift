@@ -4,6 +4,7 @@ struct ResolveTimelineEntriesTask {
     
     var repository: EventRepository
     var eventCategory: EventCategory
+    var isFavouritesOnly: Bool
     var maximumEventsPerEntry: Int
     var timelineStartDate: Date
     var viewModelFactory: EventViewModelFactory
@@ -36,7 +37,7 @@ struct ResolveTimelineEntriesTask {
                 date: timelineStartDate,
                 events: [],
                 additionalEventsCount: 0,
-                context: EventTimelineEntry.Context(category: eventCategory)
+                context: EventTimelineEntry.Context(category: eventCategory, isFavouritesOnly: isFavouritesOnly)
             )
             timelineEntries = [snapshotEntry]
         }
@@ -51,7 +52,7 @@ struct ResolveTimelineEntriesTask {
             date: cluster.clusterStartTime,
             events: viewModels,
             additionalEventsCount: cluster.additionalEventCount,
-            context: EventTimelineEntry.Context(category: eventCategory)
+            context: EventTimelineEntry.Context(category: eventCategory, isFavouritesOnly: isFavouritesOnly)
         )
     }
     

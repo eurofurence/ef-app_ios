@@ -21,11 +21,18 @@ extension EventsTimelineController {
         let maximumEventsPerEntry: Int
         let timelineStartDate: Date
         let eventCategory: EventCategory
+        let isFavouritesOnly: Bool
         
-        public init(maximumEventsPerEntry: Int, timelineStartDate: Date, eventCategory: EventCategory) {
+        public init(
+            maximumEventsPerEntry: Int,
+            timelineStartDate: Date,
+            eventCategory: EventCategory,
+            isFavouritesOnly: Bool
+        ) {
             self.maximumEventsPerEntry = maximumEventsPerEntry
             self.timelineStartDate = timelineStartDate
             self.eventCategory = eventCategory
+            self.isFavouritesOnly = isFavouritesOnly
         }
         
     }
@@ -34,6 +41,7 @@ extension EventsTimelineController {
         ResolveTimelineEntriesTask(
             repository: repository,
             eventCategory: options.eventCategory,
+            isFavouritesOnly: options.isFavouritesOnly,
             maximumEventsPerEntry: options.maximumEventsPerEntry,
             timelineStartDate: options.timelineStartDate,
             viewModelFactory: viewModelFactory,

@@ -95,7 +95,8 @@ struct EventsTimelineProvider: IntentTimelineProvider {
         let options = EventsTimelineController.TimelineOptions(
             maximumEventsPerEntry: widgetContext.recommendedNumberOfEvents,
             timelineStartDate: Date(),
-            eventCategory: EventCategory(filter: configuration.filter)
+            eventCategory: EventCategory(filter: configuration.filter),
+            isFavouritesOnly: configuration.favouritesOnly?.boolValue ?? false
         )
         
         controller.makeTimeline(options: options, completionHandler: completionHandler)
