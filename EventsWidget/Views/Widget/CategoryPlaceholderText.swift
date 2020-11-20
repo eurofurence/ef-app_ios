@@ -7,6 +7,7 @@ struct CategoryPlaceholderText: View {
     
     var body: some View {
         text
+            .font(.caption)
             .multilineTextAlignment(.center)
             .foregroundColor(.primary)
     }
