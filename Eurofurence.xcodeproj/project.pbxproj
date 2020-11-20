@@ -619,8 +619,8 @@
 		CABA43A11FD57A78009CB5B0 /* PreloadComponentBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43A01FD57A78009CB5B0 /* PreloadComponentBuilder.swift */; };
 		CABA43A31FD57C65009CB5B0 /* TutorialModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43A21FD57C65009CB5B0 /* TutorialModuleBuilder.swift */; };
 		CABA43AC1FD5DC68009CB5B0 /* LoginScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43AB1FD5DC68009CB5B0 /* LoginScene.swift */; };
-		CABBCA302566FE0B007A11A2 /* SplitViewDetailBugTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABBCA2F2566FE0B007A11A2 /* SplitViewDetailBugTests.swift */; };
 		CABBCA162565B153007A11A2 /* EventCategory+Intent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABBCA152565B153007A11A2 /* EventCategory+Intent.swift */; };
+		CABBCA302566FE0B007A11A2 /* SplitViewDetailBugTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABBCA2F2566FE0B007A11A2 /* SplitViewDetailBugTests.swift */; };
 		CABCDE6824C9C78000500F6B /* EmbeddedEventContentRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABCDE6724C9C78000500F6B /* EmbeddedEventContentRepresentation.swift */; };
 		CABCDE6A24C9C79300500F6B /* EmbeddedEventContentRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABCDE6924C9C79300500F6B /* EmbeddedEventContentRoute.swift */; };
 		CABCDE6C24C9C7BD00500F6B /* EmbeddedEventContentRouteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABCDE6B24C9C7BD00500F6B /* EmbeddedEventContentRouteTests.swift */; };
@@ -1172,7 +1172,6 @@
 		CAFC4A612564583A00499A47 /* EventLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFC4A602564583A00499A47 /* EventLocation.swift */; };
 		CAFC4A6C2564589500499A47 /* EventStartTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFC4A6B2564589500499A47 /* EventStartTime.swift */; };
 		CAFC4A72256458FA00499A47 /* EventEndTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFC4A71256458FA00499A47 /* EventEndTime.swift */; };
-		CAFC4A7D25645D7800499A47 /* NoContentPlaceholderImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFC4A7C25645D7800499A47 /* NoContentPlaceholderImage.swift */; };
 		CAFC4A8725645E8F00499A47 /* WidgetColoredBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFC4A8625645E8F00499A47 /* WidgetColoredBackground.swift */; };
 		CAFC4A8C256463A400499A47 /* EurofurenceIntentDefinitions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA630BDC229F14F800754C27 /* EurofurenceIntentDefinitions.framework */; };
 		D0448F94EED4B9FB5C3B07CD /* Pods-Eurofurence-EurofurenceTests-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3394169A8659D343AAB772B2 /* Pods-Eurofurence-EurofurenceTests-settings-metadata.plist */; };
@@ -1990,8 +1989,8 @@
 		CABA43A01FD57A78009CB5B0 /* PreloadComponentBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadComponentBuilder.swift; sourceTree = "<group>"; };
 		CABA43A21FD57C65009CB5B0 /* TutorialModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialModuleBuilder.swift; sourceTree = "<group>"; };
 		CABA43AB1FD5DC68009CB5B0 /* LoginScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScene.swift; sourceTree = "<group>"; };
-		CABBCA2F2566FE0B007A11A2 /* SplitViewDetailBugTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewDetailBugTests.swift; sourceTree = "<group>"; };
 		CABBCA152565B153007A11A2 /* EventCategory+Intent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventCategory+Intent.swift"; sourceTree = "<group>"; };
+		CABBCA2F2566FE0B007A11A2 /* SplitViewDetailBugTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewDetailBugTests.swift; sourceTree = "<group>"; };
 		CABCDE6724C9C78000500F6B /* EmbeddedEventContentRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedEventContentRepresentation.swift; sourceTree = "<group>"; };
 		CABCDE6924C9C79300500F6B /* EmbeddedEventContentRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedEventContentRoute.swift; sourceTree = "<group>"; };
 		CABCDE6B24C9C7BD00500F6B /* EmbeddedEventContentRouteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedEventContentRouteTests.swift; sourceTree = "<group>"; };
@@ -2524,7 +2523,6 @@
 		CAFC4A602564583A00499A47 /* EventLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLocation.swift; sourceTree = "<group>"; };
 		CAFC4A6B2564589500499A47 /* EventStartTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventStartTime.swift; sourceTree = "<group>"; };
 		CAFC4A71256458FA00499A47 /* EventEndTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEndTime.swift; sourceTree = "<group>"; };
-		CAFC4A7C25645D7800499A47 /* NoContentPlaceholderImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoContentPlaceholderImage.swift; sourceTree = "<group>"; };
 		CAFC4A8625645E8F00499A47 /* WidgetColoredBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetColoredBackground.swift; sourceTree = "<group>"; };
 		CE2BA268DF915CD181D6DD26 /* Pods-Eurofurence-EurofurenceUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eurofurence-EurofurenceUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Eurofurence-EurofurenceUITests/Pods-Eurofurence-EurofurenceUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D48DFBCB82C7548D555B2169 /* Pods-Eurofurence-ScreenshotGenerator-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Eurofurence-ScreenshotGenerator-metadata.plist"; path = "Pods/Pods-Eurofurence-ScreenshotGenerator-metadata.plist"; sourceTree = "<group>"; };
@@ -3680,7 +3678,6 @@
 		CA526F942564573000BDD7BB /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				CAFC4A7C25645D7800499A47 /* NoContentPlaceholderImage.swift */,
 				CAFC4A662564588D00499A47 /* Event */,
 				CAFC4A7725645D6500499A47 /* Widget */,
 			);
@@ -8684,7 +8681,6 @@
 				CA5F270A25570CE600CED97A /* Color+Catalogue.swift in Sources */,
 				CA5F2716255711C700CED97A /* CategoryTextHeadline.swift in Sources */,
 				CA5F26C82556F0E800CED97A /* EventsWidgetEntryView.swift in Sources */,
-				CAFC4A7D25645D7800499A47 /* NoContentPlaceholderImage.swift in Sources */,
 				CA526F8F256456F900BDD7BB /* AdditionalEventsFooter.swift in Sources */,
 				CA5891E02562F2E800FC9BC1 /* HoursAndMinutesEventTimeFormatter.swift in Sources */,
 				CAFC4A612564583A00499A47 /* EventLocation.swift in Sources */,

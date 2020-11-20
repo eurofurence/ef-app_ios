@@ -10,18 +10,26 @@ struct EventsWidgetEntryView: View {
     var entry: EventTimelineEntry
 
     var body: some View {
-        switch family {
-        case .systemSmall:
-            SmallWidgetContents(entry: entry)
-            
-        case .systemMedium:
-            MediumWidgetContents(entry: entry)
-            
-        case .systemLarge:
-            LargeWidgetContents(entry: entry)
-            
-        @unknown default:
-            MediumWidgetContents(entry: entry)
+        WidgetLayout {
+            WidgetTitle(entry: entry)
+        } content: {
+            if entry.events.isEmpty {
+                PlaceholderPrompt(category: entry.context.category)
+            } else {
+                switch family {
+                case .systemSmall:
+                    SmallWidgetContents(entry: entry)
+                    
+                case .systemMedium:
+                    MediumWidgetContents(entry: entry)
+                    
+                case .systemLarge:
+                    LargeWidgetContents(entry: entry)
+                    
+                @unknown default:
+                    MediumWidgetContents(entry: entry)
+                }
+            }
         }
     }
     
@@ -50,66 +58,50 @@ struct EventsWidgetEntryView: View {
         var entry: EventTimelineEntry
         
         var body: some View {
-            if entry.events.isEmpty {
-                VerticalPlaceholderWithPrompt(category: entry.context.category, textSize: .small)
-            } else {
-                WidgetLayout {
-                    WidgetTitle(entry: entry)
-                } content: {
-                    VStack(alignment: .leading, spacing: 10) {
-                        ForEach(entry.events) { (event) in
-                            VStack(alignment: .leading) {
-                                HStack {
-                                    EventTitle(event.title)
-                                    Spacer()
-                                    EventStartTime(event.formattedStartTime)
-                                }
-                                
-                                EventLocation(event.location)
-                            }
+            VStack(alignment: .leading, spacing: 10) {
+                ForEach(entry.events) { (event) in
+                    VStack(alignment: .leading) {
+                        HStack {
+                            EventTitle(event.title)
+                            Spacer()
+                            EventStartTime(event.formattedStartTime)
                         }
                         
-                        AdditionalEventsFooter(additionalEventsCount: entry.additionalEventsCount)
+                        EventLocation(event.location)
                     }
                 }
+                
+                AdditionalEventsFooter(additionalEventsCount: entry.additionalEventsCount)
             }
         }
         
     }
-
+    
     private struct MediumWidgetContents: View {
         
         var entry: EventTimelineEntry
         
         var body: some View {
-            if entry.events.isEmpty {
-                HorizontalPlaceholderWithPrompt(filter: entry.context.category)
-            } else {
-                WidgetLayout {
-                    WidgetTitle(entry: entry)
-                } content: {
-                    VStack(alignment: .leading, spacing: 5) {
-                        ForEach(entry.events) { (event) in
-                            Link(destination: event.widgetURL) {
-                                HStack(alignment: .top) {
-                                    VStack(alignment: .leading) {
-                                        EventTitle(event.title)
-                                        EventLocation(event.location)
-                                    }
-                                    
-                                    Spacer()
-                                    
-                                    HStack {
-                                        EventStartTime(event.formattedStartTime)
-                                        EventEndTime(event.formattedEndTime)
-                                    }
-                                }
+            VStack(alignment: .leading, spacing: 5) {
+                ForEach(entry.events) { (event) in
+                    Link(destination: event.widgetURL) {
+                        HStack(alignment: .top) {
+                            VStack(alignment: .leading) {
+                                EventTitle(event.title)
+                                EventLocation(event.location)
+                            }
+                            
+                            Spacer()
+                            
+                            HStack {
+                                EventStartTime(event.formattedStartTime)
+                                EventEndTime(event.formattedEndTime)
                             }
                         }
-                        
-                        AdditionalEventsFooter(additionalEventsCount: entry.additionalEventsCount)
                     }
                 }
+                
+                AdditionalEventsFooter(additionalEventsCount: entry.additionalEventsCount)
             }
         }
         
@@ -121,92 +113,55 @@ struct EventsWidgetEntryView: View {
         var entry: EventTimelineEntry
         
         var body: some View {
-            if entry.events.isEmpty {
-                VerticalPlaceholderWithPrompt(category: entry.context.category, textSize: .large)
-            } else {
-                WidgetLayout {
-                    WidgetTitle(entry: entry)
-                } content: {
-                    VStack(alignment: .leading) {
-                        ForEach(entry.events) { (event) in
-                            Link(destination: event.widgetURL) {
-                                if event == entry.events.first {
-                                    Divider()
-                                        .hidden()
-                                } else {
-                                    Divider()
-                                        .padding([.top, .bottom], interRowSpacing)
-                                }
-                                
-                                HStack(alignment: .top) {
-                                    VStack(alignment: .leading) {
-                                        EventTitle(event.title)
-                                        EventLocation(event.location)
-                                    }
-                                    
-                                    Spacer()
-                                    
-                                    VStack(alignment: .trailing) {
-                                        EventStartTime(event.formattedStartTime)
-                                        EventEndTime(event.formattedEndTime)
-                                    }
-                                }
-                            }
-                        }
-                        
-                        if entry.additionalEventsCount > 0 {
+            VStack(alignment: .leading) {
+                ForEach(entry.events) { (event) in
+                    Link(destination: event.widgetURL) {
+                        if event == entry.events.first {
+                            Divider()
+                                .hidden()
+                        } else {
                             Divider()
                                 .padding([.top, .bottom], interRowSpacing)
+                        }
+                        
+                        HStack(alignment: .top) {
+                            VStack(alignment: .leading) {
+                                EventTitle(event.title)
+                                EventLocation(event.location)
+                            }
                             
-                            AdditionalEventsFooter(additionalEventsCount: entry.additionalEventsCount)
+                            Spacer()
+                            
+                            VStack(alignment: .trailing) {
+                                EventStartTime(event.formattedStartTime)
+                                EventEndTime(event.formattedEndTime)
+                            }
                         }
                     }
                 }
-            }
-        }
-    }
-
-    private struct VerticalPlaceholderWithPrompt: View {
-        
-        var category: EventCategory
-        var textSize: CategoryPlaceholderText.Size
-        
-        var body: some View {
-            WidgetColoredBackground {
-                VStack {
-                    Spacer()
+                
+                if entry.additionalEventsCount > 0 {
+                    Divider()
+                        .padding([.top, .bottom], interRowSpacing)
                     
-                    NoContentPlaceholderImage()
-                        .frame(maxHeight: 250)
-                    
-                    CategoryPlaceholderText(category: category, size: textSize)
-                    
-                    Spacer()
+                    AdditionalEventsFooter(additionalEventsCount: entry.additionalEventsCount)
                 }
             }
         }
-        
     }
     
-    private struct HorizontalPlaceholderWithPrompt: View {
+    private struct PlaceholderPrompt: View {
         
-        var filter: EventCategory
+        var category: EventCategory
         
         var body: some View {
-            WidgetColoredBackground {
-                HStack(spacing: 17) {
-                    Spacer()
-                    
-                    NoContentPlaceholderImage()
-                        .frame(maxHeight: 250)
-                        .padding()
-                    
-                    Spacer()
-                    
-                    CategoryPlaceholderText(category: filter, size: .large)
-                    
-                    Spacer()
-                }
+            VStack {
+                Spacer()
+                
+                CategoryPlaceholderText(category: category)
+                    .padding()
+                
+                Spacer()
             }
         }
         
