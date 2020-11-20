@@ -53,10 +53,18 @@ public struct PrincipalContentAggregator: PrincipalContentModuleProviding {
     
     private class SplitViewController: UISplitViewController, UISplitViewControllerDelegate {
         
+        init() {
+            super.init(nibName: nil, bundle: nil)
+            delegate = self
+        }
+        
+        required init?(coder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
+        
         override func viewDidLoad() {
             super.viewDidLoad()
             
-            delegate = self
             extendedLayoutIncludesOpaqueBars = true
             preferredDisplayMode = .allVisible
         }
