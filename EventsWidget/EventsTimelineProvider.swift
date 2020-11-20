@@ -48,6 +48,7 @@ struct EventsTimelineProvider: IntentTimelineProvider {
                 formattedEndTime: "00:30"
             )
         ]
+        
         let placeholderEvents = sampleEvents.prefix(widgetContext.recommendedNumberOfEvents)
         
         return EventTimelineEntry(
@@ -90,13 +91,10 @@ struct EventsTimelineProvider: IntentTimelineProvider {
             eventTimeFormatter: HoursAndMinutesEventTimeFormatter.shared
         )
         
-        let components = DateComponents(calendar: .current, timeZone: .current, year: 2019, month: 8, day: 15, hour: 14)
-        let date = Calendar.current.date(from: components)!
-        
         let widgetContext = EventWidgetContext(timelineContext: context)
         let options = EventsTimelineController.TimelineOptions(
             maximumEventsPerEntry: widgetContext.recommendedNumberOfEvents,
-            timelineStartDate: date,
+            timelineStartDate: Date(),
             eventCategory: EventCategory(filter: configuration.filter)
         )
         
