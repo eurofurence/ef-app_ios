@@ -24,6 +24,26 @@ struct EventsWidgetEntryView: View {
             MediumWidgetContents(entry: entry)
         }
     }
+    
+    private struct WidgetTitle: View {
+        
+        var entry: EventTimelineEntry
+        
+        var body: some View {
+            HStack {
+                CategoryTextHeadline(category: entry.context.category)
+                
+                if entry.context.isFavouritesOnly {
+                    Spacer()
+                    
+                    Image(systemName: "heart.fill")
+                        .foregroundColor(.red)
+                        .padding(.trailing)
+                }
+            }
+        }
+        
+    }
 
     private struct SmallWidgetContents: View {
         
@@ -34,7 +54,7 @@ struct EventsWidgetEntryView: View {
                 VerticalPlaceholderWithPrompt(category: entry.context.category, textSize: .small)
             } else {
                 WidgetLayout {
-                    CategoryTextHeadline(category: entry.context.category)
+                    WidgetTitle(entry: entry)
                 } content: {
                     VStack(alignment: .leading, spacing: 10) {
                         ForEach(entry.events) { (event) in
@@ -66,7 +86,7 @@ struct EventsWidgetEntryView: View {
                 HorizontalPlaceholderWithPrompt(filter: entry.context.category)
             } else {
                 WidgetLayout {
-                    CategoryTextHeadline(category: entry.context.category)
+                    WidgetTitle(entry: entry)
                 } content: {
                     VStack(alignment: .leading, spacing: 5) {
                         ForEach(entry.events) { (event) in
@@ -105,7 +125,7 @@ struct EventsWidgetEntryView: View {
                 VerticalPlaceholderWithPrompt(category: entry.context.category, textSize: .large)
             } else {
                 WidgetLayout {
-                    CategoryTextHeadline(category: entry.context.category)
+                    WidgetTitle(entry: entry)
                 } content: {
                     VStack(alignment: .leading) {
                         ForEach(entry.events) { (event) in
@@ -243,28 +263,28 @@ struct EventsWidget_Previews: PreviewProvider {
             date: Date(),
             events: Array(events.prefix(2)),
             additionalEventsCount: 7,
-            context: EventTimelineEntry.Context(category: .upcoming)
+            context: EventTimelineEntry.Context(category: .upcoming, isFavouritesOnly: false)
         )
         
         let mediumEntry = EventTimelineEntry(
             date: Date(),
             events: Array(events.prefix(3)),
             additionalEventsCount: 6,
-            context: EventTimelineEntry.Context(category: .upcoming)
+            context: EventTimelineEntry.Context(category: .upcoming, isFavouritesOnly: false)
         )
         
         let largeEntry = EventTimelineEntry(
             date: Date(),
             events: events,
             additionalEventsCount: 4,
-            context: EventTimelineEntry.Context(category: .upcoming)
+            context: EventTimelineEntry.Context(category: .upcoming, isFavouritesOnly: false)
         )
         
         let noEvents = EventTimelineEntry(
             date: Date(),
             events: [],
             additionalEventsCount: 0,
-            context: EventTimelineEntry.Context(category: .upcoming)
+            context: EventTimelineEntry.Context(category: .upcoming, isFavouritesOnly: false)
         )
         
         Group {
