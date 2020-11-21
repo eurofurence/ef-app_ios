@@ -18,10 +18,10 @@ class EventWidgetContextTests: XCTestCase {
     }
     
     func testLargeWidget() {
-        assertEventCount(accessibilitySize: .large, widgetSize: .large, is: 5)
-        assertEventCount(accessibilitySize: .extraLarge, widgetSize: .large, is: 4)
-        assertEventCount(accessibilitySize: .extraExtraLarge, widgetSize: .large, is: 3)
-        assertEventCount(accessibilitySize: .extraExtraExtraLarge, widgetSize: .large, is: 3)
+        assertEventCount(accessibilitySize: .large, widgetSize: .large, is: 6)
+        assertEventCount(accessibilitySize: .extraLarge, widgetSize: .large, is: 5)
+        assertEventCount(accessibilitySize: .extraExtraLarge, widgetSize: .large, is: 5)
+        assertEventCount(accessibilitySize: .extraExtraExtraLarge, widgetSize: .large, is: 4)
     }
     
     private func assertEventCount(

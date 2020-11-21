@@ -35,13 +35,15 @@ public struct EventWidgetContext {
             case .large:
                 switch accessibilityCategory {
                 case .large:
+                    return 6
+                    
+                case .extraLarge:
+                    fallthrough
+                case .extraExtraLarge:
                     return 5
                     
                 case .extraExtraExtraLarge:
-                    return 2
-                    
-                default:
-                    return 3
+                    return 4
                 }
             }
         }
