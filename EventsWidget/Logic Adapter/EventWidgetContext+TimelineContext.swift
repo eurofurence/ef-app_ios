@@ -5,10 +5,8 @@ import WidgetKit
 extension EventWidgetContext {
     
     init(timelineContext: EventsTimelineProvider.Context) {
-        let accessibilitySize: EventWidgetContext.AccessibilityCategory = {
-            guard let contentSize = timelineContext.environmentVariants[\.sizeCategory]?.first else { return .standard }
-            return contentSize > .extraLarge ? .large : .standard
-        }()
+        let contentSize = timelineContext.environmentVariants[\.sizeCategory]?.first ?? .accessibilityLarge
+        let accessibilitySize = EventWidgetContext.AccessibilityCategory(sizeCategory: contentSize)
         
         let widgetSizes: [WidgetFamily: EventWidgetContext.WidgetSize] = [
             .systemSmall: .small,
@@ -19,6 +17,26 @@ extension EventWidgetContext {
         let widgetSize = widgetSizes[timelineContext.family, default: .small]
         
         self.init(accessibilityCategory: accessibilitySize, widgetSize: widgetSize)
+    }
+    
+}
+
+private extension EventWidgetContext.AccessibilityCategory {
+    
+    init(sizeCategory: ContentSizeCategory) {
+        switch sizeCategory {
+        case .extraLarge:
+            self = .extraLarge
+            
+        case .extraExtraLarge:
+            self = .extraExtraLarge
+            
+        case .extraExtraExtraLarge:
+            self = .extraExtraExtraLarge
+            
+        default:
+            self = .large
+        }
     }
     
 }
