@@ -82,7 +82,7 @@ struct EventsWidgetEntryView: View {
         var entry: EventTimelineEntry
         
         var body: some View {
-            VStack(alignment: .leading, spacing: 5) {
+            VStack(alignment: .leading, spacing: 3) {
                 ForEach(entry.events) { (event) in
                     Link(destination: event.widgetURL) {
                         HStack(alignment: .top) {
@@ -109,21 +109,12 @@ struct EventsWidgetEntryView: View {
 
     private struct LargeWidgetContents: View {
         
-        @ScaledMetric private var interRowSpacing: CGFloat = 7
         var entry: EventTimelineEntry
         
         var body: some View {
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 18) {
                 ForEach(entry.events) { (event) in
                     Link(destination: event.widgetURL) {
-                        if event == entry.events.first {
-                            Divider()
-                                .hidden()
-                        } else {
-                            Divider()
-                                .padding([.top, .bottom], interRowSpacing)
-                        }
-                        
                         HStack(alignment: .top) {
                             VStack(alignment: .leading) {
                                 EventTitle(event.title)
@@ -141,9 +132,6 @@ struct EventsWidgetEntryView: View {
                 }
                 
                 if entry.additionalEventsCount > 0 {
-                    Divider()
-                        .padding([.top, .bottom], interRowSpacing)
-                    
                     AdditionalEventsFooter(additionalEventsCount: entry.additionalEventsCount)
                 }
             }
