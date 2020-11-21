@@ -10,7 +10,7 @@ struct EventTitle: View {
     
     var body: some View {
         Text(title)
-            .font(.caption)
+            .font(.caption2)
             .fontWeight(.semibold)
             .lineLimit(1)
     }
