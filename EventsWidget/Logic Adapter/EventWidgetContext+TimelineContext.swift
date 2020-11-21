@@ -25,13 +25,16 @@ private extension EventWidgetContext.AccessibilityCategory {
     
     init(sizeCategory: ContentSizeCategory) {
         switch sizeCategory {
+        case _ where sizeCategory <= .large:
+            self = .large
+        
         case .extraLarge:
             self = .extraLarge
             
         case .extraExtraLarge:
             self = .extraExtraLarge
             
-        case .extraExtraExtraLarge:
+        case _ where sizeCategory >= .extraExtraExtraLarge:
             self = .extraExtraExtraLarge
             
         default:

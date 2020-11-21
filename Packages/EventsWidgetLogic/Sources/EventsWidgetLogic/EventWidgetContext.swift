@@ -1,8 +1,7 @@
 public struct EventWidgetContext {
     
-    public enum AccessibilityCategory {
+    public enum AccessibilityCategory: Comparable {
         
-        case standard
         case large
         case extraLarge
         case extraExtraLarge
@@ -19,13 +18,31 @@ public struct EventWidgetContext {
         func numberOfWidgets(in accessibilityCategory: AccessibilityCategory) -> Int {
             switch self {
             case .small:
-                return accessibilityCategory == .large ? 2 : 1
+                return accessibilityCategory <= .extraLarge ? 2 : 1
                 
             case .medium:
-                return accessibilityCategory == .large ? 3 : 2
+                switch accessibilityCategory {
+                case .large:
+                    return 3
+                    
+                case .extraExtraExtraLarge:
+                    return 1
+                    
+                default:
+                    return 2
+                }
                 
-            default:
-                return accessibilityCategory == .large ? 5 : 3
+            case .large:
+                switch accessibilityCategory {
+                case .large:
+                    return 5
+                    
+                case .extraExtraExtraLarge:
+                    return 2
+                    
+                default:
+                    return 3
+                }
             }
         }
         
