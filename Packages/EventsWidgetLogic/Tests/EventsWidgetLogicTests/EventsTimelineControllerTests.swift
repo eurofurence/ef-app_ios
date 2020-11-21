@@ -22,6 +22,26 @@ class EventsTimelineControllerTests: XCTestCase {
         controller = EventsTimelineController(repository: repository, eventTimeFormatter: formatter)
     }
     
+    private func makeTimeline(
+        timelineStartDate: Date,
+        maximumEventsPerEntry: Int = 3,
+        eventCategory: EventCategory = .upcoming,
+        isFavouritesOnly: Bool = false
+    ) -> EventsTimeline? {
+        var actual: EventsTimeline?
+        controller.makeTimeline(
+            options: .init(
+                maximumEventsPerEntry: maximumEventsPerEntry,
+                timelineStartDate: timelineStartDate,
+                eventCategory: eventCategory,
+                isFavouritesOnly: isFavouritesOnly
+            ),
+            completionHandler: { actual = $0 }
+        )
+        
+        return actual
+    }
+    
     private func string(from date: Date) -> String {
         formatter.string(from: date)
     }
@@ -40,16 +60,7 @@ class EventsTimelineControllerTests: XCTestCase {
         let repository = StubEventsRepository(events: [event])
         setUpController(repository: repository)
         
-        var actual: EventsTimeline?
-        controller.makeTimeline(
-            options: .init(
-                maximumEventsPerEntry: 3,
-                timelineStartDate: now,
-                eventCategory: .upcoming,
-                isFavouritesOnly: true
-            ),
-            completionHandler: { actual = $0 }
-        )
+        let actual = makeTimeline(timelineStartDate: now, isFavouritesOnly: true)
         
         let expectedSnapshotEntry = EventTimelineEntry(
             date: now,
@@ -98,16 +109,7 @@ class EventsTimelineControllerTests: XCTestCase {
         let repository = StubEventsRepository(events: [earlierEvent, laterEvent])
         setUpController(repository: repository)
         
-        var actual: EventsTimeline?
-        controller.makeTimeline(
-            options: .init(
-                maximumEventsPerEntry: 3,
-                timelineStartDate: now,
-                eventCategory: .upcoming,
-                isFavouritesOnly: false
-            ),
-            completionHandler: { actual = $0 }
-        )
+        let actual = makeTimeline(timelineStartDate: now)
         
         let expectedSnapshotEntry = EventTimelineEntry(
             date: now,
@@ -181,16 +183,7 @@ class EventsTimelineControllerTests: XCTestCase {
         let repository = StubEventsRepository(events: [earlierEvent, laterEvent])
         setUpController(repository: repository)
         
-        var actual: EventsTimeline?
-        controller.makeTimeline(
-            options: .init(
-                maximumEventsPerEntry: 3,
-                timelineStartDate: inHalfAnHour,
-                eventCategory: .upcoming,
-                isFavouritesOnly: false
-            ),
-            completionHandler: { actual = $0 }
-        )
+        let actual = makeTimeline(timelineStartDate: inHalfAnHour)
         
         let expectedSnapshotEntry = EventTimelineEntry(
             date: inHalfAnHour,
@@ -229,16 +222,7 @@ class EventsTimelineControllerTests: XCTestCase {
         let repository = StubEventsRepository(events: events)
         setUpController(repository: repository)
         
-        var actual: EventsTimeline?
-        controller.makeTimeline(
-            options: .init(
-                maximumEventsPerEntry: 3,
-                timelineStartDate: now,
-                eventCategory: .upcoming,
-                isFavouritesOnly: false
-            ),
-            completionHandler: { actual = $0 }
-        )
+        let actual = makeTimeline(timelineStartDate: now)
         
         let expectedSnapshotEntry = EventTimelineEntry(
             date: now,
@@ -295,16 +279,7 @@ class EventsTimelineControllerTests: XCTestCase {
         let repository = StubEventsRepository(events: events)
         setUpController(repository: repository)
         
-        var actual: EventsTimeline?
-        controller.makeTimeline(
-            options: .init(
-                maximumEventsPerEntry: 3,
-                timelineStartDate: now,
-                eventCategory: .upcoming,
-                isFavouritesOnly: false
-            ),
-            completionHandler: { actual = $0 }
-        )
+        let actual = makeTimeline(timelineStartDate: now)
         
         let expectedSnapshotEntry = EventTimelineEntry(
             date: now,
@@ -353,16 +328,7 @@ class EventsTimelineControllerTests: XCTestCase {
         let repository = StubEventsRepository(events: [])
         setUpController(repository: repository)
         
-        var actual: EventsTimeline?
-        controller.makeTimeline(
-            options: .init(
-                maximumEventsPerEntry: 3,
-                timelineStartDate: now,
-                eventCategory: .upcoming,
-                isFavouritesOnly: false
-            ),
-            completionHandler: { actual = $0 }
-        )
+        let actual = makeTimeline(timelineStartDate: now)
         
         let expectedSnapshotEntry = EventTimelineEntry(
             date: now,
