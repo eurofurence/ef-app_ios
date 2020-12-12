@@ -1,6 +1,6 @@
 import Foundation
 
-public struct RunningEventRule: Rule {
+public struct RunningEventSpecification: Specification {
     
     private let clock: Clock
     

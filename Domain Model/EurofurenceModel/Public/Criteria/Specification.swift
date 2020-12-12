@@ -1,4 +1,4 @@
-public protocol Rule {
+public protocol Specification {
     
     associatedtype Element
     

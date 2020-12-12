@@ -1,6 +1,6 @@
 import Foundation
 
-public struct UpcomingEventRule: Rule {
+public struct UpcomingEventSpecification: Specification {
     
     private let clock: Clock
     private let configuration: UpcomingEventConfiguration

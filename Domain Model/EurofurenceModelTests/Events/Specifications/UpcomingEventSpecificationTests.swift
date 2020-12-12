@@ -2,7 +2,7 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import XCTest
 
-class UpcomingEventRuleTests: XCTestCase {
+class UpcomingEventSpecificationTests: XCTestCase {
     
     func testEventStartsAfterCurrentTime() {
         let now = Date()
@@ -11,7 +11,7 @@ class UpcomingEventRuleTests: XCTestCase {
         let event = FakeEvent.random
         event.startDate = now.addingTimeInterval(1)
         let configuration = StubUpcomingEventConfiguration(intervalFromPresentForUpcomingEvents: oneHour)
-        let rule = UpcomingEventRule(clock: clock, configuration: configuration)
+        let rule = UpcomingEventSpecification(clock: clock, configuration: configuration)
         
         XCTAssertTrue(
             rule.isSatisfied(by: event),
@@ -26,7 +26,7 @@ class UpcomingEventRuleTests: XCTestCase {
         let event = FakeEvent.random
         event.startDate = now.addingTimeInterval(-1)
         let configuration = StubUpcomingEventConfiguration(intervalFromPresentForUpcomingEvents: oneHour)
-        let rule = UpcomingEventRule(clock: clock, configuration: configuration)
+        let rule = UpcomingEventSpecification(clock: clock, configuration: configuration)
         
         XCTAssertFalse(
             rule.isSatisfied(by: event),
@@ -41,7 +41,7 @@ class UpcomingEventRuleTests: XCTestCase {
         let event = FakeEvent.random
         event.startDate = now.addingTimeInterval(oneHour + 1)
         let configuration = StubUpcomingEventConfiguration(intervalFromPresentForUpcomingEvents: oneHour)
-        let rule = UpcomingEventRule(clock: clock, configuration: configuration)
+        let rule = UpcomingEventSpecification(clock: clock, configuration: configuration)
         
         XCTAssertFalse(
             rule.isSatisfied(by: event),

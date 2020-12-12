@@ -2,7 +2,7 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import XCTest
 
-class RunningEventRuleTests: XCTestCase {
+class RunningEventSpecificationTests: XCTestCase {
     
     func testEventHasStarted() {
         let now = Date()
@@ -10,7 +10,7 @@ class RunningEventRuleTests: XCTestCase {
         let event = FakeEvent.random
         event.startDate = now.addingTimeInterval(-10)
         event.endDate = now.addingTimeInterval(100)
-        let rule = RunningEventRule(clock: clock)
+        let rule = RunningEventSpecification(clock: clock)
         
         XCTAssertTrue(rule.isSatisfied(by: event), "An event that has started should be considered running")
     }
@@ -21,7 +21,7 @@ class RunningEventRuleTests: XCTestCase {
         let event = FakeEvent.random
         event.startDate = now.addingTimeInterval(10)
         event.endDate = now.addingTimeInterval(100)
-        let rule = RunningEventRule(clock: clock)
+        let rule = RunningEventSpecification(clock: clock)
         
         XCTAssertFalse(rule.isSatisfied(by: event), "An event that has not started should not be considered running")
     }
@@ -32,7 +32,7 @@ class RunningEventRuleTests: XCTestCase {
         let event = FakeEvent.random
         event.startDate = now.addingTimeInterval(-100)
         event.endDate = now.addingTimeInterval(-10)
-        let rule = RunningEventRule(clock: clock)
+        let rule = RunningEventSpecification(clock: clock)
 
         XCTAssertFalse(rule.isSatisfied(by: event), "An event that has finished should not be considered running")
     }
