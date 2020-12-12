@@ -32,8 +32,10 @@ struct EventsWidgetEntryView: View {
                         MediumWidgetContents(events: events, additionalEventsCount: additionalEventCount)
                     }
                 }
+                
+            case .endOfSchedule:
+                PlaceholderPrompt(category: entry.context.category)
             }
-            
         }
     }
     

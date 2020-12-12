@@ -29,15 +29,26 @@ struct ResolveTimelineEntriesTask {
     
     private func makeTimeline(from clusters: [EventCluster]) -> EventsTimeline {
         let snapshotEntry: EventTimelineEntry
-        let timelineEntries: [EventTimelineEntry]
+        var timelineEntries: [EventTimelineEntry]
+        
         if let first = clusters.first {
             snapshotEntry = makeTimelineEntry(from: first)
             let remainingEntries = clusters.suffix(from: 1).map(makeTimelineEntry(from:))
             timelineEntries = [snapshotEntry] + remainingEntries
+            
+            let lastCluster = clusters.last ?? first
+            
+            let endOfSchedule = EventTimelineEntry(
+                date: lastCluster.lastEventTimeInCluster,
+                content: .endOfSchedule,
+                context: .init(category: eventCategory, isFavouritesOnly: isFavouritesOnly)
+            )
+            
+            timelineEntries.append(endOfSchedule)
         } else {
             snapshotEntry = EventTimelineEntry(
                 date: timelineStartDate,
-                content: .events(viewModels: [], additionalEventsCount: 0),
+                content: .endOfSchedule,
                 context: EventTimelineEntry.Context(category: eventCategory, isFavouritesOnly: isFavouritesOnly)
             )
             timelineEntries = [snapshotEntry]

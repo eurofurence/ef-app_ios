@@ -90,7 +90,13 @@ class EventsTimelineControllerTests: XCTestCase {
         let expected = EventsTimeline(
             snapshot: expectedSnapshotEntry,
             entries: [
-                expectedSnapshotEntry
+                expectedSnapshotEntry,
+                
+                EventTimelineEntry(
+                    date: inHalfAnHour,
+                    content: .endOfSchedule,
+                    context: .init(category: .upcoming, isFavouritesOnly: true)
+                )
             ]
         )
         
@@ -168,6 +174,12 @@ class EventsTimelineControllerTests: XCTestCase {
                         additionalEventsCount: 0
                     ),
                     context: EventTimelineEntry.Context(category: .upcoming, isFavouritesOnly: false)
+                ),
+                
+                EventTimelineEntry(
+                    date: inOneHour,
+                    content: .endOfSchedule,
+                    context: .init(category: .upcoming, isFavouritesOnly: false)
                 )
             ]
         )
@@ -219,7 +231,13 @@ class EventsTimelineControllerTests: XCTestCase {
         let expected = EventsTimeline(
             snapshot: expectedSnapshotEntry,
             entries: [
-                expectedSnapshotEntry
+                expectedSnapshotEntry,
+                
+                EventTimelineEntry(
+                    date: inOneHour,
+                    content: .endOfSchedule,
+                    context: .init(category: .upcoming, isFavouritesOnly: false)
+                )
             ]
         )
         
@@ -276,7 +294,13 @@ class EventsTimelineControllerTests: XCTestCase {
         let expected = EventsTimeline(
             snapshot: expectedSnapshotEntry,
             entries: [
-                expectedSnapshotEntry
+                expectedSnapshotEntry,
+                
+                EventTimelineEntry(
+                    date: inHalfAnHour,
+                    content: .endOfSchedule,
+                    context: .init(category: .upcoming, isFavouritesOnly: false)
+                )
             ]
         )
         
@@ -335,7 +359,13 @@ class EventsTimelineControllerTests: XCTestCase {
         let expected = EventsTimeline(
             snapshot: expectedSnapshotEntry,
             entries: [
-                expectedSnapshotEntry
+                expectedSnapshotEntry,
+                
+                EventTimelineEntry(
+                    date: inHalfAnHour,
+                    content: .endOfSchedule,
+                    context: .init(category: .upcoming, isFavouritesOnly: false)
+                )
             ]
         )
         
@@ -351,11 +381,8 @@ class EventsTimelineControllerTests: XCTestCase {
         
         let expectedSnapshotEntry = EventTimelineEntry(
             date: now,
-            content: .events(
-                viewModels: [],
-                additionalEventsCount: 0
-            ),
-            context: EventTimelineEntry.Context(category: .upcoming, isFavouritesOnly: false)
+            content: .endOfSchedule,
+            context: .init(category: .upcoming, isFavouritesOnly: false)
         )
         
         let expected = EventsTimeline(
@@ -451,7 +478,13 @@ class EventsTimelineControllerTests: XCTestCase {
             snapshot: firstExpectedSnapshotEntry,
             entries: [
                 firstExpectedSnapshotEntry,
-                secondExpectedSnapshotEntry
+                secondExpectedSnapshotEntry,
+                
+                EventTimelineEntry(
+                    date: inOneHour,
+                    content: .endOfSchedule,
+                    context: .init(category: .upcoming, isFavouritesOnly: false)
+                )
             ]
         )
         
