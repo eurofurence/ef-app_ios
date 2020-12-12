@@ -81,6 +81,8 @@
 		CA057A5B2088BDBB00504FA4 /* AnnouncementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA057A5A2088BDBA00504FA4 /* AnnouncementTableViewCell.swift */; };
 		CA08157820D3865600F750D4 /* NavigationBarViewExtensionContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08157720D3865600F750D4 /* NavigationBarViewExtensionContainer.swift */; };
 		CA08157A20D3877700F750D4 /* FoundationShortFormDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08157920D3877700F750D4 /* FoundationShortFormDateFormatter.swift */; };
+		CA08322D2584DD0D0060551D /* RemotelyConfiguredUpcomingEventsConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08322C2584DD0D0060551D /* RemotelyConfiguredUpcomingEventsConfigurationTests.swift */; };
+		CA0832352584DDCE0060551D /* RemotelyConfiguredUpcomingEventsConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0832342584DDCE0060551D /* RemotelyConfiguredUpcomingEventsConfiguration.swift */; };
 		CA08B0F722EDD41A00FDAAA7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = CA08B0F622EDD41900FDAAA7 /* README.md */; };
 		CA08B0F922EDF4C600FDAAA7 /* EurofurenceDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08B0F822EDF4C600FDAAA7 /* EurofurenceDateFormatter.swift */; };
 		CA08B0FB22EDF6BE00FDAAA7 /* EurofurenceDateIntervalFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08B0FA22EDF6BE00FDAAA7 /* EurofurenceDateIntervalFormatter.swift */; };
@@ -1440,6 +1442,8 @@
 		CA057A5A2088BDBA00504FA4 /* AnnouncementTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnouncementTableViewCell.swift; sourceTree = "<group>"; };
 		CA08157720D3865600F750D4 /* NavigationBarViewExtensionContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarViewExtensionContainer.swift; sourceTree = "<group>"; };
 		CA08157920D3877700F750D4 /* FoundationShortFormDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationShortFormDateFormatter.swift; sourceTree = "<group>"; };
+		CA08322C2584DD0D0060551D /* RemotelyConfiguredUpcomingEventsConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemotelyConfiguredUpcomingEventsConfigurationTests.swift; sourceTree = "<group>"; };
+		CA0832342584DDCE0060551D /* RemotelyConfiguredUpcomingEventsConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemotelyConfiguredUpcomingEventsConfiguration.swift; sourceTree = "<group>"; };
 		CA08B0F622EDD41900FDAAA7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CA08B0F822EDF4C600FDAAA7 /* EurofurenceDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EurofurenceDateFormatter.swift; sourceTree = "<group>"; };
 		CA08B0FA22EDF6BE00FDAAA7 /* EurofurenceDateIntervalFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EurofurenceDateIntervalFormatter.swift; sourceTree = "<group>"; };
@@ -3495,6 +3499,7 @@
 			isa = PBXGroup;
 			children = (
 				CA39851522C7A51C00117249 /* RemotelyConfiguredConventionStartDateRepositoryTests.swift */,
+				CA08322C2584DD0D0060551D /* RemotelyConfiguredUpcomingEventsConfigurationTests.swift */,
 				CA39851A22C7A92900117249 /* Test Doubles */,
 			);
 			path = "Remote Configuration";
@@ -3503,10 +3508,11 @@
 		CA39851722C7A91000117249 /* Remote Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				CA39851D22C7A94500117249 /* RemoteConfiguration.swift */,
 				CA39852422C7ADBA00117249 /* FirebaseRemoteConfigurationLoader.swift */,
+				CA39851D22C7A94500117249 /* RemoteConfiguration.swift */,
 				CA39851F22C7A94F00117249 /* RemoteConfigurationLoader.swift */,
 				CA39851822C7A91800117249 /* RemotelyConfiguredConventionStartDateRepository.swift */,
+				CA0832342584DDCE0060551D /* RemotelyConfiguredUpcomingEventsConfiguration.swift */,
 				CA2AA30222CA95BF00C0E1A1 /* UpdateRemoteConfigRefreshCollaboration.swift */,
 			);
 			path = "Remote Configuration";
@@ -8723,6 +8729,7 @@
 				CACD3804256516E200C23041 /* EurofurenceFCMDeviceRegistration.swift in Sources */,
 				CACD37AE25650D2A00C23041 /* RemoteConfiguration.swift in Sources */,
 				CACD37AB25650D2A00C23041 /* RemoteConfigurationLoader.swift in Sources */,
+				CA0832352584DDCE0060551D /* RemotelyConfiguredUpcomingEventsConfiguration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8738,6 +8745,7 @@
 				CACD3812256516EB00C23041 /* CapturingFCMDeviceRegistration.swift in Sources */,
 				CACD370025650B4B00C23041 /* EurofurenceShareableURLFactoryTests.swift in Sources */,
 				CACD3813256516EB00C23041 /* CapturingFirebaseAdapter.swift in Sources */,
+				CA08322D2584DD0D0060551D /* RemotelyConfiguredUpcomingEventsConfigurationTests.swift in Sources */,
 				CACD3811256516EB00C23041 /* EurofurenceFCMDeviceRegistrationTests.swift in Sources */,
 				CACD377C25650C8900C23041 /* RemotelyConfiguredConventionStartDateRepositoryTests.swift in Sources */,
 				CACD377A25650C8900C23041 /* CapturingConventionStartDateConsumer.swift in Sources */,
