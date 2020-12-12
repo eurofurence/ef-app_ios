@@ -82,14 +82,6 @@ struct EventsTimelineProvider: IntentTimelineProvider {
         }
     }
     
-    private struct ApplyNoFilteringPolicy: TimelineEntryFilteringPolicy {
-        
-        func filterEvents(_ events: [EventsWidgetLogic.Event], inGroupStartingAt startTime: Date) -> [EventsWidgetLogic.Event] {
-            events
-        }
-        
-    }
-    
     private func fetchEventsTimeline(
         configuration: ViewEventsIntent,
         context: Context,
@@ -101,16 +93,30 @@ struct EventsTimelineProvider: IntentTimelineProvider {
         let bridge = EventsBridge()
         eventsService.add(bridge)
         
+        let specification = IntentBasedWidgetSpecificationFactory.makeSpecification(
+            intent: configuration,
+            clock: clock
+        )
+        
+        let filteringPolicy = FilterWidgetEventsBySpecification(
+            bridge: bridge,
+            clock: clock,
+            specification: specification
+        )
+        
         let controller = EventsTimelineController(
             repository: bridge,
-            filteringPolicy: ApplyNoFilteringPolicy(),
+            filteringPolicy: filteringPolicy,
             eventTimeFormatter: HoursAndMinutesEventTimeFormatter.shared
         )
+        
+        let components = DateComponents(calendar: .current, timeZone: .current, year: 2019, month: 8, day: 15, hour: 11)
+        let date = Calendar.current.date(from: components)!
         
         let widgetContext = EventWidgetContext(timelineContext: context)
         let options = EventsTimelineController.TimelineOptions(
             maximumEventsPerEntry: widgetContext.recommendedNumberOfEvents,
-            timelineStartDate: Date(),
+            timelineStartDate: date,
             eventCategory: EventCategory(filter: configuration.filter),
             isFavouritesOnly: configuration.favouritesOnly?.boolValue ?? false
         )

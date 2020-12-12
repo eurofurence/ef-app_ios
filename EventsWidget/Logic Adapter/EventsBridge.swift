@@ -4,7 +4,7 @@ import Foundation.NSDate
 
 class EventsBridge {
     
-    private var allEvents: [EurofurenceModel.Event] = []
+    private(set) var allEvents: [EurofurenceModel.Event] = []
     
     private struct WidgetEventAdapter: EventsWidgetLogic.Event {
                 
