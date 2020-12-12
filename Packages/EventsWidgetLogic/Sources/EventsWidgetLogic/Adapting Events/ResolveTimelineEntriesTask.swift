@@ -3,6 +3,7 @@ import Foundation.NSDate
 struct ResolveTimelineEntriesTask {
     
     var repository: EventRepository
+    var filteringPolicy: TimelineEntryFilteringPolicy
     var eventCategory: EventCategory
     var isFavouritesOnly: Bool
     var maximumEventsPerEntry: Int
@@ -17,6 +18,7 @@ struct ResolveTimelineEntriesTask {
     private func clusterEventsIntoEntries(_ events: [Event]) {
         let eventClusters = EventClusterFactory(
             events: events,
+            filteringPolicy: filteringPolicy,
             timelineStartDate: timelineStartDate,
             maximumEventsPerCluster: maximumEventsPerEntry
         ).makeClusters()

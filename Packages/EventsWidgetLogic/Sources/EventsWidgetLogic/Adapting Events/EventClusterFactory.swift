@@ -3,6 +3,7 @@ import Foundation.NSDate
 struct EventClusterFactory {
     
     var events: [Event]
+    var filteringPolicy: TimelineEntryFilteringPolicy
     var timelineStartDate: Date
     var maximumEventsPerCluster: Int
     
@@ -19,7 +20,12 @@ struct EventClusterFactory {
     }
     
     private func makeEventCluster(startTime: Date) -> EventCluster {
-        EventCluster.clusterEvents(events, startingAt: startTime, maximumEventsPerCluster: maximumEventsPerCluster)
+        EventCluster.clusterEvents(
+            events,
+            startingAt: startTime,
+            filteringPolicy: filteringPolicy,
+            maximumEventsPerCluster: maximumEventsPerCluster
+        )
     }
     
 }

@@ -18,8 +18,15 @@ class EventsTimelineControllerTests: XCTestCase {
         inOneHour = now.addingTimeInterval(3600)
     }
     
-    private func setUpController(repository: EventRepository) {
-        controller = EventsTimelineController(repository: repository, eventTimeFormatter: formatter)
+    private func setUpController(
+        repository: EventRepository,
+        filteringPolicy: TimelineEntryFilteringPolicy = DoNotFilterAnyEventsPolicy()
+    ) {
+        controller = EventsTimelineController(
+            repository: repository,
+            filteringPolicy: filteringPolicy,
+            eventTimeFormatter: formatter
+        )
     }
     
     private func makeTimeline(
@@ -346,6 +353,92 @@ class EventsTimelineControllerTests: XCTestCase {
         
         XCTAssertEqual(expected, actual)
         XCTAssertEqual(expectedSnapshotEntry, actual?.snapshot)
+    }
+    
+    struct FilterByEventIdentifierPolicy: TimelineEntryFilteringPolicy {
+        
+        var removeEventsWithIdentifiers: [String]
+        
+        func filterEvents(_ events: [Event], inGroupStartingAt startTime: Date) -> [Event] {
+            events.filter({ removeEventsWithIdentifiers.contains($0.id) == false })
+        }
+        
+    }
+    
+    func testDoesNotIncludeEventsThatAreRejectedByFilteringPolicy() {
+        let events = [
+            StubEvent(id: "1", title: "A Event", location: "Location", startTime: now, endTime: inHalfAnHour),
+            StubEvent(id: "2", title: "B Event", location: "Location", startTime: now, endTime: inHalfAnHour),
+            StubEvent(id: "3", title: "C Event", location: "Location", startTime: now, endTime: inOneHour),
+            StubEvent(id: "4", title: "D Event", location: "Location", startTime: inHalfAnHour, endTime: inOneHour),
+            StubEvent(id: "5", title: "E Event", location: "Location", startTime: inHalfAnHour, endTime: inOneHour)
+        ]
+        
+        let filteringPolicy = FilterByEventIdentifierPolicy(removeEventsWithIdentifiers: ["3", "5"])
+        
+        let repository = StubEventsRepository(events: events)
+        setUpController(repository: repository, filteringPolicy: filteringPolicy)
+        
+        let actual = makeTimeline(timelineStartDate: now)
+        
+        let firstExpectedSnapshotEntry = EventTimelineEntry(
+            date: now,
+            events: [
+                EventViewModel(
+                    id: "1",
+                    title: "A Event",
+                    location: "Location",
+                    formattedStartTime: string(from: now),
+                    formattedEndTime: string(from: inHalfAnHour),
+                    widgetURL: events[0].deepLinkingContentURL
+                ),
+                EventViewModel(
+                    id: "2",
+                    title: "B Event",
+                    location: "Location",
+                    formattedStartTime: string(from: now),
+                    formattedEndTime: string(from: inHalfAnHour),
+                    widgetURL: events[1].deepLinkingContentURL
+                ),
+                EventViewModel(
+                    id: "4",
+                    title: "D Event",
+                    location: "Location",
+                    formattedStartTime: string(from: inHalfAnHour),
+                    formattedEndTime: string(from: inOneHour),
+                    widgetURL: events[3].deepLinkingContentURL
+                )
+            ],
+            additionalEventsCount: 0,
+            context: EventTimelineEntry.Context(category: .upcoming, isFavouritesOnly: false)
+        )
+        
+        let secondExpectedSnapshotEntry = EventTimelineEntry(
+            date: inHalfAnHour,
+            events: [
+                EventViewModel(
+                    id: "4",
+                    title: "D Event",
+                    location: "Location",
+                    formattedStartTime: string(from: inHalfAnHour),
+                    formattedEndTime: string(from: inOneHour),
+                    widgetURL: events[3].deepLinkingContentURL
+                )
+            ],
+            additionalEventsCount: 0,
+            context: EventTimelineEntry.Context(category: .upcoming, isFavouritesOnly: false)
+        )
+        
+        let expected = EventsTimeline(
+            snapshot: firstExpectedSnapshotEntry,
+            entries: [
+                firstExpectedSnapshotEntry,
+                secondExpectedSnapshotEntry
+            ]
+        )
+        
+        XCTAssertEqual(expected, actual)
+        XCTAssertEqual(firstExpectedSnapshotEntry, actual?.snapshot)
     }
     
 }

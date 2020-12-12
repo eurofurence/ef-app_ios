@@ -3,10 +3,16 @@ import Foundation.NSDate
 public struct EventsTimelineController {
     
     private let repository: EventRepository
+    private let filteringPolicy: TimelineEntryFilteringPolicy
     private let viewModelFactory: EventViewModelFactory
     
-    public init(repository: EventRepository, eventTimeFormatter: EventTimeFormatter) {
+    public init(
+        repository: EventRepository,
+        filteringPolicy: TimelineEntryFilteringPolicy,
+        eventTimeFormatter: EventTimeFormatter
+    ) {
         self.repository = repository
+        self.filteringPolicy = filteringPolicy
         viewModelFactory = EventViewModelFactory(eventTimeFormatter: eventTimeFormatter)
     }
     
@@ -40,6 +46,7 @@ extension EventsTimelineController {
     public func makeTimeline(options: TimelineOptions, completionHandler: @escaping (EventsTimeline) -> Void) {
         ResolveTimelineEntriesTask(
             repository: repository,
+            filteringPolicy: filteringPolicy,
             eventCategory: options.eventCategory,
             isFavouritesOnly: options.isFavouritesOnly,
             maximumEventsPerEntry: options.maximumEventsPerEntry,
