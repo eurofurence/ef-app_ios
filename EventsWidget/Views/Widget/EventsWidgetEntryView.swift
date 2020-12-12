@@ -13,23 +13,27 @@ struct EventsWidgetEntryView: View {
         WidgetLayout {
             WidgetTitle(entry: entry)
         } content: {
-            if entry.events.isEmpty {
-                PlaceholderPrompt(category: entry.context.category)
-            } else {
-                switch family {
-                case .systemSmall:
-                    SmallWidgetContents(entry: entry)
-                    
-                case .systemMedium:
-                    MediumWidgetContents(entry: entry)
-                    
-                case .systemLarge:
-                    LargeWidgetContents(entry: entry)
-                    
-                @unknown default:
-                    MediumWidgetContents(entry: entry)
+            switch entry.content {
+            case .events(let events, let additionalEventCount):
+                if events.isEmpty {
+                    PlaceholderPrompt(category: entry.context.category)
+                } else {
+                    switch family {
+                    case .systemSmall:
+                        SmallWidgetContents(events: events, additionalEventsCount: additionalEventCount)
+                        
+                    case .systemMedium:
+                        MediumWidgetContents(events: events, additionalEventsCount: additionalEventCount)
+                        
+                    case .systemLarge:
+                        LargeWidgetContents(events: events, additionalEventsCount: additionalEventCount)
+                        
+                    @unknown default:
+                        MediumWidgetContents(events: events, additionalEventsCount: additionalEventCount)
+                    }
                 }
             }
+            
         }
     }
     
@@ -55,11 +59,12 @@ struct EventsWidgetEntryView: View {
 
     private struct SmallWidgetContents: View {
         
-        var entry: EventTimelineEntry
+        var events: [EventViewModel]
+        var additionalEventsCount: Int
         
         var body: some View {
             VStack(alignment: .leading, spacing: 10) {
-                ForEach(entry.events) { (event) in
+                ForEach(events) { (event) in
                     VStack(alignment: .leading) {
                         HStack {
                             EventTitle(event.title)
@@ -71,7 +76,7 @@ struct EventsWidgetEntryView: View {
                     }
                 }
                 
-                AdditionalEventsFooter(additionalEventsCount: entry.additionalEventsCount)
+                AdditionalEventsFooter(additionalEventsCount: additionalEventsCount)
             }
         }
         
@@ -79,11 +84,12 @@ struct EventsWidgetEntryView: View {
     
     private struct MediumWidgetContents: View {
         
-        var entry: EventTimelineEntry
+        var events: [EventViewModel]
+        var additionalEventsCount: Int
         
         var body: some View {
             VStack(alignment: .leading, spacing: 3) {
-                ForEach(entry.events) { (event) in
+                ForEach(events) { (event) in
                     Link(destination: event.widgetURL) {
                         HStack(alignment: .top) {
                             VStack(alignment: .leading) {
@@ -101,7 +107,7 @@ struct EventsWidgetEntryView: View {
                     }
                 }
                 
-                AdditionalEventsFooter(additionalEventsCount: entry.additionalEventsCount)
+                AdditionalEventsFooter(additionalEventsCount: additionalEventsCount)
             }
         }
         
@@ -109,11 +115,12 @@ struct EventsWidgetEntryView: View {
 
     private struct LargeWidgetContents: View {
         
-        var entry: EventTimelineEntry
+        var events: [EventViewModel]
+        var additionalEventsCount: Int
         
         var body: some View {
             VStack(alignment: .leading, spacing: 18) {
-                ForEach(entry.events) { (event) in
+                ForEach(events) { (event) in
                     Link(destination: event.widgetURL) {
                         HStack(alignment: .top) {
                             VStack(alignment: .leading) {
@@ -131,8 +138,8 @@ struct EventsWidgetEntryView: View {
                     }
                 }
                 
-                if entry.additionalEventsCount > 0 {
-                    AdditionalEventsFooter(additionalEventsCount: entry.additionalEventsCount)
+                if additionalEventsCount > 0 {
+                    AdditionalEventsFooter(additionalEventsCount: additionalEventsCount)
                 }
             }
         }
@@ -204,29 +211,25 @@ struct EventsWidget_Previews: PreviewProvider {
         
         let smallEntry = EventTimelineEntry(
             date: Date(),
-            events: Array(events.prefix(2)),
-            additionalEventsCount: 7,
+            content: .events(viewModels: Array(events.prefix(2)), additionalEventsCount: 7),
             context: EventTimelineEntry.Context(category: .upcoming, isFavouritesOnly: false)
         )
         
         let mediumEntry = EventTimelineEntry(
             date: Date(),
-            events: Array(events.prefix(3)),
-            additionalEventsCount: 6,
+            content: .events(viewModels: Array(events.prefix(3)), additionalEventsCount: 6),
             context: EventTimelineEntry.Context(category: .upcoming, isFavouritesOnly: false)
         )
         
         let largeEntry = EventTimelineEntry(
             date: Date(),
-            events: events,
-            additionalEventsCount: 4,
+            content: .events(viewModels: events, additionalEventsCount: 4),
             context: EventTimelineEntry.Context(category: .upcoming, isFavouritesOnly: false)
         )
         
         let noEvents = EventTimelineEntry(
             date: Date(),
-            events: [],
-            additionalEventsCount: 0,
+            content: .events(viewModels: [], additionalEventsCount: 0),
             context: EventTimelineEntry.Context(category: .upcoming, isFavouritesOnly: false)
         )
         

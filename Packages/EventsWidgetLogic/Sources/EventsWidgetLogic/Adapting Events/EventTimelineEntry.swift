@@ -2,6 +2,12 @@ import Foundation
 
 public struct EventTimelineEntry: Equatable {
     
+    public enum Content: Equatable {
+        
+        case events(viewModels: [EventViewModel], additionalEventsCount: Int)
+        
+    }
+    
     public struct Context: Equatable {
         
         public let category: EventCategory
@@ -15,19 +21,12 @@ public struct EventTimelineEntry: Equatable {
     }
     
     public var date: Date
-    public var events: [EventViewModel]
-    public var additionalEventsCount: Int
+    public var content: Content
     public var context: Context
     
-    public init(
-        date: Date,
-        events: [EventViewModel],
-        additionalEventsCount: Int,
-        context: Context
-    ) {
+    public init(date: Date, content: Content, context: Context) {
         self.date = date
-        self.events = events
-        self.additionalEventsCount = additionalEventsCount
+        self.content = content
         self.context = context
     }
     
