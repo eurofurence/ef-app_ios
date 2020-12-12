@@ -12,6 +12,10 @@
 		CA08325C2584E0F60060551D /* UpcomingEventSpecificationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08325A2584E0F60060551D /* UpcomingEventSpecificationTests.swift */; };
 		CA08325D2584E0F60060551D /* RunningEventSpecificationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08325B2584E0F60060551D /* RunningEventSpecificationTests.swift */; };
 		CA0832702584E12E0060551D /* Specification.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08326F2584E12E0060551D /* Specification.swift */; };
+		CA0832A12584E41D0060551D /* AndSpecificationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0832A02584E41D0060551D /* AndSpecificationTests.swift */; };
+		CA0832AB2584E5DD0060551D /* AndSpecification.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0832AA2584E5DD0060551D /* AndSpecification.swift */; };
+		CA0832B22584E6420060551D /* AlwaysPassesSpecification.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0832B12584E6420060551D /* AlwaysPassesSpecification.swift */; };
+		CA0832BC2584E64C0060551D /* AlwaysFailsSpecification.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0832BB2584E64C0060551D /* AlwaysFailsSpecification.swift */; };
 		CA08B11022EF76D100FDAAA7 /* WhenFavouritingEvent_WithScheduleAndSearchControllerActive.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08B10F22EF76D100FDAAA7 /* WhenFavouritingEvent_WithScheduleAndSearchControllerActive.swift */; };
 		CA09BE5F2464856900412B82 /* PrivateMessageErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA09BE5E2464856900412B82 /* PrivateMessageErrorTests.swift */; };
 		CA09BE622464866300412B82 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA09BE612464866300412B82 /* Localizable.strings */; };
@@ -517,6 +521,10 @@
 		CA08325A2584E0F60060551D /* UpcomingEventSpecificationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpcomingEventSpecificationTests.swift; sourceTree = "<group>"; };
 		CA08325B2584E0F60060551D /* RunningEventSpecificationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunningEventSpecificationTests.swift; sourceTree = "<group>"; };
 		CA08326F2584E12E0060551D /* Specification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Specification.swift; sourceTree = "<group>"; };
+		CA0832A02584E41D0060551D /* AndSpecificationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AndSpecificationTests.swift; sourceTree = "<group>"; };
+		CA0832AA2584E5DD0060551D /* AndSpecification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AndSpecification.swift; sourceTree = "<group>"; };
+		CA0832B12584E6420060551D /* AlwaysPassesSpecification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlwaysPassesSpecification.swift; sourceTree = "<group>"; };
+		CA0832BB2584E64C0060551D /* AlwaysFailsSpecification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlwaysFailsSpecification.swift; sourceTree = "<group>"; };
 		CA08B10F22EF76D100FDAAA7 /* WhenFavouritingEvent_WithScheduleAndSearchControllerActive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFavouritingEvent_WithScheduleAndSearchControllerActive.swift; sourceTree = "<group>"; };
 		CA09BE5E2464856900412B82 /* PrivateMessageErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateMessageErrorTests.swift; sourceTree = "<group>"; };
 		CA09BE612464866300412B82 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -1075,8 +1083,27 @@
 			isa = PBXGroup;
 			children = (
 				CA08326F2584E12E0060551D /* Specification.swift */,
+				CA0832AA2584E5DD0060551D /* AndSpecification.swift */,
 			);
 			path = Criteria;
+			sourceTree = "<group>";
+		};
+		CA08329F2584E40F0060551D /* Criteria */ = {
+			isa = PBXGroup;
+			children = (
+				CA0832A02584E41D0060551D /* AndSpecificationTests.swift */,
+				CA0832B02584E6380060551D /* Test Doubles */,
+			);
+			path = Criteria;
+			sourceTree = "<group>";
+		};
+		CA0832B02584E6380060551D /* Test Doubles */ = {
+			isa = PBXGroup;
+			children = (
+				CA0832BB2584E64C0060551D /* AlwaysFailsSpecification.swift */,
+				CA0832B12584E6420060551D /* AlwaysPassesSpecification.swift */,
+			);
+			path = "Test Doubles";
 			sourceTree = "<group>";
 		};
 		CA09BE602464865300412B82 /* Resources */ = {
@@ -1182,6 +1209,7 @@
 				CA25A87322C15F3B00226478 /* Coalescing Refreshes */,
 				CA7A30F822B16E25002AD939 /* Collect-them-All */,
 				CA7A318722B16E26002AD939 /* Countdown */,
+				CA08329F2584E40F0060551D /* Criteria */,
 				CA7A313822B16E25002AD939 /* Days */,
 				CA7A312522B16E25002AD939 /* Dealers */,
 				CA7A30A422B16E24002AD939 /* Deletions */,
@@ -2615,6 +2643,7 @@
 				CA7A305622B16DE4002AD939 /* KnowledgeEntryCharacteristics.swift in Sources */,
 				CA7A308F22B16DE4002AD939 /* ConcreteContentLinksService.swift in Sources */,
 				CA7A301822B16DE4002AD939 /* Iso8601DateFormatter.swift in Sources */,
+				CA0832AB2584E5DD0060551D /* AndSpecification.swift in Sources */,
 				CA0832702584E12E0060551D /* Specification.swift in Sources */,
 				CA7A301C22B16DE4002AD939 /* UserDefaultsPreferences.swift in Sources */,
 				CA7A309722B16DE4002AD939 /* ConcreteAuthenticationService.swift in Sources */,
@@ -2700,6 +2729,7 @@
 				CA7A320022B16E26002AD939 /* WhenFetchingIconDataForDealerWithoutArtwork_ApplicationShould.swift in Sources */,
 				CA7A322822B16E26002AD939 /* InOrderToSupportMainStageTag_ApplicationShould.swift in Sources */,
 				CA7A31DF22B16E26002AD939 /* StubCollectThemAllRequestFactory.swift in Sources */,
+				CA0832B22584E6420060551D /* AlwaysPassesSpecification.swift in Sources */,
 				CA7A31D322B16E26002AD939 /* PrivateMessagesAPITests.swift in Sources */,
 				CA7A31E422B16E26002AD939 /* CapturingSignificantTimeChangeAdapter.swift in Sources */,
 				CA7A319A22B16E26002AD939 /* WhenDeletingRoom_AfterSuccessfulSync_ApplicationShould.swift in Sources */,
@@ -2763,6 +2793,7 @@
 				CAC4994022E0F6B6003E1D77 /* CapturingDealerCategoriesCollectionObserver.swift in Sources */,
 				CA7A321922B16E26002AD939 /* WhenAddingAnnouncementsObserverBeforeLoadingAnything.swift in Sources */,
 				CA7A31B722B16E26002AD939 /* BeforeSyncInitiated_ApplicationShould.swift in Sources */,
+				CA0832A12584E41D0060551D /* AndSpecificationTests.swift in Sources */,
 				CA7A31CA22B16E26002AD939 /* WhenRequestingPrivateMessagesWhileAuthenticated.swift in Sources */,
 				CA6EE99B22F401E900821E68 /* WhenDescribingKnowledgeGroupsLink.swift in Sources */,
 				CA7A31C422B16E26002AD939 /* WhenPerformingSync_AfterEnforcingFullStoreRefresh_WhenFullRefreshFailed.swift in Sources */,
@@ -2857,6 +2888,7 @@
 				CA7A31ED22B16E26002AD939 /* FakeAPI.swift in Sources */,
 				CA8A73DE22BD1EB0007A5201 /* AddingAdditionalServicesConsumer_WhileLoggedIn.swift in Sources */,
 				CA7A31DE22B16E26002AD939 /* StubForceRefreshRequired.swift in Sources */,
+				CA0832BC2584E64C0060551D /* AlwaysFailsSpecification.swift in Sources */,
 				CA7A31F522B16E26002AD939 /* CapturingConventionCountdownServiceObserver.swift in Sources */,
 				CA7A321022B16E26002AD939 /* WhenFetchingDaysBeforeRefreshWhenStoreHasConferenceDays.swift in Sources */,
 				CA7A322622B16E26002AD939 /* InOrderToSupportDealersDenTag_ApplicationShould.swift in Sources */,
