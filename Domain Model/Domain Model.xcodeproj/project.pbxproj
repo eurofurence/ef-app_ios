@@ -36,6 +36,9 @@
 		CA30FB9C22F36456001C2EB3 /* KnowledgeGroupImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30FB9B22F36456001C2EB3 /* KnowledgeGroupImpl.swift */; };
 		CA30FB9E22F365E4001C2EB3 /* KnowledgeEntryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30FB9D22F365E4001C2EB3 /* KnowledgeEntryImpl.swift */; };
 		CA38C35924683D9000A20921 /* FakeEventsSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA38C35824683D9000A20921 /* FakeEventsSchedule.swift */; };
+		CA5A5AC02584ED0C007F6728 /* AnySpecificationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5A5ABF2584ED0C007F6728 /* AnySpecificationTests.swift */; };
+		CA5A5AC62584EDC6007F6728 /* OnlyPassesOnSpecificInputSpecification.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5A5AC52584EDC6007F6728 /* OnlyPassesOnSpecificInputSpecification.swift */; };
+		CA5A5ACC2584EDD6007F6728 /* AnySpecification.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5A5ACB2584EDD6007F6728 /* AnySpecification.swift */; };
 		CA6EE99B22F401E900821E68 /* WhenDescribingKnowledgeGroupsLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EE99A22F401E900821E68 /* WhenDescribingKnowledgeGroupsLink.swift */; };
 		CA6EE9A122F4B65B00821E68 /* WhenDescribingKnowledgeEntryLink_GroupHasMoreThanOneEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EE9A022F4B65B00821E68 /* WhenDescribingKnowledgeEntryLink_GroupHasMoreThanOneEntry.swift */; };
 		CA6EE9A722F4D41300821E68 /* WhenDescribingKnowledgeEntryLink_GroupHasOneEntryExactly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EE9A622F4D41300821E68 /* WhenDescribingKnowledgeEntryLink_GroupHasOneEntryExactly.swift */; };
@@ -546,6 +549,9 @@
 		CA30FB9B22F36456001C2EB3 /* KnowledgeGroupImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeGroupImpl.swift; sourceTree = "<group>"; };
 		CA30FB9D22F365E4001C2EB3 /* KnowledgeEntryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeEntryImpl.swift; sourceTree = "<group>"; };
 		CA38C35824683D9000A20921 /* FakeEventsSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeEventsSchedule.swift; sourceTree = "<group>"; };
+		CA5A5ABF2584ED0C007F6728 /* AnySpecificationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnySpecificationTests.swift; sourceTree = "<group>"; };
+		CA5A5AC52584EDC6007F6728 /* OnlyPassesOnSpecificInputSpecification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyPassesOnSpecificInputSpecification.swift; sourceTree = "<group>"; };
+		CA5A5ACB2584EDD6007F6728 /* AnySpecification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnySpecification.swift; sourceTree = "<group>"; };
 		CA6EE99A22F401E900821E68 /* WhenDescribingKnowledgeGroupsLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDescribingKnowledgeGroupsLink.swift; sourceTree = "<group>"; };
 		CA6EE9A022F4B65B00821E68 /* WhenDescribingKnowledgeEntryLink_GroupHasMoreThanOneEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDescribingKnowledgeEntryLink_GroupHasMoreThanOneEntry.swift; sourceTree = "<group>"; };
 		CA6EE9A622F4D41300821E68 /* WhenDescribingKnowledgeEntryLink_GroupHasOneEntryExactly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDescribingKnowledgeEntryLink_GroupHasOneEntryExactly.swift; sourceTree = "<group>"; };
@@ -1088,8 +1094,9 @@
 		CA08326E2584E1250060551D /* Criteria */ = {
 			isa = PBXGroup;
 			children = (
-				CA08326F2584E12E0060551D /* Specification.swift */,
 				CA0832AA2584E5DD0060551D /* AndSpecification.swift */,
+				CA5A5ACB2584EDD6007F6728 /* AnySpecification.swift */,
+				CA08326F2584E12E0060551D /* Specification.swift */,
 			);
 			path = Criteria;
 			sourceTree = "<group>";
@@ -1098,6 +1105,7 @@
 			isa = PBXGroup;
 			children = (
 				CA0832A02584E41D0060551D /* AndSpecificationTests.swift */,
+				CA5A5ABF2584ED0C007F6728 /* AnySpecificationTests.swift */,
 				CA0832B02584E6380060551D /* Test Doubles */,
 			);
 			path = Criteria;
@@ -1108,6 +1116,7 @@
 			children = (
 				CA0832BB2584E64C0060551D /* AlwaysFailsSpecification.swift */,
 				CA0832B12584E6420060551D /* AlwaysPassesSpecification.swift */,
+				CA5A5AC52584EDC6007F6728 /* OnlyPassesOnSpecificInputSpecification.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -2558,6 +2567,7 @@
 				CA7A307622B16DE4002AD939 /* UnfavouriteEvent.swift in Sources */,
 				CA7A305A22B16DE4002AD939 /* MessageCharacteristics.swift in Sources */,
 				CA7A300A22B16DE4002AD939 /* ConventionIdentifier.swift in Sources */,
+				CA5A5ACC2584EDD6007F6728 /* AnySpecification.swift in Sources */,
 				CA7A300422B16DE4002AD939 /* Day.swift in Sources */,
 				CA7A306622B16DE4002AD939 /* EurofurenceSession.swift in Sources */,
 				CA7A306F22B16DE4002AD939 /* CollectThemAllService.swift in Sources */,
@@ -2739,7 +2749,9 @@
 				CA0832B22584E6420060551D /* AlwaysPassesSpecification.swift in Sources */,
 				CA7A31D322B16E26002AD939 /* PrivateMessagesAPITests.swift in Sources */,
 				CA7A31E422B16E26002AD939 /* CapturingSignificantTimeChangeAdapter.swift in Sources */,
+				CA5A5AC62584EDC6007F6728 /* OnlyPassesOnSpecificInputSpecification.swift in Sources */,
 				CA7A319A22B16E26002AD939 /* WhenDeletingRoom_AfterSuccessfulSync_ApplicationShould.swift in Sources */,
+				CA5A5AC02584ED0C007F6728 /* AnySpecificationTests.swift in Sources */,
 				CA7A324122B16E26002AD939 /* WhenSyncSucceeds_WithImages_ThenSubsequentSyncDeletesImage_ApplicationShould.swift in Sources */,
 				CA7A31FA22B16E26002AD939 /* CapturingDealersIndexDelegate.swift in Sources */,
 				CA7A31C222B16E26002AD939 /* WhenPerformingSync_WhenNumberOfImagesToDownloadIsKnown.swift in Sources */,
