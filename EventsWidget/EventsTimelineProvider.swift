@@ -1,3 +1,5 @@
+import EurofurenceApplicationSession
+import EurofurenceModel
 import EurofurenceIntentDefinitions
 import EventsWidgetLogic
 import WidgetKit
@@ -82,7 +84,7 @@ struct EventsTimelineProvider: IntentTimelineProvider {
     
     private struct ApplyNoFilteringPolicy: TimelineEntryFilteringPolicy {
         
-        func filterEvents(_ events: [Event], inGroupStartingAt startTime: Date) -> [Event] {
+        func filterEvents(_ events: [EventsWidgetLogic.Event], inGroupStartingAt startTime: Date) -> [EventsWidgetLogic.Event] {
             events
         }
         
@@ -93,9 +95,14 @@ struct EventsTimelineProvider: IntentTimelineProvider {
         context: Context,
         completionHandler: @escaping (EventsTimeline) -> Void
     ) {
-        let repository = WidgetRepositoryAdapter(intent: configuration)
+        let clock = ControllableClock()
+        let session = EurofurenceSessionBuilder.buildingForEurofurenceApplication().with(clock).build()
+        let eventsService = session.services.events
+        let bridge = EventsBridge()
+        eventsService.add(bridge)
+        
         let controller = EventsTimelineController(
-            repository: repository,
+            repository: bridge,
             filteringPolicy: ApplyNoFilteringPolicy(),
             eventTimeFormatter: HoursAndMinutesEventTimeFormatter.shared
         )
