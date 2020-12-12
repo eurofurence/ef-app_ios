@@ -295,6 +295,7 @@
 		CA52C68F20D6AB47009D3A9E /* ScheduleComponentDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C68E20D6AB47009D3A9E /* ScheduleComponentDelegate.swift */; };
 		CA52C69920D6B87E009D3A9E /* HideNavigationBarShadowForSpecificViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C69820D6B87E009D3A9E /* HideNavigationBarShadowForSpecificViewControllerDelegate.swift */; };
 		CA5891E02562F2E800FC9BC1 /* HoursAndMinutesEventTimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5891DF2562F2E800FC9BC1 /* HoursAndMinutesEventTimeFormatter.swift */; };
+		CA5A5AE42584F1F4007F6728 /* ControllableClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5A5AE32584F1F4007F6728 /* ControllableClock.swift */; };
 		CA5DCC7D24C74602001F20F8 /* DetailPresentationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5DCC7C24C74602001F20F8 /* DetailPresentationContext.swift */; };
 		CA5DCC8024C76995001F20F8 /* EmbeddedDealerContentRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5DCC7F24C76995001F20F8 /* EmbeddedDealerContentRepresentation.swift */; };
 		CA5DCC8224C769B5001F20F8 /* EmbeddedDealerContentRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5DCC8124C769B5001F20F8 /* EmbeddedDealerContentRoute.swift */; };
@@ -1667,6 +1668,7 @@
 		CA52C68E20D6AB47009D3A9E /* ScheduleComponentDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleComponentDelegate.swift; sourceTree = "<group>"; };
 		CA52C69820D6B87E009D3A9E /* HideNavigationBarShadowForSpecificViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideNavigationBarShadowForSpecificViewControllerDelegate.swift; sourceTree = "<group>"; };
 		CA5891DF2562F2E800FC9BC1 /* HoursAndMinutesEventTimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoursAndMinutesEventTimeFormatter.swift; sourceTree = "<group>"; };
+		CA5A5AE32584F1F4007F6728 /* ControllableClock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllableClock.swift; sourceTree = "<group>"; };
 		CA5DCC7C24C74602001F20F8 /* DetailPresentationContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresentationContext.swift; sourceTree = "<group>"; };
 		CA5DCC7F24C76995001F20F8 /* EmbeddedDealerContentRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedDealerContentRepresentation.swift; sourceTree = "<group>"; };
 		CA5DCC8124C769B5001F20F8 /* EmbeddedDealerContentRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedDealerContentRoute.swift; sourceTree = "<group>"; };
@@ -4697,11 +4699,12 @@
 		CA8F7D17256173290096E206 /* Logic Adapter */ = {
 			isa = PBXGroup;
 			children = (
+				CA5A5AE32584F1F4007F6728 /* ControllableClock.swift */,
+				CABBCA152565B153007A11A2 /* EventCategory+Intent.swift */,
 				CA7DA65E2563018F00F1316F /* EventWidgetContext+TimelineContext.swift */,
 				CA5891DF2562F2E800FC9BC1 /* HoursAndMinutesEventTimeFormatter.swift */,
 				CA8F7D2E256182EF0096E206 /* WidgetKitConformances.swift */,
 				CA8F7D18256173470096E206 /* WidgetRepositoryAdapter.swift */,
-				CABBCA152565B153007A11A2 /* EventCategory+Intent.swift */,
 			);
 			path = "Logic Adapter";
 			sourceTree = "<group>";
@@ -8690,6 +8693,7 @@
 				CA526F8F256456F900BDD7BB /* AdditionalEventsFooter.swift in Sources */,
 				CA5891E02562F2E800FC9BC1 /* HoursAndMinutesEventTimeFormatter.swift in Sources */,
 				CAFC4A612564583A00499A47 /* EventLocation.swift in Sources */,
+				CA5A5AE42584F1F4007F6728 /* ControllableClock.swift in Sources */,
 				CA7DA65F2563018F00F1316F /* EventWidgetContext+TimelineContext.swift in Sources */,
 				CA8F7D2F256182EF0096E206 /* WidgetKitConformances.swift in Sources */,
 				CA7DA66925630B3100F1316F /* WidgetLayout.swift in Sources */,

@@ -9,7 +9,7 @@ struct WidgetRepositoryAdapter: EventsWidgetLogic.EventRepository {
     var intent: ViewEventsIntent
     
     func loadEvents(completionHandler: @escaping ([EventsWidgetLogic.Event]) -> Void) {
-        let session = EurofurenceSessionBuilder.buildingForEurofurenceApplication().build()
+        let session = EurofurenceSessionBuilder.buildingForEurofurenceApplication().with(ControllableClock()).build()
         let eventsService = session.services.events
         
         let favouritesOnly = intent.favouritesOnly?.boolValue ?? false
@@ -62,7 +62,6 @@ struct WidgetRepositoryAdapter: EventsWidgetLogic.EventRepository {
     private class EventsAdapter: EurofurenceModel.EventsServiceObserver {
         
         let favouritesOnly: Bool
-        private var hasCompleted = false
         private let completionHandler: ([EventsWidgetLogic.Event]) -> Void
         
         required init(favouritesOnly: Bool, completionHandler: @escaping ([EventsWidgetLogic.Event]) -> Void) {
@@ -71,10 +70,6 @@ struct WidgetRepositoryAdapter: EventsWidgetLogic.EventRepository {
         }
         
         func completeLoad(events: [EurofurenceModel.Event]) {
-            guard !hasCompleted else { return }
-            
-            hasCompleted = true
-            
             var eventsForWidget = events
             if favouritesOnly {
                 eventsForWidget = eventsForWidget.filter({ $0.isFavourite })
