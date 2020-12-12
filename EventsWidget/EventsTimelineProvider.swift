@@ -80,6 +80,14 @@ struct EventsTimelineProvider: IntentTimelineProvider {
         }
     }
     
+    private struct ApplyNoFilteringPolicy: TimelineEntryFilteringPolicy {
+        
+        func filterEvents(_ events: [Event], inGroupStartingAt startTime: Date) -> [Event] {
+            events
+        }
+        
+    }
+    
     private func fetchEventsTimeline(
         configuration: ViewEventsIntent,
         context: Context,
@@ -88,6 +96,7 @@ struct EventsTimelineProvider: IntentTimelineProvider {
         let repository = WidgetRepositoryAdapter(intent: configuration)
         let controller = EventsTimelineController(
             repository: repository,
+            filteringPolicy: ApplyNoFilteringPolicy(),
             eventTimeFormatter: HoursAndMinutesEventTimeFormatter.shared
         )
         
