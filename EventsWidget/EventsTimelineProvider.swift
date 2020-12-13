@@ -90,13 +90,10 @@ struct EventsTimelineProvider: IntentTimelineProvider {
         let bridge = prepareModuleBridge(clock: clock)
         let controller = makeTimelineController(bridge: bridge, intent: configuration, clock: clock)
         
-        let components = DateComponents(calendar: .current, timeZone: .current, year: 2019, month: 8, day: 15, hour: 11)
-        let date = Calendar.current.date(from: components)!
-        
         let widgetContext = EventWidgetContext(timelineContext: context)
         let options = EventsTimelineController.TimelineOptions(
             maximumEventsPerEntry: widgetContext.recommendedNumberOfEvents,
-            timelineStartDate: date,
+            timelineStartDate: Date(),
             eventCategory: EventCategory(filter: configuration.filter),
             isFavouritesOnly: configuration.favouritesOnly?.boolValue ?? false
         )
