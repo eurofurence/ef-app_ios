@@ -78,6 +78,17 @@ class EventsTimelineControllerTests: XCTestCase {
         )
     }
     
+    private func expectedViewModel(for event: Event) -> EventViewModel {
+        EventViewModel(
+            id: event.id,
+            title: event.title,
+            location: event.location,
+            formattedStartTime: string(from: event.startTime),
+            formattedEndTime: string(from: event.endTime),
+            widgetURL: event.deepLinkingContentURL
+        )
+    }
+    
     // MARK: - Timeline Tests
     
     func testTimeline_OneEvent() throws {
@@ -97,14 +108,7 @@ class EventsTimelineControllerTests: XCTestCase {
         let expectedSnapshotEntry = eventsEntry(
             date: now,
             events: [
-                EventViewModel(
-                    id: "some_event",
-                    title: "Some Event",
-                    location: "Location",
-                    formattedStartTime: string(from: now),
-                    formattedEndTime: string(from: inHalfAnHour),
-                    widgetURL: event.deepLinkingContentURL
-                )
+                expectedViewModel(for: event)
             ],
             additionalEventsCount: 0,
             category: .upcoming,
@@ -148,23 +152,8 @@ class EventsTimelineControllerTests: XCTestCase {
         let expectedSnapshotEntry = eventsEntry(
             date: now,
             events: [
-                EventViewModel(
-                    id: "some_event",
-                    title: "Some Event",
-                    location: "Location",
-                    formattedStartTime: string(from: now),
-                    formattedEndTime: string(from: inHalfAnHour),
-                    widgetURL: earlierEvent.deepLinkingContentURL
-                ),
-                
-                EventViewModel(
-                    id: "some_other_event",
-                    title: "Some Other Event",
-                    location: "Other Location",
-                    formattedStartTime: string(from: inHalfAnHour),
-                    formattedEndTime: string(from: inOneHour),
-                    widgetURL: laterEvent.deepLinkingContentURL
-                )
+                expectedViewModel(for: earlierEvent),
+                expectedViewModel(for: laterEvent)
             ],
             additionalEventsCount: 0,
             category: .upcoming,
@@ -179,14 +168,7 @@ class EventsTimelineControllerTests: XCTestCase {
                 eventsEntry(
                     date: inHalfAnHour,
                     events: [
-                        EventViewModel(
-                            id: "some_other_event",
-                            title: "Some Other Event",
-                            location: "Other Location",
-                            formattedStartTime: string(from: inHalfAnHour),
-                            formattedEndTime: string(from: inOneHour),
-                            widgetURL: laterEvent.deepLinkingContentURL
-                        )
+                        expectedViewModel(for: laterEvent)
                     ],
                     additionalEventsCount: 0,
                     category: .upcoming,
@@ -226,14 +208,7 @@ class EventsTimelineControllerTests: XCTestCase {
         let expectedSnapshotEntry = eventsEntry(
             date: inHalfAnHour,
             events: [
-                EventViewModel(
-                    id: "some_other_event",
-                    title: "Some Other Event",
-                    location: "Other Location",
-                    formattedStartTime: string(from: inHalfAnHour),
-                    formattedEndTime: string(from: inOneHour),
-                    widgetURL: laterEvent.deepLinkingContentURL
-                )
+                expectedViewModel(for: laterEvent)
             ],
             additionalEventsCount: 0,
             category: .upcoming,
@@ -253,13 +228,11 @@ class EventsTimelineControllerTests: XCTestCase {
     }
     
     func testTimeline_SortsEventsWithinEntryByName() {
-        let events = [
-            StubEvent(id: "2", title: "B Event", location: "Location", startTime: now, endTime: inHalfAnHour),
-            StubEvent(id: "3", title: "C Event", location: "Location", startTime: now, endTime: inHalfAnHour),
-            StubEvent(id: "1", title: "A Event", location: "Location", startTime: now, endTime: inHalfAnHour)
-        ]
+        let firstEvent = StubEvent(id: "1", title: "A Event", location: "Location", startTime: now, endTime: inHalfAnHour)
+        let secondEvent = StubEvent(id: "2", title: "B Event", location: "Location", startTime: now, endTime: inHalfAnHour)
+        let thirdEvent = StubEvent(id: "3", title: "C Event", location: "Location", startTime: now, endTime: inHalfAnHour)
         
-        let repository = StubEventsRepository(events: events)
+        let repository = StubEventsRepository(events: [secondEvent, thirdEvent, firstEvent])
         setUpController(repository: repository)
         
         let actual = makeTimeline(timelineStartDate: now)
@@ -267,30 +240,9 @@ class EventsTimelineControllerTests: XCTestCase {
         let expectedSnapshotEntry = eventsEntry(
             date: now,
             events: [
-                EventViewModel(
-                    id: "1",
-                    title: "A Event",
-                    location: "Location",
-                    formattedStartTime: string(from: now),
-                    formattedEndTime: string(from: inHalfAnHour),
-                    widgetURL: events[2].deepLinkingContentURL
-                ),
-                EventViewModel(
-                    id: "2",
-                    title: "B Event",
-                    location: "Location",
-                    formattedStartTime: string(from: now),
-                    formattedEndTime: string(from: inHalfAnHour),
-                    widgetURL: events[0].deepLinkingContentURL
-                ),
-                EventViewModel(
-                    id: "3",
-                    title: "C Event",
-                    location: "Location",
-                    formattedStartTime: string(from: now),
-                    formattedEndTime: string(from: inHalfAnHour),
-                    widgetURL: events[1].deepLinkingContentURL
-                )
+                expectedViewModel(for: firstEvent),
+                expectedViewModel(for: secondEvent),
+                expectedViewModel(for: thirdEvent)
             ],
             additionalEventsCount: 0,
             category: .upcoming,
@@ -310,15 +262,20 @@ class EventsTimelineControllerTests: XCTestCase {
     }
     
     func testTimeline_ExceedingEventsWithinGroupDropsLastEvents() {
-        let events = [
-            StubEvent(id: "2", title: "B Event", location: "Location", startTime: now, endTime: inHalfAnHour),
-            StubEvent(id: "3", title: "C Event", location: "Location", startTime: now, endTime: inHalfAnHour),
-            StubEvent(id: "1", title: "A Event", location: "Location", startTime: now, endTime: inHalfAnHour),
-            StubEvent(id: "5", title: "E Event", location: "Location", startTime: now, endTime: inHalfAnHour),
-            StubEvent(id: "4", title: "D Event", location: "Location", startTime: now, endTime: inHalfAnHour)
-        ]
+        let firstEvent = StubEvent(id: "1", title: "A Event", location: "Location", startTime: now, endTime: inHalfAnHour)
+        let secondEvent = StubEvent(id: "2", title: "B Event", location: "Location", startTime: now, endTime: inHalfAnHour)
+        let thirdEvent = StubEvent(id: "3", title: "C Event", location: "Location", startTime: now, endTime: inHalfAnHour)
+        let fourthEvent = StubEvent(id: "4", title: "D Event", location: "Location", startTime: now, endTime: inHalfAnHour)
+        let fifthEvent = StubEvent(id: "5", title: "E Event", location: "Location", startTime: now, endTime: inHalfAnHour)
+
+        let repository = StubEventsRepository(events: [
+            secondEvent,
+            thirdEvent,
+            firstEvent,
+            fifthEvent,
+            fourthEvent
+        ])
         
-        let repository = StubEventsRepository(events: events)
         setUpController(repository: repository)
         
         let actual = makeTimeline(timelineStartDate: now)
@@ -326,30 +283,9 @@ class EventsTimelineControllerTests: XCTestCase {
         let expectedSnapshotEntry = eventsEntry(
             date: now,
             events: [
-                EventViewModel(
-                    id: "1",
-                    title: "A Event",
-                    location: "Location",
-                    formattedStartTime: string(from: now),
-                    formattedEndTime: string(from: inHalfAnHour),
-                    widgetURL: events[2].deepLinkingContentURL
-                ),
-                EventViewModel(
-                    id: "2",
-                    title: "B Event",
-                    location: "Location",
-                    formattedStartTime: string(from: now),
-                    formattedEndTime: string(from: inHalfAnHour),
-                    widgetURL: events[0].deepLinkingContentURL
-                ),
-                EventViewModel(
-                    id: "3",
-                    title: "C Event",
-                    location: "Location",
-                    formattedStartTime: string(from: now),
-                    formattedEndTime: string(from: inHalfAnHour),
-                    widgetURL: events[1].deepLinkingContentURL
-                )
+                expectedViewModel(for: firstEvent),
+                expectedViewModel(for: secondEvent),
+                expectedViewModel(for: thirdEvent)
             ],
             additionalEventsCount: 2,
             category: .upcoming,
@@ -398,17 +334,22 @@ class EventsTimelineControllerTests: XCTestCase {
     }
     
     func testDoesNotIncludeEventsThatAreRejectedByFilteringPolicy() {
-        let events = [
-            StubEvent(id: "1", title: "A Event", location: "Location", startTime: now, endTime: inHalfAnHour),
-            StubEvent(id: "2", title: "B Event", location: "Location", startTime: now, endTime: inHalfAnHour),
-            StubEvent(id: "3", title: "C Event", location: "Location", startTime: now, endTime: inOneHour),
-            StubEvent(id: "4", title: "D Event", location: "Location", startTime: inHalfAnHour, endTime: inOneHour),
-            StubEvent(id: "5", title: "E Event", location: "Location", startTime: inHalfAnHour, endTime: inOneHour)
-        ]
-        
+        let firstEvent = StubEvent(id: "1", title: "A Event", location: "Location", startTime: now, endTime: inHalfAnHour)
+        let secondEvent = StubEvent(id: "2", title: "B Event", location: "Location", startTime: now, endTime: inHalfAnHour)
+        let thirdEvent = StubEvent(id: "3", title: "C Event", location: "Location", startTime: now, endTime: inOneHour)
+        let fourthEvent = StubEvent(id: "4", title: "D Event", location: "Location", startTime: inHalfAnHour, endTime: inOneHour)
+        let fifthEvent = StubEvent(id: "5", title: "E Event", location: "Location", startTime: inHalfAnHour, endTime: inOneHour)
+
         let filteringPolicy = FilterByEventIdentifierPolicy(removeEventsWithIdentifiers: ["3", "5"])
         
-        let repository = StubEventsRepository(events: events)
+        let repository = StubEventsRepository(events: [
+            firstEvent,
+            secondEvent,
+            thirdEvent,
+            fourthEvent,
+            fifthEvent
+        ])
+        
         setUpController(repository: repository, filteringPolicy: filteringPolicy)
         
         let actual = makeTimeline(timelineStartDate: now)
@@ -416,30 +357,9 @@ class EventsTimelineControllerTests: XCTestCase {
         let firstExpectedSnapshotEntry = eventsEntry(
             date: now,
             events: [
-                EventViewModel(
-                    id: "1",
-                    title: "A Event",
-                    location: "Location",
-                    formattedStartTime: string(from: now),
-                    formattedEndTime: string(from: inHalfAnHour),
-                    widgetURL: events[0].deepLinkingContentURL
-                ),
-                EventViewModel(
-                    id: "2",
-                    title: "B Event",
-                    location: "Location",
-                    formattedStartTime: string(from: now),
-                    formattedEndTime: string(from: inHalfAnHour),
-                    widgetURL: events[1].deepLinkingContentURL
-                ),
-                EventViewModel(
-                    id: "4",
-                    title: "D Event",
-                    location: "Location",
-                    formattedStartTime: string(from: inHalfAnHour),
-                    formattedEndTime: string(from: inOneHour),
-                    widgetURL: events[3].deepLinkingContentURL
-                )
+                expectedViewModel(for: firstEvent),
+                expectedViewModel(for: secondEvent),
+                expectedViewModel(for: fourthEvent)
             ],
             additionalEventsCount: 0,
             category: .upcoming,
@@ -449,14 +369,7 @@ class EventsTimelineControllerTests: XCTestCase {
         let secondExpectedSnapshotEntry = eventsEntry(
             date: inHalfAnHour,
             events: [
-                EventViewModel(
-                    id: "4",
-                    title: "D Event",
-                    location: "Location",
-                    formattedStartTime: string(from: inHalfAnHour),
-                    formattedEndTime: string(from: inOneHour),
-                    widgetURL: events[3].deepLinkingContentURL
-                )
+                expectedViewModel(for: fourthEvent)
             ],
             additionalEventsCount: 0,
             category: .upcoming,
@@ -498,14 +411,7 @@ class EventsTimelineControllerTests: XCTestCase {
         let expectedEventEntry = eventsEntry(
             date: inTheFuture,
             events: [
-                EventViewModel(
-                    id: "some_event",
-                    title: "Some Event",
-                    location: "Location",
-                    formattedStartTime: string(from: inTheFuture),
-                    formattedEndTime: string(from: inTheFuturePlusHalfAnHour),
-                    widgetURL: event.deepLinkingContentURL
-                )
+                expectedViewModel(for: event)
             ],
             additionalEventsCount: 0,
             category: .upcoming,
