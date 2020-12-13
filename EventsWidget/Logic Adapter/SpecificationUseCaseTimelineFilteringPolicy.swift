@@ -2,7 +2,7 @@ import EurofurenceModel
 import EventsWidgetLogic
 import Foundation.NSDate
 
-struct FilterWidgetEventsBySpecification: TimelineEntryFilteringPolicy {
+struct SpecificationUseCaseTimelineFilteringPolicy: TimelineEntryFilteringPolicy {
     
     let bridge: EventsBridge
     let clock: ControllableClock

@@ -97,7 +97,7 @@ struct EventsTimelineProvider: IntentTimelineProvider {
             clock: clock
         )
         
-        let filteringPolicy = FilterWidgetEventsBySpecification(
+        let filteringPolicy = SpecificationUseCaseTimelineFilteringPolicy(
             bridge: bridge,
             clock: clock,
             specification: specification
