@@ -13,7 +13,9 @@ struct EventCluster {
         filteringPolicy: TimelineEntryFilteringPolicy,
         maximumEventsPerCluster: Int
     ) -> EventCluster? {
-        let eligibleEvents = filteringPolicy.filterEvents(events, inGroupStartingAt: startTime)
+        let clusterStartTime = filteringPolicy.proposedEntryStartTime(forEventsClustereredAt: startTime)
+        let eligibleEvents = filteringPolicy.filterEvents(events, inGroupStartingAt: clusterStartTime)
+        
         if eligibleEvents.isEmpty {
             return nil
         }
@@ -23,7 +25,6 @@ struct EventCluster {
         let clusterEvents = Array(eventsOnOrAfterTime[0..<eventsToTake])
         let remainingEvents = eventsOnOrAfterTime.count - eventsToTake
         
-        let clusterStartTime = filteringPolicy.proposedEntryStartTime(forEventsClustereredAt: startTime)
         let lastEventTimeInCluster = clusterEvents.map(\.endTime).max() ?? Date()
         
         return EventCluster(

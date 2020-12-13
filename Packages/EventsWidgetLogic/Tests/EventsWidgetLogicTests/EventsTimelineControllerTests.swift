@@ -476,10 +476,11 @@ class EventsTimelineControllerTests: XCTestCase {
     
     struct ShiftEntriesBackTimelineFilteringPolicy: TimelineEntryFilteringPolicy {
         
+        var expectedFilteringTime: Date
         var shiftEntriesBackBy: TimeInterval
         
         func filterEvents(_ events: [Event], inGroupStartingAt startTime: Date) -> [Event] {
-            events
+            startTime == expectedFilteringTime ? events : []
         }
         
         func proposedEntryStartTime(forEventsClustereredAt clusterTime: Date) -> Date {
@@ -498,7 +499,8 @@ class EventsTimelineControllerTests: XCTestCase {
         )
         
         let oneHour: TimeInterval = 3600
-        let shiftEntriesBackPolicy = ShiftEntriesBackTimelineFilteringPolicy(shiftEntriesBackBy: oneHour)
+        let expectedFilteringTime = now.addingTimeInterval(-oneHour)
+        let shiftEntriesBackPolicy = ShiftEntriesBackTimelineFilteringPolicy(expectedFilteringTime: expectedFilteringTime, shiftEntriesBackBy: oneHour)
         
         let repository = StubEventsRepository(events: [event])
         setUpController(repository: repository, filteringPolicy: shiftEntriesBackPolicy)
