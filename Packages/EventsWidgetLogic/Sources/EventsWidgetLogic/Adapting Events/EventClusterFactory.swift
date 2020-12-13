@@ -9,7 +9,7 @@ struct EventClusterFactory {
     
     func makeClusters() -> [EventCluster] {
         let distinctStartTimes = resolveClusteringDates()
-        let eventClusters = distinctStartTimes.map(makeEventCluster(startTime:))
+        let eventClusters = distinctStartTimes.compactMap(makeEventCluster(startTime:))
         return eventClusters
     }
     
@@ -19,7 +19,7 @@ struct EventClusterFactory {
         return distinctClusterDates.sorted()
     }
     
-    private func makeEventCluster(startTime: Date) -> EventCluster {
+    private func makeEventCluster(startTime: Date) -> EventCluster? {
         EventCluster.clusterEvents(
             events,
             startingAt: startTime,

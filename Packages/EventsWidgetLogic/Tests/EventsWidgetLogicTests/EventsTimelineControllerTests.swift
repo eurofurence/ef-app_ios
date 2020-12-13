@@ -431,4 +431,39 @@ class EventsTimelineControllerTests: XCTestCase {
         XCTAssertEqual(expectedSnapshotEntry, actual?.snapshot)
     }
     
+    struct RemoveAllEventsFilteringPolicy: TimelineEntryFilteringPolicy {
+        
+        func filterEvents(_ events: [Event], inGroupStartingAt startTime: Date) -> [Event] {
+            []
+        }
+        
+    }
+    
+    func testEntriesWithNoEligibleEventsAreIncluded() {
+        let event = StubEvent(
+            id: "some_event",
+            title: "Some Event",
+            location: "Location",
+            startTime: now,
+            endTime: inHalfAnHour
+        )
+        
+        let repository = StubEventsRepository(events: [event])
+        setUpController(repository: repository, filteringPolicy: RemoveAllEventsFilteringPolicy())
+        
+        let actual = makeTimeline(timelineStartDate: now, isFavouritesOnly: true)
+        
+        let expectedSnapshotEntry = emptyEntry(date: now, category: .upcoming, isFavouritesOnly: true)
+        
+        let expected = EventsTimeline(
+            snapshot: expectedSnapshotEntry,
+            entries: [
+                expectedSnapshotEntry
+            ]
+        )
+        
+        XCTAssertEqual(expected, actual)
+        XCTAssertEqual(expectedSnapshotEntry, actual?.snapshot)
+    }
+    
 }

@@ -12,8 +12,12 @@ struct EventCluster {
         startingAt startTime: Date,
         filteringPolicy: TimelineEntryFilteringPolicy,
         maximumEventsPerCluster: Int
-    ) -> EventCluster {
+    ) -> EventCluster? {
         let eligibleEvents = filteringPolicy.filterEvents(events, inGroupStartingAt: startTime)
+        if eligibleEvents.isEmpty {
+            return nil
+        }
+        
         let eventsOnOrAfterTime = eligibleEvents.filter({ $0.startTime >= startTime }).sorted(by: \.title)
         let eventsToTake = min(maximumEventsPerCluster, eventsOnOrAfterTime.count)
         let clusterEvents = Array(eventsOnOrAfterTime[0..<eventsToTake])
