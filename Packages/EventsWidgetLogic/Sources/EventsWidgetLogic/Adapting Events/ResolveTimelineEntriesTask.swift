@@ -40,7 +40,7 @@ struct ResolveTimelineEntriesTask {
             
             let endOfSchedule = EventTimelineEntry(
                 date: lastCluster.lastEventTimeInCluster,
-                content: .endOfSchedule,
+                content: .empty,
                 context: .init(category: eventCategory, isFavouritesOnly: isFavouritesOnly)
             )
             
@@ -48,7 +48,7 @@ struct ResolveTimelineEntriesTask {
         } else {
             snapshotEntry = EventTimelineEntry(
                 date: timelineStartDate,
-                content: .endOfSchedule,
+                content: .empty,
                 context: EventTimelineEntry.Context(category: eventCategory, isFavouritesOnly: isFavouritesOnly)
             )
             timelineEntries = [snapshotEntry]

@@ -94,7 +94,7 @@ class EventsTimelineControllerTests: XCTestCase {
                 
                 EventTimelineEntry(
                     date: inHalfAnHour,
-                    content: .endOfSchedule,
+                    content: .empty,
                     context: .init(category: .upcoming, isFavouritesOnly: true)
                 )
             ]
@@ -178,7 +178,7 @@ class EventsTimelineControllerTests: XCTestCase {
                 
                 EventTimelineEntry(
                     date: inOneHour,
-                    content: .endOfSchedule,
+                    content: .empty,
                     context: .init(category: .upcoming, isFavouritesOnly: false)
                 )
             ]
@@ -235,7 +235,7 @@ class EventsTimelineControllerTests: XCTestCase {
                 
                 EventTimelineEntry(
                     date: inOneHour,
-                    content: .endOfSchedule,
+                    content: .empty,
                     context: .init(category: .upcoming, isFavouritesOnly: false)
                 )
             ]
@@ -298,7 +298,7 @@ class EventsTimelineControllerTests: XCTestCase {
                 
                 EventTimelineEntry(
                     date: inHalfAnHour,
-                    content: .endOfSchedule,
+                    content: .empty,
                     context: .init(category: .upcoming, isFavouritesOnly: false)
                 )
             ]
@@ -363,7 +363,7 @@ class EventsTimelineControllerTests: XCTestCase {
                 
                 EventTimelineEntry(
                     date: inHalfAnHour,
-                    content: .endOfSchedule,
+                    content: .empty,
                     context: .init(category: .upcoming, isFavouritesOnly: false)
                 )
             ]
@@ -381,7 +381,7 @@ class EventsTimelineControllerTests: XCTestCase {
         
         let expectedSnapshotEntry = EventTimelineEntry(
             date: now,
-            content: .endOfSchedule,
+            content: .empty,
             context: .init(category: .upcoming, isFavouritesOnly: false)
         )
         
@@ -482,7 +482,7 @@ class EventsTimelineControllerTests: XCTestCase {
                 
                 EventTimelineEntry(
                     date: inOneHour,
-                    content: .endOfSchedule,
+                    content: .empty,
                     context: .init(category: .upcoming, isFavouritesOnly: false)
                 )
             ]

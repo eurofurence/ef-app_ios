@@ -5,7 +5,7 @@ public struct EventTimelineEntry: Equatable {
     public enum Content: Equatable {
         
         case events(viewModels: [EventViewModel], additionalEventsCount: Int)
-        case endOfSchedule
+        case empty
         
     }
     

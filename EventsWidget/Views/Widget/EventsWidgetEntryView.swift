@@ -33,7 +33,7 @@ struct EventsWidgetEntryView: View {
                     }
                 }
                 
-            case .endOfSchedule:
+            case .empty:
                 PlaceholderPrompt(category: entry.context.category)
             }
         }
