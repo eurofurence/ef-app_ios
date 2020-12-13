@@ -22,4 +22,8 @@ struct FilterWidgetEventsBySpecification: TimelineEntryFilteringPolicy {
         return filteredEvents
     }
     
+    func proposedEntryStartTime(forEventsClustereredAt clusterTime: Date) -> Date {
+        clusterTime
+    }
+    
 }

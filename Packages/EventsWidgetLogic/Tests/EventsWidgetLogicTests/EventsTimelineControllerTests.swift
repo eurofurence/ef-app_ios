@@ -331,6 +331,10 @@ class EventsTimelineControllerTests: XCTestCase {
             events.filter({ removeEventsWithIdentifiers.contains($0.id) == false })
         }
         
+        func proposedEntryStartTime(forEventsClustereredAt clusterTime: Date) -> Date {
+            clusterTime
+        }
+        
     }
     
     func testDoesNotIncludeEventsThatAreRejectedByFilteringPolicy() {
@@ -437,6 +441,10 @@ class EventsTimelineControllerTests: XCTestCase {
             []
         }
         
+        func proposedEntryStartTime(forEventsClustereredAt clusterTime: Date) -> Date {
+            clusterTime
+        }
+        
     }
     
     func testEntriesWithNoEligibleEventsAreIncluded() {
@@ -459,6 +467,59 @@ class EventsTimelineControllerTests: XCTestCase {
             snapshot: expectedSnapshotEntry,
             entries: [
                 expectedSnapshotEntry
+            ]
+        )
+        
+        XCTAssertEqual(expected, actual)
+        XCTAssertEqual(expectedSnapshotEntry, actual?.snapshot)
+    }
+    
+    struct ShiftEntriesBackTimelineFilteringPolicy: TimelineEntryFilteringPolicy {
+        
+        var shiftEntriesBackBy: TimeInterval
+        
+        func filterEvents(_ events: [Event], inGroupStartingAt startTime: Date) -> [Event] {
+            events
+        }
+        
+        func proposedEntryStartTime(forEventsClustereredAt clusterTime: Date) -> Date {
+            clusterTime.addingTimeInterval(-shiftEntriesBackBy)
+        }
+        
+    }
+    
+    func testEntriesUseProposedTimeFromPolicyDuringClustering() {
+        let event = StubEvent(
+            id: "some_event",
+            title: "Some Event",
+            location: "Location",
+            startTime: now,
+            endTime: inHalfAnHour
+        )
+        
+        let oneHour: TimeInterval = 3600
+        let shiftEntriesBackPolicy = ShiftEntriesBackTimelineFilteringPolicy(shiftEntriesBackBy: oneHour)
+        
+        let repository = StubEventsRepository(events: [event])
+        setUpController(repository: repository, filteringPolicy: shiftEntriesBackPolicy)
+        
+        let actual = makeTimeline(timelineStartDate: now, isFavouritesOnly: true)
+        
+        let expectedSnapshotEntry = eventsEntry(
+            date: now.addingTimeInterval(-oneHour),
+            events: [
+                expectedViewModel(for: event)
+            ],
+            additionalEventsCount: 0,
+            category: .upcoming,
+            isFavouritesOnly: true
+        )
+        
+        let expected = EventsTimeline(
+            snapshot: expectedSnapshotEntry,
+            entries: [
+                expectedSnapshotEntry,
+                emptyEntry(date: inHalfAnHour, category: .upcoming, isFavouritesOnly: true)
             ]
         )
         

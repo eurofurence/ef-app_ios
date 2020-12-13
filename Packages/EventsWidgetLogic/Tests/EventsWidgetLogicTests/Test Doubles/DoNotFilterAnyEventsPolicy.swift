@@ -7,4 +7,8 @@ struct DoNotFilterAnyEventsPolicy: TimelineEntryFilteringPolicy {
         events
     }
     
+    func proposedEntryStartTime(forEventsClustereredAt clusterTime: Date) -> Date {
+        clusterTime
+    }
+    
 }

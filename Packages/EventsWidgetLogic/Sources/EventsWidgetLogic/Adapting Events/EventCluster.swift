@@ -23,10 +23,11 @@ struct EventCluster {
         let clusterEvents = Array(eventsOnOrAfterTime[0..<eventsToTake])
         let remainingEvents = eventsOnOrAfterTime.count - eventsToTake
         
+        let clusterStartTime = filteringPolicy.proposedEntryStartTime(forEventsClustereredAt: startTime)
         let lastEventTimeInCluster = clusterEvents.map(\.endTime).max() ?? Date()
         
         return EventCluster(
-            clusterStartTime: startTime,
+            clusterStartTime: clusterStartTime,
             lastEventTimeInCluster: lastEventTimeInCluster,
             events: clusterEvents,
             additionalEventCount: remainingEvents
