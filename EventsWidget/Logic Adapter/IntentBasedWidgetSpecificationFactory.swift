@@ -4,6 +4,8 @@ import EurofurenceModel
 
 struct IntentBasedWidgetSpecificationFactory {
     
+    private static let upcomingEventsConfiguration = RemotelyConfiguredUpcomingEventsConfiguration()
+    
     static func makeSpecification(intent: ViewEventsIntent, clock: Clock) -> AnySpecification<EurofurenceModel.Event> {
         let favouritesOnly = intent.favouritesOnly?.boolValue ?? false
         
@@ -15,11 +17,18 @@ struct IntentBasedWidgetSpecificationFactory {
         case .upcoming:
             fallthrough
         default:
-            return UpcomingEventSpecification(
-                clock: clock,
-                configuration: RemotelyConfiguredUpcomingEventsConfiguration()
-            )
-            .enableFavoritesOnlyFilter(favouritesOnly)
+            return UpcomingEventSpecification(clock: clock, configuration: upcomingEventsConfiguration)
+                .enableFavoritesOnlyFilter(favouritesOnly)
+        }
+    }
+    
+    static func makeEntryTimeOffset(intent: ViewEventsIntent) -> TimeInterval {
+        switch intent.filter {
+        case .upcoming:
+            return upcomingEventsConfiguration.intervalFromPresentForUpcomingEvents
+            
+        default:
+            return 0
         }
     }
     

@@ -119,10 +119,13 @@ struct EventsTimelineProvider: IntentTimelineProvider {
         clock: ControllableClock
     ) -> EventsTimelineController {
         let specification = IntentBasedWidgetSpecificationFactory.makeSpecification(intent: intent, clock: clock)
+        let entryTimeOffset = IntentBasedWidgetSpecificationFactory.makeEntryTimeOffset(intent: intent)
+        
         let filteringPolicy = SpecificationUseCaseTimelineFilteringPolicy(
             bridge: bridge,
             clock: clock,
-            specification: specification
+            specification: specification,
+            entryTimeOffset: entryTimeOffset
         )
         
         return EventsTimelineController(

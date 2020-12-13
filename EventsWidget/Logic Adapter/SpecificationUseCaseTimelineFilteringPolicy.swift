@@ -7,6 +7,7 @@ struct SpecificationUseCaseTimelineFilteringPolicy: TimelineEntryFilteringPolicy
     let bridge: EventsBridge
     let clock: ControllableClock
     let specification: AnySpecification<EurofurenceModel.Event>
+    let entryTimeOffset: TimeInterval
     
     func filterEvents(
         _ events: [EventsWidgetLogic.Event],
@@ -23,7 +24,7 @@ struct SpecificationUseCaseTimelineFilteringPolicy: TimelineEntryFilteringPolicy
     }
     
     func proposedEntryStartTime(forEventsClustereredAt clusterTime: Date) -> Date {
-        clusterTime
+        clusterTime.addingTimeInterval(-entryTimeOffset)
     }
     
 }
