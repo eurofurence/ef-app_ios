@@ -53,6 +53,31 @@ class EventsTimelineControllerTests: XCTestCase {
         formatter.string(from: date)
     }
     
+    private func emptyEntry(date: Date, category: EventCategory, isFavouritesOnly: Bool) -> EventTimelineEntry {
+        EventTimelineEntry(
+            date: date,
+            content: .empty,
+            context: .init(category: category, isFavouritesOnly: isFavouritesOnly)
+        )
+    }
+    
+    private func eventsEntry(
+        date: Date,
+        events: [EventViewModel],
+        additionalEventsCount: Int,
+        category: EventCategory,
+        isFavouritesOnly: Bool
+    ) -> EventTimelineEntry {
+        EventTimelineEntry(
+            date: date,
+            content: .events(
+                viewModels: events,
+                additionalEventsCount: additionalEventsCount
+            ),
+            context: .init(category: category, isFavouritesOnly: isFavouritesOnly)
+        )
+    }
+    
     // MARK: - Timeline Tests
     
     func testTimeline_OneEvent() throws {
@@ -69,34 +94,28 @@ class EventsTimelineControllerTests: XCTestCase {
         
         let actual = makeTimeline(timelineStartDate: now, isFavouritesOnly: true)
         
-        let expectedSnapshotEntry = EventTimelineEntry(
+        let expectedSnapshotEntry = eventsEntry(
             date: now,
-            content: .events(
-                viewModels: [
-                    EventViewModel(
-                        id: "some_event",
-                        title: "Some Event",
-                        location: "Location",
-                        formattedStartTime: string(from: now),
-                        formattedEndTime: string(from: inHalfAnHour),
-                        widgetURL: event.deepLinkingContentURL
-                    )
-                ],
-                additionalEventsCount: 0
-            ),
-            context: EventTimelineEntry.Context(category: .upcoming, isFavouritesOnly: true)
+            events: [
+                EventViewModel(
+                    id: "some_event",
+                    title: "Some Event",
+                    location: "Location",
+                    formattedStartTime: string(from: now),
+                    formattedEndTime: string(from: inHalfAnHour),
+                    widgetURL: event.deepLinkingContentURL
+                )
+            ],
+            additionalEventsCount: 0,
+            category: .upcoming,
+            isFavouritesOnly: true
         )
         
         let expected = EventsTimeline(
             snapshot: expectedSnapshotEntry,
             entries: [
                 expectedSnapshotEntry,
-                
-                EventTimelineEntry(
-                    date: inHalfAnHour,
-                    content: .empty,
-                    context: .init(category: .upcoming, isFavouritesOnly: true)
-                )
+                emptyEntry(date: inHalfAnHour, category: .upcoming, isFavouritesOnly: true)
             ]
         )
         
@@ -126,31 +145,30 @@ class EventsTimelineControllerTests: XCTestCase {
         
         let actual = makeTimeline(timelineStartDate: now)
         
-        let expectedSnapshotEntry = EventTimelineEntry(
+        let expectedSnapshotEntry = eventsEntry(
             date: now,
-            content: .events(
-                viewModels: [
-                    EventViewModel(
-                        id: "some_event",
-                        title: "Some Event",
-                        location: "Location",
-                        formattedStartTime: string(from: now),
-                        formattedEndTime: string(from: inHalfAnHour),
-                        widgetURL: earlierEvent.deepLinkingContentURL
-                    ),
-                    
-                    EventViewModel(
-                        id: "some_other_event",
-                        title: "Some Other Event",
-                        location: "Other Location",
-                        formattedStartTime: string(from: inHalfAnHour),
-                        formattedEndTime: string(from: inOneHour),
-                        widgetURL: laterEvent.deepLinkingContentURL
-                    )
-                ],
-                additionalEventsCount: 0
-            ),
-            context: EventTimelineEntry.Context(category: .upcoming, isFavouritesOnly: false)
+            events: [
+                EventViewModel(
+                    id: "some_event",
+                    title: "Some Event",
+                    location: "Location",
+                    formattedStartTime: string(from: now),
+                    formattedEndTime: string(from: inHalfAnHour),
+                    widgetURL: earlierEvent.deepLinkingContentURL
+                ),
+                
+                EventViewModel(
+                    id: "some_other_event",
+                    title: "Some Other Event",
+                    location: "Other Location",
+                    formattedStartTime: string(from: inHalfAnHour),
+                    formattedEndTime: string(from: inOneHour),
+                    widgetURL: laterEvent.deepLinkingContentURL
+                )
+            ],
+            additionalEventsCount: 0,
+            category: .upcoming,
+            isFavouritesOnly: false
         )
         
         let expected = EventsTimeline(
@@ -158,29 +176,24 @@ class EventsTimelineControllerTests: XCTestCase {
             entries: [
                 expectedSnapshotEntry,
                 
-                EventTimelineEntry(
+                eventsEntry(
                     date: inHalfAnHour,
-                    content: .events(
-                        viewModels: [
-                            EventViewModel(
-                                id: "some_other_event",
-                                title: "Some Other Event",
-                                location: "Other Location",
-                                formattedStartTime: string(from: inHalfAnHour),
-                                formattedEndTime: string(from: inOneHour),
-                                widgetURL: laterEvent.deepLinkingContentURL
-                            )
-                        ],
-                        additionalEventsCount: 0
-                    ),
-                    context: EventTimelineEntry.Context(category: .upcoming, isFavouritesOnly: false)
+                    events: [
+                        EventViewModel(
+                            id: "some_other_event",
+                            title: "Some Other Event",
+                            location: "Other Location",
+                            formattedStartTime: string(from: inHalfAnHour),
+                            formattedEndTime: string(from: inOneHour),
+                            widgetURL: laterEvent.deepLinkingContentURL
+                        )
+                    ],
+                    additionalEventsCount: 0,
+                    category: .upcoming,
+                    isFavouritesOnly: false
                 ),
                 
-                EventTimelineEntry(
-                    date: inOneHour,
-                    content: .empty,
-                    context: .init(category: .upcoming, isFavouritesOnly: false)
-                )
+                emptyEntry(date: inOneHour, category: .upcoming, isFavouritesOnly: false)
             ]
         )
         
@@ -210,34 +223,28 @@ class EventsTimelineControllerTests: XCTestCase {
         
         let actual = makeTimeline(timelineStartDate: inHalfAnHour)
         
-        let expectedSnapshotEntry = EventTimelineEntry(
+        let expectedSnapshotEntry = eventsEntry(
             date: inHalfAnHour,
-            content: .events(
-                viewModels: [
-                    EventViewModel(
-                        id: "some_other_event",
-                        title: "Some Other Event",
-                        location: "Other Location",
-                        formattedStartTime: string(from: inHalfAnHour),
-                        formattedEndTime: string(from: inOneHour),
-                        widgetURL: laterEvent.deepLinkingContentURL
-                    )
-                ],
-                additionalEventsCount: 0
-            ),
-            context: EventTimelineEntry.Context(category: .upcoming, isFavouritesOnly: false)
+            events: [
+                EventViewModel(
+                    id: "some_other_event",
+                    title: "Some Other Event",
+                    location: "Other Location",
+                    formattedStartTime: string(from: inHalfAnHour),
+                    formattedEndTime: string(from: inOneHour),
+                    widgetURL: laterEvent.deepLinkingContentURL
+                )
+            ],
+            additionalEventsCount: 0,
+            category: .upcoming,
+            isFavouritesOnly: false
         )
         
         let expected = EventsTimeline(
             snapshot: expectedSnapshotEntry,
             entries: [
                 expectedSnapshotEntry,
-                
-                EventTimelineEntry(
-                    date: inOneHour,
-                    content: .empty,
-                    context: .init(category: .upcoming, isFavouritesOnly: false)
-                )
+                emptyEntry(date: inOneHour, category: .upcoming, isFavouritesOnly: false)
             ]
         )
         
@@ -257,50 +264,44 @@ class EventsTimelineControllerTests: XCTestCase {
         
         let actual = makeTimeline(timelineStartDate: now)
         
-        let expectedSnapshotEntry = EventTimelineEntry(
+        let expectedSnapshotEntry = eventsEntry(
             date: now,
-            content: .events(
-                viewModels: [
-                    EventViewModel(
-                        id: "1",
-                        title: "A Event",
-                        location: "Location",
-                        formattedStartTime: string(from: now),
-                        formattedEndTime: string(from: inHalfAnHour),
-                        widgetURL: events[2].deepLinkingContentURL
-                    ),
-                    EventViewModel(
-                        id: "2",
-                        title: "B Event",
-                        location: "Location",
-                        formattedStartTime: string(from: now),
-                        formattedEndTime: string(from: inHalfAnHour),
-                        widgetURL: events[0].deepLinkingContentURL
-                    ),
-                    EventViewModel(
-                        id: "3",
-                        title: "C Event",
-                        location: "Location",
-                        formattedStartTime: string(from: now),
-                        formattedEndTime: string(from: inHalfAnHour),
-                        widgetURL: events[1].deepLinkingContentURL
-                    )
-                ],
-                additionalEventsCount: 0
-            ),
-            context: EventTimelineEntry.Context(category: .upcoming, isFavouritesOnly: false)
+            events: [
+                EventViewModel(
+                    id: "1",
+                    title: "A Event",
+                    location: "Location",
+                    formattedStartTime: string(from: now),
+                    formattedEndTime: string(from: inHalfAnHour),
+                    widgetURL: events[2].deepLinkingContentURL
+                ),
+                EventViewModel(
+                    id: "2",
+                    title: "B Event",
+                    location: "Location",
+                    formattedStartTime: string(from: now),
+                    formattedEndTime: string(from: inHalfAnHour),
+                    widgetURL: events[0].deepLinkingContentURL
+                ),
+                EventViewModel(
+                    id: "3",
+                    title: "C Event",
+                    location: "Location",
+                    formattedStartTime: string(from: now),
+                    formattedEndTime: string(from: inHalfAnHour),
+                    widgetURL: events[1].deepLinkingContentURL
+                )
+            ],
+            additionalEventsCount: 0,
+            category: .upcoming,
+            isFavouritesOnly: false
         )
         
         let expected = EventsTimeline(
             snapshot: expectedSnapshotEntry,
             entries: [
                 expectedSnapshotEntry,
-                
-                EventTimelineEntry(
-                    date: inHalfAnHour,
-                    content: .empty,
-                    context: .init(category: .upcoming, isFavouritesOnly: false)
-                )
+                emptyEntry(date: inHalfAnHour, category: .upcoming, isFavouritesOnly: false)
             ]
         )
         
@@ -322,50 +323,44 @@ class EventsTimelineControllerTests: XCTestCase {
         
         let actual = makeTimeline(timelineStartDate: now)
         
-        let expectedSnapshotEntry = EventTimelineEntry(
+        let expectedSnapshotEntry = eventsEntry(
             date: now,
-            content: .events(
-                viewModels: [
-                    EventViewModel(
-                        id: "1",
-                        title: "A Event",
-                        location: "Location",
-                        formattedStartTime: string(from: now),
-                        formattedEndTime: string(from: inHalfAnHour),
-                        widgetURL: events[2].deepLinkingContentURL
-                    ),
-                    EventViewModel(
-                        id: "2",
-                        title: "B Event",
-                        location: "Location",
-                        formattedStartTime: string(from: now),
-                        formattedEndTime: string(from: inHalfAnHour),
-                        widgetURL: events[0].deepLinkingContentURL
-                    ),
-                    EventViewModel(
-                        id: "3",
-                        title: "C Event",
-                        location: "Location",
-                        formattedStartTime: string(from: now),
-                        formattedEndTime: string(from: inHalfAnHour),
-                        widgetURL: events[1].deepLinkingContentURL
-                    )
-                ],
-                additionalEventsCount: 2
-            ),
-            context: EventTimelineEntry.Context(category: .upcoming, isFavouritesOnly: false)
+            events: [
+                EventViewModel(
+                    id: "1",
+                    title: "A Event",
+                    location: "Location",
+                    formattedStartTime: string(from: now),
+                    formattedEndTime: string(from: inHalfAnHour),
+                    widgetURL: events[2].deepLinkingContentURL
+                ),
+                EventViewModel(
+                    id: "2",
+                    title: "B Event",
+                    location: "Location",
+                    formattedStartTime: string(from: now),
+                    formattedEndTime: string(from: inHalfAnHour),
+                    widgetURL: events[0].deepLinkingContentURL
+                ),
+                EventViewModel(
+                    id: "3",
+                    title: "C Event",
+                    location: "Location",
+                    formattedStartTime: string(from: now),
+                    formattedEndTime: string(from: inHalfAnHour),
+                    widgetURL: events[1].deepLinkingContentURL
+                )
+            ],
+            additionalEventsCount: 2,
+            category: .upcoming,
+            isFavouritesOnly: false
         )
         
         let expected = EventsTimeline(
             snapshot: expectedSnapshotEntry,
             entries: [
                 expectedSnapshotEntry,
-                
-                EventTimelineEntry(
-                    date: inHalfAnHour,
-                    content: .empty,
-                    context: .init(category: .upcoming, isFavouritesOnly: false)
-                )
+                emptyEntry(date: inHalfAnHour, category: .upcoming, isFavouritesOnly: false)
             ]
         )
         
@@ -379,11 +374,7 @@ class EventsTimelineControllerTests: XCTestCase {
         
         let actual = makeTimeline(timelineStartDate: now)
         
-        let expectedSnapshotEntry = EventTimelineEntry(
-            date: now,
-            content: .empty,
-            context: .init(category: .upcoming, isFavouritesOnly: false)
-        )
+        let expectedSnapshotEntry = emptyEntry(date: now, category: .upcoming, isFavouritesOnly: false)
         
         let expected = EventsTimeline(
             snapshot: expectedSnapshotEntry,
@@ -422,56 +413,54 @@ class EventsTimelineControllerTests: XCTestCase {
         
         let actual = makeTimeline(timelineStartDate: now)
         
-        let firstExpectedSnapshotEntry = EventTimelineEntry(
+        let firstExpectedSnapshotEntry = eventsEntry(
             date: now,
-            content: .events(
-                viewModels: [
-                    EventViewModel(
-                        id: "1",
-                        title: "A Event",
-                        location: "Location",
-                        formattedStartTime: string(from: now),
-                        formattedEndTime: string(from: inHalfAnHour),
-                        widgetURL: events[0].deepLinkingContentURL
-                    ),
-                    EventViewModel(
-                        id: "2",
-                        title: "B Event",
-                        location: "Location",
-                        formattedStartTime: string(from: now),
-                        formattedEndTime: string(from: inHalfAnHour),
-                        widgetURL: events[1].deepLinkingContentURL
-                    ),
-                    EventViewModel(
-                        id: "4",
-                        title: "D Event",
-                        location: "Location",
-                        formattedStartTime: string(from: inHalfAnHour),
-                        formattedEndTime: string(from: inOneHour),
-                        widgetURL: events[3].deepLinkingContentURL
-                    )
-                ],
-                additionalEventsCount: 0
-            ),
-            context: EventTimelineEntry.Context(category: .upcoming, isFavouritesOnly: false)
+            events: [
+                EventViewModel(
+                    id: "1",
+                    title: "A Event",
+                    location: "Location",
+                    formattedStartTime: string(from: now),
+                    formattedEndTime: string(from: inHalfAnHour),
+                    widgetURL: events[0].deepLinkingContentURL
+                ),
+                EventViewModel(
+                    id: "2",
+                    title: "B Event",
+                    location: "Location",
+                    formattedStartTime: string(from: now),
+                    formattedEndTime: string(from: inHalfAnHour),
+                    widgetURL: events[1].deepLinkingContentURL
+                ),
+                EventViewModel(
+                    id: "4",
+                    title: "D Event",
+                    location: "Location",
+                    formattedStartTime: string(from: inHalfAnHour),
+                    formattedEndTime: string(from: inOneHour),
+                    widgetURL: events[3].deepLinkingContentURL
+                )
+            ],
+            additionalEventsCount: 0,
+            category: .upcoming,
+            isFavouritesOnly: false
         )
         
-        let secondExpectedSnapshotEntry = EventTimelineEntry(
+        let secondExpectedSnapshotEntry = eventsEntry(
             date: inHalfAnHour,
-            content: .events(
-                viewModels: [
-                    EventViewModel(
-                        id: "4",
-                        title: "D Event",
-                        location: "Location",
-                        formattedStartTime: string(from: inHalfAnHour),
-                        formattedEndTime: string(from: inOneHour),
-                        widgetURL: events[3].deepLinkingContentURL
-                    )
-                ],
-                additionalEventsCount: 0
-            ),
-            context: EventTimelineEntry.Context(category: .upcoming, isFavouritesOnly: false)
+            events: [
+                EventViewModel(
+                    id: "4",
+                    title: "D Event",
+                    location: "Location",
+                    formattedStartTime: string(from: inHalfAnHour),
+                    formattedEndTime: string(from: inOneHour),
+                    widgetURL: events[3].deepLinkingContentURL
+                )
+            ],
+            additionalEventsCount: 0,
+            category: .upcoming,
+            isFavouritesOnly: false
         )
         
         let expected = EventsTimeline(
@@ -479,12 +468,7 @@ class EventsTimelineControllerTests: XCTestCase {
             entries: [
                 firstExpectedSnapshotEntry,
                 secondExpectedSnapshotEntry,
-                
-                EventTimelineEntry(
-                    date: inOneHour,
-                    content: .empty,
-                    context: .init(category: .upcoming, isFavouritesOnly: false)
-                )
+                emptyEntry(date: inOneHour, category: .upcoming, isFavouritesOnly: false)
             ]
         )
         
@@ -508,29 +492,24 @@ class EventsTimelineControllerTests: XCTestCase {
         setUpController(repository: repository)
         
         let actual = makeTimeline(timelineStartDate: now, isFavouritesOnly: true)
+
+        let expectedSnapshotEntry = emptyEntry(date: now, category: .upcoming, isFavouritesOnly: true)
         
-        let expectedSnapshotEntry = EventTimelineEntry(
-            date: now,
-            content: .empty,
-            context: EventTimelineEntry.Context(category: .upcoming, isFavouritesOnly: true)
-        )
-        
-        let expectedEventEntry = EventTimelineEntry(
+        let expectedEventEntry = eventsEntry(
             date: inTheFuture,
-            content: .events(
-                viewModels: [
-                    EventViewModel(
-                        id: "some_event",
-                        title: "Some Event",
-                        location: "Location",
-                        formattedStartTime: string(from: inTheFuture),
-                        formattedEndTime: string(from: inTheFuturePlusHalfAnHour),
-                        widgetURL: event.deepLinkingContentURL
-                    )
-                ],
-                additionalEventsCount: 0
-            ),
-            context: EventTimelineEntry.Context(category: .upcoming, isFavouritesOnly: true)
+            events: [
+                EventViewModel(
+                    id: "some_event",
+                    title: "Some Event",
+                    location: "Location",
+                    formattedStartTime: string(from: inTheFuture),
+                    formattedEndTime: string(from: inTheFuturePlusHalfAnHour),
+                    widgetURL: event.deepLinkingContentURL
+                )
+            ],
+            additionalEventsCount: 0,
+            category: .upcoming,
+            isFavouritesOnly: true
         )
         
         let expected = EventsTimeline(
@@ -538,12 +517,7 @@ class EventsTimelineControllerTests: XCTestCase {
             entries: [
                 expectedSnapshotEntry,
                 expectedEventEntry,
-                
-                EventTimelineEntry(
-                    date: inTheFuturePlusHalfAnHour,
-                    content: .empty,
-                    context: .init(category: .upcoming, isFavouritesOnly: true)
-                )
+                emptyEntry(date: inTheFuturePlusHalfAnHour, category: .upcoming, isFavouritesOnly: true)
             ]
         )
         
