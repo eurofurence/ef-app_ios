@@ -87,27 +87,8 @@ struct EventsTimelineProvider: IntentTimelineProvider {
         completionHandler: @escaping (EventsTimeline) -> Void
     ) {
         let clock = ControllableClock()
-        let session = EurofurenceSessionBuilder.buildingForEurofurenceApplication().with(clock).build()
-        let eventsService = session.services.events
-        let bridge = EventsBridge()
-        eventsService.add(bridge)
-        
-        let specification = IntentBasedWidgetSpecificationFactory.makeSpecification(
-            intent: configuration,
-            clock: clock
-        )
-        
-        let filteringPolicy = SpecificationUseCaseTimelineFilteringPolicy(
-            bridge: bridge,
-            clock: clock,
-            specification: specification
-        )
-        
-        let controller = EventsTimelineController(
-            repository: bridge,
-            filteringPolicy: filteringPolicy,
-            eventTimeFormatter: HoursAndMinutesEventTimeFormatter.shared
-        )
+        let bridge = prepareModuleBridge(clock: clock)
+        let controller = makeTimelineController(bridge: bridge, intent: configuration, clock: clock)
         
         let components = DateComponents(calendar: .current, timeZone: .current, year: 2019, month: 8, day: 15, hour: 11)
         let date = Calendar.current.date(from: components)!
@@ -121,6 +102,34 @@ struct EventsTimelineProvider: IntentTimelineProvider {
         )
         
         controller.makeTimeline(options: options, completionHandler: completionHandler)
+    }
+    
+    private func prepareModuleBridge(clock: Clock) -> EventsBridge {
+        let session = EurofurenceSessionBuilder.buildingForEurofurenceApplication().with(clock).build()
+        let eventsService = session.services.events
+        let bridge = EventsBridge()
+        eventsService.add(bridge)
+        
+        return bridge
+    }
+    
+    private func makeTimelineController(
+        bridge: EventsBridge,
+        intent: ViewEventsIntent,
+        clock: ControllableClock
+    ) -> EventsTimelineController {
+        let specification = IntentBasedWidgetSpecificationFactory.makeSpecification(intent: intent, clock: clock)
+        let filteringPolicy = SpecificationUseCaseTimelineFilteringPolicy(
+            bridge: bridge,
+            clock: clock,
+            specification: specification
+        )
+        
+        return EventsTimelineController(
+            repository: bridge,
+            filteringPolicy: filteringPolicy,
+            eventTimeFormatter: HoursAndMinutesEventTimeFormatter.shared
+        )
     }
     
 }
