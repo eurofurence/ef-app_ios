@@ -11,7 +11,7 @@ struct EventsWidgetEntryView: View {
 
     var body: some View {
         WidgetLayout {
-            WidgetTitle(entry: entry)
+            WidgetTitle(category: entry.context.category, isFavouritesOnly: entry.context.isFavouritesOnly)
         } content: {
             switch entry.content {
             case .events(let events, let additionalEventCount):
@@ -41,13 +41,14 @@ struct EventsWidgetEntryView: View {
     
     private struct WidgetTitle: View {
         
-        var entry: EventTimelineEntry
+        var category: EventCategory
+        var isFavouritesOnly: Bool
         
         var body: some View {
             HStack {
-                CategoryTextHeadline(category: entry.context.category)
+                CategoryTextHeadline(category: category)
                 
-                if entry.context.isFavouritesOnly {
+                if isFavouritesOnly {
                     Spacer()
                     
                     Image(systemName: "heart.fill")
