@@ -492,4 +492,63 @@ class EventsTimelineControllerTests: XCTestCase {
         XCTAssertEqual(firstExpectedSnapshotEntry, actual?.snapshot)
     }
     
+    func testStartingTimelineBeforeFirstEvent() {
+        let (inTheFuture, inTheFuturePlusHalfAnHour) = (now!, now.addingTimeInterval(3600 / 2))
+        now = now.addingTimeInterval(3600 * 24 * 3 * -1)
+        
+        let event = StubEvent(
+            id: "some_event",
+            title: "Some Event",
+            location: "Location",
+            startTime: inTheFuture,
+            endTime: inTheFuturePlusHalfAnHour
+        )
+        
+        let repository = StubEventsRepository(events: [event])
+        setUpController(repository: repository)
+        
+        let actual = makeTimeline(timelineStartDate: now, isFavouritesOnly: true)
+        
+        let expectedSnapshotEntry = EventTimelineEntry(
+            date: now,
+            content: .empty,
+            context: EventTimelineEntry.Context(category: .upcoming, isFavouritesOnly: true)
+        )
+        
+        let expectedEventEntry = EventTimelineEntry(
+            date: inTheFuture,
+            content: .events(
+                viewModels: [
+                    EventViewModel(
+                        id: "some_event",
+                        title: "Some Event",
+                        location: "Location",
+                        formattedStartTime: string(from: inTheFuture),
+                        formattedEndTime: string(from: inTheFuturePlusHalfAnHour),
+                        widgetURL: event.deepLinkingContentURL
+                    )
+                ],
+                additionalEventsCount: 0
+            ),
+            context: EventTimelineEntry.Context(category: .upcoming, isFavouritesOnly: true)
+        )
+        
+        let expected = EventsTimeline(
+            snapshot: expectedSnapshotEntry,
+            entries: [
+                expectedSnapshotEntry,
+                expectedEventEntry,
+                
+                EventTimelineEntry(
+                    date: inTheFuturePlusHalfAnHour,
+                    content: .empty,
+                    context: .init(category: .upcoming, isFavouritesOnly: true)
+                )
+            ]
+        )
+        
+        XCTAssertEqual(expected, actual)
+        XCTAssertEqual(expectedSnapshotEntry, actual?.snapshot)
+    }
+    
 }
