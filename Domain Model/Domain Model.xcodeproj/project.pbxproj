@@ -2446,7 +2446,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1020;
-				LastUpgradeCheck = 1220;
+				LastUpgradeCheck = 1230;
 				ORGANIZATIONNAME = Eurofurence;
 				TargetAttributes = {
 					CA7A2F2A22B16DA3002AD939 = {

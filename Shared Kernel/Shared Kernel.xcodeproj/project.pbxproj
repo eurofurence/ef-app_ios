@@ -247,7 +247,7 @@
 		CA7A2EAA22B0D308002AD939 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1220;
+				LastUpgradeCheck = 1230;
 				ORGANIZATIONNAME = Eurofurence;
 				TargetAttributes = {
 					CA7A2EC222B0D32D002AD939 = {
