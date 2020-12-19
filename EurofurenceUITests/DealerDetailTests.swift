@@ -12,11 +12,21 @@ class DealerDetailTests: UIAutomationTestCase {
     }
     
     func testNavigationTitle() {
-        let navigationTitle = controller.app.staticTexts.matching(identifier: "org.eurofurence.dealer.navigationTitle").firstMatch
+        let navigationTitle = controller
+            .app
+            .staticTexts
+            .matching(identifier: "org.eurofurence.dealer.navigationTitle")
+            .firstMatch
         
         XCTAssertFalse(navigationTitle.exists)
         
-        controller.app.tables.cells.containing(.staticText, identifier: "The Official Eurofurence Shop").element.swipeUp()
+        controller
+            .app
+            .tables
+            .cells
+            .containing(.staticText, identifier: "The Official Eurofurence Shop")
+            .element
+            .swipeUp()
         
         XCTAssertTrue(navigationTitle.exists)
     }

@@ -12,7 +12,11 @@ class EventDetailTests: UIAutomationTestCase {
     }
     
     func testNavigationTitle() {
-        let navigationTitle = controller.app.staticTexts.matching(identifier: "org.eurofurence.event.navigationTitle").firstMatch
+        let navigationTitle = controller
+            .app
+            .staticTexts
+            .matching(identifier: "org.eurofurence.event.navigationTitle")
+            .firstMatch
         
         XCTAssertFalse(navigationTitle.exists)
         

@@ -27,9 +27,9 @@ struct MoveToTabByViewController<T>: TabNavigator where T: UIViewController {
                 navigationControllerIndexWithinTabBar: viewControllerIndex
             )
         } else if let splitViewController = viewController as? UISplitViewController,
-            let masterNavigationController = splitViewController.viewControllers.first as? UINavigationController {
+            let PrimaryNavigationController = splitViewController.viewControllers.first as? UINavigationController {
             navigateToViewController(
-                containedIn: masterNavigationController,
+                containedIn: PrimaryNavigationController,
                 tabController: tabController,
                 navigationControllerIndexWithinTabBar: viewControllerIndex
             )

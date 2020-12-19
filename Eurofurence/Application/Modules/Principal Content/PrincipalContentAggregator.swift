@@ -70,10 +70,10 @@ public struct PrincipalContentAggregator: PrincipalContentModuleProviding {
         }
         
         override func show(_ vc: UIViewController, sender: Any?) {
-            let master = viewControllers.first
+            let primary = viewControllers.first
             
-            if let masterNav = master as? UINavigationController, isOnlyShowingPlaceholderContent(masterNav) == false {
-                masterNav.pushViewController(vc, animated: UIView.areAnimationsEnabled)
+            if let primary = primary as? UINavigationController, isOnlyShowingPlaceholderContent(primary) == false {
+                primary.pushViewController(vc, animated: UIView.areAnimationsEnabled)
             } else {
                 super.show(vc, sender: sender)
             }

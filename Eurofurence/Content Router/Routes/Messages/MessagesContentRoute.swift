@@ -26,7 +26,7 @@ extension MessagesContentRoute: ContentRoute {
     
     public func route(_ content: MessagesContentRepresentation) {
         let contentController = messagesComponentFactory.makeMessagesModule(delegate)
-        contentWireframe.presentMasterContentController(contentController)
+        contentWireframe.presentPrimaryContentController(contentController)
     }
     
 }

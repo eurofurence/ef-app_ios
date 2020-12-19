@@ -16,7 +16,7 @@ class AnnouncementsContentRouteTests: XCTestCase {
         
         route.route(content)
         
-        XCTAssertEqual(announcementsComponentFactory.stubInterface, contentWireframe.presentedMasterContentController)
+        XCTAssertEqual(announcementsComponentFactory.stubInterface, contentWireframe.presentedPrimaryContentController)
     }
     
     func testPropogatesDelegateEvents() {

@@ -132,7 +132,7 @@ class PrivateMessagesAPITests: XCTestCase {
     }
 
     func testSuccessfulResponseWithSupportedreceivedDateTimeValueShouldProvidereceivedDateTime() {
-        let dateString =  "2017-07-25T18:45:59.050Z"
+        let dateString = "2017-07-25T18:45:59.050Z"
         let expectedComponents = DateComponents(year: 2017, month: 7, day: 25, hour: 18, minute: 45, second: 59)
         let observer = makeCapturingObserverForResponse(makeSuccessfulResponse(receivedDateTime: dateString))
 
@@ -158,7 +158,7 @@ class PrivateMessagesAPITests: XCTestCase {
     }
 
     func testSuccessfulResponseWithSupportedReadDateTimeValueShouldIndicateIsRead() {
-        let dateString =  "2017-07-25T18:45:59.050Z"
+        let dateString = "2017-07-25T18:45:59.050Z"
         let observer = makeCapturingObserverForResponse(makeSuccessfulResponse(receivedDateTime: dateString))
 
         XCTAssertEqual(true, observer.capturedMessages?.first?.isRead)

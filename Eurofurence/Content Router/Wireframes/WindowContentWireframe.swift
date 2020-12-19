@@ -4,7 +4,7 @@ struct WindowContentWireframe: ContentWireframe {
     
     var window: UIWindow
     
-    func presentMasterContentController(_ viewController: UIViewController) {
+    func presentPrimaryContentController(_ viewController: UIViewController) {
         window.rootViewController?.show(viewController, sender: nil)
     }
     

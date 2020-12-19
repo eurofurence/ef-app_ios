@@ -28,7 +28,7 @@ extension KnowledgeGroupContentRoute: ContentRoute {
             delegate: delegate
         )
         
-        contentWireframe.presentMasterContentController(contentController)
+        contentWireframe.presentPrimaryContentController(contentController)
     }
     
 }

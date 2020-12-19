@@ -8,8 +8,8 @@ public class ContentWireframeDecorator: ContentWireframe {
         self.decoratedWireframe = decoratedWireframe
     }
     
-    public func presentMasterContentController(_ viewController: UIViewController) {
-        decoratedWireframe.presentMasterContentController(viewController)
+    public func presentPrimaryContentController(_ viewController: UIViewController) {
+        decoratedWireframe.presentPrimaryContentController(viewController)
     }
     
     public func presentDetailContentController(_ viewController: UIViewController) {
