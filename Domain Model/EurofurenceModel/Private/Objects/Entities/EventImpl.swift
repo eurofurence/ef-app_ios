@@ -4,7 +4,7 @@ import Foundation
 class EventImpl: Event {
 
     private let characteristics: EventCharacteristics
-    private let eventBus: EventBus
+    private unowned let eventBus: EventBus
     private let imageCache: ImagesCache
     private let shareableURLFactory: ShareableURLFactory
     

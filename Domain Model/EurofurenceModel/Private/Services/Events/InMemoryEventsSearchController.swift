@@ -58,7 +58,7 @@ class InMemoryEventsSearchController: EventsSearchController {
 
     private class RegenerateResultsWhenEventUnfavourited: EventConsumer {
 
-        private let searchController: InMemoryEventsSearchController
+        private unowned let searchController: InMemoryEventsSearchController
 
         init(searchController: InMemoryEventsSearchController) {
             self.searchController = searchController

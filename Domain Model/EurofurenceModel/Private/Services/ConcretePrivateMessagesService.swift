@@ -15,7 +15,7 @@ class ConcretePrivateMessagesService: PrivateMessagesService {
     
     private class MarkMessageAsReadHandler: EventConsumer {
         
-        private let service: ConcretePrivateMessagesService
+        private unowned let service: ConcretePrivateMessagesService
         
         init(service: ConcretePrivateMessagesService) {
             self.service = service
@@ -26,13 +26,42 @@ class ConcretePrivateMessagesService: PrivateMessagesService {
         }
         
     }
+    
+    private class EnterAuthenticatedStateWhenLoggedIn: EventConsumer {
+        
+        private unowned let service: ConcretePrivateMessagesService
+        
+        init(service: ConcretePrivateMessagesService) {
+            self.service = service
+        }
+        
+        func consume(event: DomainEvent.LoggedIn) {
+            service.userLoggedIn(event)
+        }
+        
+    }
+    
+    private class ExitAuthenticatedStateWhenLoggedOut: EventConsumer {
+        
+        private unowned let service: ConcretePrivateMessagesService
+        
+        init(service: ConcretePrivateMessagesService) {
+            self.service = service
+        }
+        
+        func consume(event: DomainEvent.LoggedOut) {
+            service.userLoggedOut(event)
+        }
+        
+    }
 
     init(eventBus: EventBus, api: API) {
         self.eventBus = eventBus
         self.api = api
         
-        eventBus.subscribe(userLoggedIn)
-        eventBus.subscribe(userLoggedOut)
+        eventBus.subscribe(consumer: EnterAuthenticatedStateWhenLoggedIn(service: self))
+        eventBus.subscribe(consumer: ExitAuthenticatedStateWhenLoggedOut(service: self))
+        
         eventBus.subscribe(consumer: MarkMessageAsReadHandler(service: self))
     }
 

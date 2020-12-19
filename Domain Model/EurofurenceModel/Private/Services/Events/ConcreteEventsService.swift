@@ -13,7 +13,7 @@ class ConcreteEventsService: ClockDelegate, EventsService {
 
     private class FavouriteEventHandler: EventConsumer {
 
-        private let service: ConcreteEventsService
+        private unowned let service: ConcreteEventsService
 
         init(service: ConcreteEventsService) {
             self.service = service
@@ -28,7 +28,7 @@ class ConcreteEventsService: ClockDelegate, EventsService {
 
     private class UnfavouriteEventHandler: EventConsumer {
 
-        private let service: ConcreteEventsService
+        private unowned let service: ConcreteEventsService
 
         init(service: ConcreteEventsService) {
             self.service = service
@@ -96,7 +96,10 @@ class ConcreteEventsService: ClockDelegate, EventsService {
         self.eventBus = eventBus
         self.shareableURLFactory = shareableURLFactory
 
-        eventBus.subscribe(consumer: DataStoreChangedConsumer(handler: reconstituteEventsFromDataStore))
+        eventBus.subscribe(consumer: DataStoreChangedConsumer { [weak self] in
+            self?.reconstituteEventsFromDataStore()
+        })
+        
         eventBus.subscribe(consumer: FavouriteEventHandler(service: self))
         eventBus.subscribe(consumer: UnfavouriteEventHandler(service: self))
 

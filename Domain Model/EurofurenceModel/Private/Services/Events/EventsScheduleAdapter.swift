@@ -44,7 +44,7 @@ class EventsScheduleAdapter: EventsSchedule {
 
     private class UpdateCurrentDayWhenSignificantTimePasses: EventConsumer {
 
-        private let scheduleAdapter: EventsScheduleAdapter
+        private unowned let scheduleAdapter: EventsScheduleAdapter
 
         init(scheduleAdapter: EventsScheduleAdapter) {
             self.scheduleAdapter = scheduleAdapter
@@ -58,7 +58,7 @@ class EventsScheduleAdapter: EventsSchedule {
 
     private class UpdateAdapterWhenScheduleChanges: EventConsumer {
 
-        private let scheduleAdapter: EventsScheduleAdapter
+        private unowned let scheduleAdapter: EventsScheduleAdapter
 
         init(scheduleAdapter: EventsScheduleAdapter) {
             self.scheduleAdapter = scheduleAdapter
