@@ -54,6 +54,13 @@
         "identifier" : "CACD36A925650A9600C23041",
         "name" : "EurofurenceApplicationSessionTests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/EventsWidgetLogic",
+        "identifier" : "EventsWidgetLogicTests",
+        "name" : "EventsWidgetLogicTests"
+      }
     }
   ],
   "version" : 1

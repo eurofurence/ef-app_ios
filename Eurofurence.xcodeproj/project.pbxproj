@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -81,6 +81,8 @@
 		CA057A5B2088BDBB00504FA4 /* AnnouncementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA057A5A2088BDBA00504FA4 /* AnnouncementTableViewCell.swift */; };
 		CA08157820D3865600F750D4 /* NavigationBarViewExtensionContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08157720D3865600F750D4 /* NavigationBarViewExtensionContainer.swift */; };
 		CA08157A20D3877700F750D4 /* FoundationShortFormDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08157920D3877700F750D4 /* FoundationShortFormDateFormatter.swift */; };
+		CA08322D2584DD0D0060551D /* RemotelyConfiguredUpcomingEventsConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08322C2584DD0D0060551D /* RemotelyConfiguredUpcomingEventsConfigurationTests.swift */; };
+		CA0832352584DDCE0060551D /* RemotelyConfiguredUpcomingEventsConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0832342584DDCE0060551D /* RemotelyConfiguredUpcomingEventsConfiguration.swift */; };
 		CA08B0F722EDD41A00FDAAA7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = CA08B0F622EDD41900FDAAA7 /* README.md */; };
 		CA08B0F922EDF4C600FDAAA7 /* EurofurenceDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08B0F822EDF4C600FDAAA7 /* EurofurenceDateFormatter.swift */; };
 		CA08B0FB22EDF6BE00FDAAA7 /* EurofurenceDateIntervalFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08B0FA22EDF6BE00FDAAA7 /* EurofurenceDateIntervalFormatter.swift */; };
@@ -228,6 +230,7 @@
 		CA3ABA06229C4B260045A35B /* AppNotificationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3ABA05229C4B260045A35B /* AppNotificationDelegate.swift */; };
 		CA3ABA09229C7B6E0045A35B /* Dictionary+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3ABA08229C7B6E0045A35B /* Dictionary+Extensions.swift */; };
 		CA3ABA0E229DCC350045A35B /* EventInteractionRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3ABA0D229DCC350045A35B /* EventInteractionRecorder.swift */; };
+		CA3FBF4B2558426B005E1F53 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = CA3FBF4A2558426B005E1F53 /* SwiftPackageProductDependency */; };
 		CA401069210FAE9D0056E16C /* KnowledgeGroupEntriesComponentBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA401068210FAE9D0056E16C /* KnowledgeGroupEntriesComponentBuilder.swift */; };
 		CA40106C210FAEB20056E16C /* KnowledgeGroupEntriesComponentFactoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40106B210FAEB20056E16C /* KnowledgeGroupEntriesComponentFactoryImpl.swift */; };
 		CA40106E210FAEC30056E16C /* KnowledgeGroupEntriesComponentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40106D210FAEC30056E16C /* KnowledgeGroupEntriesComponentFactory.swift */; };
@@ -242,6 +245,8 @@
 		CA40109A211081A40056E16C /* KnowledgeGroupEntries.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA401099211081A40056E16C /* KnowledgeGroupEntries.storyboard */; };
 		CA40109C211081C80056E16C /* KnowledgeGroupEntriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40109B211081C80056E16C /* KnowledgeGroupEntriesViewController.swift */; };
 		CA4010A12110854E0056E16C /* DefaultKnowledgeGroupViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4010A02110854E0056E16C /* DefaultKnowledgeGroupViewModelFactory.swift */; };
+		CA47B1B1255812D600050890 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = CA47B1B0255812D600050890 /* Localizable.stringsdict */; };
+		CA47B1B82558189D00050890 /* EventsWidgetStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA47B1B72558189D00050890 /* EventsWidgetStrings.swift */; };
 		CA4908C4245DADA000DB032C /* WindowContentWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4908C3245DADA000DB032C /* WindowContentWireframe.swift */; };
 		CA4908C6245DADBA00DB032C /* WindowModalWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4908C5245DADBA00DB032C /* WindowModalWireframe.swift */; };
 		CA4D9343245ECA67006FA832 /* NotificationContentRepresentationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D9342245ECA67006FA832 /* NotificationContentRepresentationTests.swift */; };
@@ -281,11 +286,19 @@
 		CA50B1BA226111220091E425 /* EventFeedbackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA50B1B9226111220091E425 /* EventFeedbackViewModel.swift */; };
 		CA50B1BC2261112D0091E425 /* EventFeedbackSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA50B1BB2261112D0091E425 /* EventFeedbackSceneFactory.swift */; };
 		CA50B1BE226119F40091E425 /* DayOfWeekFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA50B1BD226119F40091E425 /* DayOfWeekFormatter.swift */; };
+		CA526F892564569600BDD7BB /* CategoryPlaceholderText.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA526F882564569600BDD7BB /* CategoryPlaceholderText.swift */; };
+		CA526F8F256456F900BDD7BB /* AdditionalEventsFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA526F8E256456F900BDD7BB /* AdditionalEventsFooter.swift */; };
+		CA526F972564577A00BDD7BB /* EventTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA526F962564577A00BDD7BB /* EventTitle.swift */; };
 		CA527E782278D397000ED74B /* StarRatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA527E772278D397000ED74B /* StarRatingControl.swift */; };
 		CA52C68120D597E1009D3A9E /* ApplicationSignificantTimeChangeAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C68020D597E1009D3A9E /* ApplicationSignificantTimeChangeAdapter.swift */; };
 		CA52C68320D5980C009D3A9E /* ApplicationSignificantTimeChangeAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C68220D5980C009D3A9E /* ApplicationSignificantTimeChangeAdapterTests.swift */; };
 		CA52C68F20D6AB47009D3A9E /* ScheduleComponentDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C68E20D6AB47009D3A9E /* ScheduleComponentDelegate.swift */; };
 		CA52C69920D6B87E009D3A9E /* HideNavigationBarShadowForSpecificViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C69820D6B87E009D3A9E /* HideNavigationBarShadowForSpecificViewControllerDelegate.swift */; };
+		CA5891E02562F2E800FC9BC1 /* HoursAndMinutesEventTimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5891DF2562F2E800FC9BC1 /* HoursAndMinutesEventTimeFormatter.swift */; };
+		CA5A5AE42584F1F4007F6728 /* ControllableClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5A5AE32584F1F4007F6728 /* ControllableClock.swift */; };
+		CA5A5AF22584F26B007F6728 /* EventsBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5A5AF12584F26B007F6728 /* EventsBridge.swift */; };
+		CA5A5B062584F58A007F6728 /* IntentBasedWidgetSpecificationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5A5B052584F58A007F6728 /* IntentBasedWidgetSpecificationFactory.swift */; };
+		CA5A5B142584F7CA007F6728 /* SpecificationUseCaseTimelineFilteringPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5A5B132584F7CA007F6728 /* SpecificationUseCaseTimelineFilteringPolicy.swift */; };
 		CA5DCC7D24C74602001F20F8 /* DetailPresentationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5DCC7C24C74602001F20F8 /* DetailPresentationContext.swift */; };
 		CA5DCC8024C76995001F20F8 /* EmbeddedDealerContentRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5DCC7F24C76995001F20F8 /* EmbeddedDealerContentRepresentation.swift */; };
 		CA5DCC8224C769B5001F20F8 /* EmbeddedDealerContentRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5DCC8124C769B5001F20F8 /* EmbeddedDealerContentRoute.swift */; };
@@ -315,6 +328,16 @@
 		CA5EB1C824606AC80012C277 /* MoreContentControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5EB1C724606AC80012C277 /* MoreContentControllerFactory.swift */; };
 		CA5EB1CA2461BE140012C277 /* AwesomeFontLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5EB1C92461BE140012C277 /* AwesomeFontLabel.swift */; };
 		CA5EB1CC24620D490012C277 /* RoundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5EB1CB24620D490012C277 /* RoundImageView.swift */; };
+		CA5F269E2556F04C00CED97A /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA5F269D2556F04C00CED97A /* WidgetKit.framework */; platformFilter = ios; };
+		CA5F26A02556F04C00CED97A /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA5F269F2556F04C00CED97A /* SwiftUI.framework */; };
+		CA5F26A32556F04C00CED97A /* EventsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5F26A22556F04C00CED97A /* EventsWidget.swift */; };
+		CA5F26A62556F04D00CED97A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA5F26A52556F04D00CED97A /* Assets.xcassets */; };
+		CA5F26AC2556F04D00CED97A /* EventsWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CA5F269C2556F04C00CED97A /* EventsWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CA5F26BA2556F0C400CED97A /* EventsTimelineProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5F26B92556F0C400CED97A /* EventsTimelineProvider.swift */; };
+		CA5F26C82556F0E800CED97A /* EventsWidgetEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5F26C72556F0E800CED97A /* EventsWidgetEntryView.swift */; };
+		CA5F270A25570CE600CED97A /* Color+Catalogue.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5F270925570CE600CED97A /* Color+Catalogue.swift */; };
+		CA5F2716255711C700CED97A /* CategoryTextHeadline.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5F2715255711C700CED97A /* CategoryTextHeadline.swift */; };
+		CA5F273D25572BD500CED97A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA5F273C25572BD500CED97A /* Localizable.strings */; };
 		CA60BFFE207CDC1700697566 /* FakeAuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFFD207CDC1700697566 /* FakeAuthenticationService.swift */; };
 		CA624743532703E5C422FA37 /* Pods_EurofurenceApplicationSessionTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5121CB0BD290F505DEE03BDA /* Pods_EurofurenceApplicationSessionTests.framework */; };
 		CA630BCF229F10BF00754C27 /* WhenRecordingEventInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630BCE229F10BF00754C27 /* WhenRecordingEventInteraction.swift */; };
@@ -494,6 +517,8 @@
 		CA7D8B20222DBC28003431A0 /* DefaultEventDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D8B1F222DBC28003431A0 /* DefaultEventDetailViewModel.swift */; };
 		CA7D8B27222EAB61003431A0 /* DefaultDealerDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D8B26222EAB61003431A0 /* DefaultDealerDetailViewModel.swift */; };
 		CA7D8B3822312CFB003431A0 /* DefaultNewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D8B3722312CFB003431A0 /* DefaultNewsViewModel.swift */; };
+		CA7DA65F2563018F00F1316F /* EventWidgetContext+TimelineContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7DA65E2563018F00F1316F /* EventWidgetContext+TimelineContext.swift */; };
+		CA7DA66925630B3100F1316F /* WidgetLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7DA66825630B3100F1316F /* WidgetLayout.swift */; };
 		CA7EB7D51F799991002674A6 /* TutorialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7EB7D41F799991002674A6 /* TutorialScene.swift */; };
 		CA81D48E1FE9A8DB00A52A2F /* CapturingTutorialModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA81D48D1FE9A8DB00A52A2F /* CapturingTutorialModuleDelegate.swift */; };
 		CA82409D21249907007E4A70 /* ReviewPromptControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82409C21249907007E4A70 /* ReviewPromptControllerTests.swift */; };
@@ -532,6 +557,12 @@
 		CA8E7EF61FB08E2500F0BF10 /* AppWindowWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E7EF51FB08E2500F0BF10 /* AppWindowWireframe.swift */; };
 		CA8E7EFA1FB0926E00F0BF10 /* StoryboardTutorialSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E7EF91FB0926E00F0BF10 /* StoryboardTutorialSceneFactory.swift */; };
 		CA8E7EFC1FB0932700F0BF10 /* StoryboardNewsSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E7EFB1FB0932700F0BF10 /* StoryboardNewsSceneFactory.swift */; };
+		CA8F7D2F256182EF0096E206 /* WidgetKitConformances.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8F7D2E256182EF0096E206 /* WidgetKitConformances.swift */; };
+		CA8F7D362561A2D80096E206 /* EventWidgetUpdaterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8F7D352561A2D80096E206 /* EventWidgetUpdaterTests.swift */; };
+		CA8F7D412561AABD0096E206 /* WidgetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8F7D402561AABD0096E206 /* WidgetService.swift */; };
+		CA8F7D472561AAC70096E206 /* EventWidgetUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8F7D462561AAC70096E206 /* EventWidgetUpdater.swift */; };
+		CA8F7D4D2561AAD70096E206 /* CapturingWidgetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8F7D4C2561AAD70096E206 /* CapturingWidgetService.swift */; };
+		CA8F7D572561AB780096E206 /* SystemWidgetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8F7D562561AB780096E206 /* SystemWidgetService.swift */; };
 		CA91FEC12463269A0065CF86 /* BackgroundFetchServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA91FEC02463269A0065CF86 /* BackgroundFetchServiceTests.swift */; };
 		CA957B601F705AF9004DFD5A /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA957B5E1F705AF9004DFD5A /* MessagesViewController.swift */; };
 		CA987FC822E6389E006338FB /* ActivityFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA987FC722E6389E006338FB /* ActivityFactory.swift */; };
@@ -593,6 +624,7 @@
 		CABA43A11FD57A78009CB5B0 /* PreloadComponentBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43A01FD57A78009CB5B0 /* PreloadComponentBuilder.swift */; };
 		CABA43A31FD57C65009CB5B0 /* TutorialModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43A21FD57C65009CB5B0 /* TutorialModuleBuilder.swift */; };
 		CABA43AC1FD5DC68009CB5B0 /* LoginScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43AB1FD5DC68009CB5B0 /* LoginScene.swift */; };
+		CABBCA162565B153007A11A2 /* EventCategory+Intent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABBCA152565B153007A11A2 /* EventCategory+Intent.swift */; };
 		CABBCA302566FE0B007A11A2 /* SplitViewDetailBugTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABBCA2F2566FE0B007A11A2 /* SplitViewDetailBugTests.swift */; };
 		CABCDE6824C9C78000500F6B /* EmbeddedEventContentRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABCDE6724C9C78000500F6B /* EmbeddedEventContentRepresentation.swift */; };
 		CABCDE6A24C9C79300500F6B /* EmbeddedEventContentRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABCDE6924C9C79300500F6B /* EmbeddedEventContentRoute.swift */; };
@@ -643,6 +675,9 @@
 		CACD381A256518B100C23041 /* BuildConfigurationProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD3819256518B100C23041 /* BuildConfigurationProviding.swift */; };
 		CACD3825256518CF00C23041 /* PreprocessorBuildConfigurationProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD3824256518CF00C23041 /* PreprocessorBuildConfigurationProviding.swift */; };
 		CACD3830256518F100C23041 /* StubBuildConfigurationProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD382F256518F100C23041 /* StubBuildConfigurationProviding.swift */; };
+		CACD38BC2565247400C23041 /* EurofurenceApplicationSession.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CACD36A225650A9600C23041 /* EurofurenceApplicationSession.framework */; };
+		CACD38BD2565247400C23041 /* EurofurenceApplicationSession.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CACD36A225650A9600C23041 /* EurofurenceApplicationSession.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CACD394625653D8F00C23041 /* URLContextActivityDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD394525653D8F00C23041 /* URLContextActivityDescription.swift */; };
 		CACEA06D2242827800DFF26C /* NotificationScheduleControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACEA06C2242827800DFF26C /* NotificationScheduleControllerTests.swift */; };
 		CACEA06F2242832F00DFF26C /* CapturingNotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACEA06E2242832F00DFF26C /* CapturingNotificationScheduler.swift */; };
 		CACF1E4820AE29CB00D904B5 /* StubEventDetailComponentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E4720AE29CB00D904B5 /* StubEventDetailComponentFactory.swift */; };
@@ -1139,6 +1174,11 @@
 		CAFA0706245DEE3E00A807F5 /* MapContentRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFA0705245DEE3E00A807F5 /* MapContentRoute.swift */; };
 		CAFA0708245DEEC800A807F5 /* ShowMapFromMapsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFA0707245DEEC800A807F5 /* ShowMapFromMapsTests.swift */; };
 		CAFA070A245DEF6F00A807F5 /* ShowMapFromMaps.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFA0709245DEF6F00A807F5 /* ShowMapFromMaps.swift */; };
+		CAFC4A612564583A00499A47 /* EventLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFC4A602564583A00499A47 /* EventLocation.swift */; };
+		CAFC4A6C2564589500499A47 /* EventStartTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFC4A6B2564589500499A47 /* EventStartTime.swift */; };
+		CAFC4A72256458FA00499A47 /* EventEndTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFC4A71256458FA00499A47 /* EventEndTime.swift */; };
+		CAFC4A8725645E8F00499A47 /* WidgetColoredBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFC4A8625645E8F00499A47 /* WidgetColoredBackground.swift */; };
+		CAFC4A8C256463A400499A47 /* EurofurenceIntentDefinitions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA630BDC229F14F800754C27 /* EurofurenceIntentDefinitions.framework */; };
 		D0448F94EED4B9FB5C3B07CD /* Pods-Eurofurence-EurofurenceTests-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3394169A8659D343AAB772B2 /* Pods-Eurofurence-EurofurenceTests-settings-metadata.plist */; };
 		D852CF7D315C7733028AE8F3 /* Pods-EurofurenceApplicationSession-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = B3749D5DCFE8F12C64627A54 /* Pods-EurofurenceApplicationSession-metadata.plist */; };
 		F6AA212665A84829CF0EB371 /* Pods_Eurofurence_Screenshots.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0019020918F90989AA4BDE21 /* Pods_Eurofurence_Screenshots.framework */; };
@@ -1160,6 +1200,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 9ACF99331EBE172D006FC958;
 			remoteInfo = Eurofurence;
+		};
+		CA5F26AA2556F04D00CED97A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9ACF992C1EBE172D006FC958 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CA5F269B2556F04C00CED97A;
+			remoteInfo = EventsWidgetExtension;
 		};
 		CA630BE1229F14F800754C27 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1189,6 +1236,13 @@
 			remoteGlobalIDString = CACD36A125650A9600C23041;
 			remoteInfo = EurofurenceApplicationSession;
 		};
+		CACD38BE2565247400C23041 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9ACF992C1EBE172D006FC958 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CACD36A125650A9600C23041;
+			remoteInfo = EurofurenceApplicationSession;
+		};
 		CAF254AF2517F983008892ED /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9ACF992C1EBE172D006FC958 /* Project object */;
@@ -1196,9 +1250,38 @@
 			remoteGlobalIDString = 9ACF99331EBE172D006FC958;
 			remoteInfo = Eurofurence;
 		};
+		CAFC4A8E256463A400499A47 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9ACF992C1EBE172D006FC958 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CA630BDB229F14F800754C27;
+			remoteInfo = EurofurenceIntentDefinitions;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		CA5F26AE2556F04E00CED97A /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				CA5F26AC2556F04D00CED97A /* EventsWidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA8F7D122561731B0096E206 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CACD38BD2565247400C23041 /* EurofurenceApplicationSession.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CAEA0B9A2165626900B0C7A6 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1362,6 +1445,8 @@
 		CA057A5A2088BDBA00504FA4 /* AnnouncementTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnouncementTableViewCell.swift; sourceTree = "<group>"; };
 		CA08157720D3865600F750D4 /* NavigationBarViewExtensionContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarViewExtensionContainer.swift; sourceTree = "<group>"; };
 		CA08157920D3877700F750D4 /* FoundationShortFormDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationShortFormDateFormatter.swift; sourceTree = "<group>"; };
+		CA08322C2584DD0D0060551D /* RemotelyConfiguredUpcomingEventsConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemotelyConfiguredUpcomingEventsConfigurationTests.swift; sourceTree = "<group>"; };
+		CA0832342584DDCE0060551D /* RemotelyConfiguredUpcomingEventsConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemotelyConfiguredUpcomingEventsConfiguration.swift; sourceTree = "<group>"; };
 		CA08B0F622EDD41900FDAAA7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CA08B0F822EDF4C600FDAAA7 /* EurofurenceDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EurofurenceDateFormatter.swift; sourceTree = "<group>"; };
 		CA08B0FA22EDF6BE00FDAAA7 /* EurofurenceDateIntervalFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EurofurenceDateIntervalFormatter.swift; sourceTree = "<group>"; };
@@ -1532,6 +1617,8 @@
 		CA401099211081A40056E16C /* KnowledgeGroupEntries.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = KnowledgeGroupEntries.storyboard; sourceTree = "<group>"; };
 		CA40109B211081C80056E16C /* KnowledgeGroupEntriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeGroupEntriesViewController.swift; sourceTree = "<group>"; };
 		CA4010A02110854E0056E16C /* DefaultKnowledgeGroupViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultKnowledgeGroupViewModelFactory.swift; sourceTree = "<group>"; };
+		CA47B1B0255812D600050890 /* Localizable.stringsdict */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; path = Localizable.stringsdict; sourceTree = "<group>"; };
+		CA47B1B72558189D00050890 /* EventsWidgetStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsWidgetStrings.swift; sourceTree = "<group>"; };
 		CA4908C3245DADA000DB032C /* WindowContentWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowContentWireframe.swift; sourceTree = "<group>"; };
 		CA4908C5245DADBA00DB032C /* WindowModalWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowModalWireframe.swift; sourceTree = "<group>"; };
 		CA4D9342245ECA67006FA832 /* NotificationContentRepresentationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationContentRepresentationTests.swift; sourceTree = "<group>"; };
@@ -1573,12 +1660,20 @@
 		CA50B1B9226111220091E425 /* EventFeedbackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFeedbackViewModel.swift; sourceTree = "<group>"; };
 		CA50B1BB2261112D0091E425 /* EventFeedbackSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFeedbackSceneFactory.swift; sourceTree = "<group>"; };
 		CA50B1BD226119F40091E425 /* DayOfWeekFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeekFormatter.swift; sourceTree = "<group>"; };
+		CA526F882564569600BDD7BB /* CategoryPlaceholderText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPlaceholderText.swift; sourceTree = "<group>"; };
+		CA526F8E256456F900BDD7BB /* AdditionalEventsFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalEventsFooter.swift; sourceTree = "<group>"; };
+		CA526F962564577A00BDD7BB /* EventTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTitle.swift; sourceTree = "<group>"; };
 		CA527E772278D397000ED74B /* StarRatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingControl.swift; sourceTree = "<group>"; };
 		CA52C68020D597E1009D3A9E /* ApplicationSignificantTimeChangeAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationSignificantTimeChangeAdapter.swift; sourceTree = "<group>"; };
 		CA52C68220D5980C009D3A9E /* ApplicationSignificantTimeChangeAdapterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationSignificantTimeChangeAdapterTests.swift; sourceTree = "<group>"; };
 		CA52C68420D59A5B009D3A9E /* CapturingSignificantTimeChangeAdapterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingSignificantTimeChangeAdapterDelegate.swift; sourceTree = "<group>"; };
 		CA52C68E20D6AB47009D3A9E /* ScheduleComponentDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleComponentDelegate.swift; sourceTree = "<group>"; };
 		CA52C69820D6B87E009D3A9E /* HideNavigationBarShadowForSpecificViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideNavigationBarShadowForSpecificViewControllerDelegate.swift; sourceTree = "<group>"; };
+		CA5891DF2562F2E800FC9BC1 /* HoursAndMinutesEventTimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoursAndMinutesEventTimeFormatter.swift; sourceTree = "<group>"; };
+		CA5A5AE32584F1F4007F6728 /* ControllableClock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllableClock.swift; sourceTree = "<group>"; };
+		CA5A5AF12584F26B007F6728 /* EventsBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsBridge.swift; sourceTree = "<group>"; };
+		CA5A5B052584F58A007F6728 /* IntentBasedWidgetSpecificationFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentBasedWidgetSpecificationFactory.swift; sourceTree = "<group>"; };
+		CA5A5B132584F7CA007F6728 /* SpecificationUseCaseTimelineFilteringPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificationUseCaseTimelineFilteringPolicy.swift; sourceTree = "<group>"; };
 		CA5DCC7C24C74602001F20F8 /* DetailPresentationContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresentationContext.swift; sourceTree = "<group>"; };
 		CA5DCC7F24C76995001F20F8 /* EmbeddedDealerContentRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedDealerContentRepresentation.swift; sourceTree = "<group>"; };
 		CA5DCC8124C769B5001F20F8 /* EmbeddedDealerContentRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedDealerContentRoute.swift; sourceTree = "<group>"; };
@@ -1607,6 +1702,18 @@
 		CA5EB1C724606AC80012C277 /* MoreContentControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreContentControllerFactory.swift; sourceTree = "<group>"; };
 		CA5EB1C92461BE140012C277 /* AwesomeFontLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwesomeFontLabel.swift; sourceTree = "<group>"; };
 		CA5EB1CB24620D490012C277 /* RoundImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundImageView.swift; sourceTree = "<group>"; };
+		CA5F269C2556F04C00CED97A /* EventsWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = EventsWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA5F269D2556F04C00CED97A /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		CA5F269F2556F04C00CED97A /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		CA5F26A22556F04C00CED97A /* EventsWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsWidget.swift; sourceTree = "<group>"; };
+		CA5F26A52556F04D00CED97A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CA5F26A72556F04D00CED97A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CA5F26AD2556F04D00CED97A /* EventsWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EventsWidgetExtension.entitlements; sourceTree = "<group>"; };
+		CA5F26B92556F0C400CED97A /* EventsTimelineProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTimelineProvider.swift; sourceTree = "<group>"; };
+		CA5F26C72556F0E800CED97A /* EventsWidgetEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsWidgetEntryView.swift; sourceTree = "<group>"; };
+		CA5F270925570CE600CED97A /* Color+Catalogue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Catalogue.swift"; sourceTree = "<group>"; };
+		CA5F2715255711C700CED97A /* CategoryTextHeadline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTextHeadline.swift; sourceTree = "<group>"; };
+		CA5F273C25572BD500CED97A /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		CA60BFFD207CDC1700697566 /* FakeAuthenticationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeAuthenticationService.swift; sourceTree = "<group>"; };
 		CA621345221EFDD800E88880 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		CA630BCE229F10BF00754C27 /* WhenRecordingEventInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenRecordingEventInteraction.swift; sourceTree = "<group>"; };
@@ -1783,6 +1890,8 @@
 		CA7D8B1F222DBC28003431A0 /* DefaultEventDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultEventDetailViewModel.swift; sourceTree = "<group>"; };
 		CA7D8B26222EAB61003431A0 /* DefaultDealerDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDealerDetailViewModel.swift; sourceTree = "<group>"; };
 		CA7D8B3722312CFB003431A0 /* DefaultNewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNewsViewModel.swift; sourceTree = "<group>"; };
+		CA7DA65E2563018F00F1316F /* EventWidgetContext+TimelineContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventWidgetContext+TimelineContext.swift"; sourceTree = "<group>"; };
+		CA7DA66825630B3100F1316F /* WidgetLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetLayout.swift; sourceTree = "<group>"; };
 		CA7EB7D41F799991002674A6 /* TutorialScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScene.swift; sourceTree = "<group>"; };
 		CA8124FE2517BDE500A7F717 /* iOS Application Tests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "iOS Application Tests.xctestplan"; sourceTree = "<group>"; };
 		CA8125022517BE9000A7F717 /* Screenshots.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Screenshots.xctestplan; sourceTree = "<group>"; };
@@ -1822,6 +1931,13 @@
 		CA8E7EF51FB08E2500F0BF10 /* AppWindowWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppWindowWireframe.swift; sourceTree = "<group>"; };
 		CA8E7EF91FB0926E00F0BF10 /* StoryboardTutorialSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardTutorialSceneFactory.swift; sourceTree = "<group>"; };
 		CA8E7EFB1FB0932700F0BF10 /* StoryboardNewsSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardNewsSceneFactory.swift; sourceTree = "<group>"; };
+		CA8F7D0F2561731B0096E206 /* EurofurenceModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EurofurenceModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA8F7D2E256182EF0096E206 /* WidgetKitConformances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetKitConformances.swift; sourceTree = "<group>"; };
+		CA8F7D352561A2D80096E206 /* EventWidgetUpdaterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventWidgetUpdaterTests.swift; sourceTree = "<group>"; };
+		CA8F7D402561AABD0096E206 /* WidgetService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetService.swift; sourceTree = "<group>"; };
+		CA8F7D462561AAC70096E206 /* EventWidgetUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventWidgetUpdater.swift; sourceTree = "<group>"; };
+		CA8F7D4C2561AAD70096E206 /* CapturingWidgetService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingWidgetService.swift; sourceTree = "<group>"; };
+		CA8F7D562561AB780096E206 /* SystemWidgetService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemWidgetService.swift; sourceTree = "<group>"; };
 		CA91FEC02463269A0065CF86 /* BackgroundFetchServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundFetchServiceTests.swift; sourceTree = "<group>"; };
 		CA957B5E1F705AF9004DFD5A /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		CA9845C91F2907A800E8821D /* ScreenshotGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotGenerator.swift; sourceTree = "<group>"; };
@@ -1883,6 +1999,7 @@
 		CABA43A01FD57A78009CB5B0 /* PreloadComponentBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadComponentBuilder.swift; sourceTree = "<group>"; };
 		CABA43A21FD57C65009CB5B0 /* TutorialModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialModuleBuilder.swift; sourceTree = "<group>"; };
 		CABA43AB1FD5DC68009CB5B0 /* LoginScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScene.swift; sourceTree = "<group>"; };
+		CABBCA152565B153007A11A2 /* EventCategory+Intent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventCategory+Intent.swift"; sourceTree = "<group>"; };
 		CABBCA2F2566FE0B007A11A2 /* SplitViewDetailBugTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewDetailBugTests.swift; sourceTree = "<group>"; };
 		CABCDE6724C9C78000500F6B /* EmbeddedEventContentRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedEventContentRepresentation.swift; sourceTree = "<group>"; };
 		CABCDE6924C9C79300500F6B /* EmbeddedEventContentRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedEventContentRoute.swift; sourceTree = "<group>"; };
@@ -1916,6 +2033,7 @@
 		CACD3819256518B100C23041 /* BuildConfigurationProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildConfigurationProviding.swift; sourceTree = "<group>"; };
 		CACD3824256518CF00C23041 /* PreprocessorBuildConfigurationProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreprocessorBuildConfigurationProviding.swift; sourceTree = "<group>"; };
 		CACD382F256518F100C23041 /* StubBuildConfigurationProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubBuildConfigurationProviding.swift; sourceTree = "<group>"; };
+		CACD394525653D8F00C23041 /* URLContextActivityDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLContextActivityDescription.swift; sourceTree = "<group>"; };
 		CACEA06C2242827800DFF26C /* NotificationScheduleControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationScheduleControllerTests.swift; sourceTree = "<group>"; };
 		CACEA06E2242832F00DFF26C /* CapturingNotificationScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingNotificationScheduler.swift; sourceTree = "<group>"; };
 		CACF1E4720AE29CB00D904B5 /* StubEventDetailComponentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubEventDetailComponentFactory.swift; sourceTree = "<group>"; };
@@ -2412,6 +2530,10 @@
 		CAFA0705245DEE3E00A807F5 /* MapContentRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapContentRoute.swift; sourceTree = "<group>"; };
 		CAFA0707245DEEC800A807F5 /* ShowMapFromMapsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMapFromMapsTests.swift; sourceTree = "<group>"; };
 		CAFA0709245DEF6F00A807F5 /* ShowMapFromMaps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMapFromMaps.swift; sourceTree = "<group>"; };
+		CAFC4A602564583A00499A47 /* EventLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLocation.swift; sourceTree = "<group>"; };
+		CAFC4A6B2564589500499A47 /* EventStartTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventStartTime.swift; sourceTree = "<group>"; };
+		CAFC4A71256458FA00499A47 /* EventEndTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEndTime.swift; sourceTree = "<group>"; };
+		CAFC4A8625645E8F00499A47 /* WidgetColoredBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetColoredBackground.swift; sourceTree = "<group>"; };
 		CE2BA268DF915CD181D6DD26 /* Pods-Eurofurence-EurofurenceUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eurofurence-EurofurenceUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Eurofurence-EurofurenceUITests/Pods-Eurofurence-EurofurenceUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D48DFBCB82C7548D555B2169 /* Pods-Eurofurence-ScreenshotGenerator-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Eurofurence-ScreenshotGenerator-metadata.plist"; path = "Pods/Pods-Eurofurence-ScreenshotGenerator-metadata.plist"; sourceTree = "<group>"; };
 		DAF82756531E9F6E398091C2 /* Pods-Eurofurence-ScreenshotGenerator-settings-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Eurofurence-ScreenshotGenerator-settings-metadata.plist"; path = "Eurofurence/Settings.bundle/Pods-Eurofurence-ScreenshotGenerator-settings-metadata.plist"; sourceTree = "<group>"; };
@@ -2464,6 +2586,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CA5F26992556F04C00CED97A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CACD38BC2565247400C23041 /* EurofurenceApplicationSession.framework in Frameworks */,
+				CA3FBF4B2558426B005E1F53 /* BuildFile in Frameworks */,
+				CAFC4A8C256463A400499A47 /* EurofurenceIntentDefinitions.framework in Frameworks */,
+				CA5F26A02556F04C00CED97A /* SwiftUI.framework in Frameworks */,
+				CA5F269E2556F04C00CED97A /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CA630BD9229F14F800754C27 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -2506,6 +2640,7 @@
 				CACD376925650C1200C23041 /* EurofurenceModelTestDoubles.framework */,
 				CACD372825650BD800C23041 /* EurofurenceModel.framework */,
 				CACD371F25650BC400C23041 /* EurofurenceModel.framework */,
+				CA8F7D0F2561731B0096E206 /* EurofurenceModel.framework */,
 				CA7A32FB22B17A21002AD939 /* EurofurenceModelTestDoubles.framework */,
 				CA7A32F722B179D8002AD939 /* EurofurenceModel.framework */,
 				CA7A32F922B179D8002AD939 /* EventBus.framework */,
@@ -2517,6 +2652,8 @@
 				51697E1150E99F9A207E1E52 /* Pods_EurofurenceTests.framework */,
 				8D3621A092736EDC3407600D /* Pods_EurofurenceApplicationSession.framework */,
 				5121CB0BD290F505DEE03BDA /* Pods_EurofurenceApplicationSessionTests.framework */,
+				CA5F269D2556F04C00CED97A /* WidgetKit.framework */,
+				CA5F269F2556F04C00CED97A /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2799,6 +2936,7 @@
 		9ACF992B1EBE172D006FC958 = {
 			isa = PBXGroup;
 			children = (
+				CA5F26AD2556F04D00CED97A /* EventsWidgetExtension.entitlements */,
 				CA7A299322B02B46002AD939 /* Dangerfile */,
 				CA08B0F622EDD41900FDAAA7 /* README.md */,
 				78CA0D0E1F0E57D5006DFD64 /* GoogleService-Info.plist */,
@@ -2808,6 +2946,7 @@
 				CAF254AB2517F983008892ED /* EurofurenceUITests */,
 				CACD36A325650A9600C23041 /* EurofurenceApplicationSession */,
 				CACD36B025650A9600C23041 /* EurofurenceApplicationSessionTests */,
+				CA5F26A12556F04C00CED97A /* EventsWidget */,
 				164F3A1C0E53F6ADD4C20674 /* Frameworks */,
 				2A4A738C931BBD9059F30151 /* Pods */,
 				9ACF99351EBE172D006FC958 /* Products */,
@@ -2826,6 +2965,7 @@
 				CAF254AA2517F983008892ED /* EurofurenceUITests.xctest */,
 				CACD36A225650A9600C23041 /* EurofurenceApplicationSession.framework */,
 				CACD36AA25650A9600C23041 /* EurofurenceApplicationSessionTests.xctest */,
+				CA5F269C2556F04C00CED97A /* EventsWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2852,6 +2992,7 @@
 				9ACF999B1ECA259C006FC958 /* Resources */,
 				CA38C35224680C2E00A20921 /* Scenes */,
 				CAF255CA251F851F008892ED /* Sharing */,
+				CA8F7D3F2561AAB00096E206 /* Widget Updaters */,
 			);
 			path = Eurofurence;
 			sourceTree = "<group>";
@@ -2871,6 +3012,7 @@
 				CAF255BF251F8490008892ED /* Sharing */,
 				6EF96CCD1F0EDB1300EE6134 /* Test Doubles */,
 				CAF9A94F1F558E6200628833 /* Test Utilities */,
+				CA8F7D342561A2C60096E206 /* Widget Updaters */,
 			);
 			path = EurofurenceTests;
 			sourceTree = "<group>";
@@ -3363,6 +3505,7 @@
 			isa = PBXGroup;
 			children = (
 				CA39851522C7A51C00117249 /* RemotelyConfiguredConventionStartDateRepositoryTests.swift */,
+				CA08322C2584DD0D0060551D /* RemotelyConfiguredUpcomingEventsConfigurationTests.swift */,
 				CA39851A22C7A92900117249 /* Test Doubles */,
 			);
 			path = "Remote Configuration";
@@ -3371,10 +3514,11 @@
 		CA39851722C7A91000117249 /* Remote Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				CA39851D22C7A94500117249 /* RemoteConfiguration.swift */,
 				CA39852422C7ADBA00117249 /* FirebaseRemoteConfigurationLoader.swift */,
+				CA39851D22C7A94500117249 /* RemoteConfiguration.swift */,
 				CA39851F22C7A94F00117249 /* RemoteConfigurationLoader.swift */,
 				CA39851822C7A91800117249 /* RemotelyConfiguredConventionStartDateRepository.swift */,
+				CA0832342584DDCE0060551D /* RemotelyConfiguredUpcomingEventsConfiguration.swift */,
 				CA2AA30222CA95BF00C0E1A1 /* UpdateRemoteConfigRefreshCollaboration.swift */,
 			);
 			path = "Remote Configuration";
@@ -3543,6 +3687,24 @@
 			path = Scene;
 			sourceTree = "<group>";
 		};
+		CA526F942564573000BDD7BB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CAFC4A662564588D00499A47 /* Event */,
+				CAFC4A7725645D6500499A47 /* Widget */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CA526F952564574F00BDD7BB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CA5F270925570CE600CED97A /* Color+Catalogue.swift */,
+				CA47B1B72558189D00050890 /* EventsWidgetStrings.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		CA5DCC7E24C7697B001F20F8 /* Embedded Dealer */ = {
 			isa = PBXGroup;
 			children = (
@@ -3612,6 +3774,22 @@
 				CA5EB1C5246069380012C277 /* MoreViewController.swift */,
 			);
 			path = More;
+			sourceTree = "<group>";
+		};
+		CA5F26A12556F04C00CED97A /* EventsWidget */ = {
+			isa = PBXGroup;
+			children = (
+				CA5F26A72556F04D00CED97A /* Info.plist */,
+				CA5F273C25572BD500CED97A /* Localizable.strings */,
+				CA47B1B0255812D600050890 /* Localizable.stringsdict */,
+				CA5F26B92556F0C400CED97A /* EventsTimelineProvider.swift */,
+				CA5F26A22556F04C00CED97A /* EventsWidget.swift */,
+				CA5F26A52556F04D00CED97A /* Assets.xcassets */,
+				CA8F7D17256173290096E206 /* Logic Adapter */,
+				CA526F952564574F00BDD7BB /* Resources */,
+				CA526F942564573000BDD7BB /* Views */,
+			);
+			path = EventsWidget;
 			sourceTree = "<group>";
 		};
 		CA630BCA229F108900754C27 /* Activity */ = {
@@ -4522,6 +4700,40 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
+		CA8F7D17256173290096E206 /* Logic Adapter */ = {
+			isa = PBXGroup;
+			children = (
+				CA5A5AE32584F1F4007F6728 /* ControllableClock.swift */,
+				CABBCA152565B153007A11A2 /* EventCategory+Intent.swift */,
+				CA5A5AF12584F26B007F6728 /* EventsBridge.swift */,
+				CA7DA65E2563018F00F1316F /* EventWidgetContext+TimelineContext.swift */,
+				CA5A5B132584F7CA007F6728 /* SpecificationUseCaseTimelineFilteringPolicy.swift */,
+				CA5891DF2562F2E800FC9BC1 /* HoursAndMinutesEventTimeFormatter.swift */,
+				CA5A5B052584F58A007F6728 /* IntentBasedWidgetSpecificationFactory.swift */,
+				CA8F7D2E256182EF0096E206 /* WidgetKitConformances.swift */,
+			);
+			path = "Logic Adapter";
+			sourceTree = "<group>";
+		};
+		CA8F7D342561A2C60096E206 /* Widget Updaters */ = {
+			isa = PBXGroup;
+			children = (
+				CA8F7D4C2561AAD70096E206 /* CapturingWidgetService.swift */,
+				CA8F7D352561A2D80096E206 /* EventWidgetUpdaterTests.swift */,
+			);
+			path = "Widget Updaters";
+			sourceTree = "<group>";
+		};
+		CA8F7D3F2561AAB00096E206 /* Widget Updaters */ = {
+			isa = PBXGroup;
+			children = (
+				CA8F7D462561AAC70096E206 /* EventWidgetUpdater.swift */,
+				CA8F7D562561AB780096E206 /* SystemWidgetService.swift */,
+				CA8F7D402561AABD0096E206 /* WidgetService.swift */,
+			);
+			path = "Widget Updaters";
+			sourceTree = "<group>";
+		};
 		CA91FEBF246326880065CF86 /* Background Refresh */ = {
 			isa = PBXGroup;
 			children = (
@@ -4627,6 +4839,7 @@
 			children = (
 				CAB0FD5322C90B3400D4CB98 /* ActivityDescription.swift */,
 				CAB0FD5522C90B4000D4CB98 /* SystemActivityDescription.swift */,
+				CACD394525653D8F00C23041 /* URLContextActivityDescription.swift */,
 			);
 			path = "Activity State";
 			sourceTree = "<group>";
@@ -6729,6 +6942,30 @@
 			path = Map;
 			sourceTree = "<group>";
 		};
+		CAFC4A662564588D00499A47 /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				CAFC4A602564583A00499A47 /* EventLocation.swift */,
+				CA526F962564577A00BDD7BB /* EventTitle.swift */,
+				CAFC4A6B2564589500499A47 /* EventStartTime.swift */,
+				CAFC4A71256458FA00499A47 /* EventEndTime.swift */,
+			);
+			path = Event;
+			sourceTree = "<group>";
+		};
+		CAFC4A7725645D6500499A47 /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+				CA526F8E256456F900BDD7BB /* AdditionalEventsFooter.swift */,
+				CA5F26C72556F0E800CED97A /* EventsWidgetEntryView.swift */,
+				CA526F882564569600BDD7BB /* CategoryPlaceholderText.swift */,
+				CA5F2715255711C700CED97A /* CategoryTextHeadline.swift */,
+				CA7DA66825630B3100F1316F /* WidgetLayout.swift */,
+				CAFC4A8625645E8F00499A47 /* WidgetColoredBackground.swift */,
+			);
+			path = Widget;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -6785,12 +7022,14 @@
 				CAEA0B9A2165626900B0C7A6 /* Embed Frameworks */,
 				9ACB01051F1808BA001CE9D2 /* Crashlytics */,
 				5ADEF4093BEB19B8763D0F83 /* [CP] Embed Pods Frameworks */,
+				CA5F26AE2556F04E00CED97A /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				CA630BE2229F14F800754C27 /* PBXTargetDependency */,
 				CACD36B625650A9600C23041 /* PBXTargetDependency */,
+				CA5F26AB2556F04D00CED97A /* PBXTargetDependency */,
 			);
 			name = Eurofurence;
 			productName = Eurofurence;
@@ -6815,6 +7054,29 @@
 			productName = EurofurenceTests;
 			productReference = 9ACF99481EBE172D006FC958 /* EurofurenceTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		CA5F269B2556F04C00CED97A /* EventsWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CA5F26B32556F04E00CED97A /* Build configuration list for PBXNativeTarget "EventsWidgetExtension" */;
+			buildPhases = (
+				CA5F26982556F04C00CED97A /* Sources */,
+				CA5F26992556F04C00CED97A /* Frameworks */,
+				CA5F269A2556F04C00CED97A /* Resources */,
+				CA8F7D122561731B0096E206 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CACD38BF2565247400C23041 /* PBXTargetDependency */,
+				CAFC4A8F256463A400499A47 /* PBXTargetDependency */,
+			);
+			name = EventsWidgetExtension;
+			packageProductDependencies = (
+				CA3FBF4A2558426B005E1F53 /* SwiftPackageProductDependency */,
+			);
+			productName = EventsWidgetExtension;
+			productReference = CA5F269C2556F04C00CED97A /* EventsWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 		CA630BDB229F14F800754C27 /* EurofurenceIntentDefinitions */ = {
 			isa = PBXNativeTarget;
@@ -6899,7 +7161,7 @@
 			attributes = {
 				DefaultBuildSystemTypeForWorkspace = Latest;
 				LastSwiftUpdateCheck = 1220;
-				LastUpgradeCheck = 1220;
+				LastUpgradeCheck = 1230;
 				ORGANIZATIONNAME = Eurofurence;
 				TargetAttributes = {
 					78D7EEA01F17F40C005372A9 = {
@@ -6935,6 +7197,9 @@
 						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 9ACF99331EBE172D006FC958;
+					};
+					CA5F269B2556F04C00CED97A = {
+						CreatedOnToolsVersion = 12.0.1;
 					};
 					CA630BDB229F14F800754C27 = {
 						CreatedOnToolsVersion = 10.2.1;
@@ -6979,6 +7244,7 @@
 				CA630BDB229F14F800754C27 /* EurofurenceIntentDefinitions */,
 				CACD36A125650A9600C23041 /* EurofurenceApplicationSession */,
 				CACD36A925650A9600C23041 /* EurofurenceApplicationSessionTests */,
+				CA5F269B2556F04C00CED97A /* EventsWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -7051,6 +7317,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CA5F269A2556F04C00CED97A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA5F26A62556F04D00CED97A /* Assets.xcassets in Resources */,
+				CA5F273D25572BD500CED97A /* Localizable.strings in Resources */,
+				CA47B1B1255812D600050890 /* Localizable.stringsdict in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CA630BDA229F14F800754C27 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -7089,37 +7365,12 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Eurofurence-Screenshots/Pods-Eurofurence-Screenshots-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Down/Down.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseABTesting/FirebaseABTesting.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseCrashlytics/FirebaseCrashlytics.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseInstallations/FirebaseInstallations.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseInstanceID/FirebaseInstanceID.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseMessaging/FirebaseMessaging.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseRemoteConfig/FirebaseRemoteConfig.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleDataTransport/GoogleDataTransport.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Eurofurence-Screenshots/Pods-Eurofurence-Screenshots-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Down.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseABTesting.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCore.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCoreDiagnostics.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCrashlytics.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseInstallations.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseInstanceID.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseMessaging.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseRemoteConfig.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleDataTransport.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Eurofurence-Screenshots/Pods-Eurofurence-Screenshots-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -7233,37 +7484,12 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Eurofurence/Pods-Eurofurence-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Down/Down.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseABTesting/FirebaseABTesting.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseCrashlytics/FirebaseCrashlytics.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseInstallations/FirebaseInstallations.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseInstanceID/FirebaseInstanceID.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseMessaging/FirebaseMessaging.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseRemoteConfig/FirebaseRemoteConfig.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleDataTransport/GoogleDataTransport.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Eurofurence/Pods-Eurofurence-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Down.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseABTesting.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCore.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCoreDiagnostics.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCrashlytics.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseInstallations.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseInstanceID.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseMessaging.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseRemoteConfig.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleDataTransport.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Eurofurence/Pods-Eurofurence-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -7427,6 +7653,7 @@
 				CA6A8D6B20E26478007536CD /* MapsScene.swift in Sources */,
 				CA17FE8B20585D9C005A4C05 /* LinkTableViewCell.swift in Sources */,
 				CA6A8D8720E2BB90007536CD /* MapsViewModel.swift in Sources */,
+				CA8F7D472561AAC70096E206 /* EventWidgetUpdater.swift in Sources */,
 				CAA2887E245C72CA0090B663 /* MessagesContentRepresentation.swift in Sources */,
 				CA728465209D0FAF007D912A /* AnnouncementDetailScene.swift in Sources */,
 				CA63A747245DBB3D00E4B313 /* ScheduleSubrouter.swift in Sources */,
@@ -7622,6 +7849,7 @@
 				9ACF99381EBE172D006FC958 /* AppDelegate.swift in Sources */,
 				CA82DB5922D6639300467C2F /* ActivityShareService.swift in Sources */,
 				CA08B0F922EDF4C600FDAAA7 /* EurofurenceDateFormatter.swift in Sources */,
+				CA8F7D412561AABD0096E206 /* WidgetService.swift in Sources */,
 				CA40106E210FAEC30056E16C /* KnowledgeGroupEntriesComponentFactory.swift in Sources */,
 				CA73AEE3201A0869004E77BF /* KnowledgeGroupsComponentBuilder.swift in Sources */,
 				CA7D8B20222DBC28003431A0 /* DefaultEventDetailViewModel.swift in Sources */,
@@ -7775,6 +8003,7 @@
 				CA6A8DCA20E415EF007536CD /* MapDetailComponentFactoryImpl.swift in Sources */,
 				CAD2343C1F5D7203004BB959 /* MessagesScene.swift in Sources */,
 				CA0E520D208E759F005259FE /* DefaultNewsViewModelProducer.swift in Sources */,
+				CA8F7D572561AB780096E206 /* SystemWidgetService.swift in Sources */,
 				CA401077210FAEF60056E16C /* KnowledgeGroupEntriesSceneFactory.swift in Sources */,
 				CA5EB1CA2461BE140012C277 /* AwesomeFontLabel.swift in Sources */,
 				CA50B1B3226110F40091E425 /* EventFeedbackPresenter.swift in Sources */,
@@ -7839,6 +8068,7 @@
 				CA6A8D7120E2649C007536CD /* MapsModule.swift in Sources */,
 				CA8276B3204EC013006A7419 /* ApplicationPreloadInteractor.swift in Sources */,
 				CA30EAD01F27D8620053DBF6 /* MessageTableViewCell.swift in Sources */,
+				CACD394625653D8F00C23041 /* URLContextActivityDescription.swift in Sources */,
 				CA25A7FB20E63E9E00875891 /* MapDetailComponentDelegate.swift in Sources */,
 				CA27619A20E01D0F000E52AC /* CollectThemAllComponentFactory.swift in Sources */,
 				CA4010A12110854E0056E16C /* DefaultKnowledgeGroupViewModelFactory.swift in Sources */,
@@ -7949,6 +8179,7 @@
 				CAF197E924688EAB005DFBBE /* StubKnowledgeListSceneFactory.swift in Sources */,
 				CAF1978424688EAA005DFBBE /* WhenPreparingViewModel_ForDealersDenEvent_EventDetailViewModelFactoryShould.swift in Sources */,
 				CAF197BB24688EAA005DFBBE /* WhenToldToRefresh_NewsViewModelProducerShould.swift in Sources */,
+				CA8F7D362561A2D80096E206 /* EventWidgetUpdaterTests.swift in Sources */,
 				CAF1972624688EAA005DFBBE /* WhenBuildingKnowledgeDetailComponent.swift in Sources */,
 				CA60BFFE207CDC1700697566 /* FakeAuthenticationService.swift in Sources */,
 				CAD6882A208A107500B31F5F /* UserWidgetComponentViewModel+RandomValueProviding.swift in Sources */,
@@ -7982,6 +8213,7 @@
 				7820A6DB1F13F4DE004C0FB5 /* StubPresentationAssets.swift in Sources */,
 				CAF197E324688EAA005DFBBE /* CapturingKnowledgeGroupEntryScene.swift in Sources */,
 				CAF1975E24688EAA005DFBBE /* CapturingAnnouncementsScene.swift in Sources */,
+				CA8F7D4D2561AAD70096E206 /* CapturingWidgetService.swift in Sources */,
 				CAF1970224688EAA005DFBBE /* WhenGroupingEventsByStartTime_ScheduleViewModelFactoryShould.swift in Sources */,
 				CAF197ED24688EAB005DFBBE /* CapturingKnowledgeGroupsListViewModelVisitor.swift in Sources */,
 				CAF1980424688EAB005DFBBE /* StubContentControllerFactory.swift in Sources */,
@@ -8402,6 +8634,35 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CA5F26982556F04C00CED97A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CAFC4A72256458FA00499A47 /* EventEndTime.swift in Sources */,
+				CA526F972564577A00BDD7BB /* EventTitle.swift in Sources */,
+				CA5F26A32556F04C00CED97A /* EventsWidget.swift in Sources */,
+				CA5F26BA2556F0C400CED97A /* EventsTimelineProvider.swift in Sources */,
+				CA5F270A25570CE600CED97A /* Color+Catalogue.swift in Sources */,
+				CA5A5B142584F7CA007F6728 /* SpecificationUseCaseTimelineFilteringPolicy.swift in Sources */,
+				CA5F2716255711C700CED97A /* CategoryTextHeadline.swift in Sources */,
+				CA5F26C82556F0E800CED97A /* EventsWidgetEntryView.swift in Sources */,
+				CA526F8F256456F900BDD7BB /* AdditionalEventsFooter.swift in Sources */,
+				CA5891E02562F2E800FC9BC1 /* HoursAndMinutesEventTimeFormatter.swift in Sources */,
+				CAFC4A612564583A00499A47 /* EventLocation.swift in Sources */,
+				CA5A5AE42584F1F4007F6728 /* ControllableClock.swift in Sources */,
+				CA7DA65F2563018F00F1316F /* EventWidgetContext+TimelineContext.swift in Sources */,
+				CA8F7D2F256182EF0096E206 /* WidgetKitConformances.swift in Sources */,
+				CA7DA66925630B3100F1316F /* WidgetLayout.swift in Sources */,
+				CAFC4A8725645E8F00499A47 /* WidgetColoredBackground.swift in Sources */,
+				CA526F892564569600BDD7BB /* CategoryPlaceholderText.swift in Sources */,
+				CA5A5AF22584F26B007F6728 /* EventsBridge.swift in Sources */,
+				CA47B1B82558189D00050890 /* EventsWidgetStrings.swift in Sources */,
+				CA5A5B062584F58A007F6728 /* IntentBasedWidgetSpecificationFactory.swift in Sources */,
+				CABBCA162565B153007A11A2 /* EventCategory+Intent.swift in Sources */,
+				CAFC4A6C2564589500499A47 /* EventStartTime.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CA630BD8229F14F800754C27 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -8430,6 +8691,7 @@
 				CACD3804256516E200C23041 /* EurofurenceFCMDeviceRegistration.swift in Sources */,
 				CACD37AE25650D2A00C23041 /* RemoteConfiguration.swift in Sources */,
 				CACD37AB25650D2A00C23041 /* RemoteConfigurationLoader.swift in Sources */,
+				CA0832352584DDCE0060551D /* RemotelyConfiguredUpcomingEventsConfiguration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8445,6 +8707,7 @@
 				CACD3812256516EB00C23041 /* CapturingFCMDeviceRegistration.swift in Sources */,
 				CACD370025650B4B00C23041 /* EurofurenceShareableURLFactoryTests.swift in Sources */,
 				CACD3813256516EB00C23041 /* CapturingFirebaseAdapter.swift in Sources */,
+				CA08322D2584DD0D0060551D /* RemotelyConfiguredUpcomingEventsConfigurationTests.swift in Sources */,
 				CACD3811256516EB00C23041 /* EurofurenceFCMDeviceRegistrationTests.swift in Sources */,
 				CACD377C25650C8900C23041 /* RemotelyConfiguredConventionStartDateRepositoryTests.swift in Sources */,
 				CACD377A25650C8900C23041 /* CapturingConventionStartDateConsumer.swift in Sources */,
@@ -8477,6 +8740,11 @@
 			target = 9ACF99331EBE172D006FC958 /* Eurofurence */;
 			targetProxy = 9ACF99491EBE172D006FC958 /* PBXContainerItemProxy */;
 		};
+		CA5F26AB2556F04D00CED97A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CA5F269B2556F04C00CED97A /* EventsWidgetExtension */;
+			targetProxy = CA5F26AA2556F04D00CED97A /* PBXContainerItemProxy */;
+		};
 		CA630BE2229F14F800754C27 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CA630BDB229F14F800754C27 /* EurofurenceIntentDefinitions */;
@@ -8497,10 +8765,20 @@
 			target = CACD36A125650A9600C23041 /* EurofurenceApplicationSession */;
 			targetProxy = CACD36B525650A9600C23041 /* PBXContainerItemProxy */;
 		};
+		CACD38BF2565247400C23041 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CACD36A125650A9600C23041 /* EurofurenceApplicationSession */;
+			targetProxy = CACD38BE2565247400C23041 /* PBXContainerItemProxy */;
+		};
 		CAF254B02517F983008892ED /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 9ACF99331EBE172D006FC958 /* Eurofurence */;
 			targetProxy = CAF254AF2517F983008892ED /* PBXContainerItemProxy */;
+		};
+		CAFC4A8F256463A400499A47 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CA630BDB229F14F800754C27 /* EurofurenceIntentDefinitions */;
+			targetProxy = CAFC4A8E256463A400499A47 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -8529,7 +8807,11 @@
 			baseConfigurationReference = 6C88209150186B7EFBA9C8CC /* Pods-Eurofurence-Screenshots.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = Screenshots/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -8542,7 +8824,11 @@
 			baseConfigurationReference = 66CD88822E2E9BDD59043711 /* Pods-Eurofurence-Screenshots.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = Screenshots/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -8596,7 +8882,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -8607,12 +8894,16 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C9F9CDBEE9438C5761DD0B15 /* Pods-Eurofurence.profiling.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Eurofurence/Eurofurence.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Eurofurence/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 3.1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -8629,7 +8920,11 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = EurofurenceTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -8642,7 +8937,11 @@
 			baseConfigurationReference = 9836F4BC0F20EFAEC87DC002 /* Pods-Eurofurence-Screenshots.profiling.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = Screenshots/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -8756,7 +9055,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -8767,12 +9067,16 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DD04FF21E88A87DB7F4133E3 /* Pods-Eurofurence.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Eurofurence/Eurofurence.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Eurofurence/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 3.1.4;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence;
@@ -8788,12 +9092,16 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 19EC28FCBC430E4045696BAF /* Pods-Eurofurence.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Eurofurence/Eurofurence.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				INFOPLIST_FILE = Eurofurence/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 3.1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -8810,7 +9118,11 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = EurofurenceTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -8824,13 +9136,143 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = EurofurenceTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Eurofurence.app/Eurofurence";
 			};
 			name = Release;
+		};
+		CA5F26AF2556F04E00CED97A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = EventsWidgetExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = EventsWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 3.1.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EventsWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CA5F26B02556F04E00CED97A /* Screenshots */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = EventsWidgetExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = EventsWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 3.1.4;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EventsWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Screenshots;
+		};
+		CA5F26B12556F04E00CED97A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = EventsWidgetExtension.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = EventsWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 3.1.4;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EventsWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CA5F26B22556F04E00CED97A /* Profiling */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = EventsWidgetExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = EventsWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 3.1.4;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EventsWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Profiling;
 		};
 		CA630BE6229F14F800754C27 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -8850,7 +9292,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = EurofurenceIntentDefinitions/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceIntentDefinitions;
@@ -8881,7 +9327,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = EurofurenceIntentDefinitions/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceIntentDefinitions;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -8912,7 +9362,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = EurofurenceIntentDefinitions/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceIntentDefinitions;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -8942,7 +9396,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = EurofurenceIntentDefinitions/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceIntentDefinitions;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -9018,12 +9476,16 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5CC062D36892B13F2A83180C /* Pods-Eurofurence.screenshots.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Eurofurence/Eurofurence.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Eurofurence/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 3.1.4;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence;
@@ -9041,7 +9503,11 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = EurofurenceTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -9054,7 +9520,11 @@
 			baseConfigurationReference = 670F5123C04FA36A59E36715 /* Pods-Eurofurence-Screenshots.screenshots.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = Screenshots/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -9082,7 +9552,11 @@
 				INFOPLIST_FILE = EurofurenceApplicationSession/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceApplicationSession;
@@ -9114,7 +9588,11 @@
 				INFOPLIST_FILE = EurofurenceApplicationSession/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceApplicationSession;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -9146,7 +9624,11 @@
 				INFOPLIST_FILE = EurofurenceApplicationSession/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceApplicationSession;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -9177,7 +9659,11 @@
 				INFOPLIST_FILE = EurofurenceApplicationSession/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceApplicationSession;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -9203,7 +9689,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = EurofurenceApplicationSessionTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -9228,7 +9718,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = EurofurenceApplicationSessionTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceApplicationSessionTests;
@@ -9252,7 +9746,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = EurofurenceApplicationSessionTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceApplicationSessionTests;
@@ -9276,7 +9774,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = EurofurenceApplicationSessionTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceApplicationSessionTests;
@@ -9301,7 +9803,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = EurofurenceUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceUITests;
@@ -9325,7 +9831,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = EurofurenceUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -9348,7 +9858,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = EurofurenceUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -9371,7 +9885,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = EurofurenceUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -9428,6 +9946,17 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		CA5F26B32556F04E00CED97A /* Build configuration list for PBXNativeTarget "EventsWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CA5F26AF2556F04E00CED97A /* Debug */,
+				CA5F26B02556F04E00CED97A /* Screenshots */,
+				CA5F26B12556F04E00CED97A /* Release */,
+				CA5F26B22556F04E00CED97A /* Profiling */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CA630BE5229F14F800754C27 /* Build configuration list for PBXNativeTarget "EurofurenceIntentDefinitions" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -9473,6 +10002,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CA3FBF4A2558426B005E1F53 /* SwiftPackageProductDependency */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = EventsWidgetLogic;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9ACF992C1EBE172D006FC958 /* Project object */;
 }

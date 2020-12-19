@@ -80,7 +80,10 @@ public struct PrincipalContentAggregator: PrincipalContentModuleProviding {
         }
         
         override func showDetailViewController(_ vc: UIViewController, sender: Any?) {
-            if let detailNavigationController = viewControllers.last as? UINavigationController {
+            let isCompact = traitCollection.horizontalSizeClass == .compact
+            let targetViewController = isCompact ? viewControllers.first : viewControllers.last
+            
+            if let detailNavigationController = targetViewController as? UINavigationController {
                 var context = (sender as? DetailPresentationContext) ?? .show
                 if traitCollection.horizontalSizeClass == .compact {
                     context = .show

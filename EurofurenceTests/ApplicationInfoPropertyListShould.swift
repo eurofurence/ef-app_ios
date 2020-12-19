@@ -12,10 +12,11 @@ class ApplicationInfoPropertyListShould: XCTestCase {
     
     func testDesignateActivityTypes() throws {
         try assertValue([
-            "org.eurofurence.activity.view-dealer",
-            "org.eurofurence.activity.view-event",
             "ViewDealerIntent",
-            "ViewEventIntent"
+            "ViewEventIntent",
+            "ViewEventsIntent",
+            "org.eurofurence.activity.view-dealer",
+            "org.eurofurence.activity.view-event"
         ], forInfoPlistKey: "NSUserActivityTypes")
     }
     

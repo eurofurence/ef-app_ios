@@ -10,3 +10,4 @@ FOUNDATION_EXPORT const unsigned char EurofurenceIntentDefinitionsVersionString[
 
 #import <EurofurenceIntentDefinitions/ViewEventIntent.h>
 #import <EurofurenceIntentDefinitions/ViewDealerIntent.h>
+#import <EurofurenceIntentDefinitions/ViewEventsIntent.h>

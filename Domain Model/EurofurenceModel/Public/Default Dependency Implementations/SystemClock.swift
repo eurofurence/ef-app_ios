@@ -10,7 +10,7 @@ public class SystemClock: Clock {
     }
 
     public var currentDate: Date {
-        return Date()
+        Date()
     }
 
     private var delegate: ClockDelegate?

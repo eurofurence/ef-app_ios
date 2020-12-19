@@ -33,6 +33,16 @@ class Application {
     
     static func resume(activity: NSUserActivity) {
         let activityDescription = SystemActivityDescription(userActivity: activity)
+        resume(activityDescription: activityDescription)
+    }
+    
+    @available(iOS 13.0, *)
+    static func open(URLContexts: Set<UIOpenURLContext>) {
+        let activityDescription = URLContextActivityDescription(URLContexts: URLContexts)
+        resume(activityDescription: activityDescription)
+    }
+    
+    private static func resume(activityDescription: ActivityDescription) {
         let contentRepresentation = UserActivityContentRepresentation(activity: activityDescription)
         instance.principalWindowController?.route(contentRepresentation)
     }
@@ -63,6 +73,12 @@ class Application {
             versionProviding: BundleAppVersionProviding.shared,
             reviewPromptAppVersionRepository: UserDefaultsReviewPromptAppVersionRepository(),
             appStateProviding: ApplicationAppStateProviding(),
+            eventsService: session.services.events
+        )
+        
+        _ = EventWidgetUpdater(
+            widgetService: SystemWidgetService(), 
+            refreshService: session.services.refresh, 
             eventsService: session.services.events
         )
     }
