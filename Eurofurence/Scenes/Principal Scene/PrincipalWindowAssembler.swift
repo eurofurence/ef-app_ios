@@ -122,7 +122,7 @@ struct PrincipalWindowAssembler {
         let moreContentControllerFactory = MoreContentControllerFactory(supplementaryContentControllerFactories: [
             SupplementaryContentController(
                 contentControllerFactory: mapsContentControllerFactory,
-                presentationHandler: contentWireframe.presentMasterContentController(_:)
+                presentationHandler: contentWireframe.presentPrimaryContentController(_:)
             ),
             SupplementaryContentController(
                 contentControllerFactory: collectThemAllContentControllerFactory,

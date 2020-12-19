@@ -5,7 +5,7 @@ import XCTest
 
 class KnowledgeGroupContentRouteTests: XCTestCase {
     
-    func testShowsMasterContentController() {
+    func testShowsPrimaryContentController() {
         let identifier = KnowledgeGroupIdentifier.random
         let content = KnowledgeGroupContentRepresentation(identifier: identifier)
         let contentWireframe = CapturingContentWireframe()
@@ -19,7 +19,7 @@ class KnowledgeGroupContentRouteTests: XCTestCase {
         route.route(content)
         
         XCTAssertEqual(identifier, knowledgeGroupModuleProviding.capturedModel)
-        XCTAssertEqual(knowledgeGroupModuleProviding.stubInterface, contentWireframe.presentedMasterContentController)
+        XCTAssertEqual(knowledgeGroupModuleProviding.stubInterface, contentWireframe.presentedPrimaryContentController)
     }
     
     func testPropogatesKnowledgeEntrySelectedEvent() {

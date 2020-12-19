@@ -12,6 +12,7 @@ target :Eurofurence do
   pod 'FirebaseCrashlytics'
   pod 'FirebaseMessaging'
   pod 'FirebaseRemoteConfig'
+  pod 'SwiftLint'
     
   target :EurofurenceTests do
     inherit! :search_paths
@@ -27,6 +28,7 @@ target :EurofurenceApplicationSession do
   pod 'FirebaseCore'
   pod 'FirebaseMessaging'
   pod 'FirebaseRemoteConfig'
+  pod 'SwiftLint'
   
   target :EurofurenceApplicationSessionTests do
     inherit! :search_paths

@@ -65,6 +65,7 @@ PODS:
   - nanopb/decode (2.30906.0)
   - nanopb/encode (2.30906.0)
   - PromisesObjC (1.2.11)
+  - SwiftLint (0.42.0)
 
 DEPENDENCIES:
   - Down
@@ -72,6 +73,7 @@ DEPENDENCIES:
   - FirebaseCrashlytics
   - FirebaseMessaging
   - FirebaseRemoteConfig
+  - SwiftLint
 
 SPEC REPOS:
   trunk:
@@ -88,6 +90,7 @@ SPEC REPOS:
     - GoogleUtilities
     - nanopb
     - PromisesObjC
+    - SwiftLint
 
 SPEC CHECKSUMS:
   Down: 276f2c3eeeaf30345873bdad25f44b2640fcfa3a
@@ -103,7 +106,8 @@ SPEC CHECKSUMS:
   GoogleUtilities: ffb2f4159f2c897c6e8992bd7fbcdef8a300589c
   nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
+  SwiftLint: 4fa9579c63416865179bc416f0a92d55f009600d
 
-PODFILE CHECKSUM: 570647596f43d6450b618ef063324f612e52cff8
+PODFILE CHECKSUM: 0c8b992c3e8355906c3fb57f8f5e0c1e53af64b0
 
 COCOAPODS: 1.9.3

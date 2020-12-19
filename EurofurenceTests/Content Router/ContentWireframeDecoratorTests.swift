@@ -11,12 +11,12 @@ class ContentWireframeDecoratorTests: XCTestCase {
         spyingWireframe = CapturingContentWireframe()
     }
     
-    func testShowingMaster() {
+    func testShowingPrimary() {
         let decorator = makeContentWireframe()
         let viewController = UIViewController()
-        decorator.presentMasterContentController(viewController)
+        decorator.presentPrimaryContentController(viewController)
         
-        XCTAssertEqual(viewController, spyingWireframe.presentedMasterContentController)
+        XCTAssertEqual(viewController, spyingWireframe.presentedPrimaryContentController)
     }
     
     func testShowingDetail() {

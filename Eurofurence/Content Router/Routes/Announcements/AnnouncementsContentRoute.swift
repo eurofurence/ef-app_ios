@@ -26,7 +26,7 @@ extension AnnouncementsContentRoute: ContentRoute {
     
     public func route(_ content: AnnouncementsContentRepresentation) {
         let contentController = announcementsComponentFactory.makeAnnouncementsComponent(delegate)
-        contentWireframe.presentMasterContentController(contentController)
+        contentWireframe.presentPrimaryContentController(contentController)
     }
     
 }

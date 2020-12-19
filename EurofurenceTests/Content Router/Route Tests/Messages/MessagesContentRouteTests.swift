@@ -26,7 +26,7 @@ class MessagesContentRouteTests: XCTestCase {
     }
     
     func testShowsMessagesContentController() {
-        XCTAssertEqual(messagesComponentFactory.stubInterface, contentWireframe.presentedMasterContentController)
+        XCTAssertEqual(messagesComponentFactory.stubInterface, contentWireframe.presentedPrimaryContentController)
     }
     
     func testPropogatesMessageSelectionDelegateEvent() {
