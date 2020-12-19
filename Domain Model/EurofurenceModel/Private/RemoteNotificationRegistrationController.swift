@@ -6,6 +6,34 @@ class RemoteNotificationRegistrationController {
     private let remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration?
     private var deviceToken: Data?
     private var authenticationToken: String?
+    
+    private class RemoteNotificationTokenChanged: EventConsumer {
+        
+        private unowned let controller: RemoteNotificationRegistrationController
+        
+        init(controller: RemoteNotificationRegistrationController) {
+            self.controller = controller
+        }
+        
+        func consume(event: DomainEvent.RemoteNotificationTokenAvailable) {
+            controller.remoteNotificationRegistrationSucceeded(event)
+        }
+        
+    }
+    
+    private class ReRegisterNotificationTokenWhenLoggedIn: EventConsumer {
+        
+        private unowned let controller: RemoteNotificationRegistrationController
+        
+        init(controller: RemoteNotificationRegistrationController) {
+            self.controller = controller
+        }
+        
+        func consume(event: DomainEvent.LoggedIn) {
+            controller.userDidLogin(event)
+        }
+        
+    }
 
     init(
         eventBus: EventBus,
@@ -13,8 +41,8 @@ class RemoteNotificationRegistrationController {
     ) {
         self.remoteNotificationsTokenRegistration = remoteNotificationsTokenRegistration
 
-        eventBus.subscribe(consumer: BlockEventConsumer(block: remoteNotificationRegistrationSucceeded))
-        eventBus.subscribe(consumer: BlockEventConsumer(block: userDidLogin))
+        eventBus.subscribe(consumer: RemoteNotificationTokenChanged(controller: self))
+        eventBus.subscribe(consumer: ReRegisterNotificationTokenWhenLoggedIn(controller: self))
     }
 
     private func reregisterNotificationToken() {

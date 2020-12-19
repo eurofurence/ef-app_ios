@@ -121,14 +121,14 @@ class EventImpl: Event {
         return shareableURLFactory.makeURL(for: identifier)
     }
 
-    private var observers: [EventObserver] = []
+    private var observers = WeakCollection<EventObserver>()
     func add(_ observer: EventObserver) {
-        observers.append(observer)
+        observers.add(observer)
         provideFavouritedStateToObserver(observer)
     }
     
     func remove(_ observer: EventObserver) {
-        observers.removeAll(where: { $0 === observer })
+        observers.remove(observer)
     }
 
     var isFavourite: Bool {

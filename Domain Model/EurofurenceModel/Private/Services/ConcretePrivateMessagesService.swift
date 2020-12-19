@@ -61,7 +61,6 @@ class ConcretePrivateMessagesService: PrivateMessagesService {
         
         eventBus.subscribe(consumer: EnterAuthenticatedStateWhenLoggedIn(service: self))
         eventBus.subscribe(consumer: ExitAuthenticatedStateWhenLoggedOut(service: self))
-        
         eventBus.subscribe(consumer: MarkMessageAsReadHandler(service: self))
     }
 

@@ -1,10 +1,16 @@
 import Foundation
 
-struct URLEntityProcessor {
+class URLEntityProcessor {
     
-    var eventsService: EventsService
-    var dealersService: DealersService
-    var dataStore: DataStore
+    private unowned let eventsService: ConcreteEventsService
+    private unowned let dealersService: ConcreteDealersService
+    private let dataStore: DataStore
+    
+    init(eventsService: ConcreteEventsService, dealersService: ConcreteDealersService, dataStore: DataStore) {
+        self.eventsService = eventsService
+        self.dealersService = dealersService
+        self.dataStore = dataStore
+    }
     
     func process(_ url: URL, visitor: URLContentVisitor) {
         let identifierComponent = url.lastPathComponent
