@@ -3,7 +3,7 @@ reporter: "xcode"
 excluded:
   - DerivedData
   - Pods
-  - SnapshotHelper.swift
+  - Screenshots/SnapshotHelper.swift
 
 disabled_rules:
   - identifier_name
