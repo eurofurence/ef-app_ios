@@ -6803,7 +6803,6 @@
 			buildPhases = (
 				0838CDC6778FFA72E3BCD1B4 /* [CP] Check Pods Manifest.lock */,
 				9ACF99441EBE172D006FC958 /* Sources */,
-				CA8950F622B44D1A00AF4875 /* SwiftLint */,
 				9ACF99451EBE172D006FC958 /* Frameworks */,
 				9ACF99461EBE172D006FC958 /* Resources */,
 			);
@@ -7303,24 +7302,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "#!/bin/bash\n\n${PODS_ROOT}/SwiftLint/swiftlint --path ${SRCROOT}/ --config ${SRCROOT}/.swiftlint.yml\n";
-		};
-		CA8950F622B44D1A00AF4875 /* SwiftLint */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = SwiftLint;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\n\n${PODS_ROOT}/SwiftLint/swiftlint --path EurofurenceTests/ --config ${SRCROOT}/.swiftlint.yml\n";
 		};
 		CA8950F722B44DB200AF4875 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;

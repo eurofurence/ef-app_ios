@@ -1873,7 +1873,6 @@
 				CAA7DE3322EF825D00A6984D /* Observation */,
 				CA7A314822B16E25002AD939 /* Running */,
 				CAA7DE3A22F0C81400A6984D /* Searching */,
-				CA0832592584E0F60060551D /* Specifications */,
 				CA7A314E22B16E25002AD939 /* Tag Adaption */,
 				CA7A316B22B16E25002AD939 /* Upcoming */,
 			);
@@ -2292,7 +2291,6 @@
 			buildPhases = (
 				CA7A2F2622B16DA3002AD939 /* Headers */,
 				CA7A2F2722B16DA3002AD939 /* Sources */,
-				CA8950FA22B44DE200AF4875 /* SwiftLint */,
 				CA7A2F2822B16DA3002AD939 /* Frameworks */,
 				CA7A2F2922B16DA3002AD939 /* Resources */,
 			);
@@ -2310,7 +2308,6 @@
 			buildConfigurationList = CA7A2F3F22B16DA3002AD939 /* Build configuration list for PBXNativeTarget "EurofurenceModelTests" */;
 			buildPhases = (
 				CA7A2F2F22B16DA3002AD939 /* Sources */,
-				CA8950FB22B4567500AF4875 /* SwiftLint */,
 				CA7A2F3022B16DA3002AD939 /* Frameworks */,
 				CA7A2F3122B16DA3002AD939 /* Resources */,
 			);
@@ -2329,7 +2326,6 @@
 			buildConfigurationList = CA7A326122B16E65002AD939 /* Build configuration list for PBXNativeTarget "EurofurenceModelAdapterTests" */;
 			buildPhases = (
 				CA7A325522B16E65002AD939 /* Sources */,
-				CA8950FC22B4568600AF4875 /* SwiftLint */,
 				CA7A325622B16E65002AD939 /* Frameworks */,
 				CA7A325722B16E65002AD939 /* Resources */,
 			);
@@ -2349,7 +2345,6 @@
 			buildPhases = (
 				CA7A326422B16E75002AD939 /* Headers */,
 				CA7A326522B16E75002AD939 /* Sources */,
-				CA8950FD22B4569C00AF4875 /* SwiftLint */,
 				CA7A326622B16E75002AD939 /* Frameworks */,
 				CA7A326722B16E75002AD939 /* Resources */,
 			);
@@ -2441,81 +2436,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		CA8950FA22B44DE200AF4875 /* SwiftLint */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = SwiftLint;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\n\nif which swiftlint >/dev/null; then\n    swiftlint --path EurofurenceModel/ --config ../../.swiftlint.yml\nfi\n";
-		};
-		CA8950FB22B4567500AF4875 /* SwiftLint */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = SwiftLint;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\n\nif which swiftlint >/dev/null; then\n    swiftlint --path EurofurenceModelTests/ --config ../../.swiftlint.yml\nfi\n";
-		};
-		CA8950FC22B4568600AF4875 /* SwiftLint */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = SwiftLint;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\n\nif which swiftlint >/dev/null; then\n    swiftlint --path EurofurenceModelAdapterTests/ --config ../../.swiftlint.yml\nfi\n";
-		};
-		CA8950FD22B4569C00AF4875 /* SwiftLint */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = SwiftLint;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\n\nif which swiftlint >/dev/null; then\n    swiftlint --path EurofurenceModelTestDoubles/ --config ../../.swiftlint.yml\nfi\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CA7A2F2722B16DA3002AD939 /* Sources */ = {
