@@ -8,7 +8,7 @@ class WhenObservingEventsFromService: XCTestCase {
         let context = EurofurenceSessionTestBuilder().build()
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
         var observer: CapturingEventsServiceObserver? = CapturingEventsServiceObserver()
-        context.eventsService.add(observer!)
+        context.eventsService.add(observer.unsafelyUnwrapped)
         weak var weakObserver = observer
         observer = nil
         context.performSuccessfulSync(response: syncResponse)

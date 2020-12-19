@@ -12,7 +12,7 @@ class WhenObservingEvent: XCTestCase {
         let event = context.eventsService.fetchEvent(identifier: EventIdentifier(randomEvent.identifier))
         var observer: CapturingEventObserver? = CapturingEventObserver()
         weak var weakObserver = observer
-        event?.add(observer!)
+        event?.add(observer.unsafelyUnwrapped)
         observer = nil
         
         XCTAssertNil(weakObserver)
