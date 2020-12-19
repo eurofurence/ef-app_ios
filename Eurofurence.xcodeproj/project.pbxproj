@@ -7302,7 +7302,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\n\nif which swiftlint >/dev/null; then\n    swiftlint --path Eurofurence/ --config ../.swiftlint.yml\nfi\n";
+			shellScript = "#!/bin/bash\n\n${PODS_ROOT}/SwiftLint/swiftlint --path Eurofurence/ --config ${SRCROOT}/.swiftlint.yml\n";
 		};
 		CA8950F622B44D1A00AF4875 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -7320,7 +7320,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\n\nif which swiftlint >/dev/null; then\n    swiftlint --path EurofurenceTests/ --config ../.swiftlint.yml\nfi\n";
+			shellScript = "#!/bin/bash\n\n${PODS_ROOT}/SwiftLint/swiftlint --path EurofurenceTests/ --config ${SRCROOT}/.swiftlint.yml\n";
 		};
 		CA8950F722B44DB200AF4875 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -7338,7 +7338,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\n\nif which swiftlint >/dev/null; then\n    swiftlint --path Screenshots/ --config ../.swiftlint.yml\nfi\n";
+			shellScript = "#!/bin/bash\n\n${PODS_ROOT}/SwiftLint/swiftlint --path Screenshots/ --config ${SRCROOT}/.swiftlint.yml\n";
 		};
 		CEE267F67EF99FFD7682AC58 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
