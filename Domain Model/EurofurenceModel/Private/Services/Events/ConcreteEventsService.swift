@@ -55,7 +55,7 @@ class ConcreteEventsService: ClockDelegate, EventsService {
 
     // MARK: Properties
 
-    private var observers = [EventsServiceObserver]()
+    private var observers = WeakCollection<EventsServiceObserver>()
     private let dataStore: DataStore
     private let imageCache: ImagesCache
     private let clock: Clock
@@ -141,7 +141,7 @@ class ConcreteEventsService: ClockDelegate, EventsService {
     }
 
     func add(_ observer: EventsServiceObserver) {
-        observers.append(observer)
+        observers.add(observer)
         provideScheduleInformation(to: observer)
     }
 
