@@ -174,7 +174,10 @@ class ConcreteDealersService: DealersService {
         self.mapCoordinateRender = mapCoordinateRender
         self.shareableURLFactory = shareableURLFactory
 
-        eventBus.subscribe(consumer: DataStoreChangedConsumer(handler: reloadDealersFromDataStore))
+        eventBus.subscribe(consumer: DataStoreChangedConsumer { [weak self] in
+            self?.reloadDealersFromDataStore()
+        })
+        
         reloadDealersFromDataStore()
     }
     

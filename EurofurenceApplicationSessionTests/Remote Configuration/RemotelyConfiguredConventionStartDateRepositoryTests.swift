@@ -41,5 +41,14 @@ class RemotelyConfiguredConventionStartDateRepositoryTests: XCTestCase {
         
         XCTAssertEqual(configuredStartDate, consumer.capturedStartDate)
     }
+    
+    func testWeaklyRetainsConsumer() {
+        weak var weakConsumer = consumer
+        registerConsumer()
+        consumer = nil
+        simulateConfigurationLoaded()
+        
+        XCTAssertNil(weakConsumer)
+    }
 
 }

@@ -2,7 +2,7 @@ import EurofurenceModel
 
 public class RemotelyConfiguredConventionStartDateRepository: ConventionStartDateRepository {
     
-    private var consumers = [ConventionStartDateConsumer]()
+    private var consumers = NSHashTable<AnyObject>(options: [.weakMemory])
     private var configuration: RemoteConfiguration?
     
     private struct BlockBasedLoaderDelegate: RemoteConfigurationLoaderDelegate {
@@ -21,7 +21,7 @@ public class RemotelyConfiguredConventionStartDateRepository: ConventionStartDat
     }
     
     public func addConsumer(_ consumer: ConventionStartDateConsumer) {
-        consumers.append(consumer)
+        consumers.add(consumer)
         
         if let configuration = configuration {
             consumer.conventionStartDateDidChange(to: configuration.conventionStartDate)
@@ -30,7 +30,10 @@ public class RemotelyConfiguredConventionStartDateRepository: ConventionStartDat
     
     private func remoteConfigurationLoaded(_ configuration: RemoteConfiguration) {
         self.configuration = configuration
-        consumers.forEach({ $0.conventionStartDateDidChange(to: configuration.conventionStartDate) })
+        consumers
+            .allObjects
+            .compactMap({ $0 as? ConventionStartDateConsumer })
+            .forEach({ $0.conventionStartDateDidChange(to: configuration.conventionStartDate) })
     }
     
 }

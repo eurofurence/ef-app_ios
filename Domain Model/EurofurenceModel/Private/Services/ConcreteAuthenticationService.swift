@@ -12,6 +12,20 @@ class ConcreteAuthenticationService: AuthenticationService {
     private var registeredDeviceToken: Data?
     private var loggedInUser: User?
     private var observers = [AuthenticationStateObserver]()
+    
+    private class StoreNotificationTokenWhenChanged: EventConsumer {
+        
+        private unowned let controller: ConcreteAuthenticationService
+        
+        init(controller: ConcreteAuthenticationService) {
+            self.controller = controller
+        }
+        
+        func consume(event: DomainEvent.RemoteNotificationTokenAvailable) {
+            controller.remoteNotificationTokenDidChange(event)
+        }
+        
+    }
 
     init(
         eventBus: EventBus,
@@ -27,7 +41,7 @@ class ConcreteAuthenticationService: AuthenticationService {
         self.remoteNotificationsTokenRegistration = remoteNotificationsTokenRegistration
 
         loadPersistedCredential()
-        eventBus.subscribe(remoteNotificationTokenDidChange)
+        eventBus.subscribe(consumer: StoreNotificationTokenWhenChanged(controller: self))
     }
 
     func login(_ args: LoginArguments, completionHandler: @escaping (LoginResult) -> Void) {

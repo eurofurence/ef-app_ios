@@ -6,14 +6,42 @@ class ConcreteAdditionalServicesRepository: AdditionalServicesRepository {
     private var consumers = [AdditionalServicesURLConsumer]()
     private var currentAdditionalServicesRequest: URLRequest
     
+    private class UseUnauthenticatedAdditionalServicesOnLogout: EventConsumer {
+        
+        private unowned let controller: ConcreteAdditionalServicesRepository
+        
+        init(controller: ConcreteAdditionalServicesRepository) {
+            self.controller = controller
+        }
+        
+        func consume(event: DomainEvent.LoggedOut) {
+            controller.useUnauthenticatedAdditionalServices()
+        }
+        
+    }
+    
+    private class UseAuthenticatedAdditionalServicesWhenLoggedIn: EventConsumer {
+        
+        private unowned let controller: ConcreteAdditionalServicesRepository
+        
+        init(controller: ConcreteAdditionalServicesRepository) {
+            self.controller = controller
+        }
+        
+        func consume(event: DomainEvent.LoggedIn) {
+            controller.useAuthenticatedAdditionalServices(token: event.authenticationToken)
+        }
+        
+    }
+    
     init(eventBus: EventBus, companionAppURLRequestFactory: CompanionAppURLRequestFactory) {
         self.companionAppURLRequestFactory = companionAppURLRequestFactory
         currentAdditionalServicesRequest = companionAppURLRequestFactory.makeAdditionalServicesRequest(
             authenticationToken: nil
         )
         
-        eventBus.subscribe(loggedIn)
-        eventBus.subscribe(loggedOut)
+        eventBus.subscribe(consumer: UseAuthenticatedAdditionalServicesWhenLoggedIn(controller: self))
+        eventBus.subscribe(consumer: UseUnauthenticatedAdditionalServicesOnLogout(controller: self))
     }
     
     func add(_ additionalServicesURLConsumer: AdditionalServicesURLConsumer) {
@@ -21,7 +49,7 @@ class ConcreteAdditionalServicesRepository: AdditionalServicesRepository {
         additionalServicesURLConsumer.consume(currentAdditionalServicesRequest)
     }
     
-    private func loggedOut(_ event: DomainEvent.LoggedOut) {
+    private func useUnauthenticatedAdditionalServices() {
         currentAdditionalServicesRequest = companionAppURLRequestFactory.makeAdditionalServicesRequest(
             authenticationToken: nil
         )
@@ -29,9 +57,9 @@ class ConcreteAdditionalServicesRepository: AdditionalServicesRepository {
         updateConsumersWithChangedServicesRequest()
     }
     
-    private func loggedIn(_ event: DomainEvent.LoggedIn) {
+    private func useAuthenticatedAdditionalServices(token: String) {
         currentAdditionalServicesRequest = companionAppURLRequestFactory.makeAdditionalServicesRequest(
-            authenticationToken: event.authenticationToken
+            authenticationToken: token
         )
         
         updateConsumersWithChangedServicesRequest()

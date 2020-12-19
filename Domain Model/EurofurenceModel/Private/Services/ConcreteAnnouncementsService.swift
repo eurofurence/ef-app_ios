@@ -22,7 +22,9 @@ class ConcreteAnnouncementsService: AnnouncementsService {
     init(eventBus: EventBus, dataStore: DataStore, imageRepository: ImageRepository) {
         self.dataStore = dataStore
         self.imageRepository = imageRepository
-        eventBus.subscribe(consumer: DataStoreChangedConsumer(handler: reloadAnnouncementsFromStore))
+        eventBus.subscribe(consumer: DataStoreChangedConsumer { [weak self] in
+            self?.reloadAnnouncementsFromStore()
+        })
 
         reloadAnnouncementsFromStore()
         readAnnouncementIdentifiers = dataStore.fetchReadAnnouncementIdentifiers().defaultingTo(.empty)

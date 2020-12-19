@@ -40,8 +40,13 @@ class ConcreteCollectThemAllService: CollectThemAllService {
         self.collectThemAllRequestFactory = collectThemAllRequestFactory
         self.credentialStore = credentialStore
 
-        eventBus.subscribe(consumer: LoggedOut(handler: notifyObserversGameRequestDidChange))
-        eventBus.subscribe(consumer: LoggedIn(handler: notifyObserversGameRequestDidChange))
+        eventBus.subscribe(consumer: LoggedOut { [weak self] in
+            self?.notifyObserversGameRequestDidChange()
+        })
+        
+        eventBus.subscribe(consumer: LoggedIn { [weak self] in
+            self?.notifyObserversGameRequestDidChange()
+        })
     }
 
     private var collectThemAllRequestObservers = [CollectThemAllURLObserver]()

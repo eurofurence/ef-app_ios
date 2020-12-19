@@ -28,7 +28,9 @@ class ConcreteKnowledgeService: KnowledgeService {
         self.imageRepository = imageRepository
         self.shareableURLFactory = shareableURLFactory
         
-        eventBus.subscribe(consumer: DataStoreChangedConsumer(handler: reloadKnowledgeBaseFromDataStore))
+        eventBus.subscribe(consumer: DataStoreChangedConsumer { [weak self] in
+            self?.reloadKnowledgeBaseFromDataStore()
+        })
 
         reloadKnowledgeBaseFromDataStore()
     }

@@ -6,7 +6,7 @@ public protocol ConventionStartDateRepository {
 
 }
 
-public protocol ConventionStartDateConsumer {
+public protocol ConventionStartDateConsumer: AnyObject {
     
     func conventionStartDateDidChange(to startDate: Date)
     

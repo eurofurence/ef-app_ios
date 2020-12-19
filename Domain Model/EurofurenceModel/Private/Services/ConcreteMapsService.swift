@@ -22,7 +22,9 @@ class ConcreteMapsService: MapsService {
         self.dataStore = dataStore
         self.imageRepository = imageRepository
         self.dealers = dealers
-        eventBus.subscribe(consumer: DataStoreChangedConsumer(handler: reloadMapsFromDataStore))
+        eventBus.subscribe(consumer: DataStoreChangedConsumer { [weak self] in
+            self?.reloadMapsFromDataStore()
+        })
 
         reloadMapsFromDataStore()
     }
