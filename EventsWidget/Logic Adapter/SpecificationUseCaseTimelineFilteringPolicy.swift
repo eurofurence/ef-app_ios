@@ -17,7 +17,10 @@ struct SpecificationUseCaseTimelineFilteringPolicy: TimelineEntryFilteringPolicy
         
         let eventIdentifiers = events.map(\.id)
         let modelEvents = bridge.allEvents.filter({ eventIdentifiers.contains($0.identifier.rawValue) })
-        let filteredModelEventIdentifiers = modelEvents.filter(specification.isSatisfied(by:)).map(\.identifier.rawValue)
+        let filteredModelEventIdentifiers = modelEvents
+            .filter(specification.isSatisfied(by:))
+            .map(\.identifier.rawValue)
+        
         let filteredEvents = events.filter({ filteredModelEventIdentifiers.contains($0.id) })
         
         return filteredEvents

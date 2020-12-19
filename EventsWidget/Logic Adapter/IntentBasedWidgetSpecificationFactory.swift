@@ -14,8 +14,6 @@ struct IntentBasedWidgetSpecificationFactory {
             return RunningEventSpecification(clock: clock)
                 .enableFavoritesOnlyFilter(favouritesOnly)
             
-        case .upcoming:
-            fallthrough
         default:
             return UpcomingEventSpecification(clock: clock, configuration: upcomingEventsConfiguration)
                 .enableFavoritesOnlyFilter(favouritesOnly)

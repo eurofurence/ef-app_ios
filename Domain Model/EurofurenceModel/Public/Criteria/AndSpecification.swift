@@ -13,7 +13,6 @@ public struct AndSpecification<
     
 }
 
-
 // MARK: AndSpecification + Specification
 
 extension AndSpecification: Specification {
@@ -25,7 +24,6 @@ extension AndSpecification: Specification {
     }
     
 }
-
 
 // MARK: Convenience Creation
 

@@ -9,7 +9,7 @@ let package = Package(
         .library(
             name: "EventsWidgetLogic",
             targets: ["EventsWidgetLogic"]
-        ),
+        )
     ],
     dependencies: [],
     targets: [
@@ -23,6 +23,6 @@ let package = Package(
             dependencies: [
                 .target(name: "EventsWidgetLogic")
             ]
-        ),
+        )
     ]
 )

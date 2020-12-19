@@ -38,7 +38,6 @@ class EventsBridge {
     
 }
 
-
 // MARK: - Acquiring Events from model
 
 extension EventsBridge: EurofurenceModel.EventsServiceObserver {
@@ -60,7 +59,6 @@ extension EventsBridge: EurofurenceModel.EventsServiceObserver {
     }
     
 }
-
 
 // MARK: - Adapting widget repository
 

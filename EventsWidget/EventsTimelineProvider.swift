@@ -1,6 +1,6 @@
 import EurofurenceApplicationSession
-import EurofurenceModel
 import EurofurenceIntentDefinitions
+import EurofurenceModel
 import EventsWidgetLogic
 import WidgetKit
 
@@ -63,7 +63,7 @@ struct EventsTimelineProvider: IntentTimelineProvider {
     func getSnapshot(
         for configuration: ViewEventsIntent,
         in context: Context,
-        completion: @escaping (EventTimelineEntry) -> ()
+        completion: @escaping (EventTimelineEntry) -> Void
     ) {
         fetchEventsTimeline(configuration: configuration, context: context) { (eventsTimeline) in
             completion(eventsTimeline.snapshot)
@@ -73,7 +73,7 @@ struct EventsTimelineProvider: IntentTimelineProvider {
     func getTimeline(
         for configuration: ViewEventsIntent,
         in context: Context,
-        completion: @escaping (Timeline<EventTimelineEntry>) -> ()
+        completion: @escaping (Timeline<EventTimelineEntry>) -> Void
     ) {
         fetchEventsTimeline(configuration: configuration, context: context) { (eventsTimeline) in
             let timeline = Timeline(entries: eventsTimeline.entries, policy: .atEnd)

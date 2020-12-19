@@ -65,7 +65,7 @@ class EventWidgetUpdaterTests: XCTestCase {
         
         action()
         
-        let expectedWidgetsToBeRefreshed = Set(arrayLiteral: "org.eurofurence.EventsWidget")
+        let expectedWidgetsToBeRefreshed = Set(["org.eurofurence.EventsWidget"])
         
         XCTAssertEqual(
             .reloadRequested(widgets: expectedWidgetsToBeRefreshed),

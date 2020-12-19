@@ -8,8 +8,6 @@ extension EventCategory {
         case .running:
             self = .running
             
-        case .upcoming:
-            fallthrough
         default:
             self = .upcoming
         }

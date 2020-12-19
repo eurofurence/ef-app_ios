@@ -16,7 +16,7 @@ public struct EventWidgetUpdater {
         let widgetService: WidgetService
         
         func reloadNow() {
-            widgetService.reloadWidgets(identifiers: Set(arrayLiteral: "org.eurofurence.EventsWidget"))
+            widgetService.reloadWidgets(identifiers: Set(["org.eurofurence.EventsWidget"]))
         }
         
     }

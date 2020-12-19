@@ -14,7 +14,6 @@ public struct AnySpecification<T> {
     
 }
 
-
 // MARK: - Convenience Creation
 
 extension Specification {

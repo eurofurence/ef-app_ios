@@ -1,6 +1,7 @@
 import EventsWidgetLogic
 import XCTest
 
+// swiftlint:disable file_length
 class EventsTimelineControllerTests: XCTestCase {
     
     private var formatter: FakeEventTimeFormatter!
@@ -27,6 +28,10 @@ class EventsTimelineControllerTests: XCTestCase {
             filteringPolicy: filteringPolicy,
             eventTimeFormatter: formatter
         )
+    }
+    
+    private func event(id: String, title: String, location: String, startTime: Date, endTime: Date) -> Event {
+        StubEvent(id: id, title: title, location: location, startTime: startTime, endTime: endTime)
     }
     
     private func makeTimeline(
@@ -228,9 +233,9 @@ class EventsTimelineControllerTests: XCTestCase {
     }
     
     func testTimeline_SortsEventsWithinEntryByName() {
-        let firstEvent = StubEvent(id: "1", title: "A Event", location: "Location", startTime: now, endTime: inHalfAnHour)
-        let secondEvent = StubEvent(id: "2", title: "B Event", location: "Location", startTime: now, endTime: inHalfAnHour)
-        let thirdEvent = StubEvent(id: "3", title: "C Event", location: "Location", startTime: now, endTime: inHalfAnHour)
+        let firstEvent = event(id: "1", title: "A Event", location: "Location", startTime: now, endTime: inHalfAnHour)
+        let secondEvent = event(id: "2", title: "B Event", location: "Location", startTime: now, endTime: inHalfAnHour)
+        let thirdEvent = event(id: "3", title: "C Event", location: "Location", startTime: now, endTime: inHalfAnHour)
         
         let repository = StubEventsRepository(events: [secondEvent, thirdEvent, firstEvent])
         setUpController(repository: repository)
@@ -262,11 +267,11 @@ class EventsTimelineControllerTests: XCTestCase {
     }
     
     func testTimeline_ExceedingEventsWithinGroupDropsLastEvents() {
-        let firstEvent = StubEvent(id: "1", title: "A Event", location: "Location", startTime: now, endTime: inHalfAnHour)
-        let secondEvent = StubEvent(id: "2", title: "B Event", location: "Location", startTime: now, endTime: inHalfAnHour)
-        let thirdEvent = StubEvent(id: "3", title: "C Event", location: "Location", startTime: now, endTime: inHalfAnHour)
-        let fourthEvent = StubEvent(id: "4", title: "D Event", location: "Location", startTime: now, endTime: inHalfAnHour)
-        let fifthEvent = StubEvent(id: "5", title: "E Event", location: "Location", startTime: now, endTime: inHalfAnHour)
+        let firstEvent = event(id: "1", title: "A Event", location: "Location", startTime: now, endTime: inHalfAnHour)
+        let secondEvent = event(id: "2", title: "B Event", location: "Location", startTime: now, endTime: inHalfAnHour)
+        let thirdEvent = event(id: "3", title: "C Event", location: "Location", startTime: now, endTime: inHalfAnHour)
+        let fourthEvent = event(id: "4", title: "D Event", location: "Location", startTime: now, endTime: inHalfAnHour)
+        let fifthEvent = event(id: "5", title: "E Event", location: "Location", startTime: now, endTime: inHalfAnHour)
 
         let repository = StubEventsRepository(events: [
             secondEvent,
@@ -337,12 +342,27 @@ class EventsTimelineControllerTests: XCTestCase {
         
     }
     
+    // swiftlint:disable function_body_length
     func testDoesNotIncludeEventsThatAreRejectedByFilteringPolicy() {
-        let firstEvent = StubEvent(id: "1", title: "A Event", location: "Location", startTime: now, endTime: inHalfAnHour)
-        let secondEvent = StubEvent(id: "2", title: "B Event", location: "Location", startTime: now, endTime: inHalfAnHour)
-        let thirdEvent = StubEvent(id: "3", title: "C Event", location: "Location", startTime: now, endTime: inOneHour)
-        let fourthEvent = StubEvent(id: "4", title: "D Event", location: "Location", startTime: inHalfAnHour, endTime: inOneHour)
-        let fifthEvent = StubEvent(id: "5", title: "E Event", location: "Location", startTime: inHalfAnHour, endTime: inOneHour)
+        let firstEvent = event(id: "1", title: "A Event", location: "Location", startTime: now, endTime: inHalfAnHour)
+        let secondEvent = event(id: "2", title: "B Event", location: "Location", startTime: now, endTime: inHalfAnHour)
+        let thirdEvent = event(id: "3", title: "C Event", location: "Location", startTime: now, endTime: inOneHour)
+        
+        let fourthEvent = event(
+            id: "4",
+            title: "D Event",
+            location: "Location",
+            startTime: inHalfAnHour,
+            endTime: inOneHour
+        )
+        
+        let fifthEvent = event(
+            id: "5",
+            title: "E Event",
+            location: "Location",
+            startTime: inHalfAnHour,
+            endTime: inOneHour
+        )
 
         let filteringPolicy = FilterByEventIdentifierPolicy(removeEventsWithIdentifiers: ["3", "5"])
         
@@ -394,7 +414,7 @@ class EventsTimelineControllerTests: XCTestCase {
     }
     
     func testStartingTimelineBeforeFirstEvent() {
-        let (inTheFuture, inTheFuturePlusHalfAnHour) = (now!, now.addingTimeInterval(3600 / 2))
+        let (inTheFuture, inTheFuturePlusHalfAnHour) = (now.unsafelyUnwrapped, now.addingTimeInterval(3600 / 2))
         now = now.addingTimeInterval(3600 * 24 * 3 * -1)
         
         let event = StubEvent(
@@ -500,7 +520,10 @@ class EventsTimelineControllerTests: XCTestCase {
         
         let oneHour: TimeInterval = 3600
         let expectedFilteringTime = now.addingTimeInterval(-oneHour)
-        let shiftEntriesBackPolicy = ShiftEntriesBackTimelineFilteringPolicy(expectedFilteringTime: expectedFilteringTime, shiftEntriesBackBy: oneHour)
+        let shiftEntriesBackPolicy = ShiftEntriesBackTimelineFilteringPolicy(
+            expectedFilteringTime: expectedFilteringTime,
+            shiftEntriesBackBy: oneHour
+        )
         
         let repository = StubEventsRepository(events: [event])
         setUpController(repository: repository, filteringPolicy: shiftEntriesBackPolicy)

@@ -37,9 +37,7 @@ public struct EventWidgetContext {
                 case .large:
                     return 6
                     
-                case .extraLarge:
-                    fallthrough
-                case .extraExtraLarge:
+                case .extraLarge, .extraExtraLarge:
                     return 5
                     
                 case .extraExtraExtraLarge:

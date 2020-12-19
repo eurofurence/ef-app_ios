@@ -15,7 +15,7 @@ public struct EventViewModel: Equatable {
         location: String,
         formattedStartTime: String,
         formattedEndTime: String,
-        widgetURL: URL = URL(string: "https://www.eurofurence.org")!
+        widgetURL: URL = URL(string: "https://www.eurofurence.org").unsafelyUnwrapped
     ) {
         self.id = id
         self.title = title

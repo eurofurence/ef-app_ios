@@ -6,7 +6,6 @@ public struct IsFavouriteEventSpecification {
     
 }
 
-
 // MARK: IsFavouriteEventSpecification + Specification
 
 extension IsFavouriteEventSpecification: Specification {
