@@ -44,16 +44,19 @@ class EventFeedbackPresenter: EventFeedbackSceneDelegate, EventFeedbackDelegate 
                                   dayAndTimeFormatter: dayAndTimeFormatter)
         scene?.bind(viewModel)
         scene?.showFeedbackForm()
+        scene?.enableDismissal()
     }
     
     func eventFeedbackSubmissionDidFinish(_ feedback: EventFeedback) {
         scene?.showFeedbackSubmissionSuccessful()
+        scene?.enableDismissal()
         successHaptic.play()
         successWaitingRule.evaluateRule(handler: delegate.eventFeedbackCancelled)
     }
     
     func eventFeedbackSubmissionDidFail(_ feedback: EventFeedback) {
         scene?.showFeedbackForm()
+        scene?.enableDismissal()
         scene?.showFeedbackSubmissionFailedPrompt()
         scene?.enableNavigationControls()
         failureHaptic.play()
@@ -63,6 +66,7 @@ class EventFeedbackPresenter: EventFeedbackSceneDelegate, EventFeedbackDelegate 
         eventFeedback.submit(self)
         scene?.showFeedbackSubmissionInProgress()
         scene?.disableNavigationControls()
+        scene?.disableDismissal()
     }
     
     private var userHasEnteredFeedback: Bool {

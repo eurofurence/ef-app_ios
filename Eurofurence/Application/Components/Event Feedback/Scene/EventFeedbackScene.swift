@@ -10,6 +10,8 @@ public protocol EventFeedbackScene: AnyObject {
     func showFeedbackSubmissionFailedPrompt()
     func disableNavigationControls()
     func enableNavigationControls()
+    func disableDismissal()
+    func enableDismissal()
     func showDiscardFeedbackPrompt(discardHandler: @escaping () -> Void)
     
 }

@@ -17,6 +17,12 @@ class CapturingEventFeedbackScene: UIViewController, EventFeedbackScene {
         case enabled
     }
     
+    enum DismissalState {
+        case unset
+        case dismissalPermitted
+        case dismissalDenied
+    }
+    
     private var delegate: EventFeedbackSceneDelegate?
     func setDelegate(_ delegate: EventFeedbackSceneDelegate) {
         self.delegate = delegate
@@ -52,6 +58,15 @@ class CapturingEventFeedbackScene: UIViewController, EventFeedbackScene {
     
     func enableNavigationControls() {
         navigationControlsState = .enabled
+    }
+    
+    private(set) var dismissalState: DismissalState = .unset
+    func disableDismissal() {
+        dismissalState = .dismissalDenied
+    }
+    
+    func enableDismissal() {
+        dismissalState = .dismissalPermitted
     }
     
     private(set) var confirmCancellationAlertPresented = false

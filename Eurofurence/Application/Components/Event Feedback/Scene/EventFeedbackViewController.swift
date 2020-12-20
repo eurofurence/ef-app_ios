@@ -125,6 +125,18 @@ public class EventFeedbackViewController: UIViewController, EventFeedbackScene {
         barButtonItems.forEach({ $0.isEnabled = true })
     }
     
+    public func disableDismissal() {
+        if #available(iOS 13.0, *) {
+            isModalInPresentation = true
+        }
+    }
+    
+    public func enableDismissal() {
+        if #available(iOS 13.0, *) {
+            isModalInPresentation = false
+        }
+    }
+    
     public func showDiscardFeedbackPrompt(discardHandler: @escaping () -> Void) {
         let alert = UIAlertController(title: .confirmDiscardEventFeedbackTitle, message: "", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: .cancel, style: .cancel)
