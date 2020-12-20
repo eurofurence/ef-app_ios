@@ -148,6 +148,7 @@ class DealerDetailPresenter: DealerDetailSceneDelegate {
 
     func dealerDetailSceneDidLoad() {
         dealerInteraction = dealerInteractionRecorder.makeInteraction(for: dealer)
+        dealerInteraction?.donate()
         
         dealerDetailViewModelFactory.makeDealerDetailViewModel(for: dealer) { (viewModel) in
             self.viewModel = viewModel

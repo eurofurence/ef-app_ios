@@ -20,9 +20,6 @@ public struct SystemEventInteractionsRecorder: EventInteractionRecorder {
     public func makeInteraction(for event: EventIdentifier) -> Interaction? {
         guard let entity = eventsService.fetchEvent(identifier: event) else { return nil }
         
-        let intentDefinition = ViewEventIntentDefinition(identifier: event, eventName: entity.title)
-        eventIntentDonor.donateEventIntent(definition: intentDefinition)
-        
         let activityTitle = String.viewEvent(named: entity.title)
         let url = entity.contentURL
         let activity = activityFactory.makeActivity(
@@ -33,7 +30,21 @@ public struct SystemEventInteractionsRecorder: EventInteractionRecorder {
         
         activity.markEligibleForPublicIndexing()
         
-        return ActivityInteraction(activity: activity)
+        let intentDefinition = ViewEventIntentDefinition(identifier: event, eventName: entity.title)
+        let donation = EventDonation(intentDefinition: intentDefinition, donor: eventIntentDonor)
+        
+        return ActivityInteraction(activity: activity, donation: donation)
+    }
+    
+    private struct EventDonation: ActivityDonation {
+        
+        var intentDefinition: ViewEventIntentDefinition
+        var donor: EventIntentDonor
+        
+        func donate() {
+            donor.donateEventIntent(definition: intentDefinition)
+        }
+        
     }
     
 }

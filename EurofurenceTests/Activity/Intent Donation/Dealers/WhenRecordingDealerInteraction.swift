@@ -8,7 +8,7 @@ class WhenRecordingDealerInteraction: XCTestCase {
     var dealer: FakeDealer!
     var interaction: Interaction!
     
-    var donatedIntent: ViewDealerIntentDefinition?
+    var intentDonor: CapturingViewDealerIntentDonor!
     var producedActivity: FakeActivity?
     
     override func setUp() {
@@ -17,7 +17,7 @@ class WhenRecordingDealerInteraction: XCTestCase {
         dealer = FakeDealer.random
         let dealersService = FakeDealersService()
         dealersService.add(dealer)
-        let intentDonor = CapturingViewDealerIntentDonor()
+        intentDonor = CapturingViewDealerIntentDonor()
         let activityFactory = FakeActivityFactory()
         let interactionRecorder = DonateIntentDealerInteractionRecorder(
             viewDealerIntentDonor: intentDonor,
@@ -27,23 +27,28 @@ class WhenRecordingDealerInteraction: XCTestCase {
         
         interaction = interactionRecorder.makeInteraction(for: dealer.identifier)
         producedActivity = activityFactory.producedActivity
-        donatedIntent = intentDonor.donatedDealerIntentDefinition
     }
 
     func testTheDealerInteractionAndActivityAreRecorded() {
         let expectedTitleFormat = NSLocalizedString("ViewDealerFormatString", comment: "")
         let expectedTitle = String.localizedStringWithFormat(expectedTitleFormat, dealer.preferredName)
         
-        XCTAssertEqual(
-            ViewDealerIntentDefinition(identifier: dealer.identifier, dealerName: dealer.preferredName),
-            donatedIntent
-        )
-        
         XCTAssertEqual("org.eurofurence.activity.view-dealer", producedActivity?.activityType)
         XCTAssertEqual(expectedTitle, producedActivity?.title)
         XCTAssertEqual(dealer.shareableURL, producedActivity?.url)
         XCTAssertEqual(true, producedActivity?.supportsPublicIndexing)
         XCTAssertEqual(false, producedActivity?.supportsLocalIndexing)
+    }
+    
+    func testDonatingInteraction() {
+        XCTAssertNil(intentDonor.donatedDealerIntentDefinition)
+        
+        interaction.donate()
+        
+        XCTAssertEqual(
+            ViewDealerIntentDefinition(identifier: dealer.identifier, dealerName: dealer.preferredName),
+            intentDonor.donatedDealerIntentDefinition
+        )
     }
     
     func testTogglingInteractionActivationChangesCurrentStateOfActivity() {

@@ -1,0 +1,5 @@
+protocol ActivityDonation {
+    
+    func donate()
+    
+}

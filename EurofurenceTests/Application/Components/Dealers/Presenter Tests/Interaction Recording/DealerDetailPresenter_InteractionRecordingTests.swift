@@ -9,11 +9,12 @@ class DealerDetailPresenter_InteractionRecordingTests: XCTestCase {
         let identifier: DealerIdentifier = .random
         let context = DealerDetailPresenterTestBuilder().build(for: identifier)
         
-        XCTAssertNil(context.dealerInteractionRecorder.witnessedDealer)
+        XCTAssertNil(context.dealerInteractionRecorder.currentInteraction)
         
         context.simulateSceneDidLoad()
         
         XCTAssertEqual(context.dealerInteractionRecorder.witnessedDealer, identifier)
+        XCTAssertEqual(context.dealerInteractionRecorder.currentInteraction?.donated, true)
     }
     
     func testSceneAppearingMakesInteractionActive() {

@@ -9,11 +9,12 @@ class EventDetailPresenter_InteractionRecordingTests: XCTestCase {
         let event = FakeEvent.random
         let context = EventDetailPresenterTestBuilder().build(for: event)
         
-        XCTAssertNil(context.eventInteractionRecorder.witnessedEvent)
+        XCTAssertNil(context.eventInteractionRecorder.currentInteraction)
         
         context.simulateSceneDidLoad()
         
         XCTAssertEqual(context.eventInteractionRecorder.witnessedEvent, event.identifier)
+        XCTAssertEqual(context.eventInteractionRecorder.currentInteraction?.donated, true)
     }
     
     func testSceneAppearingMakesInteractionActive() {
