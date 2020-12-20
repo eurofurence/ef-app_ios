@@ -1,9 +1,14 @@
 import EurofurenceModel
 
-public struct ShareEventActionViewModel: EventActionViewModel {
+public class ShareEventActionViewModel: EventActionViewModel {
     
-    let event: Event
-    let shareService: ShareService
+    private let event: Event
+    private let shareService: ShareService
+    
+    init(event: Event, shareService: ShareService) {
+        self.event = event
+        self.shareService = shareService
+    }
     
     public func describe(to visitor: EventActionViewModelVisitor) {
         visitor.visitActionTitle(.share)

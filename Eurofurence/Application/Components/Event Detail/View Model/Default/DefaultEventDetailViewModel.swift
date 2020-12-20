@@ -126,7 +126,7 @@ class DefaultEventDetailViewModel: EventDetailViewModel, EventObserver {
         self.event = event
         self.actionBus = actionBus
         
-        actionBus.leaveFeedbackAction = leaveFeedback
+        actionBus.leaveFeedbackAction = { [weak self] in self?.leaveFeedback() }
         event.add(self)
     }
 

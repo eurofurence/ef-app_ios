@@ -101,7 +101,9 @@ class EventDetailPresenter: EventDetailSceneDelegate, EventDetailViewModelDelega
         func visit(_ actionViewModel: EventActionViewModel) {
             boundComponent = componentFactory.makeEventActionBannerComponent { (component) in
                 actionViewModel.describe(to: ComponentRebindingEventActionVisitor(component: component))
-                component.setSelectionHandler(actionViewModel.perform)
+                component.setSelectionHandler { [weak actionViewModel] (sender) in
+                    actionViewModel?.perform(sender: sender)
+                }
             }
         }
 

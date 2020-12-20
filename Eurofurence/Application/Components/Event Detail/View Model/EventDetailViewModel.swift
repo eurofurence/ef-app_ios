@@ -152,7 +152,7 @@ public struct EventPhotoshootMessageViewModel: Equatable {
 
 }
 
-public protocol EventActionViewModel {
+public protocol EventActionViewModel: AnyObject {
     
     func describe(to visitor: EventActionViewModelVisitor)
     func perform(sender: Any?)
