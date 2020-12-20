@@ -37,11 +37,15 @@ class EventFeedbackPresenter: EventFeedbackSceneDelegate, EventFeedbackDelegate 
     }
     
     func eventFeedbackSceneDidLoad() {
-        let viewModel = ViewModel(event: event,
-                                  eventFeedback: eventFeedback,
-                                  submitFeedback: { [weak self] in self?.submitFeedback() },
-                                  cancelFeedback: { [weak self] in self?.cancelFeedback() },
-                                  dayAndTimeFormatter: dayAndTimeFormatter)
+        let viewModel = ViewModel(
+            event: event,
+            eventFeedback: eventFeedback,
+            submitFeedback: { [weak self] in self?.submitFeedback() },
+            cancelFeedback: { [weak self] in self?.cancelFeedback() },
+            dayAndTimeFormatter: dayAndTimeFormatter,
+            scene: scene
+        )
+        
         scene?.bind(viewModel)
         scene?.showFeedbackForm()
         scene?.enableDismissal()
@@ -120,18 +124,23 @@ class EventFeedbackPresenter: EventFeedbackSceneDelegate, EventFeedbackDelegate 
         var eventLocation: String
         var eventHosts: String
         var defaultEventStarRating: Int = 0
-
-        init(event: Event,
-             eventFeedback: EventFeedback,
-             submitFeedback: @escaping () -> Void,
-             cancelFeedback: @escaping () -> Void,
-             dayAndTimeFormatter: EventDayAndTimeFormatter) {
+        weak var scene: EventFeedbackScene?
+        
+        init(
+            event: Event,
+            eventFeedback: EventFeedback,
+            submitFeedback: @escaping () -> Void,
+            cancelFeedback: @escaping () -> Void,
+            dayAndTimeFormatter: EventDayAndTimeFormatter,
+            scene: EventFeedbackScene?
+        ) {
             let hosts: String = {
                 let formatString = String.eventHostedByFormat
                 return String.localizedStringWithFormat(formatString, event.hosts)
             }()
             
             self.eventFeedback = eventFeedback
+            self.scene = scene
             submit = submitFeedback
             cancel = cancelFeedback
             eventTitle = event.title
@@ -143,6 +152,12 @@ class EventFeedbackPresenter: EventFeedbackSceneDelegate, EventFeedbackDelegate 
         
         func feedbackChanged(_ feedback: String) {
             eventFeedback.feedback = feedback
+            
+            if feedback.isEmpty {
+                scene?.enableDismissal()
+            } else {
+                scene?.disableDismissal()
+            }
         }
         
         func ratingPercentageChanged(_ ratingPercentage: Float) {
