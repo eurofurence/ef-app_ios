@@ -144,6 +144,7 @@ class EventDetailPresenter: EventDetailSceneDelegate, EventDetailViewModelDelega
 
     func eventDetailSceneDidLoad() {
         eventInteraction = interactionRecorder.makeInteraction(for: event)
+        eventInteraction?.donate()
         eventDetailViewModelFactory.makeViewModel(for: event, completionHandler: eventDetailViewModelReady)
     }
     
