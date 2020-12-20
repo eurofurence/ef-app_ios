@@ -92,11 +92,13 @@ public final class FakeEvent: Event {
 
     public private(set) var favouritedState: FavouritedState
     public func favourite() {
+        isFavourite = true
         favouritedState = .favourited
         observers.forEach({ $0.eventDidBecomeFavourite(self) })
     }
 
     public func unfavourite() {
+        isFavourite = false
         favouritedState = .unfavourited
         observers.forEach({ $0.eventDidBecomeUnfavourite(self) })
     }
