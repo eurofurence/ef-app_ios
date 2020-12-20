@@ -23,6 +23,11 @@ public class EventFeedbackViewController: UIViewController, EventFeedbackScene {
         delegate?.eventFeedbackSceneDidLoad()
     }
     
+    override public func didMove(toParent parent: UIViewController?) {
+        super.didMove(toParent: parent)
+        parent?.presentationController?.delegate = self
+    }
+    
     private func swapEmbeddedViewController(to newChild: UIViewController) {
         newChild.willMove(toParent: self)
         embedChildView(newChild.view)
@@ -125,6 +130,18 @@ public class EventFeedbackViewController: UIViewController, EventFeedbackScene {
         barButtonItems.forEach({ $0.isEnabled = true })
     }
     
+    public func disableDismissal() {
+        if #available(iOS 13.0, *) {
+            isModalInPresentation = true
+        }
+    }
+    
+    public func enableDismissal() {
+        if #available(iOS 13.0, *) {
+            isModalInPresentation = false
+        }
+    }
+    
     public func showDiscardFeedbackPrompt(discardHandler: @escaping () -> Void) {
         let alert = UIAlertController(title: .confirmDiscardEventFeedbackTitle, message: "", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: .cancel, style: .cancel)
@@ -150,6 +167,16 @@ public class EventFeedbackViewController: UIViewController, EventFeedbackScene {
         let rightBarButtonItems = navigationItem.rightBarButtonItems ?? []
         
         return leftBarButtonItems + rightBarButtonItems
+    }
+    
+}
+
+// MARK: - UIAdaptivePresentationControllerDelegate
+
+extension EventFeedbackViewController: UIAdaptivePresentationControllerDelegate {
+    
+    public func presentationControllerDidAttemptToDismiss(_ presentationController: UIPresentationController) {
+        viewModel?.cancelFeedback()
     }
     
 }
