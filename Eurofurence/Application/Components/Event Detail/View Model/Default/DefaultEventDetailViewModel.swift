@@ -126,7 +126,7 @@ class DefaultEventDetailViewModel: EventDetailViewModel, EventObserver {
         self.event = event
         self.actionBus = actionBus
         
-        actionBus.leaveFeedbackAction = leaveFeedback
+        actionBus.leaveFeedbackAction = { [weak self] in self?.leaveFeedback() }
         event.add(self)
     }
 
@@ -134,7 +134,7 @@ class DefaultEventDetailViewModel: EventDetailViewModel, EventObserver {
         return components.count
     }
 
-    private var delegate: EventDetailViewModelDelegate?
+    private weak var delegate: EventDetailViewModelDelegate?
     func setDelegate(_ delegate: EventDetailViewModelDelegate) {
         self.delegate = delegate
     }

@@ -21,7 +21,7 @@ class ScheduleEventViewModelAssertion: Assertion {
         assert(viewModel.endTime, isEqualTo: expectedEndTime)
         assert(viewModel.location, isEqualTo: event.room.name)
         assert(viewModel.bannerGraphicPNGData, isEqualTo: event.bannerGraphicPNGData)
-        assert(viewModel.isFavourite, isEqualTo: event.favouritedState == .favourited)
+        assert(viewModel.isFavourite, isEqualTo: event.isFavourite)
         assert(viewModel.isSponsorOnly, isEqualTo: event.isSponsorOnly)
         assert(viewModel.isSuperSponsorOnly, isEqualTo: event.isSuperSponsorOnly)
         assert(viewModel.isArtShow, isEqualTo: event.isArtShow)

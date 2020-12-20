@@ -7,11 +7,9 @@ class LoginPresenter: LoginSceneDelegate {
     private weak var scene: LoginScene?
     private let authenticationService: AuthenticationService
     private let alertRouter: AlertRouter
-    private lazy var validator = LoginValidator(validationHandler: self.loginValidationStateDidChange)
-    private lazy var validationActions: [LoginResult : () -> Void] = [
-        .valid: { self.scene?.enableLoginButton() },
-        .invalid: { self.scene?.disableLoginButton() }
-    ]
+    private lazy var validator = LoginValidator(validationHandler: { [weak self] (state) in
+        self?.loginValidationStateDidChange(state)
+    })
 
     private enum LoginResult {
         case valid
@@ -148,7 +146,13 @@ class LoginPresenter: LoginSceneDelegate {
     }
 
     private func loginValidationStateDidChange(_ state: LoginResult) {
-        validationActions[state]?()
+        switch state {
+        case .valid:
+            scene?.enableLoginButton()
+            
+        case .invalid:
+            scene?.disableLoginButton()
+        }
     }
 
 }

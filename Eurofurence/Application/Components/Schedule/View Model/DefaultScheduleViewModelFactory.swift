@@ -290,38 +290,64 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory, EventsSe
             self.hoursFormatter = hoursFormatter
             self.shareService = shareService
             
-            title = event.title
-            startTime = hoursFormatter.hoursString(from: event.startDate)
-            endTime = hoursFormatter.hoursString(from: event.endDate)
-            location = event.room.name
-            bannerGraphicPNGData = event.bannerGraphicPNGData
-            isFavourite = false
-            isSponsorOnly = event.isSponsorOnly
-            isSuperSponsorOnly = event.isSuperSponsorOnly
-            isArtShow = event.isArtShow
-            isKageEvent = event.isKageEvent
-            isDealersDenEvent = event.isDealersDen
-            isMainStageEvent = event.isMainStage
-            isPhotoshootEvent = event.isPhotoshoot
-            isAcceptingFeedback = event.isAcceptingFeedback
-            
             event.add(self)
         }
-
-        var title: String
-        var startTime: String
-        var endTime: String
-        var location: String
-        var bannerGraphicPNGData: Data?
-        var isFavourite: Bool
-        var isSponsorOnly: Bool
-        var isSuperSponsorOnly: Bool
-        var isArtShow: Bool
-        var isKageEvent: Bool
-        var isDealersDenEvent: Bool
-        var isMainStageEvent: Bool
-        var isPhotoshootEvent: Bool
-        var isAcceptingFeedback: Bool
+        
+        var bannerGraphicPNGData: Data? {
+            event.bannerGraphicPNGData
+        }
+        
+        var title: String {
+            event.title
+        }
+        
+        var startTime: String {
+            hoursFormatter.hoursString(from: event.startDate)
+        }
+        
+        var endTime: String {
+            hoursFormatter.hoursString(from: event.endDate)
+        }
+        
+        var location: String {
+            event.room.name
+        }
+        
+        var isFavourite: Bool {
+            event.isFavourite
+        }
+        
+        var isSponsorOnly: Bool {
+            event.isSponsorOnly
+        }
+        
+        var isSuperSponsorOnly: Bool {
+            event.isSuperSponsorOnly
+        }
+        
+        var isArtShow: Bool {
+            event.isArtShow
+        }
+        
+        var isKageEvent: Bool {
+            event.isKageEvent
+        }
+        
+        var isDealersDenEvent: Bool {
+            event.isDealersDen
+        }
+        
+        var isMainStageEvent: Bool {
+            event.isMainStage
+        }
+        
+        var isPhotoshootEvent: Bool {
+            event.isPhotoshoot
+        }
+        
+        var isAcceptingFeedback: Bool {
+            event.isAcceptingFeedback
+        }
         
         private weak var observer: ScheduleEventViewModelObserver?
         
@@ -342,12 +368,10 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory, EventsSe
         }
         
         func eventDidBecomeFavourite(_ event: Event) {
-            isFavourite = true
             observer?.eventViewModelDidBecomeFavourite(self)
         }
         
         func eventDidBecomeUnfavourite(_ event: Event) {
-            isFavourite = false
             observer?.eventViewModelDidBecomeNonFavourite(self)
         }
         
