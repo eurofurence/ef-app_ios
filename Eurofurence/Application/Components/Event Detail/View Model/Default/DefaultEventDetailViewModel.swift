@@ -134,7 +134,7 @@ class DefaultEventDetailViewModel: EventDetailViewModel, EventObserver {
         return components.count
     }
 
-    private var delegate: EventDetailViewModelDelegate?
+    private weak var delegate: EventDetailViewModelDelegate?
     func setDelegate(_ delegate: EventDetailViewModelDelegate) {
         self.delegate = delegate
     }

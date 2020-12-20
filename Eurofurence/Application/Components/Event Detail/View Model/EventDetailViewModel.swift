@@ -8,7 +8,7 @@ public protocol EventDetailViewModel {
 
 }
 
-public protocol EventDetailViewModelDelegate {
+public protocol EventDetailViewModelDelegate: AnyObject {
 
     func eventFavourited()
     func eventUnfavourited()
