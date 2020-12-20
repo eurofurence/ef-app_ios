@@ -9,6 +9,11 @@ class CapturingInteraction: Interaction {
     }
     
     private(set) var state: State = .unset
+    private(set) var donated = false
+    
+    func donate() {
+        donated = true
+    }
     
     func activate() {
         state = .active

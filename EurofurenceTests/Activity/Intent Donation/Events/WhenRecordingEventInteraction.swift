@@ -8,7 +8,7 @@ class WhenRecordingEventInteraction: XCTestCase {
     var event: FakeEvent!
     
     var interaction: Interaction?
-    var donatedIntent: ViewEventIntentDefinition?
+    var eventIntentDonor: CapturingEventIntentDonor!
     var producedActivity: FakeActivity?
     
     override func setUp() {
@@ -17,7 +17,7 @@ class WhenRecordingEventInteraction: XCTestCase {
         event = FakeEvent.random
         let eventsService = FakeEventsService()
         eventsService.events = [event]
-        let eventIntentDonor = CapturingEventIntentDonor()
+        eventIntentDonor = CapturingEventIntentDonor()
         let activityFactory = FakeActivityFactory()
         let tracer = SystemEventInteractionsRecorder(
             eventsService: eventsService,
@@ -26,31 +26,29 @@ class WhenRecordingEventInteraction: XCTestCase {
         )
         
         interaction = tracer.makeInteraction(for: event.identifier)
-        donatedIntent = eventIntentDonor.donatedEventIntentDefinition
         producedActivity = activityFactory.producedActivity
-    }
-    
-    func testTheEventInteractionIsRecordedWithBriefSummary() {
-        XCTAssertEqual(
-            ViewEventIntentDefinition(identifier: event.identifier, eventName: event.title),
-            donatedIntent
-        )
     }
     
     func testEventActivityIsMade() {
         let expectedTitleFormat = NSLocalizedString("ViewEventFormatString", comment: "")
         let expectedTitle = String.localizedStringWithFormat(expectedTitleFormat, event.title)
         
-        XCTAssertEqual(
-            ViewEventIntentDefinition(identifier: event.identifier, eventName: event.title),
-            donatedIntent
-        )
-        
         XCTAssertEqual("org.eurofurence.activity.view-event", producedActivity?.activityType)
         XCTAssertEqual(expectedTitle, producedActivity?.title)
         XCTAssertEqual(event.shareableURL, producedActivity?.url)
         XCTAssertEqual(true, producedActivity?.supportsPublicIndexing)
         XCTAssertEqual(false, producedActivity?.supportsLocalIndexing)
+    }
+    
+    func testDonatingInteraction() {
+        XCTAssertNil(eventIntentDonor.donatedEventIntentDefinition)
+        
+        interaction?.donate()
+        
+        XCTAssertEqual(
+            ViewEventIntentDefinition(identifier: event.identifier, eventName: event.title),
+            eventIntentDonor.donatedEventIntentDefinition
+        )
     }
     
     func testTogglingInteractionActivationChangesCurrentStateOfActivity() {

@@ -19,9 +19,6 @@ public struct DonateIntentDealerInteractionRecorder: DealerInteractionRecorder {
     public func makeInteraction(for dealer: DealerIdentifier) -> Interaction? {
         guard let entity = dealersService.fetchDealer(for: dealer) else { return nil }
         
-        let intentDefinition = ViewDealerIntentDefinition(identifier: dealer, dealerName: entity.preferredName)
-        viewDealerIntentDonor.donate(intentDefinition)
-        
         let activityTitle = String.viewDealer(named: entity.preferredName)
         let url = entity.contentURL
         let activity = activityFactory.makeActivity(
@@ -32,7 +29,21 @@ public struct DonateIntentDealerInteractionRecorder: DealerInteractionRecorder {
         
         activity.markEligibleForPublicIndexing()
         
-        return ActivityInteraction(activity: activity)
+        let intentDefinition = ViewDealerIntentDefinition(identifier: dealer, dealerName: entity.preferredName)
+        let donation = DealerDonation(intentDefinition: intentDefinition, donor: viewDealerIntentDonor)
+        
+        return ActivityInteraction(activity: activity, donation: donation)
+    }
+    
+    private struct DealerDonation: ActivityDonation {
+        
+        var intentDefinition: ViewDealerIntentDefinition
+        var donor: ViewDealerIntentDonor
+        
+        func donate() {
+            donor.donate(intentDefinition)
+        }
+        
     }
     
 }

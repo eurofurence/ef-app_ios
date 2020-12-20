@@ -247,6 +247,7 @@
 		CA4010A12110854E0056E16C /* DefaultKnowledgeGroupViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4010A02110854E0056E16C /* DefaultKnowledgeGroupViewModelFactory.swift */; };
 		CA456DD1258F774600E32E7B /* DuringFeedbackSubmission_EventFeedbackPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA456DD0258F774600E32E7B /* DuringFeedbackSubmission_EventFeedbackPresenterShould.swift */; };
 		CA456DE1258F7D1B00E32E7B /* WhenUserUpdatesFeedbackText_EventFeedbackPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA456DE0258F7D1B00E32E7B /* WhenUserUpdatesFeedbackText_EventFeedbackPresenterShould.swift */; };
+		CA456DF1258F9F1C00E32E7B /* ActivityDonation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA456DF0258F9F1C00E32E7B /* ActivityDonation.swift */; };
 		CA47B1B1255812D600050890 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = CA47B1B0255812D600050890 /* Localizable.stringsdict */; };
 		CA47B1B82558189D00050890 /* EventsWidgetStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA47B1B72558189D00050890 /* EventsWidgetStrings.swift */; };
 		CA4908C4245DADA000DB032C /* WindowContentWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4908C3245DADA000DB032C /* WindowContentWireframe.swift */; };
@@ -1609,6 +1610,7 @@
 		CA4010A02110854E0056E16C /* DefaultKnowledgeGroupViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultKnowledgeGroupViewModelFactory.swift; sourceTree = "<group>"; };
 		CA456DD0258F774600E32E7B /* DuringFeedbackSubmission_EventFeedbackPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuringFeedbackSubmission_EventFeedbackPresenterShould.swift; sourceTree = "<group>"; };
 		CA456DE0258F7D1B00E32E7B /* WhenUserUpdatesFeedbackText_EventFeedbackPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenUserUpdatesFeedbackText_EventFeedbackPresenterShould.swift; sourceTree = "<group>"; };
+		CA456DF0258F9F1C00E32E7B /* ActivityDonation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDonation.swift; sourceTree = "<group>"; };
 		CA47B1B0255812D600050890 /* Localizable.stringsdict */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; path = Localizable.stringsdict; sourceTree = "<group>"; };
 		CA47B1B72558189D00050890 /* EventsWidgetStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsWidgetStrings.swift; sourceTree = "<group>"; };
 		CA4908C3245DADA000DB032C /* WindowContentWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowContentWireframe.swift; sourceTree = "<group>"; };
@@ -3788,6 +3790,7 @@
 			isa = PBXGroup;
 			children = (
 				CA987FC922E638A8006338FB /* Activity.swift */,
+				CA456DF0258F9F1C00E32E7B /* ActivityDonation.swift */,
 				CA987FC722E6389E006338FB /* ActivityFactory.swift */,
 				CA987FCD22E63A4C006338FB /* ActivityInteraction.swift */,
 				CA987FCB22E63A2C006338FB /* Interaction.swift */,
@@ -7698,6 +7701,7 @@
 				CAD4F770245C47590036ADAF /* ModalWireframe.swift in Sources */,
 				CA63A762245DCE6400E4B313 /* ExternalApplicationContentRepresentation.swift in Sources */,
 				CA36A4BE20DA70B000EE6537 /* DealersSearchTableViewController.swift in Sources */,
+				CA456DF1258F9F1C00E32E7B /* ActivityDonation.swift in Sources */,
 				CA6A8DD220E417EE007536CD /* MapDetailSceneFactory.swift in Sources */,
 				CA6375B0208E02CC00536BE2 /* DealersSceneFactory.swift in Sources */,
 				CA4D9364245EF334006FA832 /* Identifier+ExpressibleByString.swift in Sources */,
