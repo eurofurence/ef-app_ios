@@ -676,7 +676,6 @@
 		CACD3825256518CF00C23041 /* PreprocessorBuildConfigurationProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD3824256518CF00C23041 /* PreprocessorBuildConfigurationProviding.swift */; };
 		CACD3830256518F100C23041 /* StubBuildConfigurationProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD382F256518F100C23041 /* StubBuildConfigurationProviding.swift */; };
 		CACD38BC2565247400C23041 /* EurofurenceApplicationSession.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CACD36A225650A9600C23041 /* EurofurenceApplicationSession.framework */; };
-		CACD38BD2565247400C23041 /* EurofurenceApplicationSession.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CACD36A225650A9600C23041 /* EurofurenceApplicationSession.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CACD394625653D8F00C23041 /* URLContextActivityDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD394525653D8F00C23041 /* URLContextActivityDescription.swift */; };
 		CACEA06D2242827800DFF26C /* NotificationScheduleControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACEA06C2242827800DFF26C /* NotificationScheduleControllerTests.swift */; };
 		CACEA06F2242832F00DFF26C /* CapturingNotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACEA06E2242832F00DFF26C /* CapturingNotificationScheduler.swift */; };
@@ -1269,17 +1268,6 @@
 				CA5F26AC2556F04D00CED97A /* EventsWidgetExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CA8F7D122561731B0096E206 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				CACD38BD2565247400C23041 /* EurofurenceApplicationSession.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		CAEA0B9A2165626900B0C7A6 /* Embed Frameworks */ = {
@@ -7062,7 +7050,6 @@
 				CA5F26982556F04C00CED97A /* Sources */,
 				CA5F26992556F04C00CED97A /* Frameworks */,
 				CA5F269A2556F04C00CED97A /* Resources */,
-				CA8F7D122561731B0096E206 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
