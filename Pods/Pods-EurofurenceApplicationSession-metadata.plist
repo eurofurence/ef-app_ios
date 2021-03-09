@@ -209,7 +209,7 @@ Firebase Cloud Messaging and Firebase Remote Config in your app.&lt;/p&gt;
       same "printed page" as the copyright notice for easier
       identification within third-party archives.
 
-   Copyright 2020 Firebase, Inc.
+   Copyright [yyyy] [name of copyright owner]
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -232,7 +232,7 @@ Firebase Cloud Messaging and Firebase Remote Config in your app.&lt;/p&gt;
 			<key>summary</key>
 			<string>Firebase ABTesting</string>
 			<key>version</key>
-			<string>7.0.0</string>
+			<string>7.7.0</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -435,7 +435,7 @@ Firebase Cloud Messaging and Firebase Remote Config in your app.&lt;/p&gt;
       same "printed page" as the copyright notice for easier
       identification within third-party archives.
 
-   Copyright 2020 Firebase, Inc.
+   Copyright [yyyy] [name of copyright owner]
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -458,7 +458,7 @@ Firebase Cloud Messaging and Firebase Remote Config in your app.&lt;/p&gt;
 			<key>summary</key>
 			<string>Firebase Core</string>
 			<key>version</key>
-			<string>7.0.0</string>
+			<string>7.7.0</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -663,7 +663,7 @@ non-Cocoapod integration. This library also respects the Firebase global data co
       same "printed page" as the copyright notice for easier
       identification within third-party archives.
 
-   Copyright 2020 Firebase, Inc.
+   Copyright [yyyy] [name of copyright owner]
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -686,7 +686,7 @@ non-Cocoapod integration. This library also respects the Firebase global data co
 			<key>summary</key>
 			<string>Firebase Core Diagnostics</string>
 			<key>version</key>
-			<string>7.0.0</string>
+			<string>7.7.0</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -889,7 +889,7 @@ non-Cocoapod integration. This library also respects the Firebase global data co
       same "printed page" as the copyright notice for easier
       identification within third-party archives.
 
-   Copyright 2020 Firebase, Inc.
+   Copyright [yyyy] [name of copyright owner]
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -912,7 +912,7 @@ non-Cocoapod integration. This library also respects the Firebase global data co
 			<key>summary</key>
 			<string>Firebase Installations</string>
 			<key>version</key>
-			<string>7.0.0</string>
+			<string>7.7.0</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -1117,7 +1117,7 @@ services.&lt;/p&gt;
       same "printed page" as the copyright notice for easier
       identification within third-party archives.
 
-   Copyright 2020 Firebase, Inc.
+   Copyright [yyyy] [name of copyright owner]
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -1140,7 +1140,7 @@ services.&lt;/p&gt;
 			<key>summary</key>
 			<string>Firebase InstanceID</string>
 			<key>version</key>
-			<string>7.0.0</string>
+			<string>7.7.0</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -1346,7 +1346,7 @@ device, and it is completely free.&lt;/p&gt;
       same "printed page" as the copyright notice for easier
       identification within third-party archives.
 
-   Copyright 2020 Firebase, Inc.
+   Copyright [yyyy] [name of copyright owner]
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -1369,7 +1369,7 @@ device, and it is completely free.&lt;/p&gt;
 			<key>summary</key>
 			<string>Firebase Messaging</string>
 			<key>version</key>
-			<string>7.0.0</string>
+			<string>7.7.0</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -1574,7 +1574,7 @@ app update.&lt;/p&gt;
       same "printed page" as the copyright notice for easier
       identification within third-party archives.
 
-   Copyright 2020 Firebase, Inc.
+   Copyright [yyyy] [name of copyright owner]
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -1597,7 +1597,7 @@ app update.&lt;/p&gt;
 			<key>summary</key>
 			<string>Firebase Remote Config</string>
 			<key>version</key>
-			<string>7.0.0</string>
+			<string>7.7.0</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -1800,7 +1800,7 @@ app update.&lt;/p&gt;
       same "printed page" as the copyright notice for easier
       identification within third-party archives.
 
-   Copyright 2020 Firebase, Inc.
+   Copyright [yyyy] [name of copyright owner]
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -1823,7 +1823,7 @@ app update.&lt;/p&gt;
 			<key>summary</key>
 			<string>Google iOS SDK data transport.</string>
 			<key>version</key>
-			<string>8.0.0</string>
+			<string>8.2.0</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -1836,7 +1836,7 @@ app update.&lt;/p&gt;
 other Google CocoaPods. They&amp;#39;re not intended for direct public usage.&lt;/p&gt;
 </string>
 			<key>homepage</key>
-			<string>https://github.com/firebase/firebase-ios-sdk/tree/master/GoogleUtilities</string>
+			<string>https://github.com/google/GoogleUtilities</string>
 			<key>licenseText</key>
 			<string>
                                  Apache License
@@ -2093,9 +2093,9 @@ Fuller's blog&lt;/a&gt;
 			<key>socialMediaURL</key>
 			<string></string>
 			<key>summary</key>
-			<string>Google Utilities for iOS (plus community support for macOS and tvOS)</string>
+			<string>Google Utilities for Apple platform SDKs</string>
 			<key>version</key>
-			<string>7.0.0</string>
+			<string>7.2.2</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -2322,7 +2322,7 @@ Objective-C to facilitate writing asynchronous code.&lt;/p&gt;
 			<key>summary</key>
 			<string>Synchronization construct for Objective-C</string>
 			<key>version</key>
-			<string>1.2.11</string>
+			<string>1.2.12</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -2366,7 +2366,7 @@ SOFTWARE.
 			<key>summary</key>
 			<string>A tool to enforce Swift style and conventions.</string>
 			<key>version</key>
-			<string>0.42.0</string>
+			<string>0.43.0</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -2412,7 +2412,7 @@ redistribute it freely, subject to the following restrictions:
 			<key>summary</key>
 			<string>Protocol buffers with small code size.</string>
 			<key>version</key>
-			<string>2.30906.0</string>
+			<string>2.30907.0</string>
 		</dict>
 	</array>
 </dict>
