@@ -230,7 +230,7 @@
 		CA3ABA06229C4B260045A35B /* AppNotificationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3ABA05229C4B260045A35B /* AppNotificationDelegate.swift */; };
 		CA3ABA09229C7B6E0045A35B /* Dictionary+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3ABA08229C7B6E0045A35B /* Dictionary+Extensions.swift */; };
 		CA3ABA0E229DCC350045A35B /* EventInteractionRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3ABA0D229DCC350045A35B /* EventInteractionRecorder.swift */; };
-		CA3FBF4B2558426B005E1F53 /* EventsWidgetLogic in Frameworks */ = {isa = PBXBuildFile; productRef = CA3FBF4A2558426B005E1F53 /* EventsWidgetLogic */; };
+		CA3FBF4B2558426B005E1F53 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = CA3FBF4A2558426B005E1F53 /* SwiftPackageProductDependency */; };
 		CA401069210FAE9D0056E16C /* KnowledgeGroupEntriesComponentBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA401068210FAE9D0056E16C /* KnowledgeGroupEntriesComponentBuilder.swift */; };
 		CA40106C210FAEB20056E16C /* KnowledgeGroupEntriesComponentFactoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40106B210FAEB20056E16C /* KnowledgeGroupEntriesComponentFactoryImpl.swift */; };
 		CA40106E210FAEC30056E16C /* KnowledgeGroupEntriesComponentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40106D210FAEC30056E16C /* KnowledgeGroupEntriesComponentFactory.swift */; };
@@ -2585,7 +2585,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CACD38BC2565247400C23041 /* EurofurenceApplicationSession.framework in Frameworks */,
-				CA3FBF4B2558426B005E1F53 /* EventsWidgetLogic in Frameworks */,
+				CA3FBF4B2558426B005E1F53 /* BuildFile in Frameworks */,
 				CAFC4A8C256463A400499A47 /* EurofurenceIntentDefinitions.framework in Frameworks */,
 				CA5F26A02556F04C00CED97A /* SwiftUI.framework in Frameworks */,
 				CA5F269E2556F04C00CED97A /* WidgetKit.framework in Frameworks */,
@@ -7068,7 +7068,7 @@
 			);
 			name = EventsWidgetExtension;
 			packageProductDependencies = (
-				CA3FBF4A2558426B005E1F53 /* EventsWidgetLogic */,
+				CA3FBF4A2558426B005E1F53 /* SwiftPackageProductDependency */,
 			);
 			productName = EventsWidgetExtension;
 			productReference = CA5F269C2556F04C00CED97A /* EventsWidgetExtension.appex */;
@@ -7361,12 +7361,37 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Eurofurence-Screenshots/Pods-Eurofurence-Screenshots-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Eurofurence-Screenshots/Pods-Eurofurence-Screenshots-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Down/Down.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseABTesting/FirebaseABTesting.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseCrashlytics/FirebaseCrashlytics.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseInstallations/FirebaseInstallations.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseInstanceID/FirebaseInstanceID.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseMessaging/FirebaseMessaging.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseRemoteConfig/FirebaseRemoteConfig.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleDataTransport/GoogleDataTransport.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Eurofurence-Screenshots/Pods-Eurofurence-Screenshots-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Down.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseABTesting.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCoreDiagnostics.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCrashlytics.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseInstallations.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseInstanceID.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseMessaging.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseRemoteConfig.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleDataTransport.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -7480,12 +7505,37 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Eurofurence/Pods-Eurofurence-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Eurofurence/Pods-Eurofurence-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Down/Down.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseABTesting/FirebaseABTesting.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseCrashlytics/FirebaseCrashlytics.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseInstallations/FirebaseInstallations.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseInstanceID/FirebaseInstanceID.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseMessaging/FirebaseMessaging.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseRemoteConfig/FirebaseRemoteConfig.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleDataTransport/GoogleDataTransport.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Eurofurence/Pods-Eurofurence-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Down.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseABTesting.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCoreDiagnostics.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCrashlytics.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseInstallations.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseInstanceID.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseMessaging.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseRemoteConfig.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleDataTransport.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -10001,7 +10051,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		CA3FBF4A2558426B005E1F53 /* EventsWidgetLogic */ = {
+		CA3FBF4A2558426B005E1F53 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = EventsWidgetLogic;
 		};
