@@ -150,6 +150,7 @@
 		CA25A7FB20E63E9E00875891 /* MapDetailComponentDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA25A7FA20E63E9E00875891 /* MapDetailComponentDelegate.swift */; };
 		CA25A89C22C4101D00226478 /* ScreenshotGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9845C91F2907A800E8821D /* ScreenshotGenerator.swift */; };
 		CA25A89D22C4101D00226478 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9845D21F2909DB00E8821D /* SnapshotHelper.swift */; };
+		CA26503D25F7D3EB0080F132 /* DealerSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA26503C25F7D3EB0080F132 /* DealerSearchTests.swift */; };
 		CA27255E21125393004C6D0A /* KnowledgeEntryImageScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27255D21125393004C6D0A /* KnowledgeEntryImageScene.swift */; };
 		CA2725602112542D004C6D0A /* KnowledgEntryImagesBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27255F2112542D004C6D0A /* KnowledgEntryImagesBinder.swift */; };
 		CA272562211255DE004C6D0A /* KnowledgeDetailImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA272561211255DE004C6D0A /* KnowledgeDetailImageTableViewCell.swift */; };
@@ -230,7 +231,7 @@
 		CA3ABA06229C4B260045A35B /* AppNotificationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3ABA05229C4B260045A35B /* AppNotificationDelegate.swift */; };
 		CA3ABA09229C7B6E0045A35B /* Dictionary+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3ABA08229C7B6E0045A35B /* Dictionary+Extensions.swift */; };
 		CA3ABA0E229DCC350045A35B /* EventInteractionRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3ABA0D229DCC350045A35B /* EventInteractionRecorder.swift */; };
-		CA3FBF4B2558426B005E1F53 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = CA3FBF4A2558426B005E1F53 /* SwiftPackageProductDependency */; };
+		CA3FBF4B2558426B005E1F53 /* EventsWidgetLogic in Frameworks */ = {isa = PBXBuildFile; productRef = CA3FBF4A2558426B005E1F53 /* EventsWidgetLogic */; };
 		CA401069210FAE9D0056E16C /* KnowledgeGroupEntriesComponentBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA401068210FAE9D0056E16C /* KnowledgeGroupEntriesComponentBuilder.swift */; };
 		CA40106C210FAEB20056E16C /* KnowledgeGroupEntriesComponentFactoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40106B210FAEB20056E16C /* KnowledgeGroupEntriesComponentFactoryImpl.swift */; };
 		CA40106E210FAEC30056E16C /* KnowledgeGroupEntriesComponentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40106D210FAEC30056E16C /* KnowledgeGroupEntriesComponentFactory.swift */; };
@@ -1503,6 +1504,7 @@
 		CA250DD920D6E5FD00E7513C /* ScheduleSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleSearchTableViewController.swift; sourceTree = "<group>"; };
 		CA250DE520D6F72200E7513C /* ShortFormDayAndTimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortFormDayAndTimeFormatter.swift; sourceTree = "<group>"; };
 		CA25A7FA20E63E9E00875891 /* MapDetailComponentDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailComponentDelegate.swift; sourceTree = "<group>"; };
+		CA26503C25F7D3EB0080F132 /* DealerSearchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerSearchTests.swift; sourceTree = "<group>"; };
 		CA27255D21125393004C6D0A /* KnowledgeEntryImageScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeEntryImageScene.swift; sourceTree = "<group>"; };
 		CA27255F2112542D004C6D0A /* KnowledgEntryImagesBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgEntryImagesBinder.swift; sourceTree = "<group>"; };
 		CA272561211255DE004C6D0A /* KnowledgeDetailImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailImageTableViewCell.swift; sourceTree = "<group>"; };
@@ -2585,7 +2587,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CACD38BC2565247400C23041 /* EurofurenceApplicationSession.framework in Frameworks */,
-				CA3FBF4B2558426B005E1F53 /* BuildFile in Frameworks */,
+				CA3FBF4B2558426B005E1F53 /* EventsWidgetLogic in Frameworks */,
 				CAFC4A8C256463A400499A47 /* EurofurenceIntentDefinitions.framework in Frameworks */,
 				CA5F26A02556F04C00CED97A /* SwiftUI.framework in Frameworks */,
 				CA5F269E2556F04C00CED97A /* WidgetKit.framework in Frameworks */,
@@ -6859,6 +6861,7 @@
 			children = (
 				CAF254AE2517F983008892ED /* Info.plist */,
 				CAF255112517FE81008892ED /* DealerDetailTests.swift */,
+				CA26503C25F7D3EB0080F132 /* DealerSearchTests.swift */,
 				CAF2552E251A6DC4008892ED /* EventDetailTests.swift */,
 				CAF254AC2517F983008892ED /* LaunchPerformanceTest.swift */,
 				CABBCA2F2566FE0B007A11A2 /* SplitViewDetailBugTests.swift */,
@@ -7068,7 +7071,7 @@
 			);
 			name = EventsWidgetExtension;
 			packageProductDependencies = (
-				CA3FBF4A2558426B005E1F53 /* SwiftPackageProductDependency */,
+				CA3FBF4A2558426B005E1F53 /* EventsWidgetLogic */,
 			);
 			productName = EventsWidgetExtension;
 			productReference = CA5F269C2556F04C00CED97A /* EventsWidgetExtension.appex */;
@@ -8770,6 +8773,7 @@
 				CAF254FF2517FB65008892ED /* AutomationController.swift in Sources */,
 				CAF25568251A8774008892ED /* UIAutomationTestCase.swift in Sources */,
 				CAF2552F251A6DC4008892ED /* EventDetailTests.swift in Sources */,
+				CA26503D25F7D3EB0080F132 /* DealerSearchTests.swift in Sources */,
 				CAF254AD2517F983008892ED /* LaunchPerformanceTest.swift in Sources */,
 				CAF255122517FE81008892ED /* DealerDetailTests.swift in Sources */,
 				CABBCA302566FE0B007A11A2 /* SplitViewDetailBugTests.swift in Sources */,
@@ -10047,7 +10051,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		CA3FBF4A2558426B005E1F53 /* SwiftPackageProductDependency */ = {
+		CA3FBF4A2558426B005E1F53 /* EventsWidgetLogic */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = EventsWidgetLogic;
 		};

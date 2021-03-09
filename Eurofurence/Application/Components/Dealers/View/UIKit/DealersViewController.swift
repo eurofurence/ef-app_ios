@@ -5,7 +5,6 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
     // MARK: Properties
 
     @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet private weak var navigationBarExtension: NavigationBarViewExtensionContainer!
     private var tableController: TableController? {
         didSet {
             tableView.dataSource = tableController
@@ -84,14 +83,6 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
     func presentSearchController(_ searchController: UISearchController) {
         ensureScrolledToTopToAvoidLargeTitlesPresentationIssue()
         present(searchController, animated: true)
-    }
-    
-    func willDismissSearchController(_ searchController: UISearchController) {
-        navigationBarExtension.isHidden = true
-    }
-    
-    func didDismissSearchController(_ searchController: UISearchController) {
-        navigationBarExtension.isHidden = false
     }
 
     // MARK: UISearchResultsUpdating
