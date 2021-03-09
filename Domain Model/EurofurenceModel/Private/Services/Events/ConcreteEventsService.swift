@@ -5,12 +5,6 @@ class ConcreteEventsService: ClockDelegate, EventsService {
 
     // MARK: Nested Types
 
-    struct EventsChanged {}
-
-    struct EventRemovedFromFavourites {
-        var identifier: EventIdentifier
-    }
-
     private class FavouriteEventHandler: EventConsumer {
 
         private unowned let service: ConcreteEventsService
@@ -49,7 +43,7 @@ class ConcreteEventsService: ClockDelegate, EventsService {
         favouriteEventIdentifiers.firstIndex(of: identifier).let({ favouriteEventIdentifiers.remove(at: $0) })
         provideFavouritesInformationToObservers()
 
-        let event = EventRemovedFromFavourites(identifier: identifier)
+        let event = DomainEvent.EventRemovedFromFavourites(identifier: identifier)
         eventBus.post(event)
     }
 
@@ -205,7 +199,7 @@ class ConcreteEventsService: ClockDelegate, EventsService {
             eventModels = events.sorted(by: { $0.startDateTime < $1.startDateTime }).compactMap(makeEventModel)
 
             dayModels = makeDays(from: days)
-            eventBus.post(ConcreteEventsService.EventsChanged())
+            eventBus.post(DomainEvent.EventsChanged())
         }
     }
 

@@ -64,7 +64,7 @@ class EventsScheduleAdapter: EventsSchedule {
             self.scheduleAdapter = scheduleAdapter
         }
 
-        func consume(event: ConcreteEventsService.EventsChanged) {
+        func consume(event: DomainEvent.EventsChanged) {
             scheduleAdapter.updateFromSchedule()
         }
 

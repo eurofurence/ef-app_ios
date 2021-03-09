@@ -25,6 +25,8 @@
 		CA17015022B183880067BCDE /* EurofurenceModelTestDoubles-Swift.h in Headers */ = {isa = PBXBuildFile; fileRef = CA17014F22B183880067BCDE /* EurofurenceModelTestDoubles-Swift.h */; };
 		CA17015122B188290067BCDE /* EurofurenceModelTestDoubles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A326922B16E75002AD939 /* EurofurenceModelTestDoubles.framework */; };
 		CA25A87522C15F4F00226478 /* WhenRequestingStoreRefresh_MultipleTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA25A87422C15F4F00226478 /* WhenRequestingStoreRefresh_MultipleTimes.swift */; };
+		CA2650B025F82E7E0080F132 /* EventsChanged.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2650AF25F82E7E0080F132 /* EventsChanged.swift */; };
+		CA2650B625F82E8C0080F132 /* EventRemovedFromFavourites.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2650B525F82E8C0080F132 /* EventRemovedFromFavourites.swift */; };
 		CA2AA2DA22C941C200C0E1A1 /* WhenDescribingAppLink_WithValidDealerIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2D922C941C200C0E1A1 /* WhenDescribingAppLink_WithValidDealerIdentifier.swift */; };
 		CA2AA2DC22C942AB00C0E1A1 /* WhenDescribingAppLink_WithInvalidDealerIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2DB22C942AB00C0E1A1 /* WhenDescribingAppLink_WithInvalidDealerIdentifier.swift */; };
 		CA2AA2DF22C943E300C0E1A1 /* URLEntityProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2DE22C943E300C0E1A1 /* URLEntityProcessor.swift */; };
@@ -538,6 +540,8 @@
 		CA09BE632464874200412B82 /* EurofurenceModelBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EurofurenceModelBundle.swift; sourceTree = "<group>"; };
 		CA17014F22B183880067BCDE /* EurofurenceModelTestDoubles-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EurofurenceModelTestDoubles-Swift.h"; sourceTree = "<group>"; };
 		CA25A87422C15F4F00226478 /* WhenRequestingStoreRefresh_MultipleTimes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenRequestingStoreRefresh_MultipleTimes.swift; sourceTree = "<group>"; };
+		CA2650AF25F82E7E0080F132 /* EventsChanged.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsChanged.swift; sourceTree = "<group>"; };
+		CA2650B525F82E8C0080F132 /* EventRemovedFromFavourites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRemovedFromFavourites.swift; sourceTree = "<group>"; };
 		CA2AA2D922C941C200C0E1A1 /* WhenDescribingAppLink_WithValidDealerIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDescribingAppLink_WithValidDealerIdentifier.swift; sourceTree = "<group>"; };
 		CA2AA2DB22C942AB00C0E1A1 /* WhenDescribingAppLink_WithInvalidDealerIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDescribingAppLink_WithInvalidDealerIdentifier.swift; sourceTree = "<group>"; };
 		CA2AA2DE22C943E300C0E1A1 /* URLEntityProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLEntityProcessor.swift; sourceTree = "<group>"; };
@@ -1152,6 +1156,8 @@
 			children = (
 				CA7A2FD522B16DE3002AD939 /* EventFeedbackReady.swift */,
 				CA7A2FDB22B16DE3002AD939 /* ImageDownloadedEvent.swift */,
+				CA2650AF25F82E7E0080F132 /* EventsChanged.swift */,
+				CA2650B525F82E8C0080F132 /* EventRemovedFromFavourites.swift */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -2556,6 +2562,7 @@
 				CA30FB9C22F36456001C2EB3 /* KnowledgeGroupImpl.swift in Sources */,
 				CA7A300522B16DE4002AD939 /* Link.swift in Sources */,
 				CA2AA2FF22CA8F1D00C0E1A1 /* RefreshCollaboration.swift in Sources */,
+				CA2650B625F82E8C0080F132 /* EventRemovedFromFavourites.swift in Sources */,
 				CA7A304F22B16DE4002AD939 /* APIURLProviding.swift in Sources */,
 				CA82DB5D22D66CD800467C2F /* ShareableURLFactory.swift in Sources */,
 				CA7A308322B16DE4002AD939 /* AnnouncementImpl.swift in Sources */,
@@ -2668,6 +2675,7 @@
 				CA7A309522B16DE4002AD939 /* ConcreteRefreshService.swift in Sources */,
 				CA7A301E22B16DE4002AD939 /* UserDefaultsForceRefreshRequired.swift in Sources */,
 				CA8A73BF22BD0FC2007A5201 /* AdditionalServicesRepository.swift in Sources */,
+				CA2650B025F82E7E0080F132 /* EventsChanged.swift in Sources */,
 				CA7A308A22B16DE4002AD939 /* FileUtilities.swift in Sources */,
 				CA7A309322B16DE4002AD939 /* DataStoreChangedConsumer.swift in Sources */,
 				CA7A307D22B16DE4002AD939 /* RemoteNotificationTokenAvailable.swift in Sources */,

@@ -64,7 +64,7 @@ class InMemoryEventsSearchController: EventsSearchController {
             self.searchController = searchController
         }
 
-        func consume(event: ConcreteEventsService.EventRemovedFromFavourites) {
+        func consume(event: DomainEvent.EventRemovedFromFavourites) {
             if searchController.favouritesFilter.enabled {            
                 searchController.regenerateSearchResults()
             }
