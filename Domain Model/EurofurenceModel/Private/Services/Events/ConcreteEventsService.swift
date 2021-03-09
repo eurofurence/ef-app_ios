@@ -7,7 +7,7 @@ class ConcreteEventsService: ClockDelegate, EventsService {
 
     struct ChangedEvent {}
 
-    struct EventUnfavouritedEvent {
+    struct EventRemovedFromFavourites {
         var identifier: EventIdentifier
     }
 
@@ -49,7 +49,7 @@ class ConcreteEventsService: ClockDelegate, EventsService {
         favouriteEventIdentifiers.firstIndex(of: identifier).let({ favouriteEventIdentifiers.remove(at: $0) })
         provideFavouritesInformationToObservers()
 
-        let event = EventUnfavouritedEvent(identifier: identifier)
+        let event = EventRemovedFromFavourites(identifier: identifier)
         eventBus.post(event)
     }
 
