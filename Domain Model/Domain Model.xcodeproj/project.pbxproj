@@ -1137,6 +1137,33 @@
 			path = "Coalescing Refreshes";
 			sourceTree = "<group>";
 		};
+		CA2650A825F82DE00080F132 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				CA7A2FDA22B16DE3002AD939 /* LoggedIn.swift */,
+				CA7A2FD422B16DE3002AD939 /* LoggedOut.swift */,
+				CA7A2FD822B16DE3002AD939 /* RemoteNotificationTokenAvailable.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		CA2650A925F82DEC0080F132 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				CA7A2FD522B16DE3002AD939 /* EventFeedbackReady.swift */,
+				CA7A2FDB22B16DE3002AD939 /* ImageDownloadedEvent.swift */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		CA2650AA25F82E0A0080F132 /* Time */ = {
+			isa = PBXGroup;
+			children = (
+				CA7A2FD722B16DE3002AD939 /* SignificantTimePassedEvent.swift */,
+			);
+			path = Time;
+			sourceTree = "<group>";
+		};
 		CA2AA2D822C941B100C0E1A1 /* Dealers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1548,15 +1575,12 @@
 			children = (
 				CA7A2FD322B16DE3002AD939 /* DataStoreChangedEvent.swift */,
 				CA7A2FD622B16DE3002AD939 /* DomainEvent.swift */,
-				CA7A2FD522B16DE3002AD939 /* EventFeedbackReady.swift */,
 				CA7A2FD922B16DE3002AD939 /* FavouriteEvent.swift */,
-				CA7A2FDB22B16DE3002AD939 /* ImageDownloadedEvent.swift */,
-				CA7A2FDA22B16DE3002AD939 /* LoggedIn.swift */,
-				CA7A2FD422B16DE3002AD939 /* LoggedOut.swift */,
 				CA7A2FD222B16DE3002AD939 /* OpenURL.swift */,
-				CA7A2FD822B16DE3002AD939 /* RemoteNotificationTokenAvailable.swift */,
-				CA7A2FD722B16DE3002AD939 /* SignificantTimePassedEvent.swift */,
 				CA7A2FD122B16DE3002AD939 /* UnfavouriteEvent.swift */,
+				CA2650A825F82DE00080F132 /* Authentication */,
+				CA2650A925F82DEC0080F132 /* Events */,
+				CA2650AA25F82E0A0080F132 /* Time */,
 			);
 			path = "Domain Events";
 			sourceTree = "<group>";
