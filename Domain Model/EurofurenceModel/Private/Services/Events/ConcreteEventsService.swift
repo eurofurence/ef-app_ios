@@ -5,7 +5,7 @@ class ConcreteEventsService: ClockDelegate, EventsService {
 
     // MARK: Nested Types
 
-    struct ChangedEvent {}
+    struct EventsChanged {}
 
     struct EventRemovedFromFavourites {
         var identifier: EventIdentifier
@@ -205,7 +205,7 @@ class ConcreteEventsService: ClockDelegate, EventsService {
             eventModels = events.sorted(by: { $0.startDateTime < $1.startDateTime }).compactMap(makeEventModel)
 
             dayModels = makeDays(from: days)
-            eventBus.post(ConcreteEventsService.ChangedEvent())
+            eventBus.post(ConcreteEventsService.EventsChanged())
         }
     }
 
