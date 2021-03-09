@@ -8944,7 +8944,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C9F9CDBEE9438C5761DD0B15 /* Pods-Eurofurence.profiling.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Eurofurence/Eurofurence.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -9118,7 +9117,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DD04FF21E88A87DB7F4133E3 /* Pods-Eurofurence.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Eurofurence/Eurofurence.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -9142,7 +9140,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 19EC28FCBC430E4045696BAF /* Pods-Eurofurence.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Eurofurence/Eurofurence.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
@@ -9524,7 +9521,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5CC062D36892B13F2A83180C /* Pods-Eurofurence.screenshots.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Eurofurence/Eurofurence.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
