@@ -7157,7 +7157,7 @@
 			attributes = {
 				DefaultBuildSystemTypeForWorkspace = Latest;
 				LastSwiftUpdateCheck = 1220;
-				LastUpgradeCheck = 1230;
+				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = Eurofurence;
 				TargetAttributes = {
 					78D7EEA01F17F40C005372A9 = {
