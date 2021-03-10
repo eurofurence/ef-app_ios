@@ -1,4 +1,3 @@
-import EventBus
 import Foundation
 
 struct ConcreteNotificationService: NotificationService {

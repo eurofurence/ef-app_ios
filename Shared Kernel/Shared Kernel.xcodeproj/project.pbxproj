@@ -8,14 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		CA7A2EC722B0D32D002AD939 /* TestUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = CA7A2EC522B0D32D002AD939 /* TestUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CA7A2ED422B0D33A002AD939 /* EventBus.h in Headers */ = {isa = PBXBuildFile; fileRef = CA7A2ED222B0D33A002AD939 /* EventBus.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CA7A2EDF22B0D380002AD939 /* BlockEventConsumer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2ED822B0D380002AD939 /* BlockEventConsumer.swift */; };
-		CA7A2EE022B0D380002AD939 /* EventHandlerRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2ED922B0D380002AD939 /* EventHandlerRegistration.swift */; };
-		CA7A2EE122B0D380002AD939 /* EventConsumer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2EDA22B0D380002AD939 /* EventConsumer.swift */; };
-		CA7A2EE222B0D380002AD939 /* EventBusRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2EDB22B0D380002AD939 /* EventBusRegistration.swift */; };
-		CA7A2EE322B0D380002AD939 /* EventBus+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2EDC22B0D380002AD939 /* EventBus+Convenience.swift */; };
-		CA7A2EE422B0D380002AD939 /* EventBus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2EDD22B0D380002AD939 /* EventBus.swift */; };
-		CA7A2EE522B0D380002AD939 /* EventCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2EDE22B0D380002AD939 /* EventCache.swift */; };
 		CA7A2EF522B0D3B5002AD939 /* Assertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2EE622B0D3B5002AD939 /* Assertion.swift */; };
 		CA7A2EF622B0D3B5002AD939 /* URL+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2EE922B0D3B5002AD939 /* URL+RandomValueProviding.swift */; };
 		CA7A2EF722B0D3B5002AD939 /* FloatingPoint+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2EEA22B0D3B5002AD939 /* FloatingPoint+RandomValueProviding.swift */; };
@@ -41,16 +33,6 @@
 		CA7A2EC322B0D32D002AD939 /* TestUtilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TestUtilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA7A2EC522B0D32D002AD939 /* TestUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestUtilities.h; sourceTree = "<group>"; };
 		CA7A2EC622B0D32D002AD939 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CA7A2ED022B0D33A002AD939 /* EventBus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EventBus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CA7A2ED222B0D33A002AD939 /* EventBus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventBus.h; sourceTree = "<group>"; };
-		CA7A2ED322B0D33A002AD939 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CA7A2ED822B0D380002AD939 /* BlockEventConsumer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockEventConsumer.swift; sourceTree = "<group>"; };
-		CA7A2ED922B0D380002AD939 /* EventHandlerRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventHandlerRegistration.swift; sourceTree = "<group>"; };
-		CA7A2EDA22B0D380002AD939 /* EventConsumer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventConsumer.swift; sourceTree = "<group>"; };
-		CA7A2EDB22B0D380002AD939 /* EventBusRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBusRegistration.swift; sourceTree = "<group>"; };
-		CA7A2EDC22B0D380002AD939 /* EventBus+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EventBus+Convenience.swift"; sourceTree = "<group>"; };
-		CA7A2EDD22B0D380002AD939 /* EventBus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBus.swift; sourceTree = "<group>"; };
-		CA7A2EDE22B0D380002AD939 /* EventCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCache.swift; sourceTree = "<group>"; };
 		CA7A2EE622B0D3B5002AD939 /* Assertion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assertion.swift; sourceTree = "<group>"; };
 		CA7A2EE922B0D3B5002AD939 /* URL+RandomValueProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA7A2EEA22B0D3B5002AD939 /* FloatingPoint+RandomValueProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FloatingPoint+RandomValueProviding.swift"; sourceTree = "<group>"; };
@@ -76,13 +58,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CA7A2ECD22B0D33A002AD939 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -98,7 +73,6 @@
 		CA7A2EA922B0D308002AD939 = {
 			isa = PBXGroup;
 			children = (
-				CA7A2ED122B0D33A002AD939 /* EventBus */,
 				CA7A2EC422B0D32D002AD939 /* TestUtilities */,
 				CA7A2EB422B0D308002AD939 /* Products */,
 				D3B589353F3594977D836C6C /* Pods */,
@@ -110,7 +84,6 @@
 			isa = PBXGroup;
 			children = (
 				CA7A2EC322B0D32D002AD939 /* TestUtilities.framework */,
-				CA7A2ED022B0D33A002AD939 /* EventBus.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -124,22 +97,6 @@
 				CA7A2EE722B0D3B5002AD939 /* Random Data Generation */,
 			);
 			path = TestUtilities;
-			sourceTree = "<group>";
-		};
-		CA7A2ED122B0D33A002AD939 /* EventBus */ = {
-			isa = PBXGroup;
-			children = (
-				CA7A2ED222B0D33A002AD939 /* EventBus.h */,
-				CA7A2ED322B0D33A002AD939 /* Info.plist */,
-				CA7A2ED822B0D380002AD939 /* BlockEventConsumer.swift */,
-				CA7A2EDD22B0D380002AD939 /* EventBus.swift */,
-				CA7A2EDC22B0D380002AD939 /* EventBus+Convenience.swift */,
-				CA7A2EDB22B0D380002AD939 /* EventBusRegistration.swift */,
-				CA7A2EDE22B0D380002AD939 /* EventCache.swift */,
-				CA7A2EDA22B0D380002AD939 /* EventConsumer.swift */,
-				CA7A2ED922B0D380002AD939 /* EventHandlerRegistration.swift */,
-			);
-			path = EventBus;
 			sourceTree = "<group>";
 		};
 		CA7A2EE722B0D3B5002AD939 /* Random Data Generation */ = {
@@ -194,14 +151,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CA7A2ECB22B0D33A002AD939 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CA7A2ED422B0D33A002AD939 /* EventBus.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
@@ -223,24 +172,6 @@
 			productReference = CA7A2EC322B0D32D002AD939 /* TestUtilities.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		CA7A2ECF22B0D33A002AD939 /* EventBus */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CA7A2ED522B0D33A002AD939 /* Build configuration list for PBXNativeTarget "EventBus" */;
-			buildPhases = (
-				CA7A2ECB22B0D33A002AD939 /* Headers */,
-				CA7A2ECC22B0D33A002AD939 /* Sources */,
-				CA7A2ECD22B0D33A002AD939 /* Frameworks */,
-				CA7A2ECE22B0D33A002AD939 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = EventBus;
-			productName = EventBus;
-			productReference = CA7A2ED022B0D33A002AD939 /* EventBus.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -251,10 +182,6 @@
 				ORGANIZATIONNAME = Eurofurence;
 				TargetAttributes = {
 					CA7A2EC222B0D32D002AD939 = {
-						CreatedOnToolsVersion = 10.2.1;
-						LastSwiftMigration = 1020;
-					};
-					CA7A2ECF22B0D33A002AD939 = {
 						CreatedOnToolsVersion = 10.2.1;
 						LastSwiftMigration = 1020;
 					};
@@ -273,7 +200,6 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CA7A2ECF22B0D33A002AD939 /* EventBus */,
 				CA7A2EC222B0D32D002AD939 /* TestUtilities */,
 			);
 		};
@@ -281,13 +207,6 @@
 
 /* Begin PBXResourcesBuildPhase section */
 		CA7A2EC122B0D32D002AD939 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CA7A2ECE22B0D33A002AD939 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -314,20 +233,6 @@
 				CA7A2EF822B0D3B5002AD939 /* Data+RandomValueProviding.swift in Sources */,
 				CA7A2EFE22B0D3B5002AD939 /* Date+RandomValueProviding.swift in Sources */,
 				CA7A2F0122B0D3B5002AD939 /* RandomRangedValueProviding.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CA7A2ECC22B0D33A002AD939 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CA7A2EE222B0D380002AD939 /* EventBusRegistration.swift in Sources */,
-				CA7A2EE422B0D380002AD939 /* EventBus.swift in Sources */,
-				CA7A2EE322B0D380002AD939 /* EventBus+Convenience.swift in Sources */,
-				CA7A2EE522B0D380002AD939 /* EventCache.swift in Sources */,
-				CA7A2EE022B0D380002AD939 /* EventHandlerRegistration.swift in Sources */,
-				CA7A2EE122B0D380002AD939 /* EventConsumer.swift in Sources */,
-				CA7A2EDF22B0D380002AD939 /* BlockEventConsumer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,61 +424,6 @@
 			};
 			name = Release;
 		};
-		CA7A2ED622B0D33A002AD939 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 557SGQG5H4;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = EventBus/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EventBus;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		CA7A2ED722B0D33A002AD939 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 557SGQG5H4;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = EventBus/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EventBus;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -591,15 +441,6 @@
 			buildConfigurations = (
 				CA7A2EC922B0D32D002AD939 /* Debug */,
 				CA7A2ECA22B0D32D002AD939 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CA7A2ED522B0D33A002AD939 /* Build configuration list for PBXNativeTarget "EventBus" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CA7A2ED622B0D33A002AD939 /* Debug */,
-				CA7A2ED722B0D33A002AD939 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

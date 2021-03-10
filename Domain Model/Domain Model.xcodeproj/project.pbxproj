@@ -27,6 +27,13 @@
 		CA25A87522C15F4F00226478 /* WhenRequestingStoreRefresh_MultipleTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA25A87422C15F4F00226478 /* WhenRequestingStoreRefresh_MultipleTimes.swift */; };
 		CA2650B025F82E7E0080F132 /* EventsChanged.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2650AF25F82E7E0080F132 /* EventsChanged.swift */; };
 		CA2650B625F82E8C0080F132 /* EventRemovedFromFavourites.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2650B525F82E8C0080F132 /* EventRemovedFromFavourites.swift */; };
+		CA2650EE25F954500080F132 /* EventConsumer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2650E725F954500080F132 /* EventConsumer.swift */; };
+		CA2650EF25F954500080F132 /* EventCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2650E825F954500080F132 /* EventCache.swift */; };
+		CA2650F025F954500080F132 /* EventHandlerRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2650E925F954500080F132 /* EventHandlerRegistration.swift */; };
+		CA2650F125F954500080F132 /* EventBus+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2650EA25F954500080F132 /* EventBus+Convenience.swift */; };
+		CA2650F225F954500080F132 /* EventBus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2650EB25F954500080F132 /* EventBus.swift */; };
+		CA2650F325F954500080F132 /* BlockEventConsumer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2650EC25F954500080F132 /* BlockEventConsumer.swift */; };
+		CA2650F425F954500080F132 /* EventBusRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2650ED25F954500080F132 /* EventBusRegistration.swift */; };
 		CA2AA2DA22C941C200C0E1A1 /* WhenDescribingAppLink_WithValidDealerIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2D922C941C200C0E1A1 /* WhenDescribingAppLink_WithValidDealerIdentifier.swift */; };
 		CA2AA2DC22C942AB00C0E1A1 /* WhenDescribingAppLink_WithInvalidDealerIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2DB22C942AB00C0E1A1 /* WhenDescribingAppLink_WithInvalidDealerIdentifier.swift */; };
 		CA2AA2DF22C943E300C0E1A1 /* URLEntityProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2DE22C943E300C0E1A1 /* URLEntityProcessor.swift */; };
@@ -439,7 +446,6 @@
 		CA7A32DB22B16EB5002AD939 /* FakeDealersIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A32B022B16EB5002AD939 /* FakeDealersIndex.swift */; };
 		CA7A32DC22B16EB5002AD939 /* FakeDealersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A32B122B16EB5002AD939 /* FakeDealersService.swift */; };
 		CA7A32DD22B16EB5002AD939 /* CapturingURLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A32B222B16EB5002AD939 /* CapturingURLOpener.swift */; };
-		CA7A32EF22B17011002AD939 /* EventBus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A32EE22B17011002AD939 /* EventBus.framework */; };
 		CA7A32F122B17023002AD939 /* TestUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A32F022B17023002AD939 /* TestUtilities.framework */; };
 		CA7A32F622B17217002AD939 /* EurofurenceModelTestDoubles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A326922B16E75002AD939 /* EurofurenceModelTestDoubles.framework */; };
 		CA7A32FE22B17A44002AD939 /* TestUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A32FD22B17A44002AD939 /* TestUtilities.framework */; };
@@ -540,6 +546,13 @@
 		CA25A87422C15F4F00226478 /* WhenRequestingStoreRefresh_MultipleTimes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenRequestingStoreRefresh_MultipleTimes.swift; sourceTree = "<group>"; };
 		CA2650AF25F82E7E0080F132 /* EventsChanged.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsChanged.swift; sourceTree = "<group>"; };
 		CA2650B525F82E8C0080F132 /* EventRemovedFromFavourites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRemovedFromFavourites.swift; sourceTree = "<group>"; };
+		CA2650E725F954500080F132 /* EventConsumer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventConsumer.swift; sourceTree = "<group>"; };
+		CA2650E825F954500080F132 /* EventCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCache.swift; sourceTree = "<group>"; };
+		CA2650E925F954500080F132 /* EventHandlerRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventHandlerRegistration.swift; sourceTree = "<group>"; };
+		CA2650EA25F954500080F132 /* EventBus+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EventBus+Convenience.swift"; sourceTree = "<group>"; };
+		CA2650EB25F954500080F132 /* EventBus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBus.swift; sourceTree = "<group>"; };
+		CA2650EC25F954500080F132 /* BlockEventConsumer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockEventConsumer.swift; sourceTree = "<group>"; };
+		CA2650ED25F954500080F132 /* EventBusRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBusRegistration.swift; sourceTree = "<group>"; };
 		CA2AA2D922C941C200C0E1A1 /* WhenDescribingAppLink_WithValidDealerIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDescribingAppLink_WithValidDealerIdentifier.swift; sourceTree = "<group>"; };
 		CA2AA2DB22C942AB00C0E1A1 /* WhenDescribingAppLink_WithInvalidDealerIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDescribingAppLink_WithInvalidDealerIdentifier.swift; sourceTree = "<group>"; };
 		CA2AA2DE22C943E300C0E1A1 /* URLEntityProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLEntityProcessor.swift; sourceTree = "<group>"; };
@@ -1019,7 +1032,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA7A32EF22B17011002AD939 /* EventBus.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1165,6 +1177,20 @@
 				CA7A2FD722B16DE3002AD939 /* SignificantTimePassedEvent.swift */,
 			);
 			path = Time;
+			sourceTree = "<group>";
+		};
+		CA2650E625F9543D0080F132 /* Event Bus */ = {
+			isa = PBXGroup;
+			children = (
+				CA2650EC25F954500080F132 /* BlockEventConsumer.swift */,
+				CA2650EB25F954500080F132 /* EventBus.swift */,
+				CA2650EA25F954500080F132 /* EventBus+Convenience.swift */,
+				CA2650ED25F954500080F132 /* EventBusRegistration.swift */,
+				CA2650E825F954500080F132 /* EventCache.swift */,
+				CA2650E725F954500080F132 /* EventConsumer.swift */,
+				CA2650E925F954500080F132 /* EventHandlerRegistration.swift */,
+			);
+			path = "Event Bus";
 			sourceTree = "<group>";
 		};
 		CA2AA2D822C941B100C0E1A1 /* Dealers */ = {
@@ -1565,6 +1591,7 @@
 				CA7A2FE522B16DE3002AD939 /* RemoteNotificationRegistrationController.swift */,
 				CA7A2FCE22B16DE3002AD939 /* SignificantTimeObserver.swift */,
 				CA7A2FD022B16DE3002AD939 /* Domain Events */,
+				CA2650E625F9543D0080F132 /* Event Bus */,
 				CA7A2FDC22B16DE3002AD939 /* Objects */,
 				CA8A73E122BD20A6007A5201 /* Repositories */,
 				CA7A2FEC22B16DE3002AD939 /* Services */,
@@ -2582,11 +2609,13 @@
 				CA7A308822B16DE4002AD939 /* RemoteNotificationRegistrationController.swift in Sources */,
 				CA7A302D22B16DE4002AD939 /* LinkEntity+Adaptation.swift in Sources */,
 				CA7A304822B16DE4002AD939 /* LongRunningTaskManager.swift in Sources */,
+				CA2650F325F954500080F132 /* BlockEventConsumer.swift in Sources */,
 				CA7A300F22B16DE4002AD939 /* Message.swift in Sources */,
 				CA7A305922B16DE4002AD939 /* RoomCharacteristics.swift in Sources */,
 				CA7A303922B16DE4002AD939 /* Optional+Extensions.swift in Sources */,
 				CA7A307C22B16DE4002AD939 /* SignificantTimePassedEvent.swift in Sources */,
 				CA7A302222B16DE4002AD939 /* ConferenceDayEntity+Adaptation.swift in Sources */,
+				CA2650EF25F954500080F132 /* EventCache.swift in Sources */,
 				CA8A73E322BD20B2007A5201 /* ConcreteAdditionalServicesRepository.swift in Sources */,
 				CA7A302822B16DE4002AD939 /* KnowledgeEntryEntity+Adaptation.swift in Sources */,
 				CA7A305A22B16DE4002AD939 /* MessageCharacteristics.swift in Sources */,
@@ -2614,6 +2643,7 @@
 				CA7A304422B16DE4002AD939 /* AppVersionProviding.swift in Sources */,
 				CA7A308B22B16DE4002AD939 /* Array+AppExtensions.swift in Sources */,
 				CA7A309A22B16DE4002AD939 /* ConcreteConventionCountdownService.swift in Sources */,
+				CA2650F025F954500080F132 /* EventHandlerRegistration.swift in Sources */,
 				CA7A309D22B16DE4002AD939 /* EventsScheduleAdapter.swift in Sources */,
 				CA7A306322B16DE4002AD939 /* API.swift in Sources */,
 				CA7A303D22B16DE4002AD939 /* UserPreferences.swift in Sources */,
@@ -2627,6 +2657,7 @@
 				CAC4994722E0FF33003E1D77 /* DealersIndex.swift in Sources */,
 				CA7A301222B16DE4002AD939 /* EventObserver.swift in Sources */,
 				CA7A303B22B16DE4002AD939 /* Clock.swift in Sources */,
+				CA2650F125F954500080F132 /* EventBus+Convenience.swift in Sources */,
 				CA7A302B22B16DE4002AD939 /* EntityAdapting.swift in Sources */,
 				CA7A302922B16DE4002AD939 /* KnowledgeGroupEntity+Adaptation.swift in Sources */,
 				CA7A300B22B16DE4002AD939 /* KnowledgeGroup.swift in Sources */,
@@ -2648,6 +2679,7 @@
 				CA08324F2584E0DE0060551D /* UpcomingEventSpecification.swift in Sources */,
 				CA7A306122B16DE4002AD939 /* LoginRequest.swift in Sources */,
 				CA7A307A22B16DE4002AD939 /* EventFeedbackReady.swift in Sources */,
+				CA2650EE25F954500080F132 /* EventConsumer.swift in Sources */,
 				CA7A308922B16DE4002AD939 /* ImageDownloader.swift in Sources */,
 				CA7A300922B16DE4002AD939 /* Credential.swift in Sources */,
 				CA7A300722B16DE4002AD939 /* Room.swift in Sources */,
@@ -2718,9 +2750,11 @@
 				CA7A308E22B16DE4002AD939 /* ConcretePrivateMessagesService.swift in Sources */,
 				CA7A308C22B16DE4002AD939 /* ModelFunctions.swift in Sources */,
 				CA7A307022B16DE4002AD939 /* SessionStateService.swift in Sources */,
+				CA2650F225F954500080F132 /* EventBus.swift in Sources */,
 				CA7A303722B16DE4002AD939 /* URLSessionBasedJSONSession.swift in Sources */,
 				CA7A306922B16DE4002AD939 /* PrivateMessagesService.swift in Sources */,
 				CA7A302422B16DE4002AD939 /* TrackEntity+Adaptation.swift in Sources */,
+				CA2650F425F954500080F132 /* EventBusRegistration.swift in Sources */,
 				CA7A301622B16DE4002AD939 /* Identifier.swift in Sources */,
 				CA7A306C22B16DE4002AD939 /* ConventionCountdownService.swift in Sources */,
 				CA7A2FFF22B16DE4002AD939 /* EurofurenceSessionState.swift in Sources */,

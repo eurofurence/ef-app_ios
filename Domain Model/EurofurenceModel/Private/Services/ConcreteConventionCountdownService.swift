@@ -1,4 +1,3 @@
-import EventBus
 import Foundation
 
 class ConcreteConventionCountdownService: ConventionCountdownService, ConventionStartDateConsumer {
