@@ -170,9 +170,9 @@ class EventImpl: Event {
     private func postFavouriteStateChangedEvent() {
         let event: Any
         if isFavourite {
-            event = DomainEvent.FavouriteEvent(identifier: identifier)
+            event = DomainEvent.EventAddedToFavourites(identifier: identifier)
         } else {
-            event = DomainEvent.UnfavouriteEvent(identifier: identifier)
+            event = DomainEvent.EventRemovedFromFavourites(identifier: identifier)
         }
 
         eventBus.post(event)

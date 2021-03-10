@@ -157,7 +157,6 @@
 		CA7A307222B16DE4002AD939 /* KnowledgeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2FCB22B16DE3002AD939 /* KnowledgeService.swift */; };
 		CA7A307322B16DE4002AD939 /* ImagesCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2FCD22B16DE3002AD939 /* ImagesCache.swift */; };
 		CA7A307422B16DE4002AD939 /* SignificantTimeObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2FCE22B16DE3002AD939 /* SignificantTimeObserver.swift */; };
-		CA7A307622B16DE4002AD939 /* UnfavouriteEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2FD122B16DE3002AD939 /* UnfavouriteEvent.swift */; };
 		CA7A307722B16DE4002AD939 /* OpenURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2FD222B16DE3002AD939 /* OpenURL.swift */; };
 		CA7A307822B16DE4002AD939 /* DataStoreChangedEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2FD322B16DE3002AD939 /* DataStoreChangedEvent.swift */; };
 		CA7A307922B16DE4002AD939 /* LoggedOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2FD422B16DE3002AD939 /* LoggedOut.swift */; };
@@ -165,7 +164,7 @@
 		CA7A307B22B16DE4002AD939 /* DomainEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2FD622B16DE3002AD939 /* DomainEvent.swift */; };
 		CA7A307C22B16DE4002AD939 /* SignificantTimePassedEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2FD722B16DE3002AD939 /* SignificantTimePassedEvent.swift */; };
 		CA7A307D22B16DE4002AD939 /* RemoteNotificationTokenAvailable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2FD822B16DE3002AD939 /* RemoteNotificationTokenAvailable.swift */; };
-		CA7A307E22B16DE4002AD939 /* FavouriteEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2FD922B16DE3002AD939 /* FavouriteEvent.swift */; };
+		CA7A307E22B16DE4002AD939 /* EventAddedToFavourites.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2FD922B16DE3002AD939 /* EventAddedToFavourites.swift */; };
 		CA7A307F22B16DE4002AD939 /* LoggedIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2FDA22B16DE3002AD939 /* LoggedIn.swift */; };
 		CA7A308022B16DE4002AD939 /* ImageDownloadedEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2FDB22B16DE3002AD939 /* ImageDownloadedEvent.swift */; };
 		CA7A308122B16DE4002AD939 /* DealerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2FDE22B16DE3002AD939 /* DealerImpl.swift */; };
@@ -676,7 +675,6 @@
 		CA7A2FCB22B16DE3002AD939 /* KnowledgeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnowledgeService.swift; sourceTree = "<group>"; };
 		CA7A2FCD22B16DE3002AD939 /* ImagesCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagesCache.swift; sourceTree = "<group>"; };
 		CA7A2FCE22B16DE3002AD939 /* SignificantTimeObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignificantTimeObserver.swift; sourceTree = "<group>"; };
-		CA7A2FD122B16DE3002AD939 /* UnfavouriteEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnfavouriteEvent.swift; sourceTree = "<group>"; };
 		CA7A2FD222B16DE3002AD939 /* OpenURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenURL.swift; sourceTree = "<group>"; };
 		CA7A2FD322B16DE3002AD939 /* DataStoreChangedEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStoreChangedEvent.swift; sourceTree = "<group>"; };
 		CA7A2FD422B16DE3002AD939 /* LoggedOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggedOut.swift; sourceTree = "<group>"; };
@@ -684,7 +682,7 @@
 		CA7A2FD622B16DE3002AD939 /* DomainEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DomainEvent.swift; sourceTree = "<group>"; };
 		CA7A2FD722B16DE3002AD939 /* SignificantTimePassedEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignificantTimePassedEvent.swift; sourceTree = "<group>"; };
 		CA7A2FD822B16DE3002AD939 /* RemoteNotificationTokenAvailable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteNotificationTokenAvailable.swift; sourceTree = "<group>"; };
-		CA7A2FD922B16DE3002AD939 /* FavouriteEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteEvent.swift; sourceTree = "<group>"; };
+		CA7A2FD922B16DE3002AD939 /* EventAddedToFavourites.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventAddedToFavourites.swift; sourceTree = "<group>"; };
 		CA7A2FDA22B16DE3002AD939 /* LoggedIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggedIn.swift; sourceTree = "<group>"; };
 		CA7A2FDB22B16DE3002AD939 /* ImageDownloadedEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDownloadedEvent.swift; sourceTree = "<group>"; };
 		CA7A2FDE22B16DE3002AD939 /* DealerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealerImpl.swift; sourceTree = "<group>"; };
@@ -1154,10 +1152,11 @@
 		CA2650A925F82DEC0080F132 /* Events */ = {
 			isa = PBXGroup;
 			children = (
+				CA7A2FD922B16DE3002AD939 /* EventAddedToFavourites.swift */,
 				CA7A2FD522B16DE3002AD939 /* EventFeedbackReady.swift */,
-				CA7A2FDB22B16DE3002AD939 /* ImageDownloadedEvent.swift */,
-				CA2650AF25F82E7E0080F132 /* EventsChanged.swift */,
 				CA2650B525F82E8C0080F132 /* EventRemovedFromFavourites.swift */,
+				CA2650AF25F82E7E0080F132 /* EventsChanged.swift */,
+				CA7A2FDB22B16DE3002AD939 /* ImageDownloadedEvent.swift */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -1581,9 +1580,7 @@
 			children = (
 				CA7A2FD322B16DE3002AD939 /* DataStoreChangedEvent.swift */,
 				CA7A2FD622B16DE3002AD939 /* DomainEvent.swift */,
-				CA7A2FD922B16DE3002AD939 /* FavouriteEvent.swift */,
 				CA7A2FD222B16DE3002AD939 /* OpenURL.swift */,
-				CA7A2FD122B16DE3002AD939 /* UnfavouriteEvent.swift */,
 				CA2650A825F82DE00080F132 /* Authentication */,
 				CA2650A925F82DEC0080F132 /* Events */,
 				CA2650AA25F82E0A0080F132 /* Time */,
@@ -2595,7 +2592,6 @@
 				CA7A302222B16DE4002AD939 /* ConferenceDayEntity+Adaptation.swift in Sources */,
 				CA8A73E322BD20B2007A5201 /* ConcreteAdditionalServicesRepository.swift in Sources */,
 				CA7A302822B16DE4002AD939 /* KnowledgeEntryEntity+Adaptation.swift in Sources */,
-				CA7A307622B16DE4002AD939 /* UnfavouriteEvent.swift in Sources */,
 				CA7A305A22B16DE4002AD939 /* MessageCharacteristics.swift in Sources */,
 				CA7A300A22B16DE4002AD939 /* ConventionIdentifier.swift in Sources */,
 				CA5A5ACC2584EDD6007F6728 /* AnySpecification.swift in Sources */,
@@ -2605,7 +2601,7 @@
 				CA7A301422B16DE4002AD939 /* EventFeedbackDelegate.swift in Sources */,
 				CA7A300C22B16DE4002AD939 /* ExtendedDealerData.swift in Sources */,
 				CA7A304D22B16DE4002AD939 /* EurofurenceSessionBuilder.swift in Sources */,
-				CA7A307E22B16DE4002AD939 /* FavouriteEvent.swift in Sources */,
+				CA7A307E22B16DE4002AD939 /* EventAddedToFavourites.swift in Sources */,
 				CAA7F3AB258E40E8007B64F5 /* WeakCollection.swift in Sources */,
 				CA7A300622B16DE4002AD939 /* User.swift in Sources */,
 				CA7A305822B16DE4002AD939 /* ConferenceDayCharacteristics.swift in Sources */,

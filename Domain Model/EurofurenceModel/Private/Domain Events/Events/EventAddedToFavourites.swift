@@ -2,7 +2,7 @@ import Foundation
 
 extension DomainEvent {
 
-    struct UnfavouriteEvent {
+    struct EventAddedToFavourites {
 
         var identifier: EventIdentifier
 

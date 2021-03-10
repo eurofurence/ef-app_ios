@@ -13,7 +13,7 @@ class ConcreteEventsService: ClockDelegate, EventsService {
             self.service = service
         }
 
-        func consume(event: DomainEvent.FavouriteEvent) {
+        func consume(event: DomainEvent.EventAddedToFavourites) {
             let identifier = event.identifier
             service.favouriteEvent(identifier: identifier)
         }
@@ -28,7 +28,7 @@ class ConcreteEventsService: ClockDelegate, EventsService {
             self.service = service
         }
 
-        func consume(event: DomainEvent.UnfavouriteEvent) {
+        func consume(event: DomainEvent.EventRemovedFromFavourites) {
             let identifier = event.identifier
             service.unfavouriteEvent(identifier: identifier)
         }
@@ -42,9 +42,6 @@ class ConcreteEventsService: ClockDelegate, EventsService {
 
         favouriteEventIdentifiers.firstIndex(of: identifier).let({ favouriteEventIdentifiers.remove(at: $0) })
         provideFavouritesInformationToObservers()
-
-        let event = DomainEvent.EventRemovedFromFavourites(identifier: identifier)
-        eventBus.post(event)
     }
 
     // MARK: Properties
