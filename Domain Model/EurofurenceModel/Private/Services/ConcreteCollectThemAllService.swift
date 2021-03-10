@@ -36,7 +36,7 @@ class ConcreteCollectThemAllService: CollectThemAllService {
         observer.collectThemAllGameRequestDidChange(request)
     }
     
-    private class UpdateCollectThemAllRequestWhenAuthenticated: EventConsumer {
+    private struct UpdateCollectThemAllRequestWhenAuthenticated: EventConsumer {
 
         private unowned let service: ConcreteCollectThemAllService
 
@@ -50,7 +50,7 @@ class ConcreteCollectThemAllService: CollectThemAllService {
 
     }
 
-    private class UpdateCollectThemAllRequestWhenUnauthenticated: EventConsumer {
+    private struct UpdateCollectThemAllRequestWhenUnauthenticated: EventConsumer {
 
         private unowned let service: ConcreteCollectThemAllService
 

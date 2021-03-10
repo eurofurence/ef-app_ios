@@ -1,12 +1,8 @@
 import EventBus
 
-class EventFeedbackService: EventConsumer {
+struct EventFeedbackService: EventConsumer {
     
-    private let api: API
-    
-    init(api: API) {
-        self.api = api
-    }
+    let api: API
     
     func consume(event: DomainEvent.EventFeedbackReady) {
         let request = EventFeedbackRequest(

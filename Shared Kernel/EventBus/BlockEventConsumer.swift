@@ -1,4 +1,4 @@
-public class BlockEventConsumer<T>: EventConsumer {
+public struct BlockEventConsumer<T>: EventConsumer {
 
     private let block: (T) -> Void
 

@@ -5,7 +5,7 @@ class ConcreteEventsService: ClockDelegate, EventsService {
 
     // MARK: Nested Types
 
-    private class FavouriteEventHandler: EventConsumer {
+    private struct FavouriteEventHandler: EventConsumer {
 
         private unowned let service: ConcreteEventsService
 
@@ -20,7 +20,7 @@ class ConcreteEventsService: ClockDelegate, EventsService {
 
     }
 
-    private class UnfavouriteEventHandler: EventConsumer {
+    private struct UnfavouriteEventHandler: EventConsumer {
 
         private unowned let service: ConcreteEventsService
 

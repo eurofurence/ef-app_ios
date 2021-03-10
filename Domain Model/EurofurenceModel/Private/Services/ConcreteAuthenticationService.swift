@@ -13,7 +13,7 @@ class ConcreteAuthenticationService: AuthenticationService {
     private var loggedInUser: User?
     private var observers = [AuthenticationStateObserver]()
     
-    private class StoreNotificationTokenWhenChanged: EventConsumer {
+    private struct StoreNotificationTokenWhenChanged: EventConsumer {
         
         private unowned let controller: ConcreteAuthenticationService
         

@@ -13,7 +13,7 @@ class ConcretePrivateMessagesService: PrivateMessagesService {
         }
     }
     
-    private class MarkMessageAsReadHandler: EventConsumer {
+    private struct MarkMessageAsReadHandler: EventConsumer {
         
         private unowned let service: ConcretePrivateMessagesService
         
@@ -27,7 +27,7 @@ class ConcretePrivateMessagesService: PrivateMessagesService {
         
     }
     
-    private class EnterAuthenticatedStateWhenLoggedIn: EventConsumer {
+    private struct EnterAuthenticatedStateWhenLoggedIn: EventConsumer {
         
         private unowned let service: ConcretePrivateMessagesService
         
@@ -41,7 +41,7 @@ class ConcretePrivateMessagesService: PrivateMessagesService {
         
     }
     
-    private class ExitAuthenticatedStateWhenLoggedOut: EventConsumer {
+    private struct ExitAuthenticatedStateWhenLoggedOut: EventConsumer {
         
         private unowned let service: ConcretePrivateMessagesService
         

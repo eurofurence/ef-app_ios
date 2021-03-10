@@ -7,7 +7,7 @@ class RemoteNotificationRegistrationController {
     private var deviceToken: Data?
     private var authenticationToken: String?
     
-    private class RemoteNotificationTokenChanged: EventConsumer {
+    private struct RemoteNotificationTokenChanged: EventConsumer {
         
         private unowned let controller: RemoteNotificationRegistrationController
         
@@ -21,7 +21,7 @@ class RemoteNotificationRegistrationController {
         
     }
     
-    private class ReRegisterNotificationTokenWhenLoggedIn: EventConsumer {
+    private struct ReRegisterNotificationTokenWhenLoggedIn: EventConsumer {
         
         private unowned let controller: RemoteNotificationRegistrationController
         

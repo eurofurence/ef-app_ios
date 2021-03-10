@@ -56,7 +56,7 @@ class InMemoryEventsSearchController: EventsSearchController {
 
     }
 
-    private class RegenerateResultsWhenEventUnfavourited: EventConsumer {
+    private struct RegenerateResultsWhenEventUnfavourited: EventConsumer {
 
         private unowned let searchController: InMemoryEventsSearchController
 

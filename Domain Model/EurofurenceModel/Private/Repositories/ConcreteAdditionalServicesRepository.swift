@@ -6,7 +6,7 @@ class ConcreteAdditionalServicesRepository: AdditionalServicesRepository {
     private var consumers = [AdditionalServicesURLConsumer]()
     private var currentAdditionalServicesRequest: URLRequest
     
-    private class UseUnauthenticatedAdditionalServicesOnLogout: EventConsumer {
+    private struct UseUnauthenticatedAdditionalServicesOnLogout: EventConsumer {
         
         private unowned let controller: ConcreteAdditionalServicesRepository
         
@@ -20,7 +20,7 @@ class ConcreteAdditionalServicesRepository: AdditionalServicesRepository {
         
     }
     
-    private class UseAuthenticatedAdditionalServicesWhenLoggedIn: EventConsumer {
+    private struct UseAuthenticatedAdditionalServicesWhenLoggedIn: EventConsumer {
         
         private unowned let controller: ConcreteAdditionalServicesRepository
         
