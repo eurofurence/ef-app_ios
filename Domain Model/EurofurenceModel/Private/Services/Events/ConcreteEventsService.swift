@@ -40,7 +40,7 @@ class ConcreteEventsService: ClockDelegate, EventsService {
             transaction.deleteFavouriteEventIdentifier(identifier)
         }
 
-        favouriteEventIdentifiers.firstIndex(of: identifier).let({ favouriteEventIdentifiers.remove(at: $0) })
+        favouriteEventIdentifiers.removeAll(where: { $0 == identifier })
         provideFavouritesInformationToObservers()
     }
 
