@@ -35,9 +35,11 @@ public struct KeychainCredentialRepository: CredentialRepository {
     }
     
     private func makeMutableLoginCredentialQuery() -> NSMutableDictionary {
-        return [kSecClass: kSecClassGenericPassword,
-                kSecAttrAccount: userAccount,
-                kSecReturnData: kCFBooleanTrue as Any] as NSMutableDictionary
+        NSMutableDictionary(dictionary: [
+            kSecClass: kSecClassGenericPassword,
+            kSecAttrAccount: userAccount,
+            kSecReturnData: kCFBooleanTrue as Any
+        ])
     }
     
     private func copyItemFromKeychain() -> CFTypeRef? {
@@ -72,17 +74,21 @@ public struct KeychainCredentialRepository: CredentialRepository {
         var tokenExpiryDate: Date
         
         var credential: Credential {
-            return Credential(username: username,
-                              registrationNumber: registrationNumber,
-                              authenticationToken: authenticationToken,
-                              tokenExpiryDate: tokenExpiryDate)
+            Credential(
+                username: username,
+                registrationNumber: registrationNumber,
+                authenticationToken: authenticationToken,
+                tokenExpiryDate: tokenExpiryDate
+            )
         }
         
         static func fromCredential(_ credential: Credential) -> KeychainItemAttributes {
-            return KeychainItemAttributes(username: credential.username,
-                                          authenticationToken: credential.authenticationToken,
-                                          registrationNumber: credential.registrationNumber,
-                                          tokenExpiryDate: credential.tokenExpiryDate)
+            KeychainItemAttributes(
+                username: credential.username,
+                authenticationToken: credential.authenticationToken,
+                registrationNumber: credential.registrationNumber,
+                tokenExpiryDate: credential.tokenExpiryDate
+            )
         }
         
     }
