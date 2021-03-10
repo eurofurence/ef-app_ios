@@ -2,20 +2,7 @@ import Foundation
 
 class ConcreteRefreshService: RefreshService {
     
-    private let privateMessagesController: ConcretePrivateMessagesService
-
-    private let conventionIdentifier: ConventionIdentifier
     private let longRunningTaskManager: LongRunningTaskManager?
-    private let dataStore: DataStore
-    private let api: API
-    private let imageDownloader: ImageDownloader
-    private let clock: Clock
-    private let eventBus: EventBus
-    private let imageCache: ImagesCache
-    private let imageRepository: ImageRepository
-    private let forceRefreshRequired: ForceRefreshRequired
-    private let refreshCollaboration: RefreshCollaboration
-    
     private let chain: RefreshChain
 
     init(
@@ -32,18 +19,7 @@ class ConcreteRefreshService: RefreshService {
         forceRefreshRequired: ForceRefreshRequired,
         refreshCollaboration: RefreshCollaboration
     ) {
-        self.conventionIdentifier = conventionIdentifier
         self.longRunningTaskManager = longRunningTaskManager
-        self.dataStore = dataStore
-        self.api = api
-        self.imageDownloader = imageDownloader
-        self.clock = clock
-        self.eventBus = eventBus
-        self.imageCache = imageCache
-        self.imageRepository = imageRepository
-        self.privateMessagesController = privateMessagesController
-        self.forceRefreshRequired = forceRefreshRequired
-        self.refreshCollaboration = refreshCollaboration
         
         chain = RefreshChain(
             conventionIdentifier: conventionIdentifier,
