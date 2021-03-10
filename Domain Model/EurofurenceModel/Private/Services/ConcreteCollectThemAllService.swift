@@ -3,50 +3,19 @@ import Foundation
 
 class ConcreteCollectThemAllService: CollectThemAllService {
 
-    private class LoggedOut: EventConsumer {
-
-        private let handler: () -> Void
-
-        init(handler: @escaping () -> Void) {
-            self.handler = handler
-        }
-
-        func consume(event: DomainEvent.LoggedOut) {
-            handler()
-        }
-
-    }
-
-    private class LoggedIn: EventConsumer {
-
-        private let handler: () -> Void
-
-        init(handler: @escaping () -> Void) {
-            self.handler = handler
-        }
-
-        func consume(event: DomainEvent.LoggedIn) {
-            handler()
-        }
-
-    }
-
     private let collectThemAllRequestFactory: CollectThemAllRequestFactory
     private let credentialRepository: CredentialRepository
 
-    init(eventBus: EventBus,
-         collectThemAllRequestFactory: CollectThemAllRequestFactory,
-         credentialRepository: CredentialRepository) {
+    init(
+        eventBus: EventBus,
+        collectThemAllRequestFactory: CollectThemAllRequestFactory,
+        credentialRepository: CredentialRepository
+    ) {
         self.collectThemAllRequestFactory = collectThemAllRequestFactory
         self.credentialRepository = credentialRepository
 
-        eventBus.subscribe(consumer: LoggedOut { [weak self] in
-            self?.notifyObserversGameRequestDidChange()
-        })
-        
-        eventBus.subscribe(consumer: LoggedIn { [weak self] in
-            self?.notifyObserversGameRequestDidChange()
-        })
+        eventBus.subscribe(consumer: UpdateCollectThemAllRequestWhenAuthenticated(service: self))
+        eventBus.subscribe(consumer: UpdateCollectThemAllRequestWhenUnauthenticated(service: self))
     }
 
     private var collectThemAllRequestObservers = [CollectThemAllURLObserver]()
@@ -65,6 +34,34 @@ class ConcreteCollectThemAllService: CollectThemAllService {
             .defaultingTo(collectThemAllRequestFactory.makeAnonymousGameURLRequest())
 
         observer.collectThemAllGameRequestDidChange(request)
+    }
+    
+    private class UpdateCollectThemAllRequestWhenAuthenticated: EventConsumer {
+
+        private unowned let service: ConcreteCollectThemAllService
+
+        init(service: ConcreteCollectThemAllService) {
+            self.service = service
+        }
+
+        func consume(event: DomainEvent.LoggedOut) {
+            service.notifyObserversGameRequestDidChange()
+        }
+
+    }
+
+    private class UpdateCollectThemAllRequestWhenUnauthenticated: EventConsumer {
+
+        private unowned let service: ConcreteCollectThemAllService
+
+        init(service: ConcreteCollectThemAllService) {
+            self.service = service
+        }
+
+        func consume(event: DomainEvent.LoggedIn) {
+            service.notifyObserversGameRequestDidChange()
+        }
+
     }
 
 }
