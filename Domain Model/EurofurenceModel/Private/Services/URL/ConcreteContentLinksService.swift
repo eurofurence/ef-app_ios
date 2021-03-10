@@ -1,20 +1,12 @@
 import EventBus
 import Foundation
 
-class ConcreteContentLinksService: ContentLinksService, EventConsumer {
+class ConcreteContentLinksService: ContentLinksService {
 
-    private let urlOpener: URLOpener?
     private let urlEntityProcessor: URLEntityProcessor
 
-    init(eventBus: EventBus, urlOpener: URLOpener?, urlEntityProcessor: URLEntityProcessor) {
-        self.urlOpener = urlOpener
+    init(urlEntityProcessor: URLEntityProcessor) {
         self.urlEntityProcessor = urlEntityProcessor
-        
-        eventBus.subscribe(consumer: self)
-    }
-
-    func consume(event: DomainEvent.OpenURL) {
-        urlOpener?.open(event.url)
     }
 
     func lookupContent(for link: Link) -> LinkContentLookupResult? {

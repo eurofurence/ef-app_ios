@@ -122,7 +122,8 @@ class ConcreteSession: EurofurenceSession {
             dataStore: dataStore,
             imageCache: imageCache,
             mapCoordinateRender: mapCoordinateRender,
-            shareableURLFactory: shareableURLFactory
+            shareableURLFactory: shareableURLFactory,
+            urlOpener: urlOpener
         )
         
         collectThemAllService = ConcreteCollectThemAllService(
@@ -160,11 +161,7 @@ class ConcreteSession: EurofurenceSession {
             dealersService: dealersService, dataStore: dataStore
         )
         
-        contentLinksService = ConcreteContentLinksService(
-            eventBus: eventBus,
-            urlOpener: urlOpener,
-            urlEntityProcessor: urlEntityProcessor
-        )
+        contentLinksService = ConcreteContentLinksService(urlEntityProcessor: urlEntityProcessor)
         
         eventBus.subscribe(consumer: EventFeedbackService(api: api))
         

@@ -157,7 +157,6 @@
 		CA7A307222B16DE4002AD939 /* KnowledgeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2FCB22B16DE3002AD939 /* KnowledgeService.swift */; };
 		CA7A307322B16DE4002AD939 /* ImagesCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2FCD22B16DE3002AD939 /* ImagesCache.swift */; };
 		CA7A307422B16DE4002AD939 /* SignificantTimeObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2FCE22B16DE3002AD939 /* SignificantTimeObserver.swift */; };
-		CA7A307722B16DE4002AD939 /* OpenURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2FD222B16DE3002AD939 /* OpenURL.swift */; };
 		CA7A307822B16DE4002AD939 /* DataStoreChangedEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2FD322B16DE3002AD939 /* DataStoreChangedEvent.swift */; };
 		CA7A307922B16DE4002AD939 /* LoggedOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2FD422B16DE3002AD939 /* LoggedOut.swift */; };
 		CA7A307A22B16DE4002AD939 /* EventFeedbackReady.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2FD522B16DE3002AD939 /* EventFeedbackReady.swift */; };
@@ -675,7 +674,6 @@
 		CA7A2FCB22B16DE3002AD939 /* KnowledgeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnowledgeService.swift; sourceTree = "<group>"; };
 		CA7A2FCD22B16DE3002AD939 /* ImagesCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagesCache.swift; sourceTree = "<group>"; };
 		CA7A2FCE22B16DE3002AD939 /* SignificantTimeObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignificantTimeObserver.swift; sourceTree = "<group>"; };
-		CA7A2FD222B16DE3002AD939 /* OpenURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenURL.swift; sourceTree = "<group>"; };
 		CA7A2FD322B16DE3002AD939 /* DataStoreChangedEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStoreChangedEvent.swift; sourceTree = "<group>"; };
 		CA7A2FD422B16DE3002AD939 /* LoggedOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggedOut.swift; sourceTree = "<group>"; };
 		CA7A2FD522B16DE3002AD939 /* EventFeedbackReady.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventFeedbackReady.swift; sourceTree = "<group>"; };
@@ -1580,7 +1578,6 @@
 			children = (
 				CA7A2FD322B16DE3002AD939 /* DataStoreChangedEvent.swift */,
 				CA7A2FD622B16DE3002AD939 /* DomainEvent.swift */,
-				CA7A2FD222B16DE3002AD939 /* OpenURL.swift */,
 				CA2650A825F82DE00080F132 /* Authentication */,
 				CA2650A925F82DEC0080F132 /* Events */,
 				CA2650AA25F82E0A0080F132 /* Time */,
@@ -2694,7 +2691,6 @@
 				CA7A309722B16DE4002AD939 /* ConcreteAuthenticationService.swift in Sources */,
 				CA7A309122B16DE4002AD939 /* ConcreteCollectThemAllService.swift in Sources */,
 				CAC4994322E0FF0B003E1D77 /* DealerCategory.swift in Sources */,
-				CA7A307722B16DE4002AD939 /* OpenURL.swift in Sources */,
 				CA7A306522B16DE4002AD939 /* Services.swift in Sources */,
 				CA7A305322B16DE4002AD939 /* ModelCharacteristics.swift in Sources */,
 				CA7A301D22B16DE4002AD939 /* BundleAppVersionProviding.swift in Sources */,

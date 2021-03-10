@@ -162,17 +162,22 @@ class ConcreteDealersService: DealersService {
     private let imageCache: ImagesCache
     private let mapCoordinateRender: MapCoordinateRender?
     private let shareableURLFactory: ShareableURLFactory
+    private let urlOpener: URLOpener?
 
-    init(eventBus: EventBus,
-         dataStore: DataStore,
-         imageCache: ImagesCache,
-         mapCoordinateRender: MapCoordinateRender?,
-         shareableURLFactory: ShareableURLFactory) {
+    init(
+        eventBus: EventBus,
+        dataStore: DataStore,
+        imageCache: ImagesCache,
+        mapCoordinateRender: MapCoordinateRender?,
+        shareableURLFactory: ShareableURLFactory,
+        urlOpener: URLOpener?
+    ) {
         self.eventBus = eventBus
         self.dataStore = dataStore
         self.imageCache = imageCache
         self.mapCoordinateRender = mapCoordinateRender
         self.shareableURLFactory = shareableURLFactory
+        self.urlOpener = urlOpener
 
         eventBus.subscribe(consumer: DataStoreChangedConsumer { [weak self] in
             self?.reloadDealersFromDataStore()
@@ -203,7 +208,8 @@ class ConcreteDealersService: DealersService {
             imageCache: imageCache,
             mapCoordinateRender: mapCoordinateRender,
             characteristics: characteristics,
-            shareableURLFactory: shareableURLFactory
+            shareableURLFactory: shareableURLFactory,
+            urlOpener: urlOpener
         )
     }
     
