@@ -77,14 +77,13 @@ class ConcreteRefreshService: RefreshService {
             privateMessagesController: privateMessagesController,
             refreshCollaboration: refreshCollaboration,
             clock: clock,
-            imageRepository: imageRepository,
-            chainComplete: { [weak self] (error) in
-                completionHandler(error)
-                self?.refreshTaskDidFinish()
-            }
+            imageRepository: imageRepository
         )
         
-        chain?.start(progress: progress)
+        chain?.start(progress: progress) { [weak self] (error) in
+            completionHandler(error)
+            self?.refreshTaskDidFinish()
+        }
         
         return progress
     }

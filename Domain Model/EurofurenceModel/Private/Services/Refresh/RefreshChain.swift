@@ -2,7 +2,6 @@ import Foundation
 
 class RefreshChain {
     
-    private let chainComplete: (RefreshServiceError?) -> Void
     private let conventionIdentifier: ConventionIdentifier
     private let forceRefreshRequired: ForceRefreshRequired
     private let dataStore: DataStore
@@ -26,12 +25,10 @@ class RefreshChain {
         privateMessagesController: ConcretePrivateMessagesService,
         refreshCollaboration: RefreshCollaboration,
         clock: Clock,
-        imageRepository: ImageRepository,
-        chainComplete: @escaping (RefreshServiceError?) -> Void
+        imageRepository: ImageRepository
     ) {
         self.conventionIdentifier = conventionIdentifier
         self.forceRefreshRequired = forceRefreshRequired
-        self.chainComplete = chainComplete
         self.dataStore = dataStore
         self.api = api
         self.imageDownloader = imageDownloader
@@ -43,16 +40,16 @@ class RefreshChain {
         self.imageRepository = imageRepository
     }
     
-    func start(progress: Progress) {
+    func start(progress: Progress, chainComplete: @escaping (RefreshServiceError?) -> Void) {
         let lastSyncTime = determineLastRefreshDate()
         api.fetchLatestData(lastSyncTime: lastSyncTime) { (response) in
             guard let response = response else {
-                self.chainComplete(.apiError)
+                chainComplete(.apiError)
                 return
             }
             
             guard self.conventionIdentifier.identifier == response.conventionIdentifier else {
-                self.chainComplete(.conventionIdentifierMismatch)
+                chainComplete(.conventionIdentifierMismatch)
                 return
             }
             
@@ -67,9 +64,9 @@ class RefreshChain {
                 self.privateMessagesController.refreshMessages { (_) in
                     self.refreshCollaboration.executeCollaborativeRefreshTask(completionHandler: { (error) in
                         if error != nil {
-                            self.chainComplete(.collaborationError)
+                            chainComplete(.collaborationError)
                         } else {
-                            self.chainComplete(nil)
+                            chainComplete(nil)
                         }
                     })
                 }
