@@ -1,82 +1,58 @@
 import Foundation
 
-class ConcreteRefreshService: RefreshService {
+class RefreshChain {
     
-    private let privateMessagesController: ConcretePrivateMessagesService
-
+    private let chainComplete: (RefreshServiceError?) -> Void
     private let conventionIdentifier: ConventionIdentifier
-    private let longRunningTaskManager: LongRunningTaskManager?
+    private let forceRefreshRequired: ForceRefreshRequired
     private let dataStore: DataStore
     private let api: API
     private let imageDownloader: ImageDownloader
-    private let clock: Clock
     private let eventBus: EventBus
     private let imageCache: ImagesCache
-    private let imageRepository: ImageRepository
-    private let forceRefreshRequired: ForceRefreshRequired
+    private let privateMessagesController: ConcretePrivateMessagesService
     private let refreshCollaboration: RefreshCollaboration
-
+    private let clock: Clock
+    private let imageRepository: ImageRepository
+    
     init(
         conventionIdentifier: ConventionIdentifier,
-        longRunningTaskManager: LongRunningTaskManager?,
+        forceRefreshRequired: ForceRefreshRequired,
         dataStore: DataStore,
         api: API,
         imageDownloader: ImageDownloader,
-        clock: Clock,
         eventBus: EventBus,
         imageCache: ImagesCache,
-        imageRepository: ImageRepository,
         privateMessagesController: ConcretePrivateMessagesService,
-        forceRefreshRequired: ForceRefreshRequired,
-        refreshCollaboration: RefreshCollaboration
+        refreshCollaboration: RefreshCollaboration,
+        clock: Clock,
+        imageRepository: ImageRepository,
+        chainComplete: @escaping (RefreshServiceError?) -> Void
     ) {
         self.conventionIdentifier = conventionIdentifier
-        self.longRunningTaskManager = longRunningTaskManager
+        self.forceRefreshRequired = forceRefreshRequired
+        self.chainComplete = chainComplete
         self.dataStore = dataStore
         self.api = api
         self.imageDownloader = imageDownloader
-        self.clock = clock
         self.eventBus = eventBus
         self.imageCache = imageCache
-        self.imageRepository = imageRepository
         self.privateMessagesController = privateMessagesController
-        self.forceRefreshRequired = forceRefreshRequired
         self.refreshCollaboration = refreshCollaboration
-    }
-
-    private var refreshObservers = [RefreshServiceObserver]()
-    func add(_ observer: RefreshServiceObserver) {
-        refreshObservers.append(observer)
+        self.clock = clock
+        self.imageRepository = imageRepository
     }
     
-    private var ongoingProgress: Progress?
-
-    @discardableResult
-    func refreshLocalStore(completionHandler: @escaping (RefreshServiceError?) -> Void) -> Progress {
-        if let progress = ongoingProgress {
-            return progress
-        }
-        
-        startLongRunningTask()
-        notifyRefreshStarted()
-        
-        let progress = Progress()
-        progress.totalUnitCount = -1
-        progress.completedUnitCount = -1
-        
-        ongoingProgress = progress
-        
+    func start(progress: Progress) {
         let lastSyncTime = determineLastRefreshDate()
         api.fetchLatestData(lastSyncTime: lastSyncTime) { (response) in
             guard let response = response else {
-                completionHandler(.apiError)
-                self.refreshTaskDidFinish()
+                self.chainComplete(.apiError)
                 return
             }
             
             guard self.conventionIdentifier.identifier == response.conventionIdentifier else {
-                completionHandler(.conventionIdentifierMismatch)
-                self.refreshTaskDidFinish()
+                self.chainComplete(.conventionIdentifierMismatch)
                 return
             }
             
@@ -91,24 +67,14 @@ class ConcreteRefreshService: RefreshService {
                 self.privateMessagesController.refreshMessages { (_) in
                     self.refreshCollaboration.executeCollaborativeRefreshTask(completionHandler: { (error) in
                         if error != nil {
-                            completionHandler(.collaborationError)
-                        } else {                        
-                            completionHandler(nil)
+                            self.chainComplete(.collaborationError)
+                        } else {
+                            self.chainComplete(nil)
                         }
-                        
-                        self.refreshTaskDidFinish()
                     })
                 }
             }
         }
-        
-        return progress
-    }
-
-    private func refreshTaskDidFinish() {
-        ongoingProgress = nil
-        notifyRefreshFinished()
-        finishLongRunningTask()
     }
     
     private func determineLastRefreshDate() -> Date? {
@@ -129,27 +95,7 @@ class ConcreteRefreshService: RefreshService {
         
         eventBus.post(DomainEvent.DataStoreChangedEvent())
     }
-
-    private func notifyRefreshFinished() {
-        refreshObservers.forEach({ $0.refreshServiceDidFinishRefreshing() })
-    }
-
-    private func notifyRefreshStarted() {
-        refreshObservers.forEach({ $0.refreshServiceDidBeginRefreshing() })
-    }
     
-    private var longRunningTaskIdentifier: AnyHashable?
-    private func startLongRunningTask() {
-        longRunningTaskIdentifier = longRunningTaskManager?.beginLongRunningTask()
-    }
-    
-    private func finishLongRunningTask() {
-        if let identifier = longRunningTaskIdentifier {
-            longRunningTaskManager?.finishLongRunningTask(token: identifier)
-            longRunningTaskIdentifier = nil
-        }
-    }
-
     private func deleteRemovedEntities(response: ModelCharacteristics, transaction: DataStoreTransaction) {
         response.images.deleted.forEach(transaction.deleteImage)
         response.images.deleted.forEach(imageCache.deleteImage)
@@ -291,5 +237,5 @@ class ConcreteRefreshService: RefreshService {
             })
         }
     }
-
+    
 }
