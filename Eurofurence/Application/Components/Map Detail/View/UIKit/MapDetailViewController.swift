@@ -82,7 +82,8 @@ class MapDetailViewController: UIViewController,
         viewController.loadView()
         viewController.setContextualContent(contextualContent.content)
         viewController.modalPresentationStyle = .popover
-        viewController.popoverPresentationController.let { (popover) in
+        
+        if let popover = viewController.popoverPresentationController {
             popover.delegate = self
             popover.backgroundColor = .white
             popover.passthroughViews = [view]

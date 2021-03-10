@@ -50,7 +50,7 @@ class WhenLoggingOutSuccessfully: XCTestCase {
         context.authenticationService.logout { _ in }
         context.notificationTokenRegistration.succeedLastRequest()
 
-        XCTAssertTrue(context.credentialStore.didDeletePersistedToken)
+        XCTAssertTrue(context.credentialRepository.didDeletePersistedToken)
     }
 
     func testSucceedingToUnregisterAuthTokenWithRemoteTokenRegistrationShouldNotifyLogoutObserversUserLoggedOut() {

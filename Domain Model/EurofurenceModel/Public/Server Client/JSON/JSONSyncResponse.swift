@@ -2,30 +2,34 @@ import Foundation
 
 // swiftlint:disable nesting
 struct JSONSyncResponse: Decodable {
-
+    
     func asAPIResponse() -> ModelCharacteristics {
-        return ModelCharacteristics(conventionIdentifier: ConventionIdentifier,
-                                    knowledgeGroups: KnowledgeGroups.delta,
-                                    knowledgeEntries: KnowledgeEntries.delta,
-                                    announcements: Announcements.delta,
-                                    events: Events.delta,
-                                    rooms: EventConferenceRooms.delta,
-                                    tracks: EventConferenceTracks.delta,
-                                    conferenceDays: EventConferenceDays.delta,
-                                    dealers: Dealers.delta,
-                                    maps: Maps.delta,
-                                    images: Images.delta)
+        return ModelCharacteristics(
+            conventionIdentifier: ConventionIdentifier,
+            knowledgeGroups: KnowledgeGroups.delta,
+            knowledgeEntries: KnowledgeEntries.delta,
+            announcements: Announcements.delta,
+            events: Events.delta,
+            rooms: EventConferenceRooms.delta,
+            tracks: EventConferenceTracks.delta,
+            conferenceDays: EventConferenceDays.delta,
+            dealers: Dealers.delta,
+            maps: Maps.delta,
+            images: Images.delta
+        )
     }
-
+    
     private struct Leaf<T>: Decodable where T: Decodable & ModelRepresenting {
         var ChangedEntities: [T]
         var DeletedEntities: [String]
         var RemoveAllBeforeInsert: Bool
-
+        
         var delta: ModelCharacteristics.Update<T.ModelType> {
-            return ModelCharacteristics.Update(changed: ChangedEntities.map(\.modelValue),
-                                               deleted: DeletedEntities,
-                                               removeAllBeforeInsert: RemoveAllBeforeInsert)
+            return ModelCharacteristics.Update(
+                changed: ChangedEntities.map(\.modelValue),
+                deleted: DeletedEntities,
+                removeAllBeforeInsert: RemoveAllBeforeInsert
+            )
         }
     }
 
@@ -37,16 +41,18 @@ struct JSONSyncResponse: Decodable {
         var FontAwesomeIconCharacterUnicodeAddress: String
 
         var modelValue: KnowledgeGroupCharacteristics {
-            return KnowledgeGroupCharacteristics(identifier: Id,
-                                                 order: Order,
-                                                 groupName: Name,
-                                                 groupDescription: Description,
-                                                 fontAwesomeCharacterAddress: FontAwesomeIconCharacterUnicodeAddress)
+            return KnowledgeGroupCharacteristics(
+                identifier: Id,
+                order: Order,
+                groupName: Name,
+                groupDescription: Description,
+                fontAwesomeCharacterAddress: FontAwesomeIconCharacterUnicodeAddress
+            )
         }
     }
-
+    
     struct JSONKnowledgeEntry: Decodable, ModelRepresenting {
-
+        
         var Id: String
         var KnowledgeGroupId: String
         var Title: String
@@ -54,18 +60,20 @@ struct JSONSyncResponse: Decodable {
         var Text: String
         var Links: [JSONLink]
         var ImageIds: [String]
-
+        
         var modelValue: KnowledgeEntryCharacteristics {
-            return KnowledgeEntryCharacteristics(identifier: Id,
-                                                 groupIdentifier: KnowledgeGroupId,
-                                                 title: Title,
-                                                 order: Order,
-                                                 text: Text,
-                                                 links: Links.map(\.modelValue),
-                                                 imageIdentifiers: ImageIds)
+            return KnowledgeEntryCharacteristics(
+                identifier: Id,
+                groupIdentifier: KnowledgeGroupId,
+                title: Title,
+                order: Order,
+                text: Text,
+                links: Links.map(\.modelValue),
+                imageIdentifiers: ImageIds
+            )
         }
     }
-
+    
     struct JSONLink: Decodable, ModelRepresenting {
 
         enum JSONFragmentType: String, Decodable, ModelRepresenting {
@@ -95,17 +103,19 @@ struct JSONSyncResponse: Decodable {
         var Content: String
         var LastChangeDateTimeUtc: Date
         var ImageId: String?
-
+        
         var modelValue: AnnouncementCharacteristics {
-            return AnnouncementCharacteristics(identifier: Id,
-                                               title: Title,
-                                               content: Content,
-                                               lastChangedDateTime: LastChangeDateTimeUtc,
-                                               imageIdentifier: ImageId)
+            return AnnouncementCharacteristics(
+                identifier: Id,
+                title: Title,
+                content: Content,
+                lastChangedDateTime: LastChangeDateTimeUtc,
+                imageIdentifier: ImageId
+            )
         }
-
+        
     }
-
+    
     struct JSONRoom: Decodable, ModelRepresenting {
 
         var Id: String
@@ -134,25 +144,27 @@ struct JSONSyncResponse: Decodable {
         var PosterImageId: String?
         var Tags: [String]?
         var IsAcceptingFeedback: Bool
-
+        
         var modelValue: EventCharacteristics {
-            return EventCharacteristics(identifier: Id,
-                                        roomIdentifier: ConferenceRoomId,
-                                        trackIdentifier: ConferenceTrackId,
-                                        dayIdentifier: ConferenceDayId,
-                                        startDateTime: StartDateTimeUtc,
-                                        endDateTime: EndDateTimeUtc,
-                                        title: Title,
-                                        subtitle: SubTitle,
-                                        abstract: Abstract,
-                                        panelHosts: PanelHosts,
-                                        eventDescription: Description,
-                                        posterImageId: PosterImageId,
-                                        bannerImageId: BannerImageId,
-                                        tags: Tags,
-                                        isAcceptingFeedback: IsAcceptingFeedback)
+            return EventCharacteristics(
+                identifier: Id,
+                roomIdentifier: ConferenceRoomId,
+                trackIdentifier: ConferenceTrackId,
+                dayIdentifier: ConferenceDayId,
+                startDateTime: StartDateTimeUtc,
+                endDateTime: EndDateTimeUtc,
+                title: Title,
+                subtitle: SubTitle,
+                abstract: Abstract,
+                panelHosts: PanelHosts,
+                eventDescription: Description,
+                posterImageId: PosterImageId,
+                bannerImageId: BannerImageId,
+                tags: Tags,
+                isAcceptingFeedback: IsAcceptingFeedback
+            )
         }
-
+        
     }
 
     struct JSONTrack: Decodable, ModelRepresenting {
@@ -197,32 +209,34 @@ struct JSONSyncResponse: Decodable {
         var AboutTheArtistText: String
         var AboutTheArtText: String
         var ArtPreviewCaption: String
-
+        
         var modelValue: DealerCharacteristics {
-            return DealerCharacteristics(identifier: Id,
-                                         displayName: DisplayName,
-                                         attendeeNickname: AttendeeNickname,
-                                         attendsOnThursday: AttendsOnThursday,
-                                         attendsOnFriday: AttendsOnFriday,
-                                         attendsOnSaturday: AttendsOnSaturday,
-                                         isAfterDark: IsAfterDark,
-                                         artistThumbnailImageId: ArtistThumbnailImageId,
-                                         artistImageId: ArtistImageId,
-                                         artPreviewImageId: ArtPreviewImageId,
-                                         categories: Categories,
-                                         shortDescription: ShortDescription,
-                                         links: Links?.map(\.modelValue),
-                                         twitterHandle: TwitterHandle,
-                                         telegramHandle: TelegramHandle,
-                                         aboutTheArtistText: AboutTheArtistText,
-                                         aboutTheArtText: AboutTheArtText,
-                                         artPreviewCaption: ArtPreviewCaption)
+            return DealerCharacteristics(
+                identifier: Id,
+                displayName: DisplayName,
+                attendeeNickname: AttendeeNickname,
+                attendsOnThursday: AttendsOnThursday,
+                attendsOnFriday: AttendsOnFriday,
+                attendsOnSaturday: AttendsOnSaturday,
+                isAfterDark: IsAfterDark,
+                artistThumbnailImageId: ArtistThumbnailImageId,
+                artistImageId: ArtistImageId,
+                artPreviewImageId: ArtPreviewImageId,
+                categories: Categories,
+                shortDescription: ShortDescription,
+                links: Links?.map(\.modelValue),
+                twitterHandle: TwitterHandle,
+                telegramHandle: TelegramHandle,
+                aboutTheArtistText: AboutTheArtistText,
+                aboutTheArtText: AboutTheArtText,
+                artPreviewCaption: ArtPreviewCaption
+            )
         }
-
+        
     }
-
+    
     struct JSONMap: Decodable, ModelRepresenting {
-
+        
         struct JSONMapEntry: Decodable, ModelRepresenting {
 
             struct JSONMapEntryLink: Decodable, ModelRepresenting {
@@ -260,13 +274,15 @@ struct JSONSyncResponse: Decodable {
             var Y: Int
             var TapRadius: Int
             var Links: [JSONMapEntryLink]
-
+            
             var modelValue: MapCharacteristics.Entry {
-                return MapCharacteristics.Entry(identifier: Id,
-                                                x: X,
-                                                y: Y,
-                                                tapRadius: TapRadius,
-                                                links: Links.map(\.modelValue))
+                return MapCharacteristics.Entry(
+                    identifier: Id,
+                    x: X,
+                    y: Y,
+                    tapRadius: TapRadius,
+                    links: Links.map(\.modelValue)
+                )
             }
 
         }
@@ -275,30 +291,34 @@ struct JSONSyncResponse: Decodable {
         var ImageId: String
         var Description: String
         var Entries: [JSONMapEntry]
-
+        
         var modelValue: MapCharacteristics {
-            return MapCharacteristics(identifier: Id,
-                                      imageIdentifier: ImageId,
-                                      mapDescription: Description,
-                                      entries: Entries.map(\.modelValue))
+            return MapCharacteristics(
+                identifier: Id,
+                imageIdentifier: ImageId,
+                mapDescription: Description,
+                entries: Entries.map(\.modelValue)
+            )
         }
-
+        
     }
-
+    
     struct JSONImage: Decodable, ModelRepresenting {
-
+        
         var Id: String
         var InternalReference: String
         var ContentHashSha1: String
-
+        
         var modelValue: ImageCharacteristics {
-            return ImageCharacteristics(identifier: Id,
-                                        internalReference: InternalReference,
-                                        contentHashSha1: ContentHashSha1)
+            return ImageCharacteristics(
+                identifier: Id,
+                internalReference: InternalReference,
+                contentHashSha1: ContentHashSha1
+            )
         }
-
+        
     }
-
+    
     private var ConventionIdentifier: String
     private var KnowledgeGroups: Leaf<JSONKnowledgeGroup>
     private var KnowledgeEntries: Leaf<JSONKnowledgeEntry>

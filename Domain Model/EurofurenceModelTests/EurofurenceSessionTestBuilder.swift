@@ -8,7 +8,7 @@ class EurofurenceSessionTestBuilder {
         var session: EurofurenceSession
         var clock: StubClock
         var notificationTokenRegistration: CapturingRemoteNotificationsTokenRegistration
-        var credentialStore: CapturingCredentialStore
+        var credentialRepository: CapturingCredentialStore
         var api: FakeAPI
         var dataStore: InMemoryDataStore
         var conventionStartDateRepository: StubConventionStartDateRepository
@@ -24,7 +24,7 @@ class EurofurenceSessionTestBuilder {
         fileprivate init(session: EurofurenceSession,
                          clock: StubClock,
                          notificationTokenRegistration: CapturingRemoteNotificationsTokenRegistration,
-                         credentialStore: CapturingCredentialStore,
+                         credentialRepository: CapturingCredentialStore,
                          api: FakeAPI,
                          dataStore: InMemoryDataStore,
                          conventionStartDateRepository: StubConventionStartDateRepository,
@@ -37,7 +37,7 @@ class EurofurenceSessionTestBuilder {
             self.session = session
             self.clock = clock
             self.notificationTokenRegistration = notificationTokenRegistration
-            self.credentialStore = credentialStore
+            self.credentialRepository = credentialRepository
             self.api = api
             self.dataStore = dataStore
             self.conventionStartDateRepository = conventionStartDateRepository
@@ -110,7 +110,7 @@ class EurofurenceSessionTestBuilder {
         }
 
         var authenticationToken: String? {
-            return credentialStore.persistedCredential?.authenticationToken
+            return credentialRepository.persistedCredential?.authenticationToken
         }
 
         func tickTime(to time: Date) {
@@ -181,7 +181,7 @@ class EurofurenceSessionTestBuilder {
     }
 
     private var api = FakeAPI()
-    private var credentialStore = CapturingCredentialStore()
+    private var credentialRepository = CapturingCredentialStore()
     private var clock = StubClock()
     private var dataStore = InMemoryDataStore()
     private var userPreferences: UserPreferences = StubUserPreferences()
@@ -201,7 +201,7 @@ class EurofurenceSessionTestBuilder {
     }
 
     func with(_ persistedCredential: Credential?) -> EurofurenceSessionTestBuilder {
-        credentialStore = CapturingCredentialStore(persistedCredential: persistedCredential)
+        credentialRepository = CapturingCredentialStore(persistedCredential: persistedCredential)
         return self
     }
 
@@ -307,7 +307,7 @@ class EurofurenceSessionTestBuilder {
         return Context(session: session,
                        clock: clock,
                        notificationTokenRegistration: notificationTokenRegistration,
-                       credentialStore: credentialStore,
+                       credentialRepository: credentialRepository,
                        api: api,
                        dataStore: dataStore,
                        conventionStartDateRepository: conventionStartDateRepository,
@@ -331,7 +331,7 @@ class EurofurenceSessionTestBuilder {
         return EurofurenceSessionBuilder(mandatory: mandatory)
             .with(api)
             .with(clock)
-            .with(credentialStore)
+            .with(credentialRepository)
             .with(StubDataStoreFactory(conventionIdentifier: conventionIdentifier, dataStore: dataStore))
             .with(userPreferences)
             .with(imageRepository)

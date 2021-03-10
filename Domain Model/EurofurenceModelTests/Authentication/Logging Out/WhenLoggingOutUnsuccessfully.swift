@@ -27,7 +27,7 @@ class WhenLoggingOutUnsuccessfully: XCTestCase {
         context.authenticationService.logout { _ in }
         context.notificationTokenRegistration.failLastRequest()
 
-        XCTAssertFalse(context.credentialStore.didDeletePersistedToken)
+        XCTAssertFalse(context.credentialRepository.didDeletePersistedToken)
         XCTAssertFalse(observer.loggedOut)
     }
 

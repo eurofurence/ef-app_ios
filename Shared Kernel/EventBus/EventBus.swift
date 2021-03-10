@@ -58,21 +58,6 @@ public class EventBus {
     }
 
     /**
-     Removes an `EventConsumer` from this `EventBus`, preventing any future
-     events reaching the consumer until it is re-subscribed.
-     
-     - parameters:
-        - consumer: An `EventConsumer` to be unsubscribed from this `EventBus`
-    */
-    public func unsubscribe<Consumer: EventConsumer>(consumer: Consumer) {
-        guard let index = storage.firstIndex(where: { $0.represents(consumer: consumer) }) else {
-            return
-        }
-
-        storage.remove(at: index)
-    }
-
-    /**
      Posts an event through this `EventBus`, notifying any relevant
      `EventConsumer`s.
      

@@ -1,11 +1,9 @@
-import Foundation
-
 extension DomainEvent {
-
-    struct UnfavouriteEvent {
-
+    
+    struct EventRemovedFromFavourites {
+        
         var identifier: EventIdentifier
-
+        
     }
-
+    
 }

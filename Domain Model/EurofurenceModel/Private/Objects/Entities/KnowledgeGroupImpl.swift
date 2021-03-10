@@ -13,9 +13,11 @@ struct KnowledgeGroupImpl: KnowledgeGroup {
 
 extension KnowledgeGroupImpl {
     
-    static func fromServerModels(groups: [KnowledgeGroupCharacteristics],
-                                 entries: [KnowledgeEntryCharacteristics],
-                                 shareableURLFactory: ShareableURLFactory) -> [KnowledgeGroup] {
+    static func fromServerModels(
+        groups: [KnowledgeGroupCharacteristics],
+        entries: [KnowledgeEntryCharacteristics],
+        shareableURLFactory: ShareableURLFactory
+    ) -> [KnowledgeGroup] {
         return groups.map({ (group) -> KnowledgeGroup in
             let entries = entries
                 .filter({ $0.groupIdentifier == group.identifier })
@@ -26,8 +28,8 @@ extension KnowledgeGroupImpl {
             
             let defaultFontAwesomeBackupCharacter: Character = " "
             let fontAwesomeCharacter: Character = Int(group.fontAwesomeCharacterAddress, radix: 16)
-                .let(UnicodeScalar.init)
-                .let(Character.init)
+                .flatMap(UnicodeScalar.init)
+                .map(Character.init)
                 .defaultingTo(defaultFontAwesomeBackupCharacter)
             
             return KnowledgeGroupImpl(

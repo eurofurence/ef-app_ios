@@ -6,10 +6,10 @@ class AspectRatioConstrainedImageView: UIImageView {
 
     override var image: UIImage? {
         didSet {
-            aspectRatioConstraint.let(removeConstraint)
+            aspectRatioConstraint.map(removeConstraint)
             aspectRatioConstraint = nil
 
-            image.let { (image) in
+            if let image = image {
                 let size = image.size
                 let constraint = NSLayoutConstraint(item: self,
                                                     attribute: .width,

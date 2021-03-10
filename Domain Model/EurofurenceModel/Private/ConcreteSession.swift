@@ -32,7 +32,7 @@ class ConcreteSession: EurofurenceSession {
         dataStoreFactory: DataStoreFactory,
         remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration?,
         clock: Clock,
-        credentialStore: CredentialStore,
+        credentialRepository: CredentialRepository,
         conventionStartDateRepository: ConventionStartDateRepository,
         timeIntervalForUpcomingEventsSinceNow: TimeInterval,
         imageRepository: ImageRepository,
@@ -68,7 +68,7 @@ class ConcreteSession: EurofurenceSession {
         authenticationService = ConcreteAuthenticationService(
             eventBus: eventBus,
             clock: clock,
-            credentialStore: credentialStore,
+            credentialRepository: credentialRepository,
             remoteNotificationsTokenRegistration: remoteNotificationsTokenRegistration,
             api: api
         )
@@ -122,13 +122,14 @@ class ConcreteSession: EurofurenceSession {
             dataStore: dataStore,
             imageCache: imageCache,
             mapCoordinateRender: mapCoordinateRender,
-            shareableURLFactory: shareableURLFactory
+            shareableURLFactory: shareableURLFactory,
+            urlOpener: urlOpener
         )
         
         collectThemAllService = ConcreteCollectThemAllService(
             eventBus: eventBus,
             collectThemAllRequestFactory: collectThemAllRequestFactory,
-            credentialStore: credentialStore
+            credentialRepository: credentialRepository
         )
         
         mapsService = ConcreteMapsService(
@@ -160,33 +161,29 @@ class ConcreteSession: EurofurenceSession {
             dealersService: dealersService, dataStore: dataStore
         )
         
-        contentLinksService = ConcreteContentLinksService(
-            eventBus: eventBus,
-            urlOpener: urlOpener,
-            urlEntityProcessor: urlEntityProcessor
-        )
+        contentLinksService = ConcreteContentLinksService(urlEntityProcessor: urlEntityProcessor)
         
         eventBus.subscribe(consumer: EventFeedbackService(api: api))
         
         privateMessagesService.refreshMessages()
     }
     
-    lazy var services: Services = {
-        return Services(notifications: notificationService,
-                        refresh: refreshService,
-                        announcements: announcementsService,
-                        authentication: authenticationService,
-                        events: eventsService,
-                        dealers: dealersService,
-                        knowledge: knowledgeService,
-                        contentLinks: contentLinksService,
-                        conventionCountdown: conventionCountdownService,
-                        collectThemAll: collectThemAllService,
-                        maps: mapsService,
-                        sessionState: sessionStateService,
-                        privateMessages: privateMessagesService)
-    }()
+    lazy var services = Services(
+        notifications: notificationService,
+        refresh: refreshService,
+        announcements: announcementsService,
+        authentication: authenticationService,
+        events: eventsService,
+        dealers: dealersService,
+        knowledge: knowledgeService,
+        contentLinks: contentLinksService,
+        conventionCountdown: conventionCountdownService,
+        collectThemAll: collectThemAllService,
+        maps: mapsService,
+        sessionState: sessionStateService,
+        privateMessages: privateMessagesService
+    )
     
-    lazy var repositories: Repositories = Repositories(additionalServices: additionalServicesRepository)
+    lazy var repositories = Repositories(additionalServices: additionalServicesRepository)
     
 }

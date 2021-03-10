@@ -31,7 +31,7 @@ public class FakeKnowledgeService: KnowledgeService {
         identifier: KnowledgeGroupIdentifier,
         completionHandler: @escaping (KnowledgeGroup) -> Void
     ) {
-        stubbedGroups.first(where: { $0.identifier == identifier }).let(completionHandler)
+        stubbedGroups.first(where: { $0.identifier == identifier }).map(completionHandler)
     }
 
 }

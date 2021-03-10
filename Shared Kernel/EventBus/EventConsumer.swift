@@ -3,7 +3,7 @@
  an `EventBus`, acting upon the meaning and representation of the received
  `Event`. `Event`s could represent a change in state, timer event, action etc.
  */
-public protocol EventConsumer: Equatable {
+public protocol EventConsumer {
 
     /// Represents the type of the event this consumer will observe.
     associatedtype Event
@@ -16,23 +16,5 @@ public protocol EventConsumer: Equatable {
                  change in state, action or other behaviour within your program.
     */
     func consume(event: Event)
-
-}
-
-public extension EventConsumer where Self: AnyObject {
-
-    /**
-     Compares two `EventConsumer`s that are reference types.
-     
-     - parameters:
-     - lhs: An `EventConsumer` to compare
-     - rhs: An `EventConsumer` to compare against `lhs`
-     
-     - returns: `true` if `lhs` and `rhs` both refer to the same `EventConsumer`,
-     `false` otherwise.
-     */
-    static func == (lhs: Self, rhs: Self) -> Bool {
-        return lhs === rhs
-    }
 
 }

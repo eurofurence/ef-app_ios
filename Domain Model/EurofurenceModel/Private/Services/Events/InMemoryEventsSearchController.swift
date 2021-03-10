@@ -56,7 +56,7 @@ class InMemoryEventsSearchController: EventsSearchController {
 
     }
 
-    private class RegenerateResultsWhenEventUnfavourited: EventConsumer {
+    private struct RegenerateResultsWhenEventUnfavourited: EventConsumer {
 
         private unowned let searchController: InMemoryEventsSearchController
 
@@ -64,7 +64,7 @@ class InMemoryEventsSearchController: EventsSearchController {
             self.searchController = searchController
         }
 
-        func consume(event: ConcreteEventsService.EventUnfavouritedEvent) {
+        func consume(event: DomainEvent.EventRemovedFromFavourites) {
             if searchController.favouritesFilter.enabled {            
                 searchController.regenerateSearchResults()
             }

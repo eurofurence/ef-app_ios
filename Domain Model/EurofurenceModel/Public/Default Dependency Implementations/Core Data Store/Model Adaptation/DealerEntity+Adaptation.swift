@@ -22,24 +22,26 @@ extension DealerEntity: EntityAdapting {
             abandonDueToInconsistentState()
         }
         
-        return DealerCharacteristics(identifier: identifier,
-                                     displayName: displayName,
-                                     attendeeNickname: attendeeNickname,
-                                     attendsOnThursday: attendsOnThursday,
-                                     attendsOnFriday: attendsOnFriday,
-                                     attendsOnSaturday: attendsOnSaturday,
-                                     isAfterDark: isAfterDark,
-                                     artistThumbnailImageId: artistThumbnailImageId,
-                                     artistImageId: artistImageId,
-                                     artPreviewImageId: artPreviewImageId,
-                                     categories: categories.defaultingTo(.empty),
-                                     shortDescription: dealerShortDescription,
-                                     links: linksArray?.sorted(),
-                                     twitterHandle: twitterHandle,
-                                     telegramHandle: telegramHandle,
-                                     aboutTheArtistText: aboutTheArtist,
-                                     aboutTheArtText: aboutTheArtText,
-                                     artPreviewCaption: artPreviewCaption)
+        return DealerCharacteristics(
+            identifier: identifier,
+            displayName: displayName,
+            attendeeNickname: attendeeNickname,
+            attendsOnThursday: attendsOnThursday,
+            attendsOnFriday: attendsOnFriday,
+            attendsOnSaturday: attendsOnSaturday,
+            isAfterDark: isAfterDark,
+            artistThumbnailImageId: artistThumbnailImageId,
+            artistImageId: artistImageId,
+            artPreviewImageId: artPreviewImageId,
+            categories: categories.defaultingTo(.empty),
+            shortDescription: dealerShortDescription,
+            links: linksArray?.sorted(),
+            twitterHandle: twitterHandle,
+            telegramHandle: telegramHandle,
+            aboutTheArtistText: aboutTheArtist,
+            aboutTheArtText: aboutTheArtText,
+            artPreviewCaption: artPreviewCaption
+        )
     }
 
     func consumeAttributes(from value: DealerCharacteristics) {

@@ -1,19 +1,9 @@
 import EventBus
 import Foundation
 
-class DataStoreChangedConsumer: EventConsumer {
+struct DataStoreChangedConsumer: EventConsumer {
 
-    // MARK: Properties
-
-    private let handler: () -> Void
-
-    // MARK: Initializer
-
-    init(handler: @escaping () -> Void) {
-        self.handler = handler
-    }
-
-    // MARK: EventConsumer
+    let handler: () -> Void
 
     typealias Event = DomainEvent.DataStoreChangedEvent
 

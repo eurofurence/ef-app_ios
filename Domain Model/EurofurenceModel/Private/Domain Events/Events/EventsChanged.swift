@@ -1,0 +1,5 @@
+extension DomainEvent {
+    
+    struct EventsChanged {}
+    
+}

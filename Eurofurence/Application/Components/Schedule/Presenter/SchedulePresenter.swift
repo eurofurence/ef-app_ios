@@ -36,7 +36,7 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
         }
 
         private func bindBannerGraphic() {
-            viewModel.bannerGraphicPNGData.let(component.setBannerGraphicPNGData)
+            viewModel.bannerGraphicPNGData.map(component.setBannerGraphicPNGData)
 
             if viewModel.bannerGraphicPNGData != nil {
                 component.showBanner()
@@ -240,11 +240,11 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
     }
 
     func scheduleSceneDidSelectEvent(at indexPath: IndexPath) {
-        viewModel?.identifierForEvent(at: indexPath).let(delegate.scheduleComponentDidSelectEvent)
+        viewModel?.identifierForEvent(at: indexPath).map(delegate.scheduleComponentDidSelectEvent)
     }
 
     func scheduleSceneDidSelectSearchResult(at indexPath: IndexPath) {
-        searchViewModel?.identifierForEvent(at: indexPath).let(delegate.scheduleComponentDidSelectEvent)
+        searchViewModel?.identifierForEvent(at: indexPath).map(delegate.scheduleComponentDidSelectEvent)
     }
 
     private var currentSearchQuery: String = ""

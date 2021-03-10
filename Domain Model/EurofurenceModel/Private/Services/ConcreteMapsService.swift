@@ -12,13 +12,15 @@ class ConcreteMapsService: MapsService {
             observers.forEach({ $0.mapsServiceDidChangeMaps(models) })
         }
     }
-
+    
     private var observers = [MapsObserver]()
-
-    init(eventBus: EventBus,
-         dataStore: DataStore,
-         imageRepository: ImageRepository,
-         dealers: ConcreteDealersService) {
+    
+    init(
+        eventBus: EventBus,
+        dataStore: DataStore,
+        imageRepository: ImageRepository,
+        dealers: ConcreteDealersService
+    ) {
         self.dataStore = dataStore
         self.imageRepository = imageRepository
         self.dealers = dealers

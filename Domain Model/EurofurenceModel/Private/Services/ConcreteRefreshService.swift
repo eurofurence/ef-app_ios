@@ -2,6 +2,7 @@ import EventBus
 import Foundation
 
 class ConcreteRefreshService: RefreshService {
+    
     private let privateMessagesController: ConcretePrivateMessagesService
 
     private let conventionIdentifier: ConventionIdentifier
@@ -16,18 +17,20 @@ class ConcreteRefreshService: RefreshService {
     private let forceRefreshRequired: ForceRefreshRequired
     private let refreshCollaboration: RefreshCollaboration
 
-    init(conventionIdentifier: ConventionIdentifier,
-         longRunningTaskManager: LongRunningTaskManager?,
-         dataStore: DataStore,
-         api: API,
-         imageDownloader: ImageDownloader,
-         clock: Clock,
-         eventBus: EventBus,
-         imageCache: ImagesCache,
-         imageRepository: ImageRepository,
-         privateMessagesController: ConcretePrivateMessagesService,
-         forceRefreshRequired: ForceRefreshRequired,
-         refreshCollaboration: RefreshCollaboration) {
+    init(
+        conventionIdentifier: ConventionIdentifier,
+        longRunningTaskManager: LongRunningTaskManager?,
+        dataStore: DataStore,
+        api: API,
+        imageDownloader: ImageDownloader,
+        clock: Clock,
+        eventBus: EventBus,
+        imageCache: ImagesCache,
+        imageRepository: ImageRepository,
+        privateMessagesController: ConcretePrivateMessagesService,
+        forceRefreshRequired: ForceRefreshRequired,
+        refreshCollaboration: RefreshCollaboration
+    ) {
         self.conventionIdentifier = conventionIdentifier
         self.longRunningTaskManager = longRunningTaskManager
         self.dataStore = dataStore

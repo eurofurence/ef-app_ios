@@ -9,6 +9,7 @@ struct DealerImpl: Dealer {
     private let mapCoordinateRender: MapCoordinateRender?
     private let characteristics: DealerCharacteristics
     private let shareableURLFactory: ShareableURLFactory
+    private let urlOpener: URLOpener?
     
     var categories: [String] {
         return characteristics.categories
@@ -51,7 +52,8 @@ struct DealerImpl: Dealer {
         imageCache: ImagesCache,
         mapCoordinateRender: MapCoordinateRender?,
         characteristics: DealerCharacteristics,
-        shareableURLFactory: ShareableURLFactory
+        shareableURLFactory: ShareableURLFactory,
+        urlOpener: URLOpener?
     ) {
         self.eventBus = eventBus
         self.dataStore = dataStore
@@ -59,6 +61,7 @@ struct DealerImpl: Dealer {
         self.mapCoordinateRender = mapCoordinateRender
         self.characteristics = characteristics
         self.shareableURLFactory = shareableURLFactory
+        self.urlOpener = urlOpener
         
         self.identifier = DealerIdentifier(characteristics.identifier)
     }
@@ -72,21 +75,23 @@ struct DealerImpl: Dealer {
         guard let externalLink = links?.first(where: { $0.fragmentType == .WebExternal }) else { return }
         guard let url = URL(string: externalLink.target) else { return }
         
-        eventBus.post(DomainEvent.OpenURL(url: url))
+        urlOpener?.open(url)
     }
     
     func openTwitter() {
         guard characteristics.twitterHandle.isEmpty == false else { return }
         guard let url = URL(string: "https://twitter.com/") else { return }
         
-        eventBus.post(DomainEvent.OpenURL(url: url.appendingPathComponent(characteristics.twitterHandle)))
+        let twitterURL = url.appendingPathComponent(characteristics.twitterHandle)
+        urlOpener?.open(twitterURL)
     }
     
     func openTelegram() {
         guard characteristics.telegramHandle.isEmpty == false else { return }
         guard let url = URL(string: "https://t.me/") else { return }
         
-        eventBus.post(DomainEvent.OpenURL(url: url.appendingPathComponent(characteristics.telegramHandle)))
+        let telegramURL = url.appendingPathComponent(characteristics.telegramHandle)
+        urlOpener?.open(telegramURL)
     }
     
     func fetchExtendedDealerData(completionHandler: @escaping (ExtendedDealerData) -> Void) {

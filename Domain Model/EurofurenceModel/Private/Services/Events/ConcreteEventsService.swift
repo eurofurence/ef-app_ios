@@ -5,13 +5,7 @@ class ConcreteEventsService: ClockDelegate, EventsService {
 
     // MARK: Nested Types
 
-    struct ChangedEvent {}
-
-    struct EventUnfavouritedEvent {
-        var identifier: EventIdentifier
-    }
-
-    private class FavouriteEventHandler: EventConsumer {
+    private struct FavouriteEventHandler: EventConsumer {
 
         private unowned let service: ConcreteEventsService
 
@@ -19,14 +13,14 @@ class ConcreteEventsService: ClockDelegate, EventsService {
             self.service = service
         }
 
-        func consume(event: DomainEvent.FavouriteEvent) {
+        func consume(event: DomainEvent.EventAddedToFavourites) {
             let identifier = event.identifier
             service.favouriteEvent(identifier: identifier)
         }
 
     }
 
-    private class UnfavouriteEventHandler: EventConsumer {
+    private struct UnfavouriteEventHandler: EventConsumer {
 
         private unowned let service: ConcreteEventsService
 
@@ -34,7 +28,7 @@ class ConcreteEventsService: ClockDelegate, EventsService {
             self.service = service
         }
 
-        func consume(event: DomainEvent.UnfavouriteEvent) {
+        func consume(event: DomainEvent.EventRemovedFromFavourites) {
             let identifier = event.identifier
             service.unfavouriteEvent(identifier: identifier)
         }
@@ -46,11 +40,8 @@ class ConcreteEventsService: ClockDelegate, EventsService {
             transaction.deleteFavouriteEventIdentifier(identifier)
         }
 
-        favouriteEventIdentifiers.firstIndex(of: identifier).let({ favouriteEventIdentifiers.remove(at: $0) })
+        favouriteEventIdentifiers.removeAll(where: { $0 == identifier })
         provideFavouritesInformationToObservers()
-
-        let event = EventUnfavouritedEvent(identifier: identifier)
-        eventBus.post(event)
     }
 
     // MARK: Properties
@@ -82,13 +73,15 @@ class ConcreteEventsService: ClockDelegate, EventsService {
     private(set) var favouriteEventIdentifiers = [EventIdentifier]()
 
     // MARK: Initialization
-
-    init(eventBus: EventBus,
-         dataStore: DataStore,
-         imageCache: ImagesCache,
-         clock: Clock,
-         timeIntervalForUpcomingEventsSinceNow: TimeInterval,
-         shareableURLFactory: ShareableURLFactory) {
+    
+    init(
+        eventBus: EventBus,
+        dataStore: DataStore,
+        imageCache: ImagesCache,
+        clock: Clock,
+        timeIntervalForUpcomingEventsSinceNow: TimeInterval,
+        shareableURLFactory: ShareableURLFactory
+    ) {
         self.dataStore = dataStore
         self.imageCache = imageCache
         self.clock = clock
@@ -205,7 +198,7 @@ class ConcreteEventsService: ClockDelegate, EventsService {
             eventModels = events.sorted(by: { $0.startDateTime < $1.startDateTime }).compactMap(makeEventModel)
 
             dayModels = makeDays(from: days)
-            eventBus.post(ConcreteEventsService.ChangedEvent())
+            eventBus.post(DomainEvent.EventsChanged())
         }
     }
 

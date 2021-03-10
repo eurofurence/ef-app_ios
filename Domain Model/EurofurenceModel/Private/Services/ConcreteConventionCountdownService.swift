@@ -14,7 +14,7 @@ class ConcreteConventionCountdownService: ConventionCountdownService, Convention
         }
     }
     
-    private class RecomputeCountdownWhenSignificantTimePasses: EventConsumer {
+    private struct RecomputeCountdownWhenSignificantTimePasses: EventConsumer {
         
         unowned let service: ConcreteConventionCountdownService
         

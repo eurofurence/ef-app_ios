@@ -46,14 +46,14 @@ class ConcreteKnowledgeService: KnowledgeService {
         for identifier: KnowledgeEntryIdentifier,
         completionHandler: @escaping (KnowledgeEntry) -> Void
     ) {
-        models.reduce(.empty, { $0 + $1.entries }).first(where: { $0.identifier == identifier }).let(completionHandler)
+        models.reduce(.empty, { $0 + $1.entries }).first(where: { $0.identifier == identifier }).map(completionHandler)
     }
 
     func fetchKnowledgeGroup(
         identifier: KnowledgeGroupIdentifier,
         completionHandler: @escaping (KnowledgeGroup) -> Void
     ) {
-        models.first(where: { $0.identifier == identifier }).let(completionHandler)
+        models.first(where: { $0.identifier == identifier }).map(completionHandler)
     }
 
     func fetchImagesForKnowledgeEntry(

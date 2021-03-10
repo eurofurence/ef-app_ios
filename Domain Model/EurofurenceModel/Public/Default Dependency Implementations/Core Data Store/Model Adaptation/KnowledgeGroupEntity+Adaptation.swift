@@ -13,13 +13,15 @@ extension KnowledgeGroupEntity: EntityAdapting {
             abandonDueToInconsistentState()
         }
         
-        return KnowledgeGroupCharacteristics(identifier: identifier,
-                                             order: Int(order),
-                                             groupName: groupName,
-                                             groupDescription: groupDescription,
-                                             fontAwesomeCharacterAddress: fontAwesomeCharacterAddress ?? "")
+        return KnowledgeGroupCharacteristics(
+            identifier: identifier,
+            order: Int(order),
+            groupName: groupName,
+            groupDescription: groupDescription,
+            fontAwesomeCharacterAddress: fontAwesomeCharacterAddress ?? ""
+        )
     }
-
+    
     func consumeAttributes(from value: KnowledgeGroupCharacteristics) {
         identifier = value.identifier
         order = Int64(value.order)

@@ -1,7 +1,7 @@
 import EventBus
 import Foundation
 
-class ImagesCache: EventConsumer {
+struct ImagesCache: EventConsumer {
 
     // MARK: Properties
 

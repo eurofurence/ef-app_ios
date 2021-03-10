@@ -16,13 +16,15 @@ extension AnnouncementEntity: EntityAdapting {
             abandonDueToInconsistentState()
         }
         
-        return AnnouncementCharacteristics(identifier: identifier,
-                                           title: title,
-                                           content: content,
-                                           lastChangedDateTime: lastChangedDateTime as Date,
-                                           imageIdentifier: imageIdentifier)
+        return AnnouncementCharacteristics(
+            identifier: identifier,
+            title: title,
+            content: content,
+            lastChangedDateTime: lastChangedDateTime as Date,
+            imageIdentifier: imageIdentifier
+        )
     }
-
+    
     func consumeAttributes(from value: AnnouncementCharacteristics) {
         identifier = value.identifier
         title = value.title

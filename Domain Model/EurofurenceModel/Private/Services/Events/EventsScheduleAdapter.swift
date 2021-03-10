@@ -42,7 +42,7 @@ class EventsScheduleAdapter: EventsSchedule {
 
     }
 
-    private class UpdateCurrentDayWhenSignificantTimePasses: EventConsumer {
+    private struct UpdateCurrentDayWhenSignificantTimePasses: EventConsumer {
 
         private unowned let scheduleAdapter: EventsScheduleAdapter
 
@@ -56,7 +56,7 @@ class EventsScheduleAdapter: EventsSchedule {
 
     }
 
-    private class UpdateAdapterWhenScheduleChanges: EventConsumer {
+    private struct UpdateAdapterWhenScheduleChanges: EventConsumer {
 
         private unowned let scheduleAdapter: EventsScheduleAdapter
 
@@ -64,7 +64,7 @@ class EventsScheduleAdapter: EventsSchedule {
             self.scheduleAdapter = scheduleAdapter
         }
 
-        func consume(event: ConcreteEventsService.ChangedEvent) {
+        func consume(event: DomainEvent.EventsChanged) {
             scheduleAdapter.updateFromSchedule()
         }
 

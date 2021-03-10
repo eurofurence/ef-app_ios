@@ -7,7 +7,7 @@ public struct URLSessionBasedJSONSession: JSONSession {
     private let session: URLSession
 
     private static let userAgent: String? = {
-        return Bundle.main.infoDictionary.let { (info) -> String in
+        return Bundle.main.infoDictionary.flatMap { (info) -> String in
             let executable = info[kCFBundleExecutableKey as String] as? String ?? "Unknown"
             let bundle = info[kCFBundleIdentifierKey as String] as? String ?? "Unknown"
             let appVersion = info["CFBundleShortVersionString"] as? String ?? "Unknown"

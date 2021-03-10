@@ -46,7 +46,7 @@ public final class FakeDealer: Dealer {
     }
     
     public func fetchExtendedDealerData(completionHandler: @escaping (ExtendedDealerData) -> Void) {
-        extendedData.let(completionHandler)
+        extendedData.map(completionHandler)
     }
     
     public func fetchIconPNGData(completionHandler: @escaping (Data?) -> Void) {
