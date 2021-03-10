@@ -15,6 +15,8 @@ class ConcreteRefreshService: RefreshService {
     private let imageRepository: ImageRepository
     private let forceRefreshRequired: ForceRefreshRequired
     private let refreshCollaboration: RefreshCollaboration
+    
+    private let chain: RefreshChain
 
     init(
         conventionIdentifier: ConventionIdentifier,
@@ -42,6 +44,20 @@ class ConcreteRefreshService: RefreshService {
         self.privateMessagesController = privateMessagesController
         self.forceRefreshRequired = forceRefreshRequired
         self.refreshCollaboration = refreshCollaboration
+        
+        chain = RefreshChain(
+            conventionIdentifier: conventionIdentifier,
+            forceRefreshRequired: forceRefreshRequired,
+            dataStore: dataStore,
+            api: api,
+            imageDownloader: imageDownloader,
+            eventBus: eventBus,
+            imageCache: imageCache,
+            privateMessagesController: privateMessagesController,
+            refreshCollaboration: refreshCollaboration,
+            clock: clock,
+            imageRepository: imageRepository
+        )
     }
 
     private var refreshObservers = [RefreshServiceObserver]()
@@ -66,29 +82,13 @@ class ConcreteRefreshService: RefreshService {
         startLongRunningTask()
         notifyRefreshStarted()
         
-        chain = RefreshChain(
-            conventionIdentifier: conventionIdentifier,
-            forceRefreshRequired: forceRefreshRequired,
-            dataStore: dataStore,
-            api: api,
-            imageDownloader: imageDownloader,
-            eventBus: eventBus,
-            imageCache: imageCache,
-            privateMessagesController: privateMessagesController,
-            refreshCollaboration: refreshCollaboration,
-            clock: clock,
-            imageRepository: imageRepository
-        )
-        
-        chain?.start(progress: progress) { [weak self] (error) in
+        chain.start(progress: progress) { [weak self] (error) in
             completionHandler(error)
             self?.refreshTaskDidFinish()
         }
         
         return progress
     }
-    
-    private var chain: RefreshChain?
 
     private func refreshTaskDidFinish() {
         ongoingProgress = nil
