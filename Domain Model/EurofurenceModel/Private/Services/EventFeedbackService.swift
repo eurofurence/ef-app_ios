@@ -1,5 +1,3 @@
-import EventBus
-
 struct EventFeedbackService: EventConsumer {
     
     let api: API

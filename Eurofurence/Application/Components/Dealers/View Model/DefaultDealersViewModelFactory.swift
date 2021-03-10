@@ -1,5 +1,4 @@
 import EurofurenceModel
-import EventBus
 import Foundation
 import UIKit
 
@@ -11,7 +10,6 @@ public struct DefaultDealersViewModelFactory: DealersViewModelFactory, DealersIn
     private let viewModel: ViewModel
     private let searchViewModel: SearchViewModel
     private let categoriesViewModel: CategoriesViewModel
-    private let eventBus = EventBus()
 
     public init(
         dealersService: DealersService,
@@ -23,8 +21,8 @@ public struct DefaultDealersViewModelFactory: DealersViewModelFactory, DealersIn
         self.refreshService = refreshService
 
         let index = dealersService.makeDealersIndex()
-        viewModel = ViewModel(eventBus: eventBus, refreshService: refreshService)
-        searchViewModel = SearchViewModel(eventBus: eventBus, index: index)
+        viewModel = ViewModel(refreshService: refreshService)
+        searchViewModel = SearchViewModel(index: index)
         categoriesViewModel = CategoriesViewModel(categoriesCollection: index.availableCategories)
 
         index.setDelegate(self)
@@ -44,16 +42,24 @@ public struct DefaultDealersViewModelFactory: DealersViewModelFactory, DealersIn
 
     public func alphabetisedDealersDidChange(to alphabetisedGroups: [AlphabetisedDealersGroup]) {
         let (groups, indexTitles) = makeViewModels(from: alphabetisedGroups)
-        eventBus.post(AllDealersChangedEvent(rawGroups: alphabetisedGroups,
-                                             alphabetisedGroups: groups,
-                                             indexTitles: indexTitles))
+        let event = AllDealersChangedEvent(
+            rawGroups: alphabetisedGroups,
+            alphabetisedGroups: groups,
+            indexTitles: indexTitles
+        )
+        
+        viewModel.consume(event: event)
     }
 
     public func indexDidProduceSearchResults(_ searchResults: [AlphabetisedDealersGroup]) {
         let (groups, indexTitles) = makeViewModels(from: searchResults)
-        eventBus.post(SearchResultsDidChangeEvent(rawGroups: searchResults,
-                                                  alphabetisedGroups: groups,
-                                                  indexTitles: indexTitles))
+        let event = SearchResultsDidChangeEvent(
+            rawGroups: searchResults,
+            alphabetisedGroups: groups,
+            indexTitles: indexTitles
+        )
+        
+        searchViewModel.consume(event: event)
     }
 
     private func makeViewModels(
@@ -109,18 +115,16 @@ public struct DefaultDealersViewModelFactory: DealersViewModelFactory, DealersIn
 
     }
 
-    private class ViewModel: DealersViewModel, EventConsumer, RefreshServiceObserver {
+    private class ViewModel: DealersViewModel, RefreshServiceObserver {
 
         private let refreshService: RefreshService
         private var rawGroups = [AlphabetisedDealersGroup]()
         private var groups = [DealersGroupViewModel]()
         private var indexTitles = [String]()
 
-        init(eventBus: EventBus, refreshService: RefreshService) {
+        init(refreshService: RefreshService) {
             self.refreshService = refreshService
-
             refreshService.add(self)
-            eventBus.subscribe(consumer: self)
         }
 
         private var delegate: DealersViewModelDelegate?
@@ -155,16 +159,15 @@ public struct DefaultDealersViewModelFactory: DealersViewModelFactory, DealersIn
 
     }
 
-    private class SearchViewModel: DealersSearchViewModel, EventConsumer {
+    private class SearchViewModel: DealersSearchViewModel {
 
         private let index: DealersIndex
         private var rawGroups = [AlphabetisedDealersGroup]()
         private var groups = [DealersGroupViewModel]()
         private var indexTitles = [String]()
 
-        init(eventBus: EventBus, index: DealersIndex) {
+        init(index: DealersIndex) {
             self.index = index
-            eventBus.subscribe(consumer: self)
         }
 
         private var delegate: DealersSearchViewModelDelegate?

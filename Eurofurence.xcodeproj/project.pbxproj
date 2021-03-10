@@ -536,8 +536,6 @@
 		CA82DB5922D6639300467C2F /* ActivityShareService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82DB5822D6639300467C2F /* ActivityShareService.swift */; };
 		CA8950F122B43CE300AF4875 /* EurofurenceModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A32F722B179D8002AD939 /* EurofurenceModel.framework */; };
 		CA8950F222B43CE300AF4875 /* EurofurenceModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A32F722B179D8002AD939 /* EurofurenceModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		CA8950F322B43D0500AF4875 /* EventBus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A32F922B179D8002AD939 /* EventBus.framework */; };
-		CA8950F422B43D0500AF4875 /* EventBus.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA7A32F922B179D8002AD939 /* EventBus.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CA89CBA9207F7F9A00570D54 /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89CBA8207F7F9A00570D54 /* NewsViewModel.swift */; };
 		CA89CBAB207F7FE900570D54 /* NewsViewModel+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89CBAA207F7FE900570D54 /* NewsViewModel+RandomValueProviding.swift */; };
 		CA89CBAD207F802400570D54 /* NewsViewModelProducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89CBAC207F802400570D54 /* NewsViewModelProducer.swift */; };
@@ -1281,7 +1279,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				CA8950F222B43CE300AF4875 /* EurofurenceModel.framework in Embed Frameworks */,
-				CA8950F422B43D0500AF4875 /* EventBus.framework in Embed Frameworks */,
 				CACD36B825650A9600C23041 /* EurofurenceApplicationSession.framework in Embed Frameworks */,
 				CA630BE4229F14F800754C27 /* EurofurenceIntentDefinitions.framework in Embed Frameworks */,
 			);
@@ -2564,7 +2561,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA8950F322B43D0500AF4875 /* EventBus.framework in Frameworks */,
 				CA66C01E2124C6D800F87AFE /* StoreKit.framework in Frameworks */,
 				CA8950F122B43CE300AF4875 /* EurofurenceModel.framework in Frameworks */,
 				CA630BE3229F14F800754C27 /* EurofurenceIntentDefinitions.framework in Frameworks */,

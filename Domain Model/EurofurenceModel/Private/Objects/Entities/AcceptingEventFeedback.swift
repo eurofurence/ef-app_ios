@@ -1,5 +1,3 @@
-import EventBus
-
 class AcceptingEventFeedback: EventFeedback {
     
     private static let defaultStarRating = 3

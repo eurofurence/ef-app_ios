@@ -1,5 +1,3 @@
-import EventBus
-
 class ConcretePrivateMessagesService: PrivateMessagesService {
 
     private let eventBus: EventBus
