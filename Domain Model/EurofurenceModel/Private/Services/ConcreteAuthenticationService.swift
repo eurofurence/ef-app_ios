@@ -5,7 +5,7 @@ class ConcreteAuthenticationService: AuthenticationService {
 
     private let eventBus: EventBus
     private let clock: Clock
-    private let credentialStore: CredentialStore
+    private let credentialRepository: CredentialRepository
     private let api: API
     private let remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration?
     private var userAuthenticationToken: String?
@@ -30,13 +30,13 @@ class ConcreteAuthenticationService: AuthenticationService {
     init(
         eventBus: EventBus,
         clock: Clock,
-        credentialStore: CredentialStore,
+        credentialRepository: CredentialRepository,
         remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration?,
         api: API
     ) {
         self.eventBus = eventBus
         self.clock = clock
-        self.credentialStore = credentialStore
+        self.credentialRepository = credentialRepository
         self.api = api
         self.remoteNotificationsTokenRegistration = remoteNotificationsTokenRegistration
 
@@ -68,7 +68,7 @@ class ConcreteAuthenticationService: AuthenticationService {
                 if error != nil {
                     completionHandler(.failure)
                 } else {
-                    self.credentialStore.deletePersistedToken()
+                    self.credentialRepository.deletePersistedToken()
                     self.loggedInUser = nil
                     self.userAuthenticationToken = nil
                     self.observers.forEach({ $0.userUnauthenticated() })
@@ -92,7 +92,8 @@ class ConcreteAuthenticationService: AuthenticationService {
     // MARK: Private
 
     private func loadPersistedCredential() {
-        if let credential = credentialStore.persistedCredential, credential.isValid(currentDate: clock.currentDate) {
+        let currentDate = clock.currentDate
+        if let credential = credentialRepository.persistedCredential, credential.isValid(currentDate: currentDate) {
             updateCurrentUser(from: credential)
         }
     }
@@ -108,7 +109,7 @@ class ConcreteAuthenticationService: AuthenticationService {
                                     registrationNumber: args.registrationNumber,
                                     authenticationToken: response.token,
                                     tokenExpiryDate: response.tokenValidUntil)
-        credentialStore.store(credential)
+        credentialRepository.store(credential)
         updateCurrentUser(from: credential)
         
         if let loggedInUser = loggedInUser {

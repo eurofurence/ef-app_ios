@@ -4,8 +4,8 @@ import XCTest
 
 class KeychainCredentialStoreTests: XCTestCase {
 
-    private func makeStore() -> KeychainCredentialStore {
-        return KeychainCredentialStore(userAccount: "Eurofurence.Test")
+    private func makeStore() -> KeychainCredentialRepository {
+        return KeychainCredentialRepository(userAccount: "Eurofurence.Test")
     }
 
     func testStoringLoginShouldRetainItBetweenLifetimes() {

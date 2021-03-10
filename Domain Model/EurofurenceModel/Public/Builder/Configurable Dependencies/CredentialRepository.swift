@@ -1,4 +1,4 @@
-public protocol CredentialStore {
+public protocol CredentialRepository {
 
     var persistedCredential: Credential? { get }
 

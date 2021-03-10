@@ -77,7 +77,7 @@
 		CA7A301D22B16DE4002AD939 /* BundleAppVersionProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F6622B16DE3002AD939 /* BundleAppVersionProviding.swift */; };
 		CA7A301E22B16DE4002AD939 /* UserDefaultsForceRefreshRequired.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F6722B16DE3002AD939 /* UserDefaultsForceRefreshRequired.swift */; };
 		CA7A301F22B16DE4002AD939 /* PersistentImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F6822B16DE3002AD939 /* PersistentImageRepository.swift */; };
-		CA7A302022B16DE4002AD939 /* KeychainCredentialStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F6922B16DE3002AD939 /* KeychainCredentialStore.swift */; };
+		CA7A302022B16DE4002AD939 /* KeychainCredentialRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F6922B16DE3002AD939 /* KeychainCredentialRepository.swift */; };
 		CA7A302222B16DE4002AD939 /* ConferenceDayEntity+Adaptation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F6D22B16DE3002AD939 /* ConferenceDayEntity+Adaptation.swift */; };
 		CA7A302322B16DE4002AD939 /* ReadAnnouncementEntity+Adaptation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F6E22B16DE3002AD939 /* ReadAnnouncementEntity+Adaptation.swift */; };
 		CA7A302422B16DE4002AD939 /* TrackEntity+Adaptation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F6F22B16DE3002AD939 /* TrackEntity+Adaptation.swift */; };
@@ -105,7 +105,7 @@
 		CA7A303B22B16DE4002AD939 /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F8C22B16DE3002AD939 /* Clock.swift */; };
 		CA7A303D22B16DE4002AD939 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F8E22B16DE3002AD939 /* UserPreferences.swift */; };
 		CA7A303E22B16DE4002AD939 /* MapCoordinateRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F8F22B16DE3002AD939 /* MapCoordinateRender.swift */; };
-		CA7A303F22B16DE4002AD939 /* CredentialStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F9022B16DE3002AD939 /* CredentialStore.swift */; };
+		CA7A303F22B16DE4002AD939 /* CredentialRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F9022B16DE3002AD939 /* CredentialRepository.swift */; };
 		CA7A304122B16DE4002AD939 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F9222B16DE3002AD939 /* NotificationService.swift */; };
 		CA7A304222B16DE4002AD939 /* URLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F9322B16DE3002AD939 /* URLOpener.swift */; };
 		CA7A304322B16DE4002AD939 /* RemoteNotificationsTokenRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F9422B16DE3002AD939 /* RemoteNotificationsTokenRegistration.swift */; };
@@ -593,7 +593,7 @@
 		CA7A2F6622B16DE3002AD939 /* BundleAppVersionProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BundleAppVersionProviding.swift; sourceTree = "<group>"; };
 		CA7A2F6722B16DE3002AD939 /* UserDefaultsForceRefreshRequired.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsForceRefreshRequired.swift; sourceTree = "<group>"; };
 		CA7A2F6822B16DE3002AD939 /* PersistentImageRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentImageRepository.swift; sourceTree = "<group>"; };
-		CA7A2F6922B16DE3002AD939 /* KeychainCredentialStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainCredentialStore.swift; sourceTree = "<group>"; };
+		CA7A2F6922B16DE3002AD939 /* KeychainCredentialRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainCredentialRepository.swift; sourceTree = "<group>"; };
 		CA7A2F6D22B16DE3002AD939 /* ConferenceDayEntity+Adaptation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ConferenceDayEntity+Adaptation.swift"; sourceTree = "<group>"; };
 		CA7A2F6E22B16DE3002AD939 /* ReadAnnouncementEntity+Adaptation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ReadAnnouncementEntity+Adaptation.swift"; sourceTree = "<group>"; };
 		CA7A2F6F22B16DE3002AD939 /* TrackEntity+Adaptation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TrackEntity+Adaptation.swift"; sourceTree = "<group>"; };
@@ -622,7 +622,7 @@
 		CA7A2F8C22B16DE3002AD939 /* Clock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Clock.swift; sourceTree = "<group>"; };
 		CA7A2F8E22B16DE3002AD939 /* UserPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		CA7A2F8F22B16DE3002AD939 /* MapCoordinateRender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapCoordinateRender.swift; sourceTree = "<group>"; };
-		CA7A2F9022B16DE3002AD939 /* CredentialStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialStore.swift; sourceTree = "<group>"; };
+		CA7A2F9022B16DE3002AD939 /* CredentialRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialRepository.swift; sourceTree = "<group>"; };
 		CA7A2F9222B16DE3002AD939 /* NotificationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		CA7A2F9322B16DE3002AD939 /* URLOpener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLOpener.swift; sourceTree = "<group>"; };
 		CA7A2F9422B16DE3002AD939 /* RemoteNotificationsTokenRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteNotificationsTokenRegistration.swift; sourceTree = "<group>"; };
@@ -1358,7 +1358,7 @@
 				CA7A2F6622B16DE3002AD939 /* BundleAppVersionProviding.swift */,
 				CA7A2F6422B16DE3002AD939 /* DefaultCollectThemAllRequestFactory.swift */,
 				CA8A73E622BD2577007A5201 /* HardcodedCompanionAppURLRequestFactory.swift */,
-				CA7A2F6922B16DE3002AD939 /* KeychainCredentialStore.swift */,
+				CA7A2F6922B16DE3002AD939 /* KeychainCredentialRepository.swift */,
 				CA7A2F6822B16DE3002AD939 /* PersistentImageRepository.swift */,
 				CA7A2F6322B16DE3002AD939 /* SystemClock.swift */,
 				CA7A2F6722B16DE3002AD939 /* UserDefaultsForceRefreshRequired.swift */,
@@ -1437,7 +1437,7 @@
 				CA7A2F9E22B16DE3002AD939 /* CollectThemAllRequestFactory.swift */,
 				CA8A73D722BD196A007A5201 /* CompanionAppURLRequestFactory.swift */,
 				CA7A2F9C22B16DE3002AD939 /* ConventionStartDateRepository.swift */,
-				CA7A2F9022B16DE3002AD939 /* CredentialStore.swift */,
+				CA7A2F9022B16DE3002AD939 /* CredentialRepository.swift */,
 				CA7A2F9B22B16DE3002AD939 /* ForceRefreshRequired.swift */,
 				CA7A2F9D22B16DE3002AD939 /* ImageRepository.swift */,
 				CA7A2F9A22B16DE3002AD939 /* LongRunningTaskManager.swift */,
@@ -2618,7 +2618,7 @@
 				CA7A306322B16DE4002AD939 /* API.swift in Sources */,
 				CA7A303D22B16DE4002AD939 /* UserPreferences.swift in Sources */,
 				CA7A304622B16DE4002AD939 /* DataStore.swift in Sources */,
-				CA7A302022B16DE4002AD939 /* KeychainCredentialStore.swift in Sources */,
+				CA7A302022B16DE4002AD939 /* KeychainCredentialRepository.swift in Sources */,
 				CA7A301B22B16DE4002AD939 /* DefaultCollectThemAllRequestFactory.swift in Sources */,
 				CA7A307222B16DE4002AD939 /* KnowledgeService.swift in Sources */,
 				CA7A302522B16DE4002AD939 /* MapEntity+Adaptation.swift in Sources */,
@@ -2663,7 +2663,7 @@
 				CA7A304C22B16DE4002AD939 /* CollectThemAllRequestFactory.swift in Sources */,
 				CA7A300822B16DE4002AD939 /* MapContent.swift in Sources */,
 				CA7A302322B16DE4002AD939 /* ReadAnnouncementEntity+Adaptation.swift in Sources */,
-				CA7A303F22B16DE4002AD939 /* CredentialStore.swift in Sources */,
+				CA7A303F22B16DE4002AD939 /* CredentialRepository.swift in Sources */,
 				CA7A300E22B16DE4002AD939 /* ImageEntity.swift in Sources */,
 				CA7A309522B16DE4002AD939 /* ConcreteRefreshService.swift in Sources */,
 				CA7A301E22B16DE4002AD939 /* UserDefaultsForceRefreshRequired.swift in Sources */,

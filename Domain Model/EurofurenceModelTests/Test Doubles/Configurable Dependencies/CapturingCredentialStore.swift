@@ -1,7 +1,7 @@
 import EurofurenceModel
 import Foundation
 
-class CapturingCredentialStore: CredentialStore {
+class CapturingCredentialStore: CredentialRepository {
 
     init(persistedCredential: Credential? = nil) {
         self.persistedCredential = persistedCredential

@@ -1,7 +1,7 @@
 import Foundation
 import Security
 
-public struct KeychainCredentialStore: CredentialStore {
+public struct KeychainCredentialRepository: CredentialRepository {
     
     private var userAccount: String
     private let decoder = JSONDecoder()

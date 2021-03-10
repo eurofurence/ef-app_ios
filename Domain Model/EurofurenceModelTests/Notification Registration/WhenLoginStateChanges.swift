@@ -45,7 +45,7 @@ class WhenLoginStateChanges: XCTestCase {
 
     func testThePersistedTokenIsNotDeletedUntilTheUserActuallyLogsOut() {
         let context = EurofurenceSessionTestBuilder().build()
-        XCTAssertFalse(context.credentialStore.didDeletePersistedToken)
+        XCTAssertFalse(context.credentialRepository.didDeletePersistedToken)
     }
 
 }

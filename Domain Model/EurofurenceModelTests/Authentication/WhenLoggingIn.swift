@@ -51,10 +51,10 @@ class WhenLoggingIn: XCTestCase {
         context.authenticationService.login(arguments, completionHandler: { (_) in })
         context.api.simulateLoginResponse(response)
 
-        XCTAssertEqual(expectedUsername, context.credentialStore.capturedCredential?.username)
-        XCTAssertEqual(expectedUserID, context.credentialStore.capturedCredential?.registrationNumber)
-        XCTAssertEqual(expectedToken, context.credentialStore.capturedCredential?.authenticationToken)
-        XCTAssertEqual(expectedTokenExpiry, context.credentialStore.capturedCredential?.tokenExpiryDate)
+        XCTAssertEqual(expectedUsername, context.credentialRepository.capturedCredential?.username)
+        XCTAssertEqual(expectedUserID, context.credentialRepository.capturedCredential?.registrationNumber)
+        XCTAssertEqual(expectedToken, context.credentialRepository.capturedCredential?.authenticationToken)
+        XCTAssertEqual(expectedTokenExpiry, context.credentialRepository.capturedCredential?.tokenExpiryDate)
     }
 
     func testLoggingInSuccessfulyShouldNotifyObserversAboutIt() {
@@ -67,7 +67,7 @@ class WhenLoggingIn: XCTestCase {
 
     func testLoggingInSuccessfulyShouldNotNotifyObserversAboutItUntilTokenPersistenceCompletes() {
         let loginObserver = CapturingLoginObserver()
-        context.credentialStore.blockToRunBeforeCompletingCredentialStorage = {
+        context.credentialRepository.blockToRunBeforeCompletingCredentialStorage = {
             XCTAssertFalse(loginObserver.notifiedLoginSucceeded)
         }
 

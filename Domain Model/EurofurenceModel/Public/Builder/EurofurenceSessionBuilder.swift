@@ -31,7 +31,7 @@ public class EurofurenceSessionBuilder {
     private var dataStoreFactory: DataStoreFactory
     private var remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration?
     private var clock: Clock
-    private var credentialStore: CredentialStore
+    private var credentialRepository: CredentialRepository
     private var api: API
     private var timeIntervalForUpcomingEventsSinceNow: TimeInterval
     private var imageRepository: ImageRepository
@@ -56,7 +56,7 @@ public class EurofurenceSessionBuilder {
         api = JSONAPI(jsonSession: jsonSession, apiUrl: mandatory.apiURL)
 
         clock = SystemClock.shared
-        credentialStore = KeychainCredentialStore()
+        credentialRepository = KeychainCredentialRepository()
         timeIntervalForUpcomingEventsSinceNow = 3600
         imageRepository = PersistentImageRepository()
         collectThemAllRequestFactory = DefaultCollectThemAllRequestFactory()
@@ -91,8 +91,8 @@ public class EurofurenceSessionBuilder {
     }
 
     @discardableResult
-    public func with(_ credentialStore: CredentialStore) -> EurofurenceSessionBuilder {
-        self.credentialStore = credentialStore
+    public func with(_ credentialRepository: CredentialRepository) -> EurofurenceSessionBuilder {
+        self.credentialRepository = credentialRepository
         return self
     }
 
@@ -169,7 +169,7 @@ public class EurofurenceSessionBuilder {
                                dataStoreFactory: dataStoreFactory,
                                remoteNotificationsTokenRegistration: remoteNotificationsTokenRegistration,
                                clock: clock,
-                               credentialStore: credentialStore,
+                               credentialRepository: credentialRepository,
                                conventionStartDateRepository: conventionStartDateRepository,
                                timeIntervalForUpcomingEventsSinceNow: timeIntervalForUpcomingEventsSinceNow,
                                imageRepository: imageRepository,

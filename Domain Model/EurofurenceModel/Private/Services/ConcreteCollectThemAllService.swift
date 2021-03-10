@@ -32,13 +32,13 @@ class ConcreteCollectThemAllService: CollectThemAllService {
     }
 
     private let collectThemAllRequestFactory: CollectThemAllRequestFactory
-    private let credentialStore: CredentialStore
+    private let credentialRepository: CredentialRepository
 
     init(eventBus: EventBus,
          collectThemAllRequestFactory: CollectThemAllRequestFactory,
-         credentialStore: CredentialStore) {
+         credentialRepository: CredentialRepository) {
         self.collectThemAllRequestFactory = collectThemAllRequestFactory
-        self.credentialStore = credentialStore
+        self.credentialRepository = credentialRepository
 
         eventBus.subscribe(consumer: LoggedOut { [weak self] in
             self?.notifyObserversGameRequestDidChange()
@@ -60,7 +60,7 @@ class ConcreteCollectThemAllService: CollectThemAllService {
     }
 
     private func provideLatestRequestToObserver(_ observer: CollectThemAllURLObserver) {
-        let request: URLRequest = credentialStore.persistedCredential
+        let request: URLRequest = credentialRepository.persistedCredential
             .map(collectThemAllRequestFactory.makeAuthenticatedGameURLRequest)
             .defaultingTo(collectThemAllRequestFactory.makeAnonymousGameURLRequest())
 

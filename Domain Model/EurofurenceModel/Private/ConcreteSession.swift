@@ -32,7 +32,7 @@ class ConcreteSession: EurofurenceSession {
         dataStoreFactory: DataStoreFactory,
         remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration?,
         clock: Clock,
-        credentialStore: CredentialStore,
+        credentialRepository: CredentialRepository,
         conventionStartDateRepository: ConventionStartDateRepository,
         timeIntervalForUpcomingEventsSinceNow: TimeInterval,
         imageRepository: ImageRepository,
@@ -68,7 +68,7 @@ class ConcreteSession: EurofurenceSession {
         authenticationService = ConcreteAuthenticationService(
             eventBus: eventBus,
             clock: clock,
-            credentialStore: credentialStore,
+            credentialRepository: credentialRepository,
             remoteNotificationsTokenRegistration: remoteNotificationsTokenRegistration,
             api: api
         )
@@ -129,7 +129,7 @@ class ConcreteSession: EurofurenceSession {
         collectThemAllService = ConcreteCollectThemAllService(
             eventBus: eventBus,
             collectThemAllRequestFactory: collectThemAllRequestFactory,
-            credentialStore: credentialStore
+            credentialRepository: credentialRepository
         )
         
         mapsService = ConcreteMapsService(
