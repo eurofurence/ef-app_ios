@@ -42,7 +42,7 @@ class CoreDataStoreTransaction: DataStoreTransaction {
             knowledgeEntries.forEach { (entry) in
                 let predicate = KnowledgeEntryEntity.makeIdentifyingPredicate(for: entry)
                 let entity: KnowledgeEntryEntity = context.makeEntity(uniquelyIdentifiedBy: predicate)
-                entity.links.let(entity.removeFromLinks)
+                entity.links.map(entity.removeFromLinks)
 
                 let links = entry.links.map { (link) -> LinkEntity in
                     let namePredicate = NSPredicate(format: "\(#keyPath(LinkEntity.name)) == %@", link.name)
@@ -128,7 +128,7 @@ class CoreDataStoreTransaction: DataStoreTransaction {
                 let predicate = MapEntity.makeIdentifyingPredicate(for: map)
                 let entity: MapEntity = context.makeEntity(uniquelyIdentifiedBy: predicate)
                 entity.consumeAttributes(from: map)
-                entity.entries.let(entity.removeFromEntries)
+                entity.entries.map(entity.removeFromEntries)
 
                 let entries = map.entries.map { (entry) -> MapEntryEntity in
                     let links = entry.links.map { (link) -> MapEntryLinkEntity in

@@ -26,8 +26,8 @@ extension KnowledgeGroupImpl {
             
             let defaultFontAwesomeBackupCharacter: Character = " "
             let fontAwesomeCharacter: Character = Int(group.fontAwesomeCharacterAddress, radix: 16)
-                .let(UnicodeScalar.init)
-                .let(Character.init)
+                .flatMap(UnicodeScalar.init)
+                .map(Character.init)
                 .defaultingTo(defaultFontAwesomeBackupCharacter)
             
             return KnowledgeGroupImpl(

@@ -22,11 +22,11 @@ class EventImpl: Event {
     let track: Track
 
     var posterGraphicPNGData: Data? {
-        return characteristics.posterImageId.let(imageCache.cachedImageData)
+        return characteristics.posterImageId.flatMap(imageCache.cachedImageData)
     }
     
     var bannerGraphicPNGData: Data? {
-        return characteristics.bannerImageId.let(imageCache.cachedImageData)
+        return characteristics.bannerImageId.flatMap(imageCache.cachedImageData)
     }
     
     var title: String {

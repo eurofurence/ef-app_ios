@@ -13,7 +13,7 @@ struct AdditionalServicesPresenter: HybridWebSceneDelegate, AdditionalServicesUR
         
         scene.setSceneTitle(.additionalServices)
         scene.setSceneShortTitle(.services)
-        UIImage(named: "Additional Services", in: .main, compatibleWith: nil)?.pngData().let(scene.setSceneIcon)
+        UIImage(named: "Additional Services", in: .main, compatibleWith: nil)?.pngData().map(scene.setSceneIcon)
         
         scene.setDelegate(self)
     }

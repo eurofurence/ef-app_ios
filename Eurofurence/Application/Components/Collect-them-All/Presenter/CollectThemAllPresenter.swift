@@ -13,7 +13,7 @@ struct CollectThemAllPresenter: HybridWebSceneDelegate, CollectThemAllURLObserve
 
         scene.setSceneShortTitle(.collect)
         scene.setSceneTitle(.collectThemAll)
-        UIImage(named: "Collectemall-50", in: .main, compatibleWith: nil)?.pngData().let(scene.setSceneIcon)
+        UIImage(named: "Collectemall-50", in: .main, compatibleWith: nil)?.pngData().map(scene.setSceneIcon)
         
         scene.setDelegate(self)
     }
