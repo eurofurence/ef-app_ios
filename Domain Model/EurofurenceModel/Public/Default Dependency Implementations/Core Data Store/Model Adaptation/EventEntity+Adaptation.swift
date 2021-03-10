@@ -22,23 +22,25 @@ extension EventEntity: EntityAdapting {
             abandonDueToInconsistentState()
         }
         
-        return EventCharacteristics(identifier: identifier,
-                                    roomIdentifier: roomIdentifier,
-                                    trackIdentifier: trackIdentifier,
-                                    dayIdentifier: dayIdentifier,
-                                    startDateTime: startDateTime as Date,
-                                    endDateTime: endDateTime as Date,
-                                    title: title,
-                                    subtitle: subtitle.defaultingTo(""),
-                                    abstract: abstract,
-                                    panelHosts: panelHosts,
-                                    eventDescription: eventDescription,
-                                    posterImageId: posterImageId,
-                                    bannerImageId: bannerImageId,
-                                    tags: tags,
-                                    isAcceptingFeedback: isAcceptingFeedback)
+        return EventCharacteristics(
+            identifier: identifier,
+            roomIdentifier: roomIdentifier,
+            trackIdentifier: trackIdentifier,
+            dayIdentifier: dayIdentifier,
+            startDateTime: startDateTime as Date,
+            endDateTime: endDateTime as Date,
+            title: title,
+            subtitle: subtitle.defaultingTo(""),
+            abstract: abstract,
+            panelHosts: panelHosts,
+            eventDescription: eventDescription,
+            posterImageId: posterImageId,
+            bannerImageId: bannerImageId,
+            tags: tags,
+            isAcceptingFeedback: isAcceptingFeedback
+        )
     }
-
+    
     func consumeAttributes(from value: EventCharacteristics) {
         identifier = value.identifier
         roomIdentifier = value.roomIdentifier

@@ -13,9 +13,11 @@ struct KnowledgeGroupImpl: KnowledgeGroup {
 
 extension KnowledgeGroupImpl {
     
-    static func fromServerModels(groups: [KnowledgeGroupCharacteristics],
-                                 entries: [KnowledgeEntryCharacteristics],
-                                 shareableURLFactory: ShareableURLFactory) -> [KnowledgeGroup] {
+    static func fromServerModels(
+        groups: [KnowledgeGroupCharacteristics],
+        entries: [KnowledgeEntryCharacteristics],
+        shareableURLFactory: ShareableURLFactory
+    ) -> [KnowledgeGroup] {
         return groups.map({ (group) -> KnowledgeGroup in
             let entries = entries
                 .filter({ $0.groupIdentifier == group.identifier })

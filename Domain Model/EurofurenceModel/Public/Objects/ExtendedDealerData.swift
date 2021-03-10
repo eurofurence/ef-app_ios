@@ -20,23 +20,25 @@ public struct ExtendedDealerData {
     public var artPreviewImagePNGData: Data?
     public var artPreviewCaption: String?
 
-    public init(artistImagePNGData: Data?,
-                dealersDenMapLocationGraphicPNGData: Data?,
-                preferredName: String,
-                alternateName: String?,
-                categories: [String],
-                dealerShortDescription: String,
-                isAttendingOnThursday: Bool,
-                isAttendingOnFriday: Bool,
-                isAttendingOnSaturday: Bool,
-                isAfterDark: Bool,
-                websiteName: String?,
-                twitterUsername: String?,
-                telegramUsername: String?,
-                aboutTheArtist: String?,
-                aboutTheArt: String?,
-                artPreviewImagePNGData: Data?,
-                artPreviewCaption: String?) {
+    public init(
+        artistImagePNGData: Data?,
+        dealersDenMapLocationGraphicPNGData: Data?,
+        preferredName: String,
+        alternateName: String?,
+        categories: [String],
+        dealerShortDescription: String,
+        isAttendingOnThursday: Bool,
+        isAttendingOnFriday: Bool,
+        isAttendingOnSaturday: Bool,
+        isAfterDark: Bool,
+        websiteName: String?,
+        twitterUsername: String?,
+        telegramUsername: String?,
+        aboutTheArtist: String?,
+        aboutTheArt: String?,
+        artPreviewImagePNGData: Data?,
+        artPreviewCaption: String?
+    ) {
         self.artistImagePNGData = artistImagePNGData
         self.dealersDenMapLocationGraphicPNGData = dealersDenMapLocationGraphicPNGData
         self.preferredName = preferredName

@@ -15,9 +15,11 @@ extension ImageModelEntity: EntityAdapting {
             abandonDueToInconsistentState()
         }
         
-        return ImageCharacteristics(identifier: identifier,
-                                    internalReference: internalReference,
-                                    contentHashSha1: contentHashSha1)
+        return ImageCharacteristics(
+            identifier: identifier,
+            internalReference: internalReference,
+            contentHashSha1: contentHashSha1
+        )
     }
 
     func consumeAttributes(from value: ImageCharacteristics) {

@@ -161,27 +161,29 @@ public class EurofurenceSessionBuilder {
         self.refreshCollaboration = refreshCollaboration
         return self
     }
-
+    
     public func build() -> EurofurenceSession {
-        return ConcreteSession(conventionIdentifier: conventionIdentifier,
-                               api: api,
-                               userPreferences: userPreferences,
-                               dataStoreFactory: dataStoreFactory,
-                               remoteNotificationsTokenRegistration: remoteNotificationsTokenRegistration,
-                               clock: clock,
-                               credentialRepository: credentialRepository,
-                               conventionStartDateRepository: conventionStartDateRepository,
-                               timeIntervalForUpcomingEventsSinceNow: timeIntervalForUpcomingEventsSinceNow,
-                               imageRepository: imageRepository,
-                               significantTimeChangeAdapter: significantTimeChangeAdapter,
-                               urlOpener: urlOpener,
-                               collectThemAllRequestFactory: collectThemAllRequestFactory,
-                               longRunningTaskManager: longRunningTaskManager,
-                               mapCoordinateRender: mapCoordinateRender,
-                               forceRefreshRequired: forceRefreshRequired,
-                               companionAppURLRequestFactory: companionAppURLRequestFactory,
-                               refreshCollaboration: refreshCollaboration,
-                               shareableURLFactory: shareableURLFactory)
+        return ConcreteSession(
+            conventionIdentifier: conventionIdentifier,
+            api: api,
+            userPreferences: userPreferences,
+            dataStoreFactory: dataStoreFactory,
+            remoteNotificationsTokenRegistration: remoteNotificationsTokenRegistration,
+            clock: clock,
+            credentialRepository: credentialRepository,
+            conventionStartDateRepository: conventionStartDateRepository,
+            timeIntervalForUpcomingEventsSinceNow: timeIntervalForUpcomingEventsSinceNow,
+            imageRepository: imageRepository,
+            significantTimeChangeAdapter: significantTimeChangeAdapter,
+            urlOpener: urlOpener,
+            collectThemAllRequestFactory: collectThemAllRequestFactory,
+            longRunningTaskManager: longRunningTaskManager,
+            mapCoordinateRender: mapCoordinateRender,
+            forceRefreshRequired: forceRefreshRequired,
+            companionAppURLRequestFactory: companionAppURLRequestFactory,
+            refreshCollaboration: refreshCollaboration,
+            shareableURLFactory: shareableURLFactory
+        )
     }
-
+    
 }

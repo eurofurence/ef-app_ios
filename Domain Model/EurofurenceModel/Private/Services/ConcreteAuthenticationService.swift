@@ -101,14 +101,19 @@ class ConcreteAuthenticationService: AuthenticationService {
     private func remoteNotificationTokenDidChange(_ event: DomainEvent.RemoteNotificationTokenAvailable) {
         registeredDeviceToken = event.deviceToken
     }
-
-    private func handleLoginSuccess(_ args: LoginArguments,
-                                    response: LoginResponse,
-                                    completionHandler: @escaping (LoginResult) -> Void) {
-        let credential = Credential(username: args.username,
-                                    registrationNumber: args.registrationNumber,
-                                    authenticationToken: response.token,
-                                    tokenExpiryDate: response.tokenValidUntil)
+    
+    private func handleLoginSuccess(
+        _ args: LoginArguments,
+        response: LoginResponse,
+        completionHandler: @escaping (LoginResult) -> Void
+    ) {
+        let credential = Credential(
+            username: args.username,
+            registrationNumber: args.registrationNumber,
+            authenticationToken: response.token,
+            tokenExpiryDate: response.tokenValidUntil
+        )
+        
         credentialRepository.store(credential)
         updateCurrentUser(from: credential)
         

@@ -16,10 +16,12 @@ extension MapEntity: EntityAdapting {
             abandonDueToInconsistentState()
         }
         
-        return MapCharacteristics(identifier: identifier,
-                                  imageIdentifier: imageIdentifier,
-                                  mapDescription: mapDescription,
-                                  entries: entries.map({ $0.asAdaptedType() }))
+        return MapCharacteristics(
+            identifier: identifier,
+            imageIdentifier: imageIdentifier,
+            mapDescription: mapDescription,
+            entries: entries.map({ $0.asAdaptedType() })
+        )
     }
 
     func consumeAttributes(from value: MapCharacteristics) {

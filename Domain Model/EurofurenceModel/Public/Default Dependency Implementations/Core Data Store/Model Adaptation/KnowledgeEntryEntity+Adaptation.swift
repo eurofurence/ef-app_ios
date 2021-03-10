@@ -16,14 +16,16 @@ extension KnowledgeEntryEntity: EntityAdapting {
               let text = text else {
             abandonDueToInconsistentState()
         }
-
-        return KnowledgeEntryCharacteristics(identifier: identifier,
-                                             groupIdentifier: groupIdentifier,
-                                             title: title,
-                                             order: Int(order),
-                                             text: text,
-                                             links: links.map({ $0.asAdaptedType() }).sorted(),
-                                             imageIdentifiers: imageIdentifiers.defaultingTo(.empty))
+        
+        return KnowledgeEntryCharacteristics(
+            identifier: identifier,
+            groupIdentifier: groupIdentifier,
+            title: title,
+            order: Int(order),
+            text: text,
+            links: links.map({ $0.asAdaptedType() }).sorted(),
+            imageIdentifiers: imageIdentifiers.defaultingTo(.empty)
+        )
     }
 
     func consumeAttributes(from value: KnowledgeEntryCharacteristics) {

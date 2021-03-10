@@ -59,13 +59,15 @@ public struct JSONAPI: API {
     }
 
     // MARK: PrivateMessagesAPI
-
-    public func loadPrivateMessages(authorizationToken: String,
-                                    completionHandler: @escaping ([MessageCharacteristics]?) -> Void) {
+    
+    public func loadPrivateMessages(
+        authorizationToken: String,
+        completionHandler: @escaping ([MessageCharacteristics]?) -> Void
+    ) {
         let url = urlStringByAppending(pathComponent: "Communication/PrivateMessages")
         var request = JSONRequest(url: url)
         request.headers = ["Authorization": "Bearer \(authorizationToken)"]
-
+        
         jsonSession.get(request) { (data, _) in
             var messages: [MessageCharacteristics]?
             defer { completionHandler(messages) }
@@ -161,10 +163,12 @@ public struct JSONAPI: API {
             var TokenValidUntil: Date
 
             func makeDomainLoginResponse() -> LoginResponse {
-                return LoginResponse(userIdentifier: Uid,
-                                     username: Username,
-                                     token: Token,
-                                     tokenValidUntil: TokenValidUntil)
+                return LoginResponse(
+                    userIdentifier: Uid,
+                    username: Username,
+                    token: Token,
+                    tokenValidUntil: TokenValidUntil
+                )
             }
         }
 
@@ -198,14 +202,16 @@ public struct JSONAPI: API {
                 case receivedDateTime = "ReceivedDateTimeUtc"
                 case readDateTime = "ReadDateTimeUtc"
             }
-
+            
             func makeAppDomainMessage() -> EurofurenceModel.MessageCharacteristics {
-                return MessageCharacteristics(identifier: id,
-                                              authorName: authorName,
-                                              receivedDateTime: receivedDateTime,
-                                              subject: subject,
-                                              contents: message,
-                                              isRead: readDateTime != nil)
+                return MessageCharacteristics(
+                    identifier: id,
+                    authorName: authorName,
+                    receivedDateTime: receivedDateTime,
+                    subject: subject,
+                    contents: message,
+                    isRead: readDateTime != nil
+                )
             }
 
         }

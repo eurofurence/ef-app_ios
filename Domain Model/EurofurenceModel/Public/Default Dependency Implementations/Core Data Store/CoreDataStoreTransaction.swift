@@ -39,11 +39,11 @@ class CoreDataStoreTransaction: DataStoreTransaction {
 
     func saveKnowledgeEntries(_ knowledgeEntries: [KnowledgeEntryCharacteristics]) {
         mutations.append { (context) in
-            knowledgeEntries.forEach { (entry) in
+            for entry in knowledgeEntries {
                 let predicate = KnowledgeEntryEntity.makeIdentifyingPredicate(for: entry)
                 let entity: KnowledgeEntryEntity = context.makeEntity(uniquelyIdentifiedBy: predicate)
                 entity.links.map(entity.removeFromLinks)
-
+                
                 let links = entry.links.map { (link) -> LinkEntity in
                     let namePredicate = NSPredicate(format: "\(#keyPath(LinkEntity.name)) == %@", link.name)
                     let targetPredicate = NSPredicate(format: "\(#keyPath(LinkEntity.target)) == %@", link.target)
@@ -58,10 +58,10 @@ class CoreDataStoreTransaction: DataStoreTransaction {
                     
                     let entity: LinkEntity = context.makeEntity(uniquelyIdentifiedBy: predicate)
                     entity.consumeAttributes(from: link)
-
+                    
                     return entity
                 }
-
+                
                 entity.consumeAttributes(from: entry)
                 links.forEach(entity.addToLinks)
             }
@@ -94,7 +94,7 @@ class CoreDataStoreTransaction: DataStoreTransaction {
 
     func saveDealers(_ dealers: [DealerCharacteristics]) {
         mutations.append { (context) in
-            dealers.forEach { (dealer) in
+            for dealer in dealers {
                 let predicate = DealerEntity.makeIdentifyingPredicate(for: dealer)
                 let entity: DealerEntity = context.makeEntity(uniquelyIdentifiedBy: predicate)
                 entity.consumeAttributes(from: dealer)
@@ -124,7 +124,7 @@ class CoreDataStoreTransaction: DataStoreTransaction {
 
     func saveMaps(_ maps: [MapCharacteristics]) {
         mutations.append { (context) in
-            maps.forEach { (map) in
+            for map in maps {
                 let predicate = MapEntity.makeIdentifyingPredicate(for: map)
                 let entity: MapEntity = context.makeEntity(uniquelyIdentifiedBy: predicate)
                 entity.consumeAttributes(from: map)
@@ -216,9 +216,11 @@ class CoreDataStoreTransaction: DataStoreTransaction {
         }
     }
     
-    private func deleteFirst<T>(_ kind: T.Type,
-                                identifierKey: String = "identifier",
-                                identifier: String) where T: NSManagedObject {
+    private func deleteFirst<T>(
+        _ kind: T.Type,
+        identifierKey: String = "identifier",
+        identifier: String
+    ) where T: NSManagedObject {
         mutations.append { (context) in
             let fetchRequest = NSFetchRequest<T>(entityName: String(describing: T.self))
             fetchRequest.predicate = NSPredicate(format: "\(identifierKey) == %@", identifier)

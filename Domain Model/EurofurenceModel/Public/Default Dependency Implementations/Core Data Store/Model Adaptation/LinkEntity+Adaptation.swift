@@ -14,9 +14,8 @@ extension LinkEntity: EntityAdapting {
               let target = target else {
             abandonDueToInconsistentState()
         }
-        return LinkCharacteristics(name: name,
-                                   fragmentType: fragmentType,
-                                   target: target)
+        
+        return LinkCharacteristics(name: name, fragmentType: fragmentType, target: target)
     }
 
     func consumeAttributes(from value: LinkCharacteristics) {

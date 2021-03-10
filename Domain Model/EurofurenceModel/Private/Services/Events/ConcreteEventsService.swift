@@ -73,13 +73,15 @@ class ConcreteEventsService: ClockDelegate, EventsService {
     private(set) var favouriteEventIdentifiers = [EventIdentifier]()
 
     // MARK: Initialization
-
-    init(eventBus: EventBus,
-         dataStore: DataStore,
-         imageCache: ImagesCache,
-         clock: Clock,
-         timeIntervalForUpcomingEventsSinceNow: TimeInterval,
-         shareableURLFactory: ShareableURLFactory) {
+    
+    init(
+        eventBus: EventBus,
+        dataStore: DataStore,
+        imageCache: ImagesCache,
+        clock: Clock,
+        timeIntervalForUpcomingEventsSinceNow: TimeInterval,
+        shareableURLFactory: ShareableURLFactory
+    ) {
         self.dataStore = dataStore
         self.imageCache = imageCache
         self.clock = clock

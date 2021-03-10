@@ -168,22 +168,22 @@ class ConcreteSession: EurofurenceSession {
         privateMessagesService.refreshMessages()
     }
     
-    lazy var services: Services = {
-        return Services(notifications: notificationService,
-                        refresh: refreshService,
-                        announcements: announcementsService,
-                        authentication: authenticationService,
-                        events: eventsService,
-                        dealers: dealersService,
-                        knowledge: knowledgeService,
-                        contentLinks: contentLinksService,
-                        conventionCountdown: conventionCountdownService,
-                        collectThemAll: collectThemAllService,
-                        maps: mapsService,
-                        sessionState: sessionStateService,
-                        privateMessages: privateMessagesService)
-    }()
+    lazy var services = Services(
+        notifications: notificationService,
+        refresh: refreshService,
+        announcements: announcementsService,
+        authentication: authenticationService,
+        events: eventsService,
+        dealers: dealersService,
+        knowledge: knowledgeService,
+        contentLinks: contentLinksService,
+        conventionCountdown: conventionCountdownService,
+        collectThemAll: collectThemAllService,
+        maps: mapsService,
+        sessionState: sessionStateService,
+        privateMessages: privateMessagesService
+    )
     
-    lazy var repositories: Repositories = Repositories(additionalServices: additionalServicesRepository)
+    lazy var repositories = Repositories(additionalServices: additionalServicesRepository)
     
 }

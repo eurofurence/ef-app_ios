@@ -38,22 +38,20 @@ class ConcreteAnnouncementsService: AnnouncementsService {
     }
     
     func fetchAnnouncement(identifier: AnnouncementIdentifier) -> Announcement? {
-        if let model = models.first(where: { $0.identifier == identifier }) {
-            if readAnnouncementIdentifiers.contains(identifier) == false {
-                readAnnouncementIdentifiers.append(identifier)
-                announcementsObservers.forEach({ (observer) in
-                    observer.announcementsServiceDidUpdateReadAnnouncements(readAnnouncementIdentifiers)
-                })
-                
-                dataStore.performTransaction { (transaction) in
-                    transaction.saveReadAnnouncements(self.readAnnouncementIdentifiers)
-                }
-            }
+        guard let model = models.first(where: { $0.identifier == identifier }) else { return nil }
+        
+        if readAnnouncementIdentifiers.contains(identifier) == false {
+            readAnnouncementIdentifiers.append(identifier)
+            announcementsObservers.forEach({ (observer) in
+                observer.announcementsServiceDidUpdateReadAnnouncements(readAnnouncementIdentifiers)
+            })
             
-            return model
-        } else {
-            return nil
+            dataStore.performTransaction { (transaction) in
+                transaction.saveReadAnnouncements(self.readAnnouncementIdentifiers)
+            }
         }
+        
+        return model
     }
 
     // MARK: Private
@@ -64,9 +62,7 @@ class ConcreteAnnouncementsService: AnnouncementsService {
     }
     
     private func makeAnnouncement(from characteristics: AnnouncementCharacteristics) -> AnnouncementImpl {
-        return AnnouncementImpl(dataStore: dataStore,
-                                imageRepository: imageRepository,
-                                characteristics: characteristics)
+        AnnouncementImpl(dataStore: dataStore, imageRepository: imageRepository, characteristics: characteristics)
     }
 
     private func isLastEditTimeAscending(

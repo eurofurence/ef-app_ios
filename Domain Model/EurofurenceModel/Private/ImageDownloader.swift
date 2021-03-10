@@ -43,7 +43,7 @@ class ImageDownloader {
             return
         }
 
-        imagesToDownload.forEach { (request) in
+        for request in imagesToDownload {
             let identifier = request.imageIdentifier
             let sha1 = request.imageContentHashSha1
             
