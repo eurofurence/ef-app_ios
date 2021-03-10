@@ -53,26 +53,49 @@ class RefreshChain {
                 return
             }
             
-            let imageDownloadRequests = response.images.changed.map(ImageDownloader.DownloadRequest.init)
-            progress.completedUnitCount = 0
-            progress.totalUnitCount = Int64(imageDownloadRequests.count)
             self.forceRefreshRequired.markForceRefreshNoLongerRequired()
-            
-            self.imageDownloader.downloadImages(requests: imageDownloadRequests, parentProgress: progress) {
-                self.updateLocalStore(response: response, lastSyncTime: lastSyncTime)
-                
-                self.privateMessagesController.refreshMessages { (_) in
-                    self.refreshCollaboration.executeCollaborativeRefreshTask(completionHandler: { (error) in
-                        if error != nil {
-                            chainComplete(.collaborationError)
-                        } else {
-                            chainComplete(nil)
-                        }
-                    })
-                }
-            }
+
+            self.loadImages(response, lastSyncTime: lastSyncTime, progress: progress, chainComplete: chainComplete)
         }
     }
+    
+    
+    private func loadPrivateMessages(chainComplete: @escaping (RefreshServiceError?) -> Void) {
+        self.privateMessagesController.refreshMessages { (_) in
+            self.executeRefreshCollaboration(chainComplete: chainComplete)
+        }
+    }
+    
+    
+    private func loadImages(
+        _ response: ModelCharacteristics,
+        lastSyncTime: Date?,
+        progress: Progress,
+        chainComplete: @escaping (RefreshServiceError?) -> Void
+    ) {
+        let imageDownloadRequests = response.images.changed.map(ImageDownloader.DownloadRequest.init)
+        progress.completedUnitCount = 0
+        progress.totalUnitCount = Int64(imageDownloadRequests.count)
+        
+        self.imageDownloader.downloadImages(requests: imageDownloadRequests, parentProgress: progress) {
+            self.updateLocalStore(response: response, lastSyncTime: lastSyncTime)
+            self.loadPrivateMessages(chainComplete: chainComplete)
+        }
+    }
+    
+    
+    private func executeRefreshCollaboration(chainComplete: @escaping (RefreshServiceError?) -> Void) {
+        self.refreshCollaboration.executeCollaborativeRefreshTask(completionHandler: { (error) in
+            if error != nil {
+                chainComplete(.collaborationError)
+            } else {
+                chainComplete(nil)
+            }
+        })
+    }
+    
+    
+    
     
     private func determineLastRefreshDate() -> Date? {
         if forceRefreshRequired.isForceRefreshRequired {
