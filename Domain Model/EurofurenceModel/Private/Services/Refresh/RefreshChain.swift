@@ -17,7 +17,7 @@ class RefreshChain {
         clock: Clock,
         imageRepository: ImageRepository
     ) {
-        let executeCollaboration = ExecuteRefreshCollaborationNode(
+        let executeCollaboration = ExecuteRefreshCollaboration(
             next: nil,
             refreshCollaboration: refreshCollaboration
         )

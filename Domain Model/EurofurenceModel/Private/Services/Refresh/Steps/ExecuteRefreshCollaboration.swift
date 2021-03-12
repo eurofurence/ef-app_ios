@@ -1,6 +1,6 @@
 import Foundation
 
-class ExecuteRefreshCollaborationNode: RefreshChain.Node {
+class ExecuteRefreshCollaboration: RefreshChain.Node {
     
     private let refreshCollaboration: RefreshCollaboration
     
