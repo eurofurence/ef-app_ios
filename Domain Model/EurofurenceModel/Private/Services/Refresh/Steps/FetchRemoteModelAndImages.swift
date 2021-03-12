@@ -7,11 +7,6 @@ class FetchRemoteModelAndImages: RefreshChain.Node {
     private let dataStore: DataStore
     private let api: API
     private let imageDownloader: ImageDownloader
-    private let eventBus: EventBus
-    private let imageCache: ImagesCache
-    private let clock: Clock
-    private let imageRepository: ImageRepository
-    
     private let dataStoreBridge: DataStoreSyncBridge
     
     init(
@@ -21,10 +16,6 @@ class FetchRemoteModelAndImages: RefreshChain.Node {
         dataStore: DataStore,
         api: API,
         imageDownloader: ImageDownloader,
-        eventBus: EventBus,
-        imageCache: ImagesCache,
-        clock: Clock,
-        imageRepository: ImageRepository,
         dataStoreBridge: DataStoreSyncBridge
     ) {
         self.conventionIdentifier = conventionIdentifier
@@ -32,11 +23,6 @@ class FetchRemoteModelAndImages: RefreshChain.Node {
         self.dataStore = dataStore
         self.api = api
         self.imageDownloader = imageDownloader
-        self.eventBus = eventBus
-        self.imageCache = imageCache
-        self.clock = clock
-        self.imageRepository = imageRepository
-        
         self.dataStoreBridge = dataStoreBridge
         
         super.init(next: next)

@@ -35,12 +35,8 @@ class ConcreteRefreshService: RefreshService {
             dataStore: dataStore,
             api: api,
             imageDownloader: imageDownloader,
-            eventBus: eventBus,
-            imageCache: imageCache,
             privateMessagesController: privateMessagesController,
             refreshCollaboration: refreshCollaboration,
-            clock: clock,
-            imageRepository: imageRepository,
             dataStoreBridge: dataStoreBridge
         )
     }

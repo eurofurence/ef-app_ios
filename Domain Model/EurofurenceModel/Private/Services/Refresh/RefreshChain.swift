@@ -10,12 +10,8 @@ class RefreshChain {
         dataStore: DataStore,
         api: API,
         imageDownloader: ImageDownloader,
-        eventBus: EventBus,
-        imageCache: ImagesCache,
         privateMessagesController: ConcretePrivateMessagesService,
         refreshCollaboration: RefreshCollaboration,
-        clock: Clock,
-        imageRepository: ImageRepository,
         dataStoreBridge: DataStoreSyncBridge
     ) {
         let executeCollaboration = ExecuteRefreshCollaboration(
@@ -35,10 +31,6 @@ class RefreshChain {
             dataStore: dataStore,
             api: api,
             imageDownloader: imageDownloader,
-            eventBus: eventBus,
-            imageCache: imageCache,
-            clock: clock,
-            imageRepository: imageRepository,
             dataStoreBridge: dataStoreBridge
         )
         
