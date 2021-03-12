@@ -43,6 +43,16 @@ class RefreshChain {
         first = fetchModel
     }
     
+    func start(progress: Progress, chainComplete: @escaping (RefreshServiceError?) -> Void) {
+        first.start(progress: progress, chainComplete: chainComplete)
+    }
+    
+}
+
+// MARK: - Node
+
+extension RefreshChain {
+    
     class Node {
         
         private var next: Node?
@@ -66,10 +76,6 @@ class RefreshChain {
             }
         }
         
-    }
-    
-    func start(progress: Progress, chainComplete: @escaping (RefreshServiceError?) -> Void) {
-        first.start(progress: progress, chainComplete: chainComplete)
     }
     
 }
