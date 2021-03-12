@@ -33,9 +33,8 @@ class ImageDownloader {
         }
 
         var pendingImageIdentifiers = requests
-        let imagesToDownload = pendingImageIdentifiers
 
-        for request in imagesToDownload {
+        for request in requests {
             let identifier = request.imageIdentifier
             let sha1 = request.imageContentHashSha1
             
