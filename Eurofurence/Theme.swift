@@ -129,6 +129,12 @@ struct Theme {
     private static func styleTabBarItems() {
         let tabBarItem = UITabBarItem.appearance()
         tabBarItem.setTitleTextAttributes(whiteTextAttributes, for: .normal)
+        
+        let selectedTextAttributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.selectedTabBarItem
+        ]
+        
+        tabBarItem.setTitleTextAttributes(selectedTextAttributes, for: .selected)
     }
 
     private static func styleNavigationBarExtensions() {
