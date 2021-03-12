@@ -17,6 +17,7 @@ extension UIColor {
     }
     
     static let tintColor = adaptiveColor(lightColor: .pantone330U, darkColor: .pantone330U_45)
+    static let disabledColor = safeSystemGray
     static let navigationBar = barColor
     static let tabBar = barColor
     static let searchBarTint = pantone330U
@@ -78,7 +79,6 @@ extension UIColor {
     static let pantone330U_26 = unsafelyNamed("Pantone 330U (26%)")
     static let pantone330U_13 = unsafelyNamed("Pantone 330U (13%)")
     static let pantone330U_5 = unsafelyNamed("Pantone 330U (5%)")
-    static let conferenceGrey = unsafelyNamed("Conference Grey")
     static let largeActionButton = unsafelyNamed("Large Action Button")
     
     private static func scaled(red: CGFloat, green: CGFloat, blue: CGFloat) -> UIColor {
