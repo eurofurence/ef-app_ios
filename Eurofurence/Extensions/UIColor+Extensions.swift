@@ -17,8 +17,8 @@ extension UIColor {
     }
     
     static let tintColor = adaptiveColor(lightColor: .pantone330U, darkColor: .pantone330U_45)
-    static let navigationBar = adaptiveColor(lightColor: .pantone330U, darkColor: .black)
-    static let tabBar = adaptiveColor(lightColor: .pantone330U, darkColor: .black)
+    static let navigationBar = barColor
+    static let tabBar = barColor
     static let searchBarTint = UIColor.pantone330U
     static let refreshControl = UIColor.pantone330U_13
     static let selectedTabBarItem = adaptiveColor(lightColor: .white, darkColor: .pantone330U_45)
@@ -42,6 +42,12 @@ extension UIColor {
     )
     
     static let userPromptWithUnreadMessages = adaptiveColor(lightColor: .pantone330U, darkColor: .pantone330U_45)
+    
+    private static let barColor: UIColor = adaptiveColor(lightColor: .pantone330U, darkColor: calendarStyleBarColor)
+    
+    private static var calendarStyleBarColor: UIColor {
+        scaled(red: 18, green: 19, blue: 18)
+    }
     
     private static var secondaryDarkColor: UIColor = {
         if #available(iOS 13.0, *) {
