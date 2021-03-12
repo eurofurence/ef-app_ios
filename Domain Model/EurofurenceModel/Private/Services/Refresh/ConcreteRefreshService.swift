@@ -3,7 +3,7 @@ import Foundation
 class ConcreteRefreshService: RefreshService {
     
     private let longRunningTaskManager: LongRunningTaskManager?
-    private let chain: RefreshChain
+    private let chainRoot: RefreshChain.Node
 
     init(
         conventionIdentifier: ConventionIdentifier,
@@ -18,16 +18,27 @@ class ConcreteRefreshService: RefreshService {
     ) {
         self.longRunningTaskManager = longRunningTaskManager
         
-        chain = RefreshChain(
+        let executeCollaboration = ExecuteRefreshCollaboration(
+            next: nil,
+            refreshCollaboration: refreshCollaboration
+        )
+        
+        let fetchMessages = FetchPrivateMessages(
+            next: executeCollaboration,
+            privateMessagesController: privateMessagesController
+        )
+        
+        let fetchModel = FetchRemoteModelAndImages(
+            next: fetchMessages,
             conventionIdentifier: conventionIdentifier,
             forceRefreshRequired: forceRefreshRequired,
             dataStore: dataStore,
             api: api,
             imageDownloader: imageDownloader,
-            privateMessagesController: privateMessagesController,
-            refreshCollaboration: refreshCollaboration,
             dataStoreBridge: dataStoreBridge
         )
+        
+        chainRoot = fetchModel
     }
 
     private var refreshObservers = [RefreshServiceObserver]()
@@ -52,7 +63,7 @@ class ConcreteRefreshService: RefreshService {
         startLongRunningTask()
         notifyRefreshStarted()
         
-        chain.start(progress: progress) { [weak self] (error) in
+        chainRoot.start(progress: progress) { [weak self] (error) in
             completionHandler(error)
             self?.refreshTaskDidFinish()
         }
