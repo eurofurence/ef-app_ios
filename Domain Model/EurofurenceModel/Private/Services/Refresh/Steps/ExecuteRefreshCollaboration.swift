@@ -1,10 +1,10 @@
 import Foundation
 
-class ExecuteRefreshCollaboration: RefreshChain.Node {
+class ExecuteRefreshCollaboration: RefreshChainNode {
     
     private let refreshCollaboration: RefreshCollaboration
     
-    init(next: RefreshChain.Node?, refreshCollaboration: RefreshCollaboration) {
+    init(next: RefreshChainNode?, refreshCollaboration: RefreshCollaboration) {
         self.refreshCollaboration = refreshCollaboration
         super.init(next: next)
     }

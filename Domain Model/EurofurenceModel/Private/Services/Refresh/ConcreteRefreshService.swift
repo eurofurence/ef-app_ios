@@ -3,7 +3,7 @@ import Foundation
 class ConcreteRefreshService: RefreshService {
     
     private let longRunningTaskManager: LongRunningTaskManager?
-    private let chainRoot: RefreshChain.Node
+    private let chainRoot: RefreshChainNode
 
     init(
         conventionIdentifier: ConventionIdentifier,

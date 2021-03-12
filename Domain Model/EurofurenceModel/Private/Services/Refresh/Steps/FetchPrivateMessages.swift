@@ -1,10 +1,10 @@
 import Foundation
 
-class FetchPrivateMessages: RefreshChain.Node {
+class FetchPrivateMessages: RefreshChainNode {
     
     private let privateMessagesController: ConcretePrivateMessagesService
     
-    init(next: RefreshChain.Node?, privateMessagesController: ConcretePrivateMessagesService) {
+    init(next: RefreshChainNode?, privateMessagesController: ConcretePrivateMessagesService) {
         self.privateMessagesController = privateMessagesController
         super.init(next: next)
     }

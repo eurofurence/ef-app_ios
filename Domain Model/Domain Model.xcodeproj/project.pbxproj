@@ -34,7 +34,7 @@
 		CA2650F225F954500080F132 /* EventBus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2650EB25F954500080F132 /* EventBus.swift */; };
 		CA2650F325F954500080F132 /* BlockEventConsumer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2650EC25F954500080F132 /* BlockEventConsumer.swift */; };
 		CA2650F425F954500080F132 /* EventBusRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2650ED25F954500080F132 /* EventBusRegistration.swift */; };
-		CA26513025F963100080F132 /* RefreshChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA26512F25F963100080F132 /* RefreshChain.swift */; };
+		CA26513025F963100080F132 /* RefreshChainNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA26512F25F963100080F132 /* RefreshChainNode.swift */; };
 		CA26513725FB87D50080F132 /* FetchRemoteModelAndImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA26513625FB87D50080F132 /* FetchRemoteModelAndImages.swift */; };
 		CA26513D25FB88070080F132 /* FetchPrivateMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA26513C25FB88070080F132 /* FetchPrivateMessages.swift */; };
 		CA26514325FB88220080F132 /* ExecuteRefreshCollaboration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA26514225FB88220080F132 /* ExecuteRefreshCollaboration.swift */; };
@@ -558,7 +558,7 @@
 		CA2650EB25F954500080F132 /* EventBus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBus.swift; sourceTree = "<group>"; };
 		CA2650EC25F954500080F132 /* BlockEventConsumer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockEventConsumer.swift; sourceTree = "<group>"; };
 		CA2650ED25F954500080F132 /* EventBusRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBusRegistration.swift; sourceTree = "<group>"; };
-		CA26512F25F963100080F132 /* RefreshChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshChain.swift; sourceTree = "<group>"; };
+		CA26512F25F963100080F132 /* RefreshChainNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshChainNode.swift; sourceTree = "<group>"; };
 		CA26513625FB87D50080F132 /* FetchRemoteModelAndImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchRemoteModelAndImages.swift; sourceTree = "<group>"; };
 		CA26513C25FB88070080F132 /* FetchPrivateMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPrivateMessages.swift; sourceTree = "<group>"; };
 		CA26514225FB88220080F132 /* ExecuteRefreshCollaboration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExecuteRefreshCollaboration.swift; sourceTree = "<group>"; };
@@ -1207,7 +1207,7 @@
 			isa = PBXGroup;
 			children = (
 				CA7A2FF422B16DE3002AD939 /* ConcreteRefreshService.swift */,
-				CA26512F25F963100080F132 /* RefreshChain.swift */,
+				CA26512F25F963100080F132 /* RefreshChainNode.swift */,
 				CA26513525FB87C60080F132 /* Steps */,
 			);
 			path = Refresh;
@@ -2785,7 +2785,7 @@
 				CA7A308E22B16DE4002AD939 /* ConcretePrivateMessagesService.swift in Sources */,
 				CA7A308C22B16DE4002AD939 /* ModelFunctions.swift in Sources */,
 				CA7A307022B16DE4002AD939 /* SessionStateService.swift in Sources */,
-				CA26513025F963100080F132 /* RefreshChain.swift in Sources */,
+				CA26513025F963100080F132 /* RefreshChainNode.swift in Sources */,
 				CA2650F225F954500080F132 /* EventBus.swift in Sources */,
 				CA7A303722B16DE4002AD939 /* URLSessionBasedJSONSession.swift in Sources */,
 				CA7A306922B16DE4002AD939 /* PrivateMessagesService.swift in Sources */,

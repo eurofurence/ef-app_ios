@@ -1,6 +1,6 @@
 import Foundation
 
-class FetchRemoteModelAndImages: RefreshChain.Node {
+class FetchRemoteModelAndImages: RefreshChainNode {
     
     private let conventionIdentifier: ConventionIdentifier
     private let forceRefreshRequired: ForceRefreshRequired
@@ -10,7 +10,7 @@ class FetchRemoteModelAndImages: RefreshChain.Node {
     private let dataStoreBridge: DataStoreSyncBridge
     
     init(
-        next: RefreshChain.Node?,
+        next: RefreshChainNode?,
         conventionIdentifier: ConventionIdentifier,
         forceRefreshRequired: ForceRefreshRequired,
         dataStore: DataStore,
