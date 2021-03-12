@@ -35,13 +35,6 @@ class ImageDownloader {
         var pendingImageIdentifiers = requests
         let imagesToDownload = pendingImageIdentifiers
 
-        guard !imagesToDownload.isEmpty else {
-            parentProgress.totalUnitCount = 1
-            parentProgress.completedUnitCount = 1
-            completionHandler()
-            return
-        }
-
         for request in imagesToDownload {
             let identifier = request.imageIdentifier
             let sha1 = request.imageContentHashSha1
