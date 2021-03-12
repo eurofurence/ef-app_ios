@@ -138,19 +138,24 @@ class ConcreteSession: EurofurenceSession {
             dealers: dealersService
         )
         
+        let dataStoreBridge = DataStoreSyncBridge(
+            dataStore: dataStore,
+            clock: clock,
+            imageCache: imageCache,
+            imageRepository: imageRepository,
+            eventBus: eventBus
+        )
+        
         refreshService = ConcreteRefreshService(
             conventionIdentifier: conventionIdentifier,
             longRunningTaskManager: longRunningTaskManager,
             dataStore: dataStore,
             api: api,
             imageDownloader: imageDownloader,
-            clock: clock,
-            eventBus: eventBus,
-            imageCache: imageCache,
-            imageRepository: imageRepository,
             privateMessagesController: privateMessagesService,
             forceRefreshRequired: forceRefreshRequired,
-            refreshCollaboration: refreshCollaboration
+            refreshCollaboration: refreshCollaboration,
+            dataStoreBridge: dataStoreBridge
         )
         
         notificationService = ConcreteNotificationService(eventBus: eventBus)

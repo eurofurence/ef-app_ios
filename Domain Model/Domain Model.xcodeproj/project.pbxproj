@@ -34,6 +34,11 @@
 		CA2650F225F954500080F132 /* EventBus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2650EB25F954500080F132 /* EventBus.swift */; };
 		CA2650F325F954500080F132 /* BlockEventConsumer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2650EC25F954500080F132 /* BlockEventConsumer.swift */; };
 		CA2650F425F954500080F132 /* EventBusRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2650ED25F954500080F132 /* EventBusRegistration.swift */; };
+		CA26513025F963100080F132 /* RefreshChainNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA26512F25F963100080F132 /* RefreshChainNode.swift */; };
+		CA26513725FB87D50080F132 /* FetchRemoteModelAndImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA26513625FB87D50080F132 /* FetchRemoteModelAndImages.swift */; };
+		CA26513D25FB88070080F132 /* FetchPrivateMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA26513C25FB88070080F132 /* FetchPrivateMessages.swift */; };
+		CA26514325FB88220080F132 /* ExecuteRefreshCollaboration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA26514225FB88220080F132 /* ExecuteRefreshCollaboration.swift */; };
+		CA26514D25FB8B670080F132 /* DataStoreSyncBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA26514C25FB8B670080F132 /* DataStoreSyncBridge.swift */; };
 		CA2AA2DA22C941C200C0E1A1 /* WhenDescribingAppLink_WithValidDealerIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2D922C941C200C0E1A1 /* WhenDescribingAppLink_WithValidDealerIdentifier.swift */; };
 		CA2AA2DC22C942AB00C0E1A1 /* WhenDescribingAppLink_WithInvalidDealerIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2DB22C942AB00C0E1A1 /* WhenDescribingAppLink_WithInvalidDealerIdentifier.swift */; };
 		CA2AA2DF22C943E300C0E1A1 /* URLEntityProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2DE22C943E300C0E1A1 /* URLEntityProcessor.swift */; };
@@ -553,6 +558,11 @@
 		CA2650EB25F954500080F132 /* EventBus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBus.swift; sourceTree = "<group>"; };
 		CA2650EC25F954500080F132 /* BlockEventConsumer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockEventConsumer.swift; sourceTree = "<group>"; };
 		CA2650ED25F954500080F132 /* EventBusRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBusRegistration.swift; sourceTree = "<group>"; };
+		CA26512F25F963100080F132 /* RefreshChainNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshChainNode.swift; sourceTree = "<group>"; };
+		CA26513625FB87D50080F132 /* FetchRemoteModelAndImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchRemoteModelAndImages.swift; sourceTree = "<group>"; };
+		CA26513C25FB88070080F132 /* FetchPrivateMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPrivateMessages.swift; sourceTree = "<group>"; };
+		CA26514225FB88220080F132 /* ExecuteRefreshCollaboration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExecuteRefreshCollaboration.swift; sourceTree = "<group>"; };
+		CA26514C25FB8B670080F132 /* DataStoreSyncBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStoreSyncBridge.swift; sourceTree = "<group>"; };
 		CA2AA2D922C941C200C0E1A1 /* WhenDescribingAppLink_WithValidDealerIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDescribingAppLink_WithValidDealerIdentifier.swift; sourceTree = "<group>"; };
 		CA2AA2DB22C942AB00C0E1A1 /* WhenDescribingAppLink_WithInvalidDealerIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDescribingAppLink_WithInvalidDealerIdentifier.swift; sourceTree = "<group>"; };
 		CA2AA2DE22C943E300C0E1A1 /* URLEntityProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLEntityProcessor.swift; sourceTree = "<group>"; };
@@ -1193,6 +1203,26 @@
 			path = "Event Bus";
 			sourceTree = "<group>";
 		};
+		CA26512A25F963060080F132 /* Refresh */ = {
+			isa = PBXGroup;
+			children = (
+				CA7A2FF422B16DE3002AD939 /* ConcreteRefreshService.swift */,
+				CA26512F25F963100080F132 /* RefreshChainNode.swift */,
+				CA26513525FB87C60080F132 /* Steps */,
+			);
+			path = Refresh;
+			sourceTree = "<group>";
+		};
+		CA26513525FB87C60080F132 /* Steps */ = {
+			isa = PBXGroup;
+			children = (
+				CA26513625FB87D50080F132 /* FetchRemoteModelAndImages.swift */,
+				CA26513C25FB88070080F132 /* FetchPrivateMessages.swift */,
+				CA26514225FB88220080F132 /* ExecuteRefreshCollaboration.swift */,
+			);
+			path = Steps;
+			sourceTree = "<group>";
+		};
 		CA2AA2D822C941B100C0E1A1 /* Dealers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1585,6 +1615,7 @@
 			isa = PBXGroup;
 			children = (
 				CA7A2FEB22B16DE3002AD939 /* ConcreteSession.swift */,
+				CA26514C25FB8B670080F132 /* DataStoreSyncBridge.swift */,
 				CA09BE632464874200412B82 /* EurofurenceModelBundle.swift */,
 				CA7A2FE622B16DE3002AD939 /* ImageDownloader.swift */,
 				CA7A2FCD22B16DE3002AD939 /* ImagesCache.swift */,
@@ -1657,12 +1688,12 @@
 				CA7A2FF322B16DE3002AD939 /* ConcreteKnowledgeService.swift */,
 				CA7A2FF122B16DE3002AD939 /* ConcreteMapsService.swift */,
 				CA7A2FED22B16DE3002AD939 /* ConcretePrivateMessagesService.swift */,
-				CA7A2FF422B16DE3002AD939 /* ConcreteRefreshService.swift */,
 				CA7A2FEF22B16DE3002AD939 /* ConcreteSessionStateService.swift */,
 				CA7A2FF222B16DE3002AD939 /* DataStoreChangedConsumer.swift */,
 				CA7A2FF522B16DE3002AD939 /* EventFeedbackService.swift */,
 				CA7A2FFB22B16DE3002AD939 /* Events */,
 				CAA10FD122C5E0F400689A32 /* Notifications */,
+				CA26512A25F963060080F132 /* Refresh */,
 				CA2AA2DD22C943D100C0E1A1 /* URL */,
 			);
 			path = Services;
@@ -2599,6 +2630,7 @@
 				CA7A303A22B16DE4002AD939 /* SignificantTimeChangeAdapter.swift in Sources */,
 				CA7A301522B16DE4002AD939 /* EventFeedback.swift in Sources */,
 				CAC4993C22DFA864003E1D77 /* InMemoryDealerCategoriesCollection.swift in Sources */,
+				CA26513D25FB88070080F132 /* FetchPrivateMessages.swift in Sources */,
 				CA7A307B22B16DE4002AD939 /* DomainEvent.swift in Sources */,
 				CA7A303322B16DE4002AD939 /* CoreDataStoreTransaction.swift in Sources */,
 				CA7A306E22B16DE4002AD939 /* DealersService.swift in Sources */,
@@ -2621,6 +2653,7 @@
 				CA7A305A22B16DE4002AD939 /* MessageCharacteristics.swift in Sources */,
 				CA7A300A22B16DE4002AD939 /* ConventionIdentifier.swift in Sources */,
 				CA5A5ACC2584EDD6007F6728 /* AnySpecification.swift in Sources */,
+				CA26513725FB87D50080F132 /* FetchRemoteModelAndImages.swift in Sources */,
 				CA7A300422B16DE4002AD939 /* Day.swift in Sources */,
 				CA7A306622B16DE4002AD939 /* EurofurenceSession.swift in Sources */,
 				CA7A306F22B16DE4002AD939 /* CollectThemAllService.swift in Sources */,
@@ -2638,6 +2671,7 @@
 				CA7A309B22B16DE4002AD939 /* ConcreteAnnouncementsService.swift in Sources */,
 				CA7A303222B16DE4002AD939 /* NSManagedObjectContext+Convenience.swift in Sources */,
 				CA7A305122B16DE4002AD939 /* EventCharacteristics.swift in Sources */,
+				CA26514D25FB8B670080F132 /* DataStoreSyncBridge.swift in Sources */,
 				CA7A306A22B16DE4002AD939 /* AuthenticationService.swift in Sources */,
 				CA7A305C22B16DE4002AD939 /* MapCharacteristics.swift in Sources */,
 				CA7A304422B16DE4002AD939 /* AppVersionProviding.swift in Sources */,
@@ -2695,6 +2729,7 @@
 				CA7A304C22B16DE4002AD939 /* CollectThemAllRequestFactory.swift in Sources */,
 				CA7A300822B16DE4002AD939 /* MapContent.swift in Sources */,
 				CA7A302322B16DE4002AD939 /* ReadAnnouncementEntity+Adaptation.swift in Sources */,
+				CA26514325FB88220080F132 /* ExecuteRefreshCollaboration.swift in Sources */,
 				CA7A303F22B16DE4002AD939 /* CredentialRepository.swift in Sources */,
 				CA7A300E22B16DE4002AD939 /* ImageEntity.swift in Sources */,
 				CA7A309522B16DE4002AD939 /* ConcreteRefreshService.swift in Sources */,
@@ -2750,6 +2785,7 @@
 				CA7A308E22B16DE4002AD939 /* ConcretePrivateMessagesService.swift in Sources */,
 				CA7A308C22B16DE4002AD939 /* ModelFunctions.swift in Sources */,
 				CA7A307022B16DE4002AD939 /* SessionStateService.swift in Sources */,
+				CA26513025F963100080F132 /* RefreshChainNode.swift in Sources */,
 				CA2650F225F954500080F132 /* EventBus.swift in Sources */,
 				CA7A303722B16DE4002AD939 /* URLSessionBasedJSONSession.swift in Sources */,
 				CA7A306922B16DE4002AD939 /* PrivateMessagesService.swift in Sources */,
