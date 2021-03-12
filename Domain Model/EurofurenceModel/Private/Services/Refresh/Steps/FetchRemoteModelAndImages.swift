@@ -12,6 +12,8 @@ class FetchRemoteModelAndImages: RefreshChain.Node {
     private let clock: Clock
     private let imageRepository: ImageRepository
     
+    private let dataStoreBridge: DataStoreSyncBridge
+    
     init(
         next: RefreshChain.Node?,
         conventionIdentifier: ConventionIdentifier,
@@ -33,6 +35,14 @@ class FetchRemoteModelAndImages: RefreshChain.Node {
         self.imageCache = imageCache
         self.clock = clock
         self.imageRepository = imageRepository
+        
+        dataStoreBridge = DataStoreSyncBridge(
+            dataStore: dataStore,
+            clock: clock,
+            imageCache: imageCache,
+            imageRepository: imageRepository,
+            eventBus: eventBus
+        )
         
         super.init(next: next)
     }
@@ -64,7 +74,7 @@ class FetchRemoteModelAndImages: RefreshChain.Node {
         progress.totalUnitCount = Int64(imageDownloadRequests.count)
         
         self.imageDownloader.downloadImages(requests: imageDownloadRequests, parentProgress: progress) {
-            self.updateLocalStore(response: response, lastSyncTime: lastSyncTime)
+            self.dataStoreBridge.updateStore(response: response, lastSyncTime: lastSyncTime)
             self.finish(progress: progress, error: nil)
         }
     }
@@ -75,16 +85,6 @@ class FetchRemoteModelAndImages: RefreshChain.Node {
         } else {
             return dataStore.fetchLastRefreshDate()
         }
-    }
-    
-    private func updateLocalStore(response: ModelCharacteristics, lastSyncTime: Any?) {
-        DataStoreSyncBridge(
-            dataStore: dataStore,
-            clock: clock,
-            imageCache: imageCache,
-            imageRepository: imageRepository,
-            eventBus: eventBus
-        ).updateStore(response: response, lastSyncTime: lastSyncTime)
     }
     
 }
