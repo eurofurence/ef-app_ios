@@ -1615,6 +1615,7 @@
 			isa = PBXGroup;
 			children = (
 				CA7A2FEB22B16DE3002AD939 /* ConcreteSession.swift */,
+				CA26514C25FB8B670080F132 /* DataStoreSyncBridge.swift */,
 				CA09BE632464874200412B82 /* EurofurenceModelBundle.swift */,
 				CA7A2FE622B16DE3002AD939 /* ImageDownloader.swift */,
 				CA7A2FCD22B16DE3002AD939 /* ImagesCache.swift */,
@@ -1626,7 +1627,6 @@
 				CA8A73E122BD20A6007A5201 /* Repositories */,
 				CA7A2FEC22B16DE3002AD939 /* Services */,
 				CA7A2FE722B16DE3002AD939 /* Utilities */,
-				CA26514C25FB8B670080F132 /* DataStoreSyncBridge.swift */,
 			);
 			path = Private;
 			sourceTree = "<group>";
