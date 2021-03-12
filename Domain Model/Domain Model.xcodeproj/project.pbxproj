@@ -38,6 +38,7 @@
 		CA26513725FB87D50080F132 /* FetchRemoteModelAndImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA26513625FB87D50080F132 /* FetchRemoteModelAndImages.swift */; };
 		CA26513D25FB88070080F132 /* FetchPrivateMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA26513C25FB88070080F132 /* FetchPrivateMessages.swift */; };
 		CA26514325FB88220080F132 /* ExecuteRefreshCollaboration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA26514225FB88220080F132 /* ExecuteRefreshCollaboration.swift */; };
+		CA26514D25FB8B670080F132 /* DataStoreSyncBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA26514C25FB8B670080F132 /* DataStoreSyncBridge.swift */; };
 		CA2AA2DA22C941C200C0E1A1 /* WhenDescribingAppLink_WithValidDealerIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2D922C941C200C0E1A1 /* WhenDescribingAppLink_WithValidDealerIdentifier.swift */; };
 		CA2AA2DC22C942AB00C0E1A1 /* WhenDescribingAppLink_WithInvalidDealerIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2DB22C942AB00C0E1A1 /* WhenDescribingAppLink_WithInvalidDealerIdentifier.swift */; };
 		CA2AA2DF22C943E300C0E1A1 /* URLEntityProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2DE22C943E300C0E1A1 /* URLEntityProcessor.swift */; };
@@ -561,6 +562,7 @@
 		CA26513625FB87D50080F132 /* FetchRemoteModelAndImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchRemoteModelAndImages.swift; sourceTree = "<group>"; };
 		CA26513C25FB88070080F132 /* FetchPrivateMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPrivateMessages.swift; sourceTree = "<group>"; };
 		CA26514225FB88220080F132 /* ExecuteRefreshCollaboration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExecuteRefreshCollaboration.swift; sourceTree = "<group>"; };
+		CA26514C25FB8B670080F132 /* DataStoreSyncBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStoreSyncBridge.swift; sourceTree = "<group>"; };
 		CA2AA2D922C941C200C0E1A1 /* WhenDescribingAppLink_WithValidDealerIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDescribingAppLink_WithValidDealerIdentifier.swift; sourceTree = "<group>"; };
 		CA2AA2DB22C942AB00C0E1A1 /* WhenDescribingAppLink_WithInvalidDealerIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDescribingAppLink_WithInvalidDealerIdentifier.swift; sourceTree = "<group>"; };
 		CA2AA2DE22C943E300C0E1A1 /* URLEntityProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLEntityProcessor.swift; sourceTree = "<group>"; };
@@ -1624,6 +1626,7 @@
 				CA8A73E122BD20A6007A5201 /* Repositories */,
 				CA7A2FEC22B16DE3002AD939 /* Services */,
 				CA7A2FE722B16DE3002AD939 /* Utilities */,
+				CA26514C25FB8B670080F132 /* DataStoreSyncBridge.swift */,
 			);
 			path = Private;
 			sourceTree = "<group>";
@@ -2668,6 +2671,7 @@
 				CA7A309B22B16DE4002AD939 /* ConcreteAnnouncementsService.swift in Sources */,
 				CA7A303222B16DE4002AD939 /* NSManagedObjectContext+Convenience.swift in Sources */,
 				CA7A305122B16DE4002AD939 /* EventCharacteristics.swift in Sources */,
+				CA26514D25FB8B670080F132 /* DataStoreSyncBridge.swift in Sources */,
 				CA7A306A22B16DE4002AD939 /* AuthenticationService.swift in Sources */,
 				CA7A305C22B16DE4002AD939 /* MapCharacteristics.swift in Sources */,
 				CA7A304422B16DE4002AD939 /* AppVersionProviding.swift in Sources */,
