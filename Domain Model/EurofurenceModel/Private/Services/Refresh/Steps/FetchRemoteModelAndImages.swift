@@ -24,7 +24,8 @@ class FetchRemoteModelAndImages: RefreshChain.Node {
         eventBus: EventBus,
         imageCache: ImagesCache,
         clock: Clock,
-        imageRepository: ImageRepository
+        imageRepository: ImageRepository,
+        dataStoreBridge: DataStoreSyncBridge
     ) {
         self.conventionIdentifier = conventionIdentifier
         self.forceRefreshRequired = forceRefreshRequired
@@ -36,13 +37,7 @@ class FetchRemoteModelAndImages: RefreshChain.Node {
         self.clock = clock
         self.imageRepository = imageRepository
         
-        dataStoreBridge = DataStoreSyncBridge(
-            dataStore: dataStore,
-            clock: clock,
-            imageCache: imageCache,
-            imageRepository: imageRepository,
-            eventBus: eventBus
-        )
+        self.dataStoreBridge = dataStoreBridge
         
         super.init(next: next)
     }

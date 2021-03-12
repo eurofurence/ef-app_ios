@@ -21,6 +21,14 @@ class ConcreteRefreshService: RefreshService {
     ) {
         self.longRunningTaskManager = longRunningTaskManager
         
+        let dataStoreBridge = DataStoreSyncBridge(
+            dataStore: dataStore,
+            clock: clock,
+            imageCache: imageCache,
+            imageRepository: imageRepository,
+            eventBus: eventBus
+        )
+        
         chain = RefreshChain(
             conventionIdentifier: conventionIdentifier,
             forceRefreshRequired: forceRefreshRequired,
@@ -32,7 +40,8 @@ class ConcreteRefreshService: RefreshService {
             privateMessagesController: privateMessagesController,
             refreshCollaboration: refreshCollaboration,
             clock: clock,
-            imageRepository: imageRepository
+            imageRepository: imageRepository,
+            dataStoreBridge: dataStoreBridge
         )
     }
 

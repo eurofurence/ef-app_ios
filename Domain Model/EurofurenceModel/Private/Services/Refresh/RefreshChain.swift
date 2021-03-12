@@ -15,7 +15,8 @@ class RefreshChain {
         privateMessagesController: ConcretePrivateMessagesService,
         refreshCollaboration: RefreshCollaboration,
         clock: Clock,
-        imageRepository: ImageRepository
+        imageRepository: ImageRepository,
+        dataStoreBridge: DataStoreSyncBridge
     ) {
         let executeCollaboration = ExecuteRefreshCollaboration(
             next: nil,
@@ -37,7 +38,8 @@ class RefreshChain {
             eventBus: eventBus,
             imageCache: imageCache,
             clock: clock,
-            imageRepository: imageRepository
+            imageRepository: imageRepository,
+            dataStoreBridge: dataStoreBridge
         )
         
         first = fetchModel
