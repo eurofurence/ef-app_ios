@@ -138,6 +138,7 @@ If you do not have access to them, come to our registration desk or security off
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lfO-Th-V9L">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <state key="normal" title="Login"/>
                                                     <connections>
                                                         <action selector="loginButtonTapped:" destination="P1u-PJ-I6i" eventType="touchUpInside" id="3m1-Uw-aSQ"/>

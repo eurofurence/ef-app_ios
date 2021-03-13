@@ -93,7 +93,7 @@ struct Theme {
     private static func styleButtonsWithinTableViewCells() {
         let buttonInsideTableView = UIButton.appearance(whenContainedInInstancesOf: [UITableViewCell.self])
         buttonInsideTableView.setTitleColor(.buttons, for: .normal)
-        buttonInsideTableView.setTitleColor(.conferenceGrey, for: .disabled)
+        buttonInsideTableView.setTitleColor(.disabledColor, for: .disabled)
         
         let buttonInsideEventCell = UIButton.appearance(whenContainedInInstancesOf: [EventTableViewCell.self])
         buttonInsideEventCell.setTitleColor(.white, for: .normal)
@@ -129,6 +129,12 @@ struct Theme {
     private static func styleTabBarItems() {
         let tabBarItem = UITabBarItem.appearance()
         tabBarItem.setTitleTextAttributes(whiteTextAttributes, for: .normal)
+        
+        let selectedTextAttributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.selectedTabBarItem
+        ]
+        
+        tabBarItem.setTitleTextAttributes(selectedTextAttributes, for: .selected)
     }
 
     private static func styleNavigationBarExtensions() {

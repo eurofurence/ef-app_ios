@@ -18,7 +18,6 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" name="Launch Screen Bar Item Tint"/>
                         <color key="barTintColor" name="Launch Screen Bar Tint"/>
-                        <color key="selectedImageTintColor" name="Launch Screen Bar Item Tint"/>
                     </tabBar>
                     <connections>
                         <segue destination="ovJ-yz-wGF" kind="relationship" relationship="viewControllers" id="GsE-jJ-Iti"/>
