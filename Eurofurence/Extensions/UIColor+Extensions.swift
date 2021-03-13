@@ -18,6 +18,7 @@ extension UIColor {
     
     static let tintColor = adaptiveColor(lightColor: .pantone330U, darkColor: .pantone330U_45)
     static let disabledColor = safeSystemGray
+    static let placeholder = adaptiveColor(lightColor: .pantone330U, darkColor: safeSystemGray2)
     static let navigationBar = barColor
     static let tabBar = barColor
     static let searchBarTint = pantone330U
@@ -61,6 +62,14 @@ extension UIColor {
     private static var safeSystemGray: UIColor {
         if #available(iOS 13.0, *) {
             return .systemGray
+        } else {
+            return .lightGray
+        }
+    }
+    
+    private static var safeSystemGray2: UIColor {
+        if #available(iOS 13.0, *) {
+            return .systemGray2
         } else {
             return .lightGray
         }

@@ -39,6 +39,9 @@
                             <constraint firstItem="g0b-we-sRw" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="rKt-ba-4LL" secondAttribute="trailing" constant="14" id="j8n-lR-ynb"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="placeholderImageView" destination="rKt-ba-4LL" id="Dsz-s5-ANK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fcq-rp-JJb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
