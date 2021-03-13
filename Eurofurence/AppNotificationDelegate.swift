@@ -1,3 +1,4 @@
+import EurofurenceApplication
 import UserNotifications
 
 class AppNotificationDelegate: NSObject, UNUserNotificationCenterDelegate {

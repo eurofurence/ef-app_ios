@@ -1,3 +1,4 @@
+import EurofurenceApplication
 import FirebaseCore
 import UIKit
 
@@ -62,7 +63,13 @@ public class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func prepareApplication() {
-        Application.assemble()
+        let dependencies = Application.Dependencies(
+            viewEventIntentDonor: ConcreteEventIntentDonor(),
+            viewDealerIntentDonor: ConcreteViewDealerIntentDonor()
+        )
+        
+        Application.assemble(dependencies: dependencies)
+        
         Theme.apply()
     }
     

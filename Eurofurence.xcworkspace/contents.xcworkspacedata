@@ -5,19 +5,22 @@
       location = "container:"
       name = "Packages">
       <FileRef
+         location = "group:Packages/EurofurenceApplication">
+      </FileRef>
+      <FileRef
+         location = "group:Packages/EurofurenceApplicationSession">
+      </FileRef>
+      <FileRef
+         location = "group:Packages/EurofurenceModel">
+      </FileRef>
+      <FileRef
          location = "group:Packages/EventsWidgetLogic">
+      </FileRef>
+      <FileRef
+         location = "group:Packages/TestUtilities">
       </FileRef>
    </Group>
    <FileRef
       location = "group:Eurofurence.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:Domain Model/Domain Model.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:Shared Kernel/Shared Kernel.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>

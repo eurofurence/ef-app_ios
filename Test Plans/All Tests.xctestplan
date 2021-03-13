@@ -15,20 +15,6 @@
   "testTargets" : [
     {
       "target" : {
-        "containerPath" : "container:Domain Model\/Domain Model.xcodeproj",
-        "identifier" : "CA7A325822B16E65002AD939",
-        "name" : "EurofurenceModelAdapterTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:Domain Model\/Domain Model.xcodeproj",
-        "identifier" : "CA7A2F3222B16DA3002AD939",
-        "name" : "EurofurenceModelTests"
-      }
-    },
-    {
-      "target" : {
         "containerPath" : "container:Eurofurence.xcodeproj",
         "identifier" : "9ACF99471EBE172D006FC958",
         "name" : "EurofurenceTests"
@@ -50,16 +36,37 @@
     },
     {
       "target" : {
-        "containerPath" : "container:Eurofurence.xcodeproj",
-        "identifier" : "CACD36A925650A9600C23041",
+        "containerPath" : "container:Packages\/EventsWidgetLogic",
+        "identifier" : "EventsWidgetLogicTests",
+        "name" : "EventsWidgetLogicTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/EurofurenceApplicationSession",
+        "identifier" : "EurofurenceApplicationSessionTests",
         "name" : "EurofurenceApplicationSessionTests"
       }
     },
     {
       "target" : {
-        "containerPath" : "container:Packages\/EventsWidgetLogic",
-        "identifier" : "EventsWidgetLogicTests",
-        "name" : "EventsWidgetLogicTests"
+        "containerPath" : "container:Packages\/EurofurenceModel",
+        "identifier" : "EurofurenceModelAdapterTests",
+        "name" : "EurofurenceModelAdapterTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/EurofurenceModel",
+        "identifier" : "EurofurenceModelTests",
+        "name" : "EurofurenceModelTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/EurofurenceApplication",
+        "identifier" : "EurofurenceApplicationTests",
+        "name" : "EurofurenceApplicationTests"
       }
     }
   ],
