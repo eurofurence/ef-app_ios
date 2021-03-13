@@ -1,5 +1,4 @@
 PODS:
-  - Down (0.10.0)
   - FirebaseABTesting (7.7.0):
     - FirebaseCore (~> 7.0)
   - FirebaseCore (7.7.0):
@@ -68,7 +67,6 @@ PODS:
   - SwiftLint (0.43.0)
 
 DEPENDENCIES:
-  - Down
   - FirebaseCore
   - FirebaseCrashlytics
   - FirebaseMessaging
@@ -77,7 +75,6 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
-    - Down
     - FirebaseABTesting
     - FirebaseCore
     - FirebaseCoreDiagnostics
@@ -93,7 +90,6 @@ SPEC REPOS:
     - SwiftLint
 
 SPEC CHECKSUMS:
-  Down: 01f155f9d7e99673c667efd2218709c3b9a8bc13
   FirebaseABTesting: 96117eb86e2fa429520bbf5a3f02caef615f6576
   FirebaseCore: ac35d680a0bf32319a59966a1478e0741536b97b
   FirebaseCoreDiagnostics: 179bf3831213451c8addd036aca7fcf5492ec154
@@ -108,6 +104,6 @@ SPEC CHECKSUMS:
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   SwiftLint: 0c645fdc6feed3e390c1701ab3cc669f88b42752
 
-PODFILE CHECKSUM: 0c8b992c3e8355906c3fb57f8f5e0c1e53af64b0
+PODFILE CHECKSUM: 48853be84f6c4254d67883d8868ee1a09998a172
 
 COCOAPODS: 1.10.1

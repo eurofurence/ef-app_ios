@@ -1,5 +1,5 @@
 import Down
-import Foundation
+import UIKit
 
 struct SubtleDownMarkdownRenderer: MarkdownRenderer {
     
