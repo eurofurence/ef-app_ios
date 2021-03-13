@@ -7,7 +7,6 @@ target :Eurofurence do
   project 'Eurofurence.xcodeproj'
   plugin 'cocoapods-acknowledgements', :settings_bundle => true
   
-  pod 'Down'
   pod 'FirebaseCore'
   pod 'FirebaseCrashlytics'
   pod 'FirebaseMessaging'

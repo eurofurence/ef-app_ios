@@ -1,4 +1,5 @@
 import Down
+import Foundation
 
 struct DownProcessor {
     
