@@ -1,10 +1,14 @@
 import UIKit
 
-struct ActivityShareService: ShareService {
+public struct ActivityShareService: ShareService {
     
-    var window: UIWindow
+    private let window: UIWindow
     
-    func share(_ item: Any, sender: Any) {
+    public init(window: UIWindow) {
+        self.window = window
+    }
+    
+    public func share(_ item: Any, sender: Any) {
         guard let rootViewController = window.rootViewController else { return }
         
         let activityViewController = UIActivityViewController(activityItems: [item], applicationActivities: nil)
