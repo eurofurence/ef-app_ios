@@ -14,13 +14,17 @@ let package = Package(
         
     ],
     targets: [
-        .target(
-            name: "EurofurenceComponents",
-            dependencies: []
-        ),
-        .testTarget(
-            name: "EurofurenceComponentsTests",
-            dependencies: ["EurofurenceComponents"]
-        )
+        .target(name: "EurofurenceComponentBase", dependencies: []),
+        .testTarget(name: "EurofurenceComponentBaseTests", dependencies: [
+            .target(name: "EurofurenceComponentBase")
+        ]),
+        
+        .target(name: "EurofurenceComponents", dependencies: [
+            .target(name: "EurofurenceComponentBase")
+        ]),
+        
+        .testTarget(name: "EurofurenceComponentsTests", dependencies: [
+            .target(name: "EurofurenceComponents")
+        ]),
     ]
 )
