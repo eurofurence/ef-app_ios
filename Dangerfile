@@ -33,7 +33,7 @@ def perform_basic_pr_checks
     warn("This PR is pretty big. Consider breaking the change down into smaller slices") if git.lines_of_code > 1000
     warn("Please add a short summary about the change you have made in the PR description") unless github.pr_body.length > 10
 
-    File.readlines("Eurofurence.xcodeproj").each_with_index do |line, index|
+    File.readlines("Eurofurence.xcodeproj/project.pbxproj").each_with_index do |line, index|
         if line.include?("sourceTree = SOURCE_ROOT;") and line.include?("PBXFileReference")
             warn("Files should be in sync with project structure", file: project_file, line: index+1)
         end
