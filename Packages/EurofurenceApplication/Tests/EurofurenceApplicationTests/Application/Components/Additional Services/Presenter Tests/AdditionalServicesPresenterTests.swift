@@ -20,11 +20,9 @@ class AdditionalServicesPresenterTests: XCTestCase {
     }
     
     func testApplyBindsExpectedSceneAttributes() {
-        let expectedIconData = UIImage(named: "Additional Services", in: .main, compatibleWith: nil)?.pngData()
-        
         XCTAssertEqual(.services, context.scene.capturedShortTitle)
         XCTAssertEqual(.additionalServices, context.scene.capturedTitle)
-        XCTAssertEqual(expectedIconData, context.scene.capturedIconData)
+        XCTAssertNotNil(context.scene.capturedIconData)
     }
     
     func testLoadTheAdditionalServiesEndpointFromTheRepository() {

@@ -30,11 +30,8 @@ class WhenRecordingEventInteraction: XCTestCase {
     }
     
     func testEventActivityIsMade() {
-        let expectedTitleFormat = NSLocalizedString("ViewEventFormatString", comment: "")
-        let expectedTitle = String.localizedStringWithFormat(expectedTitleFormat, event.title)
-        
         XCTAssertEqual("org.eurofurence.activity.view-event", producedActivity?.activityType)
-        XCTAssertEqual(expectedTitle, producedActivity?.title)
+        XCTAssertEqual("View event '\(event.title)'", producedActivity?.title)
         XCTAssertEqual(event.shareableURL, producedActivity?.url)
         XCTAssertEqual(true, producedActivity?.supportsPublicIndexing)
         XCTAssertEqual(false, producedActivity?.supportsLocalIndexing)

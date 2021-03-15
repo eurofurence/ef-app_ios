@@ -30,11 +30,8 @@ class WhenRecordingDealerInteraction: XCTestCase {
     }
 
     func testTheDealerInteractionAndActivityAreRecorded() {
-        let expectedTitleFormat = NSLocalizedString("ViewDealerFormatString", comment: "")
-        let expectedTitle = String.localizedStringWithFormat(expectedTitleFormat, dealer.preferredName)
-        
         XCTAssertEqual("org.eurofurence.activity.view-dealer", producedActivity?.activityType)
-        XCTAssertEqual(expectedTitle, producedActivity?.title)
+        XCTAssertEqual("View dealer '\(dealer.preferredName)'", producedActivity?.title)
         XCTAssertEqual(dealer.shareableURL, producedActivity?.url)
         XCTAssertEqual(true, producedActivity?.supportsPublicIndexing)
         XCTAssertEqual(false, producedActivity?.supportsLocalIndexing)
