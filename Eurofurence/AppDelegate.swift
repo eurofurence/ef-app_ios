@@ -16,7 +16,6 @@ public class AppDelegate: UIResponder, UIApplicationDelegate {
         prepareFrameworks()
         prepareApplication()
         prepareNotificationDelegate()
-        installDebugModule()
         showApplicationWindow()
         requestRemoteNotificationsDeviceToken()
 
@@ -87,6 +86,7 @@ public class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             let window = UIWindow()
             Application.instance.configurePrincipalScene(window: window)
+            window.installDebugModule()
             window.makeKeyAndVisible()
             
             self.window = window

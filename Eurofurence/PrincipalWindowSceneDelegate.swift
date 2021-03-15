@@ -34,6 +34,7 @@ class PrincipalWindowSceneDelegate: NSObject, UIWindowSceneDelegate {
         }
 #endif
         
+        window.installDebugModule()
         window.makeKeyAndVisible()
     }
     

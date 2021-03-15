@@ -11,7 +11,7 @@
 		78CA0D0F1F0E57D5006DFD64 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78CA0D0E1F0E57D5006DFD64 /* GoogleService-Info.plist */; };
 		9ACF99381EBE172D006FC958 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF99371EBE172D006FC958 /* AppDelegate.swift */; };
 		9ACF993F1EBE172D006FC958 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ACF993E1EBE172D006FC958 /* Assets.xcassets */; };
-		CA02910221F4D6020007F350 /* AppDelegate+DebugWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA02910121F4D6020007F350 /* AppDelegate+DebugWindow.swift */; };
+		CA02910221F4D6020007F350 /* UIWindow+Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA02910121F4D6020007F350 /* UIWindow+Debug.swift */; };
 		CA08861F25FE997E0044DD53 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA08861B25FE997E0044DD53 /* fontawesome-webfont.ttf */; };
 		CA08862025FE997E0044DD53 /* personal_notification.caf in Resources */ = {isa = PBXBuildFile; fileRef = CA08861D25FE997E0044DD53 /* personal_notification.caf */; };
 		CA08862125FE997E0044DD53 /* generic_notification.caf in Resources */ = {isa = PBXBuildFile; fileRef = CA08861E25FE997E0044DD53 /* generic_notification.caf */; };
@@ -188,7 +188,7 @@
 		B3749D5DCFE8F12C64627A54 /* Pods-EurofurenceApplicationSession-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-EurofurenceApplicationSession-metadata.plist"; path = "Pods/Pods-EurofurenceApplicationSession-metadata.plist"; sourceTree = "<group>"; };
 		C5FF38C242E379F5A7F1EC36 /* Pods-Eurofurence-EurofurenceTests-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Eurofurence-EurofurenceTests-metadata.plist"; path = "Pods/Pods-Eurofurence-EurofurenceTests-metadata.plist"; sourceTree = "<group>"; };
 		C869B75DF780C2BBBFD9FD0A /* Pods-EurofurenceAppCore-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-EurofurenceAppCore-metadata.plist"; path = "Pods/Pods-EurofurenceAppCore-metadata.plist"; sourceTree = "<group>"; };
-		CA02910121F4D6020007F350 /* AppDelegate+DebugWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+DebugWindow.swift"; sourceTree = "<group>"; };
+		CA02910121F4D6020007F350 /* UIWindow+Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+Debug.swift"; sourceTree = "<group>"; };
 		CA08861B25FE997E0044DD53 /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
 		CA08861D25FE997E0044DD53 /* personal_notification.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = personal_notification.caf; sourceTree = "<group>"; };
 		CA08861E25FE997E0044DD53 /* generic_notification.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = generic_notification.caf; sourceTree = "<group>"; };
@@ -439,9 +439,9 @@
 				7820A6F91F16B8A0004C0FB5 /* Eurofurence.entitlements */,
 				9ACF99431EBE172D006FC958 /* Info.plist */,
 				9ACF99371EBE172D006FC958 /* AppDelegate.swift */,
-				CA02910121F4D6020007F350 /* AppDelegate+DebugWindow.swift */,
 				CA3ABA05229C4B260045A35B /* AppNotificationDelegate.swift */,
 				CAE434FC25FEBA4D001E74B7 /* PrincipalWindowSceneDelegate.swift */,
+				CA02910121F4D6020007F350 /* UIWindow+Debug.swift */,
 				9ACF993E1EBE172D006FC958 /* Assets.xcassets */,
 				CA0885F625FE98110044DD53 /* Intents */,
 				CAF194DA24688D7D005DFBBE /* LaunchScreen.storyboard */,
@@ -1003,7 +1003,7 @@
 			files = (
 				CA630C5122A079E100754C27 /* Intents.intentdefinition in Sources */,
 				CA630BEE229F16F400754C27 /* ConcreteEventIntentDonor.swift in Sources */,
-				CA02910221F4D6020007F350 /* AppDelegate+DebugWindow.swift in Sources */,
+				CA02910221F4D6020007F350 /* UIWindow+Debug.swift in Sources */,
 				CA3ABA06229C4B260045A35B /* AppNotificationDelegate.swift in Sources */,
 				CA2AA2F222C9514500C0E1A1 /* ConcreteViewDealerIntentDonor.swift in Sources */,
 				CAE434FD25FEBA4D001E74B7 /* PrincipalWindowSceneDelegate.swift in Sources */,
