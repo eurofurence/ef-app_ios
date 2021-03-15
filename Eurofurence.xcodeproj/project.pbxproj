@@ -441,8 +441,8 @@
 				9ACF99371EBE172D006FC958 /* AppDelegate.swift */,
 				CA3ABA05229C4B260045A35B /* AppNotificationDelegate.swift */,
 				CAE434FC25FEBA4D001E74B7 /* PrincipalWindowSceneDelegate.swift */,
-				CA02910121F4D6020007F350 /* UIWindow+Debug.swift */,
 				9ACF993E1EBE172D006FC958 /* Assets.xcassets */,
+				CA85153E25FF741700860631 /* Debug */,
 				CA0885F625FE98110044DD53 /* Intents */,
 				CAF194DA24688D7D005DFBBE /* LaunchScreen.storyboard */,
 				CA08861525FE99680044DD53 /* Resources */,
@@ -573,6 +573,14 @@
 				CA8125022517BE9000A7F717 /* Screenshots.xctestplan */,
 			);
 			path = "Test Plans";
+			sourceTree = "<group>";
+		};
+		CA85153E25FF741700860631 /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				CA02910121F4D6020007F350 /* UIWindow+Debug.swift */,
+			);
+			path = Debug;
 			sourceTree = "<group>";
 		};
 		CA8F7D17256173290096E206 /* Logic Adapter */ = {
