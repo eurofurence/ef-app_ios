@@ -17,13 +17,7 @@ let package = Package(
         .package(path: "../EurofurenceApplicationSession"),
         .package(path: "../TestUtilities"),
         
-        .package(name: "Down", url: "https://github.com/johnxnguyen/Down", .upToNextMajor(from: "0.10.0")),
-        
-        .package(
-            name: "Firebase",
-            url: "https://github.com/firebase/firebase-ios-sdk.git",
-            .upToNextMajor(from: "7.0.0")
-        )
+        .package(name: "Down", url: "https://github.com/johnxnguyen/Down", .upToNextMajor(from: "0.10.0"))
     ],
     targets: [
         .target(
@@ -32,8 +26,7 @@ let package = Package(
                 .product(name: "EurofurenceModel", package: "EurofurenceModel"),
                 .product(name: "EurofurenceApplicationSession", package: "EurofurenceApplicationSession"),
                 
-                .product(name: "Down", package: "Down"),
-                .product(name: "FirebaseMessaging", package: "Firebase")
+                .product(name: "Down", package: "Down")
             ]
         ),
         
