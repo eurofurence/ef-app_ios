@@ -4,6 +4,8 @@ import PackageDescription
 
 let package = Package(
     name: "EurofurenceComponents",
+    defaultLocalization: "en",
+    platforms: [.iOS(.v11)],
     products: [
         .library(
             name: "EurofurenceComponents",
@@ -25,6 +27,6 @@ let package = Package(
         
         .testTarget(name: "EurofurenceComponentsTests", dependencies: [
             .target(name: "EurofurenceComponents")
-        ]),
+        ])
     ]
 )

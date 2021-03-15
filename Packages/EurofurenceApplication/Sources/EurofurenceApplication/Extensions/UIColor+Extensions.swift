@@ -1,3 +1,4 @@
+import EurofurenceComponentBase
 import UIKit
 
 extension UIColor {
@@ -83,13 +84,6 @@ extension UIColor {
         }
     }
     
-    static let pantone330U = unsafelyNamed("Pantone 330U")
-    static let pantone330U_45 = unsafelyNamed("Pantone 330U (45%)")
-    static let pantone330U_26 = unsafelyNamed("Pantone 330U (26%)")
-    static let pantone330U_13 = unsafelyNamed("Pantone 330U (13%)")
-    static let pantone330U_5 = unsafelyNamed("Pantone 330U (5%)")
-    static let largeActionButton = unsafelyNamed("Large Action Button")
-    
     private static func scaled(red: CGFloat, green: CGFloat, blue: CGFloat) -> UIColor {
         let scale: (CGFloat) -> CGFloat = { $0 / 255.0 }
         return UIColor(red: scale(red), green: scale(green), blue: scale(blue), alpha: 1.0)
@@ -105,14 +99,6 @@ extension UIColor {
     
     func makePixel() -> UIImage {
         makeColoredImage(size: CGSize(width: 1, height: 1))
-    }
-    
-    static func unsafelyNamed(_ name: String) -> UIColor {
-        guard let color = UIColor(named: name, in: .module, compatibleWith: nil) else {
-            fatalError("Color named \(name) missing from xcassets")
-        }
-        
-        return color
     }
 
 }
