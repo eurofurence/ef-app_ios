@@ -1,8 +1,8 @@
 import Foundation
 
-class EurofurenceDateFormatter: DateFormatter {
+public class EurofurenceDateFormatter: DateFormatter {
     
-    override init() {
+    override public init() {
         super.init()
         useConventionTimeZone()
     }

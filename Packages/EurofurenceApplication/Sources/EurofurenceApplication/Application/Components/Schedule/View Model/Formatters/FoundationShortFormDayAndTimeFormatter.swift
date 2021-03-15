@@ -1,3 +1,4 @@
+import EurofurenceComponentBase
 import Foundation
 
 struct FoundationShortFormDayAndTimeFormatter: ShortFormDayAndTimeFormatter {

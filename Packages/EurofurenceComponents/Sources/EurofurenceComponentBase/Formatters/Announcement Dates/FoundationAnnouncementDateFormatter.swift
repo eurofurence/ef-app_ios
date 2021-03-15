@@ -1,9 +1,9 @@
 import Foundation
 
-struct FoundationAnnouncementDateFormatter: AnnouncementDateFormatter {
+public struct FoundationAnnouncementDateFormatter: AnnouncementDateFormatter {
 
     private let formatter: DateFormatter
-    static let shared = FoundationAnnouncementDateFormatter()
+    public static let shared = FoundationAnnouncementDateFormatter()
 
     private init() {
         formatter = EurofurenceDateFormatter()
@@ -11,7 +11,7 @@ struct FoundationAnnouncementDateFormatter: AnnouncementDateFormatter {
         formatter.timeStyle = .short
     }
 
-    func string(from date: Date) -> String {
+    public func string(from date: Date) -> String {
         return formatter.string(from: date)
     }
 
