@@ -10,6 +10,11 @@ let package = Package(
         .library(
             name: "EurofurenceComponents",
             targets: ["EurofurenceComponents"]
+        ),
+        
+        .library(
+            name: "XCTEurofurenceComponentBase",
+            targets: ["XCTEurofurenceComponentBase"]
         )
     ],
     dependencies: [
@@ -18,6 +23,10 @@ let package = Package(
     targets: [
         .target(name: "EurofurenceComponentBase", dependencies: []),
         .testTarget(name: "EurofurenceComponentBaseTests", dependencies: [
+            .target(name: "EurofurenceComponentBase")
+        ]),
+        
+        .target(name: "XCTEurofurenceComponentBase", dependencies: [
             .target(name: "EurofurenceComponentBase")
         ]),
         

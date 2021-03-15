@@ -1,11 +1,16 @@
-import EurofurenceApplication
+import EurofurenceComponentBase
 import Foundation
+import TestUtilities
 
-class FakeAnnouncementDateFormatter: AnnouncementDateFormatter {
+public class FakeAnnouncementDateFormatter: AnnouncementDateFormatter {
 
     private var strings = [Date: String]()
+    
+    public init() {
+        
+    }
 
-    func string(from date: Date) -> String {
+    public func string(from date: Date) -> String {
         var output = String.random
         if let previous = strings[date] {
             output = previous

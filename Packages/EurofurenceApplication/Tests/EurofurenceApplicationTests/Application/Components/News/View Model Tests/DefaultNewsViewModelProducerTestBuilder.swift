@@ -2,6 +2,7 @@ import EurofurenceApplication
 import EurofurenceModel
 import EurofurenceModelTestDoubles
 import Foundation
+import XCTEurofurenceComponentBase
 
 class DefaultNewsViewModelProducerTestBuilder {
 

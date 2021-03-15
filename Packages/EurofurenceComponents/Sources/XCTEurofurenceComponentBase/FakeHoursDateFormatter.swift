@@ -1,16 +1,20 @@
-import EurofurenceApplication
+import EurofurenceComponentBase
 import Foundation
 import TestUtilities
 
-class FakeHoursDateFormatter: HoursDateFormatter {
+public class FakeHoursDateFormatter: HoursDateFormatter {
 
     private var strings = [Date: String]()
     
-    func stub(_ hoursString: String, for date: Date) {
+    public init() {
+        
+    }
+    
+    public func stub(_ hoursString: String, for date: Date) {
         strings[date] = hoursString
     }
 
-    func hoursString(from date: Date) -> String {
+    public func hoursString(from date: Date) -> String {
         var output = String.random
         if let previous = strings[date] {
             output = previous
