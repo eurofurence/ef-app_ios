@@ -1,6 +1,6 @@
 import UIKit
 
-struct DissolvingTitleController {
+public struct DissolvingTitleController {
     
     private enum TitleState {
         case visible(opacity: CGFloat)
@@ -12,7 +12,7 @@ struct DissolvingTitleController {
     private let titleView = DissolvingTitleLabel(frame: .zero)
     private var contentOffsetObservation: NSKeyValueObservation?
     
-    init(
+    public init(
         scrollView: UIScrollView,
         navigationItem: UINavigationItem,
         accessibilityIdentifier: String,

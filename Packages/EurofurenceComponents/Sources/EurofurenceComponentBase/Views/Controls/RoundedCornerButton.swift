@@ -1,18 +1,18 @@
 import UIKit
 
 @IBDesignable
-class RoundedCornerButton: UIButton {
+public class RoundedCornerButton: UIButton {
     
     private static let standardCornerRadius: CGFloat = 7
 
     @IBInspectable
-    var cornerRadius: CGFloat = 0 {
+    public var cornerRadius: CGFloat = 0 {
         didSet {
             layer.cornerRadius = cornerRadius
         }
     }
     
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         setUp()
     }
@@ -26,7 +26,7 @@ class RoundedCornerButton: UIButton {
         cornerRadius = Self.standardCornerRadius
     }
 
-    override var intrinsicContentSize: CGSize {
+    override public var intrinsicContentSize: CGSize {
         let defaultIntrinsicContentSize = super.intrinsicContentSize
         return CGSize(
             width: max(120, defaultIntrinsicContentSize.width),
@@ -34,19 +34,19 @@ class RoundedCornerButton: UIButton {
         )
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         transitionToPressedState()
         super.touchesBegan(touches, with: event)
     }
     
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override public func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         feedbackGenerator?.selectionChanged()
         transitionToUnpressedState()
         
         super.touchesEnded(touches, with: event)
     }
     
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override public func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         transitionToUnpressedState()
         super.touchesCancelled(touches, with: event)
     }

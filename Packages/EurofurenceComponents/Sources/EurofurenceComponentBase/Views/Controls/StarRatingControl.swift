@@ -1,19 +1,19 @@
 import UIKit
 
-class StarRatingControl: UIControl {
+public class StarRatingControl: UIControl {
     
     private let stackView = UIStackView(frame: .zero)
     private let numberOfStars = 5
     private var selectionChangedFeedback: UISelectionFeedbackGenerator?
     private var previousValueWhileTouchesMoving: Int?
     
-    override var isEnabled: Bool {
+    override public var isEnabled: Bool {
         didSet {
             updateCurrentTintColor()
         }
     }
     
-    var value: Int = 3 {
+    public var value: Int = 3 {
         didSet {
             switch validate(value: value) {
             case .valid:
@@ -25,11 +25,11 @@ class StarRatingControl: UIControl {
         }
     }
     
-    var percentageValue: Float {
+    public var percentageValue: Float {
         return Float(value) / Float(numberOfStars)
     }
     
-    var enabledTintColor: UIColor = UIColor(red: 1, green: 0.8, blue: 0, alpha: 1) {
+    public var enabledTintColor: UIColor = UIColor(red: 1, green: 0.8, blue: 0, alpha: 1) {
         didSet {
             if isEnabled {
                 tintColor = enabledTintColor
@@ -37,7 +37,7 @@ class StarRatingControl: UIControl {
         }
     }
     
-    var disabledTintColor: UIColor = .lightGray {
+    public var disabledTintColor: UIColor = .lightGray {
         didSet {
             if !isEnabled {
                 tintColor = disabledTintColor
@@ -72,7 +72,7 @@ class StarRatingControl: UIControl {
         empty.forEach({ $0.isFilled = false })
     }
     
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         setUp()
     }
@@ -145,7 +145,7 @@ class StarRatingControl: UIControl {
         accessibilityValue = "\(value) of \(numberOfStars)"
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard isEnabled else { return }
         guard touches.count == 1 else { return }
         guard let touch = touches.first else { return }
@@ -159,7 +159,7 @@ class StarRatingControl: UIControl {
         repaintStars(value: valueForLocation)
     }
     
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override public func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard isEnabled else { return }
         guard touches.count == 1 else { return }
         guard let touch = touches.first else { return }
@@ -175,14 +175,14 @@ class StarRatingControl: UIControl {
         repaintStars(value: valueForLocation)
     }
     
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override public func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard isEnabled else { return }
         
         teardownTouchTrackingFields()
         repaintStars(value: value)
     }
     
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override public func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard isEnabled else { return }
         guard touches.count == 1 else { return }
         guard let touch = touches.first else { return }
@@ -210,15 +210,15 @@ class StarRatingControl: UIControl {
         previousValueWhileTouchesMoving = nil
     }
     
-    override var intrinsicContentSize: CGSize {
+    override public var intrinsicContentSize: CGSize {
         return stackView.intrinsicContentSize
     }
     
-    override func accessibilityIncrement() {
+    override public func accessibilityIncrement() {
         value += 1
     }
     
-    override func accessibilityDecrement() {
+    override public func accessibilityDecrement() {
         value -= 1
     }
     

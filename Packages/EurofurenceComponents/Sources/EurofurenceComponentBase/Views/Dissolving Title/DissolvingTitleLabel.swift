@@ -1,8 +1,8 @@
 import UIKit
 
-class DissolvingTitleLabel: UILabel {
+public class DissolvingTitleLabel: UILabel {
     
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         
         accessibilityTraits.formUnion(.header)

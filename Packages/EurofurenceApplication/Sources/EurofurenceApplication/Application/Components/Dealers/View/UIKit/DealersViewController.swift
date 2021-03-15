@@ -1,3 +1,4 @@
+import EurofurenceComponentBase
 import UIKit
 
 class DealersViewController: UIViewController, UISearchControllerDelegate, UISearchResultsUpdating, DealersScene {
@@ -229,7 +230,7 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
 
 extension ConventionBrandedTableViewHeaderFooterView: DealerGroupHeader {
     
-    func setDealersGroupTitle(_ title: String) {
+    public func setDealersGroupTitle(_ title: String) {
         textLabel?.text = title
     }
     

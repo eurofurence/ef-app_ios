@@ -1,11 +1,11 @@
 import UIKit
 
-class MultiStepFormTextField: UITextField {
+public class MultiStepFormTextField: UITextField {
     
     // swiftlint:disable private_outlet
     @IBOutlet var nextField: UITextField?
     
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         setUp()
     }

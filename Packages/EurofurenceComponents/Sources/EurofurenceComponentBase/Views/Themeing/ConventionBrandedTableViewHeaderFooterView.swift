@@ -1,10 +1,10 @@
 import UIKit
 
-class ConventionBrandedTableViewHeaderFooterView: UITableViewHeaderFooterView {
+public class ConventionBrandedTableViewHeaderFooterView: UITableViewHeaderFooterView {
     
-    static let identifier = "Header"
+    public static let identifier = "Header"
     
-    override init(reuseIdentifier: String?) {
+    override public init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         setUp()
     }

@@ -1,6 +1,6 @@
 import UIKit
 
-protocol DissolvingTitleContext {
+public protocol DissolvingTitleContext {
     
     var title: String? { get }
     var contextualViewFrameRelativeToWindow: CGRect { get }

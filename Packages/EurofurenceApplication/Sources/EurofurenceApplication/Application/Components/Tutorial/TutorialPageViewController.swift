@@ -1,3 +1,4 @@
+import EurofurenceComponentBase
 import UIKit
 
 public class TutorialPageViewController: UIViewController, TutorialPageScene {

@@ -1,7 +1,7 @@
 import UIKit
 
 @IBDesignable
-class UnreadIndicatorView: UIView {
+public class UnreadIndicatorView: UIView {
 
     override open class var layerClass: Swift.AnyClass {
         return CAShapeLayer.self
@@ -15,7 +15,7 @@ class UnreadIndicatorView: UIView {
         return underlyingLayer
     }
 
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         setUp()
     }
@@ -25,7 +25,7 @@ class UnreadIndicatorView: UIView {
         setUp()
     }
     
-    override func tintColorDidChange() {
+    override public func tintColorDidChange() {
         super.tintColorDidChange()
         shapeLayer.fillColor = tintColor.cgColor
     }
@@ -34,7 +34,7 @@ class UnreadIndicatorView: UIView {
         shapeLayer.lineWidth = 0
     }
 
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
         shapeLayer.path = UIBezierPath(ovalIn: self.bounds).cgPath
     }

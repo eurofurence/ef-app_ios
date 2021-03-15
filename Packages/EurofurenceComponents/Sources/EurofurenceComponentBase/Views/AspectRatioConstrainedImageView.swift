@@ -1,10 +1,10 @@
 import UIKit
 
-class AspectRatioConstrainedImageView: UIImageView {
+public class AspectRatioConstrainedImageView: UIImageView {
 
     private var aspectRatioConstraint: NSLayoutConstraint?
 
-    override var image: UIImage? {
+    override public var image: UIImage? {
         didSet {
             aspectRatioConstraint.map(removeConstraint)
             aspectRatioConstraint = nil

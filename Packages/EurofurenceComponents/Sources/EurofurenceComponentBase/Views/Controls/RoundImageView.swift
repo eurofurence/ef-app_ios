@@ -1,8 +1,8 @@
 import UIKit
 
-class RoundImageView: UIImageView {
+public class RoundImageView: UIImageView {
     
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         setUp()
     }
@@ -16,7 +16,7 @@ class RoundImageView: UIImageView {
         layer.masksToBounds = true
     }
     
-    override var frame: CGRect {
+    override public var frame: CGRect {
         didSet {
             layer.cornerRadius = frame.width / 2
         }
