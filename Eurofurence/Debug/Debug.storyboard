@@ -10,13 +10,13 @@
         <!--Debug-->
         <scene sceneID="UM3-Pv-gXm">
             <objects>
-                <tableViewController modalPresentationStyle="formSheet" id="ifw-Yz-vyb" customClass="DebugTableViewController" customModule="EurofurenceApplication" sceneMemberID="viewController">
+                <tableViewController modalPresentationStyle="formSheet" id="ifw-Yz-vyb" customClass="DebugTableViewController" customModule="Eurofurence" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="r2E-E4-pSp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                         <sections>
-                            <tableViewSection headerTitle="FCM Token" id="dcN-wh-nwX">
+                            <tableViewSection headerTitle="FCM Token" footerTitle="Tap to copy" id="dcN-wh-nwX">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="rD4-Mg-7ll" style="IBUITableViewCellStyleDefault" id="I7M-q8-7rN">
                                         <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
@@ -45,7 +45,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Debug" id="oHX-za-bqE">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="nVG-hE-Zgi">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="nVG-hE-Zgi">
                             <connections>
                                 <action selector="doneButtonTapped:" destination="ifw-Yz-vyb" id="I45-1y-Fw8"/>
                             </connections>
