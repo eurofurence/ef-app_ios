@@ -1,3 +1,4 @@
+import EurofurenceComponentBase
 import EurofurenceModel
 import Foundation
 import UIKit.UIViewController

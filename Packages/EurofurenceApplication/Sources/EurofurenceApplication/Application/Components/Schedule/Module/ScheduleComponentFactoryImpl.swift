@@ -1,3 +1,4 @@
+import EurofurenceComponentBase
 import UIKit.UIViewController
 
 struct ScheduleComponentFactoryImpl: ScheduleComponentFactory {

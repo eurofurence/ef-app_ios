@@ -1,3 +1,4 @@
+import EurofurenceComponentBase
 import Foundation
 
 class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, ScheduleSearchViewModelDelegate {
