@@ -1,5 +1,4 @@
 import EurofurenceComponentBase
-import EurofurenceModel
 import Foundation
 
 public class CapturingSelectionChangedHaptic: SelectionChangedHaptic {

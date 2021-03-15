@@ -1,8 +1,10 @@
 import EurofurenceApplication
+import EurofurenceComponentBase
 import EurofurenceModel
 import EurofurenceModelTestDoubles
 import LinkPresentation
 import XCTest
+import XCTEurofurenceComponentBase
 
 class KnowledgeEntryActivityItemSourceTests: URLBasedActivityItemTestCase {
     

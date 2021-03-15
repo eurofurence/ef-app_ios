@@ -1,7 +1,7 @@
 import LinkPresentation
 import UIKit
 
-public class URLBasedActivityItem: NSObject, UIActivityItemSource {
+open class URLBasedActivityItem: NSObject, UIActivityItemSource {
     
     public let url: URL
     
@@ -37,7 +37,7 @@ public class URLBasedActivityItem: NSObject, UIActivityItemSource {
     }
     
     @available(iOS 13.0, *)
-    func supplementLinkMetadata(_ metadata: LPLinkMetadata) {
+    open func supplementLinkMetadata(_ metadata: LPLinkMetadata) {
         
     }
     

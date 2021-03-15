@@ -1,3 +1,4 @@
+import EurofurenceComponentBase
 import EurofurenceModel
 import LinkPresentation
 import UIKit
@@ -17,7 +18,7 @@ public class KnowledgeEntryActivityItemSource: URLBasedActivityItem {
     }
     
     @available(iOS 13.0, *)
-    override func supplementLinkMetadata(_ metadata: LPLinkMetadata) {
+    override public func supplementLinkMetadata(_ metadata: LPLinkMetadata) {
         metadata.title = knowledgeEntry.title
     }
     

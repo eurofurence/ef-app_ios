@@ -36,7 +36,8 @@ let package = Package(
         ]),
         
         .testTarget(name: "EurofurenceComponentsTests", dependencies: [
-            .target(name: "EurofurenceComponents")
+            .target(name: "EurofurenceComponents"),
+            .target(name: "XCTEurofurenceComponentBase")
         ])
     ]
 )
