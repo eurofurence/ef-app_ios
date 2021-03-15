@@ -40,15 +40,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CA630BDB229F14F800754C27"
-            BuildableName = "EurofurenceIntentDefinitions.framework"
-            BlueprintName = "EurofurenceIntentDefinitions"
-            ReferencedContainer = "container:Eurofurence.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

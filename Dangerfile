@@ -33,16 +33,9 @@ def perform_basic_pr_checks
     warn("This PR is pretty big. Consider breaking the change down into smaller slices") if git.lines_of_code > 1000
     warn("Please add a short summary about the change you have made in the PR description") unless github.pr_body.length > 10
 
-    ["Eurofurence.xcodeproj",
-     "Domain Model/Domain Model.xcodeproj",
-     "Shared Kernel/Shared Kernel.xcodeproj"
-    ].each do |project_file|
-        next unless File.file?(project_file)
-
-        File.readlines(project_file).each_with_index do |line, index|
-            if line.include?("sourceTree = SOURCE_ROOT;") and line.include?("PBXFileReference")
-                warn("Files should be in sync with project structure", file: project_file, line: index+1)
-            end
+    File.readlines("Eurofurence.xcodeproj/project.pbxproj").each_with_index do |line, index|
+        if line.include?("sourceTree = SOURCE_ROOT;") and line.include?("PBXFileReference")
+            warn("Files should be in sync with project structure", file: project_file, line: index+1)
         end
     end
 end
@@ -51,15 +44,19 @@ end
 
 def catch_untested_code
     if is_dir_modified("Eurofurence") && !(is_dir_modified("EurofurenceTests") || is_dir_modified("EurofurenceUITests"))
-        warn("The app was modified but no tests were changed")
-    end
-
-    model_tests_changed = is_dir_modified("EurofurenceModelTests")
-    if is_dir_modified("EurofurenceModel") && !model_tests_changed
-        warn("The model was modified but no tests were changed - unless this change is a refactor please backfill tests for behavioural changes")
+        warn("The app target was modified but no tests were changed")
     end
     
-    if model_tests_changed && !is_dir_modified("EurofurenceModelTestDoubles")
+    if is_dir_modified("Packages/EurofurenceApplication/Sources") && !is_dir_modified("Packages/EurofurenceApplication/Tests")
+        warn("The app logic package was modified but no tests were changed")
+    end
+
+    model_tests_changed = is_dir_modified("Packages/EurofurenceModel/Tests")
+    if is_dir_modified("Packages/EurofurenceModel/Sources") && !model_tests_changed
+        warn("The model was modified but no tests were changed")
+    end
+    
+    if model_tests_changed && !is_dir_modified("Packages/EurofurenceModel/Sources/EurofurenceModelTestDoubles")
         message("Model changes detected - if any behavioural contracts have changed make sure to update the corresponding test doubles")
     end
 end

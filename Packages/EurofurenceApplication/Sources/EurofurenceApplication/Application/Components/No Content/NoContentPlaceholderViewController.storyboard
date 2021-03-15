@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eoY-VH-1Kp">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--No Content Placeholder View Controller-->
+        <scene sceneID="cmU-SN-Ibx">
+            <objects>
+                <viewController storyboardIdentifier="NoContentPlaceholderViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="eoY-VH-1Kp" customClass="NoContentPlaceholderViewController" customModule="EurofurenceApplication" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yIo-JB-qwN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="No Content Placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="rKt-ba-4LL">
+                                <rect key="frame" x="87" y="232.5" width="240" height="431"/>
+                                <color key="tintColor" name="No Content Fill"/>
+                                <accessibility key="accessibilityConfiguration" identifier="org.eurofurence.NoContentPlaceholder.Placeholderimage"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="240" id="AL1-Lx-D7T"/>
+                                    <constraint firstAttribute="width" secondItem="rKt-ba-4LL" secondAttribute="height" multiplier="386:693" id="Q71-RH-zrn"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="g0b-we-sRw"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="rKt-ba-4LL" firstAttribute="centerY" secondItem="yIo-JB-qwN" secondAttribute="centerY" id="3nr-rq-Scq"/>
+                            <constraint firstItem="rKt-ba-4LL" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="yIo-JB-qwN" secondAttribute="bottomMargin" constant="7" id="BJ4-xS-7Cw"/>
+                            <constraint firstItem="rKt-ba-4LL" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="g0b-we-sRw" secondAttribute="leading" constant="14" id="Gff-eS-gce"/>
+                            <constraint firstItem="rKt-ba-4LL" firstAttribute="top" relation="greaterThanOrEqual" secondItem="yIo-JB-qwN" secondAttribute="topMargin" constant="7" id="IBI-df-oB1"/>
+                            <constraint firstItem="rKt-ba-4LL" firstAttribute="centerX" secondItem="yIo-JB-qwN" secondAttribute="centerX" id="Ma8-Ug-ZdJ"/>
+                            <constraint firstItem="g0b-we-sRw" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="rKt-ba-4LL" secondAttribute="trailing" constant="14" id="j8n-lR-ynb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="placeholderImageView" destination="rKt-ba-4LL" id="Dsz-s5-ANK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fcq-rp-JJb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139" y="121"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="No Content Placeholder" width="367" height="693"/>
+        <namedColor name="No Content Fill">
+            <color red="0.0" green="0.34901960784313724" blue="0.32549019607843138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

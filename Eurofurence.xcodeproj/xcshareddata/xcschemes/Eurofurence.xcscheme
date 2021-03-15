@@ -26,37 +26,17 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      codeCoverageEnabled = "YES"
-      onlyGenerateCoverageForSpecifiedTargets = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9ACF99331EBE172D006FC958"
-            BuildableName = "Eurofurence.app"
-            BlueprintName = "Eurofurence"
-            ReferencedContainer = "container:Eurofurence.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
-      <CodeCoverageTargets>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9ACF99331EBE172D006FC958"
-            BuildableName = "Eurofurence.app"
-            BlueprintName = "Eurofurence"
-            ReferencedContainer = "container:Eurofurence.xcodeproj">
-         </BuildableReference>
-      </CodeCoverageTargets>
+      shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:Test Plans/iOS Application Tests.xctestplan"
+            reference = "container:Test Plans/All Tests.xctestplan"
             default = "YES">
          </TestPlanReference>
          <TestPlanReference
-            reference = "container:Test Plans/Screenshots.xctestplan">
+            reference = "container:Test Plans/iOS Application Tests.xctestplan">
          </TestPlanReference>
          <TestPlanReference
-            reference = "container:Test Plans/All Tests.xctestplan">
+            reference = "container:Test Plans/Screenshots.xctestplan">
          </TestPlanReference>
       </TestPlans>
       <Testables>
@@ -84,9 +64,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CACD36A925650A9600C23041"
-               BuildableName = "EurofurenceApplicationSessionTests.xctest"
-               BlueprintName = "EurofurenceApplicationSessionTests"
+               BlueprintIdentifier = "78D7EEA01F17F40C005372A9"
+               BuildableName = "Screenshots.xctest"
+               BlueprintName = "Screenshots"
                ReferencedContainer = "container:Eurofurence.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -112,16 +92,9 @@
             ReferencedContainer = "container:Eurofurence.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "OS_ACTIVITY_MODE"
-            value = "disable"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
-      buildConfiguration = "Profiling"
+      buildConfiguration = "Release"
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"

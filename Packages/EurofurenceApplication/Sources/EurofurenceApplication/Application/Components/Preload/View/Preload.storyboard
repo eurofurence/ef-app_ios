@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Preload View Controller-->
+        <scene sceneID="wvo-ql-YmX">
+            <objects>
+                <viewController storyboardIdentifier="PreloadViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nkq-g2-uG2" customClass="PreloadViewController" customModule="EurofurenceApplication" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9mE-Ii-lyO"/>
+                        <viewControllerLayoutGuide type="bottom" id="82D-DE-LpW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wKs-8b-dDh" customClass="ConventionPrimaryColorView" customModule="EurofurenceApplication">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="haS-Vl-jn7">
+                                <rect key="frame" x="0.0" y="293" width="375" height="81.5"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="JdN-KQ-26A">
+                                        <rect key="frame" x="169" y="0.0" width="37" height="37"/>
+                                    </activityIndicatorView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SMF-8F-eQb">
+                                        <rect key="frame" x="166" y="61" width="43.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="YSY-xI-SRW"/>
+                        <constraints>
+                            <constraint firstItem="haS-Vl-jn7" firstAttribute="centerX" secondItem="wKs-8b-dDh" secondAttribute="centerX" id="Yg8-Qb-n0g"/>
+                            <constraint firstItem="haS-Vl-jn7" firstAttribute="centerY" secondItem="wKs-8b-dDh" secondAttribute="centerY" id="bfG-8h-FEZ"/>
+                            <constraint firstItem="haS-Vl-jn7" firstAttribute="leading" secondItem="YSY-xI-SRW" secondAttribute="leading" id="pZ1-FM-s6B"/>
+                            <constraint firstItem="YSY-xI-SRW" firstAttribute="trailing" secondItem="haS-Vl-jn7" secondAttribute="trailing" id="uC8-0F-3mw"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="z7a-p3-QXn"/>
+                    <connections>
+                        <outlet property="progressDescriptionLabel" destination="SMF-8F-eQb" id="I2T-Eb-kap"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aFC-VO-sYX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1209" y="-3705"/>
+        </scene>
+    </scenes>
+</document>
