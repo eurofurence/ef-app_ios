@@ -62,7 +62,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="898-Zd-9w2">
                                 <rect key="frame" x="20" y="671" width="374" height="45"/>
                                 <subviews>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qSI-zC-nJr" customClass="RoundedCornerButton" customModule="Eurofurence" customModuleProvider="target">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qSI-zC-nJr" customClass="RoundedCornerButton" customModule="EurofurenceApplication">
                                         <rect key="frame" x="0.0" y="0.0" width="141" height="45"/>
                                         <color key="backgroundColor" red="0.014190219340000001" green="0.46771413090000002" blue="0.97947782279999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -76,7 +76,7 @@
                                             <action selector="performPrimaryAction:" destination="Iys-fY-Grz" eventType="touchUpInside" id="9PS-UB-PcV"/>
                                         </connections>
                                     </button>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A8g-TT-6Mo" customClass="RoundedCornerButton" customModule="Eurofurence" customModuleProvider="target">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A8g-TT-6Mo" customClass="RoundedCornerButton" customModule="EurofurenceApplication">
                                         <rect key="frame" x="0.0" y="0.0" width="141" height="45"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
