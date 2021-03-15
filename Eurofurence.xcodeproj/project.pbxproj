@@ -11,7 +11,7 @@
 		78CA0D0F1F0E57D5006DFD64 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78CA0D0E1F0E57D5006DFD64 /* GoogleService-Info.plist */; };
 		9ACF99381EBE172D006FC958 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF99371EBE172D006FC958 /* AppDelegate.swift */; };
 		9ACF993F1EBE172D006FC958 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ACF993E1EBE172D006FC958 /* Assets.xcassets */; };
-		CA02910221F4D6020007F350 /* AppDelegate+DebugWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA02910121F4D6020007F350 /* AppDelegate+DebugWindow.swift */; };
+		CA02910221F4D6020007F350 /* UIWindow+Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA02910121F4D6020007F350 /* UIWindow+Debug.swift */; };
 		CA08861F25FE997E0044DD53 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA08861B25FE997E0044DD53 /* fontawesome-webfont.ttf */; };
 		CA08862025FE997E0044DD53 /* personal_notification.caf in Resources */ = {isa = PBXBuildFile; fileRef = CA08861D25FE997E0044DD53 /* personal_notification.caf */; };
 		CA08862125FE997E0044DD53 /* generic_notification.caf in Resources */ = {isa = PBXBuildFile; fileRef = CA08861E25FE997E0044DD53 /* generic_notification.caf */; };
@@ -55,6 +55,8 @@
 		CA728437209C7DE1007D912A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CA728436209C7DE1007D912A /* Settings.bundle */; };
 		CA7DA65F2563018F00F1316F /* EventWidgetContext+TimelineContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7DA65E2563018F00F1316F /* EventWidgetContext+TimelineContext.swift */; };
 		CA7DA66925630B3100F1316F /* WidgetLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7DA66825630B3100F1316F /* WidgetLayout.swift */; };
+		CA85154625FF744900860631 /* DebugTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA85154425FF744900860631 /* DebugTableViewController.swift */; };
+		CA85154725FF744900860631 /* Debug.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA85154525FF744900860631 /* Debug.storyboard */; };
 		CA8F7D2F256182EF0096E206 /* WidgetKitConformances.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8F7D2E256182EF0096E206 /* WidgetKitConformances.swift */; };
 		CA9768DD25FE39C6001AE029 /* EurofurenceApplicationSession in Frameworks */ = {isa = PBXBuildFile; productRef = CA9768DC25FE39C6001AE029 /* EurofurenceApplicationSession */; };
 		CA9768FB25FE3A81001AE029 /* EurofurenceModel in Frameworks */ = {isa = PBXBuildFile; productRef = CA9768FA25FE3A81001AE029 /* EurofurenceModel */; };
@@ -188,7 +190,7 @@
 		B3749D5DCFE8F12C64627A54 /* Pods-EurofurenceApplicationSession-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-EurofurenceApplicationSession-metadata.plist"; path = "Pods/Pods-EurofurenceApplicationSession-metadata.plist"; sourceTree = "<group>"; };
 		C5FF38C242E379F5A7F1EC36 /* Pods-Eurofurence-EurofurenceTests-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Eurofurence-EurofurenceTests-metadata.plist"; path = "Pods/Pods-Eurofurence-EurofurenceTests-metadata.plist"; sourceTree = "<group>"; };
 		C869B75DF780C2BBBFD9FD0A /* Pods-EurofurenceAppCore-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-EurofurenceAppCore-metadata.plist"; path = "Pods/Pods-EurofurenceAppCore-metadata.plist"; sourceTree = "<group>"; };
-		CA02910121F4D6020007F350 /* AppDelegate+DebugWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+DebugWindow.swift"; sourceTree = "<group>"; };
+		CA02910121F4D6020007F350 /* UIWindow+Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+Debug.swift"; sourceTree = "<group>"; };
 		CA08861B25FE997E0044DD53 /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
 		CA08861D25FE997E0044DD53 /* personal_notification.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = personal_notification.caf; sourceTree = "<group>"; };
 		CA08861E25FE997E0044DD53 /* generic_notification.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = generic_notification.caf; sourceTree = "<group>"; };
@@ -238,6 +240,8 @@
 		CA8124FE2517BDE500A7F717 /* iOS Application Tests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "iOS Application Tests.xctestplan"; sourceTree = "<group>"; };
 		CA8125022517BE9000A7F717 /* Screenshots.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Screenshots.xctestplan; sourceTree = "<group>"; };
 		CA8125112517C0CC00A7F717 /* All Tests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "All Tests.xctestplan"; sourceTree = "<group>"; };
+		CA85154425FF744900860631 /* DebugTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugTableViewController.swift; sourceTree = "<group>"; };
+		CA85154525FF744900860631 /* Debug.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Debug.storyboard; sourceTree = "<group>"; };
 		CA8F7D0F2561731B0096E206 /* EurofurenceModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EurofurenceModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA8F7D2E256182EF0096E206 /* WidgetKitConformances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetKitConformances.swift; sourceTree = "<group>"; };
 		CA9845C91F2907A800E8821D /* ScreenshotGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotGenerator.swift; sourceTree = "<group>"; };
@@ -439,10 +443,10 @@
 				7820A6F91F16B8A0004C0FB5 /* Eurofurence.entitlements */,
 				9ACF99431EBE172D006FC958 /* Info.plist */,
 				9ACF99371EBE172D006FC958 /* AppDelegate.swift */,
-				CA02910121F4D6020007F350 /* AppDelegate+DebugWindow.swift */,
 				CA3ABA05229C4B260045A35B /* AppNotificationDelegate.swift */,
 				CAE434FC25FEBA4D001E74B7 /* PrincipalWindowSceneDelegate.swift */,
 				9ACF993E1EBE172D006FC958 /* Assets.xcassets */,
+				CA85153E25FF741700860631 /* Debug */,
 				CA0885F625FE98110044DD53 /* Intents */,
 				CAF194DA24688D7D005DFBBE /* LaunchScreen.storyboard */,
 				CA08861525FE99680044DD53 /* Resources */,
@@ -573,6 +577,16 @@
 				CA8125022517BE9000A7F717 /* Screenshots.xctestplan */,
 			);
 			path = "Test Plans";
+			sourceTree = "<group>";
+		};
+		CA85153E25FF741700860631 /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				CA85154525FF744900860631 /* Debug.storyboard */,
+				CA85154425FF744900860631 /* DebugTableViewController.swift */,
+				CA02910121F4D6020007F350 /* UIWindow+Debug.swift */,
+			);
+			path = Debug;
 			sourceTree = "<group>";
 		};
 		CA8F7D17256173290096E206 /* Logic Adapter */ = {
@@ -873,6 +887,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA85154725FF744900860631 /* Debug.storyboard in Resources */,
 				CA08B0F722EDD41A00FDAAA7 /* README.md in Resources */,
 				CAF194DC24688D7D005DFBBE /* LaunchScreen.storyboard in Resources */,
 				CA08862025FE997E0044DD53 /* personal_notification.caf in Resources */,
@@ -1002,8 +1017,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA630C5122A079E100754C27 /* Intents.intentdefinition in Sources */,
+				CA85154625FF744900860631 /* DebugTableViewController.swift in Sources */,
 				CA630BEE229F16F400754C27 /* ConcreteEventIntentDonor.swift in Sources */,
-				CA02910221F4D6020007F350 /* AppDelegate+DebugWindow.swift in Sources */,
+				CA02910221F4D6020007F350 /* UIWindow+Debug.swift in Sources */,
 				CA3ABA06229C4B260045A35B /* AppNotificationDelegate.swift in Sources */,
 				CA2AA2F222C9514500C0E1A1 /* ConcreteViewDealerIntentDonor.swift in Sources */,
 				CAE434FD25FEBA4D001E74B7 /* PrincipalWindowSceneDelegate.swift in Sources */,
