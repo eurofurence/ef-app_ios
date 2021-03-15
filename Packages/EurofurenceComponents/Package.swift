@@ -18,7 +18,7 @@ let package = Package(
         )
     ],
     dependencies: [
-        
+        .package(path: "../TestUtilities")
     ],
     targets: [
         .target(name: "EurofurenceComponentBase", dependencies: []),
@@ -27,7 +27,8 @@ let package = Package(
         ]),
         
         .target(name: "XCTEurofurenceComponentBase", dependencies: [
-            .target(name: "EurofurenceComponentBase")
+            .target(name: "EurofurenceComponentBase"),
+            .product(name: "TestUtilities", package: "TestUtilities")
         ]),
         
         .target(name: "EurofurenceComponents", dependencies: [
