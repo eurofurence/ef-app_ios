@@ -14,6 +14,7 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "../EurofurenceModel"),
+        .package(path: "../EurofurenceComponents"),
         .package(path: "../EurofurenceApplicationSession"),
         .package(path: "../TestUtilities"),
         
@@ -24,6 +25,7 @@ let package = Package(
             name: "EurofurenceApplication",
             dependencies: [
                 .product(name: "EurofurenceModel", package: "EurofurenceModel"),
+                .product(name: "EurofurenceComponents", package: "EurofurenceComponents"),
                 .product(name: "EurofurenceApplicationSession", package: "EurofurenceApplicationSession"),
                 
                 .product(name: "Down", package: "Down")
