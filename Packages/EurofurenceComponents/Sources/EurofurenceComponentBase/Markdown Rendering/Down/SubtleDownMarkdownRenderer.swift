@@ -1,7 +1,7 @@
 import Down
 import UIKit
 
-struct SubtleDownMarkdownRenderer: MarkdownRenderer {
+public struct SubtleDownMarkdownRenderer: MarkdownRenderer {
     
     private let processor: DownProcessor
     
@@ -52,7 +52,7 @@ struct SubtleDownMarkdownRenderer: MarkdownRenderer {
         return paragraphStyles
     }
     
-    init() {
+    public init() {
         let styler = DownStyler(configuration: DownStylerConfiguration(
             fonts: Self.fonts,
             colors: Self.colors,
@@ -66,7 +66,7 @@ struct SubtleDownMarkdownRenderer: MarkdownRenderer {
         processor = DownProcessor(styler: styler)
     }
     
-    func render(_ contents: String) -> NSAttributedString {
+    public func render(_ contents: String) -> NSAttributedString {
         processor.convertMarkdownToAttributedString(markdown: contents)
     }
 

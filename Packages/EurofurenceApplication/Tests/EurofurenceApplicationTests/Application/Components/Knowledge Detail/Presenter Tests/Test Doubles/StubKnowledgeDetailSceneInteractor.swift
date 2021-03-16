@@ -74,14 +74,6 @@ extension KnowledgeEntryImageViewModel: RandomValueProviding {
 
 }
 
-extension NSAttributedString {
-
-    static var random: NSAttributedString {
-        return NSAttributedString(string: .random)
-    }
-
-}
-
 class StubKnowledgeDetailViewModelFactory: KnowledgeDetailViewModelFactory {
 
     var viewModel = StubKnowledgeEntryDetailViewModel.random

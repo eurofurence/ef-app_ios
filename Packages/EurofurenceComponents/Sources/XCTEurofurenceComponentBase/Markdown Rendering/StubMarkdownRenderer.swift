@@ -1,19 +1,24 @@
-import EurofurenceApplication
+import EurofurenceComponentBase
 import EurofurenceModel
 import Foundation
+import TestUtilities
 
-class StubMarkdownRenderer: MarkdownRenderer {
+public class StubMarkdownRenderer: MarkdownRenderer {
 
     private var producedContents = [String: NSAttributedString]()
+    
+    public init() {
+        
+    }
 
-    func render(_ contents: String) -> NSAttributedString {
+    public func render(_ contents: String) -> NSAttributedString {
         let renderedContents = NSAttributedString.random
         producedContents[contents] = renderedContents
 
         return renderedContents
     }
 
-    func stubbedContents(for contents: String) -> NSAttributedString {
+    public func stubbedContents(for contents: String) -> NSAttributedString {
         return producedContents[contents] ?? .random
     }
 

@@ -18,10 +18,14 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(path: "../TestUtilities")
+        .package(path: "../TestUtilities"),
+        .package(name: "Down", url: "https://github.com/johnxnguyen/Down", .upToNextMajor(from: "0.10.0"))
     ],
     targets: [
-        .target(name: "EurofurenceComponentBase", dependencies: []),
+        .target(name: "EurofurenceComponentBase", dependencies: [
+            .product(name: "Down", package: "Down")
+        ]),
+        
         .testTarget(name: "EurofurenceComponentBaseTests", dependencies: [
             .target(name: "EurofurenceComponentBase")
         ]),
