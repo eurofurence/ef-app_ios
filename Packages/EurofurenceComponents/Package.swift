@@ -26,13 +26,14 @@ let package = Package(
             .product(name: "Down", package: "Down")
         ]),
         
-        .testTarget(name: "EurofurenceComponentBaseTests", dependencies: [
-            .target(name: "EurofurenceComponentBase")
-        ]),
-        
         .target(name: "XCTEurofurenceComponentBase", dependencies: [
             .target(name: "EurofurenceComponentBase"),
             .product(name: "TestUtilities", package: "TestUtilities")
+        ]),
+        
+        .testTarget(name: "EurofurenceComponentBaseTests", dependencies: [
+            .target(name: "EurofurenceComponentBase"),
+            .target(name: "XCTEurofurenceComponentBase")
         ]),
         
         .target(name: "EurofurenceComponents", dependencies: [

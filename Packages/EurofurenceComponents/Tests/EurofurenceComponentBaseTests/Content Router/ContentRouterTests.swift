@@ -1,4 +1,4 @@
-import EurofurenceApplication
+import EurofurenceComponentBase
 import XCTest
 
 class ContentRouterTests: XCTestCase {

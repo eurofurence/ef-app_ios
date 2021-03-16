@@ -1,4 +1,5 @@
 import EurofurenceComponentBase
+import TestUtilities
 import XCTest
 
 class DownMarkdownRendererTest: XCTestCase {
