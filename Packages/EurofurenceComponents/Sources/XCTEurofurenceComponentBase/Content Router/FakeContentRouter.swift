@@ -1,14 +1,18 @@
-import EurofurenceApplication
+import EurofurenceComponentBase
 import XCTest
 
-class FakeContentRouter: ContentRouter {
+public class FakeContentRouter: ContentRouter {
     
-    private(set) var erasedRoutedContent: AnyContentRepresentation?
-    func route(_ content: AnyContentRepresentation) throws {
+    public init() {
+        
+    }
+    
+    public private(set) var erasedRoutedContent: AnyContentRepresentation?
+    public func route(_ content: AnyContentRepresentation) throws {
         erasedRoutedContent = content
     }
     
-    func assertRouted<Content>(
+    public func assertRouted<Content>(
         to expected: Content,
         file: StaticString = #file,
         line: UInt = #line
@@ -21,7 +25,7 @@ class FakeContentRouter: ContentRouter {
         )
     }
     
-    func unwrapRoutedContent<Target>(
+    public func unwrapRoutedContent<Target>(
         into targetType: Target.Type = Target.self,
         file: StaticString = #file,
         line: UInt = #line

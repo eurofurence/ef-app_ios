@@ -1,3 +1,4 @@
+import EurofurenceComponentBase
 import EurofurenceModel
 
 public struct KnowledgeGroupContentRepresentation: ContentRepresentation {

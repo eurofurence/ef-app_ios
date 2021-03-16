@@ -1,3 +1,4 @@
+import EurofurenceComponentBase
 import Foundation
 
 public struct ExternalApplicationContentRepresentation: ContentRepresentation {

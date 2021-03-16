@@ -1,3 +1,4 @@
+import EurofurenceComponentBase
 import EurofurenceModel
 
 public class MessagesContentRoute {

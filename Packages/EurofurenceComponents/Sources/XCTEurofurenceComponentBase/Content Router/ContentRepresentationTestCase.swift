@@ -1,9 +1,9 @@
-import EurofurenceApplication
+import EurofurenceComponentBase
 import XCTest
 
-class ContentRepresentationTestCase: XCTestCase {
+open class ContentRepresentationTestCase: XCTestCase {
     
-    final func assert<T, U>(
+    public final func assert<T, U>(
         content: T,
         isDescribedAs expected: U,
         file: StaticString = #file,
@@ -20,7 +20,7 @@ class ContentRepresentationTestCase: XCTestCase {
         )
     }
     
-    final func assertNoDescription<T>(
+    public final func assertNoDescription<T>(
         content: T,
         file: StaticString = #file,
         line: UInt = #line
