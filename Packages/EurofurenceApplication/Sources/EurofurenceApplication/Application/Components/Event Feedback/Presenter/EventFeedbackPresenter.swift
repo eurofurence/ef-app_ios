@@ -1,3 +1,4 @@
+import EurofurenceComponentBase
 import EurofurenceModel
 
 class EventFeedbackPresenter: EventFeedbackSceneDelegate, EventFeedbackDelegate {

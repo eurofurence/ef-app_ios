@@ -14,19 +14,17 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "../EurofurenceModel"),
+        .package(path: "../EurofurenceComponents"),
         .package(path: "../EurofurenceApplicationSession"),
-        .package(path: "../TestUtilities"),
-        
-        .package(name: "Down", url: "https://github.com/johnxnguyen/Down", .upToNextMajor(from: "0.10.0"))
+        .package(path: "../TestUtilities")
     ],
     targets: [
         .target(
             name: "EurofurenceApplication",
             dependencies: [
                 .product(name: "EurofurenceModel", package: "EurofurenceModel"),
-                .product(name: "EurofurenceApplicationSession", package: "EurofurenceApplicationSession"),
-                
-                .product(name: "Down", package: "Down")
+                .product(name: "EurofurenceComponents", package: "EurofurenceComponents"),
+                .product(name: "EurofurenceApplicationSession", package: "EurofurenceApplicationSession")
             ]
         ),
         
@@ -35,6 +33,7 @@ let package = Package(
             dependencies: [
                 .target(name: "EurofurenceApplication"),
                 .product(name: "EurofurenceModelTestDoubles", package: "EurofurenceModel"),
+                .product(name: "XCTEurofurenceComponentBase", package: "EurofurenceComponents"),
                 .product(name: "TestUtilities", package: "TestUtilities")
             ],
             resources: [

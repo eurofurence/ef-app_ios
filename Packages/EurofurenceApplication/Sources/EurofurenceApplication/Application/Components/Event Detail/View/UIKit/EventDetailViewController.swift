@@ -1,3 +1,4 @@
+import EurofurenceComponentBase
 import UIKit
 
 class EventDetailViewController: UIViewController, EventDetailScene {

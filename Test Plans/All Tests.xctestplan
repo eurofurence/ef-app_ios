@@ -68,6 +68,20 @@
         "identifier" : "EurofurenceApplicationTests",
         "name" : "EurofurenceApplicationTests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/EurofurenceComponents",
+        "identifier" : "EurofurenceComponentBaseTests",
+        "name" : "EurofurenceComponentBaseTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/EurofurenceComponents",
+        "identifier" : "EurofurenceComponentsTests",
+        "name" : "EurofurenceComponentsTests"
+      }
     }
   ],
   "version" : 1

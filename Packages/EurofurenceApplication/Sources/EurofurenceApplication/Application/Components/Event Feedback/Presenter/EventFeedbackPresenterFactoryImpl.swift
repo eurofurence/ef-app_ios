@@ -1,3 +1,4 @@
+import EurofurenceComponentBase
 import EurofurenceModel
 
 public struct EventFeedbackPresenterFactoryImpl: EventFeedbackPresenterFactory {

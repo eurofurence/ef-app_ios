@@ -1,3 +1,5 @@
+import EurofurenceComponentBase
+
 public struct KnowledgeEntryContentRoute {
     
     private let knowledgeDetailComponentFactory: KnowledgeDetailComponentFactory

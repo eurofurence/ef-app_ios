@@ -1,3 +1,4 @@
+import EurofurenceComponentBase
 import UIKit
 
 class ScheduleViewController: UIViewController,
@@ -337,7 +338,7 @@ class ScheduleViewController: UIViewController,
 
 extension ConventionBrandedTableViewHeaderFooterView: ScheduleEventGroupHeader {
     
-    func setEventGroupTitle(_ title: String) {
+    public func setEventGroupTitle(_ title: String) {
         textLabel?.text = title
     }
     

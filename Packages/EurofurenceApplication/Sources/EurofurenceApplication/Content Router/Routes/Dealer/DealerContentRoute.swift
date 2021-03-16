@@ -1,3 +1,5 @@
+import EurofurenceComponentBase
+
 public struct DealerContentRoute {
     
     private let dealerModuleFactory: DealerDetailComponentFactory

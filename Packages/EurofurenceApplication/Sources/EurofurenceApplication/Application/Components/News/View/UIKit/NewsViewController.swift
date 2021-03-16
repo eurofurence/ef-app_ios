@@ -1,3 +1,4 @@
+import EurofurenceComponentBase
 import UIKit.UIViewController
 
 class NewsViewController: UIViewController, NewsScene {
@@ -174,7 +175,7 @@ class NewsViewController: UIViewController, NewsScene {
 
 extension ConventionBrandedTableViewHeaderFooterView: NewsComponentHeaderScene {
     
-    func setComponentTitle(_ title: String?) {
+    public func setComponentTitle(_ title: String?) {
         textLabel?.text = title
     }
     

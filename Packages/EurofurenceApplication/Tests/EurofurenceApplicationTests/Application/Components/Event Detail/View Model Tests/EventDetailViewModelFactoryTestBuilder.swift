@@ -1,6 +1,7 @@
 import EurofurenceApplication
 import EurofurenceModel
 import EurofurenceModelTestDoubles
+import XCTEurofurenceComponentBase
 
 class EventDetailViewModelFactoryTestBuilder {
 

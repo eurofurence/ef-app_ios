@@ -1,4 +1,5 @@
 import EurofurenceApplication
+import EurofurenceComponentBase
 import EurofurenceModel
 import EurofurenceModelTestDoubles
 import XCTest

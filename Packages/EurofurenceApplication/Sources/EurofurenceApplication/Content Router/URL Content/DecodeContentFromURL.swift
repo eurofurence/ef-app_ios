@@ -1,3 +1,4 @@
+import EurofurenceComponentBase
 import Foundation
 
 struct DecodeContentFromURL<T>: URLDecoder
