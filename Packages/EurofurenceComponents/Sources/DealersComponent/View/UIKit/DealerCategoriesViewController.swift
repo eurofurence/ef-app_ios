@@ -60,7 +60,11 @@ class DealerCategoriesViewController: UITableViewController, DealerCategoriesFil
     }
     
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        return .dealerCategoriesInformationalFooter
+        NSLocalizedString(
+            "DealerCategoriesInformationalFooter",
+            bundle: .module,
+            comment: "Footer text shown in the categories popover informing the user how categories behave"
+        )
     }
 
 }

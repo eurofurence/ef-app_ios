@@ -1,3 +1,4 @@
+import DealersComponent
 import UIKit
 
 struct DealersContentControllerFactory: ApplicationModuleFactory {

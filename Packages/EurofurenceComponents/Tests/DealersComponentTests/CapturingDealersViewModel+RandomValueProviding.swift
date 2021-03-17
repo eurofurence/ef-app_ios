@@ -1,4 +1,3 @@
-import EurofurenceApplication
 import EurofurenceModel
 import Foundation
 import TestUtilities

@@ -24,7 +24,10 @@ class DealersSearchTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.register(DealerComponentTableViewCell.self)
+        let cellName = String(describing: DealerComponentTableViewCell.self)
+        let cellNib = UINib(nibName: cellName, bundle: .module)
+        tableView.register(cellNib, forCellReuseIdentifier: cellName)
+        
         tableView.registerConventionBrandedHeader()
     }
 

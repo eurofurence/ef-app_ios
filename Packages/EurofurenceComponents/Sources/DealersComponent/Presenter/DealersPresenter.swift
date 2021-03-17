@@ -113,7 +113,14 @@ class DealersPresenter: DealersSceneDelegate, DealersViewModelDelegate, DealersS
         self.delegate = delegate
 
         scene.setDelegate(self)
-        scene.setDealersTitle(.dealers)
+        
+        let dealersTitle = NSLocalizedString(
+            "Dealers",
+            bundle: .module,
+            comment: "Title for the view that shows the dealers listed in the dealers den during the convention"
+        )
+        
+        scene.setDealersTitle(dealersTitle)
     }
 
     func dealersSceneDidLoad() {

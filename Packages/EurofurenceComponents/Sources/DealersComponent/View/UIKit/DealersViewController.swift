@@ -1,7 +1,7 @@
 import ComponentBase
 import UIKit
 
-class DealersViewController: UIViewController, UISearchControllerDelegate, UISearchResultsUpdating, DealersScene {
+public class DealersViewController: UIViewController, UISearchControllerDelegate, UISearchResultsUpdating, DealersScene {
 
     // MARK: Properties
 
@@ -29,7 +29,7 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
 
     // MARK: Overrides
 
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
 
         definesPresentationContext = true
@@ -40,7 +40,10 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
 
         tableView.refreshControl = refreshControl
         tableView.registerConventionBrandedHeader()
-        tableView.register(DealerComponentTableViewCell.self)
+        
+        let cellName = String(describing: DealerComponentTableViewCell.self)
+        let cellNib = UINib(nibName: cellName, bundle: .module)
+        tableView.register(cellNib, forCellReuseIdentifier: cellName)
         
         prepareSearchController()
         
@@ -49,17 +52,17 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
         delegate?.dealersSceneDidLoad()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.deselectSelectedRow()
     }
     
-    override func viewDidLayoutSubviews() {
+    override public func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView?.adjustScrollIndicatorInsetsForSafeAreaCompensation()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override public func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "ShowCategories",
               let navigationController = segue.destination as? UINavigationController,
               let filtersScene = navigationController.topViewController as? DealerCategoriesFilterScene else { return }
@@ -71,7 +74,9 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
         let searchController = UISearchController(searchResultsController: searchViewController)
         searchController.delegate = self
         searchController.searchResultsUpdater = self
-        Theme.performUnsafeSearchControllerStyling(searchController: searchController)
+        
+        // TODO: Work out how to perform this themeing.
+//        Theme.performUnsafeSearchControllerStyling(searchController: searchController)
         
         navigationItem.searchController = searchController
         navigationItem.rightBarButtonItem = nil
@@ -81,14 +86,14 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
 
     // MARK: UISearchControllerDelegate
     
-    func presentSearchController(_ searchController: UISearchController) {
+    public func presentSearchController(_ searchController: UISearchController) {
         ensureScrolledToTopToAvoidLargeTitlesPresentationIssue()
         present(searchController, animated: true)
     }
 
     // MARK: UISearchResultsUpdating
 
-    func updateSearchResults(for searchController: UISearchController) {
+    public func updateSearchResults(for searchController: UISearchController) {
         if let query = searchController.searchBar.text {
             delegate?.dealersSceneDidChangeSearchQuery(to: query)
         }
@@ -97,23 +102,23 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
     // MARK: DealersScene
 
     private var delegate: DealersSceneDelegate?
-    func setDelegate(_ delegate: DealersSceneDelegate) {
+    public func setDelegate(_ delegate: DealersSceneDelegate) {
         self.delegate = delegate
     }
 
-    func setDealersTitle(_ title: String) {
+    public func setDealersTitle(_ title: String) {
         super.title = title
     }
 
-    func showRefreshIndicator() {
+    public func showRefreshIndicator() {
         refreshControl.beginRefreshing()
     }
 
-    func hideRefreshIndicator() {
+    public func hideRefreshIndicator() {
         refreshControl.endRefreshing()
     }
 
-    func bind(numberOfDealersPerSection: [Int], sectionIndexTitles: [String], using binder: DealersBinder) {
+    public func bind(numberOfDealersPerSection: [Int], sectionIndexTitles: [String], using binder: DealersBinder) {
         tableController = TableController(numberOfDealersPerSection: numberOfDealersPerSection,
                                           sectionIndexTitles: sectionIndexTitles,
                                           binder: binder,
@@ -122,7 +127,7 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
         tableView.reloadData()
     }
 
-    func bindSearchResults(
+    public func bindSearchResults(
         numberOfDealersPerSection: [Int],
         sectionIndexTitles: [String],
         using binder: DealersSearchResultsBinder
