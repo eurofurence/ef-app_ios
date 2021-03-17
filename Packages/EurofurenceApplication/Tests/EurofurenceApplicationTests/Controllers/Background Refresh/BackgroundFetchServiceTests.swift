@@ -1,7 +1,7 @@
 import EurofurenceApplication
-import EurofurenceModelTestDoubles
 import UIKit
 import XCTest
+import XCTEurofurenceModel
 
 class BackgroundFetchServiceTests: XCTestCase {
     

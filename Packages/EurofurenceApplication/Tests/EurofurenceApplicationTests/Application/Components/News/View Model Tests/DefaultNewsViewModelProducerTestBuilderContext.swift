@@ -1,8 +1,8 @@
 import EurofurenceApplication
 import EurofurenceModel
-import EurofurenceModelTestDoubles
 import Foundation
 import XCTest
+import XCTEurofurenceModel
 
 extension DefaultNewsViewModelProducerTestBuilder.Context {
     

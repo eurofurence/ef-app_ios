@@ -1,6 +1,6 @@
 import EurofurenceModel
-import EurofurenceModelTestDoubles
 import Foundation
+import XCTEurofurenceModel
 
 class FakeEventsService: EventsService {
 

@@ -1,7 +1,7 @@
 import EurofurenceApplication
 import EurofurenceModel
-import EurofurenceModelTestDoubles
 import Foundation
+import XCTEurofurenceModel
 
 class CapturingDealersSearchViewModel: DealersSearchViewModel {
 

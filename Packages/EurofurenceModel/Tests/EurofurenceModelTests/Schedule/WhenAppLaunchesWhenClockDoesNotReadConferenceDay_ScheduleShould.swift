@@ -1,6 +1,6 @@
 import EurofurenceModel
-import EurofurenceModelTestDoubles
 import XCTest
+import XCTEurofurenceModel
 
 class WhenAppLaunchesWhenClockDoesNotReadConferenceDay_ScheduleShould: XCTestCase {
 

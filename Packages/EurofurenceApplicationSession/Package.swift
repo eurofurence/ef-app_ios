@@ -34,7 +34,7 @@ let package = Package(
             name: "EurofurenceApplicationSessionTests",
             dependencies: [
                 .target(name: "EurofurenceApplicationSession"),
-                .product(name: "EurofurenceModelTestDoubles", package: "EurofurenceModel"),
+                .product(name: "XCTEurofurenceModel", package: "EurofurenceModel"),
                 .product(name: "TestUtilities", package: "TestUtilities")
             ]
         )

@@ -1,7 +1,7 @@
 import EurofurenceModel
-import EurofurenceModelTestDoubles
 import TestUtilities
 import XCTest
+import XCTEurofurenceModel
 
 class ImageAPITests: XCTestCase {
 

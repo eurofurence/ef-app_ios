@@ -1,8 +1,8 @@
 import EurofurenceApplication
 import EurofurenceModel
-import EurofurenceModelTestDoubles
 import Foundation
 import XCTComponentBase
+import XCTEurofurenceModel
 
 class AnnouncementDetailViewModelFactoryTestBuilder {
 

@@ -1,7 +1,7 @@
 import EurofurenceApplication
-import EurofurenceModelTestDoubles
 import Foundation
 import TestUtilities
+import XCTEurofurenceModel
 
 class ScheduleEventGroupViewModelAssertion: Assertion {
 

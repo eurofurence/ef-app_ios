@@ -1,5 +1,5 @@
-import EurofurenceModelTestDoubles
 import XCTest
+import XCTEurofurenceModel
 
 class BeforeMessagesViewAppears_MessagesPresenterShould: XCTestCase {
 

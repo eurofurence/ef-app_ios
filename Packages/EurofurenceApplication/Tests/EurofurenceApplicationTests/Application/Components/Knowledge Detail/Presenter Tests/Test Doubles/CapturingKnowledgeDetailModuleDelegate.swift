@@ -1,6 +1,6 @@
 import EurofurenceApplication
 import EurofurenceModel
-import EurofurenceModelTestDoubles
+import XCTEurofurenceModel
 
 class CapturingKnowledgeDetailComponentDelegate: KnowledgeDetailComponentDelegate {
 

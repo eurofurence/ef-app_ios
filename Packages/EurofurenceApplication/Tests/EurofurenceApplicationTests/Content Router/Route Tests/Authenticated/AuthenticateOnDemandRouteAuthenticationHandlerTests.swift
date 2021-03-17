@@ -1,8 +1,8 @@
 import EurofurenceApplication
 import EurofurenceModel
-import EurofurenceModelTestDoubles
 import XCTComponentBase
 import XCTest
+import XCTEurofurenceModel
 
 class AuthenticateOnDemandRouteAuthenticationHandlerTests: XCTestCase {
     

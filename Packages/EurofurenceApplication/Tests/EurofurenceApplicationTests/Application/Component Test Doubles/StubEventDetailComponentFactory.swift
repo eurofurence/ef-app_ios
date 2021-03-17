@@ -1,7 +1,7 @@
 import EurofurenceApplication
 import EurofurenceModel
-import EurofurenceModelTestDoubles
 import UIKit
+import XCTEurofurenceModel
 
 class StubEventDetailComponentFactory: EventDetailComponentFactory {
 

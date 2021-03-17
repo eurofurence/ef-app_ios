@@ -1,7 +1,7 @@
 import EurofurenceApplication
 import EurofurenceModel
-import EurofurenceModelTestDoubles
 import XCTest
+import XCTEurofurenceModel
 
 class WhenViewModelIndicatesEventIsFavourite_EventDetailPresenterShould: XCTestCase {
 
