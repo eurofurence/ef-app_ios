@@ -39,7 +39,7 @@
                             </label>
                         </subviews>
                     </stackView>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s8G-hg-7vV" customClass="UnreadIndicatorView" customModule="EurofurenceApplication">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s8G-hg-7vV" customClass="UnreadIndicatorView" customModule="ComponentBase">
                         <rect key="frame" x="20" y="56" width="10" height="10"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>

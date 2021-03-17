@@ -61,7 +61,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bza-hP-eKo" customClass="UnreadIndicatorView" customModule="Eurofurence" customModuleProvider="target">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bza-hP-eKo" customClass="UnreadIndicatorView" customModule="ComponentBase">
                                                     <rect key="frame" x="8" y="15" width="10" height="10"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="Bza-hP-eKo" secondAttribute="height" multiplier="1:1" id="SDC-ze-K6G"/>

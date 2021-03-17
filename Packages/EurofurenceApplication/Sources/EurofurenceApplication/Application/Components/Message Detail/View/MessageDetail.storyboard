@@ -83,7 +83,7 @@
                                                     <constraint firstAttribute="height" constant="14" id="EFo-oA-8AS"/>
                                                 </constraints>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8vU-UD-XPh" customClass="RoundedCornerButton" customModule="Eurofurence" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8vU-UD-XPh" customClass="RoundedCornerButton" customModule="ComponentBase">
                                                 <rect key="frame" x="96.999999999999986" y="50.333333333333314" width="46.000000000000014" height="30"/>
                                                 <state key="normal" title="Button"/>
                                                 <connections>
