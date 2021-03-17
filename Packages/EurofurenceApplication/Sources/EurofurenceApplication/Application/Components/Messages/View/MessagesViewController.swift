@@ -10,10 +10,12 @@ class MessagesViewController: UIViewController, UITableViewDelegate, MessagesSce
     @IBOutlet private weak var noMessagesPlaceholder: UIView!
     let refreshIndicator = UIRefreshControl(frame: .zero)
     private let dataSource = MessagesTableViewDataSource()
-    private lazy var logoutBarButtonItem = UIBarButtonItem(title: .logout,
-                                                           style: .plain,
-                                                           target: self,
-                                                           action: #selector(logoutButtonTapped))
+    private lazy var logoutBarButtonItem = UIBarButtonItem(
+        title: .logout,
+        style: .done,
+        target: self,
+        action: #selector(logoutButtonTapped)
+    )
 
     @objc private func logoutButtonTapped() {
         delegate?.messagesSceneDidTapLogoutButton()

@@ -296,15 +296,21 @@ class ScheduleViewController: UIViewController,
         }
         
 #if !targetEnvironment(macCatalyst)
-        func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        func tableView(
+            _ tableView: UITableView,
+            trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
+        ) -> UISwipeActionsConfiguration? {
             guard let sender = tableView.cellForRow(at: indexPath) else { return nil }
             let actions = binder.eventActionsForComponent(at: indexPath)
             
-            return actions.map { (action) in
-                UITableViewRowAction(style: .normal, title: action.title, handler: { (_, _) in
+            let contextualActions = actions.map { (action) in
+                UIContextualAction(style: .normal, title: action.title) { (_, _, complete) in
                     action.run(sender)
-                })
+                    complete(true)
+                }
             }
+            
+            return UISwipeActionsConfiguration(actions: contextualActions)
         }
 #endif
         

@@ -3,7 +3,17 @@ import UIKit
 public class AspectRatioConstrainedImageView: UIImageView {
 
     private var aspectRatioConstraint: NSLayoutConstraint?
-
+    
+    override public init(frame: CGRect) {
+        super.init(frame: frame)
+        contentMode = .scaleAspectFit
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        contentMode = .scaleAspectFit
+    }
+    
     override public var image: UIImage? {
         didSet {
             aspectRatioConstraint.map(removeConstraint)
