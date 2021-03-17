@@ -1,11 +1,32 @@
 import ComponentBase
 import UIKit
 
-public struct Theme {
+extension Theme {
 
     private static let whiteTextAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.white]
 
-    public static func apply() {
+    public func apply() {
+        registerSearchControllerTheme { [weak self] (searchController) in
+            guard let self = self else { return }
+            
+            let searchBar = searchController.searchBar
+            self.styleSearchBar(searchController.searchBar)
+            
+            if #available(iOS 13.0, *) {
+                searchController.searchBar.searchTextField.backgroundColor = .systemBackground
+                searchController.searchBar.searchTextField.layer.cornerRadius = 10
+                searchController.searchBar.searchTextField.clipsToBounds = true
+            } else {
+                guard let backgroundview = self.findBackgroundFromViewHiearchy(searchBar: searchBar) else {
+                    return
+                }
+                
+                backgroundview.backgroundColor = .white
+                backgroundview.layer.cornerRadius = 10
+                backgroundview.clipsToBounds = true
+            }
+        }
+        
         styleConventionColorViews()
         styleNavigationBars()
         styleTabBars()
@@ -22,30 +43,12 @@ public struct Theme {
         styleUnreadIndicators()
     }
     
-    static func performUnsafeSearchControllerStyling(searchController: UISearchController) {
-        styleSearchBar(searchController.searchBar)
-        
-        if #available(iOS 13.0, *) {
-            searchController.searchBar.searchTextField.backgroundColor = .systemBackground
-            searchController.searchBar.searchTextField.layer.cornerRadius = 10
-            searchController.searchBar.searchTextField.clipsToBounds = true
-        } else {
-            guard let backgroundview = findBackgroundFromViewHiearchy(searchBar: searchController.searchBar) else {
-                return
-            }
-            
-            backgroundview.backgroundColor = .white
-            backgroundview.layer.cornerRadius = 10
-            backgroundview.clipsToBounds = true
-        }
-    }
-    
-    private static func findBackgroundFromViewHiearchy(searchBar: UISearchBar) -> UIView? {
+    private func findBackgroundFromViewHiearchy(searchBar: UISearchBar) -> UIView? {
         let textfield = searchBar.value(forKey: "searchField") as? UITextField
         return textfield?.subviews.first
     }
     
-    private static func styleConventionColorViews() {
+    private func styleConventionColorViews() {
         let primaryColorView = ConventionPrimaryColorView.appearance()
         primaryColorView.backgroundColor = .primary
         
@@ -53,31 +56,31 @@ public struct Theme {
         secondaryColorView.backgroundColor = .secondary
     }
 
-    private static func styleNavigationBars() {
+    private func styleNavigationBars() {
         let navigationBar = UINavigationBar.appearance()
         navigationBar.isTranslucent = false
         navigationBar.barTintColor = .navigationBar
         navigationBar.tintColor = .white
-        navigationBar.titleTextAttributes = whiteTextAttributes
+        navigationBar.titleTextAttributes = Self.whiteTextAttributes
         navigationBar.setBackgroundImage(UIColor.navigationBar.makePixel(), for: .default)
         navigationBar.shadowImage = UIColor.navigationBar.makePixel()
         
         if #available(iOS 13.0, *) {
             let appearance = UINavigationBarAppearance()
             appearance.backgroundColor = .navigationBar
-            appearance.titleTextAttributes = whiteTextAttributes
-            appearance.largeTitleTextAttributes = whiteTextAttributes
+            appearance.titleTextAttributes = Self.whiteTextAttributes
+            appearance.largeTitleTextAttributes = Self.whiteTextAttributes
             
             navigationBar.standardAppearance = appearance
             navigationBar.compactAppearance = appearance
             navigationBar.scrollEdgeAppearance = appearance
         } else {
             navigationBar.backgroundColor = .navigationBar
-            navigationBar.largeTitleTextAttributes = whiteTextAttributes
+            navigationBar.largeTitleTextAttributes = Self.whiteTextAttributes
         }
     }
 
-    private static func styleTabBars() {
+    private func styleTabBars() {
         let tabBar = UITabBar.appearance()
         tabBar.isTranslucent = false
         tabBar.barTintColor = .tabBar
@@ -85,13 +88,13 @@ public struct Theme {
         tabBar.unselectedItemTintColor = .unselectedTabBarItem
     }
 
-    private static func styleButtons() {
+    private func styleButtons() {
         styleButtonsWithinTableViewCells()
         styleButtonsWithinNavigationBars()
         styleLargeActionButton()
     }
 
-    private static func styleButtonsWithinTableViewCells() {
+    private func styleButtonsWithinTableViewCells() {
         let buttonInsideTableView = UIButton.appearance(whenContainedInInstancesOf: [UITableViewCell.self])
         buttonInsideTableView.setTitleColor(.buttons, for: .normal)
         buttonInsideTableView.setTitleColor(.disabledColor, for: .disabled)
@@ -100,18 +103,18 @@ public struct Theme {
         buttonInsideEventCell.setTitleColor(.white, for: .normal)
     }
 
-    private static func styleButtonsWithinNavigationBars() {
+    private func styleButtonsWithinNavigationBars() {
         let buttonsInsideNavigationBar = UIButton.appearance(whenContainedInInstancesOf: [UINavigationBar.self])
         buttonsInsideNavigationBar.tintColor = .white
     }
     
-    private static func styleLargeActionButton() {
+    private func styleLargeActionButton() {
         let appearance = RoundedCornerButton.appearance()
         appearance.backgroundColor = .largeActionButton
         appearance.tintColor = .white
     }
     
-    private static func styleTableViews() {
+    private func styleTableViews() {
         let tableView = UITableView.appearance()
         tableView.sectionIndexColor = .tableIndex
         tableView.sectionIndexBackgroundColor = .clear
@@ -119,7 +122,7 @@ public struct Theme {
         styleTableViewHeaders()
     }
     
-    private static func styleTableViewHeaders() {
+    private func styleTableViewHeaders() {
         let conventionTableViewHeaderLabel = UILabel.appearance(
             whenContainedInInstancesOf: [ConventionBrandedTableViewHeaderFooterView.self]
         )
@@ -127,9 +130,9 @@ public struct Theme {
         conventionTableViewHeaderLabel.textColor = .white
     }
 
-    private static func styleTabBarItems() {
+    private func styleTabBarItems() {
         let tabBarItem = UITabBarItem.appearance()
-        tabBarItem.setTitleTextAttributes(whiteTextAttributes, for: .normal)
+        tabBarItem.setTitleTextAttributes(Self.whiteTextAttributes, for: .normal)
         
         let selectedTextAttributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: UIColor.selectedTabBarItem
@@ -138,14 +141,14 @@ public struct Theme {
         tabBarItem.setTitleTextAttributes(selectedTextAttributes, for: .selected)
     }
 
-    private static func styleNavigationBarExtensions() {
+    private func styleNavigationBarExtensions() {
         let navigationBarExtension = NavigationBarViewExtensionContainer.appearance()
         navigationBarExtension.backgroundColor = .navigationBar
 
         styleLabelsWithinNavigationBarExtensions()
     }
 
-    private static func styleLabelsWithinNavigationBarExtensions() {
+    private func styleLabelsWithinNavigationBarExtensions() {
         let labelsInsideNavigationBarExtension = UILabel.appearance(
             whenContainedInInstancesOf: [NavigationBarViewExtensionContainer.self]
         )
@@ -153,7 +156,7 @@ public struct Theme {
         labelsInsideNavigationBarExtension.textColor = .white
     }
 
-    private static func styleSearchBars() {
+    private func styleSearchBars() {
         let searchBar = UISearchBar.appearance()
         searchBar.barTintColor = .searchBarTint
         searchBar.isTranslucent = false
@@ -161,42 +164,42 @@ public struct Theme {
         styleBarButtonItemsWithinSearchBars()
     }
 
-    private static func styleBarButtonItemsWithinSearchBars() {
+    private func styleBarButtonItemsWithinSearchBars() {
         let buttonsInsideSearchBar = UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self])
-        buttonsInsideSearchBar.setTitleTextAttributes(whiteTextAttributes, for: .normal)
+        buttonsInsideSearchBar.setTitleTextAttributes(Self.whiteTextAttributes, for: .normal)
     }
 
-    private static func styleTextFields() {
+    private func styleTextFields() {
         let textField = UITextField.appearance()
         textField.tintColor = .tintColor
     }
 
-    private static func styleSegmentedControls() {
+    private func styleSegmentedControls() {
         let segmentControl = UISegmentedControl.appearance()
         segmentControl.tintColor = .white
     }
     
-    private static func styleRefreshControls() {
+    private func styleRefreshControls() {
         let refreshControl = UIRefreshControl.appearance()
         refreshControl.tintColor = .refreshControl
     }
     
-    private static func styleImages() {
+    private func styleImages() {
         let image = UIImageView.appearance()
         image.tintColor = .tintColor
     }
     
-    private static func styleAwesomeFontLabels() {
+    private func styleAwesomeFontLabels() {
         let appearance = AwesomeFontLabel.appearance()
         appearance.textColor = .iconographicTint
     }
     
-    private static func styleUnreadIndicators() {
+    private func styleUnreadIndicators() {
         let appearance = UnreadIndicatorView.appearance()
         appearance.tintColor = .unreadIndicator
     }
     
-    private static func styleSearchBar(_ searchBar: UISearchBar) {
+    private func styleSearchBar(_ searchBar: UISearchBar) {
         let dividerPixel = UIColor.segmentSeperator.makeColoredImage(size: CGSize(width: 1, height: 1))
         searchBar.setScopeBarButtonBackgroundImage(dividerPixel, for: .selected)
         searchBar.setScopeBarButtonDividerImage(dividerPixel, forLeftSegmentState: .normal, rightSegmentState: .normal)
@@ -225,7 +228,7 @@ public struct Theme {
         searchBar.setScopeBarButtonBackgroundImage(filledBackground, for: .selected)
     }
     
-    private static func makeSegmentBackground(color: UIColor) -> UIImage {
+    private func makeSegmentBackground(color: UIColor) -> UIImage {
         let size = CGSize(width: 10, height: 10)
         let renderer = UIGraphicsImageRenderer(size: size)
         let data = renderer.pngData { (_) in

@@ -1,3 +1,4 @@
+import XCTComponentBase
 import XCTest
 import XCTEurofurenceModel
 

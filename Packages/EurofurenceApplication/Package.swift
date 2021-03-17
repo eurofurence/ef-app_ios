@@ -23,8 +23,8 @@ let package = Package(
             name: "EurofurenceApplication",
             dependencies: [
                 .product(name: "EurofurenceModel", package: "EurofurenceModel"),
-                .product(name: "EurofurenceComponents", package: "EurofurenceComponents"),
-                .product(name: "EurofurenceApplicationSession", package: "EurofurenceApplicationSession")
+                .product(name: "EurofurenceApplicationSession", package: "EurofurenceApplicationSession"),
+                .product(name: "DealersComponent", package: "EurofurenceComponents")
             ]
         ),
         

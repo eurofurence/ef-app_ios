@@ -1,4 +1,5 @@
 import ComponentBase
+import DealersComponent
 import EurofurenceModel
 import UIKit
 
@@ -73,18 +74,8 @@ struct ComponentRegistry {
             scheduleViewModelFactory: scheduleViewModelFactory
         ).build()
         
-        let defaultDealerIcon: UIImage
-        if #available(iOS 13.0, *) {
-            defaultDealerIcon = UIImage(named: "defaultAvatar", in: .module, with: nil).unsafelyUnwrapped
-        } else {
-            defaultDealerIcon = UIImage(named: "defaultAvatar").unsafelyUnwrapped
-        }
-        
-        let defaultDealerIconData = defaultDealerIcon.pngData().unsafelyUnwrapped
-        
         let dealersViewModelFactory = DefaultDealersViewModelFactory(
             dealersService: services.dealers,
-            defaultIconData: defaultDealerIconData,
             refreshService: services.refresh
         )
         

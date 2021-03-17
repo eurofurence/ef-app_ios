@@ -2,6 +2,7 @@ import EurofurenceApplication
 import EurofurenceModel
 import Foundation
 import UIKit.UIViewController
+import XCTComponentBase
 
 class StubMessagesSceneFactory: MessagesSceneFactory {
 

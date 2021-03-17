@@ -1,5 +1,6 @@
 import EurofurenceApplication
 import UIKit
+import XCTComponentBase
 
 class CapturingMessageDetailScene: UIViewController, MessageDetailScene {
 

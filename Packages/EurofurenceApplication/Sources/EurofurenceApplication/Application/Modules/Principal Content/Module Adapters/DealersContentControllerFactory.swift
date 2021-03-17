@@ -1,3 +1,4 @@
+import DealersComponent
 import UIKit
 
 struct DealersContentControllerFactory: ApplicationModuleFactory {
@@ -6,7 +7,10 @@ struct DealersContentControllerFactory: ApplicationModuleFactory {
     var dealersComponentDelegate: DealersComponentDelegate
     
     func makeApplicationModuleController() -> UIViewController {
-        dealersComponentFactory.makeDealersComponent(dealersComponentDelegate)
+        let viewController = dealersComponentFactory.makeDealersComponent(dealersComponentDelegate)
+        viewController.tabBarItem.image = UIImage(named: "dealers", in: .module, compatibleWith: nil)
+        
+        return viewController
     }
     
 }

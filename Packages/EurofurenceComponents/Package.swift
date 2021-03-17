@@ -7,17 +7,12 @@ let package = Package(
     defaultLocalization: "en",
     platforms: [.iOS(.v11)],
     products: [
-        .library(
-            name: "EurofurenceComponents",
-            targets: ["EurofurenceComponents"]
-        ),
-        
-        .library(
-            name: "XCTComponentBase",
-            targets: ["XCTComponentBase"]
-        )
+        .library(name: "DealersComponent", targets: ["DealersComponent"]),
+            
+        .library(name: "XCTComponentBase", targets: ["XCTComponentBase"])
     ],
     dependencies: [
+        .package(path: "../EurofurenceModel"),
         .package(path: "../TestUtilities"),
         .package(name: "Down", url: "https://github.com/johnxnguyen/Down", .upToNextMajor(from: "0.10.0"))
     ],
@@ -36,13 +31,15 @@ let package = Package(
             .target(name: "XCTComponentBase")
         ]),
         
-        .target(name: "EurofurenceComponents", dependencies: [
-            .target(name: "ComponentBase")
+        .target(name: "DealersComponent", dependencies: [
+            .target(name: "ComponentBase"),
+            .product(name: "EurofurenceModel", package: "EurofurenceModel")
         ]),
         
-        .testTarget(name: "EurofurenceComponentsTests", dependencies: [
-            .target(name: "EurofurenceComponents"),
-            .target(name: "XCTComponentBase")
+        .testTarget(name: "DealersComponentTests", dependencies: [
+            .target(name: "DealersComponent"),
+            .target(name: "XCTComponentBase"),
+            .product(name: "XCTEurofurenceModel", package: "EurofurenceModel")
         ])
     ]
 )

@@ -1,4 +1,5 @@
 import ComponentBase
+import DealersComponent
 import EurofurenceModel
 
 public struct ShowDealerFromDealers: DealersComponentDelegate {

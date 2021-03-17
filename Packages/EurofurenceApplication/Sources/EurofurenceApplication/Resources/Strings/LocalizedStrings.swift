@@ -175,10 +175,6 @@ public extension String {
                                             bundle: .module,
                                             comment: "Title for the view that shows the convention schedule")
     
-    static let dealers = NSLocalizedString("Dealers",
-                                           bundle: .module,
-                                           comment: "Title for the view that shows the dealers listed in the dealers den during the convention")
-    
     static let information = NSLocalizedString("Information",
                                                bundle: .module,
                                                comment: "Title for the view showing all the categoried convention information")
@@ -323,10 +319,6 @@ public extension String {
     static let share = NSLocalizedString("Share",
                                          bundle: .module,
                                          comment: "Title for buttons used for share actions (e.g. events)")
-    
-    static let dealerCategoriesInformationalFooter = NSLocalizedString("DealerCategoriesInformationalFooter",
-                                                                       bundle: .module,
-                                                                       comment: "Footer text shown in the categories popover informing the user how categories behave")
     
     private struct Formatters {
         static var numbers = NumberFormatter()
