@@ -1,3 +1,4 @@
+import ComponentBase
 import UIKit
 
 class EventDetailBannerTableViewCell: UITableViewCell, EventGraphicComponent {
@@ -5,6 +6,13 @@ class EventDetailBannerTableViewCell: UITableViewCell, EventGraphicComponent {
     // MARK: IBOutlets
 
     @IBOutlet private weak var bannerImageView: UIImageView!
+    
+    // MARK: Overrides
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        hideSeperator()
+    }
 
     // MARK: EventGraphicComponent
 
