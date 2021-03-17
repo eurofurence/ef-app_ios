@@ -10,6 +10,13 @@ public struct DefaultDealersViewModelFactory: DealersViewModelFactory, DealersIn
     private let viewModel: ViewModel
     private let searchViewModel: SearchViewModel
     private let categoriesViewModel: CategoriesViewModel
+    
+    public init(dealersService: DealersService, refreshService: RefreshService) {
+        let defaultAvatarImage = UIImage(named: "defaultAvatar", in: .module, compatibleWith: nil).unsafelyUnwrapped
+        let defaultImageData = defaultAvatarImage.pngData().unsafelyUnwrapped
+        
+        self.init(dealersService: dealersService, defaultIconData: defaultImageData, refreshService: refreshService)
+    }
 
     public init(
         dealersService: DealersService,
