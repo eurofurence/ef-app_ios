@@ -1,4 +1,4 @@
-import EurofurenceApplication
+import DealersComponent
 import EurofurenceModel
 import XCTest
 
@@ -11,7 +11,7 @@ class WhenBuildingDealersModule: XCTestCase {
 
     func testTheSceneIsToldToShowTheDealersTitle() {
         let context = DealersPresenterTestBuilder().build()
-        XCTAssertEqual(.dealers, context.scene.capturedTitle)
+        XCTAssertEqual("Dealers", context.scene.capturedTitle)
     }
 
 }

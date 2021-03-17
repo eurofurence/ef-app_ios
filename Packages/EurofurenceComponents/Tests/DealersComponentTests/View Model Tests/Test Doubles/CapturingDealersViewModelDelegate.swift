@@ -1,4 +1,4 @@
-import EurofurenceApplication
+import DealersComponent
 import EurofurenceModel
 import Foundation
 

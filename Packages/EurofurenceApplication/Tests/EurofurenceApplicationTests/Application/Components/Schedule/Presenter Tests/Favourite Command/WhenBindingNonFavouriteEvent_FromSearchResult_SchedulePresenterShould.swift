@@ -1,5 +1,6 @@
 import EurofurenceApplication
 import EurofurenceModel
+import XCTComponentBase
 import XCTest
 
 class WhenBindingNonFavouriteEvent_FromSearchResult_SchedulePresenterShould: XCTestCase {

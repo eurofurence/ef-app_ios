@@ -1,6 +1,7 @@
 import EurofurenceApplication
 import EurofurenceModel
 import Foundation
+import XCTComponentBase
 
 class CapturingScheduleEventComponent: ScheduleEventComponent {
     

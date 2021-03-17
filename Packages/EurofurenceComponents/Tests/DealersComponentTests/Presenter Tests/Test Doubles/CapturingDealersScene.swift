@@ -1,6 +1,7 @@
-import EurofurenceApplication
+import DealersComponent
 import EurofurenceModel
 import UIKit.UIViewController
+import XCTComponentBase
 
 class CapturingDealerCategoriesFilterScene: DealerCategoriesFilterScene {
     

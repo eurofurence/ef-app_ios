@@ -1,4 +1,4 @@
-import EurofurenceApplication
+import DealersComponent
 import XCTest
 
 class WhenDealersSceneRevealsCategoryFilters_DealersPresenterShould: XCTestCase {

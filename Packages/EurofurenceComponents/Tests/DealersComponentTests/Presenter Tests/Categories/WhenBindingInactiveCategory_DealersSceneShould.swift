@@ -1,4 +1,5 @@
-import EurofurenceApplication
+import DealersComponent
+import XCTComponentBase
 import XCTest
 
 class WhenBindingInactiveCategory_DealersSceneShould: XCTestCase {

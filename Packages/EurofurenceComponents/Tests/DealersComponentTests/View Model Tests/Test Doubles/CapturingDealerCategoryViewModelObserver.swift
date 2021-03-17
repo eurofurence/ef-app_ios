@@ -1,4 +1,4 @@
-import EurofurenceApplication
+import DealersComponent
 
 class CapturingDealerCategoryViewModelObserver: DealerCategoryViewModelObserver {
     
