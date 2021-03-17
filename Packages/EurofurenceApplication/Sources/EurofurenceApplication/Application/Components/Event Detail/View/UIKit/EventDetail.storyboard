@@ -42,7 +42,7 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SdV-DJ-Zto" customClass="AspectRatioConstrainedImageView" customModule="ComponentBase">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="84"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="500" id="g84-lQ-sUp"/>
+                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" priority="750" constant="500" id="g84-lQ-sUp"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>

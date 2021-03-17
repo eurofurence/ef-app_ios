@@ -140,11 +140,22 @@ public class StarRatingControl: UIControl {
     private func setUpAccessibility() {
         isAccessibilityElement = true
         accessibilityTraits.formUnion(.adjustable)
-        accessibilityLabel = "Star Rating"
+        accessibilityLabel = NSLocalizedString(
+            "Star Rating",
+            bundle: .module,
+            comment: "Accessibility label for the star rating control in the event feedback form"
+        )
     }
     
     private func updateAccessibilityValue() {
-        accessibilityValue = "\(value) of \(numberOfStars)"
+        let format = NSLocalizedString(
+            "Star Rating Value Format",
+            bundle: .module,
+            comment: "Format string of the accessibility value for the star rating control (\"x of y\")"
+        )
+        
+        let valueString = String.localizedStringWithFormat(format, value, numberOfStars)
+        accessibilityValue = valueString
     }
     
     override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

@@ -72,15 +72,15 @@
     {
       "target" : {
         "containerPath" : "container:Packages\/EurofurenceComponents",
-        "identifier" : "EurofurenceComponentBaseTests",
-        "name" : "EurofurenceComponentBaseTests"
+        "identifier" : "EurofurenceComponentsTests",
+        "name" : "EurofurenceComponentsTests"
       }
     },
     {
       "target" : {
         "containerPath" : "container:Packages\/EurofurenceComponents",
-        "identifier" : "EurofurenceComponentsTests",
-        "name" : "EurofurenceComponentsTests"
+        "identifier" : "ComponentBaseTests",
+        "name" : "ComponentBaseTests"
       }
     }
   ],

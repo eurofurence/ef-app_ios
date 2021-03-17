@@ -1,3 +1,4 @@
+import ComponentBase
 import UIKit
 
 class KnowledgeDetailViewController: UIViewController, KnowledgeDetailScene {
@@ -70,15 +71,9 @@ class KnowledgeDetailViewController: UIViewController, KnowledgeDetailScene {
         func makeCell(for tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeue(KnowledgeDetailImageTableViewCell.self)
             binder.bind(cell, at: index)
-            hideSeperator(cell, tableView)
+            cell.hideSeperator()
             
             return cell
-        }
-        
-        fileprivate func hideSeperator(_ cell: KnowledgeDetailImageTableViewCell, _ tableView: UITableView) {
-#if !targetEnvironment(macCatalyst)
-            cell.separatorInset = UIEdgeInsets(top: 0, left: .greatestFiniteMagnitude, bottom: 0, right: 0)
-#endif
         }
 
     }
