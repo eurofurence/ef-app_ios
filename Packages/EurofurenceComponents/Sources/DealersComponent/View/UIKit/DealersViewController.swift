@@ -1,7 +1,7 @@
 import ComponentBase
 import UIKit
 
-public class DealersViewController: UIViewController, UISearchControllerDelegate, UISearchResultsUpdating, DealersScene {
+public class DealersViewController: UIViewController, DealersScene {
 
     // MARK: Properties
 
@@ -82,21 +82,6 @@ public class DealersViewController: UIViewController, UISearchControllerDelegate
         navigationItem.rightBarButtonItem = nil
         
         self.searchController = searchController
-    }
-
-    // MARK: UISearchControllerDelegate
-    
-    public func presentSearchController(_ searchController: UISearchController) {
-        ensureScrolledToTopToAvoidLargeTitlesPresentationIssue()
-        present(searchController, animated: true)
-    }
-
-    // MARK: UISearchResultsUpdating
-
-    public func updateSearchResults(for searchController: UISearchController) {
-        if let query = searchController.searchBar.text {
-            delegate?.dealersSceneDidChangeSearchQuery(to: query)
-        }
     }
 
     // MARK: DealersScene
@@ -231,6 +216,25 @@ public class DealersViewController: UIViewController, UISearchControllerDelegate
 
     }
 
+}
+
+extension DealersViewController: UISearchControllerDelegate {
+    
+    public func presentSearchController(_ searchController: UISearchController) {
+        ensureScrolledToTopToAvoidLargeTitlesPresentationIssue()
+        present(searchController, animated: true)
+    }
+    
+}
+
+extension DealersViewController: UISearchResultsUpdating {
+    
+    public func updateSearchResults(for searchController: UISearchController) {
+        if let query = searchController.searchBar.text {
+            delegate?.dealersSceneDidChangeSearchQuery(to: query)
+        }
+    }
+    
 }
 
 extension ConventionBrandedTableViewHeaderFooterView: DealerGroupHeader {
