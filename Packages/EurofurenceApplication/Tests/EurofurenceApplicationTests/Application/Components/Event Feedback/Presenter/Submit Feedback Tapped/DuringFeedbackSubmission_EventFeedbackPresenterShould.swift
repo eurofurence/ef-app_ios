@@ -1,6 +1,6 @@
 import EurofurenceApplication
-import EurofurenceModelTestDoubles
 import XCTest
+import XCTEurofurenceModel
 
 class DuringFeedbackSubmission_EventFeedbackPresenterShould: XCTestCase {
     

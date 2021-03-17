@@ -1,7 +1,7 @@
 import EurofurenceApplication
 import EurofurenceModel
-import EurofurenceModelTestDoubles
 import XCTest
+import XCTEurofurenceModel
 
 class WhenSearchControllerProducesNewResults_ScheduleViewModelFactoryShould: XCTestCase {
 

@@ -1,8 +1,8 @@
 import EurofurenceApplication
 import EurofurenceModel
-import EurofurenceModelTestDoubles
 import Foundation
 import TestUtilities
+import XCTEurofurenceModel
 
 final class StubKnowledgeEntryDetailViewModel: KnowledgeEntryDetailViewModel {
 

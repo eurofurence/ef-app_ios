@@ -12,8 +12,8 @@ let package = Package(
         ),
         
         .library(
-            name: "EurofurenceModelTestDoubles",
-            targets: ["EurofurenceModelTestDoubles"]
+            name: "XCTEurofurenceModel",
+            targets: ["XCTEurofurenceModel"]
         )
     ],
     dependencies: [
@@ -26,7 +26,7 @@ let package = Package(
         ),
         
         .target(
-            name: "EurofurenceModelTestDoubles",
+            name: "XCTEurofurenceModel",
             dependencies: [
                 .target(name: "EurofurenceModel"),
                 .product(name: "TestUtilities", package: "TestUtilities")
@@ -37,7 +37,7 @@ let package = Package(
             name: "EurofurenceModelTests",
             dependencies: [
                 .target(name: "EurofurenceModel"),
-                .target(name: "EurofurenceModelTestDoubles"),
+                .target(name: "XCTEurofurenceModel"),
                 .product(name: "TestUtilities", package: "TestUtilities")
             ],
             resources: [
@@ -49,7 +49,7 @@ let package = Package(
             name: "EurofurenceModelAdapterTests",
             dependencies: [
                 .target(name: "EurofurenceModel"),
-                .target(name: "EurofurenceModelTestDoubles"),
+                .target(name: "XCTEurofurenceModel"),
                 .product(name: "TestUtilities", package: "TestUtilities")
             ]
         )

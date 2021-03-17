@@ -1,4 +1,4 @@
-import EurofurenceComponentBase
+import ComponentBase
 import UIKit.UIViewController
 
 class NewsViewController: UIViewController, NewsScene {

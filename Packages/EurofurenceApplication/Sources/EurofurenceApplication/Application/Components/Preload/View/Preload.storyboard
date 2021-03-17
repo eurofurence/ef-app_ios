@@ -16,7 +16,7 @@
                         <viewControllerLayoutGuide type="top" id="9mE-Ii-lyO"/>
                         <viewControllerLayoutGuide type="bottom" id="82D-DE-LpW"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="wKs-8b-dDh" customClass="ConventionPrimaryColorView" customModule="EurofurenceApplication">
+                    <view key="view" contentMode="scaleToFill" id="wKs-8b-dDh" customClass="ConventionPrimaryColorView" customModule="ComponentBase">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>

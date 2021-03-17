@@ -1,5 +1,5 @@
-import EurofurenceModelTestDoubles
 import XCTest
+import XCTEurofurenceModel
 
 class WhenPerformingSync_AfterEnforcingFullStoreRefresh_WhenFullRefreshFailed: XCTestCase {
 

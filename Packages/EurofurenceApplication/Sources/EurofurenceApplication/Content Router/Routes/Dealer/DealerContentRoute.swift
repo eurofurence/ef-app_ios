@@ -1,4 +1,4 @@
-import EurofurenceComponentBase
+import ComponentBase
 
 public struct DealerContentRoute {
     

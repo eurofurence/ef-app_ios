@@ -1,7 +1,7 @@
 import EurofurenceApplication
 import EurofurenceModel
-import EurofurenceModelTestDoubles
 import XCTest
+import XCTEurofurenceModel
 
 class WhenShowingMapContents_ForPositionWithMultipleOptions_MapDetailViewModelFactoryShould: XCTestCase {
 

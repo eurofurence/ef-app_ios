@@ -1,4 +1,4 @@
-import EurofurenceComponentBase
+import ComponentBase
 
 public class AuthenticatedRoute<Route>: ContentRoute where Route: ContentRoute {
     

@@ -1,7 +1,7 @@
 import EurofurenceApplication
 import EurofurenceModel
 import UIKit.UIViewController
-import XCTEurofurenceComponentBase
+import XCTComponentBase
 
 class SchedulePresenterTestBuilder {
 

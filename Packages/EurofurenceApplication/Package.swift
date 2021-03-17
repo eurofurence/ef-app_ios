@@ -32,8 +32,8 @@ let package = Package(
             name: "EurofurenceApplicationTests",
             dependencies: [
                 .target(name: "EurofurenceApplication"),
-                .product(name: "EurofurenceModelTestDoubles", package: "EurofurenceModel"),
-                .product(name: "XCTEurofurenceComponentBase", package: "EurofurenceComponents"),
+                .product(name: "XCTEurofurenceModel", package: "EurofurenceModel"),
+                .product(name: "XCTComponentBase", package: "EurofurenceComponents"),
                 .product(name: "TestUtilities", package: "TestUtilities")
             ],
             resources: [

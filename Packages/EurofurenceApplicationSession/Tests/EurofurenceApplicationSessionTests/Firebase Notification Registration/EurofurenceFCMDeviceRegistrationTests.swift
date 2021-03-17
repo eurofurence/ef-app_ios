@@ -1,6 +1,6 @@
 import EurofurenceApplicationSession
-import EurofurenceModelTestDoubles
 import XCTest
+import XCTEurofurenceModel
 
 class EurofurenceFCMDeviceRegistrationTests: XCTestCase {
 

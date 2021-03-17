@@ -1,6 +1,6 @@
 import EurofurenceApplication
-import EurofurenceModelTestDoubles
 import XCTest
+import XCTEurofurenceModel
 
 class WhenEventIsAcceptingFeedback_EventDetailViewModelFactoryShould: XCTestCase {
 

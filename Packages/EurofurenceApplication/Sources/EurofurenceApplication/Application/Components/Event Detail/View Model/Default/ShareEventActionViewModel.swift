@@ -1,4 +1,4 @@
-import EurofurenceComponentBase
+import ComponentBase
 import EurofurenceModel
 
 public class ShareEventActionViewModel: EventActionViewModel {

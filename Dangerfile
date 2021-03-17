@@ -56,7 +56,7 @@ def catch_untested_code
         warn("The model was modified but no tests were changed")
     end
     
-    if model_tests_changed && !is_dir_modified("Packages/EurofurenceModel/Sources/EurofurenceModelTestDoubles")
+    if model_tests_changed && !is_dir_modified("Packages/EurofurenceModel/Sources/XCTEurofurenceModel")
         message("Model changes detected - if any behavioural contracts have changed make sure to update the corresponding test doubles")
     end
 end

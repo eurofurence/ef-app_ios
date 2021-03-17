@@ -1,6 +1,6 @@
 import EurofurenceModel
-import EurofurenceModelTestDoubles
 import XCTest
+import XCTEurofurenceModel
 
 class WhenTellingDealersIndexToSearch_ApplicationShould: XCTestCase {
 

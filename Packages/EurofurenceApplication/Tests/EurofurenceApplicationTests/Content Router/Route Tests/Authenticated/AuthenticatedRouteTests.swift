@@ -1,8 +1,8 @@
+import ComponentBase
 import EurofurenceApplication
-import EurofurenceComponentBase
 import EurofurenceModel
-import EurofurenceModelTestDoubles
 import XCTest
+import XCTEurofurenceModel
 
 class AuthenticatedRouteTests: XCTestCase {
     

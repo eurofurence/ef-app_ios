@@ -1,6 +1,6 @@
 import EurofurenceApplication
-import EurofurenceModelTestDoubles
 import UIKit
+import XCTEurofurenceModel
 
 class AdditionalServicesPresenterTestBuilder {
     

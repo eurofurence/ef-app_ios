@@ -1,6 +1,6 @@
 import EurofurenceModel
-import EurofurenceModelTestDoubles
 import XCTest
+import XCTEurofurenceModel
 
 // swiftlint:disable file_length
 class DataStoreContract: XCTestCase {

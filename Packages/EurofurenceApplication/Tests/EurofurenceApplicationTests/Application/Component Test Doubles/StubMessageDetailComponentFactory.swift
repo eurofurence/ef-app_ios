@@ -1,7 +1,7 @@
 import EurofurenceApplication
 import EurofurenceModel
-import EurofurenceModelTestDoubles
 import UIKit.UIViewController
+import XCTEurofurenceModel
 
 class StubMessageDetailComponentFactory: MessageDetailComponentFactory {
 

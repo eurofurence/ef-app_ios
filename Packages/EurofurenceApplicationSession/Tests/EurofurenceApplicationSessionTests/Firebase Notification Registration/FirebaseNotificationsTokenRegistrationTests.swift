@@ -1,7 +1,7 @@
 import EurofurenceApplicationSession
 import EurofurenceModel
-import EurofurenceModelTestDoubles
 import XCTest
+import XCTEurofurenceModel
 
 class FirebaseRemoteNotificationsTokenRegistrationTests: XCTestCase {
 

@@ -13,8 +13,8 @@ let package = Package(
         ),
         
         .library(
-            name: "XCTEurofurenceComponentBase",
-            targets: ["XCTEurofurenceComponentBase"]
+            name: "XCTComponentBase",
+            targets: ["XCTComponentBase"]
         )
     ],
     dependencies: [
@@ -22,27 +22,27 @@ let package = Package(
         .package(name: "Down", url: "https://github.com/johnxnguyen/Down", .upToNextMajor(from: "0.10.0"))
     ],
     targets: [
-        .target(name: "EurofurenceComponentBase", dependencies: [
+        .target(name: "ComponentBase", dependencies: [
             .product(name: "Down", package: "Down")
         ]),
         
-        .target(name: "XCTEurofurenceComponentBase", dependencies: [
-            .target(name: "EurofurenceComponentBase"),
+        .target(name: "XCTComponentBase", dependencies: [
+            .target(name: "ComponentBase"),
             .product(name: "TestUtilities", package: "TestUtilities")
         ]),
         
-        .testTarget(name: "EurofurenceComponentBaseTests", dependencies: [
-            .target(name: "EurofurenceComponentBase"),
-            .target(name: "XCTEurofurenceComponentBase")
+        .testTarget(name: "ComponentBaseTests", dependencies: [
+            .target(name: "ComponentBase"),
+            .target(name: "XCTComponentBase")
         ]),
         
         .target(name: "EurofurenceComponents", dependencies: [
-            .target(name: "EurofurenceComponentBase")
+            .target(name: "ComponentBase")
         ]),
         
         .testTarget(name: "EurofurenceComponentsTests", dependencies: [
             .target(name: "EurofurenceComponents"),
-            .target(name: "XCTEurofurenceComponentBase")
+            .target(name: "XCTComponentBase")
         ])
     ]
 )

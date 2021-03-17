@@ -1,5 +1,5 @@
 import EurofurenceModel
-import EurofurenceModelTestDoubles
+import XCTEurofurenceModel
 
 struct StubDataStoreFactory: DataStoreFactory {
     

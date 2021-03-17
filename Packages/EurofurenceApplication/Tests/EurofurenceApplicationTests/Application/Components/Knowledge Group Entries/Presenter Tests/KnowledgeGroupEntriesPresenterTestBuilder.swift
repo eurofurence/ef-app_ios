@@ -1,8 +1,8 @@
 import EurofurenceApplication
 import EurofurenceModel
-import EurofurenceModelTestDoubles
 import Foundation
 import UIKit
+import XCTEurofurenceModel
 
 class KnowledgeGroupEntriesPresenterTestBuilder {
 

@@ -1,6 +1,6 @@
 import EurofurenceModel
-import EurofurenceModelTestDoubles
 import XCTest
+import XCTEurofurenceModel
 
 class WhenDeletingRoom_AfterSuccessfulSync_ApplicationShould: XCTestCase {
 
