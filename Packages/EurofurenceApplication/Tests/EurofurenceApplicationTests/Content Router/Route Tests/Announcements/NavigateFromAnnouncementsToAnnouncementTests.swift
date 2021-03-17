@@ -1,7 +1,7 @@
 import EurofurenceApplication
 import EurofurenceModel
+import XCTComponentBase
 import XCTest
-import XCTEurofurenceComponentBase
 
 class NavigateFromAnnouncementsToAnnouncementTests: XCTestCase {
     

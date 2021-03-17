@@ -1,10 +1,10 @@
+import ComponentBase
 import EurofurenceApplication
-import EurofurenceComponentBase
 import EurofurenceModel
 import EurofurenceModelTestDoubles
 import LinkPresentation
+import XCTComponentBase
 import XCTest
-import XCTEurofurenceComponentBase
 
 class DealerActivityItemSourceTests: URLBasedActivityItemTestCase {
     

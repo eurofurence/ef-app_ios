@@ -1,7 +1,7 @@
 import EurofurenceApplication
 import EurofurenceModel
 import EurofurenceModelTestDoubles
-import XCTEurofurenceComponentBase
+import XCTComponentBase
 
 class CapturingEventFeedbackSuccessWaitingRule: EventFeedbackSuccessWaitingRule {
     

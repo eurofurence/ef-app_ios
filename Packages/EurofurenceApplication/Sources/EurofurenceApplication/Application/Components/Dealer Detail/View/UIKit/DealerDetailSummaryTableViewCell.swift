@@ -1,4 +1,4 @@
-import EurofurenceComponentBase
+import ComponentBase
 import UIKit
 
 class DealerDetailSummaryTableViewCell: UITableViewCell, DealerDetailSummaryComponent {

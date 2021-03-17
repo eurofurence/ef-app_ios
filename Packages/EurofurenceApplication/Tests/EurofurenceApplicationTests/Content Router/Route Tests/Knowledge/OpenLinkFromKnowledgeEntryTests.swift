@@ -1,9 +1,9 @@
+import ComponentBase
 import EurofurenceApplication
-import EurofurenceComponentBase
 import EurofurenceModel
 import EurofurenceModelTestDoubles
+import XCTComponentBase
 import XCTest
-import XCTEurofurenceComponentBase
 
 class OpenLinkFromKnowledgeEntryTests: XCTestCase {
     

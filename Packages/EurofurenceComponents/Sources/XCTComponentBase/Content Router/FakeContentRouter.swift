@@ -1,4 +1,4 @@
-import EurofurenceComponentBase
+import ComponentBase
 import XCTest
 
 public class FakeContentRouter: ContentRouter {

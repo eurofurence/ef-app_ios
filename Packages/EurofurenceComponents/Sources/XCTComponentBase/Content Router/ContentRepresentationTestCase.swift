@@ -1,4 +1,4 @@
-import EurofurenceComponentBase
+import ComponentBase
 import XCTest
 
 open class ContentRepresentationTestCase: XCTestCase {

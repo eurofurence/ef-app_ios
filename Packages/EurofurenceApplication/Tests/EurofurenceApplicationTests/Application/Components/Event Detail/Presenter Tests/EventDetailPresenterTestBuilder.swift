@@ -3,7 +3,7 @@ import EurofurenceModel
 import EurofurenceModelTestDoubles
 import Foundation
 import UIKit.UIViewController
-import XCTEurofurenceComponentBase
+import XCTComponentBase
 
 class EventDetailPresenterTestBuilder {
 

@@ -1,6 +1,6 @@
-import EurofurenceComponentBase
+import ComponentBase
+import XCTComponentBase
 import XCTest
-import XCTEurofurenceComponentBase
 
 class AnyContentRepresentationTests: ContentRepresentationTestCase {
     

@@ -1,8 +1,8 @@
+import ComponentBase
 import EurofurenceApplication
-import EurofurenceComponentBase
 import EurofurenceModel
+import XCTComponentBase
 import XCTest
-import XCTEurofurenceComponentBase
 
 class URLContentRepresentationTests: ContentRepresentationTestCase {
     
