@@ -1,5 +1,6 @@
 import UIKit
 
+@IBDesignable
 public class StarRatingControl: UIControl {
     
     private let stackView = UIStackView(frame: .zero)
@@ -13,6 +14,7 @@ public class StarRatingControl: UIControl {
         }
     }
     
+    @IBInspectable
     public var value: Int = 3 {
         didSet {
             switch validate(value: value) {
@@ -102,7 +104,7 @@ public class StarRatingControl: UIControl {
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
             stackView.topAnchor.constraint(equalTo: topAnchor),
             stackView.bottomAnchor.constraint(equalTo: bottomAnchor)
-            ])
+        ])
     }
     
     private func adjustStackViewForHorizontalStarLayout() {
@@ -251,9 +253,9 @@ public class StarRatingControl: UIControl {
         
         private func updateStarGraphic() {
             if isFilled {
-                image = UIImage(named: "Star_Filled")
+                image = UIImage(named: "Star_Filled", in: .module, compatibleWith: traitCollection)
             } else {
-                image = UIImage(named: "Star_Empty")
+                image = UIImage(named: "Star_Empty", in: .module, compatibleWith: traitCollection)
             }
         }
         
