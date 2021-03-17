@@ -37,7 +37,7 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iiu-ln-fL9">
                                                     <rect key="frame" x="0.0" y="0.0" width="347" height="196"/>
                                                 </imageView>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pSs-oH-VVB" customClass="NavigationBarViewExtensionContainer" customModule="Eurofurence" customModuleProvider="target">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pSs-oH-VVB" customClass="NavigationBarViewExtensionContainer" customModule="EurofurenceApplication">
                                                     <rect key="frame" x="0.0" y="135" width="347" height="61"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iK0-b3-GnB">
