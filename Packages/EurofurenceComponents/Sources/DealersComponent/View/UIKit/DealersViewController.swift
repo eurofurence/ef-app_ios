@@ -74,9 +74,7 @@ public class DealersViewController: UIViewController, DealersScene {
         let searchController = UISearchController(searchResultsController: searchViewController)
         searchController.delegate = self
         searchController.searchResultsUpdater = self
-        
-        // TODO: Work out how to perform this themeing.
-//        Theme.performUnsafeSearchControllerStyling(searchController: searchController)
+        Theme.global.apply(to: searchController)
         
         navigationItem.searchController = searchController
         navigationItem.rightBarButtonItem = nil

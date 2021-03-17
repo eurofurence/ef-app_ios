@@ -1,3 +1,4 @@
+import ComponentBase
 import EurofurenceApplication
 import FirebaseCore
 import UIKit
@@ -69,7 +70,7 @@ public class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Application.assemble(dependencies: dependencies)
         
-        Theme.apply()
+        Theme.global.apply()
     }
     
     private func requestRemoteNotificationsDeviceToken() {

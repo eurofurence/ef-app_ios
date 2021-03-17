@@ -98,7 +98,7 @@ class ScheduleViewController: UIViewController,
         searchController.searchBar.delegate = self
         searchController.searchBar.scopeButtonTitles = [.allEvents, .favourites]
         searchController.searchResultsUpdater = self
-        Theme.performUnsafeSearchControllerStyling(searchController: searchController)
+        Theme.global.apply(to: searchController)
         
         navigationItem.searchController = searchController
         navigationItem.rightBarButtonItem = nil
