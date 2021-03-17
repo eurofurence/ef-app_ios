@@ -1,6 +1,5 @@
-import EurofurenceApplication
-import EurofurenceModel
 import Foundation
+import TutorialComponent
 import UIKit
 
 class CapturingTutorialPageSceneDelegate: TutorialPageSceneDelegate {

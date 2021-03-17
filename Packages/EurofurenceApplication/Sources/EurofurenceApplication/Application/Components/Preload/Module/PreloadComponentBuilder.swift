@@ -1,3 +1,4 @@
+import ComponentBase
 import UIKit.UIApplication
 
 public class PreloadComponentBuilder {

@@ -1,6 +1,8 @@
+import ComponentBase
 import EurofurenceApplication
 import EurofurenceModel
 import UIKit
+import XCTComponentBase
 import XCTest
 
 class CapturingViewController: UIViewController {

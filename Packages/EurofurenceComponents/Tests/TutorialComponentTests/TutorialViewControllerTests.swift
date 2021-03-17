@@ -1,5 +1,5 @@
-import EurofurenceApplication
 import EurofurenceModel
+import TutorialComponent
 import XCTest
 
 class TutorialViewControllerTests: XCTestCase {

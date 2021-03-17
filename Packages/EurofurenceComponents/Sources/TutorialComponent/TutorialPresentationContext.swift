@@ -1,4 +1,4 @@
-import EurofurenceModel
+import ComponentBase
 import Foundation
 
 struct TutorialPresentationContext {

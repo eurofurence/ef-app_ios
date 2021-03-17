@@ -1,5 +1,4 @@
-import EurofurenceApplication
-import EurofurenceModel
+import TutorialComponent
 import UIKit
 
 class StubPresentationAssets: PresentationAssets {

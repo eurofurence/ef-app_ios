@@ -1,3 +1,5 @@
+import ComponentBase
+
 struct PreloadPresenter: SplashSceneDelegate, PreloadInteractorDelegate {
 
     private let delegate: PreloadComponentDelegate

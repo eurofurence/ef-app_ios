@@ -1,3 +1,4 @@
+import ComponentBase
 import EurofurenceModel
 
 public class LoginComponentBuilder {

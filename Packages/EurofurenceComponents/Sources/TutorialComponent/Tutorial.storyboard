@@ -10,7 +10,7 @@
         <!--Tutorial View Controller-->
         <scene sceneID="uCW-yS-fVU">
             <objects>
-                <pageViewController storyboardIdentifier="TutorialViewController" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="YYB-Qs-Bkl" customClass="TutorialViewController" customModule="EurofurenceApplication" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="TutorialViewController" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="YYB-Qs-Bkl" customClass="TutorialViewController" customModule="TutorialComponent" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ppi-6M-53k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-380" y="213"/>
@@ -18,7 +18,7 @@
         <!--Tutorial Page View Controller-->
         <scene sceneID="D67-YS-G6m">
             <objects>
-                <viewController storyboardIdentifier="TutorialPageViewController" id="Iys-fY-Grz" customClass="TutorialPageViewController" customModule="EurofurenceApplication" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TutorialPageViewController" id="Iys-fY-Grz" customClass="TutorialPageViewController" customModule="TutorialComponent" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wD8-yJ-ZSG"/>
                         <viewControllerLayoutGuide type="bottom" id="Ztw-x3-74B"/>

@@ -1,7 +1,7 @@
-import EurofurenceApplication
 import EurofurenceModel
+import TutorialComponent
 import UIKit.UIViewController
-import XCTEurofurenceModel
+import XCTComponentBase
 
 class TutorialModuleTestBuilder {
 

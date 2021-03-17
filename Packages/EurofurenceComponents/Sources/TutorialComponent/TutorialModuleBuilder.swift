@@ -1,4 +1,4 @@
-import EurofurenceModel
+import ComponentBase
 
 public class TutorialModuleBuilder {
 
