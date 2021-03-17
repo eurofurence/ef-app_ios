@@ -190,7 +190,7 @@
                                 <action selector="cancelFeedback:" destination="lSU-qy-7mX" id="PUP-AK-0fw"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Submit" id="7gK-ET-svE">
+                        <barButtonItem key="rightBarButtonItem" title="Submit" style="done" id="7gK-ET-svE">
                             <connections>
                                 <action selector="submitFeedback:" destination="lSU-qy-7mX" id="AQJ-qc-QuV"/>
                             </connections>
