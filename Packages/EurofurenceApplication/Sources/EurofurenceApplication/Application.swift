@@ -65,9 +65,6 @@ public class Application {
         self.dependencies = dependencies
         
         session = EurofurenceSessionBuilder.buildingForEurofurenceApplication()
-            .with(ApplicationSignificantTimeChangeAdapter())
-            .with(ApplicationLongRunningTaskManager())
-            .with(UIKitMapCoordinateRender())
             .build()
         
         backgroundFetcher = BackgroundFetchService(refreshService: session.services.refresh)

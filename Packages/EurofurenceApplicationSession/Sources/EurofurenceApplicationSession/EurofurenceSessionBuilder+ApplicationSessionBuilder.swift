@@ -34,6 +34,9 @@ extension EurofurenceSessionBuilder {
             .with(remoteNotificationsTokenRegistration)
             .with(UpdateRemoteConfigRefreshCollaboration(remoteConfigurationLoader: remoteConfigurationLoader))
             .with(AppURLOpener.shared)
+            .with(ApplicationSignificantTimeChangeAdapter())
+            .with(ApplicationLongRunningTaskManager())
+            .with(UIKitMapCoordinateRender())
     }
     
 }
