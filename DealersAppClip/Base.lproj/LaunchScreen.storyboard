@@ -35,7 +35,7 @@
                         <viewControllerLayoutGuide type="bottom" id="0qG-Yf-tbq"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="d7z-hY-ukC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
