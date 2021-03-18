@@ -30,6 +30,9 @@
 		CA526F8F256456F900BDD7BB /* AdditionalEventsFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA526F8E256456F900BDD7BB /* AdditionalEventsFooter.swift */; };
 		CA526F972564577A00BDD7BB /* EventTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA526F962564577A00BDD7BB /* EventTitle.swift */; };
 		CA5314DD2603DEDE0022B12E /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA5314DC2603DEDE0022B12E /* fontawesome-webfont.ttf */; };
+		CA5314EB260408650022B12E /* DealerAppClipModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5314EA260408650022B12E /* DealerAppClipModule.swift */; };
+		CA5314F3260408730022B12E /* ShowDealerInDetailPane.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5314F2260408730022B12E /* ShowDealerInDetailPane.swift */; };
+		CA5314FB260409180022B12E /* DealersSceneAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5314FA260409180022B12E /* DealersSceneAssembler.swift */; };
 		CA5891E02562F2E800FC9BC1 /* HoursAndMinutesEventTimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5891DF2562F2E800FC9BC1 /* HoursAndMinutesEventTimeFormatter.swift */; };
 		CA5A5AE42584F1F4007F6728 /* ControllableClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5A5AE32584F1F4007F6728 /* ControllableClock.swift */; };
 		CA5A5AF22584F26B007F6728 /* EventsBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5A5AF12584F26B007F6728 /* EventsBridge.swift */; };
@@ -235,6 +238,9 @@
 		CA526F8E256456F900BDD7BB /* AdditionalEventsFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalEventsFooter.swift; sourceTree = "<group>"; };
 		CA526F962564577A00BDD7BB /* EventTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTitle.swift; sourceTree = "<group>"; };
 		CA5314DC2603DEDE0022B12E /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
+		CA5314EA260408650022B12E /* DealerAppClipModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerAppClipModule.swift; sourceTree = "<group>"; };
+		CA5314F2260408730022B12E /* ShowDealerInDetailPane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDealerInDetailPane.swift; sourceTree = "<group>"; };
+		CA5314FA260409180022B12E /* DealersSceneAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersSceneAssembler.swift; sourceTree = "<group>"; };
 		CA5891DF2562F2E800FC9BC1 /* HoursAndMinutesEventTimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoursAndMinutesEventTimeFormatter.swift; sourceTree = "<group>"; };
 		CA5A5AE32584F1F4007F6728 /* ControllableClock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllableClock.swift; sourceTree = "<group>"; };
 		CA5A5AF12584F26B007F6728 /* EventsBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsBridge.swift; sourceTree = "<group>"; };
@@ -610,6 +616,17 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		CA531502260409A70022B12E /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				CA5314EA260408650022B12E /* DealerAppClipModule.swift */,
+				CA5314FA260409180022B12E /* DealersSceneAssembler.swift */,
+				CAB300DB2603AFDB009A52E1 /* DealersSceneDelegate.swift */,
+				CA5314F2260408730022B12E /* ShowDealerInDetailPane.swift */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
 		CA5F26A12556F04C00CED97A /* EventsWidget */ = {
 			isa = PBXGroup;
 			children = (
@@ -677,11 +694,11 @@
 				CAB300E82603AFDC009A52E1 /* DealersAppClip.entitlements */,
 				CAB300E72603AFDC009A52E1 /* Info.plist */,
 				CAB300D92603AFDB009A52E1 /* AppDelegate.swift */,
-				CAB300DB2603AFDB009A52E1 /* DealersSceneDelegate.swift */,
 				CAB300DD2603AFDB009A52E1 /* ViewController.swift */,
 				CAB300E22603AFDC009A52E1 /* Assets.xcassets */,
 				CAB300E42603AFDC009A52E1 /* LaunchScreen.storyboard */,
 				CA5314DA2603DEBB0022B12E /* Resources */,
+				CA531502260409A70022B12E /* Scene */,
 			);
 			path = DealersAppClip;
 			sourceTree = "<group>";
@@ -1219,9 +1236,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA5314FB260409180022B12E /* DealersSceneAssembler.swift in Sources */,
+				CA5314EB260408650022B12E /* DealerAppClipModule.swift in Sources */,
 				CAB300DE2603AFDB009A52E1 /* ViewController.swift in Sources */,
 				CAB300DA2603AFDB009A52E1 /* AppDelegate.swift in Sources */,
 				CAB300DC2603AFDB009A52E1 /* DealersSceneDelegate.swift in Sources */,
+				CA5314F3260408730022B12E /* ShowDealerInDetailPane.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
