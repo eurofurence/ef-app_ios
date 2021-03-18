@@ -3,23 +3,8 @@ import UIKit
 
 extension UIColor {
     
-    static func adaptiveColor(lightColor: UIColor, darkColor: UIColor) -> UIColor {
-        if #available(iOS 13.0, *) {
-            return UIColor(dynamicProvider: { (traitCollection) in
-                if traitCollection.userInterfaceStyle == .light {
-                    return lightColor
-                } else {
-                    return darkColor
-                }
-            })
-        } else {
-            return lightColor
-        }
-    }
-    
     static let tintColor = adaptiveColor(lightColor: .pantone330U, darkColor: .pantone330U_45)
     static let disabledColor = safeSystemGray
-    static let placeholder = adaptiveColor(lightColor: .pantone330U, darkColor: safeSystemGray2)
     static let navigationBar = barColor
     static let tabBar = barColor
     static let searchBarTint = pantone330U
@@ -66,15 +51,7 @@ extension UIColor {
         } else {
             return .lightGray
         }
-    }
-    
-    private static var safeSystemGray2: UIColor {
-        if #available(iOS 13.0, *) {
-            return .systemGray2
-        } else {
-            return .lightGray
-        }
-    }
+    }  
     
     private static var safeSystemGray3: UIColor {
         if #available(iOS 13.0, *) {
