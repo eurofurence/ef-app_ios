@@ -1,14 +1,14 @@
 import ComponentBase
-import EurofurenceApplication
+import DealerComponent
 import EurofurenceModel
 import XCTComponentBase
 
-class CapturingEventInteractionRecorder: EventInteractionRecorder {
+class CapturingDealerInteractionRecorder: DealerInteractionRecorder {
     
-    private(set) var witnessedEvent: EventIdentifier?
+    private(set) var witnessedDealer: DealerIdentifier?
     private(set) var currentInteraction: CapturingInteraction?
-    func makeInteraction(for event: EventIdentifier) -> Interaction? {
-        witnessedEvent = event
+    func makeInteraction(for dealer: DealerIdentifier) -> Interaction? {
+        witnessedDealer = dealer
         
         let interaction = CapturingInteraction()
         currentInteraction = interaction

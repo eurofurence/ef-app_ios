@@ -96,6 +96,20 @@
         "identifier" : "PreloadComponentTests",
         "name" : "PreloadComponentTests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/EurofurenceComponents",
+        "identifier" : "ContentControllerTests",
+        "name" : "ContentControllerTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/EurofurenceComponents",
+        "identifier" : "DealerComponentTests",
+        "name" : "DealerComponentTests"
+      }
     }
   ],
   "version" : 1

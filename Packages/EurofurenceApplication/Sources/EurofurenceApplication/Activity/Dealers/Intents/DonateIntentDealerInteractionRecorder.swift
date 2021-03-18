@@ -1,3 +1,5 @@
+import ComponentBase
+import DealerComponent
 import EurofurenceModel
 
 public struct DonateIntentDealerInteractionRecorder: DealerInteractionRecorder {

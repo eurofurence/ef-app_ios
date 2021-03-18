@@ -1,3 +1,4 @@
+import ComponentBase
 import EurofurenceApplication
 import EurofurenceModel
 import XCTest

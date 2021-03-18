@@ -43,13 +43,6 @@
 "FeedbackErrorTitle" = "Feedback Not Submitted";
 "FeedbackErrorMessage" = "There was a problem trying to submit your feedback. Please try again.";
 
-"LocationAndAvailability" = "Location and Availability";
-"LocatedWithinAfterDarkDen" = "Located in the after-dark dealers den";
-"OnlyPresentOnSpecificDaysFormat" = "Only present on: %@";
-"AboutTheArtist" = "About the Artist";
-"AboutTheArtistPlaceholder" = "The artist did not provide any information about themselves to be shown here.";
-"AboutTheArt" = "About the Art";
-
 "Collect" = "Collect";
 "CollectThemAll" = "Collect'em All";
 
