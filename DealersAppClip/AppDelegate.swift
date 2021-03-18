@@ -1,3 +1,4 @@
+import ComponentBase
 import UIKit
 
 @main
@@ -7,6 +8,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
+        Theme.global.apply()
         return true
     }
 
