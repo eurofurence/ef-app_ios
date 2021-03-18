@@ -1,5 +1,4 @@
-import EurofurenceApplication
-import EurofurenceModel
+import TutorialComponent
 
 class WellBehavedAcknowledgedPushPermissions: WitnessedTutorialPushPermissionsRequest {
 

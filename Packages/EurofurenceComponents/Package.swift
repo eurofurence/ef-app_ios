@@ -7,6 +7,7 @@ let package = Package(
     defaultLocalization: "en",
     platforms: [.iOS(.v11)],
     products: [
+        .library(name: "TutorialComponent", targets: ["TutorialComponent"]),
         .library(name: "DealersComponent", targets: ["DealersComponent"]),
             
         .library(name: "XCTComponentBase", targets: ["XCTComponentBase"])
@@ -30,6 +31,19 @@ let package = Package(
             .target(name: "ComponentBase"),
             .target(name: "XCTComponentBase")
         ]),
+        
+        // MARK: Tutorial
+        
+        .target(name: "TutorialComponent", dependencies: [
+            .target(name: "ComponentBase")
+        ]),
+        
+        .testTarget(name: "TutorialComponentTests", dependencies: [
+            .target(name: "TutorialComponent"),
+            .target(name: "XCTComponentBase")
+        ]),
+        
+        // MARK: Dealers
         
         .target(name: "DealersComponent", dependencies: [
             .target(name: "ComponentBase"),

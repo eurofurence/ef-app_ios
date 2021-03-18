@@ -1,5 +1,5 @@
-import EurofurenceApplication
 import EurofurenceModel
+import TutorialComponent
 import XCTest
 
 class WhenThePerformInitialDownloadPageAppearsWithCellularNetwork: XCTestCase {
@@ -27,19 +27,23 @@ class WhenThePerformInitialDownloadPageAppearsWithCellularNetwork: XCTestCase {
 
     func testTappingThePrimaryButtonTellsAlertRouterToShowAlertWithWarnUserAboutCellularDownloadsTitle() {
         context.page.simulateTappingPrimaryActionButton()
-        XCTAssertEqual(context.alertRouter.presentedAlertTitle, .cellularDownloadAlertTitle)
+        XCTAssertEqual(context.alertRouter.presentedAlertTitle, "Use Cellular Data?")
     }
 
     func testTappingThePrimaryButtonTellsAlertRouterToShowAlertWithWarnUserAboutCellularDownloadsMessage() {
         context.page.simulateTappingPrimaryActionButton()
-        XCTAssertEqual(context.alertRouter.presentedAlertMessage, .cellularDownloadAlertMessage)
+        
+        XCTAssertEqual(
+            context.alertRouter.presentedAlertMessage,
+            "Proceeding with the initial download will consume several megabytes of data."
+        )
     }
 
     func testTappingThePrimaryButtonTellsAlertRouterToShowAlertWithContinueDownloadOverCellularAction() {
         context.page.simulateTappingPrimaryActionButton()
         let action = context.alertRouter.presentedActions.first
 
-        XCTAssertEqual(action?.title, .cellularDownloadAlertContinueOverCellularTitle)
+        XCTAssertEqual(action?.title, "Continue Over Cellular")
     }
 
     func testTappingThePrimaryButtonTellsAlertRouterToShowAlertWithCancelAction() {

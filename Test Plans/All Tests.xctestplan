@@ -82,6 +82,13 @@
         "identifier" : "DealersComponentTests",
         "name" : "DealersComponentTests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/EurofurenceComponents",
+        "identifier" : "TutorialComponentTests",
+        "name" : "TutorialComponentTests"
+      }
     }
   ],
   "version" : 1

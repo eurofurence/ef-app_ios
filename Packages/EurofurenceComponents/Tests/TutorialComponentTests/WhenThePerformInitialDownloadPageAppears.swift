@@ -1,5 +1,4 @@
-import EurofurenceApplication
-import EurofurenceModel
+import TutorialComponent
 import XCTest
 
 class WhenThePerformInitialDownloadPageAppears: XCTestCase {
@@ -15,18 +14,18 @@ class WhenThePerformInitialDownloadPageAppears: XCTestCase {
     }
 
     func testShouldTellTheFirstTutorialPageToShowTheTitleForBeginningInitialLoad() {
-        XCTAssertEqual(.tutorialInitialLoadTitle,
-                       context.page.capturedPageTitle)
+        XCTAssertEqual("Offline Usage", context.page.capturedPageTitle)
     }
 
     func testShouldTellTheFirstTutorialPageToShowTheDescriptionForBeginningInitialLoad() {
-        XCTAssertEqual(.tutorialInitialLoadDescription,
-                       context.page.capturedPageDescription)
+        // swiftlint:disable:next line_length
+        let expected = "The Eurofurence app is intended to remain fully functional while offline. To do this; we need to download a few megabytes of data. This may take several minutes depending upon the speed of your connection."
+        
+        XCTAssertEqual(expected, context.page.capturedPageDescription)
     }
 
     func testShouldShowTheInformationImageForBeginningInitialLoad() {
-        XCTAssertEqual(context.assets.initialLoadInformationAsset,
-                       context.page.capturedPageImage)
+        XCTAssertEqual(context.assets.initialLoadInformationAsset, context.page.capturedPageImage)
     }
 
     func testShouldShowThePrimaryActionButtonForTheInitiateDownloadTutorialPage() {
@@ -34,8 +33,7 @@ class WhenThePerformInitialDownloadPageAppears: XCTestCase {
     }
 
     func testShouldTellTheTutorialPageToShowTheBeginDownloadTextOnThePrimaryActionButton() {
-        XCTAssertEqual(.tutorialInitialLoadBeginDownload,
-                       context.page.capturedPrimaryActionDescription)
+        XCTAssertEqual("Begin Download", context.page.capturedPrimaryActionDescription)
     }
 
     func testTappingThePrimaryButtonTellsTutorialDelegateTutorialFinished() {

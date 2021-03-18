@@ -1,17 +1,20 @@
-import EurofurenceApplication
-import EurofurenceModel
+import ComponentBase
 
-class CapturingAlertRouter: AlertRouter {
+public class CapturingAlertRouter: AlertRouter {
+    
+    public init() {
+        
+    }
 
-    var automaticallyPresentAlerts = false
+    public var automaticallyPresentAlerts = false
 
-    private(set) var didShowAlert = false
-    private(set) var presentedAlertTitle: String?
-    private(set) var presentedAlertMessage: String?
-    private(set) var presentedActions = [AlertAction]()
+    public private(set) var didShowAlert = false
+    public private(set) var presentedAlertTitle: String?
+    public private(set) var presentedAlertMessage: String?
+    public private(set) var presentedActions = [AlertAction]()
     private var capturedPresentationCompletedHandler: ((AlertDismissable) -> Void)?
-    private(set) var lastAlert: CapturingAlertDismissable?
-    func show(_ alert: Alert) {
+    public private(set) var lastAlert: CapturingAlertDismissable?
+    public func show(_ alert: Alert) {
         didShowAlert = true
         presentedAlertTitle = alert.title
         presentedAlertMessage = alert.message
@@ -24,26 +27,26 @@ class CapturingAlertRouter: AlertRouter {
         if automaticallyPresentAlerts { completePendingPresentation() }
     }
 
-    func capturedAction(title: String) -> AlertAction? {
+    public func capturedAction(title: String) -> AlertAction? {
         return presentedActions.first(where: { $0.title == title })
     }
 
-    func completePendingPresentation() {
+    public func completePendingPresentation() {
         capturedPresentationCompletedHandler?(lastAlert.unsafelyUnwrapped)
     }
 
 }
 
-class CapturingAlertDismissable: AlertDismissable {
+public class CapturingAlertDismissable: AlertDismissable {
 
-    private(set) var dismissed = false
+    public private(set) var dismissed = false
     private var capturedDismissalCompletionHandler: (() -> Void)?
-    func dismiss(_ completionHandler: (() -> Void)?) {
+    public func dismiss(_ completionHandler: (() -> Void)?) {
         dismissed = true
         capturedDismissalCompletionHandler = completionHandler
     }
 
-    func completeDismissal() {
+    public func completeDismissal() {
         capturedDismissalCompletionHandler?()
     }
 

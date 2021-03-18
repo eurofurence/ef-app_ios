@@ -1,4 +1,4 @@
-import EurofurenceApplication
+import TutorialComponent
 
 struct WiFiNetwork: NetworkReachability {
 

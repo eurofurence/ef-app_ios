@@ -1,5 +1,4 @@
-import EurofurenceApplication
-import EurofurenceModel
+import TutorialComponent
 import UIKit
 
 struct StubTutorialSceneFactory: TutorialSceneFactory {

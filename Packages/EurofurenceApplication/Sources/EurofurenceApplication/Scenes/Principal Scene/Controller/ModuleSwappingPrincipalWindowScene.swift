@@ -1,3 +1,5 @@
+import TutorialComponent
+
 public struct ModuleSwappingPrincipalWindowScene: PrincipalWindowScene {
     
     private let windowWireframe: WindowWireframe

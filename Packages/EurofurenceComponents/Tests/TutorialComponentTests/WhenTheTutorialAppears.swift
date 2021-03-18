@@ -1,5 +1,4 @@
-import EurofurenceApplication
-import EurofurenceModel
+import TutorialComponent
 import XCTest
 
 class WhenTheTutorialAppears: XCTestCase {

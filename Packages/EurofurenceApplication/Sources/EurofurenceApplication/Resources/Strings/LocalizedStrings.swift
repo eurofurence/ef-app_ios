@@ -7,14 +7,6 @@ public extension String {
     private static let tableName = "Strings"
     private static let tableBundle = Bundle.module
     
-    static let ok = NSLocalizedString("ok",
-                                      bundle: .module,
-                                      comment: "Affirmative action used by prompts to accept an action")
-    
-    static let cancel = NSLocalizedString("cancel",
-                                          bundle: .module,
-                                          comment: "Negative action used by prompts to decline an action")
-    
     static let tryAgain = NSLocalizedString("tryAgain",
                                             bundle: .module,
                                             comment: "Used by prompts when an action fails, re-instigating the failed task")
@@ -35,37 +27,9 @@ public extension String {
                                                                bundle: .module,
                                                                comment: "Text used in the button where the user does not allow us to send them push notifications")
     
-    static let tutorialInitialLoadTitle = NSLocalizedString("tutorialInitialLoadTitle",
-                                                            bundle: .module,
-                                                            comment: "Title used in the tutorial telling the user we need to perform the initial download before they can use the app")
-    
-    static let tutorialInitialLoadDescription = NSLocalizedString("tutorialInitialLoadDescription",
-                                                                  bundle: .module,
-                                                                  comment: "Description used in the tutorial telling the user we need to perform the initial download before they can use the app")
-    
-    static let tutorialInitialLoadBeginDownload = NSLocalizedString("tutorialInitialLoadBeginDownload",
-                                                                    bundle: .module,
-                                                                    comment: "Text used in the button where the user allows us to begin the initial download")
-    
-    static let cellularDownloadAlertTitle = NSLocalizedString("cellularDownloadAlertTitle",
-                                                              bundle: .module,
-                                                              comment: "Title for the prompt asking if the user wants to perform the initial download over cellular data")
-    
     static let cellularDownloadAlertMessage = NSLocalizedString("cellularDownloadAlertMessage",
                                                                 bundle: .module,
                                                                 comment: "Description for the prompt asking if the user wants to perform the initial download over cellular data")
-    
-    static let cellularDownloadAlertContinueOverCellularTitle = NSLocalizedString("cellularDownloadAlertContinueOverCellularTitle",
-                                                                                  bundle: .module,
-                                                                                  comment: "Confirmation action allowing the initial download to begin over cellular")
-    
-    static let noNetworkAlertTitle = NSLocalizedString("noNetworkAlertTitle",
-                                                       bundle: .module,
-                                                       comment: "Title for the alert when the initial sync fails due to no network")
-    
-    static let noNetworkAlertMessage = NSLocalizedString("noNetworkAlertMessage",
-                                                         bundle: .module,
-                                                         comment: "Alert body when the initial sync fails due to no network")
     
     static let downloadError = NSLocalizedString("downloadError",
                                                  bundle: .module,

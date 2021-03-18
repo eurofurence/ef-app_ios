@@ -1,6 +1,4 @@
-import EurofurenceApplication
-import EurofurenceModel
-import Foundation
+import TutorialComponent
 
 class StubFirstTimeLaunchStateProvider: UserCompletedTutorialStateProviding {
 

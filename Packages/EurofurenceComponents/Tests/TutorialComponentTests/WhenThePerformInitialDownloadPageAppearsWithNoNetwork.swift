@@ -1,4 +1,4 @@
-import EurofurenceApplication
+import TutorialComponent
 import XCTest
 
 class WhenThePerformInitialDownloadPageAppearsWithNoNetwork: XCTestCase {
@@ -19,10 +19,10 @@ class WhenThePerformInitialDownloadPageAppearsWithNoNetwork: XCTestCase {
         
         let action = context.alertRouter.presentedActions.first
         
-        XCTAssertEqual(context.alertRouter.presentedAlertTitle, .noNetworkAlertTitle)
-        XCTAssertEqual(context.alertRouter.presentedAlertMessage, .noNetworkAlertMessage)
+        XCTAssertEqual(context.alertRouter.presentedAlertTitle, "No Network")
+        XCTAssertEqual(context.alertRouter.presentedAlertMessage, "Please connect to the internet and try again.")
         XCTAssertEqual(1, context.alertRouter.presentedActions.count)
-        XCTAssertEqual(action?.title, .ok)
+        XCTAssertEqual(action?.title, "OK")
     }
 
 }

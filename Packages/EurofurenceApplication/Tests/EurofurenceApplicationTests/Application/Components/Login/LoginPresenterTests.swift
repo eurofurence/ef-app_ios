@@ -229,7 +229,7 @@ class LoginPresenterTests: XCTestCase {
         context.simulateLoginFailure()
         context.dismissLastAlert()
 
-        XCTAssertNotNil(context.alertRouter.capturedAction(title: .ok))
+        XCTAssertNotNil(context.alertRouter.capturedAction(title: "OK"))
     }
 
     func testLoginServiceSucceedsTellsDelegateLoginSucceeded() {
