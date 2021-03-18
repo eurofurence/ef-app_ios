@@ -1,7 +1,7 @@
 import EurofurenceApplication
 import UIKit
 
-struct StubPrincipalContentModuleProviding: PrincipalContentModuleProviding {
+struct StubPrincipalContentModuleProviding: PrincipalContentModuleFactory {
     
     let stubInterface = UIViewController()
     func makePrincipalContentModule() -> UIViewController {

@@ -1,18 +1,18 @@
 import PreloadComponent
 import TutorialComponent
 
-public struct ModuleSwappingPrincipalWindowScene: PrincipalWindowScene {
+public struct ComponentBasedBootstrappingScene: ContentBootstrappingScene {
     
     private let windowWireframe: WindowWireframe
     private let tutorialModule: TutorialComponentFactory
     private let preloadModule: PreloadComponentFactory
-    private let principalContentModule: PrincipalContentModuleProviding
+    private let principalContentModule: PrincipalContentModuleFactory
     
     public init(
         windowWireframe: WindowWireframe,
         tutorialModule: TutorialComponentFactory,
         preloadModule: PreloadComponentFactory,
-        principalContentModule: PrincipalContentModuleProviding
+        principalContentModule: PrincipalContentModuleFactory
     ) {
         self.windowWireframe = windowWireframe
         self.tutorialModule = tutorialModule
@@ -43,7 +43,7 @@ public struct ModuleSwappingPrincipalWindowScene: PrincipalWindowScene {
     
     private struct ShowPreloadingWhenTutorialFinishes: TutorialComponentDelegate {
         
-        let scene: ModuleSwappingPrincipalWindowScene
+        let scene: ComponentBasedBootstrappingScene
         
         func tutorialModuleDidFinishPresentingTutorial() {
             scene.showPreloading()
@@ -53,7 +53,7 @@ public struct ModuleSwappingPrincipalWindowScene: PrincipalWindowScene {
     
     private struct NavigateToAppropriateModuleWhenPreloadConcludes: PreloadComponentDelegate {
         
-        let scene: ModuleSwappingPrincipalWindowScene
+        let scene: ComponentBasedBootstrappingScene
         
         func preloadModuleDidCancelPreloading() {
             scene.showTutorial()
