@@ -61,7 +61,7 @@
 		CA9768DD25FE39C6001AE029 /* EurofurenceApplicationSession in Frameworks */ = {isa = PBXBuildFile; productRef = CA9768DC25FE39C6001AE029 /* EurofurenceApplicationSession */; };
 		CA9768FB25FE3A81001AE029 /* EurofurenceModel in Frameworks */ = {isa = PBXBuildFile; productRef = CA9768FA25FE3A81001AE029 /* EurofurenceModel */; };
 		CAB300DA2603AFDB009A52E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB300D92603AFDB009A52E1 /* AppDelegate.swift */; };
-		CAB300DC2603AFDB009A52E1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB300DB2603AFDB009A52E1 /* SceneDelegate.swift */; };
+		CAB300DC2603AFDB009A52E1 /* DealersSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB300DB2603AFDB009A52E1 /* DealersSceneDelegate.swift */; };
 		CAB300DE2603AFDB009A52E1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB300DD2603AFDB009A52E1 /* ViewController.swift */; };
 		CAB300E32603AFDC009A52E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAB300E22603AFDC009A52E1 /* Assets.xcassets */; };
 		CAB300E62603AFDC009A52E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAB300E42603AFDC009A52E1 /* LaunchScreen.storyboard */; };
@@ -276,7 +276,7 @@
 		CA9845D21F2909DB00E8821D /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		CAB300D72603AFDB009A52E1 /* DealersAppClip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DealersAppClip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAB300D92603AFDB009A52E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CAB300DB2603AFDB009A52E1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		CAB300DB2603AFDB009A52E1 /* DealersSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersSceneDelegate.swift; sourceTree = "<group>"; };
 		CAB300DD2603AFDB009A52E1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CAB300E22603AFDC009A52E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CAB300E52603AFDC009A52E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -657,7 +657,7 @@
 			isa = PBXGroup;
 			children = (
 				CAB300D92603AFDB009A52E1 /* AppDelegate.swift */,
-				CAB300DB2603AFDB009A52E1 /* SceneDelegate.swift */,
+				CAB300DB2603AFDB009A52E1 /* DealersSceneDelegate.swift */,
 				CAB300DD2603AFDB009A52E1 /* ViewController.swift */,
 				CAB300E22603AFDC009A52E1 /* Assets.xcassets */,
 				CAB300E42603AFDC009A52E1 /* LaunchScreen.storyboard */,
@@ -1201,7 +1201,7 @@
 			files = (
 				CAB300DE2603AFDB009A52E1 /* ViewController.swift in Sources */,
 				CAB300DA2603AFDB009A52E1 /* AppDelegate.swift in Sources */,
-				CAB300DC2603AFDB009A52E1 /* SceneDelegate.swift in Sources */,
+				CAB300DC2603AFDB009A52E1 /* DealersSceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
