@@ -1,4 +1,4 @@
-import EurofurenceApplication
+import ContentController
 import UIKit
 
 struct StubPrincipalContentModuleProviding: PrincipalContentModuleFactory {

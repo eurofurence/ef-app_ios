@@ -1,3 +1,4 @@
+import ComponentBase
 import PreloadComponent
 import TutorialComponent
 

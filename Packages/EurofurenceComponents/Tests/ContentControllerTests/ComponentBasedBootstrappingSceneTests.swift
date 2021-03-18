@@ -1,4 +1,4 @@
-import EurofurenceApplication
+import ContentController
 import XCTest
 
 class ComponentBasedBootstrappingSceneTests: XCTestCase {

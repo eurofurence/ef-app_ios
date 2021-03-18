@@ -1,7 +1,7 @@
 import UIKit.UIViewController
 import UIKit.UIWindow
 
-struct AppWindowWireframe: WindowWireframe {
+public struct AppWindowWireframe: WindowWireframe {
     
     private let window: UIWindow
 
@@ -9,7 +9,7 @@ struct AppWindowWireframe: WindowWireframe {
         self.window = window
     }
 
-    func setRoot(_ viewController: UIViewController) {
+    public func setRoot(_ viewController: UIViewController) {
         let transition = CATransition()
         transition.type = .fade
         transition.subtype = nil

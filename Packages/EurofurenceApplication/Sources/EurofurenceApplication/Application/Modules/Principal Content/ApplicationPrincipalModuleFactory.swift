@@ -1,3 +1,4 @@
+import ContentController
 import UIKit
 
 public struct ApplicationPrincipalModuleFactory: PrincipalContentModuleFactory {

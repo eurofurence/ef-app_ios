@@ -1,4 +1,4 @@
-import EurofurenceApplication
+import ContentController
 
 class CapturingContentBootstrappingScene: ContentBootstrappingScene {
     
