@@ -1,4 +1,5 @@
 import ComponentBase
+import Foundation
 
 struct PreloadPresenter: SplashSceneDelegate, PreloadInteractorDelegate {
 
@@ -26,9 +27,25 @@ struct PreloadPresenter: SplashSceneDelegate, PreloadInteractorDelegate {
     func preloadInteractorDidFailToPreload() {
         let tryAgainAction = AlertAction(title: .tryAgain, action: beginPreloading)
         let cancelAction = AlertAction(title: .cancel, action: notifyDelegatePreloadingCancelled)
-        let alert = Alert(title: .downloadError,
-                          message: .preloadFailureMessage,
-                          actions: [tryAgainAction, cancelAction])
+        
+        let downloadErrorTitle = NSLocalizedString(
+            "downloadError",
+            bundle: .module,
+            comment: "Title for the alert when the download fails"
+        )
+        
+        let preloadFailureMessage = NSLocalizedString(
+            "preloadFailureMessage",
+            bundle: .module,
+            comment: "Description for the alert when the download fails"
+        )
+        
+        let alert = Alert(
+            title: downloadErrorTitle,
+            message: preloadFailureMessage,
+            actions: [tryAgainAction, cancelAction]
+        )
+        
         alertRouter.show(alert)
     }
 

@@ -7,10 +7,6 @@ public extension String {
     private static let tableName = "Strings"
     private static let tableBundle = Bundle.module
     
-    static let tryAgain = NSLocalizedString("tryAgain",
-                                            bundle: .module,
-                                            comment: "Used by prompts when an action fails, re-instigating the failed task")
-    
     static let tutorialPushPermissionsRequestTitle = NSLocalizedString("tutorialPushPermissionsRequestTitle",
                                                                        bundle: .module,
                                                                        comment: "Title used in the tutorial when asking for push permissions from the user")
@@ -30,22 +26,6 @@ public extension String {
     static let cellularDownloadAlertMessage = NSLocalizedString("cellularDownloadAlertMessage",
                                                                 bundle: .module,
                                                                 comment: "Description for the prompt asking if the user wants to perform the initial download over cellular data")
-    
-    static let downloadError = NSLocalizedString("downloadError",
-                                                 bundle: .module,
-                                                 comment: "Title for the alert when the download fails")
-    
-    static let preloadFailureMessage = NSLocalizedString("preloadFailureMessage",
-                                                         bundle: .module,
-                                                         comment: "Description for the alert when the download fails")
-    
-    static let updateRequiredAlertTitle = NSLocalizedString("UpdateRequiredAlertTitle",
-                                                            bundle: .module,
-                                                            comment: "Title used for the alert telling the user they need to update their app")
-    
-    static let updateRequiredAlertMessage = NSLocalizedString("UpdateRequiredAlertMessage",
-                                                              bundle: .module,
-                                                              comment: "Message body for the alert telling the user they need to update their app")
     
     static let news = NSLocalizedString("News", bundle: .module, comment: "The title shown for the News view")
     static let yourEurofurence = NSLocalizedString("YourEurofurence",
@@ -187,10 +167,6 @@ public extension String {
     static let maps = NSLocalizedString("Maps",
                                         bundle: .module,
                                         comment: "Title for the view containing the list of available convention maps")
-    
-    static let downloadingLatestData = NSLocalizedString("DownloadingLatestData",
-                                                         bundle: .module,
-                                                         comment: "Placeholder string displayed on the preload page to indicate to the user the app is updating")
     
     static let allEvents = NSLocalizedString("AllEvents",
                                              bundle: .module,

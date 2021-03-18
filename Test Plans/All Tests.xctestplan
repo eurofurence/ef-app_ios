@@ -89,6 +89,13 @@
         "identifier" : "TutorialComponentTests",
         "name" : "TutorialComponentTests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/EurofurenceComponents",
+        "identifier" : "PreloadComponentTests",
+        "name" : "PreloadComponentTests"
+      }
     }
   ],
   "version" : 1

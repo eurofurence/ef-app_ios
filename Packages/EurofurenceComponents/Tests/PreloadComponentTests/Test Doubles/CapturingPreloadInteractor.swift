@@ -1,5 +1,4 @@
-import EurofurenceApplication
-import EurofurenceModel
+import PreloadComponent
 
 class CapturingPreloadInteractor: PreloadInteractor {
 

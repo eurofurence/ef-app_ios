@@ -1,5 +1,5 @@
-import EurofurenceApplication
 import EurofurenceModel
+import PreloadComponent
 import XCTest
 import XCTEurofurenceModel
 

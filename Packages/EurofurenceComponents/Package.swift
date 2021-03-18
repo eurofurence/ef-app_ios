@@ -8,6 +8,7 @@ let package = Package(
     platforms: [.iOS(.v11)],
     products: [
         .library(name: "TutorialComponent", targets: ["TutorialComponent"]),
+        .library(name: "PreloadComponent", targets: ["PreloadComponent"]),
         .library(name: "DealersComponent", targets: ["DealersComponent"]),
             
         .library(name: "XCTComponentBase", targets: ["XCTComponentBase"])
@@ -41,6 +42,19 @@ let package = Package(
         .testTarget(name: "TutorialComponentTests", dependencies: [
             .target(name: "TutorialComponent"),
             .target(name: "XCTComponentBase")
+        ]),
+        
+        // MARK: Preload
+        
+        .target(name: "PreloadComponent", dependencies: [
+            .target(name: "ComponentBase"),
+            .product(name: "EurofurenceModel", package: "EurofurenceModel")
+        ]),
+        
+        .testTarget(name: "PreloadComponentTests", dependencies: [
+            .target(name: "PreloadComponent"),
+            .target(name: "XCTComponentBase"),
+            .product(name: "XCTEurofurenceModel", package: "EurofurenceModel")
         ]),
         
         // MARK: Dealers

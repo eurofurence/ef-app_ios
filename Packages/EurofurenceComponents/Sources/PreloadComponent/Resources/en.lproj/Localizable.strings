@@ -1,0 +1,6 @@
+"downloadError" = "Download Error";
+"preloadFailureMessage" = "Failed to download data from server. Please try again.";
+
+"DownloadingLatestData" = "Updating...";
+"UpdateRequiredAlertTitle" = "Update Required";
+"UpdateRequiredAlertMessage" = "A newer version of the Eurofurence application is available. Open the App Store and update the app in order to continue.";
