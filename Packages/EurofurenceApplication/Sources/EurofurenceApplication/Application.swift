@@ -26,7 +26,6 @@ public class Application {
     private let notificationScheduleController: NotificationScheduleController
     private let reviewPromptController: ReviewPromptController
     private var principalWindowController: PrincipalWindowAssembler?
-    private let urlOpener = AppURLOpener()
     
     public static func assemble(dependencies: Dependencies) {
         instance = Application(dependencies: dependencies)
@@ -67,7 +66,6 @@ public class Application {
         
         session = EurofurenceSessionBuilder.buildingForEurofurenceApplication()
             .with(ApplicationSignificantTimeChangeAdapter())
-            .with(urlOpener)
             .with(ApplicationLongRunningTaskManager())
             .with(UIKitMapCoordinateRender())
             .build()
@@ -106,7 +104,7 @@ public class Application {
             window: window,
             services: session.services,
             repositories: session.repositories,
-            urlOpener: urlOpener
+            urlOpener: AppURLOpener.shared
         )
     }
 

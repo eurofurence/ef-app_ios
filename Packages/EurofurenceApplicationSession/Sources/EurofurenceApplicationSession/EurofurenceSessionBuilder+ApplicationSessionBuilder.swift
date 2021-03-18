@@ -33,6 +33,7 @@ extension EurofurenceSessionBuilder {
         return EurofurenceSessionBuilder(mandatory: mandatory)
             .with(remoteNotificationsTokenRegistration)
             .with(UpdateRemoteConfigRefreshCollaboration(remoteConfigurationLoader: remoteConfigurationLoader))
+            .with(AppURLOpener.shared)
     }
     
 }
