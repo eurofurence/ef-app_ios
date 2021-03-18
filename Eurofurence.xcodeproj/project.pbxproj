@@ -67,6 +67,10 @@
 		CAB300E32603AFDC009A52E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAB300E22603AFDC009A52E1 /* Assets.xcassets */; };
 		CAB300E62603AFDC009A52E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAB300E42603AFDC009A52E1 /* LaunchScreen.storyboard */; };
 		CAB300EB2603AFDC009A52E1 /* DealersAppClip.app in Embed App Clips */ = {isa = PBXBuildFile; fileRef = CAB300D72603AFDB009A52E1 /* DealersAppClip.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CAB300FF2603B0D8009A52E1 /* EurofurenceApplicationSession in Frameworks */ = {isa = PBXBuildFile; productRef = CAB300FE2603B0D8009A52E1 /* EurofurenceApplicationSession */; };
+		CAB301012603B0D8009A52E1 /* ContentController in Frameworks */ = {isa = PBXBuildFile; productRef = CAB301002603B0D8009A52E1 /* ContentController */; };
+		CAB301032603B0D8009A52E1 /* DealerComponent in Frameworks */ = {isa = PBXBuildFile; productRef = CAB301022603B0D8009A52E1 /* DealerComponent */; };
+		CAB301052603B0D8009A52E1 /* DealersComponent in Frameworks */ = {isa = PBXBuildFile; productRef = CAB301042603B0D8009A52E1 /* DealersComponent */; };
 		CABBCA162565B153007A11A2 /* EventCategory+Intent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABBCA152565B153007A11A2 /* EventCategory+Intent.swift */; };
 		CABBCA302566FE0B007A11A2 /* SplitViewDetailBugTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABBCA2F2566FE0B007A11A2 /* SplitViewDetailBugTests.swift */; };
 		CAC22AE325FEB7A7004E0587 /* EurofurenceApplication in Frameworks */ = {isa = PBXBuildFile; productRef = CAC22AE225FEB7A7004E0587 /* EurofurenceApplication */; };
@@ -358,6 +362,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAB301032603B0D8009A52E1 /* DealerComponent in Frameworks */,
+				CAB301012603B0D8009A52E1 /* ContentController in Frameworks */,
+				CAB300FF2603B0D8009A52E1 /* EurofurenceApplicationSession in Frameworks */,
+				CAB301052603B0D8009A52E1 /* DealersComponent in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -845,6 +853,12 @@
 			dependencies = (
 			);
 			name = DealersAppClip;
+			packageProductDependencies = (
+				CAB300FE2603B0D8009A52E1 /* EurofurenceApplicationSession */,
+				CAB301002603B0D8009A52E1 /* ContentController */,
+				CAB301022603B0D8009A52E1 /* DealerComponent */,
+				CAB301042603B0D8009A52E1 /* DealersComponent */,
+			);
 			productName = DealersAppClip;
 			productReference = CAB300D72603AFDB009A52E1 /* DealersAppClip.app */;
 			productType = "com.apple.product-type.application.on-demand-install-capable";
@@ -2299,6 +2313,22 @@
 		CA9768FA25FE3A81001AE029 /* EurofurenceModel */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = EurofurenceModel;
+		};
+		CAB300FE2603B0D8009A52E1 /* EurofurenceApplicationSession */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = EurofurenceApplicationSession;
+		};
+		CAB301002603B0D8009A52E1 /* ContentController */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ContentController;
+		};
+		CAB301022603B0D8009A52E1 /* DealerComponent */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DealerComponent;
+		};
+		CAB301042603B0D8009A52E1 /* DealersComponent */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DealersComponent;
 		};
 		CAC22AE225FEB7A7004E0587 /* EurofurenceApplication */ = {
 			isa = XCSwiftPackageProductDependency;
