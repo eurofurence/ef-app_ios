@@ -3,6 +3,7 @@ import DealerComponent
 import DealersComponent
 import EurofurenceApplicationSession
 import EurofurenceModel
+import StoreKit
 import UIKit
 
 class DealersSceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -53,7 +54,8 @@ class DealersSceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let showDealerInDetailPane = ShowDealerInDetailPane(
             splitViewController: rootViewController,
-            dealerDetailModuleProviding: dealerDetailModuleProviding
+            dealerDetailModuleProviding: dealerDetailModuleProviding,
+            scene: windowScene
         )
         
         let dealersModule = dealersComponentFactory.makeDealersComponent(showDealerInDetailPane)
@@ -70,6 +72,7 @@ class DealersSceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         var splitViewController: UISplitViewController
         var dealerDetailModuleProviding: DealerDetailComponentFactory
+        var scene: UIWindowScene
         
         func dealersModuleDidSelectDealer(identifier: DealerIdentifier) {
             let dealerDetailComponent = dealerDetailModuleProviding.makeDealerDetailComponent(for: identifier)
@@ -77,6 +80,10 @@ class DealersSceneDelegate: UIResponder, UIWindowSceneDelegate {
                 dealerDetailComponent,
                 sender: DetailPresentationContext.replace
             )
+            
+            let config = SKOverlay.AppClipConfiguration(position: .bottom)
+            let overlay = SKOverlay(configuration: config)
+            overlay.present(in: scene)
         }
         
     }
