@@ -1,5 +1,5 @@
-import EurofurenceApplication
 import EurofurenceModel
+import PreloadComponent
 import XCTComponentBase
 import XCTest
 
@@ -49,8 +49,7 @@ class PreloadPresenterTests: XCTestCase {
         context.preloadSceneFactory.splashScene.notifySceneWillAppear()
         context.preloadingService.notifyFailedToPreload()
 
-        XCTAssertEqual(.downloadError,
-                       context.alertRouter.presentedAlertTitle)
+        XCTAssertEqual("Download Error", context.alertRouter.presentedAlertTitle)
     }
 
     func testWhenThePreloadServiceFailsTheAlertRouterIsToldToShowAlertWithFailedToPreloadDescription() {
@@ -58,8 +57,10 @@ class PreloadPresenterTests: XCTestCase {
         context.preloadSceneFactory.splashScene.notifySceneWillAppear()
         context.preloadingService.notifyFailedToPreload()
 
-        XCTAssertEqual(.preloadFailureMessage,
-                       context.alertRouter.presentedAlertMessage)
+        XCTAssertEqual(
+            "Failed to download data from server. Please try again.",
+            context.alertRouter.presentedAlertMessage
+        )
     }
 
     func testWhenThePreloadServiceFailsTheAlertRouterIsToldToShowAlertWithTryAgainAction() {

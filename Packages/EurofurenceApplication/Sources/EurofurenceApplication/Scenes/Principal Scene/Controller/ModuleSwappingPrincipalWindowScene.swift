@@ -1,3 +1,4 @@
+import PreloadComponent
 import TutorialComponent
 
 public struct ModuleSwappingPrincipalWindowScene: PrincipalWindowScene {

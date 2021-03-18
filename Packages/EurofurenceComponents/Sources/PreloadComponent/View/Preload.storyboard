@@ -11,7 +11,7 @@
         <!--Preload View Controller-->
         <scene sceneID="wvo-ql-YmX">
             <objects>
-                <viewController storyboardIdentifier="PreloadViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nkq-g2-uG2" customClass="PreloadViewController" customModule="EurofurenceApplication" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PreloadViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nkq-g2-uG2" customClass="PreloadViewController" customModule="PreloadComponent" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9mE-Ii-lyO"/>
                         <viewControllerLayoutGuide type="bottom" id="82D-DE-LpW"/>

@@ -11,7 +11,12 @@ class PreloadViewController: UIViewController, SplashScene {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        progressDescriptionLabel.text = .downloadingLatestData
+        progressDescriptionLabel.text = NSLocalizedString(
+            "DownloadingLatestData",
+            bundle: .module,
+            comment: "Placeholder string displayed on the preload page to indicate to the user the app is updating"
+        )
+        
         progressDescriptionLabel.textColor = .white
     }
 
@@ -29,9 +34,19 @@ class PreloadViewController: UIViewController, SplashScene {
     }
     
     func showStaleAppAlert() {
-        let alert = UIAlertController(title: .updateRequiredAlertTitle,
-                                      message: .updateRequiredAlertMessage,
-                                      preferredStyle: .alert)
+        let title = NSLocalizedString(
+            "UpdateRequiredAlertTitle",
+            bundle: .module,
+            comment: "Title used for the alert telling the user they need to update their app"
+        )
+        
+        let message = NSLocalizedString(
+            "UpdateRequiredAlertMessage",
+            bundle: .module,
+            comment: "Message body for the alert telling the user they need to update their app"
+        )
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: .ok, style: .cancel))
         present(alert, animated: true)
     }
