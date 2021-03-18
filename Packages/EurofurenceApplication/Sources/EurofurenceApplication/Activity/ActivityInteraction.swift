@@ -1,3 +1,5 @@
+import ComponentBase
+
 struct ActivityInteraction: Interaction {
     
     var activity: Activity

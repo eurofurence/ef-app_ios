@@ -135,27 +135,6 @@ public extension String {
                                                bundle: .module,
                                                comment: "Title for the button used to remove an event from the user's favourites")
     
-    static let locationAndAvailability = NSLocalizedString("LocationAndAvailability",
-                                                           bundle: .module,
-                                                           comment: "Heading for component in the dealer detail view explaining their location, convention availability and their AD status")
-    static let locatedWithinAfterDarkDen = NSLocalizedString("LocatedWithinAfterDarkDen",
-                                                             bundle: .module,
-                                                             comment: "Short sentence describing that the dealer is located within the after-dark dealers den")
-    
-    static let onlyPresentOnSpecificDaysFormat = NSLocalizedString("OnlyPresentOnSpecificDaysFormat",
-                                                                   bundle: .module,
-                                                                   comment: "Text displayed with the days during the convention a dealer is present for, e.g. 'Thursday'")
-    
-    static let aboutTheArtist = NSLocalizedString("AboutTheArtist",
-                                                  bundle: .module,
-                                                  comment: "Title for section in the Dealer Details screen showing the description provided by the artist")
-    static let aboutTheArtistPlaceholder = NSLocalizedString("AboutTheArtistPlaceholder",
-                                                             bundle: .module,
-                                                             comment: "Placeholder text displayed in the Dealer Details screen when the artist did not provide a custom description about themselves")
-    static let aboutTheArt = NSLocalizedString("AboutTheArt",
-                                               bundle: .module,
-                                               comment: "Title for section in the Dealer Details screen showing the sample art provided by the dealer")
-    
     static let collect = NSLocalizedString("Collect",
                                            bundle: .module,
                                            comment: "Short title for the Collect-them-All screen shown in the tab bar")
@@ -278,10 +257,6 @@ public extension String {
     
     static func daysUntilConventionMessage(days: Int) -> String {
         return localizedStringWithFormat(daysRemainingFormat, days)
-    }
-    
-    static func formattedOnlyPresentOnDaysString(_ days: [String]) -> String {
-        return localizedStringWithFormat(onlyPresentOnSpecificDaysFormat, days.joined(separator: ", "))
     }
     
     static func restrictEventsAccessibilityHint(date: String) -> String {
