@@ -1,6 +1,6 @@
-import EurofurenceApplication
+import ContentController
 
-class CapturingPrincipalWindowScene: PrincipalWindowScene {
+class CapturingContentBootstrappingScene: ContentBootstrappingScene {
     
     enum VisibleScene: Equatable {
         case none

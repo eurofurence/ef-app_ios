@@ -1,4 +1,4 @@
-public protocol PrincipalWindowScene {
+public protocol ContentBootstrappingScene {
     
     func showTutorial()
     func showPreloading()

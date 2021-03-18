@@ -1,13 +1,13 @@
-import EurofurenceApplication
+import ContentController
 import XCTest
 
-class ModuleSwappingPrincipalWindowSceneTests: XCTestCase {
+class ComponentBasedBootstrappingSceneTests: XCTestCase {
     
     var windowWireframe: CapturingWindowWireframe!
     var tutorialModule: StubTutorialComponentFactory!
     var preloadModule: StubPreloadComponentFactory!
     var principalContentModule: StubPrincipalContentModuleProviding!
-    var windowScene: ModuleSwappingPrincipalWindowScene!
+    var windowScene: ComponentBasedBootstrappingScene!
     
     override func setUp() {
         super.setUp()
@@ -16,7 +16,7 @@ class ModuleSwappingPrincipalWindowSceneTests: XCTestCase {
         tutorialModule = StubTutorialComponentFactory()
         preloadModule = StubPreloadComponentFactory()
         principalContentModule = StubPrincipalContentModuleProviding()
-        windowScene = ModuleSwappingPrincipalWindowScene(
+        windowScene = ComponentBasedBootstrappingScene(
             windowWireframe: windowWireframe,
             tutorialModule: tutorialModule,
             preloadModule: preloadModule,

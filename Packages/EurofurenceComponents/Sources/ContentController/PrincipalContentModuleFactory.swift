@@ -1,6 +1,6 @@
 import UIKit
 
-public protocol PrincipalContentModuleProviding {
+public protocol PrincipalContentModuleFactory {
     
     func makePrincipalContentModule() -> UIViewController
     

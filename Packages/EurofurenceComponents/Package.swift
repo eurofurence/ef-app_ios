@@ -9,6 +9,7 @@ let package = Package(
     products: [
         .library(name: "TutorialComponent", targets: ["TutorialComponent"]),
         .library(name: "PreloadComponent", targets: ["PreloadComponent"]),
+        .library(name: "ContentController", targets: ["ContentController"]),
         .library(name: "DealersComponent", targets: ["DealersComponent"]),
             
         .library(name: "XCTComponentBase", targets: ["XCTComponentBase"])
@@ -30,6 +31,19 @@ let package = Package(
         
         .testTarget(name: "ComponentBaseTests", dependencies: [
             .target(name: "ComponentBase"),
+            .target(name: "XCTComponentBase")
+        ]),
+        
+        // MARK: Content Controller
+        
+        .target(name: "ContentController", dependencies: [
+            .target(name: "ComponentBase"),
+            .target(name: "TutorialComponent"),
+            .target(name: "PreloadComponent")
+        ]),
+        
+        .testTarget(name: "ContentControllerTests", dependencies: [
+            .target(name: "ContentController"),
             .target(name: "XCTComponentBase")
         ]),
         

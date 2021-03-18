@@ -1,6 +1,7 @@
+import ContentController
 import UIKit
 
-public struct PrincipalContentAggregator: PrincipalContentModuleProviding {
+public struct ApplicationPrincipalModuleFactory: PrincipalContentModuleFactory {
     
     private let applicationModuleFactories: [ApplicationModuleFactory]
     

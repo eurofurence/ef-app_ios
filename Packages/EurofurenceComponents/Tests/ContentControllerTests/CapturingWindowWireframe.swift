@@ -1,5 +1,4 @@
-import EurofurenceApplication
-import EurofurenceModel
+import ContentController
 import UIKit.UIViewController
 
 class CapturingWindowWireframe: WindowWireframe {

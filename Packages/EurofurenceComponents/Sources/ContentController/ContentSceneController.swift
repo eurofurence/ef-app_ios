@@ -1,8 +1,8 @@
 import EurofurenceModel
 
-public struct PrincipalWindowSceneController {
+public struct ContentSceneController {
     
-    public init(sessionState: SessionStateService, scene: PrincipalWindowScene) {
+    public init(sessionState: SessionStateService, scene: ContentBootstrappingScene) {
         sessionState.determineSessionState(completionHandler: { (state) in
             switch state {
             case .uninitialized:

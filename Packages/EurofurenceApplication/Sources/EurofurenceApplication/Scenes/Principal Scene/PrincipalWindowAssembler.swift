@@ -1,4 +1,5 @@
 import ComponentBase
+import ContentController
 import EurofurenceModel
 import UIKit
 
@@ -74,14 +75,16 @@ struct PrincipalWindowAssembler {
             services: services
         )
         
-        let principalWindowScene = ModuleSwappingPrincipalWindowScene(
+        let principalWindowScene = ComponentBasedBootstrappingScene(
             windowWireframe: AppWindowWireframe(window: window),
             tutorialModule: componentRegistry.tutorialComponentFactory,
             preloadModule: componentRegistry.preloadComponentFactory,
-            principalContentModule: PrincipalContentAggregator(applicationModuleFactories: applicationModuleFactories)
+            principalContentModule: ApplicationPrincipalModuleFactory(
+                applicationModuleFactories: applicationModuleFactories
+            )
         )
         
-        _ = PrincipalWindowSceneController(sessionState: services.sessionState, scene: principalWindowScene)
+        _ = ContentSceneController(sessionState: services.sessionState, scene: principalWindowScene)
     }
     
     private func makePrincipalWindowComponents(
