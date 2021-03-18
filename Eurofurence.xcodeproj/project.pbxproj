@@ -63,7 +63,6 @@
 		CAB300DA2603AFDB009A52E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB300D92603AFDB009A52E1 /* AppDelegate.swift */; };
 		CAB300DC2603AFDB009A52E1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB300DB2603AFDB009A52E1 /* SceneDelegate.swift */; };
 		CAB300DE2603AFDB009A52E1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB300DD2603AFDB009A52E1 /* ViewController.swift */; };
-		CAB300E12603AFDB009A52E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAB300DF2603AFDB009A52E1 /* Main.storyboard */; };
 		CAB300E32603AFDC009A52E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAB300E22603AFDC009A52E1 /* Assets.xcassets */; };
 		CAB300E62603AFDC009A52E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAB300E42603AFDC009A52E1 /* LaunchScreen.storyboard */; };
 		CAB300EB2603AFDC009A52E1 /* DealersAppClip.app in Embed App Clips */ = {isa = PBXBuildFile; fileRef = CAB300D72603AFDB009A52E1 /* DealersAppClip.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -279,7 +278,6 @@
 		CAB300D92603AFDB009A52E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CAB300DB2603AFDB009A52E1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CAB300DD2603AFDB009A52E1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		CAB300E02603AFDB009A52E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CAB300E22603AFDC009A52E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CAB300E52603AFDC009A52E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CAB300E72603AFDC009A52E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -661,7 +659,6 @@
 				CAB300D92603AFDB009A52E1 /* AppDelegate.swift */,
 				CAB300DB2603AFDB009A52E1 /* SceneDelegate.swift */,
 				CAB300DD2603AFDB009A52E1 /* ViewController.swift */,
-				CAB300DF2603AFDB009A52E1 /* Main.storyboard */,
 				CAB300E22603AFDC009A52E1 /* Assets.xcassets */,
 				CAB300E42603AFDC009A52E1 /* LaunchScreen.storyboard */,
 				CAB300E72603AFDC009A52E1 /* Info.plist */,
@@ -1024,7 +1021,6 @@
 			files = (
 				CAB300E62603AFDC009A52E1 /* LaunchScreen.storyboard in Resources */,
 				CAB300E32603AFDC009A52E1 /* Assets.xcassets in Resources */,
-				CAB300E12603AFDB009A52E1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1245,14 +1241,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		CAB300DF2603AFDB009A52E1 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CAB300E02603AFDB009A52E1 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		CAB300E42603AFDC009A52E1 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
