@@ -20,4 +20,10 @@ extension String {
         comment: "Used by prompts when an action fails, re-instigating the failed task"
     )
     
+    public static let discard = NSLocalizedString(
+        "Discard",
+        bundle: .module,
+        comment: "Text used to describe actions related to user input that will cause their input to be discarded"
+    )
+    
 }

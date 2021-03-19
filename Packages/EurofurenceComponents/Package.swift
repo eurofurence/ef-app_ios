@@ -10,6 +10,7 @@ let package = Package(
         .library(name: "TutorialComponent", targets: ["TutorialComponent"]),
         .library(name: "PreloadComponent", targets: ["PreloadComponent"]),
         .library(name: "ContentController", targets: ["ContentController"]),
+        .library(name: "EventFeedbackComponent", targets: ["EventFeedbackComponent"]),
         .library(name: "DealersComponent", targets: ["DealersComponent"]),
         .library(name: "DealerComponent", targets: ["DealerComponent"]),
             
@@ -71,6 +72,19 @@ let package = Package(
         
         .testTarget(name: "PreloadComponentTests", dependencies: [
             .target(name: "PreloadComponent"),
+            .target(name: "XCTComponentBase"),
+            .product(name: "XCTEurofurenceModel", package: "EurofurenceModel")
+        ]),
+        
+        // MARK: Event Feedback
+        
+        .target(name: "EventFeedbackComponent", dependencies: [
+            .target(name: "ComponentBase"),
+            .product(name: "EurofurenceModel", package: "EurofurenceModel")
+        ]),
+        
+        .testTarget(name: "EventFeedbackComponentTests", dependencies: [
+            .target(name: "EventFeedbackComponent"),
             .target(name: "XCTComponentBase"),
             .product(name: "XCTEurofurenceModel", package: "EurofurenceModel")
         ]),

@@ -199,33 +199,9 @@ public extension String {
                                                                    bundle: .module,
                                                                    comment: "Message for the alert shown when trying to open an announcenent that has been deleted")
     
-    static let eventFeedbackDayAndTimeFormat = NSLocalizedString("EventFeedbackDayAndTime",
-                                                                 bundle: .module,
-                                                                 comment: "Format string used to show when an event occurs, like 'Sunday from 18:00 to 00:00'")
-    
-    static let eventHostedByFormat = NSLocalizedString("EventHostedBy",
-                                                       bundle: .module,
-                                                       comment: "Format string used to describe who is hosting an event, in the form 'Hosted by Stripe'")
-    
     static let leaveFeedback = NSLocalizedString("LeaveFeedback",
                                                  bundle: .module,
                                                  comment: "Title for the command shown in the event detail scene for leaving feedback for an event")
-    
-    static let feedbackErrorTitle = NSLocalizedString("FeedbackErrorTitle",
-                                                      bundle: .module,
-                                                      comment: "Title for the alert displayed when attempting to leave feedback for an event fails")
-    
-    static let feedbackErrorMessage = NSLocalizedString("FeedbackErrorMessage",
-                                                        bundle: .module,
-                                                        comment: "Message for the alert displayed when attempting to leave feedback for an event fails")
-    
-    static let confirmDiscardEventFeedbackTitle = NSLocalizedString("ConfirmDiscardEventFeedbackTitle",
-                                                                    bundle: .module,
-                                                                    comment: "Title for the alert presented to the user when confirming they want to discard any entered event feedback")
-    
-    static let discard = NSLocalizedString("Discard",
-                                           bundle: .module,
-                                           comment: "Text used to describe actions related to user input that will cause their input to be discarded")
     
     static let services = NSLocalizedString("Services",
                                             bundle: .module,

@@ -1,6 +1,7 @@
 "OK" = "OK";
 "Cancel" = "Cancel";
 "Try Again" = "Try Again";
+"Discard" = "Discard";
 
 "Star Rating" = "Star Rating";
 "Star Rating Value Format" = "%li of %li";

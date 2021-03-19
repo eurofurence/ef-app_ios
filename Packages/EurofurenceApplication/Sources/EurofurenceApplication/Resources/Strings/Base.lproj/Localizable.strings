@@ -39,9 +39,6 @@
 
 "Favourite" = "Favourite";
 "Unfavourite" = "Unfavourite";
-"LeaveFeedback" = "Leave Feedback";
-"FeedbackErrorTitle" = "Feedback Not Submitted";
-"FeedbackErrorMessage" = "There was a problem trying to submit your feedback. Please try again.";
 
 "Collect" = "Collect";
 "CollectThemAll" = "Collect'em All";
@@ -67,12 +64,6 @@
 
 "InvalidAnnouncementAlertTitle" = "Expired Announcement";
 "InvalidAnnouncementAlertMessage" = "The selected announcement has been removed as its contents are no longer valid";
-
-"EventFeedbackDayAndTime" = "%@ from %@ to %@";
-"EventHostedBy" = "Hosted by %@";
-
-"ConfirmDiscardEventFeedbackTitle" = "Discard Feedback?";
-"Discard" = "Discard";
 
 "Services" = "Services";
 "AdditionalServices" = "Additional Services";
