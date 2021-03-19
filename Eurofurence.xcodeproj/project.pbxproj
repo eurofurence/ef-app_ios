@@ -29,6 +29,10 @@
 		CA526F892564569600BDD7BB /* CategoryPlaceholderText.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA526F882564569600BDD7BB /* CategoryPlaceholderText.swift */; };
 		CA526F8F256456F900BDD7BB /* AdditionalEventsFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA526F8E256456F900BDD7BB /* AdditionalEventsFooter.swift */; };
 		CA526F972564577A00BDD7BB /* EventTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA526F962564577A00BDD7BB /* EventTitle.swift */; };
+		CA5314DD2603DEDE0022B12E /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA5314DC2603DEDE0022B12E /* fontawesome-webfont.ttf */; };
+		CA5314EB260408650022B12E /* DealerAppClipModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5314EA260408650022B12E /* DealerAppClipModule.swift */; };
+		CA5314F3260408730022B12E /* ShowDealerInDetailPane.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5314F2260408730022B12E /* ShowDealerInDetailPane.swift */; };
+		CA5314FB260409180022B12E /* DealersSceneAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5314FA260409180022B12E /* DealersSceneAssembler.swift */; };
 		CA5891E02562F2E800FC9BC1 /* HoursAndMinutesEventTimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5891DF2562F2E800FC9BC1 /* HoursAndMinutesEventTimeFormatter.swift */; };
 		CA5A5AE42584F1F4007F6728 /* ControllableClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5A5AE32584F1F4007F6728 /* ControllableClock.swift */; };
 		CA5A5AF22584F26B007F6728 /* EventsBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5A5AF12584F26B007F6728 /* EventsBridge.swift */; };
@@ -60,6 +64,15 @@
 		CA8F7D2F256182EF0096E206 /* WidgetKitConformances.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8F7D2E256182EF0096E206 /* WidgetKitConformances.swift */; };
 		CA9768DD25FE39C6001AE029 /* EurofurenceApplicationSession in Frameworks */ = {isa = PBXBuildFile; productRef = CA9768DC25FE39C6001AE029 /* EurofurenceApplicationSession */; };
 		CA9768FB25FE3A81001AE029 /* EurofurenceModel in Frameworks */ = {isa = PBXBuildFile; productRef = CA9768FA25FE3A81001AE029 /* EurofurenceModel */; };
+		CAB300DA2603AFDB009A52E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB300D92603AFDB009A52E1 /* AppDelegate.swift */; };
+		CAB300DC2603AFDB009A52E1 /* DealersSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB300DB2603AFDB009A52E1 /* DealersSceneDelegate.swift */; };
+		CAB300E32603AFDC009A52E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAB300E22603AFDC009A52E1 /* Assets.xcassets */; };
+		CAB300E62603AFDC009A52E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAB300E42603AFDC009A52E1 /* LaunchScreen.storyboard */; };
+		CAB300EB2603AFDC009A52E1 /* DealersAppClip.app in Embed App Clips */ = {isa = PBXBuildFile; fileRef = CAB300D72603AFDB009A52E1 /* DealersAppClip.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CAB300FF2603B0D8009A52E1 /* EurofurenceApplicationSession in Frameworks */ = {isa = PBXBuildFile; productRef = CAB300FE2603B0D8009A52E1 /* EurofurenceApplicationSession */; };
+		CAB301012603B0D8009A52E1 /* ContentController in Frameworks */ = {isa = PBXBuildFile; productRef = CAB301002603B0D8009A52E1 /* ContentController */; };
+		CAB301032603B0D8009A52E1 /* DealerComponent in Frameworks */ = {isa = PBXBuildFile; productRef = CAB301022603B0D8009A52E1 /* DealerComponent */; };
+		CAB301052603B0D8009A52E1 /* DealersComponent in Frameworks */ = {isa = PBXBuildFile; productRef = CAB301042603B0D8009A52E1 /* DealersComponent */; };
 		CABBCA162565B153007A11A2 /* EventCategory+Intent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABBCA152565B153007A11A2 /* EventCategory+Intent.swift */; };
 		CABBCA302566FE0B007A11A2 /* SplitViewDetailBugTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABBCA2F2566FE0B007A11A2 /* SplitViewDetailBugTests.swift */; };
 		CAC22AE325FEB7A7004E0587 /* EurofurenceApplication in Frameworks */ = {isa = PBXBuildFile; productRef = CAC22AE225FEB7A7004E0587 /* EurofurenceApplication */; };
@@ -108,6 +121,13 @@
 			remoteGlobalIDString = CA630BDB229F14F800754C27;
 			remoteInfo = EurofurenceIntentDefinitions;
 		};
+		CAB300E92603AFDC009A52E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9ACF992C1EBE172D006FC958 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CAB300D62603AFDB009A52E1;
+			remoteInfo = DealersAppClip;
+		};
 		CAF254AF2517F983008892ED /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9ACF992C1EBE172D006FC958 /* Project object */;
@@ -134,6 +154,17 @@
 				CA5F26AC2556F04D00CED97A /* EventsWidgetExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CAB300EC2603AFDC009A52E1 /* Embed App Clips */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/AppClips";
+			dstSubfolderSpec = 16;
+			files = (
+				CAB300EB2603AFDC009A52E1 /* DealersAppClip.app in Embed App Clips */,
+			);
+			name = "Embed App Clips";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		CAEA0B9A2165626900B0C7A6 /* Embed Frameworks */ = {
@@ -205,6 +236,10 @@
 		CA526F882564569600BDD7BB /* CategoryPlaceholderText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPlaceholderText.swift; sourceTree = "<group>"; };
 		CA526F8E256456F900BDD7BB /* AdditionalEventsFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalEventsFooter.swift; sourceTree = "<group>"; };
 		CA526F962564577A00BDD7BB /* EventTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTitle.swift; sourceTree = "<group>"; };
+		CA5314DC2603DEDE0022B12E /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
+		CA5314EA260408650022B12E /* DealerAppClipModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerAppClipModule.swift; sourceTree = "<group>"; };
+		CA5314F2260408730022B12E /* ShowDealerInDetailPane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDealerInDetailPane.swift; sourceTree = "<group>"; };
+		CA5314FA260409180022B12E /* DealersSceneAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersSceneAssembler.swift; sourceTree = "<group>"; };
 		CA5891DF2562F2E800FC9BC1 /* HoursAndMinutesEventTimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoursAndMinutesEventTimeFormatter.swift; sourceTree = "<group>"; };
 		CA5A5AE32584F1F4007F6728 /* ControllableClock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllableClock.swift; sourceTree = "<group>"; };
 		CA5A5AF12584F26B007F6728 /* EventsBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsBridge.swift; sourceTree = "<group>"; };
@@ -246,6 +281,13 @@
 		CA8F7D2E256182EF0096E206 /* WidgetKitConformances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetKitConformances.swift; sourceTree = "<group>"; };
 		CA9845C91F2907A800E8821D /* ScreenshotGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotGenerator.swift; sourceTree = "<group>"; };
 		CA9845D21F2909DB00E8821D /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
+		CAB300D72603AFDB009A52E1 /* DealersAppClip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DealersAppClip.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CAB300D92603AFDB009A52E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CAB300DB2603AFDB009A52E1 /* DealersSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersSceneDelegate.swift; sourceTree = "<group>"; };
+		CAB300E22603AFDC009A52E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CAB300E52603AFDC009A52E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CAB300E72603AFDC009A52E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CAB300E82603AFDC009A52E1 /* DealersAppClip.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DealersAppClip.entitlements; sourceTree = "<group>"; };
 		CABBCA152565B153007A11A2 /* EventCategory+Intent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventCategory+Intent.swift"; sourceTree = "<group>"; };
 		CABBCA2F2566FE0B007A11A2 /* SplitViewDetailBugTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewDetailBugTests.swift; sourceTree = "<group>"; };
 		CACD371F25650BC400C23041 /* EurofurenceModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EurofurenceModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -317,6 +359,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CAB300D42603AFDB009A52E1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CAB301032603B0D8009A52E1 /* DealerComponent in Frameworks */,
+				CAB301012603B0D8009A52E1 /* ContentController in Frameworks */,
+				CAB300FF2603B0D8009A52E1 /* EurofurenceApplicationSession in Frameworks */,
+				CAB301052603B0D8009A52E1 /* DealersComponent in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,6 +468,7 @@
 				9ACF994B1EBE172D006FC958 /* EurofurenceTests */,
 				CAF254AB2517F983008892ED /* EurofurenceUITests */,
 				CA5F26A12556F04C00CED97A /* EventsWidget */,
+				CAB300D82603AFDB009A52E1 /* DealersAppClip */,
 				164F3A1C0E53F6ADD4C20674 /* Frameworks */,
 				2A4A738C931BBD9059F30151 /* Pods */,
 				9ACF99351EBE172D006FC958 /* Products */,
@@ -432,6 +486,7 @@
 				CA630BDC229F14F800754C27 /* EurofurenceIntentDefinitions.framework */,
 				CAF254AA2517F983008892ED /* EurofurenceUITests.xctest */,
 				CA5F269C2556F04C00CED97A /* EventsWidgetExtension.appex */,
+				CAB300D72603AFDB009A52E1 /* DealersAppClip.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -543,6 +598,33 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		CA5314DA2603DEBB0022B12E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CA5314DB2603DEBF0022B12E /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		CA5314DB2603DEBF0022B12E /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				CA5314DC2603DEDE0022B12E /* fontawesome-webfont.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		CA531502260409A70022B12E /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				CA5314EA260408650022B12E /* DealerAppClipModule.swift */,
+				CA5314FA260409180022B12E /* DealersSceneAssembler.swift */,
+				CAB300DB2603AFDB009A52E1 /* DealersSceneDelegate.swift */,
+				CA5314F2260408730022B12E /* ShowDealerInDetailPane.swift */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
 		CA5F26A12556F04C00CED97A /* EventsWidget */ = {
 			isa = PBXGroup;
 			children = (
@@ -602,6 +684,20 @@
 				CA8F7D2E256182EF0096E206 /* WidgetKitConformances.swift */,
 			);
 			path = "Logic Adapter";
+			sourceTree = "<group>";
+		};
+		CAB300D82603AFDB009A52E1 /* DealersAppClip */ = {
+			isa = PBXGroup;
+			children = (
+				CAB300E82603AFDC009A52E1 /* DealersAppClip.entitlements */,
+				CAB300E72603AFDC009A52E1 /* Info.plist */,
+				CAB300D92603AFDB009A52E1 /* AppDelegate.swift */,
+				CAB300E22603AFDC009A52E1 /* Assets.xcassets */,
+				CAB300E42603AFDC009A52E1 /* LaunchScreen.storyboard */,
+				CA5314DA2603DEBB0022B12E /* Resources */,
+				CA531502260409A70022B12E /* Scene */,
+			);
+			path = DealersAppClip;
 			sourceTree = "<group>";
 		};
 		CAF254AB2517F983008892ED /* EurofurenceUITests */ = {
@@ -696,12 +792,14 @@
 				CAEA0B9A2165626900B0C7A6 /* Embed Frameworks */,
 				9ACB01051F1808BA001CE9D2 /* Crashlytics */,
 				CA5F26AE2556F04E00CED97A /* Embed App Extensions */,
+				CAB300EC2603AFDC009A52E1 /* Embed App Clips */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				CA630BE2229F14F800754C27 /* PBXTargetDependency */,
 				CA5F26AB2556F04D00CED97A /* PBXTargetDependency */,
+				CAB300EA2603AFDC009A52E1 /* PBXTargetDependency */,
 			);
 			name = Eurofurence;
 			packageProductDependencies = (
@@ -772,6 +870,30 @@
 			productReference = CA630BDC229F14F800754C27 /* EurofurenceIntentDefinitions.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		CAB300D62603AFDB009A52E1 /* DealersAppClip */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CAB300F12603AFDC009A52E1 /* Build configuration list for PBXNativeTarget "DealersAppClip" */;
+			buildPhases = (
+				CAB300D32603AFDB009A52E1 /* Sources */,
+				CA5314C12603B5A60022B12E /* SwiftLint */,
+				CAB300D42603AFDB009A52E1 /* Frameworks */,
+				CAB300D52603AFDB009A52E1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DealersAppClip;
+			packageProductDependencies = (
+				CAB300FE2603B0D8009A52E1 /* EurofurenceApplicationSession */,
+				CAB301002603B0D8009A52E1 /* ContentController */,
+				CAB301022603B0D8009A52E1 /* DealerComponent */,
+				CAB301042603B0D8009A52E1 /* DealersComponent */,
+			);
+			productName = DealersAppClip;
+			productReference = CAB300D72603AFDB009A52E1 /* DealersAppClip.app */;
+			productType = "com.apple.product-type.application.on-demand-install-capable";
+		};
 		CAF254A92517F983008892ED /* EurofurenceUITests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CAF254B52517F983008892ED /* Build configuration list for PBXNativeTarget "EurofurenceUITests" */;
@@ -797,7 +919,7 @@
 			isa = PBXProject;
 			attributes = {
 				DefaultBuildSystemTypeForWorkspace = Latest;
-				LastSwiftUpdateCheck = 1220;
+				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = Eurofurence;
 				TargetAttributes = {
@@ -843,6 +965,9 @@
 						DevelopmentTeam = 557SGQG5H4;
 						ProvisioningStyle = Automatic;
 					};
+					CAB300D62603AFDB009A52E1 = {
+						CreatedOnToolsVersion = 12.4;
+					};
 					CAF254A92517F983008892ED = {
 						CreatedOnToolsVersion = 12.0;
 						DevelopmentTeam = 557SGQG5H4;
@@ -871,6 +996,7 @@
 				78D7EEA01F17F40C005372A9 /* Screenshots */,
 				CA630BDB229F14F800754C27 /* EurofurenceIntentDefinitions */,
 				CA5F269B2556F04C00CED97A /* EventsWidgetExtension */,
+				CAB300D62603AFDB009A52E1 /* DealersAppClip */,
 			);
 		};
 /* End PBXProject section */
@@ -923,6 +1049,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CAB300D52603AFDB009A52E1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA5314DD2603DEDE0022B12E /* fontawesome-webfont.ttf in Resources */,
+				CAB300E62603AFDC009A52E1 /* LaunchScreen.storyboard in Resources */,
+				CAB300E32603AFDC009A52E1 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CAF254A82517F983008892ED /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -961,6 +1097,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "#!/bin/bash\n\nif [[$ARCHS != \"x86_64\"]]; then\n    \"${PODS_ROOT}/FirebaseCrashlytics/run\"\nfi\n";
+		};
+		CA5314C12603B5A60022B12E /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash\n\nif which swiftlint >/dev/null; then\n  swiftlint --path ${SRCROOT}/ --config ${SRCROOT}/.swiftlint.yml\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi \n";
 		};
 		CA8950F522B4452F00AF4875 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1075,6 +1229,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CAB300D32603AFDB009A52E1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA5314FB260409180022B12E /* DealersSceneAssembler.swift in Sources */,
+				CA5314EB260408650022B12E /* DealerAppClipModule.swift in Sources */,
+				CAB300DA2603AFDB009A52E1 /* AppDelegate.swift in Sources */,
+				CAB300DC2603AFDB009A52E1 /* DealersSceneDelegate.swift in Sources */,
+				CA5314F3260408730022B12E /* ShowDealerInDetailPane.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CAF254A62517F983008892ED /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1112,6 +1278,11 @@
 			target = CA630BDB229F14F800754C27 /* EurofurenceIntentDefinitions */;
 			targetProxy = CA630BE1229F14F800754C27 /* PBXContainerItemProxy */;
 		};
+		CAB300EA2603AFDC009A52E1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CAB300D62603AFDB009A52E1 /* DealersAppClip */;
+			targetProxy = CAB300E92603AFDC009A52E1 /* PBXContainerItemProxy */;
+		};
 		CAF254B02517F983008892ED /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 9ACF99331EBE172D006FC958 /* Eurofurence */;
@@ -1125,6 +1296,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		CAB300E42603AFDC009A52E1 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CAB300E52603AFDC009A52E1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
 		CAF194DA24688D7D005DFBBE /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1226,6 +1405,7 @@
 		9ACB01071F180AA4001CE9D2 /* Profiling */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Eurofurence/Eurofurence.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -1396,6 +1576,7 @@
 		9ACF99521EBE172D006FC958 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Eurofurence/Eurofurence.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -1418,6 +1599,7 @@
 		9ACF99531EBE172D006FC958 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Eurofurence/Eurofurence.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
@@ -1796,6 +1978,7 @@
 		CA9845D51F2916CF00E8821D /* Screenshots */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Eurofurence/Eurofurence.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -1847,6 +2030,118 @@
 				TEST_TARGET_NAME = Eurofurence;
 			};
 			name = Screenshots;
+		};
+		CAB300ED2603AFDC009A52E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = DealersAppClip/DealersAppClip.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = DealersAppClip/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.dealersclip;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CAB300EE2603AFDC009A52E1 /* Screenshots */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = DealersAppClip/DealersAppClip.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = DealersAppClip/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.dealersclip;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Screenshots;
+		};
+		CAB300EF2603AFDC009A52E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = DealersAppClip/DealersAppClip.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 557SGQG5H4;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = DealersAppClip/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.dealersclip;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "DealersClip Distribution";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CAB300F02603AFDC009A52E1 /* Profiling */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = DealersAppClip/DealersAppClip.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = DealersAppClip/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.dealersclip;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Profiling;
 		};
 		CAF254B12517F983008892ED /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -2027,6 +2322,17 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		CAB300F12603AFDC009A52E1 /* Build configuration list for PBXNativeTarget "DealersAppClip" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CAB300ED2603AFDC009A52E1 /* Debug */,
+				CAB300EE2603AFDC009A52E1 /* Screenshots */,
+				CAB300EF2603AFDC009A52E1 /* Release */,
+				CAB300F02603AFDC009A52E1 /* Profiling */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CAF254B52517F983008892ED /* Build configuration list for PBXNativeTarget "EurofurenceUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -2052,6 +2358,22 @@
 		CA9768FA25FE3A81001AE029 /* EurofurenceModel */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = EurofurenceModel;
+		};
+		CAB300FE2603B0D8009A52E1 /* EurofurenceApplicationSession */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = EurofurenceApplicationSession;
+		};
+		CAB301002603B0D8009A52E1 /* ContentController */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ContentController;
+		};
+		CAB301022603B0D8009A52E1 /* DealerComponent */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DealerComponent;
+		};
+		CAB301042603B0D8009A52E1 /* DealersComponent */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DealersComponent;
 		};
 		CAC22AE225FEB7A7004E0587 /* EurofurenceApplication */ = {
 			isa = XCSwiftPackageProductDependency;

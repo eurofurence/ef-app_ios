@@ -26,7 +26,7 @@
                         <constraints>
                             <constraint firstItem="dHW-vm-Gc3" firstAttribute="top" secondItem="6ea-Oq-lts" secondAttribute="top" id="Bgh-Fb-rdp"/>
                             <constraint firstItem="dHW-vm-Gc3" firstAttribute="trailing" secondItem="6ea-Oq-lts" secondAttribute="trailing" id="SvV-kT-fLY"/>
-                            <constraint firstItem="3wZ-bx-MNt" firstAttribute="bottom" secondItem="dHW-vm-Gc3" secondAttribute="bottom" id="Tdj-Tt-7gL"/>
+                            <constraint firstAttribute="bottom" secondItem="dHW-vm-Gc3" secondAttribute="bottom" id="Tdj-Tt-7gL"/>
                             <constraint firstItem="dHW-vm-Gc3" firstAttribute="leading" secondItem="6ea-Oq-lts" secondAttribute="leading" id="Un9-UV-ycv"/>
                         </constraints>
                     </view>

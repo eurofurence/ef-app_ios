@@ -13,7 +13,7 @@
         <!--No Content Placeholder View Controller-->
         <scene sceneID="cmU-SN-Ibx">
             <objects>
-                <viewController storyboardIdentifier="NoContentPlaceholderViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="eoY-VH-1Kp" customClass="NoContentPlaceholderViewController" customModule="EurofurenceApplication" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NoContentPlaceholderViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="eoY-VH-1Kp" customClass="NoContentPlaceholderViewController" customModule="ComponentBase" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yIo-JB-qwN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

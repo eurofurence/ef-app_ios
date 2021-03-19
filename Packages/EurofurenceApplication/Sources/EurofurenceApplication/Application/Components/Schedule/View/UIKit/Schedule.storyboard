@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3vS-0E-aVm" userLabel="Days Picker Container" customClass="NavigationBarViewExtensionContainer" customModule="EurofurenceApplication">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3vS-0E-aVm" userLabel="Days Picker Container" customClass="NavigationBarViewExtensionContainer" customModule="ComponentBase">
                                 <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KtS-4f-Pp1" customClass="DaysHorizontalPickerView" customModule="EurofurenceApplication">

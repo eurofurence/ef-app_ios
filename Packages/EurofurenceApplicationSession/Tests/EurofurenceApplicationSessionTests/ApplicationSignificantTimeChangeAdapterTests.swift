@@ -1,4 +1,4 @@
-import EurofurenceApplication
+import EurofurenceApplicationSession
 import EurofurenceModel
 import XCTest
 

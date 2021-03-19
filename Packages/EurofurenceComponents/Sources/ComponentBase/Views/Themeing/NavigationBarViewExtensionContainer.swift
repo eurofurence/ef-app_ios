@@ -1,4 +1,4 @@
 import UIKit
 
 // Just used for appearence proxies to apply themeing.
-class NavigationBarViewExtensionContainer: UIView { }
+public class NavigationBarViewExtensionContainer: UIView { }
