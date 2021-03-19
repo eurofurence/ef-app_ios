@@ -2,6 +2,7 @@ import ComponentBase
 import DealerComponent
 import DealersComponent
 import EurofurenceModel
+import EventFeedbackComponent
 import PreloadComponent
 import TutorialComponent
 import UIKit

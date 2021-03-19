@@ -1,5 +1,6 @@
 import EurofurenceApplication
 import EurofurenceModel
+import EventFeedbackComponent
 import UIKit
 
 class StubEventFeedbackComponentFactory: EventFeedbackComponentFactory {

@@ -25,6 +25,7 @@ let package = Package(
                 .product(name: "EurofurenceModel", package: "EurofurenceModel"),
                 .product(name: "EurofurenceApplicationSession", package: "EurofurenceApplicationSession"),
                 
+                .product(name: "EventFeedbackComponent", package: "EurofurenceComponents"),
                 .product(name: "DealersComponent", package: "EurofurenceComponents"),
                 .product(name: "DealerComponent", package: "EurofurenceComponents"),
                 .product(name: "PreloadComponent", package: "EurofurenceComponents"),

@@ -1,0 +1,6 @@
+"LeaveFeedback" = "Leave Feedback";
+"FeedbackErrorTitle" = "Feedback Not Submitted";
+"FeedbackErrorMessage" = "There was a problem trying to submit your feedback. Please try again.";
+"ConfirmDiscardEventFeedbackTitle" = "Discard Feedback";
+"EventFeedbackDayAndTime" = "%@ from %@ to %@";
+"EventHostedBy" = "Hosted by %@";

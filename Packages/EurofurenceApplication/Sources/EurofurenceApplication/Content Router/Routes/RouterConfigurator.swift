@@ -1,6 +1,7 @@
 import ComponentBase
 import DealersComponent
 import EurofurenceModel
+import EventFeedbackComponent
 import UIKit
 
 struct RouterConfigurator {
