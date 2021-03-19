@@ -37,8 +37,7 @@ struct DealerAppClipModule: PrincipalContentModuleFactory {
         
         let showDealerInDetailPane = ShowDealerInDetailPane(
             splitViewController: rootViewController,
-            dealerDetailModuleProviding: dealerDetailModuleProviding,
-            scene: windowScene
+            dealerDetailModuleProviding: dealerDetailModuleProviding
         )
         
         let dealersModule = dealersComponentFactory.makeDealersComponent(showDealerInDetailPane)
