@@ -1,5 +1,6 @@
 import ComponentBase
 import EurofurenceModel
+import EventDetailComponent
 import Foundation
 
 public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory, EventsServiceObserver {

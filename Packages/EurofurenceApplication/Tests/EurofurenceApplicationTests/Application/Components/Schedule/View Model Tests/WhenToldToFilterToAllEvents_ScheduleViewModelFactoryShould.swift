@@ -1,6 +1,7 @@
 import EurofurenceApplication
 import EurofurenceModel
 import XCTest
+import XCTEurofurenceModel
 
 class WhenToldToFilterToAllEvents_ScheduleViewModelFactoryShould: XCTestCase {
 
