@@ -1,6 +1,6 @@
 import UIKit
 
-class DealersSceneDelegate: UIResponder, UIWindowSceneDelegate {
+class AppClipSceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 

@@ -2,7 +2,7 @@ import ComponentBase
 import UIKit
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppClipAppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(
         _ application: UIApplication,
