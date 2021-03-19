@@ -13,7 +13,7 @@
         <!--Event Feedback Form View Controller-->
         <scene sceneID="00B-DI-ggf">
             <objects>
-                <tableViewController storyboardIdentifier="EventFeedbackFormViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="XOT-yp-mYS" customClass="EventFeedbackFormViewController" customModule="EurofurenceApplication" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="EventFeedbackFormViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="XOT-yp-mYS" customClass="EventFeedbackFormViewController" customModule="EventFeedbackComponent" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="C3D-fj-Je4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -133,7 +133,7 @@
         <!--Submit Feedback-->
         <scene sceneID="nrH-YQ-9le">
             <objects>
-                <viewController storyboardIdentifier="EventFeedbackViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lSU-qy-7mX" customClass="EventFeedbackViewController" customModule="EurofurenceApplication" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EventFeedbackViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lSU-qy-7mX" customClass="EventFeedbackViewController" customModule="EventFeedbackComponent" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OUT-GI-cRo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -211,7 +211,7 @@
         <!--Event Feedback Success View Controller-->
         <scene sceneID="dAj-5p-zX9">
             <objects>
-                <viewController storyboardIdentifier="EventFeedbackSuccessViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aiU-dS-BIi" customClass="EventFeedbackSuccessViewController" customModule="EurofurenceApplication" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EventFeedbackSuccessViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aiU-dS-BIi" customClass="EventFeedbackSuccessViewController" customModule="EventFeedbackComponent" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Eve-0X-dfA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -252,7 +252,7 @@
         <!--Event Feedback Progress View Controller-->
         <scene sceneID="uo8-yg-icz">
             <objects>
-                <viewController storyboardIdentifier="EventFeedbackProgressViewController" id="TTn-ID-LDi" customClass="EventFeedbackProgressViewController" customModule="EurofurenceApplication" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EventFeedbackProgressViewController" id="TTn-ID-LDi" customClass="EventFeedbackProgressViewController" customModule="EventFeedbackComponent" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7ry-bT-agT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

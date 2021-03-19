@@ -110,6 +110,20 @@
         "identifier" : "DealerComponentTests",
         "name" : "DealerComponentTests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/EurofurenceComponents",
+        "identifier" : "EventDetailComponentTests",
+        "name" : "EventDetailComponentTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/EurofurenceComponents",
+        "identifier" : "EventFeedbackComponentTests",
+        "name" : "EventFeedbackComponentTests"
+      }
     }
   ],
   "version" : 1

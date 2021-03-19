@@ -28,11 +28,10 @@ class WhenEventFeedbackSceneLoads_EventFeedbackPresenterShould: XCTestCase {
     }
     
     private func assertEventTimeBound() {
-        let formatString = String.eventFeedbackDayAndTimeFormat
-        let expected = String.localizedStringWithFormat(formatString,
-                                                        context.stubbedDayOfWeekString,
-                                                        context.stubbedStartTimeString,
-                                                        context.stubbedEndTimeString)
+        let dayOfWeek = context.stubbedDayOfWeekString
+        let startTime = context.stubbedStartTimeString
+        let endTime = context.stubbedEndTimeString
+        let expected = "\(dayOfWeek) from \(startTime) to \(endTime)"
         
         XCTAssertEqual(expected, context.scene.capturedViewModel?.eventDayAndTime)
     }
@@ -43,9 +42,7 @@ class WhenEventFeedbackSceneLoads_EventFeedbackPresenterShould: XCTestCase {
     }
     
     private func assertEventHostBound() {
-        let formatString = String.eventHostedByFormat
-        let expected = String.localizedStringWithFormat(formatString, context.event.hosts)
-        
+        let expected = "Hosted by \(context.event.hosts)"
         XCTAssertEqual(expected, context.scene.capturedViewModel?.eventHosts)
     }
 

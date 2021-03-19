@@ -10,11 +10,13 @@ let package = Package(
         .library(name: "TutorialComponent", targets: ["TutorialComponent"]),
         .library(name: "PreloadComponent", targets: ["PreloadComponent"]),
         .library(name: "ContentController", targets: ["ContentController"]),
+        .library(name: "EventDetailComponent", targets: ["EventDetailComponent"]),
         .library(name: "EventFeedbackComponent", targets: ["EventFeedbackComponent"]),
         .library(name: "DealersComponent", targets: ["DealersComponent"]),
         .library(name: "DealerComponent", targets: ["DealerComponent"]),
             
-        .library(name: "XCTComponentBase", targets: ["XCTComponentBase"])
+        .library(name: "XCTComponentBase", targets: ["XCTComponentBase"]),
+        .library(name: "XCTEventDetailComponent", targets: ["XCTEventDetailComponent"])
     ],
     dependencies: [
         .package(path: "../EurofurenceModel"),
@@ -74,6 +76,26 @@ let package = Package(
             .target(name: "PreloadComponent"),
             .target(name: "XCTComponentBase"),
             .product(name: "XCTEurofurenceModel", package: "EurofurenceModel")
+        ]),
+        
+        // MARK: Event Detail
+        
+        .target(name: "EventDetailComponent", dependencies: [
+            .target(name: "ComponentBase"),
+            .product(name: "EurofurenceModel", package: "EurofurenceModel")
+        ]),
+        
+        .target(name: "XCTEventDetailComponent", dependencies: [
+            .target(name: "EventDetailComponent")
+        ]),
+        
+        .testTarget(name: "EventDetailComponentTests", dependencies: [
+            .target(name: "EventDetailComponent"),
+            .target(name: "XCTComponentBase"),
+            .target(name: "XCTEventDetailComponent"),
+            .product(name: "XCTEurofurenceModel", package: "EurofurenceModel")
+        ], resources: [
+            .process("Resources")
         ]),
         
         // MARK: Event Feedback

@@ -1,5 +1,6 @@
 import ComponentBase
 import EurofurenceModel
+import EventDetailComponent
 
 public struct EmbeddedEventContentRoute {
     

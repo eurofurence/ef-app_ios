@@ -127,14 +127,6 @@ public extension String {
                                                 bundle: .module,
                                                 comment: "Title for the view showing detailed information for an announcement")
     
-    static let favourite = NSLocalizedString("Favourite",
-                                             bundle: .module,
-                                             comment: "Title for the button used to add an event to the user's favourites")
-    
-    static let unfavourite = NSLocalizedString("Unfavourite",
-                                               bundle: .module,
-                                               comment: "Title for the button used to remove an event from the user's favourites")
-    
     static let collect = NSLocalizedString("Collect",
                                            bundle: .module,
                                            comment: "Short title for the Collect-them-All screen shown in the tab bar")
@@ -155,37 +147,9 @@ public extension String {
                                               bundle: .module,
                                               comment: "Title for the button used under the events search bar to search through only the user's favourites")
     
-    static let thisEventIsForSponsorsOnly = NSLocalizedString("ThisEventIsForSponsorsOnly",
-                                                              bundle: .module,
-                                                              comment: "Message shown in the event detail view when viewing an event that's only available for attendees who are sponsors")
-    
-    static let thisEventIsForSuperSponsorsOnly = NSLocalizedString("ThisEventIsForSuperSponsorsOnly",
-                                                                   bundle: .module,
-                                                                   comment: "Message shown in the event detail view when viewing an event that's only available for attendees who are super sponsors")
-    
     static let selectAnOption = NSLocalizedString("SelectAnOption",
                                                   bundle: .module,
                                                   comment: "Title for action sheets present on top of maps when multiple options available for a tapped target")
-    
-    static let artShow = NSLocalizedString("ArtShow",
-                                           bundle: .module,
-                                           comment: "Message shown in the event detail view when viewing an event that's part of the art show")
-    
-    static let kageGuestMessage = NSLocalizedString("KageGuestMessage",
-                                                    bundle: .module,
-                                                    comment: "Message shown in the event detail view when viewing an event that Kage is hosting")
-    
-    static let dealersDen = NSLocalizedString("DealersDen",
-                                              bundle: .module,
-                                              comment: "Message shown in the event detail view when viewing an event that takes place in the dealers den")
-    
-    static let mainStageEvent = NSLocalizedString("MainStageEvent",
-                                                  bundle: .module,
-                                                  comment: "Message shown in the event detail view when viewing an event that takes place in the main stage")
-    
-    static let photoshoot = NSLocalizedString("Photoshoot",
-                                              bundle: .module,
-                                              comment: "Message shown in the event detail view when viewing an event that is part of a photoshoot")
     
     static let restrictEventsToDateFormat = NSLocalizedString("RestrictEventsToDateFormat",
                                                               bundle: .module,
@@ -210,10 +174,6 @@ public extension String {
     static let additionalServices = NSLocalizedString("AdditionalServices",
                                                       bundle: .module,
                                                       comment: "Navigation title used for the compainion app hybrid scene")
-    
-    static let share = NSLocalizedString("Share",
-                                         bundle: .module,
-                                         comment: "Title for buttons used for share actions (e.g. events)")
     
     private struct Formatters {
         static var numbers = NumberFormatter()

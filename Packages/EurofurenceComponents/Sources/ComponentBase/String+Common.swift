@@ -26,4 +26,10 @@ extension String {
         comment: "Text used to describe actions related to user input that will cause their input to be discarded"
     )
     
+    public static let share = NSLocalizedString(
+        "Share",
+        bundle: .module,
+        comment: "Title for buttons used for share actions (e.g. events)"
+    )
+    
 }
