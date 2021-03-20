@@ -3,6 +3,9 @@
 "Try Again" = "Try Again";
 "Discard" = "Discard";
 "Share" = "Share";
+"Favourite" = "Favourite";
+"Unfavourite" = "Unfavourite";
+"LeaveFeedback" = "Leave Feedback";
 
 "Star Rating" = "Star Rating";
 "Star Rating Value Format" = "%li of %li";

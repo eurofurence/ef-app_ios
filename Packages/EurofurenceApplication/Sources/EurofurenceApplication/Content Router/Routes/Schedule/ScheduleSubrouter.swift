@@ -1,5 +1,6 @@
 import ComponentBase
 import EurofurenceModel
+import ScheduleComponent
 
 public struct ScheduleSubrouter: ScheduleComponentDelegate {
     

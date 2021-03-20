@@ -5,6 +5,7 @@ import EurofurenceModel
 import EventDetailComponent
 import EventFeedbackComponent
 import PreloadComponent
+import ScheduleComponent
 import TutorialComponent
 import UIKit
 

@@ -1,7 +1,9 @@
 import EurofurenceApplication
 import EurofurenceModel
+import ScheduleComponent
 import UIKit.UIViewController
 import XCTEurofurenceModel
+import XCTScheduleComponent
 
 class CapturingNewsScene: UIViewController, NewsScene {
 

@@ -2,6 +2,7 @@ import EurofurenceApplication
 import EurofurenceModel
 import XCTest
 import XCTEurofurenceModel
+import XCTScheduleComponent
 
 class EventsViewModel: NewsViewModel {
 

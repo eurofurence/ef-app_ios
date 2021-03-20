@@ -1,3 +1,4 @@
+import ScheduleComponent
 import UIKit
 
 struct ScheduleContentControllerFactory: ApplicationModuleFactory {
@@ -6,7 +7,10 @@ struct ScheduleContentControllerFactory: ApplicationModuleFactory {
     var scheduleComponentDelegate: ScheduleComponentDelegate
     
     func makeApplicationModuleController() -> UIViewController {
-        scheduleComponentFactory.makeScheduleComponent(scheduleComponentDelegate)
+        let viewController = scheduleComponentFactory.makeScheduleComponent(scheduleComponentDelegate)
+        viewController.tabBarItem.image = UIImage(named: "Calendar", in: .module, compatibleWith: nil)
+        
+        return viewController
     }
     
 }

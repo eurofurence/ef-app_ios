@@ -1,4 +1,5 @@
 import ComponentBase
+import ScheduleComponent
 import UIKit.UIViewController
 
 class NewsViewController: UIViewController, NewsScene {

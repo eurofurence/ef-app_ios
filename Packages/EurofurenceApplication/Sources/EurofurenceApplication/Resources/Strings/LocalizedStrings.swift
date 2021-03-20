@@ -115,10 +115,6 @@ public extension String {
                                             bundle: .module,
                                             comment: "Title for the view that displays the user's private messages")
     
-    static let schedule = NSLocalizedString("Schedule",
-                                            bundle: .module,
-                                            comment: "Title for the view that shows the convention schedule")
-    
     static let information = NSLocalizedString("Information",
                                                bundle: .module,
                                                comment: "Title for the view showing all the categoried convention information")
@@ -139,21 +135,9 @@ public extension String {
                                         bundle: .module,
                                         comment: "Title for the view containing the list of available convention maps")
     
-    static let allEvents = NSLocalizedString("AllEvents",
-                                             bundle: .module,
-                                             comment: "Title for the button used under the events search bar to search through all events")
-    
-    static let favourites = NSLocalizedString("Favourites",
-                                              bundle: .module,
-                                              comment: "Title for the button used under the events search bar to search through only the user's favourites")
-    
     static let selectAnOption = NSLocalizedString("SelectAnOption",
                                                   bundle: .module,
                                                   comment: "Title for action sheets present on top of maps when multiple options available for a tapped target")
-    
-    static let restrictEventsToDateFormat = NSLocalizedString("RestrictEventsToDateFormat",
-                                                              bundle: .module,
-                                                              comment: "Format string used to build up an accessibility hint for the days button in the Schedule tab")
     
     static let invalidAnnouncementAlertTitle = NSLocalizedString("InvalidAnnouncementAlertTitle",
                                                                  bundle: .module,
@@ -162,10 +146,6 @@ public extension String {
     static let invalidAnnouncementAlertMessage = NSLocalizedString("InvalidAnnouncementAlertMessage",
                                                                    bundle: .module,
                                                                    comment: "Message for the alert shown when trying to open an announcenent that has been deleted")
-    
-    static let leaveFeedback = NSLocalizedString("LeaveFeedback",
-                                                 bundle: .module,
-                                                 comment: "Title for the command shown in the event detail scene for leaving feedback for an event")
     
     static let services = NSLocalizedString("Services",
                                             bundle: .module,
@@ -193,10 +173,6 @@ public extension String {
     
     static func daysUntilConventionMessage(days: Int) -> String {
         return localizedStringWithFormat(daysRemainingFormat, days)
-    }
-    
-    static func restrictEventsAccessibilityHint(date: String) -> String {
-        return localizedStringWithFormat(restrictEventsToDateFormat, date)
     }
     
     private static let eventReminderBodyFormat = NSLocalizedString("EventReminderBodyFormat",

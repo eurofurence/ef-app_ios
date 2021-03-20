@@ -32,4 +32,22 @@ extension String {
         comment: "Title for buttons used for share actions (e.g. events)"
     )
     
+    public static let favourite = NSLocalizedString(
+        "Favourite",
+        bundle: .module,
+        comment: "Title for the button used to add an event to the user's favourites"
+    )
+    
+    public static let unfavourite = NSLocalizedString(
+        "Unfavourite",
+        bundle: .module,
+        comment: "Title for the button used to remove an event from the user's favourites"
+    )
+    
+    public static let leaveFeedback = NSLocalizedString(
+        "LeaveFeedback",
+        bundle: .module,
+        comment: "Title for commands used to leave feedback, e.g. events"
+    )
+    
 }

@@ -1,0 +1,25 @@
+import EurofurenceModel
+import ScheduleComponent
+import XCTest
+import XCTEurofurenceModel
+
+class WhenSceneSelectsEventFromSearchViewModel_SchedulePresenterShould: XCTestCase {
+
+    func testTellModuleEventWithResolvedIdentifierSelected() {
+        let searchViewModel = CapturingScheduleSearchViewModel()
+        let viewModelFactory = FakeScheduleViewModelFactory(searchViewModel: searchViewModel)
+        let context = SchedulePresenterTestBuilder().with(viewModelFactory).build()
+        let results = [ScheduleEventGroupViewModel].random
+        context.simulateSceneDidLoad()
+        searchViewModel.simulateSearchResultsUpdated(results)
+        let randomGroup = results.randomElement()
+        let randomEvent = randomGroup.element.events.randomElement()
+        let indexPath = IndexPath(item: randomEvent.index, section: randomGroup.index)
+        let selectedIdentifier = EventIdentifier.random
+        searchViewModel.stub(selectedIdentifier, at: indexPath)
+        context.simulateSceneDidSelectSearchResult(at: indexPath)
+
+        XCTAssertEqual(selectedIdentifier, context.delegate.capturedEventIdentifier)
+    }
+
+}
