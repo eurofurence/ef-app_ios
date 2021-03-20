@@ -10,12 +10,14 @@ let package = Package(
         .library(name: "TutorialComponent", targets: ["TutorialComponent"]),
         .library(name: "PreloadComponent", targets: ["PreloadComponent"]),
         .library(name: "ContentController", targets: ["ContentController"]),
+        .library(name: "ScheduleComponent", targets: ["ScheduleComponent"]),
         .library(name: "EventDetailComponent", targets: ["EventDetailComponent"]),
         .library(name: "EventFeedbackComponent", targets: ["EventFeedbackComponent"]),
         .library(name: "DealersComponent", targets: ["DealersComponent"]),
         .library(name: "DealerComponent", targets: ["DealerComponent"]),
             
         .library(name: "XCTComponentBase", targets: ["XCTComponentBase"]),
+        .library(name: "XCTScheduleComponent", targets: ["XCTScheduleComponent"]),
         .library(name: "XCTEventDetailComponent", targets: ["XCTEventDetailComponent"])
     ],
     dependencies: [
@@ -25,7 +27,8 @@ let package = Package(
     ],
     targets: [
         .target(name: "ComponentBase", dependencies: [
-            .product(name: "Down", package: "Down")
+            .product(name: "Down", package: "Down"),
+            .product(name: "EurofurenceModel", package: "EurofurenceModel")
         ]),
         
         .target(name: "XCTComponentBase", dependencies: [
@@ -35,7 +38,10 @@ let package = Package(
         
         .testTarget(name: "ComponentBaseTests", dependencies: [
             .target(name: "ComponentBase"),
-            .target(name: "XCTComponentBase")
+            .target(name: "XCTComponentBase"),
+            .product(name: "XCTEurofurenceModel", package: "EurofurenceModel")
+        ], resources: [
+            .process("Resources")
         ]),
         
         // MARK: Content Controller
@@ -78,6 +84,25 @@ let package = Package(
             .product(name: "XCTEurofurenceModel", package: "EurofurenceModel")
         ]),
         
+        // MARK: Schedule
+        
+        .target(name: "ScheduleComponent", dependencies: [
+            .target(name: "ComponentBase"),
+            .product(name: "EurofurenceModel", package: "EurofurenceModel")
+        ]),
+        
+        .target(name: "XCTScheduleComponent", dependencies: [
+            .target(name: "ScheduleComponent"),
+            .target(name: "XCTComponentBase")
+        ]),
+        
+        .testTarget(name: "ScheduleComponentTests", dependencies: [
+            .target(name: "ScheduleComponent"),
+            .target(name: "XCTComponentBase"),
+            .target(name: "XCTScheduleComponent"),
+            .product(name: "XCTEurofurenceModel", package: "EurofurenceModel")
+        ]),
+        
         // MARK: Event Detail
         
         .target(name: "EventDetailComponent", dependencies: [
@@ -94,8 +119,6 @@ let package = Package(
             .target(name: "XCTComponentBase"),
             .target(name: "XCTEventDetailComponent"),
             .product(name: "XCTEurofurenceModel", package: "EurofurenceModel")
-        ], resources: [
-            .process("Resources")
         ]),
         
         // MARK: Event Feedback

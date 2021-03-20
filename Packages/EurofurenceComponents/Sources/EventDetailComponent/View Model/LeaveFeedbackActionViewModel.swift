@@ -1,3 +1,4 @@
+import ComponentBase
 import Foundation
 
 public class LeaveFeedbackActionViewModel: EventActionViewModel {
@@ -9,13 +10,7 @@ public class LeaveFeedbackActionViewModel: EventActionViewModel {
     }
     
     public func describe(to visitor: EventActionViewModelVisitor) {
-        let title = NSLocalizedString(
-            "LeaveFeedback",
-            bundle: .module,
-            comment: "Title for the command shown in the event detail scene for leaving feedback for an event"
-        )
-        
-        visitor.visitActionTitle(title)
+        visitor.visitActionTitle(.leaveFeedback)
     }
     
     public func perform(sender: Any?) {

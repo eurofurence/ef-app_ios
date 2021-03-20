@@ -28,8 +28,6 @@
 
 "Messages" = "Messages";
 
-"Schedule" = "Schedule";
-
 "Dealers" = "Dealers";
 
 "Information" = "Information";
@@ -44,12 +42,7 @@
 
 "EventReminderBodyFormat" = "Starting at %@, in %@";
 
-"AllEvents" = "All Events";
-"Favourites" = "Favourites";
-
 "SelectAnOption" = "Select an option";
-
-"RestrictEventsToDateFormat" = "Double tap to restrict events to %@";
 
 "InvalidAnnouncementAlertTitle" = "Expired Announcement";
 "InvalidAnnouncementAlertMessage" = "The selected announcement has been removed as its contents are no longer valid";

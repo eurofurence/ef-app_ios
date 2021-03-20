@@ -2,6 +2,7 @@ import ComponentBase
 import DealersComponent
 import EurofurenceModel
 import EventFeedbackComponent
+import ScheduleComponent
 import UIKit
 
 struct RouterConfigurator {

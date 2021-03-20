@@ -1,4 +1,5 @@
 import Foundation.NSIndexPath
+import ScheduleComponent
 
 public protocol NewsComponentsBinder {
 

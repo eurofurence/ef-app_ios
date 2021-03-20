@@ -1,3 +1,4 @@
+import ComponentBase
 import EventDetailComponent
 import XCTest
 import XCTEurofurenceModel

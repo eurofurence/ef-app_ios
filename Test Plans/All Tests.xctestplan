@@ -124,6 +124,13 @@
         "identifier" : "EventFeedbackComponentTests",
         "name" : "EventFeedbackComponentTests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/EurofurenceComponents",
+        "identifier" : "ScheduleComponentTests",
+        "name" : "ScheduleComponentTests"
+      }
     }
   ],
   "version" : 1

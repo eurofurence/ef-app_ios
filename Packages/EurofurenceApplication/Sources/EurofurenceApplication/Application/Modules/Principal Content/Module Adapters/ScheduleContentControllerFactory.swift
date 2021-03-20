@@ -1,3 +1,4 @@
+import ScheduleComponent
 import UIKit
 
 struct ScheduleContentControllerFactory: ApplicationModuleFactory {
