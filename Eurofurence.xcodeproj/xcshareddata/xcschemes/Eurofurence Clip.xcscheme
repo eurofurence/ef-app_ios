@@ -38,6 +38,16 @@
                ReferencedContainer = "container:Eurofurence.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "CA7A2F112606BCB400919DA0"
+               BuildableName = "Eurofurence Clip UITests.xctest"
+               BlueprintName = "Eurofurence Clip UITests"
+               ReferencedContainer = "container:Eurofurence.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

@@ -23,13 +23,6 @@
     {
       "target" : {
         "containerPath" : "container:Eurofurence.xcodeproj",
-        "identifier" : "CA7A2EEA2606B83C00919DA0",
-        "name" : "Eurofurence ClipTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:Eurofurence.xcodeproj",
         "identifier" : "78D7EEA01F17F40C005372A9",
         "name" : "Screenshots"
       }
@@ -39,6 +32,20 @@
         "containerPath" : "container:Eurofurence.xcodeproj",
         "identifier" : "CAF254A92517F983008892ED",
         "name" : "EurofurenceUITests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Eurofurence.xcodeproj",
+        "identifier" : "CA7A2EEA2606B83C00919DA0",
+        "name" : "Eurofurence ClipTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Eurofurence.xcodeproj",
+        "identifier" : "CA7A2F112606BCB400919DA0",
+        "name" : "Eurofurence Clip UITests"
       }
     },
     {
