@@ -23,6 +23,13 @@
     {
       "target" : {
         "containerPath" : "container:Eurofurence.xcodeproj",
+        "identifier" : "CA7A2EEA2606B83C00919DA0",
+        "name" : "Eurofurence ClipTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Eurofurence.xcodeproj",
         "identifier" : "78D7EEA01F17F40C005372A9",
         "name" : "Screenshots"
       }
