@@ -14,11 +14,11 @@
             <objects>
                 <viewController storyboardIdentifier="ScheduleViewController" extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uUW-Is-Btl" customClass="ScheduleViewController" customModule="ScheduleComponent" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jed-Ti-sU7">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MGV-Hg-vha">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3vS-0E-aVm" userLabel="Days Picker Container" customClass="NavigationBarViewExtensionContainer" customModule="ComponentBase">
@@ -52,7 +52,6 @@
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
-                    <tabBarItem key="tabBarItem" title="Item" image="Calendar" selectedImage="Calendar" id="YEX-4v-gXn"/>
                     <navigationItem key="navigationItem" title="Title" id="2OJ-rN-eRD">
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="1g4-We-X2t">
                             <connections>
@@ -61,7 +60,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="daysHorizontalPickerView" destination="KtS-4f-Pp1" id="YUn-aY-EU6"/>
                         <outlet property="daysPickerTopConstraint" destination="pWh-ih-Typ" id="xfb-aQ-tSQ"/>
@@ -92,7 +91,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Calendar" width="25" height="25"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
