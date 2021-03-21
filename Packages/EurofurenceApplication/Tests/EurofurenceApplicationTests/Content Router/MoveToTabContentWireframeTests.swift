@@ -3,12 +3,12 @@ import XCTest
 
 class MoveToTabContentWireframeTests: ContentWireframeDecoratorTests {
     
-    private var tabSwapper: CapturingTabSwapper!
+    private var tabSwapper: CapturingTabNavigator!
     
     override func setUp() {
         super.setUp()
         
-        tabSwapper = CapturingTabSwapper()
+        tabSwapper = CapturingTabNavigator()
     }
     
     func testShowingDetailSwapsTab() {
