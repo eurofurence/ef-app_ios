@@ -1,17 +1,17 @@
-import EurofurenceApplication
+import ComponentBase
 import UIKit
 import XCTest
 
-class ContentWireframeDecoratorTests: XCTestCase {
+open class ContentWireframeDecoratorTests: XCTestCase {
     
-    private(set) var spyingWireframe: CapturingContentWireframe!
+    public private(set) var spyingWireframe: CapturingContentWireframe!
     
-    override func setUp() {
+    override open func setUp() {
         super.setUp()
         spyingWireframe = CapturingContentWireframe()
     }
     
-    func testShowingPrimary() {
+    public func testShowingPrimary() {
         let decorator = makeContentWireframe()
         let viewController = UIViewController()
         decorator.presentPrimaryContentController(viewController)
@@ -19,7 +19,7 @@ class ContentWireframeDecoratorTests: XCTestCase {
         XCTAssertEqual(viewController, spyingWireframe.presentedPrimaryContentController)
     }
     
-    func testShowingDetail() {
+    public func testShowingDetail() {
         let decorator = makeContentWireframe()
         let viewController = UIViewController()
         decorator.presentDetailContentController(viewController)
@@ -27,7 +27,7 @@ class ContentWireframeDecoratorTests: XCTestCase {
         XCTAssertEqual(viewController, spyingWireframe.presentedDetailContentController)
     }
     
-    func testReplacingDetail() {
+    public func testReplacingDetail() {
         let decorator = makeContentWireframe()
         let viewController = UIViewController()
         decorator.replaceDetailContentController(viewController)
@@ -35,7 +35,7 @@ class ContentWireframeDecoratorTests: XCTestCase {
         XCTAssertEqual(viewController, spyingWireframe.replacedDetailContentController)
     }
     
-    func makeContentWireframe() -> ContentWireframe {
+    open func makeContentWireframe() -> ContentWireframe {
         ContentWireframeDecorator(decoratedWireframe: spyingWireframe)
     }
 

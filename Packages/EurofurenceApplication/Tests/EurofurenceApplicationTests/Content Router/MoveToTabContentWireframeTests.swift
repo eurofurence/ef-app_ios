@@ -1,4 +1,6 @@
+import ComponentBase
 import EurofurenceApplication
+import XCTComponentBase
 import XCTest
 
 class MoveToTabContentWireframeTests: ContentWireframeDecoratorTests {
