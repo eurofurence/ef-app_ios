@@ -36,6 +36,20 @@
     },
     {
       "target" : {
+        "containerPath" : "container:Eurofurence.xcodeproj",
+        "identifier" : "CA7A2EEA2606B83C00919DA0",
+        "name" : "Eurofurence ClipTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Eurofurence.xcodeproj",
+        "identifier" : "CA7A2F112606BCB400919DA0",
+        "name" : "Eurofurence Clip UITests"
+      }
+    },
+    {
+      "target" : {
         "containerPath" : "container:Packages\/EventsWidgetLogic",
         "identifier" : "EventsWidgetLogicTests",
         "name" : "EventsWidgetLogicTests"
