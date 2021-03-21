@@ -4,14 +4,14 @@ import XCTest
 class ShowDealersRouteTests: XCTestCase {
     
     func testActivatesTab() {
-        let tabActivator = CapturingTabWireframe()
-        let route = ShowDealersRoute(tabActivator: tabActivator)
+        let tabNavigator = CapturingTabNavigator()
+        let route = ShowDealersRoute(tabNavigator: tabNavigator)
         
-        XCTAssertFalse(tabActivator.activated)
+        XCTAssertFalse(tabNavigator.didMoveToTab)
         
         route.route(DealersContentRepresentation())
         
-        XCTAssertTrue(tabActivator.activated)
+        XCTAssertTrue(tabNavigator.didMoveToTab)
     }
     
 }

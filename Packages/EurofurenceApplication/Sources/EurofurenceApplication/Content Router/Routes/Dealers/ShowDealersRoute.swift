@@ -2,10 +2,10 @@ import ComponentBase
 
 public struct ShowDealersRoute {
     
-    private let tabActivator: TabWireframe
+    private let tabNavigator: TabNavigator
     
-    public init(tabActivator: TabWireframe) {
-        self.tabActivator = tabActivator
+    public init(tabNavigator: TabNavigator) {
+        self.tabNavigator = tabNavigator
     }
     
 }
@@ -15,7 +15,7 @@ public struct ShowDealersRoute {
 extension ShowDealersRoute: ContentRoute {
     
     public func route(_ content: DealersContentRepresentation) {
-        tabActivator.activate()
+        tabNavigator.moveToTab()
     }
     
 }
