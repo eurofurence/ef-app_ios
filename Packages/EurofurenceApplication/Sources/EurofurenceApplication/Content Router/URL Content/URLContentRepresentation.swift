@@ -8,6 +8,7 @@ public struct URLContentRepresentation: ContentRepresentation {
         var chain = URLDecodingChain()
         chain.add(DecodeContentFromURL<EventContentRepresentation>())
         chain.add(DecodeContentFromURL<DealerContentRepresentation>())
+        chain.add(DecodeContentFromURL<DealersContentRepresentation>())
         chain.add(DecodeContentFromURL<KnowledgeEntryContentRepresentation>())
         chain.add(DecodeContentFromURL<KnowledgeGroupsContentRepresentation>())
         
