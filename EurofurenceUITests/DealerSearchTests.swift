@@ -8,7 +8,7 @@ class DealerSearchTests: UIAutomationTestCase {
         controller.app.launch()
         controller.transitionToContent()
         controller.tapTab(.dealers)
-        controller.app.swipeDown()
+        controller.app.tables.firstMatch.swipeDown()
         controller.app.searchFields.firstMatch.tap()
     }
     
