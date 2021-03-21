@@ -55,6 +55,7 @@
                                     <constraint firstItem="my2-22-Ed0" firstAttribute="top" secondItem="smY-TB-Co4" secondAttribute="bottom" constant="32" id="aYK-T2-bdA"/>
                                     <constraint firstAttribute="trailing" secondItem="smY-TB-Co4" secondAttribute="trailing" id="h5y-v9-QIN"/>
                                     <constraint firstAttribute="trailing" secondItem="my2-22-Ed0" secondAttribute="trailing" id="s8y-lx-pNU"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="480" id="vlP-4B-VWs"/>
                                     <constraint firstItem="OnK-sr-Cwd" firstAttribute="centerX" secondItem="gTB-GC-mil" secondAttribute="centerX" id="weL-fk-nTE"/>
                                     <constraint firstItem="OnK-sr-Cwd" firstAttribute="top" secondItem="gTB-GC-mil" secondAttribute="top" id="wnF-ly-afG"/>
                                 </constraints>
@@ -89,6 +90,7 @@
                                     </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="480" id="8EC-98-Ncm"/>
                                     <constraint firstItem="A8g-TT-6Mo" firstAttribute="height" secondItem="qSI-zC-nJr" secondAttribute="height" placeholder="YES" id="WxS-71-AuO"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="s5t-1g-mhD"/>
                                 </constraints>
@@ -105,19 +107,20 @@
                         <constraints>
                             <constraint firstItem="gTB-GC-mil" firstAttribute="centerX" secondItem="JeE-14-GOc" secondAttribute="centerX" id="2Is-4w-arT"/>
                             <constraint firstItem="odD-wW-MCK" firstAttribute="leading" secondItem="JeE-14-GOc" secondAttribute="leading" id="3yn-Oy-psJ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="gTB-GC-mil" secondAttribute="trailing" id="5U9-dt-0Bd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gTB-GC-mil" secondAttribute="trailing" priority="750" id="5U9-dt-0Bd"/>
                             <constraint firstItem="ceP-xb-uKu" firstAttribute="height" secondItem="odD-wW-MCK" secondAttribute="height" id="6k0-J2-tjz"/>
                             <constraint firstAttribute="trailing" secondItem="odD-wW-MCK" secondAttribute="trailing" id="CYa-Da-CdZ"/>
                             <constraint firstItem="ceP-xb-uKu" firstAttribute="leading" secondItem="JeE-14-GOc" secondAttribute="leading" id="I8Q-bi-Ob5"/>
                             <constraint firstItem="Ztw-x3-74B" firstAttribute="top" secondItem="898-Zd-9w2" secondAttribute="bottom" constant="20" id="MDw-dG-suw"/>
                             <constraint firstItem="gTB-GC-mil" firstAttribute="top" secondItem="odD-wW-MCK" secondAttribute="bottom" id="Nfp-Ko-R7z"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="898-Zd-9w2" secondAttribute="trailing" id="PUG-1O-EmU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="898-Zd-9w2" secondAttribute="trailing" priority="750" id="PUG-1O-EmU"/>
                             <constraint firstItem="ceP-xb-uKu" firstAttribute="top" secondItem="gTB-GC-mil" secondAttribute="bottom" id="U3q-xe-Ut3"/>
-                            <constraint firstItem="gTB-GC-mil" firstAttribute="leading" secondItem="JeE-14-GOc" secondAttribute="leadingMargin" id="Vmu-12-oEw"/>
+                            <constraint firstItem="gTB-GC-mil" firstAttribute="leading" secondItem="JeE-14-GOc" secondAttribute="leadingMargin" priority="750" id="Vmu-12-oEw"/>
                             <constraint firstAttribute="trailing" secondItem="ceP-xb-uKu" secondAttribute="trailing" id="YiM-8d-mRH"/>
-                            <constraint firstItem="898-Zd-9w2" firstAttribute="leading" secondItem="JeE-14-GOc" secondAttribute="leadingMargin" id="YvV-vl-alO"/>
+                            <constraint firstItem="898-Zd-9w2" firstAttribute="leading" secondItem="JeE-14-GOc" secondAttribute="leadingMargin" priority="750" id="YvV-vl-alO"/>
                             <constraint firstItem="898-Zd-9w2" firstAttribute="top" secondItem="ceP-xb-uKu" secondAttribute="bottom" id="b2l-O1-5ol"/>
                             <constraint firstItem="odD-wW-MCK" firstAttribute="top" secondItem="JeE-14-GOc" secondAttribute="top" id="dOW-H8-XJL"/>
+                            <constraint firstItem="898-Zd-9w2" firstAttribute="centerX" secondItem="JeE-14-GOc" secondAttribute="centerX" id="wta-1V-sm3"/>
                         </constraints>
                     </view>
                     <connections>
