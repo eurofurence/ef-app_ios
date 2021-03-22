@@ -1,5 +1,5 @@
-import EurofurenceApplication
 import EurofurenceModel
+import KnowledgeDetailComponent
 import XCTest
 
 class WhenBuildingKnowledgeDetailComponent: XCTestCase {

@@ -3,6 +3,7 @@ import EurofurenceModel
 import XCTComponentBase
 import XCTest
 import XCTEurofurenceModel
+import XCTKnowledgeDetailComponent
 
 class KnowledgeEntryContentRouteTests: XCTestCase {
     
