@@ -1,5 +1,5 @@
-import EurofurenceApplication
 import EurofurenceModel
+import KnowledgeGroupComponent
 import XCTest
 
 class WhenBuildingKnowledgeGroupEntriesComponent: XCTestCase {

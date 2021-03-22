@@ -1,5 +1,4 @@
-import EurofurenceApplication
-import EurofurenceModel
+import KnowledgeGroupComponent
 
 class CapturingKnowledgeGroupEntryScene: KnowledgeGroupEntryScene {
 

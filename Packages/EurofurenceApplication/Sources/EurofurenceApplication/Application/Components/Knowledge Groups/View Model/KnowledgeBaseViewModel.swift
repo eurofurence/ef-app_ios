@@ -1,4 +1,5 @@
 import EurofurenceModel
+import KnowledgeGroupComponent
 import UIKit.UIImage
 
 public protocol KnowledgeGroupsListViewModel {
@@ -38,16 +39,6 @@ public struct KnowledgeListGroupViewModel: Equatable {
         self.fontAwesomeCharacter = fontAwesomeCharacter
         self.groupDescription = groupDescription
         self.knowledgeEntries = knowledgeEntries
-    }
-
-}
-
-public struct KnowledgeListEntryViewModel: Equatable {
-
-    public var title: String
-    
-    public init(title: String) {
-        self.title = title
     }
 
 }

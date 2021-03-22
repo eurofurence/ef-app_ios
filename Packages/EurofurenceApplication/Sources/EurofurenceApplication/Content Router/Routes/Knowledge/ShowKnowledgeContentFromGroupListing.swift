@@ -1,5 +1,6 @@
 import ComponentBase
 import EurofurenceModel
+import KnowledgeGroupComponent
 
 public struct ShowKnowledgeContentFromGroupListing: KnowledgeGroupEntriesComponentDelegate {
     

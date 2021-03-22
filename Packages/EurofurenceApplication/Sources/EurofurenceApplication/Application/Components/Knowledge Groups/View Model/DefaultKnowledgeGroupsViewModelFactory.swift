@@ -1,4 +1,5 @@
 import EurofurenceModel
+import KnowledgeGroupComponent
 import UIKit.UIImage
 
 public struct DefaultKnowledgeGroupsViewModelFactory: KnowledgeGroupsViewModelFactory {

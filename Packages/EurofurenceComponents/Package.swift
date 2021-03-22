@@ -15,11 +15,13 @@ let package = Package(
         .library(name: "EventFeedbackComponent", targets: ["EventFeedbackComponent"]),
         .library(name: "DealersComponent", targets: ["DealersComponent"]),
         .library(name: "DealerComponent", targets: ["DealerComponent"]),
+        .library(name: "KnowledgeGroupComponent", targets: ["KnowledgeGroupComponent"]),
         .library(name: "KnowledgeDetailComponent", targets: ["KnowledgeDetailComponent"]),
             
         .library(name: "XCTComponentBase", targets: ["XCTComponentBase"]),
         .library(name: "XCTScheduleComponent", targets: ["XCTScheduleComponent"]),
         .library(name: "XCTEventDetailComponent", targets: ["XCTEventDetailComponent"]),
+        .library(name: "XCTKnowledgeGroupComponent", targets: ["XCTKnowledgeGroupComponent"]),
         .library(name: "XCTKnowledgeDetailComponent", targets: ["XCTKnowledgeDetailComponent"])
     ],
     dependencies: [
@@ -161,6 +163,25 @@ let package = Package(
         .testTarget(name: "DealerComponentTests", dependencies: [
             .target(name: "DealerComponent"),
             .target(name: "XCTComponentBase"),
+            .product(name: "XCTEurofurenceModel", package: "EurofurenceModel")
+        ]),
+        
+        // MARK: Knowledge Group
+        
+        .target(name: "KnowledgeGroupComponent", dependencies: [
+            .target(name: "ComponentBase"),
+            .product(name: "EurofurenceModel", package: "EurofurenceModel")
+        ]),
+        
+        .target(name: "XCTKnowledgeGroupComponent", dependencies: [
+            .target(name: "KnowledgeGroupComponent"),
+            .product(name: "TestUtilities", package: "TestUtilities")
+        ]),
+        
+        .testTarget(name: "KnowledgeGroupComponentTests", dependencies: [
+            .target(name: "KnowledgeGroupComponent"),
+            .target(name: "XCTComponentBase"),
+            .target(name: "XCTKnowledgeGroupComponent"),
             .product(name: "XCTEurofurenceModel", package: "EurofurenceModel")
         ]),
         

@@ -5,6 +5,7 @@ import EurofurenceModel
 import EventDetailComponent
 import EventFeedbackComponent
 import KnowledgeDetailComponent
+import KnowledgeGroupComponent
 import PreloadComponent
 import ScheduleComponent
 import TutorialComponent
