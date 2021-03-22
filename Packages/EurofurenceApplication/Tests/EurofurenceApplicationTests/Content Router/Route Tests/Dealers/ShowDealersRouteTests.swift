@@ -1,17 +1,17 @@
 import EurofurenceApplication
 import XCTest
 
-class KnowledgeGroupsContentRouteTests: XCTestCase {
+class ShowDealersRouteTests: XCTestCase {
     
-    func testShowsTab() {
+    func testActivatesTab() {
         let tabNavigator = CapturingTabNavigator()
-        let route = KnowledgeGroupsContentRoute(tabNavigator: tabNavigator)
+        let route = ShowDealersRoute(tabNavigator: tabNavigator)
         
         XCTAssertFalse(tabNavigator.didMoveToTab)
         
-        route.route(KnowledgeGroupsContentRepresentation())
+        route.route(DealersContentRepresentation())
         
         XCTAssertTrue(tabNavigator.didMoveToTab)
     }
-
+    
 }

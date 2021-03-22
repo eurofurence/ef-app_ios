@@ -15,6 +15,13 @@ class URLContentRepresentationTests: ContentRepresentationTestCase {
         )
     }
     
+    func testDealers() throws {
+        try assertURL(
+            "https://app.eurofurence.org/EF25/Web/Dealers",
+            isDescribedAs: DealersContentRepresentation()
+        )
+    }
+    
     func testDealer() throws {
         try assertURL(
             "https://app.eurofurence.org/EF25/Web/Dealers/7cc35353-f9ae-4115-b5ec-3fe55ef228f8",

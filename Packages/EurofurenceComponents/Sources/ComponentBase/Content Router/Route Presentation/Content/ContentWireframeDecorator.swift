@@ -1,6 +1,6 @@
 import UIKit
 
-public class ContentWireframeDecorator: ContentWireframe {
+open class ContentWireframeDecorator: ContentWireframe {
     
     private let decoratedWireframe: ContentWireframe
     
@@ -8,15 +8,15 @@ public class ContentWireframeDecorator: ContentWireframe {
         self.decoratedWireframe = decoratedWireframe
     }
     
-    public func presentPrimaryContentController(_ viewController: UIViewController) {
+    open func presentPrimaryContentController(_ viewController: UIViewController) {
         decoratedWireframe.presentPrimaryContentController(viewController)
     }
     
-    public func presentDetailContentController(_ viewController: UIViewController) {
+    open func presentDetailContentController(_ viewController: UIViewController) {
         decoratedWireframe.presentDetailContentController(viewController)
     }
     
-    public func replaceDetailContentController(_ viewController: UIViewController) {
+    open func replaceDetailContentController(_ viewController: UIViewController) {
         decoratedWireframe.replaceDetailContentController(viewController)
     }
     

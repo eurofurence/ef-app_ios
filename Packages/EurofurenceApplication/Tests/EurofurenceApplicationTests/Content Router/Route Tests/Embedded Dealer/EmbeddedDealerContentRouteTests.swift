@@ -1,5 +1,6 @@
 import EurofurenceApplication
 import EurofurenceModel
+import XCTComponentBase
 import XCTest
 
 class EmbeddedDealerContentRouteTests: XCTestCase {

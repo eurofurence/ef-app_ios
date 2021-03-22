@@ -1,4 +1,5 @@
 import EurofurenceApplication
+import XCTComponentBase
 import XCTest
 
 class WebContentRouteTests: XCTestCase {

@@ -1,6 +1,6 @@
 import EurofurenceApplication
 
-class CapturingTabSwapper: TabNavigator {
+class CapturingTabNavigator: TabNavigator {
     
     private(set) var didMoveToTab = false
     func moveToTab() {

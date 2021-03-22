@@ -2,7 +2,13 @@ import UIKit
 
 struct MoveToTabByViewController<T>: TabNavigator where T: UIViewController {
     
-    var window: UIWindow
+    private let window: UIWindow
+    private let shouldPopToRoot: Bool
+    
+    init(window: UIWindow, shouldPopToRoot: Bool = false) {
+        self.window = window
+        self.shouldPopToRoot = shouldPopToRoot
+    }
 
     func moveToTab() {
         guard let tabController = window.rootViewController as? UITabBarController else { return }
@@ -27,9 +33,9 @@ struct MoveToTabByViewController<T>: TabNavigator where T: UIViewController {
                 navigationControllerIndexWithinTabBar: viewControllerIndex
             )
         } else if let splitViewController = viewController as? UISplitViewController,
-            let PrimaryNavigationController = splitViewController.viewControllers.first as? UINavigationController {
+            let primaryNavigationController = splitViewController.viewControllers.first as? UINavigationController {
             navigateToViewController(
-                containedIn: PrimaryNavigationController,
+                containedIn: primaryNavigationController,
                 tabController: tabController,
                 navigationControllerIndexWithinTabBar: viewControllerIndex
             )
@@ -43,6 +49,10 @@ struct MoveToTabByViewController<T>: TabNavigator where T: UIViewController {
     ) {
         if navigationController.viewControllers.contains(where: { $0 is T }) {
             tabController.selectedIndex = navigationControllerIndexWithinTabBar
+            
+            if shouldPopToRoot {
+                navigationController.popToRootViewController(animated: UIView.areAnimationsEnabled)
+            }
         }
     }
     

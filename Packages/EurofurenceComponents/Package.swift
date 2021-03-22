@@ -93,7 +93,8 @@ let package = Package(
         
         .target(name: "XCTScheduleComponent", dependencies: [
             .target(name: "ScheduleComponent"),
-            .target(name: "XCTComponentBase")
+            .target(name: "XCTComponentBase"),
+            .product(name: "XCTEurofurenceModel", package: "EurofurenceModel")
         ]),
         
         .testTarget(name: "ScheduleComponentTests", dependencies: [
@@ -111,7 +112,8 @@ let package = Package(
         ]),
         
         .target(name: "XCTEventDetailComponent", dependencies: [
-            .target(name: "EventDetailComponent")
+            .target(name: "EventDetailComponent"),
+            .product(name: "XCTEurofurenceModel", package: "EurofurenceModel")
         ]),
         
         .testTarget(name: "EventDetailComponentTests", dependencies: [
