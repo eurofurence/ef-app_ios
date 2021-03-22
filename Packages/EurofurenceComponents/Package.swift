@@ -15,10 +15,12 @@ let package = Package(
         .library(name: "EventFeedbackComponent", targets: ["EventFeedbackComponent"]),
         .library(name: "DealersComponent", targets: ["DealersComponent"]),
         .library(name: "DealerComponent", targets: ["DealerComponent"]),
+        .library(name: "KnowledgeDetailComponent", targets: ["KnowledgeDetailComponent"]),
             
         .library(name: "XCTComponentBase", targets: ["XCTComponentBase"]),
         .library(name: "XCTScheduleComponent", targets: ["XCTScheduleComponent"]),
-        .library(name: "XCTEventDetailComponent", targets: ["XCTEventDetailComponent"])
+        .library(name: "XCTEventDetailComponent", targets: ["XCTEventDetailComponent"]),
+        .library(name: "XCTKnowledgeDetailComponent", targets: ["XCTKnowledgeDetailComponent"])
     ],
     dependencies: [
         .package(path: "../EurofurenceModel"),
@@ -159,6 +161,24 @@ let package = Package(
         .testTarget(name: "DealerComponentTests", dependencies: [
             .target(name: "DealerComponent"),
             .target(name: "XCTComponentBase"),
+            .product(name: "XCTEurofurenceModel", package: "EurofurenceModel")
+        ]),
+        
+        // MARK: Knowledge Detail
+        
+        .target(name: "KnowledgeDetailComponent", dependencies: [
+            .target(name: "ComponentBase"),
+            .product(name: "EurofurenceModel", package: "EurofurenceModel")
+        ]),
+        
+        .target(name: "XCTKnowledgeDetailComponent", dependencies: [
+            .target(name: "KnowledgeDetailComponent")
+        ]),
+        
+        .testTarget(name: "KnowledgeDetailComponentTests", dependencies: [
+            .target(name: "KnowledgeDetailComponent"),
+            .target(name: "XCTComponentBase"),
+            .target(name: "XCTKnowledgeDetailComponent"),
             .product(name: "XCTEurofurenceModel", package: "EurofurenceModel")
         ])
         

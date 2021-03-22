@@ -1,5 +1,6 @@
 import ComponentBase
 import EurofurenceModel
+import KnowledgeDetailComponent
 
 public struct OpenLinkFromKnowledgeEntry: KnowledgeDetailComponentDelegate {
     

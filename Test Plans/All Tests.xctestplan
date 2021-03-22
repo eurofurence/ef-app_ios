@@ -138,6 +138,13 @@
         "identifier" : "ScheduleComponentTests",
         "name" : "ScheduleComponentTests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/EurofurenceComponents",
+        "identifier" : "KnowledgeDetailComponentTests",
+        "name" : "KnowledgeDetailComponentTests"
+      }
     }
   ],
   "version" : 1

@@ -4,6 +4,7 @@ import DealersComponent
 import EurofurenceModel
 import EventDetailComponent
 import EventFeedbackComponent
+import KnowledgeDetailComponent
 import PreloadComponent
 import ScheduleComponent
 import TutorialComponent

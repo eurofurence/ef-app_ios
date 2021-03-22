@@ -1,7 +1,8 @@
-import EurofurenceApplication
 import EurofurenceModel
+import KnowledgeDetailComponent
 import UIKit.UIViewController
 import XCTEurofurenceModel
+import XCTKnowledgeDetailComponent
 
 class KnowledgeDetailPresenterTestBuilder {
 

@@ -1,5 +1,6 @@
 import EurofurenceApplication
 import EurofurenceModel
+import KnowledgeDetailComponent
 import UIKit.UIViewController
 import XCTEurofurenceModel
 

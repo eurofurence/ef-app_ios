@@ -1,6 +1,6 @@
-import EurofurenceApplication
 import EurofurenceModel
 import Foundation
+import KnowledgeDetailComponent
 
 class CapturingKnowledgeEntryImageScene: KnowledgeEntryImageScene {
 
