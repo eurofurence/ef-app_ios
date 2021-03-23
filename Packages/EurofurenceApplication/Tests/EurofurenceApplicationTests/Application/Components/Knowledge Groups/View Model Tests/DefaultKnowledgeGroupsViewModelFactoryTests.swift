@@ -7,11 +7,11 @@ import XCTEurofurenceModel
 class DefaultKnowledgeGroupsViewModelFactoryTests: XCTestCase {
 
     private func expectedViewModelForGroup(_ group: KnowledgeGroup) -> KnowledgeListGroupViewModel {
-        let entriesViewModels = group.entries.map(expectedViewModelForEntry)
-        return KnowledgeListGroupViewModel(title: group.title,
-                                           fontAwesomeCharacter: group.fontAwesomeCharacterAddress,
-                                           groupDescription: group.groupDescription,
-                                           knowledgeEntries: entriesViewModels)
+        return KnowledgeListGroupViewModel(
+            title: group.title,
+            fontAwesomeCharacter: group.fontAwesomeCharacterAddress,
+            groupDescription: group.groupDescription
+        )
     }
 
     private func expectedViewModelForEntry(_ entry: KnowledgeEntry) -> KnowledgeListEntryViewModel {

@@ -13,14 +13,11 @@ public struct DefaultKnowledgeGroupsViewModelFactory: KnowledgeGroupsViewModelFa
         func knowledgeGroupsDidChange(to groups: [KnowledgeGroup]) {
             self.groups = groups
             knowledgeGroups = groups.map { (group) -> KnowledgeListGroupViewModel in
-                let entries = group.entries.map { (entry) -> KnowledgeListEntryViewModel in
-                    return KnowledgeListEntryViewModel(title: entry.title)
-                }
-
-                return KnowledgeListGroupViewModel(title: group.title,
-                                                   fontAwesomeCharacter: group.fontAwesomeCharacterAddress,
-                                                   groupDescription: group.groupDescription,
-                                                   knowledgeEntries: entries)
+                KnowledgeListGroupViewModel(
+                    title: group.title,
+                    fontAwesomeCharacter: group.fontAwesomeCharacterAddress,
+                    groupDescription: group.groupDescription
+                )
             }
 
             delegate?.knowledgeGroupsViewModelsDidUpdate(to: knowledgeGroups)
