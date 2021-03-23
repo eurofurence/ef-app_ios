@@ -1,4 +1,4 @@
-import EurofurenceApplication
+Import KnowledgeGroupsComponent
 
 class CapturingKnowledgeGroupsListViewModelDelegate: KnowledgeGroupsListViewModelDelegate {
 

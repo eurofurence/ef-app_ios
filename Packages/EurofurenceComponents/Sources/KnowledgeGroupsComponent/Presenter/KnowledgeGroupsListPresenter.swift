@@ -14,9 +14,15 @@ class KnowledgeGroupsListPresenter: KnowledgeListSceneDelegate, KnowledgeGroupsL
         self.scene = scene
         self.knowledgeGroupsViewModelFactory = knowledgeGroupsViewModelFactory
         viewModelContentVisitor = KnowledgeVisitor(delegate: delegate)
-
-        scene.setKnowledgeListTitle(.information)
-        scene.setKnowledgeListShortTitle(.information)
+        
+        let information = NSLocalizedString(
+            "Information",
+            bundle: .module,
+            comment: "Title for the view showing all the categoried convention information"
+        )
+        
+        scene.setKnowledgeListTitle(information)
+        scene.setKnowledgeListShortTitle(information)
     }
 
     func knowledgeListSceneDidLoad() {

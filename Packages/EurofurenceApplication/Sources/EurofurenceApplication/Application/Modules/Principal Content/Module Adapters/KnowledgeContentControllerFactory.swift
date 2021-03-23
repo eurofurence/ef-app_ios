@@ -1,3 +1,4 @@
+import KnowledgeGroupsComponent
 import UIKit
 
 struct KnowledgeContentControllerFactory: ApplicationModuleFactory {

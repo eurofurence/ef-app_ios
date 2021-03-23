@@ -1,6 +1,6 @@
 import UIKit
 
-class KnowledgeListViewController: UIViewController, KnowledgeListScene {
+public class KnowledgeListViewController: UIViewController, KnowledgeListScene {
 
     // MARK: IBOutlets
 
@@ -10,41 +10,41 @@ class KnowledgeListViewController: UIViewController, KnowledgeListScene {
     // MARK: KnowledgeListScene
 
     private var delegate: KnowledgeListSceneDelegate?
-    func setDelegate(_ delegate: KnowledgeListSceneDelegate) {
+    public func setDelegate(_ delegate: KnowledgeListSceneDelegate) {
         self.delegate = delegate
     }
 
-    func setKnowledgeListTitle(_ title: String) {
+    public func setKnowledgeListTitle(_ title: String) {
         navigationItem.title = title
     }
 
-    func setKnowledgeListShortTitle(_ shortTitle: String) {
+    public func setKnowledgeListShortTitle(_ shortTitle: String) {
         tabBarItem.title = shortTitle
     }
 
-    func showLoadingIndicator() {
+    public func showLoadingIndicator() {
         activityIndicator.startAnimating()
     }
 
-    func hideLoadingIndicator() {
+    public func hideLoadingIndicator() {
         activityIndicator.stopAnimating()
     }
 
     private lazy var tableViewRenderer = TableViewDataSource()
-    func prepareToDisplayKnowledgeGroups(numberOfGroups: Int, binder: KnowledgeListBinder) {
+    public func prepareToDisplayKnowledgeGroups(numberOfGroups: Int, binder: KnowledgeListBinder) {
         tableViewRenderer.entryCounts = numberOfGroups
         tableViewRenderer.binder = binder
 
         tableView.reloadData()
     }
 
-    func deselectKnowledgeEntry(at indexPath: IndexPath) {
+    public func deselectKnowledgeEntry(at indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
     // MARK: Overrides
 
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
 
         tableViewRenderer.onDidSelectRowAtIndexPath = didSelectRow
@@ -56,12 +56,12 @@ class KnowledgeListViewController: UIViewController, KnowledgeListScene {
         delegate?.knowledgeListSceneDidLoad()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.deselectSelectedRow()
     }
     
-    override func viewDidLayoutSubviews() {
+    override public func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView?.adjustScrollIndicatorInsetsForSafeAreaCompensation()
     }

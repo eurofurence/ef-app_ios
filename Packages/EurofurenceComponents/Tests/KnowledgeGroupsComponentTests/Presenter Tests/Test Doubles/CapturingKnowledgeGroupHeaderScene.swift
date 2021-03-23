@@ -1,4 +1,4 @@
-import EurofurenceApplication
+Import KnowledgeGroupsComponent
 import EurofurenceModel
 import UIKit.UIImage
 

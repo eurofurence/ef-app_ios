@@ -115,10 +115,6 @@ public extension String {
                                             bundle: .module,
                                             comment: "Title for the view that displays the user's private messages")
     
-    static let information = NSLocalizedString("Information",
-                                               bundle: .module,
-                                               comment: "Title for the view showing all the categoried convention information")
-    
     static let announcement = NSLocalizedString("Announcement",
                                                 bundle: .module,
                                                 comment: "Title for the view showing detailed information for an announcement")
