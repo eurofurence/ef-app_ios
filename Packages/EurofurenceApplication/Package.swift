@@ -32,6 +32,7 @@ let package = Package(
                 .product(name: "DealerComponent", package: "EurofurenceComponents"),
                 .product(name: "PreloadComponent", package: "EurofurenceComponents"),
                 .product(name: "TutorialComponent", package: "EurofurenceComponents"),
+                .product(name: "KnowledgeGroupComponent", package: "EurofurenceComponents"),
                 .product(name: "KnowledgeDetailComponent", package: "EurofurenceComponents"),
                 .product(name: "ContentController", package: "EurofurenceComponents")
             ]
@@ -45,6 +46,7 @@ let package = Package(
                 .product(name: "XCTComponentBase", package: "EurofurenceComponents"),
                 .product(name: "XCTEventDetailComponent", package: "EurofurenceComponents"),
                 .product(name: "XCTKnowledgeDetailComponent", package: "EurofurenceComponents"),
+                .product(name: "XCTKnowledgeGroupComponent", package: "EurofurenceComponents"),
                 .product(name: "XCTScheduleComponent", package: "EurofurenceComponents"),
                 .product(name: "TestUtilities", package: "TestUtilities")
             ]

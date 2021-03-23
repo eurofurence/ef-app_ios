@@ -1,5 +1,5 @@
-import EurofurenceApplication
 import EurofurenceModel
+import KnowledgeGroupComponent
 import UIKit
 
 class StubKnowledgeGroupEntriesSceneFactory: KnowledgeGroupEntriesSceneFactory {

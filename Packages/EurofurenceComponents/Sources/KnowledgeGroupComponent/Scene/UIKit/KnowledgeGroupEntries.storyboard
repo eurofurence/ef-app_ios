@@ -11,13 +11,13 @@
         <!--Title-->
         <scene sceneID="pEd-ig-wPL">
             <objects>
-                <tableViewController storyboardIdentifier="KnowledgeGroupEntriesViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Fkx-F6-bqJ" customClass="KnowledgeGroupEntriesViewController" customModule="EurofurenceApplication" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="KnowledgeGroupEntriesViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Fkx-F6-bqJ" customClass="KnowledgeGroupEntriesViewController" customModule="KnowledgeGroupComponent" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="hl2-mx-D5o">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="KnowledgeListEntryTableViewCell" textLabel="A8I-Hc-b0y" style="IBUITableViewCellStyleDefault" id="ZjT-Nf-OpS" customClass="KnowledgeListEntryTableViewCell" customModule="EurofurenceApplication">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="KnowledgeListEntryTableViewCell" textLabel="A8I-Hc-b0y" style="IBUITableViewCellStyleDefault" id="ZjT-Nf-OpS" customClass="KnowledgeListEntryTableViewCell" customModule="KnowledgeGroupComponent">
                                 <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZjT-Nf-OpS" id="hHc-Xp-ISB">
@@ -42,7 +42,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Title" largeTitleDisplayMode="never" id="qsr-21-S9P"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GZZ-2d-CFo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

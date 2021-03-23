@@ -1,6 +1,6 @@
-import EurofurenceApplication
 import EurofurenceModel
 import Foundation
+import KnowledgeGroupComponent
 import UIKit
 
 class CapturingKnowledgeGroupEntriesScene: UIViewController, KnowledgeGroupEntriesScene {
