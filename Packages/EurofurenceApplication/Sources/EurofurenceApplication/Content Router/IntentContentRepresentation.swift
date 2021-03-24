@@ -1,5 +1,6 @@
 import ComponentBase
 import DealerComponent
+import EventDetailComponent
 import Foundation
 
 public struct IntentContentRepresentation: ContentRepresentation {

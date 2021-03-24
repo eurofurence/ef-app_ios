@@ -1,6 +1,7 @@
 import ComponentBase
 import DealerComponent
 import EurofurenceModel
+import EventDetailComponent
 import Foundation
 
 public struct URLContentRepresentation: ContentRepresentation {

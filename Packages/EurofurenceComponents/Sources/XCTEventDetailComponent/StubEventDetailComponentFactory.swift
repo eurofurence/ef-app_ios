@@ -1,15 +1,18 @@
-import EurofurenceApplication
 import EurofurenceModel
 import EventDetailComponent
 import UIKit
 import XCTEurofurenceModel
 
-class StubEventDetailComponentFactory: EventDetailComponentFactory {
+public class StubEventDetailComponentFactory: EventDetailComponentFactory {
+    
+    public init() {
+        
+    }
 
-    let stubInterface = UIViewController()
-    private(set) var capturedModel: EventIdentifier?
+    public let stubInterface = UIViewController()
+    public private(set) var capturedModel: EventIdentifier?
     private var delegate: EventDetailComponentDelegate?
-    func makeEventDetailComponent(
+    public func makeEventDetailComponent(
         for event: EventIdentifier, 
         delegate: EventDetailComponentDelegate
     ) -> UIViewController {
@@ -19,7 +22,7 @@ class StubEventDetailComponentFactory: EventDetailComponentFactory {
         return stubInterface
     }
     
-    func simulateLeaveFeedback() {
+    public func simulateLeaveFeedback() {
         guard let capturedModel = capturedModel else { return }
         delegate?.eventDetailComponentDidRequestPresentationToLeaveFeedback(for: capturedModel)
     }
