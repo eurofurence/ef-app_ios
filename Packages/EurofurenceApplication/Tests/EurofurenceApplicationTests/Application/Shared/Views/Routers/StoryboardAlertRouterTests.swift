@@ -5,35 +5,6 @@ import UIKit
 import XCTComponentBase
 import XCTest
 
-class CapturingViewController: UIViewController {
-
-    private(set) var capturedPresentedAlertViewController: UIAlertController?
-    private(set) var capturedPresentedViewController: UIViewController?
-    private(set) var animatedTransition = false
-    private(set) var capturedPresentationCompletionHandler: (() -> Void)?
-    override func present(_ viewControllerToPresent: UIViewController,
-                          animated flag: Bool,
-                          completion: (() -> Void)? = nil) {
-        capturedPresentedViewController = viewControllerToPresent
-        capturedPresentedAlertViewController = viewControllerToPresent as? UIAlertController
-        animatedTransition = flag
-        capturedPresentationCompletionHandler = completion
-    }
-
-    private(set) var didDismissPresentedController = false
-    private(set) var didDismissUsingAnimations = false
-    private(set) var capturedDismissalCompletionHandler: (() -> Void)?
-    override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
-        didDismissPresentedController = true
-        didDismissUsingAnimations = flag
-        capturedDismissalCompletionHandler = completion
-    }
-
-    var _presentedViewController: UIViewController?
-    override var presentedViewController: UIViewController? { return _presentedViewController }
-
-}
-
 class StoryboardAlertRouterTests: XCTestCase {
 
     var capturingViewController: CapturingViewController!

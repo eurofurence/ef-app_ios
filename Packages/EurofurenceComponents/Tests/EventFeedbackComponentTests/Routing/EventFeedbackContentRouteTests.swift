@@ -1,7 +1,8 @@
-import EurofurenceApplication
 import EurofurenceModel
+import EventFeedbackComponent
 import XCTComponentBase
 import XCTest
+import XCTEventFeedbackComponent
 
 class EventFeedbackContentRouteTests: XCTestCase {
     

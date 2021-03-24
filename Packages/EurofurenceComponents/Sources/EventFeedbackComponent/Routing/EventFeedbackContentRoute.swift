@@ -1,5 +1,4 @@
 import ComponentBase
-import EventFeedbackComponent
 import UIKit.UIViewController
 
 public struct EventFeedbackContentRoute {
