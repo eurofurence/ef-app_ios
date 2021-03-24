@@ -10,8 +10,8 @@ class WhenBuildingKnowledgePresenter: XCTestCase {
     }
 
     func testItRemainsInTheDefaultState() {
-        XCTAssertEqual(.information, context.scene.capturedTitle)
-        XCTAssertEqual(.information, context.scene.capturedShortTitle)
+        XCTAssertEqual("Information", context.scene.capturedTitle)
+        XCTAssertEqual("Information", context.scene.capturedShortTitle)
         XCTAssertFalse(context.knowledgeViewModelFactory.toldToPrepareViewModel)
         XCTAssertFalse(context.scene.didShowLoadingIndicator)
         XCTAssertFalse(context.scene.didHideLoadingIndicator)

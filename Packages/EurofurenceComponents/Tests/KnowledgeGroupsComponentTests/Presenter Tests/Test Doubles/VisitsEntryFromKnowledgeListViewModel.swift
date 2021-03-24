@@ -1,5 +1,5 @@
-Import KnowledgeGroupsComponent
 import EurofurenceModel
+import KnowledgeGroupsComponent
 
 struct VisitsEntryFromKnowledgeListViewModel: KnowledgeGroupsListViewModel {
     

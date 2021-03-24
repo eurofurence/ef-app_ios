@@ -1,6 +1,5 @@
-Import KnowledgeGroupsComponent
 import EurofurenceModel
-import KnowledgeGroupComponent
+import KnowledgeGroupsComponent
 import XCTest
 import XCTEurofurenceModel
 
@@ -12,10 +11,6 @@ class DefaultKnowledgeGroupsViewModelFactoryTests: XCTestCase {
             fontAwesomeCharacter: group.fontAwesomeCharacterAddress,
             groupDescription: group.groupDescription
         )
-    }
-
-    private func expectedViewModelForEntry(_ entry: KnowledgeEntry) -> KnowledgeListEntryViewModel {
-        return KnowledgeListEntryViewModel(title: entry.title)
     }
 
     func testKnowledgeGroupsFromServiceAreTurnedIntoExpectedViewModels() {

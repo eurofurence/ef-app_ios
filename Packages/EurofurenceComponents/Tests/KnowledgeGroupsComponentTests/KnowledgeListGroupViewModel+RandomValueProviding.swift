@@ -1,8 +1,6 @@
-import EurofurenceApplication
 import KnowledgeGroupComponent
 import KnowledgeGroupsComponent
 import TestUtilities
-import XCTKnowledgeGroupComponent
 
 extension KnowledgeListGroupViewModel: RandomValueProviding {
 

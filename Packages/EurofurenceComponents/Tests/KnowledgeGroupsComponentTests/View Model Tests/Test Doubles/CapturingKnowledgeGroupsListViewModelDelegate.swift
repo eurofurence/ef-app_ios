@@ -1,4 +1,4 @@
-Import KnowledgeGroupsComponent
+import KnowledgeGroupsComponent
 
 class CapturingKnowledgeGroupsListViewModelDelegate: KnowledgeGroupsListViewModelDelegate {
 

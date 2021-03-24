@@ -1,5 +1,5 @@
-Import KnowledgeGroupsComponent
 import EurofurenceModel
+import KnowledgeGroupsComponent
 import XCTest
 
 class WhenSelectingItemInKnowledgeList_ThatRelatesToEntry_KnowledgeListPresenterShould: XCTestCase {

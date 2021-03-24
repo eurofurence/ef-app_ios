@@ -1,6 +1,6 @@
-Import KnowledgeGroupsComponent
 import EurofurenceModel
 import Foundation.NSIndexPath
+import KnowledgeGroupsComponent
 
 class CapturingKnowledgeGroupsViewModelFactory: KnowledgeGroupsViewModelFactory {
 

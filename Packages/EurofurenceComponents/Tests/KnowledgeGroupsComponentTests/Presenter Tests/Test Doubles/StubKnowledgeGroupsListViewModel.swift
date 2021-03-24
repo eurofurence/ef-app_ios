@@ -1,6 +1,6 @@
-Import KnowledgeGroupsComponent
 import EurofurenceModel
 import Foundation
+import KnowledgeGroupsComponent
 import TestUtilities
 import XCTEurofurenceModel
 
