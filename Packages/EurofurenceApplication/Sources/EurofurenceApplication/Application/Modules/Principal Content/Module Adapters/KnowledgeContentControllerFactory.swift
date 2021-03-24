@@ -1,3 +1,4 @@
+import KnowledgeGroupsComponent
 import UIKit
 
 struct KnowledgeContentControllerFactory: ApplicationModuleFactory {
@@ -6,7 +7,10 @@ struct KnowledgeContentControllerFactory: ApplicationModuleFactory {
     var knowledgeModuleDelegate: KnowledgeGroupsListComponentDelegate
     
     func makeApplicationModuleController() -> UIViewController {
-        knowledgeModuleProviding.makeKnowledgeListComponent(knowledgeModuleDelegate)
+        let knowledgeList = knowledgeModuleProviding.makeKnowledgeListComponent(knowledgeModuleDelegate)
+        knowledgeList.tabBarItem.image = UIImage(named: "Info", in: .module, compatibleWith: nil)
+        
+        return knowledgeList
     }
     
 }

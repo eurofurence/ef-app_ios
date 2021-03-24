@@ -32,6 +32,7 @@ let package = Package(
                 .product(name: "DealerComponent", package: "EurofurenceComponents"),
                 .product(name: "PreloadComponent", package: "EurofurenceComponents"),
                 .product(name: "TutorialComponent", package: "EurofurenceComponents"),
+                .product(name: "KnowledgeGroupsComponent", package: "EurofurenceComponents"),
                 .product(name: "KnowledgeGroupComponent", package: "EurofurenceComponents"),
                 .product(name: "KnowledgeDetailComponent", package: "EurofurenceComponents"),
                 .product(name: "ContentController", package: "EurofurenceComponents")

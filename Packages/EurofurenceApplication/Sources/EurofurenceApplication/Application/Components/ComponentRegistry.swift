@@ -6,6 +6,7 @@ import EventDetailComponent
 import EventFeedbackComponent
 import KnowledgeDetailComponent
 import KnowledgeGroupComponent
+import KnowledgeGroupsComponent
 import PreloadComponent
 import ScheduleComponent
 import TutorialComponent

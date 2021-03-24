@@ -15,6 +15,7 @@ let package = Package(
         .library(name: "EventFeedbackComponent", targets: ["EventFeedbackComponent"]),
         .library(name: "DealersComponent", targets: ["DealersComponent"]),
         .library(name: "DealerComponent", targets: ["DealerComponent"]),
+        .library(name: "KnowledgeGroupsComponent", targets: ["KnowledgeGroupsComponent"]),
         .library(name: "KnowledgeGroupComponent", targets: ["KnowledgeGroupComponent"]),
         .library(name: "KnowledgeDetailComponent", targets: ["KnowledgeDetailComponent"]),
             
@@ -162,6 +163,19 @@ let package = Package(
         
         .testTarget(name: "DealerComponentTests", dependencies: [
             .target(name: "DealerComponent"),
+            .target(name: "XCTComponentBase"),
+            .product(name: "XCTEurofurenceModel", package: "EurofurenceModel")
+        ]),
+        
+        // MARK: Knowledge Groups
+        
+        .target(name: "KnowledgeGroupsComponent", dependencies: [
+            .target(name: "ComponentBase"),
+            .product(name: "EurofurenceModel", package: "EurofurenceModel")
+        ]),
+        
+        .testTarget(name: "KnowledgeGroupsComponentTests", dependencies: [
+            .target(name: "KnowledgeGroupsComponent"),
             .target(name: "XCTComponentBase"),
             .product(name: "XCTEurofurenceModel", package: "EurofurenceModel")
         ]),
