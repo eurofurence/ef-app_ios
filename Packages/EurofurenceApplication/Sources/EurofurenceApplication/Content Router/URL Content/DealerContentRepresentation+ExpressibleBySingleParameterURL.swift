@@ -1,18 +1,6 @@
-import ComponentBase
+import DealerComponent
 import EurofurenceModel
 import Foundation
-
-public struct DealerContentRepresentation: ContentRepresentation {
-    
-    public var identifier: DealerIdentifier
-    
-    public init(identifier: DealerIdentifier) {
-        self.identifier = identifier
-    }
-    
-}
-
-// MARK: - ExpressibleBySingleParameterURL
 
 extension DealerContentRepresentation: ExpressibleBySingleParameterURL {
     

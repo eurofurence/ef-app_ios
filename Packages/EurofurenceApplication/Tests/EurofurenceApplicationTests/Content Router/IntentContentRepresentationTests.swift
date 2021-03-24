@@ -1,3 +1,4 @@
+import DealerComponent
 import EurofurenceApplication
 import XCTComponentBase
 import XCTest

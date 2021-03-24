@@ -21,6 +21,7 @@ let package = Package(
             
         .library(name: "XCTComponentBase", targets: ["XCTComponentBase"]),
         .library(name: "XCTScheduleComponent", targets: ["XCTScheduleComponent"]),
+        .library(name: "XCTDealerComponent", targets: ["XCTDealerComponent"]),
         .library(name: "XCTEventDetailComponent", targets: ["XCTEventDetailComponent"]),
         .library(name: "XCTKnowledgeGroupComponent", targets: ["XCTKnowledgeGroupComponent"]),
         .library(name: "XCTKnowledgeDetailComponent", targets: ["XCTKnowledgeDetailComponent"])
@@ -161,9 +162,14 @@ let package = Package(
             .product(name: "EurofurenceModel", package: "EurofurenceModel")
         ]),
         
+        .target(name: "XCTDealerComponent", dependencies: [
+            .target(name: "DealerComponent")
+        ]),
+        
         .testTarget(name: "DealerComponentTests", dependencies: [
             .target(name: "DealerComponent"),
             .target(name: "XCTComponentBase"),
+            .target(name: "XCTDealerComponent"),
             .product(name: "XCTEurofurenceModel", package: "EurofurenceModel")
         ]),
         

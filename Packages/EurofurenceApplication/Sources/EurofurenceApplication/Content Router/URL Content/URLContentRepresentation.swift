@@ -1,4 +1,5 @@
 import ComponentBase
+import DealerComponent
 import EurofurenceModel
 import Foundation
 

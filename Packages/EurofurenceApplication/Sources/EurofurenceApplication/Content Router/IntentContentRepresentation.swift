@@ -1,4 +1,5 @@
 import ComponentBase
+import DealerComponent
 import Foundation
 
 public struct IntentContentRepresentation: ContentRepresentation {
