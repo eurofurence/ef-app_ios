@@ -1,4 +1,3 @@
-import KnowledgeGroupComponent
 import KnowledgeGroupsComponent
 import TestUtilities
 

@@ -1,3 +1,4 @@
+import ComponentBase
 import UIKit
 
 public class KnowledgeListViewController: UIViewController, KnowledgeListScene {
