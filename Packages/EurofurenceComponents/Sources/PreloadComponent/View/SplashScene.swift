@@ -1,6 +1,6 @@
 import Foundation
 
-public protocol SplashScene: class {
+public protocol SplashScene: AnyObject {
 
     var delegate: SplashSceneDelegate? { get set }
 

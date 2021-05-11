@@ -6,7 +6,7 @@ public protocol TutorialSceneFactory {
 
 }
 
-public protocol TutorialScene: class {
+public protocol TutorialScene: AnyObject {
 
     func showTutorialPage() -> TutorialPageScene
 
