@@ -8,7 +8,7 @@ public protocol NewsSceneDelegate {
 
 }
 
-public protocol NewsScene: class {
+public protocol NewsScene: AnyObject {
 
     var delegate: NewsSceneDelegate? { get set }
 

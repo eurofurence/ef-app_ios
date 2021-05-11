@@ -1,4 +1,4 @@
-public protocol LoginScene: class {
+public protocol LoginScene: AnyObject {
 
     var delegate: LoginSceneDelegate? { get set }
 

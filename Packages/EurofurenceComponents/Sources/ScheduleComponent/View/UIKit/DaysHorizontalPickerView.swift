@@ -1,7 +1,7 @@
 import ComponentBase
 import UIKit
 
-protocol DaysHorizontalPickerViewDelegate: class {
+protocol DaysHorizontalPickerViewDelegate: AnyObject {
     
     func daysHorizontalPickerView(_ pickerView: DaysHorizontalPickerView, didSelectDayAt index: Int)
     

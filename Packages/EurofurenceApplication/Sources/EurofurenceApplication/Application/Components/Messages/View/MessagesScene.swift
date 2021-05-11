@@ -17,7 +17,7 @@ public protocol MessagesSceneFactory {
 
 }
 
-public protocol MessagesScene: class {
+public protocol MessagesScene: AnyObject {
 
     var delegate: MessagesSceneDelegate? { get set }
 

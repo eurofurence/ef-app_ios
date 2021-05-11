@@ -24,7 +24,7 @@ public protocol ScheduleEventViewModelProtocol {
 
 }
 
-public protocol ScheduleEventViewModelObserver: class {
+public protocol ScheduleEventViewModelObserver: AnyObject {
     
     func eventViewModelDidBecomeFavourite(_ viewModel: ScheduleEventViewModelProtocol)
     func eventViewModelDidBecomeNonFavourite(_ viewModel: ScheduleEventViewModelProtocol)
