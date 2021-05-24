@@ -12,7 +12,7 @@ public struct KnowledgeEntryContentRepresentation: ContentRepresentation {
     
 }
 
-// MRK: - ExpressibleBySingleParameterURL
+// MARK: - ExpressibleBySingleParameterURL
 
 extension KnowledgeEntryContentRepresentation: ExpressibleBySingleParameterURL {
     
