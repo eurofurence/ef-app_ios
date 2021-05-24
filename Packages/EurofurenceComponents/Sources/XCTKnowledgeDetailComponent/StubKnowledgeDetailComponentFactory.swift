@@ -1,15 +1,18 @@
-import EurofurenceApplication
 import EurofurenceModel
 import KnowledgeDetailComponent
 import UIKit.UIViewController
 import XCTEurofurenceModel
 
-class StubKnowledgeDetailComponentFactory: KnowledgeDetailComponentFactory {
+public class StubKnowledgeDetailComponentFactory: KnowledgeDetailComponentFactory {
+    
+    public init() {
+        
+    }
 
-    let stubInterface = UIViewController()
-    private(set) var capturedModel: KnowledgeEntryIdentifier?
-    private(set) var delegate: KnowledgeDetailComponentDelegate?
-    func makeKnowledgeListComponent(
+    public let stubInterface = UIViewController()
+    public private(set) var capturedModel: KnowledgeEntryIdentifier?
+    public private(set) var delegate: KnowledgeDetailComponentDelegate?
+    public func makeKnowledgeListComponent(
         _ knowledgeEntry: KnowledgeEntryIdentifier, 
         delegate: KnowledgeDetailComponentDelegate
     ) -> UIViewController {
@@ -22,7 +25,7 @@ class StubKnowledgeDetailComponentFactory: KnowledgeDetailComponentFactory {
 
 extension StubKnowledgeDetailComponentFactory {
 
-    func simulateLinkSelected(_ link: Link) {
+    public func simulateLinkSelected(_ link: Link) {
         delegate?.knowledgeComponentModuleDidSelectLink(link)
     }
 

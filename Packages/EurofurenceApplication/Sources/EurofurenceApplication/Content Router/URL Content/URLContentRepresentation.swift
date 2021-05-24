@@ -3,6 +3,7 @@ import DealerComponent
 import EurofurenceModel
 import EventDetailComponent
 import Foundation
+import KnowledgeDetailComponent
 
 public struct URLContentRepresentation: ContentRepresentation {
     

@@ -1,16 +1,6 @@
-import ComponentBase
 import EurofurenceModel
 import Foundation
-
-public struct KnowledgeEntryContentRepresentation: ContentRepresentation {
-    
-    public var identifier: KnowledgeEntryIdentifier
-    
-    public init(identifier: KnowledgeEntryIdentifier) {
-        self.identifier = identifier
-    }
-    
-}
+import KnowledgeDetailComponent
 
 // MARK: - ExpressibleBySingleParameterURL
 

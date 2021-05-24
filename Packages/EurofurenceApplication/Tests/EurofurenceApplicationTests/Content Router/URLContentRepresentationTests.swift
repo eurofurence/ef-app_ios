@@ -3,6 +3,7 @@ import DealerComponent
 import EurofurenceApplication
 import EurofurenceModel
 import EventDetailComponent
+import KnowledgeDetailComponent
 import XCTComponentBase
 import XCTest
 
