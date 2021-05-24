@@ -1,5 +1,6 @@
 import ComponentBase
 import DealerComponent
+import DealersComponent
 import EurofurenceApplication
 import EurofurenceModel
 import EventDetailComponent
