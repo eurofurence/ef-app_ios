@@ -5,6 +5,7 @@ import EurofurenceModel
 import EventDetailComponent
 import Foundation
 import KnowledgeDetailComponent
+import KnowledgeGroupsComponent
 
 public struct URLContentRepresentation: ContentRepresentation {
     
