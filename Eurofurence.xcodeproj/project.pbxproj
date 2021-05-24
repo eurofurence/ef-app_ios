@@ -274,6 +274,7 @@
 		CA8F7D2E256182EF0096E206 /* WidgetKitConformances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetKitConformances.swift; sourceTree = "<group>"; };
 		CA9845C91F2907A800E8821D /* ScreenshotGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotGenerator.swift; sourceTree = "<group>"; };
 		CA9845D21F2909DB00E8821D /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
+		CAA4EFF5265C5003002CBDA6 /* Unit Tests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Unit Tests.xctestplan"; sourceTree = "<group>"; };
 		CAB300D72603AFDB009A52E1 /* Eurofurence Clip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Eurofurence Clip.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAB300D92603AFDB009A52E1 /* AppClipAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppClipAppDelegate.swift; sourceTree = "<group>"; };
 		CAB300DB2603AFDB009A52E1 /* AppClipSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppClipSceneDelegate.swift; sourceTree = "<group>"; };
@@ -630,6 +631,7 @@
 				CA8125112517C0CC00A7F717 /* All Tests.xctestplan */,
 				CA8124FE2517BDE500A7F717 /* iOS Application Tests.xctestplan */,
 				CA8125022517BE9000A7F717 /* Screenshots.xctestplan */,
+				CAA4EFF5265C5003002CBDA6 /* Unit Tests.xctestplan */,
 			);
 			path = "Test Plans";
 			sourceTree = "<group>";
