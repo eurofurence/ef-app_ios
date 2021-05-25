@@ -6,6 +6,7 @@ import EventDetailComponent
 import EventFeedbackComponent
 import KnowledgeDetailComponent
 import KnowledgeGroupsComponent
+import KnowledgeJourney
 import ScheduleComponent
 import UIKit
 

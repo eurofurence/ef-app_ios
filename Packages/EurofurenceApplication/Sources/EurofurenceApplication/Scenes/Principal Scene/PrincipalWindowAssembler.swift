@@ -1,6 +1,7 @@
 import ComponentBase
 import ContentController
 import EurofurenceModel
+import KnowledgeJourney
 import UIKit
 
 struct PrincipalWindowAssembler {

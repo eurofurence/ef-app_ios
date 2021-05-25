@@ -130,6 +130,13 @@
         "identifier" : "EventsWidgetLogicTests",
         "name" : "EventsWidgetLogicTests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/EurofurenceComponents",
+        "identifier" : "KnowledgeJourneyTests",
+        "name" : "KnowledgeJourneyTests"
+      }
     }
   ],
   "version" : 1

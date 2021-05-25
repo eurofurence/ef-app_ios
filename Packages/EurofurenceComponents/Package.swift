@@ -15,6 +15,7 @@ let package = Package(
         .library(name: "EventFeedbackComponent", targets: ["EventFeedbackComponent"]),
         .library(name: "DealersComponent", targets: ["DealersComponent"]),
         .library(name: "DealerComponent", targets: ["DealerComponent"]),
+        .library(name: "KnowledgeJourney", targets: ["KnowledgeJourney"]),
         .library(name: "KnowledgeGroupsComponent", targets: ["KnowledgeGroupsComponent"]),
         .library(name: "KnowledgeGroupComponent", targets: ["KnowledgeGroupComponent"]),
         .library(name: "KnowledgeDetailComponent", targets: ["KnowledgeDetailComponent"]),
@@ -179,6 +180,23 @@ let package = Package(
             .target(name: "DealerComponent"),
             .target(name: "XCTComponentBase"),
             .target(name: "XCTDealerComponent"),
+            .product(name: "XCTEurofurenceModel", package: "EurofurenceModel")
+        ]),
+        
+        // MARK: Knowledge Journey
+        
+        .target(name: "KnowledgeJourney", dependencies: [
+            .target(name: "KnowledgeGroupsComponent"),
+            .target(name: "KnowledgeGroupComponent"),
+            .target(name: "KnowledgeDetailComponent"),
+            .product(name: "EurofurenceModel", package: "EurofurenceModel")
+        ]),
+        
+        .testTarget(name: "KnowledgeJourneyTests", dependencies: [
+            .target(name: "KnowledgeJourney"),
+            .target(name: "XCTComponentBase"),
+            .target(name: "XCTKnowledgeGroupComponent"),
+            .target(name: "XCTKnowledgeDetailComponent"),
             .product(name: "XCTEurofurenceModel", package: "EurofurenceModel")
         ]),
         

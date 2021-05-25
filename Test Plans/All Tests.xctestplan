@@ -159,6 +159,13 @@
         "identifier" : "KnowledgeGroupsComponentTests",
         "name" : "KnowledgeGroupsComponentTests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/EurofurenceComponents",
+        "identifier" : "KnowledgeJourneyTests",
+        "name" : "KnowledgeJourneyTests"
+      }
     }
   ],
   "version" : 1

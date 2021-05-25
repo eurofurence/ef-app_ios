@@ -1,6 +1,6 @@
-import EurofurenceApplication
 import EurofurenceModel
 import KnowledgeGroupComponent
+import KnowledgeJourney
 import XCTComponentBase
 import XCTest
 import XCTEurofurenceModel
