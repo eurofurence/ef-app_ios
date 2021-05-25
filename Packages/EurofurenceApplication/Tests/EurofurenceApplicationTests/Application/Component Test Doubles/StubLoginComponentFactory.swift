@@ -1,6 +1,7 @@
 import EurofurenceApplication
 import EurofurenceModel
 import UIKit.UIViewController
+import XCTComponentBase
 
 class StubLoginComponentFactory: LoginComponentFactory {
 

@@ -1,5 +1,6 @@
 import ComponentBase
 import Foundation
+import KnowledgeGroupsComponent
 
 public struct KnowledgeGroupsContentRoute {
     

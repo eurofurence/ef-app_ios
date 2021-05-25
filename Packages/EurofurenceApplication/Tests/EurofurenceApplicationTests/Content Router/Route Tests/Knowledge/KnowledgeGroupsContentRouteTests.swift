@@ -1,4 +1,5 @@
 import EurofurenceApplication
+import KnowledgeGroupsComponent
 import XCTest
 
 class KnowledgeGroupsContentRouteTests: XCTestCase {

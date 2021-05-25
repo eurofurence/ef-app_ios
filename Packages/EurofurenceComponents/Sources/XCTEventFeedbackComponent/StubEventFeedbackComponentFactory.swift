@@ -1,14 +1,18 @@
-import EurofurenceApplication
 import EurofurenceModel
 import EventFeedbackComponent
 import UIKit
+import XCTComponentBase
 
-class StubEventFeedbackComponentFactory: EventFeedbackComponentFactory {
+public class StubEventFeedbackComponentFactory: EventFeedbackComponentFactory {
     
-    let stubInterface = CapturingViewController()
-    private(set) var eventToLeaveFeedbackFor: EventIdentifier?
+    public init() {
+        
+    }
+    
+    public let stubInterface = CapturingViewController()
+    public private(set) var eventToLeaveFeedbackFor: EventIdentifier?
     private var delegate: EventFeedbackComponentDelegate?
-    func makeEventFeedbackModule(
+    public func makeEventFeedbackModule(
         for event: EventIdentifier,
         delegate: EventFeedbackComponentDelegate
     ) -> UIViewController {
@@ -17,7 +21,7 @@ class StubEventFeedbackComponentFactory: EventFeedbackComponentFactory {
         return stubInterface
     }
     
-    func simulateDismissFeedback() {
+    public func simulateDismissFeedback() {
         delegate?.eventFeedbackCancelled()
     }
     

@@ -1,6 +1,7 @@
 import ComponentBase
 import EurofurenceModel
 import EventDetailComponent
+import EventFeedbackComponent
 
 public struct LeaveFeedbackFromEventNavigator: EventDetailComponentDelegate {
     

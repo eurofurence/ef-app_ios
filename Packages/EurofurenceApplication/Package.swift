@@ -45,6 +45,8 @@ let package = Package(
                 .target(name: "EurofurenceApplication"),
                 .product(name: "XCTEurofurenceModel", package: "EurofurenceModel"),
                 .product(name: "XCTComponentBase", package: "EurofurenceComponents"),
+                .product(name: "XCTDealerComponent", package: "EurofurenceComponents"),
+                .product(name: "XCTEventFeedbackComponent", package: "EurofurenceComponents"),
                 .product(name: "XCTEventDetailComponent", package: "EurofurenceComponents"),
                 .product(name: "XCTKnowledgeDetailComponent", package: "EurofurenceComponents"),
                 .product(name: "XCTKnowledgeGroupComponent", package: "EurofurenceComponents"),

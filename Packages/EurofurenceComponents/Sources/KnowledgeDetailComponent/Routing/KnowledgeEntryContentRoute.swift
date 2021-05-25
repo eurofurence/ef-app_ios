@@ -1,5 +1,4 @@
 import ComponentBase
-import KnowledgeDetailComponent
 
 public struct KnowledgeEntryContentRoute {
     

@@ -1,6 +1,11 @@
 import ComponentBase
+import DealerComponent
+import DealersComponent
 import EurofurenceApplication
 import EurofurenceModel
+import EventDetailComponent
+import KnowledgeDetailComponent
+import KnowledgeGroupsComponent
 import XCTComponentBase
 import XCTest
 

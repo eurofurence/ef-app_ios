@@ -1,5 +1,5 @@
-import EurofurenceApplication
 import EurofurenceModel
+import KnowledgeDetailComponent
 import XCTComponentBase
 import XCTest
 import XCTEurofurenceModel

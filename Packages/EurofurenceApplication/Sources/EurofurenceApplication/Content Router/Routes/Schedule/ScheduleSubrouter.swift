@@ -1,5 +1,7 @@
 import ComponentBase
 import EurofurenceModel
+import EventDetailComponent
+import EventFeedbackComponent
 import ScheduleComponent
 
 public struct ScheduleSubrouter: ScheduleComponentDelegate {

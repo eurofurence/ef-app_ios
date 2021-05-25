@@ -1,7 +1,10 @@
 import ComponentBase
+import DealerComponent
 import DealersComponent
 import EurofurenceModel
+import EventDetailComponent
 import EventFeedbackComponent
+import KnowledgeDetailComponent
 import KnowledgeGroupsComponent
 import ScheduleComponent
 import UIKit

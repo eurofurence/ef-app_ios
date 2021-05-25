@@ -1,0 +1,136 @@
+{
+  "configurations" : [
+    {
+      "id" : "F623B5E2-48D3-4349-8597-E87EC276C32C",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Eurofurence.xcodeproj",
+        "identifier" : "9ACF99471EBE172D006FC958",
+        "name" : "EurofurenceTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/EurofurenceApplication",
+        "identifier" : "EurofurenceApplicationTests",
+        "name" : "EurofurenceApplicationTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/EurofurenceApplicationSession",
+        "identifier" : "EurofurenceApplicationSessionTests",
+        "name" : "EurofurenceApplicationSessionTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/EurofurenceComponents",
+        "identifier" : "ComponentBaseTests",
+        "name" : "ComponentBaseTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/EurofurenceComponents",
+        "identifier" : "ContentControllerTests",
+        "name" : "ContentControllerTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/EurofurenceComponents",
+        "identifier" : "DealerComponentTests",
+        "name" : "DealerComponentTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/EurofurenceComponents",
+        "identifier" : "DealersComponentTests",
+        "name" : "DealersComponentTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/EurofurenceComponents",
+        "identifier" : "EventDetailComponentTests",
+        "name" : "EventDetailComponentTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/EurofurenceComponents",
+        "identifier" : "EventFeedbackComponentTests",
+        "name" : "EventFeedbackComponentTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/EurofurenceComponents",
+        "identifier" : "KnowledgeDetailComponentTests",
+        "name" : "KnowledgeDetailComponentTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/EurofurenceComponents",
+        "identifier" : "KnowledgeGroupComponentTests",
+        "name" : "KnowledgeGroupComponentTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/EurofurenceComponents",
+        "identifier" : "KnowledgeGroupsComponentTests",
+        "name" : "KnowledgeGroupsComponentTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/EurofurenceComponents",
+        "identifier" : "PreloadComponentTests",
+        "name" : "PreloadComponentTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/EurofurenceComponents",
+        "identifier" : "ScheduleComponentTests",
+        "name" : "ScheduleComponentTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/EurofurenceComponents",
+        "identifier" : "TutorialComponentTests",
+        "name" : "TutorialComponentTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/EurofurenceModel",
+        "identifier" : "EurofurenceModelTests",
+        "name" : "EurofurenceModelTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/EventsWidgetLogic",
+        "identifier" : "EventsWidgetLogicTests",
+        "name" : "EventsWidgetLogicTests"
+      }
+    }
+  ],
+  "version" : 1
+}
