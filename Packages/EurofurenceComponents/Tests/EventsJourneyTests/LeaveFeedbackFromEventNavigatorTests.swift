@@ -1,6 +1,6 @@
-import EurofurenceApplication
 import EurofurenceModel
 import EventFeedbackComponent
+import EventsJourney
 import XCTComponentBase
 import XCTest
 import XCTEurofurenceModel

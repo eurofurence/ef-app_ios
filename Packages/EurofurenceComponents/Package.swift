@@ -11,6 +11,7 @@ let package = Package(
         .library(name: "PreloadComponent", targets: ["PreloadComponent"]),
         .library(name: "ContentController", targets: ["ContentController"]),
         .library(name: "ScheduleComponent", targets: ["ScheduleComponent"]),
+        .library(name: "EventsJourney", targets: ["EventsJourney"]),
         .library(name: "EventDetailComponent", targets: ["EventDetailComponent"]),
         .library(name: "EventFeedbackComponent", targets: ["EventFeedbackComponent"]),
         .library(name: "DealersComponent", targets: ["DealersComponent"]),
@@ -89,6 +90,23 @@ let package = Package(
         .testTarget(name: "PreloadComponentTests", dependencies: [
             .target(name: "PreloadComponent"),
             .target(name: "XCTComponentBase"),
+            .product(name: "XCTEurofurenceModel", package: "EurofurenceModel")
+        ]),
+        
+        // MARK: Events Journey
+        
+        .target(name: "EventsJourney", dependencies: [
+            .target(name: "ScheduleComponent"),
+            .target(name: "EventDetailComponent"),
+            .target(name: "EventFeedbackComponent"),
+            .product(name: "EurofurenceModel", package: "EurofurenceModel")
+        ]),
+        
+        .testTarget(name: "EventsJourneyTests", dependencies: [
+            .target(name: "EventsJourney"),
+            .target(name: "XCTScheduleComponent"),
+            .target(name: "XCTEventDetailComponent"),
+            .target(name: "XCTEventFeedbackComponent"),
             .product(name: "XCTEurofurenceModel", package: "EurofurenceModel")
         ]),
         

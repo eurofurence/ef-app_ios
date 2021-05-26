@@ -4,6 +4,7 @@ import DealersComponent
 import EurofurenceModel
 import EventDetailComponent
 import EventFeedbackComponent
+import EventsJourney
 import KnowledgeDetailComponent
 import KnowledgeGroupsComponent
 import KnowledgeJourney

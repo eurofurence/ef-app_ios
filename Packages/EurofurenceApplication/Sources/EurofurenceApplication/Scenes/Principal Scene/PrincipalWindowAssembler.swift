@@ -1,6 +1,7 @@
 import ComponentBase
 import ContentController
 import EurofurenceModel
+import EventsJourney
 import KnowledgeJourney
 import UIKit
 
