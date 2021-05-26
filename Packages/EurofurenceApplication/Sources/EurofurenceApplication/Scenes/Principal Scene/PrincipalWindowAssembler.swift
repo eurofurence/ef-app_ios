@@ -1,5 +1,6 @@
 import ComponentBase
 import ContentController
+import DealersJourney
 import EurofurenceModel
 import EventsJourney
 import KnowledgeJourney

@@ -14,6 +14,7 @@ let package = Package(
         .library(name: "EventsJourney", targets: ["EventsJourney"]),
         .library(name: "EventDetailComponent", targets: ["EventDetailComponent"]),
         .library(name: "EventFeedbackComponent", targets: ["EventFeedbackComponent"]),
+        .library(name: "DealersJourney", targets: ["DealersJourney"]),
         .library(name: "DealersComponent", targets: ["DealersComponent"]),
         .library(name: "DealerComponent", targets: ["DealerComponent"]),
         .library(name: "KnowledgeJourney", targets: ["KnowledgeJourney"]),
@@ -165,6 +166,20 @@ let package = Package(
             .target(name: "EventFeedbackComponent"),
             .target(name: "XCTComponentBase"),
             .target(name: "XCTEventFeedbackComponent"),
+            .product(name: "XCTEurofurenceModel", package: "EurofurenceModel")
+        ]),
+        
+        // MARK: Dealers Journey
+        
+        .target(name: "DealersJourney", dependencies: [
+            .target(name: "DealersComponent"),
+            .target(name: "DealerComponent"),
+            .product(name: "EurofurenceModel", package: "EurofurenceModel")
+        ]),
+        
+        .testTarget(name: "DealersJourneyTests", dependencies: [
+            .target(name: "DealersJourney"),
+            .target(name: "XCTDealerComponent"),
             .product(name: "XCTEurofurenceModel", package: "EurofurenceModel")
         ]),
         
