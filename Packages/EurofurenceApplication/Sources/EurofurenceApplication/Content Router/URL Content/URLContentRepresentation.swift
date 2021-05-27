@@ -6,6 +6,7 @@ import EventDetailComponent
 import Foundation
 import KnowledgeDetailComponent
 import KnowledgeGroupsComponent
+import ScheduleComponent
 
 public struct URLContentRepresentation: ContentRepresentation {
     
@@ -16,6 +17,7 @@ public struct URLContentRepresentation: ContentRepresentation {
         chain.add(DecodeContentFromURL<DealersContentRepresentation>())
         chain.add(DecodeContentFromURL<KnowledgeEntryContentRepresentation>())
         chain.add(DecodeContentFromURL<KnowledgeGroupsContentRepresentation>())
+        chain.add(DecodeContentFromURL<ScheduleContentRepresentation>())
         
         return chain
     }()
