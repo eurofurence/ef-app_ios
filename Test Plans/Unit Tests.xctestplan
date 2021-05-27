@@ -137,6 +137,20 @@
         "identifier" : "KnowledgeJourneyTests",
         "name" : "KnowledgeJourneyTests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/EurofurenceComponents",
+        "identifier" : "DealersJourneyTests",
+        "name" : "DealersJourneyTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/EurofurenceComponents",
+        "identifier" : "EventsJourneyTests",
+        "name" : "EventsJourneyTests"
+      }
     }
   ],
   "version" : 1
