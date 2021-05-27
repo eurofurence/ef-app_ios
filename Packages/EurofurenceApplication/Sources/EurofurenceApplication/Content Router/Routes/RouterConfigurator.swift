@@ -1,6 +1,7 @@
 import ComponentBase
 import DealerComponent
 import DealersComponent
+import DealersJourney
 import EurofurenceModel
 import EventDetailComponent
 import EventFeedbackComponent
@@ -59,8 +60,9 @@ struct RouterConfigurator {
     private func configureDealerRoutes() {
         let tabSwapper = MoveToTabByViewController<DealersViewController>(window: window)
         let poppingTabSwapper = MoveToTabByViewController<DealersViewController>(window: window, shouldPopToRoot: true)
+        let tabPresentation = SwapToDealersTabPresentation(tabNavigator: poppingTabSwapper)
         
-        router.add(ShowDealersRoute(tabNavigator: poppingTabSwapper))
+        router.add(DealersRoute(presentation: tabPresentation))
         
         router.add(DealerContentRoute(
             dealerModuleFactory: componentRegistry.dealerDetailModuleProviding,

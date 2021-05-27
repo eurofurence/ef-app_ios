@@ -1,7 +1,7 @@
 import ComponentBase
 import DealersComponent
 
-public struct DealersRoute {
+public struct DealersRoute: ContentRoute {
     
     private let presentation: DealersPresentation
     
