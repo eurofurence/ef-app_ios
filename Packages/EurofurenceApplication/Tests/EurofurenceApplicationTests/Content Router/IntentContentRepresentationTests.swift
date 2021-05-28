@@ -2,6 +2,7 @@ import DealerComponent
 import EurofurenceApplication
 import EventDetailComponent
 import XCTComponentBase
+import XCTDealerComponent
 import XCTest
 import XCTEventDetailComponent
 
