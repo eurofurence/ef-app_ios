@@ -1,5 +1,5 @@
-import EventsJourney
 import EurofurenceApplication
+import EventsJourney
 import XCTest
 
 class SwapToScheduleTabPresentationTests: XCTestCase {

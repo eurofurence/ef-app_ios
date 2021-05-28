@@ -287,8 +287,7 @@ let package = Package(
             .target(name: "XCTKnowledgeDetailComponent"),
             .product(name: "XCTEurofurenceModel", package: "EurofurenceModel")
         ]),
-        
-        
+                
         // MARK: URL Content
         
         .target(name: "URLContent", dependencies: [
@@ -297,7 +296,7 @@ let package = Package(
             .target(name: "EventDetailComponent"),
             .target(name: "KnowledgeDetailComponent"),
             .target(name: "KnowledgeGroupsComponent"),
-            .target(name: "ScheduleComponent"),
+            .target(name: "ScheduleComponent")
         ]),
         
         .testTarget(name: "URLContentTests", dependencies: [
