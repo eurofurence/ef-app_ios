@@ -160,7 +160,8 @@ let package = Package(
         
         .target(name: "XCTEventFeedbackComponent", dependencies: [
             .target(name: "EventFeedbackComponent"),
-            .target(name: "XCTComponentBase")
+            .target(name: "XCTComponentBase"),
+            .product(name: "XCTEurofurenceModel", package: "EurofurenceModel")
         ]),
         
         .testTarget(name: "EventFeedbackComponentTests", dependencies: [
@@ -257,7 +258,8 @@ let package = Package(
         .target(name: "XCTKnowledgeGroupComponent", dependencies: [
             .target(name: "KnowledgeGroupComponent"),
             .target(name: "XCTComponentBase"),
-            .product(name: "TestUtilities", package: "TestUtilities")
+            .product(name: "TestUtilities", package: "TestUtilities"),
+            .product(name: "XCTEurofurenceModel", package: "EurofurenceModel")
         ]),
         
         .testTarget(name: "KnowledgeGroupComponentTests", dependencies: [
@@ -275,7 +277,8 @@ let package = Package(
         ]),
         
         .target(name: "XCTKnowledgeDetailComponent", dependencies: [
-            .target(name: "KnowledgeDetailComponent")
+            .target(name: "KnowledgeDetailComponent"),
+            .product(name: "XCTEurofurenceModel", package: "EurofurenceModel")
         ]),
         
         .testTarget(name: "KnowledgeDetailComponentTests", dependencies: [
