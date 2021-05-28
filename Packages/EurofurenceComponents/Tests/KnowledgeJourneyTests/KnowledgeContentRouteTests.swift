@@ -6,7 +6,7 @@ class KnowledgeContentRouteTests: XCTestCase {
     
     func testShowsKnowledge() {
         let presentation = CapturingKnowledgePresentation()
-        let route = ScheduleRoute(presentation: presentation)
+        let route = KnowledgeContentRoute(presentation: presentation)
         
         XCTAssertFalse(presentation.didShowKnowledge)
         

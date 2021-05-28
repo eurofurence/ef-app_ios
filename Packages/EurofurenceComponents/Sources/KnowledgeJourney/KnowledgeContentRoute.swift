@@ -1,7 +1,7 @@
 import ComponentBase
 import KnowledgeGroupsComponent
 
-public struct ScheduleRoute: ContentRoute {
+public struct KnowledgeContentRoute: ContentRoute {
     
     private let presentation: KnowledgePresentation
     
