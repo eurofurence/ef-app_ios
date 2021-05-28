@@ -1,12 +1,12 @@
 import ComponentBase
 import DealerComponent
 import DealersComponent
-import EurofurenceApplication
 import EurofurenceModel
 import EventDetailComponent
 import ScheduleComponent
 import KnowledgeDetailComponent
 import KnowledgeGroupsComponent
+import URLContent
 import XCTComponentBase
 import XCTest
 

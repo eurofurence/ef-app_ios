@@ -21,6 +21,7 @@ let package = Package(
         .library(name: "KnowledgeGroupsComponent", targets: ["KnowledgeGroupsComponent"]),
         .library(name: "KnowledgeGroupComponent", targets: ["KnowledgeGroupComponent"]),
         .library(name: "KnowledgeDetailComponent", targets: ["KnowledgeDetailComponent"]),
+        .library(name: "URLContent", targets: ["URLContent"]),
             
         .library(name: "XCTComponentBase", targets: ["XCTComponentBase"]),
         .library(name: "XCTScheduleComponent", targets: ["XCTScheduleComponent"]),
@@ -282,6 +283,23 @@ let package = Package(
             .target(name: "XCTComponentBase"),
             .target(name: "XCTKnowledgeDetailComponent"),
             .product(name: "XCTEurofurenceModel", package: "EurofurenceModel")
+        ]),
+        
+        
+        // MARK: URL Content
+        
+        .target(name: "URLContent", dependencies: [
+            .target(name: "DealerComponent"),
+            .target(name: "DealersComponent"),
+            .target(name: "EventDetailComponent"),
+            .target(name: "KnowledgeDetailComponent"),
+            .target(name: "KnowledgeGroupsComponent"),
+            .target(name: "ScheduleComponent"),
+        ]),
+        
+        .testTarget(name: "URLContentTests", dependencies: [
+            .target(name: "URLContent"),
+            .target(name: "XCTComponentBase")
         ])
         
     ]

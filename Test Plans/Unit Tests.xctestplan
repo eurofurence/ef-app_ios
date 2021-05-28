@@ -151,6 +151,13 @@
         "identifier" : "EventsJourneyTests",
         "name" : "EventsJourneyTests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/EurofurenceComponents",
+        "identifier" : "URLContentTests",
+        "name" : "URLContentTests"
+      }
     }
   ],
   "version" : 1

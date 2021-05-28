@@ -166,6 +166,27 @@
         "identifier" : "KnowledgeJourneyTests",
         "name" : "KnowledgeJourneyTests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/EurofurenceComponents",
+        "identifier" : "EventsJourneyTests",
+        "name" : "EventsJourneyTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/EurofurenceComponents",
+        "identifier" : "DealersJourneyTests",
+        "name" : "DealersJourneyTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/EurofurenceComponents",
+        "identifier" : "URLContentTests",
+        "name" : "URLContentTests"
+      }
     }
   ],
   "version" : 1
