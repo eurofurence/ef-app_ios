@@ -27,6 +27,7 @@ struct RouterConfigurator {
         configureAnnouncementsRoute()
         configureAnnouncementRoute()
         configureDealerRoutes()
+        configureScheduleRoute()
         configureEventRoute()
         configureEventFeedbackRoute()
         configureKnowledgeGroupsRoute()
@@ -72,6 +73,13 @@ struct RouterConfigurator {
         router.add(EmbeddedDealerContentRoute(
             dealerModuleFactory: componentRegistry.dealerDetailModuleProviding, contentWireframe: contentWireframe
         ))
+    }
+    
+    private func configureScheduleRoute() {
+        let poppingTabSwapper = MoveToTabByViewController<ScheduleViewController>(window: window, shouldPopToRoot: true)
+        let tabPresentation = SwapToScheduleTabPresentation(tabNavigator: poppingTabSwapper)
+        let route = ScheduleRoute(presentation: tabPresentation)
+        router.add(route)
     }
     
     private func configureEventRoute() {
