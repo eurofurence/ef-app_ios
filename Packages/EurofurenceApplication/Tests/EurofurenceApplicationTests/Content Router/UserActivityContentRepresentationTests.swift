@@ -1,4 +1,5 @@
 import EurofurenceApplication
+import URLContent
 import XCTComponentBase
 import XCTest
 

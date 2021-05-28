@@ -1,5 +1,5 @@
 import DealerComponent
-import EurofurenceApplication
+import DealersJourney
 import EurofurenceModel
 import XCTComponentBase
 import XCTest

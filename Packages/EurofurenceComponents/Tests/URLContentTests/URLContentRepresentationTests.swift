@@ -1,15 +1,23 @@
 import ComponentBase
 import DealerComponent
 import DealersComponent
-import EurofurenceApplication
 import EurofurenceModel
 import EventDetailComponent
 import KnowledgeDetailComponent
 import KnowledgeGroupsComponent
+import ScheduleComponent
+import URLContent
 import XCTComponentBase
 import XCTest
 
 class URLContentRepresentationTests: ContentRepresentationTestCase {
+    
+    func testEvents() throws {
+        try assertURL(
+            "https://app.eurofurence.org/EF25/Web/Events",
+            isDescribedAs: ScheduleContentRepresentation()
+        )
+    }
     
     func testEvent() throws {
         try assertURL(

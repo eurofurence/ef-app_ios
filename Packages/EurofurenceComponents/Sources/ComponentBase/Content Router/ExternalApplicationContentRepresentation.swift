@@ -1,7 +1,6 @@
-import ComponentBase
 import Foundation
 
-public struct WebContentRepresentation: ContentRepresentation {
+public struct ExternalApplicationContentRepresentation: ContentRepresentation {
     
     public var url: URL
     

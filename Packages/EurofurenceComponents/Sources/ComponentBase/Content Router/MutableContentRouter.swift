@@ -42,9 +42,13 @@ public class MutableContentRouter: ContentRouter {
         
     }
     
-    private struct RouteMissing: Error {
+    private struct RouteMissing: CustomStringConvertible, Error {
         
         var content: Any
+        
+        var description: String {
+            "No route configured for content represented by \(String(describing: type(of: content)))"
+        }
         
     }
     

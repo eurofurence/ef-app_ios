@@ -11,13 +11,17 @@ let package = Package(
         .library(name: "PreloadComponent", targets: ["PreloadComponent"]),
         .library(name: "ContentController", targets: ["ContentController"]),
         .library(name: "ScheduleComponent", targets: ["ScheduleComponent"]),
+        .library(name: "EventsJourney", targets: ["EventsJourney"]),
         .library(name: "EventDetailComponent", targets: ["EventDetailComponent"]),
         .library(name: "EventFeedbackComponent", targets: ["EventFeedbackComponent"]),
+        .library(name: "DealersJourney", targets: ["DealersJourney"]),
         .library(name: "DealersComponent", targets: ["DealersComponent"]),
         .library(name: "DealerComponent", targets: ["DealerComponent"]),
+        .library(name: "KnowledgeJourney", targets: ["KnowledgeJourney"]),
         .library(name: "KnowledgeGroupsComponent", targets: ["KnowledgeGroupsComponent"]),
         .library(name: "KnowledgeGroupComponent", targets: ["KnowledgeGroupComponent"]),
         .library(name: "KnowledgeDetailComponent", targets: ["KnowledgeDetailComponent"]),
+        .library(name: "URLContent", targets: ["URLContent"]),
             
         .library(name: "XCTComponentBase", targets: ["XCTComponentBase"]),
         .library(name: "XCTScheduleComponent", targets: ["XCTScheduleComponent"]),
@@ -91,6 +95,23 @@ let package = Package(
             .product(name: "XCTEurofurenceModel", package: "EurofurenceModel")
         ]),
         
+        // MARK: Events Journey
+        
+        .target(name: "EventsJourney", dependencies: [
+            .target(name: "ScheduleComponent"),
+            .target(name: "EventDetailComponent"),
+            .target(name: "EventFeedbackComponent"),
+            .product(name: "EurofurenceModel", package: "EurofurenceModel")
+        ]),
+        
+        .testTarget(name: "EventsJourneyTests", dependencies: [
+            .target(name: "EventsJourney"),
+            .target(name: "XCTScheduleComponent"),
+            .target(name: "XCTEventDetailComponent"),
+            .target(name: "XCTEventFeedbackComponent"),
+            .product(name: "XCTEurofurenceModel", package: "EurofurenceModel")
+        ]),
+        
         // MARK: Schedule
         
         .target(name: "ScheduleComponent", dependencies: [
@@ -139,13 +160,28 @@ let package = Package(
         
         .target(name: "XCTEventFeedbackComponent", dependencies: [
             .target(name: "EventFeedbackComponent"),
-            .target(name: "XCTComponentBase")
+            .target(name: "XCTComponentBase"),
+            .product(name: "XCTEurofurenceModel", package: "EurofurenceModel")
         ]),
         
         .testTarget(name: "EventFeedbackComponentTests", dependencies: [
             .target(name: "EventFeedbackComponent"),
             .target(name: "XCTComponentBase"),
             .target(name: "XCTEventFeedbackComponent"),
+            .product(name: "XCTEurofurenceModel", package: "EurofurenceModel")
+        ]),
+        
+        // MARK: Dealers Journey
+        
+        .target(name: "DealersJourney", dependencies: [
+            .target(name: "DealersComponent"),
+            .target(name: "DealerComponent"),
+            .product(name: "EurofurenceModel", package: "EurofurenceModel")
+        ]),
+        
+        .testTarget(name: "DealersJourneyTests", dependencies: [
+            .target(name: "DealersJourney"),
+            .target(name: "XCTDealerComponent"),
             .product(name: "XCTEurofurenceModel", package: "EurofurenceModel")
         ]),
         
@@ -182,6 +218,23 @@ let package = Package(
             .product(name: "XCTEurofurenceModel", package: "EurofurenceModel")
         ]),
         
+        // MARK: Knowledge Journey
+        
+        .target(name: "KnowledgeJourney", dependencies: [
+            .target(name: "KnowledgeGroupsComponent"),
+            .target(name: "KnowledgeGroupComponent"),
+            .target(name: "KnowledgeDetailComponent"),
+            .product(name: "EurofurenceModel", package: "EurofurenceModel")
+        ]),
+        
+        .testTarget(name: "KnowledgeJourneyTests", dependencies: [
+            .target(name: "KnowledgeJourney"),
+            .target(name: "XCTComponentBase"),
+            .target(name: "XCTKnowledgeGroupComponent"),
+            .target(name: "XCTKnowledgeDetailComponent"),
+            .product(name: "XCTEurofurenceModel", package: "EurofurenceModel")
+        ]),
+        
         // MARK: Knowledge Groups
         
         .target(name: "KnowledgeGroupsComponent", dependencies: [
@@ -205,7 +258,8 @@ let package = Package(
         .target(name: "XCTKnowledgeGroupComponent", dependencies: [
             .target(name: "KnowledgeGroupComponent"),
             .target(name: "XCTComponentBase"),
-            .product(name: "TestUtilities", package: "TestUtilities")
+            .product(name: "TestUtilities", package: "TestUtilities"),
+            .product(name: "XCTEurofurenceModel", package: "EurofurenceModel")
         ]),
         
         .testTarget(name: "KnowledgeGroupComponentTests", dependencies: [
@@ -223,7 +277,8 @@ let package = Package(
         ]),
         
         .target(name: "XCTKnowledgeDetailComponent", dependencies: [
-            .target(name: "KnowledgeDetailComponent")
+            .target(name: "KnowledgeDetailComponent"),
+            .product(name: "XCTEurofurenceModel", package: "EurofurenceModel")
         ]),
         
         .testTarget(name: "KnowledgeDetailComponentTests", dependencies: [
@@ -231,6 +286,22 @@ let package = Package(
             .target(name: "XCTComponentBase"),
             .target(name: "XCTKnowledgeDetailComponent"),
             .product(name: "XCTEurofurenceModel", package: "EurofurenceModel")
+        ]),
+                
+        // MARK: URL Content
+        
+        .target(name: "URLContent", dependencies: [
+            .target(name: "DealerComponent"),
+            .target(name: "DealersComponent"),
+            .target(name: "EventDetailComponent"),
+            .target(name: "KnowledgeDetailComponent"),
+            .target(name: "KnowledgeGroupsComponent"),
+            .target(name: "ScheduleComponent")
+        ]),
+        
+        .testTarget(name: "URLContentTests", dependencies: [
+            .target(name: "URLContent"),
+            .target(name: "XCTComponentBase")
         ])
         
     ]

@@ -1,11 +1,14 @@
 import ComponentBase
 import DealerComponent
 import DealersComponent
+import DealersJourney
 import EurofurenceModel
 import EventDetailComponent
 import EventFeedbackComponent
+import EventsJourney
 import KnowledgeDetailComponent
 import KnowledgeGroupsComponent
+import KnowledgeJourney
 import ScheduleComponent
 import UIKit
 
@@ -24,6 +27,7 @@ struct RouterConfigurator {
         configureAnnouncementsRoute()
         configureAnnouncementRoute()
         configureDealerRoutes()
+        configureScheduleRoute()
         configureEventRoute()
         configureEventFeedbackRoute()
         configureKnowledgeGroupsRoute()
@@ -57,8 +61,9 @@ struct RouterConfigurator {
     private func configureDealerRoutes() {
         let tabSwapper = MoveToTabByViewController<DealersViewController>(window: window)
         let poppingTabSwapper = MoveToTabByViewController<DealersViewController>(window: window, shouldPopToRoot: true)
+        let tabPresentation = SwapToDealersTabPresentation(tabNavigator: poppingTabSwapper)
         
-        router.add(ShowDealersRoute(tabNavigator: poppingTabSwapper))
+        router.add(DealersRoute(presentation: tabPresentation))
         
         router.add(DealerContentRoute(
             dealerModuleFactory: componentRegistry.dealerDetailModuleProviding,
@@ -68,6 +73,13 @@ struct RouterConfigurator {
         router.add(EmbeddedDealerContentRoute(
             dealerModuleFactory: componentRegistry.dealerDetailModuleProviding, contentWireframe: contentWireframe
         ))
+    }
+    
+    private func configureScheduleRoute() {
+        let poppingTabSwapper = MoveToTabByViewController<ScheduleViewController>(window: window, shouldPopToRoot: true)
+        let tabPresentation = SwapToScheduleTabPresentation(tabNavigator: poppingTabSwapper)
+        let route = ScheduleRoute(presentation: tabPresentation)
+        router.add(route)
     }
     
     private func configureEventRoute() {
@@ -144,9 +156,10 @@ struct RouterConfigurator {
     }
     
     private func configureKnowledgeGroupsRoute() {
-        router.add(KnowledgeGroupsContentRoute(
-            tabNavigator: MoveToTabByViewController<KnowledgeListViewController>(window: window)
-        ))
+        let moveToKnowledgeTab = MoveToTabByViewController<KnowledgeListViewController>(window: window)
+        let changeTabPresentation = SwapToKnowledgeTabPresentation(tabNavigator: moveToKnowledgeTab)
+        
+        router.add(KnowledgeContentRoute(presentation: changeTabPresentation))
     }
     
     private func configureKnowledgeEntriesRoute() {

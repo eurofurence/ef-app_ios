@@ -1,16 +1,32 @@
 import ComponentBase
 import ContentController
+import DealersJourney
 import EurofurenceModel
+import EventsJourney
+import KnowledgeJourney
+import os
 import UIKit
 
 struct PrincipalWindowAssembler {
+    
+    private static let log = OSLog(subsystem: "org.eurofurence.EurofurenceApplication", category: "Principal Window")
     
     private let router: ContentRouter
     private let contentWireframe: WindowContentWireframe
     private let modalWireframe: WindowModalWireframe
     
     func route<T>(_ content: T) where T: ContentRepresentation {
-        try? router.route(content)
+        do {
+            try router.route(content)
+        } catch {
+            let errorDescription = String(describing: error)
+            
+#if DEBUG
+            fatalError(errorDescription)
+#else
+            os_log("%{public}s", log: Self.log, type: .error, errorDescription)
+#endif
+        }
     }
     
     init(

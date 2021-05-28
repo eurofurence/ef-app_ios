@@ -1,14 +1,17 @@
-import EurofurenceApplication
 import EurofurenceModel
 import KnowledgeGroupComponent
 import UIKit
 
-class StubKnowledgeGroupEntriesComponentFactory: KnowledgeGroupEntriesComponentFactory {
+public class StubKnowledgeGroupEntriesComponentFactory: KnowledgeGroupEntriesComponentFactory {
+    
+    public init() {
+        
+    }
 
-    let stubInterface = UIViewController()
-    private(set) var delegate: KnowledgeGroupEntriesComponentDelegate?
-    private(set) var capturedModel: KnowledgeGroupIdentifier?
-    func makeKnowledgeGroupEntriesModule(
+    public let stubInterface = UIViewController()
+    public private(set) var delegate: KnowledgeGroupEntriesComponentDelegate?
+    public private(set) var capturedModel: KnowledgeGroupIdentifier?
+    public func makeKnowledgeGroupEntriesModule(
         _ groupIdentifier: KnowledgeGroupIdentifier,
         delegate: KnowledgeGroupEntriesComponentDelegate
     ) -> UIViewController {
@@ -21,7 +24,7 @@ class StubKnowledgeGroupEntriesComponentFactory: KnowledgeGroupEntriesComponentF
 
 extension StubKnowledgeGroupEntriesComponentFactory {
 
-    func simulateKnowledgeEntrySelected(_ entry: KnowledgeEntryIdentifier) {
+    public func simulateKnowledgeEntrySelected(_ entry: KnowledgeEntryIdentifier) {
         delegate?.knowledgeGroupEntriesComponentDidSelectKnowledgeEntry(identifier: entry)
     }
 

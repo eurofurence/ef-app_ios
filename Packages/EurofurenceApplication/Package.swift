@@ -26,16 +26,20 @@ let package = Package(
                 .product(name: "EurofurenceApplicationSession", package: "EurofurenceApplicationSession"),
                 
                 .product(name: "ScheduleComponent", package: "EurofurenceComponents"),
+                .product(name: "EventsJourney", package: "EurofurenceComponents"),
                 .product(name: "EventDetailComponent", package: "EurofurenceComponents"),
                 .product(name: "EventFeedbackComponent", package: "EurofurenceComponents"),
+                .product(name: "DealersJourney", package: "EurofurenceComponents"),
                 .product(name: "DealersComponent", package: "EurofurenceComponents"),
                 .product(name: "DealerComponent", package: "EurofurenceComponents"),
                 .product(name: "PreloadComponent", package: "EurofurenceComponents"),
                 .product(name: "TutorialComponent", package: "EurofurenceComponents"),
+                .product(name: "KnowledgeJourney", package: "EurofurenceComponents"),
                 .product(name: "KnowledgeGroupsComponent", package: "EurofurenceComponents"),
                 .product(name: "KnowledgeGroupComponent", package: "EurofurenceComponents"),
                 .product(name: "KnowledgeDetailComponent", package: "EurofurenceComponents"),
-                .product(name: "ContentController", package: "EurofurenceComponents")
+                .product(name: "ContentController", package: "EurofurenceComponents"),
+                .product(name: "URLContent", package: "EurofurenceComponents")
             ]
         ),
         
