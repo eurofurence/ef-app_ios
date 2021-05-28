@@ -3,6 +3,7 @@ import EurofurenceApplication
 import EventDetailComponent
 import XCTComponentBase
 import XCTest
+import XCTEventDetailComponent
 
 class IntentContentRepresentationTests: ContentRepresentationTestCase {
 

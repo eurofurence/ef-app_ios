@@ -1,6 +1,7 @@
 import ComponentBase
 import EurofurenceApplicationSession
 import EurofurenceModel
+import EventDetailComponent
 import Foundation
 import UIKit
 

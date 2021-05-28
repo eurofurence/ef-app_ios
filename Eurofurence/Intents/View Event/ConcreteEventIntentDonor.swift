@@ -1,6 +1,7 @@
 import EurofurenceApplication
 import EurofurenceIntentDefinitions
 import EurofurenceModel
+import EventDetailComponent
 import Intents
 
 struct ConcreteEventIntentDonor: EventIntentDonor {

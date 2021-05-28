@@ -1,6 +1,6 @@
 import ComponentBase
 import EurofurenceModel
-import EventDetailComponent
+import func Foundation.NSLocalizedString
 
 public struct SystemEventInteractionsRecorder: EventInteractionRecorder {
     
@@ -21,7 +21,13 @@ public struct SystemEventInteractionsRecorder: EventInteractionRecorder {
     public func makeInteraction(for event: EventIdentifier) -> Interaction? {
         guard let entity = eventsService.fetchEvent(identifier: event) else { return nil }
         
-        let activityTitle = String.viewEvent(named: entity.title)
+        let format = NSLocalizedString(
+            "ViewEventFormatString",
+            bundle: .module,
+            comment: "Format string used for handoff titles for events"
+        )
+        
+        let activityTitle = String.localizedStringWithFormat(format, entity.title)
         let url = entity.contentURL
         let activity = activityFactory.makeActivity(
             type: "org.eurofurence.activity.view-event",

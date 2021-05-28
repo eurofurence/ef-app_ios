@@ -1,4 +1,4 @@
-import EurofurenceApplication
+import EventDetailComponent
 
 class CapturingEventIntentDonor: EventIntentDonor {
     

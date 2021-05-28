@@ -1,5 +1,0 @@
-protocol ActivityDonation {
-    
-    func donate()
-    
-}

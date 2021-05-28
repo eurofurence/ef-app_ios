@@ -5,3 +5,5 @@
 "DealersDen" = "Dealers Den";
 "MainStageEvent" = "Main Stage Event";
 "Photoshoot" = "Photoshoot";
+
+"ViewEventFormatString" = "View event '%@'";

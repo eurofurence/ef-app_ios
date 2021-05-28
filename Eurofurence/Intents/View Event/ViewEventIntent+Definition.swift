@@ -1,6 +1,7 @@
 import EurofurenceApplication
 import EurofurenceIntentDefinitions
 import EurofurenceModel
+import EventDetailComponent
 
 @available(iOS 12.0, *)
 extension ViewEventIntent {
