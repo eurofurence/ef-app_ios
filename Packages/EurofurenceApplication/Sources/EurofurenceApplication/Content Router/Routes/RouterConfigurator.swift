@@ -148,9 +148,10 @@ struct RouterConfigurator {
     }
     
     private func configureKnowledgeGroupsRoute() {
-        router.add(KnowledgeGroupsContentRoute(
-            tabNavigator: MoveToTabByViewController<KnowledgeListViewController>(window: window)
-        ))
+        let moveToKnowledgeTab = MoveToTabByViewController<KnowledgeListViewController>(window: window)
+        let changeTabPresentation = SwapToKnowledgeTabPresentation(tabNavigator: moveToKnowledgeTab)
+        
+        router.add(KnowledgeContentRoute(presentation: changeTabPresentation))
     }
     
     private func configureKnowledgeEntriesRoute() {
