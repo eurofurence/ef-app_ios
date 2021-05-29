@@ -1,5 +1,5 @@
 import EurofurenceApplication
-import EurofurenceIntentDefinitions
+import EurofurenceKit
 import EurofurenceModel
 import EventDetailComponent
 import Intents
