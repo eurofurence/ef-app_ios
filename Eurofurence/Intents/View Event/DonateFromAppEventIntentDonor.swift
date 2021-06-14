@@ -4,7 +4,7 @@ import EurofurenceModel
 import EventDetailComponent
 import Intents
 
-struct ConcreteEventIntentDonor: EventIntentDonor {
+struct DonateFromAppEventIntentDonor: EventIntentDonor {
     
     func donateEventIntent(definition: ViewEventIntentDefinition) {
         guard #available(iOS 12.0, *) else { return }

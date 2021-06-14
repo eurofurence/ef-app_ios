@@ -4,7 +4,7 @@ import EurofurenceKit
 import EurofurenceModel
 import Intents
 
-struct ConcreteViewDealerIntentDonor: ViewDealerIntentDonor {
+struct DonateFromAppDealerIntentDonor: ViewDealerIntentDonor {
     
     func donate(_ viewDealerIntent: ViewDealerIntentDefinition) {
         guard #available(iOS 12.0, *) else { return }
