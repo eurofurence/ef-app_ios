@@ -10,10 +10,10 @@ public class Application {
     
     public struct Dependencies {
         
-        public let viewEventIntentDonor: EventIntentDonor?
-        public let viewDealerIntentDonor: ViewDealerIntentDonor?
+        public let viewEventIntentDonor: EventIntentDonor
+        public let viewDealerIntentDonor: ViewDealerIntentDonor
         
-        public init(viewEventIntentDonor: EventIntentDonor?, viewDealerIntentDonor: ViewDealerIntentDonor?) {
+        public init(viewEventIntentDonor: EventIntentDonor, viewDealerIntentDonor: ViewDealerIntentDonor) {
             self.viewEventIntentDonor = viewEventIntentDonor
             self.viewDealerIntentDonor = viewDealerIntentDonor
         }

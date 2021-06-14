@@ -4,12 +4,12 @@ import func Foundation.NSLocalizedString
 
 public struct DonateIntentDealerInteractionRecorder: DealerInteractionRecorder {
     
-    private let viewDealerIntentDonor: ViewDealerIntentDonor?
+    private let viewDealerIntentDonor: ViewDealerIntentDonor
     private let dealersService: DealersService
     private let activityFactory: ActivityFactory
     
     public init(
-        viewDealerIntentDonor: ViewDealerIntentDonor?,
+        viewDealerIntentDonor: ViewDealerIntentDonor,
         dealersService: DealersService,
         activityFactory: ActivityFactory
     ) {
