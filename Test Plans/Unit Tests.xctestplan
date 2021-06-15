@@ -158,6 +158,13 @@
         "identifier" : "URLContentTests",
         "name" : "URLContentTests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/EurofurenceClipLogic",
+        "identifier" : "EurofurenceClipLogicTests",
+        "name" : "EurofurenceClipLogicTests"
+      }
     }
   ],
   "version" : 1
