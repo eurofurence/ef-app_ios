@@ -1,3 +1,4 @@
+import EurofurenceClipLogic
 import UIKit
 
 class AppClipSceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -14,7 +15,7 @@ class AppClipSceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         self.window = window
         
-        DealersSceneAssembler.assemble(in: windowScene, window: window)
+        AppClip.shared.configurePrincipalAppClipScene(window: window)
         
         window.makeKeyAndVisible()
     }

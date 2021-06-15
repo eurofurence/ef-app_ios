@@ -12,6 +12,7 @@
 		9ACF99381EBE172D006FC958 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF99371EBE172D006FC958 /* AppDelegate.swift */; };
 		9ACF993F1EBE172D006FC958 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ACF993E1EBE172D006FC958 /* Assets.xcassets */; };
 		CA02910221F4D6020007F350 /* UIWindow+Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA02910121F4D6020007F350 /* UIWindow+Debug.swift */; };
+		CA03124026793F32004E47B0 /* EurofurenceClipLogic in Frameworks */ = {isa = PBXBuildFile; productRef = CA03123F26793F32004E47B0 /* EurofurenceClipLogic */; };
 		CA08861F25FE997E0044DD53 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA08861B25FE997E0044DD53 /* fontawesome-webfont.ttf */; };
 		CA08862025FE997E0044DD53 /* personal_notification.caf in Resources */ = {isa = PBXBuildFile; fileRef = CA08861D25FE997E0044DD53 /* personal_notification.caf */; };
 		CA08862125FE997E0044DD53 /* generic_notification.caf in Resources */ = {isa = PBXBuildFile; fileRef = CA08861E25FE997E0044DD53 /* generic_notification.caf */; };
@@ -392,6 +393,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA03124026793F32004E47B0 /* EurofurenceClipLogic in Frameworks */,
 				CAB301032603B0D8009A52E1 /* DealerComponent in Frameworks */,
 				CAB301012603B0D8009A52E1 /* ContentController in Frameworks */,
 				CAB300FF2603B0D8009A52E1 /* EurofurenceApplicationSession in Frameworks */,
@@ -933,6 +935,7 @@
 				CAB301022603B0D8009A52E1 /* DealerComponent */,
 				CAB301042603B0D8009A52E1 /* DealersComponent */,
 				CA3ADD592677DD96007064AF /* EventDetailComponent */,
+				CA03123F26793F32004E47B0 /* EurofurenceClipLogic */,
 			);
 			productName = DealersAppClip;
 			productReference = CAB300D72603AFDB009A52E1 /* Eurofurence Clip.app */;
@@ -2690,6 +2693,10 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CA03123F26793F32004E47B0 /* EurofurenceClipLogic */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = EurofurenceClipLogic;
+		};
 		CA3ADD592677DD96007064AF /* EventDetailComponent */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = EventDetailComponent;

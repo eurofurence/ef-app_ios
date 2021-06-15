@@ -10,13 +10,12 @@ public class RootContainerViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .clear
     }
     
 }
-
 
 // MARK: - RootContainerViewController + ReplaceRootWireframe
 

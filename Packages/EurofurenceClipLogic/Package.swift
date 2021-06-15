@@ -9,13 +9,13 @@ let package = Package(
         .library(
             name: "EurofurenceClipLogic",
             targets: ["EurofurenceClipLogic"]
-        ),
+        )
     ],
     dependencies: [
         .package(path: "../EurofurenceModel"),
         .package(path: "../EurofurenceComponents"),
         .package(path: "../EurofurenceApplicationSession"),
-        .package(path: "../TestUtilities"),
+        .package(path: "../TestUtilities")
     ],
     targets: [
         .target(
@@ -50,6 +50,6 @@ let package = Package(
                 .product(name: "XCTScheduleComponent", package: "EurofurenceComponents"),
                 .product(name: "TestUtilities", package: "TestUtilities")
             ]
-        ),
+        )
     ]
 )
