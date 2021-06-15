@@ -13,22 +13,19 @@ public struct EurofurenceClipRouting {
     }
     
     public func route<Content>(_ content: Content) where Content: ContentRepresentation {
-        do {
-            switch content {
-            case is EventContentRepresentation:
-                clipScene.prepareForShowingEvents()
-                
-            case is DealerContentRepresentation:
-                clipScene.prepareForShowingDealers()
-                
-            default:
-                break
-            }
+        switch content {
+        case is DealerContentRepresentation:
+            clipScene.prepareForShowingDealers()
             
-            try router.route(content)
-        } catch {
-            clipScene.presentFallbackContent()
+        case is EventContentRepresentation:
+            clipScene.prepareForShowingEvents()
+            
+        default:
+            clipScene.prepareForShowingEvents()
+            return
         }
+        
+        try? router.route(content)
     }
     
 }

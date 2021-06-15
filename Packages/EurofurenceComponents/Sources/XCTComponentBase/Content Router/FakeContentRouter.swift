@@ -25,6 +25,19 @@ public class FakeContentRouter: ContentRouter {
         )
     }
     
+    public func assertDidNotRoute<Content>(
+        to unexpected: Content,
+        file: StaticString = #file,
+        line: UInt = #line
+    ) where Content: ContentRepresentation {
+        XCTAssertNotEqual(
+            unexpected.eraseToAnyContentRepresentation(),
+            erasedRoutedContent,
+            file: file,
+            line: line
+        )
+    }
+    
     public func unwrapRoutedContent<Target>(
         into targetType: Target.Type = Target.self,
         file: StaticString = #file,

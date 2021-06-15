@@ -8,30 +8,18 @@ import XCTest
 
 class EurofurenceClipRoutingTests: XCTestCase {
     
-    func testRoutingFailsDefersToFallbackContent() {
-        let router = MutableContentRouter()
+    func testUnknownContentShowsSchedule() {
+        let router = FakeContentRouter()
         let clipScene = CapturingClipFallbackContent()
         let routing = EurofurenceClipRouting(router: router, clipScene: clipScene)
         
-        XCTAssertFalse(clipScene.wasPresented)
-        
-        routing.route(SomeContentRepresentation(value: 42))
-        
-        XCTAssertTrue(clipScene.wasPresented)
-    }
-    
-    func testRoutingSucceedsDoesNotDeferToFallbackContent() {
-        let router = MutableContentRouter()
-        let route = SomeContentRoute()
-        router.add(route)
-        let clipScene = CapturingClipFallbackContent()
-        let routing = EurofurenceClipRouting(router: router, clipScene: clipScene)
+        XCTAssertFalse(clipScene.preparedForShowingEvents)
         
         let content = SomeContentRepresentation(value: 42)
         routing.route(content)
         
-        XCTAssertFalse(clipScene.wasPresented)
-        XCTAssertEqual(content, route.routedContent)
+        XCTAssertTrue(clipScene.preparedForShowingEvents)
+        router.assertDidNotRoute(to: content)
     }
     
     func testRoutingToEventPreparesForShowingEvents() {
@@ -42,7 +30,6 @@ class EurofurenceClipRoutingTests: XCTestCase {
         let content = EventContentRepresentation(identifier: EventIdentifier(""))
         routing.route(content)
         
-        XCTAssertFalse(clipScene.wasPresented)
         XCTAssertTrue(clipScene.preparedForShowingEvents)
         router.assertRouted(to: content)
     }
@@ -55,7 +42,6 @@ class EurofurenceClipRoutingTests: XCTestCase {
         let content = DealerContentRepresentation(identifier: DealerIdentifier(""))
         routing.route(content)
         
-        XCTAssertFalse(clipScene.wasPresented)
         XCTAssertTrue(clipScene.preparedForShowingDealers)
         router.assertRouted(to: content)
     }
@@ -63,15 +49,6 @@ class EurofurenceClipRoutingTests: XCTestCase {
     private struct SomeContentRepresentation: ContentRepresentation {
         
         var value: Int
-        
-    }
-    
-    private class SomeContentRoute: ContentRoute {
-        
-        private(set) var routedContent: SomeContentRepresentation?
-        func route(_ content: SomeContentRepresentation) {
-            routedContent = content
-        }
         
     }
     
