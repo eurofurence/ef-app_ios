@@ -1,8 +1,12 @@
 import Foundation
 
-struct PlatformActivityFactory: ActivityFactory {
+public struct PlatformActivityFactory: ActivityFactory {
     
-    func makeActivity(type: String, title: String, url: URL?) -> Activity {
+    public init() {
+        
+    }
+    
+    public func makeActivity(type: String, title: String, url: URL?) -> Activity {
         let userActivity = NSUserActivity(activityType: type)
         userActivity.title = title
         userActivity.webpageURL = url

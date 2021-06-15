@@ -1,6 +1,7 @@
 import ComponentBase
-import EurofurenceApplication
+import DealerComponent
 import EurofurenceModel
+import XCTComponentBase
 import XCTest
 import XCTEurofurenceModel
 

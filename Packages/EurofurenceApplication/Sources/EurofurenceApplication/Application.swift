@@ -1,6 +1,8 @@
 import ComponentBase
+import DealerComponent
 import EurofurenceApplicationSession
 import EurofurenceModel
+import EventDetailComponent
 import Foundation
 import UIKit
 
@@ -8,10 +10,10 @@ public class Application {
     
     public struct Dependencies {
         
-        public let viewEventIntentDonor: EventIntentDonor?
-        public let viewDealerIntentDonor: ViewDealerIntentDonor?
+        public let viewEventIntentDonor: EventIntentDonor
+        public let viewDealerIntentDonor: ViewDealerIntentDonor
         
-        public init(viewEventIntentDonor: EventIntentDonor?, viewDealerIntentDonor: ViewDealerIntentDonor?) {
+        public init(viewEventIntentDonor: EventIntentDonor, viewDealerIntentDonor: ViewDealerIntentDonor) {
             self.viewEventIntentDonor = viewEventIntentDonor
             self.viewDealerIntentDonor = viewDealerIntentDonor
         }

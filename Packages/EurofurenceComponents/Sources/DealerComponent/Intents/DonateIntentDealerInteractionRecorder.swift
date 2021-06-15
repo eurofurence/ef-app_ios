@@ -1,15 +1,15 @@
 import ComponentBase
-import DealerComponent
 import EurofurenceModel
+import func Foundation.NSLocalizedString
 
 public struct DonateIntentDealerInteractionRecorder: DealerInteractionRecorder {
     
-    private let viewDealerIntentDonor: ViewDealerIntentDonor?
+    private let viewDealerIntentDonor: ViewDealerIntentDonor
     private let dealersService: DealersService
     private let activityFactory: ActivityFactory
     
     public init(
-        viewDealerIntentDonor: ViewDealerIntentDonor?,
+        viewDealerIntentDonor: ViewDealerIntentDonor,
         dealersService: DealersService,
         activityFactory: ActivityFactory
     ) {
@@ -21,7 +21,13 @@ public struct DonateIntentDealerInteractionRecorder: DealerInteractionRecorder {
     public func makeInteraction(for dealer: DealerIdentifier) -> Interaction? {
         guard let entity = dealersService.fetchDealer(for: dealer) else { return nil }
         
-        let activityTitle = String.viewDealer(named: entity.preferredName)
+        let format = NSLocalizedString(
+            "ViewDealerFormatString",
+            bundle: .module,
+            comment: "Format string used for handoff titles for dealers"
+        )
+        
+        let activityTitle = String.localizedStringWithFormat(format, entity.preferredName)
         let url = entity.contentURL
         let activity = activityFactory.makeActivity(
             type: "org.eurofurence.activity.view-dealer",

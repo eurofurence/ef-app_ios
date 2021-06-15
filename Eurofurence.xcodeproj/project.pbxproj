@@ -20,9 +20,16 @@
 		CA25A89C22C4101D00226478 /* ScreenshotGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9845C91F2907A800E8821D /* ScreenshotGenerator.swift */; };
 		CA25A89D22C4101D00226478 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9845D21F2909DB00E8821D /* SnapshotHelper.swift */; };
 		CA26503D25F7D3EB0080F132 /* DealerSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA26503C25F7D3EB0080F132 /* DealerSearchTests.swift */; };
-		CA2AA2F222C9514500C0E1A1 /* ConcreteViewDealerIntentDonor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2F122C9514500C0E1A1 /* ConcreteViewDealerIntentDonor.swift */; };
+		CA2AA2F222C9514500C0E1A1 /* DonateFromAppDealerIntentDonor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2F122C9514500C0E1A1 /* DonateFromAppDealerIntentDonor.swift */; };
 		CA2AA2F422C9518A00C0E1A1 /* ViewDealerIntent+Definition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2F322C9518A00C0E1A1 /* ViewDealerIntent+Definition.swift */; };
 		CA3ABA06229C4B260045A35B /* AppNotificationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3ABA05229C4B260045A35B /* AppNotificationDelegate.swift */; };
+		CA3ADD502677DC28007064AF /* EurofurenceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA630BDC229F14F800754C27 /* EurofurenceKit.framework */; };
+		CA3ADD512677DC28007064AF /* EurofurenceKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA630BDC229F14F800754C27 /* EurofurenceKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CA3ADD552677DD63007064AF /* ViewEventIntent+Definition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630C0822A069AF00754C27 /* ViewEventIntent+Definition.swift */; };
+		CA3ADD562677DD63007064AF /* DonateFromAppDealerIntentDonor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2F122C9514500C0E1A1 /* DonateFromAppDealerIntentDonor.swift */; };
+		CA3ADD572677DD63007064AF /* ViewDealerIntent+Definition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2F322C9518A00C0E1A1 /* ViewDealerIntent+Definition.swift */; };
+		CA3ADD582677DD63007064AF /* DonateFromAppEventIntentDonor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630BED229F16F400754C27 /* DonateFromAppEventIntentDonor.swift */; };
+		CA3ADD5A2677DD96007064AF /* EventDetailComponent in Frameworks */ = {isa = PBXBuildFile; productRef = CA3ADD592677DD96007064AF /* EventDetailComponent */; };
 		CA3FBF4B2558426B005E1F53 /* EventsWidgetLogic in Frameworks */ = {isa = PBXBuildFile; productRef = CA3FBF4A2558426B005E1F53 /* EventsWidgetLogic */; };
 		CA47B1B1255812D600050890 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = CA47B1B0255812D600050890 /* Localizable.stringsdict */; };
 		CA47B1B82558189D00050890 /* EventsWidgetStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA47B1B72558189D00050890 /* EventsWidgetStrings.swift */; };
@@ -48,13 +55,10 @@
 		CA5F270A25570CE600CED97A /* Color+Catalogue.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5F270925570CE600CED97A /* Color+Catalogue.swift */; };
 		CA5F2716255711C700CED97A /* CategoryTextHeadline.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5F2715255711C700CED97A /* CategoryTextHeadline.swift */; };
 		CA5F273D25572BD500CED97A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA5F273C25572BD500CED97A /* Localizable.strings */; };
-		CA630BE0229F14F800754C27 /* EurofurenceIntentDefinitions.h in Headers */ = {isa = PBXBuildFile; fileRef = CA630BDE229F14F800754C27 /* EurofurenceIntentDefinitions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CA630BE3229F14F800754C27 /* EurofurenceIntentDefinitions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA630BDC229F14F800754C27 /* EurofurenceIntentDefinitions.framework */; };
-		CA630BE4229F14F800754C27 /* EurofurenceIntentDefinitions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA630BDC229F14F800754C27 /* EurofurenceIntentDefinitions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		CA630BEB229F151600754C27 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CA630BEA229F151600754C27 /* Intents.intentdefinition */; };
-		CA630BEE229F16F400754C27 /* ConcreteEventIntentDonor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630BED229F16F400754C27 /* ConcreteEventIntentDonor.swift */; };
+		CA630BE3229F14F800754C27 /* EurofurenceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA630BDC229F14F800754C27 /* EurofurenceKit.framework */; };
+		CA630BE4229F14F800754C27 /* EurofurenceKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA630BDC229F14F800754C27 /* EurofurenceKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CA630BEE229F16F400754C27 /* DonateFromAppEventIntentDonor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630BED229F16F400754C27 /* DonateFromAppEventIntentDonor.swift */; };
 		CA630C0922A069AF00754C27 /* ViewEventIntent+Definition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630C0822A069AF00754C27 /* ViewEventIntent+Definition.swift */; };
-		CA630C5122A079E100754C27 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CA630BEA229F151600754C27 /* Intents.intentdefinition */; settings = {ATTRIBUTES = (no_codegen, ); }; };
 		CA66C01E2124C6D800F87AFE /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA66C01D2124C6D800F87AFE /* StoreKit.framework */; };
 		CA728437209C7DE1007D912A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CA728436209C7DE1007D912A /* Settings.bundle */; };
 		CA7A2EEE2606B83C00919DA0 /* Eurofurence_ClipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2EED2606B83C00919DA0 /* Eurofurence_ClipTests.swift */; };
@@ -75,6 +79,11 @@
 		CAB301012603B0D8009A52E1 /* ContentController in Frameworks */ = {isa = PBXBuildFile; productRef = CAB301002603B0D8009A52E1 /* ContentController */; };
 		CAB301032603B0D8009A52E1 /* DealerComponent in Frameworks */ = {isa = PBXBuildFile; productRef = CAB301022603B0D8009A52E1 /* DealerComponent */; };
 		CAB301052603B0D8009A52E1 /* DealersComponent in Frameworks */ = {isa = PBXBuildFile; productRef = CAB301042603B0D8009A52E1 /* DealersComponent */; };
+		CAB4E9162662703F00EFE882 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CAB4E91126626F7100EFE882 /* Intents.intentdefinition */; };
+		CAB4E9172662704400EFE882 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CAB4E91126626F7100EFE882 /* Intents.intentdefinition */; settings = {ATTRIBUTES = (no_codegen, ); }; };
+		CAB4E9182662704500EFE882 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CAB4E91126626F7100EFE882 /* Intents.intentdefinition */; settings = {ATTRIBUTES = (no_codegen, ); }; };
+		CAB4E9192662704600EFE882 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CAB4E91126626F7100EFE882 /* Intents.intentdefinition */; settings = {ATTRIBUTES = (no_codegen, ); }; };
+		CAB4E91A2662705100EFE882 /* EurofurenceKit.h in Headers */ = {isa = PBXBuildFile; fileRef = CAB4E91226626F7100EFE882 /* EurofurenceKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CABBCA162565B153007A11A2 /* EventCategory+Intent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABBCA152565B153007A11A2 /* EventCategory+Intent.swift */; };
 		CABBCA302566FE0B007A11A2 /* SplitViewDetailBugTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABBCA2F2566FE0B007A11A2 /* SplitViewDetailBugTests.swift */; };
 		CAC22AE325FEB7A7004E0587 /* EurofurenceApplication in Frameworks */ = {isa = PBXBuildFile; productRef = CAC22AE225FEB7A7004E0587 /* EurofurenceApplication */; };
@@ -91,7 +100,7 @@
 		CAFC4A6C2564589500499A47 /* EventStartTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFC4A6B2564589500499A47 /* EventStartTime.swift */; };
 		CAFC4A72256458FA00499A47 /* EventEndTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFC4A71256458FA00499A47 /* EventEndTime.swift */; };
 		CAFC4A8725645E8F00499A47 /* WidgetColoredBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFC4A8625645E8F00499A47 /* WidgetColoredBackground.swift */; };
-		CAFC4A8C256463A400499A47 /* EurofurenceIntentDefinitions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA630BDC229F14F800754C27 /* EurofurenceIntentDefinitions.framework */; };
+		CAFC4A8C256463A400499A47 /* EurofurenceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA630BDC229F14F800754C27 /* EurofurenceKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +117,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 9ACF99331EBE172D006FC958;
 			remoteInfo = Eurofurence;
+		};
+		CA3ADD522677DC28007064AF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9ACF992C1EBE172D006FC958 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CA630BDB229F14F800754C27;
+			remoteInfo = EurofurenceKit;
 		};
 		CA5F26AA2556F04D00CED97A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -161,6 +177,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		CA3ADD542677DC28007064AF /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CA3ADD512677DC28007064AF /* EurofurenceKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CA5F26AE2556F04E00CED97A /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -189,7 +216,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				CA630BE4229F14F800754C27 /* EurofurenceIntentDefinitions.framework in Embed Frameworks */,
+				CA630BE4229F14F800754C27 /* EurofurenceKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -215,7 +242,7 @@
 		CA08B0F622EDD41900FDAAA7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CA0C9FE425FE35F000665ED4 /* KeychainCredentialStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainCredentialStoreTests.swift; sourceTree = "<group>"; };
 		CA26503C25F7D3EB0080F132 /* DealerSearchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerSearchTests.swift; sourceTree = "<group>"; };
-		CA2AA2F122C9514500C0E1A1 /* ConcreteViewDealerIntentDonor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcreteViewDealerIntentDonor.swift; sourceTree = "<group>"; };
+		CA2AA2F122C9514500C0E1A1 /* DonateFromAppDealerIntentDonor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateFromAppDealerIntentDonor.swift; sourceTree = "<group>"; };
 		CA2AA2F322C9518A00C0E1A1 /* ViewDealerIntent+Definition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewDealerIntent+Definition.swift"; sourceTree = "<group>"; };
 		CA3ABA05229C4B260045A35B /* AppNotificationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNotificationDelegate.swift; sourceTree = "<group>"; };
 		CA47B1B0255812D600050890 /* Localizable.stringsdict */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; path = Localizable.stringsdict; sourceTree = "<group>"; };
@@ -245,11 +272,8 @@
 		CA5F2715255711C700CED97A /* CategoryTextHeadline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTextHeadline.swift; sourceTree = "<group>"; };
 		CA5F273C25572BD500CED97A /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		CA621345221EFDD800E88880 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		CA630BDC229F14F800754C27 /* EurofurenceIntentDefinitions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EurofurenceIntentDefinitions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CA630BDE229F14F800754C27 /* EurofurenceIntentDefinitions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EurofurenceIntentDefinitions.h; sourceTree = "<group>"; };
-		CA630BDF229F14F800754C27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CA630BEA229F151600754C27 /* Intents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Intents.intentdefinition; sourceTree = "<group>"; };
-		CA630BED229F16F400754C27 /* ConcreteEventIntentDonor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcreteEventIntentDonor.swift; sourceTree = "<group>"; };
+		CA630BDC229F14F800754C27 /* EurofurenceKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EurofurenceKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA630BED229F16F400754C27 /* DonateFromAppEventIntentDonor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateFromAppEventIntentDonor.swift; sourceTree = "<group>"; };
 		CA630C0822A069AF00754C27 /* ViewEventIntent+Definition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewEventIntent+Definition.swift"; sourceTree = "<group>"; };
 		CA66C01D2124C6D800F87AFE /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		CA728436209C7DE1007D912A /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -282,6 +306,9 @@
 		CAB300E52603AFDC009A52E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CAB300E72603AFDC009A52E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CAB300E82603AFDC009A52E1 /* EurofurenceClip.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EurofurenceClip.entitlements; sourceTree = "<group>"; };
+		CAB4E91126626F7100EFE882 /* Intents.intentdefinition */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.intentdefinition; path = Intents.intentdefinition; sourceTree = "<group>"; };
+		CAB4E91226626F7100EFE882 /* EurofurenceKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EurofurenceKit.h; sourceTree = "<group>"; };
+		CAB4E91326626F7100EFE882 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CABBCA152565B153007A11A2 /* EventCategory+Intent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventCategory+Intent.swift"; sourceTree = "<group>"; };
 		CABBCA2F2566FE0B007A11A2 /* SplitViewDetailBugTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewDetailBugTests.swift; sourceTree = "<group>"; };
 		CACD371F25650BC400C23041 /* EurofurenceModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EurofurenceModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -316,7 +343,7 @@
 			files = (
 				CAC22AE325FEB7A7004E0587 /* EurofurenceApplication in Frameworks */,
 				CA66C01E2124C6D800F87AFE /* StoreKit.framework in Frameworks */,
-				CA630BE3229F14F800754C27 /* EurofurenceIntentDefinitions.framework in Frameworks */,
+				CA630BE3229F14F800754C27 /* EurofurenceKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,7 +359,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA3FBF4B2558426B005E1F53 /* EventsWidgetLogic in Frameworks */,
-				CAFC4A8C256463A400499A47 /* EurofurenceIntentDefinitions.framework in Frameworks */,
+				CAFC4A8C256463A400499A47 /* EurofurenceKit.framework in Frameworks */,
 				CA9768DD25FE39C6001AE029 /* EurofurenceApplicationSession in Frameworks */,
 				CA5F26A02556F04C00CED97A /* SwiftUI.framework in Frameworks */,
 				CA9768FB25FE3A81001AE029 /* EurofurenceModel in Frameworks */,
@@ -368,6 +395,8 @@
 				CAB301032603B0D8009A52E1 /* DealerComponent in Frameworks */,
 				CAB301012603B0D8009A52E1 /* ContentController in Frameworks */,
 				CAB300FF2603B0D8009A52E1 /* EurofurenceApplicationSession in Frameworks */,
+				CA3ADD502677DC28007064AF /* EurofurenceKit.framework in Frameworks */,
+				CA3ADD5A2677DD96007064AF /* EventDetailComponent in Frameworks */,
 				CAB301052603B0D8009A52E1 /* DealersComponent in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -417,8 +446,8 @@
 				CA7A299322B02B46002AD939 /* Dangerfile */,
 				CA08B0F622EDD41900FDAAA7 /* README.md */,
 				78CA0D0E1F0E57D5006DFD64 /* GoogleService-Info.plist */,
+				CAB4E91026626F7100EFE882 /* EurofurenceKit */,
 				9ACF99361EBE172D006FC958 /* Eurofurence */,
-				CA630BDD229F14F800754C27 /* EurofurenceIntentDefinitions */,
 				9ACF994B1EBE172D006FC958 /* EurofurenceTests */,
 				CAF254AB2517F983008892ED /* EurofurenceUITests */,
 				CA5F26A12556F04C00CED97A /* EventsWidget */,
@@ -438,7 +467,7 @@
 				9ACF99341EBE172D006FC958 /* Eurofurence.app */,
 				9ACF99481EBE172D006FC958 /* EurofurenceTests.xctest */,
 				78D7EEA11F17F40C005372A9 /* Screenshots.xctest */,
-				CA630BDC229F14F800754C27 /* EurofurenceIntentDefinitions.framework */,
+				CA630BDC229F14F800754C27 /* EurofurenceKit.framework */,
 				CAF254AA2517F983008892ED /* EurofurenceUITests.xctest */,
 				CA5F269C2556F04C00CED97A /* EventsWidgetExtension.appex */,
 				CAB300D72603AFDB009A52E1 /* Eurofurence Clip.app */,
@@ -488,7 +517,7 @@
 		CA0885FB25FE982B0044DD53 /* View Dealer */ = {
 			isa = PBXGroup;
 			children = (
-				CA2AA2F122C9514500C0E1A1 /* ConcreteViewDealerIntentDonor.swift */,
+				CA2AA2F122C9514500C0E1A1 /* DonateFromAppDealerIntentDonor.swift */,
 				CA2AA2F322C9518A00C0E1A1 /* ViewDealerIntent+Definition.swift */,
 			);
 			path = "View Dealer";
@@ -497,7 +526,7 @@
 		CA08860425FE98420044DD53 /* View Event */ = {
 			isa = PBXGroup;
 			children = (
-				CA630BED229F16F400754C27 /* ConcreteEventIntentDonor.swift */,
+				CA630BED229F16F400754C27 /* DonateFromAppEventIntentDonor.swift */,
 				CA630C0822A069AF00754C27 /* ViewEventIntent+Definition.swift */,
 			);
 			path = "View Event";
@@ -597,16 +626,6 @@
 			path = EventsWidget;
 			sourceTree = "<group>";
 		};
-		CA630BDD229F14F800754C27 /* EurofurenceIntentDefinitions */ = {
-			isa = PBXGroup;
-			children = (
-				CA630BDE229F14F800754C27 /* EurofurenceIntentDefinitions.h */,
-				CA630BDF229F14F800754C27 /* Info.plist */,
-				CA630BEA229F151600754C27 /* Intents.intentdefinition */,
-			);
-			path = EurofurenceIntentDefinitions;
-			sourceTree = "<group>";
-		};
 		CA7A2EEC2606B83C00919DA0 /* Eurofurence ClipTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -676,6 +695,16 @@
 			path = EurofurenceClip;
 			sourceTree = "<group>";
 		};
+		CAB4E91026626F7100EFE882 /* EurofurenceKit */ = {
+			isa = PBXGroup;
+			children = (
+				CAB4E91126626F7100EFE882 /* Intents.intentdefinition */,
+				CAB4E91226626F7100EFE882 /* EurofurenceKit.h */,
+				CAB4E91326626F7100EFE882 /* Info.plist */,
+			);
+			path = EurofurenceKit;
+			sourceTree = "<group>";
+		};
 		CAF254AB2517F983008892ED /* EurofurenceUITests */ = {
 			isa = PBXGroup;
 			children = (
@@ -730,7 +759,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA630BE0229F14F800754C27 /* EurofurenceIntentDefinitions.h in Headers */,
+				CAB4E91A2662705100EFE882 /* EurofurenceKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -828,9 +857,9 @@
 			productReference = CA5F269C2556F04C00CED97A /* EventsWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		CA630BDB229F14F800754C27 /* EurofurenceIntentDefinitions */ = {
+		CA630BDB229F14F800754C27 /* EurofurenceKit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CA630BE5229F14F800754C27 /* Build configuration list for PBXNativeTarget "EurofurenceIntentDefinitions" */;
+			buildConfigurationList = CA630BE5229F14F800754C27 /* Build configuration list for PBXNativeTarget "EurofurenceKit" */;
 			buildPhases = (
 				CA630BD7229F14F800754C27 /* Headers */,
 				CA630BD8229F14F800754C27 /* Sources */,
@@ -841,9 +870,9 @@
 			);
 			dependencies = (
 			);
-			name = EurofurenceIntentDefinitions;
+			name = EurofurenceKit;
 			productName = EurofurenceIntentDefinitions;
-			productReference = CA630BDC229F14F800754C27 /* EurofurenceIntentDefinitions.framework */;
+			productReference = CA630BDC229F14F800754C27 /* EurofurenceKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		CA7A2EEA2606B83C00919DA0 /* Eurofurence ClipTests */ = {
@@ -890,10 +919,12 @@
 				CA5314C12603B5A60022B12E /* SwiftLint */,
 				CAB300D42603AFDB009A52E1 /* Frameworks */,
 				CAB300D52603AFDB009A52E1 /* Resources */,
+				CA3ADD542677DC28007064AF /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				CA3ADD532677DC28007064AF /* PBXTargetDependency */,
 			);
 			name = "Eurofurence Clip";
 			packageProductDependencies = (
@@ -901,6 +932,7 @@
 				CAB301002603B0D8009A52E1 /* ContentController */,
 				CAB301022603B0D8009A52E1 /* DealerComponent */,
 				CAB301042603B0D8009A52E1 /* DealersComponent */,
+				CA3ADD592677DD96007064AF /* EventDetailComponent */,
 			);
 			productName = DealersAppClip;
 			productReference = CAB300D72603AFDB009A52E1 /* Eurofurence Clip.app */;
@@ -1014,7 +1046,7 @@
 				9ACF99471EBE172D006FC958 /* EurofurenceTests */,
 				CAF254A92517F983008892ED /* EurofurenceUITests */,
 				78D7EEA01F17F40C005372A9 /* Screenshots */,
-				CA630BDB229F14F800754C27 /* EurofurenceIntentDefinitions */,
+				CA630BDB229F14F800754C27 /* EurofurenceKit */,
 				CA5F269B2556F04C00CED97A /* EventsWidgetExtension */,
 				CAB300D62603AFDB009A52E1 /* Eurofurence Clip */,
 				CA7A2EEA2606B83C00919DA0 /* Eurofurence ClipTests */,
@@ -1206,15 +1238,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA630C5122A079E100754C27 /* Intents.intentdefinition in Sources */,
 				CA85154625FF744900860631 /* DebugTableViewController.swift in Sources */,
-				CA630BEE229F16F400754C27 /* ConcreteEventIntentDonor.swift in Sources */,
+				CA630BEE229F16F400754C27 /* DonateFromAppEventIntentDonor.swift in Sources */,
 				CA02910221F4D6020007F350 /* UIWindow+Debug.swift in Sources */,
 				CA3ABA06229C4B260045A35B /* AppNotificationDelegate.swift in Sources */,
-				CA2AA2F222C9514500C0E1A1 /* ConcreteViewDealerIntentDonor.swift in Sources */,
+				CA2AA2F222C9514500C0E1A1 /* DonateFromAppDealerIntentDonor.swift in Sources */,
 				CAE434FD25FEBA4D001E74B7 /* PrincipalWindowSceneDelegate.swift in Sources */,
 				CA2AA2F422C9518A00C0E1A1 /* ViewDealerIntent+Definition.swift in Sources */,
 				9ACF99381EBE172D006FC958 /* AppDelegate.swift in Sources */,
+				CAB4E9172662704400EFE882 /* Intents.intentdefinition in Sources */,
 				CA630C0922A069AF00754C27 /* ViewEventIntent+Definition.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1254,6 +1286,7 @@
 				CA5A5B062584F58A007F6728 /* IntentBasedWidgetSpecificationFactory.swift in Sources */,
 				CABBCA162565B153007A11A2 /* EventCategory+Intent.swift in Sources */,
 				CAFC4A6C2564589500499A47 /* EventStartTime.swift in Sources */,
+				CAB4E9192662704600EFE882 /* Intents.intentdefinition in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1261,7 +1294,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA630BEB229F151600754C27 /* Intents.intentdefinition in Sources */,
+				CAB4E9162662703F00EFE882 /* Intents.intentdefinition in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1285,8 +1318,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA3ADD572677DD63007064AF /* ViewDealerIntent+Definition.swift in Sources */,
+				CA3ADD562677DD63007064AF /* DonateFromAppDealerIntentDonor.swift in Sources */,
+				CAB4E9182662704500EFE882 /* Intents.intentdefinition in Sources */,
+				CA3ADD552677DD63007064AF /* ViewEventIntent+Definition.swift in Sources */,
 				CA5314FB260409180022B12E /* DealersSceneAssembler.swift in Sources */,
 				CA5314EB260408650022B12E /* DealerAppClipModule.swift in Sources */,
+				CA3ADD582677DD63007064AF /* DonateFromAppEventIntentDonor.swift in Sources */,
 				CAB300DA2603AFDB009A52E1 /* AppClipAppDelegate.swift in Sources */,
 				CAB300DC2603AFDB009A52E1 /* AppClipSceneDelegate.swift in Sources */,
 				CA5314F3260408730022B12E /* ShowDealerInDetailPane.swift in Sources */,
@@ -1320,6 +1358,11 @@
 			target = 9ACF99331EBE172D006FC958 /* Eurofurence */;
 			targetProxy = 9ACF99491EBE172D006FC958 /* PBXContainerItemProxy */;
 		};
+		CA3ADD532677DC28007064AF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CA630BDB229F14F800754C27 /* EurofurenceKit */;
+			targetProxy = CA3ADD522677DC28007064AF /* PBXContainerItemProxy */;
+		};
 		CA5F26AB2556F04D00CED97A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CA5F269B2556F04C00CED97A /* EventsWidgetExtension */;
@@ -1327,7 +1370,7 @@
 		};
 		CA630BE2229F14F800754C27 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = CA630BDB229F14F800754C27 /* EurofurenceIntentDefinitions */;
+			target = CA630BDB229F14F800754C27 /* EurofurenceKit */;
 			targetProxy = CA630BE1229F14F800754C27 /* PBXContainerItemProxy */;
 		};
 		CA7A2EFF2606B83F00919DA0 /* PBXTargetDependency */ = {
@@ -1352,7 +1395,7 @@
 		};
 		CAFC4A8F256463A400499A47 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = CA630BDB229F14F800754C27 /* EurofurenceIntentDefinitions */;
+			target = CA630BDB229F14F800754C27 /* EurofurenceKit */;
 			targetProxy = CAFC4A8E256463A400499A47 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1854,7 +1897,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = EurofurenceIntentDefinitions/Info.plist;
+				INFOPLIST_FILE = EurofurenceKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1863,7 +1906,7 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceIntentDefinitions;
+				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -1889,7 +1932,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = EurofurenceIntentDefinitions/Info.plist;
+				INFOPLIST_FILE = EurofurenceKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1897,7 +1940,7 @@
 					"@loader_path/Frameworks",
 				);
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceIntentDefinitions;
+				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -1924,7 +1967,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = EurofurenceIntentDefinitions/Info.plist;
+				INFOPLIST_FILE = EurofurenceKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1932,7 +1975,7 @@
 					"@loader_path/Frameworks",
 				);
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceIntentDefinitions;
+				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -1958,7 +2001,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = EurofurenceIntentDefinitions/Info.plist;
+				INFOPLIST_FILE = EurofurenceKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1966,7 +2009,7 @@
 					"@loader_path/Frameworks",
 				);
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceIntentDefinitions;
+				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -2589,7 +2632,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CA630BE5229F14F800754C27 /* Build configuration list for PBXNativeTarget "EurofurenceIntentDefinitions" */ = {
+		CA630BE5229F14F800754C27 /* Build configuration list for PBXNativeTarget "EurofurenceKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CA630BE6229F14F800754C27 /* Debug */,
@@ -2647,6 +2690,10 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CA3ADD592677DD96007064AF /* EventDetailComponent */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = EventDetailComponent;
+		};
 		CA3FBF4A2558426B005E1F53 /* EventsWidgetLogic */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = EventsWidgetLogic;

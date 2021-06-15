@@ -1,4 +1,4 @@
-import EurofurenceApplication
+import DealerComponent
 
 class CapturingViewDealerIntentDonor: ViewDealerIntentDonor {
     
