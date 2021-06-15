@@ -29,10 +29,16 @@ struct DealerAppClipModule: PrincipalContentModuleFactory {
             dealersService: services.dealers,
             shareService: shareService
         )
+        
+        let dealerInteractionRecorder = DonateIntentDealerInteractionRecorder(
+            viewDealerIntentDonor: DonateFromAppDealerIntentDonor(),
+            dealersService: services.dealers,
+            activityFactory: PlatformActivityFactory()
+        )
 
         let dealerDetailModuleProviding = DealerDetailComponentBuilder(
             dealerDetailViewModelFactory: dealerDetailViewModelFactory,
-            dealerInteractionRecorder: DoNotDonateDealerInteraction()
+            dealerInteractionRecorder: dealerInteractionRecorder
         ).build()
         
         let showDealerInDetailPane = ShowDealerInDetailPane(
@@ -48,14 +54,6 @@ struct DealerAppClipModule: PrincipalContentModuleFactory {
         rootViewController.viewControllers = [dealersNavigationController, placeholderNavigation]
         
         return rootViewController
-    }
-    
-    private struct DoNotDonateDealerInteraction: DealerInteractionRecorder {
-        
-        func makeInteraction(for dealer: DealerIdentifier) -> Interaction? {
-            nil
-        }
-        
     }
     
 }
