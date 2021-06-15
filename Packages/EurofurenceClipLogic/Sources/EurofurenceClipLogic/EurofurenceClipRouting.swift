@@ -1,4 +1,5 @@
 import ComponentBase
+import DealerComponent
 import EventDetailComponent
 
 public struct EurofurenceClipRouting {
@@ -16,6 +17,9 @@ public struct EurofurenceClipRouting {
             switch content {
             case is EventContentRepresentation:
                 clipScene.prepareForShowingEvents()
+                
+            case is DealerContentRepresentation:
+                clipScene.prepareForShowingDealers()
                 
             default:
                 break

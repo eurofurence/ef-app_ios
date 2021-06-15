@@ -12,4 +12,9 @@ class CapturingClipFallbackContent: ClipContentScene {
         preparedForShowingEvents = true
     }
     
+    private(set) var preparedForShowingDealers = false
+    func prepareForShowingDealers() {
+        preparedForShowingDealers = true
+    }
+    
 }

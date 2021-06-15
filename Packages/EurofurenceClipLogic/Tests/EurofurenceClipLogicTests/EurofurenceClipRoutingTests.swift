@@ -1,4 +1,5 @@
 import ComponentBase
+import DealerComponent
 import EurofurenceClipLogic
 import EurofurenceModel
 import EventDetailComponent
@@ -43,6 +44,19 @@ class EurofurenceClipRoutingTests: XCTestCase {
         
         XCTAssertFalse(clipScene.wasPresented)
         XCTAssertTrue(clipScene.preparedForShowingEvents)
+        router.assertRouted(to: content)
+    }
+    
+    func testRoutingToDealerPreparesForShowingDealers() {
+        let router = FakeContentRouter()
+        let clipScene = CapturingClipFallbackContent()
+        let routing = EurofurenceClipRouting(router: router, clipScene: clipScene)
+        
+        let content = DealerContentRepresentation(identifier: DealerIdentifier(""))
+        routing.route(content)
+        
+        XCTAssertFalse(clipScene.wasPresented)
+        XCTAssertTrue(clipScene.preparedForShowingDealers)
         router.assertRouted(to: content)
     }
     
