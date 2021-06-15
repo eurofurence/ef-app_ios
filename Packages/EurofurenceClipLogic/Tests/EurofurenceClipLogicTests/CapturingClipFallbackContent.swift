@@ -7,4 +7,9 @@ class CapturingClipFallbackContent: ClipFallbackContent {
         wasPresented = true
     }
     
+    private(set) var preparedForShowingEvents = false
+    func prepareForShowingEvents() {
+        preparedForShowingEvents = true
+    }
+    
 }
