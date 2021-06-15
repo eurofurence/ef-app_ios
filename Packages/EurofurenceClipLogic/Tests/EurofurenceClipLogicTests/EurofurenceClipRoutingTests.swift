@@ -10,39 +10,39 @@ class EurofurenceClipRoutingTests: XCTestCase {
     
     func testUnknownContentShowsSchedule() {
         let router = FakeContentRouter()
-        let clipScene = CapturingClipFallbackContent()
+        let clipScene = MockClipFallbackContent()
         let routing = EurofurenceClipRouting(router: router, clipScene: clipScene)
         
-        XCTAssertFalse(clipScene.preparedForShowingEvents)
+        clipScene.assertNotDisplayingAnything()
         
         let content = SomeContentRepresentation(value: 42)
         routing.route(content)
         
-        XCTAssertTrue(clipScene.preparedForShowingEvents)
+        clipScene.assertDisplaying(.events)
         router.assertDidNotRoute(to: content)
     }
     
     func testRoutingToEventPreparesForShowingEvents() {
         let router = FakeContentRouter()
-        let clipScene = CapturingClipFallbackContent()
+        let clipScene = MockClipFallbackContent()
         let routing = EurofurenceClipRouting(router: router, clipScene: clipScene)
         
         let content = EventContentRepresentation(identifier: EventIdentifier(""))
         routing.route(content)
         
-        XCTAssertTrue(clipScene.preparedForShowingEvents)
+        clipScene.assertDisplaying(.events)
         router.assertRouted(to: content)
     }
     
     func testRoutingToDealerPreparesForShowingDealers() {
         let router = FakeContentRouter()
-        let clipScene = CapturingClipFallbackContent()
+        let clipScene = MockClipFallbackContent()
         let routing = EurofurenceClipRouting(router: router, clipScene: clipScene)
         
         let content = DealerContentRepresentation(identifier: DealerIdentifier(""))
         routing.route(content)
         
-        XCTAssertTrue(clipScene.preparedForShowingDealers)
+        clipScene.assertDisplaying(.dealers)
         router.assertRouted(to: content)
     }
     
