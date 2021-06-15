@@ -9,40 +9,40 @@ class EurofurenceClipRoutingTests: XCTestCase {
     
     func testRoutingFailsDefersToFallbackContent() {
         let router = MutableContentRouter()
-        let fallbackContent = CapturingClipFallbackContent()
-        let routing = EurofurenceClipRouting(router: router, fallbackContent: fallbackContent)
+        let clipScene = CapturingClipFallbackContent()
+        let routing = EurofurenceClipRouting(router: router, clipScene: clipScene)
         
-        XCTAssertFalse(fallbackContent.wasPresented)
+        XCTAssertFalse(clipScene.wasPresented)
         
         routing.route(SomeContentRepresentation(value: 42))
         
-        XCTAssertTrue(fallbackContent.wasPresented)
+        XCTAssertTrue(clipScene.wasPresented)
     }
     
     func testRoutingSucceedsDoesNotDeferToFallbackContent() {
         let router = MutableContentRouter()
         let route = SomeContentRoute()
         router.add(route)
-        let fallbackContent = CapturingClipFallbackContent()
-        let routing = EurofurenceClipRouting(router: router, fallbackContent: fallbackContent)
+        let clipScene = CapturingClipFallbackContent()
+        let routing = EurofurenceClipRouting(router: router, clipScene: clipScene)
         
         let content = SomeContentRepresentation(value: 42)
         routing.route(content)
         
-        XCTAssertFalse(fallbackContent.wasPresented)
+        XCTAssertFalse(clipScene.wasPresented)
         XCTAssertEqual(content, route.routedContent)
     }
     
     func testRoutingToEventPreparesForShowingEvents() {
         let router = FakeContentRouter()
-        let fallbackContent = CapturingClipFallbackContent()
-        let routing = EurofurenceClipRouting(router: router, fallbackContent: fallbackContent)
+        let clipScene = CapturingClipFallbackContent()
+        let routing = EurofurenceClipRouting(router: router, clipScene: clipScene)
         
         let content = EventContentRepresentation(identifier: EventIdentifier(""))
         routing.route(content)
         
-        XCTAssertFalse(fallbackContent.wasPresented)
-        XCTAssertTrue(fallbackContent.preparedForShowingEvents)
+        XCTAssertFalse(clipScene.wasPresented)
+        XCTAssertTrue(clipScene.preparedForShowingEvents)
         router.assertRouted(to: content)
     }
     

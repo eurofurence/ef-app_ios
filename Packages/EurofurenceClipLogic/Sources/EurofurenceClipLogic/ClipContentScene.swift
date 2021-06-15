@@ -1,4 +1,4 @@
-public protocol ClipFallbackContent {
+public protocol ClipContentScene {
     
     func presentFallbackContent()
     func prepareForShowingEvents()

@@ -1,6 +1,6 @@
 import EurofurenceClipLogic
 
-class CapturingClipFallbackContent: ClipFallbackContent {
+class CapturingClipFallbackContent: ClipContentScene {
     
     private(set) var wasPresented = false
     func presentFallbackContent() {

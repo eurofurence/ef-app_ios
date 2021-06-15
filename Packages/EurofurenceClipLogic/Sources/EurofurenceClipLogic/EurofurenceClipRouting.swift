@@ -4,18 +4,18 @@ import EventDetailComponent
 public struct EurofurenceClipRouting {
     
     private let router: ContentRouter
-    private let fallbackContent: ClipFallbackContent
+    private let clipScene: ClipContentScene
     
-    public init(router: ContentRouter, fallbackContent: ClipFallbackContent) {
+    public init(router: ContentRouter, clipScene: ClipContentScene) {
         self.router = router
-        self.fallbackContent = fallbackContent
+        self.clipScene = clipScene
     }
     
     public func route<Content>(_ content: Content) where Content: ContentRepresentation {
         do {
             switch content {
             case is EventContentRepresentation:
-                fallbackContent.prepareForShowingEvents()
+                clipScene.prepareForShowingEvents()
                 
             default:
                 break
@@ -23,7 +23,7 @@ public struct EurofurenceClipRouting {
             
             try router.route(content)
         } catch {
-            fallbackContent.presentFallbackContent()
+            clipScene.presentFallbackContent()
         }
     }
     
