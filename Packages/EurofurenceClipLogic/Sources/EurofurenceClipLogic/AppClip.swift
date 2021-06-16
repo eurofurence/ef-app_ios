@@ -1,15 +1,36 @@
+import DealerComponent
 import EurofurenceApplicationSession
 import EurofurenceModel
+import EventDetailComponent
 import UIKit
 
 public class AppClip {
     
-    public static let shared = AppClip()
+    public struct Dependencies {
+        
+        public let eventIntentDonor: EventIntentDonor
+        public let dealerIntentDonor: ViewDealerIntentDonor
+        
+        public init(eventIntentDonor: EventIntentDonor, dealerIntentDonor: ViewDealerIntentDonor) {
+            self.eventIntentDonor = eventIntentDonor
+            self.dealerIntentDonor = dealerIntentDonor
+        }
+        
+    }
     
+    public private(set) static var shared: AppClip!
+    
+    private let dependencies: Dependencies
     private let session: EurofurenceSession
-    private var appClipWindowAssembler: AppClipWindowAssembler?
+    private var appClipWindowAssembler: PrincipalWindowAssembler?
     
-    private init() {
+    public static func bootstrap(_ dependencies: Dependencies) {
+        shared = AppClip(dependencies: dependencies)
+    }
+    
+    private init(dependencies: Dependencies) {
+        self.dependencies = dependencies
+        
         session = EurofurenceSessionBuilder
             .buildingForEurofurenceApplication()
             .with(FinishStraightAwayRefreshCollaboration())
@@ -17,8 +38,9 @@ public class AppClip {
     }
     
     public func configurePrincipalAppClipScene(window: UIWindow) {
-        appClipWindowAssembler = AppClipWindowAssembler(
+        appClipWindowAssembler = PrincipalWindowAssembler(
             window: window,
+            dependencies: dependencies,
             repositories: session.repositories,
             services: session.services
         )

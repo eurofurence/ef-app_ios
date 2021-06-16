@@ -9,7 +9,7 @@ class AppClipAppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
-        Theme.global.apply()
+        prepareApplication()
         return true
     }
 
@@ -25,6 +25,13 @@ class AppClipAppDelegate: UIResponder, UIApplicationDelegate {
     
     private func prepareApplication() {
         Theme.global.apply()
+        
+        let dependencies = AppClip.Dependencies(
+            eventIntentDonor: DonateFromAppEventIntentDonor(),
+            dealerIntentDonor: DonateFromAppDealerIntentDonor()
+        )
+        
+        AppClip.bootstrap(dependencies)
     }
 
 }

@@ -15,6 +15,22 @@ public class RootContainerViewController: UIViewController {
         view.backgroundColor = .clear
     }
     
+    override public func show(_ vc: UIViewController, sender: Any?) {
+        if let child = children.first {
+            child.show(vc, sender: sender)
+        } else {
+            super.show(vc, sender: sender)
+        }
+    }
+    
+    override public func showDetailViewController(_ vc: UIViewController, sender: Any?) {
+        if let child = children.first {
+            child.showDetailViewController(vc, sender: sender)
+        } else {
+            super.show(vc, sender: sender)
+        }
+    }
+    
 }
 
 // MARK: - RootContainerViewController + ReplaceRootWireframe
