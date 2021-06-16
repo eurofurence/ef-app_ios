@@ -93,7 +93,8 @@ struct AppClipWindowAssembler {
         var router: ContentRouter
         
         func makeContentController() -> UIViewController {
-            scheduleComponentFactory.makeScheduleComponent(ScheduleSubrouter(router: router))
+            let schedule = scheduleComponentFactory.makeScheduleComponent(ScheduleSubrouter(router: router))
+            return BrandedNavigationController(rootViewController: schedule)
         }
         
     }
@@ -104,7 +105,8 @@ struct AppClipWindowAssembler {
         var router: ContentRouter
         
         func makeContentController() -> UIViewController {
-            dealersComponentFactory.makeDealersComponent(ShowDealerFromDealers(router: router))
+            let dealers = dealersComponentFactory.makeDealersComponent(ShowDealerFromDealers(router: router))
+            return BrandedNavigationController(rootViewController: dealers)
         }
         
     }
