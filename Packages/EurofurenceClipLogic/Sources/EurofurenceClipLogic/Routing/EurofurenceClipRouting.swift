@@ -10,6 +10,8 @@ public struct EurofurenceClipRouting {
     public init(router: ContentRouter, clipScene: ClipContentScene) {
         self.router = router
         self.clipScene = clipScene
+        
+        clipScene.prepareForShowingEvents()
     }
     
     public func route<Content>(_ content: Content) where Content: ContentRepresentation {

@@ -8,12 +8,18 @@ import XCTest
 
 class EurofurenceClipRoutingTests: XCTestCase {
     
+    func testInitiallyDisplaysSchedule() {
+        let router = FakeContentRouter()
+        let clipScene = MockClipFallbackContent()
+        _ = EurofurenceClipRouting(router: router, clipScene: clipScene)
+        
+        clipScene.assertDisplaying(.events)
+    }
+    
     func testUnknownContentShowsSchedule() {
         let router = FakeContentRouter()
         let clipScene = MockClipFallbackContent()
         let routing = EurofurenceClipRouting(router: router, clipScene: clipScene)
-        
-        clipScene.assertNotDisplayingAnything()
         
         let content = SomeContentRepresentation(value: 42)
         routing.route(content)
