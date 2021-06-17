@@ -9,10 +9,12 @@ extension AppClip {
     struct RouterConfigurator {
         
         private let window: UIWindow
+        private let clipContentScene: ClipContentScene
         private let components: Components
         
-        init(window: UIWindow, components: Components) {
+        init(window: UIWindow, clipContentScene: ClipContentScene, components: Components) {
             self.window = window
+            self.clipContentScene = clipContentScene
             self.components = components
         }
         
@@ -21,6 +23,9 @@ extension AppClip {
             
             let contentWireframe = WindowContentWireframe(window: window)
             
+            let scheduleRoute = ReplaceSceneWithScheduleRoute(scene: clipContentScene)
+            router.add(scheduleRoute)
+            
             let eventRoute = EventContentRoute(
                 eventModuleFactory: components.eventDetailComponentFactory,
                 eventDetailDelegate: leaveFeedback,
@@ -28,6 +33,9 @@ extension AppClip {
             )
             
             router.add(eventRoute)
+            
+            let dealersRoute = ReplaceSceneWithDealersRoute(scene: clipContentScene)
+            router.add(dealersRoute)
             
             let dealerRoute = DealerContentRoute(
                 dealerModuleFactory: components.dealerDetailModuleProviding,

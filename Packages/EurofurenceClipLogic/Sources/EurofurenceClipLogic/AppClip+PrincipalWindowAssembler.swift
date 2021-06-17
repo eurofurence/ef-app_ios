@@ -45,7 +45,6 @@ extension AppClip {
             )
             
             let router = MutableContentRouter()
-            RouterConfigurator(window: window, components: components).configure(router)
             
             let rootContainerViewController = RootContainerViewController()
             
@@ -64,6 +63,12 @@ extension AppClip {
                 scheduleComponent: scheduleFactoryAdapter,
                 dealersComponent: dealersFactoryAdapter
             )
+            
+            RouterConfigurator(
+                window: window,
+                clipContentScene: clipContentScene,
+                components: components
+            ).configure(router)
             
             let clipRouting = EurofurenceClipRouting(router: router, clipScene: clipContentScene)
             self.routing = clipRouting
