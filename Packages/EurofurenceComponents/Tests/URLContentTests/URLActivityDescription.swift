@@ -1,5 +1,5 @@
-import EurofurenceApplication
 import Foundation
+import URLContent
 
 struct URLActivityDescription: ActivityDescription {
     

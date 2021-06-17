@@ -1,6 +1,6 @@
 import DealerComponent
-import EurofurenceApplication
 import EventDetailComponent
+import URLContent
 import XCTComponentBase
 import XCTDealerComponent
 import XCTest

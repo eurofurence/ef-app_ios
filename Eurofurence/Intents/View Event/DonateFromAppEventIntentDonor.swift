@@ -1,4 +1,3 @@
-import EurofurenceApplication
 import EurofurenceKit
 import EurofurenceModel
 import EventDetailComponent

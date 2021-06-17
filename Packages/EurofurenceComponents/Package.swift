@@ -306,7 +306,9 @@ let package = Package(
         
         .testTarget(name: "URLContentTests", dependencies: [
             .target(name: "URLContent"),
-            .target(name: "XCTComponentBase")
+            .target(name: "XCTComponentBase"),
+            .target(name: "XCTDealerComponent"),
+            .target(name: "XCTEventDetailComponent")
         ])
         
     ]

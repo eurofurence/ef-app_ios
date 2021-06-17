@@ -1,4 +1,4 @@
-import EurofurenceApplication
+import URLContent
 
 struct IntentActivityDescription: ActivityDescription {
     

@@ -1,5 +1,4 @@
 import DealerComponent
-import EurofurenceApplication
 import EurofurenceKit
 import EurofurenceModel
 
