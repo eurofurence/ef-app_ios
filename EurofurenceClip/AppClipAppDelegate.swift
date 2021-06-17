@@ -3,9 +3,9 @@ import EurofurenceClipLogic
 import UIKit
 
 @main
-class AppClipAppDelegate: UIResponder, UIApplicationDelegate {
+public class AppClipAppDelegate: UIResponder, UIApplicationDelegate {
 
-    func application(
+    public func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
@@ -13,7 +13,7 @@ class AppClipAppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    func application(
+    public func application(
         _ application: UIApplication,
         configurationForConnecting connectingSceneSession: UISceneSession,
         options: UIScene.ConnectionOptions
