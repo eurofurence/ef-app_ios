@@ -19,12 +19,26 @@ extension AppClip {
         }
         
         func configure(_ router: MutableContentRouter) {
-            let leaveFeedback = LeaveFeedbackFromEventNavigator(router: router)
-            
             let contentWireframe = WindowContentWireframe(window: window)
             
+            addScheduleRoute(router)
+            addDealersRoute(router)
+            addEventRoute(router, contentWireframe)
+            addDealerRoute(contentWireframe, router)
+        }
+        
+        private func addScheduleRoute(_ router: MutableContentRouter) {
             let scheduleRoute = ReplaceSceneWithScheduleRoute(scene: clipContentScene)
             router.add(scheduleRoute)
+        }
+        
+        private func addDealersRoute(_ router: MutableContentRouter) {
+            let dealersRoute = ReplaceSceneWithDealersRoute(scene: clipContentScene)
+            router.add(dealersRoute)
+        }
+        
+        private func addEventRoute(_ router: MutableContentRouter, _ contentWireframe: WindowContentWireframe) {
+            let leaveFeedback = LeaveFeedbackFromEventNavigator(router: router)
             
             let eventRoute = EventContentRoute(
                 eventModuleFactory: components.eventDetailComponentFactory,
@@ -33,10 +47,9 @@ extension AppClip {
             )
             
             router.add(eventRoute)
-            
-            let dealersRoute = ReplaceSceneWithDealersRoute(scene: clipContentScene)
-            router.add(dealersRoute)
-            
+        }
+        
+        private func addDealerRoute(_ contentWireframe: WindowContentWireframe, _ router: MutableContentRouter) {
             let dealerRoute = DealerContentRoute(
                 dealerModuleFactory: components.dealerDetailModuleProviding,
                 contentWireframe: contentWireframe
