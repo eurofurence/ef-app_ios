@@ -25,7 +25,7 @@ class EurofurenceClipRoutingTests: XCTestCase {
         routing.route(content)
         
         clipScene.assertDisplaying(.events)
-        router.assertDidNotRoute(to: content)
+        router.assertRouted(to: content)
     }
     
     func testRoutingToEventPreparesForShowingEvents() {
@@ -52,9 +52,34 @@ class EurofurenceClipRoutingTests: XCTestCase {
         router.assertRouted(to: content)
     }
     
+    func testRoutingNestedContent() {
+        let router = FakeContentRouter()
+        let clipScene = MockClipFallbackContent()
+        let routing = EurofurenceClipRouting(router: router, clipScene: clipScene)
+        
+        let content = DealerContentRepresentation(identifier: DealerIdentifier(""))
+        let container = Container(content: content)
+        routing.route(container)
+        
+        clipScene.assertDisplaying(.dealers)
+        router.assertRouted(to: container)
+    }
+    
     private struct SomeContentRepresentation: ContentRepresentation {
         
         var value: Int
+        
+    }
+    
+    private struct Container<
+        Content: ContentRepresentation
+    >: ContentRepresentation, ContentRepresentationDescribing {
+        
+        var content: Content
+        
+        func describe(to recipient: ContentRepresentationRecipient) {
+            recipient.receive(content)
+        }
         
     }
     
