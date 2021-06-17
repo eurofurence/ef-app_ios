@@ -75,7 +75,7 @@
 		CAB300DC2603AFDB009A52E1 /* AppClipSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB300DB2603AFDB009A52E1 /* AppClipSceneDelegate.swift */; };
 		CAB300E32603AFDC009A52E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAB300E22603AFDC009A52E1 /* Assets.xcassets */; };
 		CAB300E62603AFDC009A52E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAB300E42603AFDC009A52E1 /* LaunchScreen.storyboard */; };
-		CAB300EB2603AFDC009A52E1 /* Eurofurence Clip.app in Embed App Clips */ = {isa = PBXBuildFile; fileRef = CAB300D72603AFDB009A52E1 /* Eurofurence Clip.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CAB300EB2603AFDC009A52E1 /* EurofurenceClip.app in Embed App Clips */ = {isa = PBXBuildFile; fileRef = CAB300D72603AFDB009A52E1 /* EurofurenceClip.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CAB300FF2603B0D8009A52E1 /* EurofurenceApplicationSession in Frameworks */ = {isa = PBXBuildFile; productRef = CAB300FE2603B0D8009A52E1 /* EurofurenceApplicationSession */; };
 		CAB301012603B0D8009A52E1 /* ContentController in Frameworks */ = {isa = PBXBuildFile; productRef = CAB301002603B0D8009A52E1 /* ContentController */; };
 		CAB301032603B0D8009A52E1 /* DealerComponent in Frameworks */ = {isa = PBXBuildFile; productRef = CAB301022603B0D8009A52E1 /* DealerComponent */; };
@@ -206,7 +206,7 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/AppClips";
 			dstSubfolderSpec = 16;
 			files = (
-				CAB300EB2603AFDC009A52E1 /* Eurofurence Clip.app in Embed App Clips */,
+				CAB300EB2603AFDC009A52E1 /* EurofurenceClip.app in Embed App Clips */,
 			);
 			name = "Embed App Clips";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -300,7 +300,7 @@
 		CA9845C91F2907A800E8821D /* ScreenshotGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotGenerator.swift; sourceTree = "<group>"; };
 		CA9845D21F2909DB00E8821D /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		CAA4EFF5265C5003002CBDA6 /* Unit Tests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Unit Tests.xctestplan"; sourceTree = "<group>"; };
-		CAB300D72603AFDB009A52E1 /* Eurofurence Clip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Eurofurence Clip.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CAB300D72603AFDB009A52E1 /* EurofurenceClip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EurofurenceClip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAB300D92603AFDB009A52E1 /* AppClipAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppClipAppDelegate.swift; sourceTree = "<group>"; };
 		CAB300DB2603AFDB009A52E1 /* AppClipSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppClipSceneDelegate.swift; sourceTree = "<group>"; };
 		CAB300E22603AFDC009A52E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -454,8 +454,8 @@
 				CAF254AB2517F983008892ED /* EurofurenceUITests */,
 				CA5F26A12556F04C00CED97A /* EventsWidget */,
 				CAB300D82603AFDB009A52E1 /* EurofurenceClip */,
-				CA7A2EEC2606B83C00919DA0 /* Eurofurence ClipTests */,
-				CA7A2F132606BCB400919DA0 /* Eurofurence Clip UITests */,
+				CA7A2EEC2606B83C00919DA0 /* EurofurenceClipTests */,
+				CA7A2F132606BCB400919DA0 /* EurofurenceClip UITests */,
 				164F3A1C0E53F6ADD4C20674 /* Frameworks */,
 				9ACF99351EBE172D006FC958 /* Products */,
 				78D7EEA21F17F40C005372A9 /* Screenshots */,
@@ -472,7 +472,7 @@
 				CA630BDC229F14F800754C27 /* EurofurenceKit.framework */,
 				CAF254AA2517F983008892ED /* EurofurenceUITests.xctest */,
 				CA5F269C2556F04C00CED97A /* EventsWidgetExtension.appex */,
-				CAB300D72603AFDB009A52E1 /* Eurofurence Clip.app */,
+				CAB300D72603AFDB009A52E1 /* EurofurenceClip.app */,
 				CA7A2EEB2606B83C00919DA0 /* Eurofurence ClipTests.xctest */,
 				CA7A2F122606BCB400919DA0 /* Eurofurence Clip UITests.xctest */,
 			);
@@ -628,22 +628,22 @@
 			path = EventsWidget;
 			sourceTree = "<group>";
 		};
-		CA7A2EEC2606B83C00919DA0 /* Eurofurence ClipTests */ = {
+		CA7A2EEC2606B83C00919DA0 /* EurofurenceClipTests */ = {
 			isa = PBXGroup;
 			children = (
 				CA031248267BA020004E47B0 /* AppClipInfoPropertyListShould.swift */,
 				CA7A2EEF2606B83C00919DA0 /* Info.plist */,
 			);
-			path = "Eurofurence ClipTests";
+			path = EurofurenceClipTests;
 			sourceTree = "<group>";
 		};
-		CA7A2F132606BCB400919DA0 /* Eurofurence Clip UITests */ = {
+		CA7A2F132606BCB400919DA0 /* EurofurenceClip UITests */ = {
 			isa = PBXGroup;
 			children = (
 				CA7A2F142606BCB400919DA0 /* Eurofurence_Clip_UITests.swift */,
 				CA7A2F162606BCB400919DA0 /* Info.plist */,
 			);
-			path = "Eurofurence Clip UITests";
+			path = "EurofurenceClip UITests";
 			sourceTree = "<group>";
 		};
 		CA8124FA2517BDAC00A7F717 /* Test Plans */ = {
@@ -913,9 +913,9 @@
 			productReference = CA7A2F122606BCB400919DA0 /* Eurofurence Clip UITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
-		CAB300D62603AFDB009A52E1 /* Eurofurence Clip */ = {
+		CAB300D62603AFDB009A52E1 /* EurofurenceClip */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CAB300F12603AFDC009A52E1 /* Build configuration list for PBXNativeTarget "Eurofurence Clip" */;
+			buildConfigurationList = CAB300F12603AFDC009A52E1 /* Build configuration list for PBXNativeTarget "EurofurenceClip" */;
 			buildPhases = (
 				CAB300D32603AFDB009A52E1 /* Sources */,
 				CA5314C12603B5A60022B12E /* SwiftLint */,
@@ -928,7 +928,7 @@
 			dependencies = (
 				CA3ADD532677DC28007064AF /* PBXTargetDependency */,
 			);
-			name = "Eurofurence Clip";
+			name = EurofurenceClip;
 			packageProductDependencies = (
 				CAB300FE2603B0D8009A52E1 /* EurofurenceApplicationSession */,
 				CAB301002603B0D8009A52E1 /* ContentController */,
@@ -938,7 +938,7 @@
 				CA03123F26793F32004E47B0 /* EurofurenceClipLogic */,
 			);
 			productName = DealersAppClip;
-			productReference = CAB300D72603AFDB009A52E1 /* Eurofurence Clip.app */;
+			productReference = CAB300D72603AFDB009A52E1 /* EurofurenceClip.app */;
 			productType = "com.apple.product-type.application.on-demand-install-capable";
 		};
 		CAF254A92517F983008892ED /* EurofurenceUITests */ = {
@@ -1051,7 +1051,7 @@
 				78D7EEA01F17F40C005372A9 /* Screenshots */,
 				CA630BDB229F14F800754C27 /* EurofurenceKit */,
 				CA5F269B2556F04C00CED97A /* EventsWidgetExtension */,
-				CAB300D62603AFDB009A52E1 /* Eurofurence Clip */,
+				CAB300D62603AFDB009A52E1 /* EurofurenceClip */,
 				CA7A2EEA2606B83C00919DA0 /* Eurofurence ClipTests */,
 				CA7A2F112606BCB400919DA0 /* Eurofurence Clip UITests */,
 			);
@@ -1378,17 +1378,17 @@
 		};
 		CA7A2EFF2606B83F00919DA0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = CAB300D62603AFDB009A52E1 /* Eurofurence Clip */;
+			target = CAB300D62603AFDB009A52E1 /* EurofurenceClip */;
 			targetProxy = CA7A2EFE2606B83F00919DA0 /* PBXContainerItemProxy */;
 		};
 		CA7A2F272606BCB800919DA0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = CAB300D62603AFDB009A52E1 /* Eurofurence Clip */;
+			target = CAB300D62603AFDB009A52E1 /* EurofurenceClip */;
 			targetProxy = CA7A2F262606BCB800919DA0 /* PBXContainerItemProxy */;
 		};
 		CAB300EA2603AFDC009A52E1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = CAB300D62603AFDB009A52E1 /* Eurofurence Clip */;
+			target = CAB300D62603AFDB009A52E1 /* EurofurenceClip */;
 			targetProxy = CAB300E92603AFDC009A52E1 /* PBXContainerItemProxy */;
 		};
 		CAF254B02517F983008892ED /* PBXTargetDependency */ = {
@@ -2034,7 +2034,7 @@
 				DEVELOPMENT_TEAM = 557SGQG5H4;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "Eurofurence ClipTests/Info.plist";
+				INFOPLIST_FILE = EurofurenceClipTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2047,7 +2047,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Eurofurence Clip.app/Eurofurence Clip";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EurofurenceClip.app/EurofurenceClip";
 			};
 			name = Debug;
 		};
@@ -2062,7 +2062,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 557SGQG5H4;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "Eurofurence ClipTests/Info.plist";
+				INFOPLIST_FILE = EurofurenceClipTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2074,7 +2074,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Eurofurence Clip.app/Eurofurence Clip";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EurofurenceClip.app/EurofurenceClip";
 			};
 			name = Screenshots;
 		};
@@ -2089,7 +2089,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 557SGQG5H4;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "Eurofurence ClipTests/Info.plist";
+				INFOPLIST_FILE = EurofurenceClipTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2101,7 +2101,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Eurofurence Clip.app/Eurofurence Clip";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EurofurenceClip.app/EurofurenceClip";
 			};
 			name = Release;
 		};
@@ -2116,7 +2116,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 557SGQG5H4;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "Eurofurence ClipTests/Info.plist";
+				INFOPLIST_FILE = EurofurenceClipTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2128,7 +2128,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Eurofurence Clip.app/Eurofurence Clip";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EurofurenceClip.app/EurofurenceClip";
 			};
 			name = Profiling;
 		};
@@ -2143,7 +2143,7 @@
 				DEVELOPMENT_TEAM = 557SGQG5H4;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "Eurofurence Clip UITests/Info.plist";
+				INFOPLIST_FILE = "EurofurenceClip UITests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2170,7 +2170,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 557SGQG5H4;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "Eurofurence Clip UITests/Info.plist";
+				INFOPLIST_FILE = "EurofurenceClip UITests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2196,7 +2196,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 557SGQG5H4;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "Eurofurence Clip UITests/Info.plist";
+				INFOPLIST_FILE = "EurofurenceClip UITests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2222,7 +2222,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 557SGQG5H4;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "Eurofurence Clip UITests/Info.plist";
+				INFOPLIST_FILE = "EurofurenceClip UITests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2668,7 +2668,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CAB300F12603AFDC009A52E1 /* Build configuration list for PBXNativeTarget "Eurofurence Clip" */ = {
+		CAB300F12603AFDC009A52E1 /* Build configuration list for PBXNativeTarget "EurofurenceClip" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CAB300ED2603AFDC009A52E1 /* Debug */,

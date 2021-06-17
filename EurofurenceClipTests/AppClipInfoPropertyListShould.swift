@@ -1,4 +1,4 @@
-import Eurofurence_Clip
+import EurofurenceClip
 import XCTest
 
 class AppClipInfoPropertyListShould: XCTestCase {

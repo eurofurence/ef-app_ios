@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CAB300D62603AFDB009A52E1"
-               BuildableName = "Eurofurence Clip.app"
-               BlueprintName = "Eurofurence Clip"
+               BuildableName = "EurofurenceClip.app"
+               BlueprintName = "EurofurenceClip"
                ReferencedContainer = "container:Eurofurence.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -65,8 +65,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CAB300D62603AFDB009A52E1"
-            BuildableName = "Eurofurence Clip.app"
-            BlueprintName = "Eurofurence Clip"
+            BuildableName = "EurofurenceClip.app"
+            BlueprintName = "EurofurenceClip"
             ReferencedContainer = "container:Eurofurence.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -89,8 +89,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CAB300D62603AFDB009A52E1"
-            BuildableName = "Eurofurence Clip.app"
-            BlueprintName = "Eurofurence Clip"
+            BuildableName = "EurofurenceClip.app"
+            BlueprintName = "EurofurenceClip"
             ReferencedContainer = "container:Eurofurence.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
