@@ -6,10 +6,24 @@ import EurofurenceModel
 import EventsJourney
 import ScheduleComponent
 import UIKit
+import URLContent
 
 extension AppClip {
     
-    struct PrincipalWindowAssembler {
+    struct PrincipalWindowScene: WindowScene {
+        
+        func resume(_ activity: NSUserActivity) {
+            let activityDescription = SystemActivityDescription(userActivity: activity)
+            let content = UserActivityContentRepresentation(activity: activityDescription)
+            routing.route(content)
+        }
+        
+        @available(iOS 13.0, *)
+        func open(URLContexts: Set<UIOpenURLContext>) {
+            let activityDescription = URLContextActivityDescription(URLContexts: URLContexts)
+            let content = UserActivityContentRepresentation(activity: activityDescription)
+            routing.route(content)
+        }
         
         private let routing: EurofurenceClipRouting
         

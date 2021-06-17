@@ -22,7 +22,6 @@ public class AppClip {
     
     private let dependencies: Dependencies
     private let session: EurofurenceSession
-    private var appClipWindowAssembler: PrincipalWindowAssembler?
     
     public static func bootstrap(_ dependencies: Dependencies) {
         shared = AppClip(dependencies: dependencies)
@@ -37,8 +36,8 @@ public class AppClip {
             .build()
     }
     
-    public func configurePrincipalAppClipScene(window: UIWindow) {
-        appClipWindowAssembler = PrincipalWindowAssembler(
+    public func configurePrincipalAppClipScene(window: UIWindow) -> WindowScene {
+        PrincipalWindowScene(
             window: window,
             dependencies: dependencies,
             repositories: session.repositories,
@@ -53,5 +52,14 @@ public class AppClip {
         }
         
     }
+    
+}
+
+public protocol WindowScene {
+    
+    func resume(_ activity: NSUserActivity)
+    
+    @available(iOS 13.0, *)
+    func open(URLContexts: Set<UIOpenURLContext>)
     
 }
