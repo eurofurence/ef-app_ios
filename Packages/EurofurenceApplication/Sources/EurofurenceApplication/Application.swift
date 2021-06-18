@@ -5,6 +5,7 @@ import EurofurenceModel
 import EventDetailComponent
 import Foundation
 import UIKit
+import URLContent
 
 public class Application {
     

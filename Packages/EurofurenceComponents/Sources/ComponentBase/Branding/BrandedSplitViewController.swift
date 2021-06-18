@@ -54,8 +54,11 @@ public class BrandedSplitViewController: UISplitViewController, UISplitViewContr
     }
     
     private func isPlaceholderContentController(_ viewController: UIViewController) -> Bool {
-        guard let navigationController = viewController as? UINavigationController else { return false }
-        return navigationController.viewControllers.first is NoContentPlaceholderViewController
+        if let navigationController = viewController as? UINavigationController {
+            return navigationController.viewControllers.first is NoContentPlaceholderViewController
+        } else {
+            return viewController is NoContentPlaceholderViewController
+        }
     }
     
     private func isOnlyShowingPlaceholderContent(_ navigationController: UINavigationController) -> Bool {

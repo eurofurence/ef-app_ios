@@ -11,6 +11,9 @@
          location = "group:Packages/EurofurenceApplicationSession">
       </FileRef>
       <FileRef
+         location = "group:Packages/EurofurenceClipLogic">
+      </FileRef>
+      <FileRef
          location = "group:Packages/EurofurenceComponents">
       </FileRef>
       <FileRef

@@ -1,6 +1,5 @@
 import ComponentBase
 import Foundation
-import URLContent
 
 public struct UserActivityContentRepresentation: ContentRepresentation {
     
