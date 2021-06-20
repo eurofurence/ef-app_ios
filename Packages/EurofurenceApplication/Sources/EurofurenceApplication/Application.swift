@@ -6,6 +6,7 @@ import EventDetailComponent
 import Foundation
 import UIKit
 import URLContent
+import UserActivityRouteable
 
 public class Application {
     
@@ -45,23 +46,20 @@ public class Application {
     }
     
     public static func openNotification(_ userInfo: [AnyHashable: Any], completionHandler: @escaping () -> Void) {
-        instance.principalWindowController?.route(NotificationContentRepresentation(userInfo: userInfo))
+        instance.principalWindowController?.route(EurofurenceNotificationRouteable(userInfo))
     }
     
     public static func resume(activity: NSUserActivity) {
-        let activityDescription = SystemActivityDescription(userActivity: activity)
-        resume(activityDescription: activityDescription)
+        let routable = EurofurenceUserActivityRouteable(userActivity: activity)
+        instance.principalWindowController?.route(routable)
     }
     
     @available(iOS 13.0, *)
     public static func open(URLContexts: Set<UIOpenURLContext>) {
-        let activityDescription = URLContextActivityDescription(URLContexts: URLContexts)
-        resume(activityDescription: activityDescription)
-    }
-    
-    private static func resume(activityDescription: ActivityDescription) {
-        let contentRepresentation = UserActivityContentRepresentation(activity: activityDescription)
-        instance.principalWindowController?.route(contentRepresentation)
+        guard let url = URLContexts.first?.url else { return }
+        
+        let content = EurofurenceURLRouteable(url)
+        instance.principalWindowController?.route(content)
     }
     
     private init(dependencies: Dependencies) {

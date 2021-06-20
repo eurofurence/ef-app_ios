@@ -5,10 +5,10 @@ import XCTest
 class LoginRouteTests: XCTestCase {
     
     func testModallyShowsLoginContentController() {
-        let content = LoginContentRepresentation(completionHandler: { (_) in })
+        let content = LoginRouteable(completionHandler: { (_) in })
         let loginModuleFactory = StubLoginComponentFactory()
         let modalWireframe = CapturingModalWireframe()
-        let route = LoginContentRoute(
+        let route = LoginRoute(
             loginModuleFactory: loginModuleFactory,
             modalWireframe: modalWireframe
         )
@@ -20,11 +20,11 @@ class LoginRouteTests: XCTestCase {
     
     func testPropogatesCancellationEvent() {
         var didLogin: Bool?
-        let content = LoginContentRepresentation(completionHandler: { didLogin = $0 })
+        let content = LoginRouteable(completionHandler: { didLogin = $0 })
         
         let loginModuleFactory = StubLoginComponentFactory()
         let modalWireframe = CapturingModalWireframe()
-        let route = LoginContentRoute(
+        let route = LoginRoute(
             loginModuleFactory: loginModuleFactory,
             modalWireframe: modalWireframe
         )
@@ -41,11 +41,11 @@ class LoginRouteTests: XCTestCase {
     
     func testPropogatesLoginSuccess() {
         var didLogin: Bool?
-        let content = LoginContentRepresentation(completionHandler: { didLogin = $0 })
+        let content = LoginRouteable(completionHandler: { didLogin = $0 })
         
         let loginModuleFactory = StubLoginComponentFactory()
         let modalWireframe = CapturingModalWireframe()
-        let route = LoginContentRoute(
+        let route = LoginRoute(
             loginModuleFactory: loginModuleFactory,
             modalWireframe: modalWireframe
         )

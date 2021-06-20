@@ -2,9 +2,9 @@ import EurofurenceModel
 import KnowledgeDetailComponent
 import KnowledgeGroupComponent
 import KnowledgeJourney
-import XCTComponentBase
 import XCTest
 import XCTEurofurenceModel
+import XCTRouter
 
 class ShowKnowledgeContentFromListingTests: XCTestCase {
     
@@ -14,7 +14,7 @@ class ShowKnowledgeContentFromListingTests: XCTestCase {
         let group = KnowledgeGroupIdentifier.random
         navigator.knowledgeListModuleDidSelectKnowledgeGroup(group)
         
-        router.assertRouted(to: KnowledgeGroupContentRepresentation(identifier: group))
+        router.assertRouted(to: KnowledgeGroupRouteable(identifier: group))
     }
     
     func testShowsEntryContent() {
@@ -23,7 +23,7 @@ class ShowKnowledgeContentFromListingTests: XCTestCase {
         let entry = KnowledgeEntryIdentifier.random
         navigator.knowledgeListModuleDidSelectKnowledgeEntry(entry)
         
-        router.assertRouted(to: KnowledgeEntryContentRepresentation(identifier: entry))
+        router.assertRouted(to: KnowledgeEntryRouteable(identifier: entry))
     }
 
 }

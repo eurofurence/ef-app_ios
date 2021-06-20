@@ -5,17 +5,18 @@ import EurofurenceModel
 import EventsJourney
 import KnowledgeJourney
 import os
+import RouterCore
 import UIKit
 
 struct PrincipalWindowAssembler {
     
     private static let log = OSLog(subsystem: "org.eurofurence.EurofurenceApplication", category: "Principal Window")
     
-    private let router: ContentRouter
+    private let router: Router
     private let contentWireframe: WindowContentWireframe
     private let modalWireframe: WindowModalWireframe
     
-    func route<T>(_ content: T) where T: ContentRepresentation {
+    func route<T>(_ content: T) where T: Routeable {
         do {
             try router.route(content)
         } catch {
@@ -36,9 +37,6 @@ struct PrincipalWindowAssembler {
         repositories: Repositories,
         urlOpener: URLOpener
     ) {
-        let router = MutableContentRouter()
-        self.router = router
-        
         contentWireframe = WindowContentWireframe(window: window)
         modalWireframe = WindowModalWireframe(window: window)
         
@@ -49,39 +47,17 @@ struct PrincipalWindowAssembler {
             window: window
         )
         
-        configureGlobalRoutes(
-            router: router,
-            componentRegistry: componentRegistry,
-            services: services,
-            urlOpener: urlOpener,
-            window: window
-        )
-        
-        configureComponents(componentRegistry: componentRegistry, window: window, services: services)
-    }
-    
-    private func configureGlobalRoutes(
-        router: MutableContentRouter,
-        componentRegistry: ComponentRegistry,
-        services: Services,
-        urlOpener: URLOpener,
-        window: UIWindow
-    ) {
-        let routeAuthenticationHandler = AuthenticateOnDemandRouteAuthenticationHandler(
-            service: services.authentication,
-            router: router
-        )
-        
-        RouterConfigurator(
-            router: router,
+        self.router = PrincipalWindowRoutes(
             contentWireframe: contentWireframe,
             modalWireframe: modalWireframe,
             componentRegistry: componentRegistry,
-            routeAuthenticationHandler: routeAuthenticationHandler,
+            authenticationService: services.authentication,
             linksService: services.contentLinks,
             urlOpener: urlOpener,
             window: window
-        ).configureRoutes()
+        ).routes
+        
+        configureComponents(componentRegistry: componentRegistry, window: window, services: services)
     }
     
     private func configureComponents(componentRegistry: ComponentRegistry, window: UIWindow, services: Services) {

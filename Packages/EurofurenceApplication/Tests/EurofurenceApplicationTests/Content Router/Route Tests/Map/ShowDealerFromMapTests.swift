@@ -1,7 +1,7 @@
 import EurofurenceApplication
 import EurofurenceModel
-import XCTComponentBase
 import XCTest
+import XCTRouter
 
 class ShowDealerFromMapTests: XCTestCase {
     
@@ -11,7 +11,7 @@ class ShowDealerFromMapTests: XCTestCase {
         let dealer = DealerIdentifier.random
         route.mapDetailModuleDidSelectDealer(dealer)
         
-        router.assertRouted(to: EmbeddedDealerContentRepresentation(identifier: dealer))
+        router.assertRouted(to: EmbeddedDealerRouteable(identifier: dealer))
     }
 
 }

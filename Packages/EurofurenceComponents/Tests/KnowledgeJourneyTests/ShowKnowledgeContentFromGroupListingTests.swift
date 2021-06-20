@@ -4,6 +4,7 @@ import KnowledgeJourney
 import XCTComponentBase
 import XCTest
 import XCTEurofurenceModel
+import XCTRouter
 
 class ShowKnowledgeContentFromGroupListingTests: XCTestCase {
 
@@ -13,7 +14,7 @@ class ShowKnowledgeContentFromGroupListingTests: XCTestCase {
         let navigator = ShowKnowledgeContentFromGroupListing(router: router)
         navigator.knowledgeGroupEntriesComponentDidSelectKnowledgeEntry(identifier: knowledgeEntry)
         
-        router.assertRouted(to: KnowledgeEntryContentRepresentation(identifier: knowledgeEntry))
+        router.assertRouted(to: KnowledgeEntryRouteable(identifier: knowledgeEntry))
     }
 
 }

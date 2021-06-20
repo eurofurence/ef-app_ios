@@ -4,30 +4,32 @@ import DealersComponent
 import DealersJourney
 import EurofurenceModel
 import EventsJourney
+import RouterCore
 import ScheduleComponent
 import UIKit
 import URLContent
+import UserActivityRouteable
 
 extension AppClip {
     
     struct PrincipalWindowScene: WindowScene {
         
         func resume(_ activity: NSUserActivity) {
-            let activityDescription = SystemActivityDescription(userActivity: activity)
-            let content = UserActivityContentRepresentation(activity: activityDescription)
+            let content = EurofurenceUserActivityRouteable(userActivity: activity)
             routing.route(content)
         }
         
         @available(iOS 13.0, *)
         func open(URLContexts: Set<UIOpenURLContext>) {
-            let activityDescription = URLContextActivityDescription(URLContexts: URLContexts)
-            let content = UserActivityContentRepresentation(activity: activityDescription)
+            guard let url = URLContexts.first?.url else { return }
+            
+            let content = EurofurenceURLRouteable(url)
             routing.route(content)
         }
         
         private let routing: EurofurenceClipRouting
         
-        func route<Content>(_ content: Content) where Content: ContentRepresentation {
+        func route<Content>(_ content: Content) where Content: Routeable {
             routing.route(content)
         }
         
@@ -44,7 +46,7 @@ extension AppClip {
                 services: services
             )
             
-            let router = MutableContentRouter()
+            var router = Routes()
             
             let rootContainerViewController = RootContainerViewController()
             
@@ -64,11 +66,8 @@ extension AppClip {
                 dealersComponent: dealersFactoryAdapter
             )
             
-            RouterConfigurator(
-                window: window,
-                clipContentScene: clipContentScene,
-                components: components
-            ).configure(router)
+            let routes = AppClipRoutes(window: window, clipContentScene: clipContentScene, components: components)
+            router.install(routes)
             
             let clipRouting = EurofurenceClipRouting(router: router, clipScene: clipContentScene)
             self.routing = clipRouting
@@ -91,7 +90,7 @@ extension AppClip {
         private struct ScheduleFactoryAdapter: ClipContentControllerFactory {
             
             var scheduleComponentFactory: ScheduleComponentFactory
-            var router: ContentRouter
+            var router: Router
             
             func makeContentController() -> UIViewController {
                 let schedule = scheduleComponentFactory.makeScheduleComponent(ScheduleSubrouter(router: router))
@@ -108,7 +107,7 @@ extension AppClip {
         private struct DealersFactoryAdapter: ClipContentControllerFactory {
             
             var dealersComponentFactory: DealersComponentFactory
-            var router: ContentRouter
+            var router: Router
             
             func makeContentController() -> UIViewController {
                 let dealers = dealersComponentFactory.makeDealersComponent(ShowDealerFromDealers(router: router))

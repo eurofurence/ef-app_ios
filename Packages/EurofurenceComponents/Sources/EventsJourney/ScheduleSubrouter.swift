@@ -1,23 +1,23 @@
-import ComponentBase
 import EurofurenceModel
 import EventDetailComponent
 import EventFeedbackComponent
+import RouterCore
 import ScheduleComponent
 
 public struct ScheduleSubrouter: ScheduleComponentDelegate {
     
-    private let router: ContentRouter
+    private let router: Router
     
-    public init(router: ContentRouter) {
+    public init(router: Router) {
         self.router = router
     }
     
     public func scheduleComponentDidSelectEvent(identifier: EventIdentifier) {
-        try? router.route(EventContentRepresentation(identifier: identifier))
+        try? router.route(EventRouteable(identifier: identifier))
     }
     
     public func scheduleComponentDidRequestPresentationToLeaveFeedback(for event: EventIdentifier) {
-        try? router.route(EventFeedbackContentRepresentation(identifier: event))
+        try? router.route(EventFeedbackRouteable(identifier: event))
     }
     
 }

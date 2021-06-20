@@ -1,7 +1,7 @@
-import ComponentBase
 import DealersComponent
+import RouterCore
 
-public struct DealersRoute: ContentRoute {
+public struct DealersRoute: Route {
     
     private let presentation: DealersPresentation
     
@@ -9,7 +9,7 @@ public struct DealersRoute: ContentRoute {
         self.presentation = presentation
     }
     
-    public func route(_ content: DealersContentRepresentation) {
+    public func route(_ content: DealersRouteable) {
         presentation.showDealers()
     }
     

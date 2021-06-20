@@ -15,7 +15,8 @@ let package = Package(
         .package(path: "../EurofurenceModel"),
         .package(path: "../EurofurenceComponents"),
         .package(path: "../EurofurenceApplicationSession"),
-        .package(path: "../TestUtilities")
+        .package(path: "../TestUtilities"),
+        .package(url: "https://github.com/ShezHsky/Router.git", .upToNextMajor(from: .init(0, 0, 2)))
     ],
     targets: [
         .target(
@@ -23,6 +24,7 @@ let package = Package(
             dependencies: [
                 .product(name: "EurofurenceModel", package: "EurofurenceModel"),
                 .product(name: "EurofurenceApplicationSession", package: "EurofurenceApplicationSession"),
+                .product(name: "Router", package: "Router"),
                 
                 .product(name: "ContentController", package: "EurofurenceComponents"),
                 .product(name: "ScheduleComponent", package: "EurofurenceComponents"),
@@ -49,6 +51,7 @@ let package = Package(
                 .product(name: "XCTDealerComponent", package: "EurofurenceComponents"),
                 .product(name: "XCTEventFeedbackComponent", package: "EurofurenceComponents"),
                 .product(name: "XCTEventDetailComponent", package: "EurofurenceComponents"),
+                .product(name: "XCTRouter", package: "Router"),
                 .product(name: "XCTScheduleComponent", package: "EurofurenceComponents"),
                 .product(name: "TestUtilities", package: "TestUtilities")
             ]

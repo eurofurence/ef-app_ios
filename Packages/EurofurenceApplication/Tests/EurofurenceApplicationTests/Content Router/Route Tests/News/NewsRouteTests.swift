@@ -5,11 +5,11 @@ class NewsRouteTests: XCTestCase {
     
     func testRequestsNewsToBecomeVisible() {
         let presentation = CapturingNewsPresentation()
-        let route = NewsContentRoute(newsPresentation: presentation)
+        let route = NewsRoute(newsPresentation: presentation)
         
         XCTAssertFalse(presentation.didShowNews)
         
-        route.route(NewsContentRepresentation())
+        route.route(NewsRouteable())
         
         XCTAssertTrue(presentation.didShowNews)
     }

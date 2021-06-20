@@ -1,9 +1,10 @@
 import ComponentBase
 import EurofurenceModel
 import KnowledgeJourney
-import XCTComponentBase
+import RouterCore
 import XCTest
 import XCTEurofurenceModel
+import XCTRouter
 
 class OpenLinkFromKnowledgeEntryTests: XCTestCase {
     
@@ -11,7 +12,7 @@ class OpenLinkFromKnowledgeEntryTests: XCTestCase {
         let url = URL.random
         assertLinkContent(
             .web(url),
-            routesTo: WebContentRepresentation(url: url)
+            routesTo: WebRouteable(url: url)
         )
     }
     
@@ -19,7 +20,7 @@ class OpenLinkFromKnowledgeEntryTests: XCTestCase {
         let url = URL.random
         assertLinkContent(
             .externalURL(url),
-            routesTo: ExternalApplicationContentRepresentation(url: url)
+            routesTo: ExternalApplicationRouteable(url: url)
         )
     }
     
@@ -27,7 +28,7 @@ class OpenLinkFromKnowledgeEntryTests: XCTestCase {
         _ linkContent: LinkContentLookupResult,
         routesTo expected: Content,
         _ line: UInt = #line
-    ) where Content: ContentRepresentation {
+    ) where Content: Routeable {
         let link = Link.random
         let linksService = StubContentLinksService()
         linksService.stubContent(linkContent, for: link)

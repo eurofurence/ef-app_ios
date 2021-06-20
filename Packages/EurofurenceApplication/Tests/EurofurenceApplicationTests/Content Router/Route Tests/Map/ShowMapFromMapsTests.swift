@@ -1,7 +1,7 @@
 import EurofurenceApplication
 import EurofurenceModel
-import XCTComponentBase
 import XCTest
+import XCTRouter
 
 class ShowMapFromMapsTests: XCTestCase {
     
@@ -11,7 +11,7 @@ class ShowMapFromMapsTests: XCTestCase {
         let map = MapIdentifier.random
         navigator.mapsComponentDidSelectMap(identifier: map)
         
-        router.assertRouted(to: MapContentRepresentation(identifier: map))
+        router.assertRouted(to: MapRouteable(identifier: map))
     }
 
 }

@@ -1,13 +1,14 @@
 import ComponentBase
 import EurofurenceApplication
 import EurofurenceModel
+import RouterCore
 import XCTest
 import XCTEurofurenceModel
 
 class AuthenticatedRouteTests: XCTestCase {
     
     func testLoggedInPassesContent() throws {
-        let router = MutableContentRouter()
+        var router = Routes()
         let content = SampleContent(value: .random)
         let route = SampleContentRoute()
         let authenticatedRoute = AuthenticatedRoute(
@@ -15,14 +16,14 @@ class AuthenticatedRouteTests: XCTestCase {
             routeAuthenticationHandler: SuccessfulRouteAuthenticationHandler()
         )
         
-        router.add(authenticatedRoute)
+        router.install(authenticatedRoute)
         try router.route(content)
         
         XCTAssertEqual(content, route.capturedContent)
     }
     
     func testAuthenticationFailsDoesNotPassContent() throws {
-        let router = MutableContentRouter()
+        var router = Routes()
         let content = SampleContent(value: .random)
         let route = SampleContentRoute()
         let authenticatedRoute = AuthenticatedRoute(
@@ -30,14 +31,14 @@ class AuthenticatedRouteTests: XCTestCase {
             routeAuthenticationHandler: FailingRouteAuthenticationHandler()
         )
         
-        router.add(authenticatedRoute)
+        router.install(authenticatedRoute)
         try router.route(content)
         
         XCTAssertNil(route.capturedContent)
     }
     
     func testAuthenticationSuccessPassesContent() throws {
-        let router = MutableContentRouter()
+        var router = Routes()
         let content = SampleContent(value: .random)
         let route = SampleContentRoute()
         let authenticatedRoute = AuthenticatedRoute(
@@ -45,7 +46,7 @@ class AuthenticatedRouteTests: XCTestCase {
             routeAuthenticationHandler: SuccessfulRouteAuthenticationHandler()
         )
         
-        router.add(authenticatedRoute)
+        router.install(authenticatedRoute)
         try router.route(content)
         
         XCTAssertEqual(content, route.capturedContent)
@@ -53,13 +54,13 @@ class AuthenticatedRouteTests: XCTestCase {
     
 }
 
-private struct SampleContent: ContentRepresentation {
+private struct SampleContent: Routeable {
     
     var value: Int
     
 }
 
-private class SampleContentRoute: ContentRoute {
+private class SampleContentRoute: Route {
     
     typealias Content = SampleContent
     

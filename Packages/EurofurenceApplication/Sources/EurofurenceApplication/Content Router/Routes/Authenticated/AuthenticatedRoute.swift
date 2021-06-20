@@ -1,24 +1,24 @@
-import ComponentBase
+import RouterCore
 
-public class AuthenticatedRoute<Route>: ContentRoute where Route: ContentRoute {
+public class AuthenticatedRoute<R>: Route where R: Route {
     
-    private let route: Route
+    private let route: R
     private let routeAuthenticationHandler: RouteAuthenticationHandler
     
     public init(
-        route: Route,
+        route: R,
         routeAuthenticationHandler: RouteAuthenticationHandler
     ) {
         self.route = route
         self.routeAuthenticationHandler = routeAuthenticationHandler
     }
     
-    public typealias Content = Route.Content
+    public typealias Parameter = R.Parameter
     
-    public func route(_ content: Route.Content) {
+    public func route(_ parameter: Parameter) {
         routeAuthenticationHandler.authenticateRouteNow(completionHandler: { (success) in
             if success {
-                self.route.route(content)
+                self.route.route(parameter)
             }
         })
     }

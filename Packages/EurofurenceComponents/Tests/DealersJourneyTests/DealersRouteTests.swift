@@ -10,7 +10,7 @@ class DealersRouteTests: XCTestCase {
         
         XCTAssertFalse(presentation.didShowDealers)
         
-        route.route(DealersContentRepresentation())
+        route.route(DealersRouteable())
         
         XCTAssertTrue(presentation.didShowDealers)
     }
