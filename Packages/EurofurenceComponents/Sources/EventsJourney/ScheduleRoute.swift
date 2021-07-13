@@ -1,7 +1,7 @@
-import ComponentBase
+import RouterCore
 import ScheduleComponent
 
-public struct ScheduleRoute: ContentRoute {
+public struct ScheduleRoute: Route {
     
     private let presentation: SchedulePresentation
     
@@ -9,7 +9,7 @@ public struct ScheduleRoute: ContentRoute {
         self.presentation = presentation
     }
     
-    public func route(_ content: ScheduleContentRepresentation) {
+    public func route(_ content: ScheduleRouteable) {
         presentation.showSchedule()
     }
     

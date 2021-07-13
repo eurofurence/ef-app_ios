@@ -1,12 +1,12 @@
-import ComponentBase
 import EurofurenceModel
+import RouterCore
 
 public class AuthenticateOnDemandRouteAuthenticationHandler: RouteAuthenticationHandler {
     
-    private let router: ContentRouter
+    private let router: Router
     private var state = State()
     
-    public init(service: AuthenticationService, router: ContentRouter) {
+    public init(service: AuthenticationService, router: Router) {
         self.router = router
         service.add(UpdateStateWhenAuthenticationStateChanges(handler: self))
     }
@@ -47,14 +47,14 @@ public class AuthenticateOnDemandRouteAuthenticationHandler: RouteAuthentication
     
     private class UnauthenticatedState: State {
         
-        private let router: ContentRouter
+        private let router: Router
         
-        init(router: ContentRouter) {
+        init(router: Router) {
             self.router = router
         }
         
         override func authenticateRouteNow(completionHandler: @escaping (Bool) -> Void) {
-            try? router.route(LoginContentRepresentation(completionHandler: completionHandler))
+            try? router.route(LoginRouteable(completionHandler: completionHandler))
         }
         
     }

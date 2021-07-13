@@ -3,6 +3,7 @@ import EurofurenceModel
 import XCTComponentBase
 import XCTest
 import XCTEurofurenceModel
+import XCTRouter
 
 class AuthenticateOnDemandRouteAuthenticationHandlerTests: XCTestCase {
     
@@ -32,7 +33,7 @@ class AuthenticateOnDemandRouteAuthenticationHandlerTests: XCTestCase {
         var authenticated: Bool?
         handler.authenticateRouteNow(completionHandler: { authenticated = $0 })
         
-        let content: LoginContentRepresentation = try router.unwrapRoutedContent()
+        let content: LoginRouteable = try router.unwrapRoutedContent()
         content.completionHandler(false)
         
         XCTAssertEqual(false, authenticated)
@@ -49,7 +50,7 @@ class AuthenticateOnDemandRouteAuthenticationHandlerTests: XCTestCase {
         var authenticated: Bool?
         handler.authenticateRouteNow(completionHandler: { authenticated = $0 })
         
-        let content: LoginContentRepresentation = try router.unwrapRoutedContent()
+        let content: LoginRouteable = try router.unwrapRoutedContent()
         content.completionHandler(true)
         
         XCTAssertEqual(true, authenticated)

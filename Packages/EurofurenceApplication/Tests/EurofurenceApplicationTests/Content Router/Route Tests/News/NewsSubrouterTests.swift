@@ -1,8 +1,8 @@
 import EurofurenceApplication
 import EurofurenceModel
-import XCTComponentBase
 import XCTest
 import XCTEurofurenceModel
+import XCTRouter
 
 class NewsSubrouterTests: XCTestCase {
     
@@ -18,26 +18,26 @@ class NewsSubrouterTests: XCTestCase {
     
     func testShowingPrivateMessages() {
         subrouter.newsModuleDidRequestShowingPrivateMessages()
-        router.assertRouted(to: MessagesContentRepresentation())
+        router.assertRouted(to: MessagesRouteable())
     }
     
     func testShowingAnnouncement() {
         let announcement = AnnouncementIdentifier.random
         subrouter.newsModuleDidSelectAnnouncement(announcement)
         
-        router.assertRouted(to: AnnouncementContentRepresentation(identifier: announcement))
+        router.assertRouted(to: AnnouncementRouteable(identifier: announcement))
     }
     
     func testShowingEvent() {
         let event = FakeEvent.random
         subrouter.newsModuleDidSelectEvent(event)
         
-        router.assertRouted(to: EmbeddedEventContentRepresentation(identifier: event.identifier))
+        router.assertRouted(to: EmbeddedEventRouteable(identifier: event.identifier))
     }
     
     func testShowingAnnouncements() {
         subrouter.newsModuleDidRequestShowingAllAnnouncements()
-        router.assertRouted(to: AnnouncementsContentRepresentation())
+        router.assertRouted(to: AnnouncementsRouteable())
     }
 
 }

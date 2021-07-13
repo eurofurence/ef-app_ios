@@ -1,23 +1,24 @@
 import ComponentBase
 import EurofurenceModel
+import RouterCore
 import UIKit
 
 public struct NavigateFromMessagesToMessage: MessagesComponentDelegate {
     
-    private let router: ContentRouter
+    private let router: Router
     private let modalWireframe: ModalWireframe
     
-    public init(router: ContentRouter, modalWireframe: ModalWireframe) {
+    public init(router: Router, modalWireframe: ModalWireframe) {
         self.router = router
         self.modalWireframe = modalWireframe
     }
     
     public func messagesModuleDidRequestPresentation(for message: MessageIdentifier) {
-        try? router.route(MessageContentRepresentation(identifier: message))
+        try? router.route(MessageRouteable(identifier: message))
     }
     
     public func messagesModuleDidRequestDismissal() {
-        try? router.route(NewsContentRepresentation())
+        try? router.route(NewsRouteable())
     }
     
     public func showLogoutAlert(presentedHandler: @escaping (@escaping () -> Void) -> Void) {

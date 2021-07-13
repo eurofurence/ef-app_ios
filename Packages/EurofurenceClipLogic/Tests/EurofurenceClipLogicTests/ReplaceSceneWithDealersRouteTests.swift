@@ -7,7 +7,7 @@ class ReplaceSceneWithDealersRouteTests: XCTestCase {
     func testReplacesSceneWithDealers() {
         let scene = MockClipFallbackContent()
         let route = ReplaceSceneWithDealersRoute(scene: scene)
-        route.route(DealersContentRepresentation())
+        route.route(DealersRouteable())
         
         scene.assertDisplaying(.dealers)
     }

@@ -1,9 +1,9 @@
 import EurofurenceModel
 import EventFeedbackComponent
 import EventsJourney
-import XCTComponentBase
 import XCTest
 import XCTEurofurenceModel
+import XCTRouter
 
 class LeaveFeedbackFromEventNavigatorTests: XCTestCase {
     
@@ -13,7 +13,7 @@ class LeaveFeedbackFromEventNavigatorTests: XCTestCase {
         let event = EventIdentifier.random
         navigator.eventDetailComponentDidRequestPresentationToLeaveFeedback(for: event)
         
-        router.assertRouted(to: EventFeedbackContentRepresentation(identifier: event))
+        router.assertRouted(to: EventFeedbackRouteable(identifier: event))
     }
 
 }

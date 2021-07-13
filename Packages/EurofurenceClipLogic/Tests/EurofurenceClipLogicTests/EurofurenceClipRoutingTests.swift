@@ -1,10 +1,11 @@
-import ComponentBase
 import DealerComponent
 import EurofurenceClipLogic
 import EurofurenceModel
 import EventDetailComponent
+import RouterCore
 import XCTComponentBase
 import XCTest
+import XCTRouter
 
 class EurofurenceClipRoutingTests: XCTestCase {
     
@@ -21,7 +22,7 @@ class EurofurenceClipRoutingTests: XCTestCase {
         let clipScene = MockClipFallbackContent()
         let routing = EurofurenceClipRouting(router: router, clipScene: clipScene)
         
-        let content = SomeContentRepresentation(value: 42)
+        let content = SomeRouteable(value: 42)
         routing.route(content)
         
         clipScene.assertDisplaying(.events)
@@ -33,7 +34,7 @@ class EurofurenceClipRoutingTests: XCTestCase {
         let clipScene = MockClipFallbackContent()
         let routing = EurofurenceClipRouting(router: router, clipScene: clipScene)
         
-        let content = EventContentRepresentation(identifier: EventIdentifier(""))
+        let content = EventRouteable(identifier: EventIdentifier(""))
         routing.route(content)
         
         clipScene.assertDisplaying(.events)
@@ -45,7 +46,7 @@ class EurofurenceClipRoutingTests: XCTestCase {
         let clipScene = MockClipFallbackContent()
         let routing = EurofurenceClipRouting(router: router, clipScene: clipScene)
         
-        let content = DealerContentRepresentation(identifier: DealerIdentifier(""))
+        let content = DealerRouteable(identifier: DealerIdentifier(""))
         routing.route(content)
         
         clipScene.assertDisplaying(.dealers)
@@ -57,7 +58,7 @@ class EurofurenceClipRoutingTests: XCTestCase {
         let clipScene = MockClipFallbackContent()
         let routing = EurofurenceClipRouting(router: router, clipScene: clipScene)
         
-        let content = DealerContentRepresentation(identifier: DealerIdentifier(""))
+        let content = DealerRouteable(identifier: DealerIdentifier(""))
         let container = Container(content: content)
         routing.route(container)
         
@@ -65,19 +66,19 @@ class EurofurenceClipRoutingTests: XCTestCase {
         router.assertRouted(to: container)
     }
     
-    private struct SomeContentRepresentation: ContentRepresentation {
+    private struct SomeRouteable: Routeable {
         
         var value: Int
         
     }
     
     private struct Container<
-        Content: ContentRepresentation
-    >: ContentRepresentation, ContentRepresentationDescribing {
+        Content: Routeable
+    >: Routeable, YieldsRoutable {
         
         var content: Content
         
-        func describe(to recipient: ContentRepresentationRecipient) {
+        func yield(to recipient: YieldedRouteableRecipient) {
             recipient.receive(content)
         }
         

@@ -2,6 +2,7 @@ import EurofurenceApplication
 import EurofurenceModel
 import XCTComponentBase
 import XCTest
+import XCTRouter
 
 class NavigateFromMessagesToMessageTests: XCTestCase {
     
@@ -24,7 +25,7 @@ class NavigateFromMessagesToMessageTests: XCTestCase {
         let message = MessageIdentifier.random
         
         navigator.messagesModuleDidRequestPresentation(for: message)
-        let expected = MessageContentRepresentation(identifier: message)
+        let expected = MessageRouteable(identifier: message)
         
         router.assertRouted(to: expected)
     }
@@ -51,7 +52,7 @@ class NavigateFromMessagesToMessageTests: XCTestCase {
     
     func testRequestingDismissal() {
         navigator.messagesModuleDidRequestDismissal()
-        router.assertRouted(to: NewsContentRepresentation())
+        router.assertRouted(to: NewsRouteable())
     }
 
 }

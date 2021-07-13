@@ -1,18 +1,18 @@
-import ComponentBase
 import EurofurenceModel
 import EventDetailComponent
 import EventFeedbackComponent
+import RouterCore
 
 public struct LeaveFeedbackFromEventNavigator: EventDetailComponentDelegate {
     
-    private let router: ContentRouter
+    private let router: Router
     
-    public init(router: ContentRouter) {
+    public init(router: Router) {
         self.router = router
     }
     
     public func eventDetailComponentDidRequestPresentationToLeaveFeedback(for event: EventIdentifier) {
-        try? router.route(EventFeedbackContentRepresentation(identifier: event))
+        try? router.route(EventFeedbackRouteable(identifier: event))
     }
     
 }

@@ -10,7 +10,7 @@ class ScheduleRouteTests: XCTestCase {
         
         XCTAssertFalse(presentation.didShowSchedule)
         
-        route.route(ScheduleContentRepresentation())
+        route.route(ScheduleRouteable())
         
         XCTAssertTrue(presentation.didShowSchedule)
     }

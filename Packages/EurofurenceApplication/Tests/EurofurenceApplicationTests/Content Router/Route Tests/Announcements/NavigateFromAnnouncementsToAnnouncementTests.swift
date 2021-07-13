@@ -1,7 +1,7 @@
 import EurofurenceApplication
 import EurofurenceModel
-import XCTComponentBase
 import XCTest
+import XCTRouter
 
 class NavigateFromAnnouncementsToAnnouncementTests: XCTestCase {
     
@@ -11,7 +11,7 @@ class NavigateFromAnnouncementsToAnnouncementTests: XCTestCase {
         let announcement = AnnouncementIdentifier.random
         navigator.announcementsComponentDidSelectAnnouncement(announcement)
         
-        let expected = AnnouncementContentRepresentation(identifier: announcement)
+        let expected = AnnouncementRouteable(identifier: announcement)
         router.assertRouted(to: expected)
     }
 

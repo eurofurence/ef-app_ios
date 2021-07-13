@@ -1,9 +1,9 @@
 import DealerComponent
 import DealersJourney
 import EurofurenceModel
-import XCTComponentBase
 import XCTest
 import XCTEurofurenceModel
+import XCTRouter
 
 class ShowDealerFromDealersTests: XCTestCase {
     
@@ -13,7 +13,7 @@ class ShowDealerFromDealersTests: XCTestCase {
         let dealer = DealerIdentifier.random
         navigator.dealersModuleDidSelectDealer(identifier: dealer)
         
-        router.assertRouted(to: DealerContentRepresentation(identifier: dealer))
+        router.assertRouted(to: DealerRouteable(identifier: dealer))
     }
 
 }

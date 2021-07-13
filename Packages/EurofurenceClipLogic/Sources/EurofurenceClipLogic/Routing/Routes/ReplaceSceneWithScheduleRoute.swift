@@ -1,4 +1,4 @@
-import ComponentBase
+import RouterCore
 import ScheduleComponent
 
 public struct ReplaceSceneWithScheduleRoute {
@@ -11,11 +11,13 @@ public struct ReplaceSceneWithScheduleRoute {
     
 }
 
-extension ReplaceSceneWithScheduleRoute: ContentRoute {
+// MARK: - ReplaceSceneWithScheduleRoute + ContentRoute
+
+extension ReplaceSceneWithScheduleRoute: Route {
     
-    public typealias Content = ScheduleContentRepresentation
+    public typealias Parameter = ScheduleRouteable
     
-    public func route(_ content: ScheduleContentRepresentation) {
+    public func route(_ content: ScheduleRouteable) {
         scene.prepareForShowingEvents()
     }
     

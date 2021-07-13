@@ -2,9 +2,9 @@ import EurofurenceModel
 import EventDetailComponent
 import EventFeedbackComponent
 import EventsJourney
-import XCTComponentBase
 import XCTest
 import XCTEurofurenceModel
+import XCTRouter
 
 class ScheduleSubrouterTests: XCTestCase {
     
@@ -14,7 +14,7 @@ class ScheduleSubrouterTests: XCTestCase {
         let event = EventIdentifier.random
         navigator.scheduleComponentDidSelectEvent(identifier: event)
         
-        router.assertRouted(to: EventContentRepresentation(identifier: event))
+        router.assertRouted(to: EventRouteable(identifier: event))
     }
     
     func testLeavingEventFeedback() {
@@ -23,7 +23,7 @@ class ScheduleSubrouterTests: XCTestCase {
         let event = EventIdentifier.random
         navigator.scheduleComponentDidRequestPresentationToLeaveFeedback(for: event)
         
-        router.assertRouted(to: EventFeedbackContentRepresentation(identifier: event))
+        router.assertRouted(to: EventFeedbackRouteable(identifier: event))
     }
 
 }

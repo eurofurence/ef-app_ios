@@ -1,5 +1,5 @@
-import ComponentBase
 import DealersComponent
+import RouterCore
 
 public struct ReplaceSceneWithDealersRoute {
     
@@ -11,13 +11,13 @@ public struct ReplaceSceneWithDealersRoute {
     
 }
 
-// MARK: - ReplaceSceneWithDealersRoute + ContentRoute
+// MARK: - ReplaceSceneWithDealersRoute + Route
 
-extension ReplaceSceneWithDealersRoute: ContentRoute {
+extension ReplaceSceneWithDealersRoute: Route {
     
-    public typealias Content = DealersContentRepresentation
+    public typealias Parameter = DealersRouteable
     
-    public func route(_ content: DealersContentRepresentation) {
+    public func route(_ content: DealersRouteable) {
         scene.prepareForShowingDealers()
     }
     
