@@ -14,6 +14,9 @@
 		CA02910221F4D6020007F350 /* UIWindow+Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA02910121F4D6020007F350 /* UIWindow+Debug.swift */; };
 		CA03124026793F32004E47B0 /* EurofurenceClipLogic in Frameworks */ = {isa = PBXBuildFile; productRef = CA03123F26793F32004E47B0 /* EurofurenceClipLogic */; };
 		CA031249267BA020004E47B0 /* AppClipInfoPropertyListShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA031248267BA020004E47B0 /* AppClipInfoPropertyListShould.swift */; };
+		CA04437A26DEBC63008CC04F /* AutomationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF254FE2517FB65008892ED /* AutomationController.swift */; };
+		CA04437B26DEBC63008CC04F /* UIAutomationTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF25567251A8774008892ED /* UIAutomationTestCase.swift */; };
+		CA04437D26DEBC7E008CC04F /* EurofurenceClip_EventDetailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA04437C26DEBC7E008CC04F /* EurofurenceClip_EventDetailTests.swift */; };
 		CA08861F25FE997E0044DD53 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA08861B25FE997E0044DD53 /* fontawesome-webfont.ttf */; };
 		CA08862025FE997E0044DD53 /* personal_notification.caf in Resources */ = {isa = PBXBuildFile; fileRef = CA08861D25FE997E0044DD53 /* personal_notification.caf */; };
 		CA08862125FE997E0044DD53 /* generic_notification.caf in Resources */ = {isa = PBXBuildFile; fileRef = CA08861E25FE997E0044DD53 /* generic_notification.caf */; };
@@ -113,6 +116,13 @@
 			remoteInfo = Eurofurence;
 		};
 		9ACF99491EBE172D006FC958 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9ACF992C1EBE172D006FC958 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9ACF99331EBE172D006FC958;
+			remoteInfo = Eurofurence;
+		};
+		CA04437E26DEBD57008CC04F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9ACF992C1EBE172D006FC958 /* Project object */;
 			proxyType = 1;
@@ -238,6 +248,7 @@
 		9ACF994E1EBE172D006FC958 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA02910121F4D6020007F350 /* UIWindow+Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+Debug.swift"; sourceTree = "<group>"; };
 		CA031248267BA020004E47B0 /* AppClipInfoPropertyListShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppClipInfoPropertyListShould.swift; sourceTree = "<group>"; };
+		CA04437C26DEBC7E008CC04F /* EurofurenceClip_EventDetailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EurofurenceClip_EventDetailTests.swift; sourceTree = "<group>"; };
 		CA08861B25FE997E0044DD53 /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
 		CA08861D25FE997E0044DD53 /* personal_notification.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = personal_notification.caf; sourceTree = "<group>"; };
 		CA08861E25FE997E0044DD53 /* generic_notification.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = generic_notification.caf; sourceTree = "<group>"; };
@@ -640,8 +651,9 @@
 		CA7A2F132606BCB400919DA0 /* EurofurenceClip UITests */ = {
 			isa = PBXGroup;
 			children = (
-				CA7A2F142606BCB400919DA0 /* Eurofurence_Clip_UITests.swift */,
 				CA7A2F162606BCB400919DA0 /* Info.plist */,
+				CA7A2F142606BCB400919DA0 /* Eurofurence_Clip_UITests.swift */,
+				CA04437C26DEBC7E008CC04F /* EurofurenceClip_EventDetailTests.swift */,
 			);
 			path = "EurofurenceClip UITests";
 			sourceTree = "<group>";
@@ -907,6 +919,7 @@
 			);
 			dependencies = (
 				CA7A2F272606BCB800919DA0 /* PBXTargetDependency */,
+				CA04437F26DEBD57008CC04F /* PBXTargetDependency */,
 			);
 			name = "Eurofurence Clip UITests";
 			productName = "Eurofurence Clip UITests";
@@ -1313,7 +1326,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA04437B26DEBC63008CC04F /* UIAutomationTestCase.swift in Sources */,
+				CA04437A26DEBC63008CC04F /* AutomationController.swift in Sources */,
 				CA7A2F152606BCB400919DA0 /* Eurofurence_Clip_UITests.swift in Sources */,
+				CA04437D26DEBC7E008CC04F /* EurofurenceClip_EventDetailTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1360,6 +1376,11 @@
 			isa = PBXTargetDependency;
 			target = 9ACF99331EBE172D006FC958 /* Eurofurence */;
 			targetProxy = 9ACF99491EBE172D006FC958 /* PBXContainerItemProxy */;
+		};
+		CA04437F26DEBD57008CC04F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9ACF99331EBE172D006FC958 /* Eurofurence */;
+			targetProxy = CA04437E26DEBD57008CC04F /* PBXContainerItemProxy */;
 		};
 		CA3ADD532677DC28007064AF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2156,7 +2177,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Eurofurence Clip";
+				TEST_TARGET_NAME = EurofurenceClip;
 			};
 			name = Debug;
 		};
@@ -2182,7 +2203,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Eurofurence Clip";
+				TEST_TARGET_NAME = EurofurenceClip;
 			};
 			name = Screenshots;
 		};
@@ -2208,7 +2229,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Eurofurence Clip";
+				TEST_TARGET_NAME = EurofurenceClip;
 			};
 			name = Release;
 		};
@@ -2234,7 +2255,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Eurofurence Clip";
+				TEST_TARGET_NAME = EurofurenceClip;
 			};
 			name = Profiling;
 		};
