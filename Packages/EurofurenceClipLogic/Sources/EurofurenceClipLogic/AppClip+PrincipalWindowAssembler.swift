@@ -46,19 +46,19 @@ extension AppClip {
                 services: services
             )
             
-            var router = Routes()
-            
-            let rootContainerViewController = RootContainerViewController()
+            var routes = AppClipRoutes(window: window, components: components).routes
             
             let scheduleFactoryAdapter = ScheduleFactoryAdapter(
                 scheduleComponentFactory: components.scheduleComponentFactory,
-                router: router
+                router: routes
             )
             
             let dealersFactoryAdapter = DealersFactoryAdapter(
                 dealersComponentFactory: components.dealersComponentFactory,
-                router: router
+                router: routes
             )
+            
+            let rootContainerViewController = RootContainerViewController()
             
             let clipContentScene = WireframeBasedClipContentScene(
                 wireframe: rootContainerViewController,
@@ -66,10 +66,10 @@ extension AppClip {
                 dealersComponent: dealersFactoryAdapter
             )
             
-            let routes = AppClipRoutes(window: window, clipContentScene: clipContentScene, components: components)
-            router.install(routes)
+            routes.install(ReplaceSceneWithScheduleRoute(scene: clipContentScene))
+            routes.install(ReplaceSceneWithDealersRoute(scene: clipContentScene))
             
-            let clipRouting = EurofurenceClipRouting(router: router, clipScene: clipContentScene)
+            let clipRouting = EurofurenceClipRouting(router: routes, clipScene: clipContentScene)
             self.routing = clipRouting
             
             let appClipModule = ContainerModuleWrapper(containerViewController: rootContainerViewController)

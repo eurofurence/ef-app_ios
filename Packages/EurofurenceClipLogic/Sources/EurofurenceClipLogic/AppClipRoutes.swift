@@ -8,16 +8,12 @@ import UIKit
 struct AppClipRoutes: RouteProvider {
     
     var window: UIWindow
-    var clipContentScene: ClipContentScene
     var components: AppClip.Components
     
     var routes: Routes {
         Routes { (router) in
             let contentWireframe = WindowContentWireframe(window: window)
             let leaveFeedback = LeaveFeedbackFromEventNavigator(router: router)
-            
-            ReplaceSceneWithScheduleRoute(scene: clipContentScene)
-            ReplaceSceneWithDealersRoute(scene: clipContentScene)
             
             EventRoute(
                 eventModuleFactory: components.eventDetailComponentFactory,
