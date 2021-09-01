@@ -7,8 +7,8 @@ import KnowledgeDetailComponent
 import KnowledgeGroupsComponent
 import RouterCore
 import ScheduleComponent
-import URLRouteable
 import URLDecoder
+import URLRouteable
 
 public class EurofurenceURLRouteable: URLRouteable {
     

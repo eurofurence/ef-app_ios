@@ -194,6 +194,13 @@
         "identifier" : "EurofurenceClipLogicTests",
         "name" : "EurofurenceClipLogicTests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Eurofurence.xcodeproj",
+        "identifier" : "CA7A2F112606BCB400919DA0",
+        "name" : "Eurofurence Clip UITests"
+      }
     }
   ],
   "version" : 1
