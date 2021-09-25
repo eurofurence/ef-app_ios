@@ -28,6 +28,9 @@ struct EventsWidgetEntryView: View {
                     case .systemLarge:
                         LargeWidgetContents(events: events, additionalEventsCount: additionalEventCount)
                         
+                    case .systemExtraLarge:
+                        LargeWidgetContents(events: events, additionalEventsCount: additionalEventCount)
+                        
                     @unknown default:
                         MediumWidgetContents(events: events, additionalEventsCount: additionalEventCount)
                     }
