@@ -5,7 +5,7 @@ import PackageDescription
 let package = Package(
     name: "EurofurenceComponents",
     defaultLocalization: "en",
-    platforms: [.iOS(.v11)],
+    platforms: [.iOS(.v12)],
     products: [
         .library(name: "TutorialComponent", targets: ["TutorialComponent"]),
         .library(name: "PreloadComponent", targets: ["PreloadComponent"]),
