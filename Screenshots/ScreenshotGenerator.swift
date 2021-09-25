@@ -25,17 +25,17 @@ class ScreenshotGenerator: XCTestCase {
         }
     }
     
-    func testScreenshots() {
+    func testScreenshots() throws {
         automationController.transitionToContent()
         
         if automationController.isTablet {
-            takeTabletScreenshots()
+            try takeTabletScreenshots()
         } else {
-            takePhoneScreenshots()
+            try takePhoneScreenshots()
         }
     }
     
-    private func takePhoneScreenshots() {
+    private func takePhoneScreenshots() throws {
         snapshot("01_News")
 
         automationController.tapTab(.schedule)
@@ -44,7 +44,7 @@ class ScreenshotGenerator: XCTestCase {
         
         snapshot("02_Schedule")
         
-        app.tables.staticTexts["Artists' Lounge"].tap()
+        try automationController.tapCellWithText("Artists' Lounge")
         
         snapshot("03_EventDetail")
         
@@ -52,7 +52,7 @@ class ScreenshotGenerator: XCTestCase {
         
         snapshot("04_Dealers")
         
-        app.tables.staticTexts["Eurofurence Shop"].tap()
+        try automationController.tapCellWithText("Eurofurence Shop")
         
         snapshot("05_DealerDetail")
         
@@ -61,26 +61,26 @@ class ScreenshotGenerator: XCTestCase {
         snapshot("06_Information")
     }
     
-    private func takeTabletScreenshots() {
+    private func takeTabletScreenshots() throws {
         snapshot("01_News")
 
         automationController.tapTab(.schedule)
         
         app.tables.firstMatch.swipeDown()
         
-        app.tables.staticTexts["Artists' Lounge"].tap()
+        try automationController.tapCellWithText("Artists' Lounge")
         
         snapshot("02_Schedule")
         
         automationController.tapTab(.dealers)
         
-        app.tables.staticTexts["Eurofurence Shop"].tap()
+        try automationController.tapCellWithText("Eurofurence Shop")
         
         snapshot("03_Dealers")
         
         automationController.tapTab(.information)
         
-        app.tables.staticTexts["Guest of Honor"].tap()
+        try automationController.tapCellWithText("Guest of Honor")
         
         snapshot("04_Information")
     }
