@@ -48,6 +48,7 @@ public class KnowledgeListViewController: UIViewController, KnowledgeListScene {
     override public func viewDidLoad() {
         super.viewDidLoad()
 
+        Theme.global.apply(to: tableView)
         tableViewRenderer.onDidSelectRowAtIndexPath = didSelectRow
         tableView.dataSource = tableViewRenderer
         tableView.delegate = tableViewRenderer

@@ -15,6 +15,7 @@ class EventDetailViewController: UIViewController, EventDetailScene {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        Theme.global.apply(to: tableView)
         addEmptyBarItemToFixCustomTitleViewsNotAppearing()
         delegate?.eventDetailSceneDidLoad()
     }

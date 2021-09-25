@@ -19,6 +19,7 @@ class KnowledgeDetailViewController: UIViewController, KnowledgeDetailScene {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        Theme.global.apply(to: tableView)
         tableView.dataSource = tableController
         tableView.delegate = tableController
         delegate?.knowledgeDetailSceneDidLoad()

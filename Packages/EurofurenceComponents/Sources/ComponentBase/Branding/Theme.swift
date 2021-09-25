@@ -9,6 +9,12 @@ public class Theme {
         
     }
     
+    public func apply(to tableView: UITableView) {
+        if #available(iOS 15, *) {
+            tableView.sectionHeaderTopPadding = 0
+        }
+    }
+    
     public func apply(to searchController: UISearchController) {
         let searchBar = searchController.searchBar
         styleSearchBar(searchController.searchBar)
