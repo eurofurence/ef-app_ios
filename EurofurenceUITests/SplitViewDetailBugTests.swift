@@ -6,6 +6,9 @@ class SplitViewDetailBugTests: XCTestCase {
         let controller = AutomationController()
         try XCTSkipIf(controller.isTablet, "Does not apply to tablets")
         
+        // Test only applies to iPhones in portrait. Larger devices in landscape will show the placeholder as expected.
+        XCUIDevice.shared.orientation = .portrait
+        
         controller.app.launch()
         controller.transitionToContent()
         
