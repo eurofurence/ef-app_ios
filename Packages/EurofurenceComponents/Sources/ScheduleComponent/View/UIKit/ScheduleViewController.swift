@@ -63,6 +63,7 @@ public class ScheduleViewController: UIViewController,
             }
         }
         
+        Theme.global.apply(to: tableView)
         tableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refreshControlDidChangeValue), for: .valueChanged)
         

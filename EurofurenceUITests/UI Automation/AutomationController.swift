@@ -41,6 +41,18 @@ extension AutomationController {
         } while waitingForTabItemToAppear && totalWaitTimeSeconds < threeMinutes
     }
     
+    func tapKnownEvent() throws {
+        try tapCellWithText("Nailed It!")
+    }
+    
+    func tapKnownDealer() throws {
+        try tapCellWithText("Eurofurence Shop")
+    }
+    
+    func tapKnownKnowledgeGroup() throws {
+        try tapCellWithText("Guest of Honor")
+    }
+    
 }
 
 // MARK: - Selecting Tabs
@@ -72,6 +84,35 @@ extension AutomationController {
     
     func tapTab(_ tab: Tab) {
         tab.tap(in: app)
+    }
+    
+}
+
+// MARK: - Selecting Table Cell Content
+
+extension AutomationController {
+    
+    func tapCellWithText(_ text: String) throws {
+        struct TimedOutFindingText: Error {
+            var text: String
+        }
+        
+        let table = app.tables.firstMatch
+        let textElement = table.staticTexts[text]
+        
+        let startTime = Date()
+        let timeout: TimeInterval = 60
+        let upperTimeLimit = startTime.addingTimeInterval(timeout)
+        while textElement.isHittable == false {
+            let now = Date()
+            if now < upperTimeLimit {
+                table.swipeUp()
+            } else {
+                throw TimedOutFindingText(text: text)
+            }
+        }
+        
+        textElement.tap()
     }
     
 }

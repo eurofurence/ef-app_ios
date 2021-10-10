@@ -9,6 +9,12 @@ public class Theme {
         
     }
     
+    public func apply(to tableView: UITableView) {
+        if #available(iOS 15, *) {
+            tableView.sectionHeaderTopPadding = 0
+        }
+    }
+    
     public func apply(to searchController: UISearchController) {
         let searchBar = searchController.searchBar
         styleSearchBar(searchController.searchBar)
@@ -88,6 +94,16 @@ public class Theme {
         tabBar.barTintColor = .tabBar
         tabBar.tintColor = .selectedTabBarItem
         tabBar.unselectedItemTintColor = .unselectedTabBarItem
+        
+        if #available(iOS 13.0, *) {
+            let backgroundAppearance = UITabBarAppearance()
+            backgroundAppearance.backgroundColor = .tabBar
+            tabBar.standardAppearance = backgroundAppearance
+            
+            if #available(iOS 15.0, *) {
+                tabBar.scrollEdgeAppearance = backgroundAppearance
+            }
+        }
     }
 
     private func styleButtons() {

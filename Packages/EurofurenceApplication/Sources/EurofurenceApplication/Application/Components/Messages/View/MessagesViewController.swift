@@ -1,3 +1,4 @@
+import ComponentBase
 import UIKit
 
 class MessagesViewController: UIViewController, UITableViewDelegate, MessagesScene {
@@ -23,6 +24,8 @@ class MessagesViewController: UIViewController, UITableViewDelegate, MessagesSce
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        Theme.global.apply(to: tableView)
 
         refreshIndicator.addTarget(self, action: #selector(refreshControlValueDidChange), for: .valueChanged)
         tableView.dataSource = dataSource

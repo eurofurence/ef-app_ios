@@ -38,6 +38,8 @@ public class DealersViewController: UIViewController, DealersScene {
 
         refreshControl.addTarget(self, action: #selector(refreshControlValueDidChange), for: .valueChanged)
 
+        Theme.global.apply(to: tableView)
+        
         tableView.refreshControl = refreshControl
         tableView.registerConventionBrandedHeader()
         

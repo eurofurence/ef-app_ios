@@ -17,6 +17,8 @@ class NewsViewController: UIViewController, NewsScene {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        Theme.global.apply(to: tableView)
 
         refreshControl.addTarget(self, action: #selector(refreshControlDidChangeValue), for: .valueChanged)
         tableView.refreshControl = refreshControl

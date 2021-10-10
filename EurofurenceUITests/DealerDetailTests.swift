@@ -8,7 +8,7 @@ class DealerDetailTests: UIAutomationTestCase {
         controller.app.launch()
         controller.transitionToContent()
         controller.tapTab(.dealers)
-        controller.app.tables.staticTexts["Eurofurence Shop"].tap()
+        try controller.tapKnownDealer()
     }
     
     func testNavigationTitle() {

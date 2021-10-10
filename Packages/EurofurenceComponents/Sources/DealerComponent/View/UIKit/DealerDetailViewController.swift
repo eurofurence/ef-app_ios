@@ -29,6 +29,8 @@ class DealerDetailViewController: UIViewController, DealerDetailScene {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        Theme.global.apply(to: tableView)
         delegate?.dealerDetailSceneDidLoad()
     }
     
