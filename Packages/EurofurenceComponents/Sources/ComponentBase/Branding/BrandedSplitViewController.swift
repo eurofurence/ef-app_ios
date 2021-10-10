@@ -53,6 +53,24 @@ public class BrandedSplitViewController: UISplitViewController, UISplitViewContr
         isPlaceholderContentController(secondaryViewController)
     }
     
+    public func splitViewController(
+        _ splitViewController: UISplitViewController,
+        separateSecondaryFrom primaryViewController: UIViewController
+    ) -> UIViewController? {
+        guard let navigationController = primaryViewController as? UINavigationController else { return nil }
+        guard navigationController.viewControllers.count > 1 else { return nil }
+        guard let lastViewController = navigationController.popViewController(animated: false) else { return nil }
+        
+        let separatedViewController: UIViewController
+        if let embeddedNavigationController = lastViewController as? UINavigationController {
+            separatedViewController = embeddedNavigationController
+        } else {
+            separatedViewController = UINavigationController(rootViewController: lastViewController)
+        }
+        
+        return separatedViewController
+    }
+    
     private func isPlaceholderContentController(_ viewController: UIViewController) -> Bool {
         if let navigationController = viewController as? UINavigationController {
             return navigationController.viewControllers.first is NoContentPlaceholderViewController

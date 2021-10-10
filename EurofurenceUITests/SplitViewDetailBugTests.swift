@@ -21,5 +21,24 @@ class SplitViewDetailBugTests: XCTestCase {
         let placeholderImage = controller.app.images["org.eurofurence.NoContentPlaceholder.Placeholderimage"].firstMatch
         XCTAssertFalse(placeholderImage.exists)
     }
+    
+    func testContentDetailStillHasNavigationTitleWhenRotatingIntoLandscape_BUG() throws {
+        let controller = AutomationController()
+        controller.app.launch()
+        controller.transitionToContent()
+        
+        XCUIDevice.shared.orientation = .portrait
+        
+        controller.tapTab(.schedule)
+        try controller.tapKnownEvent()
+        
+        XCUIDevice.shared.orientation = .landscapeLeft
+        
+        let navigationBar = controller
+            .app
+            .navigationBars
+        
+        XCTAssertEqual(2, navigationBar.count)
+    }
 
 }
