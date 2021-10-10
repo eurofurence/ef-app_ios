@@ -1,4 +1,4 @@
-// swift-tools-version:5.3
+// swift-tools-version:5.5
 
 import PackageDescription
 
@@ -83,7 +83,8 @@ let package = Package(
         
         .testTarget(name: "TutorialComponentTests", dependencies: [
             .target(name: "TutorialComponent"),
-            .target(name: "XCTComponentBase")
+            .target(name: "XCTComponentBase"),
+            .product(name: "TestUtilities", package: "TestUtilities")
         ]),
         
         // MARK: Preload
@@ -96,6 +97,8 @@ let package = Package(
         .testTarget(name: "PreloadComponentTests", dependencies: [
             .target(name: "PreloadComponent"),
             .target(name: "XCTComponentBase"),
+            
+            .product(name: "TestUtilities", package: "TestUtilities"),
             .product(name: "XCTEurofurenceModel", package: "EurofurenceModel")
         ]),
         
@@ -116,6 +119,7 @@ let package = Package(
             .target(name: "XCTEventDetailComponent"),
             .target(name: "XCTEventFeedbackComponent"),
             
+            .product(name: "TestUtilities", package: "TestUtilities"),
             .product(name: "XCTEurofurenceModel", package: "EurofurenceModel"),
             .product(name: "XCTRouter", package: "Router")
         ]),
@@ -140,6 +144,7 @@ let package = Package(
             .target(name: "XCTComponentBase"),
             .target(name: "XCTScheduleComponent"),
             
+            .product(name: "TestUtilities", package: "TestUtilities"),
             .product(name: "XCTEurofurenceModel", package: "EurofurenceModel"),
             .product(name: "XCTRouter", package: "Router")
         ]),
@@ -163,6 +168,7 @@ let package = Package(
             .target(name: "XCTComponentBase"),
             .target(name: "XCTEventDetailComponent"),
             
+            .product(name: "TestUtilities", package: "TestUtilities"),
             .product(name: "XCTEurofurenceModel", package: "EurofurenceModel"),
             .product(name: "XCTRouter", package: "Router")
         ]),
@@ -184,6 +190,8 @@ let package = Package(
             .target(name: "EventFeedbackComponent"),
             .target(name: "XCTComponentBase"),
             .target(name: "XCTEventFeedbackComponent"),
+            
+            .product(name: "TestUtilities", package: "TestUtilities"),
             .product(name: "XCTEurofurenceModel", package: "EurofurenceModel")
         ]),
         
@@ -222,6 +230,7 @@ let package = Package(
             .target(name: "DealersComponent"),
             .target(name: "XCTComponentBase"),
             
+            .product(name: "TestUtilities", package: "TestUtilities"),
             .product(name: "XCTEurofurenceModel", package: "EurofurenceModel"),
             .product(name: "XCTRouter", package: "Router")
         ]),
@@ -246,6 +255,7 @@ let package = Package(
             .target(name: "XCTComponentBase"),
             .target(name: "XCTDealerComponent"),
             
+            .product(name: "TestUtilities", package: "TestUtilities"),
             .product(name: "XCTEurofurenceModel", package: "EurofurenceModel"),
             .product(name: "XCTRouter", package: "Router")
         ]),
@@ -267,6 +277,7 @@ let package = Package(
             .target(name: "XCTKnowledgeGroupComponent"),
             .target(name: "XCTKnowledgeDetailComponent"),
             
+            .product(name: "TestUtilities", package: "TestUtilities"),
             .product(name: "XCTEurofurenceModel", package: "EurofurenceModel"),
             .product(name: "XCTRouter", package: "Router")
         ]),
@@ -284,6 +295,7 @@ let package = Package(
             .target(name: "KnowledgeGroupsComponent"),
             .target(name: "XCTComponentBase"),
             
+            .product(name: "TestUtilities", package: "TestUtilities"),
             .product(name: "XCTEurofurenceModel", package: "EurofurenceModel"),
             .product(name: "XCTRouter", package: "Router")
         ]),
@@ -309,6 +321,8 @@ let package = Package(
             .target(name: "XCTComponentBase"),
             .target(name: "XCTKnowledgeGroupComponent"),
             
+            .product(name: "EurofurenceModel", package: "EurofurenceModel"),
+            .product(name: "TestUtilities", package: "TestUtilities"),
             .product(name: "XCTEurofurenceModel", package: "EurofurenceModel"),
             .product(name: "XCTRouter", package: "Router")
         ]),
@@ -332,6 +346,7 @@ let package = Package(
             .target(name: "XCTComponentBase"),
             .target(name: "XCTKnowledgeDetailComponent"),
             
+            .product(name: "TestUtilities", package: "TestUtilities"),
             .product(name: "XCTEurofurenceModel", package: "EurofurenceModel"),
             .product(name: "XCTRouter", package: "Router")
         ]),
