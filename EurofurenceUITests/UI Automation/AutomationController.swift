@@ -41,6 +41,18 @@ extension AutomationController {
         } while waitingForTabItemToAppear && totalWaitTimeSeconds < threeMinutes
     }
     
+    func tapKnownEvent() throws {
+        try tapCellWithText("Nailed It!")
+    }
+    
+    func tapKnownDealer() throws {
+        try tapCellWithText("Eurofurence Shop")
+    }
+    
+    func tapKnownKnowledgeGroup() throws {
+        try tapCellWithText("Guest of Honor")
+    }
+    
 }
 
 // MARK: - Selecting Tabs

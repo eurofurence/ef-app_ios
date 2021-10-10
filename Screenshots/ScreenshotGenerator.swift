@@ -44,7 +44,7 @@ class ScreenshotGenerator: XCTestCase {
         
         snapshot("02_Schedule")
         
-        try automationController.tapCellWithText("Artists' Lounge")
+        try automationController.tapKnownEvent()
         
         snapshot("03_EventDetail")
         
@@ -52,7 +52,7 @@ class ScreenshotGenerator: XCTestCase {
         
         snapshot("04_Dealers")
         
-        try automationController.tapCellWithText("Eurofurence Shop")
+        try automationController.tapKnownDealer()
         
         snapshot("05_DealerDetail")
         
@@ -68,19 +68,19 @@ class ScreenshotGenerator: XCTestCase {
         
         app.tables.firstMatch.swipeDown()
         
-        try automationController.tapCellWithText("Artists' Lounge")
+        try automationController.tapKnownEvent()
         
         snapshot("02_Schedule")
         
         automationController.tapTab(.dealers)
         
-        try automationController.tapCellWithText("Eurofurence Shop")
+        try automationController.tapKnownDealer()
         
         snapshot("03_Dealers")
         
         automationController.tapTab(.information)
         
-        try automationController.tapCellWithText("Guest of Honor")
+        try automationController.tapKnownKnowledgeGroup()
         
         snapshot("04_Information")
     }

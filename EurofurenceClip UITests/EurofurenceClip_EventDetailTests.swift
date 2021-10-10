@@ -6,7 +6,8 @@ class EurofurenceClip_EventDetailTests: UIAutomationTestCase {
         try super.setUpWithError()
         
         controller.app.launch()
-        controller.app.tables.staticTexts["Fursuit Lounge"].tap()
+        XCUIDevice.shared.orientation = .landscapeLeft
+        try controller.tapKnownEvent()
     }
     
     func testNavigationTitle() {
@@ -18,7 +19,7 @@ class EurofurenceClip_EventDetailTests: UIAutomationTestCase {
         
         XCTAssertFalse(navigationTitle.exists)
         
-        controller.app.tables.cells.containing(.staticText, identifier: "Share").element.swipeUp()
+        controller.app.tables.cells.containing(.staticText, identifier: "Favourite").element.swipeUp()
         
         XCTAssertTrue(navigationTitle.exists)
     }

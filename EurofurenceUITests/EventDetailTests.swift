@@ -7,8 +7,9 @@ class EventDetailTests: UIAutomationTestCase {
         
         controller.app.launch()
         controller.transitionToContent()
+        XCUIDevice.shared.orientation = .landscapeLeft
         controller.tapTab(.schedule)
-        controller.app.tables.staticTexts["Fursuit Lounge"].tap()
+        try controller.tapKnownEvent()
     }
     
     func testNavigationTitle() {
@@ -20,7 +21,7 @@ class EventDetailTests: UIAutomationTestCase {
         
         XCTAssertFalse(navigationTitle.exists)
         
-        controller.app.tables.cells.containing(.staticText, identifier: "Share").element.swipeUp()
+        controller.app.tables.cells.containing(.staticText, identifier: "Favourite").element.swipeUp()
         
         XCTAssertTrue(navigationTitle.exists)
     }
