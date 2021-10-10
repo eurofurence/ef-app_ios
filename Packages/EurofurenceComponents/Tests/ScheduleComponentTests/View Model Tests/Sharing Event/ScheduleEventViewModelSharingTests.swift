@@ -1,6 +1,5 @@
 import ComponentBase
 import EurofurenceModel
-import EventDetailComponent
 import ScheduleComponent
 import XCTest
 import XCTEurofurenceModel
