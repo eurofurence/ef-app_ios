@@ -12,7 +12,7 @@ struct EventStartTime: View {
         Text(formattedStartTime)
             .lineLimit(1)
             .font(.caption2)
-            .foregroundColor(.primary)
+            .foregroundColor(.widgetContentForegroundPrimary)
     }
     
 }

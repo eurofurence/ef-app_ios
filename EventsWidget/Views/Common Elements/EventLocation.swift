@@ -12,7 +12,7 @@ struct EventLocation: View {
         Text(location)
             .lineLimit(1)
             .font(.caption2)
-            .foregroundColor(.secondary)
+            .foregroundColor(.widgetContentForegroundSecondary)
     }
     
 }

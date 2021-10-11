@@ -13,6 +13,7 @@ struct EventTitle: View {
             .font(.caption2)
             .fontWeight(.semibold)
             .lineLimit(1)
+            .foregroundColor(.widgetContentForegroundPrimary)
     }
     
 }
