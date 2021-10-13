@@ -1,6 +1,10 @@
 import UIKit
 
 class AnnouncementTableViewCell: UITableViewCell, AnnouncementItemComponent {
+    
+    override class func registerNib(in tableView: UITableView) {
+        registerNib(in: tableView, bundle: .module)
+    }
 
     // MARK: IBOutlets
 
