@@ -1,6 +1,10 @@
 import UIKit
 
 public class EventTableViewCell: UITableViewCell, ScheduleEventComponent {
+    
+    override public class func registerNib(in tableView: UITableView) {
+        registerNib(in: tableView, bundle: .module)
+    }
 
     // MARK: IBOutlets
 
