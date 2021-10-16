@@ -1,4 +1,4 @@
-lane :test do
+lane :pull_request do
     run_tests(
         workspace: "Eurofurence.xcworkspace",
         scheme: "Eurofurence",

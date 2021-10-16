@@ -15,9 +15,9 @@ Install _fastlane_ using
 or alternatively using `brew install fastlane`
 
 # Available Actions
-### test
+### pull_request
 ```
-fastlane test
+fastlane pull_request
 ```
 
 ### screenshots
