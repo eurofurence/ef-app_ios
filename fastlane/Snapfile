@@ -14,4 +14,3 @@ scheme("Eurofurence")
 testplan("Screenshots")
 output_directory("./screenshots")
 clear_previous_screenshots(true) 
-

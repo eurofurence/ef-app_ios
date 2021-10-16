@@ -1,4 +1,12 @@
-lane :screenshots do
-  capture_screenshots(stop_after_first_error: true)
+lane :test do
+    run_tests(
+        workspace: "Eurofurence.xcworkspace",
+        scheme: "Eurofurence",
+        device: "iPhone 8 Plus",
+        derived_data_path: "./DerivedData"
+    )
 end
 
+lane :screenshots do
+    capture_screenshots(stop_after_first_error: true)
+end

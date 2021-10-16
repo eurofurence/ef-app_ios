@@ -9,10 +9,10 @@
          assignedFileDataType = "public.ruby-script">
       </FileRef>
       <FileRef
-         location = "group:README.md">
+         location = "group:Snapfile">
       </FileRef>
       <FileRef
-         location = "group:Snapfile">
+         location = "group:README.md">
       </FileRef>
    </Group>
    <Group
