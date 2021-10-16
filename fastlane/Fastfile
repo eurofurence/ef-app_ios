@@ -5,6 +5,12 @@ lane :pull_request do
         device: "iPhone 8 Plus",
         derived_data_path: "./DerivedData"
     )
+    
+    danger(
+        danger_id: "eurofurence-mobileapps-ci",
+        dangerfile: "Dangerfile",
+        github_api_token: ENV['DANGER_PERSONAL_ACCESS_TOKEN']
+    )
 end
 
 lane :screenshots do
