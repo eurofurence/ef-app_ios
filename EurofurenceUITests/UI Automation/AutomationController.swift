@@ -4,6 +4,10 @@ struct AutomationController {
     
     let app = XCUIApplication()
     
+    var isPhone: Bool {
+        UIDevice.current.userInterfaceIdiom == .phone
+    }
+    
     var isTablet: Bool {
         UIDevice.current.userInterfaceIdiom == .pad
     }

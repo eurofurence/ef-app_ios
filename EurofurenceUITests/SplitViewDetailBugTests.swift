@@ -24,6 +24,8 @@ class SplitViewDetailBugTests: XCTestCase {
     
     func testContentDetailStillHasNavigationTitleWhenRotatingIntoLandscape_BUG() throws {
         let controller = AutomationController()
+        try XCTSkipIf(controller.isPhone, "Does not apply to phones")
+        
         controller.app.launch()
         controller.transitionToContent()
         
