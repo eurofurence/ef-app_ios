@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+	<dict>
+		<key>method</key>
+		<string>app-store</string>
+		<key>teamID</key>
+		<string>557SGQG5H4</string>
+		<key>provisioningProfiles</key>
+		<dict>
+			<key>org.eurofurence</key>
+			<string>Eurofurence App Store</string>
+			<key>org.eurofurence.EventsWidget</key>
+			<string>Events Widget Distribution</string>
+			<key>org.eurofurence.Clip</key>
+			<string>Eurofurence Clip Distribution</string>
+		</dict>
+	</dict>
+</plist>
