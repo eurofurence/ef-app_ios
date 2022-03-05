@@ -13,6 +13,10 @@ struct UserNotificationsScheduler: NotificationScheduler {
         content.body = body
         content.userInfo = userInfo.xpcSafeDictionary
         
+        if #available(iOS 15.0, *) {
+            content.interruptionLevel = .timeSensitive
+        }
+        
         let soundName = UNNotificationSoundName(rawValue: "personal_notification.caf")
         content.sound = UNNotificationSound(named: soundName)
 
