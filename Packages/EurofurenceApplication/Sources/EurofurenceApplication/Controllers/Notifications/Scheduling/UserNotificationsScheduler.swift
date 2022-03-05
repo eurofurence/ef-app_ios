@@ -29,7 +29,7 @@ struct UserNotificationsScheduler: NotificationScheduler {
             }
         }
     }
-
+                                
     func cancelNotification(forEvent identifier: EventIdentifier) {
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [identifier.rawValue])
     }
