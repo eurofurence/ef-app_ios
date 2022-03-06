@@ -43,7 +43,13 @@ class AppNotificationDelegate: NSObject, UNUserNotificationCenterDelegate {
     }
     
     private func requestNotificationPermissions() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (_, error) in
+        var authorizationOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+        
+        if #available(iOS 15, *) {
+            authorizationOptions.insert(.timeSensitive)
+        }
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: authorizationOptions) { (_, error) in
             if let error = error {
                 print("Failed to register for notifications with error: \(error)")
             }
