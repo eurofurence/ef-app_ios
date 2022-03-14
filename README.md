@@ -25,7 +25,7 @@ All our dependencies are installed using the [Swift Package Manager](https://swi
 
 ## Building From Source
 
-To build the app, you'll need the latest version of Xcode 12. Once you clone the repository, open the workspace (not the project!). Give Xcode a few minutes to resolve the dependencies.
+To build the app, you'll need the latest version of Xcode 13. Once you clone the repository, open the workspace (not the project!). Give Xcode a few minutes to resolve the dependencies.
 
 To build and run the app, select the __Eurofurence__ scheme and hit `Product > Run` (or `⌘ + R`). Other schemes of interest include:
 
