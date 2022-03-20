@@ -54,7 +54,6 @@ public class Application {
         instance.principalWindowController?.route(routable)
     }
     
-    @available(iOS 13.0, *)
     public static func open(URLContexts: Set<UIOpenURLContext>) {
         guard let url = URLContexts.first?.url else { return }
         

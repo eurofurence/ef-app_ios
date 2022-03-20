@@ -329,7 +329,6 @@ public class ScheduleViewController: UIViewController,
         }
         #endif
         
-        @available(iOS 13.0, *)
         func tableView(
             _ tableView: UITableView,
             contextMenuConfigurationForRowAt indexPath: IndexPath,

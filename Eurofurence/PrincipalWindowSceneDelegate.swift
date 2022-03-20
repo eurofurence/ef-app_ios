@@ -1,7 +1,6 @@
 import EurofurenceApplication
 import UIKit
 
-@available(iOS 13.0, *)
 class PrincipalWindowSceneDelegate: NSObject, UIWindowSceneDelegate {
     
     var window: UIWindow?

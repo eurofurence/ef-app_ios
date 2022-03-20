@@ -75,7 +75,6 @@ class ScheduleSearchTableViewController: UITableViewController {
     }
 #endif
     
-    @available(iOS 13.0, *)
     override func tableView(
         _ tableView: UITableView,
         contextMenuConfigurationForRowAt indexPath: IndexPath,

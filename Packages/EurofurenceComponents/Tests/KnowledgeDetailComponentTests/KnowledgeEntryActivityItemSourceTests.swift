@@ -20,7 +20,6 @@ class KnowledgeEntryActivityItemSourceTests: URLBasedActivityItemTestCase {
         XCTAssertNotEqual(first, second)
     }
     
-    @available(iOS 13.0, *)
     override func assertAgainstLinkMetadata(_ metadata: LPLinkMetadata, activityItem: URLBasedActivityItem) {
         super.assertAgainstLinkMetadata(metadata, activityItem: activityItem)
         

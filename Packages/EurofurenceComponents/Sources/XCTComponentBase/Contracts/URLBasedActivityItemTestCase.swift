@@ -17,7 +17,6 @@ open class URLBasedActivityItemTestCase: XCTestCase {
         return URLBasedActivityItem(url: url)
     }
     
-    @available(iOS 13.0, *)
     public func linkMetadata(from activityItem: UIActivityItemSource) -> LPLinkMetadata? {
         activityItem.activityViewControllerLinkMetadata?(activityViewController)
     }
@@ -40,7 +39,6 @@ open class URLBasedActivityItemTestCase: XCTestCase {
         XCTAssertEqual(expected, actual as? URL)
     }
     
-    @available(iOS 13.0, *)
     open func testPreparingLinkMetadata() throws {
         activityItem = try makeActivityItem()
         let linkMetadata = try XCTUnwrap(self.linkMetadata(from: activityItem))
@@ -48,7 +46,6 @@ open class URLBasedActivityItemTestCase: XCTestCase {
         assertAgainstLinkMetadata(linkMetadata, activityItem: activityItem)
     }
     
-    @available(iOS 13.0, *)
     open func assertAgainstLinkMetadata(_ metadata: LPLinkMetadata, activityItem: URLBasedActivityItem) {
         XCTAssertEqual(activityItem.url, metadata.url)
         XCTAssertNotNil(metadata.iconProvider)

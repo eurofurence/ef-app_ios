@@ -27,7 +27,6 @@ class EventActivityItemTests: URLBasedActivityItemTestCase {
         XCTAssertNotEqual(first, second)
     }
     
-    @available(iOS 13.0, *)
     func testPosterAvailable() throws {
         let event = FakeEvent.random
         let poster = try XCTUnwrap(UIImage(named: "Event Banner", in: .module, compatibleWith: nil))
@@ -39,7 +38,6 @@ class EventActivityItemTests: URLBasedActivityItemTestCase {
         XCTAssertNotNil(linkMetadata?.imageProvider)
     }
     
-    @available(iOS 13.0, *)
     override func assertAgainstLinkMetadata(_ metadata: LPLinkMetadata, activityItem: URLBasedActivityItem) {
         super.assertAgainstLinkMetadata(metadata, activityItem: activityItem)
         

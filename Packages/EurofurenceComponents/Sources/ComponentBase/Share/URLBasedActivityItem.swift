@@ -20,7 +20,6 @@ open class URLBasedActivityItem: NSObject, UIActivityItemSource {
         url
     }
     
-    @available(iOS 13.0, *)
     public func activityViewControllerLinkMetadata(
         _ activityViewController: UIActivityViewController
     ) -> LPLinkMetadata? {
@@ -36,7 +35,6 @@ open class URLBasedActivityItem: NSObject, UIActivityItemSource {
         return metadata
     }
     
-    @available(iOS 13.0, *)
     open func supplementLinkMetadata(_ metadata: LPLinkMetadata) {
         
     }
