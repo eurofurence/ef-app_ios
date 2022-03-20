@@ -16,7 +16,6 @@ public struct ContextualCommand {
 
 // MARK: - Creating UIActions From Commands
 
-@available(iOS 13.0, *)
 extension ContextualCommand {
     
     public func makeUIAction(sender: Any?) -> UIAction {

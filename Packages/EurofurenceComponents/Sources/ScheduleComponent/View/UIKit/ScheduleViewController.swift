@@ -54,13 +54,11 @@ public class ScheduleViewController: UIViewController,
         
         extendedLayoutIncludesOpaqueBars = true
         
-        if #available(iOS 13.0, *) {
-            if let navigationBarAppearance = navigationController?.navigationBar.standardAppearance {
-                navigationBarAppearance.shadowColor = .navigationBar
-                navigationController?.navigationBar.standardAppearance = navigationBarAppearance
-                navigationController?.navigationBar.compactAppearance = navigationBarAppearance
-                navigationController?.navigationBar.scrollEdgeAppearance = navigationBarAppearance
-            }
+        if let navigationBarAppearance = navigationController?.navigationBar.standardAppearance {
+            navigationBarAppearance.shadowColor = .navigationBar
+            navigationController?.navigationBar.standardAppearance = navigationBarAppearance
+            navigationController?.navigationBar.compactAppearance = navigationBarAppearance
+            navigationController?.navigationBar.scrollEdgeAppearance = navigationBarAppearance
         }
         
         Theme.global.apply(to: tableView)
@@ -331,7 +329,6 @@ public class ScheduleViewController: UIViewController,
         }
         #endif
         
-        @available(iOS 13.0, *)
         func tableView(
             _ tableView: UITableView,
             contextMenuConfigurationForRowAt indexPath: IndexPath,

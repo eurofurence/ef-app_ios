@@ -16,7 +16,6 @@ public class EventActivityItemSource: URLBasedActivityItem {
         return event.identifier == other.event.identifier
     }
     
-    @available(iOS 13.0, *)
     override public func supplementLinkMetadata(_ metadata: LPLinkMetadata) {
         metadata.title = event.title
         

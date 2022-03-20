@@ -17,21 +17,11 @@ public class Theme {
     
     public func apply(to searchController: UISearchController) {
         let searchBar = searchController.searchBar
-        styleSearchBar(searchController.searchBar)
+        styleSearchBar(searchBar)
         
-        if #available(iOS 13.0, *) {
-            searchController.searchBar.searchTextField.backgroundColor = .systemBackground
-            searchController.searchBar.searchTextField.layer.cornerRadius = 10
-            searchController.searchBar.searchTextField.clipsToBounds = true
-        } else {
-            guard let backgroundview = findBackgroundFromViewHiearchy(searchBar: searchBar) else {
-                return
-            }
-            
-            backgroundview.backgroundColor = .white
-            backgroundview.layer.cornerRadius = 10
-            backgroundview.clipsToBounds = true
-        }
+        searchBar.searchTextField.backgroundColor = .systemBackground
+        searchBar.searchTextField.layer.cornerRadius = 10
+        searchBar.searchTextField.clipsToBounds = true
     }
 
     public func apply() {
@@ -51,11 +41,6 @@ public class Theme {
         styleUnreadIndicators()
     }
     
-    private func findBackgroundFromViewHiearchy(searchBar: UISearchBar) -> UIView? {
-        let textfield = searchBar.value(forKey: "searchField") as? UITextField
-        return textfield?.subviews.first
-    }
-    
     private func styleConventionColorViews() {
         let primaryColorView = ConventionPrimaryColorView.appearance()
         primaryColorView.backgroundColor = .primary
@@ -73,19 +58,14 @@ public class Theme {
         navigationBar.setBackgroundImage(UIColor.navigationBar.makePixel(), for: .default)
         navigationBar.shadowImage = UIColor.navigationBar.makePixel()
         
-        if #available(iOS 13.0, *) {
-            let appearance = UINavigationBarAppearance()
-            appearance.backgroundColor = .navigationBar
-            appearance.titleTextAttributes = whiteTextAttributes
-            appearance.largeTitleTextAttributes = whiteTextAttributes
-            
-            navigationBar.standardAppearance = appearance
-            navigationBar.compactAppearance = appearance
-            navigationBar.scrollEdgeAppearance = appearance
-        } else {
-            navigationBar.backgroundColor = .navigationBar
-            navigationBar.largeTitleTextAttributes = whiteTextAttributes
-        }
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = .navigationBar
+        appearance.titleTextAttributes = whiteTextAttributes
+        appearance.largeTitleTextAttributes = whiteTextAttributes
+        
+        navigationBar.standardAppearance = appearance
+        navigationBar.compactAppearance = appearance
+        navigationBar.scrollEdgeAppearance = appearance
     }
 
     private func styleTabBars() {
@@ -95,14 +75,12 @@ public class Theme {
         tabBar.tintColor = .selectedTabBarItem
         tabBar.unselectedItemTintColor = .unselectedTabBarItem
         
-        if #available(iOS 13.0, *) {
-            let backgroundAppearance = UITabBarAppearance()
-            backgroundAppearance.backgroundColor = .tabBar
-            tabBar.standardAppearance = backgroundAppearance
-            
-            if #available(iOS 15.0, *) {
-                tabBar.scrollEdgeAppearance = backgroundAppearance
-            }
+        let backgroundAppearance = UITabBarAppearance()
+        backgroundAppearance.backgroundColor = .tabBar
+        tabBar.standardAppearance = backgroundAppearance
+        
+        if #available(iOS 15.0, *) {
+            tabBar.scrollEdgeAppearance = backgroundAppearance
         }
     }
 

@@ -17,7 +17,6 @@ public class DealerActivityItemSource: URLBasedActivityItem {
         return dealer.identifier == other.dealer.identifier
     }
     
-    @available(iOS 13.0, *)
     override public func supplementLinkMetadata(_ metadata: LPLinkMetadata) {
         metadata.title = dealer.preferredName
     }

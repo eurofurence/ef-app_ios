@@ -19,7 +19,6 @@ extension AppClip {
             routing.route(content)
         }
         
-        @available(iOS 13.0, *)
         func open(URLContexts: Set<UIOpenURLContext>) {
             guard let url = URLContexts.first?.url else { return }
             

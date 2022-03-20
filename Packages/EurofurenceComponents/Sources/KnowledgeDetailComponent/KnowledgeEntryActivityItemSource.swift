@@ -17,7 +17,6 @@ public class KnowledgeEntryActivityItemSource: URLBasedActivityItem {
         return knowledgeEntry.identifier == other.knowledgeEntry.identifier
     }
     
-    @available(iOS 13.0, *)
     override public func supplementLinkMetadata(_ metadata: LPLinkMetadata) {
         metadata.title = knowledgeEntry.title
     }

@@ -140,15 +140,11 @@ public class EventFeedbackViewController: UIViewController, EventFeedbackScene {
     }
     
     public func disableDismissal() {
-        if #available(iOS 13.0, *) {
-            isModalInPresentation = true
-        }
+        isModalInPresentation = true
     }
     
     public func enableDismissal() {
-        if #available(iOS 13.0, *) {
-            isModalInPresentation = false
-        }
+        isModalInPresentation = false
     }
     
     public func showDiscardFeedbackPrompt(discardHandler: @escaping () -> Void) {
