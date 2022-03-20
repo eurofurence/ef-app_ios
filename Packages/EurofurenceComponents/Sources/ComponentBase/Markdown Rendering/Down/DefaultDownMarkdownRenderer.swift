@@ -16,13 +16,7 @@ public struct DefaultDownMarkdownRenderer: MarkdownRenderer {
     private static var colors: ColorCollection {
         var colorCollection = StaticColorCollection()
         
-        let textColor: UIColor
-        if #available(iOS 13.0, *) {
-            textColor = .label
-        } else {
-            textColor = .black
-        }
-        
+        let textColor: UIColor = .label
         colorCollection.heading1 = textColor
         colorCollection.heading2 = textColor
         colorCollection.heading3 = textColor

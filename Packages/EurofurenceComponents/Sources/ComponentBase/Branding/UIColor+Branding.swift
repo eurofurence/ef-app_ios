@@ -48,29 +48,11 @@ extension UIColor {
         scaled(red: 18, green: 19, blue: 18)
     }
     
-    private static var secondaryDarkColor: UIColor = {
-        if #available(iOS 13.0, *) {
-            return .opaqueSeparator
-        } else {
-            return .black
-        }
-    }()
+    private static var secondaryDarkColor = UIColor.opaqueSeparator
     
-    private static var safeSystemGray: UIColor {
-        if #available(iOS 13.0, *) {
-            return .systemGray
-        } else {
-            return .lightGray
-        }
-    }
+    private static var safeSystemGray = UIColor.systemGray
     
-    private static var safeSystemGray3: UIColor {
-        if #available(iOS 13.0, *) {
-            return .systemGray3
-        } else {
-            return .darkGray
-        }
-    }
+    private static var safeSystemGray3 = UIColor.systemGray3
     
     private static func scaled(red: CGFloat, green: CGFloat, blue: CGFloat) -> UIColor {
         let scale: (CGFloat) -> CGFloat = { $0 / 255.0 }
@@ -89,13 +71,7 @@ extension UIColor {
         makeColoredImage(size: CGSize(width: 1, height: 1))
     }
     
-    private static var safeSystemGray2: UIColor {
-        if #available(iOS 13.0, *) {
-            return .systemGray2
-        } else {
-            return .lightGray
-        }
-    }
+    private static var safeSystemGray2 = UIColor.systemGray2
     
     private static func unsafelyNamed(_ name: String) -> UIColor {
         guard let color = UIColor(named: name, in: .module, compatibleWith: nil) else {
@@ -106,17 +82,13 @@ extension UIColor {
     }
     
     private static func adaptive(light: UIColor, dark: UIColor) -> UIColor {
-        if #available(iOS 13.0, *) {
-            return UIColor(dynamicProvider: { (traitCollection) in
-                if traitCollection.userInterfaceStyle == .light {
-                    return light
-                } else {
-                    return dark
-                }
-            })
-        } else {
-            return light
-        }
+        return UIColor(dynamicProvider: { (traitCollection) in
+            if traitCollection.userInterfaceStyle == .light {
+                return light
+            } else {
+                return dark
+            }
+        })
     }
     
 }

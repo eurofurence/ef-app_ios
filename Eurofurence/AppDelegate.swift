@@ -17,7 +17,6 @@ public class AppDelegate: UIResponder, UIApplicationDelegate {
         prepareFrameworks()
         prepareApplication()
         prepareNotificationDelegate()
-        showApplicationWindow()
         requestRemoteNotificationsDeviceToken()
 
 		return true
@@ -79,19 +78,6 @@ public class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func prepareNotificationDelegate() {
         AppNotificationDelegate.instance.prepare()
-    }
-
-    private func showApplicationWindow() {
-        if #available(iOS 13.0, *) {
-            
-        } else {
-            let window = UIWindow()
-            Application.instance.configurePrincipalScene(window: window)
-            window.installDebugModule()
-            window.makeKeyAndVisible()
-            
-            self.window = window
-        }
     }
 
 }
