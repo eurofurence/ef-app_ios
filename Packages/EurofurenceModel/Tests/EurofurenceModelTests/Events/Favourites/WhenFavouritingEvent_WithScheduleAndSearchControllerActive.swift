@@ -12,7 +12,7 @@ class WhenFavouritingEvent_WithScheduleAndSearchControllerActive: XCTestCase {
         let dayForEvent = try XCTUnwrap(days.first(where: { $0.identifier == event.dayIdentifier }))
         characteristics.conferenceDays.changed = [dayForEvent]
         context.performSuccessfulSync(response: characteristics)
-        let schedule = context.eventsService.makeEventsSchedule()
+        let schedule = context.eventsService.loadSchedule()
         let searchController = context.eventsService.makeEventsSearchController()
         
         let scheduleDelegate = CapturingScheduleDelegate()

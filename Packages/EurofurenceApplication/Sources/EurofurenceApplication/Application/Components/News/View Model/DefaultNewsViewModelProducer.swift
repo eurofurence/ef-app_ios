@@ -52,7 +52,7 @@ public class DefaultNewsViewModelProducer: NewsViewModelProducer,
         self.refreshService = refreshService
         self.announcementsDateFormatter = announcementsDateFormatter
 		self.announcementsMarkdownRenderer = announcementsMarkdownRenderer
-        favouritesSchedule = eventsService.makeEventsSchedule()
+        favouritesSchedule = eventsService.loadSchedule()
         favouritesSchedule.setDelegate(self)
 
         announcementsService.add(self)

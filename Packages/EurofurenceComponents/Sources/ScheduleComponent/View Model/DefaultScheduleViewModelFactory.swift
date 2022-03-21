@@ -19,7 +19,7 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory, Schedule
         refreshService: RefreshService,
         shareService: ShareService
     ) {
-        let schedule = eventsService.makeEventsSchedule()
+        let schedule = eventsService.loadSchedule()
         let searchController = eventsService.makeEventsSearchController()
         
         viewModel = ViewModel(

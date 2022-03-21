@@ -7,7 +7,7 @@ class TheFirstTimeSyncFinishes_ApplicationShould: XCTestCase {
         let response = ModelCharacteristics.randomWithoutDeletions
         let firstDay = response.conferenceDays.changed.min(by: { $0.date < $1.date }).unsafelyUnwrapped
         let context = EurofurenceSessionTestBuilder().with(.distantPast).build()
-        let schedule = context.eventsService.makeEventsSchedule()
+        let schedule = context.eventsService.loadSchedule()
         let delegate = CapturingScheduleDelegate()
         schedule.setDelegate(delegate)
         context.performSuccessfulSync(response: response)

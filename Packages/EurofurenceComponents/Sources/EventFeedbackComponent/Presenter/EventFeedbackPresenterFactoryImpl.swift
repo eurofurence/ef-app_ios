@@ -34,7 +34,7 @@ public struct EventFeedbackPresenterFactoryImpl: EventFeedbackPresenterFactory {
         scene: EventFeedbackScene,
         delegate: EventFeedbackComponentDelegate
     ) {
-        guard let event = eventService.makeEventsSchedule().fetchEvent(identifier: event) else { return }
+        guard let event = eventService.loadSchedule().loadEvent(identifier: event) else { return }
         
         _ = EventFeedbackPresenter(event: event,
                                    scene: scene,

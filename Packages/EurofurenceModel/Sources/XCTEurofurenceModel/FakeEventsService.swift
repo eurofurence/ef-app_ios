@@ -23,7 +23,7 @@ public class FakeScheduleRepository: ScheduleRepository {
     }
 
     public private(set) var lastProducedSchedule: FakeEventsSchedule?
-    public func makeEventsSchedule() -> Schedule {
+    public func loadSchedule() -> Schedule {
         let schedule = FakeEventsSchedule(events: allEvents)
         lastProducedSchedule = schedule
         return schedule

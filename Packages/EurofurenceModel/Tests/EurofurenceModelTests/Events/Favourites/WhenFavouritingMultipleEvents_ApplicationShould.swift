@@ -5,8 +5,8 @@ import XCTEurofurenceModel
 class WhenFavouritingMultipleEvents_ApplicationShould: XCTestCase {
 
     private func favouriteEvents(_ identifiers: [EventIdentifier], service: ScheduleRepository) {
-        let schedule = service.makeEventsSchedule()
-        let events = identifiers.compactMap(schedule.fetchEvent)
+        let schedule = service.loadSchedule()
+        let events = identifiers.compactMap(schedule.loadEvent)
         events.forEach({ $0.favourite() })
     }
 
@@ -42,8 +42,8 @@ class WhenFavouritingMultipleEvents_ApplicationShould: XCTestCase {
         context.eventsService.add(observer)
         favouriteEvents(identifiers, service: context.eventsService)
         let randomIdentifier = identifiers.randomElement()
-        let schedule = context.services.events.makeEventsSchedule()
-        let event = schedule.fetchEvent(identifier: randomIdentifier.element)
+        let schedule = context.services.events.loadSchedule()
+        let event = schedule.loadEvent(identifier: randomIdentifier.element)
         event?.unfavourite()
         var expected = identifiers
         expected.remove(at: randomIdentifier.index)

@@ -10,7 +10,7 @@ public class FakeEventsSchedule: Schedule {
         self.currentDay = currentDay
     }
     
-    public func fetchEvent(identifier: EventIdentifier) -> Event? {
+    public func loadEvent(identifier: EventIdentifier) -> Event? {
         events.first(where: { $0.identifier == identifier })
     }
 

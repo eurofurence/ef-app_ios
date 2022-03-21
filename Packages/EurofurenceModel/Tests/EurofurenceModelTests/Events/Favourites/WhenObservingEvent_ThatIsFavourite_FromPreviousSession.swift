@@ -14,8 +14,8 @@ class WhenObservingEvent_ThatIsFavourite_FromPreviousSession: XCTestCase {
         }
 
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
-        let schedule = context.services.events.makeEventsSchedule()
-        let event = schedule.fetchEvent(identifier: eventIdentifier)
+        let schedule = context.services.events.loadSchedule()
+        let event = schedule.loadEvent(identifier: eventIdentifier)
         let observer = CapturingEventObserver()
         event?.add(observer)
 

@@ -1,6 +1,6 @@
 public protocol Schedule {
 
-    func fetchEvent(identifier: EventIdentifier) -> Event?
+    func loadEvent(identifier: EventIdentifier) -> Event?
     func setDelegate(_ delegate: ScheduleDelegate)
     func restrictEvents(to day: Day)
 

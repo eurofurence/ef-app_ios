@@ -81,7 +81,7 @@ class EventsScheduleAdapter: Schedule {
         updateCurrentDay()
     }
     
-    func fetchEvent(identifier: EventIdentifier) -> Event? {
+    func loadEvent(identifier: EventIdentifier) -> Event? {
         schedule.eventModels.first(where: { $0.identifier == identifier })
     }
 

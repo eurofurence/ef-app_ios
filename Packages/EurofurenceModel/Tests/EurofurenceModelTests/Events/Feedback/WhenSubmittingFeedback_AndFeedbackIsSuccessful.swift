@@ -12,8 +12,8 @@ class WhenSubmittingFeedback_AndFeedbackIsSuccessful: XCTestCase {
         characteristics.events.changed[randomEvent.index] = event
         let store = InMemoryDataStore(response: characteristics)
         let context = EurofurenceSessionTestBuilder().with(store).build()
-        let schedule = context.services.events.makeEventsSchedule()
-        let entity = schedule.fetchEvent(identifier: EventIdentifier(event.identifier))
+        let schedule = context.services.events.loadSchedule()
+        let entity = schedule.loadEvent(identifier: EventIdentifier(event.identifier))
         let delegate = CapturingEventFeedbackDelegate()
         let feedback = entity?.prepareFeedback()
         feedback?.starRating = 5
@@ -33,8 +33,8 @@ class WhenSubmittingFeedback_AndFeedbackIsSuccessful: XCTestCase {
         characteristics.events.changed[randomEvent.index] = event
         let store = InMemoryDataStore(response: characteristics)
         let context = EurofurenceSessionTestBuilder().with(store).build()
-        let schedule = context.services.events.makeEventsSchedule()
-        let entity = schedule.fetchEvent(identifier: EventIdentifier(event.identifier))
+        let schedule = context.services.events.loadSchedule()
+        let entity = schedule.loadEvent(identifier: EventIdentifier(event.identifier))
         let delegate = CapturingEventFeedbackDelegate()
         let feedback = entity?.prepareFeedback()
         feedback?.submit(delegate)

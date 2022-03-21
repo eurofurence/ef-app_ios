@@ -3,7 +3,7 @@ import Foundation
 public protocol ScheduleRepository {
 
     func add(_ observer: ScheduleRepositoryObserver)
-    func makeEventsSchedule() -> Schedule
+    func loadSchedule() -> Schedule
     func makeEventsSearchController() -> EventsSearchController
 
 }
