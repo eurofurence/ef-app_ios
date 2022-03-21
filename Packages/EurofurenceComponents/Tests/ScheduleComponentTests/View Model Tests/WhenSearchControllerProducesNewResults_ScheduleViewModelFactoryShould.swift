@@ -25,7 +25,7 @@ class WhenSearchControllerProducesNewResults_ScheduleViewModelFactoryShould: XCT
         let results = firstGroupEvents + secondGroupEvents
         let favouriteEvent = firstGroupEvents.randomElement().element
         favouriteEvent.favourite()
-        let eventsService = FakeEventsService()
+        let eventsService = FakeScheduleRepository()
         eventsService.allEvents = [a, b, c, d, e]
         eventsService.events = [a, b, c, d, e]
 
@@ -59,7 +59,7 @@ class WhenSearchControllerProducesNewResults_ScheduleViewModelFactoryShould: XCT
         let secondGroupEvents = [d, e].sorted(by: { $0.title < $1.title })
 
         let results = firstGroupEvents + secondGroupEvents
-        let eventsService = FakeEventsService()
+        let eventsService = FakeScheduleRepository()
 
         let context = ScheduleViewModelFactoryTestBuilder().with(eventsService).build()
         let viewModel = context.makeSearchViewModel()

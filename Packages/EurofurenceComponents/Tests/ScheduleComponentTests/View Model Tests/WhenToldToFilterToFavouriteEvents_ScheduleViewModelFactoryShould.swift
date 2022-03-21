@@ -6,7 +6,7 @@ import XCTEurofurenceModel
 class WhenToldToFilterToFavouriteEvents_ScheduleViewModelFactoryShould: XCTestCase {
 
     func testTellTheSearchControllerToRestrictEventsToFavourites() {
-        let eventsService = FakeEventsService()
+        let eventsService = FakeScheduleRepository()
         let context = ScheduleViewModelFactoryTestBuilder().with(eventsService).build()
         let searchViewModel = context.makeSearchViewModel()
         searchViewModel?.filterToFavourites()

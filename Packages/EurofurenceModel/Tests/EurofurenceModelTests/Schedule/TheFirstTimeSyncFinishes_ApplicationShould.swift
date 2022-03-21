@@ -8,7 +8,7 @@ class TheFirstTimeSyncFinishes_ApplicationShould: XCTestCase {
         let firstDay = response.conferenceDays.changed.min(by: { $0.date < $1.date }).unsafelyUnwrapped
         let context = EurofurenceSessionTestBuilder().with(.distantPast).build()
         let schedule = context.eventsService.makeEventsSchedule()
-        let delegate = CapturingEventsScheduleDelegate()
+        let delegate = CapturingScheduleDelegate()
         schedule.setDelegate(delegate)
         context.performSuccessfulSync(response: response)
         let expectedEvents = response.events.changed.filter({ $0.dayIdentifier == firstDay.identifier })

@@ -7,14 +7,14 @@ class EventWidgetUpdaterTests: XCTestCase {
     
     private var widgetService: CapturingWidgetService!
     private var refreshService: CapturingRefreshService!
-    private var eventsService: FakeEventsService!
+    private var eventsService: FakeScheduleRepository!
     
     override func setUpWithError() throws {
         try super.setUpWithError()
         
         widgetService = CapturingWidgetService()
         refreshService = CapturingRefreshService()
-        eventsService = FakeEventsService()
+        eventsService = FakeScheduleRepository()
     }
 
     private func setupUpdater() {

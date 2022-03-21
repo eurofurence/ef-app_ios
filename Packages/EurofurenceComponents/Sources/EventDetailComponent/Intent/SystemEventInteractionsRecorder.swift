@@ -4,12 +4,12 @@ import func Foundation.NSLocalizedString
 
 public struct SystemEventInteractionsRecorder: EventInteractionRecorder {
     
-    private let eventsService: EventsService
+    private let eventsService: ScheduleRepository
     private let eventIntentDonor: EventIntentDonor
     private let activityFactory: ActivityFactory
     
     public init(
-        eventsService: EventsService,
+        eventsService: ScheduleRepository,
         eventIntentDonor: EventIntentDonor,
         activityFactory: ActivityFactory
     ) {

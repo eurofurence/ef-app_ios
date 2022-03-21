@@ -18,9 +18,9 @@ extension Day: Comparable {
 
 }
 
-class EventsScheduleAdapter: EventsSchedule {
+class EventsScheduleAdapter: Schedule {
 
-    private let schedule: ConcreteEventsService
+    private let schedule: ConcreteScheduleRepository
     private let clock: Clock
     private var events = [EurofurenceModel.Event]()
     private var days = [Day]()
@@ -69,7 +69,7 @@ class EventsScheduleAdapter: EventsSchedule {
 
     }
 
-    init(schedule: ConcreteEventsService, clock: Clock, eventBus: EventBus) {
+    init(schedule: ConcreteScheduleRepository, clock: Clock, eventBus: EventBus) {
         self.schedule = schedule
         self.clock = clock
         events = schedule.eventModels
@@ -81,8 +81,8 @@ class EventsScheduleAdapter: EventsSchedule {
         updateCurrentDay()
     }
 
-    private var delegate: EventsScheduleDelegate?
-    func setDelegate(_ delegate: EventsScheduleDelegate) {
+    private var delegate: ScheduleDelegate?
+    func setDelegate(_ delegate: ScheduleDelegate) {
         self.delegate = delegate
 
         delegate.scheduleEventsDidChange(to: events)

@@ -7,7 +7,7 @@ class WhenScheduleChanges_ScheduleViewModelShould: XCTestCase {
 
     func testUnhookEventObservationsFromTheOldEvents() {
         let oldEvent = FakeEvent.random
-        let eventsService = FakeEventsService()
+        let eventsService = FakeScheduleRepository()
         eventsService.allEvents = [oldEvent]
         let context = ScheduleViewModelFactoryTestBuilder().with(eventsService).build()
         context.makeViewModel()

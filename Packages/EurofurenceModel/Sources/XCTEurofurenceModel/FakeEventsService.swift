@@ -1,7 +1,7 @@
 import EurofurenceModel
 import Foundation
 
-public class FakeEventsService: EventsService {
+public class FakeScheduleRepository: ScheduleRepository {
 
     public var runningEvents: [Event] = []
     public var upcomingEvents: [Event] = []
@@ -17,8 +17,8 @@ public class FakeEventsService: EventsService {
         return events.first(where: { $0.identifier == identifier })
     }
 
-    private var observers = [EventsServiceObserver]()
-    public func add(_ observer: EventsServiceObserver) {
+    private var observers = [ScheduleRepositoryObserver]()
+    public func add(_ observer: ScheduleRepositoryObserver) {
         observers.append(observer)
 
         observer.eventsDidChange(to: allEvents)
@@ -28,7 +28,7 @@ public class FakeEventsService: EventsService {
     }
 
     public private(set) var lastProducedSchedule: FakeEventsSchedule?
-    public func makeEventsSchedule() -> EventsSchedule {
+    public func makeEventsSchedule() -> Schedule {
         let schedule = FakeEventsSchedule(events: allEvents)
         lastProducedSchedule = schedule
         return schedule
@@ -43,7 +43,7 @@ public class FakeEventsService: EventsService {
 
 }
 
-extension FakeEventsService {
+extension FakeScheduleRepository {
 
     public func stubSomeFavouriteEvents() {
         allEvents = [FakeEvent].random(minimum: 3)

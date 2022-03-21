@@ -8,7 +8,7 @@ class ScheduleViewModelFactoryTestBuilder {
 
     struct Context {
         var viewModelFactory: DefaultScheduleViewModelFactory
-        var eventsService: FakeEventsService
+        var eventsService: FakeScheduleRepository
         var hoursFormatter: FakeHoursDateFormatter
         var shortFormDateFormatter: FakeShortFormDateFormatter
         var shortFormDayAndTimeFormatter: FakeShortFormDayAndTimeFormatter
@@ -18,14 +18,14 @@ class ScheduleViewModelFactoryTestBuilder {
         var shareService: CapturingShareService
     }
 
-    private var eventsService: FakeEventsService
+    private var eventsService: FakeScheduleRepository
 
     init() {
-        eventsService = FakeEventsService()
+        eventsService = FakeScheduleRepository()
     }
 
     @discardableResult
-    func with(_ eventsService: FakeEventsService) -> ScheduleViewModelFactoryTestBuilder {
+    func with(_ eventsService: FakeScheduleRepository) -> ScheduleViewModelFactoryTestBuilder {
         self.eventsService = eventsService
         return self
     }

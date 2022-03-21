@@ -3,7 +3,7 @@ import EurofurenceModel
 
 public struct EventFeedbackPresenterFactoryImpl: EventFeedbackPresenterFactory {
     
-    private let eventService: EventsService
+    private let eventService: ScheduleRepository
     private let dayOfWeekFormatter: DayOfWeekFormatter
     private let startTimeFormatter: HoursDateFormatter
     private let endTimeFormatter: HoursDateFormatter
@@ -12,7 +12,7 @@ public struct EventFeedbackPresenterFactoryImpl: EventFeedbackPresenterFactory {
     private let successWaitingRule: EventFeedbackSuccessWaitingRule
     
     public init(
-        eventService: EventsService,
+        eventService: ScheduleRepository,
         dayOfWeekFormatter: DayOfWeekFormatter,
         startTimeFormatter: HoursDateFormatter,
         endTimeFormatter: HoursDateFormatter,

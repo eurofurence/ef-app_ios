@@ -7,7 +7,7 @@ class WhenViewModelIsToldToShowEventsForSpecificDay_ScheduleViewModelFactoryShou
 
     func testTellTheScheduleToRestrictEventsToSpecifiedDay() {
         let days: [Day] = .random
-        let eventsService = FakeEventsService()
+        let eventsService = FakeScheduleRepository()
         let context = ScheduleViewModelFactoryTestBuilder().with(eventsService).build()
         eventsService.simulateDaysChanged(days)
         let viewModel = context.makeViewModel()

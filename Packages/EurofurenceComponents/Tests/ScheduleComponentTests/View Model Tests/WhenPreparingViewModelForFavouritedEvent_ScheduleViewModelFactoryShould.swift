@@ -6,7 +6,7 @@ import XCTEurofurenceModel
 class WhenPreparingViewModelForFavouritedEvent_ScheduleViewModelFactoryShould: XCTestCase {
 
     func testIndicateTheEventIsFavourited() {
-        let eventsService = FakeEventsService()
+        let eventsService = FakeScheduleRepository()
         let events = [FakeEvent].random
         events.forEach({ $0.favourite() })
         eventsService.allEvents = events

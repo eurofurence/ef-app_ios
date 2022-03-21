@@ -6,7 +6,7 @@ import XCTEurofurenceModel
 class WhenLoggedOutDuringConvention_NewsViewModelProducerShould: XCTestCase {
 
     func testProduceViewModelWithMessagesPrompt_Announcements_RunningEvents_UpcomingEvents_AndFavouriteEvents() throws {
-        let eventsService = FakeEventsService()
+        let eventsService = FakeScheduleRepository()
         let runningEvents = [FakeEvent].random(minimum: 3)
         let upcomingEvents = [FakeEvent].random(minimum: 3)
         eventsService.runningEvents = runningEvents
@@ -31,7 +31,7 @@ class WhenLoggedOutDuringConvention_NewsViewModelProducerShould: XCTestCase {
     }
 
     func testFetchTheUpcomingEventAtTheSpecifiedIndexPath() throws {
-        let eventsService = FakeEventsService()
+        let eventsService = FakeScheduleRepository()
         let upcomingEvents = [FakeEvent].random
         eventsService.upcomingEvents = upcomingEvents
         let context = DefaultNewsViewModelProducerTestBuilder()

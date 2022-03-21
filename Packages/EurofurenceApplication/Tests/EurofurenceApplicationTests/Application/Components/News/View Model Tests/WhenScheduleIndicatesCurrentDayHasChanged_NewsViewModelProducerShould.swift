@@ -6,7 +6,7 @@ import XCTEurofurenceModel
 class WhenScheduleIndicatesCurrentDayHasChanged_NewsViewModelProducerShould: XCTestCase {
 
     func testRestrictTheEventsToTheCurrentDay() {
-        let eventsService = FakeEventsService()
+        let eventsService = FakeScheduleRepository()
         let context = DefaultNewsViewModelProducerTestBuilder().with(eventsService).build()
         context.subscribeViewModelUpdates()
         let day = Day.random
@@ -16,7 +16,7 @@ class WhenScheduleIndicatesCurrentDayHasChanged_NewsViewModelProducerShould: XCT
     }
 
     func testNotIncludeFavouritesSectionWhenDayIsNil() throws {
-        let eventsService = FakeEventsService()
+        let eventsService = FakeScheduleRepository()
         let context = DefaultNewsViewModelProducerTestBuilder().with(eventsService).build()
         context.subscribeViewModelUpdates()
         eventsService.lastProducedSchedule?.simulateDayChanged(to: nil)

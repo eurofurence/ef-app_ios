@@ -11,7 +11,7 @@ class InOrderToSupportSponsorTag_ApplicationShould: XCTestCase {
         syncResponse.events.changed = [event]
         let context = EurofurenceSessionTestBuilder().build()
         context.performSuccessfulSync(response: syncResponse)
-        let eventsObserver = CapturingEventsServiceObserver()
+        let eventsObserver = CapturingScheduleRepositoryObserver()
         context.eventsService.add(eventsObserver)
         let observedEvent = eventsObserver.allEvents.first
 
@@ -26,7 +26,7 @@ class InOrderToSupportSponsorTag_ApplicationShould: XCTestCase {
         syncResponse.events.changed = [event]
         let context = EurofurenceSessionTestBuilder().build()
         context.performSuccessfulSync(response: syncResponse)
-        let eventsObserver = CapturingEventsServiceObserver()
+        let eventsObserver = CapturingScheduleRepositoryObserver()
         context.eventsService.add(eventsObserver)
         let observedEvent = eventsObserver.allEvents.first
 

@@ -13,7 +13,7 @@ class WhenLaunchingApplicationWithPreexistingFavourites: XCTestCase {
         }
 
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
-        let observer = CapturingEventsServiceObserver()
+        let observer = CapturingScheduleRepositoryObserver()
         context.eventsService.add(observer)
 
         XCTAssertTrue(expected.contains(elementsFrom: observer.capturedFavouriteEventIdentifiers))
@@ -28,7 +28,7 @@ class WhenLaunchingApplicationWithPreexistingFavourites: XCTestCase {
         }
 
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
-        let observer = CapturingEventsServiceObserver()
+        let observer = CapturingScheduleRepositoryObserver()
         context.eventsService.add(observer)
 
         let expected = events.sorted(by: { $0.title < $1.title }).map({ EventIdentifier($0.identifier) })

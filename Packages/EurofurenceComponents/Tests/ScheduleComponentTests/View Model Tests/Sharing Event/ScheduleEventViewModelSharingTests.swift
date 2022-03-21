@@ -7,7 +7,7 @@ import XCTEurofurenceModel
 class ScheduleEventViewModelSharingTests: XCTestCase {
     
     func testSharingEvent() {
-        let eventsService = FakeEventsService()
+        let eventsService = FakeScheduleRepository()
         let event = FakeEvent.random
         eventsService.allEvents = [event]
         let context = ScheduleViewModelFactoryTestBuilder().with(eventsService).build()

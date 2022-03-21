@@ -15,7 +15,7 @@ class WhenFavouritingEvent_WithScheduleAndSearchControllerActive: XCTestCase {
         let schedule = context.eventsService.makeEventsSchedule()
         let searchController = context.eventsService.makeEventsSearchController()
         
-        let scheduleDelegate = CapturingEventsScheduleDelegate()
+        let scheduleDelegate = CapturingScheduleDelegate()
         schedule.setDelegate(scheduleDelegate)
         let scheduleEvent = scheduleDelegate.events.first(where: { $0.identifier == EventIdentifier(event.identifier) })
         

@@ -10,7 +10,7 @@ class WhenAppLaunchesWhenClockReadsConferenceDay_ScheduleShould: XCTestCase {
         let dataStore = InMemoryDataStore(response: syncResponse)
         let context = EurofurenceSessionTestBuilder().with(randomDay.date).with(dataStore).build()
         let schedule = context.eventsService.makeEventsSchedule()
-        let delegate = CapturingEventsScheduleDelegate()
+        let delegate = CapturingScheduleDelegate()
         schedule.setDelegate(delegate)
 
         DayAssertion()
@@ -28,7 +28,7 @@ class WhenAppLaunchesWhenClockReadsConferenceDay_ScheduleShould: XCTestCase {
         let dataStore = InMemoryDataStore(response: syncResponse)
         let context = EurofurenceSessionTestBuilder().with(sameDayAsRandomDayButDifferentTime).with(dataStore).build()
         let schedule = context.eventsService.makeEventsSchedule()
-        let delegate = CapturingEventsScheduleDelegate()
+        let delegate = CapturingScheduleDelegate()
         schedule.setDelegate(delegate)
 
         DayAssertion()
@@ -41,7 +41,7 @@ class WhenAppLaunchesWhenClockReadsConferenceDay_ScheduleShould: XCTestCase {
         let dataStore = InMemoryDataStore(response: response)
         let context = EurofurenceSessionTestBuilder().with(dataStore).with(randomDay.date).build()
         let schedule = context.eventsService.makeEventsSchedule()
-        let delegate = CapturingEventsScheduleDelegate()
+        let delegate = CapturingScheduleDelegate()
         schedule.setDelegate(delegate)
         let expectedEvents = response.events.changed.filter({ $0.dayIdentifier == randomDay.identifier })
 

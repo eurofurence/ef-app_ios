@@ -1,7 +1,7 @@
 import EurofurenceModel
 import Foundation
 
-public struct ReviewPromptController: EventsServiceObserver {
+public struct ReviewPromptController: ScheduleRepositoryObserver {
 
     public struct Config {
         public static let `default` = Config(requiredNumberOfFavouriteEvents: 3)
@@ -11,7 +11,7 @@ public struct ReviewPromptController: EventsServiceObserver {
 
     private var config: ReviewPromptController.Config
     private var reviewPromptAction: ReviewPromptAction
-    private var eventsService: EventsService
+    private var eventsService: ScheduleRepository
     private var versionProviding: AppVersionProviding
     private var appStateProviding: AppStateProviding
     private var reviewPromptAppVersionRepository: ReviewPromptAppVersionRepository
@@ -22,7 +22,7 @@ public struct ReviewPromptController: EventsServiceObserver {
         versionProviding: AppVersionProviding,
         reviewPromptAppVersionRepository: ReviewPromptAppVersionRepository,
         appStateProviding: AppStateProviding,
-        eventsService: EventsService
+        eventsService: ScheduleRepository
     ) {
         self.config = config
         self.reviewPromptAction = reviewPromptAction

@@ -17,7 +17,7 @@ class ReviewPromptControllerTests: XCTestCase {
 
     var reviewPromptAction: CapturingReviewPromptAction!
     var config: ReviewPromptController.Config!
-    var eventsService: FakeEventsService!
+    var eventsService: FakeScheduleRepository!
     var controller: ReviewPromptController!
     var versionProviding: StubAppVersionProviding!
     var reviewPromptAppVersionRepository: FakeReviewPromptAppVersionRepository!
@@ -30,7 +30,7 @@ class ReviewPromptControllerTests: XCTestCase {
         config.requiredNumberOfFavouriteEvents = Int.random(upperLimit: 5) + 3
 
         reviewPromptAction = CapturingReviewPromptAction()
-        eventsService = FakeEventsService()
+        eventsService = FakeScheduleRepository()
         versionProviding = StubAppVersionProviding(version: .random)
         reviewPromptAppVersionRepository = FakeReviewPromptAppVersionRepository()
         appStateProviding = FakeAppStateProviding()

@@ -5,13 +5,13 @@ import Foundation
 public class DefaultEventDetailViewModelFactory: EventDetailViewModelFactory {
 
     private let dateRangeFormatter: DateRangeFormatter
-    private let eventsService: EventsService
+    private let eventsService: ScheduleRepository
 	private let markdownRenderer: MarkdownRenderer
     private let shareService: ShareService
 
     public init(
         dateRangeFormatter: DateRangeFormatter,
-        eventsService: EventsService,
+        eventsService: ScheduleRepository,
         markdownRenderer: MarkdownRenderer,
         shareService: ShareService
     ) {

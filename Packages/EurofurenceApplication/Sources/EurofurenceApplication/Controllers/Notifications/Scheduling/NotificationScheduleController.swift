@@ -2,7 +2,7 @@ import ComponentBase
 import EurofurenceModel
 import Foundation
 
-public class NotificationScheduleController: EventsServiceObserver {
+public class NotificationScheduleController: ScheduleRepositoryObserver {
     
     private class ScheduleNotificationWhenEventFavourited: EventObserver {
         
@@ -29,7 +29,7 @@ public class NotificationScheduleController: EventsServiceObserver {
     private let clock: Clock
     
     public init(
-        eventsService: EventsService,
+        eventsService: ScheduleRepository,
         notificationScheduler: NotificationScheduler,
         hoursDateFormatter: HoursDateFormatter,
         upcomingEventReminderInterval: TimeInterval,

@@ -6,7 +6,7 @@ class WhenDeletingEvent_AfterSuccessfulSync_ApplicationShould: XCTestCase {
     func testUpdateDelegateWithoutDeletedEvent() {
         var response = ModelCharacteristics.randomWithoutDeletions
         let context = EurofurenceSessionTestBuilder().build()
-        let delegate = CapturingEventsServiceObserver()
+        let delegate = CapturingScheduleRepositoryObserver()
         context.eventsService.add(delegate)
         context.refreshLocalStore()
         context.api.simulateSuccessfulSync(response)

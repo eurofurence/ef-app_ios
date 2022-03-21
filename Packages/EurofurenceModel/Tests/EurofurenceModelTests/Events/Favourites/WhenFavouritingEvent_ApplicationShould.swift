@@ -28,7 +28,7 @@ class WhenFavouritingEvent_ApplicationShould: XCTestCase {
 
     func testTellEventsObserversTheEventIsNowFavourited() {
         let identifier = EventIdentifier(events.randomElement().element.identifier)
-        let observer = CapturingEventsServiceObserver()
+        let observer = CapturingScheduleRepositoryObserver()
         context.eventsService.add(observer)
         let event = context.eventsService.fetchEvent(identifier: identifier)
         event?.favourite()
@@ -38,7 +38,7 @@ class WhenFavouritingEvent_ApplicationShould: XCTestCase {
 
     func testTellLateAddedObserversAboutTheFavouritedEvent() {
         let identifier = EventIdentifier(events.randomElement().element.identifier)
-        let observer = CapturingEventsServiceObserver()
+        let observer = CapturingScheduleRepositoryObserver()
         let event = context.eventsService.fetchEvent(identifier: identifier)
         event?.favourite()
         context.eventsService.add(observer)
@@ -63,7 +63,7 @@ class WhenFavouritingEvent_ApplicationShould: XCTestCase {
             event.favourite()
         }
 
-        let observer = CapturingEventsServiceObserver()
+        let observer = CapturingScheduleRepositoryObserver()
         context.eventsService.add(observer)
         let event = context.eventsService.fetchEvent(identifier: identifier)
         event?.favourite()

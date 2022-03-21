@@ -10,19 +10,19 @@ class EventDetailViewModelFactoryTestBuilder {
         var dateRangeFormatter: FakeDateRangeFormatter
         var viewModelFactory: DefaultEventDetailViewModelFactory
         var viewModel: EventDetailViewModel
-        var eventsService: FakeEventsService
+        var eventsService: FakeScheduleRepository
 		var markdownRenderer: StubMarkdownRenderer
         var shareService: CapturingShareService
     }
 
-    private var eventsService: FakeEventsService
+    private var eventsService: FakeScheduleRepository
 
     init() {
-        eventsService = FakeEventsService()
+        eventsService = FakeScheduleRepository()
     }
 
     @discardableResult
-    func with(_ eventsService: FakeEventsService) -> EventDetailViewModelFactoryTestBuilder {
+    func with(_ eventsService: FakeScheduleRepository) -> EventDetailViewModelFactoryTestBuilder {
         self.eventsService = eventsService
         return self
     }

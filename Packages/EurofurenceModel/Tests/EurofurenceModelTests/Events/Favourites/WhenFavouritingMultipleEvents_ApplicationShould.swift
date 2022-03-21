@@ -4,7 +4,7 @@ import XCTEurofurenceModel
 
 class WhenFavouritingMultipleEvents_ApplicationShould: XCTestCase {
 
-    private func favouriteEvents(_ identifiers: [EventIdentifier], service: EventsService) {
+    private func favouriteEvents(_ identifiers: [EventIdentifier], service: ScheduleRepository) {
         let events = identifiers.compactMap(service.fetchEvent)
         events.forEach({ $0.favourite() })
     }
@@ -21,7 +21,7 @@ class WhenFavouritingMultipleEvents_ApplicationShould: XCTestCase {
 
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let identifiers = events.map({ EventIdentifier($0.identifier) })
-        let observer = CapturingEventsServiceObserver()
+        let observer = CapturingScheduleRepositoryObserver()
         context.eventsService.add(observer)
         favouriteEvents(identifiers, service: context.eventsService)
         
@@ -37,7 +37,7 @@ class WhenFavouritingMultipleEvents_ApplicationShould: XCTestCase {
 
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let identifiers = events.map({ EventIdentifier($0.identifier) })
-        let observer = CapturingEventsServiceObserver()
+        let observer = CapturingScheduleRepositoryObserver()
         context.eventsService.add(observer)
         favouriteEvents(identifiers, service: context.eventsService)
         let randomIdentifier = identifiers.randomElement()
@@ -60,7 +60,7 @@ class WhenFavouritingMultipleEvents_ApplicationShould: XCTestCase {
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         context.refreshLocalStore()
         context.api.simulateSuccessfulSync(response)
-        let observer = CapturingEventsServiceObserver()
+        let observer = CapturingScheduleRepositoryObserver()
         context.eventsService.add(observer)
 
         let expected = events

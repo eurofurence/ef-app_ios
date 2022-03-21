@@ -1,6 +1,6 @@
 import EurofurenceModel
 
-public class FakeEventsSchedule: EventsSchedule {
+public class FakeEventsSchedule: Schedule {
 
     public var events: [Event]
     public var currentDay: Day?
@@ -10,8 +10,8 @@ public class FakeEventsSchedule: EventsSchedule {
         self.currentDay = currentDay
     }
 
-    fileprivate var delegate: EventsScheduleDelegate?
-    public func setDelegate(_ delegate: EventsScheduleDelegate) {
+    fileprivate var delegate: ScheduleDelegate?
+    public func setDelegate(_ delegate: ScheduleDelegate) {
         self.delegate = delegate
         delegate.scheduleEventsDidChange(to: events)
         delegate.currentEventDayDidChange(to: currentDay)

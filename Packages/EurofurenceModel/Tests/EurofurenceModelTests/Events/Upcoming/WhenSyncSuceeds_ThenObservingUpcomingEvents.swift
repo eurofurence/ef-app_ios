@@ -9,7 +9,7 @@ class WhenSyncSuceeds_ThenObservingUpcomingEvents: XCTestCase {
         let simulatedTime = randomEvent.startDateTime.addingTimeInterval(-1)
         let context = EurofurenceSessionTestBuilder().with(simulatedTime).build()
         context.performSuccessfulSync(response: syncResponse)
-        let observer = CapturingEventsServiceObserver()
+        let observer = CapturingScheduleRepositoryObserver()
         context.eventsService.add(observer)
 
         try EventAssertion(context: context, modelCharacteristics: syncResponse)
@@ -30,7 +30,7 @@ class WhenSyncSuceeds_ThenObservingUpcomingEvents: XCTestCase {
         syncResponse.events = .init(changed: [firstEvent, secondEvent], deleted: [], removeAllBeforeInsert: false)
         let context = EurofurenceSessionTestBuilder().with(now).build()
         context.performSuccessfulSync(response: syncResponse)
-        let observer = CapturingEventsServiceObserver()
+        let observer = CapturingScheduleRepositoryObserver()
         context.eventsService.add(observer)
         
         let firstRealEvent = observer.upcomingEvents[0]

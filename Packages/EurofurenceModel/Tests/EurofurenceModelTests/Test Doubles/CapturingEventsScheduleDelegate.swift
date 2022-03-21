@@ -1,7 +1,7 @@
 import EurofurenceModel
 import Foundation
 
-class CapturingEventsScheduleDelegate: EventsScheduleDelegate {
+class CapturingScheduleDelegate: ScheduleDelegate {
 
     private(set) var events = [Event]()
     func scheduleEventsDidChange(to events: [Event]) {

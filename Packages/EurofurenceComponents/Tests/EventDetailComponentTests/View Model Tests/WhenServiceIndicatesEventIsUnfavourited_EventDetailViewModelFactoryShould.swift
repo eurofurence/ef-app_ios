@@ -8,7 +8,7 @@ class WhenServiceIndicatesEventIsUnfavourited_EventDetailViewModelFactoryShould:
     func testTellTheViewModelDelegateTheEventIsUnfavourited() {
         let event = FakeEvent.random
         event.favourite()
-        let service = FakeEventsService(favourites: [event.identifier])
+        let service = FakeScheduleRepository(favourites: [event.identifier])
         let context = EventDetailViewModelFactoryTestBuilder().with(service).build(for: event)
         let delegate = CapturingEventDetailViewModelDelegate()
         context.viewModel.setDelegate(delegate)

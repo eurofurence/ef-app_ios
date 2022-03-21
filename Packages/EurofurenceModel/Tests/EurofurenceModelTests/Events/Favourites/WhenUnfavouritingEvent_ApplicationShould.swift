@@ -5,7 +5,7 @@ class WhenUnfavouritingEvent_ApplicationShould: XCTestCase {
 
     var context: EurofurenceSessionTestBuilder.Context!
     var identifier: EventIdentifier!
-    var observer: CapturingEventsServiceObserver!
+    var observer: CapturingScheduleRepositoryObserver!
     var event: Event!
 
     override func setUp() {
@@ -13,7 +13,7 @@ class WhenUnfavouritingEvent_ApplicationShould: XCTestCase {
 
         context = EurofurenceSessionTestBuilder().build()
         let modelCharacteristics = ModelCharacteristics.randomWithoutDeletions
-        observer = CapturingEventsServiceObserver()
+        observer = CapturingScheduleRepositoryObserver()
         context.eventsService.add(observer)
         let randomEvent = modelCharacteristics.events.changed.randomElement().element
         context.performSuccessfulSync(response: modelCharacteristics)

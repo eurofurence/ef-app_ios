@@ -7,7 +7,7 @@ class WhenObservingEventsFromService: XCTestCase {
     func testTheObserverShouldNotBeStronglyRetained() {
         let context = EurofurenceSessionTestBuilder().build()
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
-        var observer: CapturingEventsServiceObserver? = CapturingEventsServiceObserver()
+        var observer: CapturingScheduleRepositoryObserver? = CapturingScheduleRepositoryObserver()
         context.eventsService.add(observer.unsafelyUnwrapped)
         weak var weakObserver = observer
         observer = nil

@@ -42,9 +42,9 @@ class InMemoryEventsSearchController: EventsSearchController {
     private class FavouritesFilter: Filter {
 
         var enabled = false
-        private let schedule: ConcreteEventsService
+        private let schedule: ConcreteScheduleRepository
 
-        init(schedule: ConcreteEventsService) {
+        init(schedule: ConcreteScheduleRepository) {
             self.schedule = schedule
         }
 
@@ -71,12 +71,12 @@ class InMemoryEventsSearchController: EventsSearchController {
 
     }
 
-    private let schedule: ConcreteEventsService
+    private let schedule: ConcreteScheduleRepository
     private let filters: CompositeFilter
     private let queryFilter: QueryFilter
     private let favouritesFilter: FavouritesFilter
 
-    init(schedule: ConcreteEventsService, eventBus: EventBus) {
+    init(schedule: ConcreteScheduleRepository, eventBus: EventBus) {
         self.schedule = schedule
         queryFilter = QueryFilter()
         favouritesFilter = FavouritesFilter(schedule: schedule)

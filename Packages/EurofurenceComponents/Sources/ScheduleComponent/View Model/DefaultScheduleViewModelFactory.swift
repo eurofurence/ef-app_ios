@@ -2,7 +2,7 @@ import ComponentBase
 import EurofurenceModel
 import Foundation
 
-public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory, EventsServiceObserver {
+public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory, ScheduleRepositoryObserver {
 
     // MARK: Properties
 
@@ -12,7 +12,7 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory, EventsSe
     // MARK: Initialization
 
     public init(
-        eventsService: EventsService,
+        eventsService: ScheduleRepository,
         hoursDateFormatter: HoursDateFormatter,
         shortFormDateFormatter: ShortFormDateFormatter,
         shortFormDayAndTimeFormatter: ShortFormDayAndTimeFormatter,
@@ -52,7 +52,7 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory, EventsSe
         completionHandler(searchViewModel)
     }
 
-    // MARK: EventsServiceObserver
+    // MARK: ScheduleRepositoryObserver
 
     public func favouriteEventsDidChange(_ identifiers: [EventIdentifier]) {
         viewModel.favouriteEventsDidChange(identifiers)
@@ -74,7 +74,7 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory, EventsSe
         }
     }
 
-    private class ViewModel: ScheduleViewModel, EventsScheduleDelegate, RefreshServiceObserver {
+    private class ViewModel: ScheduleViewModel, ScheduleDelegate, RefreshServiceObserver {
 
         private var delegate: ScheduleViewModelDelegate?
         private var rawModelGroups = [EventsGroupedByDate]()
@@ -98,8 +98,8 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory, EventsSe
             }
         }
 
-        private let schedule: EventsSchedule
-        private let eventsService: EventsService
+        private let schedule: Schedule
+        private let eventsService: ScheduleRepository
         private let hoursDateFormatter: HoursDateFormatter
         private let shortFormDateFormatter: ShortFormDateFormatter
         private let refreshService: RefreshService
@@ -108,8 +108,8 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory, EventsSe
         private var favouriteEvents = [EventIdentifier]()
 
         init(
-            schedule: EventsSchedule,
-            eventsService: EventsService,
+            schedule: Schedule,
+            eventsService: ScheduleRepository,
             hoursDateFormatter: HoursDateFormatter,
             shortFormDateFormatter: ShortFormDateFormatter,
             refreshService: RefreshService,
@@ -202,7 +202,7 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory, EventsSe
     private class SearchViewModel: ScheduleSearchViewModel, EventsSearchControllerDelegate {
 
         private let searchController: EventsSearchController
-        private let eventsService: EventsService
+        private let eventsService: ScheduleRepository
         private let shortFormDayAndTimeFormatter: ShortFormDayAndTimeFormatter
         private let hoursDateFormatter: HoursDateFormatter
         private let shareService: ShareService
@@ -212,7 +212,7 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory, EventsSe
 
         init(
             searchController: EventsSearchController,
-            eventsService: EventsService,
+            eventsService: ScheduleRepository,
             shortFormDayAndTimeFormatter: ShortFormDayAndTimeFormatter,
             hoursDateFormatter: HoursDateFormatter,
             shareService: ShareService

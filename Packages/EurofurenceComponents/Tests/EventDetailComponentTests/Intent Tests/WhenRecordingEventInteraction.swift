@@ -17,7 +17,7 @@ class WhenRecordingEventInteraction: XCTestCase {
         super.setUp()
         
         event = FakeEvent.random
-        let eventsService = FakeEventsService()
+        let eventsService = FakeScheduleRepository()
         eventsService.events = [event]
         eventIntentDonor = CapturingEventIntentDonor()
         let activityFactory = FakeActivityFactory()

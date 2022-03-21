@@ -7,9 +7,9 @@ public class DefaultNewsViewModelProducer: NewsViewModelProducer,
                                            AuthenticationStateObserver,
                                            PrivateMessagesObserver,
                                            ConventionCountdownServiceObserver,
-                                           EventsServiceObserver,
+                                           ScheduleRepositoryObserver,
                                            RefreshServiceObserver,
-                                           EventsScheduleDelegate {
+                                           ScheduleDelegate {
 
     // MARK: Properties
 
@@ -25,7 +25,7 @@ public class DefaultNewsViewModelProducer: NewsViewModelProducer,
     private var currentUser: User?
     private let clock: Clock
     private let refreshService: RefreshService
-    private let favouritesSchedule: EventsSchedule
+    private let favouritesSchedule: Schedule
     private var todaysEvents = [Event]()
     private var currentDay: Day?
     private let announcementsDateFormatter: AnnouncementDateFormatter
@@ -38,7 +38,7 @@ public class DefaultNewsViewModelProducer: NewsViewModelProducer,
         authenticationService: AuthenticationService,
         privateMessagesService: PrivateMessagesService,
         daysUntilConventionService: ConventionCountdownService,
-        eventsService: EventsService,
+        eventsService: ScheduleRepository,
         relativeTimeIntervalCountdownFormatter: RelativeTimeIntervalCountdownFormatter,
         hoursDateFormatter: HoursDateFormatter,
         clock: Clock,
@@ -127,7 +127,7 @@ public class DefaultNewsViewModelProducer: NewsViewModelProducer,
         regenerateViewModel()
     }
 
-    // MARK: EventsServiceObserver
+    // MARK: ScheduleRepositoryObserver
 
     private var allEvents = [Event]()
     private var favouriteEvents = [Event]()
@@ -152,7 +152,7 @@ public class DefaultNewsViewModelProducer: NewsViewModelProducer,
         regenerateFavouriteEvents()
     }
 
-    // MARK: EventsScheduleDelegate
+    // MARK: ScheduleDelegate
 
     public func scheduleEventsDidChange(to events: [Event]) {
         todaysEvents = events

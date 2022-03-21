@@ -6,7 +6,7 @@ import XCTEurofurenceModel
 class WhenEventTransitionsFromNonFavouriteToFavourite_EventViewModelShould: XCTestCase {
 
     func testNotifyTheObserver() {
-        let eventsService = FakeEventsService()
+        let eventsService = FakeScheduleRepository()
         let event = FakeEvent.random
         eventsService.allEvents = [event]
         let context = ScheduleViewModelFactoryTestBuilder().with(eventsService).build()
