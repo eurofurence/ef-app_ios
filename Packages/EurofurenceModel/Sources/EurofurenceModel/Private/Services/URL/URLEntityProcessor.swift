@@ -16,7 +16,7 @@ class URLEntityProcessor {
         let identifierComponent = url.lastPathComponent
         
         let eventIdentifier = EventIdentifier(identifierComponent)
-        if eventsService.fetchEvent(identifier: eventIdentifier) != nil {
+        if eventsService.makeEventsSchedule().fetchEvent(identifier: eventIdentifier) != nil {
             visitor.visit(EventIdentifier(identifierComponent))
         }
         

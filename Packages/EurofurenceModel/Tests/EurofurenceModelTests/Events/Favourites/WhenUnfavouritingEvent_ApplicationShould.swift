@@ -19,7 +19,8 @@ class WhenUnfavouritingEvent_ApplicationShould: XCTestCase {
         context.performSuccessfulSync(response: modelCharacteristics)
 
         identifier = EventIdentifier(randomEvent.identifier)
-        event = context.eventsService.fetchEvent(identifier: identifier)
+        let schedule = context.services.events.makeEventsSchedule()
+        event = schedule.fetchEvent(identifier: identifier)
         event.favourite()
         event.unfavourite()
     }

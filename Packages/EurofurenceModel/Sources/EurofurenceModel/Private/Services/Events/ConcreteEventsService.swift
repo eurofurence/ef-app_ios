@@ -120,10 +120,6 @@ class ConcreteScheduleRepository: ClockDelegate, ScheduleRepository {
 
     // MARK: Functions
 
-    func fetchEvent(identifier: EventIdentifier) -> Event? {
-        return eventModels.first(where: { $0.identifier == identifier })
-    }
-
     func makeEventsSchedule() -> Schedule {
         return EventsScheduleAdapter(schedule: self, clock: clock, eventBus: eventBus)
     }

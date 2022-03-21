@@ -30,7 +30,7 @@ class EventDetailViewModelFactoryTestBuilder {
     func build(for event: Event = FakeEvent.randomStandardEvent) -> Context {
         let dateRangeFormatter = FakeDateRangeFormatter()
 		let markdownRenderer = StubMarkdownRenderer()
-        eventsService.events = [event]
+        eventsService.allEvents = [event]
         let shareService = CapturingShareService()
 		let viewModelFactory = DefaultEventDetailViewModelFactory(dateRangeFormatter: dateRangeFormatter,
                                                       eventsService: eventsService,

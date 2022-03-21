@@ -27,7 +27,6 @@ class WhenSearchControllerProducesNewResults_ScheduleViewModelFactoryShould: XCT
         favouriteEvent.favourite()
         let eventsService = FakeScheduleRepository()
         eventsService.allEvents = [a, b, c, d, e]
-        eventsService.events = [a, b, c, d, e]
 
         let context = ScheduleViewModelFactoryTestBuilder().with(eventsService).build()
         context.makeSearchViewModel()

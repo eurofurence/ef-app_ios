@@ -9,6 +9,10 @@ public class FakeEventsSchedule: Schedule {
         self.events = events
         self.currentDay = currentDay
     }
+    
+    public func fetchEvent(identifier: EventIdentifier) -> Event? {
+        events.first(where: { $0.identifier == identifier })
+    }
 
     fileprivate var delegate: ScheduleDelegate?
     public func setDelegate(_ delegate: ScheduleDelegate) {

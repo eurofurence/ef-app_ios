@@ -2,8 +2,6 @@ import Foundation
 
 public protocol ScheduleRepository {
 
-    func fetchEvent(identifier: EventIdentifier) -> Event?
-
     func add(_ observer: ScheduleRepositoryObserver)
     func makeEventsSchedule() -> Schedule
     func makeEventsSearchController() -> EventsSearchController

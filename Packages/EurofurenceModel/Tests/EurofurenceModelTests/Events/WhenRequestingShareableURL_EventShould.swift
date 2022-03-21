@@ -10,7 +10,8 @@ class WhenRequestingShareableURL_EventShould: XCTestCase {
         let dataStore = InMemoryDataStore(response: characteristics)
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let identifier = EventIdentifier(event.identifier)
-        let entity = context.eventsService.fetchEvent(identifier: EventIdentifier(event.identifier))
+        let schedule = context.services.events.makeEventsSchedule()
+        let entity = schedule.fetchEvent(identifier: EventIdentifier(event.identifier))
         let url = entity?.contentURL
         
         XCTAssertEqual(URL(string: "event://\(identifier.rawValue)").unsafelyUnwrapped, url)

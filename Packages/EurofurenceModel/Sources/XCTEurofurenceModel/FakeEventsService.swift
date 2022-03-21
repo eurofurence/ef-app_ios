@@ -12,11 +12,6 @@ public class FakeScheduleRepository: ScheduleRepository {
         self.favourites = favourites
     }
 
-    public var events = [Event]()
-    public func fetchEvent(identifier: EventIdentifier) -> Event? {
-        return events.first(where: { $0.identifier == identifier })
-    }
-
     private var observers = [ScheduleRepositoryObserver]()
     public func add(_ observer: ScheduleRepositoryObserver) {
         observers.append(observer)

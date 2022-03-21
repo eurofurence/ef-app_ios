@@ -80,6 +80,10 @@ class EventsScheduleAdapter: Schedule {
         regenerateSchedule()
         updateCurrentDay()
     }
+    
+    func fetchEvent(identifier: EventIdentifier) -> Event? {
+        schedule.eventModels.first(where: { $0.identifier == identifier })
+    }
 
     private var delegate: ScheduleDelegate?
     func setDelegate(_ delegate: ScheduleDelegate) {

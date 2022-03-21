@@ -55,11 +55,12 @@ class WhenRestrictingSearchResultsToFavourites_ScheduleShould: XCTestCase {
         }
 
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
-        let schedule = context.eventsService.makeEventsSearchController()
+        let searchController = context.eventsService.makeEventsSearchController()
         let delegate = CapturingEventsSearchControllerDelegate()
-        schedule.setResultsDelegate(delegate)
-        schedule.restrictResultsToFavourites()
-        let event = context.eventsService.fetchEvent(identifier: randomFavourite.element)
+        searchController.setResultsDelegate(delegate)
+        searchController.restrictResultsToFavourites()
+        let schedule = context.services.events.makeEventsSchedule()
+        let event = schedule.fetchEvent(identifier: randomFavourite.element)
         event?.unfavourite()
         var expected = favourites
         expected.remove(at: randomFavourite.index)

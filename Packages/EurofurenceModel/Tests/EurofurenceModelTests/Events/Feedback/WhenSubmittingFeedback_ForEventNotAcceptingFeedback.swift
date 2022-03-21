@@ -12,7 +12,8 @@ class WhenSubmittingFeedback_ForEventNotAcceptingFeedback: XCTestCase {
         characteristics.events.changed[randomEvent.index] = event
         let store = InMemoryDataStore(response: characteristics)
         let context = EurofurenceSessionTestBuilder().with(store).build()
-        let entity = context.services.events.fetchEvent(identifier: EventIdentifier(event.identifier))
+        let schedule = context.services.events.makeEventsSchedule()
+        let entity = schedule.fetchEvent(identifier: EventIdentifier(event.identifier))
         let delegate = CapturingEventFeedbackDelegate()
         entity?.prepareFeedback().submit(delegate)
         
