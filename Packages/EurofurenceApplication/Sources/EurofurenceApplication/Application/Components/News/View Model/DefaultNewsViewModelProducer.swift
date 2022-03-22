@@ -8,8 +8,7 @@ public class DefaultNewsViewModelProducer: NewsViewModelProducer,
                                            PrivateMessagesObserver,
                                            ConventionCountdownServiceObserver,
                                            ScheduleRepositoryObserver,
-                                           RefreshServiceObserver,
-                                           ScheduleDelegate {
+                                           RefreshServiceObserver {
 
     // MARK: Properties
 
@@ -26,7 +25,7 @@ public class DefaultNewsViewModelProducer: NewsViewModelProducer,
     private let clock: Clock
     private let refreshService: RefreshService
     private let favouritesSchedule: Schedule
-    private var todaysEvents = [Event]()
+    private var todaysFavouriteEvents = [Event]()
     private var currentDay: Day?
     private let announcementsDateFormatter: AnnouncementDateFormatter
 	private let announcementsMarkdownRenderer: MarkdownRenderer
@@ -53,7 +52,7 @@ public class DefaultNewsViewModelProducer: NewsViewModelProducer,
         self.announcementsDateFormatter = announcementsDateFormatter
 		self.announcementsMarkdownRenderer = announcementsMarkdownRenderer
         favouritesSchedule = eventsService.loadSchedule()
-        favouritesSchedule.setDelegate(self)
+        favouritesSchedule.setDelegate(UpdateViewModelWhenFavouritesScheduleChanges(viewModel: self))
 
         announcementsService.add(self)
         authenticationService.add(self)
@@ -61,6 +60,28 @@ public class DefaultNewsViewModelProducer: NewsViewModelProducer,
         daysUntilConventionService.add(self)
         eventsService.add(self)
         refreshService.add(self)
+    }
+    
+    private struct UpdateViewModelWhenFavouritesScheduleChanges: ScheduleDelegate {
+        
+        unowned let viewModel: DefaultNewsViewModelProducer
+        
+        func scheduleEventsDidChange(to events: [Event]) {
+            viewModel.todaysFavouriteEvents = events
+            viewModel.regenerateViewModel()
+        }
+        
+        func eventDaysDidChange(to days: [Day]) {
+            
+        }
+        
+        func currentEventDayDidChange(to day: Day?) {
+            viewModel.currentDay = day
+            if let day = day {
+                viewModel.favouritesSchedule.restrictEvents(to: day)
+            }
+        }
+        
     }
 
     // MARK: NewsViewModelProducer
@@ -151,25 +172,7 @@ public class DefaultNewsViewModelProducer: NewsViewModelProducer,
         favouriteEventIdentifiers = identifiers
         regenerateFavouriteEvents()
     }
-
-    // MARK: ScheduleDelegate
-
-    public func scheduleEventsDidChange(to events: [Event]) {
-        todaysEvents = events
-        regenerateViewModel()
-    }
-
-    public func eventDaysDidChange(to days: [Day]) {
-
-    }
-
-    public func currentEventDayDidChange(to day: Day?) {
-        currentDay = day
-        if let day = day {
-            favouritesSchedule.restrictEvents(to: day)
-        }
-    }
-
+    
     // MARK: RefreshServiceObserver
 
     public func refreshServiceDidBeginRefreshing() {
@@ -186,7 +189,7 @@ public class DefaultNewsViewModelProducer: NewsViewModelProducer,
         if currentDay == nil {
             favouriteEvents = []
         } else {
-            favouriteEvents = todaysEvents.filter({ favouriteEventIdentifiers.contains($0.identifier) })
+            favouriteEvents = todaysFavouriteEvents.filter({ favouriteEventIdentifiers.contains($0.identifier) })
         }
 
         regenerateViewModel()
