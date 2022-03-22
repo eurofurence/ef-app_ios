@@ -10,7 +10,6 @@ public struct EventsOccurringOnDaySpecification {
     
 }
 
-
 // MARK: - EventsOccurringOnDaySpecification + Specification
 
 extension EventsOccurringOnDaySpecification: Specification {

@@ -42,24 +42,30 @@ extension FakeScheduleRepository {
 
     public func stubSomeFavouriteEvents() {
         allEvents = [FakeEvent].random(minimum: 3)
-        favourites = Array(allEvents.dropFirst()).map(\.identifier)
+        allEvents.dropFirst().forEach({ $0.favourite() })
+        favourites = allEvents.filter(\.isFavourite).map(\.identifier)
     }
 
     public func simulateEventFavourited(identifier: EventIdentifier) {
-        favourites.append(identifier)
+        allEvents.first(where: { $0.identifier == identifier })?.favourite()
+        
+        // Legacy pathway.
+        let favourites = allEvents.filter(\.isFavourite).map(\.identifier)
         observers.forEach { $0.favouriteEventsDidChange(favourites) }
     }
 
     public func simulateEventFavouritesChanged(to identifiers: [EventIdentifier]) {
-        favourites = identifiers
-        observers.forEach { $0.favouriteEventsDidChange(favourites) }
+        identifiers.forEach(simulateEventFavourited(identifier:))
     }
 
     public func simulateEventUnfavourited(identifier: EventIdentifier) {
+        allEvents.first(where: { $0.identifier == identifier })?.unfavourite()
+        
+        // Legacy pathway.
         if let idx = favourites.firstIndex(of: identifier) {
             favourites.remove(at: idx)
         }
-
+        
         observers.forEach { $0.favouriteEventsDidChange(favourites) }
     }
 

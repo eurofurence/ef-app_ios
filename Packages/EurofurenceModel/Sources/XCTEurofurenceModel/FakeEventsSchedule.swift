@@ -25,6 +25,11 @@ public class FakeEventsSchedule: Schedule {
     public func restrictEvents(to day: Day) {
         dayUsedToRestrictEvents = day
     }
+    
+    public func filterSchedule<S>(to specification: S) where S: Specification, S.Element == Event {
+        let filteredEvents = events.filter(specification.isSatisfied(by:))
+        delegate?.scheduleEventsDidChange(to: filteredEvents)
+    }
 
 }
 

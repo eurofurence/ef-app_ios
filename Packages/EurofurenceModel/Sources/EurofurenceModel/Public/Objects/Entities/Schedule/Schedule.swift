@@ -3,6 +3,8 @@ public protocol Schedule {
     func loadEvent(identifier: EventIdentifier) -> Event?
     func setDelegate(_ delegate: ScheduleDelegate)
     func restrictEvents(to day: Day)
+    
+    func filterSchedule<S>(to specification: S) where S: Specification, S.Element == Event
 
 }
 

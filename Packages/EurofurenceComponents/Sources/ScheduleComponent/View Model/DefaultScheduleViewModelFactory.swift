@@ -178,7 +178,7 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory, Schedule
 
         func showEventsForDay(at index: Int) {
             let day = days[index]
-            schedule.restrictEvents(to: day)
+            schedule.filterSchedule(to: EventsOccurringOnDaySpecification(day: day))
         }
 
         func identifierForEvent(at indexPath: IndexPath) -> EventIdentifier? {

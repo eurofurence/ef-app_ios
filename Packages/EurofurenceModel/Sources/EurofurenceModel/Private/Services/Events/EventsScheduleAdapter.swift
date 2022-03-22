@@ -98,6 +98,10 @@ class EventsScheduleAdapter: Schedule {
         guard let day = findDay(for: day.date) else { return }
         restrictScheduleToEvents(on: day)
     }
+    
+    func filterSchedule<S>(to specification: S) where S: Specification, S.Element == Event {
+        
+    }
 
     private func restrictScheduleToEvents(on day: ConferenceDayCharacteristics) {
         if let idx = filters.firstIndex(where: { $0 is DayRestrictionFilter }) {

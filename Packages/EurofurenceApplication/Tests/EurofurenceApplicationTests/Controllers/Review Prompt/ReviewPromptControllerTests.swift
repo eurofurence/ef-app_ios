@@ -25,12 +25,15 @@ class ReviewPromptControllerTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
+        
+        let events: [FakeEvent] = [.random, .random, .random]
+        eventsService = FakeScheduleRepository()
+        eventsService.allEvents = events
 
         config = ReviewPromptController.Config.default
-        config.requiredNumberOfFavouriteEvents = Int.random(upperLimit: 5) + 3
+        config.requiredNumberOfFavouriteEvents = eventsService.allEvents.count
 
         reviewPromptAction = CapturingReviewPromptAction()
-        eventsService = FakeScheduleRepository()
         versionProviding = StubAppVersionProviding(version: .random)
         reviewPromptAppVersionRepository = FakeReviewPromptAppVersionRepository()
         appStateProviding = FakeAppStateProviding()
@@ -47,7 +50,8 @@ class ReviewPromptControllerTests: XCTestCase {
     }
 
     private func simulateFavouritingEnoughEventsToSatisfyPromptRequirement() {
-        let identifiers = (0..<config.requiredNumberOfFavouriteEvents).map({ (_) in EventIdentifier.random })
+        let eventsToFavourite = eventsService.allEvents.prefix(config.requiredNumberOfFavouriteEvents)
+        let identifiers = eventsToFavourite.map(\.identifier)
         eventsService.simulateEventFavouritesChanged(to: identifiers)
     }
 
