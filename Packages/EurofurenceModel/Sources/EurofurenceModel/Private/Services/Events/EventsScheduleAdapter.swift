@@ -100,7 +100,8 @@ class EventsScheduleAdapter: Schedule {
     }
     
     func filterSchedule<S>(to specification: S) where S: Specification, S.Element == Event {
-        
+        events = schedule.eventModels.filter(specification.isSatisfied(by:))
+        delegate?.scheduleEventsDidChange(to: events)
     }
 
     private func restrictScheduleToEvents(on day: ConferenceDayCharacteristics) {
@@ -122,10 +123,6 @@ class EventsScheduleAdapter: Schedule {
             restrictScheduleToEvents(on: day)
         } else {
             currentDay = nil
-
-            if let firstDay = schedule.days.min(by: { $0.date < $1.date }) {
-                restrictScheduleToEvents(on: firstDay)
-            }
         }
     }
 
