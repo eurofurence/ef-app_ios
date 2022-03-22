@@ -150,12 +150,11 @@ public class DefaultNewsViewModelProducer: NewsViewModelProducer,
 
     // MARK: ScheduleRepositoryObserver
 
-    private var allEvents = [Event]()
     private var favouriteEvents = [Event]()
     private var favouriteEventIdentifiers = [EventIdentifier]()
+    
     public func eventsDidChange(to events: [Event]) {
-        allEvents = events
-        regenerateFavouriteEvents()
+        
     }
 
     public func runningEventsDidChange(to events: [Event]) {
