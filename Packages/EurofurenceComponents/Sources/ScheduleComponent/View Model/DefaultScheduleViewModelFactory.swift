@@ -2,7 +2,7 @@ import ComponentBase
 import EurofurenceModel
 import Foundation
 
-public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory, ScheduleRepositoryObserver {
+public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory {
 
     // MARK: Properties
 
@@ -38,8 +38,6 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory, Schedule
             hoursDateFormatter: hoursDateFormatter,
             shareService: shareService
         )
-
-        eventsService.add(self)
     }
 
     // MARK: ScheduleViewModelFactory
@@ -51,17 +49,6 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory, Schedule
     public func makeSearchViewModel(completionHandler: @escaping (ScheduleSearchViewModel) -> Void) {
         completionHandler(searchViewModel)
     }
-
-    // MARK: ScheduleRepositoryObserver
-
-    public func favouriteEventsDidChange(_ identifiers: [EventIdentifier]) {
-        viewModel.favouriteEventsDidChange(identifiers)
-        searchViewModel.favouriteEventsDidChange(identifiers)
-    }
-
-    public func eventsDidChange(to events: [Event]) {}
-    public func runningEventsDidChange(to events: [Event]) {}
-    public func upcomingEventsDidChange(to events: [Event]) {}
 
     // MARK: Private
 
@@ -193,10 +180,6 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory, Schedule
             delegate?.scheduleViewModelDidFinishRefreshing()
         }
 
-        func favouriteEventsDidChange(_ identifiers: [EventIdentifier]) {
-            
-        }
-
     }
 
     private class SearchViewModel: ScheduleSearchViewModel, EventsSearchControllerDelegate {
@@ -250,10 +233,6 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory, Schedule
         func searchResultsDidUpdate(to results: [Event]) {
             searchResults = results
             regenerateViewModel()
-        }
-
-        func favouriteEventsDidChange(_ identifiers: [EventIdentifier]) {
-            
         }
 
         private func regenerateViewModel() {
