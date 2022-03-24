@@ -12,7 +12,7 @@ class WhenPerformingEventSearch_NotRestrictedToFavourites_ThenToggleEventFavouri
         eventSearchController.changeSearchTerm(eventBeingSearched.title)
         let searchControllerDelegate = CapturingEventsSearchControllerDelegate()
         eventSearchController.setResultsDelegate(searchControllerDelegate)
-        let schedule = context.services.events.loadSchedule()
+        let schedule = context.services.events.loadSchedule(tag: "Test")
         let entity = schedule.loadEvent(identifier: EventIdentifier(eventBeingSearched.identifier))
         entity?.favourite()
         entity?.unfavourite()

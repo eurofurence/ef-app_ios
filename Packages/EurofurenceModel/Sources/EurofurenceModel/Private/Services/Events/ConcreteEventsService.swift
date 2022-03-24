@@ -120,8 +120,8 @@ class ConcreteScheduleRepository: ClockDelegate, ScheduleRepository {
 
     // MARK: Functions
 
-    func loadSchedule() -> Schedule {
-        return EventsScheduleAdapter(schedule: self, clock: clock, eventBus: eventBus)
+    func loadSchedule(tag: String) -> Schedule {
+        return EventsScheduleAdapter(tag: tag, schedule: self, clock: clock, eventBus: eventBus)
     }
 
     func makeEventsSearchController() -> EventsSearchController {

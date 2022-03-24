@@ -59,7 +59,7 @@ class WhenRestrictingSearchResultsToFavourites_ScheduleShould: XCTestCase {
         let delegate = CapturingEventsSearchControllerDelegate()
         searchController.setResultsDelegate(delegate)
         searchController.restrictResultsToFavourites()
-        let schedule = context.services.events.loadSchedule()
+        let schedule = context.services.events.loadSchedule(tag: "Test")
         let event = schedule.loadEvent(identifier: randomFavourite.element)
         event?.unfavourite()
         var expected = favourites

@@ -8,7 +8,7 @@ class WhenSyncCompletesWithConferenceDays_ApplicationShould: XCTestCase {
         let context = EurofurenceSessionTestBuilder().build()
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let delegate = CapturingScheduleDelegate()
-        let schedule = context.eventsService.loadSchedule()
+        let schedule = context.eventsService.loadSchedule(tag: "Test")
         schedule.setDelegate(delegate)
         context.performSuccessfulSync(response: syncResponse)
 
@@ -20,7 +20,7 @@ class WhenSyncCompletesWithConferenceDays_ApplicationShould: XCTestCase {
         let context = EurofurenceSessionTestBuilder().build()
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let delegate = CapturingScheduleDelegate()
-        let schedule = context.eventsService.loadSchedule()
+        let schedule = context.eventsService.loadSchedule(tag: "Test")
         schedule.setDelegate(delegate)
         context.performSuccessfulSync(response: syncResponse)
         delegate.allDays.removeAll()
@@ -34,7 +34,7 @@ class WhenSyncCompletesWithConferenceDays_ApplicationShould: XCTestCase {
         let dataStore = InMemoryDataStore(response: syncResponse)
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let delegate = CapturingScheduleDelegate()
-        let schedule = context.eventsService.loadSchedule()
+        let schedule = context.eventsService.loadSchedule(tag: "Test")
         schedule.setDelegate(delegate)
         delegate.allDays.removeAll()
         context.performSuccessfulSync(response: syncResponse)
@@ -47,7 +47,7 @@ class WhenSyncCompletesWithConferenceDays_ApplicationShould: XCTestCase {
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
         context.performSuccessfulSync(response: syncResponse)
         let delegate = CapturingScheduleDelegate()
-        let schedule = context.eventsService.loadSchedule()
+        let schedule = context.eventsService.loadSchedule(tag: "Test")
         schedule.setDelegate(delegate)
 
         DayAssertion()

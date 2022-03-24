@@ -18,8 +18,9 @@ extension Day: Comparable {
 
 }
 
-class EventsScheduleAdapter: Schedule {
+class EventsScheduleAdapter: Schedule, CustomStringConvertible {
 
+    private let tag: String
     private let schedule: ConcreteScheduleRepository
     private let clock: Clock
     private var events = [EurofurenceModel.Event]()
@@ -69,7 +70,8 @@ class EventsScheduleAdapter: Schedule {
 
     }
 
-    init(schedule: ConcreteScheduleRepository, clock: Clock, eventBus: EventBus) {
+    init(tag: String, schedule: ConcreteScheduleRepository, clock: Clock, eventBus: EventBus) {
+        self.tag = tag
         self.schedule = schedule
         self.clock = clock
         events = schedule.eventModels
@@ -79,6 +81,10 @@ class EventsScheduleAdapter: Schedule {
         eventBus.subscribe(consumer: UpdateCurrentDayWhenSignificantTimePasses(scheduleAdapter: self))
         regenerateSchedule()
         updateCurrentDay()
+    }
+    
+    var description: String {
+        tag
     }
     
     func loadEvent(identifier: EventIdentifier) -> Event? {

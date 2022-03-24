@@ -8,7 +8,7 @@ class WhenUnhookingFromEventObservation: XCTestCase {
         let characteristics = ModelCharacteristics.randomWithoutDeletions
         let event = characteristics.events.changed.randomElement().element
         context.performSuccessfulSync(response: characteristics)
-        let schedule = context.services.events.loadSchedule()
+        let schedule = context.services.events.loadSchedule(tag: "Test")
         let entity = schedule.loadEvent(identifier: EventIdentifier(event.identifier))
         let observer = CapturingEventObserver()
         entity?.add(observer)

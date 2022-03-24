@@ -7,7 +7,7 @@ class ScheduleWithoutExplicitSpecificationShould: XCTestCase {
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let context = EurofurenceSessionTestBuilder().build()
         context.performSuccessfulSync(response: syncResponse)
-        let schedule = context.eventsService.loadSchedule()
+        let schedule = context.eventsService.loadSchedule(tag: "Test")
         let delegate = CapturingScheduleDelegate()
         schedule.setDelegate(delegate)
         

@@ -5,7 +5,7 @@ class WhenResolvingEventByIdentifier_ForEventThatDoesNotExist_ApplicationShould:
 
     func testReturnNil() {
         let context = EurofurenceSessionTestBuilder().build()
-        let event = context.eventsService.loadSchedule().loadEvent(identifier: .random)
+        let event = context.eventsService.loadSchedule(tag: "Test").loadEvent(identifier: .random)
 
         XCTAssertNil(event)
     }

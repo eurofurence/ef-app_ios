@@ -23,10 +23,16 @@ public class FakeScheduleRepository: ScheduleRepository {
     }
 
     public private(set) var lastProducedSchedule: FakeEventsSchedule?
-    public func loadSchedule() -> Schedule {
+    private var schedulesByTag = [String: Schedule]()
+    public func loadSchedule(tag: String) -> Schedule {
         let schedule = FakeEventsSchedule(events: allEvents)
         lastProducedSchedule = schedule
+        schedulesByTag[tag] = schedule
         return schedule
+    }
+    
+    public func schedule(for tag: String) -> Schedule? {
+        return schedulesByTag[tag]
     }
 
     public private(set) var lastProducedSearchController: FakeEventsSearchController?

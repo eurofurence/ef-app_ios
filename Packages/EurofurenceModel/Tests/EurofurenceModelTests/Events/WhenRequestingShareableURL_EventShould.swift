@@ -10,7 +10,7 @@ class WhenRequestingShareableURL_EventShould: XCTestCase {
         let dataStore = InMemoryDataStore(response: characteristics)
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let identifier = EventIdentifier(event.identifier)
-        let schedule = context.services.events.loadSchedule()
+        let schedule = context.services.events.loadSchedule(tag: "Test")
         let entity = schedule.loadEvent(identifier: EventIdentifier(event.identifier))
         let url = entity?.contentURL
         

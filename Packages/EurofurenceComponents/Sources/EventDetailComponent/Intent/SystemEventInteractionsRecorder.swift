@@ -19,7 +19,11 @@ public struct SystemEventInteractionsRecorder: EventInteractionRecorder {
     }
     
     public func makeInteraction(for event: EventIdentifier) -> Interaction? {
-        guard let entity = eventsService.loadSchedule().loadEvent(identifier: event) else { return nil }
+        guard let entity = eventsService
+            .loadSchedule(tag: "Interaction Recording")
+            .loadEvent(identifier: event) else {
+            return nil
+        }
         
         let format = NSLocalizedString(
             "ViewEventFormatString",

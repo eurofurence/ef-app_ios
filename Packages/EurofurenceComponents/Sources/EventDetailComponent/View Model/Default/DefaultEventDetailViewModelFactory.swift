@@ -25,7 +25,9 @@ public class DefaultEventDetailViewModelFactory: EventDetailViewModelFactory {
         for identifier: EventIdentifier,
         completionHandler: @escaping (EventDetailViewModel) -> Void
     ) {
-        guard let event = eventsService.loadSchedule().loadEvent(identifier: identifier) else { return }
+        guard let event = eventsService
+            .loadSchedule(tag: "Event Detail")
+            .loadEvent(identifier: identifier) else { return }
 
         let viewModel = ViewModelBuilder(
             dateRangeFormatter: dateRangeFormatter,

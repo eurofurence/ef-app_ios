@@ -51,7 +51,7 @@ public class DefaultNewsViewModelProducer: NewsViewModelProducer,
         self.refreshService = refreshService
         self.announcementsDateFormatter = announcementsDateFormatter
 		self.announcementsMarkdownRenderer = announcementsMarkdownRenderer
-        favouritesSchedule = eventsService.loadSchedule()
+        favouritesSchedule = eventsService.loadSchedule(tag: "News Favourites")
         favouritesSchedule.setDelegate(UpdateViewModelWhenFavouritesScheduleChanges(viewModel: self))
 
         announcementsService.add(self)

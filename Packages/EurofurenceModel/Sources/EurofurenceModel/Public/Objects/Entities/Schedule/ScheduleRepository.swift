@@ -3,7 +3,12 @@ import Foundation
 public protocol ScheduleRepository {
 
     func add(_ observer: ScheduleRepositoryObserver)
-    func loadSchedule() -> Schedule
+    
+    /// Loads a `Schedule` for use in event resolution and filtering.
+    /// - Parameter tag: A description for the usage of the `Schedule` for debugging.
+    /// - Returns: A tagged `Schedule` with no specifications set.
+    func loadSchedule(tag: String) -> Schedule
+    
     func makeEventsSearchController() -> EventsSearchController
 
 }

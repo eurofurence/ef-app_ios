@@ -12,7 +12,7 @@ class WhenCharacteristicsIndicatesEventDoesNotAcceptFeedback: XCTestCase {
         characteristics.events.changed[randomEvent.index] = event
         let store = InMemoryDataStore(response: characteristics)
         let context = EurofurenceSessionTestBuilder().with(store).build()
-        let schedule = context.services.events.loadSchedule()
+        let schedule = context.services.events.loadSchedule(tag: "Test")
         let entity = schedule.loadEvent(identifier: EventIdentifier(event.identifier))
         
         XCTAssertEqual(false, entity?.isAcceptingFeedback)

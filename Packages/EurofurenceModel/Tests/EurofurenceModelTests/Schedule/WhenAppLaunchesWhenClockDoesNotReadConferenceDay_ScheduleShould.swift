@@ -8,7 +8,7 @@ class WhenAppLaunchesWhenClockDoesNotReadConferenceDay_ScheduleShould: XCTestCas
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
         let dataStore = InMemoryDataStore(response: syncResponse)
         let context = EurofurenceSessionTestBuilder().with(.distantPast).with(dataStore).build()
-        let schedule = context.eventsService.loadSchedule()
+        let schedule = context.eventsService.loadSchedule(tag: "Test")
         let delegate = CapturingScheduleDelegate()
         schedule.setDelegate(delegate)
 
