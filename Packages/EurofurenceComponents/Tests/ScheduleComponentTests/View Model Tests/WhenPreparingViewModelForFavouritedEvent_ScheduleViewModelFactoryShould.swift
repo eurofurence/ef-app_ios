@@ -7,9 +7,7 @@ class WhenPreparingViewModelForFavouritedEvent_ScheduleViewModelFactoryShould: X
 
     func testIndicateTheEventIsFavourited() {
         let eventsService = FakeScheduleRepository()
-        let events = [FakeEvent].random
-        events.forEach({ $0.favourite() })
-        eventsService.allEvents = events
+        eventsService.stubSomeFavouriteEvents()
         let context = ScheduleViewModelFactoryTestBuilder().with(eventsService).build()
         context.makeViewModel()
         let eventViewModel = context.eventsViewModels.randomElement().element.events.randomElement().element

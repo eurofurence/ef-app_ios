@@ -31,7 +31,7 @@ class WhenSearchControllerProducesNewResults_ScheduleViewModelFactoryShould: XCT
         let context = ScheduleViewModelFactoryTestBuilder().with(eventsService).build()
         context.makeSearchViewModel()
 
-        eventsService.lastProducedSearchController?.simulateSearchResultsChanged(results)
+        eventsService.schedule(for: "Schedule Search")?.simulateEventsChanged(results)
 
         let groups = [ScheduleEventGroupViewModelAssertion.Group(date: firstGroupDate, events: firstGroupEvents),
                       ScheduleEventGroupViewModelAssertion.Group(date: secondGroupDate, events: secondGroupEvents)]
@@ -63,7 +63,7 @@ class WhenSearchControllerProducesNewResults_ScheduleViewModelFactoryShould: XCT
         let context = ScheduleViewModelFactoryTestBuilder().with(eventsService).build()
         let viewModel = context.makeSearchViewModel()
 
-        eventsService.lastProducedSearchController?.simulateSearchResultsChanged(results)
+        eventsService.schedule(for: "Schedule Search")?.simulateEventsChanged(results)
         let randomEventInGroupOne = firstGroupEvents.randomElement()
         let indexPath = IndexPath(item: randomEventInGroupOne.index, section: 0)
         let expected = randomEventInGroupOne.element.identifier

@@ -20,7 +20,7 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory {
         shareService: ShareService
     ) {
         let schedule = eventsService.loadSchedule(tag: "Schedule")
-        let searchController = eventsService.makeEventsSearchController()
+        let searchController = eventsService.loadSchedule(tag: "Schedule Search")
         
         viewModel = ViewModel(
             schedule: schedule,
@@ -145,7 +145,7 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory {
 
         func currentEventDayDidChange(to day: Day?) {
             guard let day = day else { return }
-            schedule.restrictEvents(to: day)
+            schedule.filterSchedule(to: EventsOccurringOnDaySpecification(day: day))
 
             guard let idx = days.firstIndex(where: { $0.date == day.date }) else { return }
             selectedDayIndex = idx
@@ -164,12 +164,21 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory {
         }
 
         func showEventsForDay(at index: Int) {
+            guard days.count > index else { return }
+            
             let day = days[index]
             schedule.filterSchedule(to: EventsOccurringOnDaySpecification(day: day))
         }
 
         func identifierForEvent(at indexPath: IndexPath) -> EventIdentifier? {
-            return rawModelGroups[indexPath.section].events[indexPath.row].identifier
+            guard rawModelGroups.count > indexPath.section else { return nil }
+            
+            let group = rawModelGroups[indexPath.section]
+            
+            guard group.events.count > indexPath.row else { return nil }
+            
+            let event = group.events[indexPath.row]
+            return event.identifier
         }
 
         func refreshServiceDidBeginRefreshing() {
@@ -182,9 +191,9 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory {
 
     }
 
-    private class SearchViewModel: ScheduleSearchViewModel, EventsSearchControllerDelegate {
-
-        private let searchController: EventsSearchController
+    private class SearchViewModel: ScheduleSearchViewModel, ScheduleDelegate {
+        
+        private let searchController: Schedule
         private let eventsService: ScheduleRepository
         private let shortFormDayAndTimeFormatter: ShortFormDayAndTimeFormatter
         private let hoursDateFormatter: HoursDateFormatter
@@ -192,9 +201,11 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory {
         private var rawModelGroups = [EventsGroupedByDate]()
         private var searchResults = [Event]()
         private var favouriteEvents = [EventIdentifier]()
+        private var query: String = ""
+        private var isFilteringToFavourites: Bool = false
 
         init(
-            searchController: EventsSearchController,
+            searchController: Schedule,
             eventsService: ScheduleRepository,
             shortFormDayAndTimeFormatter: ShortFormDayAndTimeFormatter,
             hoursDateFormatter: HoursDateFormatter,
@@ -206,34 +217,58 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory {
             self.shortFormDayAndTimeFormatter = shortFormDayAndTimeFormatter
             self.shareService = shareService
 
-            searchController.setResultsDelegate(self)
+            searchController.setDelegate(self)
         }
 
         private var delegate: ScheduleSearchViewModelDelegate?
         func setDelegate(_ delegate: ScheduleSearchViewModelDelegate) {
             self.delegate = delegate
         }
+        
+        private func updateSearchSpecification() {
+            let querySpecification = EventContainsSearchTermSpecification(query: query)
+            if isFilteringToFavourites {
+                let specification = querySpecification.and(IsFavouriteEventSpecification())
+                searchController.filterSchedule(to: specification)
+            } else {
+                searchController.filterSchedule(to: querySpecification)
+            }
+        }
 
         func updateSearchResults(input: String) {
-            searchController.changeSearchTerm(input)
+            query = input
+            updateSearchSpecification()
         }
 
         func identifierForEvent(at indexPath: IndexPath) -> EventIdentifier? {
-            return rawModelGroups[indexPath.section].events[indexPath.row].identifier
+            guard rawModelGroups.count > indexPath.section else { return nil }
+            
+            let group = rawModelGroups[indexPath.section]
+            
+            guard group.events.count > indexPath.row else { return nil }
+            
+            let event = group.events[indexPath.row]
+            return event.identifier
         }
 
         func filterToFavourites() {
-            searchController.restrictResultsToFavourites()
+            isFilteringToFavourites = true
+            updateSearchSpecification()
         }
 
         func filterToAllEvents() {
-            searchController.removeFavouritesEventsRestriction()
+            isFilteringToFavourites = false
+            updateSearchSpecification()
         }
 
-        func searchResultsDidUpdate(to results: [Event]) {
-            searchResults = results
+        func scheduleEventsDidChange(to events: [Event]) {
+            searchResults = events
             regenerateViewModel()
         }
+        
+        func eventDaysDidChange(to days: [Day]) { }
+        
+        func currentEventDayDidChange(to day: Day?) { }
 
         private func regenerateViewModel() {
             let groupedByDate = Dictionary(grouping: searchResults, by: { $0.startDate })

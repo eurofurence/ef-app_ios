@@ -10,8 +10,11 @@ class WhenToldToFilterToFavouriteEvents_ScheduleViewModelFactoryShould: XCTestCa
         let context = ScheduleViewModelFactoryTestBuilder().with(eventsService).build()
         let searchViewModel = context.makeSearchViewModel()
         searchViewModel?.filterToFavourites()
+        
+        let expected = EventContainsSearchTermSpecification(query: "").and(IsFavouriteEventSpecification())
+        let actual = eventsService.schedule(for: "Schedule Search")?.specification
 
-        XCTAssertEqual(true, eventsService.lastProducedSearchController?.didRestrictSearchResultsToFavourites)
+        XCTAssertEqual(expected.eraseToAnySpecification(), actual)
     }
 
 }

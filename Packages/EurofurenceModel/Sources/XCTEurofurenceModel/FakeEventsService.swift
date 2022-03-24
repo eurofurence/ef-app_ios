@@ -7,6 +7,7 @@ public class FakeScheduleRepository: ScheduleRepository {
     public var upcomingEvents: [Event] = []
     public var allEvents: [Event] = []
     public var favourites: [EventIdentifier] = []
+    private var currentDay: Day?
 
     public init(favourites: [EventIdentifier] = []) {
         self.favourites = favourites
@@ -23,15 +24,15 @@ public class FakeScheduleRepository: ScheduleRepository {
     }
 
     public private(set) var lastProducedSchedule: FakeEventsSchedule?
-    private var schedulesByTag = [String: Schedule]()
+    private var schedulesByTag = [String: FakeEventsSchedule]()
     public func loadSchedule(tag: String) -> Schedule {
-        let schedule = FakeEventsSchedule(events: allEvents)
+        let schedule = FakeEventsSchedule(events: allEvents, currentDay: currentDay)
         lastProducedSchedule = schedule
         schedulesByTag[tag] = schedule
         return schedule
     }
     
-    public func schedule(for tag: String) -> Schedule? {
+    public func schedule(for tag: String) -> FakeEventsSchedule? {
         return schedulesByTag[tag]
     }
 
@@ -76,15 +77,16 @@ extension FakeScheduleRepository {
     }
 
     public func simulateEventsChanged(_ events: [Event]) {
-        lastProducedSchedule?.simulateEventsChanged(events)
+        schedulesByTag.values.forEach({ $0.simulateEventsChanged(events) })
     }
 
     public func simulateDaysChanged(_ days: [Day]) {
-        lastProducedSchedule?.simulateDaysChanged(days)
+        schedulesByTag.values.forEach({ $0.simulateDaysChanged(days) })
     }
 
     public func simulateDayChanged(to day: Day?) {
-        lastProducedSchedule?.simulateDayChanged(to: day)
+        currentDay = day
+        schedulesByTag.values.forEach({ $0.simulateDayChanged(to: day) })
     }
 
 }

@@ -23,6 +23,16 @@ public struct AnySpecification<T> {
     
 }
 
+// MARK: - AnySpecification + CustomReflectable
+
+extension AnySpecification: CustomReflectable {
+    
+    public var customMirror: Mirror {
+        Mirror(reflecting: _erased)
+    }
+    
+}
+
 // MARK: - AnySpecification + Equatable
 
 extension AnySpecification: Equatable {

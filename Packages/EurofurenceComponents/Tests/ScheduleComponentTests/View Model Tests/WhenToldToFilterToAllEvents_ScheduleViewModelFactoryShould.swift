@@ -10,8 +10,11 @@ class WhenToldToFilterToAllEvents_ScheduleViewModelFactoryShould: XCTestCase {
         let context = ScheduleViewModelFactoryTestBuilder().with(eventsService).build()
         let searchViewModel = context.makeSearchViewModel()
         searchViewModel?.filterToAllEvents()
+        
+        let expected = EventContainsSearchTermSpecification(query: "")
+        let actual = eventsService.schedule(for: "Schedule Search")?.specification
 
-        XCTAssertEqual(true, eventsService.lastProducedSearchController?.didLiftFavouritesSearchRestriction)
+        XCTAssertEqual(expected.eraseToAnySpecification(), actual)
     }
 
 }

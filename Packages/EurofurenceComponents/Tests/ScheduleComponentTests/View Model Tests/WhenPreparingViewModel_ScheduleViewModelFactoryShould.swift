@@ -58,8 +58,9 @@ class WhenPreparingViewModel_ScheduleViewModelFactoryShould: XCTestCase {
         eventsService.simulateDaysChanged(days)
         eventsService.simulateDayChanged(to: currentDay.element)
         context.makeViewModel()
-
-        XCTAssertEqual(currentDay.element, eventsService.lastProducedSchedule?.dayUsedToRestrictEvents)
+        
+        let expected = EventsOccurringOnDaySpecification(day: currentDay.element)
+        XCTAssertEqual(expected.eraseToAnySpecification(), eventsService.schedule(for: "Schedule")?.specification)
     }
 
 }

@@ -26,7 +26,10 @@ public class FakeEventsSchedule: Schedule {
         dayUsedToRestrictEvents = day
     }
     
+    public private(set) var specification: AnySpecification<Event>?
     public func filterSchedule<S>(to specification: S) where S: Specification, S.Element == Event {
+        self.specification = specification.eraseToAnySpecification()
+        
         let filteredEvents = events.filter(specification.isSatisfied(by:))
         delegate?.scheduleEventsDidChange(to: filteredEvents)
     }
@@ -44,6 +47,7 @@ extension FakeEventsSchedule {
     }
 
     public func simulateDayChanged(to day: Day?) {
+        currentDay = day
         delegate?.currentEventDayDidChange(to: day)
     }
 

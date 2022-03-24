@@ -11,6 +11,7 @@ class WhenLoggedOutDuringConvention_WithNoUpcomingEvents_NewsViewModelProducerSh
         eventsService.runningEvents = [FakeEvent].random(minimum: 3)
         eventsService.upcomingEvents = upcomingEvents
         eventsService.stubSomeFavouriteEvents()
+        eventsService.simulateDayChanged(to: .random)
         let context = DefaultNewsViewModelProducerTestBuilder()
             .with(FakeAuthenticationService.loggedOutService())
             .with(FakeAnnouncementsService(announcements: [StubAnnouncement].random))
