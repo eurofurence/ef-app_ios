@@ -1,4 +1,4 @@
-public protocol Specification {
+public protocol Specification: Equatable {
     
     associatedtype Element
     

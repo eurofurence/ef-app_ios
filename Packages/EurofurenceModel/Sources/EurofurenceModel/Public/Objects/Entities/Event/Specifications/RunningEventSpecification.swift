@@ -2,6 +2,10 @@ import Foundation
 
 public struct RunningEventSpecification: Specification {
     
+    public static func == (lhs: RunningEventSpecification, rhs: RunningEventSpecification) -> Bool {
+        true
+    }
+    
     private let clock: Clock
     
     public init(clock: Clock) {

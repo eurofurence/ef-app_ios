@@ -2,6 +2,10 @@ import Foundation
 
 public struct UpcomingEventSpecification: Specification {
     
+    public static func == (lhs: UpcomingEventSpecification, rhs: UpcomingEventSpecification) -> Bool {
+        lhs.configuration.intervalFromPresentForUpcomingEvents == rhs.configuration.intervalFromPresentForUpcomingEvents
+    }
+    
     private let clock: Clock
     private let configuration: UpcomingEventConfiguration
     
