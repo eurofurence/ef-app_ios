@@ -124,10 +124,6 @@ class ConcreteScheduleRepository: ClockDelegate, ScheduleRepository {
         return EventsScheduleAdapter(tag: tag, schedule: self, clock: clock, eventBus: eventBus)
     }
 
-    func makeEventsSearchController() -> EventsSearchController {
-        return InMemoryEventsSearchController(schedule: self, eventBus: eventBus)
-    }
-
     func add(_ observer: ScheduleRepositoryObserver) {
         observers.add(observer)
         provideScheduleInformation(to: observer)

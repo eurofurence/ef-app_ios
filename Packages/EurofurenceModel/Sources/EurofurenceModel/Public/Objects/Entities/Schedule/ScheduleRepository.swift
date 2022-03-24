@@ -8,8 +8,6 @@ public protocol ScheduleRepository {
     /// - Parameter tag: A description for the usage of the `Schedule` for debugging.
     /// - Returns: A tagged `Schedule` with no specifications set.
     func loadSchedule(tag: String) -> Schedule
-    
-    func makeEventsSearchController() -> EventsSearchController
 
 }
 

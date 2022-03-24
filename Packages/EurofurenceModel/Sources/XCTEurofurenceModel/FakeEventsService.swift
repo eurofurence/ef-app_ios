@@ -36,13 +36,6 @@ public class FakeScheduleRepository: ScheduleRepository {
         return schedulesByTag[tag]
     }
 
-    public private(set) var lastProducedSearchController: FakeEventsSearchController?
-    public func makeEventsSearchController() -> EventsSearchController {
-        let searchController = FakeEventsSearchController()
-        lastProducedSearchController = searchController
-        return searchController
-    }
-
 }
 
 extension FakeScheduleRepository {
