@@ -1,14 +1,14 @@
 import Foundation
 
-class ConcreteEventsService: ClockDelegate, EventsService {
+class ConcreteScheduleRepository: ClockDelegate, ScheduleRepository {
 
     // MARK: Nested Types
 
     private struct FavouriteEventHandler: EventConsumer {
 
-        private unowned let service: ConcreteEventsService
+        private unowned let service: ConcreteScheduleRepository
 
-        init(service: ConcreteEventsService) {
+        init(service: ConcreteScheduleRepository) {
             self.service = service
         }
 
@@ -21,9 +21,9 @@ class ConcreteEventsService: ClockDelegate, EventsService {
 
     private struct UnfavouriteEventHandler: EventConsumer {
 
-        private unowned let service: ConcreteEventsService
+        private unowned let service: ConcreteScheduleRepository
 
-        init(service: ConcreteEventsService) {
+        init(service: ConcreteScheduleRepository) {
             self.service = service
         }
 
@@ -45,7 +45,7 @@ class ConcreteEventsService: ClockDelegate, EventsService {
 
     // MARK: Properties
 
-    private var observers = WeakCollection<EventsServiceObserver>()
+    private var observers = WeakCollection<ScheduleRepositoryObserver>()
     private let dataStore: DataStore
     private let imageCache: ImagesCache
     private let clock: Clock
@@ -120,19 +120,11 @@ class ConcreteEventsService: ClockDelegate, EventsService {
 
     // MARK: Functions
 
-    func fetchEvent(identifier: EventIdentifier) -> Event? {
-        return eventModels.first(where: { $0.identifier == identifier })
+    func loadSchedule(tag: String) -> Schedule {
+        return EventsScheduleAdapter(tag: tag, schedule: self, clock: clock, eventBus: eventBus)
     }
 
-    func makeEventsSchedule() -> EventsSchedule {
-        return EventsScheduleAdapter(schedule: self, clock: clock, eventBus: eventBus)
-    }
-
-    func makeEventsSearchController() -> EventsSearchController {
-        return InMemoryEventsSearchController(schedule: self, eventBus: eventBus)
-    }
-
-    func add(_ observer: EventsServiceObserver) {
+    func add(_ observer: ScheduleRepositoryObserver) {
         observers.add(observer)
         provideScheduleInformation(to: observer)
     }
@@ -165,7 +157,7 @@ class ConcreteEventsService: ClockDelegate, EventsService {
         observers.forEach(provideScheduleInformation)
     }
 
-    private func provideScheduleInformation(to observer: EventsServiceObserver) {
+    private func provideScheduleInformation(to observer: ScheduleRepositoryObserver) {
         observer.runningEventsDidChange(to: runningEvents)
         observer.upcomingEventsDidChange(to: upcomingEvents)
         observer.eventsDidChange(to: eventModels)

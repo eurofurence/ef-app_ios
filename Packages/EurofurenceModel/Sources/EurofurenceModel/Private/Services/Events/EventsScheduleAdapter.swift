@@ -18,9 +18,10 @@ extension Day: Comparable {
 
 }
 
-class EventsScheduleAdapter: EventsSchedule {
+class EventsScheduleAdapter: Schedule, CustomStringConvertible {
 
-    private let schedule: ConcreteEventsService
+    private let tag: String
+    private let schedule: ConcreteScheduleRepository
     private let clock: Clock
     private var events = [EurofurenceModel.Event]()
     private var days = [Day]()
@@ -69,7 +70,8 @@ class EventsScheduleAdapter: EventsSchedule {
 
     }
 
-    init(schedule: ConcreteEventsService, clock: Clock, eventBus: EventBus) {
+    init(tag: String, schedule: ConcreteScheduleRepository, clock: Clock, eventBus: EventBus) {
+        self.tag = tag
         self.schedule = schedule
         self.clock = clock
         events = schedule.eventModels
@@ -80,9 +82,17 @@ class EventsScheduleAdapter: EventsSchedule {
         regenerateSchedule()
         updateCurrentDay()
     }
+    
+    var description: String {
+        tag
+    }
+    
+    func loadEvent(identifier: EventIdentifier) -> Event? {
+        schedule.eventModels.first(where: { $0.identifier == identifier })
+    }
 
-    private var delegate: EventsScheduleDelegate?
-    func setDelegate(_ delegate: EventsScheduleDelegate) {
+    private var delegate: ScheduleDelegate?
+    func setDelegate(_ delegate: ScheduleDelegate) {
         self.delegate = delegate
 
         delegate.scheduleEventsDidChange(to: events)
@@ -93,6 +103,11 @@ class EventsScheduleAdapter: EventsSchedule {
     func restrictEvents(to day: Day) {
         guard let day = findDay(for: day.date) else { return }
         restrictScheduleToEvents(on: day)
+    }
+    
+    func filterSchedule<S>(to specification: S) where S: Specification, S.Element == Event {
+        events = schedule.eventModels.filter(specification.isSatisfied(by:))
+        delegate?.scheduleEventsDidChange(to: events)
     }
 
     private func restrictScheduleToEvents(on day: ConferenceDayCharacteristics) {
@@ -114,10 +129,6 @@ class EventsScheduleAdapter: EventsSchedule {
             restrictScheduleToEvents(on: day)
         } else {
             currentDay = nil
-
-            if let firstDay = schedule.days.min(by: { $0.date < $1.date }) {
-                restrictScheduleToEvents(on: firstDay)
-            }
         }
     }
 

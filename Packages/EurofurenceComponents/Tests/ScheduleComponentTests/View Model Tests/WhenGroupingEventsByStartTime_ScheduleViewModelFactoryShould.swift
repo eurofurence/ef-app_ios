@@ -6,7 +6,7 @@ import XCTEurofurenceModel
 class WhenGroupingEventsByStartTime_ScheduleViewModelFactoryShould: XCTestCase {
 
     var events: [Event]!
-    var eventsService: FakeEventsService!
+    var eventsService: FakeScheduleRepository!
     var context: ScheduleViewModelFactoryTestBuilder.Context!
     var expectedGroups: [ScheduleEventGroupViewModelAssertion.Group]!
 
@@ -30,7 +30,7 @@ class WhenGroupingEventsByStartTime_ScheduleViewModelFactoryShould: XCTestCase {
         let secondGroupEvents = [d, e].sorted(by: { $0.title < $1.title })
 
         events = firstGroupEvents + secondGroupEvents
-        eventsService = FakeEventsService()
+        eventsService = FakeScheduleRepository()
 
         context = ScheduleViewModelFactoryTestBuilder().with(eventsService).build()
 

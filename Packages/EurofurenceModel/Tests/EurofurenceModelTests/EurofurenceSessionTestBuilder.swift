@@ -73,7 +73,7 @@ class EurofurenceSessionTestBuilder {
             return services.authentication
         }
 
-        var eventsService: EventsService {
+        var eventsService: ScheduleRepository {
             return services.events
         }
 

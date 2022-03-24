@@ -6,11 +6,12 @@ import XCTEurofurenceModel
 class WhenLoggedOutDuringConvention_WithNoUpcomingEvents_NewsViewModelProducerShould: XCTestCase {
 
     func testProduceViewModelWithMessagesPrompt_Announcements_RunningEvents_AndFavouriteEvents() throws {
-        let eventsService = FakeEventsService()
+        let eventsService = FakeScheduleRepository()
         let upcomingEvents = [Event]()
         eventsService.runningEvents = [FakeEvent].random(minimum: 3)
         eventsService.upcomingEvents = upcomingEvents
         eventsService.stubSomeFavouriteEvents()
+        eventsService.simulateDayChanged(to: .random)
         let context = DefaultNewsViewModelProducerTestBuilder()
             .with(FakeAuthenticationService.loggedOutService())
             .with(FakeAnnouncementsService(announcements: [StubAnnouncement].random))

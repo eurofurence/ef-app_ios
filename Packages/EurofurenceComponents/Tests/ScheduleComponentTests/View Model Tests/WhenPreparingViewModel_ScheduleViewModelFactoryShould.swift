@@ -7,13 +7,13 @@ class WhenPreparingViewModel_ScheduleViewModelFactoryShould: XCTestCase {
 
     var context: ScheduleViewModelFactoryTestBuilder.Context!
     var days: [Day]!
-    var eventsService: FakeEventsService!
+    var eventsService: FakeScheduleRepository!
 
     override func setUp() {
         super.setUp()
 
         days = .random
-        eventsService = FakeEventsService()
+        eventsService = FakeScheduleRepository()
         context = ScheduleViewModelFactoryTestBuilder().with(eventsService).build()
     }
 
@@ -58,8 +58,9 @@ class WhenPreparingViewModel_ScheduleViewModelFactoryShould: XCTestCase {
         eventsService.simulateDaysChanged(days)
         eventsService.simulateDayChanged(to: currentDay.element)
         context.makeViewModel()
-
-        XCTAssertEqual(currentDay.element, eventsService.lastProducedSchedule?.dayUsedToRestrictEvents)
+        
+        let expected = EventsOccurringOnDaySpecification(day: currentDay.element)
+        XCTAssertEqual(expected.eraseToAnySpecification(), eventsService.schedule(for: "Schedule")?.specification)
     }
 
 }

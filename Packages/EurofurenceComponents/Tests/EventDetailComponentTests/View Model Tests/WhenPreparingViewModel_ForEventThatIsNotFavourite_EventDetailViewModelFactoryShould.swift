@@ -7,7 +7,7 @@ class WhenPreparingViewModel_ForEventThatIsNotFavourite_EventDetailViewModelFact
 
     func testTellTheDelegateItIsUnfavourited() {
         let event = FakeEvent.random
-        let service = FakeEventsService(favourites: [])
+        let service = FakeScheduleRepository(favourites: [])
         let context = EventDetailViewModelFactoryTestBuilder().with(service).build(for: event)
         let delegate = CapturingEventDetailViewModelDelegate()
         context.viewModel.setDelegate(delegate)
@@ -18,7 +18,7 @@ class WhenPreparingViewModel_ForEventThatIsNotFavourite_EventDetailViewModelFact
 
     func testNotTellTheDelegateItIsFavourited() {
         let event = FakeEvent.random
-        let service = FakeEventsService(favourites: [])
+        let service = FakeScheduleRepository(favourites: [])
         let context = EventDetailViewModelFactoryTestBuilder().with(service).build(for: event)
         let delegate = CapturingEventDetailViewModelDelegate()
         context.viewModel.setDelegate(delegate)

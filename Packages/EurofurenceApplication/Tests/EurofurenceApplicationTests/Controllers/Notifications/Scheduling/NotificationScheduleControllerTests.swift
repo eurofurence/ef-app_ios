@@ -16,7 +16,7 @@ class NotificationScheduleControllerTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        let eventsService = FakeEventsService()
+        let eventsService = FakeScheduleRepository()
         let events = [FakeEvent].random
         eventsService.allEvents = events
         notificationScheduler = CapturingNotificationScheduler()

@@ -2,7 +2,7 @@ import EurofurenceModel
 
 public struct EventWidgetUpdater {
     
-    public init(widgetService: WidgetService, refreshService: RefreshService, eventsService: EventsService) {
+    public init(widgetService: WidgetService, refreshService: RefreshService, eventsService: ScheduleRepository) {
         let reloadWidget = ReloadWidget(widgetService: widgetService)
         let reloadWhenContentRefreshes = ReloadWhenRefreshFinishes(reloadWidget: reloadWidget)
         refreshService.add(reloadWhenContentRefreshes)
@@ -35,7 +35,7 @@ public struct EventWidgetUpdater {
         
     }
     
-    private class ReloadWhenEventFavouriteStateChanges: EventsServiceObserver, EventObserver {
+    private class ReloadWhenEventFavouriteStateChanges: ScheduleRepositoryObserver, EventObserver {
         
         private let reloadWidget: ReloadWidget
         private var isSubscribingToEvents = false

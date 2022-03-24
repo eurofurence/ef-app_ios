@@ -1,7 +1,7 @@
 import EurofurenceModel
 import Foundation
 
-class CapturingEventsServiceObserver: EventsServiceObserver {
+class CapturingScheduleRepositoryObserver: ScheduleRepositoryObserver {
 
     private(set) var allEvents = [Event]()
     func eventsDidChange(to events: [Event]) {

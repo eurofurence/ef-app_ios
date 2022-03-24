@@ -1,24 +1,20 @@
 import EurofurenceModel
 import Foundation
 
-public class FakeEventsService: EventsService {
+public class FakeScheduleRepository: ScheduleRepository {
 
     public var runningEvents: [Event] = []
     public var upcomingEvents: [Event] = []
     public var allEvents: [Event] = []
     public var favourites: [EventIdentifier] = []
+    private var currentDay: Day?
 
     public init(favourites: [EventIdentifier] = []) {
         self.favourites = favourites
     }
 
-    public var events = [Event]()
-    public func fetchEvent(identifier: EventIdentifier) -> Event? {
-        return events.first(where: { $0.identifier == identifier })
-    }
-
-    private var observers = [EventsServiceObserver]()
-    public func add(_ observer: EventsServiceObserver) {
+    private var observers = [ScheduleRepositoryObserver]()
+    public func add(_ observer: ScheduleRepositoryObserver) {
         observers.append(observer)
 
         observer.eventsDidChange(to: allEvents)
@@ -28,56 +24,62 @@ public class FakeEventsService: EventsService {
     }
 
     public private(set) var lastProducedSchedule: FakeEventsSchedule?
-    public func makeEventsSchedule() -> EventsSchedule {
-        let schedule = FakeEventsSchedule(events: allEvents)
+    private var schedulesByTag = [String: FakeEventsSchedule]()
+    public func loadSchedule(tag: String) -> Schedule {
+        let schedule = FakeEventsSchedule(events: allEvents, currentDay: currentDay)
         lastProducedSchedule = schedule
+        schedulesByTag[tag] = schedule
         return schedule
     }
-
-    public private(set) var lastProducedSearchController: FakeEventsSearchController?
-    public func makeEventsSearchController() -> EventsSearchController {
-        let searchController = FakeEventsSearchController()
-        lastProducedSearchController = searchController
-        return searchController
+    
+    public func schedule(for tag: String) -> FakeEventsSchedule? {
+        return schedulesByTag[tag]
     }
 
 }
 
-extension FakeEventsService {
+extension FakeScheduleRepository {
 
     public func stubSomeFavouriteEvents() {
         allEvents = [FakeEvent].random(minimum: 3)
-        favourites = Array(allEvents.dropFirst()).map(\.identifier)
+        allEvents.dropFirst().forEach({ $0.favourite() })
+        favourites = allEvents.filter(\.isFavourite).map(\.identifier)
     }
 
     public func simulateEventFavourited(identifier: EventIdentifier) {
-        favourites.append(identifier)
+        allEvents.first(where: { $0.identifier == identifier })?.favourite()
+        
+        // Legacy pathway.
+        let favourites = allEvents.filter(\.isFavourite).map(\.identifier)
         observers.forEach { $0.favouriteEventsDidChange(favourites) }
     }
 
     public func simulateEventFavouritesChanged(to identifiers: [EventIdentifier]) {
-        favourites = identifiers
-        observers.forEach { $0.favouriteEventsDidChange(favourites) }
+        identifiers.forEach(simulateEventFavourited(identifier:))
     }
 
     public func simulateEventUnfavourited(identifier: EventIdentifier) {
+        allEvents.first(where: { $0.identifier == identifier })?.unfavourite()
+        
+        // Legacy pathway.
         if let idx = favourites.firstIndex(of: identifier) {
             favourites.remove(at: idx)
         }
-
+        
         observers.forEach { $0.favouriteEventsDidChange(favourites) }
     }
 
     public func simulateEventsChanged(_ events: [Event]) {
-        lastProducedSchedule?.simulateEventsChanged(events)
+        schedulesByTag.values.forEach({ $0.simulateEventsChanged(events) })
     }
 
     public func simulateDaysChanged(_ days: [Day]) {
-        lastProducedSchedule?.simulateDaysChanged(days)
+        schedulesByTag.values.forEach({ $0.simulateDaysChanged(days) })
     }
 
     public func simulateDayChanged(to day: Day?) {
-        lastProducedSchedule?.simulateDayChanged(to: day)
+        currentDay = day
+        schedulesByTag.values.forEach({ $0.simulateDayChanged(to: day) })
     }
 
 }

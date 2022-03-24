@@ -15,7 +15,8 @@ class WhenFavouritingThenUnfavouritingEvent: XCTestCase {
         let randomEvent = modelCharacteristics.events.changed.randomElement().element
         context.performSuccessfulSync(response: modelCharacteristics)
         let identifier = EventIdentifier(randomEvent.identifier)
-        event = context.eventsService.fetchEvent(identifier: identifier)
+        let schedule = context.services.events.loadSchedule(tag: "Test")
+        event = schedule.loadEvent(identifier: identifier)
         eventObserver = CapturingEventObserver()
     }
 

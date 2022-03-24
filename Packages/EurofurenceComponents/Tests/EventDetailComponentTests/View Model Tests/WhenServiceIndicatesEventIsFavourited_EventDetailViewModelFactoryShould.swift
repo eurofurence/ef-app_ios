@@ -8,7 +8,7 @@ class WhenServiceIndicatesEventIsFavourited_EventDetailViewModelFactoryShould: X
     func testTellTheViewModelDelegateTheEventIsFavourited() {
         let event = FakeEvent.random
         event.unfavourite()
-        let service = FakeEventsService(favourites: [])
+        let service = FakeScheduleRepository(favourites: [])
         let context = EventDetailViewModelFactoryTestBuilder().with(service).build(for: event)
         let delegate = CapturingEventDetailViewModelDelegate()
         context.viewModel.setDelegate(delegate)
@@ -21,7 +21,7 @@ class WhenServiceIndicatesEventIsFavourited_EventDetailViewModelFactoryShould: X
 
     func testNotTellTheViewModelDelegateTheEventIsFavouritedWhenNotInFavouriteIdentifiers() {
         let event = FakeEvent.random
-        let service = FakeEventsService(favourites: [])
+        let service = FakeScheduleRepository(favourites: [])
         let context = EventDetailViewModelFactoryTestBuilder().with(service).build(for: event)
         let delegate = CapturingEventDetailViewModelDelegate()
         context.viewModel.setDelegate(delegate)

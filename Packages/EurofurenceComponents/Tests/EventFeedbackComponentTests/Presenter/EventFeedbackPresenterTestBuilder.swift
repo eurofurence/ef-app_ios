@@ -44,8 +44,8 @@ class EventFeedbackPresenterTestBuilder {
     }
     
     func build() -> Context {
-        let eventService = FakeEventsService()
-        eventService.events = [event]
+        let eventService = FakeScheduleRepository()
+        eventService.allEvents = [event]
         
         let dayOfWeekFormatter = FakeDayOfWeekFormatter()
         let stubbedDayOfWeekString = "Day Of Week"

@@ -4,12 +4,12 @@ import func Foundation.NSLocalizedString
 
 public struct SystemEventInteractionsRecorder: EventInteractionRecorder {
     
-    private let eventsService: EventsService
+    private let eventsService: ScheduleRepository
     private let eventIntentDonor: EventIntentDonor
     private let activityFactory: ActivityFactory
     
     public init(
-        eventsService: EventsService,
+        eventsService: ScheduleRepository,
         eventIntentDonor: EventIntentDonor,
         activityFactory: ActivityFactory
     ) {
@@ -19,7 +19,11 @@ public struct SystemEventInteractionsRecorder: EventInteractionRecorder {
     }
     
     public func makeInteraction(for event: EventIdentifier) -> Interaction? {
-        guard let entity = eventsService.fetchEvent(identifier: event) else { return nil }
+        guard let entity = eventsService
+            .loadSchedule(tag: "Interaction Recording")
+            .loadEvent(identifier: event) else {
+            return nil
+        }
         
         let format = NSLocalizedString(
             "ViewEventFormatString",

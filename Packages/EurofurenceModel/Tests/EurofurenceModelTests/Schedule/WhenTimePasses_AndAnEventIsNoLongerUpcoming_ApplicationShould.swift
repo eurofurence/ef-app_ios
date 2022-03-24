@@ -9,7 +9,7 @@ class WhenTimePasses_AndAnEventIsNoLongerUpcoming_ApplicationShould: XCTestCase 
         var simulatedTime = randomEvent.startDateTime.addingTimeInterval(-1)
         let context = EurofurenceSessionTestBuilder().with(simulatedTime).build()
         context.performSuccessfulSync(response: syncResponse)
-        let observer = CapturingEventsServiceObserver()
+        let observer = CapturingScheduleRepositoryObserver()
         context.eventsService.add(observer)
         simulatedTime = randomEvent.startDateTime.addingTimeInterval(1)
         context.tickTime(to: simulatedTime)

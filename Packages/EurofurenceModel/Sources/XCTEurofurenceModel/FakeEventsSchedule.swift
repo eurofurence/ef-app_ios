@@ -1,6 +1,6 @@
 import EurofurenceModel
 
-public class FakeEventsSchedule: EventsSchedule {
+public class FakeEventsSchedule: Schedule {
 
     public var events: [Event]
     public var currentDay: Day?
@@ -9,9 +9,13 @@ public class FakeEventsSchedule: EventsSchedule {
         self.events = events
         self.currentDay = currentDay
     }
+    
+    public func loadEvent(identifier: EventIdentifier) -> Event? {
+        events.first(where: { $0.identifier == identifier })
+    }
 
-    fileprivate var delegate: EventsScheduleDelegate?
-    public func setDelegate(_ delegate: EventsScheduleDelegate) {
+    fileprivate var delegate: ScheduleDelegate?
+    public func setDelegate(_ delegate: ScheduleDelegate) {
         self.delegate = delegate
         delegate.scheduleEventsDidChange(to: events)
         delegate.currentEventDayDidChange(to: currentDay)
@@ -20,6 +24,14 @@ public class FakeEventsSchedule: EventsSchedule {
     public private(set) var dayUsedToRestrictEvents: Day?
     public func restrictEvents(to day: Day) {
         dayUsedToRestrictEvents = day
+    }
+    
+    public private(set) var specification: AnySpecification<Event>?
+    public func filterSchedule<S>(to specification: S) where S: Specification, S.Element == Event {
+        self.specification = specification.eraseToAnySpecification()
+        
+        let filteredEvents = events.filter(specification.isSatisfied(by:))
+        delegate?.scheduleEventsDidChange(to: filteredEvents)
     }
 
 }
@@ -35,6 +47,7 @@ extension FakeEventsSchedule {
     }
 
     public func simulateDayChanged(to day: Day?) {
+        currentDay = day
         delegate?.currentEventDayDidChange(to: day)
     }
 

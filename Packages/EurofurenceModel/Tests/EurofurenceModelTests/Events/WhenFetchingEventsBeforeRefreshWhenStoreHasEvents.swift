@@ -8,7 +8,7 @@ class WhenFetchingEventsBeforeRefreshWhenStoreHasEvents: XCTestCase {
         let response = ModelCharacteristics.randomWithoutDeletions
         let dataStore = InMemoryDataStore(response: response)
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
-        let observer = CapturingEventsServiceObserver()
+        let observer = CapturingScheduleRepositoryObserver()
         context.eventsService.add(observer)
 
         try EventAssertion(context: context, modelCharacteristics: response)

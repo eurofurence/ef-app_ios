@@ -9,7 +9,7 @@ class WhenSyncFinishesForEventWithPoster_WhenImageAPIIsSlow_ApplicationShould: X
         let randomEvent = syncResponse.events.changed.randomElement().element
         let simulatedTime = randomEvent.startDateTime
         let context = EurofurenceSessionTestBuilder().with(imageAPI).with(simulatedTime).build()
-        let observer = CapturingEventsServiceObserver()
+        let observer = CapturingScheduleRepositoryObserver()
         context.eventsService.add(observer)
         context.performSuccessfulSync(response: syncResponse)
         imageAPI.resolvePendingFetches()

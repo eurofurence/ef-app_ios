@@ -40,7 +40,7 @@ class EventsBridge {
 
 // MARK: - Acquiring Events from model
 
-extension EventsBridge: EurofurenceModel.EventsServiceObserver {
+extension EventsBridge: EurofurenceModel.ScheduleRepositoryObserver {
     
     func eventsDidChange(to events: [EurofurenceModel.Event]) {
         allEvents = events

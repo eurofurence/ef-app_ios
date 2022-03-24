@@ -2,11 +2,11 @@ import Foundation
 
 class URLEntityProcessor {
     
-    private unowned let eventsService: ConcreteEventsService
+    private unowned let eventsService: ConcreteScheduleRepository
     private unowned let dealersService: ConcreteDealersService
     private let dataStore: DataStore
     
-    init(eventsService: ConcreteEventsService, dealersService: ConcreteDealersService, dataStore: DataStore) {
+    init(eventsService: ConcreteScheduleRepository, dealersService: ConcreteDealersService, dataStore: DataStore) {
         self.eventsService = eventsService
         self.dealersService = dealersService
         self.dataStore = dataStore
@@ -16,7 +16,7 @@ class URLEntityProcessor {
         let identifierComponent = url.lastPathComponent
         
         let eventIdentifier = EventIdentifier(identifierComponent)
-        if eventsService.fetchEvent(identifier: eventIdentifier) != nil {
+        if eventsService.loadSchedule(tag: "URL Processing").loadEvent(identifier: eventIdentifier) != nil {
             visitor.visit(EventIdentifier(identifierComponent))
         }
         

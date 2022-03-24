@@ -8,7 +8,7 @@ class WhenObservingUpcomingEvents_ThenLoadSucceeds: XCTestCase {
         let randomEvent = syncResponse.events.changed.randomElement().element
         let simulatedTime = randomEvent.startDateTime.addingTimeInterval(-1)
         let context = EurofurenceSessionTestBuilder().with(simulatedTime).build()
-        let observer = CapturingEventsServiceObserver()
+        let observer = CapturingScheduleRepositoryObserver()
         context.eventsService.add(observer)
         context.performSuccessfulSync(response: syncResponse)
 
@@ -21,7 +21,7 @@ class WhenObservingUpcomingEvents_ThenLoadSucceeds: XCTestCase {
         let randomEvent = syncResponse.events.changed.randomElement().element
         let simulatedTime = randomEvent.startDateTime.addingTimeInterval(1)
         let context = EurofurenceSessionTestBuilder().with(simulatedTime).build()
-        let observer = CapturingEventsServiceObserver()
+        let observer = CapturingScheduleRepositoryObserver()
         context.eventsService.add(observer)
         context.performSuccessfulSync(response: syncResponse)
         
@@ -38,7 +38,7 @@ class WhenObservingUpcomingEvents_ThenLoadSucceeds: XCTestCase {
             .with(timeIntervalForUpcomingEventsSinceNow: timeIntervalForUpcomingEventsSinceNow)
             .build()
         
-        let observer = CapturingEventsServiceObserver()
+        let observer = CapturingScheduleRepositoryObserver()
         context.eventsService.add(observer)
         context.performSuccessfulSync(response: syncResponse)
 
@@ -55,7 +55,7 @@ class WhenObservingUpcomingEvents_ThenLoadSucceeds: XCTestCase {
             .with(timeIntervalForUpcomingEventsSinceNow: timeIntervalForUpcomingEventsSinceNow)
             .build()
         
-        let observer = CapturingEventsServiceObserver()
+        let observer = CapturingScheduleRepositoryObserver()
         context.eventsService.add(observer)
         context.performSuccessfulSync(response: syncResponse)
 

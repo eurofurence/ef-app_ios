@@ -5,7 +5,7 @@ class WhenObservingUpcomingEventsBeforeLoadingAnything: XCTestCase {
 
     func testTheObserverIsProvidedWithEmptyUpcomingEvents() {
         let context = EurofurenceSessionTestBuilder().build()
-        let observer = CapturingEventsServiceObserver()
+        let observer = CapturingScheduleRepositoryObserver()
         context.eventsService.add(observer)
 
         XCTAssertTrue(observer.wasProvidedWithEmptyUpcomingEvents)

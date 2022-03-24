@@ -4,8 +4,9 @@ import XCTEurofurenceModel
 
 class WhenFavouritingMultipleEvents_ApplicationShould: XCTestCase {
 
-    private func favouriteEvents(_ identifiers: [EventIdentifier], service: EventsService) {
-        let events = identifiers.compactMap(service.fetchEvent)
+    private func favouriteEvents(_ identifiers: [EventIdentifier], service: ScheduleRepository) {
+        let schedule = service.loadSchedule(tag: "Test")
+        let events = identifiers.compactMap(schedule.loadEvent)
         events.forEach({ $0.favourite() })
     }
 
@@ -21,7 +22,7 @@ class WhenFavouritingMultipleEvents_ApplicationShould: XCTestCase {
 
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let identifiers = events.map({ EventIdentifier($0.identifier) })
-        let observer = CapturingEventsServiceObserver()
+        let observer = CapturingScheduleRepositoryObserver()
         context.eventsService.add(observer)
         favouriteEvents(identifiers, service: context.eventsService)
         
@@ -37,11 +38,12 @@ class WhenFavouritingMultipleEvents_ApplicationShould: XCTestCase {
 
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let identifiers = events.map({ EventIdentifier($0.identifier) })
-        let observer = CapturingEventsServiceObserver()
+        let observer = CapturingScheduleRepositoryObserver()
         context.eventsService.add(observer)
         favouriteEvents(identifiers, service: context.eventsService)
         let randomIdentifier = identifiers.randomElement()
-        let event = context.eventsService.fetchEvent(identifier: randomIdentifier.element)
+        let schedule = context.services.events.loadSchedule(tag: "Test")
+        let event = schedule.loadEvent(identifier: randomIdentifier.element)
         event?.unfavourite()
         var expected = identifiers
         expected.remove(at: randomIdentifier.index)
@@ -60,7 +62,7 @@ class WhenFavouritingMultipleEvents_ApplicationShould: XCTestCase {
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         context.refreshLocalStore()
         context.api.simulateSuccessfulSync(response)
-        let observer = CapturingEventsServiceObserver()
+        let observer = CapturingScheduleRepositoryObserver()
         context.eventsService.add(observer)
 
         let expected = events

@@ -8,8 +8,8 @@ class WhenRestrictingEventsToSpecificDay_ScheduleShould: XCTestCase {
         let response = ModelCharacteristics.randomWithoutDeletions
         let dataStore = InMemoryDataStore(response: response)
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
-        let schedule = context.eventsService.makeEventsSchedule()
-        let delegate = CapturingEventsScheduleDelegate()
+        let schedule = context.eventsService.loadSchedule(tag: "Test")
+        let delegate = CapturingScheduleDelegate()
         schedule.setDelegate(delegate)
         let randomDay = response.conferenceDays.changed.randomElement()
         let expectedEvents = response.events.changed.filter({ $0.dayIdentifier == randomDay.element.identifier })
@@ -23,8 +23,8 @@ class WhenRestrictingEventsToSpecificDay_ScheduleShould: XCTestCase {
         let response = ModelCharacteristics.randomWithoutDeletions
         let dataStore = InMemoryDataStore(response: response)
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
-        let schedule = context.eventsService.makeEventsSchedule()
-        let delegate = CapturingEventsScheduleDelegate()
+        let schedule = context.eventsService.loadSchedule(tag: "Test")
+        let delegate = CapturingScheduleDelegate()
         let randomDay = response.conferenceDays.changed.randomElement()
         let expectedEvents = response.events.changed.filter({ $0.dayIdentifier == randomDay.element.identifier })
         schedule.restrictEvents(to: Day(date: randomDay.element.date))
@@ -40,8 +40,8 @@ class WhenRestrictingEventsToSpecificDay_ScheduleShould: XCTestCase {
         let response = ModelCharacteristics.randomWithoutDeletions
         let dataStore = InMemoryDataStore(response: response)
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
-        let schedule = context.eventsService.makeEventsSchedule()
-        let delegate = CapturingEventsScheduleDelegate()
+        let schedule = context.eventsService.loadSchedule(tag: "Test")
+        let delegate = CapturingScheduleDelegate()
         schedule.setDelegate(delegate)
         let randomDay = response.conferenceDays.changed.randomElement()
         let anotherRandomDay = response.conferenceDays.changed.randomElement()

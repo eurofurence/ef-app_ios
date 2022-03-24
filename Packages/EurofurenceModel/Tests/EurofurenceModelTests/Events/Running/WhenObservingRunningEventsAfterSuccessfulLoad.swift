@@ -10,7 +10,7 @@ class WhenObservingRunningEventsAfterSuccessfulLoad: XCTestCase {
         let context = EurofurenceSessionTestBuilder().with(simulatedTime).build()
         context.performSuccessfulSync(response: syncResponse)
 
-        let observer = CapturingEventsServiceObserver()
+        let observer = CapturingScheduleRepositoryObserver()
         context.eventsService.add(observer)
 
         let expectedEventIdentifiers = syncResponse.events.changed.filter { (event) -> Bool in
@@ -29,7 +29,7 @@ class WhenObservingRunningEventsAfterSuccessfulLoad: XCTestCase {
         let context = EurofurenceSessionTestBuilder().with(simulatedTime).build()
         context.performSuccessfulSync(response: syncResponse)
 
-        let observer = CapturingEventsServiceObserver()
+        let observer = CapturingScheduleRepositoryObserver()
         context.eventsService.add(observer)
 
         XCTAssertFalse(observer.runningEvents.contains(where: { $0.identifier.rawValue == randomEvent.identifier }),
