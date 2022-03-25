@@ -66,9 +66,13 @@ struct ComponentRegistry {
             announcementsMarkdownRenderer: subtleMarkdownRenderer
         )
         
-        newsComponentFactory = NewsComponentBuilder(
-            newsViewModelProduer: newsViewModelProducer
-        ).build()
+        if dependencies.isCompositionalNewsComponentEnabled {
+            newsComponentFactory = CompositionalNewsComponentBuilder().build()
+        } else {
+            newsComponentFactory = NewsComponentBuilder(
+                newsViewModelProduer: newsViewModelProducer
+            ).build()
+        }
         
         let scheduleViewModelFactory = DefaultScheduleViewModelFactory(
             eventsService: services.events,

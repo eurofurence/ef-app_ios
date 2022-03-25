@@ -22,6 +22,7 @@
 		CA08862125FE997E0044DD53 /* generic_notification.caf in Resources */ = {isa = PBXBuildFile; fileRef = CA08861E25FE997E0044DD53 /* generic_notification.caf */; };
 		CA08B0F722EDD41A00FDAAA7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = CA08B0F622EDD41900FDAAA7 /* README.md */; };
 		CA0C9FE525FE35F000665ED4 /* KeychainCredentialStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0C9FE425FE35F000665ED4 /* KeychainCredentialStoreTests.swift */; };
+		CA23FCA227ED033900265984 /* DebugSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA23FCA127ED033900265984 /* DebugSettings.swift */; };
 		CA25A89C22C4101D00226478 /* ScreenshotGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9845C91F2907A800E8821D /* ScreenshotGenerator.swift */; };
 		CA25A89D22C4101D00226478 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9845D21F2909DB00E8821D /* SnapshotHelper.swift */; };
 		CA26503D25F7D3EB0080F132 /* DealerSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA26503C25F7D3EB0080F132 /* DealerSearchTests.swift */; };
@@ -254,6 +255,7 @@
 		CA08861E25FE997E0044DD53 /* generic_notification.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = generic_notification.caf; sourceTree = "<group>"; };
 		CA08B0F622EDD41900FDAAA7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CA0C9FE425FE35F000665ED4 /* KeychainCredentialStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainCredentialStoreTests.swift; sourceTree = "<group>"; };
+		CA23FCA127ED033900265984 /* DebugSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugSettings.swift; sourceTree = "<group>"; };
 		CA26503C25F7D3EB0080F132 /* DealerSearchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerSearchTests.swift; sourceTree = "<group>"; };
 		CA2AA2F122C9514500C0E1A1 /* DonateFromAppDealerIntentDonor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateFromAppDealerIntentDonor.swift; sourceTree = "<group>"; };
 		CA2AA2F322C9518A00C0E1A1 /* ViewDealerIntent+Definition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewDealerIntent+Definition.swift"; sourceTree = "<group>"; };
@@ -675,6 +677,7 @@
 				CA85154525FF744900860631 /* Debug.storyboard */,
 				CA85154425FF744900860631 /* DebugTableViewController.swift */,
 				CA02910121F4D6020007F350 /* UIWindow+Debug.swift */,
+				CA23FCA127ED033900265984 /* DebugSettings.swift */,
 			);
 			path = Debug;
 			sourceTree = "<group>";
@@ -1261,6 +1264,7 @@
 				CA2AA2F222C9514500C0E1A1 /* DonateFromAppDealerIntentDonor.swift in Sources */,
 				CAE434FD25FEBA4D001E74B7 /* PrincipalWindowSceneDelegate.swift in Sources */,
 				CA2AA2F422C9518A00C0E1A1 /* ViewDealerIntent+Definition.swift in Sources */,
+				CA23FCA227ED033900265984 /* DebugSettings.swift in Sources */,
 				9ACF99381EBE172D006FC958 /* AppDelegate.swift in Sources */,
 				CAB4E9172662704400EFE882 /* Intents.intentdefinition in Sources */,
 				CA630C0922A069AF00754C27 /* ViewEventIntent+Definition.swift in Sources */,

@@ -42,7 +42,7 @@ extension FakeScheduleRepository {
 
     public func stubSomeFavouriteEvents() {
         allEvents = [FakeEvent].random(minimum: 3)
-        allEvents.dropFirst().forEach({ $0.favourite() })
+        allEvents.forEach({ $0.favourite() })
         favourites = allEvents.filter(\.isFavourite).map(\.identifier)
     }
 
