@@ -20,7 +20,7 @@ public class EventBus {
 
     // MARK: Properties
 
-    private var storage = [EventBusRegistration]()
+    private var storage = [AnyEventConsumer]()
     private let cache = EventCache()
 
     /// Specifies the `DeliveryMode` of events for new subscribers. The default
@@ -47,7 +47,7 @@ public class EventBus {
                     this `EventBus`
     */
     public func subscribe<Consumer: EventConsumer>(consumer: Consumer) {
-        storage.append(EventConsumerRegistration(consumer: consumer))
+        storage.append(AnyEventConsumer(consumer))
 
         guard case .replayLast = redeliveryMode,
               let event = cache.cachedEvent(ofType: Consumer.Event.self) else {
@@ -71,13 +71,13 @@ public class EventBus {
                  consumer will consume unique copies of the event.
     */
     public func post(_ event: Any) {
-        storage.filter({ $0.supports(event) }).forEach { (registration) in
+        for consumer in storage {
             var dispatchable = event
             if let copyable = event as? NSCopying {
                 dispatchable = copyable.copy(with: nil)
             }
 
-            registration.handle(event: dispatchable)
+            consumer.handle(event: dispatchable)
         }
 
         cache.append(event: event)
