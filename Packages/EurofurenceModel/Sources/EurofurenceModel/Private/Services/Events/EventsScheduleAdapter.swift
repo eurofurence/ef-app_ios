@@ -42,7 +42,7 @@ class EventsScheduleAdapter: Schedule, CustomStringConvertible {
 
     }
 
-    private struct UpdateCurrentDayWhenSignificantTimePasses: EventConsumer {
+    private struct UpdateCurrentDayWhenTimePasses: EventConsumer {
 
         private unowned let scheduleAdapter: EventsScheduleAdapter
 
@@ -69,6 +69,8 @@ class EventsScheduleAdapter: Schedule, CustomStringConvertible {
         }
 
     }
+    
+    private var subscriptions = Set<AnyHashable>()
 
     init(tag: String, schedule: ConcreteScheduleRepository, clock: Clock, eventBus: EventBus) {
         self.tag = tag
@@ -77,10 +79,14 @@ class EventsScheduleAdapter: Schedule, CustomStringConvertible {
         events = schedule.eventModels
         days = schedule.dayModels
 
-        eventBus.subscribe(consumer: UpdateAdapterWhenScheduleChanges(scheduleAdapter: self))
-        eventBus.subscribe(consumer: UpdateCurrentDayWhenSignificantTimePasses(scheduleAdapter: self))
+        subscriptions.insert(eventBus.subscribe(consumer: UpdateAdapterWhenScheduleChanges(scheduleAdapter: self)))
+        subscriptions.insert(eventBus.subscribe(consumer: UpdateCurrentDayWhenTimePasses(scheduleAdapter: self)))
         regenerateSchedule()
         updateCurrentDay()
+    }
+    
+    deinit {
+        print("")
     }
     
     var description: String {

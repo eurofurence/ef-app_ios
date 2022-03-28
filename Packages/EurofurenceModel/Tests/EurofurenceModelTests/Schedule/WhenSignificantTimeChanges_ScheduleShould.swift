@@ -17,5 +17,23 @@ class WhenSignificantTimeChanges_ScheduleShould: XCTestCase {
 
         XCTAssertNil(delegate.capturedCurrentDay)
     }
+    
+    func testDoesNotCrashWhenMovingBetweenDaysWhenScheduleHasBeenDeallocated_BUG() {
+        let syncResponse = ModelCharacteristics.randomWithoutDeletions
+        let randomDay = syncResponse.conferenceDays.changed.randomElement().element
+        let dataStore = InMemoryDataStore(response: syncResponse)
+        let context = EurofurenceSessionTestBuilder().with(randomDay.date).with(dataStore).build()
+        
+        for _ in 0...3 {
+            autoreleasepool {
+                let schedule = context.eventsService.loadSchedule(tag: "Test")
+                let delegate = CapturingScheduleDelegate()
+                schedule.setDelegate(delegate)
+            }
+        }
+        
+        context.clock.tickTime(to: .distantPast)
+        context.simulateSignificantTimeChange()
+    }
 
 }

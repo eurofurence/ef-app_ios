@@ -3,10 +3,11 @@ import Foundation
 class ConcreteAdditionalServicesRepository: AdditionalServicesRepository {
     
     private let companionAppURLRequestFactory: CompanionAppURLRequestFactory
+    private var subscriptions = Set<AnyHashable>()
     private var consumers = [AdditionalServicesURLConsumer]()
     private var currentAdditionalServicesRequest: URLRequest
     
-    private struct UseUnauthenticatedAdditionalServicesOnLogout: EventConsumer {
+    private struct UseUnauthenticatedServicesOnLogout: EventConsumer {
         
         private unowned let controller: ConcreteAdditionalServicesRepository
         
@@ -20,7 +21,7 @@ class ConcreteAdditionalServicesRepository: AdditionalServicesRepository {
         
     }
     
-    private struct UseAuthenticatedAdditionalServicesWhenLoggedIn: EventConsumer {
+    private struct UseAuthenticatedServicesWhenLoggedIn: EventConsumer {
         
         private unowned let controller: ConcreteAdditionalServicesRepository
         
@@ -40,8 +41,8 @@ class ConcreteAdditionalServicesRepository: AdditionalServicesRepository {
             authenticationToken: nil
         )
         
-        eventBus.subscribe(consumer: UseAuthenticatedAdditionalServicesWhenLoggedIn(controller: self))
-        eventBus.subscribe(consumer: UseUnauthenticatedAdditionalServicesOnLogout(controller: self))
+        subscriptions.insert(eventBus.subscribe(consumer: UseAuthenticatedServicesWhenLoggedIn(controller: self)))
+        subscriptions.insert(eventBus.subscribe(consumer: UseUnauthenticatedServicesOnLogout(controller: self)))
     }
     
     func add(_ additionalServicesURLConsumer: AdditionalServicesURLConsumer) {

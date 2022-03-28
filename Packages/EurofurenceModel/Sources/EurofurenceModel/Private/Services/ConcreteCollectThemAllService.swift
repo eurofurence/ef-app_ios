@@ -4,6 +4,7 @@ class ConcreteCollectThemAllService: CollectThemAllService {
 
     private let collectThemAllRequestFactory: CollectThemAllRequestFactory
     private let credentialRepository: CredentialRepository
+    private var subscriptions = Set<AnyHashable>()
 
     init(
         eventBus: EventBus,
@@ -13,8 +14,8 @@ class ConcreteCollectThemAllService: CollectThemAllService {
         self.collectThemAllRequestFactory = collectThemAllRequestFactory
         self.credentialRepository = credentialRepository
 
-        eventBus.subscribe(consumer: UpdateCollectThemAllRequestWhenAuthenticated(service: self))
-        eventBus.subscribe(consumer: UpdateCollectThemAllRequestWhenUnauthenticated(service: self))
+        subscriptions.insert(eventBus.subscribe(consumer: UpdateRequestWhenAuthenticated(service: self)))
+        subscriptions.insert(eventBus.subscribe(consumer: UpdateRequestWhenUnauthenticated(service: self)))
     }
 
     private var collectThemAllRequestObservers = [CollectThemAllURLObserver]()
@@ -35,7 +36,7 @@ class ConcreteCollectThemAllService: CollectThemAllService {
         observer.collectThemAllGameRequestDidChange(request)
     }
     
-    private struct UpdateCollectThemAllRequestWhenAuthenticated: EventConsumer {
+    private struct UpdateRequestWhenAuthenticated: EventConsumer {
 
         private unowned let service: ConcreteCollectThemAllService
 
@@ -49,7 +50,7 @@ class ConcreteCollectThemAllService: CollectThemAllService {
 
     }
 
-    private struct UpdateCollectThemAllRequestWhenUnauthenticated: EventConsumer {
+    private struct UpdateRequestWhenUnauthenticated: EventConsumer {
 
         private unowned let service: ConcreteCollectThemAllService
 

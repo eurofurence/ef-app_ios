@@ -22,6 +22,7 @@ class ConcreteSession: EurofurenceSession {
     private let notificationService: ConcreteNotificationService
     private let contentLinksService: ConcreteContentLinksService
     private let additionalServicesRepository: ConcreteAdditionalServicesRepository
+    private let eventFeedbackService: EventFeedbackService
     
     // swiftlint:disable function_body_length
     init(
@@ -167,7 +168,7 @@ class ConcreteSession: EurofurenceSession {
         
         contentLinksService = ConcreteContentLinksService(urlEntityProcessor: urlEntityProcessor)
         
-        eventBus.subscribe(consumer: EventFeedbackService(api: api))
+        eventFeedbackService = EventFeedbackService(api: api, eventBus: eventBus)
         
         privateMessagesService.refreshMessages()
     }

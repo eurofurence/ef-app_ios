@@ -2,6 +2,7 @@ import Foundation
 
 class ConcreteMapsService: MapsService {
 
+    private var subscription: Any?
     private let dataStore: DataStore
     private let imageRepository: ImageRepository
     private let dealers: ConcreteDealersService
@@ -23,7 +24,8 @@ class ConcreteMapsService: MapsService {
         self.dataStore = dataStore
         self.imageRepository = imageRepository
         self.dealers = dealers
-        eventBus.subscribe(consumer: DataStoreChangedConsumer { [weak self] in
+        
+        subscription = eventBus.subscribe(consumer: DataStoreChangedConsumer { [weak self] in
             self?.reloadMapsFromDataStore()
         })
 
