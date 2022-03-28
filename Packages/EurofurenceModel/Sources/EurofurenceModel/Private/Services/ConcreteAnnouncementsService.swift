@@ -6,6 +6,7 @@ class ConcreteAnnouncementsService: AnnouncementsService {
 
     private let dataStore: DataStore
     private let imageRepository: ImageRepository
+    private var subscription: Any?
     private var readAnnouncementIdentifiers = [AnnouncementIdentifier]()
 
     var models = [AnnouncementImpl]() {
@@ -21,7 +22,8 @@ class ConcreteAnnouncementsService: AnnouncementsService {
     init(eventBus: EventBus, dataStore: DataStore, imageRepository: ImageRepository) {
         self.dataStore = dataStore
         self.imageRepository = imageRepository
-        eventBus.subscribe(consumer: DataStoreChangedConsumer { [weak self] in
+        
+        subscription = eventBus.subscribe(consumer: DataStoreChangedConsumer { [weak self] in
             self?.reloadAnnouncementsFromStore()
         })
 

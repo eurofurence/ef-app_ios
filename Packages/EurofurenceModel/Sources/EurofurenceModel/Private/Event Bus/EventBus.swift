@@ -20,7 +20,7 @@ public class EventBus {
 
     // MARK: Properties
 
-    private var storage = [AnyEventConsumer]()
+    private var subscriptions = WeakCollection<EventSubscription>()
     private let cache = EventCache()
 
     /// Specifies the `DeliveryMode` of events for new subscribers. The default
@@ -45,16 +45,20 @@ public class EventBus {
      - parameters:
         - consumer: An `EventConsumer` to be subscribed for events posted within
                     this `EventBus`
+     
+     - Returns:
+        A registration of the subscription. The caller must retain this subcription. Once the subscription has been
+        deallocated, the consumer will stop being notified.
     */
-    public func subscribe<Consumer: EventConsumer>(consumer: Consumer) {
-        storage.append(AnyEventConsumer(consumer))
+    public func subscribe<Consumer: EventConsumer>(consumer: Consumer) -> AnyHashable {
+        let subscription = EventSubscription(dispatcher: consumer, eventBus: self)
+        subscriptions.add(subscription)
 
-        guard case .replayLast = redeliveryMode,
-              let event = cache.cachedEvent(ofType: Consumer.Event.self) else {
-                return
+        if case .replayLast = redeliveryMode, let event = cache.cachedEvent(ofType: Consumer.Event.self) {
+            consumer.consume(event: event)
         }
 
-        consumer.consume(event: event)
+        return subscription
     }
 
     /**
@@ -71,7 +75,7 @@ public class EventBus {
                  consumer will consume unique copies of the event.
     */
     public func post(_ event: Any) {
-        for consumer in storage {
+        subscriptions.forEach { (consumer) in
             var dispatchable = event
             if let copyable = event as? NSCopying {
                 dispatchable = copyable.copy(with: nil)
@@ -81,6 +85,10 @@ public class EventBus {
         }
 
         cache.append(event: event)
+    }
+    
+    func cancel(subscription: EventSubscription) {
+        subscriptions.remove(subscription)
     }
 
 }

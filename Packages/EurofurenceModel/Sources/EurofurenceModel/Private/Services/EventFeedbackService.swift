@@ -1,23 +1,36 @@
-struct EventFeedbackService: EventConsumer {
+struct EventFeedbackService {
     
-    let api: API
+    private let api: API
+    private let subscription: Any
     
-    func consume(event: DomainEvent.EventFeedbackReady) {
-        let request = EventFeedbackRequest(
-            id: event.identifier.rawValue,
-            rating: event.rating,
-            feedback: event.eventFeedback
-        )
+    init(api: API, eventBus: EventBus) {
+        self.api = api
         
-        let delegate = event.delegate
+        subscription = eventBus.subscribe(consumer: SubmitEventFeedback(api: api))
+    }
+    
+    private struct SubmitEventFeedback: EventConsumer {
         
-        api.submitEventFeedback(request) { (success) in
-            if success {
-                delegate.eventFeedbackSubmissionDidFinish(event.feedback)
-            } else {
-                delegate.eventFeedbackSubmissionDidFail(event.feedback)
+        let api: API
+        
+        func consume(event: DomainEvent.EventFeedbackReady) {
+            let request = EventFeedbackRequest(
+                id: event.identifier.rawValue,
+                rating: event.rating,
+                feedback: event.eventFeedback
+            )
+            
+            let delegate = event.delegate
+            
+            api.submitEventFeedback(request) { (success) in
+                if success {
+                    delegate.eventFeedbackSubmissionDidFinish(event.feedback)
+                } else {
+                    delegate.eventFeedbackSubmissionDidFail(event.feedback)
+                }
             }
         }
+        
     }
     
 }

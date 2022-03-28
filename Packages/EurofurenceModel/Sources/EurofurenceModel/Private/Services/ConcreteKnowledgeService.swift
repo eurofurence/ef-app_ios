@@ -6,6 +6,7 @@ class ConcreteKnowledgeService: KnowledgeService {
 
     private let dataStore: DataStore
     private let imageRepository: ImageRepository
+    private var subscription: Any?
     private var observers = [KnowledgeServiceObserver]()
     private let shareableURLFactory: ShareableURLFactory
     
@@ -27,7 +28,7 @@ class ConcreteKnowledgeService: KnowledgeService {
         self.imageRepository = imageRepository
         self.shareableURLFactory = shareableURLFactory
         
-        eventBus.subscribe(consumer: DataStoreChangedConsumer { [weak self] in
+        subscription = eventBus.subscribe(consumer: DataStoreChangedConsumer { [weak self] in
             self?.reloadKnowledgeBaseFromDataStore()
         })
 

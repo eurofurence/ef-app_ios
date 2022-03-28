@@ -4,6 +4,7 @@ class ConcreteConventionCountdownService: ConventionCountdownService, Convention
     
     private let conventionStartDateRepository: ConventionStartDateRepository
     private let clock: Clock
+    private var subscription: Any?
     private var daysUntilConventionObservers = [ConventionCountdownServiceObserver]()
     private var conventionStartDate: Date?
     
@@ -35,7 +36,7 @@ class ConcreteConventionCountdownService: ConventionCountdownService, Convention
         self.conventionStartDateRepository = conventionStartDateRepository
         self.clock = clock
 
-        eventBus.subscribe(consumer: RecomputeCountdownWhenSignificantTimePasses(service: self))
+        subscription = eventBus.subscribe(consumer: RecomputeCountdownWhenSignificantTimePasses(service: self))
         conventionStartDateRepository.addConsumer(self)
     }
 

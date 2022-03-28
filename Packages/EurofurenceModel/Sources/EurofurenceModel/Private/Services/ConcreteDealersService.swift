@@ -42,8 +42,9 @@ class ConcreteDealersService: DealersService {
         
     }
 
-    private class Index: DealersIndex, EventConsumer, DealerCategoryObserver {
+    private class Index: DealersIndex, DealerCategoryObserver {
 
+        private var subscription: Any?
         private let dealers: ConcreteDealersService
         private let categoriesCollection = InMemoryDealerCategoriesCollection(categories: [SimpleDealerCategory]())
         private var alphebetisedDealers = [AlphabetisedDealersGroup]()
@@ -59,7 +60,18 @@ class ConcreteDealersService: DealersService {
             self.dealers = dealers
             updateCategories()
 
-            eventBus.subscribe(consumer: self)
+            subscription = eventBus.subscribe(consumer: UpdatesVisibleDealers(index: self))
+        }
+        
+        private struct UpdatesVisibleDealers: EventConsumer {
+            
+            unowned var index: Index
+            
+            func consume(event: ConcreteDealersService.UpdatedEvent) {
+                index.updateCategories()
+                index.updateAlphebetisedDealers()
+            }
+            
         }
         
         var availableCategories: DealerCategoriesCollection {
@@ -93,11 +105,6 @@ class ConcreteDealersService: DealersService {
             updateAlphebetisedDealers()
         }
 
-        func consume(event: ConcreteDealersService.UpdatedEvent) {
-            updateCategories()
-            updateAlphebetisedDealers()
-        }
-        
         private func updateAlphebetisedDealers() {
             let activeCategories = Set(categories.filter(\.isActive).map(\.name))
             let dealersWithEnabledCategory = dealers.dealerModels.filter({ (dealer) -> Bool in
@@ -155,6 +162,7 @@ class ConcreteDealersService: DealersService {
 
     private struct UpdatedEvent {}
 
+    private var subscription: Any?
     private var dealerModels = [DealerImpl]()
     private let eventBus: EventBus
     private let dataStore: DataStore
@@ -178,7 +186,7 @@ class ConcreteDealersService: DealersService {
         self.shareableURLFactory = shareableURLFactory
         self.urlOpener = urlOpener
 
-        eventBus.subscribe(consumer: DataStoreChangedConsumer { [weak self] in
+        subscription = eventBus.subscribe(consumer: DataStoreChangedConsumer { [weak self] in
             self?.reloadDealersFromDataStore()
         })
         

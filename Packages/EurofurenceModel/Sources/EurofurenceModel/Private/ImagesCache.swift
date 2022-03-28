@@ -1,16 +1,19 @@
 import Foundation
 
-struct ImagesCache: EventConsumer {
+struct ImagesCache {
 
     // MARK: Properties
 
     private let imageRepository: ImageRepository
+    private let subscription: Any
 
     // MARK: Initialization
 
     init(eventBus: EventBus, imageRepository: ImageRepository) {
         self.imageRepository = imageRepository
-        eventBus.subscribe(consumer: self)
+        
+        let saveDownloadedImageToRepository = SaveDownloadedImageToRepository(imageRepository: imageRepository)
+        subscription = eventBus.subscribe(consumer: saveDownloadedImageToRepository)
     }
 
     // MARK: Functions
@@ -22,12 +25,16 @@ struct ImagesCache: EventConsumer {
     func deleteImage(identifier: String) {
         imageRepository.deleteEntity(identifier: identifier)
     }
-
-    // MARK: EventConsumer
-
-    func consume(event: ImageDownloadedEvent) {
-        let entity = ImageEntity(identifier: event.identifier, pngImageData: event.pngImageData)
-        imageRepository.save(entity)
+    
+    private struct SaveDownloadedImageToRepository: EventConsumer {
+        
+        let imageRepository: ImageRepository
+        
+        func consume(event: ImageDownloadedEvent) {
+            let entity = ImageEntity(identifier: event.identifier, pngImageData: event.pngImageData)
+            imageRepository.save(entity)
+        }
+        
     }
 
 }

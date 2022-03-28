@@ -2,6 +2,7 @@ class ConcretePrivateMessagesService: PrivateMessagesService {
 
     private let eventBus: EventBus
     private let api: API
+    private var subscriptions = Set<AnyHashable>()
     private lazy var state: State = UnauthenticatedState(service: self)
     private var observers = [PrivateMessagesObserver]()
 
@@ -57,9 +58,9 @@ class ConcretePrivateMessagesService: PrivateMessagesService {
         self.eventBus = eventBus
         self.api = api
         
-        eventBus.subscribe(consumer: EnterAuthenticatedStateWhenLoggedIn(service: self))
-        eventBus.subscribe(consumer: ExitAuthenticatedStateWhenLoggedOut(service: self))
-        eventBus.subscribe(consumer: MarkMessageAsReadHandler(service: self))
+        subscriptions.insert(eventBus.subscribe(consumer: EnterAuthenticatedStateWhenLoggedIn(service: self)))
+        subscriptions.insert(eventBus.subscribe(consumer: ExitAuthenticatedStateWhenLoggedOut(service: self)))
+        subscriptions.insert(eventBus.subscribe(consumer: MarkMessageAsReadHandler(service: self)))
     }
 
     func add(_ observer: PrivateMessagesObserver) {

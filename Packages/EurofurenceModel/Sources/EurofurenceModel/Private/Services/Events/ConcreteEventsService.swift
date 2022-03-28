@@ -46,6 +46,7 @@ class ConcreteScheduleRepository: ClockDelegate, ScheduleRepository {
     // MARK: Properties
 
     private var observers = WeakCollection<ScheduleRepositoryObserver>()
+    private var subscriptions = Set<AnyHashable>()
     private let dataStore: DataStore
     private let imageCache: ImagesCache
     private let clock: Clock
@@ -88,12 +89,12 @@ class ConcreteScheduleRepository: ClockDelegate, ScheduleRepository {
         self.eventBus = eventBus
         self.shareableURLFactory = shareableURLFactory
 
-        eventBus.subscribe(consumer: DataStoreChangedConsumer { [weak self] in
+        subscriptions.insert(eventBus.subscribe(consumer: DataStoreChangedConsumer { [weak self] in
             self?.reconstituteEventsFromDataStore()
-        })
+        }))
         
-        eventBus.subscribe(consumer: FavouriteEventHandler(service: self))
-        eventBus.subscribe(consumer: UnfavouriteEventHandler(service: self))
+        subscriptions.insert(eventBus.subscribe(consumer: FavouriteEventHandler(service: self)))
+        subscriptions.insert(eventBus.subscribe(consumer: UnfavouriteEventHandler(service: self)))
 
         reconstituteFavouritesFromDataStore()
         reconstituteEventsFromDataStore()

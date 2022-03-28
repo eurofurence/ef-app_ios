@@ -11,6 +11,7 @@ class ConcreteAuthenticationService: AuthenticationService {
     private var registeredDeviceToken: Data?
     private var loggedInUser: User?
     private var observers = [AuthenticationStateObserver]()
+    private var subscription: Any?
     
     private struct StoreNotificationTokenWhenChanged: EventConsumer {
         
@@ -40,7 +41,7 @@ class ConcreteAuthenticationService: AuthenticationService {
         self.remoteNotificationsTokenRegistration = remoteNotificationsTokenRegistration
 
         loadPersistedCredential()
-        eventBus.subscribe(consumer: StoreNotificationTokenWhenChanged(controller: self))
+        subscription = eventBus.subscribe(consumer: StoreNotificationTokenWhenChanged(controller: self))
     }
 
     func login(_ args: LoginArguments, completionHandler: @escaping (LoginResult) -> Void) {

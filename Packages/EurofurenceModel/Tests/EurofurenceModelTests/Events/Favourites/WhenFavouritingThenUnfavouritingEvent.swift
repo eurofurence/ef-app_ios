@@ -4,7 +4,7 @@ import XCTest
 class WhenFavouritingThenUnfavouritingEvent: XCTestCase {
 
     var context: EurofurenceSessionTestBuilder.Context!
-    var event: Event!
+    var event: Event?
     var eventObserver: CapturingEventObserver!
 
     override func setUp() {
@@ -21,12 +21,12 @@ class WhenFavouritingThenUnfavouritingEvent: XCTestCase {
     }
 
     private func registerEventObserver() {
-        event.add(eventObserver)
+        event?.add(eventObserver)
     }
 
     private func favouriteThenUnfavouriteEvent() {
-        event.favourite()
-        event.unfavourite()
+        event?.favourite()
+        event?.unfavourite()
     }
 
     func testObserversShouldBeToldTheEventIsUnfavourited() {

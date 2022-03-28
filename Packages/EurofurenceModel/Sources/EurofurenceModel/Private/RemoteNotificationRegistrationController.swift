@@ -3,6 +3,7 @@ import Foundation
 class RemoteNotificationRegistrationController {
 
     private let remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration?
+    private var subscriptions = Set<AnyHashable>()
     private var deviceToken: Data?
     private var authenticationToken: String?
     
@@ -40,8 +41,8 @@ class RemoteNotificationRegistrationController {
     ) {
         self.remoteNotificationsTokenRegistration = remoteNotificationsTokenRegistration
 
-        eventBus.subscribe(consumer: RemoteNotificationTokenChanged(controller: self))
-        eventBus.subscribe(consumer: ReRegisterNotificationTokenWhenLoggedIn(controller: self))
+        subscriptions.insert(eventBus.subscribe(consumer: RemoteNotificationTokenChanged(controller: self)))
+        subscriptions.insert(eventBus.subscribe(consumer: ReRegisterNotificationTokenWhenLoggedIn(controller: self)))
     }
 
     private func reregisterNotificationToken() {
