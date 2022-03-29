@@ -52,46 +52,88 @@ class NewsEventsViewModelTests: XCTestCase {
     }
     
     func testAdaptsEventFavouriteState() throws {
-        try assert(when: \FakeEvent.isFavourite, is: true, then: \EventViewModel.isFavourite, is: true)
-        try assert(when: \FakeEvent.isFavourite, is: false, then: \EventViewModel.isFavourite, is: false)
+        try assert(when: \FakeEvent.isFavourite, is: true, then: \.isFavourite, is: true)
+        try assert(when: \FakeEvent.isFavourite, is: false, then: \.isFavourite, is: false)
     }
     
     func testAdaptsSponsorOnlyState() throws {
-        try assert(when: \FakeEvent.isSponsorOnly, is: true, then: \EventViewModel.isSponsorOnly, is: true)
-        try assert(when: \FakeEvent.isSponsorOnly, is: false, then: \EventViewModel.isSponsorOnly, is: false)
+        try assert(when: \FakeEvent.isSponsorOnly, is: true, then: \.isSponsorOnly, is: true)
+        try assert(when: \FakeEvent.isSponsorOnly, is: false, then: \.isSponsorOnly, is: false)
     }
     
     func testAdaptsSuperSponsorOnlyState() throws {
-        try assert(when: \FakeEvent.isSuperSponsorOnly, is: true, then: \EventViewModel.isSuperSponsorOnly, is: true)
-        try assert(when: \FakeEvent.isSuperSponsorOnly, is: false, then: \EventViewModel.isSuperSponsorOnly, is: false)
+        try assert(when: \FakeEvent.isSuperSponsorOnly, is: true, then: \.isSuperSponsorOnly, is: true)
+        try assert(when: \FakeEvent.isSuperSponsorOnly, is: false, then: \.isSuperSponsorOnly, is: false)
     }
     
     func testAdaptsArtShowState() throws {
-        try assert(when: \FakeEvent.isArtShow, is: true, then: \EventViewModel.isArtShow, is: true)
-        try assert(when: \FakeEvent.isArtShow, is: false, then: \EventViewModel.isArtShow, is: false)
+        try assert(when: \FakeEvent.isArtShow, is: true, then: \.isArtShow, is: true)
+        try assert(when: \FakeEvent.isArtShow, is: false, then: \.isArtShow, is: false)
     }
     
     func testAdaptsKageEventState() throws {
-        try assert(when: \FakeEvent.isKageEvent, is: true, then: \EventViewModel.isKageEvent, is: true)
-        try assert(when: \FakeEvent.isKageEvent, is: false, then: \EventViewModel.isKageEvent, is: false)
+        try assert(when: \FakeEvent.isKageEvent, is: true, then: \.isKageEvent, is: true)
+        try assert(when: \FakeEvent.isKageEvent, is: false, then: \.isKageEvent, is: false)
     }
     
     func testAdaptsDealersDenState() throws {
-        try assert(when: \FakeEvent.isDealersDen, is: true, then: \EventViewModel.isDealersDen, is: true)
-        try assert(when: \FakeEvent.isDealersDen, is: false, then: \EventViewModel.isDealersDen, is: false)
+        try assert(when: \FakeEvent.isDealersDen, is: true, then: \.isDealersDen, is: true)
+        try assert(when: \FakeEvent.isDealersDen, is: false, then: \.isDealersDen, is: false)
     }
     
     func testAdaptsMainStageState() throws {
-        try assert(when: \FakeEvent.isMainStage, is: true, then: \EventViewModel.isMainStage, is: true)
-        try assert(when: \FakeEvent.isMainStage, is: false, then: \EventViewModel.isMainStage, is: false)
+        try assert(when: \FakeEvent.isMainStage, is: true, then: \.isMainStage, is: true)
+        try assert(when: \FakeEvent.isMainStage, is: false, then: \.isMainStage, is: false)
     }
     
     func testAdaptsPhotoshootState() throws {
-        try assert(when: \FakeEvent.isPhotoshoot, is: true, then: \EventViewModel.isPhotoshoot, is: true)
-        try assert(when: \FakeEvent.isPhotoshoot, is: false, then: \EventViewModel.isPhotoshoot, is: false)
+        try assert(when: \FakeEvent.isPhotoshoot, is: true, then: \.isPhotoshoot, is: true)
+        try assert(when: \FakeEvent.isPhotoshoot, is: false, then: \.isPhotoshoot, is: false)
     }
     
-    private func eventViewModel(at index: Int) throws -> EventViewModel {
+    func testEventTransitionsFromNotFavouriteToFavouriteNotifiesObserver() throws {
+        let event = FakeEvent.random
+        event.unfavourite()
+        eventsDataSource.simulateEventsChanged(to: [event])
+        
+        let eventViewModel = try eventViewModel(at: 0)
+        
+        var notifiedDidChange = false
+        let subscription = eventViewModel
+            .objectDidChange
+            .sink { (_) in
+                notifiedDidChange = true
+            }
+        
+        event.favourite()
+        
+        XCTAssertTrue(notifiedDidChange)
+        
+        subscription.cancel()
+    }
+    
+    func testEventTransitionsFromFavouriteToNotFavouriteNotifiesObserver() throws {
+        let event = FakeEvent.random
+        event.favourite()
+        eventsDataSource.simulateEventsChanged(to: [event])
+        
+        let eventViewModel = try eventViewModel(at: 0)
+        
+        var notifiedDidChange = false
+        let subscription = eventViewModel
+            .objectDidChange
+            .sink { (_) in
+                notifiedDidChange = true
+            }
+        
+        event.unfavourite()
+        
+        XCTAssertTrue(notifiedDidChange)
+        
+        subscription.cancel()
+    }
+    
+    private func eventViewModel(at index: Int) throws -> EventViewModelAdapter {
         struct EventNotProduced: Error { }
         guard viewModel.numberOfEvents > 0 else { throw EventNotProduced() }
         
@@ -101,7 +143,7 @@ class NewsEventsViewModelTests: XCTestCase {
     private func assert<T, U>(
         when eventKeyPath: WritableKeyPath<FakeEvent, T>,
         `is` value: T,
-        then viewModelKeyPath: KeyPath<EventViewModel, U>,
+        then viewModelKeyPath: KeyPath<EventViewModelAdapter, U>,
         `is` expected: U,
         line: UInt = #line
     ) throws where U: Equatable {

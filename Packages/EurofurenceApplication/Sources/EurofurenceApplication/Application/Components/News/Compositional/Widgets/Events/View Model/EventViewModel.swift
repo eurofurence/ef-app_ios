@@ -1,4 +1,6 @@
-public protocol EventViewModel {
+import ObservedObject
+
+public protocol EventViewModel: ObservedObject {
     
     var name: String { get }
     var location: String { get }

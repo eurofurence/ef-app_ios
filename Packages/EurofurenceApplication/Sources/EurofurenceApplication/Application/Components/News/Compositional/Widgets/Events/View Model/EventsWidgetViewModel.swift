@@ -47,63 +47,78 @@ public class EventsWidgetViewModel {
             .store(in: &subscriptions)
     }
     
-    public func event(at index: Int) -> EventViewModel {
+    public func event(at index: Int) -> EventViewModelAdapter {
         EventViewModelAdapter(event: events[index], timestampFormatter: formatters.eventTimestamps)
     }
     
-    private struct EventViewModelAdapter: EventViewModel {
-        
-        var event: Event
-        var timestampFormatter: DateFormatterProtocol
-        
-        var name: String {
-            event.title
-        }
-        
-        var location: String {
-            event.room.name
-        }
-        
-        var startTime: String {
-            timestampFormatter.string(from: event.startDate)
-        }
-        
-        var endTime: String {
-            timestampFormatter.string(from: event.endDate)
-        }
-        
-        var isFavourite: Bool {
-            event.isFavourite
-        }
-        
-        var isSponsorOnly: Bool {
-            event.isSponsorOnly
-        }
-        
-        var isSuperSponsorOnly: Bool {
-            event.isSuperSponsorOnly
-        }
-        
-        var isArtShow: Bool {
-            event.isArtShow
-        }
-        
-        var isKageEvent: Bool {
-            event.isKageEvent
-        }
-        
-        var isDealersDen: Bool {
-            event.isDealersDen
-        }
-        
-        var isMainStage: Bool {
-            event.isMainStage
-        }
-        
-        var isPhotoshoot: Bool {
-            event.isPhotoshoot
-        }
+}
 
+public class EventViewModelAdapter: EventViewModel, EventObserver {
+    
+    private let event: Event
+    private let timestampFormatter: DateFormatterProtocol
+    
+    init(event: Event, timestampFormatter: DateFormatterProtocol) {
+        self.event = event
+        self.timestampFormatter = timestampFormatter
+        
+        event.add(self)
     }
     
+    public func eventDidBecomeFavourite(_ event: Event) {
+        objectDidChange.send()
+    }
+    
+    public func eventDidBecomeUnfavourite(_ event: Event) {
+        objectDidChange.send()
+    }
+    
+    public var name: String {
+        event.title
+    }
+    
+    public var location: String {
+        event.room.name
+    }
+    
+    public var startTime: String {
+        timestampFormatter.string(from: event.startDate)
+    }
+    
+    public var endTime: String {
+        timestampFormatter.string(from: event.endDate)
+    }
+    
+    public var isFavourite: Bool {
+        event.isFavourite
+    }
+    
+    public var isSponsorOnly: Bool {
+        event.isSponsorOnly
+    }
+    
+    public var isSuperSponsorOnly: Bool {
+        event.isSuperSponsorOnly
+    }
+    
+    public var isArtShow: Bool {
+        event.isArtShow
+    }
+    
+    public var isKageEvent: Bool {
+        event.isKageEvent
+    }
+    
+    public var isDealersDen: Bool {
+        event.isDealersDen
+    }
+    
+    public var isMainStage: Bool {
+        event.isMainStage
+    }
+    
+    public var isPhotoshoot: Bool {
+        event.isPhotoshoot
+    }
+
 }
