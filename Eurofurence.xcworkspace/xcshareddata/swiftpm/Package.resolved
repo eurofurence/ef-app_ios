@@ -101,6 +101,15 @@
         }
       },
       {
+        "package": "ObservedObject",
+        "repositoryURL": "https://github.com/ShezHsky/ObservedObject.git",
+        "state": {
+          "branch": null,
+          "revision": "c84c1115e0f0968e4de476f63c3ffeed834610c6",
+          "version": "0.0.1"
+        }
+      },
+      {
         "package": "Promises",
         "repositoryURL": "https://github.com/google/promises.git",
         "state": {

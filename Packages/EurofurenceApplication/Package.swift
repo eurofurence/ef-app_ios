@@ -18,7 +18,8 @@ let package = Package(
         .package(path: "../EurofurenceApplicationSession"),
         .package(path: "../TestUtilities"),
         
-        .package(url: "https://github.com/ShezHsky/Router.git", .upToNextMajor(from: .init(0, 0, 2)))
+        .package(url: "https://github.com/ShezHsky/Router.git", .upToNextMajor(from: .init(0, 0, 2))),
+        .package(url: "https://github.com/ShezHsky/ObservedObject.git", .upToNextMajor(from: .init(0, 0, 1)))
     ],
     targets: [
         .target(
@@ -27,6 +28,7 @@ let package = Package(
                 .product(name: "EurofurenceModel", package: "EurofurenceModel"),
                 .product(name: "EurofurenceApplicationSession", package: "EurofurenceApplicationSession"),
                 .product(name: "Router", package: "Router"),
+                .product(name: "ObservedObject", package: "ObservedObject"),
                 
                 .product(name: "ScheduleComponent", package: "EurofurenceComponents"),
                 .product(name: "EventsJourney", package: "EurofurenceComponents"),
