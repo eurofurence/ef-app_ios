@@ -53,24 +53,18 @@ public class EventsWidgetViewModel {
     
 }
 
-public class EventViewModelAdapter: EventViewModel, EventObserver {
+public class EventViewModelAdapter: EventViewModel {
     
     private let event: Event
     private let timestampFormatter: DateFormatterProtocol
+    private var changeNotifier: NotifyObjectChangedWhenEventChanges!
     
     init(event: Event, timestampFormatter: DateFormatterProtocol) {
         self.event = event
         self.timestampFormatter = timestampFormatter
+        self.changeNotifier = NotifyObjectChangedWhenEventChanges(adapter: self)
         
-        event.add(self)
-    }
-    
-    public func eventDidBecomeFavourite(_ event: Event) {
-        objectDidChange.send()
-    }
-    
-    public func eventDidBecomeUnfavourite(_ event: Event) {
-        objectDidChange.send()
+        event.add(changeNotifier)
     }
     
     public var name: String {
@@ -119,6 +113,28 @@ public class EventViewModelAdapter: EventViewModel, EventObserver {
     
     public var isPhotoshoot: Bool {
         event.isPhotoshoot
+    }
+    
+    private class NotifyObjectChangedWhenEventChanges: EventObserver {
+        
+        private unowned let adapter: EventViewModelAdapter
+        
+        init(adapter: EventViewModelAdapter) {
+            self.adapter = adapter
+        }
+        
+        func eventDidBecomeFavourite(_ event: Event) {
+            adapter.notifyObjectDidChange()
+        }
+        
+        func eventDidBecomeUnfavourite(_ event: Event) {
+            adapter.notifyObjectDidChange()
+        }
+        
+    }
+    
+    private func notifyObjectDidChange() {
+        objectDidChange.send()
     }
 
 }
