@@ -9,6 +9,10 @@ public struct UpcomingEventSpecification: Specification {
     private let clock: Clock
     private let configuration: UpcomingEventConfiguration
     
+    public init(configuration: UpcomingEventConfiguration) {
+        self.init(clock: SystemClock.shared, configuration: configuration)
+    }
+    
     public init(clock: Clock, configuration: UpcomingEventConfiguration) {
         self.clock = clock
         self.configuration = configuration
