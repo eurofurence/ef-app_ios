@@ -8,11 +8,31 @@ public class EventTableViewCell: UITableViewCell, ScheduleEventComponent {
 
     // MARK: IBOutlets
 
-    @IBOutlet private weak var startTimeLabel: UILabel!
-    @IBOutlet private weak var endTimeLabel: UILabel!
+    @IBOutlet private weak var eventNameLabel: UILabel! {
+        didSet {
+            eventNameLabel.accessibilityIdentifier = "Event_Title"
+        }
+    }
+    
+    @IBOutlet private weak var locationLabel: UILabel! {
+        didSet {
+            locationLabel.accessibilityIdentifier = "Event_Location"
+        }
+    }
+    
+    @IBOutlet private weak var startTimeLabel: UILabel! {
+        didSet {
+            startTimeLabel.accessibilityIdentifier = "Event_StartTime"
+        }
+    }
+    
+    @IBOutlet private weak var endTimeLabel: UILabel! {
+        didSet {
+            endTimeLabel.accessibilityIdentifier = "Event_EndTime"
+        }
+    }
+    
     @IBOutlet private weak var favouritedEventIndicator: UIView!
-    @IBOutlet private weak var eventNameLabel: UILabel!
-    @IBOutlet private weak var locationLabel: UILabel!
     @IBOutlet private weak var eventBannerImageView: UIImageView!
     @IBOutlet private weak var sponsorEventIndicator: UILabel!
     @IBOutlet private weak var superSponsorEventIndicator: UILabel!

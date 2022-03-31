@@ -6,18 +6,18 @@ import XCTEurofurenceModel
 
 class NewsEventsViewModelTests: XCTestCase {
     
-    private var viewModel: EventsWidgetViewModel!
+    private var viewModel: DataSourceBackedEventsWidgetViewModel!
     private var eventsDataSource: ControllableEventsWidgetDataSource!
     private var fakeEventTimestampsFormatter: FakeDateFormatter!
-    private var formatters: EventsWidgetViewModel.Formatters!
+    private var formatters: DataSourceBackedEventsWidgetViewModel.Formatters!
     
     override func setUp() {
         super.setUp()
         
         fakeEventTimestampsFormatter = FakeDateFormatter()
-        formatters = EventsWidgetViewModel.Formatters(eventTimestamps: fakeEventTimestampsFormatter)
+        formatters = DataSourceBackedEventsWidgetViewModel.Formatters(eventTimestamps: fakeEventTimestampsFormatter)
         eventsDataSource = ControllableEventsWidgetDataSource()
-        viewModel = EventsWidgetViewModel(interactor: eventsDataSource, formatters: formatters)
+        viewModel = DataSourceBackedEventsWidgetViewModel(interactor: eventsDataSource, formatters: formatters)
     }
     
     func testInitiallyBindsNoContent() {
