@@ -25,6 +25,54 @@ public class EventsNewsWidgetTableViewDataSource<T>: NSObject, TableViewMediator
         cell.setEventStartTime(event.startTime)
         cell.setEventEndTime(event.endTime)
         
+        if event.isFavourite {
+            cell.showFavouriteEventIndicator()
+        } else {
+            cell.hideFavouriteEventIndicator()
+        }
+        
+        if event.isSponsorOnly {
+            cell.showSponsorEventIndicator()
+        } else {
+            cell.hideSponsorEventIndicator()
+        }
+        
+        if event.isSuperSponsorOnly {
+            cell.showSuperSponsorOnlyEventIndicator()
+        } else {
+            cell.hideSuperSponsorOnlyEventIndicator()
+        }
+        
+        if event.isArtShow {
+            cell.showArtShowEventIndicator()
+        } else {
+            cell.hideArtShowEventIndicator()
+        }
+        
+        if event.isDealersDen {
+            cell.showDealersDenEventIndicator()
+        } else {
+            cell.hideDealersDenEventIndicator()
+        }
+        
+        if event.isMainStage {
+            cell.showMainStageEventIndicator()
+        } else {
+            cell.hideMainStageEventIndicator()
+        }
+        
+        if event.isPhotoshoot {
+            cell.showPhotoshootStageEventIndicator()
+        } else {
+            cell.hidePhotoshootStageEventIndicator()
+        }
+        
+        if event.isKageEvent {
+            cell.showKageEventIndicator()
+        } else {
+            cell.hideKageEventIndicator()
+        }
+        
         return cell
     }
     

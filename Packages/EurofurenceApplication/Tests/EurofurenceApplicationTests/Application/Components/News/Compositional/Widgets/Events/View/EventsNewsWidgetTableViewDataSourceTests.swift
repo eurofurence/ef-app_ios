@@ -90,6 +90,163 @@ class EventsNewsWidgetTableViewDataSourceTests: XCTestCase {
         XCTAssertEqual("16:00", locationLabel.text)
     }
     
+    func testBindsFavouriteStateToEventTableViewCell() throws {
+        try assertViewModel(
+            with: \.isFavourite,
+            as: true,
+            setsIsHiddenForViewWithAccessibilityIdentifier: "Event_IsFavourite",
+            to: false
+        )
+        
+        try assertViewModel(
+            with: \.isFavourite,
+            as: false,
+            setsIsHiddenForViewWithAccessibilityIdentifier: "Event_IsFavourite",
+            to: true
+        )
+    }
+    
+    func testBindsSponsorStateToEventTableViewCell() throws {
+        try assertViewModel(
+            with: \.isSponsorOnly,
+            as: true,
+            setsIsHiddenForViewWithAccessibilityIdentifier: "Event_IsSponsorOnly",
+            to: false
+        )
+        
+        try assertViewModel(
+            with: \.isSponsorOnly,
+            as: false,
+            setsIsHiddenForViewWithAccessibilityIdentifier: "Event_IsSponsorOnly",
+            to: true
+        )
+    }
+    
+    func testBindsSuperSponsorStateToEventTableViewCell() throws {
+        try assertViewModel(
+            with: \.isSuperSponsorOnly,
+            as: true,
+            setsIsHiddenForViewWithAccessibilityIdentifier: "Event_IsSuperSponsorOnly",
+            to: false
+        )
+        
+        try assertViewModel(
+            with: \.isSuperSponsorOnly,
+            as: false,
+            setsIsHiddenForViewWithAccessibilityIdentifier: "Event_IsSuperSponsorOnly",
+            to: true
+        )
+    }
+    
+    func testBindsArtShowStateToEventTableViewCell() throws {
+        try assertViewModel(
+            with: \.isArtShow,
+            as: true,
+            setsIsHiddenForViewWithAccessibilityIdentifier: "Event_IsArtShow",
+            to: false
+        )
+        
+        try assertViewModel(
+            with: \.isArtShow,
+            as: false,
+            setsIsHiddenForViewWithAccessibilityIdentifier: "Event_IsArtShow",
+            to: true
+        )
+    }
+    
+    func testBindsDealersDenStateToEventTableViewCell() throws {
+        try assertViewModel(
+            with: \.isDealersDen,
+            as: true,
+            setsIsHiddenForViewWithAccessibilityIdentifier: "Event_IsDealersDen",
+            to: false
+        )
+        
+        try assertViewModel(
+            with: \.isDealersDen,
+            as: false,
+            setsIsHiddenForViewWithAccessibilityIdentifier: "Event_IsDealersDen",
+            to: true
+        )
+    }
+    
+    func testBindsMainStageStateToEventTableViewCell() throws {
+        try assertViewModel(
+            with: \.isMainStage,
+            as: true,
+            setsIsHiddenForViewWithAccessibilityIdentifier: "Event_IsMainStage",
+            to: false
+        )
+
+        try assertViewModel(
+            with: \.isMainStage,
+            as: false,
+            setsIsHiddenForViewWithAccessibilityIdentifier: "Event_IsMainStage",
+            to: true
+        )
+    }
+
+    func testBindsPhotoshootStateToEventTableViewCell() throws {
+        try assertViewModel(
+            with: \.isPhotoshoot,
+            as: true,
+            setsIsHiddenForViewWithAccessibilityIdentifier: "Event_IsPhotoshoot",
+            to: false
+        )
+
+        try assertViewModel(
+            with: \.isPhotoshoot,
+            as: false,
+            setsIsHiddenForViewWithAccessibilityIdentifier: "Event_IsPhotoshoot",
+            to: true
+        )
+    }
+    
+    func testBindsKageStateToEventTableViewCell() throws {
+        try assertViewModel(
+            with: \.isKageEvent,
+            as: true,
+            setsIsHiddenForViewWithAccessibilityIdentifier: "Event_KageBug",
+            to: false
+        )
+        
+        try assertViewModel(
+            with: \.isKageEvent,
+            as: false,
+            setsIsHiddenForViewWithAccessibilityIdentifier: "Event_KageBug",
+            to: true
+        )
+        
+        try assertViewModel(
+            with: \.isKageEvent,
+            as: true,
+            setsIsHiddenForViewWithAccessibilityIdentifier: "Event_KageWineGlass",
+            to: false
+        )
+        
+        try assertViewModel(
+            with: \.isKageEvent,
+            as: false,
+            setsIsHiddenForViewWithAccessibilityIdentifier: "Event_KageWineGlass",
+            to: true
+        )
+    }
+    
+    private func assertViewModel(
+        with viewModelKeyPath: WritableKeyPath<FakeEventViewModel, Bool>,
+        as viewModelValue: Bool,
+        setsIsHiddenForViewWithAccessibilityIdentifier accessibilityIdentifier: String,
+        to expected: Bool
+    ) throws {
+        var eventViewModel = FakeEventViewModel()
+        eventViewModel[keyPath: viewModelKeyPath] = viewModelValue
+        prepareDataSource(events: [eventViewModel])
+        let view = try findBindingTarget(accessibilityIdentifier: accessibilityIdentifier)
+        let actual = view.isHidden
+        
+        XCTAssertEqual(expected, actual)
+    }
+    
     private class FakeEventsWidgetViewModel: EventsWidgetViewModel {
         
         typealias Event = FakeEventViewModel

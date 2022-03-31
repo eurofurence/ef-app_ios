@@ -32,16 +32,61 @@ public class EventTableViewCell: UITableViewCell, ScheduleEventComponent {
         }
     }
     
-    @IBOutlet private weak var favouritedEventIndicator: UIView!
+    @IBOutlet private weak var favouritedEventIndicator: UIView! {
+        didSet {
+            favouritedEventIndicator.accessibilityIdentifier = "Event_IsFavourite"
+        }
+    }
+    
+    @IBOutlet private weak var sponsorEventIndicator: UILabel! {
+        didSet {
+            sponsorEventIndicator.accessibilityIdentifier = "Event_IsSponsorOnly"
+        }
+    }
+    
+    @IBOutlet private weak var superSponsorEventIndicator: UILabel! {
+        didSet {
+            superSponsorEventIndicator.accessibilityIdentifier = "Event_IsSuperSponsorOnly"
+        }
+    }
+    
+    @IBOutlet private weak var artShowIndicatorView: UILabel! {
+        didSet {
+            artShowIndicatorView.accessibilityIdentifier = "Event_IsArtShow"
+        }
+    }
+    
+    @IBOutlet private weak var kageBugIndicatorView: UILabel! {
+        didSet {
+            kageBugIndicatorView.accessibilityIdentifier = "Event_KageBug"
+        }
+    }
+    
+    @IBOutlet private weak var kageWineGlassIndicatorView: UILabel! {
+        didSet {
+            kageWineGlassIndicatorView.accessibilityIdentifier = "Event_KageWineGlass"
+        }
+    }
+    
+    @IBOutlet private weak var dealersDenIndicatorView: UILabel! {
+        didSet {
+            dealersDenIndicatorView.accessibilityIdentifier = "Event_IsDealersDen"
+        }
+    }
+    
+    @IBOutlet private weak var mainStageIndicatorView: UILabel! {
+        didSet {
+            mainStageIndicatorView.accessibilityIdentifier = "Event_IsMainStage"
+        }
+    }
+    
+    @IBOutlet private weak var photoshootIndicatorView: UILabel! {
+        didSet {
+            photoshootIndicatorView.accessibilityIdentifier = "Event_IsPhotoshoot"
+        }
+    }
+    
     @IBOutlet private weak var eventBannerImageView: UIImageView!
-    @IBOutlet private weak var sponsorEventIndicator: UILabel!
-    @IBOutlet private weak var superSponsorEventIndicator: UILabel!
-    @IBOutlet private weak var artShowIndicatorView: UILabel!
-    @IBOutlet private weak var kageBugIndicatorView: UILabel!
-    @IBOutlet private weak var kageWineGlassIndicatorView: UILabel!
-    @IBOutlet private weak var dealersDenIndicatorView: UILabel!
-    @IBOutlet private weak var mainStageIndicatorView: UILabel!
-    @IBOutlet private weak var photoshootIndicatorView: UILabel!
 
     // MARK: Overrides
 
