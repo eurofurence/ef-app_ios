@@ -1,3 +1,4 @@
+import ComponentBase
 import ScheduleComponent
 import UIKit
 
@@ -10,7 +11,18 @@ public class EventsNewsWidgetTableViewDataSource<T>: NSObject, TableViewMediator
     }
     
     public func registerReusableViews(into tableView: UITableView) {
+        tableView.registerConventionBrandedHeader()
         EventTableViewCell.registerNib(in: tableView)
+    }
+    
+    public func tableView(
+        _ tableView: UITableView,
+        viewForHeaderInSection section: Int
+    ) -> UIView? {
+        let headerView = tableView.dequeueConventionBrandedHeader()
+        headerView.textLabel?.text = viewModel.title
+        
+        return headerView
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

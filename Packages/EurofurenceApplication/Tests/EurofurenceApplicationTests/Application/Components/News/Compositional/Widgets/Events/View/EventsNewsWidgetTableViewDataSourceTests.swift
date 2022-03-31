@@ -1,3 +1,4 @@
+import ComponentBase
 import EurofurenceApplication
 import ObservedObject
 import ScheduleComponent
@@ -6,6 +7,7 @@ import XCTest
 
 class EventsNewsWidgetTableViewDataSourceTests: XCTestCase {
     
+    private var viewModel: FakeEventsWidgetViewModel!
     private var dataSource: EventsNewsWidgetTableViewDataSource<FakeEventsWidgetViewModel>?
     private var tableView: UITableView!
     
@@ -18,9 +20,11 @@ class EventsNewsWidgetTableViewDataSourceTests: XCTestCase {
     private func prepareDataSource(events: [FakeEventViewModel]) {
         let viewModel = FakeEventsWidgetViewModel()
         viewModel.events = events
+        viewModel.title = "Upcoming Events"
+        self.viewModel = viewModel
+        
         let dataSource = EventsNewsWidgetTableViewDataSource(viewModel: viewModel)
         dataSource.registerReusableViews(into: tableView)
-        
         self.dataSource = dataSource
     }
     
@@ -48,6 +52,15 @@ class EventsNewsWidgetTableViewDataSourceTests: XCTestCase {
         let actual = dataSource?.tableView(tableView, numberOfRowsInSection: 0)
         
         XCTAssertEqual(expected, actual)
+    }
+    
+    func testHeaderUsesTitle() throws {
+        prepareDataSource(events: [])
+        
+        let header = dataSource?.tableView(tableView, viewForHeaderInSection: 0)
+        let sectionHeader = try XCTUnwrap(header as? UITableViewHeaderFooterView)
+        
+        XCTAssertEqual(viewModel.title, sectionHeader.textLabel?.text)
     }
     
     func testBindsNameToEventTableViewCell() throws {
@@ -250,6 +263,8 @@ class EventsNewsWidgetTableViewDataSourceTests: XCTestCase {
     private class FakeEventsWidgetViewModel: EventsWidgetViewModel {
         
         typealias Event = FakeEventViewModel
+        
+        var title: String = ""
         
         var numberOfEvents: Int {
             events.count

@@ -6,6 +6,8 @@ public class DataSourceBackedEventsWidgetViewModel: EventsWidgetViewModel {
     
     public typealias Event = EventViewModelAdapter
     
+    public let title: String
+    
     public var numberOfEvents: Int {
         events.count
     }
@@ -34,12 +36,20 @@ public class DataSourceBackedEventsWidgetViewModel: EventsWidgetViewModel {
         
     }
     
-    public convenience init<T>(interactor: T) where T: EventsWidgetDataSource {
-        self.init(interactor: interactor, formatters: Formatters())
+    public convenience init<T>(
+        interactor: T,
+        description: String
+    ) where T: EventsWidgetDataSource {
+        self.init(interactor: interactor, formatters: Formatters(), description: description)
     }
     
-    public init<T>(interactor: T, formatters: Formatters) where T: EventsWidgetDataSource {
+    public init<T>(
+        interactor: T,
+        formatters: Formatters,
+        description: String
+    ) where T: EventsWidgetDataSource {
         self.formatters = formatters
+        self.title = description
         
         interactor
             .events

@@ -17,7 +17,15 @@ class NewsEventsViewModelTests: XCTestCase {
         fakeEventTimestampsFormatter = FakeDateFormatter()
         formatters = DataSourceBackedEventsWidgetViewModel.Formatters(eventTimestamps: fakeEventTimestampsFormatter)
         eventsDataSource = ControllableEventsWidgetDataSource()
-        viewModel = DataSourceBackedEventsWidgetViewModel(interactor: eventsDataSource, formatters: formatters)
+        viewModel = DataSourceBackedEventsWidgetViewModel(
+            interactor: eventsDataSource,
+            formatters: formatters,
+            description: "Some Events"
+        )
+    }
+    
+    func testExposesDescriptionAsTitle() {
+        XCTAssertEqual("Some Events", viewModel.title)
     }
     
     func testInitiallyBindsNoContent() {
