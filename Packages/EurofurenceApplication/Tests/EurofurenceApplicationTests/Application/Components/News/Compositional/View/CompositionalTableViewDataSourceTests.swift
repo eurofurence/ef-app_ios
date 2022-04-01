@@ -10,11 +10,18 @@ class CompositionalTableViewDataSourceTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        composition = CompositionalTableViewDataSource()
         tableView = UITableView(frame: .zero)
+        composition = CompositionalTableViewDataSource(tableView: tableView)
     }
     
     // MARK: Data source composition
+    
+    func testAddingSectionAllowsItToRegisterReusableViews() {
+        let mediator = FakeTableViewMediator()
+        composition.append(mediator)
+        
+        XCTAssertIdentical(tableView, mediator.tableViewForReusableViewRegistration)
+    }
     
     func testNumberOfSectionsEqualsNumberOfDataSources() {
         XCTAssertEqual(0, composition.numberOfSections(in: tableView))
@@ -211,7 +218,12 @@ class CompositionalTableViewDataSourceTests: XCTestCase {
     
     // MARK: Fake mediator
     
-    private class FakeTableViewMediator: NSObject, UITableViewDataSource, UITableViewDelegate {
+    private class FakeTableViewMediator: NSObject, TableViewMediator {
+        
+        private(set) var tableViewForReusableViewRegistration: UITableView?
+        func registerReusableViews(into tableView: UITableView) {
+            tableViewForReusableViewRegistration = tableView
+        }
         
         var numberOfRows = 0
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

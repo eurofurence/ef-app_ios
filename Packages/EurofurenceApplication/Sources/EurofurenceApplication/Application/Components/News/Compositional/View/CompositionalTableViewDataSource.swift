@@ -1,18 +1,24 @@
 import UIKit
 
-public typealias TableViewMediator = UITableViewDataSource & UITableViewDelegate
+public protocol TableViewMediator: UITableViewDataSource, UITableViewDelegate {
+    
+    func registerReusableViews(into tableView: UITableView)
+    
+}
 
 public class CompositionalTableViewDataSource: NSObject {
     
-    private var mediators = [TableViewMediator]()
+    private let tableView: UITableView
     private let missingNumeric = UITableView.noIntrinsicMetric
+    private var mediators = [TableViewMediator]()
     
-    override public init() {
-        
+    public init(tableView: UITableView) {
+        self.tableView = tableView
     }
     
     public func append(_ dataSource: TableViewMediator) {
         mediators.append(dataSource)
+        dataSource.registerReusableViews(into: tableView)
     }
     
 }
