@@ -16,6 +16,10 @@ class CompositionalTableViewDataSourceTests: XCTestCase {
     
     // MARK: Data source composition
     
+    func testActsAsDelegateForTableView() {
+        XCTAssertIdentical(composition, tableView.delegate)
+    }
+    
     func testAddingSectionAllowsItToRegisterReusableViews() {
         let mediator = FakeTableViewMediator()
         composition.append(mediator)

@@ -17,6 +17,7 @@ public class CompositionalTableViewDataSource: NSObject {
         super.init()
         
         tableView.dataSource = self
+        tableView.delegate = self
     }
     
     public func append(_ dataSource: TableViewMediator) {
