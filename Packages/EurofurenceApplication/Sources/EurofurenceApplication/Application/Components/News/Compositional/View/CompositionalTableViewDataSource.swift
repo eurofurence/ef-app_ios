@@ -14,11 +14,15 @@ public class CompositionalTableViewDataSource: NSObject {
     
     public init(tableView: UITableView) {
         self.tableView = tableView
+        super.init()
+        
+        tableView.dataSource = self
     }
     
     public func append(_ dataSource: TableViewMediator) {
         mediators.append(dataSource)
         dataSource.registerReusableViews(into: tableView)
+        tableView.insertSections([mediators.count - 1], with: .automatic)
     }
     
 }

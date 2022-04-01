@@ -24,11 +24,11 @@ class CompositionalTableViewDataSourceTests: XCTestCase {
     }
     
     func testNumberOfSectionsEqualsNumberOfDataSources() {
-        XCTAssertEqual(0, composition.numberOfSections(in: tableView))
+        XCTAssertEqual(0, tableView.numberOfSections)
         
         composition.append(FakeTableViewMediator())
         
-        XCTAssertEqual(1, composition.numberOfSections(in: tableView))
+        XCTAssertEqual(1, tableView.numberOfSections)
     }
     
     func testNumberOfRowsInferredFromDataSource() {
@@ -39,8 +39,8 @@ class CompositionalTableViewDataSourceTests: XCTestCase {
         composition.append(firstDataSource)
         composition.append(secondDataSource)
         
-        XCTAssertEqual(5, composition.tableView(tableView, numberOfRowsInSection: 0))
-        XCTAssertEqual(10, composition.tableView(tableView, numberOfRowsInSection: 1))
+        XCTAssertEqual(5, tableView.numberOfRows(inSection: 0))
+        XCTAssertEqual(10, tableView.numberOfRows(inSection: 1))
     }
     
     func testCellInferredFromDataSource() {
