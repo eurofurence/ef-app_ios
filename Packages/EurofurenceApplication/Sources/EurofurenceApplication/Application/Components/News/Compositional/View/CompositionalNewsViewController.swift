@@ -3,6 +3,8 @@ import UIKit
 
 public class CompositionalNewsViewController: UIViewController {
     
+    private var compositionalDataSource: CompositionalTableViewDataSource!
+    
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -20,6 +22,7 @@ public class CompositionalNewsViewController: UIViewController {
         installNavigationConfiguration()
         installTableView()
         installNewsBannerImage()
+        prepareCompositionalDataSource()
     }
     
     private func installNavigationConfiguration() {
@@ -43,6 +46,10 @@ public class CompositionalNewsViewController: UIViewController {
         let newsBannerNib = UINib(nibName: "NewsBannerView", bundle: .module)
         let nibContents = newsBannerNib.instantiate(withOwner: nil)
         tableView.tableHeaderView = nibContents.first as? UIView
+    }
+    
+    private func prepareCompositionalDataSource() {
+        compositionalDataSource = CompositionalTableViewDataSource(tableView: tableView)
     }
     
 }
