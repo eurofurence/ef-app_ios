@@ -9,7 +9,7 @@ public class CompositionalNewsComponentBuilder {
     private struct CompositionalNewsComponentFactory: NewsComponentFactory {
         
         func makeNewsComponent(_ delegate: NewsComponentDelegate) -> UIViewController {
-            return UIViewController()
+            return CompositionalNewsViewController()
         }
         
     }

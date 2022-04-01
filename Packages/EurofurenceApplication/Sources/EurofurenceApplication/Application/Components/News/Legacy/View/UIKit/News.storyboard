@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -52,16 +52,16 @@
                                     </constraints>
                                 </view>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="t86-KP-Ntj">
-                                    <rect key="frame" x="0.0" y="404" width="375" height="1"/>
+                                    <rect key="frame" x="0.0" y="415.33333206176758" width="375" height="1"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NewsUserWidgetTableViewCell" rowHeight="76" id="mWN-xP-H3H" customClass="NewsUserWidgetTableViewCell" customModule="EurofurenceApplication">
-                                        <rect key="frame" x="0.0" y="178" width="375" height="76"/>
+                                        <rect key="frame" x="0.0" y="194.66666603088379" width="375" height="76"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mWN-xP-H3H" id="Fda-o9-5OR">
-                                            <rect key="frame" x="0.0" y="0.0" width="347.66666666666669" height="76"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="350.33333333333331" height="76"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5e7-Fs-Rfc" userLabel="Icon Container">
@@ -100,15 +100,15 @@
                                                     </constraints>
                                                 </view>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="c0p-tm-neN">
-                                                    <rect key="frame" x="63.666666666666657" y="20" width="264" height="36"/>
+                                                    <rect key="frame" x="63.666666666666657" y="20" width="266.66666666666674" height="36"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Prompt" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ieu-8p-CWj">
-                                                            <rect key="frame" x="0.0" y="0.0" width="264" height="13.666666666666666"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="266.66666666666669" height="14.666666666666666"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BoW-aY-Pet">
-                                                            <rect key="frame" x="0.0" y="21.666666666666664" width="264" height="14.333333333333336"/>
+                                                            <rect key="frame" x="0.0" y="22.666666666666664" width="266.66666666666669" height="13.333333333333336"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                             <color key="textColor" systemColor="secondaryLabelColor"/>
                                                             <nil key="highlightedColor"/>
@@ -133,14 +133,14 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NewsConventionCountdownTableViewCell" rowHeight="61" id="cd3-fV-l9J" customClass="NewsConventionCountdownTableViewCell" customModule="EurofurenceApplication">
-                                        <rect key="frame" x="0.0" y="254" width="375" height="61"/>
+                                        <rect key="frame" x="0.0" y="270.66666603088379" width="375" height="61"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cd3-fV-l9J" id="eKn-Bs-cZS">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="61"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ED6-CO-65N">
-                                                    <rect key="frame" x="20" y="21" width="335" height="19.333333333333329"/>
+                                                    <rect key="frame" x="20" y="22.666666666666668" width="335" height="15.666666666666668"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -156,14 +156,14 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ViewAllAnnouncementsTableViewCell" rowHeight="61" id="X2B-iE-Rxm" customClass="ViewAllAnnouncementsTableViewCell" customModule="EurofurenceApplication">
-                                        <rect key="frame" x="0.0" y="315" width="375" height="61"/>
+                                        <rect key="frame" x="0.0" y="331.66666603088379" width="375" height="61"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="X2B-iE-Rxm" id="c6S-SK-nbL">
-                                            <rect key="frame" x="0.0" y="0.0" width="347.66666666666669" height="61"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="350.33333333333331" height="61"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DHn-Dx-5nI">
-                                                    <rect key="frame" x="20" y="11" width="307.66666666666669" height="39"/>
+                                                    <rect key="frame" x="20" y="11" width="310.33333333333331" height="39"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
