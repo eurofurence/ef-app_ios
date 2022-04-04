@@ -54,6 +54,15 @@ class FakeTableViewMediator: NSObject, TableViewMediator {
         sectionFooterViews[sectionIndex] = footerView
     }
     
+    private var heightsForFooters = [Int: CGFloat]()
+    func stub(_ footerHeight: CGFloat, asHeightForFooterInSection sectionIndex: Int) {
+        heightsForFooters[sectionIndex] = footerHeight
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        heightsForFooters[section] ?? 0
+    }
+    
     private var estimatedHeightsForRows = [IndexPath: CGFloat]()
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         estimatedHeightsForRows[indexPath, default: -1]

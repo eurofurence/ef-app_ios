@@ -131,6 +131,18 @@ class CompositionalTableViewDataSourceTests: XCTestCase {
         XCTAssertIdentical(secondHeader, composition.tableView(tableView, viewForFooterInSection: 1))
     }
     
+    func testHeightForFooterInSectionInferredFromSection() {
+        let (firstDataSource, secondDataSource) = (FakeTableViewMediator(), FakeTableViewMediator())
+        composition.append(firstDataSource)
+        composition.append(secondDataSource)
+        
+        firstDataSource.stub(10, asHeightForFooterInSection: 0)
+        secondDataSource.stub(42, asHeightForFooterInSection: 1)
+        
+        XCTAssertEqual(10, composition.tableView(tableView, heightForFooterInSection: 0))
+        XCTAssertEqual(42, composition.tableView(tableView, heightForFooterInSection: 1))
+    }
+    
     func testEstimatedHeightForRowAtInferredFromSection() {
         let (firstDataSource, secondDataSource) = (FakeTableViewMediator(), FakeTableViewMediator())
         composition.append(firstDataSource)

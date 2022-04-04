@@ -73,6 +73,11 @@ extension CompositionalTableViewDataSource: UITableViewDelegate {
         return mediator.tableView?(tableView, viewForFooterInSection: section)
     }
     
+    public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        let mediator = mediators[section]
+        return mediator.tableView?(tableView, heightForFooterInSection: section) ?? 0
+    }
+    
     public func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
         let mediator = mediators[section]
         return mediator.tableView?(tableView, estimatedHeightForHeaderInSection: section) ?? missingNumeric
