@@ -8,14 +8,8 @@ import XCTest
 class EventsNewsWidgetTableViewDataSourceTests: XCTestCase {
     
     private var viewModel: FakeEventsWidgetViewModel!
-    private var dataSource: EventsNewsWidgetTableViewDataSource<FakeEventsWidgetViewModel>?
+    private var dataSource: TableViewMediator?
     private var tableView: UITableView!
-    
-    override func setUp() {
-        super.setUp()
-        
-        tableView = UITableView(frame: .zero, style: .plain)
-    }
     
     private func prepareDataSource(events: [FakeEventViewModel]) {
         let viewModel = FakeEventsWidgetViewModel()
@@ -23,9 +17,18 @@ class EventsNewsWidgetTableViewDataSourceTests: XCTestCase {
         viewModel.title = "Upcoming Events"
         self.viewModel = viewModel
         
-        let dataSource = EventsNewsWidgetTableViewDataSource(viewModel: viewModel)
-        dataSource.registerReusableViews(into: tableView)
-        self.dataSource = dataSource
+        let viewModelFactory = FakeEventsWidgetViewModelFactory(viewModel: viewModel)
+        
+        let widget = MVVMWidget(
+            viewModelFactory: viewModelFactory,
+            viewFactory: TableViewNewsWidgetViewFactory()
+        )
+        
+        self.tableView = UITableView(frame: .zero, style: .plain)
+        let manager = FakeNewsWidgetManager(tableView: tableView)
+        widget.register(in: manager)
+        
+        self.dataSource = manager.installedDataSources.last
     }
     
     private func dequeueSingleViewModelTestCell() throws -> EventTableViewCell {
@@ -57,7 +60,7 @@ class EventsNewsWidgetTableViewDataSourceTests: XCTestCase {
     func testHeaderUsesTitle() throws {
         prepareDataSource(events: [])
         
-        let header = dataSource?.tableView(tableView, viewForHeaderInSection: 0)
+        let header = dataSource?.tableView?(tableView, viewForHeaderInSection: 0)
         let sectionHeader = try XCTUnwrap(header as? UITableViewHeaderFooterView)
         
         XCTAssertEqual(viewModel.title, sectionHeader.textLabel?.text)
@@ -258,6 +261,32 @@ class EventsNewsWidgetTableViewDataSourceTests: XCTestCase {
         let actual = view.isHidden
         
         XCTAssertEqual(expected, actual)
+    }
+    
+    private class FakeNewsWidgetManager: NewsWidgetManager {
+        
+        private let tableView: UITableView
+        private(set) var installedDataSources = [TableViewMediator]()
+        
+        init(tableView: UITableView) {
+            self.tableView = tableView
+        }
+        
+        func install(dataSource: TableViewMediator) {
+            installedDataSources.append(dataSource)
+            dataSource.registerReusableViews(into: tableView)
+        }
+        
+    }
+    
+    private struct FakeEventsWidgetViewModelFactory: NewsWidgetViewModelFactory {
+        
+        let viewModel: FakeEventsWidgetViewModel
+        
+        func makeViewModel() -> some EventsWidgetViewModel {
+            viewModel
+        }
+        
     }
     
     private class FakeEventsWidgetViewModel: EventsWidgetViewModel {
