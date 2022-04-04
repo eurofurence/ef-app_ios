@@ -1,7 +1,7 @@
 import ComponentBase
 import UIKit
 
-public class CompositionalNewsViewController: UIViewController {
+public class CompositionalNewsViewController: UIViewController, NewsWidgetManager {
     
     private var compositionalDataSource: CompositionalTableViewDataSource!
     
@@ -12,6 +12,10 @@ public class CompositionalNewsViewController: UIViewController {
         
         return tableView
     }()
+    
+    public func install(dataSource: TableViewMediator) {
+        
+    }
     
     override public func viewDidLoad() {
         super.viewDidLoad()
