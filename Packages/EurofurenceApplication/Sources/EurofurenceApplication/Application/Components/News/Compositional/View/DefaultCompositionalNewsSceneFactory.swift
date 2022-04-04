@@ -2,7 +2,7 @@ import UIKit
 
 struct DefaultCompositionalNewsSceneFactory: CompositionalNewsSceneFactory {
     
-    func makeCompositionalNewsScene() -> UIViewController & NewsWidgetManager {
+    func makeCompositionalNewsScene() -> UIViewController & CompositionalNewsScene {
         CompositionalNewsViewController()
     }
     

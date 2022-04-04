@@ -4,6 +4,7 @@ import DealersComponent
 import EurofurenceModel
 import EventDetailComponent
 import EventFeedbackComponent
+import EurofurenceApplicationSession
 import KnowledgeDetailComponent
 import KnowledgeGroupComponent
 import KnowledgeGroupsComponent
@@ -67,7 +68,29 @@ struct ComponentRegistry {
         )
         
         if dependencies.isCompositionalNewsComponentEnabled {
-            newsComponentFactory = CompositionalNewsComponentBuilder().build()
+            let upcomingEventsSpecification = UpcomingEventSpecification(
+                clock: SystemClock.shared,
+                configuration: RemotelyConfiguredUpcomingEventsConfiguration()
+            )
+            
+            let upcomingEventsDataSource = FilteredScheduleWidgetDataSource(
+                repository: services.events,
+                specification: upcomingEventsSpecification
+            )
+            
+            let upcomingEventsViewModelFactory = EventsWidgetViewModelFactory(
+                dataSource: upcomingEventsDataSource,
+                description: "Upcoming Events"
+            )
+            
+            let upcomingEventsWidget = MVVMWidget(
+                viewModelFactory: upcomingEventsViewModelFactory,
+                viewFactory: TableViewNewsWidgetViewFactory()
+            )
+            
+            newsComponentFactory = CompositionalNewsComponentBuilder()
+                .with(upcomingEventsWidget)
+                .build()
         } else {
             newsComponentFactory = NewsComponentBuilder(
                 newsViewModelProduer: newsViewModelProducer

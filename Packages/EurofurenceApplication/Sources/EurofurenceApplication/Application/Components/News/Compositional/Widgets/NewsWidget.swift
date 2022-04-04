@@ -4,8 +4,14 @@ public protocol NewsWidget {
     
 }
 
-public protocol NewsWidgetManager {
+public protocol NewsWidgetManager: AnyObject {
     
     func install(dataSource: TableViewMediator)
+    
+}
+
+public protocol NewsWidgetManagerDelegate {
+    
+    func newsWidgetManagerReadyForWidgets()
     
 }

@@ -1,20 +1,26 @@
 import ComponentBase
 import UIKit
 
-public class CompositionalNewsViewController: UIViewController, NewsWidgetManager {
+public class CompositionalNewsViewController: UIViewController, CompositionalNewsScene {
     
-    private var compositionalDataSource: CompositionalTableViewDataSource!
+    private lazy var compositionalDataSource = CompositionalTableViewDataSource(tableView: tableView)
     
     private lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: .zero)
+        let tableView = UITableView(frame: view.bounds)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         Theme.global.apply(to: tableView)
         
         return tableView
     }()
     
+    private var delegate: CompositionalNewsSceneDelegate?
+    public func setDelegate(_ delegate: CompositionalNewsSceneDelegate) {
+        self.delegate = delegate
+    }
+    
+    private var dataSources = [any TableViewMediator]()
     public func install(dataSource: TableViewMediator) {
-        
+        compositionalDataSource.append(dataSource)
     }
     
     override public func viewDidLoad() {
@@ -26,7 +32,8 @@ public class CompositionalNewsViewController: UIViewController, NewsWidgetManage
         installNavigationConfiguration()
         installTableView()
         installNewsBannerImage()
-        prepareCompositionalDataSource()
+        
+        delegate?.sceneReady()
     }
     
     private func installNavigationConfiguration() {
@@ -50,10 +57,6 @@ public class CompositionalNewsViewController: UIViewController, NewsWidgetManage
         let newsBannerNib = UINib(nibName: "NewsBannerView", bundle: .module)
         let nibContents = newsBannerNib.instantiate(withOwner: nil)
         tableView.tableHeaderView = nibContents.first as? UIView
-    }
-    
-    private func prepareCompositionalDataSource() {
-        compositionalDataSource = CompositionalTableViewDataSource(tableView: tableView)
     }
     
 }

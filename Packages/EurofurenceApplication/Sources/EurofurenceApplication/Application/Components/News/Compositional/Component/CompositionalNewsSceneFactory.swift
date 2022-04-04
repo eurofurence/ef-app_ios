@@ -2,6 +2,6 @@ import UIKit
 
 public protocol CompositionalNewsSceneFactory {
     
-    func makeCompositionalNewsScene() -> UIViewController & NewsWidgetManager
+    func makeCompositionalNewsScene() -> UIViewController & CompositionalNewsScene
     
 }

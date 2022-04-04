@@ -6,13 +6,23 @@ struct CompositionalNewsComponentFactory: NewsComponentFactory {
     let widgets: [any NewsWidget]
     
     func makeNewsComponent(_ delegate: any NewsComponentDelegate) -> UIViewController {
-        let compositionalNewsScene = sceneFactory.makeCompositionalNewsScene()
+        let newsScene = sceneFactory.makeCompositionalNewsScene()
+        newsScene.setDelegate(InstallWidgetsOnSceneReady(manager: newsScene, widgets: widgets))
         
-        for widget in widgets {
-            widget.register(in: compositionalNewsScene)
+        return newsScene
+    }
+    
+    private struct InstallWidgetsOnSceneReady: CompositionalNewsSceneDelegate {
+        
+        unowned let manager: any NewsWidgetManager
+        let widgets: [any NewsWidget]
+        
+        func sceneReady() {
+            for widget in widgets {
+                widget.register(in: manager)
+            }
         }
         
-        return compositionalNewsScene
     }
     
 }

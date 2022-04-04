@@ -6,10 +6,11 @@ public protocol TableViewMediator: UITableViewDataSource, UITableViewDelegate {
     
 }
 
+@objcMembers
 public class CompositionalTableViewDataSource: NSObject {
     
     private let tableView: UITableView
-    private let missingNumeric = UITableView.noIntrinsicMetric
+    private let missingNumeric = UITableView.automaticDimension
     private var mediators = [TableViewMediator]()
     
     public init(tableView: UITableView) {
@@ -18,12 +19,15 @@ public class CompositionalTableViewDataSource: NSObject {
         
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.reloadData()
     }
     
     public func append(_ dataSource: TableViewMediator) {
+        tableView.beginUpdates()
         mediators.append(dataSource)
         dataSource.registerReusableViews(into: tableView)
         tableView.insertSections([mediators.count - 1], with: .automatic)
+        tableView.endUpdates()
     }
     
 }

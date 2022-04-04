@@ -1,6 +1,6 @@
 public class CompositionalNewsComponentBuilder {
     
-    private var sceneFactory: CompositionalNewsSceneFactory
+    private var sceneFactory: any CompositionalNewsSceneFactory
     private var widgets = [any NewsWidget]()
     
     public init() {
