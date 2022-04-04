@@ -46,7 +46,7 @@ class ReviewPromptControllerTests: XCTestCase {
     }
 
     private func simulateFavouritingEvent() {
-        eventsService.simulateEventFavourited(identifier: .random)
+        eventsService.allEvents.first(where: { !$0.isFavourite })?.favourite()
     }
 
     private func simulateFavouritingEnoughEventsToSatisfyPromptRequirement() {
