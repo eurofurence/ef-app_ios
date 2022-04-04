@@ -103,11 +103,26 @@ struct ComponentRegistry {
                 viewFactory: TableViewNewsWidgetViewFactory()
             )
             
+            let todaysFavouritesSpecification = TodaysEventsSpecification().and(IsFavouriteEventSpecification())
+            let todaysFavouritesDataSource = FilteredScheduleWidgetDataSource(
+                repository: services.events,
+                specification: todaysFavouritesSpecification
+            )
             
+            let todaysFavouritesViewModelFactory = EventsWidgetViewModelFactory(
+                dataSource: todaysFavouritesDataSource,
+                description: "Today's Favourites"
+            )
+            
+            let todaysFavouritesWidget = MVVMWidget(
+                viewModelFactory: todaysFavouritesViewModelFactory,
+                viewFactory: TableViewNewsWidgetViewFactory()
+            )
             
             newsComponentFactory = CompositionalNewsComponentBuilder()
                 .with(upcomingEventsWidget)
                 .with(runningEventsWidget)
+                .with(todaysFavouritesWidget)
                 .build()
         } else {
             newsComponentFactory = NewsComponentBuilder(
