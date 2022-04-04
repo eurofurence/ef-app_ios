@@ -88,8 +88,26 @@ struct ComponentRegistry {
                 viewFactory: TableViewNewsWidgetViewFactory()
             )
             
+            let runningEventsDataSource = FilteredScheduleWidgetDataSource(
+                repository: services.events,
+                specification: RunningEventSpecification(clock: SystemClock.shared)
+            )
+            
+            let runningEventsViewModelFactory = EventsWidgetViewModelFactory(
+                dataSource: runningEventsDataSource,
+                description: "Running Events"
+            )
+            
+            let runningEventsWidget = MVVMWidget(
+                viewModelFactory: runningEventsViewModelFactory,
+                viewFactory: TableViewNewsWidgetViewFactory()
+            )
+            
+            
+            
             newsComponentFactory = CompositionalNewsComponentBuilder()
                 .with(upcomingEventsWidget)
+                .with(runningEventsWidget)
                 .build()
         } else {
             newsComponentFactory = NewsComponentBuilder(
