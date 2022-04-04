@@ -7,10 +7,10 @@ class AndSpecificationTests: XCTestCase {
         let alwaysPasses = AlwaysPassesSpecification<String>()
         let alwaysFails = AlwaysFailsSpecification<String>()
         
-        XCTAssertTrue(alwaysPasses.and(alwaysPasses).isSatisfied(by: "Hello, world"))
-        XCTAssertFalse(alwaysFails.and(alwaysFails).isSatisfied(by: "Hello, world"))
-        XCTAssertFalse(alwaysPasses.and(alwaysFails).isSatisfied(by: "Hello, world"))
-        XCTAssertFalse(alwaysFails.and(alwaysPasses).isSatisfied(by: "Hello, world"))
+        XCTAssertTrue((alwaysPasses && alwaysPasses).isSatisfied(by: "Hello, world"))
+        XCTAssertFalse((alwaysFails && alwaysFails).isSatisfied(by: "Hello, world"))
+        XCTAssertFalse((alwaysPasses && alwaysFails).isSatisfied(by: "Hello, world"))
+        XCTAssertFalse((alwaysFails && alwaysPasses).isSatisfied(by: "Hello, world"))
     }
     
 }

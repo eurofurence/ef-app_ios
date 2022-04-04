@@ -4,7 +4,6 @@ import DealersComponent
 import EurofurenceModel
 import EventDetailComponent
 import EventFeedbackComponent
-import EurofurenceApplicationSession
 import KnowledgeDetailComponent
 import KnowledgeGroupComponent
 import KnowledgeGroupsComponent
@@ -68,62 +67,9 @@ struct ComponentRegistry {
         )
         
         if dependencies.isCompositionalNewsComponentEnabled {
-            let upcomingEventsSpecification = UpcomingEventSpecification(
-                clock: SystemClock.shared,
-                configuration: RemotelyConfiguredUpcomingEventsConfiguration()
-            )
-            
-            let upcomingEventsDataSource = FilteredScheduleWidgetDataSource(
-                repository: services.events,
-                specification: upcomingEventsSpecification
-            )
-            
-            let upcomingEventsViewModelFactory = EventsWidgetViewModelFactory(
-                dataSource: upcomingEventsDataSource,
-                description: "Upcoming Events"
-            )
-            
-            let upcomingEventsWidget = MVVMWidget(
-                viewModelFactory: upcomingEventsViewModelFactory,
-                viewFactory: TableViewNewsWidgetViewFactory()
-            )
-            
-            let runningEventsDataSource = FilteredScheduleWidgetDataSource(
-                repository: services.events,
-                specification: RunningEventSpecification(clock: SystemClock.shared)
-            )
-            
-            let runningEventsViewModelFactory = EventsWidgetViewModelFactory(
-                dataSource: runningEventsDataSource,
-                description: "Running Events"
-            )
-            
-            let runningEventsWidget = MVVMWidget(
-                viewModelFactory: runningEventsViewModelFactory,
-                viewFactory: TableViewNewsWidgetViewFactory()
-            )
-            
-            let todaysFavouritesSpecification = TodaysEventsSpecification().and(IsFavouriteEventSpecification())
-            let todaysFavouritesDataSource = FilteredScheduleWidgetDataSource(
-                repository: services.events,
-                specification: todaysFavouritesSpecification
-            )
-            
-            let todaysFavouritesViewModelFactory = EventsWidgetViewModelFactory(
-                dataSource: todaysFavouritesDataSource,
-                description: "Today's Favourites"
-            )
-            
-            let todaysFavouritesWidget = MVVMWidget(
-                viewModelFactory: todaysFavouritesViewModelFactory,
-                viewFactory: TableViewNewsWidgetViewFactory()
-            )
-            
-            newsComponentFactory = CompositionalNewsComponentBuilder()
-                .with(upcomingEventsWidget)
-                .with(runningEventsWidget)
-                .with(todaysFavouritesWidget)
-                .build()
+            newsComponentFactory = CompositionalNewsComponentDefaultWidgetsBuilder(
+                services: services
+            ).buildNewsComponent()
         } else {
             newsComponentFactory = NewsComponentBuilder(
                 newsViewModelProduer: newsViewModelProducer
