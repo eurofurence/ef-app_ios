@@ -62,6 +62,8 @@ extension CompositionalTableViewDataSource: UITableViewDelegate {
     }
     
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard self.tableView(tableView, numberOfRowsInSection: section) > 0 else { return nil }
+        
         let mediator = mediators[section]
         return mediator.tableView?(tableView, viewForHeaderInSection: section)
     }

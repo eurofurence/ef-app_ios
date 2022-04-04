@@ -94,6 +94,8 @@ class CompositionalTableViewDataSourceTests: XCTestCase {
     
     func testViewForHeaderInSectionInferredFromSection() {
         let (firstDataSource, secondDataSource) = (FakeTableViewMediator(), FakeTableViewMediator())
+        firstDataSource.numberOfRows = 5
+        secondDataSource.numberOfRows = 10
         composition.append(firstDataSource)
         composition.append(secondDataSource)
         
@@ -103,6 +105,17 @@ class CompositionalTableViewDataSourceTests: XCTestCase {
         
         XCTAssertIdentical(firstHeader, composition.tableView(tableView, viewForHeaderInSection: 0))
         XCTAssertIdentical(secondHeader, composition.tableView(tableView, viewForHeaderInSection: 1))
+    }
+    
+    func testViewForHeaderInSectionNilWhenSectionEmpty() {
+        let dataSource = FakeTableViewMediator()
+        dataSource.numberOfRows = 0
+        composition.append(dataSource)
+        
+        let header = UIView()
+        dataSource.stub(header, asViewForHeaderInSection: 0)
+        
+        XCTAssertNil(composition.tableView(tableView, viewForHeaderInSection: 0))
     }
     
     func testViewForFooterInSectionInferredFromSection() {
