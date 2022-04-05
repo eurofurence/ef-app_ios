@@ -9,9 +9,3 @@ public protocol NewsWidgetManager: AnyObject {
     func install(dataSource: TableViewMediator)
     
 }
-
-public protocol NewsWidgetManagerDelegate {
-    
-    func newsWidgetManagerReadyForWidgets()
-    
-}
