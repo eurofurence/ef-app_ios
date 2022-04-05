@@ -111,7 +111,11 @@ class EventsScheduleAdapter: Schedule, CustomStringConvertible {
         restrictScheduleToEvents(on: day)
     }
     
+    private var specification: AnySpecification<Event>?
+    
     func filterSchedule<S>(to specification: S) where S: Specification, S.Element == Event {
+        self.specification = specification.eraseToAnySpecification()
+        
         events = schedule.eventModels.filter(specification.isSatisfied(by:))
         delegate?.scheduleEventsDidChange(to: events)
     }
@@ -144,6 +148,10 @@ class EventsScheduleAdapter: Schedule, CustomStringConvertible {
             allEvents = allEvents.filter(filter.shouldFilter)
         }
 
+        if let specification = specification {
+            allEvents = allEvents.filter(specification.isSatisfied(by:))
+        }
+        
         events = allEvents.sorted(by: { $0.startDate < $1.startDate })
         delegate?.scheduleEventsDidChange(to: events)
     }

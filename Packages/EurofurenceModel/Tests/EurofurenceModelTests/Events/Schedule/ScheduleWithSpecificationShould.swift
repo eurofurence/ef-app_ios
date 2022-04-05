@@ -33,6 +33,21 @@ class ScheduleWithSpecificationShould: XCTestCase {
             .assertEvents(delegate.events, characterisedBy: [randomEvent.element])
     }
     
+    func testUpdateResultsWhenEventsChange() throws {
+        let syncResponse = ModelCharacteristics.randomWithoutDeletions
+        let randomEvent = syncResponse.events.changed.randomElement()
+        let context = EurofurenceSessionTestBuilder().build()
+        let schedule = context.eventsService.loadSchedule(tag: "Test")
+        let specification = SpecificEventSpecification(identifier: EventIdentifier(randomEvent.element.identifier))
+        schedule.filterSchedule(to: specification)
+        let delegate = CapturingScheduleDelegate()
+        schedule.setDelegate(delegate)
+        context.performSuccessfulSync(response: syncResponse)
+        
+        try EventAssertion(context: context, modelCharacteristics: syncResponse)
+            .assertEvents(delegate.events, characterisedBy: [randomEvent.element])
+    }
+    
     private struct SpecificEventSpecification: Specification {
         
         let identifier: EventIdentifier
