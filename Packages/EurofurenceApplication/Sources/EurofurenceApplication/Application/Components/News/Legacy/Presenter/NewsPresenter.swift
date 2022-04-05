@@ -173,7 +173,7 @@ class NewsPresenter: NewsSceneDelegate, NewsViewModelRecipient {
                 self.delegate.newsModuleDidRequestShowingPrivateMessages()
 
             case .event(let event):
-                self.delegate.newsModuleDidSelectEvent(event)
+                self.delegate.newsModuleDidSelectEvent(event.identifier)
 
             case .allAnnouncements:
                 self.delegate.newsModuleDidRequestShowingAllAnnouncements()

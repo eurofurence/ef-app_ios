@@ -1,3 +1,4 @@
+import RouterCore
 import UIKit
 
 struct CompositionalNewsComponentFactory: NewsComponentFactory {
@@ -7,19 +8,33 @@ struct CompositionalNewsComponentFactory: NewsComponentFactory {
     
     func makeNewsComponent(_ delegate: any NewsComponentDelegate) -> UIViewController {
         let newsScene = sceneFactory.makeCompositionalNewsScene()
-        newsScene.setDelegate(InstallWidgetsOnSceneReady(manager: newsScene, widgets: widgets))
+        let delegateAdapter = CompositionalNewsRoutesToDelegate(delegate: delegate)
+        let environment = Environment(newsScene: newsScene, router: delegateAdapter)
+        newsScene.setDelegate(InstallWidgetsOnSceneReady(environment: environment, widgets: widgets))
         
         return newsScene
     }
     
+    private struct Environment: NewsWidgetEnvironment {
+        
+        let newsScene: CompositionalNewsScene
+        
+        let router: Router
+        
+        func install(dataSource: TableViewMediator) {
+            newsScene.install(dataSource: dataSource)
+        }
+        
+    }
+    
     private struct InstallWidgetsOnSceneReady: CompositionalNewsSceneDelegate {
         
-        unowned let manager: any NewsWidgetManager
+        let environment: any NewsWidgetEnvironment
         let widgets: [any NewsWidget]
         
         func sceneReady() {
             for widget in widgets {
-                widget.register(in: manager)
+                widget.register(in: environment)
             }
         }
         

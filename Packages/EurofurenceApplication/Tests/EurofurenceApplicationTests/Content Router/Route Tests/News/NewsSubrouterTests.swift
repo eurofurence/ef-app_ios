@@ -29,10 +29,10 @@ class NewsSubrouterTests: XCTestCase {
     }
     
     func testShowingEvent() {
-        let event = FakeEvent.random
+        let event = EventIdentifier.random
         subrouter.newsModuleDidSelectEvent(event)
         
-        router.assertRouted(to: EmbeddedEventRouteable(identifier: event.identifier))
+        router.assertRouted(to: EmbeddedEventRouteable(identifier: event))
     }
     
     func testShowingAnnouncements() {

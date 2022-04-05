@@ -1,6 +1,7 @@
-public protocol CompositionalNewsScene: NewsWidgetManager {
+public protocol CompositionalNewsScene {
     
     func setDelegate(_ delegate: CompositionalNewsSceneDelegate)
+    func install(dataSource: TableViewMediator)
     
 }
 

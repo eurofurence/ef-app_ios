@@ -1,4 +1,5 @@
 import RouterCore
+
 public struct MVVMWidget<
     ViewModelFactory: NewsWidgetViewModelFactory,
     ViewFactory: NewsWidgetViewFactory
@@ -12,10 +13,10 @@ public struct MVVMWidget<
         self.viewFactory = viewFactory
     }
     
-    public func register(in manager: NewsWidgetManager) {
-        let viewModel = viewModelFactory.makeViewModel(router: Routes())
+    public func register(in environment: NewsWidgetEnvironment) {
+        let viewModel = viewModelFactory.makeViewModel(router: environment.router)
         let visualController = viewFactory.makeVisualController(viewModel: viewModel)
-        manager.install(dataSource: visualController)
+        environment.install(dataSource: visualController)
     }
     
 }

@@ -284,7 +284,7 @@ class EventsNewsWidgetTableViewDataSourceTests: XCTestCase {
         XCTAssertEqual(expected, actual)
     }
     
-    private class FakeNewsWidgetManager: NewsWidgetManager {
+    private class FakeNewsWidgetManager: NewsWidgetEnvironment {
         
         private let tableView: UITableView
         private(set) var installedDataSources = [TableViewMediator]()
@@ -292,6 +292,8 @@ class EventsNewsWidgetTableViewDataSourceTests: XCTestCase {
         init(tableView: UITableView) {
             self.tableView = tableView
         }
+        
+        var router: Router = Routes()
         
         func install(dataSource: TableViewMediator) {
             installedDataSources.append(dataSource)

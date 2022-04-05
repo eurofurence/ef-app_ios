@@ -1,10 +1,14 @@
+import RouterCore
+
 public protocol NewsWidget {
     
-    func register(in manager: NewsWidgetManager)
+    func register(in environment: NewsWidgetEnvironment)
     
 }
 
-public protocol NewsWidgetManager: AnyObject {
+public protocol NewsWidgetEnvironment {
+    
+    var router: Router { get }
     
     func install(dataSource: TableViewMediator)
     

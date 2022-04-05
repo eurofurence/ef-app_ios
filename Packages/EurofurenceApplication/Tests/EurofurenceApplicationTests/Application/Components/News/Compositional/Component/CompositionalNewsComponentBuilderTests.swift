@@ -48,39 +48,11 @@ class CompositionalNewsComponentBuilderTests: XCTestCase {
         XCTAssertTrue(installedWidgets, "Should wait until scene ready before installing widgets")
     }
     
-    private class FakeCompositionalNewsSceneFactory: CompositionalNewsSceneFactory {
-        
-        let scene = FakeCompositionalNewsScene()
-        func makeCompositionalNewsScene() -> UIViewController & CompositionalNewsScene {
-            scene
-        }
-        
-    }
-    
-    private class FakeCompositionalNewsScene: UIViewController, CompositionalNewsScene {
-        
-        private(set) var installedDataSources = [TableViewMediator]()
-        private var delegate: CompositionalNewsSceneDelegate?
-        
-        func setDelegate(_ delegate: CompositionalNewsSceneDelegate) {
-            self.delegate = delegate
-        }
-        
-        func install(dataSource: TableViewMediator) {
-            installedDataSources.append(dataSource)
-        }
-        
-        func simulateSceneReady() {
-            delegate?.sceneReady()
-        }
-        
-    }
-    
     private struct FakeNewsWidget: NewsWidget {
         
         let mediator = FakeTableViewMediator()
-        func register(in manager: NewsWidgetManager) {
-            manager.install(dataSource: mediator)
+        func register(in environment: NewsWidgetEnvironment) {
+            environment.install(dataSource: mediator)
         }
         
     }
