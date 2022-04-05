@@ -3,12 +3,19 @@ import UIKit
 
 class FakeTableViewMediator: NSObject, TableViewMediator {
     
+    weak var delegate: TableViewMediatorDelegate?
+    
     private(set) var tableViewForReusableViewRegistration: UITableView?
     func registerReusableViews(into tableView: UITableView) {
         tableViewForReusableViewRegistration = tableView
     }
     
-    var numberOfRows = 0
+    var numberOfRows = 0 {
+        didSet {
+            delegate?.dataSourceContentsDidChange(self)
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         numberOfRows
     }

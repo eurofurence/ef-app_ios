@@ -1,6 +1,14 @@
 import UIKit
 
+public protocol TableViewMediatorDelegate: AnyObject {
+    
+    func dataSourceContentsDidChange(_ dataSource: TableViewMediator)
+    
+}
+
 public protocol TableViewMediator: UITableViewDataSource, UITableViewDelegate {
+    
+    /* weak */ var delegate: TableViewMediatorDelegate? { get set }
     
     func registerReusableViews(into tableView: UITableView)
     
@@ -12,6 +20,7 @@ public class CompositionalTableViewDataSource: NSObject {
     private let tableView: UITableView
     private let missingNumeric = UITableView.automaticDimension
     private var mediators = [TableViewMediator]()
+    private var delegates = [ReloadSectionWhenDataSourceChanges]()
     
     public init(tableView: UITableView) {
         self.tableView = tableView
@@ -23,11 +32,41 @@ public class CompositionalTableViewDataSource: NSObject {
     }
     
     public func append(_ dataSource: TableViewMediator) {
+        insertNewSection(dataSource)
+        registerReloadSectionWhenDataSourceChangesHandler(dataSource)
+    }
+    
+    private func insertNewSection(_ dataSource: TableViewMediator) {
         tableView.beginUpdates()
         mediators.append(dataSource)
         dataSource.registerReusableViews(into: tableView)
         tableView.insertSections([mediators.count - 1], with: .automatic)
         tableView.endUpdates()
+    }
+    
+    private func registerReloadSectionWhenDataSourceChangesHandler(_ dataSource: TableViewMediator) {
+        let reloadSectionHandler = ReloadSectionWhenDataSourceChanges { [weak self] (dataSource) in
+            if let index = self?.mediators.firstIndex(where: { $0 === dataSource }) {
+                self?.tableView.reloadSections([index], with: .automatic)
+            }
+        }
+        
+        delegates.append(reloadSectionHandler)
+        dataSource.delegate = reloadSectionHandler
+    }
+    
+    private class ReloadSectionWhenDataSourceChanges: TableViewMediatorDelegate {
+        
+        private let reloadSectionHandler: (TableViewMediator) -> Void
+        
+        init(reloadSectionHandler: @escaping (TableViewMediator) -> Void) {
+            self.reloadSectionHandler = reloadSectionHandler
+        }
+        
+        func dataSourceContentsDidChange(_ dataSource: TableViewMediator) {
+            reloadSectionHandler(dataSource)
+        }
+        
     }
     
 }

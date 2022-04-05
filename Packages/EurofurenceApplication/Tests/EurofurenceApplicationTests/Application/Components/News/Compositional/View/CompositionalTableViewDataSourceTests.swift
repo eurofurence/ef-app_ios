@@ -47,6 +47,16 @@ class CompositionalTableViewDataSourceTests: XCTestCase {
         XCTAssertEqual(10, tableView.numberOfRows(inSection: 1))
     }
     
+    func testDataSourceNotifiesContentsChangedReloadsSection() {
+        let dataSource = FakeTableViewMediator()
+        dataSource.numberOfRows = 5
+        composition.append(dataSource)
+        
+        dataSource.numberOfRows = 10
+        
+        XCTAssertEqual(10, tableView.numberOfRows(inSection: 0))
+    }
+    
     func testCellInferredFromDataSource() {
         let (firstDataSource, secondDataSource) = (FakeTableViewMediator(), FakeTableViewMediator())
         let (firstCell, secondCell) = (UITableViewCell(), UITableViewCell())

@@ -10,6 +10,8 @@ public class EventsNewsWidgetTableViewDataSource<T>: NSObject, TableViewMediator
         self.viewModel = viewModel
     }
     
+    public weak var delegate: TableViewMediatorDelegate?
+    
     public func registerReusableViews(into tableView: UITableView) {
         tableView.registerConventionBrandedHeader()
         EventTableViewCell.registerNib(in: tableView)
