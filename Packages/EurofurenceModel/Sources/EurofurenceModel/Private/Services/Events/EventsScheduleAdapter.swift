@@ -161,14 +161,18 @@ class EventsScheduleAdapter: Schedule, CustomStringConvertible {
 
     private func updateCurrentDay() {
         if let day = findDay(for: clock.currentDate) {
-            currentDay = Day(date: day.date)
-            restrictScheduleToEvents(on: day)
+            let conferenceDay = Day(date: day.date)
+            if conferenceDay != currentDay {
+                currentDay = conferenceDay
+            }
         } else {
             currentDay = nil
         }
     }
 
     private func regenerateSchedule() {
+        let previousResults = events.map(\.identifier)
+        
         var allEvents = schedule.eventModels
         filters.forEach { (filter) in
             allEvents = allEvents.filter(filter.shouldFilter)
@@ -179,6 +183,10 @@ class EventsScheduleAdapter: Schedule, CustomStringConvertible {
         }
         
         events = allEvents.sorted(by: { $0.startDate < $1.startDate })
+        let newResults = events.map(\.identifier)
+        
+        guard previousResults != newResults else { return }
+        
         delegate?.scheduleEventsDidChange(to: events)
     }
 
