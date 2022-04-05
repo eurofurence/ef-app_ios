@@ -9,6 +9,7 @@ class EventsNewsWidgetTableViewDataSourceTests: XCTestCase {
     
     private var viewModel: FakeEventsWidgetViewModel!
     private var dataSource: TableViewMediator?
+    private var delegate: CapturingTableViewMediatorDelegate!
     private var tableView: UITableView!
     
     private func prepareDataSource(events: [FakeEventViewModel]) {
@@ -28,7 +29,9 @@ class EventsNewsWidgetTableViewDataSourceTests: XCTestCase {
         let manager = FakeNewsWidgetManager(tableView: tableView)
         widget.register(in: manager)
         
+        self.delegate = CapturingTableViewMediatorDelegate()
         self.dataSource = manager.installedDataSources.last
+        self.dataSource?.delegate = delegate
     }
     
     private func dequeueSingleViewModelTestCell() throws -> EventTableViewCell {
@@ -45,6 +48,16 @@ class EventsNewsWidgetTableViewDataSourceTests: XCTestCase {
         let interfaceElement: T? = cell.viewWithAccessibilityIdentifier(accessibilityIdentifier)
         
         return try XCTUnwrap(interfaceElement)
+    }
+    
+    func testViewModelChangedNotifiesSectionChanged() {
+        prepareDataSource(events: [])
+        
+        XCTAssertFalse(delegate.contentsDidChange)
+        
+        viewModel.objectDidChange.send()
+        
+        XCTAssertTrue(delegate.contentsDidChange)
     }
     
     func testNumberOfItemsSourcedFromViewModel() {

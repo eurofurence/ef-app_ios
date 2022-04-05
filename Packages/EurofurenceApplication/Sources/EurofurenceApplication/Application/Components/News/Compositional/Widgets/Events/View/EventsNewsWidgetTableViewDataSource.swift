@@ -1,3 +1,4 @@
+import Combine
 import ComponentBase
 import ScheduleComponent
 import UIKit
@@ -5,9 +6,20 @@ import UIKit
 public class EventsNewsWidgetTableViewDataSource<T>: NSObject, TableViewMediator where T: EventsWidgetViewModel {
     
     private let viewModel: T
+    private var viewModelDidChange: Cancellable?
     
     public init(viewModel: T) {
         self.viewModel = viewModel
+        
+        super.init()
+        
+        viewModelDidChange = viewModel
+            .objectDidChange
+            .sink { [weak self] (_) in
+                if let dataSource = self {
+                    dataSource.delegate?.dataSourceContentsDidChange(dataSource)
+                }
+            }
     }
     
     public weak var delegate: TableViewMediatorDelegate?
