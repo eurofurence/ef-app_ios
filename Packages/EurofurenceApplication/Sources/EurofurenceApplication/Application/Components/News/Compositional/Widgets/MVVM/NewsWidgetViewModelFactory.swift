@@ -1,7 +1,9 @@
+import RouterCore
+
 public protocol NewsWidgetViewModelFactory {
     
     associatedtype ViewModel
     
-    func makeViewModel() -> ViewModel
+    func makeViewModel(router: Router) -> ViewModel
     
 }

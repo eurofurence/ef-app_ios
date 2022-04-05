@@ -8,5 +8,6 @@ public protocol EventsWidgetViewModel: ObservedObject {
     var numberOfEvents: Int { get }
     
     func event(at index: Int) -> Event
+    func eventSelected(at index: Int)
     
 }

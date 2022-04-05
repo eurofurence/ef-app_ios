@@ -1,3 +1,5 @@
+import RouterCore
+
 public struct EventsWidgetViewModelFactory<T>: NewsWidgetViewModelFactory where T: EventsWidgetDataSource {
     
     private let dataSource: T
@@ -10,8 +12,12 @@ public struct EventsWidgetViewModelFactory<T>: NewsWidgetViewModelFactory where 
     
     public typealias ViewModel = DataSourceBackedEventsWidgetViewModel
     
-    public func makeViewModel() -> ViewModel {
-        DataSourceBackedEventsWidgetViewModel(interactor: dataSource, description: description)
+    public func makeViewModel(router: Router) -> ViewModel {
+        DataSourceBackedEventsWidgetViewModel(
+            interactor: dataSource,
+            description: description,
+            router: router
+        )
     }
     
 }

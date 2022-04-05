@@ -1,7 +1,9 @@
 import Combine
 import ComponentBase
 import EurofurenceModel
+import EventDetailComponent
 import ObservedObject
+import RouterCore
 
 public class DataSourceBackedEventsWidgetViewModel: EventsWidgetViewModel {
     
@@ -14,6 +16,7 @@ public class DataSourceBackedEventsWidgetViewModel: EventsWidgetViewModel {
     }
     
     private let formatters: Formatters
+    private let router: Router
     private var subscriptions = Set<AnyCancellable>()
     @Observed private var events = [EurofurenceModel.Event]()
     
@@ -39,18 +42,21 @@ public class DataSourceBackedEventsWidgetViewModel: EventsWidgetViewModel {
     
     public convenience init<T>(
         interactor: T,
-        description: String
+        description: String,
+        router: Router
     ) where T: EventsWidgetDataSource {
-        self.init(interactor: interactor, formatters: Formatters(), description: description)
+        self.init(interactor: interactor, formatters: Formatters(), description: description, router: router)
     }
     
     public init<T>(
         interactor: T,
         formatters: Formatters,
-        description: String
+        description: String,
+        router: Router
     ) where T: EventsWidgetDataSource {
         self.formatters = formatters
         self.title = description
+        self.router = router
         
         interactor
             .events
@@ -62,6 +68,11 @@ public class DataSourceBackedEventsWidgetViewModel: EventsWidgetViewModel {
     
     public func event(at index: Int) -> EventViewModelAdapter {
         EventViewModelAdapter(event: events[index], timestampFormatter: formatters.eventTimestamps)
+    }
+    
+    public func eventSelected(at index: Int) {
+        let event = events[index]
+        try? router.route(EventRouteable(identifier: event.identifier))
     }
     
 }

@@ -1,8 +1,10 @@
 import Combine
 import EurofurenceApplication
 import EurofurenceModel
+import EventDetailComponent
 import XCTest
 import XCTEurofurenceModel
+import XCTRouter
 
 class NewsEventsViewModelTests: XCTestCase {
     
@@ -10,6 +12,7 @@ class NewsEventsViewModelTests: XCTestCase {
     private var eventsDataSource: ControllableEventsWidgetDataSource!
     private var fakeEventTimestampsFormatter: FakeDateFormatter!
     private var formatters: DataSourceBackedEventsWidgetViewModel.Formatters!
+    private var router: FakeContentRouter!
     
     override func setUp() {
         super.setUp()
@@ -17,10 +20,13 @@ class NewsEventsViewModelTests: XCTestCase {
         fakeEventTimestampsFormatter = FakeDateFormatter()
         formatters = DataSourceBackedEventsWidgetViewModel.Formatters(eventTimestamps: fakeEventTimestampsFormatter)
         eventsDataSource = ControllableEventsWidgetDataSource()
+        router = FakeContentRouter()
+        
         viewModel = DataSourceBackedEventsWidgetViewModel(
             interactor: eventsDataSource,
             formatters: formatters,
-            description: "Some Events"
+            description: "Some Events",
+            router: router
         )
     }
     
@@ -155,6 +161,17 @@ class NewsEventsViewModelTests: XCTestCase {
         XCTAssertTrue(notifiedObjectDidChange, "Upstream changes should propogate change notifications downstream")
         
         subscription.cancel()
+    }
+    
+    func testSelectingEvent() {
+        let events: [FakeEvent] = [.random, .random]
+        eventsDataSource.simulateEventsChanged(to: events)
+        
+        viewModel.eventSelected(at: 1)
+        
+        let expected = EventRouteable(identifier: events[1].identifier)
+        
+        router.assertRouted(to: expected)
     }
     
     private func eventViewModel(at index: Int) throws -> EventViewModelAdapter {

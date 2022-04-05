@@ -1,6 +1,7 @@
 import ComponentBase
 import EurofurenceApplication
 import ObservedObject
+import RouterCore
 import ScheduleComponent
 import UIKit
 import XCTest
@@ -261,6 +262,13 @@ class EventsNewsWidgetTableViewDataSourceTests: XCTestCase {
         )
     }
     
+    func testSelectingCellUsesRowToNotifySelectedEventIndex() {
+        prepareDataSource(events: [])
+        dataSource?.tableView?(tableView, didSelectRowAt: IndexPath(row: 1, section: 2))
+        
+        XCTAssertEqual(1, viewModel.selectedEventIndex)
+    }
+    
     private func assertViewModel(
         with viewModelKeyPath: WritableKeyPath<FakeEventViewModel, Bool>,
         as viewModelValue: Bool,
@@ -296,7 +304,7 @@ class EventsNewsWidgetTableViewDataSourceTests: XCTestCase {
         
         let viewModel: FakeEventsWidgetViewModel
         
-        func makeViewModel() -> some EventsWidgetViewModel {
+        func makeViewModel(router: Router) -> some EventsWidgetViewModel {
             viewModel
         }
         
@@ -316,6 +324,11 @@ class EventsNewsWidgetTableViewDataSourceTests: XCTestCase {
         
         func event(at index: Int) -> Event {
             events[index]
+        }
+        
+        private(set) var selectedEventIndex: Int?
+        func eventSelected(at index: Int) {
+            selectedEventIndex = index
         }
         
     }

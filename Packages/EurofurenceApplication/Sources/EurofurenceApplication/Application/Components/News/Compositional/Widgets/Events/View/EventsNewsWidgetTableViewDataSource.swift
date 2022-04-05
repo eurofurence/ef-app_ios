@@ -102,4 +102,8 @@ public class EventsNewsWidgetTableViewDataSource<T>: NSObject, TableViewMediator
         return cell
     }
     
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.eventSelected(at: indexPath.row)
+    }
+    
 }
