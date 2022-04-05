@@ -6,7 +6,7 @@ import XCTEurofurenceModel
 
 class FilteredScheduleWidgetDataSourceTests: XCTestCase {
     
-    func testUsesUpcomingEventsSpecification() throws {
+    func testFiltersEventsToSpecification() throws {
         let (first, second, third) = (FakeEvent.random, FakeEvent.random, FakeEvent.random)
         let specification = FilterSpecificEventSpecification(satisactoryEvent: second)
         let repository = FakeScheduleRepository()
@@ -24,6 +24,35 @@ class FilteredScheduleWidgetDataSourceTests: XCTestCase {
         let elementsEqual = expected.elementsEqual(actual, by: { $0.identifier == $1.identifier })
         
         XCTAssertTrue(elementsEqual, "Data source should be using the output of the filtered schedule")
+        
+        cancellable.cancel()
+    }
+    
+    func testCorrectlyRetainsScheduleForFutureUpdates_BUG() {
+        let event = FakeEvent.random
+        var dataSource: FilteredScheduleWidgetDataSource<FilterSpecificEventSpecification>!
+        weak var weakSchedule: FakeEventsSchedule?
+        
+        autoreleasepool {
+            let specification = FilterSpecificEventSpecification(satisactoryEvent: event)
+            let repository = FakeScheduleRepository()
+            dataSource = FilteredScheduleWidgetDataSource(repository: repository, specification: specification)
+            weakSchedule = repository.lastProducedSchedule
+        }
+        
+        weakSchedule?.simulateEventsChanged([event])
+        
+        var actual = [Event]()
+        let cancellable = dataSource
+            .events
+            .sink { (events) in
+                actual = events
+            }
+        
+        let expected: [Event] = [event]
+        let elementsEqual = expected.elementsEqual(actual, by: { $0.identifier == $1.identifier })
+        
+        XCTAssertTrue(elementsEqual, "Data source should retain schedule for future updates")
         
         cancellable.cancel()
     }
