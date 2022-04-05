@@ -1,4 +1,6 @@
-public protocol EventsWidgetViewModel {
+import ObservedObject
+
+public protocol EventsWidgetViewModel: ObservedObject {
     
     associatedtype Event: EventViewModel
     

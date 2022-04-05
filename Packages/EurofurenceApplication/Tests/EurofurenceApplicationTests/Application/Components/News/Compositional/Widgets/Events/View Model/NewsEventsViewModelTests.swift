@@ -141,6 +141,22 @@ class NewsEventsViewModelTests: XCTestCase {
         subscription.cancel()
     }
     
+    func testEventsChangeOverTimePublishesObjectChanged() throws {
+        var notifiedObjectDidChange = false
+
+        let subscription = viewModel
+            .objectDidChange
+            .sink { (_) in
+                notifiedObjectDidChange = true
+            }
+
+        eventsDataSource.simulateEventsChanged(to: [FakeEvent.random])
+        
+        XCTAssertTrue(notifiedObjectDidChange, "Upstream changes should propogate change notifications downstream")
+        
+        subscription.cancel()
+    }
+    
     private func eventViewModel(at index: Int) throws -> EventViewModelAdapter {
         struct EventNotProduced: Error { }
         guard viewModel.numberOfEvents > 0 else { throw EventNotProduced() }

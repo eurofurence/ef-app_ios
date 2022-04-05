@@ -1,6 +1,7 @@
 import Combine
 import ComponentBase
 import EurofurenceModel
+import ObservedObject
 
 public class DataSourceBackedEventsWidgetViewModel: EventsWidgetViewModel {
     
@@ -14,7 +15,7 @@ public class DataSourceBackedEventsWidgetViewModel: EventsWidgetViewModel {
     
     private let formatters: Formatters
     private var subscriptions = Set<AnyCancellable>()
-    private var events = [EurofurenceModel.Event]()
+    @Observed private var events = [EurofurenceModel.Event]()
     
     public struct Formatters {
         
