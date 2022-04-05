@@ -48,6 +48,41 @@ class ScheduleWithSpecificationShould: XCTestCase {
             .assertEvents(delegate.events, characterisedBy: [randomEvent.element])
     }
     
+    func testUpdatesResultsWhenEventIsFavourited() throws {
+        let syncResponse = ModelCharacteristics.randomWithoutDeletions
+        let randomEvent = syncResponse.events.changed.randomElement()
+        let context = EurofurenceSessionTestBuilder().build()
+        context.performSuccessfulSync(response: syncResponse)
+        let schedule = context.eventsService.loadSchedule(tag: "Test")
+        let specification = IsFavouriteEventSpecification()
+        schedule.filterSchedule(to: specification)
+        let delegate = CapturingScheduleDelegate()
+        schedule.setDelegate(delegate)
+        let event = try XCTUnwrap(schedule.loadEvent(identifier: EventIdentifier(randomEvent.element.identifier)))
+        event.favourite()
+        
+        try EventAssertion(context: context, modelCharacteristics: syncResponse)
+            .assertEvents(delegate.events, characterisedBy: [randomEvent.element])
+    }
+    
+    func testUpdatesResultsWhenEventIsUnfavourited() throws {
+        let syncResponse = ModelCharacteristics.randomWithoutDeletions
+        let randomEvent = syncResponse.events.changed.randomElement()
+        let context = EurofurenceSessionTestBuilder().build()
+        context.performSuccessfulSync(response: syncResponse)
+        let schedule = context.eventsService.loadSchedule(tag: "Test")
+        let specification = IsFavouriteEventSpecification()
+        schedule.filterSchedule(to: specification)
+        let delegate = CapturingScheduleDelegate()
+        schedule.setDelegate(delegate)
+        let event = try XCTUnwrap(schedule.loadEvent(identifier: EventIdentifier(randomEvent.element.identifier)))
+        event.favourite()
+        event.unfavourite()
+        
+        try EventAssertion(context: context, modelCharacteristics: syncResponse)
+            .assertEvents(delegate.events, characterisedBy: [])
+    }
+    
     private struct SpecificEventSpecification: Specification {
         
         let identifier: EventIdentifier

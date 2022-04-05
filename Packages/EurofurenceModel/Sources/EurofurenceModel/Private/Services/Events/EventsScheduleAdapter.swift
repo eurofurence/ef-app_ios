@@ -42,32 +42,60 @@ class EventsScheduleAdapter: Schedule, CustomStringConvertible {
 
     }
 
-    private struct UpdateCurrentDayWhenTimePasses: EventConsumer {
+    private class UpdateCurrentDayWhenTimePasses: EventConsumer {
 
-        private unowned let scheduleAdapter: EventsScheduleAdapter
+        private weak var scheduleAdapter: EventsScheduleAdapter?
 
         init(scheduleAdapter: EventsScheduleAdapter) {
             self.scheduleAdapter = scheduleAdapter
         }
 
         func consume(event: DomainEvent.SignificantTimePassedEvent) {
-            scheduleAdapter.updateCurrentDay()
+            scheduleAdapter?.updateCurrentDay()
         }
 
     }
 
-    private struct UpdateAdapterWhenScheduleChanges: EventConsumer {
+    private class UpdateAdapterWhenScheduleChanges: EventConsumer {
 
-        private unowned let scheduleAdapter: EventsScheduleAdapter
+        private weak var scheduleAdapter: EventsScheduleAdapter?
 
         init(scheduleAdapter: EventsScheduleAdapter) {
             self.scheduleAdapter = scheduleAdapter
         }
 
         func consume(event: DomainEvent.EventsChanged) {
-            scheduleAdapter.updateFromSchedule()
+            scheduleAdapter?.updateFromSchedule()
         }
 
+    }
+    
+    private class UpdateAdapterWhenEventFavourited: EventConsumer {
+        
+        private weak var scheduleAdapter: EventsScheduleAdapter?
+
+        init(scheduleAdapter: EventsScheduleAdapter) {
+            self.scheduleAdapter = scheduleAdapter
+        }
+        
+        func consume(event: DomainEvent.EventAddedToFavourites) {
+            scheduleAdapter?.updateFromSchedule()
+        }
+        
+    }
+    
+    private class UpdateAdapterWhenEventUnfavourited: EventConsumer {
+        
+        private weak var scheduleAdapter: EventsScheduleAdapter?
+
+        init(scheduleAdapter: EventsScheduleAdapter) {
+            self.scheduleAdapter = scheduleAdapter
+        }
+        
+        func consume(event: DomainEvent.EventRemovedFromFavourites) {
+            scheduleAdapter?.updateFromSchedule()
+        }
+        
     }
     
     private var subscriptions = Set<AnyHashable>()
@@ -81,12 +109,10 @@ class EventsScheduleAdapter: Schedule, CustomStringConvertible {
 
         subscriptions.insert(eventBus.subscribe(consumer: UpdateAdapterWhenScheduleChanges(scheduleAdapter: self)))
         subscriptions.insert(eventBus.subscribe(consumer: UpdateCurrentDayWhenTimePasses(scheduleAdapter: self)))
+        subscriptions.insert(eventBus.subscribe(consumer: UpdateAdapterWhenEventFavourited(scheduleAdapter: self)))
+        subscriptions.insert(eventBus.subscribe(consumer: UpdateAdapterWhenEventUnfavourited(scheduleAdapter: self)))
         regenerateSchedule()
         updateCurrentDay()
-    }
-    
-    deinit {
-        print("")
     }
     
     var description: String {
