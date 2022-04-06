@@ -44,18 +44,25 @@ public class EventsNewsWidgetTableViewDataSource<T>: NSObject, TableViewMediator
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeue(EventTableViewCell.self)
+        let cell = tableView.dequeue(EventTableViewCell.self, for: indexPath)
+        cell.subscriptions.removeAll()
+        
         let event = viewModel.event(at: indexPath.row)
         cell.setEventName(event.name)
         cell.setLocation(event.location)
         cell.setEventStartTime(event.startTime)
         cell.setEventEndTime(event.endTime)
         
-        if event.isFavourite {
-            cell.showFavouriteEventIndicator()
-        } else {
-            cell.hideFavouriteEventIndicator()
-        }
+        event
+            .publisher(for: \.isFavourite)
+            .sink { [weak cell] (isFavourite) in
+                if isFavourite {
+                    cell?.showFavouriteEventIndicator()
+                } else {
+                    cell?.hideFavouriteEventIndicator()
+                }
+            }
+            .store(in: &cell.subscriptions)
         
         if event.isSponsorOnly {
             cell.showSponsorEventIndicator()

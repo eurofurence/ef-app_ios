@@ -1,6 +1,10 @@
+import Combine
 import UIKit
 
 public class EventTableViewCell: UITableViewCell, ScheduleEventComponent {
+    
+    // TODO: Needs encapsulating!
+    public var subscriptions = Set<AnyCancellable>()
     
     override public class func registerNib(in tableView: UITableView) {
         registerNib(in: tableView, bundle: .module)

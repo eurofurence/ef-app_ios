@@ -35,19 +35,28 @@ class EventsNewsWidgetTableViewDataSourceTests: XCTestCase {
         self.dataSource?.delegate = delegate
     }
     
+    private func dequeueCell(at firstSectionFirstRow: IndexPath) throws -> EventTableViewCell {
+        let cell = dataSource?.tableView(tableView, cellForRowAt: firstSectionFirstRow)
+        return try XCTUnwrap(cell as? EventTableViewCell)
+    }
+    
     private func dequeueSingleViewModelTestCell() throws -> EventTableViewCell {
         let firstSectionFirstRow: IndexPath = IndexPath(row: 0, section: 0)
-        let cell = dataSource?.tableView(tableView, cellForRowAt: firstSectionFirstRow)
-        
-        return try XCTUnwrap(cell as? EventTableViewCell)
+        return try dequeueCell(at: firstSectionFirstRow)
     }
     
     private func findBindingTarget<T>(
         accessibilityIdentifier: String
     ) throws -> T where T: UIView {
         let cell = try dequeueSingleViewModelTestCell()
-        let interfaceElement: T? = cell.viewWithAccessibilityIdentifier(accessibilityIdentifier)
-        
+        return try findBindingTarget(in: cell, accessibilityIdentifier: accessibilityIdentifier)
+    }
+    
+    private func findBindingTarget<T>(
+        in parent: UIView,
+        accessibilityIdentifier: String
+    ) throws -> T where T: UIView {
+        let interfaceElement: T? = parent.viewWithAccessibilityIdentifier(accessibilityIdentifier)
         return try XCTUnwrap(interfaceElement)
     }
     
@@ -267,6 +276,18 @@ class EventsNewsWidgetTableViewDataSourceTests: XCTestCase {
         dataSource?.tableView?(tableView, didSelectRowAt: IndexPath(row: 1, section: 2))
         
         XCTAssertEqual(1, viewModel.selectedEventIndex)
+    }
+    
+    func testCellTransitionsFromNotFavouriteToFavourite() throws {
+        let eventViewModel = FakeEventViewModel()
+        eventViewModel.isFavourite = false
+        prepareDataSource(events: [eventViewModel])
+        
+        let isFavouriteView: UIView = try findBindingTarget(accessibilityIdentifier: "Event_IsFavourite")
+        
+        eventViewModel.isFavourite = true
+        
+        XCTAssertFalse(isFavouriteView.isHidden)
     }
     
     private func assertViewModel(
