@@ -228,7 +228,7 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory {
         private func updateSearchSpecification() {
             let querySpecification = EventContainsSearchTermSpecification(query: query)
             if isFilteringToFavourites {
-                let specification = querySpecification.and(IsFavouriteEventSpecification())
+                let specification = querySpecification && IsFavouriteEventSpecification()
                 searchController.filterSchedule(to: specification)
             } else {
                 searchController.filterSchedule(to: querySpecification)

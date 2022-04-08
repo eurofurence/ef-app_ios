@@ -11,6 +11,7 @@ public class Theme {
     
     public func apply(to tableView: UITableView) {
         if #available(iOS 15, *) {
+            tableView.fillerRowHeight = 0
             tableView.sectionHeaderTopPadding = 0
         }
     }

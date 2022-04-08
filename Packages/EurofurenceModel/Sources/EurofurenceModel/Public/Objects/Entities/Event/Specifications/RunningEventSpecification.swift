@@ -8,6 +8,10 @@ public struct RunningEventSpecification: Specification {
     
     private let clock: Clock
     
+    public init() {
+        self.init(clock: SystemClock.shared)
+    }
+    
     public init(clock: Clock) {
         self.clock = clock
     }

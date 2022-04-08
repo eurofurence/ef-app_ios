@@ -27,6 +27,14 @@ extension AndSpecification: Specification {
 
 // MARK: Convenience Creation
 
+@inline(__always)
+public func && <
+    S1: Specification,
+    S2: Specification
+> (_ s1: S1, _ s2: S2) -> AndSpecification<S1, S2> where S1.Element == S2.Element {
+    s1.and(s2)
+}
+
 extension Specification {
     
     public func and<Other: Specification>(

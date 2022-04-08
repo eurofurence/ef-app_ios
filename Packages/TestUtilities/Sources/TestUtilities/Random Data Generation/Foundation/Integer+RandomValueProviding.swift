@@ -3,11 +3,11 @@ import Foundation
 public extension BinaryInteger {
 
     static var random: Self {
-        return Self(arc4random())
+        return Self(UInt32.random(upperLimit: .max))
     }
 
     static func random(upperLimit: UInt32) -> Self {
-        return Self(arc4random_uniform(upperLimit))
+        return Self(UInt32.random(in: 0..<upperLimit))
     }
 
 }

@@ -93,7 +93,7 @@ class WhenBindingEvent_NewsPresenterShould: XCTestCase {
         viewModel.stub(.event(event), at: indexPath)
         context.selectComponent(at: indexPath)
 
-        XCTAssertEqual(event.identifier, context.delegate.capturedEvent?.identifier)
+        XCTAssertEqual(event.identifier, context.delegate.capturedEvent)
     }
 
 }

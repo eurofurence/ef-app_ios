@@ -4,9 +4,12 @@ public class FakeEventsSchedule: Schedule {
 
     public var events: [Event]
     public var currentDay: Day?
+    
+    private let originalEvents: [Event]
 
     public init(events: [Event] = [FakeEvent].random, currentDay: Day? = .random) {
         self.events = events
+        self.originalEvents = events
         self.currentDay = currentDay
     }
     
@@ -30,8 +33,8 @@ public class FakeEventsSchedule: Schedule {
     public func filterSchedule<S>(to specification: S) where S: Specification, S.Element == Event {
         self.specification = specification.eraseToAnySpecification()
         
-        let filteredEvents = events.filter(specification.isSatisfied(by:))
-        delegate?.scheduleEventsDidChange(to: filteredEvents)
+        events = events.filter(specification.isSatisfied(by:))
+        delegate?.scheduleEventsDidChange(to: events)
     }
 
 }

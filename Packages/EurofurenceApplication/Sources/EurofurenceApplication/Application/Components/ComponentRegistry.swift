@@ -67,7 +67,9 @@ struct ComponentRegistry {
         )
         
         if dependencies.isCompositionalNewsComponentEnabled {
-            newsComponentFactory = CompositionalNewsComponentBuilder().build()
+            newsComponentFactory = CompositionalNewsComponentDefaultWidgetsBuilder(
+                services: services
+            ).buildNewsComponent()
         } else {
             newsComponentFactory = NewsComponentBuilder(
                 newsViewModelProduer: newsViewModelProducer

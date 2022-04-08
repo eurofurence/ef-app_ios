@@ -1,6 +1,10 @@
+import Combine
 import UIKit
 
 public class EventTableViewCell: UITableViewCell, ScheduleEventComponent {
+    
+    // TODO: Needs encapsulating!
+    public var subscriptions = Set<AnyCancellable>()
     
     override public class func registerNib(in tableView: UITableView) {
         registerNib(in: tableView, bundle: .module)
@@ -8,20 +12,85 @@ public class EventTableViewCell: UITableViewCell, ScheduleEventComponent {
 
     // MARK: IBOutlets
 
-    @IBOutlet private weak var startTimeLabel: UILabel!
-    @IBOutlet private weak var endTimeLabel: UILabel!
-    @IBOutlet private weak var favouritedEventIndicator: UIView!
-    @IBOutlet private weak var eventNameLabel: UILabel!
-    @IBOutlet private weak var locationLabel: UILabel!
+    @IBOutlet private weak var eventNameLabel: UILabel! {
+        didSet {
+            eventNameLabel.accessibilityIdentifier = "Event_Title"
+        }
+    }
+    
+    @IBOutlet private weak var locationLabel: UILabel! {
+        didSet {
+            locationLabel.accessibilityIdentifier = "Event_Location"
+        }
+    }
+    
+    @IBOutlet private weak var startTimeLabel: UILabel! {
+        didSet {
+            startTimeLabel.accessibilityIdentifier = "Event_StartTime"
+        }
+    }
+    
+    @IBOutlet private weak var endTimeLabel: UILabel! {
+        didSet {
+            endTimeLabel.accessibilityIdentifier = "Event_EndTime"
+        }
+    }
+    
+    @IBOutlet private weak var favouritedEventIndicator: UIView! {
+        didSet {
+            favouritedEventIndicator.accessibilityIdentifier = "Event_IsFavourite"
+        }
+    }
+    
+    @IBOutlet private weak var sponsorEventIndicator: UILabel! {
+        didSet {
+            sponsorEventIndicator.accessibilityIdentifier = "Event_IsSponsorOnly"
+        }
+    }
+    
+    @IBOutlet private weak var superSponsorEventIndicator: UILabel! {
+        didSet {
+            superSponsorEventIndicator.accessibilityIdentifier = "Event_IsSuperSponsorOnly"
+        }
+    }
+    
+    @IBOutlet private weak var artShowIndicatorView: UILabel! {
+        didSet {
+            artShowIndicatorView.accessibilityIdentifier = "Event_IsArtShow"
+        }
+    }
+    
+    @IBOutlet private weak var kageBugIndicatorView: UILabel! {
+        didSet {
+            kageBugIndicatorView.accessibilityIdentifier = "Event_KageBug"
+        }
+    }
+    
+    @IBOutlet private weak var kageWineGlassIndicatorView: UILabel! {
+        didSet {
+            kageWineGlassIndicatorView.accessibilityIdentifier = "Event_KageWineGlass"
+        }
+    }
+    
+    @IBOutlet private weak var dealersDenIndicatorView: UILabel! {
+        didSet {
+            dealersDenIndicatorView.accessibilityIdentifier = "Event_IsDealersDen"
+        }
+    }
+    
+    @IBOutlet private weak var mainStageIndicatorView: UILabel! {
+        didSet {
+            mainStageIndicatorView.accessibilityIdentifier = "Event_IsMainStage"
+        }
+    }
+    
+    @IBOutlet private weak var photoshootIndicatorView: UILabel! {
+        didSet {
+            photoshootIndicatorView.accessibilityIdentifier = "Event_IsPhotoshoot"
+        }
+    }
+    
     @IBOutlet private weak var eventBannerImageView: UIImageView!
-    @IBOutlet private weak var sponsorEventIndicator: UILabel!
-    @IBOutlet private weak var superSponsorEventIndicator: UILabel!
-    @IBOutlet private weak var artShowIndicatorView: UILabel!
-    @IBOutlet private weak var kageBugIndicatorView: UILabel!
-    @IBOutlet private weak var kageWineGlassIndicatorView: UILabel!
-    @IBOutlet private weak var dealersDenIndicatorView: UILabel!
-    @IBOutlet private weak var mainStageIndicatorView: UILabel!
-    @IBOutlet private weak var photoshootIndicatorView: UILabel!
 
     // MARK: Overrides
 

@@ -42,32 +42,60 @@ class EventsScheduleAdapter: Schedule, CustomStringConvertible {
 
     }
 
-    private struct UpdateCurrentDayWhenTimePasses: EventConsumer {
+    private class UpdateCurrentDayWhenTimePasses: EventConsumer {
 
-        private unowned let scheduleAdapter: EventsScheduleAdapter
+        private weak var scheduleAdapter: EventsScheduleAdapter?
 
         init(scheduleAdapter: EventsScheduleAdapter) {
             self.scheduleAdapter = scheduleAdapter
         }
 
         func consume(event: DomainEvent.SignificantTimePassedEvent) {
-            scheduleAdapter.updateCurrentDay()
+            scheduleAdapter?.updateCurrentDay()
         }
 
     }
 
-    private struct UpdateAdapterWhenScheduleChanges: EventConsumer {
+    private class UpdateAdapterWhenScheduleChanges: EventConsumer {
 
-        private unowned let scheduleAdapter: EventsScheduleAdapter
+        private weak var scheduleAdapter: EventsScheduleAdapter?
 
         init(scheduleAdapter: EventsScheduleAdapter) {
             self.scheduleAdapter = scheduleAdapter
         }
 
         func consume(event: DomainEvent.EventsChanged) {
-            scheduleAdapter.updateFromSchedule()
+            scheduleAdapter?.updateFromSchedule()
         }
 
+    }
+    
+    private class UpdateAdapterWhenEventFavourited: EventConsumer {
+        
+        private weak var scheduleAdapter: EventsScheduleAdapter?
+
+        init(scheduleAdapter: EventsScheduleAdapter) {
+            self.scheduleAdapter = scheduleAdapter
+        }
+        
+        func consume(event: DomainEvent.EventAddedToFavourites) {
+            scheduleAdapter?.updateFromSchedule()
+        }
+        
+    }
+    
+    private class UpdateAdapterWhenEventUnfavourited: EventConsumer {
+        
+        private weak var scheduleAdapter: EventsScheduleAdapter?
+
+        init(scheduleAdapter: EventsScheduleAdapter) {
+            self.scheduleAdapter = scheduleAdapter
+        }
+        
+        func consume(event: DomainEvent.EventRemovedFromFavourites) {
+            scheduleAdapter?.updateFromSchedule()
+        }
+        
     }
     
     private var subscriptions = Set<AnyHashable>()
@@ -81,12 +109,10 @@ class EventsScheduleAdapter: Schedule, CustomStringConvertible {
 
         subscriptions.insert(eventBus.subscribe(consumer: UpdateAdapterWhenScheduleChanges(scheduleAdapter: self)))
         subscriptions.insert(eventBus.subscribe(consumer: UpdateCurrentDayWhenTimePasses(scheduleAdapter: self)))
+        subscriptions.insert(eventBus.subscribe(consumer: UpdateAdapterWhenEventFavourited(scheduleAdapter: self)))
+        subscriptions.insert(eventBus.subscribe(consumer: UpdateAdapterWhenEventUnfavourited(scheduleAdapter: self)))
         regenerateSchedule()
         updateCurrentDay()
-    }
-    
-    deinit {
-        print("")
     }
     
     var description: String {
@@ -111,7 +137,11 @@ class EventsScheduleAdapter: Schedule, CustomStringConvertible {
         restrictScheduleToEvents(on: day)
     }
     
+    private var specification: AnySpecification<Event>?
+    
     func filterSchedule<S>(to specification: S) where S: Specification, S.Element == Event {
+        self.specification = specification.eraseToAnySpecification()
+        
         events = schedule.eventModels.filter(specification.isSatisfied(by:))
         delegate?.scheduleEventsDidChange(to: events)
     }
@@ -131,20 +161,32 @@ class EventsScheduleAdapter: Schedule, CustomStringConvertible {
 
     private func updateCurrentDay() {
         if let day = findDay(for: clock.currentDate) {
-            currentDay = Day(date: day.date)
-            restrictScheduleToEvents(on: day)
+            let conferenceDay = Day(date: day.date)
+            if conferenceDay != currentDay {
+                currentDay = conferenceDay
+            }
         } else {
             currentDay = nil
         }
     }
 
     private func regenerateSchedule() {
+        let previousResults = events.map(\.identifier)
+        
         var allEvents = schedule.eventModels
         filters.forEach { (filter) in
             allEvents = allEvents.filter(filter.shouldFilter)
         }
 
+        if let specification = specification {
+            allEvents = allEvents.filter(specification.isSatisfied(by:))
+        }
+        
         events = allEvents.sorted(by: { $0.startDate < $1.startDate })
+        let newResults = events.map(\.identifier)
+        
+        guard previousResults != newResults else { return }
+        
         delegate?.scheduleEventsDidChange(to: events)
     }
 

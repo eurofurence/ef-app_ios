@@ -35,18 +35,4 @@ class WhenAppLaunchesWhenClockReadsConferenceDay_ScheduleShould: XCTestCase {
             .assertDay(delegate.capturedCurrentDay, characterisedBy: randomDay)
     }
 
-    func testProvideEventsForThatDay() throws {
-        let response = ModelCharacteristics.randomWithoutDeletions
-        let randomDay = response.conferenceDays.changed.randomElement().element
-        let dataStore = InMemoryDataStore(response: response)
-        let context = EurofurenceSessionTestBuilder().with(dataStore).with(randomDay.date).build()
-        let schedule = context.eventsService.loadSchedule(tag: "Test")
-        let delegate = CapturingScheduleDelegate()
-        schedule.setDelegate(delegate)
-        let expectedEvents = response.events.changed.filter({ $0.dayIdentifier == randomDay.identifier })
-
-        try EventAssertion(context: context, modelCharacteristics: response)
-            .assertEvents(delegate.events, characterisedBy: expectedEvents)
-    }
-
 }
