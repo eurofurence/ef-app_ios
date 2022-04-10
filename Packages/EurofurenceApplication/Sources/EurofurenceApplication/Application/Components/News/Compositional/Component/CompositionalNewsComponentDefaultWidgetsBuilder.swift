@@ -7,11 +7,23 @@ struct CompositionalNewsComponentDefaultWidgetsBuilder {
     private let builder = CompositionalNewsComponentBuilder()
     
     func buildNewsComponent() -> any NewsComponentFactory {
+        addPersonalisedWidget()
         addUpcomingEventsWidget()
         addRunningEventsWidget()
         addTodaysFavouriteEventsWidget()
         
         return builder.build()
+    }
+    
+    private func addPersonalisedWidget() {
+        let dataSource = YourEurofurenceDataSourceServiceAdapter(
+            authenticationService: services.authentication,
+            privateMessagesService: services.privateMessages
+        )
+        
+        let viewModelFactory = YourEurofurenceWidgetViewModelFactory(dataSource: dataSource)
+        let widget = MVVMWidget(viewModelFactory: viewModelFactory, viewFactory: YourEurofurenceWidgetViewFactory())
+        _ = builder.with(widget)
     }
     
     private func addUpcomingEventsWidget() {
