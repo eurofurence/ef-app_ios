@@ -1,4 +1,5 @@
 import Combine
+import ComponentBase
 import UIKit
 
 public class YourEurofurenceWidgetTableViewDataSource<
@@ -15,6 +16,7 @@ public class YourEurofurenceWidgetTableViewDataSource<
     public var delegate: TableViewMediatorDelegate?
     
     public func registerReusableViews(into tableView: UITableView) {
+        tableView.registerConventionBrandedHeader()
         tableView.register(NewsUserWidgetTableViewCell.self)
     }
     
@@ -53,6 +55,13 @@ public class YourEurofurenceWidgetTableViewDataSource<
             .store(in: &subscriptions)
         
         return cell
+    }
+    
+    public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = tableView.dequeueConventionBrandedHeader()
+        headerView.textLabel?.text = .yourEurofurence
+        
+        return headerView
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

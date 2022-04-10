@@ -1,3 +1,4 @@
+import ComponentBase
 import EurofurenceApplication
 import ObservedObject
 import XCTest
@@ -20,6 +21,13 @@ class YourEurofurenceWidgetTableViewDataSourceTests: XCTestCase {
     
     func testHasOneRow() {
         XCTAssertEqual(1, dataSource.tableView(tableView, numberOfRowsInSection: 0))
+    }
+    
+    func testHasYourEurofurenceHeader() throws {
+        let sectionHeaderView = dataSource.tableView(tableView, viewForHeaderInSection: 0)
+        let headerView = try XCTUnwrap(sectionHeaderView as? ConventionBrandedTableViewHeaderFooterView)
+        
+        XCTAssertEqual(String.yourEurofurence, headerView.textLabel?.text)
     }
     
     func testBindsInitialPrompt() throws {
