@@ -53,6 +53,30 @@ class YourEurofurenceWidgetTableViewDataSourceTests: XCTestCase {
         XCTAssertFalse(normalUserView.isHidden)
     }
     
+    func testBindsUpdatedPrompt() throws {
+        let promptLabel: UILabel = try findBindingTarget("Personalised_Prompt")
+        viewModel.prompt = "Welcome, Some Guy"
+        
+        XCTAssertEqual("Welcome, Some Guy", promptLabel.text)
+    }
+    
+    func testBindsUpdatedSupplementaryPrompt() throws {
+        let supplementaryPromptLabel: UILabel = try findBindingTarget("Personalised_SupplementaryPrompt")
+        viewModel.supplementaryPrompt = "You have (69) new messages"
+        
+        XCTAssertEqual("You have (69) new messages", supplementaryPromptLabel.text)
+    }
+    
+    func testBindsUpdatedHighlightedState() throws {
+        viewModel.isHighlightedForAttention = false
+        let highlightedUserView: UIView = try findBindingTarget("Personalised_UserHighlightedIcon")
+        let normalUserView: UIView = try findBindingTarget("Personalised_UserIcon")
+        viewModel.isHighlightedForAttention = true
+        
+        XCTAssertFalse(highlightedUserView.isHidden)
+        XCTAssertTrue(normalUserView.isHidden)
+    }
+    
     private func findBindingTarget<View>(_ accessibilityIdentifier: String) throws -> View where View: UIView {
         let firstRowFirstSection = IndexPath(row: 0, section: 0)
         let cell = dataSource.tableView(tableView, cellForRowAt: firstRowFirstSection)
