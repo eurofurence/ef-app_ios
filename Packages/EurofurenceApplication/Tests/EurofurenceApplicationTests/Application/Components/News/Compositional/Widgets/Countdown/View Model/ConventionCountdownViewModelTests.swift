@@ -7,45 +7,42 @@ import XCTRouter
 
 class ConventionCountdownViewModelTests: XCTestCase {
     
-    func testOneDayUntilConvention() {
-        let dataSource = ControllableConventionCountdownDataSource()
-        dataSource.simulateCountdownState(.countingDown(days: 1))
+    private var dataSource: ControllableConventionCountdownDataSource!
+    private var router: FakeContentRouter!
+    private var viewModel: DataSourceBackedConventionCountdownViewModel!
+    
+    override func setUp() {
+        super.setUp()
+        
+        dataSource = ControllableConventionCountdownDataSource()
         let viewModelFactory = ConventionCountdownViewModelFactory(dataSource: dataSource)
-        let router = FakeContentRouter()
-        let viewModel = viewModelFactory.makeViewModel(router: router)
+        router = FakeContentRouter()
+        viewModel = viewModelFactory.makeViewModel(router: router)
+    }
+    
+    func testOneDayUntilConvention() {
+        dataSource.simulateCountdownState(.countingDown(days: 1))
         
         XCTAssertTrue(viewModel.showCountdown)
         XCTAssertEqual("1 day remaining", viewModel.countdownDescription)
     }
     
     func testMultipleDaysUntilConvention() {
-        let dataSource = ControllableConventionCountdownDataSource()
         dataSource.simulateCountdownState(.countingDown(days: 2))
-        let viewModelFactory = ConventionCountdownViewModelFactory(dataSource: dataSource)
-        let router = FakeContentRouter()
-        let viewModel = viewModelFactory.makeViewModel(router: router)
         
         XCTAssertTrue(viewModel.showCountdown)
         XCTAssertEqual("2 days remaining", viewModel.countdownDescription)
     }
     
     func testCountdownElapsed() {
-        let dataSource = ControllableConventionCountdownDataSource()
         dataSource.simulateCountdownState(.elapsed)
-        let viewModelFactory = ConventionCountdownViewModelFactory(dataSource: dataSource)
-        let router = FakeContentRouter()
-        let viewModel = viewModelFactory.makeViewModel(router: router)
         
         XCTAssertFalse(viewModel.showCountdown)
         XCTAssertNil(viewModel.countdownDescription)
     }
     
     func testTransitioningFromOneDayUntilCountdownElapsed() {
-        let dataSource = ControllableConventionCountdownDataSource()
         dataSource.simulateCountdownState(.countingDown(days: 1))
-        let viewModelFactory = ConventionCountdownViewModelFactory(dataSource: dataSource)
-        let router = FakeContentRouter()
-        let viewModel = viewModelFactory.makeViewModel(router: router)
         dataSource.simulateCountdownState(.elapsed)
         
         XCTAssertFalse(viewModel.showCountdown)
@@ -53,15 +50,31 @@ class ConventionCountdownViewModelTests: XCTestCase {
     }
     
     func testTransitioningFromCountdownElapsedToNextConCountdown() {
-        let dataSource = ControllableConventionCountdownDataSource()
         dataSource.simulateCountdownState(.elapsed)
-        let viewModelFactory = ConventionCountdownViewModelFactory(dataSource: dataSource)
-        let router = FakeContentRouter()
-        let viewModel = viewModelFactory.makeViewModel(router: router)
         dataSource.simulateCountdownState(.countingDown(days: 330))
         
         XCTAssertTrue(viewModel.showCountdown)
         XCTAssertEqual("330 days remaining", viewModel.countdownDescription)
+    }
+    
+    func testShowCountdownAndDescriptionSendObjectDidChangeUpdates() {
+        let showCountdown = viewModel.publisher(for: \.showCountdown, options: [])
+        let coundownDescription = viewModel.publisher(for: \.countdownDescription, options: [])
+        
+        var objectChangedSent = false
+        let subscription = showCountdown
+            .combineLatest(coundownDescription)
+            .sink { (_, _) in
+                objectChangedSent = true
+            }
+        
+        defer {
+            subscription.cancel()
+        }
+        
+        dataSource.simulateCountdownState(.countingDown(days: 1))
+        
+        XCTAssertTrue(objectChangedSent)
     }
     
     private class ControllableConventionCountdownDataSource: ConventionCountdownDataSource {

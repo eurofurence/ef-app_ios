@@ -1,11 +1,12 @@
 import Combine
+import ObservedObject
 
 public class DataSourceBackedConventionCountdownViewModel: ConventionCountdownViewModel {
     
     private var subscriptions = Set<AnyCancellable>()
     
-    public var showCountdown: Bool = true
-    public var countdownDescription: String?
+    @Observed public private(set) var showCountdown: Bool = true
+    @Observed public private(set) var countdownDescription: String?
     
     init<DataSource>(dataSource: DataSource) where DataSource: ConventionCountdownDataSource {
         dataSource
