@@ -1,4 +1,5 @@
 import Combine
+import ComponentBase
 import EurofurenceApplication
 import ObservedObject
 import UIKit
@@ -30,6 +31,13 @@ class ConventionCountdownTableViewDataSourceTests: XCTestCase {
         viewModel.showCountdown = false
         
         XCTAssertEqual(0, dataSource.tableView(tableView, numberOfRowsInSection: 0))
+    }
+    
+    func testHasConventionCountdownHeader() throws {
+        let sectionHeaderView = dataSource.tableView(tableView, viewForHeaderInSection: 0)
+        let headerView = try XCTUnwrap(sectionHeaderView as? ConventionBrandedTableViewHeaderFooterView)
+        
+        XCTAssertEqual(String.daysUntilConvention, headerView.textLabel?.text)
     }
     
     func testShowCountdownChangesSendsSectionChangedUpdate() {

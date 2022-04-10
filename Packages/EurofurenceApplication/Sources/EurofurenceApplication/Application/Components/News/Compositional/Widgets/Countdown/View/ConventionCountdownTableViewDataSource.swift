@@ -26,6 +26,7 @@ public class ConventionCountdownTableViewDataSource<
     public var delegate: TableViewMediatorDelegate?
     
     public func registerReusableViews(into tableView: UITableView) {
+        tableView.registerConventionBrandedHeader()
         tableView.register(NewsConventionCountdownTableViewCell.self)
     }
     
@@ -45,6 +46,13 @@ public class ConventionCountdownTableViewDataSource<
             .store(in: &subscriptions)
         
         return cell
+    }
+    
+    public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = tableView.dequeueConventionBrandedHeader()
+        headerView.textLabel?.text = .daysUntilConvention
+        
+        return headerView
     }
     
 }
