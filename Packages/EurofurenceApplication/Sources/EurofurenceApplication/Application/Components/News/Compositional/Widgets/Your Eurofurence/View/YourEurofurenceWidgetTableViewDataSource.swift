@@ -55,4 +55,8 @@ public class YourEurofurenceWidgetTableViewDataSource<
         return cell
     }
     
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.showPersonalisedContent()
+    }
+    
 }

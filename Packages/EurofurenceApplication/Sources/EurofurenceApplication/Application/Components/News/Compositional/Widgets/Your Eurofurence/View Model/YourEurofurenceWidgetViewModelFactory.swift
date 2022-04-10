@@ -13,7 +13,7 @@ public struct YourEurofurenceWidgetViewModelFactory<
     public typealias ViewModel = DataSourceBackedYourEurofurenceWidgetViewModel
     
     public func makeViewModel(router: Router) -> ViewModel {
-        DataSourceBackedYourEurofurenceWidgetViewModel(dataSource: dataSource)
+        DataSourceBackedYourEurofurenceWidgetViewModel(dataSource: dataSource, router: router)
     }
     
 }

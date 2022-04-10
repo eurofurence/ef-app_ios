@@ -78,6 +78,16 @@ class YourEurofurenceWidgetTableViewDataSourceTests: XCTestCase {
         XCTAssertTrue(normalUserView.isHidden)
     }
     
+    func testSelectingCellNotifiesViewModel() throws {
+        let firstRowFirstSection = IndexPath(row: 0, section: 0)
+        
+        XCTAssertFalse(viewModel.didShowPersonalisedContent)
+        
+        dataSource.tableView(tableView, didSelectRowAt: firstRowFirstSection)
+        
+        XCTAssertTrue(viewModel.didShowPersonalisedContent)
+    }
+    
     private func findBindingTarget<View>(_ accessibilityIdentifier: String) throws -> View where View: UIView {
         let firstRowFirstSection = IndexPath(row: 0, section: 0)
         let cell = dataSource.tableView(tableView, cellForRowAt: firstRowFirstSection)
@@ -92,6 +102,11 @@ class YourEurofurenceWidgetTableViewDataSourceTests: XCTestCase {
         @Observed var prompt: String = ""
         @Observed var supplementaryPrompt: String = ""
         @Observed var isHighlightedForAttention: Bool = false
+        
+        private(set) var didShowPersonalisedContent = false
+        func showPersonalisedContent() {
+            didShowPersonalisedContent = true
+        }
         
     }
     

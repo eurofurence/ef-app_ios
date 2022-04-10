@@ -7,19 +7,24 @@ import XCTRouter
 
 class YourEurofurenceWidgetViewModelTests: XCTestCase {
     
-    private func makeViewModel(
-        dataSource: StubYourEurofurenceDataSource
-    ) -> DataSourceBackedYourEurofurenceWidgetViewModel {
-        let factory = YourEurofurenceWidgetViewModelFactory(dataSource: dataSource)
-        let router = FakeContentRouter()
+    private var dataSource: StubYourEurofurenceDataSource!
+    private var router: FakeContentRouter!
+    
+    override func setUp() {
+        super.setUp()
         
+        dataSource = StubYourEurofurenceDataSource()
+        router = FakeContentRouter()
+    }
+    
+    private func makeViewModel() -> DataSourceBackedYourEurofurenceWidgetViewModel {
+        let factory = YourEurofurenceWidgetViewModelFactory(dataSource: dataSource)
         return factory.makeViewModel(router: router)
     }
     
     func testUnauthenticatedUser() {
-        let dataSource = StubYourEurofurenceDataSource()
         dataSource.enterState(nil)
-        let viewModel = makeViewModel(dataSource: dataSource)
+        let viewModel = makeViewModel()
         
         XCTAssertEqual(String.anonymousUserLoginPrompt, viewModel.prompt)
         XCTAssertEqual(String.anonymousUserLoginDescription, viewModel.supplementaryPrompt)
@@ -27,9 +32,8 @@ class YourEurofurenceWidgetViewModelTests: XCTestCase {
     }
     
     func testAuthenticatedUser_NoNewMessages() {
-        let dataSource = StubYourEurofurenceDataSource()
         dataSource.enterState(AuthenticatedUserSummary(regNumber: 42, username: "User", unreadMessageCount: 0))
-        let viewModel = makeViewModel(dataSource: dataSource)
+        let viewModel = makeViewModel()
         
         XCTAssertEqual("Welcome, User (42)", viewModel.prompt)
         XCTAssertEqual("You have no unread messages", viewModel.supplementaryPrompt)
@@ -37,9 +41,8 @@ class YourEurofurenceWidgetViewModelTests: XCTestCase {
     }
     
     func testAuthenticatedUser_OneNewMessage() {
-        let dataSource = StubYourEurofurenceDataSource()
         dataSource.enterState(AuthenticatedUserSummary(regNumber: 12, username: "Some Guy", unreadMessageCount: 1))
-        let viewModel = makeViewModel(dataSource: dataSource)
+        let viewModel = makeViewModel()
         
         XCTAssertEqual("Welcome, Some Guy (12)", viewModel.prompt)
         XCTAssertEqual("You have 1 unread message", viewModel.supplementaryPrompt)
@@ -47,8 +50,7 @@ class YourEurofurenceWidgetViewModelTests: XCTestCase {
     }
     
     func testSendsUpdateNotificationsWhenPropertiesUpdate() {
-        let dataSource = StubYourEurofurenceDataSource()
-        let viewModel = makeViewModel(dataSource: dataSource)
+        let viewModel = makeViewModel()
         
         let promptPublisher = viewModel.publisher(for: \.prompt, options: [])
         let supplementaryPromptPublisher = viewModel.publisher(for: \.supplementaryPrompt, options: [])
@@ -83,23 +85,19 @@ class YourEurofurenceWidgetViewModelTests: XCTestCase {
     }
     
     func testAuthenticatedUser_MultipleNewMessages() {
-        let dataSource = StubYourEurofurenceDataSource()
         dataSource.enterState(AuthenticatedUserSummary(regNumber: 18, username: "A Person", unreadMessageCount: 10))
-        let viewModel = makeViewModel(dataSource: dataSource)
+        let viewModel = makeViewModel()
         
         XCTAssertEqual("Welcome, A Person (18)", viewModel.prompt)
         XCTAssertEqual("You have 10 unread messages", viewModel.supplementaryPrompt)
         XCTAssertTrue(viewModel.isHighlightedForAttention)
     }
     
-    private class StubYourEurofurenceDataSource: YourEurofurenceDataSource {
+    func testCellSelectedShowsMessages() {
+        let viewModel = makeViewModel()
+        viewModel.showPersonalisedContent()
         
-        let state = CurrentValueSubject<AuthenticatedUserSummary?, Never>(nil)
-        
-        func enterState(_ state: AuthenticatedUserSummary?) {
-            self.state.value = state
-        }
-        
+        router.assertRouted(to: MessagesRouteable())
     }
     
 }

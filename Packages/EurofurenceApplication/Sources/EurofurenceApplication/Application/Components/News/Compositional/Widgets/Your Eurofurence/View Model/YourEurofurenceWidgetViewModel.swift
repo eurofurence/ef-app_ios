@@ -6,4 +6,6 @@ public protocol YourEurofurenceWidgetViewModel: ObservedObject {
     var supplementaryPrompt: String { get }
     var isHighlightedForAttention: Bool { get }
     
+    func showPersonalisedContent()
+    
 }
