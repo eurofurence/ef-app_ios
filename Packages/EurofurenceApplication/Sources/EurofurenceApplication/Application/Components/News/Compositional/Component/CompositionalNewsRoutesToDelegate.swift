@@ -9,6 +9,10 @@ struct CompositionalNewsRoutesToDelegate: Router {
         if let content = content as? EventRouteable {
             delegate.newsModuleDidSelectEvent(content.identifier)
         }
+        
+        if content is MessagesRouteable {
+            delegate.newsModuleDidRequestShowingPrivateMessages()
+        }
     }
     
 }

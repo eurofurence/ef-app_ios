@@ -72,8 +72,9 @@ public class ControllablePrivateMessagesService: PrivateMessagesService {
         
     }
     
+    private var observers = [PrivateMessagesObserver]()
     public func add(_ observer: PrivateMessagesObserver) {
-        
+        observers.append(observer)
     }
     
     public func removeObserver(_ observer: PrivateMessagesObserver) {
@@ -100,6 +101,12 @@ public class ControllablePrivateMessagesService: PrivateMessagesService {
     public func failNow(error: PrivateMessageError) {
         currentCompletionHandler?(.failure(error))
         currentCompletionHandler = nil
+    }
+    
+    public func simulateUnreadCountChanged(to unreadCount: Int) {
+        for observer in observers {
+            observer.privateMessagesServiceDidUpdateUnreadMessageCount(to: unreadCount)
+        }
     }
     
 }
