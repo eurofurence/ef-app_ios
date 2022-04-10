@@ -8,6 +8,7 @@ struct CompositionalNewsComponentDefaultWidgetsBuilder {
     
     func buildNewsComponent() -> any NewsComponentFactory {
         addPersonalisedWidget()
+        addCountdownWidget()
         addUpcomingEventsWidget()
         addRunningEventsWidget()
         addTodaysFavouriteEventsWidget()
@@ -23,6 +24,13 @@ struct CompositionalNewsComponentDefaultWidgetsBuilder {
         
         let viewModelFactory = YourEurofurenceWidgetViewModelFactory(dataSource: dataSource)
         let widget = MVVMWidget(viewModelFactory: viewModelFactory, viewFactory: YourEurofurenceWidgetViewFactory())
+        _ = builder.with(widget)
+    }
+    
+    private func addCountdownWidget() {
+        let dataSource = ConventionCountdownDataSourceServiceAdapter(countdownService: services.conventionCountdown)
+        let viewModelFactory = ConventionCountdownViewModelFactory(dataSource: dataSource)
+        let widget = MVVMWidget(viewModelFactory: viewModelFactory, viewFactory: ConventionCountdownViewFactory())
         _ = builder.with(widget)
     }
     
