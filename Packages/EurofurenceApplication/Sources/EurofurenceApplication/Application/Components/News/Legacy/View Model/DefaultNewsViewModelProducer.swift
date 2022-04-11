@@ -3,7 +3,7 @@ import EurofurenceModel
 import Foundation
 
 public class DefaultNewsViewModelProducer: NewsViewModelProducer,
-                                           AnnouncementsServiceObserver,
+                                           AnnouncementsRepositoryObserver,
                                            AuthenticationStateObserver,
                                            PrivateMessagesObserver,
                                            ConventionCountdownServiceObserver,
@@ -33,7 +33,7 @@ public class DefaultNewsViewModelProducer: NewsViewModelProducer,
     // MARK: Initialization
 
     public init(
-        announcementsService: AnnouncementsService,
+        announcementsService: AnnouncementsRepository,
         authenticationService: AuthenticationService,
         privateMessagesService: PrivateMessagesService,
         daysUntilConventionService: ConventionCountdownService,
@@ -95,7 +95,7 @@ public class DefaultNewsViewModelProducer: NewsViewModelProducer,
         refreshService.refreshLocalStore { (_) in }
     }
 
-    // MARK: AnnouncementsServiceObserver
+    // MARK: AnnouncementsRepositoryObserver
 
     public func announcementsServiceDidChangeAnnouncements(_ announcements: [Announcement]) {
         self.announcements = Array(announcements.prefix(3))

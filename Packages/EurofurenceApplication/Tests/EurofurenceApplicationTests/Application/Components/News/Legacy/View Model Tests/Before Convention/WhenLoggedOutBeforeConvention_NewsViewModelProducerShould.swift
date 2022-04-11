@@ -11,7 +11,7 @@ class WhenLoggedOutBeforeConvention_NewsViewModelProducerShould: XCTestCase {
         super.setUp()
 
         context = DefaultNewsViewModelProducerTestBuilder()
-            .with(FakeAnnouncementsService(announcements: [StubAnnouncement].random))
+            .with(FakeAnnouncementsRepository(announcements: [StubAnnouncement].random))
             .with(FakeAuthenticationService.loggedOutService())
             .build()
         context.subscribeViewModelUpdates()

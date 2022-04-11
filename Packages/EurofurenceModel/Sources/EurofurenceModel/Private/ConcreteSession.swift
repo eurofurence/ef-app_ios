@@ -12,7 +12,7 @@ class ConcreteSession: EurofurenceSession {
     private let privateMessagesService: ConcretePrivateMessagesService
     private let conventionCountdownService: ConcreteConventionCountdownService
     
-    private let announcementsService: ConcreteAnnouncementsService
+    private let announcementsService: ConcreteAnnouncementsRepository
     private let knowledgeService: ConcreteKnowledgeService
     private let eventsService: ConcreteScheduleRepository
     private let dealersService: ConcreteDealersService
@@ -79,7 +79,7 @@ class ConcreteSession: EurofurenceSession {
             clock: clock
         )
         
-        announcementsService = ConcreteAnnouncementsService(
+        announcementsService = ConcreteAnnouncementsRepository(
             eventBus: eventBus,
             dataStore: dataStore,
             imageRepository: imageRepository

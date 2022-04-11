@@ -65,7 +65,7 @@ class EurofurenceSessionTestBuilder {
             return services.refresh
         }
 
-        var announcementsService: AnnouncementsService {
+        var announcementsService: AnnouncementsRepository {
             return services.announcements
         }
 

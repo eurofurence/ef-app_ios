@@ -4,11 +4,11 @@ import Foundation.NSAttributedString
 
 public struct DefaultAnnouncementDetailViewModelFactory: AnnouncementDetailViewModelFactory {
 
-    private let announcementsService: AnnouncementsService
+    private let announcementsService: AnnouncementsRepository
     private let markdownRenderer: MarkdownRenderer
     
     public init(
-        announcementsService: AnnouncementsService,
+        announcementsService: AnnouncementsRepository,
         markdownRenderer: MarkdownRenderer
     ) {
         self.announcementsService = announcementsService

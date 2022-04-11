@@ -4,12 +4,12 @@ import Foundation
 
 public struct DefaultAnnouncementsViewModelFactory: AnnouncementsViewModelFactory {
 
-    var announcementsService: AnnouncementsService
+    var announcementsService: AnnouncementsRepository
     var announcementDateFormatter: AnnouncementDateFormatter
 	var markdownRenderer: MarkdownRenderer
     
     public init(
-        announcementsService: AnnouncementsService,
+        announcementsService: AnnouncementsRepository,
         announcementDateFormatter: AnnouncementDateFormatter,
         markdownRenderer: MarkdownRenderer
     ) {
@@ -26,14 +26,14 @@ public struct DefaultAnnouncementsViewModelFactory: AnnouncementsViewModelFactor
         ))
     }
 
-    private class ViewModel: AnnouncementsListViewModel, AnnouncementsServiceObserver {
+    private class ViewModel: AnnouncementsListViewModel, AnnouncementsRepositoryObserver {
 
         private let announcementDateFormatter: AnnouncementDateFormatter
 		private let markdownRenderer: MarkdownRenderer
         private var announcements = [Announcement]()
         private var readAnnouncements = [AnnouncementIdentifier]()
 
-        init(announcementsService: AnnouncementsService,
+        init(announcementsService: AnnouncementsRepository,
              announcementDateFormatter: AnnouncementDateFormatter,
              markdownRenderer: MarkdownRenderer) {
             self.announcementDateFormatter = announcementDateFormatter

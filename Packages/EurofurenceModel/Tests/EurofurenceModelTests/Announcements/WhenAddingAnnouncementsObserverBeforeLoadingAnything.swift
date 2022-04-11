@@ -5,7 +5,7 @@ class WhenAddingAnnouncementsObserverBeforeLoadingAnything: XCTestCase {
 
     func testEmptyAnnouncementsAreStillPropogatedToTheObserver() {
         let context = EurofurenceSessionTestBuilder().build()
-        let observer = CapturingAnnouncementsServiceObserver()
+        let observer = CapturingAnnouncementsRepositoryObserver()
         context.announcementsService.add(observer)
 
         XCTAssertTrue(observer.didReceieveEmptyAllAnnouncements)

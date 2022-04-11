@@ -63,7 +63,7 @@ class WhenOpeningAnnouncement_ApplicationShould: XCTestCase {
         let firstIdentifier = firstAnnouncement.identifier
         let secondAnnouncement = announcements.randomElement().element
         let secondIdentifier = secondAnnouncement.identifier
-        let observer = CapturingAnnouncementsServiceObserver()
+        let observer = CapturingAnnouncementsRepositoryObserver()
         context.announcementsService.add(observer)
         openAnnouncement(AnnouncementIdentifier(firstIdentifier))
         openAnnouncement(AnnouncementIdentifier(secondIdentifier))
@@ -81,7 +81,7 @@ class WhenOpeningAnnouncement_ApplicationShould: XCTestCase {
         openAnnouncement(AnnouncementIdentifier(firstIdentifier))
         openAnnouncement(AnnouncementIdentifier(secondIdentifier))
         let expected = [firstIdentifier, secondIdentifier].map({ AnnouncementIdentifier($0) })
-        let observer = CapturingAnnouncementsServiceObserver()
+        let observer = CapturingAnnouncementsRepositoryObserver()
         context.announcementsService.add(observer)
 
         XCTAssertTrue(observer.readAnnouncementIdentifiers.contains(elementsFrom: expected))
@@ -101,7 +101,7 @@ class WhenOpeningAnnouncement_ApplicationShould: XCTestCase {
         }
 
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
-        let observer = CapturingAnnouncementsServiceObserver()
+        let observer = CapturingAnnouncementsRepositoryObserver()
         context.announcementsService.add(observer)
 
         XCTAssertTrue(observer.readAnnouncementIdentifiers.contains(elementsFrom: identifiers))

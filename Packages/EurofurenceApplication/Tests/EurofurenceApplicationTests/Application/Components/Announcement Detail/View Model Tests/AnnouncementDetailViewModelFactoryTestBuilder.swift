@@ -10,7 +10,7 @@ class AnnouncementDetailViewModelFactoryTestBuilder {
         var viewModelFactory: AnnouncementDetailViewModelFactory
         var markdownRenderer: StubMarkdownRenderer
         var announcement: StubAnnouncement
-        var announcementsService: FakeAnnouncementsService
+        var announcementsService: FakeAnnouncementsRepository
     }
     
     private var imagePNGData: Data?
@@ -24,7 +24,7 @@ class AnnouncementDetailViewModelFactoryTestBuilder {
         let announcement = StubAnnouncement.random
         announcement.identifier = identifier
         announcement.imagePNGData = imagePNGData
-        let announcementsService = FakeAnnouncementsService(announcements: [announcement])
+        let announcementsService = FakeAnnouncementsRepository(announcements: [announcement])
         let markdownRenderer = StubMarkdownRenderer()
         let viewModelFactory = DefaultAnnouncementDetailViewModelFactory(announcementsService: announcementsService,
                                                              markdownRenderer: markdownRenderer)
@@ -36,7 +36,7 @@ class AnnouncementDetailViewModelFactoryTestBuilder {
     }
     
     func buildForMissingAnnouncement() -> Context {
-        let announcementsService = FakeAnnouncementsService(announcements: [])
+        let announcementsService = FakeAnnouncementsRepository(announcements: [])
         let markdownRenderer = StubMarkdownRenderer()
         let viewModelFactory = DefaultAnnouncementDetailViewModelFactory(announcementsService: announcementsService,
                                                              markdownRenderer: markdownRenderer)

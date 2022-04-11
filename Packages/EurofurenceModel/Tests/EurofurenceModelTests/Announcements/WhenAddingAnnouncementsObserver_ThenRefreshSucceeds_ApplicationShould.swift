@@ -7,7 +7,7 @@ class WhenAddingAnnouncementsObserver_ThenRefreshSucceeds_ApplicationShould: XCT
         let context = EurofurenceSessionTestBuilder().build()
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
 
-        let observer = CapturingAnnouncementsServiceObserver()
+        let observer = CapturingAnnouncementsRepositoryObserver()
         context.announcementsService.add(observer)
         context.performSuccessfulSync(response: syncResponse)
 

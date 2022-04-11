@@ -1,6 +1,6 @@
 import Foundation
 
-class ConcreteAnnouncementsService: AnnouncementsService {
+class ConcreteAnnouncementsRepository: AnnouncementsRepository {
 
     // MARK: Properties
 
@@ -15,7 +15,7 @@ class ConcreteAnnouncementsService: AnnouncementsService {
         }
     }
 
-    private var announcementsObservers = [AnnouncementsServiceObserver]()
+    private var announcementsObservers = [AnnouncementsRepositoryObserver]()
 
     // MARK: Initialization
 
@@ -33,7 +33,7 @@ class ConcreteAnnouncementsService: AnnouncementsService {
 
     // MARK: Functions
 
-    func add(_ observer: AnnouncementsServiceObserver) {
+    func add(_ observer: AnnouncementsRepositoryObserver) {
         provideLatestData(to: observer)
         announcementsObservers.append(observer)
     }
@@ -73,7 +73,7 @@ class ConcreteAnnouncementsService: AnnouncementsService {
         return first.lastChangedDateTime.compare(second.lastChangedDateTime) == .orderedDescending
     }
 
-    private func provideLatestData(to observer: AnnouncementsServiceObserver) {
+    private func provideLatestData(to observer: AnnouncementsRepositoryObserver) {
         observer.announcementsServiceDidChangeAnnouncements(models)
         observer.announcementsServiceDidUpdateReadAnnouncements(readAnnouncementIdentifiers)
     }

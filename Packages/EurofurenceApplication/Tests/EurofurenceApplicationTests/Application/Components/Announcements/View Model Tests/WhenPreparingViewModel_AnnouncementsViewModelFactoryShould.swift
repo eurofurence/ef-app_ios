@@ -6,7 +6,7 @@ import XCTEurofurenceModel
 
 class WhenPreparingViewModel_AnnouncementsViewModelFactoryShould: XCTestCase {
 
-    var announcementsService: FakeAnnouncementsService!
+    var announcementsService: FakeAnnouncementsRepository!
     var viewModelFactory: DefaultAnnouncementsViewModelFactory!
     var announcementDateFormatter: FakeAnnouncementDateFormatter!
 	var markdownRenderer: StubMarkdownRenderer!
@@ -18,7 +18,7 @@ class WhenPreparingViewModel_AnnouncementsViewModelFactoryShould: XCTestCase {
 
         announcements = [StubAnnouncement].random
         announcement = announcements.randomElement()
-        announcementsService = FakeAnnouncementsService(announcements: announcements)
+        announcementsService = FakeAnnouncementsRepository(announcements: announcements)
         announcementDateFormatter = FakeAnnouncementDateFormatter()
 		markdownRenderer = StubMarkdownRenderer()
 		viewModelFactory = DefaultAnnouncementsViewModelFactory(

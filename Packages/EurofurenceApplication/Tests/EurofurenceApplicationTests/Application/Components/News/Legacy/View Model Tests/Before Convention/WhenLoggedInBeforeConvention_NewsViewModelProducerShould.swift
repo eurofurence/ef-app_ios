@@ -8,7 +8,7 @@ class WhenLoggedInBeforeConvention_NewsViewModelProducerShould: XCTestCase {
     func testProduceViewModelWithMessagesPrompt_DaysUntilConvention_AndAnnouncements() throws {
         let context = DefaultNewsViewModelProducerTestBuilder()
             .with(FakeAuthenticationService.loggedInService())
-            .with(FakeAnnouncementsService(announcements: [StubAnnouncement].random))
+            .with(FakeAnnouncementsRepository(announcements: [StubAnnouncement].random))
             .build()
         context.subscribeViewModelUpdates()
 

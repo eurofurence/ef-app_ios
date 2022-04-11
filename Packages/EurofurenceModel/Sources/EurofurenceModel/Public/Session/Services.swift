@@ -4,7 +4,7 @@ public struct Services {
 
     public var notifications: NotificationService
     public var refresh: RefreshService
-    public var announcements: AnnouncementsService
+    public var announcements: AnnouncementsRepository
     public var authentication: AuthenticationService
     public var events: ScheduleRepository
     public var dealers: DealersService
