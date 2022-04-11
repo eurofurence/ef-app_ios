@@ -27,5 +27,12 @@ class DefaultAnnouncementDetailViewModelFactoryShould: XCTestCase {
         XCTAssertEqual(String.invalidAnnouncementAlertTitle, viewModel?.heading)
         XCTAssertEqual(expectedContents, viewModel?.contents)
     }
+    
+    func testMarkAnnouncementAsRead() {
+        let context = AnnouncementDetailViewModelFactoryTestBuilder().build()
+        let viewModel = context.makeViewModel()
+        
+        XCTAssertEqual(.read, context.announcement.readStatus)
+    }
 
 }

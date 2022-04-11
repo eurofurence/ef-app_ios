@@ -26,6 +26,10 @@ struct AnnouncementImpl: Announcement {
         self.date = characteristics.lastChangedDateTime
     }
     
+    func markRead() {
+        
+    }
+    
     func fetchAnnouncementImagePNGData(completionHandler: @escaping (Data?) -> Void) {
         var imageData: Data?
         if let imageIdentifier = characteristics.imageIdentifier {

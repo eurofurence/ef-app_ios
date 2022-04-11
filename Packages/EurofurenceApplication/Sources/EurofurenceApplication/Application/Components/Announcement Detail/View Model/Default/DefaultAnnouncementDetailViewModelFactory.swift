@@ -20,6 +20,7 @@ public struct DefaultAnnouncementDetailViewModelFactory: AnnouncementDetailViewM
         completionHandler: @escaping (AnnouncementDetailViewModel) -> Void
     ) {
         if let announcement = announcementsService.fetchAnnouncement(identifier: identifier) {
+            announcement.markRead()
             announcement.fetchAnnouncementImagePNGData { (imageData) in
                 let contents = self.markdownRenderer.render(announcement.content)
                 let viewModel = AnnouncementDetailViewModel(
@@ -27,7 +28,7 @@ public struct DefaultAnnouncementDetailViewModelFactory: AnnouncementDetailViewM
                     contents: contents,
                     imagePNGData: imageData
                 )
-                
+
                 completionHandler(viewModel)
             }
         } else {

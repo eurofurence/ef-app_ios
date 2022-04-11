@@ -9,6 +9,7 @@ public protocol Announcement {
     var content: String { get }
     var date: Date { get }
     
+    func markRead()
     func fetchAnnouncementImagePNGData(completionHandler: @escaping (Data?) -> Void)
 
 }
