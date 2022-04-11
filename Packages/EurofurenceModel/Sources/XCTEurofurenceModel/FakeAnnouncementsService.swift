@@ -1,7 +1,7 @@
 import EurofurenceModel
 import Foundation
 
-public class FakeAnnouncementsService: AnnouncementsService {
+public class FakeAnnouncementsRepository: AnnouncementsRepository {
 
     public var announcements: [Announcement]
     public var stubbedReadAnnouncements: [AnnouncementIdentifier]
@@ -11,8 +11,8 @@ public class FakeAnnouncementsService: AnnouncementsService {
         self.stubbedReadAnnouncements = stubbedReadAnnouncements
     }
 
-    fileprivate var observers = [AnnouncementsServiceObserver]()
-    public func add(_ observer: AnnouncementsServiceObserver) {
+    fileprivate var observers = [AnnouncementsRepositoryObserver]()
+    public func add(_ observer: AnnouncementsRepositoryObserver) {
         observers.append(observer)
         observer.announcementsServiceDidChangeAnnouncements(announcements)
         observer.announcementsServiceDidUpdateReadAnnouncements(stubbedReadAnnouncements)
@@ -24,7 +24,7 @@ public class FakeAnnouncementsService: AnnouncementsService {
 
 }
 
-public extension FakeAnnouncementsService {
+public extension FakeAnnouncementsRepository {
 
     func updateAnnouncements(_ announcements: [Announcement]) {
         observers.forEach({ $0.announcementsServiceDidChangeAnnouncements(announcements) })

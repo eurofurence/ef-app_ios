@@ -21,19 +21,21 @@ class EurofurenceSessionTestBuilder {
         
         private(set) var lastRefreshError: RefreshServiceError?
 
-        fileprivate init(session: EurofurenceSession,
-                         clock: StubClock,
-                         notificationTokenRegistration: CapturingRemoteNotificationsTokenRegistration,
-                         credentialRepository: CapturingCredentialStore,
-                         api: FakeAPI,
-                         dataStore: InMemoryDataStore,
-                         conventionStartDateRepository: StubConventionStartDateRepository,
-                         imageRepository: CapturingImageRepository,
-                         significantTimeChangeAdapter: CapturingSignificantTimeChangeAdapter,
-                         urlOpener: CapturingURLOpener,
-                         longRunningTaskManager: FakeLongRunningTaskManager,
-                         mapCoordinateRender: CapturingMapCoordinateRender,
-                         refreshObserver: CapturingRefreshServiceObserver) {
+        fileprivate init(
+            session: EurofurenceSession,
+            clock: StubClock,
+            notificationTokenRegistration: CapturingRemoteNotificationsTokenRegistration,
+            credentialRepository: CapturingCredentialStore,
+            api: FakeAPI,
+            dataStore: InMemoryDataStore,
+            conventionStartDateRepository: StubConventionStartDateRepository,
+            imageRepository: CapturingImageRepository,
+            significantTimeChangeAdapter: CapturingSignificantTimeChangeAdapter,
+            urlOpener: CapturingURLOpener,
+            longRunningTaskManager: FakeLongRunningTaskManager,
+            mapCoordinateRender: CapturingMapCoordinateRender,
+            refreshObserver: CapturingRefreshServiceObserver
+        ) {
             self.session = session
             self.clock = clock
             self.notificationTokenRegistration = notificationTokenRegistration
@@ -53,6 +55,10 @@ class EurofurenceSessionTestBuilder {
             return session.services
         }
         
+        var repositories: Repositories {
+            return session.repositories
+        }
+        
         var additionalServicesRepository: AdditionalServicesRepository {
             return session.repositories.additionalServices
         }
@@ -65,8 +71,8 @@ class EurofurenceSessionTestBuilder {
             return services.refresh
         }
 
-        var announcementsService: AnnouncementsService {
-            return services.announcements
+        var announcementsService: AnnouncementsRepository {
+            return repositories.announcements
         }
 
         var authenticationService: AuthenticationService {
@@ -74,7 +80,7 @@ class EurofurenceSessionTestBuilder {
         }
 
         var eventsService: ScheduleRepository {
-            return services.events
+            return repositories.events
         }
 
         var dealersService: DealersService {

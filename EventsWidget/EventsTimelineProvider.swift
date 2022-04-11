@@ -103,7 +103,7 @@ struct EventsTimelineProvider: IntentTimelineProvider {
     
     private func prepareModuleBridge(clock: Clock) -> EventsBridge {
         let session = EurofurenceSessionBuilder.buildingForEurofurenceApplication().with(clock).build()
-        let eventsService = session.services.events
+        let eventsService = session.repositories.events
         let bridge = EventsBridge()
         eventsService.add(bridge)
         

@@ -1,6 +1,6 @@
 import Foundation
 
-class ConcreteAnnouncementsService: AnnouncementsService {
+class ConcreteAnnouncementsRepository: AnnouncementsRepository {
 
     // MARK: Properties
 
@@ -15,7 +15,7 @@ class ConcreteAnnouncementsService: AnnouncementsService {
         }
     }
 
-    private var announcementsObservers = [AnnouncementsServiceObserver]()
+    private var announcementsObservers = [AnnouncementsRepositoryObserver]()
 
     // MARK: Initialization
 
@@ -33,26 +33,24 @@ class ConcreteAnnouncementsService: AnnouncementsService {
 
     // MARK: Functions
 
-    func add(_ observer: AnnouncementsServiceObserver) {
+    func add(_ observer: AnnouncementsRepositoryObserver) {
         provideLatestData(to: observer)
         announcementsObservers.append(observer)
     }
     
     func fetchAnnouncement(identifier: AnnouncementIdentifier) -> Announcement? {
-        guard let model = models.first(where: { $0.identifier == identifier }) else { return nil }
+        models.first(where: { $0.identifier == identifier })
+    }
+    
+    func markRead(announcement: AnnouncementImpl) {
+        readAnnouncementIdentifiers.append(announcement.identifier)
+        announcementsObservers.forEach({ (observer) in
+            observer.announcementsServiceDidUpdateReadAnnouncements(readAnnouncementIdentifiers)
+        })
         
-        if readAnnouncementIdentifiers.contains(identifier) == false {
-            readAnnouncementIdentifiers.append(identifier)
-            announcementsObservers.forEach({ (observer) in
-                observer.announcementsServiceDidUpdateReadAnnouncements(readAnnouncementIdentifiers)
-            })
-            
-            dataStore.performTransaction { (transaction) in
-                transaction.saveReadAnnouncements(self.readAnnouncementIdentifiers)
-            }
+        dataStore.performTransaction { (transaction) in
+            transaction.saveReadAnnouncements(self.readAnnouncementIdentifiers)
         }
-        
-        return model
     }
 
     // MARK: Private
@@ -63,7 +61,12 @@ class ConcreteAnnouncementsService: AnnouncementsService {
     }
     
     private func makeAnnouncement(from characteristics: AnnouncementCharacteristics) -> AnnouncementImpl {
-        AnnouncementImpl(dataStore: dataStore, imageRepository: imageRepository, characteristics: characteristics)
+        AnnouncementImpl(
+            repository: self,
+            dataStore: dataStore,
+            imageRepository: imageRepository,
+            characteristics: characteristics
+        )
     }
 
     private func isLastEditTimeAscending(
@@ -73,7 +76,7 @@ class ConcreteAnnouncementsService: AnnouncementsService {
         return first.lastChangedDateTime.compare(second.lastChangedDateTime) == .orderedDescending
     }
 
-    private func provideLatestData(to observer: AnnouncementsServiceObserver) {
+    private func provideLatestData(to observer: AnnouncementsRepositoryObserver) {
         observer.announcementsServiceDidChangeAnnouncements(models)
         observer.announcementsServiceDidUpdateReadAnnouncements(readAnnouncementIdentifiers)
     }

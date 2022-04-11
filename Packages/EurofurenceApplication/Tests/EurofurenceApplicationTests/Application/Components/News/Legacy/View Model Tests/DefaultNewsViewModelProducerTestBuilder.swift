@@ -12,7 +12,7 @@ class DefaultNewsViewModelProducerTestBuilder {
         var relativeTimeFormatter: FakeRelativeTimeIntervalCountdownFormatter
         var hoursDateFormatter: FakeHoursDateFormatter
         var authenticationService: FakeAuthenticationService
-        var announcementsService: FakeAnnouncementsService
+        var announcementsService: FakeAnnouncementsRepository
         var privateMessagesService: CapturingPrivateMessagesService
         var daysUntilConventionService: StubConventionCountdownService
         var eventsService: FakeScheduleRepository
@@ -22,14 +22,14 @@ class DefaultNewsViewModelProducerTestBuilder {
 		var markdownRenderer: StubMarkdownRenderer
     }
 
-    private var announcementsService: FakeAnnouncementsService
+    private var announcementsService: FakeAnnouncementsRepository
     private var authenticationService: FakeAuthenticationService
     private var privateMessagesService: CapturingPrivateMessagesService
     private var daysUntilConventionService: StubConventionCountdownService
     private var eventsService: FakeScheduleRepository
 
     init() {
-        announcementsService = FakeAnnouncementsService(announcements: [])
+        announcementsService = FakeAnnouncementsRepository(announcements: [])
         authenticationService = FakeAuthenticationService(authState: .loggedOut)
         privateMessagesService = CapturingPrivateMessagesService()
         daysUntilConventionService = StubConventionCountdownService()
@@ -37,7 +37,7 @@ class DefaultNewsViewModelProducerTestBuilder {
     }
 
     @discardableResult
-    func with(_ announcementsService: FakeAnnouncementsService) -> DefaultNewsViewModelProducerTestBuilder {
+    func with(_ announcementsService: FakeAnnouncementsRepository) -> DefaultNewsViewModelProducerTestBuilder {
         self.announcementsService = announcementsService
         return self
     }

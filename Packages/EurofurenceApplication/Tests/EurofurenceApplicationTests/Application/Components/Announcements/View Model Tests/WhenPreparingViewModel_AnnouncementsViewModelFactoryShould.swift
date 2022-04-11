@@ -6,7 +6,7 @@ import XCTEurofurenceModel
 
 class WhenPreparingViewModel_AnnouncementsViewModelFactoryShould: XCTestCase {
 
-    var announcementsService: FakeAnnouncementsService!
+    var announcementsService: FakeAnnouncementsRepository!
     var viewModelFactory: DefaultAnnouncementsViewModelFactory!
     var announcementDateFormatter: FakeAnnouncementDateFormatter!
 	var markdownRenderer: StubMarkdownRenderer!
@@ -16,9 +16,9 @@ class WhenPreparingViewModel_AnnouncementsViewModelFactoryShould: XCTestCase {
     override func setUp() {
         super.setUp()
 
-        announcements = [StubAnnouncement].random
+        announcements = [FakeAnnouncement].random
         announcement = announcements.randomElement()
-        announcementsService = FakeAnnouncementsService(announcements: announcements)
+        announcementsService = FakeAnnouncementsRepository(announcements: announcements)
         announcementDateFormatter = FakeAnnouncementDateFormatter()
 		markdownRenderer = StubMarkdownRenderer()
 		viewModelFactory = DefaultAnnouncementsViewModelFactory(
@@ -55,7 +55,7 @@ class WhenPreparingViewModel_AnnouncementsViewModelFactoryShould: XCTestCase {
     func testUpdateTheAvailableViewModelsWhenAnnouncementsChange() {
         var viewModel: AnnouncementsListViewModel?
         viewModelFactory.makeViewModel { viewModel = $0 }
-        let newAnnouncements = [StubAnnouncement].random(upperLimit: announcements.count)
+        let newAnnouncements = [FakeAnnouncement].random(upperLimit: announcements.count)
         let delegate = CapturingAnnouncementsListViewModelDelegate()
         viewModel?.setDelegate(delegate)
         announcementsService.updateAnnouncements(newAnnouncements)

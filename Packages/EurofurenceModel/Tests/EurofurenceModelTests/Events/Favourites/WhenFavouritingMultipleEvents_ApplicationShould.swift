@@ -42,7 +42,7 @@ class WhenFavouritingMultipleEvents_ApplicationShould: XCTestCase {
         context.eventsService.add(observer)
         favouriteEvents(identifiers, service: context.eventsService)
         let randomIdentifier = identifiers.randomElement()
-        let schedule = context.services.events.loadSchedule(tag: "Test")
+        let schedule = context.eventsService.loadSchedule(tag: "Test")
         let event = schedule.loadEvent(identifier: randomIdentifier.element)
         event?.unfavourite()
         var expected = identifiers

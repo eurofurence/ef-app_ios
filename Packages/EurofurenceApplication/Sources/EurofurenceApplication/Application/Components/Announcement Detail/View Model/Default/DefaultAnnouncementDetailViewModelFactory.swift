@@ -4,11 +4,11 @@ import Foundation.NSAttributedString
 
 public struct DefaultAnnouncementDetailViewModelFactory: AnnouncementDetailViewModelFactory {
 
-    private let announcementsService: AnnouncementsService
+    private let announcementsService: AnnouncementsRepository
     private let markdownRenderer: MarkdownRenderer
     
     public init(
-        announcementsService: AnnouncementsService,
+        announcementsService: AnnouncementsRepository,
         markdownRenderer: MarkdownRenderer
     ) {
         self.announcementsService = announcementsService
@@ -20,6 +20,7 @@ public struct DefaultAnnouncementDetailViewModelFactory: AnnouncementDetailViewM
         completionHandler: @escaping (AnnouncementDetailViewModel) -> Void
     ) {
         if let announcement = announcementsService.fetchAnnouncement(identifier: identifier) {
+            announcement.markRead()
             announcement.fetchAnnouncementImagePNGData { (imageData) in
                 let contents = self.markdownRenderer.render(announcement.content)
                 let viewModel = AnnouncementDetailViewModel(
@@ -27,7 +28,7 @@ public struct DefaultAnnouncementDetailViewModelFactory: AnnouncementDetailViewM
                     contents: contents,
                     imagePNGData: imageData
                 )
-                
+
                 completionHandler(viewModel)
             }
         } else {

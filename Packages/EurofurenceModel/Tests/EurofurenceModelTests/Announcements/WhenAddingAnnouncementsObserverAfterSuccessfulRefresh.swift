@@ -8,7 +8,7 @@ class WhenAddingAnnouncementsObserverAfterSuccessfulRefresh: XCTestCase {
         let syncResponse = ModelCharacteristics.randomWithoutDeletions
 
         context.performSuccessfulSync(response: syncResponse)
-        let observer = CapturingAnnouncementsServiceObserver()
+        let observer = CapturingAnnouncementsRepositoryObserver()
         context.announcementsService.add(observer)
 
         AnnouncementAssertion().assertOrderedAnnouncements(observer.allAnnouncements,

@@ -24,7 +24,7 @@ class WhenFullRefreshOccurs_YieldingOrphanedEntities: XCTestCase {
     }
 
     func testTheOrphanedAnnouncementsAreRemoved() {
-        let announcementsObserver = CapturingAnnouncementsServiceObserver()
+        let announcementsObserver = CapturingAnnouncementsRepositoryObserver()
         context.announcementsService.add(announcementsObserver)
         let originalAnnouncementIdentifiers = originalResponse.announcements.changed.identifiers
         let announcementIdentifiers = announcementsObserver.allAnnouncements.map(\.identifier.rawValue)

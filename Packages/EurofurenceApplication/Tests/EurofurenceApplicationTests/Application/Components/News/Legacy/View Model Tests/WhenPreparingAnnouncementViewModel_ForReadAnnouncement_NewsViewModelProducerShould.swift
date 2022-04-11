@@ -6,8 +6,8 @@ import XCTEurofurenceModel
 class WhenPreparingAnnouncementViewModel_ForReadAnnouncement_NewsViewModelProducerShould: XCTestCase {
 
     func testPrepareViewModelWithReadStatus() throws {
-        let announcement = StubAnnouncement.random
-        let announcementsService = FakeAnnouncementsService(announcements: [announcement],
+        let announcement = FakeAnnouncement.random
+        let announcementsService = FakeAnnouncementsRepository(announcements: [announcement],
                                                             stubbedReadAnnouncements: [announcement.identifier])
         let context = DefaultNewsViewModelProducerTestBuilder().with(announcementsService).build()
         context.subscribeViewModelUpdates()

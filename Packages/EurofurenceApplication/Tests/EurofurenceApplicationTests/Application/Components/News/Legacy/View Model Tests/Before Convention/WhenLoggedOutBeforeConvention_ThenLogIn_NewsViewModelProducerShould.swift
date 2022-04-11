@@ -8,7 +8,7 @@ class WhenLoggedOutBeforeConvention_ThenLogIn_NewsViewModelProducerShould: XCTes
     func testUpdateTheDelegateWithLoggedInUserWidget() throws {
         let authenticationService = FakeAuthenticationService.loggedOutService()
         let context = DefaultNewsViewModelProducerTestBuilder()
-            .with(FakeAnnouncementsService(announcements: [StubAnnouncement].random))
+            .with(FakeAnnouncementsRepository(announcements: [FakeAnnouncement].random))
             .with(authenticationService)
             .build()
         context.subscribeViewModelUpdates()

@@ -1,7 +1,7 @@
 import EurofurenceModel
 import Foundation
 
-class CapturingAnnouncementsServiceObserver: AnnouncementsServiceObserver {
+class CapturingAnnouncementsRepositoryObserver: AnnouncementsRepositoryObserver {
 
     private(set) var allAnnouncements: [Announcement] = []
     private(set) var didReceieveEmptyAllAnnouncements = false

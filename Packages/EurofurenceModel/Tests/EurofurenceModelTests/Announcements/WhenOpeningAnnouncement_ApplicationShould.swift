@@ -18,10 +18,6 @@ class WhenOpeningAnnouncement_ApplicationShould: XCTestCase {
     @discardableResult
     private func openAnnouncement(_ identifier: AnnouncementIdentifier) -> Announcement? {
         let announcement = context.announcementsService.fetchAnnouncement(identifier: identifier)
-        
-        // TODO: Seperate opening from fetching by requiring something like:
-//        announcement?.open()
-
         return announcement
     }
 
@@ -33,15 +29,28 @@ class WhenOpeningAnnouncement_ApplicationShould: XCTestCase {
 
         AnnouncementAssertion().assertAnnouncement(model, characterisedBy: announcement)
     }
+    
+    func testAnnouncementsNotImplicitlyMarkedAsReady() throws {
+        let announcements = syncResponse.announcements.changed
+        let announcement = announcements.randomElement().element
+        let identifier = announcement.identifier
+        let entity = try XCTUnwrap(openAnnouncement(AnnouncementIdentifier(identifier)))
+        let readAnnouncementIdentifiers = context.dataStore.fetchReadAnnouncementIdentifiers() ?? []
+        
+        XCTAssertTrue(readAnnouncementIdentifiers.isEmpty)
+        XCTAssertFalse(entity.isRead)
+    }
 
-    func testSaveTheAnnouncementIdentifierAsReadAnnouncementToStore() {
+    func testReadAnnouncementsSaveTheAnnouncementIdentifierToStore() throws {
         let announcements = syncResponse.announcements.changed
         let announcement = announcements.randomElement().element
         let identifier = announcement.identifier
         let entityIdentifier = AnnouncementIdentifier(identifier)
-        openAnnouncement(AnnouncementIdentifier(identifier))
+        let entity = try XCTUnwrap(openAnnouncement(AnnouncementIdentifier(identifier)))
+        entity.markRead()
     
         XCTAssertTrue([entityIdentifier].contains(elementsFrom: context.dataStore.fetchReadAnnouncementIdentifiers()))
+        XCTAssertTrue(entity.isRead)
     }
 
     func testSaveAllPreviouslyReadAnnouncementIdentifierAsRead() {
@@ -50,8 +59,8 @@ class WhenOpeningAnnouncement_ApplicationShould: XCTestCase {
         let firstIdentifier = firstAnnouncement.identifier
         let secondAnnouncement = announcements.randomElement().element
         let secondIdentifier = secondAnnouncement.identifier
-        openAnnouncement(AnnouncementIdentifier(firstIdentifier))
-        openAnnouncement(AnnouncementIdentifier(secondIdentifier))
+        openAnnouncement(AnnouncementIdentifier(firstIdentifier))?.markRead()
+        openAnnouncement(AnnouncementIdentifier(secondIdentifier))?.markRead()
         let expected = [firstIdentifier, secondIdentifier].map({ AnnouncementIdentifier($0) })
 
         XCTAssertTrue(expected.contains(elementsFrom: context.dataStore.fetchReadAnnouncementIdentifiers()))
@@ -63,10 +72,10 @@ class WhenOpeningAnnouncement_ApplicationShould: XCTestCase {
         let firstIdentifier = firstAnnouncement.identifier
         let secondAnnouncement = announcements.randomElement().element
         let secondIdentifier = secondAnnouncement.identifier
-        let observer = CapturingAnnouncementsServiceObserver()
+        let observer = CapturingAnnouncementsRepositoryObserver()
         context.announcementsService.add(observer)
-        openAnnouncement(AnnouncementIdentifier(firstIdentifier))
-        openAnnouncement(AnnouncementIdentifier(secondIdentifier))
+        openAnnouncement(AnnouncementIdentifier(firstIdentifier))?.markRead()
+        openAnnouncement(AnnouncementIdentifier(secondIdentifier))?.markRead()
         let expected = [firstIdentifier, secondIdentifier].map({ AnnouncementIdentifier($0) })
 
         XCTAssertTrue(observer.readAnnouncementIdentifiers.contains(elementsFrom: expected))
@@ -78,10 +87,10 @@ class WhenOpeningAnnouncement_ApplicationShould: XCTestCase {
         let firstIdentifier = firstAnnouncement.identifier
         let secondAnnouncement = announcements.randomElement().element
         let secondIdentifier = secondAnnouncement.identifier
-        openAnnouncement(AnnouncementIdentifier(firstIdentifier))
-        openAnnouncement(AnnouncementIdentifier(secondIdentifier))
+        openAnnouncement(AnnouncementIdentifier(firstIdentifier))?.markRead()
+        openAnnouncement(AnnouncementIdentifier(secondIdentifier))?.markRead()
         let expected = [firstIdentifier, secondIdentifier].map({ AnnouncementIdentifier($0) })
-        let observer = CapturingAnnouncementsServiceObserver()
+        let observer = CapturingAnnouncementsRepositoryObserver()
         context.announcementsService.add(observer)
 
         XCTAssertTrue(observer.readAnnouncementIdentifiers.contains(elementsFrom: expected))
@@ -101,7 +110,7 @@ class WhenOpeningAnnouncement_ApplicationShould: XCTestCase {
         }
 
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
-        let observer = CapturingAnnouncementsServiceObserver()
+        let observer = CapturingAnnouncementsRepositoryObserver()
         context.announcementsService.add(observer)
 
         XCTAssertTrue(observer.readAnnouncementIdentifiers.contains(elementsFrom: identifiers))
@@ -112,8 +121,8 @@ class WhenOpeningAnnouncement_ApplicationShould: XCTestCase {
         let announcement = announcements.randomElement().element
         let identifier = announcement.identifier
         let entityIdentifier = AnnouncementIdentifier(identifier)
-        openAnnouncement(AnnouncementIdentifier(identifier))
-        openAnnouncement(AnnouncementIdentifier(identifier))
+        openAnnouncement(AnnouncementIdentifier(identifier))?.markRead()
+        openAnnouncement(AnnouncementIdentifier(identifier))?.markRead()
         
         let readAnnouncements = try XCTUnwrap(context.dataStore.fetchReadAnnouncementIdentifiers())
         XCTAssertEqual([entityIdentifier], readAnnouncements)

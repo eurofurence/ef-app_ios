@@ -10,7 +10,7 @@ class AnnouncementRemoveAllBeforeInsertTests: XCTestCase {
         let context = EurofurenceSessionTestBuilder().build()
         context.performSuccessfulSync(response: originalResponse)
         context.performSuccessfulSync(response: subsequentResponse)
-        let observer = CapturingAnnouncementsServiceObserver()
+        let observer = CapturingAnnouncementsRepositoryObserver()
         context.announcementsService.add(observer)
 
         AnnouncementAssertion().assertOrderedAnnouncements(observer.allAnnouncements,
@@ -25,7 +25,7 @@ class AnnouncementRemoveAllBeforeInsertTests: XCTestCase {
         context.performSuccessfulSync(response: originalResponse)
         context.performSuccessfulSync(response: subsequentResponse)
         let combinedResponses = originalResponse.announcements.changed + subsequentResponse.announcements.changed
-        let observer = CapturingAnnouncementsServiceObserver()
+        let observer = CapturingAnnouncementsRepositoryObserver()
         context.announcementsService.add(observer)
 
         AnnouncementAssertion().assertOrderedAnnouncements(observer.allAnnouncements,

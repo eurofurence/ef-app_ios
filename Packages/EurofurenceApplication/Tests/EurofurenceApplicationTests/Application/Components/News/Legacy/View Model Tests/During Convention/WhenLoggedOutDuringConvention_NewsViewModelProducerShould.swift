@@ -15,7 +15,7 @@ class WhenLoggedOutDuringConvention_NewsViewModelProducerShould: XCTestCase {
         eventsService.simulateDayChanged(to: .random)
         let context = DefaultNewsViewModelProducerTestBuilder()
             .with(FakeAuthenticationService.loggedOutService())
-            .with(FakeAnnouncementsService(announcements: [StubAnnouncement].random))
+            .with(FakeAnnouncementsRepository(announcements: [FakeAnnouncement].random))
             .with(StubConventionCountdownService(countdownState: .countdownElapsed))
             .with(eventsService)
             .build()
@@ -37,7 +37,7 @@ class WhenLoggedOutDuringConvention_NewsViewModelProducerShould: XCTestCase {
         eventsService.upcomingEvents = upcomingEvents
         let context = DefaultNewsViewModelProducerTestBuilder()
             .with(FakeAuthenticationService.loggedOutService())
-            .with(FakeAnnouncementsService(announcements: [StubAnnouncement].random))
+            .with(FakeAnnouncementsRepository(announcements: [FakeAnnouncement].random))
             .with(StubConventionCountdownService(countdownState: .countdownElapsed))
             .with(eventsService)
             .build()

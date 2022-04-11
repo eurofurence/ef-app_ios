@@ -1,13 +1,13 @@
 import Foundation
 
-public protocol AnnouncementsService {
+public protocol AnnouncementsRepository {
     
-    func add(_ observer: AnnouncementsServiceObserver)
+    func add(_ observer: AnnouncementsRepositoryObserver)
     func fetchAnnouncement(identifier: AnnouncementIdentifier) -> Announcement?
 
 }
 
-public protocol AnnouncementsServiceObserver {
+public protocol AnnouncementsRepositoryObserver {
 
     func announcementsServiceDidChangeAnnouncements(_ announcements: [Announcement])
     func announcementsServiceDidUpdateReadAnnouncements(_ readAnnouncements: [AnnouncementIdentifier])
