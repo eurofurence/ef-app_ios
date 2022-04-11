@@ -14,7 +14,7 @@ class AnnouncementDetailPresenterTestBuilder {
 
     func build() -> Context {
         let sceneFactory = StubAnnouncementDetailSceneFactory()
-        let announcement: StubAnnouncement = .random
+        let announcement: FakeAnnouncement = .random
         let announcementDetailViewModelFactory = StubAnnouncementDetailViewModelFactory(for: announcement.identifier)
         let module = AnnouncementDetailComponentBuilder(
             announcementDetailViewModelFactory: announcementDetailViewModelFactory

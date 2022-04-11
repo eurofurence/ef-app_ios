@@ -9,7 +9,7 @@ class AnnouncementDetailViewModelFactoryTestBuilder {
     struct Context {
         var viewModelFactory: AnnouncementDetailViewModelFactory
         var markdownRenderer: StubMarkdownRenderer
-        var announcement: StubAnnouncement
+        var announcement: FakeAnnouncement
         var announcementsService: FakeAnnouncementsRepository
     }
     
@@ -21,7 +21,7 @@ class AnnouncementDetailViewModelFactoryTestBuilder {
     }
 
     func build(for identifier: AnnouncementIdentifier = .random) -> Context {
-        let announcement = StubAnnouncement.random
+        let announcement = FakeAnnouncement.random
         announcement.identifier = identifier
         announcement.imagePNGData = imagePNGData
         let announcementsService = FakeAnnouncementsRepository(announcements: [announcement])

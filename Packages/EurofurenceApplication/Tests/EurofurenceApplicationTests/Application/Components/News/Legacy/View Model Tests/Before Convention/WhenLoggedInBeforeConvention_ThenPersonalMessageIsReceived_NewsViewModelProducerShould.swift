@@ -9,7 +9,7 @@ class WhenLoggedInBeforeConvention_ThenPersonalMessageIsReceived_NewsViewModelPr
         let privateMessagesService = CapturingPrivateMessagesService()
         let context = DefaultNewsViewModelProducerTestBuilder()
             .with(FakeAuthenticationService.loggedInService())
-            .with(FakeAnnouncementsRepository(announcements: [StubAnnouncement].random))
+            .with(FakeAnnouncementsRepository(announcements: [FakeAnnouncement].random))
             .with(privateMessagesService)
             .build()
         context.subscribeViewModelUpdates()

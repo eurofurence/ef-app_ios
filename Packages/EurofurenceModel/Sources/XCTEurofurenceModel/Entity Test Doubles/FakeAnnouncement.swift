@@ -2,7 +2,7 @@ import EurofurenceModel
 import Foundation
 import TestUtilities
 
-public final class StubAnnouncement: Announcement {
+public final class FakeAnnouncement: Announcement {
     
     public enum ReadStatus: Equatable {
         case unread
@@ -40,10 +40,10 @@ public final class StubAnnouncement: Announcement {
 
 }
 
-extension StubAnnouncement: RandomValueProviding {
+extension FakeAnnouncement: RandomValueProviding {
 
-    public static var random: StubAnnouncement {
-        return StubAnnouncement(
+    public static var random: FakeAnnouncement {
+        return FakeAnnouncement(
             identifier: .random,
             title: .random,
             content: .random,
