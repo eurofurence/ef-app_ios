@@ -39,10 +39,12 @@ class ConcreteAnnouncementsRepository: AnnouncementsRepository {
     }
     
     func fetchAnnouncement(identifier: AnnouncementIdentifier) -> Announcement? {
-        guard let model = models.first(where: { $0.identifier == identifier }) else { return nil }
-        
-        if readAnnouncementIdentifiers.contains(identifier) == false {
-            readAnnouncementIdentifiers.append(identifier)
+        models.first(where: { $0.identifier == identifier })
+    }
+    
+    func markRead(announcement: AnnouncementImpl) {
+        if readAnnouncementIdentifiers.contains(announcement.identifier) == false {
+            readAnnouncementIdentifiers.append(announcement.identifier)
             announcementsObservers.forEach({ (observer) in
                 observer.announcementsServiceDidUpdateReadAnnouncements(readAnnouncementIdentifiers)
             })
@@ -51,8 +53,6 @@ class ConcreteAnnouncementsRepository: AnnouncementsRepository {
                 transaction.saveReadAnnouncements(self.readAnnouncementIdentifiers)
             }
         }
-        
-        return model
     }
 
     // MARK: Private
@@ -63,7 +63,12 @@ class ConcreteAnnouncementsRepository: AnnouncementsRepository {
     }
     
     private func makeAnnouncement(from characteristics: AnnouncementCharacteristics) -> AnnouncementImpl {
-        AnnouncementImpl(dataStore: dataStore, imageRepository: imageRepository, characteristics: characteristics)
+        AnnouncementImpl(
+            repository: self,
+            dataStore: dataStore,
+            imageRepository: imageRepository,
+            characteristics: characteristics
+        )
     }
 
     private func isLastEditTimeAscending(

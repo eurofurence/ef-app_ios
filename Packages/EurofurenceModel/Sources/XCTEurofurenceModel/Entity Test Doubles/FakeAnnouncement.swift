@@ -14,6 +14,10 @@ public final class FakeAnnouncement: Announcement {
     public var content: String
     public var date: Date
     
+    public var isRead: Bool {
+        readStatus == .read
+    }
+    
     public var imagePNGData: Data?
     
     public private(set) var readStatus: ReadStatus = .unread
