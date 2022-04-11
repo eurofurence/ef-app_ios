@@ -53,11 +53,11 @@ struct ComponentRegistry {
         ).build()
         
         let newsViewModelProducer = DefaultNewsViewModelProducer(
-            announcementsService: services.announcements,
+            announcementsService: repositories.announcements,
             authenticationService: services.authentication,
             privateMessagesService: services.privateMessages,
             daysUntilConventionService: services.conventionCountdown,
-            eventsService: services.events,
+            eventsService: repositories.events,
             relativeTimeIntervalCountdownFormatter: FoundationRelativeTimeIntervalCountdownFormatter.shared,
             hoursDateFormatter: FoundationHoursDateFormatter.shared,
             clock: SystemClock.shared,
@@ -68,6 +68,7 @@ struct ComponentRegistry {
         
         if dependencies.isCompositionalNewsComponentEnabled {
             newsComponentFactory = CompositionalNewsComponentDefaultWidgetsBuilder(
+                repositories: repositories,
                 services: services
             ).buildNewsComponent()
         } else {
@@ -77,7 +78,7 @@ struct ComponentRegistry {
         }
         
         let scheduleViewModelFactory = DefaultScheduleViewModelFactory(
-            eventsService: services.events,
+            eventsService: repositories.events,
             hoursDateFormatter: FoundationHoursDateFormatter.shared,
             shortFormDateFormatter: FoundationShortFormDateFormatter.shared,
             shortFormDayAndTimeFormatter: FoundationShortFormDayAndTimeFormatter.shared,
@@ -171,7 +172,7 @@ struct ComponentRegistry {
         ).build()
         
         let announcementsViewModelFactory = DefaultAnnouncementsViewModelFactory(
-            announcementsService: services.announcements,
+            announcementsService: repositories.announcements,
             announcementDateFormatter: FoundationAnnouncementDateFormatter.shared,
             markdownRenderer: subtleMarkdownRenderer
         )
@@ -181,7 +182,7 @@ struct ComponentRegistry {
         ).build()
         
         let announcementDetailViewModelFactory = DefaultAnnouncementDetailViewModelFactory(
-            announcementsService: services.announcements,
+            announcementsService: repositories.announcements,
             markdownRenderer: defaultMarkdownRenderer
         )
         
@@ -190,14 +191,14 @@ struct ComponentRegistry {
         ).build()
         
         let eventInteractionRecorder = SystemEventInteractionsRecorder(
-            eventsService: services.events,
+            eventsService: repositories.events,
             eventIntentDonor: dependencies.viewEventIntentDonor,
             activityFactory: activityFactory
         )
         
         let eventDetailViewModelFactory = DefaultEventDetailViewModelFactory(
             dateRangeFormatter: FoundationDateRangeFormatter.shared,
-            eventsService: services.events,
+            eventsService: repositories.events,
             markdownRenderer: DefaultDownMarkdownRenderer(),
             shareService: shareService
         )
@@ -208,7 +209,7 @@ struct ComponentRegistry {
         ).build()
         
         let eventFeedbackPresenterFactory = EventFeedbackPresenterFactoryImpl(
-            eventService: services.events,
+            eventService: repositories.events,
             dayOfWeekFormatter: FoundationDayOfWeekFormatter.shared,
             startTimeFormatter: FoundationHoursDateFormatter.shared,
             endTimeFormatter: FoundationHoursDateFormatter.shared,

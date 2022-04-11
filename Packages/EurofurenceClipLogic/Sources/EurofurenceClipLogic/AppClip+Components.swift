@@ -39,7 +39,7 @@ extension AppClip {
             ).build()
             
             let scheduleViewModelFactory = DefaultScheduleViewModelFactory(
-                eventsService: services.events,
+                eventsService: repositories.events,
                 hoursDateFormatter: FoundationHoursDateFormatter.shared,
                 shortFormDateFormatter: FoundationShortFormDateFormatter.shared,
                 shortFormDayAndTimeFormatter: FoundationShortFormDayAndTimeFormatter.shared,
@@ -52,14 +52,14 @@ extension AppClip {
             ).build()
             
             let eventInteractionRecorder = SystemEventInteractionsRecorder(
-                eventsService: services.events,
+                eventsService: repositories.events,
                 eventIntentDonor: dependencies.eventIntentDonor,
                 activityFactory: activityFactory
             )
             
             let eventDetailViewModelFactory = DefaultEventDetailViewModelFactory(
                 dateRangeFormatter: FoundationDateRangeFormatter.shared,
-                eventsService: services.events,
+                eventsService: repositories.events,
                 markdownRenderer: DefaultDownMarkdownRenderer(),
                 shareService: shareService
             )

@@ -12,9 +12,9 @@ class ConcreteSession: EurofurenceSession {
     private let privateMessagesService: ConcretePrivateMessagesService
     private let conventionCountdownService: ConcreteConventionCountdownService
     
-    private let announcementsService: ConcreteAnnouncementsRepository
+    private let announcementsRepository: ConcreteAnnouncementsRepository
     private let knowledgeService: ConcreteKnowledgeService
-    private let eventsService: ConcreteScheduleRepository
+    private let scheduleRepository: ConcreteScheduleRepository
     private let dealersService: ConcreteDealersService
     private let significantTimeObserver: SignificantTimeObserver
     private let collectThemAllService: ConcreteCollectThemAllService
@@ -79,7 +79,7 @@ class ConcreteSession: EurofurenceSession {
             clock: clock
         )
         
-        announcementsService = ConcreteAnnouncementsRepository(
+        announcementsRepository = ConcreteAnnouncementsRepository(
             eventBus: eventBus,
             dataStore: dataStore,
             imageRepository: imageRepository
@@ -97,7 +97,7 @@ class ConcreteSession: EurofurenceSession {
             imageRepository: imageRepository
         )
         
-        eventsService = ConcreteScheduleRepository(
+        scheduleRepository = ConcreteScheduleRepository(
             eventBus: eventBus,
             dataStore: dataStore,
             imageCache: imageCache,
@@ -162,7 +162,7 @@ class ConcreteSession: EurofurenceSession {
         notificationService = ConcreteNotificationService(eventBus: eventBus)
         
         let urlEntityProcessor = URLEntityProcessor(
-            eventsService: eventsService,
+            eventsService: scheduleRepository,
             dealersService: dealersService, dataStore: dataStore
         )
         
@@ -176,9 +176,7 @@ class ConcreteSession: EurofurenceSession {
     lazy var services = Services(
         notifications: notificationService,
         refresh: refreshService,
-        announcements: announcementsService,
         authentication: authenticationService,
-        events: eventsService,
         dealers: dealersService,
         knowledge: knowledgeService,
         contentLinks: contentLinksService,
@@ -189,6 +187,10 @@ class ConcreteSession: EurofurenceSession {
         privateMessages: privateMessagesService
     )
     
-    lazy var repositories = Repositories(additionalServices: additionalServicesRepository)
+    lazy var repositories = Repositories(
+        additionalServices: additionalServicesRepository,
+        announcements: announcementsRepository,
+        events: scheduleRepository
+    )
     
 }

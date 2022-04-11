@@ -78,7 +78,7 @@ public class Application {
         // TODO: Source from preferences/Firebase
         let upcomingEventReminderInterval: TimeInterval = 900
         notificationScheduleController = NotificationScheduleController(
-            eventsService: session.services.events,
+            eventsService: session.repositories.events,
             notificationScheduler: UserNotificationsScheduler(),
             hoursDateFormatter: FoundationHoursDateFormatter.shared,
             upcomingEventReminderInterval: upcomingEventReminderInterval,
@@ -91,13 +91,13 @@ public class Application {
             versionProviding: BundleAppVersionProviding.shared,
             reviewPromptAppVersionRepository: UserDefaultsReviewPromptAppVersionRepository(),
             appStateProviding: ApplicationAppStateProviding(),
-            eventsService: session.services.events
+            eventsService: session.repositories.events
         )
         
         _ = EventWidgetUpdater(
             widgetService: SystemWidgetService(), 
             refreshService: session.services.refresh, 
-            eventsService: session.services.events
+            eventsService: session.repositories.events
         )
     }
     

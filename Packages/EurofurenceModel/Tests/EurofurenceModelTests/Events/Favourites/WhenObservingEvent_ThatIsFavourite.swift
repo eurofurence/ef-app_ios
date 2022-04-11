@@ -9,7 +9,7 @@ class WhenObservingEvent_ThatIsFavourite: XCTestCase {
         let dataStore = InMemoryDataStore(response: response)
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let randomEvent = response.events.changed.randomElement().element
-        let schedule = context.services.events.loadSchedule(tag: "Test")
+        let schedule = context.eventsService.loadSchedule(tag: "Test")
         let event = schedule.loadEvent(identifier: EventIdentifier(randomEvent.identifier))
         event?.favourite()
 

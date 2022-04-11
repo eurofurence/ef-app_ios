@@ -3,6 +3,7 @@ import EurofurenceModel
 
 struct CompositionalNewsComponentDefaultWidgetsBuilder {
     
+    let repositories: Repositories
     let services: Services
     private let builder = CompositionalNewsComponentBuilder()
     
@@ -57,7 +58,7 @@ struct CompositionalNewsComponentDefaultWidgetsBuilder {
         _ specification: S
     ) -> some EventsWidgetDataSource where S.Element == Event {
         FilteredScheduleWidgetDataSource(
-            repository: services.events,
+            repository: repositories.events,
             specification: specification
         )
     }

@@ -9,7 +9,7 @@ class WhenResolvingEventByIdentifier_ForEventThatExists_ApplicationShould: XCTes
         context.refreshLocalStore()
         context.api.simulateSuccessfulSync(response)
         let characteristics = response.events.changed.randomElement().element
-        let schedule = context.services.events.loadSchedule(tag: "Test")
+        let schedule = context.eventsService.loadSchedule(tag: "Test")
         let actual = schedule.loadEvent(identifier: EventIdentifier(characteristics.identifier))
 
         try EventAssertion(context: context, modelCharacteristics: response)
