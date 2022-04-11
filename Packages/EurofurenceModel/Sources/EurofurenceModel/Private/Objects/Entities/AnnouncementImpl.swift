@@ -1,11 +1,12 @@
 import Foundation
 
-struct AnnouncementImpl: Announcement {
+class AnnouncementImpl: Announcement {
     
     private unowned let repository: ConcreteAnnouncementsRepository
     private let dataStore: DataStore
     private let imageRepository: ImageRepository
     private let characteristics: AnnouncementCharacteristics
+    private var observers = [AnnouncementObserver]()
 
     var identifier: AnnouncementIdentifier
     var title: String
@@ -34,8 +35,24 @@ struct AnnouncementImpl: Announcement {
         self.date = characteristics.lastChangedDateTime
     }
     
+    func add(_ observer: AnnouncementObserver) {
+        observers.append(observer)
+        
+        if isRead {
+            observer.announcementEnteredReadState(self)
+        } else {
+            observer.announcementEnteredUnreadState(self)
+        }
+    }
+    
     func markRead() {
+        guard !isRead else { return }
+        
         repository.markRead(announcement: self)
+        
+        for observer in observers {
+            observer.announcementEnteredReadState(self)
+        }
     }
     
     func fetchAnnouncementImagePNGData(completionHandler: @escaping (Data?) -> Void) {

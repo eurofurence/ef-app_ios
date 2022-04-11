@@ -34,6 +34,11 @@ public final class FakeAnnouncement: Announcement {
         self.date = date
     }
     
+    private var observers = [AnnouncementObserver]()
+    public func add(_ observer: AnnouncementObserver) {
+        observers.append(observer)
+    }
+    
     public func fetchAnnouncementImagePNGData(completionHandler: @escaping (Data?) -> Void) {
         completionHandler(imagePNGData)
     }

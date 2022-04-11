@@ -43,15 +43,13 @@ class ConcreteAnnouncementsRepository: AnnouncementsRepository {
     }
     
     func markRead(announcement: AnnouncementImpl) {
-        if readAnnouncementIdentifiers.contains(announcement.identifier) == false {
-            readAnnouncementIdentifiers.append(announcement.identifier)
-            announcementsObservers.forEach({ (observer) in
-                observer.announcementsServiceDidUpdateReadAnnouncements(readAnnouncementIdentifiers)
-            })
-            
-            dataStore.performTransaction { (transaction) in
-                transaction.saveReadAnnouncements(self.readAnnouncementIdentifiers)
-            }
+        readAnnouncementIdentifiers.append(announcement.identifier)
+        announcementsObservers.forEach({ (observer) in
+            observer.announcementsServiceDidUpdateReadAnnouncements(readAnnouncementIdentifiers)
+        })
+        
+        dataStore.performTransaction { (transaction) in
+            transaction.saveReadAnnouncements(self.readAnnouncementIdentifiers)
         }
     }
 
