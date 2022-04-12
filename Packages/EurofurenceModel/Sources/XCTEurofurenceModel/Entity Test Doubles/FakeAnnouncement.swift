@@ -20,7 +20,17 @@ public final class FakeAnnouncement: Announcement {
     
     public var imagePNGData: Data?
     
-    public private(set) var readStatus: ReadStatus = .unread
+    public private(set) var readStatus: ReadStatus = .unread {
+        didSet {
+            for observer in observers {
+                if isRead {
+                    observer.announcementEnteredReadState(self)
+                } else {
+                    observer.announcementEnteredUnreadState(self)
+                }
+            }
+        }
+    }
 
     public init(
         identifier: AnnouncementIdentifier,
@@ -37,6 +47,12 @@ public final class FakeAnnouncement: Announcement {
     private var observers = [AnnouncementObserver]()
     public func add(_ observer: AnnouncementObserver) {
         observers.append(observer)
+        
+        if isRead {
+            observer.announcementEnteredReadState(self)
+        } else {
+            observer.announcementEnteredUnreadState(self)
+        }
     }
     
     public func fetchAnnouncementImagePNGData(completionHandler: @escaping (Data?) -> Void) {
