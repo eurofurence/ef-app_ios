@@ -10,6 +10,7 @@ public class DataSourceBackedNewsAnnouncementsWidgetViewModel: NewsAnnouncements
     init<DataSource>(
         dataSource: DataSource,
         configuration: NewsAnnouncementsConfiguration,
+        formatters: AnnouncementsWidgetFormatters,
         router: Router
     ) where DataSource: NewsAnnouncementsDataSource {
         self.router = router
@@ -19,7 +20,12 @@ public class DataSourceBackedNewsAnnouncementsWidgetViewModel: NewsAnnouncements
             .map { (announcements) in
                 let visibleAnnouncements = announcements.prefix(configuration.maxDisplayedAnnouncements)
                 let announcementViewModels = visibleAnnouncements.map({ (announcement) in
-                    DataSourceBackedAnnouncementWidgetViewModel(announcement: announcement, router: router)
+                    DataSourceBackedAnnouncementWidgetViewModel(
+                        announcement: announcement,
+                        dateFormatter: formatters.announcementTimestamps,
+                        markdownRenderer: formatters.markdownRenderer,
+                        router: router
+                    )
                 })
                 
                 var visibleElements = [AnnouncementWidgetContent<Announcement>]()

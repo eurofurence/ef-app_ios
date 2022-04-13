@@ -3,12 +3,15 @@ import EurofurenceApplication
 import EurofurenceModel
 import ObservedObject
 import RouterCore
+import XCTComponentBase
 import XCTest
 import XCTEurofurenceModel
 import XCTRouter
 
 class NewsAnnouncementsWidgetViewModelTests: XCTestCase {
     
+    private var fakeMarkdownFormatter: StubMarkdownRenderer!
+    private var fakeTimestampsFormatter: FakeDateFormatter!
     private var dataSource: ControllableNewsAnnouncementsDataSource!
     private var viewModel: DataSourceBackedNewsAnnouncementsWidgetViewModel!
     private var configuration: StubNewsAnnouncementsConfiguration!
@@ -17,11 +20,19 @@ class NewsAnnouncementsWidgetViewModelTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
+        fakeMarkdownFormatter = StubMarkdownRenderer()
+        fakeTimestampsFormatter = FakeDateFormatter()
+        let formatters = AnnouncementsWidgetFormatters(
+            announcementTimestamps: fakeTimestampsFormatter,
+            markdownRenderer: fakeMarkdownFormatter
+        )
+        
         dataSource = ControllableNewsAnnouncementsDataSource()
         configuration = StubNewsAnnouncementsConfiguration()
         let viewModelFactory = NewsAnnouncementsWidgetViewModelFactory(
             dataSource: dataSource,
-            configuration: configuration
+            configuration: configuration,
+            formatters: formatters
         )
         
         router = FakeContentRouter()
@@ -30,14 +41,19 @@ class NewsAnnouncementsWidgetViewModelTests: XCTestCase {
     
     func testUnreadAnnouncement() throws {
         let announcement = FakeAnnouncement.random
+        fakeTimestampsFormatter.stub("Timestamp", for: announcement.date)
         dataSource.updateAnnouncements([announcement])
         
         XCTAssertEqual(1, viewModel.numberOfElements)
         
         let announcementViewModel = try self.announcementViewModel(at: 0)
+        let actualBody = announcementViewModel.body
+        let expectedBody = fakeMarkdownFormatter.stubbedContents(for: announcement.content)
         
         XCTAssertEqual(announcement.title, announcementViewModel.title)
         XCTAssertTrue(announcementViewModel.isUnreadIndicatorVisible)
+        XCTAssertEqual("Timestamp", announcementViewModel.formattedTimestamp)
+        XCTAssertEqual(expectedBody, actualBody)
     }
     
     func testReadAnnouncement() throws {

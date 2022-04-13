@@ -1,3 +1,4 @@
+import ComponentBase
 import EurofurenceModel
 import Foundation
 import ObservedObject
@@ -7,25 +8,31 @@ public class DataSourceBackedAnnouncementWidgetViewModel: NewsAnnouncementViewMo
     
     private let announcement: Announcement
     private let router: Router
+    private let markdownRenderer: MarkdownRenderer
     
-    init(announcement: Announcement, router: Router) {
+    init(
+        announcement: Announcement,
+        dateFormatter: DateFormatterProtocol,
+        markdownRenderer: MarkdownRenderer,
+        router: Router
+    ) {
         self.announcement = announcement
         self.router = router
+        self.markdownRenderer = markdownRenderer
+        self.formattedTimestamp = dateFormatter.string(from: announcement.date)
         
         announcement.add(NotifyViewModelChangedWhenAnnouncementBecomesRead(subject: objectDidChange))
     }
     
-    public var formattedTimestamp: String {
-        ""
-    }
+    public let formattedTimestamp: String
     
     public var title: String {
         announcement.title
     }
     
-    public var body: NSAttributedString {
-        NSAttributedString()
-    }
+    public lazy var body: NSAttributedString = {
+        markdownRenderer.render(announcement.content)
+    }()
     
     public var isUnreadIndicatorVisible: Bool {
         announcement.isRead == false
