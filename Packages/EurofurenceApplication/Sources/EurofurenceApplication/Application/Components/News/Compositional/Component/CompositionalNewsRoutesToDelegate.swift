@@ -13,6 +13,14 @@ struct CompositionalNewsRoutesToDelegate: Router {
         if content is MessagesRouteable {
             delegate.newsModuleDidRequestShowingPrivateMessages()
         }
+        
+        if content is AnnouncementsRouteable {
+            delegate.newsModuleDidRequestShowingAllAnnouncements()
+        }
+        
+        if let content = content as? AnnouncementRouteable {
+            delegate.newsModuleDidSelectAnnouncement(content.identifier)
+        }
     }
     
 }

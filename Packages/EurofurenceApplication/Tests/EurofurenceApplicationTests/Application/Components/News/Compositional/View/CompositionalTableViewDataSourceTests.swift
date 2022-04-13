@@ -95,11 +95,23 @@ class CompositionalTableViewDataSourceTests: XCTestCase {
         composition.append(firstDataSource)
         composition.append(secondDataSource)
         
+        firstDataSource.numberOfRows = 1
+        secondDataSource.numberOfRows = 1
         firstDataSource.stub(44, asEstimatedHeightForHeaderInSection: 0)
         secondDataSource.stub(22, asEstimatedHeightForHeaderInSection: 1)
         
         XCTAssertEqual(44, composition.tableView(tableView, estimatedHeightForHeaderInSection: 0))
         XCTAssertEqual(22, composition.tableView(tableView, estimatedHeightForHeaderInSection: 1))
+    }
+    
+    func testEstimatedHeightForHeaderInSectionZeroWhenSectionEmpty() {
+        let dataSource = FakeTableViewMediator()
+        composition.append(dataSource)
+        
+        dataSource.numberOfRows = 0
+        dataSource.stub(44, asEstimatedHeightForHeaderInSection: 0)
+        
+        XCTAssertEqual(0, composition.tableView(tableView, estimatedHeightForHeaderInSection: 0))
     }
     
     func testViewForHeaderInSectionInferredFromSection() {

@@ -1,3 +1,4 @@
+import Combine
 import UIKit
 
 class AnnouncementTableViewCell: UITableViewCell, AnnouncementItemComponent {
@@ -5,13 +6,34 @@ class AnnouncementTableViewCell: UITableViewCell, AnnouncementItemComponent {
     override class func registerNib(in tableView: UITableView) {
         registerNib(in: tableView, bundle: .module)
     }
+    
+    var subscriptions = Set<AnyCancellable>()
 
     // MARK: IBOutlets
 
-    @IBOutlet private weak var announcementReceivedDateTimeLabel: UILabel!
-    @IBOutlet private weak var announcementTitleLabel: UILabel!
-    @IBOutlet private weak var announcementDescriptionLabel: UILabel!
-    @IBOutlet private weak var unreadIndicatorView: UIView!
+    @IBOutlet private weak var announcementReceivedDateTimeLabel: UILabel! {
+        didSet {
+            announcementReceivedDateTimeLabel.accessibilityIdentifier = "Announcement_Timestamp"
+        }
+    }
+    
+    @IBOutlet private weak var announcementTitleLabel: UILabel! {
+        didSet {
+            announcementTitleLabel.accessibilityIdentifier = "Announcement_Title"
+        }
+    }
+    
+    @IBOutlet private weak var announcementDescriptionLabel: UILabel! {
+        didSet {
+            announcementDescriptionLabel.accessibilityIdentifier = "Announcement_Body"
+        }
+    }
+    
+    @IBOutlet private weak var unreadIndicatorView: UIView! {
+        didSet {
+            unreadIndicatorView.accessibilityIdentifier = "Announcement_UnreadIndicator"
+        }
+    }
 
     // MARK: AnnouncementItemComponent
 

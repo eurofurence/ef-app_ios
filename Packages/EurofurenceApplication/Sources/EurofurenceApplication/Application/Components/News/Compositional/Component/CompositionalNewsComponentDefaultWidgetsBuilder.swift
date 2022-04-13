@@ -10,6 +10,7 @@ struct CompositionalNewsComponentDefaultWidgetsBuilder {
     func buildNewsComponent() -> any NewsComponentFactory {
         addPersonalisedWidget()
         addCountdownWidget()
+        addAnnouncementsWidget()
         addUpcomingEventsWidget()
         addRunningEventsWidget()
         addTodaysFavouriteEventsWidget()
@@ -32,6 +33,21 @@ struct CompositionalNewsComponentDefaultWidgetsBuilder {
         let dataSource = ConventionCountdownDataSourceServiceAdapter(countdownService: services.conventionCountdown)
         let viewModelFactory = ConventionCountdownViewModelFactory(dataSource: dataSource)
         let widget = MVVMWidget(viewModelFactory: viewModelFactory, viewFactory: ConventionCountdownViewFactory())
+        _ = builder.with(widget)
+    }
+    
+    private func addAnnouncementsWidget() {
+        struct LimitToThreeAnnouncements: NewsAnnouncementsConfiguration {
+            var maxDisplayedAnnouncements: Int = 3
+        }
+        
+        let dataSource = NewsAnnouncementsDataSourceRepositoryAdapter(repository: repositories.announcements)
+        let viewModelFactory = NewsAnnouncementsWidgetViewModelFactory(
+            dataSource: dataSource,
+            configuration: LimitToThreeAnnouncements()
+        )
+        
+        let widget = MVVMWidget(viewModelFactory: viewModelFactory, viewFactory: AnnouncementsNewsWidgetViewFactory())
         _ = builder.with(widget)
     }
     
