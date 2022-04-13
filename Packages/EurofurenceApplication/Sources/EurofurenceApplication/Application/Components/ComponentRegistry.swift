@@ -52,20 +52,6 @@ struct ComponentRegistry {
             alertRouter: alertRouter
         ).build()
         
-        let newsViewModelProducer = DefaultNewsViewModelProducer(
-            announcementsService: repositories.announcements,
-            authenticationService: services.authentication,
-            privateMessagesService: services.privateMessages,
-            daysUntilConventionService: services.conventionCountdown,
-            eventsService: repositories.events,
-            relativeTimeIntervalCountdownFormatter: FoundationRelativeTimeIntervalCountdownFormatter.shared,
-            hoursDateFormatter: FoundationHoursDateFormatter.shared,
-            clock: SystemClock.shared,
-            refreshService: services.refresh,
-            announcementsDateFormatter: FoundationAnnouncementDateFormatter.shared,
-            announcementsMarkdownRenderer: subtleMarkdownRenderer
-        )
-        
         newsComponentFactory = CompositionalNewsComponentDefaultWidgetsBuilder(
             repositories: repositories,
             services: services
