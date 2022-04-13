@@ -30,7 +30,7 @@ class DefaultAnnouncementDetailViewModelFactoryShould: XCTestCase {
     
     func testMarkAnnouncementAsRead() {
         let context = AnnouncementDetailViewModelFactoryTestBuilder().build()
-        let viewModel = context.makeViewModel()
+        _ = context.makeViewModel()
         
         XCTAssertEqual(.read, context.announcement.readStatus)
     }
