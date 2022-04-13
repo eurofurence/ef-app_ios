@@ -119,6 +119,26 @@ class NewsAnnouncementsWidgetViewModelTests: XCTestCase {
         router.assertRouted(to: AnnouncementsRouteable())
     }
     
+    func testUpdatingAnnouncementsNotifiesChange() throws {
+        var notifiedObjectDidChange = false
+        
+        let subscription = viewModel
+            .objectDidChange
+            .sink { (_) in
+                notifiedObjectDidChange = true
+            }
+        
+        defer {
+            subscription.cancel()
+        }
+        
+        XCTAssertFalse(notifiedObjectDidChange)
+        
+        dataSource.updateAnnouncements([FakeAnnouncement.random])
+        
+        XCTAssertTrue(notifiedObjectDidChange)
+    }
+    
     private func announcementViewModel(at index: Int) throws -> DataSourceBackedAnnouncementWidgetViewModel {
         guard index < viewModel.numberOfElements else {
             struct IndexOutOfRange: Error { }

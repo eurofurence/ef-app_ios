@@ -1,10 +1,11 @@
 import Combine
+import ObservedObject
 import RouterCore
 
 public class DataSourceBackedNewsAnnouncementsWidgetViewModel: NewsAnnouncementsWidgetViewModel {
     
     private var subscriptions = Set<AnyCancellable>()
-    private var visibleElements = [AnnouncementWidgetContent<Announcement>]()
+    @Observed private var visibleElements = [AnnouncementWidgetContent<Announcement>]()
     private let router: Router
     
     init<DataSource>(

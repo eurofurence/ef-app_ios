@@ -1,3 +1,4 @@
+import Combine
 import Foundation
 import UIKit
 
@@ -6,9 +7,20 @@ public class AnnouncementsNewsWidgetTableViewDataSource<
 >: NSObject, TableViewMediator {
     
     private let viewModel: ViewModel
+    private var subscriptions = Set<AnyCancellable>()
     
     init(viewModel: ViewModel) {
         self.viewModel = viewModel
+        super.init()
+        
+        viewModel
+            .objectDidChange
+            .sink { [weak self] (_) in
+                if let self = self {
+                    self.delegate?.dataSourceContentsDidChange(self)
+                }
+            }
+            .store(in: &subscriptions)
     }
     
     public var delegate: TableViewMediatorDelegate?

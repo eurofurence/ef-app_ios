@@ -109,6 +109,14 @@ class AnnouncementsNewsWidgetTableViewDataSourceTests: XCTestCase {
         XCTAssertFalse(viewModel.openedAllAnnouncements)
     }
     
+    func testRequestsReloadWhenViewModelChanges() throws {
+        let delegate = CapturingTableViewMediatorDelegate()
+        dataSource.delegate = delegate
+        viewModel.objectDidChange.send()
+        
+        XCTAssertTrue(delegate.contentsDidChange)
+    }
+    
     private func findBindingTarget<View>(_ accessibilityIdentifier: String) throws -> View where View: UIView {
         let firstRowFirstSection = IndexPath(row: 0, section: 0)
         let cell = dataSource.tableView(tableView, cellForRowAt: firstRowFirstSection)
