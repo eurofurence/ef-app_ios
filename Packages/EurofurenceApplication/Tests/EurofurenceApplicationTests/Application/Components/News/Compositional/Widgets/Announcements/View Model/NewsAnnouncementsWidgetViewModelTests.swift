@@ -129,20 +129,4 @@ class NewsAnnouncementsWidgetViewModelTests: XCTestCase {
         return try XCTUnwrap(element.viewModel)
     }
     
-    private class ControllableNewsAnnouncementsDataSource: NewsAnnouncementsDataSource {
-        
-        let announcements = CurrentValueSubject<[Announcement], Never>([])
-        
-        func updateAnnouncements(_ announcements: [Announcement]) {
-            self.announcements.value = announcements
-        }
-        
-    }
-    
-    class StubNewsAnnouncementsConfiguration: NewsAnnouncementsConfiguration {
-        
-        var maxDisplayedAnnouncements: Int = .max
-        
-    }
-    
 }
