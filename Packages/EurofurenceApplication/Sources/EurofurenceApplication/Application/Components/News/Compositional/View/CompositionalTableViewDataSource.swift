@@ -36,6 +36,10 @@ public class CompositionalTableViewDataSource: NSObject {
         registerReloadSectionWhenDataSourceChangesHandler(dataSource)
     }
     
+    private func isSectionEmpty(_ section: Int) -> Bool {
+        self.tableView(tableView, numberOfRowsInSection: section) == 0
+    }
+    
     private func insertNewSection(_ dataSource: TableViewMediator) {
         tableView.beginUpdates()
         mediators.append(dataSource)
@@ -101,7 +105,7 @@ extension CompositionalTableViewDataSource: UITableViewDelegate {
     }
     
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard self.tableView(tableView, numberOfRowsInSection: section) > 0 else { return nil }
+        guard isSectionEmpty(section) == false else { return nil }
         
         let mediator = mediators[section]
         return mediator.tableView?(tableView, viewForHeaderInSection: section)
@@ -118,6 +122,8 @@ extension CompositionalTableViewDataSource: UITableViewDelegate {
     }
     
     public func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
+        guard isSectionEmpty(section) == false else { return 0 }
+                
         let mediator = mediators[section]
         return mediator.tableView?(tableView, estimatedHeightForHeaderInSection: section) ?? missingNumeric
     }
