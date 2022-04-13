@@ -32,8 +32,13 @@ public class CompositionalNewsViewController: UIViewController, CompositionalNew
         installNavigationConfiguration()
         installTableView()
         installNewsBannerImage()
-        
+        becomeReadyWithoutAnimations()
+    }
+    
+    private func becomeReadyWithoutAnimations() {
+        UIView.setAnimationsEnabled(false)
         delegate?.sceneReady()
+        UIView.setAnimationsEnabled(true)
     }
     
     private func installNavigationConfiguration() {
