@@ -7,7 +7,6 @@ class DebugTableViewController: UITableViewController {
     // MARK: Properties
 
     @IBOutlet private weak var fcmTokenLabel: UILabel!
-    @IBOutlet private weak var enableWidgetBasedNewsFeedSwitch: UISwitch!
     
     private lazy var actions: [IndexPath : () -> Void] = [
         IndexPath(item: 0, section: 0): self.copyFCMToPasteBoard
@@ -19,7 +18,6 @@ class DebugTableViewController: UITableViewController {
         super.viewDidLoad()
 
         setUpFCMCell()
-        setUpWidgetBasedNewsFeed()
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -45,16 +43,6 @@ class DebugTableViewController: UITableViewController {
         let alert = UIAlertController(title: "FCM Copied", message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel))
         present(alert, animated: true)
-    }
-    
-    // MARK: Widget Feed
-    
-    private func setUpWidgetBasedNewsFeed() {
-        enableWidgetBasedNewsFeedSwitch.isOn = DebugSettings.isWidgetBasedNewsFeedEnabled
-    }
-
-    @IBAction private func useWidgetBasedNewsFeedValueDidChange(_ sender: Any) {
-        DebugSettings.isWidgetBasedNewsFeedEnabled = enableWidgetBasedNewsFeedSwitch.isOn
     }
     
 }

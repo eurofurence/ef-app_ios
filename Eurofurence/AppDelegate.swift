@@ -63,8 +63,7 @@ public class AppDelegate: UIResponder, UIApplicationDelegate {
     private func prepareApplication() {
         let dependencies = Application.Dependencies(
             viewEventIntentDonor: DonateFromAppEventIntentDonor(),
-            viewDealerIntentDonor: DonateFromAppDealerIntentDonor(),
-            isCompositionalNewsComponentEnabled: DebugSettings.isWidgetBasedNewsFeedEnabled
+            viewDealerIntentDonor: DonateFromAppDealerIntentDonor()
         )
         
         Application.assemble(dependencies: dependencies)
