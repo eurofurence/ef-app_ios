@@ -63,4 +63,16 @@ public class AnnouncementsNewsWidgetTableViewDataSource<
         return cell
     }
     
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let visualElement = viewModel.element(at: indexPath.row)
+        
+        switch visualElement {
+        case .showMoreAnnouncements:
+            viewModel.openAllAnnouncements()
+            
+        case .announcement(let announcement):
+            announcement.open()
+        }
+    }
+    
 }

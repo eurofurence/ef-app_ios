@@ -93,6 +93,22 @@ class AnnouncementsNewsWidgetTableViewDataSourceTests: XCTestCase {
         XCTAssertTrue(unreadIndicator.isHidden)
     }
     
+    func testSelectingAllAnnouncements() throws {
+        viewModel.elements = [.showMoreAnnouncements]
+        dataSource.tableView(tableView, didSelectRowAt: IndexPath(row: 0, section: 0))
+        
+        XCTAssertTrue(viewModel.openedAllAnnouncements)
+    }
+    
+    func testSelectingAnnouncement() throws {
+        let announcement = FakeNewsAnnouncementViewModel()
+        viewModel.elements = [.announcement(announcement)]
+        dataSource.tableView(tableView, didSelectRowAt: IndexPath(row: 0, section: 0))
+        
+        XCTAssertTrue(announcement.opened)
+        XCTAssertFalse(viewModel.openedAllAnnouncements)
+    }
+    
     private func findBindingTarget<View>(_ accessibilityIdentifier: String) throws -> View where View: UIView {
         let firstRowFirstSection = IndexPath(row: 0, section: 0)
         let cell = dataSource.tableView(tableView, cellForRowAt: firstRowFirstSection)
@@ -115,8 +131,9 @@ class AnnouncementsNewsWidgetTableViewDataSourceTests: XCTestCase {
             elements[index]
         }
         
+        private(set) var openedAllAnnouncements = false
         func openAllAnnouncements() {
-            
+            openedAllAnnouncements = true
         }
         
     }
@@ -129,8 +146,9 @@ class AnnouncementsNewsWidgetTableViewDataSourceTests: XCTestCase {
         
         @Observed var isUnreadIndicatorVisible: Bool = false
         
+        private(set) var opened = false
         func open() {
-            
+            opened = true
         }
         
     }
