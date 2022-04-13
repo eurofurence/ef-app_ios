@@ -42,7 +42,9 @@ public class AnnouncementsNewsWidgetTableViewDataSource<
             
         case .announcement(let announcement):
             let announcementCell = tableView.dequeue(AnnouncementTableViewCell.self)
+            announcementCell.setAnnouncementReceivedDateTime(announcement.formattedTimestamp)
             announcementCell.setAnnouncementTitle(announcement.title)
+            announcementCell.setAnnouncementDetail(announcement.body)
             
             announcement
                 .publisher(for: \.isUnreadIndicatorVisible)

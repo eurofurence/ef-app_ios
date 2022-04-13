@@ -1,4 +1,5 @@
 import EurofurenceModel
+import Foundation
 import ObservedObject
 import RouterCore
 
@@ -14,8 +15,16 @@ public class DataSourceBackedAnnouncementWidgetViewModel: NewsAnnouncementViewMo
         announcement.add(NotifyViewModelChangedWhenAnnouncementBecomesRead(subject: objectDidChange))
     }
     
+    public var formattedTimestamp: String {
+        ""
+    }
+    
     public var title: String {
         announcement.title
+    }
+    
+    public var body: NSAttributedString {
+        NSAttributedString()
     }
     
     public var isUnreadIndicatorVisible: Bool {

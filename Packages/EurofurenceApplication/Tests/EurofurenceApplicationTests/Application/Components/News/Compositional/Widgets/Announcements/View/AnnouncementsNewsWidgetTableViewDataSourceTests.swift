@@ -38,6 +38,15 @@ class AnnouncementsNewsWidgetTableViewDataSourceTests: XCTestCase {
         XCTAssertEqual(.allAnnouncements, promptLabel.text)
     }
     
+    func testAnnouncementElement_BindsFormattedTimestamp() throws {
+        let announcement = FakeNewsAnnouncementViewModel()
+        announcement.formattedTimestamp = "Today"
+        viewModel.elements = [.announcement(announcement)]
+        let titleLabel: UILabel = try findBindingTarget("Announcement_Timestamp")
+        
+        XCTAssertEqual(announcement.formattedTimestamp, titleLabel.text)
+    }
+    
     func testAnnouncementElement_BindsTitle() throws {
         let announcement = FakeNewsAnnouncementViewModel()
         announcement.title = "You're here early. Please read this!"
@@ -45,6 +54,15 @@ class AnnouncementsNewsWidgetTableViewDataSourceTests: XCTestCase {
         let titleLabel: UILabel = try findBindingTarget("Announcement_Title")
         
         XCTAssertEqual(announcement.title, titleLabel.text)
+    }
+    
+    func testAnnouncementElement_BindsBody() throws {
+        let announcement = FakeNewsAnnouncementViewModel()
+        announcement.body = NSAttributedString(string: "Check this out")
+        viewModel.elements = [.announcement(announcement)]
+        let titleLabel: UILabel = try findBindingTarget("Announcement_Body")
+        
+        XCTAssertEqual(announcement.body, titleLabel.attributedText)
     }
     
     func testAnnouncementElement_UnreadIndicatorVisible() throws {
@@ -105,7 +123,9 @@ class AnnouncementsNewsWidgetTableViewDataSourceTests: XCTestCase {
     
     private class FakeNewsAnnouncementViewModel: NewsAnnouncementViewModel {
         
+        var formattedTimestamp: String = ""
         var title: String = ""
+        var body: NSAttributedString = NSAttributedString()
         
         @Observed var isUnreadIndicatorVisible: Bool = false
         

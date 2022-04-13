@@ -11,7 +11,11 @@ class AnnouncementTableViewCell: UITableViewCell, AnnouncementItemComponent {
 
     // MARK: IBOutlets
 
-    @IBOutlet private weak var announcementReceivedDateTimeLabel: UILabel!
+    @IBOutlet private weak var announcementReceivedDateTimeLabel: UILabel! {
+        didSet {
+            announcementReceivedDateTimeLabel.accessibilityIdentifier = "Announcement_Timestamp"
+        }
+    }
     
     @IBOutlet private weak var announcementTitleLabel: UILabel! {
         didSet {
@@ -19,7 +23,11 @@ class AnnouncementTableViewCell: UITableViewCell, AnnouncementItemComponent {
         }
     }
     
-    @IBOutlet private weak var announcementDescriptionLabel: UILabel!
+    @IBOutlet private weak var announcementDescriptionLabel: UILabel! {
+        didSet {
+            announcementDescriptionLabel.accessibilityIdentifier = "Announcement_Body"
+        }
+    }
     
     @IBOutlet private weak var unreadIndicatorView: UIView! {
         didSet {
