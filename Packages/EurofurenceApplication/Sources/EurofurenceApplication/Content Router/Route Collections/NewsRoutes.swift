@@ -26,6 +26,8 @@ struct NewsRoutes: RouteProvider {
                 )
             )
             
+            NewsRoute(newsPresentation: ResetNewsAfterLogout(window: window))
+            
             let tabSwapper = MoveToTabByViewController<CompositionalNewsViewController>(window: window)
             
             let messageContentRoute = MessageRoute(
