@@ -78,8 +78,9 @@ class YourEurofurenceWidgetTableViewDataSourceTests: XCTestCase {
     
     func testBindsUpdatedHighlightedState() throws {
         viewModel.isHighlightedForAttention = false
-        let highlightedUserView: UIView = try findBindingTarget("Personalised_UserHighlightedIcon")
-        let normalUserView: UIView = try findBindingTarget("Personalised_UserIcon")
+        let cell = dequeueCell()
+        let highlightedUserView: UIView = try findBindingTarget(in: cell, "Personalised_UserHighlightedIcon")
+        let normalUserView: UIView = try findBindingTarget(in: cell, "Personalised_UserIcon")
         viewModel.isHighlightedForAttention = true
         
         XCTAssertFalse(highlightedUserView.isHidden)
@@ -96,11 +97,33 @@ class YourEurofurenceWidgetTableViewDataSourceTests: XCTestCase {
         XCTAssertTrue(viewModel.didShowPersonalisedContent)
     }
     
-    private func findBindingTarget<View>(_ accessibilityIdentifier: String) throws -> View where View: UIView {
+    func testDoesNotRetainBindingsForPreviousCell_BUG() throws {
+        viewModel.prompt = "Welcome, Some Guy"
+        let first = dequeueCell()
+        let second = dequeueCell()
+        viewModel.prompt = "Welcome, Some Other Guy"
+        
+        let firstPromptLabel: UILabel = try findBindingTarget(in: first, "Personalised_Prompt")
+        let secondPromptLabel: UILabel = try findBindingTarget(in: second, "Personalised_Prompt")
+        
+        XCTAssertEqual("Welcome, Some Guy", firstPromptLabel.text)
+        XCTAssertEqual("Welcome, Some Other Guy", secondPromptLabel.text)
+    }
+    
+    private func dequeueCell() -> UITableViewCell {
         let firstRowFirstSection = IndexPath(row: 0, section: 0)
-        let cell = dataSource.tableView(tableView, cellForRowAt: firstRowFirstSection)
-        let personalisedCell = try XCTUnwrap(cell as? NewsUserWidgetTableViewCell)
-        let bindingTarget: View? = personalisedCell.viewWithAccessibilityIdentifier(accessibilityIdentifier)
+        return dataSource.tableView(tableView, cellForRowAt: firstRowFirstSection)
+    }
+    
+    private func findBindingTarget<View>(_ accessibilityIdentifier: String) throws -> View where View: UIView {
+        return try findBindingTarget(in: dequeueCell(), accessibilityIdentifier)
+    }
+    
+    private func findBindingTarget<View>(
+        in parent: UIView,
+        _ accessibilityIdentifier: String
+    ) throws -> View where View: UIView {
+        let bindingTarget: View? = parent.viewWithAccessibilityIdentifier(accessibilityIdentifier)
         
         return try XCTUnwrap(bindingTarget)
     }

@@ -26,7 +26,7 @@ public class YourEurofurenceWidgetTableViewDataSource<
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(NewsUserWidgetTableViewCell.self)
-        cell.bind(to: viewModel)
+        bind(cell)
         
         return cell
     }
@@ -40,6 +40,39 @@ public class YourEurofurenceWidgetTableViewDataSource<
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.showPersonalisedContent()
+    }
+    
+    private func bind(_ cell: NewsUserWidgetTableViewCell) {
+        subscriptions.removeAll()
+        
+        viewModel
+            .publisher(for: \.prompt)
+            .map(Optional.init)
+            .assign(to: \.text, on: cell.promptLabel)
+            .store(in: &subscriptions)
+        
+        viewModel
+            .publisher(for: \.supplementaryPrompt)
+            .map(Optional.init)
+            .assign(to: \.text, on: cell.detailedPromptLabel)
+            .store(in: &subscriptions)
+        
+        viewModel
+            .publisher(for: \.isHighlightedForAttention)
+            .assign(to: \.isHidden, on: cell.standardUserPromptView)
+            .store(in: &subscriptions)
+        
+        viewModel
+            .publisher(for: \.isHighlightedForAttention)
+            .map({ !$0 })
+            .assign(to: \.isHidden, on: cell.highlightedUserPromptView)
+            .store(in: &subscriptions)
+        
+        viewModel
+            .publisher(for: \.isHighlightedForAttention)
+            .map({ [weak cell] in $0 ? cell?.highlightedUserPromptColor : cell?.standardUserPromptColor })
+            .assign(to: \.textColor, on: cell.detailedPromptLabel)
+            .store(in: &subscriptions)
     }
     
 }
