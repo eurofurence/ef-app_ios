@@ -1,3 +1,4 @@
+import Combine
 import UIKit
 
 public class NewsUserWidgetTableViewCell: UITableViewCell {
@@ -36,33 +37,38 @@ public class NewsUserWidgetTableViewCell: UITableViewCell {
     override public class func registerNib(in tableView: UITableView) {
         registerNib(in: tableView, bundle: .module)
     }
+    
+    private var subscriptions = Set<AnyCancellable>()
 
-    // MARK: UserWidgetComponent
-
-    public func setPrompt(_ prompt: String) {
-        promptLabel.text = prompt
-    }
-
-    public func setDetailedPrompt(_ detailedPrompt: String) {
-        detailedPromptLabel.text = detailedPrompt
-    }
-
-    public func showHighlightedUserPrompt() {
-        highlightedUserPromptView.isHidden = false
-        detailedPromptLabel.textColor = highlightedUserPromptColor
-    }
-
-    public func hideHighlightedUserPrompt() {
-        highlightedUserPromptView.isHidden = true
-    }
-
-    public func showStandardUserPrompt() {
-        standardUserPromptView.isHidden = false
-        detailedPromptLabel.textColor = standardUserPromptColor
-    }
-
-    public func hideStandardUserPrompt() {
-        standardUserPromptView.isHidden = true
+    func bind<ViewModel>(to viewModel: ViewModel) where ViewModel: YourEurofurenceWidgetViewModel {
+        viewModel
+            .publisher(for: \.prompt)
+            .map(Optional.init)
+            .assign(to: \.text, on: promptLabel)
+            .store(in: &subscriptions)
+        
+        viewModel
+            .publisher(for: \.supplementaryPrompt)
+            .map(Optional.init)
+            .assign(to: \.text, on: detailedPromptLabel)
+            .store(in: &subscriptions)
+        
+        viewModel
+            .publisher(for: \.isHighlightedForAttention)
+            .assign(to: \.isHidden, on: standardUserPromptView)
+            .store(in: &subscriptions)
+        
+        viewModel
+            .publisher(for: \.isHighlightedForAttention)
+            .map({ !$0 })
+            .assign(to: \.isHidden, on: highlightedUserPromptView)
+            .store(in: &subscriptions)
+        
+        viewModel
+            .publisher(for: \.isHighlightedForAttention)
+            .map({ [weak self] in $0 ? self?.highlightedUserPromptColor : self?.standardUserPromptColor })
+            .assign(to: \.textColor, on: detailedPromptLabel)
+            .store(in: &subscriptions)
     }
 
 }
