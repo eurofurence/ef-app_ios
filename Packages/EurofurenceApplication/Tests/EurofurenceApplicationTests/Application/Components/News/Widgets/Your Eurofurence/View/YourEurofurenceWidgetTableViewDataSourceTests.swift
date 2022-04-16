@@ -30,21 +30,21 @@ class YourEurofurenceWidgetTableViewDataSourceTests: XCTestCase {
         XCTAssertEqual(String.yourEurofurence, headerView.textLabel?.text)
     }
     
-    func testBindsInitialPrompt() throws {
+    func testBindsPrompt() throws {
         viewModel.prompt = "Welcome, Some Guy"
         let promptLabel: UILabel = try findBindingTarget("Personalised_Prompt")
         
         XCTAssertEqual("Welcome, Some Guy", promptLabel.text)
     }
     
-    func testBindsInitialSupplementaryPrompt() throws {
+    func testBindsSupplementaryPrompt() throws {
         viewModel.supplementaryPrompt = "You have (69) new messages"
         let supplementaryPromptLabel: UILabel = try findBindingTarget("Personalised_SupplementaryPrompt")
         
         XCTAssertEqual("You have (69) new messages", supplementaryPromptLabel.text)
     }
     
-    func testBindsInitialHighlightedState_Highlighted() throws {
+    func testBindsHighlightedState_Highlighted() throws {
         viewModel.isHighlightedForAttention = true
         let highlightedUserView: UIView = try findBindingTarget("Personalised_UserHighlightedIcon")
         let normalUserView: UIView = try findBindingTarget("Personalised_UserIcon")
@@ -53,38 +53,13 @@ class YourEurofurenceWidgetTableViewDataSourceTests: XCTestCase {
         XCTAssertTrue(normalUserView.isHidden)
     }
     
-    func testBindsInitialHighlightedState_NotHighlighted() throws {
+    func testBindsHighlightedState_NotHighlighted() throws {
         viewModel.isHighlightedForAttention = false
         let highlightedUserView: UIView = try findBindingTarget("Personalised_UserHighlightedIcon")
         let normalUserView: UIView = try findBindingTarget("Personalised_UserIcon")
         
         XCTAssertTrue(highlightedUserView.isHidden)
         XCTAssertFalse(normalUserView.isHidden)
-    }
-    
-    func testBindsUpdatedPrompt() throws {
-        let promptLabel: UILabel = try findBindingTarget("Personalised_Prompt")
-        viewModel.prompt = "Welcome, Some Guy"
-        
-        XCTAssertEqual("Welcome, Some Guy", promptLabel.text)
-    }
-    
-    func testBindsUpdatedSupplementaryPrompt() throws {
-        let supplementaryPromptLabel: UILabel = try findBindingTarget("Personalised_SupplementaryPrompt")
-        viewModel.supplementaryPrompt = "You have (69) new messages"
-        
-        XCTAssertEqual("You have (69) new messages", supplementaryPromptLabel.text)
-    }
-    
-    func testBindsUpdatedHighlightedState() throws {
-        viewModel.isHighlightedForAttention = false
-        let cell = dequeueCell()
-        let highlightedUserView: UIView = try findBindingTarget(in: cell, "Personalised_UserHighlightedIcon")
-        let normalUserView: UIView = try findBindingTarget(in: cell, "Personalised_UserIcon")
-        viewModel.isHighlightedForAttention = true
-        
-        XCTAssertFalse(highlightedUserView.isHidden)
-        XCTAssertTrue(normalUserView.isHidden)
     }
     
     func testSelectingCellNotifiesViewModel() throws {
@@ -97,17 +72,13 @@ class YourEurofurenceWidgetTableViewDataSourceTests: XCTestCase {
         XCTAssertTrue(viewModel.didShowPersonalisedContent)
     }
     
-    func testDoesNotRetainBindingsForPreviousCell_BUG() throws {
-        viewModel.prompt = "Welcome, Some Guy"
-        let first = dequeueCell()
-        let second = dequeueCell()
-        viewModel.prompt = "Welcome, Some Other Guy"
+    func testRequestsReloadWhenViewModelChanges() throws {
+        let delegate = CapturingTableViewMediatorDelegate()
+        dataSource.delegate = delegate
         
-        let firstPromptLabel: UILabel = try findBindingTarget(in: first, "Personalised_Prompt")
-        let secondPromptLabel: UILabel = try findBindingTarget(in: second, "Personalised_Prompt")
+        viewModel.objectDidChange.send()
         
-        XCTAssertEqual("Welcome, Some Guy", firstPromptLabel.text)
-        XCTAssertEqual("Welcome, Some Other Guy", secondPromptLabel.text)
+        XCTAssertTrue(delegate.contentsDidChange)
     }
     
     private func dequeueCell() -> UITableViewCell {

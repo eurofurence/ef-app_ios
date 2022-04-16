@@ -8,9 +8,9 @@ public class DataSourceBackedYourEurofurenceWidgetViewModel: YourEurofurenceWidg
     private static let regNumberFormatter = NumberFormatter()
     private let router: Router
     
-    @Observed public private(set) var prompt: String = .anonymousUserLoginPrompt
-    @Observed public private(set) var supplementaryPrompt: String = .anonymousUserLoginDescription
-    @Observed public private(set) var isHighlightedForAttention: Bool = false
+    public private(set) var prompt: String = .anonymousUserLoginPrompt
+    public private(set) var supplementaryPrompt: String = .anonymousUserLoginDescription
+    public private(set) var isHighlightedForAttention: Bool = false
     
     private var subscriptions = Set<AnyCancellable>()
     
@@ -35,6 +35,8 @@ public class DataSourceBackedYourEurofurenceWidgetViewModel: YourEurofurenceWidg
         } else {
             applyAnonymousTemplate()
         }
+        
+        objectDidChange.send()
     }
     
     private func applyAnonymousTemplate() {

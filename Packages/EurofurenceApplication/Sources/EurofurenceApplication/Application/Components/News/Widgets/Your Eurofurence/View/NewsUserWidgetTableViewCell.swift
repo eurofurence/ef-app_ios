@@ -36,5 +36,17 @@ public class NewsUserWidgetTableViewCell: UITableViewCell {
     override public class func registerNib(in tableView: UITableView) {
         registerNib(in: tableView, bundle: .module)
     }
+    
+    func bind<ViewModel>(to viewModel: ViewModel) where ViewModel: YourEurofurenceWidgetViewModel {
+        promptLabel.text = viewModel.prompt
+        detailedPromptLabel.text = viewModel.supplementaryPrompt
+        
+        let isHighlightedForAttention = viewModel.isHighlightedForAttention
+        standardUserPromptView.isHidden = isHighlightedForAttention
+        highlightedUserPromptView.isHidden = !isHighlightedForAttention
+        
+        let promptColor = isHighlightedForAttention ? highlightedUserPromptColor : standardUserPromptColor
+        detailedPromptLabel.textColor = promptColor
+    }
 
 }
