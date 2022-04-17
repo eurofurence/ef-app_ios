@@ -14,16 +14,13 @@ public class Application {
         
         public let viewEventIntentDonor: EventIntentDonor
         public let viewDealerIntentDonor: ViewDealerIntentDonor
-        public let isCompositionalNewsComponentEnabled: Bool
         
         public init(
             viewEventIntentDonor: EventIntentDonor,
-            viewDealerIntentDonor: ViewDealerIntentDonor,
-            isCompositionalNewsComponentEnabled: Bool
+            viewDealerIntentDonor: ViewDealerIntentDonor
         ) {
             self.viewEventIntentDonor = viewEventIntentDonor
             self.viewDealerIntentDonor = viewDealerIntentDonor
-            self.isCompositionalNewsComponentEnabled = isCompositionalNewsComponentEnabled
         }
         
     }

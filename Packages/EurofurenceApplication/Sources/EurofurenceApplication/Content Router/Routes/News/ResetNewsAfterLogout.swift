@@ -11,7 +11,7 @@ struct ResetNewsAfterLogout: NewsPresentation {
             .viewControllers?
             .compactMap({ $0 as? UISplitViewController })
             .compactMap({ $0.viewControllers.first as? UINavigationController })
-            .first(where: { $0.viewControllers.contains(where: { $0 is NewsViewController }) }) else {
+            .first(where: { $0.viewControllers.contains(where: { $0 is CompositionalNewsViewController }) }) else {
                 return
         }
         

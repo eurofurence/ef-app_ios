@@ -22,11 +22,13 @@ struct NewsRoutes: RouteProvider {
                 announcementModuleFactory: components.announcementDetailComponentFactory,
                 contentWireframe: MoveToTabContentWireframe(
                     decoratedWireframe: contentWireframe,
-                    tabSwapper: MoveToTabByViewController<NewsViewController>(window: window)
+                    tabSwapper: MoveToTabByViewController<CompositionalNewsViewController>(window: window)
                 )
             )
             
-            let tabSwapper = MoveToTabByViewController<NewsViewController>(window: window)
+            NewsRoute(newsPresentation: ResetNewsAfterLogout(window: window))
+            
+            let tabSwapper = MoveToTabByViewController<CompositionalNewsViewController>(window: window)
             
             let messageContentRoute = MessageRoute(
                 messageModuleFactory: components.messageDetailComponentFactory,

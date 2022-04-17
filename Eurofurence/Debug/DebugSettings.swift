@@ -1,16 +1,8 @@
 import Foundation
 
+/// Container for access to debug-related prefences, accessed at runtime through the debug pane.
 struct DebugSettings {
     
-    private static let useWidgetBasedNewsFeedKey = "EFUseWidgetBasedNewsFeed"
-    
-    static var isWidgetBasedNewsFeedEnabled: Bool {
-        get {
-            UserDefaults.standard.bool(forKey: useWidgetBasedNewsFeedKey)
-        }
-        set {
-            UserDefaults.standard.set(newValue, forKey: useWidgetBasedNewsFeedKey)
-        }
-    }
+    // Access debug preferences via UserDefaults.standard, keys prefixed with EF (eg EFUseWidgetBasedNewsFeed)
     
 }

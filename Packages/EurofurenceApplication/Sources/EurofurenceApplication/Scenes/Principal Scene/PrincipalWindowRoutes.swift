@@ -30,8 +30,6 @@ struct PrincipalWindowRoutes: RouteProvider {
                 router: router
             )
             
-            NewsRoute(newsPresentation: ResetNewsAfterLogout(window: window))
-            
             NewsRoutes(
                 components: componentRegistry,
                 routeAuthenticationHandler: routeAuthenticationHandler,

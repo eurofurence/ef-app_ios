@@ -29,7 +29,6 @@ opt_in_rules:
   - operator_usage_whitespace
   - overridden_super_call
   - private_action
-  - private_outlet
   - redundant_nil_coalescing
   - single_test_class
   - sorted_first_last
