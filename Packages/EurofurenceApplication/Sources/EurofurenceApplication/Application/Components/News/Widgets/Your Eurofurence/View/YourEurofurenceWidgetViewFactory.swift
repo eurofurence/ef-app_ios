@@ -7,7 +7,7 @@ public struct YourEurofurenceWidgetViewFactory<T>: NewsWidgetViewFactory where T
         
     }
     
-    public func makeVisualController(viewModel: ViewModel) -> View {
+    public func makeView(viewModel: ViewModel) -> View {
         YourEurofurenceWidgetTableViewDataSource(viewModel: viewModel)
     }
         

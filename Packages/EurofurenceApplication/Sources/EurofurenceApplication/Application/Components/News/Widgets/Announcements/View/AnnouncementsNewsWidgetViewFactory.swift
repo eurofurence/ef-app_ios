@@ -7,7 +7,7 @@ public struct AnnouncementsNewsWidgetViewFactory<T: NewsAnnouncementsWidgetViewM
         
     }
     
-    public func makeVisualController(viewModel: ViewModel) -> View {
+    public func makeView(viewModel: ViewModel) -> View {
         AnnouncementsNewsWidgetTableViewDataSource(viewModel: viewModel)
     }
     

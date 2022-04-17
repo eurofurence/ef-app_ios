@@ -7,7 +7,7 @@ public struct ConventionCountdownViewFactory<T>: NewsWidgetViewFactory where T: 
     public typealias ViewModel = T
     public typealias View = ConventionCountdownTableViewDataSource<T>
     
-    public func makeVisualController(viewModel: ViewModel) -> View {
+    public func makeView(viewModel: ViewModel) -> View {
         ConventionCountdownTableViewDataSource(viewModel: viewModel)
     }
     

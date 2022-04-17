@@ -15,8 +15,8 @@ public struct MVVMWidget<
     
     public func register(in environment: NewsWidgetEnvironment) {
         let viewModel = viewModelFactory.makeViewModel(router: environment.router)
-        let visualController = viewFactory.makeVisualController(viewModel: viewModel)
-        environment.install(dataSource: visualController)
+        let view = viewFactory.makeView(viewModel: viewModel)
+        environment.install(dataSource: view)
     }
     
 }

@@ -14,7 +14,7 @@ class AnnouncementsNewsWidgetTableViewDataSourceTests: XCTestCase {
         
         viewModel = FakeNewsAnnouncementsWidgetViewModel()
         let viewFactory = AnnouncementsNewsWidgetViewFactory<FakeNewsAnnouncementsWidgetViewModel>()
-        dataSource = viewFactory.makeVisualController(viewModel: viewModel)
+        dataSource = viewFactory.makeView(viewModel: viewModel)
         tableView = UITableView()
         dataSource.registerReusableViews(into: tableView)
     }

@@ -14,7 +14,7 @@ class YourEurofurenceWidgetTableViewDataSourceTests: XCTestCase {
         
         viewModel = ControllableYourEurofurenceWidgetViewModel()
         let factory = YourEurofurenceWidgetViewFactory<ControllableYourEurofurenceWidgetViewModel>()
-        dataSource = factory.makeVisualController(viewModel: viewModel)
+        dataSource = factory.makeView(viewModel: viewModel)
         tableView = UITableView()
         dataSource.registerReusableViews(into: tableView)
     }
