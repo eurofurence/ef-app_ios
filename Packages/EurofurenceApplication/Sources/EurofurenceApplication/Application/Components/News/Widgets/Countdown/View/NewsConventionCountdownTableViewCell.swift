@@ -1,6 +1,6 @@
 import UIKit
 
-public class NewsConventionCountdownTableViewCell: UITableViewCell {
+class NewsConventionCountdownTableViewCell: UITableViewCell {
     
     override public class func registerNib(in tableView: UITableView) {
         registerNib(in: tableView, bundle: .module)
@@ -16,7 +16,7 @@ public class NewsConventionCountdownTableViewCell: UITableViewCell {
 
     // MARK: ConventionCountdownComponent
 
-    public func setTimeUntilConvention(_ timeUntilConvention: String) {
+    func setTimeUntilConvention(_ timeUntilConvention: String) {
         timeUntilConventionLabel.text = timeUntilConvention
     }
 

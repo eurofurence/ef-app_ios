@@ -83,8 +83,7 @@ class ConventionCountdownTableViewDataSourceTests: XCTestCase {
     private func findBindingTarget<View>(_ accessibilityIdentifier: String) throws -> View where View: UIView {
         let firstRowFirstSection = IndexPath(row: 0, section: 0)
         let cell = dataSource.tableView(tableView, cellForRowAt: firstRowFirstSection)
-        let countdownCell = try XCTUnwrap(cell as? NewsConventionCountdownTableViewCell)
-        let bindingTarget: View? = countdownCell.viewWithAccessibilityIdentifier(accessibilityIdentifier)
+        let bindingTarget: View? = cell.viewWithAccessibilityIdentifier(accessibilityIdentifier)
         
         return try XCTUnwrap(bindingTarget)
     }

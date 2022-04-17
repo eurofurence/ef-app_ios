@@ -1,6 +1,6 @@
 import UIKit
 
-public class NewsUserWidgetTableViewCell: UITableViewCell {
+class NewsUserWidgetTableViewCell: UITableViewCell {
 
     // MARK: Properties
 
