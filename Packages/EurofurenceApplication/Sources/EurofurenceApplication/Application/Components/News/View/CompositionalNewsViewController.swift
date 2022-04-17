@@ -32,7 +32,14 @@ public class CompositionalNewsViewController: UIViewController, CompositionalNew
         installNavigationConfiguration()
         installTableView()
         installNewsBannerImage()
-        becomeReadyWithoutAnimations()
+    }
+    
+    override public func didMove(toParent parent: UIViewController?) {
+        super.didMove(toParent: parent)
+        
+        if parent != nil {
+            becomeReadyWithoutAnimations()
+        }
     }
     
     private func becomeReadyWithoutAnimations() {

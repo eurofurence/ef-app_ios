@@ -19,7 +19,7 @@ class CompositionalNewsViewControllerTests: XCTestCase {
         viewController.viewDidLoad()
     }
     
-    func testNotifiesViewDidLoadOnlyAfterLifecycleCallback() {
+    func testNotifiesViewDidLoadOnlyMovingToParentViewController() {
         viewController = CompositionalNewsViewController()
         viewController.setDelegate(delegate)
         viewController.loadView()
@@ -27,6 +27,14 @@ class CompositionalNewsViewControllerTests: XCTestCase {
         XCTAssertFalse(delegate.isSceneReady)
         
         viewController.viewDidLoad()
+        
+        XCTAssertFalse(delegate.isSceneReady)
+        
+        viewController.didMove(toParent: nil)
+        
+        XCTAssertFalse(delegate.isSceneReady)
+        
+        viewController.didMove(toParent: UIViewController())
         
         XCTAssertTrue(delegate.isSceneReady)
     }
