@@ -10,6 +10,7 @@ struct LargeCalendarIcon: View {
             .aspectRatio(contentMode: .fit)
             .frame(width: sensibleLengthForDisplay, height: sensibleLengthForDisplay)
             .foregroundColor(Color.widgetContentForegroundPrimary)
+            .accessibilityRemoveTraits(.isImage)
     }
     
 }

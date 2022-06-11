@@ -10,6 +10,7 @@ struct NoEventsPlaceholderText: View {
         .lineLimit(nil)
         .multilineTextAlignment(.center)
         .foregroundColor(.widgetContentForegroundSecondary)
+        .accessibilityHidden(true)
     }
     
 }

@@ -9,6 +9,9 @@ struct SmallEventsWidget: View {
         VStack(alignment: .leading) {
             HStack {
                 LargeCalendarIcon()
+                    .accessibilityAddTraits(.isHeader)
+                    .accessibilityLabel(entry.accessibleSummary)
+                
                 Spacer()
                 EntryEventsCountView(entry: entry)
             }

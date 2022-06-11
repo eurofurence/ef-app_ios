@@ -10,6 +10,7 @@ struct EntryEventsCountView: View {
             .font(.title)
             .fontWeight(.semibold)
             .foregroundColor(Color.widgetContentForegroundPrimary)
+            .accessibilityHidden(true)
     }
     
     private var eventsCount: Int {

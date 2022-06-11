@@ -4,6 +4,7 @@ import PackageDescription
 
 let package = Package(
     name: "EventsWidgetLogic",
+    defaultLocalization: "en",
     platforms: [.iOS(.v14), .macOS(.v11)],
     products: [
         .library(
@@ -15,7 +16,10 @@ let package = Package(
     targets: [
         .target(
             name: "EventsWidgetLogic",
-            dependencies: []
+            dependencies: [],
+            resources: [
+                .process("Resources")
+            ]
         ),
         
         .testTarget(

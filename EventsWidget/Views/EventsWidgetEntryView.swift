@@ -73,18 +73,21 @@ struct EventsWidget_Previews: PreviewProvider {
         
         let smallEntry = EventTimelineEntry(
             date: Date(),
+            accessibleSummary: "2 upcoming events",
             content: .events(viewModels: Array(events.prefix(2))),
             context: EventTimelineEntry.Context(category: .upcoming, isFavouritesOnly: false)
         )
         
         let mediumEntry = EventTimelineEntry(
             date: Date(),
+            accessibleSummary: "3 upcoming events",
             content: .events(viewModels: Array(events.prefix(3))),
             context: EventTimelineEntry.Context(category: .upcoming, isFavouritesOnly: false)
         )
         
         let noEvents = EventTimelineEntry(
             date: Date(),
+            accessibleSummary: "no upcoming events",
             content: .events(viewModels: []),
             context: EventTimelineEntry.Context(category: .upcoming, isFavouritesOnly: false)
         )

@@ -11,6 +11,42 @@ struct ResolveTimelineEntriesTask {
     var viewModelFactory: EventViewModelFactory
     var completionHandler: (EventsTimeline) -> Void
     
+    private var accessibleFormatString: String {
+        switch (eventCategory, isFavouritesOnly) {
+        case (.upcoming, false):
+            return NSLocalizedString(
+                "%li upcoming events",
+                bundle: .module,
+                comment: "Format string to designate the number of upcoming events"
+            )
+            
+        case (.upcoming, true):
+            return NSLocalizedString(
+                "%li upcoming favourite events",
+                bundle: .module,
+                comment: "Format string to designate the number of upcoming favourite events"
+            )
+            
+        case (.running, false):
+            return NSLocalizedString(
+                "%li running events",
+                bundle: .module,
+                comment: "Format string to designate the number of running events"
+            )
+            
+        case (.running, true):
+            return NSLocalizedString(
+                "%li running favourite events",
+                bundle: .module,
+                comment: "Format string to designate the number of running favourite events"
+            )
+        }
+    }
+    
+    private func makeAccessibleDescription(numberOfEvents: Int) -> String {
+        String.localizedStringWithFormat(accessibleFormatString, numberOfEvents)
+    }
+    
     func resolveEntries() {
         repository.loadEvents(completionHandler: clusterEventsIntoEntries(_:))
     }
@@ -42,6 +78,7 @@ struct ResolveTimelineEntriesTask {
         if firstCluster.clusterStartTime > timelineStartDate {
             snapshotEntry = EventTimelineEntry(
                 date: timelineStartDate,
+                accessibleSummary: makeAccessibleDescription(numberOfEvents: 0),
                 content: .empty,
                 context: .init(category: eventCategory, isFavouritesOnly: isFavouritesOnly)
             )
@@ -60,6 +97,7 @@ struct ResolveTimelineEntriesTask {
         
         let endOfSchedule = EventTimelineEntry(
             date: lastCluster.lastEventTimeInCluster,
+            accessibleSummary: makeAccessibleDescription(numberOfEvents: 0),
             content: .empty,
             context: .init(category: eventCategory, isFavouritesOnly: isFavouritesOnly)
         )
@@ -73,6 +111,7 @@ struct ResolveTimelineEntriesTask {
     private func makeEmptyTimeline() -> EventsTimeline {
         let snapshotEntry = EventTimelineEntry(
             date: timelineStartDate,
+            accessibleSummary: makeAccessibleDescription(numberOfEvents: 0),
             content: .empty,
             context: EventTimelineEntry.Context(category: eventCategory, isFavouritesOnly: isFavouritesOnly)
         )
@@ -84,6 +123,7 @@ struct ResolveTimelineEntriesTask {
         let viewModels = cluster.events.map(viewModelFactory.makeViewModel(for:))
         return EventTimelineEntry(
             date: cluster.clusterStartTime,
+            accessibleSummary: makeAccessibleDescription(numberOfEvents: viewModels.count),
             content: .events(viewModels: viewModels),
             context: EventTimelineEntry.Context(category: eventCategory, isFavouritesOnly: isFavouritesOnly)
         )

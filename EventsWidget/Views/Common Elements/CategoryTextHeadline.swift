@@ -11,6 +11,7 @@ struct CategoryTextHeadline: View {
             .fontWeight(.semibold)
             .font(.subheadline)
             .foregroundColor(Color.widgetContentForegroundPrimary)
+            .accessibilityHidden(true)
     }
     
     private var text: Text {

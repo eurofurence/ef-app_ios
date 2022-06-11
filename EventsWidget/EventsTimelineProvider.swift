@@ -55,6 +55,7 @@ struct EventsTimelineProvider: IntentTimelineProvider {
         
         return EventTimelineEntry(
             date: Date(),
+            accessibleSummary: "",
             content: .events(viewModels: Array(placeholderEvents)),
             context: EventTimelineEntry.Context(category: .upcoming, isFavouritesOnly: false)
         )

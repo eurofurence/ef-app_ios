@@ -9,6 +9,8 @@ struct MediumEventsWidget: View {
         HStack(alignment: .top, spacing: 16) {
             VStack(alignment: .leading) {
                 LargeCalendarIcon()
+                    .accessibilityAddTraits(.isHeader)
+                    .accessibilityLabel(entry.accessibleSummary)
                 
                 Spacer()
                 
@@ -46,6 +48,7 @@ struct MediumEventsWidget: View {
                                     .foregroundColor(Color.widgetContentForegroundSecondary)
                                     .lineLimit(1)
                             }
+                            .accessibilityElement(children: .combine)
                         }
                         .padding(.trailing)
                         
