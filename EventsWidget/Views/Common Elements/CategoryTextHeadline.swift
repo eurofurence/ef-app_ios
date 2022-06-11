@@ -8,8 +8,10 @@ struct CategoryTextHeadline: View {
     
     var body: some View {
         text
-            .fontWeight(.heavy)
-            .font(.caption)
+            .fontWeight(.semibold)
+            .font(.subheadline)
+            .foregroundColor(Color.widgetContentForegroundPrimary)
+            .accessibilityHidden(true)
     }
     
     private var text: Text {

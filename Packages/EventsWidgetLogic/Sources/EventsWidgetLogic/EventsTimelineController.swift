@@ -9,11 +9,15 @@ public struct EventsTimelineController {
     public init(
         repository: EventRepository,
         filteringPolicy: TimelineEntryFilteringPolicy,
-        eventTimeFormatter: EventTimeFormatter
+        eventTimeFormatter: EventTimeFormatter,
+        accessibilityFormatter: EventTimeFormatter
     ) {
         self.repository = repository
         self.filteringPolicy = filteringPolicy
-        viewModelFactory = EventViewModelFactory(eventTimeFormatter: eventTimeFormatter)
+        viewModelFactory = EventViewModelFactory(
+            eventTimeFormatter: eventTimeFormatter,
+            accessibilityFormatter: accessibilityFormatter
+        )
     }
     
 }

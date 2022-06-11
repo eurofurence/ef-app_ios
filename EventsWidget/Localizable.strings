@@ -1,6 +1,5 @@
 "EventsWidgetDisplayName" = "Events";
 "EventsWidgetDescription" = "Check out upcoming and running events during the convention.";
-"Upcoming" = "UPCOMING";
-"Running" = "RUNNING";
-"No upcoming events" = "No upcoming events";
-"No running events" = "No running events";
+"Upcoming" = "Upcoming";
+"Running" = "Running";
+"No Events" = "No Events";

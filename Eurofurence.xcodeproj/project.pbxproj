@@ -38,9 +38,7 @@
 		CA3ADD5A2677DD96007064AF /* EventDetailComponent in Frameworks */ = {isa = PBXBuildFile; productRef = CA3ADD592677DD96007064AF /* EventDetailComponent */; };
 		CA3FBF4B2558426B005E1F53 /* EventsWidgetLogic in Frameworks */ = {isa = PBXBuildFile; productRef = CA3FBF4A2558426B005E1F53 /* EventsWidgetLogic */; };
 		CA47B1B1255812D600050890 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = CA47B1B0255812D600050890 /* Localizable.stringsdict */; };
-		CA47B1B82558189D00050890 /* EventsWidgetStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA47B1B72558189D00050890 /* EventsWidgetStrings.swift */; };
-		CA526F892564569600BDD7BB /* CategoryPlaceholderText.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA526F882564569600BDD7BB /* CategoryPlaceholderText.swift */; };
-		CA526F8F256456F900BDD7BB /* AdditionalEventsFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA526F8E256456F900BDD7BB /* AdditionalEventsFooter.swift */; };
+		CA526F892564569600BDD7BB /* NoEventsPlaceholderText.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA526F882564569600BDD7BB /* NoEventsPlaceholderText.swift */; };
 		CA526F972564577A00BDD7BB /* EventTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA526F962564577A00BDD7BB /* EventTitle.swift */; };
 		CA5314DD2603DEDE0022B12E /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA5314DC2603DEDE0022B12E /* fontawesome-webfont.ttf */; };
 		CA5314EB260408650022B12E /* DealerAppClipModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5314EA260408650022B12E /* DealerAppClipModule.swift */; };
@@ -69,12 +67,17 @@
 		CA728437209C7DE1007D912A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CA728436209C7DE1007D912A /* Settings.bundle */; };
 		CA7A2F152606BCB400919DA0 /* Eurofurence_Clip_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F142606BCB400919DA0 /* Eurofurence_Clip_UITests.swift */; };
 		CA7DA65F2563018F00F1316F /* EventWidgetContext+TimelineContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7DA65E2563018F00F1316F /* EventWidgetContext+TimelineContext.swift */; };
-		CA7DA66925630B3100F1316F /* WidgetLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7DA66825630B3100F1316F /* WidgetLayout.swift */; };
 		CA85154625FF744900860631 /* DebugTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA85154425FF744900860631 /* DebugTableViewController.swift */; };
 		CA85154725FF744900860631 /* Debug.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA85154525FF744900860631 /* Debug.storyboard */; };
 		CA8F7D2F256182EF0096E206 /* WidgetKitConformances.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8F7D2E256182EF0096E206 /* WidgetKitConformances.swift */; };
 		CA9768DD25FE39C6001AE029 /* EurofurenceApplicationSession in Frameworks */ = {isa = PBXBuildFile; productRef = CA9768DC25FE39C6001AE029 /* EurofurenceApplicationSession */; };
 		CA9768FB25FE3A81001AE029 /* EurofurenceModel in Frameworks */ = {isa = PBXBuildFile; productRef = CA9768FA25FE3A81001AE029 /* EurofurenceModel */; };
+		CAA5E5512854F11700FA4FB0 /* SmallEventsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA5E5502854F11700FA4FB0 /* SmallEventsWidget.swift */; };
+		CAA5E5532854F13B00FA4FB0 /* LargeCalendarIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA5E5522854F13B00FA4FB0 /* LargeCalendarIcon.swift */; };
+		CAA5E5552854F14A00FA4FB0 /* EntryEventsCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA5E5542854F14A00FA4FB0 /* EntryEventsCountView.swift */; };
+		CAA5E5572854F15C00FA4FB0 /* MediumEventsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA5E5562854F15C00FA4FB0 /* MediumEventsWidget.swift */; };
+		CAA5E55A2854F26D00FA4FB0 /* SpringboardStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA5E5592854F26D00FA4FB0 /* SpringboardStyle.swift */; };
+		CAA5E55D28553D2200FA4FB0 /* AccessibleEventTimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA5E55C28553D2200FA4FB0 /* AccessibleEventTimeFormatter.swift */; };
 		CAB300DA2603AFDB009A52E1 /* AppClipAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB300D92603AFDB009A52E1 /* AppClipAppDelegate.swift */; };
 		CAB300DC2603AFDB009A52E1 /* AppClipSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB300DB2603AFDB009A52E1 /* AppClipSceneDelegate.swift */; };
 		CAB300E32603AFDC009A52E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAB300E22603AFDC009A52E1 /* Assets.xcassets */; };
@@ -101,10 +104,7 @@
 		CAF2552F251A6DC4008892ED /* EventDetailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF2552E251A6DC4008892ED /* EventDetailTests.swift */; };
 		CAF25568251A8774008892ED /* UIAutomationTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF25567251A8774008892ED /* UIAutomationTestCase.swift */; };
 		CAF2556D251A877A008892ED /* UIAutomationTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF25567251A8774008892ED /* UIAutomationTestCase.swift */; };
-		CAFC4A612564583A00499A47 /* EventLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFC4A602564583A00499A47 /* EventLocation.swift */; };
 		CAFC4A6C2564589500499A47 /* EventStartTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFC4A6B2564589500499A47 /* EventStartTime.swift */; };
-		CAFC4A72256458FA00499A47 /* EventEndTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFC4A71256458FA00499A47 /* EventEndTime.swift */; };
-		CAFC4A8725645E8F00499A47 /* WidgetColoredBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFC4A8625645E8F00499A47 /* WidgetColoredBackground.swift */; };
 		CAFC4A8C256463A400499A47 /* EurofurenceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA630BDC229F14F800754C27 /* EurofurenceKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -261,9 +261,7 @@
 		CA2AA2F322C9518A00C0E1A1 /* ViewDealerIntent+Definition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewDealerIntent+Definition.swift"; sourceTree = "<group>"; };
 		CA3ABA05229C4B260045A35B /* AppNotificationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNotificationDelegate.swift; sourceTree = "<group>"; };
 		CA47B1B0255812D600050890 /* Localizable.stringsdict */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; path = Localizable.stringsdict; sourceTree = "<group>"; };
-		CA47B1B72558189D00050890 /* EventsWidgetStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsWidgetStrings.swift; sourceTree = "<group>"; };
-		CA526F882564569600BDD7BB /* CategoryPlaceholderText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPlaceholderText.swift; sourceTree = "<group>"; };
-		CA526F8E256456F900BDD7BB /* AdditionalEventsFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalEventsFooter.swift; sourceTree = "<group>"; };
+		CA526F882564569600BDD7BB /* NoEventsPlaceholderText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoEventsPlaceholderText.swift; sourceTree = "<group>"; };
 		CA526F962564577A00BDD7BB /* EventTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTitle.swift; sourceTree = "<group>"; };
 		CA5314DC2603DEDE0022B12E /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
 		CA5314EA260408650022B12E /* DealerAppClipModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerAppClipModule.swift; sourceTree = "<group>"; };
@@ -302,7 +300,6 @@
 		CA7A32F922B179D8002AD939 /* EventBus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EventBus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA7A32FB22B17A21002AD939 /* EurofurenceModelTestDoubles.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EurofurenceModelTestDoubles.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA7DA65E2563018F00F1316F /* EventWidgetContext+TimelineContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventWidgetContext+TimelineContext.swift"; sourceTree = "<group>"; };
-		CA7DA66825630B3100F1316F /* WidgetLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetLayout.swift; sourceTree = "<group>"; };
 		CA8124FE2517BDE500A7F717 /* iOS Application Tests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "iOS Application Tests.xctestplan"; sourceTree = "<group>"; };
 		CA8125022517BE9000A7F717 /* Screenshots.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Screenshots.xctestplan; sourceTree = "<group>"; };
 		CA8125112517C0CC00A7F717 /* All Tests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "All Tests.xctestplan"; sourceTree = "<group>"; };
@@ -313,6 +310,12 @@
 		CA9845C91F2907A800E8821D /* ScreenshotGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotGenerator.swift; sourceTree = "<group>"; };
 		CA9845D21F2909DB00E8821D /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		CAA4EFF5265C5003002CBDA6 /* Unit Tests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Unit Tests.xctestplan"; sourceTree = "<group>"; };
+		CAA5E5502854F11700FA4FB0 /* SmallEventsWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallEventsWidget.swift; sourceTree = "<group>"; };
+		CAA5E5522854F13B00FA4FB0 /* LargeCalendarIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeCalendarIcon.swift; sourceTree = "<group>"; };
+		CAA5E5542854F14A00FA4FB0 /* EntryEventsCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryEventsCountView.swift; sourceTree = "<group>"; };
+		CAA5E5562854F15C00FA4FB0 /* MediumEventsWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumEventsWidget.swift; sourceTree = "<group>"; };
+		CAA5E5592854F26D00FA4FB0 /* SpringboardStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpringboardStyle.swift; sourceTree = "<group>"; };
+		CAA5E55C28553D2200FA4FB0 /* AccessibleEventTimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibleEventTimeFormatter.swift; sourceTree = "<group>"; };
 		CAB300D72603AFDB009A52E1 /* EurofurenceClip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EurofurenceClip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAB300D92603AFDB009A52E1 /* AppClipAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppClipAppDelegate.swift; sourceTree = "<group>"; };
 		CAB300DB2603AFDB009A52E1 /* AppClipSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppClipSceneDelegate.swift; sourceTree = "<group>"; };
@@ -337,10 +340,7 @@
 		CAF255112517FE81008892ED /* DealerDetailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailTests.swift; sourceTree = "<group>"; };
 		CAF2552E251A6DC4008892ED /* EventDetailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailTests.swift; sourceTree = "<group>"; };
 		CAF25567251A8774008892ED /* UIAutomationTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAutomationTestCase.swift; sourceTree = "<group>"; };
-		CAFC4A602564583A00499A47 /* EventLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLocation.swift; sourceTree = "<group>"; };
 		CAFC4A6B2564589500499A47 /* EventStartTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventStartTime.swift; sourceTree = "<group>"; };
-		CAFC4A71256458FA00499A47 /* EventEndTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEndTime.swift; sourceTree = "<group>"; };
-		CAFC4A8625645E8F00499A47 /* WidgetColoredBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetColoredBackground.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -584,8 +584,11 @@
 		CA526F942564573000BDD7BB /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				CAFC4A662564588D00499A47 /* Event */,
-				CAFC4A7725645D6500499A47 /* Widget */,
+				CA5F26C72556F0E800CED97A /* EventsWidgetEntryView.swift */,
+				CAA5E5562854F15C00FA4FB0 /* MediumEventsWidget.swift */,
+				CAA5E5502854F11700FA4FB0 /* SmallEventsWidget.swift */,
+				CAA5E55B2854F32C00FA4FB0 /* Common Elements */,
+				CAA5E5582854F25C00FA4FB0 /* Modifiers */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -594,7 +597,6 @@
 			isa = PBXGroup;
 			children = (
 				CA5F270925570CE600CED97A /* Color+Catalogue.swift */,
-				CA47B1B72558189D00050890 /* EventsWidgetStrings.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -685,16 +687,38 @@
 		CA8F7D17256173290096E206 /* Logic Adapter */ = {
 			isa = PBXGroup;
 			children = (
+				CAA5E55C28553D2200FA4FB0 /* AccessibleEventTimeFormatter.swift */,
 				CA5A5AE32584F1F4007F6728 /* ControllableClock.swift */,
 				CABBCA152565B153007A11A2 /* EventCategory+Intent.swift */,
 				CA5A5AF12584F26B007F6728 /* EventsBridge.swift */,
 				CA7DA65E2563018F00F1316F /* EventWidgetContext+TimelineContext.swift */,
-				CA5A5B132584F7CA007F6728 /* SpecificationUseCaseTimelineFilteringPolicy.swift */,
 				CA5891DF2562F2E800FC9BC1 /* HoursAndMinutesEventTimeFormatter.swift */,
 				CA5A5B052584F58A007F6728 /* IntentBasedWidgetSpecificationFactory.swift */,
+				CA5A5B132584F7CA007F6728 /* SpecificationUseCaseTimelineFilteringPolicy.swift */,
 				CA8F7D2E256182EF0096E206 /* WidgetKitConformances.swift */,
 			);
 			path = "Logic Adapter";
+			sourceTree = "<group>";
+		};
+		CAA5E5582854F25C00FA4FB0 /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				CAA5E5592854F26D00FA4FB0 /* SpringboardStyle.swift */,
+			);
+			path = Modifiers;
+			sourceTree = "<group>";
+		};
+		CAA5E55B2854F32C00FA4FB0 /* Common Elements */ = {
+			isa = PBXGroup;
+			children = (
+				CA5F2715255711C700CED97A /* CategoryTextHeadline.swift */,
+				CAA5E5542854F14A00FA4FB0 /* EntryEventsCountView.swift */,
+				CAFC4A6B2564589500499A47 /* EventStartTime.swift */,
+				CA526F962564577A00BDD7BB /* EventTitle.swift */,
+				CAA5E5522854F13B00FA4FB0 /* LargeCalendarIcon.swift */,
+				CA526F882564569600BDD7BB /* NoEventsPlaceholderText.swift */,
+			);
+			path = "Common Elements";
 			sourceTree = "<group>";
 		};
 		CAB300D82603AFDB009A52E1 /* EurofurenceClip */ = {
@@ -743,30 +767,6 @@
 				CAF25567251A8774008892ED /* UIAutomationTestCase.swift */,
 			);
 			path = "UI Automation";
-			sourceTree = "<group>";
-		};
-		CAFC4A662564588D00499A47 /* Event */ = {
-			isa = PBXGroup;
-			children = (
-				CAFC4A602564583A00499A47 /* EventLocation.swift */,
-				CA526F962564577A00BDD7BB /* EventTitle.swift */,
-				CAFC4A6B2564589500499A47 /* EventStartTime.swift */,
-				CAFC4A71256458FA00499A47 /* EventEndTime.swift */,
-			);
-			path = Event;
-			sourceTree = "<group>";
-		};
-		CAFC4A7725645D6500499A47 /* Widget */ = {
-			isa = PBXGroup;
-			children = (
-				CA526F8E256456F900BDD7BB /* AdditionalEventsFooter.swift */,
-				CA5F26C72556F0E800CED97A /* EventsWidgetEntryView.swift */,
-				CA526F882564569600BDD7BB /* CategoryPlaceholderText.swift */,
-				CA5F2715255711C700CED97A /* CategoryTextHeadline.swift */,
-				CA7DA66825630B3100F1316F /* WidgetLayout.swift */,
-				CAFC4A8625645E8F00499A47 /* WidgetColoredBackground.swift */,
-			);
-			path = Widget;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1284,29 +1284,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CAFC4A72256458FA00499A47 /* EventEndTime.swift in Sources */,
 				CA526F972564577A00BDD7BB /* EventTitle.swift in Sources */,
+				CAA5E5552854F14A00FA4FB0 /* EntryEventsCountView.swift in Sources */,
 				CA5F26A32556F04C00CED97A /* EventsWidget.swift in Sources */,
 				CA5F26BA2556F0C400CED97A /* EventsTimelineProvider.swift in Sources */,
 				CA5F270A25570CE600CED97A /* Color+Catalogue.swift in Sources */,
 				CA5A5B142584F7CA007F6728 /* SpecificationUseCaseTimelineFilteringPolicy.swift in Sources */,
 				CA5F2716255711C700CED97A /* CategoryTextHeadline.swift in Sources */,
 				CA5F26C82556F0E800CED97A /* EventsWidgetEntryView.swift in Sources */,
-				CA526F8F256456F900BDD7BB /* AdditionalEventsFooter.swift in Sources */,
 				CA5891E02562F2E800FC9BC1 /* HoursAndMinutesEventTimeFormatter.swift in Sources */,
-				CAFC4A612564583A00499A47 /* EventLocation.swift in Sources */,
 				CA5A5AE42584F1F4007F6728 /* ControllableClock.swift in Sources */,
 				CA7DA65F2563018F00F1316F /* EventWidgetContext+TimelineContext.swift in Sources */,
+				CAA5E5572854F15C00FA4FB0 /* MediumEventsWidget.swift in Sources */,
 				CA8F7D2F256182EF0096E206 /* WidgetKitConformances.swift in Sources */,
-				CA7DA66925630B3100F1316F /* WidgetLayout.swift in Sources */,
-				CAFC4A8725645E8F00499A47 /* WidgetColoredBackground.swift in Sources */,
-				CA526F892564569600BDD7BB /* CategoryPlaceholderText.swift in Sources */,
+				CAA5E5512854F11700FA4FB0 /* SmallEventsWidget.swift in Sources */,
+				CAA5E5532854F13B00FA4FB0 /* LargeCalendarIcon.swift in Sources */,
+				CA526F892564569600BDD7BB /* NoEventsPlaceholderText.swift in Sources */,
 				CA5A5AF22584F26B007F6728 /* EventsBridge.swift in Sources */,
-				CA47B1B82558189D00050890 /* EventsWidgetStrings.swift in Sources */,
+				CAA5E55A2854F26D00FA4FB0 /* SpringboardStyle.swift in Sources */,
 				CA5A5B062584F58A007F6728 /* IntentBasedWidgetSpecificationFactory.swift in Sources */,
 				CABBCA162565B153007A11A2 /* EventCategory+Intent.swift in Sources */,
 				CAFC4A6C2564589500499A47 /* EventStartTime.swift in Sources */,
 				CAB4E9192662704600EFE882 /* Intents.intentdefinition in Sources */,
+				CAA5E55D28553D2200FA4FB0 /* AccessibleEventTimeFormatter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

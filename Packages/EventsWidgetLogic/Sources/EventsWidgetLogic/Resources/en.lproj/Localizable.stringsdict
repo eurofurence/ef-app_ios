@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>%li upcoming favourite events</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@VARIABLE@</string>
+		<key>VARIABLE</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>li</string>
+			<key>zero</key>
+			<string>no upcoming favourite events</string>
+			<key>one</key>
+			<string>1 upcoming favourite event</string>
+			<key>other</key>
+			<string>%li upcoming favourite events</string>
+		</dict>
+	</dict>
+	<key>%li running favourite events</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@VARIABLE@</string>
+		<key>VARIABLE</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>li</string>
+			<key>zero</key>
+			<string>no running favourite events</string>
+			<key>one</key>
+			<string>1 running favourite event</string>
+			<key>other</key>
+			<string>%li running favourite events</string>
+		</dict>
+	</dict>
+	<key>%li running events</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@VARIABLE@</string>
+		<key>VARIABLE</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>li</string>
+			<key>zero</key>
+			<string>no running events</string>
+			<key>one</key>
+			<string>1 running event</string>
+			<key>other</key>
+			<string>%li running events</string>
+		</dict>
+	</dict>
+	<key>%li upcoming events</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@VARIABLE@</string>
+		<key>VARIABLE</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>li</string>
+			<key>zero</key>
+			<string>no upcoming events</string>
+			<key>one</key>
+			<string>1 upcoming event</string>
+			<key>other</key>
+			<string>%li upcoming events</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

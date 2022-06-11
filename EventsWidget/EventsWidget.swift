@@ -15,6 +15,7 @@ struct EventsWidget: Widget {
             provider: EventsTimelineProvider(),
             content: EventsWidgetEntryView.init
         )
+        .supportedFamilies([.systemSmall, .systemMedium])
         .configurationDisplayName("EventsWidgetDisplayName")
         .description("EventsWidgetDescription")
     }

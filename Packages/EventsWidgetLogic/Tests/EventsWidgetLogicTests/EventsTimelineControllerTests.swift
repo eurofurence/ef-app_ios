@@ -2,9 +2,11 @@ import EventsWidgetLogic
 import XCTest
 
 // swiftlint:disable file_length
+// swiftlint:disable type_body_length
 class EventsTimelineControllerTests: XCTestCase {
     
     private var formatter: FakeEventTimeFormatter!
+    private var accessibilityFormatter: FakeEventTimeFormatter!
     private var controller: EventsTimelineController!
     private var now: Date!
     private var inHalfAnHour: Date!
@@ -14,6 +16,7 @@ class EventsTimelineControllerTests: XCTestCase {
         try super.setUpWithError()
         
         formatter = FakeEventTimeFormatter()
+        accessibilityFormatter = FakeEventTimeFormatter()
         now = Date()
         inHalfAnHour = now.addingTimeInterval(3600 / 2)
         inOneHour = now.addingTimeInterval(3600)
@@ -26,7 +29,8 @@ class EventsTimelineControllerTests: XCTestCase {
         controller = EventsTimelineController(
             repository: repository,
             filteringPolicy: filteringPolicy,
-            eventTimeFormatter: formatter
+            eventTimeFormatter: formatter,
+            accessibilityFormatter: accessibilityFormatter
         )
     }
     
@@ -58,9 +62,15 @@ class EventsTimelineControllerTests: XCTestCase {
         formatter.string(from: date)
     }
     
-    private func emptyEntry(date: Date, category: EventCategory, isFavouritesOnly: Bool) -> EventTimelineEntry {
+    private func emptyEntry(
+        date: Date,
+        accessibleSummary: String,
+        category: EventCategory,
+        isFavouritesOnly: Bool
+    ) -> EventTimelineEntry {
         EventTimelineEntry(
             date: date,
+            accessibleSummary: accessibleSummary,
             content: .empty,
             context: .init(category: category, isFavouritesOnly: isFavouritesOnly)
         )
@@ -68,29 +78,30 @@ class EventsTimelineControllerTests: XCTestCase {
     
     private func eventsEntry(
         date: Date,
+        accessibleSummary: String,
         events: [EventViewModel],
-        additionalEventsCount: Int,
         category: EventCategory,
         isFavouritesOnly: Bool
     ) -> EventTimelineEntry {
         EventTimelineEntry(
             date: date,
-            content: .events(
-                viewModels: events,
-                additionalEventsCount: additionalEventsCount
-            ),
+            accessibleSummary: accessibleSummary,
+            content: .events(viewModels: events),
             context: .init(category: category, isFavouritesOnly: isFavouritesOnly)
         )
     }
     
     private func expectedViewModel(for event: Event) -> EventViewModel {
-        EventViewModel(
+        let startTime: String = accessibilityFormatter.string(from: event.startTime)
+        let englishAccessibilityDescription = "\(event.title), starting at \(startTime) in \(event.location)"
+        
+        return EventViewModel(
             id: event.id,
             title: event.title,
             location: event.location,
             formattedStartTime: string(from: event.startTime),
-            formattedEndTime: string(from: event.endTime),
-            widgetURL: event.deepLinkingContentURL
+            widgetURL: event.deepLinkingContentURL,
+            accessibilitySummary: englishAccessibilityDescription
         )
     }
     
@@ -112,10 +123,10 @@ class EventsTimelineControllerTests: XCTestCase {
         
         let expectedSnapshotEntry = eventsEntry(
             date: now,
+            accessibleSummary: "1 upcoming favourite event",
             events: [
                 expectedViewModel(for: event)
             ],
-            additionalEventsCount: 0,
             category: .upcoming,
             isFavouritesOnly: true
         )
@@ -124,7 +135,12 @@ class EventsTimelineControllerTests: XCTestCase {
             snapshot: expectedSnapshotEntry,
             entries: [
                 expectedSnapshotEntry,
-                emptyEntry(date: inHalfAnHour, category: .upcoming, isFavouritesOnly: true)
+                emptyEntry(
+                    date: inHalfAnHour,
+                    accessibleSummary: "no upcoming favourite events",
+                    category: .upcoming,
+                    isFavouritesOnly: true
+                )
             ]
         )
         
@@ -156,11 +172,8 @@ class EventsTimelineControllerTests: XCTestCase {
         
         let expectedSnapshotEntry = eventsEntry(
             date: now,
-            events: [
-                expectedViewModel(for: earlierEvent),
-                expectedViewModel(for: laterEvent)
-            ],
-            additionalEventsCount: 0,
+            accessibleSummary: "2 upcoming events",
+            events: [expectedViewModel(for: earlierEvent), expectedViewModel(for: laterEvent)],
             category: .upcoming,
             isFavouritesOnly: false
         )
@@ -172,15 +185,18 @@ class EventsTimelineControllerTests: XCTestCase {
                 
                 eventsEntry(
                     date: inHalfAnHour,
-                    events: [
-                        expectedViewModel(for: laterEvent)
-                    ],
-                    additionalEventsCount: 0,
+                    accessibleSummary: "1 upcoming event",
+                    events: [expectedViewModel(for: laterEvent)],
                     category: .upcoming,
                     isFavouritesOnly: false
                 ),
                 
-                emptyEntry(date: inOneHour, category: .upcoming, isFavouritesOnly: false)
+                emptyEntry(
+                    date: inOneHour,
+                    accessibleSummary: "no upcoming events",
+                    category: .upcoming,
+                    isFavouritesOnly: false
+                )
             ]
         )
         
@@ -212,10 +228,10 @@ class EventsTimelineControllerTests: XCTestCase {
         
         let expectedSnapshotEntry = eventsEntry(
             date: inHalfAnHour,
+            accessibleSummary: "1 upcoming event",
             events: [
                 expectedViewModel(for: laterEvent)
             ],
-            additionalEventsCount: 0,
             category: .upcoming,
             isFavouritesOnly: false
         )
@@ -224,7 +240,12 @@ class EventsTimelineControllerTests: XCTestCase {
             snapshot: expectedSnapshotEntry,
             entries: [
                 expectedSnapshotEntry,
-                emptyEntry(date: inOneHour, category: .upcoming, isFavouritesOnly: false)
+                emptyEntry(
+                    date: inOneHour,
+                    accessibleSummary: "no upcoming events",
+                    category: .upcoming,
+                    isFavouritesOnly: false
+                )
             ]
         )
         
@@ -244,12 +265,12 @@ class EventsTimelineControllerTests: XCTestCase {
         
         let expectedSnapshotEntry = eventsEntry(
             date: now,
+            accessibleSummary: "3 upcoming events",
             events: [
                 expectedViewModel(for: firstEvent),
                 expectedViewModel(for: secondEvent),
                 expectedViewModel(for: thirdEvent)
             ],
-            additionalEventsCount: 0,
             category: .upcoming,
             isFavouritesOnly: false
         )
@@ -258,7 +279,12 @@ class EventsTimelineControllerTests: XCTestCase {
             snapshot: expectedSnapshotEntry,
             entries: [
                 expectedSnapshotEntry,
-                emptyEntry(date: inHalfAnHour, category: .upcoming, isFavouritesOnly: false)
+                emptyEntry(
+                    date: inHalfAnHour,
+                    accessibleSummary: "no upcoming events",
+                    category: .upcoming,
+                    isFavouritesOnly: false
+                )
             ]
         )
         
@@ -287,12 +313,12 @@ class EventsTimelineControllerTests: XCTestCase {
         
         let expectedSnapshotEntry = eventsEntry(
             date: now,
+            accessibleSummary: "3 upcoming events",
             events: [
                 expectedViewModel(for: firstEvent),
                 expectedViewModel(for: secondEvent),
                 expectedViewModel(for: thirdEvent)
             ],
-            additionalEventsCount: 2,
             category: .upcoming,
             isFavouritesOnly: false
         )
@@ -301,7 +327,12 @@ class EventsTimelineControllerTests: XCTestCase {
             snapshot: expectedSnapshotEntry,
             entries: [
                 expectedSnapshotEntry,
-                emptyEntry(date: inHalfAnHour, category: .upcoming, isFavouritesOnly: false)
+                emptyEntry(
+                    date: inHalfAnHour,
+                    accessibleSummary: "no upcoming events",
+                    category: .upcoming,
+                    isFavouritesOnly: false
+                )
             ]
         )
         
@@ -315,7 +346,12 @@ class EventsTimelineControllerTests: XCTestCase {
         
         let actual = makeTimeline(timelineStartDate: now)
         
-        let expectedSnapshotEntry = emptyEntry(date: now, category: .upcoming, isFavouritesOnly: false)
+        let expectedSnapshotEntry = emptyEntry(
+            date: now,
+            accessibleSummary: "no upcoming events",
+            category: .upcoming,
+            isFavouritesOnly: false
+        )
         
         let expected = EventsTimeline(
             snapshot: expectedSnapshotEntry,
@@ -380,22 +416,22 @@ class EventsTimelineControllerTests: XCTestCase {
         
         let firstExpectedSnapshotEntry = eventsEntry(
             date: now,
+            accessibleSummary: "3 upcoming events",
             events: [
                 expectedViewModel(for: firstEvent),
                 expectedViewModel(for: secondEvent),
                 expectedViewModel(for: fourthEvent)
             ],
-            additionalEventsCount: 0,
             category: .upcoming,
             isFavouritesOnly: false
         )
         
         let secondExpectedSnapshotEntry = eventsEntry(
             date: inHalfAnHour,
+            accessibleSummary: "1 upcoming event",
             events: [
                 expectedViewModel(for: fourthEvent)
             ],
-            additionalEventsCount: 0,
             category: .upcoming,
             isFavouritesOnly: false
         )
@@ -405,7 +441,12 @@ class EventsTimelineControllerTests: XCTestCase {
             entries: [
                 firstExpectedSnapshotEntry,
                 secondExpectedSnapshotEntry,
-                emptyEntry(date: inOneHour, category: .upcoming, isFavouritesOnly: false)
+                emptyEntry(
+                    date: inOneHour,
+                    accessibleSummary: "no upcoming events",
+                    category: .upcoming,
+                    isFavouritesOnly: false
+                )
             ]
         )
         
@@ -430,14 +471,19 @@ class EventsTimelineControllerTests: XCTestCase {
         
         let actual = makeTimeline(timelineStartDate: now, isFavouritesOnly: true)
 
-        let expectedSnapshotEntry = emptyEntry(date: now, category: .upcoming, isFavouritesOnly: true)
+        let expectedSnapshotEntry = emptyEntry(
+            date: now,
+            accessibleSummary: "no upcoming favourite events",
+            category: .upcoming,
+            isFavouritesOnly: true
+        )
         
         let expectedEventEntry = eventsEntry(
             date: inTheFuture,
+            accessibleSummary: "1 upcoming favourite event",
             events: [
                 expectedViewModel(for: event)
             ],
-            additionalEventsCount: 0,
             category: .upcoming,
             isFavouritesOnly: true
         )
@@ -447,7 +493,12 @@ class EventsTimelineControllerTests: XCTestCase {
             entries: [
                 expectedSnapshotEntry,
                 expectedEventEntry,
-                emptyEntry(date: inTheFuturePlusHalfAnHour, category: .upcoming, isFavouritesOnly: true)
+                emptyEntry(
+                    date: inTheFuturePlusHalfAnHour,
+                    accessibleSummary: "no upcoming favourite events",
+                    category: .upcoming,
+                    isFavouritesOnly: true
+                )
             ]
         )
         
@@ -481,7 +532,12 @@ class EventsTimelineControllerTests: XCTestCase {
         
         let actual = makeTimeline(timelineStartDate: now, isFavouritesOnly: true)
         
-        let expectedSnapshotEntry = emptyEntry(date: now, category: .upcoming, isFavouritesOnly: true)
+        let expectedSnapshotEntry = emptyEntry(
+            date: now,
+            accessibleSummary: "no upcoming favourite events",
+            category: .upcoming,
+            isFavouritesOnly: true
+        )
         
         let expected = EventsTimeline(
             snapshot: expectedSnapshotEntry,
@@ -532,10 +588,10 @@ class EventsTimelineControllerTests: XCTestCase {
         
         let expectedSnapshotEntry = eventsEntry(
             date: now.addingTimeInterval(-oneHour),
+            accessibleSummary: "1 upcoming favourite event",
             events: [
                 expectedViewModel(for: event)
             ],
-            additionalEventsCount: 0,
             category: .upcoming,
             isFavouritesOnly: true
         )
@@ -544,7 +600,12 @@ class EventsTimelineControllerTests: XCTestCase {
             snapshot: expectedSnapshotEntry,
             entries: [
                 expectedSnapshotEntry,
-                emptyEntry(date: inHalfAnHour, category: .upcoming, isFavouritesOnly: true)
+                emptyEntry(
+                    date: inHalfAnHour,
+                    accessibleSummary: "no upcoming favourite events",
+                    category: .upcoming,
+                    isFavouritesOnly: true
+                )
             ]
         )
         
