@@ -6,7 +6,7 @@ struct MediumEventsWidget: View {
     var entry: EventTimelineEntry
     
     var body: some View {
-        HStack(alignment: .top) {
+        HStack(alignment: .top, spacing: 16) {
             VStack(alignment: .leading) {
                 LargeCalendarIcon()
                 
@@ -24,22 +24,20 @@ struct MediumEventsWidget: View {
                 case .empty:
                     Spacer()
                     
-                    NoEventsPlaceholderText()
+                    HStack {
+                        NoEventsPlaceholderText()
+                        Spacer()
+                    }
                     
                     Spacer()
                     
-                case .events(let events, _):
+                case .events(let events):
                     ForEach(events) { (event) in
                         Link(destination: event.widgetURL) {
                             VStack(alignment: .leading) {
                                 HStack {
-                                    Text(event.title)
-                                        .font(.caption)
-                                        .foregroundColor(Color.widgetContentForegroundPrimary)
-                                        .lineLimit(1)
-                                    
+                                    EventTitle(event)
                                     Spacer()
-                                    
                                     EventStartTime(event.formattedStartTime)
                                 }
                                 
@@ -57,8 +55,6 @@ struct MediumEventsWidget: View {
                     }
                 }
             }
-            
-            Spacer()
         }
         .padding(.top)
     }

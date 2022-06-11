@@ -103,7 +103,6 @@
 		CAF2552F251A6DC4008892ED /* EventDetailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF2552E251A6DC4008892ED /* EventDetailTests.swift */; };
 		CAF25568251A8774008892ED /* UIAutomationTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF25567251A8774008892ED /* UIAutomationTestCase.swift */; };
 		CAF2556D251A877A008892ED /* UIAutomationTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF25567251A8774008892ED /* UIAutomationTestCase.swift */; };
-		CAFC4A612564583A00499A47 /* EventLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFC4A602564583A00499A47 /* EventLocation.swift */; };
 		CAFC4A6C2564589500499A47 /* EventStartTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFC4A6B2564589500499A47 /* EventStartTime.swift */; };
 		CAFC4A8C256463A400499A47 /* EurofurenceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA630BDC229F14F800754C27 /* EurofurenceKit.framework */; };
 /* End PBXBuildFile section */
@@ -339,7 +338,6 @@
 		CAF255112517FE81008892ED /* DealerDetailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailTests.swift; sourceTree = "<group>"; };
 		CAF2552E251A6DC4008892ED /* EventDetailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailTests.swift; sourceTree = "<group>"; };
 		CAF25567251A8774008892ED /* UIAutomationTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAutomationTestCase.swift; sourceTree = "<group>"; };
-		CAFC4A602564583A00499A47 /* EventLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLocation.swift; sourceTree = "<group>"; };
 		CAFC4A6B2564589500499A47 /* EventStartTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventStartTime.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -712,7 +710,6 @@
 			children = (
 				CA5F2715255711C700CED97A /* CategoryTextHeadline.swift */,
 				CAA5E5542854F14A00FA4FB0 /* EntryEventsCountView.swift */,
-				CAFC4A602564583A00499A47 /* EventLocation.swift */,
 				CAFC4A6B2564589500499A47 /* EventStartTime.swift */,
 				CA526F962564577A00BDD7BB /* EventTitle.swift */,
 				CAA5E5522854F13B00FA4FB0 /* LargeCalendarIcon.swift */,
@@ -1293,7 +1290,6 @@
 				CA5F2716255711C700CED97A /* CategoryTextHeadline.swift in Sources */,
 				CA5F26C82556F0E800CED97A /* EventsWidgetEntryView.swift in Sources */,
 				CA5891E02562F2E800FC9BC1 /* HoursAndMinutesEventTimeFormatter.swift in Sources */,
-				CAFC4A612564583A00499A47 /* EventLocation.swift in Sources */,
 				CA5A5AE42584F1F4007F6728 /* ControllableClock.swift in Sources */,
 				CA7DA65F2563018F00F1316F /* EventWidgetContext+TimelineContext.swift in Sources */,
 				CAA5E5572854F15C00FA4FB0 /* MediumEventsWidget.swift in Sources */,

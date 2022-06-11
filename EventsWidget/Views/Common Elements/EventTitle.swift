@@ -1,17 +1,17 @@
+import EventsWidgetLogic
 import SwiftUI
 
 struct EventTitle: View {
     
-    var title: String
+    var event: EventViewModel
     
-    init(_ title: String) {
-        self.title = title
+    init(_ event: EventViewModel) {
+        self.event = event
     }
     
     var body: some View {
-        Text(title)
-            .font(.caption2)
-            .fontWeight(.semibold)
+        Text(event.title)
+            .font(.caption)
             .lineLimit(1)
             .foregroundColor(.widgetContentForegroundPrimary)
     }

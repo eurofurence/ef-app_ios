@@ -84,7 +84,7 @@ struct ResolveTimelineEntriesTask {
         let viewModels = cluster.events.map(viewModelFactory.makeViewModel(for:))
         return EventTimelineEntry(
             date: cluster.clusterStartTime,
-            content: .events(viewModels: viewModels, additionalEventsCount: cluster.additionalEventCount),
+            content: .events(viewModels: viewModels),
             context: EventTimelineEntry.Context(category: eventCategory, isFavouritesOnly: isFavouritesOnly)
         )
     }

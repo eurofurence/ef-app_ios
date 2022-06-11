@@ -22,17 +22,12 @@ struct SmallEventsWidget: View {
                 NoEventsPlaceholderText()
                     .font(.caption)
                 
-            case .events(let events, _):
+            case .events(let events):
                 ForEach(events) { (event) in
                     VStack(alignment: .leading) {
                         HStack {
-                            Text(event.title)
-                                .font(.caption)
-                                .foregroundColor(.widgetContentForegroundPrimary)
-                                .lineLimit(1)
-                            
+                            EventTitle(event)
                             Spacer()
-                            
                             EventStartTime(event.formattedStartTime)
                         }
                     }

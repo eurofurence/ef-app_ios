@@ -69,16 +69,12 @@ class EventsTimelineControllerTests: XCTestCase {
     private func eventsEntry(
         date: Date,
         events: [EventViewModel],
-        additionalEventsCount: Int,
         category: EventCategory,
         isFavouritesOnly: Bool
     ) -> EventTimelineEntry {
         EventTimelineEntry(
             date: date,
-            content: .events(
-                viewModels: events,
-                additionalEventsCount: additionalEventsCount
-            ),
+            content: .events(viewModels: events),
             context: .init(category: category, isFavouritesOnly: isFavouritesOnly)
         )
     }
@@ -115,7 +111,6 @@ class EventsTimelineControllerTests: XCTestCase {
             events: [
                 expectedViewModel(for: event)
             ],
-            additionalEventsCount: 0,
             category: .upcoming,
             isFavouritesOnly: true
         )
@@ -160,7 +155,6 @@ class EventsTimelineControllerTests: XCTestCase {
                 expectedViewModel(for: earlierEvent),
                 expectedViewModel(for: laterEvent)
             ],
-            additionalEventsCount: 0,
             category: .upcoming,
             isFavouritesOnly: false
         )
@@ -175,7 +169,6 @@ class EventsTimelineControllerTests: XCTestCase {
                     events: [
                         expectedViewModel(for: laterEvent)
                     ],
-                    additionalEventsCount: 0,
                     category: .upcoming,
                     isFavouritesOnly: false
                 ),
@@ -215,7 +208,6 @@ class EventsTimelineControllerTests: XCTestCase {
             events: [
                 expectedViewModel(for: laterEvent)
             ],
-            additionalEventsCount: 0,
             category: .upcoming,
             isFavouritesOnly: false
         )
@@ -249,7 +241,6 @@ class EventsTimelineControllerTests: XCTestCase {
                 expectedViewModel(for: secondEvent),
                 expectedViewModel(for: thirdEvent)
             ],
-            additionalEventsCount: 0,
             category: .upcoming,
             isFavouritesOnly: false
         )
@@ -292,7 +283,6 @@ class EventsTimelineControllerTests: XCTestCase {
                 expectedViewModel(for: secondEvent),
                 expectedViewModel(for: thirdEvent)
             ],
-            additionalEventsCount: 2,
             category: .upcoming,
             isFavouritesOnly: false
         )
@@ -385,7 +375,6 @@ class EventsTimelineControllerTests: XCTestCase {
                 expectedViewModel(for: secondEvent),
                 expectedViewModel(for: fourthEvent)
             ],
-            additionalEventsCount: 0,
             category: .upcoming,
             isFavouritesOnly: false
         )
@@ -395,7 +384,6 @@ class EventsTimelineControllerTests: XCTestCase {
             events: [
                 expectedViewModel(for: fourthEvent)
             ],
-            additionalEventsCount: 0,
             category: .upcoming,
             isFavouritesOnly: false
         )
@@ -437,7 +425,6 @@ class EventsTimelineControllerTests: XCTestCase {
             events: [
                 expectedViewModel(for: event)
             ],
-            additionalEventsCount: 0,
             category: .upcoming,
             isFavouritesOnly: true
         )
@@ -535,7 +522,6 @@ class EventsTimelineControllerTests: XCTestCase {
             events: [
                 expectedViewModel(for: event)
             ],
-            additionalEventsCount: 0,
             category: .upcoming,
             isFavouritesOnly: true
         )

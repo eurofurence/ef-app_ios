@@ -17,7 +17,7 @@ struct EntryEventsCountView: View {
         case .empty:
             return 0
             
-        case .events(let viewModels, _):
+        case .events(let viewModels):
             return viewModels.count
         }
     }
