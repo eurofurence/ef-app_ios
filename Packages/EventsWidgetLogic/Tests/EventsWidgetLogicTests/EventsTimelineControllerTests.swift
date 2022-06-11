@@ -2,6 +2,7 @@ import EventsWidgetLogic
 import XCTest
 
 // swiftlint:disable file_length
+// swiftlint:disable type_body_length
 class EventsTimelineControllerTests: XCTestCase {
     
     private var formatter: FakeEventTimeFormatter!
@@ -169,10 +170,7 @@ class EventsTimelineControllerTests: XCTestCase {
         let expectedSnapshotEntry = eventsEntry(
             date: now,
             accessibleSummary: "2 upcoming events",
-            events: [
-                expectedViewModel(for: earlierEvent),
-                expectedViewModel(for: laterEvent)
-            ],
+            events: [expectedViewModel(for: earlierEvent), expectedViewModel(for: laterEvent)],
             category: .upcoming,
             isFavouritesOnly: false
         )
@@ -185,9 +183,7 @@ class EventsTimelineControllerTests: XCTestCase {
                 eventsEntry(
                     date: inHalfAnHour,
                     accessibleSummary: "1 upcoming event",
-                    events: [
-                        expectedViewModel(for: laterEvent)
-                    ],
+                    events: [expectedViewModel(for: laterEvent)],
                     category: .upcoming,
                     isFavouritesOnly: false
                 ),
