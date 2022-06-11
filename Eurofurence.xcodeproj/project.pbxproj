@@ -77,6 +77,7 @@
 		CAA5E5552854F14A00FA4FB0 /* EntryEventsCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA5E5542854F14A00FA4FB0 /* EntryEventsCountView.swift */; };
 		CAA5E5572854F15C00FA4FB0 /* MediumEventsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA5E5562854F15C00FA4FB0 /* MediumEventsWidget.swift */; };
 		CAA5E55A2854F26D00FA4FB0 /* SpringboardStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA5E5592854F26D00FA4FB0 /* SpringboardStyle.swift */; };
+		CAA5E55D28553D2200FA4FB0 /* AccessibleEventTimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA5E55C28553D2200FA4FB0 /* AccessibleEventTimeFormatter.swift */; };
 		CAB300DA2603AFDB009A52E1 /* AppClipAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB300D92603AFDB009A52E1 /* AppClipAppDelegate.swift */; };
 		CAB300DC2603AFDB009A52E1 /* AppClipSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB300DB2603AFDB009A52E1 /* AppClipSceneDelegate.swift */; };
 		CAB300E32603AFDC009A52E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAB300E22603AFDC009A52E1 /* Assets.xcassets */; };
@@ -314,6 +315,7 @@
 		CAA5E5542854F14A00FA4FB0 /* EntryEventsCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryEventsCountView.swift; sourceTree = "<group>"; };
 		CAA5E5562854F15C00FA4FB0 /* MediumEventsWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumEventsWidget.swift; sourceTree = "<group>"; };
 		CAA5E5592854F26D00FA4FB0 /* SpringboardStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpringboardStyle.swift; sourceTree = "<group>"; };
+		CAA5E55C28553D2200FA4FB0 /* AccessibleEventTimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibleEventTimeFormatter.swift; sourceTree = "<group>"; };
 		CAB300D72603AFDB009A52E1 /* EurofurenceClip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EurofurenceClip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAB300D92603AFDB009A52E1 /* AppClipAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppClipAppDelegate.swift; sourceTree = "<group>"; };
 		CAB300DB2603AFDB009A52E1 /* AppClipSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppClipSceneDelegate.swift; sourceTree = "<group>"; };
@@ -685,13 +687,14 @@
 		CA8F7D17256173290096E206 /* Logic Adapter */ = {
 			isa = PBXGroup;
 			children = (
+				CAA5E55C28553D2200FA4FB0 /* AccessibleEventTimeFormatter.swift */,
 				CA5A5AE32584F1F4007F6728 /* ControllableClock.swift */,
 				CABBCA152565B153007A11A2 /* EventCategory+Intent.swift */,
 				CA5A5AF12584F26B007F6728 /* EventsBridge.swift */,
 				CA7DA65E2563018F00F1316F /* EventWidgetContext+TimelineContext.swift */,
-				CA5A5B132584F7CA007F6728 /* SpecificationUseCaseTimelineFilteringPolicy.swift */,
 				CA5891DF2562F2E800FC9BC1 /* HoursAndMinutesEventTimeFormatter.swift */,
 				CA5A5B052584F58A007F6728 /* IntentBasedWidgetSpecificationFactory.swift */,
+				CA5A5B132584F7CA007F6728 /* SpecificationUseCaseTimelineFilteringPolicy.swift */,
 				CA8F7D2E256182EF0096E206 /* WidgetKitConformances.swift */,
 			);
 			path = "Logic Adapter";
@@ -1303,6 +1306,7 @@
 				CABBCA162565B153007A11A2 /* EventCategory+Intent.swift in Sources */,
 				CAFC4A6C2564589500499A47 /* EventStartTime.swift in Sources */,
 				CAB4E9192662704600EFE882 /* Intents.intentdefinition in Sources */,
+				CAA5E55D28553D2200FA4FB0 /* AccessibleEventTimeFormatter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -25,8 +25,12 @@ public struct EventViewModel: Equatable {
         self.accessibilitySummary = accessibilitySummary
     }
     
-    init(event: Event, eventTimeFormatter: EventTimeFormatter) {
-        let formattedStartTime = eventTimeFormatter.string(from: event.startTime)
+    init(
+        event: Event,
+        eventTimeFormatter: EventTimeFormatter,
+        accessibilityFormatter: EventTimeFormatter
+    ) {
+        let accessibilityFormattedStartTime = accessibilityFormatter.string(from: event.startTime)
         
         let accessibilityDescriptionFormat = NSLocalizedString(
             "%@, starting at %@ in %@",
@@ -37,7 +41,7 @@ public struct EventViewModel: Equatable {
         let englishAccessibilityDescription = String.localizedStringWithFormat(
             accessibilityDescriptionFormat,
             event.title,
-            formattedStartTime,
+            accessibilityFormattedStartTime,
             event.location
         )
         
@@ -45,7 +49,7 @@ public struct EventViewModel: Equatable {
             id: event.id,
             title: event.title,
             location: event.location,
-            formattedStartTime: formattedStartTime,
+            formattedStartTime: eventTimeFormatter.string(from: event.startTime),
             widgetURL: event.deepLinkingContentURL,
             accessibilitySummary: englishAccessibilityDescription
         )

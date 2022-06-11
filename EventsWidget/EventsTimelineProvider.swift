@@ -129,7 +129,8 @@ struct EventsTimelineProvider: IntentTimelineProvider {
         return EventsTimelineController(
             repository: bridge,
             filteringPolicy: filteringPolicy,
-            eventTimeFormatter: HoursAndMinutesEventTimeFormatter.shared
+            eventTimeFormatter: HoursAndMinutesEventTimeFormatter.shared,
+            accessibilityFormatter: AccessibleEventTimeFormatter.shared
         )
     }
     

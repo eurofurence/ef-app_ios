@@ -6,6 +6,7 @@ import XCTest
 class EventsTimelineControllerTests: XCTestCase {
     
     private var formatter: FakeEventTimeFormatter!
+    private var accessibilityFormatter: FakeEventTimeFormatter!
     private var controller: EventsTimelineController!
     private var now: Date!
     private var inHalfAnHour: Date!
@@ -15,6 +16,7 @@ class EventsTimelineControllerTests: XCTestCase {
         try super.setUpWithError()
         
         formatter = FakeEventTimeFormatter()
+        accessibilityFormatter = FakeEventTimeFormatter()
         now = Date()
         inHalfAnHour = now.addingTimeInterval(3600 / 2)
         inOneHour = now.addingTimeInterval(3600)
@@ -27,7 +29,8 @@ class EventsTimelineControllerTests: XCTestCase {
         controller = EventsTimelineController(
             repository: repository,
             filteringPolicy: filteringPolicy,
-            eventTimeFormatter: formatter
+            eventTimeFormatter: formatter,
+            accessibilityFormatter: accessibilityFormatter
         )
     }
     
@@ -89,14 +92,14 @@ class EventsTimelineControllerTests: XCTestCase {
     }
     
     private func expectedViewModel(for event: Event) -> EventViewModel {
-        let startTime: String = string(from: event.startTime)
+        let startTime: String = accessibilityFormatter.string(from: event.startTime)
         let englishAccessibilityDescription = "\(event.title), starting at \(startTime) in \(event.location)"
         
         return EventViewModel(
             id: event.id,
             title: event.title,
             location: event.location,
-            formattedStartTime: startTime,
+            formattedStartTime: string(from: event.startTime),
             widgetURL: event.deepLinkingContentURL,
             accessibilitySummary: englishAccessibilityDescription
         )
