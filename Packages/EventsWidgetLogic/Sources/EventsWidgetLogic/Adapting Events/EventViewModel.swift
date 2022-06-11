@@ -6,7 +6,6 @@ public struct EventViewModel: Equatable {
     public var title: String
     public var location: String
     public var formattedStartTime: String
-    public var formattedEndTime: String
     public var widgetURL: URL
     public var accessibilitySummary: String
     
@@ -15,7 +14,6 @@ public struct EventViewModel: Equatable {
         title: String,
         location: String,
         formattedStartTime: String,
-        formattedEndTime: String,
         widgetURL: URL = URL(string: "https://www.eurofurence.org").unsafelyUnwrapped,
         accessibilitySummary: String
     ) {
@@ -23,7 +21,6 @@ public struct EventViewModel: Equatable {
         self.title = title
         self.location = location
         self.formattedStartTime = formattedStartTime
-        self.formattedEndTime = formattedEndTime
         self.widgetURL = widgetURL
         self.accessibilitySummary = accessibilitySummary
     }
@@ -49,7 +46,6 @@ public struct EventViewModel: Equatable {
             title: event.title,
             location: event.location,
             formattedStartTime: formattedStartTime,
-            formattedEndTime: eventTimeFormatter.string(from: event.endTime),
             widgetURL: event.deepLinkingContentURL,
             accessibilitySummary: englishAccessibilityDescription
         )

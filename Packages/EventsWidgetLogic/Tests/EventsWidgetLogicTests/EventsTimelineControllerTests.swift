@@ -96,7 +96,6 @@ class EventsTimelineControllerTests: XCTestCase {
             title: event.title,
             location: event.location,
             formattedStartTime: startTime,
-            formattedEndTime: string(from: event.endTime),
             widgetURL: event.deepLinkingContentURL,
             accessibilitySummary: englishAccessibilityDescription
         )
