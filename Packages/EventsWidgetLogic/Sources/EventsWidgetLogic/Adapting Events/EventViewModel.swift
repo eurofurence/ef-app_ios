@@ -8,6 +8,7 @@ public struct EventViewModel: Equatable {
     public var formattedStartTime: String
     public var formattedEndTime: String
     public var widgetURL: URL
+    public var accessibilitySummary: String
     
     public init(
         id: String,
@@ -15,7 +16,8 @@ public struct EventViewModel: Equatable {
         location: String,
         formattedStartTime: String,
         formattedEndTime: String,
-        widgetURL: URL = URL(string: "https://www.eurofurence.org").unsafelyUnwrapped
+        widgetURL: URL = URL(string: "https://www.eurofurence.org").unsafelyUnwrapped,
+        accessibilitySummary: String
     ) {
         self.id = id
         self.title = title
@@ -23,16 +25,33 @@ public struct EventViewModel: Equatable {
         self.formattedStartTime = formattedStartTime
         self.formattedEndTime = formattedEndTime
         self.widgetURL = widgetURL
+        self.accessibilitySummary = accessibilitySummary
     }
     
     init(event: Event, eventTimeFormatter: EventTimeFormatter) {
+        let formattedStartTime = eventTimeFormatter.string(from: event.startTime)
+        
+        let accessibilityDescriptionFormat = NSLocalizedString(
+            "%@, starting at %@ in %@",
+            bundle: .module,
+            comment: "Format string used to prepare accessible event descriptions for widgets"
+        )
+        
+        let englishAccessibilityDescription = String.localizedStringWithFormat(
+            accessibilityDescriptionFormat,
+            event.title,
+            formattedStartTime,
+            event.location
+        )
+        
         self.init(
             id: event.id,
             title: event.title,
             location: event.location,
-            formattedStartTime: eventTimeFormatter.string(from: event.startTime),
+            formattedStartTime: formattedStartTime,
             formattedEndTime: eventTimeFormatter.string(from: event.endTime),
-            widgetURL: event.deepLinkingContentURL
+            widgetURL: event.deepLinkingContentURL,
+            accessibilitySummary: englishAccessibilityDescription
         )
     }
     

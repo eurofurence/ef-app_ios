@@ -42,13 +42,16 @@ struct MediumEventsWidget: View {
                                     Spacer()
                                     EventStartTime(event.formattedStartTime)
                                 }
+                                .accessibilityHidden(true)
                                 
                                 Text(event.location)
                                     .font(.caption)
                                     .foregroundColor(Color.widgetContentForegroundSecondary)
                                     .lineLimit(1)
+                                    .accessibilityHidden(true)
                             }
-                            .accessibilityElement(children: .combine)
+                            .accessibilityElement(children: .ignore)
+                            .accessibilityLabel(event.accessibilitySummary)
                         }
                         .padding(.trailing)
                         

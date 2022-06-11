@@ -88,13 +88,17 @@ class EventsTimelineControllerTests: XCTestCase {
     }
     
     private func expectedViewModel(for event: Event) -> EventViewModel {
-        EventViewModel(
+        let startTime: String = string(from: event.startTime)
+        let englishAccessibilityDescription = "\(event.title), starting at \(startTime) in \(event.location)"
+        
+        return EventViewModel(
             id: event.id,
             title: event.title,
             location: event.location,
-            formattedStartTime: string(from: event.startTime),
+            formattedStartTime: startTime,
             formattedEndTime: string(from: event.endTime),
-            widgetURL: event.deepLinkingContentURL
+            widgetURL: event.deepLinkingContentURL,
+            accessibilitySummary: englishAccessibilityDescription
         )
     }
     

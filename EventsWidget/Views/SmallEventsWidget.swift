@@ -33,6 +33,8 @@ struct SmallEventsWidget: View {
                             Spacer()
                             EventStartTime(event.formattedStartTime)
                         }
+                        .accessibilityElement(children: .combine)
+                        .accessibilityLabel(event.accessibilitySummary)
                     }
                     
                     if event != events.last {
