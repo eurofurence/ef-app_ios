@@ -23,21 +23,25 @@ public class AspectRatioConstrainedImageView: UIImageView {
                 let size = image.size
                 let constraint = NSLayoutConstraint(
                     item: self,
-                    attribute: .width,
+                    attribute: .height,
                     relatedBy: .equal,
                     toItem: self,
-                    attribute: .height,
-                    multiplier: size.width / size.height,
+                    attribute: .width,
+                    multiplier: size.height / size.width,
                     constant: 0
                 )
                 
                 constraint.identifier = "Image Aspect Ratio"
                 constraint.priority = .defaultHigh
                 
-                addConstraint(constraint)
                 aspectRatioConstraint = constraint
+                constraint.isActive = true
             }
         }
+    }
+    
+    override public var intrinsicContentSize: CGSize {
+        CGSize(width: UIView.noIntrinsicMetric, height: UIView.noIntrinsicMetric)
     }
     
 }
