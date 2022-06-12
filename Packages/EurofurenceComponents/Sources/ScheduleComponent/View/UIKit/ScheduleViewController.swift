@@ -75,7 +75,6 @@ public class ScheduleViewController: UIViewController,
         
         tableView.registerConventionBrandedHeader()
         delegate?.scheduleSceneDidLoad()
-        delegate?.scheduleSceneDidSelectDay(at: 0)
     }
     
     override public func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
