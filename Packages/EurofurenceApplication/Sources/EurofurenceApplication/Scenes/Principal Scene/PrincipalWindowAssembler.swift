@@ -12,7 +12,7 @@ struct PrincipalWindowAssembler {
     
     private static let log = OSLog(subsystem: "org.eurofurence.EurofurenceApplication", category: "Principal Window")
     
-    private let router: Router
+    private var router: Router
     private let contentWireframe: WindowContentWireframe
     private let modalWireframe: WindowModalWireframe
     
@@ -47,7 +47,7 @@ struct PrincipalWindowAssembler {
             window: window
         )
         
-        self.router = PrincipalWindowRoutes(
+        let routes = PrincipalWindowRoutes(
             contentWireframe: contentWireframe,
             modalWireframe: modalWireframe,
             componentRegistry: componentRegistry,
@@ -57,10 +57,8 @@ struct PrincipalWindowAssembler {
             window: window
         ).routes
         
-        configureComponents(componentRegistry: componentRegistry, window: window, services: services)
-    }
-    
-    private func configureComponents(componentRegistry: ComponentRegistry, window: UIWindow, services: Services) {
+        self.router = routes
+        
         let applicationModuleFactories = makePrincipalWindowComponents(
             componentRegistry: componentRegistry,
             window: window,
@@ -77,6 +75,8 @@ struct PrincipalWindowAssembler {
         )
         
         _ = ContentSceneController(sessionState: services.sessionState, scene: principalWindowScene)
+        
+        self.router = LoadedContentRouter(stateService: services.sessionState, destinationRoutes: routes)
     }
     
     private func makePrincipalWindowComponents(

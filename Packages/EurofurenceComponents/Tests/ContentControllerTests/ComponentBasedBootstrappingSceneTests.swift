@@ -62,13 +62,5 @@ class ComponentBasedBootstrappingSceneTests: XCTestCase {
         
         XCTAssertEqual(tutorialModule.stubInterface, windowWireframe.capturedRootInterface)
     }
-    
-    func testMovingFromPreloadToContent() {
-        windowScene.showTutorial()
-        tutorialModule.simulateTutorialFinished()
-        preloadModule.simulatePreloadFinished()
-        
-        XCTAssertEqual(principalContentModule.stubInterface, windowWireframe.capturedRootInterface)
-    }
 
 }
