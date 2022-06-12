@@ -23,13 +23,21 @@ public class CompositionalNewsViewController: UIViewController, CompositionalNew
         compositionalDataSource.append(dataSource)
     }
     
+    override public init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        installNavigationConfiguration()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override public func viewDidLoad() {
         super.viewDidLoad()
         
         edgesForExtendedLayout = [.top]
         extendedLayoutIncludesOpaqueBars = true
         
-        installNavigationConfiguration()
         installTableView()
         installNewsBannerImage()
     }
