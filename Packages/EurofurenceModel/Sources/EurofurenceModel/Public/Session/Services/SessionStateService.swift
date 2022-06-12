@@ -2,7 +2,7 @@ import Foundation
 
 public protocol SessionStateService {
 
-    func add(observer: SessionStateObserver)
+    func add(observer: any SessionStateObserver)
 
 }
 

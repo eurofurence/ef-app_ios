@@ -42,5 +42,15 @@ class WhenResolvingDataStoreState: XCTestCase {
 
         XCTAssertEqual(.initialized, sessionStateObserver.state)
     }
+    
+    func testStoreBeginsUninitializedThenBecomesInitialized() {
+        let capturingDataStore = InMemoryDataStore()
+        let context = EurofurenceSessionTestBuilder().with(capturingDataStore).build()
+        let sessionStateObserver = CapturingSessionStateObserver()
+        context.sessionStateService.add(observer: sessionStateObserver)
+        context.performSuccessfulSync(response: .randomWithoutDeletions)
+        
+        XCTAssertEqual(.initialized, sessionStateObserver.state)
+    }
 
 }
