@@ -144,7 +144,7 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory {
         }
 
         func currentEventDayDidChange(to day: Day?) {
-            guard let day = day else { return }
+            guard let day = (day ?? days.first) else { return }
             schedule.filterSchedule(to: EventsOccurringOnDaySpecification(day: day))
 
             guard let idx = days.firstIndex(where: { $0.date == day.date }) else { return }

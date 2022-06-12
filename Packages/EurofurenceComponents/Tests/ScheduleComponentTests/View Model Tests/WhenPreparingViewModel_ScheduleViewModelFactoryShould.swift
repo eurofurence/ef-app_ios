@@ -62,5 +62,16 @@ class WhenPreparingViewModel_ScheduleViewModelFactoryShould: XCTestCase {
         let expected = EventsOccurringOnDaySpecification(day: currentDay.element)
         XCTAssertEqual(expected.eraseToAnySpecification(), eventsService.schedule(for: "Schedule")?.specification)
     }
+    
+    func testTellScheduleToRestrictEventsToFirstDayWhenOutsideConTime_BUG() throws {
+        let days = [Day].random
+        let firstDay = try XCTUnwrap(days.first)
+        eventsService.simulateDaysChanged(days)
+        eventsService.simulateDayChanged(to: nil)
+        context.makeViewModel()
+        
+        let expected = EventsOccurringOnDaySpecification(day: firstDay)
+        XCTAssertEqual(expected.eraseToAnySpecification(), eventsService.schedule(for: "Schedule")?.specification)
+    }
 
 }
