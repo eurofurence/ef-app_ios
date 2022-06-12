@@ -12,10 +12,10 @@ class WhenUpgradingBetweenAppVersions_ApplicationShould: XCTestCase {
         }
         
         let context = EurofurenceSessionTestBuilder().with(presentDataStore).with(forceUpgradeRequired).build()
-        var dataStoreState: EurofurenceSessionState?
-        context.sessionStateService.determineSessionState { dataStoreState = $0 }
+        let sessionStateObserver = CapturingSessionStateObserver()
+        context.sessionStateService.add(observer: sessionStateObserver)
 
-        XCTAssertEqual(EurofurenceSessionState.stale, dataStoreState)
+        XCTAssertEqual(EurofurenceSessionState.stale, sessionStateObserver.state)
     }
 
     func testAlwaysEnquireWhetherUpgradeRequiredEvenWhenRefreshWouldOccurByPreference() {
@@ -29,7 +29,8 @@ class WhenUpgradingBetweenAppVersions_ApplicationShould: XCTestCase {
             .with(forceUpgradeRequired)
             .build()
         
-        context.sessionStateService.determineSessionState { (_) in }
+        let sessionStateObserver = CapturingSessionStateObserver()
+        context.sessionStateService.add(observer: sessionStateObserver)
 
         XCTAssertTrue(forceUpgradeRequired.wasEnquiredWhetherForceRefreshRequired)
     }
@@ -45,7 +46,8 @@ class WhenUpgradingBetweenAppVersions_ApplicationShould: XCTestCase {
             .with(forceUpgradeRequired)
             .build()
         
-        context.sessionStateService.determineSessionState { (_) in }
+        let sessionStateObserver = CapturingSessionStateObserver()
+        context.sessionStateService.add(observer: sessionStateObserver)
 
         XCTAssertTrue(forceUpgradeRequired.wasEnquiredWhetherForceRefreshRequired)
     }

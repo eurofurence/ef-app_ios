@@ -7,10 +7,10 @@ class WhenResolvingDataStoreState: XCTestCase {
     func testStoreWithNoLastRefreshTimeIsAbsent() {
         let capturingDataStore = InMemoryDataStore()
         let context = EurofurenceSessionTestBuilder().with(capturingDataStore).build()
-        var state: EurofurenceSessionState?
-        context.sessionStateService.determineSessionState { state = $0 }
+        let sessionStateObserver = CapturingSessionStateObserver()
+        context.sessionStateService.add(observer: sessionStateObserver)
 
-        XCTAssertEqual(.uninitialized, state)
+        XCTAssertEqual(.uninitialized, sessionStateObserver.state)
     }
 
     func testStoreWithLastRefreshDateWithRefreshOnLaunchEnabledIsStale() {
@@ -22,10 +22,10 @@ class WhenResolvingDataStoreState: XCTestCase {
         let userPreferences = StubUserPreferences()
         userPreferences.refreshStoreOnLaunch = true
         let context = EurofurenceSessionTestBuilder().with(capturingDataStore).with(userPreferences).build()
-        var state: EurofurenceSessionState?
-        context.sessionStateService.determineSessionState { state = $0 }
+        let sessionStateObserver = CapturingSessionStateObserver()
+        context.sessionStateService.add(observer: sessionStateObserver)
 
-        XCTAssertEqual(.stale, state)
+        XCTAssertEqual(.stale, sessionStateObserver.state)
     }
 
     func testStoreWithLastRefreshDateWithRefreshOnLaunchDisabledIsAvailable() {
@@ -37,10 +37,10 @@ class WhenResolvingDataStoreState: XCTestCase {
         let userPreferences = StubUserPreferences()
         userPreferences.refreshStoreOnLaunch = false
         let context = EurofurenceSessionTestBuilder().with(capturingDataStore).with(userPreferences).build()
-        var state: EurofurenceSessionState?
-        context.sessionStateService.determineSessionState { state = $0 }
+        let sessionStateObserver = CapturingSessionStateObserver()
+        context.sessionStateService.add(observer: sessionStateObserver)
 
-        XCTAssertEqual(.initialized, state)
+        XCTAssertEqual(.initialized, sessionStateObserver.state)
     }
 
 }

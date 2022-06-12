@@ -8,8 +8,8 @@ public class ControllableSessionStateService: SessionStateService {
     
     public var simulatedState: EurofurenceSessionState = .uninitialized
     
-    public func determineSessionState(completionHandler: @escaping (EurofurenceSessionState) -> Void) {
-        completionHandler(simulatedState)
+    public func add(observer: SessionStateObserver) {
+        observer.sessionStateDidChange(simulatedState)
     }
     
 }
