@@ -54,7 +54,8 @@ let package = Package(
         .testTarget(name: "ComponentBaseTests", dependencies: [
             .target(name: "ComponentBase"),
             .target(name: "XCTComponentBase"),
-            .product(name: "XCTEurofurenceModel", package: "EurofurenceModel")
+            .product(name: "XCTEurofurenceModel", package: "EurofurenceModel"),
+            .product(name: "XCTRouter", package: "Router")
         ], resources: [
             .process("Resources")
         ]),

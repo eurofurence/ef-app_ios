@@ -49,9 +49,12 @@ class ConcreteSession: EurofurenceSession {
         
         let dataStore = dataStoreFactory.makeDataStore(for: conventionIdentifier)
         
-        sessionStateService = ConcreteSessionStateService(forceRefreshRequired: forceRefreshRequired,
-                                                          userPreferences: userPreferences,
-                                                          dataStore: dataStore)
+        sessionStateService = ConcreteSessionStateService(
+            eventBus: eventBus,
+            forceRefreshRequired: forceRefreshRequired,
+            userPreferences: userPreferences,
+            dataStore: dataStore
+        )
         
         remoteNotificationRegistrationController = RemoteNotificationRegistrationController(
             eventBus: eventBus,

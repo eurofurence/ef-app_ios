@@ -6,10 +6,19 @@ public class ControllableSessionStateService: SessionStateService {
         
     }
     
-    public var simulatedState: EurofurenceSessionState = .uninitialized
+    public var simulatedState: EurofurenceSessionState = .uninitialized {
+        didSet {
+            for observer in observers {
+                observer.sessionStateDidChange(simulatedState)
+            }
+        }
+    }
     
-    public func determineSessionState(completionHandler: @escaping (EurofurenceSessionState) -> Void) {
-        completionHandler(simulatedState)
+    private var observers = [any SessionStateObserver]()
+    
+    public func add(observer: SessionStateObserver) {
+        observers.append(observer)
+        observer.sessionStateDidChange(simulatedState)
     }
     
 }

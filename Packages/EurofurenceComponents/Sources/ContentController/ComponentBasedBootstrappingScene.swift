@@ -61,7 +61,7 @@ public struct ComponentBasedBootstrappingScene: ContentBootstrappingScene {
         }
         
         func preloadModuleDidFinishPreloading() {
-            scene.showContent()
+
         }
         
     }

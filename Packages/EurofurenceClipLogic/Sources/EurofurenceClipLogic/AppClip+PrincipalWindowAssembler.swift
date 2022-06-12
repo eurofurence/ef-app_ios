@@ -68,9 +68,6 @@ extension AppClip {
             routes.install(ReplaceSceneWithScheduleRoute(scene: clipContentScene))
             routes.install(ReplaceSceneWithDealersRoute(scene: clipContentScene))
             
-            let clipRouting = EurofurenceClipRouting(router: routes, clipScene: clipContentScene)
-            self.routing = clipRouting
-            
             let appClipModule = ContainerModuleWrapper(containerViewController: rootContainerViewController)
             
             let scene = ComponentBasedBootstrappingScene(
@@ -84,6 +81,14 @@ extension AppClip {
                 sessionState: services.sessionState,
                 scene: scene
             )
+            
+            let stateSensitiveRoutes = LoadedContentRouter(
+                stateService: services.sessionState,
+                destinationRoutes: routes
+            )
+            
+            let clipRouting = EurofurenceClipRouting(router: stateSensitiveRoutes, clipScene: clipContentScene)
+            self.routing = clipRouting
         }
         
         private struct ScheduleFactoryAdapter: ClipContentControllerFactory {
