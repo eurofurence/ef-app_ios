@@ -30,6 +30,8 @@ class DealerDetailViewController: UIViewController, DealerDetailScene {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.accessibilityIdentifier = "org.eurofurence.DealerDetailContents"
+        
         Theme.global.apply(to: tableView)
         delegate?.dealerDetailSceneDidLoad()
     }
