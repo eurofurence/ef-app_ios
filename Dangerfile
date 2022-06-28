@@ -8,8 +8,6 @@ def is_dir_modified(dir)
     return modified_dir || added_to_dir
 end
 
-declared_trivial = github.pr_title.include? "#trivial"
-
 # --- Git Hygine
 
 def perform_git_hygiene_checks
