@@ -101,7 +101,10 @@ extension AppClip {
                     ScheduleSubrouter(router: router)
                 )
                 
-                let scheduleNavigationController = BrandedNavigationController(rootViewController: scheduleViewController)
+                let scheduleNavigationController = BrandedNavigationController(
+                    rootViewController: scheduleViewController
+                )
+                
                 let noContentPlaceholder = NoContentPlaceholderViewController.fromStoryboard()
                 let noContentNavigation = UINavigationController(rootViewController: noContentPlaceholder)
                 let split = BrandedSplitViewController()
