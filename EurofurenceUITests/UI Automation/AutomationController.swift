@@ -46,7 +46,7 @@ extension AutomationController {
     }
     
     func tapKnownEvent() throws {
-        try tapCellWithText("Nailed It!")
+        try tapCellWithText("Summerboat Party")
     }
     
     func tapKnownDealer() throws {
