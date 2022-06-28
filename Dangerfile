@@ -73,10 +73,6 @@ def perform_swift_code_review_on_file(file)
             warn("Override methods which only call super can be removed", file: file, line: index+1)
         end
 
-        if line =~ /^\/\/([^\/]|$)/ and !line.include?("MARK:") and !line.include?("swift")
-            warn("Comments should be avoided in favour of expressing intent in code", file: file, line: index + 1)
-        end
-
         if line =~ /.text = \"(.)+/ || line =~ /setTitle\(\"(.)+/
             warn("User facing strings set in code should use NSLocalizedString", file: file, line: index)
         end
