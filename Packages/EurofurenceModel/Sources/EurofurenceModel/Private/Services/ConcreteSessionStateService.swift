@@ -7,6 +7,7 @@ class ConcreteSessionStateService: SessionStateService {
     private let dataStore: DataStore
     private var dataStoreChangedRegistration: Any?
     private var observers = [any SessionStateObserver]()
+    private var lastNotifiedState: EurofurenceSessionState?
     
     init(
         eventBus: EventBus,
@@ -17,6 +18,7 @@ class ConcreteSessionStateService: SessionStateService {
         self.forceRefreshRequired = forceRefreshRequired
         self.userPreferences = userPreferences
         self.dataStore = dataStore
+        self.lastNotifiedState = currentState
         
         dataStoreChangedRegistration = eventBus.subscribe(consumer: DataStoreChangedConsumer { [weak self] in
             self?.notifyObserversOfCurrentState()
@@ -34,9 +36,13 @@ class ConcreteSessionStateService: SessionStateService {
     
     private func notifyObserversOfCurrentState() {
         let state = currentState
+        guard state != lastNotifiedState else { return }
+        
         for observer in observers {
             observer.sessionStateDidChange(state)
         }
+        
+        lastNotifiedState = state
     }
     
     func add(observer: any SessionStateObserver) {
