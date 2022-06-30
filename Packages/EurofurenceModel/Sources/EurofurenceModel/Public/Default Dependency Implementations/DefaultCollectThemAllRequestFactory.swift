@@ -1,8 +1,11 @@
 import Foundation
 
 public struct DefaultCollectThemAllRequestFactory: CollectThemAllRequestFactory {
+    
+    private let conventionIdentifier: ConventionIdentifier
 
-    public init() {
+    public init(conventionIdentifier: ConventionIdentifier) {
+        self.conventionIdentifier = conventionIdentifier
     }
 
     public func makeAnonymousGameURLRequest() -> URLRequest {
@@ -14,7 +17,8 @@ public struct DefaultCollectThemAllRequestFactory: CollectThemAllRequestFactory 
     }
 
     private func makeGameURL(token: String? = nil) -> URL {
-        var urlString = "https://app.eurofurence.org/EF25/companion/#/login?embedded=true&returnPath=/collect&token="
+        let cid = conventionIdentifier.identifier
+        var urlString = "https://app.eurofurence.org/\(cid)/companion/#/login?embedded=true&returnPath=/collect&token="
         
         let tokenToSend: String = {
             if let token = token {
