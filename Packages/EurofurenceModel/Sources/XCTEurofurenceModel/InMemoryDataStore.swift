@@ -21,6 +21,7 @@ open class InMemoryDataStore: DataStore {
             transaction.saveDealers(response.dealers.changed)
             transaction.saveMaps(response.maps.changed)
             transaction.saveImages(response.images.changed)
+            transaction.saveLastRefreshDate(Date())
         }
     }
 

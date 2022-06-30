@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "News Banner.png",
+      "filename" : "banner_2022_simple@1x.heic",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "News Banner@2x.png",
+      "filename" : "banner_2022_simple@2x.heic",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "News Banner@3x.png",
+      "filename" : "banner_2022_simple.heic",
       "idiom" : "universal",
       "scale" : "3x"
     }

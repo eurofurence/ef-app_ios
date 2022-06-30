@@ -97,11 +97,18 @@ extension AppClip {
             var router: Router
             
             func makeContentController() -> UIViewController {
-                let schedule = scheduleComponentFactory.makeScheduleComponent(ScheduleSubrouter(router: router))
-                let primary = BrandedNavigationController(rootViewController: schedule)
-                let secondary = NoContentPlaceholderViewController.fromStoryboard()
+                let scheduleViewController = scheduleComponentFactory.makeScheduleComponent(
+                    ScheduleSubrouter(router: router)
+                )
+                
+                let scheduleNavigationController = BrandedNavigationController(
+                    rootViewController: scheduleViewController
+                )
+                
+                let noContentPlaceholder = NoContentPlaceholderViewController.fromStoryboard()
+                let noContentNavigation = UINavigationController(rootViewController: noContentPlaceholder)
                 let split = BrandedSplitViewController()
-                split.viewControllers = [primary, secondary]
+                split.viewControllers = [scheduleNavigationController, noContentNavigation]
                 
                 return split
             }
@@ -114,11 +121,15 @@ extension AppClip {
             var router: Router
             
             func makeContentController() -> UIViewController {
-                let dealers = dealersComponentFactory.makeDealersComponent(ShowDealerFromDealers(router: router))
-                let primary = BrandedNavigationController(rootViewController: dealers)
-                let secondary = NoContentPlaceholderViewController.fromStoryboard()
+                let dealersViewController = dealersComponentFactory.makeDealersComponent(
+                    ShowDealerFromDealers(router: router)
+                )
+                
+                let dealersNavigationController = BrandedNavigationController(rootViewController: dealersViewController)
+                let noContentPlaceholder = NoContentPlaceholderViewController.fromStoryboard()
+                let noContentNavigation = UINavigationController(rootViewController: noContentPlaceholder)
                 let split = BrandedSplitViewController()
-                split.viewControllers = [primary, secondary]
+                split.viewControllers = [dealersNavigationController, noContentNavigation]
                 
                 return split
             }

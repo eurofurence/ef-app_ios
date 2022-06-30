@@ -46,7 +46,10 @@ extension AutomationController {
     }
     
     func tapKnownEvent() throws {
-        try tapCellWithText("Nailed It!")
+        // We know this event has a good amount of text for most devices for testing (bar a larger iPad).
+        // This may need to change as more event info pops through for EF26.
+        app.buttons["Wed 24"].tap()
+        try tapCellWithText("Art Show Setup & Check-In")
     }
     
     func tapKnownDealer() throws {

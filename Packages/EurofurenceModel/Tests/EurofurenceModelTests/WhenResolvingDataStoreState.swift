@@ -52,5 +52,34 @@ class WhenResolvingDataStoreState: XCTestCase {
         
         XCTAssertEqual(.initialized, sessionStateObserver.state)
     }
+    
+    func testStoreIsInitialized_WhenRefreshOccurs_StoreDoesNotReentrantlyBecomeInitialized() {
+        let capturingDataStore = InMemoryDataStore()
+        let context = EurofurenceSessionTestBuilder().with(capturingDataStore).build()
+        let sessionStateObserver = OnlyEntersInitializedStateOnce()
+        context.sessionStateService.add(observer: sessionStateObserver)
+        context.performSuccessfulSync(response: .randomWithoutDeletions)
+        context.performSuccessfulSync(response: .randomWithoutDeletions)
+        
+        XCTAssertFalse(sessionStateObserver.enteredInitializedMoreThanOnce)
+    }
+    
+    func testNoRepeatInitializationNotificationsWhenStoreWasAlreadyInitialized() {
+        let capturingDataStore = InMemoryDataStore(response: .randomWithoutDeletions)
+        let context = EurofurenceSessionTestBuilder().with(capturingDataStore).build()
+        let sessionStateObserver = OnlyEntersInitializedStateOnce()
+        context.sessionStateService.add(observer: sessionStateObserver)
+        context.performSuccessfulSync(response: .randomWithoutDeletions)
+        
+        XCTAssertFalse(sessionStateObserver.enteredInitializedMoreThanOnce)
+    }
+    
+    private class OnlyEntersInitializedStateOnce: CapturingSessionStateObserver {
+        private(set) var enteredInitializedMoreThanOnce = false
+        override func sessionStateDidChange(_ newState: EurofurenceSessionState) {
+            enteredInitializedMoreThanOnce = self.state == .initialized && newState == .initialized
+            super.sessionStateDidChange(newState)
+        }
+    }
 
 }

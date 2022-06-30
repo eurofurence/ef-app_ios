@@ -8,8 +8,6 @@ def is_dir_modified(dir)
     return modified_dir || added_to_dir
 end
 
-declared_trivial = github.pr_title.include? "#trivial"
-
 # --- Git Hygine
 
 def perform_git_hygiene_checks
@@ -71,10 +69,6 @@ def perform_swift_code_review_on_file(file)
 
         if line.include?("override") and line.include?("func") and filelines[index+1].include?("super") and filelines[index+2].include?("}")
             warn("Override methods which only call super can be removed", file: file, line: index+1)
-        end
-
-        if line =~ /^\/\/([^\/]|$)/ and !line.include?("MARK:") and !line.include?("swift")
-            warn("Comments should be avoided in favour of expressing intent in code", file: file, line: index + 1)
         end
 
         if line =~ /.text = \"(.)+/ || line =~ /setTitle\(\"(.)+/

@@ -2,6 +2,6 @@ import EurofurenceModel
 
 extension ConventionIdentifier {
     
-    public static var currentConvention = ConventionIdentifier(identifier: "EF25")
+    public static var currentConvention = ConventionIdentifier(identifier: "EF26")
     
 }

@@ -22,10 +22,8 @@ class DealerDetailTests: UIAutomationTestCase {
         
         controller
             .app
-            .tables
-            .cells
-            .containing(.staticText, identifier: "The Official Eurofurence Shop")
-            .element
+            .tables["org.eurofurence.DealerDetailContents"]
+            .firstMatch
             .swipeUp()
         
         XCTAssertTrue(navigationTitle.exists)

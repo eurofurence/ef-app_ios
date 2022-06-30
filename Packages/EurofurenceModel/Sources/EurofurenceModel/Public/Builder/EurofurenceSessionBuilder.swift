@@ -59,9 +59,15 @@ public class EurofurenceSessionBuilder {
         credentialRepository = KeychainCredentialRepository()
         timeIntervalForUpcomingEventsSinceNow = 3600
         imageRepository = PersistentImageRepository()
-        collectThemAllRequestFactory = DefaultCollectThemAllRequestFactory()
         forceRefreshRequired = UserDefaultsForceRefreshRequired()
-        companionAppURLRequestFactory = HardcodedCompanionAppURLRequestFactory()
+        
+        collectThemAllRequestFactory = DefaultCollectThemAllRequestFactory(
+            conventionIdentifier: mandatory.conventionIdentifier
+        )
+        
+        companionAppURLRequestFactory = HardcodedCompanionAppURLRequestFactory(
+            conventionIdentifier: mandatory.conventionIdentifier
+        )
     }
 
     @discardableResult
