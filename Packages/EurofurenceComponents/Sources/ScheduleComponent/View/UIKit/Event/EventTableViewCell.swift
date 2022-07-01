@@ -1,4 +1,5 @@
 import Combine
+import ComponentBase
 import UIKit
 
 public class EventTableViewCell: UITableViewCell, ScheduleEventComponent {
@@ -36,75 +37,66 @@ public class EventTableViewCell: UITableViewCell, ScheduleEventComponent {
         }
     }
     
-    @IBOutlet private weak var favouritedEventIndicator: UIView! {
-        didSet {
-            favouritedEventIndicator.accessibilityIdentifier = "Event_IsFavourite"
-        }
-    }
+    private var favouritedEventIndicator: UIView!
+    private var sponsorEventIndicator: UIView!
+    private var superSponsorEventIndicator: UIView!
+    private var artShowIndicatorView: UIView!
+    private var kageBugIndicatorView: UIView!
+    private var kageWineGlassIndicatorView: UIView!
+    private var dealersDenIndicatorView: UIView!
+    private var mainStageIndicatorView: UIView!
+    private var photoshootIndicatorView: UIView!
     
-    @IBOutlet private weak var sponsorEventIndicator: UIView! {
-        didSet {
-            sponsorEventIndicator.accessibilityIdentifier = "Event_IsSponsorOnly"
-            sponsorEventIndicator.tintColor = .efTintColor
-        }
-    }
-    
-    @IBOutlet private weak var superSponsorEventIndicator: UIView! {
-        didSet {
-            superSponsorEventIndicator.accessibilityIdentifier = "Event_IsSuperSponsorOnly"
-            superSponsorEventIndicator.tintColor = .efTintColor
-        }
-    }
-    
-    @IBOutlet private weak var artShowIndicatorView: UIView! {
-        didSet {
-            artShowIndicatorView.accessibilityIdentifier = "Event_IsArtShow"
-            artShowIndicatorView.tintColor = .efTintColor
-        }
-    }
-    
-    @IBOutlet private weak var kageBugIndicatorView: UILabel! {
-        didSet {
-            kageBugIndicatorView.accessibilityIdentifier = "Event_KageBug"
-        }
-    }
-    
-    @IBOutlet private weak var kageWineGlassIndicatorView: UILabel! {
-        didSet {
-            kageWineGlassIndicatorView.accessibilityIdentifier = "Event_KageWineGlass"
-        }
-    }
-    
-    @IBOutlet private weak var dealersDenIndicatorView: UIView! {
-        didSet {
-            dealersDenIndicatorView.accessibilityIdentifier = "Event_IsDealersDen"
-            dealersDenIndicatorView.tintColor = .efTintColor
-        }
-    }
-    
-    @IBOutlet private weak var mainStageIndicatorView: UIView! {
-        didSet {
-            mainStageIndicatorView.accessibilityIdentifier = "Event_IsMainStage"
-            mainStageIndicatorView.tintColor = .efTintColor
-        }
-    }
-    
-    @IBOutlet private weak var photoshootIndicatorView: UIView! {
-        didSet {
-            photoshootIndicatorView.accessibilityIdentifier = "Event_IsPhotoshoot"
-            photoshootIndicatorView.tintColor = .efTintColor
-        }
-    }
-    
+    @IBOutlet private weak var verticalIconsStack: UIStackView!
     @IBOutlet private weak var eventBannerImageView: UIImageView!
 
     // MARK: Overrides
 
     override public func awakeFromNib() {
         super.awakeFromNib()
-
-        kageBugIndicatorView.text = "\u{f188}"
-        kageWineGlassIndicatorView.text = "\u{f000}"
+        
+        favouritedEventIndicator = IconView(icon: .favourite)
+        favouritedEventIndicator.accessibilityIdentifier = "Event_IsFavourite"
+        
+        sponsorEventIndicator = IconView(icon: .sponsor)
+        sponsorEventIndicator.accessibilityIdentifier = "Event_IsSponsorOnly"
+        
+        superSponsorEventIndicator = IconView(icon: .superSponsor)
+        superSponsorEventIndicator.accessibilityIdentifier = "Event_IsSuperSponsorOnly"
+        
+        artShowIndicatorView = IconView(icon: .artshow)
+        artShowIndicatorView.accessibilityIdentifier = "Event_IsArtShow"
+        
+        kageBugIndicatorView = IconView(icon: .bug)
+        kageBugIndicatorView.accessibilityIdentifier = "Event_KageBug"
+        
+        kageWineGlassIndicatorView = IconView(icon: .wine)
+        kageWineGlassIndicatorView.accessibilityIdentifier = "Event_KageWineGlass"
+        
+        dealersDenIndicatorView = IconView(icon: .dealersDen)
+        dealersDenIndicatorView.accessibilityIdentifier = "Event_IsDealersDen"
+        
+        mainStageIndicatorView = IconView(icon: .mainStage)
+        mainStageIndicatorView.accessibilityIdentifier = "Event_IsMainStage"
+        
+        photoshootIndicatorView = IconView(icon: .photoshoot)
+        photoshootIndicatorView.accessibilityIdentifier = "Event_IsPhotoshoot"
+        
+        let icons: [UIView] = [
+            favouritedEventIndicator,
+            sponsorEventIndicator,
+            superSponsorEventIndicator,
+            artShowIndicatorView,
+            kageBugIndicatorView,
+            kageWineGlassIndicatorView,
+            dealersDenIndicatorView,
+            mainStageIndicatorView,
+            photoshootIndicatorView
+        ]
+        
+        for icon in icons.reversed() {
+            verticalIconsStack.insertArrangedSubview(icon, at: 0)
+        }
     }
 
     // MARK: ScheduleEventComponent
