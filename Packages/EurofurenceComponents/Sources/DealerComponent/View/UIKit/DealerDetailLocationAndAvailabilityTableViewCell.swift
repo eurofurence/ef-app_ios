@@ -14,7 +14,7 @@ class DealerDetailLocationAndAvailabilityTableViewCell: UITableViewCell, DealerL
 
     @IBOutlet private weak var limitedAvailabilityIcon: IconView! {
         didSet {
-            limitedAvailabilityIcon.icon = .notAvailableForEntireConference
+            limitedAvailabilityIcon.icon = .warning
         }
     }
       

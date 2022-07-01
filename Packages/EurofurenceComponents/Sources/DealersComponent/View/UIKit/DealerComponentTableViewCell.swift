@@ -10,7 +10,7 @@ class DealerComponentTableViewCell: UITableViewCell, DealerComponent {
     @IBOutlet private weak var dealerSubtitleLabel: UILabel!
     @IBOutlet private weak var notAvailableForEntireConferenceWarningView: IconView! {
         didSet {
-            notAvailableForEntireConferenceWarningView.icon = .notAvailableForEntireConference
+            notAvailableForEntireConferenceWarningView.icon = .warning
         }
     }
     

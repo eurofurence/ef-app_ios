@@ -14,7 +14,7 @@ public class IconView: UIImageView {
         case dealersDen
         case photoshoot
         case afterDarkDealersDen
-        case notAvailableForEntireConference
+        case warning
         
         fileprivate var view: UIView {
             switch self {
@@ -48,7 +48,7 @@ public class IconView: UIImageView {
             case .afterDarkDealersDen:
                 return makeSymbolView(symbolName: "moon", symbolWeight: .medium)
                 
-            case .notAvailableForEntireConference:
+            case .warning:
                 return makeSymbolView(symbolName: "exclamationmark.triangle.fill", symbolWeight: .regular)
             }
         }
