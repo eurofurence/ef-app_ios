@@ -12,12 +12,14 @@ class NewsUserWidgetTableViewCell: UITableViewCell {
     @IBOutlet weak var standardUserPromptView: UIView! {
         didSet {
             standardUserPromptView.accessibilityIdentifier = "Personalised_UserIcon"
+            standardUserPromptView.tintColor = .efTintColor
         }
     }
     
     @IBOutlet weak var highlightedUserPromptView: UIView! {
         didSet {
             highlightedUserPromptView.accessibilityIdentifier = "Personalised_UserHighlightedIcon"
+            highlightedUserPromptView.tintColor = .efTintColor
         }
     }
     
