@@ -33,7 +33,7 @@ class MoreViewController: UITableViewController {
         
         navigationItem.title = moreTitle
         tabBarItem.title = moreTitle
-        tabBarItem.image = UIImage(named: "More", in: .module, compatibleWith: nil)
+        tabBarItem.image = UIImage(systemName: "ellipsis")
     }
     
     required init?(coder: NSCoder) {
@@ -47,9 +47,14 @@ class MoreViewController: UITableViewController {
             .map(ControllerInstance.init)
     }
     
+    private func applyTintColorFixForExtraTabIcons() {
+        UIImageView.appearance(whenContainedInInstancesOf: [MoreViewController.self]).tintColor = .efTintColor
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        applyTintColorFixForExtraTabIcons()
         tableView.register(classForCell: SupplementaryContentControllerTableViewCell.self)
     }
     

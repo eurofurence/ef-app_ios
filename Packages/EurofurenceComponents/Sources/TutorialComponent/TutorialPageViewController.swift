@@ -35,6 +35,7 @@ public class TutorialPageViewController: UIViewController, TutorialPageScene {
 
     public func showPageImage(_ image: UIImage?) {
         tutorialPageImageView.image = image
+        tutorialPageImageView.tintColor = .white
     }
 
     public func showPrimaryActionButton() {

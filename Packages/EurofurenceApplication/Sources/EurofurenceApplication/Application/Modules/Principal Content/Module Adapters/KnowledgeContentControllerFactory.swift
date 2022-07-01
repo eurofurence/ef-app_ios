@@ -8,7 +8,8 @@ struct KnowledgeContentControllerFactory: ApplicationModuleFactory {
     
     func makeApplicationModuleController() -> UIViewController {
         let knowledgeList = knowledgeModuleProviding.makeKnowledgeListComponent(knowledgeModuleDelegate)
-        knowledgeList.tabBarItem.image = UIImage(named: "Info", in: .module, compatibleWith: nil)
+        knowledgeList.tabBarItem.image = UIImage(systemName: "info.circle")
+        knowledgeList.tabBarItem.selectedImage = UIImage(systemName: "info.circle.fill")
         
         return knowledgeList
     }

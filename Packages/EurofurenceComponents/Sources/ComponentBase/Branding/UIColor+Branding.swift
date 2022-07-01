@@ -14,7 +14,7 @@ extension UIColor {
     
     // MARK: Semantic Control Colors
     
-    public static let tintColor = adaptive(light: .pantone330U, dark: .pantone330U_45)
+    public static let efTintColor = adaptive(light: .pantone330U, dark: .pantone330U_45)
     public static let disabledColor = safeSystemGray
     public static let navigationBar = barColor
     public static let tabBar = barColor

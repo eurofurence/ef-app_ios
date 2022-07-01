@@ -37,7 +37,6 @@ public class Theme {
         styleTextFields()
         styleSegmentedControls()
         styleRefreshControls()
-        styleImages()
         styleAwesomeFontLabels()
         styleUnreadIndicators()
     }
@@ -165,7 +164,7 @@ public class Theme {
 
     private func styleTextFields() {
         let textField = UITextField.appearance()
-        textField.tintColor = .tintColor
+        textField.tintColor = .efTintColor
     }
 
     private func styleSegmentedControls() {
@@ -176,11 +175,6 @@ public class Theme {
     private func styleRefreshControls() {
         let refreshControl = UIRefreshControl.appearance()
         refreshControl.tintColor = .refreshControl
-    }
-    
-    private func styleImages() {
-        let image = UIImageView.appearance()
-        image.tintColor = .tintColor
     }
     
     private func styleAwesomeFontLabels() {

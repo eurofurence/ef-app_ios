@@ -42,21 +42,24 @@ public class EventTableViewCell: UITableViewCell, ScheduleEventComponent {
         }
     }
     
-    @IBOutlet private weak var sponsorEventIndicator: UILabel! {
+    @IBOutlet private weak var sponsorEventIndicator: UIView! {
         didSet {
             sponsorEventIndicator.accessibilityIdentifier = "Event_IsSponsorOnly"
+            sponsorEventIndicator.tintColor = .efTintColor
         }
     }
     
-    @IBOutlet private weak var superSponsorEventIndicator: UILabel! {
+    @IBOutlet private weak var superSponsorEventIndicator: UIView! {
         didSet {
             superSponsorEventIndicator.accessibilityIdentifier = "Event_IsSuperSponsorOnly"
+            superSponsorEventIndicator.tintColor = .efTintColor
         }
     }
     
-    @IBOutlet private weak var artShowIndicatorView: UILabel! {
+    @IBOutlet private weak var artShowIndicatorView: UIView! {
         didSet {
             artShowIndicatorView.accessibilityIdentifier = "Event_IsArtShow"
+            artShowIndicatorView.tintColor = .efTintColor
         }
     }
     
@@ -72,21 +75,24 @@ public class EventTableViewCell: UITableViewCell, ScheduleEventComponent {
         }
     }
     
-    @IBOutlet private weak var dealersDenIndicatorView: UILabel! {
+    @IBOutlet private weak var dealersDenIndicatorView: UIView! {
         didSet {
             dealersDenIndicatorView.accessibilityIdentifier = "Event_IsDealersDen"
+            dealersDenIndicatorView.tintColor = .efTintColor
         }
     }
     
-    @IBOutlet private weak var mainStageIndicatorView: UILabel! {
+    @IBOutlet private weak var mainStageIndicatorView: UIView! {
         didSet {
             mainStageIndicatorView.accessibilityIdentifier = "Event_IsMainStage"
+            mainStageIndicatorView.tintColor = .efTintColor
         }
     }
     
-    @IBOutlet private weak var photoshootIndicatorView: UILabel! {
+    @IBOutlet private weak var photoshootIndicatorView: UIView! {
         didSet {
             photoshootIndicatorView.accessibilityIdentifier = "Event_IsPhotoshoot"
+            photoshootIndicatorView.tintColor = .efTintColor
         }
     }
     
@@ -97,12 +103,8 @@ public class EventTableViewCell: UITableViewCell, ScheduleEventComponent {
     override public func awakeFromNib() {
         super.awakeFromNib()
 
-        artShowIndicatorView.text = "\u{f03e}"
         kageBugIndicatorView.text = "\u{f188}"
         kageWineGlassIndicatorView.text = "\u{f000}"
-        dealersDenIndicatorView.text = "\u{f07a}"
-        mainStageIndicatorView.text = "\u{f069}"
-        photoshootIndicatorView.text = "\u{f030}"
     }
 
     // MARK: ScheduleEventComponent

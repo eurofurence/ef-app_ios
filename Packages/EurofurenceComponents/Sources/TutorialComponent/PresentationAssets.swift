@@ -8,12 +8,8 @@ public protocol PresentationAssets {
 
 struct ApplicationPresentationAssets: PresentationAssets {
 
-    let initialLoadInformationAsset: UIImage = {
-        guard let icon = UIImage(named: "tuto02_informationIcon", in: .module, compatibleWith: nil) else {
-            fatalError("Missing icon from bundle")
-        }
-        
-        return icon
-    }()
+    let initialLoadInformationAsset: UIImage = UIImage(
+        systemName: "info.circle"
+    ).unsafelyUnwrapped
 
 }
