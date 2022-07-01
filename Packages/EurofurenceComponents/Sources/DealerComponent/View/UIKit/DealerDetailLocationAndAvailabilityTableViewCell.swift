@@ -17,8 +17,7 @@ class DealerDetailLocationAndAvailabilityTableViewCell: UITableViewCell, DealerL
             limitedAvailabilityIcon.icon = .notAvailableForEntireConference
         }
     }
-    
-    
+      
     @IBOutlet private weak var afterDarkIcon: IconView! {
         didSet {
             afterDarkIcon.icon = .afterDarkDealersDen
