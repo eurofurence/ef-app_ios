@@ -13,6 +13,8 @@ public class IconView: UIImageView {
         case bug
         case dealersDen
         case photoshoot
+        case afterDarkDealersDen
+        case notAvailableForEntireConference
         
         fileprivate var view: UIView {
             switch self {
@@ -42,6 +44,12 @@ public class IconView: UIImageView {
                 
             case .photoshoot:
                 return makeSymbolView(symbolName: "camera", symbolWeight: .medium)
+                
+            case .afterDarkDealersDen:
+                return makeSymbolView(symbolName: "moon", symbolWeight: .medium)
+                
+            case .notAvailableForEntireConference:
+                return makeSymbolView(symbolName: "exclamationmark.triangle.fill", symbolWeight: .regular)
             }
         }
         
@@ -53,6 +61,7 @@ public class IconView: UIImageView {
             let symbolConfiguration = UIImage.SymbolConfiguration(weight: .medium)
             let image = UIImage(systemName: symbolName, withConfiguration: symbolConfiguration)
             let imageView = UIImageView(image: image)
+            imageView.backgroundColor = .clear
             imageView.contentMode = .scaleAspectFit
             imageView.tintColor = tint
             
