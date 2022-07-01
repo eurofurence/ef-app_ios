@@ -1,10 +1,11 @@
+import ComponentBase
 import UIKit
 
 class EventInformationBannerTableViewCell: UITableViewCell, EventInformationBannerComponent {
 
     // MARK: Properties
 
-    @IBOutlet private weak var iconLabel: UILabel!
+    @IBOutlet private weak var iconContainer: UIStackView!
     @IBOutlet private weak var messageLabel: UILabel!
 
     // MARK: EventInformationBannerComponent
@@ -15,8 +16,15 @@ class EventInformationBannerTableViewCell: UITableViewCell, EventInformationBann
     
     // MARK: Functions
     
-    func configureIcon(text: String) {
-        iconLabel.text = text
+    func configureIcons(icons: [IconView.Icon]) {
+        for existingIcon in iconContainer.arrangedSubviews {
+            existingIcon.removeFromSuperview()
+        }
+        
+        let iconViews = icons.map(IconView.init(icon:))
+        for iconView in iconViews {
+            iconContainer.addArrangedSubview(iconView)
+        }
     }
 
 }

@@ -2,7 +2,7 @@ import UIKit
 
 public class IconView: UIImageView {
     
-    public enum Icon {
+    public enum Icon: Int {
         
         case favourite
         case artshow
@@ -53,6 +53,7 @@ public class IconView: UIImageView {
             let symbolConfiguration = UIImage.SymbolConfiguration(weight: .medium)
             let image = UIImage(systemName: symbolName, withConfiguration: symbolConfiguration)
             let imageView = UIImageView(image: image)
+            imageView.contentMode = .scaleAspectFit
             imageView.tintColor = tint
             
             return imageView
@@ -68,16 +69,57 @@ public class IconView: UIImageView {
         
     }
     
-    private var iconView: UIView
+    public var icon: Icon {
+        didSet {
+            updateIconView()
+        }
+    }
     
     public init(icon: Icon) {
-        iconView = icon.view
+        self.icon = icon
+        
         super.init(frame: .zero)
         
         backgroundColor = .clear
         isAccessibilityElement = false
         translatesAutoresizingMaskIntoConstraints = false
         
+        setContentHuggingPriority(.required, for: .horizontal)
+        setContentHuggingPriority(.required, for: .vertical)
+        
+        updateIconView()
+    }
+    
+    required init?(coder: NSCoder) {
+        let iconInt = coder.decodeInt32(forKey: "IconView.icon")
+        guard let icon = Icon(rawValue: Int(iconInt)) else { return nil }
+        
+        self.icon = icon
+        
+        super.init(coder: coder)
+        
+        updateIconView()
+    }
+    
+    override public func encode(with coder: NSCoder) {
+        super.encode(with: coder)
+        coder.encode(icon.rawValue, forKey: "IconView.icon")
+    }
+    
+    override public var intrinsicContentSize: CGSize {
+        if let existingView = subviews.first {
+            return existingView.intrinsicContentSize
+        } else {
+            return .zero
+        }
+    }
+    
+    private func updateIconView() {
+        if let existingView = subviews.first {
+            existingView.removeFromSuperview()
+        }
+        
+        let iconView = icon.view
         iconView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(iconView)
         
@@ -87,14 +129,6 @@ public class IconView: UIImageView {
             topAnchor.constraint(equalTo: iconView.topAnchor),
             bottomAnchor.constraint(equalTo: iconView.bottomAnchor)
         ])
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override public var intrinsicContentSize: CGSize {
-        iconView.intrinsicContentSize
     }
     
 }
