@@ -113,7 +113,7 @@ extension AutomationController {
         while textElement.isHittable == false {
             let now = Date()
             if now < upperTimeLimit {
-                table.swipeUp(velocity: 100)
+                table.swipeUp(velocity: 400)
             } else {
                 throw TimedOutFindingText(text: text)
             }
