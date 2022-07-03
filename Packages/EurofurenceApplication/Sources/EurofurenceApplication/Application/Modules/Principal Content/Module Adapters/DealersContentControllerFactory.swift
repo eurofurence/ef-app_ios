@@ -8,7 +8,8 @@ struct DealersContentControllerFactory: ApplicationModuleFactory {
     
     func makeApplicationModuleController() -> UIViewController {
         let viewController = dealersComponentFactory.makeDealersComponent(dealersComponentDelegate)
-        viewController.tabBarItem.image = UIImage(named: "dealers", in: .module, compatibleWith: nil)
+        viewController.tabBarItem.image = UIImage(systemName: "cart", compatibleWith: nil)
+        viewController.tabBarItem.selectedImage = UIImage(systemName: "cart.fill", compatibleWith: nil)
         
         return viewController
     }
