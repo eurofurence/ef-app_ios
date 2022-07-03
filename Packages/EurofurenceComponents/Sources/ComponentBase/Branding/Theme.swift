@@ -47,6 +47,9 @@ public class Theme {
         
         let secondaryColorView = ConventionSecondaryColorView.appearance()
         secondaryColorView.backgroundColor = .secondary
+        
+        let navigationBarColorView = ConventionNavigationBarColorView.appearance()
+        navigationBarColorView.backgroundColor = .navigationBar
     }
 
     private func styleNavigationBars() {
@@ -56,12 +59,12 @@ public class Theme {
         navigationBar.tintColor = .white
         navigationBar.titleTextAttributes = whiteTextAttributes
         navigationBar.setBackgroundImage(UIColor.navigationBar.makePixel(), for: .default)
-        navigationBar.shadowImage = UIColor.navigationBar.makePixel()
         
         let appearance = UINavigationBarAppearance()
         appearance.backgroundColor = .navigationBar
         appearance.titleTextAttributes = whiteTextAttributes
         appearance.largeTitleTextAttributes = whiteTextAttributes
+        appearance.shadowColor = .navigationBar
         
         navigationBar.standardAppearance = appearance
         navigationBar.compactAppearance = appearance
