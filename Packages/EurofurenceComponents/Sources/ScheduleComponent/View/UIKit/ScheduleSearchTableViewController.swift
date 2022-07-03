@@ -28,6 +28,10 @@ class ScheduleSearchTableViewController: UITableViewController {
         let cellName = String(describing: EventTableViewCell.self)
         let cellNib = UINib(nibName: cellName, bundle: .module)
         tableView.register(cellNib, forCellReuseIdentifier: cellName)
+        
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0
+        }
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
