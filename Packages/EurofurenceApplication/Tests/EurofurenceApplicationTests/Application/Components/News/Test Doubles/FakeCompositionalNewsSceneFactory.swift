@@ -12,7 +12,14 @@ class FakeCompositionalNewsSceneFactory: CompositionalNewsSceneFactory {
 
 class FakeCompositionalNewsScene: UIViewController, CompositionalNewsScene {
     
+    enum LoadingIndicatorState: Equatable {
+        case unknown
+        case visible
+        case hidden
+    }
+    
     private(set) var installedDataSources = [TableViewMediator]()
+    private(set) var loadingIndicatorState: LoadingIndicatorState = .unknown
     private var delegate: CompositionalNewsSceneDelegate?
     
     func setDelegate(_ delegate: CompositionalNewsSceneDelegate) {
@@ -23,8 +30,20 @@ class FakeCompositionalNewsScene: UIViewController, CompositionalNewsScene {
         installedDataSources.append(dataSource)
     }
     
+    func showLoadingIndicator() {
+        loadingIndicatorState = .visible
+    }
+    
+    func hideLoadingIndicator() {
+        loadingIndicatorState = .hidden
+    }
+    
     func simulateSceneReady() {
         delegate?.sceneReady()
+    }
+    
+    func simulateRefreshRequested() {
+        delegate?.reloadRequested()
     }
     
 }

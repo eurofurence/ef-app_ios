@@ -3,9 +3,15 @@ import EurofurenceModel
 
 struct CompositionalNewsComponentDefaultWidgetsBuilder {
     
-    let repositories: Repositories
-    let services: Services
-    private let builder = CompositionalNewsComponentBuilder()
+    private let repositories: Repositories
+    private let services: Services
+    private let builder: CompositionalNewsComponentBuilder
+    
+    init(repositories: Repositories, services: Services) {
+        self.repositories = repositories
+        self.services = services
+        self.builder = CompositionalNewsComponentBuilder(refreshService: services.refresh)
+    }
     
     func buildNewsComponent() -> any NewsComponentFactory {
         addPersonalisedWidget()

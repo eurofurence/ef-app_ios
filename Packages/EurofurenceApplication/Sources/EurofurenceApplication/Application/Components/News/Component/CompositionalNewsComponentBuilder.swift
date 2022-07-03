@@ -1,9 +1,13 @@
+import EurofurenceModel
+
 public class CompositionalNewsComponentBuilder {
     
     private var sceneFactory: any CompositionalNewsSceneFactory
     private var widgets = [any NewsWidget]()
+    private let refreshService: any RefreshService
     
-    public init() {
+    public init(refreshService: any RefreshService) {
+        self.refreshService = refreshService
         sceneFactory = DefaultCompositionalNewsSceneFactory()
     }
     
@@ -18,7 +22,11 @@ public class CompositionalNewsComponentBuilder {
     }
     
     public func build() -> any NewsComponentFactory {
-        return CompositionalNewsComponentFactory(sceneFactory: sceneFactory, widgets: widgets)
+        return CompositionalNewsComponentFactory(
+            sceneFactory: sceneFactory,
+            widgets: widgets,
+            refreshService: refreshService
+        )
     }
     
 }

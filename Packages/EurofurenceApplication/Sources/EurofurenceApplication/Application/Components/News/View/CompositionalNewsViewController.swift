@@ -7,11 +7,23 @@ public class CompositionalNewsViewController: UIViewController, CompositionalNew
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: view.bounds)
+        tableView.refreshControl = refreshControl
         tableView.translatesAutoresizingMaskIntoConstraints = false
         Theme.global.apply(to: tableView)
         
         return tableView
     }()
+    
+    private lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl(frame: .zero)
+        refreshControl.addTarget(self, action: #selector(refreshControlValueDidChange(_:)), for: .valueChanged)
+        
+        return refreshControl
+    }()
+    
+    @objc private func refreshControlValueDidChange(_ sender: Any) {
+        delegate?.reloadRequested()
+    }
     
     private var delegate: CompositionalNewsSceneDelegate?
     public func setDelegate(_ delegate: CompositionalNewsSceneDelegate) {
@@ -21,6 +33,14 @@ public class CompositionalNewsViewController: UIViewController, CompositionalNew
     private var dataSources = [any TableViewMediator]()
     public func install(dataSource: TableViewMediator) {
         compositionalDataSource.append(dataSource)
+    }
+    
+    public func showLoadingIndicator() {
+        refreshControl.beginRefreshing()
+    }
+    
+    public func hideLoadingIndicator() {
+        refreshControl.endRefreshing()
     }
     
     override public init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
