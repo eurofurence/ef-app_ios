@@ -104,43 +104,43 @@ class EventDetailViewController: UIViewController, EventDetailScene {
         func makeSponsorsOnlyBannerComponent(
             configuringUsing block: (EventInformationBannerComponent) -> Void
         ) -> UITableViewCell {
-            return makeBannerComponent(text: "", configuration: block)
+            return makeBannerComponent(icons: .sponsor, configuration: block)
         }
 
         func makeSuperSponsorsOnlyBannerComponent(
             configuringUsing block: (EventInformationBannerComponent) -> Void
         ) -> UITableViewCell {
-            return makeBannerComponent(text: "", configuration: block)
+            return makeBannerComponent(icons: .superSponsor, configuration: block)
         }
 
         func makeArtShowBannerComponent(
             configuringUsing block: (EventInformationBannerComponent) -> Void
         ) -> UITableViewCell {
-            return makeBannerComponent(text: "\u{f03e}", configuration: block)
+            return makeBannerComponent(icons: .artshow, configuration: block)
         }
 
         func makeKageBannerComponent(
             configuringUsing block: (EventInformationBannerComponent) -> Void
         ) -> UITableViewCell {
-            return makeBannerComponent(text: "\u{f000}\u{f188}", configuration: block)
+            return makeBannerComponent(icons: .wine, .bug, configuration: block)
         }
 
         func makeDealersDenBannerComponent(
             configuringUsing block: (EventInformationBannerComponent) -> Void
         ) -> UITableViewCell {
-            return makeBannerComponent(text: "\u{f07a}", configuration: block)
+            return makeBannerComponent(icons: .dealersDen, configuration: block)
         }
 
         func makeMainStageBannerComponent(
             configuringUsing block: (EventInformationBannerComponent) -> Void
         ) -> UITableViewCell {
-            return makeBannerComponent(text: "\u{f069}", configuration: block)
+            return makeBannerComponent(icons: .mainStage, configuration: block)
         }
 
         func makePhotoshootBannerComponent(
             configuringUsing block: (EventInformationBannerComponent) -> Void
         ) -> UITableViewCell {
-            return makeBannerComponent(text: "\u{f030}", configuration: block)
+            return makeBannerComponent(icons: .photoshoot, configuration: block)
         }
         
         func makeEventActionBannerComponent(
@@ -164,12 +164,12 @@ class EventDetailViewController: UIViewController, EventDetailScene {
         // MARK: Private
 
         private func makeBannerComponent(
-            text: String,
+            icons: IconView.Icon ...,
             configuration: (EventInformationBannerComponent) -> Void
         ) -> UITableViewCell {
             let cell = tableView.dequeue(EventInformationBannerTableViewCell.self)
             configuration(cell)
-            cell.configureIcon(text: text)
+            cell.configureIcons(icons: icons)
 
             return cell
         }

@@ -264,9 +264,9 @@ public class StarRatingControl: UIControl {
         
         private func updateStarGraphic() {
             if isFilled {
-                image = UIImage(named: "Star_Filled", in: .module, compatibleWith: traitCollection)
+                image = UIImage(systemName: "star", compatibleWith: traitCollection)
             } else {
-                image = UIImage(named: "Star_Empty", in: .module, compatibleWith: traitCollection)
+                image = UIImage(systemName: "star.fill", compatibleWith: traitCollection)
             }
         }
         

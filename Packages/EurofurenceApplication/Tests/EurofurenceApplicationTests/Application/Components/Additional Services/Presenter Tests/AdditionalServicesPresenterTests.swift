@@ -22,7 +22,6 @@ class AdditionalServicesPresenterTests: XCTestCase {
     func testApplyBindsExpectedSceneAttributes() {
         XCTAssertEqual(.services, context.scene.capturedShortTitle)
         XCTAssertEqual(.additionalServices, context.scene.capturedTitle)
-        XCTAssertNotNil(context.scene.capturedIconData)
     }
     
     func testLoadTheAdditionalServiesEndpointFromTheRepository() {

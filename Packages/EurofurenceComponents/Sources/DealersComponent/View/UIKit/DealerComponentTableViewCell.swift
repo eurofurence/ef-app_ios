@@ -1,3 +1,4 @@
+import ComponentBase
 import UIKit
 
 class DealerComponentTableViewCell: UITableViewCell, DealerComponent {
@@ -7,15 +8,16 @@ class DealerComponentTableViewCell: UITableViewCell, DealerComponent {
     @IBOutlet private weak var dealerIconImageView: UIImageView!
     @IBOutlet private weak var dealerTitleLabel: UILabel!
     @IBOutlet private weak var dealerSubtitleLabel: UILabel!
-    @IBOutlet private weak var notAvailableForEntireConferenceWarningView: UILabel!
-    @IBOutlet private weak var containsAfterDarkContentWarningView: UILabel!
-
-    // MARK: Overrides
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-
-        applyFontAwesomeCharacters()
+    @IBOutlet private weak var notAvailableForEntireConferenceWarningView: IconView! {
+        didSet {
+            notAvailableForEntireConferenceWarningView.icon = .warning
+        }
+    }
+    
+    @IBOutlet private weak var containsAfterDarkContentWarningView: IconView! {
+        didSet {
+            containsAfterDarkContentWarningView.icon = .afterDarkDealersDen
+        }
     }
 
     // MARK: DealerComponent
@@ -46,13 +48,6 @@ class DealerComponentTableViewCell: UITableViewCell, DealerComponent {
 
     func hideAfterDarkContentWarning() {
         containsAfterDarkContentWarningView.isHidden = true
-    }
-
-    // MARK: Private
-
-    private func applyFontAwesomeCharacters() {
-        notAvailableForEntireConferenceWarningView.text = "\u{f071}"
-        containsAfterDarkContentWarningView.text = "\u{f186}"
     }
 
 }

@@ -8,7 +8,7 @@ struct ScheduleContentControllerFactory: ApplicationModuleFactory {
     
     func makeApplicationModuleController() -> UIViewController {
         let viewController = scheduleComponentFactory.makeScheduleComponent(scheduleComponentDelegate)
-        viewController.tabBarItem.image = UIImage(named: "Calendar", in: .module, compatibleWith: nil)
+        viewController.tabBarItem.image = UIImage(systemName: "calendar", compatibleWith: nil)
         
         return viewController
     }

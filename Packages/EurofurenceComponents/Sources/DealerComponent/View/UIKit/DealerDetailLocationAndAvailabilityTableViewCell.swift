@@ -1,3 +1,4 @@
+import ComponentBase
 import UIKit
 
 class DealerDetailLocationAndAvailabilityTableViewCell: UITableViewCell, DealerLocationAndAvailabilityComponent {
@@ -7,12 +8,22 @@ class DealerDetailLocationAndAvailabilityTableViewCell: UITableViewCell, DealerL
     @IBOutlet private weak var componentTitleLabel: UILabel!
     @IBOutlet private weak var dealerMapImageView: UIImageView!
     @IBOutlet private weak var limitedAvailabilityWarningContainer: UIStackView!
-    @IBOutlet private weak var limitedAvailabilityIconLabel: UILabel!
     @IBOutlet private weak var limitedAvailabilityWarningLabel: UILabel!
     @IBOutlet private weak var afterDarkInformationContainer: UIStackView!
-    @IBOutlet private weak var afterDarkInformationIconLabel: UILabel!
     @IBOutlet private weak var afterDarkInformationLabel: UILabel!
 
+    @IBOutlet private weak var limitedAvailabilityIcon: IconView! {
+        didSet {
+            limitedAvailabilityIcon.icon = .warning
+        }
+    }
+      
+    @IBOutlet private weak var afterDarkIcon: IconView! {
+        didSet {
+            afterDarkIcon.icon = .afterDarkDealersDen
+        }
+    }
+    
     // MARK: Overrides
 
     override func awakeFromNib() {
@@ -28,9 +39,6 @@ class DealerDetailLocationAndAvailabilityTableViewCell: UITableViewCell, DealerL
 
         dealerMapImageView.layer.borderColor = UIColor.lightGray.cgColor
         dealerMapImageView.layer.borderWidth = 1
-
-        limitedAvailabilityIconLabel.text = "\u{f071}"
-        afterDarkInformationIconLabel.text = "\u{f186}"
     }
 
     // MARK: DealerLocationAndAvailabilityComponent

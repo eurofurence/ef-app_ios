@@ -59,7 +59,8 @@ public class CompositionalNewsViewController: UIViewController, CompositionalNew
     private func installNavigationConfiguration() {
         navigationItem.title = .news
         tabBarItem.title = .news
-        tabBarItem.image = UIImage(named: "News", in: .module, compatibleWith: traitCollection)
+        tabBarItem.image = UIImage(systemName: "newspaper", compatibleWith: traitCollection)
+        tabBarItem.selectedImage = UIImage(systemName: "newspaper.fill", compatibleWith: traitCollection)
     }
     
     private func installTableView() {
