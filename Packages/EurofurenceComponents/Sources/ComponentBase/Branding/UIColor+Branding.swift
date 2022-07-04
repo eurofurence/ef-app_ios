@@ -19,8 +19,8 @@ extension UIColor {
     public static let tabBar = barColor
     public static let searchBarTint = pantone330U
     public static let refreshControl = pantone330U_13
-    public static let selectedTabBarItem = adaptive(light: .white, dark: .pantone330U_45)
-    public static let unselectedTabBarItem = adaptive(light: .pantone330U_45, dark: .darkGray)
+    public static let selectedTabBarItem = adaptive(light: .white, dark: .pantone330U_13)
+    public static let unselectedTabBarItem = adaptive(light: .pantone330U_45, dark: .systemGray3)
     public static let primary = adaptive(light: .pantone330U, dark: .black)
     public static let secondary = adaptive(light: .pantone330U_45, dark: .secondaryDarkColor)
     public static let buttons = pantone330U
