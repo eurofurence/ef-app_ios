@@ -81,7 +81,7 @@ extension UIColor {
         return color
     }
     
-    private static func adaptive(light: UIColor, dark: UIColor) -> UIColor {
+    public static func adaptive(light: UIColor, dark: UIColor) -> UIColor {
         return UIColor(dynamicProvider: { (traitCollection) in
             if traitCollection.userInterfaceStyle == .light {
                 return light
