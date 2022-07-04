@@ -14,12 +14,14 @@ class MessagesPresenter: MessagesSceneDelegate, PrivateMessagesObserver {
     private var currentBinder: MessagesBinder?
 
     // MARK: Initialization
-
-    init(scene: MessagesScene,
-         authenticationService: AuthenticationService,
-         privateMessagesService: PrivateMessagesService,
-         dateFormatter: DateFormatterProtocol,
-         delegate: MessagesComponentDelegate) {
+    
+    init(
+        scene: MessagesScene,
+        authenticationService: AuthenticationService,
+        privateMessagesService: PrivateMessagesService,
+        dateFormatter: DateFormatterProtocol,
+        delegate: MessagesComponentDelegate
+    ) {
         self.scene = scene
         self.authenticationService = authenticationService
         self.privateMessagesService = privateMessagesService
@@ -34,7 +36,6 @@ class MessagesPresenter: MessagesSceneDelegate, PrivateMessagesObserver {
 
     func messagesSceneReady() {
         privateMessagesService.add(self)
-        reloadPrivateMessages()
     }
     
     func messagesSceneFinalizing() {
@@ -83,14 +84,6 @@ class MessagesPresenter: MessagesSceneDelegate, PrivateMessagesObserver {
     }
 
     // MARK: Private
-
-    private func userResolved(_ resolved: Bool) {
-        if resolved {
-            reloadPrivateMessages()
-        } else {
-            delegate.messagesModuleDidRequestDismissal()
-        }
-    }
 
     private func reloadPrivateMessages() {
         scene?.showRefreshIndicator()
