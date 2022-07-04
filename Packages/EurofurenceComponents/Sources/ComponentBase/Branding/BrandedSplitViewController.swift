@@ -61,14 +61,26 @@ public class BrandedSplitViewController: UISplitViewController, UISplitViewContr
         guard navigationController.viewControllers.count > 1 else { return nil }
         guard let lastViewController = navigationController.popViewController(animated: false) else { return nil }
         
-        let separatedViewController: UIViewController
-        if let embeddedNavigationController = lastViewController as? UINavigationController {
-            separatedViewController = embeddedNavigationController
+        let secondaryViewController: UIViewController
+        if lastViewController is PrimaryContentPane {
+            // The terminal view controller should move back into the primary pane of the split view, instead of being
+            // moved into the secondary pane.
+            navigationController.pushViewController(lastViewController, animated: false)
+            
+            // As there are no further children to disclose into the secondary pane, use the placeholder view.
+            let noContentViewController = NoContentPlaceholderViewController.fromStoryboard()
+            secondaryViewController = UINavigationController(rootViewController: noContentViewController)
         } else {
-            separatedViewController = UINavigationController(rootViewController: lastViewController)
+            // The terminal view controller should be shifted into the secondary pane. All preceding children contained
+            // in the navigation view will remain in the priary pane.
+            if let embeddedNavigationController = lastViewController as? UINavigationController {
+                secondaryViewController = embeddedNavigationController
+            } else {
+                secondaryViewController = UINavigationController(rootViewController: lastViewController)
+            }
         }
         
-        return separatedViewController
+        return secondaryViewController
     }
     
     private func isPlaceholderContentController(_ viewController: UIViewController) -> Bool {

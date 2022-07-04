@@ -1,6 +1,7 @@
+import ComponentBase
 import UIKit
 
-class KnowledgeGroupEntriesViewController: UITableViewController, KnowledgeGroupEntriesScene {
+class KnowledgeGroupEntriesViewController: UITableViewController, KnowledgeGroupEntriesScene, PrimaryContentPane {
 
     // MARK: Overrides
 

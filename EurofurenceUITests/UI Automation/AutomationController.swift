@@ -62,6 +62,16 @@ extension AutomationController {
     
 }
 
+// MARK: - Skipping
+
+extension AutomationController {
+    
+    func skipIfTablet(file: StaticString = #file, line: UInt = #line) throws {
+        try XCTSkipIf(isTablet, "Does not apply to iPads", file: file, line: line)
+    }
+    
+}
+
 // MARK: - Selecting Tabs
 
 extension AutomationController {
@@ -130,6 +140,21 @@ extension AutomationController {
         default:
             return 400
         }
+    }
+    
+}
+
+// MARK: - Assertions
+
+extension AutomationController {
+    
+    func assertPlaceholderVisible(file: StaticString = #file, line: UInt = #line) {
+        XCTAssert(
+            app.images["org.eurofurence.NoContentPlaceholder"].exists,
+            "Placeholder view should be visible",
+            file: file,
+            line: line
+        )
     }
     
 }
