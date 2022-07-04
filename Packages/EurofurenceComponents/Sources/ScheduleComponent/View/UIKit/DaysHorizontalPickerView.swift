@@ -36,10 +36,6 @@ class DaysHorizontalPickerView: UIView {
                                   scrollPosition: .centeredHorizontally)
     }
     
-    func forceLayout() {
-        collectionView.collectionViewLayout.invalidateLayout()
-    }
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUp()
@@ -48,6 +44,12 @@ class DaysHorizontalPickerView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setUp()
+    }
+    
+    override var bounds: CGRect {
+        didSet {
+            collectionView.collectionViewLayout.invalidateLayout()
+        }
     }
     
     private func setUp() {
@@ -69,15 +71,12 @@ class DaysHorizontalPickerView: UIView {
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
-        
-        forceLayout()
     }
     
     private var daysController: DaysController? {
         didSet {
             collectionView.dataSource = daysController
             collectionView.delegate = daysController
-            forceLayout()
         }
     }
     
