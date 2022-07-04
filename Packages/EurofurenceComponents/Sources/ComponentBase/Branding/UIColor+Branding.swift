@@ -32,6 +32,7 @@ extension UIColor {
     public static let unselectedSegmentText = adaptive(light: .white, dark: .white)
     public static let unselectedSegmentBackground = adaptive(light: .pantone330U_45, dark: .safeSystemGray3)
     public static let segmentSeperator = adaptive(light: .white, dark: .safeSystemGray)
+    public static let dayPickerSelectedBackground = adaptive(light: .pantone330U_45, dark: .systemGray3)
     public static let safariBarTint = navigationBar
     public static let safariControlTint = white
     public static let userPrompt = adaptive(

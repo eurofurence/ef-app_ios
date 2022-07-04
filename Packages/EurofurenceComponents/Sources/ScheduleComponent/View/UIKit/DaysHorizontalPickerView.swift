@@ -14,6 +14,7 @@ class DaysHorizontalPickerView: UIView {
         collectionViewLayout.minimumInteritemSpacing = 0
         collectionViewLayout.minimumLineSpacing = 0
         collectionViewLayout.scrollDirection = .horizontal
+        collectionViewLayout.sectionInset = UIEdgeInsets(top: 0, left: 14, bottom: 0, right: 14)
         
         let smallFrameSoCollectionViewWillLayout = CGRect(x: 0, y: 0, width: 1, height: 1)
         
@@ -31,9 +32,11 @@ class DaysHorizontalPickerView: UIView {
     }
     
     func selectDay(at index: Int) {
-        collectionView.selectItem(at: IndexPath(item: index, section: 0),
-                                  animated: true,
-                                  scrollPosition: .centeredHorizontally)
+        collectionView.selectItem(
+            at: IndexPath(item: index, section: 0),
+            animated: true,
+            scrollPosition: .centeredHorizontally
+        )
     }
     
     override init(frame: CGRect) {
@@ -55,6 +58,7 @@ class DaysHorizontalPickerView: UIView {
     private func setUp() {
         backgroundColor = .clear
         collectionView.backgroundColor = .clear
+        collectionView.clipsToBounds = false
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -116,14 +120,16 @@ class DaysHorizontalPickerView: UIView {
         ) -> CGSize {
             let availableWidth = collectionView.safeAreaLayoutGuide.layoutFrame.width
             
-            let sensibleMinimumWidth: CGFloat = 64
+            let sensibleMinimumWidth: CGFloat = 84
             let numberOfItems = collectionView.numberOfItems(inSection: indexPath.section)
             let itemWidth = max(sensibleMinimumWidth, availableWidth / CGFloat(numberOfItems))
+            let itemHeight = max(0, collectionView.bounds.height - 8)
             
-            return CGSize(width: itemWidth, height: collectionView.bounds.height)
+            return CGSize(width: itemWidth, height: itemHeight)
         }
         
         func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+            collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
             onDaySelected(indexPath.item)
         }
         
