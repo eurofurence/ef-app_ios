@@ -17,7 +17,11 @@ class EndToEndAnnouncementsWidgetTests: XCTestCase {
         
         let widget = MVVMWidget(viewModelFactory: viewModelFactory, viewFactory: AnnouncementsNewsWidgetViewFactory())
         let sceneFactory = FakeCompositionalNewsSceneFactory()
-        let componentFactory = CompositionalNewsComponentBuilder().with(sceneFactory).with(widget).build()
+        let componentFactory = CompositionalNewsComponentBuilder(refreshService: CapturingRefreshService())
+            .with(sceneFactory)
+            .with(widget)
+            .build()
+        
         let delegate = CapturingNewsComponentDelegate()
         _ = componentFactory.makeNewsComponent(delegate)
         sceneFactory.scene.simulateSceneReady()
@@ -39,7 +43,11 @@ class EndToEndAnnouncementsWidgetTests: XCTestCase {
         
         let widget = MVVMWidget(viewModelFactory: viewModelFactory, viewFactory: AnnouncementsNewsWidgetViewFactory())
         let sceneFactory = FakeCompositionalNewsSceneFactory()
-        let componentFactory = CompositionalNewsComponentBuilder().with(sceneFactory).with(widget).build()
+        let componentFactory = CompositionalNewsComponentBuilder(refreshService: CapturingRefreshService())
+            .with(sceneFactory)
+            .with(widget)
+            .build()
+        
         let delegate = CapturingNewsComponentDelegate()
         _ = componentFactory.makeNewsComponent(delegate)
         sceneFactory.scene.simulateSceneReady()

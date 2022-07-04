@@ -1,5 +1,6 @@
 import EurofurenceApplication
 import XCTest
+import XCTEurofurenceModel
 
 class EndToEndYourEurofurenceWidgetTests: XCTestCase {
     
@@ -8,7 +9,11 @@ class EndToEndYourEurofurenceWidgetTests: XCTestCase {
         let viewModelFactory = YourEurofurenceWidgetViewModelFactory(dataSource: dataSource)
         let widget = MVVMWidget(viewModelFactory: viewModelFactory, viewFactory: YourEurofurenceWidgetViewFactory())
         let sceneFactory = FakeCompositionalNewsSceneFactory()
-        let componentFactory = CompositionalNewsComponentBuilder().with(sceneFactory).with(widget).build()
+        let componentFactory = CompositionalNewsComponentBuilder(refreshService: CapturingRefreshService())
+            .with(sceneFactory)
+            .with(widget)
+            .build()
+        
         let delegate = CapturingNewsComponentDelegate()
         _ = componentFactory.makeNewsComponent(delegate)
         sceneFactory.scene.simulateSceneReady()

@@ -12,13 +12,19 @@ public extension ModelCharacteristics {
         let tracks = [TrackCharacteristics].random
         let days = [ConferenceDayCharacteristics].random
         let events = (0...Int.random(upperLimit: 3) + 2).map { (_) -> EventCharacteristics in
-            let eventStartTime: Date = .random
+            let randomDay = days.randomElement().element
+            
+            let secondsInDay: TimeInterval = 60 * 60 * 24
+            let randomStartTimeOffset: TimeInterval = .random(in: 0..<secondsInDay)
+            let eventStartTime: Date = randomDay.date.addingTimeInterval(randomStartTimeOffset)
+            let eventEndTime: Date = eventStartTime.addingTimeInterval(.random(in: 0..<(60 * 60 * 2)))
+            
             return EventCharacteristics(identifier: .random,
                                         roomIdentifier: rooms.randomElement().element.identifier,
                                         trackIdentifier: tracks.randomElement().element.identifier,
-                                        dayIdentifier: days.randomElement().element.identifier,
+                                        dayIdentifier: randomDay.identifier,
                                         startDateTime: eventStartTime,
-                                        endDateTime: eventStartTime.addingTimeInterval(.random),
+                                        endDateTime: eventEndTime,
                                         title: .random,
                                         subtitle: .random,
                                         abstract: .random,

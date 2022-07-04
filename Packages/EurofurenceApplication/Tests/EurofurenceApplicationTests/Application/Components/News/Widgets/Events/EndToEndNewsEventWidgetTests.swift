@@ -17,7 +17,11 @@ class EndToEndNewsEventWidgetTests: XCTestCase {
         let sceneFactory = FakeCompositionalNewsSceneFactory()
         let widget = MVVMWidget(viewModelFactory: viewModelFactory, viewFactory: TableViewNewsWidgetViewFactory())
         
-        let componentFactory = CompositionalNewsComponentBuilder().with(sceneFactory).with(widget).build()
+        let componentFactory = CompositionalNewsComponentBuilder(refreshService: CapturingRefreshService())
+            .with(sceneFactory)
+            .with(widget)
+            .build()
+        
         let delegate = CapturingNewsComponentDelegate()
         _ = componentFactory.makeNewsComponent(delegate)
         sceneFactory.scene.simulateSceneReady()

@@ -61,6 +61,10 @@ class CompositionalNewsViewControllerTests: XCTestCase {
             isSceneReady = true
         }
         
+        func reloadRequested() {
+            
+        }
+        
     }
     
 }

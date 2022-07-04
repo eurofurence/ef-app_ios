@@ -19,9 +19,6 @@ public class ScheduleViewController: UIViewController,
     }
     
     private let refreshControl = UIRefreshControl(frame: .zero)
-    private lazy var navigationBarShadowDelegate = HideNavigationBarShadowForSpecificViewControllerDelegate(
-        viewControllerToHideNavigationBarShadow: self
-    )
     
     private var tableController: TableController? {
         didSet {
@@ -54,20 +51,11 @@ public class ScheduleViewController: UIViewController,
         
         extendedLayoutIncludesOpaqueBars = true
         
-        if let navigationBarAppearance = navigationController?.navigationBar.standardAppearance {
-            navigationBarAppearance.shadowColor = .navigationBar
-            navigationController?.navigationBar.standardAppearance = navigationBarAppearance
-            navigationController?.navigationBar.compactAppearance = navigationBarAppearance
-            navigationController?.navigationBar.scrollEdgeAppearance = navigationBarAppearance
-        }
-        
         Theme.global.apply(to: tableView)
         tableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refreshControlDidChangeValue), for: .valueChanged)
         
         prepareSearchController()
-        
-        navigationController?.delegate = navigationBarShadowDelegate
         
         let cellName = String(describing: EventTableViewCell.self)
         let cellNib = UINib(nibName: cellName, bundle: .module)

@@ -29,6 +29,10 @@ class DealersSearchTableViewController: UITableViewController {
         tableView.register(cellNib, forCellReuseIdentifier: cellName)
         
         tableView.registerConventionBrandedHeader()
+        
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0
+        }
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {

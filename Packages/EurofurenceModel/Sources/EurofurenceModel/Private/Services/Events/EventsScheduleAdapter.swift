@@ -1,23 +1,5 @@
 import Foundation
 
-private protocol EventFilter {
-
-    func shouldFilter(event: EventImpl) -> Bool
-
-}
-
-extension Day: Comparable {
-
-    public static func == (lhs: Day, rhs: Day) -> Bool {
-        return lhs.date == rhs.date
-    }
-
-    public static func < (lhs: Day, rhs: Day) -> Bool {
-        return lhs.date < rhs.date
-    }
-
-}
-
 class EventsScheduleAdapter: Schedule, CustomStringConvertible {
 
     private let tag: String
@@ -25,21 +7,10 @@ class EventsScheduleAdapter: Schedule, CustomStringConvertible {
     private let clock: Clock
     private var events = [EurofurenceModel.Event]()
     private var days = [Day]()
-    private var filters = [EventFilter]()
     private var currentDay: Day? {
         didSet {
             delegate?.currentEventDayDidChange(to: currentDay)
         }
-    }
-
-    private struct DayRestrictionFilter: EventFilter {
-
-        var day: ConferenceDayCharacteristics
-
-        func shouldFilter(event: EventImpl) -> Bool {
-            return event.day.identifier == day.identifier
-        }
-
     }
 
     private class UpdateCurrentDayWhenTimePasses: EventConsumer {
@@ -133,8 +104,7 @@ class EventsScheduleAdapter: Schedule, CustomStringConvertible {
     }
 
     func restrictEvents(to day: Day) {
-        guard let day = findDay(for: day.date) else { return }
-        restrictScheduleToEvents(on: day)
+        
     }
     
     private var specification: AnySpecification<Event>?
@@ -144,19 +114,6 @@ class EventsScheduleAdapter: Schedule, CustomStringConvertible {
         
         events = schedule.eventModels.filter(specification.isSatisfied(by:))
         delegate?.scheduleEventsDidChange(to: events)
-    }
-
-    private func restrictScheduleToEvents(on day: ConferenceDayCharacteristics) {
-        if let idx = filters.firstIndex(where: { $0 is DayRestrictionFilter }) {
-            guard let filter = filters[idx] as? DayRestrictionFilter else { return }
-            guard filter.day != day else { return }
-            filters.remove(at: idx)
-        }
-
-        let filter = DayRestrictionFilter(day: day)
-        filters.append(filter)
-
-        regenerateSchedule()
     }
 
     private func updateCurrentDay() {
@@ -174,10 +131,6 @@ class EventsScheduleAdapter: Schedule, CustomStringConvertible {
         let previousResults = events.map(\.identifier)
         
         var allEvents = schedule.eventModels
-        filters.forEach { (filter) in
-            allEvents = allEvents.filter(filter.shouldFilter)
-        }
-
         if let specification = specification {
             allEvents = allEvents.filter(specification.isSatisfied(by:))
         }
@@ -215,10 +168,6 @@ class EventsScheduleAdapter: Schedule, CustomStringConvertible {
         if days != schedule.dayModels {
             self.days = schedule.dayModels
             updateDelegateWithAllDays()
-        }
-
-        if filters.contains(where: { $0 is DayRestrictionFilter }) == false {
-            updateCurrentDay()
         }
     }
 

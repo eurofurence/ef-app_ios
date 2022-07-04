@@ -113,13 +113,23 @@ extension AutomationController {
         while textElement.isHittable == false {
             let now = Date()
             if now < upperTimeLimit {
-                table.swipeUp(velocity: 400)
+                table.swipeUp(velocity: verticalSwipeVelocity)
             } else {
                 throw TimedOutFindingText(text: text)
             }
         }
         
         textElement.tap()
+    }
+    
+    private var verticalSwipeVelocity: XCUIGestureVelocity {
+        switch XCUIDevice.shared.orientation {
+        case .landscapeLeft, .landscapeRight:
+            return 250
+            
+        default:
+            return 400
+        }
     }
     
 }

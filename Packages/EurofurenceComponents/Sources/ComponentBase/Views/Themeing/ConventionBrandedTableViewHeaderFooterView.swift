@@ -15,7 +15,7 @@ public class ConventionBrandedTableViewHeaderFooterView: UITableViewHeaderFooter
     }
     
     private func setUp() {
-        backgroundView = ConventionSecondaryColorView()
+        backgroundView = ConventionNavigationBarColorView()
     }
     
 }

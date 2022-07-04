@@ -13,7 +13,7 @@ class WhenRestrictingEventsToSpecificDay_ScheduleShould: XCTestCase {
         schedule.setDelegate(delegate)
         let randomDay = response.conferenceDays.changed.randomElement()
         let expectedEvents = response.events.changed.filter({ $0.dayIdentifier == randomDay.element.identifier })
-        schedule.restrictEvents(to: Day(date: randomDay.element.date))
+        schedule.filterSchedule(to: EventsOccurringOnDaySpecification(day: Day(date: randomDay.element.date)))
 
         try EventAssertion(context: context, modelCharacteristics: response)
             .assertEvents(delegate.events, characterisedBy: expectedEvents)
@@ -27,7 +27,7 @@ class WhenRestrictingEventsToSpecificDay_ScheduleShould: XCTestCase {
         let delegate = CapturingScheduleDelegate()
         let randomDay = response.conferenceDays.changed.randomElement()
         let expectedEvents = response.events.changed.filter({ $0.dayIdentifier == randomDay.element.identifier })
-        schedule.restrictEvents(to: Day(date: randomDay.element.date))
+        schedule.filterSchedule(to: EventsOccurringOnDaySpecification(day: Day(date: randomDay.element.date)))
         context.refreshLocalStore()
         context.api.simulateSuccessfulSync(response)
         schedule.setDelegate(delegate)
@@ -46,8 +46,8 @@ class WhenRestrictingEventsToSpecificDay_ScheduleShould: XCTestCase {
         let randomDay = response.conferenceDays.changed.randomElement()
         let anotherRandomDay = response.conferenceDays.changed.randomElement()
         let expectedEvents = response.events.changed.filter({ $0.dayIdentifier == randomDay.element.identifier })
-        schedule.restrictEvents(to: Day(date: anotherRandomDay.element.date))
-        schedule.restrictEvents(to: Day(date: randomDay.element.date))
+        schedule.filterSchedule(to: EventsOccurringOnDaySpecification(day: Day(date: anotherRandomDay.element.date)))
+        schedule.filterSchedule(to: EventsOccurringOnDaySpecification(day: Day(date: randomDay.element.date)))
 
         try EventAssertion(context: context, modelCharacteristics: response)
             .assertEvents(delegate.events, characterisedBy: expectedEvents)

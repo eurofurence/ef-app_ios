@@ -1,11 +1,13 @@
 import EurofurenceApplication
 import XCTest
+import XCTEurofurenceModel
 
 class CompositionalNewsComponentBuilderTests: XCTestCase {
     
     func testProducesSceneFromFactory() {
+        let refreshService = CapturingRefreshService()
         let sceneFactory = FakeCompositionalNewsSceneFactory()
-        let builder = CompositionalNewsComponentBuilder()
+        let builder = CompositionalNewsComponentBuilder(refreshService: refreshService)
             .with(sceneFactory)
         
         let delegate = CapturingNewsComponentDelegate()
@@ -15,9 +17,10 @@ class CompositionalNewsComponentBuilderTests: XCTestCase {
     }
     
     func testInstallsWidgetsIntoSceneInDesignatedOrder() {
+        let refreshService = CapturingRefreshService()
         let sceneFactory = FakeCompositionalNewsSceneFactory()
         let (firstWidget, secondWidget) = (FakeNewsWidget(), FakeNewsWidget())
-        let builder = CompositionalNewsComponentBuilder()
+        let builder = CompositionalNewsComponentBuilder(refreshService: refreshService)
             .with(sceneFactory)
             .with(firstWidget)
             .with(secondWidget)
@@ -34,9 +37,10 @@ class CompositionalNewsComponentBuilderTests: XCTestCase {
     }
     
     func testWaitsUntilSceneReadyBeforeInstallingWidgets() {
+        let refreshService = CapturingRefreshService()
         let sceneFactory = FakeCompositionalNewsSceneFactory()
         let widget = FakeNewsWidget()
-        let builder = CompositionalNewsComponentBuilder()
+        let builder = CompositionalNewsComponentBuilder(refreshService: refreshService)
             .with(sceneFactory)
             .with(widget)
         
@@ -46,6 +50,58 @@ class CompositionalNewsComponentBuilderTests: XCTestCase {
         let installedWidgets = sceneFactory.scene.installedDataSources.isEmpty
         
         XCTAssertTrue(installedWidgets, "Should wait until scene ready before installing widgets")
+    }
+    
+    func testTellRefreshServiceToBeginRefreshingWhenSceneRequestsIt() {
+        let refreshService = CapturingRefreshService()
+        let sceneFactory = FakeCompositionalNewsSceneFactory()
+        let builder = CompositionalNewsComponentBuilder(refreshService: refreshService)
+            .with(sceneFactory)
+        
+        let delegate = CapturingNewsComponentDelegate()
+        _ = builder.build().makeNewsComponent(delegate)
+        
+        sceneFactory.scene.simulateSceneReady()
+        
+        XCTAssertFalse(refreshService.toldToRefresh, "Should not begin refreshing until scene requests it")
+        
+        sceneFactory.scene.simulateRefreshRequested()
+        
+        XCTAssertTrue(refreshService.toldToRefresh, "Should begin refreshing when the scene requests it")
+    }
+    
+    func testControlSceneRefreshIndicatorVisibilityDuringRefresh() {
+        let refreshService = CapturingRefreshService()
+        let sceneFactory = FakeCompositionalNewsSceneFactory()
+        let builder = CompositionalNewsComponentBuilder(refreshService: refreshService)
+            .with(sceneFactory)
+        
+        let delegate = CapturingNewsComponentDelegate()
+        _ = builder.build().makeNewsComponent(delegate)
+        
+        sceneFactory.scene.simulateSceneReady()
+        
+        XCTAssertEqual(
+            .unknown,
+            sceneFactory.scene.loadingIndicatorState,
+            "Loading indicator should not be told to show or hide until the service propogates its state"
+        )
+        
+        refreshService.simulateRefreshBegan()
+        
+        XCTAssertEqual(
+            .visible,
+            sceneFactory.scene.loadingIndicatorState,
+            "Loading indicator should be visible while refresh is active"
+        )
+        
+        refreshService.simulateRefreshFinished()
+        
+        XCTAssertEqual(
+            .hidden,
+            sceneFactory.scene.loadingIndicatorState,
+            "Loading indicator should be hidden when refresh concludes"
+        )
     }
     
     private struct FakeNewsWidget: NewsWidget {
