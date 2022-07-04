@@ -10,7 +10,6 @@ public class NoContentPlaceholderViewController: UIViewController {
     @IBOutlet private weak var placeholderImageView: UIImageView! {
         didSet {
             placeholderImageView.accessibilityIdentifier = "org.eurofurence.NoContentPlaceholder"
-            placeholderImageView.tintColor = .placeholder
         }
     }
     

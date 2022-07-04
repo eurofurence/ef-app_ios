@@ -4,7 +4,6 @@ extension UIColor {
     
     // MARK: Branding Colors
     
-    public static let placeholder = adaptive(light: .pantone330U, dark: safeSystemGray2)
     public static let pantone330U = unsafelyNamed("Pantone 330U")
     public static let pantone330U_45 = unsafelyNamed("Pantone 330U (45%)")
     public static let pantone330U_26 = unsafelyNamed("Pantone 330U (26%)")
