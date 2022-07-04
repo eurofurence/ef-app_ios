@@ -92,6 +92,7 @@
 		CAB4E9182662704500EFE882 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CAB4E91126626F7100EFE882 /* Intents.intentdefinition */; settings = {ATTRIBUTES = (no_codegen, ); }; };
 		CAB4E9192662704600EFE882 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CAB4E91126626F7100EFE882 /* Intents.intentdefinition */; settings = {ATTRIBUTES = (no_codegen, ); }; };
 		CAB4E91A2662705100EFE882 /* EurofurenceKit.h in Headers */ = {isa = PBXBuildFile; fileRef = CAB4E91226626F7100EFE882 /* EurofurenceKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CAB7ABC928730E230037ACFB /* KnowledgeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB7ABC828730E230037ACFB /* KnowledgeTests.swift */; };
 		CABBCA162565B153007A11A2 /* EventCategory+Intent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABBCA152565B153007A11A2 /* EventCategory+Intent.swift */; };
 		CABBCA302566FE0B007A11A2 /* SplitViewDetailBugTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABBCA2F2566FE0B007A11A2 /* SplitViewDetailBugTests.swift */; };
 		CAC22AE325FEB7A7004E0587 /* EurofurenceApplication in Frameworks */ = {isa = PBXBuildFile; productRef = CAC22AE225FEB7A7004E0587 /* EurofurenceApplication */; };
@@ -326,6 +327,7 @@
 		CAB4E91126626F7100EFE882 /* Intents.intentdefinition */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.intentdefinition; path = Intents.intentdefinition; sourceTree = "<group>"; };
 		CAB4E91226626F7100EFE882 /* EurofurenceKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EurofurenceKit.h; sourceTree = "<group>"; };
 		CAB4E91326626F7100EFE882 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CAB7ABC828730E230037ACFB /* KnowledgeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeTests.swift; sourceTree = "<group>"; };
 		CABBCA152565B153007A11A2 /* EventCategory+Intent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventCategory+Intent.swift"; sourceTree = "<group>"; };
 		CABBCA2F2566FE0B007A11A2 /* SplitViewDetailBugTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewDetailBugTests.swift; sourceTree = "<group>"; };
 		CACD371F25650BC400C23041 /* EurofurenceModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EurofurenceModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -753,6 +755,7 @@
 				CAF255112517FE81008892ED /* DealerDetailTests.swift */,
 				CA26503C25F7D3EB0080F132 /* DealerSearchTests.swift */,
 				CAF2552E251A6DC4008892ED /* EventDetailTests.swift */,
+				CAB7ABC828730E230037ACFB /* KnowledgeTests.swift */,
 				CAF254AC2517F983008892ED /* LaunchPerformanceTest.swift */,
 				CABBCA2F2566FE0B007A11A2 /* SplitViewDetailBugTests.swift */,
 				CAF254FD2517FB47008892ED /* UI Automation */,
@@ -1360,6 +1363,7 @@
 			files = (
 				CAF254FF2517FB65008892ED /* AutomationController.swift in Sources */,
 				CAF25568251A8774008892ED /* UIAutomationTestCase.swift in Sources */,
+				CAB7ABC928730E230037ACFB /* KnowledgeTests.swift in Sources */,
 				CAF2552F251A6DC4008892ED /* EventDetailTests.swift in Sources */,
 				CA26503D25F7D3EB0080F132 /* DealerSearchTests.swift in Sources */,
 				CAF254AD2517F983008892ED /* LaunchPerformanceTest.swift in Sources */,

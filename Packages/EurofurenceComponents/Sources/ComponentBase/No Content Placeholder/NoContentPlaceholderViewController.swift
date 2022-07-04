@@ -7,11 +7,11 @@ public class NoContentPlaceholderViewController: UIViewController {
         return storyboard.instantiate(NoContentPlaceholderViewController.self)
     }
     
-    @IBOutlet private weak var placeholderImageView: UIImageView!
-    
-    override public func viewDidLoad() {
-        super.viewDidLoad()
-        placeholderImageView.tintColor = .placeholder
+    @IBOutlet private weak var placeholderImageView: UIImageView! {
+        didSet {
+            placeholderImageView.accessibilityIdentifier = "org.eurofurence.NoContentPlaceholder"
+            placeholderImageView.tintColor = .placeholder
+        }
     }
     
 }
