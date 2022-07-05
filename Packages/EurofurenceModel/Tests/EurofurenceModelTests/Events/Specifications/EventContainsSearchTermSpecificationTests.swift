@@ -28,4 +28,12 @@ class EventContainsSearchTermSpecificationTests: XCTestCase {
         XCTAssertTrue(specification.isSatisfied(by: event), "Title contains the word in a different case in the query")
     }
     
+    func testEmptyQueryMatchesTitle() {
+        let specification = EventContainsSearchTermSpecification(query: "")
+        let event = FakeEvent.random
+        event.title = "Fursuit Walk"
+        
+        XCTAssertTrue(specification.isSatisfied(by: event), "Empty query should match any title")
+    }
+    
 }

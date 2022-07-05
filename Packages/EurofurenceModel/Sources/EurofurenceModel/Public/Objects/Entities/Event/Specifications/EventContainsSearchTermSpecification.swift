@@ -15,7 +15,11 @@ extension EventContainsSearchTermSpecification: Specification {
     public typealias Element = Event
     
     public func isSatisfied(by element: Element) -> Bool {
-        element.title.localizedCaseInsensitiveContains(query)
+        if query.isEmpty {
+            return true
+        } else {
+            return element.title.localizedCaseInsensitiveContains(query)
+        }
     }
     
 }
