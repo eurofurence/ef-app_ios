@@ -39,10 +39,6 @@ public class KnowledgeListViewController: UIViewController, KnowledgeListScene {
         tableView.reloadData()
     }
 
-    public func deselectKnowledgeEntry(at indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-
     // MARK: Overrides
 
     override public func viewDidLoad() {
@@ -56,11 +52,6 @@ public class KnowledgeListViewController: UIViewController, KnowledgeListScene {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.sectionHeaderHeight = UITableView.automaticDimension
         delegate?.knowledgeListSceneDidLoad()
-    }
-    
-    override public func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        tableView.deselectSelectedRow()
     }
     
     override public func viewDidLayoutSubviews() {

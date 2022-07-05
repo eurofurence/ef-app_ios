@@ -31,7 +31,6 @@ class KnowledgeGroupsListPresenter: KnowledgeListSceneDelegate, KnowledgeGroupsL
     }
 
     func knowledgeListSceneDidSelectKnowledgeGroup(at groupIndex: Int) {
-        scene.deselectKnowledgeEntry(at: IndexPath(item: groupIndex, section: 0))
         viewModel?.describeContentsOfKnowledgeItem(at: groupIndex, visitor: viewModelContentVisitor)
     }
 

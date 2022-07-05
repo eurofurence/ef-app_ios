@@ -59,24 +59,31 @@ public class BrandedSplitViewController: UISplitViewController, UISplitViewContr
     ) -> UIViewController? {
         guard let navigationController = primaryViewController as? UINavigationController else { return nil }
         guard navigationController.viewControllers.count > 1 else { return nil }
-        guard let lastViewController = navigationController.popViewController(animated: false) else { return nil }
+        guard let lastViewController = navigationController.viewControllers.last else { return nil }
         
         let secondaryViewController: UIViewController
         if lastViewController is PrimaryContentPane {
             // The terminal view controller should move back into the primary pane of the split view, instead of being
             // moved into the secondary pane.
-            navigationController.pushViewController(lastViewController, animated: false)
-            
             // As there are no further children to disclose into the secondary pane, use the placeholder view.
             let noContentViewController = NoContentPlaceholderViewController.fromStoryboard()
             secondaryViewController = UINavigationController(rootViewController: noContentViewController)
         } else {
             // The terminal view controller should be shifted into the secondary pane. All preceding children contained
-            // in the navigation view will remain in the priary pane.
-            if let embeddedNavigationController = lastViewController as? UINavigationController {
-                secondaryViewController = embeddedNavigationController
+            // in the navigation view will remain in the primary pane.
+            let terminalViewController: UIViewController?
+            if let brandedNavigationController = navigationController as? BrandedNavigationController {
+                terminalViewController = brandedNavigationController.popLastWithoutClearingSelection()
             } else {
-                secondaryViewController = UINavigationController(rootViewController: lastViewController)
+                terminalViewController = navigationController.popViewController(animated: false)
+            }
+            
+            guard let viewControllerToShift = terminalViewController else { return nil }
+            
+            if viewControllerToShift is UINavigationController {
+                secondaryViewController = viewControllerToShift
+            } else {
+                secondaryViewController = UINavigationController(rootViewController: viewControllerToShift)
             }
         }
         
