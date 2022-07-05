@@ -67,7 +67,6 @@ public class ScheduleViewController: UIViewController,
     
     override public func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        layoutDaysCollectionView()
         tableView?.setEditing(false, animated: false)
     }
     
@@ -80,7 +79,6 @@ public class ScheduleViewController: UIViewController,
         super.viewWillAppear(animated)
         
         tableView.deselectSelectedRow()
-        layoutDaysCollectionView()
     }
     
     private func prepareSearchController() {
@@ -219,10 +217,6 @@ public class ScheduleViewController: UIViewController,
     
     private func scheduleTableViewDidSelectRow(_ indexPath: IndexPath) {
         delegate?.scheduleSceneDidSelectEvent(at: indexPath)
-    }
-    
-    private func layoutDaysCollectionView() {
-        daysHorizontalPickerView?.forceLayout()
     }
     
     private func resetSearchSceneForSearchingAllEvents() {

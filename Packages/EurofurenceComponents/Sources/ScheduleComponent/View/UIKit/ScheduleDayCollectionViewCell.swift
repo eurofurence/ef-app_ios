@@ -1,3 +1,4 @@
+import ComponentBase
 import UIKit
 
 class ScheduleDayCollectionViewCell: UICollectionViewCell, ScheduleDayComponent {
@@ -13,18 +14,26 @@ class ScheduleDayCollectionViewCell: UICollectionViewCell, ScheduleDayComponent 
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        selectedDecorationView.backgroundColor = .dayPickerSelectedBackground
         updateSelectionStateAppearence()
+    }
+    
+    override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
+        super.apply(layoutAttributes)
+        
+        let height = layoutAttributes.frame.height
+        let cornerRadius = height / 2
+        selectedDecorationView.layer.cornerRadius = cornerRadius
     }
 
     private func updateSelectionStateAppearence() {
         selectedDecorationView.alpha = isSelected ? 1 : 0
 
-        let font: UIFont = {
+        dayTitleLabel.font = {
             let size = UIFont.preferredFont(forTextStyle: .footnote).pointSize
             return isSelected ? UIFont.boldSystemFont(ofSize: size) : UIFont.systemFont(ofSize: size)
         }()
-
-        dayTitleLabel.font = font
     }
 
     func setDayTitle(_ title: String) {

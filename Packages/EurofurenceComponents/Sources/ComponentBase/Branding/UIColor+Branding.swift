@@ -4,7 +4,6 @@ extension UIColor {
     
     // MARK: Branding Colors
     
-    public static let placeholder = adaptive(light: .pantone330U, dark: safeSystemGray2)
     public static let pantone330U = unsafelyNamed("Pantone 330U")
     public static let pantone330U_45 = unsafelyNamed("Pantone 330U (45%)")
     public static let pantone330U_26 = unsafelyNamed("Pantone 330U (26%)")
@@ -20,8 +19,8 @@ extension UIColor {
     public static let tabBar = barColor
     public static let searchBarTint = pantone330U
     public static let refreshControl = pantone330U_13
-    public static let selectedTabBarItem = adaptive(light: .white, dark: .pantone330U_45)
-    public static let unselectedTabBarItem = adaptive(light: .pantone330U_45, dark: .darkGray)
+    public static let selectedTabBarItem = adaptive(light: .white, dark: .pantone330U_13)
+    public static let unselectedTabBarItem = adaptive(light: .pantone330U_45, dark: .systemGray3)
     public static let primary = adaptive(light: .pantone330U, dark: .black)
     public static let secondary = adaptive(light: .pantone330U_45, dark: .secondaryDarkColor)
     public static let buttons = pantone330U
@@ -33,6 +32,7 @@ extension UIColor {
     public static let unselectedSegmentText = adaptive(light: .white, dark: .white)
     public static let unselectedSegmentBackground = adaptive(light: .pantone330U_45, dark: .safeSystemGray3)
     public static let segmentSeperator = adaptive(light: .white, dark: .safeSystemGray)
+    public static let dayPickerSelectedBackground = adaptive(light: .pantone330U_45, dark: .systemGray3)
     public static let safariBarTint = navigationBar
     public static let safariControlTint = white
     public static let userPrompt = adaptive(
@@ -81,7 +81,7 @@ extension UIColor {
         return color
     }
     
-    private static func adaptive(light: UIColor, dark: UIColor) -> UIColor {
+    public static func adaptive(light: UIColor, dark: UIColor) -> UIColor {
         return UIColor(dynamicProvider: { (traitCollection) in
             if traitCollection.userInterfaceStyle == .light {
                 return light

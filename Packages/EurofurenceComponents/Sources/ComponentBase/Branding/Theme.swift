@@ -78,12 +78,27 @@ public class Theme {
         tabBar.tintColor = .selectedTabBarItem
         tabBar.unselectedItemTintColor = .unselectedTabBarItem
         
-        let backgroundAppearance = UITabBarAppearance()
-        backgroundAppearance.backgroundColor = .tabBar
-        tabBar.standardAppearance = backgroundAppearance
+        let unselectedTabBarItemTextAttributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.unselectedTabBarItem
+        ]
+        
+        let selectedTabBarItemTextAttributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.selectedTabBarItem
+        ]
+        
+        let tabBarAppearance = UITabBarAppearance()
+        tabBarAppearance.backgroundColor = .tabBar
+        tabBarAppearance.stackedLayoutAppearance.normal.iconColor = .unselectedTabBarItem
+        tabBarAppearance.stackedLayoutAppearance.normal.titleTextAttributes = unselectedTabBarItemTextAttributes
+        tabBarAppearance.stackedLayoutAppearance.selected.iconColor = .selectedTabBarItem
+        tabBarAppearance.stackedLayoutAppearance.selected.titleTextAttributes = selectedTabBarItemTextAttributes
+        tabBarAppearance.inlineLayoutAppearance = tabBarAppearance.stackedLayoutAppearance
+        tabBarAppearance.compactInlineLayoutAppearance = tabBarAppearance.stackedLayoutAppearance
+        
+        tabBar.standardAppearance = tabBarAppearance
         
         if #available(iOS 15.0, *) {
-            tabBar.scrollEdgeAppearance = backgroundAppearance
+            tabBar.scrollEdgeAppearance = tabBarAppearance
         }
     }
 

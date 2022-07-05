@@ -17,7 +17,7 @@ class WhenRefreshingMessages: XCTestCase {
     }
 
     func testThePrivateMessagesServiceIsToldToReload() {
-        XCTAssertEqual(2, context.privateMessagesService.refreshMessagesCount)
+        XCTAssertEqual(1, context.privateMessagesService.refreshMessagesCount)
     }
 
     func testLoadingNoMessagesEntersNoMessagesPlaceholderState() {
