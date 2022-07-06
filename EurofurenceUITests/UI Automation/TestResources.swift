@@ -28,13 +28,25 @@ extension TestResources {
         var username: String
         var password: String
         var registrationNumber: String
+        
+        fileprivate func validate() throws {
+            struct UnsetCredential: Error {}
+            
+            let values = Set([username, password, registrationNumber])
+            if values.contains("UNSET") {
+                throw UnsetCredential()
+            }
+        }
     }
     
     static func loadTestCredentials() throws -> Credentials {
         let data = try loadResource(fileName: "TestAccountCredentials", fileExtension: "plist")
         let decoder = PropertyListDecoder()
         
-        return try decoder.decode(Credentials.self, from: data)
+        let credentials = try decoder.decode(Credentials.self, from: data)
+        try credentials.validate()
+        
+        return credentials
     }
     
 }
