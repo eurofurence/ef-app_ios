@@ -1,6 +1,7 @@
+import ComponentBase
 import UIKit
 
-class AnnouncementsViewController: UIViewController, AnnouncementsScene {
+class AnnouncementsViewController: UIViewController, AnnouncementsScene, PrimaryContentPane {
 
     // MARK: Properties
 
