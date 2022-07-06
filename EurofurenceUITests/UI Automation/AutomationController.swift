@@ -136,7 +136,8 @@ extension AutomationController {
 
 extension AutomationController {
     
-    func tapCellWithText(_ text: String) throws {
+    @discardableResult
+    func waitForCellWithText(_ text: String) throws -> XCUIElement {
         struct TextNotFound: Error {
             var text: String
         }
@@ -148,10 +149,15 @@ extension AutomationController {
             try wait(for: textElement) {
                 table.swipeUp(velocity: verticalSwipeVelocity)
             }
+            
+            return textElement.firstMatch
         } catch {
             throw TextNotFound(text: text)
         }
-        
+    }
+    
+    func tapCellWithText(_ text: String) throws {
+        let textElement = try waitForCellWithText(text)
         textElement.tap()
     }
     
@@ -171,8 +177,15 @@ extension AutomationController {
 
 extension AutomationController {
     
-    func naivgateToMessages() throws {
-        switch try ensureAuthenticated() {
+    enum AuthenticationFlow {
+        case authenticated
+        case alreadyAuthenticated
+    }
+    
+    @discardableResult
+    func navigateToMessages() throws -> AuthenticationFlow {
+        let flow = try ensureAuthenticated()
+        switch flow {
         case .authenticated:
             // Signing in opens Messages; do nothing
             break
@@ -181,11 +194,8 @@ extension AutomationController {
             let credentials = try TestResources.loadTestCredentials()
             try tapCellWithText("Welcome, \(credentials.username) (\(credentials.registrationNumber))")
         }
-    }
-    
-    enum AuthenticationFlow {
-        case authenticated
-        case alreadyAuthenticated
+        
+        return flow
     }
     
     func ensureAuthenticated() throws -> AuthenticationFlow {

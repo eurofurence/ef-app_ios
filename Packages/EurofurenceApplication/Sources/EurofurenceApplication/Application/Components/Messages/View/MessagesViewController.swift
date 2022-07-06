@@ -31,7 +31,10 @@ class MessagesViewController: UIViewController, UITableViewDelegate, MessagesSce
         tableView.dataSource = dataSource
         tableView.delegate = self
         tableView.addSubview(refreshIndicator)
+        
         navigationItem.rightBarButtonItem = logoutBarButtonItem
+        logoutBarButtonItem.accessibilityIdentifier = "org.eurofurence.messages.logout-button"
+        
         delegate?.messagesSceneReady()
     }
     
