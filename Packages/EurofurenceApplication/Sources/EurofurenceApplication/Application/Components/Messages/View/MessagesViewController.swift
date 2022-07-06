@@ -37,12 +37,6 @@ class MessagesViewController: UIViewController, UITableViewDelegate, MessagesSce
         
         delegate?.messagesSceneReady()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        tableView.reloadData()
-    }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.messagesSceneDidSelectMessage(at: indexPath)
