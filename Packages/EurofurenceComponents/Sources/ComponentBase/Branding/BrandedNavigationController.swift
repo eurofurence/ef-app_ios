@@ -18,13 +18,13 @@ public class BrandedNavigationController: UINavigationController {
     
     override public var viewControllers: [UIViewController] {
         didSet {
-            clearSelectionWhenSingleControllerRemaining(animated: false)
+            clearSelectionInTopmostViewController(animated: false)
         }
     }
     
     override public func popViewController(animated: Bool) -> UIViewController? {
         let viewController = super.popViewController(animated: animated)
-        clearSelectionWhenSingleControllerRemaining(animated: animated)
+        clearSelectionInTopmostViewController(animated: animated)
         
         return viewController
     }
@@ -34,14 +34,14 @@ public class BrandedNavigationController: UINavigationController {
         animated: Bool
     ) -> [UIViewController]? {
         let viewControllers = super.popToViewController(viewController, animated: animated)
-        clearSelectionWhenSingleControllerRemaining(animated: animated)
+        clearSelectionInTopmostViewController(animated: animated)
         
         return viewControllers
     }
     
     override public func popToRootViewController(animated: Bool) -> [UIViewController]? {
         let viewControllers = super.popToRootViewController(animated: animated)
-        clearSelectionWhenSingleControllerRemaining(animated: animated)
+        clearSelectionInTopmostViewController(animated: animated)
         
         return viewControllers
     }
@@ -50,9 +50,9 @@ public class BrandedNavigationController: UINavigationController {
         super.popViewController(animated: false)
     }
     
-    private func clearSelectionWhenSingleControllerRemaining(animated: Bool) {
-        guard let first = viewControllers.first, viewControllers.count == 1 else { return }
-        guard let tableView = findTableView(in: first.view) else { return }
+    private func clearSelectionInTopmostViewController(animated: Bool) {
+        guard let topViewController = topViewController else { return }
+        guard let tableView = findTableView(in: topViewController.view) else { return }
         guard let selectedIndexPath = tableView.indexPathForSelectedRow else { return }
         
         tableView.deselectRow(at: selectedIndexPath, animated: animated)
