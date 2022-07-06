@@ -1,7 +1,7 @@
 import ComponentBase
 import UIKit
 
-class MessagesViewController: UIViewController, UITableViewDelegate, MessagesScene {
+class MessagesViewController: UIViewController, UITableViewDelegate, MessagesScene, PrimaryContentPane {
     
     deinit {
         delegate?.messagesSceneFinalizing()

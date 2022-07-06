@@ -72,6 +72,13 @@
 		CA8F7D2F256182EF0096E206 /* WidgetKitConformances.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8F7D2E256182EF0096E206 /* WidgetKitConformances.swift */; };
 		CA9768DD25FE39C6001AE029 /* EurofurenceApplicationSession in Frameworks */ = {isa = PBXBuildFile; productRef = CA9768DC25FE39C6001AE029 /* EurofurenceApplicationSession */; };
 		CA9768FB25FE3A81001AE029 /* EurofurenceModel in Frameworks */ = {isa = PBXBuildFile; productRef = CA9768FA25FE3A81001AE029 /* EurofurenceModel */; };
+		CAA53E1B2874DEE800FC5925 /* NewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA53E1A2874DEE800FC5925 /* NewsTests.swift */; };
+		CAA53E1D2874E32100FC5925 /* TestAccountCredentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = CAA53E1C2874E32100FC5925 /* TestAccountCredentials.plist */; };
+		CAA53E202875682D00FC5925 /* TestResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA53E1F2875682D00FC5925 /* TestResources.swift */; };
+		CAA53E21287568A200FC5925 /* NewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA53E1A2874DEE800FC5925 /* NewsTests.swift */; };
+		CAA53E22287568A300FC5925 /* NewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA53E1A2874DEE800FC5925 /* NewsTests.swift */; };
+		CAA53E23287568C800FC5925 /* TestResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA53E1F2875682D00FC5925 /* TestResources.swift */; };
+		CAA53E24287568C900FC5925 /* TestResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA53E1F2875682D00FC5925 /* TestResources.swift */; };
 		CAA5E5512854F11700FA4FB0 /* SmallEventsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA5E5502854F11700FA4FB0 /* SmallEventsWidget.swift */; };
 		CAA5E5532854F13B00FA4FB0 /* LargeCalendarIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA5E5522854F13B00FA4FB0 /* LargeCalendarIcon.swift */; };
 		CAA5E5552854F14A00FA4FB0 /* EntryEventsCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA5E5542854F14A00FA4FB0 /* EntryEventsCountView.swift */; };
@@ -311,6 +318,9 @@
 		CA9845C91F2907A800E8821D /* ScreenshotGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotGenerator.swift; sourceTree = "<group>"; };
 		CA9845D21F2909DB00E8821D /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		CAA4EFF5265C5003002CBDA6 /* Unit Tests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Unit Tests.xctestplan"; sourceTree = "<group>"; };
+		CAA53E1A2874DEE800FC5925 /* NewsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTests.swift; sourceTree = "<group>"; };
+		CAA53E1C2874E32100FC5925 /* TestAccountCredentials.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TestAccountCredentials.plist; sourceTree = "<group>"; };
+		CAA53E1F2875682D00FC5925 /* TestResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResources.swift; sourceTree = "<group>"; };
 		CAA5E5502854F11700FA4FB0 /* SmallEventsWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallEventsWidget.swift; sourceTree = "<group>"; };
 		CAA5E5522854F13B00FA4FB0 /* LargeCalendarIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeCalendarIcon.swift; sourceTree = "<group>"; };
 		CAA5E5542854F14A00FA4FB0 /* EntryEventsCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryEventsCountView.swift; sourceTree = "<group>"; };
@@ -702,6 +712,14 @@
 			path = "Logic Adapter";
 			sourceTree = "<group>";
 		};
+		CAA53E1E2874E32900FC5925 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CAA53E1C2874E32100FC5925 /* TestAccountCredentials.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		CAA5E5582854F25C00FA4FB0 /* Modifiers */ = {
 			isa = PBXGroup;
 			children = (
@@ -757,7 +775,9 @@
 				CAF2552E251A6DC4008892ED /* EventDetailTests.swift */,
 				CAB7ABC828730E230037ACFB /* KnowledgeTests.swift */,
 				CAF254AC2517F983008892ED /* LaunchPerformanceTest.swift */,
+				CAA53E1A2874DEE800FC5925 /* NewsTests.swift */,
 				CABBCA2F2566FE0B007A11A2 /* SplitViewDetailBugTests.swift */,
+				CAA53E1E2874E32900FC5925 /* Resources */,
 				CAF254FD2517FB47008892ED /* UI Automation */,
 			);
 			path = EurofurenceUITests;
@@ -767,6 +787,7 @@
 			isa = PBXGroup;
 			children = (
 				CAF254FE2517FB65008892ED /* AutomationController.swift */,
+				CAA53E1F2875682D00FC5925 /* TestResources.swift */,
 				CAF25567251A8774008892ED /* UIAutomationTestCase.swift */,
 			);
 			path = "UI Automation";
@@ -1153,6 +1174,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAA53E1D2874E32100FC5925 /* TestAccountCredentials.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1250,8 +1272,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAF2556D251A877A008892ED /* UIAutomationTestCase.swift in Sources */,
+				CAA53E23287568C800FC5925 /* TestResources.swift in Sources */,
 				CA25A89C22C4101D00226478 /* ScreenshotGenerator.swift in Sources */,
 				CA25A89D22C4101D00226478 /* SnapshotHelper.swift in Sources */,
+				CAA53E21287568A200FC5925 /* NewsTests.swift in Sources */,
 				CAF255082517FB92008892ED /* AutomationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1334,8 +1358,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA04437B26DEBC63008CC04F /* UIAutomationTestCase.swift in Sources */,
+				CAA53E24287568C900FC5925 /* TestResources.swift in Sources */,
 				CA04437A26DEBC63008CC04F /* AutomationController.swift in Sources */,
 				CA7A2F152606BCB400919DA0 /* Eurofurence_Clip_UITests.swift in Sources */,
+				CAA53E22287568A300FC5925 /* NewsTests.swift in Sources */,
 				CA04437D26DEBC7E008CC04F /* EurofurenceClip_EventDetailTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1362,7 +1388,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAF254FF2517FB65008892ED /* AutomationController.swift in Sources */,
+				CAA53E202875682D00FC5925 /* TestResources.swift in Sources */,
 				CAF25568251A8774008892ED /* UIAutomationTestCase.swift in Sources */,
+				CAA53E1B2874DEE800FC5925 /* NewsTests.swift in Sources */,
 				CAB7ABC928730E230037ACFB /* KnowledgeTests.swift in Sources */,
 				CAF2552F251A6DC4008892ED /* EventDetailTests.swift in Sources */,
 				CA26503D25F7D3EB0080F132 /* DealerSearchTests.swift in Sources */,

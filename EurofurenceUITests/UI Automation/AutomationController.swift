@@ -62,6 +62,33 @@ extension AutomationController {
     
 }
 
+// MARK: - Finding Elements
+
+extension AutomationController {
+    
+    private func wait(
+        for element: XCUIElement,
+        timeout: TimeInterval = 60,
+        search: () -> Void = {}
+    ) throws {
+        struct TimedOutWaitingForElement: Error {
+            var element: XCUIElement
+        }
+        
+        let startTime = Date()
+        let upperTimeLimit = startTime.addingTimeInterval(timeout)
+        while !element.isHittable {
+            let now = Date()
+            if now < upperTimeLimit {
+                search()
+            } else {
+                throw TimedOutWaitingForElement(element: element)
+            }
+        }
+    }
+    
+}
+
 // MARK: - Skipping
 
 extension AutomationController {
@@ -110,23 +137,19 @@ extension AutomationController {
 extension AutomationController {
     
     func tapCellWithText(_ text: String) throws {
-        struct TimedOutFindingText: Error {
+        struct TextNotFound: Error {
             var text: String
         }
         
         let table = app.tables.firstMatch
         let textElement = table.staticTexts[text]
         
-        let startTime = Date()
-        let timeout: TimeInterval = 60
-        let upperTimeLimit = startTime.addingTimeInterval(timeout)
-        while textElement.isHittable == false {
-            let now = Date()
-            if now < upperTimeLimit {
+        do {
+            try wait(for: textElement) {
                 table.swipeUp(velocity: verticalSwipeVelocity)
-            } else {
-                throw TimedOutFindingText(text: text)
             }
+        } catch {
+            throw TextNotFound(text: text)
         }
         
         textElement.tap()
@@ -140,6 +163,62 @@ extension AutomationController {
         default:
             return 400
         }
+    }
+    
+}
+
+// MARK: - Authenticating
+
+extension AutomationController {
+    
+    func naivgateToMessages() throws {
+        switch try ensureAuthenticated() {
+        case .authenticated:
+            // Signing in opens Messages; do nothing
+            break
+            
+        case .alreadyAuthenticated:
+            let credentials = try TestResources.loadTestCredentials()
+            try tapCellWithText("Welcome, \(credentials.username) (\(credentials.registrationNumber))")
+        }
+    }
+    
+    enum AuthenticationFlow {
+        case authenticated
+        case alreadyAuthenticated
+    }
+    
+    func ensureAuthenticated() throws -> AuthenticationFlow {
+        let signInPrompt = app.staticTexts["You are currently not logged in"]
+        guard signInPrompt.exists else { return .alreadyAuthenticated }
+        
+        signInPrompt.tap()
+        
+        let credentials = try TestResources.loadTestCredentials()
+        
+        let usernameText = app.textFields["org.eurofurence.login.username"]
+        try wait(for: usernameText)
+        usernameText.tap()
+        usernameText.typeText(credentials.username)
+        
+        let registrationNumberText = app.textFields["org.eurofurence.login.registration-number"]
+        registrationNumberText.tap()
+        registrationNumberText.typeText(credentials.registrationNumber)
+        
+        let passwordText = app.secureTextFields["org.eurofurence.login.password"]
+        passwordText.tap()
+        passwordText.typeText(credentials.password)
+        
+        let loginButton = app.buttons["org.eurofurence.login.confirm-button"]
+        loginButton.tap()
+        
+        // In compact size classes: the messages screen is now visible
+        // In regular size classes: the news screen and the messages screen is now visible
+        
+        let messagesNavigationTitle = app.navigationBars["Messages"]
+        try wait(for: messagesNavigationTitle)
+        
+        return .authenticated
     }
     
 }
