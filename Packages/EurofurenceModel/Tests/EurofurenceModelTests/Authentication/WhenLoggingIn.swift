@@ -111,6 +111,19 @@ class WhenLoggingIn: XCTestCase {
         XCTAssertEqual(username, loginObserver.loggedInUser?.username)
         XCTAssertEqual(regNo, loginObserver.loggedInUser?.registrationNumber)
     }
+    
+    func testSuccessfulLoginShouldRequestLatestMessages() {
+        let loginObserver = CapturingLoginObserver()
+        let username = "Some cool guy"
+        let regNo = 42
+        context.login(registrationNumber: regNo, username: username, completionHandler: loginObserver.completionHandler)
+        context.api.simulateLoginResponse(makeLoginResponse())
+        
+        XCTAssertTrue(
+            context.api.wasToldToLoadPrivateMessages,
+            "Successful login should request the user's messages are loaded"
+        )
+    }
 
     func testSuccessfulLoginTellsObserversTheUserHasLoggedIn() {
         let observer = CapturingAuthenticationStateObserver()

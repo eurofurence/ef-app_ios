@@ -9,7 +9,11 @@ class WhenLoggingOut_ThenRequestingPrivateMessages: XCTestCase {
         context.logoutSuccessfully()
         context.privateMessagesService.refreshMessages()
         
-        XCTAssertFalse(context.api.wasToldToLoadPrivateMessages)
+        XCTAssertEqual(
+            1,
+            context.api.privateMessagesLoadCount,
+            "Messages should only be requested on initial login, and not subsequent load requests when logged out"
+        )
     }
 
 }
