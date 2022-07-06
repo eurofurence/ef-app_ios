@@ -75,8 +75,6 @@
 		CAA53E1B2874DEE800FC5925 /* NewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA53E1A2874DEE800FC5925 /* NewsTests.swift */; };
 		CAA53E1D2874E32100FC5925 /* TestAccountCredentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = CAA53E1C2874E32100FC5925 /* TestAccountCredentials.plist */; };
 		CAA53E202875682D00FC5925 /* TestResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA53E1F2875682D00FC5925 /* TestResources.swift */; };
-		CAA53E21287568A200FC5925 /* NewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA53E1A2874DEE800FC5925 /* NewsTests.swift */; };
-		CAA53E22287568A300FC5925 /* NewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA53E1A2874DEE800FC5925 /* NewsTests.swift */; };
 		CAA53E23287568C800FC5925 /* TestResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA53E1F2875682D00FC5925 /* TestResources.swift */; };
 		CAA53E24287568C900FC5925 /* TestResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA53E1F2875682D00FC5925 /* TestResources.swift */; };
 		CAA5E5512854F11700FA4FB0 /* SmallEventsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA5E5502854F11700FA4FB0 /* SmallEventsWidget.swift */; };
@@ -1275,7 +1273,6 @@
 				CAA53E23287568C800FC5925 /* TestResources.swift in Sources */,
 				CA25A89C22C4101D00226478 /* ScreenshotGenerator.swift in Sources */,
 				CA25A89D22C4101D00226478 /* SnapshotHelper.swift in Sources */,
-				CAA53E21287568A200FC5925 /* NewsTests.swift in Sources */,
 				CAF255082517FB92008892ED /* AutomationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1361,7 +1358,6 @@
 				CAA53E24287568C900FC5925 /* TestResources.swift in Sources */,
 				CA04437A26DEBC63008CC04F /* AutomationController.swift in Sources */,
 				CA7A2F152606BCB400919DA0 /* Eurofurence_Clip_UITests.swift in Sources */,
-				CAA53E22287568A300FC5925 /* NewsTests.swift in Sources */,
 				CA04437D26DEBC7E008CC04F /* EurofurenceClip_EventDetailTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
