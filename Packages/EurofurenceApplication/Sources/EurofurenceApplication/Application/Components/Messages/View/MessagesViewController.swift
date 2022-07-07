@@ -1,7 +1,7 @@
 import ComponentBase
 import UIKit
 
-class MessagesViewController: UIViewController, UITableViewDelegate, MessagesScene {
+class MessagesViewController: UIViewController, UITableViewDelegate, MessagesScene, PrimaryContentPane {
     
     deinit {
         delegate?.messagesSceneFinalizing()
@@ -31,14 +31,11 @@ class MessagesViewController: UIViewController, UITableViewDelegate, MessagesSce
         tableView.dataSource = dataSource
         tableView.delegate = self
         tableView.addSubview(refreshIndicator)
-        navigationItem.rightBarButtonItem = logoutBarButtonItem
-        delegate?.messagesSceneReady()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         
-        tableView.reloadData()
+        navigationItem.rightBarButtonItem = logoutBarButtonItem
+        logoutBarButtonItem.accessibilityIdentifier = "org.eurofurence.messages.logout-button"
+        
+        delegate?.messagesSceneReady()
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

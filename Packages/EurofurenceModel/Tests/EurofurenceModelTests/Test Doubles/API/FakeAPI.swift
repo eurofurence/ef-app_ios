@@ -31,11 +31,13 @@ class FakeAPI: API {
     }
 
     private(set) var wasToldToLoadPrivateMessages = false
+    private(set) var privateMessagesLoadCount = 0
     private(set) var capturedAuthToken: String?
     private var messagesHandler: (([MessageCharacteristics]?) -> Void)?
     func loadPrivateMessages(authorizationToken: String,
                              completionHandler: @escaping ([MessageCharacteristics]?) -> Void) {
         wasToldToLoadPrivateMessages = true
+        privateMessagesLoadCount += 1
         capturedAuthToken = authorizationToken
         self.messagesHandler = completionHandler
     }

@@ -36,11 +36,6 @@ class CapturingKnowledgeListScene: UIViewController, KnowledgeListScene {
         self.binder = binder
     }
 
-    private(set) var deselectedIndexPath: IndexPath?
-    func deselectKnowledgeEntry(at indexPath: IndexPath) {
-        deselectedIndexPath = indexPath
-    }
-
 }
 
 extension CapturingKnowledgeListScene {

@@ -75,12 +75,6 @@ public class ScheduleViewController: UIViewController,
         tableView?.adjustScrollIndicatorInsetsForSafeAreaCompensation()
     }
     
-    override public func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        tableView.deselectSelectedRow()
-    }
-    
     private func prepareSearchController() {
         let allEventsScopeTitle = NSLocalizedString(
             "AllEvents",

@@ -80,6 +80,7 @@ public class AnnouncementsNewsWidgetTableViewDataSource<
         
         switch visualElement {
         case .showMoreAnnouncements:
+            tableView.deselectRow(at: indexPath, animated: true)
             viewModel.openAllAnnouncements()
             
         case .announcement(let announcement):

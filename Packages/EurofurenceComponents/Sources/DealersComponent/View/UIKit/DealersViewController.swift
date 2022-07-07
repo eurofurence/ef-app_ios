@@ -54,11 +54,6 @@ public class DealersViewController: UIViewController, DealersScene {
         delegate?.dealersSceneDidLoad()
     }
     
-    override public func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        tableView.deselectSelectedRow()
-    }
-    
     override public func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView?.adjustScrollIndicatorInsetsForSafeAreaCompensation()

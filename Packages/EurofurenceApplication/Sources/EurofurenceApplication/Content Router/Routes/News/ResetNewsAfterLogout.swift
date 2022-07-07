@@ -27,18 +27,20 @@ struct ResetNewsAfterLogout: NewsPresentation {
         tabBarController.selectedIndex = newsControllerIndex
         newsNavigationController.popToRootViewController(animated: UIView.areAnimationsEnabled)
         
-        if let detailNavigation = newsSplitViewController.viewControllers.last as? UINavigationController {
-            let navigationStack = detailNavigation.viewControllers
-            let nonMessageControllers = navigationStack.filter({ (viewController) in
-                (viewController is MessageDetailViewController || viewController is MessagesViewController) == false
-            })
-            
-            if nonMessageControllers.isEmpty {
-                let placeholderViewController = NoContentPlaceholderViewController.fromStoryboard()
-                newsSplitViewController.viewControllers = [newsNavigationController, placeholderViewController]
-            } else {
-                detailNavigation.setViewControllers(nonMessageControllers, animated: UIView.areAnimationsEnabled)
-            }
+        let secondaryViewController = newsSplitViewController.viewControllers.last
+        guard let detailNavigation = secondaryViewController as? UINavigationController else { return }
+        
+        let navigationStack = detailNavigation.viewControllers
+        let nonMessageControllers = navigationStack.filter({ (viewController) in
+            (viewController is MessageDetailViewController || viewController is MessagesViewController) == false
+        })
+        
+        if nonMessageControllers.isEmpty {
+            let placeholderController = NoContentPlaceholderViewController.fromStoryboard()
+            let placeholderNavigationController = UINavigationController(rootViewController: placeholderController)
+            newsSplitViewController.viewControllers = [newsNavigationController, placeholderNavigationController]
+        } else {
+            detailNavigation.setViewControllers(nonMessageControllers, animated: UIView.areAnimationsEnabled)
         }
     }
     

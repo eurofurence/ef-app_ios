@@ -100,8 +100,6 @@ extension CompositionalTableViewDataSource: UITableViewDataSource {
 extension CompositionalTableViewDataSource: UITableViewDelegate {
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
         let mediator = mediators[indexPath.section]
         mediator.tableView?(tableView, didSelectRowAt: indexPath)
     }

@@ -1,5 +1,3 @@
-import Foundation.NSIndexPath
-
 public protocol KnowledgeListScene {
 
     func setDelegate(_ delegate: KnowledgeListSceneDelegate)
@@ -8,6 +6,5 @@ public protocol KnowledgeListScene {
     func showLoadingIndicator()
     func hideLoadingIndicator()
     func prepareToDisplayKnowledgeGroups(numberOfGroups: Int, binder: KnowledgeListBinder)
-    func deselectKnowledgeEntry(at indexPath: IndexPath)
 
 }

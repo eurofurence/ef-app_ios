@@ -5,11 +5,31 @@ class LoginViewController: UITableViewController, UITextFieldDelegate, LoginScen
 
     // MARK: IBOutlets
 
-    @IBOutlet private weak var loginButton: UIButton!
+    @IBOutlet private weak var loginButton: UIButton! {
+        didSet {
+            loginButton.accessibilityIdentifier = "org.eurofurence.login.confirm-button"
+        }
+    }
+    
     @IBOutlet private weak var cancelButton: UIBarButtonItem!
-    @IBOutlet private weak var registrationNumberTextField: UITextField!
-    @IBOutlet private weak var usernameTextField: UITextField!
-    @IBOutlet private weak var passwordTextField: UITextField!
+    
+    @IBOutlet private weak var registrationNumberTextField: UITextField! {
+        didSet {
+            registrationNumberTextField.accessibilityIdentifier = "org.eurofurence.login.registration-number"
+        }
+    }
+    
+    @IBOutlet private weak var usernameTextField: UITextField! {
+        didSet {
+            usernameTextField.accessibilityIdentifier = "org.eurofurence.login.username"
+        }
+    }
+    
+    @IBOutlet private weak var passwordTextField: UITextField! {
+        didSet {
+            passwordTextField.accessibilityIdentifier = "org.eurofurence.login.password"
+        }
+    }
 
     // MARK: IBActions
 

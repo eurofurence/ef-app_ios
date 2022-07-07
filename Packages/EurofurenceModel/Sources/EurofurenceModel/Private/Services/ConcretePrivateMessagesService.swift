@@ -177,6 +177,8 @@ class ConcretePrivateMessagesService: PrivateMessagesService {
         init(service: ConcretePrivateMessagesService, token: String) {
             self.token = token
             super.init(service: service)
+            
+            refreshMessages(completionHandler: nil)
         }
         
         override func refreshMessages(completionHandler: (([MessageCharacteristics]?) -> Void)?) {
