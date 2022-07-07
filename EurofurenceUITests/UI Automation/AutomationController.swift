@@ -68,7 +68,7 @@ extension AutomationController {
     
     private func wait(
         for element: XCUIElement,
-        timeout: TimeInterval = 60,
+        timeout: TimeInterval = 120,
         search: () -> Void = {}
     ) throws {
         struct TimedOutWaitingForElement: Error {
