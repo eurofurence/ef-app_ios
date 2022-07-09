@@ -49,6 +49,7 @@ class ScreenshotGenerator: XCTestCase {
         snapshot("03_EventDetail")
         
         automationController.tapTab(.dealers)
+        app.tables.firstMatch.swipeDown()
         
         snapshot("04_Dealers")
         
