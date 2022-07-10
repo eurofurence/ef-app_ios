@@ -7,7 +7,12 @@ class EventDetailViewController: UIViewController, EventDetailScene {
     
     private var titleController: DissolvingTitleController?
     
-    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView! {
+        didSet {
+            tableView.accessibilityIdentifier = "org.eurofurence.EventDetail.table"
+        }
+    }
+    
     private var tableController: TableController?
 
     // MARK: Overrides

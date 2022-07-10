@@ -1,8 +1,14 @@
 devices([
+   "iPhone SE (3rd generation)",
+   "iPhone 8",
    "iPhone 8 Plus",
-   "iPhone XS Max",
-   "iPad Pro (12.9-inch)",
-   "iPad Pro (12.9-inch) (4th generation)"
+   "iPhone 13",
+   "iPhone 13 Pro Max",
+
+   "iPad Pro (9.7-inch)",
+   "iPad Pro (11-inch) (3rd generation)",
+   "iPad Pro (12.9-inch) (2nd generation)",
+   "iPad Pro (12.9-inch) (5th generation)"
 ])
 
 languages([
@@ -14,4 +20,6 @@ scheme("Eurofurence")
 testplan("Screenshots")
 output_directory("./screenshots")
 clear_previous_screenshots(true) 
+override_status_bar(true)
+
 
