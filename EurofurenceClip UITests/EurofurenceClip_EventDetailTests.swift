@@ -19,7 +19,7 @@ class EurofurenceClip_EventDetailTests: UIAutomationTestCase {
         
         XCTAssertFalse(navigationTitle.exists)
         
-        controller.app.tables.cells.containing(.staticText, identifier: "Favourite").element.swipeUp()
+        controller.app.tables["org.eurofurence.EventDetail.table"].firstMatch.swipeUp()
         
         XCTAssertTrue(navigationTitle.exists)
     }
