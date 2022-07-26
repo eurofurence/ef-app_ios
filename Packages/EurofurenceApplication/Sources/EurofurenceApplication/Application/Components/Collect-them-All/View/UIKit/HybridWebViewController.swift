@@ -61,7 +61,6 @@ class HybridWebViewController: UIViewController, HybridWebScene {
         
         let webConfiguration = WKWebViewConfiguration()
         webConfiguration.preferences.javaScriptEnabled = true
-        webConfiguration.websiteDataStore = .nonPersistent()
         
         let webView = WKWebView(frame: view.bounds, configuration: webConfiguration)
         webView.allowsLinkPreview = false
