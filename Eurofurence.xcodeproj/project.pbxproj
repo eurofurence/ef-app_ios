@@ -244,6 +244,7 @@
 
 /* Begin PBXFileReference section */
 		6EE355A8289079B300F3ACB7 /* LoginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTests.swift; sourceTree = "<group>"; };
+		6EE355AA28907BE600F3ACB7 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		7820A6F91F16B8A0004C0FB5 /* Eurofurence.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Eurofurence.entitlements; sourceTree = "<group>"; };
 		78CA0D051F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationInfoPropertyListShould.swift; sourceTree = "<group>"; };
 		78CA0D0E1F0E57D5006DFD64 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -769,6 +770,7 @@
 		CAF254AB2517F983008892ED /* EurofurenceUITests */ = {
 			isa = PBXGroup;
 			children = (
+				6EE355AA28907BE600F3ACB7 /* README.md */,
 				CAF254AE2517F983008892ED /* Info.plist */,
 				CAF255112517FE81008892ED /* DealerDetailTests.swift */,
 				CA26503C25F7D3EB0080F132 /* DealerSearchTests.swift */,
