@@ -4,8 +4,12 @@ import UIKit.UIViewController
 import XCTComponentBase
 
 class StubLoginComponentFactory: LoginComponentFactory {
+    
+    init(stubInterface: CapturingViewController = CapturingViewController()) {
+        self.stubInterface = stubInterface
+    }
 
-    let stubInterface = CapturingViewController()
+    let stubInterface: CapturingViewController
     private(set) var delegate: LoginComponentDelegate?
     func makeLoginModule(_ delegate: LoginComponentDelegate) -> UIViewController {
         self.delegate = delegate

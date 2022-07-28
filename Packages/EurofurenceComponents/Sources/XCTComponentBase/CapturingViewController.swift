@@ -30,3 +30,21 @@ public class CapturingViewController: UIViewController {
     override public var presentedViewController: UIViewController? { return _presentedViewController }
 
 }
+
+public class AutomaticallyCompletesOperationsViewController: CapturingViewController {
+    
+    override public func present(
+        _ viewControllerToPresent: UIViewController,
+        animated flag: Bool,
+        completion: (() -> Void)? = nil
+    ) {
+        super.present(viewControllerToPresent, animated: flag, completion: completion)
+        completion?()
+    }
+    
+    public override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
+        super.dismiss(animated: flag, completion: completion)
+        completion?()
+    }
+    
+}
