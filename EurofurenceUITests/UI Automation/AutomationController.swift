@@ -191,15 +191,17 @@ extension AutomationController {
             break
             
         case .alreadyAuthenticated:
-            let credentials = try TestResources.loadTestCredentials()
-            try tapCellWithText("Welcome, \(credentials.username) (\(credentials.registrationNumber))")
+            try tapPersonalisedCell()
         }
         
         return flow
     }
     
+    var signInPrompt: XCUIElement {
+        app.staticTexts["You are currently not logged in"]
+    }
+    
     func ensureAuthenticated() throws -> AuthenticationFlow {
-        let signInPrompt = app.staticTexts["You are currently not logged in"]
         guard signInPrompt.exists else { return .alreadyAuthenticated }
         
         signInPrompt.tap()
@@ -229,6 +231,11 @@ extension AutomationController {
         try wait(for: messagesNavigationTitle)
         
         return .authenticated
+    }
+    
+    func tapPersonalisedCell() throws {
+        let credentials = try TestResources.loadTestCredentials()
+        try tapCellWithText("Welcome, \(credentials.username) (\(credentials.registrationNumber))")
     }
     
 }

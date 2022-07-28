@@ -49,8 +49,9 @@ extension LoginRoute: Route {
         }
         
         private func finalize(success: Bool) {
-            completionHandler(success)
-            viewController?.dismiss(animated: true)
+            viewController?.dismiss(animated: true) { [completionHandler] in
+                completionHandler(success)
+            }
         }
         
     }

@@ -22,7 +22,10 @@ class LoginRouteTests: XCTestCase {
         var didLogin: Bool?
         let content = LoginRouteable(completionHandler: { didLogin = $0 })
         
-        let loginModuleFactory = StubLoginComponentFactory()
+        let loginModuleFactory = StubLoginComponentFactory(
+            stubInterface: AutomaticallyCompletesOperationsViewController()
+        )
+        
         let modalWireframe = CapturingModalWireframe()
         let route = LoginRoute(
             loginModuleFactory: loginModuleFactory,
@@ -43,7 +46,10 @@ class LoginRouteTests: XCTestCase {
         var didLogin: Bool?
         let content = LoginRouteable(completionHandler: { didLogin = $0 })
         
-        let loginModuleFactory = StubLoginComponentFactory()
+        let loginModuleFactory = StubLoginComponentFactory(
+            stubInterface: AutomaticallyCompletesOperationsViewController()
+        )
+        
         let modalWireframe = CapturingModalWireframe()
         let route = LoginRoute(
             loginModuleFactory: loginModuleFactory,
