@@ -140,7 +140,7 @@ public class EventViewModelAdapter: EventViewModel {
     }
     
     public var isFaceMaskRequired: Bool {
-        false
+        event.isFaceMaskRequired
     }
     
     private class NotifyObjectChangedWhenEventChanges: EventObserver {

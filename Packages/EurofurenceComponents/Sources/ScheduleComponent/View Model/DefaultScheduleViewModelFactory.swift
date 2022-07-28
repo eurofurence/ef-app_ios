@@ -336,7 +336,7 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory {
         
         var isAcceptingFeedback: Bool { event.isAcceptingFeedback }
         
-        var isFaceMaskRequired: Bool { false }
+        var isFaceMaskRequired: Bool { event.isFaceMaskRequired }
         
         private weak var observer: ScheduleEventViewModelObserver?
         

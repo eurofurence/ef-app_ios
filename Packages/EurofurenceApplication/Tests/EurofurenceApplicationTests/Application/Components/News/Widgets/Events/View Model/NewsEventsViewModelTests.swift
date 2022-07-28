@@ -105,6 +105,11 @@ class NewsEventsViewModelTests: XCTestCase {
         try assert(when: \FakeEvent.isPhotoshoot, is: false, then: \.isPhotoshoot, is: false)
     }
     
+    func testAdaptsRequiresFaceMaskState() throws {
+        try assert(when: \FakeEvent.isFaceMaskRequired, is: true, then: \.isFaceMaskRequired, is: true)
+        try assert(when: \FakeEvent.isFaceMaskRequired, is: false, then: \.isFaceMaskRequired, is: false)
+    }
+    
     func testEventTransitionsFromNotFavouriteToFavouriteNotifiesObserver() throws {
         let event = FakeEvent.random
         event.unfavourite()
