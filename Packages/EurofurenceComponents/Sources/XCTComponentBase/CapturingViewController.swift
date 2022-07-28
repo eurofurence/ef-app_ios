@@ -42,7 +42,7 @@ public class AutomaticallyCompletesOperationsViewController: CapturingViewContro
         completion?()
     }
     
-    public override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
+    override public func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
         super.dismiss(animated: flag, completion: completion)
         completion?()
     }
