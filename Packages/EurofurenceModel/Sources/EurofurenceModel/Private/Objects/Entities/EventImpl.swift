@@ -89,7 +89,7 @@ class EventImpl: Event {
     }
     
     var isFaceMaskRequired: Bool {
-        false
+        containsTag("mask_required")
     }
     
     var isAcceptingFeedback: Bool {
