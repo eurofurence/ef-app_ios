@@ -46,6 +46,7 @@ public class EventTableViewCell: UITableViewCell, ScheduleEventComponent {
     private var dealersDenIndicatorView: UIView!
     private var mainStageIndicatorView: UIView!
     private var photoshootIndicatorView: UIView!
+    private var faceMaskIndicatorView: UIView!
     
     @IBOutlet private weak var verticalIconsStack: UIStackView!
     @IBOutlet private weak var eventBannerImageView: UIImageView!
@@ -82,6 +83,9 @@ public class EventTableViewCell: UITableViewCell, ScheduleEventComponent {
         photoshootIndicatorView = IconView(icon: .photoshoot)
         photoshootIndicatorView.accessibilityIdentifier = "Event_IsPhotoshoot"
         
+        faceMaskIndicatorView = IconView(icon: .faceMaskRequired)
+        faceMaskIndicatorView.accessibilityIdentifier = "Event_IsFaceMaskRequired"
+        
         let icons: [UIView] = [
             favouritedEventIndicator,
             sponsorEventIndicator,
@@ -91,7 +95,8 @@ public class EventTableViewCell: UITableViewCell, ScheduleEventComponent {
             kageWineGlassIndicatorView,
             dealersDenIndicatorView,
             mainStageIndicatorView,
-            photoshootIndicatorView
+            photoshootIndicatorView,
+            faceMaskIndicatorView
         ]
         
         for icon in icons.reversed() {
@@ -194,6 +199,14 @@ public class EventTableViewCell: UITableViewCell, ScheduleEventComponent {
 
     public func hidePhotoshootStageEventIndicator() {
         photoshootIndicatorView.isHidden = true
+    }
+    
+    public func showFaceMaskRequiredIndicator() {
+        faceMaskIndicatorView.isHidden = false
+    }
+    
+    public func hideFaceMaskRequiredIndicator() {
+        faceMaskIndicatorView.isHidden = true
     }
 
 }

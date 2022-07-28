@@ -112,9 +112,17 @@ public class CapturingScheduleEventComponent: ScheduleEventComponent {
         photoshootIconVisibility = .visible
     }
 
-    public private(set) var didHidePhotoshootStageEventIndicator = false
     public func hidePhotoshootStageEventIndicator() {
         photoshootIconVisibility = .hidden
+    }
+    
+    public private(set) var faceMaskIconVisibility: VisibilityState = .unset
+    public func showFaceMaskRequiredIndicator() {
+        faceMaskIconVisibility = .visible
+    }
+    
+    public func hideFaceMaskRequiredIndicator() {
+        faceMaskIconVisibility = .hidden
     }
 
 }

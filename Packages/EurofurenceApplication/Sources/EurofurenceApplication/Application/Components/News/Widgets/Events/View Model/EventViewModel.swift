@@ -14,5 +14,6 @@ public protocol EventViewModel: ObservedObject {
     var isDealersDen: Bool { get }
     var isMainStage: Bool { get }
     var isPhotoshoot: Bool { get }
+    var isFaceMaskRequired: Bool { get }
     
 }

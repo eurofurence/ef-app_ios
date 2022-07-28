@@ -55,6 +55,7 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
             bindDealersDenIcon()
             bindMainStageIcon()
             bindPhotoshootIcon()
+            bindFaceMaskRequiredIcon()
         }
 
         private func bindSponsorOnlyIcon() {
@@ -118,6 +119,14 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
                 component.showPhotoshootStageEventIndicator()
             } else {
                 component.hidePhotoshootStageEventIndicator()
+            }
+        }
+        
+        private func bindFaceMaskRequiredIcon() {
+            if viewModel.isFaceMaskRequired {
+                component.showFaceMaskRequiredIndicator()
+            } else {
+                component.hideFaceMaskRequiredIndicator()
             }
         }
 

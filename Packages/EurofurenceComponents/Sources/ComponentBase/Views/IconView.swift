@@ -15,6 +15,7 @@ public class IconView: UIImageView {
         case photoshoot
         case afterDarkDealersDen
         case warning
+        case faceMaskRequired
         
         fileprivate var view: UIView {
             switch self {
@@ -50,6 +51,9 @@ public class IconView: UIImageView {
                 
             case .warning:
                 return makeSymbolView(symbolName: "exclamationmark.triangle.fill", symbolWeight: .regular)
+                
+            case .faceMaskRequired:
+                return makeSymbolView(symbolName: "facemask.fill", symbolWeight: .regular)
             }
         }
         

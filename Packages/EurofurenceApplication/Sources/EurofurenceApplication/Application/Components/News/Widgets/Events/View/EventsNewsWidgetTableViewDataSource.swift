@@ -86,6 +86,7 @@ public class EventsNewsWidgetTableViewDataSource<T>: NSObject, TableViewMediator
             bindMainStageIndicator()
             bindPhotoshootIndicator()
             bindKageEventIndicator()
+            bindFaceMaskStatus()
         }
         
         private func bindSponsorOnlyIndicator() {
@@ -155,6 +156,14 @@ public class EventsNewsWidgetTableViewDataSource<T>: NSObject, TableViewMediator
                     }
                 }
                 .store(in: &cell.subscriptions)
+        }
+        
+        private func bindFaceMaskStatus() {
+            if event.isFaceMaskRequired {
+                cell.showFaceMaskRequiredIndicator()
+            } else {
+                cell.hideFaceMaskRequiredIndicator()
+            }
         }
         
     }

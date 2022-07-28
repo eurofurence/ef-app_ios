@@ -15,6 +15,7 @@ class FakeEventViewModel: EventViewModel {
     @Observed var isDealersDen: Bool
     @Observed var isMainStage: Bool
     @Observed var isPhotoshoot: Bool
+    @Observed var isFaceMaskRequired: Bool
     
     init(
         name: String = "Name",
@@ -28,7 +29,8 @@ class FakeEventViewModel: EventViewModel {
         isKageEvent: Bool = false,
         isDealersDen: Bool = false,
         isMainStage: Bool = false,
-        isPhotoshoot: Bool = false
+        isPhotoshoot: Bool = false,
+        isFaceMaskRequired: Bool = false
     ) {
         self.name = name
         self.location = location
@@ -42,6 +44,7 @@ class FakeEventViewModel: EventViewModel {
         self.isDealersDen = isDealersDen
         self.isMainStage = isMainStage
         self.isPhotoshoot = isPhotoshoot
+        self.isFaceMaskRequired = isFaceMaskRequired
     }
     
 }
