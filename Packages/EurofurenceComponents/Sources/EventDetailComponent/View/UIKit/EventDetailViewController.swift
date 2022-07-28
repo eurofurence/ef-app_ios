@@ -148,6 +148,12 @@ class EventDetailViewController: UIViewController, EventDetailScene {
             return makeBannerComponent(icons: .photoshoot, configuration: block)
         }
         
+        func makeFaceMaskBannerComponent(
+            configuringUsing block: (EventInformationBannerComponent) -> Void
+        ) -> UITableViewCell {
+            return makeBannerComponent(icons: .faceMaskRequired, configuration: block)
+        }
+        
         func makeEventActionBannerComponent(
             configuringUsing block: (EventActionBannerComponent) -> Void
         ) -> UITableViewCell {

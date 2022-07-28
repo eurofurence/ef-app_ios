@@ -28,6 +28,7 @@ public protocol EventDetailViewModelVisitor {
     func visit(_ dealersDenMessage: EventDealersDenMessageViewModel)
     func visit(_ mainStageMessage: EventMainStageMessageViewModel)
     func visit(_ photoshootMessage: EventPhotoshootMessageViewModel)
+    func visit(_ faceMaskMessage: EventFaceMaskMessageViewModel)
     func visit(_ actionViewModel: EventActionViewModel)
 
 }
@@ -150,6 +151,16 @@ public struct EventPhotoshootMessageViewModel: Equatable {
         self.message = message
     }
 
+}
+
+public struct EventFaceMaskMessageViewModel: Equatable {
+    
+    public var message: String
+    
+    public init(message: String) {
+        self.message = message
+    }
+    
 }
 
 public protocol EventActionViewModel: AnyObject {

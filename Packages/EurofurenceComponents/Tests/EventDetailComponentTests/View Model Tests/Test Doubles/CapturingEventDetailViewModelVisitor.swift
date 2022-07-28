@@ -45,6 +45,10 @@ class CapturingEventDetailViewModelVisitor: EventDetailViewModelVisitor {
         visitedViewModels.append(photoshootMessage)
     }
     
+    func visit(_ faceMaskMessage: EventFaceMaskMessageViewModel) {
+        visitedViewModels.append(faceMaskMessage)
+    }
+    
     func visit(_ actionViewModel: EventActionViewModel) {
         visitedViewModels.append(actionViewModel)
     }

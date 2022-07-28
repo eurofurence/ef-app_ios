@@ -151,6 +151,12 @@ class StubEventDetailItemComponentFactory: EventDetailItemComponentFactory {
         return stubbedPhotoshootMessageComponent
     }
     
+    let stubbedFaceMaskMessageComponent = CapturingEventInformationBannerComponent()
+    func makeFaceMaskBannerComponent(configuringUsing block: (EventInformationBannerComponent) -> Void) -> Any {
+        block(stubbedFaceMaskMessageComponent)
+        return stubbedPhotoshootMessageComponent
+    }
+    
     let stubbedActionComponent = CapturingEventActionBannerComponent()
     func makeEventActionBannerComponent(configuringUsing block: (EventActionBannerComponent) -> Void) -> Any {
         block(stubbedActionComponent)
@@ -216,6 +222,10 @@ extension CapturingEventDetailScene {
 
     var stubbedPhotoshootMessageComponent: CapturingEventInformationBannerComponent {
         return componentFactory.stubbedPhotoshootMessageComponent
+    }
+    
+    var stubbedFaceMaskMessageComponent: CapturingEventInformationBannerComponent {
+        return componentFactory.stubbedFaceMaskMessageComponent
     }
     
     var stubbedActionComponent: CapturingEventActionBannerComponent {

@@ -18,6 +18,7 @@ public protocol EventDetailItemComponentFactory {
     func makeDealersDenBannerComponent(configuringUsing block: (EventInformationBannerComponent) -> Void) -> Component
     func makeMainStageBannerComponent(configuringUsing block: (EventInformationBannerComponent) -> Void) -> Component
     func makePhotoshootBannerComponent(configuringUsing block: (EventInformationBannerComponent) -> Void) -> Component
+    func makeFaceMaskBannerComponent(configuringUsing block: (EventInformationBannerComponent) -> Void) -> Component
     func makeEventActionBannerComponent(configuringUsing block: (EventActionBannerComponent) -> Void) -> Component
 
 }
