@@ -141,6 +141,21 @@ class DefaultEventDetailViewModel: EventDetailViewModel, EventObserver {
 
     }
     
+    struct FaceMaskRequiredComponent: EventDetailViewModelComponent {
+        
+        func describe(to visitor: EventDetailViewModelVisitor) {
+            let message = """
+            FACE MASK MANDATORY / MASKENPFLICHT
+            
+            Wear mask before entering and maintain social distancing to stay safe!
+            
+            """
+            
+            visitor.visit(EventFaceMaskMessageViewModel(message: message))
+        }
+        
+    }
+    
     struct ActionComponent: EventDetailViewModelComponent {
         
         let actionViewModel: EventActionViewModel

@@ -124,6 +124,7 @@ public class DefaultEventDetailViewModelFactory: EventDetailViewModelFactory {
             buildDealersDenComponent()
             buildMainStageComponent()
             buildPhotoshootComponent()
+            buildFaceMaskRequiredComponent()
         }
         
         private func buildSponsorsOnlyComponent() {
@@ -165,6 +166,12 @@ public class DefaultEventDetailViewModelFactory: EventDetailViewModelFactory {
         private func buildPhotoshootComponent() {
             if event.isPhotoshoot {
                 components.append(DefaultEventDetailViewModel.PhotoshootComponent())
+            }
+        }
+        
+        private func buildFaceMaskRequiredComponent() {
+            if event.isFaceMaskRequired {
+                components.append(DefaultEventDetailViewModel.FaceMaskRequiredComponent())
             }
         }
         
