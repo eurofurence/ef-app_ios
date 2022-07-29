@@ -10,14 +10,7 @@ class WhenPreparingViewModel_ForEventRequiringFaceMask_EventDetailViewModelFacto
         event.isFaceMaskRequired = true
         let context = EventDetailViewModelFactoryTestBuilder().build(for: event)
         let visitor = context.prepareVisitorForTesting()
-        
-        let expectedMessage = """
-        FACE MASK MANDATORY / MASKENPFLICHT
-
-        Wear mask before entering and maintain social distancing to stay safe!
-
-        """
-        let expected = EventFaceMaskMessageViewModel(message: expectedMessage)
+        let expected = EventFaceMaskMessageViewModel(message: "Face masks are mandatory for this event")
 
         XCTAssertEqual(expected, visitor.visited(ofKind: EventFaceMaskMessageViewModel.self))
         XCTAssertTrue(

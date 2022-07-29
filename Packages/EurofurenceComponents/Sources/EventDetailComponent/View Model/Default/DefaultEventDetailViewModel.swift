@@ -144,12 +144,11 @@ class DefaultEventDetailViewModel: EventDetailViewModel, EventObserver {
     struct FaceMaskRequiredComponent: EventDetailViewModelComponent {
         
         func describe(to visitor: EventDetailViewModelVisitor) {
-            let message = """
-            FACE MASK MANDATORY / MASKENPFLICHT
-            
-            Wear mask before entering and maintain social distancing to stay safe!
-            
-            """
+            let message = NSLocalizedString(
+                "FaceMaskRequiredSlug",
+                bundle: .module,
+                comment: "Message shown in the event detail view when viewing event where a face mask is required"
+            )
             
             visitor.visit(EventFaceMaskMessageViewModel(message: message))
         }
