@@ -168,6 +168,7 @@ class EventsScheduleAdapter: Schedule, CustomStringConvertible {
         if days != schedule.dayModels {
             self.days = schedule.dayModels
             updateDelegateWithAllDays()
+            updateCurrentDay()
         }
     }
 
