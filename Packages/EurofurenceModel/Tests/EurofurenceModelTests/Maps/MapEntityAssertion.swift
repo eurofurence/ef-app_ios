@@ -9,7 +9,7 @@ class MapEntityAssertion: Assertion {
             return
         }
 
-        let orderedCharacteristics = characteristics.sorted(by: { $0.mapDescription < $1.mapDescription })
+        let orderedCharacteristics = characteristics.sorted(by: { $0.order < $1.order })
         for (idx, map) in maps.enumerated() {
             let characteristic = orderedCharacteristics[idx]
 

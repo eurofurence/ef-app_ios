@@ -290,6 +290,7 @@ struct JSONSyncResponse: Decodable {
         var Id: String
         var ImageId: String
         var Description: String
+        var Order: Int
         var Entries: [JSONMapEntry]
         
         var modelValue: MapCharacteristics {
@@ -297,6 +298,7 @@ struct JSONSyncResponse: Decodable {
                 identifier: Id,
                 imageIdentifier: ImageId,
                 mapDescription: Description,
+                order: Order,
                 entries: Entries.map(\.modelValue)
             )
         }

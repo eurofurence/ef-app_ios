@@ -114,12 +114,33 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                                        deleted: ["d53e6f6b-fdcb-4754-a4b9-6892e8d317d7"],
                                                        removeAllBeforeInsert: true)
 
-        let maps = ModelCharacteristics.Update<MapCharacteristics>(changed: [MapCharacteristics(identifier: "d6f1c9b4-6d03-41cc-ae5d-ee278e5121f0",
-                                                                  imageIdentifier: "28c15af7-6d82-4ee7-bf3b-2603076e785e",
-                                                                  mapDescription: "Dealers Den",
-                                                                  entries: [MapCharacteristics.Entry(identifier: "651ab75e-d87f-40a6-bcad-669432ee7a86", x: 747, y: 201, tapRadius: 50, links: [MapCharacteristics.Entry.Link(type: .dealerDetail, name: "Mirri", target: "b2166372-3b76-45d3-b3f9-e1675cade2db")])])],
-                                                 deleted: ["157e1849-d6fc-46ab-9d47-1b785cd867c7"],
-                                                 removeAllBeforeInsert: true)
+        let maps = ModelCharacteristics.Update<MapCharacteristics>(
+            changed: [
+                MapCharacteristics(
+                    identifier: "d6f1c9b4-6d03-41cc-ae5d-ee278e5121f0",
+                    imageIdentifier: "28c15af7-6d82-4ee7-bf3b-2603076e785e",
+                    mapDescription: "Dealers Den",
+                    order: 10,
+                    entries: [
+                        MapCharacteristics.Entry(
+                            identifier: "651ab75e-d87f-40a6-bcad-669432ee7a86",
+                            x: 747,
+                            y: 201,
+                            tapRadius: 50,
+                            links: [
+                                MapCharacteristics.Entry.Link(
+                                    type: .dealerDetail,
+                                    name: "Mirri",
+                                    target: "b2166372-3b76-45d3-b3f9-e1675cade2db"
+                                )
+                            ]
+                        )
+                    ]
+                )
+            ],
+            deleted: ["157e1849-d6fc-46ab-9d47-1b785cd867c7"],
+            removeAllBeforeInsert: true
+        )
 
         let images = ModelCharacteristics.Update<ImageCharacteristics>(changed: [ImageCharacteristics(identifier: "8ae7d323-b56d-4155-8a88-6b418bcfd057",
                                                                         internalReference: "knowledge:1b9f7858-454d-0a68-824b-359e5bbfa5b0",

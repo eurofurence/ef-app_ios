@@ -44,9 +44,7 @@ class ConcreteMapsService: MapsService {
     private func reloadMapsFromDataStore() {
         guard let maps = dataStore.fetchMaps() else { return }
 
-        models = maps.map(makeMap).sorted(by: { (first, second) -> Bool in
-            return first.location < second.location
-        })
+        models = maps.sorted(by: { $0.order < $1.order }).map(makeMap)
     }
     
     private func makeMap(from characteristics: MapCharacteristics) -> MapImpl {

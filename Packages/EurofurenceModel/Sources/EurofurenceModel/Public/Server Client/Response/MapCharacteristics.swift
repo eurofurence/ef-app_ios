@@ -7,6 +7,7 @@ public struct MapCharacteristics: Equatable, Identifyable {
         return lhs.identifier == rhs.identifier &&
                lhs.imageIdentifier == rhs.imageIdentifier &&
                lhs.mapDescription == rhs.mapDescription &&
+               lhs.order == rhs.order &&
                lhs.entries.count == rhs.entries.count &&
                lhs.entries.contains(elementsFrom: rhs.entries)
     }
@@ -63,12 +64,14 @@ public struct MapCharacteristics: Equatable, Identifyable {
     
     public var imageIdentifier: String
     public var mapDescription: String
+    public var order: Int
     public var entries: [Entry]
 
-    public init(identifier: String, imageIdentifier: String, mapDescription: String, entries: [Entry]) {
+    public init(identifier: String, imageIdentifier: String, mapDescription: String, order: Int, entries: [Entry]) {
         self.identifier = identifier
         self.imageIdentifier = imageIdentifier
         self.mapDescription = mapDescription
+        self.order = order
         self.entries = entries
     }
 
