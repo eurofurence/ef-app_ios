@@ -171,6 +171,7 @@
                             "Id": "d6f1c9b4-6d03-41cc-ae5d-ee278e5121f0",
                             "ImageId": "28c15af7-6d82-4ee7-bf3b-2603076e785e",
                             "Description": "Dealers Den",
+                            "Order": 10,
                             "IsBrowseable": true,
                             "Entries": [
                                         {

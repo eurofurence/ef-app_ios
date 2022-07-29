@@ -5,7 +5,13 @@ import TestUtilities
 extension MapCharacteristics: RandomValueProviding {
     
     public static var random: MapCharacteristics {
-        MapCharacteristics(identifier: .random, imageIdentifier: .random, mapDescription: .random, entries: .random)
+        MapCharacteristics(
+            identifier: .random,
+            imageIdentifier: .random,
+            mapDescription: .random,
+            order: .random,
+            entries: .random
+        )
     }
     
 }

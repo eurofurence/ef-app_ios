@@ -20,6 +20,7 @@ extension MapEntity: EntityAdapting {
             identifier: identifier,
             imageIdentifier: imageIdentifier,
             mapDescription: mapDescription,
+            order: Int(order),
             entries: entries.map({ $0.asAdaptedType() })
         )
     }
@@ -28,6 +29,7 @@ extension MapEntity: EntityAdapting {
         identifier = value.identifier
         imageIdentifier = value.imageIdentifier
         mapDescription = value.mapDescription
+        order = Int64(value.order)
     }
 
 }
