@@ -308,61 +308,35 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory {
             event.add(self)
         }
         
-        var bannerGraphicPNGData: Data? {
-            event.bannerGraphicPNGData
-        }
+        var bannerGraphicPNGData: Data? { event.bannerGraphicPNGData }
         
-        var title: String {
-            event.title
-        }
+        var title: String { event.title }
         
-        var startTime: String {
-            hoursFormatter.hoursString(from: event.startDate)
-        }
+        var startTime: String { hoursFormatter.hoursString(from: event.startDate) }
         
-        var endTime: String {
-            hoursFormatter.hoursString(from: event.endDate)
-        }
+        var endTime: String { hoursFormatter.hoursString(from: event.endDate) }
         
-        var location: String {
-            event.room.name
-        }
+        var location: String { event.room.name }
         
-        var isFavourite: Bool {
-            event.isFavourite
-        }
+        var isFavourite: Bool { event.isFavourite }
         
-        var isSponsorOnly: Bool {
-            event.isSponsorOnly
-        }
+        var isSponsorOnly: Bool { event.isSponsorOnly }
         
-        var isSuperSponsorOnly: Bool {
-            event.isSuperSponsorOnly
-        }
+        var isSuperSponsorOnly: Bool { event.isSuperSponsorOnly }
         
-        var isArtShow: Bool {
-            event.isArtShow
-        }
+        var isArtShow: Bool { event.isArtShow }
         
-        var isKageEvent: Bool {
-            event.isKageEvent
-        }
+        var isKageEvent: Bool { event.isKageEvent }
         
-        var isDealersDenEvent: Bool {
-            event.isDealersDen
-        }
+        var isDealersDenEvent: Bool { event.isDealersDen }
         
-        var isMainStageEvent: Bool {
-            event.isMainStage
-        }
+        var isMainStageEvent: Bool { event.isMainStage }
         
-        var isPhotoshootEvent: Bool {
-            event.isPhotoshoot
-        }
+        var isPhotoshootEvent: Bool { event.isPhotoshoot }
         
-        var isAcceptingFeedback: Bool {
-            event.isAcceptingFeedback
-        }
+        var isAcceptingFeedback: Bool { event.isAcceptingFeedback }
+        
+        var isFaceMaskRequired: Bool { event.isFaceMaskRequired }
         
         private weak var observer: ScheduleEventViewModelObserver?
         

@@ -25,5 +25,7 @@ public protocol ScheduleEventComponent {
     func hideMainStageEventIndicator()
     func showPhotoshootStageEventIndicator()
     func hidePhotoshootStageEventIndicator()
+    func showFaceMaskRequiredIndicator()
+    func hideFaceMaskRequiredIndicator()
 
 }

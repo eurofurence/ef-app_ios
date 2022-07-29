@@ -99,6 +99,12 @@ class EventDetailPresenter: EventDetailSceneDelegate, EventDetailViewModelDelega
             }
         }
         
+        func visit(_ faceMaskMessage: EventFaceMaskMessageViewModel) {
+            boundComponent = componentFactory.makeFaceMaskBannerComponent { (component) in
+                component.setBannerMessage(faceMaskMessage.message)
+            }
+        }
+        
         func visit(_ actionViewModel: EventActionViewModel) {
             boundComponent = componentFactory.makeEventActionBannerComponent { (component) in
                 actionViewModel.describe(to: ComponentRebindingEventActionVisitor(component: component))

@@ -88,6 +88,10 @@ class EventImpl: Event {
         containsTag("photoshoot")
     }
     
+    var isFaceMaskRequired: Bool {
+        containsTag("mask_required")
+    }
+    
     var isAcceptingFeedback: Bool {
         characteristics.isAcceptingFeedback
     }

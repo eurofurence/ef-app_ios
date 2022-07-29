@@ -23,6 +23,7 @@ public protocol Event {
     var isDealersDen: Bool { get }
     var isMainStage: Bool { get }
     var isPhotoshoot: Bool { get }
+    var isFaceMaskRequired: Bool { get }
     var isAcceptingFeedback: Bool { get }
     var isFavourite: Bool { get }
     var contentURL: URL { get }

@@ -35,6 +35,7 @@ public final class StubScheduleEventViewModel: ScheduleEventViewModelProtocol {
     public var isMainStageEvent: Bool
     public var isPhotoshootEvent: Bool
     public var isAcceptingFeedback: Bool
+    public var isFaceMaskRequired: Bool
 
     public init(
         title: String,
@@ -50,7 +51,8 @@ public final class StubScheduleEventViewModel: ScheduleEventViewModelProtocol {
         isDealersDenEvent: Bool,
         isMainStageEvent: Bool,
         isPhotoshootEvent: Bool,
-        isAcceptingFeedback: Bool
+        isAcceptingFeedback: Bool,
+        isFaceMaskRequired: Bool
     ) {
         self.title = title
         self.startTime = startTime
@@ -66,6 +68,7 @@ public final class StubScheduleEventViewModel: ScheduleEventViewModelProtocol {
         self.isMainStageEvent = isMainStageEvent
         self.isPhotoshootEvent = isPhotoshootEvent
         self.isAcceptingFeedback = isAcceptingFeedback
+        self.isFaceMaskRequired = isFaceMaskRequired
     }
     
     private var observers = [ScheduleEventViewModelObserver]()
@@ -107,7 +110,8 @@ extension StubScheduleEventViewModel: RandomValueProviding {
             isDealersDenEvent: .random,
             isMainStageEvent: .random,
             isPhotoshootEvent: .random,
-            isAcceptingFeedback: .random
+            isAcceptingFeedback: .random,
+            isFaceMaskRequired: .random
         )
     }
 

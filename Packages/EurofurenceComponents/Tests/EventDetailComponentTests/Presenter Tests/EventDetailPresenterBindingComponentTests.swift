@@ -119,6 +119,15 @@ class EventDetailPresenterBindingComponentTests: XCTestCase {
         XCTAssertEqual(message, scene.stubbedArtShowMessageComponent.capturedMessage)
     }
     
+    func testBindingFaceMaskRequired() {
+        let message = String.random
+        let faceMaskViewModel = EventFaceMaskMessageViewModel(message: message)
+        let viewModel = StubFaceMaskEventViewModel(faceMaskMessageViewModel: faceMaskViewModel)
+        let scene = prepareSceneForBindingComponent(viewModel: viewModel)
+        
+        XCTAssertEqual(message, scene.stubbedFaceMaskMessageComponent.capturedMessage)
+    }
+    
     private func prepareSceneForBindingComponent(
         viewModel: EventDetailViewModel
     ) -> CapturingEventDetailScene {
@@ -130,5 +139,21 @@ class EventDetailPresenterBindingComponentTests: XCTestCase {
         
         return context.scene
     }
+
+}
+
+struct StubFaceMaskEventViewModel: EventDetailViewModel {
+
+    var faceMaskMessageViewModel: EventFaceMaskMessageViewModel
+
+    var numberOfComponents: Int { return 1 }
+    func setDelegate(_ delegate: EventDetailViewModelDelegate) { }
+    
+    func describe(componentAt index: Int, to visitor: EventDetailViewModelVisitor) {
+        visitor.visit(faceMaskMessageViewModel)
+    }
+    
+    func favourite() { }
+    func unfavourite() { }
 
 }

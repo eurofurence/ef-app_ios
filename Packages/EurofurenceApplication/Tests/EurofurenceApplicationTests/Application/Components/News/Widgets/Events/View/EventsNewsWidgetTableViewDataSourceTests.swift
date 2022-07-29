@@ -271,6 +271,22 @@ class EventsNewsWidgetTableViewDataSourceTests: XCTestCase {
         )
     }
     
+    func testBindsFaceMaskRequiredStateToEventTableViewCell() throws {
+        try assertViewModel(
+            with: \.isFaceMaskRequired,
+            as: false,
+            setsIsHiddenForViewWithAccessibilityIdentifier: "Event_IsFaceMaskRequired",
+            to: true
+        )
+        
+        try assertViewModel(
+            with: \.isFaceMaskRequired,
+            as: true,
+            setsIsHiddenForViewWithAccessibilityIdentifier: "Event_IsFaceMaskRequired",
+            to: false
+        )
+    }
+    
     func testSelectingCellUsesRowToNotifySelectedEventIndex() {
         prepareDataSource(events: [])
         dataSource?.tableView?(tableView, didSelectRowAt: IndexPath(row: 1, section: 2))
@@ -294,7 +310,8 @@ class EventsNewsWidgetTableViewDataSourceTests: XCTestCase {
         with viewModelKeyPath: WritableKeyPath<FakeEventViewModel, Bool>,
         as viewModelValue: Bool,
         setsIsHiddenForViewWithAccessibilityIdentifier accessibilityIdentifier: String,
-        to expected: Bool
+        to expected: Bool,
+        line: UInt = #line
     ) throws {
         var eventViewModel = FakeEventViewModel()
         eventViewModel[keyPath: viewModelKeyPath] = viewModelValue
@@ -302,7 +319,7 @@ class EventsNewsWidgetTableViewDataSourceTests: XCTestCase {
         let view = try findBindingTarget(accessibilityIdentifier: accessibilityIdentifier)
         let actual = view.isHidden
         
-        XCTAssertEqual(expected, actual)
+        XCTAssertEqual(expected, actual, line: line)
     }
     
 }

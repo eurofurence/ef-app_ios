@@ -139,6 +139,10 @@ public class EventViewModelAdapter: EventViewModel {
         event.isPhotoshoot
     }
     
+    public var isFaceMaskRequired: Bool {
+        event.isFaceMaskRequired
+    }
+    
     private class NotifyObjectChangedWhenEventChanges: EventObserver {
         
         private unowned let adapter: EventViewModelAdapter

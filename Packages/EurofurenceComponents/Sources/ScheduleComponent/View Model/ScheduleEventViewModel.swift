@@ -16,6 +16,7 @@ public protocol ScheduleEventViewModelProtocol {
     var isMainStageEvent: Bool { get }
     var isPhotoshootEvent: Bool { get }
     var isAcceptingFeedback: Bool { get }
+    var isFaceMaskRequired: Bool { get }
     
     func add(_ observer: ScheduleEventViewModelObserver)
     func favourite()

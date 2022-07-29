@@ -141,6 +141,20 @@ class DefaultEventDetailViewModel: EventDetailViewModel, EventObserver {
 
     }
     
+    struct FaceMaskRequiredComponent: EventDetailViewModelComponent {
+        
+        func describe(to visitor: EventDetailViewModelVisitor) {
+            let message = NSLocalizedString(
+                "FaceMaskRequiredSlug",
+                bundle: .module,
+                comment: "Message shown in the event detail view when viewing event where a face mask is required"
+            )
+            
+            visitor.visit(EventFaceMaskMessageViewModel(message: message))
+        }
+        
+    }
+    
     struct ActionComponent: EventDetailViewModelComponent {
         
         let actionViewModel: EventActionViewModel
