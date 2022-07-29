@@ -15,6 +15,18 @@ class WhenSyncCompletesWithConferenceDays_ApplicationShould: XCTestCase {
         DayAssertion()
             .assertDays(delegate.allDays, characterisedBy: syncResponse.conferenceDays.changed)
     }
+    
+    func testUpdateDelegateWithTheCurrentDayAfterRefreshConcludes() {
+        let context = EurofurenceSessionTestBuilder().build()
+        let syncResponse = ModelCharacteristics.randomWithoutDeletions
+        let delegate = CapturingScheduleDelegate()
+        let schedule = context.eventsService.loadSchedule(tag: "Test")
+        schedule.setDelegate(delegate)
+        delegate.toldChangedToNilDay = false
+        context.performSuccessfulSync(response: syncResponse)
+
+        XCTAssertTrue(delegate.toldChangedToNilDay)
+    }
 
     func testNotUpdateTheDelegateIfTheDaysHaveNotChangedBetweenSyncs() {
         let context = EurofurenceSessionTestBuilder().build()

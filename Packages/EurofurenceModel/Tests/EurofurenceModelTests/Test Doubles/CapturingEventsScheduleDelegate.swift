@@ -8,7 +8,7 @@ class CapturingScheduleDelegate: ScheduleDelegate {
         self.events = events
     }
 
-    private(set) var toldChangedToNilDay = false
+    var toldChangedToNilDay = false
     private(set) var capturedCurrentDay: Day?
     func currentEventDayDidChange(to day: Day?) {
         toldChangedToNilDay = day == nil
