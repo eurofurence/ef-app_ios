@@ -60,6 +60,10 @@ class ScreenshotGenerator: XCTestCase {
         automationController.tapTab(.information)
         
         snapshot("06_Information")
+        
+        try automationController.tapKnownKnowledgeGroup()
+        
+        snapshot("07_SocialMedia")
     }
     
     private func takeTabletScreenshots() throws {

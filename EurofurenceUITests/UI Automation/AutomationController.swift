@@ -57,7 +57,8 @@ extension AutomationController {
     }
     
     func tapKnownKnowledgeGroup() throws {
-        try tapCellWithText("Guest of Honor")
+        try tapCellWithText("General Information")
+        try tapCellWithText("Eurofurence on Social Media")
     }
     
 }
