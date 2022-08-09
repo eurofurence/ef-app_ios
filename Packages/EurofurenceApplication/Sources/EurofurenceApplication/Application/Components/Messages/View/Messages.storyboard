@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -22,14 +22,14 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MessageTableViewCell" rowHeight="120" id="sRc-Vk-5jQ" customClass="MessageTableViewCell" customModule="EurofurenceApplication">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="120"/>
+                                        <rect key="frame" x="0.0" y="44.666666030883789" width="375" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sRc-Vk-5jQ" id="ctT-R8-MoP">
-                                            <rect key="frame" x="0.0" y="0.0" width="347.66666666666669" height="120"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="350.33333333333331" height="120"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xbx-ot-ymE">
-                                                    <rect key="frame" x="24" y="9.9999999999999982" width="261.66666666666669" height="20.333333333333329"/>
+                                                    <rect key="frame" x="24" y="18" width="271.33333333333331" height="17"/>
                                                     <accessibility key="accessibilityConfiguration">
                                                         <bool key="isElement" value="NO"/>
                                                     </accessibility>
@@ -38,7 +38,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bTe-tr-QM8">
-                                                    <rect key="frame" x="293.66666666666669" y="11" width="38" height="18"/>
+                                                    <rect key="frame" x="303.33333333333331" y="19.333333333333332" width="31" height="14.333333333333332"/>
                                                     <accessibility key="accessibilityConfiguration">
                                                         <bool key="isElement" value="NO"/>
                                                     </accessibility>
@@ -47,7 +47,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xrP-mw-pf8">
-                                                    <rect key="frame" x="24" y="64.333333333333329" width="315.66666666666669" height="44.666666666666671"/>
+                                                    <rect key="frame" x="24" y="65.333333333333329" width="318.33333333333331" height="44.666666666666671"/>
                                                     <accessibility key="accessibilityConfiguration">
                                                         <bool key="isElement" value="NO"/>
                                                     </accessibility>
@@ -56,13 +56,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cjc-YF-xya">
-                                                    <rect key="frame" x="24" y="38.333333333333336" width="315.66666666666669" height="18"/>
+                                                    <rect key="frame" x="24" y="43" width="318.33333333333331" height="14.333333333333336"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bza-hP-eKo" customClass="UnreadIndicatorView" customModule="ComponentBase">
-                                                    <rect key="frame" x="8" y="15" width="10" height="10"/>
+                                                    <rect key="frame" x="8" y="21.666666666666668" width="10" height="10"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="Bza-hP-eKo" secondAttribute="height" multiplier="1:1" id="SDC-ze-K6G"/>
                                                         <constraint firstAttribute="height" constant="10" id="zIf-Hl-Mwi"/>
@@ -72,14 +72,14 @@
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="xrP-mw-pf8" secondAttribute="trailing" id="7WR-vd-rGn"/>
                                                 <constraint firstItem="bTe-tr-QM8" firstAttribute="leading" secondItem="xbx-ot-ymE" secondAttribute="trailing" constant="8" id="CPd-Re-a5L"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="xrP-mw-pf8" secondAttribute="bottom" id="LjL-T2-Vj7"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="xrP-mw-pf8" secondAttribute="bottomMargin" constant="7" id="LjL-T2-Vj7"/>
                                                 <constraint firstItem="xrP-mw-pf8" firstAttribute="leading" secondItem="xbx-ot-ymE" secondAttribute="leading" id="MdH-jS-Mn8"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="bTe-tr-QM8" secondAttribute="trailing" constant="8" id="MdI-LI-lJ4"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="cjc-YF-xya" secondAttribute="trailing" id="OWj-bH-qF7"/>
                                                 <constraint firstItem="xbx-ot-ymE" firstAttribute="leading" secondItem="Bza-hP-eKo" secondAttribute="trailing" constant="6" id="X70-mu-y7J"/>
+                                                <constraint firstItem="xbx-ot-ymE" firstAttribute="top" secondItem="ctT-R8-MoP" secondAttribute="topMargin" constant="7" id="bLA-Qg-5wq"/>
                                                 <constraint firstItem="xbx-ot-ymE" firstAttribute="centerY" secondItem="Bza-hP-eKo" secondAttribute="centerY" id="bfR-Xd-zIZ"/>
                                                 <constraint firstItem="Bza-hP-eKo" firstAttribute="leading" secondItem="ctT-R8-MoP" secondAttribute="leading" constant="8" id="oiT-PT-0Bj"/>
-                                                <constraint firstItem="Bza-hP-eKo" firstAttribute="top" secondItem="ctT-R8-MoP" secondAttribute="topMargin" constant="4" id="pWP-sC-3l4"/>
                                                 <constraint firstItem="cjc-YF-xya" firstAttribute="top" secondItem="xbx-ot-ymE" secondAttribute="bottom" constant="8" id="rMI-aJ-1iA"/>
                                                 <constraint firstItem="bTe-tr-QM8" firstAttribute="centerY" secondItem="xbx-ot-ymE" secondAttribute="centerY" id="xyC-Mk-oMB"/>
                                                 <constraint firstItem="xrP-mw-pf8" firstAttribute="top" secondItem="cjc-YF-xya" secondAttribute="bottom" constant="8" id="zJS-2x-8fP"/>
@@ -100,7 +100,7 @@
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have not received any messages" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p5D-Jl-ycC">
-                                <rect key="frame" x="16" y="372.33333333333331" width="343" height="67.666666666666686"/>
+                                <rect key="frame" x="16" y="375.66666666666669" width="343" height="61"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <color key="textColor" systemColor="placeholderTextColor"/>
                                 <nil key="highlightedColor"/>
