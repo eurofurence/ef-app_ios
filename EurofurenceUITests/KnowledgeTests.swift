@@ -27,4 +27,19 @@ class KnowledgeTests: UIAutomationTestCase {
         controller.assertPlaceholderVisible()
     }
     
+    func testOpeningLinks() throws {
+        controller.app.launch()
+        controller.transitionToContent()
+        controller.tapTab(.information)
+        try controller.tapCellWithText("General Information")
+        try controller.tapCellWithText("Eurofurence on Social Media")
+        try controller.tapCellWithText("Eurofurence Website")
+        
+        let webView = controller.app.webViews.firstMatch
+        XCTAssertTrue(
+            webView.waitForExistence(timeout: 10),
+            "Selecting a web link in the knowledge pane should open the web view"
+        )
+    }
+    
 }

@@ -4,7 +4,13 @@ class EventDetailSummaryTableViewCell: UITableViewCell, EventSummaryComponent {
 
     // MARK: IBOutlets
 
-    @IBOutlet private weak var eventTitleLabel: UILabel!
+    @IBOutlet private weak var eventTitleLabel: UILabel! {
+        didSet {
+            let largeFontSize = UIFontDescriptor.preferredFontDescriptor(withTextStyle: .largeTitle)
+            eventTitleLabel.font = UIFont.systemFont(ofSize: largeFontSize.pointSize, weight: .bold)
+        }
+    }
+    
     @IBOutlet private weak var eventSubtitleLabel: UILabel!
     @IBOutlet private weak var eventAbstractLabel: UILabel!
     @IBOutlet private weak var eventTimesLabel: UILabel!

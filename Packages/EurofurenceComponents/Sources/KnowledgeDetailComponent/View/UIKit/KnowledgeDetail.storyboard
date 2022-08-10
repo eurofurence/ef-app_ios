@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,13 +21,13 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="574"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="uiV-y7-f6E" userLabel="Remove Undesired Seperators">
-                                    <rect key="frame" x="0.0" y="355.5" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="387.5" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="KnowledgeDetailImageTableViewCell" id="a3g-c7-4TJ" customClass="KnowledgeDetailImageTableViewCell" customModule="KnowledgeDetailComponent">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="375" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="a3g-c7-4TJ" id="bXk-I4-52h">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -49,17 +49,17 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="KnowledgeDetailContentsTableViewCell" id="nmm-PW-NnN" customClass="KnowledgeDetailContentsTableViewCell" customModule="KnowledgeDetailComponent">
-                                        <rect key="frame" x="0.0" y="71.5" width="375" height="200.5"/>
+                                        <rect key="frame" x="0.0" y="88" width="375" height="225.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nmm-PW-NnN" id="4Yb-Ni-WbZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="200.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="225.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="r9a-Rj-ojT">
-                                                    <rect key="frame" x="16" y="0.0" width="343" height="200.5"/>
+                                                    <rect key="frame" x="16" y="0.0" width="343" height="225.5"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES"/>
                                                 </textView>
@@ -76,14 +76,14 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LinkTableViewCell" id="0Ed-jY-bnV" customClass="LinkTableViewCell" customModule="KnowledgeDetailComponent">
-                                        <rect key="frame" x="0.0" y="272" width="375" height="55.5"/>
+                                        <rect key="frame" x="0.0" y="313.5" width="375" height="51.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0Ed-jY-bnV" id="G8F-VH-xdh">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="55.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="51.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="CrS-Sv-B6l">
-                                                    <rect key="frame" x="16" y="11" width="343" height="33.5"/>
+                                                    <rect key="frame" x="16" y="11" width="343" height="29.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <state key="normal" title="Button"/>
                                                     <connections>

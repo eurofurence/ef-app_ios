@@ -11,6 +11,7 @@ struct KnowledgeRoutes: RouteProvider {
     
     var components: ComponentRegistry
     var contentWireframe: ContentWireframe
+    var modalWireframe: ModalWireframe
     var linksService: ContentLinksService
     var window: UIWindow
     
@@ -31,6 +32,11 @@ struct KnowledgeRoutes: RouteProvider {
                 knowledgeDetailComponentFactory: components.knowledgeDetailComponentFactory,
                 contentWireframe: contentWireframe,
                 delegate: OpenLinkFromKnowledgeEntry(router: router, linksService: linksService)
+            )
+            
+            WebPageRoute(
+                webComponentFactory: components.webComponentFactory,
+                modalWireframe: modalWireframe
             )
         }
     }

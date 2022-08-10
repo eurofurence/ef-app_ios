@@ -143,12 +143,14 @@ extension AutomationController {
             var text: String
         }
         
-        let table = app.tables.firstMatch
-        let textElement = table.staticTexts[text]
+        let tables = app.tables
+        let textElement = tables.staticTexts[text]
         
         do {
             try wait(for: textElement) {
-                table.swipeUp(velocity: verticalSwipeVelocity)
+                for table in tables.allElementsBoundByIndex {
+                    table.swipeUp(velocity: verticalSwipeVelocity)
+                }
             }
             
             return textElement.firstMatch

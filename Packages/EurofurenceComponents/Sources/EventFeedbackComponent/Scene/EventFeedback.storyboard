@@ -91,8 +91,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="35.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ENU-IV-AzW" customClass="PlaceholderTextView" customModule="EurofurenceApplication">
-                                                    <rect key="frame" x="20" y="0.0" width="374" height="35.5"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ENU-IV-AzW" customClass="PlaceholderTextView" customModule="EventFeedbackComponent">
+                                                    <rect key="frame" x="12" y="0.0" width="390" height="35.5"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -106,8 +106,8 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="ENU-IV-AzW" firstAttribute="top" secondItem="1An-uI-gax" secondAttribute="top" id="2LV-cj-gsd"/>
-                                                <constraint firstItem="ENU-IV-AzW" firstAttribute="leading" secondItem="1An-uI-gax" secondAttribute="leading" constant="20" symbolic="YES" id="BRL-CS-fV2"/>
-                                                <constraint firstAttribute="trailing" secondItem="ENU-IV-AzW" secondAttribute="trailing" constant="20" symbolic="YES" id="dtN-bB-nWf"/>
+                                                <constraint firstItem="ENU-IV-AzW" firstAttribute="leading" secondItem="1An-uI-gax" secondAttribute="leading" constant="12" id="BRL-CS-fV2"/>
+                                                <constraint firstAttribute="trailing" secondItem="ENU-IV-AzW" secondAttribute="trailing" constant="12" id="dtN-bB-nWf"/>
                                                 <constraint firstAttribute="bottom" secondItem="ENU-IV-AzW" secondAttribute="bottom" id="sad-ic-XXc"/>
                                             </constraints>
                                         </tableViewCellContentView>
