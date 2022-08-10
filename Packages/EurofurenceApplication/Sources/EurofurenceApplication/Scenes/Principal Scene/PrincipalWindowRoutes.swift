@@ -61,6 +61,7 @@ struct PrincipalWindowRoutes: RouteProvider {
             KnowledgeRoutes(
                 components: componentRegistry,
                 contentWireframe: contentWireframe,
+                modalWireframe: modalWireframe,
                 linksService: linksService,
                 window: window
             )
