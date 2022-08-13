@@ -1196,7 +1196,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\n\nif [[$ARCHS != \"x86_64\"]]; then\n    PLISTBUDDY=\"/usr/libexec/PlistBuddy\"\n    INFO_PLIST=\"$CODESIGNING_FOLDER_PATH/Info.plist\"\n    SETTINGS_PLIST=\"$CODESIGNING_FOLDER_PATH/Settings.bundle/Root.plist\"\n    VERSION_NUMBER=\"`$PLISTBUDDY -c \\\"Print CFBundleShortVersionString\\\" \\\"$INFO_PLIST\\\"`\"\n    BUILD_NUMBER=\"`$PLISTBUDDY -c \\\"Print CFBundleVersion\\\" \\\"$INFO_PLIST\\\"`\"\n    VERSION=\"$VERSION_NUMBER ($BUILD_NUMBER)\"\n\n    echo $VERSION\n    echo $SETTINGS_PLIST\n    # The PreferenceSpecifier is currently at position 4 in the array.\n    # This value needs to be adjusted if the entry is moved further up or down!\n    $PLISTBUDDY -c \"Set :PreferenceSpecifiers:4:DefaultValue '$VERSION'\" \"$SETTINGS_PLIST\"\nfi\n";
+			shellScript = "#!/bin/bash\n\nPLISTBUDDY=\"/usr/libexec/PlistBuddy\"\nINFO_PLIST=\"$CODESIGNING_FOLDER_PATH/Info.plist\"\nSETTINGS_PLIST=\"$CODESIGNING_FOLDER_PATH/Settings.bundle/Root.plist\"\nVERSION_NUMBER=\"`$PLISTBUDDY -c \\\"Print CFBundleShortVersionString\\\" \\\"$INFO_PLIST\\\"`\"\nBUILD_NUMBER=\"`$PLISTBUDDY -c \\\"Print CFBundleVersion\\\" \\\"$INFO_PLIST\\\"`\"\nVERSION=\"$VERSION_NUMBER ($BUILD_NUMBER)\"\n\n# The PreferenceSpecifier is currently at position 0 in the array.\n# This value needs to be adjusted if the entry is moved further up or down!\n$PLISTBUDDY -c \"Set :PreferenceSpecifiers:0:DefaultValue '$VERSION'\" \"$SETTINGS_PLIST\"\n";
 		};
 		9ACB01051F1808BA001CE9D2 /* Crashlytics */ = {
 			isa = PBXShellScriptBuildPhase;
