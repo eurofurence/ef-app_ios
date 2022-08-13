@@ -88,7 +88,6 @@
 		CAB300DC2603AFDB009A52E1 /* AppClipSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB300DB2603AFDB009A52E1 /* AppClipSceneDelegate.swift */; };
 		CAB300E32603AFDC009A52E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAB300E22603AFDC009A52E1 /* Assets.xcassets */; };
 		CAB300E62603AFDC009A52E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAB300E42603AFDC009A52E1 /* LaunchScreen.storyboard */; };
-		CAB300EB2603AFDC009A52E1 /* EurofurenceClip.app in Embed App Clips */ = {isa = PBXBuildFile; fileRef = CAB300D72603AFDB009A52E1 /* EurofurenceClip.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CAB300FF2603B0D8009A52E1 /* EurofurenceApplicationSession in Frameworks */ = {isa = PBXBuildFile; productRef = CAB300FE2603B0D8009A52E1 /* EurofurenceApplicationSession */; };
 		CAB301012603B0D8009A52E1 /* ContentController in Frameworks */ = {isa = PBXBuildFile; productRef = CAB301002603B0D8009A52E1 /* ContentController */; };
 		CAB301032603B0D8009A52E1 /* DealerComponent in Frameworks */ = {isa = PBXBuildFile; productRef = CAB301022603B0D8009A52E1 /* DealerComponent */; };
@@ -224,7 +223,6 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/AppClips";
 			dstSubfolderSpec = 16;
 			files = (
-				CAB300EB2603AFDC009A52E1 /* EurofurenceClip.app in Embed App Clips */,
 			);
 			name = "Embed App Clips";
 			runOnlyForDeploymentPostprocessing = 0;
