@@ -22,7 +22,7 @@ class MessagesPresenterTestsWhenBindingMessages: XCTestCase {
         XCTAssertEqual(allMessages.count, context.scene.boundMessageCount)
         XCTAssertEqual(message.authorName, capturingMessageScene.capturedAuthor)
         XCTAssertEqual(message.subject, capturingMessageScene.capturedSubject)
-        XCTAssertEqual(message.contents, capturingMessageScene.capturedContents)
+        XCTAssertEqual(NSAttributedString(string: message.contents), capturingMessageScene.capturedContents)
         XCTAssertEqual(message.receivedDateTime, context.dateFormatter.capturedDate)
         XCTAssertEqual(context.dateFormatter.stubString, capturingMessageScene.capturedReceivedDateTime)
     }

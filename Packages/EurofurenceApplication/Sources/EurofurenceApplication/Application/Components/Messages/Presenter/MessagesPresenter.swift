@@ -144,7 +144,7 @@ class MessagesPresenter: MessagesSceneDelegate, PrivateMessagesObserver {
             
             scene.setAuthor(message.authorName)
             scene.setSubject(message.subject)
-            scene.setContents(message.contents)
+            scene.setContents(NSAttributedString(string: message.contents))
 
             let formattedDateTime = dateFormatter.string(from: message.receivedDateTime)
             scene.setReceivedDateTime(formattedDateTime)
