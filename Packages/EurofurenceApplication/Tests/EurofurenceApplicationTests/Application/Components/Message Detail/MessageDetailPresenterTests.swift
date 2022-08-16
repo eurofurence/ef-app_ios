@@ -38,7 +38,7 @@ class MessageDetailPresenterTests: XCTestCase {
         XCTAssertEqual(.hidden, sceneFactory.scene.loadingIndicatorVisibility)
         XCTAssertEqual(message.authorName, sceneFactory.scene.capturedMessageDetailTitle)
         XCTAssertEqual(message.subject, sceneFactory.scene.viewModel?.subject)
-        XCTAssertEqual(message.contents, sceneFactory.scene.viewModel?.contents)
+        XCTAssertEqual(NSAttributedString(string: message.contents), sceneFactory.scene.viewModel?.contents)
     }
     
     func testMessageLoadFailure() throws {
@@ -78,7 +78,7 @@ class MessageDetailPresenterTests: XCTestCase {
         XCTAssertEqual(.hidden, sceneFactory.scene.loadingIndicatorVisibility)
         XCTAssertEqual(message.authorName, sceneFactory.scene.capturedMessageDetailTitle)
         XCTAssertEqual(message.subject, sceneFactory.scene.viewModel?.subject)
-        XCTAssertEqual(message.contents, sceneFactory.scene.viewModel?.contents)
+        XCTAssertEqual(NSAttributedString(string: message.contents), sceneFactory.scene.viewModel?.contents)
     }
 
 }

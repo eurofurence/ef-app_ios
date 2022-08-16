@@ -1,4 +1,5 @@
 import EurofurenceModel
+import Foundation
 
 class MessageDetailPresenter: MessageDetailSceneDelegate {
     
@@ -50,8 +51,8 @@ class MessageDetailPresenter: MessageDetailSceneDelegate {
             message.subject
         }
         
-        var contents: String {
-            message.contents
+        var contents: NSAttributedString {
+            NSAttributedString(string: message.contents)
         }
         
     }

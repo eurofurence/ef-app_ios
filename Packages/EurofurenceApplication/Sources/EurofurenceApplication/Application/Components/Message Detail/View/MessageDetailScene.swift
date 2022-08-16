@@ -1,3 +1,5 @@
+import Foundation.NSAttributedString
+
 public protocol MessageDetailScene: AnyObject {
 
     var delegate: MessageDetailSceneDelegate? { get set }
@@ -13,7 +15,7 @@ public protocol MessageDetailScene: AnyObject {
 public protocol MessageDetailViewModel {
     
     var subject: String { get }
-    var contents: String { get }
+    var contents: NSAttributedString { get }
     
 }
 

@@ -58,7 +58,7 @@ class MessageDetailViewController: UIViewController, MessageDetailScene {
             self.hideError()
             self.showDetail()
             self.messageSubjectLabel.text = viewModel.subject
-            self.messageContentsTextView.text = viewModel.contents
+            self.messageContentsTextView.attributedText = viewModel.contents
         }
     }
     
