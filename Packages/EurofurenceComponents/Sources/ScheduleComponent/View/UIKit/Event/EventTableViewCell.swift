@@ -42,7 +42,6 @@ public class EventTableViewCell: UITableViewCell, ScheduleEventComponent {
     private var superSponsorEventIndicator: UIView!
     private var artShowIndicatorView: UIView!
     private var kageBugIndicatorView: UIView!
-    private var kageWineGlassIndicatorView: UIView!
     private var dealersDenIndicatorView: UIView!
     private var mainStageIndicatorView: UIView!
     private var photoshootIndicatorView: UIView!
@@ -71,9 +70,6 @@ public class EventTableViewCell: UITableViewCell, ScheduleEventComponent {
         kageBugIndicatorView = IconView(icon: .bug)
         kageBugIndicatorView.accessibilityIdentifier = "Event_KageBug"
         
-        kageWineGlassIndicatorView = IconView(icon: .wine)
-        kageWineGlassIndicatorView.accessibilityIdentifier = "Event_KageWineGlass"
-        
         dealersDenIndicatorView = IconView(icon: .dealersDen)
         dealersDenIndicatorView.accessibilityIdentifier = "Event_IsDealersDen"
         
@@ -92,7 +88,6 @@ public class EventTableViewCell: UITableViewCell, ScheduleEventComponent {
             superSponsorEventIndicator,
             artShowIndicatorView,
             kageBugIndicatorView,
-            kageWineGlassIndicatorView,
             dealersDenIndicatorView,
             mainStageIndicatorView,
             photoshootIndicatorView,
@@ -169,12 +164,10 @@ public class EventTableViewCell: UITableViewCell, ScheduleEventComponent {
 
     public func showKageEventIndicator() {
         kageBugIndicatorView.isHidden = false
-        kageWineGlassIndicatorView.isHidden = false
     }
 
     public func hideKageEventIndicator() {
         kageBugIndicatorView.isHidden = true
-        kageWineGlassIndicatorView.isHidden = true
     }
 
     public func showDealersDenEventIndicator() {

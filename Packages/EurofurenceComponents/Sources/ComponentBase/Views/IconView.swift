@@ -9,7 +9,6 @@ public class IconView: UIImageView {
         case mainStage
         case sponsor
         case superSponsor
-        case wine
         case bug
         case dealersDen
         case photoshoot
@@ -33,9 +32,6 @@ public class IconView: UIImageView {
                 
             case .superSponsor:
                 return makeSymbolView(symbolName: "star.fill", symbolWeight: .semibold)
-                
-            case .wine:
-                return makeAwesomeFontIcon(code: "\u{f000}")
                 
             case .bug:
                 return makeAwesomeFontIcon(code: "\u{f188}")

@@ -127,7 +127,7 @@ class EventDetailViewController: UIViewController, EventDetailScene {
         func makeKageBannerComponent(
             configuringUsing block: (EventInformationBannerComponent) -> Void
         ) -> UITableViewCell {
-            return makeBannerComponent(icons: .wine, .bug, configuration: block)
+            return makeBannerComponent(icons: .bug, configuration: block)
         }
 
         func makeDealersDenBannerComponent(

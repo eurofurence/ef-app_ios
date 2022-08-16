@@ -255,20 +255,6 @@ class EventsNewsWidgetTableViewDataSourceTests: XCTestCase {
             setsIsHiddenForViewWithAccessibilityIdentifier: "Event_KageBug",
             to: true
         )
-        
-        try assertViewModel(
-            with: \.isKageEvent,
-            as: true,
-            setsIsHiddenForViewWithAccessibilityIdentifier: "Event_KageWineGlass",
-            to: false
-        )
-        
-        try assertViewModel(
-            with: \.isKageEvent,
-            as: false,
-            setsIsHiddenForViewWithAccessibilityIdentifier: "Event_KageWineGlass",
-            to: true
-        )
     }
     
     func testBindsFaceMaskRequiredStateToEventTableViewCell() throws {
