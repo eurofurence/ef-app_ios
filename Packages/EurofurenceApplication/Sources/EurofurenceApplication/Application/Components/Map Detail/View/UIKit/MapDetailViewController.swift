@@ -30,7 +30,16 @@ class MapDetailViewController: UIViewController,
     @IBAction private func scrollViewTapped(_ sender: UIGestureRecognizer) {
         let tapLocation = sender.location(in: imageView)
         let position = MapCoordinate(x: Float(tapLocation.x), y: Float(tapLocation.y))
-        delegate?.mapDetailSceneDidTapMap(at: position)
+        
+        let tapAtPoint: () -> Void = { [weak self] in
+            self?.delegate?.mapDetailSceneDidTapMap(at: position)
+        }
+        
+        if let presentedViewController = presentedViewController {
+            presentedViewController.dismiss(animated: true, completion: tapAtPoint)
+        } else {
+            tapAtPoint()
+        }
     }
 
     // MARK: UIScrollViewDelegate
@@ -40,7 +49,7 @@ class MapDetailViewController: UIViewController,
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        presentedViewController?.dismiss(animated: false)
+        presentedViewController?.dismiss(animated: true)
     }
 
     // MARK: UIPopoverPresentationControllerDelegate
@@ -96,12 +105,14 @@ class MapDetailViewController: UIViewController,
         
         present(viewController, animated: true)
     }
-
-    func showMapOptions(heading: String,
-                        options: [String],
-                        atX x: Float,
-                        y: Float,
-                        selectionHandler: @escaping (Int) -> Void) {
+    
+    func showMapOptions(
+        heading: String,
+        options: [String],
+        atX x: Float,
+        y: Float,
+        selectionHandler: @escaping (Int) -> Void
+    ) {
         let alertController = UIAlertController(title: heading, message: nil, preferredStyle: .actionSheet)
         for (idx, option) in options.enumerated() {
             let action = UIAlertAction(title: option, style: .default, handler: { (_) in selectionHandler(idx) })
@@ -110,9 +121,12 @@ class MapDetailViewController: UIViewController,
 
         alertController.addAction(UIAlertAction(title: .cancel, style: .cancel))
 
-        let sourceRect = CGRect(x: CGFloat(x), y: CGFloat(y), width: 0, height: 0)
-        alertController.popoverPresentationController?.sourceView = imageView
-        alertController.popoverPresentationController?.sourceRect = sourceRect
+        if let popover = alertController.popoverPresentationController {
+            popover.delegate = self
+            popover.sourceView = imageView
+            popover.sourceRect = CGRect(x: CGFloat(x), y: CGFloat(y), width: 0, height: 0)
+            popover.passthroughViews = [view]
+        }
 
         present(alertController, animated: true)
     }
