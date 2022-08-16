@@ -17,6 +17,7 @@ public final class FakeEvent: Event {
     public var room: Room
     public var track: Track
     public var hosts: String
+    public var day: Day
     public var startDate: Date
     public var endDate: Date
     public var eventDescription: String
@@ -41,6 +42,7 @@ public final class FakeEvent: Event {
         room: Room,
         track: Track,
         hosts: String,
+        day: Day,
         startDate: Date,
         endDate: Date,
         eventDescription: String,
@@ -64,6 +66,7 @@ public final class FakeEvent: Event {
         self.room = room
         self.track = track
         self.hosts = hosts
+        self.day = day
         self.startDate = startDate
         self.endDate = endDate
         self.eventDescription = eventDescription
@@ -175,6 +178,7 @@ extension FakeEvent: RandomValueProviding {
             room: .random,
             track: .random,
             hosts: .random,
+            day: .random,
             startDate: startDate,
             endDate: startDate.addingTimeInterval(.random),
             eventDescription: .random,

@@ -11,9 +11,13 @@ class WhenRestrictingEventsToSpecificDay_ScheduleShould: XCTestCase {
         let schedule = context.eventsService.loadSchedule(tag: "Test")
         let delegate = CapturingScheduleDelegate()
         schedule.setDelegate(delegate)
-        let randomDay = response.conferenceDays.changed.randomElement()
-        let expectedEvents = response.events.changed.filter({ $0.dayIdentifier == randomDay.element.identifier })
-        schedule.filterSchedule(to: EventsOccurringOnDaySpecification(day: Day(date: randomDay.element.date)))
+        let randomDay = response.conferenceDays.changed.randomElement().element
+        let expectedEvents = response.events.changed.filter({ $0.dayIdentifier == randomDay.identifier })
+        let specification = EventsOccurringOnDaySpecification(
+            day: Day(date: randomDay.date, identifier: randomDay.identifier)
+        )
+        
+        schedule.filterSchedule(to: specification)
 
         try EventAssertion(context: context, modelCharacteristics: response)
             .assertEvents(delegate.events, characterisedBy: expectedEvents)
@@ -25,9 +29,13 @@ class WhenRestrictingEventsToSpecificDay_ScheduleShould: XCTestCase {
         let context = EurofurenceSessionTestBuilder().with(dataStore).build()
         let schedule = context.eventsService.loadSchedule(tag: "Test")
         let delegate = CapturingScheduleDelegate()
-        let randomDay = response.conferenceDays.changed.randomElement()
-        let expectedEvents = response.events.changed.filter({ $0.dayIdentifier == randomDay.element.identifier })
-        schedule.filterSchedule(to: EventsOccurringOnDaySpecification(day: Day(date: randomDay.element.date)))
+        let randomDay = response.conferenceDays.changed.randomElement().element
+        let expectedEvents = response.events.changed.filter({ $0.dayIdentifier == randomDay.identifier })
+        let specification = EventsOccurringOnDaySpecification(
+            day: Day(date: randomDay.date, identifier: randomDay.identifier)
+        )
+        
+        schedule.filterSchedule(to: specification)
         context.refreshLocalStore()
         context.api.simulateSuccessfulSync(response)
         schedule.setDelegate(delegate)
@@ -43,11 +51,20 @@ class WhenRestrictingEventsToSpecificDay_ScheduleShould: XCTestCase {
         let schedule = context.eventsService.loadSchedule(tag: "Test")
         let delegate = CapturingScheduleDelegate()
         schedule.setDelegate(delegate)
-        let randomDay = response.conferenceDays.changed.randomElement()
-        let anotherRandomDay = response.conferenceDays.changed.randomElement()
-        let expectedEvents = response.events.changed.filter({ $0.dayIdentifier == randomDay.element.identifier })
-        schedule.filterSchedule(to: EventsOccurringOnDaySpecification(day: Day(date: anotherRandomDay.element.date)))
-        schedule.filterSchedule(to: EventsOccurringOnDaySpecification(day: Day(date: randomDay.element.date)))
+        let randomDay = response.conferenceDays.changed.randomElement().element
+        let anotherRandomDay = response.conferenceDays.changed.randomElement().element
+        let expectedEvents = response.events.changed.filter({ $0.dayIdentifier == randomDay.identifier })
+        let firstSpecification = EventsOccurringOnDaySpecification(
+            day: Day(date: anotherRandomDay.date, identifier: anotherRandomDay.identifier)
+        )
+        
+        schedule.filterSchedule(to: firstSpecification)
+        
+        let secondSpecification = EventsOccurringOnDaySpecification(
+            day: Day(date: randomDay.date, identifier: randomDay.identifier)
+        )
+        
+        schedule.filterSchedule(to: secondSpecification)
 
         try EventAssertion(context: context, modelCharacteristics: response)
             .assertEvents(delegate.events, characterisedBy: expectedEvents)
