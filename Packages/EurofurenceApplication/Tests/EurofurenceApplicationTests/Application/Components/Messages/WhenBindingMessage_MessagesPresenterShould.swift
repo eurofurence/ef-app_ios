@@ -19,10 +19,12 @@ class MessagesPresenterTestsWhenBindingMessages: XCTestCase {
         let capturingMessageScene = CapturingMessageItemScene()
         context.scene.capturedMessageItemBinder?.bind(capturingMessageScene, toMessageAt: randomIndexPath)
         
+        let expectedMessageContents = context.markdownRenderer.stubbedContents(for: message.contents)
+        
         XCTAssertEqual(allMessages.count, context.scene.boundMessageCount)
         XCTAssertEqual(message.authorName, capturingMessageScene.capturedAuthor)
         XCTAssertEqual(message.subject, capturingMessageScene.capturedSubject)
-        XCTAssertEqual(message.contents, capturingMessageScene.capturedContents)
+        XCTAssertEqual(expectedMessageContents, capturingMessageScene.capturedContents)
         XCTAssertEqual(message.receivedDateTime, context.dateFormatter.capturedDate)
         XCTAssertEqual(context.dateFormatter.stubString, capturingMessageScene.capturedReceivedDateTime)
     }

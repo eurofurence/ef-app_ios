@@ -75,8 +75,8 @@ class CapturingMessageItemScene: MessageItemScene {
         capturedSubject = subject
     }
 
-    private(set) var capturedContents: String?
-    func setContents(_ contents: String) {
+    private(set) var capturedContents: NSAttributedString?
+    func setContents(_ contents: NSAttributedString) {
         capturedContents = contents
     }
 

@@ -1,5 +1,6 @@
 import EurofurenceApplication
 import EurofurenceModel
+import XCTComponentBase
 import XCTEurofurenceModel
 
 class CapturingMessagesComponentDelegate: MessagesComponentDelegate {
@@ -35,6 +36,7 @@ struct MessagesPresenterTestContext {
     var privateMessagesService = CapturingPrivateMessagesService()
     let dateFormatter = CapturingDateFormatter()
     let authenticationService: FakeAuthenticationService
+    let markdownRenderer = StubMarkdownRenderer()
 
     var scene: CapturingMessagesScene {
         return sceneFactory.scene
@@ -69,6 +71,7 @@ struct MessagesPresenterTestContext {
         )
         .with(sceneFactory)
         .with(dateFormatter)
+        .with(markdownRenderer)
         .build()
         .makeMessagesModule(delegate)
     }

@@ -46,7 +46,7 @@ public protocol MessageItemScene {
 
     func setAuthor(_ author: String)
     func setSubject(_ subject: String)
-    func setContents(_ contents: String)
+    func setContents(_ contents: NSAttributedString)
     func setReceivedDateTime(_ dateTime: String)
     func showUnreadIndicator()
     func hideUnreadIndicator()

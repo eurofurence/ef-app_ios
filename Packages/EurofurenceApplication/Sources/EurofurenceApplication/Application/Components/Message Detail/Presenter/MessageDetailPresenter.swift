@@ -1,15 +1,24 @@
+import ComponentBase
 import EurofurenceModel
+import Foundation
 
 class MessageDetailPresenter: MessageDetailSceneDelegate {
     
     private let message: MessageIdentifier
     private weak var scene: MessageDetailScene?
     private let messagesService: PrivateMessagesService
+    private let markdownRenderer: MarkdownRenderer
     
-    init(message: MessageIdentifier, scene: MessageDetailScene, messagesService: PrivateMessagesService) {
+    init(
+        message: MessageIdentifier,
+        scene: MessageDetailScene,
+        messagesService: PrivateMessagesService,
+        markdownRenderer: MarkdownRenderer
+    ) {
         self.message = message
         self.scene = scene
         self.messagesService = messagesService
+        self.markdownRenderer = markdownRenderer
         
         scene.delegate = self
     }
@@ -21,14 +30,15 @@ class MessageDetailPresenter: MessageDetailSceneDelegate {
     private func loadMessageForPresentation() {
         scene?.showLoadingIndicator()
         
-        messagesService.fetchMessage(identifiedBy: message) { (result) in
+        messagesService.fetchMessage(identifiedBy: message) { [markdownRenderer] (result) in
             self.scene?.hideLoadingIndicator()
             
             switch result {
             case .success(let message):
                 message.markAsRead()
+                
                 self.scene?.setMessageDetailTitle(message.authorName)
-                self.scene?.showMessage(viewModel: MessageViewModel(message: message))
+                self.scene?.showMessage(viewModel: MessageViewModel(message: message, markdownRenderer: markdownRenderer))
                 
             case .failure(let error):
                 self.scene?.showError(
@@ -40,19 +50,13 @@ class MessageDetailPresenter: MessageDetailSceneDelegate {
     
     private struct MessageViewModel: MessageDetailViewModel {
         
-        private let message: Message
-        
-        init(message: Message) {
-            self.message = message
+        init(message: Message, markdownRenderer: MarkdownRenderer) {
+            self.subject = message.subject
+            self.contents = markdownRenderer.render(message.contents)
         }
         
-        var subject: String {
-            message.subject
-        }
-        
-        var contents: String {
-            message.contents
-        }
+        let subject: String
+        let contents: NSAttributedString
         
     }
     

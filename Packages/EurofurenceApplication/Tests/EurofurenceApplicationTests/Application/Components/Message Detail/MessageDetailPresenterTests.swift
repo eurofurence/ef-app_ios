@@ -1,6 +1,7 @@
 import EurofurenceApplication
 import EurofurenceModel
 import XCTest
+import XCTComponentBase
 import XCTEurofurenceModel
 
 class MessageDetailPresenterTests: XCTestCase {
@@ -27,18 +28,25 @@ class MessageDetailPresenterTests: XCTestCase {
             providingMessage: message
         )
         
-        let module = MessageDetailComponentBuilder(messagesService: messagesService).with(sceneFactory).build()
+        let markdownRenderer = StubMarkdownRenderer()
+        let module = MessageDetailComponentBuilder(messagesService: messagesService)
+            .with(sceneFactory)
+            .with(markdownRenderer)
+            .build()
+        
         _ = module.makeMessageDetailComponent(for: messageIdentifier)
         
         XCTAssertFalse(message.markedRead)
         
         sceneFactory.scene.simulateSceneReady()
         
+        let expectedContents = markdownRenderer.stubbedContents(for: message.contents)
+        
         XCTAssertTrue(message.markedRead)
         XCTAssertEqual(.hidden, sceneFactory.scene.loadingIndicatorVisibility)
         XCTAssertEqual(message.authorName, sceneFactory.scene.capturedMessageDetailTitle)
         XCTAssertEqual(message.subject, sceneFactory.scene.viewModel?.subject)
-        XCTAssertEqual(message.contents, sceneFactory.scene.viewModel?.contents)
+        XCTAssertEqual(expectedContents, sceneFactory.scene.viewModel?.contents)
     }
     
     func testMessageLoadFailure() throws {
@@ -64,7 +72,13 @@ class MessageDetailPresenterTests: XCTestCase {
         let messageIdentifier = MessageIdentifier.random
         let sceneFactory = StubMessageDetailSceneFactory()
         let messagesService = ControllablePrivateMessagesService()
-        let module = MessageDetailComponentBuilder(messagesService: messagesService).with(sceneFactory).build()
+        let markdownRenderer = StubMarkdownRenderer()
+        
+        let module = MessageDetailComponentBuilder(messagesService: messagesService)
+            .with(sceneFactory)
+            .with(markdownRenderer)
+            .build()
+        
         _ = module.makeMessageDetailComponent(for: messageIdentifier)
         sceneFactory.scene.simulateSceneReady()
         messagesService.failNow(error: .loadingMessagesFailed)
@@ -75,10 +89,12 @@ class MessageDetailPresenterTests: XCTestCase {
         let message = StubMessage.random
         messagesService.succeedNow(message: message)
         
+        let expectedContents = markdownRenderer.stubbedContents(for: message.contents)
+        
         XCTAssertEqual(.hidden, sceneFactory.scene.loadingIndicatorVisibility)
         XCTAssertEqual(message.authorName, sceneFactory.scene.capturedMessageDetailTitle)
         XCTAssertEqual(message.subject, sceneFactory.scene.viewModel?.subject)
-        XCTAssertEqual(message.contents, sceneFactory.scene.viewModel?.contents)
+        XCTAssertEqual(expectedContents, sceneFactory.scene.viewModel?.contents)
     }
 
 }

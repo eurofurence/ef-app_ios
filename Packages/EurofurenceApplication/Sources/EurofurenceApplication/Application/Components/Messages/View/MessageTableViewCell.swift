@@ -37,8 +37,8 @@ class MessageTableViewCell: UITableViewCell, MessageItemScene {
         messageSubjectLabel.text = subject
     }
 
-    func setContents(_ contents: String) {
-        messageSynopsisLabel.text = contents
+    func setContents(_ contents: NSAttributedString) {
+        messageSynopsisLabel.attributedText = contents
     }
 
     func setReceivedDateTime(_ dateTime: String) {
