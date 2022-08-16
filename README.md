@@ -2,9 +2,9 @@
 
 [Download the app on the App Store!](https://apps.apple.com/gb/app/eurofurence-convention/id1112547322)
 
-Master | 3.2.0
+Master | 3.2.1
 ------ | ------
-[![Build Status](https://app.bitrise.io/app/5b6b557ef37c13bc/status.svg?token=0LTkUzpKBZi3QWMWVyXTPA&branch=master)](https://app.bitrise.io/app/5b6b557ef37c13bc) | [![Build Status](https://app.bitrise.io/app/5b6b557ef37c13bc/status.svg?token=0LTkUzpKBZi3QWMWVyXTPA&branch=release/3.2.0)](https://app.bitrise.io/app/5b6b557ef37c13bc)
+[![Build Status](https://app.bitrise.io/app/5b6b557ef37c13bc/status.svg?token=0LTkUzpKBZi3QWMWVyXTPA&branch=master)](https://app.bitrise.io/app/5b6b557ef37c13bc) | [![Build Status](https://app.bitrise.io/app/5b6b557ef37c13bc/status.svg?token=0LTkUzpKBZi3QWMWVyXTPA&branch=release/3.2.1)](https://app.bitrise.io/app/5b6b557ef37c13bc)
 
 Source code for the Eurofurence app for iOS.
 
