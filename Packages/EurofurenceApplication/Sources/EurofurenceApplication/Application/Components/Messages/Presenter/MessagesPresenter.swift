@@ -1,3 +1,4 @@
+import ComponentBase
 import EurofurenceModel
 import Foundation.NSIndexPath
 
@@ -9,6 +10,7 @@ class MessagesPresenter: MessagesSceneDelegate, PrivateMessagesObserver {
     private let authenticationService: AuthenticationService
     private let privateMessagesService: PrivateMessagesService
     private let dateFormatter: DateFormatterProtocol
+    private let markdownRenderer: MarkdownRenderer
     private let delegate: MessagesComponentDelegate
     private var presentedMessages = [Message]()
     private var currentBinder: MessagesBinder?
@@ -20,12 +22,14 @@ class MessagesPresenter: MessagesSceneDelegate, PrivateMessagesObserver {
         authenticationService: AuthenticationService,
         privateMessagesService: PrivateMessagesService,
         dateFormatter: DateFormatterProtocol,
+        markdownRenderer: MarkdownRenderer,
         delegate: MessagesComponentDelegate
     ) {
         self.scene = scene
         self.authenticationService = authenticationService
         self.privateMessagesService = privateMessagesService
         self.dateFormatter = dateFormatter
+        self.markdownRenderer = markdownRenderer
         self.delegate = delegate
 
         scene.delegate = self
@@ -93,7 +97,12 @@ class MessagesPresenter: MessagesSceneDelegate, PrivateMessagesObserver {
     private func presentMessages(_ messages: [Message]) {
         presentedMessages = messages
 
-        let binder = MessagesBinder(messages: messages, dateFormatter: dateFormatter)
+        let binder = MessagesBinder(
+            messages: messages,
+            dateFormatter: dateFormatter,
+            markdownRenderer: markdownRenderer
+        )
+        
         currentBinder = binder
         scene?.bindMessages(count: messages.count, with: binder)
 
@@ -110,16 +119,24 @@ class MessagesPresenter: MessagesSceneDelegate, PrivateMessagesObserver {
 
         private let messages: [Message]
         private let dateFormatter: DateFormatterProtocol
+        private let markdownRenderer: MarkdownRenderer
         private var messageBinders = [IndexPath: MessageBinder]()
         
-        init(messages: [Message], dateFormatter: DateFormatterProtocol) {
+        init(messages: [Message], dateFormatter: DateFormatterProtocol, markdownRenderer: MarkdownRenderer) {
             self.messages = messages
             self.dateFormatter = dateFormatter
+            self.markdownRenderer = markdownRenderer
         }
 
         func bind(_ scene: MessageItemScene, toMessageAt indexPath: IndexPath) {
             let message = messages[indexPath[1]]
-            let binder = MessageBinder(message: message, scene: scene, dateFormatter: dateFormatter)
+            let binder = MessageBinder(
+                message: message,
+                scene: scene,
+                dateFormatter: dateFormatter,
+                markdownRenderer: markdownRenderer
+            )
+            
             messageBinders[indexPath] = binder
         }
         
@@ -137,14 +154,19 @@ class MessagesPresenter: MessagesSceneDelegate, PrivateMessagesObserver {
         private let scene: MessageItemScene
         private let dateFormatter: DateFormatterProtocol
         
-        init(message: Message, scene: MessageItemScene, dateFormatter: DateFormatterProtocol) {
+        init(
+            message: Message,
+            scene: MessageItemScene,
+            dateFormatter: DateFormatterProtocol,
+            markdownRenderer: MarkdownRenderer
+        ) {
             self.message = message
             self.scene = scene
             self.dateFormatter = dateFormatter
             
             scene.setAuthor(message.authorName)
             scene.setSubject(message.subject)
-            scene.setContents(NSAttributedString(string: message.contents))
+            scene.setContents(markdownRenderer.render(message.contents))
 
             let formattedDateTime = dateFormatter.string(from: message.receivedDateTime)
             scene.setReceivedDateTime(formattedDateTime)

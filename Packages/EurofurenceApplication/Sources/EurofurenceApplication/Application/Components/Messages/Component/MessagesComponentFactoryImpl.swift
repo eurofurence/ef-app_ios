@@ -1,3 +1,4 @@
+import ComponentBase
 import EurofurenceModel
 import UIKit.UIViewController
 
@@ -7,6 +8,7 @@ struct MessagesComponentFactoryImpl: MessagesComponentFactory {
     var authenticationService: AuthenticationService
     var privateMessagesService: PrivateMessagesService
     var dateFormatter: DateFormatterProtocol
+    var markdownRenderer: MarkdownRenderer
 
     func makeMessagesModule(_ delegate: MessagesComponentDelegate) -> UIViewController {
         let scene = sceneFactory.makeMessagesScene()
@@ -15,6 +17,7 @@ struct MessagesComponentFactoryImpl: MessagesComponentFactory {
             authenticationService: authenticationService,
             privateMessagesService: privateMessagesService,
             dateFormatter: dateFormatter,
+            markdownRenderer: markdownRenderer,
             delegate: delegate
         )
 
