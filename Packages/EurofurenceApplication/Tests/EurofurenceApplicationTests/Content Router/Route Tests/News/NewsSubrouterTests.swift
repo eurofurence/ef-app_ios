@@ -39,5 +39,12 @@ class NewsSubrouterTests: XCTestCase {
         subrouter.newsModuleDidRequestShowingAllAnnouncements()
         router.assertRouted(to: AnnouncementsRouteable())
     }
+    
+    func testShowingSettings() {
+        let sender = "Opaque Sender"
+        subrouter.newsModuleDidRequestShowingSettings(sender: sender)
+        
+        router.assertRouted(to: SettingsRouteable(sender: sender))
+    }
 
 }
