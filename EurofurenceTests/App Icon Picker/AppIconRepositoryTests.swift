@@ -9,7 +9,7 @@ class AppIconRepositoryTests: XCTestCase {
             .init(displayName: "On the High Seas", imageFileName: "OnTheHighSeasAppIcon")
         ]
         
-        let repository = AppIconRepository()
+        let repository = ApplicationTargetAppIconRepository()
         let actual = repository.loadAvailableIcons()
         
         XCTAssertEqual(expectedIconsWithinApplicationBundle, actual)
