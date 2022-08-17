@@ -65,6 +65,10 @@ class CompositionalNewsViewControllerTests: XCTestCase {
             
         }
         
+        func settingsTapped(sender: Any) {
+            
+        }
+        
     }
     
 }

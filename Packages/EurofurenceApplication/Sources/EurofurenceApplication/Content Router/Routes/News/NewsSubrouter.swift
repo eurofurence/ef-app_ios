@@ -25,4 +25,8 @@ public struct NewsSubrouter: NewsComponentDelegate {
         try? router.route(AnnouncementsRouteable())
     }
     
+    public func newsModuleDidRequestShowingSettings(sender: Any) {
+        
+    }
+    
 }

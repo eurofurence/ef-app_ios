@@ -13,5 +13,6 @@ public protocol NewsComponentDelegate {
     func newsModuleDidSelectAnnouncement(_ announcement: AnnouncementIdentifier)
     func newsModuleDidSelectEvent(_ event: EventIdentifier)
     func newsModuleDidRequestShowingAllAnnouncements()
+    func newsModuleDidRequestShowingSettings(sender: Any)
 
 }

@@ -3,7 +3,7 @@ import EurofurenceModel
 struct CompositionalNewsPresenter: CompositionalNewsSceneDelegate, RefreshServiceObserver {
     
     unowned let scene: any CompositionalNewsScene
-    let environment: any NewsWidgetEnvironment
+    let environment: NewsRoutingEnvironment
     let widgets: [any NewsWidget]
     let refreshService: any RefreshService
     
@@ -23,6 +23,10 @@ struct CompositionalNewsPresenter: CompositionalNewsSceneDelegate, RefreshServic
     
     func refreshServiceDidFinishRefreshing() {
         scene.hideLoadingIndicator()
+    }
+    
+    func settingsTapped(sender: Any) {
+        environment.delegate.newsModuleDidRequestShowingSettings(sender: sender)
     }
     
 }

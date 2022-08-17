@@ -24,5 +24,10 @@ class CapturingNewsComponentDelegate: NewsComponentDelegate {
     func newsModuleDidRequestShowingAllAnnouncements() {
         showAllAnnouncementsRequested = true
     }
+    
+    private(set) var showSettingsSender: Any?
+    func newsModuleDidRequestShowingSettings(sender: Any) {
+        showSettingsSender = sender
+    }
 
 }

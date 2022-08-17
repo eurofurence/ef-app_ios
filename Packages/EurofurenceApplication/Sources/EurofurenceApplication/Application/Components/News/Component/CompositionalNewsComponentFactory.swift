@@ -11,7 +11,7 @@ struct CompositionalNewsComponentFactory: NewsComponentFactory {
     func makeNewsComponent(_ delegate: any NewsComponentDelegate) -> UIViewController {
         let newsScene = sceneFactory.makeCompositionalNewsScene()
         let delegateAdapter = CompositionalNewsRoutesToDelegate(delegate: delegate)
-        let environment = Environment(newsScene: newsScene, router: delegateAdapter)
+        let environment = NewsRoutingEnvironment(delegate: delegate, newsScene: newsScene, router: delegateAdapter)
         let presenter = CompositionalNewsPresenter(
             scene: newsScene,
             environment: environment,
@@ -25,15 +25,16 @@ struct CompositionalNewsComponentFactory: NewsComponentFactory {
         return newsScene
     }
     
-    private struct Environment: NewsWidgetEnvironment {
-        
-        let newsScene: CompositionalNewsScene
-        let router: Router
-        
-        func install(dataSource: TableViewMediator) {
-            newsScene.install(dataSource: dataSource)
-        }
-        
+}
+
+struct NewsRoutingEnvironment: NewsWidgetEnvironment {
+    
+    let delegate: any NewsComponentDelegate
+    let newsScene: CompositionalNewsScene
+    let router: Router
+    
+    func install(dataSource: TableViewMediator) {
+        newsScene.install(dataSource: dataSource)
     }
     
 }
