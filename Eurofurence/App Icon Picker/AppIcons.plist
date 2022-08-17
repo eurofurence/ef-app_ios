@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>EFAppIconImageFileName</key>
+		<string>ClassicAppIcon</string>
+		<key>EFAppIconDisplayNameLocalizedStringKey</key>
+		<string>ClassicAppIconDisplayName</string>
+	</dict>
+	<dict>
+		<key>EFAppIconImageFileName</key>
+		<string>OnTheHighSeasAppIcon</string>
+		<key>EFAppIconDisplayNameLocalizedStringKey</key>
+		<string>OnTheHighSeasAppIconDisplayName</string>
+	</dict>
+</array>
+</plist>
