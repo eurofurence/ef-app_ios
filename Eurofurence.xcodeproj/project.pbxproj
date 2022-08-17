@@ -73,6 +73,11 @@
 		CA8F7D2F256182EF0096E206 /* WidgetKitConformances.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8F7D2E256182EF0096E206 /* WidgetKitConformances.swift */; };
 		CA9768DD25FE39C6001AE029 /* EurofurenceApplicationSession in Frameworks */ = {isa = PBXBuildFile; productRef = CA9768DC25FE39C6001AE029 /* EurofurenceApplicationSession */; };
 		CA9768FB25FE3A81001AE029 /* EurofurenceModel in Frameworks */ = {isa = PBXBuildFile; productRef = CA9768FA25FE3A81001AE029 /* EurofurenceModel */; };
+		CAA41AE728ACF26E002B3B2B /* AppIconRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA41AE628ACF26E002B3B2B /* AppIconRepositoryTests.swift */; };
+		CAA41AE928ACF386002B3B2B /* AppIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA41AE828ACF386002B3B2B /* AppIcon.swift */; };
+		CAA41AEB28ACF38F002B3B2B /* AppIconRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA41AEA28ACF38F002B3B2B /* AppIconRepository.swift */; };
+		CAA41AED28ACF39F002B3B2B /* AppIcons.plist in Resources */ = {isa = PBXBuildFile; fileRef = CAA41AEC28ACF39F002B3B2B /* AppIcons.plist */; };
+		CAA41AEF28ACF41D002B3B2B /* AppIconDisplayNames.strings in Resources */ = {isa = PBXBuildFile; fileRef = CAA41AEE28ACF41D002B3B2B /* AppIconDisplayNames.strings */; };
 		CAA53E1B2874DEE800FC5925 /* NewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA53E1A2874DEE800FC5925 /* NewsTests.swift */; };
 		CAA53E1D2874E32100FC5925 /* TestAccountCredentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = CAA53E1C2874E32100FC5925 /* TestAccountCredentials.plist */; };
 		CAA53E202875682D00FC5925 /* TestResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA53E1F2875682D00FC5925 /* TestResources.swift */; };
@@ -316,6 +321,11 @@
 		CA8F7D2E256182EF0096E206 /* WidgetKitConformances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetKitConformances.swift; sourceTree = "<group>"; };
 		CA9845C91F2907A800E8821D /* ScreenshotGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotGenerator.swift; sourceTree = "<group>"; };
 		CA9845D21F2909DB00E8821D /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
+		CAA41AE628ACF26E002B3B2B /* AppIconRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconRepositoryTests.swift; sourceTree = "<group>"; };
+		CAA41AE828ACF386002B3B2B /* AppIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIcon.swift; sourceTree = "<group>"; };
+		CAA41AEA28ACF38F002B3B2B /* AppIconRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconRepository.swift; sourceTree = "<group>"; };
+		CAA41AEC28ACF39F002B3B2B /* AppIcons.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AppIcons.plist; sourceTree = "<group>"; };
+		CAA41AEE28ACF41D002B3B2B /* AppIconDisplayNames.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = AppIconDisplayNames.strings; sourceTree = "<group>"; };
 		CAA4EFF5265C5003002CBDA6 /* Unit Tests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Unit Tests.xctestplan"; sourceTree = "<group>"; };
 		CAA53E1A2874DEE800FC5925 /* NewsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTests.swift; sourceTree = "<group>"; };
 		CAA53E1C2874E32100FC5925 /* TestAccountCredentials.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TestAccountCredentials.plist; sourceTree = "<group>"; };
@@ -513,6 +523,7 @@
 				CA3ABA05229C4B260045A35B /* AppNotificationDelegate.swift */,
 				CAE434FC25FEBA4D001E74B7 /* PrincipalWindowSceneDelegate.swift */,
 				9ACF993E1EBE172D006FC958 /* Assets.xcassets */,
+				CA52DA6528ACE5DF00020A4F /* App Icon Picker */,
 				CA85153E25FF741700860631 /* Debug */,
 				CA0885F625FE98110044DD53 /* Intents */,
 				CAF194DA24688D7D005DFBBE /* LaunchScreen.storyboard */,
@@ -526,6 +537,7 @@
 			children = (
 				9ACF994E1EBE172D006FC958 /* Info.plist */,
 				78CA0D051F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift */,
+				CAA41AE528ACF25F002B3B2B /* App Icon Picker */,
 				CA0C9FE325FE35D900665ED4 /* Keychain Credential Store */,
 			);
 			path = EurofurenceTests;
@@ -610,6 +622,17 @@
 				CA5F270925570CE600CED97A /* Color+Catalogue.swift */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		CA52DA6528ACE5DF00020A4F /* App Icon Picker */ = {
+			isa = PBXGroup;
+			children = (
+				CAA41AE828ACF386002B3B2B /* AppIcon.swift */,
+				CAA41AEA28ACF38F002B3B2B /* AppIconRepository.swift */,
+				CAA41AEC28ACF39F002B3B2B /* AppIcons.plist */,
+				CAA41AEE28ACF41D002B3B2B /* AppIconDisplayNames.strings */,
+			);
+			path = "App Icon Picker";
 			sourceTree = "<group>";
 		};
 		CA5314DA2603DEBB0022B12E /* Resources */ = {
@@ -709,6 +732,14 @@
 				CA8F7D2E256182EF0096E206 /* WidgetKitConformances.swift */,
 			);
 			path = "Logic Adapter";
+			sourceTree = "<group>";
+		};
+		CAA41AE528ACF25F002B3B2B /* App Icon Picker */ = {
+			isa = PBXGroup;
+			children = (
+				CAA41AE628ACF26E002B3B2B /* AppIconRepositoryTests.swift */,
+			);
+			path = "App Icon Picker";
 			sourceTree = "<group>";
 		};
 		CAA53E1E2874E32900FC5925 /* Resources */ = {
@@ -1113,11 +1144,13 @@
 			files = (
 				CA85154725FF744900860631 /* Debug.storyboard in Resources */,
 				CA08B0F722EDD41A00FDAAA7 /* README.md in Resources */,
+				CAA41AEF28ACF41D002B3B2B /* AppIconDisplayNames.strings in Resources */,
 				CAF194DC24688D7D005DFBBE /* LaunchScreen.storyboard in Resources */,
 				CA08862025FE997E0044DD53 /* personal_notification.caf in Resources */,
 				CA08862125FE997E0044DD53 /* generic_notification.caf in Resources */,
 				78CA0D0F1F0E57D5006DFD64 /* GoogleService-Info.plist in Resources */,
 				CA08861F25FE997E0044DD53 /* fontawesome-webfont.ttf in Resources */,
+				CAA41AED28ACF39F002B3B2B /* AppIcons.plist in Resources */,
 				9ACF993F1EBE172D006FC958 /* Assets.xcassets in Resources */,
 				CA728437209C7DE1007D912A /* Settings.bundle in Resources */,
 			);
@@ -1289,8 +1322,10 @@
 				CA02910221F4D6020007F350 /* UIWindow+Debug.swift in Sources */,
 				CA3ABA06229C4B260045A35B /* AppNotificationDelegate.swift in Sources */,
 				CA2AA2F222C9514500C0E1A1 /* DonateFromAppDealerIntentDonor.swift in Sources */,
+				CAA41AE928ACF386002B3B2B /* AppIcon.swift in Sources */,
 				CAE434FD25FEBA4D001E74B7 /* PrincipalWindowSceneDelegate.swift in Sources */,
 				CA2AA2F422C9518A00C0E1A1 /* ViewDealerIntent+Definition.swift in Sources */,
+				CAA41AEB28ACF38F002B3B2B /* AppIconRepository.swift in Sources */,
 				CA23FCA227ED033900265984 /* DebugSettings.swift in Sources */,
 				9ACF99381EBE172D006FC958 /* AppDelegate.swift in Sources */,
 				CAB4E9172662704400EFE882 /* Intents.intentdefinition in Sources */,
@@ -1303,6 +1338,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				78CA0D061F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift in Sources */,
+				CAA41AE728ACF26E002B3B2B /* AppIconRepositoryTests.swift in Sources */,
 				CA0C9FE525FE35F000665ED4 /* KeychainCredentialStoreTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
