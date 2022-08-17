@@ -6,18 +6,18 @@ class SettingsRouteTests: XCTestCase {
     
     func testShowsSettingsViewController() {
         let modalWireframe = CapturingModalWireframe()
-        let settingsModuleFactory = StubSettingsModuleFactory()
-        let route = SettingsRoute(modalWireframe: modalWireframe, settingsModuleFactory: settingsModuleFactory)
+        let settingsComponentFactory = StubSettingsComponentFactory()
+        let route = SettingsRoute(modalWireframe: modalWireframe, settingsComponentFactory: settingsComponentFactory)
         let routeable = SettingsRouteable(sender: "Unused for this test")
         route.route(routeable)
         
-        XCTAssertIdentical(settingsModuleFactory.stubViewController, modalWireframe.presentedModalContentController)
+        XCTAssertIdentical(settingsComponentFactory.stubViewController, modalWireframe.presentedModalContentController)
     }
     
     func testUsesSenderAsSourceBarButtonItemForPopoverPresentation() {
         let modalWireframe = CapturingModalWireframe()
-        let settingsModuleFactory = StubSettingsModuleFactory()
-        let route = SettingsRoute(modalWireframe: modalWireframe, settingsModuleFactory: settingsModuleFactory)
+        let settingsComponentFactory = StubSettingsComponentFactory()
+        let route = SettingsRoute(modalWireframe: modalWireframe, settingsComponentFactory: settingsComponentFactory)
         let sender = UIBarButtonItem(barButtonSystemItem: .cancel, target: nil, action: nil)
         let routeable = SettingsRouteable(sender: sender)
         route.route(routeable)
