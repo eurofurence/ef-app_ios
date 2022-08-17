@@ -60,6 +60,7 @@ public class CompositionalNewsViewController: UIViewController, CompositionalNew
         
         installTableView()
         installNewsBannerImage()
+        installSettingsBarButtonItem()
     }
     
     override public func didMove(toParent parent: UIViewController?) {
@@ -98,6 +99,19 @@ public class CompositionalNewsViewController: UIViewController, CompositionalNew
         let newsBannerNib = UINib(nibName: "NewsBannerView", bundle: .module)
         let nibContents = newsBannerNib.instantiate(withOwner: nil)
         tableView.tableHeaderView = nibContents.first as? UIView
+    }
+    
+    private func installSettingsBarButtonItem() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: UIImage(systemName: "gear"),
+            style: .plain,
+            target: self,
+            action: #selector(openSettings(_:))
+        )
+    }
+    
+    @objc private func openSettings(_ sender: Any) {
+        delegate?.settingsTapped(sender: sender)
     }
     
 }

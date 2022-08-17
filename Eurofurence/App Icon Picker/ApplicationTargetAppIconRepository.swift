@@ -1,7 +1,7 @@
 import EurofurenceApplication
 import Foundation
 
-public class ApplicationTargetAppIconRepository {
+public class ApplicationTargetAppIconRepository: AppIconRepository {
     
     private var appIconsFromPropertyList: [AppIcon]?
     

@@ -63,7 +63,8 @@ public class AppDelegate: UIResponder, UIApplicationDelegate {
     private func prepareApplication() {
         let dependencies = Application.Dependencies(
             viewEventIntentDonor: DonateFromAppEventIntentDonor(),
-            viewDealerIntentDonor: DonateFromAppDealerIntentDonor()
+            viewDealerIntentDonor: DonateFromAppDealerIntentDonor(),
+            appIcons: ApplicationTargetAppIconRepository()
         )
         
         Application.assemble(dependencies: dependencies)
