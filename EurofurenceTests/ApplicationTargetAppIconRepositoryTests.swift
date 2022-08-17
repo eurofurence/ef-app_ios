@@ -1,7 +1,8 @@
 import Eurofurence
+import EurofurenceApplication
 import XCTest
 
-class AppIconRepositoryTests: XCTestCase {
+class ApplicationTargetAppIconRepositoryTests: XCTestCase {
     
     func testContainsExpectedIcons() {
         let expectedIconsWithinApplicationBundle: [AppIcon] = [
