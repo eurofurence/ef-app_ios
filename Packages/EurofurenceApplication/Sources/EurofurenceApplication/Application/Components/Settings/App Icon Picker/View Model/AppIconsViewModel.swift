@@ -1,6 +1,6 @@
 import Combine
 
-protocol AppIconsViewModel: ObservableObject {
+public protocol AppIconsViewModel: ObservableObject {
     
     associatedtype Icon: AppIconViewModel
     
