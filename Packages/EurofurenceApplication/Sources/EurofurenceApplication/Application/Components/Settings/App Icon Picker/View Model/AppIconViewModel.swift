@@ -1,6 +1,6 @@
 import Combine
 
-protocol AppIconViewModel: ObservableObject, Identifiable {
+public protocol AppIconViewModel: ObservableObject, Identifiable {
     
     var imageName: String { get }
     var displayName: String { get }
