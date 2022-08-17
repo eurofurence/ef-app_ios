@@ -75,9 +75,10 @@
 		CA9768FB25FE3A81001AE029 /* EurofurenceModel in Frameworks */ = {isa = PBXBuildFile; productRef = CA9768FA25FE3A81001AE029 /* EurofurenceModel */; };
 		CAA41AE728ACF26E002B3B2B /* AppIconRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA41AE628ACF26E002B3B2B /* AppIconRepositoryTests.swift */; };
 		CAA41AE928ACF386002B3B2B /* AppIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA41AE828ACF386002B3B2B /* AppIcon.swift */; };
-		CAA41AEB28ACF38F002B3B2B /* AppIconRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA41AEA28ACF38F002B3B2B /* AppIconRepository.swift */; };
+		CAA41AEB28ACF38F002B3B2B /* ApplicationTargetAppIconRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA41AEA28ACF38F002B3B2B /* ApplicationTargetAppIconRepository.swift */; };
 		CAA41AED28ACF39F002B3B2B /* AppIcons.plist in Resources */ = {isa = PBXBuildFile; fileRef = CAA41AEC28ACF39F002B3B2B /* AppIcons.plist */; };
 		CAA41AEF28ACF41D002B3B2B /* AppIconDisplayNames.strings in Resources */ = {isa = PBXBuildFile; fileRef = CAA41AEE28ACF41D002B3B2B /* AppIconDisplayNames.strings */; };
+		CAA41AF728AD09AE002B3B2B /* AppIconRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA41AF628AD09AE002B3B2B /* AppIconRepository.swift */; };
 		CAA53E1B2874DEE800FC5925 /* NewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA53E1A2874DEE800FC5925 /* NewsTests.swift */; };
 		CAA53E1D2874E32100FC5925 /* TestAccountCredentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = CAA53E1C2874E32100FC5925 /* TestAccountCredentials.plist */; };
 		CAA53E202875682D00FC5925 /* TestResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA53E1F2875682D00FC5925 /* TestResources.swift */; };
@@ -323,9 +324,10 @@
 		CA9845D21F2909DB00E8821D /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		CAA41AE628ACF26E002B3B2B /* AppIconRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconRepositoryTests.swift; sourceTree = "<group>"; };
 		CAA41AE828ACF386002B3B2B /* AppIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIcon.swift; sourceTree = "<group>"; };
-		CAA41AEA28ACF38F002B3B2B /* AppIconRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconRepository.swift; sourceTree = "<group>"; };
+		CAA41AEA28ACF38F002B3B2B /* ApplicationTargetAppIconRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationTargetAppIconRepository.swift; sourceTree = "<group>"; };
 		CAA41AEC28ACF39F002B3B2B /* AppIcons.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AppIcons.plist; sourceTree = "<group>"; };
 		CAA41AEE28ACF41D002B3B2B /* AppIconDisplayNames.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = AppIconDisplayNames.strings; sourceTree = "<group>"; };
+		CAA41AF628AD09AE002B3B2B /* AppIconRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconRepository.swift; sourceTree = "<group>"; };
 		CAA4EFF5265C5003002CBDA6 /* Unit Tests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Unit Tests.xctestplan"; sourceTree = "<group>"; };
 		CAA53E1A2874DEE800FC5925 /* NewsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTests.swift; sourceTree = "<group>"; };
 		CAA53E1C2874E32100FC5925 /* TestAccountCredentials.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TestAccountCredentials.plist; sourceTree = "<group>"; };
@@ -627,10 +629,11 @@
 		CA52DA6528ACE5DF00020A4F /* App Icon Picker */ = {
 			isa = PBXGroup;
 			children = (
-				CAA41AE828ACF386002B3B2B /* AppIcon.swift */,
-				CAA41AEA28ACF38F002B3B2B /* AppIconRepository.swift */,
 				CAA41AEC28ACF39F002B3B2B /* AppIcons.plist */,
 				CAA41AEE28ACF41D002B3B2B /* AppIconDisplayNames.strings */,
+				CAA41AE828ACF386002B3B2B /* AppIcon.swift */,
+				CAA41AF628AD09AE002B3B2B /* AppIconRepository.swift */,
+				CAA41AEA28ACF38F002B3B2B /* ApplicationTargetAppIconRepository.swift */,
 			);
 			path = "App Icon Picker";
 			sourceTree = "<group>";
@@ -1325,7 +1328,8 @@
 				CAA41AE928ACF386002B3B2B /* AppIcon.swift in Sources */,
 				CAE434FD25FEBA4D001E74B7 /* PrincipalWindowSceneDelegate.swift in Sources */,
 				CA2AA2F422C9518A00C0E1A1 /* ViewDealerIntent+Definition.swift in Sources */,
-				CAA41AEB28ACF38F002B3B2B /* AppIconRepository.swift in Sources */,
+				CAA41AF728AD09AE002B3B2B /* AppIconRepository.swift in Sources */,
+				CAA41AEB28ACF38F002B3B2B /* ApplicationTargetAppIconRepository.swift in Sources */,
 				CA23FCA227ED033900265984 /* DebugSettings.swift in Sources */,
 				9ACF99381EBE172D006FC958 /* AppDelegate.swift in Sources */,
 				CAB4E9172662704400EFE882 /* Intents.intentdefinition in Sources */,
