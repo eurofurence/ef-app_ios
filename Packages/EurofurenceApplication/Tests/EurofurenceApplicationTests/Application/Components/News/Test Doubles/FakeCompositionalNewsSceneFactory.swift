@@ -46,4 +46,8 @@ class FakeCompositionalNewsScene: UIViewController, CompositionalNewsScene {
         delegate?.reloadRequested()
     }
     
+    func simulateSettingsTapped(sender: Any) {
+        delegate?.settingsTapped(sender: sender)
+    }
+    
 }

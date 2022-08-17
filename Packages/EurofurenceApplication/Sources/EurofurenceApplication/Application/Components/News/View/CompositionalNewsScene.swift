@@ -11,5 +11,6 @@ public protocol CompositionalNewsSceneDelegate {
     
     func sceneReady()
     func reloadRequested()
+    func settingsTapped(sender: Any)
     
 }

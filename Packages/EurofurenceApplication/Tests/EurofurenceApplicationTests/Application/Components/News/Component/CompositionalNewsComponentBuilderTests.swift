@@ -70,6 +70,23 @@ class CompositionalNewsComponentBuilderTests: XCTestCase {
         XCTAssertTrue(refreshService.toldToRefresh, "Should begin refreshing when the scene requests it")
     }
     
+    func testTellDelegateToShowSettingsWhenSceneRequestsit() {
+        let refreshService = CapturingRefreshService()
+        let sceneFactory = FakeCompositionalNewsSceneFactory()
+        let builder = CompositionalNewsComponentBuilder(refreshService: refreshService)
+            .with(sceneFactory)
+        
+        let delegate = CapturingNewsComponentDelegate()
+        _ = builder.build().makeNewsComponent(delegate)
+        
+        sceneFactory.scene.simulateSceneReady()
+        
+        let sender = "Opqaque sender"
+        sceneFactory.scene.simulateSettingsTapped(sender: sender)
+        
+        XCTAssertEqual(sender, delegate.showSettingsSender as? String)
+    }
+    
     func testControlSceneRefreshIndicatorVisibilityDuringRefresh() {
         let refreshService = CapturingRefreshService()
         let sceneFactory = FakeCompositionalNewsSceneFactory()
