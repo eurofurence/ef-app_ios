@@ -70,10 +70,10 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="A5a-fB-zLf" firstAttribute="leading" secondItem="doP-77-91S" secondAttribute="leading" constant="20" symbolic="YES" id="6rf-B0-oqc"/>
-                                    <constraint firstAttribute="trailing" secondItem="A5a-fB-zLf" secondAttribute="trailing" constant="20" symbolic="YES" id="CSg-Ia-BMa"/>
-                                    <constraint firstItem="A5a-fB-zLf" firstAttribute="top" secondItem="doP-77-91S" secondAttribute="top" constant="20" symbolic="YES" id="jX6-tA-CPb"/>
-                                    <constraint firstAttribute="bottom" secondItem="A5a-fB-zLf" secondAttribute="bottom" constant="20" symbolic="YES" id="kRS-cH-dCE"/>
+                                    <constraint firstItem="A5a-fB-zLf" firstAttribute="leading" secondItem="doP-77-91S" secondAttribute="leadingMargin" constant="12" id="6rf-B0-oqc"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="A5a-fB-zLf" secondAttribute="trailing" constant="12" id="CSg-Ia-BMa"/>
+                                    <constraint firstItem="A5a-fB-zLf" firstAttribute="top" secondItem="doP-77-91S" secondAttribute="topMargin" constant="12" id="jX6-tA-CPb"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="A5a-fB-zLf" secondAttribute="bottom" constant="12" id="kRS-cH-dCE"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -88,11 +88,7 @@
                     </view>
                     <size key="freeformSize" width="375" height="100"/>
                     <connections>
-                        <outlet property="bottomConstraint" destination="kRS-cH-dCE" id="nA6-7G-iks"/>
-                        <outlet property="leftConstraint" destination="6rf-B0-oqc" id="DLY-Aw-pJ0"/>
-                        <outlet property="rightConstraint" destination="CSg-Ia-BMa" id="Orq-Go-r5d"/>
                         <outlet property="titleLabel" destination="A5a-fB-zLf" id="xhF-Kx-mGb"/>
-                        <outlet property="topConstraint" destination="jX6-tA-CPb" id="WmV-UD-ck2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="awv-bg-9dx" userLabel="First Responder" sceneMemberID="firstResponder"/>
