@@ -62,6 +62,8 @@ struct NewsRoutes: RouteProvider {
             )
             
             LoginRoute(loginModuleFactory: formSheetWrapper, modalWireframe: modalWireframe)
+            
+            SettingsRoute(modalWireframe: modalWireframe, settingsComponentFactory: components.settingsComponentFactory)
         }
     }
     

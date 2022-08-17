@@ -35,6 +35,7 @@ struct ComponentRegistry {
     let eventDetailComponentFactory: EventDetailComponentFactory
     let eventFeedbackComponentFactory: EventFeedbackComponentFactory
     let additionalServicesComponentFactory: AdditionalServicesComponentFactory
+    let settingsComponentFactory: SettingsComponentFactory
     
     // swiftlint:disable function_body_length
     init(dependencies: Application.Dependencies, services: Services, repositories: Repositories, window: UIWindow) {
@@ -210,6 +211,8 @@ struct ComponentRegistry {
         additionalServicesComponentFactory = AdditionalServicesComponentBuilder(
             repository: repositories.additionalServices
         ).build()
+        
+        settingsComponentFactory = AppIconOnlySettingsComponentFactory(repository: dependencies.appIcons)
     }
     
 }

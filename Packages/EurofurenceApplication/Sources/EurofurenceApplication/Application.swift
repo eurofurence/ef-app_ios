@@ -14,13 +14,16 @@ public class Application {
         
         public let viewEventIntentDonor: EventIntentDonor
         public let viewDealerIntentDonor: ViewDealerIntentDonor
+        public let appIcons: AppIconRepository
         
         public init(
             viewEventIntentDonor: EventIntentDonor,
-            viewDealerIntentDonor: ViewDealerIntentDonor
+            viewDealerIntentDonor: ViewDealerIntentDonor,
+            appIcons: AppIconRepository
         ) {
             self.viewEventIntentDonor = viewEventIntentDonor
             self.viewDealerIntentDonor = viewDealerIntentDonor
+            self.appIcons = appIcons
         }
         
     }
