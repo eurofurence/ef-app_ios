@@ -1,6 +1,6 @@
 import UIKit
 
-public protocol SettingsModuleFactory {
+public protocol SettingsComponentFactory {
     
     func makeSettingsModule() -> UIViewController
     

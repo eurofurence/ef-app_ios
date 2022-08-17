@@ -5,11 +5,11 @@ import UIKit
 public struct SettingsRoute {
     
     private let modalWireframe: any ModalWireframe
-    private let settingsModuleFactory: any SettingsModuleFactory
+    private let settingsComponentFactory: any SettingsComponentFactory
     
-    public init(modalWireframe: any ModalWireframe, settingsModuleFactory: any SettingsModuleFactory) {
+    public init(modalWireframe: any ModalWireframe, settingsComponentFactory: any SettingsComponentFactory) {
         self.modalWireframe = modalWireframe
-        self.settingsModuleFactory = settingsModuleFactory
+        self.settingsComponentFactory = settingsComponentFactory
     }
     
 }
@@ -21,7 +21,7 @@ extension SettingsRoute: Route {
     public typealias Parameter = SettingsRouteable
     
     public func route(_ parameter: Parameter) {
-        let viewController = settingsModuleFactory.makeSettingsModule()
+        let viewController = settingsComponentFactory.makeSettingsModule()
         
         if let barButtonItem = parameter.sender as? UIBarButtonItem {
             viewController.modalPresentationStyle = .popover

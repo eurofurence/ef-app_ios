@@ -1,7 +1,7 @@
 import EurofurenceApplication
 import UIKit
 
-class StubSettingsModuleFactory: SettingsModuleFactory {
+class StubSettingsComponentFactory: SettingsComponentFactory {
     
     let stubViewController = UIViewController()
     func makeSettingsModule() -> UIViewController {
