@@ -16,7 +16,7 @@ class EventImpl: Event {
     }
     
     let identifier: EventIdentifier
-    let day: ConferenceDayCharacteristics
+    let dayCharacteristics: ConferenceDayCharacteristics
     let room: Room
     let track: Track
 
@@ -46,6 +46,10 @@ class EventImpl: Event {
     
     var hosts: String {
         characteristics.panelHosts
+    }
+    
+    var day: Day {
+        Day(date: self.dayCharacteristics.date, identifier: self.dayCharacteristics.identifier)
     }
     
     var startDate: Date {
@@ -117,7 +121,7 @@ class EventImpl: Event {
         self.room = room
         self.track = track
         
-        self.day = day
+        self.dayCharacteristics = day
     }
     
     var contentURL: URL {

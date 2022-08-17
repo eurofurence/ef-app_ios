@@ -118,7 +118,7 @@ class EventsScheduleAdapter: Schedule, CustomStringConvertible {
 
     private func updateCurrentDay() {
         if let day = findDay(for: clock.currentDate) {
-            let conferenceDay = Day(date: day.date)
+            let conferenceDay = Day(date: day.date, identifier: "UNTESTED")
             if conferenceDay != currentDay {
                 currentDay = conferenceDay
             }

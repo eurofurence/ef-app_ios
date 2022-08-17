@@ -11,6 +11,7 @@ public protocol Event {
     var room: Room { get }
     var track: Track { get }
     var hosts: String { get }
+    var day: Day { get }
     var startDate: Date { get }
     var endDate: Date { get }
     var eventDescription: String { get }

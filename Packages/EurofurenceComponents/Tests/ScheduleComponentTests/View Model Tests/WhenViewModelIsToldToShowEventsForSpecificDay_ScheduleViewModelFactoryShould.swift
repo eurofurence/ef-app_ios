@@ -9,6 +9,7 @@ class WhenViewModelIsToldToShowEventsForSpecificDay_ScheduleViewModelFactoryShou
         let days: [Day] = .random
         let randomDay = days.randomElement()
         let event = FakeEvent.random
+        event.day = randomDay.element
         event.startDate = randomDay.element.date.addingTimeInterval(-10)
         event.endDate = randomDay.element.date.addingTimeInterval(10)
         

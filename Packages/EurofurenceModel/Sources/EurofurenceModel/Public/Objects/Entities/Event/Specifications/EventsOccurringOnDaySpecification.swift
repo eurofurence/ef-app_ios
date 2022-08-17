@@ -17,12 +17,7 @@ extension EventsOccurringOnDaySpecification: Specification {
     public typealias Element = Event
     
     public func isSatisfied(by element: Element) -> Bool {
-        let calendar = Calendar.current
-        let dayComponents: Set<Calendar.Component> = [.day, .month, .year]
-        let theDay = calendar.dateComponents(dayComponents, from: day.date)
-        let eventDay = calendar.dateComponents(dayComponents, from: element.startDate)
-        
-        return theDay == eventDay
+        day.identifier == element.day.identifier
     }
     
 }

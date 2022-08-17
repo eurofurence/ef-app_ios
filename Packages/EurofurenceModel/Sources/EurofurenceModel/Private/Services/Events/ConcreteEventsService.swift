@@ -223,7 +223,7 @@ class ConcreteScheduleRepository: ClockDelegate, ScheduleRepository {
     }
 
     private func makeDay(from model: ConferenceDayCharacteristics) -> Day {
-        return Day(date: model.date)
+        return Day(date: model.date, identifier: model.identifier)
     }
 
     private func favouriteEvent(identifier: EventIdentifier) {
