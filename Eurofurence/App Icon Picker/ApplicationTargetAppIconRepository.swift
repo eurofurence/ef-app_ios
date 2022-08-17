@@ -1,3 +1,4 @@
+import EurofurenceApplication
 import Foundation
 
 public class ApplicationTargetAppIconRepository {
