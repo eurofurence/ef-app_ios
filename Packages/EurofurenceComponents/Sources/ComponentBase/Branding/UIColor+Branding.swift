@@ -1,4 +1,11 @@
+import SwiftUI
 import UIKit
+
+extension Color {
+    
+    public static let pantone330U = Color("Pantone 330U", bundle: .moduleWorkaround)
+    
+}
 
 extension UIColor {
     
