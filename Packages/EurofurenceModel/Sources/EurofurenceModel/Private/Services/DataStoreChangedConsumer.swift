@@ -2,7 +2,13 @@ import Foundation
 
 struct DataStoreChangedConsumer: EventConsumer {
 
-    let handler: () -> Void
+    let description: String
+    private let handler: () -> Void
+    
+    init(_ description: String, handler: @escaping () -> Void) {
+        self.description = description
+        self.handler = handler
+    }
 
     typealias Event = DomainEvent.DataStoreChangedEvent
 

@@ -3,7 +3,7 @@
  an `EventBus`, acting upon the meaning and representation of the received
  `Event`. `Event`s could represent a change in state, timer event, action etc.
  */
-public protocol EventConsumer {
+public protocol EventConsumer: CustomStringConvertible {
 
     /// Represents the type of the event this consumer will observe.
     associatedtype Event
@@ -17,4 +17,12 @@ public protocol EventConsumer {
     */
     func consume(event: Event)
 
+}
+
+extension EventConsumer {
+    
+    public var description: String {
+        String(describing: type(of: self))
+    }
+    
 }

@@ -11,7 +11,7 @@ public protocol ScheduleRepository {
 
 }
 
-public protocol ScheduleRepositoryObserver {
+public protocol ScheduleRepositoryObserver: AnyObject {
 
     func eventsDidChange(to events: [Event])
     func runningEventsDidChange(to events: [Event])

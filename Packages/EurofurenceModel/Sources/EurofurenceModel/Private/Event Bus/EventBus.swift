@@ -31,6 +31,11 @@ public class EventBus {
 
     /// Initializes a new `EventBus` instance.
     public init() { }
+    
+    public enum DispatchPriority {
+        case normal
+        case last
+    }
 
     // MARK: Public
 
@@ -50,9 +55,12 @@ public class EventBus {
         A registration of the subscription. The caller must retain this subcription. Once the subscription has been
         deallocated, the consumer will stop being notified.
     */
-    public func subscribe<Consumer: EventConsumer>(consumer: Consumer) -> AnyHashable {
+    public func subscribe<Consumer: EventConsumer>(
+        consumer: Consumer,
+        priority: DispatchPriority = .normal
+    ) -> AnyHashable {
         let subscription = EventSubscription(dispatcher: consumer, eventBus: self)
-        subscriptions.add(subscription)
+        subscriptions.add(subscription, preferredOrder: priority == .normal ? .none : .last)
 
         if case .replayLast = redeliveryMode, let event = cache.cachedEvent(ofType: Consumer.Event.self) {
             consumer.consume(event: event)
