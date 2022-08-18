@@ -1,7 +1,7 @@
 import EurofurenceModel
 import Foundation
 
-public struct ReviewPromptController: ScheduleRepositoryObserver {
+public class ReviewPromptController: ScheduleRepositoryObserver {
 
     public struct Config {
         public static let `default` = Config(requiredNumberOfFavouriteEvents: 3)

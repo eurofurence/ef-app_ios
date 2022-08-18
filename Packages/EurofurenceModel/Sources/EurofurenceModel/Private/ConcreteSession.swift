@@ -49,13 +49,6 @@ class ConcreteSession: EurofurenceSession {
         
         let dataStore = dataStoreFactory.makeDataStore(for: conventionIdentifier)
         
-        sessionStateService = ConcreteSessionStateService(
-            eventBus: eventBus,
-            forceRefreshRequired: forceRefreshRequired,
-            userPreferences: userPreferences,
-            dataStore: dataStore
-        )
-        
         remoteNotificationRegistrationController = RemoteNotificationRegistrationController(
             eventBus: eventBus,
             remoteNotificationsTokenRegistration: remoteNotificationsTokenRegistration
@@ -172,6 +165,13 @@ class ConcreteSession: EurofurenceSession {
         contentLinksService = ConcreteContentLinksService(urlEntityProcessor: urlEntityProcessor)
         
         eventFeedbackService = EventFeedbackService(api: api, eventBus: eventBus)
+        
+        sessionStateService = ConcreteSessionStateService(
+            eventBus: eventBus,
+            forceRefreshRequired: forceRefreshRequired,
+            userPreferences: userPreferences,
+            dataStore: dataStore
+        )
         
         privateMessagesService.refreshMessages()
     }
