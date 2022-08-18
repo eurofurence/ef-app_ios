@@ -39,11 +39,9 @@ class JournallingURLRequestLogger {
 
     func record(_ request: URLRequest) {
         var requestsToRemove = [ExpectedRequest]()
-        for (expectedRequest, expectation) in expectations {
-            if expectedRequest.expected(request) {
-                expectation.fulfill()
-                requestsToRemove.append(expectedRequest)
-            }
+        for (expectedRequest, expectation) in expectations where expectedRequest.expected(request) {
+            expectation.fulfill()
+            requestsToRemove.append(expectedRequest)
         }
 
         for request in requestsToRemove {

@@ -38,7 +38,8 @@ class MessageDetailPresenter: MessageDetailSceneDelegate {
                 message.markAsRead()
                 
                 self.scene?.setMessageDetailTitle(message.authorName)
-                self.scene?.showMessage(viewModel: MessageViewModel(message: message, markdownRenderer: markdownRenderer))
+                self.scene?.showMessage(viewModel: MessageViewModel(message: message,
+                                                                    markdownRenderer: markdownRenderer))
                 
             case .failure(let error):
                 self.scene?.showError(
