@@ -24,7 +24,7 @@ class ConcreteSessionStateService: SessionStateService {
             self?.notifyObserversOfCurrentState()
         }
         
-        dataStoreChangedRegistration = eventBus.subscribe(consumer: updateSessionState)
+        dataStoreChangedRegistration = eventBus.subscribe(consumer: updateSessionState, priority: .last)
     }
     
     private var currentState: EurofurenceSessionState {

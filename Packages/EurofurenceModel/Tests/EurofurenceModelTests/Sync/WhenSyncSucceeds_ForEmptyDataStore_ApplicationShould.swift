@@ -28,6 +28,7 @@ class WhenSyncSucceeds_ForEmptyDataStore_ApplicationShould: XCTestCase {
         context.announcementsService.add(observer)
         context.repositories.events.add(observer)
         context.knowledgeService.add(observer)
+        context.sessionStateService.add(observer: observer)
         
         let schedule = context.repositories.events.loadSchedule(tag: "Test")
         schedule.setDelegate(observer)
