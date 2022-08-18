@@ -48,16 +48,24 @@ public class ApplicationTargetAppIconRepository: AppIconRepository {
                 table: "AppIconDisplayNames"
             )
             
-            return AppIcon(displayName: localizedDisplayName, imageFileName: imageFileName)
+            let alternateIconName: String? = self.alternateIconName.isEmpty ? nil : self.alternateIconName
+            
+            return AppIcon(
+                displayName: localizedDisplayName,
+                imageFileName: imageFileName,
+                alternateIconName: alternateIconName
+            )
         }
         
         private enum CodingKeys: String, CodingKey {
             case imageFileName = "EFAppIconImageFileName"
             case displayNameLocalizationKey = "EFAppIconDisplayNameLocalizedStringKey"
+            case alternateIconName = "EFAppIconAlternateIconName"
         }
         
         var imageFileName: String
         var displayNameLocalizationKey: String
+        var alternateIconName: String
         
     }
     

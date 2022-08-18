@@ -5,7 +5,7 @@ import XCTest
 class RepositoryBackedAppIconsViewModelTests: XCTestCase {
     
     func testAdaptsIconsFromRepository() throws {
-        let icon = AppIcon(displayName: "Display Name", imageFileName: "File Name")
+        let icon = AppIcon(displayName: "Display Name", imageFileName: "File Name", alternateIconName: "Alternate Name")
         let repository = StubAppIconRepository(availableIcons: [icon])
         let applicationIconState = StubApplicationIconState()
         let viewModel = RepositoryBackedAppIconsViewModel(
@@ -21,10 +21,10 @@ class RepositoryBackedAppIconsViewModelTests: XCTestCase {
     }
     
     func testInfersCurrentAppIcon() throws {
-        let icon = AppIcon(displayName: "Display Name", imageFileName: "File Name")
+        let icon = AppIcon(displayName: "Display Name", imageFileName: "File Name", alternateIconName: "Alternate Name")
         let repository = StubAppIconRepository(availableIcons: [icon])
         let applicationIconState = StubApplicationIconState()
-        applicationIconState.updateApplicationIcon(alternateIconName: "File Name")
+        applicationIconState.updateApplicationIcon(alternateIconName: "Alternate Name")
         let viewModel = RepositoryBackedAppIconsViewModel(
             repository: repository,
             applicationIconState: applicationIconState
@@ -38,7 +38,7 @@ class RepositoryBackedAppIconsViewModelTests: XCTestCase {
     }
     
     func testSelectingNewAppIcon() throws {
-        let icon = AppIcon(displayName: "Display Name", imageFileName: "File Name")
+        let icon = AppIcon(displayName: "Display Name", imageFileName: "File Name", alternateIconName: "Alternate Name")
         let repository = StubAppIconRepository(availableIcons: [icon])
         let applicationIconState = StubApplicationIconState()
         let viewModel = RepositoryBackedAppIconsViewModel(
@@ -49,16 +49,26 @@ class RepositoryBackedAppIconsViewModelTests: XCTestCase {
         let iconViewModel = try XCTUnwrap(viewModel.icons.first)
         iconViewModel.selectAsAppIcon()
         
-        XCTAssertEqual("File Name", applicationIconState.alternateIconNamePublisher.value)
+        XCTAssertEqual("Alternate Name", applicationIconState.alternateIconNamePublisher.value)
         XCTAssertTrue(iconViewModel.isCurrentAppIcon)
     }
     
     func testUpdatesCurrentSelectionStateForOtherAppIcons() throws {
-        let firstIcon = AppIcon(displayName: "First Display Name", imageFileName: "First File Name")
-        let secondIcon = AppIcon(displayName: "Second Display Name", imageFileName: "Second File Name")
+        let firstIcon = AppIcon(
+            displayName: "First Display Name",
+            imageFileName: "First File Name",
+            alternateIconName: "First Alternate Name"
+        )
+        
+        let secondIcon = AppIcon(
+            displayName: "Second Display Name",
+            imageFileName: "Second File Name",
+            alternateIconName: "Second Alternate Name"
+        )
+        
         let repository = StubAppIconRepository(availableIcons: [firstIcon, secondIcon])
         let applicationIconState = StubApplicationIconState()
-        applicationIconState.updateApplicationIcon(alternateIconName: "Second File Name")
+        applicationIconState.updateApplicationIcon(alternateIconName: "Second Alternate Name")
         let viewModel = RepositoryBackedAppIconsViewModel(
             repository: repository,
             applicationIconState: applicationIconState

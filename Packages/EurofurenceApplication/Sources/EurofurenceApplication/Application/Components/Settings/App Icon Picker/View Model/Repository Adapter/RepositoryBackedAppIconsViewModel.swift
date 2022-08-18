@@ -23,7 +23,7 @@ public class RepositoryBackedAppIconsViewModel<IconState>: AppIconsViewModel whe
             
             applicationIconState
                 .alternateIconNamePublisher
-                .map({ [icon] (alternateIconName) in icon.imageFileName == alternateIconName })
+                .map({ [icon] (alternateIconName) in icon.alternateIconName == alternateIconName })
                 .sink { [weak self] in self?.isCurrentAppIcon = $0 }
                 .store(in: &subscriptions)
         }
@@ -39,7 +39,7 @@ public class RepositoryBackedAppIconsViewModel<IconState>: AppIconsViewModel whe
         @Published public private(set) var isCurrentAppIcon: Bool = false
         
         public func selectAsAppIcon() {
-            applicationIconState.updateApplicationIcon(alternateIconName: icon.imageFileName)
+            applicationIconState.updateApplicationIcon(alternateIconName: icon.alternateIconName)
         }
         
     }
