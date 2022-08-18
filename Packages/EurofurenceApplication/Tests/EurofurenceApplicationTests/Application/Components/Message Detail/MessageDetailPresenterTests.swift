@@ -1,7 +1,7 @@
 import EurofurenceApplication
 import EurofurenceModel
-import XCTest
 import XCTComponentBase
+import XCTest
 import XCTEurofurenceModel
 
 class MessageDetailPresenterTests: XCTestCase {

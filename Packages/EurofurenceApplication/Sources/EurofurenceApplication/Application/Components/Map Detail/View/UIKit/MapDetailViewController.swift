@@ -57,6 +57,11 @@ class MapDetailViewController: UIViewController,
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
     }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController,
+                                   traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return .none
+    }
 
     // MARK: MapDetailScene
 
