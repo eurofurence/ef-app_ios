@@ -12,7 +12,9 @@ extension Bundle {
         let commandLineBundleURL = Bundle.main.bundleURL
         let frameworkLinkedBundleURL = Bundle(for: BundleScope.self).resourceURL
         let uiTestingBundleURL = frameworkLinkedBundleURL?.deletingLastPathComponent()
-        let crossPackagePreviewBundleURL = frameworkLinkedBundleURL?.deletingLastPathComponent().deletingLastPathComponent()
+        let crossPackagePreviewBundleURL = frameworkLinkedBundleURL?
+            .deletingLastPathComponent()
+            .deletingLastPathComponent()
         
         let candidates = [
             appLinkedBundleURL,
