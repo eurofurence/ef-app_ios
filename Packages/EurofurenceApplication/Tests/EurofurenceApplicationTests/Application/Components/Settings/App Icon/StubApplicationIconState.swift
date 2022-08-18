@@ -1,5 +1,5 @@
-import EurofurenceApplication
 import Combine
+import EurofurenceApplication
 
 class StubApplicationIconState: ApplicationIconState {
     

@@ -4,12 +4,12 @@ public class RepositoryBackedAppIconsViewModel<IconState>: AppIconsViewModel whe
     
     public init(repository: any AppIconRepository, applicationIconState: IconState) {
         let repositoryIcons = repository.loadAvailableIcons()
-        icons = repositoryIcons.map({ IconViewModel.init(icon: $0, applicationIconState: applicationIconState) })
+        icons = repositoryIcons.map({ IconViewModel(icon: $0, applicationIconState: applicationIconState) })
     }
     
     public typealias Icon = IconViewModel
     
-    private(set) public var icons: [IconViewModel]
+    public private(set) var icons: [IconViewModel]
     
     public class IconViewModel: AppIconViewModel {
         
@@ -24,7 +24,7 @@ public class RepositoryBackedAppIconsViewModel<IconState>: AppIconsViewModel whe
             applicationIconState
                 .alternateIconNamePublisher
                 .map({ [icon] (alternateIconName) in icon.imageFileName == alternateIconName })
-                .sink { [unowned self] in isCurrentAppIcon = $0 }
+                .sink { [weak self] in self?.isCurrentAppIcon = $0 }
                 .store(in: &subscriptions)
         }
         
@@ -36,7 +36,7 @@ public class RepositoryBackedAppIconsViewModel<IconState>: AppIconsViewModel whe
             icon.displayName
         }
         
-        @Published private(set) public var isCurrentAppIcon: Bool = false
+        @Published public private(set) var isCurrentAppIcon: Bool = false
         
         public func selectAsAppIcon() {
             applicationIconState.updateApplicationIcon(alternateIconName: icon.imageFileName)
