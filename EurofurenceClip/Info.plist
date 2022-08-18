@@ -2,20 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>ITSAppUsesNonExemptEncryption</key>
-	<false/>
-	<key>NSCameraUsageDescription</key>
-	<string>Eurofurence uses the camera to capture photos when submitting Artist Alley table registrations</string>
-	<key>NSUserActivityTypes</key>
-	<array>
-		<string>ViewDealerIntent</string>
-		<string>ViewEventIntent</string>
-		<string>ViewEventsIntent</string>
-		<string>org.eurofurence.activity.view-dealer</string>
-		<string>org.eurofurence.activity.view-event</string>
-	</array>
-	<key>NSCalendarsUsageDescription</key>
-	<string>Eurofurence uses your calendar to add events and alerts</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -33,7 +19,9 @@
 	<key>CFBundleShortVersionString</key>
 	<string>3.2.1</string>
 	<key>CFBundleVersion</key>
-	<string>DEV</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppClip</key>
@@ -43,6 +31,18 @@
 		<key>NSAppClipRequestLocationConfirmation</key>
 		<false/>
 	</dict>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Eurofurence uses your calendar to add events and alerts</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Eurofurence uses the camera to capture photos when submitting Artist Alley table registrations</string>
+	<key>NSUserActivityTypes</key>
+	<array>
+		<string>ViewDealerIntent</string>
+		<string>ViewEventIntent</string>
+		<string>ViewEventsIntent</string>
+		<string>org.eurofurence.activity.view-dealer</string>
+		<string>org.eurofurence.activity.view-event</string>
+	</array>
 	<key>UIAppFonts</key>
 	<array>
 		<string>fontawesome-webfont.ttf</string>

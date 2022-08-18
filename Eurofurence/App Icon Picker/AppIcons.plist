@@ -3,14 +3,18 @@
 <plist version="1.0">
 <array>
 	<dict>
+		<key>EFAppIconAlternateIconName</key>
+		<string>Classic</string>
 		<key>EFAppIconImageFileName</key>
-		<string>ClassicAppIcon</string>
+		<string>Classic</string>
 		<key>EFAppIconDisplayNameLocalizedStringKey</key>
 		<string>ClassicAppIconDisplayName</string>
 	</dict>
 	<dict>
+		<key>EFAppIconAlternateIconName</key>
+		<string></string>
 		<key>EFAppIconImageFileName</key>
-		<string>OnTheHighSeasAppIcon</string>
+		<string>Pirate</string>
 		<key>EFAppIconDisplayNameLocalizedStringKey</key>
 		<string>OnTheHighSeasAppIconDisplayName</string>
 	</dict>
