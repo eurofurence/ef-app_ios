@@ -23,9 +23,11 @@ class ConcreteAnnouncementsRepository: AnnouncementsRepository {
         self.dataStore = dataStore
         self.imageRepository = imageRepository
         
-        subscription = eventBus.subscribe(consumer: DataStoreChangedConsumer { [weak self] in
+        let updateCachedAnnouncements = DataStoreChangedConsumer("ConcreteAnnouncementsRepository") { [weak self] in
             self?.reloadAnnouncementsFromStore()
-        })
+        }
+        
+        subscription = eventBus.subscribe(consumer: updateCachedAnnouncements)
 
         reloadAnnouncementsFromStore()
         readAnnouncementIdentifiers = dataStore.fetchReadAnnouncementIdentifiers().defaultingTo(.empty)

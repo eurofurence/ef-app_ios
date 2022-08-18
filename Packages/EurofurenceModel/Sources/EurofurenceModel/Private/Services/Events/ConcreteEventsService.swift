@@ -89,10 +89,11 @@ class ConcreteScheduleRepository: ClockDelegate, ScheduleRepository {
         self.eventBus = eventBus
         self.shareableURLFactory = shareableURLFactory
 
-        subscriptions.insert(eventBus.subscribe(consumer: DataStoreChangedConsumer { [weak self] in
+        let updateCachedEvents = DataStoreChangedConsumer("ConcreteScheduleRepository") { [weak self] in
             self?.reconstituteEventsFromDataStore()
-        }))
+        }
         
+        subscriptions.insert(eventBus.subscribe(consumer: updateCachedEvents))
         subscriptions.insert(eventBus.subscribe(consumer: FavouriteEventHandler(service: self)))
         subscriptions.insert(eventBus.subscribe(consumer: UnfavouriteEventHandler(service: self)))
 

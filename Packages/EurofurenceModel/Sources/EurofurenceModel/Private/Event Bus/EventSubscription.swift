@@ -1,10 +1,15 @@
 import Foundation.NSUUID
 
-class EventSubscription: Equatable, Hashable {
+class EventSubscription: CustomStringConvertible, Equatable, Hashable {
     
     private let id: AnyHashable
     private unowned let eventBus: EventBus
     private let _handle: (Any) -> Void
+    private let _description: () -> String
+    
+    var description: String {
+        _description()
+    }
     
     static func == (lhs: EventSubscription, rhs: EventSubscription) -> Bool {
         lhs.id == rhs.id
@@ -22,6 +27,10 @@ class EventSubscription: Equatable, Hashable {
             if let event = event as? Consumer.Event {
                 dispatcher.consume(event: event)
             }
+        }
+        
+        _description = {
+            dispatcher.description
         }
     }
     

@@ -186,9 +186,11 @@ class ConcreteDealersService: DealersService {
         self.shareableURLFactory = shareableURLFactory
         self.urlOpener = urlOpener
 
-        subscription = eventBus.subscribe(consumer: DataStoreChangedConsumer { [weak self] in
+        let updateCachedDealers = DataStoreChangedConsumer("ConcreteDealersService") { [weak self] in
             self?.reloadDealersFromDataStore()
-        })
+        }
+        
+        subscription = eventBus.subscribe(consumer: updateCachedDealers)
         
         reloadDealersFromDataStore()
     }

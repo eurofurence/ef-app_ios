@@ -25,7 +25,7 @@ class ConcreteMapsService: MapsService {
         self.imageRepository = imageRepository
         self.dealers = dealers
         
-        subscription = eventBus.subscribe(consumer: DataStoreChangedConsumer { [weak self] in
+        subscription = eventBus.subscribe(consumer: DataStoreChangedConsumer("ConcreteMapsService") { [weak self] in
             self?.reloadMapsFromDataStore()
         })
 

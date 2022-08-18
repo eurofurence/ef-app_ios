@@ -20,9 +20,11 @@ class ConcreteSessionStateService: SessionStateService {
         self.dataStore = dataStore
         self.lastNotifiedState = currentState
         
-        dataStoreChangedRegistration = eventBus.subscribe(consumer: DataStoreChangedConsumer { [weak self] in
+        let updateSessionState = DataStoreChangedConsumer("ConcreteSessionStateService") { [weak self] in
             self?.notifyObserversOfCurrentState()
-        })
+        }
+        
+        dataStoreChangedRegistration = eventBus.subscribe(consumer: updateSessionState)
     }
     
     private var currentState: EurofurenceSessionState {
