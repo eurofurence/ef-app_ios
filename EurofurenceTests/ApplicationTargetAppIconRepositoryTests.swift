@@ -6,8 +6,8 @@ class ApplicationTargetAppIconRepositoryTests: XCTestCase {
     
     func testContainsExpectedIcons() {
         let expectedIconsWithinApplicationBundle: [AppIcon] = [
-            .init(displayName: "Classic", imageFileName: "ClassicAppIcon"),
-            .init(displayName: "On the High Seas", imageFileName: "OnTheHighSeasAppIcon")
+            .init(displayName: "Classic", imageFileName: "Classic", alternateIconName: "Classic"),
+            .init(displayName: "On the High Seas", imageFileName: "Pirate", alternateIconName: nil)
         ]
         
         let repository = ApplicationTargetAppIconRepository()
