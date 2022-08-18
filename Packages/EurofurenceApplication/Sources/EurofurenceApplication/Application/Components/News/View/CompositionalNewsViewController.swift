@@ -102,12 +102,16 @@ public class CompositionalNewsViewController: UIViewController, CompositionalNew
     }
     
     private func installSettingsBarButtonItem() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
+        let settingsBarButtonItem = UIBarButtonItem(
             image: UIImage(systemName: "gear"),
             style: .plain,
             target: self,
             action: #selector(openSettings(_:))
         )
+        
+        settingsBarButtonItem.accessibilityIdentifier = "org.eurofurence.news.settings-button"
+        
+        navigationItem.rightBarButtonItem = settingsBarButtonItem
     }
     
     @objc private func openSettings(_ sender: Any) {
