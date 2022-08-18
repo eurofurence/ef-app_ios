@@ -352,6 +352,7 @@
 		CACD371F25650BC400C23041 /* EurofurenceModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EurofurenceModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CACD372825650BD800C23041 /* EurofurenceModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EurofurenceModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CACD376925650C1200C23041 /* EurofurenceModelTestDoubles.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EurofurenceModelTestDoubles.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CAE057BB28AED79800E1F0E6 /* Versioning.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Versioning.xcconfig; sourceTree = "<group>"; };
 		CAE434FC25FEBA4D001E74B7 /* PrincipalWindowSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrincipalWindowSceneDelegate.swift; sourceTree = "<group>"; };
 		CAF194DB24688D7D005DFBBE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CAF254AA2517F983008892ED /* EurofurenceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EurofurenceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -523,6 +524,7 @@
 				CA3ABA05229C4B260045A35B /* AppNotificationDelegate.swift */,
 				CAE434FC25FEBA4D001E74B7 /* PrincipalWindowSceneDelegate.swift */,
 				9ACF993E1EBE172D006FC958 /* Assets.xcassets */,
+				CAE057BB28AED79800E1F0E6 /* Versioning.xcconfig */,
 				CA52DA6528ACE5DF00020A4F /* App Icon Picker */,
 				CA85153E25FF741700860631 /* Debug */,
 				CA0885F625FE98110044DD53 /* Intents */,
@@ -1542,6 +1544,7 @@
 		};
 		9ACB01061F180AA4001CE9D2 /* Profiling */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CAE057BB28AED79800E1F0E6 /* Versioning.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1605,7 +1608,6 @@
 				CODE_SIGN_ENTITLEMENTS = Eurofurence/Eurofurence.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 99999;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Eurofurence/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1773,6 +1775,7 @@
 		};
 		9ACF99521EBE172D006FC958 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CAE057BB28AED79800E1F0E6 /* Versioning.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = Classic;
@@ -1781,7 +1784,6 @@
 				CODE_SIGN_ENTITLEMENTS = Eurofurence/Eurofurence.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 99999;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Eurofurence/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1801,6 +1803,7 @@
 		};
 		9ACF99531EBE172D006FC958 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CAE057BB28AED79800E1F0E6 /* Versioning.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = Classic;
@@ -1809,7 +1812,6 @@
 				CODE_SIGN_ENTITLEMENTS = Eurofurence/Eurofurence.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 99999;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Eurofurence/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1862,6 +1864,7 @@
 		};
 		CA5F26AF2556F04E00CED97A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CAE057BB28AED79800E1F0E6 /* Versioning.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
@@ -1871,7 +1874,6 @@
 				CODE_SIGN_ENTITLEMENTS = EventsWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 99999;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1895,6 +1897,7 @@
 		};
 		CA5F26B02556F04E00CED97A /* Screenshots */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CAE057BB28AED79800E1F0E6 /* Versioning.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
@@ -1904,7 +1907,6 @@
 				CODE_SIGN_ENTITLEMENTS = EventsWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 99999;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = EventsWidget/Info.plist;
@@ -1926,6 +1928,7 @@
 		};
 		CA5F26B12556F04E00CED97A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CAE057BB28AED79800E1F0E6 /* Versioning.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
@@ -1935,7 +1938,6 @@
 				CODE_SIGN_ENTITLEMENTS = EventsWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 99999;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 557SGQG5H4;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1959,6 +1961,7 @@
 		};
 		CA5F26B22556F04E00CED97A /* Profiling */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CAE057BB28AED79800E1F0E6 /* Versioning.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
@@ -1968,7 +1971,6 @@
 				CODE_SIGN_ENTITLEMENTS = EventsWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 99999;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = EventsWidget/Info.plist;
@@ -2405,6 +2407,7 @@
 		};
 		CA9845D51F2916CF00E8821D /* Screenshots */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CAE057BB28AED79800E1F0E6 /* Versioning.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = Classic;
@@ -2413,7 +2416,6 @@
 				CODE_SIGN_ENTITLEMENTS = Eurofurence/Eurofurence.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 99999;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Eurofurence/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2465,6 +2467,7 @@
 		};
 		CAB300ED2603AFDC009A52E1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CAE057BB28AED79800E1F0E6 /* Versioning.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -2474,7 +2477,6 @@
 				CODE_SIGN_ENTITLEMENTS = EurofurenceClip/EurofurenceClip.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 99999;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -2495,6 +2497,7 @@
 		};
 		CAB300EE2603AFDC009A52E1 /* Screenshots */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CAE057BB28AED79800E1F0E6 /* Versioning.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -2504,7 +2507,6 @@
 				CODE_SIGN_ENTITLEMENTS = EurofurenceClip/EurofurenceClip.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 99999;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = EurofurenceClip/Info.plist;
@@ -2523,6 +2525,7 @@
 		};
 		CAB300EF2603AFDC009A52E1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CAE057BB28AED79800E1F0E6 /* Versioning.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -2532,7 +2535,6 @@
 				CODE_SIGN_ENTITLEMENTS = EurofurenceClip/EurofurenceClip.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 99999;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 557SGQG5H4;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -2553,6 +2555,7 @@
 		};
 		CAB300F02603AFDC009A52E1 /* Profiling */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CAE057BB28AED79800E1F0E6 /* Versioning.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -2562,7 +2565,6 @@
 				CODE_SIGN_ENTITLEMENTS = EurofurenceClip/EurofurenceClip.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 99999;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = EurofurenceClip/Info.plist;
