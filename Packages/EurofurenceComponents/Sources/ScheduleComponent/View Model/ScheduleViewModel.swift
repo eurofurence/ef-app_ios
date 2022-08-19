@@ -7,6 +7,7 @@ public protocol ScheduleViewModel {
     func refresh()
     func showEventsForDay(at index: Int)
     func identifierForEvent(at indexPath: IndexPath) -> EventIdentifier?
+    func toggleFavouriteFilteringState()
 
 }
 

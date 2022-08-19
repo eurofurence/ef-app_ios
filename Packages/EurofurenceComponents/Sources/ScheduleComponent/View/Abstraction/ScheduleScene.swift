@@ -24,8 +24,9 @@ public protocol ScheduleSceneDelegate {
     func scheduleSceneDidPerformRefreshAction()
     func scheduleSceneDidSelectDay(at index: Int)
     func scheduleSceneDidSelectEvent(at indexPath: IndexPath)
+    func scheduleSceneDidToggleFavouriteFilterState()
+    
     func scheduleSceneDidSelectSearchResult(at indexPath: IndexPath)
-
     func scheduleSceneDidUpdateSearchQuery(_ query: String)
     func scheduleSceneDidChangeSearchScopeToAllEvents()
     func scheduleSceneDidChangeSearchScopeToFavouriteEvents()

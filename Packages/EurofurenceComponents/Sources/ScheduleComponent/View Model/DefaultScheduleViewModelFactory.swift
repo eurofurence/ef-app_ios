@@ -180,6 +180,10 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory {
             let event = group.events[indexPath.row]
             return event.identifier
         }
+        
+        func toggleFavouriteFilteringState() {
+            
+        }
 
         func refreshServiceDidBeginRefreshing() {
             delegate?.scheduleViewModelDidBeginRefreshing()

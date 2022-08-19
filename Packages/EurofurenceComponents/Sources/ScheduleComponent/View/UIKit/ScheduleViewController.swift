@@ -48,7 +48,7 @@ public class ScheduleViewController: UIViewController,
     }()
     
     @objc private func favouritesToggleButtonTapped(_ sender: UIButton) {
-        
+        delegate?.scheduleSceneDidToggleFavouriteFilterState()
     }
     
     // MARK: Overrides

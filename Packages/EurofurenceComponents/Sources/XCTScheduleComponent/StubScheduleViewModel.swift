@@ -58,6 +58,11 @@ public final class CapturingScheduleViewModel: ScheduleViewModel {
     func unfavouriteEvent(at indexPath: IndexPath) {
         indexPathForUnfavouritedEvent = indexPath
     }
+    
+    public private(set) var didToggleFavouriteFilteringState = false
+    public func toggleFavouriteFilteringState() {
+        didToggleFavouriteFilteringState = true
+    }
 
 }
 
