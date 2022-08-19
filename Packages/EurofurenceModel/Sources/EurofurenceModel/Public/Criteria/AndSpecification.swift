@@ -23,6 +23,10 @@ extension AndSpecification: Specification {
         first.isSatisfied(by: element) && second.isSatisfied(by: element)
     }
     
+    public func contains<S>(_ specification: S.Type) -> Bool {
+        first.contains(specification) || second.contains(specification)
+    }
+    
 }
 
 // MARK: Convenience Creation
