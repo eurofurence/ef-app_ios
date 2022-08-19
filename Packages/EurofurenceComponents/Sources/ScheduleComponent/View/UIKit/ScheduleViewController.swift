@@ -176,6 +176,14 @@ public class ScheduleViewController: UIViewController,
         daysHorizontalPickerView.selectDay(at: index)
     }
     
+    public func showFilterToFavouritesButton() {
+        
+    }
+    
+    public func showFilterToAllEventsButton() {
+        
+    }
+    
     // MARK: DaysHorizontalPickerViewDelegate
     
     func daysHorizontalPickerView(_ pickerView: DaysHorizontalPickerView, didSelectDayAt index: Int) {

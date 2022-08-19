@@ -12,6 +12,9 @@ public protocol ScheduleScene {
     func selectDay(at index: Int)
     func showSearchResults()
     func hideSearchResults()
+    
+    func showFilterToFavouritesButton()
+    func showFilterToAllEventsButton()
 
 }
 

@@ -28,5 +28,13 @@ class CapturingScheduleViewModelDelegate: ScheduleViewModelDelegate {
     func scheduleViewModelDidUpdateEvents(_ events: [ScheduleEventGroupViewModel]) {
         eventsViewModels = events
     }
+    
+    func scheduleViewModelDidFilterToFavourites() {
+        
+    }
+    
+    func scheduleViewModelDidRemoveFavouritesFilter() {
+        
+    }
 
 }

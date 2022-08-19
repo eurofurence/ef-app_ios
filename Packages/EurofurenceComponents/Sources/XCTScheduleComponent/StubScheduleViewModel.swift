@@ -82,5 +82,13 @@ extension CapturingScheduleViewModel {
     public func simulateScheduleRefreshDidFinish() {
         delegate?.scheduleViewModelDidFinishRefreshing()
     }
+    
+    public func simulateShowingFavourites() {
+        delegate?.scheduleViewModelDidFilterToFavourites()
+    }
+    
+    public func simulateShowingAllEvents() {
+        delegate?.scheduleViewModelDidRemoveFavouritesFilter()
+    }
 
 }

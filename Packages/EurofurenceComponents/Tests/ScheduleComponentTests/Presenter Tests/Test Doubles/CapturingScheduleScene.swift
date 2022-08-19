@@ -1,6 +1,7 @@
 import EurofurenceModel
 import ScheduleComponent
 import UIKit.UIViewController
+import XCTComponentBase
 
 class CapturingScheduleScene: UIViewController, ScheduleScene {
 
@@ -60,6 +61,21 @@ class CapturingScheduleScene: UIViewController, ScheduleScene {
     private(set) var didHideSearchResults = false
     func hideSearchResults() {
         didHideSearchResults = true
+    }
+    
+    enum VisibleFilterButton: Equatable {
+        case unknown
+        case filterToFavourites
+        case filterToAllEvents
+    }
+    
+    private(set) var visibleFilterButton: VisibleFilterButton = .unknown
+    func showFilterToFavouritesButton() {
+        visibleFilterButton = .filterToFavourites
+    }
+    
+    func showFilterToAllEventsButton() {
+        visibleFilterButton = .filterToAllEvents
     }
 
 }

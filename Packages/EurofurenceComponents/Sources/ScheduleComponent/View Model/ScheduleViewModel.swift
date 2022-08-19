@@ -17,5 +17,7 @@ public protocol ScheduleViewModelDelegate {
     func scheduleViewModelDidUpdateDays(_ days: [ScheduleDayViewModel])
     func scheduleViewModelDidUpdateCurrentDayIndex(to index: Int)
     func scheduleViewModelDidUpdateEvents(_ events: [ScheduleEventGroupViewModel])
+    func scheduleViewModelDidFilterToFavourites()
+    func scheduleViewModelDidRemoveFavouritesFilter()
 
 }

@@ -311,6 +311,14 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
         scene.bindSearchResults(numberOfItemsPerSection: numberOfItemsPerGroup, using: binder)
     }
     
+    func scheduleViewModelDidFilterToFavourites() {
+        scene.showFilterToAllEventsButton()
+    }
+    
+    func scheduleViewModelDidRemoveFavouritesFilter() {
+        scene.showFilterToFavouritesButton()
+    }
+    
     private func leaveFeedbackForEvent(at indexPath: IndexPath) {
         guard let identifier = viewModel?.identifierForEvent(at: indexPath) else { return }
         delegate.scheduleComponentDidRequestPresentationToLeaveFeedback(for: identifier)
