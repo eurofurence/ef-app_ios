@@ -35,6 +35,22 @@ public class ScheduleViewController: UIViewController,
         searchController?.isActive = true
     }
     
+    private lazy var favouritesToggleButton: UIButton = {
+        let toggleButton = UIButton(frame: .zero)
+        toggleButton.addTarget(self, action: #selector(favouritesToggleButtonTapped(_:)), for: .touchUpInside)
+        toggleButton.setImage(UIImage(systemName: "heart.circle"), for: .normal)
+        toggleButton.setImage(UIImage(systemName: "heart.circle.fill"), for: .selected)
+        toggleButton.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        toggleButton.tintColor = .white
+        toggleButton.accessibilityLabel = "Favourites Only"
+        
+        return toggleButton
+    }()
+    
+    @objc private func favouritesToggleButtonTapped(_ sender: UIButton) {
+        
+    }
+    
     // MARK: Overrides
     
     override public func viewDidLoad() {
@@ -56,6 +72,7 @@ public class ScheduleViewController: UIViewController,
         refreshControl.addTarget(self, action: #selector(refreshControlDidChangeValue), for: .valueChanged)
         
         prepareSearchController()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: favouritesToggleButton)
         
         let cellName = String(describing: EventTableViewCell.self)
         let cellNib = UINib(nibName: cellName, bundle: .module)
@@ -177,11 +194,11 @@ public class ScheduleViewController: UIViewController,
     }
     
     public func showFilterToFavouritesButton() {
-        
+        favouritesToggleButton.isSelected = false
     }
     
     public func showFilterToAllEventsButton() {
-        
+        favouritesToggleButton.isSelected = true
     }
     
     // MARK: DaysHorizontalPickerViewDelegate
