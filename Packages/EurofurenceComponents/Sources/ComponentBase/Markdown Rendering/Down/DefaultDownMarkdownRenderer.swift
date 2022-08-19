@@ -17,13 +17,14 @@ public struct DefaultDownMarkdownRenderer: MarkdownRenderer {
         var colorCollection = StaticColorCollection()
         
         let textColor: UIColor = .label
+        colorCollection.body = textColor
+        colorCollection.code = textColor
         colorCollection.heading1 = textColor
         colorCollection.heading2 = textColor
         colorCollection.heading3 = textColor
         colorCollection.heading4 = textColor
         colorCollection.heading5 = textColor
         colorCollection.heading6 = textColor
-        colorCollection.body = textColor
         colorCollection.listItemPrefix = textColor
         
         return colorCollection

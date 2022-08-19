@@ -9,6 +9,7 @@ public struct SubtleDownMarkdownRenderer: MarkdownRenderer {
         var fontCollection = StaticFontCollection()
         let sharedFont = UIFont.preferredFont(forTextStyle: .caption1)
         fontCollection.body = sharedFont
+        fontCollection.code = fontCollection.code.withSize(sharedFont.pointSize)
         fontCollection.heading1 = sharedFont
         fontCollection.heading2 = sharedFont
         fontCollection.heading3 = sharedFont
@@ -23,12 +24,14 @@ public struct SubtleDownMarkdownRenderer: MarkdownRenderer {
         var colorCollection = StaticColorCollection()
         let sharedColor = UIColor(red: 0.498, green: 0.498, blue: 0.498, alpha: 1)
         colorCollection.body = sharedColor
+        colorCollection.code = sharedColor
         colorCollection.heading1 = sharedColor
         colorCollection.heading2 = sharedColor
         colorCollection.heading3 = sharedColor
         colorCollection.heading4 = sharedColor
         colorCollection.heading5 = sharedColor
         colorCollection.heading6 = sharedColor
+        colorCollection.listItemPrefix = sharedColor
         colorCollection.quote = sharedColor
         colorCollection.quoteStripe = sharedColor
         
@@ -42,6 +45,7 @@ public struct SubtleDownMarkdownRenderer: MarkdownRenderer {
         sharedParagraphStyle.paragraphSpacing = 0
         sharedParagraphStyle.lineSpacing = 3
         paragraphStyles.body = sharedParagraphStyle
+        paragraphStyles.code = sharedParagraphStyle
         paragraphStyles.heading1 = sharedParagraphStyle
         paragraphStyles.heading2 = sharedParagraphStyle
         paragraphStyles.heading3 = sharedParagraphStyle
