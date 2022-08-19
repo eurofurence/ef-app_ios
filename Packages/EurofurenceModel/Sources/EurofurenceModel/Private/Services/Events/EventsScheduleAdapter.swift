@@ -102,10 +102,6 @@ class EventsScheduleAdapter: Schedule, CustomStringConvertible {
         updateDelegateWithAllDays()
         delegate.currentEventDayDidChange(to: currentDay)
     }
-
-    func restrictEvents(to day: Day) {
-        
-    }
     
     private var specification: AnySpecification<Event>?
     
