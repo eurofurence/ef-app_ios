@@ -155,7 +155,13 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory {
         }
         
         func scheduleSpecificationChanged(to newSpecification: AnySpecification<Event>) {
+            isFilteringToFavourites = newSpecification.contains(IsFavouriteEventSpecification.self)
             
+            if isFilteringToFavourites {
+                delegate?.scheduleViewModelDidFilterToFavourites()
+            } else {
+                delegate?.scheduleViewModelDidRemoveFavouritesFilter()
+            }
         }
 
         func setDelegate(_ delegate: ScheduleViewModelDelegate) {
@@ -190,8 +196,7 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory {
         }
         
         func toggleFavouriteFilteringState() {
-            isFilteringToFavourites = true
-            
+            isFilteringToFavourites.toggle()
             updateScheduleSpecification()
         }
 
@@ -208,10 +213,19 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory {
         
         private func updateScheduleSpecification() {
             if let currentDay = currentDay {
-                let spec = EventsOccurringOnDaySpecification(day: currentDay) && IsFavouriteEventSpecification()
-                schedule.filterSchedule(to: spec)
+                if isFilteringToFavourites {
+                    let spec = EventsOccurringOnDaySpecification(day: currentDay) && IsFavouriteEventSpecification()
+                    schedule.filterSchedule(to: spec)
+                } else {
+                    let spec = EventsOccurringOnDaySpecification(day: currentDay)
+                    schedule.filterSchedule(to: spec)
+                }
             } else {
-                schedule.filterSchedule(to: IsFavouriteEventSpecification())
+                if isFilteringToFavourites {
+                    schedule.filterSchedule(to: IsFavouriteEventSpecification())
+                } else {
+                    schedule.filterSchedule(to: AllEventsSpecification())
+                }
             }
         }
 

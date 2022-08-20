@@ -31,10 +31,12 @@ public class FakeEventsSchedule: Schedule {
     
     public private(set) var specification: AnySpecification<Event>?
     public func filterSchedule<S>(to specification: S) where S: Specification, S.Element == Event {
-        self.specification = specification.eraseToAnySpecification()
+        let erasedSpecification = specification.eraseToAnySpecification()
+        self.specification = erasedSpecification
         
         events = events.filter(specification.isSatisfied(by:))
         delegate?.scheduleEventsDidChange(to: events)
+        delegate?.scheduleSpecificationChanged(to: erasedSpecification)
     }
 
 }
