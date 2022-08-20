@@ -142,10 +142,13 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory {
                 return ScheduleDayViewModel(title: shortFormDateFormatter.dateString(from: day.date))
             }
         }
-
+        
         func currentEventDayDidChange(to day: Day?) {
             guard let day = (day ?? days.first) else { return }
-            schedule.filterSchedule(to: EventsOccurringOnDaySpecification(day: day))
+            
+            currentDay = day
+            
+            updateScheduleSpecification()
 
             guard let idx = days.firstIndex(where: { $0.date == day.date }) else { return }
             selectedDayIndex = idx
@@ -161,6 +164,7 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory {
             delegate.scheduleViewModelDidUpdateDays(dayViewModels)
             delegate.scheduleViewModelDidUpdateEvents(eventGroupViewModels)
             delegate.scheduleViewModelDidUpdateCurrentDayIndex(to: selectedDayIndex)
+            delegate.scheduleViewModelDidRemoveFavouritesFilter()
         }
 
         func refresh() {
@@ -186,7 +190,9 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory {
         }
         
         func toggleFavouriteFilteringState() {
+            isFilteringToFavourites = true
             
+            updateScheduleSpecification()
         }
 
         func refreshServiceDidBeginRefreshing() {
@@ -195,6 +201,18 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory {
 
         func refreshServiceDidFinishRefreshing() {
             delegate?.scheduleViewModelDidFinishRefreshing()
+        }
+        
+        private var currentDay: Day?
+        private var isFilteringToFavourites = false
+        
+        private func updateScheduleSpecification() {
+            if let currentDay = currentDay {
+                let spec = EventsOccurringOnDaySpecification(day: currentDay) && IsFavouriteEventSpecification()
+                schedule.filterSchedule(to: spec)
+            } else {
+                schedule.filterSchedule(to: IsFavouriteEventSpecification())
+            }
         }
 
     }

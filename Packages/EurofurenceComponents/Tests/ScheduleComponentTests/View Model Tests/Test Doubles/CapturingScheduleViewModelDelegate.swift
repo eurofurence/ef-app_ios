@@ -29,12 +29,19 @@ class CapturingScheduleViewModelDelegate: ScheduleViewModelDelegate {
         eventsViewModels = events
     }
     
+    enum FavouritesFilter: Equatable {
+        case unset
+        case favouritesOnly
+        case allEvents
+    }
+    
+    private(set) var favouritesfilter: FavouritesFilter = .unset
     func scheduleViewModelDidFilterToFavourites() {
-        
+        favouritesfilter = .favouritesOnly
     }
     
     func scheduleViewModelDidRemoveFavouritesFilter() {
-        
+        favouritesfilter = .allEvents
     }
 
 }
