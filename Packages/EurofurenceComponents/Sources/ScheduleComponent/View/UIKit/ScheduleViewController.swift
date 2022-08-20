@@ -22,9 +22,11 @@ public class ScheduleViewController: UIViewController,
     
     private var tableController: TableController? {
         didSet {
-            tableView.dataSource = tableController
-            tableView.delegate = tableController
-            tableView.reloadData()
+            UIView.transition(with: tableView, duration: 0.25, options: [.transitionCrossDissolve]) { [self] in
+                tableView.dataSource = tableController
+                tableView.delegate = tableController
+                tableView.reloadData()
+            }
         }
     }
     
