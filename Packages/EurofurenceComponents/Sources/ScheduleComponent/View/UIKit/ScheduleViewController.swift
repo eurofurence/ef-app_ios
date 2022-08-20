@@ -18,6 +18,38 @@ public class ScheduleViewController: UIViewController,
         }
     }
     
+    private lazy var showFavouritesOnlyBarButtonItem: UIBarButtonItem = {
+        let showFavouritesOnlyBarButtonItem = UIBarButtonItem(
+            image: UIImage(systemName: "heart.circle"),
+            style: .plain,
+            target: self,
+            action: #selector(favouritesToggleButtonTapped(_:))
+        )
+        
+        showFavouritesOnlyBarButtonItem.accessibilityLabel = "Favourites Only"
+        showFavouritesOnlyBarButtonItem.tintColor = .white
+        
+        return showFavouritesOnlyBarButtonItem
+    }()
+    
+    private lazy var showAllEventsBarButtonItem: UIBarButtonItem = {
+        let showAllEventsBarButtonItem = UIBarButtonItem(
+            image: UIImage(systemName: "heart.circle.fill"),
+            style: .plain,
+            target: self,
+            action: #selector(favouritesToggleButtonTapped(_:))
+        )
+        
+        showAllEventsBarButtonItem.accessibilityLabel = "All Events"
+        showAllEventsBarButtonItem.tintColor = .white
+        
+        return showAllEventsBarButtonItem
+    }()
+    
+    @objc private func favouritesToggleButtonTapped(_ sender: UIButton) {
+        delegate?.scheduleSceneDidToggleFavouriteFilterState()
+    }
+    
     private let refreshControl = UIRefreshControl(frame: .zero)
     
     private var tableController: TableController? {
@@ -35,22 +67,6 @@ public class ScheduleViewController: UIViewController,
     
     @IBAction private func openSearch(_ sender: Any) {
         searchController?.isActive = true
-    }
-    
-    private lazy var favouritesToggleButton: UIButton = {
-        let toggleButton = UIButton(frame: .zero)
-        toggleButton.addTarget(self, action: #selector(favouritesToggleButtonTapped(_:)), for: .touchUpInside)
-        toggleButton.setImage(UIImage(systemName: "heart.circle"), for: .normal)
-        toggleButton.setImage(UIImage(systemName: "heart.circle.fill"), for: .selected)
-        toggleButton.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        toggleButton.tintColor = .white
-        toggleButton.accessibilityLabel = "Favourites Only"
-        
-        return toggleButton
-    }()
-    
-    @objc private func favouritesToggleButtonTapped(_ sender: UIButton) {
-        delegate?.scheduleSceneDidToggleFavouriteFilterState()
     }
     
     // MARK: Overrides
@@ -74,7 +90,6 @@ public class ScheduleViewController: UIViewController,
         refreshControl.addTarget(self, action: #selector(refreshControlDidChangeValue), for: .valueChanged)
         
         prepareSearchController()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: favouritesToggleButton)
         
         let cellName = String(describing: EventTableViewCell.self)
         let cellNib = UINib(nibName: cellName, bundle: .module)
@@ -196,11 +211,11 @@ public class ScheduleViewController: UIViewController,
     }
     
     public func showFilterToFavouritesButton() {
-        favouritesToggleButton.isSelected = false
+        navigationItem.setRightBarButton(showFavouritesOnlyBarButtonItem, animated: view.window != nil)
     }
     
     public func showFilterToAllEventsButton() {
-        favouritesToggleButton.isSelected = true
+        navigationItem.setRightBarButton(showAllEventsBarButtonItem, animated: view.window != nil)
     }
     
     // MARK: DaysHorizontalPickerViewDelegate
