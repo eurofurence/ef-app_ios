@@ -19,5 +19,10 @@ class CapturingScheduleDelegate: ScheduleDelegate {
     func eventDaysDidChange(to days: [Day]) {
         self.allDays = days
     }
+    
+    private(set) var latestScheduleSpecification: AnySpecification<Event>?
+    func scheduleSpecificationChanged(to newSpecification: AnySpecification<Event>) {
+        latestScheduleSpecification = newSpecification
+    }
 
 }

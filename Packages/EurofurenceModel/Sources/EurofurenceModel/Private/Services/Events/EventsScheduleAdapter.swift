@@ -101,15 +101,21 @@ class EventsScheduleAdapter: Schedule, CustomStringConvertible {
         delegate.scheduleEventsDidChange(to: events)
         updateDelegateWithAllDays()
         delegate.currentEventDayDidChange(to: currentDay)
+        
+        if let specification = specification {
+            delegate.scheduleSpecificationChanged(to: specification)
+        }
     }
     
     private var specification: AnySpecification<Event>?
     
     func filterSchedule<S>(to specification: S) where S: Specification, S.Element == Event {
-        self.specification = specification.eraseToAnySpecification()
+        let erased = specification.eraseToAnySpecification()
+        self.specification = erased
         
         events = schedule.eventModels.filter(specification.isSatisfied(by:))
         delegate?.scheduleEventsDidChange(to: events)
+        delegate?.scheduleSpecificationChanged(to: erased)
     }
 
     private func updateCurrentDay() {

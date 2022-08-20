@@ -29,6 +29,10 @@ public struct FilteredScheduleWidgetDataSource<S>: EventsWidgetDataSource where 
             
         }
         
+        func scheduleSpecificationChanged(to newSpecification: AnySpecification<Event>) {
+            
+        }
+        
     }
     
 }

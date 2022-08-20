@@ -150,6 +150,10 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory {
             guard let idx = days.firstIndex(where: { $0.date == day.date }) else { return }
             selectedDayIndex = idx
         }
+        
+        func scheduleSpecificationChanged(to newSpecification: AnySpecification<Event>) {
+            
+        }
 
         func setDelegate(_ delegate: ScheduleViewModelDelegate) {
             self.delegate = delegate
@@ -273,6 +277,10 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory {
         func eventDaysDidChange(to days: [Day]) { }
         
         func currentEventDayDidChange(to day: Day?) { }
+        
+        func scheduleSpecificationChanged(to newSpecification: AnySpecification<Event>) {
+            
+        }
 
         private func regenerateViewModel() {
             let groupedByDate = Dictionary(grouping: searchResults, by: { $0.startDate })
