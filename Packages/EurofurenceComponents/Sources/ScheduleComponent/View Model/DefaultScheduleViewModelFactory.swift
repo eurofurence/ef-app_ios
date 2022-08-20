@@ -180,8 +180,8 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory {
         func showEventsForDay(at index: Int) {
             guard days.count > index else { return }
             
-            let day = days[index]
-            schedule.filterSchedule(to: EventsOccurringOnDaySpecification(day: day))
+            currentDay = days[index]
+            updateScheduleSpecification()
         }
 
         func identifierForEvent(at indexPath: IndexPath) -> EventIdentifier? {
