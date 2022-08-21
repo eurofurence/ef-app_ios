@@ -12,8 +12,10 @@ class FakeCalendarEvent: CalendarEvent {
     weak var delegate: CalendarEventDelegate?
     
     private(set) var lastAction: CalendarAction = .unset
-    func addToCalendar() {
+    private(set) var lastActionSender: Any?
+    func addToCalendar(_ sender: Any?) {
         lastAction = .added
+        lastActionSender = sender
         delegate?.calendarEvent(self, presenceDidChange: .present)
     }
     

@@ -2,7 +2,7 @@ public protocol CalendarEvent: AnyObject {
     
     /* weak */ var delegate: CalendarEventDelegate? { get set }
     
-    func addToCalendar()
+    func addToCalendar(_ sender: Any?)
     func removeFromCalendar()
     
 }

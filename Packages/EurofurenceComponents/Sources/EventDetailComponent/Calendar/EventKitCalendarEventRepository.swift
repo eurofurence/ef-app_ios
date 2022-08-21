@@ -15,7 +15,7 @@ public class EventKitCalendarEventRepository: CalendarEventRepository {
         
         var delegate: CalendarEventDelegate?
         
-        func addToCalendar() {
+        func addToCalendar(_ sender: Any?) {
             
         }
         

@@ -24,7 +24,7 @@ public class AddEventToCalendarAction: EventActionViewModel, CalendarEventDelega
             calendarEvent.removeFromCalendar()
             
         case .absent:
-            calendarEvent.addToCalendar()
+            calendarEvent.addToCalendar(sender)
         }
     }
     

@@ -25,9 +25,10 @@ class WhenEventIsNotPresentInDeviceCalendar_EventDetailViewModelShould: XCTestCa
         calendarEvent.simulateEventAbsent()
         let visitor = context.prepareVisitorForTesting()
         let command = visitor.visited(ofKind: AddEventToCalendarAction.self)
-        command?.perform()
+        command?.perform(sender: "Sender")
         
         XCTAssertEqual(.added, calendarEvent.lastAction)
+        XCTAssertEqual("Sender", calendarEvent.lastActionSender as? String)
     }
     
     func testShowTheRemoveFromCalendarActionAfterAddingEventToCalendar() throws {
