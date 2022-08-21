@@ -32,7 +32,7 @@ public class DefaultEventDetailViewModelFactory: EventDetailViewModelFactory {
             .loadSchedule(tag: "Event Detail")
             .loadEvent(identifier: identifier) else { return }
         
-        let calendarEvent = calendarRepository.calendarEvent(for: identifier.rawValue)
+        let calendarEvent = calendarRepository.calendarEvent(for: identifier)
 
         let viewModel = ViewModelBuilder(
             dateRangeFormatter: dateRangeFormatter,

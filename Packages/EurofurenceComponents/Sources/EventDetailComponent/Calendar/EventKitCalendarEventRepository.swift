@@ -1,3 +1,4 @@
+import EurofurenceModel
 import EventKit
 
 public class EventKitCalendarEventRepository: CalendarEventRepository {
@@ -6,7 +7,7 @@ public class EventKitCalendarEventRepository: CalendarEventRepository {
         
     }
     
-    public func calendarEvent(for identifier: String) -> CalendarEvent {
+    public func calendarEvent(for identifier: EventIdentifier) -> CalendarEvent {
         EventKitCalendarEvent()
     }
     

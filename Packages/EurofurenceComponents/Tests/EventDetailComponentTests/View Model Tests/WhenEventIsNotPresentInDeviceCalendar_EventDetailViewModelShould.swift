@@ -7,7 +7,7 @@ class WhenEventIsNotPresentInDeviceCalendar_EventDetailViewModelShould: XCTestCa
     func testIncludeAddToCalendarAction() throws {
         let event = FakeEvent.random
         let context = EventDetailViewModelFactoryTestBuilder().build(for: event)
-        let calendarEvent = try XCTUnwrap(context.calendarEventRepository.fakedEvent(for: event.identifier.rawValue))
+        let calendarEvent = try XCTUnwrap(context.calendarEventRepository.fakedEvent(for: event.identifier))
         calendarEvent.simulateEventAbsent()
         let visitor = context.prepareVisitorForTesting()
         let command = visitor.visited(ofKind: AddEventToCalendarAction.self)
@@ -21,7 +21,7 @@ class WhenEventIsNotPresentInDeviceCalendar_EventDetailViewModelShould: XCTestCa
     func testAddEventToCalendarWhenInvokingAction() throws {
         let event = FakeEvent.random
         let context = EventDetailViewModelFactoryTestBuilder().build(for: event)
-        let calendarEvent = try XCTUnwrap(context.calendarEventRepository.fakedEvent(for: event.identifier.rawValue))
+        let calendarEvent = try XCTUnwrap(context.calendarEventRepository.fakedEvent(for: event.identifier))
         calendarEvent.simulateEventAbsent()
         let visitor = context.prepareVisitorForTesting()
         let command = visitor.visited(ofKind: AddEventToCalendarAction.self)
@@ -33,7 +33,7 @@ class WhenEventIsNotPresentInDeviceCalendar_EventDetailViewModelShould: XCTestCa
     func testShowTheRemoveFromCalendarActionAfterAddingEventToCalendar() throws {
         let event = FakeEvent.random
         let context = EventDetailViewModelFactoryTestBuilder().build(for: event)
-        let calendarEvent = try XCTUnwrap(context.calendarEventRepository.fakedEvent(for: event.identifier.rawValue))
+        let calendarEvent = try XCTUnwrap(context.calendarEventRepository.fakedEvent(for: event.identifier))
         calendarEvent.simulateEventAbsent()
         let visitor = context.prepareVisitorForTesting()
         let command = visitor.visited(ofKind: AddEventToCalendarAction.self)
