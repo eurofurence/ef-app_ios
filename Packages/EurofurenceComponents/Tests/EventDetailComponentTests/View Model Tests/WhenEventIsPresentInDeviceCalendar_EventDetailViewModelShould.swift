@@ -48,6 +48,10 @@ class FakeCalendarEvent: CalendarEvent {
         delegate?.calendarEvent(self, presenceDidChange: .present)
     }
     
+    func simulateEventAbsent() {
+        delegate?.calendarEvent(self, presenceDidChange: .absent)
+    }
+    
 }
 
 class WhenEventIsPresentInDeviceCalendar_EventDetailViewModelShould: XCTestCase {

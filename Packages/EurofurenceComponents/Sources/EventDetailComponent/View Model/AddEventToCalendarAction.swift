@@ -3,6 +3,7 @@ import EurofurenceModel
 public class AddEventToCalendarAction: EventActionViewModel, CalendarEventDelegate {
     
     private let calendarEvent: CalendarEvent
+    private var eventPresence: CalendarEventPresence?
     private var visitor: EventActionViewModelVisitor?
     
     init(calendarEvent: CalendarEvent) {
@@ -12,15 +13,36 @@ public class AddEventToCalendarAction: EventActionViewModel, CalendarEventDelega
     
     public func describe(to visitor: EventActionViewModelVisitor) {
         self.visitor = visitor
-        visitor.visitActionTitle("Remove from Calendar")
+        updateVisibleActionTitle()
     }
     
     public func perform(sender: Any?) {
-        calendarEvent.removeFromCalendar()
+        guard let eventPresence = eventPresence else { return }
+        
+        switch eventPresence {
+        case .present:
+            calendarEvent.removeFromCalendar()
+            
+        case .absent:
+            calendarEvent.addToCalendar()
+        }
     }
     
     public func calendarEvent(_ calendarEvent: CalendarEvent, presenceDidChange eventPresence: CalendarEventPresence) {
-        visitor?.visitActionTitle("Add to Calendar")
+        self.eventPresence = eventPresence
+        updateVisibleActionTitle()
+    }
+    
+    private func updateVisibleActionTitle() {
+        guard let eventPresence = eventPresence else { return }
+        
+        switch eventPresence {
+        case .present:
+            visitor?.visitActionTitle("Remove from Calendar")
+            
+        case .absent:
+            visitor?.visitActionTitle("Add to Calendar")
+        }
     }
     
 }
