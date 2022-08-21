@@ -8,17 +8,20 @@ public class DefaultEventDetailViewModelFactory: EventDetailViewModelFactory {
     private let eventsService: ScheduleRepository
 	private let markdownRenderer: MarkdownRenderer
     private let shareService: ShareService
+    private let calendarRepository: CalendarEventRepository
 
     public init(
         dateRangeFormatter: DateRangeFormatter,
         eventsService: ScheduleRepository,
         markdownRenderer: MarkdownRenderer,
-        shareService: ShareService
+        shareService: ShareService,
+        calendarRepository: CalendarEventRepository
     ) {
         self.dateRangeFormatter = dateRangeFormatter
         self.eventsService = eventsService
 		self.markdownRenderer = markdownRenderer
         self.shareService = shareService
+        self.calendarRepository = calendarRepository
     }
 
     public func makeViewModel(
@@ -28,12 +31,15 @@ public class DefaultEventDetailViewModelFactory: EventDetailViewModelFactory {
         guard let event = eventsService
             .loadSchedule(tag: "Event Detail")
             .loadEvent(identifier: identifier) else { return }
+        
+        let calendarEvent = calendarRepository.calendarEvent(for: identifier.rawValue)
 
         let viewModel = ViewModelBuilder(
             dateRangeFormatter: dateRangeFormatter,
             event: event,
             markdownRenderer: markdownRenderer,
-            shareService: shareService
+            shareService: shareService,
+            calendarEvent: calendarEvent
         ).build()
         
         completionHandler(viewModel)
@@ -47,15 +53,20 @@ public class DefaultEventDetailViewModelFactory: EventDetailViewModelFactory {
         private let shareService: ShareService
         private var components = [EventDetailViewModelComponent]()
         private let actionBus = DefaultEventDetailViewModel.ActionBus()
+        private let calendarEvent: CalendarEvent
 
-        init(dateRangeFormatter: DateRangeFormatter,
-             event: Event,
-             markdownRenderer: MarkdownRenderer,
-             shareService: ShareService) {
+        init(
+            dateRangeFormatter: DateRangeFormatter,
+            event: Event,
+            markdownRenderer: MarkdownRenderer,
+            shareService: ShareService,
+            calendarEvent: CalendarEvent
+        ) {
             self.dateRangeFormatter = dateRangeFormatter
             self.event = event
             self.markdownRenderer = markdownRenderer
             self.shareService = shareService
+            self.calendarEvent = calendarEvent
         }
         
         func build() -> DefaultEventDetailViewModel {
@@ -64,6 +75,7 @@ public class DefaultEventDetailViewModelFactory: EventDetailViewModelFactory {
             buildToggleFavouriteStateCommandComponent()
             buildShareComponent()
             buildLeaveFeedbackComponent()
+            buildAddToCalendarComponent()
             buildSupplementaryInformationBannerComponents()
             buildEventDescriptionComponent()
             
@@ -114,6 +126,12 @@ public class DefaultEventDetailViewModelFactory: EventDetailViewModelFactory {
                 
                 components.append(leaveFeedbackBanner)
             }
+        }
+        
+        private func buildAddToCalendarComponent() {
+            let command = AddEventToCalendarAction(calendarEvent: calendarEvent)
+            let component = DefaultEventDetailViewModel.ActionComponent(actionViewModel: command)
+            components.append(component)
         }
         
         private func buildSupplementaryInformationBannerComponents() {

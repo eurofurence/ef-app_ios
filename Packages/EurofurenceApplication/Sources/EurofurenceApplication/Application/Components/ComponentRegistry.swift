@@ -181,7 +181,8 @@ struct ComponentRegistry {
             dateRangeFormatter: FoundationDateRangeFormatter.shared,
             eventsService: repositories.events,
             markdownRenderer: DefaultDownMarkdownRenderer(),
-            shareService: shareService
+            shareService: shareService,
+            calendarRepository: EventKitCalendarEventRepository()
         )
         
         eventDetailComponentFactory = EventDetailComponentBuilder(
