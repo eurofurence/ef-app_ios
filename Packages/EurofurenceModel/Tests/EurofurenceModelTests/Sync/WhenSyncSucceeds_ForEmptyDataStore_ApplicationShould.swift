@@ -122,6 +122,10 @@ extension EmitsAllContentBeforeSessionStateChangeObserver: ScheduleDelegate {
         events.append(.scheduleDay)
     }
     
+    func scheduleSpecificationChanged(to newSpecification: AnySpecification<Event>) {
+        
+    }
+    
 }
 
 extension EmitsAllContentBeforeSessionStateChangeObserver: KnowledgeServiceObserver {

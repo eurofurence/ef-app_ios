@@ -18,13 +18,47 @@ public class ScheduleViewController: UIViewController,
         }
     }
     
+    private lazy var showFavouritesOnlyBarButtonItem: UIBarButtonItem = {
+        let showFavouritesOnlyBarButtonItem = UIBarButtonItem(
+            image: UIImage(systemName: "heart.circle"),
+            style: .plain,
+            target: self,
+            action: #selector(favouritesToggleButtonTapped(_:))
+        )
+        
+        showFavouritesOnlyBarButtonItem.accessibilityLabel = "Favourites Only"
+        showFavouritesOnlyBarButtonItem.tintColor = .white
+        
+        return showFavouritesOnlyBarButtonItem
+    }()
+    
+    private lazy var showAllEventsBarButtonItem: UIBarButtonItem = {
+        let showAllEventsBarButtonItem = UIBarButtonItem(
+            image: UIImage(systemName: "heart.circle.fill"),
+            style: .plain,
+            target: self,
+            action: #selector(favouritesToggleButtonTapped(_:))
+        )
+        
+        showAllEventsBarButtonItem.accessibilityLabel = "All Events"
+        showAllEventsBarButtonItem.tintColor = .white
+        
+        return showAllEventsBarButtonItem
+    }()
+    
+    @objc private func favouritesToggleButtonTapped(_ sender: UIButton) {
+        delegate?.scheduleSceneDidToggleFavouriteFilterState()
+    }
+    
     private let refreshControl = UIRefreshControl(frame: .zero)
     
     private var tableController: TableController? {
         didSet {
-            tableView.dataSource = tableController
-            tableView.delegate = tableController
-            tableView.reloadData()
+            UIView.transition(with: tableView, duration: 0.25, options: [.transitionCrossDissolve]) { [self] in
+                tableView.dataSource = tableController
+                tableView.delegate = tableController
+                tableView.reloadData()
+            }
         }
     }
     
@@ -174,6 +208,14 @@ public class ScheduleViewController: UIViewController,
     
     public func selectDay(at index: Int) {
         daysHorizontalPickerView.selectDay(at: index)
+    }
+    
+    public func showFilterToFavouritesButton() {
+        navigationItem.setRightBarButton(showFavouritesOnlyBarButtonItem, animated: view.window != nil)
+    }
+    
+    public func showFilterToAllEventsButton() {
+        navigationItem.setRightBarButton(showAllEventsBarButtonItem, animated: view.window != nil)
     }
     
     // MARK: DaysHorizontalPickerViewDelegate

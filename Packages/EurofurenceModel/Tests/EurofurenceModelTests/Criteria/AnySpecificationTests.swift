@@ -19,5 +19,31 @@ class AnySpecificationTests: XCTestCase {
         XCTAssertEqual(second, second)
         XCTAssertNotEqual(first, second)
     }
+    
+    func testContains_Match() {
+        let specification = AlwaysPassesSpecification<Int>().eraseToAnySpecification()
+        XCTAssertTrue(specification.contains(AlwaysPassesSpecification<Int>.self))
+    }
+    
+    func testContains_NoMatch() {
+        let specification = AlwaysPassesSpecification<Int>().eraseToAnySpecification()
+        XCTAssertFalse(specification.contains(AlwaysPassesSpecification<String>.self))
+    }
+    
+    func testContains_Match_ViaAggregate() {
+        let specification = AlwaysPassesSpecification<Int>()
+            .and(AlwaysFailsSpecification<Int>())
+            .eraseToAnySpecification()
+        
+        XCTAssertTrue(specification.contains(AlwaysFailsSpecification<Int>.self))
+    }
+    
+    func testContains_NoMatch_ViaAggregate() {
+        let specification = AlwaysPassesSpecification<Int>()
+            .and(AlwaysFailsSpecification<Int>())
+            .eraseToAnySpecification()
+        
+        XCTAssertFalse(specification.contains(AlwaysFailsSpecification<String>.self))
+    }
 
 }

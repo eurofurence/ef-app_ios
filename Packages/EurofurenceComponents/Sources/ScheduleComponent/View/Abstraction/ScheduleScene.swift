@@ -12,6 +12,9 @@ public protocol ScheduleScene {
     func selectDay(at index: Int)
     func showSearchResults()
     func hideSearchResults()
+    
+    func showFilterToFavouritesButton()
+    func showFilterToAllEventsButton()
 
 }
 
@@ -21,8 +24,9 @@ public protocol ScheduleSceneDelegate {
     func scheduleSceneDidPerformRefreshAction()
     func scheduleSceneDidSelectDay(at index: Int)
     func scheduleSceneDidSelectEvent(at indexPath: IndexPath)
+    func scheduleSceneDidToggleFavouriteFilterState()
+    
     func scheduleSceneDidSelectSearchResult(at indexPath: IndexPath)
-
     func scheduleSceneDidUpdateSearchQuery(_ query: String)
     func scheduleSceneDidChangeSearchScopeToAllEvents()
     func scheduleSceneDidChangeSearchScopeToFavouriteEvents()

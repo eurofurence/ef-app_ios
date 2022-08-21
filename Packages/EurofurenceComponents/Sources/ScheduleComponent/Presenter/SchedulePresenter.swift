@@ -252,6 +252,10 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
     func scheduleSceneDidSelectEvent(at indexPath: IndexPath) {
         viewModel?.identifierForEvent(at: indexPath).map(delegate.scheduleComponentDidSelectEvent)
     }
+    
+    func scheduleSceneDidToggleFavouriteFilterState() {
+        viewModel?.toggleFavouriteFilteringState()
+    }
 
     func scheduleSceneDidSelectSearchResult(at indexPath: IndexPath) {
         searchViewModel?.identifierForEvent(at: indexPath).map(delegate.scheduleComponentDidSelectEvent)
@@ -309,6 +313,14 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
         let numberOfItemsPerGroup = results.map(\.events.count)
         let binder = EventsBinder(viewModels: results, leaveFeedbackAction: leaveFeedbackForEvent(at:))
         scene.bindSearchResults(numberOfItemsPerSection: numberOfItemsPerGroup, using: binder)
+    }
+    
+    func scheduleViewModelDidFilterToFavourites() {
+        scene.showFilterToAllEventsButton()
+    }
+    
+    func scheduleViewModelDidRemoveFavouritesFilter() {
+        scene.showFilterToFavouritesButton()
     }
     
     private func leaveFeedbackForEvent(at indexPath: IndexPath) {

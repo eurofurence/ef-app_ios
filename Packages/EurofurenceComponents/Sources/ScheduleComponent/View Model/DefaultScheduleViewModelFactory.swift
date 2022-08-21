@@ -91,6 +91,7 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory {
         private let shortFormDateFormatter: ShortFormDateFormatter
         private let refreshService: RefreshService
         private let shareService: ShareService
+        private let specificationController: ScheduleSpecificationController
         private var events = [Event]()
         private var favouriteEvents = [EventIdentifier]()
 
@@ -108,6 +109,7 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory {
             self.shortFormDateFormatter = shortFormDateFormatter
             self.refreshService = refreshService
             self.shareService = shareService
+            self.specificationController = ScheduleSpecificationController(schedule: schedule)
 
             refreshService.add(self)
             schedule.setDelegate(self)
@@ -142,13 +144,23 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory {
                 return ScheduleDayViewModel(title: shortFormDateFormatter.dateString(from: day.date))
             }
         }
-
+        
         func currentEventDayDidChange(to day: Day?) {
             guard let day = (day ?? days.first) else { return }
-            schedule.filterSchedule(to: EventsOccurringOnDaySpecification(day: day))
+            specificationController.filterToEvents(occurringOn: day)
 
             guard let idx = days.firstIndex(where: { $0.date == day.date }) else { return }
             selectedDayIndex = idx
+        }
+        
+        func scheduleSpecificationChanged(to newSpecification: AnySpecification<Event>) {
+            specificationController.scheduleSpecificationDidChange(newSpecification: newSpecification)
+            
+            if specificationController.isFilteringToFavourites {
+                delegate?.scheduleViewModelDidFilterToFavourites()
+            } else {
+                delegate?.scheduleViewModelDidRemoveFavouritesFilter()
+            }
         }
 
         func setDelegate(_ delegate: ScheduleViewModelDelegate) {
@@ -157,6 +169,7 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory {
             delegate.scheduleViewModelDidUpdateDays(dayViewModels)
             delegate.scheduleViewModelDidUpdateEvents(eventGroupViewModels)
             delegate.scheduleViewModelDidUpdateCurrentDayIndex(to: selectedDayIndex)
+            delegate.scheduleViewModelDidRemoveFavouritesFilter()
         }
 
         func refresh() {
@@ -166,8 +179,7 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory {
         func showEventsForDay(at index: Int) {
             guard days.count > index else { return }
             
-            let day = days[index]
-            schedule.filterSchedule(to: EventsOccurringOnDaySpecification(day: day))
+            specificationController.filterToEvents(occurringOn: days[index])
         }
 
         func identifierForEvent(at indexPath: IndexPath) -> EventIdentifier? {
@@ -179,6 +191,10 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory {
             
             let event = group.events[indexPath.row]
             return event.identifier
+        }
+        
+        func toggleFavouriteFilteringState() {
+            specificationController.toggleFavouritesFiltering()
         }
 
         func refreshServiceDidBeginRefreshing() {
@@ -269,6 +285,10 @@ public class DefaultScheduleViewModelFactory: ScheduleViewModelFactory {
         func eventDaysDidChange(to days: [Day]) { }
         
         func currentEventDayDidChange(to day: Day?) { }
+        
+        func scheduleSpecificationChanged(to newSpecification: AnySpecification<Event>) {
+            
+        }
 
         private func regenerateViewModel() {
             let groupedByDate = Dictionary(grouping: searchResults, by: { $0.startDate })

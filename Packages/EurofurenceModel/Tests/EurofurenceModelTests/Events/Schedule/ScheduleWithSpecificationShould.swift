@@ -119,6 +119,36 @@ class ScheduleWithSpecificationShould: XCTestCase {
         XCTAssertEqual(currentNumberOfUpdates, delegate.numberOfCurrentDayUpdates)
     }
     
+    func testNotifyDelegateWhenSpecificationChanged() {
+        let response = ModelCharacteristics.randomWithoutDeletions
+        let randomDay = response.conferenceDays.changed.randomElement().element
+        let dataStore = InMemoryDataStore(response: response)
+        let context = EurofurenceSessionTestBuilder().with(dataStore).with(randomDay.date).build()
+        let schedule = context.eventsService.loadSchedule(tag: "Test")
+        let delegate = JournallingScheduleDelegate()
+        schedule.setDelegate(delegate)
+        
+        let specification = AlwaysPassesSpecification<Event>()
+        schedule.filterSchedule(to: specification)
+        
+        XCTAssertEqual(specification.eraseToAnySpecification(), delegate.latestScheduleSpecification)
+    }
+    
+    func testNotifyDelegateOfOriginalSpecification() {
+        let response = ModelCharacteristics.randomWithoutDeletions
+        let randomDay = response.conferenceDays.changed.randomElement().element
+        let dataStore = InMemoryDataStore(response: response)
+        let context = EurofurenceSessionTestBuilder().with(dataStore).with(randomDay.date).build()
+        let schedule = context.eventsService.loadSchedule(tag: "Test")
+        let specification = AlwaysPassesSpecification<Event>()
+        schedule.filterSchedule(to: specification)
+        
+        let delegate = JournallingScheduleDelegate()
+        schedule.setDelegate(delegate)
+        
+        XCTAssertEqual(specification.eraseToAnySpecification(), delegate.latestScheduleSpecification)
+    }
+    
     private struct SpecificEventSpecification: Specification {
         
         let identifier: EventIdentifier
