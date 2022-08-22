@@ -27,6 +27,7 @@ public class EventKitEventStore: NSObject, EventStore {
             calendarEvent.startDate = event.startDate
             calendarEvent.endDate = event.endDate
             calendarEvent.url = event.deeplinkURL
+            calendarEvent.addAlarm(EKAlarm(relativeOffset: -1800))
             
             let editingViewController = EKEventEditViewController()
             editingViewController.editViewDelegate = self
