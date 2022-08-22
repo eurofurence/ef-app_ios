@@ -34,18 +34,19 @@ public struct EventKitCalendarEventRepository: CalendarEventRepository {
     
     private class EventKitCalendarEvent: CalendarEvent {
         
-        private let event: Event
+        private let eventDefinition: EventStoreEventDefinition
         private let eventStore: EventStore
         
-        init(event: Event, eventStore: EventStore) {
-            self.event = event
-            self.eventStore = eventStore
+        private var lastKnownEventPresence: CalendarEventPresence {
+            didSet {
+                delegate?.calendarEvent(self, presenceDidChange: lastKnownEventPresence)
+            }
         }
         
-        var delegate: CalendarEventDelegate?
-        
-        func addToCalendar(_ sender: Any?) {
-            let eventDefinition = EventStoreEventDefinition(
+        init(event: Event, eventStore: EventStore) {
+            self.eventStore = eventStore
+            
+            self.eventDefinition = EventStoreEventDefinition(
                 identifier: event.identifier.rawValue,
                 title: event.title,
                 startDate: event.startDate,
@@ -53,11 +54,26 @@ public struct EventKitCalendarEventRepository: CalendarEventRepository {
                 deeplinkURL: event.contentURL
             )
             
-            eventStore.editEvent(definition: eventDefinition, sender: sender)
+            lastKnownEventPresence = eventStore.contains(eventDefinition: eventDefinition) ? .present : .absent
+        }
+        
+        var delegate: CalendarEventDelegate? {
+            didSet {
+                delegate?.calendarEvent(self, presenceDidChange: lastKnownEventPresence)
+            }
+        }
+        
+        func addToCalendar(_ sender: Any?) {
+            eventStore.editEvent(definition: eventDefinition, sender: sender) { [weak self] (success) in
+                self?.lastKnownEventPresence = success ? .present : .absent
+            }
+            
+            delegate?.calendarEvent(self, presenceDidChange: .present)
         }
         
         func removeFromCalendar() {
-            eventStore.removeEvent(identifiedBy: event.identifier.rawValue)
+            eventStore.removeEvent(identifiedBy: eventDefinition)
+            lastKnownEventPresence = .absent
         }
         
     }

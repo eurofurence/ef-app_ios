@@ -6,14 +6,21 @@ public class EventKitEventStore: NSObject, EventStore {
     
     private let window: UIWindow
     private let eventStore: EKEventStore
+    private var currentEditingCompletionHandler: ((Bool) -> Void)?
     
     public init(window: UIWindow) {
         self.window = window
         self.eventStore = EKEventStore()
     }
     
-    public func editEvent(definition event: EventStoreEventDefinition, sender: Any?) {
-        attemptCalendarStoreEdit { [eventStore, window] in
+    public func editEvent(
+        definition event: EventStoreEventDefinition,
+        sender: Any?,
+        completionHandler: @escaping (Bool) -> Void
+    ) {
+        attemptCalendarStoreEdit { [weak self, eventStore] in
+            self?.currentEditingCompletionHandler = completionHandler
+            
             let calendarEvent = EKEvent(eventStore: eventStore)
             calendarEvent.title = event.title
             calendarEvent.startDate = event.startDate
@@ -21,6 +28,7 @@ public class EventKitEventStore: NSObject, EventStore {
             calendarEvent.url = event.deeplinkURL
             
             let editingViewController = EKEventEditViewController()
+            editingViewController.editViewDelegate = self
             editingViewController.eventStore = eventStore
             editingViewController.event = calendarEvent
             
@@ -36,20 +44,35 @@ public class EventKitEventStore: NSObject, EventStore {
                 break
             }
             
-            window.rootViewController?.present(editingViewController, animated: true)
+            self?.window.rootViewController?.present(editingViewController, animated: true)
         }
     }
     
-    public func removeEvent(identifiedBy identifier: String) {
-        attemptCalendarStoreEdit { [eventStore] in
-            if let event = eventStore.event(withIdentifier: identifier) {
+    public func removeEvent(identifiedBy eventDefinition: EventStoreEventDefinition) {
+        attemptCalendarStoreEdit { [weak self] in
+            if let event = self?.storeEvent(for: eventDefinition) {
                 do {
-                    try eventStore.remove(event, span: .thisEvent)
+                    try self?.eventStore.remove(event, span: .thisEvent)
                 } catch {
-                    print("Failed to remove event \(identifier) from calendar. Error=\(error)")
+                    print("Failed to remove event \(eventDefinition) from calendar. Error=\(error)")
                 }
             }
         }
+    }
+    
+    public func contains(eventDefinition: EventStoreEventDefinition) -> Bool {
+        return storeEvent(for: eventDefinition) != nil
+    }
+    
+    private func storeEvent(for eventDefinition: EventStoreEventDefinition) -> EKEvent? {
+        let predicate = eventStore.predicateForEvents(
+            withStart: eventDefinition.startDate,
+            end: eventDefinition.endDate,
+            calendars: nil
+        )
+        
+        let events = eventStore.events(matching: predicate)
+        return events.first(where: { $0.url == eventDefinition.deeplinkURL })
     }
     
     private func attemptCalendarStoreEdit(edit: @escaping () -> Void) {
@@ -62,10 +85,12 @@ public class EventKitEventStore: NSObject, EventStore {
     
     private func requestCalendarEditingAuthorisation(success: @escaping () -> Void) {
         eventStore.requestAccess(to: .event) { [weak self] granted, _ in
-            if granted {
-                success()
-            } else {
-                self?.presentNotAuthorizedAlert()
+            DispatchQueue.main.async {
+                if granted {
+                    success()
+                } else {
+                    self?.presentNotAuthorizedAlert()
+                }
             }
         }
     }
@@ -86,6 +111,20 @@ public class EventKitEventStore: NSObject, EventStore {
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         
         window.rootViewController?.present(alert, animated: true)
+    }
+    
+}
+
+extension EventKitEventStore: EKEventEditViewDelegate {
+    
+    public func eventEditViewController(
+        _ controller: EKEventEditViewController,
+        didCompleteWith action: EKEventEditViewAction
+    ) {
+        currentEditingCompletionHandler?(action == .saved)
+        currentEditingCompletionHandler = nil
+        
+        controller.presentingViewController?.dismiss(animated: true)
     }
     
 }

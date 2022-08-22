@@ -1,6 +1,6 @@
 import Foundation
 
-public struct EventStoreEventDefinition: Equatable {
+public struct EventStoreEventDefinition: Hashable {
     
     let identifier: String
     let title: String
