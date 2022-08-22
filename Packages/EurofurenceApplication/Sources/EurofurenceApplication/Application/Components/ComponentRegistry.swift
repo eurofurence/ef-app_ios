@@ -182,7 +182,10 @@ struct ComponentRegistry {
             eventsService: repositories.events,
             markdownRenderer: DefaultDownMarkdownRenderer(),
             shareService: shareService,
-            calendarRepository: EventKitCalendarEventRepository()
+            calendarRepository: EventKitCalendarEventRepository(
+                eventStore: EventKitEventStore(window: window),
+                scheduleRepository: repositories.events
+            )
         )
         
         eventDetailComponentFactory = EventDetailComponentBuilder(
