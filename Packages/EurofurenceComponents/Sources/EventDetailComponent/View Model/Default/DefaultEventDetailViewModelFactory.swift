@@ -74,8 +74,8 @@ public class DefaultEventDetailViewModelFactory: EventDetailViewModelFactory {
             buildSummaryComponent()
             buildToggleFavouriteStateCommandComponent()
             buildShareComponent()
-            buildLeaveFeedbackComponent()
             buildAddToCalendarComponent()
+            buildLeaveFeedbackComponent()
             buildSupplementaryInformationBannerComponents()
             buildEventDescriptionComponent()
             
@@ -129,7 +129,7 @@ public class DefaultEventDetailViewModelFactory: EventDetailViewModelFactory {
         }
         
         private func buildAddToCalendarComponent() {
-            if let calendarEvent = calendarEvent {            
+            if let calendarEvent = calendarEvent {
                 let command = AddEventToCalendarAction(calendarEvent: calendarEvent)
                 let component = DefaultEventDetailViewModel.ActionComponent(actionViewModel: command)
                 components.append(component)
